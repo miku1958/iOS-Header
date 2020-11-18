@@ -6,13 +6,80 @@
 
 #import <Accounts/ACAccount.h>
 
+@class AARegionInfo, AASuspensionInfo, NSArray, NSDictionary, NSNumber, NSString;
+
 @interface ACAccount (AppleID)
+
+@property (copy, nonatomic, setter=_aa_setRawPassword:) NSString *_aa_rawPassword;
+@property (copy, nonatomic, setter=aa_setAccountClass:) NSString *aa_accountClass;
+@property (readonly, nonatomic) NSDictionary *aa_accountFirstDisplayAlert;
+@property (readonly, nonatomic) NSDictionary *aa_accountFooterButton;
+@property (readonly, nonatomic) NSString *aa_accountFooterText;
+@property (readonly, nonatomic) NSString *aa_accountTypeString;
+@property (readonly, nonatomic) NSString *aa_altDSID;
+@property (readonly, nonatomic) NSArray *aa_appleIDAliases;
+@property (readonly, nonatomic) NSString *aa_appleId;
+@property (copy, nonatomic, setter=aa_setAuthToken:) NSString *aa_authToken;
+@property (readonly, nonatomic) ACAccount *aa_childMailAccount;
+@property (readonly, nonatomic) ACAccount *aa_cloudKitAccount;
+@property (readonly, nonatomic) NSString *aa_displayName;
+@property (copy, nonatomic, setter=aa_setFirstName:) NSString *aa_firstName;
+@property (readonly, nonatomic) ACAccount *aa_fmfAccount;
+@property (readonly, nonatomic) ACAccount *aa_fmipAccount;
+@property (readonly, nonatomic) NSString *aa_fmipToken;
+@property (readonly, nonatomic) NSString *aa_formattedUsername;
+@property (readonly, nonatomic) BOOL aa_hasOptionalTerms;
+@property (nonatomic, setter=aa_setCloudDocsMigrationComplete:) BOOL aa_isCloudDocsMigrationComplete;
+@property (readonly, nonatomic) BOOL aa_isFamilyEligible;
+@property (readonly, nonatomic) BOOL aa_isManagedAppleID;
+@property (readonly, nonatomic) BOOL aa_isNotesMigrated;
+@property (nonatomic, setter=aa_setPrimaryAccount:) BOOL aa_isPrimaryAccount;
+@property (nonatomic, setter=aa_setPrimaryEmailVerified:) BOOL aa_isPrimaryEmailVerified;
+@property (readonly, nonatomic) BOOL aa_isSandboxAccount;
+@property (readonly, nonatomic) BOOL aa_isSuspended;
+@property (nonatomic, setter=aa_setSyncedAccount:) BOOL aa_isSyncedAccount;
+@property (nonatomic, setter=aa_setUsesCloudDocs:) BOOL aa_isUsingCloudDocs;
+@property (readonly, nonatomic) BOOL aa_isUsingiCloud;
+@property (copy, nonatomic, setter=aa_setLastKnownQuota:) NSNumber *aa_lastKnownQuota;
+@property (copy, nonatomic, setter=aa_setLastName:) NSString *aa_lastName;
+@property (readonly, nonatomic) NSString *aa_mapsToken;
+@property (readonly, nonatomic) NSString *aa_mdmServerToken;
+@property (copy, nonatomic, setter=aa_setMiddleName:) NSString *aa_middleName;
+@property (readonly, nonatomic) BOOL aa_needsEmailConfiguration;
+@property (readonly, nonatomic) BOOL aa_needsRegistration;
+@property (nonatomic, setter=aa_setNeedsToVerifyTerms:) BOOL aa_needsToVerifyTerms;
+@property (copy, nonatomic, setter=aa_setPassword:) NSString *aa_password;
+@property (readonly, nonatomic) NSString *aa_personID;
+@property (readonly, nonatomic) NSString *aa_primaryEmail;
+@property (readonly, nonatomic) NSString *aa_protocolVersion;
+@property (readonly, copy, nonatomic) AARegionInfo *aa_regionInfo;
+@property (nonatomic, setter=aa_setRepairState:) NSNumber *aa_repairState;
+@property (readonly, nonatomic) BOOL aa_serviceUnavailable;
+@property (readonly, nonatomic) NSDictionary *aa_serviceUnavailableInfo;
+@property (readonly, copy, nonatomic) AASuspensionInfo *aa_suspensionInfo;
+@property (readonly, nonatomic) NSString *aa_syncStoreIdentifier;
+
+- (void)_aa_clearRawPassword;
+- (void)_aa_setAltDSID:(id)arg1;
+- (void)_aa_setAppleID:(id)arg1;
+- (void)_aa_setPrimaryEmail:(id)arg1;
 - (id)_registeredBundles;
+- (id)aa_authTokenWithError:(id *)arg1;
+- (id)aa_hsaTokenWithError:(id *)arg1;
+- (BOOL)aa_isAccountClass:(id)arg1;
+- (void)aa_setMDMServerToken:(id)arg1;
+- (void)aa_setMapsToken:(id)arg1;
+- (void)aa_setUseCellular:(BOOL)arg1 forDataclass:(id)arg2;
+- (BOOL)aa_updateAccountClassIfNecessary;
+- (BOOL)aa_updateTokensWithProvisioningResponse:(id)arg1;
+- (void)aa_updateWithProvisioningResponse:(id)arg1;
+- (BOOL)aa_useCellularForDataclass:(id)arg1;
 - (id)appleID;
 - (BOOL)canRemoveAccount;
 - (id)dsid;
 - (id)initWithAppleID:(id)arg1 password:(id)arg2;
 - (id)normalizedDSID;
 - (void)setDSID:(id)arg1;
+- (void)storeOriginalUsername;
 @end
 

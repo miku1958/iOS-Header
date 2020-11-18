@@ -12,9 +12,9 @@
 
 @interface PKPaymentWebServiceRegion : NSObject <NSSecureCoding>
 {
-    BOOL _hasPeerPaymentAccount;
     BOOL _hasAccounts;
     BOOL _hasApplications;
+    BOOL _hasPeerPaymentAccount;
     NSString *_lastUpdatedTag;
     NSArray *_certificates;
     NSURL *_brokerURL;
@@ -26,7 +26,6 @@
     NSString *_trustedServiceManagerPushTopic;
     long long _consistencyCheckBackoffLevel;
     NSString *_userNotificationPushTopic;
-    NSURL *_peerPaymentServiceURL;
     long long _outstandingCheckInAction;
     NSString *_lastDeviceCheckInBuildVersion;
     NSString *_deviceCheckInPushTopic;
@@ -35,6 +34,7 @@
     NSURL *_applyServiceURL;
     NSString *_applyServicePushTopic;
     NSString *_productsPushTopic;
+    NSURL *_peerPaymentServiceURL;
 }
 
 @property (strong, nonatomic) NSString *accountServicePushTopic; // @synthesize accountServicePushTopic=_accountServicePushTopic;

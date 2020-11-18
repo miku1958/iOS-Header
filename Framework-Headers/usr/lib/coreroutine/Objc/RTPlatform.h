@@ -31,11 +31,9 @@
 - (id)serialNumber;
 - (BOOL)simulatorPlatform;
 - (BOOL)supportsCoreRoutineCapability;
-- (BOOL)supportsMagicalMomentsCapability;
-- (BOOL)supportsMicroLocations;
 - (BOOL)supportsMultiUser;
 - (BOOL)supportsPairedDevice;
-- (BOOL)supportsRoutes;
+- (BOOL)supportsScenarioTriggers;
 - (id)systemModel;
 - (id)systemVersion;
 - (id)userAssignedDeviceName;

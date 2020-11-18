@@ -9,7 +9,6 @@
 @class AMSPromise;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface AMSUniqueExecutionQueue : NSObject
 {
     CDUnknownBlockType _block;
@@ -29,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_beginExecutingBlockWithPromise:(id)arg1;
 - (id)_createExecutionPromise;
 - (void)addCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)addCompletionBlockForSubsequentExecution:(CDUnknownBlockType)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end

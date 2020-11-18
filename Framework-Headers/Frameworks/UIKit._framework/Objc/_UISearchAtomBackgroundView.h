@@ -6,36 +6,17 @@
 
 #import <UIKitCore/UIView.h>
 
-#import <UIKitCore/_UIAtomTextViewAtomLayout-Protocol.h>
-
-@class NSString, UIColor;
-
 __attribute__((visibility("hidden")))
-@interface _UISearchAtomBackgroundView : UIView <_UIAtomTextViewAtomLayout>
+@interface _UISearchAtomBackgroundView : UIView
 {
     long long _selectionStyle;
-    CDStruct_513ff01d _flags;
-    UIColor *_defaultColor;
 }
 
-@property (readonly, nonatomic) long long baseWritingDirection;
-@property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) UIColor *defaultColor; // @synthesize defaultColor=_defaultColor;
-@property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isEnabled) BOOL enabled;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) struct CGRect selectionBounds;
-@property (nonatomic) long long selectionStyle;
-@property (readonly) Class superclass;
+@property (nonatomic) long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
 
-- (void).cxx_destruct;
-- (void)_updateBackgroundColor;
 - (void)_updateSelectionStyleMask;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setEnabled:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setSelectionStyle:(long long)arg1 animated:(BOOL)arg2;
-- (void)tintColorDidChange;
 
 @end
 

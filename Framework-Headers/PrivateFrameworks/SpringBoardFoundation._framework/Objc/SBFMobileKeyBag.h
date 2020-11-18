@@ -17,8 +17,6 @@
     NSHashTable *_queue_observers;
     BOOL _queue_hasPasscodeSet;
     BOOL _queue_hasUnlockedSinceBoot;
-    int _stateChangedNotifyToken;
-    int _firstUnlockNotification;
 }
 
 @property (readonly, copy, nonatomic) SBFMobileKeyBagState *extendedState;

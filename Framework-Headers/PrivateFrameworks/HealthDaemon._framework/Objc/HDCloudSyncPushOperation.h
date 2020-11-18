@@ -9,7 +9,7 @@
 #import <HealthDaemon/HDSyncSessionDelegate-Protocol.h>
 #import <HealthDaemon/NSProgressReporting-Protocol.h>
 
-@class HDCloudSyncFetchOperationResult, HDCloudSyncOperationConfiguration, HDCloudSyncSequenceRecord, HDCloudSyncStoreRecord, NSDate, NSMutableArray, NSProgress, NSString, NSUUID, _HDCloudSyncSessionContext;
+@class HDCloudSyncFetchOperationResult, HDCloudSyncOperationConfiguration, HDCloudSyncStoreRecord, NSDate, NSMutableArray, NSProgress, NSString, NSUUID, _HDCloudSyncSessionContext;
 @protocol OS_dispatch_queue;
 
 @interface HDCloudSyncPushOperation : NSObject <HDSyncSessionDelegate, NSProgressReporting>
@@ -20,13 +20,14 @@
     NSObject<OS_dispatch_queue> *_syncQueue;
     _HDCloudSyncSessionContext *_syncSessionContext;
     HDCloudSyncStoreRecord *_storeRecordForPush;
-    HDCloudSyncSequenceRecord *_sequenceRecordForPush;
     BOOL _isNewStoreRecord;
     NSMutableArray *_changeRecordsPendingPush;
+    NSMutableArray *_recordsPendingDeletion;
     NSUUID *_operationIdentifier;
     NSDate *_startTime;
     NSString *_cloudKitIdentifier;
     BOOL _queue_hasStarted;
+    long long _perSequenceChildProgressUnitCount;
     CDUnknownBlockType _completion;
     NSProgress *_progress;
 }
@@ -39,22 +40,27 @@
 
 - (void).cxx_destruct;
 - (void)_finishWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (id)_queue_computeSequenceRecordForPushWithStoreRecord:(id)arg1;
 - (void)_queue_deactivatePendingOwnerStores;
 - (void)_queue_endSyncSessionWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (id)_queue_estimateSyncEntityClassesWithChangesForSession:(id)arg1;
-- (id)_queue_excludedStoresForZones:(id)arg1 error:(id *)arg2;
-- (BOOL)_queue_finalizeNextChangeRecordForUploadToSession:(id)arg1 error:(id *)arg2;
+- (id)_queue_excludedStoresForZones:(id)arg1;
+- (BOOL)_queue_finalizeNextChangeRecordForUploadToSession:(id)arg1 shouldFreeze:(BOOL)arg2 error:(id *)arg3;
 - (void)_queue_finalizePushForSession:(id)arg1;
-- (id)_queue_getStoreRecordForPushZone:(id)arg1 isNewRecord:(BOOL *)arg2;
-- (void)_queue_performSyncExcludingStoreZones:(id)arg1;
+- (id)_queue_getStoreRecordForPushZone:(id)arg1 isNewRecord:(BOOL *)arg2 error:(id *)arg3;
+- (void)_queue_performSyncForSequences:(id)arg1 excludingStoreZones:(id)arg2;
+- (id)_queue_primarySequenceRecordForPushWithStoreRecord:(id)arg1;
+- (long long)_queue_protocolVersionForPush;
 - (void)_queue_pushRecords:(id)arg1 recordIDsToDelete:(id)arg2 zoneToCreate:(id)arg3 containerID:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_queue_pushStoreIdentifier;
 - (id)_queue_pushStoreWithIdentifier:(id)arg1;
-- (void)_queue_setInitialForwardProgressDateIfNecessary;
+- (id)_queue_sequenceRecordsForPushWithStoreRecord:(id)arg1;
+- (void)_queue_syncCompletedWithSuccess:(BOOL)arg1 error:(id)arg2 remainingSequences:(id)arg3 excludedStoreZones:(id)arg4;
+- (id)_queue_tombstoneSequenceRecordForPushWithStoreRecord:(id)arg1;
 - (void)_queue_uploadChangesForSyncSession:(id)arg1 isFinalUpload:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_recordForwardProgressDate;
+- (void)_setInitialForwardProgressDateIfNecessary;
 - (id)initWithConfiguration:(id)arg1 fetchOperationResult:(id)arg2;
+- (long long)nextSyncAnchorForEntity:(Class)arg1 session:(id)arg2 startSyncAnchor:(long long)arg3 error:(id *)arg4;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)syncSession:(id)arg1 didEndTransactionWithError:(id *)arg2;
 - (void)syncSession:(id)arg1 didFinishSuccessfully:(BOOL)arg2 error:(id)arg3;

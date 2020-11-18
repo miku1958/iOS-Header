@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <UIFoundation/NSCoding-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 
 @class CUIStyleEffectConfiguration, NSArray, NSFont, NSGlyphGenerator, NSMutableArray, NSParagraphArbitrator, NSRunStorage, NSStorage, NSTextContainer, NSTextStorage, NSTypesetter;
 @protocol NSLayoutManagerDelegate;
 
-@interface NSLayoutManager : NSObject <NSCoding>
+@interface NSLayoutManager : NSObject <NSSecureCoding>
 {
     NSTextStorage *_textStorage;
     NSGlyphGenerator *_glyphGenerator;
@@ -70,6 +70,8 @@
     unsigned long long _firstUnlaidCharIndex;
     struct _NSRange _newlyFilledGlyphRange;
     id _extraData;
+    NSTextContainer *_cachedTextContainer;
+    BOOL _cachedTextContainerIsVertical;
 }
 
 @property (nonatomic) BOOL allowsNonContiguousLayout;
@@ -79,8 +81,6 @@
 @property (readonly, nonatomic) NSTextContainer *extraLineFragmentTextContainer;
 @property (readonly, nonatomic) struct CGRect extraLineFragmentUsedRect;
 @property (readonly, nonatomic) BOOL hasNonContiguousLayout;
-@property (nonatomic) double hyphenationFactor;
-@property BOOL limitsLayoutForSuspiciousContents;
 @property BOOL limitsLayoutForSuspiciousContents;
 @property (readonly, nonatomic) unsigned long long numberOfGlyphs;
 @property (strong) NSParagraphArbitrator *paragraphArbitrator;
@@ -90,6 +90,7 @@
 @property (copy) CUIStyleEffectConfiguration *styleEffectConfiguration;
 @property (readonly, nonatomic) NSArray *textContainers;
 @property (nonatomic) NSTextStorage *textStorage;
+@property BOOL usesDefaultHyphenation;
 @property (nonatomic) BOOL usesFontLeading;
 
 + (id)_defaultLinkAttributes;
@@ -100,6 +101,7 @@
 + (BOOL)_showsInvisibleCharacters;
 + (BOOL)_usesScreenFonts;
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (unsigned short)CGGlyphAtIndex:(unsigned long long)arg1;
 - (unsigned short)CGGlyphAtIndex:(unsigned long long)arg1 isValidIndex:(BOOL *)arg2;
 - (void)_adjustCharacterIndicesForRawGlyphRange:(struct _NSRange)arg1 byDelta:(long long)arg2;
@@ -187,11 +189,13 @@
 - (void)_recalculateUsageForTextContainerAtIndex:(unsigned long long)arg1;
 - (struct CGRect *)_rectArrayForRange:(struct _NSRange)arg1 withinSelectionRange:(struct _NSRange)arg2 rangeIsCharRange:(BOOL)arg3 singleRectOnly:(BOOL)arg4 fullLineRectsOnly:(BOOL)arg5 inTextContainer:(id)arg6 rectCount:(unsigned long long *)arg7 rangeWithinContainer:(struct _NSRange *)arg8 glyphsDrawOutsideLines:(BOOL *)arg9;
 - (struct CGRect *)_rectArrayForRange:(struct _NSRange)arg1 withinSelectionRange:(struct _NSRange)arg2 rangeIsCharRange:(BOOL)arg3 singleRectOnly:(BOOL)arg4 fullLineRectsOnly:(BOOL)arg5 inTextContainer:(id)arg6 rectCount:(unsigned long long *)arg7 rangeWithinContainer:(struct _NSRange *)arg8 glyphsDrawOutsideLines:(BOOL *)arg9 rectArray:(struct CGRect *)arg10 rectArrayCapacity:(unsigned long long)arg11;
+- (void)_resetCachedTextContainer;
 - (void)_resizeTextViewForTextContainer:(id)arg1;
 - (id)_rowArrayCache;
 - (id)_selectedRanges;
 - (id)_selectionRangesForInsertionPointRange:(struct _NSRange)arg1;
 - (void)_setAlwaysDrawsActive:(BOOL)arg1;
+- (void)_setCachedTextContainer:(id)arg1 isVertical:(BOOL)arg2;
 - (void)_setCurrentAttachmentRect:(struct CGRect)arg1 index:(unsigned long long)arg2;
 - (void)_setDrawsDebugBaselines:(BOOL)arg1;
 - (void)_setDrawsUnderlinesLikeWebKit:(BOOL)arg1;
@@ -206,6 +210,7 @@
 - (void)_setRowArrayCache:(id)arg1;
 - (void)_setTextContainer:(id)arg1 forGlyphRange:(struct _NSRange)arg2;
 - (void)_showAttachmentCell:(id)arg1 inRect:(struct CGRect)arg2 characterIndex:(unsigned long long)arg3;
+- (void)_showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(long long)arg3 font:(id)arg4 textMatrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
 - (void)_simpleDeleteGlyphsInRange:(struct _NSRange)arg1;
 - (void)_simpleInsertGlyph:(unsigned int)arg1 atGlyphIndex:(unsigned long long)arg2 characterIndex:(unsigned long long)arg3 elastic:(BOOL)arg4;
 - (unsigned long long)_smallEncodingGlyphIndexForCharacterIndex:(unsigned long long)arg1 startOfRange:(BOOL)arg2 okToFillHoles:(BOOL)arg3;
@@ -256,6 +261,7 @@
 - (void)enumerateEnclosingRectsForGlyphRange:(struct _NSRange)arg1 withinSelectedGlyphRange:(struct _NSRange)arg2 inTextContainer:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateLineFragmentsForGlyphRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)fillBackgroundRectArray:(const struct CGRect *)arg1 count:(unsigned long long)arg2 forCharacterRange:(struct _NSRange)arg3 color:(id)arg4;
+- (void)fillMarkedBackgroundRectArray:(const struct CGRect *)arg1 count:(unsigned long long)arg2 forCharacterRange:(struct _NSRange)arg3 color:(id)arg4;
 - (void)finalize;
 - (unsigned long long)firstUnlaidCharacterIndex;
 - (unsigned long long)firstUnlaidGlyphIndex;
@@ -278,6 +284,7 @@
 - (struct _NSRange)glyphRangeForBoundingRectWithoutAdditionalLayout:(struct CGRect)arg1 inTextContainer:(id)arg2;
 - (struct _NSRange)glyphRangeForCharacterRange:(struct _NSRange)arg1 actualCharacterRange:(struct _NSRange *)arg2;
 - (struct _NSRange)glyphRangeForTextContainer:(id)arg1;
+- (double)hyphenationFactor;
 - (BOOL)ignoresAntialiasThreshold;
 - (BOOL)ignoresViewTransformations;
 - (id)init;
@@ -330,6 +337,7 @@
 - (void)setFlipsIfNeeded:(BOOL)arg1;
 - (void)setGlyphGenerator:(id)arg1;
 - (void)setGlyphs:(const unsigned short *)arg1 properties:(const long long *)arg2 characterIndexes:(const unsigned long long *)arg3 font:(id)arg4 forGlyphRange:(struct _NSRange)arg5;
+- (void)setHyphenationFactor:(double)arg1;
 - (void)setIgnoresAntialiasThreshold:(BOOL)arg1;
 - (void)setIgnoresViewTransformations:(BOOL)arg1;
 - (void)setIntAttribute:(long long)arg1 value:(long long)arg2 forGlyphAtIndex:(unsigned long long)arg3;
@@ -352,7 +360,7 @@
 - (void)showAttachment:(id)arg1 inRect:(struct CGRect)arg2 textContainer:(id)arg3 characterIndex:(unsigned long long)arg4;
 - (void)showAttachmentCell:(id)arg1 inRect:(struct CGRect)arg2 characterIndex:(unsigned long long)arg3;
 - (void)showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(unsigned long long)arg3 font:(id)arg4 matrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
-- (void)showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(unsigned long long)arg3 font:(id)arg4 textMatrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
+- (void)showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(long long)arg3 font:(id)arg4 textMatrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
 - (void)strikethroughGlyphRange:(struct _NSRange)arg1 strikethroughType:(long long)arg2 lineFragmentRect:(struct CGRect)arg3 lineFragmentGlyphRange:(struct _NSRange)arg4 containerOrigin:(struct CGPoint)arg5;
 - (id)substituteFontForFont:(id)arg1;
 - (BOOL)synchronizesAlignmentToDirection;

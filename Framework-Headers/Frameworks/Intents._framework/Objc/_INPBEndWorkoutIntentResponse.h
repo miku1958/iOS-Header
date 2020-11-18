@@ -15,15 +15,20 @@
 @interface _INPBEndWorkoutIntentResponse : PBCodable <_INPBEndWorkoutIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

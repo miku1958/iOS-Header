@@ -11,36 +11,37 @@
 #import <AvatarUI/AVTStoreBackendDelegate-Protocol.h>
 
 @class AVTAvatarRecordImageGenerator, AVTPuppetStore, AVTUIEnvironment, NSString;
-@protocol AVTStoreBackend, AVTUILogger, OS_dispatch_queue;
+@protocol AVTStickerBackend, AVTStickerBackendDelegate, AVTStoreBackend, AVTUILogger, OS_dispatch_queue;
 
 @interface AVTAvatarStore : NSObject <AVTStoreBackendDelegate, AVTAvatarStoreInternal, AVTAvatarStore>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_backendAccessQueue;
     NSObject<OS_dispatch_queue> *_puppetStoreAccessQueue;
-    NSString *_domainIdentifier;
     AVTUIEnvironment *_environment;
     id<AVTStoreBackend> _backend;
     AVTPuppetStore *_puppetStore;
     AVTAvatarRecordImageGenerator *_imageGenerator;
     id<AVTUILogger> _logger;
+    id<AVTStickerBackend> _stickerBackend;
 }
 
 @property (readonly, nonatomic) id<AVTStoreBackend> backend; // @synthesize backend=_backend;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *backendAccessQueue; // @synthesize backendAccessQueue=_backendAccessQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) AVTAvatarRecordImageGenerator *imageGenerator; // @synthesize imageGenerator=_imageGenerator;
 @property (readonly, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) AVTPuppetStore *puppetStore; // @synthesize puppetStore=_puppetStore;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *puppetStoreAccessQueue; // @synthesize puppetStoreAccessQueue=_puppetStoreAccessQueue;
+@property (readonly, nonatomic) id<AVTStickerBackend> stickerBackend; // @synthesize stickerBackend=_stickerBackend;
+@property (weak, nonatomic) id<AVTStickerBackendDelegate> stickerBackendDelegate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (id)defaultBackendForDomainIdentifier:(id)arg1 workQueue:(id)arg2 environment:(id)arg3;
++ (id)defaultBackendWithWorkQueue:(id)arg1 environment:(id)arg2;
 + (id)defaultImageGeneratorForEnvironment:(id)arg1;
 + (unsigned long long)maximumNumberOfFetchableAvatars;
 + (unsigned long long)maximumNumberOfSavableAvatars;
@@ -51,14 +52,20 @@
 - (BOOL)canCreateAvatarWithError:(id *)arg1;
 - (void)deleteAvatar:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteAvatarWithIdentifier:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)deleteRecentStickersForChangeTracker:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)deleteRecentStickersWithAvatarIdentifier:(id)arg1 stickerIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)didUseStickerWithAvatarIdentifier:(id)arg1 stickerIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)duplicateAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)fetchAvatarsForFetchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)init;
+- (id)initWithBackend:(id)arg1 backendAccessQueue:(id)arg2 puppetStore:(id)arg3 imageGenerator:(id)arg4 stickerBackend:(id)arg5 environment:(id)arg6;
 - (id)initWithDomainIdentifier:(id)arg1;
-- (id)initWithDomainIdentifier:(id)arg1 backend:(id)arg2 backendAccessQueue:(id)arg3 puppetStore:(id)arg4 imageGenerator:(id)arg5 environment:(id)arg6;
+- (id)initWithImageGenerator:(id)arg1 environment:(id)arg2;
 - (void)performAsynchronousWork:(CDUnknownBlockType)arg1;
 - (void)performBackendWork:(CDUnknownBlockType)arg1;
 - (void)performPuppetStoreWork:(CDUnknownBlockType)arg1;
 - (void)postChangeNotificationForRecordWithIdentifiers:(id)arg1 remote:(BOOL)arg2;
+- (id)recentStickersForFetchRequest:(id)arg1 error:(id *)arg2;
 - (void)saveAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2 thumbnailGenerationCompletionBlock:(CDUnknownBlockType)arg3;
 
 @end

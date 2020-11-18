@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPeripheralAvailabilityManager_iOS, AKSignatureModelController, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSMapTable, NSMutableArray, NSString, UIView;
-@protocol AKControllerDelegateProtocol;
+@class AKActionController, AKAttributeController, AKFormFeatureDetectorController, AKHighlightAnnotationController, AKLegacyDoodleController, AKMainEventHandler, AKModelController, AKPageController, AKPageControllerArray, AKPeripheralAvailabilityManager_iOS, AKSidecarController, AKSignatureModelController, AKStatistics, AKTextEditorController, AKToolController, AKToolbarView, AKToolbarViewController, AKUndoController, NSMapTable, NSString, UIView;
+@protocol AKControllerDelegateProtocol, PKRulerHostingDelegate;
 
 @interface AKController : NSObject
 {
@@ -24,18 +24,21 @@
     BOOL _selectNewlyCreatedAnnotations;
     BOOL _shapeDetectionEnabled;
     BOOL _useHighVisibilityDefaultInks;
+    BOOL __isInDFRAction;
     id<AKControllerDelegateProtocol> _delegate;
     AKModelController *_modelController;
     UIView *_toolbarView;
     unsigned long long _currentPageIndex;
+    id<PKRulerHostingDelegate> _rulerHostingDelegate;
     NSString *_author;
-    NSMutableArray *_pageControllers;
+    AKPageControllerArray *_pageControllers;
     NSMapTable *_pageModelControllersToPageControllers;
     AKActionController *_actionController;
     AKToolController *_toolController;
     AKToolbarViewController *_toolbarViewController;
     AKAttributeController *_attributeController;
     AKUndoController *_undoController;
+    AKSidecarController *_sidecarController;
     AKMainEventHandler *_mainEventHandler;
     AKTextEditorController *_textEditorController;
     AKLegacyDoodleController *_legacyDoodleController;
@@ -53,6 +56,7 @@
     AKToolbarView *_modernToolbarView;
 }
 
+@property (readonly) BOOL _isInDFRAction; // @synthesize _isInDFRAction=__isInDFRAction;
 @property (strong) AKActionController *actionController; // @synthesize actionController=_actionController;
 @property double akModelToCanvasFixedPixelScaleOfFirstEncounteredPage; // @synthesize akModelToCanvasFixedPixelScaleOfFirstEncounteredPage=_akModelToCanvasFixedPixelScaleOfFirstEncounteredPage;
 @property (nonatomic) BOOL allEditingDisabled; // @synthesize allEditingDisabled=_allEditingDisabled;
@@ -75,16 +79,19 @@
 @property (strong) AKMainEventHandler *mainEventHandler; // @synthesize mainEventHandler=_mainEventHandler;
 @property (strong) AKModelController *modelController; // @synthesize modelController=_modelController;
 @property (weak, nonatomic) AKToolbarView *modernToolbarView; // @synthesize modernToolbarView=_modernToolbarView;
+@property (readonly, nonatomic) BOOL onlyDrawWithApplePencil;
 @property (nonatomic) BOOL overlayShouldPixelate; // @synthesize overlayShouldPixelate;
-@property (strong) NSMutableArray *pageControllers; // @synthesize pageControllers=_pageControllers;
+@property (strong) AKPageControllerArray *pageControllers; // @synthesize pageControllers=_pageControllers;
 @property (strong) NSMapTable *pageModelControllersToPageControllers; // @synthesize pageModelControllersToPageControllers=_pageModelControllersToPageControllers;
 @property unsigned long long pasteCascadingMultiplier; // @synthesize pasteCascadingMultiplier=_pasteCascadingMultiplier;
 @property (nonatomic) BOOL pencilAlwaysDraws; // @synthesize pencilAlwaysDraws=_pencilAlwaysDraws;
 @property (strong) AKPeripheralAvailabilityManager_iOS *peripheralAvailabilityManager; // @synthesize peripheralAvailabilityManager=_peripheralAvailabilityManager;
+@property (weak, nonatomic) id<PKRulerHostingDelegate> rulerHostingDelegate; // @synthesize rulerHostingDelegate=_rulerHostingDelegate;
 @property double screenPixelsToCanvasPixelsDownscale; // @synthesize screenPixelsToCanvasPixelsDownscale=_screenPixelsToCanvasPixelsDownscale;
 @property (nonatomic) BOOL selectNewlyCreatedAnnotations; // @synthesize selectNewlyCreatedAnnotations=_selectNewlyCreatedAnnotations;
 @property (nonatomic) BOOL shapeDetectionEnabled; // @synthesize shapeDetectionEnabled=_shapeDetectionEnabled;
 @property (getter=isShowingMenu) BOOL showingMenu; // @synthesize showingMenu=_showingMenu;
+@property (strong) AKSidecarController *sidecarController; // @synthesize sidecarController=_sidecarController;
 @property (strong) AKSignatureModelController *signatureModelController; // @synthesize signatureModelController=_signatureModelController;
 @property (strong) AKStatistics *statisticsLogger; // @synthesize statisticsLogger=_statisticsLogger;
 @property (strong) AKTextEditorController *textEditorController; // @synthesize textEditorController=_textEditorController;
@@ -108,6 +115,11 @@
 - (void)_didReceiveMemoryWarning:(id)arg1;
 - (void)_pageModelControllerSelectedAnnotationsChangedNotification:(id)arg1;
 - (struct CGRect)_popoverAnchorFrameInModelForAnnotations:(id)arg1;
+- (id)_toolpicker_color;
+- (id)_toolpicker_inkIdentifier;
+- (void)_toolpicker_setColor:(id)arg1;
+- (void)_toolpicker_setInkIdentifier:(id)arg1;
+- (void)_updateGestureDependencyPriority;
 - (BOOL)_validateCutCopyDelete;
 - (void)addPopupToAnnotation:(id)arg1 openPopup:(BOOL)arg2;
 - (void)applyCurrentCrop;
@@ -122,6 +134,7 @@
 - (id)currentPageController;
 - (void)cut:(id)arg1;
 - (void)dealloc;
+- (void)delayedUndoControllerSetup;
 - (void)delete:(id)arg1;
 - (id)doubleTapGestureRecognizer;
 - (void)duplicate:(id)arg1;

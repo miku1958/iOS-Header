@@ -29,6 +29,7 @@
 @property BOOL disabled;
 @property BOOL disablesUpdates;
 @property (readonly) unsigned int displayId;
+@property (getter=isFlipBookEnabled) BOOL flipBookEnabled;
 @property (getter=isGrayscale) BOOL grayscale;
 @property float idealRefreshRate;
 @property BOOL invertsColors;
@@ -68,11 +69,11 @@
 - (void)removeAllClones;
 - (void)removeClone:(id)arg1;
 - (void)setAccessibilityColorMatrix:(float *)arg1 scale:(float)arg2;
+- (void)setCalibrationPhase:(unsigned int)arg1 forIdentifier:(unsigned int)arg2;
 - (void)setColorMatrix:(float *)arg1 scale:(float)arg2 rampDuration:(double)arg3;
 - (void)setMaximumRefreshRate:(float)arg1;
 - (void)setMinimumRefreshRate:(float)arg1;
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
-- (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 - (void)update;
 - (void)willUnblank;
 

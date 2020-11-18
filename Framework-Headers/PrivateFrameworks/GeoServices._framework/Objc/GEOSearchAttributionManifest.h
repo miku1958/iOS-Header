@@ -8,28 +8,45 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOSearchAttributionManifest : PBCodable <NSCopying>
 {
-    double _timestamp;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_actionComponentMapEntries;
     NSMutableArray *_searchAttributionSources;
     NSString *_sourceURL;
-    CDStruct_b5306035 _has;
+    double _timestamp;
+    struct {
+        unsigned int has_timestamp:1;
+        unsigned int read_actionComponentMapEntries:1;
+        unsigned int read_searchAttributionSources:1;
+        unsigned int read_sourceURL:1;
+        unsigned int wrote_actionComponentMapEntries:1;
+        unsigned int wrote_searchAttributionSources:1;
+        unsigned int wrote_sourceURL:1;
+        unsigned int wrote_timestamp:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *actionComponentMapEntries; // @synthesize actionComponentMapEntries=_actionComponentMapEntries;
+@property (strong, nonatomic) NSMutableArray *actionComponentMapEntries;
 @property (readonly, nonatomic) BOOL hasSourceURL;
 @property (nonatomic) BOOL hasTimestamp;
-@property (strong, nonatomic) NSMutableArray *searchAttributionSources; // @synthesize searchAttributionSources=_searchAttributionSources;
+@property (strong, nonatomic) NSMutableArray *searchAttributionSources;
 @property (strong, nonatomic) NSString *sourceURL;
 @property (nonatomic) double timestamp;
 
 + (Class)actionComponentMapEntriesType;
++ (BOOL)isValid:(id)arg1;
 + (Class)searchAttributionSourcesType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsActionComponentMapEntries:(id)arg1;
+- (void)_addNoFlagsSearchAttributionSources:(id)arg1;
+- (void)_readActionComponentMapEntries;
+- (void)_readSearchAttributionSources;
+- (void)_readSourceURL;
 - (id)actionComponentMapEntriesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)actionComponentMapEntriesCount;
 - (void)addActionComponentMapEntries:(id)arg1;
@@ -43,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)searchAttributionSourcesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)searchAttributionSourcesCount;

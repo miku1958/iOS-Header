@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) id<UIStatusBarServerClient> statusBar; // @synthesize statusBar=_statusBar;
 
-+ (id)_cachedTimeStringFromData:(CDStruct_1916f467 *)arg1;
++ (id)_cachedTimeStringFromData:(CDStruct_0942cde0 *)arg1;
 + (unsigned int)_publisherPort;
 + (unsigned int)_serverPort;
 + (void)addStatusBarItem:(int)arg1;
@@ -24,14 +24,14 @@
 + (id)getDoubleHeightStatusStringForStyle:(long long)arg1;
 + (double)getGlowAnimationEndTimeForStyle:(long long)arg1;
 + (BOOL)getGlowAnimationStateForStyle:(long long)arg1;
-+ (const CDStruct_1916f467 *)getStatusBarData;
-+ (CDStruct_308dc736 *)getStatusBarOverrideData;
++ (const CDStruct_0942cde0 *)getStatusBarData;
++ (CDStruct_f9a79af9 *)getStatusBarOverrideData;
 + (int)getStyleOverrides;
 + (void)permanentizeStatusBarOverrideData;
 + (void)postDoubleHeightStatusString:(id)arg1 forStyle:(long long)arg2;
 + (void)postGlowAnimationState:(BOOL)arg1 forStyle:(long long)arg2;
-+ (void)postStatusBarData:(const CDStruct_1916f467 *)arg1 withActions:(int)arg2;
-+ (void)postStatusBarOverrideData:(CDStruct_308dc736 *)arg1;
++ (void)postStatusBarData:(const CDStruct_0942cde0 *)arg1 withActions:(int)arg2;
++ (void)postStatusBarOverrideData:(CDStruct_f9a79af9 *)arg1;
 + (void)removeStatusBarItem:(int)arg1;
 + (void)removeStyleOverrides:(int)arg1;
 + (void)runServer;
@@ -39,7 +39,7 @@
 - (void).cxx_destruct;
 - (void)_receivedDoubleHeightStatus:(const char *)arg1 forStyle:(long long)arg2;
 - (void)_receivedGlowAnimationState:(BOOL)arg1 forStyle:(long long)arg2;
-- (void)_receivedStatusBarData:(CDStruct_1916f467 *)arg1 actions:(int)arg2 animated:(BOOL)arg3;
+- (void)_receivedStatusBarData:(CDStruct_0942cde0 *)arg1 actions:(int)arg2 animated:(BOOL)arg3;
 - (void)_receivedStyleOverrides:(int)arg1;
 - (void)dealloc;
 - (id)initWithStatusBar:(id)arg1;

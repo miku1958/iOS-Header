@@ -20,10 +20,13 @@
     id<FBSDisplayObserving> _lock_bookendObserver;
     NSHashTable *_lock_observers;
     NSMapTable *_lock_sourcesByDisplay;
+    BOOL _lock_allowsUnknownDisplays;
+    BOOL _lock_canPostToBookendObserver;
 }
 
 @property (readonly, weak, nonatomic) id<FBSDisplayObserving> bookendObserver;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *callOutQueue; // @synthesize callOutQueue=_callOutQueue;
+@property (readonly, nonatomic) BOOL canPostToBookendObserver;
 @property (readonly, copy, nonatomic) NSSet *connectedIdentities;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -37,14 +40,17 @@
 - (id)_initWithBookendObserver:(id)arg1;
 - (void)_lock_enumerateConnectedWithBlock:(CDUnknownBlockType)arg1;
 - (void)_lock_enumerateSourcesWithBlock:(CDUnknownBlockType)arg1;
+- (void)_postInitialBookendObserverConnections;
 - (id)_sortedSources;
 - (void)addObserver:(id)arg1;
+- (BOOL)allowsUnknownDisplays;
 - (id)configurationForIdentity:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithInitializationCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidate;
 - (void)removeObserver:(id)arg1;
+- (void)setAllowsUnknownDisplays:(BOOL)arg1;
 
 @end
 

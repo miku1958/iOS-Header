@@ -55,6 +55,7 @@
 @property (readonly, nonatomic) NSDate *lastMoviePlayedDate; // @synthesize lastMoviePlayedDate=_lastMoviePlayedDate;
 @property (readonly, nonatomic) NSDate *lastViewedDate; // @synthesize lastViewedDate=_lastViewedDate;
 @property (readonly, nonatomic) NSData *movieData; // @synthesize movieData=_movieData;
+@property (readonly, nonatomic) NSDictionary *musicGenreDistribution;
 @property (readonly, nonatomic) unsigned long long notificationState; // @synthesize notificationState=_notificationState;
 @property (readonly, nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
 @property (readonly, nonatomic) NSDictionary *photosGraphProperties; // @synthesize photosGraphProperties=_photosGraphProperties;
@@ -73,7 +74,7 @@
 + (id)assetListPredicateFromQueryHintObjects:(id)arg1;
 + (id)entityKeyMap;
 + (id)fetchBestRecentMemoryWithOptions:(id)arg1;
-+ (id)fetchTransientMemoriesWithOptions:(id)arg1 photoLibrary:(id)arg2;
++ (id)fetchBlacklistedMemoriesWithOptions:(id)arg1;
 + (id)fetchType;
 + (void)generateMemoriesWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)identifierCode;
@@ -81,6 +82,7 @@
 + (BOOL)managedObjectSupportsPendingState;
 + (BOOL)managedObjectSupportsRejectedState;
 + (BOOL)managedObjectSupportsTrashedState;
++ (id)memoryInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)memoryTreeLevelWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)movieDataWithTitleFontName:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
@@ -88,10 +90,10 @@
 + (id)stringForSubcategory:(unsigned long long)arg1;
 + (id)titleFontNameFromMovieData:(id)arg1;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
-+ (id)transientMemoryWithDictionary:(id)arg1;
++ (id)transientMemoryWithInfo:(id)arg1 photoLibrary:(id)arg2;
 - (void).cxx_destruct;
-- (id)_curatedAssetIDs;
-- (id)_extendedCuratedAssetIDs;
+- (id)_curatedAssetIDsWithLibrary:(id)arg1;
+- (id)_extendedCuratedAssetIDsWithLibrary:(id)arg1;
 - (id)_representativeAndCuratedAssetIDs;
 - (BOOL)canContainAssets;
 - (BOOL)canPerformEditOperation:(long long)arg1;
@@ -99,6 +101,7 @@
 - (Class)changeRequestClass;
 - (BOOL)collectionHasFixedOrder;
 - (id)creationDate;
+- (id)defaultSortDescriptor;
 - (id)description;
 - (BOOL)hasBlacklistableFeature;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
@@ -106,7 +109,7 @@
 - (id)localizedSubtitle;
 - (id)moodKeywords;
 - (id)movieStateDataForAsset:(id)arg1;
-- (id)predicateForAllAssets;
+- (id)predicateForAllAssetsWithLibrary:(id)arg1;
 - (id)predicateForAllMomentsFromRepresentativeAssets;
 - (id)query;
 - (id)queryForCuratedAssetsWithOptions:(id)arg1;

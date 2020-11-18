@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) long long resultSubtype; // @synthesize resultSubtype=_resultSubtype;
 @property (readonly, nonatomic) long long resultType; // @synthesize resultType=_resultType;
 
+- (id)init;
 - (id)initWithPriority:(long long)arg1 resultType:(long long)arg2 resultSubtype:(long long)arg3;
 
 @end

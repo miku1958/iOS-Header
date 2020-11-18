@@ -6,12 +6,13 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
-#import <HomeUI/HUPersonalRequestsDevicesModuleControllerDelegate-Protocol.h>
+#import <HomeUI/HUAccessorySettingsDetailsViewControllerProtocol-Protocol.h>
 
 @class HUPersonalRequestsDevicesModuleController, HUPersonalRequestsEditorItemManager, NSString;
 
-@interface HUPersonalRequestsEditorTableViewController : HUItemTableViewController <HUPersonalRequestsDevicesModuleControllerDelegate>
+@interface HUPersonalRequestsEditorTableViewController : HUItemTableViewController <HUAccessorySettingsDetailsViewControllerProtocol>
 {
+    BOOL _onlyShowDeviceSwitches;
     HUPersonalRequestsEditorItemManager *_prEditorItemManager;
     HUPersonalRequestsDevicesModuleController *_prDevicesModuleController;
 }
@@ -19,6 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL onlyShowDeviceSwitches; // @synthesize onlyShowDeviceSwitches=_onlyShowDeviceSwitches;
 @property (readonly, nonatomic) HUPersonalRequestsDevicesModuleController *prDevicesModuleController; // @synthesize prDevicesModuleController=_prDevicesModuleController;
 @property (strong, nonatomic) HUPersonalRequestsEditorItemManager *prEditorItemManager; // @synthesize prEditorItemManager=_prEditorItemManager;
 @property (readonly) Class superclass;
@@ -26,11 +28,13 @@
 - (void).cxx_destruct;
 - (BOOL)automaticallyUpdatesViewControllerTitle;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
-- (void)devicesModuleController:(id)arg1 presentViewController:(id)arg2;
-- (id)initWithUserItem:(id)arg1;
-- (id)initWithUserItem:(id)arg1 sourceMediaProfileContainer:(id)arg2;
+- (id)initWithAccessoryGroupItem:(id)arg1;
+- (id)initWithUserItem:(id)arg1 onlyShowDeviceSwitches:(BOOL)arg2;
+- (id)initWithUserItem:(id)arg1 sourceMediaProfileContainer:(id)arg2 onlyShowDeviceSwitches:(BOOL)arg3;
 - (id)itemModuleControllers;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
+- (BOOL)shouldHideFooterBelowSection:(long long)arg1;
+- (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 

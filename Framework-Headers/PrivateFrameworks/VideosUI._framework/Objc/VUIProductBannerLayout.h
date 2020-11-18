@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
 @interface VUIProductBannerLayout : TVViewLayout
 {
     long long _sizeClass;
-    BOOL _isMovieLayout;
+    unsigned long long _contentType;
     TVImageLayout *_logoImageLayout;
     VUITextLayout *_logoTextLayout;
+    VUITextLayout *_subTextLayout;
+    VUITextLayout *_episodeInfoTextLayout;
     VUITextLayout *_descriptionTextLayout;
     VUITextLayout *_descriptionTitleTextLayout;
     VUIMediaTagsViewLayout *_tagsLayout;
@@ -28,20 +30,24 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) TVImageLayout *availabilityImageLayout; // @synthesize availabilityImageLayout=_availabilityImageLayout;
 @property (readonly, nonatomic) VUITextLayout *availabilityTextLayout; // @synthesize availabilityTextLayout=_availabilityTextLayout;
+@property (readonly, nonatomic) unsigned long long contentType;
 @property (strong, nonatomic) TVImageLayout *coverArtImageLayout; // @synthesize coverArtImageLayout=_coverArtImageLayout;
 @property (readonly, nonatomic) VUITextLayout *descriptionTextLayout; // @synthesize descriptionTextLayout=_descriptionTextLayout;
 @property (readonly, nonatomic) VUITextLayout *descriptionTitleTextLayout; // @synthesize descriptionTitleTextLayout=_descriptionTitleTextLayout;
 @property (readonly, nonatomic) VUITextLayout *disclaimerTextLayout; // @synthesize disclaimerTextLayout=_disclaimerTextLayout;
+@property (readonly, nonatomic) VUITextLayout *episodeInfoTextLayout; // @synthesize episodeInfoTextLayout=_episodeInfoTextLayout;
 @property (readonly, nonatomic) VUIMediaTagsViewLayout *infoTagsLayout; // @synthesize infoTagsLayout=_infoTagsLayout;
 @property (strong, nonatomic) TVImageLayout *logoImageLayout; // @synthesize logoImageLayout=_logoImageLayout;
 @property (strong, nonatomic) VUITextLayout *logoTextLayout; // @synthesize logoTextLayout=_logoTextLayout;
 @property (readonly, nonatomic) double maxCoverArtImageHeight; // @synthesize maxCoverArtImageHeight=_maxCoverArtImageHeight;
+@property (readonly, nonatomic) VUITextLayout *subTextLayout; // @synthesize subTextLayout=_subTextLayout;
 @property (readonly, nonatomic) VUIMediaTagsViewLayout *tagsLayout; // @synthesize tagsLayout=_tagsLayout;
 
-+ (id)layoutWithLayout:(id)arg1 element:(id)arg2 sizeClass:(long long)arg3 isMovieLayout:(BOOL)arg4;
++ (id)_coverArtImageShadow;
++ (id)layoutWithLayout:(id)arg1 element:(id)arg2 sizeClass:(long long)arg3 contentType:(unsigned long long)arg4;
 - (void).cxx_destruct;
-- (void)_createLayoutsWithSizeClass:(long long)arg1 isMovieLayout:(BOOL)arg2;
-- (id)initWithSizeClass:(long long)arg1 isMovieLayout:(BOOL)arg2;
+- (void)_createLayoutsWithSizeClass:(long long)arg1 contentType:(unsigned long long)arg2;
+- (id)initWithSizeClass:(long long)arg1 contentType:(unsigned long long)arg2;
 - (void)updateWithSizeClass:(long long)arg1 contentSizeCategoryIsAccessibility:(BOOL)arg2;
 
 @end

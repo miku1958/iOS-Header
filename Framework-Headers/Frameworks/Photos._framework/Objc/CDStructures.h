@@ -43,6 +43,10 @@ struct NSDictionary {
     Class _field1;
 };
 
+struct NSObject {
+    Class _field1;
+};
+
 struct PHAssetResourceTableDataSpecification {
     int _field1;
     int _field2;
@@ -55,6 +59,10 @@ struct PHAssetResourceTableDataSpecification {
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
+};
+
+struct atomic_flag {
+    _Atomic BOOL _Value;
 };
 
 struct options_bits {

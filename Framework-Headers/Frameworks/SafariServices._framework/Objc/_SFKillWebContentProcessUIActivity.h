@@ -16,8 +16,7 @@
 @property (weak, nonatomic) id<_SFKillWebContentProcessUIActivityDelegate> webProcessDelegate; // @synthesize webProcessDelegate=_webProcessDelegate;
 
 - (void).cxx_destruct;
-- (id)_beforeActivity;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

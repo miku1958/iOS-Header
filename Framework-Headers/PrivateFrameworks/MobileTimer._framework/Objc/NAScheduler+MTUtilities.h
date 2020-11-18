@@ -8,5 +8,6 @@
 
 @interface NAScheduler (MTUtilities)
 + (id)mtMainThreadScheduler;
++ (id)mtSerialSchedulerForObject:(id)arg1;
 @end
 

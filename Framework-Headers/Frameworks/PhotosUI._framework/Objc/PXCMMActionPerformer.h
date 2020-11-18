@@ -19,7 +19,6 @@
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) PXCMMSession *session; // @synthesize session=_session;
 
-+ (id)actionPerformerLog;
 - (void).cxx_destruct;
 - (BOOL)canPerformActionWithSession:(id)arg1;
 - (id)createActionProgress;

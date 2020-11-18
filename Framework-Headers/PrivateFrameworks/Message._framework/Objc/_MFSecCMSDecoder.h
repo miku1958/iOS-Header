@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) NSArray *signers; // @synthesize signers=_signers;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (long long)appendData:(id)arg1;
 - (BOOL)containsSignedContent;
 - (id)data;

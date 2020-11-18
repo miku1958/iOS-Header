@@ -15,11 +15,13 @@
 @interface _INPBIntentSlotVocabularyValue : PBCodable <_INPBIntentSlotVocabularyValue, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_examples;
     NSString *_phrase;
     NSString *_pronunciation;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *examples; // @synthesize examples=_examples;
@@ -31,12 +33,15 @@
 @property (copy, nonatomic) NSString *pronunciation; // @synthesize pronunciation=_pronunciation;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addExamples:(id)arg1;
 - (void)clearExamples;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)examplesAtIndex:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

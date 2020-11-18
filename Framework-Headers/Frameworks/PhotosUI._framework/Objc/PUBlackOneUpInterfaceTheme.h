@@ -6,18 +6,17 @@
 
 #import <PhotosUI/PUFlatWhiteInterfaceTheme.h>
 
-__attribute__((visibility("hidden")))
 @interface PUBlackOneUpInterfaceTheme : PUFlatWhiteInterfaceTheme
 {
 }
 
-- (unsigned long long)emptyPlaceholderStyle;
 - (long long)photoBrowserBarStyle;
 - (id)photoBrowserChromeVisibleBackgroundColor;
 - (id)photoBrowserTitleViewTappableTextColor;
 - (id)photoBrowserTitleViewTextColor;
 - (id)playheadBackgroundColor;
 - (id)playheadColor;
+- (id)playheadOutlineColor;
 - (id)scrubberPlaceholderColor;
 
 @end

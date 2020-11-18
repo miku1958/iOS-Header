@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit41InCallControlsReportAProblemTableViewCell : UITableViewCell
 {
     MISSING_TYPE *reportAProblemLabel;

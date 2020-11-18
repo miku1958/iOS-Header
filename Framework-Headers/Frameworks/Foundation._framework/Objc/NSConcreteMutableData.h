@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     void *_bytes;
 }
 
+- (BOOL)_canUseRealloc;
 - (void)_freeBytes;
 - (BOOL)_providesConcreteBacking;
 - (void)appendBytes:(const void *)arg1 length:(unsigned long long)arg2;

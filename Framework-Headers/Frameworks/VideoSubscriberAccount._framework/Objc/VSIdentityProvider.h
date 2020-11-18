@@ -17,6 +17,7 @@
     BOOL _prohibitedByStore;
     BOOL _developer;
     BOOL _isSetTopBoxSupported;
+    BOOL _isSTBOptOutAllowed;
     VSOptional *_uniqueID;
     VSOptional *_providerID;
     VSOptional *_providerInfo;
@@ -27,6 +28,7 @@
     NSURL *_authenticationURL;
     NSURL *_appStoreRoomURL;
     NSArray *_appAdamIDs;
+    NSString *_defaultAppId;
     NSString *_providerArtworkTemplateURL;
     NSString *_providerAppArtworkTemplateURL;
     NSNumber *_appPlacementPosition;
@@ -37,8 +39,10 @@
 @property (copy, nonatomic) NSNumber *appPlacementPosition; // @synthesize appPlacementPosition=_appPlacementPosition;
 @property (copy, nonatomic) NSURL *appStoreRoomURL; // @synthesize appStoreRoomURL=_appStoreRoomURL;
 @property (copy, nonatomic) NSURL *authenticationURL; // @synthesize authenticationURL=_authenticationURL;
+@property (copy, nonatomic) NSString *defaultAppId; // @synthesize defaultAppId=_defaultAppId;
 @property (nonatomic, getter=isDeveloper) BOOL developer; // @synthesize developer=_developer;
 @property (readonly, nonatomic) VSOptional *displayName;
+@property (nonatomic) BOOL isSTBOptOutAllowed; // @synthesize isSTBOptOutAllowed=_isSTBOptOutAllowed;
 @property (nonatomic) BOOL isSetTopBoxSupported; // @synthesize isSetTopBoxSupported=_isSetTopBoxSupported;
 @property (copy, nonatomic) NSString *nameForSorting; // @synthesize nameForSorting=_nameForSorting;
 @property (nonatomic, getter=isProhibitedByStore) BOOL prohibitedByStore; // @synthesize prohibitedByStore=_prohibitedByStore;

@@ -12,9 +12,9 @@
 #import <ContactsUI/CNContactListBannerViewDelegate-Protocol.h>
 #import <ContactsUI/CNContactViewControllerDelegate-Protocol.h>
 #import <ContactsUI/CNUIObjectViewControllerDelegate-Protocol.h>
-#import <ContactsUI/CNUIPeopleGroupsGridViewControllerDelegate-Protocol.h>
 #import <ContactsUI/CNVCardImportControllerDelegate-Protocol.h>
 #import <ContactsUI/CNVCardImportControllerPresentationDelegate-Protocol.h>
+#import <ContactsUI/INKContentControllerObserver-Protocol.h>
 #import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <ContactsUI/UISearchBarDelegate-Protocol.h>
 #import <ContactsUI/UISearchControllerDelegate-Protocol.h>
@@ -22,21 +22,24 @@
 #import <ContactsUI/UITableViewDragDestinationDelegate-Protocol.h>
 #import <ContactsUI/UITableViewDragSourceDelegate-Protocol.h>
 
-@class CNAvatarCardController, CNAvatarViewController, CNContact, CNContactFormatter, CNContactListBannerView, CNUIContactsEnvironment, CNUIPeopleGroupsGridViewController, CNVCardImportController, NSArray, NSObject, NSString, UISearchBar, UISearchController, _UIContentUnavailableView;
-@protocol CNContactDataSource, CNContactListViewControllerDelegate;
+@class CNAvatarCardController, CNAvatarViewController, CNContact, CNContactFormatter, CNContactListBannerView, CNContactListStyleApplier, CNUIContactsEnvironment, CNVCardImportController, INKContent, INKContentController, NSArray, NSObject, NSSet, NSString, UISearchBar, UISearchController, UIView, _UIContentUnavailableView;
+@protocol CNCancelable, CNContactDataSource, CNContactListViewControllerDelegate, CNHealthStoreManagerToken;
 
-@interface CNContactListViewController : UITableViewController <CNAvatarCardControllerDelegate, CNContactDataSourceDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, CNContactListBannerViewDelegate, CNContactViewControllerDelegate, UIGestureRecognizerDelegate, CNUIPeopleGroupsGridViewControllerDelegate, CNUIObjectViewControllerDelegate, UITableViewDragSourceDelegate, UITableViewDragDestinationDelegate, CNVCardImportControllerPresentationDelegate, CNVCardImportControllerDelegate, CNAvatarViewControllerDelegate>
+@interface CNContactListViewController : UITableViewController <CNAvatarCardControllerDelegate, CNContactDataSourceDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, CNContactListBannerViewDelegate, CNContactViewControllerDelegate, UIGestureRecognizerDelegate, CNUIObjectViewControllerDelegate, UITableViewDragSourceDelegate, UITableViewDragDestinationDelegate, CNVCardImportControllerPresentationDelegate, CNVCardImportControllerDelegate, CNAvatarViewControllerDelegate, INKContentControllerObserver>
 {
     CNContact *_preferredForNameMeContact;
     BOOL _shouldDisplayMeContactBanner;
     BOOL _shouldAutoHideMeContactBanner;
     BOOL _allowsSearching;
+    BOOL _shouldDisplayInfoContentView;
     BOOL _presentsSearchUI;
     BOOL _pendingSearchControllerActivation;
     BOOL _shouldUseLargeTitle;
     BOOL _shouldDisplayGroupsGrid;
+    BOOL _shouldDisplayCount;
     BOOL _shouldAllowDrags;
     BOOL _shouldAllowDrops;
+    BOOL _shouldDisplayEmergencyContacts;
     NSObject<CNContactDataSource> *_dataSource;
     _UIContentUnavailableView *_noContactsView;
     id<CNContactListViewControllerDelegate> _delegate;
@@ -47,33 +50,47 @@
     UISearchController *_searchController;
     UISearchBar *_searchBar;
     CDUnknownBlockType _searchCompletionBlock;
+    UIView *_infoContentView;
+    INKContentController *_infoContentController;
+    INKContent *_infoContent;
     CNContactListBannerView *_meContactBanner;
     double _contentOffsetDueToMeContactBanner;
     CNUIContactsEnvironment *_environment;
     CNAvatarViewController *_meBannerAvatarController;
     NSArray *_pendingLayoutBlocks;
-    CNUIPeopleGroupsGridViewController *_groupsGridController;
     NSArray *_tableViewHeaderConstraints;
     NSString *_pendingSearchQuery;
     CNVCardImportController *_vCardImportController;
+    NSSet *_emergencyContactIdentifiers;
+    id<CNHealthStoreManagerToken> _medicalIDLookupRegistrationToken;
+    id<CNCancelable> _medicalIDLookupToken;
+    CNContactListStyleApplier *_defaultContactListStyleApplier;
     CNContactListViewController *_searchResultsController;
+    CNContactListStyleApplier *_contactListStyleApplier;
 }
 
 @property (nonatomic) BOOL allowsSearching; // @synthesize allowsSearching=_allowsSearching;
 @property (strong, nonatomic) CNAvatarCardController *cardController; // @synthesize cardController=_cardController;
 @property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
+@property (strong, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
 @property (readonly, nonatomic) double contentOffsetDueToMeContactBanner; // @synthesize contentOffsetDueToMeContactBanner=_contentOffsetDueToMeContactBanner;
 @property (strong, nonatomic) NSObject<CNContactDataSource> *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) CNContactListStyleApplier *defaultContactListStyleApplier; // @synthesize defaultContactListStyleApplier=_defaultContactListStyleApplier;
 @property (weak, nonatomic) id<CNContactListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSSet *emergencyContactIdentifiers; // @synthesize emergencyContactIdentifiers=_emergencyContactIdentifiers;
 @property (readonly, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
-@property (strong, nonatomic) CNUIPeopleGroupsGridViewController *groupsGridController; // @synthesize groupsGridController=_groupsGridController;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) INKContent *infoContent; // @synthesize infoContent=_infoContent;
+@property (strong, nonatomic) INKContentController *infoContentController; // @synthesize infoContentController=_infoContentController;
+@property (strong, nonatomic) UIView *infoContentView; // @synthesize infoContentView=_infoContentView;
 @property (strong, nonatomic) CNAvatarViewController *meBannerAvatarController; // @synthesize meBannerAvatarController=_meBannerAvatarController;
 @property (strong, nonatomic) CNContactListBannerView *meContactBanner; // @synthesize meContactBanner=_meContactBanner;
 @property (copy, nonatomic) NSString *meContactBannerFootnoteLabel; // @synthesize meContactBannerFootnoteLabel=_meContactBannerFootnoteLabel;
 @property (copy, nonatomic) NSString *meContactBannerFootnoteValue; // @synthesize meContactBannerFootnoteValue=_meContactBannerFootnoteValue;
+@property (strong, nonatomic) id<CNHealthStoreManagerToken> medicalIDLookupRegistrationToken; // @synthesize medicalIDLookupRegistrationToken=_medicalIDLookupRegistrationToken;
+@property (strong, nonatomic) id<CNCancelable> medicalIDLookupToken; // @synthesize medicalIDLookupToken=_medicalIDLookupToken;
 @property (readonly, nonatomic) _UIContentUnavailableView *noContactsView; // @synthesize noContactsView=_noContactsView;
 @property (readonly, nonatomic) id<CNContactDataSource> originalDataSource;
 @property (strong, nonatomic) NSArray *pendingLayoutBlocks; // @synthesize pendingLayoutBlocks=_pendingLayoutBlocks;
@@ -90,13 +107,17 @@
 @property (nonatomic) BOOL shouldAllowDrags; // @synthesize shouldAllowDrags=_shouldAllowDrags;
 @property (nonatomic) BOOL shouldAllowDrops; // @synthesize shouldAllowDrops=_shouldAllowDrops;
 @property (nonatomic) BOOL shouldAutoHideMeContactBanner; // @synthesize shouldAutoHideMeContactBanner=_shouldAutoHideMeContactBanner;
+@property (nonatomic) BOOL shouldDisplayCount; // @synthesize shouldDisplayCount=_shouldDisplayCount;
+@property (nonatomic) BOOL shouldDisplayEmergencyContacts; // @synthesize shouldDisplayEmergencyContacts=_shouldDisplayEmergencyContacts;
 @property (nonatomic) BOOL shouldDisplayGroupsGrid; // @synthesize shouldDisplayGroupsGrid=_shouldDisplayGroupsGrid;
+@property (nonatomic) BOOL shouldDisplayInfoContentView; // @synthesize shouldDisplayInfoContentView=_shouldDisplayInfoContentView;
 @property (nonatomic) BOOL shouldDisplayMeContactBanner; // @synthesize shouldDisplayMeContactBanner=_shouldDisplayMeContactBanner;
 @property (readonly, nonatomic) BOOL shouldUseLargeTitle; // @synthesize shouldUseLargeTitle=_shouldUseLargeTitle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *tableViewHeaderConstraints; // @synthesize tableViewHeaderConstraints=_tableViewHeaderConstraints;
 @property (strong, nonatomic) CNVCardImportController *vCardImportController; // @synthesize vCardImportController=_vCardImportController;
 
++ (id)descriptorForRequiredKeysForPreferredForNameMeContact;
 + (id)emptyContact;
 - (void).cxx_destruct;
 - (void)_applicationEnteringForeground:(id)arg1;
@@ -111,6 +132,7 @@
 - (void)_tableView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)_updateCountStringNow:(BOOL)arg1;
 - (void)_updateTableViewRowHeight;
+- (void)applyStyle;
 - (long long)avatarCardController:(id)arg1 presentationResultForLocation:(struct CGPoint)arg2;
 - (void)avatarCardControllerWillBeginPreviewInteraction:(id)arg1;
 - (void)bannerView:(id)arg1 wasSelectedToPresentMeContact:(id)arg2;
@@ -118,11 +140,16 @@
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canSelectContactAtIndexPath:(id)arg1;
 - (void)cancelSearch:(id)arg1;
+- (void)checkForInfoContentWithContext:(id)arg1;
 - (void)configureNavigationBarForLargeTitles;
 - (void)contactDataSourceDidChange:(id)arg1;
 - (void)contactDataSourceDidChangeDisplayName:(id)arg1;
 - (void)contactDataSourceMeContactDidChange:(id)arg1;
+- (id)contactStore;
 - (void)contactStoreDidChangeWithNotification:(id)arg1;
+- (void)contentController:(id)arg1 contentDidBecomeAvailable:(id)arg2 animated:(BOOL)arg3;
+- (void)contentController:(id)arg1 contentViewNeedsLayout:(id)arg2;
+- (void)contentController:(id)arg1 didFinishWithContent:(id)arg2 animated:(BOOL)arg3;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (id)createTableView;
 - (void)dealloc;
@@ -136,16 +163,19 @@
 - (id)initWithDataSource:(id)arg1 searchable:(BOOL)arg2 environment:(id)arg3 shouldUseLargeTitle:(BOOL)arg4;
 - (id)initWithDataSource:(id)arg1 shouldUseLargeTitle:(BOOL)arg2;
 - (id)initWithStyle:(long long)arg1;
+- (BOOL)isContactWithIdentifierEmergencyContact:(id)arg1;
 - (BOOL)isContactWithIdentifierMeContactOrLinkedToMeContact:(id)arg1;
 - (BOOL)isHandlingSearch;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)peopleGroupsGridViewControllerDidChange:(id)arg1;
 - (void)performWhenViewIsLaidOut:(CDUnknownBlockType)arg1;
 - (id)presentingViewControllerForAvatarCardController:(id)arg1;
+- (void)refreshNoContactsViewIfVisible;
 - (void)refreshTableViewHeader;
 - (void)refreshTableViewHeaderIfVisible;
+- (void)refreshTableViewHeaderIfVisibleWithSize:(struct CGSize)arg1;
+- (void)refreshTableViewHeaderWithSize:(struct CGSize)arg1;
 - (void)reloadContacts;
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchForString:(id)arg1 animated:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -153,11 +183,13 @@
 - (BOOL)selectContact:(id)arg1 animated:(BOOL)arg2 scrollPosition:(long long)arg3;
 - (void)selectRowAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(long long)arg3;
 - (void)setupForMultiSelection;
+- (void)startHandlingEmergencyContacts;
 - (void)startSearching;
 - (void)startSearchingForString:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didHighlightRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didUnhighlightRowAtIndexPath:(id)arg2;
@@ -180,6 +212,8 @@
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willDismissSearchController:(id)arg1;
 - (void)willPresentSearchController:(id)arg1;
 

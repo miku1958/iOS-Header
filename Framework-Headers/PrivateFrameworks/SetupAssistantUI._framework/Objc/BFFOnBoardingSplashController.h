@@ -6,14 +6,18 @@
 
 #import <SetupAssistantUI/BFFSplashController.h>
 
-@class NSDate, NSString;
+#import <SetupAssistantUI/BYEnvironmentDependencyReceiver-Protocol.h>
 
-@interface BFFOnBoardingSplashController : BFFSplashController
+@class NSDate, NSString;
+@protocol BYDeviceProvider;
+
+@interface BFFOnBoardingSplashController : BFFSplashController <BYEnvironmentDependencyReceiver>
 {
     BOOL _extendBackgroundColorToNavigationBar;
     BOOL _movieShowing;
     long long _feature;
     CDUnknownBlockType _completion;
+    id<BYDeviceProvider> _deviceProvider;
     NSString *_preferenceKey;
     NSDate *_placeholderStartDate;
     double _placeholderDuration;
@@ -21,16 +25,21 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) id<BYDeviceProvider> deviceProvider; // @synthesize deviceProvider=_deviceProvider;
 @property BOOL extendBackgroundColorToNavigationBar; // @synthesize extendBackgroundColorToNavigationBar=_extendBackgroundColorToNavigationBar;
 @property (nonatomic) long long feature; // @synthesize feature=_feature;
+@property (readonly) unsigned long long hash;
 @property BOOL movieShowing; // @synthesize movieShowing=_movieShowing;
 @property double placeholderDuration; // @synthesize placeholderDuration=_placeholderDuration;
 @property (strong) NSDate *placeholderStartDate; // @synthesize placeholderStartDate=_placeholderStartDate;
 @property (strong) NSString *preferenceKey; // @synthesize preferenceKey=_preferenceKey;
+@property (readonly) Class superclass;
 @property (strong) NSDate *videoStartDate; // @synthesize videoStartDate=_videoStartDate;
 
 + (id)cloudConfigSkipKey;
-+ (void)needsToRunForFeature:(long long)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)needsToRunForFeature:(long long)arg1 usingDeviceProvider:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)initWithFeature:(long long)arg1;
 - (void)loadView;

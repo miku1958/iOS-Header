@@ -8,20 +8,26 @@
 
 #import <HealthKit/HKActivitySummaryQueryClientInterface-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface HKActivitySummaryQuery : HKQuery <HKActivitySummaryQueryClientInterface>
 {
     BOOL _initialHandlerCalled;
     CDUnknownBlockType _completionHandler;
+    NSMutableArray *_pendingActivitySummaries;
     BOOL _shouldIncludeActivitySummaryPrivateProperties;
     BOOL _shouldIncludeActivitySummaryStatistics;
+    BOOL _orderByDateAscending;
     CDUnknownBlockType _updateHandler;
+    unsigned long long _limit;
 }
 
+@property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
+@property (nonatomic) BOOL orderByDateAscending; // @synthesize orderByDateAscending=_orderByDateAscending;
 @property (nonatomic) BOOL shouldIncludeActivitySummaryPrivateProperties; // @synthesize shouldIncludeActivitySummaryPrivateProperties=_shouldIncludeActivitySummaryPrivateProperties;
 @property (nonatomic) BOOL shouldIncludeActivitySummaryStatistics; // @synthesize shouldIncludeActivitySummaryStatistics=_shouldIncludeActivitySummaryStatistics;
 @property (readonly) Class superclass;
@@ -31,7 +37,7 @@
 + (Class)configurationClass;
 + (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
-- (void)client_deliverActivitySummaries:(id)arg1 queryUUID:(id)arg2;
+- (void)client_deliverActivitySummaries:(id)arg1 isFinalBatch:(BOOL)arg2 clearPendingBatches:(BOOL)arg3 queryUUID:(id)arg4;
 - (id)initWithPredicate:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;

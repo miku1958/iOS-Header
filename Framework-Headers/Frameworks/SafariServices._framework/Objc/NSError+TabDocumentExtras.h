@@ -7,6 +7,9 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (TabDocumentExtras)
+
+@property (readonly, nonatomic) BOOL _sf_recoverableByPageFormatMenu;
+
 - (id)failingURL;
 @end
 

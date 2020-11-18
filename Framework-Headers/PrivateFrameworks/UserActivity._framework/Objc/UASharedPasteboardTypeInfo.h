@@ -13,19 +13,23 @@
 
 @interface UASharedPasteboardTypeInfo : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _preferFileRep;
     NSString *_type;
     NSUUID *_uuid;
     NSNumber *_offset;
     long long _size;
     NSFileHandle *_dataFile;
+    NSString *_typeHint;
     NSNumber *_index;
 }
 
 @property (strong) NSFileHandle *dataFile; // @synthesize dataFile=_dataFile;
 @property (copy) NSNumber *index; // @synthesize index=_index;
 @property (copy) NSNumber *offset; // @synthesize offset=_offset;
+@property BOOL preferFileRep; // @synthesize preferFileRep=_preferFileRep;
 @property long long size; // @synthesize size=_size;
 @property (copy) NSString *type; // @synthesize type=_type;
+@property (copy) NSString *typeHint; // @synthesize typeHint=_typeHint;
 @property (copy) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;

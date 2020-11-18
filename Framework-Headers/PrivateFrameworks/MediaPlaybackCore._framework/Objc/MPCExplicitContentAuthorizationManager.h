@@ -27,10 +27,8 @@
 - (void).cxx_destruct;
 - (BOOL)_askPlaybackAuthorizationForItem:(id)arg1 reason:(long long)arg2;
 - (id)_explicitContentErrorWithUnderlyingError:(id)arg1 message:(id)arg2;
-- (void)_handleAgeVerificationStateDidChangeNotification:(id)arg1;
 - (id)_init;
-- (id)_retrieveAgeVerificationState;
-- (void)_setupNotifications;
+- (id)_retrieveAgeVerificationStateForUserIdentity:(id)arg1;
 - (void)_setupWithAgeGateForItem:(id)arg1;
 - (void)_setupWithAgeVerificationState:(id)arg1;
 - (BOOL)_shouldAskPlaybackAuthorizationForItem:(id)arg1 reason:(long long)arg2;

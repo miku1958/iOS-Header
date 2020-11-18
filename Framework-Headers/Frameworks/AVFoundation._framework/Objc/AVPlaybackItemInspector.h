@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (id)compatibleTrackForCompositionTrack:(id)arg1;
 - (void)dealloc;
 - (CDStruct_1b6d18a9)duration;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 trackIDs:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

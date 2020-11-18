@@ -22,11 +22,9 @@
 - (void).cxx_destruct;
 - (void)_computeCoreSpotlightIDsForBookmarks:(id)arg1;
 - (void)_computeCoreSpotlightIndexingRequirementsForAllBookmarksIDs:(id)arg1 indexedBookmarksIDs:(id)arg2 outIndexIDs:(id *)arg3 outRemoveIDs:(id *)arg4;
-- (void)_historyItemsWereRemoved:(id)arg1;
 - (void)_indexCoreSpotlightData:(id)arg1;
 - (void)_indexHistoryItemsToCoreSpotlight:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_indexedBookmarksIDs:(id *)arg1;
-- (void)_removeAllCoreSpotlightHistoryDataDonatedBySafari;
 - (void)_removeCoreSpotlightDataWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_sanitizeAttributeSet:(id)arg1;
 - (id)_searchableItemsForIDs:(id)arg1 allBookmarks:(id)arg2;
@@ -34,6 +32,8 @@
 - (void)donateSafariBookmarksToCoreSpotlight:(id)arg1;
 - (void)export30DaysWorthOfHistoryToCoreSpotlightWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)processRemovedHistoryItems:(id)arg1;
+- (void)removeAllCoreSpotlightHistoryDataDonatedBySafari;
 
 @end
 

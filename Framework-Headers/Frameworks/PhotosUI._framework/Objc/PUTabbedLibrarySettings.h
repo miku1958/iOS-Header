@@ -12,18 +12,22 @@
     BOOL _enableMemoriesTab;
     BOOL _enableSharedTab;
     BOOL _enableAlbumsTab;
+    BOOL _enableCuratedLibraryTab;
     BOOL _enableForYouTab;
     BOOL _enableSearchTab;
     BOOL _enableConsolidatedAlbumsTab;
+    BOOL _sidebarEnabled;
 }
 
 @property (nonatomic) BOOL enableAlbumsTab; // @synthesize enableAlbumsTab=_enableAlbumsTab;
 @property (nonatomic) BOOL enableConsolidatedAlbumsTab; // @synthesize enableConsolidatedAlbumsTab=_enableConsolidatedAlbumsTab;
+@property (nonatomic) BOOL enableCuratedLibraryTab; // @synthesize enableCuratedLibraryTab=_enableCuratedLibraryTab;
 @property (nonatomic) BOOL enableForYouTab; // @synthesize enableForYouTab=_enableForYouTab;
 @property (nonatomic) BOOL enableMemoriesTab; // @synthesize enableMemoriesTab=_enableMemoriesTab;
 @property (nonatomic) BOOL enablePhotosTab; // @synthesize enablePhotosTab=_enablePhotosTab;
 @property (nonatomic) BOOL enableSearchTab; // @synthesize enableSearchTab=_enableSearchTab;
 @property (nonatomic) BOOL enableSharedTab; // @synthesize enableSharedTab=_enableSharedTab;
+@property (nonatomic, getter=isSidebarEnabled) BOOL sidebarEnabled; // @synthesize sidebarEnabled=_sidebarEnabled;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;

@@ -40,7 +40,7 @@
 - (BOOL)collectionChanged:(id)arg1 withSelectedOptions:(id)arg2;
 - (id)delegate;
 - (Class)editCellClass;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
 - (void)kaleidoscopeEditOptionCellDidSelectUserOption:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setExternalAsset:(id)arg1;

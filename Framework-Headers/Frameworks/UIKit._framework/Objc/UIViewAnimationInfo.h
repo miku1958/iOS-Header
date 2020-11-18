@@ -14,14 +14,14 @@ __attribute__((visibility("hidden")))
 {
     UIView *_owningView;
     CDUnknownBlockType _invalidationBlock;
-    NSMutableDictionary *_animatablePropertyStates;
+    NSMutableDictionary *_animatableProperties;
     NSMutableDictionary *_presentationModifiers;
     NSMutableDictionary *_modifierGroupRequestHandlers;
     NSMutableDictionary *_isPartOfHigherOrderProperty;
     NSObject<OS_dispatch_queue> *_lockingQueue;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *animatablePropertyStates; // @synthesize animatablePropertyStates=_animatablePropertyStates;
+@property (strong, nonatomic) NSMutableDictionary *animatableProperties; // @synthesize animatableProperties=_animatableProperties;
 @property (copy, nonatomic) CDUnknownBlockType invalidationBlock; // @synthesize invalidationBlock=_invalidationBlock;
 @property (strong, nonatomic) NSMutableDictionary *isPartOfHigherOrderProperty; // @synthesize isPartOfHigherOrderProperty=_isPartOfHigherOrderProperty;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *lockingQueue; // @synthesize lockingQueue=_lockingQueue;
@@ -32,13 +32,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_canInvalidate;
 - (void)_invalidateIfPossible;
-- (id)animatablePropertyStateForKey:(id)arg1 createIfNecessary:(BOOL)arg2;
-- (id)animatablePropertyStateKeys;
+- (id)animatablePropertyForKey:(id)arg1 createIfNecessary:(BOOL)arg2;
+- (id)animatablePropertyKeys;
 - (id)initWithView:(id)arg1;
 - (id)modifierGroupRequestHandlerForKey:(id)arg1;
 - (void)performWithLock:(CDUnknownBlockType)arg1;
 - (id)presentationModifierForKey:(id)arg1;
-- (void)setAnimatablePropertyState:(id)arg1 forKey:(id)arg2;
+- (void)setAnimatableProperty:(id)arg1 forKey:(id)arg2;
 - (void)setModifierGroupRequestHandler:(id)arg1 forKey:(id)arg2;
 - (void)setPresentationModifier:(id)arg1 forKey:(id)arg2;
 

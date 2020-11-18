@@ -6,39 +6,50 @@
 
 #import <UIKit/UIView.h>
 
-@class NCNotificationManagementBlueButton, UIImageView, UILabel;
+#import <UserNotificationsUIKit/MTVisualStylingProviding-Protocol.h>
 
-@interface NCNotificationManagementView : UIView
+@class NCNotificationManagementBlueButton, NSMutableDictionary, NSString, UIImageView, UILabel;
+
+@interface NCNotificationManagementView : UIView <MTVisualStylingProviding>
 {
     UIImageView *_icon;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UIView *_topSeparator;
-    NCNotificationManagementBlueButton *_offButton;
+    NCNotificationManagementBlueButton *_onOffToggleButton;
     NCNotificationManagementBlueButton *_deliveryButton;
     UILabel *_explanation;
     UIView *_bottomSeparator;
+    NSMutableDictionary *_categoriesToProviders;
     BOOL _isCriticalAlert;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NCNotificationManagementBlueButton *deliveryButton; // @synthesize deliveryButton=_deliveryButton;
-@property (readonly, nonatomic) NCNotificationManagementBlueButton *offButton; // @synthesize offButton=_offButton;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NCNotificationManagementBlueButton *onOffToggleButton; // @synthesize onOffToggleButton=_onOffToggleButton;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_configureDeliveryButtonIfNeccessary:(id)arg1;
 - (void)_configureExplanationIfNeccessary:(id)arg1;
 - (void)_configureIconIfNeccessary:(id)arg1;
-- (void)_configureOffButtonIfNeccessary;
+- (void)_configureOnOffToggleButtonIfNeccessary:(id)arg1;
 - (void)_configureSubtitleIfNeccessary:(id)arg1;
 - (void)_configureTitleIfNeccessary:(id)arg1;
 - (void)_configureTopSeparatorIfNeccessary;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGSize)_explanationSizeForPlatterWidth:(double)arg1;
 - (id)_newSeparatorView;
 - (double)_separatorHeight;
 - (struct CGSize)_titleSizeForPlatterWidth:(double)arg1;
+- (void)_updateExplanationVisualStyling;
+- (void)_updateTopSeparatorVisualStyling;
 - (id)initWithIcon:(id)arg1 title:(id)arg2 subtitle:(id)arg3 sectionSettings:(id)arg4 criticalAlert:(BOOL)arg5;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end
 

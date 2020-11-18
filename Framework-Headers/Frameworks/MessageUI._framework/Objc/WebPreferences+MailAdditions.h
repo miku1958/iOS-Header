@@ -7,6 +7,6 @@
 #import <WebKit/WebPreferences.h>
 
 @interface WebPreferences (MailAdditions)
-+ (id)standardMailWebPreferencesForDisplayStyle:(int)arg1 regenerate:(BOOL)arg2;
++ (id)standardMailWebPreferences;
 @end
 

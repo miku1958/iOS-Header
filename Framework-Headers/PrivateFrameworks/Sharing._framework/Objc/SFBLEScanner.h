@@ -19,9 +19,11 @@
     CBCentralManager *_centralManager;
     struct NSMutableDictionary *_devices;
     BOOL _invalidateCalled;
+    NSObject<OS_dispatch_source> *_lostTimer;
     BOOL _needDups;
     long long _payloadType;
     BOOL _poweredOffSleep;
+    int _rescanSecondsActual;
     NSObject<OS_dispatch_source> *_rescanTimer;
     struct __sFILE {
         char *_field1;
@@ -50,8 +52,18 @@
     BOOL _timeoutFired;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     NSSet *_trackedPeersApplied;
-    BOOL _updating;
     struct LogCategory *_ucat;
+    BOOL _updating;
+    BOOL _scanParamActive;
+    BOOL _scanParamCache;
+    BOOL _scanParamDups;
+    NSData *_scanParamFilterData;
+    NSData *_scanParamFilterMask;
+    long long _scanParamInterval;
+    long long _scanParamWindow;
+    long long _scanParamMode;
+    NSArray *_scanParamPeers;
+    long long _scanParamRSSI;
     BOOL _rssiLog;
     BOOL _rssiLogStdOut;
     BOOL _scanCache;
@@ -115,8 +127,10 @@
 - (void)_poweredOff;
 - (void)_poweredOn;
 - (void)_removeAllDevicesWithReason:(id)arg1;
+- (void)_rescanLostFired;
 - (void)_rescanTimerFired;
 - (void)_restartIfNeeded;
+- (void)_restartIfNeeded:(BOOL)arg1;
 - (void)_rssiLogClose;
 - (void)_rssiLogOpen;
 - (void)_startTimeoutIfNeeded;
@@ -128,7 +142,6 @@
 - (void)centralManager:(id)arg1 didDiscoverPeripheral:(id)arg2 advertisementData:(id)arg3 RSSI:(id)arg4;
 - (void)centralManagerDidUpdateState:(id)arg1;
 - (void)dealloc;
-- (id)init;
 - (id)initWithType:(long long)arg1;
 - (void)invalidate;
 - (void)performUpdate:(CDUnknownBlockType)arg1;

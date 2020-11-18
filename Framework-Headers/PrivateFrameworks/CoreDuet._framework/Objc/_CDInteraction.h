@@ -14,6 +14,7 @@
 @interface _CDInteraction : NSObject <_CDPDataPoint, NSSecureCoding>
 {
     BOOL _isResponse;
+    BOOL _forcePersistInteraction;
     NSDate *_startDate;
     NSDate *_endDate;
     NSString *_uuid;
@@ -22,7 +23,9 @@
     long long _direction;
     NSString *_bundleId;
     NSString *_targetBundleId;
+    NSString *_groupName;
     NSURL *_contentURL;
+    NSString *_derivedIntentIdentifier;
     NSString *_domainIdentifier;
     NSString *_account;
     _CDContact *_sender;
@@ -36,10 +39,13 @@
 @property (strong) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong) NSURL *contentURL; // @synthesize contentURL=_contentURL;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong) NSString *derivedIntentIdentifier; // @synthesize derivedIntentIdentifier=_derivedIntentIdentifier;
 @property (readonly, copy) NSString *description;
 @property long long direction; // @synthesize direction=_direction;
 @property (strong) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (strong) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (nonatomic) BOOL forcePersistInteraction; // @synthesize forcePersistInteraction=_forcePersistInteraction;
+@property (strong) NSString *groupName; // @synthesize groupName=_groupName;
 @property (readonly) unsigned long long hash;
 @property BOOL isResponse; // @synthesize isResponse=_isResponse;
 @property (strong) NSArray *keywords; // @synthesize keywords=_keywords;
@@ -57,6 +63,9 @@
 @property (readonly, nonatomic) BOOL userIsThreadInitiator;
 @property (strong) NSString *uuid; // @synthesize uuid=_uuid;
 
++ (id)conversationIdForMobileMailInteractionRecipients:(id)arg1;
++ (id)recipientIdentifiersFromMobileMailConversationId:(id)arg1;
++ (id)shareSheetInteractionFromINInteraction:(id)arg1 bundleID:(id)arg2 knowledgeStore:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)descriptionOfArray:(id)arg1;
@@ -64,6 +73,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithINInteraction:(id)arg1 bundleID:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -9,6 +9,6 @@
 
 @protocol HMDDataStreamBulkSendSessionCandidate
 - (void)acceptBulkSendSessionOnQueue:(NSObject<OS_dispatch_queue> *)arg1 callback:(void (^)(id<HMDDataStreamBulkSendSession>))arg2;
-- (void)rejectBulkSendSessionWithReason:(unsigned short)arg1;
+- (void)rejectBulkSendSessionWithStatus:(unsigned short)arg1;
 @end
 

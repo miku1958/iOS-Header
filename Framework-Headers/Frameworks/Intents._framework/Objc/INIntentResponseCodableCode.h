@@ -6,30 +6,47 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INCodableCoding-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class INIntentResponseCodableDescription, NSArray, NSString;
 
-@interface INIntentResponseCodableCode : NSObject <NSSecureCoding>
+@interface INIntentResponseCodableCode : NSObject <NSSecureCoding, INCodableCoding>
 {
     BOOL _success;
     long long _value;
     NSString *_name;
     NSString *_formatString;
     NSString *_formatStringLocID;
+    NSString *_conciseFormatString;
+    NSString *_conciseFormatStringLocID;
+    INIntentResponseCodableDescription *__responseCodableDescription;
 }
 
+@property (weak, nonatomic, setter=_setResponseCodableDescription:) INIntentResponseCodableDescription *_responseCodableDescription; // @synthesize _responseCodableDescription=__responseCodableDescription;
+@property (copy, nonatomic) NSString *conciseFormatString; // @synthesize conciseFormatString=_conciseFormatString;
+@property (copy, nonatomic) NSString *conciseFormatStringLocID; // @synthesize conciseFormatStringLocID=_conciseFormatStringLocID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *formatString; // @synthesize formatString=_formatString;
 @property (copy, nonatomic) NSString *formatStringLocID; // @synthesize formatStringLocID=_formatStringLocID;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSArray *parameterNames;
 @property (nonatomic, getter=isSuccess) BOOL success; // @synthesize success=_success;
+@property (readonly) Class superclass;
 @property (nonatomic) long long value; // @synthesize value=_value;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_parameterNamesFromString:(id)arg1;
+- (id)dictionaryKeyForKeyPath:(id)arg1;
+- (id)dictionaryRepresentation;
+- (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)keyPrefix;
+- (void)updateWithDictionary:(id)arg1;
 
 @end
 

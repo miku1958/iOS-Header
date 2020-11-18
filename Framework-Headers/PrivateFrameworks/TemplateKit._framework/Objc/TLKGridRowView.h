@@ -10,6 +10,7 @@
 
 @interface TLKGridRowView : TLKView
 {
+    BOOL _needsSizingPass;
     TLKGridLayoutManager *_manager;
     TLKTableRow *_tableRow;
     NSMutableArray *_labels;
@@ -19,17 +20,17 @@
     unsigned long long _indexOfFirstTrailingColumn;
 }
 
-@property (strong) NSMutableArray *currentListOfViews; // @synthesize currentListOfViews=_currentListOfViews;
-@property (strong) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
-@property unsigned long long indexOfFirstCenteredColumnForForcedCentering; // @synthesize indexOfFirstCenteredColumnForForcedCentering=_indexOfFirstCenteredColumnForForcedCentering;
-@property unsigned long long indexOfFirstTrailingColumn; // @synthesize indexOfFirstTrailingColumn=_indexOfFirstTrailingColumn;
-@property (strong) NSMutableArray *labels; // @synthesize labels=_labels;
+@property (strong, nonatomic) NSMutableArray *currentListOfViews; // @synthesize currentListOfViews=_currentListOfViews;
+@property (strong, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
+@property (nonatomic) unsigned long long indexOfFirstCenteredColumnForForcedCentering; // @synthesize indexOfFirstCenteredColumnForForcedCentering=_indexOfFirstCenteredColumnForForcedCentering;
+@property (nonatomic) unsigned long long indexOfFirstTrailingColumn; // @synthesize indexOfFirstTrailingColumn=_indexOfFirstTrailingColumn;
+@property (strong, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
 @property (strong, nonatomic) TLKGridLayoutManager *manager; // @synthesize manager=_manager;
+@property (nonatomic) BOOL needsSizingPass; // @synthesize needsSizingPass=_needsSizingPass;
 @property (strong, nonatomic) TLKTableRow *tableRow; // @synthesize tableRow=_tableRow;
 
-+ (void)updateLabel:(id)arg1 withFormattedText:(id)arg2 alignment:(long long)arg3;
++ (void)updateLabel:(id)arg1 withRichText:(id)arg2 alignment:(long long)arg3;
 - (void).cxx_destruct;
-- (id)description;
 - (void)generateLabelsAndImagesIfNecessary;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
@@ -37,9 +38,7 @@
 - (void)layoutSubviews;
 - (void)observedPropertiesChanged;
 - (void)resetStateOfAllViews;
-- (void)setStylesForEverything;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)styleDidChange:(unsigned long long)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 
 @end

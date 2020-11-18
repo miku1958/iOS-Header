@@ -8,17 +8,18 @@
 
 #import <CarPlaySupport/CPBannerProviding-Protocol.h>
 #import <CarPlaySupport/CPSApplicationStateObserving-Protocol.h>
+#import <CarPlaySupport/CPSBannerItemDelegate-Protocol.h>
 #import <CarPlaySupport/SBUIBannerSource-Protocol.h>
 #import <CarPlaySupport/SBUIBannerTargetManagerObserver-Protocol.h>
 
 @class NSMutableArray, NSString, NSTimer, NSUUID, UIView;
-@protocol CPBannerDelegate, SBUIBannerTarget, SBUIBannerView;
+@protocol CPSBannerSourceDelegate, SBUIBannerTarget, SBUIBannerView;
 
-@interface CPSBannerSource : NSObject <SBUIBannerTargetManagerObserver, CPBannerProviding, SBUIBannerSource, CPSApplicationStateObserving>
+@interface CPSBannerSource : NSObject <CPSBannerItemDelegate, SBUIBannerTargetManagerObserver, CPBannerProviding, SBUIBannerSource, CPSApplicationStateObserving>
 {
     BOOL _applicationActive;
     BOOL _rateLimited;
-    id<CPBannerDelegate> _delegate;
+    id<CPSBannerSourceDelegate> _delegate;
     NSMutableArray *_queuedItems;
     id<SBUIBannerTarget> _bannerTarget;
     UIView<SBUIBannerView> *_displayedBannerView;
@@ -30,7 +31,7 @@
 @property (nonatomic, getter=isApplicationActive) BOOL applicationActive; // @synthesize applicationActive=_applicationActive;
 @property (weak, nonatomic) id<SBUIBannerTarget> bannerTarget; // @synthesize bannerTarget=_bannerTarget;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<CPBannerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CPSBannerSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSTimer *dimissTimer; // @synthesize dimissTimer=_dimissTimer;
 @property (weak, nonatomic) UIView<SBUIBannerView> *displayedBannerView; // @synthesize displayedBannerView=_displayedBannerView;
@@ -48,7 +49,7 @@
 - (void)_resetDismissTimer;
 - (void)_resetLastUserDismissedIdentifierTimer;
 - (void)_resetLastUserDismissedIdentifierTimerFired:(id)arg1;
-- (void)applicationStateMonitor:(id)arg1 didBecomeActive:(BOOL)arg2;
+- (void)bannerTappedWithIdentifier:(id)arg1;
 - (void)bannerTargetManager:(id)arg1 didAddTarget:(id)arg2;
 - (void)bannerTargetManager:(id)arg1 didRemoveTarget:(id)arg2;
 - (void)bannerViewDidAppear:(id)arg1;
@@ -61,6 +62,7 @@
 - (id)peekNextBannerItemForTarget:(id)arg1;
 - (void)postBannerForManeuver:(id)arg1 travelEstimates:(id)arg2;
 - (void)postBannerForNavigationAlert:(id)arg1;
+- (void)sceneActivationStateChangedTo:(id)arg1;
 
 @end
 

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long currentPageIndex; // @synthesize currentPageIndex;
 @property (readonly, nonatomic, getter=isTimerInstalled) BOOL timerInstalled;
 
-- (void)_fadeOutAnimationDidStop:(id)arg1 finished:(id)arg2;
+- (void)_fadeOutAnimationDidStop;
 - (double)_fadeOutDelay;
 - (double)_fadeOutDuration;
 - (void)_makeRoundedCorners;

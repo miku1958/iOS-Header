@@ -25,12 +25,15 @@
 - (void).cxx_destruct;
 - (unsigned long long)_currentFilesCount;
 - (void)_flush;
+- (id)_journalFilesEnumerator;
 - (id)_nextFilePath;
 - (id)_sortedJournalFiles;
-- (void)appendSQLStatement:(id)arg1;
+- (BOOL)appendSQLStatement:(id)arg1;
 - (void)dealloc;
+- (void)deleteJournalFiles;
 - (void)flushIfNeeded;
 - (id)initWithPath:(id)arg1;
+- (BOOL)isJournalOverflow;
 - (void)mergeUsingBlock:(CDUnknownBlockType)arg1;
 
 @end

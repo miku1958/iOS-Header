@@ -16,7 +16,6 @@
     BOOL _usesVariableLayout;
     BOOL _orderSectionUsingRecencyDate;
     BOOL _showsDateInFloatingLockScreenAlert;
-    BOOL _displaysCriticalBulletins;
     unsigned long long _messageNumberOfLines;
     BBSectionSubtypeParameters *_defaultSubtypeParameters;
     NSMutableDictionary *_allSubtypeParameters;
@@ -29,7 +28,6 @@
 @property (strong, nonatomic) NSMutableDictionary *allSubtypeParameters; // @synthesize allSubtypeParameters=_allSubtypeParameters;
 @property (strong, nonatomic) BBSectionSubtypeParameters *defaultSubtypeParameters; // @synthesize defaultSubtypeParameters=_defaultSubtypeParameters;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (nonatomic) BOOL displaysCriticalBulletins; // @synthesize displaysCriticalBulletins=_displaysCriticalBulletins;
 @property (strong, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) unsigned long long messageNumberOfLines; // @synthesize messageNumberOfLines=_messageNumberOfLines;
 @property (nonatomic) BOOL orderSectionUsingRecencyDate; // @synthesize orderSectionUsingRecencyDate=_orderSectionUsingRecencyDate;

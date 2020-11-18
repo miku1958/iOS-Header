@@ -19,19 +19,21 @@ __attribute__((visibility("hidden")))
     unsigned long long _photoSizeFiltersSpace;
     BOOL _suppressSyntheticReviews;
     struct {
-        unsigned int suppressSyntheticReviews:1;
-    } _has;
+        unsigned int has_suppressSyntheticReviews:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasSuppressSyntheticReviews;
 @property (readonly, nonatomic) struct GEOPDPhotoSizeFilterValue *photoSizeFilters;
 @property (readonly, nonatomic) unsigned long long photoSizeFiltersCount;
-@property (nonatomic) BOOL suppressSyntheticReviews; // @synthesize suppressSyntheticReviews=_suppressSyntheticReviews;
+@property (nonatomic) BOOL suppressSyntheticReviews;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addPhotoSizeFilter:(struct GEOPDPhotoSizeFilterValue)arg1;
 - (void)clearPhotoSizeFilters;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (struct GEOPDPhotoSizeFilterValue)photoSizeFilterAtIndex:(unsigned long long)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setPhotoSizeFilters:(struct GEOPDPhotoSizeFilterValue *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

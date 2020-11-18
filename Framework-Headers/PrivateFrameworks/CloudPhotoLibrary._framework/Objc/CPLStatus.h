@@ -22,7 +22,7 @@
 @property (copy, nonatomic) NSData *accountFlagsData;
 @property (readonly, nonatomic) NSDictionary *cloudAssetCountPerType;
 @property (readonly, nonatomic) NSDate *cloudAssetCountPerTypeLastCheckDate;
-@property (nonatomic, getter=isConnectedToNetwork) BOOL connectedToNetwork;
+@property (readonly, nonatomic, getter=isConnectedToNetwork) BOOL connectedToNetwork;
 @property (weak, nonatomic) id<CPLStatusDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSArray *disabledFeatures;
 @property (copy, nonatomic) NSDate *exitDeleteTime;
@@ -34,12 +34,13 @@
 @property (nonatomic) BOOL iCloudLibraryExists;
 @property (nonatomic) BOOL iCloudLibraryHasBeenWiped;
 @property (copy, nonatomic) NSDate *initialSyncDate;
+@property (readonly, nonatomic) BOOL isConstrainedNetwork;
 @property (nonatomic) BOOL isExceedingQuota;
 @property (copy, nonatomic) NSDate *lastCompletePrefetchDate;
 @property (copy, nonatomic) NSDate *lastPruneDate;
 @property (copy, nonatomic) NSDate *lastSuccessfulSyncDate;
+@property (nonatomic) BOOL lowDiskSpace;
 
-+ (id)statusForSharedLibrary;
 - (void).cxx_destruct;
 - (BOOL)_deleteInitialSyncMarkerWithError:(id *)arg1;
 - (void)_loadIfNecessary;
@@ -51,7 +52,8 @@
 - (id)initWithClientLibraryBaseURLForCPLEngine:(id)arg1;
 - (void)refetchFromDisk;
 - (void)setCloudAssetCountPerType:(id)arg1 updateCheckDate:(BOOL)arg2;
-- (void)setHasCellularBudget:(BOOL)arg1 hasBatteryBudget:(BOOL)arg2 isBudgetValid:(BOOL)arg3;
+- (void)setConnectedToNetwork:(BOOL)arg1;
+- (void)setHasCellularBudget:(BOOL)arg1 hasBatteryBudget:(BOOL)arg2 isConstrainedNetwork:(BOOL)arg3 isBudgetValid:(BOOL)arg4;
 - (id)statusDescription;
 - (BOOL)writeInitialSyncMarker:(id *)arg1;
 

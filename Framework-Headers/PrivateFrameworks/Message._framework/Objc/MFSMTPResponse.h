@@ -28,9 +28,9 @@
 @property (readonly, nonatomic) NSString *statusString; // @synthesize statusString=_statusString;
 @property (readonly, nonatomic) unsigned int statusSubject; // @synthesize statusSubject=_statusSubject;
 
+- (void).cxx_destruct;
 - (void)_updateEnhancedStatusCodesFromLastResponse;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)errorMessageWithAddress:(id)arg1 defaultMessage:(id)arg2;
 - (int)failureReason;

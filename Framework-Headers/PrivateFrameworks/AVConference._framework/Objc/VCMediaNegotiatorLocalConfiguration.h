@@ -8,60 +8,105 @@
 
 #import <AVConference/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, VCAudioRuleCollection, VCBitrateArbiter, VCVideoRuleCollections;
+@class NSDictionary, NSMutableOrderedSet, NSMutableSet, NSSet, NSString, VCMediaNegotiatorAudioConfiguration, VCVideoRuleCollections;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiatorLocalConfiguration : NSObject <NSCopying>
 {
-    unsigned int _audioSSRC;
     unsigned int _videoSSRC;
-    VCAudioRuleCollection *_audioRuleCollection;
+    VCMediaNegotiatorAudioConfiguration *_audioConfiguration;
     VCVideoRuleCollections *_videoRuleCollections;
     VCVideoRuleCollections *_screenRuleCollections;
-    BOOL _allowAudioRecording;
-    BOOL _allowAudioSwitching;
-    int _preferredAudioCodec;
-    unsigned int _audioUnitNumber;
-    int _deviceRole;
     NSDictionary *_videoFeatureStrings;
     BOOL _allowRTCPFB;
     BOOL _isCaller;
     NSString *_basebandCodec;
     unsigned int _basebandCodecSampleRate;
-    VCBitrateArbiter *_bitrateArbiter;
+    NSMutableSet *_bandwidthConfigurations;
     NSSet *_captionsReceiverLanguages;
     NSSet *_captionsSenderLanguages;
-    void *_callLogFile;
     unsigned long long _creationTime;
-    NSArray *_multiwayAudioStreams;
-    NSArray *_multiwayVideoStreams;
+    NSMutableOrderedSet *_multiwayAudioStreams;
+    NSMutableOrderedSet *_multiwayVideoStreams;
+    NSSet *_momentsVideoCodecs;
+    NSSet *_momentsImageTypes;
+    unsigned char _mediaControlInfoVersion;
+    BOOL _SIPDisabled;
+    BOOL _secureMessagingRequired;
+    unsigned int _faceTimeSwitches;
+    int _preferredAudioCodec;
+    int _deviceRole;
+    void *_callLogFile;
+    unsigned int _tilesPerVideoFrame;
+    BOOL _alwaysOnAudRedEnabled;
+    BOOL _alwaysOnAudioRedundancyEnabled;
+    BOOL _highFecEnabled;
+    BOOL _lowFpsVideoEnabled;
+    BOOL _vplrFecEnabled;
+    BOOL _rampDownBWDropEnabled;
+    BOOL _fastMediaDuplicationEnabled;
+    BOOL _iRATRtpEnabled;
+    BOOL _preWarmCellEnabled;
+    BOOL _duplicateImportantPktsEnabled;
+    unsigned int _customVideoWidth;
+    unsigned int _customVideoHeight;
 }
 
-@property (nonatomic) BOOL allowAudioRecording; // @synthesize allowAudioRecording=_allowAudioRecording;
-@property (nonatomic) BOOL allowAudioSwitching; // @synthesize allowAudioSwitching=_allowAudioSwitching;
+@property (nonatomic) BOOL SIPDisabled; // @synthesize SIPDisabled=_SIPDisabled;
 @property (nonatomic) BOOL allowRTCPFB; // @synthesize allowRTCPFB=_allowRTCPFB;
-@property (strong, nonatomic) VCAudioRuleCollection *audioRuleCollection; // @synthesize audioRuleCollection=_audioRuleCollection;
-@property (nonatomic) unsigned int audioSSRC; // @synthesize audioSSRC=_audioSSRC;
-@property (nonatomic) unsigned int audioUnitNumber; // @synthesize audioUnitNumber=_audioUnitNumber;
+@property (nonatomic) BOOL alwaysOnAudRedEnabled; // @synthesize alwaysOnAudRedEnabled=_alwaysOnAudRedEnabled;
+@property (nonatomic) BOOL alwaysOnAudioRedundancyEnabled; // @synthesize alwaysOnAudioRedundancyEnabled=_alwaysOnAudioRedundancyEnabled;
+@property (strong, nonatomic) VCMediaNegotiatorAudioConfiguration *audioConfiguration; // @synthesize audioConfiguration=_audioConfiguration;
+@property (strong, nonatomic) NSSet *bandwidthConfigurations; // @synthesize bandwidthConfigurations=_bandwidthConfigurations;
 @property (strong, nonatomic) NSString *basebandCodec; // @synthesize basebandCodec=_basebandCodec;
 @property (nonatomic) unsigned int basebandCodecSampleRate; // @synthesize basebandCodecSampleRate=_basebandCodecSampleRate;
-@property (strong, nonatomic) VCBitrateArbiter *bitrateArbiter; // @synthesize bitrateArbiter=_bitrateArbiter;
 @property (nonatomic) void *callLogFile; // @synthesize callLogFile=_callLogFile;
 @property (strong, nonatomic) NSSet *captionsReceiverLanguages; // @synthesize captionsReceiverLanguages=_captionsReceiverLanguages;
 @property (strong, nonatomic) NSSet *captionsSenderLanguages; // @synthesize captionsSenderLanguages=_captionsSenderLanguages;
 @property (nonatomic) unsigned long long creationTime; // @synthesize creationTime=_creationTime;
+@property (nonatomic) unsigned int customVideoHeight; // @synthesize customVideoHeight=_customVideoHeight;
+@property (nonatomic) unsigned int customVideoWidth; // @synthesize customVideoWidth=_customVideoWidth;
 @property (nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
+@property (nonatomic) BOOL duplicateImportantPktsEnabled; // @synthesize duplicateImportantPktsEnabled=_duplicateImportantPktsEnabled;
+@property (nonatomic) unsigned int faceTimeSwitches; // @synthesize faceTimeSwitches=_faceTimeSwitches;
+@property (nonatomic) BOOL fastMediaDuplicationEnabled; // @synthesize fastMediaDuplicationEnabled=_fastMediaDuplicationEnabled;
+@property (nonatomic) BOOL highFecEnabled; // @synthesize highFecEnabled=_highFecEnabled;
+@property (nonatomic) BOOL iRATRtpEnabled; // @synthesize iRATRtpEnabled=_iRATRtpEnabled;
 @property (nonatomic) BOOL isCaller; // @synthesize isCaller=_isCaller;
-@property (strong, nonatomic) NSArray *multiwayAudioStreams; // @synthesize multiwayAudioStreams=_multiwayAudioStreams;
-@property (strong, nonatomic) NSArray *multiwayVideoStreams; // @synthesize multiwayVideoStreams=_multiwayVideoStreams;
+@property (nonatomic) BOOL lowFpsVideoEnabled; // @synthesize lowFpsVideoEnabled=_lowFpsVideoEnabled;
+@property (nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
+@property (strong, nonatomic) NSSet *momentsImageTypes; // @synthesize momentsImageTypes=_momentsImageTypes;
+@property (strong, nonatomic) NSSet *momentsVideoCodecs; // @synthesize momentsVideoCodecs=_momentsVideoCodecs;
+@property (strong, nonatomic) NSMutableOrderedSet *multiwayAudioStreams; // @synthesize multiwayAudioStreams=_multiwayAudioStreams;
+@property (strong, nonatomic) NSMutableOrderedSet *multiwayVideoStreams; // @synthesize multiwayVideoStreams=_multiwayVideoStreams;
+@property (nonatomic) BOOL preWarmCellEnabled; // @synthesize preWarmCellEnabled=_preWarmCellEnabled;
 @property (nonatomic) int preferredAudioCodec; // @synthesize preferredAudioCodec=_preferredAudioCodec;
+@property (nonatomic) BOOL rampDownBWDropEnabled; // @synthesize rampDownBWDropEnabled=_rampDownBWDropEnabled;
 @property (strong, nonatomic) VCVideoRuleCollections *screenRuleCollections; // @synthesize screenRuleCollections=_screenRuleCollections;
+@property (nonatomic) BOOL secureMessagingRequired; // @synthesize secureMessagingRequired=_secureMessagingRequired;
+@property (nonatomic) unsigned int tilesPerVideoFrame; // @synthesize tilesPerVideoFrame=_tilesPerVideoFrame;
 @property (strong, nonatomic) NSDictionary *videoFeatureStrings; // @synthesize videoFeatureStrings=_videoFeatureStrings;
 @property (strong, nonatomic) VCVideoRuleCollections *videoRuleCollections; // @synthesize videoRuleCollections=_videoRuleCollections;
 @property (nonatomic) unsigned int videoSSRC; // @synthesize videoSSRC=_videoSSRC;
+@property (nonatomic) BOOL vplrFecEnabled; // @synthesize vplrFecEnabled=_vplrFecEnabled;
 
+- (void)addBandwidthConfiguration:(id)arg1;
+- (void)addMultiwayAudioStream:(id)arg1;
+- (void)addMultiwayVideoStream:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)init;
+- (id)initWithBitrateArbiter:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualBandwidthConfigurations:(id)arg1;
+- (BOOL)isEqualFaceTimeSettings:(id)arg1;
+- (BOOL)isEqualFeatureStrings:(id)arg1;
+- (BOOL)isEqualMomentsImageTypes:(id)arg1;
+- (BOOL)isEqualMomentsVideoCodecs:(id)arg1;
+- (BOOL)isEqualMultiwayAudioStreamSet:(id)arg1;
+- (BOOL)isEqualMultiwayVideoStreamSet:(id)arg1;
+- (BOOL)setupBandwidthConfigurationsWithArbiter:(id)arg1;
+- (BOOL)setupBandwidthExtensionConfiguration:(id)arg1;
 
 @end
 

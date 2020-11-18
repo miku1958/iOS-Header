@@ -16,9 +16,11 @@
 __attribute__((visibility("hidden")))
 @interface VSApplicationController : NSObject <VSAppDocumentControllerDelegate, VSApplicationDelegate, VSStateMachineDelegate>
 {
+    BOOL _applicationMustSelfValidate;
     BOOL _allowUI;
     id<VSApplicationControllerDelegate> _delegate;
     VSIdentityProvider *_identityProvider;
+    NSString *_accountProviderAuthenticationToken;
     VSAuditToken *_auditToken;
     VSStateMachine *_stateMachine;
     NSError *_delegateError;
@@ -32,9 +34,11 @@ __attribute__((visibility("hidden")))
     VSPreferences *_preferences;
 }
 
+@property (strong, nonatomic) NSString *accountProviderAuthenticationToken; // @synthesize accountProviderAuthenticationToken=_accountProviderAuthenticationToken;
 @property (nonatomic) BOOL allowUI; // @synthesize allowUI=_allowUI;
 @property (strong, nonatomic) VSAppDocumentController *appDocumentController; // @synthesize appDocumentController=_appDocumentController;
 @property (strong) VSApplication *application; // @synthesize application=_application;
+@property (nonatomic) BOOL applicationMustSelfValidate; // @synthesize applicationMustSelfValidate=_applicationMustSelfValidate;
 @property (strong, nonatomic) JSValue *applicationReadyCallback; // @synthesize applicationReadyCallback=_applicationReadyCallback;
 @property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, copy) NSString *debugDescription;
@@ -52,10 +56,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_applicationControllerAlertForJavascriptAlert:(id)arg1;
 - (id)_applicationLaunchParams;
 - (void)_applicationReadyWithSuccess:(BOOL)arg1 javascriptErrorValue:(id)arg2;
 - (void)_beginAuthentication;
 - (id)_bootURL;
+- (void)_cancelValidation;
 - (void)_completeRequest:(id)arg1 withJavascriptResponse:(id)arg2 javascriptErrorValue:(id)arg3;
 - (void)_completeRequest:(id)arg1 withResult:(id)arg2;
 - (id)_errorForJavascriptErrorValueValue:(id)arg1 withRequest:(id)arg2;
@@ -69,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)_notifyRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
 - (void)_notifyRequest:(id)arg1 didFailWithError:(id)arg2;
 - (void)_notifyStartDidFailWithError:(id)arg1;
+- (void)_presentAlert:(id)arg1;
 - (void)_presentDocument:(id)arg1;
 - (void)_submitJavascriptRequest:(id)arg1 forApplicationControllerRequest:(id)arg2;
 - (id)activeAppDocumentForApplication:(id)arg1;
@@ -77,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)application:(id)arg1 evaluateAppJavascriptInContext:(id)arg2;
 - (void)application:(id)arg1 startDidFailWithError:(id)arg2;
 - (void)applicationDidStart:(id)arg1;
+- (void)applicationStartSelfValidationWithAuthenticationToken:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithIdentityProvider:(id)arg1;

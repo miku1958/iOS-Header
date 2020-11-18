@@ -22,7 +22,7 @@
 @property BOOL browsing; // @synthesize browsing=_browsing;
 @property (strong) id<SFRemoteHotspotProtocol> connectionProxy; // @synthesize connectionProxy=_connectionProxy;
 @property (readonly, copy) NSString *debugDescription;
-@property id<SFRemoteHotspotSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<SFRemoteHotspotSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

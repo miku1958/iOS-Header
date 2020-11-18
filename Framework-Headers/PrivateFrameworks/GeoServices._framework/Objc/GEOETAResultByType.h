@@ -8,37 +8,57 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORouteTrafficDetail, GEOShortTrafficSummary, NSMutableArray;
+@class GEORouteTrafficDetail, GEOShortTrafficSummary, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOETAResultByType : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     double _expectedTimeOfDeparture;
-    unsigned int _distance;
-    unsigned int _historicTravelTime;
     GEORouteTrafficDetail *_routeTrafficDetail;
     GEOShortTrafficSummary *_shortTrafficSummary;
+    NSMutableArray *_summaryForPredictedDestinations;
+    unsigned int _distance;
+    unsigned int _historicTravelTime;
     unsigned int _staticTravelTime;
     int _status;
-    NSMutableArray *_summaryForPredictedDestinations;
     int _transportType;
-    unsigned int _travelTimeAggressiveEstimate;
     unsigned int _travelTimeBestEstimate;
+    unsigned int _travelTimeAggressiveEstimate;
     unsigned int _travelTimeConservativeEstimate;
     struct {
-        unsigned int expectedTimeOfDeparture:1;
-        unsigned int distance:1;
-        unsigned int historicTravelTime:1;
-        unsigned int staticTravelTime:1;
-        unsigned int status:1;
-        unsigned int transportType:1;
-        unsigned int travelTimeAggressiveEstimate:1;
-        unsigned int travelTimeBestEstimate:1;
-        unsigned int travelTimeConservativeEstimate:1;
-    } _has;
+        unsigned int has_expectedTimeOfDeparture:1;
+        unsigned int has_distance:1;
+        unsigned int has_historicTravelTime:1;
+        unsigned int has_staticTravelTime:1;
+        unsigned int has_status:1;
+        unsigned int has_transportType:1;
+        unsigned int has_travelTimeBestEstimate:1;
+        unsigned int has_travelTimeAggressiveEstimate:1;
+        unsigned int has_travelTimeConservativeEstimate:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_routeTrafficDetail:1;
+        unsigned int read_shortTrafficSummary:1;
+        unsigned int read_summaryForPredictedDestinations:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_expectedTimeOfDeparture:1;
+        unsigned int wrote_routeTrafficDetail:1;
+        unsigned int wrote_shortTrafficSummary:1;
+        unsigned int wrote_summaryForPredictedDestinations:1;
+        unsigned int wrote_distance:1;
+        unsigned int wrote_historicTravelTime:1;
+        unsigned int wrote_staticTravelTime:1;
+        unsigned int wrote_status:1;
+        unsigned int wrote_transportType:1;
+        unsigned int wrote_travelTimeBestEstimate:1;
+        unsigned int wrote_travelTimeAggressiveEstimate:1;
+        unsigned int wrote_travelTimeConservativeEstimate:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int distance; // @synthesize distance=_distance;
-@property (nonatomic) double expectedTimeOfDeparture; // @synthesize expectedTimeOfDeparture=_expectedTimeOfDeparture;
+@property (nonatomic) unsigned int distance;
+@property (nonatomic) double expectedTimeOfDeparture;
 @property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasExpectedTimeOfDeparture;
 @property (nonatomic) BOOL hasHistoricTravelTime;
@@ -50,23 +70,30 @@
 @property (nonatomic) BOOL hasTravelTimeAggressiveEstimate;
 @property (nonatomic) BOOL hasTravelTimeBestEstimate;
 @property (nonatomic) BOOL hasTravelTimeConservativeEstimate;
-@property (nonatomic) unsigned int historicTravelTime; // @synthesize historicTravelTime=_historicTravelTime;
-@property (strong, nonatomic) GEORouteTrafficDetail *routeTrafficDetail; // @synthesize routeTrafficDetail=_routeTrafficDetail;
-@property (strong, nonatomic) GEOShortTrafficSummary *shortTrafficSummary; // @synthesize shortTrafficSummary=_shortTrafficSummary;
-@property (nonatomic) unsigned int staticTravelTime; // @synthesize staticTravelTime=_staticTravelTime;
-@property (nonatomic) int status; // @synthesize status=_status;
-@property (strong, nonatomic) NSMutableArray *summaryForPredictedDestinations; // @synthesize summaryForPredictedDestinations=_summaryForPredictedDestinations;
-@property (nonatomic) int transportType; // @synthesize transportType=_transportType;
-@property (nonatomic) unsigned int travelTimeAggressiveEstimate; // @synthesize travelTimeAggressiveEstimate=_travelTimeAggressiveEstimate;
-@property (nonatomic) unsigned int travelTimeBestEstimate; // @synthesize travelTimeBestEstimate=_travelTimeBestEstimate;
-@property (nonatomic) unsigned int travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
+@property (nonatomic) unsigned int historicTravelTime;
+@property (strong, nonatomic) GEORouteTrafficDetail *routeTrafficDetail;
+@property (strong, nonatomic) GEOShortTrafficSummary *shortTrafficSummary;
+@property (nonatomic) unsigned int staticTravelTime;
+@property (nonatomic) int status;
+@property (strong, nonatomic) NSMutableArray *summaryForPredictedDestinations;
+@property (nonatomic) int transportType;
+@property (nonatomic) unsigned int travelTimeAggressiveEstimate;
+@property (nonatomic) unsigned int travelTimeBestEstimate;
+@property (nonatomic) unsigned int travelTimeConservativeEstimate;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)summaryForPredictedDestinationType;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
+- (void)_addNoFlagsSummaryForPredictedDestination:(id)arg1;
+- (void)_readRouteTrafficDetail;
+- (void)_readShortTrafficSummary;
+- (void)_readSummaryForPredictedDestinations;
 - (void)addSummaryForPredictedDestination:(id)arg1;
 - (void)clearSummaryForPredictedDestinations;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -74,6 +101,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
 - (id)summaryForPredictedDestinationAtIndex:(unsigned long long)arg1;

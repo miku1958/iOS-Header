@@ -6,39 +6,59 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDate, NSString;
 @protocol OS_xpc_object;
 
 @interface ADBackgroundTaskRequest : NSObject
 {
-    NSObject<OS_xpc_object> *_criteria;
+    BOOL _performDeferralCheck;
     NSString *_requestIdentifier;
+    NSObject<OS_xpc_object> *_activity;
+    NSObject<OS_xpc_object> *_criteria;
+    NSDate *_startDate;
 }
 
+@property (strong, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
 @property (nonatomic) BOOL allowBattery;
 @property (nonatomic) long long backgroundTaskRetryCount;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *criteria; // @synthesize criteria=_criteria;
 @property (nonatomic) long long delay;
 @property (nonatomic) long long gracePeriod;
+@property (nonatomic) BOOL isCPUIntensive;
 @property (nonatomic) BOOL isRepeating;
+@property (nonatomic) BOOL performDeferralCheck; // @synthesize performDeferralCheck=_performDeferralCheck;
 @property (strong, nonatomic) NSString *priority;
 @property (readonly, copy, nonatomic) NSString *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
+@property (nonatomic) BOOL requireBuddyComplete;
+@property (nonatomic) BOOL requireClassCData;
 @property (nonatomic) BOOL requireSleep;
 @property (nonatomic) BOOL requiresNetworkConnectivity;
+@property (readonly, nonatomic) BOOL shouldDefer;
+@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 - (void).cxx_destruct;
+- (void)_backgroundDeferralCheck:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)continueTask;
 - (id)copyBackgroundTaskAgentCriteria;
+- (BOOL)deferTask;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (void)endBackgroundDeferralCheck;
+- (BOOL)finishTask;
 - (id)getPropertyAsDate:(id)arg1;
 - (double)getPropertyAsDouble:(id)arg1;
 - (long long)getPropertyAsInteger:(id)arg1;
 - (id)getPropertyAsString:(id)arg1;
-- (id)initWithCriteria:(id)arg1 andID:(id)arg2;
+- (id)initWithCriteria:(id)arg1 ID:(id)arg2 activity:(id)arg3;
 - (id)initWithID:(id)arg1;
 - (void)setPropertyAsDate:(id)arg1 value:(id)arg2;
 - (void)setPropertyAsDouble:(id)arg1 value:(double)arg2;
 - (void)setPropertyAsInteger:(id)arg1 value:(long long)arg2;
 - (void)setPropertyAsString:(id)arg1 value:(id)arg2;
+- (void)startBackgroundDeferralCheckForTime:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)taskCanContinueForTime:(id)arg1;
+- (BOOL)taskIsContinuing;
+- (BOOL)taskIsDeferred;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <network/OS_nw_browse_descriptor-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_data, OS_nw_interface;
+@protocol OS_dispatch_data;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_browse_descriptor : NSObject <OS_nw_browse_descriptor>
@@ -17,9 +17,12 @@ __attribute__((visibility("hidden")))
     int type;
     char *bonjour_type;
     char *bonjour_domain;
+    char *description;
+    char *logging_description;
     NSObject<OS_dispatch_data> *custom_data;
     CDUnknownBlockType browse_block;
-    NSObject<OS_nw_interface> *interface;
+    unsigned int include_txt_record:1;
+    unsigned int __pad_bits:7;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (id)redactedDescription;
 
 @end
 

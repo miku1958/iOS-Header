@@ -18,11 +18,13 @@
     NSMutableArray *subtrees;
     NSMutableDictionary *cache;
     NSString *layoutTag;
+    BOOL _isFloating;
     NSString *effectiveLayoutTag;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *cache; // @synthesize cache;
 @property (strong, nonatomic) NSString *effectiveLayoutTag; // @synthesize effectiveLayoutTag;
+@property (nonatomic) BOOL isFloating; // @synthesize isFloating=_isFloating;
 @property (strong, nonatomic) NSString *layoutTag; // @synthesize layoutTag;
 @property (strong, nonatomic) NSString *name; // @synthesize name;
 @property (strong, nonatomic) NSMutableDictionary *properties; // @synthesize properties;
@@ -56,6 +58,7 @@
 - (void)addWriteboardKeyToCachedKeyListWithShape:(id)arg1 rendering:(int)arg2;
 - (void)addkeyToCachedKeyList:(id)arg1;
 - (BOOL)allowRetestAfterCommittingDownActions;
+- (BOOL)allowsStartingContinuousPath;
 - (id)alternateKeyplaneName;
 - (id)attributeSet:(BOOL)arg1;
 - (id)autolocalizedKeyCacheIterator;
@@ -72,7 +75,7 @@
 - (void)centerKeys:(id)arg1 inRect:(struct CGRect)arg2 scale:(double)arg3;
 - (void)clearManualAddedKey;
 - (void)clearTransientCaches;
-- (int)clipCorners;
+- (unsigned long long)clipCorners;
 - (id)componentName;
 - (BOOL)containsDividerVariant;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -113,6 +116,7 @@
 - (id)initWithType:(int)arg1;
 - (id)initWithType:(int)arg1 withName:(id)arg2 withProperties:(id)arg3 withSubtrees:(id)arg4 withCache:(id)arg5;
 - (void)insertKey:(id)arg1 withFrame:(struct CGRect)arg2 andShiftKeys:(id)arg3 scale:(double)arg4;
+- (void)insetKeys:(id)arg1 withInsets:(struct UIEdgeInsets)arg2 scale:(double)arg3;
 - (long long)intForProperty:(id)arg1;
 - (int)interactionType;
 - (BOOL)isAlphabeticPlane;
@@ -122,6 +126,7 @@
 - (BOOL)isExemptFromInputManagerLayout;
 - (BOOL)isGenerated;
 - (BOOL)isHashed;
+- (BOOL)isKanaPlane;
 - (BOOL)isLeafType;
 - (BOOL)isLetters;
 - (BOOL)isRightToLeftSensitive;
@@ -138,6 +143,7 @@
 - (id)keyplaneForKey:(id)arg1;
 - (id)keys;
 - (id)keysByKeyName:(id)arg1;
+- (id)keysForDisplayRowAtIndex:(unsigned long long)arg1;
 - (id)keysForMergeConditions;
 - (id)keysOrderedByPosition;
 - (id)keysOrderedByPositionRTL;
@@ -180,6 +186,8 @@
 - (void)replaceKey:(id)arg1 withKey:(id)arg2;
 - (void)repositionKeys:(id)arg1 withOffset:(struct CGPoint)arg2 scale:(double)arg3;
 - (id)representedString;
+- (void)resizeKeys:(id)arg1 withOffset:(struct CGPoint)arg2 scale:(double)arg3;
+- (double)resizingOffset;
 - (id)rightSpaceKey;
 - (void)scaleKeys:(id)arg1 withFactor:(struct CGSize)arg2 scale:(double)arg3;
 - (id)scriptSwitchKey;
@@ -189,7 +197,7 @@
 - (void)setActiveGeometriesList:(id)arg1;
 - (void)setAttributes:(id)arg1;
 - (void)setCachedGestureLayout:(id)arg1;
-- (void)setClipCorners:(int)arg1;
+- (void)setClipCorners:(unsigned long long)arg1;
 - (void)setDisabled:(BOOL)arg1;
 - (void)setDisplayRowHint:(int)arg1;
 - (void)setDisplayString:(id)arg1;
@@ -214,6 +222,7 @@
 - (void)setParentKey:(id)arg1;
 - (void)setRendering:(int)arg1;
 - (void)setRepresentedString:(id)arg1;
+- (void)setResizingOffset:(double)arg1;
 - (void)setSecondaryDisplayStrings:(id)arg1;
 - (void)setSecondaryRepresentedStrings:(id)arg1;
 - (void)setSelectedVariantIndex:(long long)arg1;
@@ -244,6 +253,8 @@
 - (id)subtreeWithType:(int)arg1;
 - (BOOL)subtreesAreOrdered;
 - (id)subtreesWithProperty:(id)arg1 value:(id)arg2;
+- (id)supplementaryKeyList;
+- (BOOL)supportsContinuousPath;
 - (BOOL)supportsType:(long long)arg1;
 - (long long)textAlignment;
 - (id)unhashedName;
@@ -263,6 +274,7 @@
 - (void)zipAttributes;
 - (void)zipGeometries:(BOOL)arg1 attributes:(BOOL)arg2;
 - (void)zipGeometrySet;
+- (void)zipOnlyGeometrySet;
 
 @end
 

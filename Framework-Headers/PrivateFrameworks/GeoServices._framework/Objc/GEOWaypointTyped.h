@@ -8,10 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOWaypointID, GEOWaypointLocation, GEOWaypointPlace, PBUnknownFields;
+@class GEOWaypointID, GEOWaypointLocation, GEOWaypointPlace, PBDataReader, PBUnknownFields;
 
 @interface GEOWaypointTyped : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOWaypointID *_waypointId;
     GEOWaypointLocation *_waypointLocation;
@@ -20,10 +22,21 @@
     BOOL _isCurrentLocation;
     BOOL _isLocationOfInterest;
     struct {
-        unsigned int waypointType:1;
-        unsigned int isCurrentLocation:1;
-        unsigned int isLocationOfInterest:1;
-    } _has;
+        unsigned int has_waypointType:1;
+        unsigned int has_isCurrentLocation:1;
+        unsigned int has_isLocationOfInterest:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_waypointId:1;
+        unsigned int read_waypointLocation:1;
+        unsigned int read_waypointPlace:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_waypointId:1;
+        unsigned int wrote_waypointLocation:1;
+        unsigned int wrote_waypointPlace:1;
+        unsigned int wrote_waypointType:1;
+        unsigned int wrote_isCurrentLocation:1;
+        unsigned int wrote_isLocationOfInterest:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsCurrentLocation;
@@ -32,17 +45,23 @@
 @property (readonly, nonatomic) BOOL hasWaypointLocation;
 @property (readonly, nonatomic) BOOL hasWaypointPlace;
 @property (nonatomic) BOOL hasWaypointType;
-@property (nonatomic) BOOL isCurrentLocation; // @synthesize isCurrentLocation=_isCurrentLocation;
-@property (nonatomic) BOOL isLocationOfInterest; // @synthesize isLocationOfInterest=_isLocationOfInterest;
+@property (nonatomic) BOOL isCurrentLocation;
+@property (nonatomic) BOOL isLocationOfInterest;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOWaypointID *waypointId; // @synthesize waypointId=_waypointId;
-@property (strong, nonatomic) GEOWaypointLocation *waypointLocation; // @synthesize waypointLocation=_waypointLocation;
-@property (strong, nonatomic) GEOWaypointPlace *waypointPlace; // @synthesize waypointPlace=_waypointPlace;
-@property (nonatomic) int waypointType; // @synthesize waypointType=_waypointType;
+@property (strong, nonatomic) GEOWaypointID *waypointId;
+@property (strong, nonatomic) GEOWaypointLocation *waypointLocation;
+@property (strong, nonatomic) GEOWaypointPlace *waypointPlace;
+@property (nonatomic) int waypointType;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsWaypointType:(id)arg1;
+- (void)_readWaypointId;
+- (void)_readWaypointLocation;
+- (void)_readWaypointPlace;
 - (void)clearLocations;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -51,6 +70,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)locationForWaypoint;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)waypointTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

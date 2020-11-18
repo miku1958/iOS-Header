@@ -6,18 +6,20 @@
 
 #import <UIKit/UIView.h>
 
-@class ICAttachment, ICTextAttachment;
+@class ICAttachment, ICTextAttachment, NSRegularExpression;
 
 @interface ICBaseAttachmentView : UIView
 {
     BOOL _selected;
     ICAttachment *_attachment;
     ICTextAttachment *_textAttachment;
+    NSRegularExpression *_highlightPatternRegex;
     struct CGSize _attachmentContentSize;
 }
 
 @property (weak, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
 @property (nonatomic) struct CGSize attachmentContentSize; // @synthesize attachmentContentSize=_attachmentContentSize;
+@property (strong, nonatomic) NSRegularExpression *highlightPatternRegex; // @synthesize highlightPatternRegex=_highlightPatternRegex;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property (weak, nonatomic) ICTextAttachment *textAttachment; // @synthesize textAttachment=_textAttachment;
 

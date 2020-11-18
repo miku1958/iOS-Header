@@ -14,15 +14,16 @@
 }
 
 + (id)UTITypes;
-+ (double)_scaleFactorForThumbnailWithSize:(struct CGSize)arg1 constraints:(struct IMPreviewConstraints)arg2 targetPxSize:(struct CGSize)arg3;
 + (struct CGRect)_scaledTargetRectForSize:(struct CGSize)arg1 andThumbnailSize:(struct CGSize)arg2;
-+ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
++ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 outSize:(struct CGSize *)arg3 error:(id *)arg4;
 + (double)maxUpScale;
 + (struct CGImage *)newCroppedAndRescaledImageFromImage:(struct CGImage *)arg1 constraints:(struct IMPreviewConstraints)arg2 targetPxSize:(struct CGSize)arg3;
 + (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (id)previewExtension;
 + (BOOL)shouldScaleUpPreview;
 + (BOOL)shouldShadePreview;
++ (struct CGSize)sizePreviewAtSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
++ (struct CGSize)thumbnailFillSizeForWidth:(double)arg1 imageSize:(struct CGSize)arg2;
 + (BOOL)writesToDisk;
 
 @end

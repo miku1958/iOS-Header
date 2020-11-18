@@ -6,31 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class AVTCoreModelRowOptions, NSArray, NSString;
 
 @interface AVTCoreModelColorPalette : NSObject
 {
     BOOL _alwaysShowExtended;
+    NSString *_identifier;
+    NSString *_title;
+    AVTCoreModelRowOptions *_options;
     NSArray *_primaryColors;
     NSArray *_extendedColors;
-    NSString *_title;
-    NSString *_identifier;
     long long _colorCategory;
-    AVTCoreModelColorPalette *_subPalette;
 }
 
 @property (readonly, nonatomic) BOOL alwaysShowExtended; // @synthesize alwaysShowExtended=_alwaysShowExtended;
 @property (readonly, nonatomic) long long colorCategory; // @synthesize colorCategory=_colorCategory;
 @property (readonly, nonatomic) NSArray *extendedColors; // @synthesize extendedColors=_extendedColors;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) AVTCoreModelRowOptions *options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSArray *primaryColors; // @synthesize primaryColors=_primaryColors;
-@property (readonly, nonatomic) AVTCoreModelColorPalette *subPalette; // @synthesize subPalette=_subPalette;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithTitle:(id)arg1 primaryColors:(id)arg2 extendedColors:(id)arg3 alwaysShowExtended:(BOOL)arg4 colorCategory:(long long)arg5 subPalette:(id)arg6;
-- (id)initWithTitle:(id)arg1 primaryColors:(id)arg2 extendedColors:(id)arg3 identifier:(id)arg4 alwaysShowExtended:(BOOL)arg5 colorCategory:(long long)arg6 subPalette:(id)arg7;
+- (id)initWithTitle:(id)arg1 primaryColors:(id)arg2 extendedColors:(id)arg3 alwaysShowExtended:(BOOL)arg4 colorCategory:(long long)arg5 options:(id)arg6;
+- (id)initWithTitle:(id)arg1 primaryColors:(id)arg2 extendedColors:(id)arg3 identifier:(id)arg4 alwaysShowExtended:(BOOL)arg5 colorCategory:(long long)arg6 options:(id)arg7;
 - (BOOL)isEmpty;
 
 @end

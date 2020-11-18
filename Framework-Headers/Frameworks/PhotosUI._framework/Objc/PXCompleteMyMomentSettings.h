@@ -12,14 +12,9 @@
 
 @interface PXCompleteMyMomentSettings : PXSettings <PXCMMWorkflowCoordinatorDelegate>
 {
-    PXCMMWorkflowCoordinator *_workflowCoordinator;
     BOOL _cmmFeatureEnabled;
     BOOL _showCMMSettingsAtTopLevel;
-    BOOL _shouldCreateLinkForMessages;
-    BOOL _shouldCreateLinkForMail;
     BOOL _alwaysSortAfterAddMore;
-    BOOL _showIncomingShares;
-    BOOL _showOutgoingShares;
     BOOL _preventNilTitles;
     BOOL _enableLightCuration;
     BOOL _showTitle;
@@ -41,6 +36,7 @@
     BOOL _showFakeSendBackFooterView;
     BOOL _showSectionHeaders;
     BOOL _sectionHeadersShouldFloat;
+    BOOL _showStatusFooter;
     BOOL _showProgressInGrid;
     BOOL _showProgressBannerView;
     BOOL _showProgressBannerViewPaused;
@@ -55,7 +51,20 @@
     BOOL _showMessageTextEntryGadget;
     BOOL _insertNewRecipientsAtTheEnd;
     BOOL _graphSuggestionEnabled;
-    long long _shareSheetLinkThreshold;
+    BOOL _showCMMSuggestionGadgets;
+    BOOL _showCMMInvitationGadgets;
+    BOOL _showSampleGadgets;
+    BOOL _shouldBakeInIfLivePhotoPlaybackDisabled;
+    BOOL _shouldBakeInIfLivePhotoMuted;
+    BOOL _shouldBakeInIfAdjustedByThirdParty;
+    BOOL _shouldBakeInIfCropped;
+    BOOL _shouldBakeInIfTimelineTrimmed;
+    BOOL _shouldBakeInIfPortraitDepthEffectEnabled;
+    BOOL _shouldBakeInIfContainsPenultimateResources;
+    BOOL _shouldIncludeSpatialOvercaptureResources;
+    long long _cmmShareSheetBehavior;
+    long long _shareSheetLinkAssetCountThreshold;
+    unsigned long long _shareSheetLinkTotalFileSizeThresholdMB;
     long long _invitationsDataSourceType;
     long long _suggestionsDataSourceType;
     unsigned long long _suggestionsMatchingStrategy;
@@ -70,6 +79,7 @@
     long long _overrideNumberOfColumnsInLandscape;
     long long _sharingLinkType;
     double _peopleSuggestionsTimeout;
+    long long _sidebarType;
 }
 
 @property (nonatomic) BOOL allowLayoutTransitionGesture; // @synthesize allowLayoutTransitionGesture=_allowLayoutTransitionGesture;
@@ -79,6 +89,7 @@
 @property (nonatomic) BOOL alwaysTapToRetry; // @synthesize alwaysTapToRetry=_alwaysTapToRetry;
 @property (nonatomic) BOOL autoAcceptBubbles; // @synthesize autoAcceptBubbles=_autoAcceptBubbles;
 @property (nonatomic) BOOL cmmFeatureEnabled; // @synthesize cmmFeatureEnabled=_cmmFeatureEnabled;
+@property (nonatomic) long long cmmShareSheetBehavior; // @synthesize cmmShareSheetBehavior=_cmmShareSheetBehavior;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL directSendMessages; // @synthesize directSendMessages=_directSendMessages;
@@ -99,32 +110,42 @@
 @property (nonatomic) long long reviewFlowDataSourceType; // @synthesize reviewFlowDataSourceType=_reviewFlowDataSourceType;
 @property (nonatomic) BOOL sectionHeadersShouldFloat; // @synthesize sectionHeadersShouldFloat=_sectionHeadersShouldFloat;
 @property (nonatomic) long long sendBackDataSourceType; // @synthesize sendBackDataSourceType=_sendBackDataSourceType;
-@property (nonatomic) long long shareSheetLinkThreshold; // @synthesize shareSheetLinkThreshold=_shareSheetLinkThreshold;
+@property (nonatomic) long long shareSheetLinkAssetCountThreshold; // @synthesize shareSheetLinkAssetCountThreshold=_shareSheetLinkAssetCountThreshold;
+@property (nonatomic) unsigned long long shareSheetLinkTotalFileSizeThresholdMB; // @synthesize shareSheetLinkTotalFileSizeThresholdMB=_shareSheetLinkTotalFileSizeThresholdMB;
 @property (nonatomic) long long sharingLinkType; // @synthesize sharingLinkType=_sharingLinkType;
-@property (nonatomic) BOOL shouldCreateLinkForMail; // @synthesize shouldCreateLinkForMail=_shouldCreateLinkForMail;
-@property (nonatomic) BOOL shouldCreateLinkForMessages; // @synthesize shouldCreateLinkForMessages=_shouldCreateLinkForMessages;
+@property (nonatomic) BOOL shouldBakeInIfAdjustedByThirdParty; // @synthesize shouldBakeInIfAdjustedByThirdParty=_shouldBakeInIfAdjustedByThirdParty;
+@property (nonatomic) BOOL shouldBakeInIfContainsPenultimateResources; // @synthesize shouldBakeInIfContainsPenultimateResources=_shouldBakeInIfContainsPenultimateResources;
+@property (nonatomic) BOOL shouldBakeInIfCropped; // @synthesize shouldBakeInIfCropped=_shouldBakeInIfCropped;
+@property (nonatomic) BOOL shouldBakeInIfLivePhotoMuted; // @synthesize shouldBakeInIfLivePhotoMuted=_shouldBakeInIfLivePhotoMuted;
+@property (nonatomic) BOOL shouldBakeInIfLivePhotoPlaybackDisabled; // @synthesize shouldBakeInIfLivePhotoPlaybackDisabled=_shouldBakeInIfLivePhotoPlaybackDisabled;
+@property (nonatomic) BOOL shouldBakeInIfPortraitDepthEffectEnabled; // @synthesize shouldBakeInIfPortraitDepthEffectEnabled=_shouldBakeInIfPortraitDepthEffectEnabled;
+@property (nonatomic) BOOL shouldBakeInIfTimelineTrimmed; // @synthesize shouldBakeInIfTimelineTrimmed=_shouldBakeInIfTimelineTrimmed;
+@property (nonatomic) BOOL shouldIncludeSpatialOvercaptureResources; // @synthesize shouldIncludeSpatialOvercaptureResources=_shouldIncludeSpatialOvercaptureResources;
 @property (nonatomic) BOOL shouldShowInlineAddButton; // @synthesize shouldShowInlineAddButton=_shouldShowInlineAddButton;
 @property (nonatomic) BOOL showAttachedHeaderView; // @synthesize showAttachedHeaderView=_showAttachedHeaderView;
+@property (nonatomic) BOOL showCMMInvitationGadgets; // @synthesize showCMMInvitationGadgets=_showCMMInvitationGadgets;
 @property (nonatomic) BOOL showCMMSettingsAtTopLevel; // @synthesize showCMMSettingsAtTopLevel=_showCMMSettingsAtTopLevel;
+@property (nonatomic) BOOL showCMMSuggestionGadgets; // @synthesize showCMMSuggestionGadgets=_showCMMSuggestionGadgets;
 @property (nonatomic) BOOL showDebugStatus; // @synthesize showDebugStatus=_showDebugStatus;
 @property (nonatomic) BOOL showFakeSendBackFooterView; // @synthesize showFakeSendBackFooterView=_showFakeSendBackFooterView;
 @property (nonatomic) BOOL showFloatingBanner; // @synthesize showFloatingBanner=_showFloatingBanner;
-@property (nonatomic) BOOL showIncomingShares; // @synthesize showIncomingShares=_showIncomingShares;
 @property (nonatomic) BOOL showMergeCandidateSuggestionsAfterBootstrapNaming; // @synthesize showMergeCandidateSuggestionsAfterBootstrapNaming=_showMergeCandidateSuggestionsAfterBootstrapNaming;
 @property (nonatomic) BOOL showMessage; // @synthesize showMessage=_showMessage;
 @property (nonatomic) BOOL showMessageTextEntryGadget; // @synthesize showMessageTextEntryGadget=_showMessageTextEntryGadget;
 @property (nonatomic) BOOL showOtherTitle; // @synthesize showOtherTitle=_showOtherTitle;
-@property (nonatomic) BOOL showOutgoingShares; // @synthesize showOutgoingShares=_showOutgoingShares;
 @property (nonatomic) BOOL showPeopleSuggestions; // @synthesize showPeopleSuggestions=_showPeopleSuggestions;
 @property (nonatomic) BOOL showProgressBannerView; // @synthesize showProgressBannerView=_showProgressBannerView;
 @property (nonatomic) BOOL showProgressBannerViewPaused; // @synthesize showProgressBannerViewPaused=_showProgressBannerViewPaused;
 @property (nonatomic) BOOL showProgressInGrid; // @synthesize showProgressInGrid=_showProgressInGrid;
+@property (nonatomic) BOOL showSampleGadgets; // @synthesize showSampleGadgets=_showSampleGadgets;
 @property (nonatomic) BOOL showSectionHeaders; // @synthesize showSectionHeaders=_showSectionHeaders;
 @property (nonatomic) BOOL showSendBackFooterView; // @synthesize showSendBackFooterView=_showSendBackFooterView;
 @property (nonatomic) BOOL showSenderField; // @synthesize showSenderField=_showSenderField;
+@property (nonatomic) BOOL showStatusFooter; // @synthesize showStatusFooter=_showStatusFooter;
 @property (nonatomic) BOOL showSubtitle; // @synthesize showSubtitle=_showSubtitle;
 @property (nonatomic) BOOL showTitle; // @synthesize showTitle=_showTitle;
 @property (nonatomic) BOOL showURLInBubble; // @synthesize showURLInBubble=_showURLInBubble;
+@property (nonatomic) long long sidebarType; // @synthesize sidebarType=_sidebarType;
 @property (nonatomic) BOOL simulateDelays; // @synthesize simulateDelays=_simulateDelays;
 @property (nonatomic) BOOL simulateImport; // @synthesize simulateImport=_simulateImport;
 @property (nonatomic) BOOL simulateImportFailure; // @synthesize simulateImportFailure=_simulateImportFailure;
@@ -133,12 +154,11 @@
 @property (nonatomic) long long suggestionsScrollDirection; // @synthesize suggestionsScrollDirection=_suggestionsScrollDirection;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useDebugColors; // @synthesize useDebugColors=_useDebugColors;
-@property (readonly, nonatomic) PXCMMWorkflowCoordinator *workflowCoordinator;
+@property (strong, nonatomic) PXCMMWorkflowCoordinator *workflowCoordinator;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 + (id)transientProperties;
-- (void).cxx_destruct;
 - (id)parentSettings;
 - (void)setDefaultValues;
 - (void)workflowCoordinator:(id)arg1 workflowViewController:(id)arg2 didFinishSession:(id)arg3 withActivityState:(unsigned long long)arg4;

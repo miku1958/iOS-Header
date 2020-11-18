@@ -49,9 +49,12 @@
 - (void)noteEndAnimationToPreview;
 - (void)pausePreview;
 - (void)provider:(id)arg1 cameraDidBecomeAvailableForUniqueID:(id)arg2;
+- (void)provider:(id)arg1 cameraZoomAvailabilityDidChange:(BOOL)arg2;
 - (void)provider:(id)arg1 didChangeLocalVideoAttributes:(id)arg2;
 - (void)provider:(id)arg1 didReceiveErrorFromCameraUniqueID:(id)arg2 error:(id)arg3;
 - (void)provider:(id)arg1 didReceiveFirstPreviewFrameFromCameraUniqueID:(id)arg2;
+- (void)rampCameraZoomFactor:(double)arg1 withRate:(double)arg2;
+- (void)setCameraZoomFactor:(double)arg1;
 - (void)setLocalPortraitAspectRatio:(struct CGSize)arg1 localLandscapeAspectRatio:(struct CGSize)arg2;
 - (void)startPreview;
 - (void)stopPreview;

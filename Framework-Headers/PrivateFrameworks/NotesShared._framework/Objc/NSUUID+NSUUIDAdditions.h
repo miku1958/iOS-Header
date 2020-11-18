@@ -6,9 +6,35 @@
 
 #import <Foundation/NSUUID.h>
 
-@interface NSUUID (NSUUIDAdditions)
+#import <NotesShared/CRCoding-Protocol.h>
+#import <NotesShared/CRDataType-Protocol.h>
+#import <NotesShared/CREquatable-Protocol.h>
+
+@class NSString;
+
+@interface NSUUID (NSUUIDAdditions) <CRDataType, CREquatable, CRCoding>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)CR_UUIDFromStdString:(const basic_string_a1f69cfb *)arg1;
++ (id)CR_repeatedCharUUID:(unsigned char)arg1;
++ (id)CR_zero;
 + (id)TTZero;
+- (long long)CR_compare:(id)arg1;
+- (id)CR_shortDescription;
+- (basic_string_a1f69cfb)CR_toStdString;
 - (long long)TTCompare:(id)arg1;
 - (id)TTShortDescription;
+- (id)deltaSince:(id)arg1 in:(id)arg2;
+- (void)encodeWithCRCoder:(id)arg1;
+- (id)initWithCRCoder:(id)arg1;
+- (void)mergeWith:(id)arg1;
+- (void)realizeLocalChangesIn:(id)arg1;
+- (void)setDocument:(id)arg1;
+- (id)tombstone;
+- (void)walkGraph:(CDUnknownBlockType)arg1;
 @end
 

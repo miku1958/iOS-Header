@@ -8,29 +8,51 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOVisualLaneGuidance : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_instructions;
     NSMutableArray *_laneInfos;
     NSMutableArray *_titles;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_instructions:1;
+        unsigned int read_laneInfos:1;
+        unsigned int read_titles:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_instructions:1;
+        unsigned int wrote_laneInfos:1;
+        unsigned int wrote_titles:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *instructions; // @synthesize instructions=_instructions;
-@property (strong, nonatomic) NSMutableArray *laneInfos; // @synthesize laneInfos=_laneInfos;
-@property (strong, nonatomic) NSMutableArray *titles; // @synthesize titles=_titles;
+@property (strong, nonatomic) NSMutableArray *instructions;
+@property (strong, nonatomic) NSMutableArray *laneInfos;
+@property (strong, nonatomic) NSMutableArray *titles;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)instructionType;
++ (BOOL)isValid:(id)arg1;
 + (Class)laneInfoType;
 + (Class)titleType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsInstruction:(id)arg1;
+- (void)_addNoFlagsLaneInfo:(id)arg1;
+- (void)_addNoFlagsTitle:(id)arg1;
+- (void)_readInstructions;
+- (void)_readLaneInfos;
+- (void)_readTitles;
 - (void)addInstruction:(id)arg1;
 - (void)addLaneInfo:(id)arg1;
 - (void)addTitle:(id)arg1;
 - (void)clearInstructions;
 - (void)clearLaneInfos;
 - (void)clearTitles;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +64,7 @@
 - (id)laneInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)laneInfosCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)titleAtIndex:(unsigned long long)arg1;
 - (unsigned long long)titlesCount;

@@ -23,7 +23,6 @@
     UIVisualEffectView *_primaryVisualEffectView;
     UIVisualEffectView *_secondaryVisualEffectView;
     NSLayoutConstraint *_avatarContentViewHeightLayoutConstraint;
-    NSLayoutConstraint *_avatarContentViewWidthLayoutConstraint;
     NSLayoutConstraint *_contactNameLabelBaselineLayoutConstraint;
     NSLayoutConstraint *_transportNameLabelBaselineLayoutConstraint;
     NSLayoutConstraint *_transportNameLabelLeadingLayoutConstraint;
@@ -33,8 +32,6 @@
 @property (readonly, nonatomic) UIView *avatarContentView; // @synthesize avatarContentView=_avatarContentView;
 @property (strong, nonatomic) NSLayoutConstraint *avatarContentViewHeightLayoutConstraint; // @synthesize avatarContentViewHeightLayoutConstraint=_avatarContentViewHeightLayoutConstraint;
 @property (readonly, nonatomic) double avatarContentViewHeightLayoutConstraintConstant;
-@property (strong, nonatomic) NSLayoutConstraint *avatarContentViewWidthLayoutConstraint; // @synthesize avatarContentViewWidthLayoutConstraint=_avatarContentViewWidthLayoutConstraint;
-@property (readonly, nonatomic) double avatarContentViewWidthLayoutConstraintConstant;
 @property (strong, nonatomic) CNAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
 @property (strong, nonatomic) UILabel *contactNameLabel; // @synthesize contactNameLabel=_contactNameLabel;
 @property (strong, nonatomic) NSLayoutConstraint *contactNameLabelBaselineLayoutConstraint; // @synthesize contactNameLabelBaselineLayoutConstraint=_contactNameLabelBaselineLayoutConstraint;

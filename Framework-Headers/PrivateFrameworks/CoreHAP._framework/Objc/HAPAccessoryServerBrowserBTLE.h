@@ -75,7 +75,7 @@
 - (void)_handleTargetedScanTimeout;
 - (BOOL)_hasPairedAccessoriesOfType:(unsigned long long)arg1;
 - (BOOL)_hasRecentlySeenAccessoriesWithIdentifiers:(id)arg1;
-- (void)_matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_notifyDelegatesOfRemovedAccessoryServer:(id)arg1 error:(id)arg2;
 - (unsigned long long)_parseAdvertisementData:(id)arg1 forPeripheral:(id)arg2 name:(id *)arg3 pairingUsername:(id *)arg4 statusFlags:(id *)arg5 stateNumber:(id *)arg6 category:(id *)arg7 configNumber:(id *)arg8 setupHash:(id *)arg9;
 - (void)_performTargetedScanForAccessoryWithIdentifier:(id)arg1;
@@ -112,7 +112,7 @@
 - (id)initWithQueue:(id)arg1;
 - (long long)linkType;
 - (void)markNotifyingCharacteristicUpdatedForIdentifier:(id)arg1;
-- (void)matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)pauseScans;
 - (void)probeReachabilityForAccessoryServersWithIdentifiers:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)registerPairedAccessoryWithIdentifier:(id)arg1;

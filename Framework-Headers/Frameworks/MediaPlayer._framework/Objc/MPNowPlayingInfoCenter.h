@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MPArtworkResizeUtility, MPNowPlayingContentItem, MPNowPlayingInfoCenterArtworkContext, MSVLRUDictionary, MSVTimer, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
+#import <MediaPlayer/MPMediaRemoteEntityArtworkGenerator-Protocol.h>
+
+@class MPArtworkResizeUtility, MPMRNowPlayingPlayerPathWrapper, MPNowPlayingContentItem, MPNowPlayingInfoCenterArtworkContext, MSVLRUDictionary, MSVTimer, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 @protocol MPNowPlayingInfoLyricsDelegate, MPNowPlayingPlaybackQueueDataSource, MPNowPlayingPlaybackQueueDelegate, OS_dispatch_queue;
 
-@interface MPNowPlayingInfoCenter : NSObject
+@interface MPNowPlayingInfoCenter : NSObject <MPMediaRemoteEntityArtworkGenerator>
 {
     NSDictionary *_nowPlayingInfo;
     NSDictionary *_queuedNowPlayingInfo;
@@ -41,7 +43,7 @@
         void *lyrics;
     } _callbacks;
     void *_fallbackActivity;
-    void *_playerPath;
+    MPMRNowPlayingPlayerPathWrapper *_playerPath;
     id<MPNowPlayingPlaybackQueueDelegate> _playbackQueueDelegate;
     NSString *_playerID;
     NSString *_representedApplicationBundleIdentifier;
@@ -49,6 +51,9 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dataSourceQueue; // @synthesize dataSourceQueue=_dataSourceQueue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<MPNowPlayingInfoLyricsDelegate> lyricsDelegate;
 @property (strong, nonatomic) MPNowPlayingContentItem *nowPlayingContentItem;
 @property (copy, nonatomic) NSDictionary *nowPlayingInfo; // @dynamic nowPlayingInfo;
@@ -56,8 +61,9 @@
 @property (weak, nonatomic) id<MPNowPlayingPlaybackQueueDelegate> playbackQueueDelegate; // @synthesize playbackQueueDelegate=_playbackQueueDelegate;
 @property (nonatomic) unsigned long long playbackState;
 @property (readonly, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
-@property (readonly, nonatomic) void *playerPath; // @synthesize playerPath=_playerPath;
+@property (readonly, nonatomic) MPMRNowPlayingPlayerPathWrapper *playerPath; // @synthesize playerPath=_playerPath;
 @property (copy, nonatomic) NSString *representedApplicationBundleIdentifier; // @synthesize representedApplicationBundleIdentifier=_representedApplicationBundleIdentifier;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsArtworkCatalogLoading;
 
 + (id)defaultCenter;
@@ -65,7 +71,6 @@
 + (id)serviceQueue;
 - (void).cxx_destruct;
 - (id)_artworkCatalogForContentItem:(id)arg1;
-- (void)_audioSessionRoutingContextDidChangeNotification:(id)arg1;
 - (void)_becomeActiveWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_childContentItemForContentItem:(id)arg1 index:(long long)arg2;
 - (void)_contentItemChangedNotification:(id)arg1;
@@ -74,6 +79,7 @@
 - (id)_contentItemIDsInRange:(CDStruct_912cb5d2)arg1 itemsRange:(CDStruct_912cb5d2 *)arg2;
 - (void *)_createPlaybackQueueForRequest:(void *)arg1;
 - (void)_getMetadataForContentItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getTransportablePlaybackSessionRepresentationWithIdentifier:(id)arg1 preferredSessionType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_initializeNowPlayingInfo;
 - (void)_invalidatePlaybackQueueImmediately;
 - (id)_onDataSourceQueue_artworkCatalogForContentItem:(id)arg1;
@@ -83,7 +89,7 @@
 - (void)_onQueue_pushNowPlayingInfoAndRetry:(BOOL)arg1;
 - (void)_onQueue_registerLyricsDelegateCallbacks:(id)arg1;
 - (void)_onQueue_registerPlaybackQueueDataSourceCallbacks:(id)arg1;
-- (void)_updatePlayerAudioSessionProperties;
+- (CDUnknownBlockType)artworkCatalogBlockForContentItem:(id)arg1;
 - (void)becomeActive;
 - (void)becomeActiveSystemFallback;
 - (void)dealloc;

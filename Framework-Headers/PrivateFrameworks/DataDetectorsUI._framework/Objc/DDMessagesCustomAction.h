@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
+- (id)icon;
 - (id)localizedName;
 - (void)performFromView:(id)arg1;
 

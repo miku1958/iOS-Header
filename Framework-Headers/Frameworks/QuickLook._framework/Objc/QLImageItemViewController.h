@@ -10,7 +10,6 @@
 
 @class NSString, QLAnimatedImage, UIImageView;
 
-__attribute__((visibility("hidden")))
 @interface QLImageItemViewController : QLScrollableContentItemViewController <QLAnimationTimerObserver>
 {
     UIImageView *_imageView;
@@ -26,9 +25,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
 - (void)animationTimerFired:(double)arg1;
 - (id)draggableView;

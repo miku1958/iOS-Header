@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
-- (void)_setSelected:(BOOL)arg1;
+- (void)_setSelected:(BOOL)arg1 affectingChildren:(BOOL)arg2;
 - (id)arrayForDisplay:(BOOL)arg1;
 - (id)initWithType:(long long)arg1 nameProvider:(CDUnknownBlockType)arg2;
 - (long long)localizedCompare:(id)arg1;

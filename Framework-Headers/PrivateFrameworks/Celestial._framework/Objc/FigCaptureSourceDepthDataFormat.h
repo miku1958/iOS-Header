@@ -6,6 +6,8 @@
 
 #import <Celestial/FigCaptureSourceFormat.h>
 
+@class NSArray;
+
 @interface FigCaptureSourceDepthDataFormat : FigCaptureSourceFormat
 {
 }
@@ -18,6 +20,7 @@
 @property (readonly) float minSupportedFrameRate;
 @property (readonly) float portraitEffectsMatteMainImageDownscalingFactor;
 @property (readonly, getter=isStillImageOnlyDepthData) BOOL stillImageOnlyDepthData;
+@property (readonly) NSArray *supportedSemanticSegmentationMatteURNs;
 
 - (id)copyWithNewPixelFormat:(unsigned int)arg1;
 - (CDStruct_79c71658)depthEngineOutputDimensions;

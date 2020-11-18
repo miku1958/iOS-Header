@@ -15,15 +15,15 @@
     STScreenTimeGroupSpecifierProvider *_screenTimeGroupSpecifierProvider;
 }
 
-@property (readonly, nonatomic) STEnableScreenTimeGroupSpecifierProvider *enableScreenTimeGroupSpecifierProvider; // @synthesize enableScreenTimeGroupSpecifierProvider=_enableScreenTimeGroupSpecifierProvider;
-@property (readonly, nonatomic) STScreenTimeGroupSpecifierProvider *screenTimeGroupSpecifierProvider; // @synthesize screenTimeGroupSpecifierProvider=_screenTimeGroupSpecifierProvider;
+@property (readonly) STEnableScreenTimeGroupSpecifierProvider *enableScreenTimeGroupSpecifierProvider; // @synthesize enableScreenTimeGroupSpecifierProvider=_enableScreenTimeGroupSpecifierProvider;
+@property (readonly) STScreenTimeGroupSpecifierProvider *screenTimeGroupSpecifierProvider; // @synthesize screenTimeGroupSpecifierProvider=_screenTimeGroupSpecifierProvider;
 @property (nonatomic) BOOL shouldRefreshUsageData; // @synthesize shouldRefreshUsageData=_shouldRefreshUsageData;
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)initWithRootViewModelCoordinator:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (BOOL)prepareHandlingURLForSpecifierID:(id)arg1 resourceDictionary:(id)arg2 animatePush:(BOOL *)arg3;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

@@ -6,12 +6,10 @@
 
 #import <HealthKit/HKSampleType.h>
 
-@class HKUnit, NSString, _HKDimension;
+@class HKUnit, _HKDimension;
 
 @interface HKQuantityType : HKSampleType
 {
-    long long _aggregationStyle;
-    NSString *_unitString;
     HKUnit *_canonicalUnit;
     struct os_unfair_lock_s _canonicalUnitLock;
 }
@@ -22,8 +20,8 @@
 
 + (id)_quantityTypeWithCode:(long long)arg1;
 - (void).cxx_destruct;
-- (id)_initWithDefinition:(CDStruct_6b208136 *)arg1;
-- (BOOL)_validateMetadata:(id)arg1 error:(id *)arg2;
+- (id)_initWithCode:(long long)arg1;
+- (BOOL)_validateMetadata:(id)arg1 sample:(id)arg2 error:(id *)arg3;
 - (BOOL)isCompatibleWithUnit:(id)arg1;
 - (void)validateUnit:(id)arg1;
 - (void)validateUnitFromString:(id)arg1;

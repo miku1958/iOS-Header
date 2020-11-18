@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/_AURemoteParameterSynchronization-Protocol.h>
+#import <AudioToolboxCore/_AURemoteParameterSynchronization-Protocol.h>
 
 @class MIDICIProfile, NSArray;
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
 
 @end
 

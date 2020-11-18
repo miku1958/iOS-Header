@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UIResponderForwardable-Protocol.h>
 
-@class NSArray, NSMutableArray, NSNumber, NSString, UIResponder, UIView, UIWindow;
+@class NSArray, NSMutableArray, NSNumber, NSString, UIResponder, UIView, UIWindow, _UITouchPredictor;
 @protocol _UITouchPhaseChangeDelegate;
 
 @interface UITouch : NSObject <_UIResponderForwardable>
@@ -47,6 +47,7 @@
         unsigned int _isPredictedTouch:1;
         unsigned int _didDispatchAsEnded:1;
     } _touchFlags;
+    _UITouchPredictor *_touchPredictor;
     BOOL _eaten;
     BOOL _needsForceUpdate;
     BOOL _hasForceUpdate;
@@ -122,7 +123,7 @@
 - (void)_clonePropertiesToTouch:(id)arg1;
 - (long long)_compareIndex:(id)arg1;
 - (void)_computeAzimuthAngleInWindow;
-- (double)_distanceFrom:(id)arg1 inView:(id)arg2;
+- (BOOL)_currentlyPredictingTouches;
 - (BOOL)_edgeForceActive;
 - (BOOL)_edgeForcePending;
 - (id)_forwardingRecord;
@@ -137,6 +138,7 @@
 - (id)_mutableForwardingRecord;
 - (float)_pathMajorRadius;
 - (id)_phaseDescription;
+- (id)_predictedTouchesWithEvent:(id)arg1;
 - (struct CGPoint)_previousLocationInSceneReferenceSpace;
 - (struct CGPoint)_previousLocationInWindow:(id)arg1;
 - (id)_rehitTest;
@@ -152,8 +154,10 @@
 - (double)_standardForceAmount;
 - (BOOL)_supportsForce;
 - (unsigned int)_touchIdentifier;
+- (id)_touchPredictor;
 - (void)_updateMovementMagnitudeForLocation:(struct CGPoint)arg1;
 - (void)_updateMovementMagnitudeFromLocation:(struct CGPoint)arg1 toLocation:(struct CGPoint)arg2;
+- (void)_updatePredictionsWithCoalescedTouches:(id)arg1;
 - (void)_updateWithChildEvent:(struct __IOHIDEvent *)arg1;
 - (BOOL)_wantsForwardingFromResponder:(id)arg1 toNextResponder:(id)arg2 withEvent:(id)arg3;
 - (void)_willBeDispatchedAsEnded;

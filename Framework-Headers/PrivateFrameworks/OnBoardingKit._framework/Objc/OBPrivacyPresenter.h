@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, OBPrivacyCombinedController, OBPrivacySplashController, UIViewController;
+@class NSArray, NSString, OBPrivacyCombinedController, OBPrivacySplashController, UIViewController;
 
 @interface OBPrivacyPresenter : NSObject
 {
@@ -16,6 +16,7 @@
     CDUnknownBlockType _dismissHandler;
     OBPrivacySplashController *_splashController;
     OBPrivacyCombinedController *_combinedController;
+    NSString *_displayLanguage;
     UIViewController *_presentingViewController;
     long long _modalPresentationStyle;
     unsigned long long _supportedInterfaceOrientations;
@@ -28,6 +29,7 @@
 @property (strong) OBPrivacyCombinedController *combinedController; // @synthesize combinedController=_combinedController;
 @property (nonatomic) BOOL darkMode; // @synthesize darkMode=_darkMode;
 @property (copy) CDUnknownBlockType dismissHandler; // @synthesize dismissHandler=_dismissHandler;
+@property (strong, nonatomic) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property (nonatomic) long long modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;
 @property (copy) CDUnknownBlockType presentationCompletionHandler; // @synthesize presentationCompletionHandler=_presentationCompletionHandler;
 @property (strong) UIViewController *presentedController; // @synthesize presentedController=_presentedController;
@@ -37,6 +39,8 @@
 @property (nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;
 @property (nonatomic) BOOL usesFullScreenPresentation; // @synthesize usesFullScreenPresentation=_usesFullScreenPresentation;
 
++ (id)presenterForPrivacySplashWithBundle:(id)arg1;
++ (id)presenterForPrivacySplashWithBundleAtPath:(id)arg1;
 + (id)presenterForPrivacySplashWithIdentifer:(id)arg1;
 + (id)presenterForPrivacySplashWithIdentifier:(id)arg1;
 + (id)presenterForPrivacyUnifiedAbout;

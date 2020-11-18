@@ -43,8 +43,8 @@
 - (id)featureTile;
 - (int)featureType;
 - (BOOL)hasBusinessID;
+- (BOOL)hasVenueLookInsideFloorOrdinal;
 - (id)incident;
-- (id)initWithFeatureMarkerPtr:(const shared_ptr_430519ce *)arg1;
 - (id)initWithLabelMarkerPtr:(const shared_ptr_2d33c5e4 *)arg1;
 - (BOOL)isAlongSelectedTransitLine;
 - (BOOL)isCluster;
@@ -61,10 +61,12 @@
 - (BOOL)isTrafficCamera;
 - (BOOL)isTrafficIncident;
 - (BOOL)isTransit;
+- (BOOL)isTransitAccessPoint;
 - (BOOL)isTransitLine;
 - (BOOL)isVenueButton;
 - (BOOL)isVisible;
 - (const shared_ptr_2d33c5e4 *)labelMarkerImpl;
+- (id)locale;
 - (id)mapRegion;
 - (id)parentClusterLabelMarker;
 - (unsigned char)pickedLabelBalloonBehavior;
@@ -85,6 +87,7 @@
 - (short)venueFloorOrdinal;
 - (unsigned long long)venueID;
 - (unsigned long long)venueLevelID;
+- (short)venueLookInsideFloorOrdinal;
 
 @end
 

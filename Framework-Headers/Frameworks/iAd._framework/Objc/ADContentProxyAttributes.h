@@ -22,10 +22,10 @@
 @property (nonatomic) long long proxyType; // @synthesize proxyType=_proxyType;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)configVersionDidChange:(id)arg1;
 - (void)contentProxyURLConnectDidChange:(id)arg1;
 - (void)contentProxyURLDidChange:(id)arg1;
-- (void)dealloc;
 - (void)proxyTypeDidChange:(long long)arg1;
 
 @end

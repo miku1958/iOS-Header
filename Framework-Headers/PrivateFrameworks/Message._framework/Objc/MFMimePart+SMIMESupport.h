@@ -12,6 +12,13 @@
 
 @property (readonly, nonatomic) MFError *SMIMEError;
 
+- (BOOL)_needsSignatureVerification:(id *)arg1;
+- (void)_setSMIMEError:(id)arg1;
+- (void)_setSigners:(id)arg1;
 - (id)copySigners;
+- (id)decodeApplicationPkcs7_mime;
+- (id)decodeMultipartSigned;
+- (id)newEncryptedPartWithData:(id)arg1 compositionSpecification:(id)arg2 encryptedData:(id *)arg3;
+- (id)newSignedPartWithData:(id)arg1 sender:(id)arg2 compositionSpecification:(id)arg3 signatureData:(id *)arg4;
 @end
 

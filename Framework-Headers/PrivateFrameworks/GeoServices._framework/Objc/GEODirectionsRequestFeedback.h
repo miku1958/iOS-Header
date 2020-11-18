@@ -8,32 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader, PBUnknownFields;
 
 @interface GEODirectionsRequestFeedback : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSString *_appIdentifier;
-    int _purpose;
     NSString *_requestingAppId;
+    int _purpose;
     int _source;
     struct {
-        unsigned int purpose:1;
-        unsigned int source:1;
-    } _has;
+        unsigned int has_purpose:1;
+        unsigned int has_source:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_appIdentifier:1;
+        unsigned int read_requestingAppId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_appIdentifier:1;
+        unsigned int wrote_requestingAppId:1;
+        unsigned int wrote_purpose:1;
+        unsigned int wrote_source:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
+@property (strong, nonatomic) NSString *appIdentifier;
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (nonatomic) BOOL hasPurpose;
 @property (readonly, nonatomic) BOOL hasRequestingAppId;
 @property (nonatomic) BOOL hasSource;
-@property (nonatomic) int purpose; // @synthesize purpose=_purpose;
-@property (strong, nonatomic) NSString *requestingAppId; // @synthesize requestingAppId=_requestingAppId;
-@property (nonatomic) int source; // @synthesize source=_source;
+@property (nonatomic) int purpose;
+@property (strong, nonatomic) NSString *requestingAppId;
+@property (nonatomic) int source;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsPurpose:(id)arg1;
 - (int)StringAsSource:(id)arg1;
+- (void)_readAppIdentifier;
+- (void)_readRequestingAppId;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -45,6 +61,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)purposeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)sourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

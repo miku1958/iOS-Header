@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMPedometerProxy : NSObject
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
     NSObject<OS_dispatch_queue> *fAppQueue;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     struct CLConnectionClient *fLocationdConnection;
     CDUnknownBlockType fOffsetUpdateHandler;
     CDUnknownBlockType fCumulativeUpdateHandler;
@@ -52,10 +51,8 @@
 - (void)_startPedometerEventUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)_startPedometerUpdatesFromDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_startPedometerUpdatesSinceDataRecord:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)_startWatchdogCheckins;
 - (void)_stopPedometerEventUpdates;
 - (void)_stopPedometerUpdates;
-- (void)_stopWatchdogCheckins;
 - (id)_strideCalibrationDump;
 - (void)_subscribeToCumulativePedometerUpdates:(CDUnknownBlockType)arg1;
 - (void)_teardown;

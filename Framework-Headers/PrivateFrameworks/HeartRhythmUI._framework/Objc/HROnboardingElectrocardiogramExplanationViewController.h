@@ -30,7 +30,7 @@
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
 - (void)_setUpButtonFooterView;
-- (double)_titleLastBaselineToVideoViewTop;
+- (double)_titleBottomToVideoViewTop;
 - (double)_videoViewBottomToBodyFirstBaseline;
 - (id)initForOnboarding:(BOOL)arg1;
 - (void)setUpConstraints;

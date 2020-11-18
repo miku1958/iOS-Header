@@ -15,9 +15,12 @@
 @interface IMMessageItem : IMItem <NSSecureCoding, NSCopying, IMRemoteObjectCoding>
 {
     BOOL _blockingRichLinks;
+    BOOL _isBeingRetried;
     BOOL _updatingDataSourcePayload;
     BOOL _backwardsCompatibleVersion;
     BOOL _isSOS;
+    BOOL _NicknameRequested;
+    BOOL _shouldSendMeCard;
     unsigned int _error;
     NSString *_subject;
     NSString *_plainBody;
@@ -38,9 +41,13 @@
     NSDictionary *_messageSummaryInfo;
     NSDictionary *_bizIntent;
     NSString *_locale;
+    NSString *_retryToParticipant;
     NSString *_notificationIDSTokenURI;
+    NSString *_suggestedAuthorName;
+    NSString *_suggestedAuthorAvatarPath;
 }
 
+@property (nonatomic) BOOL NicknameRequested; // @synthesize NicknameRequested=_NicknameRequested;
 @property (nonatomic) BOOL backwardsCompatibleVersion; // @synthesize backwardsCompatibleVersion=_backwardsCompatibleVersion;
 @property (strong, nonatomic) NSDictionary *bizIntent; // @synthesize bizIntent=_bizIntent;
 @property (nonatomic) BOOL blockingRichLinks; // @synthesize blockingRichLinks=_blockingRichLinks;
@@ -56,6 +63,7 @@
 @property (nonatomic) BOOL hasDataDetectorResults;
 @property (readonly, nonatomic) BOOL isAlert;
 @property (readonly, nonatomic) BOOL isAudioMessage;
+@property (nonatomic) BOOL isBeingRetried; // @synthesize isBeingRetried=_isBeingRetried;
 @property (nonatomic) BOOL isCorrupt;
 @property (readonly, nonatomic) BOOL isDelivered;
 @property (readonly, nonatomic) BOOL isEmote;
@@ -69,6 +77,7 @@
 @property (readonly, nonatomic) BOOL isRead;
 @property (nonatomic) BOOL isSOS; // @synthesize isSOS=_isSOS;
 @property (readonly, nonatomic) BOOL isSent;
+@property (nonatomic) BOOL isSpam;
 @property (readonly, nonatomic) BOOL isTypingMessage;
 @property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSDictionary *messageSummaryInfo; // @synthesize messageSummaryInfo=_messageSummaryInfo;
@@ -76,7 +85,11 @@
 @property (strong, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;
 @property (strong, nonatomic) NSString *plainBody; // @synthesize plainBody=_plainBody;
 @property (nonatomic) long long replaceID; // @synthesize replaceID=_replaceID;
+@property (strong, nonatomic) NSString *retryToParticipant; // @synthesize retryToParticipant=_retryToParticipant;
+@property (nonatomic) BOOL shouldSendMeCard; // @synthesize shouldSendMeCard=_shouldSendMeCard;
 @property (strong, nonatomic) NSString *subject; // @synthesize subject=_subject;
+@property (copy, nonatomic) NSString *suggestedAuthorAvatarPath; // @synthesize suggestedAuthorAvatarPath=_suggestedAuthorAvatarPath;
+@property (copy, nonatomic) NSString *suggestedAuthorName; // @synthesize suggestedAuthorName=_suggestedAuthorName;
 @property (strong, nonatomic) NSDate *timeDelivered; // @synthesize timeDelivered=_timeDelivered;
 @property (strong, nonatomic) NSDate *timeExpressiveSendPlayed; // @synthesize timeExpressiveSendPlayed=_timeExpressiveSendPlayed;
 @property (strong, nonatomic) NSDate *timePlayed; // @synthesize timePlayed=_timePlayed;

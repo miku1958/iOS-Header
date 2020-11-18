@@ -14,23 +14,25 @@
 @interface CNDDonationPreferences : NSObject <CNDDonationPreferences>
 {
     NSNotificationCenter *_notificationCenter;
-    Class _storageClass;
     id<CNDonationPreferencesLogger> _logger;
+    CDUnknownBlockType _donationPreferenceCheckingBlock;
+    CDUnknownBlockType _donationPreferenceSettingBlock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) CDUnknownBlockType donationPreferenceCheckingBlock; // @synthesize donationPreferenceCheckingBlock=_donationPreferenceCheckingBlock;
+@property (readonly, copy, nonatomic) CDUnknownBlockType donationPreferenceSettingBlock; // @synthesize donationPreferenceSettingBlock=_donationPreferenceSettingBlock;
 @property (nonatomic, getter=isDonationsEnabled) BOOL donationsEnabled;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<CNDonationPreferencesLogger> logger; // @synthesize logger=_logger;
 @property (readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
-@property (readonly, nonatomic) Class storageClass; // @synthesize storageClass=_storageClass;
 @property (readonly) Class superclass;
 
 + (id)observableWithPreferences:(id)arg1 notificationCenter:(id)arg2 schedulerProvider:(id)arg3;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithNotificationCenter:(id)arg1 storageClass:(Class)arg2 logger:(id)arg3;
+- (id)initWithNotificationCenter:(id)arg1 logger:(id)arg2 donationPreferenceCheckingBlock:(CDUnknownBlockType)arg3 donationPreferenceSettingBlock:(CDUnknownBlockType)arg4;
 
 @end
 

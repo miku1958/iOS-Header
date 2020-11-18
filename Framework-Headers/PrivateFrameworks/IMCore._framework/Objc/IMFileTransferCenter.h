@@ -49,7 +49,6 @@
 - (void)_handleFileTransfer:(id)arg1 updatedWithProperties:(id)arg2;
 - (void)_handleFileTransferHighQualityDownloadFailed:(id)arg1;
 - (void)_handleFileTransfers:(id)arg1 createdWithLocalPaths:(id)arg2;
-- (void)_handleStandaloneFileTransferRegistered:(id)arg1;
 - (void)_initiateHighQualityVariantDownloadWithDaemonForGUID:(id)arg1;
 - (void)_removeActiveTransfer:(id)arg1;
 - (void)_removeAllActiveTransfers;

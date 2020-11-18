@@ -17,5 +17,6 @@
 @property (readonly) double temperature;
 @property (readonly) double tint;
 
+- (NSArray *)inputNeutralXYFromRGB:(const double *)arg1;
 @end
 

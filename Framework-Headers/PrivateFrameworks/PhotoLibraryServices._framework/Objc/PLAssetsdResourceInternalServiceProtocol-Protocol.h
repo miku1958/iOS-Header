@@ -6,6 +6,12 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
+@class NSArray, NSString, NSURL;
+
 @protocol PLAssetsdResourceInternalServiceProtocol <NSObject>
+- (void)asynchronousMasterThumbnailForAssetUUID:(NSString *)arg1 reply:(void (^)(BOOL, NSData *, NSError *))arg2;
+- (void)batchSaveAssetJobs:(NSArray *)arg1 reply:(void (^)(NSArray *))arg2;
+- (void)prepareRevertToOriginalWithObjectURI:(NSURL *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
+- (void)purgeExpiredOutboundSharingAssetsWithReply:(void (^)(NSError *))arg1;
 @end
 

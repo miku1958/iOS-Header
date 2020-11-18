@@ -30,7 +30,9 @@
 
 + (id)hk_abnormalBPMTextColor;
 + (id)hk_abnormalCardHeaderColor;
++ (id)hk_abnormalClassificationTextColor;
 + (id)hk_abnormalTimeStampCompositingFilter;
++ (id)hk_abnormalTimeStampTextColor;
 + (id)hk_defaultBPMTextColor;
 + (id)hk_defaultCardBackgroundColor;
 + (id)hk_defaultCardHeaderColor;

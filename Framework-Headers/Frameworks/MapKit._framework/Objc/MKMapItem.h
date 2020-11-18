@@ -11,7 +11,7 @@
 #import <MapKit/NSItemProviderWriting-Protocol.h>
 #import <MapKit/NSSecureCoding-Protocol.h>
 
-@class GEOAddress, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
+@class GEOAddress, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, GEORelatedPlaceList, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSDate, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemPrivate, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, MKTransitInfoPreload, NSObject;
 
 @interface MKMapItem : NSObject <NSSecureCoding, NSItemProviderReading, NSItemProviderWriting, GEOURLSerializable>
@@ -21,6 +21,7 @@
     id<GEOMapItem> _geoMapItem;
     MKMapItemIdentifier *_identifier;
     BOOL _isTransitInfoUpdated;
+    NSDate *_transitInfoUpdatedDate;
     id<GEOMapItemTransitInfo> _updatedTransitInfo;
     id<GEOMapItemTransitInfo> _defaultTransitInfo;
     id<GEOTransitAttribution> _updatedTransitAttribution;
@@ -37,11 +38,13 @@
     MKMapItemMetadata *_metadata;
     GEOPlace *_place;
     _MKPlaceReservationInfo *_reservationInfo;
+    NSString *_pointOfInterestCategory;
     id<MKTransitInfoPreload> _preloadedTransitInfo;
 }
 
 @property (readonly, nonatomic, getter=_acceptsApplePay) BOOL acceptsApplePay;
 @property (readonly, nonatomic, getter=_alternativeAppAdamIds) NSArray *alternativeAppAdamIds;
+@property (readonly, nonatomic, getter=_amenities) NSArray *amenities;
 @property (readonly, nonatomic, getter=_annotatedItemList) id<GEOAnnotatedItemList> annotatedItemList;
 @property (readonly, nonatomic, getter=_attribution) _MKMapItemPlaceAttribution *attribution; // @synthesize attribution=_attribution;
 @property (readonly, nonatomic, getter=_brandMUID) unsigned long long brand;
@@ -70,7 +73,6 @@
 @property (readonly, nonatomic, getter=_geoMapItem) id<GEOMapItemPrivate> geoMapItem;
 @property (readonly, nonatomic, getter=_geoMapItemStorageForDragAndDrop) GEOMapItemStorage *geoMapItemStorageForDragAndDrop;
 @property (readonly, nonatomic, getter=_geoMapItemStorageForPersistence) GEOMapItemStorage *geoMapItemStorageForPersistence;
-@property (readonly, nonatomic, getter=_goodForKids) BOOL goodForKids;
 @property (readonly, nonatomic, getter=_handle) NSData *handle;
 @property (readonly, nonatomic, getter=_hasAcceptsApplePayAmenity) BOOL hasAcceptsApplePayAmenity;
 @property (readonly, nonatomic, getter=_hasAnyAmenities) BOOL hasAnyAmenities;
@@ -79,25 +81,20 @@
 @property (readonly, nonatomic, getter=_hasBusinessHours) BOOL hasBusinessHours;
 @property (readonly, nonatomic, getter=_hasCorrectedHomeWorkAddress) BOOL hasCorrectedHomeWorkAddress;
 @property (readonly, nonatomic, getter=_hasCorrectedHomeWorkCoordinate) BOOL hasCorrectedHomeWorkCoordinate;
-@property (readonly, nonatomic, getter=_hasDelivery) BOOL hasDelivery;
-@property (readonly, nonatomic, getter=_hasDeliveryAmenity) BOOL hasDeliveryAmenity;
 @property (readonly, nonatomic, getter=_hasDisplayMaxZoom) BOOL hasDisplayMaxZoom;
 @property (readonly, nonatomic, getter=_hasDisplayMinZoom) BOOL hasDisplayMinZoom;
-@property (readonly, getter=_hasDisplayableAmenities) BOOL hasDisplayableAmenities;
 @property (readonly, nonatomic, getter=_hasEncyclopedicInfo) BOOL hasEncyclopedicInfo;
 @property (readonly, nonatomic, getter=_hasFlyover) BOOL hasFlyover;
-@property (readonly, nonatomic, getter=_hasGenderNeutralRestroom) BOOL hasGenderNeutralRestroom;
-@property (readonly, nonatomic, getter=_hasGenderNeutralRestroomAmenity) BOOL hasGenderNeutralRestroomAmenity;
-@property (readonly, nonatomic, getter=_hasGoodForKidsAmenity) BOOL hasGoodForKidsAmenity;
 @property (readonly, nonatomic, getter=_hasLinkedServices) BOOL hasLinkedServices;
 @property (readonly, nonatomic, getter=_hasLocalizedOperatingHours) BOOL hasLocalizedOperatingHours;
 @property (readonly, nonatomic, getter=_hasMUID) BOOL hasMUID;
+@property (readonly, nonatomic, getter=_hasMuninStorefront) BOOL hasMuninStorefront;
+@property (readonly, nonatomic, getter=_hasMuninViewState) BOOL hasMuninViewState;
 @property (readonly, nonatomic, getter=_hasOperatingHours) BOOL hasOperatingHours;
 @property (readonly, nonatomic, getter=_hasPriceDescription) BOOL hasPriceDescription;
 @property (readonly, nonatomic, getter=_hasPriceRange) BOOL hasPriceRange;
 @property (readonly, nonatomic, getter=_hasResolvablePartialInformation) BOOL hasResolvablePartialInformation;
 @property (readonly, nonatomic, getter=_hasResultProviderID) BOOL hasResultProviderID;
-@property (readonly, nonatomic, getter=_hasTakesReservationsAmenity) BOOL hasTakesReservationsAmenity;
 @property (readonly, nonatomic, getter=_hasTransit) BOOL hasTransit;
 @property (readonly, nonatomic, getter=_hasTransitDisplayName) BOOL hasTransitDisplayName;
 @property (readonly, nonatomic, getter=_hasTransitLabels) BOOL hasTransitLabels;
@@ -125,6 +122,7 @@
 @property (readonly, nonatomic, getter=_messageURLString) NSString *messageURLString;
 @property (readonly, nonatomic) MKMapItemMetadata *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic, getter=_muid) unsigned long long muid;
+@property (readonly, nonatomic, getter=_muninViewState) GEOMuninViewState *muninViewState;
 @property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic, getter=_navBackgroundbrandColor) UIColor *navBackgroundbrandColor;
 @property (readonly, nonatomic, getter=_navTintBrandColor) UIColor *navTintBrandColor;
@@ -136,18 +134,21 @@
 @property (readonly, nonatomic, getter=_phoneNumberOptsOutOfAds) BOOL phoneNumberOptsOutOfAds;
 @property (readonly, nonatomic, getter=_photosAttribution) _MKMapItemPhotosAttribution *photosAttribution; // @synthesize photosAttribution=_photosAttribution;
 @property (readonly, nonatomic) GEOPlace *place; // @synthesize place=_place;
+@property (readonly, nonatomic, getter=_placeCollections) NSArray *placeCollections;
 @property (readonly, nonatomic, getter=_placeDataAsData) NSData *placeDataAsData;
 @property (readonly, nonatomic, getter=_placeDisplayStyle) int placeDisplayStyle;
 @property (readonly, nonatomic, getter=_placecardLayout) GEOModuleLayoutEntry *placecardLayout;
 @property (readonly, nonatomic) MKPlacemark *placemark;
 @property (readonly, nonatomic, getter=_poiPinpointURLString) NSString *poiPinpointURLString;
 @property (readonly, nonatomic, getter=_poiSurveyURLString) NSString *poiSurveyURLString;
+@property (copy, nonatomic) NSString *pointOfInterestCategory; // @synthesize pointOfInterestCategory=_pointOfInterestCategory;
 @property (readonly, nonatomic, getter=_preferedAppAdamID) NSNumber *preferedAppAdamID;
 @property (readonly, nonatomic, getter=_preloadedTransitInfo) id<MKTransitInfoPreload> preloadedTransitInfo; // @synthesize preloadedTransitInfo=_preloadedTransitInfo;
 @property (readonly, nonatomic, getter=_priceDescription) NSString *priceDescription;
 @property (readonly, nonatomic, getter=_priceRangeString) NSString *priceRangeString;
 @property (readonly, copy, nonatomic, getter=_providerURL) NSURL *providerURL;
 @property (readonly, nonatomic, getter=_quickLinks) NSArray *quickLinks;
+@property (readonly, nonatomic, getter=_relatedPlaceList) GEORelatedPlaceList *relatedPlaceList;
 @property (strong, nonatomic) _MKPlaceReservationInfo *reservationInfo; // @synthesize reservationInfo=_reservationInfo;
 @property (readonly, nonatomic, getter=_responseStatusIsIncomplete) BOOL responseStatusIncomplete;
 @property (readonly, nonatomic, getter=_resultProviderID) int resultProviderID;
@@ -162,12 +163,12 @@
 @property (readonly, nonatomic, getter=_styleAttributes) GEOFeatureStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=_takesReservations) BOOL takesReservations;
 @property (copy, nonatomic) NSTimeZone *timeZone;
 @property (readonly, nonatomic, getter=_tips) NSArray *tips;
 @property (readonly, nonatomic, getter=_transitAttribution) id<GEOTransitAttribution> transitAttribution;
 @property (readonly, nonatomic, getter=_transitDisplayName) NSString *transitDisplayName;
 @property (readonly, nonatomic, getter=_transitInfo) id<GEOMapItemTransitInfo> transitInfo;
+@property (readonly, nonatomic, getter=_transitInfoUpdatedDate) NSDate *transitInfoUpdatedDate;
 @property (strong, nonatomic) NSURL *url;
 @property (readonly, nonatomic) GEOMapItemStorageUserValues *userValues;
 @property (readonly, copy, nonatomic, getter=_vendorID) NSString *vendorID;
@@ -197,6 +198,7 @@
 + (id)_sharedSessionUserInfoForPunchoutUserInfo:(id)arg1;
 + (id)_sourceAppIdFromLaunchURL:(id)arg1;
 + (id)_sourceAppIdFromLaunchUserInfo:(id)arg1;
++ (id)_urlForLocation:(id)arg1 address:(id)arg2 label:(id)arg3 options:(id)arg4;
 + (id)_urlForMapItemHandles:(id)arg1 options:(id)arg2;
 + (id)contactsAddressDictionaryFromGeoAddressDictionary:(id)arg1;
 + (id)contactsAddressKeysForGeoAddressKeys;
@@ -224,11 +226,13 @@
 - (void).cxx_destruct;
 - (id)_activityURL;
 - (id)_activityURLUsingWebPlaceCard:(BOOL)arg1;
+- (id)_activityURLUsingWebPlaceCard:(BOOL)arg1 muninViewState:(id)arg2;
 - (id)_addressFormattedAsCity;
 - (id)_addressFormattedAsMultilineAddress;
 - (id)_addressFormattedAsName;
 - (id)_addressFormattedAsShortenedAddress;
 - (id)_addressFormattedAsSinglelineAddress;
+- (id)_addressFormattedAsStreetOnly;
 - (id)_addressFormattedAsTitlesForMapRect:(CDStruct_02837cd9)arg1;
 - (id)_addressFormattedAsWeatherDisplayName;
 - (id)_addressOrNil:(id)arg1;
@@ -250,6 +254,7 @@
 - (id)_localizedCategoryNamesForType:(unsigned int)arg1;
 - (id)_localizedNextOpeningStringShort:(BOOL)arg1;
 - (id)_mapsDataString;
+- (void)_markTransitInfoUpdated;
 - (id)_placeCardContact;
 - (id)_postalAddressFromMeCardUsingAddressIdentifier:(id)arg1;
 - (void)_refreshAttribution;
@@ -261,6 +266,7 @@
 - (BOOL)_restaurantLink_hasFeatureType:(unsigned long long)arg1;
 - (id)_restaurantLink_overridenBundleIDsForVendorIDs;
 - (id)_reviewForIdentifier:(id)arg1;
+- (void)_updateTransitInfoWithMapItem:(id)arg1;
 - (id)_urlExtraStorage;
 - (id)_vCardFilename;
 - (id)_vCardRepresentation;
@@ -269,6 +275,7 @@
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)formattedNumberOfReviewsIncludingProvider:(BOOL)arg1 formatter:(id)arg2;
+- (BOOL)hasAmenityType:(int)arg1;
 - (id)initWithAddressDictionary:(id)arg1;
 - (id)initWithCLLocation:(id)arg1;
 - (id)initWithCLLocation:(id)arg1 placeType:(int)arg2;
@@ -287,8 +294,8 @@
 - (void)preloadTransitInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (id)sharingURL;
 - (id)thumbnailWithSize:(struct CGSize)arg1 annotationView:(id)arg2;
-- (void)updateTransitInfoWithMapItem:(id)arg1;
 - (id)urlRepresentation;
+- (BOOL)valueForAmenityType:(int)arg1;
 - (id)venueLabelWithContext:(unsigned long long)arg1;
 
 @end

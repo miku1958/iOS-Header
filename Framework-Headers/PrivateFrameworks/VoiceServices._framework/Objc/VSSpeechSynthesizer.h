@@ -8,13 +8,11 @@
 
 #import <VoiceServices/VSSpeechConnectionDelegate-Protocol.h>
 
-@class NSString, VSKeepAlive, VSSpeechConnection;
+@class NSMutableDictionary, NSString, VSSpeechConnection;
 @protocol OS_dispatch_queue, VSSpeechSynthesizerDelegate;
 
 @interface VSSpeechSynthesizer : NSObject <VSSpeechConnectionDelegate>
 {
-    VSKeepAlive *_keepAlive;
-    VSKeepAlive *_inactiveKeepAlive;
     NSString *_clientBundleIdentifier;
     unsigned int _audioSessionID;
     unsigned int _audioQueueFlags;
@@ -48,9 +46,11 @@
     long long _footprint;
     long long _voiceType;
     long long _gender;
+    NSMutableDictionary *_durationRequests;
 }
 
 @property (weak, nonatomic) id<VSSpeechSynthesizerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSMutableDictionary *durationRequests; // @synthesize durationRequests=_durationRequests;
 @property (nonatomic) long long footprint; // @synthesize footprint=_footprint;
 @property (nonatomic) long long gender; // @synthesize gender=_gender;
 @property (copy, nonatomic) NSString *language; // @synthesize language=_language;
@@ -65,6 +65,7 @@
 + (id)availableLanguageCodes;
 + (id)availableVoices;
 + (id)availableVoicesForLanguageCode:(id)arg1;
++ (id)characterClassCountForUtterance:(id)arg1 language:(id)arg2;
 + (id)errorWithReason:(id)arg1;
 + (void)getAllVoiceAssets:(CDUnknownBlockType)arg1;
 + (void)getAutoDownloadedVoiceAssets:(CDUnknownBlockType)arg1;
@@ -107,8 +108,10 @@
 - (void)connection:(id)arg1 synthesisRequest:(id)arg2 didFinishWithInstrumentMetrics:(id)arg3 error:(id)arg4;
 - (BOOL)continueSpeakingRequest:(id)arg1 withError:(id *)arg2;
 - (BOOL)continueSpeakingWithError:(id *)arg1;
-- (void)dealloc;
 - (void)endAudioPowerUpdate;
+- (double)estimateDurationOfRequest:(id)arg1;
+- (void)estimateDurationOfRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forwardStreamObject:(id)arg1;
 - (void)getAutoDownloadedVoiceAssets:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;

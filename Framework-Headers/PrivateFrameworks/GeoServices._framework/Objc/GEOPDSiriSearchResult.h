@@ -8,31 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSiriSearchResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_disambiguationLabels;
     NSMutableArray *_resultDetourInfos;
     BOOL _isChainResultSet;
-    CDStruct_5984ff81 _has;
+    struct {
+        unsigned int has_isChainResultSet:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_disambiguationLabels:1;
+        unsigned int read_resultDetourInfos:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_disambiguationLabels:1;
+        unsigned int wrote_resultDetourInfos:1;
+        unsigned int wrote_isChainResultSet:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *disambiguationLabels; // @synthesize disambiguationLabels=_disambiguationLabels;
+@property (strong, nonatomic) NSMutableArray *disambiguationLabels;
 @property (nonatomic) BOOL hasIsChainResultSet;
-@property (nonatomic) BOOL isChainResultSet; // @synthesize isChainResultSet=_isChainResultSet;
-@property (strong, nonatomic) NSMutableArray *resultDetourInfos; // @synthesize resultDetourInfos=_resultDetourInfos;
+@property (nonatomic) BOOL isChainResultSet;
+@property (strong, nonatomic) NSMutableArray *resultDetourInfos;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)disambiguationLabelType;
++ (BOOL)isValid:(id)arg1;
 + (Class)resultDetourInfoType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsDisambiguationLabel:(id)arg1;
+- (void)_addNoFlagsResultDetourInfo:(id)arg1;
+- (void)_readDisambiguationLabels;
+- (void)_readResultDetourInfos;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)addResultDetourInfo:(id)arg1;
 - (void)clearDisambiguationLabels;
 - (void)clearResultDetourInfos;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resultDetourInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)resultDetourInfosCount;

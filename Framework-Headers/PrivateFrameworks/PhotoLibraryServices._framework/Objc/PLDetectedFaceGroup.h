@@ -14,16 +14,14 @@
 
 @property (strong, nonatomic) PLPerson *associatedPerson; // @dynamic associatedPerson;
 @property (strong, nonatomic) NSSet *detectedFaces; // @dynamic detectedFaces;
-@property (nonatomic) PLDetectedFace *keyFace; // @dynamic keyFace;
+@property (strong, nonatomic) PLDetectedFace *keyFace; // @dynamic keyFace;
 @property (nonatomic) int personBuilderState; // @dynamic personBuilderState;
 @property (nonatomic) int unnamedFaceCount; // @dynamic unnamedFaceCount;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 
-+ (void)batchFetchFaceGroupByFaceUUIDWithFaceUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)batchFetchFaceGroupByFaceUUIDWithFaceUUIDs:(id)arg1 predicate:(id)arg2 library:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)detectedFaceGroupWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 - (void)awakeFromInsert;
 - (id)mutableDetectedFaces;
 - (void)refreshFaces;

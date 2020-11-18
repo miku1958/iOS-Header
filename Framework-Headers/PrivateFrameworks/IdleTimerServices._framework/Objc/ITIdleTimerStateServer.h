@@ -4,25 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSServiceFacility.h>
+#import <objc/NSObject.h>
 
-@protocol ITIdleTimerStateServerDelegate;
+#import <IdleTimerServices/BSServiceConnectionListenerDelegate-Protocol.h>
+#import <IdleTimerServices/ITIdleTimerServerInterface-Protocol.h>
 
-@interface ITIdleTimerStateServer : FBSServiceFacility
+@class BSServiceConnectionListener, NSMutableDictionary, NSMutableSet, NSString;
+@protocol ITIdleTimerStateServerDelegate, OS_dispatch_queue;
+
+@interface ITIdleTimerStateServer : NSObject <BSServiceConnectionListenerDelegate, ITIdleTimerServerInterface>
 {
+    struct os_unfair_lock_s _accessLock;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
+    BSServiceConnectionListener *_connectionListener;
+    NSMutableSet *_connections;
+    NSMutableDictionary *_clientTargetsByConfigIdentifier;
     id<ITIdleTimerStateServerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ITIdleTimerStateServerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_handleMessage_isIdleTimerServiceAvailable:(id)arg1;
-- (void)_handleMessage_setIdleTimerDisabledForClient:(id)arg1 withMessage:(id)arg2;
-- (id)initWithCalloutQueue:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 queue:(id)arg2;
-- (void)noteClientDidDisconnect:(id)arg1;
-- (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
-- (BOOL)shouldAllowClientConnection:(id)arg1 withMessage:(id)arg2;
+- (void)_addConnection:(id)arg1;
+- (void)_removeConnection:(id)arg1;
+- (void)addIdleTimerConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
+- (BOOL)clientConfiguration:(id)arg1 handleIdleEvent:(unsigned long long)arg2;
+- (id)initWithCalloutQueue:(id)arg1 delegate:(id)arg2;
+- (BOOL)isIdleTimerServiceAvailableWithError:(id *)arg1;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (void)removeIdleTimerConfiguration:(id)arg1 forReason:(id)arg2 error:(id *)arg3;
 
 @end
 

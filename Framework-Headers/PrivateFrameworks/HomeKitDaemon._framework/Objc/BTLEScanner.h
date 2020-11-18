@@ -9,19 +9,18 @@
 #import <HomeKitDaemon/HAPBTLECentralManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class CUBLEScanner, HAPBTLECentralManager, HMDHAPAccessory, HMFTimer, NSArray, NSObject, NSString;
+@class CUBLEScanner, HAPBTLECentralManager, HMDAccessoryQueues, HMFTimer, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface BTLEScanner : HMFObject <HMFTimerDelegate, HAPBTLECentralManagerDelegate>
 {
     NSObject<OS_dispatch_queue> *workQueue;
     HMFTimer *scanTimer;
-    HMDHAPAccessory *accessory;
     CUBLEScanner *cubleScanner;
     HAPBTLECentralManager *centralManager;
+    HMDAccessoryQueues *scanQueue;
 }
 
-@property (strong, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory;
 @property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (strong, nonatomic) HAPBTLECentralManager *centralManager; // @synthesize centralManager;
 @property (strong, nonatomic) CUBLEScanner *cubleScanner; // @synthesize cubleScanner;
@@ -30,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
+@property (strong, nonatomic) HMDAccessoryQueues *scanQueue; // @synthesize scanQueue;
 @property (strong, nonatomic) HMFTimer *scanTimer; // @synthesize scanTimer;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
@@ -37,12 +37,13 @@
 
 + (id)sharedScanLock;
 - (void).cxx_destruct;
-- (void)_stopScanWithAccessoryFound:(BOOL)arg1 suspended:(BOOL)arg2;
+- (void)_checkCanScan;
+- (void)_flushQueue;
+- (void)_stopScan;
 - (void)_stopTimer;
 - (void)didUpdateBTLEState:(long long)arg1;
 - (id)init;
 - (BOOL)startScan:(id)arg1 timeout:(double)arg2;
-- (void)stopScan;
 - (void)timerDidFire:(id)arg1;
 
 @end

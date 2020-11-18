@@ -38,7 +38,6 @@
 + (void)enableBundleNamed:(id)arg1 activationContext:(id)arg2;
 - (void).cxx_destruct;
 - (id)_legibilitySettings;
-- (void)_updateAppearance;
 - (void)_updateAppearanceAndNotify:(BOOL)arg1;
 - (BOOL)allowsControlCenter;
 - (BOOL)allowsLockScreenCamera;

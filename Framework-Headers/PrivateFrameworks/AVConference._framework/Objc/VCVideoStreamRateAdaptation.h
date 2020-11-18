@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double owrd;
 @property (readonly, nonatomic) double packetLossPercentage; // @synthesize packetLossPercentage=_packetLossPercentage;
 @property (readonly, nonatomic) double roundTripTime; // @synthesize roundTripTime=_tmmbRTT;
+@property (readonly, nonatomic) struct tagHANDLE *rtpHandle; // @synthesize rtpHandle=_rtpHandle;
 @property (readonly, nonatomic) unsigned int sendTmmbrBitrate; // @synthesize sendTmmbrBitrate=_sendTmmbrBitrate;
 
 - (unsigned int)averageReceivedBitrate;
@@ -54,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)scheduleTMMBR:(unsigned int)arg1;
 - (void)setEnableRateAdaptation:(BOOL)arg1 maxBitrate:(unsigned int)arg2 minBitrate:(unsigned int)arg3 adaptationInterval:(double)arg4;
 - (void)setOperatingBitrate:(unsigned int)arg1;
-- (void)updateRTPReceiveWithTimestamp:(unsigned int)arg1 sampleRate:(unsigned int)arg2 time:(double)arg3;
+- (void)updateRTPReceiveWithTimestamp:(unsigned int)arg1 sampleRate:(unsigned int)arg2 time:(double)arg3 size:(unsigned int)arg4 endOfFrame:(BOOL)arg5;
 - (void)updateVideoStall:(BOOL)arg1 withStallDuration:(unsigned int)arg2;
 
 @end

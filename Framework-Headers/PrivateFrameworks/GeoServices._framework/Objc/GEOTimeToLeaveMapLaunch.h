@@ -12,13 +12,14 @@
 {
     double _minutesUntilEvent;
     struct {
-        unsigned int minutesUntilEvent:1;
-    } _has;
+        unsigned int has_minutesUntilEvent:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMinutesUntilEvent;
-@property (nonatomic) double minutesUntilEvent; // @synthesize minutesUntilEvent=_minutesUntilEvent;
+@property (nonatomic) double minutesUntilEvent;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -26,6 +27,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

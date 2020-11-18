@@ -37,8 +37,10 @@
     int _rscp;
     NSString *_sectorid;
     int _serverHash;
+    NSString *_serviceProviderName;
     int _sid;
     int _zoneid;
+    BOOL _isLimitedService;
     struct {
         unsigned int bsLatitude:1;
         unsigned int bsLongitude:1;
@@ -55,6 +57,7 @@
         unsigned int rscp:1;
         unsigned int serverHash:1;
         unsigned int zoneid:1;
+        unsigned int isLimitedService:1;
     } _has;
 }
 
@@ -77,6 +80,7 @@
 @property (nonatomic) BOOL hasChannel;
 @property (nonatomic) BOOL hasDayLightSavings;
 @property (nonatomic) BOOL hasEcn0;
+@property (nonatomic) BOOL hasIsLimitedService;
 @property (nonatomic) BOOL hasLtmOffset;
 @property (readonly, nonatomic) BOOL hasNeighborGroup;
 @property (readonly, nonatomic) BOOL hasOperatorName;
@@ -87,7 +91,9 @@
 @property (nonatomic) BOOL hasSectorLongitude;
 @property (readonly, nonatomic) BOOL hasSectorid;
 @property (nonatomic) BOOL hasServerHash;
+@property (readonly, nonatomic) BOOL hasServiceProviderName;
 @property (nonatomic) BOOL hasZoneid;
+@property (nonatomic) BOOL isLimitedService; // @synthesize isLimitedService=_isLimitedService;
 @property (strong, nonatomic) CLPLocation *location; // @synthesize location=_location;
 @property (nonatomic) int ltmOffset; // @synthesize ltmOffset=_ltmOffset;
 @property (nonatomic) int mcc; // @synthesize mcc=_mcc;
@@ -103,6 +109,7 @@
 @property (nonatomic) double sectorLongitude; // @synthesize sectorLongitude=_sectorLongitude;
 @property (strong, nonatomic) NSString *sectorid; // @synthesize sectorid=_sectorid;
 @property (nonatomic) int serverHash; // @synthesize serverHash=_serverHash;
+@property (strong, nonatomic) NSString *serviceProviderName; // @synthesize serviceProviderName=_serviceProviderName;
 @property (nonatomic) int sid; // @synthesize sid=_sid;
 @property (nonatomic) int zoneid; // @synthesize zoneid=_zoneid;
 

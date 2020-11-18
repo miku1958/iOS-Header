@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FileProvider/FPActionOperation.h>
+#import <FileProvider/FPTransformOperation.h>
 
 @class NSArray, NSDate;
 
-@interface FPSetLastOpenDateOperation : FPActionOperation
+@interface FPSetLastOpenDateOperation : FPTransformOperation
 {
     NSArray *_items;
     NSDate *_date;
 }
 
 - (void).cxx_destruct;
+- (id)fp_prettyDescription;
 - (id)initWithItems:(id)arg1 date:(id)arg2;
-- (void)mainWithExtensionProxy:(id)arg1;
-- (void)presendNotifications;
 - (id)replicateForItems:(id)arg1;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
 
 @end
 

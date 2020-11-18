@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Message/MFOfflineCacheOperation.h>
-
-#import <Message/MFDAOfflineCacheOperation-Protocol.h>
+#import <Message/_MFOfflineCacheOperation.h>
 
 @class NSArray, NSString;
 
-@interface MFDADeferredMessageMoveOperation : MFOfflineCacheOperation <MFDAOfflineCacheOperation>
+@interface MFDADeferredMessageMoveOperation : _MFOfflineCacheOperation
 {
     NSArray *_sourceRemoteIDs;
     NSArray *_originalFlags;
@@ -19,13 +17,13 @@
     NSString *_destinationMailboxID;
 }
 
++ (id)log;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMessages:(id)arg1 temporaryIDs:(id)arg2 sourceMailbox:(id)arg3 destinationMailbox:(id)arg4;
-- (BOOL)performWithAccount:(id)arg1 offlineCache:(id)arg2;
+- (BOOL)translateToLocalActionWithConnection:(id)arg1;
 
 @end
 

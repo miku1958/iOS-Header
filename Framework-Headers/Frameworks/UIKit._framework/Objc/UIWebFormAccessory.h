@@ -17,7 +17,8 @@
     UIBarButtonItem *_flexibleSpaceItem;
     UIBarButtonItem *_previousItem;
     UIBarButtonItem *_nextItem;
-    UIBarButtonItem *_spacer;
+    UIBarButtonItem *_nextPreviousSpacer;
+    UIBarButtonItem *_autofillSpacer;
     UIBarButtonItemGroup *_buttonGroupAutoFill;
     UIBarButtonItemGroup *_buttonGroupNavigation;
     BOOL _usesUCB;
@@ -42,7 +43,6 @@
 - (void)_previousTapped:(id)arg1;
 - (void)_refreshAutofillPresentation;
 - (void)_setRenderConfig:(id)arg1;
-- (void)_tabSegmentedControlDidChange:(id)arg1;
 - (void)_updateFrame;
 - (void)autoFill:(id)arg1;
 - (void)clear:(id)arg1;
@@ -53,6 +53,7 @@
 - (id)initWithInputAssistantItem:(id)arg1;
 - (void)layoutSubviews;
 - (void)setClearVisible:(BOOL)arg1;
+- (void)setNextPreviousItemsVisible:(BOOL)arg1;
 - (void)showAutoFillButton;
 - (void)showAutoFillButtonWithTitle:(id)arg1;
 

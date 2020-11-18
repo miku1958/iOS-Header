@@ -11,6 +11,7 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXEngineDrivenAssetsTilingLayoutDelegate-Protocol.h>
 #import <PhotosUICore/PXOneUpPresentationDelegate-Protocol.h>
+#import <PhotosUICore/PXPhotosDetailsInlinePlaybackControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUICore/PXSwipeSelectionManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXTileSource-Protocol.h>
@@ -21,10 +22,10 @@
 #import <PhotosUICore/UIDragInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSDate, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicUIViewTileAnimator, PXLayoutGenerator, PXOneUpPresentation, PXPhotoKitAssetsDataSourceManager, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDataSourceStressTest, PXPhotosDetailsAssetsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsLoadCoordinationToken, PXSectionedLayoutEngine, PXSectionedSelectionManager, PXSwipeSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUIAssetsScene, PXUITapGestureRecognizer, PXWidgetSpec, UIPinchGestureRecognizer;
+@class NSDate, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicUIViewTileAnimator, PXLayoutGenerator, PXOneUpPresentation, PXPhotoKitAssetsDataSourceManager, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDataSourceStressTest, PXPhotosDetailsAssetsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsInlinePlaybackController, PXPhotosDetailsLoadCoordinationToken, PXSectionedLayoutEngine, PXSectionedSelectionManager, PXSwipeSelectionManager, PXTilingController, PXTouchingUIGestureRecognizer, PXUIAssetsScene, PXUITapGestureRecognizer, PXWidgetSpec, UIPinchGestureRecognizer;
 @protocol PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate, UIDragSession;
 
-@interface PXPhotosDetailsAssetsWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXTilingControllerScrollDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXSwipeSelectionManagerDelegate, PXUIPlayButtonTileDelegate, UIGestureRecognizerDelegate, PXActionPerformerDelegate, UIDragInteractionDelegate, PXUIWidget, PXOneUpPresentationDelegate>
+@interface PXPhotosDetailsAssetsWidget : NSObject <PXAssetsSceneDelegate, PXTileSource, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXTilingControllerScrollDelegate, PXChangeObserver, PXEngineDrivenAssetsTilingLayoutDelegate, PXSwipeSelectionManagerDelegate, PXUIPlayButtonTileDelegate, UIGestureRecognizerDelegate, PXActionPerformerDelegate, PXPhotosDetailsInlinePlaybackControllerDelegate, UIDragInteractionDelegate, PXUIWidget, PXOneUpPresentationDelegate>
 {
     NSMutableSet *_tilesInUse;
     NSDate *_loadStartDate;
@@ -51,6 +52,7 @@
     PXTilingController *__tilingController;
     PXBasicUIViewTileAnimator *__tileAnimator;
     PXUIAssetsScene *__assetsScene;
+    PXPhotosDetailsInlinePlaybackController *__inlinePlaybackController;
     PXLayoutGenerator *__layoutGenerator;
     PXSectionedLayoutEngine *__layoutEngine;
     PXAssetReference *__navigatedAssetReference;
@@ -77,6 +79,7 @@
 @property (strong, nonatomic, setter=_setFocusedAssetReference:) PXAssetReference *_focusedAssetReference; // @synthesize _focusedAssetReference=__focusedAssetReference;
 @property (strong, nonatomic, setter=_setHiddenAssetReferences:) NSSet *_hiddenAssetReferences; // @synthesize _hiddenAssetReferences=__hiddenAssetReferences;
 @property (strong, nonatomic, setter=_setHighlightedAssetReference:) PXAssetReference *_highlightedAssetReference; // @synthesize _highlightedAssetReference=__highlightedAssetReference;
+@property (readonly, nonatomic) PXPhotosDetailsInlinePlaybackController *_inlinePlaybackController; // @synthesize _inlinePlaybackController=__inlinePlaybackController;
 @property (strong, nonatomic, setter=_setLayoutEngine:) PXSectionedLayoutEngine *_layoutEngine; // @synthesize _layoutEngine=__layoutEngine;
 @property (strong, nonatomic, setter=_setLayoutGenerator:) PXLayoutGenerator *_layoutGenerator; // @synthesize _layoutGenerator=__layoutGenerator;
 @property (strong, nonatomic, setter=_setLoadCoordinationToken:) PXPhotosDetailsLoadCoordinationToken *_loadCoordinationToken; // @synthesize _loadCoordinationToken=__loadCoordinationToken;
@@ -134,7 +137,7 @@
 - (void)_configureLayout:(id)arg1;
 - (id)_createNewLayout;
 - (id)_curationButtonTitle;
-- (id)_dragItemForSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)_dragItemForAssetReference:(id)arg1;
 - (id)_extendedTraitCollection;
 - (void)_fallBackByTogglingCurationIfNeeded;
 - (void)_handleTapOnAssetReference:(id)arg1 autoPlayVideo:(BOOL)arg2;
@@ -167,6 +170,8 @@
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
 - (void)commitPreviewViewController:(id)arg1;
 - (BOOL)containsPoint:(struct CGPoint)arg1 forCoordinateSpace:(id)arg2;
+- (void)contentViewDidDisappear;
+- (void)contentViewWillAppear;
 - (id)dataSourceManager;
 - (void)dealloc;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
@@ -183,13 +188,16 @@
 - (struct CGRect)engineDrivenLayout:(id)arg1 contentsRectForItemAtIndexPath:(struct PXSimpleIndexPath)arg2 forAspectRatio:(double)arg3;
 - (double)engineDrivenLayout:(id)arg1 zPositionForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
 - (void)environmentDidUpdateFocusInContext:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handlePinch:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (void)handleTouch:(id)arg1;
+- (id)imageViewBasicTileForPreviewingAtPoint:(struct CGPoint)arg1;
 - (id)init;
 - (void)loadContentData;
+- (struct CGSize)minimumItemSizeForPlaybackInController:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)oneUpPresentation:(id)arg1 currentImageForAssetReference:(id)arg2;
 - (id)oneUpPresentation:(id)arg1 regionOfInterestForAssetReference:(id)arg2;
@@ -203,12 +211,17 @@
 - (id)oneUpPresentationPhotosDetailsContext:(id)arg1;
 - (BOOL)oneUpPresentationShouldAutoPlay:(id)arg1;
 - (void)playButtonTileWasTapped:(id)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2 outSourceRect:(out struct CGRect *)arg3;
+- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (void)scrollViewControllerContentBoundsDidChange:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;
+- (BOOL)shouldEnablePlaybackForController:(id)arg1;
 - (struct PXSimpleIndexPath)swipeSelectionManager:(id)arg1 itemIndexPathAtLocation:(struct CGPoint)arg2;
 - (struct PXSimpleIndexPath)swipeSelectionManager:(id)arg1 itemIndexPathClosestAboveLocation:(struct CGPoint)arg2;
 - (struct PXSimpleIndexPath)swipeSelectionManager:(id)arg1 itemIndexPathClosestLeadingLocation:(struct CGPoint)arg2;
+- (BOOL)swipeSelectionManager:(id)arg1 shouldBeginSelectionAtLocation:(struct CGPoint)arg2;
+- (void)swipeSelectionManagerAutomaticallyTransitionToMultiSelectMode:(id)arg1;
+- (BOOL)swipeSelectionManagerIsInMultiSelectMode:(id)arg1;
 - (struct CGPoint)tilingController:(id)arg1 initialVisibleOriginForLayout:(id)arg2;
 - (struct CGPoint)tilingController:(id)arg1 targetVisibleOriginForLayout:(id)arg2 proposedVisibleOrigin:(struct CGPoint)arg3;
 - (id)tilingController:(id)arg1 tileIdentifierConverterForChange:(id)arg2;

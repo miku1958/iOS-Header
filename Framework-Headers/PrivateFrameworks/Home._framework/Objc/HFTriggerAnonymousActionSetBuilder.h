@@ -8,36 +8,44 @@
 
 #import <Home/HFActionSetBuilderProtocol-Protocol.h>
 
-@class HFMutableSetDiff, HMTrigger, NSArray, NSString;
+@class HFMediaPlaybackActionBuilder, HFMutableSetDiff, HMTrigger, NSArray, NSString;
 
 @interface HFTriggerAnonymousActionSetBuilder : HFItemBuilder <HFActionSetBuilderProtocol>
 {
     NSArray *_actions;
     HMTrigger *_containingTrigger;
+    unsigned long long _actionSetType;
     HFMutableSetDiff *_actionBuilders;
 }
 
 @property (strong, nonatomic) HFMutableSetDiff *actionBuilders; // @synthesize actionBuilders=_actionBuilders;
+@property (nonatomic) unsigned long long actionSetType; // @synthesize actionSetType=_actionSetType;
 @property (readonly, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, nonatomic, getter=isAffectedByEndEvents) BOOL affectedByEndEvents;
 @property (strong, nonatomic) HMTrigger *containingTrigger; // @synthesize containingTrigger=_containingTrigger;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HFMediaPlaybackActionBuilder *mediaAction;
 @property (readonly, nonatomic) BOOL requiresDeviceUnlock;
 @property (readonly) Class superclass;
 
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
+- (id)_existingActionBuilder:(id)arg1 inSet:(id)arg2;
 - (id)_lazilyUpdateActions;
 - (id)actionSet;
 - (void)addAction:(id)arg1;
+- (void)addAction:(id)arg1 actionSetType:(unsigned long long)arg2;
 - (id)commitItem;
+- (id)getOrCreateActionSet;
+- (BOOL)hasActions;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (void)removeAction:(id)arg1;
 - (void)removeAllActions;
 - (void)setActionSet:(id)arg1;
 - (void)updateAction:(id)arg1;
+- (void)updateActionBuildersDiff:(id)arg1;
 
 @end
 

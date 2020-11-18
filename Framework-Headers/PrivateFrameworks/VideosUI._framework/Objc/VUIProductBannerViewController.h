@@ -16,8 +16,7 @@ __attribute__((visibility("hidden")))
     VUIProductUberBackgroundView *_uberBackgroundView;
     IKViewElement *_viewElement;
     VUIProductBannerView *_bannerView;
-    long long _overrideInterfaceStyle;
-    UIView *_whiteBackgroundView;
+    UIView *_transitionBackgroundView;
 }
 
 @property (strong, nonatomic) VUIProductBannerView *bannerView; // @synthesize bannerView=_bannerView;
@@ -25,23 +24,20 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isUberLayoutActive;
-@property (nonatomic) long long overrideInterfaceStyle; // @synthesize overrideInterfaceStyle=_overrideInterfaceStyle;
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double topThreshold;
+@property (strong, nonatomic) UIView *transitionBackgroundView; // @synthesize transitionBackgroundView=_transitionBackgroundView;
 @property (strong, nonatomic) VUIProductUberBackgroundView *uberBackgroundView; // @synthesize uberBackgroundView=_uberBackgroundView;
-@property (readonly, nonatomic) long long uberLayoutInterfaceStyle;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
-@property (strong, nonatomic) UIView *whiteBackgroundView; // @synthesize whiteBackgroundView=_whiteBackgroundView;
 
 - (void).cxx_destruct;
 - (void)_configureViewSubviews;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (void)setBannerOpacity:(double)arg1;
+- (void)setTransitionBannerOpacity:(double)arg1;
 - (void)setUberImageOffset:(double)arg1;
-- (void)setWhiteBannerOpacity:(double)arg1;
-- (id)traitCollection;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

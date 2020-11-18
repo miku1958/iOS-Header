@@ -23,11 +23,11 @@
 @property (nonatomic) struct CGSize size;
 @property (readonly, nonatomic) struct CGSize sizeInPixels;
 
-- (shared_ptr_fa6aa836)bitmapData:(struct Texture *)arg1;
+- (shared_ptr_fa6aa836)bitmapData;
 - (void)createRenderTarget;
 - (void)destroyRenderTarget;
 - (BOOL)hasRenderTarget;
-- (void)renderWithTimestamp:(double)arg1 completion:(function_30b369b8)arg2;
+- (void)renderWithTimestamp:(double)arg1 completion:(function_d3afe2e2)arg2;
 
 @optional
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toLayer:(CALayer *)arg2;

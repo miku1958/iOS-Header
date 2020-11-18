@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MPAVItem, MPQueuePlayer, NSArray, NSHashTable, NSMutableSet, NSOperationQueue;
-@protocol MPAVQueueCoordinatorDataSource;
+#import <MediaPlayer/MPAVQueueCoordinating-Protocol.h>
 
-@interface MPAVQueueCoordinator : NSObject
+@class MPAVItem, MPQueuePlayer, NSArray, NSHashTable, NSMutableSet, NSOperationQueue, NSString;
+@protocol MPAVQueueCoordinatingDataSource;
+
+@interface MPAVQueueCoordinator : NSObject <MPAVQueueCoordinating>
 {
     NSOperationQueue *_assetQueue;
     unsigned long long _backgroundTaskIdentifier;
@@ -25,20 +27,24 @@
     NSMutableSet *_reusableItems;
     BOOL _shouldExpectEmptyQueue;
     BOOL _shouldDeferItemLoading;
-    MPQueuePlayer *_player;
-    id<MPAVQueueCoordinatorDataSource> _dataSource;
     MPAVItem *_currentItem;
     NSArray *_items;
+    MPQueuePlayer *_player;
+    id<MPAVQueueCoordinatingDataSource> _dataSource;
     CDUnknownBlockType _equilibriumAchievedHandler;
 }
 
 @property (readonly, nonatomic) MPAVItem *currentItem; // @synthesize currentItem=_currentItem;
-@property (readonly, weak, nonatomic) id<MPAVQueueCoordinatorDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, weak, nonatomic) id<MPAVQueueCoordinatingDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType equilibriumAchievedHandler; // @synthesize equilibriumAchievedHandler=_equilibriumAchievedHandler;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (readonly, nonatomic) MPQueuePlayer *player; // @synthesize player=_player;
 @property (nonatomic) BOOL shouldDeferItemLoading; // @synthesize shouldDeferItemLoading=_shouldDeferItemLoading;
 @property (nonatomic) BOOL shouldExpectEmptyQueue; // @synthesize shouldExpectEmptyQueue=_shouldExpectEmptyQueue;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_beginBackgroundTaskAssertion;
@@ -60,6 +66,7 @@
 - (id)initWithPlayer:(id)arg1 dataSource:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)reloadItemsKeepingCurrentItem:(BOOL)arg1;
+- (void)reset;
 
 @end
 

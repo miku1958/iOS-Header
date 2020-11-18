@@ -25,10 +25,13 @@
 @property (readonly, nonatomic) BOOL isArrivalUncertain; // @synthesize isArrivalUncertain=_isArrivalUncertain;
 @property (readonly, nonatomic) GEOTransitTransferInfo *transitTransfer; // @synthesize transitTransfer=_transitTransfer;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (CDStruct_c3b9c2ee)endGeoCoordinate;
+- (void)encodeWithCoder:(id)arg1;
+- (CDStruct_39925896)endGeoCoordinate;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 step:(id)arg3 stepIndex:(unsigned long long)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange)arg6;
-- (CDStruct_c3b9c2ee)startGeoCoordinate;
+- (CDStruct_39925896)startGeoCoordinate;
 
 @end
 

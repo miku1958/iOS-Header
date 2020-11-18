@@ -8,24 +8,26 @@
 
 #import <ITMLKit/NSCopying-Protocol.h>
 
-@class IKAppDataItemType, NSDictionary, NSString;
+@class IKAppPrototypeIdentifier, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface IKAppDataItem : NSObject <NSCopying>
 {
-    IKAppDataItemType *_type;
+    NSString *_type;
     NSString *_identifier;
+    IKAppPrototypeIdentifier *_prototypeIdentifier;
     NSDictionary *_dataDictionary;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *dataDictionary; // @synthesize dataDictionary=_dataDictionary;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) IKAppDataItemType *type; // @synthesize type=_type;
+@property (readonly, nonatomic) IKAppPrototypeIdentifier *prototypeIdentifier; // @synthesize prototypeIdentifier=_prototypeIdentifier;
+@property (readonly, nonatomic) NSString *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
-- (id)initWithType:(id)arg1 identifier:(id)arg2 dataDictionary:(id)arg3;
+- (id)initWithType:(id)arg1 identifier:(id)arg2 prototypeIdentifier:(id)arg3 dataDictionary:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)valueForPropertyPath:(id)arg1;
 

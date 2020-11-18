@@ -24,6 +24,7 @@
 - (id)initWithType:(id)arg1 contactProperty:(id)arg2 bundleIdentifier:(id)arg3 url:(id)arg4 isSensitive:(BOOL)arg5 group:(long long)arg6 options:(unsigned long long)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (id)performActionWithContext:(id)arg1;
+- (id)performActionWithContext:(id)arg1 shouldCurateIfPerformed:(BOOL)arg2;
 
 @end
 

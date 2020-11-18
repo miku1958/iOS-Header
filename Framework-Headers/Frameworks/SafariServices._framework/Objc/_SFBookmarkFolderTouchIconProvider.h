@@ -6,12 +6,19 @@
 
 #import <WebUI/WBSBookmarkFolderTouchIconProvider.h>
 
+@class NSObject, WebBookmarkCollection;
+@protocol OS_dispatch_queue;
+
 __attribute__((visibility("hidden")))
 @interface _SFBookmarkFolderTouchIconProvider : WBSBookmarkFolderTouchIconProvider
 {
+    WebBookmarkCollection *_collection;
+    NSObject<OS_dispatch_queue> *_bookmarkCollectionAccessQueue;
 }
 
+- (void).cxx_destruct;
 - (void)_folderContentsDidChange:(id)arg1;
+- (id)backgroundColor;
 - (id)bookmarkUUIDForRequest:(id)arg1;
 - (BOOL)canHandleRequest:(id)arg1;
 - (id)defaultFolderIconForRequest:(id)arg1;

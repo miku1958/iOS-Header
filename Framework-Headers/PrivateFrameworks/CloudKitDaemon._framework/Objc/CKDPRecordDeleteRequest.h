@@ -15,20 +15,31 @@ __attribute__((visibility("hidden")))
 {
     NSString *_etag;
     NSMutableArray *_pluginFields;
+    NSMutableArray *_publicKeys;
     CKDPRecordIdentifier *_recordIdentifier;
+    BOOL _participantKeyLost;
+    struct {
+        unsigned int participantKeyLost:1;
+    } _has;
 }
 
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (readonly, nonatomic) BOOL hasEtag;
+@property (nonatomic) BOOL hasParticipantKeyLost;
 @property (readonly, nonatomic) BOOL hasRecordIdentifier;
+@property (nonatomic) BOOL participantKeyLost; // @synthesize participantKeyLost=_participantKeyLost;
 @property (strong, nonatomic) NSMutableArray *pluginFields; // @synthesize pluginFields=_pluginFields;
+@property (strong, nonatomic) NSMutableArray *publicKeys; // @synthesize publicKeys=_publicKeys;
 @property (strong, nonatomic) CKDPRecordIdentifier *recordIdentifier; // @synthesize recordIdentifier=_recordIdentifier;
 
 + (id)options;
 + (Class)pluginFieldsType;
++ (Class)publicKeysType;
 - (void).cxx_destruct;
 - (void)addPluginFields:(id)arg1;
+- (void)addPublicKeys:(id)arg1;
 - (void)clearPluginFields;
+- (void)clearPublicKeys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +49,8 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)pluginFieldsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)pluginFieldsCount;
+- (id)publicKeysAtIndex:(unsigned long long)arg1;
+- (unsigned long long)publicKeysCount;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

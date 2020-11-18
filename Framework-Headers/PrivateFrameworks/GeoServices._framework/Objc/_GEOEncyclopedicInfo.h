@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOMapItemAttribution *encyclopedicAttribution;
 @property (readonly, nonatomic) NSArray *factoids;
 @property (readonly, nonatomic) BOOL hasPairOfFactoids;
+@property (readonly, nonatomic) BOOL hasStandAloneFactoids;
 @property (readonly, nonatomic) BOOL hasTextBlock;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

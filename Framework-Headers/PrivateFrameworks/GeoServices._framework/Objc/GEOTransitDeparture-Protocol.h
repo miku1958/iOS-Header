@@ -7,11 +7,20 @@
 #import <GeoServices/NSObject-Protocol.h>
 
 @class NSDate, NSString;
+@protocol GEOServerFormattedString;
 
 @protocol GEOTransitDeparture <NSObject>
 
 @property (readonly, nonatomic) NSDate *departureDate;
+@property (readonly, nonatomic) BOOL isCanceled;
+@property (readonly, nonatomic) BOOL isPastDeparture;
+@property (readonly, nonatomic) NSDate *liveDepartureDate;
+@property (readonly, nonatomic) long long liveStatus;
+@property (readonly, nonatomic) id<GEOServerFormattedString> liveStatusString;
+@property (readonly, nonatomic) NSDate *scheduledDepartureDate;
+@property (readonly, nonatomic) unsigned long long tripIdentifier;
 @property (readonly, nonatomic) NSString *vehicleIdentifier;
 
+- (BOOL)isPastDepartureRelativeToDate:(NSDate *)arg1 usingGracePeriod:(BOOL)arg2;
 @end
 

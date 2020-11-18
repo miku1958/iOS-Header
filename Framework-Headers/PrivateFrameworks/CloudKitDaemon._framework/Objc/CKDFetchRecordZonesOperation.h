@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordZonesOperation : CKDDatabaseOperation
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_zoneIDsNeedingPCSUpdateRetry;
     NSMutableDictionary *_pcsUpdateErrorsByZoneID;
     long long _numZoneSaveAttempts;
+    NSMutableSet *_zoneIDsNeedingDugongKeyRoll;
 }
 
 @property (nonatomic) BOOL ignorePCSFailures; // @synthesize ignorePCSFailures=_ignorePCSFailures;
@@ -31,16 +32,18 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType recordZoneFetchedProgressBlock; // @synthesize recordZoneFetchedProgressBlock=_recordZoneFetchedProgressBlock;
 @property (strong, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
 @property (nonatomic) BOOL shouldRetry; // @synthesize shouldRetry=_shouldRetry;
+@property (strong, nonatomic) NSMutableSet *zoneIDsNeedingDugongKeyRoll; // @synthesize zoneIDsNeedingDugongKeyRoll=_zoneIDsNeedingDugongKeyRoll;
 @property (strong, nonatomic) NSMutableArray *zoneIDsNeedingPCSUpdateRetry; // @synthesize zoneIDsNeedingPCSUpdateRetry=_zoneIDsNeedingPCSUpdateRetry;
 @property (strong, nonatomic) NSMutableDictionary *zonesToSaveForPCSUpdateByZoneID; // @synthesize zonesToSaveForPCSUpdateByZoneID=_zonesToSaveForPCSUpdateByZoneID;
 
 - (void).cxx_destruct;
 - (void)_cachePCSOnRecordZone:(id)arg1;
-- (BOOL)_checkAndUpdateZonePCSIfNeededForZone:(id)arg1 error:(id *)arg2;
 - (void)_continueHandlingFetchedRecordZone:(id)arg1 zoneID:(id)arg2;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleRecordZoneFetch:(id)arg1 zoneID:(id)arg2 responseCode:(id)arg3;
 - (void)_handleRecordZoneSaved:(id)arg1 error:(id)arg2;
+- (void)_locked_callbackForRecordZone:(id)arg1 zoneID:(id)arg2 error:(id)arg3;
+- (BOOL)_locked_checkAndUpdateZonePCSIfNeededForZone:(id)arg1 error:(id *)arg2;
 - (void)_sendErrorForFailedZones;
 - (id)activityCreate;
 - (void)checkPCSIdentity;

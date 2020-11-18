@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) BOOL logEmitUserNotifications;
 @property (readonly, nonatomic) NSString *logFilePath;
 @property (readonly, nonatomic) NSArray *logSimpleConfiguration;
-@property (readonly, nonatomic) double simulatedDateForNowOffset;
+@property (nonatomic) double simulatedDateForNowOffset;
 
 + (id)shared;
 - (void).cxx_destruct;

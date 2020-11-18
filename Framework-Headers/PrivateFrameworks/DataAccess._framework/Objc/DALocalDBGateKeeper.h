@@ -14,7 +14,6 @@
     BOOL _claimedOwnershipOfContacts;
     BOOL _claimedOwnershipOfEvents;
     BOOL _claimedOwnershipOfNotes;
-    BOOL _claimedOwnershipOfBookmarks;
     id<DADataclassLockWatcher> _contactsLockHolder;
     NSMutableArray *_contactsWaiters;
     NSMutableSet *_waiterIDsExpectingContactsLock;
@@ -24,15 +23,9 @@
     id<DADataclassLockWatcher> _notesLockHolder;
     NSMutableArray *_notesWaiters;
     NSMutableSet *_waiterIDsExpectingNotesLock;
-    id<DADataclassLockWatcher> _bookmarksLockHolder;
-    NSMutableArray *_bookmarksWaiters;
-    NSMutableSet *_waiterIDsExpectingBookmarksLock;
     NSString *_unitTestHackRunLoopMode;
 }
 
-@property (strong, nonatomic) id<DADataclassLockWatcher> bookmarksLockHolder; // @synthesize bookmarksLockHolder=_bookmarksLockHolder;
-@property (strong, nonatomic) NSMutableArray *bookmarksWaiters; // @synthesize bookmarksWaiters=_bookmarksWaiters;
-@property (nonatomic) BOOL claimedOwnershipOfBookmarks; // @synthesize claimedOwnershipOfBookmarks=_claimedOwnershipOfBookmarks;
 @property (nonatomic) BOOL claimedOwnershipOfContacts; // @synthesize claimedOwnershipOfContacts=_claimedOwnershipOfContacts;
 @property (nonatomic) BOOL claimedOwnershipOfEvents; // @synthesize claimedOwnershipOfEvents=_claimedOwnershipOfEvents;
 @property (nonatomic) BOOL claimedOwnershipOfNotes; // @synthesize claimedOwnershipOfNotes=_claimedOwnershipOfNotes;
@@ -43,7 +36,6 @@
 @property (strong, nonatomic) id<DADataclassLockWatcher> notesLockHolder; // @synthesize notesLockHolder=_notesLockHolder;
 @property (strong, nonatomic) NSMutableArray *notesWaiters; // @synthesize notesWaiters=_notesWaiters;
 @property (strong, nonatomic) NSString *unitTestHackRunLoopMode; // @synthesize unitTestHackRunLoopMode=_unitTestHackRunLoopMode;
-@property (strong, nonatomic) NSMutableSet *waiterIDsExpectingBookmarksLock; // @synthesize waiterIDsExpectingBookmarksLock=_waiterIDsExpectingBookmarksLock;
 @property (strong, nonatomic) NSMutableSet *waiterIDsExpectingContactsLock; // @synthesize waiterIDsExpectingContactsLock=_waiterIDsExpectingContactsLock;
 @property (strong, nonatomic) NSMutableSet *waiterIDsExpectingEventsLock; // @synthesize waiterIDsExpectingEventsLock=_waiterIDsExpectingEventsLock;
 @property (strong, nonatomic) NSMutableSet *waiterIDsExpectingNotesLock; // @synthesize waiterIDsExpectingNotesLock=_waiterIDsExpectingNotesLock;

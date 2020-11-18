@@ -21,6 +21,7 @@
 - (long long)mediaComponentType;
 - (id)newRenderJob;
 - (void)submit:(CDUnknownBlockType)arg1;
+- (id)submitSynchronous:(out id *)arg1;
 
 @end
 

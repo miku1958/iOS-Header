@@ -32,6 +32,8 @@
 + (id)requiredLibraryAddStatusObservationProperties;
 + (id)requiredLibraryRemovalProperties;
 + (id)requiredStoreLibraryPersonalizationProperties;
++ (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
++ (BOOL)storeItemMetadataRequestNeedsPersonalizationForIdentifiers:(id)arg1;
 + (BOOL)supportsKeepLocalStatusObservation;
 + (BOOL)supportsLibraryAddStatusObservation;
 + (BOOL)supportsLibraryRemoval;

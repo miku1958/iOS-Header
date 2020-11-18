@@ -22,6 +22,7 @@
 @property (readonly) BOOL isNumber;
 @property (readonly) BOOL isObject;
 @property (readonly) BOOL isString;
+@property (readonly) BOOL isSymbol;
 @property (readonly) BOOL isUndefined;
 
 + (SEL)selectorForStructToValue:(const char *)arg1;
@@ -60,7 +61,6 @@
 - (BOOL)isEqualToObject:(id)arg1;
 - (BOOL)isEqualWithTypeCoercionToObject:(id)arg1;
 - (BOOL)isInstanceOf:(id)arg1;
-- (BOOL)isSymbol;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)setObject:(id)arg1 atIndexedSubscript:(unsigned long long)arg2;

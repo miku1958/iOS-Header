@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (int)elementKind;
 - (void)finalizeDataOnDeepCopyBeforeSerializingForDragAndDrop;
+- (id)formulaOwner;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (id)geometry;
 - (BOOL)hasBackgroundLayerForPieChart;

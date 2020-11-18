@@ -8,21 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString;
+@class GEOFormattedString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEORouteInformation : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOFormattedString *_detail;
     GEOFormattedString *_duration;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_detail:1;
+        unsigned int read_duration:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_detail:1;
+        unsigned int wrote_duration:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOFormattedString *detail; // @synthesize detail=_detail;
-@property (strong, nonatomic) GEOFormattedString *duration; // @synthesize duration=_duration;
+@property (strong, nonatomic) GEOFormattedString *detail;
+@property (strong, nonatomic) GEOFormattedString *duration;
 @property (readonly, nonatomic) BOOL hasDetail;
 @property (readonly, nonatomic) BOOL hasDuration;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDetail;
+- (void)_readDuration;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -8,31 +8,46 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOCategory : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    long long _geoOntologyId;
     NSString *_alias;
-    int _level;
+    long long _geoOntologyId;
     NSMutableArray *_localizedNames;
+    int _level;
     struct {
-        unsigned int geoOntologyId:1;
-    } _has;
+        unsigned int has_geoOntologyId:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_alias:1;
+        unsigned int read_localizedNames:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_alias:1;
+        unsigned int wrote_geoOntologyId:1;
+        unsigned int wrote_localizedNames:1;
+        unsigned int wrote_level:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *alias; // @synthesize alias=_alias;
-@property (nonatomic) long long geoOntologyId; // @synthesize geoOntologyId=_geoOntologyId;
+@property (strong, nonatomic) NSString *alias;
+@property (nonatomic) long long geoOntologyId;
 @property (nonatomic) BOOL hasGeoOntologyId;
-@property (nonatomic) int level; // @synthesize level=_level;
-@property (strong, nonatomic) NSMutableArray *localizedNames; // @synthesize localizedNames=_localizedNames;
+@property (nonatomic) int level;
+@property (strong, nonatomic) NSMutableArray *localizedNames;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)localizedNamesType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsLocalizedNames:(id)arg1;
+- (void)_readAlias;
+- (void)_readLocalizedNames;
 - (void)addLocalizedNames:(id)arg1;
 - (void)clearLocalizedNames;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +58,7 @@
 - (id)localizedNamesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedNamesCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

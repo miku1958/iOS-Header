@@ -18,6 +18,7 @@
         unsigned int usesApplePayForPayment:1;
     } _has;
     BOOL _usesApplePayForPayment;
+    BOOL __encodeLegacyGloryData;
     _INPBLocation *_dropOffLocation;
     _INPBIntentMetadata *_intentMetadata;
     _INPBInteger *_partySize;
@@ -29,6 +30,7 @@
     _INPBDateTimeRange *_scheduledPickupTime;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBLocation *dropOffLocation; // @synthesize dropOffLocation=_dropOffLocation;
@@ -54,9 +56,12 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesApplePayForPayment; // @synthesize usesApplePayForPayment=_usesApplePayForPayment;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

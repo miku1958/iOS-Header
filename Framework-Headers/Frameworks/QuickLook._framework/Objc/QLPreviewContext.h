@@ -8,7 +8,7 @@
 
 #import <QuickLook/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString, NSURL, QLItem, UIColor;
+@class NSDictionary, NSNumber, NSString, QLItem, UIColor;
 @protocol QLItemThumbnailGeneratorProtocolInternal;
 
 @interface QLPreviewContext : NSObject <NSSecureCoding>
@@ -18,7 +18,6 @@
     id<QLItemThumbnailGeneratorProtocolInternal> _thumbnailGenerator;
     NSString *_previewTitle;
     NSString *_contentType;
-    NSURL *_editedFileURL;
     unsigned long long _editedFileBehavior;
     NSString *_password;
     unsigned long long _previewItemType;
@@ -35,7 +34,6 @@
 @property (strong) NSDictionary *clientPreviewOptions; // @synthesize clientPreviewOptions=_clientPreviewOptions;
 @property (strong) NSString *contentType; // @synthesize contentType=_contentType;
 @property unsigned long long editedFileBehavior; // @synthesize editedFileBehavior=_editedFileBehavior;
-@property (strong) NSURL *editedFileURL; // @synthesize editedFileURL=_editedFileURL;
 @property (strong) QLItem *item; // @synthesize item=_item;
 @property (strong) NSNumber *itemSize; // @synthesize itemSize=_itemSize;
 @property (copy) NSString *password; // @synthesize password=_password;

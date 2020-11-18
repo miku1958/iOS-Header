@@ -8,17 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDMerchantInformation : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_merchantAdditionalData;
     NSString *_merchantAddress;
     NSString *_merchantCanl;
     NSString *_merchantCity;
-    int _merchantCleanConfidenceLevel;
     NSString *_merchantCountryCode;
     NSString *_merchantDoingBusinessAsName;
     NSString *_merchantEnhancedName;
@@ -29,9 +30,41 @@ __attribute__((visibility("hidden")))
     NSString *_merchantState;
     NSString *_merchantType;
     NSString *_merchantZip;
+    int _merchantCleanConfidenceLevel;
     struct {
-        unsigned int merchantCleanConfidenceLevel:1;
-    } _has;
+        unsigned int has_merchantCleanConfidenceLevel:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_merchantAdditionalData:1;
+        unsigned int read_merchantAddress:1;
+        unsigned int read_merchantCanl:1;
+        unsigned int read_merchantCity:1;
+        unsigned int read_merchantCountryCode:1;
+        unsigned int read_merchantDoingBusinessAsName:1;
+        unsigned int read_merchantEnhancedName:1;
+        unsigned int read_merchantId:1;
+        unsigned int read_merchantRawAddress:1;
+        unsigned int read_merchantRawCity:1;
+        unsigned int read_merchantRawState:1;
+        unsigned int read_merchantState:1;
+        unsigned int read_merchantType:1;
+        unsigned int read_merchantZip:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_merchantAdditionalData:1;
+        unsigned int wrote_merchantAddress:1;
+        unsigned int wrote_merchantCanl:1;
+        unsigned int wrote_merchantCity:1;
+        unsigned int wrote_merchantCountryCode:1;
+        unsigned int wrote_merchantDoingBusinessAsName:1;
+        unsigned int wrote_merchantEnhancedName:1;
+        unsigned int wrote_merchantId:1;
+        unsigned int wrote_merchantRawAddress:1;
+        unsigned int wrote_merchantRawCity:1;
+        unsigned int wrote_merchantRawState:1;
+        unsigned int wrote_merchantState:1;
+        unsigned int wrote_merchantType:1;
+        unsigned int wrote_merchantZip:1;
+        unsigned int wrote_merchantCleanConfidenceLevel:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasMerchantAdditionalData;
@@ -49,24 +82,40 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasMerchantState;
 @property (readonly, nonatomic) BOOL hasMerchantType;
 @property (readonly, nonatomic) BOOL hasMerchantZip;
-@property (strong, nonatomic) NSString *merchantAdditionalData; // @synthesize merchantAdditionalData=_merchantAdditionalData;
-@property (strong, nonatomic) NSString *merchantAddress; // @synthesize merchantAddress=_merchantAddress;
-@property (strong, nonatomic) NSString *merchantCanl; // @synthesize merchantCanl=_merchantCanl;
-@property (strong, nonatomic) NSString *merchantCity; // @synthesize merchantCity=_merchantCity;
-@property (nonatomic) int merchantCleanConfidenceLevel; // @synthesize merchantCleanConfidenceLevel=_merchantCleanConfidenceLevel;
-@property (strong, nonatomic) NSString *merchantCountryCode; // @synthesize merchantCountryCode=_merchantCountryCode;
-@property (strong, nonatomic) NSString *merchantDoingBusinessAsName; // @synthesize merchantDoingBusinessAsName=_merchantDoingBusinessAsName;
-@property (strong, nonatomic) NSString *merchantEnhancedName; // @synthesize merchantEnhancedName=_merchantEnhancedName;
-@property (strong, nonatomic) NSString *merchantId; // @synthesize merchantId=_merchantId;
-@property (strong, nonatomic) NSString *merchantRawAddress; // @synthesize merchantRawAddress=_merchantRawAddress;
-@property (strong, nonatomic) NSString *merchantRawCity; // @synthesize merchantRawCity=_merchantRawCity;
-@property (strong, nonatomic) NSString *merchantRawState; // @synthesize merchantRawState=_merchantRawState;
-@property (strong, nonatomic) NSString *merchantState; // @synthesize merchantState=_merchantState;
-@property (strong, nonatomic) NSString *merchantType; // @synthesize merchantType=_merchantType;
-@property (strong, nonatomic) NSString *merchantZip; // @synthesize merchantZip=_merchantZip;
+@property (strong, nonatomic) NSString *merchantAdditionalData;
+@property (strong, nonatomic) NSString *merchantAddress;
+@property (strong, nonatomic) NSString *merchantCanl;
+@property (strong, nonatomic) NSString *merchantCity;
+@property (nonatomic) int merchantCleanConfidenceLevel;
+@property (strong, nonatomic) NSString *merchantCountryCode;
+@property (strong, nonatomic) NSString *merchantDoingBusinessAsName;
+@property (strong, nonatomic) NSString *merchantEnhancedName;
+@property (strong, nonatomic) NSString *merchantId;
+@property (strong, nonatomic) NSString *merchantRawAddress;
+@property (strong, nonatomic) NSString *merchantRawCity;
+@property (strong, nonatomic) NSString *merchantRawState;
+@property (strong, nonatomic) NSString *merchantState;
+@property (strong, nonatomic) NSString *merchantType;
+@property (strong, nonatomic) NSString *merchantZip;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readMerchantAdditionalData;
+- (void)_readMerchantAddress;
+- (void)_readMerchantCanl;
+- (void)_readMerchantCity;
+- (void)_readMerchantCountryCode;
+- (void)_readMerchantDoingBusinessAsName;
+- (void)_readMerchantEnhancedName;
+- (void)_readMerchantId;
+- (void)_readMerchantRawAddress;
+- (void)_readMerchantRawCity;
+- (void)_readMerchantRawState;
+- (void)_readMerchantState;
+- (void)_readMerchantType;
+- (void)_readMerchantZip;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -74,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

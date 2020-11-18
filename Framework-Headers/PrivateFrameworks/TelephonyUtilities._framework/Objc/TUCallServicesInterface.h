@@ -7,53 +7,54 @@
 #import <objc/NSObject.h>
 
 #import <TelephonyUtilities/TUAudioDeviceControllerActions-Protocol.h>
+#import <TelephonyUtilities/TUCallFilterControllerActions-Protocol.h>
 #import <TelephonyUtilities/TUCallServicesClientCapabilitiesActions-Protocol.h>
 #import <TelephonyUtilities/TUCallServicesProxyCallActions-Protocol.h>
 #import <TelephonyUtilities/TUCallServicesXPCClient-Protocol.h>
 #import <TelephonyUtilities/TURouteControllerActions-Protocol.h>
 
-@class NSArray, NSDictionary, NSMapTable, NSString, NSXPCConnection, TUCallCenter, TUCallNotificationManager, TUCallServicesClientCapabilities;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, TUCallContainerPrivate, TUCallServicesXPCServer, TURouteControllerClient;
+@class NSArray, NSMapTable, NSString, NSXPCConnection, TUCallCenter, TUCallNotificationManager, TUCallServicesClientCapabilities, TURouteController;
+@protocol OS_dispatch_queue, TUCallContainerPrivate, TUCallServicesXPCServer;
 
-@interface TUCallServicesInterface : NSObject <TUCallServicesXPCClient, TUCallServicesProxyCallActions, TUCallServicesClientCapabilitiesActions, TUAudioDeviceControllerActions, TURouteControllerActions>
+@interface TUCallServicesInterface : NSObject <TUCallServicesXPCClient, TUCallServicesProxyCallActions, TUCallServicesClientCapabilitiesActions, TUAudioDeviceControllerActions, TURouteControllerActions, TUCallFilterControllerActions>
 {
     BOOL _hasRequestedInitialState;
-    BOOL _hasDaemonDelegateLaunched;
+    BOOL _hasServerLaunched;
     int _connectionRequestNotificationToken;
-    id<TURouteControllerClient> _routeControllerClient;
-    id<TUCallServicesXPCServer> _daemonDelegate;
+    id<TUCallServicesXPCServer> _server;
     TUCallServicesClientCapabilities *_callServicesClientCapabilities;
     TUCallCenter *_callCenter;
+    TURouteController *_localRouteController;
+    TURouteController *_pairedHostDeviceRouteController;
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
-    NSObject<OS_dispatch_semaphore> *_initialStateSemaphore;
     NSArray *_currentCalls;
     NSMapTable *_uniqueProxyIdentifierToProxyCall;
     TUCallNotificationManager *_callNotificationManager;
     NSArray *_localProxyCalls;
 }
 
+@property (readonly, nonatomic) id<TUCallServicesXPCServer> asynchronousServer;
 @property (weak, nonatomic) TUCallCenter *callCenter; // @synthesize callCenter=_callCenter;
 @property (readonly, nonatomic) id<TUCallContainerPrivate> callContainer;
-@property (strong, nonatomic) TUCallNotificationManager *callNotificationManager; // @synthesize callNotificationManager=_callNotificationManager;
-@property (strong, nonatomic) TUCallServicesClientCapabilities *callServicesClientCapabilities; // @synthesize callServicesClientCapabilities=_callServicesClientCapabilities;
-@property (nonatomic) int connectionRequestNotificationToken; // @synthesize connectionRequestNotificationToken=_connectionRequestNotificationToken;
+@property (readonly, nonatomic) TUCallNotificationManager *callNotificationManager; // @synthesize callNotificationManager=_callNotificationManager;
+@property (readonly, nonatomic) TUCallServicesClientCapabilities *callServicesClientCapabilities; // @synthesize callServicesClientCapabilities=_callServicesClientCapabilities;
+@property (readonly, nonatomic) int connectionRequestNotificationToken; // @synthesize connectionRequestNotificationToken=_connectionRequestNotificationToken;
 @property (copy, nonatomic) NSArray *currentCalls; // @synthesize currentCalls=_currentCalls;
-@property (weak, nonatomic) id<TUCallServicesXPCServer> daemonDelegate; // @synthesize daemonDelegate=_daemonDelegate;
-@property (readonly, nonatomic) BOOL daemonDelegateIsLocal;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasDaemonDelegateLaunched; // @synthesize hasDaemonDelegateLaunched=_hasDaemonDelegateLaunched;
 @property (nonatomic) BOOL hasRequestedInitialState; // @synthesize hasRequestedInitialState=_hasRequestedInitialState;
+@property (nonatomic) BOOL hasServerLaunched; // @synthesize hasServerLaunched=_hasServerLaunched;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *initialStateSemaphore; // @synthesize initialStateSemaphore=_initialStateSemaphore;
 @property (copy, nonatomic) NSArray *localProxyCalls; // @synthesize localProxyCalls=_localProxyCalls;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) TURouteController *localRouteController; // @synthesize localRouteController=_localRouteController;
+@property (strong, nonatomic) TURouteController *pairedHostDeviceRouteController; // @synthesize pairedHostDeviceRouteController=_pairedHostDeviceRouteController;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) void *queueContext;
-@property (strong, nonatomic) id<TURouteControllerClient> routeControllerClient; // @synthesize routeControllerClient=_routeControllerClient;
-@property (readonly, nonatomic) NSDictionary *routesByUniqueIdentifier;
+@property (weak, nonatomic) id<TUCallServicesXPCServer> server; // @synthesize server=_server;
+@property (readonly, nonatomic, getter=isServerLocal) BOOL serverLocal;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMapTable *uniqueProxyIdentifierToProxyCall; // @synthesize uniqueProxyIdentifierToProxyCall=_uniqueProxyIdentifierToProxyCall;
+@property (readonly, nonatomic) NSMapTable *uniqueProxyIdentifierToProxyCall; // @synthesize uniqueProxyIdentifierToProxyCall=_uniqueProxyIdentifierToProxyCall;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
@@ -67,7 +68,8 @@
 - (void)_updateCurrentCalls:(id)arg1 withNotificationsUsingUpdatedCalls:(id)arg2;
 - (void)_updateCurrentCallsWithoutNotifications:(id)arg1;
 - (oneway void)answerCallWithRequest:(id)arg1;
-- (id)daemonDelegateWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)asynchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
+- (BOOL)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)dealloc;
 - (id)dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)disconnectAllCalls;
@@ -75,31 +77,37 @@
 - (oneway void)disconnectCurrentCallAndActivateHeld;
 - (oneway void)enteredBackgroundForAllCalls;
 - (oneway void)enteredForegroundForCallWithUniqueProxyIdentifier:(id)arg1;
+- (void)fetchCurrentCalls;
 - (oneway void)groupCallWithUniqueProxyIdentifier:(id)arg1 withOtherCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)handleCurrentCallsChanged:(id)arg1 callDisconnected:(id)arg2;
 - (oneway void)handleFrequencyChangedTo:(id)arg1 inDirection:(int)arg2 forCallsWithUniqueProxyIdentifiers:(id)arg3;
+- (oneway void)handleLocalRoutesByUniqueIdentifierUpdated:(id)arg1;
 - (oneway void)handleMeterLevelChangedTo:(float)arg1 inDirection:(int)arg2 forCallsWithUniqueProxyIdentifiers:(id)arg3;
 - (oneway void)handleNotificationName:(id)arg1 forCallWithUniqueProxyIdentifier:(id)arg2 userInfo:(id)arg3;
-- (oneway void)handleRoutesByUniqueIdentifierUpdated:(id)arg1;
+- (oneway void)handlePairedHostDeviceRoutesByUniqueIdentifierUpdated:(id)arg1;
 - (void)handleServerDisconnect;
 - (void)handleServerReconnect;
 - (oneway void)holdCallWithUniqueProxyIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithQueue:(id)arg1 callCenter:(id)arg2;
+- (BOOL)isUnknownAddress:(id)arg1 normalizedAddress:(id)arg2 forBundleIdentifier:(id)arg3;
 - (id)joinConversationWithRequest:(id)arg1;
 - (void)performBlockOnQueue:(CDUnknownBlockType)arg1;
 - (void)performBlockOnQueue:(CDUnknownBlockType)arg1 andWait:(BOOL)arg2;
-- (oneway void)pickRouteWithUniqueIdentifier:(id)arg1;
+- (void)pickRouteWithUniqueIdentifier:(id)arg1 forRouteController:(id)arg2;
 - (oneway void)playDTMFToneForCallWithUniqueProxyIdentifier:(id)arg1 key:(unsigned char)arg2;
+- (id)policyForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (oneway void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)pullHostedCallsFromPairedHostDevice;
 - (oneway void)pullRelayingCallsFromClient;
 - (oneway void)pushHostedCallsToDestination:(id)arg1;
 - (oneway void)pushRelayingCallsToHostWithSourceIdentifier:(id)arg1;
 - (void)registerCall:(id)arg1;
+- (oneway void)reportLocalPreviewStoppedForCallWithUniqueProxyIdentifier:(id)arg1;
 - (void)requestCurrentStateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestCurrentStateWithCompletionHandler:(CDUnknownBlockType)arg1 handleInitialState:(CDUnknownBlockType)arg2;
 - (oneway void)resetCallProvisionalStates;
-- (oneway void)routesByUniqueIdentifier:(CDUnknownBlockType)arg1;
+- (id)routesByUniqueIdentifierForRouteController:(id)arg1;
 - (oneway void)sendHardPauseDigitsForCallWithUniqueProxyIdentifier:(id)arg1;
 - (oneway void)sendMMIOrUSSDCodeWithRequest:(id)arg1;
 - (oneway void)setClientCapabilities:(id)arg1;
@@ -110,14 +118,17 @@
 - (oneway void)setRemoteVideoPresentationStateForCallWithUniqueProxyIdentifier:(id)arg1 presentationState:(int)arg2;
 - (oneway void)setTTYType:(int)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setUplinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
+- (BOOL)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
+- (oneway void)shouldSuppressInCallStatusBar:(BOOL)arg1;
 - (oneway void)swapCalls;
-- (id)synchronousDaemonDelegateWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)tearDownXPCConnection;
 - (oneway void)ungroupCallWithUniqueProxyIdentifier:(id)arg1;
 - (oneway void)unholdCallWithUniqueProxyIdentifier:(id)arg1;
 - (oneway void)updateCallWithProxy:(id)arg1;
 - (void)waitForInitialStateIfNecessary;
 - (oneway void)willEnterBackgroundForAllCalls;
+- (BOOL)willRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 
 @end
 

@@ -6,29 +6,28 @@
 
 #import <Foundation/NSMutableOrderedSet.h>
 
-@class NSMutableArray;
-
 __attribute__((visibility("hidden")))
 @interface __NSOrderedSetM : NSMutableOrderedSet
 {
-    unsigned long long _used;
-    struct __CFBasicHash *_set;
-    NSMutableArray *_array;
+    _Atomic struct __cow_state_t *cow;
+    CDStruct_2595eaee storage;
 }
 
-+ (id)__new:(const id *)arg1:(unsigned long long)arg2:(BOOL)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void)_mutate;
 - (BOOL)containsObject:(id)arg1;
+- (id)copy;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (unsigned long long)countForObject:(id)arg1;
 - (void)dealloc;
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)indexOfObject:(id)arg1;
 - (void)insertObject:(id)arg1 atIndex:(unsigned long long)arg2;
+- (id)mutableCopy;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (void)removeObjectAtIndex:(unsigned long long)arg1;
 - (void)replaceObjectAtIndex:(unsigned long long)arg1 withObject:(id)arg2;

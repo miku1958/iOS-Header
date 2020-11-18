@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/NSSecureCoding-Protocol.h>
+
 @class GEOComposedRoute, GEOPBTransitStop, NSArray;
 
-@interface GEOComposedRouteLeg : NSObject
+@interface GEOComposedRouteLeg : NSObject <NSSecureCoding>
 {
     GEOComposedRoute *_composedRoute;
     long long _type;
@@ -20,8 +22,6 @@
 @property (readonly, nonatomic) unsigned int endPointIndex;
 @property (readonly, nonatomic) unsigned long long endStepIndex;
 @property (readonly, nonatomic) GEOPBTransitStop *endingTransitStop;
-@property (readonly, nonatomic) NSArray *enterTransitAccessPoints;
-@property (readonly, nonatomic) NSArray *exitTransitAccessPoints;
 @property (readonly, nonatomic) double expectedTime;
 @property (readonly, nonatomic) unsigned long long numberOfTransitStops;
 @property (readonly, nonatomic) unsigned int pointCount;
@@ -36,10 +36,13 @@
 @property (readonly, nonatomic) int transportType;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_MapsCarPlay_isEqual:(id)arg1;
 - (BOOL)contains:(id)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepRange:(struct _NSRange)arg3 pointRange:(struct _NSRange)arg4;
 - (double)remainingDistanceAlongLegFromStepIndex:(unsigned long long)arg1 currentStepRemainingDistance:(double)arg2;
 - (double)remainingTimeAlongLegFromStepIndex:(unsigned long long)arg1 currentStepRemainingDistance:(double)arg2;

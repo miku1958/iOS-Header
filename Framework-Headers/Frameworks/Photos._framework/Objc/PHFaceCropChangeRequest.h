@@ -4,35 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHChangeRequest.h>
 
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSData, NSManagedObjectID, NSString, PHChangeRequestHelper, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
+@class NSData, NSManagedObjectID, NSString, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
-@interface PHFaceCropChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
+@interface PHFaceCropChangeRequest : PHChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
-    BOOL _clientEntitled;
-    NSString *_clientName;
-    int _clientProcessID;
-    PHChangeRequestHelper *_helper;
     NSString *_originatingFaceUUID;
     PHRelationshipChangeRequestHelper *_faceHelper;
     PHRelationshipChangeRequestHelper *_personHelper;
 }
 
-@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
-@property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
-@property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
+@property (readonly, nonatomic) NSString *clientName;
+@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *faceHelper; // @synthesize faceHelper=_faceHelper;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
+@property (readonly) BOOL isNewRequest;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, getter=isMutated) BOOL mutated;
-@property (readonly, getter=isNew) BOOL new;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (copy, nonatomic) NSString *originatingFaceUUID; // @synthesize originatingFaceUUID=_originatingFaceUUID;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *personHelper; // @synthesize personHelper=_personHelper;
@@ -40,7 +35,6 @@
 @property (strong, nonatomic) NSData *resourceData;
 @property (nonatomic) short state;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *uuid;
 
 + (id)_creationRequestForFaceCropWithOriginatingFace:(id)arg1 resourceData:(id)arg2 person:(id)arg3;
 + (id)_creationRequestForFaceCropWithOriginatingFace:(id)arg1 resourceData:(id)arg2 personLocalIdentifier:(id)arg3;
@@ -53,20 +47,16 @@
 - (id)_mutablePersonObjectIDsAndUUIDs;
 - (void)_prepareFaceHelperIfNeeded;
 - (void)_preparePersonHelperIfNeeded;
-- (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
-- (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
+- (BOOL)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
-- (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
-- (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)setFace:(id)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
-- (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) GEOMapItemAttribution *encyclopedicAttribution;
 @property (readonly, nonatomic) NSArray *factoids;
 @property (readonly, nonatomic) BOOL hasPairOfFactoids;
+@property (readonly, nonatomic) BOOL hasStandAloneFactoids;
 @property (readonly, nonatomic) BOOL hasTextBlock;
 @property (readonly, nonatomic) NSString *textBlockText;
 @property (readonly, nonatomic) NSString *textBlockTitle;

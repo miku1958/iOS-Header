@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
-@class NSMutableArray, NSString, _MTLDevice;
+@class NSMutableArray, NSObject, NSString, _MTLDevice;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
-@interface _MTLCommandQueue : NSObject
+@interface _MTLCommandQueue : _MTLObjectWithLabel
 {
     _MTLDevice *_dev;
     NSMutableArray *_pendingQueue;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_completionQueueDispatch;
     NSObject<OS_dispatch_source> *_commandQueueEventSource;
     NSObject<OS_dispatch_semaphore> *_commandBufferSemaphore;
-    NSString *_label;
     int _backgroundTrackingPID;
     unsigned long long _globalTraceObjectID;
     unsigned long long _labelTraceID;
@@ -34,8 +32,11 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _perfSampleHandlerBlock;
     unsigned long long _listIndex;
     unsigned long long _maxCommandBufferCount;
-    unsigned long long _qosClass;
-    long long _qosRelativePriority;
+    unsigned long long _qosLevel;
+    NSObject<OS_dispatch_queue> *_commitQueue;
+    BOOL _commitSynchronously;
+    NSObject<OS_dispatch_queue> *_completionQueue;
+    BOOL _disableCrossQueueHazardTracking;
     BOOL _executionEnabled;
     BOOL _skipRender;
     BOOL _openGLQueue;
@@ -47,16 +48,19 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=getStatLocations) unsigned long long StatLocations; // @synthesize StatLocations=_StatLocations;
 @property (nonatomic, getter=getStatOptions) unsigned long long StatOptions; // @synthesize StatOptions=_StatOptions;
 @property int backgroundTrackingPID; // @synthesize backgroundTrackingPID=_backgroundTrackingPID;
+@property (readonly) NSObject<OS_dispatch_queue> *commitQueue; // @synthesize commitQueue=_commitQueue;
+@property (readonly) BOOL commitSynchronously; // @synthesize commitSynchronously=_commitSynchronously;
+@property (readonly) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
+@property (readonly) BOOL disableCrossQueueHazardTracking; // @synthesize disableCrossQueueHazardTracking=_disableCrossQueueHazardTracking;
 @property BOOL executionEnabled; // @synthesize executionEnabled=_executionEnabled;
 @property (readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property (readonly) BOOL isOpenGLQueue; // @synthesize isOpenGLQueue=_openGLQueue;
-@property (copy) NSString *label;
+@property (copy) NSString *label; // @dynamic label;
 @property (nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
 @property (readonly) unsigned long long maxCommandBufferCount; // @synthesize maxCommandBufferCount=_maxCommandBufferCount;
 @property (nonatomic) unsigned long long numCommandBuffers; // @synthesize numCommandBuffers=_numCommandBuffers;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled; // @synthesize profilingEnabled=_profilingEnabled;
-@property (readonly) unsigned long long qosClass; // @synthesize qosClass=_qosClass;
-@property (readonly) long long qosRelativePriority; // @synthesize qosRelativePriority=_qosRelativePriority;
+@property (readonly) unsigned long long qosLevel; // @synthesize qosLevel=_qosLevel;
 @property BOOL skipRender; // @synthesize skipRender=_skipRender;
 
 - (BOOL)_submitAvailableCommandBuffers;

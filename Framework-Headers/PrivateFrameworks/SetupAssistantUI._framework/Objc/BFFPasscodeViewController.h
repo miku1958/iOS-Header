@@ -51,6 +51,7 @@
 - (void)passcodeInput:(id)arg1 enteredPasscode:(id)arg2;
 - (void)passcodeInput:(id)arg1 tappedFooterButton:(id)arg2;
 - (void)passcodeInput:(id)arg1 willChangeContents:(id)arg2;
+- (id)passcodeInputView;
 - (void)passcodeManager:(id)arg1 didSetPasscodeWithSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)passcodeManager:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)passcodeManagerWillSetPasscode:(id)arg1;

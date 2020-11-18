@@ -28,7 +28,6 @@
     GEOAutomobileOptions *_automobileOptions;
     GEOTransitOptions *_transitOptions;
     GEOWalkingOptions *_walkingOptions;
-    int _requestMode;
 }
 
 @property (readonly, nonatomic) BOOL _includeBasicRoutePoints; // @synthesize _includeBasicRoutePoints;
@@ -41,7 +40,6 @@
 @property (strong, nonatomic, getter=_automobileOptions, setter=_setAutomobileOptions:) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property (strong, nonatomic) MKMapItem *destination; // @synthesize destination=_destination;
 @property (nonatomic, getter=_includeDistanceInETA, setter=_setIncludeDistanceInETA:) BOOL includeDistanceInETA; // @synthesize includeDistanceInETA=_includeDistanceInETA;
-@property (nonatomic, getter=_requestMode, setter=_setRequestMode:) int requestMode; // @synthesize requestMode=_requestMode;
 @property (strong, nonatomic) MKMapItem *source; // @synthesize source=_source;
 @property (strong, nonatomic, getter=_transitOptions, setter=_setTransitOptions:) GEOTransitOptions *transitOptions; // @synthesize transitOptions=_transitOptions;
 @property (strong, nonatomic, getter=_walkingOptions, setter=_setWalkingOptions:) GEOWalkingOptions *walkingOptions; // @synthesize walkingOptions=_walkingOptions;

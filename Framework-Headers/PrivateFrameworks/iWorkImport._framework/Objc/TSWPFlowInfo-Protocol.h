@@ -5,13 +5,16 @@
 //
 
 #import <iWorkImport/NSObject-Protocol.h>
+#import <iWorkImport/TSDFlowInfo-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
+#import <iWorkImport/TSWPTextBoxNesting-Protocol.h>
 
 @class NSArray, NSString, TSUColor, TSWPShapeInfo, TSWPStorage;
 
-@protocol TSWPFlowInfo <NSObject, TSKDocumentObject>
+@protocol TSWPFlowInfo <NSObject, TSKDocumentObject, TSDFlowInfo, TSWPTextBoxNesting>
 
 @property (readonly, nonatomic) BOOL isLocked;
+@property (readonly, nonatomic) unsigned long long textOrientation;
 @property (readonly, nonatomic) TSWPStorage *textStorage;
 @property (strong, nonatomic) NSArray *textboxes;
 @property (readonly, nonatomic) TSUColor *userInterfaceFillColor;

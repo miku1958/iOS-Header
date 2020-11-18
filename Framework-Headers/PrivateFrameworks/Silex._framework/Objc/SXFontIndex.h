@@ -30,7 +30,7 @@
 - (void).cxx_destruct;
 - (void)addFontFamilyProvider:(id)arg1;
 - (id)fontAttributesForFontName:(id)arg1;
-- (id)fontNameForFontAttributes:(id)arg1;
+- (id)fontNameForFontAttributes:(id)arg1 size:(long long)arg2;
 - (id)fontsForFamilyProviders:(id)arg1;
 - (id)initWithFontFamilyProviders:(id)arg1;
 

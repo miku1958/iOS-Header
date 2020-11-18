@@ -16,7 +16,6 @@
 @interface ADCreativeController : NSObject <WKNavigationDelegate, ADWebProcessDelegate, _WKInputDelegate>
 {
     id<ADWebProcessProxy> _webProcessProxy;
-    id<ADCreativeControllerDelegate> _delegate;
     BOOL _contentVisible;
     BOOL _tapWasRecognized;
     BOOL _isVideoAd;
@@ -24,6 +23,7 @@
     BOOL _browserContextControllerDidLoad;
     BOOL _shouldBlockNavigation;
     ADWebView *_creativeView;
+    id<ADCreativeControllerDelegate> _delegate;
     NSString *_creativeIdentifier;
     ADAdImpressionPublicAttributes *_publicAttributes;
     CDUnknownBlockType _loadCompletion;
@@ -38,7 +38,7 @@
 @property (copy, nonatomic) NSString *creativeIdentifier; // @synthesize creativeIdentifier=_creativeIdentifier;
 @property (readonly, nonatomic) ADWebView *creativeView; // @synthesize creativeView=_creativeView;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<ADCreativeControllerDelegate> delegate;
+@property (weak, nonatomic) id<ADCreativeControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) ADWebViewGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property (readonly) unsigned long long hash;
@@ -51,6 +51,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL tapWasRecognized; // @synthesize tapWasRecognized=_tapWasRecognized;
 
+- (void).cxx_destruct;
 - (void)_callLoadCompletionWithError:(id)arg1;
 - (id)_customUserAgentString;
 - (id)_incrementCreativeIdentifier;
@@ -70,6 +71,7 @@
 - (struct CGRect)frameForCreativeView;
 - (void)loadAdImpression:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetVideoPlaytime;
+- (void)tearDown;
 - (void)unregisterExportedObjectInterface;
 - (void)webProcessMRAIDJSODidCallClose;
 - (void)webProcessMRAIDJSODidCallCreateCalendarEvent:(id)arg1;

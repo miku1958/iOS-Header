@@ -8,35 +8,51 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOAddressCorrectionUpdateRequest : PBRequest <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_addressID;
     NSMutableArray *_addressResults;
-    int _correctionStatus;
     NSMutableArray *_significantLocations;
+    int _correctionStatus;
     struct {
-        unsigned int correctionStatus:1;
-    } _has;
+        unsigned int has_correctionStatus:1;
+        unsigned int read_addressID:1;
+        unsigned int read_addressResults:1;
+        unsigned int read_significantLocations:1;
+        unsigned int wrote_addressID:1;
+        unsigned int wrote_addressResults:1;
+        unsigned int wrote_significantLocations:1;
+        unsigned int wrote_correctionStatus:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *addressID; // @synthesize addressID=_addressID;
-@property (strong, nonatomic) NSMutableArray *addressResults; // @synthesize addressResults=_addressResults;
-@property (nonatomic) int correctionStatus; // @synthesize correctionStatus=_correctionStatus;
+@property (strong, nonatomic) NSString *addressID;
+@property (strong, nonatomic) NSMutableArray *addressResults;
+@property (nonatomic) int correctionStatus;
 @property (readonly, nonatomic) BOOL hasAddressID;
 @property (nonatomic) BOOL hasCorrectionStatus;
-@property (strong, nonatomic) NSMutableArray *significantLocations; // @synthesize significantLocations=_significantLocations;
+@property (strong, nonatomic) NSMutableArray *significantLocations;
 
 + (Class)addressResultType;
++ (BOOL)isValid:(id)arg1;
 + (Class)significantLocationType;
 - (void).cxx_destruct;
 - (int)StringAsCorrectionStatus:(id)arg1;
+- (void)_addNoFlagsAddressResult:(id)arg1;
+- (void)_addNoFlagsSignificantLocation:(id)arg1;
+- (void)_readAddressID;
+- (void)_readAddressResults;
+- (void)_readSignificantLocations;
 - (void)addAddressResult:(id)arg1;
 - (void)addSignificantLocation:(id)arg1;
 - (id)addressResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)addressResultsCount;
 - (void)clearAddressResults;
+- (void)clearSensitiveFields;
 - (void)clearSignificantLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -46,6 +62,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolbox/AudioComponentRegistrarCallbackProtocol-Protocol.h>
+#import <AudioToolboxCore/AudioComponentRegistrarCallbackProtocol-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface AudioComponentRegistrarClient : NSObject <AudioComponentRegistrarCallbackProtocol>

@@ -6,35 +6,28 @@
 
 #import <objc/NSObject.h>
 
-#import <AVFAudio/AVAudioMixing-Protocol.h>
+@class AUAudioUnit, AVAudioEngine, AVAudioTime;
 
-@class AUAudioUnit, AVAudioEngine, AVAudioTime, NSString;
-
-@interface AVAudioNode : NSObject <AVAudioMixing>
+@interface AVAudioNode : NSObject
 {
     void *_impl;
 }
 
 @property (readonly, nonatomic) AUAudioUnit *AUAudioUnit;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AVAudioEngine *engine;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct AVAudioNodeImplBase *impl;
 @property (readonly, nonatomic) AVAudioTime *lastRenderTime;
 @property (readonly, nonatomic) double latency;
 @property (readonly, nonatomic) unsigned long long numberOfInputs;
 @property (readonly, nonatomic) unsigned long long numberOfOutputs;
 @property (readonly, nonatomic) double outputPresentationLatency;
-@property (readonly) Class superclass;
-@property (nonatomic) float volume;
 
 - (struct OpaqueAudioComponentInstance *)audioUnit;
 - (id)clock;
 - (void)dealloc;
 - (id)destinationForMixer:(id)arg1 bus:(unsigned long long)arg2;
 - (void)didAttachToEngine:(id)arg1;
-- (void)didDetachFromEngine:(id)arg1;
+- (void)didDetachFromEngine:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)initWithImpl:(struct AVAudioNodeImplBase *)arg1;
 - (id)inputFormatForBus:(unsigned long long)arg1;
@@ -45,6 +38,7 @@
 - (float)occlusion;
 - (id)outputFormatForBus:(unsigned long long)arg1;
 - (float)pan;
+- (long long)pointSourceInHeadMode;
 - (struct AVAudio3DPoint)position;
 - (float)rate;
 - (void)removeTapOnBus:(unsigned long long)arg1;
@@ -59,10 +53,15 @@
 - (void)setOcclusion:(float)arg1;
 - (BOOL)setOutputFormat:(id)arg1 forBus:(unsigned long long)arg2;
 - (void)setPan:(float)arg1;
+- (void)setPointSourceInHeadMode:(long long)arg1;
 - (void)setPosition:(struct AVAudio3DPoint)arg1;
 - (void)setRate:(float)arg1;
 - (void)setRenderingAlgorithm:(long long)arg1;
 - (void)setReverbBlend:(float)arg1;
+- (void)setSourceMode:(long long)arg1;
+- (void)setVolume:(float)arg1;
+- (long long)sourceMode;
+- (float)volume;
 
 @end
 

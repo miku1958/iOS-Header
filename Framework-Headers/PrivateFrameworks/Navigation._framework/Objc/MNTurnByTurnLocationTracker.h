@@ -6,12 +6,15 @@
 
 #import <Navigation/MNLocationTracker.h>
 
-@class GEONavigationMapMatcher, MNLocation, NSData, NSTimer;
+#import <Navigation/MNArrivalUpdaterDelegate-Protocol.h>
+
+@class GEONavigationMapMatcher, MNArrivalUpdater, MNLocation, NSData, NSString, NSTimer;
 @protocol GEODirectionServiceTicket;
 
-@interface MNTurnByTurnLocationTracker : MNLocationTracker
+@interface MNTurnByTurnLocationTracker : MNLocationTracker <MNArrivalUpdaterDelegate>
 {
     GEONavigationMapMatcher *_mapMatcher;
+    MNArrivalUpdater *_arrivalUpdater;
     double _startTime;
     id<GEODirectionServiceTicket> _rerouteTicket;
     NSData *_serverSessionState;
@@ -27,7 +30,11 @@
     BOOL _isNavigatingInLowGuidance;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSData *serverSessionState; // @synthesize serverSessionState=_serverSessionState;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_allowSwitchToTransportType:(int)arg1 forLocation:(id)arg2;
@@ -36,8 +43,7 @@
 - (void)_failedToRecalculateRouteWithError:(id)arg1;
 - (void)_handleOffRouteForLocation:(id)arg1;
 - (BOOL)_isCameraTestMode;
-- (BOOL)_isRerouting;
-- (BOOL)_isRoadFeatureInOppositeDirection:(CDStruct_c707fdd0 *)arg1 ofCoordinate:(CDStruct_2c43369c)arg2 course:(double)arg3;
+- (BOOL)_isRoadFeatureInOppositeDirection:(CDStruct_123780e2 *)arg1 ofCoordinate:(CDStruct_c3b9c2ee)arg2 course:(double)arg3;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (id)_matchedLocationForMatchResult:(id)arg1 originalLocation:(id)arg2;
 - (id)_newMapMatcherForRoute:(id)arg1;
@@ -47,6 +53,7 @@
 - (void)_reroute:(id)arg1 rerouteReason:(unsigned long long)arg2 request:(id)arg3 response:(id)arg4;
 - (id)_rerouteTicketForLocation:(id)arg1 transportType:(int)arg2 stepIndex:(unsigned long long)arg3;
 - (void)_retryLastRouteRecalculation;
+- (void)_sendRouteHintForLocation:(id)arg1;
 - (void)_setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (BOOL)_shouldAdvanceGuidanceToRouteMatch:(id)arg1;
 - (BOOL)_shouldThrottleRerouteForLocation:(id)arg1 lastRerouteLocation:(id)arg2;
@@ -57,10 +64,14 @@
 - (void)_updateForReroute:(id)arg1 rerouteReason:(unsigned long long)arg2 request:(id)arg3 response:(id)arg4;
 - (void)_updateStateForLocation:(id)arg1;
 - (void)_updateSwitchTransportTypeForLocation:(id)arg1;
+- (void)arrivalUpdaterDidArrive:(id)arg1;
+- (void)arrivalUpdaterDidEnterPreArrivalState:(id)arg1;
+- (void)arrivalUpdaterDidTimeoutInArrivalRegion:(id)arg1;
 - (void)dealloc;
 - (void)forceOnRoute:(id)arg1 atLocation:(id)arg2;
 - (id)initForTestingWithRoute:(id)arg1;
 - (id)initWithNavigationSession:(id)arg1;
+- (BOOL)isRerouting;
 - (void)reroute:(id)arg1 reason:(unsigned long long)arg2;
 - (void)startTracking;
 - (void)stopTracking;

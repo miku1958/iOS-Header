@@ -11,16 +11,16 @@
 #import <CoreHAP/HAPSecuritySessionDelegate-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPCharacteristic, HAPSecuritySession, HAPService, HMFExponentialBackoffTimer, HMFTimer, NSMutableArray, NSNumber, NSObject, NSOperationQueue, NSString;
-@protocol HAPKeyStore, OS_dispatch_queue;
+@class HAPCharacteristic, HAPSecuritySession, HAPService, HMFExponentialBackoffTimer, HMFTimer, NSMutableArray, NSNumber, NSOperationQueue, NSString;
+@protocol HAPKeyStore, HMFLocking;
 
 @interface HAPTunneledAccessoryBTLE : HAPAccessory <HAPBTLEControlOutputStreamDelegate, HAPSecuritySessionDelegate, HMFTimerDelegate, HAPAccessoryServerInternalDelegate>
 {
+    id<HMFLocking> _lock;
     BOOL _verified;
     BOOL _securitySessionOpen;
     BOOL _securitySessionOpening;
     BOOL _verifying;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSNumber *_stateNumber;
     id<HAPKeyStore> _keyStore;
     HAPService *_tunneledBTLEAccessoryService;
@@ -52,7 +52,6 @@
 @property (weak, nonatomic) HAPCharacteristic *pairingsCharacteristic; // @synthesize pairingsCharacteristic=_pairingsCharacteristic;
 @property (readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (readonly, nonatomic) NSMutableArray *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSOperationQueue *requestOperationQueue; // @synthesize requestOperationQueue=_requestOperationQueue;
 @property (strong, nonatomic) HAPSecuritySession *securitySession; // @synthesize securitySession=_securitySession;
 @property (nonatomic, getter=isSecuritySessionOpen) BOOL securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;

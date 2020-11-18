@@ -12,14 +12,14 @@ __attribute__((visibility("hidden")))
 @interface _MKPinAnnotationViewImageCacheKey : NSObject
 {
     unsigned long long _mapType;
-    unsigned long long _displayStyle;
     UIColor *_pinColor;
     long long _idiom;
+    long long _userInterfaceStyle;
 }
 
 - (void).cxx_destruct;
 - (unsigned long long)hash;
-- (id)initWithMapType:(unsigned long long)arg1 displayStyle:(unsigned long long)arg2 pinColor:(id)arg3 traits:(id)arg4;
+- (id)initWithMapType:(unsigned long long)arg1 pinColor:(id)arg2 traits:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

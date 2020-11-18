@@ -21,6 +21,7 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;
 
++ (id)handleForCHHandle:(id)arg1;
 + (id)handleWithDestinationID:(id)arg1;
 + (id)handleWithDictionaryRepresentation:(id)arg1;
 + (id)handleWithPersonHandle:(id)arg1;
@@ -39,6 +40,7 @@
 - (BOOL)isCanonicallyEqualToHandle:(id)arg1 isoCountryCode:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToHandle:(id)arg1;
+- (BOOL)isValidForISOCountryCode:(id)arg1;
 - (id)personHandle;
 
 @end

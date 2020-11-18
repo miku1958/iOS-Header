@@ -6,16 +6,18 @@
 
 #import <MobileTimer/NSObject-Protocol.h>
 
-@class NSDate, NSString, NSUUID;
+@class NSDate, NSDictionary, NSString, NSUUID;
 
 @protocol MTTimerIntentSupport <NSObject>
 
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) NSDate *lastModifiedDate;
 @property (readonly, nonatomic) double remainingTime;
+@property (readonly, nonatomic) NSDictionary *siriContext;
 @property (readonly, nonatomic) unsigned long long state;
 @property (readonly, nonatomic) NSUUID *timerID;
 @property (readonly, nonatomic) NSString *title;
+@property (readonly, nonatomic) long long type;
 
 @end
 

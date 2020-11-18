@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MessageUI/MFComposeHeaderView.h>
+#import <MessageUI/MFMailComposeHeaderView.h>
 
 @class NSMutableArray, UISegmentedControl;
+@protocol MFComposeImageSizeViewDelegate;
 
-@interface MFComposeImageSizeView : MFComposeHeaderView
+@interface MFComposeImageSizeView : MFMailComposeHeaderView
 {
     UISegmentedControl *_segmentedControl;
     NSMutableArray *_visibleScales;
 }
 
+@property (weak, nonatomic) id<MFComposeImageSizeViewDelegate> delegate; // @dynamic delegate;
+
+- (void).cxx_destruct;
 - (unsigned long long)_insertIndexForScale:(unsigned long long)arg1;
 - (unsigned long long)_scaleLabelIndexForScale:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)removeSizeDescriptionForScale:(unsigned long long)arg1;

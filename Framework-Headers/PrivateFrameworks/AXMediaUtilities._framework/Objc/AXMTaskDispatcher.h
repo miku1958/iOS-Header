@@ -27,10 +27,10 @@
 - (id)_queue_dequeueTask;
 - (void)_queue_processNextTask;
 - (void)_queue_scheduleTask:(id)arg1;
-- (void)_queue_unscheduleAllTasks;
+- (id)_queue_unscheduleAllTasks;
 - (id)initWithIdentifier:(id)arg1 delegate:(id)arg2;
 - (void)scheduleTask:(id)arg1;
-- (void)unscheduleAllTasks;
+- (id)unscheduleAllTasks;
 
 @end
 

@@ -9,13 +9,14 @@
 #import <NewsToday/NTTodayResultsAggregator-Protocol.h>
 
 @class NSDate, NSString, NTPBSectionSlotCostInfo;
-@protocol FCFeedPersonalizing, FCTodayPrivateData;
+@protocol FCCoreConfigurationManager, FCFeedPersonalizing, FCTodayPrivateData;
 
 @interface NTNewsTodayResultsExplicitAllocationAggregator : NSObject <NTTodayResultsAggregator>
 {
     BOOL _allowLeadingCell;
     BOOL _allowSectionTitles;
     BOOL _respectMinMaxLimit;
+    id<FCCoreConfigurationManager> _configurationManager;
     id<FCFeedPersonalizing> _feedPersonalizer;
     NTPBSectionSlotCostInfo *_nonVideoSectionSlotCostInfo;
     NTPBSectionSlotCostInfo *_videoSectionSlotCostInfo;
@@ -27,6 +28,7 @@
 
 @property (nonatomic) BOOL allowLeadingCell; // @synthesize allowLeadingCell=_allowLeadingCell;
 @property (nonatomic) BOOL allowSectionTitles; // @synthesize allowSectionTitles=_allowSectionTitles;
+@property (strong, nonatomic) id<FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long embedsLimit; // @synthesize embedsLimit=_embedsLimit;
@@ -45,7 +47,7 @@
 - (id)_sectionFilterTransformationWithDescriptor:(id)arg1 priorClusterIDsInOtherSections:(id)arg2 priorClusterIDsInSection:(id)arg3 otherArticleIDs:(id)arg4 embedsLimit:(unsigned long long)arg5;
 - (id)aggregateSections:(id)arg1 itemsBySectionDescriptor:(id)arg2;
 - (id)init;
-- (id)initWithFeedPersonalizer:(id)arg1 nonVideoSectionSlotCostInfo:(id)arg2 videoSectionSlotCostInfo:(id)arg3 embedsLimit:(unsigned long long)arg4 allowLeadingCell:(BOOL)arg5 allowSectionTitles:(BOOL)arg6 respectMinMaxLimit:(BOOL)arg7 filterDate:(id)arg8 todayData:(id)arg9 slotsLimit:(double)arg10;
+- (id)initWithConfigurationManager:(id)arg1 feedPersonalizer:(id)arg2 nonVideoSectionSlotCostInfo:(id)arg3 videoSectionSlotCostInfo:(id)arg4 embedsLimit:(unsigned long long)arg5 allowLeadingCell:(BOOL)arg6 allowSectionTitles:(BOOL)arg7 respectMinMaxLimit:(BOOL)arg8 filterDate:(id)arg9 todayData:(id)arg10 slotsLimit:(double)arg11;
 
 @end
 

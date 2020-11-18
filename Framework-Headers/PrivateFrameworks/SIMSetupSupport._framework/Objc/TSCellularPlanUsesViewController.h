@@ -4,51 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SetupAssistantUI/BFFSplashController.h>
+#import <OnBoardingKit/OBTableWelcomeController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UITableView, UITableViewCell;
+@class NSArray, NSIndexPath, NSLayoutConstraint, NSMutableArray, NSString, OBBoldTrayButton, UITableViewCell;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanUsesViewController : BFFSplashController <UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
+@interface TSCellularPlanUsesViewController : OBTableWelcomeController <UITableViewDataSource, UITableViewDelegate, TSSetupFlowItem>
 {
+    OBBoldTrayButton *_doneButton;
+    BOOL _dataSwitchEnabled;
     BOOL _hasDoneButton;
     id<TSSIMSetupFlowDelegate> _delegate;
-    UITableView *_tableView;
-    NSArray *_selectedPlanItems;
+    unsigned long long _usesType;
+    NSLayoutConstraint *_heightAnchor;
     UITableViewCell *_sectionFooter;
-    NSIndexPath *_chosenComboIndexPath;
+    NSIndexPath *_chosenUseIndexPath;
+    NSMutableArray *_chosenUseIndexPaths;
+    NSArray *_planItemBadges;
+    NSArray *_selectedPlanItems;
 }
 
-@property (strong) NSIndexPath *chosenComboIndexPath; // @synthesize chosenComboIndexPath=_chosenComboIndexPath;
+@property (strong) NSIndexPath *chosenUseIndexPath; // @synthesize chosenUseIndexPath=_chosenUseIndexPath;
+@property (strong) NSMutableArray *chosenUseIndexPaths; // @synthesize chosenUseIndexPaths=_chosenUseIndexPaths;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property BOOL hasDoneButton; // @synthesize hasDoneButton=_hasDoneButton;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
+@property (strong) NSArray *planItemBadges; // @synthesize planItemBadges=_planItemBadges;
 @property (strong) UITableViewCell *sectionFooter; // @synthesize sectionFooter=_sectionFooter;
 @property (strong) NSArray *selectedPlanItems; // @synthesize selectedPlanItems=_selectedPlanItems;
 @property (readonly) Class superclass;
-@property (strong) UITableView *tableView; // @synthesize tableView=_tableView;
+@property (readonly, nonatomic) unsigned long long usesType; // @synthesize usesType=_usesType;
 
 - (void).cxx_destruct;
-- (void)configureDefaultVoice:(id)arg1 configureUserData:(id)arg2 configureIMessage:(id)arg3;
-- (id)initWithDoneButton:(BOOL)arg1;
+- (void)_doneButtonTapped;
+- (void)dataSwitchChanged:(id)arg1;
+- (id)initWithType:(unsigned long long)arg1 withDoneButton:(BOOL)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)prepare:(CDUnknownBlockType)arg1;
-- (void)savePlanUses:(CDUnknownBlockType)arg1;
+- (void)saveDefaultUse:(CDUnknownBlockType)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
-- (id)useToString:(unsigned long long)arg1;
+- (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

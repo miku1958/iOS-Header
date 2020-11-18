@@ -17,18 +17,26 @@
     NSSet *_attentionLostTimeouts;
     NSDictionary *_attentionLostTimeoutDictionary;
     BOOL _samplingDelayExplicitlySet;
+    BOOL _attentionLostEventMaskExplicitlySet;
     unsigned long long _tagIndex;
+    NSSet *_allowedHIDEventsForRemoteEvent;
+    BOOL _sampleWhileAbsent;
     NSString *_identifier;
     id<NSCopying> _tag;
+    unsigned long long _notificationMask;
     unsigned long long _eventMask;
+    unsigned long long _attentionLostEventMask;
     double _samplingInterval;
     double _samplingDelay;
 }
 
+@property (nonatomic) unsigned long long attentionLostEventMask; // @synthesize attentionLostEventMask=_attentionLostEventMask;
 @property (copy, nonatomic) NSDictionary *attentionLostTimeoutDictionary;
 @property (copy, nonatomic) NSSet *attentionLostTimeouts; // @dynamic attentionLostTimeouts;
 @property (nonatomic) unsigned long long eventMask; // @synthesize eventMask=_eventMask;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned long long notificationMask; // @synthesize notificationMask=_notificationMask;
+@property (nonatomic) BOOL sampleWhileAbsent; // @synthesize sampleWhileAbsent=_sampleWhileAbsent;
 @property (nonatomic) double samplingDelay; // @synthesize samplingDelay=_samplingDelay;
 @property (nonatomic) double samplingInterval; // @synthesize samplingInterval=_samplingInterval;
 @property (copy, nonatomic) id<NSCopying> tag; // @synthesize tag=_tag;
@@ -40,14 +48,17 @@
 + (id)supportedEventsString;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)allowedHIDEventsForRemoteEvent;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)setAllowedHIDEventsForRemoteEvent:(id)arg1;
 - (void)setAttentionLostTimeout:(double)arg1;
 - (unsigned long long)tagIndex;
+- (BOOL)validateWithError:(id *)arg1;
 
 @end
 

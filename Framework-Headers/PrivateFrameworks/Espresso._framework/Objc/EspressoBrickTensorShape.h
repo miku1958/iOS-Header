@@ -13,11 +13,13 @@
     int _channels;
     int _batch;
     int _sequence;
+    int _rank;
 }
 
 @property int batch; // @synthesize batch=_batch;
 @property int channels; // @synthesize channels=_channels;
 @property int height; // @synthesize height=_height;
+@property int rank; // @synthesize rank=_rank;
 @property int sequence; // @synthesize sequence=_sequence;
 @property int width; // @synthesize width=_width;
 

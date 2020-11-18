@@ -14,6 +14,7 @@
 - (BOOL)hasDetailsActionForQuickControlViewController:(HUQuickControlContainerViewController *)arg1 item:(HFItem *)arg2;
 - (HUApplier *)quickControlViewController:(HUQuickControlContainerViewController *)arg1 applierForSourceViewTransitionWithAnimationSettings:(HUAnimationSettings *)arg2 presenting:(BOOL)arg3;
 - (double)quickControlViewController:(HUQuickControlContainerViewController *)arg1 sourceViewInitialScaleForPresentation:(BOOL)arg2;
+- (void)quickControlViewControllerDidTapDetailsButton:(HUQuickControlContainerViewController *)arg1;
 - (void)quickControlViewControllerWillDismissDetailsViewController:(HUQuickControlContainerViewController *)arg1 shouldDismissQuickControl:(BOOL)arg2;
 @end
 

@@ -22,9 +22,11 @@
 - (id)newCaptureScopeWithCommandQueue:(id)arg1;
 - (id)newCaptureScopeWithDevice:(id)arg1;
 - (void)startCaptureWithCommandQueue:(id)arg1;
+- (BOOL)startCaptureWithDescriptor:(id)arg1 error:(id *)arg2;
 - (void)startCaptureWithDevice:(id)arg1;
 - (void)startCaptureWithScope:(id)arg1;
 - (void)stopCapture;
+- (BOOL)supportsDestination:(long long)arg1;
 
 @end
 

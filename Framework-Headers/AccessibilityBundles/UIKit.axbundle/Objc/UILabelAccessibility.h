@@ -12,10 +12,10 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (double)_accessibilityFontSize;
-- (BOOL)_accessibilityIsScannerElement;
 - (id)_accessibilityLabel:(BOOL)arg1;
-- (BOOL)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
+- (BOOL)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
 - (id)_axCleanupNewlines:(id)arg1;
 - (id)_axOriginalLabelText:(BOOL)arg1;
 - (id)accessibilityAttributedLabel;
@@ -25,6 +25,7 @@
 - (id)accessibilityLocalizationBundlePath;
 - (id)accessibilityLocalizedStringKey;
 - (id)accessibilityLocalizedStringTableName;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)copyAttributedText:(id)arg1 withAttributes:(id)arg2;

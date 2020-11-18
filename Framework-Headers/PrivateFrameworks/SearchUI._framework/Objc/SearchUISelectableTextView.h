@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextView.h>
+#import <TemplateKit/TLKTextView.h>
 
-@interface SearchUISelectableTextView : UITextView
+@interface SearchUISelectableTextView : TLKTextView
 {
     BOOL _allowsDefine;
 }
 
-@property BOOL allowsDefine; // @synthesize allowsDefine=_allowsDefine;
+@property (nonatomic) BOOL allowsDefine; // @synthesize allowsDefine=_allowsDefine;
 
 - (BOOL)_canDefine;
 - (void)_define:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
-- (id)init;
 
 @end
 

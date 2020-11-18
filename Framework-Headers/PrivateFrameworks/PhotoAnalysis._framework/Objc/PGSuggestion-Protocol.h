@@ -13,9 +13,11 @@
 @property (readonly, nonatomic) BOOL containsUnverifiedPersons;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSSet *features;
+@property (readonly, nonatomic) BOOL isInvalid;
 @property (readonly, nonatomic) NSArray *keyAssets;
 @property (readonly, nonatomic) unsigned char notificationQuality;
 @property (readonly, nonatomic) unsigned short notificationState;
+@property (readonly, copy, nonatomic) NSArray *reasons;
 @property (readonly, nonatomic) id recipe;
 @property (readonly, nonatomic) unsigned long long relevanceDurationInDays;
 @property (readonly, nonatomic) NSArray *representativeAssets;
@@ -29,5 +31,7 @@
 @property (readonly, nonatomic) NSDate *universalStartDate;
 @property (readonly, nonatomic) long long version;
 
+
+@optional
 @end
 

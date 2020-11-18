@@ -22,9 +22,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (BOOL)canEditContainers;
 - (id)containersRelationshipName;
-- (void)dealloc;
 - (id)initWithAssetContainer:(id)arg1;
 - (id)initWithAssetContainers:(id)arg1;
 - (BOOL)isEmpty;

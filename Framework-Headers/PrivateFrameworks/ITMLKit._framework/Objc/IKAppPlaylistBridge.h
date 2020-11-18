@@ -24,6 +24,7 @@
 @property (nonatomic) long long repeatMode;
 
 - (void).cxx_destruct;
+- (void)_evaluateDelegateBlockSync:(CDUnknownBlockType)arg1;
 - (void)cleanup;
 - (id)initWithAppContext:(id)arg1 jsPlaylist:(id)arg2;
 - (id)item:(long long)arg1;

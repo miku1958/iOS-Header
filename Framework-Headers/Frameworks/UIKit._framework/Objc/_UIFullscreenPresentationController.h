@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_adjustOrientationIfNecessaryInWindow:(id)arg1 forViewController:(id)arg2 preservingViewController:(id)arg3;
+- (BOOL)_inheritsPresentingViewControllerThemeLevel;
 - (BOOL)_invokesDelegatesOnOrientationChange;
 - (void)_placeCounterRotationViewWithView:(id)arg1 inWindow:(id)arg2 fromOrientation:(long long)arg3 toOrientation:(long long)arg4 force:(BOOL)arg5;
 - (void)_removeCounterRotation;
@@ -33,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (long long)presentationStyle;
 - (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (BOOL)shouldPresentInFullscreen;
-- (BOOL)shouldRemovePresentersView;
 
 @end
 

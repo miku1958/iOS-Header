@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <InputContext/_ICFeedbackAccepting-Protocol.h>
 #import <InputContext/_ICPredictionSourcing-Protocol.h>
 
 @class NSCondition, NSMutableArray, PPQuickTypeBroker;
 
-@interface _ICPortraitPredictionSource : NSObject <_ICPredictionSourcing>
+@interface _ICPortraitPredictionSource : NSObject <_ICPredictionSourcing, _ICFeedbackAccepting>
 {
     NSMutableArray *_contacts;
     NSCondition *_ppBrokerLoadedCondition;
@@ -20,6 +21,7 @@
 @property (strong) PPQuickTypeBroker *ppBroker; // @synthesize ppBroker=_ppBroker;
 
 - (void).cxx_destruct;
+- (id)_makePPQuickTypeBroker;
 - (BOOL)_populateError:(id *)arg1 withExplanations:(id)arg2;
 - (id)_quickTypeQueryWithQuery:(id)arg1 limit:(unsigned long long)arg2 timeoutInMilliseconds:(unsigned long long)arg3;
 - (id)_quickTypeQueryWithTrigger:(id)arg1 searchContext:(id)arg2 limit:(unsigned long long)arg3 timeoutInMilliseconds:(unsigned long long)arg4 errorWithExplanations:(id *)arg5;
@@ -27,6 +29,7 @@
 - (void)hibernate;
 - (id)init;
 - (void)predictedItemsWithProactiveTrigger:(id)arg1 searchContext:(id)arg2 limit:(unsigned long long)arg3 timeoutInMilliseconds:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
+- (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)searchForMeCardEmailAddressesWithTimeout:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)searchForMeCardRegionsWithTimeout:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)warmUp;

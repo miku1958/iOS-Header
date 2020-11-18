@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE, NSString, _TtC15ConversationKit15ParticipantView;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit15ParticipantCell : UICollectionViewCell
 {
     MISSING_TYPE *participantIdentifier;
@@ -16,7 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *accessibilityDisplayName;
 }
 
-@property (nonatomic, copy) NSString *accessibilityDisplayName; // @synthesize accessibilityDisplayName;
+@property (nonatomic, copy) NSString *accessibilityDisplayName;
 @property (nonatomic, readonly) _TtC15ConversationKit15ParticipantView *participantView; // @synthesize participantView;
 
 - (void).cxx_destruct;

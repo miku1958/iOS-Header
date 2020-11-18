@@ -9,7 +9,7 @@
 #import <CoreParsec/SFFeedbackListener-Protocol.h>
 #import <CoreParsec/SFResourceLoader-Protocol.h>
 
-@class GEOSearchFoundationFeedbackListener, NSFileManager, NSString, NSXPCConnection, PARBag, PARSearchClient, PARSessionConfiguration;
+@class GEOSearchFoundationFeedbackListener, NSFileManager, NSSet, NSString, NSXPCConnection, PARBag, PARSearchClient, PARSessionConfiguration;
 @protocol PARSessionDelegate;
 
 @interface PARSession : NSObject <SFFeedbackListener, SFResourceLoader>
@@ -21,8 +21,10 @@
     PARSearchClient *_client;
     PARSessionConfiguration *_configuration;
     id<PARSessionDelegate> _delegate;
+    NSSet *_allowedAppsForSiriSuggestions;
 }
 
+@property (strong) NSSet *allowedAppsForSiriSuggestions; // @synthesize allowedAppsForSiriSuggestions=_allowedAppsForSiriSuggestions;
 @property (strong) PARBag *bag;
 @property (strong, nonatomic) PARSearchClient *client; // @synthesize client=_client;
 @property (strong) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -60,6 +62,7 @@
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (void)didStartSearch:(id)arg1;
 - (void)didSubmitUserReportFeedback:(id)arg1;
+- (void)didUpdateSiriSuggestionsAppWhitelist;
 - (unsigned long long)enabledStatus;
 - (void)fileHandleAndAttributesForResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithConfiguration:(id)arg1;
@@ -70,6 +73,7 @@
 - (BOOL)loadMoreResults:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadTask:(id)arg1;
 - (void)reportEvent:(id)arg1;
+- (void)reportFeedback:(id)arg1;
 - (void)reportFeedback:(id)arg1 queryId:(unsigned long long)arg2;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)searchViewDidAppear:(id)arg1;
@@ -77,6 +81,7 @@
 - (void)sectionHeaderDidBecomeVisible:(id)arg1;
 - (void)sendCBAEngagementFeedback:(id)arg1 query:(unsigned long long)arg2;
 - (void)sendCustomFeedback:(id)arg1;
+- (void)sendCustomFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)start;
 - (void)suggestionsDidBecomeVisible:(id)arg1;
 - (id)taskWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

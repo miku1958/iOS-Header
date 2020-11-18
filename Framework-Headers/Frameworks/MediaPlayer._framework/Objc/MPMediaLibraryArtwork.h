@@ -7,21 +7,20 @@
 #import <objc/NSObject.h>
 
 @class ML3Artwork, MPMediaLibraryArtworkRequest, NSArray, NSDictionary, NSURL;
-@protocol OS_dispatch_queue;
 
 @interface MPMediaLibraryArtwork : NSObject
 {
+    struct os_unfair_lock_s _stateLock;
     NSArray *_validSizes;
     MPMediaLibraryArtworkRequest *_artworkRequest;
     ML3Artwork *_artwork;
-    NSObject<OS_dispatch_queue> *_accessQueue;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (strong, nonatomic) ML3Artwork *artwork; // @synthesize artwork=_artwork;
 @property (weak, nonatomic) MPMediaLibraryArtworkRequest *artworkRequest; // @synthesize artworkRequest=_artworkRequest;
 @property (copy, nonatomic) NSDictionary *effectsMetadata;
 @property (readonly, copy, nonatomic) NSURL *originalFileURL;
+@property (readonly, nonatomic) struct os_unfair_lock_s stateLock; // @synthesize stateLock=_stateLock;
 @property (readonly, nonatomic) NSArray *validSizes; // @synthesize validSizes=_validSizes;
 
 + (BOOL)artworkExistsForRequest:(id)arg1;

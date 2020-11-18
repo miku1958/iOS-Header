@@ -7,7 +7,10 @@
 #import <AVFoundation/AVCaptureDeviceFormat.h>
 
 @interface AVCaptureDeviceFormat (CAMCaptureEngine)
-- (CDStruct_1ef3fb1f)_expectedVideoDimensionsForVideoConfiguration:(long long)arg1;
+
+@property (readonly, nonatomic) BOOL cam_supportsPortraitFrontFacingZoomed;
+
+- (CDStruct_79c71658)_expectedVideoDimensionsForVideoConfiguration:(long long)arg1;
 - (long long)cam_compareUsingBinning:(id)arg1;
 - (long long)cam_compareUsingDimensions:(id)arg1;
 - (long long)cam_compareUsingMaximumFramerate:(id)arg1;

@@ -30,10 +30,10 @@
 - (id)_delegate;
 - (void)_setDelegateViaWeakReference:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (void)getRetainedDelegate:(id *)arg1 retainedDelegateQueue:(id *)arg2;
 - (id)init;
 - (void)invokeDelegateCallbackWithBlock:(CDUnknownBlockType)arg1;
+- (void)invokeDelegateCallbackWithBlock:(CDUnknownBlockType)arg1 synchronouslyIfDelegateQueueIsQueue:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 
 @end

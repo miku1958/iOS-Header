@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
+    NSXPCConnection *_syncXPCCnx;
     NSXPCConnection *_xpcCnx;
     NSXPCConnection *_xpcAuthCnx;
     CDUnknownBlockType _interruptionHandler;
@@ -36,14 +37,18 @@
 - (void)_personInfoWithEmailOrPhone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)authenticateAccountWithAppleID:(id)arg1 password:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)copyCertificateForAppleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (struct __SecIdentity *)copyIdentityForAppleID:(id)arg1 error:(id *)arg2;
 - (void)copyIdentityForAppleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)ensureSyncXPCStarted;
 - (id)init;
 - (void)invalidate;
 - (void)myAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (id)myAccountWithError:(id *)arg1;
 - (void)personInfoWithEmailOrPhone:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)statusInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (id)syncRemoteProxyWithError:(id *)arg1;
 
 @end
 

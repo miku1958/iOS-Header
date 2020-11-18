@@ -53,7 +53,6 @@ __attribute__((visibility("hidden")))
 - (void)_syncEverythingToPDFAnnotation;
 - (void)_syncFlags:(unsigned long long)arg1;
 - (void)_syncHighlightingMode:(id)arg1;
-- (void)_syncHighlightingStyleForAnnotation:(id)arg1 withKey:(id)arg2 andNewValue:(id)arg3;
 - (void)_syncIconName:(id)arg1;
 - (void)_syncInkPathForAnnotation:(id)arg1 withKey:(id)arg2 andNewValue:(id)arg3;
 - (void)_syncInklist:(id)arg1;
@@ -66,8 +65,6 @@ __attribute__((visibility("hidden")))
 - (void)_syncPage:(id)arg1;
 - (void)_syncParent:(id)arg1;
 - (void)_syncPopup:(id)arg1;
-- (void)_syncQuadPoints:(id)arg1;
-- (void)_syncQuadPointsForAnnotation:(id)arg1 withKey:(id)arg2 andNewValue:(id)arg3;
 - (void)_syncQuadding:(long long)arg1;
 - (void)_syncRect:(struct CGRect)arg1;
 - (void)_syncStartPointForAnnotation:(id)arg1 withKey:(id)arg2 andNewValue:(id)arg3;

@@ -7,7 +7,6 @@
 #import <AvatarUI/AVTAvatarAttributeEditorSection-Protocol.h>
 
 @class AVTAvatarColorVariationStore, NSArray;
-@protocol AVTAvatarAttributeEditorColorSectionProtocol;
 
 @protocol AVTAvatarAttributeEditorColorSectionProtocol <AVTAvatarAttributeEditorSection>
 
@@ -15,7 +14,6 @@
 @property (readonly, nonatomic) AVTAvatarColorVariationStore *colorVariationStore;
 @property (readonly, copy, nonatomic) NSArray *extendedItems;
 @property (readonly, copy, nonatomic) NSArray *primaryItems;
-@property (readonly, nonatomic) id<AVTAvatarAttributeEditorColorSectionProtocol> subSection;
 
 @end
 

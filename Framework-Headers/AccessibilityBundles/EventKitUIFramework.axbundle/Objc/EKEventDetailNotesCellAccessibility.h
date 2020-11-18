@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (struct CGRect)_accessibilityChargedLineBoundsForRange:(struct _NSRange)arg1;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;

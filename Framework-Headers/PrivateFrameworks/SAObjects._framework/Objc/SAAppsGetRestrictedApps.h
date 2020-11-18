@@ -6,13 +6,14 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface SAAppsGetRestrictedApps : SABaseClientBoundCommand
 {
 }
 
 @property (copy, nonatomic) NSArray *appIds;
+@property (copy, nonatomic) NSString *executionEnvironment;
 
 + (id)getRestrictedApps;
 + (id)getRestrictedAppsWithDictionary:(id)arg1 context:(id)arg2;

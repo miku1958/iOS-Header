@@ -17,13 +17,14 @@
     BOOL _shouldSuppressRingtone;
     BOOL _wantsHoldMusic;
     BOOL _wasDialAssisted;
+    BOOL _supportsRecents;
     BOOL _hasUpdatedAudio;
     BOOL _video;
-    BOOL _expectedEndpointOnPairedClientDevice;
     BOOL _ringtoneSuppressedRemotely;
     BOOL _wasPulledToCurrentDevice;
     int _disconnectedReason;
     int _faceTimeIDStatus;
+    int _filteredOutReason;
     int _transitionStatus;
     int _hardPauseDigitsState;
     int _ttyType;
@@ -41,6 +42,8 @@
     NSObject<OS_dispatch_queue> *_queue;
     TUCallServicesInterface *_callServicesInterface;
     TUVideoCallAttributes *_videoCallAttributes;
+    long long _verificationStatus;
+    long long _priority;
     long long _provisionalHoldStatus;
     NSString *_isoCountryCode;
     long long _soundRegion;
@@ -98,9 +101,9 @@
 @property (readonly, nonatomic) NSString *endedReasonString;
 @property (readonly, copy, nonatomic) NSDictionary *endedReasonUserInfo;
 @property (nonatomic, getter=isEndpointOnCurrentDevice) BOOL endpointOnCurrentDevice; // @synthesize endpointOnCurrentDevice=_endpointOnCurrentDevice;
-@property (nonatomic, getter=isExpectedEndpointOnPairedClientDevice) BOOL expectedEndpointOnPairedClientDevice; // @synthesize expectedEndpointOnPairedClientDevice=_expectedEndpointOnPairedClientDevice;
 @property (nonatomic) int faceTimeIDStatus; // @synthesize faceTimeIDStatus=_faceTimeIDStatus;
 @property (readonly, nonatomic) long long faceTimeTransportType;
+@property (nonatomic) int filteredOutReason; // @synthesize filteredOutReason=_filteredOutReason;
 @property (readonly, nonatomic) TUHandle *handle;
 @property (copy, nonatomic) NSString *hardPauseDigits; // @synthesize hardPauseDigits=_hardPauseDigits;
 @property (readonly, nonatomic) NSString *hardPauseDigitsDisplayString;
@@ -125,10 +128,12 @@
 @property (readonly, copy, nonatomic) NSString *localizedLabel;
 @property (readonly, nonatomic, getter=isMediaStalled) BOOL mediaStalled;
 @property (copy, nonatomic) TUCallModel *model; // @synthesize model=_model;
+@property (readonly, nonatomic, getter=isMutuallyExclusiveCall) BOOL mutuallyExclusiveCall;
 @property (readonly, nonatomic) BOOL needsManualInCallSounds;
 @property (readonly, nonatomic, getter=isOutgoing) BOOL outgoing;
 @property (readonly, nonatomic) long long outputAudioPowerSpectrumToken;
 @property (readonly, nonatomic) BOOL prefersExclusiveAccessToCellularNetwork;
+@property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) TUCallProvider *provider;
 @property (readonly, nonatomic) NSDictionary *providerContext; // @synthesize providerContext=_providerContext;
 @property (nonatomic) long long provisionalHoldStatus; // @synthesize provisionalHoldStatus=_provisionalHoldStatus;
@@ -159,6 +164,7 @@
 @property (readonly, nonatomic) BOOL statusIsProvisional;
 @property (readonly, copy, nonatomic) NSString *suggestedDisplayName;
 @property (readonly, nonatomic) BOOL supportsDTMFTones;
+@property (nonatomic) BOOL supportsRecents; // @synthesize supportsRecents=_supportsRecents;
 @property (readonly, nonatomic) BOOL supportsTTYWithVoice;
 @property (readonly, nonatomic, getter=isThirdPartyVideo) BOOL thirdPartyVideo;
 @property (nonatomic) int transitionStatus; // @synthesize transitionStatus=_transitionStatus;
@@ -168,6 +174,7 @@
 @property (readonly, copy, nonatomic) NSUUID *uniqueProxyIdentifierUUID;
 @property (nonatomic, getter=isUplinkMuted) BOOL uplinkMuted;
 @property (readonly, nonatomic, getter=isUsingBaseband) BOOL usingBaseband;
+@property (nonatomic) long long verificationStatus; // @synthesize verificationStatus=_verificationStatus;
 @property (nonatomic, getter=isVideo) BOOL video; // @synthesize video=_video;
 @property (strong, nonatomic) TUVideoCallAttributes *videoCallAttributes; // @synthesize videoCallAttributes=_videoCallAttributes;
 @property (readonly, nonatomic, getter=isVideoDegraded) BOOL videoDegraded;

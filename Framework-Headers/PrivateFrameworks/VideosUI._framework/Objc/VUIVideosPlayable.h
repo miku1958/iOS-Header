@@ -42,7 +42,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VUIContentMetadata *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) NSURL *playbackURL;
 @property (readonly, nonatomic) NSURL *previewArtwork; // @synthesize previewArtwork=_previewArtwork;
-@property (readonly, nonatomic) NSNumber *ratingValue;
 @property (readonly, nonatomic) NSString *referenceID;
 @property (readonly, nonatomic) NSNumber *rentalID;
 @property (readonly, nonatomic) NSNumber *requiredAgeForPlayback;
@@ -50,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDate *resumeTimeTimeStamp;
 @property (readonly, nonatomic) NSURL *scrubVideoURL;
 @property (readonly, nonatomic) NSString *seasonCanonicalID;
+@property (readonly, nonatomic, getter=isSharedPurchase) BOOL sharedPurchase;
 @property (readonly, nonatomic) NSString *showCanonicalID;
 @property (readonly, nonatomic) NSURL *stopURL;
 @property (readonly, nonatomic) NSDictionary *tokenServerParams;

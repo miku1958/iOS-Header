@@ -14,7 +14,7 @@
 @interface HDCodableVaccinationRecord : PBCodable <HDDecoding, NSCopying>
 {
     NSData *_administrationDate;
-    HDCodableMedicalCodingList *_bodySiteCoding;
+    HDCodableMedicalCodingList *_bodySiteCodings;
     NSString *_doseNumber;
     NSString *_doseQuantity;
     NSData *_expirationDate;
@@ -35,14 +35,14 @@
 }
 
 @property (strong, nonatomic) NSData *administrationDate; // @synthesize administrationDate=_administrationDate;
-@property (strong, nonatomic) HDCodableMedicalCodingList *bodySiteCoding; // @synthesize bodySiteCoding=_bodySiteCoding;
+@property (strong, nonatomic) HDCodableMedicalCodingList *bodySiteCodings; // @synthesize bodySiteCodings=_bodySiteCodings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *doseNumber; // @synthesize doseNumber=_doseNumber;
 @property (strong, nonatomic) NSString *doseQuantity; // @synthesize doseQuantity=_doseQuantity;
 @property (strong, nonatomic) NSData *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic) BOOL hasAdministrationDate;
-@property (readonly, nonatomic) BOOL hasBodySiteCoding;
+@property (readonly, nonatomic) BOOL hasBodySiteCodings;
 @property (readonly, nonatomic) BOOL hasDoseNumber;
 @property (readonly, nonatomic) BOOL hasDoseQuantity;
 @property (readonly, nonatomic) BOOL hasExpirationDate;

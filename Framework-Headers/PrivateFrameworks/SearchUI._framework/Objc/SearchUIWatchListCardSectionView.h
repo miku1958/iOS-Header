@@ -16,10 +16,10 @@
     TLKSimpleRowView *_rowView;
 }
 
-@property (strong) SearchUIButton *button; // @synthesize button=_button;
-@property (strong) NUIContainerStackView *contentView; // @dynamic contentView;
-@property (strong) SearchUIWatchListCardRowModel *rowModel; // @dynamic rowModel;
-@property (strong) TLKSimpleRowView *rowView; // @synthesize rowView=_rowView;
+@property (strong, nonatomic) SearchUIButton *button; // @synthesize button=_button;
+@property (strong, nonatomic) NUIContainerStackView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) SearchUIWatchListCardRowModel *rowModel; // @dynamic rowModel;
+@property (strong, nonatomic) TLKSimpleRowView *rowView; // @synthesize rowView=_rowView;
 
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void).cxx_destruct;

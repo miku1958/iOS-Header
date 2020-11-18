@@ -36,10 +36,11 @@ __attribute__((visibility("hidden")))
 - (void)setChannelPreferences:(id)arg1;
 - (void)setEventHandler:(CDUnknownBlockType)arg1;
 - (void)setReadHandler:(CDUnknownBlockType)arg1;
+- (void)setWiFiAssist:(BOOL)arg1;
 - (int)setupDriverSocket;
 - (id)sharedIDSService;
 - (int)start;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_2f700ce5 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_c3727dd2 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 @end

@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (struct CGRect)_accessibilityBounds;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 
 @end

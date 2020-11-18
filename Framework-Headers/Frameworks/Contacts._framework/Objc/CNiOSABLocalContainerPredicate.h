@@ -13,11 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface CNiOSABLocalContainerPredicate : CNPredicate <CNiOSContainerPredicate>
 {
+    BOOL _includesDisabledContainer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL includesDisabledContainer; // @synthesize includesDisabledContainer=_includesDisabledContainer;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)includesDisabledContainers;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDisabledContainerIncluded:(BOOL)arg1;
 - (id)initWithPredicate:(id)arg1;
 
 @end

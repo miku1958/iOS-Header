@@ -6,11 +6,20 @@
 
 #import <AVFoundation/AVPlayerItem.h>
 
-@class NSArray;
+@class AVEditBehaviorContext, AVMusicAppBehaviorContext;
 
 @interface AVPlayerItem (AVKitAdditionsPrivate)
 
-@property (copy, nonatomic) NSArray *externalMetadata;
+@property (readonly, weak, nonatomic) AVEditBehaviorContext *avkit_currentEditBehaviorContext;
+@property (readonly, weak, nonatomic) AVMusicAppBehaviorContext *avkit_musicAppBehaviorContext;
 
+- (id)avkit_data;
+- (id)avkit_dataOrNil;
+- (void)avkit_setCurrentEditBehaviorContext:(id)arg1;
+- (void)avkit_setMusicBehaviorData:(id)arg1;
+- (void)avkit_setValue:(id)arg1 forAVKitProperty:(id)arg2;
+- (id)avkit_valueForAVKitProperty:(id)arg1;
+- (id)externalMetadata;
+- (void)setExternalMetadata:(id)arg1;
 @end
 

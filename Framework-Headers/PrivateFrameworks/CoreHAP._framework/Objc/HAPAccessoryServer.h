@@ -7,12 +7,13 @@
 #import <HMFoundation/HMFObject.h>
 
 @class HAPAccessory, HAPDeviceID, HMFVersion, NSArray, NSData, NSHashTable, NSNumber, NSObject, NSString;
-@protocol HAPAccessoryServerDelegate, HAPKeyStore, OS_dispatch_queue;
+@protocol HAPAccessoryServerDelegate, HAPKeyStore, HMFLocking, OS_dispatch_queue;
 
 @interface HAPAccessoryServer : HMFObject
 {
     NSString *_name;
     NSString *_identifier;
+    id<HMFLocking> _lock;
     BOOL _hasPairings;
     BOOL _reachable;
     BOOL _securitySessionOpen;
@@ -32,7 +33,6 @@
     NSHashTable *_internalDelegates;
     NSObject<OS_dispatch_queue> *_internalDelegateQueue;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     id<HAPKeyStore> _keyStore;
     unsigned long long _pairSetupType;
 }
@@ -57,7 +57,6 @@
 @property (nonatomic) unsigned long long pairSetupType; // @synthesize pairSetupType=_pairSetupType;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (strong, nonatomic) HAPAccessory *primaryAccessory; // @synthesize primaryAccessory=_primaryAccessory;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (getter=isSecuritySessionOpen) BOOL securitySessionOpen; // @synthesize securitySessionOpen=_securitySessionOpen;
 @property (copy, nonatomic) NSData *setupHash; // @synthesize setupHash=_setupHash;
@@ -79,9 +78,8 @@
 - (id)initWithKeystore:(id)arg1;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)matchesSetupID:(id)arg1;
-- (void)notifyDelegateUpdatedCategory:(id)arg1;
-- (void)notifyDelegateUpdatedHasPairings:(BOOL)arg1;
-- (void)notifyDelegateUpdatedName:(id)arg1;
+- (BOOL)matchesSetupID:(id)arg1 serverIdentifier:(id)arg2;
+- (id)productData;
 - (void)readCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)reconfirm;
 - (void)removeInternalDelegate:(id)arg1;
@@ -89,8 +87,9 @@
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)requiresTimedWrite:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
-- (void)startPairingWithConsentRequired:(BOOL)arg1;
+- (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (BOOL)stopPairingWithError:(id *)arg1;
+- (void)tearDownSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 

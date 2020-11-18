@@ -16,10 +16,12 @@
 @interface CPLProxyLibraryManager : CPLPlatformObject <CPLClientLibraryManagerProtocol, NSXPCConnectionDelegate, CPLLibraryManagerImplementation>
 {
     NSXPCConnection *_connection;
+    CDUnknownBlockType _blockToCallOnDaemonDying;
     NSMutableDictionary *_downloadTasks;
     NSMutableDictionary *_inMemoryDownloadTasks;
     NSMutableDictionary *_uploadTasks;
     NSMutableDictionary *_forceSyncTasks;
+    NSMutableDictionary *_vouchersPerTaskIdentifier;
     BOOL _diagnosticsEnabled;
     unsigned long long _foregroundCalls;
     NSCountedSet *_disablingReasons;
@@ -32,6 +34,7 @@
     NSMutableArray *_pendingBlocksAfterOpening;
     int _openingStatus;
     int _notifyToken;
+    BOOL _killed;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -44,15 +47,20 @@
 + (id)clientProtocolInterface;
 + (id)daemonProtocolInterface;
 - (void).cxx_destruct;
+- (void)_callBlockOnDaemonDying;
 - (void)_dispatchBlockWhenOpen:(CDUnknownBlockType)arg1;
 - (void)_dispatchFailedDownloadTaskForResource:(id)arg1 highPriority:(BOOL)arg2 proposedTaskIdentifier:(id)arg3 withError:(id)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)_dispatchFailedForceSyncTaskForScopeIdentifiers:(id)arg1 withError:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_dispatchFailedInMemoryDownloadTaskForResource:(id)arg1 withError:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_dropVoucherForTaskWithIdentifier:(id)arg1;
 - (void)_invokeOutstandingInvocationsWithTaskIdentifier:(id)arg1;
 - (void)_invokeSyncOutstandingInvocationsWithTaskIdentifier:(id)arg1;
 - (void)_reallyOpenWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_setCallBlockOnDaemonDying:(CDUnknownBlockType)arg1;
 - (BOOL)_setStatusFromDictionary:(id)arg1;
+- (void)_storeVoucher:(id)arg1 forTaskWithIdentifier:(id)arg2;
 - (id)_uploadTaskDidStartForResource:(id)arg1 withTaskIdentifier:(id)arg2;
+- (void)_withVoucherForTaskWithIdentifier:(id)arg1 do:(CDUnknownBlockType)arg2;
 - (void)acceptMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)acknowledgeChangedStatuses:(id)arg1;
 - (void)addInfoToLog:(id)arg1;
@@ -67,6 +75,7 @@
 - (void)cancelSyncTask:(id)arg1;
 - (void)cancelTask:(id)arg1;
 - (void)checkHasBackgroundDownloadOperationsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)checkResourcesAreSafeToPrune:(id)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)closeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(id)arg1 related:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)compactFileCacheWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -97,11 +106,13 @@
 - (void)getStatusForComponents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getStatusForRecordsWithScopedIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getStatusesForScopesWithIdentifiers:(id)arg1 includeStorages:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)inMemoryDownloadDidFinishForResourceTransferTask:(id)arg1 data:(id)arg2 withError:(id)arg3;
 - (id)initWithAbstractObject:(id)arg1;
 - (void)libraryManagerDidUpdateSizeOfResourcesToUploadToSize:(unsigned long long)arg1 sizeOfOriginalResourcesToUpload:(unsigned long long)arg2 numberOfImages:(unsigned long long)arg3 numberOfVideos:(unsigned long long)arg4 numberOfOtherItems:(unsigned long long)arg5;
 - (void)libraryManagerDidUpdateStatusWithProperties:(id)arg1;
+- (void)libraryManagerHasBeenReplaced;
 - (void)libraryManagerHasChangesToPull;
 - (void)libraryManagerHasStatusChanges;
 - (void)noteClientIsBeginningSignificantWork;
@@ -110,9 +121,12 @@
 - (void)noteClientIsInForeground;
 - (void)noteClientReceivedNotificationOfServerChanges;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideLocalResource:(id)arg1 recordClassString:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)proxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)publishMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)publishResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)queryUserIdentitiesWithParticipants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)reportMiscInformation:(id)arg1;

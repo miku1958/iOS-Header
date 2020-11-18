@@ -16,11 +16,7 @@ __attribute__((visibility("hidden")))
     int mLayoutState;
     struct CGPoint mBaseAlignmentFrameOriginForFixingInterimPosition;
     struct CGRect mDirtyRect;
-    struct {
-        unsigned int position:1;
-        unsigned int size:1;
-        unsigned int inlineSize:1;
-    } mInvalidFlags;
+    CDStruct_6196388c mInvalidFlags;
     TSDLayoutGeometry *mBaseGeometry;
     struct CGRect mInitialBoundsForStandardKnobs;
     struct CGPoint mCapturedInfoGeometryPositionForAttached;
@@ -43,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double descentForInlineLayout;
 @property (readonly, nonatomic, getter=isDraggable) BOOL draggable;
 @property (copy, nonatomic) TSDLayoutGeometry *dynamicGeometry;
+@property (readonly, nonatomic) NSObject *dynamicOverride;
 @property (readonly, nonatomic) TSDInfoGeometry *finalInfoGeometryForResize;
 @property (readonly, nonatomic) NSObject<TSDInfo> *info; // @synthesize info=mInfo;
 @property (readonly, nonatomic) struct CGRect initialBoundsForStandardKnobs;
@@ -58,6 +55,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int layoutState; // @synthesize layoutState=mLayoutState;
 @property (nonatomic) struct CGSize maximumInlineFrameSize; // @synthesize maximumInlineFrameSize=mMaximumInlineFrameSize;
 @property (readonly, nonatomic) struct CGSize minimumSize;
+@property (readonly, nonatomic) BOOL needsToValidateChildrenForInlineLayout;
 @property (readonly, nonatomic) TSDLayoutGeometry *originalGeometry; // @synthesize originalGeometry=mBaseGeometry;
 @property (readonly, nonatomic) TSDLayoutGeometry *originalPureGeometry;
 @property (readonly, nonatomic) struct CGAffineTransform originalPureTransformInRoot;
@@ -94,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)calculatePointFromSearchReference:(id)arg1;
 - (BOOL)canvasShouldScrollForSelectionPath:(id)arg1;
 - (struct CGPoint)capturedInfoPositionForAttachment;
+- (BOOL)childLayoutIsCurrentlyHiddenWhileManipulating:(id)arg1;
 - (id)computeInfoGeometryDuringResize;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
@@ -106,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)dragBy:(struct CGPoint)arg1;
 - (void)dragByUnscaled:(struct CGPoint)arg1;
+- (void)dynamicOverrideDidChange;
 - (void)dynamicStrokeWidthChangeDidBegin;
 - (void)dynamicStrokeWidthChangeDidEnd;
 - (void)dynamicStrokeWidthUpdateToValue:(double)arg1;
@@ -113,7 +113,6 @@ __attribute__((visibility("hidden")))
 - (void)endDynamicOperation;
 - (void)endResize;
 - (void)endRotate;
-- (void)i_accumulateLayoutsIntoSet:(id)arg1;
 - (struct CGRect)i_takeDirtyRect;
 - (id)i_wrapPath;
 - (id)initWithInfo:(id)arg1;
@@ -124,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateInlineSize;
 - (void)invalidatePosition;
 - (void)invalidateSize;
+- (void)invalidateTextScalePercent;
 - (id)layoutController;
 - (id)layoutForSelectionPath:(id)arg1;
 - (id)layoutGeometryFromInfo;
@@ -131,12 +131,14 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
 - (struct CGSize)minimumSizeForResizingKnob:(id)arg1;
 - (BOOL)orderedBefore:(id)arg1;
-- (void)p_calculateClampModelValuesAndPerformBlock:(CDUnknownBlockType)arg1;
+- (struct CGAffineTransform)p_additionalTransformForInlineRoot;
+- (void)p_calculateClampModelValuesWithAdditionalTransform:(struct CGAffineTransform)arg1 andPerformBlock:(CDUnknownBlockType)arg2;
 - (void)p_invalidateConnectedLayouts;
 - (struct CGSize)p_newMaxInlineFrameSize;
 - (void)p_recursiveInvalidate;
 - (void)p_registerWithLayoutController:(id)arg1;
 - (void)p_unregisterWithLayoutController:(id)arg1;
+- (id)pageAnchorDetailsForPencilAnnotationAtSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (void)parentDidChange;
 - (void)parentWillChangeTo:(id)arg1;
 - (void)pauseDynamicTransformation;
@@ -148,10 +150,11 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)rectInRootForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForZoomingToSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootOfAutoZoomContextOfSelectionPath:(id)arg1;
+- (void)recursivelyAddLayoutAndChildrenToSet:(id)arg1;
 - (void)removeConnectedLayout:(id)arg1;
 - (void)resizeWithTransform:(struct CGAffineTransform)arg1;
 - (id)rootLayout;
-- (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withGeometry:(id)arg2;
+- (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (BOOL)selectionMustBeEntirelyOnscreenToCountAsVisibleInSelectionPath:(id)arg1;
 - (void)setAdjustedInterimPositionX:(double)arg1;
 - (void)setAdjustedInterimPositionY:(double)arg1;
@@ -162,7 +165,7 @@ __attribute__((visibility("hidden")))
 - (void)takeSizeFromTracker:(id)arg1;
 - (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
 - (void)unregisterFromLayoutController;
-- (id)unscaledAnchorRectsForPencilAnnotationSelectionPath:(id)arg1 attachedType:(long long)arg2;
+- (id)unscaledContentRectsToAvoidPencilAnnotationOverlap;
 - (void)updateChildrenFromInfo;
 - (void)updateLayoutGeometryInPreparationForPartitioning;
 - (void)updateMaximumInlineFrameSize;

@@ -25,7 +25,6 @@
 - (id)_dictionaryPlistRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithTextMarkupAttributes:(id)arg1;

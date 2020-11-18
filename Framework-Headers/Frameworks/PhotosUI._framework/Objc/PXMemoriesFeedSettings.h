@@ -18,6 +18,8 @@
     double _memoryGroupingInterval;
     double _additionalContentThreshold;
     unsigned long long _groupsPerBatch;
+    long long _favoriteMemoriesSortOrder;
+    long long _sharingBehavior;
 }
 
 @property (nonatomic) double additionalContentThreshold; // @synthesize additionalContentThreshold=_additionalContentThreshold;
@@ -25,12 +27,15 @@
 @property (nonatomic) long long dataSourceType; // @synthesize dataSourceType=_dataSourceType;
 @property (nonatomic) BOOL disableRoundedOverlays; // @synthesize disableRoundedOverlays=_disableRoundedOverlays;
 @property (nonatomic) BOOL displayContentDuringGraphRebuild; // @synthesize displayContentDuringGraphRebuild=_displayContentDuringGraphRebuild;
+@property (nonatomic) long long favoriteMemoriesSortOrder; // @synthesize favoriteMemoriesSortOrder=_favoriteMemoriesSortOrder;
 @property (nonatomic) BOOL forceReloadAfterRefresh; // @synthesize forceReloadAfterRefresh=_forceReloadAfterRefresh;
 @property (nonatomic) unsigned long long groupsPerBatch; // @synthesize groupsPerBatch=_groupsPerBatch;
 @property (nonatomic) double memoryGroupingInterval; // @synthesize memoryGroupingInterval=_memoryGroupingInterval;
 @property (nonatomic) long long memoryGroupingMethod; // @synthesize memoryGroupingMethod=_memoryGroupingMethod;
+@property (nonatomic) long long sharingBehavior; // @synthesize sharingBehavior=_sharingBehavior;
 @property (nonatomic) BOOL useSlowAnimations; // @synthesize useSlowAnimations=_useSlowAnimations;
 
++ (id)_resetRejectedMemories;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (long long)_defaultDataSourceType;

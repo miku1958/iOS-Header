@@ -9,7 +9,7 @@
 #import <PhotoLibraryServices/PLAlbumProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLIndexMappingCache-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableOrderedSet, NSNumber, NSOrderedSet, NSString, NSURL, PLManagedAsset, UIImage;
+@class NSArray, NSDate, NSMutableOrderedSet, NSNumber, NSOrderedSet, NSString, NSURL, PLManagedAsset, PLPhotoLibrary;
 @protocol NSObject><NSCopying, PLAlbumProtocol;
 
 @interface PLShuffledAlbum : NSObject <PLIndexMappingCache, PLAlbumProtocol>
@@ -65,11 +65,11 @@
 @property (readonly, copy, nonatomic) NSString *name;
 @property (nonatomic) int pendingItemsCount;
 @property (nonatomic) int pendingItemsType;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (readonly, nonatomic) unsigned long long photosCount;
-@property (readonly, strong, nonatomic) UIImage *posterImage;
+@property (readonly, strong, nonatomic) NSObject *posterImage;
 @property (strong, nonatomic) PLManagedAsset *secondaryKeyAsset;
 @property (readonly, nonatomic) BOOL shouldDeleteWhenEmpty;
-@property (strong, nonatomic) NSDictionary *slideshowSettings;
 @property (readonly, copy, nonatomic) CDUnknownBlockType sortingComparator;
 @property (readonly, strong, nonatomic) NSDate *startDate;
 @property (readonly, strong, nonatomic) PLManagedAsset *startingAsset;
@@ -82,6 +82,7 @@
 
 + (struct NSObject *)shuffledAlbum:(struct NSObject *)arg1 startingAsset:(id)arg2;
 + (struct NSObject *)unshuffledAlbum:(struct NSObject *)arg1;
+- (void).cxx_destruct;
 - (void)batchFetchAssets:(id)arg1;
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
 - (unsigned long long)count;

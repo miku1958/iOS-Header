@@ -8,26 +8,20 @@
 
 #import <MapKit/MKInfoCardTheme-Protocol.h>
 
-@class NSDictionary, NSPointerArray, NSString, UIColor, UIFont;
+@class NSDictionary, NSString, UIColor;
 
 @interface MKInfoCardThemeManager : NSObject <MKInfoCardTheme>
 {
     BOOL _themeWasExplicitySet;
     NSDictionary *_colors;
-    NSPointerArray *_viewListeners;
-    NSPointerArray *_viewControllerListeners;
-    NSPointerArray *_otherListeners;
     CDUnknownBlockType _tintColorProvider;
     UIColor *_currentTintColor;
     BOOL _useSmallFont;
     unsigned long long _themeType;
 }
 
-@property (readonly, nonatomic) UIFont *attributionFont;
-@property (readonly, nonatomic) UIColor *backgroundColor;
-@property (readonly, nonatomic) UIFont *bodyFont;
-@property (readonly, nonatomic) UIFont *boldBodyFont;
-@property (readonly, nonatomic) UIFont *brandTitleFont;
+@property (readonly, nonatomic) UIColor *buttonHighlightedColor;
+@property (readonly, nonatomic) UIColor *buttonNormalColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIColor *disabledActionRowBackgroundColor;
@@ -35,51 +29,39 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIColor *headerPrimaryButtonHighlightedColor;
 @property (readonly, nonatomic) UIColor *headerPrimaryButtonNormalColor;
-@property (readonly, nonatomic) UIColor *headerSecondaryButtonHighlightedColor;
-@property (readonly, nonatomic) UIColor *headerSecondaryButtonNormalColor;
 @property (readonly, nonatomic) UIColor *highlightedActionRowTextColor;
 @property (readonly, nonatomic) UIColor *highlightedTintColor;
 @property (readonly, nonatomic) BOOL isDarkTheme;
-@property (readonly, nonatomic) BOOL isVibrantTheme;
-@property (readonly, nonatomic) UIFont *largeTitleFont;
-@property (readonly, nonatomic) UIFont *largeTitleFontStatic;
+@property (readonly, nonatomic) NSString *javaScriptName;
 @property (readonly, nonatomic) UIColor *lightTextColor;
-@property (readonly, nonatomic) UIFont *mediumBodyFont;
 @property (readonly, nonatomic) UIColor *normalActionRowBackgroundColor;
 @property (readonly, nonatomic) UIColor *normalActionRowBackgroundPressedColor;
-@property (readonly, nonatomic) UIFont *rowButtonFont;
+@property (readonly, nonatomic) UIColor *normalBackgroundColor;
 @property (readonly, nonatomic) UIColor *rowColor;
-@property (readonly, nonatomic) UIFont *rowGlyphButtonFont;
-@property (readonly, nonatomic) UIFont *sectionHeaderButtonFont;
-@property (readonly, nonatomic) UIFont *sectionHeaderFont;
 @property (readonly, nonatomic) UIColor *selectedRowColor;
 @property (readonly, nonatomic) UIColor *separatorLineColor;
-@property (readonly, nonatomic) UIFont *smallAttributionFont;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UIColor *tertiaryTextColor;
 @property (readonly, nonatomic) UIColor *textColor;
 @property (readonly, nonatomic) unsigned long long themeType; // @synthesize themeType=_themeType;
 @property (readonly, nonatomic) UIColor *tintColor;
-@property (readonly, nonatomic) UIFont *titleFont;
+@property (readonly, nonatomic) UIColor *transitChevronBackgroundColor;
+@property (readonly, nonatomic) UIColor *transitDelayedTextColor;
+@property (readonly, nonatomic) UIColor *transitOntimeTextColor;
 @property (nonatomic) BOOL useSmallFont; // @synthesize useSmallFont=_useSmallFont;
 
-+ (id)_currentTheme:(unsigned long long)arg1;
-+ (void)addThemeChangedListener:(id)arg1;
 + (id)currentTheme;
 + (void)setTheme:(unsigned long long)arg1;
 + (void)setTintColorProvider:(CDUnknownBlockType)arg1;
-+ (void)setUseSmallFont:(BOOL)arg1;
++ (unsigned long long)themeType;
 + (id)themeWithThemeType:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)_addThemeChangedListener:(id)arg1;
 - (unsigned long long)_currentSystemTheme;
 - (id)_initWithThemeType:(unsigned long long)arg1;
 - (BOOL)_isInSpotlightContext;
-- (void)_notifyAllListenersOfThemeChange:(id)arg1 visitedSet:(id)arg2 subListenerMethod:(CDUnknownFunctionPointerType)arg3 subListenerSelector:(SEL)arg4;
-- (void)_notifyAllListenersOfTintChange:(id)arg1 visitedSet:(id)arg2;
 - (void)_setTheme:(unsigned long long)arg1;
 - (void)_setTintColorProvider:(CDUnknownBlockType)arg1;
 - (void)_tintColorDidChange;
-- (id)iconFontToMatch:(id)arg1;
 - (id)init;
 
 @end

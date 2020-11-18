@@ -18,6 +18,7 @@
 @property (weak, nonatomic) UIPickerView *picker; // @synthesize picker=_picker;
 
 - (void).cxx_destruct;
+- (unsigned long long)_accessibilityAutomationType;
 - (unsigned long long)_accessibilityDatePickerComponentType;
 - (id)_accessibilityDateTimePickerValues;
 - (long long)_accessibilityIndexForPickerString:(id)arg1;
@@ -27,6 +28,9 @@
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityViewForComponent;
+- (BOOL)_axIsInDatePickerView;
+- (id)_axSpeechInputLabelForDateCalendarUnit:(unsigned long long)arg1;
+- (id)_axSpeechInputLabelForTimeIntervalCalendarUnit:(unsigned long long)arg1;
 - (BOOL)_isRowDisabledInWebKit:(long long)arg1;
 - (void)accessibilityDecrement;
 - (struct CGRect)accessibilityFrame;
@@ -36,6 +40,7 @@
 - (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface _SFBrowserWindowStateData : NSObject
 {
@@ -19,8 +19,10 @@
     long long _activeDocumentIndex;
     long long _activePrivateDocumentIndex;
     long long _legacyPlistFileVersion;
+    NSString *_sceneID;
 }
 
+@property (strong, nonatomic) NSUUID *UUID;
 @property (strong, nonatomic) NSString *UUIDString; // @synthesize UUIDString=_UUIDString;
 @property (nonatomic) long long activeDocumentIndex; // @synthesize activeDocumentIndex=_activeDocumentIndex;
 @property (nonatomic) long long activePrivateDocumentIndex; // @synthesize activePrivateDocumentIndex=_activePrivateDocumentIndex;
@@ -30,12 +32,16 @@
 @property (nonatomic) BOOL isTabStateSuccessfullyLoaded; // @synthesize isTabStateSuccessfullyLoaded=_isTabStateSuccessfullyLoaded;
 @property (nonatomic) long long legacyPlistFileVersion; // @synthesize legacyPlistFileVersion=_legacyPlistFileVersion;
 @property (nonatomic) BOOL needsQuickUpdate; // @synthesize needsQuickUpdate=_needsQuickUpdate;
+@property (strong, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (id)debugDescription;
 - (id)dictionaryPresentation;
 - (id)initWithDictionaryPresentation:(id)arg1;
 - (id)initWithSQLiteRow:(id)arg1;
+- (id)initWithUUIDString:(id)arg1 sceneID:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

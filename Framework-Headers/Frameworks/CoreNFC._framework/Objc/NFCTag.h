@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreNFC/NFCNDEFTag-Protocol.h>
 #import <CoreNFC/NFCTag-Protocol.h>
 
-@class NFWeakReference, NSData, NSString;
-@protocol NFCReaderSession, NFTag;
+@class NSNumber, NSString;
+@protocol NFCReaderSession, NFTag, OS_dispatch_queue;
 
-@interface NFCTag : NSObject <NFCTag>
+__attribute__((visibility("hidden")))
+@interface NFCTag : NSObject <NFCTag, NFCNDEFTag>
 {
     id<NFTag> _tag;
-    NFWeakReference *_session;
+    NSNumber *_sessionKey;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    long long _configuration;
 }
 
 @property (readonly, nonatomic, getter=isAvailable) BOOL available;
+@property (readonly, nonatomic) long long configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) NSData *identifier;
 @property (readonly, weak, nonatomic) id<NFCReaderSession> session;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type;
@@ -29,17 +33,42 @@
 + (unsigned long long)_MaxRetry;
 + (double)_MaxRetryInterval;
 + (BOOL)supportsSecureCoding;
-- (BOOL)_connectWithError:(id *)arg1;
+- (void)_connectWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)_connectWithSession:(id)arg1 outError:(id *)arg2;
 - (BOOL)_disconnectWithError:(id *)arg1;
 - (id)_getInternalReaderSession;
+- (void)_sendAPDU:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_setDelegateQueue:(id)arg1;
 - (void)_setSession:(id)arg1;
 - (void)_setTag:(id)arg1;
-- (BOOL)_transceiveWithData:(id)arg1 receivedData:(id *)arg2 error:(id *)arg3;
+- (void)_transceiveWithData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_transceiveWithSession:(id)arg1 sendData:(id)arg2 receivedData:(id *)arg3 error:(id *)arg4;
+- (id)applicationData;
+- (id)asNFCFeliCaTag;
+- (id)asNFCISO15693Tag;
+- (id)asNFCISO7816Tag;
+- (id)asNFCMiFareTag;
+- (unsigned long long)capacity;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)disconnect;
+- (void)dispatchOnDelegateQueueAsync:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)historicalBytes;
+- (id)identifier;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSession:(id)arg1 tag:(id)arg2;
+- (id)initWithSession:(id)arg1 tag:(id)arg2 startupConfig:(long long)arg3;
+- (BOOL)isEqualToNFTag:(id)arg1;
+- (BOOL)isMatchingSession:(id)arg1;
+- (BOOL)isNDEFFormatted;
+- (BOOL)isReadOnly;
+- (BOOL)proprietaryApplicationDataCoding;
+- (void)queryNDEFStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)readNDEFWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)selectedAID;
+- (id)systemCode;
+- (void)writeLockWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)writeNDEF:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -14,5 +14,6 @@
 @property (strong, nonatomic, setter=ik_setTextNewLineIndexSet:) NSIndexSet *ik_textNewLineIndexSet;
 
 + (id)ik_stylesheetBodyFromRuleList:(id)arg1 forStyleMarkup:(id)arg2 withHeader:(id)arg3;
++ (id)safe_initWithStyleSheetId:(id)arg1 rules:(id)arg2;
 @end
 

@@ -12,7 +12,6 @@
 @class NSError, NSObject, NSString, NSURLResponse;
 @protocol OS_dispatch_data;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFURLLocalSessionConnection : __NSCFURLSessionConnection <NSURLAuthenticationChallengeSender, NSCopying>
 {
     struct SessionConnectionLoadable *_loaderClient;
@@ -36,6 +35,7 @@ __attribute__((visibility("hidden")))
     unsigned int _didReceiveDataCount;
     BOOL _canSendDidFinishCollectingMetrics;
     BOOL _sentDidFinishCollectingMetrics;
+    BOOL _ignoreLoaderEvents;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)_ackBytes:(long long)arg1;
-- (void)_captureTCPIOConnection:(shared_ptr_f0c1381f)arg1;
+- (void)_captureTransportConnection:(shared_ptr_8da4e70b)arg1 extraBytes:(id)arg2;
 - (void)_capturedSocketInputStream:(id)arg1 outputStream:(id)arg2;
 - (void)_cleanup;
 - (void)_conditionalRequirementsChanged:(BOOL)arg1;
@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_didReceiveChallenge:(id)arg1;
 - (void)_didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
 - (void)_didReceiveData:(id)arg1;
-- (void)_didReceiveResponse:(id)arg1 sniff:(BOOL)arg2;
+- (void)_didReceiveResponse:(id)arg1 sniff:(BOOL)arg2 rewrite:(BOOL)arg3;
 - (void)_didSendBodyData:(struct UploadProgressInfo)arg1;
 - (void)_didSendMetrics;
 - (void)_immediatePostDelegateTick;
@@ -61,10 +61,12 @@ __attribute__((visibility("hidden")))
 - (void)_needNewBodyStream;
 - (BOOL)_needSendingMetrics;
 - (void)_redirectRequest:(id)arg1 redirectResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_sendResponseToDelegate:(id)arg1;
 - (void)_task_sendFinish;
 - (void)_tick;
 - (void)_tick_finishing;
 - (void)_tick_initialize;
+- (void)_tick_initialize_startLoad;
 - (void)_tick_running;
 - (void)_tick_sniffNow;
 - (void)_willSendRequestForEstablishedConnection:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -73,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelAuthenticationChallenge:(id)arg1;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
 - (void)dealloc;
+- (void)expectedProgressTargetChanged;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)resume;
 - (void)setBytesPerSecondLimit:(long long)arg1;

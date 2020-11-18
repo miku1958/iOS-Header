@@ -10,6 +10,8 @@
 {
 }
 
+- (void)attemptToEscrowPreRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)attemptToEscrowPreRecord:(id)arg1 preRecordUUID:(id)arg2 secretType:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)deleteRecoveryKey:(CDUnknownBlockType)arg1;
 - (BOOL)deleteRecoveryKeyWithError:(id *)arg1;
 - (void)finishOfflineLocalSecretChangeWithCompletion:(CDUnknownBlockType)arg1;

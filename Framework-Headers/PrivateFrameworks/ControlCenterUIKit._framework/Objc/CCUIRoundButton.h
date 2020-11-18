@@ -8,10 +8,12 @@
 
 #import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CCUICAPackageDescription, CCUICAPackageView, NSString, UIColor, UIImage, UIImageView, UIView;
+@class CCUICAPackageDescription, CCUICAPackageView, MTVisualStylingProvider, NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIView;
 
 @interface CCUIRoundButton : UIControl <UIGestureRecognizerDelegate>
 {
+    MTVisualStylingProvider *_visualStylingProvider;
+    UILongPressGestureRecognizer *_longPressGestureRecognizer;
     BOOL _useAlternateBackground;
     CCUICAPackageDescription *_glyphPackageDescription;
     UIImage *_glyphImage;
@@ -44,12 +46,12 @@
 - (void).cxx_destruct;
 - (double)_cornerRadius;
 - (void)_deactivateReachability:(id)arg1;
-- (void)_handlePressGesture:(id)arg1;
 - (void)_primaryActionPerformed:(id)arg1;
 - (void)_setCornerRadius:(double)arg1;
 - (void)_updateForStateChange;
+- (void)_updateVisualStylingOfGlyphView:(id)arg1;
 - (void)dealloc;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)didMoveToWindow;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 useLightStyle:(BOOL)arg3;

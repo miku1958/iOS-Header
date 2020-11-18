@@ -6,24 +6,29 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEODirectionIntent, GEOMapItemIdentifier, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, NSArray, NSData, NSString;
+@class GEODirectionIntent, GEOMapItemIdentifier, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 @protocol GEOCompletionItem <NSObject>
 
+@property (readonly, nonatomic) long long autocompleteCellType;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolved;
 @property (readonly, nonatomic) GEODirectionIntent *directionIntent;
 @property (readonly, nonatomic) float disambiguationRadiusMeters;
 @property (readonly, nonatomic) NSArray *displayLines;
 @property (readonly, nonatomic) NSData *entryMetadata;
+@property (readonly, nonatomic) long long entryTapBehavior;
 @property (readonly, nonatomic) id<GEOMapItem> geoMapItem;
 @property (readonly, nonatomic) BOOL hasDisambiguationRadiusMeters;
+@property (readonly, nonatomic) BOOL hasQueryAcceleratorAffordanceEnabled;
 @property (readonly, nonatomic) BOOL hasSortPriority;
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSData *metadata;
 @property (readonly, nonatomic) int placeType;
+@property (readonly, nonatomic) NSString *queryAcceleratorCompletionString;
 @property (readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory;
+@property (readonly, nonatomic) GEOServerResultScoreMetadata *serverResultScoreMetadata;
 @property (readonly, nonatomic) long long sortPriority;
 @property (readonly, nonatomic) long long type;
 

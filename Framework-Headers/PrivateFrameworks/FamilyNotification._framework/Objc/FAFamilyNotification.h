@@ -27,7 +27,6 @@
     NSString *_unlockActionLabel;
     NSURL *_activateActionURL;
     NSURL *_dismissActionlURL;
-    NSURL *_clearActionURL;
     NSURL *_launchActionURL;
     NSData *_launchActionArguments;
     NSDictionary *_userInfo;
@@ -38,7 +37,6 @@
 
 @property (copy) NSString *actionButtonLabel; // @synthesize actionButtonLabel=_actionButtonLabel;
 @property (copy) NSURL *activateActionURL; // @synthesize activateActionURL=_activateActionURL;
-@property (copy) NSURL *clearActionURL; // @synthesize clearActionURL=_clearActionURL;
 @property (copy) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (copy) NSString *delegateMachServiceName; // @synthesize delegateMachServiceName=_delegateMachServiceName;
 @property (copy) NSURL *dismissActionlURL; // @synthesize dismissActionlURL=_dismissActionlURL;

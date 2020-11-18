@@ -100,6 +100,7 @@
 @property (readonly, nonatomic) unsigned long long topStoryType;
 @property (readonly, copy, nonatomic) NSArray *topicIDs;
 @property (readonly, copy, nonatomic) NSArray *topics;
+@property (readonly, nonatomic) BOOL useTransparentNavigationBar;
 @property (readonly, nonatomic) BOOL usesImageOnTopLayout;
 @property (readonly, copy, nonatomic) NSString *versionIdentifier;
 @property (readonly, copy, nonatomic) NSString *videoCallToActionTitle;

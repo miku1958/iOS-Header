@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityControlCenterButtonIdentifier;
 - (id)_accessibilityControlCenterButtonLabel;
+- (BOOL)_accessibilityControlCenterButtonWillExpand;
 
 @end
 

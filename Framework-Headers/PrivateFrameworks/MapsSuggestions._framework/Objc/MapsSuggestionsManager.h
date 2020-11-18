@@ -10,7 +10,7 @@
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSourceDelegate-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsFakeSource, MapsSuggestionsTracker, NSDate, NSHashTable, NSString;
+@class GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsFakePullSource, MapsSuggestionsTracker, NSDate, NSHashTable, NSString;
 @protocol MapsSuggestionsLocationUpdater, MapsSuggestionsStrategy, OS_dispatch_queue;
 
 @interface MapsSuggestionsManager : NSObject <MapsSuggestionsObject, MapsSuggestionsSourceDelegate, MapsSuggestionsLocationUpdaterDelegate>
@@ -35,15 +35,13 @@
     long long _style;
     GEOAutomobileOptions *_automobileOptions;
     id<MapsSuggestionsLocationUpdater> _locationUpdater;
-    CLLocation *_currentLocation;
-    MapsSuggestionsFakeSource *_fakeSource;
+    MapsSuggestionsFakePullSource *_fakeSource;
 }
 
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
-@property (strong) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) MapsSuggestionsFakeSource *fakeSource; // @synthesize fakeSource=_fakeSource;
+@property (strong, nonatomic) MapsSuggestionsFakePullSource *fakeSource; // @synthesize fakeSource=_fakeSource;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<MapsSuggestionsLocationUpdater> locationUpdater; // @synthesize locationUpdater=_locationUpdater;
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
@@ -78,19 +76,20 @@
 - (void)_wipeStaleETAs;
 - (void)addAdditionalFilter:(id)arg1 forSink:(struct NSString *)arg2;
 - (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
-- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2 deleteMissing:(BOOL)arg3;
-- (BOOL)attachSink:(id)arg1;
+- (void)attachSink:(id)arg1;
 - (BOOL)attachSource:(id)arg1;
 - (void)awaitGatheringQueue;
 - (void)awaitStorageQueue;
 - (unsigned long long)clearAllEntriesFromSource:(struct NSString *)arg1;
 - (void)clearResults;
-- (id)currentBestLocation;
 - (void)dealloc;
 - (unsigned long long)deleteEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
 - (BOOL)detachSink:(id)arg1;
 - (BOOL)detachSource:(id)arg1;
 - (id)dumpStorage;
+- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
+- (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
+- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (void)hintRefreshOfType:(long long)arg1;
 - (id)initWithStrategy:(id)arg1 locationUpdater:(id)arg2 ETARequirements:(id)arg3;
 - (BOOL)loadStorageFromFile:(id)arg1;

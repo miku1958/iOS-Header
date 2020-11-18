@@ -11,18 +11,29 @@
 @interface UIContentSizeCategoryPreference : NSObject
 {
     NSString *_preferredContentSizeCategory;
+    NSString *_preferredContentSizeCategoryCarPlay;
 }
 
 @property (strong, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
+@property (strong, nonatomic) NSString *preferredContentSizeCategoryCarPlay; // @synthesize preferredContentSizeCategoryCarPlay=_preferredContentSizeCategoryCarPlay;
 
 + (void)_overrideSystemPreferenceToContentSizeCategory:(id)arg1;
 + (void)_overrideSystemPreferenceToContentSizeCategory:(id)arg1 forBlock:(CDUnknownBlockType)arg2;
++ (void)_populateUserDefaultsContentSizeCategory:(id *)arg1 carPlay:(id *)arg2;
 + (void)_resetSystemPreferenceOverride;
++ (void)overrideSystemWithPreference:(id)arg1;
++ (void)overrideSystemWithPreference:(id)arg1 forBlock:(CDUnknownBlockType)arg2;
++ (void)resetSystemPreferenceOverride;
 + (id)system;
 - (void).cxx_destruct;
 - (void)checkForChanges;
+- (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithContentSizeCategory:(id)arg1;
+- (id)initWithContentSizeCategory:(id)arg1 carPlay:(id)arg2;
+- (id)initWithRawUserDefaults;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

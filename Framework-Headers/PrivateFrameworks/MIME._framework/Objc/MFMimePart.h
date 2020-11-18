@@ -40,6 +40,7 @@
 - (id)_partThatIsAttachment;
 - (SEL)_selectorForCString:(char *)arg1;
 - (void)_setDecryptedMessageBody:(id)arg1 isEncrypted:(BOOL)arg2 isSigned:(BOOL)arg3;
+- (void)_setObjectInOtherIvars:(id)arg1 forKey:(id)arg2;
 - (void)_setRFC822DecodedMessageBody:(id)arg1;
 - (BOOL)_shouldContinueDecodingProcess;
 - (void)addSubpart:(id)arg1;

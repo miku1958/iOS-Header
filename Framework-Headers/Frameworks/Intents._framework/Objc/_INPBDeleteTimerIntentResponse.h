@@ -15,9 +15,11 @@
 @interface _INPBDeleteTimerIntentResponse : PBCodable <_INPBDeleteTimerIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_deletedTimers;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSArray *deletedTimers; // @synthesize deletedTimers=_deletedTimers;
 @property (readonly, nonatomic) unsigned long long deletedTimersCount;
@@ -26,12 +28,15 @@
 @property (readonly) Class superclass;
 
 + (Class)deletedTimersType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addDeletedTimers:(id)arg1;
 - (void)clearDeletedTimers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)deletedTimersAtIndex:(unsigned long long)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

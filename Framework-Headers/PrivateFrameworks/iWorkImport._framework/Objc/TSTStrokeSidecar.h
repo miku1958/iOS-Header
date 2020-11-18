@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
 
 - (void).cxx_destruct;
+- (void)accumulateCellBordersConcurrently:(vector_73284f0b)arg1 inRow:(struct TSUModelRowIndex)arg2 atColumns:(vector_5e7df3d8 *)arg3;
 - (id)cellBorderAtCellID:(struct TSUCellCoord)arg1;
 - (void)enumerateStrokesInRegion:(id)arg1 usingTopStrokeBlock:(CDUnknownBlockType)arg2 usingBottomStrokeBlock:(CDUnknownBlockType)arg3 usingLeftStrokeBlock:(CDUnknownBlockType)arg4 usingRightStrokeBlock:(CDUnknownBlockType)arg5;
 - (void)flattenStrokeOrder;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)removeRows:(struct _NSRange)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)setBordersWithCellMap:(id)arg1;
+- (void)setBordersWithConcurrentCellMap:(id)arg1 forTableInfo:(id)arg2;
 - (void)setCellBorder:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (void)setStroke:(id)arg1 forBottomOfRow:(unsigned int)arg2 order:(int)arg3 columnRange:(struct TSTSimpleRange)arg4;
 - (void)setStroke:(id)arg1 forLeftOfColumn:(unsigned short)arg2 order:(int)arg3 rowRange:(struct TSTSimpleRange)arg4;

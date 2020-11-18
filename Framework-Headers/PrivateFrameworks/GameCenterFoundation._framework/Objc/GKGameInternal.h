@@ -16,7 +16,7 @@
     GKStoreItemInternal *_storeItem;
     union {
         struct {
-            unsigned int _platform:8;
+            unsigned int _platform_unused:8;
             unsigned int _prerendered:1;
             unsigned int _supportsLeaderboards:1;
             unsigned int _supportsLeaderboardSets:1;
@@ -26,7 +26,7 @@
             unsigned int _valid:1;
             unsigned int _unused:1;
             unsigned int _supportsTurnBasedMultiplayer:1;
-            unsigned int _reserved:13;
+            unsigned int _reserved:15;
         } ;
         unsigned int _value;
     } _flags;
@@ -36,8 +36,10 @@
     unsigned short _maxAchievementPoints;
 }
 
+@property (readonly, nonatomic) BOOL canBeIndexed;
 @property (strong, nonatomic) NSString *defaultLeaderboardIdentifier; // @synthesize defaultLeaderboardIdentifier=_defaultLeaderboardIdentifier;
 @property (nonatomic) unsigned int flags; // @dynamic flags;
+@property (readonly, nonatomic) GKGameDescriptor *gameDescriptor;
 @property (nonatomic) BOOL hasAggregateLeaderboard;
 @property (strong, nonatomic) NSDictionary *icons; // @synthesize icons=_icons;
 @property (nonatomic) unsigned short maxAchievementPoints; // @synthesize maxAchievementPoints=_maxAchievementPoints;
@@ -45,7 +47,6 @@
 @property (nonatomic) unsigned short numberOfAchievements; // @synthesize numberOfAchievements=_numberOfAchievements;
 @property (nonatomic) unsigned short numberOfLeaderboardSets; // @synthesize numberOfLeaderboardSets=_numberOfLeaderboardSets;
 @property (nonatomic) unsigned short numberOfLeaderboards; // @synthesize numberOfLeaderboards=_numberOfLeaderboards;
-@property (nonatomic) unsigned char platform; // @dynamic platform;
 @property (nonatomic, getter=isPrerendered) BOOL prerendered; // @dynamic prerendered;
 @property (strong, nonatomic) GKStoreItemInternal *storeItem; // @synthesize storeItem=_storeItem;
 @property (nonatomic) BOOL supportsAchievements; // @dynamic supportsAchievements;

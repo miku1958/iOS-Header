@@ -22,7 +22,6 @@
     NSString *_userTransparencyRendererPayload;
     NSString *_userTransparencyRendererURL;
     UILabel *_errorLabel;
-    double _statusBarOffset;
     UINavigationBar *_transparencyNavBar;
     WKWebView *_myUserPrivacyWebView;
 }
@@ -34,7 +33,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isiPad; // @synthesize isiPad=_isiPad;
 @property (strong, nonatomic) WKWebView *myUserPrivacyWebView; // @synthesize myUserPrivacyWebView=_myUserPrivacyWebView;
-@property (nonatomic) double statusBarOffset; // @synthesize statusBarOffset=_statusBarOffset;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UINavigationBar *transparencyNavBar; // @synthesize transparencyNavBar=_transparencyNavBar;
 @property (copy, nonatomic) NSString *userTransparencyDetails; // @synthesize userTransparencyDetails=_userTransparencyDetails;

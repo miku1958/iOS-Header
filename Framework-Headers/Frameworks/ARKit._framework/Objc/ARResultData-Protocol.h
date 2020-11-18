@@ -15,6 +15,7 @@
 - (CDStruct_14d5dc5e)cameraTransform;
 - (ARPointCloud *)featurePoints;
 - (ARLightEstimate *)lightEstimate;
+- (struct __CVBuffer *)segmentationBuffer;
 - (double)timestamp;
 - (unsigned long long)worldAlignmentModifiers;
 - (CDStruct_14d5dc5e)worldAlignmentTransform;

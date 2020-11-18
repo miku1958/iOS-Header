@@ -4,27 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKit/UIView.h>
 
 #import <PhotosUICore/PXReusableObject-Protocol.h>
 #import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@class NSString, UIView;
+@class NSString;
 
-@interface PXCMMAssetStatusBadgeView : UIImageView <PXUIViewBasicTile, PXReusableObject>
+@interface PXCMMAssetStatusBadgeView : UIView <PXUIViewBasicTile, PXReusableObject>
 {
-    CDStruct_637f5cce _needsUpdateFlags;
+    struct {
+        BOOL imageView;
+    } _needsUpdateFlags;
     long long _status;
+    UIView *_glyphView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIView *glyphView; // @synthesize glyphView=_glyphView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *view;
 
 + (struct CGSize)preferredSize;
+- (void).cxx_destruct;
 - (void)_invalidateImageView;
 - (void)_updateImageViewIfNeeded;
 - (void)becomeReusable;

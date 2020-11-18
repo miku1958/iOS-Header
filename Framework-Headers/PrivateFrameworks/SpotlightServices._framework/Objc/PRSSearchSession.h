@@ -57,7 +57,6 @@
 - (void).cxx_destruct;
 - (void)activate;
 - (void)deactivate;
-- (id)dictationQueryWithResponse:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 webSearch:(BOOL)arg4 handler:(id)arg5 queryIdent:(unsigned long long)arg6 whyQuery:(unsigned long long)arg7;
 - (id)feedbackListener;
 - (void)getCachedQueries:(id *)arg1 results:(id *)arg2 webSearch:(BOOL)arg3;
 - (void)getFTEStringsWithReply:(CDUnknownBlockType)arg1;
@@ -66,7 +65,7 @@
 - (id)initWithClient:(id)arg1 clientQueue:(id)arg2 config:(id)arg3 session:(id)arg4;
 - (void)pruneCache;
 - (void)queryCompleted:(id)arg1;
-- (id)queryWithEngagedSuggestion:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 handler:(id)arg4 queryIdent:(unsigned long long)arg5 whyQuery:(unsigned long long)arg6;
+- (id)queryWithEngagedSuggestion:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 scaleFactor:(double)arg4 handler:(id)arg5 queryIdent:(unsigned long long)arg6 whyQuery:(unsigned long long)arg7;
 - (id)queryWithString:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 handler:(id)arg4 queryIdent:(unsigned long long)arg5 whyQuery:(unsigned long long)arg6;
 - (id)queryWithString:(id)arg1 keyboardLanguage:(id)arg2 externalId:(unsigned int)arg3 scaleFactor:(double)arg4 handler:(id)arg5 queryIdent:(unsigned long long)arg6 whyQuery:(unsigned long long)arg7;
 - (void)session:(id)arg1 bag:(id)arg2 didLoadWithError:(id)arg3;

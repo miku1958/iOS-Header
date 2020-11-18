@@ -17,7 +17,7 @@
 - (void)_axAnnotateScrollView;
 - (id)accessibilityCustomRotors;
 - (id)accessibilityElements;
-- (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2 daysToDisplay:(long long)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2 targetWindow:(id)arg3;
 
 @end
 

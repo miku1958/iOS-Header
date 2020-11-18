@@ -20,11 +20,11 @@
     MFMailMessageStoreSearchResult *searchResult;
 }
 
-@property (readonly, strong, nonatomic) NSDate *earliestDateAdded; // @synthesize earliestDateAdded;
+@property (readonly, nonatomic) NSDate *earliestDateAdded; // @synthesize earliestDateAdded;
 @property (strong, nonatomic) NSDate *latestDateToAdd; // @synthesize latestDateToAdd;
-@property (readonly, strong, nonatomic) MFMailMessageStoreSearchResult *searchResult; // @synthesize searchResult;
+@property (readonly, nonatomic) MFMailMessageStoreSearchResult *searchResult; // @synthesize searchResult;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)handleItems:(id)arg1;
 - (id)initWithMaximumSize:(unsigned int)arg1 latency:(double)arg2;
 - (void)resetDoneCondition;

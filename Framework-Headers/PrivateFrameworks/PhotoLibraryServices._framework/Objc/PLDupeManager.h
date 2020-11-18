@@ -27,12 +27,12 @@
 
 + (BOOL)_computeHashForAsset:(id)arg1;
 + (id)_hashForFileAtPath:(id)arg1 utiType:(id)arg2;
-+ (BOOL)_resetDupesAnalysisInManagedObjectContext:(id)arg1;
++ (BOOL)_resetDupesAnalysisInManagedObjectContext:(id)arg1 pathManager:(id)arg2;
 + (void)_setPlaceHolderHashOnAsset:(id)arg1;
 + (id)hashForAsset:(id)arg1;
 + (id)placeholderHash;
-+ (BOOL)resetDupesAnalysisForOfflineStore:(id)arg1;
-+ (id)sharedInstance;
++ (BOOL)resetDupesAnalysisForOfflineStore:(id)arg1 pathManager:(id)arg2;
+- (void).cxx_destruct;
 - (short)_adjustCloudAssetVisibilityStateForManagedObjectContext:(id)arg1;
 - (BOOL)_analyzeDupeForCloudAssetsAndHashes:(id)arg1 andPublicGlobalUUIDs:(id)arg2 forManagedObjectContext:(id)arg3;
 - (void)_analyzeDupeForNormalAsset:(id)arg1;
@@ -55,7 +55,7 @@
 - (void)_updateVisibilityState:(short)arg1 forAsset:(id)arg2;
 - (void)analyzeDupesWithNormalInserts:(id)arg1 cloudInserts:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (id)init;
+- (id)initWithPhotoLibrary:(id)arg1;
 - (void)launchDupeAnalysisIfNeeded;
 - (void)pauseAnalysisWithReason:(id)arg1;
 - (void)persistPublicGlobalUUIDsForAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

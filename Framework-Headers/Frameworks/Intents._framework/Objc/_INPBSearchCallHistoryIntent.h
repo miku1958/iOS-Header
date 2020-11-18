@@ -23,6 +23,7 @@
         unsigned int unseen:1;
     } _has;
     BOOL _unseen;
+    BOOL __encodeLegacyGloryData;
     int _callType;
     int _preferredCallProvider;
     _INPBDateTimeRange *_dateCreated;
@@ -31,6 +32,7 @@
     _INPBContact *_targetContact;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, nonatomic) int *callCapabilities;
 @property (readonly, nonatomic) unsigned long long callCapabilitiesCount;
 @property (nonatomic) int callType; // @synthesize callType=_callType;
@@ -56,6 +58,7 @@
 @property (strong, nonatomic) _INPBContact *targetContact; // @synthesize targetContact=_targetContact;
 @property (nonatomic) BOOL unseen; // @synthesize unseen=_unseen;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsCallCapabilities:(id)arg1;
 - (int)StringAsCallType:(id)arg1;
@@ -76,7 +79,10 @@
 - (void)clearCallTypes;
 - (void)clearCapabilities;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)preferredCallProviderAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;

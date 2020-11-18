@@ -8,14 +8,32 @@
 
 @interface ARFaceTrackingConfiguration : ARConfiguration
 {
+    BOOL _worldTrackingEnabled;
+    BOOL _lowPower;
+    long long _maximumNumberOfTrackedFaces;
 }
+
+@property (nonatomic) BOOL lowPower; // @synthesize lowPower=_lowPower;
+@property (nonatomic) long long maximumNumberOfTrackedFaces; // @synthesize maximumNumberOfTrackedFaces=_maximumNumberOfTrackedFaces;
+@property (nonatomic, getter=isWorldTrackingEnabled) BOOL worldTrackingEnabled; // @synthesize worldTrackingEnabled=_worldTrackingEnabled;
 
 + (BOOL)isSupported;
 + (id)new;
++ (long long)supportedNumberOfTrackedFaces;
 + (id)supportedVideoFormats;
++ (id)supportedVideoFormatsForWorldTracking;
++ (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
++ (BOOL)supportsWorldTracking;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
+- (id)imageSensorSettings;
+- (id)imageSensorSettingsForLowPower;
+- (id)imageSensorSettingsForWorldTracking;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
+- (id)parentImageSensorSettings;
 - (id)renderingTechnique;
+- (id)secondaryTechniques;
 - (void)setCameraPosition:(long long)arg1;
 - (void)setLightEstimationEnabled:(BOOL)arg1;
 - (void)setMirroredFrameOutput:(BOOL)arg1;

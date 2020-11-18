@@ -8,14 +8,13 @@
 
 #import <MediaPlaybackCore/MPMiddlewareOperation-Protocol.h>
 
-@class MPCFuture, MPCMediaRemoteMiddleware, MPCPlayerRequest, NSArray, NSError, NSString;
+@class MPCFuture, MPCMediaRemoteMiddleware, NSArray, NSError, NSString;
 
 @interface MPCMediaRemoteMiddlewarePlaybackStateOperation : MPAsyncOperation <MPMiddlewareOperation>
 {
     CDUnknownBlockType _invalidationHandler;
     NSArray *_invalidationObservers;
     MPCMediaRemoteMiddleware *_middleware;
-    MPCPlayerRequest *_playerRequest;
     MPCFuture *_playbackStateFuture;
 }
 
@@ -27,12 +26,11 @@
 @property (readonly, nonatomic) NSArray *invalidationObservers; // @synthesize invalidationObservers=_invalidationObservers;
 @property (strong, nonatomic) MPCMediaRemoteMiddleware *middleware; // @synthesize middleware=_middleware;
 @property (strong, nonatomic) MPCFuture *playbackStateFuture; // @synthesize playbackStateFuture=_playbackStateFuture;
-@property (strong, nonatomic) MPCPlayerRequest *playerRequest; // @synthesize playerRequest=_playerRequest;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)execute;
-- (id)initWithMiddleware:(id)arg1 playerRequest:(id)arg2;
+- (id)initWithMiddleware:(id)arg1;
 - (id)timeoutDescription;
 
 @end

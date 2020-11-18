@@ -29,6 +29,7 @@
 + (void)clearCache;
 + (id)sharedCache;
 + (id)syncQueue;
+- (void).cxx_destruct;
 - (void)_storeImage:(id)arg1 cacheKey:(id)arg2 path:(id)arg3 context:(id)arg4;
 - (unsigned long long)cacheCostForImage:(id)arg1;
 - (void)cacheImageFromContext:(id)arg1 forIdentifier:(id)arg2;

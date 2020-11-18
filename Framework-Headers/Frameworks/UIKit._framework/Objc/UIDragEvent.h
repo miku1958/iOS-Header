@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIEvent.h>
 
-@class NSHashTable, NSMutableSet, NSSet, UIEventEnvironment, UIView, UIWindow, _UIDragEventSample, _UIDropSessionImpl, _UIInternalDraggingSessionDestination, _UIInternalDraggingSessionSource;
+@class NSHashTable, NSMutableSet, NSSet, UIView, UIWindow, _UIDragEventSample, _UIDropSessionImpl, _UIInternalDraggingSessionDestination, _UIInternalDraggingSessionSource;
 
 __attribute__((visibility("hidden")))
 @interface UIDragEvent : UIEvent
@@ -29,16 +29,16 @@ __attribute__((visibility("hidden")))
     unsigned int _dragSessionID;
     _UIInternalDraggingSessionDestination *_sessionDestination;
     _UIInternalDraggingSessionSource *_sessionSource;
-    UIEventEnvironment *_eventEnvironment;
 }
 
 @property (readonly, nonatomic) unsigned int dragSessionID; // @synthesize dragSessionID=_dragSessionID;
 @property (readonly, nonatomic, getter=_dropSession) _UIDropSessionImpl *dropSession;
 @property (readonly, nonatomic, getter=_dynamicGestureRecognizers) NSSet *dynamicGestureRecognizers;
-@property (weak, nonatomic) UIEventEnvironment *eventEnvironment; // @synthesize eventEnvironment=_eventEnvironment;
 @property (readonly, nonatomic) UIWindow *eventWindow;
+@property (readonly, nonatomic) BOOL hasActiveGestureRecognizers;
 @property (readonly, nonatomic, getter=_hitTestedView) UIView *hitTestedView;
 @property (readonly, nonatomic) BOOL isFromAccessibilitySession;
+@property (readonly, nonatomic) BOOL isPolicyDriven;
 @property (readonly, nonatomic) struct CGPoint locationInSceneReferenceSpace;
 @property (readonly, nonatomic, getter=_sessionDestination) _UIInternalDraggingSessionDestination *sessionDestination; // @synthesize sessionDestination=_sessionDestination;
 @property (readonly, nonatomic, getter=_sessionSource) _UIInternalDraggingSessionSource *sessionSource; // @synthesize sessionSource=_sessionSource;
@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_ignoreDragEnd;
 - (void)_ignoreGestureRecognizer:(id)arg1;
 - (BOOL)_isReadyForReset;
+- (BOOL)_isTouchRoutingPolicyBased;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (void)_reset;
 - (BOOL)_sendEventToGestureRecognizer:(id)arg1;
@@ -66,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)_wasDeliveredToGestureRecognizers;
 - (id)_windows;
 - (void)dealloc;
-- (id)initWithDragSessionID:(unsigned int)arg1;
+- (id)initWithDragSessionID:(unsigned int)arg1 environment:(id)arg2;
 - (struct CGPoint)locationInView:(id)arg1;
 - (long long)type;
 

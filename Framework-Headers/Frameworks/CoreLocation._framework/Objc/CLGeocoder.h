@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CLGeocoderInternal;
+@class CLGeocoderInternal, CLSilo;
 
 @interface CLGeocoder : NSObject
 {
     CLGeocoderInternal *_internal;
 }
 
+@property (setter=_setResponseSilo:) CLSilo *_responseSilo;
 @property (readonly, nonatomic, getter=isGeocoding) BOOL geocoding;
 
++ (id)_timeZoneAtLocation:(id)arg1;
 - (void)_ensureMainThreadExecutionContextForBlock:(CDUnknownBlockType)arg1;
 - (void)_notifyCancel;
 - (void)_notifyError:(id)arg1;

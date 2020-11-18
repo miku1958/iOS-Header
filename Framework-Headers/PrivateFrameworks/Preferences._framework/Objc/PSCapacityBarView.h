@@ -22,6 +22,7 @@
 @property (strong, nonatomic) UIColor *barSeparatorColor; // @synthesize barSeparatorColor=_barSeparatorColor;
 
 - (void).cxx_destruct;
+- (id)bezierPathWithLineFrom:(struct CGPoint)arg1 to:(struct CGPoint)arg2;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

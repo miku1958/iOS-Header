@@ -10,6 +10,7 @@
 
 @protocol GEOAddressObjectProtocol <NSObject>
 
+@property (readonly, nonatomic) NSString *displayLanguage;
 @property (readonly, nonatomic) BOOL hasKnownAccuracy;
 @property (readonly, nonatomic) int knownAccuracy;
 

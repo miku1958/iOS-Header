@@ -23,8 +23,12 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)image;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithImage:(id)arg1;
+- (id)initWithImage:(id)arg1 treatmentBlock:(CDUnknownBlockType)arg2;
 - (id)initWithLightContentImage:(id)arg1 darkContentImage:(id)arg2;
+- (void)swapStyles;
 
 @end
 

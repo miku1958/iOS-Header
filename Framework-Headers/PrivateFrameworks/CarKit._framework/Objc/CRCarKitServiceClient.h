@@ -6,27 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSXPCConnection;
-@protocol CRCarKitService;
+@class NSXPCConnection;
 
+__attribute__((visibility("hidden")))
 @interface CRCarKitServiceClient : NSObject
 {
-    NSXPCConnection *_serviceConnection;
-    id<CRCarKitService> _service;
-    NSMutableArray *_outstandingSemaphores;
+    NSXPCConnection *_connection;
 }
 
-@property (strong, nonatomic) NSMutableArray *outstandingSemaphores; // @synthesize outstandingSemaphores=_outstandingSemaphores;
-@property (strong, nonatomic) id<CRCarKitService> service; // @synthesize service=_service;
-@property (strong, nonatomic) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 
++ (id)serviceQueue;
 - (void).cxx_destruct;
-- (void)_blockOnServiceSemaphore:(id)arg1;
-- (void)_releaseAllServiceSemaphores;
-- (id)_serviceSemaphore;
+- (void)_serviceQueuePerformBlock:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)_setupConnection;
 - (void)dealloc;
 - (id)init;
-- (void)performServiceCallBlock:(CDUnknownBlockType)arg1;
+- (void)performServiceBlock:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)performSynchronousServiceBlock:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 
 @end
 

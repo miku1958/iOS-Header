@@ -24,6 +24,7 @@
 + (id)clusterWithObjects:(id)arg1;
 + (id)clusterWithObjects:(id)arg1 clustroid:(id)arg2 diameter:(double)arg3;
 - (void).cxx_destruct;
+- (id)approximateRegionWithMaximumRadius:(double)arg1;
 - (id)description;
 - (id)init;
 - (id)locations;

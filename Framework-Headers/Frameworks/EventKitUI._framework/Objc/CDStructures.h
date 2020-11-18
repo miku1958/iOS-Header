@@ -10,6 +10,15 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGAffineTransform {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+};
+
 struct CGPoint {
     double x;
     double y;
@@ -23,6 +32,11 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
+};
+
+struct CLLocationCoordinate2D {
+    double _field1;
+    double _field2;
 };
 
 struct NSDictionary {
@@ -55,6 +69,11 @@ typedef struct {
     unsigned int showsRefreshButton:1;
     unsigned int allowsPullToRefresh:1;
 } CDStruct_424d6339;
+
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
 
 typedef struct {
     int _field1;

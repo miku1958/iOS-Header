@@ -13,16 +13,17 @@
     int _failure;
     int _intent;
     struct {
-        unsigned int failure:1;
-        unsigned int intent:1;
-    } _has;
+        unsigned int has_failure:1;
+        unsigned int has_intent:1;
+    } _flags;
 }
 
-@property (nonatomic) int failure; // @synthesize failure=_failure;
+@property (nonatomic) int failure;
 @property (nonatomic) BOOL hasFailure;
 @property (nonatomic) BOOL hasIntent;
-@property (nonatomic) int intent; // @synthesize intent=_intent;
+@property (nonatomic) int intent;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsFailure:(id)arg1;
 - (int)StringAsIntent:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -34,6 +35,7 @@
 - (id)intentAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

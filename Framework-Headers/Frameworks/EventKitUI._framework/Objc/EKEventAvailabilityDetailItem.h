@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (BOOL)_canChangeAvailability;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;

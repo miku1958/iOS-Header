@@ -18,7 +18,9 @@
 @property (strong, nonatomic) CPSAbridgableLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_titleFont;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

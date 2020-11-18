@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (long long)mixingTypeWithObject:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (double)p_bestGradientLengthForRect:(struct CGRect)arg1 atAngle:(double)arg2;
-- (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
+- (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 naturalBounds:(struct CGRect)arg3;
 - (struct CGAffineTransform)p_shadingTransformForBounds:(struct CGRect)arg1;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(BOOL)arg4;

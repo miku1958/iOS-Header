@@ -15,10 +15,12 @@
 @interface _INPBLocationList : PBCodable <_INPBLocationList, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBCondition *_condition;
     NSArray *_locations;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,11 +31,14 @@
 @property (readonly) Class superclass;
 
 + (Class)locationType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addLocation:(id)arg1;
 - (void)clearLocations;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)locationAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;

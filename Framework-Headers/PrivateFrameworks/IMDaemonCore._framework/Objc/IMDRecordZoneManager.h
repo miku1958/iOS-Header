@@ -72,6 +72,7 @@
 - (void)deleteChatZone;
 - (void)deleteDeDupeSaltZone;
 - (void)deleteMessageZone;
+- (long long)derivedQualityOfService;
 - (void)fetchChatZoneToCheckManateeStatus:(CDUnknownBlockType)arg1;
 - (id)init;
 

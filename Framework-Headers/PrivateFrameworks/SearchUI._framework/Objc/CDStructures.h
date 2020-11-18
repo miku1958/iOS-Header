@@ -25,11 +25,10 @@ struct CGSize {
     double height;
 };
 
-struct NSDirectionalEdgeInsets {
-    double _field1;
+struct SBIconImageInfo {
+    struct CGSize _field1;
     double _field2;
     double _field3;
-    double _field4;
 };
 
 struct UIEdgeInsets {
@@ -43,18 +42,4 @@ struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    double snapshotTime;
-    double startTime;
-    double endTime;
-    double duration;
-    double elapsedDuration;
-    float rate;
-    float defaultRate;
-    BOOL isLiveContent;
-    BOOL isLoading;
-} CDStruct_fce57115;
 

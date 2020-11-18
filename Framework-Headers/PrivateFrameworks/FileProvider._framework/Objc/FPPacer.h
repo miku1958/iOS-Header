@@ -15,7 +15,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_source;
     NSObject<OS_dispatch_source> *_timer;
-    _Atomic int _sourceResumed;
+    _Atomic int _sourceSuspendCount;
     CDUnknownBlockType _eventBlock;
 }
 

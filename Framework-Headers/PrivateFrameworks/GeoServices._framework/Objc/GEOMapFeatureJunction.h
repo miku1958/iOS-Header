@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) CDStruct_6e3f967a tilePoint;
 
 + (BOOL)_isPointOnTileBorder:(CDStruct_6e3f967a)arg1;
-+ (id)junctionForRoadFeature:(CDStruct_a2ef2718 *)arg1 startJunction:(BOOL)arg2;
++ (id)junctionForRoadFeature:(CDStruct_c8b5ad3f *)arg1 startJunction:(BOOL)arg2;
 - (void).cxx_destruct;
 
 @end

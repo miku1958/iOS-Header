@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <PDFKit/PDFTextInputView.h>
 
 #import <PDFKit/PDFDocumentPageChangeDelegate-Protocol.h>
 #import <PDFKit/PDFPageBackgroundManagerDelegate-Protocol.h>
+#import <PDFKit/PDFTextInputDelegate-Protocol.h>
 
 @class NSString, PDFDocumentViewPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFDocumentView : UIView <PDFPageBackgroundManagerDelegate, PDFDocumentPageChangeDelegate>
+@interface PDFDocumentView : PDFTextInputView <PDFPageBackgroundManagerDelegate, PDFDocumentPageChangeDelegate, PDFTextInputDelegate>
 {
     PDFDocumentViewPrivate *_private;
 }
@@ -24,14 +25,14 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_createPageView:(id)arg1;
+- (struct CGPoint)_pixelAlignPageFrameOrigin:(struct CGRect)arg1;
 - (void)_reAddPageOverlaysStartingAtIndex:(unsigned long long)arg1;
 - (void)_removePageOverlaysStartingAtIndex:(unsigned long long)arg1;
 - (void)_shiftPagesAtIndex:(unsigned long long)arg1 downwards:(BOOL)arg2;
 - (void)_updateVisibilityDelegateForVisiblePageView:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)backgroundImageForPage:(id)arg1 withQuality:(int *)arg2;
 - (void)changedBoundsForBoxNotification:(id)arg1;
-- (void)clearTextSelectionHandles;
-- (id)createPageViewForPageAtIndex:(unsigned long long)arg1;
+- (id)createPageViewForPageAtIndex:(unsigned long long)arg1 withFrame:(struct CGRect)arg2;
 - (void)dealloc;
 - (void)didInsertPage:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)didRemovePage:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -39,18 +40,18 @@ __attribute__((visibility("hidden")))
 - (void)didSwapPage:(id)arg1 atIndex:(unsigned long long)arg2 forPage:(id)arg3 atIndex:(unsigned long long)arg4;
 - (id)document;
 - (struct CGSize)documentViewSize;
-- (void)enableTextSelectionHandles;
 - (void)forceUpdateActivePageIndex:(unsigned long long)arg1 withMaxDuration:(double)arg2;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithPDFView:(id)arg1;
 - (void)layoutDocumentView;
 - (id)pageBackgroundManager;
 - (id)pageViewForPageAtIndex:(unsigned long long)arg1;
 - (id)pageViews;
+- (id)pdfView;
 - (void)previewRotateShiftPages:(double)arg1;
 - (void)recieveBackgroundImage:(id)arg1 atBackgroundQuality:(int)arg2 forPage:(id)arg3;
 - (void)removePageViewForPageAtIndex:(unsigned long long)arg1;
 - (void)setDocument:(id)arg1;
-- (void)setSelection:(id)arg1;
 - (void)updateVisibility;
 - (void)willForceUpdate;
 - (void)willInsertPage:(id)arg1 atIndex:(unsigned long long)arg2;

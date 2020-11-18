@@ -14,21 +14,23 @@ __attribute__((visibility("hidden")))
 @interface GEOPDIcon : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    int _iconType;
     GEOPDPhoto *_image;
+    int _iconType;
     struct {
-        unsigned int iconType:1;
-    } _has;
+        unsigned int has_iconType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIconType;
 @property (readonly, nonatomic) BOOL hasImage;
-@property (nonatomic) int iconType; // @synthesize iconType=_iconType;
-@property (strong, nonatomic) GEOPDPhoto *image; // @synthesize image=_image;
+@property (nonatomic) int iconType;
+@property (strong, nonatomic) GEOPDPhoto *image;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsIconType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)iconTypeAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

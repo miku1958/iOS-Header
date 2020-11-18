@@ -18,10 +18,12 @@
 
 - (void).cxx_destruct;
 - (id)_displayableItemsForContactSupport;
+- (id)_displayableItemsForFeatureName;
 - (id)_displayableItemsForInstructionManual;
 - (id)_displayableItemsForPhone;
 - (id)_displayableItemsForReenableFeature;
 - (id)_displayableItemsForWatch;
+- (BOOL)_shouldDisplayItemsForWatch;
 - (id)displayableItems;
 - (void)receivedHeartRhythmAvailabilityNotification;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;

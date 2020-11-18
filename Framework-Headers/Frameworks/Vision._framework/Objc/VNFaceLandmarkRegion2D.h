@@ -6,21 +6,30 @@
 
 #import <Vision/VNFaceLandmarkRegion.h>
 
-@class MISSING_TYPE, NSMutableDictionary;
+@class MISSING_TYPE, NSArray, NSMutableDictionary;
 
 @interface VNFaceLandmarkRegion2D : VNFaceLandmarkRegion
 {
     NSMutableDictionary *_sizedPointsCache;
-    const MISSING_TYPE **_points;
+    MISSING_TYPE **_points;
+    NSArray *_precisionEstimatesPerPoint;
+    NSArray *_occlusionFlagsPerPoint;
 }
 
 @property (readonly) const struct CGPoint *normalizedPoints;
-@property const MISSING_TYPE **points; // @synthesize points=_points;
+@property (readonly) NSArray *occlusionFlagsPerPoint; // @synthesize occlusionFlagsPerPoint=_occlusionFlagsPerPoint;
+@property (readonly) const MISSING_TYPE **points; // @synthesize points=_points;
+@property (readonly) NSArray *precisionEstimatesPerPoint; // @synthesize precisionEstimatesPerPoint=_precisionEstimatesPerPoint;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithFaceBoundingBox:(struct CGRect)arg1 points:(MISSING_TYPE **)arg2 pointCount:(unsigned long long)arg3;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2;
+- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2 points:(MISSING_TYPE **)arg3 pointCount:(unsigned long long)arg4 precisionEstimatesPerPoint:(id)arg5 occlusionFlagsPerPoint:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (MISSING_TYPE *)pointAtIndex:(unsigned long long)arg1;
 - (const struct CGPoint *)pointsInImageOfSize:(struct CGSize)arg1;

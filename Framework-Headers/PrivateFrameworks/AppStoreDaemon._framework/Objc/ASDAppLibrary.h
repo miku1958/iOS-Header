@@ -23,6 +23,8 @@
 
 + (id)interface;
 + (long long)launchApp:(id)arg1;
++ (long long)launchApp:(id)arg1 onPairedDevice:(id)arg2;
++ (void)launchApp:(id)arg1 onPairedDevice:(id)arg2 withResultHandler:(CDUnknownBlockType)arg3;
 + (void)launchApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 + (long long)launchMessagesExtensionForApp:(id)arg1;
 + (void)launchMessagesExtensionForApp:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;

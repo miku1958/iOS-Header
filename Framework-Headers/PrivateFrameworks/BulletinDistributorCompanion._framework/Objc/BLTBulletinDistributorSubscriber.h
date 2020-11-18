@@ -42,7 +42,7 @@
 - (void)pingWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;
 - (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2;
 - (void)sendBulletinSummary:(id)arg1;
-- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(BOOL)arg2 withAck:(BOOL)arg3;
+- (void)subscribeToSectionID:(id)arg1 forFullBulletins:(BOOL)arg2 withAck:(BOOL)arg3 ackAllowedOnLocalConnection:(BOOL)arg4;
 - (void)subscribeWithMachServiceName:(id)arg1;
 - (void)unsubscribeFromSectionID:(id)arg1;
 

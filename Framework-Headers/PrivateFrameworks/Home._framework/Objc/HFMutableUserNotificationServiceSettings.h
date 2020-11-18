@@ -12,8 +12,11 @@
 {
 }
 
+@property (nonatomic, getter=areDoorbellNotificationsEnabled) BOOL doorbellNotificationsEnabled; // @dynamic doorbellNotificationsEnabled;
 @property (strong, nonatomic) NSPredicate *notificationCondition; // @dynamic notificationCondition;
 @property (nonatomic, getter=areNotificationsEnabled) BOOL notificationsEnabled; // @dynamic notificationsEnabled;
+@property (strong, nonatomic) NSPredicate *smartCameraNotificationCondition; // @dynamic smartCameraNotificationCondition;
+@property (nonatomic, getter=areSmartDetectionNotificationsEnabled) BOOL smartDetectionNotificationsEnabled; // @dynamic smartDetectionNotificationsEnabled;
 
 @end
 

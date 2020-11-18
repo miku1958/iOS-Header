@@ -8,7 +8,7 @@
 
 #import <SafariServices/_SFBarRegistrationToken-Protocol.h>
 
-@class NSOrderedSet, NSString, UIBarButtonItem, UIToolbar, _SFBarManager;
+@class NSMutableSet, NSOrderedSet, NSString, SFDownloadsBarButtonItem, UIBarButtonItem, UIToolbar, _SFBarManager;
 
 __attribute__((visibility("hidden")))
 @interface SFBarRegistration : UIResponder <_SFBarRegistrationToken>
@@ -23,6 +23,10 @@ __attribute__((visibility("hidden")))
     UIBarButtonItem *_shareItem;
     UIBarButtonItem *_tabExposeItem;
     UIBarButtonItem *_openInSafariItem;
+    SFDownloadsBarButtonItem *_downloadsItem;
+    NSMutableSet *_hiddenBarItems;
+    NSOrderedSet *_lastCommittedArrangedBarItems;
+    long long _layout;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,16 +37,24 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)UIBarButtonItemForItem:(long long)arg1;
 - (id)_UIBarButtonItemForBarItem:(long long)arg1;
+- (id)_UIBarButtonItemsForArrangedBarItems:(id)arg1;
+- (BOOL)_arrangedBarItemsNeedUpdate;
 - (long long)_barItemForUIBarButtonItem:(id)arg1;
+- (id)_effectiveArrangedBarItems;
 - (void)_itemReceivedLongPress:(id)arg1;
 - (void)_itemReceivedTap:(id)arg1;
 - (void)_itemReceivedTouchDown:(id)arg1;
+- (id)_newBarButtonItemForSFBarItem:(long long)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (BOOL)containsBarItem:(long long)arg1;
 - (id)initWithBar:(id)arg1 barManager:(id)arg2 layout:(long long)arg3 persona:(unsigned long long)arg4;
 - (id)popoverSourceInfoForItem:(long long)arg1;
+- (void)pulseDownloadsItem;
 - (void)setBarItem:(long long)arg1 enabled:(BOOL)arg2;
+- (void)setBarItem:(long long)arg1 hidden:(BOOL)arg2;
 - (void)setBookmarksItemSelected:(BOOL)arg1;
+- (void)setDownloadsItemProgress:(double)arg1;
+- (void)updateArrangedUIBarButtonItemsIfNeeded;
 
 @end
 

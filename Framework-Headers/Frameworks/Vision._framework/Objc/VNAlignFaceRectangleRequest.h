@@ -20,7 +20,6 @@
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedProcessing:(id)arg3;
 - (id)initWithFaceObservations:(id)arg1;
 - (id)initWithFaceObservations:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (id)newDefaultRequestInstance;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;

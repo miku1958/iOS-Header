@@ -9,7 +9,6 @@
 @class QLAppearance;
 @protocol QLPreviewItemViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface QLItemAggregatedViewController : QLItemViewController
 {
     BOOL _isVisible;
@@ -28,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
 - (BOOL)automaticallyUpdateScrollViewIndicatorInset;
-- (void)beginPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
@@ -36,15 +34,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)canShowNavBar;
 - (BOOL)canShowToolBar;
 - (BOOL)canSwipeToDismiss;
+- (BOOL)canToggleFullScreen;
 - (id)delegate;
 - (id)draggableView;
-- (void)endPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1;
 - (id)excludedToolbarButtonIdentifiersForTraitCollection:(id)arg1;
 - (id)fullscreenBackgroundColor;
+- (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
 - (id)parallaxView;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (struct CGSize)preferredContentSize;
 - (long long)preferredWhitePointAdaptivityStyle;
+- (void)prepareForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)previewBecameFullScreen:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)printer;
 - (id)registeredKeyCommands;
 - (id)safeAreaLayoutGuide;
+- (void)savePreviewEditedCopyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setDelegate:(id)arg1;
@@ -68,8 +69,6 @@ __attribute__((visibility("hidden")))
 - (void)transitionDidStart:(BOOL)arg1;
 - (void)transitionWillFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (id)transitioningView;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

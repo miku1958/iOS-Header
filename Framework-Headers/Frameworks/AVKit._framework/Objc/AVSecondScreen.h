@@ -6,16 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AVObservationController, AVSecondScreenConnection, CADisplay, UIScreen, UIWindow, _UICanvas;
+@class AVObservationController, AVSecondScreenConnection, CADisplay, UIScreen, UIWindow, UIWindowScene;
 
+__attribute__((visibility("hidden")))
 @interface AVSecondScreen : NSObject
 {
     BOOL _TVOutScreen;
-    BOOL _wasDiscoveredByCanvasDidConnectNotification;
-    BOOL _hasBecomeActiveAtLeastOnce;
     AVObservationController *_observationController;
     UIWindow *_window;
-    _UICanvas *_canvas;
+    UIWindowScene *_windowScene;
     UIScreen *_screen;
     AVSecondScreenConnection *_secondScreenConnection;
     long long _state;
@@ -23,23 +22,20 @@
 }
 
 @property (readonly, nonatomic, getter=isTVOutScreen) BOOL TVOutScreen; // @synthesize TVOutScreen=_TVOutScreen;
-@property (readonly, weak, nonatomic) _UICanvas *canvas; // @synthesize canvas=_canvas;
 @property (strong, nonatomic) CADisplay *debugInfoDisplay; // @synthesize debugInfoDisplay=_debugInfoDisplay;
-@property (nonatomic) BOOL hasBecomeActiveAtLeastOnce; // @synthesize hasBecomeActiveAtLeastOnce=_hasBecomeActiveAtLeastOnce;
 @property (readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property (readonly, weak, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
 @property (strong, nonatomic) AVSecondScreenConnection *secondScreenConnection; // @synthesize secondScreenConnection=_secondScreenConnection;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
-@property (readonly, nonatomic) BOOL wasDiscoveredByCanvasDidConnectNotification; // @synthesize wasDiscoveredByCanvasDidConnectNotification=_wasDiscoveredByCanvasDidConnectNotification;
 @property (strong, nonatomic) UIWindow *window; // @synthesize window=_window;
+@property (readonly, weak, nonatomic) UIWindowScene *windowScene; // @synthesize windowScene=_windowScene;
 
 - (void).cxx_destruct;
-- (BOOL)_isScreenAvailable;
-- (void)_makeWindowVisibleIfNeeded;
+- (BOOL)_isWindowSceneAvailable;
 - (void)_updatePreferredDisplayCriteria;
 - (void)connectWithSecondScreenConnection:(id)arg1;
 - (void)dealloc;
-- (id)initWithUICanvas:(id)arg1 wasDiscoveredByCanvasDidConnectNotification:(BOOL)arg2;
+- (id)initWithScene:(id)arg1;
 - (BOOL)isAvailable;
 - (void)setState:(long long)arg1;
 

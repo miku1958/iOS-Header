@@ -6,22 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/GEOConfigChangeListenerDelegate-Protocol.h>
 #import <GeoServices/GEODataStateCapturing-Protocol.h>
+#import <GeoServices/GEOKeyBagProtectedDataDidBecomeAvailableObserver-Protocol.h>
 #import <GeoServices/GEOResourceFiltersManagerDelegate-Protocol.h>
 #import <GeoServices/GEOResourceManifestServerProxy-Protocol.h>
-#import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSArray, NSError, NSLock, NSMutableArray, NSMutableData, NSOperationQueue, NSProgress, NSString, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics, _GEOResourceManifestServerLocalProxyMigrationState;
+@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceManifestConfiguration, GEOResourceManifestDownload, GEOResourceManifestDownloadTask, NSArray, NSError, NSMutableArray, NSOperationQueue, NSProgress, NSString, _GEOResourceManifestServerLocalProxyMigrationState;
 @protocol GEOResourceManifestServerProxyDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source;
 
-@interface GEOResourceManifestServerLocalProxy : NSObject <NSURLSessionDataDelegate, GEOResourceFiltersManagerDelegate, GEODataStateCapturing, GEOResourceManifestServerProxy>
+@interface GEOResourceManifestServerLocalProxy : NSObject <GEOResourceFiltersManagerDelegate, GEODataStateCapturing, GEOKeyBagProtectedDataDidBecomeAvailableObserver, GEOConfigChangeListenerDelegate, GEOResourceManifestServerProxy>
 {
     id<GEOResourceManifestServerProxyDelegate> _delegate;
-    NSURLSession *_session;
-    NSURLSessionTask *_task;
-    NSMutableData *_responseData;
-    NSString *_responseETag;
-    int _httpResponseStatusCode;
+    GEOResourceManifestDownloadTask *_manifestDownloadTask;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSOperationQueue *_workOperationQueue;
     GEOResourceManifestConfiguration *_configuration;
@@ -35,15 +32,14 @@
     BOOL _started;
     unsigned long long _manifestRetryCount;
     double _lastManifestRetryTimestamp;
-    NSURLSessionTaskMetrics *_taskMetrics;
     unsigned long long _tileGroupRetryCount;
     double _lastTileGroupRetryTimestamp;
     NSString *_authToken;
-    NSLock *_authTokenLock;
+    struct os_unfair_lock_s _authTokenLock;
     NSError *_lastResourceManifestLoadError;
     NSMutableArray *_manifestUpdateCompletionHandlers;
+    NSMutableArray *_opportunisticManifestUpdateCompletionHandlers;
     long long _currentManifestUpdateType;
-    double _lastManifestRequestStartTime;
     GEOResourceFiltersManager *_filtersManager;
     NSArray *_tileGroupMigrators;
     unsigned long long _stateCaptureHandle;
@@ -60,30 +56,34 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
-- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)_activeTileGroupOverridesChanged:(id)arg1;
+- (void)_addManifestUpdateCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_addOpportunisticManifestUpdateCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_cancelManifestUpdate;
 - (void)_cancelMigrationTasks;
-- (void)_cancelSession;
 - (void)_changeActiveTileGroup:(id)arg1 activeScales:(id)arg2 activeScenarios:(id)arg3 dataSet:(id)arg4 migrationTasks:(id)arg5 flushTileCache:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
-- (void)_cleanupSession;
+- (void)_changeActiveTileGroupIfNeededForManifestURL:(id)arg1 oldURL:(id)arg2;
 - (void)_considerChangingActiveTileGroup;
 - (void)_countryProvidersDidChange:(id)arg1;
 - (void)_createMigrators;
-- (void)_forceChangeActiveTileGroup:(id)arg1 flushTileCache:(BOOL)arg2 ignoreIdentifier:(BOOL)arg3;
+- (void)_forceChangeActiveTileGroup:(id)arg1 flushTileCache:(BOOL)arg2;
+- (void)_handleManifestUpdateError:(id)arg1;
 - (id)_idealTileGroupToUse;
 - (void)_loadFromDisk;
 - (id)_manifestURL;
 - (void)_manifestURLDidChange:(id)arg1;
 - (void)_networkDefaultsDidChange:(id)arg1;
+- (void)_notifyImmediateManifestUpdateCompletionHandlers:(id)arg1;
 - (void)_notifyManifestUpdateCompletionHandlers:(id)arg1;
+- (void)_notifyOpportunisticManifestUpdateCompletionHandlers:(id)arg1;
 - (void)_reachabilityChanged:(id)arg1;
+- (void)_resetCurrentUpdateState;
 - (void)_scheduleTileGroupUpdateTimerWithTimeInterval:(double)arg1;
 - (void)_scheduleUpdateTimerWithTimeInterval:(double)arg1;
+- (void)_setCurrentUpdateType:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_startOpportunisticMigrationToTileGroup:(id)arg1 inResourceManifest:(id)arg2 activeScales:(id)arg3 activeScenarios:(id)arg4 dataSet:(id)arg5;
 - (void)_startServer;
+- (void)_terminationRequested:(id)arg1;
 - (void)_tileGroupTimerFired;
 - (void)_updateManifest;
 - (void)_updateManifest:(CDUnknownBlockType)arg1;
@@ -91,6 +91,7 @@
 - (void)_updateTimerFired;
 - (BOOL)_writeActiveTileGroupToDisk:(id)arg1 error:(id *)arg2;
 - (BOOL)_writeManifestToDisk:(id)arg1 error:(id *)arg2;
+- (BOOL)_writeManifestToDiskWithUpdatedMetadataForURL:(id)arg1 eTag:(id)arg2 error:(id *)arg3;
 - (void)activateResourceScale:(int)arg1;
 - (void)activateResourceScenario:(int)arg1;
 - (id)authToken;
@@ -106,15 +107,19 @@
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDelegate:(id)arg1 configuration:(id)arg2;
 - (unsigned long long)maximumZoomLevelForStyle:(int)arg1 scale:(int)arg2;
+- (id)migrationTaskOptions;
 - (void)openConnection;
 - (void)performOpportunisticResourceLoading;
+- (void)protectedDataDidBecomeAvailable:(id)arg1;
 - (oneway void)resetActiveTileGroup;
 - (id)serverOperationQueue;
 - (id)serverQueue;
 - (oneway void)setActiveTileGroupIdentifier:(id)arg1;
+- (void)setActiveTileGroupIdentifier:(id)arg1 updateType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setManifestToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateIfNecessary:(CDUnknownBlockType)arg1;
 - (id)updateProgress;
+- (void)valueChangedForGEOConfigKey:(CDStruct_065526f1)arg1;
 
 @end
 

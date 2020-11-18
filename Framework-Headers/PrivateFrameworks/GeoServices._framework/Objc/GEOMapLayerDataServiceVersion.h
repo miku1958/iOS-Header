@@ -15,19 +15,20 @@ __attribute__((visibility("hidden")))
     unsigned int _formatVersion;
     unsigned int _patchVersion;
     struct {
-        unsigned int dataVersion:1;
-        unsigned int formatVersion:1;
-        unsigned int patchVersion:1;
-    } _has;
+        unsigned int has_dataVersion:1;
+        unsigned int has_formatVersion:1;
+        unsigned int has_patchVersion:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int dataVersion; // @synthesize dataVersion=_dataVersion;
-@property (nonatomic) unsigned int formatVersion; // @synthesize formatVersion=_formatVersion;
+@property (nonatomic) unsigned int dataVersion;
+@property (nonatomic) unsigned int formatVersion;
 @property (nonatomic) BOOL hasDataVersion;
 @property (nonatomic) BOOL hasFormatVersion;
 @property (nonatomic) BOOL hasPatchVersion;
-@property (nonatomic) unsigned int patchVersion; // @synthesize patchVersion=_patchVersion;
+@property (nonatomic) unsigned int patchVersion;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

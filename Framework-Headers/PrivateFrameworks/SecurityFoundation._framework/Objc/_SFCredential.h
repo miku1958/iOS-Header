@@ -9,7 +9,7 @@
 #import <SecurityFoundation/NSCopying-Protocol.h>
 #import <SecurityFoundation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, _SFServiceIdentifier;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, _SFServiceIdentifier;
 
 @interface _SFCredential : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,10 +21,16 @@
     NSDate *_creationDate;
     NSDate *_modificationDate;
     NSDictionary *_customAttributes;
+    int _keyclass;
+    NSString *_accessGroup;
+    NSData *_changeToken;
 }
 
+@property (strong, nonatomic, getter=_accessGroup, setter=_setAccessGroup:) NSString *accessGroup;
+@property (strong, nonatomic, getter=_changeToken, setter=_setChangeToken:) NSData *changeToken;
 @property (copy, nonatomic, setter=_setCreationDate:) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (copy, nonatomic) NSDictionary *customAttributes; // @synthesize customAttributes=_customAttributes;
+@property (nonatomic, getter=_keyclass, setter=_setKeyclass:) int keyclass;
 @property (copy, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_description;
 @property (copy, nonatomic) NSString *localizedLabel; // @synthesize localizedLabel=_label;
 @property (copy, nonatomic, setter=_setModificationDate:) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;

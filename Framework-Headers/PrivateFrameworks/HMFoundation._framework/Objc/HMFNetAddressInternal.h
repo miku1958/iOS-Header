@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface HMFNetAddressInternal : HMFObject
 {
     unsigned long long _addressFamily;
@@ -18,6 +19,7 @@
 @property (readonly, copy, nonatomic) NSString *addressString; // @synthesize addressString=_addressString;
 
 - (void).cxx_destruct;
+- (id)dataUsingEncoding:(unsigned long long)arg1;
 
 @end
 

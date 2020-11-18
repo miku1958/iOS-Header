@@ -29,6 +29,7 @@
 - (id)_allGatheredDataByTechniqueIndex;
 - (id)addResultData:(id)arg1 forTechniqueAtIndex:(unsigned long long)arg2;
 - (id)captureGatheredData;
+- (id)description;
 - (BOOL)deterministicResultsCaptured;
 - (id)gatheredData;
 - (id)initWithParentContext:(id)arg1 previousContext:(id)arg2 requiredTechniqueIndices:(id)arg3 deterministicTechniqueIndices:(id)arg4 techniques:(id)arg5;

@@ -7,29 +7,42 @@
 #import <objc/NSObject.h>
 
 #import <IconServices/CALayerDelegate-Protocol.h>
+#import <IconServices/ISScalableCompositorResource-Protocol.h>
 
-@class ISIconManager, NSString;
+@class ISIconManager, NSArray, NSString;
+@protocol ISIconIdentity;
 
-@interface ISIcon : NSObject <CALayerDelegate>
+@interface ISIcon : NSObject <ISScalableCompositorResource, CALayerDelegate>
 {
 }
 
+@property (readonly) id<ISIconIdentity> _identity;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) NSArray *decorations;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly) ISIconManager *manager;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)applicationIcon;
-+ (unsigned long long)deviceIdiom;
 + (int)findVariantFromSet:(unsigned long long)arg1 deviceIdiom:(unsigned long long)arg2 size:(struct CGSize)arg3 scale:(double)arg4;
++ (id)genericApplicationIcon;
++ (id)genericDocumentIcon;
 + (id)layerUpdateQueue;
 + (id)sizesFromSet:(unsigned long long)arg1;
++ (id)transparentIcon;
 + (struct _LIIconVariantInfo *)variantInfoForSet:(unsigned long long)arg1 count:(unsigned long long *)arg2;
+- (double)_aspectRatio;
 - (id)_init;
 - (unsigned long long)badgeOptions;
 - (void)displayLayer:(id)arg1;
+- (id)iconWithDecorations:(id)arg1;
+- (id)imageForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (unsigned long long)variantOptions;
 
 @end

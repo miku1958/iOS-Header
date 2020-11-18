@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PUSearchZeroKeywordDataSource *zeroKeywordDataSource; // @synthesize zeroKeywordDataSource=_zeroKeywordDataSource;
 
 - (void).cxx_destruct;
-- (void)didRemoveSections:(id)arg1;
 - (void)didUpdateSections:(id)arg1;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;

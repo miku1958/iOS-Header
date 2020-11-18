@@ -23,7 +23,6 @@
 - (void)dealloc;
 - (void)drawVisualizationInRect:(struct CGRect)arg1 context:(struct CGContext *)arg2 viewBounds:(struct CGRect)arg3;
 - (id)initWithRecognitionSession:(id)arg1;
-- (struct CGColor *)newColorForVisualizedItemAtIndex:(long long)arg1;
 - (void)recognitionSessionDidUpdateRecognitionResult;
 - (void)toggleVisualizationRegionAtPoint:(struct CGPoint)arg1;
 

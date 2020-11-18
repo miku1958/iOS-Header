@@ -13,6 +13,7 @@
 
 @interface HUGridCellLayoutOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
+    BOOL _drawsBorderForOnState;
     unsigned long long _contentColorStyle;
     HUGridCellBackgroundDisplayOptions *_backgroundDisplayOptions;
     UIVisualEffect *_vibrancyEffect;
@@ -20,6 +21,7 @@
     double _secondaryContentDimmingFactor;
     UIFont *_font;
     double _iconSize;
+    long long _iconContentMode;
     double _cellInnerMargin;
     double _cellCornerRadius;
     double _cellScaleFactor;
@@ -34,8 +36,10 @@
 @property (nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL drawsBorderForOnState; // @synthesize drawsBorderForOnState=_drawsBorderForOnState;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long iconContentMode; // @synthesize iconContentMode=_iconContentMode;
 @property (nonatomic) double iconSize; // @synthesize iconSize=_iconSize;
 @property (nonatomic) double secondaryContentDimmingFactor; // @synthesize secondaryContentDimmingFactor=_secondaryContentDimmingFactor;
 @property (strong, nonatomic) UIVisualEffect *secondaryVibrancyEffect; // @synthesize secondaryVibrancyEffect=_secondaryVibrancyEffect;

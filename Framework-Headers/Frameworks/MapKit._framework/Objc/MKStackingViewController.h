@@ -42,6 +42,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isScrollEnabled) BOOL scrollEnabled;
+@property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (weak, nonatomic) id<MKStackingViewControllerDelegate> stackingDelegate; // @synthesize stackingDelegate=_stackingDelegate;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *viewControllers; // @synthesize viewControllers=_viewControllers;

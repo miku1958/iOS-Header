@@ -6,30 +6,40 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotoLibraryServices/PLChooserKeyProperties-Protocol.h>
 #import <PhotoLibraryServices/PLResourceDataStoreKey-Protocol.h>
 
 @class NSString;
 
-@interface PLSharedStreamsDataStoreKey : NSObject <PLResourceDataStoreKey>
+@interface PLSharedStreamsDataStoreKey : NSObject <PLResourceDataStoreKey, PLChooserKeyProperties>
 {
-    struct PLSharedStreamsDataStoreKeyStruct _keyStruct;
+    NSString *_relativePath;
+    unsigned int _sharedStreamsResourceType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) struct PLSharedStreamsDataStoreKeyStruct keyStruct; // @synthesize keyStruct=_keyStruct;
 @property (readonly) Class superclass;
 
-- (id)_fileURLWithPhotoCloudSharingDataDirectory:(id)arg1 extension:(id)arg2;
-- (id)_relativeFilePath;
-- (id)_store;
++ (id)_keyDataWithRelativePath:(id)arg1 type:(unsigned int)arg2;
++ (id)_relativeFilePathForPersonID:(id)arg1 albumID:(id)arg2 dcimDirectory:(id)arg3 fileName:(id)arg4;
++ (id)_replacementPathExtensionForType:(unsigned int)arg1;
++ (unsigned long long)dataLengthFromPreviewByte:(unsigned char)arg1;
+- (void).cxx_destruct;
 - (id)descriptionForAssetID:(id)arg1;
 - (id)fileURLForAssetID:(id)arg1;
 - (id)initWithAsset:(id)arg1 album:(id)arg2 type:(unsigned int)arg3;
 - (id)initWithKeyStruct:(const void *)arg1;
-- (BOOL)isValid;
+- (BOOL)isDerivative;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToKey:(id)arg1;
 - (id)keyData;
+- (unsigned int)recipeIDForAssetID:(id)arg1;
+- (unsigned int)resourceType;
+- (unsigned int)resourceVersion;
+- (id)uniformTypeIdentifier;
+- (id)validateForAssetID:(id)arg1 resourceIdentity:(id)arg2;
 
 @end
 

@@ -6,30 +6,35 @@
 
 #import <EventKit/EKPersistentObject.h>
 
-@class CDBSourceConstraints, NSNumber, NSString;
+@class EKFrozenReminderSource, NSNumber, NSString;
 
 @interface EKPersistentSource : EKPersistentObject
 {
+    EKFrozenReminderSource *_reminderSource;
 }
 
 @property (readonly, nonatomic) NSString *UUID; // @dynamic UUID;
 @property (strong, nonatomic) NSString *UUID;
-@property (readonly, nonatomic) CDBSourceConstraints *constraints;
 @property (copy, nonatomic) NSNumber *defaultAlarmOffset; // @dynamic defaultAlarmOffset;
 @property (nonatomic) BOOL disabled; // @dynamic disabled;
 @property (copy, nonatomic) NSString *externalID; // @dynamic externalID;
 @property (copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
 @property (nonatomic) BOOL onlyCreatorCanModify; // @dynamic onlyCreatorCanModify;
 @property (nonatomic) int preferredEventPrivateValue; // @dynamic preferredEventPrivateValue;
+@property (strong) EKFrozenReminderSource *reminderSource; // @synthesize reminderSource=_reminderSource;
 @property (nonatomic) long long sourceType; // @dynamic sourceType;
 @property (nonatomic) int strictestEventPrivateValue; // @dynamic strictestEventPrivateValue;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
+- (void).cxx_destruct;
+- (id)constraints;
 - (id)constraintsDescriptionPath;
 - (id)creatorBundleID;
 - (id)creatorCodeSigningIdentity;
+- (id)delegatedAccountOwnerStoreID;
 - (id)description;
 - (int)entityType;
 - (int)flags;
@@ -39,10 +44,13 @@
 - (void)setConstraintsDescriptionPath:(id)arg1;
 - (void)setCreatorBundleID:(id)arg1;
 - (void)setCreatorCodeSigningIdentity:(id)arg1;
+- (void)setDelegatedAccountOwnerStoreID:(id)arg1;
 - (void)setFlags:(int)arg1;
 - (void)setLastSyncEndDate:(id)arg1;
 - (void)setLastSyncError:(unsigned long long)arg1;
 - (void)setLastSyncStartDate:(id)arg1;
+- (void)setShowsNotifications:(BOOL)arg1;
+- (BOOL)showsNotifications;
 
 @end
 

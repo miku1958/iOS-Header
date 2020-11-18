@@ -6,15 +6,15 @@
 
 #import <Home/HFItem.h>
 
-#import <Home/HFCharacteristicWriteActionBuilderFactory-Protocol.h>
+#import <Home/HFActionBuilderFactory-Protocol.h>
 #import <Home/HFGroupableItemProtocol-Protocol.h>
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMServiceGroup, NSString;
+@class HMServiceGroup, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
-@interface HFServiceGroupItem : HFItem <HFServiceLikeItem, HFCharacteristicWriteActionBuilderFactory, HFServiceLikeBuilderCreating, HFGroupableItemProtocol>
+@interface HFServiceGroupItem : HFItem <HFServiceLikeItem, HFActionBuilderFactory, HFServiceLikeBuilderCreating, HFGroupableItemProtocol>
 {
     id<HFCharacteristicValueSource> _valueSource;
     HMServiceGroup *_serviceGroup;
@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) BOOL isItemGroup;
 @property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
 @property (readonly, nonatomic) HMServiceGroup *serviceGroup; // @synthesize serviceGroup=_serviceGroup;
+@property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
@@ -49,7 +50,7 @@
 - (id)accessories;
 - (BOOL)actionsMayRequireDeviceUnlock;
 - (id)allControlItems;
-- (BOOL)containsActionableCharacteristics;
+- (BOOL)containsActions;
 - (id)controlPanelItems;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,9 +58,9 @@
 - (id)incrementalStateControlItem;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 serviceGroup:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 - (id)primaryStateControlItem;
 - (id)serviceLikeBuilderInHome:(id)arg1;
-- (id)services;
 
 @end
 

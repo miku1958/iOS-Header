@@ -29,8 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)_crossfadeContentsImage;
 - (void)_crossfadeStepAnimation;
 - (BOOL)_crossfaded;
-- (void)_finalAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
-- (void)_loopAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_loopAnimationDidStopInDirection:(BOOL)arg1;
 - (BOOL)_loopingNecessary;
 - (id)_serviceContentsImage;
 - (id)accessibilityHUDRepresentation;

@@ -20,6 +20,7 @@
     UIImage *_imageWellImage;
     UIImage *_previewImage;
     NSString *_stillPersistenceUUID;
+    struct CGSize _finalExpectedPixelSize;
     CDStruct_1b6d18a9 _duration;
     CDStruct_1b6d18a9 _stillDisplayTime;
 }
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo;
+@property (readonly, nonatomic) struct CGSize finalExpectedPixelSize; // @synthesize finalExpectedPixelSize=_finalExpectedPixelSize;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIImage *imageWellImage; // @synthesize imageWellImage=_imageWellImage;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
@@ -48,12 +50,13 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 stillDisplayTime; // @synthesize stillDisplayTime=_stillDisplayTime;
 @property (readonly, copy, nonatomic) NSDictionary *stillImageMetadata;
 @property (readonly, copy, nonatomic) NSString *stillPersistenceUUID; // @synthesize stillPersistenceUUID=_stillPersistenceUUID;
+@property (readonly, nonatomic) BOOL stoppedUnexpectedly;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uuid;
 @property (readonly, nonatomic) double videoZoomFactor; // @synthesize videoZoomFactor=_videoZoomFactor;
 
 - (void).cxx_destruct;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 captureDate:(id)arg4 duration:(CDStruct_1b6d18a9)arg5 stillPersistenceUUID:(id)arg6 stillDisplayTime:(CDStruct_1b6d18a9)arg7 reason:(long long)arg8 videoZoomFactor:(double)arg9 imageWellImage:(id)arg10 previewImage:(id)arg11;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 captureDate:(id)arg4 duration:(CDStruct_1b6d18a9)arg5 stillPersistenceUUID:(id)arg6 stillDisplayTime:(CDStruct_1b6d18a9)arg7 reason:(long long)arg8 videoZoomFactor:(double)arg9 finalExpectedPixelSize:(struct CGSize)arg10 imageWellImage:(id)arg11 previewImage:(id)arg12 coordinationInfo:(id)arg13;
 
 @end
 

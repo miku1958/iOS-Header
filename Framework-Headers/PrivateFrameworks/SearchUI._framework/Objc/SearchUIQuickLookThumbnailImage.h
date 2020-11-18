@@ -13,12 +13,14 @@
     NSURL *_url;
 }
 
-@property (strong) NSURL *url; // @synthesize url=_url;
+@property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (id)quickLookThumbnailQueue;
 - (void).cxx_destruct;
 - (Class)classForCoder;
+- (unsigned long long)hash;
 - (id)initWithURL:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

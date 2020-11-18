@@ -7,10 +7,13 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (LPExtras)
++ (id)_lp_URLWithData:(id)arg1 baseURL:(id)arg2;
 + (id)_lp_URLWithUserTypedString:(id)arg1 relativeToURL:(id)arg2;
 - (id)_lp_highLevelDomain;
 - (BOOL)_lp_isHTTPFamilyURL;
+- (id)_lp_originalData;
 - (id)_lp_simplifiedDisplayString;
+- (id)_lp_simplifiedStringForDisplayOnly:(BOOL)arg1;
 - (id)_lp_userVisibleString;
 - (BOOL)_lp_userVisibleStringUsesEncodedHost;
 @end

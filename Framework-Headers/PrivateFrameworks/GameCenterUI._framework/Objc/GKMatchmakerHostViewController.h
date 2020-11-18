@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKUIRemoteViewController.h>
+#import <GameCenterUI/GKExtensionRemoteViewController.h>
 
 #import <GameCenterUI/GKMatchmakerHostProtocol-Protocol.h>
 #import <GameCenterUI/GKMatchmakerServiceProtocol-Protocol.h>
 
 @class GKGame, GKMatchmakerViewController, NSString;
 
-@interface GKMatchmakerHostViewController : GKUIRemoteViewController <GKMatchmakerHostProtocol, GKMatchmakerServiceProtocol>
+@interface GKMatchmakerHostViewController : GKExtensionRemoteViewController <GKMatchmakerHostProtocol, GKMatchmakerServiceProtocol>
 {
     GKMatchmakerViewController *_delegateWeak;
 }

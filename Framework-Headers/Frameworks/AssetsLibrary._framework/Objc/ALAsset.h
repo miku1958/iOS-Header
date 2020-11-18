@@ -30,7 +30,6 @@
 - (BOOL)isValid;
 - (id)representationForUTI:(id)arg1;
 - (void)requestDefaultRepresentation;
-- (void)setExternalUsageIntent:(unsigned long long)arg1;
 - (void)setImageData:(id)arg1 metadata:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)setVideoAtPath:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (struct CGImage *)thumbnail;

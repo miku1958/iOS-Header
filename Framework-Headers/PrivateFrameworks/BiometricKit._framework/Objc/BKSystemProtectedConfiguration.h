@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSNumber *unlockTokenMaxLifetime; // @synthesize unlockTokenMaxLifetime=_unlockTokenMaxLifetime;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)dictionary;
 - (id)initWithDictionary:(id)arg1;
 

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableSet;
 @protocol UITapRecognizerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface UITapRecognizer : NSObject <NSCoding>
+@interface UITapRecognizer : NSObject <NSSecureCoding>
 {
     unsigned long long _numberOfTouchesRequired;
     unsigned long long _numberOfTapsRequired;
@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long numberOfTouchesRequired; // @synthesize numberOfTouchesRequired=_numberOfTouchesRequired;
 @property (readonly, nonatomic) NSArray *touches; // @synthesize touches=_touches;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_beginInteraction;
 - (struct CGPoint)_digitizerLocation;

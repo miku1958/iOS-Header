@@ -14,6 +14,6 @@
 @property (readonly, copy, nonatomic) NSString *processName;
 
 + (id)callServicesClientXPCInterface;
-+ (id)callServicesDaemonDelegateXPCInterface;
++ (id)callServicesServerXPCInterface;
 @end
 

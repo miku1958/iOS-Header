@@ -61,10 +61,10 @@ __attribute__((visibility("hidden")))
 - (void)loadFromArchive:(const struct ImageArchive *)arg1 unarchiver:(id)arg2;
 - (BOOL)needsUpdateForStyleChangeToStorage:(id)arg1 charIndex:(unsigned long long)arg2;
 - (BOOL)needsUpdateForStyleChangeToStorage:(id)arg1 charIndex:(unsigned long long)arg2 isAnchoredOrFloating:(BOOL)arg3;
-- (void)p_rebuildEquationPDF;
 - (id)promisedDataForType:(id)arg1;
 - (id)propertiesForParentAttachment;
 - (struct CGSize)rawDataSize;
+- (void)rebuildEquationPDFIncludingGeometry:(BOOL)arg1;
 - (Class)repClass;
 - (void)replaceSourceWithNewSource:(id)arg1;
 - (void)saveCharacterStylePropertiesFromPropertyMap:(id)arg1 toArchive:(struct CharacterStylePropertiesArchive *)arg2 archiver:(id)arg3;

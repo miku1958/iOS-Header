@@ -7,11 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <ReplayKit/RPVideoEditorViewControllerDelegate-Protocol.h>
+#import <ReplayKit/ReplayKitMacHelperDelegate-Protocol.h>
 
-@class NSURL, RPVideoEditorHostViewController;
+@class NSString, NSURL, RPVideoEditorHostViewController;
 @protocol RPPreviewViewControllerDelegate;
 
-@interface RPPreviewViewController : UIViewController <RPVideoEditorViewControllerDelegate>
+@interface RPPreviewViewController : UIViewController <RPVideoEditorViewControllerDelegate, ReplayKitMacHelperDelegate>
 {
     BOOL _wasStatusBarHidden;
     id<RPPreviewViewControllerDelegate> _previewControllerDelegate;
@@ -20,10 +21,14 @@
     RPVideoEditorHostViewController *_hostViewController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) RPVideoEditorHostViewController *hostViewController; // @synthesize hostViewController=_hostViewController;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) NSURL *movieURL; // @synthesize movieURL=_movieURL;
 @property (weak, nonatomic) id<RPPreviewViewControllerDelegate> previewControllerDelegate; // @synthesize previewControllerDelegate=_previewControllerDelegate;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL wasStatusBarHidden; // @synthesize wasStatusBarHidden=_wasStatusBarHidden;
 
 + (void)loadPreviewViewControllerWithMovieURL:(id)arg1 attachmentURL:(id)arg2 overrideShareMessage:(id)arg3 overrideTintColor:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -31,7 +36,9 @@
 + (void)viewControllerForExtension:(id)arg1 inputItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)extensionDidFinishWithActivityTypes:(id)arg1;
+- (void)replayKitMacHelper:(id)arg1 didDismissVideoEditorSheetWithActivityTypes:(id)arg2;
 - (void)videoEditor:(id)arg1 didFinishWithActivityTypes:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

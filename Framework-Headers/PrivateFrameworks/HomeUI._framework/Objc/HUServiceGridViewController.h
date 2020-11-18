@@ -9,16 +9,19 @@
 #import <HomeUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
 @class HUGridLayoutOptions, NSString;
+@protocol HUServiceGridViewControllerDelegate;
 
 @interface HUServiceGridViewController : HUControllableItemCollectionViewController <UICollectionViewDelegateFlowLayout>
 {
     BOOL _shouldShowLoadingState;
     unsigned long long _contentMargins;
     long long _scrollDirection;
+    id<HUServiceGridViewControllerDelegate> _delegate;
 }
 
 @property (nonatomic) unsigned long long contentMargins; // @synthesize contentMargins=_contentMargins;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HUServiceGridViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HUGridLayoutOptions *layoutOptions;
@@ -26,8 +29,10 @@
 @property (nonatomic) BOOL shouldShowLoadingState; // @synthesize shouldShowLoadingState=_shouldShowLoadingState;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_defaultLayoutOptionsForViewSize:(struct CGSize)arg1;
 - (void)_layoutSectionHeaders;
+- (id)_performTapActionForItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
@@ -38,6 +43,7 @@
 - (id)initWithItemManager:(id)arg1;
 - (id)initWithItemManager:(id)arg1 collectionViewLayout:(id)arg2;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
+- (unsigned long long)itemTypeForItem:(id)arg1;
 - (void)layoutOptionsDidChange;
 - (id)layoutOptionsForSection:(long long)arg1;
 - (struct CGSize)preferredContentSizeForCollectionViewContentSize:(struct CGSize)arg1;

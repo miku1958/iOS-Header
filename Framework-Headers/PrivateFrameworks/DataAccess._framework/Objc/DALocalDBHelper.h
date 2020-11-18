@@ -6,60 +6,61 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NoteContext;
+@class CNContactStore, NSMutableArray, NSString, NoteContext;
 @protocol OS_dispatch_queue;
 
 @interface DALocalDBHelper : NSObject
 {
     NSObject<OS_dispatch_queue> *_abDBQueue;
     NSObject<OS_dispatch_queue> *_calDBQueue;
-    NSObject<OS_dispatch_queue> *_bookmarkDBQueue;
     NSObject<OS_dispatch_queue> *_noteDBQueue;
     int _abConnectionCount;
     int _calConnectionCount;
-    int _bookmarkConnectionCount;
     int _noteConnectionCount;
     void *_abDB;
+    CNContactStore *_contactStore;
+    NSString *_familyDelegateAltDSID;
+    NSMutableArray *_saveRequests;
     struct CalDatabase *_calDB;
     NSString *_clientIdentifier;
-    void *_bookmarkDB;
     NoteContext *_noteDB;
     CDUnknownBlockType _calUnitTestCallbackBlock;
 }
 
 @property (nonatomic) int abConnectionCount; // @synthesize abConnectionCount=_abConnectionCount;
 @property (nonatomic) void *abDB; // @synthesize abDB=_abDB;
-@property (nonatomic) int bookmarkConnectionCount; // @synthesize bookmarkConnectionCount=_bookmarkConnectionCount;
-@property (nonatomic) void *bookmarkDB; // @synthesize bookmarkDB=_bookmarkDB;
 @property (nonatomic) int calConnectionCount; // @synthesize calConnectionCount=_calConnectionCount;
 @property (nonatomic) struct CalDatabase *calDB; // @synthesize calDB=_calDB;
 @property (copy, nonatomic) CDUnknownBlockType calUnitTestCallbackBlock; // @synthesize calUnitTestCallbackBlock=_calUnitTestCallbackBlock;
 @property (strong, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (strong, nonatomic) NSString *familyDelegateAltDSID; // @synthesize familyDelegateAltDSID=_familyDelegateAltDSID;
 @property (nonatomic) int noteConnectionCount; // @synthesize noteConnectionCount=_noteConnectionCount;
 @property (strong, nonatomic) NoteContext *noteDB; // @synthesize noteDB=_noteDB;
+@property (strong, nonatomic) NSMutableArray *saveRequests; // @synthesize saveRequests=_saveRequests;
 
 + (void)abSetTestABDBDir:(id)arg1;
 + (id)abTestABDBDir;
 + (void)calSetTestCalDBDir:(id)arg1;
 + (id)calTestCalDBDir;
++ (id)os_log;
 + (id)sharedInstanceForAccountType:(id)arg1 creatingClass:(Class)arg2;
 - (void).cxx_destruct;
 - (BOOL)_abOpenDBWithClientIdentifier:(id)arg1;
 - (BOOL)_calOpenDBWithClientIdentifier:(id)arg1;
 - (void)_registerForAddressBookYieldNotifications;
 - (void)_registerForCalendarYieldNotifications;
-- (void)abClearSuperfluousChanges;
 - (BOOL)abCloseDBAndSave:(BOOL)arg1;
 - (id)abConstraintPlistPath;
 - (void *)abDBThrowOnNil:(BOOL)arg1;
+- (id)abDefaultAccountInfoSuitableForLogging;
 - (void)abOpenDBAsGenericClient;
 - (void)abOpenDBWithClientIdentifier:(id)arg1;
 - (void)abProcessAddedImages;
 - (void)abProcessAddedRecords;
 - (BOOL)abSaveDB;
-- (void)bookmarkCloseDBAndSave:(BOOL)arg1;
-- (BOOL)bookmarkOpenDB;
-- (void)bookmarkSaveDB;
+- (void)abValidateDefaultSource;
+- (void)addSaveRequest:(id)arg1;
 - (void)calClearSuperfluousChanges;
 - (BOOL)calCloseDBAndSave:(BOOL)arg1;
 - (void)calOpenDBAsGenericClient;
@@ -68,10 +69,14 @@
 - (BOOL)calSaveDBAndFlushCaches;
 - (void)calUnitTestsSetCallbackBlockForSave:(CDUnknownBlockType)arg1;
 - (id)changeTrackingID;
+- (void)dealloc;
+- (void)executeAllSaveRequests;
 - (id)init;
+- (id)initWithContactsFamilyDelegateAltDSID:(id)arg1;
 - (BOOL)noteCloseDBAndSave:(BOOL)arg1;
 - (void)noteOpenDB;
 - (BOOL)noteSaveDB;
+- (BOOL)useContacts;
 
 @end
 

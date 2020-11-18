@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
 + (id)applicablePayloadsForHomePod;
++ (id)availablePayloadsForUserEnrollment;
 + (id)badFieldTypeErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1 underlyingError:(id)arg2;
@@ -60,6 +61,7 @@
 + (id)wrapperPayloadDictionary;
 - (void).cxx_destruct;
 - (id)description;
+- (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)malformedPayloadErrorWithError:(id)arg1;
 - (id)payloadDescriptionKeyValueSections;

@@ -16,11 +16,13 @@
 {
     CDStruct_f2ecb737 _has;
     BOOL _success;
+    BOOL __encodeLegacyGloryData;
     NSArray *_entities;
     _INPBInteger *_numResults;
     _INPBString *_query;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *entities; // @synthesize entities=_entities;
@@ -35,12 +37,15 @@
 @property (readonly) Class superclass;
 
 + (Class)entitiesType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addEntities:(id)arg1;
 - (void)clearEntities;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entitiesAtIndex:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

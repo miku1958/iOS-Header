@@ -19,6 +19,7 @@
     MIPArtist *_composer;
     int _discNumber;
     MIPGenre *_genre;
+    NSString *_hlsPlaylistURL;
     NSString *_lyrics;
     int _lyricsChecksum;
     MIPPlaybackInfo *_playbackInfo;
@@ -55,12 +56,14 @@
 @property (nonatomic) BOOL hasGeniusId;
 @property (readonly, nonatomic) BOOL hasGenre;
 @property (nonatomic) BOOL hasHasVideo;
+@property (readonly, nonatomic) BOOL hasHlsPlaylistURL;
 @property (readonly, nonatomic) BOOL hasLyrics;
 @property (nonatomic) BOOL hasLyricsChecksum;
 @property (readonly, nonatomic) BOOL hasPlaybackInfo;
 @property (nonatomic) BOOL hasTrackNumber;
 @property (nonatomic) BOOL hasUserRating;
 @property (nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
+@property (strong, nonatomic) NSString *hlsPlaylistURL; // @synthesize hlsPlaylistURL=_hlsPlaylistURL;
 @property (strong, nonatomic) NSString *lyrics; // @synthesize lyrics=_lyrics;
 @property (nonatomic) int lyricsChecksum; // @synthesize lyricsChecksum=_lyricsChecksum;
 @property (strong, nonatomic) MIPPlaybackInfo *playbackInfo; // @synthesize playbackInfo=_playbackInfo;

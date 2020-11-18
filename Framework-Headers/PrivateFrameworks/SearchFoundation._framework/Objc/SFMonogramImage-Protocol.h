@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *monogramLetters;
+@property (nonatomic) int monogramStyle;
 
 @end
 

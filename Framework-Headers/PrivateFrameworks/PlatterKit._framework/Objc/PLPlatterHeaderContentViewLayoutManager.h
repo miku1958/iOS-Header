@@ -11,7 +11,6 @@
 @interface PLPlatterHeaderContentViewLayoutManager : NSObject
 {
     PLPlatterHeaderContentView *_headerContentView;
-    UILabel *_outgoingTitleLabel;
 }
 
 @property (readonly, nonatomic) double contentBaseline;
@@ -21,12 +20,14 @@
 @property (readonly, nonatomic, getter=_heedsHorizontalLayoutMargins) BOOL heedsHorizontalLayoutMargins;
 @property (readonly, nonatomic, getter=_iconButtons) NSArray *iconButtons;
 @property (readonly, nonatomic, getter=_layoutMargins) struct UIEdgeInsets layoutMargins;
-@property (readonly, nonatomic, getter=_outgoingTitleLabel) UILabel *outgoingTitleLabel; // @synthesize outgoingTitleLabel=_outgoingTitleLabel;
 @property (readonly, nonatomic, getter=_shouldReverseLayoutDirection) BOOL shouldReverseLayoutDirection;
 @property (readonly, nonatomic, getter=_titleLabel) UILabel *titleLabel;
 @property (readonly, nonatomic, getter=_utilityButton) UIButton *utilityButton;
 @property (readonly, nonatomic, getter=_utilityView) UIView *utilityView;
 
++ (double)_headerHeightWithFont:(id)arg1 forWidth:(double)arg2;
++ (double)_titleLabelBaselineOffsetWithFont:(id)arg1;
++ (double)contentBaselineToBoundsBottomWithFont:(id)arg1 boundsWidth:(double)arg2 scale:(double)arg3;
 - (void).cxx_destruct;
 - (struct CGSize)_measuringSizeForWidth:(double)arg1;
 - (double)_titleLabelBaselineOffset;

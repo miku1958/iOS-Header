@@ -6,13 +6,14 @@
 
 #import <ScreenTimeUI/STRootGroupSpecifierProvider.h>
 
-#import <ScreenTimeUI/AAUIDeviceToDeviceEncryptionHelperDelegate-Protocol.h>
+#import <ScreenTimeUI/CDPUIDeviceToDeviceEncryptionHelperDelegate-Protocol.h>
+#import <ScreenTimeUI/MCProfileConnectionObserver-Protocol.h>
 
 @class NSString, PSSpecifier;
 
-@interface STCloudSyncDataGroupSpecifierProvider : STRootGroupSpecifierProvider <AAUIDeviceToDeviceEncryptionHelperDelegate>
+__attribute__((visibility("hidden")))
+@interface STCloudSyncDataGroupSpecifierProvider : STRootGroupSpecifierProvider <CDPUIDeviceToDeviceEncryptionHelperDelegate, MCProfileConnectionObserver>
 {
-    BOOL _wantsToEnableSync;
     PSSpecifier *_toggleCloudSyncDataSpecifier;
 }
 
@@ -20,19 +21,19 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) PSSpecifier *toggleCloudSyncDataSpecifier; // @synthesize toggleCloudSyncDataSpecifier=_toggleCloudSyncDataSpecifier;
-@property (nonatomic) BOOL wantsToEnableSync; // @synthesize wantsToEnableSync=_wantsToEnableSync;
+@property (readonly, nonatomic) PSSpecifier *toggleCloudSyncDataSpecifier; // @synthesize toggleCloudSyncDataSpecifier=_toggleCloudSyncDataSpecifier;
 
 - (void).cxx_destruct;
-- (void)acceptedPINToChangeSync:(id)arg1;
-- (void)cancelChangeSync:(id)arg1;
+- (void)_updateEnabledValue;
 - (void)changeCloudSyncData:(BOOL)arg1;
 - (id)cloudSyncData:(id)arg1;
+- (void)dealloc;
 - (void)deviceToDeviceEncryptionHelper:(id)arg1 shouldContinueUpgradingUserToHSA2WithCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performHSA2RepairIfNeeded:(CDUnknownBlockType)arg1;
 - (void)presentHSA2RepairUI:(CDUnknownBlockType)arg1;
+- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)setCloudSyncData:(id)arg1 specifier:(id)arg2;
 - (void)setCoordinator:(id)arg1;
 - (void)setScreenTimeSyncing:(BOOL)arg1;

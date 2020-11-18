@@ -8,31 +8,36 @@
 
 #import <NotesUI/PKTextAttachment-Protocol.h>
 
-@class ICInlineDrawingChangeCoalescer, NSString, UIView;
+@class ICInlineDrawingChangeCoalescer, NSHashTable, NSString;
 
 @interface ICInlineDrawingTextAttachment : ICBaseTextAttachment <PKTextAttachment>
 {
     ICInlineDrawingChangeCoalescer *_changeCoalescer;
-    UIView *_inlineDrawingView;
+    NSHashTable *_inlineDrawingViews;
 }
 
 @property (strong, nonatomic) ICInlineDrawingChangeCoalescer *changeCoalescer; // @synthesize changeCoalescer=_changeCoalescer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) UIView *inlineDrawingView; // @synthesize inlineDrawingView=_inlineDrawingView;
+@property (strong, nonatomic) NSHashTable *inlineDrawingViews; // @synthesize inlineDrawingViews=_inlineDrawingViews;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (struct UIImage *)_image;
 - (id)attachmentAsNSTextAttachment;
+- (struct CGRect)attachmentBoundsForTextContainer:(id)arg1 proposedLineFragment:(struct CGRect)arg2 glyphPosition:(struct CGPoint)arg3 characterIndex:(unsigned long long)arg4;
 - (BOOL)canDragWithoutSelecting;
 - (id)contents;
-- (void)detachView:(id)arg1 fromParentView:(id)arg2;
+- (void)detachView;
+- (void)detachView:(struct UIView *)arg1 fromParentView:(struct UIView *)arg2;
 - (void)drawingDataDidChange:(id)arg1;
-- (void)placeView:(id)arg1 withFrame:(struct CGRect)arg2 inParentView:(id)arg3 characterIndex:(unsigned long long)arg4 layoutManager:(id)arg5;
-- (id)printableTextContent;
+- (void)placeView:(struct UIView *)arg1 withFrame:(struct CGRect)arg2 inParentView:(struct UIView *)arg3 characterIndex:(unsigned long long)arg4 layoutManager:(id)arg5;
+- (id)printableTextContentForAppearanceType:(unsigned long long)arg1;
 - (void)resetZoom;
 - (void)saveIfNeeded;
+- (void)updatePaletteVisibility;
+- (id)viewProviderForParentView:(id)arg1 characterIndex:(unsigned long long)arg2 layoutManager:(id)arg3;
 
 @end
 

@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityUserTestingIsBackNavButton;
-- (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

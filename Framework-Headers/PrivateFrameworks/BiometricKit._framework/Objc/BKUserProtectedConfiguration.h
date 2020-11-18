@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSNumber *unlockEnabled; // @synthesize unlockEnabled=_unlockEnabled;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)dictionary;
 - (id)initWithDictionary:(id)arg1 effective:(BOOL)arg2;
 

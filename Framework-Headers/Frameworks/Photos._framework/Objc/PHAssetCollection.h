@@ -6,7 +6,7 @@
 
 #import <Photos/PHCollection.h>
 
-@class CLLocation, NSArray, NSDate, NSString, NSURL, PHQuery;
+@class CLLocation, NSArray, NSDate, NSManagedObjectID, NSString, NSURL, PHQuery, PLQuery;
 
 @interface PHAssetCollection : PHCollection
 {
@@ -21,6 +21,9 @@
     PHQuery *_query;
     NSString *_transientIdentifier;
     BOOL _canShowCloudComments;
+    NSManagedObjectID *_parentFolderObjectID;
+    BOOL _didFetchDates;
+    struct os_unfair_lock_s _datesLock;
     BOOL _isPendingPhotoStreamAlbum;
     BOOL _shouldDeleteWhenEmpty;
     BOOL _isLibrary;
@@ -37,6 +40,7 @@
     int _plAlbumKind;
     int _pendingItemsCount;
     int _pendingItemsType;
+    PLQuery *_userQuery;
     NSString *_titleFontName;
     NSString *_transientSubtitle;
     NSArray *_assetOids;
@@ -82,6 +86,7 @@
 @property (readonly, nonatomic) BOOL isSmartCollection; // @synthesize isSmartCollection=_isSmartCollection;
 @property (readonly, nonatomic) BOOL isStandInCollection; // @synthesize isStandInCollection=_isStandInCollection;
 @property (readonly, nonatomic) BOOL isTrashBin;
+@property (readonly, nonatomic) BOOL isUserSmartAlbum;
 @property (readonly, nonatomic) BOOL keyAssetsAtEnd;
 @property (readonly, nonatomic) NSArray *localizedLocationNames; // @synthesize localizedLocationNames=_localizedLocationNames;
 @property (readonly, nonatomic) int pendingItemsCount; // @synthesize pendingItemsCount=_pendingItemsCount;
@@ -97,6 +102,7 @@
 @property (readonly, nonatomic) unsigned long long titleFontNameHash;
 @property (readonly, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;
 @property (readonly, nonatomic) NSString *transientSubtitle; // @synthesize transientSubtitle=_transientSubtitle;
+@property (strong, nonatomic) PLQuery *userQuery; // @synthesize userQuery=_userQuery;
 
 + (id)_composePropertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)corePropertiesToFetch;
@@ -105,6 +111,7 @@
 + (id)entityKeyMap;
 + (id)fetchAssetCollectionsContainingAsset:(id)arg1 withType:(long long)arg2 options:(id)arg3;
 + (id)fetchAssetCollectionsContainingAssets:(id)arg1 withType:(long long)arg2 options:(id)arg3;
++ (id)fetchAssetCollectionsForReferences:(id)arg1 photoLibrary:(id)arg2;
 + (id)fetchAssetCollectionsWithALAssetGroupURLs:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchAssetCollectionsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
@@ -113,9 +120,11 @@
 + (id)fetchAssetCollectionsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
 + (id)fetchMomentsBackingMemory:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsBackingSuggestion:(id)arg1 options:(id)arg2;
++ (id)fetchMomentsInHighlight:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsInMomentList:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsWithOptions:(id)arg1;
-+ (id)fetchSharingSuggestionsWithOptions:(id)arg1;
++ (id)fetchPhotosHighlightsContainingMoments:(id)arg1 options:(id)arg2;
++ (id)fetchPhotosHighlightsContainingMomentsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForAssetsFetchResult:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForAssetsMetadata:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedContributionsForCMMPhotoLibrary:(id)arg1 options:(id)arg2;
@@ -126,11 +135,10 @@
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;
-+ (id)pl_PHAssetCollectionForAssetContainer:(id)arg1;
-+ (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 includeTrash:(BOOL)arg2;
++ (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 photoLibrary:(id)arg2;
++ (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 photoLibrary:(id)arg2 includeTrash:(BOOL)arg3;
 + (id)posterImageForAssetCollection:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
-+ (id)sharingSuggestionWithRandomPick:(BOOL)arg1 fallbackToRecentMoments:(BOOL)arg2 needsNotification:(BOOL)arg3;
 + (long long)titleCategoryForTitleFontName:(id)arg1;
 + (id)titleFontNameForTitleCategory:(long long)arg1;
 + (unsigned long long)titleFontNameHashFromDate:(id)arg1;
@@ -142,25 +150,33 @@
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 identifier:(id)arg3;
 + (id)transientAssetCollectionWithAssetFetchResult:(id)arg1 title:(id)arg2 subtitle:(id)arg3 titleFontName:(id)arg4;
 + (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2;
-+ (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2 identifier:(id)arg3;
++ (id)transientAssetCollectionWithAssets:(id)arg1 title:(id)arg2 identifier:(id)arg3 photoLibrary:(id)arg4;
 - (void).cxx_destruct;
+- (id)_fetchAggregateDatesForSmartAlbum;
+- (void)_fetchDatesIfNeeded;
+- (BOOL)_shouldFetchDatesIfNeeded;
 - (BOOL)canContainAssets;
 - (BOOL)canPerformEditOperation:(long long)arg1;
 - (Class)changeRequestClass;
 - (unsigned long long)collectionFixedOrderPriority;
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
+- (id)effectiveCustomSortKey;
 - (unsigned long long)estimatedPhotosCount;
 - (unsigned long long)estimatedVideosCount;
 - (BOOL)hasLocationInfo;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5;
 - (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 identifier:(id)arg4 albumKind:(int)arg5 subtype:(long long)arg6;
-- (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleFontName:(id)arg5 identifier:(id)arg6 albumKind:(int)arg7 subtype:(long long)arg8;
+- (id)initTransientWithAssets:(id)arg1 orFetchResult:(id)arg2 title:(id)arg3 subtitle:(id)arg4 titleFontName:(id)arg5 identifier:(id)arg6 albumKind:(int)arg7 subtype:(long long)arg8 photoLibrary:(id)arg9;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (BOOL)isAlbumContentSort;
+- (BOOL)isAlbumContentTitleSort;
 - (id)localizedSharedByLabelAllowsEmail:(BOOL)arg1;
 - (id)localizedSubtitle;
 - (id)localizedTitle;
+- (id)objectReference;
+- (id)parentFolderID;
 - (id)pl_assetContainer;
 
 @end

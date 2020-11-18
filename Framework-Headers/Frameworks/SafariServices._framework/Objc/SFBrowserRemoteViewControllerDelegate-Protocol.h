@@ -6,7 +6,7 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSError, NSNumber, NSString, NSURL, SFBrowserRemoteViewController;
+@class LSAppLink, NSError, NSNumber, NSString, NSURL, SFBrowserRemoteViewController;
 
 @protocol SFBrowserRemoteViewControllerDelegate <NSObject>
 - (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 didFinishInitialLoad:(BOOL)arg2;
@@ -21,5 +21,6 @@
 
 @optional
 - (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 didDecideCookieSharingForURL:(NSURL *)arg2 shouldCancel:(BOOL)arg3;
+- (void)remoteViewController:(SFBrowserRemoteViewController *)arg1 didResolveRedirectionWithURL:(NSURL *)arg2 appLink:(LSAppLink *)arg3;
 @end
 

@@ -6,24 +6,31 @@
 
 #import <MediaPlayer/MPButton.h>
 
-@class MediaControlsRoutingButtonPackageView;
+@class CCUICAPackageView;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsRoutingButtonView : MPButton
 {
+    BOOL _userInterfaceStyleSwitchingEnabled;
     long long _currentMode;
     long long _deviceType;
-    MediaControlsRoutingButtonPackageView *_packageView;
+    CCUICAPackageView *_packageView;
 }
 
 @property (nonatomic) long long currentMode; // @synthesize currentMode=_currentMode;
 @property (nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
-@property (strong, nonatomic) MediaControlsRoutingButtonPackageView *packageView; // @synthesize packageView=_packageView;
+@property (strong, nonatomic) CCUICAPackageView *packageView; // @synthesize packageView=_packageView;
+@property (nonatomic, getter=isUserInterfaceStyleSwitchingEnabled) BOOL userInterfaceStyleSwitchingEnabled; // @synthesize userInterfaceStyleSwitchingEnabled=_userInterfaceStyleSwitchingEnabled;
 
 - (void).cxx_destruct;
-- (void)_updateGlyph;
+- (id)_glyphResource;
+- (void)_updateGlyphPackage;
+- (void)_updateGlyphState;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setAlpha:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

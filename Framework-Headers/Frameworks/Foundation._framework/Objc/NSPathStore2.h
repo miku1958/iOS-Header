@@ -15,9 +15,11 @@ __attribute__((visibility("hidden")))
 
 + (id)pathStoreWithCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2;
 + (id)pathWithComponents:(id)arg1;
+- (const unsigned short *)_fastCharacterContents;
 - (id)_stringByResolvingSymlinksInPathUsingCache:(BOOL)arg1;
 - (id)_stringByStandardizingPathUsingCache:(BOOL)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)hash;

@@ -9,22 +9,23 @@
 #import <MapKit/GEOTransitArtworkDataSource-Protocol.h>
 
 @class NSString;
-@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource;
+@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
 @interface MKTransitArtwork : NSObject <GEOTransitArtworkDataSource>
 {
     NSString *_accessibilityText;
     BOOL _hasRoutingIncidentBadge;
-    long long _artworkSourceType;
+    int _artworkSourceType;
+    int _artworkUseType;
     id<GEOTransitShieldDataSource> _shieldDataSource;
     id<GEOTransitIconDataSource> _iconDataSource;
-    long long _artworkUseType;
     id<GEOTransitShieldDataSource> _iconFallbackShieldDataSource;
+    id<GEOTransitTextDataSource> _textDataSource;
 }
 
 @property (readonly, nonatomic) NSString *accessibilityText;
-@property (readonly, nonatomic) long long artworkSourceType; // @synthesize artworkSourceType=_artworkSourceType;
-@property (readonly, nonatomic) long long artworkUseType; // @synthesize artworkUseType=_artworkUseType;
+@property (readonly, nonatomic) int artworkSourceType; // @synthesize artworkSourceType=_artworkSourceType;
+@property (readonly, nonatomic) int artworkUseType; // @synthesize artworkUseType=_artworkUseType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasRoutingIncidentBadge; // @synthesize hasRoutingIncidentBadge=_hasRoutingIncidentBadge;
@@ -33,13 +34,16 @@
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> iconFallbackShieldDataSource; // @synthesize iconFallbackShieldDataSource=_iconFallbackShieldDataSource;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> shieldDataSource; // @synthesize shieldDataSource=_shieldDataSource;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<GEOTransitTextDataSource> textDataSource; // @synthesize textDataSource=_textDataSource;
 
 + (id)artworkWithIcon:(id)arg1 accessibilityText:(id)arg2;
 + (id)artworkWithShield:(id)arg1 accessibilityText:(id)arg2;
++ (id)artworkWithText:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithIcon:(id)arg1 accessibilityText:(id)arg2;
 - (id)initWithIcon:(id)arg1 fallbackShield:(id)arg2 accessibilityText:(id)arg3;
 - (id)initWithShield:(id)arg1 accessibilityText:(id)arg2;
+- (id)initWithText:(id)arg1;
 
 @end
 

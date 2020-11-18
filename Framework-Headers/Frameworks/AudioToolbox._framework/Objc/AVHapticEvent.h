@@ -6,26 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@interface AVHapticEvent : NSObject
+#import <AudioToolbox/NSSecureCoding-Protocol.h>
+
+@class AVHapticPlayerParameterCurve;
+
+@interface AVHapticEvent : NSObject <NSSecureCoding>
 {
     double _time;
     double _duration;
     BOOL _isParameter;
+    unsigned long long _eventCategory;
     union {
         unsigned long long _eventType;
         unsigned long long _paramType;
     } _u;
-    struct AVHapticPlayerFixedParameter _fixedParams[5];
+    struct AVHapticPlayerFixedParameter _fixedParams[8];
+    AVHapticPlayerParameterCurve *_paramCurve;
     long long _fixedParamCount;
     float _value;
 }
 
 @property (readonly) double duration; // @synthesize duration=_duration;
-@property (readonly) unsigned long long eventType; // @dynamic eventType;
+@property (readonly) unsigned long long eventCategory; // @synthesize eventCategory=_eventCategory;
+@property (readonly) unsigned long long eventType;
 @property (readonly) long long fixedParamCount; // @synthesize fixedParamCount=_fixedParamCount;
-@property (readonly) struct AVHapticPlayerFixedParameter *fixedParams; // @dynamic fixedParams;
+@property (readonly) struct AVHapticPlayerFixedParameter *fixedParams;
 @property (readonly) BOOL isParameter; // @synthesize isParameter=_isParameter;
-@property (readonly) unsigned long long paramType; // @dynamic paramType;
+@property (readonly) unsigned long long paramType;
+@property (readonly) AVHapticPlayerParameterCurve *parameterCurve;
 @property (readonly) double time; // @synthesize time=_time;
 @property (readonly) float value; // @synthesize value=_value;
 
@@ -34,9 +42,15 @@
 + (id)eventWithEventType:(unsigned long long)arg1 time:(double)arg2 parameters:(const struct AVHapticPlayerFixedParameter *)arg3 count:(long long)arg4;
 + (id)eventWithEventType:(unsigned long long)arg1 time:(double)arg2 parameters:(const struct AVHapticPlayerFixedParameter *)arg3 count:(long long)arg4 duration:(double)arg5;
 + (id)eventWithParameter:(unsigned long long)arg1 value:(float)arg2 time:(double)arg3;
++ (id)eventWithParameterCurve:(id)arg1;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithEventType:(unsigned long long)arg1 time:(double)arg2 duration:(double)arg3;
 - (id)initWithEventType:(unsigned long long)arg1 time:(double)arg2 parameters:(const struct AVHapticPlayerFixedParameter *)arg3 count:(long long)arg4 duration:(double)arg5;
 - (id)initWithParameter:(unsigned long long)arg1 value:(float)arg2 time:(double)arg3;
+- (id)initWithParameterCurve:(id)arg1;
 
 @end
 

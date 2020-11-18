@@ -11,13 +11,13 @@
 @class FPItemID, FPXDomainContext, NSString;
 @protocol FPXEnumeratorObserver, NSFileProviderEnumerator;
 
-__attribute__((visibility("hidden")))
 @interface FPXEnumerator : NSObject <FPXEnumerator>
 {
     FPXDomainContext *_domainContext;
     id<NSFileProviderEnumerator> _vendorEnumerator;
     FPItemID *_observedItemID;
     BOOL _invalidated;
+    BOOL _forceFileURLs;
     id<FPXEnumeratorObserver> _observer;
 }
 
@@ -30,13 +30,16 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)alternateContentsWereUpdatedAtURL:(id)arg1 forItem:(id)arg2;
+- (void)currentSyncAnchorWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)enumerateChangesFromToken:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsFromPage:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)forceAddFileURLsForItems:(id)arg1;
 - (void)forceItemUpdate:(id)arg1;
-- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 vendorEnumerator:(id)arg3 observer:(id)arg4;
+- (id)initWithObservedItemID:(id)arg1 domainContext:(id)arg2 vendorEnumerator:(id)arg3 observer:(id)arg4 forceFileURLs:(BOOL)arg5;
 - (void)invalidate;
 - (void)invalidateVendorEnumeration;
+- (void)keepAliveConnectionForRegisteredObserver:(CDUnknownBlockType)arg1;
 
 @end
 

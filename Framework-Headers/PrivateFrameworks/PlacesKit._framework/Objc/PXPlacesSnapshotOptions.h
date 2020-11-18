@@ -33,6 +33,7 @@
 @property (nonatomic) double visibleDistance; // @synthesize visibleDistance=_visibleDistance;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)init;
 
 @end

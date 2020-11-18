@@ -17,6 +17,7 @@
 @property (copy, nonatomic) MPModelCurator *curator; // @dynamic curator;
 @property (nonatomic, getter=isCuratorPlaylist) BOOL curatorPlaylist; // @dynamic curatorPlaylist;
 @property (copy, nonatomic) NSString *descriptionText; // @dynamic descriptionText;
+@property (readonly, copy, nonatomic) NSDate *downloadedDate; // @dynamic downloadedDate;
 @property (copy, nonatomic) NSString *editorNotes; // @dynamic editorNotes;
 @property (copy, nonatomic) CDUnknownBlockType editorialArtworkCatalogBlock; // @dynamic editorialArtworkCatalogBlock;
 @property (nonatomic) BOOL hasCleanContent; // @dynamic hasCleanContent;
@@ -46,6 +47,7 @@
 + (id)__curatorPlaylist_KEY;
 + (id)__curator_KEY;
 + (id)__descriptionText_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__editorNotes_KEY;
 + (id)__editorialArtworkCatalogBlock_KEY;
 + (id)__hasCleanContent_KEY;

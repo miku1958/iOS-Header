@@ -10,5 +10,6 @@
 
 @protocol SFAutoFillHelperProtocol <NSObject>
 - (void)getAutomaticStrongPasswordForAppWithPasswordRules:(NSString *)arg1 confirmPasswordRules:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
+- (void)getRemoteAutoFillAvailabilityWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 @end
 

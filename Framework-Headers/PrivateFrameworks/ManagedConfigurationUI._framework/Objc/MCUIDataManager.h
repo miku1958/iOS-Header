@@ -11,9 +11,9 @@
 @class LSApplicationWorkspace, MCProfileInfo, NSArray, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface MCUIDataManager : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
+    BOOL _observing;
     int _appsChangedNotifyToken;
     int _provisioningProfileInstalledToken;
     int _provisioningProfileRemovedToken;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MCProfileInfo *mdmProfileInfo; // @synthesize mdmProfileInfo=_mdmProfileInfo;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
+@property (nonatomic) BOOL observing; // @synthesize observing=_observing;
 @property (nonatomic) int provisioningProfileInstalledToken; // @synthesize provisioningProfileInstalledToken=_provisioningProfileInstalledToken;
 @property (nonatomic) int provisioningProfileRemovedToken; // @synthesize provisioningProfileRemovedToken=_provisioningProfileRemovedToken;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *reloadQueue; // @synthesize reloadQueue=_reloadQueue;
@@ -50,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_reloadQueueReloadDataInBackgroundIncludingProfiles:(BOOL)arg1 appSigners:(BOOL)arg2 blockedApplications:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)allDeviceManagementOutMDMProfileInfo:(id *)arg1 outConfigurationProfilesInfo:(id *)arg2 outUninstalledProfilesInfo:(id *)arg3 outEnterpriseAppSigners:(id *)arg4 outFreeDevAppSigners:(id *)arg5 outBlockedApplications:(id *)arg6;
+- (void)appMovedToBackground:(id)arg1;
+- (void)appMovedToForeground:(id)arg1;
 - (unsigned long long)appSignerCount;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;

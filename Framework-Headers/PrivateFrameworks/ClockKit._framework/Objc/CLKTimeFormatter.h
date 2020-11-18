@@ -35,6 +35,7 @@
     struct NSNumber *_minutesUpdateToken;
     BOOL _useNarrowDesignatorTextForGerman;
     BOOL _suppressesDesignatorWhitespace;
+    BOOL _includeSeparatorInTimeSubstringFromSeparatorText;
     BOOL _showSeconds;
     BOOL _forcesLatinNumbers;
     NSTimeZone *_timeZone;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) struct _NSRange designatorRangeInTimeAndDesignatorTextWithoutMinutesIfZero;
 @property (readonly, nonatomic) NSString *designatorText;
 @property (readonly, nonatomic) BOOL forcesLatinNumbers; // @synthesize forcesLatinNumbers=_forcesLatinNumbers;
+@property (nonatomic) BOOL includeSeparatorInTimeSubstringFromSeparatorText; // @synthesize includeSeparatorInTimeSubstringFromSeparatorText=_includeSeparatorInTimeSubstringFromSeparatorText;
 @property (readonly, nonatomic) struct _NSRange lastBlinkerRangeInTimeText;
 @property (strong, nonatomic) NSDate *overrideDate; // @synthesize overrideDate=_overrideDate;
 @property (readonly, nonatomic) struct _NSRange rangeInTimeSubstringFromSecondsSeparatorText;

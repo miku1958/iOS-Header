@@ -8,10 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString;
+@class GEOFormattedString, PBDataReader, PBUnknownFields;
 
 @interface GEOPlaceFormattedString : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOFormattedString *_contactHome;
     GEOFormattedString *_contactOther;
     GEOFormattedString *_contactWork;
@@ -21,12 +24,34 @@
     GEOFormattedString *_streetAddress;
     GEOFormattedString *_unknown;
     GEOFormattedString *_work;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_contactHome:1;
+        unsigned int read_contactOther:1;
+        unsigned int read_contactWork:1;
+        unsigned int read_custom:1;
+        unsigned int read_home:1;
+        unsigned int read_pointOfInterest:1;
+        unsigned int read_streetAddress:1;
+        unsigned int read_unknown:1;
+        unsigned int read_work:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_contactHome:1;
+        unsigned int wrote_contactOther:1;
+        unsigned int wrote_contactWork:1;
+        unsigned int wrote_custom:1;
+        unsigned int wrote_home:1;
+        unsigned int wrote_pointOfInterest:1;
+        unsigned int wrote_streetAddress:1;
+        unsigned int wrote_unknown:1;
+        unsigned int wrote_work:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOFormattedString *contactHome; // @synthesize contactHome=_contactHome;
-@property (strong, nonatomic) GEOFormattedString *contactOther; // @synthesize contactOther=_contactOther;
-@property (strong, nonatomic) GEOFormattedString *contactWork; // @synthesize contactWork=_contactWork;
-@property (strong, nonatomic) GEOFormattedString *custom; // @synthesize custom=_custom;
+@property (strong, nonatomic) GEOFormattedString *contactHome;
+@property (strong, nonatomic) GEOFormattedString *contactOther;
+@property (strong, nonatomic) GEOFormattedString *contactWork;
+@property (strong, nonatomic) GEOFormattedString *custom;
 @property (readonly, nonatomic) BOOL hasContactHome;
 @property (readonly, nonatomic) BOOL hasContactOther;
 @property (readonly, nonatomic) BOOL hasContactWork;
@@ -36,13 +61,25 @@
 @property (readonly, nonatomic) BOOL hasStreetAddress;
 @property (readonly, nonatomic) BOOL hasUnknown;
 @property (readonly, nonatomic) BOOL hasWork;
-@property (strong, nonatomic) GEOFormattedString *home; // @synthesize home=_home;
-@property (strong, nonatomic) GEOFormattedString *pointOfInterest; // @synthesize pointOfInterest=_pointOfInterest;
-@property (strong, nonatomic) GEOFormattedString *streetAddress; // @synthesize streetAddress=_streetAddress;
-@property (strong, nonatomic) GEOFormattedString *unknown; // @synthesize unknown=_unknown;
-@property (strong, nonatomic) GEOFormattedString *work; // @synthesize work=_work;
+@property (strong, nonatomic) GEOFormattedString *home;
+@property (strong, nonatomic) GEOFormattedString *pointOfInterest;
+@property (strong, nonatomic) GEOFormattedString *streetAddress;
+@property (strong, nonatomic) GEOFormattedString *unknown;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) GEOFormattedString *work;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readContactHome;
+- (void)_readContactOther;
+- (void)_readContactWork;
+- (void)_readCustom;
+- (void)_readHome;
+- (void)_readPointOfInterest;
+- (void)_readStreetAddress;
+- (void)_readUnknown;
+- (void)_readWork;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -50,6 +87,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

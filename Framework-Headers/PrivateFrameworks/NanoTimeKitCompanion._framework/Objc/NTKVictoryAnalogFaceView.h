@@ -39,9 +39,8 @@
 - (double)_complicationAlphaForEditMode:(long long)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (struct CGPoint)_contentCenterOffset;
-- (id)_editOptionThatHidesAllComplications;
 - (double)_editSpeedForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (double)_handsAlphaForEditMode:(long long)arg1;
@@ -60,7 +59,6 @@
 - (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_prepareForEditing;
-- (void)_prepareTimeViewForReuse:(id)arg1;
 - (void)_setFullBleed:(BOOL)arg1;
 - (id)_slotForUtilitySlot:(long long)arg1;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;

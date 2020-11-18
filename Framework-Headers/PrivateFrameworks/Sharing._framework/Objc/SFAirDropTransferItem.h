@@ -14,11 +14,13 @@
 {
     BOOL _isFile;
     NSString *_type;
+    NSString *_subtype;
     long long _count;
 }
 
 @property (readonly, nonatomic) long long count; // @synthesize count=_count;
 @property (readonly, nonatomic) BOOL isFile; // @synthesize isFile=_isFile;
+@property (readonly, copy, nonatomic) NSString *subtype; // @synthesize subtype=_subtype;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
@@ -30,6 +32,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(id)arg1 isFile:(BOOL)arg2;
+- (id)initWithType:(id)arg1 subtype:(id)arg2 isFile:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

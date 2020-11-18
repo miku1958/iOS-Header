@@ -18,6 +18,8 @@
     NSXPCConnection *_serverConnection;
     id<CLKComplicationDataSource> _dataSource;
     NSSet *_activeComplications;
+    struct os_unfair_lock_s _connectionLock;
+    int _restartNotificationToken;
     struct {
         BOOL supportsGetTimeTravelDirections;
         BOOL supportsGetTimelineStartDate;
@@ -33,6 +35,7 @@
         BOOL supportsGetLocalizableDescriptionProvider;
         BOOL supportsGetLocalizableSampleTemplate;
         BOOL exceptionOnSkippedHandler;
+        BOOL supportsGetAlwaysOnTemplate;
     } _dataSourceFlags;
 }
 
@@ -47,10 +50,13 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_checkinWithServer;
+- (void)_complicationServiceDidStart;
 - (void)_createConnection;
 - (void)_createDataSourceIfNecessary;
 - (id)_init;
+- (void)dealloc;
 - (void)extendTimelineForComplication:(id)arg1;
+- (void)getAlwaysOnTemplateForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getCurrentTimelineEntryForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getLocalizableSampleTemplateForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getNextRequestedUpdateDateWithHandler:(CDUnknownBlockType)arg1;
@@ -66,6 +72,7 @@
 - (void)reloadTimelineForComplication:(id)arg1;
 - (void)requestedUpdateBudgetExhausted;
 - (void)requestedUpdateDidBegin;
+- (id)serverProxy;
 - (void)setActiveComplications:(id)arg1;
 
 @end

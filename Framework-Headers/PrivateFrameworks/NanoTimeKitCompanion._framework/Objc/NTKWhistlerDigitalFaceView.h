@@ -4,41 +4,58 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKFaceView.h>
+#import <NanoTimeKitCompanion/NTKDigitalFaceView.h>
 
-@class NTKLayoutRule, NTKTimeModuleView;
+#import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
+#import <NanoTimeKitCompanion/NTKRichComplicationRectangularBaseViewDelegate-Protocol.h>
 
-@interface NTKWhistlerDigitalFaceView : NTKFaceView
+@class NSString;
+
+@interface NTKWhistlerDigitalFaceView : NTKDigitalFaceView <NTKRichComplicationRectangularBaseViewDelegate, CLKMonochromeFilterProvider>
 {
-    NTKTimeModuleView *_timeModuleView;
-    NTKLayoutRule *_timeLayoutRuleNormal;
-    NTKLayoutRule *_timeLayoutRuleEditing;
     BOOL _is24HourMode;
+    unsigned long long _faceColor;
 }
 
-- (void).cxx_destruct;
-- (void)_cleanupAfterZoom;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
+- (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
+- (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
-- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (id)_defaultDateAccentColor;
+- (id)_defaultDateTextColor;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
+- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
+- (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (long long)_keylineStyleForComplicationSlot:(id)arg1;
-- (void)_layoutForegroundContainerView;
+- (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadLayoutRules;
 - (void)_loadLayoutRulesForState:(long long)arg1 withTopGap:(double)arg2 largeModuleHeight:(double)arg3;
 - (void)_loadSnapshotContentViews;
 - (double)_minimumBreathingScaleForComplicationSlot:(id)arg1;
 - (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
-- (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
-- (void)_scrubToDate:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_supportsTimeScrubbing;
+- (unsigned long long)_timeLabelOptions;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateLocale;
-- (BOOL)complicationDisplayWrapperView:(id)arg1 shouldStartCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(BOOL)arg4;
-- (void)complicationDisplayWrapperView:(id)arg1 startCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (long long)complicationFamilyForSlot:(id)arg1;
+- (id)complicationPickerViewForSlot:(id)arg1;
 - (void)dealloc;
+- (void)rectangularViewDidBecomeInteractive:(id)arg1;
+- (void)rectangularViewDidEndInteractive:(id)arg1;
+- (void)setFaceColor:(unsigned long long)arg1;
 
 @end
 

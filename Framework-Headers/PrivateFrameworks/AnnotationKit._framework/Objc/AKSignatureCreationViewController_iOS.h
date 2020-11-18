@@ -35,15 +35,18 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancel:(id)arg1;
 - (void)_clear:(id)arg1;
 - (void)_done:(id)arg1;
+- (void)_setToolPickerVisible;
 - (void)_validateButtons;
 - (void)didReceiveMemoryWarning;
 - (id)initWithController:(id)arg1;
 - (void)loadView;
 - (long long)positionForBar:(id)arg1;
 - (BOOL)prefersStatusBarHidden;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 

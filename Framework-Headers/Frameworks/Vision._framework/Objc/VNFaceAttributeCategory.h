@@ -25,7 +25,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)computeLabel;
+- (void)_computeLabel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

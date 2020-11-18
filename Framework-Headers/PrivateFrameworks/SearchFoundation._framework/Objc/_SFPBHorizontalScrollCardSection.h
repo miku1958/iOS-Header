@@ -23,6 +23,7 @@
     NSString *_type;
     _SFPBColor *_backgroundColor;
     NSArray *_cardSections;
+    unsigned long long _numberOfRows;
 }
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) unsigned long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;

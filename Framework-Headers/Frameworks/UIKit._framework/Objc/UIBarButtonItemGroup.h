@@ -23,10 +23,12 @@
     _UIButtonGroupViewController *_representativeUI;
     double _minimumLeadingSpace;
     double _minimumTrailingSpace;
+    unsigned long long _expandStyle;
 }
 
 @property (copy, nonatomic) NSArray *barButtonItems;
 @property (readonly, nonatomic, getter=isDisplayingRepresentativeItem) BOOL displayingRepresentativeItem;
+@property (nonatomic, getter=_expandStyle, setter=_setExpandStyle:) unsigned long long expandStyle; // @synthesize expandStyle=_expandStyle;
 @property (nonatomic, getter=_isHidden, setter=_setHidden:) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic, getter=_items) NSArray *items;
 @property (nonatomic, getter=_isLocked, setter=_setLocked:) BOOL locked; // @synthesize locked=_locked;

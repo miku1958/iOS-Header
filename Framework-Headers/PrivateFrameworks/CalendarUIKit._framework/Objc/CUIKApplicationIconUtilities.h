@@ -10,8 +10,13 @@
 {
 }
 
++ (BOOL)_isDate:(id)arg1 withinNextWeekOfDate:(id)arg2 calendar:(id)arg3;
++ (BOOL)_isDate:(id)arg1 withinPreviousWeekOfDate:(id)arg2 calendar:(id)arg3;
++ (BOOL)_isWithinNextWeek:(id)arg1 calendar:(id)arg2;
++ (BOOL)_isWithinPreviousWeek:(id)arg1 calendar:(id)arg2;
 + (id)dateFormatterWithCalendar:(id)arg1;
 + (long long)dateNameFormatType:(int)arg1;
++ (long long)iconDateNameFormatTypeForDateBasedOnDistanceFromNow:(id)arg1 calendar:(id)arg2;
 
 @end
 

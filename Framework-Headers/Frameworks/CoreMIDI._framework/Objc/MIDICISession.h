@@ -41,7 +41,7 @@
 - (void)hasProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithMIDIEntity:(unsigned int)arg1 dataReadyHandler:(CDUnknownBlockType)arg2;
-- (BOOL)isEqualTo:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)profileStateForChannel:(unsigned char)arg1;
 - (void)setProperty:(id)arg1 onChannel:(unsigned char)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (BOOL)toggleProfile:(id)arg1 onChannel:(unsigned char)arg2 enabling:(BOOL)arg3 error:(id *)arg4;

@@ -24,6 +24,10 @@
 @property (nonatomic) unsigned long long numberOfChanges; // @synthesize numberOfChanges=_numberOfChanges;
 @property (strong, nonatomic) ICSelectorDelayer *processChangesSelectorDelayer; // @synthesize processChangesSelectorDelayer=_processChangesSelectorDelayer;
 
++ (void)generateMissingOrOutdatedHandwritingSummariesInContext:(id)arg1;
++ (id)handwritingSummaryAttachmentsInContext:(id)arg1;
++ (id)missingOrOutdatedHandwritingSummaryAttachmentsInContext:(id)arg1;
++ (void)purgeHandwritingSummariesInContext:(id)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)drawingDataDidChange:(id)arg1;
@@ -34,6 +38,7 @@
 - (void)processIndexableContent;
 - (id)retrieveAndClearLatestDrawingToMerge;
 - (void)updateNowIfNecessary;
+- (void)updateVersionIfNeededForAttachment:(id)arg1 withDrawing:(id)arg2;
 
 @end
 

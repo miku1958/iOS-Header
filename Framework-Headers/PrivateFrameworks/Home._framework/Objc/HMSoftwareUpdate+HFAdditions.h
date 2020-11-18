@@ -6,8 +6,19 @@
 
 #import <HomeKit/HMSoftwareUpdate.h>
 
-@interface HMSoftwareUpdate (HFAdditions)
+#import <Home/HFStateDumpBuildable-Protocol.h>
+
+@class NSString;
+
+@interface HMSoftwareUpdate (HFAdditions) <HFStateDumpBuildable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)hf_stringFromUpdateState:(long long)arg1;
 - (BOOL)hf_shouldShowSoftwareUpdateInfo;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

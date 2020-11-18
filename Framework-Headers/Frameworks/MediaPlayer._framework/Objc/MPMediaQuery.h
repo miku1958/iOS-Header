@@ -127,6 +127,7 @@
 - (id)initWithCriteria:(id)arg1 library:(id)arg2;
 - (id)initWithEntities:(id)arg1 entityType:(long long)arg2;
 - (id)initWithFilterPredicates:(id)arg1;
+- (id)initWithFilterPredicates:(id)arg1 library:(id)arg2;
 - (id)initWithProtobufferDecodableObject:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)predicateForProperty:(id)arg1;

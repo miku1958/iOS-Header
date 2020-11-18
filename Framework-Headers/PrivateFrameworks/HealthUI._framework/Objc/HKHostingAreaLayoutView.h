@@ -13,8 +13,8 @@
 
 @property (strong, nonatomic) UIView *hostedView; // @synthesize hostedView=_hostedView;
 
++ (id)colorBackgroundViewHostingView:(id)arg1;
 + (id)viewHostingView:(id)arg1;
-+ (id)whiteBackgroundViewHostingView:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)translatesAutoresizingMaskIntoConstraints;

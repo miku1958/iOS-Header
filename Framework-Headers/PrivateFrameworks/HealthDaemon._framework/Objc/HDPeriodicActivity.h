@@ -11,7 +11,7 @@
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
 @class HDProfile, NSString;
-@protocol HDPeriodicActivityDelegate, OS_dispatch_queue, OS_os_log;
+@protocol HDPeriodicActivityDelegate, OS_dispatch_queue, OS_os_log, OS_xpc_object;
 
 @interface HDPeriodicActivity : NSObject <HDHealthDaemonReadyObserver, HDDatabaseProtectedDataObserver, HDDiagnosticObject>
 {
@@ -25,8 +25,10 @@
     NSObject<OS_os_log> *_loggingCategory;
     double _interval;
     id<HDPeriodicActivityDelegate> _delegate;
+    NSObject<OS_xpc_object> *_currentActivity;
 }
 
+@property (strong) NSObject<OS_xpc_object> *currentActivity; // @synthesize currentActivity=_currentActivity;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<HDPeriodicActivityDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

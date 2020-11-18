@@ -11,7 +11,6 @@
 
 @interface NRActiveDeviceAssertion : NSObject
 {
-    BOOL _isActive;
     NSString *_identifier;
     NSObject<OS_dispatch_queue> *_queue;
     NRDevice *_device;
@@ -19,7 +18,7 @@
 
 @property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
+@property (readonly, nonatomic) BOOL isActive;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;

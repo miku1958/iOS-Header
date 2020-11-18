@@ -6,11 +6,12 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
+#import <MediaPlaybackCore/MPCStoreFrontLocalEquivalencyMiddlewarePlayingItemProviding-Protocol.h>
 #import <MediaPlaybackCore/MPMiddlewareAutomaticDependencyOperation-Protocol.h>
 
-@class MPCPlayerRequest, MPCStoreFrontLocalEquivalencyMiddleware, NSArray, NSError, NSMapTable, NSString;
+@class MPCPlayerRequest, MPCStoreFrontLocalEquivalencyMiddleware, MPModelGenericObject, NSArray, NSError, NSIndexPath, NSMapTable, NSString;
 
-@interface MPCStoreFrontLocalEquivalencyMiddlewareOperation : MPAsyncOperation <MPMiddlewareAutomaticDependencyOperation>
+@interface MPCStoreFrontLocalEquivalencyMiddlewareOperation : MPAsyncOperation <MPCStoreFrontLocalEquivalencyMiddlewarePlayingItemProviding, MPMiddlewareAutomaticDependencyOperation>
 {
     struct NSMapTable *_inputOperations;
     CDUnknownBlockType _invalidationHandler;
@@ -20,16 +21,22 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *inputOperations; // @synthesize inputOperations=_inputOperations;
-@property (readonly, nonatomic) NSArray *inputsProtocols;
+@property (readonly, nonatomic) NSArray *inputProtocols;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (readonly, nonatomic) NSArray *invalidationObservers; // @synthesize invalidationObservers=_invalidationObservers;
 @property (strong, nonatomic) MPCStoreFrontLocalEquivalencyMiddleware *middleware; // @synthesize middleware=_middleware;
 @property (readonly, nonatomic) NSArray *outputProtocols;
+@property (readonly, nonatomic) MPModelGenericObject *overridePlayingItem;
 @property (strong, nonatomic) MPCPlayerRequest *playerRequest; // @synthesize playerRequest=_playerRequest;
+@property (readonly, nonatomic) NSIndexPath *playingItemIndexPath;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

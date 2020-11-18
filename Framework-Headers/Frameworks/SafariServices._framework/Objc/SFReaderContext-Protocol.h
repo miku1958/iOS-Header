@@ -9,9 +9,11 @@
 @class NSDictionary, NSString, NSURL, WBSReaderConfigurationManager, WBSReaderFont, WBSReaderFontManager;
 
 @protocol SFReaderContext <NSObject>
+- (void)activateFont:(NSString *)arg1;
 - (void)activateReader;
 - (BOOL)canDecreaseReaderTextSize;
 - (BOOL)canIncreaseReaderTextSize;
+- (void)checkReaderAvailability;
 - (void)clearAvailability;
 - (void)clearReaderWebView;
 - (void)clearUnusedReaderResourcesSoon;

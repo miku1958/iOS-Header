@@ -17,6 +17,7 @@
     unsigned char _subtype;
     unsigned char _semanticTag;
     unsigned char _time;
+    unsigned char _options;
     unsigned int _fields;
     NSArray *_subFields;
     NSString *_label;
@@ -30,6 +31,7 @@
 @property (nonatomic) unsigned int fields; // @synthesize fields=_fields;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (nonatomic) unsigned char options; // @synthesize options=_options;
 @property (strong, nonatomic) NSArray *people; // @synthesize people=_people;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (nonatomic) unsigned char semanticTag; // @synthesize semanticTag=_semanticTag;
@@ -47,7 +49,7 @@
 + (unsigned char)_timeFromString:(id)arg1;
 + (unsigned char)_typeFromString:(id)arg1;
 + (id)quickTypeQueryFromLMTokens:(id)arg1 localeIdentifier:(id)arg2 recipients:(id)arg3 bundleIdentifier:(id)arg4;
-+ (id)quickTypeQueryWithType:(unsigned char)arg1 subtype:(unsigned char)arg2 semanticTag:(unsigned char)arg3 fields:(unsigned int)arg4 time:(unsigned char)arg5 label:(id)arg6 people:(id)arg7 localeIdentifier:(id)arg8 bundleIdentifier:(id)arg9 recipients:(id)arg10;
++ (id)quickTypeQueryWithType:(unsigned char)arg1 subtype:(unsigned char)arg2 semanticTag:(unsigned char)arg3 fields:(unsigned int)arg4 time:(unsigned char)arg5 options:(unsigned char)arg6 subFields:(id)arg7 label:(id)arg8 people:(id)arg9 localeIdentifier:(id)arg10 bundleIdentifier:(id)arg11 recipients:(id)arg12;
 + (id)quickTypeQueryWithType:(unsigned char)arg1 subtype:(unsigned char)arg2 semanticTag:(unsigned char)arg3 fields:(unsigned int)arg4 time:(unsigned char)arg5 subFields:(id)arg6 label:(id)arg7 people:(id)arg8 localeIdentifier:(id)arg9 bundleIdentifier:(id)arg10 recipients:(id)arg11;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -57,9 +59,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(unsigned char)arg1 subtype:(unsigned char)arg2 semanticTag:(unsigned char)arg3 fields:(unsigned int)arg4 time:(unsigned char)arg5 subFields:(id)arg6 label:(id)arg7 people:(id)arg8 localeIdentifier:(id)arg9 bundleIdentifier:(id)arg10 recipients:(id)arg11;
+- (id)initWithType:(unsigned char)arg1 subtype:(unsigned char)arg2 semanticTag:(unsigned char)arg3 fields:(unsigned int)arg4 time:(unsigned char)arg5 options:(unsigned char)arg6 subFields:(id)arg7 label:(id)arg8 people:(id)arg9 localeIdentifier:(id)arg10 bundleIdentifier:(id)arg11 recipients:(id)arg12;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToQuickTypeQuery:(id)arg1;
+- (BOOL)isResultEquivelentToQuickTypeQuery:(id)arg1;
 
 @end
 

@@ -18,10 +18,17 @@
 @property (strong, nonatomic) NSArray *demoAccessories; // @synthesize demoAccessories=_demoAccessories;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
++ (id)_cameraClipForProfile:(id)arg1 url:(id)arg2 duration:(double)arg3;
++ (id)_clipStartDateFromComponents:(id)arg1 today:(id)arg2;
++ (id)_eventsFromString:(id)arg1 startDate:(id)arg2;
 + (id)accessoryProfileName:(id)arg1;
 + (id)accessoryWithContentsOfDictionary:(id)arg1 forHome:(id)arg2;
++ (id)clipsForCameraProfile:(id)arg1;
 + (id)configurationProfileFromAccessoryType:(id)arg1;
++ (id)demoLiveStreamURLForCameraName:(id)arg1;
 + (id)demoModeDirectoryURL;
++ (id)demoSnapshotURLForCameraName:(id)arg1;
++ (id)demoURLWithCameraName:(id)arg1 fileName:(id)arg2 extension:(id)arg3;
 + (id)imageIconDescriptorFromDictionary:(id)arg1;
 + (BOOL)isInternalAccessoryType:(id)arg1;
 + (BOOL)isPressDemoModeEnabled;

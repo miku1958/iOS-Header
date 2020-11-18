@@ -19,8 +19,10 @@
 + (id)_sharedImageLoader;
 + (void)initialize;
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 - (id)initWithIntentsImage:(id)arg1;
 - (id)initWithPayloadImage:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)loadImageDataWithCompletionAndErrorHandler:(CDUnknownBlockType)arg1;
 - (void)loadImageDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)payloadImage;

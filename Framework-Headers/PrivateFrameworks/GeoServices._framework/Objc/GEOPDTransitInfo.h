@@ -8,33 +8,82 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class GEOPDMapsIdentifier, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTransitInfo : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_labels;
     NSMutableArray *_lines;
     NSString *_searchDisplayName;
+    NSString *_subTitle;
     NSMutableArray *_systems;
+    NSString *_title;
     NSMutableArray *_transitConnections;
+    unsigned long long _transitId;
+    GEOPDMapsIdentifier *_transitMarketId;
+    struct {
+        unsigned int has_transitId:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_labels:1;
+        unsigned int read_lines:1;
+        unsigned int read_searchDisplayName:1;
+        unsigned int read_subTitle:1;
+        unsigned int read_systems:1;
+        unsigned int read_title:1;
+        unsigned int read_transitConnections:1;
+        unsigned int read_transitMarketId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_labels:1;
+        unsigned int wrote_lines:1;
+        unsigned int wrote_searchDisplayName:1;
+        unsigned int wrote_subTitle:1;
+        unsigned int wrote_systems:1;
+        unsigned int wrote_title:1;
+        unsigned int wrote_transitConnections:1;
+        unsigned int wrote_transitId:1;
+        unsigned int wrote_transitMarketId:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasSearchDisplayName;
-@property (strong, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
-@property (strong, nonatomic) NSMutableArray *lines; // @synthesize lines=_lines;
-@property (strong, nonatomic) NSString *searchDisplayName; // @synthesize searchDisplayName=_searchDisplayName;
-@property (strong, nonatomic) NSMutableArray *systems; // @synthesize systems=_systems;
-@property (strong, nonatomic) NSMutableArray *transitConnections; // @synthesize transitConnections=_transitConnections;
+@property (readonly, nonatomic) BOOL hasSubTitle;
+@property (readonly, nonatomic) BOOL hasTitle;
+@property (nonatomic) BOOL hasTransitId;
+@property (readonly, nonatomic) BOOL hasTransitMarketId;
+@property (strong, nonatomic) NSMutableArray *labels;
+@property (strong, nonatomic) NSMutableArray *lines;
+@property (strong, nonatomic) NSString *searchDisplayName;
+@property (strong, nonatomic) NSString *subTitle;
+@property (strong, nonatomic) NSMutableArray *systems;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSMutableArray *transitConnections;
+@property (nonatomic) unsigned long long transitId;
+@property (strong, nonatomic) GEOPDMapsIdentifier *transitMarketId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)labelType;
 + (Class)lineType;
 + (Class)systemType;
 + (Class)transitConnectionType;
 + (id)transitInfoForPlaceData:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsLabel:(id)arg1;
+- (void)_addNoFlagsLine:(id)arg1;
+- (void)_addNoFlagsSystem:(id)arg1;
+- (void)_addNoFlagsTransitConnection:(id)arg1;
+- (void)_readLabels;
+- (void)_readLines;
+- (void)_readSearchDisplayName;
+- (void)_readSubTitle;
+- (void)_readSystems;
+- (void)_readTitle;
+- (void)_readTransitConnections;
+- (void)_readTransitMarketId;
 - (void)addLabel:(id)arg1;
 - (void)addLine:(id)arg1;
 - (void)addSystem:(id)arg1;
@@ -43,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)clearLines;
 - (void)clearSystems;
 - (void)clearTransitConnections;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -54,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (id)lineAtIndex:(unsigned long long)arg1;
 - (unsigned long long)linesCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)systemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)systemsCount;

@@ -17,6 +17,7 @@
     NSSet *_alertSuppressionContexts;
     NSString *_alternateActionLabel;
     BOOL _dismissAutomatically;
+    BOOL _dismissAutomaticallyForCarPlay;
     BOOL _overridesQuietMode;
     BOOL _overridesDowntime;
     BOOL _alertsWhenLocked;
@@ -31,9 +32,9 @@
     BOOL _canTurnOnDisplay;
     BOOL _requestsFullScreenPresentation;
     BOOL _hideClearActionInList;
-    unsigned long long _messageNumberOfLines;
-    BOOL _prefersDarkAppearance;
+    BOOL _numberOfLinesInfinite;
     BOOL _preemptsPresentedNotification;
+    BOOL _preemptsSTAR;
     BOOL _revealsAdditionalContentOnPresentation;
     BOOL _suppressesTitleWhenLocked;
     BOOL _suppressesSubtitleWhenLocked;
@@ -43,11 +44,15 @@
     BOOL _preventsAutomaticLock;
     BOOL _revealsAdditionalContentIfNoDefaultAction;
     BOOL _lauchUsingSiriForCarPlayDefaultAction;
+    BOOL _allowActionsForCarPlay;
+    BOOL _playMediaWhenRaised;
+    BOOL _hideCloseActionForCarPlay;
 }
 
 @property (readonly, nonatomic) BOOL addToLockScreenWhenUnlocked; // @synthesize addToLockScreenWhenUnlocked=_addToLockScreenWhenLocked;
 @property (readonly, copy, nonatomic) NSSet *alertSuppressionContexts; // @synthesize alertSuppressionContexts=_alertSuppressionContexts;
 @property (readonly, nonatomic) BOOL alertsWhenLocked; // @synthesize alertsWhenLocked=_alertsWhenLocked;
+@property (readonly, nonatomic) BOOL allowActionsForCarPlay; // @synthesize allowActionsForCarPlay=_allowActionsForCarPlay;
 @property (readonly, copy, nonatomic) NSString *alternateActionLabel; // @synthesize alternateActionLabel=_alternateActionLabel;
 @property (readonly, nonatomic) BOOL canPlaySound; // @synthesize canPlaySound=_canPlaySound;
 @property (readonly, nonatomic) BOOL canTurnOnDisplay; // @synthesize canTurnOnDisplay=_canTurnOnDisplay;
@@ -56,17 +61,20 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL dismissAutomatically; // @synthesize dismissAutomatically=_dismissAutomatically;
+@property (readonly, nonatomic) BOOL dismissAutomaticallyForCarPlay; // @synthesize dismissAutomaticallyForCarPlay=_dismissAutomaticallyForCarPlay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideClearActionInList; // @synthesize hideClearActionInList=_hideClearActionInList;
+@property (readonly, nonatomic) BOOL hideCloseActionForCarPlay; // @synthesize hideCloseActionForCarPlay=_hideCloseActionForCarPlay;
 @property (readonly, nonatomic) BOOL lauchUsingSiriForCarPlayDefaultAction; // @synthesize lauchUsingSiriForCarPlayDefaultAction=_lauchUsingSiriForCarPlayDefaultAction;
 @property (readonly, nonatomic) unsigned long long lockScreenPersistence; // @synthesize lockScreenPersistence=_lockScreenPersistence;
 @property (readonly, nonatomic) unsigned long long lockScreenPriority; // @synthesize lockScreenPriority=_lockScreenPriority;
-@property (readonly, nonatomic) unsigned long long messageNumberOfLines; // @synthesize messageNumberOfLines=_messageNumberOfLines;
+@property (readonly, nonatomic, getter=isNumberOfLinesInfinite) BOOL numberOfLinesInfinite; // @synthesize numberOfLinesInfinite=_numberOfLinesInfinite;
 @property (readonly, nonatomic) BOOL overridesDowntime; // @synthesize overridesDowntime=_overridesDowntime;
 @property (readonly, nonatomic) BOOL overridesPocketMode; // @synthesize overridesPocketMode=_overridesPocketMode;
 @property (readonly, nonatomic) BOOL overridesQuietMode; // @synthesize overridesQuietMode=_overridesQuietMode;
+@property (readonly, nonatomic) BOOL playMediaWhenRaised; // @synthesize playMediaWhenRaised=_playMediaWhenRaised;
 @property (readonly, nonatomic) BOOL preemptsPresentedNotification; // @synthesize preemptsPresentedNotification=_preemptsPresentedNotification;
-@property (readonly, nonatomic) BOOL prefersDarkAppearance; // @synthesize prefersDarkAppearance=_prefersDarkAppearance;
+@property (readonly, nonatomic) BOOL preemptsSTAR; // @synthesize preemptsSTAR=_preemptsSTAR;
 @property (readonly, nonatomic) BOOL preventsAutomaticLock; // @synthesize preventsAutomaticLock=_preventsAutomaticLock;
 @property (readonly, nonatomic) unsigned long long realertCount; // @synthesize realertCount=_realertCount;
 @property (readonly, nonatomic) BOOL requestsFullScreenPresentation; // @synthesize requestsFullScreenPresentation=_requestsFullScreenPresentation;

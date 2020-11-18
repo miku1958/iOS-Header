@@ -8,7 +8,7 @@
 
 #import <BulletinDistributorCompanion/NSCopying-Protocol.h>
 
-@class BLTPBAction, NSData, NSMutableArray, NSString;
+@class BLTPBAction, BLTPBSectionIcon, NSData, NSMutableArray, NSString;
 
 @interface BLTPBBulletin : PBCodable <NSCopying>
 {
@@ -32,6 +32,7 @@
     BLTPBAction *_dismissAction;
     NSString *_dismissalID;
     unsigned int _feed;
+    BLTPBSectionIcon *_icon;
     NSString *_messageTitle;
     NSMutableArray *_peopleIDs;
     NSString *_publisherBulletinID;
@@ -52,13 +53,16 @@
     NSString *_threadID;
     NSString *_title;
     NSString *_universalSectionID;
+    BOOL _containsUpdateIcon;
     BOOL _containsUpdatedAttachment;
     BOOL _hasCriticalIcon;
     BOOL _ignoresQuietMode;
     BOOL _includesSound;
     BOOL _loading;
+    BOOL _preemptsPresentedAlert;
     BOOL _soundShouldIgnoreRingerSwitch;
     BOOL _soundShouldRepeat;
+    BOOL _suppressDelayForForwardedBulletins;
     BOOL _turnsOnDisplay;
     struct {
         unsigned int date:1;
@@ -69,12 +73,15 @@
         unsigned int attachmentType:1;
         unsigned int sectionSubtype:1;
         unsigned int soundAlertType:1;
+        unsigned int containsUpdateIcon:1;
         unsigned int containsUpdatedAttachment:1;
         unsigned int hasCriticalIcon:1;
         unsigned int ignoresQuietMode:1;
         unsigned int loading:1;
+        unsigned int preemptsPresentedAlert:1;
         unsigned int soundShouldIgnoreRingerSwitch:1;
         unsigned int soundShouldRepeat:1;
+        unsigned int suppressDelayForForwardedBulletins:1;
         unsigned int turnsOnDisplay:1;
     } _has;
 }
@@ -89,6 +96,7 @@
 @property (strong, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
 @property (strong, nonatomic) NSString *category; // @synthesize category=_category;
 @property (strong, nonatomic) NSString *categoryID; // @synthesize categoryID=_categoryID;
+@property (nonatomic) BOOL containsUpdateIcon; // @synthesize containsUpdateIcon=_containsUpdateIcon;
 @property (nonatomic) BOOL containsUpdatedAttachment; // @synthesize containsUpdatedAttachment=_containsUpdatedAttachment;
 @property (strong, nonatomic) NSData *context; // @synthesize context=_context;
 @property (strong, nonatomic) NSData *contextNulls; // @synthesize contextNulls=_contextNulls;
@@ -105,6 +113,7 @@
 @property (readonly, nonatomic) BOOL hasBulletinID;
 @property (readonly, nonatomic) BOOL hasCategory;
 @property (readonly, nonatomic) BOOL hasCategoryID;
+@property (nonatomic) BOOL hasContainsUpdateIcon;
 @property (nonatomic) BOOL hasContainsUpdatedAttachment;
 @property (readonly, nonatomic) BOOL hasContext;
 @property (readonly, nonatomic) BOOL hasContextNulls;
@@ -113,9 +122,11 @@
 @property (readonly, nonatomic) BOOL hasDismissAction;
 @property (readonly, nonatomic) BOOL hasDismissalID;
 @property (nonatomic) BOOL hasHasCriticalIcon;
+@property (readonly, nonatomic) BOOL hasIcon;
 @property (nonatomic) BOOL hasIgnoresQuietMode;
 @property (nonatomic) BOOL hasLoading;
 @property (readonly, nonatomic) BOOL hasMessageTitle;
+@property (nonatomic) BOOL hasPreemptsPresentedAlert;
 @property (nonatomic) BOOL hasPublicationDate;
 @property (readonly, nonatomic) BOOL hasPublisherBulletinID;
 @property (readonly, nonatomic) BOOL hasRecordID;
@@ -134,16 +145,19 @@
 @property (nonatomic) BOOL hasSoundShouldRepeat;
 @property (readonly, nonatomic) BOOL hasSoundToneIdentifier;
 @property (readonly, nonatomic) BOOL hasSubtitle;
+@property (nonatomic) BOOL hasSuppressDelayForForwardedBulletins;
 @property (readonly, nonatomic) BOOL hasTeamID;
 @property (readonly, nonatomic) BOOL hasThreadID;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (nonatomic) BOOL hasTurnsOnDisplay;
 @property (readonly, nonatomic) BOOL hasUniversalSectionID;
+@property (strong, nonatomic) BLTPBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL ignoresQuietMode; // @synthesize ignoresQuietMode=_ignoresQuietMode;
 @property (nonatomic) BOOL includesSound; // @synthesize includesSound=_includesSound;
 @property (nonatomic) BOOL loading; // @synthesize loading=_loading;
 @property (strong, nonatomic) NSString *messageTitle; // @synthesize messageTitle=_messageTitle;
 @property (strong, nonatomic) NSMutableArray *peopleIDs; // @synthesize peopleIDs=_peopleIDs;
+@property (nonatomic) BOOL preemptsPresentedAlert; // @synthesize preemptsPresentedAlert=_preemptsPresentedAlert;
 @property (nonatomic) double publicationDate; // @synthesize publicationDate=_publicationDate;
 @property (strong, nonatomic) NSString *publisherBulletinID; // @synthesize publisherBulletinID=_publisherBulletinID;
 @property (strong, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;
@@ -164,16 +178,17 @@
 @property (strong, nonatomic) NSMutableArray *subsectionIDs; // @synthesize subsectionIDs=_subsectionIDs;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSMutableArray *supplementaryActions; // @synthesize supplementaryActions=_supplementaryActions;
+@property (nonatomic) BOOL suppressDelayForForwardedBulletins; // @synthesize suppressDelayForForwardedBulletins=_suppressDelayForForwardedBulletins;
 @property (strong, nonatomic) NSString *teamID; // @synthesize teamID=_teamID;
 @property (strong, nonatomic) NSString *threadID; // @synthesize threadID=_threadID;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) BOOL turnsOnDisplay; // @synthesize turnsOnDisplay=_turnsOnDisplay;
 @property (strong, nonatomic) NSString *universalSectionID; // @synthesize universalSectionID=_universalSectionID;
 
-+ (void)_addAttachmentsFromBBBulletin:(id)arg1 toBLTPBBulletin:(id)arg2 observer:(id)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_addAttachmentsFromBBBulletin:(id)arg1 toBLTPBBulletin:(id)arg2 observer:(id)arg3 attachOption:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
++ (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 attachNoData:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 + (Class)additionalAttachmentsType;
-+ (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 isCriticalBulletin:(BOOL)arg7 replyToken:(id)arg8 gizmoLegacyCategoryID:(id)arg9 useUserInfoForContext:(BOOL)arg10 removeSubtitleForOlderWatches:(BOOL)arg11 completion:(CDUnknownBlockType)arg12;
++ (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 shouldUseExpirationDate:(BOOL)arg7 replyToken:(id)arg8 gizmoLegacyPublisherBulletinID:(id)arg9 gizmoLegacyCategoryID:(id)arg10 gizmoSectionID:(id)arg11 gizmoSectionSubtype:(id)arg12 useUserInfoForContext:(BOOL)arg13 removeSubtitleForOlderWatches:(BOOL)arg14 attachOption:(unsigned long long)arg15 completion:(CDUnknownBlockType)arg16;
 + (Class)peopleIDsType;
 + (Class)subsectionIDsType;
 + (Class)supplementaryActionsType;

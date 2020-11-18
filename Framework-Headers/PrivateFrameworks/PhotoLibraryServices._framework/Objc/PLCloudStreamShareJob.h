@@ -25,13 +25,13 @@
 
 + (void)publishMediaFromSources:(id)arg1 toNewSharedAlbumWithName:(id)arg2 withCommentText:(id)arg3 recipients:(id)arg4;
 + (void)publishMediaFromSources:(id)arg1 toSharedAlbum:(id)arg2 withCommentText:(id)arg3;
+- (void).cxx_destruct;
 - (void)addInfosForRecipients:(id)arg1;
 - (long long)daemonOperation;
-- (void)dealloc;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
 - (void)executeDaemonOperation;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
 - (void)run;
 - (void)runDaemonSide;
 - (BOOL)shouldArchiveXPCToDisk;

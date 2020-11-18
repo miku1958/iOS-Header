@@ -6,6 +6,9 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
+@class IOSurface, NSMutableDictionary;
+
 @protocol PLAssetsdResourceWriteOnlyServiceProtocol <NSObject>
+- (void)saveAssetWithDataAndPorts:(NSMutableDictionary *)arg1 imageSurface:(IOSurface *)arg2 previewImageSurface:(IOSurface *)arg3 reply:(void (^)(BOOL, NSDictionary *, BOOL, BOOL, NSError *))arg4;
 @end
 

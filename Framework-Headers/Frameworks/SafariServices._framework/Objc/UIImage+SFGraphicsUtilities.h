@@ -7,7 +7,20 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (SFGraphicsUtilities)
+
+@property (readonly, nonatomic) BOOL _sf_hasRegisteredFaviconForDarkUserInterfaceStyle;
+@property (readonly, nonatomic) BOOL _sf_shouldApplyBackingForDarkBackdrop;
+@property (readonly, nonatomic) long long _sf_tabSnapshotEffectsVersion;
+
++ (id)_sf_fallbackFavicon;
++ (id)_sf_faviconFromSystemImageNamed:(id)arg1;
++ (id)_sf_favoritesFavicon;
 + (id)sf_imageFromMainBundleNamed:(id)arg1;
 + (id)ss_imageNamed:(id)arg1;
+- (id)_sf_imageByResizingWithAccessibilityScale:(double)arg1;
+- (id)_sf_initWithCGImage:(struct CGImage *)arg1 tabSnapshotEffectsVersion:(long long)arg2;
+- (BOOL)_sf_isLaunchImageSizedForOrientation:(long long)arg1 includesStatusBar:(BOOL *)arg2;
+- (void)_sf_registerFaviconForDarkUserInterfaceStyle;
+- (id)_sf_resizeImageToSize:(struct CGSize)arg1;
 @end
 

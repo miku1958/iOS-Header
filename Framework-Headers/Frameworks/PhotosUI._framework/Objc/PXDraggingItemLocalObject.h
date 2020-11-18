@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexPath, PHAsset;
+@class PXAssetReference;
 
 @interface PXDraggingItemLocalObject : NSObject
 {
-    PHAsset *_asset;
-    NSIndexPath *_hintIndexPath;
+    PXAssetReference *_assetReference;
 }
 
-@property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
-@property (readonly, nonatomic) NSIndexPath *hintIndexPath; // @synthesize hintIndexPath=_hintIndexPath;
+@property (readonly, nonatomic) PXAssetReference *assetReference; // @synthesize assetReference=_assetReference;
+@property (readonly, nonatomic) BOOL needsImport;
 
 - (void).cxx_destruct;
-- (id)initWithAsset:(id)arg1 hintIndexPath:(id)arg2;
+- (id)init;
+- (id)initWithAssetReference:(id)arg1;
 
 @end
 

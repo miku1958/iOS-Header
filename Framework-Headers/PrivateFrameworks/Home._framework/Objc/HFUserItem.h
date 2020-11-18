@@ -7,33 +7,74 @@
 #import <Home/HFItem.h>
 
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
+#import <Home/HFHomeKitSettingsVendor-Protocol.h>
 #import <Home/NSCopying-Protocol.h>
 
-@class HFUserNameFormatter, HMHome, HMUser, NSString;
+@class HFHomeKitSettingsAdapterManager, HFHomeKitSettingsValueManager, HFUserNameFormatter, HMHome, HMSettings, HMUser, NSSet, NSString, NSUUID;
 @protocol HFHomeKitObject;
 
-@interface HFUserItem : HFItem <HFHomeKitItemProtocol, NSCopying>
+@interface HFUserItem : HFItem <HFHomeKitItemProtocol, HFHomeKitSettingsVendor, NSCopying>
 {
+    BOOL _isItemGroup;
+    BOOL _isContainedWithinItemGroup;
     HMHome *_home;
     HMUser *_user;
+    unsigned long long _numberOfItemsContainedWithinGroup;
+    NSUUID *_uniqueIdentifier;
     HFUserNameFormatter *_userNameFormatter;
+    HMHome *_hf_home;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasValidSettings;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *hf_dependentHomeKitObjectsForDownstreamItems;
+@property (strong, nonatomic) HMHome *hf_home; // @synthesize hf_home=_hf_home;
+@property (readonly, nonatomic) HFHomeKitSettingsAdapterManager *hf_settingsAdapterManager;
+@property (readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (readonly, nonatomic) BOOL isContainedWithinItemGroup; // @synthesize isContainedWithinItemGroup=_isContainedWithinItemGroup;
+@property (readonly, nonatomic) BOOL isItemGroup; // @synthesize isItemGroup=_isItemGroup;
 @property (readonly, nonatomic) unsigned long long nameStyle;
+@property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup; // @synthesize numberOfItemsContainedWithinGroup=_numberOfItemsContainedWithinGroup;
+@property (readonly) HMSettings *settings;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) HMUser *user; // @synthesize user=_user;
 @property (readonly, nonatomic) HFUserNameFormatter *userNameFormatter; // @synthesize userNameFormatter=_userNameFormatter;
 
++ (id)_fakeHMSettings;
++ (void)set_fakeHMSettings:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_getBoolSettingsValueForKeyPath:(id)arg1 defaultValue:(BOOL)arg2 settingsType:(unsigned long long)arg3;
+- (BOOL)_getFakeBoolSettingsValueForKeyPath:(id)arg1 defaultValue:(BOOL)arg2;
+- (BOOL)_hasValidPrivateSettings;
+- (id)_privateSettings;
+- (id)_privateSettingsValueManager;
+- (id)_setBoolSettingsValueForKeyPath:(id)arg1 newValue:(BOOL)arg2 settingsType:(unsigned long long)arg3;
+- (void)_setFakeBoolSettingsValueForKeyPath:(id)arg1 newValue:(BOOL)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)hasDismissedCameraRecordingOnboarding;
+- (BOOL)hasDismissedCameraRecordingReminderBanner;
+- (BOOL)hasDismissedIdentifyVoiceReminderBanner;
+- (BOOL)hasDismissedTVViewingProfilesOnboarding;
+- (BOOL)hasDismissedTVViewingProfilesReminderBanner;
+- (BOOL)hasDismissedUserSplitMediaAccountWarning;
+- (BOOL)hasDismissedVoiceProfileOnboarding;
 - (id)init;
 - (id)initWithHome:(id)arg1 user:(id)arg2 nameStyle:(unsigned long long)arg3;
+- (BOOL)isIdentifyVoiceEnabled;
+- (id)setDismissCameraRecordingOnboarding:(BOOL)arg1;
+- (id)setDismissCameraRecordingReminderBanner:(BOOL)arg1;
+- (id)setDismissIdentifyVoiceOnboarding:(BOOL)arg1;
+- (id)setDismissIdentifyVoiceReminderBanner:(BOOL)arg1;
+- (id)setDismissTVViewingProfilesOnboarding:(BOOL)arg1;
+- (id)setDismissTVViewingProfilesReminderBanner:(BOOL)arg1;
+- (id)setDismissUserSplitMediaAccountWarning:(BOOL)arg1;
+- (id)setEnableIdentifyVoice:(BOOL)arg1;
 
 @end
 

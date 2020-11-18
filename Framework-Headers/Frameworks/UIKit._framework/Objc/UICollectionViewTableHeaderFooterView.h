@@ -32,6 +32,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;
+- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
 
 @end

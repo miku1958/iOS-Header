@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic, getter=isBackgrounded) BOOL backgrounded; // @dynamic backgrounded;
+@property (nonatomic, getter=isForeground) BOOL foreground; // @dynamic foreground;
 @property (nonatomic) struct CGRect frame; // @dynamic frame;
 @property (nonatomic) long long interfaceOrientation; // @dynamic interfaceOrientation;
 @property (nonatomic) double level; // @dynamic level;
@@ -25,6 +26,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)otherSettings;
 - (void)setDisplayConfiguration:(id)arg1;
+- (void)setOccluded:(BOOL)arg1;
 - (id)transientLocalSettings;
 
 @end

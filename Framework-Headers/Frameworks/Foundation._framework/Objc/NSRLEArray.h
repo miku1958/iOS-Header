@@ -19,7 +19,6 @@
 - (unsigned long long)count;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithRefCountedRunArray:(struct _NSRefCountedRunArray *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

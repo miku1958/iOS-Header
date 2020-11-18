@@ -13,13 +13,6 @@
 
 @property (nonatomic) BOOL ignoresRadioDiskCache; // @synthesize ignoresRadioDiskCache=_ignoresRadioDiskCache;
 
-+ (id)_accessQueue;
-+ (id)_cachedBagFilenameForActiveAccount;
-+ (id)_cachedStoreBagForActiveAccount;
-+ (id)_pathForCachedStoreBags;
-+ (void)_urlBagDidLoadNotification:(id)arg1;
-+ (void)_writeStoreBagToDiskCache:(id)arg1;
-- (void)_handleFinishedLoadingBag:(id)arg1 withError:(id)arg2 didLoadFromNonDiskCache:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)loadStoreBagWithOptions:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

@@ -28,8 +28,9 @@
 
 + (BOOL)_isSecureForRemoteViewService;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_dismiss;
-- (void)_willAppearInRemoteViewController;
+- (void)_invalidate;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
@@ -44,14 +45,14 @@
 - (void)authorizationWillStart;
 - (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
+- (void)didInvalidateForRemoteAlert;
 - (void)didReceiveCancellationForRemotePaymentRequest:(id)arg1;
 - (void)didReceivePaymentClientUpdate:(id)arg1 forRemotePaymentRequest:(id)arg2;
 - (void)didReceivePaymentResult:(id)arg1 forRemotePaymentRequest:(id)arg2;
-- (void)handleHomeButtonPressed;
+- (void)handleButtonActions:(id)arg1;
 - (id)init;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
-- (void)setUserInfo:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (unsigned long long)supportedInterfaceOrientations;

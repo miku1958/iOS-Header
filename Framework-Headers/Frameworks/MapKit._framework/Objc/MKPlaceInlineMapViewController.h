@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     _MKPlaceInlineMapContentView *_contentView;
     MKMapItem *_updatingInlineMapItem;
     BOOL _bottomHairlineHidden;
+    BOOL _useWindowTrait;
     MKMapItem *_mapItem;
     _MKPlaceViewController *_owner;
     MKMapCamera *_mapCamera;
@@ -29,10 +30,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (weak, nonatomic) _MKPlaceViewController *owner; // @synthesize owner=_owner;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL useWindowTrait; // @synthesize useWindowTrait=_useWindowTrait;
 @property (readonly, nonatomic) NSArray *visibleMapItems;
 
-+ (id)inlineMapWithMapItem:(id)arg1;
++ (id)inlineMapWithMapItem:(id)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_handleTapOnMap;
 - (void)_launchMaps;
 - (struct CGSize)_mapSize;
@@ -41,8 +44,9 @@ __attribute__((visibility("hidden")))
 - (void)_updateSnapshotImage:(id)arg1;
 - (id)initWithMKMapItem:(id)arg1;
 - (void)loadView;
-- (CDStruct_02837cd9)mapRectContainingMapItems;
+- (long long)preferredUserInterfaceStyle;
 - (id)snapshot;
+- (id)traitCollectionForSnapshot;
 - (void)updateInlineMapWithRefinedMapItems;
 - (void)viewDidLoad;
 

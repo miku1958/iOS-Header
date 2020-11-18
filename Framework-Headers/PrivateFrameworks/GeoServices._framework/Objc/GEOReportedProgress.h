@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSProgress, NSString;
-@protocol OS_dispatch_queue;
+@class NSProgress, NSString, geo_isolater;
 
 @interface GEOReportedProgress : NSObject
 {
-    NSObject<OS_dispatch_queue> *_isolationQueue;
+    geo_isolater *_isolater;
     NSProgress *_progress;
     NSProgress *_internalProgress;
     CDUnknownBlockType _cancellationHandler;
@@ -21,7 +20,7 @@
 @property (readonly, getter=isCancelled) BOOL cancelled;
 @property long long completedUnitCount;
 @property (copy) NSString *kind;
-@property (readonly) NSProgress *progress; // @synthesize progress=_progress;
+@property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property long long totalUnitCount;
 
 + (id)progressWithTotalUnitCount:(long long)arg1;

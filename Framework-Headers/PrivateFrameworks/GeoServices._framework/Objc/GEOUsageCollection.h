@@ -8,45 +8,67 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOUsageCollection : PBCodable <NSCopying>
 {
-    struct GEOSessionID _sessionID;
-    long long _requestErrorCode;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     struct GEOTileUsage *_tileUsages;
     unsigned long long _tileUsagesCount;
     unsigned long long _tileUsagesSpace;
-    double _timestamp;
-    int _cellWifi;
+    struct GEOSessionID _sessionID;
     NSString *_countryCode;
-    int _geoService;
     NSString *_hwMachine;
-    int _placeRequestType;
-    int _requestDataSize;
+    long long _requestErrorCode;
     NSString *_requestErrorDescription;
     NSString *_requestErrorDomain;
+    double _timestamp;
+    int _cellWifi;
+    int _geoService;
+    int _placeRequestType;
+    int _requestDataSize;
     int _responseDataSize;
     int _responseTime;
     BOOL _sessionIDIsPersistent;
     struct {
-        unsigned int sessionID:1;
-        unsigned int requestErrorCode:1;
-        unsigned int timestamp:1;
-        unsigned int cellWifi:1;
-        unsigned int geoService:1;
-        unsigned int placeRequestType:1;
-        unsigned int requestDataSize:1;
-        unsigned int responseDataSize:1;
-        unsigned int responseTime:1;
-        unsigned int sessionIDIsPersistent:1;
-    } _has;
+        unsigned int has_sessionID:1;
+        unsigned int has_requestErrorCode:1;
+        unsigned int has_timestamp:1;
+        unsigned int has_cellWifi:1;
+        unsigned int has_geoService:1;
+        unsigned int has_placeRequestType:1;
+        unsigned int has_requestDataSize:1;
+        unsigned int has_responseDataSize:1;
+        unsigned int has_responseTime:1;
+        unsigned int has_sessionIDIsPersistent:1;
+        unsigned int read_tileUsages:1;
+        unsigned int read_countryCode:1;
+        unsigned int read_hwMachine:1;
+        unsigned int read_requestErrorDescription:1;
+        unsigned int read_requestErrorDomain:1;
+        unsigned int wrote_tileUsages:1;
+        unsigned int wrote_sessionID:1;
+        unsigned int wrote_countryCode:1;
+        unsigned int wrote_hwMachine:1;
+        unsigned int wrote_requestErrorCode:1;
+        unsigned int wrote_requestErrorDescription:1;
+        unsigned int wrote_requestErrorDomain:1;
+        unsigned int wrote_timestamp:1;
+        unsigned int wrote_cellWifi:1;
+        unsigned int wrote_geoService:1;
+        unsigned int wrote_placeRequestType:1;
+        unsigned int wrote_requestDataSize:1;
+        unsigned int wrote_responseDataSize:1;
+        unsigned int wrote_responseTime:1;
+        unsigned int wrote_sessionIDIsPersistent:1;
+    } _flags;
 }
 
-@property (nonatomic) int cellWifi; // @synthesize cellWifi=_cellWifi;
-@property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
-@property (nonatomic) int geoService; // @synthesize geoService=_geoService;
+@property (nonatomic) int cellWifi;
+@property (strong, nonatomic) NSString *countryCode;
+@property (nonatomic) int geoService;
 @property (nonatomic) BOOL hasCellWifi;
 @property (readonly, nonatomic) BOOL hasCountryCode;
 @property (nonatomic) BOOL hasGeoService;
@@ -61,24 +83,31 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasSessionID;
 @property (nonatomic) BOOL hasSessionIDIsPersistent;
 @property (nonatomic) BOOL hasTimestamp;
-@property (strong, nonatomic) NSString *hwMachine; // @synthesize hwMachine=_hwMachine;
-@property (nonatomic) int placeRequestType; // @synthesize placeRequestType=_placeRequestType;
-@property (nonatomic) int requestDataSize; // @synthesize requestDataSize=_requestDataSize;
-@property (nonatomic) long long requestErrorCode; // @synthesize requestErrorCode=_requestErrorCode;
-@property (strong, nonatomic) NSString *requestErrorDescription; // @synthesize requestErrorDescription=_requestErrorDescription;
-@property (strong, nonatomic) NSString *requestErrorDomain; // @synthesize requestErrorDomain=_requestErrorDomain;
-@property (nonatomic) int responseDataSize; // @synthesize responseDataSize=_responseDataSize;
-@property (nonatomic) int responseTime; // @synthesize responseTime=_responseTime;
-@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
-@property (nonatomic) BOOL sessionIDIsPersistent; // @synthesize sessionIDIsPersistent=_sessionIDIsPersistent;
+@property (strong, nonatomic) NSString *hwMachine;
+@property (nonatomic) int placeRequestType;
+@property (nonatomic) int requestDataSize;
+@property (nonatomic) long long requestErrorCode;
+@property (strong, nonatomic) NSString *requestErrorDescription;
+@property (strong, nonatomic) NSString *requestErrorDomain;
+@property (nonatomic) int responseDataSize;
+@property (nonatomic) int responseTime;
+@property (nonatomic) struct GEOSessionID sessionID;
+@property (nonatomic) BOOL sessionIDIsPersistent;
 @property (readonly, nonatomic) struct GEOTileUsage *tileUsages;
 @property (readonly, nonatomic) unsigned long long tileUsagesCount;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) double timestamp;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCellWifi:(id)arg1;
 - (int)StringAsGeoService:(id)arg1;
 - (int)StringAsPlaceRequestType:(id)arg1;
+- (void)_addNoFlagsTileUsage:(struct GEOTileUsage)arg1;
+- (void)_readCountryCode;
+- (void)_readHwMachine;
+- (void)_readRequestErrorDescription;
+- (void)_readRequestErrorDomain;
+- (void)_readTileUsages;
 - (void)addTileUsage:(struct GEOTileUsage)arg1;
 - (id)cellWifiAsString:(int)arg1;
 - (void)clearTileUsages;
@@ -92,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeRequestTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setTileUsages:(struct GEOTileUsage *)arg1 count:(unsigned long long)arg2;
 - (struct GEOTileUsage)tileUsageAtIndex:(unsigned long long)arg1;

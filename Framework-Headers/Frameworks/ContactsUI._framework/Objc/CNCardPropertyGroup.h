@@ -59,10 +59,13 @@
 - (id)displayItems;
 - (id)initWithProperty:(id)arg1 contact:(id)arg2 store:(id)arg3 policy:(id)arg4 linkedPolicies:(id)arg5;
 - (BOOL)isRequired;
+- (id)itemsUsingLabel:(id)arg1;
 - (BOOL)labelsAreUnique;
-- (id)labelsForItem:(id)arg1;
+- (id)labelsForItem:(id)arg1 options:(unsigned long long)arg2;
+- (id)labelsInUseByGroup;
 - (id)nextAvailableLabel;
 - (id)policyForItem:(id)arg1;
+- (Class)propertyGroupItemClass;
 - (void)reloadDataPreservingChanges:(BOOL)arg1;
 - (void)removeEditingItem:(id)arg1;
 - (void)saveChanges;

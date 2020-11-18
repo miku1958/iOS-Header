@@ -27,11 +27,12 @@ __attribute__((visibility("hidden")))
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (double)minCellHeight;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setCardGroupItem:(id)arg1;
+- (BOOL)shouldIndentWhileEditing;
 - (void)textFieldChanged:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (id)variableConstraints;
 
 @end
 

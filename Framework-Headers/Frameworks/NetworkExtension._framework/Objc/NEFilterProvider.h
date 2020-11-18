@@ -21,7 +21,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)descriptionForAction:(long long)arg1;
 - (void).cxx_destruct;
+- (void)handleReport:(id)arg1;
 - (void)startFilterWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopFilterWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

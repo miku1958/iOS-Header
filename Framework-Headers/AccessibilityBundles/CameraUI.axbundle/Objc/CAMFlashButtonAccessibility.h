@@ -16,9 +16,11 @@
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityHint;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (void)startExpansionWithProposedFrame:(struct CGRect)arg1;
 
 @end
 

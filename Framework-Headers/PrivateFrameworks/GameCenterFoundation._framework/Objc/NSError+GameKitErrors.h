@@ -8,6 +8,8 @@
 
 @interface NSError (GameKitErrors)
 + (id)_gkUnauthenticatedError;
++ (id)_gkUserErrorForGameSessionErrorCode:(long long)arg1 userInfo:(id)arg2;
++ (id)_gkUserErrorForTournamentErrorCode:(long long)arg1 reason:(id)arg2 userInfo:(id)arg3;
 + (id)serverErrorForCode:(long long)arg1 withReason:(id)arg2;
 + (id)serverErrorForCode:(long long)arg1 withUserInfo:(id)arg2;
 + (id)userErrorForCode:(long long)arg1 underlyingError:(id)arg2;

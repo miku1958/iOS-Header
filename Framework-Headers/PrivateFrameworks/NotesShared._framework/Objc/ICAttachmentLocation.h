@@ -22,7 +22,7 @@
 @property (nonatomic) BOOL placeUpdated; // @dynamic placeUpdated;
 @property (readonly) Class superclass;
 
-+ (id)newAttachmentLocationWithContext:(id)arg1;
++ (id)newAttachmentLocationForAttachment:(id)arg1;
 - (id)targetSearchIndexable;
 
 @end

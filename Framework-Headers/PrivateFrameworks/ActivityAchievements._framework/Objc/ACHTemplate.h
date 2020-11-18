@@ -29,11 +29,16 @@
     NSDate *_createdDate;
     NSString *_sourceName;
     NSString *_predicate;
+    NSString *_gracePredicate;
     NSString *_valueExpression;
+    NSString *_graceValueExpression;
     NSString *_progressExpression;
+    NSString *_graceProgressExpression;
     NSString *_goalExpression;
+    NSString *_graceGoalExpression;
     unsigned long long _triggers;
     NSString *_visibilityPredicate;
+    NSString *_graceVisibilityPredicate;
     NSString *_availabilityPredicate;
     NSArray *_availableCountryCodes;
     NSString *_alertabilityPredicate;
@@ -41,6 +46,7 @@
     unsigned long long _duplicateRemovalCalendarUnit;
     HKUnit *_canonicalUnit;
     unsigned long long _displayOrder;
+    NSArray *_availableSuffixes;
 }
 
 @property (strong, nonatomic) NSSet *alertDates; // @synthesize alertDates=_alertDates;
@@ -49,6 +55,7 @@
 @property (strong, nonatomic) NSString *availabilityPredicate; // @synthesize availabilityPredicate=_availabilityPredicate;
 @property (strong, nonatomic) NSDateComponents *availabilityStart;
 @property (strong, nonatomic) NSArray *availableCountryCodes; // @synthesize availableCountryCodes=_availableCountryCodes;
+@property (strong, nonatomic) NSArray *availableSuffixes; // @synthesize availableSuffixes=_availableSuffixes;
 @property (strong, nonatomic) HKUnit *canonicalUnit; // @synthesize canonicalUnit=_canonicalUnit;
 @property (strong, nonatomic) NSDate *createdDate; // @synthesize createdDate=_createdDate;
 @property (nonatomic) unsigned char creatorDevice; // @synthesize creatorDevice=_creatorDevice;
@@ -59,6 +66,11 @@
 @property (nonatomic) unsigned char earnDateStrategy; // @synthesize earnDateStrategy=_earnDateStrategy;
 @property (nonatomic) unsigned char earnLimit; // @synthesize earnLimit=_earnLimit;
 @property (strong, nonatomic) NSString *goalExpression; // @synthesize goalExpression=_goalExpression;
+@property (strong, nonatomic) NSString *graceGoalExpression; // @synthesize graceGoalExpression=_graceGoalExpression;
+@property (strong, nonatomic) NSString *gracePredicate; // @synthesize gracePredicate=_gracePredicate;
+@property (strong, nonatomic) NSString *graceProgressExpression; // @synthesize graceProgressExpression=_graceProgressExpression;
+@property (strong, nonatomic) NSString *graceValueExpression; // @synthesize graceValueExpression=_graceValueExpression;
+@property (strong, nonatomic) NSString *graceVisibilityPredicate; // @synthesize graceVisibilityPredicate=_graceVisibilityPredicate;
 @property (nonatomic) unsigned long long key; // @synthesize key=_key;
 @property (nonatomic) unsigned char minimumEngineVersion; // @synthesize minimumEngineVersion=_minimumEngineVersion;
 @property (strong, nonatomic) NSString *predicate; // @synthesize predicate=_predicate;
@@ -75,7 +87,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_displayStringForAlertDates:(id)arg1;
-- (id)_displayStringForAvailableCountryCodes:(id)arg1;
+- (id)_displayStringForStringValues:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;

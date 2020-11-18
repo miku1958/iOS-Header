@@ -9,10 +9,12 @@
 #import <PhotoFoundation/PFLoggerBackend-Protocol.h>
 
 @class NSString;
+@protocol OS_os_transaction;
 
 @interface PFLoggerBackendAdapter : NSObject <PFLoggerBackend>
 {
     _Atomic unsigned long long _pendingTransactionCount;
+    NSObject<OS_os_transaction> *_transaction;
     BOOL _runningUnderDebugger;
 }
 
@@ -30,6 +32,7 @@
 + (long long)fileSizeMaxBytesFromString:(id)arg1;
 + (long long)parseByteSizeValueForKey:(id)arg1 inString:(id)arg2;
 + (id)pathWithoutParametersFromString:(id)arg1;
+- (void).cxx_destruct;
 - (void)beginTransaction;
 - (void)endTransaction;
 - (void)flushWithCompletionHandler:(CDUnknownBlockType)arg1;

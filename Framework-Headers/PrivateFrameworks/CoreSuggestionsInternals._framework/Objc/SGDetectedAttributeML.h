@@ -14,8 +14,9 @@
 }
 
 - (void).cxx_destruct;
-- (id)detectionFromEntity:(id)arg1 ddMatch:(id)arg2 matchedContext:(id)arg3 withSupervision:(id)arg4 inLanguage:(id)arg5;
-- (id)detectionFromMatch:(id)arg1 plainTextContent:(id)arg2;
+- (void)addSessionForTrainingWithSource:(id)arg1 label:(long long)arg2 language:(id)arg3 objective:(unsigned long long)arg4 spotlightRef:(id)arg5 embeddedFeaturizer:(CDUnknownBlockType)arg6;
+- (id)detectionFromEntity:(id)arg1 ddMatch:(id)arg2 matchedContext:(id)arg3 withSupervision:(id)arg4 inConversation:(id)arg5;
+- (id)detectionFromMatch:(id)arg1 plainTextContent:(id)arg2 extractionInfo:(id)arg3 isUnlikelyPhone:(BOOL)arg4;
 - (void)handleTextMessageContactSharing:(id)arg1 andMatch:(id)arg2 andContext:(id)arg3 andLanguage:(id)arg4 withSupervision:(id)arg5;
 - (void)handleTextMessageContactSharingWithNegativeSample:(id)arg1 andLanguage:(id)arg2;
 - (id)init;

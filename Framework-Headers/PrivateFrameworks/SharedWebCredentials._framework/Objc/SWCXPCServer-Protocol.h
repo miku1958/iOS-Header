@@ -4,19 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SharedWebCredentials/NSObject-Protocol.h>
+@class NSDictionary, NSObject, NSSet, NSString, NSURL, _SWCServiceSettings, _SWCServiceSpecifier;
+@protocol OS_xpc_object;
 
-@class NSDictionary, NSString;
-
-@protocol SWCXPCServer <NSObject>
-- (void)addAllAppsWithReply:(void (^)(int))arg1;
-- (void)addService:(NSString *)arg1 app:(NSString *)arg2 domain:(NSString *)arg3 reply:(void (^)(int))arg4;
-- (void)checkService:(NSString *)arg1 app:(NSString *)arg2 domain:(NSString *)arg3 reply:(void (^)(int, unsigned int, NSDictionary *))arg4;
-- (void)getInfoForService:(NSString *)arg1 app:(NSString *)arg2 domain:(NSString *)arg3 reply:(void (^)(int, NSArray *))arg4;
-- (void)logControl:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
-- (void)removeService:(NSString *)arg1 app:(NSString *)arg2 domain:(NSString *)arg3 reply:(void (^)(int))arg4;
-- (void)setService:(NSString *)arg1 app:(NSString *)arg2 domain:(NSString *)arg3 details:(NSDictionary *)arg4 reply:(void (^)(int))arg5;
-- (void)setService:(NSString *)arg1 app:(NSString *)arg2 domain:(NSString *)arg3 mask:(unsigned int)arg4 flags:(unsigned int)arg5 reply:(void (^)(int, unsigned int))arg6;
-- (void)show:(NSString *)arg1 reply:(void (^)(NSString *))arg2;
+@protocol SWCXPCServer
+- (void)addAllAppsWithCompletionHandler:(void (^)(void))arg1;
+- (void)addServiceWithServiceSpecifier:(_SWCServiceSpecifier *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
+- (void)checkServiceWithServiceSpecifier:(_SWCServiceSpecifier *)arg1 completionHandler:(void (^)(BOOL, unsigned int, NSDictionary *, NSError *))arg2;
+- (void)commitServiceSettings:(_SWCServiceSettings *)arg1 completionHandler:(void (^)(_SWCGeneration *, NSError *))arg2;
+- (void)getDetailsWithServiceSpecifier:(_SWCServiceSpecifier *)arg1 URL:(NSURL *)arg2 limit:(unsigned long long)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
+- (void)getInfoWithServiceSpecifier:(_SWCServiceSpecifier *)arg1 URL:(NSURL *)arg2 limit:(unsigned long long)arg3 completionHandler:(void (^)(NSArray *, NSError *))arg4;
+- (void)getServiceSettingsWithServiceSpecifier:(_SWCServiceSpecifier *)arg1 completionHandler:(void (^)(_SWCServiceSettings *, NSError *))arg2;
+- (void)removeServiceWithServiceSpecifier:(_SWCServiceSpecifier *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
+- (void)removeSettingsForKeys:(NSSet *)arg1 serviceSpecifier:(_SWCServiceSpecifier *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)removeSettingsForKeys:(NSSet *)arg1 serviceType:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)resetWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
+- (void)setDetails:(NSDictionary *)arg1 forServiceWithServiceSpecifier:(_SWCServiceSpecifier *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)setFlags:(unsigned int)arg1 mask:(unsigned int)arg2 forServiceWithServiceSpecifier:(_SWCServiceSpecifier *)arg3 createIfNeeded:(BOOL)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;
+- (void)showWithVerbosity:(unsigned char)arg1 isTTY:(BOOL)arg2 fileDescriptor:(NSObject<OS_xpc_object> *)arg3 completionHandler:(void (^)(void))arg4;
+- (void)waitForSiteApprovalWithServiceSpecifier:(_SWCServiceSpecifier *)arg1 completionHandler:(void (^)(_SWCServiceDetails *, NSError *))arg2;
 @end
 

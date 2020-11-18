@@ -47,9 +47,6 @@
 @property (copy, nonatomic) NSString *username;
 
 + (id)accountTypeString;
-+ (id)dataclassesBoundToPrimaryAccount;
-+ (id)dataclassesBoundToSingleAccount;
-+ (id)dataclassesBoundToSyncAccount;
 - (void).cxx_destruct;
 - (id)_childAccounts;
 - (id)_mailChildAccount;

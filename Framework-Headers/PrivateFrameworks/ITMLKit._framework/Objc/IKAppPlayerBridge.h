@@ -56,6 +56,7 @@
 
 + (id)makeFeatureJSObjectForFeature:(id)arg1;
 - (void).cxx_destruct;
+- (void)_evaluateDelegateBlockSync:(CDUnknownBlockType)arg1;
 - (void)changeToMediaAtIndex:(unsigned long long)arg1;
 - (void)cleanup;
 - (void)dispatchEvent:(id)arg1 userInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;

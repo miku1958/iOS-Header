@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
+@class NSSet, NSString;
 @protocol CHStrokeIdentifier;
 
 @interface CHStrokeGroup : NSObject
@@ -17,6 +17,9 @@
     id<CHStrokeIdentifier> _firstStrokeIdentifier;
     id<CHStrokeIdentifier> _lastStrokeIdentifier;
     long long _classification;
+    double _groupingConfidence;
+    NSString *_strategyIdentifier;
+    struct CGPoint _firstStrokeOrigin;
     struct CGRect _bounds;
 }
 
@@ -25,7 +28,10 @@
 @property (readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (readonly, nonatomic) long long classification; // @synthesize classification=_classification;
 @property (readonly, nonatomic) id<CHStrokeIdentifier> firstStrokeIdentifier; // @synthesize firstStrokeIdentifier=_firstStrokeIdentifier;
+@property (readonly, nonatomic) struct CGPoint firstStrokeOrigin; // @synthesize firstStrokeOrigin=_firstStrokeOrigin;
+@property (readonly, nonatomic) double groupingConfidence; // @synthesize groupingConfidence=_groupingConfidence;
 @property (readonly, nonatomic) id<CHStrokeIdentifier> lastStrokeIdentifier; // @synthesize lastStrokeIdentifier=_lastStrokeIdentifier;
+@property (readonly, nonatomic) NSString *strategyIdentifier; // @synthesize strategyIdentifier=_strategyIdentifier;
 @property (readonly, nonatomic) NSSet *strokeIdentifiers; // @synthesize strokeIdentifiers=_strokeIdentifiers;
 @property (readonly, nonatomic) long long uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
@@ -33,10 +39,10 @@
 + (BOOL)isStrokeGroupSet:(id)arg1 equivalentToStrokeGroupSet:(id)arg2;
 - (void)dealloc;
 - (id)description;
-- (id)groupByAddingStrokeIdentifiers:(id)arg1 removingStrokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect)arg5 classification:(long long)arg6;
+- (id)groupByAddingStrokeIdentifiers:(id)arg1 removingStrokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect)arg5 classification:(long long)arg6 groupingConfidence:(double)arg7 firstStrokeOrigin:(struct CGPoint)arg8;
 - (id)init;
-- (id)initWithAncestorIdentifier:(long long)arg1 strokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect)arg5 classification:(long long)arg6;
-- (id)initWithStrokeIdentifiers:(id)arg1 firstStrokeIdentifier:(id)arg2 lastStrokeIdentifier:(id)arg3 bounds:(struct CGRect)arg4 classification:(long long)arg5;
+- (id)initWithAncestorIdentifier:(long long)arg1 strokeIdentifiers:(id)arg2 firstStrokeIdentifier:(id)arg3 lastStrokeIdentifier:(id)arg4 bounds:(struct CGRect)arg5 classification:(long long)arg6 groupingConfidence:(double)arg7 strategyIdentifier:(id)arg8 firstStrokeOrigin:(struct CGPoint)arg9;
+- (id)initWithStrokeIdentifiers:(id)arg1 firstStrokeIdentifier:(id)arg2 lastStrokeIdentifier:(id)arg3 bounds:(struct CGRect)arg4 classification:(long long)arg5 groupingConfidence:(double)arg6 strategyIdentifier:(id)arg7 firstStrokeOrigin:(struct CGPoint)arg8;
 - (BOOL)isEquivalentToStrokeGroup:(id)arg1;
 
 @end

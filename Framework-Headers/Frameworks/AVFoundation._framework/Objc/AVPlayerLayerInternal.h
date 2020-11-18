@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVKeyPathDependencyManager, AVNetworkPlaybackPerfHUDLayer, AVPlayer, AVPlayerLayer, CALayer, FigBaseCALayer, FigSubtitleCALayer, FigVideoContainerLayer, NSDictionary, NSSet, NSString;
-@protocol AVCallbackCancellation, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVPlayerLayerInternal : NSObject
@@ -17,26 +17,26 @@ __attribute__((visibility("hidden")))
     BOOL isPresentationLayer;
     struct OpaqueFigSimpleMutex *isReadyForDisplayMutex;
     NSObject<OS_dispatch_queue> *configurationQueue;
-    NSString *subtitleGravity;
     AVKeyPathDependencyManager *dependencyManager;
     AVPlayer *player;
     NSString *videoGravity;
     NSDictionary *pixelBufferAttributes;
     BOOL lanczosDownscalingEnabled;
     long long lanczosDownscalingFactor;
-    BOOL shouldObservePlayer;
     FigBaseCALayer *maskLayer;
     FigVideoContainerLayer *videoLayer;
     FigSubtitleCALayer *subtitleLayer;
     FigBaseCALayer *closedCaptionLayer;
+    BOOL isLegibleDisplayEnabled;
+    BOOL isForScrubbingOnly;
     AVPlayerLayer *associatedRemoteModeLayer;
     BOOL willManageSublayersAsSwappedLayers;
     long long activeMode;
+    BOOL isPartOfForegroundScene;
     BOOL isReadyForDisplay;
     AVPlayer *playerBeingObserved;
     NSSet *KVOInvokers;
     struct CGSize latestAppliedPresentationSize;
-    id<AVCallbackCancellation> playerCurrentItemHasVideoFrameEnqueuedKVOInvoker;
     BOOL preventsChangesToSublayerHierarchy;
     NSDictionary *clientLayers;
     BOOL isPIPModeEnabled;

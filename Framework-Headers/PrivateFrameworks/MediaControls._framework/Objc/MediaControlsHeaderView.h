@@ -6,8 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-@class MPButton, MPCPlayerPath, MPUMarqueeView, MTMaterialView, MediaControlsRouteLabel, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel;
+@class MPButton, MPCPlayerPath, MPRouteLabel, MPUMarqueeView, MTMaterialView, MTVisualStylingProvider, MediaControlsRoutingButtonView, NSString, UIButton, UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsHeaderView : UIView
 {
     BOOL _transitioning;
@@ -18,13 +19,14 @@
     UIImageView *_artworkView;
     UIImageView *_placeholderArtworkView;
     long long _style;
-    MediaControlsRouteLabel *_routeLabel;
+    MPRouteLabel *_routeLabel;
     NSString *_primaryString;
     NSString *_secondaryString;
     MediaControlsRoutingButtonView *_routingButton;
     MPButton *_doneButton;
     UIButton *_launchNowPlayingAppButton;
     long long _buttonType;
+    MTVisualStylingProvider *_visualStylingProvider;
     MTMaterialView *_artworkBackground;
     UIView *_shadow;
     MPUMarqueeView *_primaryMarqueeView;
@@ -46,7 +48,7 @@
 @property (strong, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property (strong, nonatomic) MPUMarqueeView *primaryMarqueeView; // @synthesize primaryMarqueeView=_primaryMarqueeView;
 @property (copy, nonatomic) NSString *primaryString; // @synthesize primaryString=_primaryString;
-@property (strong, nonatomic) MediaControlsRouteLabel *routeLabel; // @synthesize routeLabel=_routeLabel;
+@property (strong, nonatomic) MPRouteLabel *routeLabel; // @synthesize routeLabel=_routeLabel;
 @property (nonatomic, getter=isRouting) BOOL routing; // @synthesize routing=_routing;
 @property (strong, nonatomic) MediaControlsRoutingButtonView *routingButton; // @synthesize routingButton=_routingButton;
 @property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
@@ -56,6 +58,7 @@
 @property (nonatomic) BOOL shouldUseOverrideSize; // @synthesize shouldUseOverrideSize=_shouldUseOverrideSize;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
+@property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 
 - (void).cxx_destruct;
 - (void)_handleContentSizeCategoryDidChangeNotification:(id)arg1;

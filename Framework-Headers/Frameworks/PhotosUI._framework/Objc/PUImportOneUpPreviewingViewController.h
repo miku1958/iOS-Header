@@ -6,18 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
-@class PUImportItemViewModel, PUImportMediaProvider, PUImportOneUpTransitionView;
+@class PUImportOneUpTransitionView, PXImportItemViewModel, PXImportMediaProvider;
 
 __attribute__((visibility("hidden")))
 @interface PUImportOneUpPreviewingViewController : UIViewController
 {
-    PUImportItemViewModel *_importItemViewModel;
-    PUImportMediaProvider *_mediaProvider;
+    PXImportItemViewModel *_importItemViewModel;
+    PXImportMediaProvider *_mediaProvider;
     PUImportOneUpTransitionView *_previewView;
 }
 
-@property (strong, nonatomic) PUImportItemViewModel *importItemViewModel; // @synthesize importItemViewModel=_importItemViewModel;
-@property (strong, nonatomic) PUImportMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (strong, nonatomic) PXImportItemViewModel *importItemViewModel; // @synthesize importItemViewModel=_importItemViewModel;
+@property (strong, nonatomic) PXImportMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (strong, nonatomic) PUImportOneUpTransitionView *previewView; // @synthesize previewView=_previewView;
 
 - (void).cxx_destruct;

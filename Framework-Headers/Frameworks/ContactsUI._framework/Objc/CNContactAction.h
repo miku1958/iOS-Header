@@ -12,6 +12,8 @@
 @interface CNContactAction : NSObject
 {
     BOOL _destructive;
+    BOOL _showBackgroundPlatter;
+    BOOL _canPerformAction;
     id<CNContactActionDelegate> _delegate;
     CNContact *_contact;
     NSString *_title;
@@ -21,12 +23,14 @@
     long long _transportType;
 }
 
+@property (readonly, nonatomic) BOOL canPerformAction; // @synthesize canPerformAction=_canPerformAction;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (weak, nonatomic) id<CNContactActionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isDestructive) BOOL destructive; // @synthesize destructive=_destructive;
 @property (readonly, nonatomic) CNMutableContact *mutableContact;
 @property (readonly, nonatomic) SEL selector; // @synthesize selector=_selector;
+@property (nonatomic) BOOL showBackgroundPlatter; // @synthesize showBackgroundPlatter=_showBackgroundPlatter;
 @property (readonly, nonatomic) id target; // @synthesize target=_target;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) long long transportType; // @synthesize transportType=_transportType;

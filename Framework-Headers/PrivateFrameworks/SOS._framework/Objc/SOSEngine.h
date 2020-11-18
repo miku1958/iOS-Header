@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <SOS/NPHSOSPersistentTimerLocationManagerDelegate-Protocol.h>
 #import <SOS/NSXPCListenerDelegate-Protocol.h>
 #import <SOS/SOSInternalServerProtocol-Protocol.h>
+#import <SOS/SOSPersistentTimerLocationManagerDelegate-Protocol.h>
 #import <SOS/SOSServerProtocol-Protocol.h>
 
-@class CLLocation, FKFriendsManager, NPHSOSPersistentTimerLocationManager, NSDate, NSMutableArray, NSString, SOSContactsManager, _MKLocationShifter;
+@class CLLocation, FKFriendsManager, NSDate, NSMutableArray, NSString, SOSContactsManager, SOSPersistentTimerLocationManager, _MKLocationShifter;
 
-@interface SOSEngine : NSObject <NPHSOSPersistentTimerLocationManagerDelegate, SOSInternalServerProtocol, SOSServerProtocol, NSXPCListenerDelegate>
+@interface SOSEngine : NSObject <SOSInternalServerProtocol, SOSPersistentTimerLocationManagerDelegate, SOSServerProtocol, NSXPCListenerDelegate>
 {
-    NPHSOSPersistentTimerLocationManager *_sosPersistentTimerLocationManager;
+    SOSPersistentTimerLocationManager *_sosPersistentTimerLocationManager;
     NSDate *_timeToStopSendingMessages;
     NSDate *_timeLastMessageSent;
     CLLocation *_lastLocationSent;
     SOSContactsManager *_contactsManager;
+    NSString *_medicalIDName;
     long long _notifyContactsReason;
     FKFriendsManager *_friendsManager;
     _MKLocationShifter *_locationShifter;
@@ -38,9 +39,9 @@
 + (BOOL)_isBasebandDevice;
 + (void)_sendCKMessage:(id)arg1 failureBlock:(CDUnknownBlockType)arg2;
 + (void)_sendMessage:(id)arg1 location:(id)arg2 recipients:(id)arg3 useStandalone:(BOOL)arg4 failureBlock:(CDUnknownBlockType)arg5;
-+ (void)_sendMessageToRecipients:(id)arg1 withLocation:(id)arg2 isFirstMessage:(BOOL)arg3 Reason:(long long)arg4;
++ (void)_sendMessageToRecipients:(id)arg1 withLocation:(id)arg2 isFirstMessage:(BOOL)arg3 medicalIDName:(id)arg4 Reason:(long long)arg5;
 + (void)_sendSMSMessage:(id)arg1 MMSMessage:(id)arg2 location:(id)arg3 recipients:(id)arg4 failureBlock:(CDUnknownBlockType)arg5;
-+ (id)_sosMessageForLocation:(id)arg1 isFirstMessage:(BOOL)arg2 withMMS:(BOOL)arg3 callbackNumber:(id)arg4 Reason:(long long)arg5;
++ (id)_sosMessageForLocation:(id)arg1 isFirstMessage:(BOOL)arg2 withMMS:(BOOL)arg3 callbackNumber:(id)arg4 medicalIDName:(id)arg5 Reason:(long long)arg6;
 + (id)_sosMessageForLocation:(id)arg1 isFirstMessage:(BOOL)arg2 withMMS:(BOOL)arg3 myFullName:(id)arg4 myFirstName:(id)arg5 callbackNumber:(id)arg6 Reason:(long long)arg7;
 + (id)additionalTextForCallbackNumber:(id)arg1;
 + (id)additionalTextForCallbackNumber:(id)arg1 fullName:(id)arg2 firstName:(id)arg3;
@@ -61,7 +62,9 @@
 - (void)dealloc;
 - (void)didDismissSOSBeforeSOSCall:(long long)arg1;
 - (void)dismissSOSWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchMedicalIDName;
 - (id)init;
+- (id)initWithoutEntitlement;
 - (BOOL)isSendingLocationUpdate;
 - (void)isSendingLocationUpdate:(CDUnknownBlockType)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

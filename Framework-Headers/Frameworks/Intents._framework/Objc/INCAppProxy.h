@@ -16,6 +16,7 @@
 @property (readonly, weak, nonatomic) INCExtensionConnection *_connection; // @synthesize _connection;
 
 + (void)initialize;
++ (BOOL)shouldLaunchAppInBackgroundWithIntent:(id)arg1 intentResponse:(id)arg2;
 - (void).cxx_destruct;
 - (id)_initWithConnection:(id)arg1;
 - (void)launchAppInBackground:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -6,9 +6,11 @@
 
 #import <CellularPlanManager/NSObject-Protocol.h>
 
-@class CTCellularPlanCarrierItem, CTCellularPlanItem, CTDanglingPlanItem, CTUserLabel, CTXPCServiceSubscriptionContext, NSArray, NSData, NSDictionary, NSNumber, NSString;
+@class CTCellularPlanCarrierItem, CTCellularPlanItem, CTCellularPlanPendingTransfer, CTDanglingPlanItem, CTUserLabel, CTXPCServiceSubscriptionContext, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @protocol CTCellularPlanClient <NSObject>
+- (void)activatePlanPendingTransfer:(CTCellularPlanPendingTransfer *)arg1 completion:(void (^)(BOOL, NSString *, NSDictionary *, NSError *))arg2;
+- (void)addNewAddonPlanDuringBuddy:(BOOL)arg1 userConsent:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addNewPlanWithAddress:(NSString *)arg1 matchingId:(NSString *)arg2 oid:(NSString *)arg3 confirmationCode:(NSString *)arg4 triggerType:(long long)arg5 userConsent:(long long)arg6 completion:(void (^)(NSError *))arg7;
 - (void)addNewPlanWithCardData:(NSString *)arg1 confirmationCode:(NSString *)arg2 triggerType:(long long)arg3 userConsent:(long long)arg4 completion:(void (^)(NSError *))arg5;
 - (void)addNewPlanWithCarrierItem:(CTCellularPlanCarrierItem *)arg1 triggerType:(long long)arg2 userConsent:(long long)arg3 completion:(void (^)(NSError *))arg4;
@@ -21,6 +23,7 @@
 - (void)carrierItemsShouldUpdate:(BOOL)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)danglingPlanItemsShouldUpdate:(BOOL)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)deleteAllRemoteProfiles;
+- (void)deletePlanPendingTransfer:(CTCellularPlanPendingTransfer *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)deleteRemoteProfile:(NSString *)arg1;
 - (void)didCancelRemotePlan;
 - (void)didDeletePlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
@@ -30,9 +33,10 @@
 - (void)didPurchaseRemotePlanForEid:(NSString *)arg1 imei:(NSString *)arg2 meid:(NSString *)arg3 iccid:(NSString *)arg4 alternateSmdpFqdn:(NSString *)arg5 completion:(void (^)(BOOL))arg6;
 - (void)didSelectPlanForData:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)didSelectPlanForDefaultVoice:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)didSelectPlanForIMessage:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)didSelectPlanItem:(CTCellularPlanItem *)arg1 enable:(BOOL)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)didSelectPlansForIMessage:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)didSelectRemotePlanItem:(CTCellularPlanItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)didTransferPlanForCsn:(NSData *)arg1 iccid:(NSString *)arg2 profileServer:(NSString *)arg3 state:(NSString *)arg4;
 - (void)enableVinylFlowTypeOverride:(BOOL)arg1;
 - (void)eraseAllPlansWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)eraseAllRemotePlansWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -46,6 +50,8 @@
 - (void)getESimServerURL:(void (^)(NSString *))arg1;
 - (void)getEnableVinylFlowTypeOverride:(void (^)(BOOL))arg1;
 - (void)getIMEIPrefix:(void (^)(NSString *))arg1;
+- (void)getPhoneAuthTokenWithMessage:(NSDictionary *)arg1 completion:(void (^)(NSString *, BOOL))arg2;
+- (void)getPlansPendingTransferWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)getPredefinedLabels:(void (^)(NSArray *, NSError *))arg1;
 - (void)getRemoteInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getRoamingSignupOverrideWithCompletion:(void (^)(BOOL))arg1;

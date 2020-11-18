@@ -7,8 +7,8 @@
 #import <SiriUI/CRCommandHandling-Protocol.h>
 #import <SiriUI/CRFeedbackListener-Protocol.h>
 
-@class CRKCardSectionViewController, CRNextCardCommand, CRPunchoutCommand, CRRequestUserConfirmationCommand, INIntent, UIViewController;
-@protocol CRCard, CRKCardViewControlling, CRReferentialCommand;
+@class CRBeganEditingCommand, CRKCardSectionViewController, CRNextCardCommand, CRPunchoutCommand, CRRequestUserConfirmationCommand, INIntent, UIViewController;
+@protocol CRCard, CRKCardSectionViewProviderManaging, CRKCardViewControlling, CRReferentialCommand;
 
 @protocol CRKCardViewControllerDelegate <CRFeedbackListener, CRCommandHandling>
 
@@ -19,10 +19,12 @@
 - (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 didFailToLoadCard:(id<CRCard>)arg2;
 - (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 requestCardSectionViewSourceForCard:(id<CRCard>)arg2 reply:(void (^)(id<CRKCardSectionViewSourcing>, NSError *))arg3;
 - (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 requestsHandlingOfIntent:(INIntent *)arg2;
+- (BOOL)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 shouldLoadIdentifiedCardSectionViewProvidersWithProviderManager:(id<CRKCardSectionViewProviderManaging>)arg2;
 - (void)cardViewController:(UIViewController<CRKCardViewControlling> *)arg1 willDismissViewController:(UIViewController *)arg2;
 - (void)cardViewControllerBoundsDidChange:(UIViewController<CRKCardViewControlling> *)arg1;
 - (void)cardViewControllerDidLoad:(UIViewController<CRKCardViewControlling> *)arg1;
 - (unsigned long long)navigationIndexOfCardViewController:(UIViewController<CRKCardViewControlling> *)arg1;
+- (BOOL)performBeganEditingCommand:(CRBeganEditingCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
 - (BOOL)performNextCardCommand:(CRNextCardCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
 - (BOOL)performPunchoutCommand:(CRPunchoutCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
 - (BOOL)performReferentialCommand:(id<CRReferentialCommand>)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;

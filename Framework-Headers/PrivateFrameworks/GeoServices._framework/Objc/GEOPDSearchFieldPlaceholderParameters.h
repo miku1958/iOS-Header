@@ -15,17 +15,17 @@ __attribute__((visibility("hidden")))
 {
     PBUnknownFields *_unknownFields;
     int _version;
-    struct {
-        unsigned int version:1;
-    } _has;
+    CDStruct_a42fff2f _flags;
 }
 
 @property (nonatomic) BOOL hasVersion;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) int version; // @synthesize version=_version;
+@property (nonatomic) int version;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsVersion:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)versionAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

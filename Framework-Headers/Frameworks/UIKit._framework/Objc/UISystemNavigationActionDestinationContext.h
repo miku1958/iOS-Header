@@ -15,6 +15,7 @@
     NSString *_title;
     NSString *_bundleId;
     NSURL *_URL;
+    NSString *_sceneIdentifier;
 }
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
@@ -22,11 +23,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)systemNavigationActionContextWithTitle:(id)arg1 andURL:(id)arg2;
 + (id)systemNavigationActionContextWithTitle:(id)arg1 bundleId:(id)arg2;
++ (id)systemNavigationActionContextWithTitle:(id)arg1 sceneIdentifier:(id)arg2;
 + (id)systemNavigationActionContextWithURL:(id)arg1;
 - (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;

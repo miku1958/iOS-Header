@@ -62,6 +62,7 @@
 - (BOOL)_isConflictSearchRow:(long long)arg1;
 - (BOOL)_isValidRow:(long long)arg1;
 - (unsigned long long)_numberOfTimeSlotsShown;
+- (id)actionsForRow:(id)arg1;
 - (void)availabilitySearcherChangedState:(long long)arg1;
 - (BOOL)canEditRow:(id)arg1;
 - (BOOL)canSelectRow:(id)arg1;

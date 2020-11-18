@@ -6,16 +6,19 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class CLInUseAssertion, NSArray, NSObject, NSString, OBPrivacyLinkController, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPaymentProvisioningController, PKPaymentWebService, PKTableHeaderView, RemoteUIController;
-@protocol NSObject, OS_dispatch_source, PKAddPaymentPassRequestViewControllerDelegate;
+#import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
-@interface PKAddPaymentPassRequestViewController : UITableViewController
+@class CLInUseAssertion, NSArray, NSObject, NSString, OBPrivacyLinkController, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentWebService, PKTableHeaderView, RemoteUIController;
+@protocol NSObject, OS_dispatch_source, PKAddPaymentPassRequestViewControllerDelegate, PKPaymentSetupViewControllerDelegate;
+
+@interface PKAddPaymentPassRequestViewController : UITableViewController <PKPaymentSetupViewControllerDelegate>
 {
     NSString *_title;
     NSString *_subtitle;
     NSArray *_details;
     long long _headerState;
     id<NSObject> _notificationToken;
+    PKPasscodeUpgradeFlowController *_passcodeUpgradeFlowController;
     PKPaymentProvisioningController *_provisioningController;
     PKAddPaymentPassRequestConfiguration *_configuration;
     CLInUseAssertion *_passbookForegroundAssertion;
@@ -32,14 +35,21 @@
     BOOL _hidePrivacy;
     BOOL _singleTarget;
     id<PKAddPaymentPassRequestViewControllerDelegate> _delegate;
+    id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
     PKPaymentWebService *_webService;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKAddPaymentPassRequestViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidePrivacy; // @synthesize hidePrivacy=_hidePrivacy;
+@property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (nonatomic) BOOL singleTarget; // @synthesize singleTarget=_singleTarget;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 
++ (id)backgroundColor;
 - (void).cxx_destruct;
 - (void)_applyHeaderState;
 - (void)_cancelDatasourceTimeout;
@@ -50,6 +60,7 @@
 - (void)_performEligibility;
 - (void)_performMoreInfoItemPush;
 - (void)_performNextProvisioningStep;
+- (void)_performPasscodeUpgradeIfNeeded;
 - (void)_performPreconditionValidation;
 - (void)_performProvisioning:(id)arg1;
 - (void)_performTerms:(id)arg1;
@@ -64,6 +75,7 @@
 - (void)_updateHeaderSize;
 - (void)_updateHeaderWithSubtitle:(id)arg1;
 - (void)dealloc;
+- (void)hostApplicationDidEnterBackground;
 - (id)initWithPaymentWebService:(id)arg1 configuration:(id)arg2;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;

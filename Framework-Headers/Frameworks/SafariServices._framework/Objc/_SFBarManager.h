@@ -6,23 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable;
+@class NSMapTable, NSTimer;
 @protocol _SFBarManagerDelegate;
 
 @interface _SFBarManager : NSObject
 {
     NSMapTable *_barToRegistrationMap;
     BOOL _deferUpdateAllRegistrations;
-    BOOL _itemEnabledMap[7];
+    BOOL _itemEnabledMap[8];
     BOOL _needsUpdateAllRegistrations;
+    NSTimer *_coalescedUpdatesTimer;
+    double _lastCoalescedUpdatesTime;
+    CDUnknownBlockType _coalescedUpdatesBlock;
+    BOOL _itemHiddenMap[8];
     BOOL _bookmarksItemSelected;
     id<_SFBarManagerDelegate> _delegate;
+    double _downloadsItemProgress;
 }
 
 @property (nonatomic, getter=isBookmarksItemSelected) BOOL bookmarksItemSelected; // @synthesize bookmarksItemSelected=_bookmarksItemSelected;
 @property (weak, nonatomic) id<_SFBarManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) double downloadsItemProgress; // @synthesize downloadsItemProgress=_downloadsItemProgress;
 
 - (void).cxx_destruct;
+- (void)_invalidateCoalescedUpdatesTimer;
+- (void)_performCoalescedUpdatesNow;
 - (void)_updateAllRegistrations;
 - (void)_updateRegistration:(id)arg1;
 - (BOOL)barRegistration:(id)arg1 canHandleLongPressForBarItem:(long long)arg2;
@@ -31,11 +39,16 @@
 - (void)barRegistration:(id)arg1 didReceiveTouchDownForBarItem:(long long)arg2;
 - (id)init;
 - (BOOL)isBarItemEnabled:(long long)arg1;
+- (BOOL)isBarItemHidden:(long long)arg1;
 - (void)performCoalescedUpdates:(CDUnknownBlockType)arg1;
+- (void)pulseDownloadsItem;
 - (void)registerToolbar:(id)arg1 withLayout:(long long)arg2 persona:(unsigned long long)arg3;
 - (void)setBarItem:(long long)arg1 enabled:(BOOL)arg2;
+- (void)setBarItem:(long long)arg1 hidden:(BOOL)arg2;
+- (void)setDownloadsItemNeedsLayout;
 - (unsigned long long)test_numberOfRegistrations;
 - (id)test_registrationForBar:(id)arg1;
+- (void)visibleBarItemsNeedUpdate;
 
 @end
 

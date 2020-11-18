@@ -9,7 +9,7 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class CLKTextProviderCache, NSMutableArray, NSMutableDictionary, UIColor;
+@class CLKTextProviderCache, NSMutableArray, NSMutableDictionary, NSString, UIColor;
 
 @interface CLKTextProvider : NSObject <NSSecureCoding, NSCopying>
 {
@@ -22,15 +22,21 @@
     struct NSNumber *_minuteTimerToken;
     struct NSNumber *_30fpsTimerToken;
     BOOL _finalized;
+    BOOL _ignoreUppercaseStyle;
     BOOL _paused;
     BOOL _italicized;
+    BOOL _monospacedNumbers;
     BOOL _useMonospacedNumbersForTimeTravel;
     UIColor *_tintColor;
+    NSString *_accessibilityLabel;
     long long _shrinkTextPreference;
     long long _timeTravelUpdateFrequency;
 }
 
+@property (copy, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
+@property (nonatomic) BOOL ignoreUppercaseStyle; // @synthesize ignoreUppercaseStyle=_ignoreUppercaseStyle;
 @property (nonatomic) BOOL italicized; // @synthesize italicized=_italicized;
+@property (nonatomic) BOOL monospacedNumbers; // @synthesize monospacedNumbers=_monospacedNumbers;
 @property (nonatomic) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) long long shrinkTextPreference; // @synthesize shrinkTextPreference=_shrinkTextPreference;
 @property (nonatomic) long long timeTravelUpdateFrequency; // @synthesize timeTravelUpdateFrequency=_timeTravelUpdateFrequency;
@@ -56,6 +62,7 @@
 - (void)_localeChanged;
 - (id)_localizedTextProviderWithBundle:(id)arg1 forLocalization:(id)arg2;
 - (void)_maybeStartOrStopUpdates;
+- (id)_monospacedNumbers:(id)arg1;
 - (void)_pruneCacheKeysIfNecessary;
 - (id)_sessionAttributedTextForIndex:(unsigned long long)arg1 withStyle:(id)arg2;
 - (id)_sessionCacheKey;

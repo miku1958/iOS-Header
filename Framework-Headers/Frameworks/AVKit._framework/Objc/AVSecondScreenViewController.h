@@ -8,6 +8,7 @@
 
 @class AVPlayerLayer, AVSecondScreenPlayerLayerView, UILabel, UIView;
 
+__attribute__((visibility("hidden")))
 @interface AVSecondScreenViewController : UIViewController
 {
     BOOL _playingOnSecondScreen;

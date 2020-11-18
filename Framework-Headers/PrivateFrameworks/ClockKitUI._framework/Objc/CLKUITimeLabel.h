@@ -74,6 +74,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1;
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1 forDevice:(id)arg2;
+- (id)labelManagerContentView;
 - (void)layoutSubviews;
 - (void)prepareToTransitionToStyle:(id)arg1;
 - (void)setBlinkingPaused:(BOOL)arg1;

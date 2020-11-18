@@ -16,6 +16,7 @@
 }
 
 @property (copy, nonatomic) PSIDateFilter *dateFilter; // @synthesize dateFilter=_dateFilter;
+@property (readonly, nonatomic) NSArray *datedTokens;
 @property (readonly, nonatomic) unsigned long long numberOfTokens;
 
 - (void).cxx_destruct;

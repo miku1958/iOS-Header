@@ -39,6 +39,7 @@
 @property (copy, nonatomic) id<FCTodayPrivateData> todayData; // @synthesize todayData=_todayData;
 
 - (void).cxx_destruct;
+- (id)_userProfile;
 - (double)decayedPublisherDiversificationPenalty;
 - (id)diversifyItems:(id)arg1 limit:(unsigned long long)arg2;
 - (id)diversifyItems:(id)arg1 limit:(unsigned long long)arg2 preselectedItems:(id)arg3;
@@ -49,6 +50,7 @@
 - (void)prepareFavoritesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)prepareForUseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)rankTagIDsDescending:(id)arg1;
+- (id)scoreProfilesForItems:(id)arg1 configurationSet:(long long)arg2;
 - (id)scoresForTagIDs:(id)arg1;
 - (id)sortItems:(id)arg1;
 - (id)sortItems:(id)arg1 configurationSet:(long long)arg2;

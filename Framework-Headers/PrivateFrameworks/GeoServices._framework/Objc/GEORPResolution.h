@@ -8,44 +8,67 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, NSMutableArray, NSString;
+@class GEOMapRegion, NSMutableArray, NSString, PBDataReader;
 
 @interface GEORPResolution : PBCodable <NSCopying>
 {
-    double _resolutionDate;
-    unsigned long long _transitLineMuid;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOMapRegion *_displayRegion;
-    int _displayStyle;
     NSString *_localizedAlertText;
     NSMutableArray *_localizedChangeLists;
     NSString *_localizedDescription;
+    double _resolutionDate;
+    unsigned long long _transitLineMuid;
     NSMutableArray *_updatedPlaces;
+    int _displayStyle;
     struct {
-        unsigned int resolutionDate:1;
-        unsigned int transitLineMuid:1;
-        unsigned int displayStyle:1;
-    } _has;
+        unsigned int has_resolutionDate:1;
+        unsigned int has_transitLineMuid:1;
+        unsigned int has_displayStyle:1;
+        unsigned int read_displayRegion:1;
+        unsigned int read_localizedAlertText:1;
+        unsigned int read_localizedChangeLists:1;
+        unsigned int read_localizedDescription:1;
+        unsigned int read_updatedPlaces:1;
+        unsigned int wrote_displayRegion:1;
+        unsigned int wrote_localizedAlertText:1;
+        unsigned int wrote_localizedChangeLists:1;
+        unsigned int wrote_localizedDescription:1;
+        unsigned int wrote_resolutionDate:1;
+        unsigned int wrote_transitLineMuid:1;
+        unsigned int wrote_updatedPlaces:1;
+        unsigned int wrote_displayStyle:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOMapRegion *displayRegion; // @synthesize displayRegion=_displayRegion;
-@property (nonatomic) int displayStyle; // @synthesize displayStyle=_displayStyle;
+@property (strong, nonatomic) GEOMapRegion *displayRegion;
+@property (nonatomic) int displayStyle;
 @property (readonly, nonatomic) BOOL hasDisplayRegion;
 @property (nonatomic) BOOL hasDisplayStyle;
 @property (readonly, nonatomic) BOOL hasLocalizedAlertText;
 @property (readonly, nonatomic) BOOL hasLocalizedDescription;
 @property (nonatomic) BOOL hasResolutionDate;
 @property (nonatomic) BOOL hasTransitLineMuid;
-@property (strong, nonatomic) NSString *localizedAlertText; // @synthesize localizedAlertText=_localizedAlertText;
-@property (strong, nonatomic) NSMutableArray *localizedChangeLists; // @synthesize localizedChangeLists=_localizedChangeLists;
-@property (strong, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
-@property (nonatomic) double resolutionDate; // @synthesize resolutionDate=_resolutionDate;
-@property (nonatomic) unsigned long long transitLineMuid; // @synthesize transitLineMuid=_transitLineMuid;
-@property (strong, nonatomic) NSMutableArray *updatedPlaces; // @synthesize updatedPlaces=_updatedPlaces;
+@property (strong, nonatomic) NSString *localizedAlertText;
+@property (strong, nonatomic) NSMutableArray *localizedChangeLists;
+@property (strong, nonatomic) NSString *localizedDescription;
+@property (nonatomic) double resolutionDate;
+@property (nonatomic) unsigned long long transitLineMuid;
+@property (strong, nonatomic) NSMutableArray *updatedPlaces;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)localizedChangeListType;
 + (Class)updatedPlaceType;
 - (void).cxx_destruct;
 - (int)StringAsDisplayStyle:(id)arg1;
+- (void)_addNoFlagsLocalizedChangeList:(id)arg1;
+- (void)_addNoFlagsUpdatedPlace:(id)arg1;
+- (void)_readDisplayRegion;
+- (void)_readLocalizedAlertText;
+- (void)_readLocalizedChangeLists;
+- (void)_readLocalizedDescription;
+- (void)_readUpdatedPlaces;
 - (void)addLocalizedChangeList:(id)arg1;
 - (void)addUpdatedPlace:(id)arg1;
 - (void)clearLocalizedChangeLists;
@@ -60,6 +83,7 @@
 - (id)localizedChangeListAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedChangeListsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)updatedPlaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)updatedPlacesCount;

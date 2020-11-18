@@ -9,7 +9,7 @@
 #import <GameCenterFoundation/NSCoding-Protocol.h>
 #import <GameCenterFoundation/NSSecureCoding-Protocol.h>
 
-@class GKGame, GKPlayerInternal, NSArray, NSAttributedString, NSDate, NSString;
+@class GKGame, GKPlayerInternal, NSArray, NSAttributedString, NSDate, NSNumber, NSString;
 
 @interface GKPlayer : GKBasePlayer <NSCoding, NSSecureCoding>
 {
@@ -19,10 +19,14 @@
 }
 
 @property (copy, nonatomic) NSString *alias; // @dynamic alias;
+@property (readonly, nonatomic) long long avatarType; // @dynamic avatarType;
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (readonly, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) NSString *firstName; // @dynamic firstName;
-@property (readonly, nonatomic) NSString *friendLevel; // @dynamic friendLevel;
+@property (readonly, nonatomic) NSNumber *friendBiDirectional; // @dynamic friendBiDirectional;
+@property (readonly, nonatomic) NSNumber *friendLevel; // @dynamic friendLevel;
+@property (readonly, nonatomic) NSNumber *friendPlayedNearby; // @dynamic friendPlayedNearby;
+@property (readonly, nonatomic) NSNumber *friendPlayedWith; // @dynamic friendPlayedWith;
 @property (strong, nonatomic) NSArray *friends; // @synthesize friends=_friends;
 @property (readonly, strong, nonatomic) NSString *gamePlayerID; // @dynamic gamePlayerID;
 @property (readonly, nonatomic) NSString *guestIdentifier; // @dynamic guestIdentifier;
@@ -38,6 +42,7 @@
 @property (readonly, nonatomic) NSDate *lastPlayedDate; // @dynamic lastPlayedDate;
 @property (readonly, nonatomic) GKGame *lastPlayedGame;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded; // @dynamic loaded;
+@property (strong, nonatomic) NSArray *monogramComponents; // @dynamic monogramComponents;
 @property (nonatomic) unsigned long long numberOfFriends; // @dynamic numberOfFriends;
 @property (strong, nonatomic) NSString *playerID; // @dynamic playerID;
 @property (strong, nonatomic) NSString *reason; // @dynamic reason;
@@ -60,6 +65,7 @@
 + (BOOL)instancesRespondToSelector:(SEL)arg1;
 + (void)loadCompletePlayersForPlayers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)loadPlayersForIdentifiers:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (void)loadPlayersForIdentifiersPrivate:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)loadPlayersForLegacyIdentifiers:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)playerFromPlayerID:(id)arg1;
 + (BOOL)supportsSecureCoding;
@@ -90,7 +96,11 @@
 - (id)minimalPlayer;
 - (void)postChangeNotification;
 - (BOOL)respondsToSelector:(SEL)arg1;
+- (BOOL)scopedIDsArePersistent;
+- (void)setFriendBiDirectional:(id)arg1;
 - (void)setFriendLevel:(id)arg1;
+- (void)setFriendPlayedNearby:(id)arg1;
+- (void)setFriendPlayedWith:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)sortName;
 - (id)valueForUndefinedKey:(id)arg1;

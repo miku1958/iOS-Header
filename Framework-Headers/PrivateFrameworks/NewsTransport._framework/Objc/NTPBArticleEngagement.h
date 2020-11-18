@@ -18,6 +18,7 @@
     NSString *_articleId;
     NSString *_channelId;
     NSString *_countryCode;
+    NSString *_deviceModel;
     NTPBIssueData *_issueData;
     NTPBIssueViewData *_issueViewData;
     NSData *_sessionId;
@@ -38,12 +39,14 @@
 @property (nonatomic) long long articleOpenedAtTimestamp; // @synthesize articleOpenedAtTimestamp=_articleOpenedAtTimestamp;
 @property (strong, nonatomic) NSString *channelId; // @synthesize channelId=_channelId;
 @property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (strong, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (nonatomic) long long eventTimestamp; // @synthesize eventTimestamp=_eventTimestamp;
 @property (nonatomic) BOOL hasArticleEngagementType;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasArticleOpenedAtTimestamp;
 @property (readonly, nonatomic) BOOL hasChannelId;
 @property (readonly, nonatomic) BOOL hasCountryCode;
+@property (readonly, nonatomic) BOOL hasDeviceModel;
 @property (nonatomic) BOOL hasEventTimestamp;
 @property (nonatomic) BOOL hasIsPaidSubscriber;
 @property (readonly, nonatomic) BOOL hasIssueData;

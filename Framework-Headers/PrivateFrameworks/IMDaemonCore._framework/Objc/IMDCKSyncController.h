@@ -10,7 +10,7 @@
 #import <IMDaemonCore/IMDXPCEventStreamHandlerDelegate-Protocol.h>
 #import <IMDaemonCore/IMSystemMonitorListener-Protocol.h>
 
-@class CKFetchRecordZonesOperation, IMTimer, NSDate, NSString, NSTimer;
+@class IMTimer, NSDate, NSString, NSTimer;
 
 @interface IMDCKSyncController : IMDCKAbstractSyncController <IMDXPCEventStreamHandlerDelegate, IMSystemMonitorListener, IMDCKAbstractSyncControllerDelegate>
 {
@@ -19,13 +19,11 @@
     NSTimer *_longRunningSyncTimer;
     IMTimer *_nightlySyncTimer;
     long long _initialSyncAttempts;
-    CKFetchRecordZonesOperation *_cloudKitMetricsFetchOp;
     NSDate *_lastLogDumpDate;
     NSDate *_lastRestoreFailureLogDumpDate;
     NSTimer *_reloadTimer;
 }
 
-@property (strong, nonatomic) CKFetchRecordZonesOperation *cloudKitMetricsFetchOp; // @synthesize cloudKitMetricsFetchOp=_cloudKitMetricsFetchOp;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

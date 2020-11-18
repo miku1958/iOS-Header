@@ -9,6 +9,11 @@
 @class TSDDrawableInfo;
 
 @protocol TSDDrawableContainerInfo <TSDContainerInfo>
+
+@property (readonly, nonatomic) BOOL isTopmostContainerInfo;
+
 - (double)highestScaleFactorForRenderingDrawableInfo:(TSDDrawableInfo *)arg1;
+
+@optional
 @end
 

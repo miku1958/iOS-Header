@@ -6,20 +6,27 @@
 
 #import <NeutrinoCore/NURenderRequest.h>
 
+#import <NeutrinoCore/NUTimeBased-Protocol.h>
+
+@class NSString;
 @protocol NUScalePolicy;
 
-@interface NUFaceDetectionRequest : NURenderRequest
+@interface NUFaceDetectionRequest : NURenderRequest <NUTimeBased>
 {
     long long _maxFaceCount;
     id<NUScalePolicy> _scalePolicy;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property long long maxFaceCount; // @synthesize maxFaceCount=_maxFaceCount;
 @property (strong) id<NUScalePolicy> scalePolicy; // @synthesize scalePolicy=_scalePolicy;
+@property (readonly) Class superclass;
+@property (nonatomic) CDStruct_1b6d18a9 time;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)initWithComposition:(id)arg1;
 - (long long)mediaComponentType;
 - (id)newRenderJob;

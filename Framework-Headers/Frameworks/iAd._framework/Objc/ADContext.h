@@ -19,9 +19,9 @@
 @property (copy, nonatomic) NSString *requestJSON; // @synthesize requestJSON=_requestJSON;
 @property (strong, nonatomic) NSMutableSet *tags; // @synthesize tags=_tags;
 
+- (void).cxx_destruct;
 - (BOOL)_matchesClause:(id)arg1 inContext:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)fullContext;
 - (id)initWithTags:(id)arg1;
 - (BOOL)isFeed;

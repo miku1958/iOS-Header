@@ -7,7 +7,7 @@
 #import <CoreDuet/_DKSimpleKeyValueStore-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSDictionary, NSNumber, NSObject, NSString;
-@protocol NSCoding;
+@protocol NSSecureCoding;
 
 @protocol _DKKeyValueStore <_DKSimpleKeyValueStore>
 - (NSArray *)arrayForKey:(NSString *)arg1;
@@ -24,7 +24,7 @@
 - (void)setDate:(NSDate *)arg1 forKey:(NSString *)arg2;
 - (void)setDictionary:(NSDictionary *)arg1 forKey:(NSString *)arg2;
 - (void)setNumber:(NSNumber *)arg1 forKey:(NSString *)arg2;
-- (void)setObject:(NSObject<NSCoding> *)arg1 forKey:(NSString *)arg2;
+- (void)setObject:(NSObject<NSSecureCoding> *)arg1 forKey:(NSString *)arg2;
 - (void)setString:(NSString *)arg1 forKey:(NSString *)arg2;
 - (NSString *)stringForKey:(NSString *)arg1;
 @end

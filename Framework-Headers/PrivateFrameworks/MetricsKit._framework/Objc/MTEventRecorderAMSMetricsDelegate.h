@@ -9,16 +9,19 @@
 #import <MetricsKit/AMSMetricsBagContract-Protocol.h>
 #import <MetricsKit/MTEventRecorderDelegate-Protocol.h>
 
-@class AMSBag, AMSBagValue, MTPromise, NSDictionary, NSString;
+@class AMSBag, AMSBagValue, AMSMetrics, NSDictionary, NSString;
 @protocol AMSMescalBagContract, AMSMetricsBagContract;
 
 @interface MTEventRecorderAMSMetricsDelegate : MTObject <AMSMetricsBagContract, MTEventRecorderDelegate>
 {
     BOOL _monitorsLifecycleEvents;
+    BOOL _personalizedWithItunesAccount;
     NSString *_containerId;
     NSDictionary *_lastMetricsDictionary;
-    MTPromise *_metricsPromise;
     AMSBag *_amsBag;
+    AMSMetrics *_bagBasedAMSMetrics;
+    AMSMetrics *_contractBasedAMSMetrics;
+    AMSMetrics *_backgroundAMSMetrics;
 }
 
 @property (readonly, nonatomic) AMSBagValue *TFOSamplingPercentage;
@@ -29,7 +32,10 @@
 @property (readonly, nonatomic) AMSBagValue *apsAllowedProductTypes;
 @property (readonly, nonatomic) AMSBagValue *apsEnabledPatterns;
 @property (readonly, nonatomic) AMSBagValue *apsSamplingPercent;
+@property (strong, nonatomic) AMSMetrics *backgroundAMSMetrics; // @synthesize backgroundAMSMetrics=_backgroundAMSMetrics;
+@property (strong, nonatomic) AMSMetrics *bagBasedAMSMetrics; // @synthesize bagBasedAMSMetrics=_bagBasedAMSMetrics;
 @property (strong, nonatomic) NSString *containerId; // @synthesize containerId=_containerId;
+@property (strong, nonatomic) AMSMetrics *contractBasedAMSMetrics; // @synthesize contractBasedAMSMetrics=_contractBasedAMSMetrics;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AMSBagValue *guidRegexes;
@@ -39,21 +45,22 @@
 @property (readonly, nonatomic) id<AMSMescalBagContract> mescalContract;
 @property (readonly, nonatomic) id<AMSMetricsBagContract> metricsContract;
 @property (readonly, nonatomic) AMSBagValue *metricsDictionary;
-@property (strong, nonatomic) MTPromise *metricsPromise; // @synthesize metricsPromise=_metricsPromise;
 @property (readonly, nonatomic) AMSBagValue *metricsURL;
 @property (readonly, nonatomic) AMSBagValue *metricsUrl;
-@property (nonatomic) BOOL monitorsLifecycleEvents;
+@property (nonatomic) BOOL monitorsLifecycleEvents; // @synthesize monitorsLifecycleEvents=_monitorsLifecycleEvents;
+@property (nonatomic) BOOL personalizedWithItunesAccount; // @synthesize personalizedWithItunesAccount=_personalizedWithItunesAccount;
 @property (readonly, nonatomic) AMSBagValue *storefrontSuffix;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) AMSBagValue *trustedDomains;
 
 + (id)bundleIdentifier;
 - (void).cxx_destruct;
-- (id)flushBackgroundMetricsIfNeeded;
+- (id)activeItunesAccount;
 - (id)flushUnreportedEvents;
 - (id)initWithContainerId:(id)arg1;
 - (id)initWithContainerId:(id)arg1 amsBag:(id)arg2;
 - (id)initWithContainerId:(id)arg1 profileName:(id)arg2 profileVersion:(id)arg3;
+- (id)lookupItunesAccount:(id)arg1;
 - (id)prepareMetrics;
 - (id)recordEvent:(id)arg1 toTopic:(id)arg2;
 - (id)sendMethod;

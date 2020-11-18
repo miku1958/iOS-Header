@@ -12,7 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)adjustBacklightLevel:(BOOL)arg1;
+- (void)_adjustBacklightLevel:(BOOL)arg1;
 
 @end
 

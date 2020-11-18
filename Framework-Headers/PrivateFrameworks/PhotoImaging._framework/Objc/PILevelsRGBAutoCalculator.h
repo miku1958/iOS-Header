@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotoImaging/PILevelsAutoAbstractCalculator.h>
+#import <PhotoImaging/PILevelsAutoCalculator.h>
 
-@interface PILevelsRGBAutoCalculator : PILevelsAutoAbstractCalculator
+@interface PILevelsRGBAutoCalculator : PILevelsAutoCalculator
 {
 }
 

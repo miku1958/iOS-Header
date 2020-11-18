@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_checkToMarginConstraint;
     UIImageView *_imageView;
     NSLayoutConstraint *_marginToImageConstraint;
+    NSLayoutConstraint *_imageViewBaselineOrCenterYConstraint;
     NSLayoutConstraint *_imageViewTopConstraint;
     NSLayoutConstraint *_imageViewBottomConstraint;
     NSLayoutConstraint *_minimumHeightConstraint;
@@ -85,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadDescriptiveLabel;
 - (void)_loadImageView;
 - (void)_prepareConstraintsForHavingDescriptiveText:(BOOL)arg1;
+- (void)_prepareConstraintsForImage:(id)arg1;
 - (void)_recomputeColors;
 - (void)_removeContentViewControllerContainerViewSubviews;
 - (void)_updateCheckImageView;
@@ -106,7 +108,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
-- (id)tintColor;
 - (void)tintColorDidChange;
 - (void)underlyingInterfaceActionRepresentationDidChange;
 - (void)updateHeightUsingAXEnforcedWidth:(double)arg1;

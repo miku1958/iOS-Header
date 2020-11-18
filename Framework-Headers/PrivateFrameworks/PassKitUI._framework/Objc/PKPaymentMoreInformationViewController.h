@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
 @class NSString, PKBusinessChatController, UIButton, UILabel, UIScrollView, UITextView;
 @protocol PKPaymentMoreInformationViewControllerDelegate;
 
-@interface PKPaymentMoreInformationViewController : PKViewController <UITextViewDelegate>
+@interface PKPaymentMoreInformationViewController : UIViewController <UITextViewDelegate>
 {
     UIScrollView *_scrollView;
     UILabel *_titleLabel;

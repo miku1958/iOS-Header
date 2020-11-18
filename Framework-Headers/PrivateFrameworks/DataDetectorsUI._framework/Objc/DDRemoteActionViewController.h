@@ -7,11 +7,12 @@
 #import <UIKit/_UIRemoteViewController.h>
 
 #import <DataDetectorsUI/DDRemoteActionPresenter-Protocol.h>
+#import <DataDetectorsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class DDAction, DDActionController;
+@class DDAction, DDActionController, NSString;
 
 __attribute__((visibility("hidden")))
-@interface DDRemoteActionViewController : _UIRemoteViewController <DDRemoteActionPresenter>
+@interface DDRemoteActionViewController : _UIRemoteViewController <DDRemoteActionPresenter, _UIRemoteViewControllerContaining>
 {
     BOOL _proxyConfigured;
     BOOL _waitingForRemoteConfiguration;
@@ -20,8 +21,13 @@ __attribute__((visibility("hidden")))
     DDActionController *_actionController;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (weak, nonatomic) DDAction *action; // @synthesize action=_action;
 @property (weak, nonatomic) DDActionController *actionController; // @synthesize actionController=_actionController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)exportedInterface;
 + (id)prepareViewController:(id)arg1 forAction:(id)arg2 actionController:(id)arg3;

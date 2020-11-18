@@ -16,10 +16,13 @@
 
 @property (readonly) NSArray *fonts;
 @property (readonly, copy) NSString *languageTag; // @synthesize languageTag=_languageTag;
+@property (readonly) NSArray *possibleFonts;
 
 - (void).cxx_destruct;
+- (void)_fontDownloadDidFinish:(id)arg1;
 - (id)defaultFontForLanguageTag:(id)arg1;
 - (id)fontWithFontFamilyName:(id)arg1;
+- (id)init;
 - (void)updateLanguageTag:(id)arg1;
 
 @end

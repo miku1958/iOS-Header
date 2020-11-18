@@ -10,6 +10,7 @@
 
 @class DDRemoteActionViewController, NSString;
 
+__attribute__((visibility("hidden")))
 @interface DDCreateEventAction : DDAction <EKEventEditViewDelegate>
 {
     DDRemoteActionViewController *viewController;
@@ -25,6 +26,7 @@
 + (id)cachedEventForICSString:(id)arg1;
 - (void).cxx_destruct;
 - (void)eventEditViewController:(id)arg1 didCompleteWithAction:(long long)arg2;
+- (id)icon;
 - (int)interactionType;
 - (void)invalidate;
 - (id)localizedName;

@@ -7,10 +7,13 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (UTIAdditions)
+- (BOOL)__has_ResourceFork;
 - (BOOL)__is__conformsToUTI:(id)arg1;
+- (long long)__is__fileSize;
 - (BOOL)__is__isAliasFile;
 - (BOOL)__is__isDirectory;
 - (BOOL)__is__isVolume;
+- (BOOL)__is_hasFileExtension:(id)arg1;
 - (BOOL)__is_isAppExtension;
 - (BOOL)__is_isApplication;
 - (BOOL)__is_isBootVolume;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_appRelativeDataDictionary;
 }
 
+@property (readonly, nonatomic) long long archiveValidationMode;
 @property (readonly, nonatomic) NSUUID *baseObjectUUID;
 @property (readonly, nonatomic) BOOL canRetainObjectReferencedByWeakLazyReference;
 @property (readonly, copy) NSString *debugDescription;

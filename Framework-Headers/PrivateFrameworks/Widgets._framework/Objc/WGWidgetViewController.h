@@ -10,7 +10,7 @@
 #import <Widgets/WGWidgetHostingViewControllerDelegate-Protocol.h>
 #import <Widgets/WGWidgetHostingViewControllerHost-Protocol.h>
 
-@class NSString, WGWidgetHostingViewController;
+@class NSString, UITraitCollection, WGWidgetHostingViewController;
 @protocol WGWidgetViewControllerDelegate;
 
 @interface WGWidgetViewController : UIViewController <WGWidgetHostingViewControllerDelegate, WGWidgetHostingViewControllerHost, WGWidgetExtensionVisibilityProviding>
@@ -23,6 +23,7 @@
 @property (weak, nonatomic) id<WGWidgetViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UITraitCollection *requestedTraitCollectionOverride;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WGWidgetHostingViewController *widgetHost; // @synthesize widgetHost=_widgetHost;
 
@@ -36,12 +37,15 @@
 - (void)loadView;
 - (struct CGSize)maxSizeForWidget:(id)arg1 forDisplayMode:(long long)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (void)registerWidgetForRefreshEvents:(id)arg1;
 - (void)remoteViewControllerDidConnectForWidget:(id)arg1;
 - (void)remoteViewControllerViewDidAppearForWidget:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
+- (void)unregisterWidgetForRefreshEvents:(id)arg1;
 - (long long)userSpecifiedDisplayModeForWidget:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)widget:(id)arg1 didRemoveSnapshotAtURL:(id)arg2;
 
 @end

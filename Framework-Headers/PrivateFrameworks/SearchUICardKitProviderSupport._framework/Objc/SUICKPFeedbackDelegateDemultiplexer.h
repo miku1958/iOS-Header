@@ -39,6 +39,7 @@
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (id)init;
 - (void)presentViewController:(id)arg1;
+- (void)presentViewControllerForCard:(id)arg1 animate:(BOOL)arg2;
 - (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)sendCustomFeedback:(id)arg1;
 - (BOOL)shouldHandleCardSectionEngagement:(id)arg1;

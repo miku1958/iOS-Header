@@ -19,7 +19,7 @@
 
 @property (strong, nonatomic) NSMutableArray *cameraFiles; // @synthesize cameraFiles=_cameraFiles;
 @property (nonatomic) BOOL canCancel; // @synthesize canCancel=_canCancel;
-@property (readonly, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property (readonly, copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serializer; // @synthesize serializer=_serializer;
 
 - (void).cxx_destruct;

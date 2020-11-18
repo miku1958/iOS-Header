@@ -7,6 +7,9 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (NTKMonogram)
+- (id)imageWithFont:(id)arg1;
+- (id)imageWithFont:(id)arg1 border:(unsigned long long)arg2 color:(id)arg3 cropped:(BOOL)arg4;
+- (id)imageWithFont:(id)arg1 border:(unsigned long long)arg2 cropped:(BOOL)arg3;
 - (BOOL)ntk_containsOnlyValidMonogramCharacters;
 - (BOOL)ntk_isValidMonogram;
 @end

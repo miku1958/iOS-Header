@@ -56,6 +56,7 @@
 - (id)createCloudRecordWithObjectID:(id)arg1 recordName:(id)arg2;
 - (id)createCloudZoneChangeTemporaryCache:(BOOL)arg1;
 - (void)deleteCloudRecord:(id)arg1;
+- (void)deleteCloudRecordNames:(id)arg1;
 - (void)deleteZone;
 - (id)description;
 - (void)fetchMigratedObjects:(CDUnknownBlockType)arg1;
@@ -66,6 +67,7 @@
 - (void)markMigratedObjectsAsMigrated;
 - (id)shortDescription;
 - (void)updateCloudRecord:(id)arg1;
+- (void)updateServerChangeToken:(id)arg1;
 
 @end
 

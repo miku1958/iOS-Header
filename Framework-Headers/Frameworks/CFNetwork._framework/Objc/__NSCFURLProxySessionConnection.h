@@ -13,7 +13,6 @@
 
 @class NSArray, NSCachedURLResponse, NSString, NSURLRequest, NSURLSessionTask;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFURLProxySessionConnection : __NSCFURLSessionConnection <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegate_Internal>
 {
     NSURLSessionTask *_proxyTask;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 task:(id)arg2 _isWaitingForConnectionWithReason:(long long)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)resume;
+- (void)setExpectedProgressTarget:(unsigned long long)arg1;
 - (void)setIsDownload:(BOOL)arg1;
 - (void)setPoolPriority:(long long)arg1;
 - (void)setPriorityHint:(float)arg1;

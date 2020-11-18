@@ -14,19 +14,20 @@
     int _layoutStyle;
     int _uiTarget;
     struct {
-        unsigned int layoutInfo:1;
-        unsigned int layoutStyle:1;
-        unsigned int uiTarget:1;
-    } _has;
+        unsigned int has_layoutInfo:1;
+        unsigned int has_layoutStyle:1;
+        unsigned int has_uiTarget:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasLayoutInfo;
 @property (nonatomic) BOOL hasLayoutStyle;
 @property (nonatomic) BOOL hasUiTarget;
-@property (nonatomic) int layoutInfo; // @synthesize layoutInfo=_layoutInfo;
-@property (nonatomic) int layoutStyle; // @synthesize layoutStyle=_layoutStyle;
-@property (nonatomic) int uiTarget; // @synthesize uiTarget=_uiTarget;
+@property (nonatomic) int layoutInfo;
+@property (nonatomic) int layoutStyle;
+@property (nonatomic) int uiTarget;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsLayoutInfo:(id)arg1;
 - (int)StringAsLayoutStyle:(id)arg1;
 - (int)StringAsUiTarget:(id)arg1;
@@ -39,6 +40,7 @@
 - (id)layoutInfoAsString:(int)arg1;
 - (id)layoutStyleAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)uiTargetAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

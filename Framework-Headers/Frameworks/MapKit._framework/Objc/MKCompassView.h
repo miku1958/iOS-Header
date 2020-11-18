@@ -23,14 +23,17 @@
 + (id)_parameterForSize:(long long)arg1;
 + (id)_parameterForStyle:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_adaptCompassStyleToUserInterfaceStyle;
 - (void)_commonInit;
 - (void)_updateLayerForCurrentSizeAndStyle;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (BOOL)isPointInNorthEastHalf:(struct CGPoint)arg1;
 - (void)layoutSubviews;
 - (void)setCompassViewSize:(long long)arg1 style:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLocale:(id)arg1;
 
 @end

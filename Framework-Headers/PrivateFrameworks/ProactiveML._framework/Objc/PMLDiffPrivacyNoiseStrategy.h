@@ -23,7 +23,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property int maxIterations; // @synthesize maxIterations=_maxIterations;
 @property float minimumMagnitude; // @synthesize minimumMagnitude=_minimumMagnitude;
 @property long long noiseMechanism; // @synthesize noiseMechanism=_noiseMechanism;
 @property CDStruct_cd4a7bf5 noiseScaleFactors; // @synthesize noiseScaleFactors=_noiseScaleFactors;
@@ -38,7 +37,7 @@
 - (id)initWithMaxIterationCount:(int)arg1 noiseScaleFactors:(CDStruct_cd4a7bf5)arg2 minimumMagnitude:(float)arg3 seed:(int)arg4 noiseMechanism:(long long)arg5 inplaceNorm:(BOOL)arg6;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (struct _PMLPreNoiseScaleFactorAndNoiseSampler)samplerWithScaleFactorFor:(id)arg1 usingNorm:(BOOL)arg2;
-- (float)scaleAndAddNoiseToDenseVector:(id)arg1 usingNorm:(BOOL)arg2;
+- (BOOL)scaleAndAddNoiseToDenseVector:(id)arg1 usingNorm:(BOOL)arg2 scaleFactor:(float *)arg3;
 - (id)toPlistWithChunks:(id)arg1;
 
 @end

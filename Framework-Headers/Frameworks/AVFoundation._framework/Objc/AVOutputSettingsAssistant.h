@@ -25,7 +25,6 @@
 + (id)videoEncoderCapabilities;
 + (id)videoSettingsAdjusterForPreset:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithPreset:(id)arg1;
 - (void)setSourceAudioFormat:(struct opaqueCMFormatDescription *)arg1;

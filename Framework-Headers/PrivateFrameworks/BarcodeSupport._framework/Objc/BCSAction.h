@@ -15,15 +15,18 @@ __attribute__((visibility("hidden")))
 @interface BCSAction : NSObject <BCSActionPrivate>
 {
     BCSActionPickerViewAssistant *_actionPickerViewAssistant;
+    BOOL isInvalidDataAction;
+    BOOL isWiFiAction;
     id<BCSActionDelegate> delegate;
     NSURL *urlThatCanBeOpened;
+    NSArray *appLinks;
     id<BCSParsedDataPrivate> _data;
     NSURL *_url;
     id<BCSCodePayload> _codePayload;
 }
 
 @property (readonly, copy, nonatomic) NSArray *actionPickerItems;
-@property (readonly, nonatomic) BOOL canSkipUnlock;
+@property (readonly, copy, nonatomic) NSArray *appLinks; // @synthesize appLinks;
 @property (readonly, nonatomic) id<BCSCodePayload> codePayload; // @synthesize codePayload=_codePayload;
 @property (readonly, nonatomic) long long codeType;
 @property (readonly, nonatomic) id<BCSParsedDataPrivate> data; // @synthesize data=_data;
@@ -34,6 +37,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *extraPreviewText;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInvalidDataAction; // @synthesize isInvalidDataAction;
+@property (readonly, nonatomic) BOOL isWiFiAction; // @synthesize isWiFiAction;
 @property (readonly, copy, nonatomic) NSString *localizedActionDescription;
 @property (readonly, copy, nonatomic) NSString *localizedDefaultActionDescription;
 @property (readonly, copy, nonatomic) NSString *localizedDefaultActionTitle;

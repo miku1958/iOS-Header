@@ -17,14 +17,13 @@
 
 + (void)flushSharedNotifier;
 + (id)sharedNotifier;
-+ (id)sharedNotifierWithNotificationWrapper:(id)arg1 schedulerProvider:(id)arg2;
++ (id)sharedNotifierWithNotificationWrapper:(id)arg1 schedulerProvider:(id)arg2 loggerProvider:(id)arg3;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)didChangeMeContactSuccessfully:(BOOL)arg1 fromContactStore:(id)arg2 requestIdentifier:(id)arg3;
 - (void)didSaveChangesSuccessfully:(BOOL)arg1 fromContactStore:(id)arg2 requestIdentifier:(id)arg3;
 - (BOOL)forwardsSelfGeneratedDistributedSaveNotifications;
-- (id)init;
-- (id)initWithNotificationWrapper:(id)arg1 schedulerProvider:(id)arg2;
+- (id)initWithNotificationWrapper:(id)arg1 schedulerProvider:(id)arg2 loggerProvider:(id)arg3;
 - (void)setExternalNotificationCoalescingDelay:(double)arg1;
 - (void)setForwardsSelfGeneratedDistributedSaveNotifications:(BOOL)arg1;
 - (void)waitForCurrentTasksToFinish;

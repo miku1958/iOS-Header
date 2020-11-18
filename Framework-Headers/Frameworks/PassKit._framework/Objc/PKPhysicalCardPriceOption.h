@@ -26,6 +26,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonDictionaryRepresentation;
 
 @end
 

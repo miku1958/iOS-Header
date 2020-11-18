@@ -65,7 +65,7 @@
 - (void)_destroyQueuePlayer;
 - (void)_didCompletePlaybackWithCompletionType:(long long)arg1 error:(id)arg2;
 - (void)_didEndPlayingAlert;
-- (void)_didReceiveAttentionPollingEventOfType:(long long)arg1;
+- (void)_didReceiveAttentionPollingEventOfType:(long long)arg1 alertForAudioEnvironmentSetup:(id)arg2;
 - (void)_endPreventingAudioSessionDeactivation;
 - (id)_fallbackToneIdentifierForPlayingAlert;
 - (void)_handleActivationAssertionStatusChangeForAlert:(id)arg1 updatedStatus:(BOOL)arg2;

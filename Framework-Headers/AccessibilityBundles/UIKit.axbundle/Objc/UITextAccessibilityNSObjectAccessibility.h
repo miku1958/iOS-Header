@@ -21,11 +21,16 @@
 - (void)_accessibilityItalic;
 - (void)_accessibilityPaste;
 - (void)_accessibilityPostStyleOptionStatus:(id)arg1;
+- (void)_accessibilityRedo;
 - (void)_accessibilityReplace;
 - (void)_accessibilitySelect;
 - (void)_accessibilitySelectAll;
 - (void)_accessibilityShare;
+- (void)_accessibilitySpeak;
+- (void)_accessibilitySpeakSentence;
+- (void)_accessibilitySpeakSpellOut;
 - (void)_accessibilityUnderline;
+- (void)_accessibilityUndo;
 
 @end
 

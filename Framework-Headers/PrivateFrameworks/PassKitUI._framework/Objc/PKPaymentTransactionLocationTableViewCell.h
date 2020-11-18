@@ -13,11 +13,9 @@
     UILabel *_titleLabel;
     PKTransactionMapView *_mapView;
     UIImageView *_disclosureView;
-    BOOL _shouldRoundCorners;
     PKPaymentTransaction *_transaction;
 }
 
-@property (nonatomic) BOOL shouldRoundCorners; // @synthesize shouldRoundCorners=_shouldRoundCorners;
 @property (strong, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 @property (nonatomic) BOOL usesDarkMapAppearance;
 

@@ -15,7 +15,6 @@
 @property (weak, nonatomic) id<WBSParsecSearchSessionDelegate> delegate;
 @property (readonly, nonatomic) id<WBSParsecFeedbackDispatcher> feedbackDispatcher;
 @property (nonatomic, setter=setUIScale:) double uiScale;
-@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 @end
 

@@ -21,7 +21,5 @@
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly) Class superclass;
 
-+ (id)typeString;
-
 @end
 

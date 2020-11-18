@@ -15,11 +15,16 @@
 
 @property (weak, nonatomic) id<PXCloudPhotoWelcomeNavigationControllerDismissDelegate> dismissDelegate; // @synthesize dismissDelegate=_dismissDelegate;
 
++ (id)new;
++ (BOOL)shouldPresentWelcomeViewController:(BOOL *)arg1;
 - (void).cxx_destruct;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (long long)preferredInterfaceOrientationForPresentation;
-- (BOOL)shouldAutorotate;
-- (unsigned long long)supportedInterfaceOrientations;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRootViewController:(id)arg1;
+- (id)initWithWelcomeController:(id)arg1;
 
 @end
 

@@ -8,25 +8,46 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, PBUnknownFields;
+@class NSArray, NSDictionary, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOAdditionalEnabledMarkets : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_offlineMarkets;
     NSMutableArray *_transitMarkets;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_offlineMarkets:1;
+        unsigned int read_transitMarkets:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_offlineMarkets:1;
+        unsigned int wrote_transitMarkets:1;
+    } _flags;
 }
 
+@property (strong, nonatomic) NSMutableArray *offlineMarkets;
 @property (readonly, nonatomic) NSArray *queryItems;
 @property (readonly, nonatomic) NSDictionary *queryParameters;
-@property (strong, nonatomic) NSMutableArray *transitMarkets; // @synthesize transitMarkets=_transitMarkets;
+@property (strong, nonatomic) NSMutableArray *transitMarkets;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)_additionalEnabledTransitMarkets;
 + (id)additionalEnabledMarkets;
++ (BOOL)isValid:(id)arg1;
++ (Class)offlineMarketType;
 + (Class)transitMarketType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsOfflineMarket:(id)arg1;
+- (void)_addNoFlagsTransitMarket:(id)arg1;
+- (void)_readOfflineMarkets;
+- (void)_readTransitMarkets;
+- (void)addOfflineMarket:(id)arg1;
 - (void)addTransitMarket:(id)arg1;
+- (void)clearOfflineMarkets;
 - (void)clearTransitMarkets;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +55,9 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)offlineMarketAtIndex:(unsigned long long)arg1;
+- (unsigned long long)offlineMarketsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)reload;
 - (id)transitMarketAtIndex:(unsigned long long)arg1;

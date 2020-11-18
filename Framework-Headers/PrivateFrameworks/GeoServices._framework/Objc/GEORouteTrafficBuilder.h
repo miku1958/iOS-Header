@@ -22,6 +22,8 @@
 - (void)addTrafficFromRoute:(id)arg1 withStepRange:(struct _NSRange)arg2;
 - (void)copyTrafficToRoute:(id)arg1;
 - (id)init;
+- (id)trafficColors;
+- (id)trafficOffsets;
 
 @end
 

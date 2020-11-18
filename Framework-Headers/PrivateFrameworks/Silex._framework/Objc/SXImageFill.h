@@ -14,7 +14,5 @@
 
 @property (readonly, nonatomic) NSString *imageIdentifier; // @dynamic imageIdentifier;
 
-+ (id)typeString;
-
 @end
 

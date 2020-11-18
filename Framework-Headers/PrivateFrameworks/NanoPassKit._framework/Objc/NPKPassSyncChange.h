@@ -9,7 +9,7 @@
 #import <NanoPassKit/NSCopying-Protocol.h>
 #import <NanoPassKit/NSSecureCoding-Protocol.h>
 
-@class NPKPassSyncStateItem, NSData, NSString, NSUUID;
+@class NPKPassSyncStateItem, NSData, NSDictionary, NSString, NSUUID;
 
 @interface NPKPassSyncChange : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,12 +19,16 @@
     NSString *_uniqueID;
     NPKPassSyncStateItem *_syncStateItem;
     NSData *_passData;
+    NSData *_baseManifestHashForPartialUpdate;
+    NSDictionary *_remoteAssetsForPartialUpdate;
 }
 
+@property (strong, nonatomic) NSData *baseManifestHashForPartialUpdate; // @synthesize baseManifestHashForPartialUpdate=_baseManifestHashForPartialUpdate;
 @property (nonatomic) unsigned long long changeType; // @synthesize changeType=_changeType;
 @property (strong, nonatomic) NSUUID *changeUUID; // @synthesize changeUUID=_changeUUID;
 @property (strong, nonatomic) NSData *passData; // @synthesize passData=_passData;
 @property (strong, nonatomic) NSData *reconciledStateHash; // @synthesize reconciledStateHash=_reconciledStateHash;
+@property (strong, nonatomic) NSDictionary *remoteAssetsForPartialUpdate; // @synthesize remoteAssetsForPartialUpdate=_remoteAssetsForPartialUpdate;
 @property (strong, nonatomic) NPKPassSyncStateItem *syncStateItem; // @synthesize syncStateItem=_syncStateItem;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 
@@ -35,10 +39,12 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithChangeUUID:(id)arg1 reconciledStateHash:(id)arg2 changeType:(unsigned long long)arg3 uniqueID:(id)arg4 syncStateItem:(id)arg5 passData:(id)arg6;
+- (id)initWithChangeUUID:(id)arg1 reconciledStateHash:(id)arg2 changeType:(unsigned long long)arg3 uniqueID:(id)arg4 syncStateItem:(id)arg5 passData:(id)arg6 baseManifestHashForPartialUpdate:(id)arg7 remoteAssetsForPartialUpdate:(id)arg8;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtoPassSyncChange:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToChange:(id)arg1;
+- (BOOL)isEqualToChangeIgnoringUUID:(id)arg1;
 - (id)protoPassSyncChange;
 
 @end

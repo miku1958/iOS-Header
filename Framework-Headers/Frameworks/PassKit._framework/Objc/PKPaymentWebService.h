@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSURLSessionDownloadDelegate-Protocol.h>
 
-@class NSArray, NSHashTable, NSMutableDictionary, NSObject, NSString, NSURL, NSURLSession, PKPaymentDevice, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
+@class NSArray, NSHashTable, NSMutableDictionary, NSObject, NSOperationQueue, NSString, NSURL, NSURLSession, PKPaymentDevice, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext;
 @protocol OS_dispatch_queue, PKPaymentWebServiceArchiver, PKPaymentWebServiceBackgroundDelegate, PKPaymentWebServiceTargetDeviceProtocol;
 
 @interface PKPaymentWebService : PKWebService <NSURLSessionDownloadDelegate>
@@ -20,6 +20,7 @@
     struct os_unfair_lock_s _supportInRegionLock;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_backgroundDownloadQueue;
+    NSOperationQueue *_backgroundSessionDelegateQueue;
     NSHashTable *_delegates;
     PKPaymentWebServiceContext *_context;
     struct os_unfair_lock_s _contextLock;
@@ -84,7 +85,7 @@
 - (BOOL)_isSandboxAccount;
 - (id)_movePassToDownloadCache:(id)arg1;
 - (BOOL)_needsRegistrationShouldCheckSecureElementOwnership:(BOOL)arg1;
-- (unsigned long long)_nonceForPass:(id)arg1 serviceURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (unsigned long long)_nonceWithRequest:(id)arg1 serviceURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_passOwnershipTokenForPaymentCredential:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_passWithData:(id)arg1 response:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_passWithFileURL:(id)arg1;
@@ -167,14 +168,17 @@
 - (unsigned long long)featureTermsDataWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)forbiddenErrorWithResponse:(id)arg1;
 - (unsigned long long)fundingSourcesWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getHasBackgroundDownloadTaskPassesForPushTopic:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleAuthenticationFailureWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleResponse:(id)arg1 withError:(id)arg2 data:(id)arg3 task:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)handleWillPerformHTTPRedirectionWithResponse:(id)arg1 redirectHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)inAppPaymentNonceForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)inAppPaymentNonceWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithContext:(id)arg1 targetDevice:(id)arg2;
 - (id)initWithContext:(id)arg1 targetDevice:(id)arg2 archiver:(id)arg3;
 - (void)invalidateBackgroundSession;
+- (BOOL)isChinaRegionIdentifier:(id)arg1;
 - (unsigned long long)issuerProvisioningCertificatesForRequest:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)logFacility;
 - (unsigned long long)moreInfoItemAtURL:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -212,7 +216,7 @@
 - (unsigned long long)schedulePaymentWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)serviceProviderNonceForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)serviceProviderPurchaseWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (unsigned long long)serviceProviderPurchasesWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)serviceProviderPurchasesWithRequest:(id)arg1 inRegion:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sharedPaymentServiceAccountChanged:(id)arg1;
 - (void)sharedPaymentServiceChanged:(id)arg1;
 - (unsigned long long)shownTermsWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

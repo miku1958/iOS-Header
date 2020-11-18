@@ -8,29 +8,47 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSString;
+@class GEOFormattedString, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOMiniCard : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSString *_buttonText;
     GEOFormattedString *_detail;
     GEOFormattedString *_title;
     BOOL _shouldEmphasize;
     struct {
-        unsigned int shouldEmphasize:1;
-    } _has;
+        unsigned int has_shouldEmphasize:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_buttonText:1;
+        unsigned int read_detail:1;
+        unsigned int read_title:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_buttonText:1;
+        unsigned int wrote_detail:1;
+        unsigned int wrote_title:1;
+        unsigned int wrote_shouldEmphasize:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *buttonText; // @synthesize buttonText=_buttonText;
-@property (strong, nonatomic) GEOFormattedString *detail; // @synthesize detail=_detail;
+@property (strong, nonatomic) NSString *buttonText;
+@property (strong, nonatomic) GEOFormattedString *detail;
 @property (readonly, nonatomic) BOOL hasButtonText;
 @property (readonly, nonatomic) BOOL hasDetail;
 @property (nonatomic) BOOL hasShouldEmphasize;
 @property (readonly, nonatomic) BOOL hasTitle;
-@property (nonatomic) BOOL shouldEmphasize; // @synthesize shouldEmphasize=_shouldEmphasize;
-@property (strong, nonatomic) GEOFormattedString *title; // @synthesize title=_title;
+@property (nonatomic) BOOL shouldEmphasize;
+@property (strong, nonatomic) GEOFormattedString *title;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readButtonText;
+- (void)_readDetail;
+- (void)_readTitle;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +56,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

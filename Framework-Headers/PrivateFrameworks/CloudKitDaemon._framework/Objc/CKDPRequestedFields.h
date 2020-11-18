@@ -13,15 +13,20 @@
 @interface CKDPRequestedFields : PBCodable <NSCopying>
 {
     NSMutableArray *_fields;
+    NSMutableArray *_listFields;
 }
 
 @property (strong, nonatomic) NSMutableArray *fields; // @synthesize fields=_fields;
+@property (strong, nonatomic) NSMutableArray *listFields; // @synthesize listFields=_listFields;
 
 + (Class)fieldsType;
++ (Class)listFieldType;
 - (void).cxx_destruct;
 - (void)_CKLogToFileHandle:(id)arg1 atDepth:(int)arg2;
 - (void)addFields:(id)arg1;
+- (void)addListField:(id)arg1;
 - (void)clearFields;
+- (void)clearListFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +35,8 @@
 - (unsigned long long)fieldsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)listFieldAtIndex:(unsigned long long)arg1;
+- (unsigned long long)listFieldsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

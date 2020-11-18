@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDClientContext, CKDPCSFetchAggregator, CKDPCSMemoryCache, CKDPCSSQLCache, NSMutableDictionary;
+@class CKDClientContext, CKDPCSMemoryCache, CKDPCSSQLCache, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     CKDPCSMemoryCache *_zoneMemoryCache;
     CKDPCSMemoryCache *_shareMemoryCache;
     CKDClientContext *_context;
-    CKDPCSFetchAggregator *_fetchAggregator;
     NSMutableDictionary *_outstandingFetches;
     NSObject<OS_dispatch_queue> *_fetchQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -25,7 +24,6 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (weak, nonatomic) CKDClientContext *context; // @synthesize context=_context;
-@property (strong, nonatomic) CKDPCSFetchAggregator *fetchAggregator; // @synthesize fetchAggregator=_fetchAggregator;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
 @property (strong, nonatomic) NSMutableDictionary *outstandingFetches; // @synthesize outstandingFetches=_outstandingFetches;
 @property (readonly, nonatomic) CKDPCSMemoryCache *recordMemoryCache; // @synthesize recordMemoryCache=_recordMemoryCache;

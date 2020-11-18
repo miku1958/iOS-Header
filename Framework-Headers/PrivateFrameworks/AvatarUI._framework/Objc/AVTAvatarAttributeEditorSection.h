@@ -9,19 +9,22 @@
 #import <AvatarUI/AVTAvatarAttributeEditorSection-Protocol.h>
 
 @class NSArray, NSString;
+@protocol AVTAvatarAttributeEditorHeaderPicker;
 
 @interface AVTAvatarAttributeEditorSection : NSObject <AVTAvatarAttributeEditorSection>
 {
     NSArray *_sectionItems;
     NSString *_localizedName;
     NSString *_identifier;
+    id<AVTAvatarAttributeEditorHeaderPicker> _headerAccessory;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<AVTAvatarAttributeEditorHeaderPicker> headerAccessory; // @synthesize headerAccessory=_headerAccessory;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, copy, nonatomic) NSArray *sectionItems; // @synthesize sectionItems=_sectionItems;
 @property (readonly) Class superclass;
 

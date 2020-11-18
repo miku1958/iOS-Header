@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <Photos/NSCopying-Protocol.h>
 #import <Photos/PHRecyclableObject-Protocol.h>
 
 @class NSString;
 @protocol PLAssetID, PLResourceDataStore, PLResourceDataStoreKey;
 
-@interface PHLocallyAvailableResourceBag : NSObject <PHRecyclableObject>
+@interface PHLocallyAvailableResourceBag : NSObject <PHRecyclableObject, NSCopying>
 {
+    BOOL _keyIsHintBased;
     BOOL _isDegraded;
     BOOL _isPrimaryFormat;
     BOOL _isDefaultOrientation;
@@ -30,9 +32,11 @@
 @property (nonatomic) BOOL isDefaultOrientation; // @synthesize isDefaultOrientation=_isDefaultOrientation;
 @property (nonatomic) BOOL isDegraded; // @synthesize isDegraded=_isDegraded;
 @property (nonatomic) BOOL isPrimaryFormat; // @synthesize isPrimaryFormat=_isPrimaryFormat;
+@property (nonatomic) BOOL keyIsHintBased; // @synthesize keyIsHintBased=_keyIsHintBased;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)prepareForReuse;
 - (id)resourceData;
 - (id)resourceURL;

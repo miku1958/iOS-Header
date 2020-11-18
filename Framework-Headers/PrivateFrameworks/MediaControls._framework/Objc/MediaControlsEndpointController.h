@@ -12,6 +12,7 @@
 @class MPAVEndpointRoute, MPAVRoutingController, MPCPlayerPath, MPCPlayerResponse, MPMediaControlsConfiguration, MPRequestResponseController, NSArray, NSString;
 @protocol MediaControlsEndpointControllerConnectionDelegate, MediaControlsEndpointControllerDelegate, MediaControlsEndpointObserverDelegate;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsEndpointController : NSObject <MPRequestResponseControllerDelegate, MPAVRoutingControllerDelegate>
 {
     BOOL _allowsAutomaticResponseLoading;

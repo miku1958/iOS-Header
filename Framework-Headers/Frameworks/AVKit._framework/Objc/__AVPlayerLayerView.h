@@ -35,8 +35,6 @@
 + (id)keyPathsForValuesAffectingVideoScaled;
 + (Class)layerClass;
 - (void).cxx_destruct;
-- (void)dealloc;
-- (void)didMoveToWindow;
 - (void)startRoutingVideoToPictureInPicturePlayerLayerView;
 - (void)stopRoutingVideoToPictureInPicturePlayerLayerView;
 

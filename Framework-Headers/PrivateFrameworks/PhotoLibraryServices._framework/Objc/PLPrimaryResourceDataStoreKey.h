@@ -29,8 +29,11 @@
 - (id)fileURLForAssetID:(id)arg1;
 - (id)initFromExistingLocationOfExternalResource:(id)arg1 asset:(id)arg2;
 - (id)initWithKeyStruct:(const void *)arg1;
-- (BOOL)isValid;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToKey:(id)arg1;
 - (id)keyData;
+- (id)uniformTypeIdentifier;
+- (id)validateForAssetID:(id)arg1 resourceIdentity:(id)arg2;
 
 @end
 

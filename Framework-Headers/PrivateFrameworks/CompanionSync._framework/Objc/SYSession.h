@@ -10,17 +10,19 @@
 #import <CompanionSync/SYStateLoggable-Protocol.h>
 
 @class NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSString, PBCodable, SYService;
-@protocol OS_dispatch_queue, SYChangeSerializer, SYSessionDelegate;
+@protocol OS_dispatch_queue, OS_os_transaction, SYChangeSerializer, SYSessionDelegate;
 
 @interface SYSession : NSObject <SYChangeSerializer, SYStateLoggable>
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
     _Atomic BOOL _inTransaction;
+    NSObject<OS_os_transaction> *_transaction;
     _Atomic BOOL _paused;
     NSMutableSet *_pendingMessageIDs;
     BOOL _rejectedNewSessionFromSamePeer;
     BOOL _sessionStarted;
     struct NSMutableDictionary *_stateResponders;
+    struct os_unfair_lock_s _setDelegateLock;
     BOOL _isSending;
     long long _priority;
     id<SYSessionDelegate> _delegate;

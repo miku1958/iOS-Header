@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIInterfaceActionBlankSeparatorView : UIView <UIInterfaceActionVisualSeparatorDisplaying, UIInterfaceActionVisualSectionSeparatorDisplaying>
 {
+    double _horizontalLineLeadingInset;
     _UIInterfaceActionSeparatorConstraintController *_separatorViewConstraints;
 }
 
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double horizontalLineLeadingInset; // @synthesize horizontalLineLeadingInset=_horizontalLineLeadingInset;
 @property (readonly, strong, nonatomic) _UIInterfaceActionSeparatorConstraintController *separatorViewConstraints; // @synthesize separatorViewConstraints=_separatorViewConstraints;
 @property (readonly) Class superclass;
 

@@ -41,6 +41,7 @@
 - (BOOL)isEqualToStorageContact:(id)arg1;
 - (id)loadAddressDetailsFrom:(id)arg1;
 - (id)loadAllDetailsFrom:(id)arg1;
+- (id)loadBirthdayDetailsFrom:(id)arg1;
 - (id)loadEmailAddressDetailsFrom:(id)arg1;
 - (id)loadPhoneDetailsFrom:(id)arg1;
 - (void)merge:(id)arg1;

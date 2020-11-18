@@ -8,11 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOTileSetVersion : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOTileSetRegion *_availableTiles;
     unsigned long long _availableTilesCount;
@@ -23,10 +25,7 @@ __attribute__((visibility("hidden")))
     unsigned int _identifier;
     unsigned int _supportedLanguagesVersion;
     unsigned int _timeToLiveSeconds;
-    struct {
-        unsigned int supportedLanguagesVersion:1;
-        unsigned int timeToLiveSeconds:1;
-    } _has;
+    CDStruct_40288aee _flags;
 }
 
 @property (readonly, nonatomic) struct GEOTileSetRegion *availableTiles;
@@ -35,17 +34,23 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long genericTilesCount;
 @property (nonatomic) BOOL hasSupportedLanguagesVersion;
 @property (nonatomic) BOOL hasTimeToLiveSeconds;
-@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) unsigned int supportedLanguagesVersion; // @synthesize supportedLanguagesVersion=_supportedLanguagesVersion;
-@property (nonatomic) unsigned int timeToLiveSeconds; // @synthesize timeToLiveSeconds=_timeToLiveSeconds;
+@property (nonatomic) unsigned int identifier;
+@property (nonatomic) unsigned int supportedLanguagesVersion;
+@property (nonatomic) unsigned int timeToLiveSeconds;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAvailableTiles:(struct GEOTileSetRegion)arg1;
+- (void)_addNoFlagsGenericTile:(struct GEOGenericTile)arg1;
+- (void)_readAvailableTiles;
+- (void)_readGenericTiles;
 - (void)addAvailableTiles:(struct GEOTileSetRegion)arg1;
 - (void)addGenericTile:(struct GEOGenericTile)arg1;
 - (struct GEOTileSetRegion)availableTilesAtIndex:(unsigned long long)arg1;
 - (void)clearAvailableTiles;
 - (void)clearGenericTiles;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -55,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAvailableTiles:(struct GEOTileSetRegion *)arg1 count:(unsigned long long)arg2;
 - (void)setGenericTiles:(struct GEOGenericTile *)arg1 count:(unsigned long long)arg2;

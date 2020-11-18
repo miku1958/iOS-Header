@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <SafariServices/_SFActivity.h>
 
 __attribute__((visibility("hidden")))
-@interface SFKillSafariViewServiceActivity : UIActivity
+@interface SFKillSafariViewServiceActivity : _SFActivity
 {
 }
 
-- (id)_beforeActivity;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

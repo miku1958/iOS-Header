@@ -24,7 +24,7 @@
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAttachment:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -8,35 +8,58 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPlaceActionDetails, NSString;
+@class GEOPlaceActionDetails, NSString, PBDataReader;
 
 @interface GEOLogMsgStatePlaceCard : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _possibleActions;
     CDStruct_95bda58d _unactionableUiElements;
     GEOPlaceActionDetails *_placeActionDetails;
     NSString *_placecardCategory;
     int _placecardType;
+    BOOL _transitAdvisoryBanner;
     struct {
-        unsigned int placecardType:1;
-    } _has;
+        unsigned int has_placecardType:1;
+        unsigned int has_transitAdvisoryBanner:1;
+        unsigned int read_possibleActions:1;
+        unsigned int read_unactionableUiElements:1;
+        unsigned int read_placeActionDetails:1;
+        unsigned int read_placecardCategory:1;
+        unsigned int wrote_possibleActions:1;
+        unsigned int wrote_unactionableUiElements:1;
+        unsigned int wrote_placeActionDetails:1;
+        unsigned int wrote_placecardCategory:1;
+        unsigned int wrote_placecardType:1;
+        unsigned int wrote_transitAdvisoryBanner:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasPlaceActionDetails;
 @property (readonly, nonatomic) BOOL hasPlacecardCategory;
 @property (nonatomic) BOOL hasPlacecardType;
-@property (strong, nonatomic) GEOPlaceActionDetails *placeActionDetails; // @synthesize placeActionDetails=_placeActionDetails;
-@property (strong, nonatomic) NSString *placecardCategory; // @synthesize placecardCategory=_placecardCategory;
-@property (nonatomic) int placecardType; // @synthesize placecardType=_placecardType;
+@property (nonatomic) BOOL hasTransitAdvisoryBanner;
+@property (strong, nonatomic) GEOPlaceActionDetails *placeActionDetails;
+@property (strong, nonatomic) NSString *placecardCategory;
+@property (nonatomic) int placecardType;
 @property (readonly, nonatomic) int *possibleActions;
 @property (readonly, nonatomic) unsigned long long possibleActionsCount;
+@property (nonatomic) BOOL transitAdvisoryBanner;
 @property (readonly, nonatomic) int *unactionableUiElements;
 @property (readonly, nonatomic) unsigned long long unactionableUiElementsCount;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsPlacecardType:(id)arg1;
 - (int)StringAsPossibleActions:(id)arg1;
 - (int)StringAsUnactionableUiElements:(id)arg1;
+- (void)_addNoFlagsPossibleAction:(int)arg1;
+- (void)_addNoFlagsUnactionableUiElement:(int)arg1;
+- (void)_readPlaceActionDetails;
+- (void)_readPlacecardCategory;
+- (void)_readPossibleActions;
+- (void)_readUnactionableUiElements;
 - (void)addPossibleAction:(int)arg1;
 - (void)addUnactionableUiElement:(int)arg1;
 - (void)clearPossibleActions;
@@ -52,6 +75,7 @@
 - (id)placecardTypeAsString:(int)arg1;
 - (int)possibleActionAtIndex:(unsigned long long)arg1;
 - (id)possibleActionsAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setPossibleActions:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setUnactionableUiElements:(int *)arg1 count:(unsigned long long)arg2;

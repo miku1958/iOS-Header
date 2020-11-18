@@ -18,6 +18,7 @@
         unsigned int destinationType:1;
         unsigned int entityType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _destinationType;
     int _entityType;
     _INPBString *_destinationName;
@@ -25,6 +26,7 @@
     _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
@@ -40,13 +42,16 @@
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsDestinationType:(id)arg1;
 - (int)StringAsEntityType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)destinationTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityTypeAsString:(int)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

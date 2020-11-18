@@ -27,8 +27,9 @@ __attribute__((visibility("hidden")))
     BOOL _loaded;
     BOOL _displayed;
     BOOL _shouldDeferPresenting;
-    NSString *_platerTitle;
+    NSString *_platterTitle;
     NSMutableArray *_rawSwipeActions;
+    struct CGSize _preferredContentSize;
     DDRemoteActionManagerViewController *_strongSelf;
     BOOL _previewMode;
     DDRemoteAction *_action;

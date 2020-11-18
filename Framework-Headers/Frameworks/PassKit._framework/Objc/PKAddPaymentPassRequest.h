@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <PassKit/NSSecureCoding-Protocol.h>
+#import <PassKitCore/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 

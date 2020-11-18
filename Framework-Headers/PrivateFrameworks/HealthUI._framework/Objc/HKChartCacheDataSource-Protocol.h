@@ -6,11 +6,13 @@
 
 #import <HealthUI/NSObject-Protocol.h>
 
-@class HKChartCacheFetchOperation;
+@class HKChartCacheFetchOperation, HKDisplayType, NSDateComponents;
 @protocol NSCopying;
 
 @protocol HKChartCacheDataSource <NSObject>
+- (unsigned long long)calendarUnitForTimeScope:(long long)arg1 displayType:(HKDisplayType *)arg2;
 - (HKGraphSeriesDataBlock * (^)(id))mappingFunctionForContext:(id)arg1;
 - (HKChartCacheFetchOperation *)operationForIdentifier:(id<NSCopying>)arg1 completion:(void (^)(HKChartCacheFetchOperation *, id, NSError *))arg2;
+- (NSDateComponents *)statisticsIntervalForTimeScope:(long long)arg1 displayType:(HKDisplayType *)arg2;
 @end
 

@@ -8,45 +8,69 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDRecentRouteInfo, GEOPDViewportInfo, NSData, PBUnknownFields;
+@class GEOPDRecentRouteInfo, GEOPDViewportInfo, NSData, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategorySearchParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    GEOPDRecentRouteInfo *_recentRouteInfo;
+    NSData *_suggestionEntryMetadata;
+    GEOPDViewportInfo *_viewportInfo;
     unsigned int _blurredHourOfDay;
     unsigned int _dayOfWeek;
     unsigned int _maxResults;
-    GEOPDRecentRouteInfo *_recentRouteInfo;
     int _searchType;
-    NSData *_suggestionEntryMetadata;
-    GEOPDViewportInfo *_viewportInfo;
+    BOOL _supportCategorySearchResultSection;
     struct {
-        unsigned int blurredHourOfDay:1;
-        unsigned int dayOfWeek:1;
-        unsigned int maxResults:1;
-        unsigned int searchType:1;
-    } _has;
+        unsigned int has_blurredHourOfDay:1;
+        unsigned int has_dayOfWeek:1;
+        unsigned int has_maxResults:1;
+        unsigned int has_searchType:1;
+        unsigned int has_supportCategorySearchResultSection:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_recentRouteInfo:1;
+        unsigned int read_suggestionEntryMetadata:1;
+        unsigned int read_viewportInfo:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_recentRouteInfo:1;
+        unsigned int wrote_suggestionEntryMetadata:1;
+        unsigned int wrote_viewportInfo:1;
+        unsigned int wrote_blurredHourOfDay:1;
+        unsigned int wrote_dayOfWeek:1;
+        unsigned int wrote_maxResults:1;
+        unsigned int wrote_searchType:1;
+        unsigned int wrote_supportCategorySearchResultSection:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int blurredHourOfDay; // @synthesize blurredHourOfDay=_blurredHourOfDay;
-@property (nonatomic) unsigned int dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
+@property (nonatomic) unsigned int blurredHourOfDay;
+@property (nonatomic) unsigned int dayOfWeek;
 @property (nonatomic) BOOL hasBlurredHourOfDay;
 @property (nonatomic) BOOL hasDayOfWeek;
 @property (nonatomic) BOOL hasMaxResults;
 @property (readonly, nonatomic) BOOL hasRecentRouteInfo;
 @property (nonatomic) BOOL hasSearchType;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
+@property (nonatomic) BOOL hasSupportCategorySearchResultSection;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
-@property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
-@property (strong, nonatomic) GEOPDRecentRouteInfo *recentRouteInfo; // @synthesize recentRouteInfo=_recentRouteInfo;
-@property (nonatomic) int searchType; // @synthesize searchType=_searchType;
-@property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
+@property (nonatomic) unsigned int maxResults;
+@property (strong, nonatomic) GEOPDRecentRouteInfo *recentRouteInfo;
+@property (nonatomic) int searchType;
+@property (strong, nonatomic) NSData *suggestionEntryMetadata;
+@property (nonatomic) BOOL supportCategorySearchResultSection;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSearchType:(id)arg1;
+- (void)_readRecentRouteInfo;
+- (void)_readSuggestionEntryMetadata;
+- (void)_readViewportInfo;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -54,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)searchTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

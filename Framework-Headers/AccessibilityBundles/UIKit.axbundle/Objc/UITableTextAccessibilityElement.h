@@ -19,13 +19,13 @@
 - (void).cxx_destruct;
 - (id)_accessibilityAllDragSourceDescriptors;
 - (id)_accessibilityAllDropPointDescriptors;
+- (id)_accessibilityCapturedImages;
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (double)_accessibilityDelayBeforeUpdatingOnActivation;
 - (id)_accessibilityEquivalenceTag;
 - (struct _NSRange)_accessibilityIndexPathAsRange;
 - (BOOL)_accessibilityIsAwayAlertElement;
 - (BOOL)_accessibilityIsInTableCell;
-- (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (long long)_accessibilityScannerActivateBehavior;
@@ -52,8 +52,10 @@
 - (id)accessibilityLocalizationBundlePath;
 - (id)accessibilityLocalizedStringKey;
 - (id)accessibilityLocalizedStringTableName;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (struct _NSRange)accessibilityRowRange;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
 - (id)description;
 

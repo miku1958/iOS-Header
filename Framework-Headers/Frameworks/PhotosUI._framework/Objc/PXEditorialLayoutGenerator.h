@@ -19,7 +19,7 @@
     NSIndexSet *_geometrySet;
 }
 
-@property (readonly, copy, nonatomic) PXEditorialLayoutMetrics *metrics; // @dynamic metrics;
+@property (copy, nonatomic) PXEditorialLayoutMetrics *metrics; // @dynamic metrics;
 
 - (void).cxx_destruct;
 - (struct _PXLayoutGeometry)_geometryFromFrame:(struct CGRect)arg1 index:(unsigned long long)arg2;
@@ -31,7 +31,6 @@
 - (struct CGSize)estimatedSize;
 - (id)geometryKinds;
 - (void)getGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2 withKind:(long long)arg3;
-- (id)init;
 - (id)initWithMetrics:(id)arg1;
 - (void)invalidate;
 - (unsigned long long)numberOfGeometriesWithKind:(long long)arg1;

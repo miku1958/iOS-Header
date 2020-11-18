@@ -23,10 +23,14 @@
 @property (readonly, nonatomic) id<PXUIImageProvider> underlyingAssetImageProvider; // @synthesize underlyingAssetImageProvider=_underlyingAssetImageProvider;
 
 - (void).cxx_destruct;
+- (id)_underlyingAssetsFromPreviewAssets:(id)arg1;
 - (void)cancelImageRequest:(long long)arg1;
 - (id)init;
 - (id)initWithUnderlyingAssetImageProvider:(id)arg1;
 - (long long)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (void)startCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
+- (void)stopCachingImagesForAllAssets;
+- (void)stopCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
 
 @end
 

@@ -14,17 +14,17 @@
 {
     NSTimeZone *_productTimeZone;
     long long _frequency;
-    long long _frequencyDay;
+    long long _scheduledDay;
     long long _preset;
     NSDate *_scheduledDate;
     NSString *_paymentTermsIdentifier;
 }
 
 @property (nonatomic) long long frequency; // @synthesize frequency=_frequency;
-@property (nonatomic) long long frequencyDay; // @synthesize frequencyDay=_frequencyDay;
 @property (copy, nonatomic) NSString *paymentTermsIdentifier; // @synthesize paymentTermsIdentifier=_paymentTermsIdentifier;
 @property (nonatomic) long long preset; // @synthesize preset=_preset;
 @property (copy, nonatomic) NSDate *scheduledDate; // @synthesize scheduledDate=_scheduledDate;
+@property (nonatomic) long long scheduledDay; // @synthesize scheduledDay=_scheduledDay;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

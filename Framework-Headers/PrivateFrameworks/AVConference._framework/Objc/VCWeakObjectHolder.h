@@ -10,9 +10,11 @@ __attribute__((visibility("hidden")))
 @interface VCWeakObjectHolder : NSObject
 {
     id _weakObject;
+    struct OpaqueFigCFWeakReference *_weakObjectWithoutAutoRelease;
 }
 
 @property (readonly, nonatomic) id strong;
+@property (readonly, nonatomic) struct OpaqueFigCFWeakReference **weak;
 
 + (id)weakObjectHolderWithObject:(id)arg1;
 - (void)dealloc;

@@ -18,7 +18,7 @@
 @property (strong, nonatomic) LSPlugInKitProxy *proxy; // @synthesize proxy=_proxy;
 
 - (void).cxx_destruct;
-- (id)extensionConnection;
+- (id)applicationType;
 - (id)initWithPluginBundle:(id)arg1 extension:(id)arg2;
 - (id)initWithPluginBundle:(id)arg1 extension:(id)arg2 pluginKitProxyClass:(Class)arg3 proxy:(id)arg4;
 - (id)initWithPluginBundle:(id)arg1 pluginKitProxy:(id)arg2 extension:(id)arg3;
@@ -28,8 +28,9 @@
 - (BOOL)isStickerPackOnly;
 - (id)itemID;
 - (id)plugin;
-- (id)proxyWithErrorHandle:(CDUnknownBlockType)arg1;
 - (void)setIsEnabled:(BOOL)arg1;
+- (BOOL)showInBrowser;
+- (BOOL)showableInBrowser;
 - (id)version;
 
 @end

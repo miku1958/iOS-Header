@@ -17,6 +17,8 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_handleSessionDidStartRunning:(id)arg1;
 - (void)_handleSessionDidStopRunning:(id)arg1;
+- (void)_updateCurrentlyConfiguredObjects;
+- (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 forMetadataObjectTypes:(id)arg3 fromConnection:(id)arg4;
 
 @end
 

@@ -16,9 +16,9 @@
 - (void)_accessibilityAnnounceSolarRegionChange:(struct CGPoint)arg1;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityRemoveSolarTerminatorPath;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (void)addCity:(id)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)removeCity:(id)arg1;

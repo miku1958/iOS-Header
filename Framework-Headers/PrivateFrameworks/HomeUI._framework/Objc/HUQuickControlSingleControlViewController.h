@@ -7,13 +7,15 @@
 #import <HomeUI/HUQuickControlViewController.h>
 
 #import <HomeUI/HUQuickControlInteractionCoordinatorDelegate-Protocol.h>
+#import <HomeUI/HUQuickControlTouchContinuing-Protocol.h>
 
 @class HFControlItem, HUQuickControlInteractionCoordinator, HUQuickControlViewProfile, NAValueThrottler, NSString, _HUQuickControlSingleControlHostView;
 
-@interface HUQuickControlSingleControlViewController : HUQuickControlViewController <HUQuickControlInteractionCoordinatorDelegate>
+@interface HUQuickControlSingleControlViewController : HUQuickControlViewController <HUQuickControlInteractionCoordinatorDelegate, HUQuickControlTouchContinuing>
 {
     BOOL _writesInProgressOrPossible;
     BOOL _hasWrittenAnyNewValues;
+    BOOL _hasSetControlSize;
     HUQuickControlInteractionCoordinator *_interactionCoordinator;
     id _modelValue;
     NAValueThrottler *_valueWriteThrottler;
@@ -26,11 +28,12 @@
 @property (readonly, nonatomic) HFControlItem *controlItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasSetControlSize; // @synthesize hasSetControlSize=_hasSetControlSize;
 @property (nonatomic) BOOL hasWrittenAnyNewValues; // @synthesize hasWrittenAnyNewValues=_hasWrittenAnyNewValues;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double horizontalControlCompressionFactor; // @synthesize horizontalControlCompressionFactor=_horizontalControlCompressionFactor;
 @property (nonatomic) unsigned long long inFlightWriteCount; // @synthesize inFlightWriteCount=_inFlightWriteCount;
-@property (readonly, nonatomic) HUQuickControlInteractionCoordinator *interactionCoordinator; // @synthesize interactionCoordinator=_interactionCoordinator;
+@property (strong, nonatomic) HUQuickControlInteractionCoordinator *interactionCoordinator; // @synthesize interactionCoordinator=_interactionCoordinator;
 @property (readonly, nonatomic) id modelValue; // @synthesize modelValue=_modelValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NAValueThrottler *valueWriteThrottler; // @synthesize valueWriteThrottler=_valueWriteThrottler;
@@ -44,6 +47,7 @@
 - (void).cxx_destruct;
 - (void)_setModelValue:(id)arg1 writeValue:(BOOL)arg2;
 - (void)_updateControlTransform;
+- (void)_updateControlViewReachabilityState;
 - (void)_updateTitle;
 - (void)_updateValueFromControlItem;
 - (void)_updateViewProfileForCurrentItemState;
@@ -72,11 +76,15 @@
 - (id)overrideStatusText;
 - (id)overrideValueForCharacteristic:(id)arg1;
 - (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
+- (void)setControlOrientation:(unsigned long long)arg1;
 - (void)setControlSize:(unsigned long long)arg1;
+- (void)setPreferredControl:(unsigned long long)arg1;
 - (void)setPreferredFrameLayoutGuide:(id)arg1;
 - (void)setUserInteractionEnabled:(BOOL)arg1;
+- (id)viewControllerForTouchContinuation;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (id)viewForTouchContinuation;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

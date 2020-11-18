@@ -18,6 +18,7 @@
     BOOL _secureOfflineOnly;
     BOOL _farField;
     BOOL _releaseAudioSessionOnRecordingCompletion;
+    BOOL _incremental;
     NSString *_applicationName;
     NSString *_applicationVersion;
     STSiriContext *_context;
@@ -47,16 +48,19 @@
     NSDictionary *_recognitionOverrides;
     NSURL *_modelOverrideURL;
     AFLanguageDetectionUserContext *_languageDetectionUserContext;
+    long long _dictationInputOrigin;
 }
 
 @property (copy, nonatomic) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy, nonatomic) NSString *applicationVersion; // @synthesize applicationVersion=_applicationVersion;
 @property (strong, nonatomic) STSiriContext *context; // @synthesize context=_context;
 @property (nonatomic) BOOL detectUtterances; // @synthesize detectUtterances=_detectUtterances;
+@property (nonatomic) long long dictationInputOrigin; // @synthesize dictationInputOrigin=_dictationInputOrigin;
 @property (nonatomic) BOOL farField; // @synthesize farField=_farField;
 @property (copy, nonatomic) NSString *fieldIdentifier; // @synthesize fieldIdentifier=_fieldIdentifier;
 @property (copy, nonatomic) NSString *fieldLabel; // @synthesize fieldLabel=_fieldLabel;
 @property (nonatomic) BOOL forceOfflineRecognition; // @synthesize forceOfflineRecognition=_forceOfflineRecognition;
+@property (nonatomic) BOOL incremental; // @synthesize incremental=_incremental;
 @property (copy, nonatomic) NSArray *inlineItemList; // @synthesize inlineItemList=_inlineItemList;
 @property (copy, nonatomic) NSString *interactionIdentifier; // @synthesize interactionIdentifier=_interactionIdentifier;
 @property (copy, nonatomic) NSString *keyboardIdentifier; // @synthesize keyboardIdentifier=_keyboardIdentifier;

@@ -15,16 +15,17 @@
     BOOL _expanded;
 }
 
-@property (strong) TLKDescriptionView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKDescriptionView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property BOOL expanded; // @synthesize expanded=_expanded;
+@property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (void)didPressFootnoteButton;
 - (void)didPressMoreButton;
 - (id)setupContentView;
 - (void)updateWithRowModel:(id)arg1;

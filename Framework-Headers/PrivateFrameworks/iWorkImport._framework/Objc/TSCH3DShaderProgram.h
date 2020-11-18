@@ -27,6 +27,9 @@ __attribute__((visibility("hidden")))
     NSString *mFragment;
     TSCH3DVersion *mVersion;
     TSCH3DOrderedDictionary *mTypeDeclarations;
+    NSMutableArray *mSortedLinks;
+    NSMutableDictionary *mVariableToVertexAttributeLocation;
+    NSMutableDictionary *mLinkedInputVariables;
     NSSet *_variablesWithBackingResources;
     NSSet *_interleavedAttributeVariables;
 }
@@ -34,7 +37,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long attributeBindingsCount;
 @property (readonly, nonatomic) NSString *fragment;
 @property (copy, nonatomic) NSSet *interleavedAttributeVariables; // @synthesize interleavedAttributeVariables=_interleavedAttributeVariables;
+@property (strong, nonatomic) NSMutableArray *sortedLinks; // @synthesize sortedLinks=mSortedLinks;
 @property (readonly, nonatomic) unsigned long long textureBindingsCount;
+@property (strong, nonatomic) NSMutableDictionary *variableToVertexAttributeLocation; // @synthesize variableToVertexAttributeLocation=mVariableToVertexAttributeLocation;
 @property (copy, nonatomic) NSSet *variablesWithBackingResources; // @synthesize variablesWithBackingResources=_variablesWithBackingResources;
 @property (readonly, nonatomic) TSCH3DVersion *version; // @synthesize version=mVersion;
 @property (readonly, nonatomic) NSString *vertex;
@@ -178,7 +183,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)p_vertexAttributeBindingsCount;
 - (unsigned long long)processSection:(id)arg1 accumulate:(id)arg2 conclusions:(id)arg3;
 - (pair_64bf96b1)resultLinkageOfVariable:(id)arg1;
-- (id)sortedLinks;
 - (long long)uniformBufferIndexForType:(struct TSCH3DShaderType)arg1;
 - (struct TSCH3DShaderType)uniformLinkageFor:(id)arg1;
 - (id)uniformVariablesForType:(struct TSCH3DShaderType)arg1;

@@ -35,6 +35,7 @@
 - (id)_beforeGapDate;
 - (id)_effectiveTimeTravelDate;
 - (id)_leftmostDate;
+- (id)_nowEntry;
 - (id)_nowNode;
 - (void)_recycleAllNodes;
 - (id)_rightmostDate;

@@ -14,10 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axLoadIconResults:(id)arg1;
 - (BOOL)accessibilityElementsHidden;
 - (BOOL)isAccessibilityElement;
-- (void)updateWithResultsForRow:(id)arg1;
 
 @end
 

@@ -12,7 +12,7 @@
 {
 }
 
-@property (readonly, nonatomic) NSURL *URIRepresentation;
+@property (readonly, weak, nonatomic) NSURL *URIRepresentation;
 @property (strong, nonatomic) NSString *entryAlbumGUID; // @dynamic entryAlbumGUID;
 @property (strong, nonatomic) NSDate *entryDate; // @dynamic entryDate;
 @property (strong, nonatomic) NSString *entryInvitationRecordGUID; // @dynamic entryInvitationRecordGUID;
@@ -26,7 +26,6 @@
 + (id)allEntriesInLibrary:(id)arg1;
 + (id)allEntriesInManagedObjectContext:(id)arg1;
 + (id)entityForFilter:(long long)arg1 inManagedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)entriesSortDescriptorsAscending:(BOOL)arg1;
 + (id)entryWithURIRepresentation:(id)arg1 inLibrary:(id)arg2;

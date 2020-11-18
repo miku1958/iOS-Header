@@ -28,8 +28,11 @@ __attribute__((visibility("hidden")))
 + (BOOL)_isValidStartDate:(id)arg1 endDate:(id)arg2;
 + (void)_logRequestElapsedTime:(double)arg1 forNumberOfAddresses:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (id)_cachedSpanResultsBetweenStartDate:(id)arg1 endDate:(id)arg2 ignoredEventID:(id)arg3 addresses:(id)arg4;
 - (id)_dictionaryForIgnoredEventID:(id)arg1;
 - (void)_handleResults:(id)arg1 resultsBlock:(CDUnknownBlockType)arg2 ignoredEventID:(id)arg3;
+- (BOOL)_validateRequestStartDate:(id)arg1 endDate:(id)arg2 addresses:(id)arg3 error:(id *)arg4;
+- (id)cachedAvailabilityInDateRange:(id)arg1 ignoredEventID:(id)arg2 addresses:(id)arg3;
 - (void)cancelAvailabilityRequestWithID:(id)arg1;
 - (id)description;
 - (id)init;

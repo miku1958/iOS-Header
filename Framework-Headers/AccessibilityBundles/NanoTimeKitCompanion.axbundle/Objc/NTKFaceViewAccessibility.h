@@ -28,12 +28,14 @@
 - (void)_axApplyAnnotationsToComplicationControllers:(id)arg1;
 - (BOOL)_axIsDoneAnnouncing;
 - (BOOL)_axIsWaitingToAnnounce;
-- (void)_axMakeTimeViewFirstElement;
 - (void)_axSetIsDoneAnnouncing:(BOOL)arg1;
 - (void)_axSetIsWaitingToAnnounce:(BOOL)arg1;
+- (void)_loadSnapshotContentViews;
 - (void)dealloc;
+- (id)detachedComplicationDisplayWrapperForSlot:(id)arg1;
 - (void)endScrubbingAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
+- (id)normalComplicationDisplayWrapperForSlot:(id)arg1;
 - (void)scrubToDate:(id)arg1 animated:(BOOL)arg2;
 - (void)setTimeView:(id)arg1;
 - (void)startScrubbingAnimated:(BOOL)arg1;

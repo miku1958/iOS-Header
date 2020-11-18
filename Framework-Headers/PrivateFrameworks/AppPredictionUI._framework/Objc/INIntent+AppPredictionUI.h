@@ -9,5 +9,7 @@
 @interface INIntent (AppPredictionUI)
 + (BOOL)apui_isSupportedForCardRequests;
 - (id)apui_intent;
+- (id)apui_keyPeople;
+- (BOOL)apui_requiresAuthentication;
 @end
 

@@ -14,12 +14,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsLocalParticipantExpanded;
+- (id)_accessibilityMonogramView;
 - (id)_accessibilityUserTestingChildren;
+- (id)_accessibilityVideoOverlayView;
+- (id)_accessibilityVideoView;
 - (id)_axConstraintsController;
-- (id)_axGetTitleLabel;
 - (BOOL)_axHandleDoubleTap;
-- (void)_axSetTitleLabel:(id)arg1;
-- (id)_axTitleLabel;
+- (BOOL)_axHandleTakeLivePhotoAction;
 - (id)accessibilityCustomActions;
 - (BOOL)accessibilityElementsHidden;
 - (id)accessibilityLabel;

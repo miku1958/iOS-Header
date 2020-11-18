@@ -8,7 +8,7 @@
 
 #import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSSet, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarDisplayItemPlacementState, _UIStatusBarIdentifier, _UIStatusBarStyleAttributes;
+@class NSArray, NSMutableArray, NSMutableSet, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarDisplayItem, _UIStatusBarDisplayItemPlacementState, _UIStatusBarIdentifier, _UIStatusBarItem, _UIStatusBarStyleAttributes;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarDisplayItemState : NSObject <_UIStatusBarPrioritized>
@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     BOOL _wasVisible;
     BOOL _dataEnabled;
     BOOL _floating;
+    _UIStatusBarDisplayItem *_displayItem;
     _UIStatusBarIdentifier *_identifier;
     _UIStatusBar *_statusBar;
+    _UIStatusBarItem *_item;
     NSMutableArray *_placementStates;
     long long _preferredPlacementStateIndex;
     long long _currentPlacementStateIndex;
@@ -40,15 +42,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long currentPlacementStateIndex; // @synthesize currentPlacementStateIndex=_currentPlacementStateIndex;
 @property (nonatomic) BOOL dataEnabled; // @synthesize dataEnabled=_dataEnabled;
 @property (nonatomic) long long dataUpdateStatus; // @synthesize dataUpdateStatus=_dataUpdateStatus;
+@property (weak, nonatomic) _UIStatusBarDisplayItem *displayItem; // @synthesize displayItem=_displayItem;
 @property (nonatomic) long long enabilityStatus; // @synthesize enabilityStatus=_enabilityStatus;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic, getter=isEnabledIgnoringAnimations) BOOL enabledIgnoringAnimations;
 @property (nonatomic) BOOL floating; // @synthesize floating=_floating;
 @property (copy, nonatomic) _UIStatusBarIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (weak, nonatomic) _UIStatusBarItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) _UIStatusBarStyleAttributes *overriddenStyleAttributes; // @synthesize overriddenStyleAttributes=_overriddenStyleAttributes;
 @property (strong, nonatomic) NSMutableArray *placementStates; // @synthesize placementStates=_placementStates;
 @property (nonatomic) long long placementUpdateStatus; // @synthesize placementUpdateStatus=_placementUpdateStatus;
-@property (readonly, copy, nonatomic) NSSet *potentialPlacementRegionIdentifiers;
+@property (readonly, copy, nonatomic) NSArray *potentialPlacementRegionIdentifiers;
 @property (nonatomic) long long preferredPlacementStateIndex; // @synthesize preferredPlacementStateIndex=_preferredPlacementStateIndex;
 @property (nonatomic) long long previousPlacementStateIndex; // @synthesize previousPlacementStateIndex=_previousPlacementStateIndex;
 @property (readonly, nonatomic) long long priority;
@@ -61,9 +65,9 @@ __attribute__((visibility("hidden")))
 + (void)setupRelationsBetweenDisplayItemStates:(id)arg1 visualProvider:(id)arg2;
 + (id)stateForDisplayItemWithIdentifier:(id)arg1 statusBar:(id)arg2;
 - (void).cxx_destruct;
-- (id)_animationForDisplayItem:(id)arg1 withUpdateAnimation:(id)arg2;
+- (id)_animationWithUpdateAnimation:(id)arg1;
 - (void)_cancelObsoleteAnimations;
-- (id)_effectiveStyleAttributesFromStyleAttributes:(id)arg1;
+- (id)_effectiveStyleAttributesFromStyleAttributes:(id)arg1 data:(id)arg2 styleAttributesChanged:(BOOL *)arg3;
 - (BOOL)_resolveDependentItemStatesWithBlock:(CDUnknownBlockType)arg1;
 - (id)_updateForItem:(id)arg1 data:(id)arg2 styleAttributes:(id)arg3;
 - (id)_updateForUpdatedData:(id)arg1 updatedStyleAttributes:(id)arg2 updatedEnability:(id)arg3;
@@ -75,7 +79,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasRunningAnimations;
 - (BOOL)isCurrentPlacement:(id)arg1;
 - (id)placementStateForPlacement:(id)arg1;
-- (BOOL)prepareAnimation:(id)arg1 withDisplayItem:(id)arg2;
+- (BOOL)prepareAnimation:(id)arg1;
 - (void)prepareForDataUpdate;
 - (void)resetToPreferredPlacement;
 - (BOOL)updatePlacement;

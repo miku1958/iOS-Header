@@ -11,7 +11,7 @@
 @protocol BLTPingService <NSObject>
 - (void)getWillNanoPresentNotificationForSectionID:(NSString *)arg1 subsectionIDs:(NSSet *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)sendBulletinSummary:(BLTPBBulletinSummary *)arg1;
-- (void)subscribeToSectionID:(NSString *)arg1 forFullBulletins:(BOOL)arg2 withAck:(BOOL)arg3;
+- (void)subscribeToSectionID:(NSString *)arg1 forFullBulletins:(BOOL)arg2 withAck:(BOOL)arg3 ackAllowedOnLocalConnection:(BOOL)arg4;
 - (void)subscribeWithMachServiceName:(NSString *)arg1;
 - (void)unsubscribeFromSectionID:(NSString *)arg1;
 @end

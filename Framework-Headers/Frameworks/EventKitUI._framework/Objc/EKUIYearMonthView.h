@@ -63,7 +63,7 @@
 @property (readonly, nonatomic) double ySpacing;
 
 + (id)_defaultTextColor;
-+ (double)heightForInterfaceOrientation:(long long)arg1;
++ (double)heightForInterfaceOrientation:(long long)arg1 windowSize:(struct CGSize)arg2 heightSizeClass:(long long)arg3;
 - (void).cxx_destruct;
 - (void)_getTodayNumberTextFrame:(struct CGRect *)arg1 circleFrame:(struct CGRect *)arg2;
 - (id)_imageForDayNumber:(id)arg1 size:(struct CGSize)arg2 underlineThickness:(double)arg3;

@@ -6,13 +6,14 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDAssetRequestPlanner, CKDCancelTokenGroup, NSArray, NSMapTable, NSMutableArray, NSObject;
+@class CKDAssetRequestPlanner, CKDCancelTokenGroup, NSArray, NSDictionary, NSMapTable, NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDUploadAssetsOperation : CKDDatabaseOperation
 {
     BOOL _atomic;
+    BOOL _temporary;
     CDUnknownBlockType _uploadPreparationBlock;
     CDUnknownBlockType _uploadProgressBlock;
     CDUnknownBlockType _uploadCompletionBlock;
@@ -24,16 +25,21 @@ __attribute__((visibility("hidden")))
     CKDCancelTokenGroup *_cancelTokens;
     unsigned long long _maxPackageUploadsPerBatch;
     CKDAssetRequestPlanner *_assetRequestPlanner;
+    NSDictionary *_assetUUIDToExpectedProperties;
+    NSDictionary *_packageUUIDToExpectedProperties;
 }
 
 @property (strong, nonatomic) CKDAssetRequestPlanner *assetRequestPlanner; // @synthesize assetRequestPlanner=_assetRequestPlanner;
+@property (strong, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property (strong, nonatomic) NSArray *assetsToUpload; // @synthesize assetsToUpload=_assetsToUpload;
 @property (nonatomic) BOOL atomic; // @synthesize atomic=_atomic;
 @property (strong, nonatomic) CKDCancelTokenGroup *cancelTokens; // @synthesize cancelTokens=_cancelTokens;
 @property (nonatomic) unsigned long long maxPackageUploadsPerBatch; // @synthesize maxPackageUploadsPerBatch=_maxPackageUploadsPerBatch;
 @property (strong, nonatomic) NSMutableArray *openedPackages; // @synthesize openedPackages=_openedPackages;
 @property (strong, nonatomic) NSMutableArray *packageManifests; // @synthesize packageManifests=_packageManifests;
+@property (strong, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) BOOL temporary; // @synthesize temporary=_temporary;
 @property (copy, nonatomic) CDUnknownBlockType uploadCompletionBlock; // @synthesize uploadCompletionBlock=_uploadCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType uploadPreparationBlock; // @synthesize uploadPreparationBlock=_uploadPreparationBlock;
 @property (copy, nonatomic) CDUnknownBlockType uploadProgressBlock; // @synthesize uploadProgressBlock=_uploadProgressBlock;

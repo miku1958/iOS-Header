@@ -14,7 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)loadView;
+- (BOOL)_axShowsGlobeKeyAsEmoji;
+- (void)_axUpdateGlobeKeyLabel;
+- (void)updateDockItemsVisibility;
 
 @end
 

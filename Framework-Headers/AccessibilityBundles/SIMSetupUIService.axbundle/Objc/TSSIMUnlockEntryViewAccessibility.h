@@ -15,8 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_configureDetailLabelText;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (id)initWithActionType:(long long)arg1 actionSubtype:(long long)arg2;
 
 @end

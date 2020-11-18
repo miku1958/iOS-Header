@@ -18,13 +18,11 @@
     NSDate *_stopDate;
     NSUUID *_visitIdentifierOrigin;
     NSUUID *_visitIdentifierDestination;
-    NSUUID *_routeIdentifier;
     long long _modeOfTransportation;
 }
 
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) long long modeOfTransportation; // @synthesize modeOfTransportation=_modeOfTransportation;
-@property (readonly, nonatomic) NSUUID *routeIdentifier; // @synthesize routeIdentifier=_routeIdentifier;
 @property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, copy, nonatomic) NSDate *stopDate; // @synthesize stopDate=_stopDate;
 @property (readonly, nonatomic) NSUUID *visitIdentifierDestination; // @synthesize visitIdentifierDestination=_visitIdentifierDestination;
@@ -37,7 +35,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 startDate:(id)arg2 stopDate:(id)arg3 visitIdentifierOrigin:(id)arg4 visitIdentifierDestination:(id)arg5 routeIdentifier:(id)arg6 modeOfTransportation:(long long)arg7;
+- (id)initWithIdentifier:(id)arg1 startDate:(id)arg2 stopDate:(id)arg3 visitIdentifierOrigin:(id)arg4 visitIdentifierDestination:(id)arg5 modeOfTransportation:(long long)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

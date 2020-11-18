@@ -30,7 +30,7 @@
 - (BOOL)_canRespondByRequestingPersistableContentKeyRequest;
 - (void)_clearContext;
 - (void)_copyAndStoreCryptorUUID;
-- (int)_extractAndStoreDefualtKeyIDFromInitializationData:(id)arg1;
+- (int)_extractAndStoreKeyIDFromInitializationData:(id)arg1;
 - (void)_finishLoadingCustomURLRequestWithError:(id)arg1;
 - (void)_finishLoadingCustomURLRequestWithResponseData:(id)arg1 renewalDate:(id)arg2;
 - (id)_getRetryReasonForError:(int)arg1;
@@ -38,16 +38,15 @@
 - (void)_handleKeyResponseSuccess;
 - (id)_keySystem;
 - (int)_prepareForKeyRenewal;
-- (void)_sendDictionaryForURLRequest:(id)arg1;
 - (void)_sendResponseInfoToCustomURLHandlerWithRenewalDate:(id)arg1;
 - (struct OpaqueFigCPECryptor *)_setCryptorWithFormatDescription:(struct opaqueCMFormatDescription *)arg1 error:(id *)arg2;
 - (void)_setError:(id)arg1;
 - (void)_setStatus:(long long)arg1;
 - (id)contentKeyRequestDataForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (void)dealloc;
+- (id)description;
 - (struct OpaqueFigCPECryptor *)figCryptor;
-- (id)initWithContentKeySession:(id)arg1 customURLHandler:(struct OpaqueFigCustomURLHandler *)arg2 identifier:(id)arg3 requestInfo:(struct __CFDictionary *)arg4 requestID:(unsigned long long)arg5 providesPersistableKey:(BOOL)arg6;
-- (id)initWithContentKeySession:(id)arg1 customURLProviderContext:(id)arg2 identifier:(id)arg3 initializationData:(id)arg4 providesPersistableKey:(BOOL)arg5;
+- (id)initWithContentKeySession:(id)arg1 customURLHandler:(struct OpaqueFigCustomURLHandler *)arg2 identifier:(id)arg3 requestInfo:(struct __CFDictionary *)arg4 requestID:(unsigned long long)arg5 providesPersistableKey:(BOOL)arg6 isRenewalRequest:(BOOL)arg7;
 - (id)initWithContentKeySession:(id)arg1 identifier:(id)arg2 initializationData:(id)arg3 preloadingRequestOptions:(id)arg4 providesPersistableKey:(BOOL)arg5;
 - (void)makeStreamingContentKeyRequestDataForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)processContentKeyResponse:(id)arg1;
@@ -55,6 +54,7 @@
 - (void)processContentKeyResponseData:(id)arg1 renewalDate:(id)arg2;
 - (void)processContentKeyResponseError:(id)arg1;
 - (void)renewExpiringContentKeyResponseData;
+- (BOOL)renewsExpiringResponseData;
 - (void)respondByRequestingPersistableContentKeyRequest;
 - (BOOL)respondByRequestingPersistableContentKeyRequestAndReturnError:(id *)arg1;
 

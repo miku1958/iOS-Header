@@ -8,7 +8,7 @@
 
 #import <CoreRecents/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSPredicate;
+@class NSArray, NSPredicate, NSString;
 
 @interface CRSearchQuery : NSObject <NSSecureCoding>
 {
@@ -18,13 +18,17 @@
     unsigned long long _options;
     CDUnknownBlockType _weightDecayer;
     CDUnknownBlockType _comparator;
+    NSString *_uuid;
+    struct _NSRange _pageRange;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType comparator; // @synthesize comparator=_comparator;
 @property (copy, nonatomic) NSArray *domains; // @synthesize domains=_domains;
 @property (nonatomic) unsigned long long implicitGroupThreshold; // @synthesize implicitGroupThreshold=_implicitGroupThreshold;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (nonatomic) struct _NSRange pageRange; // @synthesize pageRange=_pageRange;
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
+@property (readonly, copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (copy, nonatomic) CDUnknownBlockType weightDecayer; // @synthesize weightDecayer=_weightDecayer;
 
 + (CDUnknownBlockType)frecencyComparator;
@@ -32,8 +36,9 @@
 + (CDUnknownBlockType)rankedFrecencyComparatorWithPreferredSources:(id)arg1;
 + (id)searchQueryForSearchTerm:(id)arg1 preferredKinds:(id)arg2 sendingAddress:(id)arg3 recentsDomain:(id)arg4;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

@@ -6,16 +6,19 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSProgress, NSString, NSUUID;
+@class NSProgress;
 
 @protocol HDCloudSyncServerInterface <NSObject>
-- (void)remote_createCloudShareWithRecipient:(NSString *)arg1 sampleTypes:(NSArray *)arg2 maxSampleAge:(NSNumber *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)remote_accountConfigurationDidChangeWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (NSProgress *)remote_disableCloudSyncAndDeleteAllCloudDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_disableCloudSyncWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_enableCloudSyncWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (NSProgress *)remote_fetchCloudDescriptionWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (NSProgress *)remote_fetchCloudSyncProgressWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_fetchCloudSyncStatusWithCompletion:(void (^)(BOOL, NSDate *, NSDate *, BOOL, NSError *))arg1;
 - (NSProgress *)remote_forceCloudResetWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (NSProgress *)remote_forceCloudSyncDataUploadForProfileWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (NSProgress *)remote_forceCloudSyncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (NSProgress *)remote_waitOnHealthCloudSyncWithUUID:(NSUUID *)arg1 completion:(void (^)(long long, NSError *))arg2;
-- (NSProgress *)retmote_fetchCloudSyncProgressWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_oldestSampleStartDateInHealthDatabaseWithCompletion:(void (^)(NSDate *, NSError *))arg1;
 @end
 

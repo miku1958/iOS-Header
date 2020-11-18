@@ -7,8 +7,12 @@
 @class AFPeerInfo, NSArray, NSString, SACFAbstractClientCommand, SACFClientFlowScript, SACFSignal;
 
 @protocol CFScripting
+- (void)cancelOperationsForRequestID:(NSString *)arg1;
+- (void)killScripter;
 - (void)performCommandExecutionForCommand:(SACFAbstractClientCommand *)arg1 peerInfo:(AFPeerInfo *)arg2 completion:(void (^)(SABaseCommand *))arg3;
 - (void)removeScripts:(NSArray *)arg1 completion:(void (^)(BOOL))arg2;
+- (void)resetScriptExecutorCache;
+- (void)runBootMaintenanceWithCompletion:(void (^)(BOOL))arg1;
 - (void)scriptCachePathWithCompletion:(void (^)(NSString *))arg1;
 - (void)scriptCheckSumDictionaryWithCompletion:(void (^)(NSDictionary *))arg1;
 - (void)updateScriptArchiveAtPath:(NSString *)arg1 completion:(void (^)(BOOL))arg2;

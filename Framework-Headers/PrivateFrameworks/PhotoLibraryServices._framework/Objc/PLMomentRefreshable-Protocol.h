@@ -7,8 +7,6 @@
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
 @protocol PLMomentRefreshable <NSObject>
-
-@optional
 - (BOOL)hasChanges;
 @end
 

@@ -32,15 +32,14 @@
 @property struct CGSize backgroundColorPhase;
 @property (copy) NSArray *backgroundFilters;
 @property double beginTime;
-@property (copy) NSArray *behaviors;
 @property struct CGColor *borderColor;
 @property double borderWidth;
 @property struct CGRect bounds;
 @property BOOL canDrawConcurrently;
 @property BOOL clearsContext;
-@property double coefficientOfRestitution;
 @property (strong) id compositingFilter;
 @property (strong) id contents;
+@property BOOL contentsAlignsToPixels;
 @property struct CGRect contentsCenter;
 @property BOOL contentsContainsSubtitles;
 @property BOOL contentsDither;
@@ -57,7 +56,9 @@
 @property (strong) id cornerContents;
 @property struct CGRect cornerContentsCenter;
 @property BOOL cornerContentsMasksEdges;
+@property (copy) NSString *cornerCurve;
 @property double cornerRadius;
+@property BOOL createsCompositingGroup;
 @property BOOL definesDisplayRegionOfInterest;
 @property (weak) id<CALayerDelegate> delegate;
 @property unsigned int disableUpdateMask;
@@ -76,16 +77,15 @@
 @property BOOL hitTestsContentsAlphaChannel;
 @property BOOL inheritsTiming;
 @property BOOL invertsShadow;
+@property (copy) NSArray *layoutDependents;
 @property BOOL literalContentsCenter;
 @property (copy) NSString *magnificationFilter;
 @property (strong) CALayer *mask;
 @property unsigned long long maskedCorners;
 @property BOOL masksToBounds;
-@property double mass;
 @property (copy) CAMeshTransform *meshTransform;
 @property (copy) NSString *minificationFilter;
 @property float minificationFilterBias;
-@property double momentOfInertia;
 @property double motionBlurAmount;
 @property (copy) NSString *name;
 @property BOOL needsDisplayOnBoundsChange;
@@ -99,6 +99,7 @@
 @property double rasterizationScale;
 @property float repeatCount;
 @property double repeatDuration;
+@property (copy) NSString *securityMode;
 @property struct CGColor *shadowColor;
 @property struct CGSize shadowOffset;
 @property float shadowOpacity;
@@ -117,7 +118,7 @@
 @property (readonly) CALayer *superlayer;
 @property double timeOffset;
 @property struct CATransform3D transform;
-@property double velocityStretch;
+@property id<CALayerDelegate> unsafeUnretainedDelegate;
 @property (readonly) struct CGRect visibleRect;
 @property double zPosition;
 
@@ -129,8 +130,10 @@
 + (BOOL)_hasRenderLayerSubclass;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
++ (double)cornerCurveExpansionFactor:(id)arg1;
 + (id)defaultActionForKey:(id)arg1;
 + (id)defaultValueForKey:(id)arg1;
++ (void)initialize;
 + (id)layer;
 + (BOOL)needsDisplayForKey:(id)arg1;
 + (BOOL)needsLayoutForKey:(id)arg1;
@@ -139,6 +142,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
+- (id)CA_archivingValueForKey:(id)arg1;
 - (BOOL)_canDisplayConcurrently;
 - (void)_cancelAnimationTimer;
 - (void)_colorSpaceDidChange;
@@ -166,6 +170,7 @@
 - (struct CGRect)_visibleRectOfLayer:(id)arg1;
 - (id)actionForKey:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
+- (void)addLayoutDependent:(id)arg1;
 - (void)addPresentationModifier:(id)arg1;
 - (void)addState:(id)arg1;
 - (void)addSublayer:(id)arg1;
@@ -174,6 +179,7 @@
 - (id)ancestorSharedWithLayer:(id)arg1;
 - (id)animationForKey:(id)arg1;
 - (id)animationKeys;
+- (id)behaviors;
 - (void)clearHasBeenCommitted;
 - (BOOL)containsPoint:(struct CGPoint)arg1;
 - (BOOL)contentsAreFlipped;
@@ -217,10 +223,11 @@
 - (void)layoutIfNeeded;
 - (BOOL)layoutIsActive;
 - (void)layoutSublayers;
-- (id)lights;
+- (double)mass;
 - (id)modelLayer;
 - (BOOL)needsDisplay;
 - (BOOL)needsLayout;
+- (void *)observationInfo;
 - (BOOL)opaque;
 - (struct CGSize)preferredFrameSize;
 - (id)presentationLayer;
@@ -231,6 +238,7 @@
 - (void)removeAllAnimations;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeFromSuperlayer;
+- (void)removeLayoutDependent:(id)arg1;
 - (void)removePresentationModifier:(id)arg1;
 - (void)removeState:(id)arg1;
 - (void)renderInContext:(struct CGContext *)arg1;
@@ -241,12 +249,14 @@
 - (void)scrollPoint:(struct CGPoint)arg1;
 - (void)scrollRectToVisible:(struct CGRect)arg1;
 - (void)setAffineTransform:(struct CGAffineTransform)arg1;
+- (void)setBehaviors:(id)arg1;
 - (void)setContentsChanged;
 - (void)setFlipped:(BOOL)arg1;
-- (void)setLights:(id)arg1;
+- (void)setMass:(double)arg1;
 - (void)setNeedsDisplay;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setNeedsLayout;
+- (void)setObservationInfo:(void *)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (void)setValue:(id)arg1 forKeyPath:(id)arg2;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

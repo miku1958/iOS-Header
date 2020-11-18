@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) unsigned long long numberOfRows;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;

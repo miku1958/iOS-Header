@@ -8,12 +8,14 @@
 
 #import <PhotosUICore/PXEditSourceLoader-Protocol.h>
 
-@class NSError, NSNumber, NSProgress, NSString, PLEditSource, PLPhotoEditModel;
+@class NSError, NSNumber, NSProgress, NSString, PICompositionController, PLEditSource;
 
 @interface PXStaticEditSourceLoader : NSObject <PXEditSourceLoader>
 {
     PLEditSource *_editSource;
-    PLPhotoEditModel *_editModel;
+    PLEditSource *_overcaptureEditSource;
+    PICompositionController *_compositionController;
+    PICompositionController *_originalCompositionController;
     long long _baseVersion;
     NSProgress *_progress;
     NSError *_error;
@@ -21,22 +23,25 @@
     NSString *_livePhotoPairingIdentifier;
 }
 
+@property (readonly, nonatomic) PLEditSource *activeEditSource; // @dynamic activeEditSource;
 @property (readonly, nonatomic) long long baseVersion; // @synthesize baseVersion=_baseVersion;
+@property (readonly, copy, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property (readonly, copy, nonatomic) NSString *contentIdentifier; // @synthesize contentIdentifier=_contentIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) PLPhotoEditModel *editModel; // @synthesize editModel=_editModel;
 @property (readonly, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *livePhotoPairingIdentifier; // @synthesize livePhotoPairingIdentifier=_livePhotoPairingIdentifier;
 @property (readonly, nonatomic) NSNumber *loadDuration;
+@property (readonly, copy, nonatomic) PICompositionController *originalCompositionController; // @synthesize originalCompositionController=_originalCompositionController;
+@property (readonly, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)beginLoading;
-- (id)initWithEditSource:(id)arg1 editModel:(id)arg2 baseVersion:(long long)arg3 contentIdentifier:(id)arg4;
+- (id)initWithEditSource:(id)arg1 compositionController:(id)arg2 baseVersion:(long long)arg3 contentIdentifier:(id)arg4;
 
 @end
 

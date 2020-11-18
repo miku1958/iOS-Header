@@ -55,10 +55,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL visualTracksEnabled; // @synthesize visualTracksEnabled=_visualTracksEnabled;
 
-+ (BOOL)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
+- (BOOL)_assetIsDecodable:(id)arg1;
 - (void)_updateExternalPlayback;
 - (void)_updatePlayingStatus;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -71,18 +69,19 @@ __attribute__((visibility("hidden")))
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observePlayingTime:(CDStruct_198678f7)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)pause;
-- (void)play;
+- (BOOL)pause;
+- (BOOL)play;
 - (void)playerItemDidReachEnd:(id)arg1;
 - (void)previewBecameFullScreen:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewIsAppearingWithProgress:(double)arg1;
-- (id)registeredKeyCommands;
 - (void)resetToBeginning;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setMediaVolume:(double)arg1;
+- (id)setupPlayerViewWithPlayer:(id)arg1;
 - (void)setupPlayerWithMediaAsset:(id)arg1;
+- (BOOL)shouldDisplayPlayButtonInNavigationBar;
 - (void)stop;
 - (void)togglePlayback;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;

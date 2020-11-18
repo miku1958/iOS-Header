@@ -8,6 +8,10 @@
 
 @interface SASSpeechRecognized (AFUserUtteranceAdditions)
 - (id)af_bestTextInterpretation;
+- (id)af_correctionContext;
+- (BOOL)af_isUserUtterance;
+- (BOOL)af_isUtterance;
 - (id)af_userUtteranceValue;
+- (BOOL)af_waitsForConfirmation;
 @end
 

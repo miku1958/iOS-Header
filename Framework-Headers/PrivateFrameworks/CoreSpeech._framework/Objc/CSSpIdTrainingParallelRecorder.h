@@ -24,6 +24,7 @@
 - (void)processAudioChunk:(id)arg1;
 - (void)processMyriadDecision:(unsigned long long)arg1;
 - (void)recordingStoppedForReason:(long long)arg1;
+- (void)setCVTTriggerPhraseDetected;
 
 @end
 

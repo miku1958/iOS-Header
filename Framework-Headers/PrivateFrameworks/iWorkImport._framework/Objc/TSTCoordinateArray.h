@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)description;
-- (void)hasRightToLeftOrderingWithWidth:(double)arg1;
-- (id)initWithCount:(unsigned int)arg1 atOffset:(unsigned int)arg2;
+- (id)initWithCount:(unsigned int)arg1 atOffset:(unsigned int)arg2 layoutDirectionIsLeftToRight:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (void)setTableWidthForRightToLeft:(double)arg1;
 
 @end
 

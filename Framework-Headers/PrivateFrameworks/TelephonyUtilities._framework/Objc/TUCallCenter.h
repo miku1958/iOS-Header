@@ -8,20 +8,22 @@
 
 #import <TelephonyUtilities/TUCallContainer-Protocol.h>
 
-@class CNContactStore, NSArray, NSString, TUAudioDeviceController, TUCall, TUCallProviderManager, TUCallServicesInterface, TUConversationManager, TURouteController, TUVideoDeviceController;
+@class CNContactStore, NSArray, NSString, TUAudioDeviceController, TUCall, TUCallFilterController, TUCallProviderManager, TUCallServicesInterface, TUConversationManager, TURouteController, TUVideoDeviceController;
 @protocol OS_dispatch_queue, TUCallContainerPrivate;
 
 @interface TUCallCenter : NSObject <TUCallContainer>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     TUCallServicesInterface *_callServicesInterface;
     TUAudioDeviceController *_audioDeviceController;
     TUVideoDeviceController *_videoDeviceController;
     TURouteController *_routeController;
+    TURouteController *_pairedHostDeviceRouteController;
+    TUCallFilterController *_callFilterController;
     CNContactStore *_contactStore;
     TUCallProviderManager *_providerManager;
     TUConversationManager *_conversationManager;
     CDUnknownBlockType _disconnectCallPreflight;
+    NSObject<OS_dispatch_queue> *_queue;
     struct CGSize _localLandscapeAspectRatio;
     struct CGSize _localPortraitAspectRatio;
 }
@@ -34,6 +36,7 @@
 @property (strong, nonatomic) TUAudioDeviceController *audioDeviceController; // @synthesize audioDeviceController=_audioDeviceController;
 @property (readonly, nonatomic) id<TUCallContainerPrivate> callContainer;
 @property (readonly, nonatomic) unsigned long long callCountOnDefaultPairedDevice;
+@property (strong, nonatomic) TUCallFilterController *callFilterController; // @synthesize callFilterController=_callFilterController;
 @property (readonly, copy, nonatomic) NSArray *callGroupsOnDefaultPairedDevice;
 @property (strong, nonatomic) TUCallServicesInterface *callServicesInterface; // @synthesize callServicesInterface=_callServicesInterface;
 @property (readonly, copy, nonatomic) NSArray *callsHostedElsewhere;
@@ -68,18 +71,18 @@
 @property (readonly, nonatomic) TUCall *incomingVideoCall;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
+@property (strong, nonatomic) TURouteController *pairedHostDeviceRouteController; // @synthesize pairedHostDeviceRouteController=_pairedHostDeviceRouteController;
 @property (strong, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) TURouteController *routeController; // @synthesize routeController=_routeController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TUVideoDeviceController *videoDeviceController; // @synthesize videoDeviceController=_videoDeviceController;
 
 + (id)callCenterWithQueue:(id)arg1;
-+ (id)callCenterWithQueue:(id)arg1 daemonDelegate:(id)arg2 shouldRegister:(BOOL)arg3;
-+ (const void *)sharedAddressBook;
++ (id)callCenterWithQueue:(id)arg1 server:(id)arg2 shouldRegister:(BOOL)arg3;
 + (id)sharedContactStore;
 + (id)sharedInstance;
-+ (id)sharedInstanceWithQueue:(id)arg1 daemonDelegate:(id)arg2 shouldRegister:(BOOL)arg3;
++ (id)sharedInstanceWithQueue:(id)arg1 server:(id)arg2 shouldRegister:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)_allCalls;
 - (unsigned long long)_callGroupCountForCall:(id)arg1 withCall:(id)arg2;
@@ -129,6 +132,7 @@
 - (void)enteredBackgroundForAllCalls;
 - (void)enteredForegroundForCall:(id)arg1;
 - (BOOL)existingCallsHaveMultipleProviders;
+- (void)fetchCurrentCalls;
 - (id)frontmostAudioOrVideoCall;
 - (id)frontmostCall;
 - (void)groupCall:(id)arg1 withOtherCall:(id)arg2;
@@ -150,6 +154,7 @@
 - (void)joinConversationWithRequest:(id)arg1;
 - (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)launchAppForJoinRequest:(id)arg1;
+- (void)pickRouteForRapportDeviceWithMediaSystemIdentifier:(id)arg1 effectiveIdentifier:(id)arg2;
 - (void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pullHostedCallsFromPairedHostDevice;
 - (void)pullRelayingCallsFromClient;

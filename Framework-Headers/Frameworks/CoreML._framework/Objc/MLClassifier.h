@@ -16,7 +16,7 @@
 
 @property (readonly) MLModelInterface *interface;
 @property (readonly) MLModelMetadata *metadata;
-@property (readonly, nonatomic) MLModelDescription *modelDescription;
+@property (strong, nonatomic) MLModelDescription *modelDescription;
 
 + (id)predictionFromFeatures:(id)arg1 classifier:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)classLabels;

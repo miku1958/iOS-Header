@@ -15,7 +15,7 @@
     long long _streamToken;
     id _delegate;
     unsigned int _capabilities;
-    NSString *_deviceID;
+    NSString *_requesterID;
     NSMutableDictionary *_requests;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     int _currentActiveRequestsCount;
@@ -25,8 +25,8 @@
 @property (readonly, nonatomic) int activeRequestCount; // @synthesize activeRequestCount=_currentActiveRequestsCount;
 @property (readonly, nonatomic) unsigned int capabilities; // @synthesize capabilities=_capabilities;
 @property (readonly, nonatomic) id<AVCMomentsDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (readonly, nonatomic) int pendingRequestCount; // @synthesize pendingRequestCount=_currentPendingRequestsCount;
+@property (readonly, nonatomic) NSString *requesterID; // @synthesize requesterID=_requesterID;
 @property (readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 
 - (BOOL)avcMomentsRequestDidEndRequest:(id)arg1 withError:(id *)arg2;
@@ -40,8 +40,9 @@
 - (void)didFinishRequestHelperWithResult:(id)arg1;
 - (void)didStartProcessingRequestHelperWithResult:(id)arg1;
 - (void)disconnect;
-- (id)initWithStreamToken:(long long)arg1 deviceID:(id)arg2 delegate:(id)arg3 dispatchQueue:(id)arg4;
-- (id)newRequestWithMediaType:(unsigned char)arg1;
+- (id)initWithStreamToken:(long long)arg1 requesterID:(id)arg2 delegate:(id)arg3 dispatchQueue:(id)arg4;
+- (id)newDictionaryForRequest:(id)arg1;
+- (id)newRequestWithMediaType:(unsigned char)arg1 requesteeID:(id)arg2;
 - (void)registerBlocksForNotifications;
 
 @end

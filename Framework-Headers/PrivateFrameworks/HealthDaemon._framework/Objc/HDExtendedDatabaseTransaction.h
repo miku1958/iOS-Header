@@ -42,10 +42,10 @@
 
 - (void).cxx_destruct;
 - (void)_enableAutomaticRollbackTimer;
-- (void)_transaction_runTransactionWithOptions:(unsigned long long)arg1;
+- (void)_transaction_runTransactionWithContext:(id)arg1;
 - (BOOL)commitWithErrorOut:(id *)arg1;
 - (void)dealloc;
-- (id)initWithDatabase:(id)arg1 options:(unsigned long long)arg2 transactionTimeout:(double)arg3 continuationTimeout:(double)arg4 error:(id *)arg5;
+- (id)initWithDatabase:(id)arg1 context:(id)arg2 transactionTimeout:(double)arg3 continuationTimeout:(double)arg4 error:(id *)arg5;
 - (BOOL)performInTransactionWithErrorOut:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)rollbackDueToError:(id)arg1 errorOut:(id *)arg2;
 

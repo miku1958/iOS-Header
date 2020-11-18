@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <NeutrinoCore/NUBuffer-Protocol.h>
+#import <NeutrinoCore/NUBufferProvider-Protocol.h>
 
 @class NSString, NUPixelFormat;
 
-@interface NUBufferAdapter : NSObject <NUBuffer>
+@interface NUBufferAdapter : NSObject <NUBuffer, NUBufferProvider>
 {
     CDStruct_d58201db _size;
     NUPixelFormat *_format;
@@ -34,6 +35,7 @@
 - (id)initWithBuffer:(id)arg1;
 - (id)initWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2 rowBytes:(long long)arg3 bytes:(const void *)arg4;
 - (void)invalidate;
+- (void)provideBuffer:(CDUnknownBlockType)arg1;
 
 @end
 

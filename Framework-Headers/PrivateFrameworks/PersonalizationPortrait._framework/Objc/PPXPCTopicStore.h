@@ -6,29 +6,32 @@
 
 #import <PersonalizationPortrait/PPTopicStore.h>
 
+@class PPClientFeedbackHelper;
+
 @interface PPXPCTopicStore : PPTopicStore
 {
+    PPClientFeedbackHelper *_clientFeedbackHelper;
 }
 
+- (void).cxx_destruct;
 - (id)_init;
-- (BOOL)clearWithError:(id *)arg1;
-- (BOOL)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 documentIds:(id)arg2 error:(id *)arg3;
-- (BOOL)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 error:(id *)arg2;
-- (BOOL)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 groupIds:(id)arg2 error:(id *)arg3;
-- (BOOL)deleteAllTopicsWithTopicId:(id)arg1 error:(id *)arg2;
-- (BOOL)donateTopics:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 decayRate:(double)arg5 error:(id *)arg6;
-- (void)feedbackEngagedMappedTopics:(id)arg1 forMapping:(id)arg2;
-- (void)feedbackEngagedTopics:(id)arg1;
-- (void)feedbackMappedTopicsOverallEngagement:(id)arg1 forMapping:(id)arg2;
-- (void)feedbackTopicsOverallEngagement:(id)arg1;
-- (void)feedbackUsedMappedTopics:(id)arg1 forMapping:(id)arg2;
-- (void)feedbackUsedTopics:(id)arg1;
+- (BOOL)clearWithError:(id *)arg1 deletedCount:(unsigned long long *)arg2;
+- (id)clientIdentifier;
+- (BOOL)cloudSyncWithError:(id *)arg1;
+- (BOOL)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;
+- (BOOL)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 documentIds:(id)arg2 deletedCount:(unsigned long long *)arg3 error:(id *)arg4;
+- (BOOL)deleteAllTopicsFromSourcesWithBundleId:(id)arg1 groupIds:(id)arg2 deletedCount:(unsigned long long *)arg3 error:(id *)arg4;
+- (BOOL)deleteAllTopicsWithTopicId:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;
+- (BOOL)donateTopics:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 sentimentScore:(double)arg5 error:(id *)arg6;
 - (BOOL)iterRankedTopicsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)iterScoresForTopicMapping:(id)arg1 query:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
 - (BOOL)iterTopicRecordsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)rankedTopicsWithQuery:(id)arg1 error:(id *)arg2;
+- (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)scoresForTopicMapping:(id)arg1 query:(id)arg2 error:(id *)arg3;
+- (void)setClientIdentifier:(id)arg1;
 - (id)topicRecordsWithQuery:(id)arg1 error:(id *)arg2;
+- (id)unmapMappedTopicIdentifier:(id)arg1 mappingIdentifier:(id)arg2 error:(id *)arg3;
 
 @end
 

@@ -17,7 +17,7 @@
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3;
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2;
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3;
-+ (id<TSDGLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
++ (id<TSDGLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 addTransparentBorder:(BOOL)arg6;
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 textureFlipped:(BOOL)arg3;
 - (unsigned short)GLushortForIndexElement:(unsigned long long)arg1;
 - (void)disableDataBufferWithShader:(TSDGLShader *)arg1;
@@ -31,7 +31,7 @@
 - (void)enableDataBufferWithShader:(TSDGLShader *)arg1;
 - (void)enableGLElementArrayBuffer;
 - (id)initWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 bufferCount:(unsigned long long)arg4;
-- (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
+- (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 addTransparentBorder:(BOOL)arg6;
 - (void)setDataForAttribute:(TSDGLDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2 fromAttribute:(TSDGLDataBufferAttribute *)arg3 dataBuffer:(id<TSDGLDataBuffer>)arg4 index:(unsigned long long)arg5;
 - (void)setGLushort:(unsigned short)arg1 forIndexElement:(unsigned long long)arg2;
 - (void)teardown;

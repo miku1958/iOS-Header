@@ -7,21 +7,28 @@
 #import <UIKit/UIView.h>
 
 #import <NanoTimeKitCompanion/NTKAstronomyVistaViewObserver-Protocol.h>
+#import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
 
-@class NSDate, NTKAstronomyVistaView, NTKDelayedBlock;
+@class CLKDevice, CLLocation, NSDate, NTKAstronomyLocationDot, NTKAstronomyVistaView, NTKDelayedBlock;
 
-@interface NTKAstronomyRichComplicationContentView : UIView <NTKAstronomyVistaViewObserver>
+@interface NTKAstronomyRichComplicationContentView : UIView <NTKAstronomyVistaViewObserver, NTKTimeTravel>
 {
     NTKAstronomyVistaView *_astronomyVistaView;
-    NSDate *_date;
+    NTKAstronomyLocationDot *_locationDot;
+    CLKDevice *_device;
+    NSDate *_timelineDate;
+    NSDate *_timeTravelDate;
     unsigned int _isPaused:1;
     unsigned int _isAnimating:1;
     unsigned int _isRenderOneFrame:1;
     NTKDelayedBlock *_stopAnimationDelayedBlock;
+    CLLocation *_currentLocation;
 }
 
 - (void).cxx_destruct;
+- (void)_hideLocationDot;
 - (BOOL)_shouldAnimateWithTemplateUpdateReason:(long long)arg1;
+- (void)_showLocationDot;
 - (void)_startAnimating;
 - (void)_stopAnimating;
 - (void)applyPausedUpdate:(BOOL)arg1;
@@ -31,8 +38,10 @@
 - (void)handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)handleWristRaiseScreenWake;
 - (id)initForDevice:(id)arg1 diameter:(double)arg2;
+- (void)layoutSubviews;
 - (void)prepareWristRaiseAnimation;
-- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
+- (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

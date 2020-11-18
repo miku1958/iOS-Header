@@ -22,8 +22,8 @@
 @property (readonly, nonatomic) unsigned long long owningGroupId; // @synthesize owningGroupId=_owningGroupId;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)identifier;

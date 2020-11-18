@@ -31,6 +31,10 @@
     NSNumber *_includeExpiredMomentSharesNumber;
     NSNumber *_includeFavoriteMemoriesCollectionListNumber;
     NSNumber *_includePlacesSmartAlbumNumber;
+    NSNumber *_includeAllPhotosSmartAlbumNumber;
+    NSNumber *_includeRecentlyEditedSmartAlbumNumber;
+    NSNumber *_includeScreenRecordingsSmartAlbumNumber;
+    NSNumber *_includeRootFolderNumber;
     NSNumber *_excludeMontageAssetsNumber;
     NSNumber *_minimumVerifiedFaceCountNumber;
     NSNumber *_minimumUnverifiedFaceCountNumber;
@@ -42,7 +46,10 @@
     NSNumber *_isExclusivePredicateNumber;
     NSMutableSet *_propertySets;
     NSNumber *_shouldPrefetchCountNumber;
+    NSNumber *_highlightCurationTypeNumber;
     NSNumber *_sharingStreamNumber;
+    NSNumber *_includeUserSmartAlbumsNumber;
+    BOOL _includeRecentsSmartAlbum;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
     NSArray *_customObjectIDSortOrder;
@@ -63,7 +70,10 @@
 @property (nonatomic) unsigned long long fetchOffset;
 @property (strong, nonatomic) NSArray *fetchPropertySets;
 @property (readonly, nonatomic) NSSet *fetchPropertySetsAsSet;
+@property (readonly, nonatomic) BOOL hasAnySortDescriptors;
+@property (nonatomic) unsigned short highlightCurationType;
 @property (nonatomic) BOOL includeAllBurstAssets;
+@property (nonatomic) BOOL includeAllPhotosSmartAlbum;
 @property (nonatomic) unsigned long long includeAssetSourceTypes;
 @property (nonatomic) BOOL includeDuplicateAssets;
 @property (nonatomic) BOOL includeExpiredMomentShares;
@@ -76,9 +86,14 @@
 @property (nonatomic) BOOL includeOnlyPersonsWithVisibleKeyFaces;
 @property (nonatomic) BOOL includePendingMemories;
 @property (nonatomic) BOOL includePlacesSmartAlbum;
+@property (nonatomic) BOOL includeRecentlyEditedSmartAlbum;
+@property (nonatomic) BOOL includeRecentsSmartAlbum; // @synthesize includeRecentsSmartAlbum=_includeRecentsSmartAlbum;
 @property (nonatomic) BOOL includeRejectedMemories;
+@property (nonatomic) BOOL includeRootFolder;
+@property (nonatomic) BOOL includeScreenRecordingsSmartAlbum;
 @property (nonatomic) BOOL includeTrashedAssets;
 @property (nonatomic) BOOL includeTrashedMomentShares;
+@property (nonatomic) BOOL includeUserSmartAlbums;
 @property (strong, nonatomic) NSPredicate *internalInclusionPredicate; // @synthesize internalInclusionPredicate=_internalInclusionPredicate;
 @property (strong, nonatomic) NSPredicate *internalPredicate; // @synthesize internalPredicate=_internalPredicate;
 @property (strong, nonatomic) NSArray *internalSortDescriptors; // @synthesize internalSortDescriptors=_internalSortDescriptors;
@@ -96,8 +111,10 @@
 @property (copy, nonatomic) NSSet *verifiedPersonTypes; // @synthesize verifiedPersonTypes=_verifiedPersonTypes;
 @property (nonatomic) BOOL wantsIncrementalChangeDetails;
 
-+ (id)effectivePhotoLibraryForFetchOptions:(id)arg1;
++ (id)effectivePhotoLibraryForFetchOptions:(id)arg1 object:(id)arg2;
 + (id)fetchOptionsWithInclusiveDefaults;
++ (id)fetchOptionsWithInclusiveDefaultsForPhotoLibrary:(id)arg1;
++ (id)fetchOptionsWithPhotoLibrary:(id)arg1 orObject:(id)arg2;
 - (void).cxx_destruct;
 - (void)addFetchPropertySets:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

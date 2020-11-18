@@ -13,16 +13,21 @@
 __attribute__((visibility("hidden")))
 @interface CNCDAllContainersPredicate : CNPredicate <CNCDContainerPredicate>
 {
+    BOOL _includeDisabledContainers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL includeDisabledContainers; // @synthesize includeDisabledContainers=_includeDisabledContainers;
 @property (readonly) Class superclass;
 
 - (id)cn_coreDataPredicate;
 - (id)cn_persistenceFilterRequest;
 - (id)cn_topLevelFilter;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIncludeDisabledContainers:(BOOL)arg1;
 
 @end
 

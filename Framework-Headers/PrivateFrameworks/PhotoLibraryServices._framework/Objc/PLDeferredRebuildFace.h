@@ -27,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int faceAlgorithmVersion; // @dynamic faceAlgorithmVersion;
+@property (copy, nonatomic) NSString *faceUUID; // @dynamic faceUUID;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden;
 @property (nonatomic) BOOL hidden; // @dynamic hidden;
@@ -41,10 +42,14 @@
 @property (readonly, nonatomic) double size;
 @property (nonatomic) double size; // @dynamic size;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *uuid; // @dynamic uuid;
 
 + (id)deferredFacesWithAssetCloudGUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (id)payloadIDForTombstone:(id)arg1;
+- (id)payloadIDsByPayloadClassIDToDeleteOnInsert;
 
 @end
 

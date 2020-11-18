@@ -22,6 +22,7 @@
 - (void)backgroundColorDidChange;
 - (id)initWithTitle:(id)arg1 showsSpinner:(BOOL)arg2 backgroundColor:(id)arg3;
 - (struct CGSize)intrinsicContentSize;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray, PRErrorModel;
 
+__attribute__((visibility("hidden")))
 @interface PRCandidateList : NSObject
 {
     NSMutableArray *_candidates;
     unsigned long long _maxCount;
     struct _NSRange _defaultReplacementRange;
+    PRErrorModel *_errorModel;
+    NSArray *_capitalizationDictionaryArray;
 }
 
 - (void)addCandidate:(id)arg1;
@@ -24,12 +27,13 @@
 - (void)addReplacementCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 intendedCharacter:(unsigned short)arg4 actualCharacter:(unsigned short)arg5;
 - (void)addTranspositionCandidateWithBuffer:(char *)arg1 encoding:(unsigned int)arg2 transform:(unsigned long long)arg3 intendedFirstCharacter:(unsigned short)arg4 intendedSecondCharacter:(unsigned short)arg5;
 - (id)candidateStrings;
+- (id)candidateWithString:(id)arg1;
 - (id)candidates;
 - (unsigned long long)count;
 - (void)dealloc;
 - (struct _NSRange)defaultReplacementRange;
 - (id)description;
-- (id)initWithMaxCount:(unsigned long long)arg1 defaultReplacementRange:(struct _NSRange)arg2;
+- (id)initWithMaxCount:(unsigned long long)arg1 defaultReplacementRange:(struct _NSRange)arg2 customErrorModel:(id)arg3 capitalizationDictionaryArray:(id)arg4;
 - (BOOL)isFull;
 - (unsigned long long)maxCount;
 

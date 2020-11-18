@@ -8,26 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEOAddressCorrectionInitRequest : PBRequest <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_personID;
     NSString *_token;
     BOOL _supportsMultipleAddresses;
     struct {
-        unsigned int supportsMultipleAddresses:1;
-    } _has;
+        unsigned int has_supportsMultipleAddresses:1;
+        unsigned int read_personID:1;
+        unsigned int read_token:1;
+        unsigned int wrote_personID:1;
+        unsigned int wrote_token:1;
+        unsigned int wrote_supportsMultipleAddresses:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasPersonID;
 @property (nonatomic) BOOL hasSupportsMultipleAddresses;
 @property (readonly, nonatomic) BOOL hasToken;
-@property (strong, nonatomic) NSString *personID; // @synthesize personID=_personID;
-@property (nonatomic) BOOL supportsMultipleAddresses; // @synthesize supportsMultipleAddresses=_supportsMultipleAddresses;
-@property (strong, nonatomic) NSString *token; // @synthesize token=_token;
+@property (strong, nonatomic) NSString *personID;
+@property (nonatomic) BOOL supportsMultipleAddresses;
+@property (strong, nonatomic) NSString *token;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readPersonID;
+- (void)_readToken;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

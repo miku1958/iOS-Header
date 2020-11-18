@@ -26,10 +26,10 @@
 @property (readonly, nonatomic) BOOL forceDelete; // @synthesize forceDelete=_forceDelete;
 @property (readonly, nonatomic) BOOL orphaned; // @synthesize orphaned=_orphaned;
 @property (weak, nonatomic) HMDCloudChangeNode *parent; // @synthesize parent=_parent;
-@property (strong, nonatomic) NSUUID *parentUuid; // @synthesize parentUuid=_parentUuid;
-@property (strong, nonatomic) NSString *recordName; // @synthesize recordName=_recordName;
-@property (strong, nonatomic) NSString *type; // @synthesize type=_type;
-@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (copy, nonatomic) NSUUID *parentUuid; // @synthesize parentUuid=_parentUuid;
+@property (copy, nonatomic) NSString *recordName; // @synthesize recordName=_recordName;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property (copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)shortDescription;
 - (void).cxx_destruct;

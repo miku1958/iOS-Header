@@ -6,19 +6,31 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class HUContactView, NSAttributedString;
+@class ACAccountStore, HUContactView, HUSplitAccountHeaderTableView, NSArray, NSAttributedString;
+@protocol HUSplitAccountDelegate;
 
 @interface _HUUserAvatarHeaderView : UITableViewHeaderFooterView
 {
     HUContactView *_contactView;
+    HUSplitAccountHeaderTableView *_splitAccountHeaderView;
+    ACAccountStore *_accountStore;
+    NSArray *_layoutConstraints;
+    id<HUSplitAccountDelegate> _splitAccountDelegate;
 }
 
+@property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, nonatomic) HUContactView *contactView; // @synthesize contactView=_contactView;
+@property (strong, nonatomic) NSArray *layoutConstraints; // @synthesize layoutConstraints=_layoutConstraints;
 @property (strong, nonatomic) NSAttributedString *message;
+@property (weak, nonatomic) id<HUSplitAccountDelegate> splitAccountDelegate; // @synthesize splitAccountDelegate=_splitAccountDelegate;
+@property (strong, nonatomic) HUSplitAccountHeaderTableView *splitAccountHeaderView; // @synthesize splitAccountHeaderView=_splitAccountHeaderView;
 
 - (void).cxx_destruct;
 - (id)_keyDescriptors;
-- (id)initWithUserHandle:(id)arg1;
+- (void)dismissSplitAccountView;
+- (id)initWithUserHandle:(id)arg1 home:(id)arg2 delegate:(id)arg3;
+- (void)setAccounts:(id)arg1 forHome:(id)arg2;
+- (void)showSplitAccountViewIfNeeded;
 
 @end
 

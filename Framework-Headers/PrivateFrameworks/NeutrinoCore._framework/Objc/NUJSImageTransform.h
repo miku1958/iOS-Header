@@ -8,18 +8,19 @@
 
 #import <NeutrinoCore/NUJSImageTransformExport-Protocol.h>
 
-@class NUImageTransformAffine;
+@class NUImageTransform;
 
 @interface NUJSImageTransform : NUJSProxy <NUJSImageTransformExport>
 {
 }
 
-@property (readonly) NUImageTransformAffine *transform;
+@property (readonly) NUImageTransform *transform;
 
 - (id)description;
 - (id)initWithImageTransform:(id)arg1 context:(id)arg2;
 - (id)initWithRepresentedObject:(id)arg1 context:(id)arg2;
-- (id)transformByRotate:(double)arg1;
+- (id)transformByRotateX:(double)arg1 y:(double)arg2 z:(double)arg3;
+- (id)transformByRotateZ:(double)arg1;
 - (id)transformByScaleX:(double)arg1 scaleY:(double)arg2;
 - (id)transformByTranslateX:(double)arg1 translateY:(double)arg2;
 

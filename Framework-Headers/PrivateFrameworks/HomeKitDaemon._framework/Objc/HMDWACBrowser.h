@@ -43,6 +43,7 @@
 - (void)scannerDidStop:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)startBrowsingForAccessories;
+- (void)startBrowsingForAirPlayWACAccessoriesWithBrowser:(id)arg1;
 - (void)stopBrowsingForAccessories;
 
 @end

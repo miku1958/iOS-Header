@@ -10,7 +10,7 @@
 #import <PersonalizationPortrait/NSMutableCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSString, PPSource, PPTopic;
+@class NSString, PPSource, PPTopic, PPTopicMetadata;
 
 @interface PPTopicRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -22,6 +22,8 @@
     BOOL _isLocal;
     NSString *_extractionOsBuild;
     unsigned long long _extractionAssetVersion;
+    PPTopicMetadata *_metadata;
+    BOOL _bucketizedSentimentScore;
 }
 
 @property (readonly, nonatomic) unsigned long long algorithm; // @synthesize algorithm=_algorithm;
@@ -30,6 +32,8 @@
 @property (readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
 @property (readonly, nonatomic) double initialScore; // @synthesize initialScore=_initialScore;
 @property (readonly, nonatomic) BOOL isLocal; // @synthesize isLocal=_isLocal;
+@property (readonly, nonatomic) PPTopicMetadata *metadata; // @synthesize metadata=_metadata;
+@property (readonly, nonatomic) double sentimentScore; // @dynamic sentimentScore;
 @property (readonly, nonatomic) PPSource *source; // @synthesize source=_source;
 @property (readonly, nonatomic) PPTopic *topic; // @synthesize topic=_topic;
 
@@ -38,7 +42,10 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToTopicRecord:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
+
 @class NSNumber, NSSet, NSString;
 
-@interface AMSDeviceOffer : NSObject
+@interface AMSDeviceOffer : NSObject <AMSBagConsumer>
 {
     BOOL _downgrading;
     BOOL _subscribed;
@@ -16,21 +18,24 @@
     NSString *_description;
     NSSet *_serialNumbers;
     NSString *_offerIdentifier;
-    unsigned long long _productType;
 }
 
 @property (copy, nonatomic) NSNumber *adamId; // @synthesize adamId=_adamId;
+@property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *description; // @synthesize description=_description;
 @property (nonatomic, getter=isDowngrading) BOOL downgrading; // @synthesize downgrading=_downgrading;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *offerIdentifier; // @synthesize offerIdentifier=_offerIdentifier;
 @property (readonly, nonatomic) unsigned long long offerType;
-@property (nonatomic) unsigned long long productType; // @synthesize productType=_productType;
 @property (readonly, nonatomic) NSSet *serialNumbers; // @synthesize serialNumbers=_serialNumbers;
 @property (nonatomic, getter=isSubscribed) BOOL subscribed; // @synthesize subscribed=_subscribed;
+@property (readonly) Class superclass;
 
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 - (void).cxx_destruct;
-- (unsigned long long)hash;
-- (id)initWithAdamId:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithOfferIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

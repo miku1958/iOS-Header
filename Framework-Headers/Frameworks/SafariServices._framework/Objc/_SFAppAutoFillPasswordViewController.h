@@ -16,9 +16,9 @@
 }
 
 - (void).cxx_destruct;
-- (void)_applicationDidEnterBackground:(id)arg1;
 - (id)_connectToServiceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_remoteViewController;
+- (void)_sceneDidEnterBackground:(id)arg1;
 - (void)_setUpServiceProxyIfNeeded;
 - (void)authenticateToPresentInPopover:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;

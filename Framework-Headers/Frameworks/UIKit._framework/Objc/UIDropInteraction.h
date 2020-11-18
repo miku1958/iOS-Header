@@ -10,23 +10,21 @@
 #import <UIKitCore/UIDragInteraction-Protocol.h>
 #import <UIKitCore/UIInteraction-Protocol.h>
 #import <UIKitCore/UIInteraction_Internal-Protocol.h>
-#import <UIKitCore/_UIDraggingItemVisualTarget-Protocol.h>
+#import <UIKitCore/_UIDragSetDownAnimationTarget-Protocol.h>
 
 @class NSMapTable, NSMutableSet, NSString, UIDropInteractionContextImpl, UIPasteConfiguration, UIView;
-@protocol UIDropInteractionDelegate, UIDropInteractionEffect, _UIViewDraggingDestinationDelegate;
+@protocol UIDropInteractionDelegate, UIDropInteractionEffect;
 
-@interface UIDropInteraction : NSObject <UIDragGestureRecognizerDelegate, UIInteraction_Internal, UIDragInteraction, _UIDraggingItemVisualTarget, UIInteraction>
+@interface UIDropInteraction : NSObject <UIDragGestureRecognizerDelegate, UIInteraction_Internal, UIDragInteraction, _UIDragSetDownAnimationTarget, UIInteraction>
 {
     NSMutableSet *_activeDragGestureRecognizers;
     NSMapTable *_enteredDropSessionByDraggingSession;
     unsigned long long _potentialDragOperation;
-    NSMapTable *_itemsTableBySession;
     BOOL _allowsSimultaneousDropSessions;
     BOOL _wantsDefaultVisualBehavior;
     id<UIDropInteractionDelegate> _delegate;
     UIView *_view;
     UIDropInteractionContextImpl *_context;
-    id<_UIViewDraggingDestinationDelegate> _viewDelegate;
     UIPasteConfiguration *_pasteConfiguration;
     id<UIDropInteractionEffect> _interactionEffect;
 }
@@ -41,33 +39,28 @@
 @property (readonly, copy, nonatomic, getter=_pasteConfiguration) UIPasteConfiguration *pasteConfiguration; // @synthesize pasteConfiguration=_pasteConfiguration;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
-@property (readonly, weak, nonatomic, getter=_viewDelegate) id<_UIViewDraggingDestinationDelegate> viewDelegate; // @synthesize viewDelegate=_viewDelegate;
 @property (nonatomic, getter=_wantsDefaultVisualBehavior, setter=_setWantsDefaultVisualBehavior:) BOOL wantsDefaultVisualBehavior; // @synthesize wantsDefaultVisualBehavior=_wantsDefaultVisualBehavior;
 
 - (void).cxx_destruct;
 - (BOOL)_allowsSimultaneousDragWithEvent:(id)arg1;
 - (BOOL)_canHandleDragEvent:(id)arg1;
-- (void)_cleanupItemsInSessionAfterDrop:(id)arg1;
 - (void)_dragDestinationGestureStateChanged:(id)arg1;
-- (void)_dragDestinationViewDelegateForward:(id)arg1 delegate:(id)arg2;
-- (void)_draggingItem:(id)arg1 willAnimateSetDownWithAnimator:(id)arg2;
-- (id)_dropItemForDroppingDraggingItem:(id)arg1;
 - (void)_dropSessionEntered:(id)arg1 withSessionDestination:(id)arg2;
 - (id)_dynamicGestureRecognizersForEvent:(id)arg1;
 - (BOOL)_gestureRecognizer:(id)arg1 shouldReceiveDragEvent:(id)arg2;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (id)_initWithPasteConfiguration:(id)arg1;
-- (id)_initWithViewDelegate:(id)arg1;
-- (void)_prepareForSetDownAnimationInWindow:(id)arg1 withDraggingItem:(id)arg2 visibleDroppedItem:(id)arg3;
 - (void)_prepareItemsInSessionForDrop:(id)arg1;
 - (void)_sendSessionDidEnd:(id)arg1;
-- (unsigned long long)_setLastDragOperation:(unsigned long long)arg1 forbidden:(BOOL)arg2 precise:(BOOL)arg3 prefersFullSizePreview:(BOOL)arg4 onSession:(id)arg5;
-- (struct CGRect)_targetFrameOfDraggingItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (id)_setDownAnimation:(id)arg1 prepareForSetDownOfDragItem:(id)arg2 visibleDroppedItem:(id)arg3;
+- (BOOL)_setDownAnimation:(id)arg1 shouldDelaySetDownOfDragItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_setDownAnimation:(id)arg1 willAnimateSetDownOfDragItem:(id)arg2 withAnimator:(id)arg3;
+- (id)_setDownAnimation:(id)arg1 windowSceneForSetDownOfDragItem:(id)arg2;
+- (unsigned long long)_setLastDragOperation:(unsigned long long)arg1 forbidden:(BOOL)arg2 precise:(BOOL)arg3 prefersFullSizePreview:(BOOL)arg4 preferredBadgeStyle:(long long)arg5 onSession:(id)arg6;
 - (unsigned long long)_validateDragOperation:(unsigned long long)arg1 forSelector:(SEL)arg2 delegate:(id)arg3 dropSession:(id)arg4 onSession:(id)arg5 forbidden:(BOOL *)arg6;
 - (void)didMoveToView:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)isActive;
-- (void)setDelegate:(id)arg1;
 - (void)willMoveToView:(id)arg1;
 
 @end

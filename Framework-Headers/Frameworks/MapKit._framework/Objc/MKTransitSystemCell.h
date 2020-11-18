@@ -6,24 +6,35 @@
 
 #import <MapKit/MKCustomSeparatorTableViewCell.h>
 
-@class NSLayoutConstraint, NSString, UIImage, UIImageView, _MKUILabel;
+@class NSLayoutConstraint, NSString, UIImage, UIImageView, UIView, _MKUILabel;
 
 __attribute__((visibility("hidden")))
 @interface MKTransitSystemCell : MKCustomSeparatorTableViewCell
 {
     UIImageView *_shieldImageView;
     _MKUILabel *_systemLabel;
+    UIView *_disclosureButton;
     NSLayoutConstraint *_imageToLabelConstraint;
     NSLayoutConstraint *_systemLabelToTopConstraint;
+    NSLayoutConstraint *_systemLabelToBottomConstraint;
+    BOOL _showDisclosureButton;
+    BOOL _expanded;
 }
 
+@property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
+@property (nonatomic) BOOL showDisclosureButton; // @synthesize showDisclosureButton=_showDisclosureButton;
 @property (strong, nonatomic) UIImage *systemArtwork;
 @property (copy, nonatomic) NSString *systemName;
 
 - (void).cxx_destruct;
 - (void)_contentSizeCategoryDidChange;
+- (id)_disclosureButton;
+- (struct CGAffineTransform)_transformForExpandedState:(BOOL)arg1 animating:(BOOL)arg2;
 - (void)_updateConstraintValues;
+- (void)infoCardThemeChanged;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (void)prepareForReuse;
+- (void)setExpanded:(BOOL)arg1 insideAnimation:(BOOL)arg2;
 
 @end
 

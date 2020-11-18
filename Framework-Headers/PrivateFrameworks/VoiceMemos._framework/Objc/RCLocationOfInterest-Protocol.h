@@ -7,15 +7,12 @@
 #import <VoiceMemos/NSObject-Protocol.h>
 
 @class CLLocation, NSString;
-@protocol GEOMapItem;
 
 @protocol RCLocationOfInterest <NSObject>
 
 @property (readonly, nonatomic) double confidence;
-@property (readonly, nonatomic) id<GEOMapItem> geoMapItem;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) NSString *preferredName;
-@property (readonly, nonatomic) double uncertainty;
 
 @end
 

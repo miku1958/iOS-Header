@@ -12,6 +12,7 @@
 
 @interface CPSUpcomingManeuversCardView : CPSInheritedBackgroundColorView <CPSNavigationDisplaying>
 {
+    BOOL _saveManeuversToDisk;
     NSArray *_maneuvers;
     NSMutableDictionary *_currentTravelEstimatesForManeuverIdentifiers;
     NSArray *_maneuverStyles;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) NSArray *maneuverStyles; // @synthesize maneuverStyles=_maneuverStyles;
 @property (readonly, nonatomic) NSMutableArray *maneuverViewStack; // @synthesize maneuverViewStack=_maneuverViewStack;
 @property (readonly, nonatomic) NSArray *maneuvers; // @synthesize maneuvers=_maneuvers;
+@property (nonatomic) BOOL saveManeuversToDisk; // @synthesize saveManeuversToDisk=_saveManeuversToDisk;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMutableArray *verticalConstraints; // @synthesize verticalConstraints=_verticalConstraints;
 

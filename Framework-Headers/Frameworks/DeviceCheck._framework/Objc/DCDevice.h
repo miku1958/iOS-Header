@@ -13,6 +13,7 @@
 @property (readonly, getter=isSupported) BOOL supported;
 
 + (id)currentDevice;
+- (BOOL)_isSupportedReturningError:(id *)arg1;
 - (void)generateTokenWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

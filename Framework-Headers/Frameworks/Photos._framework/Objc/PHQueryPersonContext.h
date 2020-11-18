@@ -13,7 +13,6 @@
     PHFetchOptions *_fetchOptions;
 }
 
-+ (unsigned long long)peopleHomeUnverifiedFaceCountThreshold;
 + (id)subpredicatesForFetchOptions:(id)arg1;
 - (void).cxx_destruct;
 - (id)_faceCountPredicateWithMinimum:(unsigned long long)arg1;

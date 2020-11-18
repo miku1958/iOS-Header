@@ -10,6 +10,8 @@
 {
 }
 
++ (id)_terminalMatchingDoubleWithCondition:(CDUnknownBlockType)arg1;
++ (id)_terminalMatchingIntegerWithCondition:(CDUnknownBlockType)arg1;
 + (id)terminalMatchingAnyDouble;
 + (id)terminalMatchingAnyInteger;
 + (id)terminalMatchingCharacterInSet:(id)arg1;

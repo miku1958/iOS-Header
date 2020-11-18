@@ -10,7 +10,7 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 #import <iWorkImport/TSWPSection-Protocol.h>
 
-@class NSArray, NSString, TPPageMaster, TPPageTemplate, TSDFill, TSWPStorage;
+@class NSArray, NSString, NSURL, NSUUID, TPPageMaster, TPPageTemplate, TSDFill, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TPSection : TSPObject <TSKDocumentObject, TSKModel, TSWPSection>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     TPPageMaster *_pageMasters[3];
     TSWPStorage *_parentStorage;
     NSString *_name;
+    NSUUID *_sectionHyperlinkUUID;
     BOOL _inheritPreviousHeaderFooter;
     BOOL _pageMasterFirstPageDifferent;
     BOOL _pageMasterFirstPageHidesHeaderFooter;
@@ -33,6 +34,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inheritPreviousHeaderFooter;
+@property (readonly, nonatomic) NSString *localizedPrettyDisplayStringLong;
+@property (readonly, nonatomic) NSString *localizedPrettyDisplayStringShort;
 @property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSArray *pageInfosForPropagation;
 @property (nonatomic) BOOL pageMasterEvenOddPagesDifferent;
@@ -41,10 +44,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *pageMasters;
 @property (readonly, nonatomic) TPPageTemplate *pageTemplate;
 @property (weak, nonatomic) TSWPStorage *parentStorage;
+@property (copy, nonatomic) NSUUID *sectionHyperlinkUUID;
 @property (nonatomic) unsigned int sectionPageNumberKind;
 @property (nonatomic) unsigned int sectionPageNumberStart;
 @property (nonatomic) unsigned int sectionStartKind;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSURL *url;
 
 + (BOOL)needsObjectUUID;
 - (void).cxx_destruct;

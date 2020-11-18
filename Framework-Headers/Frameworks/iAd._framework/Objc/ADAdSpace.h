@@ -10,17 +10,17 @@
 #import <iAd/ADWebViewActionViewControllerDelegate-Protocol.h>
 #import <iAd/NewsTransparencyViewControllerDelegate-Protocol.h>
 
-@class ADAdActionPublicAttributes, ADAdImpressionPublicAttributes, ADAdSpaceConfiguration, ADContext, ADCreativeController, ADMRAIDAction, ADMediaAnalyticsEventInfo, ADPrivacyDetailsAttributes, ADSInternalSize, ADWebViewActionViewController, NSArray, NSString, NSURL, NewsTransparencyViewController, UIViewController;
+@class ADAdActionPublicAttributes, ADAdImpressionPublicAttributes, ADAdSpaceConfiguration, ADContext, ADCreativeController, ADMRAIDAction, ADSInternalSize, ADWebViewActionViewController, NSArray, NSString, NSURL, NewsTransparencyViewController, UIViewController;
 @protocol ADAdRecipient;
 
 @interface ADAdSpace : NSObject <NewsTransparencyViewControllerDelegate, ADWebViewActionViewControllerDelegate, ADCreativeControllerDelegate>
 {
-    id<ADAdRecipient> _recipient;
     BOOL _requiresFastVisibiltyTestOnly;
     BOOL _firedAdStatusEvent;
     BOOL _didInstallCreativeView;
     BOOL _hasImpressed;
     BOOL _adLibManagedVideo;
+    BOOL _prerollVideo;
     BOOL _visibilityCheckScheduled;
     BOOL _adRequestMade;
     BOOL _shouldMonitorVisibility;
@@ -37,6 +37,7 @@
     float _totalDuration;
     float _visibilityPercentage;
     int _videoPlayCount;
+    id<ADAdRecipient> _recipient;
     NSString *_identifier;
     NSURL *_serverURL;
     NSString *_advertisingSection;
@@ -46,10 +47,7 @@
     ADContext *_context;
     ADAdImpressionPublicAttributes *_currentAdImpressionPublicAttributes;
     ADAdActionPublicAttributes *_currentActionPublicAttributes;
-    ADPrivacyDetailsAttributes *_currentPrivacyDetailsAttributes;
     unsigned long long _reUseCount;
-    long long _pendingAnalyticsVideoState;
-    ADMediaAnalyticsEventInfo *_pendingAnalyticsEventInfo;
     ADMRAIDAction *_mraidAction;
     long long _visibility;
     long long _requestOrientation;
@@ -77,7 +75,6 @@
 @property (strong, nonatomic) ADCreativeController *creativeController; // @synthesize creativeController=_creativeController;
 @property (strong, nonatomic) ADAdActionPublicAttributes *currentActionPublicAttributes; // @synthesize currentActionPublicAttributes=_currentActionPublicAttributes;
 @property (strong, nonatomic) ADAdImpressionPublicAttributes *currentAdImpressionPublicAttributes; // @synthesize currentAdImpressionPublicAttributes=_currentAdImpressionPublicAttributes;
-@property (readonly, nonatomic) ADPrivacyDetailsAttributes *currentPrivacyDetailsAttributes; // @synthesize currentPrivacyDetailsAttributes=_currentPrivacyDetailsAttributes;
 @property (strong, nonatomic) UIViewController *customActionViewController; // @synthesize customActionViewController=_customActionViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -92,13 +89,12 @@
 @property (nonatomic) float lastVolume; // @synthesize lastVolume=_lastVolume;
 @property (strong, nonatomic) ADMRAIDAction *mraidAction; // @synthesize mraidAction=_mraidAction;
 @property (strong, nonatomic) NewsTransparencyViewController *newsViewController; // @synthesize newsViewController=_newsViewController;
-@property (copy, nonatomic) ADMediaAnalyticsEventInfo *pendingAnalyticsEventInfo; // @synthesize pendingAnalyticsEventInfo=_pendingAnalyticsEventInfo;
-@property (nonatomic) long long pendingAnalyticsVideoState; // @synthesize pendingAnalyticsVideoState=_pendingAnalyticsVideoState;
+@property (nonatomic) BOOL prerollVideo; // @synthesize prerollVideo=_prerollVideo;
 @property (strong, nonatomic) NSArray *prerollVideoAssets; // @synthesize prerollVideoAssets=_prerollVideoAssets;
 @property (nonatomic) BOOL privacyRequestInProgress; // @synthesize privacyRequestInProgress=_privacyRequestInProgress;
 @property (nonatomic) long long progressMileStoneMet; // @synthesize progressMileStoneMet=_progressMileStoneMet;
 @property (nonatomic) unsigned long long reUseCount; // @synthesize reUseCount=_reUseCount;
-@property (readonly, nonatomic) id<ADAdRecipient> recipient;
+@property (weak, nonatomic) id<ADAdRecipient> recipient; // @synthesize recipient=_recipient;
 @property (strong, nonatomic) ADSInternalSize *reorientedContainerSize; // @synthesize reorientedContainerSize=_reorientedContainerSize;
 @property (nonatomic) long long requestOrientation; // @synthesize requestOrientation=_requestOrientation;
 @property (nonatomic) BOOL requiresFastVisibiltyTestOnly; // @synthesize requiresFastVisibiltyTestOnly=_requiresFastVisibiltyTestOnly;
@@ -117,6 +113,7 @@
 @property (strong, nonatomic) ADWebViewActionViewController *webViewActionViewController; // @synthesize webViewActionViewController=_webViewActionViewController;
 
 + (id)ADIdentifierNameForCreativeType:(int)arg1;
+- (void).cxx_destruct;
 - (void)_clientApplicationDidBecomeActive;
 - (void)_clientApplicationDidEnterBackground;
 - (void)_closeConnectionIfNecessary;
@@ -140,7 +137,6 @@
 - (id)_updateIdentifier;
 - (id)_videoAssetsForVideoURL:(id)arg1;
 - (void)actionCompletedWithSystemEvent:(int)arg1;
-- (id)adPrivacyDetailsAttributes;
 - (void)beginActionFromFrame:(id)arg1 tapLocation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)canReuseForContext:(id)arg1;
 - (void)cancelBannerViewAction;
@@ -173,6 +169,7 @@
 - (void)dealloc;
 - (void)determineActionForTapAtLocation:(struct CGPoint)arg1 inFrame:(struct CGRect)arg2 withMRAIDAction:(id)arg3 completeHandler:(CDUnknownBlockType)arg4;
 - (void)dismissCustomActionViewController;
+- (void)dismissWebViewActionViewControlller:(id)arg1;
 - (void)executeBannerViewActionFrom:(struct CGRect)arg1 withTapLocation:(struct CGPoint)arg2;
 - (void)impressionPublicAttributesDidLoad:(id)arg1;
 - (id)initForRecipient:(id)arg1;
@@ -189,10 +186,6 @@
 - (void)presentActionViewController:(id)arg1;
 - (void)proceedWithClosing:(BOOL)arg1;
 - (void)refuseBannerViewAction;
-- (void)reportAdPrivacySheetDidAppear;
-- (void)reportAdPrivacySheetDidDisappear;
-- (void)reportAdPrivacySheetDidLinkOut;
-- (void)reportAdPrivacySheetDidRender;
 - (void)reportNativeClickEvent;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (void)showAdTransparency;

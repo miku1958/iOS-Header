@@ -31,7 +31,7 @@
 
 + (void *)_loadSlideshowFrameworkIfNeeded;
 + (void)initialize;
-+ (void)preloadSlideshowFrameworkInBackground;
++ (void)preloadSlideshowFrameworkIfNeeded;
 - (void).cxx_destruct;
 - (void)_initPresentationViewController;
 - (id)_presentationGuidelines;

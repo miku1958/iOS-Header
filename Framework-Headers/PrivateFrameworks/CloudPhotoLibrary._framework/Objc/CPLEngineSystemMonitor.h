@@ -39,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isDataBudgetOverriden;
 @property (readonly) BOOL isNetworkConnected;
+@property (readonly) BOOL isNetworkConstrained;
 @property (readonly) BOOL isOnCellularOrUnknown;
 @property (readonly) Class superclass;
 
@@ -53,13 +54,14 @@
 - (id)componentName;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
-- (void)networkStateDidChangeForNetworkWatcher:(id)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)scheduledOverrideDidEnd:(id)arg1;
 - (void)startOverridingSystemBudgets:(unsigned long long)arg1 reason:(id)arg2;
 - (void)startOverridingSystemBudgetsForClient:(unsigned long long)arg1;
 - (void)stopOverridingSystemBudgets:(unsigned long long)arg1 reason:(id)arg2;
 - (void)stopOverridingSystemBudgetsForClient:(unsigned long long)arg1;
+- (void)updateDiskPressureState;
+- (void)watcher:(id)arg1 stateDidChangeToNetworkState:(id)arg2;
 
 @end
 

@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (id)_layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (void)_loadEverything;
 - (void)_prepareToLoadData;
 - (id)_screenPageForPoint:(struct CGPoint)arg1;

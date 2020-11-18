@@ -29,8 +29,10 @@
     int _rscp;
     int _rssi;
     int _serverHash;
+    NSString *_serviceProviderName;
     int _tac;
     int _uarfcn;
+    BOOL _isLimitedService;
     struct {
         unsigned int cellLatitude:1;
         unsigned int cellLongitude:1;
@@ -42,6 +44,7 @@
         unsigned int rssi:1;
         unsigned int serverHash:1;
         unsigned int uarfcn:1;
+        unsigned int isLimitedService:1;
     } _has;
 }
 
@@ -58,13 +61,16 @@
 @property (nonatomic) BOOL hasCellLatitude;
 @property (nonatomic) BOOL hasCellLongitude;
 @property (nonatomic) BOOL hasEcn0;
+@property (nonatomic) BOOL hasIsLimitedService;
 @property (readonly, nonatomic) BOOL hasNeighborGroup;
 @property (readonly, nonatomic) BOOL hasOperatorName;
 @property (nonatomic) BOOL hasPid;
 @property (nonatomic) BOOL hasRscp;
 @property (nonatomic) BOOL hasRssi;
 @property (nonatomic) BOOL hasServerHash;
+@property (readonly, nonatomic) BOOL hasServiceProviderName;
 @property (nonatomic) BOOL hasUarfcn;
+@property (nonatomic) BOOL isLimitedService; // @synthesize isLimitedService=_isLimitedService;
 @property (strong, nonatomic) CLPLocation *location; // @synthesize location=_location;
 @property (nonatomic) int mcc; // @synthesize mcc=_mcc;
 @property (nonatomic) int mnc; // @synthesize mnc=_mnc;
@@ -75,6 +81,7 @@
 @property (nonatomic) int rscp; // @synthesize rscp=_rscp;
 @property (nonatomic) int rssi; // @synthesize rssi=_rssi;
 @property (nonatomic) int serverHash; // @synthesize serverHash=_serverHash;
+@property (strong, nonatomic) NSString *serviceProviderName; // @synthesize serviceProviderName=_serviceProviderName;
 @property (nonatomic) int tac; // @synthesize tac=_tac;
 @property (nonatomic) int uarfcn; // @synthesize uarfcn=_uarfcn;
 

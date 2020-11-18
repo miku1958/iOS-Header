@@ -18,22 +18,24 @@ __attribute__((visibility("hidden")))
     int _mapType;
     unsigned int _timeSinceMapViewportChanged;
     struct {
-        unsigned int mapType:1;
-        unsigned int timeSinceMapViewportChanged:1;
-    } _has;
+        unsigned int has_mapType:1;
+        unsigned int has_timeSinceMapViewportChanged:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasMapRegion;
 @property (nonatomic) BOOL hasMapType;
 @property (nonatomic) BOOL hasTimeSinceMapViewportChanged;
-@property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
-@property (nonatomic) int mapType; // @synthesize mapType=_mapType;
-@property (nonatomic) unsigned int timeSinceMapViewportChanged; // @synthesize timeSinceMapViewportChanged=_timeSinceMapViewportChanged;
+@property (strong, nonatomic) GEOMapRegion *mapRegion;
+@property (nonatomic) int mapType;
+@property (nonatomic) unsigned int timeSinceMapViewportChanged;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (id)viewportInfoForTraits:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsMapType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

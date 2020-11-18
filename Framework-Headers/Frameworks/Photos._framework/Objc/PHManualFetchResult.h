@@ -6,11 +6,12 @@
 
 #import <Photos/PHFetchResult.h>
 
-@class NSArray, NSOrderedSet, NSString;
+@class NSArray, NSOrderedSet, NSString, PHPhotoLibrary;
 
 @interface PHManualFetchResult : PHFetchResult
 {
     NSOrderedSet *_objectIDs;
+    PHPhotoLibrary *_photoLibrary;
     NSArray *_objects;
     NSString *_identifier;
 }
@@ -34,10 +35,9 @@
 - (id)fetchedObjects;
 - (void)getMediaTypeCounts;
 - (unsigned long long)hash;
-- (id)initWithObjects:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3;
-- (id)initWithObjects:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(BOOL)arg5;
-- (id)initWithOids:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(BOOL)arg5;
-- (id)initWithOids:(id)arg1 fetchType:(id)arg2 fetchPropertySets:(id)arg3 identifier:(id)arg4 registerIfNeeded:(BOOL)arg5 photosCount:(unsigned long long)arg6 videosCount:(unsigned long long)arg7 audiosCount:(unsigned long long)arg8;
+- (id)initWithObjects:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(BOOL)arg6;
+- (id)initWithOids:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(BOOL)arg6;
+- (id)initWithOids:(id)arg1 photoLibrary:(id)arg2 fetchType:(id)arg3 fetchPropertySets:(id)arg4 identifier:(id)arg5 registerIfNeeded:(BOOL)arg6 photosCount:(unsigned long long)arg7 videosCount:(unsigned long long)arg8 audiosCount:(unsigned long long)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFullyBackedByObjectIDs;
 - (id)objectIDAtIndex:(unsigned long long)arg1;

@@ -27,6 +27,8 @@
     id<HUQuickControlItemUpdating> _itemUpdater;
     id<HUQuickControlViewControllerDelegate> _delegate;
     unsigned long long _controlSize;
+    unsigned long long _controlOrientation;
+    unsigned long long _preferredControl;
     HUQuickControlSimpleItemUpdater *_internalItemUpdater;
 }
 
@@ -34,6 +36,7 @@
 @property (nonatomic) BOOL areControlItemsRequestingToBeHidden; // @synthesize areControlItemsRequestingToBeHidden=_areControlItemsRequestingToBeHidden;
 @property (weak, nonatomic) id<HUQuickControlContentCharacteristicWritingDelegate> characteristicWritingDelegate; // @synthesize characteristicWritingDelegate=_characteristicWritingDelegate;
 @property (readonly, copy, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
+@property (nonatomic) unsigned long long controlOrientation; // @synthesize controlOrientation=_controlOrientation;
 @property (nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
 @property (nonatomic, getter=areControlsVisible) BOOL controlsVisible; // @synthesize controlsVisible=_controlsVisible;
 @property (readonly, copy) NSString *debugDescription;
@@ -46,6 +49,7 @@
 @property (readonly, weak, nonatomic) id<HUQuickControlItemUpdating> itemUpdater; // @synthesize itemUpdater=_itemUpdater;
 @property (readonly, copy, nonatomic) NSString *overrideSecondaryStatusText;
 @property (readonly, copy, nonatomic) NSString *overrideStatusText;
+@property (nonatomic) unsigned long long preferredControl; // @synthesize preferredControl=_preferredControl;
 @property (strong, nonatomic) id<HULayoutAnchorProviding> preferredFrameLayoutGuide; // @synthesize preferredFrameLayoutGuide=_preferredFrameLayoutGuide;
 @property (readonly, nonatomic) unsigned long long preferredPresentationStyle;
 @property (weak, nonatomic) id<HUQuickControlContentHosting> quickControlHost; // @synthesize quickControlHost=_quickControlHost;
@@ -65,6 +69,7 @@
 - (id)overrideValueForCharacteristic:(id)arg1;
 - (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
 - (BOOL)shouldShowContentForReachabilityState:(BOOL)arg1;
+- (id)viewControllerForTouchContinuation;
 
 @end
 

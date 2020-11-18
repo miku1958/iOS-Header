@@ -21,8 +21,10 @@
 @property (readonly, nonatomic) id<GEOServerFormattedString> geoServerString; // @synthesize geoServerString=_geoServerString;
 @property (readonly, copy, nonatomic) MKServerFormattedStringParameters *parameters; // @synthesize parameters=_parameters;
 
++ (id)attributesForServerFormatStyle:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_attributesByTokenForFormatStyles:(id)arg1;
 - (id)_parametersByScrubbingUnusedOverrideVariablesFromParameters:(id)arg1 geoServerString:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;

@@ -13,6 +13,7 @@
 - (id)ak_mapObjects:(CDUnknownBlockType)arg1;
 - (id)ak_mapObjectsNullable:(CDUnknownBlockType)arg1;
 - (id)ak_redactedCopy;
+- (id)ak_toJSONString;
 - (id)ak_urlQueryString;
 @end
 

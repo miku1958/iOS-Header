@@ -15,19 +15,17 @@
     GEORPAddress *_address;
     int _addressType;
     int _placeType;
-    struct {
-        unsigned int addressType:1;
-        unsigned int placeType:1;
-    } _has;
+    CDStruct_2d9f5d20 _flags;
 }
 
-@property (strong, nonatomic) GEORPAddress *address; // @synthesize address=_address;
-@property (nonatomic) int addressType; // @synthesize addressType=_addressType;
+@property (strong, nonatomic) GEORPAddress *address;
+@property (nonatomic) int addressType;
 @property (readonly, nonatomic) BOOL hasAddress;
 @property (nonatomic) BOOL hasAddressType;
 @property (nonatomic) BOOL hasPlaceType;
-@property (nonatomic) int placeType; // @synthesize placeType=_placeType;
+@property (nonatomic) int placeType;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsAddressType:(id)arg1;
 - (int)StringAsPlaceType:(id)arg1;
@@ -40,6 +38,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

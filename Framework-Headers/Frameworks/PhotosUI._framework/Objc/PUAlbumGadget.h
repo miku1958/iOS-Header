@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUI/PXDiagnosticsEnvironment-Protocol.h>
 #import <PhotosUI/PXGadget-Protocol.h>
 
 @class NSIndexSet, NSString, PHCollection, PUAlbumListCellContentView, PUAlbumListCellContentViewHelper, PXGadgetSpec;
 @protocol PUAlbumGadgetDelegate, PXGadgetDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUAlbumGadget : NSObject <PXGadget>
+@interface PUAlbumGadget : NSObject <PXDiagnosticsEnvironment, PXGadget>
 {
     BOOL _contentViewVisible;
     BOOL _needsUpdate;
@@ -24,13 +25,13 @@ __attribute__((visibility("hidden")))
     NSIndexSet *_indexesOfHiddenStackItems;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
 @property (weak, nonatomic) id<PUAlbumGadgetDelegate> albumGadgetDelegate; // @synthesize albumGadgetDelegate=_albumGadgetDelegate;
 @property (readonly, nonatomic) PUAlbumListCellContentView *albumListCellContentView; // @synthesize albumListCellContentView=_albumListCellContentView;
 @property (readonly, nonatomic) PUAlbumListCellContentViewHelper *albumListCellContentViewHelper;
 @property (strong, nonatomic) PHCollection *collection; // @synthesize collection=_collection;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (nonatomic, getter=isContentViewVisible) BOOL contentViewVisible; // @synthesize contentViewVisible=_contentViewVisible;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
@@ -59,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (long long)estimatedIndexInCollection:(id)arg1 ofAssetForStackItemAtIndex:(long long)arg2;
 - (id)init;
 - (id)initWithCollection:(id)arg1 albumGadgetDelegate:(id)arg2;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)reconfigure;
 - (struct CGRect)rectForStackItemAtIndex:(long long)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

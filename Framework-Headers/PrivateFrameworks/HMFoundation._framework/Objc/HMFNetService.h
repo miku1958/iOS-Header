@@ -14,6 +14,7 @@
 
 @interface HMFNetService : HMFObject <HMFLogging, NSNetServiceDelegate>
 {
+    NSNetService *_internal;
     HMFUnfairLock *_lock;
     NSString *_type;
     NSString *_name;
@@ -21,31 +22,35 @@
     unsigned long long _port;
     NSArray *_addresses;
     NSMutableDictionary *_TXTRecord;
-    NSNetService *_internal;
-    BOOL _resolving;
+    BOOL _resolved;
+    BOOL _publishing;
     HMFNetAddress *_hostName;
+    long long _state;
     id<HMFNetServiceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSMutableArray *_resolveBlocks;
 }
 
-@property (readonly, copy, nonatomic) NSDictionary *TXTRecord;
+@property (readonly, copy) NSDictionary *TXTRecord;
 @property (readonly, copy) NSArray *addresses;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMFNetServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property (readonly, copy) NSString *domain; // @synthesize domain=_domain;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) HMFNetAddress *hostName; // @synthesize hostName=_hostName;
 @property (readonly, nonatomic) NSNetService *internal; // @synthesize internal=_internal;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) unsigned long long port;
+@property (readonly, copy) NSString *name; // @synthesize name=_name;
+@property (readonly) unsigned long long port;
+@property (getter=isPublishing) BOOL publishing; // @synthesize publishing=_publishing;
 @property (readonly, nonatomic) NSMutableArray *resolveBlocks; // @synthesize resolveBlocks=_resolveBlocks;
-@property (nonatomic, getter=isResolving) BOOL resolving; // @synthesize resolving=_resolving;
+@property (readonly, getter=isResolved) BOOL resolved; // @synthesize resolved=_resolved;
+@property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
+@property (readonly, copy) NSString *type; // @synthesize type=_type;
 
++ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)errorFromNetServiceErrorDict:(id)arg1;
 + (id)logCategory;
 + (id)shortDescription;
@@ -70,6 +75,7 @@
 - (void)resolveWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAddresses:(id)arg1;
 - (void)setHostname:(id)arg1;
+- (void)setResolved:(BOOL)arg1;
 - (void)setTXTRecord:(id)arg1;
 - (id)shortDescription;
 - (void)startMonitoring;

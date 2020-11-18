@@ -6,33 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class EAGLContext, EAGLSharegroup, NSBundle;
+@class NSBundle;
+@protocol MTLDevice;
 
 @interface NURenderer : NSObject
 {
-    EAGLContext *_context;
+    id<MTLDevice> _mtlDevice;
     NSBundle *_bundle;
     struct NURendererResources _resources;
-    unsigned int _initalizedProgams:1;
-    unsigned int _initalizedHemi:1;
-    unsigned int _initalized:1;
+    unsigned long long _viewMtlPixelFormat;
     struct _NUGeometryRange _octahedronGeomRange;
     struct _NUGeometryRange _quadGeomRange;
-    EAGLSharegroup *_shareGroup;
 }
 
-@property (readonly, nonatomic) EAGLSharegroup *shareGroup; // @synthesize shareGroup=_shareGroup;
-
 + (void)_deallocInstance;
-+ (id)sharedInstance;
++ (id)sharedInstanceWithPixelFormat:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_asyncDeallocInstance;
-- (BOOL)_initHemi;
-- (BOOL)_initPrograms;
-- (unsigned int)createVertexArray;
+- (void)_createPipelineForProgramType:(unsigned long long)arg1 fromLibrary:(id)arg2;
+- (void)_initDepthStencilState;
+- (void)_initHemi;
+- (void)_initPrograms;
+- (void)bindAssetArt:(unsigned long long)arg1 withEncoder:(id)arg2 resources:(id)arg3 toSlot:(unsigned long long)arg4;
 - (void)dealloc;
-- (id)init;
-- (void)renderWithScene:(id)arg1 viewport:(struct NUViewport)arg2 resources:(id)arg3;
+- (void)draw3DWithEncoder:(id)arg1 state:(const struct NURendererState *)arg2 spheroid:(id)arg3 resources:(id)arg4;
+- (void)drawSpriteWithEncoder:(id)arg1 state:(const struct NURendererState *)arg2 spheroid:(id)arg3 resources:(id)arg4;
+- (id)initWithPixelFormat:(unsigned long long)arg1;
+- (void)renderWithScene:(id)arg1 viewport:(struct NUViewport)arg2 resources:(id)arg3 encoder:(id)arg4;
 
 @end
 

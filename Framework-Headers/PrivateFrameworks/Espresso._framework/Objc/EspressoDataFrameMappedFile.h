@@ -18,8 +18,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property char *basePtr; // @synthesize basePtr=_basePtr;
-@property NSString *path; // @synthesize path=_path;
+@property (strong) NSString *path; // @synthesize path=_path;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 

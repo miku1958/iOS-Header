@@ -52,9 +52,11 @@
 - (unsigned long long)daysInMonth;
 - (unsigned long long)daysInYear;
 - (id)description;
+- (CDStruct_deff9ab7)differenceAsCalGregorianUnits:(id)arg1 flags:(unsigned long long)arg2;
 - (CDStruct_deff9ab7)differenceAsGregorianUnits:(id)arg1 flags:(unsigned long long)arg2;
 - (long long)differenceInDays:(id)arg1;
 - (long long)differenceInMonths:(id)arg1;
+- (double)differenceInSeconds:(id)arg1;
 - (long long)differenceInYears:(id)arg1;
 - (id)earlierDate:(id)arg1;
 - (CDStruct_b0fa4487)gregorianDate;

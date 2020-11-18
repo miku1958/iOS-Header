@@ -6,22 +6,22 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUICore/PXNavigationListDataSourceManagerObserver-Protocol.h>
+#import <PhotosUICore/PXNavigationListDataSectionManagerObserver-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUICore/UITableViewDataSource-Protocol.h>
 #import <PhotosUICore/UITableViewDelegate-Protocol.h>
 
-@class NSString, NSUserActivity, PXNavigationListDataSource, PXNavigationListDataSourceManager, UITableView;
+@class NSString, NSUserActivity, PXNavigationListDataSection, PXNavigationListDataSectionManager, UITableView;
 @protocol PXNavigationListContainer;
 
-@interface PXNavigationListController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, PXNavigationListDataSourceManagerObserver>
+@interface PXNavigationListController : UIViewController <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate, PXNavigationListDataSectionManagerObserver>
 {
     BOOL __needsUpdateRowHeight;
     BOOL _isTableViewUpdating;
     UITableView *_tableView;
-    PXNavigationListDataSourceManager *_dataSourceManager;
+    PXNavigationListDataSectionManager *_dataSectionManager;
     id<PXNavigationListContainer> _container;
-    PXNavigationListDataSource *_dataSource;
+    PXNavigationListDataSection *_dataSection;
     NSUserActivity *_siriActionActivity;
     double _rowHeight;
 }
@@ -30,8 +30,8 @@
 @property (nonatomic) BOOL allowsNavigation;
 @property (weak, nonatomic) id<PXNavigationListContainer> container; // @synthesize container=_container;
 @property (readonly, nonatomic) double contentHeight;
-@property (strong, nonatomic) PXNavigationListDataSource *dataSource; // @synthesize dataSource=_dataSource;
-@property (readonly, nonatomic) PXNavigationListDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
+@property (strong, nonatomic) PXNavigationListDataSection *dataSection; // @synthesize dataSection=_dataSection;
+@property (readonly, nonatomic) PXNavigationListDataSectionManager *dataSectionManager; // @synthesize dataSectionManager=_dataSectionManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -47,13 +47,12 @@
 - (id)_navigateTolistItem:(id)arg1 animated:(BOOL)arg2;
 - (void)_preferredContentSizeChanged:(id)arg1;
 - (double)_rowHeightForCurrentFont;
-- (void)_setDataSource:(id)arg1 changeDetails:(id)arg2;
 - (void)_updateCell:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateCellSeparatorStyle:(id)arg1 forRowAtIndexPath:(id)arg2;
+- (void)_updateTableView;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDataSourceManager:(id)arg1;
+- (id)initWithDataSectionManager:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) id<PXGadget> gadget; // @synthesize gadget=_gadget;
 @property (readonly, nonatomic) NSString *gadgetId; // @synthesize gadgetId=_gadgetId;
 @property (readonly, nonatomic) unsigned long long gadgetType; // @synthesize gadgetType=_gadgetType;
-@property (readonly, nonatomic) CDUnknownBlockType navigationBlock; // @synthesize navigationBlock=_navigationBlock;
+@property (readonly, copy, nonatomic) CDUnknownBlockType navigationBlock; // @synthesize navigationBlock=_navigationBlock;
 @property (readonly, nonatomic) long long navigationType; // @synthesize navigationType=_navigationType;
 
 - (void).cxx_destruct;

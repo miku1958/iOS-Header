@@ -6,9 +6,12 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationShapeView.h>
 
-@class CAShapeLayer, UIView;
+#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 
-@interface NTKRichComplicationRingView : NTKRichComplicationShapeView
+@class CAShapeLayer, NSString, UIView;
+@protocol CLKMonochromeFilterProvider;
+
+@interface NTKRichComplicationRingView : NTKRichComplicationShapeView <CLKMonochromeComplicationView>
 {
     double _curveWidth;
     double _padding;
@@ -20,6 +23,11 @@
 }
 
 @property (nonatomic) BOOL clockwise; // @synthesize clockwise=_clockwise;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_disabledLayerActions;
 - (void).cxx_destruct;
@@ -32,9 +40,11 @@
 - (double)_shapeLineWidth;
 - (BOOL)_shouldReverseGradient;
 - (void)_updateGradient;
-- (id)initWithCurveWidth:(double)arg1 padding:(double)arg2 forDevice:(id)arg3;
+- (id)initWithCurveWidth:(double)arg1 padding:(double)arg2 forDevice:(id)arg3 withFilterStyle:(long long)arg4;
 - (void)layoutSubviews;
 - (void)setProgress:(double)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

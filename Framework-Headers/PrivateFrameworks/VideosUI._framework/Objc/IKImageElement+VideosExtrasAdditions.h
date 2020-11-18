@@ -7,7 +7,11 @@
 #import <ITMLKit/IKImageElement.h>
 
 @interface IKImageElement (VideosExtrasAdditions)
+
+@property (readonly, nonatomic) BOOL vui_hasValidImage;
+
 - (long long)accessoryType;
+- (id)artworkCatalog;
 - (id)bestURL;
 - (id)cachePath;
 - (id)resourceImage;

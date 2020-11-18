@@ -7,6 +7,10 @@
 #import <UIKit/UINavigationController.h>
 
 @interface UINavigationController (SUTabBarControllerAdditions)
+- (void)_setStoreBarStyle:(long long)arg1 clientInterface:(id)arg2;
+- (id)firstViewController;
+- (unsigned long long)indexOfViewController:(id)arg1;
+- (void)invalidate;
 - (void)tabBarControllerDidLongPressTabBarItem:(id)arg1;
 - (void)tabBarControllerDidReselectTabBarItem:(id)arg1;
 @end

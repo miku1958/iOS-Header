@@ -6,23 +6,24 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOAlightNotificationFeedback, GEOETARoute, GEOStep, MNActiveRouteDetails, MNActiveRouteInfo, MNAudioOutputSetting, MNGuidanceEventFeedback, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocationDetails, MNNavigationDetails, MNTracePlaybackDetails, MNTrafficIncidentAlertDetails, NSArray, NSData, NSDate, NSError, NSString, NSUUID;
+@class GEODirectionsRequest, GEODirectionsResponse, GEOStep, MNActiveRouteInfo, MNAudioOutputSetting, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, MNLocationDetails, MNNavigationDetails, MNTracePlaybackDetails, MNTrafficIncidentAlertDetails, NSArray, NSData, NSDate, NSError, NSSet, NSString, NSUUID;
 @protocol MNNavigationServiceProxy;
 
 @protocol MNNavigationServiceClientInterface <NSObject>
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didActivateAudioSession:(BOOL)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didChangeNavigationState:(int)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didChangeVolume:(unsigned long long)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didEnableGuidancePrompts:(BOOL)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didFailRerouteWithError:(NSError *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didFailWithError:(NSError *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didInvalidateTrafficIncidentAlert:(MNTrafficIncidentAlertDetails *)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didReceiveRealtimeUpdates:(NSSet *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didReceiveTrafficIncidentAlert:(MNTrafficIncidentAlertDetails *)arg2;
-- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didRerouteWithDetails:(MNActiveRouteDetails *)arg2 withLocationDetails:(MNLocationDetails *)arg3 withAlternateRoutes:(NSArray *)arg4;
-- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didSignalAlightForStepAtIndex:(unsigned long long)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didRerouteWithRoute:(MNActiveRouteInfo *)arg2 withLocationDetails:(MNLocationDetails *)arg3 withAlternateRoutes:(NSArray *)arg4;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didStartSpeakingPrompt:(NSString *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didStartUsingVoiceLanguage:(NSString *)arg2;
-- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(MNActiveRouteDetails *)arg3;
-- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateActiveRouteDetails:(MNActiveRouteDetails *)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(MNActiveRouteInfo *)arg3;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateAlternateRoutes:(NSArray *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateAudioOutputCurrentSetting:(MNAudioOutputSetting *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateAudioOutputCurrentSettingForVoicePrompt:(MNAudioOutputSetting *)arg2;
@@ -32,33 +33,38 @@
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateDistanceUntilManeuver:(double)arg2 timeUntilManeuver:(double)arg3 forStepIndex:(unsigned long long)arg4;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateDistanceUntilSign:(double)arg2 timeUntilSign:(double)arg3 forStepIndex:(unsigned long long)arg4;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateETAResponseForRoute:(MNActiveRouteInfo *)arg2;
-- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateFeedback:(GEOAlightNotificationFeedback *)arg2 forAlightingStepAtIndex:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateHeading:(double)arg2 accuracy:(double)arg3;
-- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateIsInVehicle:(BOOL)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateMatchedLocation:(MNLocationDetails *)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateMotionType:(unsigned long long)arg2 confidence:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateNavigationDetails:(MNNavigationDetails *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdatePossibleCommuteDestinations:(NSArray *)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdatePreviewRoutes:(NSArray *)arg2 withSelectedRouteIndex:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateProceedToRouteDistance:(double)arg2 displayString:(NSString *)arg3 closestStepIndex:(unsigned long long)arg4;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateRemainingTime:(double)arg2 remainingDistance:(double)arg3;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateRouteWithNewRideSelection:(MNActiveRouteInfo *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateStepIndex:(unsigned long long)arg2 legIndex:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateTracePlaybackDetails:(MNTracePlaybackDetails *)arg2;
-- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateTrafficForETARoute:(GEOETARoute *)arg2 from:(unsigned int)arg3 to:(unsigned int)arg4 forRoute:(MNActiveRouteInfo *)arg5;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 didUpdateTrafficIncidentAlert:(MNTrafficIncidentAlertDetails *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 displayManeuverAlertForAnnouncementStage:(unsigned long long)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 displayPrimaryStep:(GEOStep *)arg2 instructions:(NSArray *)arg3 shieldType:(int)arg4 shieldText:(NSString *)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(BOOL)arg8;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 displaySecondaryStep:(GEOStep *)arg2 instructions:(NSArray *)arg3 shieldType:(int)arg4 shieldText:(NSString *)arg5 drivingSide:(int)arg6;
-- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 failedRerouteWithErrorCode:(long long)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 hideJunctionViewForId:(NSUUID *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 hideLaneDirectionsForId:(NSUUID *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 newGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 showJunctionView:(MNGuidanceJunctionViewInfo *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 showLaneDirections:(MNGuidanceLaneInfo *)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 triggerHaptics:(int)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 updateSignsWithInfo:(MNGuidanceSignInfo *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 updatedGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 usePersistentDisplay:(BOOL)arg2;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 willAnnounce:(unsigned long long)arg2 inSeconds:(double)arg3;
 - (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 willRequestRealtimeUpdatesForRouteIDs:(NSSet *)arg2;
+- (void)navigationServiceProxy:(id<MNNavigationServiceProxy>)arg1 willStartNavigationWithRoute:(MNActiveRouteInfo *)arg2 navigationType:(int)arg3 request:(GEODirectionsRequest *)arg4 response:(GEODirectionsResponse *)arg5;
 - (void)navigationServiceProxyBeginGuidanceUpdate:(id<MNNavigationServiceProxy>)arg1;
 - (void)navigationServiceProxyDidArrive:(id<MNNavigationServiceProxy>)arg1;
 - (void)navigationServiceProxyDidCancelReroute:(id<MNNavigationServiceProxy>)arg1;
+- (void)navigationServiceProxyDidEnterPreArrivalState:(id<MNNavigationServiceProxy>)arg1;
 - (void)navigationServiceProxyEndGuidanceUpdate:(id<MNNavigationServiceProxy>)arg1;
 - (void)navigationServiceProxyHideSecondaryStep:(id<MNNavigationServiceProxy>)arg1;
 - (void)navigationServiceProxyPredictingDidArrive:(id<MNNavigationServiceProxy>)arg1;

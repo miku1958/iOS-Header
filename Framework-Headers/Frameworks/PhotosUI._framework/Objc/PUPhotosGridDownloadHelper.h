@@ -36,10 +36,10 @@
 - (void)cancelAllDownloads;
 - (void)cancelDownloadForIdentifier:(id)arg1;
 - (void)checkIfDownloadIsRequiredForAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)handleDownloadOfAsset:(id)arg1 inCollection:(id)arg2 withSuccessHandler:(CDUnknownBlockType)arg3;
 - (void)handleDownloadOfAssetIfNeeded:(id)arg1 inCollection:(id)arg2 withSuccessHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithGridViewController:(id)arg1;
+- (BOOL)isAnyPickerAssetDownloading:(id)arg1;
 
 @end
 

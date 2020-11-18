@@ -76,7 +76,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)discoveryTimestamp;
-- (void)finalize;
 - (unsigned long long)hash;
 - (struct CGImage *)imageValue;
 - (id)init;

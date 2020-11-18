@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)randomSeedFromRandomLo:(int)arg1 hi:(int)arg2;
 + (void)resumeEvaluationIfNotTerminated;
 + (void)splitRandomSeed:(unsigned long long)arg1 intoLo:(int *)arg2 hi:(int *)arg3;
+- (void)addAllFormulasCleanObserver:(id)arg1;
 - (void)addCalculationStateObserver:(id)arg1;
 - (unsigned char)aggregateTypeForCategoryRef:(const struct TSCECategoryRef *)arg1;
 - (id)allCellDependenciesAsString;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)cellWillBeModifiedInCurrentRecalcCycle:(const struct TSCECellRef *)arg1;
 - (BOOL)clearCellIsDirtyAfterRecalc:(const struct TSCECellRef *)arg1;
 - (void)clearErrorForCell:(const struct TSCECellRef *)arg1;
+- (void)clearErrorForCells:(const struct TSCECellRefSet *)arg1;
 - (void)clearLegacyGlobalIDs;
 - (void)clearPreviousLocaleIdentifier;
 - (void)clearRecalculationTimer;
@@ -132,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (UUIDData_5fbc143e)mapOwnerUID:(const UUIDData_5fbc143e *)arg1;
 - (void)markAllExternalGroupByRefsDirty:(const UUIDData_5fbc143e *)arg1;
 - (void)markAllFunctionsAsDirty;
+- (void)markAllVolatileFunctionsAsDirty;
 - (void)markCellRefAsDirty:(const struct TSCECellRef *)arg1;
 - (void)markCellRefsAsDirty:(id)arg1;
 - (void)markCompassVolatileFunctionsAsDirty;
@@ -147,7 +150,6 @@ __attribute__((visibility("hidden")))
 - (void)markRemoteDataVolatileFunctionsAsDirtyForKeys:(id)arg1;
 - (void)markTimeVolatileFunctionsAsDirty;
 - (void)markTimeVolatileFunctionsAsDirtyForCurrentDateTime;
-- (void)notifyObserversOfRecalcProgress;
 - (unsigned long long)numFormulaCellsInOwner:(const UUIDData_5fbc143e *)arg1;
 - (unsigned long long)numberOfCellsWithFormulas;
 - (id)openTransaction;
@@ -173,6 +175,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)referenceIsValid:(const struct TSCERangeRef *)arg1;
 - (BOOL)referenceWasGuaranteedCleanAtRecalcCycleStart:(const struct TSCEAnyRef *)arg1;
 - (int)registerOwnerWithOwnerUID:(const UUIDData_5fbc143e *)arg1 owner:(id)arg2 referenceResolver:(id)arg3 baseOwnerUID:(const UUIDData_5fbc143e *)arg4 ownerKind:(unsigned short)arg5;
+- (void)removeAllFormulasCleanObserver:(id)arg1;
 - (void)removeAllFormulasFromOwner:(const UUIDData_5fbc143e *)arg1;
 - (void)removeAllFormulasFromPlane:(const struct TSCESubFormulaOwnerID *)arg1;
 - (void)removeCalculationStateObserver:(id)arg1;
@@ -207,6 +210,7 @@ __attribute__((visibility("hidden")))
 - (void)setOwnerUIDForLegacyGlobalID:(id)arg1 ownerUID:(const UUIDData_5fbc143e *)arg2;
 - (void)setRemoteDataStore:(id)arg1;
 - (BOOL)shouldDelayArchiving;
+- (BOOL)shouldForceRegisterAllTables;
 - (void)startRecalcTaskIfNecessary;
 - (void)startRecalculation;
 - (struct TSCESubFormulaOwnerID)subOwnerIDForFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1;

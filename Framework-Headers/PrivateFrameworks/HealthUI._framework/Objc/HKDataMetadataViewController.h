@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) id<HKDataMetadataViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) HKLocationFetcher *locationFetcher; // @synthesize locationFetcher=_locationFetcher;
 @property (strong, nonatomic) HKLocationReadings *locationReadings; // @synthesize locationReadings=_locationReadings;
-@property (readonly, nonatomic) HKSample *sample; // @synthesize sample=_sample;
+@property (strong, nonatomic) HKSample *sample; // @synthesize sample=_sample;
 @property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
 @property (readonly, nonatomic) NSArray *subSampleTypes; // @synthesize subSampleTypes=_subSampleTypes;
 @property (strong, nonatomic) HKDataMetadataWorkoutRouteSection *workoutRouteSection; // @synthesize workoutRouteSection=_workoutRouteSection;
@@ -45,7 +45,7 @@
 - (void)dealloc;
 - (id)defaultPredicateForSampleType:(id)arg1;
 - (void)finishedAggregateQuery;
-- (id)initWithSample:(id)arg1 delegate:(id)arg2;
+- (id)initWithSample:(id)arg1 usingInsetStyling:(BOOL)arg2 delegate:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -54,7 +54,9 @@
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)viewControllerForSampleType:(id)arg1 subSamplePredicate:(id)arg2 title:(id)arg3;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

@@ -35,15 +35,15 @@
 @property (nonatomic) unsigned long long K; // @synthesize K=_K;
 @property (nonatomic) unsigned long long M; // @synthesize M=_M;
 @property (nonatomic) unsigned long long N; // @synthesize N=_N;
-@property (readonly, nonatomic) double alpha; // @synthesize alpha=_alpha;
+@property (nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property (nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property (nonatomic) unsigned long long batchStart; // @synthesize batchStart=_batchStart;
-@property (readonly, nonatomic) double beta; // @synthesize beta=_beta;
+@property (nonatomic) double beta; // @synthesize beta=_beta;
 @property (nonatomic) CDStruct_67e7699a leftMatrixOrigin; // @synthesize leftMatrixOrigin=_leftMatrixOrigin;
 @property (nonatomic) CDStruct_67e7699a resultMatrixOrigin; // @synthesize resultMatrixOrigin=_resultMatrixOrigin;
 @property (nonatomic) CDStruct_67e7699a rightMatrixOrigin; // @synthesize rightMatrixOrigin=_rightMatrixOrigin;
-@property (readonly, nonatomic) BOOL transA; // @synthesize transA=_transA;
-@property (readonly, nonatomic) BOOL transB; // @synthesize transB=_transB;
+@property (nonatomic) BOOL transA; // @synthesize transA=_transA;
+@property (nonatomic) BOOL transB; // @synthesize transB=_transB;
 
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

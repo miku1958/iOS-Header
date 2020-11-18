@@ -8,6 +8,7 @@
 
 @class PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface STScreenTimeUsageGroupSpecifierProvider : STUsageGroupSpecifierProvider
 {
     PSSpecifier *_usageSummaryGraphSpecifier;
@@ -18,13 +19,16 @@
 @property (strong, nonatomic) PSSpecifier *weeklyTotalSpecifier; // @synthesize weeklyTotalSpecifier=_weeklyTotalSpecifier;
 
 - (void).cxx_destruct;
+- (void)_headerButtonPressed:(id)arg1;
+- (void)_lastUpdatedDateDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_refreshingDidChange:(BOOL)arg1;
-- (id)getUsageInfo:(id)arg1;
+- (void)_selectedUsageReportDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_specifierIdentifierDidChange:(id)arg1;
+- (id)_usageDetailsCoordinator:(id)arg1;
+- (id)_weeklyTotal:(id)arg1;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)reloadScreenTimeSummarySpecifier;
 - (void)setCoordinator:(id)arg1;
-- (id)weeklyTotal:(id)arg1;
 
 @end
 

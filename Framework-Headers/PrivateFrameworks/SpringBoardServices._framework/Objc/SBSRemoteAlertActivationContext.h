@@ -11,42 +11,48 @@
 #import <SpringBoardServices/BSXPCCoding-Protocol.h>
 #import <SpringBoardServices/NSSecureCoding-Protocol.h>
 
-@class BSMutableSettings, NSDictionary, NSSet, NSString, SBSRemoteAlertPresentationTarget;
+@class NSDictionary, NSSet, NSString, NSUUID, SBSRemoteAlertPresentationTarget;
 
 @interface SBSRemoteAlertActivationContext : NSObject <BSDescriptionProviding, BSSettingDescriptionProvider, BSXPCCoding, NSSecureCoding>
 {
-    BSMutableSettings *_settings;
+    BOOL _activatingForSiri;
+    BOOL _shouldInvalidateWhenDeactivated;
+    BOOL _switcherEligible;
+    NSString *_reason;
     NSSet *_actions;
     NSDictionary *_userInfo;
     SBSRemoteAlertPresentationTarget *_presentationTarget;
+    NSUUID *_activityContinuationIdentifier;
+    NSDictionary *_legacyAlertOptions;
 }
 
-@property (strong, nonatomic) NSSet *actions; // @synthesize actions=_actions;
-@property (nonatomic, getter=isActivatingForSiri) BOOL activatingForSiri;
+@property (copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
+@property (nonatomic, getter=isActivatingForSiri) BOOL activatingForSiri; // @synthesize activatingForSiri=_activatingForSiri;
+@property (copy, nonatomic) NSUUID *activityContinuationIdentifier; // @synthesize activityContinuationIdentifier=_activityContinuationIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSDictionary *legacyAlertOptions; // @synthesize legacyAlertOptions=_legacyAlertOptions;
 @property (strong, nonatomic) SBSRemoteAlertPresentationTarget *presentationTarget; // @synthesize presentationTarget=_presentationTarget;
-@property (strong, nonatomic) NSString *reason;
+@property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
+@property (nonatomic) BOOL shouldInvalidateWhenDeactivated; // @synthesize shouldInvalidateWhenDeactivated=_shouldInvalidateWhenDeactivated;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isSwitcherEligible) BOOL switcherEligible; // @synthesize switcherEligible=_switcherEligible;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
++ (id)activationContextWithLegacyAlertOptions:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithSettings:(id)arg1 actions:(id)arg2;
-- (id)_initWithSettings:(id)arg1 actions:(id)arg2 presentationTarget:(id)arg3;
-- (id)_initWithSettings:(id)arg1 actions:(id)arg2 presentationTarget:(id)arg3 userInfo:(id)arg4;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
 - (id)initWithActions:(id)arg1;
+- (id)initWithActions:(id)arg1 presentationTarget:(id)arg2;
+- (id)initWithActions:(id)arg1 presentationTarget:(id)arg2 userInfo:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
-- (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
-- (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

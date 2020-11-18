@@ -10,6 +10,7 @@
 + (id)safari_cloudBookmarksDefaults;
 + (id)safari_notificationNameForUserDefaultsKey:(id)arg1;
 - (id)safari_dateForKey:(id)arg1;
+- (id)safari_numberForKey:(id)arg1;
 - (void)safari_setBool:(BOOL)arg1 andNotifyForKey:(id)arg2;
 - (void)safari_setDate:(id)arg1 forKey:(id)arg2;
 - (BOOL)safari_toggleBoolAndNotifyForKey:(id)arg1;

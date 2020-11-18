@@ -6,17 +6,17 @@
 
 #import <CoreThemeDefinition/TDModelObjectRenditionSpec.h>
 
-@class MDLMesh, NSOrderedSet;
+@class NSOrderedSet;
 
 @interface TDModelMeshRenditionSpec : TDModelObjectRenditionSpec
 {
 }
 
-@property (strong, nonatomic) MDLMesh *mesh; // @dynamic mesh;
 @property (strong, nonatomic) NSOrderedSet *submeshes; // @dynamic submeshes;
 
 + (id)fetchRequest;
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
+- (void)processSubMesh:(id)arg1 withAssetSubmeshIndex:(unsigned int *)arg2 assetKeySpec:(id)arg3 inDocument:(id)arg4;
 
 @end
 

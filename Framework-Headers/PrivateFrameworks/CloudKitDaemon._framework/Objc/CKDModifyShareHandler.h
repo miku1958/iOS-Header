@@ -6,42 +6,42 @@
 
 #import <CloudKitDaemon/CKDModifyRecordHandler.h>
 
-@class CKDModifyShareTokenURLRequest, CKRecordID, CKShare;
+@class CKRecordID, CKShare;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyShareHandler : CKDModifyRecordHandler
 {
     BOOL _haveAddedOwnerToShare;
     BOOL _isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade;
-    CKDModifyShareTokenURLRequest *_request;
 }
 
 @property (nonatomic) BOOL haveAddedOwnerToShare; // @synthesize haveAddedOwnerToShare=_haveAddedOwnerToShare;
 @property (nonatomic) BOOL isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade; // @synthesize isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade=_isALegacyPublicShareThatNeedsOwnerPPPCSUpgrade;
-@property (strong, nonatomic) CKDModifyShareTokenURLRequest *request; // @synthesize request=_request;
 @property (readonly, nonatomic) CKShare *share;
 @property (readonly, nonatomic) CKRecordID *shareID;
 
 + (id)modifyHandlerForDeleteWithShareID:(id)arg1 operation:(id)arg2;
 + (id)modifyHandlerWithShare:(id)arg1 operation:(id)arg2;
-- (void).cxx_destruct;
 - (void)_addPublicKeyToSelfParticipant;
+- (BOOL)_addedPrivateParticipantNeedsAManateeInvitation:(id)arg1;
 - (void)_alignParticipantPermissions;
 - (BOOL)_cleanPublicPCSforShareWithError:(id *)arg1;
 - (id)_createNewSharePCSDataWithError:(id *)arg1;
-- (BOOL)_decryptSharePCSData;
 - (id)_ensurePrivateParticipant:(id)arg1 isInInvitedSharePCS:(struct _OpaquePCSShareProtection *)arg2;
 - (void)_fetchRootRecordPublicSharingIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchSharePCSData;
-- (void)_handleSharePCSData:(id)arg1 withError:(id)arg2;
+- (id)_handleSharePCSData:(id)arg1 zonePCSData:(id)arg2;
+- (void)_prepareDependentPCSUpdateIfNeededForShareWithSharePCS:(id)arg1 error:(id)arg2;
 - (id)_publicKeyForParticipant:(id)arg1 error:(id *)arg2;
 - (id)_removePrivateParticipant:(id)arg1 fromInvitedSharePCS:(struct _OpaquePCSShareProtection *)arg2;
 - (BOOL)_removePrivateParticipantsFromInvitedPCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
 - (id)_removePublicKey:(id)arg1 fromInvitedPCS:(struct _OpaquePCSShareProtection *)arg2;
+- (id)_rollShareAndZonePCSIfNeededForSharePCS:(id)arg1 zonePCSData:(id)arg2;
 - (BOOL)_serializePCSDataForShareWithError:(id *)arg1;
 - (void)_setupParticipantsProtectionInfos;
 - (BOOL)_updateSharePublicPCSWithError:(id *)arg1;
 - (void)clearProtectionDataForRecord;
+- (struct _PCSPublicIdentityData *)createPublicIdentityFromPublicKeyForParticipant:(id)arg1 error:(id *)arg2;
 - (void)fetchSharePCSData;
 - (BOOL)isCloudDocsContainer;
 - (BOOL)isShare;

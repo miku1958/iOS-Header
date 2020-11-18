@@ -8,7 +8,7 @@
 
 #import <PhotosUI/NSCopying-Protocol.h>
 
-@class NSDictionary, NSHashTable, NSMapTable, NSMutableSet, NSOrderedSet, NSSet, PXSelectionSnapshot;
+@class NSArray, NSDictionary, NSHashTable, NSMapTable, NSMutableSet, NSOrderedSet, NSSet, PXSelectionSnapshot;
 @protocol PHAssetCollectionDataSource;
 
 @interface PUPhotoSelectionManager : NSObject <NSCopying>
@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) BOOL isAnyAssetSelected;
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSOrderedSet *orderedSelectedAssets;
+@property (readonly, nonatomic) NSArray *selectedAssetCollections;
 @property (readonly, nonatomic) NSSet *selectedAssets;
 @property (readonly, nonatomic) NSDictionary *selectedAssetsByAssetCollection;
 @property (readonly, nonatomic) PXSelectionSnapshot *selectionSnapshot;
@@ -51,6 +52,7 @@
 - (BOOL)isAssetAtIndexSelected:(unsigned long long)arg1 inAssetCollection:(id)arg2;
 - (id)localizedSelectionString;
 - (void)registerChangeObserver:(id)arg1;
+- (struct PXAssetMediaTypeCount)requestAssetsMediaTypeCount;
 - (void)selectAllAssetsInAssetCollections:(id)arg1;
 - (void)selectAssetAtIndex:(unsigned long long)arg1 inAssetCollection:(id)arg2;
 - (void)selectAssetsAtIndexes:(id)arg1 inAssetCollection:(id)arg2;

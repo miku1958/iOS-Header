@@ -15,9 +15,9 @@
 }
 
 @property (strong, nonatomic) NSMutableDictionary *attributes; // @synthesize attributes=_attributes;
-@property (readonly, strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithFileURL:(id)arg1;
 - (void)persist;

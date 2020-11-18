@@ -73,12 +73,14 @@
 @property (strong, nonatomic) id<PLSyncablePerson> personBeingKeyFace;
 @property (strong, nonatomic) PLPerson *personBeingKeyFace; // @dynamic personBeingKeyFace;
 @property (nonatomic) double poseYaw; // @dynamic poseYaw;
+@property (nonatomic) double quality; // @dynamic quality;
 @property (nonatomic) int qualityMeasure; // @dynamic qualityMeasure;
 @property (strong, nonatomic) NSSet *rejectedPersons;
 @property (strong, nonatomic) NSSet *rejectedPersons; // @dynamic rejectedPersons;
 @property (strong, nonatomic) NSSet *rejectedPersonsNeedingFaceCrops; // @dynamic rejectedPersonsNeedingFaceCrops;
 @property (nonatomic) double rightEyeX; // @dynamic rightEyeX;
 @property (nonatomic) double rightEyeY; // @dynamic rightEyeY;
+@property (nonatomic) double roll; // @dynamic roll;
 @property (nonatomic) double size;
 @property (nonatomic) double size; // @dynamic size;
 @property (nonatomic) unsigned short smileType; // @dynamic smileType;
@@ -90,19 +92,17 @@
 @property (nonatomic) int trainingType;
 @property (nonatomic) int trainingType; // @dynamic trainingType;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
+@property (nonatomic) double yaw; // @dynamic yaw;
 
 + (id)_facesMatchingPredicate:(id)arg1 limit:(unsigned long long)arg2 inPhotoLibrary:(id)arg3;
 + (id)_syncableFacesToUploadInitiallyPredicate;
-+ (void)batchFetchDetectedFacesByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)batchFetchKeyFacesByPersonUUIDWithPersonUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)batchFetchDetectedFacesByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 library:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)batchFetchKeyFacesByPersonUUIDWithPersonUUIDs:(id)arg1 library:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (unsigned long long)countOfHiddenFacesOnAssetsWithObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)detectedFaceWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (void)enumerateAssetUUIDsForSearchIndexingWithDetctedFaceUUIDs:(id)arg1 managedObjectContext:(id)arg2 assetUUIDHandler:(CDUnknownBlockType)arg3;
-+ (BOOL)facesSyncFeatureEnabled;
 + (id)findExistingFaceMatchingDimension:(id)arg1 inFaces:(id)arg2 ignoreSourceAssetDimensions:(BOOL)arg3;
-+ (id)insertInManagedObjectContext:(id)arg1;
 + (id)predicateForArchival;
 + (id)predicatesForFacesNeedingFaceCropGeneration;
 + (id)predicatesToExcludeNonVisibleFaces;
@@ -121,8 +121,12 @@
 - (id)debugLogDescription;
 - (void)delete;
 - (BOOL)isSyncableChange;
+- (BOOL)isValidForPersistence;
 - (id)momentShare;
 - (id)namingDescription;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (id)payloadIDForTombstone:(id)arg1;
 - (double)photosFaceRepresentationBlurScore;
 - (double)photosFaceRepresentationCenterX;
 - (double)photosFaceRepresentationCenterY;
@@ -131,13 +135,16 @@
 - (BOOL)photosFaceRepresentationIsLeftEyeClosed;
 - (BOOL)photosFaceRepresentationIsRightEyeClosed;
 - (id)photosFaceRepresentationLocalIdentifier;
+- (double)photosFaceRepresentationQuality;
 - (long long)photosFaceRepresentationQualityMeasure;
+- (double)photosFaceRepresentationRoll;
 - (double)photosFaceRepresentationSize;
 - (long long)photosFaceRepresentationSourceHeight;
 - (long long)photosFaceRepresentationSourceWidth;
 - (void)removeFaceprint;
 - (BOOL)supportsCloudUpload;
 - (id)syncDescription;
+- (BOOL)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (void)willSave;
 
 @end

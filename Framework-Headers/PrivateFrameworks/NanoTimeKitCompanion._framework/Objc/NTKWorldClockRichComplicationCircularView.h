@@ -27,6 +27,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)_applyPausedUpdate;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (BOOL)_shouldAnimateWithTemplateUpdateReason:(long long)arg1;
 - (BOOL)_shouldUseDaytimeColoring;
@@ -36,6 +37,9 @@
 - (void)dealloc;
 - (id)init;
 - (void)layoutSubviews;
+- (void)setPaused:(BOOL)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

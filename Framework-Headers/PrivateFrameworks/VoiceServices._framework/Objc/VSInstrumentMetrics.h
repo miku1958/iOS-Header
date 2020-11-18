@@ -14,6 +14,7 @@
 {
     BOOL _isWarmStart;
     BOOL _isServerTTS;
+    BOOL _isServerStreamTTS;
     BOOL _isServerTimeout;
     BOOL _isServerTTSRacing;
     BOOL _canUseServerTTS;
@@ -23,6 +24,7 @@
     NSString *_utterance;
     NSString *_voiceAssetKey;
     NSString *_voiceResourceAssetKey;
+    NSString *_audioOutputRoute;
     long long _requestCreatedTimestamp;
     long long _eagerRequestCreatedTimeStampDiffs;
     long long _synthesisBeginTimestamp;
@@ -32,16 +34,19 @@
     long long _audioStartTimestampDiffs;
     double _audioDuration;
     long long _promptCount;
+    long long _sourceOfTTS;
     long long _synthesisToSpeechTimeGap;
     long long _waitForSynthesisToFinishTimeDelay;
 }
 
 @property double audioDuration; // @synthesize audioDuration=_audioDuration;
+@property (copy) NSString *audioOutputRoute; // @synthesize audioOutputRoute=_audioOutputRoute;
 @property long long audioStartTimestampDiffs; // @synthesize audioStartTimestampDiffs=_audioStartTimestampDiffs;
 @property BOOL canUseServerTTS; // @synthesize canUseServerTTS=_canUseServerTTS;
 @property long long eagerRequestCreatedTimeStampDiffs; // @synthesize eagerRequestCreatedTimeStampDiffs=_eagerRequestCreatedTimeStampDiffs;
 @property BOOL isCacheHitFromDisk; // @synthesize isCacheHitFromDisk=_isCacheHitFromDisk;
 @property BOOL isCacheHitFromMemory; // @synthesize isCacheHitFromMemory=_isCacheHitFromMemory;
+@property BOOL isServerStreamTTS; // @synthesize isServerStreamTTS=_isServerStreamTTS;
 @property BOOL isServerTTS; // @synthesize isServerTTS=_isServerTTS;
 @property BOOL isServerTTSRacing; // @synthesize isServerTTSRacing=_isServerTTSRacing;
 @property BOOL isServerTimeout; // @synthesize isServerTimeout=_isServerTimeout;
@@ -49,6 +54,7 @@
 @property BOOL isWarmStart; // @synthesize isWarmStart=_isWarmStart;
 @property long long promptCount; // @synthesize promptCount=_promptCount;
 @property long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
+@property long long sourceOfTTS; // @synthesize sourceOfTTS=_sourceOfTTS;
 @property long long speechBeginTimestamp; // @synthesize speechBeginTimestamp=_speechBeginTimestamp;
 @property long long speechEndTimestamp; // @synthesize speechEndTimestamp=_speechEndTimestamp;
 @property long long synthesisBeginTimestamp; // @synthesize synthesisBeginTimestamp=_synthesisBeginTimestamp;

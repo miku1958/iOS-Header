@@ -26,9 +26,11 @@
     unsigned long long _junctionType;
     NSMeasurement *_junctionExitAngle;
     NSSet *_junctionElementAngles;
+    long long _displayStyle;
 }
 
 @property (copy, nonatomic) NSArray *attributedInstructionVariants; // @synthesize attributedInstructionVariants=_attributedInstructionVariants;
+@property (nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) CPTravelEstimates *initialTravelEstimates; // @synthesize initialTravelEstimates=_initialTravelEstimates;
 @property (copy, nonatomic) NSArray *instructionVariants; // @synthesize instructionVariants=_instructionVariants;
@@ -39,6 +41,7 @@
 @property (nonatomic) unsigned long long maneuverType; // @synthesize maneuverType=_maneuverType;
 @property (copy, nonatomic) NSArray *roadFollowingManeuverVariants; // @synthesize roadFollowingManeuverVariants=_roadFollowingManeuverVariants;
 @property (readonly) NSArray *stringInstructionVariants;
+@property (strong, nonatomic) UIImage *symbolImage;
 @property (strong, nonatomic) CPImageSet *symbolSet; // @synthesize symbolSet=_symbolSet;
 @property (nonatomic) unsigned long long trafficSide; // @synthesize trafficSide=_trafficSide;
 @property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;

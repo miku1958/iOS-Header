@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axButton:(id)arg1 setIdentifier:(id)arg2 fallbackLabel:(id)arg3;
 - (void)_dismiss;
 - (id)initWithFrame:(struct CGRect)arg1;
 

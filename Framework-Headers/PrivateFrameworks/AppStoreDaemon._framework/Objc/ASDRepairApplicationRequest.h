@@ -4,29 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppStoreDaemon/ASDBaseClient.h>
+#import <objc/NSObject.h>
 
-#import <AppStoreDaemon/NSXPCListenerDelegate-Protocol.h>
+@class ASDRepairOptions;
 
-@class ASDRepairApplicationRequestOptions, NSObject, NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
-
-@interface ASDRepairApplicationRequest : ASDBaseClient <NSXPCListenerDelegate>
+@interface ASDRepairApplicationRequest : NSObject
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSObject<OS_dispatch_queue> *_calloutQueue;
-    NSXPCConnection *_connection;
-    ASDRepairApplicationRequestOptions *_options;
+    ASDRepairOptions *_options;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 - (void).cxx_destruct;
-- (void)_sendRequestWithOptions:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)_setupConnection;
 - (id)initWithOptions:(id)arg1;
 - (void)sendRequestWithCompletionBlock:(CDUnknownBlockType)arg1;
 

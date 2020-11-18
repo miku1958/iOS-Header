@@ -24,13 +24,13 @@
 @property (readonly, nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 
 - (void).cxx_destruct;
-- (BOOL)_accessibilityIsScannerElement;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityHint;
 - (id)accessibilityLabel:(id)arg1;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (id)initWithAccessibilityContainer:(id)arg1 textRange:(struct _NSRange)arg2 links:(id)arg3;
 
 @end

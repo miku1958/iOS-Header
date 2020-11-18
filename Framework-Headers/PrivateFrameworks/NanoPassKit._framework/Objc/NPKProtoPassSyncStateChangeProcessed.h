@@ -14,14 +14,18 @@
 {
     NSData *_acceptedChangeUUID;
     BOOL _changeAccepted;
+    BOOL _fullPassRequired;
     struct {
         unsigned int changeAccepted:1;
+        unsigned int fullPassRequired:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSData *acceptedChangeUUID; // @synthesize acceptedChangeUUID=_acceptedChangeUUID;
 @property (nonatomic) BOOL changeAccepted; // @synthesize changeAccepted=_changeAccepted;
+@property (nonatomic) BOOL fullPassRequired; // @synthesize fullPassRequired=_fullPassRequired;
 @property (nonatomic) BOOL hasChangeAccepted;
+@property (nonatomic) BOOL hasFullPassRequired;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

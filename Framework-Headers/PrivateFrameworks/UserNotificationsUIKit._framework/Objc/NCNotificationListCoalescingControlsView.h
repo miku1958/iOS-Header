@@ -6,16 +6,17 @@
 
 #import <UIKit/UIView.h>
 
+#import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
 #import <UserNotificationsUIKit/NCToggleControlDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
 @class NCToggleControlPair, NSString, _UILegibilitySettings;
 @protocol NCNotificationListCoalescingControlsViewDelegate;
 
-@interface NCNotificationListCoalescingControlsView : UIView <NCToggleControlDelegate, PLContentSizeCategoryAdjusting>
+@interface NCNotificationListCoalescingControlsView : UIView <NCToggleControlDelegate, PLContentSizeCategoryAdjusting, MTMaterialGrouping>
 {
+    NSString *_materialGroupNameBase;
     id<NCNotificationListCoalescingControlsViewDelegate> _delegate;
-    NSString *_backgroundGroupName;
     NCToggleControlPair *_toggleControlPair;
     _UILegibilitySettings *_legibilitySettings;
     double _effectiveButtonHeight;
@@ -24,7 +25,6 @@
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory;
-@property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NCNotificationListCoalescingControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -33,6 +33,7 @@
 @property (nonatomic, getter=_effectiveVerticalPadding) double effectiveVerticalPadding; // @synthesize effectiveVerticalPadding=_effectiveVerticalPadding;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NCToggleControlPair *toggleControlPair; // @synthesize toggleControlPair=_toggleControlPair;
@@ -45,7 +46,6 @@
 - (void)_configureToggleControlPairIfNecessary;
 - (double)_cornerRadius;
 - (struct UIEdgeInsets)_edgeInsets;
-- (id)_effectiveGroupName;
 - (double)_effectiveValue:(double)arg1;
 - (void)_handleClearAll:(id)arg1;
 - (void)_handleClearPrimaryAction:(id)arg1;
@@ -55,21 +55,19 @@
 - (double)_imageDimension;
 - (BOOL)_isClearButtonExpanded;
 - (void)_layoutToggleControlPair;
-- (long long)_materialRecipe;
 - (id)_newClearButton;
 - (id)_newRestackButton;
 - (id)_restackButtonTitle;
 - (BOOL)adjustForContentSizeCategoryChange;
-- (id)containerViewForToggleControlPreviewInteractionPresentedContent:(id)arg1;
+- (id)containerViewForToggleControlClickInteractionPresentedContent:(id)arg1;
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (void)layoutSubviews;
 - (void)resetClearButtonStateAnimated:(BOOL)arg1;
 - (BOOL)shouldReceiveTouchAtPointInWindowSpace:(struct CGPoint)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)toggleControlDidBeginPreviewInteraction:(id)arg1;
-- (void)toggleControlDidDismssPreviewInteractionPresentedContent:(id)arg1;
-- (void)toggleControlDidPresentPreviewInteractionPresentedContent:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)toggleControlDidBeginClickInteraction:(id)arg1;
+- (void)toggleControlDidDismssClickInteractionPresentedContent:(id)arg1;
+- (void)toggleControlDidPresentClickInteractionPresentedContent:(id)arg1;
 
 @end
 

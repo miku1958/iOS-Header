@@ -17,21 +17,22 @@
     unsigned int _serverSearchCompletionSectionIndex;
     int _type;
     struct {
-        unsigned int serverSearchCompletionEntryIndex:1;
-        unsigned int serverSearchCompletionSectionIndex:1;
-        unsigned int type:1;
-    } _has;
+        unsigned int has_serverSearchCompletionEntryIndex:1;
+        unsigned int has_serverSearchCompletionSectionIndex:1;
+        unsigned int has_type:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *displayLines; // @synthesize displayLines=_displayLines;
+@property (strong, nonatomic) NSMutableArray *displayLines;
 @property (nonatomic) BOOL hasServerSearchCompletionEntryIndex;
 @property (nonatomic) BOOL hasServerSearchCompletionSectionIndex;
 @property (nonatomic) BOOL hasType;
-@property (nonatomic) unsigned int serverSearchCompletionEntryIndex; // @synthesize serverSearchCompletionEntryIndex=_serverSearchCompletionEntryIndex;
-@property (nonatomic) unsigned int serverSearchCompletionSectionIndex; // @synthesize serverSearchCompletionSectionIndex=_serverSearchCompletionSectionIndex;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) unsigned int serverSearchCompletionEntryIndex;
+@property (nonatomic) unsigned int serverSearchCompletionSectionIndex;
+@property (nonatomic) int type;
 
 + (Class)displayLineType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (void)addDisplayLine:(id)arg1;
@@ -45,6 +46,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

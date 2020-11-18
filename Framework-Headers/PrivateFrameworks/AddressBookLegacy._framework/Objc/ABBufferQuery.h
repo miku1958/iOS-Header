@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNManagedConfiguration, NSIndexSet;
+@class ABSQLPredicate, CNManagedConfiguration, NSIndexSet;
 
 @interface ABBufferQuery : NSObject
 {
@@ -19,10 +19,12 @@
     BOOL _requestedImageCropRect;
     BOOL _requestedImageThumbnail;
     BOOL _requestedImageFullscreenData;
+    BOOL _requestedSyncImageData;
     BOOL _requestedHasImageData;
     unsigned int _sortOrder;
     void *_addressBook;
     CNManagedConfiguration *_managedConfiguration;
+    ABSQLPredicate *_predicate;
     struct CPSqliteStatement *_statement;
     NSIndexSet *_scopedStoreIdentifiers;
     NSIndexSet *_requestedPropertyIdentifiers;
@@ -37,6 +39,7 @@
 @property (readonly, nonatomic) BOOL needsMultivalueTable; // @synthesize needsMultivalueTable=_needsMultivalueTable;
 @property (readonly, nonatomic) BOOL needsPersonLinkTable; // @synthesize needsPersonLinkTable=_needsPersonLinkTable;
 @property (readonly, nonatomic) BOOL needsPersonTable; // @synthesize needsPersonTable=_needsPersonTable;
+@property (readonly, nonatomic) ABSQLPredicate *predicate; // @synthesize predicate=_predicate;
 @property (nonatomic) struct __CFDictionary *propertyIndices; // @synthesize propertyIndices=_propertyIndices;
 @property (readonly, nonatomic) BOOL requestedHasImageData; // @synthesize requestedHasImageData=_requestedHasImageData;
 @property (readonly, nonatomic) BOOL requestedImageCropRect; // @synthesize requestedImageCropRect=_requestedImageCropRect;
@@ -45,6 +48,7 @@
 @property (readonly, nonatomic) BOOL requestedImageThumbnail; // @synthesize requestedImageThumbnail=_requestedImageThumbnail;
 @property (readonly, nonatomic) NSIndexSet *requestedMultivalueIdentifiers; // @synthesize requestedMultivalueIdentifiers=_requestedMultivalueIdentifiers;
 @property (readonly, nonatomic) NSIndexSet *requestedPropertyIdentifiers; // @synthesize requestedPropertyIdentifiers=_requestedPropertyIdentifiers;
+@property (readonly, nonatomic) BOOL requestedSyncImageData; // @synthesize requestedSyncImageData=_requestedSyncImageData;
 @property (readonly, nonatomic) NSIndexSet *scopedStoreIdentifiers; // @synthesize scopedStoreIdentifiers=_scopedStoreIdentifiers;
 @property (readonly, nonatomic) unsigned int sortOrder; // @synthesize sortOrder=_sortOrder;
 @property (nonatomic) struct CPSqliteStatement *statement; // @synthesize statement=_statement;
@@ -58,7 +62,7 @@
 - (void)bindWhereClause:(id)arg1;
 - (void)bindWithClause:(id)arg1;
 - (void)dealloc;
-- (id)initWithAddressBook:(void *)arg1 whereClause:(id)arg2 whereClauseBindBlock:(CDUnknownBlockType)arg3 requestedProperties:(struct __CFSet *)arg4 includeLinkedContacts:(BOOL)arg5 sortOrder:(unsigned int)arg6 managedConfiguration:(id)arg7;
+- (id)initWithAddressBook:(void *)arg1 predicate:(id)arg2 requestedProperties:(struct __CFSet *)arg3 includeLinkedContacts:(BOOL)arg4 sortOrder:(unsigned int)arg5 managedConfiguration:(id)arg6;
 - (void)prependWithClauseToQueryString:(id)arg1 whereClause:(id)arg2;
 - (id)scopedStoresForManagedConfiguration:(id)arg1;
 

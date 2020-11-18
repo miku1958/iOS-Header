@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 #import <Contacts/CNContactAugmentation-Protocol.h>
-#import <Contacts/CNObjectValidation-Protocol.h>
 #import <Contacts/CNSuggested-Protocol.h>
 #import <Contacts/NSCopying-Protocol.h>
 #import <Contacts/NSItemProviderReading-Protocol.h>
@@ -18,7 +17,7 @@
 @class CNActivityAlert, CNContactKeyVector, NSArray, NSData, NSDate, NSDateComponents, NSDictionary, NSSet, NSString, SGRecordId;
 @protocol CNKeyDescriptor;
 
-@interface CNContact : NSObject <NSItemProviderReading, NSItemProviderWriting, CNSuggested, CNContactAugmentation, CNObjectValidation, NSCopying, NSMutableCopying, NSSecureCoding>
+@interface CNContact : NSObject <NSItemProviderReading, NSItemProviderWriting, CNSuggested, CNContactAugmentation, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_internalIdentifier;
     int _iOSLegacyIdentifier;
@@ -51,6 +50,7 @@
     struct CGRect _cropRect;
     NSData *_thumbnailImageData;
     NSData *_fullscreenImageData;
+    NSData *_syncImageData;
     BOOL _imageDataAvailable;
     NSString *_linkIdentifier;
     BOOL _preferredForName;
@@ -68,6 +68,11 @@
     NSArray *_postalAddresses;
     NSArray *_calendarURIs;
     NSString *_cardDAVUID;
+    NSString *_externalIdentifier;
+    NSData *_externalRepresentation;
+    NSString *_externalModificationTag;
+    NSString *_externalUUID;
+    NSString *_externalImageURI;
     CNActivityAlert *_callAlert;
     CNActivityAlert *_textAlert;
     NSString *_storeIdentifier;
@@ -81,6 +86,12 @@
     NSString *_preferredLikenessSource;
     NSString *_preferredApplePersonaIdentifier;
     NSString *_preferredChannel;
+    NSString *_ISOCountryCode;
+    NSString *_downtimeWhitelist;
+    NSString *_imageType;
+    NSData *_imageHash;
+    NSString *_cropRectID;
+    NSData *_cropRectHash;
 }
 
 @property (readonly, copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
@@ -96,16 +107,22 @@
 @property (readonly, nonatomic) long long contactType;
 @property (readonly, copy, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) struct CGRect cropRect;
+@property (readonly, copy, nonatomic) NSData *cropRectHash; // @synthesize cropRectHash=_cropRectHash;
+@property (readonly, copy, nonatomic) NSString *cropRectID; // @synthesize cropRectID=_cropRectID;
 @property (readonly, copy, nonatomic) NSArray *dates;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSString *departmentName;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long displayNameOrder; // @synthesize displayNameOrder=_displayNameOrder;
+@property (readonly, copy, nonatomic) NSString *downtimeWhitelist;
 @property (readonly, copy, nonatomic) NSArray *emailAddresses;
+@property (readonly, copy, nonatomic) NSString *externalIdentifier;
+@property (readonly, copy, nonatomic) NSString *externalImageURI;
+@property (readonly, copy, nonatomic) NSString *externalModificationTag;
+@property (readonly, copy, nonatomic) NSData *externalRepresentation;
+@property (readonly, copy, nonatomic) NSString *externalUUID;
 @property (readonly, copy, nonatomic) NSString *familyName;
 @property (readonly, copy) NSString *firstName;
 @property (readonly, copy, nonatomic) NSString *fullName;
@@ -115,11 +132,12 @@
 @property (readonly, nonatomic) BOOL hasSuggestedProperties;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int iOSLegacyIdentifier;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSData *imageData;
 @property (readonly, nonatomic) BOOL imageDataAvailable;
+@property (readonly, copy, nonatomic) NSData *imageHash;
+@property (readonly, copy, nonatomic) NSString *imageType;
 @property (readonly, copy, nonatomic) NSArray *instantMessageAddresses;
 @property (readonly, copy, nonatomic) NSString *internalIdentifier; // @synthesize internalIdentifier=_internalIdentifier;
 @property (readonly, copy, nonatomic) NSString *jobTitle;
@@ -173,7 +191,7 @@
 @property (readonly, nonatomic) SGRecordId *suggestionRecordId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSData *syncImageData;
 @property (readonly, copy, nonatomic) CNActivityAlert *textAlert;
 @property (readonly, copy, nonatomic) NSData *thumbnailImageData;
 @property (readonly, nonatomic, getter=isUnified) BOOL unified;
@@ -196,12 +214,14 @@
 + (id)contactWithArchivedData:(id)arg1 error:(id *)arg2;
 + (id)contactWithContact:(id)arg1;
 + (id)contactWithDisplayName:(id)arg1 emailOrPhoneNumber:(id)arg2;
++ (id)contactWithDisplayName:(id)arg1 handleStrings:(id)arg2;
 + (id)contactWithIdentifier:(id)arg1;
 + (id)contactWithVCardData:(id)arg1 error:(id *)arg2;
 + (id)descriptorForAllComparatorKeys;
 + (id)descriptorForKeyDescriptors:(id)arg1 description:(id)arg2;
 + (id)descriptorForRequiredKeysForSearchableItem;
 + (id)descriptorWithKeyDescriptors:(id)arg1 description:(id)arg2;
++ (void)freezeIfInstancetypeIsImmutable:(id)arg1;
 + (id)identifierProvider;
 + (id)localizedStringForKey:(id)arg1;
 + (id)makeContactAndMergeValuesFromAvailableKeysInContact:(id)arg1;
@@ -209,9 +229,11 @@
 + (id)makeIdentifierString;
 + (id)newContactWithPropertyKeys:(id)arg1 withValuesFromContact:(id)arg2;
 + (id)objectWithItemProviderData:(id)arg1 typeIdentifier:(id)arg2 error:(id *)arg3;
++ (id)os_log;
 + (id)predicateForAllContacts;
 + (id)predicateForContactMatchingEKParticipantWithName:(id)arg1 emailAddress:(id)arg2 URL:(id)arg3 predicateDescription:(id)arg4;
 + (id)predicateForContactMatchingEmailAddress:(id)arg1;
++ (id)predicateForContactMatchingLabeledValueIdentifier:(id)arg1;
 + (id)predicateForContactMatchingMapString:(id)arg1;
 + (id)predicateForContactMatchingPhoneNumber:(id)arg1;
 + (id)predicateForContactMatchingPhoneNumberWithDigits:(id)arg1 countryCode:(id)arg2;
@@ -221,12 +243,16 @@
 + (id)predicateForContactsLinkedToContact:(id)arg1;
 + (id)predicateForContactsLinkedToContactWithIdentifier:(id)arg1;
 + (id)predicateForContactsMatchingEmailAddress:(id)arg1;
++ (id)predicateForContactsMatchingEmailAddress:(id)arg1 groupIdentifiers:(id)arg2 limitToOneResult:(BOOL)arg3;
 + (id)predicateForContactsMatchingFullTextSearch:(id)arg1 containerIdentifiers:(id)arg2 groupIdentifiers:(id)arg3;
++ (id)predicateForContactsMatchingHandleStrings:(id)arg1;
++ (id)predicateForContactsMatchingHandleStrings:(id)arg1 inContainersWithIdentifiers:(id)arg2;
 + (id)predicateForContactsMatchingInstantMessageAddress:(id)arg1;
 + (id)predicateForContactsMatchingName:(id)arg1;
 + (id)predicateForContactsMatchingName:(id)arg1 options:(unsigned long long)arg2;
 + (id)predicateForContactsMatchingPhoneNumber:(id)arg1;
 + (id)predicateForContactsMatchingPhoneNumber:(id)arg1 prefixHint:(id)arg2;
++ (id)predicateForContactsMatchingPhoneNumber:(id)arg1 prefixHint:(id)arg2 groupIdentifiers:(id)arg3 limitToOneResult:(BOOL)arg4;
 + (id)predicateForContactsMatchingPostalAddress:(id)arg1;
 + (id)predicateForContactsMatchingPreferredChannel:(id)arg1 limitOne:(BOOL)arg2;
 + (id)predicateForContactsMatchingSocialProfile:(id)arg1;
@@ -241,6 +267,7 @@
 + (id)predicateForPreferredNameInRange:(struct _NSRange)arg1;
 + (id)predicateForSuggestionIdentifier:(unsigned long long)arg1;
 + (CDUnknownBlockType)preferredImageComparator;
++ (id)previewURLForContact:(id)arg1;
 + (int)publicABPropertyIDFromContactPropertyKey:(id)arg1;
 + (id)readableTypeIdentifiersForItemProvider;
 + (id)storeInfoFromCoder:(id)arg1 storeIdentifier:(id)arg2 key:(id)arg3;
@@ -255,8 +282,10 @@
 - (BOOL)areAllPropertiesButContactIdentifierEqualToContact:(id)arg1;
 - (BOOL)areAllPropertiesEqualToContactIgnoringIdentifiers:(id)arg1;
 - (BOOL)areKeysAvailable:(id)arg1;
+- (id)areKeysAvailable:(id)arg1 useIgnorableKeys:(BOOL)arg2 findMissingKeys:(BOOL)arg3;
 - (void)assertKeyIsAvailable:(id)arg1;
 - (void)assertKeysAreAvailable:(id)arg1;
+- (id)copyWithDistinctIdentifier;
 - (id)copyWithNoSuggestion;
 - (id)copyWithPropertyKeys:(id)arg1;
 - (id)copyWithSelfAsSnapshot;
@@ -275,7 +304,6 @@
 - (BOOL)isKeyAvailable:(id)arg1;
 - (BOOL)isProperty:(id)arg1 equalToOtherIgnoreIdentifiers:(id)arg2;
 - (BOOL)isUnifiedWithContactWithIdentifier:(id)arg1;
-- (BOOL)isValid:(id *)arg1;
 - (id)keyVector;
 - (id)linkedContactsFromStoreWithIdentifier:(id)arg1;
 - (id)linkedIdentifierMap;

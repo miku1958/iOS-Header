@@ -8,7 +8,7 @@
 
 #import <AttentionAwareness/AWRemoteClient-Protocol.h>
 
-@class AWAttentionAwarenessConfiguration, AWAttentionEvent, AWScheduler, NSArray, NSString, NSXPCConnection;
+@class AWAttentionAwarenessConfiguration, AWAttentionEvent, AWScheduler, NSArray, NSSet, NSString, NSXPCConnection;
 @protocol AWFrameworkClient, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,54 +18,58 @@ __attribute__((visibility("hidden")))
     AWScheduler *_scheduler;
     id<AWFrameworkClient> _proxy;
     NSXPCConnection *_connection;
-    unsigned long long _lastPositiveEventTime;
-    unsigned long long _lastPositiveNonSampledEventTime;
-    unsigned long long _pollingStartTime;
-    unsigned long long _pollingDeadline;
-    BOOL _sentPollInitialized;
-    BOOL _lastAttentionState;
-    AWAttentionEvent *_lastEvent;
     unsigned long long _tagIndex;
+    unsigned long long _notificationMask;
     unsigned long long _eventMask;
-    BOOL _samplingClient;
-    int _supportedEventsNotify;
-    AWAttentionAwarenessConfiguration *_lastConfig;
-    double _lastNegativeEventTimeoutValueSec;
+    unsigned long long _attentionLostEventMask;
+    BOOL _sampleWhileAbsent;
     NSArray *_attentionLostTimeoutsSec;
+    NSSet *_allowedHIDEventsForRemoteEvent;
+    int _clientIndex;
+    CDStruct_264b1ab3 *_clientState;
+    AWAttentionEvent *_lastEvent;
+    AWAttentionAwarenessConfiguration *_lastConfig;
     BOOL _invalid;
-    BOOL _unitTestSampling;
     NSString *_identifier;
     unsigned long long _samplingInterval;
     unsigned long long _samplingDelay;
 }
 
+@property (readonly, nonatomic) int clientIndex; // @synthesize clientIndex=_clientIndex;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) BOOL invalid; // @synthesize invalid=_invalid;
+@property (readonly, nonatomic) BOOL invalid; // @synthesize invalid=_invalid;
 @property (readonly, nonatomic) unsigned long long samplingDelay; // @synthesize samplingDelay=_samplingDelay;
 @property (readonly, nonatomic) unsigned long long samplingInterval; // @synthesize samplingInterval=_samplingInterval;
-@property (nonatomic) BOOL unitTestSampling; // @synthesize unitTestSampling=_unitTestSampling;
 
 - (void).cxx_destruct;
-- (void)_reevaluateConfig;
+- (unsigned long long)_activeEventMask;
+- (BOOL)_interestedInHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 metadata:(CDUnion_4b9e79fd *)arg3;
+- (BOOL)_isSamplingClient;
 - (void)_resetAttentionLostTimer;
-- (void)_setClientConfig:(id)arg1 shouldReset:(BOOL)arg2;
+- (BOOL)_setClientConfig:(id)arg1 shouldReset:(BOOL)arg2 error:(id *)arg3;
 - (id)connection;
 - (void)deliverEvent:(id)arg1;
+- (void)deliverNotification:(unsigned long long)arg1;
 - (void)deliverPollEventType:(unsigned long long)arg1 event:(id)arg2;
 - (id)description;
 - (void)getLastEvent:(CDUnknownBlockType)arg1;
-- (id)initWithProxy:(id)arg1 connection:(id)arg2 clientConfig:(id)arg3 error:(id *)arg4;
+- (id)initWithProxy:(id)arg1 connection:(id)arg2 clientConfig:(id)arg3 clientIndex:(int)arg4 scheduler:(id)arg5 error:(id *)arg6;
+- (void)initializeClientState;
 - (void)invalidate;
+- (void)invalidateWithHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)nextAttentionLostTime:(BOOL *)arg1;
-- (unsigned long long)nextSampleTimeForSampler:(id)arg1;
-- (unsigned long long)nextTimerForTime:(unsigned long long)arg1 attentionSampler:(id)arg2;
+- (unsigned long long)nextSampleTime;
+- (unsigned long long)nextTimerForTime:(unsigned long long)arg1;
 - (void)notifyEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
+- (void)notifyEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2 metadata:(CDUnion_4b9e79fd *)arg3;
+- (void)notifyHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3;
+- (void)pingWithReply:(CDUnknownBlockType)arg1;
 - (void)pollWithTimeout:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)resetAttentionLostTimer;
-- (void)setClientConfig:(id)arg1 shouldReset:(BOOL)arg2;
-- (void)updateDeadlinesForTime:(unsigned long long)arg1 attentionSampler:(id)arg2;
+- (void)reevaluateConfig;
+- (void)resetAttentionLostTimerWithReply:(CDUnknownBlockType)arg1;
+- (void)setClientConfig:(id)arg1 shouldReset:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)updateDeadlinesForTime:(unsigned long long)arg1;
 - (void)updateEventTimesForMask:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
-- (void)useUnitTestSampling:(BOOL)arg1;
 
 @end
 

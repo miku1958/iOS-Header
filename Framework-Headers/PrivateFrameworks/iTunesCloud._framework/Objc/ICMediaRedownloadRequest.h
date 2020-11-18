@@ -14,6 +14,7 @@
     ICMediaRedownloadResponse *_redownloadResponse;
     ICStoreURLRequest *_storeURLRequest;
     BOOL _playbackRequest;
+    BOOL _streamingRental;
     BOOL _usePrioritizedURLSession;
     BOOL _includeKeybagSyncData;
     BOOL _includeSubscriptionKeybagSyncData;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSDictionary *redownloadParameters; // @synthesize redownloadParameters=_redownloadParameters;
 @property (copy, nonatomic) ICStoreRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property (copy, nonatomic) NSString *requestURLBagKey; // @synthesize requestURLBagKey=_requestURLBagKey;
+@property (nonatomic, getter=isStreamingRental) BOOL streamingRental; // @synthesize streamingRental=_streamingRental;
 @property (nonatomic) BOOL usePrioritizedURLSession; // @synthesize usePrioritizedURLSession=_usePrioritizedURLSession;
 
 - (void).cxx_destruct;

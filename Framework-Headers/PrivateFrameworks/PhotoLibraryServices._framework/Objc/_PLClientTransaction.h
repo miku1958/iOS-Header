@@ -22,13 +22,14 @@
 }
 
 @property (copy) NSString *changeScopesDescriptionSnapshot; // @synthesize changeScopesDescriptionSnapshot=_changeScopesDescriptionSnapshot;
-@property (nonatomic) NSObject<OS_dispatch_semaphore> *fdResourceSemaphore; // @synthesize fdResourceSemaphore=_fdResourceSemaphore;
+@property (weak, nonatomic) NSObject<OS_dispatch_semaphore> *fdResourceSemaphore; // @synthesize fdResourceSemaphore=_fdResourceSemaphore;
 @property (nonatomic) int fileDescriptor; // @synthesize fileDescriptor=_fileDescriptor;
 @property (strong, nonatomic) NSString *path; // @synthesize path=_path;
 @property (strong, nonatomic) id processAssertion; // @synthesize processAssertion=_processAssertion;
 
 + (id)_fdIsolationQueue;
 + (id)_fdResourceSemaphore;
+- (void).cxx_destruct;
 - (void)_updateChangeScopesDescriptionSnapshot;
 - (void)abortTransaction;
 - (void)addChangeScopes:(id)arg1;
@@ -38,7 +39,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)generateChangeScopesDescription;
-- (id)init;
+- (id)initWithPathManager:(id)arg1;
 - (BOOL)isClientTransaction;
 - (void)persistTransactionScopes:(id)arg1;
 - (void)popChangeScopesBatch;

@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSArray *inputFaceObservations;
 @property (readonly) Class superclass;
 
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputFacesThatNeedTorsoprints:(id)arg4;
 - (long long)dependencyProcessingOrdinality;

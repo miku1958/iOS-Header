@@ -6,7 +6,7 @@
 
 #import <AVFoundation/AVAssetTrackInspector.h>
 
-@class AVWeakReference, NSMutableArray, NSObject;
+@class AVDispatchOnce, AVWeakReference, NSMutableArray, NSObject;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 {
     struct OpaqueFigAsset *_figAsset;
     struct OpaqueFigAssetTrack *_figAssetTrack;
-    long long _copyFigFormatReaderOnce;
+    AVDispatchOnce *_copyFigFormatReaderOnce;
     struct OpaqueFigFormatReader *_figFormatReader;
-    long long _copyFigTrackReaderOnce;
+    AVDispatchOnce *_copyFigTrackReaderOnce;
     struct OpaqueFigTrackReader *_figTrackReader;
     struct OpaqueFigSimpleMutex *_loadingMutex;
     NSObject<OS_dispatch_queue> *_completionHandlerQueue;
@@ -49,10 +49,11 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)dimensions;
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
-- (void)finalize;
 - (id)formatDescriptions;
+- (BOOL)hasAudibleBooksContent;
 - (BOOL)hasProtectedContent;
 - (unsigned long long)hash;
+- (BOOL)isAudibleBooksContentAuthorized;
 - (BOOL)isDecodable;
 - (BOOL)isEnabled;
 - (BOOL)isEqual:(id)arg1;
@@ -60,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPlayable;
 - (BOOL)isSelfContained;
 - (id)languageCode;
+- (CDStruct_1b6d18a9)latentBaseDecodeTimeStampOfFirstTrackFragment;
 - (long long)layer;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)loudnessInfo;
@@ -71,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)naturalSize;
 - (int)naturalTimeScale;
 - (float)nominalFrameRate;
+- (float)peakDataRate;
 - (int)playabilityValidationResult;
 - (struct CGAffineTransform)preferredTransform;
 - (float)preferredVolume;

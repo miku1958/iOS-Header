@@ -11,6 +11,7 @@
 @interface ASDManagedApplicationRequestOptions : ASDRequestOptions
 {
     BOOL _skipDownloads;
+    NSNumber *_accountIdentifier;
     NSString *_bundleIdentifier;
     NSString *_bundleVersion;
     NSNumber *_externalVersionIdentifier;
@@ -18,6 +19,7 @@
     long long _requestType;
 }
 
+@property (copy, nonatomic) NSNumber *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (readonly, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;

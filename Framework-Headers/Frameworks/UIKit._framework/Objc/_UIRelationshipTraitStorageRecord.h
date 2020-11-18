@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTraitCollection:(id)arg1 addedObjects:(id)arg2 removedObjects:(id)arg3;

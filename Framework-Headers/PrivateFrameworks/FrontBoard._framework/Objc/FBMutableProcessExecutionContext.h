@@ -6,7 +6,7 @@
 
 #import <FrontBoard/FBProcessExecutionContext.h>
 
-@class NSArray, NSDictionary, NSURL;
+@class NSArray, NSDictionary, NSURL, RBSProcessIdentity;
 @protocol FBProcessWatchdogProviding;
 
 @interface FBMutableProcessExecutionContext : FBProcessExecutionContext
@@ -17,13 +17,13 @@
 @property (nonatomic) BOOL checkForLeaks; // @dynamic checkForLeaks;
 @property (nonatomic) BOOL disableASLR; // @dynamic disableASLR;
 @property (copy, nonatomic) NSDictionary *environment; // @dynamic environment;
+@property (copy, nonatomic) RBSProcessIdentity *identity; // @dynamic identity;
 @property (nonatomic) long long launchIntent; // @dynamic launchIntent;
 @property (strong, nonatomic) NSURL *standardErrorURL; // @dynamic standardErrorURL;
 @property (strong, nonatomic) NSURL *standardOutputURL; // @dynamic standardOutputURL;
 @property (nonatomic) BOOL waitForDebugger; // @dynamic waitForDebugger;
 @property (nonatomic) double watchdogExtension; // @dynamic watchdogExtension;
 @property (strong, nonatomic) id<FBProcessWatchdogProviding> watchdogProvider; // @dynamic watchdogProvider;
-@property (nonatomic) double watchdogScaleFactor; // @dynamic watchdogScaleFactor;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

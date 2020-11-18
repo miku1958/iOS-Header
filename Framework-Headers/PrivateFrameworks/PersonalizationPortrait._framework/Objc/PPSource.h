@@ -9,10 +9,11 @@
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSString, PPSourceMetadata;
 
 @interface PPSource : _PASZonedObject <NSCopying, NSSecureCoding>
 {
+    PPSourceMetadata *_metadata;
     NSString *_bundleId;
     NSString *_groupId;
     NSString *_documentId;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic) NSString *documentId; // @synthesize documentId=_documentId;
 @property (readonly, nonatomic) NSString *groupId; // @synthesize groupId=_groupId;
+@property (readonly, nonatomic) PPSourceMetadata *metadata; // @synthesize metadata=_metadata;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -30,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4;
+- (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4 metadata:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSource:(id)arg1;

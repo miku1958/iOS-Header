@@ -15,11 +15,11 @@
     MFRecentComposeRecipientGroup *_group;
 }
 
-@property (nonatomic) id<MFGroupDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MFGroupDetailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) MFRecentComposeRecipientGroup *group; // @synthesize group=_group;
 
+- (void).cxx_destruct;
 - (void)_removeButtonTapped:(id)arg1;
-- (void)dealloc;
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

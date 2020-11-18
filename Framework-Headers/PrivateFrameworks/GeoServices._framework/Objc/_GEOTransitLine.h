@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitLine-Protocol.h>
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
 @class GEOMapItemIdentifier, GEOPBTransitLine, GEOStyleAttributes, NSArray, NSString;
 @protocol GEOTransitArtworkDataSource, GEOTransitSystem;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitLine : NSObject <GEOTransitLine>
+@interface _GEOTransitLine : NSObject <GEOTransitLine, NSSecureCoding>
 {
     GEOPBTransitLine *_line;
     id<GEOTransitSystem> _system;
+    CDStruct_2c43369c _locationHint;
 }
 
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> alternateArtwork;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasLineColorString;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
+@property (readonly, nonatomic) BOOL isBus;
 @property (readonly, nonatomic) NSString *lineColorString;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> modeArtwork;
 @property (readonly, nonatomic) unsigned long long muid;
@@ -37,8 +40,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<GEOTransitSystem> system;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)initWithLine:(id)arg1 system:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithLine:(id)arg1 system:(id)arg2 locationHint:(CDStruct_c3b9c2ee)arg3;
 
 @end
 

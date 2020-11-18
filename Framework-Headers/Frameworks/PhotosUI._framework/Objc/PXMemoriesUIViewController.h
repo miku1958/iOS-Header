@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
+#import <PhotosUICore/PXAssetCollectionActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXMemoriesUITileSourceDelegate-Protocol.h>
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
@@ -16,14 +16,13 @@
 #import <PhotosUICore/PXTilingControllerZoomAnimationCoordinatorDelegate-Protocol.h>
 #import <PhotosUICore/PXUIViewControllerZoomTransitionEndPoint-Protocol.h>
 #import <PhotosUICore/PXUserInterfaceFeatureViewController-Protocol.h>
+#import <PhotosUICore/UIContextMenuInteractionDelegate-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <PhotosUICore/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class NSString, PXBasicUIViewTileAnimator, PXMemoriesDataSourceManager, PXMemoriesFeedViewControllerHelper, PXMemoriesSpec, PXMemoriesSpecManager, PXMemoriesUITileSource, PXSectionedLayoutEngine, PXSectionedObjectReference, PXTilingController, PXTouchingUIGestureRecognizer, PXUIScrollViewController, PXUITapGestureRecognizer, UILongPressGestureRecognizer;
-@protocol UIViewControllerPreviewing;
+@class NSString, PXBasicUIViewTileAnimator, PXMemoriesDataSourceManager, PXMemoriesFeedViewControllerHelper, PXMemoriesSpec, PXMemoriesSpecManager, PXMemoriesUITileSource, PXSectionedLayoutEngine, PXSectionedObjectReference, PXTilingController, PXTouchingUIGestureRecognizer, PXUIScrollViewController, PXUITapGestureRecognizer;
 
-@interface PXMemoriesUIViewController : UIViewController <PXChangeObserver, PXActionPerformerDelegate, PXSectionedDataSourceManagerObserver, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PXUIViewControllerZoomTransitionEndPoint, PXTilingControllerZoomAnimationCoordinatorDelegate, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, UIViewControllerPreviewingDelegate, PXMemoriesUITileSourceDelegate, PXUserInterfaceFeatureViewController>
+@interface PXMemoriesUIViewController : UIViewController <UIContextMenuInteractionDelegate, PXChangeObserver, PXAssetCollectionActionPerformerDelegate, PXSectionedDataSourceManagerObserver, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PXUIViewControllerZoomTransitionEndPoint, PXTilingControllerZoomAnimationCoordinatorDelegate, PXTilingControllerScrollDelegate, PXTilingControllerTransitionDelegate, PXScrollViewControllerObserver, PXMemoriesUITileSourceDelegate, PXUserInterfaceFeatureViewController>
 {
     struct {
         BOOL layoutEngine;
@@ -44,9 +43,7 @@
     PXMemoriesSpec *__spec;
     unsigned long long __memoriesStyle;
     PXUITapGestureRecognizer *__tapRecognizer;
-    UILongPressGestureRecognizer *__longPressRecognizer;
     PXTouchingUIGestureRecognizer *__touchRecognizer;
-    id<UIViewControllerPreviewing> __previewingItem;
     unsigned long long _pageIndex;
     PXTilingController *_tilingController;
     PXUIScrollViewController *_scrollViewController;
@@ -58,10 +55,8 @@
 @property (readonly, nonatomic) PXMemoriesFeedViewControllerHelper *_helper; // @synthesize _helper=__helper;
 @property (strong, nonatomic, setter=_setHighlightedMemoryReference:) PXSectionedObjectReference *_highlightedMemoryReference; // @synthesize _highlightedMemoryReference=__highlightedMemoryReference;
 @property (readonly, nonatomic) PXSectionedLayoutEngine *_layoutEngine; // @synthesize _layoutEngine=__layoutEngine;
-@property (strong, nonatomic, setter=_setLongPressRecognizer:) UILongPressGestureRecognizer *_longPressRecognizer; // @synthesize _longPressRecognizer=__longPressRecognizer;
 @property (readonly, nonatomic) unsigned long long _memoriesStyle; // @synthesize _memoriesStyle=__memoriesStyle;
 @property (nonatomic, setter=_setPerformNextTransitionWithoutAnimation:) BOOL _performNextTransitionWithoutAnimation; // @synthesize _performNextTransitionWithoutAnimation=__performNextTransitionWithoutAnimation;
-@property (strong, nonatomic, setter=_setPreviewingItem:) id<UIViewControllerPreviewing> _previewingItem; // @synthesize _previewingItem=__previewingItem;
 @property (strong, nonatomic, setter=_setSpec:) PXMemoriesSpec *_spec; // @synthesize _spec=__spec;
 @property (readonly, nonatomic) PXMemoriesSpecManager *_specManager; // @synthesize _specManager=__specManager;
 @property (readonly, nonatomic) PXUITapGestureRecognizer *_tapRecognizer; // @synthesize _tapRecognizer=__tapRecognizer;
@@ -85,7 +80,6 @@
 - (void).cxx_destruct;
 - (void)_configureLayout:(id)arg1;
 - (id)_createNewLayout;
-- (void)_handleScrollViewLongPress:(id)arg1;
 - (void)_handleScrollViewTap:(id)arg1;
 - (void)_handleTouch:(id)arg1;
 - (struct PXSimpleIndexPath)_indexPathForMemoryAtPoint:(struct CGPoint)arg1;
@@ -93,9 +87,10 @@
 - (void)_invalidateLayout;
 - (struct PXSimpleIndexPath)_memoryIndexPathForViewController:(id)arg1;
 - (id)_memoryObjectReferenceForPhotosDetailsContext:(id)arg1;
+- (id)_memoryTileViewForLocation:(struct CGPoint)arg1;
 - (BOOL)_needsUpdate;
 - (id)_photosDetailsContextForIndexPath:(struct PXSimpleIndexPath)arg1;
-- (void)_presentActionsForMemoryReference:(id)arg1;
+- (id)_previewActionMenusForIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)_reconfigureTargetLayout;
 - (void)_saveAnchor;
 - (void)_setNeedsUpdate;
@@ -103,11 +98,12 @@
 - (void)_updateIfNeeded;
 - (void)_updateLayoutEngineIfNeeded;
 - (void)_updateLayoutIfNeeded;
-- (void)_updateLongPressGestureRecognizer;
-- (void)_updatePreviewing;
 - (void)_updateScrollViewControllerContentInset;
 - (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
 - (id)createNewLayoutGenerator;
 - (void)datasourceManagerDidChange;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
@@ -121,10 +117,9 @@
 - (id)preferredFocusEnvironments;
 - (void)prepareForInteractiveTransition:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)px_endPointForTransition:(id)arg1;
 - (id)regionOfInterestForTransition:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;

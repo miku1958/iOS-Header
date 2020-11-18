@@ -32,7 +32,6 @@
 - (void)retrieveMovieForFeature:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(BOOL)arg3 useLocalAssets:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

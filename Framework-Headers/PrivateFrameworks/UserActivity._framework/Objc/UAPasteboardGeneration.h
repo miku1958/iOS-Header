@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet;
+@class NSArray, NSMutableDictionary, NSSet;
 
 @interface UAPasteboardGeneration : NSObject
 {
     unsigned long long _generation;
     NSSet *_allTypes;
     NSArray *_items;
+    NSMutableDictionary *_typePaths;
 }
 
-@property (copy, nonatomic) NSSet *allTypes; // @synthesize allTypes=_allTypes;
-@property (readonly, nonatomic) unsigned long long generation; // @synthesize generation=_generation;
-@property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
+@property (copy) NSSet *allTypes; // @synthesize allTypes=_allTypes;
+@property (readonly) unsigned long long generation; // @synthesize generation=_generation;
+@property (copy) NSArray *items; // @synthesize items=_items;
+@property (strong) NSMutableDictionary *typePaths; // @synthesize typePaths=_typePaths;
 
 - (void).cxx_destruct;
 - (BOOL)addItem:(id)arg1;
 - (BOOL)addType:(id)arg1 toItemAtIndex:(unsigned long long)arg2;
+- (void)fetchTypeURL:(id)arg1;
+- (id)getTypePaths;
 - (id)initWithGeneration:(unsigned long long)arg1;
 
 @end

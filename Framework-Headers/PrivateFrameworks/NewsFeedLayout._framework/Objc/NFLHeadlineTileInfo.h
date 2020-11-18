@@ -32,6 +32,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *namespacedIdentifier; // @synthesize namespacedIdentifier=_namespacedIdentifier;
 @property (readonly, nonatomic) BOOL pageable;
+@property (readonly, nonatomic, getter=isSelectable) BOOL selectable;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long tileInfoType;
 @property (readonly, nonatomic) NSArray *underlyingFeedElements;

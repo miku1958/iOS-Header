@@ -4,26 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BackBoardServices/BKSHIDEventDescriptor.h>
+#import <BackBoardServices/BKSHIDEventUsagePairDescriptor.h>
 
-@interface BKSHIDEventKeyboardDescriptor : BKSHIDEventDescriptor
+@interface BKSHIDEventKeyboardDescriptor : BKSHIDEventUsagePairDescriptor
 {
-    unsigned int _page;
-    unsigned int _usage;
 }
 
-@property (readonly) unsigned int page; // @synthesize page=_page;
-@property (readonly) unsigned int usage; // @synthesize usage=_usage;
-
 + (id)descriptorWithPage:(unsigned int)arg1 usage:(unsigned int)arg2;
-+ (BOOL)supportsSecureCoding;
-- (id)_initWithPage:(unsigned int)arg1 usage:(unsigned int)arg2 eventType:(unsigned int)arg3;
-- (BOOL)describes:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
-- (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

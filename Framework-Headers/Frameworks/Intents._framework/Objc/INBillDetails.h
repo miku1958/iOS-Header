@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INBillPayee, INCurrencyAmount, NSDateComponents;
+@class INBillPayee, INCurrencyAmount, NSDateComponents, NSString;
 
-@interface INBillDetails : NSObject <NSCopying, NSSecureCoding>
+@interface INBillDetails : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
     INBillPayee *_billPayee;
     INCurrencyAmount *_amountDue;
@@ -26,20 +27,24 @@
 @property (copy, nonatomic) INCurrencyAmount *amountDue; // @synthesize amountDue=_amountDue;
 @property (copy, nonatomic) INBillPayee *billPayee; // @synthesize billPayee=_billPayee;
 @property (nonatomic) long long billType; // @synthesize billType=_billType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDateComponents *dueDate; // @synthesize dueDate=_dueDate;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) INCurrencyAmount *lateFee; // @synthesize lateFee=_lateFee;
 @property (copy, nonatomic) INCurrencyAmount *minimumDue; // @synthesize minimumDue=_minimumDue;
 @property (copy, nonatomic) NSDateComponents *paymentDate; // @synthesize paymentDate=_paymentDate;
 @property (nonatomic) long long paymentStatus; // @synthesize paymentStatus=_paymentStatus;
+@property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithBillType:(long long)arg1 paymentStatus:(long long)arg2 billPayee:(id)arg3 amountDue:(id)arg4 minimumDue:(id)arg5 lateFee:(id)arg6 dueDate:(id)arg7 paymentDate:(id)arg8;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

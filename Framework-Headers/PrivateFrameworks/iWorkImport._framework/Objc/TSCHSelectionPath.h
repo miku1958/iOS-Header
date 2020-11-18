@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)selectionPathWithPathType:(id)arg1 arguments:(id)arg2;
 + (id)selectionPathWithPathType:(id)arg1 arguments:(id)arg2 subSelection:(id)arg3;
 + (id)selectionPathWithType:(id)arg1 name:(id)arg2 arguments:(id)arg3;
++ (id)seriesEditModeSelectionPath;
 + (id)seriesSelectionPathWithSeriesIndex:(unsigned long long)arg1;
 + (id)seriesSymbolsSelectionPathWithSeriesIndex:(unsigned long long)arg1;
 + (id)seriesValueLabelSelectionPathWithSeriesIndex:(unsigned long long)arg1;

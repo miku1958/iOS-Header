@@ -15,7 +15,6 @@
 - (oneway void)getDataForPerformanceRequest:(void (^)(NSData *, NSError *))arg1;
 - (oneway void)iCloudAccountNameWithCompletion:(void (^)(NSString *))arg1;
 - (oneway void)isIn5XXGracePeriodWithCompletion:(void (^)(BOOL))arg1;
-- (oneway void)refreshLocationSnapshotForHandle:(FMFHandle *)arg1 width:(double)arg2 andHeight:(double)arg3 withCompletion:(void (^)(BOOL))arg4;
 - (oneway void)sendIDSPacket:(NSString *)arg1 toHandle:(FMFHandle *)arg2;
 - (oneway void)sessionHandleReport:(void (^)(NSDictionary *))arg1;
 - (oneway void)setSessionClientBundleId:(NSString *)arg1;

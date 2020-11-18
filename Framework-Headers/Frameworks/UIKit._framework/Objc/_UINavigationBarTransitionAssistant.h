@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_animationIDs;
     BOOL _interruptable;
     BOOL _interactive;
+    BOOL _needsLifetimeExtended;
     BOOL _cancelledTransition;
     BOOL _cancelledCleanUp;
     BOOL _shouldHideBackButtonDuringTransition;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL interactive; // @synthesize interactive=_interactive;
 @property (readonly, nonatomic) BOOL interruptable; // @synthesize interruptable=_interruptable;
 @property (readonly, weak, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
+@property (nonatomic) BOOL needsLifetimeExtended; // @synthesize needsLifetimeExtended=_needsLifetimeExtended;
 @property (readonly, nonatomic) BOOL shouldAnimateAlongside;
 @property (readonly, nonatomic) BOOL shouldCrossfade;
 @property (nonatomic) BOOL shouldHideBackButtonDuringTransition; // @synthesize shouldHideBackButtonDuringTransition=_shouldHideBackButtonDuringTransition;

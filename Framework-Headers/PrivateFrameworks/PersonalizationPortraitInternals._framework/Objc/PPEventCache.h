@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class _PASLock;
+@class PPEventStorage, _PASLock;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PPEventCache : NSObject
 {
-    CDUnknownBlockType _backfiller;
+    PPEventStorage *_storage;
     _PASLock *_data;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_memoryPressureSource;
@@ -20,13 +20,14 @@
 
 - (void).cxx_destruct;
 - (void)_handleMemoryPressureStatus;
-- (id)cachedEventHighlightForEKEvent:(id)arg1 rankingOptions:(int)arg2;
+- (void)_refreshCachedEvent:(id)arg1;
+- (id)cachedEventHighlightForEvent:(id)arg1 rankingOptions:(int)arg2;
 - (void)evictAllEventsNotInRange:(struct _NSRange)arg1;
 - (void)evictAllEventsNotInRanges:(id)arg1;
 - (id)evictEventWithIdentifier:(id)arg1;
-- (id)initWithBackfiller:(CDUnknownBlockType)arg1;
+- (id)initWithEventStorage:(id)arg1;
 - (id)objectForRange:(struct _NSRange)arg1;
-- (void)refreshCachedEvent:(id)arg1;
+- (id)refreshCacheWithChanges:(id)arg1 changesContainDeletion:(BOOL *)arg2;
 - (void)removeAllObjects;
 - (void)setEventHighlight:(id)arg1;
 - (void)setExtraSecondsToBackfill:(unsigned long long)arg1;

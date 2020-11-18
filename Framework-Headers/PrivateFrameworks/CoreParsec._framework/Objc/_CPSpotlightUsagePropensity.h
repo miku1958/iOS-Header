@@ -13,42 +13,39 @@
 
 @interface _CPSpotlightUsagePropensity : PBCodable <_CPSpotlightUsagePropensity, NSSecureCoding>
 {
-    int _configuredLookbackTimeInDays;
     float _appLaunch;
-    float _onDevicePersonalData;
-    float _parsec;
+    float _onDeviceAddressBookData;
+    float _onDeviceOtherPersonalData;
     float _punchout;
     float _thirdPartyInAppContent;
+    float _parsec;
+    float _querySuggestion;
     float _other;
     int _totalEngagements;
-    int _totalSessions;
-    long long _collectionStartTimestamp;
-    long long _collectionEndTimestamp;
+    float _siriSuggestions;
 }
 
 @property (nonatomic) float appLaunch; // @synthesize appLaunch=_appLaunch;
-@property (nonatomic) long long collectionEndTimestamp; // @synthesize collectionEndTimestamp=_collectionEndTimestamp;
-@property (nonatomic) long long collectionStartTimestamp; // @synthesize collectionStartTimestamp=_collectionStartTimestamp;
-@property (nonatomic) int configuredLookbackTimeInDays; // @synthesize configuredLookbackTimeInDays=_configuredLookbackTimeInDays;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (nonatomic) float onDevicePersonalData; // @synthesize onDevicePersonalData=_onDevicePersonalData;
+@property (nonatomic) float onDeviceAddressBookData; // @synthesize onDeviceAddressBookData=_onDeviceAddressBookData;
+@property (nonatomic) float onDeviceOtherPersonalData; // @synthesize onDeviceOtherPersonalData=_onDeviceOtherPersonalData;
 @property (nonatomic) float other; // @synthesize other=_other;
 @property (nonatomic) float parsec; // @synthesize parsec=_parsec;
 @property (nonatomic) float punchout; // @synthesize punchout=_punchout;
+@property (nonatomic) float querySuggestion; // @synthesize querySuggestion=_querySuggestion;
+@property (nonatomic) float siriSuggestions; // @synthesize siriSuggestions=_siriSuggestions;
 @property (readonly) Class superclass;
 @property (nonatomic) float thirdPartyInAppContent; // @synthesize thirdPartyInAppContent=_thirdPartyInAppContent;
 @property (nonatomic) int totalEngagements; // @synthesize totalEngagements=_totalEngagements;
-@property (nonatomic) int totalSessions; // @synthesize totalSessions=_totalSessions;
 
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

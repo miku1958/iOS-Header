@@ -34,6 +34,7 @@
 - (id)emojiAppendCandidates:(id)arg1;
 - (id)emojiReplacementCandidates:(id)arg1;
 - (id)emojiReplacementCandidatesForKeyboardState:(id)arg1;
+- (id)emojiReplacementCandidatesForText:(id)arg1;
 - (id)enumerateForEmojiCandidatesIn:(id)arg1 forEmojiLocaleData:(struct __EmojiLocaleDataWrapper *)arg2 asReplacementCandidate:(BOOL)arg3;
 - (id)extractTokensForEmojiComputation:(id)arg1;
 - (id)generateEmojiAdornmentCandidates:(id)arg1;

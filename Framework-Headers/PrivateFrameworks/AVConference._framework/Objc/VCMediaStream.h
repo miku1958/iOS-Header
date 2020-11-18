@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     double _decryptionErrorStartTime;
     unsigned int _localSSRC;
     unsigned int _transportSessionID;
+    int _clientPID;
     VCWeakObjectHolder *_notificationDelegate;
     VCWeakObjectHolder *_rtcpReportProvider;
     AVCStatisticsCollector *_statisticsCollector;
@@ -49,6 +50,9 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType _vcMediaCallback;
     struct tagVCMediaQueue *_mediaQueue;
     VCMasterKeyIndex *_lastReceivedMKI;
+    CDUnknownFunctionPointerType _notificationHandler;
+    CDUnknownFunctionPointerType _packetEventHandler;
+    long long _streamToken;
 }
 
 @property (strong, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;
@@ -70,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) id<RTCPReportProvider> rtcpReportProvider;
 @property (readonly, nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
+@property (readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 @property (readonly) Class superclass;
 
 + (BOOL)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
@@ -77,11 +82,12 @@ __attribute__((visibility("hidden")))
 - (void)checkForDecryptionTimeout;
 - (void)checkRTCPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)checkRTPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
-- (void)collectRxChannelMetrics:(CDStruct_1c8e0384 *)arg1;
-- (void)collectRxChannelMetrics:(CDStruct_1c8e0384 *)arg1 interval:(float)arg2;
-- (void)collectTxChannelMetrics:(CDStruct_1c8e0384 *)arg1;
+- (void)cleanupNWInfo:(CDStruct_cb9f2fd6 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (void)collectRxChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
+- (void)collectTxChannelMetrics:(CDStruct_3ab08b48 *)arg1;
 - (double)computeNextTimoutWithEnabledTime:(double)arg1 timeoutInterval:(double)arg2 lastReceivedPacketTime:(double)arg3 currentTime:(double)arg4 lastTimeoutReportTime:(double)arg5;
-- (id)createTransport;
+- (id)createTransportWithSSRC:(unsigned int)arg1;
 - (void)dealloc;
 - (void)decryptionStatusChanged:(BOOL)arg1;
 - (BOOL)generateReceptionReportList:(struct _RTCP_RECEPTION_REPORT *)arg1 reportCount:(char *)arg2;
@@ -89,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)getRTCPReportNTPTimeMiddle32ForReportId:(unsigned char)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (BOOL)handleEncryptionInfoChange:(id)arg1;
+- (int)handleMediaCallbackNotification:(int)arg1 inData:(void *)arg2 outData:(void *)arg3;
 - (id)init;
 - (id)initWithTransportSessionID:(unsigned int)arg1;
 - (id)initWithTransportSessionID:(unsigned int)arg1 localSSRC:(unsigned int)arg2;
@@ -127,12 +134,16 @@ __attribute__((visibility("hidden")))
 - (BOOL)setStreamConfig:(id)arg1 withError:(id *)arg2;
 - (void)setStreamDirection:(long long)arg1;
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
+- (void)setupCallbacksWithNWConnectionMonitor:(struct tagVCNWConnectionMonitor *)arg1;
 - (void)setupMediaStream;
+- (BOOL)setupNWConnectionWithClientID:(unsigned char [16])arg1;
 - (id)setupRTPForIDS;
 - (id)setupRTPWithIDSDestination:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithIPInfo:(id)arg1 error:(id *)arg2;
 - (id)setupRTPWithLocalParticipantInfo:(id)arg1 error:(id *)arg2;
-- (id)setupRTPWithSockets:(id)arg1 error:(id *)arg2;
+- (id)setupRTPWithNWConnectionID:(id)arg1 error:(id *)arg2;
+- (void)setupRTPWithRTPSocket:(int)arg1 RTCPSocket:(int)arg2;
+- (id)setupRTPWithSocketDictionary:(id)arg1 error:(id *)arg2;
 - (void)start;
 - (void)startRTCPSendHeartbeat;
 - (void)startTimeoutHeartbeat;

@@ -6,26 +6,28 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, _INPBHomeAttribute, _INPBHomeContent, _INPBHomeEntity, _INPBIntentMetadata;
+@class NSArray, _INPBDateTimeRange, _INPBHomeContent, _INPBHomeFilter, _INPBHomeUserTask, _INPBIntentMetadata;
 
 @protocol _INPBControlHomeIntent <NSObject>
 
-@property (strong, nonatomic) _INPBHomeAttribute *attribute;
 @property (copy, nonatomic) NSArray *contents;
 @property (readonly, nonatomic) unsigned long long contentsCount;
-@property (copy, nonatomic) NSArray *entities;
-@property (readonly, nonatomic) unsigned long long entitiesCount;
-@property (readonly, nonatomic) BOOL hasAttribute;
+@property (copy, nonatomic) NSArray *filters;
+@property (readonly, nonatomic) unsigned long long filtersCount;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (readonly, nonatomic) BOOL hasTime;
+@property (readonly, nonatomic) BOOL hasUserTask;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
+@property (strong, nonatomic) _INPBDateTimeRange *time;
+@property (strong, nonatomic) _INPBHomeUserTask *userTask;
 
 + (Class)contentsType;
-+ (Class)entitiesType;
++ (Class)filtersType;
 - (void)addContents:(_INPBHomeContent *)arg1;
-- (void)addEntities:(_INPBHomeEntity *)arg1;
+- (void)addFilters:(_INPBHomeFilter *)arg1;
 - (void)clearContents;
-- (void)clearEntities;
+- (void)clearFilters;
 - (_INPBHomeContent *)contentsAtIndex:(unsigned long long)arg1;
-- (_INPBHomeEntity *)entitiesAtIndex:(unsigned long long)arg1;
+- (_INPBHomeFilter *)filtersAtIndex:(unsigned long long)arg1;
 @end
 

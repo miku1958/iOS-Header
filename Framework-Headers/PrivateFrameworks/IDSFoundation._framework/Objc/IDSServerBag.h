@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
+@class IDSRateLimiter, IMConnectionMonitor, IMRemoteURLConnection, NSArray, NSData, NSDate, NSDictionary, NSMutableURLRequest, NSNumber, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface IDSServerBag : NSObject
 {
     BOOL _allowSelfSignedCertificates;
     BOOL _allowUnsignedBags;
+    BOOL _hashAlgorithm;
     int _trustStatus;
     int _token;
     IMConnectionMonitor *_connectionMonitor;
@@ -32,6 +33,9 @@
     NSData *_serverSignature;
     NSArray *_serverCerts;
     NSData *_serverGivenBag;
+    CDUnknownBlockType _remoteURLCreationBlock;
+    CDUnknownBlockType _connectionMonitorCreationBlock;
+    IDSRateLimiter *_rateLimiter;
 }
 
 @property (strong, setter=_setBag:) NSDictionary *_bag; // @synthesize _bag;
@@ -50,11 +54,15 @@
 @property BOOL allowUnsignedBags; // @synthesize allowUnsignedBags=_allowUnsignedBags;
 @property (strong) NSString *apsEnvironmentName; // @synthesize apsEnvironmentName=_apsEnvironmentName;
 @property (strong) NSURL *bagURL; // @synthesize bagURL=_bagURL;
+@property (copy) CDUnknownBlockType connectionMonitorCreationBlock; // @synthesize connectionMonitorCreationBlock=_connectionMonitorCreationBlock;
 @property unsigned long long hasPairedDeviceState; // @synthesize hasPairedDeviceState=_hasPairedDeviceState;
+@property BOOL hashAlgorithm; // @synthesize hashAlgorithm=_hashAlgorithm;
 @property (readonly) BOOL isInDebilitatedMode;
 @property (readonly) BOOL isLoaded;
 @property (readonly) BOOL isLoading;
 @property (readonly) BOOL isServerAvailable;
+@property (strong, nonatomic) IDSRateLimiter *rateLimiter; // @synthesize rateLimiter=_rateLimiter;
+@property (copy) CDUnknownBlockType remoteURLCreationBlock; // @synthesize remoteURLCreationBlock=_remoteURLCreationBlock;
 @property (strong) NSArray *serverCerts; // @synthesize serverCerts=_serverCerts;
 @property (strong) NSData *serverGivenBag; // @synthesize serverGivenBag=_serverGivenBag;
 @property (strong) NSData *serverSignature; // @synthesize serverSignature=_serverSignature;
@@ -70,11 +78,13 @@
 - (void)__saveCacheToPrefs;
 - (BOOL)_allowInvalid;
 - (id)_bagDefaultsDomain;
+- (unsigned long long)_bagDomain;
 - (void)_bagExternallyReloaded;
 - (void)_cancelCurrentLoad;
 - (void)_clearCache;
 - (void)_generateURLRequest;
-- (id)_initWithURL:(id)arg1 apsEnvironmentName:(id)arg2 allowSelfSignedCertificates:(BOOL)arg3 allowUnsignedBags:(BOOL)arg4;
+- (id)_initWithURL:(id)arg1 apsEnvironmentName:(id)arg2 allowSelfSignedCertificates:(BOOL)arg3 allowUnsignedBags:(BOOL)arg4 hashAlgorithm:(BOOL)arg5;
+- (id)_initWithURL:(id)arg1 apsEnvironmentName:(id)arg2 allowSelfSignedCertificates:(BOOL)arg3 allowUnsignedBags:(BOOL)arg4 hashAlgorithm:(BOOL)arg5 remoteURLCreationBlock:(CDUnknownBlockType)arg6 connectionMonitorCreationBlock:(CDUnknownBlockType)arg7;
 - (void)_invalidate;
 - (void)_loadFromCache;
 - (BOOL)_loadFromDictionary:(id)arg1 returningError:(id *)arg2;
@@ -88,7 +98,7 @@
 - (void)forceBagLoad;
 - (id)objectForKey:(id)arg1;
 - (void)startBagLoad;
-- (BOOL)trustRefFromCertificates:(id)arg1 trustRef:(struct __SecTrust **)arg2;
+- (BOOL)trustRefFromCertificates:(id)arg1 canReportFailure:(BOOL)arg2 trustRef:(struct __SecTrust **)arg3;
 - (id)urlWithKey:(id)arg1;
 
 @end

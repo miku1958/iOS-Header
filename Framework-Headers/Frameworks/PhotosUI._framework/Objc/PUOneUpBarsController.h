@@ -146,9 +146,6 @@
 - (long long)_locationForBarButtonItemCollection:(id)arg1;
 - (long long)_locationForBarButtonItemWithIdentifier:(long long)arg1;
 - (id)_newBarButtonItemWithIdentifier:(long long)arg1 location:(long long)arg2;
-- (id)_newBarButtonItemWithImageName:(id)arg1 offset:(struct UIOffset)arg2 landscapeImagePhoneName:(id)arg3 offset:(struct UIOffset)arg4 location:(long long)arg5;
-- (id)_newBarButtonWithSystemItem:(long long)arg1 offset:(struct UIOffset)arg2 landscapeImagePhoneOffset:(struct UIOffset)arg3;
-- (id)_newCustomButtonItem;
 - (void)_peformSuggestionRevertAction;
 - (void)_peformSuggestionSaveAction;
 - (void)_performAddToLibraryAction;
@@ -156,10 +153,12 @@
 - (void)_performAllPhotosAction;
 - (void)_performAssetExplorerReviewScreenActionType:(unsigned long long)arg1;
 - (void)_performCancelAction;
+- (void)_performChangesWithCurrentVideoPlayer:(CDUnknownBlockType)arg1;
 - (void)_performDuplicateActivityWithAssetsByAssetCollection:(id)arg1;
 - (void)_performEditAction;
 - (void)_performHideActivityWithAssetsByAssetCollection:(id)arg1;
 - (void)_performLikeAction:(BOOL)arg1;
+- (void)_performMuteAction:(BOOL)arg1;
 - (void)_performPlayPauseAction:(long long)arg1;
 - (void)_performRestoreAction;
 - (void)_performReviewAction;
@@ -171,6 +170,7 @@
 - (void)_performTrashAction;
 - (void)_resetIdentifierIndexes;
 - (long long)_scrubberType;
+- (void)_toggleCTM;
 - (void)_toolbarViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_updateChromeVisibilityIfNeeded;
 - (void)_updateCommentsTitleIfNeeded;

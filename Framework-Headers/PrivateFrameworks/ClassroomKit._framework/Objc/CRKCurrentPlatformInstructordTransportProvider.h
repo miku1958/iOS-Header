@@ -8,14 +8,16 @@
 
 #import <ClassroomKit/CRKTransportProviding-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 @protocol CRKTransportProviding;
 
 @interface CRKCurrentPlatformInstructordTransportProvider : NSObject <CRKTransportProviding>
 {
     id<CRKTransportProviding> mBaseProvider;
+    NSURL *_classroomAppBundleURL;
 }
 
+@property (strong, nonatomic) NSURL *classroomAppBundleURL; // @synthesize classroomAppBundleURL=_classroomAppBundleURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,6 +27,7 @@
 - (void)fetchTransportWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithStudentDaemonProxy:(id)arg1;
+- (id)initWithStudentDaemonProxy:(id)arg1 classroomAppBundleURL:(id)arg2;
 - (id)makeProviderForCurrentPlatformWithStudentDaemonProxy:(id)arg1;
 
 @end

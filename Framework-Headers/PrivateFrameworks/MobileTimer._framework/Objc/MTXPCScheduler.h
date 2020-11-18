@@ -20,7 +20,10 @@
 + (id)xpcSchedulerWithEvent:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithEvent:(id)arg1;
+- (void)scheduleActivityWithCriteria:(id)arg1 activityHandler:(CDUnknownBlockType)arg2;
+- (void)scheduleActivityWithCriteria:(id)arg1 activityHandler:(CDUnknownBlockType)arg2 performImmediately:(BOOL)arg3;
 - (void)scheduleTimerForSeconds:(double)arg1;
+- (void)unscheduleActivity;
 - (void)unscheduleTimer;
 
 @end

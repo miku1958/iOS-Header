@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double indexBarExtentFromEdge;
 @property (nonatomic) BOOL insetsContentViewsToSafeArea;
 @property (nonatomic) BOOL layoutMarginsFollowReadableWidth; // @dynamic layoutMarginsFollowReadableWidth;
-@property (nonatomic) double sectionBorderWidth;
 @property (nonatomic) int sectionLocation; // @dynamic sectionLocation;
 @property (copy, nonatomic) UIColor *separatorColor; // @dynamic separatorColor;
 @property (strong, nonatomic) UIVisualEffect *separatorEffect;

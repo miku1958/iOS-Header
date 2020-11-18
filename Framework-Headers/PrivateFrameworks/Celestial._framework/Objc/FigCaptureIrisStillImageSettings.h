@@ -14,12 +14,18 @@
     FigCaptureMovieFileRecordingSettings *_movieRecordingSettings;
     NSURL *_movieURLForOriginalImage;
     NSArray *_movieLevelMetadataForOriginalImage;
+    NSURL *_spatialOverCaptureMovieURLForOriginalImage;
+    NSArray *_spatialOverCaptureMovieLevelMetadataForOriginalImage;
+    struct CGSize _nonDestructiveCropSize;
 }
 
 @property (copy, nonatomic) NSArray *movieLevelMetadataForOriginalImage; // @synthesize movieLevelMetadataForOriginalImage=_movieLevelMetadataForOriginalImage;
 @property (nonatomic) int movieMode; // @synthesize movieMode=_movieMode;
 @property (copy, nonatomic) FigCaptureMovieFileRecordingSettings *movieRecordingSettings; // @synthesize movieRecordingSettings=_movieRecordingSettings;
 @property (copy, nonatomic) NSURL *movieURLForOriginalImage; // @synthesize movieURLForOriginalImage=_movieURLForOriginalImage;
+@property (nonatomic) struct CGSize nonDestructiveCropSize; // @synthesize nonDestructiveCropSize=_nonDestructiveCropSize;
+@property (copy, nonatomic) NSArray *spatialOverCaptureMovieLevelMetadataForOriginalImage; // @synthesize spatialOverCaptureMovieLevelMetadataForOriginalImage=_spatialOverCaptureMovieLevelMetadataForOriginalImage;
+@property (copy, nonatomic) NSURL *spatialOverCaptureMovieURLForOriginalImage; // @synthesize spatialOverCaptureMovieURLForOriginalImage=_spatialOverCaptureMovieURLForOriginalImage;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

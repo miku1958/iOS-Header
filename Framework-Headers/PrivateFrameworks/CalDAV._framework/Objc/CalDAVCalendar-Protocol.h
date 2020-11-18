@@ -6,7 +6,7 @@
 
 #import <CalDAV/NSObject-Protocol.h>
 
-@class CoreDAVAction, NSArray, NSDictionary, NSError, NSSet, NSString, NSTimeZone, NSURL;
+@class CalDAVRecurrenceSplitAction, CoreDAVAction, NSArray, NSDictionary, NSError, NSSet, NSString, NSTimeZone, NSURL;
 @protocol CalDAVPrincipal;
 
 @protocol CalDAVCalendar <NSObject>
@@ -37,6 +37,8 @@
 @property (nonatomic) BOOL isSubscribed;
 @property (nonatomic) BOOL isTaskContainer;
 @property (readonly, nonatomic) NSArray *itemsToReportAsJunk;
+@property (nonatomic) long long maxAttendees;
+@property (readonly, nonatomic) BOOL needsIsAffectingAvailabilityUpdate;
 @property (readonly, nonatomic) BOOL needsPublishUpdate;
 @property (nonatomic) BOOL needsResync;
 @property (strong, nonatomic) NSString *notes;
@@ -48,6 +50,7 @@
 @property (readonly, nonatomic) id<CalDAVPrincipal> principal;
 @property (strong, nonatomic) NSURL *publishURL;
 @property (strong, nonatomic) NSString *pushKey;
+@property (readonly, nonatomic) NSArray *recurrenceSplitActions;
 @property (readonly, nonatomic) NSArray *shareeActions;
 @property (strong, nonatomic) NSSet *sharees;
 @property (nonatomic) int sharingStatus;
@@ -73,6 +76,9 @@
 - (void)deleteAction:(CoreDAVAction *)arg1 completedWithError:(NSError *)arg2;
 - (void)prepareMergeSyncActionsWithCompletionBlock:(void (^)(id<CalDAVCalendar>))arg1;
 - (void)putAction:(CoreDAVAction *)arg1 completedWithError:(NSError *)arg2;
+- (void)recurrenceSplitAction:(CalDAVRecurrenceSplitAction *)arg1 completedWithUpdatedETag:(NSString *)arg2 updatedScheduleTag:(NSString *)arg3 createdURL:(NSURL *)arg4 createdETag:(NSString *)arg5 createdScheduleTag:(NSString *)arg6;
+- (void)recurrenceSplitAction:(CalDAVRecurrenceSplitAction *)arg1 failedWithError:(NSError *)arg2;
+- (void)recurrenceSplitActionsCompletedWithError:(NSError *)arg1;
 - (void)syncDidFinishWithError:(NSError *)arg1;
 @end
 

@@ -10,9 +10,11 @@
 {
     BOOL _treatLivePhotoAsStill;
     BOOL _dontAllowRAW;
+    BOOL _downloadAllAssetResources;
 }
 
 @property (nonatomic) BOOL dontAllowRAW; // @synthesize dontAllowRAW=_dontAllowRAW;
+@property (nonatomic) BOOL downloadAllAssetResources; // @synthesize downloadAllAssetResources=_downloadAllAssetResources;
 @property (nonatomic) BOOL treatLivePhotoAsStill; // @synthesize treatLivePhotoAsStill=_treatLivePhotoAsStill;
 
 - (id)description;

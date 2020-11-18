@@ -8,32 +8,51 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDMapsIdentifier, NSMutableArray, NSString, PBUnknownFields;
+@class GEOPDMapsIdentifier, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTransitConnection : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _muid;
     NSString *_entityNameString;
     GEOPDMapsIdentifier *_mapsId;
+    unsigned long long _muid;
     NSMutableArray *_transitLabels;
-    CDStruct_e99c65f7 _has;
+    struct {
+        unsigned int has_muid:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_entityNameString:1;
+        unsigned int read_mapsId:1;
+        unsigned int read_transitLabels:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_entityNameString:1;
+        unsigned int wrote_mapsId:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_transitLabels:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *entityNameString; // @synthesize entityNameString=_entityNameString;
+@property (strong, nonatomic) NSString *entityNameString;
 @property (readonly, nonatomic) BOOL hasEntityNameString;
 @property (readonly, nonatomic) BOOL hasMapsId;
 @property (nonatomic) BOOL hasMuid;
-@property (strong, nonatomic) GEOPDMapsIdentifier *mapsId; // @synthesize mapsId=_mapsId;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (strong, nonatomic) NSMutableArray *transitLabels; // @synthesize transitLabels=_transitLabels;
+@property (strong, nonatomic) GEOPDMapsIdentifier *mapsId;
+@property (nonatomic) unsigned long long muid;
+@property (strong, nonatomic) NSMutableArray *transitLabels;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)transitLabelType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsTransitLabel:(id)arg1;
+- (void)_readEntityNameString;
+- (void)_readMapsId;
+- (void)_readTransitLabels;
 - (void)addTransitLabel:(id)arg1;
 - (void)clearTransitLabels;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transitLabelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)transitLabelsCount;

@@ -15,15 +15,18 @@
 }
 
 @property (strong, nonatomic) NSArray *calendarUUIDsExcludedFromNotifications;
+@property (strong, nonatomic) NSNumber *dayViewFirstVisibleSecond;
 @property (strong, nonatomic) NSNumber *dayViewHourScale;
 @property (nonatomic) unsigned long long debugOccurrenceViewIconOverload;
-@property (strong, nonatomic) NSArray *deselectedCalendarSyncHashes;
+@property (readonly, nonatomic) NSArray *deselectedCalendarSyncHashes;
 @property (nonatomic) BOOL disableContinuity;
 @property (nonatomic) BOOL disableTodayPushes;
 @property (nonatomic) BOOL drawDebugViewColors; // @synthesize drawDebugViewColors=_drawDebugViewColors;
 @property (nonatomic) BOOL enableAvatars;
+@property (nonatomic) BOOL enableMultiwindowAsserts;
 @property (nonatomic) BOOL eventAutocompleteEnabled;
 @property (nonatomic) BOOL hideInlineDayViewInEventDetails;
+@property (nonatomic) BOOL highColorCarplayEnabled;
 @property (nonatomic) BOOL immediateAlarmCreation;
 @property (nonatomic) BOOL largeListViewDisclosingEventDetails;
 @property (strong, nonatomic) NSNumber *lastSuspendTime;
@@ -43,6 +46,7 @@
 @property (nonatomic) BOOL showWeekNumbers;
 @property (nonatomic) BOOL showWindowDebugButton;
 @property (strong, nonatomic) NSDate *simulatedCurrentDate;
+@property (strong, nonatomic) NSString *sourceIdentifierForSelectedIdentity;
 @property (nonatomic) BOOL swipeToDeleteEnabled;
 @property (strong, nonatomic) NSString *upNextColor;
 @property (nonatomic) double upNextDuration;
@@ -53,6 +57,7 @@
 @property (nonatomic) BOOL viewedTimeZoneAutomatic;
 @property (strong, nonatomic) NSNumber *weekStart;
 @property (strong, nonatomic) NSNumber *weekViewHourScale;
+@property (nonatomic) BOOL weekViewStartsOnToday;
 
 + (id)sharedPreferences;
 - (void).cxx_destruct;

@@ -13,7 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsAlertContainer;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdateAccessibilityElements;
 - (double)_axCaseBatteryLevel;

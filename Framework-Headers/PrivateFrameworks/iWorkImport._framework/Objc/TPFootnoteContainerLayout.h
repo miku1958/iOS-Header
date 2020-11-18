@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (id)computeLayoutGeometry;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (BOOL)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (id)initWithFootnoteMarkProvider:(id)arg1 vertical:(BOOL)arg2 lineWidth:(double)arg3 maxFootnoteBlockHeight:(double)arg4 footnoteSpacing:(double)arg5;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;

@@ -40,6 +40,7 @@
 - (id)description;
 - (id)displayItemForIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
+- (id)overriddenStyleAttributesForData:(id)arg1 identifier:(id)arg2;
 - (void)prepareAnimation:(id)arg1 forDisplayItem:(id)arg2;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (void)setNeedsUpdate;

@@ -6,12 +6,11 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAudioPlaybackRequest;
+@class AFAccessibilityState, AFAudioPlaybackRequest;
 
 @protocol AFClientConfigurationMutating <NSObject>
+- (void)setAccessibilityState:(AFAccessibilityState *)arg1;
 - (void)setDeviceRingerSwitchState:(long long)arg1;
-- (void)setIsAccessibilityVibrationDisabled:(BOOL)arg1;
-- (void)setIsAccessibilityVoiceOverTouchEnabled:(BOOL)arg1;
 - (void)setIsDeviceInCarDNDMode:(BOOL)arg1;
 - (void)setIsDeviceInSetupFlow:(BOOL)arg1;
 - (void)setIsDeviceInStarkMode:(BOOL)arg1;

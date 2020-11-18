@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface PUPhotoSmilesCommentCell : UITableViewCell
 {
-    BOOL _showUserLikes;
     BOOL _isVideo;
     BOOL _usesCompactSeparators;
     UILabel *_smileContentLabel;
@@ -20,7 +19,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
-@property (nonatomic) BOOL showUserLikes; // @synthesize showUserLikes=_showUserLikes;
 @property (readonly, strong, nonatomic) UILabel *smileContentLabel; // @synthesize smileContentLabel=_smileContentLabel;
 @property (readonly, strong, nonatomic) UIView *styledSeparatorView; // @synthesize styledSeparatorView=_styledSeparatorView;
 @property (copy, nonatomic) NSOrderedSet *userLikes; // @synthesize userLikes=_userLikes;

@@ -64,7 +64,6 @@
 - (void)_adjustWiFiAutoAssociationLocked;
 - (void)_adjustWoWState;
 - (void)_createDynamicStore;
-- (void)_createWiFiManager;
 - (BOOL)_isPrimaryCellular;
 - (void)_updateIsWiFiAssociatedAsync:(BOOL)arg1;
 - (void)_updateIsWiFiEnabled;

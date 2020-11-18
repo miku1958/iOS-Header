@@ -6,6 +6,8 @@
 
 #import <IMSharedUI/NSObject-Protocol.h>
 
+@class UITraitCollection;
+
 @protocol IMTypingIndicatorLayerProtocol <NSObject>
 
 @property (nonatomic) BOOL hasDarkBackground;
@@ -16,5 +18,8 @@
 - (void)startShrinkAnimationWithCompletionBlock:(void (^)(void))arg1;
 - (void)stopAnimation;
 - (void)stopPulseAnimation;
+
+@optional
+- (void)setTraitCollection:(UITraitCollection *)arg1;
 @end
 

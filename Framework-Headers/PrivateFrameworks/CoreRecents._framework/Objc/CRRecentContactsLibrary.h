@@ -16,12 +16,14 @@
 }
 
 + (struct NSObject *)_recentEventForGroupMembers:(id)arg1 displayName:(id)arg2 date:(id)arg3 weight:(id)arg4 metadata:(id)arg5 options:(unsigned long long)arg6;
++ (id)apiLogDescriptionOfEvent:(id)arg1;
 + (id)defaultInstance;
 + (struct NSObject *)explicitGroupEventForGroupMembers:(id)arg1 displayName:(id)arg2 date:(id)arg3 metadata:(id)arg4 options:(unsigned long long)arg5;
 + (CDUnknownBlockType)frecencyComparator;
 + (CDUnknownBlockType)frecencyComparatorForSearch:(id)arg1 preferredKinds:(id)arg2 sendingAddress:(id)arg3;
 + (CDUnknownBlockType)frecencyComparatorForSearch:(id)arg1 preferredKinds:(id)arg2 sendingAddress:(id)arg3 queryOptions:(unsigned long long)arg4;
 + (struct NSObject *)groupMemberWithAddress:(id)arg1 displayName:(id)arg2 kind:(id)arg3;
++ (id)os_log;
 + (CDUnknownBlockType)rankedFrecencyComparatorWithPreferredSources:(id)arg1;
 + (struct NSObject *)recentEventForAddress:(id)arg1 displayName:(id)arg2 kind:(id)arg3 date:(id)arg4;
 + (id)recentEventForAddress:(id)arg1 displayName:(id)arg2 kind:(id)arg3 date:(id)arg4 metadata:(id)arg5;
@@ -50,6 +52,7 @@
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 source:(id)arg4 userInitiated:(BOOL)arg5;
 - (void)recordContactEvents:(id)arg1 recentsDomain:(id)arg2 sendingAddress:(id)arg3 userInitiated:(BOOL)arg4;
 - (BOOL)removeRecentContacts:(id)arg1 error:(out id *)arg2;
+- (BOOL)removeRecentContactsWithRecentIDs:(id)arg1 recentsDomain:(id)arg2 error:(out id *)arg3;
 - (void)requestRecentsUsingPredicate:(id)arg1 inDomains:(id)arg2 comparator:(CDUnknownBlockType)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setImplicitGroupThreshold:(unsigned long long)arg1 forDomain:(id)arg2;
 - (void)start;

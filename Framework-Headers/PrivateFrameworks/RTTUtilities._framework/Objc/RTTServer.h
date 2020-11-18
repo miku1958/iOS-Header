@@ -6,7 +6,7 @@
 
 #import <HearingCore/HCServer.h>
 
-@class NSLock, NSMutableDictionary, NSObject;
+@class BKSProcessAssertion, NSLock, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface RTTServer : HCServer
@@ -15,13 +15,17 @@
     NSMutableDictionary *_databaseResponseBlocks;
     NSObject<OS_dispatch_queue> *_commonRequestQueue;
     CDUnknownBlockType _actionCompletionBlock;
+    BKSProcessAssertion *_assertion;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType actionCompletionBlock; // @synthesize actionCompletionBlock=_actionCompletionBlock;
+@property (strong, nonatomic) BKSProcessAssertion *assertion; // @synthesize assertion=_assertion;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_managerAXPIDState:(BOOL)arg1;
+- (void)_registerForServerSettingsUpdates;
+- (void)_takeStackshot;
 - (void)cancelCallPromptDisplay;
 - (BOOL)contactIsTTYContact:(id)arg1;
 - (void)dealloc;
@@ -31,6 +35,7 @@
 - (void)handleMessageError:(id)arg1 destructive:(BOOL)arg2;
 - (void)handleMessageWithPayload:(id)arg1 forIdentifier:(unsigned long long)arg2;
 - (id)init;
+- (void)primeRTTServer;
 - (void)registerForRemoteUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
 - (void)registerForServiceUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;
 - (void)registerForUpdates:(CDUnknownBlockType)arg1 forCallUID:(id)arg2;

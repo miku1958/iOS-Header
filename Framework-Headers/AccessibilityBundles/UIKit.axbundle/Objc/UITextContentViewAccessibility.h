@@ -15,6 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityAttributedTextRetrieval;
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
+- (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityCapturedImages;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;

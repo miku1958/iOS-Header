@@ -12,7 +12,5 @@
 
 @property (readonly, nonatomic) double angle; // @dynamic angle;
 
-+ (id)typeString;
-
 @end
 

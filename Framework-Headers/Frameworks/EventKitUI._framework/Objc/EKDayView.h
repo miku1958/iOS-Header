@@ -41,6 +41,8 @@
     BOOL _pinching;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
+    long long _targetSizeClass;
+    BOOL _layoutWhenJoiningViewHierarchy;
     NSObject<OS_dispatch_queue> *_reloadQueue;
     BOOL _allowsOccurrenceSelection;
     BOOL _alignsMidnightToTop;
@@ -94,7 +96,7 @@
 @property (nonatomic) BOOL isNowVisible; // @synthesize isNowVisible=_isNowVisible;
 @property (readonly, nonatomic) double leftContentInset;
 @property (nonatomic) struct CGPoint normalizedContentOffset;
-@property (nonatomic) int occurrenceBackgroundStyle;
+@property (nonatomic) long long occurrenceBackgroundStyle;
 @property (strong, nonatomic) UIColor *occurrenceLocationColor;
 @property (strong, nonatomic) UIColor *occurrenceTextBackgroundColor;
 @property (strong, nonatomic) UIColor *occurrenceTimeColor;
@@ -127,7 +129,7 @@
 - (double)_adjustSecondBackwardForDSTHole:(double)arg1;
 - (double)_adjustSecondForwardForDSTHole:(double)arg1;
 - (void)_clearVerticalGridExtensionImageCache;
-- (void)_createAllDayView;
+- (void)_createAllDayViewWithSizeClass:(long long)arg1;
 - (void)_dayViewPinched:(id)arg1;
 - (void)_disposeAllDayView;
 - (void)_doubleTap:(id)arg1;
@@ -138,12 +140,15 @@
 - (void)_notifyDelegateOfFinishedScrollingToOccurrence;
 - (struct CGPoint)_pinchDistanceForGestureRecognizer:(id)arg1;
 - (double)_positionOfSecond:(int)arg1;
+- (double)_scrollRate;
 - (void)_scrollToSecond:(int)arg1 animated:(BOOL)arg2 whenFinished:(CDUnknownBlockType)arg3;
 - (void)_scrollToSecond:(int)arg1 offset:(double)arg2 animated:(BOOL)arg3 whenFinished:(CDUnknownBlockType)arg4;
 - (void)_scrollViewWillBeginDragging:(id)arg1;
+- (double)_scrollZoneTop;
 - (struct CGRect)_scrollerRect;
 - (int)_secondAtPosition:(double)arg1;
 - (BOOL)_showingAllDaySection;
+- (long long)_sizeClass;
 - (void)_startMarkerTimer;
 - (void)_timeViewTapped:(id)arg1;
 - (void)_updateContentForSizeCategoryChange:(id)arg1;
@@ -158,6 +163,7 @@
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (BOOL)containsOccurrences;
 - (struct CGRect)currentTimeRectInView:(id)arg1;
+- (struct CGRect)currentTimeRectInView:(id)arg1 requireThumb:(BOOL)arg2;
 - (double)dateAtPoint:(struct CGPoint)arg1 isAllDay:(BOOL *)arg2;
 - (double)dateAtPoint:(struct CGPoint)arg1 isAllDay:(BOOL *)arg2 requireAllDayRegionInsistence:(BOOL)arg3;
 - (void)dayAllDayView:(id)arg1 occurrenceViewClicked:(id)arg2;
@@ -166,15 +172,17 @@
 - (void)dayViewContent:(id)arg1 didSelectEvent:(id)arg2;
 - (void)dayViewContent:(id)arg1 didTapInEmptySpaceOnDay:(double)arg2;
 - (void)dayViewContent:(id)arg1 didTapPinnedOccurrence:(id)arg2;
+- (void)dayViewContentDidCompleteAsyncLoadAndLayout:(id)arg1;
 - (void)dealloc;
 - (BOOL)eventOccursOnThisDay:(id)arg1;
 - (void)firstVisibleSecondChanged;
 - (void)highlightHour:(double)arg1;
 - (double)highlightedHour;
-- (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2 displayDate:(id)arg3 backgroundColor:(id)arg4 opaque:(BOOL)arg5 scrollbarShowsInside:(BOOL)arg6;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2 orientation:(long long)arg3 displayDate:(id)arg4 backgroundColor:(id)arg5 opaque:(BOOL)arg6 scrollbarShowsInside:(BOOL)arg7;
 - (void)insertViewForEvent:(id)arg1 belowViewForOtherEvent:(id)arg2;
 - (BOOL)isAllDayLabelHighlighted;
 - (void)layoutSubviews;
+- (void)loadData:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (double)maximumHourScale;
 - (double)minimumHourScale;
 - (void)occurrencePressed:(id)arg1 onDay:(double)arg2;
@@ -185,9 +193,9 @@
 - (void)relayoutExistingTimedOccurrences;
 - (void)reloadData;
 - (void)reloadDataSynchronously;
-- (void)reloadDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeFromSuperview;
 - (void)resetLastSelectedOccurrencePoint;
+- (void)resetOccurrenceViewColors;
 - (double)scaledHourHeight;
 - (void)scrollEventsIntoViewAnimated:(BOOL)arg1;
 - (void)scrollToDate:(id)arg1 animated:(BOOL)arg2 whenFinished:(CDUnknownBlockType)arg3;
@@ -211,6 +219,7 @@
 - (void)updateMarkerPosition;
 - (id)verticalScrollView;
 - (void)willMoveToSuperview:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 - (double)yPositionPerhapsMatchingAllDayOccurrence:(id)arg1;
 
 @end

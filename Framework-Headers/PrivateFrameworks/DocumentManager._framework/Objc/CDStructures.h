@@ -21,8 +21,8 @@ struct CGRect {
 };
 
 struct CGSize {
-    double width;
-    double height;
+    double _field1;
+    double _field2;
 };
 
 struct _NSRange {
@@ -33,13 +33,4 @@ struct _NSRange {
 struct _UIResilientRemoteViewContainerViewController {
     Class _field1;
 };
-
-#pragma mark Typedef'd Structures
-
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    long long _field4;
-} CDStruct_7c65fc50;
 

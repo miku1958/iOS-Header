@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) double amplitude; // @dynamic amplitude;
 
-+ (id)typeString;
 - (Class)handlerClassForComponent:(id)arg1;
 
 @end

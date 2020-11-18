@@ -9,6 +9,7 @@
 @class NSString, SKUIViewElement;
 @protocol SKUIIndexBarEntryListControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUIIndexBarEntryListController : NSObject
 {
     BOOL _needsRootTargetViewElement;

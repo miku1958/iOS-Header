@@ -29,6 +29,7 @@
 - (id)chooseBuddyStub;
 - (id)chooseBuddyStubForConditions:(id)arg1;
 - (id)chooseBuddyStubForOfferType:(long long)arg1;
+- (id)chooseFirstStub;
 - (id)chooseStub;
 - (id)chooseStubForConditions:(id)arg1;
 - (id)chooseStubForOfferType:(long long)arg1;

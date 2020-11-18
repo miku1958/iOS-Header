@@ -51,6 +51,7 @@
 - (id)deviceForIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithAppleAccountManager:(id)arg1 remoteAccountManager:(id)arg2;
+- (void)reset;
 - (void)start;
 - (void)stop;
 

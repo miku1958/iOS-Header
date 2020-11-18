@@ -16,11 +16,11 @@
 @property (strong, nonatomic) NSArray *albumCloudGUIDsToDelete; // @synthesize albumCloudGUIDsToDelete=_albumCloudGUIDsToDelete;
 
 + (void)deleteLocalAlbumsForMSASAlbumGUIDs:(id)arg1;
+- (void).cxx_destruct;
 - (long long)daemonOperation;
-- (void)dealloc;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
 - (void)run;
 - (void)runDaemonSide;
 

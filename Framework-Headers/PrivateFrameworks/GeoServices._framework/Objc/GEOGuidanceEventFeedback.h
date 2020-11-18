@@ -8,41 +8,61 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOSignGuidanceFeedback, GEOSpokenGuidanceFeedback, NSData;
+@class GEOJunctionViewGuidanceFeedback, GEOSignGuidanceFeedback, GEOSpokenGuidanceFeedback, NSData, PBDataReader;
 
 @interface GEOGuidanceEventFeedback : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    GEOJunctionViewGuidanceFeedback *_junctionViewGuidanceFeedback;
+    NSData *_routeID;
+    GEOSignGuidanceFeedback *_signGuidanceFeedback;
+    GEOSpokenGuidanceFeedback *_spokenGuidanceFeedback;
     float _distanceToManeuver;
     float _duration;
     unsigned int _enrouteNoticeIndex;
     unsigned int _eventIndex;
-    NSData *_routeID;
-    GEOSignGuidanceFeedback *_signGuidanceFeedback;
-    GEOSpokenGuidanceFeedback *_spokenGuidanceFeedback;
     unsigned int _stepID;
     float _timeToManeuver;
     int _trafficSpeed;
     float _vehicleSpeed;
     struct {
-        unsigned int distanceToManeuver:1;
-        unsigned int duration:1;
-        unsigned int enrouteNoticeIndex:1;
-        unsigned int eventIndex:1;
-        unsigned int stepID:1;
-        unsigned int timeToManeuver:1;
-        unsigned int trafficSpeed:1;
-        unsigned int vehicleSpeed:1;
-    } _has;
+        unsigned int has_distanceToManeuver:1;
+        unsigned int has_duration:1;
+        unsigned int has_enrouteNoticeIndex:1;
+        unsigned int has_eventIndex:1;
+        unsigned int has_stepID:1;
+        unsigned int has_timeToManeuver:1;
+        unsigned int has_trafficSpeed:1;
+        unsigned int has_vehicleSpeed:1;
+        unsigned int read_junctionViewGuidanceFeedback:1;
+        unsigned int read_routeID:1;
+        unsigned int read_signGuidanceFeedback:1;
+        unsigned int read_spokenGuidanceFeedback:1;
+        unsigned int wrote_junctionViewGuidanceFeedback:1;
+        unsigned int wrote_routeID:1;
+        unsigned int wrote_signGuidanceFeedback:1;
+        unsigned int wrote_spokenGuidanceFeedback:1;
+        unsigned int wrote_distanceToManeuver:1;
+        unsigned int wrote_duration:1;
+        unsigned int wrote_enrouteNoticeIndex:1;
+        unsigned int wrote_eventIndex:1;
+        unsigned int wrote_stepID:1;
+        unsigned int wrote_timeToManeuver:1;
+        unsigned int wrote_trafficSpeed:1;
+        unsigned int wrote_vehicleSpeed:1;
+    } _flags;
 }
 
-@property (nonatomic) float distanceToManeuver; // @synthesize distanceToManeuver=_distanceToManeuver;
-@property (nonatomic) float duration; // @synthesize duration=_duration;
-@property (nonatomic) unsigned int enrouteNoticeIndex; // @synthesize enrouteNoticeIndex=_enrouteNoticeIndex;
-@property (nonatomic) unsigned int eventIndex; // @synthesize eventIndex=_eventIndex;
+@property (nonatomic) float distanceToManeuver;
+@property (nonatomic) float duration;
+@property (nonatomic) unsigned int enrouteNoticeIndex;
+@property (nonatomic) unsigned int eventIndex;
 @property (nonatomic) BOOL hasDistanceToManeuver;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasEnrouteNoticeIndex;
 @property (nonatomic) BOOL hasEventIndex;
+@property (readonly, nonatomic) BOOL hasJunctionViewGuidanceFeedback;
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (readonly, nonatomic) BOOL hasSignGuidanceFeedback;
 @property (readonly, nonatomic) BOOL hasSpokenGuidanceFeedback;
@@ -50,16 +70,22 @@
 @property (nonatomic) BOOL hasTimeToManeuver;
 @property (nonatomic) BOOL hasTrafficSpeed;
 @property (nonatomic) BOOL hasVehicleSpeed;
-@property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
-@property (strong, nonatomic) GEOSignGuidanceFeedback *signGuidanceFeedback; // @synthesize signGuidanceFeedback=_signGuidanceFeedback;
-@property (strong, nonatomic) GEOSpokenGuidanceFeedback *spokenGuidanceFeedback; // @synthesize spokenGuidanceFeedback=_spokenGuidanceFeedback;
-@property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
-@property (nonatomic) float timeToManeuver; // @synthesize timeToManeuver=_timeToManeuver;
-@property (nonatomic) int trafficSpeed; // @synthesize trafficSpeed=_trafficSpeed;
-@property (nonatomic) float vehicleSpeed; // @synthesize vehicleSpeed=_vehicleSpeed;
+@property (strong, nonatomic) GEOJunctionViewGuidanceFeedback *junctionViewGuidanceFeedback;
+@property (strong, nonatomic) NSData *routeID;
+@property (strong, nonatomic) GEOSignGuidanceFeedback *signGuidanceFeedback;
+@property (strong, nonatomic) GEOSpokenGuidanceFeedback *spokenGuidanceFeedback;
+@property (nonatomic) unsigned int stepID;
+@property (nonatomic) float timeToManeuver;
+@property (nonatomic) int trafficSpeed;
+@property (nonatomic) float vehicleSpeed;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTrafficSpeed:(id)arg1;
+- (void)_readJunctionViewGuidanceFeedback;
+- (void)_readRouteID;
+- (void)_readSignGuidanceFeedback;
+- (void)_readSpokenGuidanceFeedback;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -67,6 +93,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)trafficSpeedAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

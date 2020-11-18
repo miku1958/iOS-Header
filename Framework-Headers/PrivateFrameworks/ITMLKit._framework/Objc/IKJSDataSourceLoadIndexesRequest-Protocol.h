@@ -7,11 +7,11 @@
 #import <ITMLKit/IKJSEventListenerObject-Protocol.h>
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKJSDataSource;
+@class JSValue;
 
 @protocol IKJSDataSourceLoadIndexesRequest <IKJSEventListenerObject, JSExport>
 
-@property (readonly, weak, nonatomic) IKJSDataSource *dataSource;
+@property (readonly, weak, nonatomic) JSValue *dataSource;
 @property (readonly, nonatomic) struct _NSRange range;
 
 - (void)close:(BOOL)arg1;

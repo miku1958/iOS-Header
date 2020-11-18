@@ -6,11 +6,11 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class GEOBatchOpportunisticTileDownloader, NSData, NSDictionary, NSString;
+@class GEOBatchOpportunisticTileDownloader, GEOTileData, NSDictionary, NSError, NSString;
 
 @protocol GEOBatchOpportunisticTileDownloaderDelegate <NSObject>
-- (void)batchOpportunisticTileDownloader:(GEOBatchOpportunisticTileDownloader *)arg1 receivedData:(NSData *)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(NSString *)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(NSDictionary *)arg7;
+- (void)batchOpportunisticTileDownloader:(GEOBatchOpportunisticTileDownloader *)arg1 failedToLoadKey:(struct _GEOTileKey)arg2 error:(NSError *)arg3;
+- (void)batchOpportunisticTileDownloader:(GEOBatchOpportunisticTileDownloader *)arg1 receivedData:(GEOTileData *)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(NSString *)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(NSDictionary *)arg7;
 - (void)batchOpportunisticTileDownloaderDidFinish:(GEOBatchOpportunisticTileDownloader *)arg1;
-- (BOOL)batchOpportunisticTileDownloaderShouldPause:(GEOBatchOpportunisticTileDownloader *)arg1;
 @end
 

@@ -8,11 +8,13 @@
 
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARPointCloud, MISSING_TYPE, NSData, NSString, NSUUID;
+@class ARPointCloud, MISSING_TYPE, NSData, NSSet, NSString, NSUUID;
 
 @interface ARReferenceObject : NSObject <NSSecureCoding>
 {
+    NSSet *_keyframes;
     NSString *_name;
+    NSString *_resourceGroupName;
     ARPointCloud *_rawFeaturePoints;
     NSUUID *_identifier;
     long long _version;
@@ -25,9 +27,11 @@
 @property (readonly, nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
 @property (readonly, nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSSet *keyframes;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) ARPointCloud *rawFeaturePoints; // @synthesize rawFeaturePoints=_rawFeaturePoints;
 @property (readonly, nonatomic) CDStruct_14d5dc5e referenceOriginTransform; // @synthesize referenceOriginTransform=_referenceOriginTransform;
+@property (readonly, nonatomic) NSString *resourceGroupName; // @synthesize resourceGroupName=_resourceGroupName;
 @property (readonly, nonatomic) MISSING_TYPE *scale;
 @property (readonly, nonatomic) NSData *trackingData; // @synthesize trackingData=_trackingData;
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
@@ -48,6 +52,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)referenceObjectByApplyingTransform:(CDStruct_14d5dc5e)arg1;
 - (id)referenceObjectByMergingObject:(id)arg1 error:(id *)arg2;
+- (void)setResourceGroupName:(id)arg1;
 
 @end
 

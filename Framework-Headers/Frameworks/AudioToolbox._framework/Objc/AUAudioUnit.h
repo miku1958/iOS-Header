@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class AUAudioUnitBusArray, AUAudioUnitPreset, AUParameterTree, NSArray, NSDictionary, NSString;
+@class AUAudioUnitBusArray, AUAudioUnitPreset, AUParameterTree, NSArray, NSDictionary, NSMutableArray, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface AUAudioUnit : NSObject
 {
@@ -17,8 +18,14 @@
     unsigned int _maximumFramesToRender;
     long long _MIDIOutputBufferSizeHint;
     struct RealtimeState _realtimeState;
+    AUParameterTree *_parameterTree;
+    NSMutableArray *_userPresets;
+    BOOL _isLoadedInProcess;
+    NSObject<OS_dispatch_queue> *_presetMonitoringQueue;
+    NSObject<OS_dispatch_source> *_presetFolderWatcher;
     BOOL _renderResourcesAllocated;
     BOOL _allParameterValues;
+    BOOL _supportsUserPresets;
     BOOL _shouldBypassEffect;
     BOOL _canProcessInPlace;
     BOOL _renderingOffline;
@@ -59,13 +66,14 @@
 @property (copy, nonatomic) NSDictionary *fullStateForDocument;
 @property (readonly, nonatomic) AUAudioUnitBusArray *inputBusses;
 @property (readonly, nonatomic) CDUnknownBlockType internalRenderBlock;
+@property (readonly, nonatomic) BOOL isLoadedInProcess;
 @property (readonly, nonatomic) double latency; // @synthesize latency=_latency;
 @property (readonly, copy, nonatomic) NSString *manufacturerName;
 @property (nonatomic) unsigned int maximumFramesToRender;
 @property (readonly, nonatomic, getter=isMusicDeviceOrEffect) BOOL musicDeviceOrEffect;
 @property (copy, nonatomic) CDUnknownBlockType musicalContextBlock; // @synthesize musicalContextBlock=_musicalContextBlock;
 @property (readonly, nonatomic) AUAudioUnitBusArray *outputBusses;
-@property (readonly, nonatomic) AUParameterTree *parameterTree;
+@property (strong, nonatomic) AUParameterTree *parameterTree;
 @property (copy, nonatomic) CDUnknownBlockType profileChangedBlock; // @synthesize profileChangedBlock=_profileChangedBlock;
 @property (readonly, nonatomic) BOOL providesUserInterface;
 @property (readonly, nonatomic) CDUnknownBlockType renderBlock;
@@ -76,10 +84,21 @@
 @property (readonly, nonatomic) CDUnknownBlockType scheduleParameterBlock;
 @property (nonatomic) BOOL shouldBypassEffect; // @synthesize shouldBypassEffect=_shouldBypassEffect;
 @property (readonly, nonatomic) BOOL supportsMPE; // @synthesize supportsMPE=_supportsMPE;
+@property (readonly, nonatomic) BOOL supportsUserPresets; // @synthesize supportsUserPresets=_supportsUserPresets;
 @property (readonly, nonatomic) double tailTime; // @synthesize tailTime=_tailTime;
 @property (copy, nonatomic) CDUnknownBlockType transportStateBlock; // @synthesize transportStateBlock=_transportStateBlock;
+@property (readonly, copy, nonatomic) NSArray *userPresets;
 @property (readonly, nonatomic) long long virtualMIDICableCount; // @synthesize virtualMIDICableCount=_virtualMIDICableCount;
 
++ (id)__presetFromPath:(id)arg1;
++ (id)__sanitizeFileName:(id)arg1;
++ (void)__sanitizePresetNumber:(id)arg1;
++ (id)__userPresetPath:(id)arg1 error:(id *)arg2;
++ (BOOL)_deleteUserPreset:(id)arg1 error:(id *)arg2;
++ (void)_loadUserPresets:(id)arg1 error:(id *)arg2;
++ (id)_monitorUserPresets:(id)arg1 callback:(CDUnknownBlockType)arg2;
++ (id)_presetStateFor:(id)arg1 error:(id *)arg2;
++ (BOOL)_saveUserPreset:(id)arg1 state:(id)arg2 error:(id *)arg3;
 + (id)auAudioUnitForAudioUnit:(struct OpaqueAudioComponentInstance *)arg1;
 + (void)instantiateWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)keyPathsForValuesAffectingAllParameterValues;
@@ -91,6 +110,7 @@
 - (struct UIViewController *)cachedViewController;
 - (void)dealloc;
 - (void)deallocateRenderResources;
+- (BOOL)deleteUserPreset:(id)arg1 error:(id *)arg2;
 - (BOOL)disableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
 - (BOOL)enableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
 - (struct AUEventSchedule *)eventSchedule;
@@ -99,17 +119,21 @@
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
 - (void)invalidateAudioUnit;
 - (id)parametersForOverviewWithCount:(long long)arg1;
+- (id)presetStateFor:(id)arg1 error:(id *)arg2;
 - (id)profileStateForCable:(unsigned char)arg1 channel:(unsigned char)arg2;
 - (void)removeRenderObserver:(long long)arg1;
 - (void)removeRenderObserver:(CDUnknownFunctionPointerType)arg1 userData:(void *)arg2;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reset;
+- (BOOL)saveUserPreset:(id)arg1 error:(id *)arg2;
 - (void)selectViewConfiguration:(id)arg1;
 - (void)setCachedViewController:(struct UIViewController *)arg1;
 - (void)setRenderResourcesAllocated:(BOOL)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (BOOL)shouldChangeToFormat:(id)arg1 forBus:(id)arg2;
+- (void)startUserPresetFolderMonitoring;
 - (id)supportedViewConfigurations:(id)arg1;
+- (void)tearDownExtension;
 - (long long)tokenByAddingRenderObserver:(CDUnknownBlockType)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 

@@ -30,7 +30,7 @@
 - (void)_axSetFirstDestinationHandleValue:(id)arg1;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
-- (id)initWithItemsForLayoutRoles:(id)arg1 configuration:(long long)arg2;
+- (id)initWithItemsForLayoutRoles:(id)arg1 configuration:(long long)arg2 environment:(long long)arg3;
 
 @end
 

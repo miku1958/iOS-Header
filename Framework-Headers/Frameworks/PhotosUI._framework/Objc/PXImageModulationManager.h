@@ -24,6 +24,7 @@
         BOOL finalRequestedEDRHeadroomFactor;
         BOOL desiredDynamicRange;
         BOOL imageLayerModulators;
+        BOOL currentScreenSupportsHDR;
     } _needsUpdateFlags;
     double _lastRequestedEDRHeadroomChangeTime;
     BOOL _lowPowerModeEnabled;
@@ -31,6 +32,7 @@
     BOOL _mainScreen;
     BOOL _enabled;
     BOOL _active;
+    BOOL _currentScreenSupportsHDR;
     PXImageModulationSettings *_settings;
     NSHashTable *_imageLayerModulators;
     PXRequestedEDRHeadroomFactorFilter *_requestedEDRHeadroomFactorFilter;
@@ -45,6 +47,7 @@
 @property (readonly, nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (nonatomic, getter=isApplicationActive) BOOL applicationActive; // @synthesize applicationActive=_applicationActive;
 @property (strong, nonatomic) CAContext *coreAnimationContext; // @synthesize coreAnimationContext=_coreAnimationContext;
+@property (readonly, nonatomic) BOOL currentScreenSupportsHDR; // @synthesize currentScreenSupportsHDR=_currentScreenSupportsHDR;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
@@ -66,6 +69,7 @@
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidResignActive:(id)arg1;
 - (void)_invalidateActive;
+- (void)_invalidateCurrentScreenSupportsHDR;
 - (void)_invalidateDesiredDynamicRange;
 - (void)_invalidateEnabled;
 - (void)_invalidateFinalRequestedEDRHeadroomFactor;
@@ -79,6 +83,7 @@
 - (void)_setNeedsUpdate;
 - (void)_updateActiveIfNeeded;
 - (void)_updateCoreAnimationContext;
+- (void)_updateCurrentScreenSupportsHDRIfNeeded;
 - (void)_updateDesiredDynamicRangeIfNeeded;
 - (void)_updateEnabledIfNeeded;
 - (void)_updateFinalRequestedEDRHeadroomFactorIfNeeded;
@@ -99,6 +104,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)preferencesDidChange;
 - (void)setActive:(BOOL)arg1;
+- (void)setCurrentScreenSupportsHDR:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHDRFocus:(double)arg1;
 - (void)setImageModulationIntensity:(double)arg1;

@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)setIcon:(id)arg1;
+- (void)_axSetIconProperties:(id)arg1;
 - (void)viewDidLoad;
 
 @end

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <DoNotDisturbServer/DNDSSyncSettingsProviderDelegate-Protocol.h>
+#import <DoNotDisturbServer/DNDSSysdiagnoseDataProvider-Protocol.h>
 
 @class CNContactStore, DNDSSyncSettingsProvider, NSString;
 @protocol DNDSBackingStore, DNDSSettingsManagerDelegate, OS_dispatch_queue;
 
-@interface DNDSSettingsManager : NSObject <DNDSSyncSettingsProviderDelegate>
+@interface DNDSSettingsManager : NSObject <DNDSSyncSettingsProviderDelegate, DNDSSysdiagnoseDataProvider>
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<DNDSBackingStore> _backingStore;
@@ -25,11 +26,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
 
 - (void).cxx_destruct;
 - (id)_readSettingsReturningError:(id *)arg1;
 - (unsigned long long)_saveBehaviorSettings:(id)arg1 phoneCallBypassSettings:(id)arg2 scheduleSettings:(id)arg3 error:(id *)arg4;
 - (id)behaviorSettingsWithError:(id *)arg1;
+- (void)dealloc;
 - (id)initWithBackingStore:(id)arg1 contactStore:(id)arg2;
 - (id)phoneCallBypassSettingsWithError:(id *)arg1;
 - (id)scheduleSettingsWithError:(id *)arg1;
@@ -38,6 +41,7 @@
 - (BOOL)setScheduleSettings:(id)arg1 withError:(id *)arg2;
 - (void)syncSettingsProvider:(id)arg1 didReceiveUpdatedSyncSettings:(id)arg2;
 - (id)syncSettingsWithError:(id *)arg1;
+- (id)sysdiagnoseDataForDate:(id)arg1;
 
 @end
 

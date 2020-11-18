@@ -7,14 +7,18 @@
 #import <PhotosUI/PUTileViewController.h>
 
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
+#import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class NSString, PUAssetViewModel, PUBrowsingVideoPlayer, UIActivityIndicatorView, UIButton;
+@class NSString, PUAssetViewModel, PUBrowsingVideoPlayer, PUBrowsingViewModel, PUOneUpMergedVideoProvider, UIActivityIndicatorView, UIButton;
 
 __attribute__((visibility("hidden")))
-@interface PUBufferingIndicatorTileViewController : PUTileViewController <PUBrowsingVideoPlayerChangeObserver>
+@interface PUBufferingIndicatorTileViewController : PUTileViewController <PUBrowsingVideoPlayerChangeObserver, PUBrowsingViewModelChangeObserver, PXChangeObserver>
 {
     PUAssetViewModel *_assetViewModel;
-    CDUnknownBlockType _errorDisplayer;
+    PUBrowsingViewModel *_browsingViewModel;
+    PUOneUpMergedVideoProvider *_mergedVideoProvider;
+    CDUnknownBlockType _errorAlertControllerDisplayer;
     PUBrowsingVideoPlayer *__videoPlayer;
     long long __indicatorStyle;
     UIActivityIndicatorView *__spinner;
@@ -26,10 +30,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setSpinner:) UIActivityIndicatorView *_spinner; // @synthesize _spinner=__spinner;
 @property (strong, nonatomic, setter=_setVideoPlayer:) PUBrowsingVideoPlayer *_videoPlayer; // @synthesize _videoPlayer=__videoPlayer;
 @property (strong, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
+@property (strong, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) CDUnknownBlockType errorDisplayer; // @synthesize errorDisplayer=_errorDisplayer;
+@property (copy, nonatomic) CDUnknownBlockType errorAlertControllerDisplayer; // @synthesize errorAlertControllerDisplayer=_errorAlertControllerDisplayer;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PUOneUpMergedVideoProvider *mergedVideoProvider; // @synthesize mergedVideoProvider=_mergedVideoProvider;
 @property (readonly) Class superclass;
 
 + (struct CGSize)bufferingIndicatorTileSize;
@@ -39,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_setIndicatorStyle:(long long)arg1 animated:(BOOL)arg2;
 - (void)_updateIndicator;
 - (void)becomeReusable;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

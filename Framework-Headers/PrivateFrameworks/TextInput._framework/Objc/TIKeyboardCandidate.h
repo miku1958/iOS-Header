@@ -14,13 +14,15 @@
 
 @interface TIKeyboardCandidate : NSObject <NSCopying, NSSecureCoding, TIKeyboardCandidateCoding>
 {
-    BOOL _responseCandidate;
+    BOOL _responseKitCandidate;
     BOOL _isSendCurrentLocation;
     unsigned int _slotID;
+    int _confidence;
     NSString *_alternativeText;
     NSString *_annotationText;
     unsigned long long _customInfoType;
     unsigned long long _indexForMetrics;
+    NSString *_responseKitCategory;
 }
 
 @property (readonly, nonatomic, getter=isOTAWordListCandidate) BOOL OTAWordListCandidate;
@@ -28,6 +30,8 @@
 @property (copy, nonatomic) NSString *annotationText; // @synthesize annotationText=_annotationText;
 @property (readonly, nonatomic) NSString *candidate;
 @property (readonly, nonatomic, getter=isCompletionCandidate) BOOL completionCandidate;
+@property (readonly, nonatomic, getter=confidence) int confidence; // @synthesize confidence=_confidence;
+@property (readonly, nonatomic, getter=isContinuousPathConversion) BOOL continuousPathConversion;
 @property (readonly, nonatomic) long long cursorMovement;
 @property (nonatomic) unsigned long long customInfoType; // @synthesize customInfoType=_customInfoType;
 @property (readonly, copy) NSString *debugDescription;
@@ -50,9 +54,11 @@
 @property (readonly, nonatomic, getter=isPunctuationCompletionCandidate) BOOL punctuationCompletionCandidate;
 @property (readonly, nonatomic, getter=isPunctuationKeyCandidate) BOOL punctuationKeyCandidate;
 @property (readonly, nonatomic, getter=isRegionalCandidate) BOOL regionalCandidate;
-@property (readonly, nonatomic, getter=isResponseCandidate) BOOL responseCandidate; // @synthesize responseCandidate=_responseCandidate;
-@property (readonly, nonatomic) NSString *responseKitCategory;
+@property (readonly, nonatomic, getter=isResponseKitCandidate) BOOL responseKitCandidate; // @synthesize responseKitCandidate=_responseKitCandidate;
+@property (readonly, copy, nonatomic) NSString *responseKitCategory; // @synthesize responseKitCategory=_responseKitCategory;
 @property (readonly, nonatomic, getter=isSecureContentCandidate) BOOL secureContentCandidate;
+@property (readonly, nonatomic) BOOL shouldAccept;
+@property (readonly, nonatomic) BOOL shouldInsertSpaceAfterSelection;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int usageTrackingMask;
@@ -61,6 +67,8 @@
 + (BOOL)supportsSecureCoding;
 + (int)type;
 - (void).cxx_destruct;
+- (id)candidateByReplacingWithCandidate:(id)arg1;
+- (id)candidateByReplacingWithCandidate:(id)arg1 input:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

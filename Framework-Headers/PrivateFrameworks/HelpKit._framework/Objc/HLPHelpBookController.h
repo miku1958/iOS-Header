@@ -10,6 +10,7 @@
 
 @interface HLPHelpBookController : HLPRemoteDataController
 {
+    BOOL _supportsDarkMode;
     BOOL _hasSectionIcon;
     BOOL _fullBookView;
     long long _contentFormatVersion;
@@ -21,6 +22,7 @@
     NSString *_bookId;
     NSString *_topicPathFormat;
     NSString *_remoteSearchPath;
+    NSString *_remoteCSSearchIndex;
     NSString *_iconBasePath;
     HLPHelpLocale *_locale;
     NSString *_welcomeTopicIdentifier;
@@ -41,10 +43,12 @@
 @property (strong, nonatomic) NSString *iconBasePath; // @synthesize iconBasePath=_iconBasePath;
 @property (strong, nonatomic) HLPURLImageCacheController *imageCacheController; // @synthesize imageCacheController=_imageCacheController;
 @property (strong, nonatomic) HLPHelpLocale *locale; // @synthesize locale=_locale;
+@property (strong, nonatomic) NSString *remoteCSSearchIndex; // @synthesize remoteCSSearchIndex=_remoteCSSearchIndex;
 @property (strong, nonatomic) NSString *remoteSearchPath; // @synthesize remoteSearchPath=_remoteSearchPath;
 @property (strong, nonatomic) HLPHelpSectionItem *rootSectionItem; // @synthesize rootSectionItem=_rootSectionItem;
 @property (readonly, nonatomic, getter=isSemanticHTML) BOOL semanticHTML; // @dynamic semanticHTML;
 @property (nonatomic) long long serverType; // @synthesize serverType=_serverType;
+@property (nonatomic) BOOL supportsDarkMode; // @synthesize supportsDarkMode=_supportsDarkMode;
 @property (strong, nonatomic) NSString *topicPathFormat; // @synthesize topicPathFormat=_topicPathFormat;
 @property (strong, nonatomic) NSString *welcomeTopicIdentifier; // @synthesize welcomeTopicIdentifier=_welcomeTopicIdentifier;
 

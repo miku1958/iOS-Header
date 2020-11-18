@@ -13,19 +13,28 @@
     CDUnknownBlockType _block;
     NSString *_title;
     UIImage *_image;
+    NSString *_systemImageName;
+    NSString *_customActivityType;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
+@property (strong, nonatomic) NSString *customActivityType; // @synthesize customActivityType=_customActivityType;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (id)_systemImageName;
+- (long long)activityCategory;
 - (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
 - (id)initWithTitle:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 activityType:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (id)initWithTitle:(id)arg1 systemImageName:(id)arg2 activityType:(id)arg3 block:(CDUnknownBlockType)arg4;
+- (id)initWithTitle:(id)arg1 systemImageName:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)performActivity;
 
 @end

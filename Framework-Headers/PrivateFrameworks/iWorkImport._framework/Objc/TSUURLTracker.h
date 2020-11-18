@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSUURLWrapper-Protocol.h>
 
-@class NSData, NSString, NSURL, TSUURLTrackerFilePresenter;
+@class NSData, NSString, NSURL, TSUSandboxedURL, TSUURLTrackerFilePresenter;
 @protocol TSULogContext;
 
 __attribute__((visibility("hidden")))
@@ -26,11 +26,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL deleted;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) id<TSULogContext> logContext; // @synthesize logContext=_logContext;
+@property (readonly) TSUSandboxedURL *sandboxedURL;
+@property (readonly) TSUSandboxedURL *sandboxedURLIfAvailable;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)URLAndReturnError:(id *)arg1;
+- (id)bookmarkDataAndReturnError:(id *)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithBookmarkData:(id)arg1;
@@ -40,7 +43,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithURL:(id)arg1 delegate:(id)arg2;
 - (id)p_filePresenterQueue;
 - (void)pause;
+- (id)recalculateBookmarkDataAndReturnError:(id *)arg1;
+- (id)recalculateSandboxedURLAndReturnError:(id *)arg1;
 - (void)resume;
+- (id)sandboxedURLAndReturnError:(id *)arg1;
 - (void)stop;
 
 @end

@@ -9,7 +9,7 @@
 #import <NanoPassKit/CLLocationManagerDelegate-Protocol.h>
 
 @class CLInUseAssertion, CLLocationManager, NSString;
-@protocol OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface NPKOneShotLocationFetcher : NSObject <CLLocationManagerDelegate>
 {
@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_source> *_locationFixTimeout;
     CLLocationManager *_locationManager;
     CLInUseAssertion *_inUseAssertion;
+    NSObject<OS_dispatch_queue> *_locationManagerQueue;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
@@ -26,12 +27,14 @@
 @property (strong, nonatomic) CLInUseAssertion *inUseAssertion; // @synthesize inUseAssertion=_inUseAssertion;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *locationFixTimeout; // @synthesize locationFixTimeout=_locationFixTimeout;
 @property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *locationManagerQueue; // @synthesize locationManagerQueue=_locationManagerQueue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_finishLocationFixWithLocation:(id)arg1;
 - (void)dealloc;
 - (void)fetchLocationWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 

@@ -4,26 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <EventKit/EKPersistentObject.h>
+#import <EventKit/EKPersistentNotification.h>
 
 __attribute__((visibility("hidden")))
-@interface EKPersistentInviteReplyNotification : EKPersistentObject
+@interface EKPersistentInviteReplyNotification : EKPersistentNotification
 {
 }
 
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 - (BOOL)alerted;
-- (id)calendar;
-- (id)calendarName;
 - (id)creationDate;
 - (int)entityType;
+- (id)inReplyTo;
 - (id)inviteReplyCalendar;
-- (id)shareeAddressURL;
+- (void)setCreationDate:(id)arg1;
+- (void)setInReplyTo:(id)arg1;
+- (void)setInviteReplyCalendar:(id)arg1;
+- (void)setShareeDisplayName:(id)arg1;
+- (void)setShareeFirstName:(id)arg1;
+- (void)setShareeLastName:(id)arg1;
+- (void)setShareeStatus:(unsigned long long)arg1;
+- (void)setShareeURL:(id)arg1;
+- (void)setSummary:(id)arg1;
 - (id)shareeDisplayName;
 - (id)shareeFirstName;
 - (id)shareeLastName;
-- (unsigned long long)status;
+- (unsigned long long)shareeStatus;
+- (id)shareeURL;
+- (id)summary;
 
 @end
 

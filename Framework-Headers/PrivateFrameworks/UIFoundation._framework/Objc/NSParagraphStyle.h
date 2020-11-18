@@ -53,6 +53,7 @@
 @property (readonly, copy, nonatomic) NSArray *tabStops;
 @property (readonly, nonatomic) double tailIndent;
 
++ (float)_defaultHyphenationFactor;
 + (long long)_defaultWritingDirection;
 + (id)defaultParagraphStyle;
 + (long long)defaultWritingDirectionForLanguage:(id)arg1;
@@ -64,6 +65,7 @@
 - (BOOL)_isSuitableForFastStringDrawingWithAlignment:(long long *)arg1 mirrorsTextAlignment:(BOOL)arg2 lineBreakMode:(long long *)arg3 tighteningFactorForTruncation:(double *)arg4;
 - (unsigned long long)_lineBoundsOptions;
 - (BOOL)allowsHangingPunctuation;
+- (long long)compositionLanguage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -78,6 +80,7 @@
 - (id)textBlocks;
 - (id)textLists;
 - (float)tighteningFactorForTruncation;
+- (BOOL)usesDefaultHyphenation;
 - (BOOL)usesOpticalAlignment;
 
 @end

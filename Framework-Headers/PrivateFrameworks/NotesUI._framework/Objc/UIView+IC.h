@@ -6,23 +6,36 @@
 
 #import <UIKit/UIView.h>
 
+@class ICAppearanceInfo, ICViewControllerManager, UIColor, UITraitCollection;
+
 @interface UIView (IC)
 
+@property (readonly, nonatomic) ICAppearanceInfo *ic_appearanceInfo;
+@property (copy, nonatomic) UIColor *ic_backgroundColor;
 @property (readonly, nonatomic) struct NSDirectionalEdgeInsets ic_directionalSafeAreaInsets;
 @property (readonly, nonatomic) BOOL ic_isRTL;
+@property (readonly, nonatomic) UITraitCollection *ic_platformAppearanceObject;
+@property (readonly, nonatomic) ICViewControllerManager *ic_viewControllerManager;
 
++ (void)ic_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)ic_animateWithDuration:(double)arg1 timingFunction:(id)arg2 animations:(CDUnknownBlockType)arg3;
 + (void)ic_animateWithDuration:(double)arg1 timingFunction:(id)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)ic_performWithoutAnimation:(CDUnknownBlockType)arg1;
 - (void)ic_addConstraintsToFillSuperview;
 - (id)ic_animator;
+- (double)ic_backingScaleFactor;
 - (void)ic_crashIfWindowIsSecure;
 - (id)ic_imageRenderedFromLayer;
 - (id)ic_imageRenderedFromViewHierarchy;
 - (id)ic_imageViewRenderedFromLayer;
 - (id)ic_imageViewRenderedFromViewHierarchy;
+- (void)ic_insertSubview:(struct UIView *)arg1 belowSubview:(struct UIView *)arg2;
 - (BOOL)ic_isInSecureWindow;
 - (void)ic_removeAllConstraintsForSubview:(id)arg1;
 - (id)ic_renderImage;
 - (id)ic_renderImageView;
+- (void)ic_setAlpha:(double)arg1;
+- (void)ic_setNeedsDisplay;
+- (void)ic_setNeedsLayout;
 @end
 

@@ -6,30 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <AssertionServices/BSXPCCoding-Protocol.h>
 #import <AssertionServices/NSCopying-Protocol.h>
 #import <AssertionServices/NSSecureCoding-Protocol.h>
 
-@class NSString;
-
-@interface BKSProcessExitContext : NSObject <BSXPCCoding, NSSecureCoding, NSCopying>
+@interface BKSProcessExitContext : NSObject <NSSecureCoding, NSCopying>
 {
-    unsigned long long _launchdExitReason;
+    unsigned long long _exitReason;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) unsigned long long exitReason;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long launchdExitReason; // @synthesize launchdExitReason=_launchdExitReason;
-@property (readonly) Class superclass;
+@property (nonatomic) unsigned long long exitReason; // @synthesize exitReason=_exitReason;
 
++ (id)contextWithRBSContext:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithXPCDictionary:(id)arg1;
 
 @end
 

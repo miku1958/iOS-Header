@@ -12,22 +12,23 @@
 
 @interface GEOLogMsgStateMapView : PBCodable <NSCopying>
 {
-    double _zoomLevel;
     GEOMapRegion *_mapRegion;
+    double _zoomLevel;
     int _mapType;
     struct {
-        unsigned int zoomLevel:1;
-        unsigned int mapType:1;
-    } _has;
+        unsigned int has_zoomLevel:1;
+        unsigned int has_mapType:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasMapRegion;
 @property (nonatomic) BOOL hasMapType;
 @property (nonatomic) BOOL hasZoomLevel;
-@property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
-@property (nonatomic) int mapType; // @synthesize mapType=_mapType;
-@property (nonatomic) double zoomLevel; // @synthesize zoomLevel=_zoomLevel;
+@property (strong, nonatomic) GEOMapRegion *mapRegion;
+@property (nonatomic) int mapType;
+@property (nonatomic) double zoomLevel;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsMapType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -38,6 +39,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

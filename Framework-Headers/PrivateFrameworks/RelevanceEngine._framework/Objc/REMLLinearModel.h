@@ -6,27 +6,35 @@
 
 #import <RelevanceEngine/REMLModel.h>
 
+#import <RelevanceEngine/REMLLinearModelProperties-Protocol.h>
+
 @class NSDictionary;
 
-@interface REMLLinearModel : REMLModel
+@interface REMLLinearModel : REMLModel <REMLLinearModelProperties>
 {
     NSDictionary *_models;
-    float _scaleFactor;
-    NSDictionary *_nonActionModels;
-    float _nonActionScaleFactor;
 }
+
+@property (readonly, nonatomic) NSDictionary *models;
 
 - (void).cxx_destruct;
 - (void)_clearCache;
 - (void)_clearModel;
+- (void)_enumerateModelsForFeatureMap:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (float)_getAveragePrediction;
+- (float)_getNormalizedEntropy;
 - (long long)_getNumberOfCoordinates;
+- (unsigned long long)_getTotalExampleCount;
+- (unsigned long long)_getTotalPositiveCount;
 - (BOOL)_loadModelFromURL:(id)arg1 error:(id *)arg2;
 - (id)_predictWithFeatures:(id)arg1;
 - (BOOL)_saveModelToURL:(id)arg1 error:(id *)arg2;
 - (void)_trainWithFeatures:(id)arg1 positiveEvent:(id)arg2;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (id)initWithFeatureSet:(id)arg1 interactionDescriptors:(id)arg2;
+- (void)logCoreAnalyticsMetrics;
+- (id)predictionSetWithFeatures:(id)arg1;
 - (BOOL)requiresDirectory;
+- (void)setMetricsRecorder:(id)arg1;
 - (void)trainWithFeatures:(id)arg1 positiveEvent:(id)arg2 interaction:(id)arg3;
 
 @end

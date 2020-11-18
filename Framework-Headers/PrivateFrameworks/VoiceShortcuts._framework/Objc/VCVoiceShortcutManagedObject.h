@@ -25,9 +25,6 @@
 @property (strong, nonatomic) NSSet *syncStates; // @dynamic syncStates;
 
 + (id)fetchRequest;
-+ (id)nonUserDataAttributes;
-- (id)initWithContext:(id)arg1 voiceShortcut:(id)arg2 error:(id *)arg3;
-- (BOOL)populateWithVoiceShortcut:(id)arg1 error:(id *)arg2;
 
 @end
 

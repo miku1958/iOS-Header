@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property NSXPCConnection *_connection; // @synthesize _connection;
 @property id<NSXPCEncoderDelegate> delegate; // @synthesize delegate=_delegate;
 
+- (unsigned long long)_addOOLXPCObject:(id)arg1;
 - (void)_checkObject:(id)arg1;
 - (void)_encodeArrayOfObjects:(id)arg1 forKey:(id)arg2;
 - (void)_encodeCString:(const char *)arg1 length:(unsigned long long)arg2 forKey:(id)arg3;

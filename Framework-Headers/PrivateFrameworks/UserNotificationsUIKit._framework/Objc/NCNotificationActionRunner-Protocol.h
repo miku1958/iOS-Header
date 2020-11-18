@@ -6,12 +6,12 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NCNotificationAction, NSDictionary, NSString;
+@class BSServiceConnectionEndpoint, NCNotificationAction, NSDictionary, NSString;
 
 @protocol NCNotificationActionRunner <NSObject>
 
 @property (nonatomic) BOOL shouldForwardAction;
 
-- (void)executeAction:(NCNotificationAction *)arg1 fromOrigin:(NSString *)arg2 withParameters:(NSDictionary *)arg3 completion:(void (^)(BOOL))arg4;
+- (void)executeAction:(NCNotificationAction *)arg1 fromOrigin:(NSString *)arg2 endpoint:(BSServiceConnectionEndpoint *)arg3 withParameters:(NSDictionary *)arg4 completion:(void (^)(BOOL))arg5;
 @end
 

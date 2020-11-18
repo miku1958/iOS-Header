@@ -8,6 +8,7 @@
 
 @class UILabel, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIStackedBarCell : UIButton
 {
     BOOL _expanded;

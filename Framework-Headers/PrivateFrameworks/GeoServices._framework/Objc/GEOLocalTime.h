@@ -16,18 +16,20 @@
     unsigned long long _timeRoundedToHour;
     float _timezoneOffsetFromGmtInHours;
     struct {
-        unsigned int timeRoundedToHour:1;
-        unsigned int timezoneOffsetFromGmtInHours:1;
-    } _has;
+        unsigned int has_timeRoundedToHour:1;
+        unsigned int has_timezoneOffsetFromGmtInHours:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasTimeRoundedToHour;
 @property (nonatomic) BOOL hasTimezoneOffsetFromGmtInHours;
-@property (nonatomic) unsigned long long timeRoundedToHour; // @synthesize timeRoundedToHour=_timeRoundedToHour;
-@property (nonatomic) float timezoneOffsetFromGmtInHours; // @synthesize timezoneOffsetFromGmtInHours=_timezoneOffsetFromGmtInHours;
+@property (nonatomic) unsigned long long timeRoundedToHour;
+@property (nonatomic) float timezoneOffsetFromGmtInHours;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +39,7 @@
 - (id)initWithDate:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

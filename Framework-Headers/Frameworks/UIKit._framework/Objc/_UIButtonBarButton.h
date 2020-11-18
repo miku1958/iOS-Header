@@ -8,9 +8,8 @@
 
 #import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
-@class NSLayoutConstraint, NSString, _UIButtonBarButtonVisualProvider;
+@class NSLayoutConstraint, NSString, _UIBarButtonItemData, _UIButtonBarButtonVisualProvider;
 
-__attribute__((visibility("hidden")))
 @interface _UIButtonBarButton : UIControl <UISpringLoadedInteractionSupporting>
 {
     _UIButtonBarButtonVisualProvider *_visualProvider;
@@ -18,8 +17,10 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_heightMinimizingConstraint;
     struct CGRect _hitRect;
     BOOL _backButton;
+    _UIBarButtonItemData *_appearanceData;
 }
 
+@property (strong, nonatomic) _UIBarButtonItemData *appearanceData; // @synthesize appearanceData=_appearanceData;
 @property (readonly, nonatomic, getter=isBackButton) BOOL backButton; // @synthesize backButton=_backButton;
 @property (nonatomic, getter=_buttonBarHitRect, setter=_setButtonBarHitRect:) struct CGRect buttonBarHitRect;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,10 +37,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)_accessibilityShouldActivateOnHUDLift;
 - (void)_configureFromBarItem:(id)arg1 appearanceDelegate:(id)arg2 isBackButton:(BOOL)arg3;
 - (unsigned long long)_controlEventsForActionTriggered;
+- (void)_setTouchHasHighlighted:(BOOL)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)configureBackButtonFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
 - (void)configureFromBarItem:(id)arg1 withAppearanceDelegate:(id)arg2;
 - (void)dealloc;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
@@ -50,9 +53,9 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)reset;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)setNeedsAppearanceUpdate;
 - (void)setSelected:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)willMoveToSuperview:(id)arg1;

@@ -15,19 +15,20 @@ __attribute__((visibility("hidden")))
     unsigned long long _etaServiceTravelTime;
     unsigned long long _originalTravelTime;
     struct {
-        unsigned int routeUuid:1;
-        unsigned int etaServiceTravelTime:1;
-        unsigned int originalTravelTime:1;
-    } _has;
+        unsigned int has_routeUuid:1;
+        unsigned int has_etaServiceTravelTime:1;
+        unsigned int has_originalTravelTime:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned long long etaServiceTravelTime; // @synthesize etaServiceTravelTime=_etaServiceTravelTime;
+@property (nonatomic) unsigned long long etaServiceTravelTime;
 @property (nonatomic) BOOL hasEtaServiceTravelTime;
 @property (nonatomic) BOOL hasOriginalTravelTime;
 @property (nonatomic) BOOL hasRouteUuid;
-@property (nonatomic) unsigned long long originalTravelTime; // @synthesize originalTravelTime=_originalTravelTime;
-@property (nonatomic) struct GEOSessionID routeUuid; // @synthesize routeUuid=_routeUuid;
+@property (nonatomic) unsigned long long originalTravelTime;
+@property (nonatomic) struct GEOSessionID routeUuid;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -8,11 +8,13 @@
 
 @class NSLayoutConstraint, NSString, UIActivityIndicatorView, UIFont, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface AVLabel : UIView
 {
     BOOL _showsLoadingIndicator;
     BOOL _collapsed;
     BOOL _included;
+    BOOL _removed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
     UILabel *_label;
@@ -38,6 +40,7 @@
 @property (nonatomic) long long loadingIndicatorAlignment; // @synthesize loadingIndicatorAlignment=_loadingIndicatorAlignment;
 @property (strong, nonatomic) NSLayoutConstraint *loadingIndicatorLeftAlignmentConstraint; // @synthesize loadingIndicatorLeftAlignmentConstraint=_loadingIndicatorLeftAlignmentConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *loadingIndicatorRightAlignmentConstraint; // @synthesize loadingIndicatorRightAlignmentConstraint=_loadingIndicatorRightAlignmentConstraint;
+@property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (nonatomic) BOOL showsLoadingIndicator; // @synthesize showsLoadingIndicator=_showsLoadingIndicator;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
@@ -45,6 +48,7 @@
 - (void)didMoveToSuperview;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)setHidden:(BOOL)arg1;
 - (void)tintColorDidChange;
 - (void)updateConstraints;
 - (id)viewForFirstBaselineLayout;

@@ -8,11 +8,12 @@
 
 #import <PassKitUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSCalendar, NSString, NSTimeZone;
+@class NSCalendar, NSNumberFormatter, NSString, NSTimeZone;
 @protocol PKMonthDayCollectionViewControllerDelegate;
 
 @interface PKMonthDayCollectionViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout>
 {
+    NSNumberFormatter *_dayFormatter;
     NSCalendar *_calendar;
     long long _dayNumber;
     long long _minimumDayNumber;
@@ -43,8 +44,8 @@
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)initWithDayDelegate:(id)arg1 timeZone:(id)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (struct CGSize)preferredContentSize;
 - (id)selectedDate;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)viewDidLoad;
 
 @end

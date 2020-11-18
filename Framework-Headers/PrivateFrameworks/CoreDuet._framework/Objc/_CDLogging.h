@@ -13,6 +13,7 @@
 + (id)admissionCheckChannel;
 + (id)autoSUChannel;
 + (id)communicatorChannel;
++ (id)contentProviderChannel;
 + (id)contextChannel;
 + (id)dataCollectionChannel;
 + (id)instrumentationChannel;
@@ -20,6 +21,7 @@
 + (id)interactionSignpost;
 + (id)knowledgeChannel;
 + (id)knowledgeSignpost;
++ (id)spotlightReceiverChannel;
 + (id)syncChannel;
 
 @end

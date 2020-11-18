@@ -19,6 +19,7 @@
     double passImageHeight;
     BOOL _small;
     BOOL _showModificationDate;
+    BOOL _expiredPass;
     PKPass *_pass;
     PKPassView *_passView;
     PKTransitBalanceModel *_transitBalanceModel;
@@ -32,6 +33,7 @@
 }
 
 @property (weak, nonatomic) id<PKPassHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL expiredPass; // @synthesize expiredPass=_expiredPass;
 @property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) id<PKPassLibraryDataProvider> passLibraryOverride; // @synthesize passLibraryOverride=_passLibraryOverride;
 @property (readonly, nonatomic) PKPassView *passView; // @synthesize passView=_passView;

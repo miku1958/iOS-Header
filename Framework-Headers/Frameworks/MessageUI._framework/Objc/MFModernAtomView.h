@@ -73,6 +73,7 @@
 + (double)horizontalPadding;
 + (BOOL)presentationOptions:(unsigned long long *)arg1 encodedIntoAddress:(id)arg2;
 + (id)primaryAtomFont;
+- (void).cxx_destruct;
 - (id)_centeredTextAttachmentWithImage:(id)arg1;
 - (id)_chevronTextAttachment;
 - (void)_invalidatePresentationOptions;
@@ -86,11 +87,11 @@
 - (void)_updateActivityIndicator;
 - (void)_updateCompositingFilters;
 - (void)_updateFontIfNecessary;
+- (void)_updateIconViewsSemanticContentAttribute;
 - (void)_updateLabelAttributes;
 - (void)_updateSubviewsForWrapping;
 - (void)appendPresentationOption:(unsigned long long)arg1;
 - (void)clearPresentationOption:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 presentationOptions:(unsigned long long)arg2 separatorStyle:(int)arg3 wrappingSupported:(BOOL)arg4;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isWrappingEnabled;

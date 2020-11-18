@@ -7,15 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <SpotlightDaemon/MDIndexer-Protocol.h>
+#import <SpotlightDaemon/UMUserPersonaUpdateObserver-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, SPCoreSpotlightInteractionHandler, SPCoreSpotlightTask;
+@class NSArray, NSDictionary, NSMutableSet, NSSet, NSString, NSURL, SPCoreSpotlightInteractionHandler, SPCoreSpotlightTask;
 @protocol CSIndexExtensionDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source, SPCoreSpotlightIndexerDelegate;
 
-@interface SPCoreSpotlightIndexer : NSObject <MDIndexer>
+@interface SPCoreSpotlightIndexer : NSObject <UMUserPersonaUpdateObserver, MDIndexer>
 {
     int cancelFlags[4];
     double _lastUpdateTime;
+    NSMutableSet *_bundlesWithIndexedCoreSpotlightItems;
+    NSSet *_bundlesWithRemoteSearchSupport;
+    NSObject<OS_dispatch_queue> *_appScopingQueue;
     NSArray *_reindexIndexers;
+    BOOL _updatePersonas;
     id<CSIndexExtensionDelegate> extensionDelegate;
     NSDictionary *_fileProviderAppToExtensionBundleMap;
     NSDictionary *_fileProviderExtensionToAppBundleMap;
@@ -30,6 +35,7 @@
     NSObject<OS_dispatch_source> *_reindexAllItemsSource;
     NSObject<OS_dispatch_source> *_reindexAllItemsWithIdentifiersSource;
     SPCoreSpotlightTask *_reindexAllItemsTask;
+    NSMutableSet *_knownPersonas;
     NSObject<OS_dispatch_queue> *_indexQueue;
     NSObject<OS_dispatch_queue> *_firstUnlockQueue;
     NSObject<OS_dispatch_queue> *_reindexAllQueue;
@@ -52,6 +58,8 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *indexQueue; // @synthesize indexQueue=_indexQueue;
 @property (weak) id<SPCoreSpotlightIndexerDelegate> indexerDelegate; // @synthesize indexerDelegate=_indexerDelegate;
 @property (strong, nonatomic) SPCoreSpotlightInteractionHandler *interactionHandler; // @synthesize interactionHandler=_interactionHandler;
+@property (strong, nonatomic) NSMutableSet *knownPersonas; // @synthesize knownPersonas=_knownPersonas;
+@property (readonly) NSURL *personaListURL;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *prefsChangeSource; // @synthesize prefsChangeSource=_prefsChangeSource;
 @property (strong, nonatomic) NSSet *prefsDisabledBundleIDs; // @synthesize prefsDisabledBundleIDs=_prefsDisabledBundleIDs;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *reindexAllItemsSource; // @synthesize reindexAllItemsSource=_reindexAllItemsSource;
@@ -60,6 +68,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *reindexAllQueue; // @synthesize reindexAllQueue=_reindexAllQueue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long transactionCount; // @synthesize transactionCount=_transactionCount;
+@property (nonatomic) BOOL updatePersonas; // @synthesize updatePersonas=_updatePersonas;
 
 + (id)_filterReindexAllExtensions:(id)arg1;
 + (id)allProtectionClasses;
@@ -82,7 +91,7 @@
 - (void)_enumerateIndexersWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateIndexersWithProtectionClasses:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_fetchAccumulatedStorageSizeForBundleId:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_issueCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_issueCommand:(id)arg1 searchContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_migrateIndexExtensionsWithEnumerator:(id)arg1 forced:(BOOL)arg2 migratedBundleIds:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (int)_openIndex:(BOOL)arg1;
 - (void)_registerForPrefsChanges;
@@ -113,6 +122,7 @@
 - (void)deleteAllUserActivities:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteSearchableItemsSinceDate:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)deleteSearchableItemsWithPersonaIds:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)extensionsChanged:(id)arg1;
 - (void)fetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)fetchAttributesForProtectionClass:(id)arg1 attributes:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -121,7 +131,7 @@
 - (void)flush;
 - (void)getDBLogsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleRankingCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)indexFromBundle:(id)arg1 protectionClass:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 itemsHTML:(id)arg6 clientState:(id)arg7 clientStateName:(id)arg8 deletes:(id)arg9 completionHandler:(CDUnknownBlockType)arg10;
+- (void)indexFromBundle:(id)arg1 protectionClass:(id)arg2 personaID:(id)arg3 options:(long long)arg4 items:(id)arg5 itemsText:(id)arg6 itemsHTML:(id)arg7 clientState:(id)arg8 clientStateName:(id)arg9 deletes:(id)arg10 completionHandler:(CDUnknownBlockType)arg11;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 clientStateName:(id)arg4 protectionClass:(id)arg5 forBundleID:(id)arg6 options:(long long)arg7 completionHandler:(CDUnknownBlockType)arg8;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 protectionClass:(id)arg4 forBundleID:(id)arg5 options:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)initWithDelegate:(id)arg1;
@@ -139,6 +149,7 @@
 - (int)openIndex:(BOOL)arg1;
 - (void)performIndexerTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performIndexerTask:(id)arg1 withIndexExtensionsAndCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)personaListDidUpdate;
 - (void)powerStateChanged;
 - (void)preheat;
 - (void)provideDataForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -159,7 +170,7 @@
 - (id)taskForQueryWithQueryString:(id)arg1 queryContext:(id)arg2 eventHandler:(CDUnknownBlockType)arg3 resultsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)taskForTopHitQueryWithQueryString:(id)arg1 queryContext:(id)arg2 eventHandler:(CDUnknownBlockType)arg3 resultsHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)unlock;
-- (void)userPerformedAction:(id)arg1 withItem:(id)arg2 protectionClass:(id)arg3 forBundleID:(id)arg4;
+- (void)userPerformedAction:(id)arg1 withItem:(id)arg2 protectionClass:(id)arg3 forBundleID:(id)arg4 personaID:(id)arg5;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 protectionClass:(id)arg2 forBundleID:(id)arg3 options:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)writeData:(id)arg1 toFile:(id)arg2;
 - (void)writeFileProviderBundleMap:(id)arg1;

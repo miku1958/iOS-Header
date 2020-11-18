@@ -13,6 +13,7 @@
 @interface MNGuidanceLaneInfo : NSObject <NSSecureCoding>
 {
     BOOL _isForManeuver;
+    int _composedGuidanceEventIndex;
     NSUUID *_uniqueID;
     NSArray *_lanes;
     NSDictionary *_variableOverrides;
@@ -21,6 +22,7 @@
     NSArray *_instructions;
 }
 
+@property (readonly, nonatomic) int composedGuidanceEventIndex; // @synthesize composedGuidanceEventIndex=_composedGuidanceEventIndex;
 @property (readonly, nonatomic) long long distanceDetailLevel; // @synthesize distanceDetailLevel=_distanceDetailLevel;
 @property (readonly, nonatomic) NSArray *instructions; // @synthesize instructions=_instructions;
 @property (readonly, nonatomic) BOOL isForManeuver; // @synthesize isForManeuver=_isForManeuver;
@@ -34,7 +36,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithID:(id)arg1 isForManeuver:(BOOL)arg2 lanes:(id)arg3 titles:(id)arg4 instructions:(id)arg5 variableOverrides:(id)arg6 distanceDetailLevel:(long long)arg7;
+- (id)initWithID:(id)arg1 isForManeuver:(BOOL)arg2 lanes:(id)arg3 titles:(id)arg4 instructions:(id)arg5 variableOverrides:(id)arg6 distanceDetailLevel:(long long)arg7 composedGuidanceEventIndex:(int)arg8;
 
 @end
 

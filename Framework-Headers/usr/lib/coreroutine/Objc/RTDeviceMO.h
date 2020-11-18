@@ -6,26 +6,25 @@
 
 #import <coreroutine/RTCloudManagedObject.h>
 
-@class NSDate, NSSet, NSString;
+@class NSSet, NSString;
 
 @interface RTDeviceMO : RTCloudManagedObject
 {
 }
 
 @property (strong, nonatomic) NSSet *addresses; // @dynamic addresses;
-@property (copy, nonatomic) NSDate *creationDate;
+@property (strong, nonatomic) NSSet *deletionRequests; // @dynamic deletionRequests;
 @property (readonly, nonatomic) RTDeviceMO *device;
 @property (copy, nonatomic) NSString *deviceClass; // @dynamic deviceClass;
 @property (copy, nonatomic) NSString *deviceModel; // @dynamic deviceModel;
 @property (copy, nonatomic) NSString *deviceName; // @dynamic deviceName;
-@property (copy, nonatomic) NSDate *expirationDate;
 @property (strong, nonatomic) NSSet *mapItems; // @dynamic mapItems;
 @property (strong, nonatomic) NSSet *places; // @dynamic places;
 @property (strong, nonatomic) NSSet *transitions; // @dynamic transitions;
 @property (strong, nonatomic) NSSet *visits; // @dynamic visits;
 
 + (id)fetchRequest;
-+ (id)managedObjectWithIdentifier:(id)arg1 deviceName:(id)arg2 deviceClass:(id)arg3 deviceModel:(id)arg4 inManagedObjectContext:(id)arg5;
++ (id)managedObjectWithIdentifier:(id)arg1 deviceName:(id)arg2 deviceClass:(id)arg3 deviceModel:(id)arg4 creationDate:(id)arg5 inManagedObjectContext:(id)arg6;
 - (void)setDevice:(id)arg1;
 
 @end

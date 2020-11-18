@@ -12,10 +12,12 @@
 
 @property (nonatomic) BOOL continueRunning;
 @property (nonatomic) BOOL hasContinueRunning;
+@property (nonatomic) BOOL hasRequestsIntentExecution;
 @property (readonly, nonatomic) BOOL hasUnderlyingIntent;
 @property (readonly, nonatomic) BOOL hasUnderlyingIntentResponse;
 @property (readonly, nonatomic) BOOL hasUtterance;
 @property (nonatomic) BOOL hasWaitingForResume;
+@property (nonatomic) BOOL requestsIntentExecution;
 @property (copy, nonatomic) NSArray *steps;
 @property (readonly, nonatomic) unsigned long long stepsCount;
 @property (strong, nonatomic) _INPBArchivedObject *underlyingIntent;

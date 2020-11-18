@@ -6,11 +6,12 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
-#import <PhotoLibraryServices/PLCloudResource-Protocol.h>
+#import <PhotoLibraryServices/PLCloudResourceCommon-Protocol.h>
+#import <PhotoLibraryServices/PLResourceAvailabilityMarking-Protocol.h>
 
 @class CPLScopedIdentifier, NSDate, NSManagedObjectID, NSString, PLCloudMaster, PLManagedAsset;
 
-@interface PLCloudResource : PLManagedObject <PLCloudResource>
+@interface PLCloudResource : PLManagedObject <PLCloudResourceCommon, PLResourceAvailabilityMarking>
 {
 }
 
@@ -35,7 +36,8 @@
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic) short prefetchCount; // @dynamic prefetchCount;
 @property (strong, nonatomic) NSDate *prunedAt; // @dynamic prunedAt;
-@property (readonly, strong, nonatomic) CPLScopedIdentifier *scopedIdentifier;
+@property (readonly, nonatomic) unsigned int resourceRecipeID;
+@property (readonly, nonatomic) CPLScopedIdentifier *scopedIdentifier;
 @property (readonly, nonatomic) unsigned long long sourceCplType;
 @property (nonatomic) int sourceType; // @dynamic sourceType;
 @property (readonly) Class superclass;
@@ -45,25 +47,17 @@
 @property (nonatomic) long long width; // @dynamic width;
 
 + (BOOL)_countOfLocalCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 forMediumSized:(BOOL)arg3 localCount:(unsigned long long *)arg4 unavailableCount:(unsigned long long *)arg5 error:(id *)arg6;
-+ (unsigned long long)bytesNeededToDownloadOriginalResourcesInLibrary:(id)arg1;
++ (unsigned long long)bytesForAllResourcesInLibrary:(id)arg1;
 + (BOOL)countOfLocalCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 localCount:(unsigned long long *)arg3 unavailableCount:(unsigned long long *)arg4 error:(id *)arg5;
 + (BOOL)countOfMediumOriginalLocalCloudResourcesInManagedObjectContext:(id)arg1 localCount:(unsigned long long *)arg2 unavailableCount:(unsigned long long *)arg3 error:(id *)arg4;
 + (id)duplicateCloudResource:(id)arg1 forAsset:(id)arg2 withFilePath:(id)arg3 inManagedObjectContext:(id)arg4;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 forAsset:(id)arg2 withCPLResource:(id)arg3 adjusted:(BOOL)arg4 withCreationDate:(id)arg5;
 + (id)nonLocalResourcesInManagedObjectContext:(id)arg1 forAssetUUIDs:(id)arg2 cplResourceTypes:(id)arg3;
-+ (id)nonOriginalResourceTypes;
-+ (id)originalResourceTypes;
-+ (id)prunePurgeablePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
-+ (id)purgeablePushedCloudResourcePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
-+ (id)purgeableUploadedCloudResourcePredicateForResourceTypes:(id)arg1 urgency:(long long)arg2;
-+ (void)resetCloudResourcesStateForCloudInManagedObjectContext:(id)arg1 hardReset:(BOOL)arg2;
 + (void)resetPrefetchStateForResourcesWithResourceType:(long long)arg1 itemIdentifiers:(id)arg2 inLibrary:(id)arg3;
 - (void)_duplicatePropertiesFromCloudResource:(id)arg1 withFilePath:(id)arg2 forAssetUuid:(id)arg3;
 - (void)applyPropertiesFromCloudResource:(id)arg1;
 - (id)cplResourceIncludeFile:(BOOL)arg1;
-- (void)createSidecarFileForMasterAssetIfNeeded:(id)arg1;
 - (void)markAsLocallyAvailableWithFilePath:(id)arg1;
 - (void)markAsNotLocallyAvailable;
 - (void)prepareForDeletion;

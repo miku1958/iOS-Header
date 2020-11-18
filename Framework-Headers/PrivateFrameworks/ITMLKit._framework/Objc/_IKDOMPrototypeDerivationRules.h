@@ -11,17 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface _IKDOMPrototypeDerivationRules : NSObject
 {
-    NSArray *_conditionalities;
+    NSArray *_mutationRules;
     NSArray *_indexPath;
 }
 
-@property (readonly, copy, nonatomic) NSArray *conditionalities; // @synthesize conditionalities=_conditionalities;
 @property (readonly, copy, nonatomic) NSArray *indexPath; // @synthesize indexPath=_indexPath;
+@property (readonly, copy, nonatomic) NSArray *mutationRules; // @synthesize mutationRules=_mutationRules;
 
 + (id)derivationRulesForDOMElement:(id)arg1;
 + (void)removeRulesFromDOMElement:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithIndexPath:(id)arg1 conditionalities:(id)arg2;
+- (id)initWithIndexPath:(id)arg1 mutationRules:(id)arg2;
 
 @end
 

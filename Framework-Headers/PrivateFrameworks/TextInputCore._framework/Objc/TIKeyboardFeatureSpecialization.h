@@ -6,26 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class TIInputMode;
+@class NSMutableDictionary, NSString, TIInputMode;
 
 @interface TIKeyboardFeatureSpecialization : NSObject
 {
+    NSString *m_softwareLayout;
     struct USet *m_precomposedCharacterSet;
     struct USet *m_acceptableCharacterSet;
+    NSMutableDictionary *m_compositionMaps;
+    NSMutableDictionary *m_reverseCompositionMaps;
+    BOOL _useRelaxedOVSPolicy;
     TIInputMode *_inputMode;
     long long _currentUserInterfaceIdiom;
 }
 
 @property (nonatomic) long long currentUserInterfaceIdiom; // @synthesize currentUserInterfaceIdiom=_currentUserInterfaceIdiom;
 @property (readonly, nonatomic) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
+@property (nonatomic) BOOL useRelaxedOVSPolicy; // @synthesize useRelaxedOVSPolicy=_useRelaxedOVSPolicy;
 
 + (struct USet *)createAcceptableCharacterSetForKeyboardLocale:(id)arg1;
 + (id)createSpecializationForInputMode:(id)arg1;
 - (void).cxx_destruct;
 - (id)accentKeyStringForKeyboardState:(id)arg1;
 - (BOOL)acceptsCharacter:(unsigned int)arg1;
+- (id)allAccentKeyStrings;
 - (BOOL)allowsAutocorrectionOfValidWords;
 - (BOOL)canHandleKeyHitTest;
+- (struct NSDictionary *)compositionMapForLayout:(id)arg1 reverse:(BOOL)arg2;
 - (struct USet *)createAcceptableCharacterSet;
 - (struct TIInputManager *)createInputManager;
 - (void)dealloc;
@@ -36,6 +43,7 @@
 - (id)initWithInputMode:(id)arg1;
 - (id)internalStringToExternal:(id)arg1;
 - (id)keyboardBehaviors;
+- (id)layoutTags;
 - (unsigned long long)maxPriorWordTokensAfterTrimming;
 - (id)nonstopPunctuationCharacters;
 - (const struct USet *)precomposedCharacterSet;

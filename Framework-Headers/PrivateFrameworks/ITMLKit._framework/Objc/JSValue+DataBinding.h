@@ -7,9 +7,9 @@
 #import <JavaScriptCore/JSValue.h>
 
 @interface JSValue (DataBinding)
-- (id)_ikdb_globalObject;
-- (BOOL)ikdb_isArray;
-- (BOOL)ikdb_isObject;
-- (id)ikdb_prototype;
+- (id)_ikdt_globalObject;
+- (BOOL)ikdt_isArray;
+- (BOOL)ikdt_isObject;
+- (id)ikdt_prototype;
 @end
 

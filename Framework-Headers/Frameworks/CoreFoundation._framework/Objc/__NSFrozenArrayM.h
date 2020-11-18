@@ -13,10 +13,9 @@ __attribute__((visibility("hidden")))
     CDStruct_a6934631 storage;
 }
 
-+ (id)__new:(const id *)arg1:(struct __va_list_tag [1])arg2:(unsigned long long)arg3:(BOOL)arg4;
-+ (id)__transferNew:(id *)arg1:(unsigned long long)arg2:(unsigned long long)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
@@ -24,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateObjectsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)indexOfObjectIdenticalTo:(id)arg1;
+- (id)mutableCopy;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;

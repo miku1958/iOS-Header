@@ -13,7 +13,7 @@
     BOOL _isMutable;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)findIndexForObjectID:(id)arg1 newOrderValue:(long long)arg2 hasOrderValueConflictWithObjectID:(id *)arg3;
 - (unsigned long long)indexForObjectID:(id)arg1;

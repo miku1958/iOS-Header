@@ -44,6 +44,7 @@
 - (void)cancelCurrentEndpoint;
 - (id)copyCurrentPath;
 - (id)copyError;
+- (id)description;
 - (void)dumpTimestamps;
 - (void)forceCancel;
 - (int)getConnectedSocket;

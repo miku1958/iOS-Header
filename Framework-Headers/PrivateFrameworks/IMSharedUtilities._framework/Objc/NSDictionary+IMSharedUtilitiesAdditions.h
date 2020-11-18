@@ -6,11 +6,22 @@
 
 #import <Foundation/NSDictionary.h>
 
+@class NSNumber, NSString;
+
 @interface NSDictionary (IMSharedUtilitiesAdditions)
+
+@property (readonly, nonatomic) NSNumber *__im_associatedMessageContentType;
+@property (readonly, nonatomic) NSString *__im_associatedMessagePluginBundleID;
+@property (readonly, nonatomic) NSString *__im_associatedMessagePluginDisplayName;
+@property (readonly, nonatomic) NSString *__im_associatedMessageSummary;
+
++ (id)dictionaryWithAssociatedMessageSummary:(id)arg1 contentType:(unsigned char)arg2 pluginBundleID:(id)arg3 pluginDisplayName:(id)arg4;
++ (id)dictionaryWithMessageSummaryInfoData:(id)arg1;
 - (BOOL)boolValueForKey:(id)arg1 withDefault:(BOOL)arg2;
 - (double)doubleValueForKey:(id)arg1 withDefault:(double)arg2;
 - (float)floatValueForKey:(id)arg1 withDefault:(float)arg2;
 - (long long)integerValueForKey:(id)arg1 withDefault:(long long)arg2;
+- (BOOL)isArchivable_im;
 - (long long)longLongValueForKey:(id)arg1 withDefault:(long long)arg2;
 - (long long)longValueForKey:(id)arg1 withDefault:(long long)arg2;
 - (unsigned long long)unsignedIntegerValueForKey:(id)arg1 withDefault:(unsigned long long)arg2;

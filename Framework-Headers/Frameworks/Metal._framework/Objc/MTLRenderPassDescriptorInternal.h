@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDitherEnabled;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)openGLModeEnabled;
+- (id)rasterizationRateMap;
 - (unsigned long long)renderTargetArrayLength;
 - (unsigned long long)renderTargetHeight;
 - (unsigned long long)renderTargetWidth;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)setFineGrainedBackgroundVisibilityEnabled:(BOOL)arg1;
 - (void)setImageblockSampleLength:(unsigned long long)arg1;
 - (void)setOpenGLModeEnabled:(BOOL)arg1;
+- (void)setRasterizationRateMap:(id)arg1;
 - (void)setRenderTargetArrayLength:(unsigned long long)arg1;
 - (void)setRenderTargetHeight:(unsigned long long)arg1;
 - (void)setRenderTargetWidth:(unsigned long long)arg1;

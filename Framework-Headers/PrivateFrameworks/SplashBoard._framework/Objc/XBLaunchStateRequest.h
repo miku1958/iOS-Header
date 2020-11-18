@@ -16,6 +16,7 @@
     FBSDisplayConfiguration *_displayConfiguration;
     NSString *_groupID;
     long long _interfaceOrientation;
+    long long _userInterfaceStyle;
     unsigned long long _statusBarState;
     NSString *_urlSchemeName;
     NSString *_launchInterfaceIdentifier;
@@ -35,6 +36,7 @@
 @property (nonatomic) unsigned long long statusBarState; // @synthesize statusBarState=_statusBarState;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *urlSchemeName; // @synthesize urlSchemeName=_urlSchemeName;
+@property (nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

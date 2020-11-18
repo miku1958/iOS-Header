@@ -10,24 +10,25 @@
 
 @interface PLPrimaryResourceDataStoreFilePathKey : PLPrimaryResourceDataStoreKey
 {
-    struct PLPrimaryDataStoreKeyStrategy_FilePath_KeyStruct _keyStruct;
+    struct PLPrimaryDataStoreKeyStrategy_FilePath_KeyStruct_V1 _keyStruct;
     NSString *_filePathSuffix;
 }
 
 @property (copy, nonatomic) NSString *filePathSuffix; // @synthesize filePathSuffix=_filePathSuffix;
-@property (nonatomic) struct PLPrimaryDataStoreKeyStrategy_FilePath_KeyStruct keyStruct; // @synthesize keyStruct=_keyStruct;
+@property (nonatomic) struct PLPrimaryDataStoreKeyStrategy_FilePath_KeyStruct_V1 keyStruct; // @synthesize keyStruct=_keyStruct;
 
 + (id)fileURLForPayloadKeyData:(unsigned long long)arg1 assetID:(id)arg2;
 + (unsigned short)keyLengthWithDataPreview:(unsigned char)arg1;
 - (void).cxx_destruct;
 - (id)descriptionForAssetID:(id)arg1;
+- (id)extension;
 - (id)fileURLForAssetID:(id)arg1;
 - (id)initFromExistingLocationOfExternalResource:(id)arg1 asset:(id)arg2;
-- (id)initWithFilePath:(id)arg1;
+- (id)initWithFilePath:(id)arg1 andLibraryID:(id)arg2;
 - (id)initWithKeyStruct:(const void *)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (id)keyData;
-- (id)store;
+- (id)uniformTypeIdentifier;
+- (id)validateForAssetID:(id)arg1 resourceIdentity:(id)arg2;
 
 @end
 

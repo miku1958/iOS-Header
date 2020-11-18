@@ -8,10 +8,12 @@
 
 @interface PXMemoriesFeedWidgetDataSourceManager : PXMemoriesFeedDataSourceManagerBase
 {
+    BOOL _onlyFavorites;
     unsigned long long _maxCount;
 }
 
 @property (nonatomic) unsigned long long maxCount; // @synthesize maxCount=_maxCount;
+@property (nonatomic) BOOL onlyFavorites; // @synthesize onlyFavorites=_onlyFavorites;
 
 - (unsigned long long)_extendedMaxCount;
 - (id)_generateEntryFromMemories:(id)arg1;

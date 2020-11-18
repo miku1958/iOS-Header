@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableDictionary;
 @protocol MPRemoteCommandDelegate_Internal, MPRemoteCommandDelegate_Private, OS_dispatch_queue;
 
 @interface MPRemoteCommand : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
-    NSMutableArray *_targetInvocations;
-    NSString *_contextID;
+    NSMutableDictionary *_handlers;
     BOOL _enabled;
     BOOL _observing;
     unsigned int _mediaRemoteCommandType;
@@ -31,11 +30,11 @@
 @property (readonly, nonatomic, getter=isSupportedAndEnabled) BOOL supportedAndEnabled;
 
 - (void).cxx_destruct;
-- (void)_addTarget:(id)arg1 action:(SEL)arg2 retainTarget:(BOOL)arg3;
 - (id)_mediaRemoteCommandInfoOptions;
 - (void)addTarget:(id)arg1 action:(SEL)arg2;
 - (id)addTargetWithHandler:(CDUnknownBlockType)arg1;
 - (struct _MRMediaRemoteCommandInfo *)createCommandInfoRepresentation;
+- (id)description;
 - (id)initWithMediaRemoteCommandType:(unsigned int)arg1;
 - (void)invokeCommandWithEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)isEnabledForContentItemIdentifier:(id)arg1;

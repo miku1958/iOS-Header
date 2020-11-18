@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <CameraUI/CAMApertureButtonDelegate-Protocol.h>
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
+#import <CameraUI/CEKApertureButtonDelegate-Protocol.h>
 
-@class CAMApertureButton, CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMLivePhotoButton, CAMMessagesPhotosButton, CAMTimerButton, NSArray, NSSet, PUReviewScreenDoneButton;
+@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMIntensityButton, CAMLivePhotoButton, CAMMessagesPhotosButton, CAMTimerButton, CEKApertureButton, NSArray, NSSet, PUReviewScreenDoneButton;
 @protocol CAMControlVisibilityUpdateDelegate;
 
-@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CAMApertureButtonDelegate>
+@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CEKApertureButtonDelegate>
 {
     id<CAMControlVisibilityUpdateDelegate> _visibilityUpdateDelegate;
     long long _style;
@@ -22,7 +22,8 @@
     CAMHDRButton *_HDRButton;
     CAMFlipButton *_flipButton;
     CAMFilterButton *_filterButton;
-    CAMApertureButton *_apertureButton;
+    CEKApertureButton *_apertureButton;
+    CAMIntensityButton *_intensityButton;
     CAMTimerButton *_timerButton;
     CAMLivePhotoButton *_livePhotoButton;
     CAMMessagesPhotosButton *_photosButton;
@@ -44,7 +45,7 @@
 @property (strong, nonatomic, setter=_setExpandedMenuButton:) CAMExpandableMenuButton *_expandedMenuButton; // @synthesize _expandedMenuButton=__expandedMenuButton;
 @property (nonatomic, setter=_setExpandedMenuButtonTappableInsets:) struct UIEdgeInsets _expandedMenuButtonTappableInsets; // @synthesize _expandedMenuButtonTappableInsets=__expandedMenuButtonTappableInsets;
 @property (readonly, nonatomic) long long _mode; // @synthesize _mode=__mode;
-@property (strong, nonatomic) CAMApertureButton *apertureButton; // @synthesize apertureButton=_apertureButton;
+@property (strong, nonatomic) CEKApertureButton *apertureButton; // @synthesize apertureButton=_apertureButton;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (strong, nonatomic) PUReviewScreenDoneButton *doneButton; // @synthesize doneButton=_doneButton;
 @property (strong, nonatomic) CAMElapsedTimeView *elapsedTimeView; // @synthesize elapsedTimeView=_elapsedTimeView;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property (readonly, nonatomic, getter=isFloating) BOOL floating;
 @property (strong, nonatomic) CAMFramerateIndicatorView *framerateIndicatorView; // @synthesize framerateIndicatorView=_framerateIndicatorView;
+@property (strong, nonatomic) CAMIntensityButton *intensityButton; // @synthesize intensityButton=_intensityButton;
 @property (strong, nonatomic) CAMLivePhotoButton *livePhotoButton; // @synthesize livePhotoButton=_livePhotoButton;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (strong, nonatomic) CAMMessagesPhotosButton *photosButton; // @synthesize photosButton=_photosButton;
@@ -84,7 +86,7 @@
 - (BOOL)_shouldExpandButtonsHorizontally;
 - (BOOL)_shouldHideSubview:(id)arg1;
 - (void)_updateControlVisibilityAnimated:(BOOL)arg1;
-- (void)apertureButtonNeedsLayout:(id)arg1;
+- (void)apertureButtonNeedsLayout:(id)arg1 animated:(BOOL)arg2;
 - (void)collapseMenuButton:(id)arg1 animated:(BOOL)arg2;
 - (struct CGRect)collapsedFrameForMenuButton:(id)arg1;
 - (void)configureForMode:(long long)arg1;
@@ -108,6 +110,7 @@
 - (BOOL)shouldHideFlipButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideFramerateIndicatorForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideHDRButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideIntensityButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideLivePhotoButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHidePhotosButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideTimerButtonForGraphConfiguration:(id)arg1;

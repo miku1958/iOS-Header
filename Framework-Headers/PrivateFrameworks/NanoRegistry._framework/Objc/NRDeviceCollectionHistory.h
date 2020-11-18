@@ -67,7 +67,6 @@
 - (void)notifyHistoryObserversWithEntry:(id)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (void)pruneStateCacheItems:(unsigned long long)arg1;
-- (void)purgeWorkingSet;
 - (void)removeObserver:(id)arg1;
 - (id)stateAtIndex:(unsigned long long)arg1;
 - (id)switchDeviceIDFromDiff:(id)arg1;

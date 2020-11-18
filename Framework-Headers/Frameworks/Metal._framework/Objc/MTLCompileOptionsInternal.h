@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _languageVersion;
     BOOL _compileTimeStatisticsEnabled;
     NSString *_additionalCompilerArguments;
+    unsigned char _sourceLanguage;
 }
 
 - (id)additionalCompilerArguments;
@@ -28,10 +29,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)debuggingEnabled;
 - (id)description;
+- (id)exportDictionary;
 - (BOOL)fastMathEnabled;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (BOOL)glBufferBindPoints;
 - (unsigned long long)hash;
+- (void)importDictionary:(id)arg1;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)languageVersion;
@@ -43,7 +46,9 @@ __attribute__((visibility("hidden")))
 - (void)setGlBufferBindPoints:(BOOL)arg1;
 - (void)setLanguageVersion:(unsigned long long)arg1;
 - (void)setPreprocessorMacros:(id)arg1;
+- (void)setSourceLanguage:(unsigned char)arg1;
 - (void)setTracingEnabled:(BOOL)arg1;
+- (unsigned char)sourceLanguage;
 - (BOOL)tracingEnabled;
 
 @end

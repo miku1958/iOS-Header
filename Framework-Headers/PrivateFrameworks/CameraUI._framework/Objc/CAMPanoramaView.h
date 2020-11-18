@@ -36,6 +36,7 @@
     double *__previousSpeeds;
     double __currentAverageSpeed;
     unsigned long long __arrowUpdateFrame;
+    struct CGSize _panoramaCaptureSize;
     struct CGPoint __initialArrowCenter;
     struct CGRect __lastLayoutBounds;
 }
@@ -67,11 +68,13 @@
 @property (readonly, nonatomic) UIView *instructionView;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic, getter=isPainting, setter=_setPainting:) BOOL painting; // @synthesize painting=_painting;
+@property (nonatomic) struct CGSize panoramaCaptureSize; // @synthesize panoramaCaptureSize=_panoramaCaptureSize;
 @property (readonly, nonatomic) CAMPanoramaPreviewView *previewView; // @synthesize previewView=_previewView;
 
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (void)_cancelDelayedMoveInstructions;
+- (struct CGRect)_frameForArrowViewWithDirection:(long long)arg1 offset:(double)arg2;
 - (void)_hideArrowInstructionsAfterDelay;
 - (void)_hideInstructionLabel;
 - (void)_hideSpeedInstructionsAfterDelay;

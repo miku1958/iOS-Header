@@ -13,13 +13,16 @@
 @interface MNTracePlaybackDetails : PBCodable <NSCopying>
 {
     double _currentPosition;
+    double _pedestrianTraceStartRelativeTimestamp;
     double _traceDuration;
     NSMutableArray *_bookmarks;
     int _eventType;
+    NSString *_pedestrianTracePath;
     unsigned int _recordedBookmarkID;
     NSString *_tracePath;
     struct {
         unsigned int currentPosition:1;
+        unsigned int pedestrianTraceStartRelativeTimestamp:1;
         unsigned int traceDuration:1;
         unsigned int eventType:1;
         unsigned int recordedBookmarkID:1;
@@ -31,9 +34,13 @@
 @property (nonatomic) int eventType; // @synthesize eventType=_eventType;
 @property (nonatomic) BOOL hasCurrentPosition;
 @property (nonatomic) BOOL hasEventType;
+@property (readonly, nonatomic) BOOL hasPedestrianTracePath;
+@property (nonatomic) BOOL hasPedestrianTraceStartRelativeTimestamp;
 @property (nonatomic) BOOL hasRecordedBookmarkID;
 @property (nonatomic) BOOL hasTraceDuration;
 @property (readonly, nonatomic) BOOL hasTracePath;
+@property (strong, nonatomic) NSString *pedestrianTracePath; // @synthesize pedestrianTracePath=_pedestrianTracePath;
+@property (nonatomic) double pedestrianTraceStartRelativeTimestamp; // @synthesize pedestrianTraceStartRelativeTimestamp=_pedestrianTraceStartRelativeTimestamp;
 @property (nonatomic) unsigned int recordedBookmarkID; // @synthesize recordedBookmarkID=_recordedBookmarkID;
 @property (nonatomic) double traceDuration; // @synthesize traceDuration=_traceDuration;
 @property (strong, nonatomic) NSString *tracePath; // @synthesize tracePath=_tracePath;

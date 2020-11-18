@@ -10,7 +10,9 @@
 {
 }
 
++ (id)localizedStringForString:(id)arg1 bundle:(id)arg2 table:(id)arg3 lookupBlock:(CDUnknownBlockType)arg4 returningNilIfNotFound:(BOOL)arg5;
 + (id)localizedStringForString:(id)arg1 bundle:(id)arg2 table:(id)arg3 returningNilIfNotFound:(BOOL)arg4;
++ (id)localizedStringForString:(id)arg1 class:(Class)arg2 lookupBlock:(CDUnknownBlockType)arg3 returningNilIfNotFound:(BOOL)arg4;
 + (id)localizedStringForString:(id)arg1 class:(Class)arg2 returningNilIfNotFound:(BOOL)arg3;
 
 @end

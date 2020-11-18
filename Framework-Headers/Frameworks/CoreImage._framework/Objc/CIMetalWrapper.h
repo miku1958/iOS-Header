@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (id)attributes;
 - (void)dealloc;
+- (id)dummyImagesForImages:(id)arg1;
 - (id)init;
 - (id)inputKeys;
 - (id)outputImage;

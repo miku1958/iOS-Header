@@ -8,19 +8,28 @@
 
 #import <DataDetectorsCore/NSSecureCoding-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString, NSURL;
 
 @interface DDScannerResult : NSObject <NSSecureCoding>
 {
     struct __DDResult *_coreResult;
     NSArray *_subResultsCache;
+    NSURL *_cachedURL;
+    BOOL _hasCachedURL;
 }
 
+@property (readonly, nonatomic) int category;
+@property (readonly, nonatomic) NSString *matchedString;
 @property struct _NSRange range;
+@property (readonly, nonatomic) NSString *type;
+@property (readonly, nonatomic) NSURL *url;
+@property (readonly, nonatomic) struct _NSRange urlificationRange;
+@property (readonly, nonatomic) NSString *value;
 
 + (id)resultFromCoreResult:(struct __DDResult *)arg1;
 + (id)resultsFromCoreResults:(struct __CFArray *)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (CDStruct_912cb5d2)cfRange;
 - (id)contextualData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -40,15 +49,13 @@
 - (id)initWithCoreResult:(struct __DDResult *)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)location;
-- (id)matchedString;
 - (void)offsetRangeBy:(long long)arg1;
 - (id)rawValue;
 - (long long)score;
 - (void)setSubResults:(id)arg1;
 - (void)setType:(id)arg1;
 - (id)subResults;
-- (id)type;
-- (id)value;
+- (BOOL)typeIs:(struct __CFString *)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

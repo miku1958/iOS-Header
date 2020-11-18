@@ -10,16 +10,14 @@
 {
 }
 
-+ (void)_queue_destroyPort:(unsigned int)arg1;
++ (struct _xpc_type_s *)_decodeType;
 + (id)_rightDescription;
-+ (BOOL)supportsSecureCoding;
-- (BOOL)_queue_isUsable;
-- (void)encodeWithCoder:(id)arg1;
-- (void)encodeWithXPCDictionary:(id)arg1;
++ (unsigned int)_unsafe_decodePort:(id)arg1;
++ (void)_unsafe_destroyPort:(unsigned int)arg1;
++ (BOOL)_unsafe_isUsablePort:(unsigned int)arg1;
+- (id)_lock_encodePort:(unsigned int)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithPort:(unsigned int)arg1;
-- (id)initWithXPCDictionary:(id)arg1;
 
 @end
 

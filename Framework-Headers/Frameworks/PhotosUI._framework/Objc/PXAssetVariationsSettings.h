@@ -13,21 +13,17 @@
     BOOL _simulateSavingFailure;
     BOOL _useNeutrinoRendering;
     BOOL _showStatusInDisclosureLabel;
-    BOOL _allowOrbPreview;
     BOOL _showLoopBadges;
     BOOL _invalidateCachedPreviews;
     BOOL _useLiveRenderedPreviews;
-    long long _selectionBehavior;
     double _selectionDetailsDismissalDelay;
     long long _suggestionsScheme;
     long long _layoutStyle;
 }
 
 @property (nonatomic) BOOL addSimulatedProgressComponent; // @synthesize addSimulatedProgressComponent=_addSimulatedProgressComponent;
-@property (nonatomic) BOOL allowOrbPreview; // @synthesize allowOrbPreview=_allowOrbPreview;
 @property (nonatomic) BOOL invalidateCachedPreviews; // @synthesize invalidateCachedPreviews=_invalidateCachedPreviews;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
-@property (nonatomic) long long selectionBehavior; // @synthesize selectionBehavior=_selectionBehavior;
 @property (nonatomic) double selectionDetailsDismissalDelay; // @synthesize selectionDetailsDismissalDelay=_selectionDetailsDismissalDelay;
 @property (nonatomic) BOOL showLoopBadges; // @synthesize showLoopBadges=_showLoopBadges;
 @property (nonatomic) BOOL showStatusInDisclosureLabel; // @synthesize showStatusInDisclosureLabel=_showStatusInDisclosureLabel;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class PHAssetCollection, PHImportResults, PUImportActionCoordinator, PUImportSessionInfo;
+@class PHAssetCollection, PHImportResults, PUImportActionCoordinator, PXImportSessionInfo;
 
 @protocol PUImportActionCoordinatorDelegate
-- (void)actionCoordinator:(PUImportActionCoordinator *)arg1 didCompleteWithImportSession:(PUImportSessionInfo *)arg2 results:(PHImportResults *)arg3;
+- (void)actionCoordinator:(PUImportActionCoordinator *)arg1 didCompleteWithImportSession:(PXImportSessionInfo *)arg2 results:(PHImportResults *)arg3;
 - (void)actionCoordinatorDidBeginDelete:(PUImportActionCoordinator *)arg1;
 - (void)actionCoordinatorDidBeginImport:(PUImportActionCoordinator *)arg1;
 - (void)actionCoordinatorDidCancelImport:(PUImportActionCoordinator *)arg1;

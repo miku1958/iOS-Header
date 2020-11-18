@@ -19,20 +19,20 @@ __attribute__((visibility("hidden")))
     int _alertType;
     int _travelState;
     struct {
-        unsigned int sessionID:1;
-        unsigned int currentTimestamp:1;
-        unsigned int eventTimestamp:1;
-        unsigned int travelDuration:1;
-        unsigned int actionType:1;
-        unsigned int alertType:1;
-        unsigned int travelState:1;
-    } _has;
+        unsigned int has_sessionID:1;
+        unsigned int has_currentTimestamp:1;
+        unsigned int has_eventTimestamp:1;
+        unsigned int has_travelDuration:1;
+        unsigned int has_actionType:1;
+        unsigned int has_alertType:1;
+        unsigned int has_travelState:1;
+    } _flags;
 }
 
-@property (nonatomic) int actionType; // @synthesize actionType=_actionType;
-@property (nonatomic) int alertType; // @synthesize alertType=_alertType;
-@property (nonatomic) double currentTimestamp; // @synthesize currentTimestamp=_currentTimestamp;
-@property (nonatomic) double eventTimestamp; // @synthesize eventTimestamp=_eventTimestamp;
+@property (nonatomic) int actionType;
+@property (nonatomic) int alertType;
+@property (nonatomic) double currentTimestamp;
+@property (nonatomic) double eventTimestamp;
 @property (nonatomic) BOOL hasActionType;
 @property (nonatomic) BOOL hasAlertType;
 @property (nonatomic) BOOL hasCurrentTimestamp;
@@ -40,10 +40,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasSessionID;
 @property (nonatomic) BOOL hasTravelDuration;
 @property (nonatomic) BOOL hasTravelState;
-@property (nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
-@property (nonatomic) double travelDuration; // @synthesize travelDuration=_travelDuration;
-@property (nonatomic) int travelState; // @synthesize travelState=_travelState;
+@property (nonatomic) struct GEOSessionID sessionID;
+@property (nonatomic) double travelDuration;
+@property (nonatomic) int travelState;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsActionType:(id)arg1;
 - (int)StringAsAlertType:(id)arg1;
 - (int)StringAsTravelState:(id)arg1;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)travelStateAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

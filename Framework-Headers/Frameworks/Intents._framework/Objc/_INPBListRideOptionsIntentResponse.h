@@ -18,11 +18,13 @@
         unsigned int supportsApplePayForPayment:1;
     } _has;
     BOOL _supportsApplePayForPayment;
+    BOOL __encodeLegacyGloryData;
     _INPBTimestamp *_expirationDate;
     NSArray *_paymentMethods;
     NSArray *_rideOptions;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBTimestamp *expirationDate; // @synthesize expirationDate=_expirationDate;
@@ -38,6 +40,7 @@
 
 + (Class)paymentMethodsType;
 + (Class)rideOptionsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addPaymentMethods:(id)arg1;
 - (void)addRideOptions:(id)arg1;
@@ -45,6 +48,8 @@
 - (void)clearRideOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)paymentMethodsAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;

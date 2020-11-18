@@ -39,8 +39,6 @@
 - (void)handleNextButtonTapped:(id)arg1;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 applyPage:(id)arg3;
 - (id)onPresentationRemoveViewControllersAfterMarker;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (BOOL)shouldAppearWithFirstEmptyFieldAsFirstResponder;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

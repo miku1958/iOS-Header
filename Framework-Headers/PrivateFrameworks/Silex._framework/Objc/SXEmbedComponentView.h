@@ -13,7 +13,7 @@
 #import <Silex/WKScriptMessageHandler-Protocol.h>
 #import <Silex/WKUIDelegate-Protocol.h>
 
-@class NFMultiDelegate, NSMutableSet, NSString, SXEmbedResource, SXWebCrashRetryThrottler, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView;
+@class NFMultiDelegate, NSMutableSet, NSString, SXEmbedResource, SXRelatedWebViewCache, SXWebCrashRetryThrottler, UIActivityIndicatorView, UILabel, WKNavigation, WKWebView, WKWebsiteDataStore;
 @protocol SXComponentActionHandler, SXEmbedService, SXEmbedType, SXLayoutInvalidator, SXReachabilityProvider;
 
 @interface SXEmbedComponentView : SXComponentView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, UIGestureRecognizerDelegate, UIScrollViewDelegate, SXViewportChangeListener>
@@ -37,6 +37,8 @@
     UIActivityIndicatorView *_activityIndicator;
     WKNavigation *_initialNavigation;
     NFMultiDelegate *_scriptMessageHandler;
+    WKWebsiteDataStore *_dataStore;
+    SXRelatedWebViewCache *_relatedWebViewCache;
     struct CGSize _currentlyLayoutingForSize;
     struct CGSize _currentLayoutSize;
     struct CGSize _currentViewportSize;
@@ -48,6 +50,7 @@
 @property (nonatomic) struct CGSize currentLayoutSize; // @synthesize currentLayoutSize=_currentLayoutSize;
 @property (nonatomic) struct CGSize currentViewportSize; // @synthesize currentViewportSize=_currentViewportSize;
 @property (nonatomic) struct CGSize currentlyLayoutingForSize; // @synthesize currentlyLayoutingForSize=_currentlyLayoutingForSize;
+@property (readonly, nonatomic) WKWebsiteDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) id<SXEmbedType> embedConfiguration; // @synthesize embedConfiguration=_embedConfiguration;
@@ -62,6 +65,7 @@
 @property (nonatomic) BOOL isCurrentlyLoadingEmbedData; // @synthesize isCurrentlyLoadingEmbedData=_isCurrentlyLoadingEmbedData;
 @property (readonly, nonatomic) id<SXLayoutInvalidator> layoutInvalidator; // @synthesize layoutInvalidator=_layoutInvalidator;
 @property (readonly, nonatomic) id<SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
+@property (readonly, nonatomic) SXRelatedWebViewCache *relatedWebViewCache; // @synthesize relatedWebViewCache=_relatedWebViewCache;
 @property (readonly, nonatomic) NFMultiDelegate *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *userScript; // @synthesize userScript=_userScript;
@@ -84,13 +88,16 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)handleError:(id)arg1;
 - (BOOL)hasLoadedEmbedData;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedService:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 reachabilityProvider:(id)arg5 embedService:(id)arg6 actionHandler:(id)arg7 layoutInvalidator:(id)arg8 websiteDataStore:(id)arg9 relatedWebViewCache:(id)arg10;
 - (double)initialScale;
 - (void)layoutWebViewForSize:(struct CGSize)arg1;
+- (void)loadComponent:(id)arg1;
 - (void)loadEmbedData;
 - (void)loadEmbedIfNeeded;
+- (void)loadWebView;
 - (void)loadWebViewIfNeeded;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)prewarmWebView;
 - (void)reloadEmbed;
 - (void)removeScriptMessageHandlers;
 - (void)renderContents;

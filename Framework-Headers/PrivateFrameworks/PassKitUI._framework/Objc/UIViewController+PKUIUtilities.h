@@ -7,6 +7,13 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (PKUIUtilities)
+- (void)_pk_presentViewController:(id)arg1 animated:(BOOL)arg2 transition:(int)arg3 popToViewControllerAfterPresentation:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
+- (void)pk_paymentSetupPreflight:(CDUnknownBlockType)arg1;
+- (void)pk_paymentSetupSetHideSetupLaterButton:(BOOL)arg1;
+- (void)pk_presentViewController:(id)arg1 animated:(BOOL)arg2 popToViewControllerAfterPresentation:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)pk_presentViewController:(id)arg1 transition:(int)arg2 popToViewControllerAfterPresentation:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
 - (id)pkui_frontMostViewController;
 - (void)pkui_setNeedsNavigationBarUpdate;

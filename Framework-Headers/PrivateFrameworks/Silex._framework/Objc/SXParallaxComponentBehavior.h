@@ -15,7 +15,6 @@
 @property (readonly, nonatomic) int direction; // @dynamic direction;
 @property (readonly, nonatomic) double factor; // @dynamic factor;
 
-+ (id)typeString;
 - (int)directionWithValue:(id)arg1 withType:(int)arg2;
 - (Class)handlerClassForComponent:(id)arg1;
 

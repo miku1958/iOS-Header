@@ -13,6 +13,7 @@
 - (void)storeRemoteViewControllerNeedsTabSelection:(SKStoreRemoteViewController *)arg1;
 
 @optional
+- (void)storeRemoteViewControllerDidDismiss;
 - (void)storeRemoteViewControllerTerminatedWithError:(NSError *)arg1;
 @end
 

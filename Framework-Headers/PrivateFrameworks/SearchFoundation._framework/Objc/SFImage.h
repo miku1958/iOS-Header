@@ -64,6 +64,7 @@
 - (BOOL)hasSource;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)loadImageDataWithCompletionAndErrorHandler:(CDUnknownBlockType)arg1;
 - (void)loadImageDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 

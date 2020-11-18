@@ -9,20 +9,19 @@
 #import <iWorkImport/TSPRemoteDataStorageDelegate-Protocol.h>
 #import <iWorkImport/TSPSplitableData-Protocol.h>
 
-@class NSDate, NSString, TSPDataAttributes, TSPDataManager, TSPDataMetadata, TSPDigest, TSPObjectContext;
+@class NSDate, NSString, TSPDataAttributes, TSPDataManager, TSPDataMetadata, TSPDataUniqueIdentifier, TSPDigest, TSPObjectContext;
 @protocol OS_dispatch_queue, TSPDataStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSPData : NSObject <TSPSplitableData, TSPRemoteDataStorageDelegate>
 {
-    _Atomic int _didCull;
-    long long _identifier;
-    TSPDigest *_digest;
+    _Atomic BOOL _didCull;
     NSObject<OS_dispatch_queue> *_accessQueue;
     id<TSPDataStorage> _storage;
     NSString *_filename;
     TSPDataAttributes *_attributes;
-    BOOL _isDeallocating;
+    long long _identifier;
+    TSPDataUniqueIdentifier *_uniqueIdentifier;
     TSPDataManager *_manager;
     NSDate *_lastModificationDate;
     TSPDataMetadata *_metadata;
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, getter=isAcknowledgedByServer) BOOL acknowledgedByServer;
 @property (copy) TSPDataAttributes *attributes;
-@property (readonly, nonatomic) TSPObjectContext *context;
+@property (readonly, weak, nonatomic) TSPObjectContext *context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) TSPDigest *digest;
@@ -61,11 +60,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=tsd_setShouldBeInterpretedAsGenericIfUntagged:) BOOL tsd_shouldBeInterpretedAsGenericIfUntagged;
 @property (readonly, nonatomic) unsigned long long tsp_length;
 @property (readonly, nonatomic) NSString *type;
+@property (readonly, nonatomic) TSPDataUniqueIdentifier *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy, nonatomic) TSPDataAttributes *unsafeAttributes; // @synthesize unsafeAttributes=_attributes;
 
 + (void)addCullingListener:(id)arg1;
-+ (id)cullingListeners;
-+ (id)cullingListenersQueue;
 + (id)dataFromDataRep:(id)arg1 filename:(id)arg2 context:(id)arg3;
 + (id)dataFromNSData:(id)arg1 filename:(id)arg2 context:(id)arg3;
 + (id)dataFromReadChannel:(id)arg1 filename:(id)arg2 context:(id)arg3;
@@ -73,22 +71,17 @@ __attribute__((visibility("hidden")))
 + (id)dataFromURL:(id)arg1 useExternalReferenceIfAllowed:(BOOL)arg2 context:(id)arg3;
 + (id)dataFromURL:(id)arg1 useExternalReferenceIfAllowed:(BOOL)arg2 useFileCoordination:(BOOL)arg3 context:(id)arg4;
 + (id)dataFromURL:(id)arg1 useExternalReferenceIfAllowed:(BOOL)arg2 useFileCoordination:(BOOL)arg3 filename:(id)arg4 context:(id)arg5;
-+ (id)dataWithPattern4:(const char *)arg1 filename:(id)arg2 context:(id)arg3;
-+ (id)digestForDataWithPattern4:(const char *)arg1;
-+ (id)digestStringForDataWithPattern4:(const char *)arg1;
 + (BOOL)isSupportedURL:(id)arg1;
 + (id)normalizedExtensionForFilename:(id)arg1;
-+ (id)nsDataWithPattern4:(const char *)arg1;
 + (id)null;
 + (id)pasteboardTypeForIdentifier:(long long)arg1;
++ (void)performDataCullingOperationSynchronously:(BOOL)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)readOnlyDataFromNSData:(id)arg1 filename:(id)arg2;
 + (id)readOnlyDataFromURL:(id)arg1;
-+ (id)readOnlyDataWithPattern4:(const char *)arg1 filename:(id)arg2;
 + (id)remoteDataWithURL:(id)arg1 digest:(id)arg2 filename:(id)arg3 canDownload:(BOOL)arg4 downloadPriority:(long long)arg5 context:(id)arg6;
 + (void)removeCullingListener:(id)arg1;
 + (id)requiredAVAssetOptions;
 + (id)resourceNameForFilename:(id)arg1 identifier:(long long)arg2;
-+ (void)temporaryNSDataWithPattern4:(const char *)arg1 accessor:(CDUnknownBlockType)arg2;
 + (id)typeForFilename:(id)arg1;
 + (BOOL)writeStorage:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
@@ -120,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (id)pasteboardType;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
 - (void)performInputStreamReadWithAccessor:(CDUnknownBlockType)arg1;
+- (struct CGSize)pixelSize;
 - (id)preferredFilename;
 - (void)setFallbackColor:(id)arg1;
 - (void)setFilename:(id)arg1 storage:(id)arg2;
@@ -129,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (void)tsp_splitDataWithMaxSize:(unsigned long long)arg1 subdataHandlerBlock:(CDUnknownBlockType)arg2;
 - (void)upgradeFallbackColorIfNeeded;
 - (void)willCull;
+- (void)willCullWithFlags:(unsigned long long)arg1;
 - (BOOL)writeToURL:(id)arg1 error:(id *)arg2;
 
 @end

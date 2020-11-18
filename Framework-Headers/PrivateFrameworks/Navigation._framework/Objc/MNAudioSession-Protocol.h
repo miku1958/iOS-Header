@@ -16,6 +16,7 @@
 - (void)beginSession;
 - (void)clearAllAnnouncements;
 - (void)endSession;
+- (BOOL)isSpeaking;
 - (void)prepareToAnnounce;
 - (void)speak:(NSString *)arg1 shortPromptType:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3 completionBlock:(void (^)(int))arg4;
 - (void)speak:(NSString *)arg1 shortPromptType:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3 minimumRequiredLevel:(unsigned long long)arg4 completionBlock:(void (^)(int))arg5;

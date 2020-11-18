@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
 
 @end

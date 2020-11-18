@@ -21,18 +21,18 @@
     SearchUIWatchListCardsManager *_manager;
 }
 
-@property long long buttonState; // @synthesize buttonState=_buttonState;
-@property (strong) SFWatchListCardSection *cardSection; // @dynamic cardSection;
+@property (nonatomic) long long buttonState; // @synthesize buttonState=_buttonState;
+@property (strong, nonatomic) SFWatchListCardSection *cardSection; // @dynamic cardSection;
 @property (weak) id<SearchUIWatchListCardRowModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL hasError; // @synthesize hasError=_hasError;
-@property BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
-@property (strong) SFImage *image; // @synthesize image=_image;
-@property (strong) SearchUIWatchListCardsManager *manager; // @synthesize manager=_manager;
-@property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
-@property (strong) NSString *text; // @synthesize text=_text;
+@property (nonatomic) BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
+@property (strong, nonatomic) SFImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) SearchUIWatchListCardsManager *manager; // @synthesize manager=_manager;
+@property (strong, nonatomic) SFPunchout *punchout; // @synthesize punchout=_punchout;
+@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
-- (id)initWithResult:(id)arg1 cardSection:(id)arg2 asyncRowManager:(id)arg3;
+- (id)initWithResult:(id)arg1 cardSection:(id)arg2 asyncRowManager:(id)arg3 queryId:(unsigned long long)arg4;
 - (int)separatorStyle;
 - (void)toggleAddToUpNextWithFeedbackDelegate:(id)arg1;
 - (void)updateWithText:(id)arg1 buttonState:(long long)arg2;

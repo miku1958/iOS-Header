@@ -25,11 +25,14 @@ __attribute__((visibility("hidden")))
 + (BOOL)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
 + (id)previewActionsWithURL:(id)arg1 validatedURL:(id)arg2 result:(struct __DDResult *)arg3 context:(id)arg4;
 + (id)validatedURLWithURL:(id)arg1 result:(struct __DDResult *)arg2;
+- (id)additionalMenuActions;
 - (id)commitURL;
 - (id)createViewController;
+- (id)menuActions;
 - (BOOL)requiresEmbeddingNavigationController;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (void)setPreviewMode:(BOOL)arg1;
+- (BOOL)showMenuTitle;
 
 @end
 

@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isSkippable) BOOL skippable; // @synthesize skippable=_skippable;
-@property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
+@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;

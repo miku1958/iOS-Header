@@ -10,11 +10,23 @@
 {
 }
 
+- (id)baseSceneComponentClassDictionary;
 - (Class)clientAgentClass;
 - (Class)clientSettingsClass;
+- (id)connectionHandlers;
+- (id)disconnectionHandlers;
+- (id)finalActionHandlers;
 - (Class)hostAgentClass;
+- (id)initialActionHandlers;
+- (id)initialSettingsDiffActions;
+- (BOOL)isInternal;
+- (BOOL)isUIKitManaged;
+- (Class)lifecycleMonitorClass;
+- (Class)sceneSubstrateClass;
 - (Class)settingsClass;
 - (Class)transitionContextClass;
+- (Class)uiSceneMinimumClass;
+- (id)uiSceneSessionRole;
 
 @end
 

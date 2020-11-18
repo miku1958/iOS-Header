@@ -29,19 +29,20 @@
 + (Class)configurationClass;
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
-+ (BOOL)validateConfiguration:(id)arg1 error:(out id *)arg2;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+- (BOOL)_canSaveOrSanitizeMetadata:(id *)arg1 error:(id *)arg2;
 - (void)_queue_discardWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_finishSeriesWithMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_finishSeriesWithMetadata:(id)arg1 endDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_insertQuantitySeries:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)_queue_insertQuantitySeries:(id)arg1 series:(id)arg2 forceInsert:(BOOL)arg3 error:(out id *)arg4;
+- (BOOL)_queue_insertQuantitySeries:(id)arg1 series:(id)arg2 forceInsert:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)_queue_isStateInAllowedStates:(id)arg1 description:(id)arg2 error:(out id *)arg3;
 - (void)_queue_newSeriesSaveCompleted;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)remoteInterface;
 - (void)remote_discardWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_finishSeriesWithMetadata:(id)arg1 finalSeries:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_finishSeriesWithMetadata:(id)arg1 endDate:(id)arg2 finalSeries:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remote_insertQuantitySeries:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

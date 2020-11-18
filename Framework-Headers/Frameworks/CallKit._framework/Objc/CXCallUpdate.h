@@ -28,12 +28,14 @@
     BOOL _prefersExclusiveAccessToCellularNetwork;
     BOOL _remoteUplinkMuted;
     BOOL _shouldSuppressInCallUI;
+    BOOL _mutuallyExclusiveCall;
     BOOL _supportsUnambiguousMultiPartyState;
     BOOL _supportsAddCall;
     BOOL _supportsSendingToVoicemail;
-    struct CXCallUpdateHasSet _hasSet;
+    BOOL _requiresAuthentication;
     CXHandle *_remoteHandle;
     NSString *_localizedCallerName;
+    struct CXCallUpdateHasSet _hasSet;
     NSUUID *_UUID;
     long long _ttyType;
     long long _inCallSoundRegion;
@@ -41,8 +43,12 @@
     NSString *_audioMode;
     long long _audioInterruptionProvider;
     long long _audioInterruptionOperationMode;
+    long long _verificationStatus;
+    long long _priority;
     NSString *_crossDeviceIdentifier;
+    NSString *_ISOCountryCode;
     NSUUID *_localSenderIdentityUUID;
+    NSUUID *_localSenderIdentityAccountUUID;
     NSSet *_remoteParticipantHandles;
     NSSet *_activeRemoteParticipantHandles;
     CXHandoffContext *_handoffContext;
@@ -50,6 +56,7 @@
     long long _videoStreamToken;
 }
 
+@property (copy, nonatomic) NSString *ISOCountryCode; // @synthesize ISOCountryCode=_ISOCountryCode;
 @property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (copy, nonatomic) NSSet *activeRemoteParticipantHandles; // @synthesize activeRemoteParticipantHandles=_activeRemoteParticipantHandles;
 @property (copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
@@ -67,13 +74,17 @@
 @property (nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long inCallSoundRegion; // @synthesize inCallSoundRegion=_inCallSoundRegion;
+@property (copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property (copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property (copy, nonatomic) NSString *localizedCallerName; // @synthesize localizedCallerName=_localizedCallerName;
 @property (nonatomic) BOOL mayRequireBreakBeforeMake; // @synthesize mayRequireBreakBeforeMake=_mayRequireBreakBeforeMake;
+@property (nonatomic, getter=isMutuallyExclusiveCall) BOOL mutuallyExclusiveCall; // @synthesize mutuallyExclusiveCall=_mutuallyExclusiveCall;
 @property (nonatomic) BOOL prefersExclusiveAccessToCellularNetwork; // @synthesize prefersExclusiveAccessToCellularNetwork=_prefersExclusiveAccessToCellularNetwork;
+@property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (copy, nonatomic) CXHandle *remoteHandle; // @synthesize remoteHandle=_remoteHandle;
 @property (copy, nonatomic) NSSet *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
 @property (nonatomic, getter=isRemoteUplinkMuted) BOOL remoteUplinkMuted; // @synthesize remoteUplinkMuted=_remoteUplinkMuted;
+@property (nonatomic) BOOL requiresAuthentication; // @synthesize requiresAuthentication=_requiresAuthentication;
 @property (nonatomic) BOOL requiresInCallSounds; // @synthesize requiresInCallSounds=_requiresInCallSounds;
 @property (nonatomic) BOOL shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property (readonly) Class superclass;
@@ -87,6 +98,7 @@
 @property (nonatomic) BOOL supportsUngrouping; // @synthesize supportsUngrouping=_supportsUngrouping;
 @property (nonatomic, setter=setTTYType:) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (nonatomic, getter=isUsingBaseband) BOOL usingBaseband; // @synthesize usingBaseband=_usingBaseband;
+@property (nonatomic) long long verificationStatus; // @synthesize verificationStatus=_verificationStatus;
 @property (nonatomic) long long videoStreamToken; // @synthesize videoStreamToken=_videoStreamToken;
 
 + (id)callUpdateWithDefaultValuesSet;

@@ -29,17 +29,20 @@
 @property (readonly, copy) NSString *description;
 @property (strong) CALayer *glyphLayer; // @synthesize glyphLayer=_glyphLayer;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIColor *highlightedButtonColor;
 @property (strong) CALayer *highlightedGlyphLayer; // @synthesize highlightedGlyphLayer=_highlightedGlyphLayer;
 @property (readonly, nonatomic) TPRevealingRingView *revealingRingView; // @synthesize revealingRingView=_revealingRingView;
 @property (readonly) Class superclass;
 
 + (struct CGRect)circleBounds;
 + (struct CGSize)defaultSize;
++ (id)disabledImageForCharacter:(unsigned int)arg1;
 + (double)highlightedCircleViewAlpha;
 + (double)horizontalPadding;
 + (id)imageForCharacter:(unsigned int)arg1;
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2;
 + (id)imageForCharacter:(unsigned int)arg1 highlighted:(BOOL)arg2 whiteVersion:(BOOL)arg3;
++ (BOOL)isCarPlay;
 + (void)loadNumberPadKeyPrototypeView;
 + (id)localizedLettersForCharacter:(unsigned int)arg1;
 + (double)outerCircleDiameter;
@@ -58,7 +61,8 @@
 - (void)highlightCircleView:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initForCharacter:(unsigned int)arg1;
-- (void)loadImagesForCurrentCharacter;
+- (void)reloadImagesForCurrentCharacter;
+- (void)setGreyedOut:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)touchCancelled;
 - (void)touchDown;

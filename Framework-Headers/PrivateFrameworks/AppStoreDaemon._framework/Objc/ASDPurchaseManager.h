@@ -28,6 +28,7 @@
 - (id)adoptableBundleIdentifiers;
 - (void)checkPreflightForItemIdentifier:(id)arg1 atURL:(id)arg2 withReplyHandler:(CDUnknownBlockType)arg3;
 - (id)init;
+- (void)processPurchase:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;
 - (void)startPurchase:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 
 @end

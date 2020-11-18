@@ -20,6 +20,7 @@
     NSMutableDictionary *_cancellableOperations;
     unsigned int _nextCancellationToken;
     BOOL _registeredForStartNote;
+    BOOL _wasAbortedDueToExcessiveConnctions;
     BOOL _hasEverConnected;
     NSXPCConnection *_xpcConnection;
     id<EKDaemonConnectionDelegate> _delegate;
@@ -33,6 +34,9 @@
 @property (strong, nonatomic) CADDatabaseInitializationOptions *initializationOptions; // @synthesize initializationOptions=_initializationOptions;
 @property (readonly, strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (BOOL)_tryRegisterNewConnection;
++ (void)_unregisterConnection;
++ (unsigned long long)maxNumberOfOpenConnections;
 - (void).cxx_destruct;
 - (void)CADClientReceiveOccurrenceCacheSearchResults:(id)arg1 forSearchToken:(unsigned int)arg2 finished:(BOOL)arg3;
 - (BOOL)_connectToServer;

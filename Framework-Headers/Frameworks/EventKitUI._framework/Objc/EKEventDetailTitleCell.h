@@ -7,17 +7,16 @@
 #import <EventKitUI/EKEventDetailCell.h>
 
 #import <EventKitUI/EKEventDetailPredictedLocationCellDelegate-Protocol.h>
+#import <EventKitUI/UITextViewDelegate-Protocol.h>
 
-@class EKEventDetailPredictedLocationCell, EKTextViewWithLabelTextMetrics, NSMutableArray, NSObject, UIButton, UIImage, UIImageView, UILabel;
+@class EKEventDetailPredictedLocationCell, NSMutableArray, NSObject, NSString, UIButton, UILabel;
 @protocol EKEventDetailTitleCellDelegate;
 
-@interface EKEventDetailTitleCell : EKEventDetailCell <EKEventDetailPredictedLocationCellDelegate>
+@interface EKEventDetailTitleCell : EKEventDetailCell <UITextViewDelegate, EKEventDetailPredictedLocationCellDelegate>
 {
     UILabel *_titleView;
-    EKTextViewWithLabelTextMetrics *_locationView;
+    NSMutableArray *_locationItems;
     EKEventDetailPredictedLocationCell *_predictedLocationView;
-    UIImage *_locationStatusImage;
-    UIImageView *_locationStatusView;
     UILabel *_travelTimeView;
     NSMutableArray *_dateTimeViews;
     UILabel *_recurrenceView;
@@ -25,31 +24,34 @@
     UIButton *_editButton;
     unsigned int _visibleItems;
     BOOL _observingLocaleChanges;
-    BOOL _hasLocationStatus;
-    long long _locationStatus;
     BOOL _rejectionReasonCell;
+    BOOL _hideCellSeparator;
+    int _lastPosition;
     BOOL _hasMapItemLaunchOptionFromTimeToLeaveNotification;
     BOOL _showingInlineDayView;
     NSObject<EKEventDetailTitleCellDelegate> *_delegate;
+    unsigned long long _numberOfTitleLines;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) NSObject<EKEventDetailTitleCellDelegate> *delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long numberOfTitleLines; // @synthesize numberOfTitleLines=_numberOfTitleLines;
 @property (nonatomic) BOOL showingInlineDayView; // @synthesize showingInlineDayView=_showingInlineDayView;
+@property (readonly) Class superclass;
 
 + (void)_geocodeEventIfNeeded:(id)arg1;
 + (void)_invalidateCachedFonts;
 + (id)_largeTitleFont;
 + (id)_locationFont;
-+ (id)_locationStringForStructuredLocation:(id)arg1;
-+ (id)_mapsURLForLocationOnEvent:(id)arg1 hasMapItemLaunchOptionFromTimeToLeaveNotification:(BOOL)arg2;
 + (void)_registerForInvalidation;
 + (id)_titleFont;
 - (void).cxx_destruct;
 - (id)_dateTimeViewForLine:(unsigned long long)arg1;
 - (id)_editButton;
 - (double)_layoutForWidth:(double)arg1;
-- (id)_locationView;
 - (id)_predictedLocationView;
 - (void)_promptForSpanWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)_recurrenceView;
@@ -58,7 +60,9 @@
 - (id)_statusView;
 - (id)_titleView;
 - (id)_travelTimeView;
+- (void)_updateSeparatorInsets;
 - (BOOL)_useLargeFonts;
+- (void)addLocation:(id)arg1;
 - (void)dealloc;
 - (void)editButtonTapped;
 - (void)eventDetailPredictedLocationCellAcceptedPrediction:(id)arg1 disambiguatedLocation:(id)arg2;
@@ -66,8 +70,10 @@
 - (id)initAsRejectionReasonCellWithEvent:(id)arg1;
 - (id)initWithEvent:(id)arg1 editable:(BOOL)arg2 style:(long long)arg3;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)setColor:(id)arg1;
+- (void)setHideCellSeparator:(BOOL)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setPrimaryTextColor:(id)arg1;
 - (void)setRecurrenceString:(id)arg1;

@@ -20,6 +20,7 @@
 - (void)disableUnlockWithDevice:(id)arg1;
 - (void)enableUnlockWithDevice:(id)arg1 fromKey:(BOOL)arg2 withPasscode:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)establishStashBagWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)establishStashBagWithManifest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)timerWithBlock:(CDUnknownBlockType)arg1;
 - (void)unlockEnabledWithDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

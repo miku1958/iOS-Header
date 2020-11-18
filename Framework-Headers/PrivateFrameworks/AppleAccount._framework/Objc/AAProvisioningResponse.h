@@ -17,10 +17,13 @@
 @property (readonly, nonatomic) NSArray *appleIDAliases;
 @property (readonly, nonatomic, getter=isCloudDocsMigrated) BOOL cloudDocsMigrated;
 @property (readonly, nonatomic) NSDictionary *dataclassProperties;
+@property (readonly, nonatomic, getter=isFamilyEligible) BOOL familyEligible;
 @property (readonly, nonatomic) NSString *firstName;
+@property (readonly, nonatomic) NSString *fmipAppToken;
 @property (readonly, nonatomic) NSString *fmipAuthToken;
 @property (readonly, nonatomic) NSString *fmipSiriToken;
 @property (readonly, nonatomic) NSString *iCloudAuthToken;
+@property (readonly, nonatomic) NSString *keyTransparencyToken;
 @property (readonly, nonatomic) NSString *lastName;
 @property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID;
 @property (readonly, nonatomic, getter=isNotesMigrated) BOOL notesMigrated;
@@ -30,6 +33,7 @@
 @property (readonly, nonatomic) NSArray *provisionedDataclasses;
 @property (readonly, nonatomic) NSDictionary *regionInfo;
 @property (readonly, nonatomic, getter=isSandboxAccount) BOOL sandboxAccount;
+@property (readonly, nonatomic) NSString *searchPartyToken;
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;

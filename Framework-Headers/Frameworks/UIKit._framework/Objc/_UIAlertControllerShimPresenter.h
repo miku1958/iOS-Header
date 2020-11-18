@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _UIAlertControllerShimPresenterWindow *window; // @synthesize window=_window;
 
 + (void)_addPresenter:(id)arg1;
-+ (void)_cancelPendingTouchesIfAppropriate;
++ (void)_cancelPendingTouchesIfAppropriateForWindow:(id)arg1;
 + (id)_currentFullScreenAlertPresenters;
 + (void)_removePresenter:(id)arg1;
 + (BOOL)_shouldPresentActionSheetsFullscreen;

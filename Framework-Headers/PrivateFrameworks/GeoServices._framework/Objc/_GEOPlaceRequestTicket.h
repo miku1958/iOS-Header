@@ -22,9 +22,11 @@ __attribute__((visibility("hidden")))
 - (void)applyToCorrectedSearch:(id)arg1;
 - (void)applyToPlaceInfo:(id)arg1;
 - (void)cancel;
+- (CDStruct_d1a7ebee)dataRequestKind;
 - (id)description;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2;
 - (id)initWithRequest:(id)arg1 traits:(id)arg2 mapItemToRefine:(id)arg3;
+- (id)initWithTraits:(id)arg1;
 - (id)resultSectionHeader;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(CDUnknownBlockType)arg4;
 - (void)submitWithRefinedHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 timeout:(long long)arg3 networkActivity:(CDUnknownBlockType)arg4;

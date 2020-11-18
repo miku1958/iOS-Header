@@ -10,10 +10,12 @@
 
 @interface PKDiscoveryCallToActionShelf : PKDiscoveryShelf
 {
+    BOOL _useImageAsTitle;
     PKDiscoveryCallToAction *_callToAction;
 }
 
 @property (readonly, nonatomic) PKDiscoveryCallToAction *callToAction; // @synthesize callToAction=_callToAction;
+@property (readonly, nonatomic) BOOL useImageAsTitle; // @synthesize useImageAsTitle=_useImageAsTitle;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

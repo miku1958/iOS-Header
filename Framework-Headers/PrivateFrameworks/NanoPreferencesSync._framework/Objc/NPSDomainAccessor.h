@@ -11,6 +11,7 @@
 
 @interface NPSDomainAccessor : NSObject
 {
+    BOOL _initializedWithActiveDevice;
     NSObject<OS_dispatch_queue> *_externalQueue;
     NSObject<OS_dispatch_queue> *_invalidationQueue;
     NPSDomainAccessorInternal *_internalAccessor;
@@ -18,6 +19,7 @@
 
 @property (readonly, nonatomic) NSString *domain;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *externalQueue; // @synthesize externalQueue=_externalQueue;
+@property (nonatomic) BOOL initializedWithActiveDevice; // @synthesize initializedWithActiveDevice=_initializedWithActiveDevice;
 @property (strong, nonatomic) NPSDomainAccessorInternal *internalAccessor; // @synthesize internalAccessor=_internalAccessor;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *invalidationQueue; // @synthesize invalidationQueue=_invalidationQueue;
 @property (readonly, nonatomic) NSUUID *pairingID;
@@ -28,6 +30,7 @@
 + (void)resolveActivePairedDevicePairingID:(id *)arg1 pairingDataStore:(id *)arg2;
 - (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;
+- (BOOL)activeDeviceChanged;
 - (id)arrayForKey:(id)arg1;
 - (BOOL)boolForKey:(id)arg1;
 - (BOOL)boolForKey:(id)arg1 keyExistsAndHasValidFormat:(BOOL *)arg2;
@@ -62,6 +65,7 @@
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setURL:(id)arg1 forKey:(id)arg2;
+- (id)shouldNotDoWork;
 - (id)stringArrayForKey:(id)arg1;
 - (id)stringForKey:(id)arg1;
 - (id)synchronize;

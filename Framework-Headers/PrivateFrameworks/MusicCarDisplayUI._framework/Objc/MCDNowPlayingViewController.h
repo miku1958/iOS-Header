@@ -6,106 +6,86 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MCDLabelButton, MCDPlayModeControlView, MCDProgressView, MCDTitleView, MCDTransportControlView, NSLayoutConstraint, NSString, UIColor, UIFocusContainerGuide, UIImageView, UILongPressGestureRecognizer, UINavigationBar, UITapGestureRecognizer;
-@protocol MCDNowPlayingViewControllerDataSource, MCDNowPlayingViewControllerDelegate;
+#import <MusicCarDisplayUI/CARSessionObserving-Protocol.h>
+#import <MusicCarDisplayUI/MCDNowPlayingContentManagerDelegate-Protocol.h>
 
-@interface MCDNowPlayingViewController : UIViewController
+@class CARSessionStatus, MPWeakTimer, NSString, UIActivityIndicatorView, UIBarButtonItem, UILabel, UITableViewController, _MCDNowPlayingViewController;
+@protocol MCDNowPlayingContentManagerProtocol;
+
+@interface MCDNowPlayingViewController : UIViewController <CARSessionObserving, MCDNowPlayingContentManagerDelegate>
 {
-    BOOL _isScrubbing;
-    long long _heldAction;
-    UIViewController *_transportViewController;
-    UIViewController *_playModeViewController;
-    UINavigationBar *_navigationBar;
-    MCDLabelButton *_albumArtistLabelButton;
-    BOOL _highTouchMode;
-    UIColor *_navbarColor;
-    BOOL _navbarHidesShadow;
-    BOOL _viewHasShifted;
+    BOOL _showNavigationBar;
+    BOOL _trackBuffering;
     BOOL _handledWillAppear;
-    BOOL _isForMusic;
-    MCDTransportControlView *_transportControlView;
-    MCDPlayModeControlView *_playModeControlView;
-    MCDTitleView *_titleView;
-    id<MCDNowPlayingViewControllerDelegate> _delegate;
-    id<MCDNowPlayingViewControllerDataSource> _dataSource;
-    MCDProgressView *_progressView;
-    UIImageView *_artworkView;
-    UITapGestureRecognizer *_knobPressRecognizer;
-    UITapGestureRecognizer *_backPressRecognizer;
-    UITapGestureRecognizer *_leftNudgePressRecognizer;
-    UITapGestureRecognizer *_rightNudgePressRecognizer;
-    UILongPressGestureRecognizer *_leftNudgeLongPressRecognizer;
-    UILongPressGestureRecognizer *_rightNudgeLongPressRecognizer;
-    UILongPressGestureRecognizer *_leftButtonLongPressRecognizer;
-    UILongPressGestureRecognizer *_fastForwardButtonLongPressRecognizer;
-    UIFocusContainerGuide *_controlsFocusContainerGuide;
-    NSString *_previousTransportButtonImageIdentifier;
-    NSString *_forwardTransportButtonImageIdentifier;
-    NSString *_playPauseTransportButtonImageIdentifier;
-    NSLayoutConstraint *_artistAlbumLabelConstraint;
+    BOOL _shouldShowPlaybackQueue;
+    _MCDNowPlayingViewController *_nowPlayingViewController;
+    UIBarButtonItem *_backButton;
+    UIActivityIndicatorView *_activityIndicator;
+    UIBarButtonItem *_activityIndicatorBarButtonItem;
+    NSString *_bundleID;
+    NSString *_appName;
+    MPWeakTimer *_activityTimer;
+    UILabel *_rightTitleLabel;
+    UIBarButtonItem *_rightTitleLabelBarButtonItem;
+    UIBarButtonItem *_playbackQueueBarButtonItem;
+    CARSessionStatus *_carSessionStatus;
+    id<MCDNowPlayingContentManagerProtocol> _contentManager;
+    UITableViewController *_playbackQueueViewController;
+    CDUnknownBlockType _albumViewControllerProvider;
 }
 
-@property (strong, nonatomic) NSLayoutConstraint *artistAlbumLabelConstraint; // @synthesize artistAlbumLabelConstraint=_artistAlbumLabelConstraint;
-@property (readonly, nonatomic) UIImageView *artworkView; // @synthesize artworkView=_artworkView;
-@property (readonly, nonatomic) UITapGestureRecognizer *backPressRecognizer; // @synthesize backPressRecognizer=_backPressRecognizer;
-@property (strong, nonatomic) UIFocusContainerGuide *controlsFocusContainerGuide; // @synthesize controlsFocusContainerGuide=_controlsFocusContainerGuide;
-@property (weak, nonatomic) id<MCDNowPlayingViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
-@property (weak, nonatomic) id<MCDNowPlayingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) UILongPressGestureRecognizer *fastForwardButtonLongPressRecognizer; // @synthesize fastForwardButtonLongPressRecognizer=_fastForwardButtonLongPressRecognizer;
-@property (strong, nonatomic) NSString *forwardTransportButtonImageIdentifier; // @synthesize forwardTransportButtonImageIdentifier=_forwardTransportButtonImageIdentifier;
-@property (readonly, nonatomic) UITapGestureRecognizer *knobPressRecognizer; // @synthesize knobPressRecognizer=_knobPressRecognizer;
-@property (strong, nonatomic) UILongPressGestureRecognizer *leftButtonLongPressRecognizer; // @synthesize leftButtonLongPressRecognizer=_leftButtonLongPressRecognizer;
-@property (strong, nonatomic) UILongPressGestureRecognizer *leftNudgeLongPressRecognizer; // @synthesize leftNudgeLongPressRecognizer=_leftNudgeLongPressRecognizer;
-@property (strong, nonatomic) UITapGestureRecognizer *leftNudgePressRecognizer; // @synthesize leftNudgePressRecognizer=_leftNudgePressRecognizer;
-@property (readonly, nonatomic) MCDPlayModeControlView *playModeControlView; // @synthesize playModeControlView=_playModeControlView;
-@property (strong, nonatomic) NSString *playPauseTransportButtonImageIdentifier; // @synthesize playPauseTransportButtonImageIdentifier=_playPauseTransportButtonImageIdentifier;
-@property (strong, nonatomic) NSString *previousTransportButtonImageIdentifier; // @synthesize previousTransportButtonImageIdentifier=_previousTransportButtonImageIdentifier;
-@property (readonly, nonatomic) MCDProgressView *progressView; // @synthesize progressView=_progressView;
-@property (strong, nonatomic) UILongPressGestureRecognizer *rightNudgeLongPressRecognizer; // @synthesize rightNudgeLongPressRecognizer=_rightNudgeLongPressRecognizer;
-@property (strong, nonatomic) UITapGestureRecognizer *rightNudgePressRecognizer; // @synthesize rightNudgePressRecognizer=_rightNudgePressRecognizer;
-@property (readonly, nonatomic) MCDTitleView *titleView; // @synthesize titleView=_titleView;
-@property (readonly, nonatomic) MCDTransportControlView *transportControlView; // @synthesize transportControlView=_transportControlView;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property (strong, nonatomic) UIBarButtonItem *activityIndicatorBarButtonItem; // @synthesize activityIndicatorBarButtonItem=_activityIndicatorBarButtonItem;
+@property (strong, nonatomic) MPWeakTimer *activityTimer; // @synthesize activityTimer=_activityTimer;
+@property (copy, nonatomic) CDUnknownBlockType albumViewControllerProvider; // @synthesize albumViewControllerProvider=_albumViewControllerProvider;
+@property (strong, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property (strong, nonatomic) UIBarButtonItem *backButton; // @synthesize backButton=_backButton;
+@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (strong, nonatomic) CARSessionStatus *carSessionStatus; // @synthesize carSessionStatus=_carSessionStatus;
+@property (strong, nonatomic) id<MCDNowPlayingContentManagerProtocol> contentManager; // @synthesize contentManager=_contentManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL handledWillAppear; // @synthesize handledWillAppear=_handledWillAppear;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _MCDNowPlayingViewController *nowPlayingViewController; // @synthesize nowPlayingViewController=_nowPlayingViewController;
+@property (strong, nonatomic) UIBarButtonItem *playbackQueueBarButtonItem; // @synthesize playbackQueueBarButtonItem=_playbackQueueBarButtonItem;
+@property (strong, nonatomic) UITableViewController *playbackQueueViewController; // @synthesize playbackQueueViewController=_playbackQueueViewController;
+@property (strong, nonatomic) UILabel *rightTitleLabel; // @synthesize rightTitleLabel=_rightTitleLabel;
+@property (strong, nonatomic) UIBarButtonItem *rightTitleLabelBarButtonItem; // @synthesize rightTitleLabelBarButtonItem=_rightTitleLabelBarButtonItem;
+@property (nonatomic) BOOL shouldShowPlaybackQueue; // @synthesize shouldShowPlaybackQueue=_shouldShowPlaybackQueue;
+@property (nonatomic) BOOL showNavigationBar; // @synthesize showNavigationBar=_showNavigationBar;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL trackBuffering; // @synthesize trackBuffering=_trackBuffering;
 
-+ (id)nowPlayingViewControllerForMusic:(BOOL)arg1;
 - (void).cxx_destruct;
-- (void)_addToLibraryButtonTouchUp:(id)arg1;
-- (void)_didUpdateSupportedCommandsNotification:(id)arg1;
-- (void)_fastForwardButtonLongPress:(id)arg1;
-- (void)_fastForwardButtonTouchDown:(id)arg1;
-- (void)_fastForwardButtonTouchUp:(id)arg1;
+- (void)_adjustRightTitleLabelToFit;
 - (void)_handleWillAppear;
-- (void)_initializeTransportControls;
-- (void)_leftButtonLongPress:(id)arg1;
-- (void)_leftButtonTouchDown:(id)arg1;
-- (void)_leftButtonTouchUp:(id)arg1;
-- (void)_leftNudgePress:(id)arg1;
-- (void)_moreButtonTouchUp:(id)arg1;
-- (void)_playPauseButtonTouchUp:(id)arg1;
-- (void)_playbackButtonTouchUp:(id)arg1;
-- (void)_repeatButtonTouchUp:(id)arg1;
-- (void)_respondToHeldAction;
-- (void)_rightNudgePress:(id)arg1;
-- (void)_sendAction:(long long)arg1 withState:(long long)arg2;
-- (void)_sendHeldAction;
-- (void)_shuffleButtonTouchUp:(id)arg1;
-- (void)_updatePlayModesState;
-- (void)_updatePlaybackRate;
-- (void)_updateRepeatStateWithType:(long long)arg1;
-- (void)_updateShuffleStateWithType:(long long)arg1;
-- (void)_updateTransportControl:(id)arg1 withDefaultImage:(id)arg2 actionType:(long long)arg3;
+- (void)_invalidateActivityTimer;
+- (void)_popViewControllerAnimated;
+- (void)_setupActivityTimer;
+- (void)_updateBackButton;
 - (void)albumArtistButtonTapped:(id)arg1;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (void)loadView;
-- (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
-- (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
-- (void)pressesChanged:(id)arg1 withEvent:(id)arg2;
-- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
-- (void)reloadData;
-- (void)updatePlayControls;
+- (void)contentManager:(id)arg1 bufferingItem:(BOOL)arg2;
+- (void)contentManager:(id)arg1 displayItemIndex:(long long)arg2 totalItemCount:(long long)arg3;
+- (void)contentManager:(id)arg1 presentViewController:(id)arg2;
+- (void)contentManager:(id)arg1 sectionName:(id)arg2;
+- (void)contentManager:(id)arg1 shouldShowPlaybackQueue:(BOOL)arg2;
+- (void)contentManagerCompletedAllPlayback:(id)arg1;
+- (void)contentManagerInitiatedPlaybackFromPlaybackQueue:(id)arg1;
+- (void)contentManagerReloadData:(id)arg1;
+- (void)dealloc;
+- (id)initWithBundleID:(id)arg1 appName:(id)arg2;
+- (id)initWithPlayableBundleID:(id)arg1 appName:(id)arg2;
+- (id)preferredFocusEnvironments;
+- (void)session:(id)arg1 didUpdateConfiguration:(id)arg2;
+- (void)setRightTitle:(id)arg1;
+- (void)upNextButtonTapped:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

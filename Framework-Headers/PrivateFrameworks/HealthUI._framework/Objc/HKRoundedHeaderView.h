@@ -10,17 +10,20 @@
 
 @interface HKRoundedHeaderView : UIView
 {
+    BOOL _textLabelTruncated;
     HKGradient *_gradient;
     UIColor *_color;
     UIImage *_image;
     NSString *_text;
     UIColor *_textColor;
+    UIColor *_chevronColor;
     UIColor *_detailTextColor;
     NSString *_detailTextCompositingFilter;
     HKGradientView *_gradientView;
     UIImageView *_imageView;
     UILabel *_textLabel;
     UILabel *_detailTextLabel;
+    UIImageView *_chevronRightImageView;
     NSLayoutConstraint *_textLeadingConstraintToView;
     NSLayoutConstraint *_textLeadingConstraintToImageView;
     NSLayoutConstraint *_textLabelFirstBaselineConstraint;
@@ -29,10 +32,13 @@
     NSLayoutConstraint *_detailTextLabelFirstBaselineConstraint;
     NSLayoutConstraint *_detailTextLabelWidthConstraint;
     NSLayoutConstraint *_detailTextLabelBottomConstraint;
+    NSLayoutConstraint *_largeTextChevronCenterYConstraint;
     NSArray *_regularConstraints;
     NSArray *_largeTextConstraints;
 }
 
+@property (strong, nonatomic) UIColor *chevronColor; // @synthesize chevronColor=_chevronColor;
+@property (strong, nonatomic) UIImageView *chevronRightImageView; // @synthesize chevronRightImageView=_chevronRightImageView;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (copy, nonatomic) NSString *detailText;
 @property (strong, nonatomic) UIColor *detailTextColor; // @synthesize detailTextColor=_detailTextColor;
@@ -45,6 +51,7 @@
 @property (strong, nonatomic) HKGradientView *gradientView; // @synthesize gradientView=_gradientView;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) NSLayoutConstraint *largeTextChevronCenterYConstraint; // @synthesize largeTextChevronCenterYConstraint=_largeTextChevronCenterYConstraint;
 @property (strong, nonatomic) NSArray *largeTextConstraints; // @synthesize largeTextConstraints=_largeTextConstraints;
 @property (strong, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
@@ -53,6 +60,7 @@
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (strong, nonatomic) NSLayoutConstraint *textLabelBottomConstraint; // @synthesize textLabelBottomConstraint=_textLabelBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *textLabelFirstBaselineConstraint; // @synthesize textLabelFirstBaselineConstraint=_textLabelFirstBaselineConstraint;
+@property (nonatomic) BOOL textLabelTruncated; // @synthesize textLabelTruncated=_textLabelTruncated;
 @property (strong, nonatomic) NSLayoutConstraint *textLabelWidthConstraint; // @synthesize textLabelWidthConstraint=_textLabelWidthConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *textLeadingConstraintToImageView; // @synthesize textLeadingConstraintToImageView=_textLeadingConstraintToImageView;
 @property (strong, nonatomic) NSLayoutConstraint *textLeadingConstraintToView; // @synthesize textLeadingConstraintToView=_textLeadingConstraintToView;
@@ -66,6 +74,7 @@
 + (double)estimatedHeight;
 - (void).cxx_destruct;
 - (BOOL)_isLayingOutForAccessibility;
+- (BOOL)_isTextLabelTruncated;
 - (void)_setupConstraints;
 - (void)_setupUI;
 - (void)_updateForCurrentSizeCategory;
@@ -75,6 +84,7 @@
 - (id)initWithColor:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithGradient:(id)arg1;
+- (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

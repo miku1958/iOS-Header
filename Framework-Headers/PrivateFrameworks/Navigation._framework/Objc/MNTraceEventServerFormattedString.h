@@ -9,6 +9,7 @@
 #import <Navigation/GEOServerFormattedString-Protocol.h>
 
 @class NSArray, NSString;
+@protocol GEOServerConditionalString;
 
 __attribute__((visibility("hidden")))
 @interface MNTraceEventServerFormattedString : NSObject <GEOServerFormattedString>
@@ -16,11 +17,15 @@ __attribute__((visibility("hidden")))
     NSArray *_formatStrings;
     NSArray *_formatTokens;
     NSArray *_separators;
+    NSArray *_formatStyles;
+    id<GEOServerConditionalString> _alternativeString;
 }
 
+@property (readonly, nonatomic) id<GEOServerConditionalString> alternativeString; // @synthesize alternativeString=_alternativeString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *formatStrings; // @synthesize formatStrings=_formatStrings;
+@property (readonly, nonatomic) NSArray *formatStyles; // @synthesize formatStyles=_formatStyles;
 @property (readonly, nonatomic) NSArray *formatTokens; // @synthesize formatTokens=_formatTokens;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *separators; // @synthesize separators=_separators;

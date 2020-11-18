@@ -6,7 +6,7 @@
 
 #import <PersonalizationPortrait/PPNamedEntityRecord.h>
 
-@class NSString, PPNamedEntity, PPSource;
+@class NSString, PPNamedEntity, PPNamedEntityMetadata, PPSource;
 
 @interface PPMutableNamedEntityRecord : PPNamedEntityRecord
 {
@@ -19,6 +19,8 @@
 @property (nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
 @property (strong, nonatomic) NSString *extractionOsBuild; // @dynamic extractionOsBuild;
 @property (nonatomic) double initialScore; // @dynamic initialScore;
+@property (strong, nonatomic) PPNamedEntityMetadata *metadata; // @dynamic metadata;
+@property (nonatomic) double sentimentScore; // @dynamic sentimentScore;
 @property (strong, nonatomic) PPSource *source; // @dynamic source;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

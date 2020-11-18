@@ -7,17 +7,20 @@
 #import <objc/NSObject.h>
 
 @class NSDictionary, NSURL;
+@protocol OS_dispatch_queue;
 
 @interface RCDebugAudioGenerator : NSObject
 {
     NSURL *_outputURL;
     double _duration;
     double _intervalBetweenPeaks;
+    NSObject<OS_dispatch_queue> *_completionQueue;
     CDUnknownBlockType _generateCompletionHandler;
     NSDictionary *_outputSettings;
     CDUnknownBlockType _curveFunction;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property (readonly, nonatomic) CDUnknownBlockType curveFunction; // @synthesize curveFunction=_curveFunction;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) CDUnknownBlockType generateCompletionHandler; // @synthesize generateCompletionHandler=_generateCompletionHandler;
@@ -30,8 +33,8 @@
 - (void).cxx_destruct;
 - (id)_generateLPCMAudioSamplesWithDuration:(double)arg1 curveFunction:(CDUnknownBlockType)arg2 samplesPerSecond:(double)arg3 intervalBetweenPeaks:(double)arg4;
 - (void)_onBackgroundQueueGenerateAudio;
-- (void)_onMainQueueGenerateFailedWithError:(id)arg1;
-- (void)_onMainQueueGenerateFinished;
+- (void)_onQueueGenerateFailedWithError:(id)arg1;
+- (void)_onQueueGenerateFinished;
 - (id)initWithOutputURL:(id)arg1 duration:(double)arg2 intervalBetweenPeaks:(double)arg3;
 - (BOOL)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 

@@ -24,7 +24,6 @@
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly) Class superclass;
 
-+ (id)typeString;
 - (id)fontAttributesWithValue:(id)arg1 withType:(int)arg2;
 
 @end

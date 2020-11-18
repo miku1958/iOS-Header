@@ -13,13 +13,15 @@
     NSMutableArray *_recycledObjects;
     Class _targetClass;
     struct os_unfair_lock_s _lock;
-    BOOL _conformsToProtocol;
+    BOOL _repsondsToPrepareForReuse;
     BOOL _threadSafe;
+    CDUnknownBlockType _builder;
 }
 
 - (void).cxx_destruct;
 - (id)dequeueRecyclableObject;
 - (id)initWithTargetClass:(Class)arg1 requiresThreadSafety:(BOOL)arg2 initialPoolSize:(long long)arg3;
+- (id)initWithTargetClass:(Class)arg1 requiresThreadSafety:(BOOL)arg2 initialPoolSize:(long long)arg3 prototypeStep:(CDUnknownBlockType)arg4;
 - (void)recycleObject:(id)arg1;
 
 @end

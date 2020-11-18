@@ -29,9 +29,9 @@
 
 + (id)_closeBoxImage;
 + (id)_inactiveCloseBoxImage;
+- (void).cxx_destruct;
 - (unsigned long long)accessibilityTraits;
 - (double)countdownProgress;
-- (void)dealloc;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;

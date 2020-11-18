@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NLModelConfiguration, NSArray, NSDictionary;
+@class NLModelConfiguration, NSArray, NSDictionary, NSString;
 
 @interface NLDataProvider : NSObject
 {
@@ -20,15 +20,19 @@
     unsigned long long _numberOfLabels;
     unsigned long long _numberOfVocabularyEntries;
     unsigned long long _numberOfTokens;
+    NSString *_recognizedLanguage;
     BOOL _generatedMaps;
+    BOOL _performedLanguageRecognition;
 }
 
 @property (readonly, copy) NLModelConfiguration *configuration;
 @property (readonly) unsigned long long numberOfInstances;
+@property (readonly) NSString *recognizedLanguage;
 
 - (void).cxx_destruct;
 - (void)_generateMaps;
 - (void)_generateMapsWithModelTrainer:(id)arg1;
+- (void)_performLanguageRecognition;
 - (void)dealloc;
 - (id)documentFrequencyMap;
 - (void)generateMapsWithModelTrainer:(id)arg1;

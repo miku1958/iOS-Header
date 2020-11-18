@@ -25,9 +25,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)image;
 - (id)initWithString:(id)arg1 signMetrics:(struct RoadSignMetrics)arg2 textMetrics:(struct RoadSignTextMetrics)arg3 signColoring:(struct RoadSignColoring)arg4 glyph:(struct CGImage *)arg5;
-- (Box_3fb92e00)localCollisionBounds;
-- (Box_3fb92e00)localRenderBounds;
-- (Box_3fb92e00)localSignBounds;
+- (Box_8bd38d92)localCollisionBounds;
+- (Box_8bd38d92)localRenderBounds;
+- (Box_8bd38d92)localSignBounds;
 - (Matrix_8746f91e)offsetPixelForPixel:(Matrix_8746f91e)arg1;
 
 @end

@@ -10,7 +10,39 @@
 {
 }
 
+- (BOOL)allMomentsMetadataWithOutputPath:(id)arg1 metadataDictionary:(id *)arg2 error:(id *)arg3;
+- (BOOL)cleanupEmptyHighlightsWithError:(id *)arg1;
+- (void)coalesceJournalsForPayloadClassIDs:(id)arg1 withChangeJournalOverThreshold:(float)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)debugSidecarFileURLsForAsset:(id)arg1 debugSidecarFileURLs:(id *)arg2 error:(id *)arg3;
+- (id)deferredLogDumpWithFormat:(id)arg1;
+- (void)dropSearchIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)dumpMetadataForMomentsWithOutputPath:(id)arg1 metadataDirectory:(id *)arg2 error:(id *)arg3;
+- (id)getCPLState;
 - (id)getStatus;
+- (id)getXPCTransactionStatus;
+- (BOOL)invalidateHighlightSubtitlesAndRegenerateHighlightTitlesWithError:(id *)arg1;
+- (id)momentGenerationStatus;
+- (void)prefetchResourcesForHighlights:(id)arg1;
+- (void)prefetchResourcesForMemories:(id)arg1;
+- (void)prefetchResourcesWithMode:(long long)arg1;
+- (void)privateDownloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)processRecentHighlightsWithError:(id *)arg1;
+- (BOOL)processUnprocessedMomentLocationsWithError:(id *)arg1;
+- (void)pruneAssets:(id)arg1 resourceTypes:(id)arg2;
+- (void)rebuildAllThumbnails;
+- (void)rebuildCloudFeed;
+- (BOOL)rebuildHighlightsDeletingExistingHighlights:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)rebuildMomentsDeletingExistingMoments:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)rebuildSearchIndexWithError:(id *)arg1;
+- (void)recoverAssetsInInconsistentCloudState;
+- (void)resetDupesAnalysis;
+- (BOOL)revertToOriginalForAsset:(id)arg1 error:(id *)arg2;
+- (void)setSearchIndexPaused:(BOOL)arg1 reason:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)snapshotJournalsForPayloadClassIDs:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)synchronouslySetSearchIndexPaused:(BOOL)arg1 reason:(id)arg2 error:(id *)arg3;
+- (void)unloadImageFilesForAsset:(id)arg1 minimumFormat:(int)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)updateHighlightTitlesWithError:(id *)arg1;
+- (void)updateSiriVocabulary;
 
 @end
 

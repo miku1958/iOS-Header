@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILabel.h>
+#import <TemplateKit/TLKLabel.h>
 
 @class NSAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
-@interface FULabel : UILabel
+@interface FULabel : TLKLabel
 {
     NSString *_stringValue;
     NSAttributedString *_attributedStringValue;

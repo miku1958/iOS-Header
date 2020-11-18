@@ -18,7 +18,7 @@
     unsigned int _defaultTransitType;
     unsigned int _iconAttributeKey;
     unsigned int _iconAttributeValue;
-    long long _iconType;
+    int _iconType;
     struct {
         unsigned int cartoID:1;
         unsigned int defaultTransitType:1;
@@ -44,17 +44,17 @@
 @property (nonatomic) unsigned int iconAttributeKey; // @synthesize iconAttributeKey=_iconAttributeKey;
 @property (readonly, nonatomic) unsigned int iconAttributeValue;
 @property (nonatomic) unsigned int iconAttributeValue; // @synthesize iconAttributeValue=_iconAttributeValue;
-@property (readonly, nonatomic) long long iconType;
-@property (nonatomic) long long iconType; // @synthesize iconType=_iconType;
+@property (readonly, nonatomic) int iconType;
+@property (nonatomic) int iconType; // @synthesize iconType=_iconType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
-- (long long)StringAsIconType:(id)arg1;
+- (int)StringAsIconType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
-- (id)iconTypeAsString:(long long)arg1;
+- (id)iconTypeAsString:(int)arg1;
 - (id)initWithIcon:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

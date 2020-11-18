@@ -8,27 +8,32 @@
 
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 
-@class CNAccountsAndGroupsDataSource, NSString;
+@class CNAccountsAndGroupsDataSource, CNContactListStyleApplier, NSString;
 @protocol CNAccountsAndGroupsViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface CNAccountsAndGroupsViewController : UITableViewController <UITableViewDelegate>
 {
-    CNAccountsAndGroupsDataSource *_dataSource;
     BOOL _needsReload;
     BOOL _tableViewNeedsReloadAfterResume;
+    CNContactListStyleApplier *_contactListStyleApplier;
+    CNAccountsAndGroupsDataSource *_dataSource;
     id<CNAccountsAndGroupsViewControllerDelegate> _delegate;
 }
 
+@property (strong, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
 @property (strong, nonatomic) CNAccountsAndGroupsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNAccountsAndGroupsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL needsReload; // @synthesize needsReload=_needsReload;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL tableViewNeedsReloadAfterResume; // @synthesize tableViewNeedsReloadAfterResume=_tableViewNeedsReloadAfterResume;
 
 - (void).cxx_destruct;
 - (void)applicationDidResume;
+- (void)applyStyle;
 - (void)contactStoreDidChangeWithNotification:(id)arg1;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
@@ -41,8 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
-- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

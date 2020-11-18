@@ -8,6 +8,7 @@
 
 @interface NSString (GSExtensions)
 + (id)gs_stringWithFileSystemRepresentation:(const char *)arg1;
+- (void)chmod:(unsigned short)arg1;
 - (id)gs_issueExtension:(const char *)arg1 error:(id *)arg2;
 - (id)gs_issueReadExtensionIfNeededForAuditToken:(CDStruct_6ad76789)arg1;
 - (id)gs_stringByUpdatingPathExtensionWithPathOrURL:(id)arg1;

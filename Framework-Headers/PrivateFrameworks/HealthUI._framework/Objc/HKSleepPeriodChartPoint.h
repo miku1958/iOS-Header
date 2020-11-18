@@ -27,11 +27,11 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) NSArray *inBedOffsets; // @synthesize inBedOffsets=_inBedOffsets;
-@property (strong, nonatomic) NSNumber *lowerGoal; // @synthesize lowerGoal=_lowerGoal;
+@property (copy, nonatomic) NSNumber *lowerGoal; // @synthesize lowerGoal=_lowerGoal;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSNumber *upperGoal; // @synthesize upperGoal=_upperGoal;
+@property (copy, nonatomic) NSNumber *upperGoal; // @synthesize upperGoal=_upperGoal;
 @property (strong, nonatomic) HKSleepChartPointUserInfo *userInfo; // @synthesize userInfo=_userInfo;
-@property (strong, nonatomic) NSDate *xValue; // @synthesize xValue=_xValue;
+@property (copy, nonatomic) NSDate *xValue; // @synthesize xValue=_xValue;
 
 - (void).cxx_destruct;
 - (id)allYValues;

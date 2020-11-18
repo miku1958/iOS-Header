@@ -6,11 +6,11 @@
 
 #import <UIKitCore/UIControl.h>
 
-#import <UIKitCore/_UIClickInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UIClickInteractionDelegateInternal-Protocol.h>
 
 @class NSArray, NSString, UIColor, UIImage, UIImageView, UIView, UIVisualEffectView, _UIClickInteraction;
 
-@interface UICoverSheetButton : UIControl <_UIClickInteractionDelegate>
+@interface UICoverSheetButton : UIControl <_UIClickInteractionDelegateInternal>
 {
     UIView *_containerView;
     UIImageView *_contentView;
@@ -24,6 +24,7 @@
     double _maxForceDuringInteraction;
     double _highlightProgress;
     BOOL _pronounced;
+    BOOL _latching;
     UIImage *_image;
     UIImage *_selectedImage;
     UIColor *_selectedTintColor;
@@ -39,7 +40,7 @@
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (nonatomic, getter=isLatching) BOOL latching;
+@property (nonatomic, getter=isLatching) BOOL latching; // @synthesize latching=_latching;
 @property (copy, nonatomic) NSString *localizedAccessoryTitle; // @synthesize localizedAccessoryTitle=_localizedAccessoryTitle;
 @property (nonatomic, getter=isPronounced) BOOL pronounced; // @synthesize pronounced=_pronounced;
 @property (strong, nonatomic) UIImage *selectedImage; // @synthesize selectedImage=_selectedImage;
@@ -50,6 +51,7 @@
 - (void).cxx_destruct;
 - (void)_animateEffectUpdateWithProgress:(double)arg1 ended:(BOOL)arg2;
 - (id)_backgroundEffectsWithBrightness:(double)arg1;
+- (unsigned long long)_clickInteractionDefaultDriverType:(id)arg1;
 - (id)_firstActivationDurationStat;
 - (id)_interactionCountStatWithActivation:(BOOL)arg1;
 - (id)_interactionDurationStat;

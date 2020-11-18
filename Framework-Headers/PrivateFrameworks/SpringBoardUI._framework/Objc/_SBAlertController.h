@@ -25,8 +25,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)setHiddenOnClonedDisplay:(BOOL)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)viewDidDisappear:(BOOL)arg1;

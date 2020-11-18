@@ -23,10 +23,11 @@
 @property (nonatomic) struct AVAudio3DPoint listenerPosition;
 @property (nonatomic) struct AVAudio3DVectorOrientation listenerVectorOrientation;
 @property (readonly, nonatomic) unsigned long long nextAvailableInputBus;
+@property (nonatomic) long long outputType;
 @property (nonatomic) float outputVolume;
 @property (readonly, nonatomic) AVAudioEnvironmentReverbParameters *reverbParameters;
 @property (readonly) Class superclass;
-@property (nonatomic) float volume;
+@property (nonatomic) float volume; // @dynamic volume;
 
 - (id)init;
 

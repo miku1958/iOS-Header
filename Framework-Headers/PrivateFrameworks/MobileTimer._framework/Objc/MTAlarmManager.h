@@ -25,7 +25,6 @@
 
 + (id)_filteredAlarms:(id)arg1 afterDate:(id)arg2 maxCount:(unsigned long long)arg3 filter:(CDUnknownBlockType)arg4;
 + (id)assistantSyncNotificationName;
-+ (id)daySettingToString:(unsigned long long)arg1 longVersion:(BOOL)arg2 everyWeekdayVersion:(BOOL)arg3 showNever:(BOOL)arg4;
 + (void)warmUp;
 - (void).cxx_destruct;
 - (void)_getCachedAlarmsWithFuture:(id)arg1 finishBlock:(CDUnknownBlockType)arg2;

@@ -31,6 +31,7 @@
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)buildConfigurationDictionary:(id)arg1;
+- (id)deserializeMessage:(id)arg1 error:(id *)arg2;
 - (void)handleRequest:(id)arg1 serverURL:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)restoreConfiguration;

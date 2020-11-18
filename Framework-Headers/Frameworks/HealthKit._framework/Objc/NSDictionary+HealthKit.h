@@ -7,11 +7,22 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (HealthKit)
++ (void)_addDerivedPublicKeyIfNecessaryForPrivateKey:(id)arg1 mutableDictionary:(id)arg2;
++ (id)hk_acceptedMetadataValueClasses;
++ (id)hk_acceptedPublicMetadataValueClasses;
++ (BOOL)hk_acceptsMetadataValue:(id)arg1 allowPrivateMetadata:(BOOL)arg2;
++ (id)hk_secureCodingClasses;
+- (id)_copyWithoutPrivateMetadataKeysShouldDerivePublicKeys:(BOOL)arg1;
+- (BOOL)_hk_validateMetadataValueClass:(id)arg1 forKey:(id)arg2 supportedKeyLookupTable:(id)arg3 error:(id *)arg4;
+- (BOOL)_hk_validateMetadataValueContent:(id)arg1 forKey:(id)arg2 applicationSDKVersion:(unsigned int)arg3 error:(id *)arg4;
 - (id)hk_allValuesBySortedKeys;
+- (id)hk_copySanitizedForPublicClient;
+- (id)hk_copyWithoutPrivateMetadataKeys;
 - (id)hk_dictionaryByAddingEntriesFromDictionary:(id)arg1;
 - (id)hk_filter:(CDUnknownBlockType)arg1;
 - (id)hk_filterKeysWithBlock:(CDUnknownBlockType)arg1;
 - (id)hk_filteredDictionaryForKeys:(id)arg1;
 - (id)hk_sortedKeys;
+- (BOOL)hk_validateMetadataKeysAndValuesAllowingPrivateMetadataKeys:(BOOL)arg1 applicationSDKVersion:(unsigned int)arg2 error:(id *)arg3;
 @end
 

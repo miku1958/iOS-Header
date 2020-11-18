@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 {
     struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame>> _frame;
     struct PolicyCheckIdentifier _identifier;
-    Function_f1cab3a8 _policyFunction;
+    Function_b3117096 _policyFunction;
     struct RetainPtr<NSURL> _appLinkURL;
     unsigned char _defaultPolicy;
 }
@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)download;
 - (void)ignore;
-- (id)initWithFrame:(struct Frame *)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_f1cab3a8 *)arg3 defaultPolicy:(unsigned char)arg4;
-- (id)initWithFrame:(struct Frame *)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_f1cab3a8 *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
+- (id)initWithFrame:(struct Frame *)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4;
+- (id)initWithFrame:(struct Frame *)arg1 identifier:(struct PolicyCheckIdentifier)arg2 policyFunction:(Function_b3117096 *)arg3 defaultPolicy:(unsigned char)arg4 appLinkURL:(id)arg5;
 - (void)invalidate;
 - (void)receivedPolicyDecision:(unsigned char)arg1;
 - (void)use;

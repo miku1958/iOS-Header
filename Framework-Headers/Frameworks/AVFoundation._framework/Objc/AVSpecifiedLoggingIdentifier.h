@@ -22,7 +22,6 @@
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithSpecifiedName:(id)arg1;
 - (id)makeDerivedIdentifier;
 

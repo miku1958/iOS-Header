@@ -55,18 +55,11 @@
 - (id)_initWithDictionary:(id)arg1;
 - (id)_internal;
 - (void)_setAccount:(id)arg1;
-- (void)cleanupStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;
-- (void)closeSocket:(int)arg1;
-- (void)closeSocketForDomain:(id)arg1;
+- (void)_setService:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)establishStreamPairWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
 - (id)fullDescription;
 - (id)initWithDictionary:(id)arg1;
-- (int)openSocketForDomain:(id)arg1;
-- (int)openSocketForDomain:(id)arg1 transportType:(long long)arg2;
-- (void)openSocketWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
-- (int)socketForDomain:(id)arg1;
 
 @end
 

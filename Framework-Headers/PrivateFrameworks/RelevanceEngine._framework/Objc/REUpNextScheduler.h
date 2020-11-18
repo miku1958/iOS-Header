@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock;
 @protocol OS_dispatch_queue;
 
 @interface REUpNextScheduler : NSObject
 {
     BOOL _updateScheduled;
-    NSLock *_scheduledLock;
+    struct os_unfair_lock_s _scheduledLock;
+    NSObject<OS_dispatch_queue> *_originalQueue;
     NSObject<OS_dispatch_queue> *_queue;
     double _delay;
     CDUnknownBlockType _updateBlock;
@@ -30,8 +30,9 @@
 + (id)schedulerWithQueue:(id)arg1 updateBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_queue_performUpdate;
+- (void)dealloc;
 - (id)initWithQueue:(id)arg1 delay:(double)arg2 updateBlock:(CDUnknownBlockType)arg3 updateCompletionBlock:(CDUnknownBlockType)arg4;
-- (void)performImmediately;
+- (BOOL)performImmediately;
 - (void)schedule;
 
 @end

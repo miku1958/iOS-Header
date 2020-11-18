@@ -10,12 +10,12 @@
 {
 }
 
-+ (id)_readArrayFromByteArray:(char *)arg1 byteBuffer:(CDStruct_32bf18e6 *)arg2;
-+ (id)_readDictionaryFromByteArray:(char *)arg1 byteBuffer:(CDStruct_32bf18e6 *)arg2;
-+ (void)_writeArrayToByteBuffer:(id)arg1 buffer:(CDStruct_32bf18e6 *)arg2;
-+ (void)_writeDictionaryToByteBuffer:(id)arg1 buffer:(CDStruct_32bf18e6 *)arg2;
-+ (void)_writeNumberToByteBuffer:(id)arg1 buffer:(CDStruct_32bf18e6 *)arg2;
-+ (void)_writeStringToByteBuffer:(id)arg1 buffer:(CDStruct_32bf18e6 *)arg2;
++ (id)_readArrayFromByteArray:(char *)arg1 byteBuffer:(CDStruct_457e09f6 *)arg2;
++ (id)_readDictionaryFromByteArray:(char *)arg1 byteBuffer:(CDStruct_457e09f6 *)arg2;
++ (void)_writeArrayToByteBuffer:(id)arg1 buffer:(CDStruct_457e09f6 *)arg2;
++ (void)_writeDictionaryToByteBuffer:(id)arg1 buffer:(CDStruct_457e09f6 *)arg2;
++ (void)_writeNumberToByteBuffer:(id)arg1 buffer:(CDStruct_457e09f6 *)arg2;
++ (void)_writeStringToByteBuffer:(id)arg1 buffer:(CDStruct_457e09f6 *)arg2;
 + (id)deserializeSessionInfoMetadata:(id)arg1;
 + (id)serializeSessionInfoMetadata:(id)arg1;
 

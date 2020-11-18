@@ -16,8 +16,10 @@
     NSNumber *_wantsQRCodes;
     NSNumber *_flashMode;
     NSNumber *_torchMode;
+    NSNumber *_aspectRatioCrop;
 }
 
+@property (strong, nonatomic) NSNumber *aspectRatioCrop; // @synthesize aspectRatioCrop=_aspectRatioCrop;
 @property (strong, nonatomic) NSNumber *captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (strong, nonatomic) NSNumber *captureMode; // @synthesize captureMode=_captureMode;
 @property (strong, nonatomic) NSNumber *flashMode; // @synthesize flashMode=_flashMode;

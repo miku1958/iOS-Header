@@ -9,17 +9,19 @@
 #import <IDS/IDSAccountDelegate-Protocol.h>
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class IDSAccount, NSMapTable, NSMutableDictionary, NSSet, NSString;
+@class IDSAccount, IMOrderedMutableDictionary, NSMapTable, NSSet, NSString;
 
 @interface _IDSConnection : NSObject <IDSDaemonListenerProtocol, IDSAccountDelegate>
 {
     id _messageContext;
     id _delegateContext;
+    unsigned char _incomingMessageLoggingSequence;
+    unsigned char _outgoingMessageLoggingSequence;
     NSMapTable *_delegateToInfo;
     IDSAccount *_account;
     NSSet *_commands;
     NSString *_serviceToken;
-    NSMutableDictionary *_pendingSends;
+    IMOrderedMutableDictionary *_pendingSends;
     unsigned int _delegateCapabilities;
     BOOL _indirectDelegateCallouts;
 }
@@ -37,14 +39,18 @@
 - (void)_callDelegatesRespondingToSelector:(SEL)arg1 withPreCallbacksBlock:(CDUnknownBlockType)arg2 callbackBlock:(CDUnknownBlockType)arg3 postCallbacksBlock:(CDUnknownBlockType)arg4 group:(id)arg5;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (void)_callDelegatesWithBlock:(CDUnknownBlockType)arg1 group:(id)arg2;
+- (BOOL)_canServiceNameAcceptMessagesInTransientRegistrationState:(id)arg1;
 - (void)_connect;
 - (void)_handleLastCallForPendingIdentifier:(id)arg1 callbackID:(id)arg2;
+- (id)_init;
+- (BOOL)_isAccountInValidRegistrationStateToAcceptMessages;
 - (BOOL)_isDestinationSingleLocalAddress:(id)arg1;
 - (void)_replaceSentinelInSendParameters:(id)arg1 withCurrentActiveDevice:(id)arg2;
 - (void)_resendPendingSends;
+- (void)_sendMissingMessageMetric:(id)arg1;
 - (id)_sendWithParameters:(id)arg1 options:(id)arg2 loggingType:(id)arg3 loggingDataSize:(unsigned long long)arg4;
 - (void)_setTemporaryMessageContext:(id)arg1;
-- (BOOL)_shouldAcceptIncomingType:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromID:(id)arg4 validateAliases:(BOOL)arg5;
+- (BOOL)_shouldAcceptIncomingType:(id)arg1 forTopic:(id)arg2 localURI:(id)arg3 remoteURI:(id)arg4 validateAliases:(BOOL)arg5 guid:(id)arg6;
 - (void)accessoryDataReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (void)accessoryReportMessageReceived:(id)arg1 accessoryID:(id)arg2 controllerID:(id)arg3 withGUID:(id)arg4 forTopic:(id)arg5 toIdentifier:(id)arg6 fromID:(id)arg7 context:(id)arg8;
 - (void)account:(id)arg1 connectedDevicesChanged:(id)arg2;
@@ -52,12 +58,15 @@
 - (void)account:(id)arg1 isActiveChanged:(BOOL)arg2;
 - (void)account:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
+- (void)addDelegate:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)checkTransportLogWithReason:(long long)arg1;
 - (void)daemonConnected;
 - (id)daemonController;
 - (id)daemonListener;
 - (void)dataReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (void)dealloc;
+- (void)didFlushCacheForService:(id)arg1 remoteURI:(id)arg2 fromURI:(id)arg3 guid:(id)arg4;
+- (void)didSendOpportunisticDataWithIdentifier:(id)arg1 onAccount:(id)arg2 toIDs:(id)arg3;
 - (void)engramDataReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (void)groupShareReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (id)initWithAccount:(id)arg1 commands:(id)arg2 indirectDelegateCallouts:(BOOL)arg3 delegateContext:(id)arg4;
@@ -65,6 +74,8 @@
 - (void)messageIdentifier:(id)arg1 alternateCallbackID:(id)arg2 forAccount:(id)arg3 willSendToDestinations:(id)arg4 skippedDestinations:(id)arg5 registrationPropertyToDestinations:(id)arg6;
 - (void)messageIdentifier:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromIdentifier:(id)arg4 hasBeenDeliveredWithContext:(id)arg5;
 - (void)messageReceived:(id)arg1 withGUID:(id)arg2 withPayload:(id)arg3 forTopic:(id)arg4 toIdentifier:(id)arg5 fromID:(id)arg6 context:(id)arg7;
+- (void)opportunisticDataReceived:(id)arg1 withIdentifier:(id)arg2 fromID:(id)arg3 context:(id)arg4;
+- (void)pendingIncomingMessageWithGUID:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)protobufReceived:(id)arg1 withGUID:(id)arg2 forTopic:(id)arg3 toIdentifier:(id)arg4 fromID:(id)arg5 context:(id)arg6;
 - (void)receivedGroupSessionParticipantDataUpdate:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromID:(id)arg4;
 - (void)receivedGroupSessionParticipantUpdate:(id)arg1 forTopic:(id)arg2 toIdentifier:(id)arg3 fromID:(id)arg4;

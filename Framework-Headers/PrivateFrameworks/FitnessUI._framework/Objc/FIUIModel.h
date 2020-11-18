@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FIUIWeeklyGoalModel, HKActivityCache, HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSPredicate, _HKCurrentActivitySummaryQuery;
+@class FIUIWeeklyGoalModel, HKActivityCache, HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, NSDictionary, NSHashTable, NSMutableDictionary, NSPredicate, _HKCurrentActivitySummaryQuery;
 @protocol OS_dispatch_queue;
 
 @interface FIUIModel : NSObject
@@ -22,9 +22,6 @@
     HKActivitySummary *_queue_currentActivitySummaryForClients;
     HKActivityCache *_queue_currentActivityCacheForClients;
     NSObject<OS_dispatch_queue> *_activityQueryClientQueue;
-    NSArray *_queue_currentMoveResults;
-    NSArray *_queue_currentExerciseResults;
-    NSArray *_queue_currentStandResults;
     NSPredicate *_sourcesPredicate;
     NSObject<OS_dispatch_queue> *_sourcesQueue;
     HKHealthStore *_healthStore;
@@ -37,30 +34,22 @@
 @property (readonly, nonatomic) FIUIWeeklyGoalModel *weeklyGoalModel;
 
 + (id)_dailyTotalsQueryFromDate:(id)arg1 toDate:(id)arg2 dataType:(id)arg3 predicate:(id)arg4 sendUpdates:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
-+ (id)activityChartQueryForStartDate:(id)arg1 endDate:(id)arg2 moveintervalSize:(id)arg3 exerciseIntervalSize:(id)arg4 handler:(CDUnknownBlockType)arg5;
 + (id)dailyTotalQueryForDate:(id)arg1 dataType:(id)arg2 predicate:(id)arg3 sendUpdates:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 + (BOOL)isWheelchairUser;
 - (void).cxx_destruct;
-- (id)_createCurrentActivityCacheQuery;
 - (id)_createCurrentActivitySummaryQuery;
 - (void)_printStatisticsCollection:(id)arg1;
 - (void)_printUpdatedStatistics:(id)arg1;
-- (void)_queue_restartCurrentActivityCacheQueryAfterError;
 - (void)_queue_restartCurrentActivitySummaryQueryAfterError;
 - (void)_setKnownSources:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)basalEnergyBurnTotalForDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)basalMetabolicRateForDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)executeQuery:(id)arg1;
 - (id)init;
 - (id)initWithHealthStore:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (id)startCurrentActivityCacheWithChartsQueryWithHandler:(CDUnknownBlockType)arg1;
 - (id)startCurrentActivitySummaryQueryWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopCurrentActivityCacheWithGraphsQueryForClientToken:(id)arg1;
 - (void)stopCurrentActivitySummaryQueryForClientToken:(id)arg1;
 - (void)stopQuery:(id)arg1;
-- (void)weeklySummaryInfoForDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

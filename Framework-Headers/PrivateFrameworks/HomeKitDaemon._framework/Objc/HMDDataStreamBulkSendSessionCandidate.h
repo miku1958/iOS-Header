@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (void)acceptBulkSendSessionOnQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)initWithProtocol:(id)arg1 requestHeader:(id)arg2;
-- (void)rejectBulkSendSessionWithReason:(unsigned short)arg1;
+- (void)rejectBulkSendSessionWithStatus:(unsigned short)arg1;
 
 @end
 

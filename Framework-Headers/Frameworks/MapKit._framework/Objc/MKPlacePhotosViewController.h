@@ -7,16 +7,17 @@
 #import <UIKit/UIViewController.h>
 
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
+#import <MapKit/MKMuninContainerViewDelegate-Protocol.h>
+#import <MapKit/MKMuninViewProvider-Protocol.h>
 #import <MapKit/MKPlaceAttributionCellDelegate-Protocol.h>
 #import <MapKit/MKPlacePhotosViewDelegate-Protocol.h>
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKPhotoSmallAttributionView, MKPlaceAttributionCell, MKPlacePhotosView, NSArray, NSLayoutConstraint, NSString, UIScrollView, UIView, _MKPlaceViewController;
+@class MKMapItem, MKMuninContainerView, MKMuninView, MKPhotoSmallAttributionView, MKPlaceAttributionCell, MKPlacePhotosView, NSArray, NSLayoutConstraint, NSString, UIScrollView, UIView, _MKPlaceViewController;
 @protocol MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate;
 
-__attribute__((visibility("hidden")))
-@interface MKPlacePhotosViewController : UIViewController <MKPlaceAttributionCellDelegate, MKPlacePhotosViewDelegate, UIScrollViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
+@interface MKPlacePhotosViewController : UIViewController <MKPlaceAttributionCellDelegate, MKPlacePhotosViewDelegate, UIScrollViewDelegate, MKMuninContainerViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKMuninViewProvider>
 {
     MKPlacePhotosView *_currentPhotoViewer;
     UIView *_bottomHairline;
@@ -33,13 +34,16 @@ __attribute__((visibility("hidden")))
     BOOL _loadAppImageCanceledOrFailed;
     BOOL _isRTL;
     unsigned long long _photosCount;
+    UIView *_externalView;
     MKMapItem *_mapItem;
     NSLayoutConstraint *_heightConstraint;
     NSLayoutConstraint *_bottomConstraint;
     NSArray *_photos;
     unsigned long long _mode;
     unsigned long long _originalMode;
+    unsigned long long _options;
     MKPlaceAttributionCell *_attributionCell;
+    MKMuninContainerView *_muninContainerView;
     UIScrollView *_parentScrollView;
     BOOL _showsBottomHairline;
     _MKPlaceViewController *_owner;
@@ -49,13 +53,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MKMuninView *muninView;
 @property (weak, nonatomic) _MKPlaceViewController *owner; // @synthesize owner=_owner;
 @property (weak, nonatomic) id<MKPlaceCardPhotosControllerDelegate><MKPlaceCardActionControllerDelegate> photosControllerDelegate; // @synthesize photosControllerDelegate=_photosControllerDelegate;
 @property (nonatomic) BOOL showsBottomHairline; // @synthesize showsBottomHairline=_showsBottomHairline;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_applyCornerRadius;
 - (void)_callPhotoDelegateForPhotoAt:(unsigned long long)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancelLoadPhotos;
 - (void)_catchScrollNotification:(id)arg1;
 - (void)_createImageViews;
@@ -71,15 +78,18 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)formattedAttributionString;
 - (id)infoCardChildPossibleActions;
-- (void)infoCardThemeChanged:(id)arg1;
-- (id)initWithMapItem:(id)arg1 mode:(unsigned long long)arg2;
+- (id)infoCardChildUnactionableUIElements;
+- (void)infoCardThemeChanged;
+- (id)initWithMapItem:(id)arg1 mode:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (void)layoutImages;
+- (void)muninContainerView:(id)arg1 didAddMuninView:(id)arg2;
 - (void)openURL;
 - (void)placePhotoViewerAttributionTappedForPhotoAtIndex:(unsigned long long)arg1 photo:(id)arg2;
 - (id)placePhotoViewerViewForPhotoAtIndex:(unsigned long long)arg1;
 - (void)placePhotoViewerWillClose:(id)arg1 photo:(id)arg2 onIndex:(unsigned long long)arg3;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)setContentVisibility:(long long)arg1;
 - (struct CGSize)sizeForIndex:(unsigned long long)arg1;
 - (void)updateAttributionCell;
 - (void)updateAttributionPositionWithOffset:(double)arg1;
@@ -88,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewLayoutMarginsDidChange;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

@@ -6,13 +6,30 @@
 
 #import <objc/NSObject.h>
 
+@class NSCalendar, NSMutableDictionary;
+
 @interface PLAggregationProcessor : NSObject
 {
+    NSCalendar *_calendar;
+    NSMutableDictionary *_curatedAssetCountByMomentUUID;
 }
 
-+ (BOOL)_shouldAggregateMoment:(id)arg1;
+@property (strong, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
+@property (strong, nonatomic) NSMutableDictionary *curatedAssetCountByMomentUUID; // @synthesize curatedAssetCountByMomentUUID=_curatedAssetCountByMomentUUID;
+
++ (void)initialize;
 + (BOOL)isEnabled;
-+ (id)processAggregationsWithItems:(id)arg1 itemsContainedInOtherHighlights:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
++ (unsigned long long)maximumNumberOfAssetsPerAggregation;
++ (unsigned long long)maximumNumberOfAssetsPerMoment;
++ (unsigned long long)maximumNumberOfDaysPerAggregation;
++ (void)restoreDefaultEnablement;
++ (void)setEnabled:(BOOL)arg1;
+- (void).cxx_destruct;
+- (id)_aggregationMomentClustersForMomentClusters:(id)arg1;
+- (BOOL)_shouldAggregateMoment:(id)arg1;
+- (id)init;
+- (id)processAggregationsWithSortedMomentClusters:(id)arg1 momentsContainedInOtherHighlights:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
+- (id)sortedNeighborMomentClustersOfMomentClusters:(id)arg1 forAllMomentClusters:(id)arg2;
 
 @end
 

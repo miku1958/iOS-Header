@@ -10,15 +10,16 @@
 
 @interface ColorBarView : UIView
 {
+    BOOL _hasRoundedCorners;
     BOOL _dashedLines;
     UIColor *_color;
 }
 
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (nonatomic) BOOL dashedLines; // @synthesize dashedLines=_dashedLines;
+@property (nonatomic) BOOL hasRoundedCorners; // @synthesize hasRoundedCorners=_hasRoundedCorners;
 
 - (void).cxx_destruct;
-- (void)drawRect:(struct CGRect)arg1;
 
 @end
 

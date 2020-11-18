@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIInterfaceActionSeparatableSequenceView : UIView
 {
+    BOOL _visualCornerForcedOverride;
     UIInterfaceActionVisualStyle *_visualStyle;
     long long _axis;
     long long _distribution;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
 @property (nonatomic) long long distribution; // @synthesize distribution=_distribution;
 @property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
+@property (nonatomic) BOOL visualCornerForcedOverride; // @synthesize visualCornerForcedOverride=_visualCornerForcedOverride;
 @property (nonatomic) unsigned long long visualCornerPosition; // @synthesize visualCornerPosition=_visualCornerPosition;
 @property (strong, nonatomic) UIInterfaceActionVisualStyle *visualStyle; // @synthesize visualStyle=_visualStyle;
 

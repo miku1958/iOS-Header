@@ -13,9 +13,11 @@
     NSDictionary *_responseDictionary;
     BOOL _didHandleInvalidConfig;
     WLKURLRequestProperties *_requestProperties;
+    unsigned long long _environmentHash;
 }
 
 @property BOOL didHandleInvalidConfig; // @synthesize didHandleInvalidConfig=_didHandleInvalidConfig;
+@property (nonatomic) unsigned long long environmentHash; // @synthesize environmentHash=_environmentHash;
 @property (strong, nonatomic) WLKURLRequestProperties *requestProperties; // @synthesize requestProperties=_requestProperties;
 
 - (void).cxx_destruct;

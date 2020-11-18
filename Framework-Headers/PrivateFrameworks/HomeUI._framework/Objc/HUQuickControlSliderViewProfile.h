@@ -14,6 +14,7 @@
 {
     BOOL _hasSecondaryValue;
     BOOL _hasOffState;
+    BOOL _showGrabbers;
     HFNumberValueConstraints *_primaryValueConstraints;
     HFNumberValueConstraints *_secondaryValueConstraints;
     unsigned long long _preferredFillSection;
@@ -29,12 +30,14 @@
 @property (nonatomic) unsigned long long preferredFillSection; // @synthesize preferredFillSection=_preferredFillSection;
 @property (strong, nonatomic) HFNumberValueConstraints *primaryValueConstraints; // @synthesize primaryValueConstraints=_primaryValueConstraints;
 @property (strong, nonatomic) HFNumberValueConstraints *secondaryValueConstraints; // @synthesize secondaryValueConstraints=_secondaryValueConstraints;
+@property (nonatomic) BOOL showGrabbers; // @synthesize showGrabbers=_showGrabbers;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)gestureDragCoefficient;
 - (id)init;
+- (BOOL)supportsTouchContinuation;
 
 @end
 

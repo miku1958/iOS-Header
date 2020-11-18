@@ -4,22 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <RemoteManagement/RMUniquedManagedObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSString, RMActivation;
+#import <RemoteManagement/NSSecureCoding-Protocol.h>
 
-@interface RMConfiguration : RMUniquedManagedObject
+@class NSData, NSDictionary, NSString, RMConfigurationAccount;
+
+@interface RMConfiguration : NSObject <NSSecureCoding>
 {
+    NSString *_type;
+    NSString *_identifier;
+    NSString *_serverToken;
+    NSData *_content;
+    RMConfigurationAccount *_account;
+    NSDictionary *_assetByIdentifier;
 }
 
-@property (strong, nonatomic) RMActivation *activation; // @dynamic activation;
-@property (strong, nonatomic) NSData *configurationPlist; // @dynamic configurationPlist;
-@property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (readonly, copy, nonatomic) RMConfigurationAccount *account; // @synthesize account=_account;
+@property (readonly, copy, nonatomic) NSDictionary *assetByIdentifier; // @synthesize assetByIdentifier=_assetByIdentifier;
+@property (readonly, copy, nonatomic) NSData *content; // @synthesize content=_content;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSString *serverToken; // @synthesize serverToken=_serverToken;
+@property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
-+ (id)fetchRequestForConfigurationsBelongingToOrganizationWithIdentifier:(id)arg1;
-+ (id)fetchRequestForConfigurationsWithIdentifier:(id)arg1 organizationIdentifier:(id)arg2;
-- (id)computeUniqueIdentifier;
-- (void)didChangeValueForKey:(id)arg1;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithType:(id)arg1 identifier:(id)arg2 serverToken:(id)arg3 content:(id)arg4 account:(id)arg5 assetByIdentifier:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToConfiguration:(id)arg1;
 
 @end
 

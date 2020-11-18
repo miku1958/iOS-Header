@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/AUAudioUnit.h>
+#import <AudioToolboxCore/AUAudioUnit.h>
 
-@class AUAudioUnitBusArray_XH, AUParameterTree, NSExtension, NSObject, NSUUID, NSXPCConnection;
+@class AUAudioUnitBusArray_XH, AUParameterTree, NSArray, NSExtension, NSObject, NSUUID, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct IPCAURenderingClient _renderClient;
     AUParameterTree *_cachedParameterTree;
     NSObject<OS_dispatch_queue> *_viewControllerRequestQueue;
+    NSArray *_userPresets;
     AUAudioUnit_XH *_strongInstance;
     NSXPCConnection *_xpcConnection;
 }
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)allocateRenderResourcesAndReturnError:(id *)arg1;
 - (void)dealloc;
 - (void)deallocateRenderResources;
+- (BOOL)deleteUserPreset:(id)arg1 error:(id *)arg2;
 - (void)didCrash;
 - (BOOL)disableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
 - (void)doOpen:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -57,10 +59,12 @@ __attribute__((visibility("hidden")))
 - (id)inputBusses;
 - (void)internalInitWithExtension:(id)arg1 componentDescription:(struct AudioComponentDescription)arg2 instance:(struct OpaqueAudioComponentInstance *)arg3 completion:(CDUnknownBlockType)arg4;
 - (CDUnknownBlockType)internalRenderBlock;
+- (void)invalidateAllParameters;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)outputBusses;
 - (id)parameterTree;
 - (id)parametersForOverviewWithCount:(long long)arg1;
+- (id)presetStateFor:(id)arg1 error:(id *)arg2;
 - (id)profileStateForCable:(unsigned char)arg1 channel:(unsigned char)arg2;
 - (void)propertiesChanged:(id)arg1;
 - (BOOL)providesUserInterface;
@@ -68,9 +72,13 @@ __attribute__((visibility("hidden")))
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reset;
+- (BOOL)saveUserPreset:(id)arg1 error:(id *)arg2;
 - (void)selectViewConfiguration:(id)arg1;
+- (void)setFullState:(id)arg1;
+- (void)setFullStateForDocument:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)supportedViewConfigurations:(id)arg1;
+- (id)userPresets;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

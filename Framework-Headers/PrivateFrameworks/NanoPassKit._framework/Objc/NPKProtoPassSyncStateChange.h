@@ -8,10 +8,11 @@
 
 #import <NanoPassKit/NSCopying-Protocol.h>
 
-@class NPKProtoCatalog, NPKProtoPassSyncStateItem, NSData, NSString;
+@class NPKProtoCatalog, NPKProtoPassSyncStateItem, NSData, NSMutableArray, NSString;
 
 @interface NPKProtoPassSyncStateChange : PBCodable <NSCopying>
 {
+    NSData *_baseManifestHashForPartialUpdate;
     NPKProtoCatalog *_catalog;
     int _changeType;
     NSData *_changeUUID;
@@ -19,6 +20,7 @@
     NSData *_passData;
     unsigned int _passSegmentIndex;
     unsigned int _passSegmentTotal;
+    NSMutableArray *_remoteAssetsForPartialUpdates;
     NPKProtoPassSyncStateItem *_syncStateItem;
     NSString *_uniqueID;
     struct {
@@ -27,9 +29,11 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSData *baseManifestHashForPartialUpdate; // @synthesize baseManifestHashForPartialUpdate=_baseManifestHashForPartialUpdate;
 @property (strong, nonatomic) NPKProtoCatalog *catalog; // @synthesize catalog=_catalog;
 @property (nonatomic) int changeType; // @synthesize changeType=_changeType;
 @property (strong, nonatomic) NSData *changeUUID; // @synthesize changeUUID=_changeUUID;
+@property (readonly, nonatomic) BOOL hasBaseManifestHashForPartialUpdate;
 @property (readonly, nonatomic) BOOL hasCatalog;
 @property (readonly, nonatomic) BOOL hasLastKnownReconciledPassSyncStateHash;
 @property (readonly, nonatomic) BOOL hasPassData;
@@ -40,12 +44,16 @@
 @property (strong, nonatomic) NSData *passData; // @synthesize passData=_passData;
 @property (nonatomic) unsigned int passSegmentIndex; // @synthesize passSegmentIndex=_passSegmentIndex;
 @property (nonatomic) unsigned int passSegmentTotal; // @synthesize passSegmentTotal=_passSegmentTotal;
+@property (strong, nonatomic) NSMutableArray *remoteAssetsForPartialUpdates; // @synthesize remoteAssetsForPartialUpdates=_remoteAssetsForPartialUpdates;
 @property (strong, nonatomic) NPKProtoPassSyncStateItem *syncStateItem; // @synthesize syncStateItem=_syncStateItem;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 
++ (Class)remoteAssetsForPartialUpdateType;
 - (void).cxx_destruct;
 - (int)StringAsChangeType:(id)arg1;
+- (void)addRemoteAssetsForPartialUpdate:(id)arg1;
 - (id)changeTypeAsString:(int)arg1;
+- (void)clearRemoteAssetsForPartialUpdates;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -55,6 +63,8 @@
 - (void)mergeFrom:(id)arg1;
 - (id)npkDescription;
 - (BOOL)readFrom:(id)arg1;
+- (id)remoteAssetsForPartialUpdateAtIndex:(unsigned long long)arg1;
+- (unsigned long long)remoteAssetsForPartialUpdatesCount;
 - (void)writeTo:(id)arg1;
 
 @end

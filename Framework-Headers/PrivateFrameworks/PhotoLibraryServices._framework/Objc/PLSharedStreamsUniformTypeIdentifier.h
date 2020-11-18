@@ -12,6 +12,7 @@
 
 @interface PLSharedStreamsUniformTypeIdentifier : NSObject <PLUniformTypeIdentifierIdentity>
 {
+    BOOL _conformsToRawImage;
     BOOL _conformsToImage;
     BOOL _conformsToMovie;
     NSString *_identifier;
@@ -19,11 +20,13 @@
 
 @property (nonatomic) BOOL conformsToImage; // @synthesize conformsToImage=_conformsToImage;
 @property (nonatomic) BOOL conformsToMovie; // @synthesize conformsToMovie=_conformsToMovie;
+@property (nonatomic) BOOL conformsToRawImage; // @synthesize conformsToRawImage=_conformsToRawImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic, getter=isPrimaryFormat) BOOL primaryFormat; // @dynamic primaryFormat;
+@property (readonly, nonatomic) BOOL isPlayableVideo;
+@property (readonly, nonatomic, getter=isPrimaryImageFormat) BOOL primaryImageFormat;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

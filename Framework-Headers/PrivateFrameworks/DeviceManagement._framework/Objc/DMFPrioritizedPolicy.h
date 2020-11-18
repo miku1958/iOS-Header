@@ -16,9 +16,12 @@
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 
 + (long long)arbitratePolicyForPrioritizedPolicies:(id)arg1;
-+ (id)prioritizedPoliciesForAppPolicy:(id)arg1 bundleIdentifier:(id)arg2 categoryPolicy:(id)arg3 categoryIdentifier:(id)arg4 webPolicy:(id)arg5 webDomains:(id)arg6;
++ (id)prioritizedPoliciesForAppPolicy:(id)arg1 bundleIdentifiers:(id)arg2 categoryPolicy:(id)arg3 categoryIdentifiers:(id)arg4 webPolicy:(id)arg5 webDomains:(id)arg6;
 - (long long)compare:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithEffectivePolicy:(id)arg1 identifier:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToPrioritizedPolicy:(id)arg1;
 
 @end
 

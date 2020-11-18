@@ -23,6 +23,7 @@
 
 @property (readonly, nonatomic) ACAccountType *appleIDAccountType;
 @property (readonly, nonatomic) ACAccountType *authKitAccountType;
+@property (readonly, nonatomic) ACAccountType *iCloudAccountType;
 @property (strong, nonatomic) ACAccountStore *store; // @synthesize store=_accountStore;
 
 + (BOOL)isAccountsFrameworkAvailable;
@@ -32,23 +33,30 @@
 - (id)DSIDForAccount:(id)arg1;
 - (id)_aliasesForiCloudAccount:(id)arg1;
 - (id)_altDSIDForiCloudAccount:(id)arg1;
-- (id)_iCloudAccountType;
 - (void)_removeTokenForKeys:(id)arg1 forAccount:(id)arg2;
 - (void)_removeTokenKey:(id)arg1 forAccount:(id)arg2;
 - (BOOL)_setUsername:(id)arg1 forAccount:(id)arg2;
 - (id)_tokenWithName:(id)arg1 forAccount:(id)arg2 error:(id *)arg3;
 - (id)activeServiceNamesForAccount:(id)arg1;
+- (id)ageOfMajorityForAccount:(id)arg1;
 - (id)aliasesForAccount:(id)arg1;
 - (id)allAuthKitAccounts;
 - (id)altDSIDForAccount:(id)arg1;
+- (id)altDSIDforPrimaryiCloudAccount;
 - (id)appleIDAccountWithAltDSID:(id)arg1;
 - (id)appleIDAccountWithAppleID:(id)arg1;
+- (id)applicationListVersionForAccount:(id)arg1;
 - (id)authKitAccountWithAltDSID:(id)arg1;
 - (id)authKitAccountWithAppleID:(id)arg1;
 - (id)authKitAccountWithDSID:(id)arg1;
 - (unsigned long long)authenticationModeForAccount:(id)arg1;
+- (BOOL)authorizationUsedForAccount:(id)arg1;
 - (id)continuationTokenForAccount:(id)arg1;
 - (id)continuationTokenForAccount:(id)arg1 error:(id *)arg2;
+- (id)familyNameForAccount:(id)arg1;
+- (id)formattedUsernameForAccount:(id)arg1;
+- (id)forwardingEmailForAccount:(id)arg1;
+- (id)givenNameForAccount:(id)arg1;
 - (BOOL)hasPrimaryiCloudAccountForAltDSID:(id)arg1;
 - (BOOL)hasPrimaryiCloudAccountForAppleID:(id)arg1;
 - (id)hearbeatTokenForAccount:(id)arg1;
@@ -57,6 +65,7 @@
 - (id)iCloudAccountForAppleID:(id)arg1;
 - (id)init;
 - (BOOL)isPrimaryiCloudAccount:(id)arg1;
+- (BOOL)isPrimaryiCloudAccountEmailVerified:(id)arg1;
 - (id)masterTokenForAccount:(id)arg1;
 - (id)mostRecentlyUsedAuthKitAccount;
 - (BOOL)needsRepairForAccount:(id)arg1;
@@ -64,6 +73,10 @@
 - (id)passwordResetTokenBackupForAccount:(id)arg1 error:(id *)arg2;
 - (id)passwordResetTokenForAccount:(id)arg1;
 - (id)passwordResetTokenForAccount:(id)arg1 error:(id *)arg2;
+- (BOOL)phoneAsAppleIDForAccount:(id)arg1;
+- (id)primaryAuthKitAccount;
+- (id)primaryiCloudAccount;
+- (id)reachableEmailAddressesForAccount:(id)arg1;
 - (void)removeAllPasswordResetTokens;
 - (void)removeContinuationTokenForAccount:(id)arg1;
 - (void)removeMasterTokenForAccount:(id)arg1;
@@ -71,16 +84,34 @@
 - (unsigned long long)repairStateForAccount:(id)arg1;
 - (BOOL)saveAccount:(id)arg1 error:(id *)arg2;
 - (unsigned long long)securityLevelForAccount:(id)arg1;
+- (id)selectedAuthorizationEmailForAccount:(id)arg1;
+- (BOOL)selectedPrivateEmailForAccount:(id)arg1;
 - (id)servicesUsingAccount:(id)arg1;
 - (void)setAccount:(id)arg1 inUse:(BOOL)arg2 byService:(long long)arg3;
+- (void)setAgeOfMajority:(id)arg1 forAccount:(id)arg2;
 - (void)setAliases:(id)arg1 forAccount:(id)arg2;
 - (void)setAltDSID:(id)arg1 forAccount:(id)arg2;
+- (void)setApplicationListVersion:(id)arg1 forAccount:(id)arg2;
 - (void)setAuthenticationMode:(unsigned long long)arg1 forAccount:(id)arg2;
+- (void)setAuthorizationUsed:(BOOL)arg1 forAccount:(id)arg2;
 - (void)setDSID:(id)arg1 forAccount:(id)arg2;
+- (void)setFamilyName:(id)arg1 forAccount:(id)arg2;
+- (void)setForwardingEmail:(id)arg1 forAccount:(id)arg2;
+- (void)setGivenName:(id)arg1 forAccount:(id)arg2;
+- (void)setPhoneAsAppleID:(BOOL)arg1 forAccount:(id)arg2;
+- (void)setReachableEmailAddresses:(id)arg1 forAccount:(id)arg2;
 - (void)setRepairState:(unsigned long long)arg1 forAccount:(id)arg2;
 - (void)setSecurityLevel:(unsigned long long)arg1 forAccount:(id)arg2;
+- (void)setSelectedAuthorizationEmail:(id)arg1 forAccount:(id)arg2;
+- (void)setSelectedPrivateEmail:(BOOL)arg1 forAccount:(id)arg2;
+- (void)setUserUnderage:(BOOL)arg1 forAccount:(id)arg2;
+- (void)setVerifiedPrimaryEmail:(BOOL)arg1 forAccount:(id)arg2;
+- (BOOL)shouldPerformSatoriWarmupVerificationForAccount:(id)arg1;
 - (id)transportableAuthKitAccount:(id)arg1;
+- (void)updateSatoriWarmUpTimestampForAccount:(id)arg1;
 - (void)updateUsername:(id)arg1 forAccountsWithAltDSID:(id)arg2;
+- (BOOL)userUnderAgeForAccount:(id)arg1;
+- (BOOL)verifiedPrimaryEmailForAccount:(id)arg1;
 
 @end
 

@@ -13,20 +13,22 @@
 @interface GEOTraitsTransitScheduleModeFilter : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    unsigned int _numAdditionalDepartures;
     GEOTraitsTransitScheduleTimeRange *_timeRange;
+    unsigned int _numAdditionalDepartures;
     struct {
-        unsigned int numAdditionalDepartures:1;
-    } _has;
+        unsigned int has_numAdditionalDepartures:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasNumAdditionalDepartures;
 @property (readonly, nonatomic) BOOL hasTimeRange;
-@property (nonatomic) unsigned int numAdditionalDepartures; // @synthesize numAdditionalDepartures=_numAdditionalDepartures;
-@property (strong, nonatomic) GEOTraitsTransitScheduleTimeRange *timeRange; // @synthesize timeRange=_timeRange;
+@property (nonatomic) unsigned int numAdditionalDepartures;
+@property (strong, nonatomic) GEOTraitsTransitScheduleTimeRange *timeRange;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)configureWithDefaultStartTime:(double)arg1 duration:(double)arg2 numAdditionalDepartures:(unsigned int)arg3;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -35,6 +37,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

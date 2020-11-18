@@ -43,12 +43,12 @@
 - (void)endRequestWithTransactionID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
-- (void)registerStreamToken:(long long)arg1 remoteIDSDestination:(id)arg2 remoteMomentsAvailable:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)registerStreamToken:(long long)arg1 requesterID:(id)arg2 remoteIDSDestinations:(id)arg3 remoteMomentsAvailable:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)startRequestWithMediaType:(int)arg1 forStreamToken:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startRequestWithMediaType:(int)arg1 forStreamToken:(long long)arg2 requesteeID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)unregisterStreamToken:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (oneway void)willCaptureRemoteRequest;
+- (oneway void)willCaptureRemoteRequestFromRequesterID:(id)arg1;
 
 @end
 

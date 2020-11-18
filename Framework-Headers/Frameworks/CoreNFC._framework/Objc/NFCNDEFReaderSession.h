@@ -8,12 +8,10 @@
 
 #import <CoreNFC/NFReaderSessionCallbacks-Protocol.h>
 
-@class NFTimer, NSArray, NSString;
+@class NSString;
 
 @interface NFCNDEFReaderSession : NFCReaderSession <NFReaderSessionCallbacks>
 {
-    NFTimer *_presenceCheckTimer;
-    NSArray *_foundTags;
     BOOL _invalidateAfterFirstRead;
     unsigned long long _tagsRead;
 }
@@ -24,16 +22,16 @@
 @property (readonly) Class superclass;
 
 + (BOOL)readingAvailable;
-- (id)_getNDEFMessageFromMessageData:(id)arg1;
-- (id)_getPayloadsFromNDEFRecords:(id)arg1;
-- (id)_getURLsFromNDEFMessage:(id)arg1;
-- (void)_refreshFoundTags;
-- (BOOL)_validateRecords:(id)arg1 fromOriginal:(id)arg2;
+- (void)_callbackDidBecomeActive;
+- (void)_callbackDidInvalidateWithError:(id)arg1;
+- (void)connectToTag:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (void)didDetectNDEFMessages:(id)arg1 fromTags:(id)arg2;
+- (void)didDetectNDEFMessages:(id)arg1 fromTags:(id)arg2 updateUICallback:(CDUnknownBlockType)arg3;
 - (void)didTerminate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 invalidateAfterFirstRead:(BOOL)arg3;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 pollMethod:(unsigned long long)arg3;
+- (id)initWithDelegate:(id)arg1 sessionDelegateType:(long long)arg2 queue:(id)arg3 pollMethod:(unsigned long long)arg4 sessionConfig:(unsigned long long)arg5;
+- (void)restartPolling;
 
 @end
 

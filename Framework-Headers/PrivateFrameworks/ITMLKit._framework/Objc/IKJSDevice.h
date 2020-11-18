@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) BOOL isInAirplaneMode;
 @property (readonly, nonatomic) BOOL isInRetailDemoMode;
 @property (readonly, nonatomic) BOOL isNetworkReachable;
+@property (readonly, nonatomic) BOOL isSeedBuild;
 @property (readonly, nonatomic) double lastNetworkChangedTime;
 @property (readonly, nonatomic) NSString *model;
 @property (readonly, nonatomic) NSString *networkType;

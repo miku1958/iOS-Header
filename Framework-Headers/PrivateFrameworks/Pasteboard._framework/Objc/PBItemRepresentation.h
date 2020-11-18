@@ -12,6 +12,7 @@
 @interface PBItemRepresentation : NSObject
 {
     CDUnknownBlockType _loader;
+    BOOL _isDataAvailableImmediately;
     NSString *_typeIdentifier;
     unsigned long long _preferredRepresentation;
     long long _visibility;
@@ -19,6 +20,7 @@
 }
 
 @property (weak, nonatomic) id<PBItemRepresentationDataTransferDelegate> dataTransferDelegate; // @synthesize dataTransferDelegate=_dataTransferDelegate;
+@property (nonatomic) BOOL isDataAvailableImmediately; // @synthesize isDataAvailableImmediately=_isDataAvailableImmediately;
 @property (nonatomic) unsigned long long preferredRepresentation; // @synthesize preferredRepresentation=_preferredRepresentation;
 @property (readonly, copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property (nonatomic) long long visibility; // @synthesize visibility=_visibility;

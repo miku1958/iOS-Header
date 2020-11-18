@@ -6,24 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSURL, UNSNotificationSourceSettingsDescription;
+@class NSArray, NSDictionary, NSString, NSURL, UNSNotificationSourceSettingsDescription;
 
 @interface UNSNotificationSourceDescription : NSObject
 {
     BOOL _allowCriticalAlerts;
     BOOL _allowPrivateProperties;
-    BOOL _allowUnlimitedPendingNotifications;
     BOOL _allowUnlimitedContentBody;
     BOOL _hideSettings;
     BOOL _automaticallyShowSettings;
     BOOL _suppressDismissalSync;
+    BOOL _suppressIconMask;
     BOOL _suppressUserAuthorizationPrompt;
     BOOL _useDefaultDataProvider;
     BOOL _usesCloudKit;
     BOOL _supportsContentAvailableRemoteNotifications;
     BOOL _restricted;
     BOOL _daemonShouldReceiveBackgroundResponses;
+    BOOL _daemonShouldReceiveNotificationSettingsUpdates;
+    BOOL _daemonShouldReceiveApplicationEvents;
+    BOOL _allowUnlimitedPendingNotifications;
     NSString *_bundleIdentifier;
+    NSString *_processBundleIdentifier;
     NSString *_universalApplicationIdentifier;
     NSString *_displayName;
     NSString *_pushEnvironment;
@@ -41,6 +45,7 @@
     NSString *_watchList448hIconFile;
     NSURL *_bundleURL;
     NSURL *_dataContainerURL;
+    NSDictionary *_groupContainerURLS;
     NSArray *_defaultCategories;
     UNSNotificationSourceSettingsDescription *_defaultSettings;
     NSArray *_defaultTopics;
@@ -54,20 +59,25 @@
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property (copy, nonatomic) NSString *carPlayIconFile; // @synthesize carPlayIconFile=_carPlayIconFile;
+@property (nonatomic) BOOL daemonShouldReceiveApplicationEvents; // @synthesize daemonShouldReceiveApplicationEvents=_daemonShouldReceiveApplicationEvents;
 @property (nonatomic) BOOL daemonShouldReceiveBackgroundResponses; // @synthesize daemonShouldReceiveBackgroundResponses=_daemonShouldReceiveBackgroundResponses;
+@property (nonatomic) BOOL daemonShouldReceiveNotificationSettingsUpdates; // @synthesize daemonShouldReceiveNotificationSettingsUpdates=_daemonShouldReceiveNotificationSettingsUpdates;
 @property (copy, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
 @property (strong, nonatomic) NSArray *defaultCategories; // @synthesize defaultCategories=_defaultCategories;
 @property (copy, nonatomic) NSString *defaultIconFile; // @synthesize defaultIconFile=_defaultIconFile;
 @property (strong, nonatomic) UNSNotificationSourceSettingsDescription *defaultSettings; // @synthesize defaultSettings=_defaultSettings;
 @property (strong, nonatomic) NSArray *defaultTopics; // @synthesize defaultTopics=_defaultTopics;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (copy, nonatomic) NSDictionary *groupContainerURLS; // @synthesize groupContainerURLS=_groupContainerURLS;
 @property (nonatomic) BOOL hideSettings; // @synthesize hideSettings=_hideSettings;
+@property (copy, nonatomic) NSString *processBundleIdentifier; // @synthesize processBundleIdentifier=_processBundleIdentifier;
 @property (copy, nonatomic) NSString *pushEnvironment; // @synthesize pushEnvironment=_pushEnvironment;
 @property (nonatomic, getter=isRestricted) BOOL restricted; // @synthesize restricted=_restricted;
 @property (copy, nonatomic) NSString *settingsIconFile; // @synthesize settingsIconFile=_settingsIconFile;
 @property (copy, nonatomic) NSString *settingsSheetIconFile; // @synthesize settingsSheetIconFile=_settingsSheetIconFile;
 @property (nonatomic) BOOL supportsContentAvailableRemoteNotifications; // @synthesize supportsContentAvailableRemoteNotifications=_supportsContentAvailableRemoteNotifications;
 @property (nonatomic) BOOL suppressDismissalSync; // @synthesize suppressDismissalSync=_suppressDismissalSync;
+@property (nonatomic) BOOL suppressIconMask; // @synthesize suppressIconMask=_suppressIconMask;
 @property (nonatomic) BOOL suppressUserAuthorizationPrompt; // @synthesize suppressUserAuthorizationPrompt=_suppressUserAuthorizationPrompt;
 @property (copy, nonatomic) NSString *universalApplicationIdentifier; // @synthesize universalApplicationIdentifier=_universalApplicationIdentifier;
 @property (nonatomic) BOOL useDefaultDataProvider; // @synthesize useDefaultDataProvider=_useDefaultDataProvider;
@@ -83,8 +93,13 @@
 
 + (id)_validEnvironmentFromEnvironment:(id)arg1;
 + (id)applicationSourceDescriptionWithApplication:(id)arg1;
++ (id)applicationSourceDescriptionWithBundleIdentifier:(id)arg1;
 + (id)descriptionWithBundleIdentifier:(id)arg1 path:(id)arg2;
++ (id)sourceDescriptionWithBundleIdentifier:(id)arg1;
++ (id)systemSourceDescriptionWithBundleIdentifier:(id)arg1;
 + (id)systemSourceDescriptionWithBundleURL:(id)arg1;
++ (id)systemSourceDirectoryURLs;
++ (id)systemSourcePathExtension;
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;

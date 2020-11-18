@@ -10,7 +10,7 @@
 {
     CDStruct_02837cd9 _localBounds;
     shared_ptr_92bc9970 _mapEdge;
-    struct vector<GEOVectorTilePoint, std::__1::allocator<GEOVectorTilePoint>> _points;
+    struct vector<GEOPosition2f, std::__1::allocator<GEOPosition2f>> _points;
     struct vector<geo::PolylineCoordinate, std::__1::allocator<geo::PolylineCoordinate>> _routeOffsets;
     unsigned long long _mapEdgeOffset;
     BOOL _clippedFront;
@@ -19,7 +19,7 @@
 
 @property (readonly, nonatomic) BOOL clippedBack; // @synthesize clippedBack=_clippedBack;
 @property (readonly, nonatomic) BOOL clippedFront; // @synthesize clippedFront=_clippedFront;
-@property (readonly, nonatomic) CDStruct_a2ef2718 *feature;
+@property (readonly, nonatomic) CDStruct_c8b5ad3f *feature;
 @property (readonly, nonatomic) shared_ptr_92bc9970 mapEdge; // @synthesize mapEdge=_mapEdge;
 @property (readonly, nonatomic) unsigned long long mapEdgeOffset; // @synthesize mapEdgeOffset=_mapEdgeOffset;
 @property (readonly, nonatomic) unsigned long long pointCount;

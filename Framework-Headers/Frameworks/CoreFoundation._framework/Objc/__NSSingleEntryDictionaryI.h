@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
     id _key;
 }
 
-+ (id)__new:(id)arg1:(id)arg2:(BOOL)arg3;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void)__apply:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2;

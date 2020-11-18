@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)stopPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopRotatingWithFocusPoint:(struct CGPoint)arg1;
+- (BOOL)tapAtPoint:(struct CGPoint)arg1;
 - (void)tapZoom:(struct CGPoint)arg1 levels:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)transferGestureState:(id)arg1;
 - (void)updatePan:(struct CGPoint)arg1 lastScreenPoint:(struct CGPoint)arg2;

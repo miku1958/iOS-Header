@@ -20,7 +20,6 @@
 - (BOOL)appendTimedMetadataGroup:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithAssetWriterInput:(id)arg1;
 

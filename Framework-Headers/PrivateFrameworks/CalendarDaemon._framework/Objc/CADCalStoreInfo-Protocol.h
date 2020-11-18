@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) int rowID;
 
 - (NSString *)accountIdentifier;
+- (NSString *)delegatedAccountOwnerAccountIdentifier;
 - (NSString *)storeName;
 @end
 

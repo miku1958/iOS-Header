@@ -6,15 +6,24 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
+@class AMSPromise, NSArray;
+
 @interface AMSNetworkQualityInquiry : NSObject
 {
+    NSArray *_lastKnownReports;
+    long long _lastReportRefreshTimestamp;
+    AMSPromise *_currentInvestigation;
 }
 
++ (BOOL)isEntitled;
++ (id)lastConnectionReport;
++ (id)reportForTask:(id)arg1 fromReports:(id)arg2;
 + (id)sharedInstance;
++ (void)updateLastConnectionReportWithTask:(id)arg1;
+- (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 - (id)investigateNetworks;
-- (void)investigateNetworksWithCompletionBlock:(CDUnknownBlockType)arg1;
 
 @end
 

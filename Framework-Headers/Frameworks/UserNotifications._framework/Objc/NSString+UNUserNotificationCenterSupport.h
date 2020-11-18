@@ -6,7 +6,17 @@
 
 #import <Foundation/NSString.h>
 
+@class NSArray;
+
 @interface NSString (UNUserNotificationCenterSupport)
+
+@property (readonly, copy, nonatomic) NSArray *un_localizedStringArguments;
+@property (readonly, copy, nonatomic) NSString *un_localizedStringKey;
+@property (readonly, copy, nonatomic) NSString *un_localizedStringValue;
+
 + (id)localizedUserNotificationStringForKey:(id)arg1 arguments:(id)arg2;
+- (id)un_logDigest;
+- (id)un_stringWithMaxLength:(unsigned long long)arg1;
+- (unsigned long long)un_unsignedLongLongValue;
 @end
 

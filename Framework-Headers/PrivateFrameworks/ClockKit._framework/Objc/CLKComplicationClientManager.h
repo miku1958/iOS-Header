@@ -40,6 +40,7 @@
 - (void)_addClient:(id)arg1;
 - (void)_handleApplicationStateChange:(id)arg1;
 - (void)_removeClient:(id)arg1;
+- (void)dealloc;
 - (void)enumerateClientsWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

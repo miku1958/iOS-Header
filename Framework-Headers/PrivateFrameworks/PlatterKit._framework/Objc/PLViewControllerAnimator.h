@@ -8,7 +8,7 @@
 
 #import <PlatterKit/UIViewControllerAnimatedTransitioning-Protocol.h>
 
-@class NSPointerArray, NSString, UIView;
+@class NSPointerArray, NSString, UIView, UIViewPropertyAnimator;
 @protocol PLViewControllerAnimatorDelegate;
 
 @interface PLViewControllerAnimator : NSObject <UIViewControllerAnimatedTransitioning>
@@ -18,6 +18,8 @@
     BOOL _didPrepareForTransition;
     BOOL _presenting;
     BOOL _includePresentingViewInAnimation;
+    BOOL _runAlongsideAnimationsManually;
+    UIViewPropertyAnimator *_propertyAnimator;
     id<PLViewControllerAnimatorDelegate> _delegate;
 }
 
@@ -27,13 +29,15 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includePresentingViewInAnimation; // @synthesize includePresentingViewInAnimation=_includePresentingViewInAnimation;
 @property (readonly, nonatomic, getter=isPresenting) BOOL presenting; // @synthesize presenting=_presenting;
+@property (readonly, nonatomic) UIViewPropertyAnimator *propertyAnimator; // @synthesize propertyAnimator=_propertyAnimator;
+@property (nonatomic) BOOL runAlongsideAnimationsManually; // @synthesize runAlongsideAnimationsManually=_runAlongsideAnimationsManually;
 @property (readonly) Class superclass;
 
 + (BOOL)drivesAnimation;
 - (void).cxx_destruct;
 - (void)_animateTransitionWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_animationFactoryForLongLookPresentation:(BOOL)arg1;
 - (BOOL)_isTransitionAnimated;
+- (id)_newPropertyAnimator;
 - (void)_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_performTransitionWithContext:(id)arg1;
 - (id)_presentedExpandedPlatterForPresentedView:(id)arg1;
@@ -45,6 +49,7 @@
 - (id)_sourceViewForPresentation:(BOOL)arg1 withTransitionContext:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (void)animateTransition:(id)arg1;
+- (void)animationEnded:(BOOL)arg1;
 - (id)initForPresentation:(BOOL)arg1 withSourceView:(id)arg2;
 - (void)performTransitionWithContext:(id)arg1;
 - (void)prepareForTransitionWithContext:(id)arg1;

@@ -18,15 +18,18 @@
     NSArray *_requestedItemIdentifiers;
     NSDictionary *_responseDictionary;
     NSString *_storefrontIdentifier;
+    BOOL _authenticated;
 }
 
 @property (readonly, copy, nonatomic) NSNumber *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (readonly, copy, nonatomic) NSArray *allItems;
+@property (readonly, nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSNumber *enqueuerAccountIdentifier; // @synthesize enqueuerAccountIdentifier=_enqueuerAccountIdentifier;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSDictionary *resultsDictionary;
 @property (readonly, copy, nonatomic) NSString *storefrontIdentifier;
 @property (readonly) Class superclass;
 

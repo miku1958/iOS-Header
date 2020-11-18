@@ -28,10 +28,12 @@
 - (void).cxx_destruct;
 - (id)_initWithEnumerable:(id)arg1 count:(unsigned long long)arg2;
 - (id)_initWithUnderlyingSet:(id)arg1 changesDictionary:(id)arg2;
+- (id)allModifications;
 - (id)allObjects;
 - (id)anyObject;
 - (BOOL)containsObject:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateModificationsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateModificationsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;

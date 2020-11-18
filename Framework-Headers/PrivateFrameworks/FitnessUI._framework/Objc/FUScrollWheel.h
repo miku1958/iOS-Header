@@ -70,6 +70,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setActiveScrollWheel;
+- (void)setCurrentIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)willMoveToSuperview:(id)arg1;

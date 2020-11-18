@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 
 + (id)newPackageWriterWithPackageType:(long long)arg1 URL:(id)arg2 documentTargetURL:(id)arg3 relativeURLForExternalData:(id)arg4 packageIdentifier:(unsigned char)arg5 documentProperties:(id)arg6 fileFormatVersion:(unsigned long long)arg7 updateType:(long long)arg8 apfsMode:(BOOL)arg9 encryptionKey:(id)arg10 originalDocumentPackage:(id)arg11 originalSuppportPackage:(id)arg12 fileCoordinatorDelegate:(id)arg13 progress:(id)arg14 error:(id *)arg15;
 - (void).cxx_destruct;
-- (BOOL)addData:(id)arg1 infoMessage:(struct DataInfo *)arg2 saveOperationState:(id)arg3;
+- (BOOL)addData:(id)arg1 infoMessage:(struct DataInfo *)arg2 saveOperationState:(id)arg3 error:(id *)arg4;
 - (BOOL)closeAndReturnError:(id *)arg1;
 - (void)closeCurrentChannel;
 - (void)closeWithQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;

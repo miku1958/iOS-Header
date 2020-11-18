@@ -10,10 +10,13 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
++ (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (float)_accessibilityActivationDelay;
 - (id)_accessibilityAutomaticIdentifier;
+- (BOOL)_accessibilityIsFKARunningForFocusItem;
 - (BOOL)_accessibilityProvidesOwnFrame;
 - (BOOL)_accessibilitySetNativeFocus;
 - (void)_accessibilitySetValue:(id)arg1;

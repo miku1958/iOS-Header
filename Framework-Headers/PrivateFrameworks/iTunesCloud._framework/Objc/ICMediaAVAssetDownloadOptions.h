@@ -13,6 +13,7 @@
     NSMutableDictionary *_httpHeaderFields;
     ICStoreRequestContext *_requestContext;
     BOOL _canUseCellularData;
+    BOOL _allowDownloadOnConstrainedNetworks;
     NSString *_clientIdentifier;
     NSString *_secondaryClientIdentifier;
     long long _priority;
@@ -27,6 +28,7 @@
 }
 
 @property (copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
+@property (nonatomic) BOOL allowDownloadOnConstrainedNetworks; // @synthesize allowDownloadOnConstrainedNetworks=_allowDownloadOnConstrainedNetworks;
 @property (nonatomic) BOOL canUseCellularData; // @synthesize canUseCellularData=_canUseCellularData;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;

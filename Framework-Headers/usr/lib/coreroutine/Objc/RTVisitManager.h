@@ -6,72 +6,69 @@
 
 #import <coreroutine/RTService.h>
 
+#import <coreroutine/RTPurgable-Protocol.h>
 #import <coreroutine/RTVisitMonitorDelegate-Protocol.h>
 
-@class NSManagedObjectContext, NSMutableArray, NSString, RTDefaultsManager, RTHintManager, RTInvocationDispatcher, RTLearnedLocationManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTPersistenceManager, RTPlatform, RTVisitMonitor;
+@class NSMutableArray, NSString, RTDefaultsManager, RTHintManager, RTLearnedLocationManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTPlatform, RTVisitMonitor, RTVisitStore;
 
-@interface RTVisitManager : RTService <RTVisitMonitorDelegate>
+@interface RTVisitManager : RTService <RTVisitMonitorDelegate, RTPurgable>
 {
     BOOL _spoofMode;
-    RTVisitMonitor *_visitMonitor;
-    RTInvocationDispatcher *_dispatcher;
-    RTPersistenceManager *_persistenceManager;
     RTDefaultsManager *_defaultsManager;
-    RTPlatform *_platform;
-    RTLocationManager *_locationManager;
     RTHintManager *_hintManager;
-    RTMetricManager *_metricManager;
     RTLocationAwarenessManager *_locationAwarenessManager;
-    NSManagedObjectContext *_managedObjectContext;
+    RTLocationManager *_locationManager;
+    RTMetricManager *_metricManager;
+    RTMotionActivityManager *_motionActivityManager;
+    RTPlatform *_platform;
+    RTVisitStore *_visitStore;
     NSMutableArray *_spoofVisitIncidentTokens;
     RTLearnedLocationManager *_learnedLocationManager;
+    RTVisitMonitor *_visitMonitor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
 @property (strong, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property (strong, nonatomic) RTLocationAwarenessManager *locationAwarenessManager; // @synthesize locationAwarenessManager=_locationAwarenessManager;
 @property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (strong, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
-@property (strong, nonatomic) RTPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
+@property (strong, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
 @property (strong, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property (nonatomic) BOOL spoofMode; // @synthesize spoofMode=_spoofMode;
 @property (strong, nonatomic) NSMutableArray *spoofVisitIncidentTokens; // @synthesize spoofVisitIncidentTokens=_spoofVisitIncidentTokens;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) RTVisitMonitor *visitMonitor; // @synthesize visitMonitor=_visitMonitor;
+@property (strong, nonatomic) RTVisitStore *visitStore; // @synthesize visitStore=_visitStore;
 
 - (void).cxx_destruct;
 - (void)_fetchVisitsFromDate:(id)arg1 toDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)_fetchVisitsFromVisitMonitor:(id)arg1 fromDate:(id)arg2 toDate:(id)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)_onLeechedVisitIncident:(id)arg1 error:(id)arg2;
 - (void)_onLowConfidenceVisitIncident:(id)arg1 error:(id)arg2;
 - (void)_onVisitIncident:(id)arg1 error:(id)arg2;
-- (void)_onVisitMonitorStateChanged:(id)arg1;
-- (void)_saveManagedObjectContext;
-- (void)_saveVisitMonitorState:(id)arg1;
+- (void)_onVisitStoreNotification:(id)arg1;
+- (void)_performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setup;
-- (void)_setupVisitMonitor;
+- (void)_setupVisitMonitorWithHandler:(CDUnknownBlockType)arg1;
 - (void)_shutdown;
 - (void)_simulateVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_updateStateForLeechedVisitIncidents;
 - (void)_updateStateForLowConfidenceVisitIncidents;
 - (void)_updateStateForVisitIncidents;
-- (void)fetchLastLowConfidenceVisitIncidentWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchLastVisitIncidentWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchStoredVisitsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchVisitsFromDate:(id)arg1 toDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)init;
-- (id)initWithQueue:(id)arg1 persistenceManager:(id)arg2 defaultsManager:(id)arg3 platform:(id)arg4 locationManager:(id)arg5 learnedLocationManager:(id)arg6 hintManager:(id)arg7 metricManager:(id)arg8 locationAwarenessManager:(id)arg9;
+- (id)initWithQueue:(id)arg1 defaultsManager:(id)arg2 hintManager:(id)arg3 learnedLocationManager:(id)arg4 locationAwarenessManager:(id)arg5 locationManager:(id)arg6 metricManager:(id)arg7 motionActivityManager:(id)arg8 platform:(id)arg9 visitStore:(id)arg10;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (void)onLeechedVisitIncident:(id)arg1 error:(id)arg2;
 - (void)onLowConfidenceVisitIncident:(id)arg1 error:(id)arg2;
 - (void)onVisitIncident:(id)arg1 error:(id)arg2;
-- (void)onVisitMonitorStateChanged:(id)arg1;
+- (void)onVisitStoreNotification:(id)arg1;
+- (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)registerForSpoofVisitIncidentOfCategory:(id)arg1;
 - (void)simulateVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)unregisterForSpoofVisitIncidentWithToken:(int)arg1;

@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (CDStruct_912d1c89)offsetForAutoScroller:(id)arg1;
+- (CDStruct_912d1c89)offsetForAutoScroller:(id)arg1 timeDelta:(double)arg2;
 
 @end
 

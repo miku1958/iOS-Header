@@ -8,17 +8,19 @@
 
 #import <AVKit/NSCopying-Protocol.h>
 
-@class NSArray;
+@class NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface AVPlayerItemAVKitData : NSObject <NSCopying>
 {
-    NSArray *_externalMetadata;
+    NSMutableDictionary *_customPropertyStorage;
 }
 
-@property (strong, nonatomic) NSArray *externalMetadata; // @synthesize externalMetadata=_externalMetadata;
+@property (readonly, nonatomic) NSMutableDictionary *customPropertyStorage; // @synthesize customPropertyStorage=_customPropertyStorage;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
 
 @end
 

@@ -14,20 +14,27 @@
 {
     PBUnknownFields *_unknownFields;
     GEOClientNetworkMetrics *_networkMetrics;
+    int _offlineReason;
     int _responseSource;
     struct {
-        unsigned int responseSource:1;
-    } _has;
+        unsigned int has_offlineReason:1;
+        unsigned int has_responseSource:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasNetworkMetrics;
+@property (nonatomic) BOOL hasOfflineReason;
 @property (nonatomic) BOOL hasResponseSource;
-@property (strong, nonatomic) GEOClientNetworkMetrics *networkMetrics; // @synthesize networkMetrics=_networkMetrics;
-@property (nonatomic) int responseSource; // @synthesize responseSource=_responseSource;
+@property (strong, nonatomic) GEOClientNetworkMetrics *networkMetrics;
+@property (nonatomic) int offlineReason;
+@property (nonatomic) int responseSource;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsOfflineReason:(id)arg1;
 - (int)StringAsResponseSource:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +42,8 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)offlineReasonAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)responseSourceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

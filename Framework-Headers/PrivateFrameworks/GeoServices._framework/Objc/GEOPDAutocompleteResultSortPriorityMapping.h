@@ -18,23 +18,25 @@ __attribute__((visibility("hidden")))
     int _resultType;
     int _sortPriority;
     struct {
-        unsigned int resultSubtype:1;
-        unsigned int resultType:1;
-        unsigned int sortPriority:1;
-    } _has;
+        unsigned int has_resultSubtype:1;
+        unsigned int has_resultType:1;
+        unsigned int has_sortPriority:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasResultSubtype;
 @property (nonatomic) BOOL hasResultType;
 @property (nonatomic) BOOL hasSortPriority;
-@property (nonatomic) int resultSubtype; // @synthesize resultSubtype=_resultSubtype;
-@property (nonatomic) int resultType; // @synthesize resultType=_resultType;
-@property (nonatomic) int sortPriority; // @synthesize sortPriority=_sortPriority;
+@property (nonatomic) int resultSubtype;
+@property (nonatomic) int resultType;
+@property (nonatomic) int sortPriority;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsResultSubtype:(id)arg1;
 - (int)StringAsResultType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resultSubtypeAsString:(int)arg1;
 - (id)resultTypeAsString:(int)arg1;

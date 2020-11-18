@@ -12,12 +12,15 @@
 {
     _PXFileBackedAssetCollection *_assetCollection;
     NSDictionary *_assetCollectionBySection;
-    NSDictionary *_fileURLsBySection;
+    NSDictionary *_assetDescriptionsBySection;
 }
 
-@property (readonly, nonatomic) NSDictionary *fileURLsBySection; // @synthesize fileURLsBySection=_fileURLsBySection;
+@property (readonly, copy, nonatomic) NSDictionary *assetDescriptionsBySection; // @synthesize assetDescriptionsBySection=_assetDescriptionsBySection;
 
 - (void).cxx_destruct;
+- (id)assetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)init;
+- (id)initWithFileBackedAssetDescriptionsBySection:(id)arg1;
 - (id)initWithFileURLsBySection:(id)arg1;
 - (id)inputForItem:(id)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;

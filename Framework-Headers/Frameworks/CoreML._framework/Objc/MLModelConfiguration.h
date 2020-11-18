@@ -7,20 +7,45 @@
 #import <objc/NSObject.h>
 
 #import <CoreML/NSCopying-Protocol.h>
+#import <CoreML/NSSecureCoding-Protocol.h>
 
-@interface MLModelConfiguration : NSObject <NSCopying>
+@class NSDictionary, NSURL;
+@protocol MTLDevice;
+
+@interface MLModelConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _allowBackgroundGPUComputeSetting;
     BOOL _useWatchSPIForScribble;
+    BOOL _allowLowPrecisionAccumulationOnGPU;
+    BOOL _enableTestVectorMode;
     long long _computeUnits;
+    id<MTLDevice> _preferredMetalDevice;
+    NSDictionary *_parameters;
+    NSURL *_rootModelURL;
 }
 
+@property (nonatomic) BOOL allowBackgroundGPUCompute;
+@property BOOL allowBackgroundGPUComputeSetting; // @synthesize allowBackgroundGPUComputeSetting=_allowBackgroundGPUComputeSetting;
+@property (nonatomic) BOOL allowFloat16AccumulationOnGPU;
+@property BOOL allowLowPrecisionAccumulationOnGPU; // @synthesize allowLowPrecisionAccumulationOnGPU=_allowLowPrecisionAccumulationOnGPU;
 @property long long computeUnits; // @synthesize computeUnits=_computeUnits;
+@property (nonatomic) BOOL enableTestVectorMode; // @synthesize enableTestVectorMode=_enableTestVectorMode;
+@property (strong) NSDictionary *parameters; // @synthesize parameters=_parameters;
+@property (strong, nonatomic) id<MTLDevice> preferredMTLDevice;
+@property (strong, nonatomic) id<MTLDevice> preferredMetalDevice; // @synthesize preferredMetalDevice=_preferredMetalDevice;
+@property (strong) NSURL *rootModelURL; // @synthesize rootModelURL=_rootModelURL;
 @property (nonatomic) BOOL useWatchSPIForScribble; // @synthesize useWatchSPIForScribble=_useWatchSPIForScribble;
 
 + (id)defaultConfiguration;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)computeUnitsToString:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithComputeUnits:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToModelConfiguration:(id)arg1;

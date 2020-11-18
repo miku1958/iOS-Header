@@ -12,26 +12,30 @@
 #import <CoreHAP/HMFNetMonitorDelegate-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HAPAccessory, HAPAccessoryProtocolInfo, HAPAccessoryServerBrowserIP, HAPAuthSession, HAPHTTPClient, HAPWACClient, HMFBlockOperation, HMFMACAddress, HMFNetMonitor, HMFTimer, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
+@class HAPAccessory, HAPAccessoryProtocolInfo, HAPAccessoryServerBrowserIP, HAPAccessoryWiFiConfiguration, HAPAuthSession, HAPHTTPClient, HAPWACAccessory, HMFBlockOperation, HMFNetAddress, HMFNetMonitor, HMFTimer, HMFUnfairLock, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableSet, NSOperationQueue, NSString;
 
 @interface HAPAccessoryServerIP : HAPAccessoryServer <HAPHTTPClientDelegate, HAPHTTPClientDebugDelegate, HMFTimerDelegate, HAPAuthSessionDelegate, HMFNetMonitorDelegate>
 {
     struct PairingSessionPrivate *_pairingSession;
     unsigned long long _featureFlags;
+    HMFUnfairLock *_lock;
+    BOOL _establishingSecureConnection;
+    BOOL _wacAccessory;
     BOOL _wacComplete;
     BOOL _wacLegacy;
-    BOOL _wacSoftToken;
     BOOL _preSoftAuthWacStarted;
     BOOL _postSoftAuthWacStarted;
     BOOL _authenticated;
-    BOOL _establishingSecureConnection;
+    BOOL _hasAttributeDatabase;
     BOOL _hasTunnelService;
     BOOL _econnresetRetryInProgress;
     BOOL _continuingLegacyWACpairing;
     BOOL _wacStarted;
     BOOL _hasStartedPairing;
-    BOOL _tokenRequestPending;
+    BOOL _pairingRequestPending;
     BOOL _tokenValidationPending;
+    int _cancelPairingErr;
+    NSString *_productData;
     NSString *_model;
     NSString *_sourceVersion;
     unsigned long long _statusFlags;
@@ -41,7 +45,6 @@
     NSArray *_ipServices;
     NSMutableArray *_queuedOperations;
     HAPAccessory *_primaryAccessoryForServer;
-    HMFMACAddress *_bluetoothAddress;
     HAPHTTPClient *_httpClient;
     HAPAuthSession *_authSession;
     HAPAccessoryProtocolInfo *_authenticatedProtocolInfo;
@@ -51,8 +54,9 @@
     NSMutableSet *_resolvers;
     HMFBlockOperation *_pairOperation;
     NSOperationQueue *_clientOperationQueue;
-    NSDictionary *_wacDeviceInfo;
-    HAPWACClient *_pairUsingWAC;
+    NSData *_ownershipToken;
+    HAPAccessoryWiFiConfiguration *_wifiConfiguration;
+    HAPWACAccessory *_hapWACAccessory;
     HMFTimer *_bonjourEventTimer;
     HMFNetMonitor *_networkMonitor;
 }
@@ -60,17 +64,19 @@
 @property (readonly, nonatomic) HAPAuthSession *authSession; // @synthesize authSession=_authSession;
 @property (nonatomic) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (strong, nonatomic) HAPAccessoryProtocolInfo *authenticatedProtocolInfo; // @synthesize authenticatedProtocolInfo=_authenticatedProtocolInfo;
-@property (copy, nonatomic) HMFMACAddress *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (strong, nonatomic) NSDictionary *bonjourDeviceInfo; // @synthesize bonjourDeviceInfo=_bonjourDeviceInfo;
 @property (strong, nonatomic) HMFTimer *bonjourEventTimer; // @synthesize bonjourEventTimer=_bonjourEventTimer;
 @property (weak, nonatomic) HAPAccessoryServerBrowserIP *browser; // @synthesize browser=_browser;
+@property (nonatomic) int cancelPairingErr; // @synthesize cancelPairingErr=_cancelPairingErr;
 @property (readonly, nonatomic) NSOperationQueue *clientOperationQueue; // @synthesize clientOperationQueue=_clientOperationQueue;
 @property (nonatomic, getter=isContinuingLegacyWACpairing) BOOL continuingLegacyWACpairing; // @synthesize continuingLegacyWACpairing=_continuingLegacyWACpairing;
 @property (strong, nonatomic) NSString *controllerUsername; // @synthesize controllerUsername=_controllerUsername;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL econnresetRetryInProgress; // @synthesize econnresetRetryInProgress=_econnresetRetryInProgress;
-@property BOOL establishingSecureConnection; // @synthesize establishingSecureConnection=_establishingSecureConnection;
+@property (nonatomic, getter=isEstablishingSecureConnection) BOOL establishingSecureConnection; // @synthesize establishingSecureConnection=_establishingSecureConnection;
+@property (readonly, nonatomic) HAPWACAccessory *hapWACAccessory; // @synthesize hapWACAccessory=_hapWACAccessory;
+@property (nonatomic) BOOL hasAttributeDatabase; // @synthesize hasAttributeDatabase=_hasAttributeDatabase;
 @property (nonatomic) BOOL hasStartedPairing; // @synthesize hasStartedPairing=_hasStartedPairing;
 @property (nonatomic) BOOL hasTunnelService; // @synthesize hasTunnelService=_hasTunnelService;
 @property (readonly) unsigned long long hash;
@@ -79,33 +85,35 @@
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) CDUnknownBlockType netServiceResolveCompletionBlock; // @synthesize netServiceResolveCompletionBlock=_netServiceResolveCompletionBlock;
 @property (readonly, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
+@property (readonly, nonatomic) NSData *ownershipToken; // @synthesize ownershipToken=_ownershipToken;
 @property (strong, nonatomic) HMFBlockOperation *pairOperation; // @synthesize pairOperation=_pairOperation;
-@property (strong, nonatomic) HAPWACClient *pairUsingWAC; // @synthesize pairUsingWAC=_pairUsingWAC;
 @property (copy, nonatomic) CDUnknownBlockType pairVerifyCompletionBlock; // @synthesize pairVerifyCompletionBlock=_pairVerifyCompletionBlock;
+@property (nonatomic, getter=isPairingRequestPending) BOOL pairingRequestPending; // @synthesize pairingRequestPending=_pairingRequestPending;
+@property (readonly, copy, nonatomic) HMFNetAddress *peerAddress;
+@property (readonly, nonatomic) NSString *peerEndpointDescription;
 @property (nonatomic, getter=isPostSoftAuthWacStarted) BOOL postSoftAuthWacStarted; // @synthesize postSoftAuthWacStarted=_postSoftAuthWacStarted;
 @property (nonatomic, getter=isPreSoftAuthWacStarted) BOOL preSoftAuthWacStarted; // @synthesize preSoftAuthWacStarted=_preSoftAuthWacStarted;
 @property (strong, nonatomic) HAPAccessory *primaryAccessoryForServer; // @synthesize primaryAccessoryForServer=_primaryAccessoryForServer;
+@property (strong, nonatomic) NSString *productData; // @synthesize productData=_productData;
 @property (strong, nonatomic) NSMutableArray *queuedOperations; // @synthesize queuedOperations=_queuedOperations;
 @property (strong, nonatomic) NSMutableSet *resolvers; // @synthesize resolvers=_resolvers;
 @property (copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 @property (nonatomic) unsigned long long statusFlags; // @synthesize statusFlags=_statusFlags;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSData *token; // @synthesize token=_token;
-@property (nonatomic, getter=isTokenRequestPending) BOOL tokenRequestPending; // @synthesize tokenRequestPending=_tokenRequestPending;
+@property (copy, nonatomic) NSData *token; // @synthesize token=_token;
 @property (nonatomic, getter=isTokenValidationPending) BOOL tokenValidationPending; // @synthesize tokenValidationPending=_tokenValidationPending;
-@property (readonly, nonatomic, getter=isWacAccessory) BOOL wacAccessory;
+@property (nonatomic, getter=isWacAccessory) BOOL wacAccessory; // @synthesize wacAccessory=_wacAccessory;
 @property (nonatomic, getter=isWacComplete) BOOL wacComplete; // @synthesize wacComplete=_wacComplete;
-@property (readonly, copy, nonatomic) NSDictionary *wacDeviceInfo; // @synthesize wacDeviceInfo=_wacDeviceInfo;
 @property (nonatomic, getter=isWacLegacy) BOOL wacLegacy; // @synthesize wacLegacy=_wacLegacy;
-@property (nonatomic, getter=isWacSoftToken) BOOL wacSoftToken; // @synthesize wacSoftToken=_wacSoftToken;
+@property (readonly, getter=isWacNeeded) BOOL wacNeeded;
 @property (nonatomic, getter=isWacStarted) BOOL wacStarted; // @synthesize wacStarted=_wacStarted;
+@property (strong, nonatomic) HAPAccessoryWiFiConfiguration *wifiConfiguration; // @synthesize wifiConfiguration=_wifiConfiguration;
 
 + (id)sharedPairOperationQueue;
 - (void).cxx_destruct;
 - (void)__registerForInternalCharacteristicNotifications;
-- (int)_continuePairingAfterAuthPrompt;
-- (void)_continuePairingAfterConfirmingSecureWAC;
-- (void)_continuePairingAfterConfirmingSoftAuthWAC;
+- (int)_continuePairingAfterAuthPromptWithRetry:(BOOL)arg1;
+- (void)_continuePairingAfterConfirmingSecureWAC:(id)arg1;
 - (void)_continuePairingAfterMFiCertValidation;
 - (void)_continuePairingAfterWAC:(id)arg1;
 - (void)_continuePairingUsingWAC;
@@ -120,10 +128,12 @@
 - (void)_establishSecureSession;
 - (void)_establishSecureSessionAndRemovePairing:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_getAttributeDatabase;
+- (int)_getBonjourDeviceDNSName:(id *)arg1;
 - (void)_handleEventResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 error:(id)arg4 characteristics:(id)arg5 requestedEventState:(BOOL)arg6 completion:(CDUnknownBlockType)arg7 queue:(id)arg8;
 - (void)_handleHTTPClientErrors;
 - (void)_handleListPairingsResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 httpError:(id)arg4 completionQueue:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_handleMFiCertValidation;
+- (void)_handlePairSetupAfterM4Callback;
 - (int)_handlePairSetupCompletionWithData:(id)arg1;
 - (int)_handlePairVerifyCompletionWithData:(id)arg1;
 - (void)_handlePairingsResponseObject:(id)arg1 type:(unsigned long long)arg2 httpStatus:(int)arg3 httpError:(id)arg4 removeRequest:(BOOL)arg5 completionQueue:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
@@ -140,18 +150,18 @@
 - (void)_invokePairVerifyCompletionBlock:(id)arg1;
 - (void)_isAccessoryPublicKeyPresent:(BOOL *)arg1 registeredWithHomeKit:(BOOL *)arg2;
 - (BOOL)_isSessionEstablished;
+- (id)_joinAccessoryNetworkWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_mergeExistingAccessory:(id)arg1 withNewAccessory:(id)arg2;
 - (BOOL)_mergeExistingService:(id)arg1 withNewService:(id)arg2;
+- (void)_notifyDelegateNeedsOwnershipToken;
 - (void)_notifyDelegatesOfAddAccessoryFailure;
 - (void)_notifyDelegatesPairingStopped:(id)arg1;
 - (void)_pairSetupContinueWAC;
-- (void)_pairSetupStartWAC;
 - (int)_pairSetupStartWithConsentRequired:(BOOL)arg1;
 - (int)_pairSetupTryPassword:(id)arg1;
-- (void)_pairVerifyContinueWAC;
-- (int)_pairVerifyStart;
-- (void)_pairVerifyStartWAC;
+- (void)_pairVerifyStartWAC:(id)arg1;
+- (int)_pairVerifyStartWithRetry:(BOOL)arg1;
 - (BOOL)_parseAndValidateTXTRecord;
 - (void)_parseAttributeDatabase:(id)arg1 transaction:(id)arg2;
 - (BOOL)_parseTXTRecordDictionary:(id)arg1;
@@ -204,7 +214,7 @@
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initCommon:(id)arg1 browser:(id)arg2;
 - (id)initWithBonjourDeviceInfo:(id)arg1 keyStore:(id)arg2 browser:(id)arg3;
-- (id)initWithWACDeviceDictionary:(id)arg1 keyStore:(id)arg2 browser:(id)arg3;
+- (id)initWithHAPWACAccessory:(id)arg1 keystore:(id)arg2 browser:(id)arg3;
 - (void)invalidateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)invokePairVerifyCompletionBlock:(id)arg1;
 - (BOOL)isSessionEstablised;
@@ -220,16 +230,18 @@
 - (void)removePairing:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)removePairingForCurrentControllerOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)resetPostSoftAuthWAC;
 - (void)resolveLocalHostnameWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)services;
-- (void)startPairingWithConsentRequired:(BOOL)arg1;
-- (void)startReprovisioning;
+- (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
+- (void)startReprovisioningWiFiConfig:(id)arg1;
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (void)tearDownSessionOnAuthCompletion;
+- (void)tearDownSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)timerDidFire:(id)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)updateWithBonjourDeviceInfo:(id)arg1;
-- (void)updateWithWACDevice:(id)arg1;
+- (void)updateWithHAPWACAccessory:(id)arg1;
 - (void)writeCharacteristicValues:(id)arg1 timeout:(double)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

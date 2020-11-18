@@ -57,7 +57,6 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_activateAfterResidentChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_activateEvents:(CDUnknownBlockType)arg1;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_addEventToEventTrigger:(id)arg1;
@@ -73,6 +72,7 @@
 - (void)_handleLocationAuthorizationChangedNotification:(id)arg1;
 - (void)_handleRemoveEventModel:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveEventsFromEventTrigger:(id)arg1;
+- (void)_handleRemoveEventsFromEventTrigger:(id)arg1 relay:(BOOL)arg2;
 - (void)_handleUpdateEventTriggerCondition:(id)arg1;
 - (void)_handleUpdateEventTriggerExecuteOnce:(id)arg1;
 - (void)_handleUpdateEventTriggerRecurrences:(id)arg1;

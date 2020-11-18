@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)_navigationBarTitleShouldShowForHeaderView:(id)arg1 inScrollView:(id)arg2;
 + (id)pointImageOfColor:(id)arg1;
++ (BOOL)shouldUseAccessibilityLayout;
 + (void)updateNavigationBarWithNavigationItem:(id)arg1 forHeaderView:(id)arg2 inScrollView:(id)arg3 animated:(BOOL)arg4;
 
 @end

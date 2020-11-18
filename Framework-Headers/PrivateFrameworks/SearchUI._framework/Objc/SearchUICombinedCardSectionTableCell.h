@@ -6,19 +6,16 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
-@class NSMutableArray;
+@class SearchUICombinedCardSectionsView;
 
 @interface SearchUICombinedCardSectionTableCell : SearchUITableViewCell
 {
-    NSMutableArray *_subcells;
 }
 
-@property (strong) NSMutableArray *subcells; // @synthesize subcells=_subcells;
+@property (strong, nonatomic) SearchUICombinedCardSectionsView *sizingContainer; // @dynamic sizingContainer;
 
-+ (id)cellViewForTableModel:(id)arg1 section:(unsigned long long)arg2 rowRange:(struct _NSRange)arg3 style:(unsigned long long)arg4 feedbackDelegate:(id)arg5;
-+ (void)updateChevronAndSeparatorForCell:(id)arg1 tableModel:(id)arg2 indexPath:(id)arg3;
-- (void).cxx_destruct;
-- (id)initWithTableModel:(id)arg1 section:(unsigned long long)arg2 rowRange:(struct _NSRange)arg3 style:(unsigned long long)arg4 feedbackDelegate:(id)arg5;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

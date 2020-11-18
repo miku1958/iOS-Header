@@ -16,7 +16,7 @@
     long long _serialNumber;
     long long _evaluationMode;
     long long _mediaComponentType;
-    long long _depthType;
+    long long _auxiliaryImageType;
     long long _sampleMode;
     long long _roundingPolicy;
     NSArray *_pipelineFilters;
@@ -28,8 +28,8 @@
     CDStruct_1b6d18a9 _time;
 }
 
+@property long long auxiliaryImageType; // @synthesize auxiliaryImageType=_auxiliaryImageType;
 @property (readonly) NURenderTagGroup *currentGroup; // @synthesize currentGroup=_currentGroup;
-@property long long depthType; // @synthesize depthType=_depthType;
 @property long long evaluationMode; // @synthesize evaluationMode=_evaluationMode;
 @property (readonly) unsigned long long groupCount; // @synthesize groupCount=_groupCount;
 @property long long mediaComponentType; // @synthesize mediaComponentType=_mediaComponentType;

@@ -16,6 +16,7 @@
 }
 
 + (id)sharedEffectsWindowAboveStatusBar;
++ (id)sharedEffectsWindowAboveStatusBarForView:(id)arg1;
 - (BOOL)_canAffectStatusBarAppearance;
 - (void)dealloc;
 - (void)didAddSubview:(id)arg1;

@@ -8,21 +8,19 @@
 
 #import <FrontBoard/FBSceneLayerManagerObserver-Protocol.h>
 #import <FrontBoard/FBSceneManagerInternalObserver-Protocol.h>
-#import <FrontBoard/FBSceneMonitorDelegate-Protocol.h>
+#import <FrontBoard/FBSceneObserver-Protocol.h>
 
-@class FBSMutableSceneSettings, FBSSceneClientSettingsDiffInspector, FBSSceneSettings, FBScene, FBSceneMonitorBehaviors, NSMutableDictionary, NSMutableSet, NSString;
+@class FBSMutableSceneSettings, FBSSceneClientSettingsDiffInspector, FBSSceneSettings, FBScene, FBSceneMonitorBehaviors, NSMutableSet, NSString;
 @protocol FBSceneMonitorDelegate;
 
-@interface FBSceneMonitor : NSObject <FBSceneManagerInternalObserver, FBSceneLayerManagerObserver, FBSceneMonitorDelegate>
+@interface FBSceneMonitor : NSObject <FBSceneManagerInternalObserver, FBSceneObserver, FBSceneLayerManagerObserver>
 {
     FBScene *_scene;
     NSString *_sceneID;
     NSMutableSet *_externalSceneIDs;
     NSMutableSet *_pairedExternalSceneIDs;
-    NSMutableDictionary *_monitorsBySceneID;
     FBSSceneClientSettingsDiffInspector *_diffInspector;
     FBSMutableSceneSettings *_sceneSettings;
-    FBSMutableSceneSettings *_effectiveSettings;
     FBSceneMonitorBehaviors *_givenMonitorBehaviors;
     FBSceneMonitorBehaviors *_delegateMonitorBehaviors;
     FBSceneMonitorBehaviors *_effectiveMonitorBehaviors;
@@ -37,7 +35,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FBSceneMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) FBSSceneSettings *effectiveSceneSettings; // @synthesize effectiveSceneSettings=_effectiveSettings;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly, copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
@@ -50,7 +47,6 @@
 - (id)_initWithSceneManager:(id)arg1 sceneID:(id)arg2;
 - (void)_setEffectiveMonitorBehaviors:(id)arg1;
 - (void)_updateAllSceneStateIgnoringDelegate;
-- (void)_updateEffectiveSceneSettings:(BOOL)arg1;
 - (void)_updateExternalScenes:(BOOL)arg1;
 - (void)_updateScenePairingState:(BOOL)arg1;
 - (void)_updateSceneSettings:(BOOL)arg1;
@@ -59,15 +55,14 @@
 - (id)initWithSceneID:(id)arg1;
 - (void)invalidate;
 - (BOOL)isPairedWithExternalSceneID:(id)arg1;
+- (void)scene:(id)arg1 didApplyUpdateWithContext:(id)arg2;
+- (void)scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
 - (void)sceneLayerManager:(id)arg1 didRepositionLayer:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
-- (void)sceneManager:(id)arg1 scene:(id)arg2 didUpdateClientSettingsWithDiff:(id)arg3 oldClientSettings:(id)arg4 transitionContext:(id)arg5;
-- (void)sceneManager:(id)arg1 updateForScene:(id)arg2 appliedWithContext:(id)arg3;
 - (void)sceneManager:(id)arg1 willDestroyScene:(id)arg2;
 - (void)sceneManagerDidEndSceneUpdateSynchronization:(id)arg1;
 - (void)sceneManagerWillBeginSceneUpdateSynchronization:(id)arg1;
-- (void)sceneMonitor:(id)arg1 effectiveSceneSettingsDidChangeWithDiff:(id)arg2 previousSettings:(id)arg3;
 
 @end
 

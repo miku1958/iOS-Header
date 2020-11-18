@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class NSHashTable;
+
 @interface MFAddressBookManager : NSObject
 {
     void *_addressBook;
     struct os_unfair_lock_s _lock;
-    struct __CFDictionary *_clients;
+    NSHashTable *_clients;
 }
 
 + (BOOL)isAuthorizedToUseAddressBook;
 + (id)sharedManager;
-- (id)_clientWeakReferences;
+- (void).cxx_destruct;
+- (id)_clientsArray;
 - (void)_handleAddressBookChangeNotification;
 - (void)_handleAddressBookPrefsChangeNotification;
 - (void)addClient:(id)arg1;

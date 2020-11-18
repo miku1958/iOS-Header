@@ -18,9 +18,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSSet *features;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInvalid;
 @property (readonly, nonatomic) NSArray *keyAssets;
 @property (readonly, nonatomic) unsigned char notificationQuality;
 @property (readonly, nonatomic) unsigned short notificationState;
+@property (readonly, copy, nonatomic) NSArray *reasons;
 @property (readonly, nonatomic) id recipe;
 @property (readonly, nonatomic) unsigned long long relevanceDurationInDays;
 @property (readonly, nonatomic) NSArray *representativeAssets;
@@ -29,7 +31,7 @@
 @property (readonly, nonatomic) unsigned short subtype;
 @property (readonly, copy, nonatomic) NSArray *suggestedPersonLocalIdentifiers;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSString *title;
+@property (readonly, copy, nonatomic) NSString *title; // @dynamic title;
 @property (readonly, nonatomic) unsigned short type;
 @property (readonly, nonatomic) NSDate *universalEndDate;
 @property (readonly, nonatomic) NSDate *universalStartDate;

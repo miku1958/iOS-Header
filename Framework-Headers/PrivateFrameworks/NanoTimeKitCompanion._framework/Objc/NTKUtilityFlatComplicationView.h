@@ -6,21 +6,36 @@
 
 #import <NanoTimeKitCompanion/NTKUtilityComplicationView.h>
 
-@class NTKColoringLabel, NTKCurvedColoringLabel, UIImageView, UIView;
-@protocol NTKComplicationImageView;
+#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
+#import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 
-@interface NTKUtilityFlatComplicationView : NTKUtilityComplicationView
+@class NSString, NTKColoringLabel, NTKCurvedColoringLabel, UIImageView, UIView;
+@protocol CLKMonochromeFilterProvider, NTKComplicationImageView, NTKUtilityFlatComplicationViewDelegate;
+
+@interface NTKUtilityFlatComplicationView : NTKUtilityComplicationView <CLKMonochromeFilterProvider, CLKMonochromeComplicationView>
 {
     UIView<NTKComplicationImageView> *_imageView;
     NTKColoringLabel *_label;
     NTKCurvedColoringLabel *_curvedLabel;
     UIImageView *_curvedHighlightView;
     NTKColoringLabel *_activeLabel;
+    id<CLKMonochromeFilterProvider> _filterProvider;
+    id<NTKUtilityFlatComplicationViewDelegate> _delegate;
+    double _textWidthInRadians;
 }
+
+@property (nonatomic) double circleRadius;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<NTKUtilityFlatComplicationViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) double maxAngularWidth;
+@property (readonly) Class superclass;
+@property (nonatomic) double textWidthInRadians; // @synthesize textWidthInRadians=_textWidthInRadians;
 
 + (void)circleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 interior:(BOOL *)arg4 forPlacement:(unsigned long long)arg5 forDevice:(id)arg6;
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (id)_backgroundPlatterImage;
 - (void)_enumerateColoringStackedImagesViewsWithBlock:(CDUnknownBlockType)arg1;
@@ -31,6 +46,9 @@
 - (void)_updateHighlightViewCornerRadius;
 - (void)_updateLabelMaxWidth;
 - (double)_widthThatFits;
+- (id)colorForView:(id)arg1 accented:(BOOL)arg2;
+- (id)filterForView:(id)arg1 style:(long long)arg2;
+- (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
 - (unsigned long long)imagePlacement;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
@@ -41,6 +59,9 @@
 - (void)setShouldUseBackgroundPlatter:(BOOL)arg1;
 - (void)setUseBlockyHighlightCorners:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
+- (void)updateTextWidthIfNeeded;
 
 @end
 

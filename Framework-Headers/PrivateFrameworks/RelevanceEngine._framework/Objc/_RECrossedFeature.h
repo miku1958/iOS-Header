@@ -6,34 +6,30 @@
 
 #import <RelevanceEngine/REFeature.h>
 
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
-
 @class NSArray, NSString, REFeatureSet;
 
-@interface _RECrossedFeature : REFeature <REIndentedDescription>
+@interface _RECrossedFeature : REFeature
 {
     NSString *_name;
     unsigned long long _featureType;
     unsigned long long _bitCount;
     REFeatureSet *_dependentFeatures;
-    REFeatureSet *_rootFeatures;
+    unsigned long long _hash;
     NSArray *_features;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *features; // @synthesize features=_features;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (long long)_bitCount;
+- (void)_computeHash;
 - (id)_dependentFeatures;
 - (void)_replaceDependentFeature:(id)arg1 withFeature:(id)arg2;
 - (id)_rootFeatures;
+- (void)_updateFeaturesArray;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 - (unsigned long long)featureType;
+- (unsigned long long)hash;
 - (id)initWithFeatures:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)name;

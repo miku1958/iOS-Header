@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSString;
-@protocol NUDevice;
+@protocol NUDevice, NUDisplay;
 
 @interface NUPlatform : NSObject
 {
@@ -16,7 +16,6 @@
     BOOL _hasExtendedColorDisplay;
     NSString *_name;
     NSArray *_devices;
-    id<NUDevice> _mainDevice;
     id<NUDevice> _integratedDevice;
     id<NUDevice> _discreteDevice;
     id<NUDevice> _headlessDevice;
@@ -32,7 +31,8 @@
 @property (nonatomic) BOOL hasHeadlessGPU; // @synthesize hasHeadlessGPU=_hasHeadlessGPU;
 @property (strong, nonatomic) id<NUDevice> headlessDevice; // @synthesize headlessDevice=_headlessDevice;
 @property (strong, nonatomic) id<NUDevice> integratedDevice; // @synthesize integratedDevice=_integratedDevice;
-@property (readonly, nonatomic) id<NUDevice> mainDevice; // @synthesize mainDevice=_mainDevice;
+@property (readonly, nonatomic) id<NUDevice> mainDevice;
+@property (readonly, nonatomic) id<NUDisplay> mainDisplay;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL supportsAutomaticGraphicsSwitching; // @synthesize supportsAutomaticGraphicsSwitching=_supportsAutomaticGraphicsSwitching;
 @property (readonly, nonatomic) BOOL supportsLiveVideoRendering;
@@ -41,8 +41,9 @@
 - (void).cxx_destruct;
 - (void)clearCaches;
 - (id)debugDescription;
-- (id)defaultDevice;
 - (id)description;
+- (id)deviceForDisplay:(id)arg1;
+- (id)displayWithIdentifier:(id)arg1;
 
 @end
 

@@ -17,6 +17,7 @@
     BOOL _isGDPRConsented;
     BOOL _shouldPostAppLaunchData;
     NSDictionary *_baseFields;
+    NSDictionary *_cachedOpenUrlData;
     NSString *_currentTabIdentifier;
     NSString *_exitEventDestinationUrl;
     VUIMetricsPageEventData *_lastRecordedPageEventData;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) MTMetricsKit *activeMetricsKit; // @synthesize activeMetricsKit=_activeMetricsKit;
 @property (copy, nonatomic) NSDictionary *baseFields; // @synthesize baseFields=_baseFields;
 @property (readonly, copy, nonatomic) NSDictionary *baseFieldsForVPAF;
+@property (strong, nonatomic) NSDictionary *cachedOpenUrlData; // @synthesize cachedOpenUrlData=_cachedOpenUrlData;
 @property (readonly, copy, nonatomic) NSString *currentTabIdentifier; // @synthesize currentTabIdentifier=_currentTabIdentifier;
 @property (strong, nonatomic) NSString *exitEventDestinationUrl; // @synthesize exitEventDestinationUrl=_exitEventDestinationUrl;
 @property (readonly, copy, nonatomic) NSDictionary *iTunesVPAF;
@@ -51,17 +53,21 @@
 - (id)_createMetricsKitForTopic:(id)arg1;
 - (void)_flushMetricsOnExit;
 - (void)_flushUnreportedEvents:(id)arg1;
+- (id)_getLocationAuthorizationStatus;
 - (void)_handleServerConfigChange:(id)arg1;
 - (void)_handleTabBarChange:(id)arg1;
 - (void)_handleWLKAppLibChange:(id)arg1;
+- (void)_handleWLKLocationManagerChange:(id)arg1;
 - (void)_handleWLKSettingsDidChange:(id)arg1;
 - (void)_initializeBaseFields;
 - (void)_recordEnter:(id)arg1;
 - (void)_recordEvent:(id)arg1 withEventData:(id)arg2;
 - (void)_recordExit:(id)arg1;
 - (void)_saveRecentEvents:(id)arg1;
+- (void)_setGDPRConsentStatus:(BOOL)arg1;
 - (void)_updateBaseFieldsWithData:(id)arg1;
 - (void)flushMetrics;
+- (void)forceGDPRConsentStatus:(BOOL)arg1;
 - (id)getRecentEventsForDebuggerUI;
 - (id)init;
 - (void)jsDelegateRecordEvent:(id)arg1;
@@ -72,6 +78,8 @@
 - (void)recordAppWillBackground;
 - (void)recordAppWillTerminate;
 - (void)recordClick:(id)arg1;
+- (void)recordDialog:(id)arg1;
+- (void)recordLog:(id)arg1;
 - (void)recordMedia:(id)arg1;
 - (void)recordOpenUrlLaunchWithExtURL:(id)arg1 andOptions:(id)arg2;
 - (void)recordPage:(id)arg1;

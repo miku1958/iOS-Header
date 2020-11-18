@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType _ifkIMP;
     NSMutableDictionary *_sideDic;
     unsigned long long _mutations;
+    BOOL _doKVO;
 }
 
 + (id)sharedKeyDictionaryWithKeySet:(id)arg1;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)objectForKey:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)setObservationInfo:(void *)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class CNAvatarViewController, CNContact, NSString, PXRoundImageView, UIButton, UIColor, UIImage, UILabel, UIView;
+@class CNAvatarViewController, CNContact, NSString, PXRoundImageView, UIColor, UIImage, UIImageView, UILabel, UIView;
 
 @interface PXCMMComposeRecipientTableViewCell : UITableViewCell
 {
@@ -14,13 +14,13 @@
     UIView *_contactAvatarView;
     CNAvatarViewController *_contactAvatarViewController;
     PXRoundImageView *_customAvatarImageView;
-    UILabel *_displayNameLabel;
+    UILabel *_localizedNameLabel;
     UILabel *_transportLabel;
-    UIButton *_accessoryButtonView;
-    BOOL _emphasizeDisplayName;
+    UIImageView *_accessoryImageView;
+    BOOL _emphasizeLocalizedName;
     BOOL _checked;
     int _currentRequestID;
-    NSString *_displayName;
+    NSString *_localizedName;
     NSString *_transport;
     UIImage *_faceImage;
     UIColor *_textColor;
@@ -33,11 +33,11 @@
 @property (nonatomic, getter=isChecked) BOOL checked; // @synthesize checked=_checked;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (nonatomic) int currentRequestID; // @synthesize currentRequestID=_currentRequestID;
-@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (nonatomic) BOOL emphasizeDisplayName; // @synthesize emphasizeDisplayName=_emphasizeDisplayName;
+@property (nonatomic) BOOL emphasizeLocalizedName; // @synthesize emphasizeLocalizedName=_emphasizeLocalizedName;
 @property (strong, nonatomic) UIImage *faceImage; // @synthesize faceImage=_faceImage;
 @property (nonatomic) struct CGSize faceImageViewSize; // @synthesize faceImageViewSize=_faceImageViewSize;
 @property (nonatomic) double inset; // @synthesize inset=_inset;
+@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (strong, nonatomic) UIView *popoverSourceView; // @synthesize popoverSourceView=_popoverSourceView;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (copy, nonatomic) NSString *transport; // @synthesize transport=_transport;
@@ -45,8 +45,8 @@
 - (void).cxx_destruct;
 - (void)_updateAccessoryImageView;
 - (void)_updateAvatarView;
-- (void)_updateDisplayNameLabel;
 - (void)_updateLayout;
+- (void)_updateLocalizedNameLabel;
 - (void)_updateTransportLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

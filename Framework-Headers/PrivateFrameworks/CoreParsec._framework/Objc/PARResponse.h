@@ -39,6 +39,7 @@
 + (id)responseFromReply:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithReply:(id)arg1;
+- (id)initWithReply:(id)arg1 factory:(id)arg2 responseV2:(id)arg3;
 
 @end
 

@@ -70,7 +70,7 @@
 - (double)_totalEnergyBurnedInCanonicalUnit;
 - (double)_totalFlightsClimbedInCanonicalUnit;
 - (double)_totalSwimmingStrokeCountInCanonicalUnit;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_validateWorkoutEvents:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

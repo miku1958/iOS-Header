@@ -13,11 +13,12 @@
     NSURL *_libraryURL;
     NSURL *_groupLibraryURL;
     CDUnknownBlockType _invalidationHandler;
-    NSString *_fuzzyLocationStoragePath;
     NSString *_mapsDirectory;
     NSString *_cacheDirectory;
     NSString *_groupDirectory;
     NSString *_nanoDirectory;
+    NSString *_geoPinnedPlacesSettingsPath;
+    NSString *_geoCollectionsSettingsPath;
     NSString *_bookmarksSettingsPath;
     NSString *_geoBookmarksSettingsPath;
     NSString *_directionsSettingsPath;
@@ -47,9 +48,10 @@
 @property (readonly, nonatomic) NSString *failedGeoSearchesSettingsPath; // @synthesize failedGeoSearchesSettingsPath=_failedGeoSearchesSettingsPath;
 @property (readonly, nonatomic) NSString *failedSearchesSettingsPath; // @synthesize failedSearchesSettingsPath=_failedSearchesSettingsPath;
 @property (readonly, nonatomic) NSString *favoritesSyncedMarkerFile; // @synthesize favoritesSyncedMarkerFile=_favoritesSyncedMarkerFile;
-@property (readonly, nonatomic) NSString *fuzzyLocationStoragePath;
 @property (readonly, nonatomic) NSString *geoBookmarksSettingsPath; // @synthesize geoBookmarksSettingsPath=_geoBookmarksSettingsPath;
+@property (readonly, nonatomic) NSString *geoCollectionsSettingsPath; // @synthesize geoCollectionsSettingsPath=_geoCollectionsSettingsPath;
 @property (readonly, nonatomic) NSString *geoHistorySettingsPath; // @synthesize geoHistorySettingsPath=_geoHistorySettingsPath;
+@property (readonly, nonatomic) NSString *geoPinnedPlacesSettingsPath; // @synthesize geoPinnedPlacesSettingsPath=_geoPinnedPlacesSettingsPath;
 @property (readonly, nonatomic) NSString *groupDirectory; // @synthesize groupDirectory=_groupDirectory;
 @property (readonly, nonatomic) NSString *historySettingsPath; // @synthesize historySettingsPath=_historySettingsPath;
 @property (readonly, nonatomic) NSString *historySyncedMarkerFile; // @synthesize historySyncedMarkerFile=_historySyncedMarkerFile;
@@ -61,6 +63,8 @@
 @property (readonly, nonatomic) NSString *reportAProblemDirectionsRecordingsPath; // @synthesize reportAProblemDirectionsRecordingsPath=_reportAProblemDirectionsRecordingsPath;
 @property (readonly, nonatomic) NSString *reportAProblemNotificationsPath; // @synthesize reportAProblemNotificationsPath=_reportAProblemNotificationsPath;
 @property (readonly, nonatomic) NSString *reportAProblemSearchRecordingsPath; // @synthesize reportAProblemSearchRecordingsPath=_reportAProblemSearchRecordingsPath;
+@property (readonly, nonatomic) BOOL shouldSyncMergeFavoritesAfterCheckingOrCreatingMarkerFile;
+@property (readonly, nonatomic) BOOL shouldSyncMergeHistoryAfterCheckingOrCreatingMarkerFile;
 @property (readonly, nonatomic) NSString *transitAppRankerPath; // @synthesize transitAppRankerPath=_transitAppRankerPath;
 
 + (id)bookmarksSettingsPath;
@@ -75,7 +79,9 @@
 + (id)failedSearchesSettingsPath;
 + (id)favoritesSyncedMarkerFile;
 + (id)geoBookmarksSettingsPath;
++ (id)geoCollectionsSettingsPath;
 + (id)geoHistorySettingsPath;
++ (id)geoPinnedPlacesSettingsPath;
 + (id)groupDirectory;
 + (id)historySettingsPath;
 + (id)historySyncedMarkerFile;
@@ -97,8 +103,6 @@
 - (BOOL)deleteFavoritesSyncedMarkerFile;
 - (BOOL)deleteHistorySyncedMarkerFile;
 - (id)initWithLibraryDirectoryURL:(id)arg1 groupLibraryURL:(id)arg2 invalidationHandler:(CDUnknownBlockType)arg3;
-- (BOOL)shouldSyncMergeFavoritesAfterCheckingOrCreatingMarkerFile;
-- (BOOL)shouldSyncMergeHistoryAfterCheckingOrCreatingMarkerFile;
 
 @end
 

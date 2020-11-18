@@ -15,6 +15,7 @@
     long long _matchLocation;
     NSString *_userInput;
     SFSearchResult *_sfSearchResultValue;
+    long long _parsecQueryID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) long long matchLocation; // @synthesize matchLocation=_matchLocation;
 @property (readonly, nonatomic) BOOL matchLocationIsInURL;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property (readonly, nonatomic) long long parsecQueryID; // @synthesize parsecQueryID=_parsecQueryID;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
 @property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 @property (readonly) Class superclass;
@@ -33,7 +35,7 @@
 + (long long)matchLocationForString:(id)arg1 inTitle:(id)arg2;
 + (long long)matchLocationForString:(id)arg1 inURLString:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithMatchLocation:(long long)arg1 userInput:(id)arg2;
+- (id)initWithMatchLocation:(long long)arg1 userInput:(id)arg2 forQueryID:(long long)arg3;
 - (id)matchingStringWithUserTypedPrefix:(id)arg1;
 - (id)originalURLString;
 - (id)title;

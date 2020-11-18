@@ -8,8 +8,8 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, GEOLocationShifter, MapsSuggestionsCanKicker, MapsSuggestionsDonater, MapsSuggestionsETARequester, MapsSuggestionsETARequirements, MapsSuggestionsManager, MapsSuggestionsMutableWeakEntries, MapsSuggestionsNetworkRequester, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class CLLocation, GEOAutomobileOptions, GEOLocationShifter, MapsSuggestionsCanKicker, MapsSuggestionsDonater, MapsSuggestionsETARequester, MapsSuggestionsETARequirements, MapsSuggestionsFlightUpdater, MapsSuggestionsManager, MapsSuggestionsMutableWeakEntries, MapsSuggestionsNetworkRequester, MapsSuggestionsPredictor, NSMutableDictionary, NSString;
+@protocol MapsSuggestionsFlightRequester, OS_dispatch_queue, OS_dispatch_source;
 
 @interface MapsSuggestionsTracker : NSObject <MapsSuggestionsObject>
 {
@@ -27,12 +27,16 @@
     MapsSuggestionsDonater *_donater;
     MapsSuggestionsCanKicker *_currentLocationWiper;
     NSMutableDictionary *_previousETAs;
+    id _transportTypeChangedListener;
+    id<MapsSuggestionsFlightRequester> _flightRequester;
+    MapsSuggestionsFlightUpdater *_flightUpdater;
     int _mapType;
     MapsSuggestionsETARequirements *_requirements;
     GEOAutomobileOptions *_automobileOptions;
     CLLocation *_currentLocation;
     MapsSuggestionsMutableWeakEntries *_trackedEntries;
     MapsSuggestionsNetworkRequester *_networkRequester;
+    MapsSuggestionsPredictor *_predictor;
 }
 
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
@@ -42,6 +46,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property (strong, nonatomic) MapsSuggestionsNetworkRequester *networkRequester; // @synthesize networkRequester=_networkRequester;
+@property (strong, nonatomic) MapsSuggestionsPredictor *predictor; // @synthesize predictor=_predictor;
 @property (copy) MapsSuggestionsETARequirements *requirements; // @synthesize requirements=_requirements;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MapsSuggestionsMutableWeakEntries *trackedEntries; // @synthesize trackedEntries=_trackedEntries;
@@ -62,6 +67,7 @@
 - (void)_rememberETA:(id)arg1 forEntry:(id)arg2;
 - (void)_requestDistances;
 - (void)_requestETAs;
+- (void)_requestFlightInfo;
 - (void)_resetAllTitleFormatting;
 - (void)_scheduleRefresh;
 - (void)_scheduleRefreshIfCurrentLocationIsMuchBetterThanLocation:(id)arg1;

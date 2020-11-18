@@ -17,19 +17,17 @@
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (BOOL)_accessibilityElementVisibilityAffectsLayout;
 - (BOOL)_accessibilityFrameShouldIncludeExtraSpaceBelow;
-- (BOOL)_accessibilityIsControlCenterContainer;
 - (BOOL)_accessibilityIsNotFirstElement;
 - (id)_accessibilityPreferredScrollActions;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToVisible;
+- (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (struct CGRect)_accessibilityVisibleFrame;
+- (id)_scroller;
 - (struct CGRect)accessibilityFrame;
-- (BOOL)accessibilityIsDismissing;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
-- (void)setAccessibilityIsDismissing:(BOOL)arg1;
-- (void)viewDismissing:(id)arg1 forTransitionRequest:(id)arg2;
 
 @end
 

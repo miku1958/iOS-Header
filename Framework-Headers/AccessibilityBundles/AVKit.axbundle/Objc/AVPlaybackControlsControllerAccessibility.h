@@ -14,14 +14,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_accessibilityVisibilityControllerItemVisibilityChanged:(id)arg1;
-- (BOOL)_axPlayerControllerIsMuted;
-- (BOOL)_axShowVolumeSlider;
-- (void)_axUpdateVolumeButtonLabel;
-- (void)_updateVolumeButtonGlyph;
+- (BOOL)_axIsMuted;
+- (void)_axLoadVolumeButtonAccessibilityInformation;
+- (BOOL)_axToggleAudioControls:(id)arg1;
 - (void)dealloc;
 - (void)playbackControlsViewDidLoad:(id)arg1;
-- (void)volumeButtonTapTriggered:(id)arg1;
 
 @end
 

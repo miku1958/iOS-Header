@@ -8,32 +8,36 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKWorkoutConfiguration, NSArray, NSDate, NSString;
+@class HKWorkoutConfiguration, NSDate, NSString, NSUUID;
 
 @interface _HKCurrentWorkoutSnapshot : NSObject <NSSecureCoding>
 {
+    NSUUID *_sessionIdentifier;
     HKWorkoutConfiguration *_configuration;
-    long long _state;
     NSString *_applicationIdentifier;
-    NSDate *_startDate;
-    NSArray *_events;
-    long long _activeWorkoutState;
+    long long _sessionState;
+    long long _internalState;
+    NSDate *_snapshotDate;
+    double _elapsedTime;
 }
 
-@property (readonly, nonatomic) long long activeWorkoutState; // @synthesize activeWorkoutState=_activeWorkoutState;
 @property (readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (readonly, nonatomic) HKWorkoutConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (readonly, nonatomic) NSArray *events; // @synthesize events=_events;
+@property (readonly, nonatomic) double elapsedTime; // @synthesize elapsedTime=_elapsedTime;
+@property (readonly, nonatomic) long long internalState; // @synthesize internalState=_internalState;
 @property (readonly, nonatomic) BOOL isFirstPartyWorkout;
-@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
-@property (readonly, nonatomic) long long state; // @synthesize state=_state;
+@property (readonly, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (readonly, nonatomic) long long sessionState; // @synthesize sessionState=_sessionState;
+@property (readonly, nonatomic) NSDate *snapshotDate; // @synthesize snapshotDate=_snapshotDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_initWithSessionIdentifier:(id)arg1 workoutConfiguration:(id)arg2 sessionServerState:(long long)arg3 applicationIdentifier:(id)arg4 elapsedTime:(double)arg5 snapshotDate:(id)arg6;
 - (id)description;
+- (double)elapsedTimeAtDate:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithWorkoutConfiguration:(id)arg1 state:(long long)arg2 applicationIdentifier:(id)arg3 startDate:(id)arg4 events:(id)arg5 activeWorkoutState:(long long)arg6;
+- (long long)state;
 
 @end
 

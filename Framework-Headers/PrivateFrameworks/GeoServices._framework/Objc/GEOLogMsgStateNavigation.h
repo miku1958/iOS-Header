@@ -13,25 +13,26 @@
 @interface GEOLogMsgStateNavigation : PBCodable <NSCopying>
 {
     double _distanceToDestination;
-    int _lineType;
     GEONavCameraState *_navCameraState;
+    int _lineType;
     int _navState;
     struct {
-        unsigned int distanceToDestination:1;
-        unsigned int lineType:1;
-        unsigned int navState:1;
-    } _has;
+        unsigned int has_distanceToDestination:1;
+        unsigned int has_lineType:1;
+        unsigned int has_navState:1;
+    } _flags;
 }
 
-@property (nonatomic) double distanceToDestination; // @synthesize distanceToDestination=_distanceToDestination;
+@property (nonatomic) double distanceToDestination;
 @property (nonatomic) BOOL hasDistanceToDestination;
 @property (nonatomic) BOOL hasLineType;
 @property (readonly, nonatomic) BOOL hasNavCameraState;
 @property (nonatomic) BOOL hasNavState;
-@property (nonatomic) int lineType; // @synthesize lineType=_lineType;
-@property (strong, nonatomic) GEONavCameraState *navCameraState; // @synthesize navCameraState=_navCameraState;
-@property (nonatomic) int navState; // @synthesize navState=_navState;
+@property (nonatomic) int lineType;
+@property (strong, nonatomic) GEONavCameraState *navCameraState;
+@property (nonatomic) int navState;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsLineType:(id)arg1;
 - (int)StringAsNavState:(id)arg1;
@@ -44,6 +45,7 @@
 - (id)lineTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)navStateAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

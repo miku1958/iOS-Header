@@ -21,11 +21,11 @@
 @property (nonatomic) struct UIEdgeInsets touchInsets; // @synthesize touchInsets;
 @property (nonatomic) BOOL wantsEncryption; // @synthesize wantsEncryption=_wantsEncryption;
 
+- (void).cxx_destruct;
 - (void)_closeLock;
 - (void)_openLock;
 - (void)_updateButtonAppearance;
 - (void)_updateButtonAppearanceAnimated:(BOOL)arg1;
-- (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setEnabled:(BOOL)arg1;

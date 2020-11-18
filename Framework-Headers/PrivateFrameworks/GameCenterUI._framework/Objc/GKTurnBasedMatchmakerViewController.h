@@ -16,7 +16,7 @@
 @interface GKTurnBasedMatchmakerViewController : UINavigationController <GKLocalPlayerListener, GKTurnBasedEventListener, GKExtensionParentViewControllerProtocol>
 {
     BOOL _showExistingMatches;
-    id<GKTurnBasedMatchmakerViewControllerDelegate> _turnBasedMatchmakerDelegateWeak;
+    id<GKTurnBasedMatchmakerViewControllerDelegate> turnBasedMatchmakerDelegate;
     GKTurnBasedMatchmakerHostViewController *_remoteViewController;
     GKMatchRequest *_matchRequest;
     UIAlertController *_alertController;
@@ -30,9 +30,10 @@
 @property (strong, nonatomic) GKTurnBasedMatchmakerHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (nonatomic) BOOL showExistingMatches; // @synthesize showExistingMatches=_showExistingMatches;
 @property (readonly) Class superclass;
-@property (nonatomic) id<GKTurnBasedMatchmakerViewControllerDelegate> turnBasedMatchmakerDelegate; // @synthesize turnBasedMatchmakerDelegate=_turnBasedMatchmakerDelegateWeak;
+@property (weak, nonatomic) id<GKTurnBasedMatchmakerViewControllerDelegate> turnBasedMatchmakerDelegate; // @synthesize turnBasedMatchmakerDelegate;
 
 + (BOOL)_preventsAppearanceProxyCustomization;
+- (void).cxx_destruct;
 - (void)_setupChildViewController;
 - (void)_setupRemoteViewController;
 - (void)authenticationChanged:(id)arg1;

@@ -12,6 +12,11 @@
 
 @interface HDCodableObjectTypeSourceOrder : PBCodable <NSCopying>
 {
+    struct {
+        double *list;
+        unsigned long long count;
+        unsigned long long size;
+    } _modificationDates;
     long long _objectType;
     NSData *_sourceUUIDs;
     BOOL _userOrdered;
@@ -24,20 +29,27 @@
 @property (nonatomic) BOOL hasObjectType;
 @property (readonly, nonatomic) BOOL hasSourceUUIDs;
 @property (nonatomic) BOOL hasUserOrdered;
+@property (readonly, nonatomic) double *modificationDates;
+@property (readonly, nonatomic) unsigned long long modificationDatesCount;
 @property (nonatomic) long long objectType; // @synthesize objectType=_objectType;
 @property (strong, nonatomic) NSData *sourceUUIDs; // @synthesize sourceUUIDs=_sourceUUIDs;
 @property (nonatomic) BOOL userOrdered; // @synthesize userOrdered=_userOrdered;
 
 - (void).cxx_destruct;
+- (void)addModificationDates:(double)arg1;
+- (void)clearModificationDates;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (long long)decodedDataTypeCode;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (double)modificationDatesAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setModificationDates:(double *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

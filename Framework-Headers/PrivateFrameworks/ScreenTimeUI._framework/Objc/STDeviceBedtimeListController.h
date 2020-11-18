@@ -8,16 +8,17 @@
 
 #import <ScreenTimeUI/STUIDateTimePickerCellDelegate-Protocol.h>
 
-@class NSArray, NSString, PSSpecifier, STDeviceBedtime, STUser;
+@class NSArray, NSString, PSSpecifier, STDeviceBedtime, STUIUser;
 @protocol STDeviceBedtimeListControllerDelegate, STRootViewModelCoordinator;
 
+__attribute__((visibility("hidden")))
 @interface STDeviceBedtimeListController : PSListController <STUIDateTimePickerCellDelegate>
 {
     BOOL _canAskForMoreTime;
     id<STDeviceBedtimeListControllerDelegate> _delegate;
     id<STRootViewModelCoordinator> _coordinator;
     STDeviceBedtime *_bedtime;
-    STUser *_affectedUser;
+    STUIUser *_affectedUser;
     NSArray *_orderedWeekdayIndexes;
     NSArray *_orderedLocalizedWeekdayNames;
     PSSpecifier *_deviceBedtimeSpecifier;
@@ -34,7 +35,7 @@
     PSSpecifier *_atBedtimeSpecifier;
 }
 
-@property (strong, nonatomic) STUser *affectedUser; // @synthesize affectedUser=_affectedUser;
+@property (strong, nonatomic) STUIUser *affectedUser; // @synthesize affectedUser=_affectedUser;
 @property (strong, nonatomic) PSSpecifier *atBedtimeGroupSpecifier; // @synthesize atBedtimeGroupSpecifier=_atBedtimeGroupSpecifier;
 @property (strong, nonatomic) PSSpecifier *atBedtimeSpecifier; // @synthesize atBedtimeSpecifier=_atBedtimeSpecifier;
 @property (copy, nonatomic) STDeviceBedtime *bedtime; // @synthesize bedtime=_bedtime;
@@ -64,6 +65,7 @@
 - (void)_didEndEditingDailySchedule:(id)arg1;
 - (void)_didFinishEditingBedtime;
 - (void)_showCustomizeDailyScheduleListController:(id)arg1;
+- (void)_showOrHidePickerSpecifierForSpecifier:(id)arg1;
 - (id)_simpleEndTime:(id)arg1;
 - (id)_simpleStartTime:(id)arg1;
 - (id)askForMoreTime:(id)arg1;
@@ -75,7 +77,6 @@
 - (id)init;
 - (void)setAskForMoreTime:(id)arg1 specifier:(id)arg2;
 - (void)setDeviceBedtimeEnabled:(id)arg1 specifier:(id)arg2;
-- (void)showPickerSpecifierForSpecifier:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;

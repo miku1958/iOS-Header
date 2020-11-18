@@ -33,6 +33,7 @@
 @property (readonly) unsigned long long firstIndex;
 @property (readonly) unsigned long long lastIndex;
 
++ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)indexSet;
 + (id)indexSetWithIndex:(unsigned long long)arg1;

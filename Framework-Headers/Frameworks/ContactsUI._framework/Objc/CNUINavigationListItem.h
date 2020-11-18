@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <ContactsUI/CNUINavigationListItemContent-Protocol.h>
+
 @class NSArray, NSString, UIImage;
 @protocol CNUINavigationListItemContent;
 
-@interface CNUINavigationListItem : NSObject
+@interface CNUINavigationListItem : NSObject <CNUINavigationListItemContent>
 {
     id<CNUINavigationListItemContent> _content;
     CNUINavigationListItem *_parent;
@@ -22,16 +24,21 @@
 }
 
 @property (strong, nonatomic) id<CNUINavigationListItemContent> content; // @synthesize content=_content;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) CNUINavigationListItem *defaultItem; // @synthesize defaultItem=_defaultItem;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (weak, nonatomic) CNUINavigationListItem *parent; // @synthesize parent=_parent;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)itemForActionItem:(id)arg1 isGrouped:(BOOL)arg2;
 + (id)localizedLabelForActionItem:(id)arg1 usingPropertyLabel:(BOOL)arg2;
++ (id)navigationListItemForContactProperty:(id)arg1;
 + (id)navigationListItemsForUserActionListModel:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;

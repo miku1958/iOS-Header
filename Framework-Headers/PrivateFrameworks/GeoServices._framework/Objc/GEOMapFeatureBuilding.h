@@ -10,7 +10,7 @@
 
 @interface GEOMapFeatureBuilding : NSObject
 {
-    CDStruct_8e575d68 *_feature;
+    CDStruct_0c54f6ee *_feature;
     NSArray *_sections;
 }
 
@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithFeature:(CDStruct_8e575d68 *)arg1;
+- (id)initWithFeature:(CDStruct_0c54f6ee *)arg1;
 
 @end
 

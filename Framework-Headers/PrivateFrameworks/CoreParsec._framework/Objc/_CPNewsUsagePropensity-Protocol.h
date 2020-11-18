@@ -10,13 +10,9 @@
 
 @protocol _CPNewsUsagePropensity <NSObject>
 
-@property (nonatomic) long long collectionEndTimestamp;
-@property (nonatomic) long long collectionStartTimestamp;
-@property (nonatomic) int configuredLookbackTimeInDays;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) float other;
 @property (nonatomic) int totalEngagements;
-@property (nonatomic) int totalSessions;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

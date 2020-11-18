@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVAssetExportSession, NSString, NSTimer, PFVideoAVObjectBuilder, PLProgressView;
+@protocol PLVideoRemakerDelegate;
 
 @interface PLVideoRemaker : NSObject
 {
@@ -19,8 +20,8 @@
     float _percentComplete;
     NSTimer *_progressTimer;
     PLProgressView *_progressView;
-    id _delegate;
     BOOL _shouldExportToPhotoDataDirectory;
+    NSObject<PLVideoRemakerDelegate> *_delegate;
     CDUnknownBlockType _progressHandler;
     NSString *_exportPresetOverride;
     NSString *_customAccessibilityLabel;
@@ -29,6 +30,7 @@
 
 @property (readonly, strong, nonatomic) PFVideoAVObjectBuilder *_videoAVObjectBuilder; // @synthesize _videoAVObjectBuilder=__videoAVObjectBuilder;
 @property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
+@property (weak, nonatomic) NSObject<PLVideoRemakerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSString *exportPreset;
 @property (copy, nonatomic) NSString *exportPresetOverride; // @synthesize exportPresetOverride=_exportPresetOverride;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
@@ -39,6 +41,7 @@
 + (int)getHDRemakerModeForMode:(int)arg1;
 + (int)getSDRemakerModeForMode:(int)arg1;
 + (double)maximumDurationForTrimMode:(int)arg1;
+- (void).cxx_destruct;
 - (void)_didEndRemakingWithTemporaryPath:(id)arg1;
 - (void)_exportCompletedWithSuccess:(BOOL)arg1;
 - (id)_fileFormatForURL:(id)arg1;
@@ -48,7 +51,6 @@
 - (void)_updateProgress;
 - (void)cancel;
 - (void)dealloc;
-- (id)delegate;
 - (double)duration;
 - (id)initWithAVAsset:(id)arg1;
 - (id)initWithManagedAsset:(id)arg1 applyVideoAdjustments:(BOOL)arg2;
@@ -57,7 +59,6 @@
 - (int)mode;
 - (id)progressView;
 - (void)remake;
-- (void)setDelegate:(id)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setMode:(int)arg1;
 - (void)setTrimEndTime:(double)arg1;

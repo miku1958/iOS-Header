@@ -35,6 +35,10 @@
     TDCatalogGlobals *_catalogGlobals;
     NSMutableArray *_cachedAppearances;
     NSMutableSet *_cachedUnknownAppearanceIds;
+    NSMutableArray *_cachedLocalizations;
+    NSMutableSet *_cachedUnknownLocalizationIds;
+    NSMutableArray *_cachedModelAssets;
+    BOOL _donotstoreDocumentChecksum;
     id<TDAssetManagementDelegate> _assetManagementDelegate;
     id<TDCustomAssetProvider> _customAssetProvider;
 }
@@ -58,9 +62,11 @@
 + (id)_sharedDocumentList;
 + (void)closeMigrationProgress;
 + (id)createConfiguredDocumentAtURL:(id)arg1 error:(id *)arg2;
++ (id)createConfiguredDocumentAtURL:(id)arg1 targetPlatform:(long long)arg2 error:(id *)arg3;
 + (id)dataModelNameForVersion:(long long)arg1;
 + (long long)dataModelVersion;
 + (long long)dataModelVersionFromMetadata:(id)arg1;
++ (BOOL)deepmap2CompressionEnabled;
 + (BOOL)deepmapCompressionEnabled;
 + (BOOL)defaultAllowsExtendedRangePixelFormats;
 + (long long)defaultTargetPlatform;
@@ -82,6 +88,7 @@
 - (void)_automaticSRGBGenerationFromP3;
 - (void)_backwardsCompatibilityPatchForLayoutDirection;
 - (id)_cachedConstantsForEntity:(id)arg1;
+- (id)_cachedModelAssets;
 - (BOOL)_canremoveKeyAttribte:(unsigned short)arg1;
 - (BOOL)_clampMetrics;
 - (long long)_compareFlattenedKeySpec1:(id)arg1 toKeySpec2:(id)arg2;
@@ -154,10 +161,11 @@
 - (id)createEffectStyleProductionForPartDefinition:(id)arg1;
 - (id)createEffectStyleProductionForPartDefinition:(id)arg1 withNameIdentifier:(id)arg2;
 - (id)createElementProductionWithAsset:(id)arg1;
-- (void)createForwardstop:(id)arg1 withDeploymentTarget:(long long)arg2;
+- (void)createForwardstops:(id)arg1;
 - (id)createNamedArtworkProductionsForAssets:(id)arg1 customInfos:(id)arg2 error:(id *)arg3;
 - (id)createNamedColorProductionsForImportInfos:(id)arg1 error:(id *)arg2;
 - (id)createNamedEffectProductionWithName:(id)arg1 isText:(BOOL)arg2;
+- (void)createNamedGlyphVectorForCustomInfos:(id)arg1 referenceFiles:(BOOL)arg2 bitSource:(id)arg3 error:(id *)arg4;
 - (void)createNamedModelsForCustomInfos:(id)arg1 referenceFiles:(BOOL)arg2 bitSource:(id)arg3 error:(id *)arg4;
 - (void)createNamedRecognitionObjectsForAssets:(id)arg1 customInfos:(id)arg2 error:(id *)arg3;
 - (void)createNamedRenditionGroupProductionsForImportInfos:(id)arg1 error:(id *)arg2;
@@ -166,6 +174,7 @@
 - (id)createProductionWithRenditionGroup:(id)arg1 forPartDefinition:(id)arg2 artworkFormat:(id)arg3 nameElement:(id)arg4 shouldReplaceExisting:(BOOL)arg5 error:(id *)arg6;
 - (id)createProductionWithRenditionGroup:(id)arg1 forPartDefinition:(id)arg2 artworkFormat:(id)arg3 shouldReplaceExisting:(BOOL)arg4 error:(id *)arg5;
 - (id)createReferencePNGForSchemaRendition:(id)arg1 withPartDefinition:(id)arg2 atLocation:(id)arg3 error:(id *)arg4;
+- (id)createTextStyleProductionsForImportInfos:(id)arg1 error:(id *)arg2;
 - (BOOL)customizationExistsForSchemaDefinition:(id)arg1;
 - (BOOL)customizeSchemaEffectDefinition:(id)arg1 shouldReplaceExisting:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)customizeSchemaElementDefinition:(id)arg1 usingArtworkFormat:(id)arg2 shouldReplaceExisting:(BOOL)arg3 error:(id *)arg4;
@@ -195,13 +204,13 @@
 - (id)effectTypeWithIdentifier:(unsigned int)arg1;
 - (id)elementProductionsWithName:(id)arg1;
 - (id)elementWithIdentifier:(long long)arg1;
-- (void)exportColorsToURL:(id)arg1;
 - (void)exportCursorsToURL:(id)arg1;
 - (id)folderNameFromRenditionKey:(id)arg1 forPartDefinition:(id)arg2;
+- (id)glyphSizeWithIdentifier:(long long)arg1;
+- (id)glyphWeightWithIdentifier:(long long)arg1;
 - (id)graphicsFeatureSetClassWithIdentifier:(long long)arg1;
 - (id)historian;
 - (id)idiomWithIdentifier:(long long)arg1;
-- (void)importColorsFromURL:(id)arg1 valuesOnly:(BOOL)arg2 getUnusedColorNames:(id *)arg3;
 - (void)importCursorsFromURL:(id)arg1 getUnusedImportedCursors:(id *)arg2 getUnupdatedCursors:(id *)arg3;
 - (void)importCustomAssetsWithImportInfos:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)importNamedAssetsFromFileURLs:(id)arg1 referenceFiles:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -214,7 +223,8 @@
 - (BOOL)isArtworkRenditionEligibleForForwardstop:(id)arg1;
 - (BOOL)isCustomLook;
 - (id)iterationTypeWithIdentifier:(int)arg1;
-- (id)lookWithIdentifier:(long long)arg1;
+- (id)localizationWithIdentifier:(long long)arg1;
+- (id)localizationWithIdentifier:(long long)arg1 name:(id)arg2 createIfNeeded:(BOOL)arg3;
 - (id)managedObjectModel;
 - (id)mappingForPhotoshopLayerIndex:(long long)arg1 themeDrawingLayerIdentifier:(long long)arg2;
 - (id)metadatumForKey:(id)arg1;
@@ -227,6 +237,7 @@
 - (id)namedElementWithName:(id)arg1;
 - (id)namedElementsForElementDefinition:(id)arg1;
 - (BOOL)needToCreateForwardstopFor2018DeploymentVariant:(id)arg1;
+- (BOOL)needToCreateForwardstopFor2019DeploymentVariant:(id)arg1;
 - (BOOL)needToCreateForwardstopForPlatform;
 - (id)newObjectForEntity:(id)arg1;
 - (id)objectsForEntity:(id)arg1 withPredicate:(id)arg2 sortDescriptors:(id)arg3;
@@ -262,13 +273,16 @@
 - (void)setArtworkFormat:(id)arg1;
 - (void)setMetadatum:(id)arg1 forKey:(id)arg2;
 - (void)setRelativePathToProductionData:(id)arg1;
+- (BOOL)shouldAllowDeepmap2Compression;
+- (BOOL)shouldAllowDeepmap2CompressionForDeploymentTarget:(unsigned int)arg1;
 - (BOOL)shouldAllowDeepmapCompression;
 - (BOOL)shouldAllowDeepmapCompressionForDeploymentTarget:(unsigned int)arg1;
 - (BOOL)shouldAllowHevcCompression;
 - (BOOL)shouldAllowHevcCompressionForDeploymentTarget:(unsigned int)arg1;
 - (BOOL)shouldAllowPaletteImageCompression;
 - (BOOL)shouldAllowPaletteImageCompressionForDeploymentTarget:(unsigned int)arg1;
-- (BOOL)shouldCreateForwardstopForLossless;
+- (BOOL)shouldCreate2018ForwardstopForLossless;
+- (BOOL)shouldCreate2019ForwardstopForLossless;
 - (BOOL)shouldCreateForwardstopForLossy;
 - (BOOL)shouldPerformHistogramBasedPacking;
 - (BOOL)shouldSupportCompactCompression;
@@ -287,7 +301,6 @@
 - (id)updatedVersionsMetadataFromMetadata:(id)arg1;
 - (BOOL)usesCUISystemThemeRenditionKey;
 - (id)valueWithIdentifier:(long long)arg1;
-- (id)zeroCodeArtworkInfoWithIdentifier:(long long)arg1;
 
 @end
 

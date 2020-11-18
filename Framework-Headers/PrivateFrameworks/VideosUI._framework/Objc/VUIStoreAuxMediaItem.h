@@ -17,6 +17,7 @@
     BOOL _disableResumeMenu;
     BOOL _isForDownload;
     BOOL _disableScrubbing;
+    BOOL _sharedPurchase;
     BOOL _isHLS;
     NSURL *_fpsCertificateURL;
     NSURL *_fpsKeyServerURL;
@@ -51,6 +52,7 @@
 @property (strong, nonatomic) NSObject *parentReportingToken; // @synthesize parentReportingToken=_parentReportingToken;
 @property (nonatomic) long long playbackType; // @synthesize playbackType=_playbackType;
 @property (strong, nonatomic) TVPPlayer *scrubPlayer; // @synthesize scrubPlayer=_scrubPlayer;
+@property (nonatomic) BOOL sharedPurchase; // @synthesize sharedPurchase=_sharedPurchase;
 @property (strong, nonatomic) VUIStoreFPSKeyLoader *storeFPSKeyLoader; // @synthesize storeFPSKeyLoader=_storeFPSKeyLoader;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
@@ -60,6 +62,8 @@
 - (void).cxx_destruct;
 - (void)_keepKeyLoaderAlive:(id)arg1;
 - (id)_offlineKeyDataForKeyRequest:(id)arg1;
+- (id)_replacementErrorForPlaybackError:(id)arg1;
+- (id)_replacementErrorForSharedPurchasePlaybackError:(id)arg1;
 - (void)_scrubPlayerItemDidLoad:(id)arg1;
 - (void)_userPlaybackSettingsDidChange:(id)arg1;
 - (void)cleanUpMediaItem;

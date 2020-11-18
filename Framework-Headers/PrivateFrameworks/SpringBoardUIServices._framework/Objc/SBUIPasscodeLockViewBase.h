@@ -94,7 +94,6 @@
 @property (nonatomic) long long passcodeLockViewState; // @synthesize passcodeLockViewState=_passcodeLockViewState;
 @property (nonatomic) BOOL playsKeypadSounds; // @dynamic playsKeypadSounds;
 @property (nonatomic) CDStruct_29b32c11 proudLockConfiguration; // @synthesize proudLockConfiguration=_proudLockConfiguration;
-@property (nonatomic) BOOL proudLockShowsBiometricStates; // @synthesize proudLockShowsBiometricStates=_proudLockShowsBiometricStates;
 @property (strong, nonatomic) NSTimer *screenBrightnessChangedTimer; // @synthesize screenBrightnessChangedTimer=_screenBrightnessChangedTimer;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn; // @synthesize screenOn=_screenOn;
 @property (nonatomic) BOOL shouldResetForFailedPasscodeAttempt; // @synthesize shouldResetForFailedPasscodeAttempt=_shouldResetForFailedPasscodeAttempt;

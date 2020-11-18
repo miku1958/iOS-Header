@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, TSULRUCache;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TSULRUCache;
 
 __attribute__((visibility("hidden")))
 @interface TSWPFontCache : NSObject
 {
+    struct _opaque_pthread_rwlock_t _rwlock;
     TSULRUCache *_fontCache;
     NSMutableSet *_missingFonts;
     NSMutableArray *_familyNames;
@@ -22,7 +23,15 @@ __attribute__((visibility("hidden")))
     NSArray *_cachedRecentFontNames;
 }
 
-@property (readonly, nonatomic) NSSet *missingFonts;
+@property (readonly, nonatomic) NSMutableArray *cachedAvailableMembers; // @synthesize cachedAvailableMembers=_cachedAvailableMembers;
+@property (readonly, nonatomic) NSString *cachedMembersFamilyName; // @synthesize cachedMembersFamilyName=_cachedMembersFamilyName;
+@property (readonly, nonatomic) NSArray *cachedRecentFontNames; // @synthesize cachedRecentFontNames=_cachedRecentFontNames;
+@property (readonly, nonatomic) NSMutableDictionary *familyDisplayNames; // @synthesize familyDisplayNames=_familyDisplayNames;
+@property (readonly, nonatomic) NSMutableArray *familyFonts; // @synthesize familyFonts=_familyFonts;
+@property (readonly, nonatomic) NSMutableDictionary *familyNameToFontNameMap; // @synthesize familyNameToFontNameMap=_familyNameToFontNameMap;
+@property (readonly, nonatomic) NSMutableArray *familyNames; // @synthesize familyNames=_familyNames;
+@property (readonly, nonatomic) TSULRUCache *fontCache; // @synthesize fontCache=_fontCache;
+@property (strong, nonatomic) NSMutableSet *missingFonts; // @synthesize missingFonts=_missingFonts;
 
 + (id)p_excludedFamilyNames;
 + (id)p_fontNameForFamilyName:(id)arg1;
@@ -31,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addMissingFonts:(id)arg1;
 - (id)availableMembersOfFontFamily:(id)arg1;
-- (const struct __CTFont *)createFontWithName:(id)arg1 size:(double)arg2 options:(unsigned long long)arg3;
+- (const struct __CTFont *)createFontWithName:(id)arg1 size:(double)arg2;
 - (id)displayNameForFontFamily:(id)arg1;
 - (id)fontNameForFamilyName:(id)arg1;
 - (id)init;

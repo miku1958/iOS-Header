@@ -6,35 +6,27 @@
 
 #import <objc/NSObject.h>
 
-#import <FamilyCircleUI/DevicePINControllerDelegate-Protocol.h>
+@class FARequestConfigurator, RUIStyle, UIViewController;
 
-@class FARequestConfigurator, NSString, UIViewController;
-
-@interface FACircleStateController : NSObject <DevicePINControllerDelegate>
+@interface FACircleStateController : NSObject
 {
     FARequestConfigurator *_requestConfigurator;
     CDUnknownBlockType _performOperationCompletion;
     UIViewController *_presenter;
+    RUIStyle *_customRUIStyle;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RUIStyle *customRUIStyle; // @synthesize customRUIStyle=_customRUIStyle;
 @property (weak, nonatomic) UIViewController *presenter; // @synthesize presenter=_presenter;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_contextRequiresRemoteService:(id)arg1;
 - (void)_ensurePresenterWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performOperationWithContext:(id)arg1 viewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_presentViewServiceWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_restrictionsPINCompletionWithSuccess:(BOOL)arg1;
-- (void)didAcceptEnteredPIN;
-- (void)didCancelEnteringPIN;
 - (id)init;
 - (id)initWithPresenter:(id)arg1;
 - (void)performOperationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)showRestrictionsPINController;
 
 @end
 

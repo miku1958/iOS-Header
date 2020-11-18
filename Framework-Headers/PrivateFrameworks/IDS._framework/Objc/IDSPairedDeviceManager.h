@@ -8,7 +8,7 @@
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class NSSet, NSString, _IDSCompletionHandler;
+@class IDSXPCDaemonController, NSSet, NSString, _IDSCompletionHandler;
 
 @interface IDSPairedDeviceManager : NSObject <IDSDaemonListenerProtocol>
 {
@@ -16,6 +16,7 @@
     _IDSCompletionHandler *_localCompletion;
     _IDSCompletionHandler *_pairedCompletion;
     _IDSCompletionHandler *_deliveryStatsCompletion;
+    IDSXPCDaemonController *_xpcDaemonController;
     NSSet *_allowedTrafficClassifiers;
 }
 
@@ -24,21 +25,20 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) IDSXPCDaemonController *xpcDaemonController; // @synthesize xpcDaemonController=_xpcDaemonController;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)constructRAResponseDictionary:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)deletePairedDevice:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2 queue:(id)arg3;
 - (void)deliveryStats:(id)arg1;
-- (void)device:(id)arg1 pairingAdded:(BOOL)arg2;
 - (void)device:(id)arg1 pairingDeleted:(BOOL)arg2;
 - (void)dropAllMessagesWithoutAnyAllowedClassifier;
 - (void)getDeliveryStatsWithCompletionBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (void)getLocalDeviceInfoWithCompletionBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (void)getPairedDeviceInfoWithCompletionBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)init;
-- (void)localDeviceInfo:(id)arg1;
-- (void)pairedDeviceInfo:(id)arg1;
 - (void)setPairedDeviceInfo:(id)arg1;
 
 @end

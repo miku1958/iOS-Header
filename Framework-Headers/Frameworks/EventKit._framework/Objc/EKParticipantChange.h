@@ -6,10 +6,14 @@
 
 #import <EventKit/EKObjectChange.h>
 
-__attribute__((visibility("hidden")))
 @interface EKParticipantChange : EKObjectChange
 {
 }
+
++ (int)entityType;
++ (void)fetchParticipantChangesInCalendar:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchParticipantChangesInSource:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchParticipantChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 
 @end
 

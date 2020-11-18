@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSNumber, NSString;
 @protocol WLKNotificationCenterDelegate;
 
 @protocol WLKNotificationsImpl
 
 @property (weak, nonatomic) id<WLKNotificationCenterDelegate> delegate;
 
+- (BOOL)isCategoryEnabledByUser:(long long)arg1;
 - (void)post:(NSString *)arg1 title:(NSString *)arg2 body:(NSString *)arg3 options:(NSDictionary *)arg4;
+- (void)setBadgeNumber:(NSNumber *)arg1 withCompletionHandler:(void (^)(NSError *))arg2;
+- (void)setBadgeString:(NSString *)arg1 withCompletionHandler:(void (^)(NSError *))arg2;
 @end
 

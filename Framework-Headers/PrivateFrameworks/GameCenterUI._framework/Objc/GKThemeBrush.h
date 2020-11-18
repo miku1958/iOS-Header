@@ -15,8 +15,8 @@
 
 @property (strong, nonatomic) GKUITheme *theme; // @synthesize theme=_theme;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithTheme:(id)arg1;
 
 @end

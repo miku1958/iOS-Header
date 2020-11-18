@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _requestedTTL;
     unsigned long long _URLOptions;
     NSSet *_desiredAssetKeys;
+    NSArray *_desiredIndexedListKeys;
     CDUnknownBlockType _recordFetchedBlock;
     NSArray *_recordIDs;
     NSDictionary *_recordIDsToETags;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property (strong, nonatomic) NSSet *assetFieldNamesToPublishURLs; // @synthesize assetFieldNamesToPublishURLs=_assetFieldNamesToPublishURLs;
 @property (strong, nonatomic) NSSet *desiredAssetKeys; // @synthesize desiredAssetKeys=_desiredAssetKeys;
+@property (strong, nonatomic) NSArray *desiredIndexedListKeys; // @synthesize desiredIndexedListKeys=_desiredIndexedListKeys;
 @property (strong, nonatomic) NSSet *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (nonatomic) unsigned long long recordCount; // @synthesize recordCount=_recordCount;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (BOOL)requestGETPreAuth;
 - (id)requestOperationClasses;
+- (id)requestedListFieldsForDesiredIndexedListKeys;
 - (id)zoneIDsToLock;
 
 @end

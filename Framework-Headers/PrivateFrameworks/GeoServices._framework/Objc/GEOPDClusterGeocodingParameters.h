@@ -17,15 +17,18 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_assetLocations;
 }
 
-@property (strong, nonatomic) NSMutableArray *assetLocations; // @synthesize assetLocations=_assetLocations;
+@property (strong, nonatomic) NSMutableArray *assetLocations;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)assetLocationType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addAssetLocation:(id)arg1;
 - (id)assetLocationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)assetLocationsCount;
 - (void)clearAssetLocations;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -106,7 +106,7 @@
 - (void)securitySession:(id)arg1 didReceiveSetupExchangeData:(id)arg2;
 - (void)securitySessionDidOpen:(id)arg1;
 - (void)securitySessionIsOpening:(id)arg1;
-- (void)startPairingWithConsentRequired:(BOOL)arg1;
+- (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (void)stream:(id)arg1 didCloseWithError:(id)arg2;
 - (void)stream:(id)arg1 didFailToWriteDataWithIdentifier:(id)arg2 error:(id)arg3;

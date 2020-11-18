@@ -21,15 +21,21 @@
     BOOL _isStalledDidChange;
     BOOL _alwaysRespectsMuteSwitchDidChange;
     BOOL _isPlayableDidChange;
+    BOOL _isMutedDidChange;
+    BOOL _audioStatusDidChange;
+    BOOL _audioSessionVolumeIncreaseDidOccur;
 }
 
 @property (nonatomic, setter=_setAlwaysRespectsMuteSwitchDidChange:) BOOL alwaysRespectsMuteSwitchDidChange; // @synthesize alwaysRespectsMuteSwitchDidChange=_alwaysRespectsMuteSwitchDidChange;
+@property (nonatomic, setter=_setAudioSessionVolumeIncreaseDidOccur:) BOOL audioSessionVolumeIncreaseDidOccur; // @synthesize audioSessionVolumeIncreaseDidOccur=_audioSessionVolumeIncreaseDidOccur;
+@property (nonatomic, setter=_setAudioStatusDidChange:) BOOL audioStatusDidChange; // @synthesize audioStatusDidChange=_audioStatusDidChange;
 @property (nonatomic, setter=_setAVPlayerDidChange:) BOOL avPlayerDidChange; // @synthesize avPlayerDidChange=_avPlayerDidChange;
 @property (nonatomic, setter=_setDesiredPlayStateDidChange:) BOOL desiredPlayStateDidChange; // @synthesize desiredPlayStateDidChange=_desiredPlayStateDidChange;
 @property (nonatomic, setter=_setErrorDidChange:) BOOL errorDidChange; // @synthesize errorDidChange=_errorDidChange;
 @property (nonatomic, setter=_setActivatedDidChange:) BOOL isActivatedDidChange; // @synthesize isActivatedDidChange=_isActivatedDidChange;
 @property (nonatomic, setter=_setAtBeginningDidChange:) BOOL isAtBeginningDidChange; // @synthesize isAtBeginningDidChange=_isAtBeginningDidChange;
 @property (nonatomic, setter=_setAtEndDidChange:) BOOL isAtEndDidChange; // @synthesize isAtEndDidChange=_isAtEndDidChange;
+@property (nonatomic, setter=_setIsMutedDidChange:) BOOL isMutedDidChange; // @synthesize isMutedDidChange=_isMutedDidChange;
 @property (nonatomic, setter=_setPlayableDidChange:) BOOL isPlayableDidChange; // @synthesize isPlayableDidChange=_isPlayableDidChange;
 @property (nonatomic, setter=_setPlayerLoadingAllowedDidChange:) BOOL isPlayerLoadingAllowedDidChange; // @synthesize isPlayerLoadingAllowedDidChange=_isPlayerLoadingAllowedDidChange;
 @property (nonatomic, setter=_setPlayingAllowedDidChange:) BOOL isPlayingAllowedDidChange; // @synthesize isPlayingAllowedDidChange=_isPlayingAllowedDidChange;

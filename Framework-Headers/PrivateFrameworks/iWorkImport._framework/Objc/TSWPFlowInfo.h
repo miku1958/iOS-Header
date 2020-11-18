@@ -7,6 +7,7 @@
 #import <iWorkImport/TSPObject.h>
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
+#import <iWorkImport/TSDLockableInfo-Protocol.h>
 #import <iWorkImport/TSDSelectionStatisticsContributor-Protocol.h>
 #import <iWorkImport/TSWPFlowInfo-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
@@ -15,7 +16,7 @@
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSWPFlowInfo : TSPObject <TSWPFlowInfo, TSDContainerInfo, TSWPStorageParent, TSDSelectionStatisticsContributor>
+@interface TSWPFlowInfo : TSPObject <TSWPFlowInfo, TSDContainerInfo, TSDLockableInfo, TSWPStorageParent, TSDSelectionStatisticsContributor>
 {
     TSWPStorage *_textStorage;
     NSArray *_textboxes;
@@ -26,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) BOOL autoListRecognition;
 @property (readonly, nonatomic) BOOL autoListTermination;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,6 +36,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
 @property (readonly, nonatomic) BOOL isLocked;
+@property (readonly, nonatomic) BOOL isMaster;
+@property (readonly, nonatomic, getter=isLocked) BOOL locked;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
+@property (readonly, nonatomic) unsigned long long textOrientation;
 @property (strong, nonatomic) TSWPStorage *textStorage; // @synthesize textStorage=_textStorage;
 @property (strong, nonatomic) NSArray *textboxes; // @synthesize textboxes=_textboxes;
 @property (readonly, nonatomic) TSUColor *userInterfaceFillColor;
@@ -61,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)childEnumerator;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
+- (BOOL)containsRotatedOrFlippedTextBox;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
 - (id)displayNameOfMaxLength:(unsigned long long)arg1 usesEllipsis:(BOOL)arg2;
@@ -74,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (Class)layoutClass;
 - (void)loadFromFlowInfoArchive:(const struct FlowInfoArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (long long)nestedTextboxDepth;
 - (id)objectUUIDPath;
 - (void)pSaveToFlowInfoArchive:(struct FlowInfoArchive *)arg1 archiver:(id)arg2 textBoxes:(id)arg3;
 - (void)processSelectedStoragesWithStatisticsController:(id)arg1;

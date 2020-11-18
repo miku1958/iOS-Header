@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)_lockedGetQueuedFetchForOperation:(id)arg1 ofClass:(Class)arg2;
 - (void)_lockedRescheduleFetchTimer;
 - (void)_lockedTearDownFetchTimer;
+- (void)cancelAllOperations;
 - (void)dealloc;
 - (BOOL)fetchRequestForExistingOperation:(id)arg1 isDependentOnOperation:(id)arg2;
 - (id)init;

@@ -8,27 +8,60 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOClientMetrics, GEOETAServiceResponseSummary, GEOPDDatasetABStatus, NSData, NSMutableArray, NSString;
+@class GEOClientMetrics, GEOETAServiceResponseSummary, GEOPDDatasetABStatus, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOETATrafficUpdateResponse : PBCodable <NSCopying>
 {
-    unsigned long long _debugServerLatencyMs;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
+    NSMutableArray *_arrivalParameters;
     NSMutableArray *_cameras;
     GEOClientMetrics *_clientMetrics;
     GEOPDDatasetABStatus *_datasetAbStatus;
     NSString *_debugData;
+    unsigned long long _debugServerLatencyMs;
     GEOETAServiceResponseSummary *_etaServiceSummary;
     NSData *_responseId;
     NSMutableArray *_routes;
     NSData *_sessionState;
+    NSMutableArray *_trafficSignals;
     int _status;
-    CDStruct_00a28cb6 _has;
+    struct {
+        unsigned int has_debugServerLatencyMs:1;
+        unsigned int has_status:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_arrivalParameters:1;
+        unsigned int read_cameras:1;
+        unsigned int read_clientMetrics:1;
+        unsigned int read_datasetAbStatus:1;
+        unsigned int read_debugData:1;
+        unsigned int read_etaServiceSummary:1;
+        unsigned int read_responseId:1;
+        unsigned int read_routes:1;
+        unsigned int read_sessionState:1;
+        unsigned int read_trafficSignals:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_arrivalParameters:1;
+        unsigned int wrote_cameras:1;
+        unsigned int wrote_clientMetrics:1;
+        unsigned int wrote_datasetAbStatus:1;
+        unsigned int wrote_debugData:1;
+        unsigned int wrote_debugServerLatencyMs:1;
+        unsigned int wrote_etaServiceSummary:1;
+        unsigned int wrote_responseId:1;
+        unsigned int wrote_routes:1;
+        unsigned int wrote_sessionState:1;
+        unsigned int wrote_trafficSignals:1;
+        unsigned int wrote_status:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *cameras; // @synthesize cameras=_cameras;
+@property (strong, nonatomic) NSMutableArray *arrivalParameters;
+@property (strong, nonatomic) NSMutableArray *cameras;
 @property (strong, nonatomic) GEOClientMetrics *clientMetrics;
-@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
-@property (strong, nonatomic) NSString *debugData; // @synthesize debugData=_debugData;
+@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
+@property (strong, nonatomic) NSString *debugData;
 @property (nonatomic) unsigned long long debugServerLatencyMs;
 @property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
 @property (readonly, nonatomic) BOOL hasClientMetrics;
@@ -39,21 +72,47 @@
 @property (readonly, nonatomic) BOOL hasResponseId;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (nonatomic) BOOL hasStatus;
-@property (strong, nonatomic) NSData *responseId; // @synthesize responseId=_responseId;
-@property (strong, nonatomic) NSMutableArray *routes; // @synthesize routes=_routes;
-@property (strong, nonatomic) NSData *sessionState; // @synthesize sessionState=_sessionState;
-@property (nonatomic) int status; // @synthesize status=_status;
+@property (strong, nonatomic) NSData *responseId;
+@property (strong, nonatomic) NSMutableArray *routes;
+@property (strong, nonatomic) NSData *sessionState;
+@property (nonatomic) int status;
+@property (strong, nonatomic) NSMutableArray *trafficSignals;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)arrivalParametersType;
 + (Class)cameraType;
++ (BOOL)isValid:(id)arg1;
 + (Class)routeType;
++ (Class)trafficSignalType;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
+- (void)_addNoFlagsArrivalParameters:(id)arg1;
+- (void)_addNoFlagsCamera:(id)arg1;
+- (void)_addNoFlagsRoute:(id)arg1;
+- (void)_addNoFlagsTrafficSignal:(id)arg1;
+- (void)_readArrivalParameters;
+- (void)_readCameras;
+- (void)_readClientMetrics;
+- (void)_readDatasetAbStatus;
+- (void)_readDebugData;
+- (void)_readEtaServiceSummary;
+- (void)_readResponseId;
+- (void)_readRoutes;
+- (void)_readSessionState;
+- (void)_readTrafficSignals;
+- (void)addArrivalParameters:(id)arg1;
 - (void)addCamera:(id)arg1;
 - (void)addRoute:(id)arg1;
+- (void)addTrafficSignal:(id)arg1;
+- (id)arrivalParametersAtIndex:(unsigned long long)arg1;
+- (unsigned long long)arrivalParametersCount;
 - (id)cameraAtIndex:(unsigned long long)arg1;
 - (unsigned long long)camerasCount;
+- (void)clearArrivalParameters;
 - (void)clearCameras;
 - (void)clearRoutes;
+- (void)clearTrafficSignals;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -61,10 +120,13 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)routeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)routesCount;
 - (id)statusAsString:(int)arg1;
+- (id)trafficSignalAtIndex:(unsigned long long)arg1;
+- (unsigned long long)trafficSignalsCount;
 - (void)writeTo:(id)arg1;
 
 @end

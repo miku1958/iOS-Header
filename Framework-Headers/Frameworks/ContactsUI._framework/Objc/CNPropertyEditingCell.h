@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)labelView;
 - (double)leftValueMargin;
 - (double)minCellHeight;
+- (void)picker:(id)arg1 didDeleteItem:(id)arg2;
 - (void)picker:(id)arg1 didPickItem:(id)arg2;
 - (void)pickerDidCancel:(id)arg1;
 - (void)regainFocus;

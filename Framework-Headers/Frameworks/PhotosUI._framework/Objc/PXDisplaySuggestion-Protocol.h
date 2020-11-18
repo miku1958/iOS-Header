@@ -13,7 +13,6 @@
 @protocol PXDisplaySuggestion <NSObject, NSCopying>
 
 @property (readonly, nonatomic) NSDictionary *actionProperties;
-@property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly, copy, nonatomic) NSString *localIdentifier;
 @property (readonly, nonatomic) NSDate *startDate;

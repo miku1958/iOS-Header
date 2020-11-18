@@ -10,7 +10,8 @@
 
 @protocol TSDContainerInfo <TSDInfo>
 
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
+@property (readonly, nonatomic) BOOL isMaster;
 
 
 @optional

@@ -8,17 +8,21 @@
 
 #import <ARKit/NSCopying-Protocol.h>
 
-@class AVCaptureDevice, AVCaptureDeviceFormat, NSArray;
+@class AVCaptureDevice, AVCaptureDeviceFormat, NSArray, NSString;
 
 @interface ARVideoFormat : NSObject <NSCopying>
 {
     AVCaptureDevice *_device;
     AVCaptureDeviceFormat *_deviceFormat;
     struct CGSize _imageResolution;
+    long long _captureDevicePosition;
     NSArray *_frameRatesByPowerUsage;
     AVCaptureDeviceFormat *_depthDataFormat;
+    NSString *_captureDeviceType;
 }
 
+@property (readonly, nonatomic) long long captureDevicePosition; // @synthesize captureDevicePosition=_captureDevicePosition;
+@property (readonly, nonatomic) NSString *captureDeviceType; // @synthesize captureDeviceType=_captureDeviceType;
 @property (strong, nonatomic) AVCaptureDeviceFormat *depthDataFormat; // @synthesize depthDataFormat=_depthDataFormat;
 @property (readonly, nonatomic) AVCaptureDevice *device;
 @property (readonly, nonatomic) AVCaptureDeviceFormat *deviceFormat;
@@ -34,7 +38,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithCaptureDevice:(id)arg1 format:(id)arg2;
-- (id)initWithImageResolution:(struct CGSize)arg1;
+- (id)initWithImageResolution:(struct CGSize)arg1 captureDevicePosition:(long long)arg2 captureDeviceType:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

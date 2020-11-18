@@ -8,13 +8,13 @@
 
 #import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
 
-@class NSArray, NSString, VNSceneClassificationCustomHierarchy, VNSceneObservation;
+@class NSArray, NSString, VNClassificationCustomHierarchy, VNSceneObservation;
 
 @interface VNSceneClassificationRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 {
 }
 
-@property (readonly, copy, nonatomic) VNSceneClassificationCustomHierarchy *customHierarchy;
+@property (readonly, copy, nonatomic) VNClassificationCustomHierarchy *customHierarchy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,25 +24,25 @@
 @property (readonly) Class superclass;
 @property (readonly) NSArray *supportedImageSizeSet;
 
-+ (id)_imageAnalyzerMultiDetectorForRevision:(unsigned long long)arg1 detectionLevel:(unsigned long long)arg2 processingDevice:(id)arg3 requestBackingStore:(unsigned long long)arg4 error:(id *)arg5;
-+ (id)_knownVNImageAnalyzerMultiDetectorLabelsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
++ (id)_imageAnalyzerMultiDetectorForRevision:(unsigned long long)arg1 detectionLevel:(unsigned long long)arg2 processingDevice:(id)arg3 requestBackingStore:(unsigned long long)arg4 appliedDetectorOptions:(id *)arg5 error:(id *)arg6;
++ (id)_knownVNImageAnalyzerMultiDetectorSceneClassificationObservationsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
 + (id)_knownVNSceneClassifierLabelsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
-+ (id)_sceneClassifierForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
++ (id)_sceneClassifierForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 appliedDetectorOptions:(id *)arg3 error:(id *)arg4;
 + (Class)configurationClass;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
 + (id)knownSceneClassifications;
 + (id)knownSceneClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (const CDStruct_7d93034e *)revisionAvailability;
-- (id)_applicableDetectorAndReturnError:(id *)arg1;
+- (id)_applicableDetectorAndOptions:(id *)arg1 error:(id *)arg2;
+- (id)_classificationOperationPointsAndReturnError:(id *)arg1;
+- (id)_errorForUnimplementedSelector:(SEL)arg1 forRevision:(unsigned long long)arg2;
 - (void)_setCustomHierarchy:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (BOOL)defineCustomHierarchy:(id)arg1 error:(id *)arg2;
 - (id)defineCustomHierarchyWithRelationships:(id)arg1 error:(id *)arg2;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithSceneObservation:(id)arg1;
 - (id)initWithSceneObservation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (void)setRevision:(unsigned long long)arg1;
 - (void)setSceneObservation:(id)arg1;

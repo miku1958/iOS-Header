@@ -23,7 +23,8 @@
 @property (nonatomic) BOOL shouldCropToCircle; // @synthesize shouldCropToCircle=_shouldCropToCircle;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (strong, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
-@property BOOL useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
+@property (readonly, nonatomic) UIImage *uiImageToRender;
+@property (nonatomic) BOOL useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
 
 - (void).cxx_destruct;
 - (id)init;

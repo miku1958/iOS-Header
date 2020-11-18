@@ -30,8 +30,8 @@
 @property (strong, nonatomic) GEORouteHypothesis *currentHypothesis; // @synthesize currentHypothesis=_currentHypothesis;
 @property (readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
 @property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property (readonly) BOOL isStaleToPurgeFromDisk;
-@property (readonly) BOOL isStaleToRefresh;
+@property (readonly, nonatomic) BOOL isStaleToPurgeFromDisk;
+@property (readonly, nonatomic) BOOL isStaleToRefresh;
 @property (readonly, nonatomic) GEORouteHypothesisMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly, nonatomic) GEOComposedWaypoint *origin; // @synthesize origin=_origin;
 @property (nonatomic) BOOL prediction; // @synthesize prediction=_prediction;

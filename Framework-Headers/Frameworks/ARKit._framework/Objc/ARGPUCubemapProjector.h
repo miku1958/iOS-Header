@@ -12,13 +12,14 @@
 {
     id<MTLDevice> _device;
     id<MTLCommandQueue> _commandQueue;
-    id<MTLRenderPipelineState> _cubemapPipelineState;
+    id<MTLRenderPipelineState> _cubemapPipelineStateSRGB;
+    id<MTLRenderPipelineState> _cubemapPipelineStateHDR;
     id<MTLDepthStencilState> _cubemapDepthState;
 }
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)projectToCube:(id)arg1 transformWorldFromCube:(CDStruct_14d5dc5e)arg2 planes:(const vector_478e3a44 *)arg3 blend:(BOOL)arg4;
+- (void)projectToCube:(id)arg1 transformWorldFromCube:(CDStruct_14d5dc5e)arg2 planes:(const vector_f1799d67 *)arg3 blend:(BOOL)arg4;
 
 @end
 

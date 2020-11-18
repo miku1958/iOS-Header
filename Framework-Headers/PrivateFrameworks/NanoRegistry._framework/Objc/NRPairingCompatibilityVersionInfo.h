@@ -12,12 +12,14 @@
     long long _pairingCompatibilityVersion;
     long long _maxPairingCompatibilityVersion;
     long long _minPairingCompatibilityVersion;
+    long long _minPairingCompatibilityVersionWithChipID;
     long long _minQuickSwitchCompatibilityVersion;
 }
 
 @property (nonatomic) BOOL isOverrideActive; // @synthesize isOverrideActive=_isOverrideActive;
 @property (nonatomic) long long maxPairingCompatibilityVersion; // @synthesize maxPairingCompatibilityVersion=_maxPairingCompatibilityVersion;
 @property (nonatomic) long long minPairingCompatibilityVersion; // @synthesize minPairingCompatibilityVersion=_minPairingCompatibilityVersion;
+@property (nonatomic) long long minPairingCompatibilityVersionWithChipID; // @synthesize minPairingCompatibilityVersionWithChipID=_minPairingCompatibilityVersionWithChipID;
 @property (nonatomic) long long minQuickSwitchCompatibilityVersion; // @synthesize minQuickSwitchCompatibilityVersion=_minQuickSwitchCompatibilityVersion;
 @property (nonatomic) long long pairingCompatibilityVersion; // @synthesize pairingCompatibilityVersion=_pairingCompatibilityVersion;
 

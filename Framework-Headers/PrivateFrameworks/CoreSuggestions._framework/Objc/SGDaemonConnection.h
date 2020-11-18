@@ -19,6 +19,8 @@
     NSXPCConnection *_xpcConnection;
 }
 
++ (void)_useSyncXPCWithBlock:(CDUnknownBlockType)arg1;
++ (BOOL)usingSyncXPC;
 - (void).cxx_destruct;
 - (void)_callAbortBlocks;
 - (void)_connectToServer;
@@ -26,7 +28,10 @@
 - (void)dealloc;
 - (void)disconnect;
 - (id)initWithMachServiceName:(id)arg1 xpcInterface:(id)arg2;
-- (id)waitUntilReturn:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (id)remoteObjectProxy;
+- (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)waitUntilReturn:(CDUnknownBlockType)arg1 withTimeout:(double)arg2 error:(id *)arg3;
 - (id)xpcConnection;
 
 @end

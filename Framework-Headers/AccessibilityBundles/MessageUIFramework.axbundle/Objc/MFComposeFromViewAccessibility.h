@@ -13,9 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsScannerElement;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;

@@ -21,8 +21,6 @@
 + (id)_requestQueueForIdentifier:(id)arg1;
 + (id)defaultRequestQueue;
 - (void).cxx_destruct;
-- (id)_agentRemoteObjectInterface;
-- (id)_agentXPCConnection;
 - (void)_attemptLocalApprovalForStorePurchaseRequestWithAdamID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_attemptLocalApprovalForStorePurchaseRequestWithItemIdentifier:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_clearCachedRequests;
@@ -37,11 +35,8 @@
 - (void)_userDidApproveRequestWithRequestID:(id)arg1;
 - (void)_userDidDenyRequestWithRequestID:(id)arg1;
 - (void)_writeTestValueToTouchIDKeychain;
-- (void)addRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (id)agentRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)askPermissionTo:(id)arg1 withRequestInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)attemptLocalApprovalForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithIdentifier:(id)arg1;
 - (void)pendingRequestsWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

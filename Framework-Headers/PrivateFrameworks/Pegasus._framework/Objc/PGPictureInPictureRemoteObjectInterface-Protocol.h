@@ -6,22 +6,25 @@
 
 #import <Pegasus/NSObject-Protocol.h>
 
-@class NSArray, PGHostedWindowHostingHandle, PGPlaybackProgress;
+@class NSArray, NSString, PGHostedWindowHostingHandle, PGPlaybackProgress;
 
 @protocol PGPictureInPictureRemoteObjectInterface <NSObject>
+- (oneway void)checkActivePictureInPictureCancellationPolicyWithCompletion:(void (^)(BOOL, NSError *, BOOL, BOOL))arg1;
 - (oneway void)cleanupWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)initializePictureInPictureWithControlsStyle:(long long)arg1 preferredContentSize:(struct CGSize)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (oneway void)rotateContentContainer:(long long)arg1 withCompletionHandler:(void (^)(BOOL, NSError *, BKSAnimationFenceHandle *))arg2;
+- (oneway void)setControlsStyle:(long long)arg1 animated:(BOOL)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (oneway void)setLoadedTimeRanges:(NSArray *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setPictureInPictureShouldStartWhenEnteringBackground:(BOOL)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setPlaybackProgress:(PGPlaybackProgress *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setShouldShowAlternateActionButtonImage:(BOOL)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)setShouldShowLoadingIndicator:(BOOL)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
-- (oneway void)setupStartAnimated:(BOOL)arg1 hostedWindowHostingHandle:(PGHostedWindowHostingHandle *)arg2 preferredContentSize:(struct CGSize)arg3 initialInterfaceOrientation:(long long)arg4 initialLayerFrame:(struct CGRect)arg5 completionHandler:(void (^)(BOOL, NSError *))arg6;
+- (oneway void)setupStartAnimated:(BOOL)arg1 hostedWindowHostingHandle:(PGHostedWindowHostingHandle *)arg2 sceneSessionPersistentIdentifier:(NSString *)arg3 preferredContentSize:(struct CGSize)arg4 initialInterfaceOrientation:(long long)arg5 initialLayerFrame:(struct CGRect)arg6 completionHandler:(void (^)(BOOL, NSError *))arg7;
 - (oneway void)setupStopAnimated:(BOOL)arg1 activateApplicationIfNeeded:(BOOL)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (oneway void)startPictureInPictureAnimated:(BOOL)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)stopPictureInPictureAnimated:(BOOL)arg1 withFinalInterfaceOrientation:(long long)arg2 finalLayerFrame:(struct CGRect)arg3 completionHandler:(void (^)(BOOL, NSError *, BKSAnimationFenceHandle *))arg4;
 - (oneway void)updateInitialLayerFrameForInteractiveTransitionAnimationUponBackgrounding:(struct CGRect)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)updatePreferredContentSize:(struct CGSize)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
+- (oneway void)updateSourceSceneSessionPersistentIdentifierForInteractiveTransitionAnimationUponBackgrounding:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 @end
 

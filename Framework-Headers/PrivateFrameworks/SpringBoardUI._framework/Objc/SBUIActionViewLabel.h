@@ -24,10 +24,10 @@
 @property (strong, nonatomic) UIColor *textColor;
 
 - (void).cxx_destruct;
+- (void)_mt_applyVisualStyling:(id)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)mt_applyVibrantStyling:(id)arg1;
-- (void)mt_removeAllVibrantStyling;
+- (void)mt_removeAllVisualStyling;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

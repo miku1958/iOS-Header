@@ -40,11 +40,12 @@
 - (void)deviceMetadataWithFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didRegisterWithRegionMap:(id)arg1 primaryRegionTopic:(id)arg2;
 - (void)downloadAllPaymentPasses;
+- (void)endRequiringUpgradedPasscodeIfNecessary;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getConfigurationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getProvisioningDataWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getRegistrationDataWithAuthToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePotentialExpressPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -52,6 +53,8 @@
 - (id)init;
 - (id)initWithWebService:(id)arg1 connection:(id)arg2;
 - (void)invalidateRemoteProxyTargetDevice;
+- (void)notePasscodeUpgradeFlowDidEnd;
+- (void)notePasscodeUpgradeFlowWillBeginWithCompletion:(CDUnknownBlockType)arg1;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
@@ -62,12 +65,13 @@
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removePass:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)renewAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)secureElementOwnershipStateForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setDefaultPaymentPassUniqueIdentifier:(id)arg1;
 - (void)setNewAuthRandom:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(BOOL)arg1;
 - (void)storePassOwnershipToken:(id)arg1 withIdentifier:(id)arg2;
 - (void)supportedFeatureIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)supportsAccountsWithCompletion:(CDUnknownBlockType)arg1;

@@ -6,22 +6,33 @@
 
 #import <ClassKit/CLSObject.h>
 
+#import <ClassKit/CLSRelationable-Protocol.h>
+
 @class NSString;
 
-@interface CLSClassMember : CLSObject
+@interface CLSClassMember : CLSObject <CLSRelationable>
 {
+    BOOL _markedForDeletion;
     NSString *_personID;
     unsigned long long _roles;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL markedForDeletion; // @synthesize markedForDeletion=_markedForDeletion;
 @property (copy, nonatomic) NSString *personID; // @synthesize personID=_personID;
 @property (nonatomic) unsigned long long roles; // @synthesize roles=_roles;
+@property (readonly) Class superclass;
 
++ (id)objectIDForClassID:(id)arg1 andPersonID:(id)arg2;
++ (id)relations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithClassID:(id)arg1 personID:(id)arg2 roles:(unsigned long long)arg3;
 - (id)initWithCoder:(id)arg1;
 
 @end

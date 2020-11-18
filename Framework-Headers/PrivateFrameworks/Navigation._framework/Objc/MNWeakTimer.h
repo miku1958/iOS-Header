@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) SEL selector; // @synthesize selector=_selector;
 @property (weak, nonatomic) id target; // @synthesize target=_target;
-@property (readonly) NSTimer *timer; // @synthesize timer=_timer;
+@property (readonly, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 
 + (id)scheduledTimerWithTimeInterval:(double)arg1 target:(id)arg2 selector:(SEL)arg3;
 - (void).cxx_destruct;

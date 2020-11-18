@@ -6,11 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardFoundation/SFChargingVisualInformationProvider-Protocol.h>
+@class NSDate, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
 
-@class NSDate, NSString, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
-
-@interface SBFLockScreenDateView : UIView <SFChargingVisualInformationProvider>
+@interface SBFLockScreenDateView : UIView
 {
     SBUILegibilityLabel *_timeLabel;
     double _timeAlpha;
@@ -25,25 +23,21 @@
     double _dateToTimeStretch;
     double _timeLegibilityStrength;
     double _subtitleLegibilityStrength;
+    double _maximumSubtitleWidth;
     struct CGRect _restingFrame;
 }
 
 @property (nonatomic) double alignmentPercent; // @synthesize alignmentPercent=_alignmentPercent;
-@property (readonly, nonatomic) struct CGRect chargingVisualInformationTimeFrame;
-@property (readonly, nonatomic) struct CGRect chargingVisualInformationTimeSubtitleFrame;
 @property (readonly, nonatomic) double contentAlpha;
 @property (strong, nonatomic) SBFLockScreenDateSubtitleView *customSubtitleView; // @synthesize customSubtitleView=_customSubtitleView;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (nonatomic) double dateToTimeStretch; // @synthesize dateToTimeStretch=_dateToTimeStretch;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (nonatomic) double maximumSubtitleWidth; // @synthesize maximumSubtitleWidth=_maximumSubtitleWidth;
 @property (nonatomic) struct CGRect restingFrame; // @synthesize restingFrame=_restingFrame;
 @property (readonly, nonatomic) double subtitleBaselineOffsetFromOrigin;
 @property (nonatomic, getter=isSubtitleHidden) BOOL subtitleHidden;
 @property (nonatomic) double subtitleLegibilityStrength; // @synthesize subtitleLegibilityStrength=_subtitleLegibilityStrength;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_overrideTextColor;
 @property (readonly, nonatomic) double timeBaselineOffsetFromOrigin;
 @property (nonatomic) double timeLegibilityStrength; // @synthesize timeLegibilityStrength=_timeLegibilityStrength;
@@ -51,7 +45,7 @@
 
 + (double)defaultHeight;
 + (id)timeFont;
-+ (CDStruct_d2b197d1)timeFontMetrics;
++ (CDStruct_91d2e2b9)timeFontMetrics;
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)_cachedGlyphInsetsTimeFontForString:(id)arg1;
 - (void)_setSubtitleAlpha:(double)arg1;
@@ -62,6 +56,8 @@
 - (void)_updateLabelAlpha;
 - (void)_updateLabels;
 - (void)_updateUsesCompactDateFormat;
+- (struct CGRect)chargingVisualInformationTimeFrame;
+- (struct CGRect)chargingVisualInformationTimeSubtitleFrame;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGRect)presentationExtentForAlignmentPercent:(double)arg1;

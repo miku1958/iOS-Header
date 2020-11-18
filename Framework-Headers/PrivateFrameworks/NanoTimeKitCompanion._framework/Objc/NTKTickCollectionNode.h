@@ -32,6 +32,8 @@
 - (void)colorizeBackground:(id)arg1;
 - (void)colorizeWithTickColor:(id)arg1 alternateTickColor:(id)arg2;
 - (void)createSubNodes;
+- (id)largeTickColor;
+- (id)smallTickColor;
 
 @end
 

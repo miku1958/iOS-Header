@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)applicationDidEnterBackground:(id)arg1;
 - (void)greatestScreenScaleDidChange:(double)arg1;
 - (id)initWithName:(id)arg1 maxCount:(unsigned long long)arg2;
 

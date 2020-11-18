@@ -10,9 +10,7 @@
 {
 }
 
-+ (void)load;
-- (void)_dispose;
-- (void)_xref_dispose;
+- (void)dealloc;
 - (id)debugDescription;
 - (id)init;
 - (oneway void)release;

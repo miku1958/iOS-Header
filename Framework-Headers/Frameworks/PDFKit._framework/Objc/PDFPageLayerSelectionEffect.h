@@ -11,27 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_activeColor;
-- (id)_createMagnificationLoupeLayer:(int)arg1;
-- (id)_createSelectionLollipop:(double)arg1 isLeftSide:(BOOL)arg2;
-- (struct CGImage *)_createTextMagnifierContentsImageAtPagePoint:(struct CGPoint)arg1 forLoupeType:(int)arg2 forSize:(struct CGSize)arg3;
 - (void)_generateRects;
-- (void)_generateSelectionIsFirstPage:(BOOL)arg1 isLastPage:(BOOL)arg2;
-- (void)_processloupeRenderRequest;
-- (void)_updateGraphics;
-- (void)_updateHandleGraphics;
-- (void)_updateMagnificationLoupeLayer:(int)arg1 withPagePoint:(struct CGPoint)arg2;
-- (void)clearLollipopMagnifier;
-- (void)clearTextSelectionHandles;
-- (void)clearTextSelectionMagnifier;
-- (void)dealloc;
-- (void)enableTextSelectionHandles;
+- (void)addSelection:(id)arg1;
 - (id)initWithPDFPageLayer:(id)arg1;
-- (id)selection;
-- (void)setLollipopMagnifierPagePoint:(struct CGPoint)arg1;
-- (void)setSelection:(id)arg1;
-- (void)setTextSelectionMagnifierPagePoint:(struct CGPoint)arg1;
+- (void)setSelections:(id)arg1;
 - (void)update;
+- (void)updateColor:(unsigned long long)arg1;
 
 @end
 

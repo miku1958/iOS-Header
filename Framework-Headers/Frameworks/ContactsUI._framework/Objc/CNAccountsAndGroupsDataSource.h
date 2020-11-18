@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithStore:(id)arg1;
 - (void)reload;
 - (void)setServerFilterForItem:(id)arg1;
+- (void)updateRootItemSelection;
 
 @end
 

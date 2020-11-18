@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ARKit/ARTechnique.h>
+#import <ARKit/ARImageBasedTechnique.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
-@interface ARObjectDetectionTechnique : ARTechnique
+@interface ARObjectDetectionTechnique : ARImageBasedTechnique
 {
     BOOL _finishedLoadingObjects;
+    NSDictionary *_referenceObjecteMap;
     NSArray *_detectionObjects;
 }
 
 @property (readonly, nonatomic) NSArray *detectionObjects; // @synthesize detectionObjects=_detectionObjects;
 @property (readonly) BOOL finishedLoadingObjects; // @synthesize finishedLoadingObjects=_finishedLoadingObjects;
+@property (readonly) NSDictionary *referenceObjecteMap; // @synthesize referenceObjecteMap=_referenceObjecteMap;
 
 - (void).cxx_destruct;
-- (id)initWithTrackingTechnique:(id)arg1 detectionObjects:(id)arg2;
+- (id)initWithDetectionObjects:(id)arg1;
 
 @end
 

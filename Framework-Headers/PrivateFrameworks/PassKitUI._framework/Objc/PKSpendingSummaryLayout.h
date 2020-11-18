@@ -12,6 +12,7 @@
 {
     NSMutableDictionary *_attributesPerIndexPath;
     NSMutableDictionary *_headersPerIndexPath;
+    NSMutableDictionary *_footersPerIndexPath;
     struct CGSize _currentSize;
     BOOL _isLowEndDevice;
     BOOL _visible;

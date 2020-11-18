@@ -22,5 +22,6 @@
 - (void)toggleBoldface:(id)arg1;
 - (void)toggleItalics:(id)arg1;
 - (void)toggleUnderline:(id)arg1;
+- (void)updateTextAttributesWithConversionHandler:(NSDictionary * (^)(NSDictionary *))arg1;
 @end
 

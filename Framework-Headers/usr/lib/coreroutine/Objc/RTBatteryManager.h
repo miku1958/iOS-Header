@@ -6,50 +6,35 @@
 
 #import <coreroutine/RTService.h>
 
-#import <coreroutine/RTIORegistryEntryMatchObserver-Protocol.h>
-#import <coreroutine/RTIOServiceChangeObserver-Protocol.h>
+@class RTDarwinNotificationHelper;
 
-@class NSString, RTIONotificationPort;
-@protocol RTIOServiceStrategy;
-
-@interface RTBatteryManager : RTService <RTIORegistryEntryMatchObserver, RTIOServiceChangeObserver>
+@interface RTBatteryManager : RTService
 {
-    unsigned int _battery;
-    unsigned int _batteryInterestNotification;
     BOOL _monitorBatteryStatusChanges;
-    RTIONotificationPort *_port;
     long long _externalConnectionState;
-    id<RTIOServiceStrategy> _ioServiceStrategy;
+    RTDarwinNotificationHelper *_notificationHelper;
 }
 
-@property (nonatomic) unsigned int battery;
-@property (nonatomic) unsigned int batteryInterestNotification;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) long long externalConnectionState; // @synthesize externalConnectionState=_externalConnectionState;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<RTIOServiceStrategy> ioServiceStrategy; // @synthesize ioServiceStrategy=_ioServiceStrategy;
 @property (nonatomic) BOOL monitorBatteryStatusChanges; // @synthesize monitorBatteryStatusChanges=_monitorBatteryStatusChanges;
-@property (strong, nonatomic) RTIONotificationPort *port; // @synthesize port=_port;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) RTDarwinNotificationHelper *notificationHelper; // @synthesize notificationHelper=_notificationHelper;
 
++ (BOOL)_ioDrawingUnlimitedPower;
++ (long long)currentExternalConnectionState;
 + (id)externalConnectionStateToString:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_shutdown;
 - (void)_unregisterForNotifications;
-- (void)batteryStatusChange:(unsigned int)arg1 messageType:(unsigned int)arg2;
 - (void)dealloc;
 - (void)fetchCurrentChargerConnectionState:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithStrategy:(id)arg1;
+- (id)initWithQueue:(id)arg1;
+- (id)initWithQueue:(id)arg1 notificationHelper:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
-- (void)matchedBattery:(unsigned int)arg1;
-- (void)onRegistryEntriesMatched:(unsigned int)arg1;
-- (void)onServiceChanged:(unsigned int)arg1 messageType:(unsigned int)arg2;
 - (void)startMonitoringBatteryStatusChanges;
 - (void)stopMonitoringBatteryStatusChanges;
-- (void)updateBatteryStatus:(unsigned int)arg1;
+- (void)updateBatteryStatus:(long long)arg1;
 
 @end
 

@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *dateTimeString; // @synthesize dateTimeString=_dateTimeString;
 @property (nonatomic) BOOL useCustomFadeAnimation; // @synthesize useCustomFadeAnimation=_useCustomFadeAnimation;
 
-+ (const char *)_cStringFromData:(CDStruct_1916f467 *)arg1;
++ (const char *)_cStringFromData:(CDStruct_0942cde0 *)arg1;
 - (void).cxx_destruct;
 - (id)accessibilityHUDRepresentation;
 - (id)contentsImage;

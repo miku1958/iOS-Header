@@ -40,7 +40,6 @@
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)setIntKeyFields:(id)arg1 forKey:(int)arg2;
 - (void)setStringKeyFields:(id)arg1 forKey:(id)arg2;
 - (void)writeTo:(id)arg1;

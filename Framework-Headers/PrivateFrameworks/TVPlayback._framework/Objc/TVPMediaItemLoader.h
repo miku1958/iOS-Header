@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSError *_error;
     TVPMediaItemTimingData *_timingData;
     AVURLAsset *_existingAVAsset;
-    NSObject *_reportingHierarchyToken;
+    id _reportingHierarchyToken;
     AVURLAsset *_AVAsset;
     TVPStateMachine *_stateMachine;
     AVURLAsset *_AVAssetInternal;
@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
     unsigned long long _assetLoadContext;
     unsigned long long _refCount;
     NSString *_mediaItemLoaderGUID;
-    unsigned long long _backgroundTaskIdentifier;
     NSTimer *_diskSpaceMonitorTimer;
     NSNotification *_savedMediaServerResetUserNotification;
 }
@@ -42,7 +41,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *assetInternalAccessQueue; // @synthesize assetInternalAccessQueue=_assetInternalAccessQueue;
 @property (nonatomic) unsigned long long assetLoadContext; // @synthesize assetLoadContext=_assetLoadContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *assetLoadContextAccessQueue; // @synthesize assetLoadContextAccessQueue=_assetLoadContextAccessQueue;
-@property (nonatomic) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
 @property (nonatomic) BOOL cleanedUp; // @synthesize cleanedUp=_cleanedUp;
 @property (readonly, nonatomic) BOOL containsStreamingAVAsset;
 @property (strong, nonatomic) TVPContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
@@ -55,7 +53,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<TVPMediaItem> *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (copy, nonatomic) NSString *mediaItemLoaderGUID; // @synthesize mediaItemLoaderGUID=_mediaItemLoaderGUID;
 @property (nonatomic) unsigned long long refCount; // @synthesize refCount=_refCount;
-@property (strong, nonatomic) NSObject *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+@property (strong, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
 @property (strong, nonatomic) NSNotification *savedMediaServerResetUserNotification; // @synthesize savedMediaServerResetUserNotification=_savedMediaServerResetUserNotification;
 @property (strong, nonatomic) NSString *state; // @synthesize state=_state;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;

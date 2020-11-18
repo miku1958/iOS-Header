@@ -8,30 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDBounds, PBUnknownFields;
+@class GEOLatLng, GEOPDBounds, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSpatialLookupResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _mappedCategorys;
     GEOPDBounds *_bounds;
     GEOLatLng *_center;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_mappedCategorys:1;
+        unsigned int read_bounds:1;
+        unsigned int read_center:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_mappedCategorys:1;
+        unsigned int wrote_bounds:1;
+        unsigned int wrote_center:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDBounds *bounds; // @synthesize bounds=_bounds;
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (strong, nonatomic) GEOPDBounds *bounds;
+@property (strong, nonatomic) GEOLatLng *center;
 @property (readonly, nonatomic) BOOL hasBounds;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (readonly, nonatomic) int *mappedCategorys;
 @property (readonly, nonatomic) unsigned long long mappedCategorysCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (id)spatialLookupResultForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsMappedCategorys:(id)arg1;
+- (void)_addNoFlagsMappedCategory:(int)arg1;
+- (void)_readBounds;
+- (void)_readCenter;
+- (void)_readMappedCategorys;
 - (void)addMappedCategory:(int)arg1;
 - (void)clearMappedCategorys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -42,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (int)mappedCategoryAtIndex:(unsigned long long)arg1;
 - (id)mappedCategorysAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setMappedCategorys:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

@@ -38,6 +38,7 @@
 - (BOOL)changeSavedPassword:(id)arg1 toUser:(id)arg2 password:(id)arg3;
 - (void)dealloc;
 - (id)init;
+- (id)persistentIdentifierForCredential:(id)arg1 protectionSpace:(id)arg2;
 - (void)removePassword:(id)arg1;
 - (void)removeSite:(id)arg1 fromPassword:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)reset;

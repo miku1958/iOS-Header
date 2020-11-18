@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSString *lastSearchQuery;
 @property (strong, nonatomic) WBSParsecSearchMapsResultFeedbackSender *mapsFeedbackSender; // @synthesize mapsFeedbackSender=_mapsFeedbackSender;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property (readonly, nonatomic) long long parsecQueryID;
 @property (strong, nonatomic) id<WBSParsecSearchSession> parsecSearchSession; // @synthesize parsecSearchSession=_parsecSearchSession;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
 @property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;

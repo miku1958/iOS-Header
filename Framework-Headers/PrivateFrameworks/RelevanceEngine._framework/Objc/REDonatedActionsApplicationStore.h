@@ -8,8 +8,8 @@
 
 #import <RelevanceEngine/REDonatedActionFilteredCacheDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, REDonatedActionFilteredCache, REUpNextScheduler;
-@protocol OS_dispatch_queue;
+@class NSMutableSet, NSString, REDonatedActionFilteredCache, RERelevanceEngine, REUpNextScheduler;
+@protocol OS_dispatch_queue, REMLElementRanker;
 
 @interface REDonatedActionsApplicationStore : NSObject <REDonatedActionFilteredCacheDelegate>
 {
@@ -18,6 +18,8 @@
     REUpNextScheduler *_applicationScheduler;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableSet *_applications;
+    RERelevanceEngine *_filteringEngine;
+    id<REMLElementRanker> _elementRanker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,7 +31,7 @@
 - (void)_notify;
 - (void)_notifyApplicationsUpdates;
 - (void)_queue_loadApplicationsIfNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)_shouldFilterDonation:(id)arg1 date:(id)arg2 location:(id)arg3;
+- (BOOL)_shouldFilterDonation:(id)arg1;
 - (void)_sortDonationsByCount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)donatedActionFilteredCacheCountDidChange;
 - (void)donatedActionFilteredCacheDidAddDonation:(id)arg1;
@@ -40,8 +42,9 @@
 - (void)fetchFirstPerformedActionDate:(CDUnknownBlockType)arg1;
 - (void)fetchPerformedCountForAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchPerformedTodayCountForActionWithBundleIdentifer:(id)arg1 actionIdentifier:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchTopDonationsForApplications:(id)arg1 fromOnlyRecentPlatform:(BOOL)arg2 currentDate:(id)arg3 currentLocation:(id)arg4 block:(CDUnknownBlockType)arg5;
+- (void)fetchTopDonationsForApplications:(id)arg1 fromOnlyRecentPlatform:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
+- (id)initWithLocationManager:(id)arg1;
 
 @end
 

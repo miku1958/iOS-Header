@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityHasNativeFocus;
 - (id)_accessibilityNativeFocusPreferredElement;
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;

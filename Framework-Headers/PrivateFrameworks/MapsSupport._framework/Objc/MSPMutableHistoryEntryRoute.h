@@ -8,7 +8,7 @@
 
 #import <MapsSupport/MSPHistoryEntryRoute-Protocol.h>
 
-@class NSString;
+@class GEOComposedWaypoint, GEOURLRouteHandle, NSDate, NSString;
 @protocol MSPRouteInformationSource;
 
 @interface MSPMutableHistoryEntryRoute : MSPMutableHistoryEntry <MSPHistoryEntryRoute>
@@ -18,10 +18,17 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) GEOComposedWaypoint *endWaypoint;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=navigationWasInterrupted) BOOL navigationInterrupted;
+@property (readonly, nonatomic) BOOL navigationWasInterrupted;
+@property (readonly, nonatomic) GEOURLRouteHandle *routeHandle;
 @property (copy, nonatomic) id<MSPRouteInformationSource> routeInformationSource; // @synthesize routeInformationSource=_routeInformationSource;
+@property (readonly, nonatomic) GEOComposedWaypoint *startWaypoint;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL tracksRAPReportingOnly;
+@property (readonly, nonatomic) long long transportType;
+@property (readonly, copy, nonatomic) NSDate *usageDate;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;
@@ -30,12 +37,8 @@
 - (void).cxx_destruct;
 - (BOOL)_isUserVisibleDuplicateOfSameClassObject:(id)arg1;
 - (id)_routeRequestStorage;
-- (id)endWaypoint;
 - (id)initWithStorage:(id)arg1;
-- (id)routeHandle;
-- (id)startWaypoint;
 - (id)transferToImmutableIfValidWithError:(out id *)arg1;
-- (long long)transportType;
 
 @end
 

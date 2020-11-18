@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <RelevanceEngine/RERelevanceProviderManagerProperties-Protocol.h>
+
 @class NSArray, NSDictionary, NSHashTable, NSString, REFeatureSet, REPriorityQueue, RERelevanceProviderEnvironment, REUpNextTimer;
 @protocol OS_dispatch_queue;
 
-@interface RERelevanceProviderManager : NSObject
+@interface RERelevanceProviderManager : NSObject <RERelevanceProviderManagerProperties>
 {
     RERelevanceProviderEnvironment *_environment;
     NSHashTable *_providers;
@@ -18,6 +20,8 @@
     NSArray *_effectiveFeatures;
     NSDictionary *_inflectionValues;
     BOOL _dataStoresOpened;
+    BOOL _hasSeperateRelevanceQueue;
+    BOOL _implementsPrepareForUpdate;
     NSObject<OS_dispatch_queue> *_relevanceQueue;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSString *_loggingHeader;
@@ -25,17 +29,20 @@
 }
 
 @property (readonly, nonatomic) NSArray *allProviders;
+@property (readonly, nonatomic) NSArray *allRelevanceProviders;
+@property (readonly, nonatomic) BOOL dataSourcesOpened;
 @property (readonly, nonatomic) NSArray *effectiveFeatures;
 @property (weak, nonatomic) RERelevanceProviderEnvironment *environment;
+@property (readonly, nonatomic) unsigned long long scheduledUpdatesCount;
 @property (strong, nonatomic) REFeatureSet *supportedFeatures; // @synthesize supportedFeatures=_supportedFeatures;
 
 + (id)_dependencyClasses;
 + (id)_features;
 + (Class)_relevanceProviderClass;
 + (BOOL)_requiresLocationServices;
-+ (id)_sharedProviderQueue;
 + (BOOL)_supportsHistoricProviders;
 + (BOOL)_wantsDelayedUpdate;
++ (BOOL)_wantsSeperateRelevanceQueue;
 + (id)providerManagerClasses;
 + (void)setProviderManagerClassesLoadingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)supportsHistoricProviders;
@@ -55,6 +62,7 @@
 - (void)_queue_performPendingUpdatesAndScheduleTimerIfNeeded;
 - (void)_queue_performUpdate:(id)arg1;
 - (void)_queue_resetTimer;
+- (void)_queue_scheduleUpdate:(id)arg1;
 - (float)_relevanceForHistoricProvider:(id)arg1;
 - (float)_relevanceForProvider:(id)arg1;
 - (void)_removeAllPendingUpdates;
@@ -63,21 +71,28 @@
 - (id)_valueForHistoricProvider:(id)arg1 feature:(id)arg2;
 - (id)_valueForProvider:(id)arg1 context:(id)arg2 feature:(id)arg3;
 - (id)_valueForProvider:(id)arg1 feature:(id)arg2;
-- (void)addProvider:(id)arg1;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+- (id)_valuesForProvider:(id)arg1 context:(id)arg2 features:(id)arg3;
+- (void)addProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beginActivity:(id)arg1;
+- (void)beginFetchingData;
 - (BOOL)containsProvider:(id)arg1;
 - (void)dealloc;
+- (id)description;
+- (void)endActivity:(id)arg1;
 - (void)enumerateInflectionFeatureValues:(CDUnknownBlockType)arg1;
+- (void)finishFetchingData;
 - (unsigned long long)hash;
 - (id)initWithQueue:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)isProviderHistoric:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pause;
+- (void)pauseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)relevanceForHistoricProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)relevanceForProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)relevanceForProvider:(id)arg1 context:(id)arg2;
-- (void)removeProvider:(id)arg1;
+- (void)removeProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resume;
+- (void)resumeWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

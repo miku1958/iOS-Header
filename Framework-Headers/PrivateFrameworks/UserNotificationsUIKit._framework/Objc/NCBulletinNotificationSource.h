@@ -16,7 +16,6 @@
 @interface NCBulletinNotificationSource : NSObject <BBObserverDelegate, NCNotificationDispatcherSourceDelegate, NCNotificationSource>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_calloutQueue;
     BBObserver *_observer;
     BBSettingsGateway *_settingsGateway;
     NCNotificationDispatcher *_dispatcher;
@@ -37,7 +36,8 @@
 - (void).cxx_destruct;
 - (void)_applicationIconChanged:(id)arg1;
 - (id)_bulletinsPerSectionIdForNotificationRequests:(id)arg1;
-- (id)_sectionInfoForBulletin:(id)arg1;
+- (id)_bulletinsToClearPerSectionIdForNotificationRequests:(id)arg1 removingDestinations:(id)arg2;
+- (id)_queue_sectionInfoForBulletin:(id)arg1;
 - (unsigned long long)_updateFeedForCoverSheetDestination:(unsigned long long)arg1 storedFeed:(unsigned long long)arg2;
 - (void)dealloc;
 - (void)dispatcher:(id)arg1 requestsClearingNotificationRequests:(id)arg2;
@@ -49,7 +49,7 @@
 - (void)dispatcher:(id)arg1 setDeliverQuietly:(BOOL)arg2 forSectionIdentifier:(id)arg3;
 - (id)init;
 - (id)initWithDispatcher:(id)arg1;
-- (id)initWithDispatcher:(id)arg1 observer:(id)arg2;
+- (id)initWithDispatcher:(id)arg1 observer:(id)arg2 queue:(id)arg3;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3;
 - (void)observer:(id)arg1 addBulletin:(id)arg2 forFeed:(unsigned long long)arg3 playLightsAndSirens:(BOOL)arg4 withReply:(CDUnknownBlockType)arg5;
 - (id)observer:(id)arg1 composedAttachmentImageForType:(long long)arg2 thumbnailData:(id)arg3 key:(id)arg4;

@@ -15,11 +15,9 @@
     id _predictedItem;
 }
 
-@property (readonly, nonatomic) id bundleId;
 @property (readonly, nonatomic) id predictedItem; // @synthesize predictedItem=_predictedItem;
 @property (readonly, nonatomic) float score; // @synthesize score=_score;
 
-+ (id)bundleIdsFrom:(id)arg1;
 + (id)predictionsFrom:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

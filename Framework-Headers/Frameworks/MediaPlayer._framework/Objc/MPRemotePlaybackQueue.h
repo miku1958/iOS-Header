@@ -8,11 +8,12 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class ICUserIdentity, NSDictionary, NSString;
 
 @interface MPRemotePlaybackQueue : NSObject <NSSecureCoding>
 {
     struct _MRSystemAppPlaybackQueue *_mediaRemotePlaybackQueue;
+    ICUserIdentity *_userIdentity;
 }
 
 @property (nonatomic) long long replaceIntent;
@@ -21,17 +22,20 @@
 @property (readonly, copy, nonatomic) NSString *siriAssetInfo;
 @property (copy, nonatomic) NSString *siriRecommendationIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *siriWHAMetricsInfo;
+@property (readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property (copy, nonatomic) NSDictionary *userInfo;
 
 + (id)queueWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;
++ (id)queueWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1 options:(id)arg2;
 + (void)registerRemotePlaybackQueueClass:(Class)arg1 forPlaybackQueueType:(int)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (struct _MRSystemAppPlaybackQueue *)_mediaRemotePlaybackQueue;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;
+- (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1 options:(id)arg2;
 - (BOOL)verifyWithError:(id *)arg1;
 
 @end

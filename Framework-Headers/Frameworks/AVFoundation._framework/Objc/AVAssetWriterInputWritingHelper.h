@@ -10,7 +10,8 @@
 #import <AVFoundation/AVKeyPathDependencyHost-Protocol.h>
 #import <AVFoundation/AVWeakObservable-Protocol.h>
 
-@class AVAssetWriterInputMediaDataRequester, AVAssetWriterInputPassDescription, AVFigAssetWriterTrack, AVKeyPathDependencyManager, NSString;
+@class AVAssetWriterInputMediaDataRequester, AVAssetWriterInputPassDescription, AVFigAssetWriterTrack, AVKeyPathDependencyManager, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVAssetWriterInputWritingHelper : AVAssetWriterInputHelper <AVAssetWriterInputMediaDataRequesterDelegate, AVWeakObservable, AVKeyPathDependencyHost>
@@ -21,6 +22,8 @@ __attribute__((visibility("hidden")))
     struct __CVPixelBufferPool *_pixelBufferPool;
     AVAssetWriterInputPassDescription *_currentPassDescription;
     AVKeyPathDependencyManager *_keyPathDependencyManager;
+    NSObject<OS_dispatch_queue> *_mediaDataRequesterSerialQueue;
+    NSObject<OS_dispatch_queue> *_readyForMoreMediaDataObserverSerialQueue;
 }
 
 @property (readonly, nonatomic, getter=_assetWriterTrack) AVFigAssetWriterTrack *assetWriterTrack; // @synthesize assetWriterTrack=_assetWriterTrack;
@@ -30,9 +33,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_attachToMediaDataRequester:(id)arg1;
-- (void)_detachFromMediaDataRequester:(id)arg1;
-- (void)_nudgeMediaDataRequesterIfAppropriate;
+- (void)_nudgeMediaDataRequesterIfAppropriate:(id)arg1;
+- (void)_startObservingReadyForMoreMediaDataKeyPath;
+- (void)_stopObservingReadyForMoreMediaDataKeyPath;
 - (void)addCallbackToCancelDuringDeallocation:(id)arg1;
 - (BOOL)appendPixelBuffer:(struct __CVBuffer *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2;
 - (long long)appendSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 error:(id *)arg2;
@@ -41,20 +44,20 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
 - (void)didStartInitialSession;
-- (void)finalize;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)initWithConfigurationState:(id)arg1 assetWriterTrack:(id)arg2 error:(id *)arg3;
 - (BOOL)isReadyForMoreMediaData;
 - (void)markAsFinished;
 - (void)markAsFinishedAndTransitionCurrentHelper:(id)arg1;
 - (void)markCurrentPassAsFinished;
-- (BOOL)mediaDataRequesterShouldRequestMediaData:(id)arg1;
+- (BOOL)mediaDataRequesterShouldRequestMediaData;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct __CVPixelBufferPool *)pixelBufferPool;
 - (void)prepareToEndSession;
 - (BOOL)prepareToFinishWritingReturningError:(id *)arg1;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (long long)status;
+- (void)stopRequestingMediaData;
 - (id)transitionToAndReturnTerminalHelperWithTerminalStatus:(long long)arg1;
 
 @end

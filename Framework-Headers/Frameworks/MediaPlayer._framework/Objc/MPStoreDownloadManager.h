@@ -11,7 +11,7 @@
 #import <MediaPlayer/SSPurchaseManagerDelegate-Protocol.h>
 #import <MediaPlayer/UIAlertViewDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, SSDownloadManager, SSPurchaseManager;
+@class NSArray, NSDictionary, NSHashTable, NSMapTable, NSMutableArray, NSString, SSDownloadManager, SSPurchaseManager;
 @protocol OS_dispatch_queue;
 
 @interface MPStoreDownloadManager : NSObject <SSDownloadManagerObserver, SSPurchaseManagerDelegate, UIAlertViewDelegate, SSDownloadHandlerDelegate>
@@ -21,17 +21,16 @@
     NSObject<OS_dispatch_queue> *_calloutSerialQueue;
     NSMutableArray *_blockObservers;
     NSDictionary *_downloadKindToRequiredClientBundleIdentifiers;
-    SSDownloadManager *_downloadManager;
     NSMutableArray *_downloads;
     NSMutableArray *_userDownloads;
     NSMapTable *_downloadIdentifiersToDownloads;
     NSMapTable *_downloadsToObservers;
     NSMapTable *_libraryIdentifiersToDownloads;
     NSHashTable *_observersForAllDownloads;
-    SSPurchaseManager *_purchaseManager;
     NSMapTable *_storeIdentifiersToDownloads;
-    NSMutableDictionary *_downloadHandlers;
     BOOL _fetchedInitialDownloads;
+    SSDownloadManager *_downloadManager;
+    SSPurchaseManager *_purchaseManager;
 }
 
 @property (readonly, nonatomic) NSArray *activeDownloads;
@@ -81,7 +80,6 @@
 - (id)downloadForMediaItemPersistentID:(unsigned long long)arg1;
 - (id)downloadForMediaPlaybackItemMetadata:(id)arg1;
 - (id)downloadForStoreID:(long long)arg1;
-- (void)downloadHandler:(id)arg1 handleSession:(id)arg2;
 - (void)downloadManager:(id)arg1 downloadStatesDidChange:(id)arg2;
 - (void)downloadManagerNetworkUsageDidChange:(id)arg1;
 - (BOOL)hasFetchedInitialDownloads;

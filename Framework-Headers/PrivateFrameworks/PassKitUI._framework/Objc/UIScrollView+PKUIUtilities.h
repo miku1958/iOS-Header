@@ -7,7 +7,9 @@
 #import <UIKit/UIScrollView.h>
 
 @interface UIScrollView (PKUIUtilities)
-- (void)pkui_adjustNavigationBarShadow:(id)arg1;
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
+- (void)pkui_adjustManualScrollEdgeAppearanceProgressForNavigationItem:(id)arg1;
 - (struct CGRect)pkui_naturalRestingBounds;
 @end
 

@@ -14,6 +14,7 @@
 @interface CSSPGEndpointAnalyzer : NSObject <EARCaesuraSilencePosteriorGeneratorDelegate>
 {
     BOOL _hasReported;
+    BOOL _isAnalyzeMode;
     float _endpointThreshold;
     id<CSSPGEndpointAnalyzerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
@@ -27,6 +28,7 @@
 @property (nonatomic) float endpointThreshold; // @synthesize endpointThreshold=_endpointThreshold;
 @property (nonatomic) BOOL hasReported; // @synthesize hasReported=_hasReported;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isAnalyzeMode; // @synthesize isAnalyzeMode=_isAnalyzeMode;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
@@ -34,8 +36,12 @@
 - (void)addAudio:(id)arg1 numSamples:(unsigned long long)arg2;
 - (void)clientSilenceFeaturesAvailable:(id)arg1;
 - (void)dealloc;
+- (long long)getFrameDurationMs;
+- (id)init;
+- (id)initWithAnalyzeMode;
 - (id)initWithEndpointThreshold:(float)arg1;
 - (void)reset;
+- (void)silenceDurationEstimateAvailable:(float *)arg1 numEstimates:(unsigned long long)arg2 clientProcessedAudioMs:(float)arg3;
 - (void)start;
 - (void)stop;
 

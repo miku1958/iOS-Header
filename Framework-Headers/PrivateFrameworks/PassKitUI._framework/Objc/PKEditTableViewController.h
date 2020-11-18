@@ -10,7 +10,7 @@
 #import <PassKitUI/PKEditTableNoPassesViewDelegate-Protocol.h>
 #import <PassKitUI/UITableViewDataSourcePrefetching-Protocol.h>
 
-@class NSCache, NSMutableArray, NSMutableDictionary, NSObject, NSString, PKEditPendingCacheRequest, PKEditTableNoPassesView, PKGroupsController, UITableView;
+@class NSCache, NSDictionary, NSMutableArray, NSMutableDictionary, NSObject, NSString, PKEditPendingCacheRequest, PKEditTableNoPassesView, PKGroupsController, UITableView;
 @protocol OS_dispatch_queue, PKEditTableViewControllerCachingDelegate;
 
 @interface PKEditTableViewController : UITableViewController <UITableViewDataSourcePrefetching, PKEditTableNoPassesViewDelegate, PKEditPassesPerformanceTestResponder>
@@ -25,6 +25,7 @@
     NSCache *_imageCache;
     unsigned long long _imagesToKeep;
     NSObject<OS_dispatch_queue> *_queueCaching;
+    NSObject<OS_dispatch_queue> *_queuePlaceholder;
     PKEditPendingCacheRequest *_currentCacheRequest;
     BOOL _shouldProcessHighPriorityRequests;
     NSMutableArray *_highPriorityRequests;
@@ -52,16 +53,18 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long performanceTest; // @synthesize performanceTest=_performanceTest;
 @property (strong, nonatomic) NSString *performanceTestName; // @synthesize performanceTestName=_performanceTestName;
+@property (strong, nonatomic) NSDictionary *placeholders;
 @property (readonly) Class superclass;
 @property (nonatomic) long long testIteration; // @synthesize testIteration=_testIteration;
 
++ (id)_generatePlaceholderImageForStyle:(long long)arg1;
++ (void)loadPlaceholdersWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)_createImageForPass:(id)arg1 imageSize:(struct CGSize)arg2 cacheKey:(id)arg3 fullPass:(BOOL)arg4 stacked:(BOOL)arg5;
 - (id)_createPassStackWithPassImage:(id)arg1 withHeight:(double)arg2;
-- (id)_cropImage:(id)arg1 toHeight:(double)arg2;
 - (void)_imageOfSize:(struct CGSize)arg1 forPass:(id)arg2 fullPass:(BOOL)arg3 stacked:(BOOL)arg4 synchronously:(BOOL)arg5 preemptive:(BOOL)arg6 placeholder:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (unsigned long long)_imagesToKeepOutsideVisibleCells;
-- (id)_resizedImageWithImage:(id)arg1 alignmentSize:(struct CGSize)arg2;
+- (void)_placeholderImageForStyle:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setShouldProcessLowPriorityRequests:(BOOL)arg1;
 - (void)_updateShouldProcessHighPriorityRequestsWithFastScrolling:(BOOL)arg1;
 - (void)beginPassDeletionTestWithTestName:(id)arg1;
@@ -71,9 +74,8 @@
 - (void)currentCacheRequestCompletedWithImage:(id)arg1 duration:(double)arg2;
 - (void)failedTestWithReason:(id)arg1;
 - (void)findApps;
-- (void)generatePlaceholderImages;
 - (void)imageForPass:(id)arg1 stacked:(BOOL)arg2 synchronously:(BOOL)arg3 placeholder:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)initWithStyle:(long long)arg1;
+- (id)initWithStyle:(long long)arg1 placeholders:(id)arg2;
 - (void)loadContentAndImageSetFromExistingPassForPass:(id)arg1;
 - (id)mostRecentPassInGroup:(id)arg1;
 - (void)moveHighPriorityToLowPriorityWithCacheKey:(id)arg1;

@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (id)_privateDelegate;
 - (void)_resourceQueue_updateElapsedTimeCache;
+- (void)_resourceQueue_updateEvents:(id)arg1;
 - (void)clientRemote_didUpdateMetadata:(id)arg1;
 - (void)clientRemote_didUpdateStatistics:(id)arg1;
 - (void)connectionInterrupted;

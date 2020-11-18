@@ -17,18 +17,20 @@ __attribute__((visibility("hidden")))
     struct GEOPDTimeRange _timeRange;
     unsigned int _numAdditionalDepartures;
     struct {
-        unsigned int timeRange:1;
-        unsigned int numAdditionalDepartures:1;
-    } _has;
+        unsigned int has_timeRange:1;
+        unsigned int has_numAdditionalDepartures:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasNumAdditionalDepartures;
 @property (nonatomic) BOOL hasTimeRange;
-@property (nonatomic) unsigned int numAdditionalDepartures; // @synthesize numAdditionalDepartures=_numAdditionalDepartures;
-@property (nonatomic) struct GEOPDTimeRange timeRange; // @synthesize timeRange=_timeRange;
+@property (nonatomic) unsigned int numAdditionalDepartures;
+@property (nonatomic) struct GEOPDTimeRange timeRange;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithTraitsTransitModeFilter:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

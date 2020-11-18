@@ -7,6 +7,9 @@
 #import <UIKit/UIAccessibilityCustomRotor.h>
 
 @interface UIAccessibilityCustomRotor (AXPrivate)
+
+@property (nonatomic) BOOL visibleInTouchRotor;
+
 - (id)_accessibilityAXAttributedName;
 @end
 

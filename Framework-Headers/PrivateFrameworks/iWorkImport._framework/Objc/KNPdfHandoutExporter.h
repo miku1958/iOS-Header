@@ -6,26 +6,42 @@
 
 #import <iWorkImport/KNPdfExporter.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface KNPdfHandoutExporter : KNPdfExporter
 {
-    BOOL _printingRuledLines;
+    NSArray *_segments;
+    NSArray *_segmentsForCurrentPage;
+    unsigned long long _pageIndex;
+    BOOL _isDrawingNote;
     BOOL _printingNotes;
+    BOOL _printingRuledLines;
     BOOL _printingDivider;
-    BOOL _isPrintingNote;
+    double _viewScaleForPageCount;
+    struct CGRect _unscaledClipRectForPageCount;
 }
 
 @property (nonatomic, getter=isPrintingDivider) BOOL printingDivider; // @synthesize printingDivider=_printingDivider;
 @property (nonatomic, getter=isPrintingNotes) BOOL printingNotes; // @synthesize printingNotes=_printingNotes;
 @property (nonatomic, getter=isPrintingRuledLines) BOOL printingRuledLines; // @synthesize printingRuledLines=_printingRuledLines;
+@property (nonatomic) struct CGRect unscaledClipRectForPageCount; // @synthesize unscaledClipRectForPageCount=_unscaledClipRectForPageCount;
+@property (nonatomic) double viewScaleForPageCount; // @synthesize viewScaleForPageCount=_viewScaleForPageCount;
 
+- (void).cxx_destruct;
 - (id)currentInfos;
 - (BOOL)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(BOOL)arg4;
 - (BOOL)incrementPage;
 - (id)initWithDocumentRoot:(id)arg1;
 - (void)p_drawDividerLineForRect:(struct CGRect)arg1 pageRect:(struct CGRect)arg2 context:(struct CGContext *)arg3;
-- (void)p_drawNotesForNode:(id)arg1 index:(unsigned long long)arg2 forRect:(struct CGRect)arg3 unscaledClipRect:(struct CGRect)arg4 scaledClipRect:(struct CGRect)arg5 context:(struct CGContext *)arg6;
+- (void)p_drawNotesForNode:(id)arg1 index:(unsigned long long)arg2 forRect:(struct CGRect)arg3 notesIndex:(unsigned long long)arg4 scaledClipRect:(struct CGRect)arg5 context:(struct CGContext *)arg6;
 - (void)p_drawRuledLinesForRect:(struct CGRect)arg1 pageRect:(struct CGRect)arg2 numberOfLines:(unsigned long long)arg3 context:(struct CGContext *)arg4;
+- (id)p_noteSegmentsForSlideNode:(id)arg1 withScaledClipRect:(struct CGRect)arg2 firstSegmentIndex:(unsigned long long)arg3;
+- (void)p_segmentSlideNodesWithUnscaledClipRect:(struct CGRect)arg1 viewScale:(double)arg2;
+- (void)p_segmentSlidesIfNecessary;
+- (id)p_segmentsForPage:(unsigned long long)arg1;
+- (id)p_segmentsForSlideNode:(id)arg1 withScaledClipRect:(struct CGRect)arg2 firstSegmentIndex:(unsigned long long)arg3;
+- (unsigned long long)pageCount;
 
 @end
 

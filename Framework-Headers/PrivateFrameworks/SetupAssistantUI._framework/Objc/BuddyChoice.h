@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BuddyChoiceController, NSString, UIAlertController, UIViewController;
+@class NSString, UIAlertController, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface BuddyChoice : NSObject
@@ -14,14 +14,14 @@ __attribute__((visibility("hidden")))
     UIViewController *_nextController;
     NSString *_title;
     Class _nextControllerClass;
+    UIViewController *_choiceController;
     CDUnknownBlockType _condition;
     UIAlertController *_alertController;
-    BuddyChoiceController *_choiceController;
     CDUnknownBlockType _confirmationCompletion;
 }
 
 @property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
-@property (weak, nonatomic) BuddyChoiceController *choiceController; // @synthesize choiceController=_choiceController;
+@property (weak, nonatomic) UIViewController *choiceController; // @synthesize choiceController=_choiceController;
 @property (copy, nonatomic) CDUnknownBlockType condition; // @synthesize condition=_condition;
 @property (copy, nonatomic) CDUnknownBlockType confirmationCompletion; // @synthesize confirmationCompletion=_confirmationCompletion;
 @property (strong, nonatomic) Class nextControllerClass; // @synthesize nextControllerClass=_nextControllerClass;

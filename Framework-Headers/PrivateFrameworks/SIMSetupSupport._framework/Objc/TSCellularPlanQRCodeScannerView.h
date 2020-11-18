@@ -9,7 +9,7 @@
 #import <SIMSetupSupport/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
 
 @class AVCaptureDeviceInput, AVCaptureSession, AVCaptureVideoPreviewLayer, NSObject, NSString;
-@protocol OS_dispatch_queue, TSCellularPlanQRCodeScannerCaptureDelegate;
+@protocol AVCaptureMetadataOutputObjectsDelegate, OS_dispatch_queue;
 
 @interface TSCellularPlanQRCodeScannerView : UIView <AVCaptureMetadataOutputObjectsDelegate>
 {
@@ -18,31 +18,26 @@
     NSObject<OS_dispatch_queue> *_metadataQueue;
     AVCaptureVideoPreviewLayer *_previewLayer;
     BOOL _canUseCamera;
-    id<TSCellularPlanQRCodeScannerCaptureDelegate> _delegate;
+    id<AVCaptureMetadataOutputObjectsDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) BOOL canUseCamera; // @synthesize canUseCamera=_canUseCamera;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<TSCellularPlanQRCodeScannerCaptureDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) id<AVCaptureMetadataOutputObjectsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isRunning;
 @property (readonly, nonatomic) AVCaptureVideoPreviewLayer *previewLayer; // @synthesize previewLayer=_previewLayer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_changeCameraConfiguration;
-- (void)autoExposeAtPoint:(struct CGPoint)arg1;
-- (void)autoFocusAtPoint:(struct CGPoint)arg1;
+- (void)_handleRuntimeError:(id)arg1;
 - (void)dealloc;
-- (void)handleRuntimeError:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)layoutSubviews;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setupCameraSession;
 - (void)startRunning;
 - (void)stopRunning;
-- (void)viewDidLayoutSubviews;
 
 @end
 

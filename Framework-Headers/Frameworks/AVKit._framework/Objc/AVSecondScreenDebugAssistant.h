@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class AVObservationController, AVPlayer, AVSecondScreenViewController, CADisplay, NSString, _UICanvas;
+@class AVObservationController, AVPlayer, AVSecondScreenViewController, CADisplay, NSString, UIScene;
 
+__attribute__((visibility("hidden")))
 @interface AVSecondScreenDebugAssistant : NSObject
 {
     AVPlayer *_player;
-    _UICanvas *_canvas;
+    UIScene *_scene;
     NSString *_debugText;
     AVSecondScreenViewController *_secondScreenViewController;
     CADisplay *_debugInfoDisplay;
     AVObservationController *_observationController;
 }
 
-@property (weak, nonatomic) _UICanvas *canvas; // @synthesize canvas=_canvas;
 @property (strong, nonatomic) CADisplay *debugInfoDisplay; // @synthesize debugInfoDisplay=_debugInfoDisplay;
 @property (copy, nonatomic) NSString *debugText; // @synthesize debugText=_debugText;
 @property (strong, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property (strong, nonatomic) AVPlayer *player; // @synthesize player=_player;
+@property (weak, nonatomic) UIScene *scene; // @synthesize scene=_scene;
 @property (weak, nonatomic) AVSecondScreenViewController *secondScreenViewController; // @synthesize secondScreenViewController=_secondScreenViewController;
 
 - (void).cxx_destruct;

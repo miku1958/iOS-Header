@@ -18,21 +18,23 @@ __attribute__((visibility("hidden")))
     int _resolvedItemType;
     unsigned int _resultIndex;
     struct {
-        unsigned int resolvedItemType:1;
-        unsigned int resultIndex:1;
-    } _has;
+        unsigned int has_resolvedItemType:1;
+        unsigned int has_resultIndex:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *extractedTerm; // @synthesize extractedTerm=_extractedTerm;
+@property (strong, nonatomic) NSString *extractedTerm;
 @property (readonly, nonatomic) BOOL hasExtractedTerm;
 @property (nonatomic) BOOL hasResolvedItemType;
 @property (nonatomic) BOOL hasResultIndex;
-@property (nonatomic) int resolvedItemType; // @synthesize resolvedItemType=_resolvedItemType;
-@property (nonatomic) unsigned int resultIndex; // @synthesize resultIndex=_resultIndex;
+@property (nonatomic) int resolvedItemType;
+@property (nonatomic) unsigned int resultIndex;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsResolvedItemType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resolvedItemTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

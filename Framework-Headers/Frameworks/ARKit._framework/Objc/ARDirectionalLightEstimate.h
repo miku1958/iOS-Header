@@ -33,7 +33,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDirectionalLightEstimate:(id)arg1;
-- (id)initWithSphericalHarmonics:(CDStruct_9c26ff66)arg1 temperature:(double)arg2;
+- (id)initWithSphericalHarmonics:(CDStruct_9c26ff66)arg1 ambientIntensity:(double)arg2 temperature:(double)arg3;
 - (id)lightEstimateByApplyingRotation:(CDStruct_8e0628e6)arg1;
 
 @end

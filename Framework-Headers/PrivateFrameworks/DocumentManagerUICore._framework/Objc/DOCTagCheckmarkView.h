@@ -13,8 +13,10 @@
 @interface DOCTagCheckmarkView : UIView <DOCTagIconView>
 {
     long long _tagColor;
+    struct CGSize _checkmarkView;
 }
 
+@property (nonatomic) struct CGSize checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,7 +27,8 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSublayersOfLayer:(id)arg1;
-- (void)tintColorDidChange;
+- (void)layoutSubviews;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)updateBackgroundColor;
 - (void)updateLayoutOfLayers;
 

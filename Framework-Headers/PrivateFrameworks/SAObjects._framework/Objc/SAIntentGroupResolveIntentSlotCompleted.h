@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *intentSlotResolutionResult;
+@property (copy, nonatomic) NSString *jsonEncodedIntentSlotResolutionResult;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
 

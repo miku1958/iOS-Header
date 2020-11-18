@@ -16,17 +16,22 @@
     BOOL _supportsLockScreen;
     BOOL _supportsNotificationCenter;
     BOOL _supportsCarPlay;
+    BOOL _supportsSpoken;
     BOOL _supportsCriticalAlerts;
     BOOL _modalAlertStyle;
     NSString *_identifier;
     NSString *_displayName;
     NSString *_displayNameLocalizationKey;
+    unsigned long long _priority;
+    NSString *_sortIdentifier;
 }
 
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic) NSString *displayNameLocalizationKey; // @synthesize displayNameLocalizationKey=_displayNameLocalizationKey;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL modalAlertStyle; // @synthesize modalAlertStyle=_modalAlertStyle;
+@property (nonatomic) unsigned long long priority; // @synthesize priority=_priority;
+@property (copy, nonatomic) NSString *sortIdentifier; // @synthesize sortIdentifier=_sortIdentifier;
 @property (nonatomic) BOOL supportsAlerts; // @synthesize supportsAlerts=_supportsAlerts;
 @property (nonatomic) BOOL supportsBadges; // @synthesize supportsBadges=_supportsBadges;
 @property (nonatomic) BOOL supportsCarPlay; // @synthesize supportsCarPlay=_supportsCarPlay;
@@ -34,6 +39,7 @@
 @property (nonatomic) BOOL supportsLockScreen; // @synthesize supportsLockScreen=_supportsLockScreen;
 @property (nonatomic) BOOL supportsNotificationCenter; // @synthesize supportsNotificationCenter=_supportsNotificationCenter;
 @property (nonatomic) BOOL supportsSounds; // @synthesize supportsSounds=_supportsSounds;
+@property (nonatomic) BOOL supportsSpoken; // @synthesize supportsSpoken=_supportsSpoken;
 
 - (void).cxx_destruct;
 - (id)description;

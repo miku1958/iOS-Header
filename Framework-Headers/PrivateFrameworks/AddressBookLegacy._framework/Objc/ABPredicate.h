@@ -46,8 +46,8 @@
 - (id)queryJoinsInCompound:(BOOL)arg1 predicateIdentifier:(int)arg2;
 - (id)queryRankStringForPredicateIdentifier:(int)arg1;
 - (id)querySelectPropertiesForPredicateIdentifier:(int)arg1;
+- (id)querySerializationIdentifier;
 - (id)queryWhereStringForPredicateIdentifier:(int)arg1;
-- (BOOL)shouldSerialize;
 
 @end
 

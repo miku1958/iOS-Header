@@ -6,6 +6,7 @@
 
 #import <StoreKitUI/SKUIViewElement.h>
 
+__attribute__((visibility("hidden")))
 @interface SKUIExpandViewElement : SKUIViewElement
 {
     BOOL _open;

@@ -19,9 +19,9 @@
         unsigned int effect:1;
         unsigned int type:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _effect;
     int _type;
-    NSArray *_attachments;
     NSString *_content;
     NSString *_conversationIdentifier;
     _INPBDateTime *_dateLastMessageRead;
@@ -39,8 +39,7 @@
     _INPBDataString *_speakableGroupName;
 }
 
-@property (copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
-@property (readonly, nonatomic) unsigned long long attachmentsCount;
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, nonatomic) int *attributes;
 @property (readonly, nonatomic) unsigned long long attributesCount;
 @property (copy, nonatomic) NSString *content; // @synthesize content=_content;
@@ -82,24 +81,24 @@
 @property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;
 
-+ (Class)attachmentType;
 + (Class)recipientType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsAttributes:(id)arg1;
 - (int)StringAsEffect:(id)arg1;
 - (int)StringAsType:(id)arg1;
-- (void)addAttachment:(id)arg1;
 - (void)addAttribute:(int)arg1;
 - (void)addRecipient:(id)arg1;
-- (id)attachmentAtIndex:(unsigned long long)arg1;
 - (int)attributeAtIndex:(unsigned long long)arg1;
 - (id)attributesAsString:(int)arg1;
-- (void)clearAttachments;
 - (void)clearAttributes;
 - (void)clearRecipients;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
 - (id)effectAsString:(int)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)recipientAtIndex:(unsigned long long)arg1;

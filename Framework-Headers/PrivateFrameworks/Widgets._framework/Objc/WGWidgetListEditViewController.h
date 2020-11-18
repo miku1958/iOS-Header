@@ -17,11 +17,16 @@
     UINavigationController *_navigationController;
     UITableViewController *_tableViewController;
     NSMutableArray *_enabledTodayItemIDs;
-    NSMutableArray *_enabledWidgetItemIDs;
+    NSMutableArray *_favoriteItemIDs;
     NSMutableArray *_disabledItemIDs;
     NSArray *_groupIDs;
     double _contentMinY;
+    NSArray *_originalFavoriteItemIDs;
     BOOL _dismissingDueToInterfaceAction;
+    BOOL _showsPinSection;
+    BOOL _showsFavorites;
+    BOOL _widgetsPinnedOriginally;
+    BOOL _widgetsPinned;
     id<WGWidgetListEditViewControllerDataSource> _dataSource;
     id<WGWidgetListEditViewControllerDelegate> _delegate;
     id _statusBarColorAssertion;
@@ -33,8 +38,12 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_isDismissingDueToInterfaceAction, setter=_setDismissingDueToInterfaceAction:) BOOL dismissingDueToInterfaceAction; // @synthesize dismissingDueToInterfaceAction=_dismissingDueToInterfaceAction;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL showsFavorites; // @synthesize showsFavorites=_showsFavorites;
+@property (nonatomic) BOOL showsPinSection; // @synthesize showsPinSection=_showsPinSection;
 @property (strong, nonatomic, getter=_statusBarColorAssertion, setter=_setStatusBarColorAssertion:) id statusBarColorAssertion; // @synthesize statusBarColorAssertion=_statusBarColorAssertion;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=areWidgetsPinned) BOOL widgetsPinned; // @synthesize widgetsPinned=_widgetsPinned;
+@property (nonatomic, getter=wereWidgetsPinnedOriginally) BOOL widgetsPinnedOriginally; // @synthesize widgetsPinnedOriginally=_widgetsPinnedOriginally;
 
 - (void).cxx_destruct;
 - (void)_acknowledgeItemsAndResetNewWidgetsCount;
@@ -60,10 +69,14 @@
 - (void)_saveItemState;
 - (unsigned long long)_sectionIndexForGroupKey:(id)arg1;
 - (id)_widgetListEditViewTableHeaderView;
-- (void)dealloc;
+- (long long)disabledWidgetsSection;
+- (long long)favoritesSection;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (long long)pinSection;
+- (void)pinSwitchChanaged:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (BOOL)showsFavoritesSection;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -74,8 +87,11 @@
 - (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (id)tableView:(id)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (long long)todaySection;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

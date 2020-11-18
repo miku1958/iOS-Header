@@ -42,6 +42,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 
++ (id)instructionForVideoTrack:(id)arg1;
 + (id)instructionFromBase:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

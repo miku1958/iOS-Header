@@ -31,6 +31,7 @@
 - (id)expressState;
 - (id)initWithPaymentDataProvider:(id)arg1 passLibraryDataProvider:(id)arg2 isForWatch:(BOOL)arg3;
 - (BOOL)isExpressModeEnabledForPass:(id)arg1;
+- (BOOL)supportsLowPowerExpressMode;
 - (void)upgradeExpressModeForPass:(id)arg1 withCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)validExpressModeUpgradeRequestForPass:(id)arg1;
 

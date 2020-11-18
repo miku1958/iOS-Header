@@ -23,6 +23,7 @@
     id<PXWidgetUnlockDelegate> _widgetUnlockDelegate;
     PXPeopleStripCollectionViewController *_collectionViewController;
     PXSharingSuggestionDataSource *_dataSource;
+    unsigned long long _options;
     unsigned long long _sharingStream;
     double _cellMinInteritemSpacing;
     double _cellMinLineSpacing;
@@ -53,6 +54,7 @@
 @property (readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property (nonatomic) unsigned long long sharingStream; // @synthesize sharingStream=_sharingStream;
@@ -74,8 +76,7 @@
 - (void)_resetControllerLayoutInfosForWidth:(double)arg1;
 - (struct CGSize)_sizeForItemWithWidth:(double)arg1 withInterItemSpacing:(double)arg2;
 - (void)contentSizeCategoryChanged:(id)arg1;
-- (id)init;
-- (id)initWithSharingStream:(unsigned long long)arg1;
+- (id)initWithSharingStream:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)loadContentData;
 - (void)memberTappedAtIndexPath:(id)arg1 forPeopleStripController:(id)arg2;
 - (double)minimumInteritemSpacing;

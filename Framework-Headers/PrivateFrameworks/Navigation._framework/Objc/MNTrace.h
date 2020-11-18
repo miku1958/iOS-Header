@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface MNTrace : NSObject
@@ -37,8 +37,9 @@
     NSArray *_commuteDestinations;
     NSArray *_commuteDirectionsRequests;
     BOOL _copyToCrashReporter;
+    int _mainTransportType;
     NSString *_tracePath;
-    NSArray *_significantEvents;
+    NSDictionary *_miscInfo;
 }
 
 @property (strong, nonatomic) NSArray *annotatedUserBehavior; // @synthesize annotatedUserBehavior=_annotatedUserBehavior;
@@ -57,10 +58,11 @@
 @property (nonatomic) BOOL isRouteGenius; // @synthesize isRouteGenius=_isRouteGenius;
 @property (nonatomic) BOOL isSimulation; // @synthesize isSimulation=_isSimulation;
 @property (strong, nonatomic) NSArray *locations; // @synthesize locations=_locations;
+@property (readonly, nonatomic) int mainTransportType; // @synthesize mainTransportType=_mainTransportType;
+@property (strong, nonatomic) NSDictionary *miscInfo; // @synthesize miscInfo=_miscInfo;
 @property (strong, nonatomic) NSArray *motionData; // @synthesize motionData=_motionData;
 @property (nonatomic) unsigned long long originalVersion; // @synthesize originalVersion=_originalVersion;
 @property (strong, nonatomic) NSArray *routeSelections; // @synthesize routeSelections=_routeSelections;
-@property (strong, nonatomic) NSArray *significantEvents; // @synthesize significantEvents=_significantEvents;
 @property (strong, nonatomic) NSData *startWaypointData; // @synthesize startWaypointData=_startWaypointData;
 @property (readonly, nonatomic) NSString *tracePath; // @synthesize tracePath=_tracePath;
 @property (nonatomic) BOOL usesCLMapCorrection; // @synthesize usesCLMapCorrection=_usesCLMapCorrection;
@@ -70,19 +72,17 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_group> *writeGroup; // @synthesize writeGroup=_writeGroup;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *writeQueue; // @synthesize writeQueue=_writeQueue;
 
-+ (id)routeSetsFromTraceAtPath:(id)arg1;
 - (void).cxx_destruct;
 - (id)_handleOpenErrorWithPath:(id)arg1;
-- (id)_routeSetFromDirectionsRow:(id)arg1;
 - (BOOL)closeTrace;
 - (void)copyTraceToCrashReporter;
 - (BOOL)createTempTraceForRecording;
 - (void)dealloc;
 - (id)init;
 - (BOOL)openTrace:(id)arg1 outError:(id *)arg2;
-- (id)routeSetsFromResponse;
 - (id)serializableBookmarks;
 - (BOOL)startWritingTraceToFile:(id)arg1;
+- (BOOL)startWritingTraceToPath:(id)arg1;
 
 @end
 

@@ -14,24 +14,30 @@ __attribute__((visibility("hidden")))
 @interface GEOPDShardedId : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    unsigned long long _muid;
+    unsigned long long _basemapId;
     GEOLatLng *_center;
+    unsigned long long _muid;
     int _resultProviderId;
     struct {
-        unsigned int muid:1;
-        unsigned int resultProviderId:1;
-    } _has;
+        unsigned int has_basemapId:1;
+        unsigned int has_muid:1;
+        unsigned int has_resultProviderId:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (nonatomic) unsigned long long basemapId;
+@property (strong, nonatomic) GEOLatLng *center;
+@property (nonatomic) BOOL hasBasemapId;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic) BOOL hasResultProviderId;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
+@property (nonatomic) unsigned long long muid;
+@property (nonatomic) int resultProviderId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

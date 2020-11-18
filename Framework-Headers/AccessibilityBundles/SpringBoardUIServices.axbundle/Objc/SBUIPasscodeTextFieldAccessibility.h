@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilitySupportsHandwriting;
 - (id)accessibilityLabel;
-- (id)accessibilityValue;
+- (unsigned long long)accessibilityTraits;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
 - (BOOL)isAccessibilityElement;

@@ -14,7 +14,6 @@
 {
     PMLTrainingStore *_store;
     BOOL _returnValue;
-    BOOL _isSynchronous;
     BOOL _didRun;
     struct NSString *_planId;
     unsigned long long _version;
@@ -24,7 +23,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didRun; // @synthesize didRun=_didRun;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isSynchronous; // @synthesize isSynchronous=_isSynchronous;
 @property (readonly, nonatomic) NSString *planId; // @synthesize planId=_planId;
 @property (readonly) Class superclass;
 @property unsigned long long version; // @synthesize version=_version;
@@ -36,7 +34,7 @@
 - (void).cxx_destruct;
 - (id)initWithPlanId:(struct NSString *)arg1;
 - (id)initWithPlanId:(struct NSString *)arg1 store:(id)arg2;
-- (id)initWithPlanId:(struct NSString *)arg1 store:(id)arg2 version:(unsigned long long)arg3 returningAfterRunning:(BOOL)arg4 isSynchronous:(BOOL)arg5;
+- (id)initWithPlanId:(struct NSString *)arg1 store:(id)arg2 version:(unsigned long long)arg3 returningAfterRunning:(BOOL)arg4;
 - (id)initWithPlanId:(struct NSString *)arg1 version:(unsigned long long)arg2;
 - (id)initWithPlanId:(struct NSString *)arg1 version:(unsigned long long)arg2 returningAfterRunning:(BOOL)arg3;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;

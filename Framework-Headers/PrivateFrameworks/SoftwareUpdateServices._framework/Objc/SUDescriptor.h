@@ -19,6 +19,8 @@
     NSString *_productSystemName;
     NSString *_productVersion;
     NSString *_productBuildVersion;
+    NSString *_prerequisiteBuild;
+    NSString *_prerequisiteOS;
     NSString *_releaseType;
     unsigned long long _downloadSize;
     unsigned long long _unarchiveSize;
@@ -40,6 +42,8 @@
     NSDictionary *_systemPartitionPadding;
     NSData *_sepDigest;
     NSData *_rsepDigest;
+    NSData *_sepTBMDigest;
+    NSData *_rsepTBMDigest;
     NSDate *_releaseDate;
     unsigned long long _mdmDelayInterval;
     NSString *_assetID;
@@ -65,6 +69,8 @@
 @property (nonatomic) unsigned long long mdmDelayInterval; // @synthesize mdmDelayInterval=_mdmDelayInterval;
 @property (nonatomic) unsigned long long minimumSystemPartitionSize; // @synthesize minimumSystemPartitionSize=_minimumSystemPartitionSize;
 @property (nonatomic, getter=_msuPrepareSize, setter=_setMsuPrepareSize:) unsigned long long msuPrepareSize; // @synthesize msuPrepareSize=_msuPrepareSize;
+@property (strong, nonatomic) NSString *prerequisiteBuild; // @synthesize prerequisiteBuild=_prerequisiteBuild;
+@property (strong, nonatomic) NSString *prerequisiteOS; // @synthesize prerequisiteOS=_prerequisiteOS;
 @property (strong, nonatomic) NSString *productBuildVersion; // @synthesize productBuildVersion=_productBuildVersion;
 @property (strong, nonatomic) NSString *productSystemName; // @synthesize productSystemName=_productSystemName;
 @property (strong, nonatomic) NSString *productVersion; // @synthesize productVersion=_productVersion;
@@ -73,7 +79,9 @@
 @property (strong, nonatomic) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property (strong, nonatomic) NSString *releaseType; // @synthesize releaseType=_releaseType;
 @property (strong, nonatomic, setter=setRSEPDigest:) NSData *rsepDigest; // @synthesize rsepDigest=_rsepDigest;
+@property (strong, nonatomic, setter=setRSEPTBMDigest:) NSData *rsepTBMDigest; // @synthesize rsepTBMDigest=_rsepTBMDigest;
 @property (strong, nonatomic, setter=setSEPDigest:) NSData *sepDigest; // @synthesize sepDigest=_sepDigest;
+@property (strong, nonatomic, setter=setSEPTBMDigest:) NSData *sepTBMDigest; // @synthesize sepTBMDigest=_sepTBMDigest;
 @property (strong, nonatomic) NSString *setupCritical; // @synthesize setupCritical=_setupCritical;
 @property (nonatomic, getter=_isStreamingZipCapable, setter=_setStreamingZipCapable:) BOOL streamingZipCapable; // @synthesize streamingZipCapable=_streamingZipCapable;
 @property (strong, nonatomic) NSDictionary *systemPartitionPadding; // @synthesize systemPartitionPadding=_systemPartitionPadding;

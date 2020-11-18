@@ -7,32 +7,39 @@
 #import <objc/NSObject.h>
 
 #import <RelevanceEngine/NSCopying-Protocol.h>
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
 @class NSString, REFeature;
 
-@interface REInteractionDescriptor : NSObject <REIndentedDescription, NSCopying>
+@interface REInteractionDescriptor : NSObject <REAutomaticExportedInterface, NSCopying>
 {
     BOOL _enableExploreExploit;
     float _weight;
     float _exploreBias;
+    float _trainingSimulationExploreBias;
+    float _initialProbability;
+    float _varianceEpsilon;
     NSString *_name;
     REFeature *_identificationFeature;
+    REFeature *_selectionFeature;
+    REFeature *_biasFeature;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) REFeature *biasFeature; // @synthesize biasFeature=_biasFeature;
 @property (nonatomic) BOOL enableExploreExploit; // @synthesize enableExploreExploit=_enableExploreExploit;
 @property (nonatomic) float exploreBias; // @synthesize exploreBias=_exploreBias;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) REFeature *identificationFeature; // @synthesize identificationFeature=_identificationFeature;
+@property (nonatomic) float initialProbability; // @synthesize initialProbability=_initialProbability;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) REFeature *selectionFeature; // @synthesize selectionFeature=_selectionFeature;
+@property (nonatomic) float trainingSimulationExploreBias; // @synthesize trainingSimulationExploreBias=_trainingSimulationExploreBias;
+@property (nonatomic) float varianceEpsilon; // @synthesize varianceEpsilon=_varianceEpsilon;
 @property (nonatomic) float weight; // @synthesize weight=_weight;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 

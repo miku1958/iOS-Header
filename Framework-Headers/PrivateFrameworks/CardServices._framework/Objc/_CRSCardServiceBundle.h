@@ -21,12 +21,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_initializeCardServiceWithClass:(Class)arg1;
 - (BOOL)canSatisfyCardRequest:(id)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (void)requestCard:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (unsigned long long)servicePriorityForRequest:(id)arg1;
 - (id)underlyingService;

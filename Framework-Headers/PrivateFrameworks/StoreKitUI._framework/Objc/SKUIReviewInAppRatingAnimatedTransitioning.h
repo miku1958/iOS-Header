@@ -10,6 +10,7 @@
 
 @class NSString, UIViewController;
 
+__attribute__((visibility("hidden")))
 @interface SKUIReviewInAppRatingAnimatedTransitioning : NSObject <UIViewControllerAnimatedTransitioning>
 {
     BOOL _presentation;

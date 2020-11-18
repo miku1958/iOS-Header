@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <RelevanceEngine/NSCopying-Protocol.h>
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
 @class NSArray, NSOrderedSet, NSSet, NSString, REHistoricSectionDescriptor;
 
-@interface RESectionDescriptor : NSObject <REIndentedDescription, NSCopying>
+@interface RESectionDescriptor : NSObject <REAutomaticExportedInterface, NSCopying>
 {
     NSOrderedSet *_rules;
     NSString *_name;
@@ -19,20 +19,18 @@
     long long _maxElementCount;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) REHistoricSectionDescriptor *historicSectionDescriptor; // @synthesize historicSectionDescriptor=_historicSectionDescriptor;
 @property (nonatomic) long long maxElementCount; // @synthesize maxElementCount=_maxElementCount;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSArray *orderedRules;
 @property (copy, nonatomic) NSSet *rules;
-@property (readonly) Class superclass;
 
 + (id)defaultSectionDescriptorForIdentifier:(id)arg1;
++ (id)defaultUpNextSectionDescriptorForIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 

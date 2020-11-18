@@ -15,7 +15,7 @@
 {
     BOOL _isPhoneticInfoProvidedInConfiguration;
     BOOL _isAttemptedPhoneticTranscription;
-    NSString *_passwordType;
+    unsigned long long _passwordType;
     NSURL *_mediumImageURL;
     NSURL *_largeImageURL;
     NSString *_identifier;
@@ -40,12 +40,16 @@
 @property (strong, nonatomic) NSURL *localMediumImageURL; // @synthesize localMediumImageURL=_localMediumImageURL;
 @property (strong, nonatomic) NSURL *mediumImageURL; // @synthesize mediumImageURL=_mediumImageURL;
 @property (strong, nonatomic) NSMutableDictionary *namingSimilarityInfoByClassID; // @synthesize namingSimilarityInfoByClassID=_namingSimilarityInfoByClassID;
-@property (strong, nonatomic) NSString *passwordType; // @synthesize passwordType=_passwordType;
+@property (nonatomic) unsigned long long passwordType; // @synthesize passwordType=_passwordType;
 @property (strong, nonatomic) NSString *phoneticFamilyName; // @synthesize phoneticFamilyName=_phoneticFamilyName;
 @property (strong, nonatomic) NSString *phoneticGivenName; // @synthesize phoneticGivenName=_phoneticGivenName;
 @property (nonatomic) long long retryCount; // @synthesize retryCount=_retryCount;
 @property (strong, nonatomic) NSString *tokenizedPhoneticDisplayName; // @synthesize tokenizedPhoneticDisplayName=_tokenizedPhoneticDisplayName;
 
++ (unsigned long long)LKPasswordTypeFromUMUserPasscodeType:(unsigned long long)arg1;
++ (unsigned long long)UMUserPasscodeTypeFromLKPasswordType:(unsigned long long)arg1;
++ (id)fullNameWithFamilyName:(id)arg1 givenName:(id)arg2;
++ (unsigned long long)passwordTypeFromPasswordTypeString:(id)arg1;
 + (void)setAutogeneratesPhoneticNameWithLocale:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)userFromDictionary:(id)arg1;

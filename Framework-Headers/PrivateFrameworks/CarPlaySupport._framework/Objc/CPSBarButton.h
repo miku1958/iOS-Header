@@ -14,7 +14,6 @@
     CPBarButton *_cyBarButton;
     UIImageView *_backIndicatorImageView;
     UIImage *_backIndicatorImage;
-    UIImage *_focusedBackIndicatorImage;
     UIView *_backgroundView;
     NSLayoutConstraint *_backIndicatorHeightConstraint;
 }
@@ -24,16 +23,18 @@
 @property (strong, nonatomic) UIImageView *backIndicatorImageView; // @synthesize backIndicatorImageView=_backIndicatorImageView;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) CPBarButton *cyBarButton; // @synthesize cyBarButton=_cyBarButton;
-@property (strong, nonatomic) UIImage *focusedBackIndicatorImage; // @synthesize focusedBackIndicatorImage=_focusedBackIndicatorImage;
 @property (nonatomic) BOOL showBackIndicator; // @synthesize showBackIndicator=_showBackIndicator;
 
 + (id)buttonWithCPBarButton:(id)arg1 showBackIndicator:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_externalUnfocusedBorderColor;
 - (void)_resetAlpha;
+- (void)_setupBackButtonImagesIfNeccessary;
+- (void)_updateBackIndicatorImageView;
 - (void)didAddSubview:(id)arg1;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

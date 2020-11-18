@@ -4,27 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXAssetUIImageViewTile.h>
+#import <objc/NSObject.h>
 
-@class ISAnimatedImageView, PHAnimatedImage;
+#import <PhotosUICore/PXAssetTile-Protocol.h>
+#import <PhotosUICore/PXAutoplayTile-Protocol.h>
+#import <PhotosUICore/PXReusableObject-Protocol.h>
+#import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@interface PXAssetAnimatedImageUIViewTile : PXAssetUIImageViewTile
+@class ISAnimatedImageView, NSString, PHAnimatedImage, PXImageRequester, UIView;
+
+@interface PXAssetAnimatedImageUIViewTile : NSObject <PXReusableObject, PXAssetTile, PXUIViewBasicTile, PXAutoplayTile>
 {
     ISAnimatedImageView *_animatedImageView;
     long long _animatedImageRequestID;
     unsigned long long _requestCount;
+    PXImageRequester *_imageRequester;
+    double _cornerRadius;
+    long long _desiredPlayState;
     PHAnimatedImage *__animatedImage;
+    CDStruct_e83c9415 _bestPlaybackTimeRange;
 }
 
 @property (strong, nonatomic, setter=_setAnimatedImage:) PHAnimatedImage *_animatedImage; // @synthesize _animatedImage=__animatedImage;
+@property (nonatomic) CDStruct_e83c9415 bestPlaybackTimeRange; // @synthesize bestPlaybackTimeRange=_bestPlaybackTimeRange;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) long long desiredPlayState; // @synthesize desiredPlayState=_desiredPlayState;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PXImageRequester *imageRequester; // @synthesize imageRequester=_imageRequester;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) UIView *view;
 
 - (void).cxx_destruct;
 - (void)_handleAnimatedImageResult:(id)arg1 info:(id)arg2 expectedRequestCount:(unsigned long long)arg3;
 - (void)_requestAnimatedImageIfNeeded;
 - (void)_updateAnimatedImageView;
 - (void)becomeReusable;
-- (void)setImageRequester:(id)arg1;
-- (id)view;
+- (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;
+- (id)init;
+- (void)prepareForReuse;
 
 @end
 

@@ -8,35 +8,65 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class NSData, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOTFRoadSpeed : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     CDStruct_5df41632 _geoIds;
     CDStruct_fae3dc92 _latitudeCoordinates;
     CDStruct_fae3dc92 _longitudeCoordinates;
     long long _geoid;
+    NSData *_openlr;
+    NSMutableArray *_predictedSpeeds;
+    NSData *_zilch;
     int _color;
     float _confidence;
     unsigned int _decayTimeWindowInMinutes;
     float _endOffset;
-    NSData *_openlr;
-    NSMutableArray *_predictedSpeeds;
     unsigned int _speedKph;
     float _startOffset;
-    NSData *_zilch;
     BOOL _hidden;
-    CDStruct_c254c6af _has;
+    struct {
+        unsigned int has_color:1;
+        unsigned int has_confidence:1;
+        unsigned int has_decayTimeWindowInMinutes:1;
+        unsigned int has_endOffset:1;
+        unsigned int has_speedKph:1;
+        unsigned int has_startOffset:1;
+        unsigned int has_hidden:1;
+        unsigned int read_geoIds:1;
+        unsigned int read_latitudeCoordinates:1;
+        unsigned int read_longitudeCoordinates:1;
+        unsigned int read_openlr:1;
+        unsigned int read_predictedSpeeds:1;
+        unsigned int read_zilch:1;
+        unsigned int wrote_geoIds:1;
+        unsigned int wrote_latitudeCoordinates:1;
+        unsigned int wrote_longitudeCoordinates:1;
+        unsigned int wrote_geoid:1;
+        unsigned int wrote_openlr:1;
+        unsigned int wrote_predictedSpeeds:1;
+        unsigned int wrote_zilch:1;
+        unsigned int wrote_color:1;
+        unsigned int wrote_confidence:1;
+        unsigned int wrote_decayTimeWindowInMinutes:1;
+        unsigned int wrote_endOffset:1;
+        unsigned int wrote_speedKph:1;
+        unsigned int wrote_startOffset:1;
+        unsigned int wrote_hidden:1;
+    } _flags;
 }
 
-@property (nonatomic) int color; // @synthesize color=_color;
-@property (nonatomic) float confidence; // @synthesize confidence=_confidence;
-@property (nonatomic) unsigned int decayTimeWindowInMinutes; // @synthesize decayTimeWindowInMinutes=_decayTimeWindowInMinutes;
-@property (nonatomic) float endOffset; // @synthesize endOffset=_endOffset;
+@property (nonatomic) int color;
+@property (nonatomic) float confidence;
+@property (nonatomic) unsigned int decayTimeWindowInMinutes;
+@property (nonatomic) float endOffset;
 @property (readonly, nonatomic) long long *geoIds;
 @property (readonly, nonatomic) unsigned long long geoIdsCount;
-@property (nonatomic) long long geoid; // @synthesize geoid=_geoid;
+@property (nonatomic) long long geoid;
 @property (nonatomic) BOOL hasColor;
 @property (nonatomic) BOOL hasConfidence;
 @property (nonatomic) BOOL hasDecayTimeWindowInMinutes;
@@ -46,20 +76,31 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasSpeedKph;
 @property (nonatomic) BOOL hasStartOffset;
 @property (readonly, nonatomic) BOOL hasZilch;
-@property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
+@property (nonatomic) BOOL hidden;
 @property (readonly, nonatomic) float *latitudeCoordinates;
 @property (readonly, nonatomic) unsigned long long latitudeCoordinatesCount;
 @property (readonly, nonatomic) float *longitudeCoordinates;
 @property (readonly, nonatomic) unsigned long long longitudeCoordinatesCount;
-@property (strong, nonatomic) NSData *openlr; // @synthesize openlr=_openlr;
-@property (strong, nonatomic) NSMutableArray *predictedSpeeds; // @synthesize predictedSpeeds=_predictedSpeeds;
-@property (nonatomic) unsigned int speedKph; // @synthesize speedKph=_speedKph;
-@property (nonatomic) float startOffset; // @synthesize startOffset=_startOffset;
-@property (strong, nonatomic) NSData *zilch; // @synthesize zilch=_zilch;
+@property (strong, nonatomic) NSData *openlr;
+@property (strong, nonatomic) NSMutableArray *predictedSpeeds;
+@property (nonatomic) unsigned int speedKph;
+@property (nonatomic) float startOffset;
+@property (strong, nonatomic) NSData *zilch;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)predictedSpeedType;
 - (void).cxx_destruct;
 - (int)StringAsColor:(id)arg1;
+- (void)_addNoFlagsGeoIds:(long long)arg1;
+- (void)_addNoFlagsLatitudeCoordinates:(float)arg1;
+- (void)_addNoFlagsLongitudeCoordinates:(float)arg1;
+- (void)_addNoFlagsPredictedSpeed:(id)arg1;
+- (void)_readGeoIds;
+- (void)_readLatitudeCoordinates;
+- (void)_readLongitudeCoordinates;
+- (void)_readOpenlr;
+- (void)_readPredictedSpeeds;
+- (void)_readZilch;
 - (void)addGeoIds:(long long)arg1;
 - (void)addLatitudeCoordinates:(float)arg1;
 - (void)addLongitudeCoordinates:(float)arg1;
@@ -82,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)predictedSpeedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)predictedSpeedsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setGeoIds:(long long *)arg1 count:(unsigned long long)arg2;
 - (void)setLatitudeCoordinates:(float *)arg1 count:(unsigned long long)arg2;

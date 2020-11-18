@@ -13,6 +13,7 @@
     NSArray *_thumbnailQualityClasses;
     struct CGSize _lastTargetSize;
     PHAssetResourceQualityClass *_lastResourceQualityClass;
+    struct CGSize _masterThumbnailSize;
     PHImageManager *_imageManager;
     PHCachingImageManager *_cachingImageManager;
 }
@@ -21,15 +22,19 @@
 @property (readonly, nonatomic) PHImageManager *imageManager; // @synthesize imageManager=_imageManager;
 
 - (void).cxx_destruct;
+- (id)_qualityClassForTargetSize:(struct CGSize)arg1;
 - (void)cancelImageRequest:(long long)arg1;
 - (void)enumerateAvailableThumbnailDataFormats:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithImageManager:(id)arg1;
+- (struct CGSize)masterThumbnailSize;
+- (void)preheatDataForThumbnailIndexes:(id)arg1 targetSize:(struct CGSize)arg2;
 - (long long)requestAnimatedImageForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestImageDataForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (long long)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (long long)requestLivePhotoForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (long long)requestPlayerItemForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (long long)requestURLForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)startCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
 - (void)stopCachingImagesForAllAssets;
 - (void)stopCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;

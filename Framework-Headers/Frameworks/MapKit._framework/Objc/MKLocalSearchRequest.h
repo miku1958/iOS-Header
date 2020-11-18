@@ -8,7 +8,7 @@
 
 #import <MapKit/NSCopying-Protocol.h>
 
-@class CLLocation, NSArray, NSString, _MKLocalSearchExternalTransitLookupParameters, _MKLocalSearchMerchantParameters;
+@class CLLocation, MKPointOfInterestFilter, NSArray, NSString, _MKLocalSearchExternalTransitLookupParameters, _MKLocalSearchMerchantParameters;
 @protocol GEOCompletionItem;
 
 @interface MKLocalSearchRequest : NSObject <NSCopying>
@@ -27,6 +27,8 @@
     NSArray *_muids;
     NSString *_contactsDataString;
     NSString *_canonicalSearchString;
+    unsigned long long _resultTypes;
+    MKPointOfInterestFilter *_pointOfInterestFilter;
 }
 
 @property (readonly, nonatomic) BOOL _hasRegion; // @synthesize _hasRegion;
@@ -41,16 +43,21 @@
 @property (strong, nonatomic, getter=_muids, setter=_setMuids:) NSArray *muids; // @synthesize muids=_muids;
 @property (copy, nonatomic) NSString *naturalLanguageQuery; // @synthesize naturalLanguageQuery=_naturalLanguageQuery;
 @property (strong, nonatomic, getter=_phoneNumbers, setter=_setPhoneNumbers:) NSArray *phoneNumbers; // @synthesize phoneNumbers=_phoneNumbers;
+@property (copy, nonatomic) MKPointOfInterestFilter *pointOfInterestFilter; // @synthesize pointOfInterestFilter=_pointOfInterestFilter;
 @property (nonatomic) CDStruct_b7cb895d region; // @synthesize region=_region;
 @property (nonatomic, getter=_resultProviderID, setter=_setResultProviderID:) int resultProviderID; // @synthesize resultProviderID=_resultProviderID;
+@property (nonatomic) unsigned long long resultTypes; // @synthesize resultTypes=_resultTypes;
 
 + (id)searchRequestWithCompletion:(id)arg1;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)init;
 - (id)initWithCompletion:(id)arg1;
 - (id)initWithMapsURL:(id)arg1;
+- (id)initWithNaturalLanguageQuery:(id)arg1;
+- (id)initWithNaturalLanguageQuery:(id)arg1 region:(CDStruct_b7cb895d)arg2;
 
 @end
 

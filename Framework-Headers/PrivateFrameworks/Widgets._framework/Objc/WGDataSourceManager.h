@@ -29,8 +29,8 @@
 - (void)_start:(CDUnknownBlockType)arg1;
 - (void)_stop:(CDUnknownBlockType)arg1;
 - (void)addWidgetDataSourceChangeHandler:(CDUnknownBlockType)arg1 forIdentifier:(id)arg2;
-- (void)availableWidgetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)childDataSourceManagerDataSourcesDidChange:(id)arg1;
+- (id)discoverAvailableWidgetsWithError:(id *)arg1;
 - (void)removeChangeHandlersWithIdentifier:(id)arg1;
 
 @end

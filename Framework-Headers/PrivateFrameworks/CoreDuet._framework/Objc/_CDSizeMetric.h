@@ -6,11 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSString, _CDSizeMetricFamily;
+@class NSDate, NSString, _CDSizeMetricFamily;
 
 @interface _CDSizeMetric : NSObject
 {
-    NSDictionary *_dictionary;
+    struct os_unfair_lock_s _lock;
+    unsigned long long _scale;
+    unsigned long long _count;
+    unsigned long long _firstSize;
+    unsigned long long _lastSize;
+    unsigned long long _minimumSize;
+    unsigned long long _maximumSize;
+    unsigned long long _totalSizes;
+    NSDate *_firstUpdate;
+    NSDate *_lastUpdate;
     NSString *_name;
     NSString *_string;
     _CDSizeMetricFamily *_family;
@@ -29,12 +38,7 @@
 @property (readonly) NSString *string; // @synthesize string=_string;
 
 - (void).cxx_destruct;
-- (id)_dateFromCounter:(unsigned long long)arg1;
-- (id)_histogramWithIndex:(unsigned long long)arg1;
-- (id)_stringWithIndex:(unsigned long long)arg1;
-- (unsigned long long)_uint64CounterWithIndex:(unsigned long long)arg1;
-- (id)initWithName:(id)arg1 string:(id)arg2 family:(id)arg3 dictionary:(id)arg4;
-- (id)sizeHistogram;
+- (id)initWithName:(id)arg1 string:(id)arg2 scale:(unsigned long long)arg3 family:(id)arg4;
 
 @end
 

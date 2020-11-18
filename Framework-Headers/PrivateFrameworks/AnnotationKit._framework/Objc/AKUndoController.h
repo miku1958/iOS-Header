@@ -10,6 +10,7 @@
 
 @interface AKUndoController : NSObject
 {
+    BOOL _externalSourceTrackingChanged;
     BOOL _undoGroupHasChangesToMultipleProperties;
     NSUndoManager *_undoManager;
     AKController *_controller;
@@ -20,6 +21,7 @@
 }
 
 @property (weak) AKController *controller; // @synthesize controller=_controller;
+@property BOOL externalSourceTrackingChanged; // @synthesize externalSourceTrackingChanged=_externalSourceTrackingChanged;
 @property (strong) NSMutableSet *observedAnnotations; // @synthesize observedAnnotations=_observedAnnotations;
 @property (strong) NSMutableSet *observedPageModelControllers; // @synthesize observedPageModelControllers=_observedPageModelControllers;
 @property BOOL undoGroupHasChangesToMultipleProperties; // @synthesize undoGroupHasChangesToMultipleProperties=_undoGroupHasChangesToMultipleProperties;

@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSString, UIColor;
+@class NSString;
 
 @interface PKDashboardBalanceItem : NSObject <PKDashboardItem>
 {
@@ -16,7 +16,6 @@
     NSString *_balance;
     NSString *_title;
     NSString *_availableCredit;
-    UIColor *_titleColor;
     NSString *_topUpTitle;
     CDUnknownBlockType _topUpAction;
 }
@@ -28,7 +27,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-@property (strong, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
 @property (copy, nonatomic) CDUnknownBlockType topUpAction; // @synthesize topUpAction=_topUpAction;
 @property (nonatomic) BOOL topUpEnabled; // @synthesize topUpEnabled=_topUpEnabled;
 @property (strong, nonatomic) NSString *topUpTitle; // @synthesize topUpTitle=_topUpTitle;

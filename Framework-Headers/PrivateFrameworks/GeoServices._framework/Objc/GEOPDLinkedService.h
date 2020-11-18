@@ -8,29 +8,47 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDEntity, GEOPDPlaceInfo, NSMutableArray, PBUnknownFields;
+@class GEOPDEntity, GEOPDPlaceInfo, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDLinkedService : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDEntity *_entity;
     NSMutableArray *_hours;
     GEOPDPlaceInfo *_placeInfo;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_entity:1;
+        unsigned int read_hours:1;
+        unsigned int read_placeInfo:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_entity:1;
+        unsigned int wrote_hours:1;
+        unsigned int wrote_placeInfo:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDEntity *entity; // @synthesize entity=_entity;
+@property (strong, nonatomic) GEOPDEntity *entity;
 @property (readonly, nonatomic) BOOL hasEntity;
 @property (readonly, nonatomic) BOOL hasPlaceInfo;
-@property (strong, nonatomic) NSMutableArray *hours; // @synthesize hours=_hours;
-@property (strong, nonatomic) GEOPDPlaceInfo *placeInfo; // @synthesize placeInfo=_placeInfo;
+@property (strong, nonatomic) NSMutableArray *hours;
+@property (strong, nonatomic) GEOPDPlaceInfo *placeInfo;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)hoursType;
++ (BOOL)isValid:(id)arg1;
 + (id)linkedServicesForPlaceData:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsHours:(id)arg1;
+- (void)_readEntity;
+- (void)_readHours;
+- (void)_readPlaceInfo;
 - (void)addHours:(id)arg1;
 - (void)clearHours;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hoursCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -18,6 +18,7 @@
 @property (readonly) NSString *px_displayName;
 @property (readonly) NSDate *px_keyPhotoDate;
 @property (readonly) NSString *px_localIdentifier;
+@property (readonly) NSString *px_localizedName;
 
 + (void)px_loadRepresentativeFacesForPersons:(id<NSFastEnumeration>)arg1;
 - (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 style:(unsigned long long)arg3 cacheResult:(BOOL)arg4 boundFaceRect:(BOOL)arg5 completionBlock:(void (^)(UIImage *, struct CGRect, NSError *))arg6;

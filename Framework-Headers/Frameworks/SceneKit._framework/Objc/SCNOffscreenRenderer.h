@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) unsigned int textureID;
 
 + (id)offscreenRendererWithContext:(id)arg1 size:(struct CGSize)arg2;
++ (id)offscreenRendererWithDevice:(id)arg1 size:(struct CGSize)arg2;
 - (id)snapshot;
 
 @end

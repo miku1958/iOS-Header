@@ -26,6 +26,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (id)localizedTitle;
 
 @end
 

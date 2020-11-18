@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) UIView *_minTrackMaskView; // @synthesize _minTrackMaskView=__minTrackMaskView;
 @property (readonly, nonatomic) NSTimer *_visibilityTimer; // @synthesize _visibilityTimer=__visibilityTimer;
 @property (nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
+@property (readonly, nonatomic, getter=isAutozooming) BOOL autozooming;
 @property (weak, nonatomic) id<CAMZoomSliderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic, getter=isMaximumAutozooming, setter=_setMaximumAutozooming:) BOOL maximumAutozooming; // @synthesize maximumAutozooming=_maximumAutozooming;
@@ -43,7 +44,6 @@
 - (void)_endAutozooming;
 - (void)_handleTouchUpInside:(id)arg1;
 - (void)_hideZoomSlider:(id)arg1;
-- (BOOL)_isMinimumOrMaximumAutozooming;
 - (void)_makeInvisibleAnimationDuration:(double)arg1;
 - (void)_startVisibilityTimer;
 - (void)_stopVisibilityTimer;

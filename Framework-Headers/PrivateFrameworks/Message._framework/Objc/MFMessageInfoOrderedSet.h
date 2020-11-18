@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MFMessageInfo, MFSparseMutable64IndexSet, NSArray, NSMutableArray, NSMutableDictionary;
+@class EFMutableInt64Set, MFMessageInfo, NSArray, NSMutableArray, NSMutableDictionary;
 
 @interface MFMessageInfoOrderedSet : NSObject
 {
-    MFSparseMutable64IndexSet *_knownMessageIDs;
+    EFMutableInt64Set *_knownMessageIDs;
     NSMutableArray *_mutableMessageInfos;
     NSMutableDictionary *_duplicateMessageInfos;
     CDUnknownBlockType _comparator;
@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) MFMessageInfo *lastMessage;
 @property (readonly, nonatomic) NSArray *uniqueMessageInfos;
 
+- (void).cxx_destruct;
 - (void)_addMessageInfoToDuplicates:(id)arg1;
 - (id)_duplicateMessageInfosForMessageInfo:(id)arg1;
 - (void)_invalidate;
@@ -33,7 +34,6 @@
 - (unsigned long long)_scanForMessageInfoSimilarTo:(id)arg1;
 - (unsigned long long)addMessageInfo:(id)arg1;
 - (id)allDuplicatesOfMessageInfo:(id)arg1;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)duplicatesOfMessageInfo:(id)arg1;
 - (void)enumerateUniqueMessageInfosWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;

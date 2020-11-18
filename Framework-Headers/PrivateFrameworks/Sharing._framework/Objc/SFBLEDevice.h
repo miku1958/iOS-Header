@@ -8,7 +8,7 @@
 
 #import <Sharing/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSUUID, SFProximityEstimator;
+@class NSData, NSDictionary, NSString, NSUUID, RPIdentity, SFProximityEstimator;
 
 @interface SFBLEDevice : NSObject <NSSecureCoding>
 {
@@ -16,7 +16,10 @@
     unsigned char _rssiCount;
     unsigned char _rssiIndex;
     BOOL _insideBubble;
+    BOOL _insideSmallBubble;
+    BOOL _insideMediumBubble;
     BOOL _paired;
+    BOOL _tempPaired;
     BOOL _triggered;
     int _rssiEstimate;
     unsigned int _connectedServices;
@@ -33,16 +36,21 @@
     long long _rssiCeiling;
     long long _rssiFloor;
     long long _smoothedRSSI;
+    SFProximityEstimator *_closeProximityEstimatorSmall;
+    SFProximityEstimator *_closeProximityEstimatorMedium;
     SFProximityEstimator *_infoProximityEstimator;
     double _lastSeen;
     double _pairCheckTime;
     SFProximityEstimator *_proxPairProximityEstimator;
     SFProximityEstimator *_setupProximityEstimator;
+    RPIdentity *_rpIdentity;
 }
 
 @property (copy, nonatomic) NSData *advertisementData; // @synthesize advertisementData=_advertisementData;
 @property (copy, nonatomic) NSDictionary *advertisementFields; // @synthesize advertisementFields=_advertisementFields;
 @property (copy, nonatomic) NSData *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
+@property (strong, nonatomic) SFProximityEstimator *closeProximityEstimatorMedium; // @synthesize closeProximityEstimatorMedium=_closeProximityEstimatorMedium;
+@property (strong, nonatomic) SFProximityEstimator *closeProximityEstimatorSmall; // @synthesize closeProximityEstimatorSmall=_closeProximityEstimatorSmall;
 @property (nonatomic) unsigned int connectedServices; // @synthesize connectedServices=_connectedServices;
 @property (copy, nonatomic) NSUUID *counterpartIdentifier; // @synthesize counterpartIdentifier=_counterpartIdentifier;
 @property (nonatomic) long long distance; // @synthesize distance=_distance;
@@ -50,18 +58,22 @@
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) SFProximityEstimator *infoProximityEstimator; // @synthesize infoProximityEstimator=_infoProximityEstimator;
 @property (nonatomic) BOOL insideBubble; // @synthesize insideBubble=_insideBubble;
+@property (nonatomic) BOOL insideMediumBubble; // @synthesize insideMediumBubble=_insideMediumBubble;
+@property (nonatomic) BOOL insideSmallBubble; // @synthesize insideSmallBubble=_insideSmallBubble;
 @property (nonatomic) double lastSeen; // @synthesize lastSeen=_lastSeen;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) double pairCheckTime; // @synthesize pairCheckTime=_pairCheckTime;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
 @property (nonatomic) unsigned int productID2; // @synthesize productID2=_productID2;
 @property (strong, nonatomic) SFProximityEstimator *proxPairProximityEstimator; // @synthesize proxPairProximityEstimator=_proxPairProximityEstimator;
+@property (strong, nonatomic) RPIdentity *rpIdentity; // @synthesize rpIdentity=_rpIdentity;
 @property (nonatomic) long long rssi; // @synthesize rssi=_rssi;
 @property (nonatomic) long long rssiCeiling; // @synthesize rssiCeiling=_rssiCeiling;
 @property (nonatomic) int rssiEstimate; // @synthesize rssiEstimate=_rssiEstimate;
 @property (nonatomic) long long rssiFloor; // @synthesize rssiFloor=_rssiFloor;
 @property (strong, nonatomic) SFProximityEstimator *setupProximityEstimator; // @synthesize setupProximityEstimator=_setupProximityEstimator;
 @property (nonatomic) long long smoothedRSSI; // @synthesize smoothedRSSI=_smoothedRSSI;
+@property (nonatomic) BOOL tempPaired; // @synthesize tempPaired=_tempPaired;
 @property (nonatomic) BOOL triggered; // @synthesize triggered=_triggered;
 
 + (void)setRSSIEstimatorInfo:(id)arg1;

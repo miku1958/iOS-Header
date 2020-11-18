@@ -27,7 +27,6 @@
 - (struct CGRect)_contentViewFrame;
 - (struct UIEdgeInsets)_contentViewInsets;
 - (struct UIEdgeInsets)_contentViewInsetsForArrowDirection:(unsigned long long)arg1;
-- (BOOL)_needsSeperateBlending;
 - (struct UIEdgeInsets)_shadowInsets;
 - (struct CGSize)_shadowOffset;
 - (double)_shadowOpacity;
@@ -37,7 +36,6 @@
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)_updateChrome;
 - (void)_updateShadow;
-- (BOOL)_wantsDefaultContentAppearance;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (long long)backgroundStyle;
 - (void)layoutSubviews;

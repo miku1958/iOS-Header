@@ -25,7 +25,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dismissQuickLook;
-- (void)presentShareSheetWithPopoverTracker:(id)arg1 dismissCompletion:(CDUnknownBlockType)arg2;
+- (void)forwardMessageToHostOfCustomViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)presentShareSheetWithPopoverTracker:(id)arg1 customSharedURL:(id)arg2 dismissCompletion:(CDUnknownBlockType)arg3;
 - (void)setFullScreen:(BOOL)arg1;
 
 @end

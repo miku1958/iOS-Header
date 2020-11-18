@@ -11,6 +11,7 @@
 @protocol FCFeedPersonalizingItem <NSObject>
 
 @property (readonly, nonatomic, getter=isANF) BOOL anf;
+@property (readonly, nonatomic) long long bodyTextLength;
 @property (readonly, nonatomic, getter=isBundlePaid) BOOL bundlePaid;
 @property (readonly, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *globalCohorts;
 @property (readonly, nonatomic) double globalUserFeedback;
@@ -18,6 +19,7 @@
 @property (readonly, nonatomic) BOOL hasGlobalUserFeedback;
 @property (readonly, nonatomic) BOOL hasVideo;
 @property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
+@property (readonly, nonatomic) BOOL isFeatured;
 @property (readonly, copy, nonatomic) NSString *itemID;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
 @property (readonly, copy, nonatomic) NSDate *publishDate;

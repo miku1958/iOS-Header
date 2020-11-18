@@ -30,6 +30,8 @@
 
 - (void).cxx_destruct;
 - (id)initWithDateInterval:(id)arg1 centroid:(id)arg2 items:(id)arg3;
+- (BOOL)isSimilarToFrequentLocation:(id)arg1;
+- (BOOL)isWithinDistance:(double)arg1 toCoordinate:(struct CLLocationCoordinate2D)arg2;
 
 @end
 

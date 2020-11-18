@@ -66,6 +66,7 @@
 - (id)initSubclassWithOffer:(id)arg1;
 - (id)initWithOffer:(id)arg1;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 - (BOOL)needsNetwork;
 - (void)presentFlowHostedInNavigationController:(id)arg1;
 - (void)sender:(id)arg1 action:(long long)arg2 parameters:(id)arg3;

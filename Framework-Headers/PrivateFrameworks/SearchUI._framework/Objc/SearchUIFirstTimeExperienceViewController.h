@@ -14,39 +14,33 @@
 @interface SearchUIFirstTimeExperienceViewController : UIViewController <UITextViewDelegate>
 {
     id<SearchUIFirstTimeExperienceDelegate> _delegate;
-    unsigned long long _style;
     unsigned long long _supportedDomains;
     NSString *_explanationText;
     NSString *_learnMoreText;
     NSString *_continueButtonTitle;
     NSString *_bundleIdentifier;
-    long long _horizontalSizeClass;
 }
 
-@property (strong) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (strong) NSString *continueButtonTitle; // @synthesize continueButtonTitle=_continueButtonTitle;
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (strong, nonatomic) NSString *continueButtonTitle; // @synthesize continueButtonTitle=_continueButtonTitle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SearchUIFirstTimeExperienceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong) NSString *explanationText; // @synthesize explanationText=_explanationText;
+@property (strong, nonatomic) NSString *explanationText; // @synthesize explanationText=_explanationText;
 @property (readonly) unsigned long long hash;
-@property long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
-@property (strong) NSString *learnMoreText; // @synthesize learnMoreText=_learnMoreText;
-@property unsigned long long style; // @synthesize style=_style;
+@property (strong, nonatomic) NSString *learnMoreText; // @synthesize learnMoreText=_learnMoreText;
 @property (readonly) Class superclass;
-@property unsigned long long supportedDomains; // @synthesize supportedDomains=_supportedDomains;
+@property (nonatomic) unsigned long long supportedDomains; // @synthesize supportedDomains=_supportedDomains;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)continueButtonPressed;
 - (id)initWithStyle:(unsigned long long)arg1 supportedDomains:(unsigned long long)arg2 explanationText:(id)arg3 learnMoreText:(id)arg4 continueButtonTitle:(id)arg5;
-- (id)initWithStyle:(unsigned long long)arg1 supportedDomains:(unsigned long long)arg2 explanationText:(id)arg3 learnMoreText:(id)arg4 continueButtonTitle:(id)arg5 privacyDetailsTitle:(id)arg6 privacyDetailsText:(id)arg7;
-- (BOOL)isPad;
+- (id)initWithSupportedDomains:(unsigned long long)arg1 explanationText:(id)arg2 learnMoreText:(id)arg3 continueButtonTitle:(id)arg4;
 - (void)makeViews;
-- (void)remakeViewsForSizeClass:(long long)arg1;
 - (void)showPrivacyView;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

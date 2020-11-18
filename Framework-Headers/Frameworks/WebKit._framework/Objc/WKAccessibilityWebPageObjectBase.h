@@ -10,11 +10,17 @@ __attribute__((visibility("hidden")))
 @interface WKAccessibilityWebPageObjectBase : NSObject
 {
     struct WebPage *m_page;
+    ObjectIdentifier_8136369e m_pageID;
     id m_parent;
+    BOOL m_hasMainFramePlugin;
 }
 
+- (id).cxx_construct;
 - (id)accessibilityFocusedUIElement;
+- (id)accessibilityPluginObject;
 - (id)accessibilityRootObjectWrapper;
+- (struct AXObjectCache *)axObjectCache;
+- (void)setHasMainFramePlugin:(BOOL)arg1;
 - (void)setRemoteParent:(id)arg1;
 - (void)setWebPage:(struct WebPage *)arg1;
 

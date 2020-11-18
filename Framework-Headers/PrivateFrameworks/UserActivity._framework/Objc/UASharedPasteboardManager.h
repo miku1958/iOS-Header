@@ -65,17 +65,18 @@
 - (void)fetchPasteboardTypesForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (BOOL)isRemotePasteboardAvaliable;
-- (void)pickupLocalChanges:(id)arg1 iterNumber:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)pickupLocalChanges:(id)arg1 iterNumber:(long long)arg2 cloneDir:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)requestPasteboardFetchReturnEarly;
 - (void)requestRemotePasteboardDataForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)requestRemotePasteboardTypesForProcess:(int)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)sendUpdateToServer;
-- (id)serializeItem:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3;
+- (void)sendUpdateToServer:(id)arg1;
+- (id)serializeFileType:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3 intoDir:(id)arg4;
+- (id)serializeItem:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3 intoDir:(id)arg4;
 - (id)serializeType:(id)arg1 intoInfo:(id)arg2 withFile:(id)arg3;
 - (void)startPreventingPasteboardSharing;
 - (void)stopPreventingPasteboardSharing;
 - (void)tellClientDebuggingEnabled:(BOOL)arg1 logFileHandle:(id)arg2;
-- (void)writeLocalPasteboardToFile:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)writeLocalPasteboardToFile:(id)arg1 itemDir:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 
 @end
 

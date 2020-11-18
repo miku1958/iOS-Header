@@ -8,48 +8,61 @@
 
 #import <CoreCDP/CDPDCircleProxy-Protocol.h>
 
-@class CDPContext, NSString;
+@class CDPContext, NSString, OTClique;
 
 @interface CDPCircleProxyImpl : NSObject <CDPDCircleProxy>
 {
+    OTClique *_clique;
     CDPContext *_cdpContext;
 }
 
-@property (strong, nonatomic) CDPContext *cdpContext; // @synthesize cdpContext=_cdpContext;
+@property (readonly, nonatomic) CDPContext *cdpContext; // @synthesize cdpContext=_cdpContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)canAuthenticate;
-+ (BOOL)registerCredentialsFromContext:(id)arg1;
-+ (BOOL)registerCredentialsFromContext:(id)arg1 force:(BOOL)arg2;
-+ (BOOL)tryRegisteringCredentialsFromContext:(id)arg1;
 - (void).cxx_destruct;
-- (int)_authenticatedCircleStatus:(id *)arg1;
-- (int)_circleStatus:(id *)arg1;
-- (BOOL)_performSOSCBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
-- (BOOL)_viewMemberForView:(struct __CFString *)arg1 error:(id *)arg2;
+- (long long)_authenticatedCircleStatus:(id *)arg1;
+- (long long)_circleStatus:(id *)arg1;
+- (id)_pairingChannelContext;
+- (BOOL)_registerCredentialsOnlyIfNeeded:(BOOL)arg1;
+- (int)_sos_authenticatedCircleStatus:(id *)arg1;
+- (int)_sos_circleStatus:(id *)arg1;
 - (BOOL)anyPeerHasEnabledViewsInSet:(id)arg1 error:(id *)arg2;
-- (int)circleStatus:(id *)arg1;
+- (unsigned long long)cachedCircleStatus:(id *)arg1;
+- (BOOL)canAuthenticate;
+- (unsigned long long)cdpStatusFromOT:(long long)arg1;
+- (unsigned long long)cdpStatusFromSOS:(int)arg1;
+- (unsigned long long)circleStatus:(id *)arg1;
+- (id)contextType;
+- (void)didJoinCircleAfterRecovery:(id)arg1;
 - (id)generateRecoveryKeyWithInfo:(id)arg1 error:(id *)arg2;
-- (id)generateVerifierWithRcoveryKey:(id)arg1 error:(id *)arg2;
+- (id)generateVerifierWithRecoveryKey:(id)arg1 error:(id *)arg2;
 - (BOOL)hasNonViewAwarePeers;
 - (id)initWithContext:(id)arg1;
 - (BOOL)isLastBackupMakingPeer:(id *)arg1;
+- (id)pairingChannelAcceptor:(id *)arg1;
+- (id)pairingChannelInitiator:(id *)arg1;
 - (unsigned long long)peerCount;
 - (id)peerDeviceNamesByPeerID;
 - (id)peerId;
+- (BOOL)registerCredentials;
+- (BOOL)registerCredentialsIfMissing;
 - (BOOL)removeNonViewAwarePeers:(id *)arg1;
 - (BOOL)removeThisDeviceFromCircle:(id *)arg1;
+- (void)reportFailure:(id)arg1;
+- (void)reportSuccess;
 - (BOOL)requestToJoinCircle:(id *)arg1;
 - (BOOL)requestToJoinCircleAfterRestore:(id *)arg1;
 - (BOOL)requestToResetCircle:(id *)arg1;
 - (BOOL)requestToResetCloudKitDataForReason:(id)arg1 error:(id *)arg2;
 - (BOOL)setViewsWithEnableSet:(id)arg1 disableSet:(id)arg2;
+- (int)sos_circleStatus:(id *)arg1;
 - (BOOL)synchronizeCircleViews;
+- (BOOL)tryRegisteringCredentials;
 - (BOOL)viewMemberForAutofillPasswords:(id *)arg1;
-- (BOOL)viewMemberForPCSMaster:(id *)arg1;
+- (BOOL)waitForInitialSync:(id *)arg1;
 
 @end
 

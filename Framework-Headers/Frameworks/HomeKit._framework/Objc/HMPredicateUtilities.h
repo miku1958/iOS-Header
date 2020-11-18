@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface HMPredicateUtilities : NSObject
 {
 }
 
 + (BOOL)areOnlyHourAndMinuteSet:(id)arg1;
 + (BOOL)containsPresenceEvents:(id)arg1;
++ (id)notificationTriggersInPredicate:(id)arg1;
 + (id)rewritePredicateForClient:(id)arg1 home:(id)arg2;
 + (id)rewritePredicateForDaemon:(id)arg1 characteristicIsInvalid:(BOOL *)arg2;
-+ (id)rewritePredicateForMerge:(id)arg1 existingHome:(id)arg2 characteristicIsInvalid:(BOOL *)arg3;
 + (BOOL)validatePredicate:(id)arg1;
 
 @end

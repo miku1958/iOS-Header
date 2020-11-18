@@ -6,25 +6,38 @@
 
 #import <UIKit/UIView.h>
 
-@class TSDCanvasLayer, TSDInteractiveCanvasController, TSKScrollView;
-@protocol TSDCanvasLayerHosting;
+#import <TSReading/UITextLinkInteraction-Protocol.h>
 
-@interface TSDCanvasView : UIView
+@class TSDCanvasLayer, TSDInteractiveCanvasController, TSKScrollView;
+@protocol TSDCanvasLayerHosting, UITextLinkInteraction;
+
+@interface TSDCanvasView : UIView <UITextLinkInteraction>
 {
     TSDInteractiveCanvasController *mController;
     id<TSDCanvasLayerHosting> mLayerHost;
+    id<UITextLinkInteraction> mHyperLinkDelegate;
 }
 
 @property (readonly, nonatomic) TSDCanvasLayer *canvasLayer;
 @property (nonatomic) TSDInteractiveCanvasController *controller; // @synthesize controller=mController;
 @property (readonly) TSKScrollView *enclosingScrollView;
+@property (nonatomic) id<UITextLinkInteraction> hyperLinkDelegate; // @synthesize hyperLinkDelegate=mHyperLinkDelegate;
 @property (nonatomic) id<TSDCanvasLayerHosting> layerHost; // @synthesize layerHost=mLayerHost;
 @property (readonly, nonatomic) TSDCanvasView *rootCanvasView;
 
 + (Class)layerClass;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
+- (void)cancelInteractionWithLink;
+- (BOOL)isInteractingWithLink;
+- (BOOL)mightHaveLinks;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)startInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (void)startLongInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (void)tapLinkAtPoint:(struct CGPoint)arg1;
 - (void)teardown;
+- (void)updateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (void)validateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (BOOL)willInteractWithLinkAtPoint:(struct CGPoint)arg1;
 
 @end
 

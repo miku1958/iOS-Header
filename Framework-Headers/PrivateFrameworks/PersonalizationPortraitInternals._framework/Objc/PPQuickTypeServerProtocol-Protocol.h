@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
+
 @class NSArray, NSDictionary, NSString, PPQuickTypeQuery;
 
-@protocol PPQuickTypeServerProtocol
+@protocol PPQuickTypeServerProtocol <PPFeedbackAccepting>
 - (void)hibernateWithCompletion:(void (^)(void))arg1;
 - (void)quickTypeItemsWithLanguageModelingTokens:(NSDictionary *)arg1 localeIdentifier:(NSString *)arg2 recipients:(NSArray *)arg3 bundleIdentifier:(NSString *)arg4 limit:(unsigned long long)arg5 completion:(void (^)(NSArray *, PPQuickTypeExplanationSet *))arg6;
 - (void)quickTypeItemsWithQuery:(PPQuickTypeQuery *)arg1 limit:(unsigned long long)arg2 completion:(void (^)(NSArray *, PPQuickTypeExplanationSet *))arg3;

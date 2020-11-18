@@ -10,7 +10,7 @@
 - (void)allowedAutoReplyAudienceWithReply:(void (^)(unsigned long long, NSError *))arg1;
 - (void)autoReplyMessageWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)completeDNDBuddyWithOption:(unsigned long long)arg1 withReply:(void (^)(BOOL, NSError *))arg2;
-- (void)disableDNDUntilEndOfDriveWithReply:(void (^)(BOOL, NSError *))arg1;
+- (void)disableDNDUntilEndOfDriveWithContext:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)fetchDNDTriggerModeWithReply:(void (^)(unsigned long long, NSError *))arg1;
 - (void)internalAutoReplyWhitelistWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)internalUtilityToolWithReply:(void (^)(NSString *))arg1;

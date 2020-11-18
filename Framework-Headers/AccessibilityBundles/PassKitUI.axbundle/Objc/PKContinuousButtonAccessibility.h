@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
-- (void)showSpinner:(BOOL)arg1;
+- (void)setShowSpinner:(BOOL)arg1;
 
 @end
 

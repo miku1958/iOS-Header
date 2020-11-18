@@ -13,10 +13,11 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMDHome, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
-@protocol HMDServiceOwner, OS_dispatch_queue;
+@protocol HMDServiceOwner, HMFLocking, OS_dispatch_queue;
 
 @interface HMDService : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
 {
+    id<HMFLocking> _lock;
     BOOL _hidden;
     BOOL _primary;
     HMDApplicationData *_appData;
@@ -36,7 +37,6 @@
     HMDBulletinBoardNotification *_bulletinBoardNotification;
     NSNumber *_mediaSourceIdentifier;
     NSArray *_mediaSourceDisplayOrder;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_messageDispatcher;
     NSUUID *_cachedAccessoryUUID;
     id<HMDServiceOwner> _owner;
@@ -83,7 +83,6 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (weak, nonatomic) id<HMDServiceOwner> owner; // @synthesize owner=_owner;
 @property (getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
 @property (readonly, copy, nonatomic) NSString *serviceIdentifier;
 @property (strong, nonatomic) NSString *serviceSubtype; // @synthesize serviceSubtype=_serviceSubtype;
@@ -95,6 +94,7 @@
 + (id)generateUUIDWithAccessoryUUID:(id)arg1 serviceID:(id)arg2;
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
++ (BOOL)processUpdateForCharacteristicType:(id)arg1 value:(id)arg2 serviceType:(id)arg3 service:(id)arg4 serviceTransactionGetter:(CDUnknownBlockType)arg5 accessory:(id)arg6 accessoryTransaction:(id)arg7 accInfoChanged:(BOOL *)arg8;
 + (BOOL)supportsSecureCoding;
 + (BOOL)validateProvidedName:(id)arg1;
 - (void).cxx_destruct;
@@ -112,6 +112,7 @@
 - (void)_saveForExpectedConfiguredNameUpdate;
 - (void)_saveForLastSeenConfiguredNameUpdate;
 - (void)_saveLastSeenAndExpectedConfiguredName:(id)arg1;
+- (id)_serviceSubtypeFromLinkedServicesForServiceType:(id)arg1 accessoryCategory:(id)arg2;
 - (void)_setServiceProperties:(id)arg1;
 - (void)_shouldServiceBeHidden;
 - (BOOL)_supportsBulletinNotification;
@@ -127,11 +128,11 @@
 - (void)appDataUpdated:(id)arg1 message:(id)arg2;
 - (id)assistantObject;
 - (id)backingStoreObjects:(long long)arg1;
-- (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
+- (void)configureBulletinNotification;
 - (void)configureMsgDispatcher:(id)arg1;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2;
 - (id)configureWithService:(id)arg1 accessory:(id)arg2 shouldRead:(BOOL)arg3 added:(BOOL)arg4;
-- (id)configuredNameChangedMessage;
+- (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)findCharacteristic:(id)arg1;
@@ -154,10 +155,8 @@
 - (void)persistLastKnownDiscoveryMode;
 - (void)persistMediaSourceDisplayOrder:(id)arg1 requestMessage:(id)arg2;
 - (void)populateModelObjectWithChangeType:(id)arg1 version:(long long)arg2;
-- (BOOL)processInitialUpdate:(id)arg1 forCharacteristicType:(id)arg2 serviceTransaction:(id)arg3 changed:(BOOL *)arg4;
 - (BOOL)shouldEnableDaemonRelaunch;
 - (BOOL)shouldIncludePresenceForDeviceWithDestination:(id)arg1;
-- (BOOL)shouldUpdateLastKnownDiscoveryMode:(id)arg1;
 - (BOOL)shouldUpdateLastSeenConfiguredName:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

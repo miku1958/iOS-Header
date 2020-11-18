@@ -17,11 +17,15 @@ __attribute__((visibility("hidden")))
     CNContactStore *_store;
 }
 
+@property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property (strong, nonatomic) CNContactStore *store; // @synthesize store=_store;
+
++ (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
 - (void)_removeContextProviderOnMainThread;
 - (BOOL)allowContextProvider:(id)arg1;
-- (id)contextManager;
 - (void)dealloc;
+- (id)defaultContextManager;
 - (id)getCurrentContext;
 - (id)initWithContact:(id)arg1 store:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;

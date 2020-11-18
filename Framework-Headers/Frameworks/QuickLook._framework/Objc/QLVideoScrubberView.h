@@ -4,22 +4,38 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PHVideoScrubberView.h>
+#import <UIKit/UIView.h>
 
-@class UIScrollView;
+#import <QuickLook/PHVideoScrubberViewInteractionDelegate-Protocol.h>
+
+@class NSString, PHVideoScrubberView, UIScrollView;
 
 __attribute__((visibility("hidden")))
-@interface QLVideoScrubberView : PHVideoScrubberView
+@interface QLVideoScrubberView : UIView <PHVideoScrubberViewInteractionDelegate>
 {
     BOOL _userInteractingWithScrubber;
+    BOOL _touchGestureIsActive;
+    PHVideoScrubberView *_photosScrubber;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) PHVideoScrubberView *photosScrubber; // @synthesize photosScrubber=_photosScrubber;
 @property (readonly) UIScrollView *scrollView;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL touchGestureIsActive; // @synthesize touchGestureIsActive=_touchGestureIsActive;
 @property (getter=isUserInteractingWithScrubber) BOOL userInteractingWithScrubber; // @synthesize userInteractingWithScrubber=_userInteractingWithScrubber;
 
-- (void)_handleInteractionBegan;
-- (void)_handleInteractionEndedAndTogglePlayState:(BOOL)arg1;
-- (void)_handleLongPressGesture:(id)arg1;
+- (void).cxx_destruct;
+- (void)_updateUserInteractingWithScrubberIfNeeded;
+- (void)didBeginTouchingVideoScrubberView:(id)arg1;
+- (void)didEndTouchingVideoScrubberView:(id)arg1;
+- (void)layoutSubviews;
+- (void)videoScrubberView:(id)arg1 didEndDeceleratingInScrollView:(id)arg2;
+- (void)videoScrubberView:(id)arg1 didEndDraggingInScrollView:(id)arg2;
+- (void)videoScrubberView:(id)arg1 willBeginDeceleratingInScrollView:(id)arg2;
+- (void)videoScrubberView:(id)arg1 willBeginDraggingInScrollView:(id)arg2;
 
 @end
 

@@ -19,6 +19,7 @@
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, copy, nonatomic) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property (readonly, copy, nonatomic) NSError *serverError;
+@property (readonly, nonatomic) long long version;
 
 - (void).cxx_destruct;
 - (id)initWithResponseDictionary:(id)arg1 expirationDate:(id)arg2;

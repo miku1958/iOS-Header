@@ -12,6 +12,7 @@
 - (void)handleActionForControlIdentifier:(NSUUID *)arg1;
 
 @optional
+- (BOOL)isCarPlayCanvasActive;
 - (void)templateDidAppear:(CPTemplate *)arg1 animated:(BOOL)arg2;
 - (void)templateDidDisappear:(CPTemplate *)arg1 animated:(BOOL)arg2;
 - (void)templateDidDismiss:(CPTemplate *)arg1;

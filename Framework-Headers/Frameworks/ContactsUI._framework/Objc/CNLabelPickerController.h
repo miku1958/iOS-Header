@@ -6,21 +6,23 @@
 
 #import <ContactsUI/CNPickerController.h>
 
-@class CNPropertyGroupItem;
+@class CNPropertyGroupItem, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CNLabelPickerController : CNPickerController
 {
     CNPropertyGroupItem *_item;
+    NSMutableArray *_labelsToDeleteOnCommit;
 }
 
 @property (readonly, weak, nonatomic) CNPropertyGroupItem *item; // @synthesize item=_item;
+@property (strong) NSMutableArray *labelsToDeleteOnCommit; // @synthesize labelsToDeleteOnCommit=_labelsToDeleteOnCommit;
 
 - (void).cxx_destruct;
 - (id)initForPropertyItem:(id)arg1;
+- (void)pickedItem:(id)arg1;
 - (void)removeCustomItem:(id)arg1;
 - (id)titleForPickerItem:(id)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

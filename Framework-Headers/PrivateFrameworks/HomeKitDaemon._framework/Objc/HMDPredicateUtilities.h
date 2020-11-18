@@ -12,10 +12,12 @@
 
 @interface HMDPredicateUtilities : HMFObject <HMFLogging>
 {
+    unsigned long long _cameraSignificantEvent;
     HMDHome *_home;
     NSString *_logString;
 }
 
+@property unsigned long long cameraSignificantEvent; // @synthesize cameraSignificantEvent=_cameraSignificantEvent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

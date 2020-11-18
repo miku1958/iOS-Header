@@ -15,15 +15,19 @@
     NSArray *_orderedFeatures;
     REFeatureMapGenerator *_orderedFeatureMapGenerator;
     REFeatureMap *_scratchValues;
+    unsigned long long *_scratchTaggedValues;
     REFeatureMapGenerator *_outputFeatureMapGenerator;
     NSMutableOrderedSet *_featureValuesCache;
     NSLock *_featureValuesCacheLock;
 }
 
+@property (readonly, nonatomic) REFeatureSet *inputFeatures;
+@property (readonly, nonatomic) REFeatureSet *outputFeatures;
+
 - (void).cxx_destruct;
 - (id)_buildGraph;
 - (BOOL)_supportedFeature:(id)arg1;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (id)initWithInputFeatures:(id)arg1 outputFeatures:(id)arg2 outputFeatureMapGenerator:(id)arg3;
 - (id)transformFeatureMaps:(id)arg1;
 

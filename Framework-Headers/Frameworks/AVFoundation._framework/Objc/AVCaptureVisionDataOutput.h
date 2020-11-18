@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) id<AVCaptureVisionDataOutputDelegate> delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateCallbackQueue;
 @property (readonly, nonatomic) id delegateOverride;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFeatureBinningEnabled) BOOL featureBinningEnabled;
 @property (nonatomic, getter=isFeatureOrientationAssignmentEnabled) BOOL featureOrientationAssignmentEnabled;
@@ -37,17 +38,16 @@
 - (void)_handleNotification:(id)arg1 payload:(id)arg2;
 - (void)_initializeClientVisiblePropertiesForSourceDevice:(id)arg1;
 - (void)_processSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (id)addConnection:(id)arg1 error:(id *)arg2;
 - (BOOL)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
 - (BOOL)appliesOrientationWithPhysicalRotationForConnection:(id)arg1;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
-- (BOOL)canAddConnectionForMediaType:(id)arg1;
+- (BOOL)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (id)init;
 - (float)keypointDetectionThreshold;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeConnection:(id)arg1;
 - (void)setDelegate:(id)arg1 callbackQueue:(id)arg2;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;

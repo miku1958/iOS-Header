@@ -6,16 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class _SFReloadOptionsController;
+@class NSNumber, _SFPerSitePreferencesVendor, _SFReloadOptionsController;
 
 @interface _SFNavigationUtilitiesManager : NSObject
 {
+    _SFPerSitePreferencesVendor *_preferencesVendor;
+    NSNumber *_cachedPlayingPauseQuirkEnabled;
+    NSNumber *_cachedPerDocumentAutoplayBehaviorQuirkEnabled;
     _SFReloadOptionsController *_reloadOptionsController;
+    unsigned long long _persona;
 }
 
+@property (nonatomic) unsigned long long persona; // @synthesize persona=_persona;
 @property (weak, nonatomic) _SFReloadOptionsController *reloadOptionsController; // @synthesize reloadOptionsController=_reloadOptionsController;
 
 - (void).cxx_destruct;
+- (void)_applyAutoplayQuirksToWebsitePolicies:(id)arg1 desktopSiteSetting:(long long)arg2;
+- (BOOL)_shouldOverrideUserAgentSettingForFacebookAuthURL:(id)arg1;
+- (id)initWithPerSitePreferencesVendor:(id)arg1;
 - (void)websitePoliciesForURL:(id)arg1 isForMainFrameNavigation:(BOOL)arg2 navigationType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

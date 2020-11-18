@@ -8,6 +8,7 @@
 
 @class EMKEmojiTokenList;
 
+__attribute__((visibility("hidden")))
 @interface EMKOverlayView : UIView
 {
     unsigned long long _numEmojiToShow;

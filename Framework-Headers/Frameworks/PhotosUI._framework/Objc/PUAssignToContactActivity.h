@@ -6,23 +6,29 @@
 
 #import <UIKit/UIAssignToContactActivity.h>
 
+#import <PhotosUI/PXActivity-Protocol.h>
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
 @class NSString;
+@protocol PXActivityItemSourceController;
 
 __attribute__((visibility("hidden")))
-@interface PUAssignToContactActivity : UIAssignToContactActivity <UINavigationControllerDelegate>
+@interface PUAssignToContactActivity : UIAssignToContactActivity <UINavigationControllerDelegate, PXActivity>
 {
+    id<PXActivityItemSourceController> _itemSourceController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<PXActivityItemSourceController> itemSourceController; // @synthesize itemSourceController=_itemSourceController;
 @property (readonly) Class superclass;
 
-- (id)_activityBundleImageConfiguration;
+- (void).cxx_destruct;
 - (id)_embeddedActivityViewController;
+- (id)_systemImageName;
 - (id)activityViewController;
+- (BOOL)canPerformWithActivityItems:(id)arg1;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;
 
 @end

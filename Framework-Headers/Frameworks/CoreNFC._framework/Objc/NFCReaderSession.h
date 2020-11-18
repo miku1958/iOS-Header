@@ -11,41 +11,56 @@
 #import <CoreNFC/NFCSessionCallbacks-Protocol.h>
 #import <CoreNFC/NFReaderSessionCallbacks-Protocol.h>
 
-@class NFWeakReference, NSLock, NSString;
-@protocol NFReaderSessionInterface><NSXPCProxyCreating, OS_dispatch_group, OS_dispatch_queue;
+@class NFWeakReference, NSNumber, NSString;
+@protocol NFReaderSessionInterface><NSXPCProxyCreating, NFTag, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NFCReaderSession : NSObject <NFReaderSessionCallbacks, NFCHardwareManagerCallbacks, NFCSessionCallbacks, NFCReaderSession>
 {
     NFWeakReference *_delegate;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_sessionQueue;
     NSObject<NFReaderSessionInterface><NSXPCProxyCreating> *_proxy;
     BOOL _started;
     BOOL _invalidated;
     long long _invalidationCode;
-    NFWeakReference *_connectedTag;
-    NSLock *_pollRestartLock;
+    id<NFTag> _connectedTag;
     NSObject<OS_dispatch_group> *_sessionStartInProgress;
     NSString *_alertMessage;
     unsigned long long _pollMethod;
+    unsigned long long _sessionConfig;
+    NSNumber *_sessionId;
+    long long _delegateType;
 }
 
 @property (copy, nonatomic) NSString *alertMessage;
+@property (readonly, nonatomic) id<NFTag> connectedTag;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id delegate;
+@property (readonly, nonatomic) long long delegateType; // @synthesize delegateType=_delegateType;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInvalidated) BOOL invalidated;
 @property (nonatomic) unsigned long long pollMethod; // @synthesize pollMethod=_pollMethod;
+@property (readonly, strong, nonatomic) NSObject<NFReaderSessionInterface><NSXPCProxyCreating> *readerProxy;
 @property (readonly, nonatomic, getter=isReady) BOOL ready;
+@property (nonatomic) unsigned long long sessionConfig; // @synthesize sessionConfig=_sessionConfig;
+@property (readonly, nonatomic) NSNumber *sessionId; // @synthesize sessionId=_sessionId;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionQueue;
 @property (readonly) Class superclass;
 
++ (BOOL)featureAvailable:(unsigned long long)arg1;
++ (BOOL)readingAvailable;
+- (void)_callbackDidBecomeActive;
+- (void)_callbackDidInvalidateWithError:(id)arg1;
 - (BOOL)_connectTag:(id)arg1 error:(id *)arg2;
+- (id)_convertMessageToInternal:(id)arg1;
 - (void)_invalidateSessionWithCode:(long long)arg1 callbackOnQueue:(BOOL)arg2;
-- (void)_startPollingWithMethod:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_invalidateSessionWithCode:(long long)arg1 message:(id)arg2 finalUIState:(long long)arg3 callbackOnQueue:(BOOL)arg4;
+- (void)_startPollingWithMethod:(unsigned long long)arg1 sessionConfig:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_stopPollingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)beginSession;
 - (BOOL)checkPresenceWithError:(id *)arg1;
+- (void)connectTag:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)connectTag:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)didDetectExternalReaderWithNotification:(id)arg1;
@@ -56,11 +71,19 @@
 - (BOOL)disconnectTagWithError:(id *)arg1;
 - (void)hardwareFailedToLoad;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 pollMethod:(unsigned long long)arg3;
+- (id)initWithDelegate:(id)arg1 sessionDelegateType:(long long)arg2 queue:(id)arg3 pollMethod:(unsigned long long)arg4 sessionConfig:(unsigned long long)arg5;
 - (void)invalidateSession;
+- (void)invalidateSessionWithErrorMessage:(id)arg1;
 - (void)invalidateSessionWithReason:(long long)arg1;
+- (id)ndefStatus:(long long *)arg1 maxMessageLength:(unsigned long long *)arg2;
+- (id)readNdefMessageWithError:(id *)arg1;
 - (void)restartPolling;
-- (void)submitBlockOnQueue:(CDUnknownBlockType)arg1;
-- (id)transceive:(id)arg1 error:(id *)arg2;
+- (void)submitBlockOnDelegateQueue:(CDUnknownBlockType)arg1;
+- (void)submitBlockOnSessionQueue:(CDUnknownBlockType)arg1;
+- (id)transceive:(id)arg1 tagUpdate:(id *)arg2 error:(id *)arg3;
+- (BOOL)validateDelegate:(id)arg1 expectedType:(long long)arg2;
+- (id)writeLockNdef;
+- (BOOL)writeNdefMessage:(id)arg1 error:(id *)arg2;
 
 @end
 

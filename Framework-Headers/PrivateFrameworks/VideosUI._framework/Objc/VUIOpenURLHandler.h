@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (void)_fetchLocalMediaWithAdamID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleOpenURLRouterDataSource:(id)arg1 appContext:(id)arg2 clearStack:(BOOL)arg3 startDate:(id)arg4;
-- (void)_processLocalLibraryLink:(id)arg1;
+- (void)_processLocalLibraryLink:(id)arg1 playbackInitiationDate:(id)arg2 openURLCompletionDate:(id)arg3;
 - (void)handleDeferredURLWithAppContext:(id)arg1;
 - (void)parseURL:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)processEntityWithContextData:(id)arg1 appContext:(id)arg2;

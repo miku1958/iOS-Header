@@ -7,8 +7,12 @@
 #import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, UIFocusUpdateContext, _UIFocusGuideRegion, _UIFocusMovementRequest;
+@protocol UIFocusItem;
 
 @protocol _UIFocusGuideRegionDelegate <NSObject>
+
+@property (readonly, nonatomic) id<UIFocusItem> focusItemForSorting;
+
 
 @optional
 - (NSArray *)focusGuideRegion:(_UIFocusGuideRegion *)arg1 preferredFocusEnvironmentsForMovementRequest:(_UIFocusMovementRequest *)arg2;

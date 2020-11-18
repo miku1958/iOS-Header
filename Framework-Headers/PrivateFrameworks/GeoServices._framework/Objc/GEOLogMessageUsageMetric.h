@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
     int _metricType;
     unsigned int _retryCount;
     struct {
-        unsigned int sessionId:1;
-        unsigned int messageSize:1;
-        unsigned int messageCount:1;
-        unsigned int metricState:1;
-        unsigned int metricType:1;
-        unsigned int retryCount:1;
-    } _has;
+        unsigned int has_sessionId:1;
+        unsigned int has_messageSize:1;
+        unsigned int has_messageCount:1;
+        unsigned int has_metricState:1;
+        unsigned int has_metricType:1;
+        unsigned int has_retryCount:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMessageCount;
@@ -33,13 +33,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasMetricType;
 @property (nonatomic) BOOL hasRetryCount;
 @property (nonatomic) BOOL hasSessionId;
-@property (nonatomic) unsigned int messageCount; // @synthesize messageCount=_messageCount;
-@property (nonatomic) unsigned long long messageSize; // @synthesize messageSize=_messageSize;
-@property (nonatomic) int metricState; // @synthesize metricState=_metricState;
-@property (nonatomic) int metricType; // @synthesize metricType=_metricType;
-@property (nonatomic) unsigned int retryCount; // @synthesize retryCount=_retryCount;
-@property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
+@property (nonatomic) unsigned int messageCount;
+@property (nonatomic) unsigned long long messageSize;
+@property (nonatomic) int metricState;
+@property (nonatomic) int metricType;
+@property (nonatomic) unsigned int retryCount;
+@property (nonatomic) struct GEOSessionID sessionId;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsMetricState:(id)arg1;
 - (int)StringAsMetricType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)metricStateAsString:(int)arg1;
 - (id)metricTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSString *executionEnvironment;
 @property (copy, nonatomic) NSString *launchId;
 
 + (id)checkRestriction;

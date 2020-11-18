@@ -14,6 +14,7 @@
 
 @property (readonly, copy) NSDictionary *directoryAttributes;
 @property (readonly, copy) NSDictionary *fileAttributes;
+@property (readonly) BOOL isEnumeratingDirectoryPostOrder;
 @property (readonly) unsigned long long level;
 
 - (id)nextObject;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <MediaPlayer/MPAVClippingTableViewCell.h>
 
 #import <MediaPlayer/MPAVRoutingThemeableCellView-Protocol.h>
 
 @class MPAVRoutingTableViewCellSubtitleTextState, MPVolumeSlider, NSString, NSTimer, UIActivityIndicatorView, UIImageView, UILabel;
 @protocol MPAVRoutingTableViewCellDelegate;
 
-@interface MPAVRoutingTableViewCell : UITableViewCell <MPAVRoutingThemeableCellView>
+@interface MPAVRoutingTableViewCell : MPAVClippingTableViewCell <MPAVRoutingThemeableCellView>
 {
     UIImageView *_iconImageView;
     UILabel *_routeNameLabel;
@@ -53,6 +53,7 @@
 - (void).cxx_destruct;
 - (void)_animateSubtitleLabelToNextAvailableText;
 - (id)_batteryTextForRoute:(id)arg1;
+- (id)_checkmarkAccessibilityLabelForSmartAudio;
 - (id)_checkmarkImageForSmartAudio;
 - (id)_checkmarkImageNameForSmartAudio;
 - (void)_configureDetailLabel:(id)arg1;
@@ -63,7 +64,7 @@
 - (BOOL)_shouldShowSeparateBatteryPercentagesForBatteryLevel:(id)arg1;
 - (void)_updateSmartAudioAccessory;
 - (void)_updateSpinnerStyle;
-- (void)_updateSubtitleTextLabelForRoute:(id)arg1;
+- (void)_updateSubtitleTextLabelForRouteItem:(id)arg1;
 - (void)dealloc;
 - (id)iconView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
@@ -74,7 +75,7 @@
 - (void)setTintColor:(id)arg1;
 - (id)subtitleView;
 - (id)titleView;
-- (void)updateForEndpoint:(id)arg1 route:(id)arg2 inferLocalizedModelName:(BOOL)arg3;
+- (void)updateForEndpoint:(id)arg1 routeItem:(id)arg2 inferLocalizedModelName:(BOOL)arg3;
 - (id)volumeView;
 
 @end

@@ -4,35 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreData/NSManagedObject.h>
+#import <PhotoLibraryServices/PLManagedObject.h>
 
 #import <PhotoLibraryServices/PLUniformTypeIdentifierIdentity-Protocol.h>
 
-@class NSNumber, NSSet, NSString;
+@class NSNumber, NSString;
 
-@interface PLUniformTypeIdentifier : NSManagedObject <PLUniformTypeIdentifierIdentity>
+@interface PLUniformTypeIdentifier : PLManagedObject <PLUniformTypeIdentifierIdentity>
 {
-    NSNumber *_backingConformsToImage;
-    NSNumber *_backingConformsToMovie;
+    NSNumber *_isLosslessEncoding;
+    NSNumber *_conformsToJPEG;
 }
 
 @property (readonly, nonatomic) BOOL conformsToAudio;
+@property (readonly, nonatomic) BOOL conformsToData;
 @property (nonatomic) BOOL conformsToImage; // @dynamic conformsToImage;
+@property (readonly, nonatomic) BOOL conformsToJPEG;
 @property (nonatomic) BOOL conformsToMovie; // @dynamic conformsToMovie;
+@property (nonatomic) BOOL conformsToRawImage; // @dynamic conformsToRawImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isDynamic) BOOL dynamic;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
-@property (readonly, nonatomic, getter=isPrimaryFormat) BOOL primaryFormat; // @dynamic primaryFormat;
-@property (strong, nonatomic) NSSet *resources; // @dynamic resources;
+@property (readonly, nonatomic) BOOL isLosslessEncoding;
+@property (readonly, nonatomic) BOOL isPlayableVideo;
+@property (readonly, copy, nonatomic) NSString *preferredExtension;
+@property (readonly, nonatomic, getter=isPrimaryImageFormat) BOOL primaryImageFormat;
 @property (readonly) Class superclass;
 
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)jpegUniformTypeIdentifierInContext:(id)arg1;
++ (id)plistUniformTypeIdentifierInContext:(id)arg1;
 + (id)uniformTypeIdentifierFromString:(id)arg1 createIfMissing:(BOOL)arg2 context:(id)arg3;
++ (id)utisConformingToRAWInContext:(id)arg1;
++ (id)videoComplementUniformTypeIdentifierInContext:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)supportsCloudUpload;
+- (BOOL)validateForDelete:(id *)arg1;
 
 @end
 

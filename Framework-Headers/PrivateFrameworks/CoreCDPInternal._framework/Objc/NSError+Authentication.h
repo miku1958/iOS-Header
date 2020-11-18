@@ -12,5 +12,13 @@
 @property (readonly, nonatomic) BOOL isAuthKitUnableToPromptError;
 @property (readonly, nonatomic) BOOL isAuthenticationError;
 
+- (id)errorByExtendingUserInfoWithDictionary:(id)arg1;
+- (BOOL)isCoolDownError;
+- (BOOL)isICSCInvalidError;
+- (BOOL)isICSCRecoveryHardLimitError;
+- (BOOL)isLoginHardLimit;
+- (BOOL)isLoginSoftLimit;
+- (BOOL)isRecoveryPETHardLimitError;
+- (BOOL)isRecoveryPETSoftLimitError;
 @end
 

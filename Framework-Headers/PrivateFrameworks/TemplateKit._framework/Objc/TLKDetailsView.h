@@ -6,27 +6,27 @@
 
 #import <TemplateKit/TLKView.h>
 
-#import <TemplateKit/TLKDetailsViewDelegate-Protocol.h>
+#import <TemplateKit/TLKTextAreaViewDelegate-Protocol.h>
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
 @class NSArray, NSString, TLKImage, TLKMultilineText, TLKRichText, TLKTextAreaView;
 @protocol TLKDetailsViewDelegate;
 
-@interface TLKDetailsView : TLKView <TLKDetailsViewDelegate, TLKTextAreaViewTesting>
+@interface TLKDetailsView : TLKView <TLKTextAreaViewDelegate, TLKTextAreaViewTesting>
 {
     BOOL _secondaryTitleIsDetached;
-    id<TLKDetailsViewDelegate> _delegate;
     TLKRichText *_title;
+    id<TLKDetailsViewDelegate> _delegate;
     TLKMultilineText *_secondaryTitle;
     TLKImage *_secondaryTitleImage;
     NSArray *_details;
     TLKRichText *_footnote;
     NSString *_footnoteButtonText;
-    TLKTextAreaView *_textAreaView;
 }
 
+@property (strong, nonatomic) TLKTextAreaView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<TLKDetailsViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<TLKDetailsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *details; // @synthesize details=_details;
 @property (strong, nonatomic) TLKRichText *footnote; // @synthesize footnote=_footnote;
@@ -36,16 +36,14 @@
 @property (strong, nonatomic) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
 @property (nonatomic) BOOL secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
 @property (readonly) Class superclass;
-@property (strong) TLKTextAreaView *textAreaView; // @synthesize textAreaView=_textAreaView;
 @property (strong, nonatomic) TLKRichText *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (void)footnoteButtonPressed;
 - (id)footnoteLabelString;
-- (id)init;
 - (void)observedPropertiesChanged;
 - (id)secondaryTitleLabelString;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)setupContentView;
 - (id)textAreaLabelStrings;
 - (id)titleLabelString;
 

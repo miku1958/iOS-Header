@@ -20,7 +20,5 @@
 @property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (readonly) Class superclass;
 
-- (void)setShouldExcludeNonShuffleItems:(BOOL)arg1;
-- (BOOL)shouldExcludeNonShuffleItems;
 @end
 

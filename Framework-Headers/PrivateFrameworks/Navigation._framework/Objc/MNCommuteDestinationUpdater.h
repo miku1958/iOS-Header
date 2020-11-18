@@ -50,10 +50,10 @@ __attribute__((visibility("hidden")))
 - (void)commuteScoreUpdaterDidUpdate:(id)arg1;
 - (void)dealloc;
 - (id)initWithSuggestion:(id)arg1 traceManager:(id)arg2;
+- (void)locationTracker:(id)arg1 didFailRerouteWithError:(id)arg2;
 - (void)locationTracker:(id)arg1 didReroute:(id)arg2 newAlternateRoutes:(id)arg3 rerouteReason:(unsigned long long)arg4 request:(id)arg5 response:(id)arg6;
 - (void)locationTracker:(id)arg1 didUpdateETAForRoute:(id)arg2;
 - (void)locationTracker:(id)arg1 didUpdateMatchedLocation:(id)arg2;
-- (void)locationTracker:(id)arg1 failedRerouteWithErrorCode:(long long)arg2;
 - (void)locationTrackerDidArrive:(id)arg1;
 - (void)locationTrackerDidCancelReroute:(id)arg1;
 - (void)locationTrackerWillReroute:(id)arg1;
@@ -64,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)updateETA;
 - (void)updateForLocation:(id)arg1;
 - (void)updateLocationHistory:(id)arg1;
-- (void)updateMapsActive:(BOOL)arg1;
 
 @end
 

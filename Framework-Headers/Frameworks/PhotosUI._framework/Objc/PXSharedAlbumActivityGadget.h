@@ -33,7 +33,6 @@
     struct CGRect _visibleContentRect;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
 @property (strong, nonatomic) NSArray *assets; // @synthesize assets=_assets;
@@ -42,6 +41,7 @@
 @property (copy, nonatomic) NSAttributedString *caption; // @synthesize caption=_caption;
 @property (strong, nonatomic) UILabel *captionLabel; // @synthesize captionLabel=_captionLabel;
 @property (strong, nonatomic) PXAssetCollageView *collageView; // @synthesize collageView=_collageView;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (strong, nonatomic) _PXSharedAlbumActivityGadgetContentView *contentView; // @synthesize contentView=_contentView;
 @property (strong, nonatomic) PXAssetReference *currentAssetReference; // @synthesize currentAssetReference=_currentAssetReference;
 @property (readonly, copy) NSString *debugDescription;
@@ -83,9 +83,7 @@
 - (void)contentViewDidDisappear;
 - (void)contentViewWillAppear;
 - (void)dealloc;
-- (BOOL)hasLoadedContentData;
 - (id)init;
-- (void)loadContentData;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)oneUpPresentation:(id)arg1 currentImageForAssetReference:(id)arg2;
 - (id)oneUpPresentation:(id)arg1 regionOfInterestForAssetReference:(id)arg2;

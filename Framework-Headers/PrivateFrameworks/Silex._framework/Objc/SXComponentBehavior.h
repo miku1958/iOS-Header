@@ -6,22 +6,14 @@
 
 #import <Silex/SXJSONObject.h>
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
-
 @class NSString;
 
-@interface SXComponentBehavior : SXJSONObject <SXClassFactoryProtocol>
+@interface SXComponentBehavior : SXJSONObject
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *type; // @dynamic type;
 
-+ (void)initializeObject;
-+ (id)typeString;
 - (Class)handlerClassForComponent:(id)arg1;
 
 @end

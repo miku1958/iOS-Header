@@ -9,5 +9,8 @@
 @interface NSArray (PKIconCache)
 + (void)pk_updateSpecifiers:(id)arg1 withIconsFromCache:(id)arg2;
 + (void)pk_updateSpecifiers:(id)arg1 withIconsFromCache:(id)arg2 isInterfaceRTL:(BOOL)arg3;
+- (id)arrayByPerformingSpecifierUpdatesUsingBlock:(CDUnknownBlockType)arg1;
+- (unsigned long long)indexOfSpecifierWithID:(id)arg1;
+- (id)specifierForID:(id)arg1;
 @end
 

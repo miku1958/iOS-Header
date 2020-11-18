@@ -29,12 +29,13 @@
 @property (strong, nonatomic) UIColor *platterColor; // @synthesize platterColor=_platterColor;
 @property (copy, nonatomic) CDUnknownBlockType platterColorProviderBlock; // @synthesize platterColorProviderBlock=_platterColorProviderBlock;
 
-+ (void)_genericComplicationAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
++ (id)_genericComplicationAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)applyComplicationContentSpecificAttributesAnimated:(BOOL)arg1 attributes:(unsigned long long)arg2 faceView:(id)arg3;
 - (void)applyComplicationContentSpecificAttributesAnimated:(BOOL)arg1 faceView:(id)arg2;
 - (void)cleanupAfterEditingForFaceView:(id)arg1;
 - (void)configureComplicationView:(id)arg1 forSlot:(id)arg2 faceView:(id)arg3;
+- (id)createComplicationContentSpecificAttributesAnimationWithAttributes:(unsigned long long)arg1 faceView:(id)arg2 forSlots:(id)arg3;
 - (id)detachedComplicationDisplaysForFaceView:(id)arg1;
 - (BOOL)fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2 faceView:(id)arg3;
 - (id)initForDevice:(id)arg1;

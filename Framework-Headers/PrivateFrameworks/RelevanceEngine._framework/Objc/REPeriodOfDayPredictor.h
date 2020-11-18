@@ -6,9 +6,11 @@
 
 #import <RelevanceEngine/REPredictor.h>
 
+#import <RelevanceEngine/REPeriodOfDayPredictorProperties-Protocol.h>
+
 @class NSArray, NSDateInterval, NSLock, REDuetKnowledgeStore, REUpNextTimer;
 
-@interface REPeriodOfDayPredictor : REPredictor
+@interface REPeriodOfDayPredictor : REPredictor <REPeriodOfDayPredictorProperties>
 {
     NSArray *_storedPeriods;
     NSLock *_storedPeriodsLock;
@@ -18,6 +20,7 @@
 
 @property (readonly, nonatomic) unsigned long long currentPeriodOfDay;
 @property (readonly, nonatomic) NSDateInterval *intervalForCurrentPeriodOfDay;
+@property (readonly, nonatomic) NSArray *storedPeriods;
 
 + (double)updateInterval;
 - (void).cxx_destruct;
@@ -26,16 +29,15 @@
 - (void)_getHistoricSleepIntervalsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getPredictedSleepIntervalsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleSignificantTimeChange;
+- (id)_init;
 - (id)_nextDayPeriodUpdateDate;
 - (id)_periodsOfDayForSleepIntervals:(id)arg1;
 - (void)_queue_updateNextDateUpdateTimer;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (id)dateIntervalForNextPeriodOfDay:(unsigned long long)arg1;
 - (id)dateIntervalForNextPeriodOfDay:(unsigned long long)arg1 afterDate:(id)arg2;
 - (id)dateIntervalForPreviousPeriodOfDay:(unsigned long long)arg1;
 - (id)dateIntervalForPreviousPeriodOfDay:(unsigned long long)arg1 beforeDate:(id)arg2;
 - (void)dealloc;
-- (id)init;
 - (void)update;
 
 @end

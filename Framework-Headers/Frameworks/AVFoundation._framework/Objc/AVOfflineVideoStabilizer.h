@@ -12,6 +12,7 @@
 {
     CDStruct_1b6d18a9 _targetFrameDuration;
     int _metadataPrimingCount;
+    float _lookAheadTime;
     AVWeakReference *_dataProviderWeakReference;
     struct __CVPixelBufferPool *_pixelBufferPool;
     BOOL _clientMarkedEndOfVideoData;
@@ -26,6 +27,7 @@
     NSSet *_optionalMetadataKeys;
     struct OpaqueFigSampleBufferProcessor *_gvsProcessor;
     BOOL _stabilizationEnabled;
+    BOOL _isFirstFrame;
 }
 
 @property (readonly, nonatomic) NSMutableArray *outputSampleBuffers; // @synthesize outputSampleBuffers=_outputSampleBuffers;
@@ -36,7 +38,8 @@
 + (id)offlineVideoStabilizerWithTargetFrameDuration:(CDStruct_1b6d18a9)arg1 dataProvider:(id)arg2 destinationBufferPool:(struct __CVPixelBufferPool *)arg3 stabilizationEnabled:(BOOL)arg4;
 - (struct opaqueCMSampleBuffer *)_copyStabilizedSampleBuffer:(id *)arg1;
 - (struct opaqueCMSampleBuffer *)_createSampleBufferWithPixelBuffer:(struct __CVBuffer *)arg1 sampleTime:(CDStruct_1b6d18a9)arg2 futureMetadata:(id)arg3 status:(int *)arg4;
-- (int)_setupGVSProcessorWithMetadataArray:(id)arg1;
+- (unsigned long long)_extendedRowsOfOutputBuffer;
+- (int)_setupGVSProcessor;
 - (void)_teardownVISProcessor;
 - (int)_validateSourcePixelBuffer:(struct __CVBuffer *)arg1 withSampleTime:(CDStruct_1b6d18a9)arg2 metadata:(id)arg3 isEndOfData:(BOOL *)arg4;
 - (int)_validateStabilizationMetadata:(id)arg1 withSampleTime:(CDStruct_1b6d18a9)arg2 isEndOfData:(BOOL *)arg3;

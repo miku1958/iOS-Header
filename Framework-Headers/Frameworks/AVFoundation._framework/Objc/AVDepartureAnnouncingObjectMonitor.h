@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 + (void)attachDepartureAnnouncingObjectMonitorToObject:(id)arg1 monitoringObject:(id)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithMonitoringObject:(id)arg1;
 
 @end

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSData;
+@protocol OS_xpc_object;
 
 @interface CSAudioChunk : NSObject
 {
@@ -27,14 +28,16 @@
 @property (readonly, nonatomic) BOOL remoteVADAvailable;
 @property (readonly, nonatomic) unsigned long long sampleByteDepth; // @synthesize sampleByteDepth=_sampleByteDepth;
 @property (readonly, nonatomic) unsigned long long startSampleCount; // @synthesize startSampleCount=_startSampleCount;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcObject;
 
 - (void).cxx_destruct;
 - (id)dataForChannel:(unsigned long long)arg1;
 - (id)dataWithRemoteVADWithScaleFactor:(float)arg1 numAudioSamplesPerRemoteVAD:(unsigned long long)arg2;
-- (id)initWithData:(id)arg1 numChannels:(unsigned long long)arg2 numSamples:(unsigned long long)arg3 sampleByteDepth:(unsigned long long)arg4 startSampleCount:(unsigned long long)arg5 hostTime:(unsigned long long)arg6;
 - (id)initWithData:(id)arg1 numChannels:(unsigned long long)arg2 numSamples:(unsigned long long)arg3 sampleByteDepth:(unsigned long long)arg4 startSampleCount:(unsigned long long)arg5 hostTime:(unsigned long long)arg6 remoteVAD:(id)arg7;
+- (id)initWithXPCObject:(id)arg1;
 - (void)skipSamplesAtStartSuchThatNumSamplesReceivedSoFar:(unsigned long long)arg1 reachesACountOf:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)splitAudioChunkSuchThatNumSamplesReceivedSoFar:(unsigned long long)arg1 reachesACountOf:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)splitRemoteVADFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2;
 - (id)subChunkFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2;
 - (id)subChunkFrom:(unsigned long long)arg1 numSamples:(unsigned long long)arg2 forChannel:(unsigned long long)arg3;
 

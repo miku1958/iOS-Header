@@ -21,13 +21,12 @@
 
 @property (nonatomic, readonly) NSDate *firstSeen;
 @property (nonatomic, readonly) long long frequency;
-@property (nonatomic, readonly) NSString *identifier; // @synthesize identifier;
+@property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) double lastDuration;
 @property (nonatomic, readonly) NSDate *lastSeen;
 @property (nonatomic, readonly) NSDictionary *metadata;
 @property (nonatomic, readonly) double totalDuration;
 
-+ (id)dateFormat;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(void *)arg1;

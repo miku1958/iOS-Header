@@ -6,14 +6,15 @@
 
 #import <PassKitUI/PKPeerPaymentActionViewController.h>
 
+#import <PassKitUI/PKEnterCurrencyAmountPassViewDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentActionControllerDelegate-Protocol.h>
-#import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
+#import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class NSArray, NSDecimalNumber, NSDecimalNumberHandler, NSNumberFormatter, NSString, PKAnimatedNavigationBarTitleView, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKPaymentPass, UIImageView, UILabel, UIScrollView, UITableView, _UIBackdropView;
+@class NSArray, NSDecimalNumber, NSDecimalNumberHandler, NSNumberFormatter, NSString, PKAnimatedNavigationBarTitleView, PKEnterCurrencyAmountPassTableHeaderFooterView, PKPaymentPass, UIImageView, UILabel, UITableView, _PKUIKVisibilityBackdropView;
 
-@interface PKPeerPaymentActionTransferToBankViewController : PKPeerPaymentActionViewController <PKPeerPaymentActionControllerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface PKPeerPaymentActionTransferToBankViewController : PKPeerPaymentActionViewController <_PKUIKVisibilityBackdropViewDelegate, PKPeerPaymentActionControllerDelegate, UITableViewDelegate, UITableViewDataSource, PKEnterCurrencyAmountPassViewDelegate>
 {
     NSArray *_supportedTransferActions;
     NSNumberFormatter *_currencyFormatter;
@@ -23,18 +24,15 @@
     BOOL _isSmallPhone;
     BOOL _usesAccessibilityLayout;
     PKAnimatedNavigationBarTitleView *_passNavbarTitleView;
-    PKEnterCurrencyAmountView *_enterCurrencyAmountView;
-    PKEnterValueNewBalanceView *_newBalanceView;
     UITableView *_tableView;
-    UILabel *_footerTextLabel;
     UIImageView *_navbarPassView;
-    _UIBackdropView *_backdropView;
-    UIScrollView *_scrollView;
+    _PKUIKVisibilityBackdropView *_backdropView;
+    UILabel *_footerTextLabel;
+    PKEnterCurrencyAmountPassTableHeaderFooterView *_tableHeaderView;
     NSDecimalNumber *_feePercentage;
     NSDecimalNumber *_minimumFee;
     NSDecimalNumber *_maximumFee;
     double _backdropWeight;
-    long long _backdropStyle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -43,6 +41,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_amountPassView;
 - (void)_calculateBlur;
 - (id)_calculateFee;
 - (void)_currentAmountDidChangeTo:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
@@ -59,7 +58,9 @@
 - (void)_updateBarButtonEnabledState;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
 - (void)_updateFooterText;
+- (void)_updateTableHeaderHeight;
 - (void)dealloc;
+- (void)enterCurrencyAmountPassViewDidLoadPassSnapshot:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -77,6 +78,7 @@
 - (BOOL)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
 - (void)updateAccountValues;
 - (void)viewWillLayoutSubviews;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end
 

@@ -6,9 +6,11 @@
 
 #import <RelevanceEngine/RECondition.h>
 
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
+
 @class REFeature;
 
-@interface _REHasFeatureRuleCondition : RECondition
+@interface _REHasFeatureRuleCondition : RECondition <REAutomaticExportedInterface>
 {
     BOOL _contains;
     REFeature *_feature;
@@ -18,12 +20,11 @@
 @property (readonly, nonatomic) REFeature *feature; // @synthesize feature=_feature;
 
 - (void).cxx_destruct;
-- (BOOL)_acceptsFeatureMap:(id)arg1;
+- (BOOL)_acceptsFeatureMap:(id)arg1 predictionSet:(id)arg2 explanation:(id *)arg3;
 - (id)_dependentFeatures;
 - (id)_inflectionFeatureValuePairs;
 - (id)_notCondition;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)initWithFeature:(id)arg1 contains:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;

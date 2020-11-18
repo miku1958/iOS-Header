@@ -16,6 +16,9 @@
     BOOL _isAdvancedAppleAudioDevice;
     BOOL _supportsInEarDetection;
     BOOL _supportsVoiceTrigger;
+    BOOL _supportsSpokenNotification;
+    BOOL _supportsListeningModeANC;
+    BOOL _supportsListeningModeTransparency;
     unsigned int _vendorID;
     unsigned int _productID;
     NSString *_address;
@@ -27,6 +30,9 @@
 @property (readonly, nonatomic) BOOL isAdvancedAppleAudioDevice; // @synthesize isAdvancedAppleAudioDevice=_isAdvancedAppleAudioDevice;
 @property (readonly, nonatomic) unsigned int productID; // @synthesize productID=_productID;
 @property (readonly, nonatomic) BOOL supportsInEarDetection; // @synthesize supportsInEarDetection=_supportsInEarDetection;
+@property (readonly, nonatomic) BOOL supportsListeningModeANC; // @synthesize supportsListeningModeANC=_supportsListeningModeANC;
+@property (readonly, nonatomic) BOOL supportsListeningModeTransparency; // @synthesize supportsListeningModeTransparency=_supportsListeningModeTransparency;
+@property (readonly, nonatomic) BOOL supportsSpokenNotification; // @synthesize supportsSpokenNotification=_supportsSpokenNotification;
 @property (readonly, nonatomic) BOOL supportsVoiceTrigger; // @synthesize supportsVoiceTrigger=_supportsVoiceTrigger;
 @property (readonly, nonatomic) unsigned int vendorID; // @synthesize vendorID=_vendorID;
 
@@ -38,7 +44,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithAddress:(id)arg1 deviceUID:(id)arg2 vendorID:(unsigned int)arg3 productID:(unsigned int)arg4 isAdvancedAppleAudioDevice:(BOOL)arg5 supportsInEarDetection:(BOOL)arg6 supportsVoiceTrigger:(BOOL)arg7;
+- (id)initWithAddress:(id)arg1 deviceUID:(id)arg2 vendorID:(unsigned int)arg3 productID:(unsigned int)arg4 isAdvancedAppleAudioDevice:(BOOL)arg5 supportsInEarDetection:(BOOL)arg6 supportsVoiceTrigger:(BOOL)arg7 supportsSpokenNotification:(BOOL)arg8 supportsListeningModeANC:(BOOL)arg9 supportsListeningModeTransparency:(BOOL)arg10;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;

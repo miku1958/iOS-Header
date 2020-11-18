@@ -10,10 +10,12 @@
 
 @interface SCNKeyedArchiver : NSKeyedArchiver
 {
+    BOOL skipMorphTargets;
     NSDictionary *options;
 }
 
 @property (copy, nonatomic) NSDictionary *options; // @synthesize options;
+@property (nonatomic) BOOL skipMorphTargets; // @synthesize skipMorphTargets;
 
 + (id)archivedDataWithRootObject:(id)arg1 options:(id)arg2;
 - (void)dealloc;

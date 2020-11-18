@@ -18,6 +18,7 @@
 @property (strong) NSManagedObjectID *attachmentID; // @synthesize attachmentID=_attachmentID;
 @property (strong) ICAttachmentModel *attachmentModel; // @synthesize attachmentModel=_attachmentModel;
 @property (strong) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
+@property (readonly, nonatomic) unsigned long long type;
 
 - (void).cxx_destruct;
 - (void)cancel;

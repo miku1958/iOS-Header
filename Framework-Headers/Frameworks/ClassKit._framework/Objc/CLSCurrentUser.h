@@ -9,22 +9,31 @@
 #import <ClassKit/NSCopying-Protocol.h>
 #import <ClassKit/NSSecureCoding-Protocol.h>
 
-@class CLSPerson;
+@class CLSPerson, NSDictionary;
 
 @interface CLSCurrentUser : NSObject <NSCopying, NSSecureCoding>
 {
     int _devMode;
     CLSPerson *_person;
     unsigned long long _roles;
+    NSDictionary *_locationIDsByAXMRoleType;
 }
 
 @property (nonatomic) int devMode; // @synthesize devMode=_devMode;
+@property (readonly, nonatomic) BOOL isAdministrator;
+@property (readonly, nonatomic) BOOL isInstructor;
+@property (readonly, nonatomic) BOOL isStudent;
+@property (strong, nonatomic) NSDictionary *locationIDsByAXMRoleType; // @synthesize locationIDsByAXMRoleType=_locationIDsByAXMRoleType;
 @property (strong, nonatomic) CLSPerson *person; // @synthesize person=_person;
 @property (nonatomic) unsigned long long roles; // @synthesize roles=_roles;
 
 + (id)magicValue;
 + (BOOL)supportsSecureCoding;
++ (unsigned long long)userRolesFromUserLocationIDsByAXMRoleType:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_hasRole:(unsigned long long)arg1;
+- (id)_init;
+- (unsigned long long)_useRoles;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasRole:(unsigned long long)arg1;

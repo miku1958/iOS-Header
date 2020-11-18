@@ -21,6 +21,7 @@
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
 - (id)initWithInstructionsItem:(id)arg1 contentViewController:(id)arg2;
+- (id)initWithItemManager:(id)arg1 instructionsItem:(id)arg2 contentViewController:(id)arg3;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (BOOL)shouldHideFooterBelowSection:(long long)arg1;
 - (BOOL)shouldHideHeaderAboveSection:(long long)arg1;

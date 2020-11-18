@@ -8,12 +8,13 @@
 
 #import <ScreenTimeUI/STUIDateTimePickerCellDelegate-Protocol.h>
 
-@class NSDateComponents, NSString, PSSpecifier, RMBlueprintScheduleCustomDayItem;
+@class NSDateComponents, NSString, PSSpecifier, STBlueprintScheduleCustomDayItem;
 
+__attribute__((visibility("hidden")))
 @interface STCustomizeDailyScheduleListController : PSListController <STUIDateTimePickerCellDelegate>
 {
     BOOL _weekdayEnabled;
-    RMBlueprintScheduleCustomDayItem *_dailySchedule;
+    STBlueprintScheduleCustomDayItem *_dailySchedule;
     unsigned long long _weekdayIndex;
     NSDateComponents *_minimumStartTime;
     PSSpecifier *_dailyScheduleGroupSpecifier;
@@ -23,7 +24,7 @@
     PSSpecifier *_endTimePickerSpecifier;
 }
 
-@property (copy) RMBlueprintScheduleCustomDayItem *dailySchedule; // @synthesize dailySchedule=_dailySchedule;
+@property (copy) STBlueprintScheduleCustomDayItem *dailySchedule; // @synthesize dailySchedule=_dailySchedule;
 @property (readonly) PSSpecifier *dailyScheduleGroupSpecifier; // @synthesize dailyScheduleGroupSpecifier=_dailyScheduleGroupSpecifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,6 +44,7 @@
 - (id)_getWeekdayEnabled:(id)arg1;
 - (void)_setWeekdayEnabled:(id)arg1 specifier:(id)arg2;
 - (id)_startTime:(id)arg1;
+- (void)_updateTimeSpecifierDetailTextLabelColors:(BOOL)arg1 selectedSpecifier:(id)arg2 unselectedSpecifier:(id)arg3;
 - (BOOL)canBeShownFromSuspendedState;
 - (void)datePickerChanged:(id)arg1;
 - (id)datePickerForSpecifier:(id)arg1;

@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (void)_accessibilityCurrentPageDidChange;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (long long)_accessibilityPageCount;
@@ -23,7 +24,9 @@
 - (struct CGRect)accessibilityFrame;
 - (void)accessibilityIncrement;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
 - (void)setCurrentPage:(long long)arg1;
 

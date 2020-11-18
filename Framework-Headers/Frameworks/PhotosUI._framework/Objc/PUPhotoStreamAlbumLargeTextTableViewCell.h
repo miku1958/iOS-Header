@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_commonPhotoStreamAlbumLargeTextTableViewCellInit;
 - (id)detailText;
+- (void)didMoveToWindow;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

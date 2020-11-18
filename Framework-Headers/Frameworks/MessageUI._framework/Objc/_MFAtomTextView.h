@@ -15,8 +15,9 @@
 }
 
 @property (readonly) NSArray *atoms;
-@property MFComposeRecipientTextView *hostRecipientView; // @synthesize hostRecipientView=_hostRecipientView;
+@property (weak) MFComposeRecipientTextView *hostRecipientView; // @synthesize hostRecipientView=_hostRecipientView;
 
+- (void).cxx_destruct;
 - (BOOL)_delegateSupportsKeyboardEvents;
 - (void)_handleKeyUIEvent:(id)arg1;
 - (long long)baseWritingDirection;

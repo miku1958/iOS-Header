@@ -4,34 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Photos/PHImageManagerRequest.h>
+#import <Photos/PHMediaRequest.h>
 
-@class PHImageRequestOptions;
+@class NSObject, NSString, NSURL, PHImageDecoderAsyncDecodeRequestHandle, PHImageDisplaySpec, PHImageRequestBehaviorSpec, PHImageResourceChooser, PHImageResult;
+@protocol OS_dispatch_semaphore, PHImageRequestDelegate;
 
-@interface PHImageRequest : PHImageManagerRequest
+@interface PHImageRequest : PHMediaRequest
 {
-    int _bestFormat;
-    int _degradedFormat;
-    long long _contentMode;
-    PHImageRequestOptions *_options;
-    CDUnknownBlockType _resultHandler;
-    struct CGSize _targetSize;
+    struct os_unfair_lock_s _lock;
+    PHImageDecoderAsyncDecodeRequestHandle *_asyncDecodeRequestHandle;
+    PHImageResult *_imageResult;
+    PHImageResourceChooser *_chooser;
+    struct CGSize _desiredImageSize;
+    BOOL _forceIgnoreCache;
+    NSObject<OS_dispatch_semaphore> *_syncDownloadWaitSemaphore;
+    NSURL *_configuredImageURL;
+    NSString *_configuredImageUTI;
+    long long _configuredExifOrientation;
+    id<PHImageRequestDelegate> _delegate;
+    PHImageDisplaySpec *_displaySpec;
+    PHImageRequestBehaviorSpec *_behaviorSpec;
 }
 
-@property int bestFormat; // @synthesize bestFormat=_bestFormat;
-@property (readonly, nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
-@property int degradedFormat; // @synthesize degradedFormat=_degradedFormat;
-@property (readonly, nonatomic) PHImageRequestOptions *options; // @synthesize options=_options;
-@property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
-@property (readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
+@property (strong, nonatomic) PHImageRequestBehaviorSpec *behaviorSpec; // @synthesize behaviorSpec=_behaviorSpec;
+@property (readonly, weak, nonatomic) id<PHImageRequestDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) struct CGSize desiredImageSize; // @synthesize desiredImageSize=_desiredImageSize;
+@property (strong, nonatomic) PHImageDisplaySpec *displaySpec; // @synthesize displaySpec=_displaySpec;
 
-+ (id)descriptionWithContentMode:(long long)arg1;
-+ (id)imageRequestWithAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 domain:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
-- (void)clearResultHandler;
-- (void)cloneIDAndResultHandlerFromRequest:(id)arg1;
+- (void)_decodeImageConfiguredWithURL:(id)arg1 isPrimaryFormat:(BOOL)arg2 exifOrientation:(long long)arg3;
+- (void)cancel;
+- (void)configureWithURL:(id)arg1;
+- (void)configureWithURL:(id)arg1 uniformTypeIdentifier:(id)arg2 exifOrientation:(int)arg3;
 - (id)description;
-- (id)initImageRequestWithAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 domain:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
+- (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
+- (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 displaySpec:(id)arg6 behaviorSepc:(id)arg7 chooser:(id)arg8 delegate:(id)arg9;
+- (BOOL)isSynchronous;
+- (void)startRequest;
 
 @end
 

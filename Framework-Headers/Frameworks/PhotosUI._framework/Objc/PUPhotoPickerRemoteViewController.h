@@ -16,21 +16,13 @@
 __attribute__((visibility("hidden")))
 @interface PUPhotoPickerRemoteViewController : UIViewController <PUPhotoPickerRemoteNavigationControllerDelegate, NSExtensionRequestHandling, PUPhotoPicker, PUPhotoPickerTestSupportHandler>
 {
-    BOOL _contentLoaded;
-    BOOL _observingNavigationItemPrompt;
-    long long _actionType;
-    NSString *_actionTypeDescription;
-    long long _secondaryActionType;
     PUPhotoPickerExtensionContext *_extensionContext;
     UIViewController *_contentViewController;
     PUPhotoPickerRemoteNavigationController *_contentNavigationController;
     PUPhotoPickerRemoteViewControllerRequestOptions *_options;
 }
 
-@property (nonatomic) long long actionType; // @synthesize actionType=_actionType;
-@property (strong, nonatomic) NSString *actionTypeDescription; // @synthesize actionTypeDescription=_actionTypeDescription;
 @property (readonly, nonatomic) BOOL allowsMultipleSelection;
-@property (nonatomic, getter=isContentLoaded) BOOL contentLoaded; // @synthesize contentLoaded=_contentLoaded;
 @property (strong, nonatomic) PUPhotoPickerRemoteNavigationController *contentNavigationController; // @synthesize contentNavigationController=_contentNavigationController;
 @property (strong, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property (readonly, nonatomic) BOOL convertAutoloopsToGIF;
@@ -40,19 +32,17 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *mediaTypes;
 @property (readonly, nonatomic) unsigned long long multipleSelectionLimit;
-@property (nonatomic, getter=isObservingNavigationItemPrompt) BOOL observingNavigationItemPrompt; // @synthesize observingNavigationItemPrompt=_observingNavigationItemPrompt;
 @property (strong, nonatomic) PUPhotoPickerRemoteViewControllerRequestOptions *options; // @synthesize options=_options;
 @property (readonly, nonatomic) NSDictionary *properties;
+@property (readonly, nonatomic) BOOL requiresPickingConfirmation;
 @property (readonly, nonatomic) unsigned long long savingOptions;
-@property (nonatomic) long long secondaryActionType; // @synthesize secondaryActionType=_secondaryActionType;
+@property (readonly, nonatomic) BOOL showsFileSizePicker;
 @property (readonly, nonatomic) BOOL showsPrompt;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_allowSharingSelectionOfInfoDictionaries:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handlePerformTraitCollectionUpdateUsingData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_handleViewControllerCreationWithClassName:(id)arg1;
-- (void)_handleViewControllerFetchWithRequestedIdentifier:(id)arg1;
 - (void)_handleViewControllerRequestWithOptions:(id)arg1 error:(id)arg2;
 - (void)_loadContentViewIfNeeded;
 - (void)_logAssetSelectionIfNeeded:(id)arg1;
@@ -60,21 +50,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)_useLibraryPresentation;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)cancelPhotoPicker;
-- (void)dealloc;
 - (void)didDisplayPhotoPickerPreview;
 - (void)didDisplayPhotoPickerSourceType:(long long)arg1;
 - (void)didSelectMediaWithInfoDictionary:(id)arg1 allowedHandler:(CDUnknownBlockType)arg2;
 - (void)didSelectMultipleMediaItemsWithInfoDictionaries:(id)arg1;
 - (void)loadView;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)performAppearanceUpdateUsing:(id)arg1;
 - (void)performPhotoPickerPreviewOfFirstAsset;
 - (void)performPhotosSelection;
 - (void)performTraitCollectionUpdateUsingData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)photoPickerRemoteNavigationController:(id)arg1 popViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)photoPickerRemoteNavigationController:(id)arg1 viewControllerToPush:(id)arg2;
 - (void)presentViewController:(id)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

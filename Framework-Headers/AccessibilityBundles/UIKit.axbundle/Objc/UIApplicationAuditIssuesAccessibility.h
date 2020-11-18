@@ -21,7 +21,6 @@
 + (id)_axAuditFindAllCollectionViewsInHierarchyForView:(id)arg1;
 + (id)_axAuditFindAllTablesInHierarchyForElements:(id)arg1;
 + (id)_axAuditFindAllTablesInHierarchyForView:(id)arg1;
-+ (id)_axAuditFindClosestAccessibleAncestor:(id)arg1;
 + (id)_axAuditFindDescendantInaccessibleElements:(id)arg1;
 + (id)_axAuditFindElementsNotSupportingDynamicText:(id)arg1;
 + (id)_axAuditFindFrontmostViewControllerForHierarchy:(id)arg1;

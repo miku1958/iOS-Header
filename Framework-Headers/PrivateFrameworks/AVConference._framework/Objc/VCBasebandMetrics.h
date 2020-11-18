@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct {
         double time[15];
         unsigned int transmittedBytes[15];
+        unsigned int nonFlushableQueueDepth[15];
         int frontIndex;
         int rearIndex;
         unsigned int size;
@@ -49,11 +50,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 
 - (void)addBDCDListWithNotificationArrivalTime:(double)arg1 bdcd:(double)arg2 queuingDelay:(double)arg3;
-- (void)addInfoListWithNotificationArrivalTime:(double)arg1 transmittedBytes:(unsigned int)arg2;
-- (void)calculateBitratesAndDelays:(unsigned int)arg1 totalQueueDepth:(unsigned int)arg2;
+- (void)addInfoListWithNotification:(CDStruct_b203c80d *)arg1;
+- (void)calculateBitratesAndDelaysWithTotalQueueDepth:(unsigned int)arg1;
 - (void)dealloc;
 - (void)enableBasebandLogDump:(void *)arg1;
-- (CDStruct_48a7b5a5)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
+- (CDStruct_b21f1e06)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
 - (void)normalizeBDCD:(double)arg1;
 - (void)resetBDCDList;
 

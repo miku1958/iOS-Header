@@ -13,13 +13,14 @@
 
 @interface ICTableColumnTextStorage : ICTableTextStorage <ICTableCellMergeableStringObserving>
 {
-    BOOL _preventEditingUpdates;
+    BOOL _shouldPreventUndoCommands;
     NSUUID *_columnID;
     id<ICTableUndoHelping> _undoHelper;
     ICTable *_table;
     NSMutableArray *_rows;
     NSMutableDictionary *_mergeableStringDelegates;
     NSMutableIndexSet *_rowStartIndexes;
+    unsigned long long _preventEditingUpdatesCount;
 }
 
 @property (readonly) NSUUID *columnID; // @synthesize columnID=_columnID;
@@ -28,18 +29,22 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableDictionary *mergeableStringDelegates; // @synthesize mergeableStringDelegates=_mergeableStringDelegates;
 @property (readonly, nonatomic) NSArray *populatedRows;
-@property (nonatomic) BOOL preventEditingUpdates; // @synthesize preventEditingUpdates=_preventEditingUpdates;
+@property (readonly, nonatomic) BOOL preventEditingUpdates;
+@property (nonatomic) unsigned long long preventEditingUpdatesCount; // @synthesize preventEditingUpdatesCount=_preventEditingUpdatesCount;
 @property (readonly, nonatomic) NSMutableIndexSet *rowStartIndexes; // @synthesize rowStartIndexes=_rowStartIndexes;
 @property (readonly, nonatomic) NSMutableArray *rows; // @synthesize rows=_rows;
+@property (nonatomic) BOOL shouldPreventUndoCommands; // @synthesize shouldPreventUndoCommands=_shouldPreventUndoCommands;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) ICTable *table; // @synthesize table=_table;
 @property (weak, nonatomic) id<ICTableUndoHelping> undoHelper; // @synthesize undoHelper=_undoHelper;
 
 - (void).cxx_destruct;
+- (void)beginPreventEditingUpdates;
 - (void)breakUndoCoalescing;
 - (struct _NSRange)characterRangeForRowID:(id)arg1;
 - (void)closeUndoGroups;
 - (void)edited:(unsigned long long)arg1 range:(struct _NSRange)arg2 changeInLength:(long long)arg3;
+- (void)endPreventEditingUpdates;
 - (unsigned long long)indexOfRow:(id)arg1;
 - (unsigned long long)indexOfRowAtLocation:(unsigned long long)arg1;
 - (id)init;
@@ -47,6 +52,7 @@
 - (unsigned long long)insertionIndexForRow:(id)arg1;
 - (struct _NSRange)logicalRangeForLocation:(unsigned long long)arg1;
 - (id)mergeableStringForRowID:(id)arg1;
+- (id)mergeableStringReplicaUUIDAtIndex:(unsigned long long)arg1;
 - (unsigned long long)nextLocationAfterRowLocation:(unsigned long long)arg1;
 - (void)removeRow:(id)arg1;
 - (void)removeTextForRow:(id)arg1;
@@ -57,6 +63,7 @@
 - (unsigned long long)rowLocationForRowIndex:(unsigned long long)arg1;
 - (id)savedSelectionWithSelectionAffinity:(unsigned long long)arg1;
 - (void)tableCellWasEditedAtColumnID:(id)arg1 rowID:(id)arg2 edited:(unsigned long long)arg3 range:(struct _NSRange)arg4 changeInLength:(long long)arg5;
+- (void)textStorage:(id)arg1 didProcessEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4;
 - (void)updateStorageForMovedRow:(id)arg1;
 - (BOOL)wantsUndoCommands;
 

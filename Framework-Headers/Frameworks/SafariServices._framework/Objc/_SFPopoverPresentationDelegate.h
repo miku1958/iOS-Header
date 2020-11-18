@@ -24,9 +24,9 @@
 @property (nonatomic) BOOL popoverUsesAdaptivePresentationInCompact; // @synthesize popoverUsesAdaptivePresentationInCompact=_popoverUsesAdaptivePresentationInCompact;
 @property (readonly) Class superclass;
 
-+ (void)attachDelegateToPopoverPresentationController:(id)arg1 anchoredToReaderAppearanceButtonInNavigationBar:(id)arg2;
-+ (void)attachDelegateToPopoverPresentationController:(id)arg1 anchoredToReaderButtonInNavigationBar:(id)arg2;
 + (void)attachDelegateToPopoverPresentationController:(id)arg1 anchoredToReloadButtonInNavigationBar:(id)arg2;
++ (void)attachDelegateToPopoverPresentationController:(id)arg1 anchoredToURLOutlineInNavigationBar:(id)arg2;
++ (void)attachDelegateToPopoverPresentationController:(id)arg1 anchoredToURLOutlineInNavigationBar:(id)arg2 usesAdaptivePresentationInCompact:(BOOL)arg3;
 - (void).cxx_destruct;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)attachToPopoverPresentationController:(id)arg1;

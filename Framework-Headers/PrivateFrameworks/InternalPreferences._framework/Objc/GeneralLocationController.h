@@ -10,6 +10,8 @@
 {
 }
 
+- (void)deleteEmergencyLocationAsset:(id)arg1;
+- (id)getEmergencyLocationAssetVersion:(id)arg1;
 - (void)launchE911Tester:(id)arg1;
 - (id)logLocations:(id)arg1;
 - (void)removeSpecificLoggingModulesIfNeeded;

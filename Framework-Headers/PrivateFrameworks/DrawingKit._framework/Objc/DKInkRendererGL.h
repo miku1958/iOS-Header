@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)resetRendererState;
 - (id)snapshot;
 - (void)teardown;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

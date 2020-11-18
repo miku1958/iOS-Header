@@ -12,7 +12,6 @@
 - (void)dieForTesting;
 - (void)makeSymlinkFromAppDataContainerToBundleForIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)migrateMobileContentWithCompletion:(void (^)(NSError *))arg1;
-- (void)migrateSystemAppDataWithCompletion:(void (^)(NSError *))arg1;
 - (void)stageItemAtURL:(NSURL *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSURL *, BOOL, NSError *))arg3;
 - (void)wipeStagingRootWithCompletion:(void (^)(NSError *))arg1;
 @end

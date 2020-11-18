@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) double automaticTrafficIncidentRerouteDelay;
 @property (readonly, nonatomic) double averageWalkingSpeed;
 @property (readonly, nonatomic) double defaultExpirationOffset;
+@property (readonly, nonatomic) int endValidDistanceOffset;
 @property (readonly, nonatomic) double exitRegionSize;
 @property (readonly, nonatomic) double extraLocationWaitTimeInterval;
 @property (readonly, nonatomic) double fastWalkingSpeed;
@@ -27,8 +28,10 @@
 @property (readonly, nonatomic) double locationReuseThreshold;
 @property (readonly, nonatomic) double locationUpdateTimerInterval;
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyForDriving;
+@property (readonly, nonatomic) double locationUpdatesDesiredAccuracyForTransit;
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyForWalking;
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyWhileStationaryForDriving;
+@property (readonly, nonatomic) double locationUpdatesDesiredAccuracyWhileStationaryForTransit;
 @property (readonly, nonatomic) double locationUpdatesDesiredAccuracyWhileStationaryForWalking;
 @property (readonly, nonatomic) double maxDistanceFromOriginToSuppressReroute;
 @property (readonly, nonatomic) unsigned long long maxRandomJitterForHypothesisWakeup;
@@ -59,7 +62,6 @@
 @property (readonly, nonatomic) BOOL shouldAutomaticallyRerouteTrafficIncidents;
 @property (readonly, nonatomic) BOOL shouldLazyLoadRoutes;
 @property (readonly, nonatomic) BOOL shouldMatchToLAR;
-@property (readonly, nonatomic) BOOL shouldPreloadSubscriptions;
 @property (readonly, nonatomic) BOOL shouldRequestInlineShields;
 @property (readonly, nonatomic) BOOL shouldRequestLaneGuidance;
 @property (readonly, nonatomic) BOOL shouldRunNavigationInDaemon;
@@ -69,7 +71,10 @@
 @property (readonly, nonatomic) BOOL shouldUseServerSideETAs;
 @property (readonly, nonatomic) double slowWalkingSpeed;
 @property (readonly, nonatomic) double staleLocationUseTimerInterval;
+@property (readonly, nonatomic) int startValidDistanceOffset;
+@property (readonly, nonatomic) BOOL transitListInstructionTimeText;
 @property (readonly, nonatomic) BOOL transitTTLSupported;
+@property (readonly, nonatomic) BOOL transitTextInPlanningArtwork;
 @property (readonly, nonatomic) double updateTimeout;
 @property (readonly, nonatomic) BOOL useConservativeDepartureForRefreshTimer;
 

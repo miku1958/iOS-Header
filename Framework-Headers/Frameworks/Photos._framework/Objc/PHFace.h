@@ -33,6 +33,7 @@
     double _centerY;
     long long _clusterSequenceNumber;
     long long _qualityMeasure;
+    double _quality;
     NSString *_personUUID;
     long long _sourceWidth;
     long long _sourceHeight;
@@ -42,6 +43,8 @@
     double _rightEyeY;
     double _mouthX;
     double _mouthY;
+    double _roll;
+    double _yaw;
     double _blurScore;
     id _adjustmentVersion;
     long long _nameSource;
@@ -79,15 +82,18 @@
 @property (readonly, nonatomic) NSString *personLocalIdentifier;
 @property (readonly, nonatomic) NSString *personUUID; // @synthesize personUUID=_personUUID;
 @property (nonatomic) double poseYaw; // @synthesize poseYaw=_poseYaw;
+@property (readonly, nonatomic) double quality; // @synthesize quality=_quality;
 @property (readonly, nonatomic) long long qualityMeasure; // @synthesize qualityMeasure=_qualityMeasure;
 @property (readonly, nonatomic, getter=isRightEyeClosed) BOOL rightEyeClosed; // @synthesize rightEyeClosed=_rightEyeClosed;
 @property (readonly, nonatomic) double rightEyeX; // @synthesize rightEyeX=_rightEyeX;
 @property (readonly, nonatomic) double rightEyeY; // @synthesize rightEyeY=_rightEyeY;
+@property (readonly, nonatomic) double roll; // @synthesize roll=_roll;
 @property (readonly, nonatomic) double size; // @synthesize size=_size;
 @property (readonly, nonatomic) unsigned short smileType; // @synthesize smileType=_smileType;
 @property (readonly, nonatomic) long long sourceHeight; // @synthesize sourceHeight=_sourceHeight;
 @property (readonly, nonatomic) long long sourceWidth; // @synthesize sourceWidth=_sourceWidth;
 @property (readonly, nonatomic) int trainingType; // @synthesize trainingType=_trainingType;
+@property (readonly, nonatomic) double yaw; // @synthesize yaw=_yaw;
 
 + (id)_composePropertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)corePropertiesToFetch;
@@ -98,13 +104,14 @@
 + (id)fetchFacesForPersonsAssociatedWithFaceGroupsContainingFacesWithClusterSequenceNumbers:(id)arg1 options:(id)arg2;
 + (id)fetchFacesGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchFacesInAsset:(id)arg1 options:(id)arg2;
++ (id)fetchFacesInAssets:(id)arg1 options:(id)arg2;
 + (id)fetchFacesInFaceGroup:(id)arg1 options:(id)arg2;
 + (id)fetchFacesOnAssetWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchFacesWithOptions:(id)arg1;
 + (id)fetchKeyFaceForFaceGroup:(id)arg1 options:(id)arg2;
 + (id)fetchKeyFaceForPerson:(id)arg1 options:(id)arg2;
-+ (id)fetchKeyFacesGroupedByPersonLocalIdentifierForPersonLocalIdentifiers:(id)arg1;
++ (id)fetchKeyFacesGroupedByPersonLocalIdentifierForPersonLocalIdentifiers:(id)arg1 fetchOptions:(id)arg2;
 + (id)fetchKeyFacesGroupedByPersons:(id)arg1;
 + (id)fetchRejectedFacesForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchSingletonFacesWithOptions:(id)arg1;

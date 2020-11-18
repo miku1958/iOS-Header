@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreKnowledge/CKAbstractBackingStore.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC13CoreKnowledge17CKSQLBackingStore : CKAbstractBackingStore
+@interface _TtC13CoreKnowledge17CKSQLBackingStore : _TtCs12_SwiftObject
 {
     MISSING_TYPE *name;
+    MISSING_TYPE *connection;
 }
 
-- (void).cxx_destruct;
-- (id)init;
++ (id)directory;
++ (void)setDirectory:(id)arg1;
 - (id)initWithName:(id)arg1;
 
 @end

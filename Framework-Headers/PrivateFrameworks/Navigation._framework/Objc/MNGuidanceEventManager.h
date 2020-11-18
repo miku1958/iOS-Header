@@ -9,30 +9,36 @@
 #import <Navigation/MNGuidanceManager-Protocol.h>
 #import <Navigation/MNTimeManagerObserver-Protocol.h>
 
-@class GEOComposedGuidanceEvent, MNAnnouncementPlanEvent, MNGuidanceSignInfo, MNLocation, MNNavigationSession, NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class GEOComposedGuidanceEvent, MNAnnouncementPlanEvent, MNGuidanceSignInfo, MNJunctionViewImageLoader, MNLocation, MNNavigationSession, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
 @protocol MNAnnoucementStrategy, MNGuidanceManagerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MNGuidanceEventManager : NSObject <MNGuidanceManager, MNTimeManagerObserver>
 {
     id<MNGuidanceManagerDelegate> _delegate;
     MNNavigationSession *_navigationSession;
+    MNJunctionViewImageLoader *_junctionViewImageLoader;
     NSMutableArray *_events;
     GEOComposedGuidanceEvent *_nextEvent;
+    NSDictionary *_eventIndexes;
+    NSUUID *_injectedUUID;
     id<MNAnnoucementStrategy> _announcementStrategy;
+    NSMutableDictionary *_announcementDurations;
     NSMutableDictionary *_announcementsSpoken;
+    NSMutableSet *_exclusiveSetAnnouncementsSpoken;
     NSMutableDictionary *_hapticsTriggered;
     GEOComposedGuidanceEvent *_currentLaneGuidanceEvent;
     MNGuidanceSignInfo *_signInfo;
-    GEOComposedGuidanceEvent *_startSpokenGuidanceEvent;
-    GEOComposedGuidanceEvent *_getOnRouteSpokenGuidanceEvent;
-    GEOComposedGuidanceEvent *_endSpokenGuidanceEvent;
-    GEOComposedGuidanceEvent *_returnToRouteSpokenGuidanceEvent;
+    GEOComposedGuidanceEvent *_pendingJunctionViewGuidanceEvent;
+    GEOComposedGuidanceEvent *_currentJunctionViewGuidanceEvent;
+    NSMutableDictionary *_specialSpokenEvents;
     NSMutableArray *_startSignGuidanceEvents;
+    GEOComposedGuidanceEvent *_preArrivalSignGuidanceEvent;
     GEOComposedGuidanceEvent *_endSignGuidanceEvent;
+    GEOComposedGuidanceEvent *_previousArrivalSignGuidanceEvent;
     GEOComposedGuidanceEvent *_returnToRouteSignGuidanceEvent;
     BOOL _hasBeenOnRouteOnce;
     BOOL _canSpeakReturnToRouteAnnouncement;
+    BOOL _isInPreArrivalState;
     double _timeLastAnnouncementStarted;
     double _timeLastAnnouncementEnded;
     MNAnnouncementPlanEvent *_lastAnnouncementEvent;
@@ -51,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *events; // @synthesize events=_events;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isInPreArrivalState; // @synthesize isInPreArrivalState=_isInPreArrivalState;
 @property (strong, nonatomic) MNLocation *location; // @synthesize location=_location;
 @property (nonatomic) double speed; // @synthesize speed=_speed;
 @property (readonly) Class superclass;
@@ -60,17 +67,24 @@ __attribute__((visibility("hidden")))
 - (double)_calculateDurationToSpeakEvent:(id)arg1 announcementIndex:(unsigned long long)arg2 distance:(double)arg3;
 - (void)_considerAnnouncements;
 - (void)_considerHaptics;
+- (void)_considerJunctionViewGuidance;
 - (void)_considerLaneGuidance;
 - (void)_considerSignGuidance;
 - (void)_considerStickiness;
 - (void)_filterValidEvents;
+- (void)_handleDuration:(double)arg1 forEventID:(id)arg2 index:(unsigned long long)arg3;
+- (void)_handleJunctionViewInfo:(id)arg1;
 - (BOOL)_hasSpokenEvent:(id)arg1;
+- (int)_indexForEventUUID:(id)arg1;
 - (void)_initSpecialGuidanceEvents;
 - (BOOL)_isEventValid:(id)arg1 start:(double)arg2 end:(double)arg3;
 - (BOOL)_isValidEvent:(id)arg1;
+- (id)_junctionViewEvents;
+- (id)_maneuverWithTitle:(id)arg1 detail:(id)arg2 type:(int)arg3 shieldText:(id)arg4 shieldID:(int)arg5;
 - (void)_markEventSpoken:(id)arg1;
 - (void)_notifyAnalyticsForNewEvents:(id)arg1 previousEvents:(id)arg2;
-- (void)_notifySpeechEvent:(id)arg1 variant:(unsigned long long)arg2;
+- (void)_notifySpeechEvent:(id)arg1 variant:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3;
+- (void)_precalcuateDurations;
 - (id)_selectAnnouncementForEvent:(id)arg1 withTimeRemaining:(double)arg2 withMinIndex:(unsigned long long)arg3 selectedIndex:(out unsigned long long *)arg4;
 - (id)_serverStringDictionaryForEvent:(id)arg1 spoken:(BOOL)arg2;
 - (BOOL)_shouldUseLocation:(id)arg1;
@@ -78,11 +92,14 @@ __attribute__((visibility("hidden")))
 - (void)_stepDidChange;
 - (double)_timeRemainingForEvent:(id)arg1;
 - (double)_timeUntilEventTrigger:(id)arg1;
+- (unsigned int)_trafficColorForRoute:(id)arg1 traffic:(id)arg2 distanceRemaining:(double)arg3;
+- (void)addInjectedEvent:(id)arg1;
 - (void)dealloc;
 - (double)durationOfEvent:(id)arg1 announcementIndex:(unsigned long long)arg2 distance:(double)arg3;
-- (id)initWithNavigationSession:(id)arg1;
+- (id)initWithNavigationSession:(id)arg1 isReconnecting:(BOOL)arg2;
 - (BOOL)repeatLastGuidanceAnnouncement:(id)arg1;
 - (void)reset;
+- (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)stop;
 - (void)timeManagerDidChangeProvider:(id)arg1;
 - (double)timeSinceLastAnnouncement;

@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)_preventsAppearanceProxyCustomization;
 - (void).cxx_destruct;
 - (void)_appDidEnterBackground:(id)arg1;
-- (BOOL)_viewControllerUnderlapsStatusBar;
 - (void)dealloc;
 - (id)initWithPrompt:(id)arg1 forUserNamesOnly:(BOOL)arg2 appNames:(id)arg3 appID:(id)arg4 matchedSites:(id)arg5 urlString:(id)arg6 minimumNumberOfCredentialsToShowLikelyMatchesSection:(unsigned long long)arg7 shouldShowIcons:(BOOL)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (void)passwordPickerTableViewController:(id)arg1 didPickSavedPassword:(id)arg2;

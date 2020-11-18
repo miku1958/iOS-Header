@@ -15,7 +15,7 @@
 - (void)remote_allAuthorizationRecordsForBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)remote_allAuthorizationRecordsForType:(HKObjectType *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)remote_allObjectAuthorizationRecordsForSampleWithUUID:(NSUUID *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)remote_allSourcesRequestingTypes:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
+- (void)remote_allSourcesRequestingAuthorizationForTypes:(NSSet *)arg1 completion:(void (^)(NSSet *, NSError *))arg2;
 - (void)remote_allSourcesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)remote_authorizationStatusForType:(HKObjectType *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)remote_badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -24,8 +24,9 @@
 - (void)remote_clientWillSuspendWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_closeTransactionWithDataType:(HKObjectType *)arg1 anchor:(NSNumber *)arg2 ackTime:(NSNumber *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)remote_containerAppExtensionEntitlementsWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)remote_createTaskServerForIdentifier:(NSString *)arg1 taskUUID:(NSUUID *)arg2 configuration:(HKTaskConfiguration *)arg3 completion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg4;
+- (void)remote_createTaskServerEndpointForIdentifier:(NSString *)arg1 pluginURL:(NSURL *)arg2 taskUUID:(NSUUID *)arg3 configuration:(HKTaskConfiguration *)arg4 completion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg5;
 - (void)remote_deleteAllSamplesWithTypes:(NSArray *)arg1 sourceBundleIdentifier:(NSString *)arg2 options:(unsigned long long)arg3 completion:(void (^)(BOOL, NSError *))arg4;
+- (void)remote_deleteClientSourceWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_deleteDataObjects:(NSArray *)arg1 options:(unsigned long long)arg2 handler:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_deleteDataObjectsOfType:(HKObjectType *)arg1 matchingFilter:(_HKFilter *)arg2 options:(unsigned long long)arg3 handler:(void (^)(BOOL, unsigned long long, NSError *))arg4;
 - (void)remote_deleteObjectsWithUUIDs:(NSArray *)arg1 options:(unsigned long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
@@ -34,11 +35,10 @@
 - (void)remote_fetchCharacteristicWithDataType:(HKObjectType *)arg1 handler:(void (^)(id, NSError *))arg2;
 - (void)remote_fetchDaemonPreferenceForKey:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (void)remote_fetchDevicesMatchingProperty:(NSString *)arg1 values:(NSSet *)arg2 completion:(void (^)(NSSet *, NSError *))arg3;
-- (void)remote_fetchDisplayNameWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)remote_fetchDisplayNameWithCompletion:(void (^)(NSString *, NSString *, NSError *))arg1;
 - (void)remote_fetchPluginServiceEndpointWithIdentifier:(NSString *)arg1 completion:(void (^)(NSXPCListenerEndpoint *, NSError *))arg2;
 - (void)remote_fetchServerURLForAssetType:(NSString *)arg1 completion:(void (^)(NSURL *, NSError *))arg2;
 - (void)remote_fetchUnitPreferencesForTypes:(NSSet *)arg1 withCompletion:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)remote_getDefaultForKey:(NSString *)arg1 withHandler:(void (^)(id, NSError *))arg2;
 - (void)remote_getHealthDirectorySizeInBytesWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
 - (void)remote_getHealthLiteValueForKey:(NSString *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)remote_getIsFeatureSetAvailable:(unsigned long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
@@ -60,7 +60,6 @@
 - (void)remote_proxyForStaticSyncServerWithCompletion:(void (^)(HDStaticSyncServer *, NSError *))arg1;
 - (void)remote_proxyForUtilityServerWithCompletion:(void (^)(HDUtilityServer *, NSError *))arg1;
 - (void)remote_proxyForWorkoutServerWithCompletion:(void (^)(HDWorkoutServer *, NSError *))arg1;
-- (void)remote_removeDefaultForKey:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_requestAuthorizationToShareTypes:(NSSet *)arg1 readTypes:(NSSet *)arg2 shouldPrompt:(BOOL)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)remote_resetAuthorizationStatusForBundleIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_resetObjectAuthorizationStatusForBundleIdentifier:(NSString *)arg1 objectType:(HKObjectType *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
@@ -72,16 +71,13 @@
 - (void)remote_setBackgroundDeliveryFrequency:(long long)arg1 forDataType:(HKObjectType *)arg2 handler:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setCharacteristic:(id)arg1 forDataType:(HKCharacteristicType *)arg2 handler:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setDaemonPreferenceValue:(id)arg1 forKey:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)remote_setDefaultValue:(id)arg1 forKey:(NSString *)arg2 withCompletion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setHealthLiteValue:(NSNumber *)arg1 forKey:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setObjectAuthorizationStatuses:(NSDictionary *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setPreferredUnit:(HKUnit *)arg1 forType:(HKQuantityType *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_setRequestedAuthorizationForBundleIdentifier:(NSString *)arg1 shareTypes:(NSSet *)arg2 readTypes:(NSSet *)arg3 prompt:(BOOL)arg4 completion:(void (^)(BOOL, NSError *))arg5;
 - (void)remote_setServerURL:(NSURL *)arg1 forAssetType:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_splitTotalCalories:(double)arg1 timeInterval:(double)arg2 withCompletion:(void (^)(double, NSError *))arg3;
-- (void)remote_submitMetricsIgnoringAnchor:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_suppressActivityAlertsForIdentifier:(NSString *)arg1 suppressionReason:(long long)arg2 timeoutUntilDate:(NSDate *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)remote_updateOrderedSources:(NSArray *)arg1 forObjectType:(HKObjectType *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)remote_weeklySummaryInfoForDate:(NSDate *)arg1 withCompletion:(void (^)(NSDictionary *, NSError *))arg2;
 @end
 

@@ -4,19 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSOrderedSet, NSString;
-@protocol VCVoiceShortcutSyncService;
+#import <VoiceShortcuts/VCIncomingSyncDataHandling-Protocol.h>
+#import <VoiceShortcuts/VCOutgoingSyncDataHandling-Protocol.h>
 
-@protocol VCSyncDataHandling
-- (void)applyChangeSet:(NSOrderedSet *)arg1 fromSyncServiceWithIdentifier:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (id)createMessageFromData:(NSData *)arg1;
-- (BOOL)deleteSyncedData:(id *)arg1;
-- (void)deregisterSyncServiceWithIdentifier:(NSString *)arg1;
-- (void)getUnsyncedChangesForSyncServiceWithIdentifier:(NSString *)arg1 completion:(void (^)(NSOrderedSet *, NSError *))arg2;
-- (int)handledMessageType;
-- (void)markChangesAsSynced:(NSOrderedSet *)arg1 withSyncServiceWithIdentifier:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)registerSyncService:(id<VCVoiceShortcutSyncService>)arg1 asMaster:(BOOL)arg2;
-- (void)removeSyncStateForChanges:(NSOrderedSet *)arg1 withSyncServiceWithIdentifier:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)removeSyncStateForSyncServiceWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+@protocol VCShortcutSyncService;
+
+@protocol VCSyncDataHandling <VCOutgoingSyncDataHandling, VCIncomingSyncDataHandling>
+- (void)deregisterSyncService:(id<VCShortcutSyncService>)arg1;
+- (void)registerSyncService:(id<VCShortcutSyncService>)arg1;
 @end
 

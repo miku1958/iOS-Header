@@ -12,10 +12,12 @@
 
 @property (readonly, nonatomic, getter=isBundleSubscriber) BOOL bundleSubscriber;
 @property (readonly, nonatomic, getter=isChannelSubscriber) BOOL channelSubscriber;
+@property (readonly, nonatomic) double contentScaleFactor;
 @property (readonly, nonatomic) NSString *contentSizeCategory;
 @property (readonly, nonatomic) long long horizontalSizeClass;
 @property (readonly, nonatomic) unsigned long long numberOfColumns;
 @property (readonly, nonatomic) BOOL testing;
+@property (readonly, nonatomic) long long userInterfaceStyle;
 @property (readonly, nonatomic) long long verticalSizeClass;
 @property (readonly, nonatomic) unsigned long long viewingLocation;
 @property (readonly, nonatomic) struct CGSize viewportSize;

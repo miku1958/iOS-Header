@@ -12,7 +12,7 @@
 #import <QuickLook/UIScrollViewDelegate-Protocol.h>
 #import <QuickLook/WKNavigationDelegate-Protocol.h>
 
-@class NSCache, NSLayoutConstraint, NSOperationQueue, NSString, QLScrubView, WBUPrintPageRenderer, WKWebView;
+@class NSCache, NSLayoutConstraint, NSOperationQueue, NSString, QLScrubView, UIPrintPageRenderer, WKWebView;
 @protocol QLWebKitPaginator, QLWebKitThumbnailGenerator;
 
 __attribute__((visibility("hidden")))
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     NSString *_previewContentType;
     struct CGPoint _scrollViewTopOffset;
     CDUnknownBlockType _completionHandler;
-    WBUPrintPageRenderer *_renderer;
+    UIPrintPageRenderer *_renderer;
     BOOL _fullScreen;
     id<QLWebKitThumbnailGenerator> _thumbnailGenerator;
     id<QLWebKitPaginator> _paginator;
@@ -45,8 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
-+ (BOOL)providesCustomPrinter;
-+ (Class)transformerClass;
++ (BOOL)_shouldDisableJavaScriptForContentType:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addThumbnailToCache:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_hideScrubberIfNeeded:(BOOL)arg1;
@@ -78,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewWillAppear:(BOOL)arg1;
 - (id)printer;
+- (void)provideCurrentPageAndVisibleRectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)scrollView;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)scrubView;

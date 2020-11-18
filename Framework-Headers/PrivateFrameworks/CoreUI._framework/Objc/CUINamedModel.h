@@ -6,9 +6,17 @@
 
 #import <CoreUI/CUINamedLookup.h>
 
+@class MDLAsset;
+
 @interface CUINamedModel : CUINamedLookup
 {
 }
+
+@property (readonly, nonatomic) MDLAsset *asset;
+
+- (id)_renditionForKey:(id)arg1 inThemeRef:(unsigned long long)arg2;
+- (id)description;
+- (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3;
 
 @end
 

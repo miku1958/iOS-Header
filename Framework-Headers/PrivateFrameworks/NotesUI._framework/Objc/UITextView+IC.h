@@ -6,14 +6,23 @@
 
 #import <UIKit/UITextView.h>
 
+@class PKTiledView;
+
 @interface UITextView (IC)
+
+@property (readonly, nonatomic) PKTiledView *ic_pkTiledView;
+@property (readonly, nonatomic) struct CGPoint ic_textContainerOrigin;
+
 - (struct _NSRange)ic_characterRangeFromTextPosition:(id)arg1;
 - (struct _NSRange)ic_characterRangeFromTextRange:(id)arg1;
+- (id)ic_imageForRange:(struct _NSRange)arg1;
+- (struct _NSRange)ic_rangeFromRect:(struct CGRect)arg1;
+- (struct CGRect)ic_rectForRange:(struct _NSRange)arg1;
+- (void)ic_scrollRangeToTop:(struct _NSRange)arg1;
+- (void)ic_scrollRangeToVisible:(struct _NSRange)arg1 consideringInsets:(BOOL)arg2 animated:(BOOL)arg3;
+- (id)ic_selectedRanges;
 - (id)ic_textRangeFromCharacterRange:(struct _NSRange)arg1;
-- (void)scrollRangeToTop:(struct _NSRange)arg1;
-- (void)scrollRangeToVisible:(struct _NSRange)arg1 consideringInsets:(BOOL)arg2 animated:(BOOL)arg3;
-- (id)selectedRanges;
-- (void)setSelectedRanges:(id)arg1;
-- (struct _NSRange)visibleRange;
+- (struct _NSRange)ic_visibleRange;
+- (void)setIc_SelectedRanges:(id)arg1;
 @end
 

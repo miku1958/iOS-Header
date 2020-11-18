@@ -20,6 +20,8 @@
 @property (strong, nonatomic) NSMutableArray *utterances; // @synthesize utterances=_utterances;
 
 + (id)conversationWithCall:(id)arg1;
++ (void)conversationWithCall:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
++ (void)conversationWithCallUID:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 + (id)conversationWithID:(id)arg1 andUtterances:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -27,7 +29,6 @@
 - (id)appendCharacter:(unsigned short)arg1;
 - (id)appendStringFromOtherContactPath:(id)arg1;
 - (void)cleanup;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

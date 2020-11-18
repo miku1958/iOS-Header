@@ -6,24 +6,32 @@
 
 #import "VKFeatureAccessibilityElement.h"
 
+@class NSMutableArray;
+
 @interface VKPointFeatureAccessibilityElement : VKFeatureAccessibilityElement
 {
+    NSMutableArray *_featureIds;
     CDStruct_31142d93 _location;
 }
 
+@property (strong, nonatomic) NSMutableArray *featureIds; // @synthesize featureIds=_featureIds;
 @property (nonatomic) CDStruct_31142d93 location; // @synthesize location=_location;
 
+- (void).cxx_destruct;
 - (long long)_accessibilityMapFeatureType;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_distanceAwayString;
 - (id)_poiTypeSuffix;
 - (double)_radius;
 - (BOOL)accessibilityActivate;
+- (id)accessibilityDragSourceDescriptors;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
 - (id)accessibilityPaths;
+- (id)initWithAccessibilityContainer:(id)arg1;
 - (BOOL)isAccessibilityElement;
+- (BOOL)isEqual:(id)arg1;
 - (id)trueLabel;
 
 @end

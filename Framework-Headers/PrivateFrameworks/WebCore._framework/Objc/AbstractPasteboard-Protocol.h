@@ -23,7 +23,6 @@
 
 @optional
 - (NSArray *)fileUploadURLsAtIndex:(unsigned long long)arg1 fileTypes:(id *)arg2;
-- (NSArray *)pasteboardTypesByFidelityForItemAtIndex:(unsigned long long)arg1;
 - (void)setItems:(NSArray *)arg1;
 - (void)stageRegistrationList:(WebItemProviderRegistrationInfoList *)arg1;
 - (WebItemProviderRegistrationInfoList *)takeRegistrationList;

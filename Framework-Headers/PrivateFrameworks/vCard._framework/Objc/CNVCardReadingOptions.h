@@ -10,6 +10,7 @@
 
 @interface CNVCardReadingOptions : NSObject
 {
+    BOOL _useConcurrentParsing;
     unsigned long long _contactLimit;
     NSArray *_propertiesToFetch;
     unsigned long long _maximumValueLength;
@@ -18,6 +19,7 @@
 @property (nonatomic) unsigned long long contactLimit; // @synthesize contactLimit=_contactLimit;
 @property (nonatomic) unsigned long long maximumValueLength; // @synthesize maximumValueLength=_maximumValueLength;
 @property (copy, nonatomic) NSArray *propertiesToFetch; // @synthesize propertiesToFetch=_propertiesToFetch;
+@property (nonatomic) BOOL useConcurrentParsing; // @synthesize useConcurrentParsing=_useConcurrentParsing;
 
 - (void).cxx_destruct;
 - (id)description;

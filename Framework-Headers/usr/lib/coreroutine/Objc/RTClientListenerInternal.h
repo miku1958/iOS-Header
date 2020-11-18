@@ -8,12 +8,11 @@
 
 #import <coreroutine/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, RTAccountManager, RTActionManager, RTAssetManager, RTAuthorizationManager, RTDeviceLocationPredictor, RTDiagnostics, RTEventAgentManager, RTEventModelProvider, RTFingerprintManager, RTLearnedLocationManager, RTLocationManager, RTLocationStore, RTMotionActivityManager, RTPersistenceManager, RTPlatform, RTPredictedApplicationManager, RTPurgeManager, RTRouteManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager, RTWiFiManager;
+@class NSString, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTDeviceLocationPredictor, RTDiagnostics, RTEventAgentManager, RTEventModelProvider, RTFingerprintManager, RTHintManager, RTLearnedLocationManager, RTLearnedLocationStore, RTLocationManager, RTLocationStore, RTMotionActivityManager, RTPersistenceManager, RTPlatform, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager, RTWiFiManager;
 
 @interface RTClientListenerInternal : RTXPCListener <NSXPCListenerDelegate>
 {
     RTAccountManager *_accountManager;
-    RTActionManager *_actionManager;
     RTAssetManager *_assetManager;
     RTAuthorizationManager *_authorizationManager;
     RTDeviceLocationPredictor *_deviceLocationPredictor;
@@ -21,15 +20,15 @@
     RTEventAgentManager *_eventAgentManager;
     RTEventModelProvider *_eventModelProvider;
     RTFingerprintManager *_fingerprintManager;
+    RTHintManager *_hintManager;
     RTLearnedLocationManager *_learnedLocationManager;
+    RTLearnedLocationStore *_learnedLocationStore;
     RTLocationManager *_locationManager;
     RTLocationStore *_locationStore;
     RTMotionActivityManager *_motionActivityManager;
     RTPersistenceManager *_persistenceManager;
     RTPlatform *_platform;
-    RTPredictedApplicationManager *_predictedApplicationManager;
     RTPurgeManager *_purgeManager;
-    RTRouteManager *_routeManager;
     RTScenarioTriggerManager *_scenarioTriggerManager;
     RTVehicleLocationProvider *_vehicleLocationProvider;
     RTVisitManager *_visitManager;
@@ -37,7 +36,6 @@
 }
 
 @property (strong, nonatomic) RTAccountManager *accountManager; // @synthesize accountManager=_accountManager;
-@property (strong, nonatomic) RTActionManager *actionManager; // @synthesize actionManager=_actionManager;
 @property (strong, nonatomic) RTAssetManager *assetManager; // @synthesize assetManager=_assetManager;
 @property (strong, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property (readonly, copy) NSString *debugDescription;
@@ -48,15 +46,15 @@
 @property (strong, nonatomic) RTEventModelProvider *eventModelProvider; // @synthesize eventModelProvider=_eventModelProvider;
 @property (strong, nonatomic) RTFingerprintManager *fingerprintManager; // @synthesize fingerprintManager=_fingerprintManager;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
 @property (strong, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
+@property (strong, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
 @property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (strong, nonatomic) RTLocationStore *locationStore; // @synthesize locationStore=_locationStore;
 @property (strong, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
 @property (strong, nonatomic) RTPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
 @property (strong, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
-@property (strong, nonatomic) RTPredictedApplicationManager *predictedApplicationManager; // @synthesize predictedApplicationManager=_predictedApplicationManager;
 @property (strong, nonatomic) RTPurgeManager *purgeManager; // @synthesize purgeManager=_purgeManager;
-@property (strong, nonatomic) RTRouteManager *routeManager; // @synthesize routeManager=_routeManager;
 @property (strong, nonatomic) RTScenarioTriggerManager *scenarioTriggerManager; // @synthesize scenarioTriggerManager=_scenarioTriggerManager;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) RTVehicleLocationProvider *vehicleLocationProvider; // @synthesize vehicleLocationProvider=_vehicleLocationProvider;
@@ -66,7 +64,7 @@
 - (void).cxx_destruct;
 - (id)handleClientConnection:(id)arg1;
 - (id)init;
-- (id)initWithAccountManager:(id)arg1 actionManager:(id)arg2 assetManager:(id)arg3 authorizationManager:(id)arg4 deviceLocationPredictor:(id)arg5 diagnostics:(id)arg6 eventAgentManager:(id)arg7 eventModelProvider:(id)arg8 fingerprintManager:(id)arg9 learnedLocationManager:(id)arg10 locationManager:(id)arg11 locationStore:(id)arg12 motionActivityManager:(id)arg13 persistenceManager:(id)arg14 platform:(id)arg15 predictedApplicationManager:(id)arg16 purgeManager:(id)arg17 routeManager:(id)arg18 scenarioTriggerManager:(id)arg19 vehicleLocationProvider:(id)arg20 visitManager:(id)arg21;
+- (id)initWithAccountManager:(id)arg1 assetManager:(id)arg2 authorizationManager:(id)arg3 deviceLocationPredictor:(id)arg4 diagnostics:(id)arg5 eventAgentManager:(id)arg6 eventModelProvider:(id)arg7 fingerprintManager:(id)arg8 hintManager:(id)arg9 learnedLocationManager:(id)arg10 learnedLocationStore:(id)arg11 locationManager:(id)arg12 locationStore:(id)arg13 motionActivityManager:(id)arg14 persistenceManager:(id)arg15 platform:(id)arg16 purgeManager:(id)arg17 scenarioTriggerManager:(id)arg18 vehicleLocationProvider:(id)arg19 visitManager:(id)arg20;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 
 @end

@@ -13,21 +13,22 @@
 @interface GEOLogMsgEventParkedCar : PBCodable <NSCopying>
 {
     double _locationUncertainty;
-    double _timestamp;
     GEOLatLng *_location;
+    double _timestamp;
     struct {
-        unsigned int locationUncertainty:1;
-        unsigned int timestamp:1;
-    } _has;
+        unsigned int has_locationUncertainty:1;
+        unsigned int has_timestamp:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasLocationUncertainty;
 @property (nonatomic) BOOL hasTimestamp;
-@property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
-@property (nonatomic) double locationUncertainty; // @synthesize locationUncertainty=_locationUncertainty;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) GEOLatLng *location;
+@property (nonatomic) double locationUncertainty;
+@property (nonatomic) double timestamp;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -36,6 +37,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

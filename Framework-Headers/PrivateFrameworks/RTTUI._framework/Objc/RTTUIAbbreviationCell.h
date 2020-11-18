@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)abbreviationText;
 - (id)accessibilityIdentifier;
+- (BOOL)accessibilityIgnoresInvertColors;
 - (id)accessibilityLabel;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

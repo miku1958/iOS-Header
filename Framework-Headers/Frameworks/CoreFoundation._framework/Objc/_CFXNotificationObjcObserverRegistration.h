@@ -9,8 +9,8 @@
 __attribute__((visibility("hidden")))
 @interface _CFXNotificationObjcObserverRegistration : _CFXNotificationObserverRegistration
 {
-    BOOL _useFallback;
     id _object;
+    _Atomic BOOL _useFallback;
 }
 
 - (void)dealloc;

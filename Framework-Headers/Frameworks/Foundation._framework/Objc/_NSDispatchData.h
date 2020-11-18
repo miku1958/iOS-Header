@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_allowsDirectEncoding;
 - (id)_createDispatchData;
 - (BOOL)_isDispatchData;
+- (BOOL)_providesConcreteBacking;
 - (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

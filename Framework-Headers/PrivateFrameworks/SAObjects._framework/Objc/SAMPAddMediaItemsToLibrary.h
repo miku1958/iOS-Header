@@ -6,12 +6,13 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class SAMPCollection;
+@class NSString, SAMPCollection;
 
 @interface SAMPAddMediaItemsToLibrary : SABaseClientBoundCommand
 {
 }
 
+@property (copy, nonatomic) NSString *influencedUserSharedUserId;
 @property (strong, nonatomic) SAMPCollection *mediaItems;
 
 + (id)addMediaItemsToLibrary;

@@ -9,7 +9,7 @@
 #import <MusicCarDisplayUI/MCDPCContainerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITabBarControllerDelegate-Protocol.h>
 
-@class AVExternalDevice, MCDPCContainer, MCDPCModel, NSObject, NSString, UIButton;
+@class MCDNowPlayingButtonWrapperView, MCDPCContainer, MCDPCModel, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MCDBrowsableContentNavigationController : UITabBarController <UITabBarControllerDelegate, MCDPCContainerDelegate>
@@ -18,13 +18,13 @@
     BOOL _didFinishInitialLoad;
     BOOL _didFinishInitialViewAppear;
     BOOL _visible;
+    BOOL _hasInvalidatedDummyTabs;
     MCDPCContainer *_container;
     UITabBarController *_tabBarController;
     UITabBarController *_hostTabBarController;
-    AVExternalDevice *_externalDevice;
     MCDPCModel *_model;
     NSString *_bundleID;
-    UIButton *_nowPlayingButton;
+    MCDNowPlayingButtonWrapperView *_nowPlayingButtonView;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
@@ -34,12 +34,12 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didFinishInitialLoad; // @synthesize didFinishInitialLoad=_didFinishInitialLoad;
 @property (nonatomic) BOOL didFinishInitialViewAppear; // @synthesize didFinishInitialViewAppear=_didFinishInitialViewAppear;
-@property (strong, nonatomic) AVExternalDevice *externalDevice; // @synthesize externalDevice=_externalDevice;
 @property (nonatomic) BOOL hasCarScreen; // @synthesize hasCarScreen=_hasCarScreen;
+@property (nonatomic) BOOL hasInvalidatedDummyTabs; // @synthesize hasInvalidatedDummyTabs=_hasInvalidatedDummyTabs;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UITabBarController *hostTabBarController; // @synthesize hostTabBarController=_hostTabBarController;
 @property (strong, nonatomic) MCDPCModel *model; // @synthesize model=_model;
-@property (strong, nonatomic) UIButton *nowPlayingButton; // @synthesize nowPlayingButton=_nowPlayingButton;
+@property (strong, nonatomic) MCDNowPlayingButtonWrapperView *nowPlayingButtonView; // @synthesize nowPlayingButtonView=_nowPlayingButtonView;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITabBarController *tabBarController; // @synthesize tabBarController=_tabBarController;

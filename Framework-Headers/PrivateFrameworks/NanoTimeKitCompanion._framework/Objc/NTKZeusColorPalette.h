@@ -17,6 +17,7 @@
     UIColor *_minuteHandColor;
     UIColor *_hourHandColor;
     UIColor *_handInlayColor;
+    UIColor *_minuteHandDotColor;
     UIColor *_backgroundColor;
     double _secondHandAlpha;
     unsigned long long _bleed;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) UIColor *handInlayColor; // @synthesize handInlayColor=_handInlayColor;
 @property (readonly, nonatomic) UIColor *hourHandColor; // @synthesize hourHandColor=_hourHandColor;
 @property (readonly, nonatomic) UIColor *minuteHandColor; // @synthesize minuteHandColor=_minuteHandColor;
+@property (readonly, nonatomic) UIColor *minuteHandDotColor; // @synthesize minuteHandDotColor=_minuteHandDotColor;
 @property (readonly, nonatomic) double secondHandAlpha; // @synthesize secondHandAlpha=_secondHandAlpha;
 @property (readonly, nonatomic) UIColor *secondHandColor; // @synthesize secondHandColor=_secondHandColor;
 @property (readonly, nonatomic) UIColor *splitColor; // @synthesize splitColor=_splitColor;
@@ -39,11 +41,17 @@
 + (id)bleuLightColor;
 + (id)bleuMediumColor;
 + (id)bordeauxColor;
++ (id)briqueColor;
 + (id)capucineColor;
 + (id)charcoalColor;
 + (id)craieColor;
++ (id)encreColor;
++ (id)etainColor;
 + (id)feuColor;
 + (id)indigoColor;
++ (id)noirColor;
++ (id)noirHandStrokeColor;
++ (id)noirSecondHandColor;
 + (id)offWhiteColor;
 + (id)paletteForColor:(unsigned long long)arg1;
 + (id)roseAzaleeColor;

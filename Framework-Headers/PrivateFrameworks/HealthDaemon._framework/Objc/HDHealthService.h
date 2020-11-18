@@ -17,9 +17,9 @@
     NSMutableArray *_pendingObjectBuffer;
     NSMutableArray *_pendingCharacteristicBuffer;
     HDDeviceEntity *_deviceEntity;
+    _Atomic BOOL _deviceInformationLoaded;
     BOOL _deliverData;
     BOOL _characteristicsDiscovered;
-    int _deviceInformationLoaded;
     HDProfile *_profile;
     HDHealthPeripheral *_healthPeripheral;
     NSUUID *_peripheralUUID;
@@ -32,7 +32,6 @@
 
 @property (readonly, nonatomic) BOOL characteristicsDiscovered; // @synthesize characteristicsDiscovered=_characteristicsDiscovered;
 @property BOOL deliverData; // @synthesize deliverData=_deliverData;
-@property (nonatomic) int deviceInformationLoaded; // @synthesize deviceInformationLoaded=_deviceInformationLoaded;
 @property (readonly, weak, nonatomic) HDHealthPeripheral *healthPeripheral; // @synthesize healthPeripheral=_healthPeripheral;
 @property (strong, nonatomic) NSMutableArray *pendingWrites; // @synthesize pendingWrites=_pendingWrites;
 @property (readonly, nonatomic) NSUUID *peripheralUUID; // @synthesize peripheralUUID=_peripheralUUID;

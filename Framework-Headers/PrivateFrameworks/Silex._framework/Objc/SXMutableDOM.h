@@ -7,7 +7,7 @@
 #import <Silex/SXDOM.h>
 
 @class NSMutableDictionary, SXMutableComponents;
-@protocol SXAutoPlacement;
+@protocol SXAutoPlacement, SXDocumentStyle;
 
 @interface SXMutableDOM : SXDOM
 {
@@ -18,11 +18,12 @@
 @property (readonly, copy, nonatomic) NSMutableDictionary *componentStyles;
 @property (readonly, copy, nonatomic) NSMutableDictionary *componentTextStyles;
 @property (readonly, copy, nonatomic) SXMutableComponents *components;
+@property (strong, nonatomic) id<SXDocumentStyle> documentStyle;
 @property (readonly, copy, nonatomic) NSMutableDictionary *resources;
 @property (readonly, copy, nonatomic) NSMutableDictionary *textStyles;
 
 - (id)debugDescription;
-- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7;
+- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7 documentStyle:(id)arg8;
 
 @end
 

@@ -6,19 +6,17 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class IKViewElement, TVImageLayout, VUIButton, VUICollectionViewFeaturedView;
+@class IKViewElement, TVImageLayout, VUICollectionViewFeaturedView;
 
 __attribute__((visibility("hidden")))
 @interface VUICollectionViewFeaturedCell : UICollectionViewCell
 {
     VUICollectionViewFeaturedView *_featuredView;
-    VUIButton *_focusableButton;
     TVImageLayout *_imageLayout;
     IKViewElement *_viewElement;
 }
 
 @property (strong, nonatomic) VUICollectionViewFeaturedView *featuredView; // @synthesize featuredView=_featuredView;
-@property (strong, nonatomic) VUIButton *focusableButton; // @synthesize focusableButton=_focusableButton;
 @property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 

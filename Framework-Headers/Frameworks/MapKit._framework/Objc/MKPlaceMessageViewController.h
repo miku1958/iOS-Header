@@ -27,7 +27,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)initWithPlaceItem:(id)arg1;
 - (void)loadRow;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;

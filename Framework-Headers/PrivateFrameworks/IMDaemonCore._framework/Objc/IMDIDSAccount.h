@@ -20,6 +20,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithAccountID:(id)arg1 defaults:(id)arg2 service:(id)arg3 idsAccount:(id)arg4;
+- (BOOL)multiplePhoneNumbersTiedToAccount;
 - (void)writeAccountDefaults:(id)arg1;
 
 @end

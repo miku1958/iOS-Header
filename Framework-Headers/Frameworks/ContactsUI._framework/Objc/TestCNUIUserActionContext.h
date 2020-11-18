@@ -8,7 +8,7 @@
 
 #import <ContactsUI/CNUIUserActionContext-Protocol.h>
 
-@class NSString;
+@class BSServiceConnectionEndpoint, NSString;
 @protocol CNUIUserActionCurator, CNUIUserActionDialRequestOpener, CNUIUserActionRecorder, CNUIUserActionURLOpener, CNUIUserActionUserActivityOpener;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL actionExecutionWasAttemted; // @synthesize actionExecutionWasAttemted=_actionExecutionWasAttemted;
 @property (readonly, nonatomic) id<CNUIUserActionRecorder> actionRecorder;
 @property (copy, nonatomic) NSString *channelIdentifier; // @synthesize channelIdentifier=_channelIdentifier;
+@property (copy, nonatomic) BSServiceConnectionEndpoint *connectionEndpoint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<CNUIUserActionDialRequestOpener> dialRequestOpener;

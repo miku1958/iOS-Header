@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) id value; // @synthesize value=_value;
 
 - (void).cxx_destruct;
-- (BOOL)applyToABPerson:(void *)arg1 withPropertiesContext:(id)arg2 error:(id *)arg3;
+- (BOOL)applyToABPerson:(void *)arg1 withPropertiesContext:(id)arg2 logger:(id)arg3 error:(id *)arg4;
 - (void)applyToMutableContact:(id)arg1 withIdentifierMap:(id)arg2;
 - (id)description;
 - (unsigned long long)hash;

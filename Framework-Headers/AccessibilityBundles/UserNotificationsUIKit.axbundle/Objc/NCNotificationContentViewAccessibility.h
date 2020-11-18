@@ -16,6 +16,7 @@
 - (id)_accessibilitySupportGesturesAttributes;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)accessibilityActivate;
+- (id)accessibilityCustomRotors;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

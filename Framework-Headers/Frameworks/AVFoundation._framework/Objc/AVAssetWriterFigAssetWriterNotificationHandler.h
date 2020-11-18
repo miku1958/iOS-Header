@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)_handleFailedNotificationWithError:(id)arg1;
 - (void)_teardownNotificationHandlers;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithFigAssetWriter:(struct OpaqueFigAssetWriter *)arg1;
 
 @end

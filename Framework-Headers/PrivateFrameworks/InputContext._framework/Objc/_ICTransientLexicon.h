@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) unsigned char typeFlags; // @synthesize typeFlags=_typeFlags;
 
 - (void).cxx_destruct;
-- (void)addEntry:(id)arg1;
+- (BOOL)addEntry:(id)arg1 source:(unsigned char)arg2 type:(unsigned char)arg3;
 - (BOOL)contains:(id)arg1;
 - (struct _LXEntry *)copyEntryForString:(id)arg1;
 - (void)dealloc;
@@ -33,7 +33,8 @@
 - (id)getUsageCount:(id)arg1;
 - (id)initWithName:(id)arg1 typeFlags:(unsigned char)arg2;
 - (void)removeAllEntries;
-- (void)removeEntry:(id)arg1;
+- (void)removeEntriesBySource:(unsigned char)arg1;
+- (void)removeEntry:(id)arg1 source:(unsigned char)arg2;
 
 @end
 

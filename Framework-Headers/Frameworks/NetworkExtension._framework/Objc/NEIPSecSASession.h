@@ -15,6 +15,7 @@
     NSObject<NEIPSecSASessionDelegate> *_delegate;
     NSMutableArray *_securityAssociations;
     NSMutableArray *_larvalSAs;
+    unsigned long long _uniqueIndex;
     NSObject<OS_dispatch_queue> *_internalDelegateQueue;
 }
 
@@ -24,11 +25,14 @@
 @property (strong) NSMutableArray *larvalSAs; // @synthesize larvalSAs=_larvalSAs;
 @property (strong) NSString *name; // @synthesize name=_name;
 @property (strong) NSMutableArray *securityAssociations; // @synthesize securityAssociations=_securityAssociations;
+@property (nonatomic) unsigned long long uniqueIndex; // @synthesize uniqueIndex=_uniqueIndex;
 
 - (void).cxx_destruct;
 - (BOOL)addLarvalSA:(id)arg1;
 - (BOOL)addSA:(id)arg1;
+- (id)copyEmptySASession;
 - (void)dealloc;
+- (id)description;
 - (id)initWithName:(id)arg1 delegate:(id)arg2;
 - (void)invalidate;
 - (BOOL)migrateSA:(id)arg1;

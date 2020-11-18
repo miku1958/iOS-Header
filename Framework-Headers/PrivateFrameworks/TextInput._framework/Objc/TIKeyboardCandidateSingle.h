@@ -29,6 +29,7 @@
 + (int)type;
 - (void).cxx_destruct;
 - (id)candidateByReplacingWithCandidate:(id)arg1;
+- (id)candidateByReplacingWithCandidate:(id)arg1 input:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -4,28 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <JavaScriptCore/JSContext.h>
+#import <objc/NSObject.h>
 
-@class NSError, NSHashTable, NSMutableArray, NSMutableDictionary;
+@class JSContext, NSError, NSHashTable, NSMutableArray, NSMutableDictionary;
 
-@interface NUJSContext : JSContext
+@interface NUJSContext : NSObject
 {
     NSHashTable *_collectedProxies;
     NSMutableArray *_stateStack;
     NSMutableDictionary *_functions;
-    BOOL _didTimeOut;
-    double _executionTimeLimit;
+    JSContext *_jsContext;
 }
 
-@property BOOL didTimeOut; // @synthesize didTimeOut=_didTimeOut;
 @property (strong, nonatomic) NSError *error;
-@property (nonatomic) double executionTimeLimit; // @synthesize executionTimeLimit=_executionTimeLimit;
+@property (strong) JSContext *jsContext; // @synthesize jsContext=_jsContext;
 
++ (id)contextForContext:(id)arg1;
 + (void)execute:(CDUnknownBlockType)arg1;
 + (BOOL)validateValuesAreNumbers:(id)arg1 error:(out id *)arg2;
 - (void).cxx_destruct;
 - (void)addProxy:(id)arg1;
-- (void)clearExecutionTimeLimit;
 - (id)currentState;
 - (id)functionForKey:(id)arg1;
 - (id)init;

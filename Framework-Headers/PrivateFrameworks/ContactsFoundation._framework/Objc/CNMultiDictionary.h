@@ -22,9 +22,9 @@
 
 + (id)multiDictionary;
 + (id)multiDictionaryWithObject:(id)arg1 forKey:(id)arg2;
+- (void).cxx_destruct;
 - (BOOL)containsKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)eachObject:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;

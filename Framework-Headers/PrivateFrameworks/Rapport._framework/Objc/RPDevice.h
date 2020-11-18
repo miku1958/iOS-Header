@@ -8,7 +8,7 @@
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class CUMobileDevice, CUPairedPeer, CURangingMeasurement, NSData, NSDictionary, NSString, NSUUID;
+@class CUMobileDevice, CUPairedPeer, CURangingMeasurement, NSData, NSDictionary, NSString, NSUUID, SFDevice;
 
 @interface RPDevice : NSObject <NSSecureCoding>
 {
@@ -29,6 +29,7 @@
     NSString *_model;
     NSString *_name;
     CURangingMeasurement *_relativeLocation;
+    SFDevice *_bleDevice;
     CUMobileDevice *_mobileDevice;
     NSData *_authTag;
     NSData *_bleAdvertisementData;
@@ -52,6 +53,7 @@
 @property (readonly, nonatomic) int activityLevel; // @synthesize activityLevel=_activityLevel;
 @property (readonly, copy, nonatomic) NSData *authTag; // @synthesize authTag=_authTag;
 @property (readonly, copy, nonatomic) NSData *bleAdvertisementData; // @synthesize bleAdvertisementData=_bleAdvertisementData;
+@property (strong, nonatomic) SFDevice *bleDevice; // @synthesize bleDevice=_bleDevice;
 @property (readonly, copy, nonatomic) NSData *bleDeviceAddress; // @synthesize bleDeviceAddress=_bleDeviceAddress;
 @property (readonly, nonatomic) unsigned int blePairState; // @synthesize blePairState=_blePairState;
 @property (readonly, copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;

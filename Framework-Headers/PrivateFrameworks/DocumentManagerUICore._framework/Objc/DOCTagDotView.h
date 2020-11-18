@@ -17,6 +17,7 @@
     CAShapeLayer *_noneDotLayer;
     CAShapeLayer *_dotLayer;
     CALayer *_checkmarkLayer;
+    struct CGSize _dotSize;
 }
 
 @property (nonatomic) BOOL checked; // @synthesize checked=_checked;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CAShapeLayer *dotLayer; // @synthesize dotLayer=_dotLayer;
+@property (nonatomic) struct CGSize dotSize; // @synthesize dotSize=_dotSize;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CAShapeLayer *noneDotLayer; // @synthesize noneDotLayer=_noneDotLayer;
 @property (readonly) Class superclass;
@@ -31,8 +33,11 @@
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSublayersOfLayer:(id)arg1;
-- (void)tintColorDidChange;
+- (void)layoutSubviews;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)updateColors;
 - (void)updateLayoutOfLayers;
 
 @end

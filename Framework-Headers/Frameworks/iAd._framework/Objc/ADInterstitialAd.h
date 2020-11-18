@@ -13,9 +13,6 @@
 
 @interface ADInterstitialAd : NSObject <ADAdRecipient>
 {
-    id<ADInterstitialAdDelegate> _delegate;
-    id<ADInterstitialAdDelegate> _internalDelegate;
-    UIViewController *_internalPresentingViewController;
     BOOL _loaded;
     BOOL _displayed;
     BOOL _reUsed;
@@ -31,9 +28,12 @@
     NSString *_adResponseId;
     long long _lastErrorCode;
     ADLayoutOptions *_layoutOptions;
+    id<ADInterstitialAdDelegate> _delegate;
     ADInterstitialAdPresentationViewController *_presentationViewController;
     ADAdSpace *_adSpace;
     ADInterstitialView *_interstitialView;
+    id<ADInterstitialAdDelegate> _internalDelegate;
+    UIViewController *_internalPresentingViewController;
 }
 
 @property (nonatomic, getter=isActionInProgress) BOOL actionInProgress; // @synthesize actionInProgress=_actionInProgress;
@@ -43,15 +43,15 @@
 @property (nonatomic) BOOL canLoadMoreThanOnce; // @synthesize canLoadMoreThanOnce=_canLoadMoreThanOnce;
 @property (nonatomic) int creativeType; // @synthesize creativeType=_creativeType;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<ADInterstitialAdDelegate> delegate;
+@property (weak, nonatomic) id<ADInterstitialAdDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dimmingEnabled; // @synthesize dimmingEnabled=_dimmingEnabled;
 @property (nonatomic) BOOL displayed; // @synthesize displayed=_displayed;
 @property (nonatomic) BOOL hasLoadedFirstAd; // @synthesize hasLoadedFirstAd=_hasLoadedFirstAd;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int internalAdType;
-@property (weak, nonatomic) id<ADInterstitialAdDelegate> internalDelegate;
-@property (weak, nonatomic) UIViewController *internalPresentingViewController;
+@property (weak, nonatomic) id<ADInterstitialAdDelegate> internalDelegate; // @synthesize internalDelegate=_internalDelegate;
+@property (weak, nonatomic) UIViewController *internalPresentingViewController; // @synthesize internalPresentingViewController=_internalPresentingViewController;
 @property (strong, nonatomic) ADInterstitialView *interstitialView; // @synthesize interstitialView=_interstitialView;
 @property (nonatomic) long long lastErrorCode; // @synthesize lastErrorCode=_lastErrorCode;
 @property (strong, nonatomic) ADLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
@@ -66,6 +66,7 @@
 @property (nonatomic) int slotPosition; // @synthesize slotPosition=_slotPosition;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (BOOL)_considerClosingAdSpace;
 - (void)_dismissModalInterstitial;
 - (id)_initWithInternalAdType:(int)arg1 layoutOptions:(id)arg2 options:(long long)arg3;

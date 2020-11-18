@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)supportedValueLabelsAxisCombinations;
 - (BOOL)supportsCalloutLines;
 - (BOOL)supportsValueLabelsSeriesName;
+- (id)userInterfaceName;
 - (id)userInterfaceNameForLabelPosition:(id)arg1;
 - (unsigned long long)valueDimensions;
 

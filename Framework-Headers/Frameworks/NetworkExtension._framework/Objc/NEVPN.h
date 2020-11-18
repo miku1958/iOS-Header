@@ -21,6 +21,7 @@
     BOOL _disconnectOnDemandEnabled;
     NSArray *_onDemandRules;
     NEVPNProtocol *_protocol;
+    long long _tunnelType;
     NSArray *_exceptionApps;
 }
 
@@ -30,12 +31,12 @@
 @property (getter=isOnDemandEnabled) BOOL onDemandEnabled; // @synthesize onDemandEnabled=_onDemandEnabled;
 @property (copy) NSArray *onDemandRules; // @synthesize onDemandRules=_onDemandRules;
 @property (copy) NEVPNProtocol *protocol; // @synthesize protocol=_protocol;
+@property long long tunnelType; // @synthesize tunnelType=_tunnelType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)checkValidityAndCollectErrors:(id)arg1;
 - (id)copyLegacyDictionary;
-- (id)copyProfileDictionaryWithCertificateUUID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;

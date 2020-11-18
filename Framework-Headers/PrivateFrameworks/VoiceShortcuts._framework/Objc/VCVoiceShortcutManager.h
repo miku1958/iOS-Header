@@ -7,78 +7,58 @@
 #import <objc/NSObject.h>
 
 #import <VoiceShortcuts/HMHomeManagerDelegate-Protocol.h>
-#import <VoiceShortcuts/VCSyncDataHandling-Protocol.h>
 
-@class HMHomeManager, NSMapTable, NSString, VCCoreDataStore;
-@protocol OS_dispatch_queue, VCVoiceShortcutSyncService;
+@class HMHomeManager, NSPersistentStoreDescription, NSString, VCCoreDataStore, VCRealmDataStore, WFDatabase;
 
-@interface VCVoiceShortcutManager : NSObject <HMHomeManagerDelegate, VCSyncDataHandling>
+@interface VCVoiceShortcutManager : NSObject <HMHomeManagerDelegate>
 {
-    unsigned long long _persistenceType;
-    VCCoreDataStore *_dataStore;
-    NSMapTable *_syncServices;
-    id<VCVoiceShortcutSyncService> _masterSyncService;
-    NSObject<OS_dispatch_queue> *_syncServicesIsolationQueue;
-    HMHomeManager *_hmHomeManager;
-    NSObject<OS_dispatch_queue> *_dataMigratorQueue;
+    VCCoreDataStore *_coreDataStore;
+    HMHomeManager *_homeManager;
+    WFDatabase *_database;
+    NSPersistentStoreDescription *_storeDescription;
+    VCRealmDataStore *_realmDataStore;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dataMigratorQueue; // @synthesize dataMigratorQueue=_dataMigratorQueue;
-@property (readonly, nonatomic) VCCoreDataStore *dataStore; // @synthesize dataStore=_dataStore;
+@property (readonly, nonatomic) VCCoreDataStore *coreDataStore; // @synthesize coreDataStore=_coreDataStore;
+@property (readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HMHomeManager *hmHomeManager; // @synthesize hmHomeManager=_hmHomeManager;
-@property (weak, nonatomic) id<VCVoiceShortcutSyncService> masterSyncService; // @synthesize masterSyncService=_masterSyncService;
-@property (nonatomic) BOOL needsToBeRehydratedFromMasterSyncService;
+@property (readonly, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
+@property (readonly, nonatomic) VCRealmDataStore *realmDataStore; // @synthesize realmDataStore=_realmDataStore;
+@property (readonly, copy, nonatomic) NSPersistentStoreDescription *storeDescription; // @synthesize storeDescription=_storeDescription;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSMapTable *syncServices; // @synthesize syncServices=_syncServices;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *syncServicesIsolationQueue; // @synthesize syncServicesIsolationQueue=_syncServicesIsolationQueue;
 
-+ (void)initialize;
-+ (id)sharedManager;
 - (void).cxx_destruct;
 - (id)addExtraVocabForDemoIfAppropriate:(id)arg1;
-- (void)addVoiceShortcut:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)applyChangeSet:(struct NSOrderedSet *)arg1 fromSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)cleanUpAfterDeletedApps;
-- (id)createMessageFromData:(id)arg1;
-- (id)dataStoreWithError:(id *)arg1;
-- (void)dataWasUpdatedFromSyncServiceWithIdentifier:(id)arg1;
-- (void)dataWasUpdatedInResponseToUserAction;
-- (BOOL)deleteSyncedData:(id *)arg1;
+- (void)addVoiceShortcut:(id)arg1 phrase:(id)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)coreDataStoreWithError:(id *)arg1;
+- (void)deleteStaleSuggestions;
+- (void)deleteSuggestionsFromApps:(id)arg1;
 - (void)deleteVoiceShortcutWithIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)deregisterSyncServiceWithIdentifier:(id)arg1;
-- (void)describeSyncStateIncludingDeleted:(BOOL)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)enumerateSyncServicesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)generateSingleUseTokenForWorkflowIdentifier:(id)arg1;
 - (void)getInactiveAppsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getNumberOfVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getShareSheetWorkflowsForTypeIdentifiers:(id)arg1 hostBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getUnsyncedChangesForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVoiceShortcutWithIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutWithPhrase:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutsForAppsWithBundleIdentifiers:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)handleAssistantPrefChangedNotification;
-- (int)handledMessageType;
-- (id)initWithPersistenceType:(unsigned long long)arg1 error:(id *)arg2;
-- (BOOL)isSyncServiceRegisteredWithIdentifier:(id)arg1;
-- (void)markChangesAsSynced:(struct NSOrderedSet *)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)handleAssistantPreferencesChangedNotification;
+- (id)initWithDatabase:(id)arg1 error:(id *)arg2;
+- (id)initWithDatabase:(id)arg1 storeDescription:(id)arg2 error:(id *)arg3;
+- (BOOL)lsDatabaseChangedSinceLastCheck;
+- (void)migrateVoiceShortcutsToBeShortcuts;
 - (BOOL)phraseHasHomeKitConflict:(id)arg1;
-- (void)populateBlacklistStatusOnVoiceShortcut:(id)arg1 withAccessSpecifier:(id)arg2;
-- (void)registerSyncService:(id)arg1 asMaster:(BOOL)arg2;
-- (void)rehydrateFromMasterSyncServiceIfNeeded;
-- (void)removeSyncStateForChanges:(id)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)removeSyncStateForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)requestDataMigrationWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)requestSyncForServiceClassName:(id)arg1 forceReset:(BOOL)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)requestVoiceShortuctsSpotlightIndexUpdate;
+- (void)requestDataMigrationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)requestShortcutsSpotlightFullReindex;
 - (id)sanitizePhrase:(id)arg1;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2 accessSpecifier:(id)arg3;
-- (void)syncVocabularyToServer;
-- (void)updateVoiceShortcutWithIdentifier:(id)arg1 phrase:(id)arg2 workflow:(id)arg3 accessSpecifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)updateVoiceShortcutsSharedVocabularyWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateLSDatabaseAnchors;
+- (void)updateShortcutsVocabularyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateVoiceShortcutWithIdentifier:(id)arg1 phrase:(id)arg2 shortcut:(id)arg3 accessSpecifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)validateVoiceShortcutPhrases:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

@@ -23,9 +23,9 @@
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
 - (void).cxx_destruct;
-- (BOOL)_allowInPlaceFiltering;
-- (void)_applyScaleHint:(double)arg1;
 - (void)addBackdrop:(id)arg1 update:(BOOL)arg2;
+- (BOOL)allowInPlaceFiltering;
+- (void)applyScaleHint:(double)arg1;
 - (id)description;
 - (long long)indexOfBackdropView:(id)arg1;
 - (id)init;

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)handleFlushSourceForDomainMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)handleMessage:(id)arg1 fromPeer:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (void)handleMultiMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)handleSimulateTimerSynchronizeForTesting;
 - (void)handleSourceMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)handleUserDeletedMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (id)initWithRole:(int)arg1 testMode:(BOOL)arg2;

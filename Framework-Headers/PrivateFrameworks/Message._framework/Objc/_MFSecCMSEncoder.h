@@ -18,6 +18,7 @@
 
 @property (readonly, nonatomic) int lastSecCMSError; // @synthesize lastSecCMSError=_SecCMSError;
 
+- (void).cxx_destruct;
 - (void)_appendBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (long long)appendData:(id)arg1;
 - (id)data;

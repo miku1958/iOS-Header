@@ -6,7 +6,7 @@
 
 #import <Photos/PHAssetCollection.h>
 
-@class NSData, NSDate, NSDictionary, NSString;
+@class NSArray, NSData, NSDate, NSDictionary, NSString;
 
 @interface PHSuggestion : PHAssetCollection
 {
@@ -16,6 +16,7 @@
     unsigned long long _approximateCount;
     unsigned long long _approximatePhotosCount;
     unsigned long long _approximateVideosCount;
+    NSArray *_assets;
     unsigned short _type;
     unsigned short _subtype;
     unsigned short _state;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) unsigned short type; // @synthesize type=_type;
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
++ (id)availableSuggestionTypeInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)entityKeyMap;
 + (id)fetchSuggestionsWithOptions:(id)arg1;
 + (id)fetchSuggestionsWithState:(unsigned short)arg1 ofType:(unsigned short)arg2 withOptions:(id)arg3;
@@ -55,8 +57,11 @@
 + (BOOL)managedObjectSupportsRejectedState;
 + (BOOL)managedObjectSupportsTrashedState;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)suggestionInfosWithOptions:(id)arg1 photoLibrary:(id)arg2;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
++ (id)transientSuggestionWithInfo:(id)arg1 photoLibrary:(id)arg2;
 - (void).cxx_destruct;
+- (id)assets;
 - (id)creationDate;
 - (id)description;
 - (unsigned long long)estimatedAssetCount;

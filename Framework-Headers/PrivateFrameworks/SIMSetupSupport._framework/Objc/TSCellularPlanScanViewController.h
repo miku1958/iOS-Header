@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIViewController.h>
+#import <OnBoardingKit/OBBaseWelcomeController.h>
 
-#import <SIMSetupSupport/TSCellularPlanQRCodeScannerCaptureDelegate-Protocol.h>
+#import <SIMSetupSupport/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UINavigationControllerDelegate-Protocol.h>
 
 @class CAShapeLayer, NSDate, NSString, TSCellularPlanQRCodeScannerView, UIButton, UILabel, UIView;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanScanViewController : UIViewController <TSCellularPlanQRCodeScannerCaptureDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
+@interface TSCellularPlanScanViewController : OBBaseWelcomeController <AVCaptureMetadataOutputObjectsDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
 {
     BOOL _preinstallCompleted;
     NSDate *_nextTimeToAcceptScan;
@@ -47,11 +47,12 @@
 
 - (void).cxx_destruct;
 - (void)_addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2;
+- (BOOL)canBeShownFromSuspendedState;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
-- (void)captureSession:(id)arg1 isRunning:(BOOL)arg2;
 - (void)didChangeValueForKey:(id)arg1;
 - (void)enterFauxCardDataManually:(id)arg1;
 - (id)init;
+- (long long)navigationBarScrollToEdgeBehavior;
 - (void)planInfoDidUpdate:(id)arg1 planListError:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidDisappear:(BOOL)arg1;

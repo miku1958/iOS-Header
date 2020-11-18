@@ -7,6 +7,8 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (CARenderValue)
+- (id)CAMLType;
 - (struct KeyValueArray *)CA_copyRenderKeyValueArray;
+- (void)encodeWithCAMLWriter:(id)arg1;
 @end
 

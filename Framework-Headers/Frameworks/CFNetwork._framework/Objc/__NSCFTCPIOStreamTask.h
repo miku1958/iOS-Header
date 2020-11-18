@@ -6,14 +6,14 @@
 
 #import <CFNetwork/__NSCFURLSessionTask.h>
 
-@class CFNetworkTimer, NSData, NSMutableArray, __NSCFURLLocalStreamTaskWorkRead, __NSCFURLLocalStreamTaskWorkWrite;
+@class CFNetworkTimer, NSData, NSMutableArray, NSObject, __NSCFURLLocalStreamTaskWorkRead, __NSCFURLLocalStreamTaskWorkWrite;
+@protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFTCPIOStreamTask : __NSCFURLSessionTask
 {
     CDUnknownBlockType _disavow;
     struct shared_ptr<TCPIO_EstablishBase> _establish;
-    shared_ptr_54ecd472 _ios;
+    shared_ptr_ced42cc3 _ios;
     unsigned char _captureStreamsUponCompletion;
     unsigned char _secure;
     NSData *__initialDataPayload;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     CFNetworkTimer *_readTimer;
     __NSCFURLLocalStreamTaskWorkWrite *_currentWriteTask;
     __NSCFURLLocalStreamTaskWorkRead *_currentReadTask;
+    NSObject<OS_dispatch_queue> *_workQueueForStreamTask;
 }
 
 @property (copy) NSData *_initialDataPayload; // @synthesize _initialDataPayload=__initialDataPayload;
@@ -62,25 +63,22 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_dealWithSessionTrustAuth:(long long)arg1 credential:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_onqueue_errorOrCancelError;
 - (void)_onqueue_ioTick;
-- (BOOL)_onqueue_isSecure;
 - (void)_onqueue_needClientCert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onqueue_needServerTrust:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_onqueue_postConnectConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_onqueue_preConnectionConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_onqueue_postConnectConfiguration:(id)arg1 parameters:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_onqueue_preConnectionConfiguration:(id)arg1 parameters:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_onqueue_processReadWork:(id)arg1;
 - (void)_onqueue_processWriteWork:(id)arg1;
 - (void)_onqueue_resume;
 - (BOOL)_onqueue_sendSessionChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_onqueue_setTCPIOConnection:(shared_ptr_f0c1381f)arg1;
+- (void)_onqueue_setTransportConnection:(shared_ptr_8da4e70b)arg1;
 - (void)_onqueue_startSecureConnection;
 - (void)_onqueue_stopSecureConnection;
 - (void)_onqueue_suspend;
 - (void)_onqueue_timeoutOccured;
 - (void)_onqueue_tlsCompletion;
 - (void)_onqueue_tlsDisabled;
-- (BOOL)_onqueue_usingCONNECTProxy;
-- (struct __PerformanceTiming *)_performanceTimingRef;
-- (void)_reportTimingDataToAWD:(id)arg1;
+- (BOOL)_onqueue_usingProxy;
 - (void)_task_onqueue_didFinish;
 - (void)cancel;
 - (void)captureStreams;
@@ -89,14 +87,15 @@ __attribute__((visibility("hidden")))
 - (void)copyStreamProperty:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithHost:(id)arg1 port:(long long)arg2 session:(id)arg3 disavow:(CDUnknownBlockType)arg4;
-- (id)initWithTask:(id)arg1 Connection:(shared_ptr_f0c1381f)arg2 disavow:(CDUnknownBlockType)arg3;
-- (shared_ptr_54ecd472)ios;
+- (id)initWithHost:(id)arg1 port:(long long)arg2 taskGroup:(id)arg3 disavow:(CDUnknownBlockType)arg4;
+- (id)initWithTask:(id)arg1 connection:(shared_ptr_8da4e70b)arg2 extraBytes:(id)arg3 disavow:(CDUnknownBlockType)arg4;
+- (shared_ptr_ced42cc3)ios;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (void)readDataOfMinLength:(unsigned long long)arg1 maxLength:(unsigned long long)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)shouldDoWorkConsideringTlsState;
 - (void)startSecureConnection;
 - (void)stopSecureConnection;
+- (id)workQueue;
 - (void)writeData:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

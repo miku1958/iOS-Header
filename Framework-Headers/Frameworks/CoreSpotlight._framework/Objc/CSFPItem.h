@@ -19,6 +19,7 @@
 
 + (void)initialize;
 + (id)itemWithFileURL:(id)arg1;
++ (id)itemWithFileURL:(id)arg1 forEUID:(unsigned int)arg2;
 - (void).cxx_destruct;
 - (id)initWithFPItem:(id)arg1;
 

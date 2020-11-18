@@ -6,19 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <AccountNotification/ANCachedDictionaryRepresentationProtocol-Protocol.h>
 #import <AccountNotification/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSURL;
+@class NSDictionary, NSString, NSURL;
 
-@interface ANNotificationAction : NSObject <NSSecureCoding>
+@interface ANNotificationAction : NSObject <NSSecureCoding, ANCachedDictionaryRepresentationProtocol>
 {
     BOOL _isInternalURL;
     NSURL *_url;
     NSDictionary *_options;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isInternalURL; // @synthesize isInternalURL=_isInternalURL;
 @property (copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (id)actionForLaunchingApp:(id)arg1;
@@ -26,8 +31,10 @@
 + (id)actionForOpeningWebURL:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithManagedObject:(id)arg1;
 - (void)perform;
 

@@ -11,30 +11,34 @@
 #import <HomeUI/HUPresentationDelegateHost-Protocol.h>
 #import <HomeUI/HUQuickControlContainerViewDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlContentHosting-Protocol.h>
+#import <HomeUI/HUQuickControlTouchContinuing-Protocol.h>
 #import <HomeUI/HUQuickControlViewControllerCoordinatorDelegate-Protocol.h>
 #import <HomeUI/HUViewControllerCustomDissmissing-Protocol.h>
 
-@class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlViewController, HUQuickControlViewControllerCoordinator, NSString, UITapGestureRecognizer;
+@class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlViewController, HUQuickControlViewControllerCoordinator, NSString, UILayoutGuide, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol HUOpenURLHandling, HUPresentationDelegate, HUQuickControlContainerViewControllerDelegate, NSCopying;
 
-@interface HUQuickControlContainerViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUQuickControlContentHosting, HUItemPresentationContainer, HUPresentationDelegateHost, HUViewControllerCustomDissmissing>
+@interface HUQuickControlContainerViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUQuickControlContentHosting, HUItemPresentationContainer, HUPresentationDelegateHost, HUViewControllerCustomDissmissing, HUQuickControlTouchContinuing>
 {
     BOOL _presentedDetailView;
     id<HUPresentationDelegate> presentationDelegate;
     HFItem<NSCopying> *_item;
     HMHome *_home;
+    HUQuickControlContainerView *_controlContainerView;
     id<HUQuickControlContainerViewControllerDelegate> _delegate;
     id<HUOpenURLHandling> _detailViewURLHandler;
+    UILayoutGuide *_availableContentLayoutGuide;
     UITapGestureRecognizer *_dismissGestureRecognizer;
+    UIPanGestureRecognizer *_panGestureRecognizer;
     HUAnimationApplier *_presentationApplier;
     unsigned long long _presentationState;
     HUQuickControlViewControllerCoordinator *_viewControllerCoordinator;
     HUQuickControlViewController *_activeControlViewController;
-    HUQuickControlContainerView *_controlContainerView;
     struct CGRect _sourceRect;
 }
 
 @property (strong, nonatomic) HUQuickControlViewController *activeControlViewController; // @synthesize activeControlViewController=_activeControlViewController;
+@property (strong, nonatomic) UILayoutGuide *availableContentLayoutGuide; // @synthesize availableContentLayoutGuide=_availableContentLayoutGuide;
 @property (strong, nonatomic) HUQuickControlContainerView *controlContainerView; // @synthesize controlContainerView=_controlContainerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUQuickControlContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -45,6 +49,7 @@
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) HFItem *hu_presentedItem;
 @property (readonly, nonatomic) HFItem<NSCopying> *item; // @synthesize item=_item;
+@property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (strong, nonatomic) HUAnimationApplier *presentationApplier; // @synthesize presentationApplier=_presentationApplier;
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate;
 @property (nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
@@ -56,27 +61,23 @@
 + (id)_blurAnimationSettingsForPresenting:(BOOL)arg1;
 + (id)_controlAlphaAnimationSettingsForPresenting:(BOOL)arg1;
 + (id)_controlScaleAnimationSettingsForPresenting:(BOOL)arg1;
-+ (id)_detailChromeAnimationSettingsForPresenting:(BOOL)arg1;
++ (id)_detailChromeAnimationSettings;
 + (id)_easeOutTimingFunction;
 + (id)_sourceViewTransitionAnimationSettingsForPresenting:(BOOL)arg1;
-+ (id)_statusBarHidingAnimationSettingsForPresenting:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_backButtonPressed:(id)arg1;
 - (void)_controlDidDismiss;
 - (void)_createControlContainerViewWithSourceRect:(struct CGRect)arg1;
 - (id)_dismissDetailsViewControllerAnimated:(BOOL)arg1 dismissControl:(BOOL)arg2;
-- (void)_handleDismissGesture:(id)arg1;
+- (void)_dismissQuickControls;
 - (void)_performTransitionToPresentationState:(unsigned long long)arg1 animated:(BOOL)arg2 initialProgress:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_prepareDetailViewController;
-- (id)_presentControlOfType:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)_settingsButtonPressed:(id)arg1;
 - (void)_updateActiveControlViewController;
-- (void)_updateAlternateControlButtonVisibility;
 - (void)_updateControlStatusText;
 - (void)_updateIconDescriptorAnimated:(BOOL)arg1;
 - (void)_updateReachabilityStateForActiveControl;
 - (void)_updateUserInteractionEnabledForActiveControl;
-- (void)alternateControlButtonPressedInContainerView:(id)arg1;
 - (void)beginReceivingTouchesWithGestureRecognizer:(id)arg1;
 - (void)controllerCoordinator:(id)arg1 didUpdateIconDescriptor:(id)arg2 showOffState:(BOOL)arg3;
 - (void)controllerCoordinator:(id)arg1 didUpdateReachability:(BOOL)arg2;
@@ -89,7 +90,6 @@
 - (id)initWithItem:(id)arg1 controlItems:(id)arg2 home:(id)arg3;
 - (BOOL)isControlDismissedOrDismissing;
 - (BOOL)isControlPresentedOrPresenting;
-- (id)presentAlternateActionViewControllerAnimated:(BOOL)arg1;
 - (void)presentControlFromSourceRect:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (id)presentDetailViewControllerAnimated:(BOOL)arg1;
 - (void)quickControlContent:(id)arg1 requestDismissalOfType:(unsigned long long)arg2;
@@ -98,7 +98,10 @@
 - (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (id)viewForTouchContinuation;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

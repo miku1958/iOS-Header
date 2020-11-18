@@ -17,6 +17,7 @@
     id<CDPDCircleProxy> _circleProxy;
 }
 
+@property (strong, nonatomic) id<CDPDCircleProxy> circleProxy; // @synthesize circleProxy=_circleProxy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -24,10 +25,10 @@
 
 - (void).cxx_destruct;
 - (BOOL)_checkSecurityEligibility:(id *)arg1;
+- (void)_didCreateCircleProxy;
 - (void)_sendNotification:(const char *)arg1 withValue:(unsigned long long)arg2;
 - (void)circleStatusChanged;
 - (void)circleViewStatusChanged;
-- (id)initWithCircleProxy:(id)arg1;
 - (BOOL)isManateeAvailable:(id *)arg1;
 - (BOOL)isPrimaryAccountHSA2;
 - (void)reportManateeAvailable;

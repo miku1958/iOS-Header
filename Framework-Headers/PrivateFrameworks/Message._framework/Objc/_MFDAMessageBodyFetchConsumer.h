@@ -31,7 +31,7 @@
 @property (readonly, nonatomic) BOOL succeeded; // @synthesize succeeded=_succeeded;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)handleResponse:(id)arg1 error:(id)arg2;
 - (id)streamingContentConsumer;
 - (BOOL)wantsData;

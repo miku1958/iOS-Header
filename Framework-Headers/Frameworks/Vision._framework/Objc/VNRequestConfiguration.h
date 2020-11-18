@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long resolvedRevision; // @synthesize resolvedRevision=_resolvedRevision;
 
 - (void).cxx_destruct;
+- (id)_allPropertyNames;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithRequestClass:(Class)arg1;

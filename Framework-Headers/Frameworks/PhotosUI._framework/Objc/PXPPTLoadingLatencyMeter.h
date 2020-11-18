@@ -14,9 +14,11 @@
     CDStruct_4bbd3430 _mediumQualityResults;
     CDStruct_4bbd3430 _highQualityResults;
     NSString *_outputType;
+    NSString *_measurementsUnit;
 }
 
 @property (readonly, nonatomic) NSDictionary *measurementsDictionaryRepresentation;
+@property (strong, nonatomic) NSString *measurementsUnit; // @synthesize measurementsUnit=_measurementsUnit;
 
 + (id)sharedInstance;
 + (void)startMeasurementsForOutputType:(id)arg1;

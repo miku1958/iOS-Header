@@ -27,7 +27,7 @@
 + (void)initialize;
 + (id)shadow;
 + (BOOL)supportsSecureCoding;
-- (void)_applyToCGContext:(struct CGContext *)arg1 graphicsContext:(id)arg2;
+- (void)applyToGraphicsContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

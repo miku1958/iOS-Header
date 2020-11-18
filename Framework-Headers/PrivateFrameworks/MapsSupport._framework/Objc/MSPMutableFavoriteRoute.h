@@ -8,7 +8,7 @@
 
 #import <MapsSupport/MSPFavoriteRoute-Protocol.h>
 
-@class GEOStorageRouteRequestStorage, NSString, NSUUID;
+@class GEOComposedWaypoint, GEOStorageRouteRequestStorage, NSString, NSUUID;
 
 @interface MSPMutableFavoriteRoute : MSPMutableFavorite <MSPFavoriteRoute>
 {
@@ -16,20 +16,20 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) GEOComposedWaypoint *endWaypoint;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) GEOStorageRouteRequestStorage *routeRequestStorage;
+@property (readonly, nonatomic) GEOComposedWaypoint *startWaypoint;
 @property (readonly, nonatomic) NSUUID *storageIdentifier;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) int transportType;
 
 + (Class)immutableObjectClass;
 + (id)immutableObjectProtocol;
 + (Class)mutableObjectClass;
 + (id)mutableObjectProtocol;
-- (id)endWaypoint;
 - (id)initWithBookmarkStorage:(id)arg1;
-- (id)startWaypoint;
 - (id)transferToImmutableIfValidWithError:(out id *)arg1;
-- (int)transportType;
 
 @end
 

@@ -24,25 +24,28 @@
 @property (strong, nonatomic) CNCardiMessageEmailGroup *iMessageEmailGroup; // @synthesize iMessageEmailGroup=_iMessageEmailGroup;
 
 + (BOOL)enablesTransportButtons;
++ (long long)tableViewStyle;
 - (void).cxx_destruct;
 - (void)_initiateBestiMessagePropertyQuery;
+- (id)applyContactStyle;
 - (void)dealloc;
+- (id)displayHeaderView;
 - (BOOL)hasTableViewHeaderFirstSection;
 - (id)initWithContact:(id)arg1;
 - (void)initializeTableViewsForHeaderHeight;
 - (BOOL)isGeminiAvailable;
+- (BOOL)isScrollViewControllingHeaderResizeAnimation:(id)arg1;
 - (void)loadContactViewControllerViews;
 - (void)queryComplete;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setupConstraints;
-- (void)setupTableHeaderView;
+- (struct CGSize)setupTableHeaderView;
 - (BOOL)shouldDisplayAvatarHeaderView;
 - (BOOL)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (id)title;
+- (void)updateFontColors;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 

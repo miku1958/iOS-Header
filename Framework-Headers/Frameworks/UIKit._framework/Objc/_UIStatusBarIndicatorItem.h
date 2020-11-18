@@ -16,17 +16,19 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSArray *currentImageNamePrefixes; // @synthesize currentImageNamePrefixes=_currentImageNamePrefixes;
+@property (readonly, nonatomic) BOOL flipsForRightToLeftLayoutDirection;
 @property (strong, nonatomic) _UIStatusBarImageView *imageView; // @synthesize imageView=_imageView;
 @property (readonly, nonatomic) NSString *indicatorEntryKey;
 @property (readonly, nonatomic) BOOL isTemplateImage;
 
-+ (id)indicatorDisplayIdentifier;
 - (void).cxx_destruct;
+- (void)_create_imageView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)dependentEntryKeys;
 - (id)imageForUpdate:(id)arg1;
 - (id)imageNameForUpdate:(id)arg1;
 - (BOOL)shouldUpdateIndicatorForIdentifier:(id)arg1;
+- (id)systemImageNameForUpdate:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

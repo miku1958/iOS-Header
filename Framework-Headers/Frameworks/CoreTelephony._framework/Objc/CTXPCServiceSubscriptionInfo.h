@@ -15,10 +15,12 @@
 {
     NSArray *_subscriptions;
     NSArray *_subscriptionsInUse;
+    NSArray *_subscriptionsValid;
 }
 
 @property (strong, nonatomic) NSArray *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property (strong, nonatomic) NSArray *subscriptionsInUse; // @synthesize subscriptionsInUse=_subscriptionsInUse;
+@property (strong, nonatomic) NSArray *subscriptionsValid; // @synthesize subscriptionsValid=_subscriptionsValid;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

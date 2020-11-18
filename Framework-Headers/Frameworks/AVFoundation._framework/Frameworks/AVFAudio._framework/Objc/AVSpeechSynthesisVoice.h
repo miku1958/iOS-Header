@@ -8,12 +8,15 @@
 
 #import <AVFAudio/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface AVSpeechSynthesisVoice : NSObject <NSSecureCoding>
 {
+    NSDictionary *_audioFileSettings;
 }
 
+@property (readonly, nonatomic) NSDictionary *audioFileSettings; // @synthesize audioFileSettings=_audioFileSettings;
+@property (nonatomic) long long gender; // @dynamic gender;
 @property (strong, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (copy, nonatomic) NSString *language; // @dynamic language;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
@@ -25,6 +28,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)voiceWithIdentifier:(id)arg1;
 + (id)voiceWithLanguage:(id)arg1;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

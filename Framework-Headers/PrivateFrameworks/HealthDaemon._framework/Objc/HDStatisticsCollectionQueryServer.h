@@ -6,22 +6,23 @@
 
 #import <HealthDaemon/HDQueryServer.h>
 
-#import <HealthDaemon/HDDataObserver-Protocol.h>
+#import <HealthDaemon/HDQuantitySeriesObserver-Protocol.h>
 
-@class HDStatisticsCollectionCalculator, HDStatisticsCollectionCalculatorDefaultDataSource, HDStatisticsCollectionCalculatorDefaultSourceOrderProvider, NSDate, NSMutableArray, NSNumber, NSString, _HKDateIntervalCollection;
+@class HDStatisticsCollectionCalculator, HDStatisticsCollectionCalculatorDefaultDataSource, HDStatisticsCollectionCalculatorDefaultSourceOrderProvider, HKQuantityType, NSDate, NSMutableDictionary, NSString, _HKDateIntervalCollection;
 
-@interface HDStatisticsCollectionQueryServer : HDQueryServer <HDDataObserver>
+@interface HDStatisticsCollectionQueryServer : HDQueryServer <HDQuantitySeriesObserver>
 {
     _HKDateIntervalCollection *_intervalCollection;
     HDStatisticsCollectionCalculatorDefaultDataSource *_dataSource;
     HDStatisticsCollectionCalculatorDefaultSourceOrderProvider *_sourceOrderProvider;
     HDStatisticsCollectionCalculator *_calculator;
-    NSMutableArray *_addedSamples;
-    NSNumber *_addedSamplesAnchor;
+    NSMutableDictionary *_pendingQuantitiesBySeries;
     BOOL _addedSamplesRequireProtectedData;
-    BOOL _deliveredInitialResults;
+    BOOL _requiresFetch;
+    BOOL _hasScheduledUpdate;
     BOOL _deliversUpdates;
     unsigned long long _mergeStrategy;
+    HKQuantityType *_quantityType;
     NSDate *_anchorDate;
     unsigned long long _statisticsOptions;
     CDUnknownBlockType _unitTest_queryServerStatisticsEnumerationHandler;
@@ -43,21 +44,24 @@
 + (id)requiredEntitlements;
 + (BOOL)supportsAnchorBasedAuthorization;
 - (void).cxx_destruct;
+- (void)_queue_accumulateUpdatedStatistics:(id)arg1 accumulatedStatistics:(id)arg2 sendHandler:(CDUnknownBlockType)arg3;
 - (void)_queue_deliverUpdatedStatistics:(id)arg1 error:(id)arg2;
-- (void)_queue_fetchAndDeliverAllStatisticsInitial:(BOOL)arg1;
+- (void)_queue_didReceiveQuantity:(id)arg1 type:(id)arg2 dateInterval:(id)arg3 series:(id)arg4 anchor:(id)arg5;
+- (void)_queue_fetchAndDeliverAllStatistics;
+- (id)_queue_filteredPendingSeriesWithError:(id *)arg1;
 - (BOOL)_queue_objectIsRelevant:(id)arg1;
+- (void)_queue_performUpdate;
+- (void)_queue_scheduleUpdate;
 - (void)_queue_sendAccumulatedStatistics:(id)arg1 isFinal:(BOOL)arg2 statisticsCount:(long long *)arg3 shouldResetStatistics:(BOOL *)arg4;
 - (void)_queue_start;
 - (void)_queue_updateStatistics;
-- (void)_scheduleFetchAndDeliver;
-- (void)_scheduleUpdateStatistics;
-- (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (BOOL)_shouldListenForUpdates;
 - (BOOL)_shouldObserveDatabaseProtectedDataAvailability;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
-- (void)samplesAdded:(id)arg1 anchor:(id)arg2;
-- (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
+- (void)profile:(id)arg1 didDiscardSeriesOfType:(id)arg2;
+- (id)quantityType;
+- (CDUnknownBlockType)transactionalQuantityInsertHandlerForProfile:(id)arg1 journaled:(BOOL)arg2 count:(long long)arg3;
 
 @end
 

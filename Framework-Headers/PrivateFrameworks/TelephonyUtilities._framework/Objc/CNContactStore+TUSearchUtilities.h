@@ -6,7 +6,17 @@
 
 #import <Contacts/CNContactStore.h>
 
-@interface CNContactStore (TUSearchUtilities)
+#import <TelephonyUtilities/TUContactsDataSource-Protocol.h>
+
+@class NSString;
+
+@interface CNContactStore (TUSearchUtilities) <TUContactsDataSource>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (id)contactForDestinationId:(id)arg1;
 - (id)contactForDestinationId:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactForIdentifier:(id)arg1;

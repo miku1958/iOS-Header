@@ -7,18 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <MobileTimer/MTDictionarySerializable-Protocol.h>
-#import <MobileTimer/MTDiffable-Protocol.h>
 #import <MobileTimer/MTScheduleable-Protocol.h>
+#import <MobileTimer/MTSerializable-Protocol.h>
 #import <MobileTimer/MTTimerIntentSupport-Protocol.h>
 #import <MobileTimer/NAEquatable-Protocol.h>
 #import <MobileTimer/NSCopying-Protocol.h>
 #import <MobileTimer/NSMutableCopying-Protocol.h>
 #import <MobileTimer/NSSecureCoding-Protocol.h>
 
-@class MTSound, NSDate, NSString, NSURL, NSUUID;
+@class MTSound, NSDate, NSDictionary, NSString, NSURL, NSUUID;
 @protocol MTTimerTime;
 
-@interface MTTimer : NSObject <MTScheduleable, MTDictionarySerializable, MTDiffable, MTTimerIntentSupport, NAEquatable, NSCopying, NSMutableCopying, NSSecureCoding>
+@interface MTTimer : NSObject <MTScheduleable, MTDictionarySerializable, MTTimerIntentSupport, MTSerializable, NAEquatable, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSUUID *_timerID;
     unsigned long long _state;
@@ -29,6 +29,7 @@
     NSString *_title;
     MTSound *_sound;
     id<MTTimerTime> _fireTime;
+    NSDictionary *_siriContext;
     CDUnknownBlockType _currentDateProvider;
 }
 
@@ -37,8 +38,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
@@ -55,15 +54,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDate *lastModifiedDate;
 @property (copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, nonatomic) double remainingTime;
 @property (readonly, nonatomic) double remainingTime;
+@property (readonly, nonatomic) NSDictionary *siriContext;
+@property (copy, nonatomic) NSDictionary *siriContext; // @synthesize siriContext=_siriContext;
 @property (copy, nonatomic) MTSound *sound; // @synthesize sound=_sound;
 @property (readonly, nonatomic) unsigned long long state;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -74,6 +73,7 @@
 @property (readonly, nonatomic) NSURL *timerURL;
 @property (readonly, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) long long type;
 
 + (id)_timerTimeForState:(unsigned long long)arg1 remainingTime:(double)arg2 currentDateProvider:(CDUnknownBlockType)arg3;
 + (id)currentTimerFromTimers:(id)arg1;
@@ -89,6 +89,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)identifier;
+- (id)initFromDeserializer:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithState:(unsigned long long)arg1 duration:(double)arg2;
@@ -97,10 +98,10 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualIgnoringLastModifiedDate:(id)arg1;
 - (BOOL)isEqualToTimer:(id)arg1;
-- (id)keyForIdentifier;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)nextTrigger;
 - (id)nextTriggerAfterDate:(id)arg1;
+- (void)serializeWithSerializer:(id)arg1;
 - (BOOL)shouldBeScheduled;
 - (id)timerByRestarting;
 - (id)timerByUpdatingWithState:(unsigned long long)arg1;

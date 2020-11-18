@@ -6,17 +6,21 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class CIImage, MLModel;
+@class CIImage, MLModel, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CICoreMLModelFilter : CIFilter
 {
     CIImage *inputImage;
     MLModel *inputModel;
+    NSNumber *inputHeadIndex;
+    NSNumber *inputSoftmaxNormalization;
 }
 
+@property (strong, nonatomic) NSNumber *inputHeadIndex; // @synthesize inputHeadIndex;
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 @property (strong, nonatomic) MLModel *inputModel; // @synthesize inputModel;
+@property (strong, nonatomic) NSNumber *inputSoftmaxNormalization; // @synthesize inputSoftmaxNormalization;
 
 + (id)customAttributes;
 - (id)outputImage;

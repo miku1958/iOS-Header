@@ -14,26 +14,39 @@
 @interface FPItemID : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
-    NSString *_providerIdentifier;
+    NSString *_providerID;
     NSString *_domainIdentifier;
 }
 
 @property (readonly, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
+@property (readonly, nonatomic) BOOL isPlaceholder;
+@property (readonly, nonatomic) NSString *providerDomainID;
+@property (readonly, nonatomic) NSString *providerID; // @synthesize providerID=_providerID;
+@property (readonly, nonatomic) NSString *providerIdentifier;
 
++ (id)coreSpotlightEncodedDomainIdentifier:(id)arg1;
++ (id)csIdentifierFromFPIdentifier:(id)arg1 domainIdentifier:(id)arg2;
++ (id)fpIdentifierFromCoreSpotlightIdentifier:(id)arg1 domainIdentifier:(id)arg2;
++ (void)getDomainIdentifier:(id *)arg1 andIdentifier:(id *)arg2 fromCoreSpotlightIdentifier:(id)arg3;
++ (id)rootItemIDWithProviderDomainID:(id)arg1;
 + (id)rootItemIDWithProviderIdentifier:(id)arg1 domainIdentifier:(id)arg2;
++ (id)stringByRemovingPrefix:(id)arg1 fromIdentifier:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)coreSpotlightIdentifier;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithProviderIdentifier:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3;
+- (id)initWithProviderDomainID:(id)arg1 itemIdentifier:(id)arg2;
+- (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 coreSpotlightIdentifier:(id)arg3;
+- (id)initWithProviderID:(id)arg1 domainIdentifier:(id)arg2 itemIdentifier:(id)arg3;
 - (id)initWithSearchableItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToItemID:(id)arg1;
+- (void)setProviderDomainID:(id)arg1;
 
 @end
 

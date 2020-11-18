@@ -37,6 +37,7 @@
 - (id)initWithInitialIndexPath:(id)arg1 finalIndexPath:(id)arg2 updateAction:(long long)arg3;
 - (id)initWithOldIndexPath:(id)arg1 newIndexPath:(id)arg2;
 - (long long)inverseCompareIndexPaths:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToUpdate:(id)arg1;
 - (BOOL)isNOOP;
 - (BOOL)isRevertedUpdateOf:(id)arg1;

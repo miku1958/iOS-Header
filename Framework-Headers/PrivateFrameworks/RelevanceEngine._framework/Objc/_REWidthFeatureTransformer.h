@@ -10,15 +10,16 @@
 {
     unsigned long long _mask;
     unsigned long long _width;
+    unsigned long long _shift;
 }
 
 - (long long)_bitCount;
+- (unsigned long long)_createTransformFromValues:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (unsigned long long)_featureCount;
 - (unsigned long long)_outputType;
-- (id)_transform:(id)arg1;
 - (BOOL)_validateWithFeatures:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithWidth:(unsigned long long)arg1;
+- (id)initWithWidth:(unsigned long long)arg1 shift:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

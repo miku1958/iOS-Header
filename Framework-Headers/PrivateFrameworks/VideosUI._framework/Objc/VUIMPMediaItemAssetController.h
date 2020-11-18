@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSObject<VUIMediaEntityIdentifier> *mediaEntityIdentifier; // @synthesize mediaEntityIdentifier=_mediaEntityIdentifier;
 @property (readonly, copy, nonatomic) VUIMediaEntityType *mediaEntityType;
-@property (strong, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
+@property (readonly, nonatomic) MPMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (nonatomic, getter=isRequestingPermissionToDownload) BOOL requestingPermissionToDownload; // @synthesize requestingPermissionToDownload=_requestingPermissionToDownload;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialProcessingDispatchQueue; // @synthesize serialProcessingDispatchQueue=_serialProcessingDispatchQueue;
 @property (readonly, copy, nonatomic) VUIMediaEntityAssetControllerState *state; // @synthesize state=_state;
@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_enqueueAsyncProcessingQueueStrongSelfBlock:(CDUnknownBlockType)arg1;
 - (void)_enqueueCompletionQueueBlock:(CDUnknownBlockType)arg1;
-- (void)_handleMediaItemAssetControllerStateDidChangeNotification:(id)arg1;
 - (void)_handleMediaLibraryContentsDidChangeNotification:(id)arg1;
 - (BOOL)_isDownloaded;
 - (void)_notifyDelegateStateDidChange:(id)arg1;
@@ -61,7 +60,6 @@ __attribute__((visibility("hidden")))
 - (void)_onProcessingQueue_startMonitoringDownload;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 downloadProgress:(double)arg2 bytesDownloaded:(unsigned long long)arg3 bytesToDownload:(unsigned long long)arg4 supportsPausing:(BOOL)arg5 supportsCancellation:(BOOL)arg6 notify:(BOOL)arg7;
 - (void)_onProcessingQueue_updateStateWithStatus:(unsigned long long)arg1 notify:(BOOL)arg2;
-- (void)_postStateDidChangeNotificationWithFromState:(id)arg1 toState:(id)arg2;
 - (void)cancelAndRemoveDownload;
 - (void)dealloc;
 - (void)downloadManager:(id)arg1 didAddDownloads:(id)arg2 removeDownloads:(id)arg3;

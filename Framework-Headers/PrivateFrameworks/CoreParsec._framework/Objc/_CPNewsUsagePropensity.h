@@ -13,17 +13,10 @@
 
 @interface _CPNewsUsagePropensity : PBCodable <_CPNewsUsagePropensity, NSSecureCoding>
 {
-    int _configuredLookbackTimeInDays;
     float _other;
     int _totalEngagements;
-    int _totalSessions;
-    long long _collectionStartTimestamp;
-    long long _collectionEndTimestamp;
 }
 
-@property (nonatomic) long long collectionEndTimestamp; // @synthesize collectionEndTimestamp=_collectionEndTimestamp;
-@property (nonatomic) long long collectionStartTimestamp; // @synthesize collectionStartTimestamp=_collectionStartTimestamp;
-@property (nonatomic) int configuredLookbackTimeInDays; // @synthesize configuredLookbackTimeInDays=_configuredLookbackTimeInDays;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -31,14 +24,12 @@
 @property (nonatomic) float other; // @synthesize other=_other;
 @property (readonly) Class superclass;
 @property (nonatomic) int totalEngagements; // @synthesize totalEngagements=_totalEngagements;
-@property (nonatomic) int totalSessions; // @synthesize totalSessions=_totalSessions;
 
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

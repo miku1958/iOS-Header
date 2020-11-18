@@ -8,26 +8,30 @@
 
 #import <AppleMediaServices/AMSBagDataSourceProtocol-Protocol.h>
 
-@class AMSURLSession, AMSUniqueExecutionQueue, NSDate, NSDictionary, NSString;
+@class AMSProcessInfo, AMSURLSession, AMSUniqueExecutionQueue, NSDate, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AMSBagNetworkDataSource : NSObject <AMSBagDataSourceProtocol>
 {
     CDUnknownBlockType _dataSourceChangedHandler;
-    NSString *_logKey;
     NSString *_profile;
     NSString *_profileVersion;
     NSDictionary *_cachedData;
     NSObject<OS_dispatch_queue> *_cachedDataAccessQueue;
+    NSString *_cachedStorefront;
+    NSObject<OS_dispatch_queue> *_cachedStorefrontAccessQueue;
     AMSUniqueExecutionQueue *_loadDataQueue;
+    NSObject<OS_dispatch_queue> *_processAccountStoreDidChangeNotificationQueue;
+    AMSProcessInfo *_processInfo;
     AMSURLSession *_URLSession;
-    NSString *_storefront;
 }
 
 @property (strong, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property (strong, nonatomic) NSDictionary *cachedData; // @synthesize cachedData=_cachedData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cachedDataAccessQueue; // @synthesize cachedDataAccessQueue=_cachedDataAccessQueue;
+@property (strong, nonatomic) NSString *cachedStorefront; // @synthesize cachedStorefront=_cachedStorefront;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *cachedStorefrontAccessQueue; // @synthesize cachedStorefrontAccessQueue=_cachedStorefrontAccessQueue;
 @property (copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler; // @synthesize dataSourceChangedHandler=_dataSourceChangedHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,39 +39,39 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) AMSUniqueExecutionQueue *loadDataQueue; // @synthesize loadDataQueue=_loadDataQueue;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
-@property (readonly, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *processAccountStoreDidChangeNotificationQueue; // @synthesize processAccountStoreDidChangeNotificationQueue=_processAccountStoreDidChangeNotificationQueue;
+@property (strong, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 @property (readonly, copy, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
-@property (strong, nonatomic) NSString *storefront; // @synthesize storefront=_storefront;
 @property (readonly) Class superclass;
 
 + (id)_OSBuildTypeString;
-+ (id)_OSString;
-+ (id)_OSVersionString;
 + (id)_URLCookieNamesForProfile:(id)arg1;
-+ (id)_account;
-+ (id)_cookiesForNames:(id)arg1;
++ (id)_accountForAccountMediaType:(id)arg1;
++ (id)_currentStorefrontForAccountMediaType:(id)arg1;
 + (id)_defaultURLCookieNames;
 + (id)_deviceString;
 + (BOOL)_isDataDictionary:(id)arg1 equalToDataDictionary:(id)arg2;
 + (id)_requestStorefrontFromURLResponse:(id)arg1;
 + (id)_setStorefrontFromURLResponse:(id)arg1 bagData:(id)arg2;
 + (void)_setURLCookieNames:(id)arg1 forProfile:(id)arg2;
++ (BOOL)_shouldProcessAccountStoreDidChangeNotification:(id)arg1 withMediaType:(id)arg2;
 + (BOOL)_shouldReloadDataForOriginalCookies:(id)arg1 newCookies:(id)arg2;
 + (BOOL)_shouldReloadDataForSetStorefront:(id)arg1 bagData:(id)arg2;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange:(id)arg1;
+- (id)_baseURLString;
+- (id)_cookiesForNames:(id)arg1;
 - (id)_createRequestWithCookieNames:(id)arg1 storefront:(id)arg2;
 - (id)_createURLWithCookieNames:(id)arg1 storefront:(id)arg2;
-- (id)_expirationDate;
-- (BOOL)_isExpired;
+- (void)_invalidateCacheNotification:(id)arg1;
 - (id)_loadDataWithAttempt:(unsigned long long)arg1 error:(id *)arg2;
 - (id)_processLoadDataResult:(id)arg1;
 - (void)_updateCachedData:(id)arg1;
 - (void)_updateStorefrontSuffixIfNecessaryWithBagData:(id)arg1;
 - (id)bagKeyInfoForKey:(id)arg1;
 - (void)dealloc;
-- (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 logKey:(id)arg3;
+- (id)initWithProfile:(id)arg1 profileVersion:(id)arg2 processInfo:(id)arg3;
 - (void)loadWithCompletion:(CDUnknownBlockType)arg1;
 - (id)valueForURLVariable:(id)arg1;
 

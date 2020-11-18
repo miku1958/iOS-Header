@@ -18,6 +18,9 @@
     _DKDataProtectionStateMonitor *_dataProtectionMonitor;
     NSFileManager *_fm;
     NSCloudKitMirroringDelegate *_mirroringDelegate;
+    BOOL _isManagedDatabase;
+    BOOL _isDatabaseManager;
+    BOOL _maintenanceRunning;
     BOOL _readOnly;
     BOOL _localOnly;
     BOOL _sync;
@@ -55,13 +58,19 @@
 - (id)_defaultOptionsForStoreWithProtectionClass:(id)arg1;
 - (BOOL)_deleteDatabaseFiles:(id)arg1;
 - (id)_descriptionForStoreWithURL:(id)arg1 protectionClass:(id)arg2 sync:(BOOL)arg3;
+- (void)_registerForClientHelpNotifications;
+- (void)_unregisterForClientHelpNotifications;
 - (id)autoMigratePersistentStoreAtURL:(id)arg1 toManagedObjectModel:(id)arg2 protectionClass:(id)arg3 error:(id *)arg4;
+- (struct __CFString *)clientNeedsHelpNotification;
 - (void)closeStorageForProtectionClass:(id)arg1;
 - (BOOL)confirmDatabaseConnectionFor:(id)arg1;
 - (id)copyStorageFor:(id)arg1 toDirectory:(id)arg2;
+- (id)databaseManagerName;
 - (id)databasePathFor:(id)arg1;
+- (void)dealloc;
 - (BOOL)deleteStorageFor:(id)arg1;
 - (BOOL)didAutoMigratePersistentStore:(id)arg1 toManagedObjectModel:(id)arg2 havingVersion:(unsigned long long)arg3 error:(id *)arg4;
+- (void)handleClientCallForHelp;
 - (void)handleDataProtectionChangeFor:(id)arg1 willBeAvailable:(BOOL)arg2;
 - (void)handleDatabaseErrors:(id)arg1 forProtectionClass:(id)arg2;
 - (id)init;
@@ -69,7 +78,6 @@
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(BOOL)arg4 localOnly:(BOOL)arg5 sync:(BOOL)arg6;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 sync:(BOOL)arg4;
 - (void)invalidateManagedObjectContextAndPersistentStoreCoordinatorFor:(id)arg1;
-- (BOOL)isDatabaseOwner;
 - (BOOL)isManagedObjectContextFor:(id)arg1 equalToManagedObjectContext:(id)arg2;
 - (BOOL)isManagedObjectModel:(id)arg1 compatibleWithPersistentStoreAtURL:(id)arg2 error:(id *)arg3;
 - (id)managedObjectContextFor:(id)arg1;
@@ -82,6 +90,7 @@
 - (BOOL)migratePersistentStoreAtURL:(id)arg1 toManagedObjectModel:(id)arg2 protectionClass:(id)arg3 startVersion:(unsigned long long)arg4 endVersion:(unsigned long long)arg5 error:(id *)arg6;
 - (long long)modelVersionForStoreAtURL:(id)arg1 error:(id *)arg2;
 - (id)persistentStoreCoordinatorFor:(id)arg1;
+- (id)privateManagedObjectContextFor:(id)arg1;
 - (void)removeManagedObjectContextForKey:(id)arg1;
 - (void)removePersistentStoreCoordinatorFor:(id)arg1;
 - (void)removePersistentStoresInCoordinator:(id)arg1;

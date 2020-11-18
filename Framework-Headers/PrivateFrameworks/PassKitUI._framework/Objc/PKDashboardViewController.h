@@ -32,13 +32,9 @@
     BOOL _isHidingContent;
     PKUISpringAnimationFactory *_collectionViewFactory;
     NSMutableDictionary *_blocksOnVisibilityChange;
-    unsigned char _visibilityState;
-    BOOL _navigationBarVisible;
     BOOL _shouldUseClearNavigationBar;
-    BOOL _shouldAnimateNavigationBarAppearance;
     id<PKDashboardDataSource> _dataSource;
     id<PKDashboardDelegate> _delegate;
-    double _navigationBarVisiblityTopInset;
 }
 
 @property (readonly, nonatomic) id<PKDashboardDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -47,9 +43,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isPresentingContent; // @synthesize isPresentingContent=_isPresentingContent;
-@property (readonly, nonatomic) BOOL navigationBarVisible; // @synthesize navigationBarVisible=_navigationBarVisible;
-@property (nonatomic) double navigationBarVisiblityTopInset; // @synthesize navigationBarVisiblityTopInset=_navigationBarVisiblityTopInset;
-@property (nonatomic) BOOL shouldAnimateNavigationBarAppearance; // @synthesize shouldAnimateNavigationBarAppearance=_shouldAnimateNavigationBarAppearance;
 @property (nonatomic) BOOL shouldUseClearNavigationBar; // @synthesize shouldUseClearNavigationBar=_shouldUseClearNavigationBar;
 @property (readonly) Class superclass;
 
@@ -62,7 +55,8 @@
 - (BOOL)_isIndexPathAFooter:(id)arg1;
 - (BOOL)_isIndexPathAHeader:(id)arg1;
 - (void)_presentAllContent;
-- (void)_updateNavigationBarForVisible;
+- (void)_updateNavigationBarAppearance;
+- (void)_updateNavigationBarVisibility;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
@@ -84,19 +78,13 @@
 - (BOOL)itemIsStackableInCollectionView:(id)arg1 atIndexPath:(id)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (long long)preferredStatusBarStyle;
 - (void)reloadSections:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setActionForVisibilityChange:(CDUnknownBlockType)arg1 indexPath:(id)arg2;
 - (void)shouldPresentAllContent:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

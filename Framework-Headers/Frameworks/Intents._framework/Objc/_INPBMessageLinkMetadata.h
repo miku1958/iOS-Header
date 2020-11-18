@@ -17,6 +17,7 @@
     struct {
         unsigned int linkMediaType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _linkMediaType;
     NSString *_albumArtist;
     NSString *_albumName;
@@ -64,6 +65,7 @@
     NSString *_tvSeasonName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *albumArtist; // @synthesize albumArtist=_albumArtist;
 @property (copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
 @property (copy, nonatomic) NSString *artistGenre; // @synthesize artistGenre=_artistGenre;
@@ -159,6 +161,7 @@
 @property (copy, nonatomic) NSString *tvSeasonGenre; // @synthesize tvSeasonGenre=_tvSeasonGenre;
 @property (copy, nonatomic) NSString *tvSeasonName; // @synthesize tvSeasonName=_tvSeasonName;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsLinkMediaType:(id)arg1;
 - (void)addIconURL:(id)arg1;
@@ -167,8 +170,10 @@
 - (void)clearImageURLs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)iconURLAtIndex:(unsigned long long)arg1;
 - (id)imageURLAtIndex:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)linkMediaTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;

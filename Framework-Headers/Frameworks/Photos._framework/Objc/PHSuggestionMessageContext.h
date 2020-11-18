@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDateInterval, NSMutableDictionary;
+@class NSArray, NSDateInterval, NSMutableDictionary, PHPhotoLibrary;
 
 @interface PHSuggestionMessageContext : NSObject
 {
@@ -16,6 +16,7 @@
     NSArray *_cnParticipants;
     NSArray *_phParticipants;
     NSMutableDictionary *_suggestionMatchingResultsBySuggestionIdentifier;
+    PHPhotoLibrary *_photoLibrary;
     NSArray *_resolvedParticipants;
     NSArray *_messageTokens;
 }
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) NSArray *messages; // @synthesize messages=_messages;
 @property (readonly, nonatomic) unsigned long long numberOfParticipants; // @synthesize numberOfParticipants=_numberOfParticipants;
 @property (readonly, nonatomic) NSArray *phParticipants; // @synthesize phParticipants=_phParticipants;
+@property (strong, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (strong, nonatomic) NSArray *resolvedParticipants; // @synthesize resolvedParticipants=_resolvedParticipants;
 @property (readonly, nonatomic) NSMutableDictionary *suggestionMatchingResultsBySuggestionIdentifier; // @synthesize suggestionMatchingResultsBySuggestionIdentifier=_suggestionMatchingResultsBySuggestionIdentifier;
 
@@ -36,8 +38,8 @@
 - (id)description;
 - (id)detailedDescription;
 - (id)initWithMessages:(id)arg1;
-- (id)initWithMessages:(id)arg1 participantsFromContacts:(id)arg2;
-- (id)initWithMessages:(id)arg1 participantsFromPersons:(id)arg2;
+- (id)initWithMessages:(id)arg1 participantsFromContacts:(id)arg2 photoLibrary:(id)arg3;
+- (id)initWithMessages:(id)arg1 participantsFromPersons:(id)arg2 photoLibrary:(id)arg3;
 - (void)matchWithSuggestions:(id)arg1;
 - (id)matchingResultWithSuggestion:(id)arg1;
 - (void)setCnParticipants:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
+@class NSArray, NSDate, NSDictionary, NSString, NSUUID, SUDownloadMetadata, SUScanOptions;
 
 @protocol SUManagerServerInterface
 - (void)autoScanAndDownloadIfAvailable:(void (^)(SUDescriptor *, NSError *))arg1;
@@ -23,6 +23,7 @@
 - (void)installUpdate:(void (^)(BOOL, NSError *))arg1;
 - (void)installUpdateWithOptions:(NSArray *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
 - (void)isAutoUpdateEnabled:(void (^)(BOOL, NSError *))arg1;
+- (void)isAutoUpdateScheduled:(void (^)(BOOL, NSError *))arg1;
 - (void)isAutomaticUpdateV2Enabled:(void (^)(BOOL, NSError *))arg1;
 - (void)isDelayingUpdates:(void (^)(BOOL, NSError *))arg1;
 - (void)isDownloading:(void (^)(BOOL, NSError *))arg1;
@@ -32,6 +33,7 @@
 - (void)pauseDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)presentAutoUpdateBanner:(void (^)(BOOL, NSError *))arg1;
 - (void)purgeDownload:(void (^)(BOOL, NSError *))arg1;
+- (void)registerCSInstallPredicatesOnDate:(NSDate *)arg1;
 - (void)resumeDownload:(void (^)(BOOL, NSError *))arg1;
 - (void)scanForUpdates:(SUScanOptions *)arg1 withResult:(void (^)(SUDescriptor *, NSError *))arg2;
 - (void)setClientType:(int)arg1 withResult:(void (^)(BOOL, NSError *))arg2;

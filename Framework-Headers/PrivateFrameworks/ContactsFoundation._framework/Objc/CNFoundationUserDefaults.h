@@ -8,7 +8,7 @@
 
 #import <ContactsFoundation/CNFoundationUserDefaults-Protocol.h>
 
-@class CNUserDefaults, NSString;
+@class CNUserDefaults, NSDictionary, NSString;
 
 @interface CNFoundationUserDefaults : NSObject <CNFoundationUserDefaults>
 {
@@ -17,6 +17,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) NSDictionary *filteredAccountsAndContainers;
 @property (readonly) unsigned long long hash;
 @property unsigned long long nameOrder;
 @property BOOL preferNickname;
@@ -29,8 +30,8 @@
 + (id)makeRegisteredDefaults;
 + (id)registeredDefaults;
 + (id)sharedDefaults;
+- (void).cxx_destruct;
 - (id)countryCode;
-- (void)dealloc;
 - (id)init;
 - (unsigned long long)newContactNameOrder;
 - (unsigned long long)sortOrder;

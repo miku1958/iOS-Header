@@ -8,12 +8,13 @@
 
 #import <Intents/INCacheableContainer-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INSpeakableString, NSArray, NSDateComponents, NSString;
 
-@interface INNote : NSObject <INImageProxyInjecting, INCacheableContainer, NSCopying, NSSecureCoding>
+@interface INNote : NSObject <INImageProxyInjecting, INCacheableContainer, INJSONSerializable, NSCopying, NSSecureCoding>
 {
     INSpeakableString *_title;
     NSArray *_contents;
@@ -26,24 +27,31 @@
 @property (copy, nonatomic, setter=_setContents:) NSArray *contents; // @synthesize contents=_contents;
 @property (readonly, copy, nonatomic) NSDateComponents *createdDateComponents; // @synthesize createdDateComponents=_createdDateComponents;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) INSpeakableString *groupName; // @synthesize groupName=_groupName;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSDateComponents *modifiedDateComponents; // @synthesize modifiedDateComponents=_modifiedDateComponents;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) INSpeakableString *title; // @synthesize title=_title;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTitle:(id)arg1 contents:(id)arg2 groupName:(id)arg3 createdDateComponents:(id)arg4 modifiedDateComponents:(id)arg5 identifier:(id)arg6;
 - (BOOL)isEqual:(id)arg1;

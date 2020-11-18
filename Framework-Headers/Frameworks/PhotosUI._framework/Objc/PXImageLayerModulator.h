@@ -20,8 +20,8 @@
         BOOL displayingVideoComplement;
         BOOL filterIntensity;
     } _needsUpdateFlags;
-    BOOL _enabled;
     BOOL _displayingVideoComplement;
+    BOOL _enabled;
     float _hdrGain;
     CALayer *_layer;
     ISLivePhotoUIView *_livePhotoView;
@@ -63,12 +63,14 @@
 - (void)_updateFilterIntensityIfNeeded;
 - (void)_updateFilteredLayerIfNeeded;
 - (void)_updateIfNeeded;
+- (void)animateChangesWithDuration:(double)arg1;
 - (void)basePlayerUIView:(id)arg1 didChange:(unsigned long long)arg2 withAnimationDuration:(double)arg3;
 - (id)init;
 - (id)initWithContentType:(long long)arg1 filterType:(long long)arg2 hdrGain:(float)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)performChanges_Private:(CDUnknownBlockType)arg1;
 - (void)prepareForReuse;
+- (void)removeFilterFromUnownedLayer:(id)arg1;
 - (void)setDisplayingVideoComplement:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setIntensity:(double)arg1;

@@ -6,26 +6,36 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSUUID;
+#import <HMFoundation/HMFObject-Protocol.h>
+#import <HMFoundation/NSCopying-Protocol.h>
+#import <HMFoundation/NSSecureCoding-Protocol.h>
 
-@interface HMFMessageDestination : HMFObject
+@class NSArray, NSString, NSUUID;
+
+@interface HMFMessageDestination : HMFObject <HMFObject, NSCopying, NSSecureCoding>
 {
     NSUUID *_target;
 }
 
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *target; // @synthesize target=_target;
 
 + (id)allMessageDestinations;
-+ (id)shortDescription;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)debugDescription;
-- (id)description;
-- (id)descriptionWithPointer:(BOOL)arg1;
-- (unsigned long long)hash;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTarget:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)shortDescription;
 
 @end
 

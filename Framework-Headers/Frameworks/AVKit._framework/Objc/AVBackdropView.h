@@ -6,8 +6,9 @@
 
 #import <AVKit/AVView.h>
 
-@class NSArray, NSString, UIStackView, UIView, UIVisualEffectView, _UIVisualEffectBackdropView;
+@class AVCABackdropLayerView, NSArray, UIStackView, UIView, UIVisualEffectView;
 
+__attribute__((visibility("hidden")))
 @interface AVBackdropView : AVView
 {
     NSArray *_temporaryArrangedSubviews;
@@ -16,54 +17,53 @@
     unsigned long long _shapeStyle;
     UIView *_targetViewForSecondaryMaterialOverlay;
     UIStackView *_stackView;
-    UIVisualEffectView *_visualEffectView;
     UIVisualEffectView *_secondaryMaterialOverlayView;
     NSArray *_secondaryMaterialOverlayViewConstraints;
-    NSString *_groupName;
-    _UIVisualEffectBackdropView *_captureView;
+    AVCABackdropLayerView *_backdropLayerView;
 }
 
 @property (readonly, nonatomic) long long axis; // @synthesize axis=_axis;
-@property (weak, nonatomic) _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
+@property (strong, nonatomic) AVCABackdropLayerView *backdropLayerView; // @synthesize backdropLayerView=_backdropLayerView;
 @property (nonatomic) struct NSDirectionalEdgeInsets contentLayoutMargins;
-@property (readonly, nonatomic) UIView *contentView;
 @property (nonatomic) BOOL disablesAutoLayout; // @synthesize disablesAutoLayout=_disablesAutoLayout;
-@property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (strong, nonatomic) UIVisualEffectView *secondaryMaterialOverlayView; // @synthesize secondaryMaterialOverlayView=_secondaryMaterialOverlayView;
 @property (strong, nonatomic) NSArray *secondaryMaterialOverlayViewConstraints; // @synthesize secondaryMaterialOverlayViewConstraints=_secondaryMaterialOverlayViewConstraints;
 @property (nonatomic) unsigned long long shapeStyle; // @synthesize shapeStyle=_shapeStyle;
 @property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property (strong, nonatomic) UIView *targetViewForSecondaryMaterialOverlay; // @synthesize targetViewForSecondaryMaterialOverlay=_targetViewForSecondaryMaterialOverlay;
-@property (readonly, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 
 + (void)applyBaseTrackTintToView:(id)arg1;
 + (void)applyCompletedTrackTintToView:(id)arg1;
++ (void)applyGlyphTintColor:(id)arg1 toView:(id)arg2;
 + (void)applyLoadedTrackTintToView:(id)arg1;
 + (void)applyPrimaryGlyphTintToView:(id)arg1;
 + (void)applySecondaryGlyphTintToView:(id)arg1;
-+ (id)baseEffects;
 + (void)configureSlider:(id)arg1 thumbView:(id)arg2 loadedTrackView:(id)arg3;
 + (void)configureView:(id)arg1 forTintEffectWithColor:(id)arg2 filterType:(id)arg3;
 + (void)configureView:(id)arg1 withBackgroundFillOfColor:(id)arg2 opacity:(double)arg3 filter:(id)arg4;
 + (void)removeAllFiltersFromView:(id)arg1;
++ (id)secondaryGlyphTintColor;
 + (id)secondaryMaterialOverlayView;
 - (void).cxx_destruct;
 - (void)_applyShapeStyle;
-- (void)_ensureGroupNameAndCaptureView;
 - (id)_stackViewIfLoaded;
-- (void)_updateTransparencyOfVisualEffectView;
+- (id)arrangedSubviews;
+- (id)backgroundColor;
+- (double)customSpacingAfterView:(id)arg1;
 - (void)dealloc;
+- (void)didMoveToSuperview;
 - (void)didMoveToWindow;
-- (id)initWithArrangedSubviews:(id)arg1 captureView:(id)arg2;
+- (BOOL)hasVisibleArrangedSubview;
+- (id)initWithArrangedSubviews:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 captureView:(id)arg2 disablingAutoLayout:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 disablingAutoLayout:(BOOL)arg2;
 - (void)layoutSubviews;
 - (void)setArrangedSubviews:(id)arg1 axis:(long long)arg2;
-- (void)setCaptureGroupName:(id)arg1 captureView:(id)arg2;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setCustomSpacing:(double)arg1 afterView:(id)arg2;
 - (void)setCustomSpacing:(double)arg1 afterViews:(id)arg2;
+- (void)setHidden:(BOOL)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 
 @end

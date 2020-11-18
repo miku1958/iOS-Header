@@ -8,23 +8,27 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEONameInfo;
+@class GEONameInfo, PBUnknownFields;
 
 @interface GEORouteName : PBCodable <NSCopying>
 {
-    int _lastZilchStitchedIndex;
+    PBUnknownFields *_unknownFields;
     GEONameInfo *_nameInfo;
+    int _lastZilchStitchedIndex;
     struct {
-        unsigned int lastZilchStitchedIndex:1;
-    } _has;
+        unsigned int has_lastZilchStitchedIndex:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasLastZilchStitchedIndex;
 @property (readonly, nonatomic) BOOL hasNameInfo;
-@property (nonatomic) int lastZilchStitchedIndex; // @synthesize lastZilchStitchedIndex=_lastZilchStitchedIndex;
-@property (strong, nonatomic) GEONameInfo *nameInfo; // @synthesize nameInfo=_nameInfo;
+@property (nonatomic) int lastZilchStitchedIndex;
+@property (strong, nonatomic) GEONameInfo *nameInfo;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +36,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -32,8 +32,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *icons;
 @property (readonly, nonatomic) NSArray *interfaceActions;
-@property (readonly, nonatomic) unsigned long long messageNumberOfLines;
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
+@property (readonly, nonatomic, getter=isNumberOfLinesInfinite) BOOL numberOfLinesInfinite;
 @property (copy, nonatomic) NSArray *overriddenActions; // @synthesize overriddenActions=_overriddenActions;
 @property (readonly, copy, nonatomic) NSString *primarySubtitleText;
 @property (readonly, copy, nonatomic) NSString *primaryText;

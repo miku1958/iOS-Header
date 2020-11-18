@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_moveInDirection:(unsigned long long)arg1;
+- (BOOL)_moveWithEvent:(id)arg1;
 
 @end
 

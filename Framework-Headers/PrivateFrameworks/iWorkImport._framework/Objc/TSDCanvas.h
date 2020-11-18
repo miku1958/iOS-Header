@@ -118,7 +118,6 @@ __attribute__((visibility("hidden")))
 - (void)invalidateReps;
 - (void)invalidateVisibleBounds;
 - (BOOL)isDrawingIntoPDF;
-- (BOOL)isExportingFixedLayoutEPUB;
 - (BOOL)isPrinting;
 - (BOOL)isRenderingForKPF;
 - (void)layoutInvalidated;
@@ -138,6 +137,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)spellCheckingSupported;
 - (BOOL)spellCheckingSuppressed;
 - (void)teardown;
+- (BOOL)textLayoutMustIncludeAdornments;
 - (id)textRendererForLayer:(id)arg1 context:(struct CGContext *)arg2;
 - (struct CGRect)visibleUnscaledRectForClippingReps;
 - (BOOL)wantsEditingLayoutsForOffscreenInfos;

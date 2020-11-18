@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <MessageUI/CNComposeHeaderViewDelegate-Protocol.h>
+
 @class MFComposeImageSizeView;
 
-@protocol MFComposeImageSizeViewDelegate
+@protocol MFComposeImageSizeViewDelegate <CNComposeHeaderViewDelegate>
 - (void)imageSizeView:(MFComposeImageSizeView *)arg1 changedSelectedScaleTo:(unsigned long long)arg2;
 @end
 

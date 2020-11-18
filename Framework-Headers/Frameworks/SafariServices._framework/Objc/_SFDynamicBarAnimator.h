@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) long long targetState;
 @property (readonly, nonatomic) double topBarHeight; // @synthesize topBarHeight=_topBarHeight;
+@property (readonly, nonatomic, getter=isTrackingDrag) BOOL trackingDrag; // @synthesize trackingDrag=_dragging;
 
 - (void).cxx_destruct;
 - (double)_bottomBarOffsetForTopBarHeight:(double)arg1;

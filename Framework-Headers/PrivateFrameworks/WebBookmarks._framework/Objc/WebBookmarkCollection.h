@@ -325,6 +325,7 @@
 - (BOOL)migrateReadingListIconsFromDatabaseToBookmarkImagesDirectory;
 - (void)modifyBookmarkInMemory:(id)arg1;
 - (BOOL)moveBookmark:(id)arg1 toFolderWithID:(int)arg2;
+- (unsigned long long)numberOfLeafBookmarksInTopLevelOfBookmark:(id)arg1;
 - (void)persistChangesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)postBookmarksDidReloadNotification;
 - (unsigned long long)purge:(unsigned long long)arg1;

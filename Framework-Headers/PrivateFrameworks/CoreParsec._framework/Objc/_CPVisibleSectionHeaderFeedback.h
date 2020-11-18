@@ -29,7 +29,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int headerType; // @synthesize headerType=_headerType;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (copy, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;

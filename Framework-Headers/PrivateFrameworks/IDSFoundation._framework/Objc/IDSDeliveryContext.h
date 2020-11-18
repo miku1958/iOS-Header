@@ -28,6 +28,8 @@
     NSString *_wpConnectionErrorDomain;
     NSNumber *_wpConnectionErrorCode;
     NSDictionary *_wpConnectionErrorUserInfo;
+    NSNumber *_endpointState;
+    NSNumber *_failureReason;
     APSOutgoingMessageCheckpointTrace *_apsdCheckpointTrace;
 }
 
@@ -36,6 +38,8 @@
 @property (copy, nonatomic) NSError *deliveryError; // @synthesize deliveryError=_deliveryError;
 @property (copy, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (copy, nonatomic) NSArray *displayIDs; // @synthesize displayIDs=_displayIDs;
+@property (copy, nonatomic) NSNumber *endpointState; // @synthesize endpointState=_endpointState;
+@property (copy, nonatomic) NSNumber *failureReason; // @synthesize failureReason=_failureReason;
 @property (nonatomic) long long idsResponseCode; // @synthesize idsResponseCode=_idsResponseCode;
 @property (copy, nonatomic) NSNumber *isDeviceBlackedOut; // @synthesize isDeviceBlackedOut=_isDeviceBlackedOut;
 @property (nonatomic) BOOL lastCall; // @synthesize lastCall=_lastCall;
@@ -50,6 +54,7 @@
 @property (copy, nonatomic) NSString *wpConnectionErrorDomain; // @synthesize wpConnectionErrorDomain=_wpConnectionErrorDomain;
 @property (copy, nonatomic) NSDictionary *wpConnectionErrorUserInfo; // @synthesize wpConnectionErrorUserInfo=_wpConnectionErrorUserInfo;
 
++ (long long)_endpointStateForServerDeliveryStatus:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithError:(id)arg1;
 - (id)initWithResponseCode:(long long)arg1 deviceID:(id)arg2;

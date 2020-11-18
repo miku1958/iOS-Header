@@ -6,26 +6,26 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSString;
+@class NSString, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface _UITableViewCellBadge : UIView
 {
-    BOOL _isSelected;
-    NSString *_text;
-    struct CGSize _textSize;
+    BOOL _selected;
+    UILabel *_badgeTextLabel;
 }
 
-@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_isSelected;
-@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
+@property (strong, nonatomic) UILabel *badgeTextLabel; // @synthesize badgeTextLabel=_badgeTextLabel;
+@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
+@property (copy, nonatomic) NSString *text;
 
 - (void).cxx_destruct;
 - (void)_sizeToFit;
-- (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isHighlighted;
+- (double)minHeight;
 - (void)setHighlighted:(BOOL)arg1;
-- (void)setIsSelected:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

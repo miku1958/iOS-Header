@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class MFAccount, MFActivityMonitor, MFError, MFMonitoredInvocation, NSArray;
+@protocol MFAccountValidatorDelegate;
 
 @interface MFAccountValidator : NSObject
 {
@@ -26,17 +27,18 @@
     MFError *_smtpServerValidationError;
     NSArray *_incomingServerAuthSchemes;
     NSArray *_smtpServerAuthSchemes;
-    id _delegate;
+    id<MFAccountValidatorDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) MFAccount *account;
 @property (readonly, nonatomic) BOOL accountIsValid;
 @property (readonly, nonatomic) BOOL accountSupportsSSL;
-@property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MFAccountValidatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) MFError *error;
 @property (readonly, nonatomic) BOOL performsValidationInBackground;
 @property (readonly, nonatomic) MFMonitoredInvocation *validationInvocation;
 
+- (void).cxx_destruct;
 - (void)_backgroundValidateAccountFinished:(id)arg1 authSchemes:(id)arg2;
 - (BOOL)_incomingServerValid;
 - (id)_ispAccountInfo;

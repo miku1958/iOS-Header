@@ -8,13 +8,13 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDCentralMessageDispatcher, NSString;
+@class HMDAccessory, HMDMessageDispatcher, NSString;
 
 @interface HMDCameraResidentMessageHandler : HMFObject <HMFLogging>
 {
     NSString *_logID;
     HMDAccessory *_accessory;
-    HMDCentralMessageDispatcher *_remoteMessageDispatcher;
+    HMDMessageDispatcher *_remoteMessageDispatcher;
 }
 
 @property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
@@ -23,7 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
-@property (strong, nonatomic) HMDCentralMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
+@property (strong, nonatomic) HMDMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
 @property (readonly) Class superclass;
 
 + (id)logCategory;

@@ -19,8 +19,8 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_clearDeviceList;
-- (void)_deviceDidPair:(id)arg1;
-- (void)_deviceDidUnpair:(id)arg1;
+- (void)_deviceDidBecomeActive:(id)arg1;
+- (void)_deviceDidBecomeInactive:(id)arg1;
 - (void)_rebuildDeviceList;
 - (void)addNRDevice:(id)arg1;
 - (id)allDevices;

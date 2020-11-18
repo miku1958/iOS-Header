@@ -6,14 +6,12 @@
 
 #import <HearingUI/NSObject-Protocol.h>
 
-@class AXRemoteHearingAidDevice, HACCContentViewController, UIView;
+@class AXRemoteHearingAidDevice, UIView;
 @protocol HACCContentModule;
 
 @protocol HACCContentModuleDelegate <NSObject>
-- (void)content:(UIView<HACCContentModule> *)arg1 shouldPreview:(BOOL)arg2 withController:(HACCContentViewController *)arg3 andCompletion:(void (^)(void))arg4;
 - (void)controlDidActivate:(UIView<HACCContentModule> *)arg1;
 - (AXRemoteHearingAidDevice *)currentHearingDevice;
 - (double)preferredContentWidth;
-- (BOOL)shouldDrawBackground;
 @end
 

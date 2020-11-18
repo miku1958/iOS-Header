@@ -8,15 +8,18 @@
 
 #import <HealthDaemon/HDStatisticsCollectionCalculatorDataSource-Protocol.h>
 
-@class HDProfile, HDSQLitePredicate, HKQuantityType, NSNumber, NSSet, NSString;
+@class HDProfile, HDSQLitePredicate, HKQuantityType, NSNumber, NSSet, NSString, _HKFilter;
 
 @interface HDStatisticsCollectionCalculatorDefaultDataSource : NSObject <HDStatisticsCollectionCalculatorDataSource>
 {
     HDSQLitePredicate *_fullPredicate;
+    BOOL _isRealQuantityType;
+    BOOL _includeUnfrozenSeries;
     HDProfile *_profile;
     HKQuantityType *_quantityType;
     HDSQLitePredicate *_predicate;
     NSSet *_restrictedSourceEntities;
+    _HKFilter *_filter;
     NSNumber *_anchor;
     long long _shouldContinueFrequency;
     CDUnknownBlockType _shouldContinueHandler;
@@ -25,7 +28,9 @@
 @property (copy, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL includeUnfrozenSeries; // @synthesize includeUnfrozenSeries=_includeUnfrozenSeries;
 @property (copy, nonatomic) HDSQLitePredicate *predicate; // @synthesize predicate=_predicate;
 @property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly, copy, nonatomic) HKQuantityType *quantityType; // @synthesize quantityType=_quantityType;
@@ -34,11 +39,12 @@
 @property (copy, nonatomic) CDUnknownBlockType shouldContinueHandler; // @synthesize shouldContinueHandler=_shouldContinueHandler;
 @property (readonly) Class superclass;
 
++ (BOOL)_addValueForQuantitySample:(id)arg1 calculator:(id)arg2 error:(id *)arg3;
++ (BOOL)_addValueForQuantitySeriesSample:(id)arg1 calculator:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
++ (BOOL)_enumerateSampleTypeWithProfile:(id)arg1 quantityType:(id)arg2 predicate:(id)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
++ (BOOL)_enumerateWithProfile:(id)arg1 quantityType:(id)arg2 predicate:(id)arg3 filter:(id)arg4 isQuantityType:(BOOL)arg5 includeUnfrozenSeries:(BOOL)arg6 error:(id *)arg7 block:(CDUnknownBlockType)arg8;
 - (void).cxx_destruct;
-- (BOOL)_addValueForQuantitySample:(id)arg1 calculator:(id)arg2 error:(id *)arg3;
-- (BOOL)_addValueForQuantitySeriesSample:(id)arg1 calculator:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
-- (BOOL)_addValuesForQuantitySamples:(id)arg1 calculator:(id)arg2 error:(id *)arg3;
-- (BOOL)_addValuesForQuantitySamples:(id)arg1 calculator:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
+- (BOOL)_addValuesForQuantitySamples:(id)arg1 calculator:(id)arg2 requiresSeriesValues:(BOOL)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (BOOL)addValuesForQuantitySamples:(id)arg1 calculator:(id)arg2 includeSeries:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)collectionCalculator:(id)arg1 queryForInterval:(id)arg2 error:(id *)arg3 sampleHandler:(CDUnknownBlockType)arg4;
 - (id)initForProfile:(id)arg1 quantityType:(id)arg2 predicate:(id)arg3 restrictedSourceEntities:(id)arg4;

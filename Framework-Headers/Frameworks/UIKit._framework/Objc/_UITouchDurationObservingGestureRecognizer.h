@@ -6,25 +6,34 @@
 
 #import <UIKitCore/UIGestureRecognizer.h>
 
-@class CADisplayLink;
+@class CADisplayLink, UIDelayedAction;
 
 __attribute__((visibility("hidden")))
 @interface _UITouchDurationObservingGestureRecognizer : UIGestureRecognizer
 {
-    double _allowableMovement;
     CADisplayLink *_displayLink;
+    double _minimumDurationRequired;
+    double _allowableMovement;
+    double _touchForce;
     double _touchStartTimestamp;
+    UIDelayedAction *_delayedAction;
     struct CGPoint _originalCentroid;
 }
 
 @property (nonatomic) double allowableMovement; // @synthesize allowableMovement=_allowableMovement;
-@property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
+@property (readonly, nonatomic) UIDelayedAction *delayedAction; // @synthesize delayedAction=_delayedAction;
+@property (readonly, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
+@property (nonatomic) double minimumDurationRequired; // @synthesize minimumDurationRequired=_minimumDurationRequired;
 @property (nonatomic) struct CGPoint originalCentroid; // @synthesize originalCentroid=_originalCentroid;
 @property (readonly, nonatomic) double touchDuration;
+@property (readonly, nonatomic) double touchForce; // @synthesize touchForce=_touchForce;
 @property (nonatomic) double touchStartTimestamp; // @synthesize touchStartTimestamp=_touchStartTimestamp;
 
 - (void).cxx_destruct;
+- (void)_cancelOrFail;
 - (void)_displayLinkDidFire:(id)arg1;
+- (BOOL)_exceededNumberOfTouchesForEvent:(id)arg1;
+- (void)_performDelayedBegin;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
 - (void)dealloc;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;

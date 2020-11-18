@@ -20,6 +20,7 @@
     BOOL _insetsContentViewsToSafeArea;
     BOOL _drawsSeparatorAtTopOfSection;
     BOOL _drawsSeparatorAtBottomOfSection;
+    BOOL _preferredAttributesCached;
     BOOL _isHeader;
     BOOL _floating;
     int _sectionLocation;
@@ -32,7 +33,6 @@
     double _defaultLeadingCellMarginWidth;
     double _defaultTrailingCellMarginWidth;
     double _indexBarExtentFromEdge;
-    double _sectionBorderWidth;
     long long _indentationLevel;
     double _maxTitleWidth;
     long long _textAlignment;
@@ -57,7 +57,7 @@
 @property (nonatomic) BOOL layoutMarginsFollowReadableWidth; // @synthesize layoutMarginsFollowReadableWidth=_layoutMarginsFollowReadableWidth;
 @property (nonatomic) struct UIEdgeInsets margins; // @synthesize margins=_margins;
 @property (nonatomic) double maxTitleWidth; // @synthesize maxTitleWidth=_maxTitleWidth;
-@property (nonatomic) double sectionBorderWidth; // @synthesize sectionBorderWidth=_sectionBorderWidth;
+@property (nonatomic) BOOL preferredAttributesCached; // @synthesize preferredAttributesCached=_preferredAttributesCached;
 @property (nonatomic) int sectionLocation; // @synthesize sectionLocation=_sectionLocation;
 @property (copy, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
 @property (strong, nonatomic) UIVisualEffect *separatorEffect; // @synthesize separatorEffect=_separatorEffect;

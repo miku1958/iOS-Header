@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <RelevanceEngine/NSCoding-Protocol.h>
 #import <RelevanceEngine/NSCopying-Protocol.h>
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/NSSecureCoding-Protocol.h>
+#import <RelevanceEngine/_REContentLoggingProperties-Protocol.h>
 
-@class CLKImageProvider, CLKTextProvider, NSAttributedString, NSMutableDictionary, NSString, NSTimeZone, REAccessoryDescription, REAccessoryImage, REAccessoryMatchup, REImageContentProvider, RETextContentProvider, UIColor, UIImage;
+@class CLKImageProvider, CLKTextProvider, NSAttributedString, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSTimeZone, REAccessoryDescription, REAccessoryImage, REAccessoryMatchup, REImageContentProvider, RETextContentProvider, UIColor, UIImage;
 
-@interface REContent : NSObject <REIndentedDescription, NSCopying, NSCoding>
+@interface REContent : NSObject <_REContentLoggingProperties, NSCopying, NSSecureCoding>
 {
     NSMutableDictionary *_contents;
     NSTimeZone *_timeZone;
@@ -23,9 +23,8 @@
 @property (copy, nonatomic) REImageContentProvider *bodyImageContentProvider;
 @property (copy, nonatomic) CLKImageProvider *bodyImageProvider;
 @property (nonatomic) BOOL bodyImageShouldStretch;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long description1FontStyle;
+@property (copy, nonatomic) NSNumber *description1Opacity;
 @property (copy, nonatomic) NSAttributedString *description1Text;
 @property (copy, nonatomic) RETextContentProvider *description1TextContentProvider;
 @property (copy, nonatomic) CLKTextProvider *description1TextProvider;
@@ -37,7 +36,6 @@
 @property (copy, nonatomic) RETextContentProvider *description3TextContentProvider;
 @property (copy, nonatomic) CLKTextProvider *description3TextProvider;
 @property (copy, nonatomic) REAccessoryDescription *descriptionAccessory;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long headerFontStyle;
 @property (copy, nonatomic) UIImage *headerImage;
 @property (copy, nonatomic) REImageContentProvider *headerImageContentProvider;
@@ -48,22 +46,23 @@
 @property (copy, nonatomic) CLKTextProvider *headerTextProvider;
 @property (copy, nonatomic) REAccessoryImage *imageAccessory;
 @property (nonatomic) struct CGRect imageFocusRect;
+@property (readonly, nonatomic) NSDictionary *loggingContentValues;
 @property (copy, nonatomic) REAccessoryMatchup *matchupAccessory;
 @property (strong, nonatomic) UIImage *overrideBodyImage;
 @property (copy, nonatomic) NSString *overrideBodyString;
 @property (strong, nonatomic) UIImage *overrideHeaderImage;
 @property (nonatomic) unsigned long long punchThrough;
 @property (nonatomic) unsigned long long style;
-@property (readonly) Class superclass;
 @property (copy, nonatomic) UIColor *tintColor;
 @property (nonatomic) BOOL tintColorAffectsHeader;
 @property (nonatomic) BOOL useMonospaceFont;
-@property (nonatomic) BOOL wantsFullCellPhoto;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

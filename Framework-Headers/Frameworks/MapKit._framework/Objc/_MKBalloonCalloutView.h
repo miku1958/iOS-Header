@@ -48,6 +48,7 @@
 - (void)_handleTapOnCallout:(id)arg1;
 - (double)_innerDiameter;
 - (void)_updateCroppedImage;
+- (void)_updateStyle;
 - (BOOL)calloutContainsPoint:(struct CGPoint)arg1;
 - (void)didMoveToWindow;
 - (void)dismissAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -58,6 +59,7 @@
 - (void)layoutSubviews;
 - (void)showAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)showCalloutAnimated:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

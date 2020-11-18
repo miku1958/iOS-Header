@@ -13,7 +13,6 @@
 @interface GEOETARequestUpdateable : GEOXPCRequest <GEOXPCRequest>
 {
     GEOETATrafficUpdateRequest *_request;
-    int _mode;
     GEODataConditionalConnectionProperties *_connectionProperties;
 }
 
@@ -21,7 +20,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) GEOETATrafficUpdateRequest *request; // @synthesize request=_request;
 @property (readonly) Class superclass;
 

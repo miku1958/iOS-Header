@@ -21,11 +21,13 @@
     } _has;
     BOOL _overwrite;
     BOOL _success;
+    BOOL __encodeLegacyGloryData;
     _INPBString *_destinationName;
     NSArray *_entityNames;
     _INPBString *_sourceName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
@@ -44,6 +46,7 @@
 @property (readonly) Class superclass;
 
 + (Class)entityNameType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsEntityTypes:(id)arg1;
 - (void)addEntityName:(id)arg1;
@@ -51,10 +54,13 @@
 - (void)clearEntityNames;
 - (void)clearEntityTypes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityNameAtIndex:(unsigned long long)arg1;
 - (int)entityTypeAtIndex:(unsigned long long)arg1;
 - (id)entityTypesAsString:(int)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setEntityTypes:(int *)arg1 count:(unsigned long long)arg2;

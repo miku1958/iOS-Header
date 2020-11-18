@@ -11,6 +11,7 @@
 }
 
 - (void)_addAssetManagerEnabledConditions;
+- (BOOL)_shouldCheckNetworkAvailability;
 - (void)_subscribeEventMonitors;
 - (id)init;
 

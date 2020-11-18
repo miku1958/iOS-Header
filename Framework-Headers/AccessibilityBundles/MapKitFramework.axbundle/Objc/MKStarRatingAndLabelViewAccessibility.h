@@ -14,8 +14,7 @@
 + (id)ratingAndReviewsAsAttributedString:(double)arg1 style:(long long)arg2 font:(id)arg3 numberOfReviews:(unsigned long long)arg4 textColor:(id)arg5 theme:(id)arg6;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-+ (id)starRatingAndProviderAsAttributedStringForMapItem:(id)arg1 textColor:(id)arg2 font:(id)arg3 showReviewsOrTips:(BOOL)arg4 ratingStyle:(long long)arg5 theme:(id)arg6;
-- (id)accessibilityLabel;
++ (id)starRatingAndProviderAsAttributedStringForMapItem:(id)arg1 textColor:(id)arg2 font:(id)arg3 showReviewsOrTips:(BOOL)arg4 showNumberOfReviews:(BOOL)arg5 ratingStyle:(long long)arg6 theme:(id)arg7;
 - (BOOL)isAccessibilityElement;
 
 @end

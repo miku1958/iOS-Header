@@ -6,20 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIColor, UIImageView, UILabel;
+@class NSArray, NSAttributedString, NSLayoutConstraint, UIColor, UIImageView, UILabel;
 @protocol EKDayOccurrenceTravelTimeViewMetricsDelegate;
 
 @interface EKDayOccurrenceTravelTimeView : UIView
 {
     BOOL _selected;
     BOOL _animatingAlpha;
-    int _occurrenceBackgroundStyle;
     id<EKDayOccurrenceTravelTimeViewMetricsDelegate> _delegate;
-    NSString *_location;
     UIColor *_elementColor;
     UIColor *_lineColor;
+    long long _occurrenceBackgroundStyle;
     long long _routingMode;
-    double _travelTime;
     double _hairlineYPosition;
     UIImageView *_travelTimeIcon;
     UILabel *_travelTimeLabel;
@@ -41,21 +39,19 @@
 @property (strong) NSLayoutConstraint *iconWidth; // @synthesize iconWidth=_iconWidth;
 @property (strong) NSLayoutConstraint *leadingHorizontalPad; // @synthesize leadingHorizontalPad=_leadingHorizontalPad;
 @property (strong, nonatomic) UIColor *lineColor; // @synthesize lineColor=_lineColor;
-@property (copy, nonatomic) NSString *location; // @synthesize location=_location;
-@property (nonatomic) int occurrenceBackgroundStyle; // @synthesize occurrenceBackgroundStyle=_occurrenceBackgroundStyle;
+@property (nonatomic) long long occurrenceBackgroundStyle; // @synthesize occurrenceBackgroundStyle=_occurrenceBackgroundStyle;
 @property (nonatomic) long long routingMode; // @synthesize routingMode=_routingMode;
 @property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 @property (strong) NSLayoutConstraint *trailingHorizontalPad; // @synthesize trailingHorizontalPad=_trailingHorizontalPad;
-@property (nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
 @property (strong) UIImageView *travelTimeIcon; // @synthesize travelTimeIcon=_travelTimeIcon;
 @property (strong) UILabel *travelTimeLabel; // @synthesize travelTimeLabel=_travelTimeLabel;
+@property (copy, nonatomic) NSAttributedString *travelTimeString;
 
 + (void)initialize;
-+ (double)minimumNaturalHeightForPrimaryTextUsingSmallText:(BOOL)arg1;
++ (double)minimumNaturalHeightForPrimaryTextUsingSmallText:(BOOL)arg1 sizeClass:(long long)arg2;
 - (void).cxx_destruct;
 - (double)_iconScale;
 - (struct UIEdgeInsets)_parentPadding;
-- (void)_setupStringContent;
 - (id)_textFont;
 - (id)_travelTimeIconForTravelModeWithColor:(id)arg1;
 - (void)_updateStringsColorsAndConstraintConstants;

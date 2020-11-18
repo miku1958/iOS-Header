@@ -15,7 +15,7 @@
     HDDataCollectorState *_state;
 }
 
-@property (strong, nonatomic) id<HDDataCollector> collector; // @synthesize collector=_collector;
+@property (weak, nonatomic) id<HDDataCollector> collector; // @synthesize collector=_collector;
 @property (strong, nonatomic) HDDataCollectorState *state; // @synthesize state=_state;
 
 - (void).cxx_destruct;

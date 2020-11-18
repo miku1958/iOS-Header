@@ -30,6 +30,7 @@
 @property (copy, nonatomic) NSArray *descriptions;
 @property (nonatomic) BOOL doNotFold;
 @property (strong, nonatomic) NSNumber *engagementScore;
+@property (strong, nonatomic) NSData *entityData;
 @property (copy, nonatomic) NSString *fbr;
 @property (copy, nonatomic) NSDictionary *featureScaling;
 @property (copy, nonatomic) NSString *fileProviderDomainIdentifier;

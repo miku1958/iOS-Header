@@ -6,13 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class NSCharacterSet;
+
 @interface VSSpeechCharacterSet : NSObject
 {
+    NSCharacterSet *_characterSet;
 }
 
-+ (id)characterSetForLanguage:(id)arg1;
+@property (strong, nonatomic) NSCharacterSet *characterSet; // @synthesize characterSet=_characterSet;
+
 + (id)languageMapping;
-+ (id)unspeakableRangeOfText:(id)arg1 forLanguage:(id)arg2;
+- (void).cxx_destruct;
+- (id)initWithLanguage:(id)arg1;
+- (id)unspeakableRangeOfText:(id)arg1;
 
 @end
 

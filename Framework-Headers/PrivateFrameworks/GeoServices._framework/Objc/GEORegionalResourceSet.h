@@ -8,28 +8,44 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEORegionalResourceSet : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOTileSetRegion *_regions;
     unsigned long long _regionsCount;
     unsigned long long _regionsSpace;
     NSMutableArray *_resources;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_regions:1;
+        unsigned int read_resources:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_regions:1;
+        unsigned int wrote_resources:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) struct GEOTileSetRegion *regions;
 @property (readonly, nonatomic) unsigned long long regionsCount;
-@property (strong, nonatomic) NSMutableArray *resources; // @synthesize resources=_resources;
+@property (strong, nonatomic) NSMutableArray *resources;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)resourceType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsRegion:(struct GEOTileSetRegion)arg1;
+- (void)_addNoFlagsResource:(id)arg1;
+- (void)_readRegions;
+- (void)_readResources;
 - (void)addRegion:(struct GEOTileSetRegion)arg1;
 - (void)addResource:(id)arg1;
 - (void)clearRegions;
 - (void)clearResources;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -38,6 +54,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (struct GEOTileSetRegion)regionAtIndex:(unsigned long long)arg1;
 - (id)resourceAtIndex:(unsigned long long)arg1;

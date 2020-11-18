@@ -14,17 +14,24 @@
 @interface PXIndexPathSet : NSObject <NSCopying, NSMutableCopying>
 {
     NSMutableDictionary *__sectionIndexesByDataSourceIdentifier;
+    NSMutableDictionary *__indexesForSectionsWithItemsByDataSourceIdentifier;
     NSMutableDictionary *__itemIndexesBySectionByDataSourceIdentifier;
     NSMutableDictionary *__subitemIndexesByItemBySectionByDataSourceIdentifier;
 }
 
+@property (readonly, nonatomic) NSMutableDictionary *_indexesForSectionsWithItemsByDataSourceIdentifier; // @synthesize _indexesForSectionsWithItemsByDataSourceIdentifier=__indexesForSectionsWithItemsByDataSourceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *_itemIndexesBySectionByDataSourceIdentifier; // @synthesize _itemIndexesBySectionByDataSourceIdentifier=__itemIndexesBySectionByDataSourceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *_sectionIndexesByDataSourceIdentifier; // @synthesize _sectionIndexesByDataSourceIdentifier=__sectionIndexesByDataSourceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *_subitemIndexesByItemBySectionByDataSourceIdentifier; // @synthesize _subitemIndexesByItemBySectionByDataSourceIdentifier=__subitemIndexesByItemBySectionByDataSourceIdentifier;
+@property (readonly, nonatomic) struct PXSimpleIndexPath anyItemIndexPath;
+@property (readonly, nonatomic) struct PXSimpleIndexPath anySectionIndexPath;
 @property (readonly, nonatomic) long long count;
 
 + (id)indexPathSet;
 + (id)indexPathSetWithIndexPath:(struct PXSimpleIndexPath)arg1;
++ (id)indexPathSetWithItemIndexes:(id)arg1 dataSourceIdentifier:(unsigned long long)arg2 section:(long long)arg3;
++ (id)indexPathSetWithSectionIndexes:(id)arg1 dataSourceIdentifier:(unsigned long long)arg2;
++ (id)indexPathSetWithSubitemIndexes:(id)arg1 dataSourceIdentifier:(unsigned long long)arg2 section:(long long)arg3 item:(long long)arg4;
 - (void).cxx_destruct;
 - (BOOL)containsIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -37,9 +44,20 @@
 - (void)enumerateSectionIndexSetsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSubitemIndexPathsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSubitemIndexSetsUsingBlock:(CDUnknownBlockType)arg1;
+- (struct PXSimpleIndexPath)firstItemIndexPathForDataSourceIdentifier:(unsigned long long)arg1;
+- (struct PXSimpleIndexPath)indexPathGreaterThanIndexPath:(struct PXSimpleIndexPath)arg1;
+- (struct PXSimpleIndexPath)indexPathLessThanIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)indexPathSetByReplacingDataSourceIdentifier:(unsigned long long)arg1 withDataSourceIdentifier:(unsigned long long)arg2;
 - (id)init;
+- (BOOL)intersectsSet:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isSubsetOfSet:(id)arg1;
+- (BOOL)isSupersetOfSet:(id)arg1;
+- (id)itemIndexSetForDataSourceIdentifier:(unsigned long long)arg1 section:(long long)arg2;
+- (struct PXSimpleIndexPath)lastItemIndexPathForDataSourceIdentifier:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)sectionIndexSetForDataSourceIdentifier:(unsigned long long)arg1;
+- (id)sectionsWithItemsForDataSourceIdentifier:(unsigned long long)arg1;
 
 @end
 

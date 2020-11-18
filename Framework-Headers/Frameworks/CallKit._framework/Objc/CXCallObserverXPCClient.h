@@ -25,13 +25,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSDictionary *callUUIDToCallMap;
 @property (nonatomic) BOOL clientsShouldConnect; // @synthesize clientsShouldConnect=_clientsShouldConnect;
 @property (nonatomic) int clientsShouldConnectToken; // @synthesize clientsShouldConnectToken=_clientsShouldConnectToken;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
+@property (readonly, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableDictionary *mutableCallUUIDToCallMap; // @synthesize mutableCallUUIDToCallMap=_mutableCallUUIDToCallMap;
+@property (readonly, nonatomic) NSMutableDictionary *mutableCallUUIDToCallMap; // @synthesize mutableCallUUIDToCallMap=_mutableCallUUIDToCallMap;
 @property (readonly) Class superclass;
 
 + (void)releaseSharedXPCClient;

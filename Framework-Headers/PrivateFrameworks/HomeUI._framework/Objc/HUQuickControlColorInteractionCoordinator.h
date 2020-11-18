@@ -28,12 +28,13 @@
 
 - (void).cxx_destruct;
 - (void)_notifyDelegateOfColorPaletteChangeIfNecessary;
-- (void)controlView:(id)arg1 activeModeDidChange:(unsigned long long)arg2;
+- (void)cancelButtonTappedToDismissColorViewController;
 - (void)controlView:(id)arg1 colorPaletteDidChange:(id)arg2;
 - (void)controlView:(id)arg1 interactionStateDidChange:(BOOL)arg2 forFirstTouch:(BOOL)arg3;
 - (void)controlView:(id)arg1 showAuxiliaryView:(id)arg2;
 - (void)hideAuxiliaryViewForControlView:(id)arg1;
 - (id)initWithControlView:(id)arg1 colorPalette:(id)arg2 delegate:(id)arg3;
+- (void)presentFullColorViewForControlView:(id)arg1 selectedColorIndexPath:(id)arg2;
 
 @end
 

@@ -21,12 +21,14 @@
 @property (readonly, nonatomic) NSString *convertedAnalysisString;
 @property (readonly, nonatomic) NSString *dictionaryReading;
 @property (readonly, nonatomic) BOOL isAutocorrectedCandidate;
+@property (readonly, nonatomic) BOOL isBilingualCandidate;
 @property (readonly, nonatomic) BOOL isConversionCandidate;
 @property (readonly, nonatomic) BOOL isEmojiCandidate;
 @property (readonly, nonatomic) BOOL isExtensionCandidate;
 @property (readonly, nonatomic) BOOL isFuzzyMatchCandidate;
 @property (readonly, nonatomic) BOOL isLearningDictionaryCandidate;
 @property (readonly, nonatomic) BOOL isOTAWordlistCandidate;
+@property (readonly, nonatomic) BOOL isPartialCandidate;
 @property (readonly, nonatomic) BOOL isPersonName;
 @property (readonly, nonatomic) BOOL isPredictionCandidate;
 @property (readonly, nonatomic) BOOL isRegionalCandidate;
@@ -46,6 +48,7 @@
 - (struct __CFArray *)copySyllableLengthArrayInConvertedAnalysisString;
 - (struct __CFArray *)copySyllableLengthArrayInDictionaryReading;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (long long)costAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)initWithCandidate:(struct MecabraCandidateBase *)arg1;
@@ -53,6 +56,7 @@
 - (unsigned short)kind;
 - (unsigned short)lastPrefixValue;
 - (unsigned short)lcAttrAtIndex:(unsigned long long)arg1;
+- (double)lmProbability;
 - (unsigned short)matchType;
 - (unsigned short)matchedLengthType;
 - (long long)phraseBoundaryAfterWordAtIndex:(long long)arg1;

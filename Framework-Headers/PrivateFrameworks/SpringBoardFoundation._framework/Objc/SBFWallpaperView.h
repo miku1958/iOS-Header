@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+#import <SpringBoardFoundation/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoardFoundation/SBFLegibilitySettingsProvider-Protocol.h>
-#import <SpringBoardFoundation/_UISettingsKeyObserver-Protocol.h>
 
 @class NSString, NSTimer, SBFWallpaperParallaxSettings, SBFWallpaperSettings, UIColor, UIImage, _UILegibilitySettings, _UILegibilitySettingsProvider;
-@protocol SBFLegibilitySettingsProviderDelegate, SBFWallpaperViewInternalObserver, SBFWallpaperViewSettingsProvider;
+@protocol SBFLegibilitySettingsProviderDelegate, SBFWallpaperViewDelegate, SBFWallpaperViewInternalObserver;
 
-@interface SBFWallpaperView : UIView <_UISettingsKeyObserver, SBFLegibilitySettingsProvider>
+@interface SBFWallpaperView : UIView <PTSettingsKeyObserver, SBFLegibilitySettingsProvider>
 {
     SBFWallpaperSettings *_wallpaperSettings;
     UIView *_parallaxView;
@@ -33,17 +33,22 @@
     BOOL _continuousColorSamplingEnabled;
     BOOL _wallpaperAnimationEnabled;
     BOOL _rotating;
+    BOOL _hasVideo;
     BOOL _sharesContentsAcrossVariants;
     id<SBFLegibilitySettingsProviderDelegate> _delegate;
     UIView *_contentView;
+    long long _wallpaperMode;
+    id<SBFWallpaperViewDelegate> _wallpaperDelegate;
+    UIImage *_untreatedWallpaperImage;
     double _parallaxFactor;
     NSString *_wallpaperName;
     long long _logicalContentOrientation;
+    NSString *_cacheGroup;
     id<SBFWallpaperViewInternalObserver> _internalObserver;
-    id<SBFWallpaperViewSettingsProvider> _wallpaperSettingsProvider;
 }
 
-@property (readonly, copy, nonatomic) NSString *cacheGroup;
+@property (readonly, copy, nonatomic) NSString *cacheGroup; // @synthesize cacheGroup=_cacheGroup;
+@property (readonly, copy, nonatomic) NSString *cacheUniqueIdentifier;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) BOOL continuousColorSamplingEnabled; // @synthesize continuousColorSamplingEnabled=_continuousColorSamplingEnabled;
 @property (readonly, nonatomic) struct CGRect cropRect;
@@ -52,6 +57,7 @@
 @property (weak, nonatomic) id<SBFLegibilitySettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasContentOutsideVisibleBounds;
+@property (readonly, nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<SBFWallpaperViewInternalObserver> internalObserver; // @synthesize internalObserver=_internalObserver;
 @property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
@@ -64,38 +70,44 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsCropping;
 @property (nonatomic) unsigned long long transformOptions; // @synthesize transformOptions=_transformOptions;
+@property (strong, nonatomic) UIImage *untreatedWallpaperImage; // @synthesize untreatedWallpaperImage=_untreatedWallpaperImage;
 @property (nonatomic) long long variant; // @synthesize variant=_variant;
 @property (readonly, copy, nonatomic) NSString *variantCacheIdentifier;
 @property (nonatomic) BOOL wallpaperAnimationEnabled; // @synthesize wallpaperAnimationEnabled=_wallpaperAnimationEnabled;
+@property (weak, nonatomic) id<SBFWallpaperViewDelegate> wallpaperDelegate; // @synthesize wallpaperDelegate=_wallpaperDelegate;
 @property (readonly, nonatomic) UIImage *wallpaperImage;
-@property (copy, nonatomic) NSString *wallpaperName; // @synthesize wallpaperName=_wallpaperName;
-@property (weak, nonatomic) id<SBFWallpaperViewSettingsProvider> wallpaperSettingsProvider; // @synthesize wallpaperSettingsProvider=_wallpaperSettingsProvider;
+@property (readonly, nonatomic) long long wallpaperMode; // @synthesize wallpaperMode=_wallpaperMode;
+@property (readonly, copy, nonatomic) NSString *wallpaperName; // @synthesize wallpaperName=_wallpaperName;
 @property (readonly, nonatomic) long long wallpaperType;
 @property (nonatomic) double zoomFactor; // @synthesize zoomFactor=_zoomFactor;
 
 + (BOOL)_allowsParallax;
 + (BOOL)_allowsRasterization;
 + (BOOL)_shouldScaleForParallax;
++ (Class)wallpaperViewClassForConfiguration:(id)arg1;
++ (Class)wallpaperViewClassForWallpaperType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_addParallax;
 - (void)_applyParallaxSettings;
 - (id)_averageColorInContentViewRect:(struct CGRect)arg1 smudgeRadius:(double)arg2;
+- (id)_backdrop_generateImageFromImage:(id)arg1 forBackdropParameters:(CDStruct_d8f0d129)arg2 includeTint:(BOOL)arg3 traitCollection:(id)arg4;
 - (void)_beginDisallowRasterizationBlock;
-- (id)_blurReplacementImage;
 - (id)_blurredImage;
-- (id)_cacheKeyForParameters:(CDStruct_83077358)arg1 includingTint:(BOOL)arg2 downsampleFactor:(double)arg3;
+- (id)_cacheKeyForParameters:(CDStruct_d8f0d129)arg1 includingTint:(BOOL)arg2 downsampleFactor:(double)arg3 traitCollection:(id)arg4;
 - (id)_computeAverageColor;
 - (double)_contrastInContentViewRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (id)_displayedImage;
+- (BOOL)_dontUseShadow;
 - (void)_endDisallowRasterizationBlock;
 - (id)_fallbackImageWithOriginalSize:(struct CGSize)arg1;
+- (id)_generateImageFromImage:(id)arg1 forBackdropParameters:(CDStruct_d8f0d129)arg2 includeTint:(BOOL)arg3 traitCollection:(id)arg4;
 - (void)_handleVariantChange;
 - (void)_handleVisibilityChange;
-- (id)_imageForBackdropParameters:(CDStruct_83077358)arg1 includeTint:(BOOL)arg2;
+- (id)_imageForBackdropParameters:(CDStruct_d8f0d129)arg1 includeTint:(BOOL)arg2 overrideTraitCollection:(id)arg3;
 - (BOOL)_isVisible;
+- (id)_material_generateImageFromImage:(id)arg1 forBackdropParameters:(CDStruct_d8f0d129)arg2 traitCollection:(id)arg3;
 - (BOOL)_needsFallbackImageForBackdropGeneratedImage:(id)arg1;
 - (void)_notifyBlursInvalidated;
-- (void)_notifyGeometryInvalidated;
 - (id)_primaryColorOverride;
 - (void)_removeParallax;
 - (void)_setLegibilitySettings:(id)arg1 notify:(BOOL)arg2;
@@ -115,8 +127,8 @@
 - (double)contrastInRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (id)imageForBackdropParameters:(CDStruct_83077358)arg1 includeTint:(BOOL)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 variant:(long long)arg2 wallpaperSettingsProvider:(id)arg3;
+- (id)imageForBackdropParameters:(CDStruct_d8f0d129)arg1 includeTint:(BOOL)arg2 overrideTraitCollection:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2 variant:(long long)arg3 cacheGroup:(id)arg4 delegate:(id)arg5 options:(unsigned long long)arg6;
 - (void)invalidate;
 - (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
 - (void)layoutSubviews;
@@ -131,7 +143,6 @@
 - (void)setHidden:(BOOL)arg1;
 - (void)setLegibilitySettings:(id)arg1;
 - (void)setVariant:(long long)arg1 withAnimationFactory:(id)arg2;
-- (void)setVariant:(long long)arg1 withAnimationFactory:(id)arg2 forced:(BOOL)arg3;
 - (void)setZoomFactor:(double)arg1 withAnimationFactory:(id)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (id)snapshotImage;

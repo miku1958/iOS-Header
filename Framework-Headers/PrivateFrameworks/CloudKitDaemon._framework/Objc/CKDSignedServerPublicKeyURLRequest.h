@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (void)requestDidParsePlistObject:(id)arg1;
 - (BOOL)requiresConfiguration;
 - (BOOL)requiresDeviceID;
-- (BOOL)requiresSignature;
 - (BOOL)requiresTokenRegistration;
 - (long long)serverType;
 - (id)url;

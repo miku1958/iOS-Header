@@ -17,7 +17,7 @@
     VNPersonsModelFaceModel *_faceModel_DO_NOT_ACCESS_DIRECTLY;
 }
 
-@property (readonly, copy, nonatomic) VNPersonsModelConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, copy, nonatomic) VNPersonsModelConfiguration *configuration;
 
 + (Class)_modelClassForKind:(unsigned int)arg1 error:(id *)arg2;
 + (id)_modelFromStream:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -44,6 +44,7 @@
 - (id)personUniqueIdentifiers;
 - (id)predictPersonFromFaceObservation:(id)arg1 limit:(unsigned long long)arg2 canceller:(id)arg3 error:(id *)arg4;
 - (id)upToDateFaceModelWithCanceller:(id)arg1 error:(id *)arg2;
+- (BOOL)updateInternalConfigurationWithModelFaceprintRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 
 @end
 

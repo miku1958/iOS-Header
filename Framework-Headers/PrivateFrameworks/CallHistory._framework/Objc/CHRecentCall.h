@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CallHistory/CHSynchronizable.h>
+#import <objc/NSObject.h>
 
 #import <CallHistory/NSCopying-Protocol.h>
 #import <CallHistory/NSSecureCoding-Protocol.h>
 
 @class CHHandle, CNContact, NSDate, NSMutableArray, NSNumber, NSSet, NSString, NSUUID, NSValue;
-@protocol CHPhoneBookManagerProtocol;
+@protocol CHPhoneBookManagerProtocol, OS_dispatch_queue;
 
-@interface CHRecentCall : CHSynchronizable <NSSecureCoding, NSCopying>
+@interface CHRecentCall : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _read;
     BOOL _callerIdIsBlocked;
@@ -28,6 +28,7 @@
     NSUUID *_localParticipantUUID;
     NSUUID *_outgoingLocalParticipantUUID;
     NSSet *_remoteParticipantHandles;
+    long long _verificationStatus;
     CHHandle *_localParticipantHandle;
     NSString *_uniqueId;
     NSString *_serviceProvider;
@@ -51,6 +52,7 @@
     NSString *_addressBookCallerIDMultiValueId;
     NSString *_devicePhoneId;
     NSString *_callerId;
+    NSObject<OS_dispatch_queue> *_queue;
     NSString *_callerName;
     NSMutableArray *_callOccurrences;
     NSString *_callerIdLabel;
@@ -97,6 +99,7 @@
 @property BOOL multiCall; // @synthesize multiCall=_multiCall;
 @property (strong, nonatomic) NSUUID *outgoingLocalParticipantUUID; // @synthesize outgoingLocalParticipantUUID=_outgoingLocalParticipantUUID;
 @property (strong) id<CHPhoneBookManagerProtocol> phoneBookManager; // @synthesize phoneBookManager=_phoneBookManager;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL read; // @synthesize read=_read;
 @property (copy, nonatomic) NSSet *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
 @property (copy, nonatomic) NSString *serviceProvider; // @synthesize serviceProvider=_serviceProvider;
@@ -104,6 +107,7 @@
 @property (nonatomic) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (copy, nonatomic) NSString *uniqueId; // @synthesize uniqueId=_uniqueId;
 @property unsigned long long unreadCount; // @synthesize unreadCount=_unreadCount;
+@property (nonatomic) long long verificationStatus; // @synthesize verificationStatus=_verificationStatus;
 
 + (id)callCategoryAsString:(unsigned int)arg1;
 + (id)callHandleTypeAsString:(long long)arg1;
@@ -116,6 +120,29 @@
 + (unsigned int)getCallTypeForCategory:(unsigned int)arg1 andServiceProvider:(id)arg2;
 + (id)getLocationForCallerId:(id)arg1 andIsoCountryCode:(id)arg2;
 + (long long)mediaTypeForCallCategory:(unsigned int)arg1;
++ (id)predicateForCallsBetweenStartDate:(id)arg1 endDate:(id)arg2;
++ (id)predicateForCallsWithAnyMediaTypes:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleNormalizedValues:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleTypes:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandleValues:(id)arg1;
++ (id)predicateForCallsWithAnyRemoteParticipantHandles:(id)arg1;
++ (id)predicateForCallsWithAnyServiceProviders:(id)arg1;
++ (id)predicateForCallsWithAnyTTYTypes:(id)arg1;
++ (id)predicateForCallsWithAnyUniqueIDs:(id)arg1;
++ (id)predicateForCallsWithCategory:(unsigned int)arg1;
++ (id)predicateForCallsWithMediaType:(long long)arg1;
++ (id)predicateForCallsWithRemoteParticipantCount:(long long)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandle:(id)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleNormalizedValue:(id)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleType:(long long)arg1;
++ (id)predicateForCallsWithRemoteParticipantHandleValue:(id)arg1;
++ (id)predicateForCallsWithServiceProvider:(id)arg1;
++ (id)predicateForCallsWithStatus:(unsigned int)arg1;
++ (id)predicateForCallsWithStatusAnswered:(BOOL)arg1;
++ (id)predicateForCallsWithStatusOriginated:(BOOL)arg1;
++ (id)predicateForCallsWithStatusRead:(BOOL)arg1;
++ (id)predicateForCallsWithTTYType:(long long)arg1;
++ (id)predicateForCallsWithUniqueID:(id)arg1;
 + (id)serviceProviderForCallType:(unsigned int)arg1;
 + (BOOL)supportsSecureCoding;
 + (long long)ttyTypeForCallCategory:(unsigned int)arg1;
@@ -138,6 +165,7 @@
 - (id)callerNameForDisplay;
 - (id)callerNameForDisplaySync;
 - (id)callerNameSync;
+- (BOOL)canCoalesceRemoteParticipantHandlesFromCall:(id)arg1;
 - (BOOL)canCoalesceSyncWithCall:(id)arg1 withStrategy:(id)arg2;
 - (BOOL)canCoalesceSyncWithCollapseIfEqualStrategyWithCall:(id)arg1;
 - (BOOL)canCoalesceSyncWithRecentsStrategyWithCall:(id)arg1;
@@ -151,6 +179,9 @@
 - (id)description;
 - (id)descriptionInDepth;
 - (void)encodeWithCoder:(id)arg1;
+- (void)execute:(CDUnknownBlockType)arg1;
+- (void)executeSync:(CDUnknownBlockType)arg1;
+- (id)executeSyncWithResult:(CDUnknownBlockType)arg1;
 - (void)fetchAndSetContactIdentifierSync;
 - (void)fetchAndSetFullContactSync;
 - (void)fixCallTypeInfo;
@@ -159,8 +190,6 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQueue:(id)arg1;
-- (BOOL)isAddressBookContactASuggestion;
-- (BOOL)isAddressBookContactASuggestionSync;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)numberOfOccurrences;
 - (unsigned long long)numberOfOccurrencesSync;

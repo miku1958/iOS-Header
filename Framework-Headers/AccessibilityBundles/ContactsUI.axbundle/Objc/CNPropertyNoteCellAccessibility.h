@@ -13,11 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIgnoreInternalLabels;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityLabel;
-- (id)labelView;
-- (id)valueView;
+- (BOOL)isAccessibilityElement;
 
 @end
 

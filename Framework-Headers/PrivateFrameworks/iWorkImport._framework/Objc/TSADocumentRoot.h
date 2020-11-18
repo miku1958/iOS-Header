@@ -10,7 +10,7 @@
 #import <iWorkImport/TSDScrollingAwareChangeSource-Protocol.h>
 #import <iWorkImport/TSKPencilAnnotationSupportedDocument-Protocol.h>
 
-@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, SFUCryptoKey, TSADocumentInfo, TSAFunctionBrowserState, TSAShortcutController, TSCECalculationEngine, TSDFreehandDrawingToolkitUIState, TSKCustomFormatList, TSKViewState, TSPDocumentRevision, TSPLazyReference, TSTCustomFormatList;
+@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, SFUCryptoKey, TSADocumentInfo, TSADrawableFactory, TSAFunctionBrowserState, TSAShortcutController, TSCECalculationEngine, TSDFreehandDrawingToolkitUIState, TSKCustomFormatList, TSKViewState, TSPLazyReference, TSTCustomFormatList;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -33,11 +33,11 @@ __attribute__((visibility("hidden")))
     BOOL _canUseHEVC;
     BOOL _isClosed;
     BOOL _documentLocaleWasUpdated;
-    TSPDocumentRevision *_lastSyncRevision;
+    BOOL _didPauseRecalculationForBackgroundDocument;
     NSString *_templateIdentifier;
     NSObject<OS_dispatch_queue> *_accessQueue;
     SFUCryptoKey *_accessQueue_documentCacheDecryptionKey;
-    BOOL _documentCurrentlyImporting;
+    NSObject<OS_dispatch_queue> *_fetchLatestRevisionQueue;
     BOOL _hasPreUFFVersion;
     BOOL _didLoadDocumentFromTemplate;
     BOOL _didLoadDocumentFromRevert;
@@ -53,9 +53,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didLoadDocumentFromRevert; // @synthesize didLoadDocumentFromRevert=_didLoadDocumentFromRevert;
 @property (nonatomic) BOOL didLoadDocumentFromTemplate; // @synthesize didLoadDocumentFromTemplate=_didLoadDocumentFromTemplate;
-@property (nonatomic, getter=isDocumentCurrentlyImporting) BOOL documentCurrentlyImporting; // @synthesize documentCurrentlyImporting=_documentCurrentlyImporting;
 @property (readonly, nonatomic) TSADocumentInfo *documentInfo;
 @property (readonly, nonatomic) BOOL documentLocaleWasUpdated; // @synthesize documentLocaleWasUpdated=_documentLocaleWasUpdated;
+@property (readonly, nonatomic) TSADrawableFactory *drawableFactory;
 @property (readonly, nonatomic) TSDFreehandDrawingToolkitUIState *freehandDrawingToolkitUIState;
 @property (readonly, nonatomic) BOOL hasFloatingLocale;
 @property (nonatomic) BOOL hasPreUFFVersion; // @synthesize hasPreUFFVersion=_hasPreUFFVersion;
@@ -79,7 +79,7 @@ __attribute__((visibility("hidden")))
 + (id)buildVersionHistoryPathPreUFF;
 + (void)localizeChartInfo:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
 + (void)localizeModelObject:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
-+ (void)localizeTableInfo:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
++ (void)localizeTableInfo:(id)arg1 templateBundle:(id)arg2 andLocale:(id)arg3;
 + (void)localizeTextStorage:(id)arg1 withTemplateBundle:(id)arg2 andLocale:(id)arg3;
 + (id)persistenceWarningsForData:(id)arg1 flags:(unsigned long long)arg2;
 + (struct CGSize)previewImageMaxSizeForType:(unsigned long long)arg1;
@@ -102,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (id)additionalResourceRequestsForObjectContext:(id)arg1;
 - (id)allPencilAnnotations;
 - (void)applyViewState:(id)arg1;
+- (void)backgroundDocumentDidLoad;
 - (void)blockForRecalcWithTimeout:(double)arg1;
 - (BOOL)canBeAnnotatedWithPencil;
 - (id)captureViewState;
@@ -133,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateStylesheetsUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)exportToPath:(id)arg1 exporter:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (BOOL)exportToPath:(id)arg1 exporter:(id)arg2 error:(id *)arg3;
+- (void)finalizeFromSageImport;
 - (void)fontUpdatedForStyleClient:(id)arg1;
 - (void)fulfillPasteboardPromises;
 - (id)functionBrowserState;
@@ -159,11 +161,12 @@ __attribute__((visibility("hidden")))
 - (void)p_removeStyles:(id)arg1;
 - (void)p_replaceStyle:(id)arg1 andChildrenWithVariationOfStyle:(id)arg2;
 - (void)p_replaceStyles:(id)arg1 andChildrenWithVariationOfStyle:(id)arg2;
-- (void)p_updateBuildVersionHistoryWithVersionOfTemplateBundle:(id)arg1;
+- (void)p_updateBuildVersionHistoryWithVersionOfTemplateIdentifier:(id)arg1;
 - (BOOL)p_updateDocumentLanguageToCurrentIfNeeded;
 - (void)p_updateViewStateWithRoot:(id)arg1;
 - (void)p_upgradeCustomFormatList;
 - (void)p_upgradeDocumentCreationLocale;
+- (void)p_upgradeRemainingOutlinedTextStylesWithFileFormatVersion:(unsigned long long)arg1;
 - (void)p_upgradeTablesIfNeeded:(unsigned long long)arg1;
 - (void)pauseRecalculation;
 - (void)pauseRecalculationSometimeSoon;
@@ -171,7 +174,7 @@ __attribute__((visibility("hidden")))
 - (void)performHyperlinkUpgradesIfNecessaryForVersion:(unsigned long long)arg1;
 - (void)performStylesheetUpdatesIfNecessaryForVersion:(unsigned long long)arg1;
 - (void)prepareForSavingAsTemplate;
-- (void)prepareNewDocumentWithTemplateBundle:(id)arg1 documentLocale:(id)arg2;
+- (void)prepareNewDocumentWithTemplateIdentifier:(id)arg1 bundle:(id)arg2 documentLocale:(id)arg3;
 - (void)prepareToGeneratePreview;
 - (id)previewImage;
 - (id)previewImageForSize:(struct CGSize)arg1;
@@ -200,6 +203,7 @@ __attribute__((visibility("hidden")))
 - (void)suspendBackgroundActivities;
 - (void)suspendThumbnailing;
 - (id)tableToShowImportedDataNotificationOnOpenFor;
+- (id)templatesMetadataBundle;
 - (id)tsa_delegate;
 - (id)uniqueDocumentCachePathForProposedPath:(id)arg1;
 - (void)updateViewStateWithRoot:(id)arg1;

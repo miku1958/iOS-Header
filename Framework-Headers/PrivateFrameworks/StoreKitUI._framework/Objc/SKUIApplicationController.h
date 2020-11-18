@@ -204,6 +204,7 @@
 - (void)resumeApplicationWithOptions:(id)arg1;
 - (id)selectTabWithIdentifier:(id)arg1;
 - (void)setClientContext:(id)arg1;
+- (void)setUserInterfaceOverrideOnTabBarController:(id)arg1 forViewController:(id)arg2;
 - (BOOL)shouldIgnoreJSValidation;
 - (void)showErrorViewForLaunchFailure;
 - (void)showErrorViewWithTitle:(id)arg1 message:(id)arg2;

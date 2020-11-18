@@ -9,7 +9,6 @@
 @class NSData;
 
 @protocol MapsSuggestionsSourceDelegateProxy <NSObject>
-- (void)addOrUpdateSuggestionEntriesData:(NSData *)arg1 sourceNameData:(NSData *)arg2 deleteMissing:(BOOL)arg3 handler:(void (^)(void))arg4;
-- (void)deleteEntriesData:(NSData *)arg1 sourceNameData:(NSData *)arg2 handler:(void (^)(void))arg3;
+- (void)addOrUpdateSuggestionEntriesData:(NSData *)arg1 sourceNameData:(NSData *)arg2 handler:(void (^)(void))arg3;
 @end
 

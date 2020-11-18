@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _aluType;
 }
 
+- (unsigned long long)bufferALUType;
+- (unsigned long long)bufferPixelFormat;
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)indirectConstantAlignment;

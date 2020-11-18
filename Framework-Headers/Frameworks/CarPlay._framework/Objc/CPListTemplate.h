@@ -9,8 +9,8 @@
 #import <CarPlay/CPBarButtonProviding-Protocol.h>
 #import <CarPlay/CPListClientTemplateDelegate-Protocol.h>
 
-@class CPBarButton, NSArray, NSString;
-@protocol CPListTemplateDelegate, CPListTemplateProviding;
+@class CPBarButton, NAFuture, NSArray, NSString;
+@protocol CPListTemplateDelegate;
 
 @interface CPListTemplate : CPTemplate <CPListClientTemplateDelegate, CPBarButtonProviding>
 {
@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSArray *leadingNavigationBarButtons;
 @property (readonly, copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) id<CPListTemplateProviding> templateProvider; // @dynamic templateProvider;
+@property (strong, nonatomic) NAFuture *templateProviderFuture; // @dynamic templateProviderFuture;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSArray *trailingNavigationBarButtons;
 

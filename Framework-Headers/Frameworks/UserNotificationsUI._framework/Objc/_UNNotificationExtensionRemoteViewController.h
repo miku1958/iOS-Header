@@ -6,13 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <UserNotificationsUI/_UNNotificationContentExtensionLegacyDelegate-Protocol.h>
 #import <UserNotificationsUI/_UNNotificationExtensionRemoteInterface-Protocol.h>
 
-@class NSString, UIScrollViewDelayedTouchesBeganGestureRecognizer;
+@class UIScrollViewDelayedTouchesBeganGestureRecognizer;
 @protocol UNNotificationContentExtension, _UNNotificationExtensionHostInterface;
 
-@interface _UNNotificationExtensionRemoteViewController : UIViewController <_UNNotificationContentExtensionLegacyDelegate, _UNNotificationExtensionRemoteInterface>
+@interface _UNNotificationExtensionRemoteViewController : UIViewController <_UNNotificationExtensionRemoteInterface>
 {
     struct atomic_flag _invalidationOnceFlag;
     UIScrollViewDelayedTouchesBeganGestureRecognizer *_touchDelayGestureRecognizer;
@@ -21,13 +20,9 @@
     id<_UNNotificationExtensionHostInterface> _hostService;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didCheckActionResponseDelegate; // @synthesize didCheckActionResponseDelegate=_didCheckActionResponseDelegate;
 @property (strong, nonatomic) UIViewController<UNNotificationContentExtension> *extensionViewController; // @synthesize extensionViewController=_extensionViewController;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<_UNNotificationExtensionHostInterface> hostService; // @synthesize hostService=_hostService;
-@property (readonly) Class superclass;
 
 + (id)_exportedInterface;
 + (BOOL)_isSecureForRemoteViewService;
@@ -37,7 +32,6 @@
 - (void)_didReceiveNotificationResponse:(id)arg1;
 - (id)_extensionBundleIdentifier;
 - (void)_invalidateExtensionContext;
-- (void)_loadAudioAccessoryViewForNotification:(id)arg1;
 - (void)_mediaPause;
 - (void)_mediaPlay;
 - (void)_performSelectorOnExtension:(SEL)arg1;
@@ -53,9 +47,6 @@
 - (void)delayed:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
-- (void)notificationContentExtension:(id)arg1 setDismissEnabled:(BOOL)arg2;
-- (void)notificationContentExtensionDefaultAction:(id)arg1;
-- (void)notificationContentExtensionDismiss:(id)arg1;
 - (id)notificationExtensionContext;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;

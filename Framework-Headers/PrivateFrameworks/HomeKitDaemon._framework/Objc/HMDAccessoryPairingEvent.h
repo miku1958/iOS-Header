@@ -8,14 +8,16 @@
 
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
 
-@class AWDHomeKitVendorInformation, NSString;
+@class HMDAccessory, NSString;
 
 @interface HMDAccessoryPairingEvent : HMDLogEvent <HMDAWDLogEvent>
 {
     BOOL _addOperation;
     BOOL _addViaWAC;
     BOOL _wacLegacy;
-    AWDHomeKitVendorInformation *_vendorInfo;
+    BOOL _usedWiFiPPSK;
+    BOOL _usedOwnershipProof;
+    HMDAccessory *_pairedAccessory;
     long long _linkType;
     long long _certificationStatus;
     unsigned long long _authMethod;
@@ -31,8 +33,10 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long linkType; // @synthesize linkType=_linkType;
+@property (strong, nonatomic) HMDAccessory *pairedAccessory; // @synthesize pairedAccessory=_pairedAccessory;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) AWDHomeKitVendorInformation *vendorInfo; // @synthesize vendorInfo=_vendorInfo;
+@property (nonatomic, getter=isUsedOwnershipProof) BOOL usedOwnershipProof; // @synthesize usedOwnershipProof=_usedOwnershipProof;
+@property (nonatomic, getter=isUsedWiFiPPSK) BOOL usedWiFiPPSK; // @synthesize usedWiFiPPSK=_usedWiFiPPSK;
 @property (nonatomic, getter=isWacLegacy) BOOL wacLegacy; // @synthesize wacLegacy=_wacLegacy;
 
 + (void)initialize;
@@ -49,7 +53,6 @@
 - (void)pairedToServer:(id)arg1 certificationStatus:(long long)arg2;
 - (void)setAddedViaWAC:(BOOL)arg1;
 - (void)setAuthenticationMethod:(unsigned long long)arg1;
-- (void)setcertificationStatus:(long long)arg1;
 
 @end
 

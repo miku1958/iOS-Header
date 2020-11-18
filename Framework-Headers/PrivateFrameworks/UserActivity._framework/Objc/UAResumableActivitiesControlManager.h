@@ -25,7 +25,6 @@
 - (void).cxx_destruct;
 - (id)advertisedItemUUID;
 - (id)allUUIDsOfType:(unsigned long long)arg1;
-- (void)broadcastPing:(CDUnknownBlockType)arg1;
 - (void)callDidSaveDelegate:(id)arg1;
 - (void)callWillSaveDelegate:(id)arg1;
 - (void)callWillSaveDelegate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -35,12 +34,13 @@
 - (id)defaults:(BOOL)arg1;
 - (id)dynamicUserActivities;
 - (id)enabledUUIDs;
+- (void)fetchMoreAppSuggestions;
 - (BOOL)getAdvertisedBytes:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getCurrentPeersAndClear:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)getSysdiagnoseStringsIncludingPrivateData:(BOOL)arg1;
 - (id)init;
 - (void)injectBTLEItem:(id)arg1 type:(unsigned long long)arg2 identifier:(id)arg3 title:(id)arg4 activityPayload:(id)arg5 frameworkPayload:(id)arg6 payloadDelay:(double)arg7;
 - (id)matchingUUIDForString:(id)arg1;
+- (void)peerDevices:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)recentActions:(BOOL)arg1;
 - (void)rendevous:(id)arg1 domain:(id)arg2 active:(BOOL)arg3;
 - (void)replayCommands:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -49,10 +49,8 @@
 - (void)setDefault:(id)arg1 value:(id)arg2;
 - (void)setLocalReflect:(BOOL)arg1;
 - (id)simulatorStatus;
-- (void)startAdvertisingPingWithTimeInterval:(double)arg1;
 - (id)status;
 - (id)status:(id)arg1 options:(id)arg2;
-- (void)stopAdvertisingPing;
 - (void)synchronize;
 - (void)terminateServer;
 

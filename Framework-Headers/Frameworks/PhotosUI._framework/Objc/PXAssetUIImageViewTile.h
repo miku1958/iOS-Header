@@ -20,6 +20,7 @@
     BOOL _hasPlaceholder;
     BOOL _shouldAllowFocus;
     PXImageRequester *_imageRequester;
+    double _cornerRadius;
     UIColor *_placeholderColor;
     UIImage *_placeholderImage;
     struct CGSize __contentSize;
@@ -28,6 +29,7 @@
 
 @property (nonatomic, setter=_setContentSize:) struct CGSize _contentSize; // @synthesize _contentSize=__contentSize;
 @property (nonatomic, setter=_setDesiredContentsRect:) struct CGRect _desiredContentsRect; // @synthesize _desiredContentsRect=__desiredContentsRect;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

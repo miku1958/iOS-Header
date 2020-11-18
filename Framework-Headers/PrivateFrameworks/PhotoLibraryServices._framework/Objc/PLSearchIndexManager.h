@@ -6,21 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSCountedSet, NSDictionary, NSMutableDictionary, NSString, PLClientServerTransaction, PLKeywordManager, PLPhotoLibrary, PLSearchIndexDateFormatter, PLSearchMetadataStore, PLThrottleTimer, PLZeroKeywordStore, PSIDatabase;
+@class NSCountedSet, NSDictionary, NSMutableDictionary, PLClientServerTransaction, PLPhotoLibrary, PLPhotoLibraryPathManager, PLSearchIndexDateFormatter, PLSearchMetadataStore, PLThrottleTimer, PLZeroKeywordStore, PSIDatabase;
 @protocol OS_dispatch_queue, PLSearchIndexManagerSceneTaxonomyProxy;
 
 @interface PLSearchIndexManager : NSObject
 {
     PLSearchIndexDateFormatter *_dateFormatter;
-    PLKeywordManager *_keywordManager;
+    PLPhotoLibraryPathManager *_pathManager;
     PLPhotoLibrary *_photoLibrary;
     PSIDatabase *_db;
     PLZeroKeywordStore *_zeroKeywordStore;
     PLSearchMetadataStore *_searchMetadataStore;
     PLThrottleTimer *_throttleTimer;
     PLClientServerTransaction *_serverTransaction;
+    Class _sceneTaxonomyProxyClass;
     id<PLSearchIndexManagerSceneTaxonomyProxy> _sceneTaxonomyProxy;
-    NSString *_searchIndexDirectory;
     NSDictionary *_searchSystemInfo;
     NSObject<OS_dispatch_queue> *_queue;
     NSDictionary *_inqUUIDsToProcess;
@@ -29,6 +29,9 @@
     BOOL _receivedUpdatesWhileIndexing;
     BOOL _hasScheduledCloseIndex;
     BOOL _hasValidSearchIndex;
+    BOOL _hasValidSearchSupportingData;
+    BOOL _shouldCheckLookupTableIsOutOfSync;
+    BOOL _shouldCheckDatabaseIntegrity;
     BOOL _isTrackingRebuild;
     long long _rebuildReason;
     long long _updateState;
@@ -41,53 +44,33 @@
 
 @property (getter=_isIndexing, setter=_setIndexing:) BOOL _indexing; // @synthesize _indexing=__indexing;
 @property (copy, nonatomic, setter=_setInqAfterIndexingDidIterate:) CDUnknownBlockType _inqAfterIndexingDidIterate; // @synthesize _inqAfterIndexingDidIterate=__inqAfterIndexingDidIterate;
-@property (readonly) PLPhotoLibrary *_inqPhotoLibrary;
 @property (readonly, copy, nonatomic) NSCountedSet *_pauseReasons; // @synthesize _pauseReasons=__pauseReasons;
-@property (readonly) unsigned long long enqueuedUUIDsCount;
 @property (readonly, getter=isIndexingPaused) BOOL indexingPaused;
+@property (strong, nonatomic) Class sceneTaxonomyProxyClass;
 
-+ (id)_databasePathInDirectory:(id)arg1;
-+ (id)_defaultDatabaseDirectory;
-+ (id)_featuredPeopleIdentifiersFromPhotosGraphData:(id)arg1 photosGraphVersion:(long long)arg2;
-+ (id)_searchMetadataStorePathInDirectory:(id)arg1;
-+ (id)_zeroKeywordStorePathInDirectory:(id)arg1;
++ (id)_defaultDatabaseDirectoryWithPathManager:(id)arg1;
 + (int)currentSearchIndexVersion;
-+ (id)defaultDatabasePath;
-+ (id)defaultSearchMetadataStorePath;
-+ (id)defaultZeroKeywordStorePath;
 + (id)fetchAlbumUUIDsToPopulateSearchIndexWithManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)fetchAlbumsWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 error:(id *)arg3;
 + (id)fetchAssetUUIDsToPopulateSearchIndexWithManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)fetchAssetsWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 error:(id *)arg3;
++ (id)fetchHighlightUUIDsToPopulateSearchIndexWithManagedObjectContext:(id)arg1 error:(id *)arg2;
++ (id)fetchHighlightsWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 error:(id *)arg3;
 + (id)fetchMemoriesWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 error:(id *)arg3;
 + (id)fetchMemoryUUIDsToPopulateSearchIndexWithManagedObjectContext:(id)arg1 error:(id *)arg2;
-+ (id)fetchMomentUUIDsToPopulateSearchIndexWithManagedObjectContext:(id)arg1 error:(id *)arg2;
++ (id)fetchMomentUUIDsToPopulateAssetSearchIndexWithManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)fetchMomentsWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 error:(id *)arg3;
 + (id)localeForSearchIndex;
-+ (Class)sceneTaxonomyProxyClass;
-+ (id)searchIndexManagerLog;
-+ (void)setSceneTaxonomyProxyClass:(Class)arg1;
-+ (id)sharedInstance;
-- (void)_appendBusinessCategories:(id)arg1 toTrip:(id)arg2;
-- (void)_appendBusinessNames:(id)arg1 toTrip:(id)arg2;
-- (void)_appendDates:(id)arg1 withDateFormatter:(id)arg2 withSynonyms:(id)arg3 toTrip:(id)arg4;
-- (void)_appendHolidays:(id)arg1 toTrip:(id)arg2;
-- (void)_appendHomeToTrip:(id)arg1;
-- (void)_appendLocationsInfo:(id)arg1 toTrip:(id)arg2;
-- (void)_appendMeanings:(id)arg1 withSynonyms:(id)arg2 toTrip:(id)arg3;
-- (void)_appendPOIs:(id)arg1 withSynonyms:(id)arg2 toTrip:(id)arg3;
-- (void)_appendPersonsWithUUIDs:(id)arg1 toTrip:(id)arg2;
-- (void)_appendPublicEventCategories:(id)arg1 withSynonyms:(id)arg2 toTrip:(id)arg3;
-- (void)_appendPublicEventStrings:(id)arg1 toTrip:(id)arg2 forSearchIndexCategory:(unsigned long long)arg3;
-- (void)_appendROIs:(id)arg1 withSynonyms:(id)arg2 toTrip:(id)arg3;
-- (void)_appendScenesWithIdentifiers:(id)arg1 toTrip:(id)arg2 sceneTaxonomyProxy:(id)arg3;
-- (void)_appendSocialGroupIdentifiers:(id)arg1 toTrip:(id)arg2;
-- (void)_appendWorkText:(id)arg1 toTrip:(id)arg2;
++ (void)setShouldIndexFilenames:(BOOL)arg1;
++ (BOOL)shouldIndexFilenames;
+- (void).cxx_destruct;
 - (id)_assetUUIDsToRemoveFromUUIDsToProcess:(id)arg1;
 - (id)_collectionUUIDsToRemoveFromUUIDsToProcess:(id)arg1;
 - (id)_cxindexProgressPath;
 - (id)_dbPath;
 - (id)_dbSearchSystemInfoPath;
+- (id)_defaultDatabaseDirectory;
+- (id)_featuredPeopleIdentifiersFromPhotosGraphData:(id)arg1 photosGraphVersion:(long long)arg2;
 - (void)_fetchMemoriesToIndexWithUUIDs:(id)arg1 managedObjectContext:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (id)_graphDataProcessPath;
 - (void)_inqAddUpdatesWithUUIDs:(id)arg1 forKey:(id)arg2;
@@ -105,7 +88,11 @@
 - (void)_inqIndexPhotoLibrary;
 - (BOOL)_inqIsIndexingPaused;
 - (id)_inqKeywordsByCategoryMaskByAssetUUIDFromAssetSearchKeywords:(id)arg1;
-- (long long)_inqReasonIfSearchIndexIsInvalid;
+- (id)_inqKeywordsByCategoryMaskByAssetUUIDFromAssetSearchKeywords:(id)arg1 andAssetUUIDsBySocialGroup:(id)arg2;
+- (id)_inqKeywordsByCategoryMaskByAssetUUIDFromAssetUUIDsBySocialGroup:(id)arg1;
+- (id)_inqPhotoLibrary;
+- (long long)_inqRebuildReasonIfSearchIndexIsValid;
+- (long long)_inqRebuildReasonIfSearchSupportingDataIsValid;
 - (void)_inqResetSearchIndexWithReason:(long long)arg1 dropCompletion:(CDUnknownBlockType)arg2;
 - (void)_inqResumeIndexingIfNeeded;
 - (void)_inqScheduleCloseIndexIfNeeded;
@@ -119,7 +106,7 @@
 - (BOOL)_inqUpdateSearchSystemInfo:(id)arg1 forKey:(id)arg2 logMessage:(id)arg3;
 - (BOOL)_inqUpdateVersion;
 - (BOOL)_inqUpdateWordEmbeddingVersion:(id)arg1;
-- (void)_localeDidChange:(id)arg1;
+- (void)_inqValidateSearchIndex;
 - (id)_oldDbPath;
 - (void)_onQueueAsync:(CDUnknownBlockType)arg1;
 - (void)_onQueueAsyncWithDelay:(double)arg1 perform:(CDUnknownBlockType)arg2;
@@ -129,21 +116,22 @@
 - (void)_setIndexingPaused:(BOOL)arg1 synchronously:(BOOL)arg2 reason:(id)arg3;
 - (id)_synonymsProcessPath;
 - (void)_throttleTimerFire:(id)arg1;
-- (id)_tripUUIDsToRemoveFromUUIDsToProcess:(id)arg1;
 - (id)_updatesAfterConvertingDetectedFacesToAssetsInUpdates:(id)arg1;
 - (id)_updatesAfterConvertingPersonsToAssetsInUpdates:(id)arg1;
 - (id)_updatesEnsuringMutableArraysFromUpdates:(id)arg1;
-- (id)_zeroKeywordStorePath;
 - (void)applyGraphUpdates:(id)arg1 supportingData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)applyUpdates:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)closeSearchIndexWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (id)defaultDatabasePath;
+- (id)defaultSearchMetadataStorePath;
 - (void)dropSearchIndexWithCompletion:(CDUnknownBlockType)arg1;
-- (void)ensureSearchIndexExists;
-- (void)getSearchIndexContentsForTrip:(id)arg1 fromTripKeywords:(id)arg2 withDateFormatter:(id)arg3 synonymsDictionaries:(id)arg4 sceneTaxonomyProxy:(id)arg5;
-- (id)initWithSearchIndexDirectory:(id)arg1;
+- (void)enqueuedUUIDsCountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)ensureSearchIndexExistsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)initWithPathManager:(id)arg1;
 - (void)pauseIndexingWithReason:(id)arg1;
 - (void)resetSearchIndexWithReason:(long long)arg1 dropCompletion:(CDUnknownBlockType)arg2;
+- (id)searchIndexManagerLog;
 - (void)unpauseIndexingWithReason:(id)arg1;
 
 @end

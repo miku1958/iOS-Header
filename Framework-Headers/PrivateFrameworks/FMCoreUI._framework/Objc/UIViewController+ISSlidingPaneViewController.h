@@ -12,5 +12,6 @@
 
 @property (readonly) FMSlidingPaneViewController *slidingPaneViewController;
 
+- (void)addConstraintsToFillSuperview;
 @end
 

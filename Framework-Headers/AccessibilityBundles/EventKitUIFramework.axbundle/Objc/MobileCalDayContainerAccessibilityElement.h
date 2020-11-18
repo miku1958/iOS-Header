@@ -24,10 +24,11 @@
 - (void).cxx_destruct;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityParentForFindingScrollParent;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
+- (BOOL)canBecomeFocused;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;
 

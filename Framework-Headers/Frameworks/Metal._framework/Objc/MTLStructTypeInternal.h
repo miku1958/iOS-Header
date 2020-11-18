@@ -23,10 +23,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (id)init;
 - (id)initWithMembers:(id *)arg1 count:(unsigned long long)arg2;
 - (BOOL)isStructLayoutThreadSafeWith:(id)arg1;
 - (id)memberByName:(id)arg1;
 - (id)members;
+- (void)setMembers:(id *)arg1 count:(unsigned long long)arg2;
 
 @end
 

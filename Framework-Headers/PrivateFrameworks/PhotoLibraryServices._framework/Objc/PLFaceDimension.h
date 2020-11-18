@@ -27,7 +27,9 @@
 - (BOOL)photosFaceRepresentationIsLeftEyeClosed;
 - (BOOL)photosFaceRepresentationIsRightEyeClosed;
 - (id)photosFaceRepresentationLocalIdentifier;
+- (double)photosFaceRepresentationQuality;
 - (long long)photosFaceRepresentationQualityMeasure;
+- (double)photosFaceRepresentationRoll;
 - (double)photosFaceRepresentationSize;
 - (long long)photosFaceRepresentationSourceHeight;
 - (long long)photosFaceRepresentationSourceWidth;

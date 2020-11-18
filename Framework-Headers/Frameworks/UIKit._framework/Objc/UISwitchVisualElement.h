@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)setShowsOnOffLabel:(BOOL)arg1;
 - (void)setThumbTintColor:(id)arg1;
 - (void)setTintColor:(id)arg1;
+- (void)tintColorDidChange;
 
 @end
 

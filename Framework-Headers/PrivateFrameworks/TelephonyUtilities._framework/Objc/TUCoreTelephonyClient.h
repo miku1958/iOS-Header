@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 + (Class)RTTTelephonyUtilitiesClass;
 + (id)sharedRTTTelephonyUtilities;
 - (void).cxx_destruct;
+- (BOOL)inEmergencyMode;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (BOOL)isEmergencyNumberForDigits:(id)arg1 subscription:(id)arg2 error:(id *)arg3;

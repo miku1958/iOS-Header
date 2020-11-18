@@ -10,7 +10,7 @@
 #import <PassKitUI/PKPaymentSetupHideSetupLaterButtonProtocol-Protocol.h>
 #import <PassKitUI/PKPaymentSetupPresentationProtocol-Protocol.h>
 
-@class NSMutableArray, NSString, PKPaymentCredentialCache, PKPaymentCredentialTableViewCell, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentSetupProduct, PKTableHeaderView, UIImage;
+@class NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString, PKPaymentCredentialCache, PKPaymentCredentialTableViewCell, PKPaymentProvisioningController, PKPaymentSetupFlowController, PKPaymentSetupFooterView, PKPaymentSetupProduct, PKTableHeaderView, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentCredentialsViewController : PKPaymentSetupTableViewController <PKPaymentSetupHideSetupLaterButtonProtocol, PKPaymentProvisioningControllerDelegate, PKPaymentSetupPresentationProtocol>
@@ -20,6 +20,9 @@
     NSMutableArray *_credentialCaches;
     PKPaymentCredentialCache *_peerPaymentCredentialCache;
     NSMutableArray *_refundedCredentialCaches;
+    NSMutableArray *_unavailableCredentialCaches;
+    NSMutableOrderedSet *_ordering;
+    NSMutableDictionary *_paymentCredentialToCredentialSectionMap;
     PKTableHeaderView *_tableHeader;
     PKPaymentSetupFooterView *_tableFooter;
     BOOL _allowsManualEntry;
@@ -27,6 +30,7 @@
     PKPaymentCredentialTableViewCell *_sizingCell;
     unsigned long long _maximumNumberOfSelectableCredentials;
     double _cachedHeaderViewWidth;
+    PKPaymentSetupFlowController *_flowController;
     BOOL _hideSetupLaterButton;
     PKPaymentSetupProduct *_product;
 }
@@ -41,12 +45,18 @@
 - (void).cxx_destruct;
 - (BOOL)_canSelectCredential:(id)arg1;
 - (void)_createPassSnapshotFromPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (unsigned long long)_credentialSectionForPaymentCredential:(id)arg1;
+- (unsigned long long)_credentialSectionForSection:(long long)arg1;
 - (unsigned long long)_numberOfSelectedCredentials;
+- (void)_populateOrderCredentialCaches;
 - (void)_presentManualAddController;
 - (void)_presentSecurityCapabilitiesFlowWithFeature:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_updatePassSnapshot:(id)arg1 paymentCredential:(id)arg2 credentialSection:(unsigned long long)arg3 credentialsInCache:(id)arg4;
+- (long long)_sectionForCredentialSection:(unsigned long long)arg1;
 - (void)_setPassSnapshotOnCell:(id)arg1 cell:(id)arg2;
 - (void)_setUserInteractionEnabled:(BOOL)arg1;
 - (void)_showRefund:(id)arg1;
+- (void)_showUnavailableDetail:(id)arg1;
 - (void)_sortCredentialCaches:(id)arg1;
 - (void)_startProvisioningForCredentials:(id)arg1;
 - (void)_startProvisioningForSelectedCards;
@@ -61,6 +71,7 @@
 - (void)paymentPassUpdatedOnCredential:(id)arg1;
 - (id)paymentSetupMarker;
 - (void)performSecurityCheckForCredentials:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

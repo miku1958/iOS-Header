@@ -14,16 +14,20 @@
     NSObject<OS_dispatch_queue> *_queue;
     long long _pullOperationFailureCount;
     NSMutableArray *_ownerIdentifierFetchCompletionBlocks;
+    NSMutableArray *_blocksPendingDeviceToDeviceEncryptionAvailability;
+    BOOL _deviceToDeviceEncryptionCheckInProgress;
+    BOOL _deviceToDeviceEncryptionRecheckRequired;
     HDProfile *_profile;
     CKContainer *_primaryCKContainer;
     NSArray *_secondaryCKContainers;
     NSSet *_allCKContainers;
-    NSDictionary *_ownerIdentifiersByContainerIdentifier;
     unsigned long long _repositorySettings;
+    NSDictionary *_ownerIdentifiersByContainerIdentifier;
 }
 
 @property (readonly, nonatomic) NSSet *allCKContainers; // @synthesize allCKContainers=_allCKContainers;
 @property (readonly, copy, nonatomic) NSSet *allOwnerIdentifiers;
+@property (readonly, nonatomic) long long deviceMode;
 @property (readonly, copy, nonatomic) NSDictionary *ownerIdentifiersByContainerIdentifier; // @synthesize ownerIdentifiersByContainerIdentifier=_ownerIdentifiersByContainerIdentifier;
 @property (readonly, nonatomic) CKContainer *primaryCKContainer; // @synthesize primaryCKContainer=_primaryCKContainer;
 @property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
@@ -38,26 +42,30 @@
 - (id)_operationGroupForReason:(long long)arg1 options:(unsigned long long)arg2;
 - (long long)_pendingProgressCountForPullOperationsGivenOptions:(unsigned long long)arg1;
 - (long long)_pendingProgressCountForPushOperationGivenOptions:(unsigned long long)arg1 maxPullOperationCount:(long long)arg2;
+- (void)_queue_checkForDeviceToDeviceEncryptionAvailability;
 - (void)_queue_fetchOwnerIdentifierForContainer:(id)arg1 results:(id)arg2 taskTree:(id)arg3;
 - (void)_queue_fetchOwnerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_recordSuccessfulPull;
+- (void)_queue_flushPendingDeviceToDeviceEncryptionAvailabilityBlocks;
+- (void)_queue_generateRestoreEventSyncCompleteWithPullCompleteDate:(id)arg1;
+- (void)_queue_performWhenDeviceToDeviceEncryptionIsAvailable:(CDUnknownBlockType)arg1;
+- (void)_queue_recordSuccessfulPull;
 - (id)_startPullOperationForPullZone:(id)arg1 configuration:(id)arg2 fetchOperationResult:(id)arg3 taskTree:(id)arg4;
 - (void)_updateProgress:(id)arg1 isPrimaryContainer:(BOOL)arg2 forOperationComponent:(unsigned long long)arg3;
+- (void)cloudKitIdentityUpdated:(id)arg1;
 - (id)containerForContainerIdentifier:(id)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)disableAndDeleteAllSyncDataWithTaskTree:(id)arg1 identifier:(id)arg2;
 - (void)disableSyncLocallyWithTaskTree:(id)arg1;
 - (id)fetchDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 taskTree:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (void)fetchOwnerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSyncStatusWithTaskTree:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
-- (id)initAsSecondaryWithProfile:(id)arg1 syncContainer:(id)arg2;
 - (id)initWithProfile:(id)arg1 primaryCKContainer:(id)arg2 secondaryCKContainers:(id)arg3;
-- (id)initWithProfile:(id)arg1 syncContainer:(id)arg2;
 - (void)resetContainer:(id)arg1 withOptions:(unsigned long long)arg2 reason:(long long)arg3 progress:(id)arg4 syncIdentifier:(id)arg5 taskTree:(id)arg6;
 - (id)resetWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 taskTree:(id)arg4;
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 accessibilityAssertion:(id)arg4 taskTree:(id)arg5;
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 identifier:(id)arg3 taskTree:(id)arg4;
-- (void)unitTest_fetchOwnerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -10,10 +10,10 @@
 
 @interface AVTCoreModelRow : NSObject
 {
-    NSString *_title;
-    NSOrderedSet *_representedTags;
-    AVTCoreModelRowOptions *_options;
     NSString *_identifier;
+    NSString *_title;
+    AVTCoreModelRowOptions *_options;
+    NSOrderedSet *_representedTags;
 }
 
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

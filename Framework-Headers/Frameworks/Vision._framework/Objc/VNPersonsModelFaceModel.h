@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     NSMapTable *_serialNumberToPersonUniqueIdentifierMapTable;
     shared_ptr_8c39738b _faceIDModel;
+    unsigned long long _faceprintRequestRevision;
     int _maximumElementsPerID;
 }
 
@@ -28,8 +29,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)faceCountForPersonWithUniqueIdentifier:(id)arg1;
 - (id)faceCountsForAllPersons;
 - (id)faceCountsForPersonsWithUniqueIdentifiers:(id)arg1;
+- (unsigned long long)faceprintRequestRevision;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFaceIDModel:(shared_ptr_8c39738b)arg1 maximumElementsPerID:(unsigned long long)arg2 personUniqueIdentifierToSerialNumberMapping:(id)arg3;
+- (id)initWithFaceIDModel:(shared_ptr_8c39738b)arg1 faceprintRequestRevision:(unsigned long long)arg2 maximumElementsPerID:(unsigned long long)arg3 personUniqueIdentifierToSerialNumberMapping:(id)arg4;
 - (unsigned long long)personCount;
 - (id)personPredictionsForFace:(id)arg1 withDescriptor:(const struct ImageDescriptorBufferFloat32 *)arg2 limit:(unsigned long long)arg3 canceller:(id)arg4 error:(id *)arg5;
 - (id)personUniqueIdentifiers;

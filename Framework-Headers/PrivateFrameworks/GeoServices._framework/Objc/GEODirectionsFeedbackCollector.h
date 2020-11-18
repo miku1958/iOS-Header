@@ -14,6 +14,7 @@
     GEODirectionsFeedbackLogMessage *_currentFeedbackLogMessage;
     double _currentDirectionsModeStartTime;
     NSMutableArray *_navigationModes;
+    double _originalExpectedTime;
 }
 
 @property (strong, nonatomic) GEODirectionsFeedback *currentDirectionsFeedback; // @synthesize currentDirectionsFeedback=_currentDirectionsFeedback;
@@ -33,6 +34,8 @@
 - (void)reset;
 - (void)setAudioFeedback:(struct GEONavigationAudioFeedback *)arg1;
 - (void)setFinalLocation:(id)arg1 asArrival:(BOOL)arg2;
+- (void)setModalities:(id)arg1;
+- (void)setOriginalExpectedTime:(double)arg1;
 - (void)setupFeedbackSessionWithResponseID:(id)arg1;
 - (void)startFeedbackSessionForResponseID:(id)arg1 withNavigationType:(int)arg2;
 

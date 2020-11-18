@@ -10,6 +10,7 @@
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface EMKEmojiTokenList : NSObject <NSCopying>
 {
     NSArray *_emojiTokenArray;

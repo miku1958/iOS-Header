@@ -38,11 +38,14 @@
 - (void)getResourceTreeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (id)initWithInspectorController:(id)arg1;
 - (void)navigateWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 url:(id)arg3;
+- (void)overrideSettingWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 setting:(long long)arg3 value:(BOOL *)arg4;
+- (void)overrideUserAgentWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 value:(id *)arg3;
 - (void)reloadWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 ignoreCache:(BOOL *)arg3 revalidateAllResources:(BOOL *)arg4;
 - (void)searchInResourceWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 url:(id)arg4 query:(id)arg5 caseSensitive:(BOOL *)arg6 isRegex:(BOOL *)arg7 requestId:(id *)arg8;
 - (void)searchInResourcesWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 text:(id)arg3 caseSensitive:(BOOL *)arg4 isRegex:(BOOL *)arg5;
 - (void)setCompositingBordersVisibleWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 visible:(BOOL)arg3;
 - (void)setEmulatedMediaWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 media:(id)arg3;
+- (void)setForcedAppearanceWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 appearance:(long long)arg3;
 - (void)setShowPaintRectsWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 result:(BOOL)arg3;
 - (void)setShowRulersWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 result:(BOOL)arg3;
 - (void)snapshotNodeWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 nodeId:(int)arg3;

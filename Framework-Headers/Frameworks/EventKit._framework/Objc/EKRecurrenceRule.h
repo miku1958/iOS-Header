@@ -54,6 +54,7 @@
 - (id)initRecurrenceWithFrequency:(long long)arg1 interval:(long long)arg2 daysOfTheWeek:(id)arg3 daysOfTheMonth:(id)arg4 monthsOfTheYear:(id)arg5 weeksOfTheYear:(id)arg6 daysOfTheYear:(id)arg7 setPositions:(id)arg8 end:(id)arg9;
 - (id)initRecurrenceWithFrequency:(long long)arg1 interval:(long long)arg2 end:(id)arg3;
 - (BOOL)isAnyDayRule;
+- (BOOL)isEqualToRecurrenceRule:(id)arg1;
 - (BOOL)isSimpleRule;
 - (BOOL)isWeekdayRule;
 - (BOOL)isWeekendRule;

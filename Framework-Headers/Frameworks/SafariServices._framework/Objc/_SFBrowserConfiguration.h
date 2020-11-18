@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) BOOL allowsStreamlinedLogin;
 @property (readonly, nonatomic) BOOL allowsUserActivityFeedback;
 @property (readonly, nonatomic) unsigned long long barTintStyle;
+@property (readonly, nonatomic, getter=isControlledByAutomation) BOOL controlledByAutomation;
 @property (readonly, nonatomic, getter=isPrivateBrowsingEnabled) BOOL privateBrowsingEnabled;
 @property (readonly, weak, nonatomic) id<UITraitEnvironment> traitEnvironment; // @synthesize traitEnvironment=_traitEnvironment;
 @property (readonly, nonatomic) BOOL usesDarkTheme;
@@ -34,7 +35,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithPrivateBrowsingEnabled:(BOOL)arg1 traitEnvironment:(id)arg2;
+- (id)initWithPrivateBrowsingEnabled:(BOOL)arg1 traitEnvironment:(id)arg2 controlledByAutomation:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

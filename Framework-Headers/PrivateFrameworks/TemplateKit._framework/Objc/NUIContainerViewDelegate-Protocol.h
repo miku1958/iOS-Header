@@ -15,7 +15,6 @@
 - (BOOL)containerView:(NUIContainerView *)arg1 shouldRestartMeasurementDueToCompressionInAxis:(long long)arg2 forReason:(long long)arg3;
 - (struct CGSize)containerView:(NUIContainerView *)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(UIView *)arg3;
 - (void)containerView:(NUIContainerView *)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
-- (void)containerViewDidInvalidateIntrinsicContentSize:(NUIContainerView *)arg1;
 - (void)containerViewDidLayoutArrangedSubviews:(NUIContainerView *)arg1;
 @end
 

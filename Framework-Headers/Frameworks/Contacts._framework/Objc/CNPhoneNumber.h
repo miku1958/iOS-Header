@@ -16,6 +16,7 @@
 {
     NSString *_initialCountryCode;
     NSString *_stringValue;
+    struct os_unfair_lock_s _stateLock;
     struct __CFPhoneNumber *_phoneNumberRef;
 }
 
@@ -31,28 +32,40 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *unformattedInternationalStringValue;
 
++ (id)_countryCodeForNorthAmericanDialingPlanAreaCodesExcludingUS;
++ (id)_countryCodesForNorthAmericanDialingPlan;
++ (BOOL)_isCountryCodeForNorthAmericanDialingPlan:(id)arg1;
 + (struct __CFPhoneNumber *)createCFPhoneNumberForStringValue:(id)arg1 countryCode:(id)arg2;
 + (id)defaultCountryCode;
++ (id)dialingCodeForISOCountryCode:(id)arg1;
 + (id)new;
++ (id)phoneNumberWithCopiedStringValue:(id)arg1;
 + (id)phoneNumberWithDigits:(id)arg1 countryCode:(id)arg2;
 + (id)phoneNumberWithStringValue:(id)arg1;
-+ (unsigned long long)samePersonPhoneNumberComparisonMatchCount;
 + (BOOL)supportsSecureCoding;
++ (id)unsupportedCountryCodes;
 - (void).cxx_destruct;
+- (id)_countryCodeFromPhoneNumberRef;
+- (id)_determineCorrectCountryCodeForNorthAmericanDialingPlan;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)digitsRemovingDialingCode;
 - (void)encodeWithCoder:(id)arg1;
+- (id)formattedStringValueRemovingDialingCode;
+- (id)fullyQualifiedDigits;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStringValue:(id)arg1;
 - (id)initWithStringValue:(id)arg1 countryCode:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isFullyQualified;
 - (BOOL)isLikePhoneNumber:(id)arg1;
 - (BOOL)isLikePhoneNumberForSamePerson:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 - (id)lastFourDigits;
 - (struct __CFPhoneNumber *)nts_lazyPhoneNumberRef;
 - (struct __CFPhoneNumber *)phoneNumberRef;
+- (id)primitiveInitWithStringValue:(id)arg1 countryCode:(id)arg2;
 - (id)stringValueWithCFPhoneNumberOptions:(unsigned long long)arg1;
 
 @end

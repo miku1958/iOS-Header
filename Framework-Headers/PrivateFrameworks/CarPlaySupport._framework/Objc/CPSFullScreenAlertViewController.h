@@ -23,10 +23,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_titleFont;
+- (void)_viewDidLoad;
 - (void)didSelectButton:(id)arg1;
 - (id)initWithAlert:(id)arg1 alertDelegate:(id)arg2;
 - (id)preferredFocusEnvironments;
-- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

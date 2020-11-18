@@ -28,6 +28,7 @@
 - (id)description;
 - (BOOL)do:(CDUnknownBlockType)arg1;
 - (id)initForWrite:(BOOL)arg1;
+- (id)redactedDescription;
 
 @end
 

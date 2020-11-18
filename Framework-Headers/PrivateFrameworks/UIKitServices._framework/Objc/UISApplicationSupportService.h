@@ -6,35 +6,55 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitServices/UISApplicationSupportServerDelegate-Protocol.h>
+#import <UIKitServices/BSServiceConnectionListenerDelegate-Protocol.h>
+#import <UIKitServices/UISApplicationSupportXPCServerInterface-Protocol.h>
 
-@class FBSSerialQueue, NSString, UISApplicationSupportServer;
+@class BSServiceConnectionListener, FBSSerialQueue, NSMutableArray, NSString, UISApplicationInitializationContext;
 @protocol UISApplicationSupportServiceDelegate;
 
-@interface UISApplicationSupportService : NSObject <UISApplicationSupportServerDelegate>
+@interface UISApplicationSupportService : NSObject <BSServiceConnectionListenerDelegate, UISApplicationSupportXPCServerInterface>
 {
-    UISApplicationSupportServer *_server;
-    id<UISApplicationSupportServiceDelegate> _delegate;
-    FBSSerialQueue *_calloutQueue;
+    struct os_unfair_lock_s _lock;
+    BSServiceConnectionListener *_listener;
+    FBSSerialQueue *_targetQueue;
+    id<UISApplicationSupportServiceDelegate> _lock_delegate;
+    UISApplicationInitializationContext *_lock_defaultContext;
+    NSMutableArray *_lock_launchPendedRequests;
+    BOOL _lock_started;
+    BOOL _lock_finishedLaunching;
     struct {
-        unsigned int delegateRequestPasscodeUnlockUI:1;
-        unsigned int delegateInitialDisplayConfigurationForClient:1;
-        unsigned int delegateInitialDisplayContextForClient:1;
-        unsigned int delegateScreenEdgeInfo:1;
-    } _delegateFlags;
+        unsigned int defaultContext:1;
+        unsigned int overrideInitialize:1;
+        unsigned int initializeClientSync:1;
+        unsigned int initializeClientAsync:1;
+        unsigned int initializeClientLegacy:1;
+        unsigned int requestPasscodeUnlockUI:1;
+        unsigned int destroyScenes:1;
+    } _lock_delegateFlags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<UISApplicationSupportServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy) UISApplicationInitializationContext *defaultContext; // @synthesize defaultContext=_lock_defaultContext;
+@property (strong) id<UISApplicationSupportServiceDelegate> delegate; // @synthesize delegate=_lock_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) BOOL hasFinishedLaunching;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)edgeInfoForClient:(id)arg1 displayConfiguration:(id)arg2;
+- (id)_delegate;
+- (id)_initWithDelegate:(id)arg1 targetQueue:(id)arg2;
+- (void)_pendRequestUntilLaunch:(CDUnknownBlockType)arg1;
+- (void)_setDelegate:(id)arg1;
+- (void)dealloc;
+- (void)destroyScenesPersistentIdentifiers:(id)arg1 animationType:(id)arg2 destroySessions:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)init;
 - (id)initWithCalloutQueue:(id)arg1;
-- (id)initialDisplayContextForClient:(id)arg1;
-- (void)requestPasscodeUnlockUIForClient:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)initializeClientWithCompletion:(CDUnknownBlockType)arg1;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (oneway void)requestPasscodeUnlockUIWithCompletion:(CDUnknownBlockType)arg1;
+- (void)start;
 
 @end
 

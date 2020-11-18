@@ -12,8 +12,8 @@
 {
 }
 
-@property (strong, nonatomic) NSString *configuredName; // @dynamic configuredName;
-@property (strong, nonatomic) NSArray *mediaSystemComponents; // @dynamic mediaSystemComponents;
+@property (copy, nonatomic) NSString *configuredName; // @dynamic configuredName;
+@property (copy, nonatomic) NSArray *mediaSystemComponents; // @dynamic mediaSystemComponents;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSData *symptoms; // @dynamic symptoms;
 

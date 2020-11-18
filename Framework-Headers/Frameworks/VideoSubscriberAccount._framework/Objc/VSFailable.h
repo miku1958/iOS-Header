@@ -21,9 +21,9 @@
 @property (nonatomic) long long kind; // @synthesize kind=_kind;
 @property (strong, nonatomic) id object; // @synthesize object=_object;
 
++ (id)decodableClasses;
 + (id)failableWithError:(id)arg1;
 + (id)failableWithObject:(id)arg1;
-+ (Class)objectClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

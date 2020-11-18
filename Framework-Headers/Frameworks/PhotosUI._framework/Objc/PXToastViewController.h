@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSString, PXToastPresentationWindow, UIImage, UIImageView, UILabel, UINotificationFeedbackGenerator, UIVisualEffectView;
+@class CAShapeLayer, NSString, PXToastPresentationWindow, UIImage, UIImageView, UILabel, UINotificationFeedbackGenerator, UIVisualEffectView;
 @protocol PXToastViewControllerDelegate;
 
 @interface PXToastViewController : UIViewController
@@ -20,9 +20,11 @@
     UILabel *_secondaryLabel;
     UIImageView *_imageView;
     UIVisualEffectView *_toastView;
+    CAShapeLayer *_checkLayer;
     UINotificationFeedbackGenerator *_feedbackGenerator;
 }
 
+@property (strong, nonatomic) CAShapeLayer *checkLayer; // @synthesize checkLayer=_checkLayer;
 @property (weak, nonatomic) id<PXToastViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UINotificationFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
@@ -46,6 +48,7 @@
 - (id)initCheckmarkToastWithTitle:(id)arg1 message:(id)arg2;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 image:(id)arg3;
 - (void)present;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

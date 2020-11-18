@@ -6,13 +6,17 @@
 
 #import <CoreDuetContext/NSObject-Protocol.h>
 
-@class _CDContextualChangeRegistration, _CDContextualKeyPath, _CDContextualPredicate;
+@class NSArray, NSDate, NSObject, NSUUID, _CDContextualChangeRegistration, _CDContextualKeyPath, _CDContextualPredicate;
+@protocol NSCopying><NSSecureCoding;
 
 @protocol _CDContextServer <NSObject>
+- (void)activateDevices:(NSArray *)arg1 remoteUserContextProxySourceDeviceUUID:(NSUUID *)arg2;
+- (void)deactivateDevices:(NSArray *)arg1 remoteUserContextProxySourceDeviceUUID:(NSUUID *)arg2;
 - (void)deregisterCallback:(_CDContextualChangeRegistration *)arg1;
 - (void)evaluatePredicate:(_CDContextualPredicate *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)hasKnowledgeOfPath:(_CDContextualKeyPath *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)propertiesOfPath:(_CDContextualKeyPath *)arg1 handler:(void (^)(NSObject *, NSDate *))arg2;
 - (void)registerCallback:(_CDContextualChangeRegistration *)arg1;
+- (void)setObject:(NSObject<NSCopying><NSSecureCoding> *)arg1 lastModifiedDate:(NSDate *)arg2 forContextualKeyPath:(_CDContextualKeyPath *)arg3 handler:(void (^)(BOOL))arg4;
 @end
 

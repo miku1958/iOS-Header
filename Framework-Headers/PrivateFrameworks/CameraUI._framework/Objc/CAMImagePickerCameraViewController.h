@@ -63,6 +63,7 @@
 - (long long)_captureModeForImagePickerCameraCaptureMode:(long long)arg1;
 - (id)_containingImagePickerController;
 - (void)_createCropOverlayIfNecessary;
+- (id)_currentCancelButtonTitle;
 - (long long)_flashModeForImagePickerCameraFlashMode:(long long)arg1;
 - (void)_handleCapturedImagePickerPhotoWithCropOverlayOutput:(id)arg1;
 - (void)_handleCapturedImagePickerVideoAtPath:(id)arg1 withEditingMetadata:(id)arg2;

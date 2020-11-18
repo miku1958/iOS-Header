@@ -20,6 +20,8 @@
 
 + (id)proximityEstimatorWithProximityInfo:(id)arg1;
 - (int)_estimateRSSIForSFBLEDevice:(id)arg1;
+- (id)description;
+- (id)descriptionParams;
 - (id)initWithProximityInfo:(id)arg1;
 - (unsigned int)updateWithSFBLEDevice:(id)arg1;
 

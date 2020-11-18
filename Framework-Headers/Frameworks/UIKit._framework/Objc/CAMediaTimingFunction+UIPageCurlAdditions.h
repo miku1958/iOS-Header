@@ -7,6 +7,7 @@
 #import <QuartzCore/CAMediaTimingFunction.h>
 
 @interface CAMediaTimingFunction (UIPageCurlAdditions)
++ (id)_kbTimingFunction;
 + (id)uiFunctionWithControlPoints:(const struct CGPoint *)arg1;
 @end
 

@@ -25,10 +25,10 @@
 
 - (void).cxx_destruct;
 - (id)_buttonForIdentifier:(id)arg1;
+- (void)_viewDidLoad;
 - (void)didSelectButton:(id)arg1;
 - (id)initWithGridTemplate:(id)arg1 interfaceDelegate:(id)arg2;
 - (void)setControl:(id)arg1 enabled:(BOOL)arg2;
-- (void)viewDidLoad;
 
 @end
 

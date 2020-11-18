@@ -8,7 +8,7 @@
 
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString;
+@class NSString, WKContentRuleListStore;
 
 @interface _WKUserContentExtensionStore : NSObject <WKObject>
 {
@@ -16,6 +16,7 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) WKContentRuleListStore *_contentRuleListStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

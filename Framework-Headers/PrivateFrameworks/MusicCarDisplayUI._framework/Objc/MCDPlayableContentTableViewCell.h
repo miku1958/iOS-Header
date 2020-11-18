@@ -40,9 +40,13 @@
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 - (void)_setCloudAccessoryView:(BOOL)arg1;
+- (void)_setExplicitView:(BOOL)arg1;
+- (void)_updatePlayingArtworkIfNeeded;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

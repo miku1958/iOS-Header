@@ -16,10 +16,10 @@
 }
 
 - (void).cxx_destruct;
+- (id)_init;
 - (void)_loadIconForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadRemoteIconForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)iconForApplicationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)init;
 
 @end
 

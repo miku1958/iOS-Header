@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _endOfLayout;
     BOOL _lastLineIsEmptyAndHasListLabel;
     BOOL _textIsVertical;
+    BOOL _terminatedByBreak;
     unsigned long long _nextWidowPullsDownFromCharIndex;
     unsigned long long _columnCount;
     unsigned long long _lineFragmentCount;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long nextWidowPullsDownFromCharIndex; // @synthesize nextWidowPullsDownFromCharIndex=_nextWidowPullsDownFromCharIndex;
 @property (nonatomic) struct _NSRange range; // @synthesize range=_range;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL terminatedByBreak; // @synthesize terminatedByBreak=_terminatedByBreak;
 @property (nonatomic) BOOL textIsVertical; // @synthesize textIsVertical=_textIsVertical;
 @property (nonatomic) BOOL usedParagraphHeights; // @synthesize usedParagraphHeights=_usedParagraphHeights;
 

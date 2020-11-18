@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SetupAssistantUI/BFFSplashController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 
 @class NSString;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanUserConsentViewController : BFFSplashController <TSSetupFlowItem>
+@interface TSCellularPlanUserConsentViewController : OBWelcomeController <TSSetupFlowItem>
 {
     BOOL _didReceiveResponse;
-    NSString *_name;
     NSString *_confirmationCode;
     unsigned long long _consentType;
     BOOL _requireAdditionalConsent;
@@ -28,10 +27,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)calculateTitleAndDetailsWithName:(id)arg1 consentType:(unsigned long long)arg2 title:(id *)arg3 details:(id *)arg4;
 - (void).cxx_destruct;
 - (void)_acceptButtonTapped;
 - (void)_cancelButtonTapped;
 - (void)_declineButtonTapped;
+- (void)_setNavigationItems;
+- (BOOL)canBeShownFromSuspendedState;
 - (id)initWithConfirmationCode:(id)arg1 consentType:(unsigned long long)arg2 requireAdditionalConsent:(BOOL)arg3 confirmationCode:(id)arg4;
 - (id)initWithName:(id)arg1 consentType:(unsigned long long)arg2 requireAdditionalConsent:(BOOL)arg3;
 - (void)viewDidLoad;

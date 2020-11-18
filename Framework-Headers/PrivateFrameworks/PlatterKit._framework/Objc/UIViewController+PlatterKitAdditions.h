@@ -6,7 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
+@class PLExpandedPlatterPresentationController;
+
 @interface UIViewController (PlatterKitAdditions)
+
+@property (readonly, nonatomic) PLExpandedPlatterPresentationController *expandedPlatterPresentationController;
+
+- (id)pl_containingClickPresentationInteractionPresentingViewController;
+- (id)pl_containingPreviewInteractionPresentingViewController;
 - (id)pl_presentationControllerIfPresented;
 - (id)pl_presentingPresentationController;
 @end

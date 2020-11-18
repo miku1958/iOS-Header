@@ -33,7 +33,7 @@
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setupAsTemplateLayoutCell:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)willTransitionToState:(unsigned long long)arg1;
 
 @end

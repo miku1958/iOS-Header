@@ -9,15 +9,21 @@
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARCamera, ARFaceData, ARFrameTimingData, ARLightEstimate, ARPointCloud, ARRawSceneUnderstandingData, ARWorldTrackingErrorData, ARWorldTrackingState, AVDepthData, NSArray, NSDate, NSDictionary;
+@class ARBody2D, ARCamera, ARFaceData, ARFrameTimingData, ARLightEstimate, ARPointCloud, ARRawSceneUnderstandingData, ARVideoFormat, ARWorldTrackingErrorData, ARWorldTrackingState, AVDepthData, MISSING_TYPE, NSArray, NSDate, NSDictionary;
+@protocol MTLTexture;
 
 @interface ARFrame : NSObject <NSSecureCoding, NSCopying>
 {
     unsigned long long _transformFlags;
+    BOOL _predicted;
     BOOL _shouldRestrictFrameRate;
-    double _timestamp;
+    float _cameraGrainIntensity;
+    float _imageNoiseIntensity;
+    struct __CVBuffer *_segmentationBuffer;
+    struct __CVBuffer *_estimatedDepthData;
     struct __CVBuffer *_capturedImage;
-    AVDepthData *_capturedDepthData;
+    id<MTLTexture> _cameraGrainTexture;
+    double _timestamp;
     double _capturedDepthDataTimestamp;
     ARCamera *_camera;
     NSArray *_anchors;
@@ -35,7 +41,14 @@
     long long _renderFramesPerSecond;
     NSDate *_captureDate;
     ARRawSceneUnderstandingData *_rawSceneUnderstandingData;
+    double _estimatedLuminance;
+    struct __CVBuffer *_downSampledMattingPixelBuffer;
+    struct __CVBuffer *_mattingScaleImagePixelBuffer;
+    NSArray *_detectedBodies;
     ARFaceData *_faceData;
+    AVDepthData *_capturedDepthData;
+    ARVideoFormat *_currentlyActiveVideoFormat;
+    id<MTLTexture> _imageNoiseTexture;
     CDStruct_14d5dc5e _referenceOriginTransform;
     CDStruct_14d5dc5e _referenceOriginDelta;
     CDStruct_14d5dc5e _sessionOriginTransform;
@@ -45,20 +58,33 @@
 @property (copy, nonatomic) NSArray *anchors; // @synthesize anchors=_anchors;
 @property (strong, nonatomic) NSArray *cachedPointClouds; // @synthesize cachedPointClouds=_cachedPointClouds;
 @property (readonly, copy, nonatomic) ARCamera *camera; // @synthesize camera=_camera;
+@property (readonly, nonatomic) float cameraGrainIntensity; // @synthesize cameraGrainIntensity=_cameraGrainIntensity;
+@property (readonly, nonatomic) id<MTLTexture> cameraGrainTexture; // @synthesize cameraGrainTexture=_cameraGrainTexture;
 @property (strong, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property (strong, nonatomic) AVDepthData *capturedDepthData; // @synthesize capturedDepthData=_capturedDepthData;
 @property (nonatomic) double capturedDepthDataTimestamp; // @synthesize capturedDepthDataTimestamp=_capturedDepthDataTimestamp;
 @property (nonatomic) struct __CVBuffer *capturedImage; // @synthesize capturedImage=_capturedImage;
 @property (readonly, nonatomic) double currentCaptureTimestamp; // @synthesize currentCaptureTimestamp=_currentCaptureTimestamp;
+@property (strong, nonatomic) ARVideoFormat *currentlyActiveVideoFormat; // @synthesize currentlyActiveVideoFormat=_currentlyActiveVideoFormat;
+@property (copy, nonatomic) NSArray *detectedBodies; // @synthesize detectedBodies=_detectedBodies;
+@property (readonly, nonatomic) ARBody2D *detectedBody;
+@property (nonatomic) struct __CVBuffer *downSampledMattingPixelBuffer; // @synthesize downSampledMattingPixelBuffer=_downSampledMattingPixelBuffer;
+@property (nonatomic) struct __CVBuffer *estimatedDepthData; // @synthesize estimatedDepthData=_estimatedDepthData;
+@property (nonatomic) double estimatedLuminance; // @synthesize estimatedLuminance=_estimatedLuminance;
 @property (strong, nonatomic) ARFaceData *faceData; // @synthesize faceData=_faceData;
 @property (strong, nonatomic) ARPointCloud *featurePoints; // @synthesize featurePoints=_featurePoints;
+@property (nonatomic) float imageNoiseIntensity; // @synthesize imageNoiseIntensity=_imageNoiseIntensity;
+@property (strong, nonatomic) id<MTLTexture> imageNoiseTexture; // @synthesize imageNoiseTexture=_imageNoiseTexture;
 @property (strong, nonatomic) ARLightEstimate *lightEstimate; // @synthesize lightEstimate=_lightEstimate;
+@property (nonatomic) struct __CVBuffer *mattingScaleImagePixelBuffer; // @synthesize mattingScaleImagePixelBuffer=_mattingScaleImagePixelBuffer;
+@property (readonly, nonatomic, getter=isPredicted) BOOL predicted; // @synthesize predicted=_predicted;
 @property (readonly, nonatomic) ARPointCloud *rawFeaturePoints;
 @property (strong, nonatomic) ARRawSceneUnderstandingData *rawSceneUnderstandingData; // @synthesize rawSceneUnderstandingData=_rawSceneUnderstandingData;
 @property (strong, nonatomic) ARPointCloud *referenceFeaturePoints; // @synthesize referenceFeaturePoints=_referenceFeaturePoints;
 @property (nonatomic) CDStruct_14d5dc5e referenceOriginDelta; // @synthesize referenceOriginDelta=_referenceOriginDelta;
 @property (nonatomic) CDStruct_14d5dc5e referenceOriginTransform; // @synthesize referenceOriginTransform=_referenceOriginTransform;
 @property (nonatomic) long long renderFramesPerSecond; // @synthesize renderFramesPerSecond=_renderFramesPerSecond;
+@property (nonatomic) struct __CVBuffer *segmentationBuffer; // @synthesize segmentationBuffer=_segmentationBuffer;
 @property (nonatomic) CDStruct_14d5dc5e sessionOriginTransform; // @synthesize sessionOriginTransform=_sessionOriginTransform;
 @property (nonatomic) BOOL shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
@@ -75,6 +101,7 @@
 - (id)_hitTestEstimatedPlanesFromOrigin:(long long)arg1 withDirection:planeAlignment: /* Error: Ran out of types for this method. */;
 - (id)_hitTestFromOrigin:(unsigned long long)arg1 withDirection:types: /* Error: Ran out of types for this method. */;
 - (id)_horizontalPlaneEstimateFromFeaturePoint:fromOrigin:withDirection: /* Error: Ran out of types for this method. */;
+- (void)_updatePredicted:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -86,14 +113,18 @@
 - (id)initWithCamera:(id)arg1 timestamp:(double)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTimestamp:(double)arg1 context:(id)arg2;
+- (id)initWithTimestampAndNoContext:(double)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)raycastQueryFromPoint:(struct CGPoint)arg1 allowingTarget:(long long)arg2 alignment:(long long)arg3;
 - (BOOL)referenceOriginChanged;
 - (BOOL)referenceOriginDeltaAvailable;
 - (BOOL)referenceOriginTransformAvailable;
 - (BOOL)referenceOriginTransformUpdated;
 - (BOOL)sessionOriginTransformAvailable;
+- (void)setPredictedTimestamp:(double)arg1;
 - (void)setReferenceOriginChanged:(BOOL)arg1;
 - (void)setReferenceOriginTransformUpdated:(BOOL)arg1;
+- (MISSING_TYPE *)transformPointToNDCSpace:(struct CGPoint)arg1;
 - (BOOL)worldAlignmentTransformAvailable;
 
 @end

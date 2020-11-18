@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 + (id)warningSetForDifferentBehaviorForFunctionFormula:(id)arg1 originalFormula:(id)arg2;
 + (id)warningSetForErrorTokenFormula:(id)arg1;
 + (id)warningSetForExternalReferenceFormula:(id)arg1;
++ (id)warningSetForFilteredColumnFormulaNotCopied;
 + (id)warningSetForNaturalLanguageFormula:(id)arg1;
 + (id)warningSetForReferenceOutOfBoundsFormula:(id)arg1;
 + (id)warningSetForSharedFormulaBaseNotFoundFormula:(id)arg1;
@@ -56,6 +57,8 @@ __attribute__((visibility("hidden")))
 + (id)warningSetForUnsupportedNameFormula:(id)arg1 originalFormula:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (long long)TSTImportFormulaWarningTypeFromArchive:(int)arg1;
+- (int)TSTImportFormulaWarningTypeToArchive;
 - (BOOL)areAnySet;
 - (id)cellDiffClearingWarningsWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -64,8 +67,8 @@ __attribute__((visibility("hidden")))
 - (id)initFromArchive:(const struct ImportWarningSetArchive *)arg1;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isTransposeWarning;
 - (id)localizedWarningStrings;
+- (BOOL)p_isPersistedWithFormulaWarningTypeEnumeration;
 - (void)saveToArchive:(struct ImportWarningSetArchive *)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (id)warningSetByAddingWarningsFromSet:(id)arg1;

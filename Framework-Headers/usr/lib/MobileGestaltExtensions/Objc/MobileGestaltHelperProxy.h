@@ -24,6 +24,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (BOOL)proxyRebuildCache;
 
 @end
 

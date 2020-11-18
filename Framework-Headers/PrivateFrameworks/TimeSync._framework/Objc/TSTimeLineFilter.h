@@ -10,6 +10,7 @@
 {
 }
 
+@property (readonly, nonatomic) BOOL canConvertTime;
 @property (readonly, nonatomic) CDStruct_4bcfbbae rateRatio;
 
 - (void)addTimestamps:(CDStruct_4bcfbbae)arg1;

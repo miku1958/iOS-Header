@@ -17,18 +17,20 @@
     double _lng;
     BOOL _gtLog;
     struct {
-        unsigned int gtLog:1;
-    } _has;
+        unsigned int has_gtLog:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property (nonatomic) BOOL gtLog;
 @property (nonatomic) BOOL hasGtLog;
-@property (nonatomic) double lat; // @synthesize lat=_lat;
-@property (nonatomic) double lng; // @synthesize lng=_lng;
+@property (nonatomic) double lat;
+@property (nonatomic) double lng;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +40,7 @@
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

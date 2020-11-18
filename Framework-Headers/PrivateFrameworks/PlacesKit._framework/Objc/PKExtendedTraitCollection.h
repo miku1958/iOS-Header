@@ -6,19 +6,26 @@
 
 #import <objc/NSObject.h>
 
+@class UITraitCollection;
+
 @interface PKExtendedTraitCollection : NSObject
 {
     long long _layoutSizeClass;
     long long _layoutSizeSubclass;
     long long _userInterfaceIdiom;
+    long long _userInterfaceStyle;
     double _displayScale;
+    UITraitCollection *_traitCollectionForMapKit;
 }
 
 @property (nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
 @property (nonatomic) long long layoutSizeClass; // @synthesize layoutSizeClass=_layoutSizeClass;
 @property (nonatomic) long long layoutSizeSubclass; // @synthesize layoutSizeSubclass=_layoutSizeSubclass;
+@property (strong, nonatomic) UITraitCollection *traitCollectionForMapKit; // @synthesize traitCollectionForMapKit=_traitCollectionForMapKit;
 @property (nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
+@property (nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 
+- (void).cxx_destruct;
 - (id)description;
 
 @end

@@ -23,9 +23,9 @@
 @property (readonly, nonatomic) short ordinal; // @synthesize ordinal=_ordinal;
 @property (readonly) Class superclass;
 
-+ (id)fakeFloorWithOrdinal:(short)arg1;
 + (id)floorInfosFromLevels:(id)arg1;
 + (BOOL)isIntegerValidOrdinal:(long long)arg1;
+- (id)init;
 - (id)initWithLevel:(id)arg1;
 - (id)initWithOrdinal:(short)arg1 levelID:(unsigned long long)arg2;
 

@@ -10,6 +10,7 @@
 #import <CompanionSync/NMSObfuscatableDescriptionProviding-Protocol.h>
 
 @class IDSMessageContext, NMSIncomingRequest, NSData, NSDictionary, NSSet, NSString;
+@protocol OS_os_transaction;
 
 @interface NMSOutgoingResponse : NSObject <NMSDeviceTargetable, NMSObfuscatableDescriptionProviding>
 {
@@ -21,6 +22,7 @@
     double _sendTimeout;
     NSDictionary *_persistentUserInfo;
     NSDictionary *_extraIDSOptions;
+    NSObject<OS_os_transaction> *_transaction;
     NSString *_idsIdentifier;
     id _pbResponse;
     IDSMessageContext *_idsContext;
@@ -41,6 +43,7 @@
 @property (getter=isSent) BOOL sent; // @synthesize sent=_sent;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSSet *targetDeviceIDs; // @synthesize targetDeviceIDs;
+@property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 
 - (void).cxx_destruct;
 - (id)CPObfuscatedDescriptionObject;

@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)presentController:(id)arg1 animated:(BOOL)arg2 useDefaultContaineeLayout:(BOOL)arg3;
-- (void)setLayoutIfSupported:(unsigned long long)arg1 animated:(BOOL)arg2 velocity:(double)arg3;
 
 @end
 

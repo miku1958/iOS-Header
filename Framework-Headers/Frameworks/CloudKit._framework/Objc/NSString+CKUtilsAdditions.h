@@ -6,9 +6,29 @@
 
 #import <Foundation/NSString.h>
 
-@interface NSString (CKUtilsAdditions)
+#import <CloudKit/CKRecordValue-Protocol.h>
+#import <CloudKit/CKShortDescription-Protocol.h>
+
+@interface NSString (CKUtilsAdditions) <CKRecordValue, CKShortDescription>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+
 - (id)CKBase64DecodedString;
 - (id)CKBase64EncodedURLSafeString;
+- (id)CKDPIdentifier_Device;
+- (id)CKDPIdentifier_Raw;
+- (id)CKDPIdentifier_Record;
+- (id)CKDPIdentifier_ShareId;
+- (id)CKDPIdentifier_Subscription;
+- (id)CKDPIdentifier_User;
+- (id)CKDPIdentifier_Zone;
 - (id)CKMangledDocumentNameForURLFragment;
 - (id)CKNilIfLengthZero;
 - (id)CKSHA256;
@@ -18,5 +38,7 @@
 - (id)CKSafeStringForURLWithCharsToBeEscaped:(id)arg1;
 - (id)CKSanitizedPath;
 - (id)CKUnmangledDocumentNameFromURLFragment;
+- (id)_CKDPIdentifierWithType:(int)arg1;
+- (id)ckShortDescription;
 @end
 

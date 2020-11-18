@@ -17,6 +17,7 @@
     struct {
         unsigned int fileType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _fileType;
     _INPBDateTimeRange *_dateTime;
     _INPBContact *_person;
@@ -24,6 +25,7 @@
     _INPBString *_value;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDateTimeRange *dateTime; // @synthesize dateTime=_dateTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -39,11 +41,14 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBString *value; // @synthesize value=_value;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsFileType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)fileTypeAsString:(int)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

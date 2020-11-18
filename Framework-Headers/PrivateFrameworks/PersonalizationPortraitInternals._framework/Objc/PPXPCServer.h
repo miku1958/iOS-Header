@@ -14,6 +14,9 @@
 + (void)_registerConnectionsListener;
 + (void)_registerContactListener;
 + (void)_registerEventListener;
++ (void)_registerInternalListener;
++ (void)_registerLocationReadOnlyListener;
++ (void)_registerLocationReadWriteListener;
 + (void)_registerNamedEntityReadOnlyListener;
 + (void)_registerNamedEntityReadWriteListener;
 + (void)_registerQuickTypeListener;

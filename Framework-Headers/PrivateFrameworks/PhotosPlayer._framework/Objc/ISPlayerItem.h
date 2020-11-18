@@ -21,6 +21,7 @@
     BOOL _ivarQueue_aggressivelyCacheVideoFrames;
     BOOL _ivarQueue_reversesMoreVideoFramesInMemory;
     BOOL _ivarQueue_decodesAllFramesDuringOrdinaryPlayback;
+    BOOL _ivarQueue_contentSupportsVitality;
     CDStruct_1b6d18a9 _ivarQueue_prePhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_postPhotoTime;
     CDStruct_1b6d18a9 _ivarQueue_playerItemPhotoTime;
@@ -37,6 +38,7 @@
         BOOL content;
         BOOL minimumClientVersion;
         BOOL playbackStyleIdentifier;
+        BOOL contentSupportsVitality;
     } _ivarQueue_isValid;
     AVAssetImageGenerator *_workQueue_imageGenerator;
     BOOL _workQueue_isGeneratingOffsetImage;
@@ -51,6 +53,8 @@
 @property (nonatomic, setter=_setVideoPlayerItemRequestID:) long long _videoPlayerItemRequestID;
 @property (nonatomic) BOOL aggressivelyCacheVideoFrames;
 @property (readonly, nonatomic) ISAsset *asset; // @synthesize asset=_asset;
+@property (nonatomic) BOOL contentSupportsVitality;
+@property (nonatomic) BOOL decodesAllFramesDuringOrdinaryPlayback;
 @property (strong, nonatomic, setter=_setError:) NSError *error;
 @property (nonatomic) long long loadingTarget;
 @property (strong, nonatomic, setter=_setPlayerContent:) ISPlayerContent *playerContent;
@@ -66,11 +70,13 @@
 - (void)_assertOnWorkQueue;
 - (void)_cancelLoading;
 - (void)_handleVideoPlayerItemLoadResultWithSuccess:(BOOL)arg1 playerItem:(id)arg2 prePhotoTime:(CDStruct_1b6d18a9)arg3 postPhotoTime:(CDStruct_1b6d18a9)arg4 videoDuration:(CDStruct_1b6d18a9)arg5 error:(id)arg6;
+- (void)_invalidateContentSupportsVitality;
 - (void)_invalidateMinimumClientVersion;
 - (void)_invalidatePlaybackStyleIdentifier;
 - (void)_invalidatePlayerContent;
 - (void)_invalidateStatus;
 - (void)_invalidateVideoPlayerItem;
+- (BOOL)_isContentSupportsVitalityValid;
 - (BOOL)_isMinimumClientVersionValid;
 - (BOOL)_isOnIvarQueue;
 - (BOOL)_isOnWorkQueue;
@@ -85,6 +91,7 @@
 - (void)_performWork:(CDUnknownBlockType)arg1 sync:(BOOL)arg2;
 - (void)_reloadAllContent;
 - (void)_setVideoPlayerItem:(id)arg1 prePhotoTime:(CDStruct_1b6d18a9)arg2 postPhotoTime:(CDStruct_1b6d18a9)arg3 videoDuration:(CDStruct_1b6d18a9)arg4;
+- (void)_updateContentSupportsVitalityIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updateMinimumClientVersionIfNeeded;
 - (void)_updatePlaybackStyleIdentifierIfNeeded;
@@ -94,7 +101,6 @@
 - (id)_videoPlayerItem;
 - (void)cancelLoading;
 - (void)dealloc;
-- (BOOL)decodesAllFramesDuringOrdinaryPlayback;
 - (void)didPerformChanges;
 - (void)discardContentBelowLoadingTarget;
 - (id)init;
@@ -102,7 +108,6 @@
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)resetAVObjects;
-- (void)setDecodesAllFramesDuringOrdinaryPlayback:(BOOL)arg1;
 
 @end
 

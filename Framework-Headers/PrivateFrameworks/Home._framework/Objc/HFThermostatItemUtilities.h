@@ -4,18 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Home/HFTemperatureItemUtilities.h>
 
-@interface HFThermostatItemUtilities : NSObject
+@interface HFThermostatItemUtilities : HFTemperatureItemUtilities
 {
 }
 
-+ (long long)_heatingCoolingValueForCurrentHeaterCoolerState:(long long)arg1 isActive:(BOOL)arg2;
-+ (long long)_heatingCoolingValueForTargetHeaterCoolerState:(long long)arg1 isActive:(BOOL)arg2;
-+ (id)currentHeatingCoolingModeValueInResponse:(id)arg1;
 + (void)getDescription:(out id *)arg1 controlDescription:(out id *)arg2 optionalDescriptions:(out id *)arg3 forResponse:(id)arg4 primaryService:(id)arg5 temperatureFormatter:(id)arg6;
-+ (id)targetHeatingCoolingModeValueInResponse:(id)arg1;
-+ (id)targetTemperatureValueInResponse:(id)arg1;
 
 @end
 

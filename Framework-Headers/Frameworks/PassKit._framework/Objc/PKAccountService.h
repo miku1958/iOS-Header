@@ -39,6 +39,7 @@
 - (void)activatePhysicalCard:(id)arg1 withActivationCode:(id)arg2 forFeatureIdentifier:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)beginPhysicalCardAction:(id)arg1 onPhysicalCardWithIdentifier:(id)arg2 forAccountWithIdentifier:(id)arg3 deviceMetadata:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)beginPhysicalCardRequestWithOrder:(id)arg1 forAccountWithIdentifier:(id)arg2 deviceMetadata:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)billPaymentSelectedSuggestedAmountDataEventsForAccountIdentifier:(id)arg1 withStartDate:(id)arg2 endDate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)billPaymentSelectedSuggestedAmountDataEventsForAccountIdentifier:(id)arg1 withStatementIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)cardCredentialsForVirtualCard:(id)arg1 authorization:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)completePhysicalCardActionRequest:(id)arg1 withSignature:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -66,6 +67,7 @@
 - (void)preferencesForAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerObserver:(id)arg1;
 - (void)scheduledPaymentsChangedForAccountIdentifier:(id)arg1;
+- (void)scheduledPaymentsWithAccountIdentifier:(id)arg1 includeFailedRecurringPayments:(BOOL)arg2 allowFetchFromServer:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scheduledPaymentsWithAccountIdentifier:(id)arg1 includeFailedRecurringPayments:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
 - (void)termsWithIdentifier:(id)arg1 accepted:(BOOL)arg2 withAccountIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;

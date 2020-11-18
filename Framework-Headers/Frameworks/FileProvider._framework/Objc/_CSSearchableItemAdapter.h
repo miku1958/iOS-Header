@@ -8,7 +8,8 @@
 
 #import <FileProvider/NSFileProviderItem_Private-Protocol.h>
 
-@class CSSearchableItem, CSSearchableItemAttributeSet, NSArray, NSData, NSDate, NSDictionary, NSError, NSNumber, NSPersonNameComponents, NSString, NSURL;
+@class CSSearchableItem, CSSearchableItemAttributeSet, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@protocol NSFileProviderItemFlags;
 
 __attribute__((visibility("hidden")))
 @interface _CSSearchableItemAdapter : NSObject <NSFileProviderItem_Private>
@@ -30,12 +31,22 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isDownloaded) BOOL downloaded;
 @property (readonly, nonatomic, getter=isDownloading) BOOL downloading;
 @property (readonly, copy, nonatomic) NSError *downloadingError;
+@property (readonly, nonatomic, getter=isExcludedFromSync) BOOL excludedFromSync;
+@property (readonly, nonatomic) NSDictionary *extendedAttributes;
 @property (readonly, copy, nonatomic) NSNumber *favoriteRank;
+@property (readonly, copy) NSString *fileSystemFilename;
 @property (readonly, copy) NSURL *fileURL;
 @property (readonly, copy, nonatomic) NSString *filename;
-@property (readonly, copy) NSString *fp_appContainerBundleIdentifier;
+@property (readonly, nonatomic) id<NSFileProviderItemFlags> flags;
+@property (readonly, nonatomic, getter=fp_isAddedByCurrentUser) BOOL fp_addedByCurrentUser;
+@property (readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
+@property (readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
+@property (readonly, copy) NSString *fp_cloudContainerIdentifier;
 @property (readonly, copy) NSString *fp_domainIdentifier;
 @property (readonly) BOOL fp_isContainer;
+@property (readonly) BOOL fp_isContainerPristine;
+@property (readonly, nonatomic, getter=fp_isLastModifiedByCurrentUser) BOOL fp_lastModifiedByCurrentUser;
+@property (readonly, copy) NSString *fp_parentDomainIdentifier;
 @property (readonly, copy) NSString *fp_spotlightDomainIdentifier;
 @property (readonly, getter=fp_isUbiquitous) BOOL fp_ubiquitous;
 @property (readonly, copy) NSNumber *hasUnresolvedConflicts;
@@ -43,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, getter=isHidden) BOOL hidden;
 @property (readonly, nonatomic) CSSearchableItem *item; // @synthesize item=_item;
 @property (readonly, copy, nonatomic) NSString *itemIdentifier;
+@property (readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property (readonly, copy, nonatomic) NSDate *lastUsedDate;
 @property (readonly, nonatomic) NSPersonNameComponents *mostRecentEditorNameComponents;
 @property (readonly, nonatomic, getter=isMostRecentVersionDownloaded) BOOL mostRecentVersionDownloaded;
@@ -56,7 +68,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *sharingPermissions;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSData *tagData;
-@property (readonly, copy) NSArray *tags;
+@property (readonly, nonatomic, getter=isTopLevelSharedItem) BOOL topLevelSharedItem;
 @property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
 @property (readonly, copy, nonatomic) NSString *typeIdentifier;
 @property (readonly, nonatomic, getter=isUploaded) BOOL uploaded;
@@ -67,10 +79,17 @@ __attribute__((visibility("hidden")))
 
 + (id)fp_queryFetchAttributes;
 - (void).cxx_destruct;
+- (id)appContainerBundleIdentifier;
 - (id)containerSubitemCount;
+- (id)formerIdentifier;
 - (id)initWithSearchableItem:(id)arg1;
+- (BOOL)isDataless;
+- (BOOL)isInPinnedFolder;
+- (BOOL)isPinned;
+- (BOOL)isRecursivelyDownloaded;
 - (id)sharingCurrentUserPermissions;
 - (id)sharingCurrentUserRole;
+- (id)tags;
 
 @end
 

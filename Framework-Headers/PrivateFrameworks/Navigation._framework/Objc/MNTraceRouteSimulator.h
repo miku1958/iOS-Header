@@ -20,6 +20,7 @@
     id<MNLocationProviderDelegate> _delegate;
     CDUnknownBlockType _authorizationRequestBlock;
     NSArray *_traceEvents;
+    double _simulationSpeedOverride;
 }
 
 @property (nonatomic) long long activityType;
@@ -40,16 +41,20 @@
 @property (readonly, nonatomic) BOOL isTracePlayer;
 @property (nonatomic, getter=isLocationServicesPreferencesDialogEnabled) BOOL locationServicesPreferencesDialogEnabled;
 @property (nonatomic) BOOL matchInfoEnabled;
+@property (nonatomic) double simulationSpeedOverride; // @synthesize simulationSpeedOverride=_simulationSpeedOverride;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeScale;
 @property (readonly, nonatomic) NSArray *traceEvents; // @synthesize traceEvents=_traceEvents;
+@property (readonly, nonatomic) unsigned long long traceVersion;
 @property (readonly, nonatomic) BOOL usesCLMapCorrection;
 
 - (void).cxx_destruct;
 - (void)_generateEvents;
 - (void)_setup;
 - (void)_tearDown;
+- (id)currentDate;
 - (void)generateGuidance;
+- (void)generateGuidanceWithRequest:(id)arg1 response:(id)arg2 routeAttributes:(id)arg3 routeIndex:(unsigned int)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)insertVoiceEventAtTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigationSession:(id)arg1 didAnnounce:(id)arg2 stage:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didAnnounceArrival:(id)arg2;
@@ -62,6 +67,7 @@
 - (void)navigationSessionDidStart:(id)arg1;
 - (void)navigationSessionHideSecondaryStep:(id)arg1;
 - (void)navigationSessionWillReroute:(id)arg1;
+- (void)recordLocationsAlongRouteWithRecorder:(id)arg1;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)resetForActiveTileGroupChanged;

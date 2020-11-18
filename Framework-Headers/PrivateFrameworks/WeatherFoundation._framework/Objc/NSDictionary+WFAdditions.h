@@ -7,6 +7,12 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (WFAdditions)
++ (long long)integerValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(long long)arg3;
++ (id)stringValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(id)arg3;
+- (id)arrayForKey:(id)arg1;
+- (id)dictionaryForKey:(id)arg1;
+- (id)numberForKey:(id)arg1;
+- (id)stringForKey:(id)arg1;
 - (id)wf_URLForKeyPath:(id)arg1;
 - (id)wf_arrayForKeyPath:(id)arg1;
 - (id)wf_dictionaryForKeyPath:(id)arg1;

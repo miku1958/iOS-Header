@@ -6,17 +6,15 @@
 
 #import <TSReading/TSKApplicationDelegate.h>
 
-@class NSArray, NSString, TSADocumentRoot;
+@class NSArray, NSString;
 @protocol TSADownloadDelegate;
 
 @interface TSABaseApplicationDelegate : TSKApplicationDelegate
 {
-    TSADocumentRoot *mDocumentRoot;
     id<TSADownloadDelegate> _downloadDelegate;
 }
 
 @property (readonly, nonatomic) NSArray *applicationTemplateVariants;
-@property (nonatomic) TSADocumentRoot *documentRoot; // @synthesize documentRoot=mDocumentRoot;
 @property (strong, nonatomic) id<TSADownloadDelegate> downloadDelegate; // @synthesize downloadDelegate=_downloadDelegate;
 @property (readonly, nonatomic) NSArray *importableDocumentTypes;
 @property (readonly, nonatomic) NSString *nativeDocumentExtension;
@@ -41,7 +39,7 @@
 - (BOOL)isReadableDocumentType:(id)arg1;
 - (double)maximumAspectRatioForPreviewImage;
 - (double)mimimumAspectRatioForPreviewImage;
-- (BOOL)openURL:(id)arg1;
+- (BOOL)openURL:(id)arg1 sourceDocumentRoot:(id)arg2;
 - (void)persistenceError:(id)arg1;
 - (void)registerDefaults;
 - (id)validURLSchemes;

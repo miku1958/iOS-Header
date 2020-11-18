@@ -30,7 +30,7 @@
 - (id)recordTypeForRecordID:(id)arg1;
 - (void)saveCachedContainerValues;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (BOOL)shouldFetchAndStoreCloudDataAtStartup;
+- (void)shouldFetchAndStoreCloudDataAtStartupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIControl.h>
 
-@class MPDownloadProgressView, NSMutableDictionary, UIImageView, UILabel, UIView;
+@class MPDownloadProgressView, NSMutableDictionary, UIColor, UIImageView, UILabel, UIView;
 
 @interface MPAddKeepLocalControl : UIControl
 {
@@ -24,20 +24,20 @@
     BOOL _allowsAddImage;
     BOOL _scaleImageForAccessibility;
     long long _displayStyle;
+    UIColor *_filledTintColor;
     struct MPAddKeepLocalControlStatus _controlStatus;
 }
 
 @property (nonatomic) BOOL allowsAddImage; // @synthesize allowsAddImage=_allowsAddImage;
 @property (nonatomic) struct MPAddKeepLocalControlStatus controlStatus; // @synthesize controlStatus=_controlStatus;
 @property (nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
+@property (strong, nonatomic) UIColor *filledTintColor; // @synthesize filledTintColor=_filledTintColor;
 @property (nonatomic) BOOL scaleImageForAccessibility; // @synthesize scaleImageForAccessibility=_scaleImageForAccessibility;
 
 + (struct CGSize)_expectedSizeForControlStatusType:(long long)arg1 controlTitle:(id)arg2 hasControlImage:(BOOL)arg3 displayScale:(double)arg4 preferredHeight:(double)arg5;
 + (id)_imageNamed:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)_newControlTitleLabel;
-+ (id)cloudDownloadImageForTintColor:(id)arg1 outlineColor:(id)arg2 traitCollection:(id)arg3;
 + (id)controlTitleFontForControlStatusType:(long long)arg1;
-+ (id)systemLightGrayColor;
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (void)_beginTransientContentViewTransaction;

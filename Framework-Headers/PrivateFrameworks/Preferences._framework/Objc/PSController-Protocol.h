@@ -10,10 +10,7 @@
 @protocol PSController;
 
 @protocol PSController <PSStateRestoration>
-- (void)didLock;
-- (void)didUnlock;
-- (void)didWake;
-- (void)handleURL:(NSDictionary *)arg1;
+- (void)handleURL:(NSDictionary *)arg1 withCompletion:(void (^)(void))arg2;
 - (UIViewController<PSController> *)parentController;
 - (id)readPreferenceValue:(PSSpecifier *)arg1;
 - (PSRootController *)rootController;
@@ -24,19 +21,24 @@
 - (void)showController:(UIViewController *)arg1;
 - (void)showController:(UIViewController *)arg1 animate:(BOOL)arg2;
 - (PSSpecifier *)specifier;
-- (void)statusBarWillAnimateByHeight:(double)arg1;
-- (void)suspend;
-- (void)willBecomeActive;
-- (void)willResignActive;
-- (void)willUnlock;
 
 @optional
 + (void)formatSearchEntries:(NSMutableArray *)arg1 parent:(PSSearchEntry *)arg2;
 + (NSBundle *)searchBundle;
 + (void)validateSpecifier:(PSSpecifier *)arg1;
+- (void)didLock;
+- (void)didUnlock;
+- (void)didWake;
+- (void)handleURL:(NSDictionary *)arg1;
 - (void)highlightSpecifierWithID:(NSString *)arg1;
 - (BOOL)prepareHandlingURLForSpecifierID:(NSString *)arg1 resourceDictionary:(NSDictionary *)arg2 animatePush:(BOOL *)arg3;
+- (BOOL)prepareHandlingURLForSpecifierID:(NSString *)arg1 resourceDictionary:(NSDictionary *)arg2 animatePush:(BOOL *)arg3 withCompletion:(void (^)(void))arg4;
 - (void)pushController:(UIViewController *)arg1;
 - (void)pushController:(UIViewController *)arg1 animate:(BOOL)arg2;
+- (void)statusBarWillAnimateByHeight:(double)arg1;
+- (void)suspend;
+- (void)willBecomeActive;
+- (void)willResignActive;
+- (void)willUnlock;
 @end
 

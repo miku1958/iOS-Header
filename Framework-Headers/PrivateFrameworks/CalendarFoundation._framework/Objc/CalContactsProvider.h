@@ -8,36 +8,73 @@
 
 #import <CalendarFoundation/CalContactsProviderProtocol-Protocol.h>
 
-@class CNContactStore, CNReputationStore;
+@class CNContact, CNContactStore, CNReputationStore, NSArray, NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CalContactsProvider : NSObject <CalContactsProviderProtocol>
 {
+    CNContact *_meContact;
     CNContactStore *_store;
     CNReputationStore *_reputationStore;
+    NSObject<OS_dispatch_queue> *_syncQueue;
+    NSString *_testMeContactIdentifer;
+    NSMutableSet *_delegates;
+    NSArray *_unitTestEmails;
 }
 
+@property (strong) NSMutableSet *delegates; // @synthesize delegates=_delegates;
+@property (strong) CNContact *meContact;
 @property (strong) CNReputationStore *reputationStore; // @synthesize reputationStore=_reputationStore;
 @property (strong) CNContactStore *store; // @synthesize store=_store;
+@property (strong) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
+@property (strong) NSString *testMeContactIdentifer; // @synthesize testMeContactIdentifer=_testMeContactIdentifer;
+@property (strong) NSArray *unitTestEmails; // @synthesize unitTestEmails=_unitTestEmails;
 
++ (BOOL)birthdayIsYearless:(id)arg1;
++ (id)birthdayStringForContactName:(id)arg1 eventDate:(id)arg2 birthDate:(id)arg3 lunarCalendar:(id)arg4;
 + (id)defaultProvider;
++ (BOOL)isCalendarIslamic:(id)arg1;
 + (id)reputationForHandle:(id)arg1 inStore:(id)arg2;
 + (BOOL)shouldWhiteListOrganizerEmailFromJunkChecks:(id)arg1 inReputationStore:(id)arg2;
 + (BOOL)shouldWhiteListOrganizerPhoneNumberFromJunkChecks:(id)arg1 inReputationStore:(id)arg2;
 - (void).cxx_destruct;
+- (id)_fetchedUnifiedMeContact;
+- (id)_lastHistoryToken;
 - (id)_meWithKeys:(id)arg1;
-- (void)contactDidChange:(id)arg1;
+- (void)_setLastHistoryToken:(id)arg1;
+- (void)_syncContacts;
+- (BOOL)contactIdentifierIsMe:(id)arg1;
 - (id)contactStore;
+- (void)contactsChanged:(id)arg1;
+- (id)contactsFromContactIdentifiers:(id)arg1 withKeys:(id)arg2;
+- (void)deregisterForContactChangeNotifications:(id)arg1;
 - (void)donateEncodedLikenessString:(id)arg1 forEmailAddress:(id)arg2;
 - (id)init;
-- (void)meCardDidChange:(id)arg1;
+- (id)initWithStore:(id)arg1;
+- (BOOL)matchesOneOfMyEmails:(id)arg1;
+- (void)meCardChanged:(id)arg1;
+- (id)myAddressForLabel:(id)arg1;
 - (id)myAvatarEncodedString;
+- (id)myEmailAddress;
+- (id)myEmailAddresses;
 - (id)myFullName;
+- (id)myHomeAddress;
 - (id)myNameWithStyle:(long long)arg1;
 - (id)myShortDisplayName;
+- (id)myWorkAddress;
+- (void)registerForContactChangeNotifications:(id)arg1;
+- (void)setMeCardEmailsForUnitTesting:(id)arg1;
+- (void)setTestMeContactIdentifier:(id)arg1;
 - (BOOL)shouldWhiteListOrganizerEmailFromJunkChecks:(id)arg1;
 - (BOOL)shouldWhiteListOrganizerPhoneNumberFromJunkChecks:(id)arg1;
+- (id)unifiedContactMatchingName:(id)arg1 email:(id)arg2 url:(id)arg3 keysToFetch:(id)arg4;
+- (id)unifiedContactWithEmailAddress:(id)arg1;
+- (id)unifiedContactWithIdentifier:(id)arg1;
 - (id)unifiedContactWithIdentifier:(id)arg1 keysToFetch:(id)arg2;
+- (id)unifiedContactWithPhoneNumber:(id)arg1;
 - (id)unifiedContactsMatchingPredicate:(id)arg1 keysToFetch:(id)arg2;
+- (id)unifiedMeContact;
+- (BOOL)urlMatchesOneOfMyEmails:(id)arg1;
 
 @end
 

@@ -18,7 +18,6 @@
 - (void)publish;
 - (void)reenqueueQuarantinedAssetCollections;
 - (void)stop;
-- (void)submitAssetCollectionsForPublication:(NSArray *)arg1;
 - (void)submitAssetCollectionsForPublication:(NSArray *)arg1 skipAssetCollections:(NSArray *)arg2;
 @end
 

@@ -39,10 +39,11 @@
 - (void)airQualityForLocation:(id)arg1 locale:(id)arg2 options:(id)arg3 taskIdentifier:(id)arg4;
 - (void)cancelTaskWithIdentifier:(id)arg1;
 - (id)clientForPid:(int)arg1;
-- (void)dailyForecastForLocation:(id)arg1 taskIdentifier:(id)arg2;
+- (void)dailyForecastForLocation:(id)arg1 locale:(id)arg2 taskIdentifier:(id)arg3;
 - (void)fetchFavoriteLocationsWithTaskIdentifier:(id)arg1;
-- (void)forecastForLocation:(id)arg1 atDate:(id)arg2 options:(id)arg3 taskIdentifier:(id)arg4;
-- (void)hourlyForecastForLocation:(id)arg1 taskIdentifier:(id)arg2;
+- (void)forecast:(unsigned long long)arg1 forLocation:(id)arg2 locale:(id)arg3 taskIdentifier:(id)arg4;
+- (void)forecastForLocation:(id)arg1 locale:(id)arg2 atDate:(id)arg3 options:(id)arg4 taskIdentifier:(id)arg5;
+- (void)hourlyForecastForLocation:(id)arg1 locale:(id)arg2 taskIdentifier:(id)arg3;
 - (id)init;
 - (id)initWithStore:(id)arg1;
 - (void)invalidateCache:(id)arg1;

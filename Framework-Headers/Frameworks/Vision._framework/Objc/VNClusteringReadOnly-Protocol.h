@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSSet, NSString;
+@class NSArray, NSData, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
 
 @protocol VNClusteringReadOnly
 + (NSArray *)clustererModelFileNamesFromState:(NSData *)arg1 storedInPath:(NSString *)arg2 error:(id *)arg3;
 + (NSDictionary *)getRepresentativenessForFaces:(NSArray *)arg1 error:(id *)arg2;
++ (NSUUID *)nonGroupedGroupID;
+- (NSArray *)getAllClustersFromStateAndReturnError:(id *)arg1;
 - (NSData *)getClusterState:(id *)arg1;
 - (NSSet *)getClusteredIds:(id *)arg1;
 - (NSArray *)getClustersForClusterIds:(NSArray *)arg1 options:(NSDictionary *)arg2 error:(id *)arg3;

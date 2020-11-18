@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Photos/NSObject-Protocol.h>
+#import <Photos/PHMediaRequestDelegate-Protocol.h>
 
-@class NSDictionary, NSError, PHAdjustmentDataRequest;
+@class NSError, PHAdjustmentDataRequest;
 
-@protocol PHAdjustmentDataRequestDelegate <NSObject>
-- (void)adjustmentDataRequest:(PHAdjustmentDataRequest *)arg1 didFinishWithResultInfo:(NSDictionary *)arg2 error:(NSError *)arg3;
+@protocol PHAdjustmentDataRequestDelegate <PHMediaRequestDelegate>
 - (void)adjustmentDataRequest:(PHAdjustmentDataRequest *)arg1 didReportProgress:(double)arg2 completed:(BOOL)arg3 error:(NSError *)arg4;
 @end
 

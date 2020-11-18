@@ -13,11 +13,14 @@
     UIWebClip *_webClip;
 }
 
-@property (strong) UIWebClip *webClip; // @synthesize webClip=_webClip;
+@property (strong, nonatomic) UIWebClip *webClip; // @synthesize webClip=_webClip;
 
 - (void).cxx_destruct;
 - (id)generateImageWithFormat:(int)arg1;
+- (unsigned long long)hash;
 - (id)initWithWebClip:(id)arg1 variant:(unsigned long long)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (id)uniqueIdentifier;
 
 @end
 

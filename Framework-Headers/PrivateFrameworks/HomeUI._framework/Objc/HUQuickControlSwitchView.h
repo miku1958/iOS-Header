@@ -8,24 +8,30 @@
 
 #import <HomeUI/HUQuickControlControllableView-Protocol.h>
 
-@class HUDynamicFormattingLabel, HUIconView, HUQuickControlSwitchViewProfile, NSString;
+@class HUDynamicFormattingLabel, HUIconView, HUQuickControlSwitchViewProfile, NSString, UIImpactFeedbackGenerator;
 
 @interface HUQuickControlSwitchView : UIView <HUQuickControlControllableView>
 {
+    unsigned long long _reachabilityState;
     HUQuickControlSwitchViewProfile *_profile;
     UIView *_wellView;
     UIView *_knobView;
     HUDynamicFormattingLabel *_supplementaryValueLabel;
     HUIconView *_decorationIconView;
+    double _clippedValue;
+    UIImpactFeedbackGenerator *_feedbackGenerator;
     double _switchValue;
 }
 
+@property (nonatomic) double clippedValue; // @synthesize clippedValue=_clippedValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) HUIconView *decorationIconView; // @synthesize decorationIconView=_decorationIconView;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *knobView; // @synthesize knobView=_knobView;
 @property (copy, nonatomic) HUQuickControlSwitchViewProfile *profile; // @synthesize profile=_profile;
+@property (nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property (strong, nonatomic) id secondaryValue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HUDynamicFormattingLabel *supplementaryValueLabel; // @synthesize supplementaryValueLabel=_supplementaryValueLabel;
@@ -35,13 +41,17 @@
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (void)_actuateTapticFeedbackIfAvailable;
 - (BOOL)_createDecorationIconViewIfNecessary;
 - (void)_createSupplementaryValueLabelIfNecessary;
 - (struct CGPoint)_knobCenterForMetrics:(CDStruct_2418a849)arg1 switchValue:(double)arg2;
 - (struct CGRect)_knobFrameForMetrics:(CDStruct_2418a849)arg1 switchValue:(double)arg2;
 - (struct CGSize)_knobSizeForMetrics:(CDStruct_2418a849)arg1;
+- (void)_prepareForTapticFeedbackIfAvailable;
 - (void)_updateDecorationIconDescriptorAnimated:(BOOL)arg1;
+- (void)_updateKnobViewTintColorAnimated:(BOOL)arg1;
 - (void)_updateSupplementaryValueLabelAnimated:(BOOL)arg1;
+- (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 - (id)initWithProfile:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;

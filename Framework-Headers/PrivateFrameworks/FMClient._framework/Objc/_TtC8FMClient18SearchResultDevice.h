@@ -25,17 +25,17 @@
 }
 
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) NSString *deviceClass; // @synthesize deviceClass;
-@property (nonatomic, readonly) NSString *deviceName; // @synthesize deviceName;
-@property (nonatomic, readonly) NSString *discoveryId; // @synthesize discoveryId;
-@property (nonatomic, readonly) NSString *firstName; // @synthesize firstName;
-@property (nonatomic, readonly) NSString *lastName; // @synthesize lastName;
+@property (nonatomic, readonly) NSString *deviceClass;
+@property (nonatomic, readonly) NSString *deviceName;
+@property (nonatomic, readonly) NSString *discoveryId;
+@property (nonatomic, readonly) NSString *firstName;
+@property (nonatomic, readonly) NSString *lastName;
 @property (nonatomic, readonly) BOOL needsSafety; // @synthesize needsSafety;
-@property (nonatomic, readonly) NSString *ownerDsid; // @synthesize ownerDsid;
-@property (nonatomic, readonly) NSArray *pairedDevices; // @synthesize pairedDevices;
-@property (nonatomic, readonly) NSString *productName; // @synthesize productName;
-@property (nonatomic, readonly) NSString *productType; // @synthesize productType;
-@property (nonatomic, readonly) NSString *serverId; // @synthesize serverId;
+@property (nonatomic, readonly) NSString *ownerDsid;
+@property (nonatomic, readonly) NSArray *pairedDevices;
+@property (nonatomic, readonly) NSString *productName;
+@property (nonatomic, readonly) NSString *productType;
+@property (nonatomic, readonly) NSString *serverId;
 @property (nonatomic, readonly) BOOL thisDevice; // @synthesize thisDevice;
 
 + (BOOL)supportsSecureCoding;

@@ -6,7 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@interface VNSizeRange : NSObject
+#import <Vision/NSCopying-Protocol.h>
+#import <Vision/NSSecureCoding-Protocol.h>
+
+@interface VNSizeRange : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _minimumDimension;
     unsigned long long _maximumDimension;
@@ -17,8 +20,14 @@
 @property (readonly, nonatomic) unsigned long long maximumDimension; // @synthesize maximumDimension=_maximumDimension;
 @property (readonly, nonatomic) unsigned long long minimumDimension; // @synthesize minimumDimension=_minimumDimension;
 
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMinimumDimension:(unsigned long long)arg1 maximumDimension:(unsigned long long)arg2 idealDimension:(unsigned long long)arg3;
 - (BOOL)isAllowedDimension:(unsigned long long)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

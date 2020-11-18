@@ -17,19 +17,21 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_pictureItems;
     BOOL _allowFullScreenPhoto;
     struct {
-        unsigned int allowFullScreenPhoto:1;
-    } _has;
+        unsigned int has_allowFullScreenPhoto:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL allowFullScreenPhoto; // @synthesize allowFullScreenPhoto=_allowFullScreenPhoto;
+@property (nonatomic) BOOL allowFullScreenPhoto;
 @property (nonatomic) BOOL hasAllowFullScreenPhoto;
-@property (strong, nonatomic) NSMutableArray *pictureItems; // @synthesize pictureItems=_pictureItems;
+@property (strong, nonatomic) NSMutableArray *pictureItems;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)pictureItemType;
 - (void).cxx_destruct;
 - (void)addPictureItem:(id)arg1;
 - (void)clearPictureItems;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)pictureItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)pictureItemsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

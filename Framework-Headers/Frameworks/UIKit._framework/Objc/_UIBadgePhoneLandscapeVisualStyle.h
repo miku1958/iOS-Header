@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/_UIBadgePhonePadHorizontalVisualStyle.h>
+#import <UIKitCore/_UIBadgePadHorizontalVisualStyle.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIBadgePhoneLandscapeVisualStyle : _UIBadgePhonePadHorizontalVisualStyle
+@interface _UIBadgePhoneLandscapeVisualStyle : _UIBadgePadHorizontalVisualStyle
 {
 }
 
+- (double)cornerRadius;
 - (double)edgePadding;
 - (id)font;
 - (double)fontSize;
 - (double)minWidth;
-- (double)singleBadgeWidth;
-- (double)verticalInset;
 
 @end
 

@@ -10,6 +10,8 @@
 {
 }
 
++ (unsigned int)getAbTestMasterLocalSwitches;
++ (unsigned char)getAbTestingState;
 + (double)getAdaptiveLearningA;
 + (double)getAdaptiveLearningB;
 + (int)getAdaptiveLearningState;
@@ -29,12 +31,15 @@
 + (double)getLongTermValueWeightC;
 + (int)getNATTypeFromCarrierBundle;
 + (int)getNewSessionJoiningInterval;
++ (double)getNoRemoteDuplicationThresholdFast;
 + (int)getRateControllerType;
++ (double)getRemoteMediaStallTimeout;
 + (int)getShortTermHistoryLength;
 + (double)getShortTermValueWeightA;
 + (double)getShortTermValueWeightB;
 + (double)getShortTermValueWeightC;
-+ (void)initialize;
++ (id)getTestGroupPermutations:(unsigned char)arg1;
++ (double)getThresholdForSwitch:(unsigned int)arg1;
 + (void)setAddress:(id)arg1 forService:(id)arg2;
 + (void)setClientOptions:(id)arg1;
 + (void)setServerAddresses:(id)arg1;

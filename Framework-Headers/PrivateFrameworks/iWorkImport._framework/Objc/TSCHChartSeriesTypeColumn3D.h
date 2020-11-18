@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)g_genericToSpecificPropertyMap3DColumn;
 - (id)genericToSpecificPropertyMap;
 - (BOOL)supportsRoundedCorners;
+- (id)userInterfaceName;
 
 @end
 

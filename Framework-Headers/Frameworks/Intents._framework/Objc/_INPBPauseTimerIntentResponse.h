@@ -15,9 +15,11 @@
 @interface _INPBPauseTimerIntentResponse : PBCodable <_INPBPauseTimerIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_pausedTimers;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,11 +28,14 @@
 @property (readonly) Class superclass;
 
 + (Class)pausedTimersType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addPausedTimers:(id)arg1;
 - (void)clearPausedTimers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)pausedTimersAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -4,29 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDate, NSString, _DKSyncDeletedEventIDs, _DKSyncPeer;
+#import <CoreDuet/_DKSyncRemoteStorage-Protocol.h>
+
+@class NSArray, NSDate, _DKSyncDeletedEventIDs, _DKSyncPeer;
 @protocol _DKSyncRemoteKnowledgeStorageFetchDelegate;
 
-@protocol _DKSyncRemoteKnowledgeStorage
-
-@property (readonly) BOOL isAvailable;
-
-- (void)cancelOutstandingOperations;
+@protocol _DKSyncRemoteKnowledgeStorage <_DKSyncRemoteStorage>
 - (void)clearPrewarmedFlag;
 - (void)fetchAdditionsHighWaterMarkWithPeer:(_DKSyncPeer *)arg1 highPriority:(BOOL)arg2 completion:(void (^)(NSDate *, NSError *))arg3;
 - (void)fetchDeletedEventIDsFromPeer:(_DKSyncPeer *)arg1 sinceDate:(NSDate *)arg2 streamNames:(NSArray *)arg3 limit:(unsigned long long)arg4 highPriority:(BOOL)arg5 completion:(void (^)(NSArray *, NSDate *, NSError *))arg6;
 - (void)fetchDeletionsHighWaterMarkWithPeer:(_DKSyncPeer *)arg1 highPriority:(BOOL)arg2 completion:(void (^)(NSDate *, NSError *))arg3;
-- (void)fetchEventsFromPeer:(_DKSyncPeer *)arg1 creationDateBetweenDate:(NSDate *)arg2 andDate:(NSDate *)arg3 streamNames:(NSArray *)arg4 limit:(unsigned long long)arg5 fetchOrder:(long long)arg6 highPriority:(BOOL)arg7 completion:(void (^)(NSArray *, NSDate *, NSDate *, NSError *))arg8;
-- (void)fetchSourceDeviceIDFromPeer:(_DKSyncPeer *)arg1 highPriority:(BOOL)arg2 completion:(void (^)(NSUUID *, NSError *))arg3;
+- (void)fetchEventsFromPeer:(_DKSyncPeer *)arg1 windows:(NSArray *)arg2 streamNames:(NSArray *)arg3 limit:(unsigned long long)arg4 fetchOrder:(long long)arg5 highPriority:(BOOL)arg6 completion:(void (^)(NSArray *, NSArray *, NSError *))arg7;
 - (BOOL)hasAdditionsFlagForPeer:(_DKSyncPeer *)arg1;
 - (BOOL)hasDeletionsFlagForPeer:(_DKSyncPeer *)arg1;
-- (NSString *)name;
 - (void)prewarmFetchWithCompletion:(void (^)(NSError *))arg1;
 - (void)setFetchDelegate:(id<_DKSyncRemoteKnowledgeStorageFetchDelegate>)arg1;
 - (void)setHasAdditionsFlag:(BOOL)arg1 forPeer:(_DKSyncPeer *)arg2;
 - (void)setHasDeletionsFlag:(BOOL)arg1 forPeer:(_DKSyncPeer *)arg2;
-- (void)start;
-- (long long)transportType;
 - (void)updateStorageWithAddedEvents:(NSArray *)arg1 deletedEventIDs:(_DKSyncDeletedEventIDs *)arg2 highPriority:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

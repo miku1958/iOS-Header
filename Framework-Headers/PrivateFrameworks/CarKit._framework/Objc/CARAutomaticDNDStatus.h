@@ -6,21 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue;
+@class NSXPCConnection;
 
 @interface CARAutomaticDNDStatus : NSObject
 {
     unsigned long long _cachedAutomaticDNDActiveState;
     CDUnknownBlockType _statusChangeObserver;
     CDUnknownBlockType _exitConfirmationChangeObserver;
-    NSObject<OS_dispatch_queue> *_automaticDNDQueue;
+    NSXPCConnection *_connection;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *automaticDNDQueue; // @synthesize automaticDNDQueue=_automaticDNDQueue;
 @property (readonly, nonatomic) unsigned long long cachedAutomaticDNDActiveState; // @synthesize cachedAutomaticDNDActiveState=_cachedAutomaticDNDActiveState;
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (copy, nonatomic) CDUnknownBlockType exitConfirmationChangeObserver; // @synthesize exitConfirmationChangeObserver=_exitConfirmationChangeObserver;
 @property (copy, nonatomic) CDUnknownBlockType statusChangeObserver; // @synthesize statusChangeObserver=_statusChangeObserver;
 
++ (id)automaticDNDQueue;
 - (void).cxx_destruct;
 - (void)_completeDNDBuddyWithOption:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_detachObservers;
@@ -28,12 +29,14 @@
 - (void)_notifyExitConfirmationActive:(BOOL)arg1;
 - (void)_performCARPreferencesBlock:(CDUnknownBlockType)arg1 forReading:(BOOL)arg2;
 - (void)_resetUserDNDSettingsWithReply:(CDUnknownBlockType)arg1;
+- (void)_setupConnection;
 - (void)_xpcFetchWithServiceBlock:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)allowedAutoReplyAudience:(CDUnknownBlockType)arg1;
 - (void)autoReplyMessageWithReply:(CDUnknownBlockType)arg1;
 - (id)automaticDNDInternalAutoReplyWhitelist;
 - (unsigned long long)automaticDNDTriggeringMethod;
 - (void)dealloc;
+- (void)disableDNDUntilEndOfDriveWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)disableDNDUntilEndOfDriveWithReply:(CDUnknownBlockType)arg1;
 - (id)disableTimerTimestamp;
 - (void)fetchAutomaticDNDAssertionWithReply:(CDUnknownBlockType)arg1;
@@ -53,6 +56,7 @@
 - (void)outputOfDiagnosticUtilityWithReply:(CDUnknownBlockType)arg1;
 - (BOOL)platformSupportsSendingAutoReplies;
 - (BOOL)platformSupportsUrgentMessages;
+- (void)setActivateWithCarPlay:(BOOL)arg1;
 - (void)setAllowedAutoReplyAudience:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAutoReplyMessage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAutomaticDNDActive:(BOOL)arg1 withReply:(CDUnknownBlockType)arg2;
@@ -70,6 +74,7 @@
 - (void)setMostRecentTriggerMethodChange:(double)arg1;
 - (void)setOptedOutOfAutomaticDND:(BOOL)arg1;
 - (void)setStartedFirstRidePreference:(BOOL)arg1;
+- (BOOL)shouldActivateWithCarPlay;
 - (BOOL)shouldEnforceInternalWhitelist;
 
 @end

@@ -18,6 +18,7 @@
 }
 
 @property (strong) NSDate *date; // @synthesize date=_date;
+@property (readonly) double timeIntervalSinceNow;
 @property unsigned long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;

@@ -6,17 +6,21 @@
 
 #import <NetworkExtension/NEFileHandle.h>
 
-@class NSNumber, NSUUID;
+@class NSNumber, NSString, NSUUID;
 
 @interface NENetworkAgentRegistrationFileHandle : NEFileHandle
 {
     NSNumber *_sessionType;
     NSUUID *_configurationIdentifier;
     NSUUID *_agentUUID;
+    NSString *_name;
+    unsigned long long _agentFlags;
 }
 
+@property unsigned long long agentFlags; // @synthesize agentFlags=_agentFlags;
 @property (readonly) NSUUID *agentUUID; // @synthesize agentUUID=_agentUUID;
 @property (readonly) NSUUID *configurationIdentifier; // @synthesize configurationIdentifier=_configurationIdentifier;
+@property (readonly) NSString *name; // @synthesize name=_name;
 @property (readonly) NSNumber *sessionType; // @synthesize sessionType=_sessionType;
 
 - (void).cxx_destruct;
@@ -24,6 +28,7 @@
 - (id)dictionary;
 - (id)initFromDictionary:(id)arg1;
 - (id)initWithNetworkAgentRegistration:(id)arg1 sessionType:(id)arg2 configurationIdentifier:(id)arg3 agentUUID:(id)arg4;
+- (id)initWithNetworkAgentRegistration:(id)arg1 sessionType:(id)arg2 configurationIdentifier:(id)arg3 agentUUID:(id)arg4 name:(id)arg5;
 - (unsigned long long)type;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAServerBoundCommand-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface SATTSStartSpeechSynthesisRequest : SABaseCommand <SAServerBoundCommand>
 {
@@ -22,10 +22,13 @@
 @property (copy, nonatomic) NSString *gender;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *languageCode;
+@property (copy, nonatomic) NSString *quality;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
+@property (copy, nonatomic) NSDictionary *speakableContextInfo;
 @property (nonatomic) BOOL streaming;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) NSString *voiceName;
 
 + (id)startSpeechSynthesisRequest;
 + (id)startSpeechSynthesisRequestWithDictionary:(id)arg1 context:(id)arg2;

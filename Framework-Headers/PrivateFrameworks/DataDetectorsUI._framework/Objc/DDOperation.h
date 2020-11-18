@@ -19,11 +19,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _types;
     struct __DDScanQuery *_query;
     NSArray *_results;
-    BOOL _isCurrentlyUsingTheScanner;
     BOOL _isDiscarded;
     int _tryCount;
     int _containerNotReadyTryCount;
     NSDictionary *_context;
+    long long _jobIdentifier;
     BOOL _ignoreSignatures;
 }
 
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 @property int tryCount; // @synthesize tryCount=_tryCount;
 
 + (BOOL)_needsFullScannerForDetectionTypes:(unsigned long long)arg1;
-+ (struct __DDScanner *)_sharedScannerForTypes:(unsigned long long)arg1;
 + (CDUnknownBlockType)shouldUrlifyBlockForTypes:(unsigned long long)arg1;
 + (CDUnknownBlockType)urlificationBlockForTypes:(unsigned long long)arg1;
 - (void).cxx_destruct;

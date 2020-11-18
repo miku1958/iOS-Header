@@ -17,6 +17,7 @@
     struct {
         unsigned int radioType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _radioType;
     _INPBString *_channel;
     _INPBDouble *_frequency;
@@ -25,6 +26,7 @@
     _INPBString *_stationName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBString *channel; // @synthesize channel=_channel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -42,10 +44,13 @@
 @property (strong, nonatomic) _INPBString *stationName; // @synthesize stationName=_stationName;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsRadioType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)radioTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;

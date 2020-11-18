@@ -6,43 +6,33 @@
 
 #import <EventKitUI/EKEventDetailItem.h>
 
-#import <EventKitUI/MKMapViewDelegate-Protocol.h>
+@class CLLocation, EKEventMapCell, MKMapItemView, UIView;
 
-@class CLLocation, MKMapView, NSString, UITableViewCell, UIView;
-
-@interface EKEventMapDetailItem : EKEventDetailItem <MKMapViewDelegate>
+@interface EKEventMapDetailItem : EKEventDetailItem
 {
-    UITableViewCell *_cell;
-    MKMapView *_mapView;
-    UIView *_overlayView;
+    EKEventMapCell *_cell;
+    MKMapItemView *_mapView;
     UIView *_loadingView;
     CLLocation *_location;
-    UITableViewCell *_oldCell;
+    EKEventMapCell *_oldCell;
+    BOOL _animationHasRan;
     BOOL _hasMapItemLaunchOptionFromTimeToLeaveNotification;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
-+ (id)_locationStringForStructuredLocation:(id)arg1;
-+ (id)_mapsURLForLocationOnEvent:(id)arg1 hasMapItemLaunchOptionFromTimeToLeaveNotification:(BOOL)arg2;
 - (void).cxx_destruct;
+- (void)_animateMapIfNeededWithPresentingController:(id)arg1 presentingView:(id)arg2;
+- (void)_loadMapItem:(id)arg1 withCoordinateSpan:(CDStruct_c3b9c2ee)arg2;
+- (CDStruct_c3b9c2ee)_makeSpanWithCoordinate:(struct CLLocationCoordinate2D)arg1 radius:(double)arg2 minRadius:(double)arg3;
 - (double)_mapHeight;
 - (id)_mapRelatedViewConstraintsForMapRelatedView:(id)arg1 inCell:(id)arg2;
-- (void)_setupMapView;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
-- (void)eventViewController:(id)arg1 didHighlightSubitem:(unsigned long long)arg2;
-- (void)eventViewController:(id)arg1 didSelectReadOnlySubitem:(unsigned long long)arg2;
-- (void)eventViewController:(id)arg1 didUnhighlightSubitem:(unsigned long long)arg2;
-- (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
-- (void)mapViewDidFinishRenderingMap:(id)arg1 fullyRendered:(BOOL)arg2;
-- (void)mapViewWillStartRenderingMap:(id)arg1;
+- (void)eventViewController:(id)arg1 tableViewDidScroll:(id)arg2;
 - (void)reset;
+- (void)setupMapView;
 
 @end
 

@@ -26,7 +26,7 @@
 
 + (BOOL)_isPlayerInstalled;
 - (void).cxx_destruct;
-- (id)_init;
+- (id)_initWithClientIdentifier:(id)arg1;
 - (id)_mutableQueueFromTracklist:(id)arg1 mediaToResponseItemMap:(id *)arg2;
 - (id)_onAccessQueue_beginQueueTransactionWithCompletionHandler:(CDUnknownBlockType)arg1 usingSemaphore:(id)arg2;
 - (void)_onAccessQueue_endQueueTransactionWithTracklist:(id)arg1 forReason:(long long)arg2 error:(id)arg3;

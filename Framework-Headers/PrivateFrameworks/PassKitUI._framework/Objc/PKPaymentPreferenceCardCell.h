@@ -13,6 +13,7 @@
     BOOL _isRightToLeft;
     UIImageView *_cardArtView;
     UIStackView *_stackView;
+    UIColor *_subTextLabelColorOverride;
     BOOL _showBillingAddress;
     BOOL _dimCardArt;
     PKPaymentPass *_pass;

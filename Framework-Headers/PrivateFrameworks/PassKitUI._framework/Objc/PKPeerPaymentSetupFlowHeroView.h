@@ -19,7 +19,9 @@
 - (void).cxx_destruct;
 - (BOOL)_bubbleIsOnLeftSide;
 - (id)_defaultCurrencyAmount;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (BOOL)_shouldShowBubbleView;
+- (void)_updateImageViewDynamicColors;
 - (id)initWithPeerPaymentPassSnapShot:(id)arg1 peerPaymentCredential:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

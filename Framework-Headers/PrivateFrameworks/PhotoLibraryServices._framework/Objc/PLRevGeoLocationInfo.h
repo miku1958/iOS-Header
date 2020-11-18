@@ -6,43 +6,54 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PLRevGeoCompoundNameInfo;
-@protocol GEOMapItemPrivate;
+#import <PhotoLibraryServices/NSSecureCoding-Protocol.h>
 
-@interface PLRevGeoLocationInfo : NSObject
+@class CNPostalAddress, NSString, PLRevGeoCompoundNameInfo, PLRevGeoMapItem;
+
+@interface PLRevGeoLocationInfo : NSObject <NSSecureCoding>
 {
-    BOOL _isValid;
     BOOL _isHome;
-    id<GEOMapItemPrivate> _geoMapItem;
+    PLRevGeoMapItem *_mapItem;
+    CNPostalAddress *_postalAddress;
+    NSString *_addressString;
+    NSString *_countryCode;
+    NSString *_geoServiceProvider;
     PLRevGeoCompoundNameInfo *_compoundNameInfo;
     PLRevGeoCompoundNameInfo *_compoundSecondaryNameInfo;
-    NSString *_providerId;
-    unsigned long long _providerVersion;
 }
 
-@property (strong, nonatomic) PLRevGeoCompoundNameInfo *compoundNameInfo; // @synthesize compoundNameInfo=_compoundNameInfo;
-@property (strong, nonatomic) PLRevGeoCompoundNameInfo *compoundSecondaryNameInfo; // @synthesize compoundSecondaryNameInfo=_compoundSecondaryNameInfo;
-@property (readonly, copy, nonatomic) NSString *countryCode;
-@property (strong, nonatomic) id<GEOMapItemPrivate> geoMapItem; // @synthesize geoMapItem=_geoMapItem;
-@property (readonly, nonatomic) BOOL hasLocation;
+@property (readonly, nonatomic) NSString *addressString; // @synthesize addressString=_addressString;
+@property (readonly, nonatomic) PLRevGeoCompoundNameInfo *compoundNameInfo; // @synthesize compoundNameInfo=_compoundNameInfo;
+@property (readonly, nonatomic) PLRevGeoCompoundNameInfo *compoundSecondaryNameInfo; // @synthesize compoundSecondaryNameInfo=_compoundSecondaryNameInfo;
+@property (readonly, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (readonly, nonatomic) NSString *geoServiceProvider; // @synthesize geoServiceProvider=_geoServiceProvider;
 @property (nonatomic) BOOL isHome; // @synthesize isHome=_isHome;
-@property (readonly, nonatomic) BOOL isValid; // @synthesize isValid=_isValid;
-@property (strong, nonatomic) NSString *providerId; // @synthesize providerId=_providerId;
-@property (nonatomic) unsigned long long providerVersion; // @synthesize providerVersion=_providerVersion;
+@property (readonly, nonatomic) PLRevGeoMapItem *mapItem; // @synthesize mapItem=_mapItem;
+@property (readonly, nonatomic) CNPostalAddress *postalAddress; // @synthesize postalAddress=_postalAddress;
 
++ (id)_namingOrderForAssetDetailedReverseGeoDescription;
 + (id)_namingOrderForAssetReverseGeoDescription;
 + (id)_newRevGeoLocationInfoFromData:(id)arg1;
-+ (unsigned long long)currentVersion;
-+ (BOOL)isValidFromData:(id)arg1;
++ (id)countryCodeWithGEOMapItem:(id)arg1;
++ (id)infoFromPlistData:(id)arg1;
++ (BOOL)isInvalidWithCoder:(id)arg1;
++ (BOOL)isInvalidWithPlistData:(id)arg1;
 + (id)newDataFromRevGeoLocationInfo:(id)arg1;
-+ (unsigned long long)qualityTypeForPointInCountryCode:(id)arg1 withDataProviderId:(id)arg2;
-+ (CDUnknownBlockType)sortedNameAndAreaInfoComparatorWithHomeAtEnd:(BOOL)arg1;
-- (void)_addNameInfo:(id)arg1 inPlaceInfoMap:(id)arg2 totalPlaceCount:(long long *)arg3;
-- (id)dataForInfo;
-- (void)dealloc;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)description;
-- (id)initWithData:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasLocation;
+- (BOOL)hasMapItem;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithGEOMapItem:(id)arg1;
+- (id)initWithMapItem:(id)arg1 postalAddress:(id)arg2 addressString:(id)arg3 countryCode:(id)arg4 compoundNameInfo:(id)arg5 compoundSecondaryNameInfo:(id)arg6 isHome:(BOOL)arg7 geoServiceProvider:(id)arg8;
+- (BOOL)isEqual:(id)arg1;
 - (id)localizedDescription;
+- (BOOL)locationWasResolvedWithBestRevGeoProvider;
+- (id)placeNamesForLocalizedDetailedDescription;
+- (id)placeWithAnnotation:(id)arg1;
+- (id)plistData;
 
 @end
 

@@ -11,6 +11,8 @@
 @protocol PUActivityViewControllerDelegate <NSObject>
 
 @optional
+- (void)activityViewControllerDidChangeToSharingStyleExpanded:(PUActivityViewController *)arg1;
 - (BOOL)activityViewControllerShouldCancelAfterPreparationCanceled:(PUActivityViewController *)arg1;
+- (void)activityViewControllerWillDisappear:(PUActivityViewController *)arg1;
 @end
 

@@ -7,27 +7,29 @@
 #import <ScreenTimeUI/STRootGroupSpecifierProvider.h>
 
 #import <ScreenTimeUI/AAUISignInControllerDelegate-Protocol.h>
+#import <ScreenTimeUI/MCProfileConnectionObserver-Protocol.h>
 
-@class CATNetworkReachability, NSString, PSSpecifier;
+@class NSString, PSSpecifier;
 
-@interface STSignInToiCloudGroupSpecifierProvider : STRootGroupSpecifierProvider <AAUISignInControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface STSignInToiCloudGroupSpecifierProvider : STRootGroupSpecifierProvider <AAUISignInControllerDelegate, MCProfileConnectionObserver>
 {
     PSSpecifier *_signInSpecifier;
-    CATNetworkReachability *_networkReachability;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CATNetworkReachability *networkReachability; // @synthesize networkReachability=_networkReachability;
 @property (strong, nonatomic) PSSpecifier *signInSpecifier; // @synthesize signInSpecifier=_signInSpecifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_updateEnabledValue;
 - (void)dealloc;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)presentAppleAccountSignInController:(id)arg1;
+- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (void)setCoordinator:(id)arg1;
 - (void)signInController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)signInControllerDidCancel:(id)arg1;

@@ -10,12 +10,14 @@
 {
 }
 
++ (Class)alternateUniverseClass;
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 - (id)address;
-- (id)addressBookEntityID;
 - (id)alarmOwner;
 - (id)calendarItemOwner;
+- (id)contactLabel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)derivedFrom;
 - (id)description;
@@ -28,9 +30,9 @@
 - (id)routing;
 - (id)semanticIdentifier;
 - (void)setAddress:(id)arg1;
-- (void)setAddressBookEntityID:(id)arg1;
 - (void)setAlarmOwner:(id)arg1;
 - (void)setCalendarItemOwner:(id)arg1;
+- (void)setContactLabel:(id)arg1;
 - (void)setDerivedFrom:(id)arg1;
 - (void)setLatitude:(id)arg1;
 - (void)setLongitude:(id)arg1;

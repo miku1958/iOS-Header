@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GeoServices/NSObject-Protocol.h>
+#import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
 
 @class GEOMapServiceTraits, NSDictionary;
 
-@protocol GEOMapServiceSearchFieldPlaceholderTicket <NSObject>
+@protocol GEOMapServiceSearchFieldPlaceholderTicket <GEOMapServiceCancellableTicket>
 
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;

@@ -14,17 +14,21 @@
 {
     BOOL _enablePropertyModificationLogging;
     BOOL _unitTesting;
+    BOOL _allowDelegateSources;
     int _databaseInitOptions;
     int _management;
     CADChangeTrackingClientId *_changeTrackingClientId;
+    NSString *_managementBundleIdentifier;
     NSString *_databasePath;
 }
 
+@property (nonatomic) BOOL allowDelegateSources; // @synthesize allowDelegateSources=_allowDelegateSources;
 @property (strong, nonatomic) CADChangeTrackingClientId *changeTrackingClientId; // @synthesize changeTrackingClientId=_changeTrackingClientId;
 @property (nonatomic) int databaseInitOptions; // @synthesize databaseInitOptions=_databaseInitOptions;
 @property (strong, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
 @property (nonatomic) BOOL enablePropertyModificationLogging; // @synthesize enablePropertyModificationLogging=_enablePropertyModificationLogging;
 @property (nonatomic) int management; // @synthesize management=_management;
+@property (strong, nonatomic) NSString *managementBundleIdentifier; // @synthesize managementBundleIdentifier=_managementBundleIdentifier;
 @property (nonatomic) BOOL unitTesting; // @synthesize unitTesting=_unitTesting;
 
 + (BOOL)supportsSecureCoding;

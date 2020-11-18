@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class BSDispatchSource;
+#import <BaseBoard/BSTimer-Protocol.h>
+
+@class BSDispatchSource, NSString;
 @protocol OS_dispatch_queue;
 
-@interface BSTimer : NSObject
+@interface BSTimer : NSObject <BSTimer>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callOutQueue;
@@ -24,11 +26,15 @@
     BOOL _scheduled;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long fireCount; // @synthesize fireCount=_fireCount;
 @property (readonly, nonatomic) double fireInterval; // @synthesize fireInterval=_fireInterval;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double repeatInterval; // @synthesize repeatInterval=_repeatInterval;
 @property (readonly, nonatomic, getter=isScheduled) BOOL scheduled; // @synthesize scheduled=_scheduled;
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
+@property (readonly) Class superclass;
 
 + (id)scheduledTimerWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;

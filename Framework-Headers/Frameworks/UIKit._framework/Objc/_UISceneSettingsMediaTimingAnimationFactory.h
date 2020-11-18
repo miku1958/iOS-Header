@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
+- (BOOL)_shouldAnimateAdditivelyForView:(id)arg1 withKeyPath:(id)arg2;
 
 @end
 

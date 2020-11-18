@@ -25,6 +25,7 @@
     BOOL _isInitiator;
     long long _linkProtocol;
     struct sockaddr_storage _serverAddress;
+    struct sockaddr_storage _serverAddressIPv6;
     NSString *_groupID;
     NSString *_stableGroupID;
     NSUUID *_defaultDeviceLocalCBUUID;
@@ -54,7 +55,8 @@
 @property (readonly) NSString *relaySessionID; // @synthesize relaySessionID=_relaySessionID;
 @property (readonly) NSData *relaySessionKey; // @synthesize relaySessionKey=_relaySessionKey;
 @property (readonly) NSData *relaySessionToken; // @synthesize relaySessionToken=_relaySessionToken;
-@property (readonly) const struct sockaddr *serverAddress;
+@property (readonly) const struct sockaddr_storage *serverAddress;
+@property (readonly) const struct sockaddr_storage *serverAddressIPv6;
 @property (readonly) NSData *softwareData; // @synthesize softwareData=_softwareData;
 @property (readonly) NSString *stableGroupID; // @synthesize stableGroupID=_stableGroupID;
 @property (readonly) NSArray *subscribedStreams; // @synthesize subscribedStreams=_subscribedStreams;

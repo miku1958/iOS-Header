@@ -12,7 +12,6 @@
 {
     BOOL __contentViewsOpaque;
     BOOL __timeViewBehindContentView;
-    UIView *_contentView;
     UIView *_dialComplicationContainerView;
     UIView *_zoomingClippingView;
     UIView *_borrowedCircleView;
@@ -24,39 +23,36 @@
 @property (nonatomic, setter=_setTimeViewBehindContentView:) BOOL _timeViewBehindContentView; // @synthesize _timeViewBehindContentView=__timeViewBehindContentView;
 @property (weak, nonatomic) UIView *borrowedCircleView; // @synthesize borrowedCircleView=_borrowedCircleView;
 @property (weak, nonatomic) UIView *borrowedHandsView; // @synthesize borrowedHandsView=_borrowedHandsView;
-@property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) UIView *dialComplicationContainerView; // @synthesize dialComplicationContainerView=_dialComplicationContainerView;
 @property (nonatomic) double maxZoomingIconDiameter; // @synthesize maxZoomingIconDiameter=_maxZoomingIconDiameter;
 @property (strong, nonatomic) NTKAnalogHandsView *timeView; // @dynamic timeView;
 @property (strong, nonatomic) UIView *zoomingClippingView; // @synthesize zoomingClippingView=_zoomingClippingView;
 
-+ (void)_prewarmForDevice:(id)arg1;
 + (Class)_timeViewClass;
 - (void).cxx_destruct;
 - (void)_applyDataMode;
 - (void)_applyShowContentForUnadornedSnapshot;
 - (long long)_backgroundedTimeViewEditModes;
-- (void)_bringForegroundViewsToFront;
 - (BOOL)_canStartTimeScrubbing;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
 - (id)_complicationContainerViewForSlot:(id)arg1;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (struct CGPoint)_contentCenterOffset;
+- (void)_createTimeViewIfNecessary;
 - (struct CGPoint)_dateComplicationCenterOffset;
 - (struct CGPoint)_dateComplicationRightAlignment;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleLocaleDidChange;
+- (BOOL)_isAnalog;
 - (BOOL)_isComplicationSlotInsideDial:(id)arg1;
 - (void)_loadContentToReplaceUnadornedSnapshot;
 - (void)_loadSnapshotContentViews;
 - (BOOL)_needsForegroundContainerView;
 - (void)_prepareForEditing;
-- (void)_prepareTimeViewForReuse:(id)arg1;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
-- (void)_reuseTimeView;
 - (void)_scrubToDate:(id)arg1 animated:(BOOL)arg2;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (BOOL)_shouldRasterizeForegroundContainerViewForEditMode:(long long)arg1;
@@ -68,6 +64,7 @@
 - (void)_unloadSnapshotContentViews;
 - (void)_updateDateComplicationPositionIfNecessary;
 - (BOOL)_usesCustomZoom;
+- (BOOL)_wantsConstantSpeedZoom;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
 - (void)dealloc;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;

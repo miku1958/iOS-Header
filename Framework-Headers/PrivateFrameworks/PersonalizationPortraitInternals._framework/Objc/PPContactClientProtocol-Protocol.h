@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
+
 @class NSArray, NSError;
 
-@protocol PPContactClientProtocol
+@protocol PPContactClientProtocol <PPFeedbackAccepting>
 - (void)contactNameRecordBatch:(NSArray *)arg1 isLast:(BOOL)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(BOOL))arg5;
 - (void)contactNameRecordChangesBatch:(NSArray *)arg1 isLast:(BOOL)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(BOOL))arg5;
+- (void)rankedContactsBatch:(NSArray *)arg1 isLast:(BOOL)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(BOOL))arg5;
 @end
 

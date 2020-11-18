@@ -9,7 +9,7 @@
 #import <QuickLook/QLTransitionControllerProtocol-Protocol.h>
 #import <QuickLook/UIViewControllerAnimatedTransitioning-Protocol.h>
 
-@class NSString, QLPreviewController, QLTransitionContext, UINavigationController, UIView, UIViewController;
+@class NSDate, NSString, QLPreviewController, QLTransitionContext, UINavigationController, UIView, UIViewController;
 @protocol QLCustomTransitioning, UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
@@ -19,22 +19,26 @@ __attribute__((visibility("hidden")))
     UINavigationController *_disabledNavigationController;
     CDUnknownBlockType _startTransitionBlock;
     BOOL _showing;
+    BOOL _hasPerformedTransition;
     QLTransitionContext *_quickLookTransitionContext;
     UIViewController<QLCustomTransitioning> *_animatedController;
     id<UIViewControllerContextTransitioning> _transitionContext;
     id _transitionDriver;
     double _duration;
     unsigned long long _transitionState;
+    NSDate *_setupDate;
 }
 
 @property (readonly) UIViewController<QLCustomTransitioning> *animatedController; // @synthesize animatedController=_animatedController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property double duration; // @synthesize duration=_duration;
+@property (nonatomic) BOOL hasPerformedTransition; // @synthesize hasPerformedTransition=_hasPerformedTransition;
 @property (readonly) unsigned long long hash;
 @property (readonly) UIViewController *presenterViewController;
 @property (readonly) QLPreviewController *previewController;
 @property (strong) QLTransitionContext *quickLookTransitionContext; // @synthesize quickLookTransitionContext=_quickLookTransitionContext;
+@property (strong, nonatomic) NSDate *setupDate; // @synthesize setupDate=_setupDate;
 @property BOOL showing; // @synthesize showing=_showing;
 @property (readonly) Class superclass;
 @property (weak) id<UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
@@ -44,8 +48,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_completeBackgroundTransition:(BOOL)arg1;
 - (void)_completeOverlayTransition:(BOOL)arg1;
+- (void)_performForcedDismissal;
 - (void)_performStartBlockIfNeeded;
 - (void)_performTransition;
+- (void)_prepareTimedForcedDismissal;
 - (CDStruct_3ea018b0)_requiredVisualStateTransitions;
 - (void)_updateBackgroundTransitionWithProgress:(double)arg1;
 - (void)_updateOverlayTransitionWithProgress:(double)arg1;
@@ -53,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)animateTransition:(id)arg1;
 - (void)completeTransition:(BOOL)arg1;
 - (void)completeTransition:(BOOL)arg1 withDuration:(double)arg2;
+- (BOOL)forceDismissalIfNeeded;
 - (void)setUpWithTransitionContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)tearDownTransition:(BOOL)arg1;
 - (double)transitionDuration:(id)arg1;

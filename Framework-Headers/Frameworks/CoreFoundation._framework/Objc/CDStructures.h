@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class _CFXNotificationRegistrationBase;
+@class NSMutableArray, _CFXNotificationRegistrationBase;
 
 #pragma mark Function Pointers and Blocks
 
@@ -57,11 +57,30 @@ struct _NSRange {
 
 struct __CFArray;
 
+struct __CFDateComponents {
+    struct __CFRuntimeBase _field1;
+    struct __CFCalendar *_field2;
+    struct __CFTimeZone *_field3;
+    long long _field4;
+    long long _field5;
+    long long _field6;
+    long long _field7;
+    long long _field8;
+    long long _field9;
+    long long _field10;
+    long long _field11;
+    long long _field12;
+    long long _field13;
+    long long _field14;
+    long long _field15;
+    long long _field16;
+    long long _field17;
+    long long _field18;
+    long long _field19;
+};
+
 struct __CFPasteboard {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
+    struct __CFRuntimeBase _field1;
     struct __CFString *_field2;
     id _field3;
     struct __CFUUID *_field4;
@@ -69,10 +88,16 @@ struct __CFPasteboard {
     unsigned char _field6;
     id _field7;
     id _field8;
-    unsigned char _field9;
+    _Atomic unsigned long long _field9;
     unsigned char _field10;
     unsigned char _field11;
     unsigned char _field12;
+    unsigned char _field13;
+};
+
+struct __CFRuntimeBase {
+    unsigned long long _field1;
+    _Atomic unsigned long long _field2;
 };
 
 struct __cfobservers_t {
@@ -96,11 +121,6 @@ struct edge {
     unsigned long long _field1;
     unsigned long long _field2[2];
     unsigned long long _field3;
-};
-
-struct os_lock_handoff_s {
-    struct _os_lock_type_handoff_s *osl_type;
-    unsigned long long _osl_handoff_opaque[1];
 };
 
 struct os_unfair_lock_s {
@@ -158,11 +178,16 @@ typedef struct {
 } CDStruct_912cb5d2;
 
 typedef struct {
-    struct NSMethodFrameArgInfo *_field1;
-    struct NSMethodFrameArgInfo *_field2;
-    unsigned int _field3;
-    unsigned int _field4;
-} CDStruct_52991635;
+    struct NSMethodFrameArgInfo *retInfo;
+    struct NSMethodFrameArgInfo *argInfo;
+    unsigned int numArgs;
+    unsigned int frameSize;
+} CDStruct_b48d777a;
+
+typedef struct {
+    struct __CFBasicHash *set;
+    NSMutableArray *array;
+} CDStruct_2595eaee;
 
 typedef struct {
     int _field1;
@@ -212,12 +237,17 @@ typedef struct {
         } ;
         struct {
             unsigned int muts;
+            unsigned int other;
+        } ;
+        struct {
+            unsigned int mutbits:31;
+            unsigned int copyKeys:1;
             unsigned int used:25;
             unsigned int kvo:1;
             unsigned int szidx:6;
         } ;
     } state;
-} CDStruct_2af495fa;
+} CDStruct_bc24fd1e;
 
 typedef struct {
     id *list;

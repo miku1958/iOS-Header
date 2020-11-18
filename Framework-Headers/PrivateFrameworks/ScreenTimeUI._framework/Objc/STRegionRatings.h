@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface STRegionRatings : NSObject
 {
     NSDictionary *_ratingsPlist;
 }
 
+@property (readonly, copy) NSArray *localizedRegionAndCodePairs;
 @property (readonly, copy) NSDictionary *localizedRegionsByCode;
 @property (readonly, copy) NSString *preferredRegion;
 @property (readonly) NSDictionary *ratingsPlist; // @synthesize ratingsPlist=_ratingsPlist;

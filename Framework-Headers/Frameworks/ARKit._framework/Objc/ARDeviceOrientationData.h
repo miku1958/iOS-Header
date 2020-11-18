@@ -6,28 +6,38 @@
 
 #import <objc/NSObject.h>
 
+#import <ARKit/ARDictionaryCoding-Protocol.h>
+#import <ARKit/ARMetadataWrapperCoding-Protocol.h>
 #import <ARKit/ARMutableSensorData-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class CMDeviceMotion, NSString;
 
-@interface ARDeviceOrientationData : NSObject <ARMutableSensorData, NSSecureCoding>
+@interface ARDeviceOrientationData : NSObject <ARDictionaryCoding, ARMetadataWrapperCoding, ARMutableSensorData, NSSecureCoding>
 {
+    CMDeviceMotion *_deviceMotion;
     double _timestamp;
     CDStruct_2d7b3170 _rotationMatrix;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CMDeviceMotion *deviceMotion; // @synthesize deviceMotion=_deviceMotion;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) CDStruct_2d7b3170 rotationMatrix; // @synthesize rotationMatrix=_rotationMatrix;
+@property (readonly, nonatomic) CDStruct_14d5dc5e rotationMatrixENU;
 @property (readonly) Class superclass;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)encodeToDictionary;
+- (id)encodeToMetadataWrapper;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithMetadataWrapper:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

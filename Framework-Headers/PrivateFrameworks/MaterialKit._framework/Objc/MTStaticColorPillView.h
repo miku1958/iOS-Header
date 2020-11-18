@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)backgroundColor:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 settings:(id)arg2;
 - (void)setBackgroundColor:(id)arg1;
 
 @end

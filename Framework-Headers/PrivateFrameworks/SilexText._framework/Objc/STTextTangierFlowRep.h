@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
+- (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityNextTextNavigationElement;
 - (id)accessibilityPreviousTextNavigationElement;
 - (BOOL)accessibilitySupportsTextSelection;
@@ -43,12 +44,12 @@
 - (BOOL)forceTiling;
 - (id)hitRep:(struct CGPoint)arg1 withGesture:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (id)interactiveCanvasController;
+- (BOOL)isAccessibilityElement;
 - (id)itemsForCustomRotor:(id)arg1;
 - (id)orderedSiblings;
 - (BOOL)p_doesRep:(id)arg1 containCharIndex:(unsigned long long)arg2 isStart:(BOOL)arg3;
 - (BOOL)preventClipToColumn;
 - (id)repForCharIndex:(unsigned long long)arg1 isStart:(BOOL)arg2;
-- (BOOL)shouldBeginEditingWithGesture:(id)arg1;
 - (id)siblings;
 - (id)storage;
 - (id)supportedCustomRotors;

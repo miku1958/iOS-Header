@@ -8,27 +8,38 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOLogMsgEventListInteractionSession : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_listResultItems;
-    int _listType;
     NSString *_searchString;
+    int _listType;
     struct {
-        unsigned int listType:1;
-    } _has;
+        unsigned int has_listType:1;
+        unsigned int read_listResultItems:1;
+        unsigned int read_searchString:1;
+        unsigned int wrote_listResultItems:1;
+        unsigned int wrote_searchString:1;
+        unsigned int wrote_listType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasListType;
 @property (readonly, nonatomic) BOOL hasSearchString;
-@property (strong, nonatomic) NSMutableArray *listResultItems; // @synthesize listResultItems=_listResultItems;
-@property (nonatomic) int listType; // @synthesize listType=_listType;
-@property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
+@property (strong, nonatomic) NSMutableArray *listResultItems;
+@property (nonatomic) int listType;
+@property (strong, nonatomic) NSString *searchString;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)listResultItemType;
 - (void).cxx_destruct;
 - (int)StringAsListType:(id)arg1;
+- (void)_addNoFlagsListResultItem:(id)arg1;
+- (void)_readListResultItems;
+- (void)_readSearchString;
 - (void)addListResultItem:(id)arg1;
 - (void)clearListResultItems;
 - (void)copyTo:(id)arg1;
@@ -41,6 +52,7 @@
 - (unsigned long long)listResultItemsCount;
 - (id)listTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

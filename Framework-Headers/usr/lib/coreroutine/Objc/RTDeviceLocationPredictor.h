@@ -6,55 +6,44 @@
 
 #import <coreroutine/RTService.h>
 
-#import <coreroutine/RTNextPredictedLocationsOfInterestCacheDelegate-Protocol.h>
 #import <coreroutine/RTPurgable-Protocol.h>
 
-@class NSArray, NSDate, NSMutableArray, NSObject, NSString, RTDataProtectionManager, RTDefaultsManager, RTEventManager, RTLearnedLocationManager, RTLocationManager, RTMapServiceManager, RTMapsSupportManager, RTMetricManager, RTNextPredictedLocationsOfInterestCache, RTPlatform, RTVehicleLocationProvider;
+@class NSArray, NSMutableArray, NSObject, NSSet, NSString, RTDefaultsManager, RTDistanceCalculator, RTLearnedLocationManager, RTLocationManager, RTMapServiceManager, RTMetricManager, RTNextPredictedLocationsOfInterestCache, RTPlatform;
 @protocol OS_dispatch_source;
 
-@interface RTDeviceLocationPredictor : RTService <RTNextPredictedLocationsOfInterestCacheDelegate, RTPurgable>
+@interface RTDeviceLocationPredictor : RTService <RTPurgable>
 {
     BOOL _encryptedDataAvailabilityNotificationNeeded;
-    BOOL _monitorNextPredictedLocationsOfInterest;
     BOOL _pendingNextPredictedLocationsOfInterestRequest;
-    RTPlatform *_platform;
     RTDefaultsManager *_defaultsManager;
+    RTDistanceCalculator *_distanceCalculator;
+    RTLearnedLocationManager *_learnedLocationManager;
     RTLocationManager *_locationManager;
     RTMapServiceManager *_mapServiceManager;
-    RTMapsSupportManager *_mapsSupportManager;
     RTMetricManager *_metricManager;
-    RTDataProtectionManager *_dataProtectionManager;
-    long long _encryptedDataAvailability;
+    RTPlatform *_platform;
     RTNextPredictedLocationsOfInterestCache *_nextPredictedLocationsOfInterestCache;
-    NSDate *_lastNextPredictedLocationsOfInterestDate;
     NSObject<OS_dispatch_source> *_nextPredictedLocationsOfInterestPollLocationTimer;
     NSArray *_nextPredictedLocationsOfInterest;
     double _nextPredictedLocationsOfInterestProcessInterval;
     double _nextPredictedLocationsOfInterestPollLocationInterval;
     NSMutableArray *_evalPredictedLocationsOfInterest;
     NSMutableArray *_evalPredictedExitDates;
-    RTEventManager *_eventManager;
-    RTLearnedLocationManager *_learnedLocationManager;
-    RTVehicleLocationProvider *_vehicleLocationProvider;
+    NSSet *_providers;
 }
 
-@property (strong, nonatomic) RTDataProtectionManager *dataProtectionManager; // @synthesize dataProtectionManager=_dataProtectionManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long encryptedDataAvailability; // @synthesize encryptedDataAvailability=_encryptedDataAvailability;
+@property (strong, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
 @property (nonatomic) BOOL encryptedDataAvailabilityNotificationNeeded; // @synthesize encryptedDataAvailabilityNotificationNeeded=_encryptedDataAvailabilityNotificationNeeded;
 @property (strong, nonatomic) NSMutableArray *evalPredictedExitDates; // @synthesize evalPredictedExitDates=_evalPredictedExitDates;
 @property (strong, nonatomic) NSMutableArray *evalPredictedLocationsOfInterest; // @synthesize evalPredictedLocationsOfInterest=_evalPredictedLocationsOfInterest;
-@property (strong, nonatomic) RTEventManager *eventManager; // @synthesize eventManager=_eventManager;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSDate *lastNextPredictedLocationsOfInterestDate; // @synthesize lastNextPredictedLocationsOfInterestDate=_lastNextPredictedLocationsOfInterestDate;
 @property (strong, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (strong, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
-@property (strong, nonatomic) RTMapsSupportManager *mapsSupportManager; // @synthesize mapsSupportManager=_mapsSupportManager;
 @property (strong, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
-@property (nonatomic) BOOL monitorNextPredictedLocationsOfInterest; // @synthesize monitorNextPredictedLocationsOfInterest=_monitorNextPredictedLocationsOfInterest;
 @property (strong, nonatomic) NSArray *nextPredictedLocationsOfInterest; // @synthesize nextPredictedLocationsOfInterest=_nextPredictedLocationsOfInterest;
 @property (strong, nonatomic) RTNextPredictedLocationsOfInterestCache *nextPredictedLocationsOfInterestCache; // @synthesize nextPredictedLocationsOfInterestCache=_nextPredictedLocationsOfInterestCache;
 @property (nonatomic) double nextPredictedLocationsOfInterestPollLocationInterval; // @synthesize nextPredictedLocationsOfInterestPollLocationInterval=_nextPredictedLocationsOfInterestPollLocationInterval;
@@ -62,44 +51,37 @@
 @property (nonatomic) double nextPredictedLocationsOfInterestProcessInterval; // @synthesize nextPredictedLocationsOfInterestProcessInterval=_nextPredictedLocationsOfInterestProcessInterval;
 @property (nonatomic) BOOL pendingNextPredictedLocationsOfInterestRequest; // @synthesize pendingNextPredictedLocationsOfInterestRequest=_pendingNextPredictedLocationsOfInterestRequest;
 @property (strong, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
+@property (strong, nonatomic) NSSet *providers; // @synthesize providers=_providers;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) RTVehicleLocationProvider *vehicleLocationProvider; // @synthesize vehicleLocationProvider=_vehicleLocationProvider;
 
 - (void).cxx_destruct;
 - (void)_clear;
-- (void)_fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)_fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_fetchPredictedExitDatesFromLocation:(id)arg1 onDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchPredictedLocationsOfInterestBetweenStartDate:(id)arg1 endDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (id)_mergePredictedLocationOfInterest:(id)arg1 otherPredictedLocationOfInterest:(id)arg2;
+- (id)_mergedLocationOfInterest:(id)arg1 otherLocationOfInterest:(id)arg2;
+- (id)_mergedPredictedLocationsOfInterest:(id)arg1;
 - (void)_onLearnedLocationManagerNotification:(id)arg1;
-- (void)_onLocations:(id)arg1;
-- (void)_postNextPredictedLocationsOfInterest:(id)arg1;
-- (void)_purge;
+- (void)_purgeWithReferenceDate:(id)arg1;
 - (void)_registerForNotifications;
 - (void)_setup;
 - (void)_setupEvalMode;
-- (void)_setupNextPredictedLocationOfInterestPollTimer;
 - (void)_shutdown;
+- (id)_sortedAndMergedPredictedLocationsOfInterest:(id)arg1;
+- (id)_sortedPredictedLocationsOfInterest:(id)arg1;
 - (void)_unregisterForNotifications;
 - (void)_updateEvalMode;
-- (void)_updateNextPredictedLocationsOfInterestWithLocations:(id)arg1;
 - (void)clear;
-- (void)fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)fetchPredictedExitDatesFromLocation:(id)arg1 onDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPredictedLocationsOfInterestBetweenStartDate:(id)arg1 endDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPredictedLocationsOfInterestOnDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithDataProtectionManager:(id)arg1 defaultsManager:(id)arg2 eventManager:(id)arg3 learnedLocationManager:(id)arg4 locationManager:(id)arg5 mapServiceManager:(id)arg6 mapsSupportManager:(id)arg7 metricManager:(id)arg8 nextPredictedLocationsOfInterestCache:(id)arg9 platfrom:(id)arg10 vehicleLocationProvider:(id)arg11 queue:(id)arg12;
-- (void)internalAddObserver:(id)arg1 name:(id)arg2;
-- (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
-- (void)logStateModelAvailabilityMetricWithAvailability:(long long)arg1;
-- (void)onCacheEnabledDidChange:(BOOL)arg1;
-- (void)onDataProtectionNotification:(id)arg1;
+- (id)initWithQueue:(id)arg1 defaultsManager:(id)arg2 distanceCalculator:(id)arg3 learnedLocationManager:(id)arg4 locationManager:(id)arg5 mapServiceManager:(id)arg6 metricManager:(id)arg7 platfrom:(id)arg8 providers:(id)arg9;
 - (void)onLearnedLocationManagerNotification:(id)arg1;
-- (void)onLocationNotification:(id)arg1;
-- (void)purge;
-- (void)purgeManager:(id)arg1 performPurgeOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)shouldMonitorNextPredictedLocationsOfInterest;
-- (void)updateEncryptedDataAvailabilityNotificationNeeded;
+- (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)purgeWithReferenceDate:(id)arg1;
 
 @end
 

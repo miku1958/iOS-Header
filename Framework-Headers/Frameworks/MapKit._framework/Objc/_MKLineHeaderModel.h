@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableArray;
+@class NSDictionary, NSMutableArray, UIView;
 
 __attribute__((visibility("hidden")))
 @interface _MKLineHeaderModel : NSObject
 {
     NSMutableArray *_tokens;
     BOOL _shouldUseEmptyPlaceholder;
+    UIView *_ownerView;
     NSDictionary *_fontAttribute;
     CDUnknownBlockType _colorProvider;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType colorProvider; // @synthesize colorProvider=_colorProvider;
 @property (copy, nonatomic) NSDictionary *fontAttribute; // @synthesize fontAttribute=_fontAttribute;
+@property (weak, nonatomic) UIView *ownerView; // @synthesize ownerView=_ownerView;
 @property (nonatomic) BOOL shouldUseEmptyPlaceholder; // @synthesize shouldUseEmptyPlaceholder=_shouldUseEmptyPlaceholder;
 
 - (void).cxx_destruct;

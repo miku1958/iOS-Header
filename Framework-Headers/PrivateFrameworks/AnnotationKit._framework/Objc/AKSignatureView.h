@@ -7,10 +7,10 @@
 #import <UIKit/UIView.h>
 
 @class AKBitmapFIFO, CHBoxcarFilterPointFIFO, CHPointStrokeFIFO, CHQuadCurvePointFIFO, UIColor;
+@protocol AKSignatureViewLiveDelegate;
 
 @interface AKSignatureView : UIView
 {
-    struct CGColor *_cgColor;
     struct CGPoint _lastPoint;
     id _trackingTouchID;
     double _lastSetNeedsDisplayCallToSuperTime;
@@ -28,6 +28,7 @@
     CHBoxcarFilterPointFIFO *_boxcarFIFO;
     CHQuadCurvePointFIFO *_interpolatingFIFO;
     AKBitmapFIFO *_bitmapFifo;
+    id<AKSignatureViewLiveDelegate> _liveDelegate;
     struct CGPoint _strokeStartLocation;
     struct CGPoint _strokeLastLocation;
     struct CGRect _aggregateInvalid;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) double interfaceScale;
 @property (strong, nonatomic) CHQuadCurvePointFIFO *interpolatingFIFO; // @synthesize interpolatingFIFO=_interpolatingFIFO;
 @property BOOL isAddingPointWithoutSmoothing; // @synthesize isAddingPointWithoutSmoothing=_isAddingPointWithoutSmoothing;
+@property (weak, nonatomic) id<AKSignatureViewLiveDelegate> liveDelegate; // @synthesize liveDelegate=_liveDelegate;
 @property (nonatomic) double maxPressure; // @synthesize maxPressure=_maxPressure;
 @property (nonatomic) double maxThickness; // @synthesize maxThickness=_maxThickness;
 @property (nonatomic) double minPressure; // @synthesize minPressure=_minPressure;

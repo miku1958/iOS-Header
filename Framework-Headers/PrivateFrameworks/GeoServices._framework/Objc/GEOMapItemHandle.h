@@ -8,31 +8,45 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapItemClientAttributes, GEOMapItemInitialRequestData, GEOPDPlaceRefinementParameters;
+@class GEOMapItemClientAttributes, GEOMapItemInitialRequestData, GEOPDPlaceRefinementParameters, PBDataReader;
 
-__attribute__((visibility("hidden")))
 @interface GEOMapItemHandle : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOMapItemClientAttributes *_clientAttributes;
-    int _handleType;
     GEOPDPlaceRefinementParameters *_placeRefinementParameters;
     GEOMapItemInitialRequestData *_placeRequestData;
+    int _handleType;
     struct {
-        unsigned int handleType:1;
-    } _has;
+        unsigned int has_handleType:1;
+        unsigned int read_clientAttributes:1;
+        unsigned int read_placeRefinementParameters:1;
+        unsigned int read_placeRequestData:1;
+        unsigned int wrote_clientAttributes:1;
+        unsigned int wrote_placeRefinementParameters:1;
+        unsigned int wrote_placeRequestData:1;
+        unsigned int wrote_handleType:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOMapItemClientAttributes *clientAttributes; // @synthesize clientAttributes=_clientAttributes;
-@property (nonatomic) int handleType; // @synthesize handleType=_handleType;
+@property (strong, nonatomic) GEOMapItemClientAttributes *clientAttributes;
+@property (nonatomic) int handleType;
 @property (readonly, nonatomic) BOOL hasClientAttributes;
 @property (nonatomic) BOOL hasHandleType;
 @property (readonly, nonatomic) BOOL hasPlaceRefinementParameters;
 @property (readonly, nonatomic) BOOL hasPlaceRequestData;
-@property (strong, nonatomic) GEOPDPlaceRefinementParameters *placeRefinementParameters; // @synthesize placeRefinementParameters=_placeRefinementParameters;
-@property (strong, nonatomic) GEOMapItemInitialRequestData *placeRequestData; // @synthesize placeRequestData=_placeRequestData;
+@property (strong, nonatomic) GEOPDPlaceRefinementParameters *placeRefinementParameters;
+@property (strong, nonatomic) GEOMapItemInitialRequestData *placeRequestData;
 
++ (id)handleDataForMapItem:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsHandleType:(id)arg1;
+- (void)_readClientAttributes;
+- (void)_readPlaceRefinementParameters;
+- (void)_readPlaceRequestData;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

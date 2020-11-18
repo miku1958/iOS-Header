@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int type;
 
++ (void)initialize;
 + (id)propertyKeyForPropertyID:(int)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_cfTypeID;

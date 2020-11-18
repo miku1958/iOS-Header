@@ -9,5 +9,6 @@
 @interface UIView (AKPlatformView_Extensions)
 - (id)akEnclosingScrollView;
 - (struct CGRect)akVisibleRect;
+- (void)ak_addSubview:(id)arg1 withEdgeInsets:(struct UIEdgeInsets)arg2;
 @end
 

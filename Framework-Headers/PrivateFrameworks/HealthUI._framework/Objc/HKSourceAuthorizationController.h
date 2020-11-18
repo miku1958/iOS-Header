@@ -48,6 +48,7 @@
 - (id)_sortedTypes:(id)arg1;
 - (void)_updateAuthorizationStatusWithTypes:(id)arg1;
 - (BOOL)allTypesEnabled;
+- (BOOL)allTypesEnabledInSection:(long long)arg1;
 - (BOOL)anyTypeEnabled;
 - (void)commitAuthorizationStatuses;
 - (void)commitObjectAuthorizationStatuses:(id)arg1;

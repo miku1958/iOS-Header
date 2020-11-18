@@ -6,23 +6,36 @@
 
 #import <Contacts/CNContainer.h>
 
-@class NSString;
+@class NSData, NSDate, NSString;
 
 @interface CNMutableContainer : CNContainer
 {
 }
 
+@property (copy, nonatomic) NSString *accountIdentifier; // @dynamic accountIdentifier;
+@property (copy, nonatomic) NSString *constraintsPath; // @dynamic constraintsPath;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @dynamic enabled;
+@property (copy, nonatomic) NSString *externalIdentifier; // @dynamic externalIdentifier;
+@property (copy, nonatomic) NSString *externalModificationTag; // @dynamic externalModificationTag;
+@property (copy, nonatomic) NSData *externalSyncData; // @dynamic externalSyncData;
+@property (copy, nonatomic) NSString *externalSyncTag; // @dynamic externalSyncTag;
+@property (nonatomic, getter=isGuardianRestricted) BOOL guardianRestricted;
+@property (nonatomic, getter=isGuardianStateDirty) BOOL guardianStateDirty;
 @property (nonatomic) int iOSLegacyIdentifier; // @dynamic iOSLegacyIdentifier;
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (copy, nonatomic) NSDate *lastSyncDate;
+@property (copy, nonatomic) NSString *meIdentifier; // @dynamic meIdentifier;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
-@property (copy, nonatomic) CNContainer *snapshot; // @dynamic snapshot;
-@property (nonatomic) long long type;
+@property (nonatomic) unsigned long long restrictions; // @dynamic restrictions;
+@property (nonatomic) long long type; // @dynamic type;
 
 - (void)adoptValuesFromAndSetSnapshot:(id)arg1;
 - (id)copy;
 - (id)freeze;
 - (id)freezeWithSelfAsSnapshot;
+- (void)setGuardianRestricted:(BOOL)arg1 shouldPushChangeToServer:(BOOL)arg2;
+- (void)setParentallyManaged:(BOOL)arg1;
+- (void)setSnapshot:(id)arg1;
 
 @end
 

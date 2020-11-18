@@ -27,8 +27,6 @@
 
 + (id)annotationNameFromType:(unsigned long long)arg1;
 + (unsigned long long)annotationTypeFromName:(id)arg1;
-+ (BOOL)canClassifyPolarityForLanguageIdentifier:(id)arg1 withOptions:(unsigned long long)arg2;
-+ (BOOL)canClassifyPolarityForLanguageIdentifier:(id)arg1 withOptions:(unsigned long long)arg2 dataProvider:(id)arg3;
 + (id)defaultDataProvider;
 + (void)initialize;
 + (id)polarityNameFromType:(unsigned long long)arg1;
@@ -43,8 +41,6 @@
 - (id)initWithString:(id)arg1 andLanguageIdentifier:(id)arg2;
 - (id)initWithString:(id)arg1 andLanguageIdentifier:(id)arg2 trainingWeight:(double)arg3 trainVerbatim:(BOOL)arg4;
 - (id)lsmText;
-- (unsigned long long)polarityClassificationWithOptions:(unsigned long long)arg1;
-- (unsigned long long)polarityClassificationWithOptions:(unsigned long long)arg1 dataProvider:(id)arg2;
 - (id)subTextWithRange:(struct _NSRange)arg1;
 - (id)subTextsByPolarity;
 - (id)taggedText;

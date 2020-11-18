@@ -86,8 +86,8 @@
 - (id)description;
 - (BOOL)hasAllAssetsAvailableInManagedObjectContext:(id)arg1 includePendingAssetChanges:(BOOL)arg2;
 - (id)init;
-- (id)initWithPLMemory:(id)arg1;
 - (id)initWithPLMemory:(id)arg1 metadataURL:(id)arg2;
+- (id)initWithPLMemory:(id)arg1 pathManager:(id)arg2;
 - (id)initWithPersistedDataAtURL:(id)arg1;
 - (id)insertMemoryFromDataInManagedObjectContext:(id)arg1;
 - (BOOL)isObsolete;

@@ -8,7 +8,6 @@
 
 @class NSString, UIView;
 
-__attribute__((visibility("hidden")))
 @interface QLDetailItemViewControllerState : NSObject
 {
     BOOL _informationVisible;

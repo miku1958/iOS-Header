@@ -10,17 +10,19 @@
 #import <iWorkImport/TSDMixing-Protocol.h>
 #import <iWorkImport/TSDSelectionStatisticsContributor-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
+#import <iWorkImport/TSWPTextBoxNesting-Protocol.h>
 
-@class NSArray, NSObject, NSString, TSDInfoGeometry, TSPObject, TSWPColumns, TSWPPadding, TSWPShapeStyle, TSWPStorage;
+@class NSArray, NSObject, NSString, TSDInfoGeometry, TSPObject, TSWPColumns, TSWPDocumentRoot, TSWPPadding, TSWPShapeStyle, TSWPStorage;
 @protocol TSDContainerInfo, TSDOwningAttachment, TSWPFlowInfo;
 
 __attribute__((visibility("hidden")))
-@interface TSWPShapeInfo : TSDShapeInfo <TSDMixing, TSDContainerInfo, TSWPStorageParent, TSDSelectionStatisticsContributor>
+@interface TSWPShapeInfo : TSDShapeInfo <TSDMixing, TSDContainerInfo, TSWPStorageParent, TSDSelectionStatisticsContributor, TSWPTextBoxNesting>
 {
     TSWPStorage *_containedStorage;
     BOOL _isTextBox;
     BOOL _preventsComments;
     BOOL _preventsChangeTracking;
+    BOOL _ignoresInteriorWrap;
     TSPObject<TSWPFlowInfo> *_textFlow;
 }
 
@@ -28,22 +30,27 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) BOOL autoListRecognition;
 @property (readonly, nonatomic) BOOL autoListTermination;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) int columnDirection;
 @property (strong, nonatomic) TSWPColumns *columns;
 @property (nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL displaysInstructionalText;
+@property (readonly, nonatomic) TSWPDocumentRoot *documentRoot; // @dynamic documentRoot;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText; // @dynamic floatingAboveText;
 @property (copy, nonatomic) TSDInfoGeometry *geometry; // @dynamic geometry;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoresInteriorWrap; // @synthesize ignoresInteriorWrap=_ignoresInteriorWrap;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
 @property (readonly, nonatomic) NSString *instructionalText;
 @property (readonly, nonatomic) BOOL isLinkable;
 @property (readonly, nonatomic) BOOL isLinked;
+@property (readonly, nonatomic) BOOL isMaster;
+@property (readonly, nonatomic) BOOL isRotatedOrFlipped;
 @property (readonly, nonatomic) BOOL isTextBox; // @synthesize isTextBox=_isTextBox;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
+@property (readonly, nonatomic) long long nestedTextboxDepth;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @dynamic owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
 @property (strong, nonatomic) TSWPPadding *padding;
@@ -89,7 +96,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
 - (void)fixPositionOfImportedAutosizedShape;
-- (void)fixupAutosizingTextboxes;
 - (id)i_ownedTextStorage;
 - (void)i_setOwnedTextStorage:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
@@ -102,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct ShapeInfoArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (unsigned long long)maxInlineNestingDepth;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (double)pOffsetForParagraphAlignment:(struct CGSize)arg1;
@@ -121,6 +128,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldHideEmptyBullets;
 - (Class)styleClass;
 - (id)stylesForCopyStyle;
+- (BOOL)supportsParentRotation;
 - (BOOL)supportsShrinkTextToFit;
 - (BOOL)supportsTextInset;
 - (BOOL)textIsVerticalAtCharIndex:(unsigned long long)arg1;

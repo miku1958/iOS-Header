@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfSeriesForCalculatingBarWidth:(id)arg1;
 - (unsigned long long)seriesIndexForDrawing:(id)arg1;
 - (BOOL)supportsBarGap;
+- (id)userInterfaceName;
 - (id)userInterfaceNameForLabelPosition:(id)arg1;
 
 @end

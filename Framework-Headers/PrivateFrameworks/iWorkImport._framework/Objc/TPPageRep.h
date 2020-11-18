@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isOpaque;
 - (BOOL)masksToBounds;
 - (BOOL)p_pageRequiresHorizontalSeparator;
+- (id)parentRepForMagnification;
 - (void)willBeRemoved;
 
 @end

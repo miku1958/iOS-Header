@@ -9,24 +9,22 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFAudioPlaybackRequest;
+@class AFAccessibilityState, AFAudioPlaybackRequest;
 
 @interface AFClientConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _isDeviceInSetupFlow;
     BOOL _isDeviceInCarDNDMode;
     BOOL _isDeviceInStarkMode;
-    BOOL _isAccessibilityVoiceOverTouchEnabled;
-    BOOL _isAccessibilityVibrationDisabled;
     float _outputVolume;
+    AFAccessibilityState *_accessibilityState;
     long long _deviceRingerSwitchState;
     AFAudioPlaybackRequest *_tapToSiriAudioPlaybackRequest;
     AFAudioPlaybackRequest *_twoShotAudioPlaybackRequest;
 }
 
+@property (readonly, copy, nonatomic) AFAccessibilityState *accessibilityState; // @synthesize accessibilityState=_accessibilityState;
 @property (readonly, nonatomic) long long deviceRingerSwitchState; // @synthesize deviceRingerSwitchState=_deviceRingerSwitchState;
-@property (readonly, nonatomic) BOOL isAccessibilityVibrationDisabled; // @synthesize isAccessibilityVibrationDisabled=_isAccessibilityVibrationDisabled;
-@property (readonly, nonatomic) BOOL isAccessibilityVoiceOverTouchEnabled; // @synthesize isAccessibilityVoiceOverTouchEnabled=_isAccessibilityVoiceOverTouchEnabled;
 @property (readonly, nonatomic) BOOL isDeviceInCarDNDMode; // @synthesize isDeviceInCarDNDMode=_isDeviceInCarDNDMode;
 @property (readonly, nonatomic) BOOL isDeviceInSetupFlow; // @synthesize isDeviceInSetupFlow=_isDeviceInSetupFlow;
 @property (readonly, nonatomic) BOOL isDeviceInStarkMode; // @synthesize isDeviceInStarkMode=_isDeviceInStarkMode;
@@ -42,8 +40,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithAccessibilityState:(id)arg1 deviceRingerSwitchState:(long long)arg2 isDeviceInSetupFlow:(BOOL)arg3 isDeviceInCarDNDMode:(BOOL)arg4 isDeviceInStarkMode:(BOOL)arg5 outputVolume:(float)arg6 tapToSiriAudioPlaybackRequest:(id)arg7 twoShotAudioPlaybackRequest:(id)arg8;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceRingerSwitchState:(long long)arg1 isDeviceInSetupFlow:(BOOL)arg2 isDeviceInCarDNDMode:(BOOL)arg3 isDeviceInStarkMode:(BOOL)arg4 isAccessibilityVoiceOverTouchEnabled:(BOOL)arg5 isAccessibilityVibrationDisabled:(BOOL)arg6 outputVolume:(float)arg7 tapToSiriAudioPlaybackRequest:(id)arg8 twoShotAudioPlaybackRequest:(id)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 

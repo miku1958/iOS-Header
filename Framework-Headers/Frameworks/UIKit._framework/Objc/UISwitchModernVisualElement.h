@@ -6,18 +6,20 @@
 
 #import <UIKitCore/UISwitchVisualElement.h>
 
+#import <UIKitCore/CAAnimationDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UISwitchMVEGestureTrackingSessionElement-Protocol.h>
 
 @class NSString, UIColor, UIImage, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISwitchMVEGestureTrackingSession, UIView;
 
 __attribute__((visibility("hidden")))
-@interface UISwitchModernVisualElement : UISwitchVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement>
+@interface UISwitchModernVisualElement : UISwitchVisualElement <UIGestureRecognizerDelegate, UISwitchMVEGestureTrackingSessionElement, CAAnimationDelegate>
 {
     UIView *_switchWellView;
     UIView *_leftSwitchWellView;
     UIView *_switchWellContainerView;
     UIView *_leftSwitchWellContainerView;
+    UIImageView *_switchWellImageView;
     UIView *_switchWellImageViewContainer;
     UIImageView *_switchWellOffImageView;
     UIImageView *_switchWellOnImageView;
@@ -50,11 +52,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
 
++ (id)_modernGradientImageWithOnColor:(id)arg1 traitCollection:(id)arg2;
++ (id)_modernThumbImageWithColor:(id)arg1 mask:(unsigned long long)arg2 traitCollection:(id)arg3;
 + (struct CGSize)preferredContentSize;
 - (void).cxx_destruct;
 - (id)_accessibleOffImage;
 - (id)_accessibleOnImage;
 - (id)_defaultOnTintColor;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (id)_effectiveGradientImage;
 - (id)_effectiveOffImage;
 - (id)_effectiveOffImageTintColor;
 - (id)_effectiveOffTextColor;
@@ -77,16 +83,20 @@ __attribute__((visibility("hidden")))
 - (id)_labelOpacityAnimation;
 - (struct CGRect)_leftSwitchWellContainerBoundsOn:(BOOL)arg1 pressed:(BOOL)arg2;
 - (struct CGPoint)_leftSwitchWellContainerPositionOn:(BOOL)arg1 pressed:(BOOL)arg2;
-- (id)_maskLayerForImageViews;
 - (struct CGPoint)_offImagePosition;
 - (struct CGPoint)_onImagePosition;
 - (void)_orderSubviews;
 - (void)_setPressed:(BOOL)arg1 on:(BOOL)arg2 animated:(BOOL)arg3 shouldAnimateLabels:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)_settings;
 - (BOOL)_shouldUseLightTintOverColor:(id)arg1;
+- (id)_switchKnobPositionSpringAnimationFromValue:(id)arg1 toValue:(id)arg2;
+- (id)_switchKnobWidthSpringAnimationFromValue:(id)arg1 toValue:(id)arg2 pressed:(BOOL)arg3;
 - (id)_switchSpringAnimationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 pressed:(BOOL)arg4;
+- (void)_switchToStaticMode:(BOOL)arg1;
 - (id)_switchTrackAnimationWithFromValue:(id)arg1 toValue:(id)arg2 on:(BOOL)arg3;
 - (id)_switchTrackColorAnimationWithFromValue:(id)arg1 toValue:(id)arg2;
+- (id)_switchTrackPositionAnimationWithFromValue:(id)arg1 toValue:(id)arg2 on:(BOOL)arg3;
+- (id)_switchTrackPositionSpringAnimationFromValue:(id)arg1 toValue:(id)arg2 on:(BOOL)arg3;
 - (struct CGRect)_switchWellContainerBoundsOn:(BOOL)arg1 pressed:(BOOL)arg2;
 - (struct CGPoint)_switchWellContainerPositionOn:(BOOL)arg1 pressed:(BOOL)arg2;
 - (struct CGPoint)_switchWellPositionOn:(BOOL)arg1 pressed:(BOOL)arg2;
@@ -96,9 +106,13 @@ __attribute__((visibility("hidden")))
 - (void)_transitionKnobToPressed:(BOOL)arg1 on:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_transitionWellViewToOn:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_transitionWellViewToPressed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_transitionWellViewToPressed:(BOOL)arg1 on:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_updateDisplayAnimated:(BOOL)arg1;
+- (void)_updateDisplayWithAnimationIfNeeded;
 - (double)_wellBorderWidthPressed:(BOOL)arg1 on:(BOOL)arg2;
 - (struct CGColor *)_wellColorOn:(BOOL)arg1;
+- (struct CGPoint)_wellPositionOn:(BOOL)arg1 forBounds:(struct CGRect)arg2;
+- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (BOOL)displayedOn;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
@@ -110,6 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)setOnTintColor:(id)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setTintColor:(id)arg1;
+- (void)tintColorDidChange;
 
 @end
 

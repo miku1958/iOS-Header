@@ -32,6 +32,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) double bottomSpacingForSpinner; // @synthesize bottomSpacingForSpinner=_bottomSpacingForSpinner;
+@property (readonly, nonatomic) long long columnAItems; // @synthesize columnAItems=_columnAItems;
+@property (readonly, nonatomic) long long columnBItems; // @synthesize columnBItems=_columnBItems;
 @property (nonatomic) BOOL groupsNames; // @synthesize groupsNames=_groupsNames;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
@@ -54,12 +56,13 @@ __attribute__((visibility("hidden")))
 - (void)drawNames:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)finalizeInviteNames;
-- (id)generateAttributedStringsFromNames:(id)arg1 glyph:(id)arg2 displayCount:(long long)arg3;
+- (id)generateAttributedStringsFromDisplayParticipants:(id)arg1 glyph:(id)arg2 displayCount:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (double)maxColumnHeight;
 - (double)maxHeight;
+- (void)recalculateHeight;
 - (void)setInvitees:(id)arg1 forStatus:(int)arg2;
 - (void)setup;
 - (void)showSpinner;

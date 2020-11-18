@@ -6,46 +6,78 @@
 
 #import <objc/NSObject.h>
 
-@class NSLayoutManager, NSTextStorage;
+#import <UIFoundation/NSSecureCoding-Protocol.h>
+#import <UIFoundation/NSTextViewportElement-Protocol.h>
 
-@interface NSTextLayoutFragment : NSObject
+@class NSArray, NSLayoutManager, NSOperationQueue, NSString, NSTextElement, NSTextLayoutManager, NSTextRange, NSTextStorage;
+
+@interface NSTextLayoutFragment : NSObject <NSSecureCoding, NSTextViewportElement>
 {
-    NSLayoutManager *_layoutManager;
+    NSTextLayoutManager *_textLayoutManager;
+    NSTextElement *_textElement;
+    NSTextRange *_rangeInElement;
+    struct _NSRange _characterRange;
+    unsigned long long _sourceVerticalDelta;
+    unsigned long long _sourceRangeDelta;
+    struct CGRect _sourceBoundingRect;
+    struct CGRect _destinationBoundingRect;
     unsigned long long _animationType;
-    NSLayoutManager *_sourceLayoutManager;
-    NSTextStorage *_sourceTextStorage;
-    double _sourceVerticalDelta;
-    long long _sourceRangeDelta;
     NSLayoutManager *_destinationLayoutManager;
     NSTextStorage *_destinationTextStorage;
     double _destinationVerticalDelta;
-    struct _NSRange _characterRange;
     struct _NSRange _destinationGlyphRange;
-    struct CGRect _sourceBoundingRect;
-    struct CGRect _destinationBoundingRect;
+    NSLayoutManager *_layoutManager;
+    NSArray *_textLineFragments;
+    NSOperationQueue *_layoutQueue;
+    unsigned long long _state;
+    struct CGPoint _layoutPoint;
+    struct CGRect _layoutFragmentFrame;
 }
 
-@property (readonly) unsigned long long animationType; // @synthesize animationType=_animationType;
-@property (readonly) struct _NSRange characterRange; // @synthesize characterRange=_characterRange;
-@property struct CGRect destinationBoundingRect; // @synthesize destinationBoundingRect=_destinationBoundingRect;
-@property struct _NSRange destinationGlyphRange; // @synthesize destinationGlyphRange=_destinationGlyphRange;
-@property NSLayoutManager *destinationLayoutManager; // @synthesize destinationLayoutManager=_destinationLayoutManager;
-@property (strong) NSTextStorage *destinationTextStorage; // @synthesize destinationTextStorage=_destinationTextStorage;
-@property double destinationVerticalDelta; // @synthesize destinationVerticalDelta=_destinationVerticalDelta;
-@property (weak) NSLayoutManager *layoutManager; // @synthesize layoutManager=_layoutManager;
-@property (readonly) struct CGRect sourceBoundingRect; // @synthesize sourceBoundingRect=_sourceBoundingRect;
-@property NSLayoutManager *sourceLayoutManager; // @synthesize sourceLayoutManager=_sourceLayoutManager;
-@property long long sourceRangeDelta; // @synthesize sourceRangeDelta=_sourceRangeDelta;
-@property (strong) NSTextStorage *sourceTextStorage; // @synthesize sourceTextStorage=_sourceTextStorage;
-@property double sourceVerticalDelta; // @synthesize sourceVerticalDelta=_sourceVerticalDelta;
+@property (readonly) unsigned long long animationType; // @dynamic animationType;
+@property (readonly) struct _NSRange characterRange; // @dynamic characterRange;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property struct CGRect destinationBoundingRect;
+@property (readonly) struct CGRect destinationBoundingRect; // @dynamic destinationBoundingRect;
+@property struct _NSRange destinationGlyphRange; // @dynamic destinationGlyphRange;
+@property NSLayoutManager *destinationLayoutManager; // @dynamic destinationLayoutManager;
+@property (strong) NSTextStorage *destinationTextStorage; // @dynamic destinationTextStorage;
+@property double destinationVerticalDelta; // @dynamic destinationVerticalDelta;
+@property (readonly) unsigned long long hash;
+@property struct CGRect layoutFragmentFrame; // @synthesize layoutFragmentFrame=_layoutFragmentFrame;
+@property struct CGPoint layoutFragmentFrameOrigin;
+@property (readonly, weak) NSLayoutManager *layoutManager; // @dynamic layoutManager;
+@property struct CGPoint layoutPoint; // @synthesize layoutPoint=_layoutPoint;
+@property (strong) NSOperationQueue *layoutQueue; // @synthesize layoutQueue=_layoutQueue;
+@property (readonly) struct CGSize layoutSize;
+@property (readonly) NSTextRange *rangeInElement; // @dynamic rangeInElement;
+@property (readonly) struct CGRect renderingSurfaceBounds;
+@property (readonly) NSTextRange *representedRange;
+@property (readonly) struct CGRect sourceBoundingRect; // @dynamic sourceBoundingRect;
+@property unsigned long long state; // @synthesize state=_state;
+@property (readonly) Class superclass;
+@property (weak) NSTextElement *textElement; // @dynamic textElement;
+@property (weak) NSTextLayoutManager *textLayoutManager;
+@property (readonly, weak) NSTextLayoutManager *textLayoutManager; // @dynamic textLayoutManager;
+@property (copy) NSArray *textLineFragments; // @synthesize textLineFragments=_textLineFragments;
 
-- (void).cxx_destruct;
++ (id)layoutFragmentQueue;
++ (BOOL)supportsSecureCoding;
+- (void)_layout;
 - (void)_setup;
 - (void)dealloc;
-- (id)description;
 - (void)drawAtPoint:(struct CGPoint)arg1 contentType:(unsigned long long)arg2;
+- (void)drawAtPoint:(struct CGPoint)arg1 context:(struct CGContext *)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (void)estimateSize;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithLayoutManager:(id)arg1 characterRange:(struct _NSRange)arg2 animationType:(unsigned long long)arg3 boundingRect:(struct CGRect)arg4;
+- (id)initWithTextElement:(id)arg1 range:(id)arg2;
+- (void)invalidateLayout;
+- (void)layout;
+- (id)representedRangeAtPoint:(struct CGPoint)arg1;
 
 @end
 

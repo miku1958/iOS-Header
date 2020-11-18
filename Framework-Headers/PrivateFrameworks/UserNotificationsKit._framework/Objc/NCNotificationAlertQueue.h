@@ -9,7 +9,7 @@
 #import <UserNotificationsKit/NCNotificationAlertDestination-Protocol.h>
 #import <UserNotificationsKit/NCNotificationAlertDestinationDelegate-Protocol.h>
 
-@class NCNotificationCollapsingQueue, NCNotificationDestinationsRegistry, NCNotificationRequest, NCNotificationStore, NSString;
+@class BSServiceConnectionEndpoint, NCNotificationCollapsingQueue, NCNotificationDestinationsRegistry, NCNotificationRequest, NCNotificationStore, NSString;
 @protocol NCNotificationAlertDestinationDelegate, NCNotificationDestinationDelegate;
 
 @interface NCNotificationAlertQueue : NSObject <NCNotificationAlertDestinationDelegate, NCNotificationAlertDestination>
@@ -26,6 +26,7 @@
 @property (weak, nonatomic) id<NCNotificationDestinationDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NCNotificationDestinationsRegistry *destinationsRegistry; // @synthesize destinationsRegistry=_destinationsRegistry;
+@property (readonly, nonatomic) BSServiceConnectionEndpoint *endpoint;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
 @property (strong, nonatomic) NCNotificationCollapsingQueue *queue; // @synthesize queue=_queue;
@@ -38,7 +39,7 @@
 - (void)_postEnqueuedNotificationRequestsCoalescingWith:(id)arg1;
 - (void)_postNextNotificationRequest;
 - (void)_postNextNotificationRequestPassingTest:(CDUnknownBlockType)arg1;
-- (BOOL)_postNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (BOOL)_postNotificationRequest:(id)arg1;
 - (void)_prepareDestinationsToReceiveCriticalNotificationRequest:(id)arg1;
 - (BOOL)_readyToReceiveForNotificationRequest:(id)arg1;
 - (BOOL)canReceiveNotificationRequest:(id)arg1;
@@ -63,16 +64,16 @@
 - (id)init;
 - (id)initWithNotificationStore:(id)arg1;
 - (BOOL)isRegisteredDestination:(id)arg1;
-- (void)modifyNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (void)modifyNotificationRequest:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1;
 - (id)notificationSectionSettingsForDestination:(id)arg1 forSectionIdentifier:(id)arg2;
-- (void)postNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (void)postNotificationRequest:(id)arg1;
 - (void)registerDestination:(id)arg1;
 - (void)setDestination:(id)arg1 enabled:(BOOL)arg2;
 - (void)setDestination:(id)arg1 ready:(BOOL)arg2;
 - (void)unregisterDestination:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
-- (void)withdrawNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (void)withdrawNotificationRequest:(id)arg1;
 
 @end
 

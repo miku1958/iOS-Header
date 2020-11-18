@@ -10,17 +10,23 @@
 
 @protocol MKPlaceCardActionControllerDelegate <NSObject>
 - (void)placeActionManager:(MKPlaceActionManager *)arg1 didSelectShareFromView:(UIView *)arg2;
-- (void)placeCardActionControllerDidSelectReportAProblem:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectReportAProblem:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
 
 @optional
 - (void)placeCardActionControllerDidSelectAddPhoto:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectAddToCollection:(MKPlaceCardActionsViewController *)arg1 completion:(void (^)(void))arg2;
 - (void)placeCardActionControllerDidSelectAddToContacts:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
 - (void)placeCardActionControllerDidSelectAddToExistingContact:(MKPlaceCardActionsViewController *)arg1 fromView:(UIView *)arg2;
 - (void)placeCardActionControllerDidSelectAddToFavorites:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectAddToMapsHome:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectChangeAddress:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectOpenInSkyline:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectRefineLocation:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectRemoveFromFavorites:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectRemoveFromMapsHome:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectRemoveFromSuggestedFavorites:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectRemoveMarker:(MKPlaceCardActionsViewController *)arg1;
+- (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectSimulateLocation:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectViewAllPhotos:(MKPlaceCardActionsViewController *)arg1;
 - (void)placeCardActionControllerDidSelectionOpenBrandCard:(MKPlaceCardActionsViewController *)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOETARoute, GEORouteIncident, NSArray, NSData, NSDate;
+@class GEOComposedRoute, GEOComposedRouteTraffic, GEOETARoute, GEORouteIncident, NSArray, NSData, NSDate;
 
 @interface MNTrafficIncidentAlert : NSObject
 {
@@ -24,6 +24,8 @@
     double _distanceToIncident;
     NSDate *_eta;
     BOOL _isAutomaticReroute;
+    GEOComposedRouteTraffic *_originalRouteTraffic;
+    GEOComposedRouteTraffic *_alternateRouteTraffic;
 }
 
 @property (readonly, nonatomic) NSDate *alertDate; // @synthesize alertDate=_alertDate;
@@ -34,6 +36,7 @@
 @property (readonly, nonatomic) unsigned long long alertType; // @synthesize alertType=_alertType;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 alternateEndValidCoordinateRange; // @synthesize alternateEndValidCoordinateRange=_alternateEndValidCoordinateRange;
 @property (readonly, nonatomic) GEOComposedRoute *alternateRoute; // @synthesize alternateRoute=_alternateRoute;
+@property (readonly, nonatomic) GEOComposedRouteTraffic *alternateRouteTraffic; // @synthesize alternateRouteTraffic=_alternateRouteTraffic;
 @property (nonatomic) double distanceToIncident; // @synthesize distanceToIncident=_distanceToIncident;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 endValidCoordinateRange; // @synthesize endValidCoordinateRange=_endValidCoordinateRange;
 @property (strong, nonatomic) NSDate *eta; // @synthesize eta=_eta;
@@ -45,17 +48,18 @@
 @property (readonly, nonatomic) GEORouteIncident *oldETARouteIncident;
 @property (readonly, nonatomic) double oldEstimatedTime;
 @property (readonly, nonatomic) GEOComposedRoute *originalRoute; // @synthesize originalRoute=_originalRoute;
+@property (readonly, nonatomic) GEOComposedRouteTraffic *originalRouteTraffic; // @synthesize originalRouteTraffic=_originalRouteTraffic;
 @property (readonly, nonatomic) unsigned long long secondsSaved;
 @property (readonly, nonatomic) NSArray *spokenTexts;
 @property (readonly, nonatomic) CDStruct_3f2a7a20 startValidCoordinateRange; // @synthesize startValidCoordinateRange=_startValidCoordinateRange;
 
 + (id)trafficIncidentAlertForDetails:(id)arg1;
 - (void).cxx_destruct;
-- (CDStruct_2c43369c)_divergenceCoordinate;
+- (CDStruct_c3b9c2ee)_divergenceCoordinate;
 - (id)_dynamicStringValues;
 - (void)_findRouteDivergence;
 - (CDStruct_3f2a7a20)_routeCoordinateAtDuration:(double)arg1 beforeRouteCoordinate:(CDStruct_3f2a7a20)arg2;
-- (id)initWithRoute:(id)arg1 etaRoute:(id)arg2 etaResponse:(id)arg3;
+- (id)initWithRoute:(id)arg1 traffic:(id)arg2 etaRoute:(id)arg3 etaResponse:(id)arg4;
 - (id)initWithTrafficIncidentAlertDetails:(id)arg1;
 - (BOOL)isSimilarTo:(id)arg1;
 - (void)updateAlertIDWithAlert:(id)arg1;

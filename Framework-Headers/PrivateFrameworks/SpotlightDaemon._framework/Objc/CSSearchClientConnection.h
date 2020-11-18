@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CSClientConnectionConfiguration, NSMutableDictionary, NSMutableOrderedSet;
+@class NSMutableDictionary, NSMutableOrderedSet, SDConnectionConfiguration;
 
 @interface CSSearchClientConnection : NSObject
 {
     unsigned int _outBatchCount;
     NSMutableDictionary *_queryTasks;
-    CSClientConnectionConfiguration *_configuration;
+    SDConnectionConfiguration *_configuration;
     NSMutableOrderedSet *_pausedTasks;
 }
 
-@property (strong, nonatomic) CSClientConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (strong, nonatomic) SDConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) unsigned int outBatchCount; // @synthesize outBatchCount=_outBatchCount;
 @property (strong, nonatomic) NSMutableOrderedSet *pausedTasks; // @synthesize pausedTasks=_pausedTasks;
 @property (strong, nonatomic) NSMutableDictionary *queryTasks; // @synthesize queryTasks=_queryTasks;

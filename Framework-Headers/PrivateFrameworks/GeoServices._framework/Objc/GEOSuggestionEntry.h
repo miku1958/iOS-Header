@@ -8,11 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSData, NSMutableArray, NSString, PBUnknownFields;
+@class GEOLatLng, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOSuggestionEntry : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOHighlight *_textHighlights;
     unsigned long long _textHighlightsCount;
@@ -24,33 +26,66 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_namedFeatures;
     NSString *_searchQueryDisplayString;
     NSData *_suggestionEntryMetadata;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_textHighlights:1;
+        unsigned int read_calloutTitle:1;
+        unsigned int read_displayLines:1;
+        unsigned int read_iconID:1;
+        unsigned int read_latlng:1;
+        unsigned int read_namedFeatures:1;
+        unsigned int read_searchQueryDisplayString:1;
+        unsigned int read_suggestionEntryMetadata:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_textHighlights:1;
+        unsigned int wrote_calloutTitle:1;
+        unsigned int wrote_displayLines:1;
+        unsigned int wrote_iconID:1;
+        unsigned int wrote_latlng:1;
+        unsigned int wrote_namedFeatures:1;
+        unsigned int wrote_searchQueryDisplayString:1;
+        unsigned int wrote_suggestionEntryMetadata:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *calloutTitle; // @synthesize calloutTitle=_calloutTitle;
-@property (strong, nonatomic) NSMutableArray *displayLines; // @synthesize displayLines=_displayLines;
+@property (strong, nonatomic) NSString *calloutTitle;
+@property (strong, nonatomic) NSMutableArray *displayLines;
 @property (readonly, nonatomic) BOOL hasCalloutTitle;
 @property (readonly, nonatomic) BOOL hasIconID;
 @property (readonly, nonatomic) BOOL hasLatlng;
 @property (readonly, nonatomic) BOOL hasSearchQueryDisplayString;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
-@property (strong, nonatomic) NSString *iconID; // @synthesize iconID=_iconID;
-@property (strong, nonatomic) GEOLatLng *latlng; // @synthesize latlng=_latlng;
-@property (strong, nonatomic) NSMutableArray *namedFeatures; // @synthesize namedFeatures=_namedFeatures;
-@property (strong, nonatomic) NSString *searchQueryDisplayString; // @synthesize searchQueryDisplayString=_searchQueryDisplayString;
-@property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
+@property (strong, nonatomic) NSString *iconID;
+@property (strong, nonatomic) GEOLatLng *latlng;
+@property (strong, nonatomic) NSMutableArray *namedFeatures;
+@property (strong, nonatomic) NSString *searchQueryDisplayString;
+@property (strong, nonatomic) NSData *suggestionEntryMetadata;
 @property (readonly, nonatomic) struct GEOHighlight *textHighlights;
 @property (readonly, nonatomic) unsigned long long textHighlightsCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)displayLineType;
++ (BOOL)isValid:(id)arg1;
 + (Class)namedFeatureType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsDisplayLine:(id)arg1;
+- (void)_addNoFlagsNamedFeature:(id)arg1;
+- (void)_addNoFlagsTextHighlights:(struct GEOHighlight)arg1;
+- (void)_readCalloutTitle;
+- (void)_readDisplayLines;
+- (void)_readIconID;
+- (void)_readLatlng;
+- (void)_readNamedFeatures;
+- (void)_readSearchQueryDisplayString;
+- (void)_readSuggestionEntryMetadata;
+- (void)_readTextHighlights;
 - (void)addDisplayLine:(id)arg1;
 - (void)addNamedFeature:(id)arg1;
 - (void)addTextHighlights:(struct GEOHighlight)arg1;
 - (void)clearDisplayLines;
 - (void)clearNamedFeatures;
 - (void)clearTextHighlights;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -63,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)namedFeatureAtIndex:(unsigned long long)arg1;
 - (unsigned long long)namedFeaturesCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setTextHighlights:(struct GEOHighlight *)arg1 count:(unsigned long long)arg2;
 - (struct GEOHighlight)textHighlightsAtIndex:(unsigned long long)arg1;

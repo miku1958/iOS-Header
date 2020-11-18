@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong, nonatomic) HMDAccountIdentifier *identifier; // @dynamic identifier;
+@property (copy, nonatomic) HMDAccountIdentifier *identifier; // @dynamic identifier;
 
 + (id)properties;
 

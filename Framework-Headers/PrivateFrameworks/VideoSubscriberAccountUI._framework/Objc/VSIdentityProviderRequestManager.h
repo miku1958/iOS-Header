@@ -78,7 +78,9 @@
 - (void)_handleApplicationControllerRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
 - (BOOL)_handleAuthenticationRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
 - (BOOL)_handleLogoutRequestDidComplete:(id)arg1;
+- (BOOL)_handleSTBOptOutDidComplete:(id)arg1;
 - (BOOL)_handleSilentAuthenticationRequest:(id)arg1 didCompleteWithResponse:(id)arg2;
+- (id)_identityProviderAlertWithApplicationControllerAlert:(id)arg1;
 - (void)_notifyDidAuthenticateAccount:(id)arg1;
 - (void)_processRequestContext:(id)arg1;
 - (double)_requestCompletionDelay;
@@ -99,6 +101,7 @@
 - (void)applicationController:(id)arg1 didReceiveViewModelError:(id)arg2;
 - (void)applicationController:(id)arg1 request:(id)arg2 didCompleteWithResponse:(id)arg3;
 - (void)applicationController:(id)arg1 request:(id)arg2 didFailWithError:(id)arg3;
+- (BOOL)applicationController:(id)arg1 requestsAlert:(id)arg2;
 - (void)applicationController:(id)arg1 startDidFailWithError:(id)arg2;
 - (void)applicationControllerDidStart:(id)arg1;
 - (void)dealloc;

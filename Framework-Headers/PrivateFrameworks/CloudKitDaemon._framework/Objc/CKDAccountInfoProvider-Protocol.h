@@ -6,53 +6,29 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class CKAccountOverrideInfo, CKContainerID, CKDMescalSession, CKDOperation, CKDServerConfiguration, CKDURLRequest, NSDictionary, NSString, NSURL;
+@class CKAccountOverrideInfo, NSString;
+@protocol CKDAccountAccessInfoProvider;
 
 @protocol CKDAccountInfoProvider <NSObject>
 
+@property (readonly, nonatomic) NSString *accountIdentifier;
 @property (readonly, nonatomic) BOOL accountWantsPushRegistration;
-@property (readonly, nonatomic) BOOL canAccessAccount;
-@property (readonly, nonatomic) BOOL canAuthWithCloudKit;
+@property (readonly, nonatomic) NSString *displayedHostname;
 @property (readonly, nonatomic) CKAccountOverrideInfo *fakeAccountInfo;
 @property (readonly, nonatomic) BOOL isAnonymousAccount;
 @property (readonly, nonatomic) BOOL isCarryAccount;
+@property (readonly, nonatomic) BOOL isFakeAccount;
 @property (readonly, nonatomic) BOOL isUnitTestingAccount;
 @property (readonly, nonatomic) BOOL isiCloudDevEnvironmentAccount;
+@property (readonly, nonatomic) NSString *serverPreferredPushEnvironment;
 
-- (NSURL *)baseURLForServerType:(long long)arg1 partitionType:(long long)arg2;
-- (NSString *)bundleID;
-- (void)cloudKitAuthTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
-- (CKDServerConfiguration *)config;
-- (CKContainerID *)containerID;
-- (NSString *)containerScopedUserID;
-- (NSString *)deviceName;
-- (NSString *)displayedHostname;
+- (void)cloudKitAuthTokenWithAccessProvider:(id<CKDAccountAccessInfoProvider>)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
+- (NSString *)cloudKitAuthTokenWithAccessProvider:(id<CKDAccountAccessInfoProvider>)arg1 error:(id *)arg2;
 - (NSString *)dsid;
-- (void)fetchConfigurationForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(CKDServerConfiguration *, NSError *))arg2;
-- (void)fetchDeviceIDForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(NSString *, NSError *))arg2;
-- (void)fetchImportantUserIDsForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(NSString *, NSString *, NSError *))arg2;
-- (void)fetchPrivateURLForServerType:(long long)arg1 operation:(CKDOperation *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
-- (void)fetchPublicURLForServerType:(long long)arg1 operation:(CKDOperation *)arg2 completionHandler:(void (^)(NSURL *, NSError *))arg3;
-- (void)fetchServerEnvironmentForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(long long, NSError *))arg2;
-- (NSString *)hardwareID;
-- (void)iCloudAuthTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
-- (NSString *)languageCode;
-- (CKDMescalSession *)mescalSession;
-- (NSString *)regionCode;
-- (void)renewCloudKitAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 failedToken:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
-- (void)renewMescalSessionForRequest:(CKDURLRequest *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
-- (void)renewiCloudAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 failedToken:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
-- (void)resetMescalSession;
-- (NSString *)serverPreferredPushEnvironment;
+- (void)iCloudAuthTokenWithAccessProvider:(id<CKDAccountAccessInfoProvider>)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
+- (NSString *)iCloudAuthTokenWithAccessProvider:(id<CKDAccountAccessInfoProvider>)arg1 error:(id *)arg2;
+- (void)renewCloudKitAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 accessProvider:(id<CKDAccountAccessInfoProvider>)arg3 failedToken:(NSString *)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;
+- (void)renewiCloudAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 accessProvider:(id<CKDAccountAccessInfoProvider>)arg3 failedToken:(NSString *)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;
 - (NSString *)sharingURLHostname;
-- (BOOL)shouldFailAllTasks;
-- (NSString *)trafficContainerIdentifier;
-
-@optional
-- (NSDictionary *)additionalHeaderValues;
-- (void)noteFailedNetworkRequest;
-- (void)noteFailedProtocolRequest;
-- (void)noteSuccessfulRequestWithNumDownloadedElements:(long long)arg1;
-- (void)noteTimeSpentInNetworking:(double)arg1;
 @end
 

@@ -15,7 +15,7 @@
     double _time;
     NSString *_title;
     NSURL *_url;
-    int _markerType;
+    long long _markerType;
     NSDictionary *_metadata;
 }
 
@@ -23,7 +23,7 @@
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) BOOL hasArtworkAtPlaybackTime;
 @property (nonatomic) unsigned long long index; // @synthesize index=_index;
-@property (readonly, nonatomic) int markerType; // @synthesize markerType=_markerType;
+@property (readonly, nonatomic) long long markerType; // @synthesize markerType=_markerType;
 @property (readonly, nonatomic) double maxTime;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) double time; // @synthesize time=_time;
@@ -32,7 +32,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithMarkerType:(int)arg1;
+- (id)initWithMarkerType:(long long)arg1;
 - (id)urlTitleTrimmingCharacterSet;
 
 @end

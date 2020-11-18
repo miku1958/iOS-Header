@@ -41,6 +41,7 @@
 @property (strong, nonatomic) NSString *url;
 
 - (void).cxx_destruct;
+- (void)_evaluateDelegateBlockSync:(CDUnknownBlockType)arg1;
 - (void)_resolveArtworkImageURL;
 - (void)cleanup;
 - (id)initWithAppContext:(id)arg1 jsMediaItem:(id)arg2;

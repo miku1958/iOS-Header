@@ -27,6 +27,6 @@
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 didUpdateReachability:(BOOL)arg2 forBTLEAccessoriesWithServerIdentifier:(NSString *)arg3;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 discoveryFailedWithError:(NSError *)arg2 accessoryServer:(NSString *)arg3 linkType:(long long)arg4;
 - (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 identifier:(NSString *)arg2 reachable:(BOOL)arg3;
-- (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 setupID:(NSString *)arg2 isPairedWithCompletionHandler:(void (^)(BOOL))arg3;
+- (void)accessoryBrowser:(HMDAccessoryBrowser *)arg1 setupID:(NSString *)arg2 serverIdentifier:(NSString *)arg3 isPairedWithCompletionHandler:(void (^)(BOOL))arg4;
 @end
 

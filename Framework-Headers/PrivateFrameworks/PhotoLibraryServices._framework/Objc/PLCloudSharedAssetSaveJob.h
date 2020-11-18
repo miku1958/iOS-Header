@@ -43,14 +43,16 @@
 + (id)_dcimDirectoryForFileURL:(id)arg1;
 + (BOOL)_lightweightReimportCacheDirectoryExists;
 + (id)_lightweightReimportPhotoCloudSharingAlbumInfoForAlbumWithCloudGUID:(id)arg1 cloudPersonID:(id)arg2;
++ (void)assetsdProcessMetadataForAssetCollections:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3 info:(id)arg4 libraryServicesManager:(id)arg5;
 + (void)deleteCloudSharedAssetsWithCloudGUIDs:(id)arg1 info:(id)arg2;
 + (void)downloadPendingAssetsForPersonID:(id)arg1 info:(id)arg2;
-+ (id)nextDCIMSaveFileURLForCloudPersonID:(id)arg1 cloudAlbumGUID:(id)arg2 fileExtension:(id)arg3;
++ (id)newCloudSharedAssetSaveJobFromAProcessThatIsNotAssetsd;
++ (id)nextDCIMSaveFileURLForCloudPersonID:(id)arg1 cloudAlbumGUID:(id)arg2 fileExtension:(id)arg3 assetUUID:(id)arg4;
 + (id)pathForInFlightAssetCollectionWithGUID:(id)arg1 mediaAssetType:(unsigned long long)arg2;
-+ (id)placeholderImageProperties;
 + (void)processMetadataForAssetCollections:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3 info:(id)arg4;
 + (void)replaceRecentlyUploadedOriginalWithDerivativeForCollection:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3;
 + (void)saveCloudSharedAssetAtPath:(id)arg1 forAssetCollection:(id)arg2 mediaAssetType:(unsigned long long)arg3 albumGUID:(id)arg4 personID:(id)arg5 info:(id)arg6 shouldPrioritize:(BOOL)arg7;
+- (void).cxx_destruct;
 - (void)_addDownloadNotification:(id)arg1;
 - (id)_createPlaceHolderInSharedAlbum:(id)arg1;
 - (void)_incrementDerivativesCount:(long long)arg1 thumbnailsCount:(long long)arg2;
@@ -73,12 +75,13 @@
 - (void)executeDaemonOperationReplaceRecentlyUploadedOriginalJobType;
 - (void)executeDaemonOperationSaveAssetJobType;
 - (void)executeDaemonOperationSaveAssetMetadataForCollectionsJobType;
-- (id)init;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
+- (id)initWithAssetsdClient:(id)arg1;
 - (BOOL)isProcessingThumbnail;
 - (short)placeHolderKindFromAssetMetadataType:(unsigned long long)arg1;
 - (void)run;
 - (void)runDaemonSide;
+- (void)setupSaveAssetMetadataForCollectionsJobForAssetCollections:(id)arg1 album:(id)arg2 personID:(id)arg3 info:(id)arg4;
 
 @end
 

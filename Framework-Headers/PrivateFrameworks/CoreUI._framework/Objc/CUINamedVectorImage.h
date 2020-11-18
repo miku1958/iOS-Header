@@ -10,8 +10,6 @@
 {
 }
 
-@property (readonly, nonatomic) long long displayGamut;
-@property (readonly, nonatomic) long long layoutDirection;
 @property (readonly, nonatomic) struct CGPDFDocument *pdfDocument;
 @property (readonly, nonatomic) double scale;
 

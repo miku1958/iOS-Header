@@ -6,46 +6,59 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class DOMDocument, MFAttachment, MFFuture, NSArray, NSData, NSDictionary, NSString, NSURL;
+@class EFFuture, MFAttachment, NSArray, NSData, NSDictionary, NSString, NSURL;
 @protocol MFMailComposeViewDelegate;
 
 @protocol MFComposeBodyField <NSObject>
 
+@property (readonly, nonatomic) BOOL allowsAttachmentElements;
+@property (weak, nonatomic) NSString *compositionContextID;
 @property (nonatomic, getter=isDirty) BOOL dirty;
-@property (nonatomic) id<MFMailComposeViewDelegate> mailComposeViewDelegate;
+@property (weak, nonatomic) id<MFMailComposeViewDelegate> mailComposeViewDelegate;
 
 - (void)addMailAttributesBeforeDisplayHidingTrailingEmptyQuotes:(BOOL)arg1;
 - (void)appendMarkupString:(NSString *)arg1 quote:(BOOL)arg2;
 - (void)appendOrReplace:(NSString *)arg1 withMarkupString:(NSString *)arg2 quote:(BOOL)arg3;
 - (void)beginPreventingLayout;
 - (void)changeQuoteLevel:(long long)arg1;
-- (MFFuture *)containsRichText;
+- (EFFuture *)containsRichText;
+- (NSArray *)contentIDsForMediaAttachments;
 - (void)endPreventingLayout;
-- (void)getHTMLStringsAttachmentsCharsetsAndPlainTextAlternative:(void (^)(NSString *, NSArray *, NSArray *, MFPlainTextDocument *))arg1;
-- (MFFuture *)htmlString;
+- (void)getHTMLStringsAttachmentsAndPlainTextAlternative:(void (^)(ECHTMLStringAndMIMECharset *, NSArray *, MFPlainTextDocument *))arg1;
+- (EFFuture *)htmlString;
 - (void)insertDocumentWithData:(NSData *)arg1 fileName:(NSString *)arg2 mimeType:(NSString *)arg3 contentID:(NSString *)arg4;
 - (void)insertDocumentWithURL:(NSURL *)arg1 isDrawingFile:(BOOL)arg2;
-- (void)insertPhotoOrVideoWithInfoDictionary:(NSDictionary *)arg1;
+- (void)insertPhotoOrVideoWithAssetIdentifier:(NSString *)arg1 infoDictionary:(NSDictionary *)arg2;
+- (void)insertScannedDocumentWithData:(NSData *)arg1;
 - (void)layoutWithMinimumSize;
+- (void)markupSelectedAttachment;
 - (NSString *)nextAttachmentName;
-- (MFFuture *)plainTextContent;
-- (MFFuture *)plainTextContentFromDOMDocument:(DOMDocument *)arg1;
+- (EFFuture *)plainTextContent;
 - (void)prependMarkupString:(NSString *)arg1 quote:(BOOL)arg2;
-- (void)prependPreamble:(NSString *)arg1;
+- (void)prependPreamble:(NSString *)arg1 quote:(BOOL)arg2;
 - (void)prependString:(NSString *)arg1;
 - (struct CGRect)rectOfElementWithID:(NSString *)arg1;
+- (void)releaseFocusAfterDismissing;
 - (void)removeDropPlaceholders;
+- (void)removeMediaWithAssetIdentifier:(NSString *)arg1;
 - (void)replaceAttachment:(MFAttachment *)arg1 withDocumentAtURL:(NSURL *)arg2 completion:(void (^)(MFAttachment *))arg3;
 - (void)replaceAttachment:(MFAttachment *)arg1 withDocumentData:(NSData *)arg2 fileName:(NSString *)arg3 mimeType:(NSString *)arg4;
 - (void)replaceImagesIfNecessary;
+- (void)retainFocusAfterPresenting;
 - (void)scaleImagesToScale:(unsigned long long)arg1;
 - (struct _NSRange)selectedRange;
-- (void)setAttachmentURLsToBeReplacedWithFilename:(NSArray *)arg1;
 - (void)setCaretPosition:(unsigned long long)arg1;
 - (void)setMarkupString:(NSString *)arg1;
 - (void)setMarkupString:(NSString *)arg1 quote:(BOOL)arg2;
+- (void)setOriginalAttachmentInfo:(NSArray *)arg1;
 - (void)setPrefersFirstLineSelection;
+- (void)setReplacementFilenamesByContentID:(NSDictionary *)arg1;
+- (void)showOriginalAttachments;
 - (void)unscaleImages;
 - (void)updateInputAssistantItem;
+
+@optional
+- (void)compositionDidFailToFinish;
+- (void)compositionWillFinish;
 @end
 

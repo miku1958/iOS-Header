@@ -7,18 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <ContactsAutocomplete/NSCopying-Protocol.h>
+#import <ContactsAutocomplete/NSSecureCoding-Protocol.h>
 
 @class CNAutocompleteFetchContext, NSArray, NSString;
 
-@interface CNAutocompleteFetchRequest : NSObject <NSCopying>
+@interface CNAutocompleteFetchRequest : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_searchString;
     NSString *_priorityDomainForSorting;
     unsigned long long _searchType;
     CNAutocompleteFetchContext *_fetchContext;
+    struct NSNumber *_shouldIncludeGroupResultsImpl;
     BOOL _includeContacts;
     BOOL _includeRecents;
     BOOL _includeSuggestions;
+    BOOL _includeLocalExtensions;
     BOOL _includeDirectoryServers;
     BOOL _includeCalendarServers;
     BOOL _includePredictions;
@@ -28,6 +31,7 @@
 @property BOOL includeCalendarServers; // @synthesize includeCalendarServers=_includeCalendarServers;
 @property BOOL includeContacts; // @synthesize includeContacts=_includeContacts;
 @property BOOL includeDirectoryServers; // @synthesize includeDirectoryServers=_includeDirectoryServers;
+@property BOOL includeLocalExtensions; // @synthesize includeLocalExtensions=_includeLocalExtensions;
 @property BOOL includePredictions; // @synthesize includePredictions=_includePredictions;
 @property BOOL includeRecents; // @synthesize includeRecents=_includeRecents;
 @property BOOL includeServers;
@@ -37,19 +41,24 @@
 @property unsigned long long searchType; // @synthesize searchType=_searchType;
 @property (readonly) NSArray *searchableProperties;
 @property (copy) NSString *sendingAddress;
+@property BOOL shouldIncludeGroupResults;
 
 + (id)request;
 + (id)searchablePropertiesForSearchType:(unsigned long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)executeWithDelegate:(id)arg1;
 - (unsigned long long)hash;
 - (id)includeDebugString;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 - (id)searchTypeDebugString;
+- (id)shouldIncludeGroupResultsDebugString;
 
 @end
 

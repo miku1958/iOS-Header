@@ -20,12 +20,12 @@
     NSString *mSourceBundleIdentifier;
     NSString *mFilesDescription;
     NSSet *mAirDropItems;
-    SFAirDropClassroomTransferManager *mTransferManager;
     NSString *mTransferIdentifier;
     CRKAirDropTransferInfo *mTransferInfo;
     BOOL mTransferAccepted;
     BOOL mTransferFinished;
     NSURL *mTransferDirectoryURL;
+    SFAirDropClassroomTransferManager *mTransferManager;
 }
 
 @property (readonly, copy) NSString *debugDescription;

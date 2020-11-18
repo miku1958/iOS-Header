@@ -16,13 +16,15 @@
     NSMutableArray *_nameInfos;
 }
 
-@property (strong, nonatomic) NSMutableArray *nameInfos; // @synthesize nameInfos=_nameInfos;
+@property (strong, nonatomic) NSMutableArray *nameInfos;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)nameInfoType;
 - (void).cxx_destruct;
 - (void)addNameInfo:(id)arg1;
 - (void)clearNameInfos;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +34,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)nameInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)nameInfosCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

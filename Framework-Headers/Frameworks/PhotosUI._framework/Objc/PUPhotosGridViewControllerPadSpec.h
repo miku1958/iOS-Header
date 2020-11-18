@@ -23,7 +23,7 @@
 - (BOOL)shouldPlaceDeleteInCenterToolbarPosition;
 - (BOOL)shouldPlaceSelectAllButtonInRightNavigationBar;
 - (unsigned long long)supportedInterfaceOrientations;
-- (int)thumbnailImageFormat;
+- (unsigned short)thumbnailImageFormat;
 - (BOOL)usesStackPopTransition;
 - (BOOL)wantsBackButtonTitleForPhotoBrowser;
 - (BOOL)wantsCustomNavigationTransition;

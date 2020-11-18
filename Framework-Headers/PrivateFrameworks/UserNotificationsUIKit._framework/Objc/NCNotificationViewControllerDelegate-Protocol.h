@@ -6,7 +6,7 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class BSAnimationSettings, NCNotificationAction, NCNotificationRequest, NCNotificationViewController, NSDictionary, UIView, UIWindow, _UILegibilitySettings;
+@class BSAnimationSettings, NCNotificationAction, NCNotificationRequest, NCNotificationViewController, NSDictionary, UIGestureRecognizer, UIView, UIWindow;
 @protocol PLKeyboardHomeAffordanceAssertion, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol NCNotificationViewControllerDelegate <NSObject>
@@ -15,23 +15,23 @@
 
 @optional
 - (BSAnimationSettings *)hideHomeAffordanceAnimationSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
-- (_UILegibilitySettings *)legibilitySettingsForNotificationViewController:(NCNotificationViewController *)arg1;
 - (NSDictionary *)notificationUsageTrackingStateForNotificationViewController:(NCNotificationViewController *)arg1;
 - (struct CGRect)notificationViewController:(NCNotificationViewController *)arg1 finalFrameForDismissingLongLookFromView:(UIView *)arg2;
 - (struct CGRect)notificationViewController:(NCNotificationViewController *)arg1 initialFrameForPresentingLongLookFromView:(UIView *)arg2;
 - (id<PLKeyboardHomeAffordanceAssertion>)notificationViewController:(NCNotificationViewController *)arg1 keyboardAssertionForGestureWindow:(UIWindow *)arg2;
 - (void)notificationViewController:(NCNotificationViewController *)arg1 requestsExpandingCoalescedBundleForNotificationRequest:(NCNotificationRequest *)arg2;
-- (void)notificationViewController:(NCNotificationViewController *)arg1 shouldFinishLongLookTransitionWithCompletionBlock:(void (^)(BOOL))arg2;
-- (BOOL)notificationViewController:(NCNotificationViewController *)arg1 suggestsDismissingShortLookWithSource:(id)arg2;
+- (void)notificationViewController:(NCNotificationViewController *)arg1 shouldFinishLongLookTransitionForTrigger:(long long)arg2 withCompletionBlock:(void (^)(BOOL))arg3;
+- (BOOL)notificationViewController:(NCNotificationViewController *)arg1 suggestsDismissingShortLookWithSourceGestureRecognizer:(UIGestureRecognizer *)arg2 animated:(BOOL)arg3;
 - (long long)notificationViewControllerDateFormatStyle:(NCNotificationViewController *)arg1;
-- (void)notificationViewControllerIsReadyToBePresented:(NCNotificationViewController *)arg1;
-- (BOOL)notificationViewControllerShouldAllowInteractionGesture:(NCNotificationViewController *)arg1;
-- (BOOL)notificationViewControllerShouldBlurShortLook:(NCNotificationViewController *)arg1;
+- (BOOL)notificationViewControllerIsCoalescedBundle:(NCNotificationViewController *)arg1;
+- (BOOL)notificationViewControllerShouldAllowClickPresentationInteraction:(NCNotificationViewController *)arg1;
+- (BOOL)notificationViewControllerShouldAllowDragInteraction:(NCNotificationViewController *)arg1;
+- (BOOL)notificationViewControllerShouldAllowLongPressGesture:(NCNotificationViewController *)arg1;
 - (BOOL)notificationViewControllerShouldInterpretTapAsDefaultAction:(NCNotificationViewController *)arg1;
 - (BOOL)notificationViewControllerShouldPan:(NCNotificationViewController *)arg1;
+- (BOOL)notificationViewControllerShouldSupportClickPresentationInteraction:(NCNotificationViewController *)arg1;
 - (void)notificationViewControllerWillDismissForCancelAction:(NCNotificationViewController *)arg1;
 - (id<UIViewSpringAnimationBehaviorDescribing>)settleHomeAffordanceAnimationBehaviorDescriptionForNotificationViewController:(NCNotificationViewController *)arg1;
-- (BOOL)shouldLoadAudioAccessoryViewForNotificationViewController:(NCNotificationViewController *)arg1;
 - (BOOL)showAdditionalMessageLinesForNotificationViewController:(NCNotificationViewController *)arg1;
 - (BSAnimationSettings *)unhideHomeAffordanceAnimationSettingsForNotificationViewController:(NCNotificationViewController *)arg1;
 @end

@@ -6,81 +6,75 @@
 
 #import <objc/NSObject.h>
 
-@class AMSMetricsDatabase, AMSURLSession, NSDictionary, NSMutableSet, NSString;
-@protocol AMSMetricsBagContract, OS_dispatch_queue;
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
+#import <AppleMediaServices/AMSBagConsumer_Project-Protocol.h>
 
-@interface AMSMetrics : NSObject
+@class AMSMetricsDatabaseDataSource, NSString;
+@protocol AMSBagProtocol, AMSMetricsBagContract, AMSMetricsFlushStrategy, OS_dispatch_queue;
+
+@interface AMSMetrics : NSObject <AMSBagConsumer_Project, AMSBagConsumer>
 {
-    BOOL _flushCancelled;
-    BOOL _disableFlushing;
+    BOOL _flushTimerEnabled;
+    BOOL _flushingDisabled;
     BOOL _monitorsLifecycleEvents;
     BOOL _flushOnForeground;
-    id<AMSMetricsBagContract> _bagContract;
+    id<AMSBagProtocol> _bag;
     NSString *_containerId;
     long long _maxBatchSize;
     long long _maxRequestCount;
-    AMSMetricsDatabase *_database;
-    NSMutableSet *_chainedFlushPromises;
     NSObject<OS_dispatch_queue> *_completionQueue;
-    CDUnknownBlockType _flushTimerBlock;
-    NSDictionary *_lastMetricsDictionary;
-    NSObject<OS_dispatch_queue> *_metricsQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    NSMutableSet *_requestPromises;
-    AMSURLSession *_URLSession;
+    id<AMSMetricsFlushStrategy> _currentFlushStrategy;
+    AMSMetricsDatabaseDataSource *_databaseSource;
+    CDUnknownBlockType _flushIntervalBlock;
+    long long _destination;
+    NSObject<OS_dispatch_queue> *_flushQueue;
 }
 
-@property (strong, nonatomic) AMSURLSession *URLSession; // @synthesize URLSession=_URLSession;
-@property (strong, nonatomic) id<AMSMetricsBagContract> bagContract; // @synthesize bagContract=_bagContract;
-@property (strong, nonatomic) NSMutableSet *chainedFlushPromises; // @synthesize chainedFlushPromises=_chainedFlushPromises;
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property (strong, nonatomic) id<AMSMetricsBagContract> bagContract;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property (readonly, nonatomic) NSString *containerId; // @synthesize containerId=_containerId;
-@property (strong, nonatomic) AMSMetricsDatabase *database; // @synthesize database=_database;
-@property (nonatomic) BOOL disableFlushing; // @synthesize disableFlushing=_disableFlushing;
+@property (strong, nonatomic) id<AMSMetricsFlushStrategy> currentFlushStrategy; // @synthesize currentFlushStrategy=_currentFlushStrategy;
+@property (strong, nonatomic) AMSMetricsDatabaseDataSource *databaseSource; // @synthesize databaseSource=_databaseSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) long long destination; // @synthesize destination=_destination;
 @property (readonly, nonatomic) long long eventCount;
-@property (nonatomic) BOOL flushCancelled; // @synthesize flushCancelled=_flushCancelled;
-@property (readonly, nonatomic) double flushInterval;
+@property (copy, nonatomic) CDUnknownBlockType flushIntervalBlock; // @synthesize flushIntervalBlock=_flushIntervalBlock;
 @property (nonatomic) BOOL flushOnForeground; // @synthesize flushOnForeground=_flushOnForeground;
-@property (copy, nonatomic) CDUnknownBlockType flushTimerBlock; // @synthesize flushTimerBlock=_flushTimerBlock;
-@property (nonatomic) BOOL flushTimerEnabled;
-@property (strong, nonatomic) NSDictionary *lastMetricsDictionary; // @synthesize lastMetricsDictionary=_lastMetricsDictionary;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *flushQueue; // @synthesize flushQueue=_flushQueue;
+@property (nonatomic) BOOL flushTimerEnabled; // @synthesize flushTimerEnabled=_flushTimerEnabled;
+@property (nonatomic) BOOL flushingDisabled; // @synthesize flushingDisabled=_flushingDisabled;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long maxBatchSize; // @synthesize maxBatchSize=_maxBatchSize;
 @property (nonatomic) long long maxRequestCount; // @synthesize maxRequestCount=_maxRequestCount;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *metricsQueue; // @synthesize metricsQueue=_metricsQueue;
 @property (nonatomic) BOOL monitorsLifecycleEvents; // @synthesize monitorsLifecycleEvents=_monitorsLifecycleEvents;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (strong, nonatomic) NSMutableSet *requestPromises; // @synthesize requestPromises=_requestPromises;
+@property (readonly) Class superclass;
 
-+ (id)_sharedInstanceUsingContract:(id)arg1;
-+ (id)_sharedTimerQueue;
++ (id)_sharedInstanceUsingBag:(id)arg1;
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 + (BOOL)disableBackgroundMetrics;
++ (BOOL)flushDelayEnabled;
 + (BOOL)flushTimerEnabled;
 + (id)serverTimeFromDate:(id)arg1;
 + (id)serverTimeFromTimeInterval:(double)arg1;
 + (void)setDisableBackgroundMetrics:(BOOL)arg1;
++ (void)setFlushDelayEnabled:(BOOL)arg1;
 + (void)setFlushTimerEnabled:(BOOL)arg1;
++ (id)sharedTimerQueue;
 + (double)timeIntervalFromServerTime:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addCancellablePromise:(id)arg1;
 - (void)_applicationWillEnterForeground;
-- (id)_baseMetricsURL;
-- (void)_batchEventArray:(id)arg1 batchBlock:(CDUnknownBlockType)arg2;
-- (id)_createRequestWithURL:(id)arg1 canary:(id)arg2 account:(id)arg3 body:(id)arg4 signature:(id)arg5 logKey:(id)arg6 collectAdditonalMetrics:(BOOL)arg7;
-- (void)_flushDatabaseMetricsWithLockKey:(id)arg1 logKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_flushNextBatchWithTopic:(id)arg1 lockKey:(id)arg2 logKey:(id)arg3 requestCount:(long long)arg4 flushedEventCount:(long long)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_flushTimerInvalidate;
-- (void)_flushTimerStart;
-- (void)_flushTimerUpdated;
-- (void)_handleFlushTimer;
-- (id)_mescalSignatureWithBodyData:(id)arg1 logKey:(id)arg2;
-- (id)_metricsDictionary;
-- (id)_nextBatchWithTopic:(id)arg1 lockKey:(id)arg2 error:(id *)arg3;
-- (id)_nextTopicWithLockKey:(id)arg1 error:(id *)arg2;
-- (void)_openDatabaseIfNeeded;
-- (void)_postEvents:(id)arg1 reportURL:(id)arg2 account:(id)arg3 logKey:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)_prepareEvent:(id)arg1;
-- (BOOL)_shouldBlacklistEvent:(id)arg1;
-- (BOOL)_shouldClearEventsDespiteError:(id)arg1 result:(id)arg2;
+- (void)_beginFlushIntervalWithStyle:(long long)arg1;
+- (id)_determineFlushStrategyWithDataSource:(id)arg1 topic:(id)arg2;
+- (id)_flushDataSource:(id)arg1 topic:(id)arg2;
+- (double)_flushInterval;
+- (BOOL)_flushIntervalEnabledForStyle:(long long)arg1;
+- (void)_flushIntervalInvalidate;
+- (void)_handleFlushIntervalWithStyle:(long long)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (void)dropEvents;
@@ -89,6 +83,8 @@
 - (void)enqueueEvents:(id)arg1;
 - (id)flush;
 - (id)flushEvents:(id)arg1;
+- (id)flushTopic:(id)arg1;
+- (id)initWithContainerID:(id)arg1 bag:(id)arg2;
 - (id)initWithContainerId:(id)arg1 bagContract:(id)arg2;
 
 @end

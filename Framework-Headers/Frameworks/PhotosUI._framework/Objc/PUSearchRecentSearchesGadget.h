@@ -22,9 +22,9 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_separatorCompactWidthConstraint;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType; // @synthesize accessoryButtonType=_accessoryButtonType;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -58,7 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)userDidSelectAccessoryButton:(id)arg1;
+- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
 - (void)viewDidLoad;
 - (void)viewLayoutMarginsDidChange;
 

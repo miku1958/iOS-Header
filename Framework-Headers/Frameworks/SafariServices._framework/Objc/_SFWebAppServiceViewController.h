@@ -7,19 +7,21 @@
 #import <SafariServices/SFBrowserServiceViewController.h>
 
 #import <SafariServices/SFWebAppServiceViewControllerProtocol-Protocol.h>
+#import <SafariServices/WBSDigitalHealthManagerDelegate-Protocol.h>
 
-@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore, _SFNavigationUtilitiesManager;
+@class BKSApplicationStateMonitor, NSMutableArray, NSString, NSURL, UIView, UIWebClip, WBSDigitalHealthManager, WKProcessPool, WKWebsiteDataStore;
 
-@interface _SFWebAppServiceViewController : SFBrowserServiceViewController <SFWebAppServiceViewControllerProtocol>
+@interface _SFWebAppServiceViewController : SFBrowserServiceViewController <WBSDigitalHealthManagerDelegate, SFWebAppServiceViewControllerProtocol>
 {
     UIWebClip *_webClip;
     UIView *_statusBarBackgroundView;
-    _SFNavigationUtilitiesManager *_navigationUtilitiesManager;
     WKProcessPool *_processPool;
     WKWebsiteDataStore *_websiteDataStore;
     NSMutableArray *_fallbackURLs;
     BKSApplicationStateMonitor *_stateMonitor;
     unsigned int _hostState;
+    NSURL *_currentUsageTrackingURL;
+    WBSDigitalHealthManager *_digitalHealthManager;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,10 +31,11 @@
 
 + (id)_exportedInterface;
 + (id)_remoteViewControllerInterface;
-+ (void)_removeCachedWebAppWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_clientIsWebApp;
+- (id)_digitalHealthManager;
 - (void)_handleHostStateUpdate:(id)arg1;
+- (void)_hideDigitalHealthOverlay;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
 - (BOOL)_isURLOutOfManifestScope:(id)arg1;
@@ -41,12 +44,16 @@
 - (void)_loadWebClipPageURL:(id)arg1;
 - (unsigned long long)_persona;
 - (BOOL)_shouldCacheWebViewController;
+- (void)_showDigitalHealthOverlay;
+- (void)_updateDigitalHealthTracking;
 - (void)_updateDisplayMode;
 - (BOOL)_usesScrollToTopView;
 - (BOOL)canPrint;
 - (void)dealloc;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (void)navigationBarDoneButtonWasTapped:(id)arg1;
+- (void)policyDidChangeForDigitalHealthManager:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (id)processPool;
 - (void)setNeedsStatusBarAppearanceUpdate;

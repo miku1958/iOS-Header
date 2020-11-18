@@ -16,24 +16,30 @@
     BOOL _active;
     BOOL _recurring;
     BOOL _fromMe;
-    BOOL _pending;
     NSString *_identifier;
     NSString *_label;
     CLLocation *_location;
     FMFPlacemark *_placemark;
     NSArray *_recipients;
+    NSArray *_followerIds;
     NSString *_trigger;
     NSString *_type;
     unsigned long long _locationType;
+    NSString *_acceptanceStatus;
+    NSString *_ckRecordName;
+    NSString *_ckRecordZoneOwnerName;
     NSDate *_timestamp;
-    NSArray *_followerIds;
     NSString *_friendIdentifier;
     NSString *_createdByIdentifier;
     NSString *_pendingIdentifier;
 }
 
+@property (strong, nonatomic) NSString *acceptanceStatus; // @synthesize acceptanceStatus=_acceptanceStatus;
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (strong, nonatomic) NSString *ckRecordName; // @synthesize ckRecordName=_ckRecordName;
+@property (strong, nonatomic) NSString *ckRecordZoneOwnerName; // @synthesize ckRecordZoneOwnerName=_ckRecordZoneOwnerName;
 @property (strong, nonatomic) NSString *createdByIdentifier; // @synthesize createdByIdentifier=_createdByIdentifier;
+@property (readonly, nonatomic) NSString *displayLocationName;
 @property (strong, nonatomic) NSArray *followerIds; // @synthesize followerIds=_followerIds;
 @property (strong, nonatomic) NSString *friendIdentifier; // @synthesize friendIdentifier=_friendIdentifier;
 @property (nonatomic, getter=isFromMe) BOOL fromMe; // @synthesize fromMe=_fromMe;
@@ -41,15 +47,21 @@
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long locationType; // @synthesize locationType=_locationType;
-@property (nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
+@property (readonly, nonatomic, getter=isOnMe) BOOL onMe;
 @property (strong, nonatomic) NSString *pendingIdentifier; // @synthesize pendingIdentifier=_pendingIdentifier;
 @property (strong, nonatomic) FMFPlacemark *placemark; // @synthesize placemark=_placemark;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (nonatomic, getter=isRecurring) BOOL recurring; // @synthesize recurring=_recurring;
+@property (readonly, nonatomic, getter=isRegionAllowed) BOOL regionAllowed;
+@property (readonly, getter=isSupported) BOOL supported;
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) NSString *trigger; // @synthesize trigger=_trigger;
 @property (strong, nonatomic) NSString *type; // @synthesize type=_type;
+@property (readonly, nonatomic, getter=shouldUseCloudKitStore) BOOL useCloudKitStore;
+@property (readonly, nonatomic, getter=shouldUseIDSTrigger) BOOL useIDSTrigger;
 
++ (id)genericFriendName;
++ (BOOL)isAllowedAtLocation:(struct CLLocationCoordinate2D)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -61,6 +73,10 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithRecipient:(id)arg1 location:(id)arg2 placemark:(id)arg3 label:(id)arg4 trigger:(id)arg5 type:(id)arg6 locationType:(unsigned long long)arg7 recurring:(BOOL)arg8;
 - (BOOL)isEqual:(id)arg1;
+- (id)localizedNotificationStringForFollower:(id)arg1 locationName:(id)arg2;
+- (id)localizedRequestNotificationStringForFollower:(id)arg1 locationName:(id)arg2;
+- (id)localizedSubtitleStringWithLocationName:(id)arg1;
+- (id)localizedWillBeNotifiedStringForFollower:(id)arg1 locationName:(id)arg2;
 - (id)locationForDictionary:(id)arg1;
 - (void)updateFenceLocation:(id)arg1 placemark:(id)arg2 label:(id)arg3 trigger:(id)arg4 type:(id)arg5 locationType:(unsigned long long)arg6;
 

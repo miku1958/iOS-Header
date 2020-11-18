@@ -16,18 +16,19 @@
     int _type;
     BOOL _isConnected;
     struct {
-        unsigned int type:1;
-        unsigned int isConnected:1;
-    } _has;
+        unsigned int has_type:1;
+        unsigned int has_isConnected:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsConnected;
 @property (readonly, nonatomic) BOOL hasPairedDeviceIdentifier;
 @property (nonatomic) BOOL hasType;
-@property (nonatomic) BOOL isConnected; // @synthesize isConnected=_isConnected;
-@property (strong, nonatomic) GEOLogMsgStateDeviceIdentifier *pairedDeviceIdentifier; // @synthesize pairedDeviceIdentifier=_pairedDeviceIdentifier;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) BOOL isConnected;
+@property (strong, nonatomic) GEOLogMsgStateDeviceIdentifier *pairedDeviceIdentifier;
+@property (nonatomic) int type;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -37,6 +38,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

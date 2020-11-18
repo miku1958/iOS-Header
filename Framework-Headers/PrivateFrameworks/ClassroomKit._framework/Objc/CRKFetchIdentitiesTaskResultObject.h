@@ -10,12 +10,10 @@
 
 @interface CRKFetchIdentitiesTaskResultObject : CATTaskResultObject
 {
-    NSDictionary *_deviceIdentityInfo;
     NSDictionary *_courseIdentityInfosByGroupIdentifier;
 }
 
 @property (copy, nonatomic) NSDictionary *courseIdentityInfosByGroupIdentifier; // @synthesize courseIdentityInfosByGroupIdentifier=_courseIdentityInfosByGroupIdentifier;
-@property (copy, nonatomic) NSDictionary *deviceIdentityInfo; // @synthesize deviceIdentityInfo=_deviceIdentityInfo;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

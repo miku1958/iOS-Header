@@ -11,15 +11,14 @@
 @interface NSURLSessionAVAssetDownloadTask : NSURLSessionTask
 {
     unsigned long long _AVAssetDownloadToken;
-    NSURL *_URL;
-    NSURL *_destinationURL;
 }
 
 @property (readonly) unsigned long long AVAssetDownloadToken; // @synthesize AVAssetDownloadToken=_AVAssetDownloadToken;
-@property (readonly, copy) NSURL *URL; // @synthesize URL=_URL;
-@property (readonly, copy) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
+@property (readonly, copy) NSURL *URL; // @dynamic URL;
+@property (readonly, copy) NSURL *destinationURL; // @dynamic destinationURL;
 
-- (void)dealloc;
+- (void)setDestinationURL:(id)arg1;
+- (void)setURL:(id)arg1;
 
 @end
 

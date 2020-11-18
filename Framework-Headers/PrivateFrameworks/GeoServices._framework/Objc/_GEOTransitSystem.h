@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEOTransitSystem-Protocol.h>
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
 @class GEOPBTransitSystem, GEOStyleAttributes, NSString;
 @protocol GEOTransitArtworkDataSource;
 
 __attribute__((visibility("hidden")))
-@interface _GEOTransitSystem : NSObject <GEOTransitSystem>
+@interface _GEOTransitSystem : NSObject <GEOTransitSystem, NSSecureCoding>
 {
     GEOPBTransitSystem *_system;
 }
@@ -26,7 +27,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSystem:(id)arg1;
 
 @end

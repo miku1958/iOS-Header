@@ -7,7 +7,9 @@
 #import <HealthKit/HKInspectableValue.h>
 
 @interface HKInspectableValue (Display)
+- (id)_displayStringForCodedValueCollection:(id)arg1;
 - (id)_joinValueStrings:(id)arg1;
+- (id)_stringForMedicalCodings:(id)arg1;
 - (id)_stringForMedicalDateInterval;
 - (id)_stringForQuantity:(id)arg1;
 - (id)_stringForTimeSinceMidnight;

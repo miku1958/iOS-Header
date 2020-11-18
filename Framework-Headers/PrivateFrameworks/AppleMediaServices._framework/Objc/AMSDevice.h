@@ -6,53 +6,67 @@
 
 #import <objc/NSObject.h>
 
-@interface AMSDevice : NSObject
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
+
+@class NSString;
+
+@interface AMSDevice : NSObject <AMSBagConsumer>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)MLBSerialNumber;
++ (id)ROMAddress;
 + (id)_appleLanguagesObservable;
-+ (id)_compatibleProductType;
 + (id)_dataForNVRAMKey:(id)arg1;
-+ (id)_followUpItemWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 bagContract:(id)arg4 logKey:(id)arg5;
++ (id)_followUpItemWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 bag:(id)arg4;
 + (id)_notificationIdFromFollowUpId:(id)arg1 account:(id)arg2;
 + (void)_performAuth;
-+ (void)_startListeningForDeviceLanguageChangeWithBagContract:(id)arg1 callback:(CDUnknownBlockType)arg2;
 + (id)_systemVersionDictionary;
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 + (id)buildVersion;
++ (id)compatibleProductType;
 + (id)deviceGUID;
 + (BOOL)deviceIsAppleTV;
 + (BOOL)deviceIsAppleWatch;
 + (BOOL)deviceIsAudioAccessory;
 + (BOOL)deviceIsInternalBuild;
++ (BOOL)deviceIsMac;
 + (BOOL)deviceIsSeedBuild;
 + (BOOL)deviceIsiPad;
 + (BOOL)deviceIsiPhone;
 + (BOOL)deviceIsiPod;
 + (id)deviceName;
 + (id)deviceOffers;
-+ (BOOL)deviceOffersContainProductType:(unsigned long long)arg1;
 + (BOOL)deviceOffersContainType:(unsigned long long)arg1;
-+ (id)deviceOffersForProductType:(unsigned long long)arg1;
 + (id)deviceOffersForType:(unsigned long long)arg1;
 + (BOOL)expressedIntent;
 + (id)hardwarePlatform;
 + (BOOL)isEligibleForOffers;
 + (BOOL)isGift;
 + (BOOL)isRunningInStoreDemoMode;
++ (BOOL)isSecureElementAvailable;
 + (id)language;
 + (id)localIPAddress;
 + (id)macAddress;
 + (id)macAddressData;
++ (id)operatingSystem;
++ (BOOL)postAllDeviceOfferFollowUpsForAccount:(id)arg1 priority:(long long)arg2 bag:(id)arg3 logKey:(id)arg4;
 + (BOOL)postAllDeviceOfferFollowUpsForAccount:(id)arg1 priority:(long long)arg2 bagContract:(id)arg3 logKey:(id)arg4;
-+ (BOOL)postAllDeviceOfferFollowUpsForAccount:(id)arg1 priority:(long long)arg2 logKey:(id)arg3;
++ (BOOL)postDeviceOfferFollowUpWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 bag:(id)arg4 logKey:(id)arg5;
 + (BOOL)postDeviceOfferFollowUpWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 bagContract:(id)arg4 logKey:(id)arg5;
-+ (BOOL)postDeviceOfferFollowUpWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3 logKey:(id)arg4;
 + (id)productType;
 + (id)productVersion;
 + (void)registerCompanionWithSerialNumber:(id)arg1;
++ (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 logKey:(id)arg4;
 + (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2 bagContract:(id)arg3 logKey:(id)arg4;
-+ (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2 logKey:(id)arg3;
 + (BOOL)saveDeviceOffersForAccount:(id)arg1 response:(id)arg2 logKey:(id)arg3;
 + (id)screenScale;
 + (id)serialNumber;

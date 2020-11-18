@@ -50,6 +50,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualForInspector:(id)arg1;
 - (void)iterateFormulasWithContext:(struct TSCEFormulaRewriteContext *)arg1 shouldStop:(BOOL *)arg2 block:(CDUnknownBlockType)arg3;
+- (id)privateCellStyle;
+- (id)privateTextStyle;
+- (void)setCellStyle:(id)arg1 textStyle:(id)arg2;
 - (void)setHostCell:(const UUIDData_5fbc143e *)arg1 hostColumnUID:(const UUIDData_5fbc143e *)arg2 hostRowUID:(const UUIDData_5fbc143e *)arg3;
 
 @end

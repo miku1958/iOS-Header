@@ -11,6 +11,8 @@
 @protocol KNSlideCollection <NSObject>
 
 @property (readonly, nonatomic) KNSlideNode *defaultSlideNodeForNewSelection;
+@property (readonly, nonatomic) NSArray *displayedSlideNodes;
+@property (readonly, nonatomic) NSArray *slideNodes;
 
 - (BOOL)containsSlideNode:(KNSlideNode *)arg1;
 - (KNSlideNode *)defaultSlideNodeForNewSelectionNearestToIndex:(unsigned long long)arg1;

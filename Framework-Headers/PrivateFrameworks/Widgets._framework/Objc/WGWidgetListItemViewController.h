@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <Widgets/PLContentSizeCategoryAdjusting-Protocol.h>
+
 @class NSString, WGWidgetHostingViewController, WGWidgetPlatterView;
 @protocol WGWidgetHostingViewControllerDelegate><WGWidgetListItemViewControllerDelegate;
 
-@interface WGWidgetListItemViewController : UIViewController
+@interface WGWidgetListItemViewController : UIViewController <PLContentSizeCategoryAdjusting>
 {
     NSString *_widgetIdentifier;
     id<WGWidgetHostingViewControllerDelegate><WGWidgetListItemViewControllerDelegate> _delegate;
@@ -17,18 +19,25 @@
     struct CGSize _pendingSize;
 }
 
+@property (nonatomic) BOOL adjustsFontForContentSizeCategory;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WGWidgetHostingViewControllerDelegate><WGWidgetListItemViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=_pendingSize, setter=_setPendingSize:) struct CGSize pendingSize; // @synthesize pendingSize=_pendingSize;
 @property (readonly, nonatomic) WGWidgetPlatterView *platterView;
+@property (copy, nonatomic) NSString *preferredContentSizeCategory;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) WGWidgetHostingViewController *widgetHost; // @synthesize widgetHost=_widgetHost;
 @property (readonly, copy, nonatomic) NSString *widgetIdentifier; // @synthesize widgetIdentifier=_widgetIdentifier;
 
 - (void).cxx_destruct;
 - (void)_addWidgetHostIfNecessary;
+- (BOOL)_canShowWhileLocked;
 - (id)_platterViewIfLoaded;
 - (id)_platterViewLoadingIfNecessary:(BOOL)arg1;
+- (BOOL)adjustForContentSizeCategoryChange;
 - (struct CGSize)contentSizeForPreferredContentSize:(struct CGSize)arg1;
-- (id)description;
 - (id)initWithWidgetIdentifier:(id)arg1;
 - (void)loadView;
 - (void)managingContainerDidDisappear:(id)arg1;

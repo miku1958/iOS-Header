@@ -12,10 +12,12 @@
 {
 }
 
+@property BOOL enableProKeyboard;
 @property long long handBias;
 @property (readonly, nonatomic) UIKeyboardPreferencesController<TIPreferencesControllerActions> *preferencesActions;
 
 + (id)sharedPreferencesController;
++ (id)valueForPreferenceKey:(id)arg1 domain:(id)arg2;
 - (void)_configurePreferences;
 - (BOOL)allEnabledInputModesAreValid;
 - (BOOL)boolForKey:(int)arg1;
@@ -40,7 +42,6 @@
 - (BOOL)spaceConfirmationEnabled;
 - (void)synchronizePreferences;
 - (void)touchSynchronizePreferencesTimer;
-- (BOOL)typologyEnabled;
 - (id)valueForKey:(int)arg1;
 - (id)valueForPreferenceKey:(id)arg1;
 

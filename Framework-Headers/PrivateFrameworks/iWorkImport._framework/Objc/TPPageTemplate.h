@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (strong, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) unsigned long long countOfMasterDrawables;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,6 +43,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL headersFootersMatchPreviousPage; // @synthesize headersFootersMatchPreviousPage=_headersFootersMatchPreviousPage;
 @property (nonatomic) BOOL hideHeadersFooters; // @synthesize hideHeadersFooters=_hideHeadersFooters;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic) BOOL isMaster;
+@property (readonly, nonatomic) BOOL isTopmostContainerInfo;
 @property (strong, nonatomic) NSMutableArray *masterDrawables; // @synthesize masterDrawables=_masterDrawables;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;

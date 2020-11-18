@@ -25,8 +25,11 @@
 @property (readonly, copy, nonatomic) NSString *editorBundleID;
 @property (strong, nonatomic) NSDictionary *propertyListDictionary; // @synthesize propertyListDictionary=_propertyListDictionary;
 
++ (BOOL)adjustmentsPropertyListFileRequiresOverflowDataReassemblyAtURL:(id)arg1 predictedSize:(long long *)arg2;
++ (id)dataForOverflowDataReassembledAdjustmentsPropertyListAtURL:(id)arg1 error:(id *)arg2;
 + (id)fingerPrintForData:(id)arg1 error:(id *)arg2;
 + (id)fingerprintWithAssetAdjustmentFingerprintData:(id)arg1;
++ (BOOL)writeReassembleAdjustmentsPropertyListAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

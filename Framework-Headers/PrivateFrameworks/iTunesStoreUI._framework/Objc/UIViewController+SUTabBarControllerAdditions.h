@@ -6,8 +6,74 @@
 
 #import <UIKit/UIViewController.h>
 
+@class SUStorePageProtocol, SUViewControllerFactory;
+
 @interface UIViewController (SUTabBarControllerAdditions)
+
+@property (readonly, nonatomic) long long ITunesStoreUIBarStyle;
+@property (readonly, nonatomic) struct CGRect documentBounds;
+@property (readonly, nonatomic) BOOL shouldInvalidateForMemoryPurge;
+@property (readonly, nonatomic, getter=isSkLoaded) BOOL skLoaded;
+@property (readonly, nonatomic, getter=isSkLoading) BOOL skLoading;
+@property (strong, nonatomic) SUStorePageProtocol *storePageProtocol;
+@property (readonly, nonatomic) SUViewControllerFactory *viewControllerFactory;
+
++ (void)_iTunesStoreUI_dequeueTransitionSafeInvocations;
++ (void)_iTunesStoreUI_enqueueTransitionSafeInvocation:(id)arg1;
++ (void)_iTunesStoreUI_timeoutTransitionSafety;
++ (void)beginTransitionSafety;
++ (void)endTransitionSafety;
++ (id)transitionSafePerformer:(id)arg1;
++ (id)transitionSafetyDelegate;
+- (id)_sectionForViewController:(id)arg1;
+- (BOOL)canDisplaySectionGroup:(id)arg1;
+- (id)copyArchivableContext;
+- (id)copyArchivableJetsamContext;
+- (id)copyObjectForScriptFromPoolWithClass:(Class)arg1;
+- (id)copyScriptViewController;
+- (void)dismissAnimated:(BOOL)arg1;
+- (void)dismissOverlayBackgroundViewController;
+- (id)displayedURL;
+- (void)handleStoreFailureWithError:(id)arg1;
+- (BOOL)hasDisplayableContent;
+- (void)iTunesStoreUI_dismissAction:(id)arg1;
+- (id)iTunesStoreUI_searchFieldController;
+- (BOOL)isDescendantOfViewController:(id)arg1;
+- (BOOL)isInMoreList;
+- (BOOL)isRootViewController;
+- (void)keyboardDidHideWithInfo:(id)arg1;
+- (void)keyboardDidShowWithInfo:(id)arg1;
+- (void)keyboardWillHideWithInfo:(id)arg1;
+- (void)keyboardWillShowWithInfo:(id)arg1;
+- (BOOL)loadMoreWithURL:(id)arg1;
+- (struct CGSize)maximumViewSize;
+- (struct CGSize)minimumViewSize;
+- (id)navigationItemForScriptInterface;
+- (id)overlayBackgroundViewController;
+- (id)overlayViewController;
+- (void)parentViewControllerHierarchyDidChange;
+- (BOOL)presentOverlayBackgroundViewController:(id)arg1;
+- (BOOL)presentOverlayViewController:(id)arg1 withTransition:(id)arg2;
+- (BOOL)presentViewController:(id)arg1 inOverlayWithConfiguration:(id)arg2;
+- (BOOL)pushStorePage:(id)arg1 withTarget:(long long)arg2 animated:(BOOL)arg3;
+- (BOOL)reloadForSectionsWithGroup:(id)arg1;
+- (void)reloadWithStorePage:(id)arg1 forURL:(id)arg2;
+- (BOOL)reloadWithURLRequestProperties:(id)arg1;
+- (void)resetRestoredContext;
+- (void)restoreArchivableContext:(id)arg1;
+- (id)scriptWindowContext;
+- (id)section;
+- (void)setBadgeValue:(id)arg1 animated:(BOOL)arg2 blink:(BOOL)arg3;
+- (id)setDisplayedSectionGroup:(id)arg1;
+- (void)setShowsBackgroundShadow:(BOOL)arg1;
+- (BOOL)showsBackgroundShadow;
+- (void)storePageCleanupBeforeTearDown;
+- (void)storePageProtocolDidChange;
+- (id)storeSplitViewController;
+- (id)su_closestNavigationController;
 - (void)tabBarControllerDidLongPressTabBarItem:(id)arg1;
 - (void)tabBarControllerDidReselectTabBarItem:(id)arg1;
+- (void)transitionSafePresentModalViewController:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)viewIsReady;
 @end
 

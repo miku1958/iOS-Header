@@ -27,7 +27,7 @@
 @property BOOL deliveredPlaceholder; // @synthesize deliveredPlaceholder=_deliveredPlaceholder;
 @property (strong) NSString *sandboxExtensionToken; // @synthesize sandboxExtensionToken=_sandboxExtensionToken;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

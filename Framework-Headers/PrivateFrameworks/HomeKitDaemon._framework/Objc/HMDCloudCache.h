@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDBackingStore, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, NSMutableDictionary, NSObject;
+@class CKServerChangeToken, HMDBackingStore, HMDCloudHomeManagerZone, HMDCloudLegacyZone, HMDCloudMetadataZone, HMDCloudZone, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface HMDCloudCache : HMFObject
@@ -15,11 +15,14 @@
     HMDCloudLegacyZone *_legacyZone;
     HMDCloudMetadataZone *_metadataZone;
     HMDCloudHomeManagerZone *_homeManagerZone;
+    HMDCloudZone *_homeDataInformation;
     NSMutableDictionary *_homeZones;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 @property (weak, nonatomic) HMDBackingStore *backingStore; // @synthesize backingStore=_backingStore;
+@property (strong, nonatomic) CKServerChangeToken *databaseServerChangeToken;
+@property (readonly, nonatomic) HMDCloudZone *homeDataInformation; // @synthesize homeDataInformation=_homeDataInformation;
 @property (readonly, nonatomic) HMDCloudHomeManagerZone *homeManagerZone; // @synthesize homeManagerZone=_homeManagerZone;
 @property (strong, nonatomic) NSMutableDictionary *homeZones; // @synthesize homeZones=_homeZones;
 @property (readonly, nonatomic) HMDCloudLegacyZone *legacyZone; // @synthesize legacyZone=_legacyZone;

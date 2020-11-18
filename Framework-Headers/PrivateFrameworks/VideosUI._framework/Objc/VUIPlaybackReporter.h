@@ -18,7 +18,10 @@
 @property (strong, nonatomic) NSMutableArray *sessions; // @synthesize sessions=_sessions;
 
 - (void).cxx_destruct;
+- (void)_beginSession:(id)arg1;
 - (id)_createSessionForPlayer:(id)arg1;
+- (void)_endSession:(id)arg1;
+- (void)_endSessions:(id)arg1;
 - (void)_handlePlaybackChangeForPlayer:(id)arg1 fromState:(id)arg2 toState:(id)arg3 reason:(id)arg4;
 - (BOOL)_isTransitionValidForPlayer:(id)arg1 fromState:(id)arg2 toState:(id)arg3;
 - (void)_logWithFormat:(id)arg1;
@@ -27,12 +30,9 @@
 - (void)_registerObservers;
 - (void)_removeObservers;
 - (void)_reportForSession:(id)arg1 state:(id)arg2 reason:(id)arg3;
-- (void)addSession:(id)arg1;
+- (id)_sessionForPlayer:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)removeSession:(id)arg1;
-- (void)removeSessions:(id)arg1;
-- (id)sessionForPlayer:(id)arg1;
 
 @end
 

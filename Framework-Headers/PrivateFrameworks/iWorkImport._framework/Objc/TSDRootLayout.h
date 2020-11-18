@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)endDynamicAdaptiveLayout;
 - (id)initWithLayoutController:(id)arg1;
 - (BOOL)isRootLayoutForInspectorGeometry;
+- (BOOL)isRootLevelForInlineGeometry;
 - (BOOL)isSavedShiftForInfo:(id)arg1 equalToOffset:(struct CGPoint)arg2;
 - (id)layoutsForProvidingGuidesForChildLayouts;
 - (id)p_shiftedObjects;

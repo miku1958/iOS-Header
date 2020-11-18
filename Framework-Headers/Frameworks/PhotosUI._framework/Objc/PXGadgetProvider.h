@@ -9,8 +9,8 @@
 #import <PhotosUICore/PXGadgetDelegate-Protocol.h>
 #import <PhotosUICore/PXMutableGadgetProvider-Protocol.h>
 
-@class NSArray, NSString;
-@protocol PXGadgetDelegate, PXGadgetProviderDelegate;
+@class NSArray, NSString, PXGadgetNavigationHelper;
+@protocol PXGadgetDelegate, PXGadgetProviderDelegate, PXGadgetTransition;
 
 @interface PXGadgetProvider : NSObject <PXMutableGadgetProvider, PXGadgetDelegate>
 {
@@ -24,11 +24,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<PXGadgetTransition> gadgetTransition;
 @property (copy) NSArray *gadgets; // @synthesize gadgets=_gadgets;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL invalidGadgets; // @synthesize invalidGadgets=_invalidGadgets;
 @property (nonatomic) BOOL isPerformingChanges; // @synthesize isPerformingChanges=_isPerformingChanges;
 @property (weak, nonatomic) id<PXGadgetDelegate> nextGadgetResponder; // @synthesize nextGadgetResponder=_nextGadgetResponder;
+@property (readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsDynamicRanking;
 
@@ -42,18 +44,15 @@
 - (BOOL)gadget:(id)arg1 transitionToViewController:(struct NSObject *)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct NSObject *)gadgetViewControllerHostingGadget:(id)arg1;
 - (void)generateGadgets;
-- (id)gridPresentation;
 - (id)init;
 - (void)insertGadgets:(id)arg1 atIndexes:(id)arg2;
 - (void)loadDataForGadgets;
 - (void)loadDataForPriority;
-- (id)oneUpPresentation;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)presentGadgetViewController:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAllGadgets;
 - (void)removeGadgets:(id)arg1;
 - (void)removeGadgetsAtIndexes:(id)arg1;
-- (BOOL)scrollGadgetToVisible:(id)arg1 animated:(BOOL)arg2;
 - (void)startLoadingRemainingData;
 
 @end

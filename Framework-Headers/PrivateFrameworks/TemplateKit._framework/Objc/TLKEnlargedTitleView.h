@@ -6,25 +6,24 @@
 
 #import <TemplateKit/TLKView.h>
 
-@class TLKMultilineText, TLKVibrantLabel, UILabel;
+@class TLKLabel, TLKMultilineText;
 
 @interface TLKEnlargedTitleView : TLKView
 {
     TLKMultilineText *_title;
     TLKMultilineText *_subtitle;
-    UILabel *_titleLabel;
-    TLKVibrantLabel *_subtitleLabel;
+    TLKLabel *_titleLabel;
+    TLKLabel *_subtitleLabel;
 }
 
 @property (strong, nonatomic) TLKMultilineText *subtitle; // @synthesize subtitle=_subtitle;
-@property (strong) TLKVibrantLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (strong, nonatomic) TLKLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
-@property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
-- (id)init;
 - (void)observedPropertiesChanged;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)setupContentView;
 - (id)subtitleLabelText;
 - (id)titleLabelText;
 

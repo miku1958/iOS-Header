@@ -19,7 +19,6 @@
 @property (readonly, nonatomic) NSString *startDate; // @dynamic startDate;
 @property (readonly, nonatomic) NSString *title; // @dynamic title;
 
-+ (id)typeString;
 - (id)URLWithValue:(id)arg1 withType:(int)arg2;
 - (id)notesWithValue:(id)arg1 withType:(int)arg2;
 

@@ -6,10 +6,27 @@
 
 #import <Foundation/NSDictionary.h>
 
-@interface NSDictionary (AppleMediaServices)
+#import <AppleMediaServices/AMSHashable-Protocol.h>
+
+@class NSDate, NSString;
+
+@interface NSDictionary (AppleMediaServices) <AMSHashable>
+
+@property (readonly, nonatomic) NSDate *ams_expirationDate;
+@property (readonly, nonatomic, getter=ams_isExpired) BOOL ams_expired;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *hashedDescription;
+@property (readonly) Class superclass;
+
++ (id)ams_dictionaryWithEncryptionResult:(CDStruct_0f015c83)arg1;
 - (id)ams_arrayUsingTransform:(CDUnknownBlockType)arg1;
+- (id)ams_componentsJoinedByString:(id)arg1;
 - (id)ams_dictionaryByAddingEntriesFromDictionary:(id)arg1;
+- (CDStruct_0f015c83)ams_encryptionResult;
 - (id)ams_filterUsingTest:(CDUnknownBlockType)arg1;
+- (id)ams_mapWithTransform:(CDUnknownBlockType)arg1;
 - (id)ams_objectForCaseInsensitiveKey:(id)arg1;
 - (id)ams_objectForKey:(id)arg1 defaultValue:(id)arg2;
 @end

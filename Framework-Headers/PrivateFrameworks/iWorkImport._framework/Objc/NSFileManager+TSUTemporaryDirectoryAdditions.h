@@ -7,6 +7,15 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (TSUTemporaryDirectoryAdditions)
+- (unsigned long long)sfu_directoryUsage:(id)arg1;
+- (unsigned long long)sfu_pathUsage:(id)arg1;
+- (BOOL)sfu_setAttributes:(id)arg1 ofItemAtURL:(id)arg2 recursively:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)sfup_setAttributes:(id)arg1 ofItemAtURL:(id)arg2 recursively:(BOOL)arg3 error:(id *)arg4 shouldUpdateAttributesHandler:(CDUnknownBlockType)arg5;
+- (BOOL)tsu_canCloneItemAtURL:(id)arg1 toURL:(id)arg2;
+- (id)tsu_containerURLForDefaultSecurityApplicationGroupIdentifier;
 - (BOOL)tsu_grantUserWritePosixPermissionAtPath:(id)arg1 error:(id *)arg2;
+- (BOOL)tsu_linkOrCopyItemAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
+- (BOOL)tsu_makeWritableItemAtURL:(id)arg1 permissionsOverride:(id)arg2 resetCreationDate:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)tsu_replaceItemAtURL:(id)arg1 withItemAtURL:(id)arg2 backupItemName:(id)arg3 options:(unsigned long long)arg4 resultingItemURL:(id *)arg5 error:(id *)arg6;
 @end
 

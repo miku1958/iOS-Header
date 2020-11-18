@@ -14,17 +14,26 @@
     BOOL _filterRenderingEnabled;
     NSArray *_filters;
     float _simulatedAperture;
+    float _portraitLightingEffectStrength;
+    BOOL _primaryCaptureRectModificationEnabled;
+    double _primaryCaptureRectAspectRatio;
+    struct CGPoint _primaryCaptureRectCenter;
 }
 
 @property (nonatomic) BOOL depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
 @property (nonatomic) BOOL filterRenderingEnabled; // @synthesize filterRenderingEnabled=_filterRenderingEnabled;
 @property (copy, nonatomic) NSArray *filters; // @synthesize filters=_filters;
+@property (nonatomic) float portraitLightingEffectStrength; // @synthesize portraitLightingEffectStrength=_portraitLightingEffectStrength;
+@property (nonatomic) double primaryCaptureRectAspectRatio; // @synthesize primaryCaptureRectAspectRatio=_primaryCaptureRectAspectRatio;
+@property (nonatomic) struct CGPoint primaryCaptureRectCenter; // @synthesize primaryCaptureRectCenter=_primaryCaptureRectCenter;
+@property (nonatomic) BOOL primaryCaptureRectModificationEnabled; // @synthesize primaryCaptureRectModificationEnabled=_primaryCaptureRectModificationEnabled;
 @property (nonatomic) float simulatedAperture; // @synthesize simulatedAperture=_simulatedAperture;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyXPCEncoding;
 - (void)dealloc;
 - (id)description;
+- (id)init;
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (int)sinkType;

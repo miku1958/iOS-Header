@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
 - (void).cxx_destruct;
+- (CDStruct_d1a7ebee)dataRequestKind;
 - (id)initWithRequest:(id)arg1 forParameters:(id)arg2 traits:(id)arg3;
 - (id)mapItemsForParameters:(id)arg1;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;

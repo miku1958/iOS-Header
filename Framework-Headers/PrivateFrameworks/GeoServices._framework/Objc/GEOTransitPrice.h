@@ -8,27 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOTransitPrice : PBCodable <NSCopying>
 {
-    int _amountInCents;
+    PBUnknownFields *_unknownFields;
     NSString *_currencyCode;
+    int _amountInCents;
     unsigned int _subunit;
     struct {
-        unsigned int amountInCents:1;
-        unsigned int subunit:1;
-    } _has;
+        unsigned int has_amountInCents:1;
+        unsigned int has_subunit:1;
+    } _flags;
 }
 
-@property (nonatomic) int amountInCents; // @synthesize amountInCents=_amountInCents;
-@property (strong, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property (nonatomic) int amountInCents;
+@property (strong, nonatomic) NSString *currencyCode;
 @property (nonatomic) BOOL hasAmountInCents;
 @property (readonly, nonatomic) BOOL hasCurrencyCode;
 @property (nonatomic) BOOL hasSubunit;
-@property (nonatomic) unsigned int subunit; // @synthesize subunit=_subunit;
+@property (nonatomic) unsigned int subunit;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

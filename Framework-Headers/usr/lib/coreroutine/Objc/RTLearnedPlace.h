@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <coreroutine/RTCoreDataTransformable-Protocol.h>
+#import <coreroutine/RTCoreDataReadable-Protocol.h>
+#import <coreroutine/RTCoreDataWritable-Protocol.h>
 
 @class NSDate, NSString, NSUUID, RTMapItem;
 
-@interface RTLearnedPlace : NSObject <RTCoreDataTransformable>
+@interface RTLearnedPlace : NSObject <RTCoreDataReadable, RTCoreDataWritable>
 {
     NSUUID *_identifier;
     unsigned long long _type;
@@ -33,6 +34,12 @@
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) unsigned long long typeSource; // @synthesize typeSource=_typeSource;
 
++ (id)createWithLearnedLocationOfInterestMO:(id)arg1;
++ (id)createWithLearnedPlaceMO:(id)arg1;
++ (id)createWithManagedObject:(id)arg1;
++ (BOOL)isTypeSourceVaild:(unsigned long long)arg1;
++ (BOOL)learnedPlaceTypeIsValid:(unsigned long long)arg1;
++ (unsigned long long)placeTypeFromLocationOfInterestType:(long long)arg1;
 + (unsigned long long)placeTypeFromType:(long long)arg1;
 + (unsigned long long)placeTypeSourceFromTypeSource:(long long)arg1;
 + (id)placeTypeSourceToString:(unsigned long long)arg1;
@@ -40,8 +47,6 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 type:(unsigned long long)arg2 typeSource:(unsigned long long)arg3 mapItem:(id)arg4 customLabel:(id)arg5 creationDate:(id)arg6 expirationDate:(id)arg7;
-- (id)initWithLocationOfInterestMO:(id)arg1;
-- (id)initWithPlaceMO:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)managedObjectWithContext:(id)arg1;
 - (void)updateManagedObject:(id)arg1;

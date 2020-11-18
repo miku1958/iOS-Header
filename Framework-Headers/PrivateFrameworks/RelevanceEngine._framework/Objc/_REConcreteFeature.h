@@ -18,7 +18,6 @@
 - (long long)_bitCount;
 - (id)_rootFeatures;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (unsigned long long)featureType;
 - (unsigned long long)hash;
 - (id)initWithName:(id)arg1 featureType:(unsigned long long)arg2;

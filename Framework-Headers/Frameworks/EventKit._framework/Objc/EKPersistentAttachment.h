@@ -10,8 +10,10 @@
 {
 }
 
++ (Class)meltedClass;
 + (id)relations;
 - (id)URL;
+- (id)URLForPendingFileCopy;
 - (id)UUID;
 - (id)XPropertiesData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -22,15 +24,16 @@
 - (id)fileName;
 - (id)fileSize;
 - (BOOL)isBinary;
-- (id)localURL;
+- (id)localRelativePath;
 - (id)semanticIdentifier;
 - (void)setExternalId:(id)arg1;
 - (void)setFileFormat:(id)arg1;
 - (void)setFileName:(id)arg1;
 - (void)setFileSize:(id)arg1;
 - (void)setIsBinary:(BOOL)arg1;
-- (void)setLocalURL:(id)arg1;
+- (void)setLocalRelativePath:(id)arg1;
 - (void)setURL:(id)arg1;
+- (void)setURLForPendingFileCopy:(id)arg1;
 - (void)setXPropertiesData:(id)arg1;
 
 @end

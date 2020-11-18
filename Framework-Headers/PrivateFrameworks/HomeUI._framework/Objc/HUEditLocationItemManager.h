@@ -6,7 +6,7 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFHomeBuilder, HFItem, HFResidentDeviceItemProvider, HUUserNotificationTopicListModule;
+@class HFHomeBuilder, HFItem, HUUserNotificationTopicListModule;
 
 @interface HUEditLocationItemManager : HFItemManager
 {
@@ -21,13 +21,15 @@
     HFItem *_detailNotesItem;
     HFItem *_softwareUpdateItem;
     HFItem *_accessControlItem;
+    HFItem *_bridgesAndResidentDevicesItem;
+    HFItem *_networkRoutersListItem;
     HFItem *_removeItem;
     unsigned long long _context;
-    HFResidentDeviceItemProvider *_residentDeviceItemProvider;
     HFHomeBuilder *_homeBuilder;
 }
 
 @property (strong, nonatomic) HFItem *accessControlItem; // @synthesize accessControlItem=_accessControlItem;
+@property (strong, nonatomic) HFItem *bridgesAndResidentDevicesItem; // @synthesize bridgesAndResidentDevicesItem=_bridgesAndResidentDevicesItem;
 @property (strong, nonatomic) HFItem *cameraItem; // @synthesize cameraItem=_cameraItem;
 @property (strong, nonatomic) HFItem *chooseWallpaperItem; // @synthesize chooseWallpaperItem=_chooseWallpaperItem;
 @property (readonly, nonatomic) unsigned long long context; // @synthesize context=_context;
@@ -35,15 +37,14 @@
 @property (strong, nonatomic) HFHomeBuilder *homeBuilder; // @synthesize homeBuilder=_homeBuilder;
 @property (strong, nonatomic) HFItem *inviteUsersItem; // @synthesize inviteUsersItem=_inviteUsersItem;
 @property (strong, nonatomic) HFItem *nameItem; // @synthesize nameItem=_nameItem;
+@property (strong, nonatomic) HFItem *networkRoutersListItem; // @synthesize networkRoutersListItem=_networkRoutersListItem;
 @property (strong, nonatomic) HUUserNotificationTopicListModule *notificationSettingsModule; // @synthesize notificationSettingsModule=_notificationSettingsModule;
 @property (strong, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
-@property (strong, nonatomic) HFResidentDeviceItemProvider *residentDeviceItemProvider; // @synthesize residentDeviceItemProvider=_residentDeviceItemProvider;
 @property (strong, nonatomic) HFItem *softwareUpdateItem; // @synthesize softwareUpdateItem=_softwareUpdateItem;
 @property (strong, nonatomic) HFItem *usersItem; // @synthesize usersItem=_usersItem;
 @property (strong, nonatomic) HFItem *wallpaperPickerItem; // @synthesize wallpaperPickerItem=_wallpaperPickerItem;
 @property (strong, nonatomic) HFItem *wallpaperThumbnailItem; // @synthesize wallpaperThumbnailItem=_wallpaperThumbnailItem;
 
-+ (CDUnknownBlockType)residentDeviceItemComparator;
 - (void).cxx_destruct;
 - (id)_buildItemModulesForHome:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;

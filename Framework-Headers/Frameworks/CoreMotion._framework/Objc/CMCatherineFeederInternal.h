@@ -6,19 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMCatherineFeederInternal : NSObject
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
     struct CLConnectionClient *fLocationdConnection;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
 }
 
 - (void)_feedCatherine:(double)arg1 confidence:(double)arg2 timestamp:(double)arg3;
 - (void)_startDaemonConnection;
-- (void)_startWatchdogCheckins;
-- (void)_stopWatchdogCheckins;
 - (void)_teardown;
 - (void)dealloc;
 - (id)init;

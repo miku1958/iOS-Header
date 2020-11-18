@@ -9,33 +9,59 @@
 #import <GeoServices/GEOServerFormatToken-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitArtwork, GEOPrice, NSArray, NSMutableArray, NSString;
-@protocol GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
+@class GEOCountdownData, GEOPBTransitArtwork, GEOPrice, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
 
 @interface GEOFormatArgument : PBCodable <GEOServerFormatToken, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _valInt3s;
     GEOPBTransitArtwork *_artwork;
-    int _format;
+    GEOCountdownData *_countdownData;
     GEOPrice *_price;
     NSMutableArray *_timestampDatas;
     NSString *_token;
+    NSString *_valString;
+    int _format;
     unsigned int _valInt1;
     unsigned int _valInt2;
-    NSString *_valString;
     struct {
-        unsigned int format:1;
-        unsigned int valInt1:1;
-        unsigned int valInt2:1;
-    } _has;
+        unsigned int has_format:1;
+        unsigned int has_valInt1:1;
+        unsigned int has_valInt2:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_valInt3s:1;
+        unsigned int read_artwork:1;
+        unsigned int read_countdownData:1;
+        unsigned int read_price:1;
+        unsigned int read_timestampDatas:1;
+        unsigned int read_token:1;
+        unsigned int read_valString:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_valInt3s:1;
+        unsigned int wrote_artwork:1;
+        unsigned int wrote_countdownData:1;
+        unsigned int wrote_price:1;
+        unsigned int wrote_timestampDatas:1;
+        unsigned int wrote_token:1;
+        unsigned int wrote_valString:1;
+        unsigned int wrote_format:1;
+        unsigned int wrote_valInt1:1;
+        unsigned int wrote_valInt2:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPBTransitArtwork *artwork; // @synthesize artwork=_artwork;
+@property (strong, nonatomic) GEOPBTransitArtwork *artwork;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artworkValue;
+@property (strong, nonatomic) GEOCountdownData *countdownData;
+@property (readonly, nonatomic) id<GEOServerFormatTokenCountdownValue> countdownValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) int format; // @synthesize format=_format;
+@property (nonatomic) int format;
 @property (readonly, nonatomic) BOOL hasArtwork;
+@property (readonly, nonatomic) BOOL hasCountdownData;
 @property (nonatomic) BOOL hasFormat;
 @property (readonly, nonatomic) BOOL hasPrice;
 @property (readonly, nonatomic) BOOL hasToken;
@@ -43,30 +69,42 @@
 @property (nonatomic) BOOL hasValInt2;
 @property (readonly, nonatomic) BOOL hasValString;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) GEOPrice *price; // @synthesize price=_price;
+@property (strong, nonatomic) GEOPrice *price;
 @property (readonly, nonatomic) id<GEOServerFormatTokenPriceValue> priceValue;
 @property (readonly, nonatomic) NSString *stringValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *timeStampValues;
-@property (strong, nonatomic) NSMutableArray *timestampDatas; // @synthesize timestampDatas=_timestampDatas;
+@property (strong, nonatomic) NSMutableArray *timestampDatas;
 @property (readonly, nonatomic) NSString *token;
-@property (strong, nonatomic) NSString *token; // @synthesize token=_token;
+@property (strong, nonatomic) NSString *token;
 @property (readonly, nonatomic) long long type;
-@property (nonatomic) unsigned int valInt1; // @synthesize valInt1=_valInt1;
-@property (nonatomic) unsigned int valInt2; // @synthesize valInt2=_valInt2;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (nonatomic) unsigned int valInt1;
+@property (nonatomic) unsigned int valInt2;
 @property (readonly, nonatomic) unsigned int *valInt3s;
 @property (readonly, nonatomic) unsigned long long valInt3sCount;
-@property (strong, nonatomic) NSString *valString; // @synthesize valString=_valString;
+@property (strong, nonatomic) NSString *valString;
 @property (readonly, nonatomic) unsigned int value1;
 @property (readonly, nonatomic) unsigned int value2;
 @property (readonly, nonatomic) NSArray *value3s;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)timestampDataType;
 - (void).cxx_destruct;
 - (int)StringAsFormat:(id)arg1;
+- (void)_addNoFlagsTimestampData:(id)arg1;
+- (void)_addNoFlagsValInt3:(unsigned int)arg1;
+- (void)_readArtwork;
+- (void)_readCountdownData;
+- (void)_readPrice;
+- (void)_readTimestampDatas;
+- (void)_readToken;
+- (void)_readValInt3s;
+- (void)_readValString;
 - (void)addTimestampData:(id)arg1;
 - (void)addValInt3:(unsigned int)arg1;
 - (void)clearTimestampDatas;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearValInt3s;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -75,6 +113,7 @@
 - (id)formatAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setValInt3s:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (id)timestampDataAtIndex:(unsigned long long)arg1;

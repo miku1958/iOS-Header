@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) NSString *relationshipName; // @synthesize relationshipName=_relationshipName;
 
 + (id)_offsetsFromSourceOIDs:(id)arg1 toManagedObjects:(id)arg2;
++ (id)existentObjectIDsUsingQuery:(id)arg1;
 + (id)objectIDsOrUUIDsFromPHObjects:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 orderedMutableChildren:(id)arg2 error:(id *)arg3;

@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 
 + (id)descriptorForRequiredKeysForActionDiscovering;
++ (id)targetForDirections;
 + (id)targetForEmailWithMail;
 + (id)targetForPayWithWallet;
 + (id)targetForSendMessageIntentWithAppProxy:(id)arg1;
@@ -44,6 +45,7 @@
 - (id)actionsForEmailAddresses:(id)arg1 contact:(id)arg2 discoveringEnvironment:(id)arg3;
 - (id)actionsForInstantMessageAddresses:(id)arg1 contact:(id)arg2 discoveringEnvironment:(id)arg3;
 - (id)actionsForPhoneNumbers:(id)arg1 contact:(id)arg2 discoveringEnvironment:(id)arg3;
+- (id)actionsForPostalAddresses:(id)arg1 contact:(id)arg2 discoveringEnvironment:(id)arg3;
 - (id)actionsForSocialProfiles:(id)arg1 contact:(id)arg2 discoveringEnvironment:(id)arg3;
 - (unsigned long long)hash;
 - (id)init;

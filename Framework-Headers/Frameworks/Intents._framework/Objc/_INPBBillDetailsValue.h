@@ -15,6 +15,7 @@
 @interface _INPBBillDetailsValue : PBCodable <_INPBBillDetailsValue, NSSecureCoding, NSCopying>
 {
     CDStruct_c8e9def3 _has;
+    BOOL __encodeLegacyGloryData;
     int _billType;
     int _status;
     _INPBCurrencyAmountValue *_amountDue;
@@ -26,6 +27,7 @@
     _INPBValueMetadata *_valueMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBCurrencyAmountValue *amountDue; // @synthesize amountDue=_amountDue;
 @property (strong, nonatomic) _INPBBillPayeeValue *billPayee; // @synthesize billPayee=_billPayee;
 @property (nonatomic) int billType; // @synthesize billType=_billType;
@@ -49,12 +51,15 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsBillType:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
 - (id)billTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;

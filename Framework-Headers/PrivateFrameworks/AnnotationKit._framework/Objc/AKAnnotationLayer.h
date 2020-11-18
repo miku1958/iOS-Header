@@ -13,6 +13,7 @@
     BOOL _isObservingAnnotation;
     BOOL _wasLastDrawingClipped;
     BOOL _lastRedrawWasForDrawingBounds;
+    BOOL _shouldRecalculateLoupeImage;
     AKAnnotation *_annotation;
     AKPageController *_pageController;
     CALayer *_fastPathLayer;
@@ -23,6 +24,7 @@
 @property BOOL isObservingAnnotation; // @synthesize isObservingAnnotation=_isObservingAnnotation;
 @property BOOL lastRedrawWasForDrawingBounds; // @synthesize lastRedrawWasForDrawingBounds=_lastRedrawWasForDrawingBounds;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
+@property BOOL shouldRecalculateLoupeImage; // @synthesize shouldRecalculateLoupeImage=_shouldRecalculateLoupeImage;
 @property BOOL wasLastDrawingClipped; // @synthesize wasLastDrawingClipped=_wasLastDrawingClipped;
 
 + (id)newAnnotationLayerForAnnotation:(id)arg1 withPageController:(id)arg2;

@@ -7,9 +7,10 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 
 @class TSCECalculationEngine, TSPObject;
-@protocol TSCECalculationEngineRegistration;
+@protocol TSCECalculationEngineRegistration, TSCEFormulaOwning;
 
 @protocol TSCECalculationEngineRegistration <TSKModel>
+- (id<TSCEFormulaOwning>)formulaOwner;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (TSPObject<TSCECalculationEngineRegistration> *)objectToArchiveInDependencyTracker;
 - (BOOL)registerLast;

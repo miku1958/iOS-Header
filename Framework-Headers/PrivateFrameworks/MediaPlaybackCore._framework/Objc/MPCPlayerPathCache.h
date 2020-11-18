@@ -27,6 +27,7 @@
 - (id)_init;
 - (void)_onQueue_registerForInvalidationWithUnresolvedPlayerPath:(id)arg1 invalidationPlayerPath:(void *)arg2;
 - (void)dealloc;
+- (id)observationTokenDescriptionForPlayerPath:(id)arg1;
 - (id)resolvedPlayerPathForPlayerPath:(id)arg1;
 
 @end

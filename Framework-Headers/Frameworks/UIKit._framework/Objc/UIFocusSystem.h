@@ -34,6 +34,7 @@
     id<_UIFocusHapticFeedbackGenerator> _focusHapticFeedbackGenerator;
 }
 
+@property (nonatomic) BOOL areChildrenFocused;
 @property (readonly, nonatomic, getter=_currentFocusAnimationCoordinator) UIFocusAnimationCoordinator *currentFocusAnimationCoordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic, getter=_delegate, setter=_setDelegate:) id<_UIFocusSystemDelegate> delegate; // @synthesize delegate=_delegate;
@@ -68,6 +69,7 @@
 - (id)_contextForUpdateToEnvironment:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_debug_isEnvironmentEligibleForFocusUpdate:(id)arg1 debugReport:(id)arg2;
 - (void)_didFinishUpdatingFocusInContext:(id)arg1;
+- (void)_enableWithoutFocusRestoration;
 - (void)_focusEnvironmentWillDisappear:(id)arg1;
 - (id)_init;
 - (id)_initWithFocusEnabled:(BOOL)arg1;

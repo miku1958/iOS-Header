@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSSet, NSString, NSURL;
 @protocol AKURLBagDictionaryProvider;
 
 @interface AKURLBag : NSObject
@@ -19,6 +19,9 @@
 @property (readonly, nonatomic) NSURL *absintheCertURL;
 @property (readonly, nonatomic) NSURL *absintheSessionURL;
 @property (readonly, nonatomic) NSURL *acsURL;
+@property (readonly, nonatomic) NSSet *appleIDAuthorizationURLs;
+@property (readonly, nonatomic) NSURL *appleIDAuthorizeHTMLResponseURL;
+@property (readonly, nonatomic) NSSet *appleOwnedDomains;
 @property (strong, nonatomic) id<AKURLBagDictionaryProvider> bagProvider; // @synthesize bagProvider=_bagProvider;
 @property (readonly, nonatomic) NSURL *basicAuthURL;
 @property (readonly, nonatomic) NSURL *changePasswordURL;
@@ -29,12 +32,15 @@
 @property (readonly, nonatomic) NSURL *deviceListURL;
 @property (readonly, nonatomic) NSURL *endProvisioningURL;
 @property (readonly, nonatomic) NSURL *escapeHatchURL;
+@property (readonly, nonatomic) NSURL *fetchAppInfoURL;
 @property (readonly, nonatomic) NSURL *fetchAuthenticationModeURL;
 @property (readonly, nonatomic) NSURL *fetchConfigDataURL;
 @property (readonly, nonatomic) NSURL *fetchFollowUps;
+@property (readonly, nonatomic) NSURL *fetchPrimaryBundleIDURL;
 @property (readonly, nonatomic) NSURL *fetchUserInfoURL;
 @property (readonly, nonatomic) NSURL *iForgotContinuationURL;
 @property (readonly, nonatomic) NSURL *iForgotURL;
+@property (readonly, nonatomic, getter=IsInlineFlowSupportedConfig) BOOL inlineFlowSupportedConfig;
 @property (readonly, nonatomic) unsigned long long lastKnownIDMSEnvironment;
 @property (readonly, nonatomic) NSURL *notificationAckURL;
 @property (readonly, nonatomic, getter=isPhoneNumberSupportedConfig) BOOL phoneNumberSupportedConfig;
@@ -48,6 +54,7 @@
 @property (readonly, nonatomic) NSURL *trustedDevicesURL;
 @property (readonly, nonatomic) NSURL *upgradeEligibilityCheckURL;
 @property (readonly, nonatomic) NSURL *upgradeUIURL;
+@property (readonly, nonatomic) NSURL *userVerificationURL;
 @property (readonly, nonatomic) NSURL *validateCodeURL;
 @property (readonly, nonatomic) NSURL *validateVettingTokenURL;
 
@@ -58,13 +65,14 @@
 + (BOOL)looksLikeiForgotURLKey:(id)arg1;
 + (id)sharedBag;
 - (void).cxx_destruct;
+- (id)_configurationsFromCache:(BOOL)arg1 withError:(id *)arg2;
 - (void)_fetchURLBagWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_requestConfigurationsWithError:(id *)arg1;
 - (id)_requestEnvironmentsWithError:(id *)arg1;
 - (id)_requestNewURLBagIfNecessaryWithError:(id *)arg1;
 - (id)_urlAtKey:(id)arg1;
-- (id)_urlBag:(id *)arg1;
+- (id)_urlBagFromCache:(BOOL)arg1 withError:(id *)arg2;
 - (id)configurationAtKey:(id)arg1;
+- (id)configurationAtKey:(id)arg1 fromCache:(BOOL)arg2;
 - (void)requestNewURLBagIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)requestNewURLBagIfNecessaryWithError:(id *)arg1;
 - (id)urlAtKey:(id)arg1;

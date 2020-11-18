@@ -64,12 +64,14 @@
 - (void)_allowCoachingConditionImmediately:(BOOL)arg1;
 - (void)_allowLeavingCoachingCondition;
 - (void)_allowScanningState;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)_canTransitionToState:(long long)arg1;
 - (void)_clearCoachingCondition;
 - (void)_dontCallThis_showLockIfNeededAnimated:(BOOL)arg1 force:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_dontCallThis_updateCoachingCondition:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (unsigned long long)_effectiveCoachingConditionForCondition:(unsigned long long)arg1;
 - (unsigned long long)_effectiveCoachingConditionForCondition:(unsigned long long)arg1 orientation:(long long)arg2;
+- (void)_handleBiometricEvent:(unsigned long long)arg1;
 - (long long)_iconViewStateForCoachingCondition:(unsigned long long)arg1;
 - (BOOL)_isBiometricLockedOut;
 - (BOOL)_isShowingCoachingCondition:(unsigned long long)arg1;

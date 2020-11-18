@@ -17,15 +17,14 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_rightConstraint;
 }
 
-+ (BOOL)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
 - (void)_updateConstraintConstants:(BOOL)arg1;
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
 - (BOOL)automaticallyUpdateScrollViewIndicatorInset;
 - (BOOL)canEnterFullScreen;
+- (BOOL)canPinchToDismiss;
+- (BOOL)canSwipeToDismiss;
 - (void)dealloc;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)loadView;

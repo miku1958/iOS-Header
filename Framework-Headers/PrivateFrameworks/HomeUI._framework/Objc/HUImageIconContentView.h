@@ -10,10 +10,12 @@
 
 @interface HUImageIconContentView : HUIconContentView
 {
+    long long _iconContentMode;
     UIImageView *_imageView;
     long long _originalImageRenderingMode;
 }
 
+@property (nonatomic) long long iconContentMode; // @synthesize iconContentMode=_iconContentMode;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) long long originalImageRenderingMode; // @synthesize originalImageRenderingMode=_originalImageRenderingMode;
 

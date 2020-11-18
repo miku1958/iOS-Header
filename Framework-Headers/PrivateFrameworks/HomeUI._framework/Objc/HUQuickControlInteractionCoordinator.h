@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (id)initWithControlView:(id)arg1 delegate:(id)arg2;
+- (void)recordInteractionStart;
 
 @end
 

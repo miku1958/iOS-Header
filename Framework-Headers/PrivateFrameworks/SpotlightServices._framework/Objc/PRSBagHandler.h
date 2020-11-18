@@ -18,7 +18,6 @@
     PARBag *_bag;
     NSObject<OS_dispatch_queue> *_bagQueue;
     BOOL _active;
-    BOOL _enabled;
     BOOL _disableAsTypedSuggestion;
     BOOL _collectAnonymousData;
     BOOL _collectScores;
@@ -54,7 +53,6 @@
 @property (nonatomic) BOOL collectAnonymousData; // @synthesize collectAnonymousData=_collectAnonymousData;
 @property (nonatomic) BOOL collectScores; // @synthesize collectScores=_collectScores;
 @property (nonatomic) BOOL disableAsTypedSuggestion; // @synthesize disableAsTypedSuggestion=_disableAsTypedSuggestion;
-@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) NSArray *enabledDomains; // @synthesize enabledDomains=_enabledDomains;
 @property (strong, nonatomic) NSString *fteContinueString; // @synthesize fteContinueString=_fteContinueString;
 @property (strong, nonatomic) NSString *fteLearnMoreString; // @synthesize fteLearnMoreString=_fteLearnMoreString;
@@ -68,10 +66,10 @@
 @property (strong, nonatomic) NSMutableDictionary *resourceMetadata; // @synthesize resourceMetadata=_resourceMetadata;
 @property (nonatomic) BOOL resourceMetadataNeedsWrite; // @synthesize resourceMetadataNeedsWrite=_resourceMetadataNeedsWrite;
 @property (strong, nonatomic) NSString *resourceMetadataPath; // @synthesize resourceMetadataPath=_resourceMetadataPath;
-@property (nonatomic) double searchRenderTimeout; // @synthesize searchRenderTimeout=_searchRenderTimeout;
+@property double searchRenderTimeout; // @synthesize searchRenderTimeout=_searchRenderTimeout;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (strong, nonatomic) NSArray *suggestionRankerModelParams; // @synthesize suggestionRankerModelParams=_suggestionRankerModelParams;
-@property (nonatomic) double suggestionsRenderTimeout; // @synthesize suggestionsRenderTimeout=_suggestionsRenderTimeout;
+@property double suggestionsRenderTimeout; // @synthesize suggestionsRenderTimeout=_suggestionsRenderTimeout;
 @property (nonatomic) BOOL use2LayerRanking; // @synthesize use2LayerRanking=_use2LayerRanking;
 
 + (void)initialize;

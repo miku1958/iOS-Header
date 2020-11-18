@@ -6,22 +6,39 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer, UIColor;
+@class CAShapeLayer, NSString, UIColor, UILabel;
 
 @interface HUColorSwatchView : UIView
 {
+    BOOL _labelHidden;
     unsigned long long _selectionState;
+    NSString *_text;
+    CAShapeLayer *_circleLayer;
+    CAShapeLayer *_selectedCircleLayer;
+    CAShapeLayer *_selectedCircleInnerLayer;
+    CAShapeLayer *_selectedCircleOuterLayer;
+    UILabel *_label;
 }
 
+@property (strong, nonatomic) CAShapeLayer *circleLayer; // @synthesize circleLayer=_circleLayer;
 @property (strong, nonatomic) UIColor *color;
-@property (readonly, nonatomic) CAShapeLayer *layer; // @dynamic layer;
+@property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (nonatomic) BOOL labelHidden; // @synthesize labelHidden=_labelHidden;
+@property (strong, nonatomic) CAShapeLayer *selectedCircleInnerLayer; // @synthesize selectedCircleInnerLayer=_selectedCircleInnerLayer;
+@property (strong, nonatomic) CAShapeLayer *selectedCircleLayer; // @synthesize selectedCircleLayer=_selectedCircleLayer;
+@property (strong, nonatomic) CAShapeLayer *selectedCircleOuterLayer; // @synthesize selectedCircleOuterLayer=_selectedCircleOuterLayer;
 @property (nonatomic) unsigned long long selectionState; // @synthesize selectionState=_selectionState;
+@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (Class)layerClass;
+- (void).cxx_destruct;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (void)_updateShapePath;
+- (void)_updateLayout;
+- (void)_updateTextColor;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 text:(id)arg2;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

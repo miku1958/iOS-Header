@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)allowsCellSelection;
 - (void)dealloc;
+- (BOOL)displaysCellSelectionState;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)labelView;
 - (void)performDefaultAction;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)textViewChanged:(id)arg1;
 - (void)textViewEditingDidEnd:(id)arg1;
 - (id)valueView;
+- (double)valueViewBottomMargin;
 
 @end
 

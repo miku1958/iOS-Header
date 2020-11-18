@@ -7,6 +7,24 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (TPTelephonyUIUtilities)
++ (id)_tp_bluePillColor;
++ (id)_tp_defaultPillColor;
++ (id)_tp_greenPillColor;
++ (id)dynamicBackgroundColor;
++ (id)dynamicCarFocusedColor;
++ (id)dynamicCarFocusedLabelColor;
++ (id)dynamicCarFocusedPrimaryLabelColor;
++ (id)dynamicCarFocusedSecondaryLabelColor;
++ (id)dynamicCarPrimaryColor;
++ (id)dynamicCarQuaternaryColor;
++ (id)dynamicCarSecondaryColor;
++ (id)dynamicCarTertiaryColor;
++ (id)dynamicLabelColor;
++ (id)dynamicQuaternaryLabelColor;
++ (id)dynamicSecondaryLabelColor;
++ (id)dynamicTertiaryLabelColor;
+- (id)colorByAlteringOpacityToPercentage:(float)arg1;
+- (id)darkerColorByPercentage:(float)arg1;
 - (id)tpImageFromColor;
 @end
 

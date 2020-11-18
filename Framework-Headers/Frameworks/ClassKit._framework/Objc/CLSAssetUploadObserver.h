@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <ClassKit/NSFilePresenter-Protocol.h>
+@class CLSAsset, NSError, NSMetadataQuery, NSOperationQueue;
 
-@class CLSAsset, NSError, NSMetadataQuery, NSOperationQueue, NSSet, NSString, NSURL;
-
-@interface CLSAssetUploadObserver : NSObject <NSFilePresenter>
+@interface CLSAssetUploadObserver : NSObject
 {
-    NSOperationQueue *_presentedItemOperationQueue;
     BOOL _uploaded;
     CLSAsset *_asset;
     double _uploadProgress;
@@ -20,25 +17,17 @@
     CDUnknownBlockType _onUploadProgress;
     CDUnknownBlockType _onUploadComplete;
     NSMetadataQuery *_query;
+    NSOperationQueue *_uploadObserverQueue;
     CDUnknownBlockType _preCompleteHook;
-    NSURL *_presentedItemURL;
-    NSSet *_observedPresentedItemUbiquityAttributes;
 }
 
 @property (strong, nonatomic) CLSAsset *asset; // @synthesize asset=_asset;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSSet *observedPresentedItemUbiquityAttributes; // @synthesize observedPresentedItemUbiquityAttributes=_observedPresentedItemUbiquityAttributes;
 @property (copy, nonatomic) CDUnknownBlockType onUploadComplete; // @synthesize onUploadComplete=_onUploadComplete;
 @property (copy, nonatomic) CDUnknownBlockType onUploadProgress; // @synthesize onUploadProgress=_onUploadProgress;
 @property (copy, nonatomic) CDUnknownBlockType preCompleteHook; // @synthesize preCompleteHook=_preCompleteHook;
-@property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
-@property (copy, nonatomic) NSURL *presentedItemURL; // @synthesize presentedItemURL=_presentedItemURL;
-@property (readonly, copy) NSURL *primaryPresentedItemURL;
 @property (strong, nonatomic) NSMetadataQuery *query; // @synthesize query=_query;
-@property (readonly) Class superclass;
 @property (strong) NSError *uploadError; // @synthesize uploadError=_uploadError;
+@property (strong, nonatomic) NSOperationQueue *uploadObserverQueue; // @synthesize uploadObserverQueue=_uploadObserverQueue;
 @property double uploadProgress; // @synthesize uploadProgress=_uploadProgress;
 @property (nonatomic, getter=isUploaded) BOOL uploaded; // @synthesize uploaded=_uploaded;
 
@@ -46,10 +35,9 @@
 - (void)_notifyOfChange;
 - (void)_notifyOfCompletion;
 - (void)_processItems:(id)arg1;
-- (void)dealloc;
+- (id)init;
 - (id)initWithAsset:(id)arg1;
-- (void)presentedItemDidChangeUbiquityAttributes:(id)arg1;
-- (void)queryGatharedData:(id)arg1;
+- (void)queryGatheredData:(id)arg1;
 - (void)queryUpdated:(id)arg1;
 - (void)startObserving;
 - (void)stopObserving;

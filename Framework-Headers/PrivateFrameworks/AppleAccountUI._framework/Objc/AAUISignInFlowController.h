@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleAccountUI/AAUIAccountRepairRemoteUIDelegate-Protocol.h>
 #import <AppleAccountUI/AAUIGenericTermsRemoteUIDelegate-Protocol.h>
 #import <AppleAccountUI/AAUISignInOperationDelegate-Protocol.h>
 
-@class AAUIAccountRepairRemoteUI, AAUIGenericTermsRemoteUI, ACAccountStore, ACAccountType, CUMessageSession, NSLock, NSMutableDictionary, NSString, UIViewController;
+@class AAUIGenericTermsRemoteUI, ACAccountStore, ACAccountType, CUMessageSession, NSLock, NSMutableDictionary, NSString, UIViewController;
 
-@interface AAUISignInFlowController : NSObject <AAUIAccountRepairRemoteUIDelegate, AAUIGenericTermsRemoteUIDelegate, AAUISignInOperationDelegate>
+@interface AAUISignInFlowController : NSObject <AAUIGenericTermsRemoteUIDelegate, AAUISignInOperationDelegate>
 {
     ACAccountStore *_accountStore;
     ACAccountType *_appleAccountType;
     AAUIGenericTermsRemoteUI *_genericTermsRemoteUI;
-    AAUIAccountRepairRemoteUI *_accountRepairRemoteUI;
     CDUnknownBlockType _pendingCompletion;
     NSMutableDictionary *_cdpContextsByAccountID;
     NSLock *_cdpContextsByAccountIDLock;
@@ -42,20 +40,18 @@
 - (void).cxx_destruct;
 - (id)_appleAccountType;
 - (void)_hasActivationLockSupportedWatchWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_loadAccountRepairRemoteUIWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_messageForErrorAlert:(long long)arg1;
 - (void)_presentExistingAccountAlert:(id)arg1;
 - (void)_presentUnableToSaveAccountAlert;
 - (void)_presentValidationErrorAlert:(id)arg1 forAccount:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_promptToEnableFindMyIfPossibleWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_saveAccount:(id)arg1 withAllDataclassesEnabledIfPossibleWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_showGenericTermsUIforAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_showSecondFactorUIForAccount:(id)arg1 loginResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_stashLoginResponseWithAuthenticationResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_titleForError:(id)arg1 account:(id)arg2;
 - (void)_updateAppleAccountIfNecessary:(id)arg1 withAltDSID:(id)arg2 rawPassword:(id)arg3;
 - (void)_validateCDPStateForAccount:(id)arg1 withCDPContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_verifyLoginResponseForiCloudAccount:(id)arg1 withSuccess:(BOOL)arg2 response:(id)arg3 error:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)accountRepairRemoteUI:(id)arg1 account:(id)arg2 didFinishWithSuccess:(BOOL)arg3;
 - (void)genericTermsRemoteUI:(id)arg1 didFinishWithSuccess:(BOOL)arg2;
 - (id)init;
 - (void)prewarmOperationsWithCompletion:(CDUnknownBlockType)arg1;

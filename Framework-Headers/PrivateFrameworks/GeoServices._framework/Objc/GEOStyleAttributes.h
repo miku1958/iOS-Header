@@ -13,26 +13,28 @@
 @interface GEOStyleAttributes : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    unsigned long long _customIconId;
     NSMutableArray *_attributes;
+    unsigned long long _customIconId;
     struct {
-        unsigned int customIconId:1;
-    } _has;
+        unsigned int has_customIconId:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *attributes; // @synthesize attributes=_attributes;
-@property (nonatomic) unsigned long long customIconId; // @synthesize customIconId=_customIconId;
+@property (strong, nonatomic) NSMutableArray *attributes;
+@property (nonatomic) unsigned long long customIconId;
 @property (nonatomic) BOOL hasCustomIconId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)attributeType;
 + (id)attributesForTransitLine:(id)arg1;
 + (id)attributesForTransitSystem:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addAttribute:(id)arg1;
 - (id)attributeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributesCount;
 - (void)clearAttributes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +43,7 @@
 - (id)initWithGEOFeatureStyleAttributes:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

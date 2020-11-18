@@ -47,6 +47,8 @@
 - (id)init;
 - (void)loadWithMetadata:(id)arg1;
 - (void)resetToNoDataState:(id)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

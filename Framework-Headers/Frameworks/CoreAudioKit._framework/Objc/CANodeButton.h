@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property BOOL hasLabel;
 @property (strong) NSURL *url; // @synthesize url=_url;
 
+- (void)dealloc;
 - (id)init;
 - (void)layoutSubviews;
 

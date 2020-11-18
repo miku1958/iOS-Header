@@ -8,36 +8,53 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDWifiMeasurement : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     unsigned long long _entryTime;
     unsigned long long _exitTime;
     NSMutableArray *_locations;
     NSMutableArray *_wifiAccessPoints;
     struct {
-        unsigned int entryTime:1;
-        unsigned int exitTime:1;
-    } _has;
+        unsigned int has_entryTime:1;
+        unsigned int has_exitTime:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_locations:1;
+        unsigned int read_wifiAccessPoints:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_entryTime:1;
+        unsigned int wrote_exitTime:1;
+        unsigned int wrote_locations:1;
+        unsigned int wrote_wifiAccessPoints:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned long long entryTime; // @synthesize entryTime=_entryTime;
-@property (nonatomic) unsigned long long exitTime; // @synthesize exitTime=_exitTime;
+@property (nonatomic) unsigned long long entryTime;
+@property (nonatomic) unsigned long long exitTime;
 @property (nonatomic) BOOL hasEntryTime;
 @property (nonatomic) BOOL hasExitTime;
-@property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
+@property (strong, nonatomic) NSMutableArray *locations;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *wifiAccessPoints; // @synthesize wifiAccessPoints=_wifiAccessPoints;
+@property (strong, nonatomic) NSMutableArray *wifiAccessPoints;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)locationType;
 + (Class)wifiAccessPointType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsLocation:(id)arg1;
+- (void)_addNoFlagsWifiAccessPoint:(id)arg1;
+- (void)_readLocations;
+- (void)_readWifiAccessPoints;
 - (void)addLocation:(id)arg1;
 - (void)addWifiAccessPoint:(id)arg1;
 - (void)clearLocations;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearWifiAccessPoints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -48,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)locationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)wifiAccessPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)wifiAccessPointsCount;

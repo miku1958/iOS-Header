@@ -154,6 +154,7 @@
 @property (readonly, nonatomic) id<DCScanDataDelegate> selectedScanDataDelegate;
 @property (strong, nonatomic) CIContext *sharedCoreImageContext; // @synthesize sharedCoreImageContext=_sharedCoreImageContext;
 @property (readonly, nonatomic) BOOL shouldDisableActions;
+@property (readonly, nonatomic) BOOL shouldDisableSharrow;
 @property (nonatomic) BOOL statusBarWasHiddenWhenDoneTapped; // @synthesize statusBarWasHiddenWhenDoneTapped=_statusBarWasHiddenWhenDoneTapped;
 @property (nonatomic) BOOL statusBarWasHiddenWhenRetakeTapped; // @synthesize statusBarWasHiddenWhenRetakeTapped=_statusBarWasHiddenWhenRetakeTapped;
 @property (readonly) Class superclass;
@@ -180,6 +181,7 @@
 - (BOOL)accessibilityScrollRightPage;
 - (void)addImageAction:(id)arg1;
 - (void)alertAndDiscardMarkup;
+- (BOOL)cameraDisabled;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)changePage:(long long)arg1;
@@ -212,7 +214,6 @@
 - (void)didUpdateDocumentTitle:(id)arg1;
 - (unsigned long long)documentCount;
 - (void)doneAction:(id)arg1;
-- (void)editTitleTextFieldChanged:(id)arg1;
 - (void)filterButtonAction:(id)arg1;
 - (BOOL)filterViewControllerApplyToAll:(short)arg1;
 - (BOOL)filterViewControllerCanApplyToAll:(short)arg1;
@@ -229,7 +230,6 @@
 - (id)indexPathForCurrentDocument;
 - (id)initWithDelegate:(id)arg1 documentInfoCollection:(id)arg2 imageCache:(id)arg3 currentIndex:(long long)arg4 mode:(int)arg5;
 - (BOOL)isShowingBarsForZoomablePageContentViewController:(id)arg1;
-- (BOOL)isTitleValid:(id)arg1 error:(out id *)arg2;
 - (id)makeUIImageFromCIImage:(id)arg1;
 - (double)normalizedPageViewControllerScrollPosition;
 - (long long)orientationRotated90DegreesFromOrientation:(long long)arg1;
@@ -243,7 +243,6 @@
 - (long long)preferredStatusBarUpdateAnimation;
 - (BOOL)prefersStatusBarHidden;
 - (void)prepareForDismissal;
-- (void)promptToChangeCollectionName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)recreateThumbnailContainerWithWidth:(double)arg1 leadingTrailingMargin:(double)arg2;
 - (void)recropButtonPressed:(id)arg1;
 - (struct CGRect)recropTargetForIndexPath:(id)arg1;
@@ -269,16 +268,13 @@
 - (void)showBarsForZoomablePageContentViewController:(id)arg1;
 - (void)showFilterViewIfNecessary;
 - (void)showPrimaryControllerForNotes:(id)arg1 animated:(BOOL)arg2;
-- (void)showSingleButtonAlertWithTitle:(id)arg1 message:(id)arg2;
 - (void)showViewControllerAtIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)speakAccessibilityAnnouncementForMovingItemFromIndexPath:(id)arg1 toIndexPath:(id)arg2;
 - (void)speakAccessibilityAnnouncementForReorderIfNecessaryForProposedIndexPath:(id)arg1;
 - (void)startMarkupViewController;
-- (id)stringByScrubbingStringForCollectionName:(id)arg1;
 - (void)suppressImageHairlineThickeningForBarButtonItems:(id)arg1;
 - (void)switchBarVisibilityForZoomablePageContentViewController:(id)arg1;
 - (struct CGRect)targetViewRect;
-- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)thumbnailContainerView:(id)arg1 moveItemFromIndex:(long long)arg2 toIndex:(long long)arg3;
 - (unsigned long long)thumbnailContainerViewCurrentIndex:(id)arg1;
 - (void)thumbnailContainerViewDecrementCurrentIndex:(id)arg1;
@@ -288,6 +284,7 @@
 - (unsigned long long)thumbnailContainerViewNumberOfItems:(id)arg1;
 - (BOOL)thumbnailContainerViewSupportsReordering:(id)arg1;
 - (double)thumbnailToolbarHeight;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)truncatedString:(id)arg1 clipLength:(unsigned long long)arg2;
 - (id)undoManager;
 - (void)updateDocumentImage:(id)arg1;

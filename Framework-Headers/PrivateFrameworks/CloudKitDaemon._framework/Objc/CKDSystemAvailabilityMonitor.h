@@ -12,14 +12,14 @@
 @interface CKDSystemAvailabilityMonitor : NSObject
 {
     unsigned long long _availabilityState;
-    NSMutableSet *_watchers;
+    NSMutableSet *_watcherWrappers;
     NSObject<OS_dispatch_queue> *_availabilityQueue;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *availabilityQueue; // @synthesize availabilityQueue=_availabilityQueue;
 @property unsigned long long availabilityState; // @synthesize availabilityState=_availabilityState;
 @property (readonly) BOOL systemIsAvailable;
-@property (strong, nonatomic) NSMutableSet *watchers; // @synthesize watchers=_watchers;
+@property (strong, nonatomic) NSMutableSet *watcherWrappers; // @synthesize watcherWrappers=_watcherWrappers;
 
 + (id)sharedMonitor;
 - (void).cxx_destruct;

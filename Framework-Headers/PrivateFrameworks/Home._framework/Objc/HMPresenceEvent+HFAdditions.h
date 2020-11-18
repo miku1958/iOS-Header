@@ -21,5 +21,6 @@
 
 + (unsigned long long)hf_locationEventTypeForPresenceEventType:(unsigned long long)arg1;
 + (unsigned long long)hf_presenceDisableReasonsForHome:(id)arg1;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

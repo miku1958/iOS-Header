@@ -8,32 +8,44 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOLogMsgEventRefineSearchSession : PBCodable <NSCopying>
 {
-    int _refineSearchType;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_searchString;
-    int _searchType;
     NSMutableArray *_suggestionItems;
+    int _refineSearchType;
+    int _searchType;
     struct {
-        unsigned int refineSearchType:1;
-        unsigned int searchType:1;
-    } _has;
+        unsigned int has_refineSearchType:1;
+        unsigned int has_searchType:1;
+        unsigned int read_searchString:1;
+        unsigned int read_suggestionItems:1;
+        unsigned int wrote_searchString:1;
+        unsigned int wrote_suggestionItems:1;
+        unsigned int wrote_refineSearchType:1;
+        unsigned int wrote_searchType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasRefineSearchType;
 @property (readonly, nonatomic) BOOL hasSearchString;
 @property (nonatomic) BOOL hasSearchType;
-@property (nonatomic) int refineSearchType; // @synthesize refineSearchType=_refineSearchType;
-@property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-@property (nonatomic) int searchType; // @synthesize searchType=_searchType;
-@property (strong, nonatomic) NSMutableArray *suggestionItems; // @synthesize suggestionItems=_suggestionItems;
+@property (nonatomic) int refineSearchType;
+@property (strong, nonatomic) NSString *searchString;
+@property (nonatomic) int searchType;
+@property (strong, nonatomic) NSMutableArray *suggestionItems;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)suggestionItemType;
 - (void).cxx_destruct;
 - (int)StringAsRefineSearchType:(id)arg1;
 - (int)StringAsSearchType:(id)arg1;
+- (void)_addNoFlagsSuggestionItem:(id)arg1;
+- (void)_readSearchString;
+- (void)_readSuggestionItems;
 - (void)addSuggestionItem:(id)arg1;
 - (void)clearSuggestionItems;
 - (void)copyTo:(id)arg1;
@@ -43,6 +55,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)refineSearchTypeAsString:(int)arg1;
 - (id)searchTypeAsString:(int)arg1;

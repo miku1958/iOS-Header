@@ -12,9 +12,11 @@
 
 + (int)_foregroundUID;
 + (BOOL)_start:(BOOL)arg1 syncBubbleForUser:(id)arg2 outError:(id *)arg3;
++ (BOOL)adoptPersonaVoucherForAccoutID:(id)arg1 outError:(id *)arg2;
 + (id)allSyncBubbleUsers;
 + (id)allUsers;
 + (BOOL)clearSyncBubblesWithOutError:(id *)arg1;
++ (id)currentPersona;
 + (id)currentSyncBubbleUser;
 + (id)currentUser;
 + (id)currentUserSwitchContext;

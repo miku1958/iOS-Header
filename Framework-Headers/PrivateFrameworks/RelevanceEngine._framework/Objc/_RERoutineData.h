@@ -6,25 +6,23 @@
 
 #import <objc/NSObject.h>
 
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray;
 
-@interface _RERoutineData : NSObject <REIndentedDescription>
+@interface _RERoutineData : NSObject <REAutomaticExportedInterface>
 {
     long long _mode;
     NSArray *_locationsOfInterest;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *locationsOfInterest; // @synthesize locationsOfInterest=_locationsOfInterest;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToRoutineData:(id)arg1;
 
 @end
 

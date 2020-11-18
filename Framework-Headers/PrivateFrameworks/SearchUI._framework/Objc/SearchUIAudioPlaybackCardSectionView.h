@@ -6,28 +6,34 @@
 
 #import <SearchUI/SearchUICardSectionView.h>
 
-#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 #import <SearchUI/SearchUICardSectionViewUpdatable-Protocol.h>
 #import <SearchUI/SearchUISelectableTextViewDelegate-Protocol.h>
 
-@class NSString, SKUIPlayButton, TLKStackView;
+@class NSString, SearchUIButton, SearchUILabel, SearchUISelectableTextView, TLKStackView;
 
-@interface SearchUIAudioPlaybackCardSectionView : SearchUICardSectionView <NUIContainerStackViewDelegate, SearchUISelectableTextViewDelegate, SearchUICardSectionViewUpdatable>
+@interface SearchUIAudioPlaybackCardSectionView : SearchUICardSectionView <NUIContainerViewDelegate, SearchUISelectableTextViewDelegate, SearchUICardSectionViewUpdatable>
 {
-    SKUIPlayButton *_playButton;
+    SearchUILabel *_detailTextLabel;
+    SearchUISelectableTextView *_titleTextView;
+    SearchUISelectableTextView *_subtitleView;
+    SearchUIButton *_playButton;
 }
 
-@property (strong) TLKStackView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKStackView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) SearchUILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SKUIPlayButton *playButton; // @synthesize playButton=_playButton;
+@property (strong, nonatomic) SearchUIButton *playButton; // @synthesize playButton=_playButton;
+@property (strong, nonatomic) SearchUISelectableTextView *subtitleView; // @synthesize subtitleView=_subtitleView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SearchUISelectableTextView *titleTextView; // @synthesize titleTextView=_titleTextView;
 
 - (void).cxx_destruct;
 - (void)_playButtonPressed:(id)arg1;
 - (void)_updateStateFromCardSection:(id)arg1 animated:(BOOL)arg2;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)selectableTextView:(id)arg1 presentViewController:(id)arg2;
 - (id)setupContentView;
 - (void)updateStateFromCardSection:(id)arg1;

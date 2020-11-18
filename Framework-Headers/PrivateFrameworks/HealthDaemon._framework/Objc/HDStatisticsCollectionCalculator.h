@@ -14,13 +14,14 @@
 
 @interface HDStatisticsCollectionCalculator : NSObject <HDStatisticsSourceOrderProvider, NSSecureCoding>
 {
-    long long _computationMethod;
     struct unique_ptr<_HDStatisticsCollectionCalculatorImplementation, std::__1::default_delete<_HDStatisticsCollectionCalculatorImplementation>> _implementation;
     CDUnknownBlockType _statisticsHandler;
+    long long _computationMethod;
     NSArray *_maskedIntervals;
     id<HDStatisticsCollectionCalculatorSourceOrderProvider> _sourceOrderProvider;
 }
 
+@property (readonly, nonatomic) long long computationMethod; // @synthesize computationMethod=_computationMethod;
 @property (weak, nonatomic) id<HDStatisticsCollectionCalculatorDataSource> dataSource;
 @property (copy, nonatomic) NSDateInterval *dateInterval;
 @property (readonly, copy) NSString *debugDescription;
@@ -51,7 +52,7 @@
 - (id)initForQuantityType:(id)arg1 intervalCollection:(id)arg2 options:(unsigned long long)arg3 mergeStrategy:(unsigned long long)arg4 computationMethod:(long long)arg5;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)invalidateInterval:(id)arg1 error:(id *)arg2;
-- (void)orderSourceIDs:(vector_bbba3654 *)arg1;
+- (void)orderSourceIDs:(vector_d87a6415 *)arg1;
 - (BOOL)performAddSampleTransaction:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)queryForInitialStatisticsWithError:(id *)arg1;
 - (void)reset;

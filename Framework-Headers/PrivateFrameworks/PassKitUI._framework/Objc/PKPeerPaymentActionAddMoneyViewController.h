@@ -6,18 +6,21 @@
 
 #import <PassKitUI/PKPeerPaymentActionViewController.h>
 
+#import <PassKitUI/PKEnterCurrencyAmountPassViewDelegate-Protocol.h>
 #import <PassKitUI/PKEnterCurrencyAmountViewDelegate-Protocol.h>
 #import <PassKitUI/PKNumberPadSuggestionsViewDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentActionControllerDelegate-Protocol.h>
 
-@class NSString, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKNumberPadSuggestionsView, PKNumericSuggestionsEnterValueAlgorithm;
+@class NSString, PKEnterCurrencyAmountPassView, PKNumberPadSuggestionsView, PKNumericSuggestionsEnterValueAlgorithm, UIScrollView;
 
-@interface PKPeerPaymentActionAddMoneyViewController : PKPeerPaymentActionViewController <PKEnterCurrencyAmountViewDelegate, PKNumberPadSuggestionsViewDelegate, PKPeerPaymentActionControllerDelegate>
+@interface PKPeerPaymentActionAddMoneyViewController : PKPeerPaymentActionViewController <PKEnterCurrencyAmountViewDelegate, PKNumberPadSuggestionsViewDelegate, PKPeerPaymentActionControllerDelegate, PKEnterCurrencyAmountPassViewDelegate>
 {
     PKNumericSuggestionsEnterValueAlgorithm *_suggestionGenerator;
-    PKEnterCurrencyAmountView *_enterCurrencyAmountView;
-    PKEnterValueNewBalanceView *_newBalanceView;
     PKNumberPadSuggestionsView *_suggestionView;
+    UIScrollView *_scrollView;
+    PKEnterCurrencyAmountPassView *_amountPassView;
+    BOOL _keyboardVisible;
+    struct CGRect _keyboardFrame;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,9 +38,14 @@
 - (id)_spinnerBarButton;
 - (void)_updateBarButtonEnabledState;
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
+- (void)_updateLayoutForKeyboardAction:(CDUnknownBlockType)arg1;
+- (void)enterCurrencyAmountPassViewDidLoadPassSnapshot:(id)arg1;
 - (BOOL)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
 - (id)initWithPaymentPass:(id)arg1 webService:(id)arg2 context:(long long)arg3;
+- (void)keyboardWillChange:(id)arg1;
+- (void)keyboardWillHide:(id)arg1;
+- (void)keyboardWillShow:(id)arg1;
 - (void)loadView;
 - (void)numberPadSuggestionsView:(id)arg1 didSelectSuggestion:(id)arg2;
 - (void)peerPaymentActionController:(id)arg1 hasChangedState:(unsigned long long)arg2;

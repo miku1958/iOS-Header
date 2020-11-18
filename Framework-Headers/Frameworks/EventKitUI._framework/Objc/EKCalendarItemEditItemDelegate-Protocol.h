@@ -30,6 +30,7 @@
 - (void)editItemRequiresPopoverSizeUpdate:(EKCalendarItemEditItem *)arg1;
 - (void)editItemTextChanged:(EKCalendarItemEditItem *)arg1;
 - (void)editItemVisibilityChanged:(EKCalendarItemEditItem *)arg1;
+- (void)editItemWantsFooterTitlesToReload:(EKCalendarItemEditItem *)arg1;
 - (void)editItemWantsInjectableViewControllerToBeShown:(EKCalendarItemEditItem *)arg1;
 - (long long)rowNumberForEditItem:(EKCalendarItemEditItem *)arg1;
 - (UIViewController *)viewControllerForEditItem:(EKCalendarItemEditItem *)arg1;

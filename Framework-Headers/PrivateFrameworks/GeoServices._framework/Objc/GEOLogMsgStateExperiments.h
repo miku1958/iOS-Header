@@ -8,26 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABClientConfig, GEOABExperimentAssignment, GEOAbAssignInfo, GEOPDDatasetABStatus;
+@class GEOABClientConfig, GEOABExperimentAssignment, GEOAbAssignInfo, GEOPDDatasetABStatus, PBDataReader;
 
 @interface GEOLogMsgStateExperiments : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOAbAssignInfo *_abAssignInfo;
     GEOABClientConfig *_clientAbExperimentAssignment;
     GEOPDDatasetABStatus *_datasetAbStatus;
     GEOABExperimentAssignment *_tilesAbExperimentAssignment;
+    struct {
+        unsigned int read_abAssignInfo:1;
+        unsigned int read_clientAbExperimentAssignment:1;
+        unsigned int read_datasetAbStatus:1;
+        unsigned int read_tilesAbExperimentAssignment:1;
+        unsigned int wrote_abAssignInfo:1;
+        unsigned int wrote_clientAbExperimentAssignment:1;
+        unsigned int wrote_datasetAbStatus:1;
+        unsigned int wrote_tilesAbExperimentAssignment:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOAbAssignInfo *abAssignInfo; // @synthesize abAssignInfo=_abAssignInfo;
-@property (strong, nonatomic) GEOABClientConfig *clientAbExperimentAssignment; // @synthesize clientAbExperimentAssignment=_clientAbExperimentAssignment;
-@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
+@property (strong, nonatomic) GEOAbAssignInfo *abAssignInfo;
+@property (strong, nonatomic) GEOABClientConfig *clientAbExperimentAssignment;
+@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
 @property (readonly, nonatomic) BOOL hasAbAssignInfo;
 @property (readonly, nonatomic) BOOL hasClientAbExperimentAssignment;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (readonly, nonatomic) BOOL hasTilesAbExperimentAssignment;
-@property (strong, nonatomic) GEOABExperimentAssignment *tilesAbExperimentAssignment; // @synthesize tilesAbExperimentAssignment=_tilesAbExperimentAssignment;
+@property (strong, nonatomic) GEOABExperimentAssignment *tilesAbExperimentAssignment;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readAbAssignInfo;
+- (void)_readClientAbExperimentAssignment;
+- (void)_readDatasetAbStatus;
+- (void)_readTilesAbExperimentAssignment;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +52,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

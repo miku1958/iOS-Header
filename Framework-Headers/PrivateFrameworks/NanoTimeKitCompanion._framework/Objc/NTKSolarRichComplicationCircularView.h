@@ -6,61 +6,22 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
 
-@class CAGradientLayer, CALayer, NSDictionary, NTKBezierPathPointModel, NTKBezierPathView, NTKSolarPath, NTKSolarTimeModel, UIView;
+@class NTKSolarRichComplicationFullColorImageView;
 
 @interface NTKSolarRichComplicationCircularView : NTKRichComplicationCircularBaseView
 {
-    struct {
-        double curveLineWidth;
-        struct CGSize curveMaxSize;
-        double lineTop;
-        double lineHeight;
-        double strokeDiskDiameter;
-        double strokeDiskBorderWidth;
-        double fillDiskDiameter;
-        double haloMinScale;
-        double haloMaxScale;
-        double backgroundGradientSunsetLayerMaxAlpha;
-    } _layoutConstants;
-    UIView *_backgroundView;
-    CAGradientLayer *_gradientLayer;
-    CALayer *_gradientAdjustmentLayer;
-    UIView *_lineView;
-    NTKBezierPathView *_pathView;
-    NTKSolarTimeModel *_solarTimeModel;
-    NTKSolarPath *_solarPath;
-    NTKBezierPathPointModel *_pointModel;
-    CALayer *_strokeDiskMaskLayer;
-    CALayer *_strokeDiskBorderLayer;
-    CALayer *_fillDiskLayer;
-    CALayer *_fillDiskHaloLayer;
-    CALayer *_belowHorizonLayer;
-    UIView *_fillDiskHaloContainerView;
-    NSDictionary *_waypoints;
-    double _horizonYInCurve;
-    double _sunsetXInCurve;
-    struct CGRect _solarPathViewRect;
-    double _prevDiskTimePercentage;
-    struct NSNumber *_clockTimerToken;
+    NTKSolarRichComplicationFullColorImageView *_solarImageView;
 }
 
 - (void).cxx_destruct;
-- (void)_applyPausedUpdate;
-- (void)_dateDidUpdate;
-- (void)_didReceiveSignificantTimeChangeNotification;
-- (void)_didReceiveTimeZoneDidChangeNotification;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (BOOL)_shouldAnimateWithTemplateUpdateReason:(long long)arg1;
-- (void)_startClockUpdates;
-- (void)_stopClockUpdates;
-- (void)_updateGradientBackgroundWithYPosition:(double)arg1 xPercentage:(double)arg2 topDistanceAboveHorizonLine:(double)arg3 bottomDistanceBelowHorizonLine:(double)arg4;
-- (void)_updateSolarDiskWithUsingIdealizedTime:(BOOL)arg1 forceUpdate:(BOOL)arg2 animated:(BOOL)arg3;
-- (void)_updateSolarPathWithAnimated:(BOOL)arg1;
-- (void)_updateWaypoints;
 - (void)_updateWithLocation:(id)arg1 useIdealizedTime:(BOOL)arg2 forceUpdate:(BOOL)arg3 animated:(BOOL)arg4;
-- (void)dealloc;
 - (id)init;
 - (void)layoutSubviews;
+- (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

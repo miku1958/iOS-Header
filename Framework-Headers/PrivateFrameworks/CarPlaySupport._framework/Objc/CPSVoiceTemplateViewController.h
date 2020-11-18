@@ -29,9 +29,9 @@
 - (void)_activateStateWithIdentifier:(id)arg1;
 - (void)_backGestureFired:(id)arg1;
 - (id)_stateWithIdentifier:(id)arg1;
+- (void)_viewDidLoad;
 - (id)initWithVoiceTemplate:(id)arg1 templateDelegate:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (id)voiceTemplate;

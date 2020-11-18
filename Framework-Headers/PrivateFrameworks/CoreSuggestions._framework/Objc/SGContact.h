@@ -9,10 +9,11 @@
 #import <CoreSuggestions/NSCopying-Protocol.h>
 #import <CoreSuggestions/NSSecureCoding-Protocol.h>
 
-@class NSArray, SGName, SGRecordId;
+@class NSArray, NSString, SGDateComponents, SGName, SGRecordId;
 
 @interface SGContact : NSObject <NSCopying, NSSecureCoding>
 {
+    int _updatedFields;
     SGRecordId *_recordId;
     SGName *_name;
     NSArray *_emailAddresses;
@@ -20,26 +21,33 @@
     NSArray *_postalAddresses;
     NSArray *_instantMessageAddresses;
     NSArray *_socialProfiles;
+    SGDateComponents *_birthday;
+    NSString *_photoPath;
     unsigned long long _significance;
     unsigned long long _significanceOrigin;
 }
 
+@property (copy, nonatomic) SGDateComponents *birthday; // @synthesize birthday=_birthday;
 @property (copy, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
 @property (copy, nonatomic) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
 @property (copy, nonatomic) SGName *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSArray *phones; // @synthesize phones=_phones;
+@property (readonly, copy, nonatomic) NSString *photoPath; // @synthesize photoPath=_photoPath;
 @property (copy, nonatomic) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
 @property (readonly, nonatomic) SGRecordId *recordId; // @synthesize recordId=_recordId;
 @property (nonatomic) unsigned long long significance; // @synthesize significance=_significance;
 @property (nonatomic) unsigned long long significanceOrigin; // @synthesize significanceOrigin=_significanceOrigin;
 @property (copy, nonatomic) NSArray *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
+@property (nonatomic) int updatedFields; // @synthesize updatedFields=_updatedFields;
 
 + (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5;
 + (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7;
++ (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7 birthday:(id)arg8 photoPath:(id)arg9;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)addresses;
 - (id)cnContact;
+- (BOOL)containsDetailSuggestions;
 - (BOOL)containsSuggestions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,7 +56,7 @@
 - (BOOL)hasNonTrivialInfo;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7;
+- (id)initWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5 instantMessageAddresses:(id)arg6 socialProfiles:(id)arg7 birthday:(id)arg8 photoPath:(id)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContact:(id)arg1;
 - (unsigned long long)richness;

@@ -25,6 +25,7 @@
     NSSet *_supportedHandleTypes;
     NSURL *_bundleURL;
     NSString *_bundleIdentifier;
+    NSArray *_emergencyHandles;
     NSArray *_emergencyLabeledHandles;
     NSArray *_handoffIdentifiers;
     NSOrderedSet *_prioritizedSenderIdentities;
@@ -38,6 +39,7 @@
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
+@property (copy, nonatomic) NSArray *emergencyHandles; // @synthesize emergencyHandles=_emergencyHandles;
 @property (copy, nonatomic) NSArray *emergencyLabeledHandles; // @synthesize emergencyLabeledHandles=_emergencyLabeledHandles;
 @property (readonly, nonatomic, getter=isFaceTimeProvider) BOOL faceTimeProvider;
 @property (copy, nonatomic) NSArray *handoffIdentifiers; // @synthesize handoffIdentifiers=_handoffIdentifiers;

@@ -87,6 +87,7 @@
 - (void)faceLibraryWasDismissed;
 - (void)handleOrdinaryScreenWake;
 - (void)handleScreenOff;
+- (void)handleStyleDidChange;
 - (void)handleWristRaiseScreenWake;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

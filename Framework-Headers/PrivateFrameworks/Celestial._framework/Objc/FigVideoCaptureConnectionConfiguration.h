@@ -16,9 +16,11 @@
     int _orientation;
     int _retainedBufferCount;
     BOOL _cameraIntrinsicMatrixDeliveryEnabled;
+    BOOL _livePhotoMetadataWritingEnabled;
 }
 
 @property (nonatomic) BOOL cameraIntrinsicMatrixDeliveryEnabled; // @synthesize cameraIntrinsicMatrixDeliveryEnabled=_cameraIntrinsicMatrixDeliveryEnabled;
+@property (nonatomic) BOOL livePhotoMetadataWritingEnabled; // @synthesize livePhotoMetadataWritingEnabled=_livePhotoMetadataWritingEnabled;
 @property (nonatomic) BOOL mirroringEnabled; // @synthesize mirroringEnabled=_mirroringEnabled;
 @property (nonatomic) int orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) int outputFormat; // @synthesize outputFormat=_outputFormat;

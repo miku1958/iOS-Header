@@ -36,6 +36,7 @@
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (void)clearCache;
 - (void)dealloc;
+- (void)evictResourceFromCache:(id)arg1 scope:(id)arg2;
 - (void)handleChangeForItemForKey:(id)arg1;
 - (id)initWithLockProvider:(CDUnknownBlockType)arg1 totalCostLimit:(unsigned long long)arg2 logger:(id)arg3;
 - (void)nts_evictObjectsToFreeUpCost:(unsigned long long)arg1;

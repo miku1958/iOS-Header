@@ -20,6 +20,7 @@
     NSString *_categoryIdentifier;
     NSSet *_subSectionIdentifiers;
     NSString *_highestPrioritySubSectionIdentifier;
+    NSArray *_intentIdentifiers;
     NSArray *_peopleIdentifiers;
     NSString *_parentSectionIdentifier;
     BOOL _uniqueThreadIdentifier;
@@ -54,6 +55,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *highestPrioritySubSectionIdentifier; // @synthesize highestPrioritySubSectionIdentifier=_highestPrioritySubSectionIdentifier;
+@property (readonly, copy, nonatomic) NSArray *intentIdentifiers; // @synthesize intentIdentifiers=_intentIdentifiers;
 @property (readonly, nonatomic) BOOL isCollapsedNotification; // @synthesize isCollapsedNotification=_isCollapsedNotification;
 @property (readonly, copy, nonatomic) NSString *notificationIdentifier; // @synthesize notificationIdentifier=_notificationIdentifier;
 @property (readonly, nonatomic) NCNotificationOptions *options; // @synthesize options=_options;
@@ -81,6 +83,7 @@
 + (id)notificationRequestWithNotificationId:(id)arg1 requestDestinations:(id)arg2;
 + (id)notificationRequestWithNotificationId:(id)arg1 requestDestinations:(id)arg2 isCritical:(BOOL)arg3;
 + (id)notificationRequestWithNotificationId:(id)arg1 requestDestinations:(id)arg2 lockScreenPersistence:(unsigned long long)arg3;
++ (id)notificationRequestWithNotificationId:(id)arg1 sectionId:(id)arg2 threadId:(id)arg3;
 + (id)notificationRequestWithNotificationId:(id)arg1 threadId:(id)arg2;
 + (id)notificationRequestWithNotificationId:(id)arg1 threadId:(id)arg2 timestamp:(id)arg3;
 + (id)notificationRequestWithNotificationId:(id)arg1 timestamp:(id)arg2;

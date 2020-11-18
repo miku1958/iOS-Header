@@ -8,10 +8,9 @@
 
 @interface NSData (RTExtensions)
 - (id)hexDescription;
+- (id)hexString;
 - (id)hmacSha1WithKey:(id)arg1;
-- (id)hmacSha256WithKey:(id)arg1;
 - (id)initWithHexString:(id)arg1;
 - (id)md5;
-- (id)sha256;
 @end
 

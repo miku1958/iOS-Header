@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (double)maxInnerRadiusPercentage;
 - (double)minInnerRadiusPercentage;
 - (void)p_initializeAxisIDs;
-- (Class)p_selectAxisClassForScale:(int)arg1 linearClass:(Class)arg2 logClass:(Class)arg3 percentClass:(Class)arg4;
+- (Class)p_selectAxisClassForScale:(long long)arg1 linearClass:(Class)arg2 logClass:(Class)arg3 percentClass:(Class)arg4;
 - (Class)presetImagerClass;
 - (BOOL)rendersBackgroundAxis;
 - (BOOL)rendersUsingRadialGeometry;
@@ -93,7 +93,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsValueLabels;
 - (void)updateTitlesForExportingModel:(id)arg1 info:(id)arg2;
 - (id)userInterfaceNameForPlaceTitleAtCenter:(BOOL)arg1;
-- (Class)valueAxisClassForID:(id)arg1 scale:(int)arg2;
+- (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;
 - (id)valueLabelPositioner;
 
 @end

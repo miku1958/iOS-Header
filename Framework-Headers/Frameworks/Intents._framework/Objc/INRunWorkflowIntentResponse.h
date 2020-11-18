@@ -8,11 +8,10 @@
 
 #import <Intents/INRunWorkflowIntentResponseExport-Protocol.h>
 
-@class INArchivedObject, NSArray, NSNumber, NSString, _INPBRunWorkflowIntentResponse;
+@class INArchivedObject, NSArray, NSNumber, NSString;
 
 @interface INRunWorkflowIntentResponse : INIntentResponse <INRunWorkflowIntentResponseExport>
 {
-    _INPBRunWorkflowIntentResponse *_responseMessagePBRepresentation;
 }
 
 @property (readonly, nonatomic) long long code;
@@ -20,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSNumber *requestsIntentExecution;
 @property (copy, nonatomic) NSArray *steps;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) INArchivedObject *underlyingIntent;
@@ -32,11 +32,10 @@
 + (int)_errorCodeFromCode:(long long)arg1;
 + (int)_typeFromCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (BOOL)_shouldForwardIntentToApp;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

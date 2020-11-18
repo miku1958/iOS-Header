@@ -33,12 +33,14 @@
     SEL _buttonAction;
     SEL _controllerLoadAction;
     BOOL _showContentString;
+    SEL _confirmationAlternateAction;
     id _weakUserInfo;
 }
 
 @property (nonatomic) SEL buttonAction; // @synthesize buttonAction=_buttonAction;
 @property (nonatomic) long long cellType; // @synthesize cellType;
 @property (nonatomic) SEL confirmationAction; // @synthesize confirmationAction=_confirmationAction;
+@property (nonatomic) SEL confirmationAlternateAction; // @synthesize confirmationAlternateAction=_confirmationAlternateAction;
 @property (nonatomic) SEL confirmationCancelAction; // @synthesize confirmationCancelAction=_confirmationCancelAction;
 @property (nonatomic) SEL controllerLoadAction; // @synthesize controllerLoadAction=_controllerLoadAction;
 @property (nonatomic) Class detailControllerClass; // @synthesize detailControllerClass;
@@ -76,6 +78,7 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)performButtonAction;
 - (void)performConfirmationAction;
+- (void)performConfirmationAlternateAction;
 - (void)performConfirmationCancelAction;
 - (void)performControllerLoadAction;
 - (id)performGetter;
@@ -93,11 +96,9 @@
 - (void)setValues:(id)arg1 titles:(id)arg2;
 - (void)setValues:(id)arg1 titles:(id)arg2 shortTitles:(id)arg3;
 - (void)setValues:(id)arg1 titles:(id)arg2 shortTitles:(id)arg3 usingLocalizedTitleSorting:(BOOL)arg4;
-- (void)setVersionLabelEnabled:(BOOL)arg1;
 - (void)setupIconImageWithBundle:(id)arg1;
 - (void)setupIconImageWithPath:(id)arg1;
 - (long long)titleCompare:(id)arg1;
-- (BOOL)versionLabelEnabled;
 
 @end
 

@@ -13,6 +13,7 @@
 @interface ASDPurchaseHistoryQuery : NSObject <NSSecureCoding>
 {
     long long _accountID;
+    NSArray *_bundleIDs;
     long long _isFirstParty;
     long long _isHidden;
     long long _isPreorder;
@@ -22,6 +23,7 @@
 }
 
 @property long long accountID; // @synthesize accountID=_accountID;
+@property (copy) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property long long isFirstParty; // @synthesize isFirstParty=_isFirstParty;
 @property long long isHidden; // @synthesize isHidden=_isHidden;
 @property long long isPreorder; // @synthesize isPreorder=_isPreorder;

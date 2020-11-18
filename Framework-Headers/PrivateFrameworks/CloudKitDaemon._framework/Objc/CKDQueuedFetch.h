@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 @class CKDClientContext, CKDOperation, NSDate, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_activity;
 
 __attribute__((visibility("hidden")))
 @interface CKDQueuedFetch : NSObject
 {
     BOOL _isFinished;
+    BOOL _isCancelled;
     NSDate *_queuedDate;
     CDUnknownBlockType _completionHandler;
     CKDQueuedFetch *_equivalentRunningFetch;
+    NSObject<OS_os_activity> *_osActivity;
     NSMutableDictionary *_completionHandlersByItemID;
     unsigned long long _lastCompletionHandlerCount;
     NSDate *_startDate;
@@ -40,10 +42,12 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) CKDQueuedFetch *equivalentRunningFetch; // @synthesize equivalentRunningFetch=_equivalentRunningFetch;
 @property (nonatomic) long long highestQOS; // @synthesize highestQOS=_highestQOS;
 @property (strong, nonatomic) CKDOperation *initialOperation; // @synthesize initialOperation=_initialOperation;
+@property (nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
 @property (nonatomic) unsigned long long lastCompletionHandlerCount; // @synthesize lastCompletionHandlerCount=_lastCompletionHandlerCount;
 @property (strong, nonatomic) NSDate *lastRequestDate; // @synthesize lastRequestDate=_lastRequestDate;
 @property (weak, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (strong, nonatomic) NSObject<OS_os_activity> *osActivity; // @synthesize osActivity=_osActivity;
 @property (strong, nonatomic) NSDate *queuedDate; // @synthesize queuedDate=_queuedDate;
 @property (strong, nonatomic) NSString *runningOperationID; // @synthesize runningOperationID=_runningOperationID;
 @property (nonatomic) long long scope; // @synthesize scope=_scope;
@@ -56,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)callbacksForItemWithID:(id)arg1;
 - (BOOL)canBeUsedForOperation:(id)arg1;
 - (BOOL)canBeUsedForPendingFetch:(id)arg1;
+- (void)cancelFetchOperation;
 - (void)createFetchOperationForItemIDs:(id)arg1 operationQueue:(id)arg2 operationConfigurationBlock:(CDUnknownBlockType)arg3;
 - (BOOL)dependentOperationListContainsOperationID:(id)arg1;
 - (BOOL)dependentOperationListContainsRunningFetch:(id)arg1;

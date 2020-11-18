@@ -6,7 +6,7 @@
 
 #import <CoreHandwriting/CHPointFIFO.h>
 
-@class MISSING_TYPE, UIView;
+@class MISSING_TYPE;
 @protocol CHPointFIFODrawingTarget;
 
 @interface CHQuadCurvePointFIFO : CHPointFIFO
@@ -17,7 +17,6 @@
     struct CGPath *_path;
     double _lineWidth;
     id<CHPointFIFODrawingTarget> _drawingTarget;
-    UIView *_view;
     MISSING_TYPE *_lastPoint;
     vector_74a7c1d0 _prevPoints;
     vector_74a7c1d0 _points;
@@ -34,7 +33,6 @@
 @property (nonatomic) vector_027a6188 points; // @synthesize points=_points;
 @property (nonatomic) vector_027a6188 prevPoints; // @synthesize prevPoints=_prevPoints;
 @property (nonatomic) float unitScale; // @synthesize unitScale=_unitScale;
-@property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
 + (MISSING_TYPE *)interpolateFromPoint:(float)arg1 toPoint:controlPoint:time: /* Error: Ran out of types for this method. */;
 - (id).cxx_construct;
@@ -45,7 +43,6 @@
 - (void)flush;
 - (id)initWithFIFO:(id)arg1;
 - (id)initWithFIFO:(id)arg1 drawingTarget:(id)arg2;
-- (id)initWithFIFO:(id)arg1 strokeView:(id)arg2;
 - (void)setUnitScaleForViewSize:(struct CGSize)arg1 normalizedSize:(struct CGSize)arg2 contentScaleFactor:(double)arg3;
 
 @end

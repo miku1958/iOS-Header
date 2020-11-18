@@ -12,12 +12,11 @@
 #import <EventKitUI/EKDayViewDelegate-Protocol.h>
 #import <EventKitUI/EKEventGestureControllerDelegate-Protocol.h>
 #import <EventKitUI/UIScrollViewDelegate-Protocol.h>
-#import <EventKitUI/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class CalendarOccurrencesCollection, EKDayOccurrenceView, EKDayView, EKDayViewWithGutters, EKEventEditViewController, EKEventGestureController, NSCalendar, NSDateComponents, NSObject, NSString, NSTimer, ScrollSpringFactory, UIScrollView, UIView;
-@protocol EKDayViewControllerDataSource, EKDayViewControllerDelegate, OS_dispatch_queue, UIViewControllerPreviewing;
+@class CalendarOccurrencesCollection, EKDayOccurrenceView, EKDayView, EKDayViewWithGutters, EKEventEditViewController, EKEventGestureController, NSArray, NSCalendar, NSDateComponents, NSObject, NSString, NSTimer, ScrollSpringFactory, UIScrollView, UIView;
+@protocol EKDayViewControllerDataSource, EKDayViewControllerDelegate, OS_dispatch_queue;
 
-@interface EKDayViewController : UIViewController <BlockableScrollViewDelegate, UIViewControllerPreviewingDelegate, EKDayOccurrenceViewDelegate, EKDayViewDataSource, EKDayViewDelegate, EKEventGestureControllerDelegate, UIScrollViewDelegate>
+@interface EKDayViewController : UIViewController <BlockableScrollViewDelegate, EKDayOccurrenceViewDelegate, EKDayViewDataSource, EKDayViewDelegate, EKEventGestureControllerDelegate, UIScrollViewDelegate>
 {
     UIView *_clipView;
     UIScrollView *_horizontalScrollingView;
@@ -43,20 +42,22 @@
     NSDateComponents *_originalDisplayDate;
     double _dayStart;
     double _dayEnd;
-    BOOL _initialLoadHasOccurred;
+    BOOL _needsReload;
+    BOOL _shouldScrollToNowOnViewWillAppear;
     BOOL _instigatedDateChange;
     BOOL _viewAppeared;
-    BOOL _resizing;
     BOOL _adjustingForDeceleration;
     BOOL _fingerDown;
+    BOOL _requiresFullDayRelayout;
     int _springAnimatedDecelerationsInProgress;
+    int _sizeTransitionsInProgress;
     BOOL _correctAfterScroll;
     NSDateComponents *_targetDateComponents;
     BOOL _needToCompleteScrollingAnimation;
     BOOL _needToCompleteDeceleration;
     NSObject<OS_dispatch_queue> *_reloadQueue;
     NSObject<OS_dispatch_queue> *_protectionQueue;
-    id<UIViewControllerPreviewing> _viewControllerPreviewingRegistration;
+    long long _targetSizeClass;
     BOOL _showsBanner;
     BOOL _allowsDaySwitching;
     BOOL _allowsSelection;
@@ -68,6 +69,7 @@
     BOOL _notifyWhenTapOtherEventDuringDragging;
     BOOL _preloadExtraDays;
     BOOL _transitionedToSameDay;
+    int _startingFirstVisibleSecond;
     id<EKDayViewControllerDelegate> _delegate;
     id<EKDayViewControllerDataSource> _dataSource;
     NSDateComponents *_displayDate;
@@ -86,7 +88,7 @@
 @property (copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (readonly, nonatomic) UIView *currentAllDayView;
 @property (readonly, nonatomic) BOOL currentDayContainsOccurrences;
-@property (readonly, nonatomic) UIView *currentDayContentGridView;
+@property (readonly, nonatomic) NSArray *currentDayContentGridViewSubviews;
 @property (readonly, nonatomic) EKDayView *currentDayView;
 @property (strong, nonatomic) EKEventEditViewController *currentEditor; // @synthesize currentEditor=_currentEditor;
 @property (weak, nonatomic) id<EKDayViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
@@ -108,6 +110,7 @@
 @property (nonatomic) BOOL shouldAutoscrollAfterAppearance; // @synthesize shouldAutoscrollAfterAppearance=_shouldAutoscrollAfterAppearance;
 @property (strong, nonatomic) NSTimer *showNowTimer; // @synthesize showNowTimer=_showNowTimer;
 @property (nonatomic) BOOL showsBanner; // @synthesize showsBanner=_showsBanner;
+@property (nonatomic) int startingFirstVisibleSecond; // @synthesize startingFirstVisibleSecond=_startingFirstVisibleSecond;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL transitionedToSameDay; // @synthesize transitionedToSameDay=_transitionedToSameDay;
 
@@ -124,7 +127,9 @@
 - (id)_createGutterDayViewWithDayView:(id)arg1;
 - (void)_cutAnimationTailAfterDelayForDecelerationFromUserInput;
 - (void)_cutAnimationTailAfterDelayForScrollAnimationFromExternalSource;
+- (BOOL)_delegateRespondsToDisplayedOccurrencesChangedMethod;
 - (void)_didRespondToApplicationDidBecomeActiveStateChange;
+- (long long)_effectiveInterfaceOrientationForSize:(struct CGSize)arg1;
 - (id)_eventGestureSuperview;
 - (id)_eventsForDay:(id)arg1;
 - (void)_highlightDayViewDate:(double)arg1 isAllDay:(BOOL)arg2;
@@ -135,6 +140,7 @@
 - (void)_localeChanged:(id)arg1;
 - (void)_notifyDelegateOfSelectedDateChange;
 - (id)_occurrencesForDayView:(id)arg1;
+- (void)_performDisplayedOccurrencesChangedDelegateMethodWithTrigger:(int)arg1;
 - (void)_relayoutDays;
 - (void)_relayoutDaysDuringScrolling;
 - (void)_relayoutDaysDuringScrollingAndPerformDayChanges:(BOOL)arg1;
@@ -159,6 +165,7 @@
 - (double)_weightedAllDayHeightForView:(id)arg1 visibleRect:(struct CGRect)arg2;
 - (void)applicationDidBecomeActive;
 - (void)applicationWillResignActive;
+- (void)blockableScrollViewDidChangeFrameSize;
 - (BOOL)blockableScrollViewShouldAllowScrolling;
 - (void)bringEventToFront:(id)arg1;
 - (void)cleanUpAfterGestureFailureForEventGestureController:(id)arg1;
@@ -173,6 +180,7 @@
 - (void)dayView:(id)arg1 firstVisibleSecondChanged:(unsigned long long)arg2;
 - (void)dayView:(id)arg1 isPinchingDayViewWithScale:(double)arg2;
 - (void)dayView:(id)arg1 scrollViewWillBeginDragging:(id)arg2;
+- (void)dayViewDidCompleteAsyncLoadAndLayout:(id)arg1;
 - (void)dayViewDidTapEmptySpace:(id)arg1;
 - (void)dealloc;
 - (BOOL)didScrollWhenEventGestureController:(id)arg1 scrollTimerFiredToMoveLeft:(BOOL)arg2 right:(BOOL)arg3 vertically:(BOOL)arg4 towardPoint:(struct CGPoint)arg5;
@@ -205,19 +213,19 @@
 - (id)gestureController;
 - (double)horizontalOffsetForPagingForEventGestureController:(id)arg1;
 - (id)horizontalScrollView;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)init;
+- (id)initWithTargetSizeClass:(long long)arg1;
 - (void)insertViewForEvent:(id)arg1 belowViewForOtherEvent:(id)arg2;
 - (void)layoutContainerView:(id)arg1;
+- (void)loadData:(BOOL)arg1 withTrigger:(int)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)loadDataBetweenStart:(id)arg1 end:(id)arg2 withTrigger:(int)arg3 completionForCurrentDayReload:(CDUnknownBlockType)arg4;
 - (void)loadView;
 - (id)occurrenceViewForEvent:(id)arg1;
 - (id)occurrenceViewForEvent:(id)arg1 includeNextAndPreviousDays:(BOOL)arg2;
 - (id)occurrenceViewSuperviewForEventGestureController:(id)arg1;
 - (id)preferredEventToSelectOnDate:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)reloadData;
-- (void)reloadDataBetweenStart:(id)arg1 end:(id)arg2 completionForCurrentDayReload:(CDUnknownBlockType)arg3;
-- (void)reloadDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)reloadDataIfNeeded;
 - (void)scrollDayViewAppropriatelyWithAnimation:(BOOL)arg1;
 - (void)scrollEventIntoView:(id)arg1 animated:(BOOL)arg2;
 - (void)scrollEventsIntoViewAnimated:(BOOL)arg1;
@@ -229,17 +237,20 @@
 - (void)scrollViewWillBeginDecelerating:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1 gutterWidth:(double)arg2;
+- (void)setNeedsReload;
 - (void)setTimeZone:(id)arg1;
 - (void)significantTimeChangeOccurred;
 - (double)timedRegionOriginForEventGestureController:(id)arg1;
 - (id)touchTrackingViewForEventGestureController:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFrameForProposedTimeView;
-- (void)validateInterfaceOrientation;
+- (void)validateInterfaceOrientationWithFutureOrientation:(long long)arg1;
 - (id)verticalScrollView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

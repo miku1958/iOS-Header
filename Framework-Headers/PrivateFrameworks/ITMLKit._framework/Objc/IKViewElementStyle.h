@@ -17,6 +17,7 @@
     IKCSSRule *_cssRule;
     NSArray *_mediaQueryList;
     NSMutableDictionary *_styleDict;
+    NSMutableDictionary *_overridingValuesByStyle;
 }
 
 @property (readonly, nonatomic) UIColor *backgroundColor;
@@ -61,6 +62,7 @@
 @property (readonly, nonatomic) NSString *maxWidth;
 @property (strong, nonatomic) NSArray *mediaQueryList; // @synthesize mediaQueryList=_mediaQueryList;
 @property (readonly, nonatomic) unsigned long long ordinalMaxLength;
+@property (strong, nonatomic) NSMutableDictionary *overridingValuesByStyle; // @synthesize overridingValuesByStyle=_overridingValuesByStyle;
 @property (readonly, nonatomic) long long reflectImage;
 @property (readonly, nonatomic) NSString *rowHeight;
 @property (strong, nonatomic) NSMutableDictionary *styleDict; // @synthesize styleDict=_styleDict;
@@ -86,6 +88,7 @@
 + (BOOL)isHiddenStyleRegistered;
 + (id)normalizeClassSelectorString:(id)arg1;
 + (unsigned long long)positionFromString:(id)arg1;
++ (id)propertiesForStyleName:(id)arg1;
 + (void)registerEdgeInsetStyle:(id)arg1 aliasName:(id)arg2 withPositionStyleNames:(id)arg3 inherited:(BOOL)arg4;
 + (void)registerHiddenStyle:(id)arg1;
 + (void)registerStyle:(id)arg1 aliasName:(id)arg2 withType:(unsigned long long)arg3 inherited:(BOOL)arg4;
@@ -104,12 +107,14 @@
 - (id)_newColorFromString:(id)arg1;
 - (id)_styleNameForAlias:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)cssValueForStyle:(id)arg1;
 - (id)debugDescription;
 - (id)description;
 - (unsigned long long)edgeFlagForStyle:(id)arg1;
 - (id)initWithCSSRule:(id)arg1 filterBlockedStyles:(BOOL)arg2 selStr:(id)arg3;
 - (id)initWithClassSelector:(id)arg1;
 - (id)initWithStyle:(id)arg1 classSelector:(id)arg2;
+- (id)prototype;
 - (BOOL)requiresDynamicEvaluation;
 - (unsigned long long)typeForStyle:(id)arg1;
 - (id)valueForStyle:(id)arg1;

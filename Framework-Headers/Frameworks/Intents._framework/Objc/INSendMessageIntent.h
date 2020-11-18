@@ -19,7 +19,9 @@
 @property (readonly, copy, nonatomic) NSString *conversationIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long effect;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long messageType;
 @property (readonly, copy, nonatomic) NSArray *recipients;
 @property (readonly, copy, nonatomic) INPerson *sender;
 @property (readonly, copy, nonatomic) NSString *serviceName;
@@ -33,6 +35,7 @@
 - (BOOL)_isUserConfirmationRequired;
 - (BOOL)_isValidSubProducer:(id)arg1;
 - (id)_metadata;
+- (long long)_preferredInteractionDirection;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (id)_redactedDictionaryRepresentation;
 - (void)_setMetadata:(id)arg1;

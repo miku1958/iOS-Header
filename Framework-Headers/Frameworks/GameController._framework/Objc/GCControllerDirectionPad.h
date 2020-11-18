@@ -6,24 +6,37 @@
 
 #import <GameController/GCControllerElement.h>
 
-@class GCControllerAxisInput, GCControllerButtonInput;
+@class GCControllerAxisInput, GCControllerButtonInput, NSString;
 
 @interface GCControllerDirectionPad : GCControllerElement
 {
+    NSString *_descriptionName;
+    BOOL _wasZeroed;
+    int _timesPressed;
+    BOOL _nonAnalog;
+    CDUnknownBlockType _valueChangedHandler;
+    GCControllerAxisInput *_xAxis;
+    GCControllerAxisInput *_yAxis;
 }
 
 @property (readonly, nonatomic) GCControllerButtonInput *down;
 @property (readonly, nonatomic) GCControllerButtonInput *left;
+@property BOOL nonAnalog; // @synthesize nonAnalog=_nonAnalog;
 @property (readonly, nonatomic) GCControllerButtonInput *right;
 @property (readonly, nonatomic) GCControllerButtonInput *up;
-@property (copy, nonatomic) CDUnknownBlockType valueChangedHandler;
-@property (readonly, nonatomic) GCControllerAxisInput *xAxis;
-@property (readonly, nonatomic) GCControllerAxisInput *yAxis;
+@property (copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
+@property (strong, nonatomic) GCControllerAxisInput *xAxis; // @synthesize xAxis=_xAxis;
+@property (strong, nonatomic) GCControllerAxisInput *yAxis; // @synthesize yAxis=_yAxis;
 
+- (void).cxx_destruct;
+- (void)_fireValueChanged;
+- (void)_fireValueChangedWithQueue:(id)arg1;
 - (id)description;
+- (int)getAndResetTimesPressed;
 - (id)initWithFlippedY:(BOOL)arg1 digital:(BOOL)arg2;
-- (BOOL)setHIDValue:(struct __IOHIDValue *)arg1;
-- (BOOL)setHIDValue:(struct __IOHIDValue *)arg1 queue:(id)arg2;
+- (id)initWithFlippedY:(BOOL)arg1 digital:(BOOL)arg2 descriptionName:(id)arg3;
+- (BOOL)isAnalog;
+- (void)setValueForXAxis:(float)arg1 yAxis:(float)arg2;
 
 @end
 

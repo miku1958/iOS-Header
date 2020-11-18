@@ -16,6 +16,6 @@
 - (void)didRemoveAutomaticStrongPasswordInForm:(WBSFormMetadata *)arg1 inputSessionUserObject:(NSDictionary *)arg2 inFrame:(SFFormAutoFillFrameHandle *)arg3;
 - (void)didUpdateUnsubmittedForm:(WBSFormMetadata *)arg1 inFrame:(SFFormAutoFillFrameHandle *)arg2;
 - (void)textDidChangeInTextField:(WBSFormControlMetadata *)arg1 inForm:(WBSFormMetadata *)arg2 inFrame:(SFFormAutoFillFrameHandle *)arg3;
-- (void)willNavigateFrame:(SFFormAutoFillFrameHandle *)arg1 withUnsubmittedForm:(WBSFormMetadata *)arg2 loadingIsDeferred:(BOOL)arg3;
+- (void)willNavigateFrame:(SFFormAutoFillFrameHandle *)arg1 withUnsubmittedForm:(WBSFormMetadata *)arg2;
 @end
 

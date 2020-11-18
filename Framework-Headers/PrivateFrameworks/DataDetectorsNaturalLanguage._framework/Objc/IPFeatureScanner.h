@@ -18,7 +18,7 @@
     NSMutableArray *_detectedEvents;
     NSArray *_stitchedEvents;
     NSArray *_filteredDetectedEvents;
-    unsigned long long _resultType;
+    long long _resultType;
     NSMutableSet *_extractedNotesStrings;
 }
 
@@ -30,13 +30,14 @@
 @property (strong) NSMutableArray *detectedEvents; // @synthesize detectedEvents=_detectedEvents;
 @property (strong) NSMutableSet *extractedNotesStrings; // @synthesize extractedNotesStrings=_extractedNotesStrings;
 @property (strong) NSArray *filteredDetectedEvents; // @synthesize filteredDetectedEvents=_filteredDetectedEvents;
-@property unsigned long long resultType; // @synthesize resultType=_resultType;
+@property long long resultType; // @synthesize resultType=_resultType;
 @property (strong) NSArray *stitchedEvents; // @synthesize stitchedEvents=_stitchedEvents;
 
 + (id)dataDetectorsFeatureExtractor;
-+ (id)descriptionForScanResultType:(unsigned long long)arg1;
++ (id)descriptionForScanResultType:(long long)arg1;
 + (BOOL)isNaturalLanguageEventDetectionEnabled;
 + (id)keywordFeatureExtractor;
++ (void)resetSharedCachesAndModels;
 + (id)sentenceFeatureExtractor;
 + (void)setEventStoreForTesting:(id)arg1;
 - (void).cxx_destruct;

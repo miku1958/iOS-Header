@@ -15,7 +15,10 @@
 
 @property (strong, nonatomic) NSMapTable *keysForSizes; // @synthesize keysForSizes=_keysForSizes;
 
-- (void)dealloc;
+- (void).cxx_destruct;
+- (void)cacheImageUsingGamed:(id)arg1 cacheSubdirectory:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)cachedImageFromGamedWithSubdirectory:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)deleteImageUsingGamedWithSubdirectory:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)imageForImageSize:(struct CGSize)arg1;
 - (id)keyForImageSize:(struct CGSize)arg1;
 

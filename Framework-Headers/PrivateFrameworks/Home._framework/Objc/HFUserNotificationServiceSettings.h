@@ -14,18 +14,24 @@
 @interface HFUserNotificationServiceSettings : NSObject <NSCopying, NSMutableCopying>
 {
     BOOL _notificationsEnabled;
+    BOOL _doorbellNotificationsEnabled;
+    BOOL _smartDetectionNotificationsEnabled;
     NSPredicate *_notificationCondition;
+    NSPredicate *_smartCameraNotificationCondition;
 }
 
+@property (nonatomic, getter=areDoorbellNotificationsEnabled) BOOL doorbellNotificationsEnabled; // @synthesize doorbellNotificationsEnabled=_doorbellNotificationsEnabled;
 @property (strong, nonatomic) NSPredicate *notificationCondition; // @synthesize notificationCondition=_notificationCondition;
 @property (nonatomic, getter=areNotificationsEnabled) BOOL notificationsEnabled; // @synthesize notificationsEnabled=_notificationsEnabled;
+@property (strong, nonatomic) NSPredicate *smartCameraNotificationCondition; // @synthesize smartCameraNotificationCondition=_smartCameraNotificationCondition;
+@property (nonatomic, getter=areSmartDetectionNotificationsEnabled) BOOL smartDetectionNotificationsEnabled; // @synthesize smartDetectionNotificationsEnabled=_smartDetectionNotificationsEnabled;
 
 + (id)combinedConditionForBulletinBoardNotifications:(id)arg1;
 - (void).cxx_destruct;
 - (id)applySettingsToBulletinBoardNotifications:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithBulletinBoardNotifications:(id)arg1;
-- (id)initWithNotificationsEnabled:(BOOL)arg1 condition:(id)arg2;
+- (id)initWithNotificationsEnabled:(BOOL)arg1 condition:(id)arg2 smartCameraNotificationCondition:(id)arg3;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

@@ -41,6 +41,8 @@
 
 + (id)inferInputModeForLanguage:(id)arg1 enabled:(id)arg2;
 + (id)inferSecondaryInputModeForPrimary:(id)arg1 enabled:(id)arg2;
++ (id)inputModeForLanguageIdentifier:(id)arg1;
++ (id)inputModesForLanguageIdentifiers:(id)arg1;
 + (id)multilingualInputModesForInputModes:(id)arg1;
 + (void)reportTypedTokens:(const vector_5bda1073 *)arg1 activeInputModes:(id)arg2;
 + (id)sharedLanguageLikelihoodModel;

@@ -19,6 +19,7 @@
 
 + (BOOL)isAvailable;
 - (void)dealloc;
+- (void)getPromptsNeededForWorkoutType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)setSuggestedStopTimeout:(double)arg1;
 - (void)startWorkout:(id)arg1;

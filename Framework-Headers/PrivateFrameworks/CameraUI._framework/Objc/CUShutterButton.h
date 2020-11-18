@@ -23,7 +23,7 @@
     UIView *__innerView;
     UIView *__innerViewContrastView;
     UIView *__stopModeBackground;
-    UIImageView *__spinnerView;
+    UIView *__spinnerView;
     long long _layoutStyle;
     struct UIEdgeInsets _tappableEdgeInsets;
     struct CAMShutterButtonSpec _spec;
@@ -33,7 +33,7 @@
 @property (readonly, nonatomic) UIView *_innerViewContrastView; // @synthesize _innerViewContrastView=__innerViewContrastView;
 @property (readonly, nonatomic) UIImageView *_outerImageView; // @synthesize _outerImageView=__outerImageView;
 @property (readonly, nonatomic) CAMShutterButtonRingView *_outerView; // @synthesize _outerView=__outerView;
-@property (strong, nonatomic) UIImageView *_spinnerView; // @synthesize _spinnerView=__spinnerView;
+@property (strong, nonatomic) UIView *_spinnerView; // @synthesize _spinnerView=__spinnerView;
 @property (strong, nonatomic) UIView *_stopModeBackground; // @synthesize _stopModeBackground=__stopModeBackground;
 @property (readonly, nonatomic) CAMTimelapseShutterRingView *_timelapseOuterView; // @synthesize _timelapseOuterView=__timelapseOuterView;
 @property (strong, nonatomic) UIColor *contentColor; // @synthesize contentColor=_contentColor;
@@ -56,17 +56,14 @@
 - (id)_contentColor;
 - (double)_cornerRadiusForMode:(long long)arg1;
 - (id)_innerCircleColorForMode:(long long)arg1 spinning:(BOOL)arg2;
-- (double)_innerCircleDiameter;
 - (BOOL)_isSpinningSupportedForLayoutStyle:(long long)arg1;
-- (BOOL)_isStopMode:(long long)arg1;
 - (id)_outerImageForMode:(long long)arg1 layoutStyle:(long long)arg2;
 - (void)_performHighlightAnimation;
 - (void)_performModeSwitchAnimationFromMode:(long long)arg1 toMode:(long long)arg2 animated:(BOOL)arg3;
 - (BOOL)_shouldShowBackgroundViewForMode:(long long)arg1;
 - (BOOL)_shouldShowContrastBorderForMode:(long long)arg1 layoutStyle:(long long)arg2;
-- (BOOL)_shouldUseImageViewForMode:(long long)arg1;
-- (BOOL)_shouldUseTimelapseOuterViewForMode:(long long)arg1;
 - (struct CGSize)_sizeForMode:(long long)arg1;
+- (CDStruct_8ae1ff66)_timelapseRingSpecForLayoutStyle:(long long)arg1;
 - (void)_updateOuterAndInnerLayers;
 - (void)_updateSpinningAnimations;
 - (struct UIEdgeInsets)alignmentRectInsets;

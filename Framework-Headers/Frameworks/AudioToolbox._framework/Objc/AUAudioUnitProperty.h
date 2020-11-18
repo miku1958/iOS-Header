@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolbox/NSSecureCoding-Protocol.h>
+#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
 
 @class NSString;
 

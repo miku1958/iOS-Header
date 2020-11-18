@@ -8,15 +8,17 @@
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 
-@class MPSectionedCollection;
+@class MPModelObject, MPSectionedCollection;
 
 @interface MPModelLibraryImportChangeRequest : NSObject <NSCopying>
 {
     BOOL _shouldLibraryAdd;
+    MPModelObject *_referralObject;
     MPSectionedCollection *_modelObjects;
 }
 
 @property (copy, nonatomic) MPSectionedCollection *modelObjects; // @synthesize modelObjects=_modelObjects;
+@property (copy, nonatomic) MPModelObject *referralObject; // @synthesize referralObject=_referralObject;
 @property (nonatomic) BOOL shouldLibraryAdd; // @synthesize shouldLibraryAdd=_shouldLibraryAdd;
 
 - (void).cxx_destruct;

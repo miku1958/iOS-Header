@@ -30,18 +30,6 @@ struct Atomic {
     CDStruct_fcaf9308 _field1;
 };
 
-struct Behavior {
-    CDUnknownFunctionPointerType *_field1;
-    struct Atomic _field2;
-    unsigned int _field3;
-    struct Ref<CA::Render::String> _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int :8;
-    unsigned int :8;
-    struct Ref<const CA::Render::Behavior> _field7;
-};
-
 struct Bounds {
     int _field1;
     int _field2;
@@ -83,6 +71,7 @@ struct CADisplayModePriv {
     id _field2;
     unsigned long long _field3;
     unsigned long long _field4;
+    unsigned int _field5;
 };
 
 struct CADisplayPreferencesPriv {
@@ -127,6 +116,8 @@ struct CARendererPriv {
     unsigned int _field11[2];
     unsigned int _field12;
     unsigned int :8;
+    unsigned int :1;
+    unsigned int :1;
     unsigned long long _field13;
     char _field14[0];
 };
@@ -157,16 +148,17 @@ struct CAWindowServerDisplayImpl {
 
 struct CAWindowServerImpl {
     struct __CFArray *_field1;
-    unsigned int _field2;
+    struct __SFBConnection *_field2;
+    unsigned int _field3;
 };
 
 struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
+    double a;
+    double b;
+    double c;
+    double d;
+    double tx;
+    double ty;
 };
 
 struct CGColorSpace;
@@ -231,13 +223,16 @@ struct Context {
     unsigned int _field14;
     unsigned int _field15;
     unsigned int _field16;
-    struct ObjectCache *_field17;
-    id _field18;
+    unsigned int _field17;
+    struct ObjectCache *_field18;
     id _field19;
-    unsigned int _field20;
-    float _field21;
-    struct Commit *_field22;
-    struct Generic _field23;
+    id _field20;
+    unsigned int _field21;
+    float _field22;
+    struct Commit *_field23;
+    struct Generic _field24;
+    struct __CFString *_field25;
+    unsigned int :1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -253,12 +248,15 @@ struct Data {
     unsigned char _field3;
     unsigned char _field4;
     unsigned char _field5;
-    unsigned int :3;
-    unsigned int :3;
+    unsigned int :4;
+    unsigned int :4;
     unsigned int :4;
     unsigned int :4;
     unsigned int :4;
     unsigned int :5;
+    unsigned int :2;
+    unsigned int :1;
+    unsigned int :1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -314,27 +312,34 @@ struct Display {
     struct Bounds _field17;
     struct Vec2<float> _field18;
     struct EDIDAttributes _field19;
-    int _field20;
-    unsigned int _field21;
-    int _field22;
-    double _field23;
+    double _field20;
+    int _field21;
+    unsigned int _field22;
+    int _field23;
     double _field24;
-    unsigned int _field25;
-    struct DisplayShmemInfo _field26;
-    unsigned int _field27;
+    double _field25;
+    unsigned int _field26;
+    struct DisplayShmemInfo _field27;
     unsigned int _field28;
     unsigned int _field29;
-    int _field30;
-    BOOL _field31;
-    BOOL _field32;
-    BOOL _field33;
-    BOOL _field34;
-    BOOL _field35;
-    BOOL _field36;
-    BOOL _field37;
-    BOOL _field38;
-    BOOL _field39;
-    BOOL _field40;
+    unsigned int _field30;
+    int _field31;
+    unsigned int _field32;
+    double _field33;
+    unsigned int _field34;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
 };
 
 struct DisplayLink;
@@ -427,6 +432,8 @@ struct Level;
 
 struct List<CA::Layer *>;
 
+struct List<_CAMetalDrawablePrivate *>;
+
 struct List<const __CFString *>;
 
 struct List<const void *>;
@@ -438,7 +445,8 @@ struct Mode {
         struct {
             unsigned int :16;
             unsigned int :16;
-            unsigned int :24;
+            unsigned int :1;
+            unsigned int :23;
             unsigned int :1;
             unsigned int :4;
             unsigned int :2;
@@ -502,10 +510,6 @@ struct Ref<CA::Render::Shmem> {
     struct Shmem *_field1;
 };
 
-struct Ref<CA::Render::String> {
-    struct String *_field1;
-};
-
 struct Ref<CA::Render::Timing> {
     struct Timing *_field1;
 };
@@ -520,10 +524,6 @@ struct Ref<CA::Render::TypedArray<CA::Render::Layer>> {
 
 struct Ref<CA::Render::Vector> {
     struct Vector *_field1;
-};
-
-struct Ref<const CA::Render::Behavior> {
-    struct Behavior *_field1;
 };
 
 struct Renderer;
@@ -550,6 +550,7 @@ struct Server {
     struct Bounds _field19;
     double _field20;
     double _field21;
+    unsigned int _field22;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -580,8 +581,6 @@ struct Shmem {
 struct SpinLock {
     CDStruct_fcaf9308 _field1;
 };
-
-struct String;
 
 struct Timing;
 
@@ -725,6 +724,69 @@ struct _CAMLWriterPriv {
     struct __CFString *_field5;
     struct __CFSet *_field6;
     int _field7;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+};
+
+struct _CAMetalDrawablePrivate {
+    struct Atomic _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned long long _field5;
+    unsigned long long _field6;
+    struct _CAMetalLayerPrivate *_field7;
+    struct __IOSurface *_field8;
+    id _field9;
+    id _field10;
+    struct CGColorSpace *_field11;
+    unsigned int _field12;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+};
+
+struct _CAMetalLayerPrivate {
+    struct Atomic _field1;
+    struct Atomic _field2;
+    struct SpinLock _field3;
+    struct _CAImageQueue *_field4;
+    id _field5;
+    double _field6;
+    double _field7;
+    struct List<_CAMetalDrawablePrivate *> *_field8;
+    unsigned int _field9;
+    id _field10;
+    id _field11;
+    unsigned long long _field12;
+    unsigned long long _field13;
+    struct CGSize _field14;
+    unsigned int _field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    unsigned int _field18;
+    struct Atomic _field19;
+    id _field20;
+    struct Atomic _field21;
+    struct Atomic _field22;
+    id _field23;
+    struct SpinLock _field24;
+    id _field25;
+    unsigned long long _field26;
+    struct SpinLock _field27;
+    id _field28;
+    unsigned long long _field29;
+    struct CGColorSpace *_field30;
+    unsigned long long _field31;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
+    unsigned int :1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;

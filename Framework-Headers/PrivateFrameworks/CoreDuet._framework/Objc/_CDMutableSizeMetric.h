@@ -8,21 +8,11 @@
 
 @interface _CDMutableSizeMetric : _CDSizeMetric
 {
-    struct XSPerfCollection *_stats;
 }
 
-- (double)averageSize;
-- (unsigned long long)count;
-- (void)dealloc;
+- (void)addBytes:(unsigned int)arg1;
 - (id)description;
-- (unsigned long long)firstSize;
-- (id)firstUpdate;
 - (id)initWithName:(id)arg1 string:(id)arg2 scale:(unsigned long long)arg3 family:(id)arg4;
-- (unsigned long long)lastSize;
-- (id)lastUpdate;
-- (unsigned long long)maximumSize;
-- (unsigned long long)minimumSize;
-- (id)sizeHistogram;
 
 @end
 

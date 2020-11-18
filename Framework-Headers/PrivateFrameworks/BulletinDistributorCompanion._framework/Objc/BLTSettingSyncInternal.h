@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <BulletinDistributorCompanion/BBObserverDelegate-Protocol.h>
 #import <BulletinDistributorCompanion/BLTSettingSyncingClient-Protocol.h>
 
-@class BBSettingsGateway, BLTMuteSync, BLTSectionConfiguration, BLTSettingSyncServer, BLTWristStateObserver, NSString;
+@class BBObserver, BBSettingsGateway, BLTMuteSync, BLTSectionConfiguration, BLTSettingSyncServer, BLTSpokenSettingSync, BLTWristStateObserver, NSString;
 
-@interface BLTSettingSyncInternal : NSObject <BLTSettingSyncingClient>
+@interface BLTSettingSyncInternal : NSObject <BBObserverDelegate, BLTSettingSyncingClient>
 {
     BLTWristStateObserver *_wristStateObserver;
     BBSettingsGateway *_settingsGateway;
     BLTMuteSync *_muteSync;
     BLTSettingSyncServer *_connection;
     BLTSectionConfiguration *_sectionConfiguration;
+    BLTSpokenSettingSync *_spokenSettingSync;
+    BBObserver *_observer;
 }
 
 @property (strong, nonatomic) BLTSettingSyncServer *connection; // @synthesize connection=_connection;
@@ -25,8 +28,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isWristDetectDisabled;
 @property (strong, nonatomic) BLTMuteSync *muteSync; // @synthesize muteSync=_muteSync;
+@property (strong, nonatomic) BBObserver *observer; // @synthesize observer=_observer;
 @property (readonly, nonatomic) BLTSectionConfiguration *sectionConfiguration; // @synthesize sectionConfiguration=_sectionConfiguration;
 @property (strong, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
+@property (strong, nonatomic) BLTSpokenSettingSync *spokenSettingSync; // @synthesize spokenSettingSync=_spokenSettingSync;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -38,12 +43,16 @@
 - (void)enableStandaloneTestModeWithMinimumSendDelay:(unsigned long long)arg1 maximumSendDelay:(unsigned long long)arg2 minimumResponseDelay:(unsigned long long)arg3 maximumResponseDelay:(unsigned long long)arg4;
 - (id)init;
 - (id)initWithSectionConfiguration:(id)arg1 queue:(id)arg2;
+- (void)observer:(id)arg1 updateGlobalSettings:(id)arg2;
 - (void)removeSectionWithSectionID:(id)arg1;
+- (void)setNotificationsCriticalAlertEnabled:(int)arg1 sectionID:(id)arg2;
 - (void)setNotificationsGrouping:(int)arg1 sectionID:(id)arg2;
 - (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3;
 - (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3 fromRemote:(BOOL)arg4;
+- (void)setNotificationsSoundEnabled:(int)arg1 sectionID:(id)arg2;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3;
+- (void)transportUpdateRemoteGlobalSpokenSettingEnabled:(BOOL)arg1 date:(id)arg2;
 - (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3;
 - (unsigned long long)willNanoPresentNotificationForSectionID:(id)arg1 subsectionIDs:(id)arg2 subtype:(long long)arg3 category:(id)arg4;
 

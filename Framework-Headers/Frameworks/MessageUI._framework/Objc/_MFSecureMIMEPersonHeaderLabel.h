@@ -16,7 +16,7 @@
 
 @property (copy, nonatomic) NSString *text;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithImage:(id)arg1 text:(id)arg2 textColor:(id)arg3;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -24,6 +24,7 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 
 - (void).cxx_destruct;
+- (id)_loggingPrefix;
 - (void)dealloc;
 - (id)initWithListenerEndpoint:(id)arg1;
 - (id)initWithMachServiceName:(id)arg1 options:(unsigned long long)arg2;
@@ -32,6 +33,7 @@
 - (void)invalidate;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)resume;
+- (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)unitTest_interrupt;
 
 @end

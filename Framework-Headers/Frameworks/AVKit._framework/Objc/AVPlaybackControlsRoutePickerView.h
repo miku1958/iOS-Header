@@ -10,9 +10,11 @@
 
 @class AVButton, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVPlaybackControlsRoutePickerView : AVRoutePickerView <AVPlaybackControlsViewItem>
 {
     AVButton *_customButton;
+    BOOL _removed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
 }
@@ -27,6 +29,7 @@
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIncluded) BOOL included;
+@property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

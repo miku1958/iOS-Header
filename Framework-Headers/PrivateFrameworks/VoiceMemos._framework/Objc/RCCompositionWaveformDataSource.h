@@ -8,40 +8,41 @@
 
 #import <VoiceMemos/RCWaveformDataSourceObserver-Protocol.h>
 
-@class NSObject, NSOperationQueue, NSString, RCComposition, _RCTimeRangeFileInputWaveformDataSource;
+@class NSObject, NSString, RCComposition, _RCTimeRangeFileInputWaveformDataSource;
 @protocol OS_dispatch_queue;
 
 @interface RCCompositionWaveformDataSource : RCWaveformDataSource <RCWaveformDataSourceObserver>
 {
-    NSObject<OS_dispatch_queue> *_searialQueue;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     float _progressOfFinishedFragments;
     float _progressWeightPerFragment;
-    _RCTimeRangeFileInputWaveformDataSource *_activeFragmentDataSource;
     BOOL _preferLoadingFragmentWaveforms;
     BOOL _saveGeneratedWaveform;
     BOOL _highlightLastDecomposedFragment;
     RCComposition *_composition;
-    NSOperationQueue *_fragmentLoadingOperationQueue;
+    _RCTimeRangeFileInputWaveformDataSource *_activeFragmentDataSource;
 }
 
+@property (strong) _RCTimeRangeFileInputWaveformDataSource *activeFragmentDataSource; // @synthesize activeFragmentDataSource=_activeFragmentDataSource;
 @property (readonly, nonatomic) RCComposition *composition; // @synthesize composition=_composition;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSOperationQueue *fragmentLoadingOperationQueue; // @synthesize fragmentLoadingOperationQueue=_fragmentLoadingOperationQueue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlightLastDecomposedFragment; // @synthesize highlightLastDecomposedFragment=_highlightLastDecomposedFragment;
 @property (readonly, nonatomic) BOOL preferLoadingFragmentWaveforms; // @synthesize preferLoadingFragmentWaveforms=_preferLoadingFragmentWaveforms;
 @property (nonatomic) BOOL saveGeneratedWaveform; // @synthesize saveGeneratedWaveform=_saveGeneratedWaveform;
 @property (readonly) Class superclass;
 
-+ (id)fragmentLoadingOperationQueue;
 - (void).cxx_destruct;
-- (BOOL)_synchronouslyAppendSegmentsForAVContentURL:(id)arg1 isDecomposedFragment:(BOOL)arg2 sourceTimeRange:(CDStruct_73a5d3ca)arg3 destinationTime:(double)arg4;
+- (id)_dataSourceForAVContentURL:(id)arg1 isDecomposedFragment:(BOOL)arg2 sourceTimeRange:(CDStruct_73a5d3ca)arg3 destinationTime:(double)arg4;
+- (BOOL)_synchronouslyAppendSegmentsFromDataSource:(id)arg1;
+- (void)cancelLoading;
+- (void)dealloc;
 - (double)duration;
-- (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithComposition:(id)arg1;
 - (float)loadingProgress;
 - (id)saveableWaveform;
+- (BOOL)shouldMergeLiveWaveform;
 - (void)startLoading;
 - (id)synchronouslyApproximateWaveformSegmentsByReadingCurrentFileAheadTimeRange:(CDStruct_73a5d3ca)arg1;
 - (CDStruct_73a5d3ca)timeRangeToHighlight;

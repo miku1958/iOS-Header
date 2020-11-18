@@ -9,23 +9,40 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class NSString, UIColor, UIImage;
+@class CLKImageProvider, NSDictionary, NSString, UIColor, UIImage;
 
 @interface CLKFullColorImageProvider : NSObject <NSSecureCoding, NSCopying>
 {
     UIColor *_tintColor;
     BOOL _applyScalingAndCircularMasking;
     BOOL _finalized;
+    BOOL _prefersFilterOverTransition;
+    BOOL _tritium_inactiveFullColorImageProvider;
     UIImage *_image;
+    CLKImageProvider *_tintedImageProvider;
     NSString *_accessibilityLabel;
+    Class _ImageViewClass;
+    NSDictionary *_metadata;
+    long long _monochromeFilterType;
 }
 
+@property (readonly, nonatomic) Class ImageViewClass; // @synthesize ImageViewClass=_ImageViewClass;
 @property (strong, nonatomic) NSString *accessibilityLabel; // @synthesize accessibilityLabel=_accessibilityLabel;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (nonatomic) long long monochromeFilterType; // @synthesize monochromeFilterType=_monochromeFilterType;
+@property (nonatomic) BOOL prefersFilterOverTransition; // @synthesize prefersFilterOverTransition=_prefersFilterOverTransition;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property (strong, nonatomic) CLKImageProvider *tintedImageProvider; // @synthesize tintedImageProvider=_tintedImageProvider;
+@property (readonly, nonatomic, getter=tritium_isTritiumInactiveFullColorImageProvider) BOOL tritium_inactiveFullColorImageProvider; // @synthesize tritium_inactiveFullColorImageProvider=_tritium_inactiveFullColorImageProvider;
 
++ (id)fullColorImageProviderWithImageViewClass:(Class)arg1;
 + (id)providerWithFullColorImage:(id)arg1;
 + (id)providerWithFullColorImage:(id)arg1 applyScalingAndCircularMasking:(BOOL)arg2;
++ (id)providerWithFullColorImage:(id)arg1 monochromeFilterType:(long long)arg2;
++ (id)providerWithFullColorImage:(id)arg1 monochromeFilterType:(long long)arg2 applyScalingAndCircularMasking:(BOOL)arg3;
++ (id)providerWithFullColorImage:(id)arg1 tintedImageProvider:(id)arg2;
++ (id)providerWithFullColorImage:(id)arg1 tintedImageProvider:(id)arg2 applyScalingAndCircularMasking:(BOOL)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentationWritingResourcesToBundlePath:(id)arg1;

@@ -36,7 +36,11 @@
     BOOL _everHadDelegate;
     NSMutableArray *_queuedDelegateBlocks;
     NSString *_processName;
+    double _reconnectDelay;
+    BOOL _isReconnectScheduled;
+    BOOL _isDisconnected;
     BOOL _isShutdown;
+    BOOL _isDeallocing;
 }
 
 @property (nonatomic) id<APSConnectionDelegate> delegate;
@@ -50,7 +54,6 @@
 
 + (void)_blockingXPCCallWithArgumentBlock:(CDUnknownBlockType)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (void)_flushIdentityCache;
-+ (void)_safelyCancelAndReleaseAfterBarrierConnection:(id)arg1;
 + (void)_safelyCancelAndReleaseConnection:(id)arg1;
 + (void)_setTokenState;
 + (id)connectionsDebuggingState;
@@ -62,6 +65,7 @@
 + (void)notifySafeToSendFilter;
 + (void)requestCourierConnection;
 + (double)serverTime;
+- (void).cxx_destruct;
 - (void)_addEnableCriticalReliabilityToXPCMessage:(id)arg1;
 - (void)_addEnableStatusNotificationsToXPCMessage:(id)arg1;
 - (void)_addUsesAppLaunchStatsToXPCMessage:(id)arg1;
@@ -74,8 +78,8 @@
 - (void)_deliverConnectionStatusFromDealloc:(BOOL)arg1;
 - (void)_deliverDidReconnectOnIvarQueue;
 - (void)_deliverMessage:(id)arg1;
-- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 checkpointTraceData:(id)arg2 error:(id)arg3;
-- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 error:(id)arg2;
+- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 checkpointTraceData:(id)arg2 error:(id)arg3 sendRTT:(unsigned long long)arg4 ackTimestamp:(unsigned long long)arg5;
+- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 error:(id)arg2 sendRTT:(unsigned long long)arg3;
 - (void)_deliverPublicToken:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_deliverPublicTokenOnIvarQueue:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_deliverToken:(id)arg1 forTopic:(id)arg2 identifier:(id)arg3;
@@ -87,6 +91,7 @@
 - (id)_listForIdentifierOnIvarQueue:(unsigned long long)arg1;
 - (void)_noteDisconnectedFromDaemonOnIvarQueue;
 - (void)_onIvarQueue_setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3 sendToDaemon:(BOOL)arg4;
+- (void)_reconnectIfNecessaryOnIvarQueueAfterDelay;
 - (void)_sendOutgoingMessage:(id)arg1 fake:(BOOL)arg2;
 - (void)_setEnableCriticalReliability:(BOOL)arg1 sendToDaemon:(BOOL)arg2;
 - (void)_setEnableStatusNotifications:(BOOL)arg1 sendToDaemon:(BOOL)arg2;

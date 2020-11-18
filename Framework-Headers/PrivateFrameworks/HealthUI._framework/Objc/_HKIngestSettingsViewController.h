@@ -20,11 +20,11 @@
     HKHealthStore *_healthStore;
 }
 
-@property (strong, nonatomic) NSUUID *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (copy, nonatomic) NSUUID *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 
 - (void).cxx_destruct;
-- (id)_initWithHealthStore:(id)arg1 displayTypeController:(id)arg2;
+- (id)_initWithHealthStore:(id)arg1 displayTypeController:(id)arg2 useInsetStyling:(BOOL)arg3;
 - (void)fetchEnabledStatusForPeripheral;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)reloadData:(id)arg1;

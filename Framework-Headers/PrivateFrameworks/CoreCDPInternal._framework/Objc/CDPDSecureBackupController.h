@@ -28,6 +28,7 @@
 @property (strong, nonatomic) id<CDPDSecureBackupProxy> secureBackupProxy; // @synthesize secureBackupProxy=_secureBackupProxy;
 @property (readonly, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
++ (id)_printableAccountInfo:(id)arg1;
 + (id)_sanitizedInfoDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (id)_accountInfo:(id *)arg1;
@@ -62,6 +63,8 @@
 - (id)initWithContext:(id)arg1 proxy:(id)arg2;
 - (id)initWithContext:(id)arg1 uiProvider:(id)arg2 delegate:(id)arg3;
 - (void)isEligibleForCDPWithCompletion:(CDUnknownBlockType)arg1;
+- (void)performEscrowRecoveryWithRecoveryContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)performEscrowRecoveryWithRecoveryContext:(id)arg1 error:(id *)arg2;
 - (void)recoverSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)stashedPRK;
 - (BOOL)supportsRecoveryKey;

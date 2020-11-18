@@ -30,10 +30,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)isReadyForMoreMediaData;
 - (void)markAsFinished;
 - (void)markCurrentPassAsFinished;
-- (BOOL)mediaDataRequesterShouldRequestMediaData:(id)arg1;
+- (BOOL)mediaDataRequesterShouldRequestMediaData;
 - (void)requestMediaDataOnceIfNecessaryWithMediaDataRequester:(id)arg1;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (long long)status;
+- (void)stopRequestingMediaData;
 - (id)transitionToAndReturnTerminalHelperWithTerminalStatus:(long long)arg1;
 
 @end

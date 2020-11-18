@@ -20,6 +20,7 @@
 + (void)npkClearTransitValuePendingStateIfNecessaryForPassWithID:(id)arg1 withBalance:(id)arg2;
 + (void)npkHandleTransitValuePendingAmount:(id)arg1 withBalance:(id)arg2 forPassWithID:(id)arg3;
 - (long long)npkAccessoryType;
+- (id)npkArchiveData;
 - (id)npkCompleteHashForWatchOSVersion:(unsigned long long)arg1;
 - (BOOL)npkIsAddValuePending;
 - (id)npkLastAddValueAmount;

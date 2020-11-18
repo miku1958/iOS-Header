@@ -6,28 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, NSMutableArray;
-@protocol OS_os_activity;
+#import <Message/EFLoggable-Protocol.h>
 
-@interface MFFileCompressionQueue : NSObject
+@class NSMutableArray, NSString;
+
+@interface MFFileCompressionQueue : NSObject <EFLoggable>
 {
-    BOOL _activityCreated;
+    struct os_unfair_lock_s _fileCompressionQueueLock;
     NSMutableArray *_fileCompressionQueue;
-    NSLock *_fileCompressionQueueLock;
-    NSObject<OS_os_activity> *_libraryCompressionActivity;
-    NSObject<OS_os_activity> *_fileCompressionQueueActivity;
 }
 
-@property (nonatomic) BOOL activityCreated; // @synthesize activityCreated=_activityCreated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *fileCompressionQueue; // @synthesize fileCompressionQueue=_fileCompressionQueue;
-@property (strong, nonatomic) NSObject<OS_os_activity> *fileCompressionQueueActivity; // @synthesize fileCompressionQueueActivity=_fileCompressionQueueActivity;
-@property (strong, nonatomic) NSLock *fileCompressionQueueLock; // @synthesize fileCompressionQueueLock=_fileCompressionQueueLock;
-@property (strong, nonatomic) NSObject<OS_os_activity> *libraryCompressionActivity; // @synthesize libraryCompressionActivity=_libraryCompressionActivity;
+@property (nonatomic) struct os_unfair_lock_s fileCompressionQueueLock; // @synthesize fileCompressionQueueLock=_fileCompressionQueueLock;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)log;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)addFile:(id)arg1;
-- (void)createCompressionActivity;
 - (BOOL)hasNext;
 - (id)init;
 - (id)nextFile;

@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBContact, _INPBDataString, _INPBIntentMetadata, _INPBMessageAttachment, _INPBString;
+@class NSArray, NSString, _INPBContact, _INPBDataString, _INPBIntentMetadata, _INPBSendMessageAttachment, _INPBString;
 
 @protocol _INPBSendMessageIntent <NSObject>
 
@@ -14,28 +14,36 @@
 @property (readonly, nonatomic) unsigned long long attachmentsCount;
 @property (strong, nonatomic) _INPBString *content;
 @property (copy, nonatomic) NSString *conversationIdentifier;
+@property (nonatomic) int effect;
 @property (strong, nonatomic) _INPBString *groupName;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (readonly, nonatomic) BOOL hasConversationIdentifier;
+@property (nonatomic) BOOL hasEffect;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (nonatomic) BOOL hasMessageType;
 @property (readonly, nonatomic) BOOL hasSender;
 @property (readonly, nonatomic) BOOL hasServiceName;
 @property (readonly, nonatomic) BOOL hasSpeakableGroupName;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
+@property (nonatomic) int messageType;
 @property (copy, nonatomic) NSArray *recipients;
 @property (readonly, nonatomic) unsigned long long recipientsCount;
 @property (strong, nonatomic) _INPBContact *sender;
 @property (copy, nonatomic) NSString *serviceName;
 @property (strong, nonatomic) _INPBDataString *speakableGroupName;
 
-+ (Class)attachmentType;
++ (Class)attachmentsType;
 + (Class)recipientType;
-- (void)addAttachment:(_INPBMessageAttachment *)arg1;
+- (int)StringAsEffect:(NSString *)arg1;
+- (int)StringAsMessageType:(NSString *)arg1;
+- (void)addAttachments:(_INPBSendMessageAttachment *)arg1;
 - (void)addRecipient:(_INPBContact *)arg1;
-- (_INPBMessageAttachment *)attachmentAtIndex:(unsigned long long)arg1;
+- (_INPBSendMessageAttachment *)attachmentsAtIndex:(unsigned long long)arg1;
 - (void)clearAttachments;
 - (void)clearRecipients;
+- (NSString *)effectAsString:(int)arg1;
+- (NSString *)messageTypeAsString:(int)arg1;
 - (_INPBContact *)recipientAtIndex:(unsigned long long)arg1;
 @end
 

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)boundsForStandardKnobs;
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canFlip;
+- (id)childInfosForChildLayouts;
 - (struct CGRect)clipRect;
 - (struct CGRect)computeBoundsForStandardKnobs;
 - (id)computeInfoGeometryDuringResize;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)resizeMayChangeAspectRatio;
 - (void)setDynamicGeometry:(id)arg1;
 - (void)setGeometry:(id)arg1;
+- (BOOL)shouldBeIncludedInParentFrameForCulling;
 - (BOOL)supportsFlipping;
 - (BOOL)supportsInspectorPositioning;
 - (BOOL)supportsRotation;

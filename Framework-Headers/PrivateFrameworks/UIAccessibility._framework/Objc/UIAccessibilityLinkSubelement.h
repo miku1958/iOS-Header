@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
+- (unsigned long long)_accessibilityAutomationType;
 - (struct CGRect)accessibilityFrame;
 - (unsigned long long)accessibilityTraits;
 - (id)textRangeForTextView:(id)arg1;

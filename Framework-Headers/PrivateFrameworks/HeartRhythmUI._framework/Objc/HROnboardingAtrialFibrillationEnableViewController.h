@@ -28,7 +28,6 @@
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
-- (double)_assetImageBottomToTitleFirstBaseline;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
 - (id)_footnoteFont;
@@ -38,6 +37,7 @@
 - (id)_titleFontTextStyle;
 - (double)_titleLastBaselineToBodyFirstBaseline;
 - (id)createHeroView;
+- (id)initForOnboarding:(BOOL)arg1;
 - (void)setUpConstraints;
 - (void)setUpUI;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;

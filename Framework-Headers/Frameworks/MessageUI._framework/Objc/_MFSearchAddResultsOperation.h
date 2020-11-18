@@ -17,7 +17,7 @@
 }
 
 + (id)operationWithResults:(id)arg1 ofType:(unsigned long long)arg2 consumer:(id)arg3;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)main;
 
 @end

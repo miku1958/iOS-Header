@@ -42,6 +42,7 @@
 - (id)init;
 - (void)noteAccountDeleted;
 - (void)presentContinuityPaymentInterfaceWithRequestIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)promptDetailsForVirtualCard:(id)arg1 showNotification:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestInstrumentThumbnail:(id)arg1 forRemoteDevice:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendPayment:(id)arg1 forRemotePaymentRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendPaymentClientUpdate:(id)arg1 forRemotePaymentRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;

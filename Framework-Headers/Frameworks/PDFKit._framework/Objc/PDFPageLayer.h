@@ -66,6 +66,8 @@ __attribute__((visibility("hidden")))
 - (void)updatePageLayerEffectForID:(id)arg1;
 - (void)updatePageLayerEffects;
 - (unsigned long long)visibilityDelegateIndex;
+- (void)willEndStartLiveResize;
+- (void)willStartLiveResize;
 
 @end
 

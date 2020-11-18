@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Preferences/PSListController.h>
+#import <ScreenTimeUI/STPINListViewController.h>
 
-@class NSObject;
-@protocol STContentPrivacyViewModelCoordinator;
+@class NSArray, PSSpecifier;
 
-@interface STContentPrivacyListController : PSListController
+__attribute__((visibility("hidden")))
+@interface STContentPrivacyListController : STPINListViewController
 {
-    NSObject<STContentPrivacyViewModelCoordinator> *_coordinator;
+    PSSpecifier *_enableRestrictionsSwitchSpecifier;
 }
 
-@property (strong, nonatomic) NSObject<STContentPrivacyViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
+@property (strong) PSSpecifier *enableRestrictionsSwitchSpecifier; // @synthesize enableRestrictionsSwitchSpecifier=_enableRestrictionsSwitchSpecifier;
+@property (readonly, copy) NSArray *storeDetailSpecifiers;
 
 - (void).cxx_destruct;
 - (id)_allowChangesSpecifiers;
-- (id)_featureSwitchSpecifier;
+- (id)_enableRestrictionsSwitchSpecifier;
+- (void)_isLoadedDidChange:(BOOL)arg1;
 - (id)_privacySpecifiers;
 - (id)_topLevelExternalSpecifierWithClass:(Class)arg1 name:(id)arg2 idTitle:(id)arg3;
 - (id)_topLevelSpecifierWithAction:(SEL)arg1 name:(id)arg2;
@@ -33,13 +35,13 @@
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)radioGroupSpecifierWithName:(id)arg1 footerText:(id)arg2 item:(id)arg3;
+- (void)setCoordinator:(id)arg1;
 - (void)setItemSpecifierValue:(id)arg1 specifier:(id)arg2;
 - (void)setRestrictionsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)showAllowedAppsRestrictions:(id)arg1;
 - (void)showMediaRestrictions:(id)arg1;
 - (void)showiTunesPurchasesRestrictions:(id)arg1;
 - (id)specifiers;
-- (id)storeDetailSpecifiers;
 - (id)tccSpecifierWithCapabilityKey:(id)arg1 id:(id)arg2;
 
 @end

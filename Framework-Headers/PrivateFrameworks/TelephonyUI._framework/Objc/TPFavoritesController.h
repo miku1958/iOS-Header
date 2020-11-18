@@ -52,7 +52,7 @@
 - (id)fetchTransportNameForFavoritesEntry:(id)arg1;
 - (void)handleContactsFavoritesDidChangeNotification:(id)arg1;
 - (id)init;
-- (id)initWithPrefetchCount:(unsigned long long)arg1;
+- (id)initWithContactStore:(id)arg1 prefetchCount:(unsigned long long)arg2;
 - (void)moveEntryAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)providersChangedForProviderManager:(id)arg1;
 - (void)removeEntriesAtIndexes:(id)arg1;

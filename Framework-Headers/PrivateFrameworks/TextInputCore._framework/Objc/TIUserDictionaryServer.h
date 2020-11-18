@@ -9,7 +9,7 @@
 #import <TextInputCore/TIKeyboardActivityObserving-Protocol.h>
 #import <TextInputCore/TIUserDictionaryServing-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSUUID;
+@class NSArray, NSMutableArray, NSString, NSUUID, _KSTextReplacementServer;
 @protocol OS_dispatch_queue;
 
 @interface TIUserDictionaryServer : NSObject <TIKeyboardActivityObserving, TIUserDictionaryServing>
@@ -22,12 +22,14 @@
     unsigned long long _keyboardActivityState;
     long long _recentClientCount;
     NSUUID *_userDictionaryUUID;
+    _KSTextReplacementServer *_textReplacementServer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) _KSTextReplacementServer *textReplacementServer; // @synthesize textReplacementServer=_textReplacementServer;
 @property (copy, nonatomic) NSUUID *userDictionaryUUID; // @synthesize userDictionaryUUID=_userDictionaryUUID;
 
 + (double)decrementClientDelay;
@@ -47,6 +49,7 @@
 - (void)managedKeyboardSettingsDidChange:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)resetCache;
+- (void)startServer;
 - (void)updateCache;
 
 @end

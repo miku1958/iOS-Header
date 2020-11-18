@@ -6,17 +6,31 @@
 
 #import <SAObjects/AceObject.h>
 
+#import <AssistantServices/AFAnalyticsContextVending-Protocol.h>
 #import <AssistantServices/AFSecurityDigestibleChunksProviding-Protocol.h>
 
 @class NSString;
 
-@interface AceObject (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding>
+@interface AceObject (AFSecurityDigestibleChunksProvider) <AFSecurityDigestibleChunksProviding, AFAnalyticsContextVending>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
+- (BOOL)_af_isKindOfDictationRequest;
+- (void)af_addEntriesToAnalyticsContext:(id)arg1;
+- (id)af_analyticsContext;
+- (id)af_dialogIdentifier;
+- (id)af_dialogIdentifiersForAnalyticsContext;
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)af_isUserUtterance;
+- (BOOL)af_isUtterance;
+- (id)af_speakableText;
+- (id)af_text;
 @end
 

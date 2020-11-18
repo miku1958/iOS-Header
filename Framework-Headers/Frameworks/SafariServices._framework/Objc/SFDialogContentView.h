@@ -8,13 +8,15 @@
 
 #import <SafariServices/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSString, SFDialogTextField, SFDialogTextView, UIStackView, _SFDialogView;
+@class NSArray, NSLayoutConstraint, NSString, SFDialogTextField, SFDialogTextView, UIButton, UIStackView, _SFDialogView;
 
 __attribute__((visibility("hidden")))
 @interface SFDialogContentView : UIView <UITextFieldDelegate>
 {
     NSArray *_actionButtons;
     UIStackView *_actionButtonsView;
+    UIButton *_closeButton;
+    unsigned long long _actionIndexTriggeredByOptionReturnKey;
     unsigned long long _actionIndexTriggeredByEscapeKey;
     unsigned long long _actionIndexTriggeredByReturnKey;
     BOOL _hasAttemptedHardwareKeyboardFocus;
@@ -24,6 +26,8 @@ __attribute__((visibility("hidden")))
     NSArray *_layoutConstraintsWhenInputAndPasswordAreVisible;
     SFDialogTextView *_messageTextView;
     SFDialogTextField *_passwordTextField;
+    NSLayoutConstraint *_actionButtonsLeadingConstraintForHorizontalStackAlignment;
+    NSLayoutConstraint *_actionButtonsLeadingConstraintForVerticalStackAlignment;
     _SFDialogView *_dialogView;
     NSArray *_actions;
 }
@@ -37,9 +41,11 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_actionTriggered:(id)arg1;
+- (double)_desiredButtonsWidth;
 - (void)_escapeAction:(id)arg1;
 - (void)_focusInputTextField:(id)arg1;
 - (void)_invokeDelegateWithSelectedIndex:(unsigned long long)arg1;
+- (void)_optionReturnAction:(id)arg1;
 - (void)_returnAction:(id)arg1;
 - (void)_setText:(id)arg1 placeholder:(id)arg2 forTextField:(id)arg3;
 - (void)_updateActionButtons;

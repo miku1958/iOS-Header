@@ -6,24 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
-
 @interface CUTPowerMonitor : NSObject
 {
-    struct __CFRunLoopSource *_batteryRunLoopSource;
-    struct IONotificationPort *_batteryIONotifyPort;
-    unsigned int _batteryNotificationRef;
-    unsigned int _pmConnection;
-    struct IONotificationPort *_pmPort;
-    unsigned int _pmNotifier;
-    NSHashTable *_delegates;
-    double _currentLevel;
-    BOOL _isExternalPowerConnected;
+    id _internal;
 }
 
 @property (readonly, nonatomic) double batteryPercentRemaining;
-@property (nonatomic) double currentLevel; // @synthesize currentLevel=_currentLevel;
-@property (nonatomic, setter=setExternalPowerConnected:) BOOL isExternalPowerConnected; // @synthesize isExternalPowerConnected=_isExternalPowerConnected;
+@property (readonly, nonatomic) BOOL isExternalPowerConnected;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

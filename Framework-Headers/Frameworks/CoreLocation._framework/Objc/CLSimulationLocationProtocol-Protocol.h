@@ -16,6 +16,7 @@
 - (void)setLocationRepeatBehavior:(unsigned char)arg1;
 - (void)setLocationTravellingSpeed:(double)arg1;
 - (void)setSimulationScenario:(NSURL *)arg1;
+- (void)simulateBeaconWithProximityUUID:(NSString *)arg1 major:(long long)arg2 minor:(long long)arg3 eventType:(unsigned char)arg4;
 - (void)simulateFenceWithBundleID:(NSString *)arg1 andFenceID:(NSString *)arg2 eventType:(unsigned char)arg3 atLocation:(CLLocation *)arg4;
 - (void)simulateSignificantLocationChange:(CLLocation *)arg1;
 - (void)simulateVisit:(CLVisit *)arg1;

@@ -27,6 +27,7 @@
 - (void)_likedIt:(id)arg1;
 - (void)_provideFeedback:(id)arg1;
 - (void)cancelFeedback:(id)arg1;
+- (void)finishWithSuccess:(BOOL)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)setShowsActivityIndicator:(BOOL)arg1;
 - (void)showMoreFeedbackForm;

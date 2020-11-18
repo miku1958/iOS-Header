@@ -14,12 +14,12 @@
     NSDictionary *_userInfo;
 }
 
-@property (readonly, strong, nonatomic) NSObject<PLAlbumContainer> *albumList;
-@property (readonly, strong, nonatomic) id<PLAssetContainerList> assetContainerList;
+@property (readonly, nonatomic) NSObject<PLAlbumContainer> *albumList;
+@property (readonly, nonatomic) id<PLAssetContainerList> assetContainerList;
 
 + (id)notificationWithContainerList:(id)arg1 snapshot:(id)arg2 changedContainers:(id)arg3;
+- (void).cxx_destruct;
 - (id)_contentRelationshipName;
-- (void)dealloc;
 - (id)description;
 - (id)name;
 - (id)userInfo;

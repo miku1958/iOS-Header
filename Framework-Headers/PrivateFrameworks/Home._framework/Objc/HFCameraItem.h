@@ -4,44 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFItem.h>
+#import <Home/HFAccessoryProfileItem.h>
 
-#import <Home/HFHomeKitItemProtocol-Protocol.h>
-#import <Home/HFItemBuilderItem-Protocol.h>
-#import <Home/HFServiceLikeBuilderCreating-Protocol.h>
-#import <Home/HFServiceLikeItem-Protocol.h>
+#import <Home/HFCompoundItemProtocol-Protocol.h>
 
-@class HMAccessory, HMCameraProfile, NSString;
-@protocol HFCharacteristicValueSource, HFHomeKitObject;
+@class NSArray, NSString;
+@protocol HFHomeKitObject;
 
-@interface HFCameraItem : HFItem <HFHomeKitItemProtocol, HFServiceLikeItem, HFServiceLikeBuilderCreating, HFItemBuilderItem>
+@interface HFCameraItem : HFAccessoryProfileItem <HFCompoundItemProtocol>
 {
-    id<HFCharacteristicValueSource> _valueSource;
-    HMCameraProfile *_cameraProfile;
 }
 
-@property (readonly, nonatomic) HMAccessory *accessory;
-@property (readonly, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
+@property (readonly, nonatomic) NSArray *allHomeKitObjects;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (readonly, nonatomic) BOOL isCompoundItem;
+@property (readonly, nonatomic) unsigned long long numberOfCompoundItems;
+@property (readonly, nonatomic) id<HFHomeKitObject> primaryHomeKitObject;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
-+ (id)cameraDemoURLWithName:(id)arg1 extension:(id)arg2;
++ (BOOL)cameraContainsMotionServiceItem:(id)arg1;
 + (void)getErrorDescription:(out id *)arg1 detailedErrorDescription:(out id *)arg2 forCameraStreamError:(id)arg3;
-- (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (id)accessories;
-- (id)copyWithValueSource:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)demoMovieURL;
-- (id)demoSnapshotURL;
-- (id)init;
-- (id)initWithValueSource:(id)arg1 cameraProfile:(id)arg2;
-- (id)serviceLikeBuilderInHome:(id)arg1;
-- (id)services;
 
 @end
 

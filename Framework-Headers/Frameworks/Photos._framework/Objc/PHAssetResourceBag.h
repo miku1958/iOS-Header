@@ -15,6 +15,7 @@
     BOOL _valid;
     BOOL _hasAdjustments;
     BOOL _hasRAW;
+    BOOL _hasSpatialOverCapture;
     PHAssetCreationRequest *_assetCreationRequest;
     NSArray *_assetResources;
     long long _mediaType;
@@ -27,14 +28,15 @@
 @property (readonly, nonatomic) BOOL didValidateForInsertion; // @synthesize didValidateForInsertion=_didValidateForInsertion;
 @property (readonly, nonatomic) BOOL hasAdjustments; // @synthesize hasAdjustments=_hasAdjustments;
 @property (readonly, nonatomic) BOOL hasRAW; // @synthesize hasRAW=_hasRAW;
+@property (readonly, nonatomic) BOOL hasSpatialOverCapture; // @synthesize hasSpatialOverCapture=_hasSpatialOverCapture;
 @property (readonly, nonatomic) unsigned long long mediaSubtype; // @synthesize mediaSubtype=_mediaSubtype;
 @property (readonly, nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
 @property (readonly, nonatomic) PHExternalAssetResource *primaryResource; // @synthesize primaryResource=_primaryResource;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 
 + (id)_primaryAssetResource:(id)arg1;
-+ (BOOL)_supportsAssetResourceTypes:(id)arg1 mediaType:(long long *)arg2 mediaSubtype:(unsigned long long *)arg3;
-+ (BOOL)supportsAssetResourceTypes:(id)arg1 mediaType:(long long *)arg2;
++ (BOOL)_supportsAssetResourceTypes:(id)arg1 mediaType:(long long *)arg2 mediaSubtype:(unsigned long long *)arg3 importedBy:(short)arg4;
++ (BOOL)supportsAssetResourceTypes:(id)arg1 mediaType:(long long *)arg2 importedBy:(short)arg3;
 - (void).cxx_destruct;
 - (BOOL)_extractValidatedAdjustmentsURL:(id *)arg1 fromResource:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
 - (BOOL)_extractValidatedAudioURL:(id *)arg1 fromResource:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;

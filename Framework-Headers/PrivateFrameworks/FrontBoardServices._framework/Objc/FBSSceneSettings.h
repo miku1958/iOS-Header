@@ -18,20 +18,23 @@
     struct CGRect _frame;
     double _level;
     long long _interfaceOrientation;
-    BOOL _backgrounded;
+    BOOL _foreground;
+    BSSettings *_otherSettings;
+    BSSettings *_transientLocalSettings;
+    BOOL _prefersProcessTaskSuspensionWhileSceneForeground;
+    long long _isOccluded;
     BOOL _occluded;
     BOOL _occludedHasBeenCalculated;
     NSSet *_ignoreOcclusionReasons;
     NSArray *_occlusions;
-    BSSettings *_otherSettings;
-    BSSettings *_transientLocalSettings;
 }
 
-@property (readonly, nonatomic, getter=isBackgrounded) BOOL backgrounded; // @synthesize backgrounded=_backgrounded;
+@property (readonly, nonatomic, getter=isBackgrounded) BOOL backgrounded;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;
 @property (readonly, copy, nonatomic) FBSDisplayIdentity *displayIdentity;
+@property (readonly, nonatomic, getter=isForeground) BOOL foreground; // @synthesize foreground=_foreground;
 @property (readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
@@ -58,6 +61,8 @@
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)otherSettings;
+- (BOOL)prefersProcessTaskSuspensionWhileSceneForeground;
+- (void)setPrefersProcessTaskSuspensionWhileSceneForeground:(BOOL)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)transientLocalSettings;

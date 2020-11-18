@@ -52,6 +52,7 @@
 @property (readonly, nonatomic) unsigned long long presentationContexts;
 @property (readonly, nonatomic) BOOL shouldHideAppSwitcher;
 @property (readonly, nonatomic) BOOL showInBrowser;
+@property (readonly, nonatomic) BOOL showableInBrowser;
 @property (readonly, nonatomic) NSString *version;
 
 - (void).cxx_destruct;

@@ -20,8 +20,10 @@
     NSError *_placeholderFailureUnderlyingError;
     unsigned long long _placeholderFailureUnderlyingErrorSource;
     NSString *_watchKitAppExecutableHash;
+    unsigned long long _autoInstallOverride;
 }
 
+@property (nonatomic) unsigned long long autoInstallOverride; // @synthesize autoInstallOverride=_autoInstallOverride;
 @property (copy, nonatomic) NSString *installBuildVersion; // @synthesize installBuildVersion=_installBuildVersion;
 @property (copy, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
 @property (nonatomic) unsigned long long installType; // @synthesize installType=_installType;

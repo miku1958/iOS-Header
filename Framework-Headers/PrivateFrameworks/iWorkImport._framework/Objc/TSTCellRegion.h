@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 + (id)regionFromColumnIndexes:(id)arg1 rowIndexes:(id)arg2;
 + (id)regionFromColumnIndices:(id)arg1;
 + (id)regionFromColumnIndices:(id)arg1 rowRange:(struct _NSRange)arg2;
++ (id)regionFromConcurrentCellMap:(id)arg1 withTableInfo:(id)arg2;
 + (id)regionFromMergeActionArray:(id)arg1 withTableInfo:(id)arg2;
 + (id)regionFromMergeList:(const vector_e87daf7b *)arg1;
 + (id)regionFromModelCellRect:(struct TSUModelCellRect)arg1;
@@ -66,6 +67,8 @@ __attribute__((visibility("hidden")))
 + (id)regionFromRange:(struct TSUCellRect)arg1;
 + (id)regionFromRowIndices:(id)arg1;
 + (id)regionFromRowIndices:(id)arg1 columnRange:(struct _NSRange)arg2;
++ (id)regionFromViewCellRect:(struct TSUViewCellRect)arg1;
++ (id)regionFromViewCellRectVector:(const vector_1235e7c3 *)arg1;
 + (id)unionEveryRangeInRegion:(id)arg1 withRange:(struct TSUCellRect)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -107,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)intersectsModelCellRect:(struct TSUModelCellRect)arg1;
 - (BOOL)intersectsRow:(unsigned int)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)isSingleCellWideOrHigh:(id)arg1;
 - (BOOL)isValid;
 - (struct TSUCellRect)largestRangeContainingCellID:(struct TSUCellCoord)arg1;
 - (vector_54ceaeac)modelCellRanges;
@@ -161,6 +165,7 @@ __attribute__((visibility("hidden")))
 - (id)regionUpToColumnIndexRtoL:(unsigned short)arg1 maxColumnIndex:(unsigned short)arg2;
 - (id)regionUpToRowIndex:(unsigned int)arg1;
 - (void)saveToMessage:(struct CellRegion *)arg1;
+- (vector_e87daf7b)subRangesOfCellCount:(unsigned long long)arg1;
 - (struct TSUCellCoord)suitableAnchor;
 - (struct TSUCellCoord)suitableCursor;
 

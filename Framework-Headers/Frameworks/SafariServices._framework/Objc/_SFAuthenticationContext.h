@@ -46,7 +46,7 @@
 - (BOOL)_contextShouldAllowPasscodeFallback;
 - (void)_evaluatePolicyForClient:(id)arg1 userInitiated:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)_handleTouchIDEventWithParameters:(id)arg1;
-- (BOOL)_hasAuthenticationCapability;
+- (BOOL)_hasAuthenticationCapability:(id *)arg1;
 - (void)_invalidateAuthentication;
 - (BOOL)_monotonicTimeIsWithinAuthenticationGracePeriod:(double)arg1;
 - (void)_processNextClientAwaitingAuthenticationUserInitiated:(BOOL)arg1;

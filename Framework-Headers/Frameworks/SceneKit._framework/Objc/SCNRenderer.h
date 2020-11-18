@@ -9,8 +9,8 @@
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, NSString, SCNAuthoringEnvironment, SCNMTLRenderContext, SCNNode, SCNRecursiveLock, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
-@protocol MTLTexture, OS_dispatch_queue, SCNSceneRenderer, SCNSceneRendererDelegate;
+@class AVAudioEngine, AVAudioEnvironmentNode, EAGLContext, MISSING_TYPE, NSArray, NSString, SCNAuthoringEnvironment, SCNMTLRenderContext, SCNNode, SCNRecursiveLock, SCNRendererTransitionContext, SCNScene, SCNTechnique, SKScene, UIColor, __SKSCNRenderer;
+@protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, MTLTexture, OS_dispatch_queue, SCNSceneRenderer, SCNSceneRendererDelegate;
 
 @interface SCNRenderer : NSObject <SCNSceneRenderer, SCNTechniqueSupport>
 {
@@ -27,6 +27,7 @@
         struct CGSize drawableSize;
     } _framebufferInfo;
     id<MTLTexture> _mtlTexture;
+    NSArray *_viewPoints;
     BOOL _pointOfViewWasSet;
     unsigned int _shouldDeleteFramebuffer:1;
     unsigned int _rendersContinuously:1;
@@ -58,23 +59,13 @@
     EAGLContext *_glContext;
     SCNMTLRenderContext *_renderContext;
     unsigned int _jitteringEnabled:1;
+    unsigned int _temporalAntialiasingEnabled:1;
     unsigned int _frozen:1;
     unsigned int _privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:1;
     CDStruct_f76d274b _privateRendererOwnerDelegationConformance;
     CDStruct_f76d274b _delegationConformance;
     UIColor *_backgroundColor;
-    struct C3DColor4 {
-        union {
-            float rgba[4];
-            struct {
-                float r;
-                float g;
-                float b;
-                float a;
-            } ;
-            MISSING_TYPE *simd;
-        } ;
-    } _c3dBackgroundColor;
+    C3DColor4_a26f5c89 _c3dBackgroundColor;
     SCNRenderer *_preloadRenderer;
     id<SCNSceneRenderer> _privateRendererOwner;
     SCNTechnique *_technique;
@@ -96,11 +87,17 @@
 @property (readonly, nonatomic) AVAudioEnvironmentNode *audioEnvironmentNode;
 @property (strong, nonatomic) SCNNode *audioListener;
 @property (nonatomic) BOOL autoenablesDefaultLighting;
+@property (readonly, nonatomic) unsigned long long colorPixelFormat;
+@property (readonly, nonatomic) id<MTLCommandQueue> commandQueue;
 @property (readonly, nonatomic) void *context;
+@property (readonly, nonatomic) id<MTLRenderCommandEncoder> currentRenderCommandEncoder;
+@property (readonly, nonatomic) struct CGRect currentViewport;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugOptions;
 @property (weak, nonatomic) id<SCNSceneRendererDelegate> delegate;
+@property (readonly, nonatomic) unsigned long long depthPixelFormat;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<MTLDevice> device;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isJitteringEnabled) BOOL jitteringEnabled;
 @property (nonatomic) BOOL loops;
@@ -112,11 +109,15 @@
 @property (strong, nonatomic) SCNScene *scene;
 @property (nonatomic) double sceneTime;
 @property (nonatomic) BOOL showsStatistics;
+@property (readonly, nonatomic) unsigned long long stencilPixelFormat;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) SCNTechnique *technique;
+@property (nonatomic, getter=isTemporalAntialiasingEnabled) BOOL temporalAntialiasingEnabled;
+@property (nonatomic) BOOL usesReverseZ;
 
 + (id)rendererWithContext:(id)arg1 options:(id)arg2;
 + (id)rendererWithDevice:(id)arg1 options:(id)arg2;
+- (id)MTLTexture;
 - (void)_UIOrientationDidChangeNotification:(id)arg1;
 - (const void *)__CFObject;
 - (void)__setTransitionContext:(id)arg1;
@@ -136,6 +137,7 @@
 - (id)_copyRenderGraphDescription;
 - (void)_createOffscreenFramebufferIfNeeded;
 - (void)_createPrepareFramebufferIfNeeded;
+- (struct CGImage *)_createSnapshotAtTime:(double)arg1 withSize:(struct CGSize)arg2 antialiasingMode:(unsigned long long)arg3;
 - (id)_defaultPOVForScene:(id)arg1;
 - (void)_deleteGLFramebuffer;
 - (void)_didRenderScene:(id)arg1;
@@ -150,6 +152,7 @@
 - (BOOL)_drawSceneWithNewRenderer:(struct __C3DScene *)arg1;
 - (void)_drawWithJitteringPresentationMode;
 - (MISSING_TYPE *)_drawableSafeAreaInsets;
+- (BOOL)_enableARMode;
 - (BOOL)_enablesDeferredShading;
 - (void)_endFrame;
 - (struct __C3DEngineContext *)_engineContext;
@@ -173,6 +176,7 @@
 - (void)_prepareForTransition:(id)arg1 outgoingScene:(id)arg2 outgoingPointOfView:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_prepareGLRenderTarget;
 - (BOOL)_prepareObject:(id)arg1 shouldAbortBlock:(CDUnknownBlockType)arg2;
+- (unsigned long long)_preparePixelFormat;
 - (BOOL)_preparePreloadRenderer;
 - (void)_prepareRenderTarget;
 - (id)_prepareSKRenderer;
@@ -187,7 +191,6 @@
 - (void)_renderAtTime:(double)arg1;
 - (void)_renderAtTime:(double)arg1 viewport:(struct CGRect)arg2 encoder:(id)arg3 passDescriptor:(id)arg4 commandQueue:(id)arg5 commandBuffer:(id)arg6;
 - (id)_renderContextMetal;
-- (BOOL)_renderGraphEnabled;
 - (void)_renderGraphFrameRecordingAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_renderSceneWithEngineContext:(struct __C3DEngineContext *)arg1 sceneTime:(double)arg2;
 - (struct __C3DRendererContext *)_rendererContextGL;
@@ -202,6 +205,7 @@
 - (void)_setSceneTime:(double)arg1;
 - (void)_setupOffscreenRendererWithSize:(struct CGSize)arg1;
 - (id)_setupSKRendererIfNeeded;
+- (BOOL)_shouldDelegateARCompositing;
 - (BOOL)_showsAuthoringEnvironment;
 - (void)_stop;
 - (double)_superSamplingFactor;
@@ -216,17 +220,15 @@
 - (struct SCNVector4)_viewport;
 - (void)_willRenderScene:(id)arg1;
 - (void)_writeSubdivCacheForHash:(id)arg1 dataProvider:(CDUnknownBlockType)arg2;
+- (MISSING_TYPE *)adjustViewportForRendering: /* Error: Ran out of types for this method. */;
 - (BOOL)autoAdjustCamera;
 - (id)backgroundColor;
-- (id)commandQueue;
 - (struct CGImage *)copySnapshotWithSize:(struct CGSize)arg1;
 - (struct CGImage *)createSnapshot:(double)arg1;
 - (id)currentCommandBuffer;
-- (id)currentRenderCommandEncoder;
 - (id)currentRenderPassDescriptor;
 - (double)currentTime;
 - (void)dealloc;
-- (id)device;
 - (BOOL)disableOverlays;
 - (BOOL)frozen;
 - (id)hitTest:(struct CGPoint)arg1 options:(id)arg2;
@@ -236,6 +238,8 @@
 - (BOOL)isNodeInsideFrustum:(id)arg1 withPointOfView:(id)arg2;
 - (BOOL)jitteringEnabled;
 - (void)lock;
+- (id)metalDevice;
+- (id)metalLayer;
 - (id)nodesInsideFrustumWithPointOfView:(id)arg1;
 - (id)pointOfCulling;
 - (BOOL)prepareObject:(id)arg1 shouldAbortBlock:(CDUnknownBlockType)arg2;
@@ -246,9 +250,12 @@
 - (struct SCNVector3)projectPoint:(struct SCNVector3)arg1;
 - (void)render;
 - (void)renderAtTime:(double)arg1;
+- (void)renderAtTime:(double)arg1 commandBuffer:(id)arg2 viewPoints:(id)arg3;
 - (void)renderAtTime:(double)arg1 viewport:(struct CGRect)arg2 commandBuffer:(id)arg3 passDescriptor:(id)arg4;
 - (void)renderAtTime:(double)arg1 viewport:(struct CGRect)arg2 encoder:(id)arg3 passDescriptor:(id)arg4 commandQueue:(id)arg5;
 - (BOOL)renderMovieToURL:(id)arg1 size:(struct CGSize)arg2 antialiasingMode:(unsigned long long)arg3 attributes:(id)arg4 error:(id *)arg5;
+- (void)renderWithCommandBuffer:(id)arg1 viewPoints:(id)arg2;
+- (void)renderWithViewpoints:(id)arg1 events:(id)arg2;
 - (void)renderWithViewport:(struct CGRect)arg1 commandBuffer:(id)arg2 passDescriptor:(id)arg3;
 - (void)setAutoAdjustCamera:(BOOL)arg1;
 - (void)setBackgroundColor:(id)arg1;
@@ -266,12 +273,14 @@
 - (void)set_deltaTime:(double)arg1;
 - (void)set_disableLinearRendering:(BOOL)arg1;
 - (void)set_drawableSafeAreaInsets: /* Error: Ran out of types for this method. */;
+- (void)set_enableARMode:(BOOL)arg1;
 - (void)set_enablesDeferredShading:(BOOL)arg1;
 - (void)set_nextFrameTime:(double)arg1;
+- (void)set_preparePixelFormat:(unsigned long long)arg1;
 - (void)set_privateRendererShouldForwardSceneRendererDelegationMessagesToOwner:(BOOL)arg1;
 - (void)set_recordWithoutExecute:(BOOL)arg1;
-- (void)set_renderGraphEnabled:(BOOL)arg1;
 - (void)set_screenTransform:(struct SCNMatrix4)arg1;
+- (void)set_shouldDelegateARCompositing:(BOOL)arg1;
 - (void)set_showsAuthoringEnvironment:(BOOL)arg1;
 - (void)set_superSamplingFactor:(double)arg1;
 - (void)set_systemTime:(double)arg1;
@@ -280,13 +289,14 @@
 - (id)snapshotAtTime:(double)arg1;
 - (id)snapshotAtTime:(double)arg1 withSize:(struct CGSize)arg2 antialiasingMode:(unsigned long long)arg3;
 - (id)snapshotRendererWithSize:(struct CGSize)arg1;
+- (BOOL)temporalAntialiasingEnabled;
 - (void)unlock;
 - (struct SCNVector3)unprojectPoint:(struct SCNVector3)arg1;
 - (void)updateAndDrawStatisticsIfNeeded;
 - (void)updateAtTime:(double)arg1;
 - (void)updateCurrentTimeIfPlayingWithSystemTime:(double)arg1;
 - (void)updateProbes:(id)arg1 atTime:(double)arg2;
-- (MISSING_TYPE *)viewportWithLetterboxingIfNeeded: /* Error: Ran out of types for this method. */;
+- (struct CGRect)viewport;
 
 @end
 

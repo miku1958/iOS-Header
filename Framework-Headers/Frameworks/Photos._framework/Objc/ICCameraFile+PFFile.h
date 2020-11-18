@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ImageCapture/ICCameraFile.h>
+#import <ImageCaptureCore/ICCameraFile.h>
 
 @interface ICCameraFile (PFFile)
 - (id)uti;

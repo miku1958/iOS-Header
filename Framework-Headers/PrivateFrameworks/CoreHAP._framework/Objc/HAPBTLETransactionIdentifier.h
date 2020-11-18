@@ -14,11 +14,11 @@
 @property (readonly, nonatomic) unsigned char unsignedCharValue; // @synthesize unsignedCharValue=_unsignedCharValue;
 
 + (unsigned char)generateRequestIdentifier;
++ (id)randomTransactionIdentifier;
 - (id)debugDescription;
 - (id)description;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithUnsignedCharValue:(unsigned char)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)shortDescription;

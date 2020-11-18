@@ -45,6 +45,7 @@
 - (void)removeTrackLayer:(id)arg1 animated:(BOOL)arg2;
 - (void)setTrackLayer:(id)arg1 animated:(BOOL)arg2;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
+- (struct CGColor *)trackBorderColor;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
 - (void)valueDidChange:(id)arg1 forEvent:(id)arg2;
 

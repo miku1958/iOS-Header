@@ -29,6 +29,7 @@
 - (id)init;
 - (void)notifyActiveRecordChanged;
 - (void)performOperationAfterReconcile:(CDUnknownBlockType)arg1;
+- (void)performOperationWhenNotReconciling:(CDUnknownBlockType)arg1;
 - (void)prepareForPushNotification;
 - (void)reconcile:(CDUnknownBlockType)arg1;
 - (BOOL)reconcileInProgress;
@@ -40,6 +41,8 @@
 - (void)setDSID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDSID:(id)arg1 withoutRestrictions:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setReconcileOperations:(id)arg1;
+- (id)storableUsageVectors;
 - (void)updateAccountData:(CDUnknownBlockType)arg1;
+- (void)updateUsageVectors:(id)arg1;
 @end
 

@@ -8,23 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOLocalizedDisambiguationLabel : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_locale;
     NSString *_string;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_locale:1;
+        unsigned int read_string:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_locale:1;
+        unsigned int wrote_string:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasLocale;
 @property (readonly, nonatomic) BOOL hasString;
-@property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
-@property (strong, nonatomic) NSString *string; // @synthesize string=_string;
+@property (strong, nonatomic) NSString *locale;
+@property (strong, nonatomic) NSString *string;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readLocale;
+- (void)_readString;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

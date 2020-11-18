@@ -22,7 +22,8 @@
 @property (strong, nonatomic) NSConditionLock *stateLock; // @synthesize stateLock=_stateLock;
 
 + (void)_configureAllPromise:(id)arg1 withResults:(id)arg2 promises:(id)arg3 currentPromiseIndex:(unsigned long long)arg4;
-+ (void)_configureAnyPromise:(id)arg1 withPomises:(id)arg2 currentPromiseIndex:(unsigned long long)arg3;
++ (void)_configureAnyPromise:(id)arg1 withPomises:(id)arg2 currentPromiseIndex:(unsigned long long)arg3 previousError:(id)arg4;
++ (void)_configureFlattenedPromise:(id)arg1 withPromises:(id)arg2 results:(id)arg3 previousError:(id)arg4 currentPromiseIndex:(unsigned long long)arg5;
 + (BOOL)_errorIsCanceledError:(id)arg1;
 + (void)_finishPromise:(id)arg1 withPromise:(id)arg2;
 + (id)_globalPromiseStorage;
@@ -30,6 +31,7 @@
 + (id)promiseWithAll:(id)arg1;
 + (id)promiseWithAny:(id)arg1;
 + (id)promiseWithError:(id)arg1;
++ (id)promiseWithFlattenedPromises:(id)arg1;
 + (id)promiseWithResult:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addBlock:(CDUnknownBlockType)arg1 orCallWithResult:(CDUnknownBlockType)arg2;
@@ -37,6 +39,7 @@
 - (void)addErrorBlock:(CDUnknownBlockType)arg1;
 - (void)addFinishBlock:(CDUnknownBlockType)arg1;
 - (void)addSuccessBlock:(CDUnknownBlockType)arg1;
+- (id)binaryPromiseAdapter;
 - (CDUnknownBlockType)boolCompletionHandlerAdapter;
 - (BOOL)cancel;
 - (id)catchWithBlock:(CDUnknownBlockType)arg1;

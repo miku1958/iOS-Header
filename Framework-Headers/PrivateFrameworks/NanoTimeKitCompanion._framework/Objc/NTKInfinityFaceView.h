@@ -26,8 +26,6 @@
 - (double)_adjustmentForBottomTimeLayout;
 - (void)_applyDataMode;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (void)_backlightDidTurnOff;
-- (void)_backlightWillTurnOff;
 - (void)_cleanupAfterEditing;
 - (id)_complicationDisplayWrapperForTouch:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
@@ -67,6 +65,7 @@
 - (BOOL)_wantsTimeTravelStatusModule;
 - (void)dealloc;
 - (void)didAddSubview:(id)arg1;
+- (void)handleScreenBlanked;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
 - (void)setTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 customEditMode:(long long)arg4 slot:(id)arg5;

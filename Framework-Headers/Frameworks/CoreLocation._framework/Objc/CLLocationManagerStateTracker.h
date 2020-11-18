@@ -23,11 +23,11 @@
 @property (nonatomic) double desiredAccuracy;
 @property (nonatomic) double distanceFilter;
 @property (nonatomic) BOOL dynamicAccuracyReductionEnabled;
+@property (nonatomic) BOOL groundAltitudeEnabled;
 @property (nonatomic) double headingFilter;
 @property (nonatomic) BOOL matchInfoEnabled;
 @property (nonatomic) BOOL paused;
-@property (nonatomic) int pausesLocationUpdatesAutomatically;
-@property (nonatomic) BOOL persistentMonitoringEnabled;
+@property int pausesLocationUpdatesAutomatically;
 @property (nonatomic) int previousAuthorizationStatus;
 @property (nonatomic) BOOL previousAuthorizationStatusValid;
 @property (nonatomic) BOOL requestingLocation;

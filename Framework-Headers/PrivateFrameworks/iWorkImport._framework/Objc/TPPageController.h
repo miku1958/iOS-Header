@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
     TSWPLayoutMetricsCache *_bodyLayoutMetricsCache;
     TPTextFlowLayoutController *_flowController;
     TPTextWrapController *_wrapController;
-    BOOL _exportingFixedLayoutEPUB;
+    BOOL _textLayoutMustIncludeAdornments;
     double _horizontalGapBetweenPages;
     double _verticalGapBetweenPages;
     unsigned long long _pageHeightCount;
@@ -56,7 +56,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) TPDocumentRoot *documentRoot;
-@property (nonatomic, getter=isExportingFixedLayoutEPUB) BOOL exportingFixedLayoutEPUB; // @synthesize exportingFixedLayoutEPUB=_exportingFixedLayoutEPUB;
 @property (readonly, nonatomic) unsigned long long firstPageIndexNeedingLayout;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -70,6 +69,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=textLayoutMustIncludeAdornments) BOOL textLayoutMustIncludeAdornments; // @synthesize textLayoutMustIncludeAdornments=_textLayoutMustIncludeAdornments;
 @property (readonly, nonatomic) double verticalPageSeparation;
 
 - (id).cxx_construct;
@@ -90,7 +90,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)canvasSizeToFitAllPagesForPageViewState:(long long)arg1;
 - (BOOL)caresAboutStorageChanges;
 - (unsigned long long)contentFlagsForPageIndex:(unsigned long long)arg1;
-- (void)d_timePagination;
+- (void)d_timePaginationResettingMetrics:(BOOL)arg1;
 - (void)dealloc;
 - (void)didLayoutChangingDirtyRanges;
 - (id)displayPageNumberForCharIndex:(unsigned long long)arg1;
@@ -105,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (id)i_columnPriorToPageIndex:(unsigned long long)arg1;
 - (id)i_firstChildHintAfterPageIndex:(unsigned long long)arg1;
 - (id)i_flowLayoutController;
+- (void)i_forceRestartPaginationForServer;
 - (void)i_inflateColumnsInBodyLayout:(id)arg1;
 - (void)i_inflateFootnotesInFootnoteContainer:(id)arg1;
 - (void)i_inflateTextFlowsOnPage:(id)arg1;
@@ -143,7 +144,7 @@ __attribute__((visibility("hidden")))
 - (void)p_checkForBackUp;
 - (BOOL)p_couldBeFirstPageIndex:(unsigned long long)arg1 forPartitionedAttachmentCharIndex:(unsigned long long)arg2;
 - (void)p_destroyBodyLayoutState;
-- (BOOL)p_didLayout;
+- (BOOL)p_didLayOut;
 - (unsigned long long)p_firstPageColumn;
 - (struct _NSRange)p_footnoteLayoutRangeForPageIndex:(unsigned long long)arg1 forcePagination:(BOOL)arg2 allowAfterPaginationPoint:(BOOL)arg3;
 - (void)p_forceRestartPaginationAndResetMetricsCache:(BOOL)arg1;
@@ -153,16 +154,16 @@ __attribute__((visibility("hidden")))
 - (void)p_invalidatePageIndex:(unsigned long long)arg1;
 - (BOOL)p_isBodyLayoutComplete;
 - (BOOL)p_isPaginationComplete;
+- (unsigned long long)p_lastValidCharIndex;
+- (unsigned long long)p_lastValidFootnoteIndex;
 - (id)p_lastValidPageHint;
 - (id)p_lastValidTextPageHint:(out unsigned long long *)arg1;
 - (unsigned long long)p_lastValidTextPageIndex;
 - (void)p_layOutFootnotesIntoPageLayout:(id)arg1;
-- (unsigned long long)p_layoutEndCharIndex;
-- (unsigned long long)p_layoutEndFootnoteIndex;
-- (void)p_layoutIntoPageLayout:(id)arg1 outDidSync:(BOOL *)arg2;
-- (void)p_layoutNextPageForLayoutController:(id)arg1 dirtyRange:(id)arg2;
-- (BOOL)p_layoutNextPageOnceWithOffscreenLayoutController;
-- (void)p_layoutTextIntoPageLayout:(id)arg1 outDidSync:(BOOL *)arg2;
+- (void)p_layOutIntoPageLayout:(id)arg1 outDidSync:(out BOOL *)arg2;
+- (void)p_layOutNextPageForLayoutController:(id)arg1 dirtyRange:(id)arg2;
+- (BOOL)p_layOutNextPageOnceWithOffscreenLayoutController;
+- (void)p_layOutTextIntoPageLayout:(id)arg1 didSync:(out BOOL *)arg2 initialFootnoteIndex:(out unsigned long long *)arg3;
 - (void)p_notifyObserversDidInvalidate;
 - (void)p_notifyObserversDidLayoutWhileSyncing:(BOOL)arg1;
 - (void)p_notifyObserversWillLayoutWhileSyncing:(BOOL)arg1;
@@ -184,6 +185,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)p_pageRangeForSelection:(id)arg1 includingEmptyPages:(BOOL)arg2 outEndIsValid:(BOOL *)arg3 forcePagination:(BOOL)arg4;
 - (void)p_paginateThroughPageIndex:(unsigned long long)arg1 forLayoutController:(id)arg2 clearOffscreenInfos:(BOOL)arg3;
 - (id)p_paginationState;
+- (void)p_performPaginationResetAndMetricsReset:(BOOL)arg1;
 - (void)p_performWithCachedPageLayouts:(CDUnknownBlockType)arg1;
 - (void)p_preparePageHintForNextPage;
 - (void)p_preparePaginationStateForNextPage;
@@ -231,7 +233,6 @@ __attribute__((visibility("hidden")))
 - (void)paginateThroughPageIndex:(unsigned long long)arg1 forLayoutController:(id)arg2;
 - (BOOL)performBackgroundPagination;
 - (void)preprocessChanges:(id)arg1 forChangeSource:(id)arg2;
-- (void)processHeaderFooterPropertyChanged;
 - (void)removeLayoutObserver:(id)arg1;
 - (void)restoreFromLayoutState:(id)arg1;
 - (void)saveIntoLayoutState:(id)arg1;

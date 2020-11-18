@@ -13,6 +13,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) long long initiatorType;
 @property (readonly, nonatomic) long long resourceType;
+@property (readonly, nonatomic) long long state;
 
 - (void)didCompleteLoadingFromCache:(long long)arg1 mimeType:(NSString *)arg2 withResponseBody:(NSData *)arg3;
 - (void)didCompleteLoadingFromCache:(long long)arg1 withResponseBodyBlock:(void (^)(void (^)(NSData *, NSString *, NSError *)))arg2;
@@ -22,5 +23,6 @@
 - (void)didReceiveData:(NSData *)arg1;
 - (void)didReceiveResponse:(NSHTTPURLResponse *)arg1 timingData:(NSDictionary *)arg2;
 - (void)willSendRequest:(NSURLRequest *)arg1;
+- (void)willSendRequest:(NSURLRequest *)arg1 redirectResponse:(NSHTTPURLResponse *)arg2;
 @end
 

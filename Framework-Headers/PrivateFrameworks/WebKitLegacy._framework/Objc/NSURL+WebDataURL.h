@@ -7,6 +7,33 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (WebDataURL)
++ (id)_web_URLWithData:(id)arg1;
++ (id)_web_URLWithData:(id)arg1 relativeToURL:(id)arg2;
++ (id)_web_URLWithDataAsString:(id)arg1;
++ (id)_web_URLWithDataAsString:(id)arg1 relativeToURL:(id)arg2;
++ (id)_web_URLWithUserTypedString:(id)arg1;
++ (id)_web_URLWithUserTypedString:(id)arg1 relativeToURL:(id)arg2;
 + (id)_web_uniqueWebDataURL;
++ (id)_webkit_URLWithUserTypedString:(id)arg1;
++ (id)_webkit_URLWithUserTypedString:(id)arg1 relativeToURL:(id)arg2;
+- (id)_web_URLByRemovingUserInfo;
+- (const char *)_web_URLCString;
+- (id)_web_dataForURLComponentType:(long long)arg1;
+- (id)_web_hostData;
+- (id)_web_hostString;
+- (BOOL)_web_isEmpty;
+- (id)_web_originalData;
+- (id)_web_originalDataAsString;
+- (id)_web_schemeData;
+- (id)_web_schemeSeparatorWithoutColon;
+- (id)_web_userVisibleString;
+- (id)_webkit_URLByRemovingFragment;
+- (id)_webkit_URLFromURLOrSchemelessFileURL;
+- (id)_webkit_canonicalize;
+- (id)_webkit_canonicalize_with_wtf;
+- (BOOL)_webkit_isFileURL;
+- (BOOL)_webkit_isJavaScriptURL;
+- (id)_webkit_scriptIfJavaScriptURL;
+- (id)_webkit_suggestedFilenameWithMIMEType:(id)arg1;
 @end
 

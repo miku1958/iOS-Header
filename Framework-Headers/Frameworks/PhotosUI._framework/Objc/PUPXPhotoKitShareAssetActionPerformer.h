@@ -7,13 +7,15 @@
 #import <PhotosUICore/PXPhotoKitAssetActionPerformer.h>
 
 #import <PhotosUI/PUPhotosSharingViewControllerDelegate-Protocol.h>
+#import <PhotosUI/PXActivitySharingControllerDelegate-Protocol.h>
 #import <PhotosUI/PXCMMActionPerformerDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, PUActivitySharingController;
 
 __attribute__((visibility("hidden")))
-@interface PUPXPhotoKitShareAssetActionPerformer : PXPhotoKitAssetActionPerformer <PUPhotosSharingViewControllerDelegate, PXCMMActionPerformerDelegate>
+@interface PUPXPhotoKitShareAssetActionPerformer : PXPhotoKitAssetActionPerformer <PUPhotosSharingViewControllerDelegate, PXCMMActionPerformerDelegate, PXActivitySharingControllerDelegate>
 {
+    PUActivitySharingController *_activitySharingController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,12 +25,17 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
-+ (id)createPreviewActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
++ (id)createPreviewActionWithTitle:(id)arg1 image:(id)arg2 handler:(CDUnknownBlockType)arg3;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 selectionSnapshot:(id)arg2 person:(id)arg3;
+- (void).cxx_destruct;
+- (void)_activitySharingController:(id)arg1 didCompleteWithActivityType:(id)arg2 success:(BOOL)arg3;
+- (void)_activitySharingControllerDidCancel:(id)arg1;
 - (id)_assetsFetchResultByAssetCollectionFromCollectionListFetchResult:(id)arg1 inDataSource:(id)arg2;
 - (void)_presentShareSheet;
 - (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
+- (void)activitySharingController:(id)arg1 didCompleteWithActivityType:(id)arg2 success:(BOOL)arg3;
+- (void)activitySharingControllerDidCancel:(id)arg1;
 - (void)performUserInteractionTask;
 - (void)photosSharingViewController:(id)arg1 didCompleteWithActivityType:(id)arg2 success:(BOOL)arg3 withAsset:(id)arg4;
 - (void)photosSharingViewControllerDidCancel:(id)arg1 needsDismiss:(BOOL)arg2;

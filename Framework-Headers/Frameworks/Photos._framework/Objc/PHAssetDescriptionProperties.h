@@ -10,10 +10,12 @@
 
 @interface PHAssetDescriptionProperties : PHAssetPropertySet
 {
+    NSString *_title;
     NSString *_assetDescription;
 }
 
 @property (readonly, copy, nonatomic) NSString *assetDescription; // @synthesize assetDescription=_assetDescription;
+@property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)propertiesToFetch;
 + (id)propertySetName;

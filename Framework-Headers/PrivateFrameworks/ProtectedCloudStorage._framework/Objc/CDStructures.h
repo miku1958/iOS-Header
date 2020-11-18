@@ -14,6 +14,64 @@ struct NSString {
     Class _field1;
 };
 
+struct PCSAttributes {
+    unsigned int _field1;
+    struct PCSTypeValue *_field2;
+};
+
+struct PCSTypeValue;
+
+struct _OpaquePCSShareProtection {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct _PCSIdentitySetData *_field2;
+    struct _PCSIdentitySetData *_field3;
+    struct _PCSIdentitySetData *_field4;
+    struct __CFDictionary *_field5;
+    struct __CFArray *_field6;
+    struct __CFData *_field7;
+    struct __CFData *_field8;
+    struct __CFData *_field9;
+    struct _PCSKeyData *_field10;
+    struct __CFData *_field11;
+    struct _PCSKeyData *_field12;
+    struct __CFDictionary *_field13;
+    unsigned int _field14;
+    unsigned int _field15;
+    struct PCSAttributes _field16;
+    struct _PCSPublicIdentityData *_field17;
+    struct _PCSPublicIdentityData *_field18;
+    struct _PCSPublicIdentityData *_field19;
+    struct _PCSPublicIdentityData *_field20;
+    struct _PCSIdentityData *_field21;
+    struct _PCSIdentityData *_field22;
+    int _field23;
+    struct {
+        BOOL _field1;
+        BOOL _field2;
+        BOOL _field3;
+        BOOL _field4;
+        BOOL _field5;
+        BOOL _field6;
+        BOOL _field7;
+    } _field24;
+    unsigned int _field25;
+};
+
+struct _PCSIdentityData;
+
+struct _PCSIdentitySetData;
+
+struct _PCSKeyData;
+
+struct _PCSPublicIdentityData;
+
+struct __CFData;
+
+struct __CFDictionary;
+
 struct __sFILE {
     char *_field1;
     int _field2;

@@ -16,9 +16,9 @@
 @property (readonly, nonatomic) unsigned long long numberOfObservers;
 
 - (void).cxx_destruct;
+- (id)_init;
 - (void)addObserver:(id)arg1;
 - (void)enumerateObservers:(CDUnknownBlockType)arg1;
-- (id)init;
 - (void)removeObserver:(id)arg1;
 
 @end

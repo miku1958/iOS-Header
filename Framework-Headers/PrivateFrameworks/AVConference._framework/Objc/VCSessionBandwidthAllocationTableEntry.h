@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     id<VCSessionDownlinkBandwidthAllocatorClient> _client;
     unsigned int _maxNetworkBitrate;
+    unsigned int _maxMediaBitrate;
     unsigned int _qualityIndex;
     BOOL _isLowestQualityAudio;
     unsigned char _type;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) BOOL hasRepairStreamID; // @synthesize hasRepairStreamID=_hasRepairStreamID;
 @property BOOL isLowestQualityAudio; // @synthesize isLowestQualityAudio=_isLowestQualityAudio;
+@property (readonly) unsigned int maxMediaBitrate; // @synthesize maxMediaBitrate=_maxMediaBitrate;
 @property (readonly) unsigned int maxNetworkBitrate; // @synthesize maxNetworkBitrate=_maxNetworkBitrate;
 @property (readonly) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
 @property (readonly) unsigned int repairMaxNetworkBitrate; // @synthesize repairMaxNetworkBitrate=_repairMaxNetworkBitrate;
@@ -42,8 +44,8 @@ __attribute__((visibility("hidden")))
 - (long long)compare:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 qualityIndex:(unsigned int)arg4 streamID:(unsigned int)arg5;
-- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 qualityIndex:(unsigned int)arg4 streamID:(unsigned int)arg5 hasRepairStreamID:(BOOL)arg6 repairStreamID:(unsigned int)arg7 repairMaxNetworkBitrate:(unsigned int)arg8 enabled:(BOOL)arg9;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6;
+- (id)initWithClient:(id)arg1 type:(unsigned char)arg2 networkBitrate:(unsigned int)arg3 mediaBitrate:(unsigned int)arg4 qualityIndex:(unsigned int)arg5 streamID:(unsigned int)arg6 hasRepairStreamID:(BOOL)arg7 repairStreamID:(unsigned int)arg8 repairMaxNetworkBitrate:(unsigned int)arg9 enabled:(BOOL)arg10;
 
 @end
 

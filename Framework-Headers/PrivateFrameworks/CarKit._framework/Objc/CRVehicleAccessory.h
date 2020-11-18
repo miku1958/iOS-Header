@@ -13,22 +13,28 @@
     BOOL _supportsUSBCarPlay;
     BOOL _supportsWirelessCarPlay;
     BOOL _supportsWiredBluetoothPairing;
+    BOOL _supportsEnhancedIntegration;
     NSString *_vehicleName;
+    NSString *_vehicleModelName;
     NSData *_certificateSerialNumber;
     NSArray *_accessoryProtocols;
     NSString *_bluetoothAddress;
+    NSString *_PPID;
     NSNumber *_connectionID;
     EAAccessory *_accessory;
 }
 
+@property (strong, nonatomic) NSString *PPID; // @synthesize PPID=_PPID;
 @property (weak, nonatomic) EAAccessory *accessory; // @synthesize accessory=_accessory;
 @property (strong, nonatomic) NSArray *accessoryProtocols; // @synthesize accessoryProtocols=_accessoryProtocols;
 @property (strong, nonatomic) NSString *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (strong, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
 @property (strong, nonatomic) NSNumber *connectionID; // @synthesize connectionID=_connectionID;
+@property (nonatomic) BOOL supportsEnhancedIntegration; // @synthesize supportsEnhancedIntegration=_supportsEnhancedIntegration;
 @property (nonatomic) BOOL supportsUSBCarPlay; // @synthesize supportsUSBCarPlay=_supportsUSBCarPlay;
 @property (nonatomic) BOOL supportsWiredBluetoothPairing; // @synthesize supportsWiredBluetoothPairing=_supportsWiredBluetoothPairing;
 @property (nonatomic) BOOL supportsWirelessCarPlay; // @synthesize supportsWirelessCarPlay=_supportsWirelessCarPlay;
+@property (strong, nonatomic) NSString *vehicleModelName; // @synthesize vehicleModelName=_vehicleModelName;
 @property (strong, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;
 
 - (void).cxx_destruct;
@@ -41,6 +47,7 @@
 - (id)radarDescription;
 - (void)requestWiFiCredentials;
 - (void)sendDeviceTransportIdentifiers;
+- (id)vehicleAccessoryInfoKeys;
 
 @end
 

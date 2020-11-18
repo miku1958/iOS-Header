@@ -9,27 +9,28 @@
 #import <RelevanceEngine/NSCopying-Protocol.h>
 #import <RelevanceEngine/REComparable-Protocol.h>
 
-@class NSString, REFeatureValue;
+@class NSString;
 
 @interface _REHistogramRange : NSObject <NSCopying, REComparable>
 {
-    REFeatureValue *_min;
-    REFeatureValue *_max;
+    unsigned long long _min;
+    unsigned long long _max;
+    unsigned long long _mid;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) REFeatureValue *max; // @synthesize max=_max;
-@property (readonly, nonatomic) REFeatureValue *mid;
-@property (readonly, nonatomic) REFeatureValue *min; // @synthesize min=_min;
+@property (readonly, nonatomic) unsigned long long max; // @synthesize max=_max;
+@property (readonly, nonatomic) unsigned long long mid; // @synthesize mid=_mid;
+@property (readonly, nonatomic) unsigned long long min; // @synthesize min=_min;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithMin:(id)arg1 max:(id)arg2;
-- (id)initWithValue:(id)arg1 binningSize:(id)arg2;
+- (void)dealloc;
+- (id)initWithMin:(unsigned long long)arg1 max:(unsigned long long)arg2;
+- (id)initWithValue:(unsigned long long)arg1 binningSize:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

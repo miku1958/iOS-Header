@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/AUAudioUnitBusArray.h>
+#import <AudioToolboxCore/AUAudioUnitBusArray.h>
 
 __attribute__((visibility("hidden")))
 @interface AUAudioUnitBusArray_XH : AUAudioUnitBusArray

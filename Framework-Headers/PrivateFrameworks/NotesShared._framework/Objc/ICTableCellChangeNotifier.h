@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
 - (id)init;
-- (void)notifyOfChangeAtColumnID:(id)arg1 rowID:(id)arg2;
+- (void)notifyOfChangeAtColumnID:(id)arg1 rowID:(id)arg2 delta:(long long)arg3;
 - (void)removeObserver:(id)arg1;
 
 @end

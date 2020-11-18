@@ -32,7 +32,7 @@
 - (void)recvGenericData:(char *)arg1 dataLength:(unsigned long long)arg2 linkID:(BOOL)arg3;
 - (void)recvZUDPData:(char *)arg1 dataLength:(unsigned long long)arg2 linkID:(BOOL)arg3;
 - (long long)sendGenericData:(char *)arg1 dataLength:(unsigned long long)arg2 linkID:(BOOL)arg3;
-- (long long)sendZUDPData:(char *)arg1 dataLength:(unsigned long long)arg2 linkID:(BOOL)arg3;
+- (long long)sendZUDPData:(char *)arg1 dataLength:(long long)arg2 linkID:(BOOL)arg3;
 - (void)setServerStreamFd:(int)arg1 isServer:(BOOL)arg2;
 - (BOOL)startReliableSession:(BOOL)arg1;
 

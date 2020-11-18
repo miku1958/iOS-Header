@@ -32,6 +32,7 @@
     unsigned long long _requestType;
     unsigned long long _mustPrefixMatchLength;
     NSDate *_hideCompletionsAfterDate;
+    NSDate *_responseDate;
 }
 
 @property (strong, nonatomic) NSString *debug; // @synthesize debug=_debug;
@@ -41,9 +42,10 @@
 @property (strong, nonatomic) NSArray *level2Topics; // @synthesize level2Topics=_level2Topics;
 @property (nonatomic) unsigned long long mustPrefixMatchLength; // @synthesize mustPrefixMatchLength=_mustPrefixMatchLength;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
+@property (strong, nonatomic) NSDate *responseDate; // @synthesize responseDate=_responseDate;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (nonatomic) BOOL resultsNeedFiltering; // @synthesize resultsNeedFiltering=_resultsNeedFiltering;
-@property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

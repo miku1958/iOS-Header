@@ -7,95 +7,64 @@
 #import <UIKit/UICollectionReusableView.h>
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
-#import <PhotosUICore/PXMutablePhotosGlobalFooterView-Protocol.h>
 #import <PhotosUICore/UITextViewDelegate-Protocol.h>
 
-@class NSString, PXPhotosGlobalFooterViewModel, UILabel, UIProgressView, UITextView, UIView;
+@class NSString, PXFooterAnimatedIconView, PXFooterViewModel, PXGradientView, UILabel, UIProgressView, UITextView, UIView;
 @protocol PXPhotosGlobalFooterViewDelegate, PXPhotosGlobalFooterViewLayoutDelegate;
 
-@interface PXPhotosGlobalFooterView : UICollectionReusableView <PXMutablePhotosGlobalFooterView, UITextViewDelegate, PXChangeObserver>
+@interface PXPhotosGlobalFooterView : UICollectionReusableView <UITextViewDelegate, PXChangeObserver>
 {
+    UIView *_accessoryView;
+    BOOL _hasAnimatedIconView;
+    PXFooterAnimatedIconView *_animatedIconView;
+    PXGradientView *_backgroundView;
     UILabel *_titleLabel;
     UITextView *_subtitle1TextView;
     UILabel *_subtitle2Label;
     UIProgressView *_progressView;
-    double _currentHeight;
     BOOL _isPresentingAlert;
     struct {
-        BOOL title;
-        BOOL subtitle1;
-        BOOL subtitle2;
-        BOOL progress;
-        BOOL layout;
-    } _needToUpdate;
+        BOOL photosGlobalFooterViewDidChangeHeight;
+    } _delegateRespondsTo;
     BOOL _isPerformingChanges;
-    BOOL _paused;
-    float _progress;
-    NSString *_title;
-    NSString *_subtitle1;
-    NSString *_subtitle2;
-    long long _actionStyle;
-    NSString *_actionTitle;
-    NSString *_actionConfirmationAlertTitle;
-    NSString *_actionConfirmationAlertButtonTitle;
-    CDUnknownBlockType _action;
-    UIView *_accessoryView;
-    PXPhotosGlobalFooterViewModel *_viewModel;
+    double _currentHeight;
+    PXFooterViewModel *_viewModel;
     id<PXPhotosGlobalFooterViewDelegate> _delegate;
     id<PXPhotosGlobalFooterViewLayoutDelegate> _layoutDelegate;
 }
 
-@property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
-@property (copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
-@property (copy, nonatomic) NSString *actionConfirmationAlertButtonTitle; // @synthesize actionConfirmationAlertButtonTitle=_actionConfirmationAlertButtonTitle;
-@property (copy, nonatomic) NSString *actionConfirmationAlertTitle; // @synthesize actionConfirmationAlertTitle=_actionConfirmationAlertTitle;
-@property (nonatomic) long long actionStyle; // @synthesize actionStyle=_actionStyle;
-@property (copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
+@property (readonly, nonatomic) double currentHeight; // @synthesize currentHeight=_currentHeight;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXPhotosGlobalFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<PXPhotosGlobalFooterViewLayoutDelegate> layoutDelegate; // @synthesize layoutDelegate=_layoutDelegate;
-@property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
-@property (nonatomic) float progress; // @synthesize progress=_progress;
-@property (copy, nonatomic) NSString *subtitle1; // @synthesize subtitle1=_subtitle1;
-@property (copy, nonatomic) NSString *subtitle2; // @synthesize subtitle2=_subtitle2;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property (strong, nonatomic) PXPhotosGlobalFooterViewModel *viewModel; // @synthesize viewModel=_viewModel;
+@property (strong, nonatomic) PXFooterViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
++ (id)attributedStringForInputString:(id)arg1 actionTitle:(id)arg2 textAttributes:(id)arg3 linkTextAttributes:(id)arg4;
 - (void).cxx_destruct;
-- (id)_attributedStringForInputString:(id)arg1 actionTitle:(id)arg2 textAttributes:(id)arg3 linkTextAttributes:(id)arg4;
+- (void)_animatedIconCrossedGridCycleBoundary;
 - (void)_configurePhotoCollectionGlobalFooterLabel:(id)arg1 withFont:(id)arg2 textColor:(id)arg3;
 - (void)_configurePhotoCollectionGlobalFooterProgressView:(id)arg1 paused:(BOOL)arg2;
 - (void)_configurePhotoCollectionGlobalFooterSubtitleLabel:(id)arg1;
 - (void)_configurePhotoCollectionGlobalFooterSubtitleTextView:(id)arg1;
 - (void)_configurePhotoCollectionGlobalFooterTitleLabel:(id)arg1;
 - (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
-- (void)_invalidateLayout;
-- (void)_invalidateProgress;
-- (void)_invalidateSubtitle1;
-- (void)_invalidateSubtitle2;
-- (void)_invalidateTitle;
-- (BOOL)_needsUpdate;
+- (struct CGSize)_performLayoutInWidth:(double)arg1 updateSubviewFrames:(BOOL)arg2;
 - (id)_photoCollectionGlobalFooterSubtitleTextViewAttributesDisabled:(BOOL)arg1;
 - (id)_photoCollectionGlobalFooterSubtitleTextViewLinkTextAttributes_Color;
 - (id)_photoCollectionGlobalFooterSubtitleTextViewLinkTextAttributes_Font;
-- (void)_updateIfNeeded;
-- (void)_updateLayout;
-- (void)_updateLayoutIfNeeded;
-- (void)_updateProgress;
-- (void)_updateProgressIfNeeded;
+- (void)_updateAccessory;
+- (void)_updateAnimatedIcon;
+- (void)_updateProgressAnimated:(BOOL)arg1;
 - (void)_updateSubtitle1;
-- (void)_updateSubtitle1IfNeeded;
 - (void)_updateSubtitle2;
-- (void)_updateSubtitle2IfNeeded;
 - (void)_updateTitle;
-- (void)_updateTitleIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)performChanges:(CDUnknownBlockType)arg1;
+- (void)setHidden:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 - (void)textViewDidChangeSelection:(id)arg1;

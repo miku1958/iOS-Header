@@ -9,7 +9,7 @@
 #import <CoreSpotlight/NSCopying-Protocol.h>
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class CSSearchContext, NSArray, NSData, NSString;
 
 @interface CSIndexJob : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,16 +21,20 @@
     NSString *_providerIdentifier;
     NSString *_providerType;
     NSString *_extensionBundleID;
+    CSSearchContext *_searchContext;
+    NSData *_importData;
 }
 
 @property (strong, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property (strong, nonatomic) NSArray *excludedBundleIDs; // @synthesize excludedBundleIDs=_excludedBundleIDs;
 @property (strong, nonatomic) NSString *extensionBundleID; // @synthesize extensionBundleID=_extensionBundleID;
 @property (strong, nonatomic) NSArray *identifiersToReindex; // @synthesize identifiersToReindex=_identifiersToReindex;
+@property (strong, nonatomic) NSData *importData; // @synthesize importData=_importData;
 @property (nonatomic) long long jobOptions; // @synthesize jobOptions=_jobOptions;
 @property (nonatomic) long long jobType; // @synthesize jobType=_jobType;
 @property (strong, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
 @property (strong, nonatomic) NSString *providerType; // @synthesize providerType=_providerType;
+@property (strong, nonatomic) CSSearchContext *searchContext; // @synthesize searchContext=_searchContext;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

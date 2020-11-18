@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
 
 @interface CKFetchShareMetadataOperation : CKOperation
 {
@@ -17,6 +17,7 @@
     NSArray *_rootRecordDesiredKeys;
     NSMutableDictionary *_errorsByURL;
     NSMutableSet *_packagesToDestroy;
+    NSDictionary *_shareInvitationTokensByShareURL;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *errorsByURL; // @synthesize errorsByURL=_errorsByURL;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property (copy, nonatomic) CDUnknownBlockType perShareMetadataBlock; // @synthesize perShareMetadataBlock=_perShareMetadataBlock;
 @property (copy, nonatomic) NSArray *rootRecordDesiredKeys; // @synthesize rootRecordDesiredKeys=_rootRecordDesiredKeys;
+@property (copy, nonatomic) NSDictionary *shareInvitationTokensByShareURL; // @synthesize shareInvitationTokensByShareURL=_shareInvitationTokensByShareURL;
 @property (copy, nonatomic) NSArray *shareURLs; // @synthesize shareURLs=_shareURLs;
 @property (nonatomic) BOOL shouldFetchRootRecord; // @synthesize shouldFetchRootRecord=_shouldFetchRootRecord;
 
@@ -38,6 +40,7 @@
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithShareURLs:(id)arg1;
+- (id)initWithShareURLs:(id)arg1 invitationTokensByShareURL:(id)arg2;
 - (void)performCKOperation;
 
 @end

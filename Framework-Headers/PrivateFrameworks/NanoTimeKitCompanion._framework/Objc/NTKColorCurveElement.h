@@ -20,6 +20,7 @@
 @property (strong, nonatomic) CAMediaTimingFunction *timingFunction; // @synthesize timingFunction=_timingFunction;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithColor:(id)arg1 fraction:(float)arg2;
 
 @end

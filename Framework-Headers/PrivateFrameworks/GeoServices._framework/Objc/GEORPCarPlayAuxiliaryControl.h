@@ -15,9 +15,10 @@
     GEOCarInfo *_carInfo;
 }
 
-@property (strong, nonatomic) GEOCarInfo *carInfo; // @synthesize carInfo=_carInfo;
+@property (strong, nonatomic) GEOCarInfo *carInfo;
 @property (readonly, nonatomic) BOOL hasCarInfo;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -26,6 +27,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

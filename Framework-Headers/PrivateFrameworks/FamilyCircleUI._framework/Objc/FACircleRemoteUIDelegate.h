@@ -40,7 +40,7 @@
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)remoteUIController:(id)arg1 didRefreshObjectModel:(id)arg2;
 - (void)remoteUIController:(id)arg1 didRemoveObjectModel:(id)arg2;
-- (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;
+- (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;
 - (void)remoteUIControllerDidDismiss:(id)arg1;

@@ -27,26 +27,25 @@
 
 + (id)daemonProxy;
 - (void).cxx_destruct;
-- (oneway void)captureHandlerWithAudioSample:(id)arg1 absdData:(id)arg2 itemCount:(long long)arg3 bufferType:(long long)arg4 timingData:(id)arg5;
+- (oneway void)captureHandlerWithAudioSample:(id)arg1 bufferType:(long long)arg2;
 - (oneway void)captureHandlerWithSample:(id)arg1 timingData:(id)arg2;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (oneway void)discardRecordingWithHandler:(CDUnknownBlockType)arg1;
-- (oneway void)getCurrentBroadcastImages:(CDUnknownBlockType)arg1;
 - (oneway void)getSystemBroadcastExtensionInfo:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)issueSandboxExtension;
 - (oneway void)pauseRecording;
 - (oneway void)recordingDidPause;
 - (oneway void)recordingDidStopWithError:(id)arg1 movieURL:(id)arg2;
 - (oneway void)recordingLockInterrupted:(id)arg1;
 - (oneway void)recordingShouldResume;
 - (oneway void)recordingTimerDidUpdate:(id)arg1;
-- (oneway void)reportCameraUsage:(int)arg1;
-- (oneway void)resumeRecordingWithWindowLayerContextID:(unsigned int)arg1;
+- (oneway void)reportCameraUsage:(long long)arg1;
+- (oneway void)resumeRecordingWithWindowLayerContextID:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)saveVideoToCameraRoll:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (oneway void)setHasUserConsentForCamera:(BOOL)arg1;
 - (oneway void)setHasUserConsentForMicrophone:(BOOL)arg1;
 - (oneway void)setMicrophoneEnabled:(BOOL)arg1;
-- (oneway void)setMicrophoneEnabledPersistent:(BOOL)arg1;
 - (oneway void)setupBroadcastWithHostBundleID:(id)arg1 broadcastExtensionBundleID:(id)arg2 broadcastConfigurationData:(id)arg3 userInfo:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (oneway void)startRecordingWindowLayerContextIDs:(id)arg1 windowSize:(struct CGSize)arg2 microphoneEnabled:(BOOL)arg3 cameraEnabled:(BOOL)arg4 broadcast:(BOOL)arg5 systemRecording:(BOOL)arg6 captureEnabled:(BOOL)arg7 listenerEndpoint:(id)arg8 withHandler:(CDUnknownBlockType)arg9;
 - (oneway void)stopRecordingWithHandler:(CDUnknownBlockType)arg1;
@@ -56,7 +55,7 @@
 - (oneway void)updateBroadcastServiceInfo:(id)arg1;
 - (oneway void)updateBroadcastURL:(id)arg1;
 - (oneway void)updateProcessIDForAudioCaptureWithPID:(int)arg1;
-- (oneway void)updateScreenRecordingState;
+- (oneway void)updateScreenRecordingStateWithCurrentState:(id)arg1;
 
 @end
 

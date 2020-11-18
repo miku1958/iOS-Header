@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (id)UUIDString;
 - (CDStruct_bd2f613f)_cfUUIDBytes;
-- (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;

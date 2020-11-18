@@ -6,26 +6,30 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaUserSpeechDuration-Protocol.h>
 
-@interface SISchemaUserSpeechDuration : PBCodable <NSCopying>
+@class NSData, NSString;
+
+@interface SISchemaUserSpeechDuration : PBCodable <SISchemaUserSpeechDuration, NSSecureCoding>
 {
-    int _durationMs;
-    struct {
-        unsigned int durationMs:1;
-    } _has;
+    long long _durationMs;
+    NSString *_resultCandidateId;
 }
 
-@property (nonatomic) int durationMs; // @synthesize durationMs=_durationMs;
-@property (nonatomic) BOOL hasDurationMs;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) long long durationMs; // @synthesize durationMs=_durationMs;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *resultCandidateId; // @synthesize resultCandidateId=_resultCandidateId;
+@property (readonly) Class superclass;
 
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

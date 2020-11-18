@@ -4,27 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <UIKit/UIDocumentBrowserActionDescriptor.h>
 
-@class NSPredicate, NSString;
-
-@interface FPUIAction : NSObject
+@interface FPUIAction : UIDocumentBrowserActionDescriptor
 {
-    BOOL _displayInline;
-    NSString *_uiActionProviderIdentifier;
-    NSString *_identifier;
-    NSString *_displayName;
-    NSPredicate *_predicate;
+    BOOL _isNonUIAction;
 }
 
-@property (readonly, nonatomic) BOOL displayInline; // @synthesize displayInline=_displayInline;
-@property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
-@property (readonly, nonatomic) NSString *uiActionProviderIdentifier; // @synthesize uiActionProviderIdentifier=_uiActionProviderIdentifier;
+@property (readonly, nonatomic) BOOL isNonUIAction; // @synthesize isNonUIAction=_isNonUIAction;
 
-- (void).cxx_destruct;
-- (id)initWithIdentifier:(id)arg1 uiActionProviderIdentifier:(id)arg2 displayName:(id)arg3 predicate:(id)arg4 displayInline:(BOOL)arg5;
+- (id)initWithIdentifier:(id)arg1 uiActionProviderIdentifier:(id)arg2 fileProviderIdentifier:(id)arg3 displayName:(id)arg4 predicate:(id)arg5 displayInline:(BOOL)arg6 isNonUIAction:(BOOL)arg7;
 
 @end
 

@@ -9,11 +9,12 @@
 #import <Home/HFHomeManagerObserver-Protocol.h>
 #import <Home/HFHomeObserver-Protocol.h>
 
-@class HFWallpaperFileManager, HFWallpaperImageCache, HFWallpaperLegacyFileManager, NSMutableDictionary, NSOperationQueue, NSString, NSUserDefaults;
-@protocol HFNamedWallpaperSource;
+@class HFWallpaperFileManager, HFWallpaperImageCache, HFWallpaperLegacyFileManager, NSMutableDictionary, NSString, NSUserDefaults;
+@protocol HFNamedWallpaperSource, HMFLocking;
 
 @interface HFWallpaperManager : NSObject <HFHomeManagerObserver, HFHomeObserver>
 {
+    id<HMFLocking> _lock;
     BOOL _wallpaperSourceRegistered;
     BOOL _hasPreheatedCache;
     id<HFNamedWallpaperSource> _namedWallpaperSource;
@@ -21,7 +22,6 @@
     HFWallpaperLegacyFileManager *_legacyFileManager;
     HFWallpaperImageCache *_imageCache;
     NSUserDefaults *_userDefaults;
-    NSOperationQueue *_operationQueue;
     NSMutableDictionary *_wallpapers;
     NSMutableDictionary *_wallpaperSlices;
 }
@@ -34,7 +34,6 @@
 @property (strong, nonatomic) HFWallpaperImageCache *imageCache; // @synthesize imageCache=_imageCache;
 @property (strong, nonatomic) HFWallpaperLegacyFileManager *legacyFileManager; // @synthesize legacyFileManager=_legacyFileManager;
 @property (strong, nonatomic) id<HFNamedWallpaperSource> namedWallpaperSource; // @synthesize namedWallpaperSource=_namedWallpaperSource;
-@property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property (strong, nonatomic) NSMutableDictionary *wallpaperSlices; // @synthesize wallpaperSlices=_wallpaperSlices;
@@ -43,20 +42,22 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_cachedWallpaperForKey:(id)arg1;
+- (id)_cachedWallpaperSliceForIdentifier:(id)arg1;
 - (void)_dispatchWallpaperChangedForKey:(id)arg1;
 - (void)_logUserMetricsAfterSettingWallpaper;
 - (void)_migrateIfNeeded;
 - (long long)_namedCollectionTypeForKey:(id)arg1;
+- (id)_originalImageForWallpaper:(id)arg1;
 - (void)_preloadWallpaperSlicesForKey:(id)arg1;
 - (void)_preloadWallpapersForHome:(id)arg1;
 - (void)_pruneUnusedWallpapers;
-- (id)_queue_originalImageForWallpaper:(id)arg1;
-- (void)_queue_pruneUnusedWallpapersWithExistingHomeKitIdentifiers:(id)arg1;
-- (void)_queue_setWallpaper:(id)arg1 image:(id)arg2 forHomeKitIdentifier:(id)arg3;
-- (id)_queue_wallpaperForKey:(id)arg1 createIfNeeded:(BOOL)arg2;
+- (void)_pruneUnusedWallpapersWithExistingHomeKitIdentifiers:(id)arg1;
 - (id)_resolveHomeKitObjectForKey:(id)arg1;
+- (void)_setWallpaper:(id)arg1 image:(id)arg2 forHomeKitIdentifier:(id)arg3;
 - (void)_setWallpaper:(id)arg1 image:(id)arg2 forKey:(id)arg3;
 - (id)_sliceFromWallpaper:(id)arg1 variant:(long long)arg2 preloading:(BOOL)arg3;
+- (id)_wallpaperForKey:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (id)allNamedWallpapersForCollection:(long long)arg1;
 - (id)defaultNamedWallpaperForCollection:(long long)arg1;
 - (id)generateProcessedImageFromWallpaper:(id)arg1 originalImage:(id)arg2;

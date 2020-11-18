@@ -6,15 +6,15 @@
 
 #import <PhotosUI/PUPhotosAlbumViewController.h>
 
-#import <PhotosUI/PLAlbumStreamingOptionsViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoStreamComposeServiceDelegate-Protocol.h>
 #import <PhotosUI/PUVideoTrimQueueControllerDelegate-Protocol.h>
+#import <PhotosUI/PXAlbumStreamingOptionsViewControllerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, PLCloudSharedAlbum, PUPhotoStreamComposeServiceViewController, PUPhotosPickerViewController, PUVideoTrimQueueController, UIBarButtonItem, UISegmentedControl, UIViewController;
 @protocol PUCloudSharedAlbumViewControllerDelegate;
 
-@interface PUCloudSharedAlbumViewController : PUPhotosAlbumViewController <PLAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PUVideoTrimQueueControllerDelegate, PUPhotoStreamComposeServiceDelegate>
+@interface PUCloudSharedAlbumViewController : PUPhotosAlbumViewController <PXAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PUVideoTrimQueueControllerDelegate, PUPhotoStreamComposeServiceDelegate>
 {
     PUPhotosPickerViewController *_activePhotosPickerViewController;
     PUVideoTrimQueueController *_trimController;
@@ -50,7 +50,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_appAllowsSupressionOfAlerts;
 - (BOOL)_canDisplayOptions;
 - (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)_dismissOptionsPopoverAnimated:(BOOL)arg1;

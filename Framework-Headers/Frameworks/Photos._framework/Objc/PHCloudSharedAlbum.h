@@ -37,6 +37,7 @@
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (BOOL)isMultipleContributorCloudSharedAlbum;
 - (BOOL)isOwnedCloudSharedAlbum;
 - (id)localizedSharedByLabelAllowsEmail:(BOOL)arg1;
 

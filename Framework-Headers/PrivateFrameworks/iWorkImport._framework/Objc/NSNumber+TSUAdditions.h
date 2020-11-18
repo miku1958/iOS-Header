@@ -6,12 +6,34 @@
 
 #import <Foundation/NSNumber.h>
 
-@interface NSNumber (TSUAdditions)
+#import <iWorkImport/TSCHChartGridValue-Protocol.h>
+#import <iWorkImport/TSDMixing-Protocol.h>
+
+@class NSString;
+
+@interface NSNumber (TSUAdditions) <TSCHChartGridValue, TSDMixing>
 
 @property (readonly, nonatomic) double CGFloatValue;
+@property (readonly, nonatomic) int chartGridValueType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)numberWithCGFloat:(double)arg1;
++ (id)tsch_instanceWithArchive:(const struct ChartsNSNumberDoubleArchive *)arg1 unarchiver:(id)arg2;
++ (id)tsch_numberWithStyleInt:(int)arg1;
++ (id)tsch_numberWithStyleProperty:(int)arg1;
++ (id)tsch_optionalNumberWithArchive:(const struct ChartsNSNumberDoubleArchive *)arg1 unarchiver:(id)arg2;
++ (void)tsch_saveOptionalNumber:(id)arg1 toArchive:(struct ChartsNSNumberDoubleArchive *)arg2 archiver:(id)arg3;
 - (BOOL)isFloatingPointType;
+- (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
+- (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
+- (id)tsch_initWithArchive:(const struct ChartsNSNumberDoubleArchive *)arg1 unarchiver:(id)arg2;
+- (void)tsch_saveToArchive:(struct ChartsNSNumberDoubleArchive *)arg1 archiver:(id)arg2;
+- (int)tsch_styleIntValue;
+- (int)tsch_stylePropertyValue;
+- (int)tss_propertyValue;
 - (BOOL)tsu_isAlmostEqual:(id)arg1;
 @end
 

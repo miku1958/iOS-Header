@@ -14,10 +14,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axSetEditButtonHint;
 - (void)_updateToolbarItems;
+- (id)composeButton;
 - (void)loadView;
-- (void)updateCurrentEditButton;
+- (id)optionsButtonItem;
+- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

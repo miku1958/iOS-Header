@@ -20,20 +20,19 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
-- (id)_assetQueryForPredicate:(id)arg1;
-- (id)_assetQueryForType:(unsigned long long)arg1 deviceAttributes:(id)arg2 atlasDetails:(id)arg3;
+- (id)_assetQueryForDeviceAttributes:(unsigned long long)arg1 deviceAttributes:(id)arg2 atlasDetails:(id)arg3;
 - (id)_assetQueryForType:(unsigned long long)arg1 forDevice:(id)arg2 atlasDetails:(id)arg3;
 - (void)_beginDownloadsForAssets:(id)arg1;
 - (void)_beginPullingAssetsForDeviceAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_checkAssetDownloadStateWithAssets:(id)arg1;
-- (id)_defaultDownloadOptions;
+- (id)_gatherQueries:(id)arg1 withAtlas:(id)arg2;
 - (void)_runAssetQuery:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_runMultipleAssetQueries:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginPullingAssetsForAdvertisingName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginPullingAssetsForDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginPullingAssetsForDeviceMaterial:(unsigned long long)arg1 size:(unsigned long long)arg2 branding:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (unsigned long long)hardwareGenerationForProductType:(id)arg1;
 - (id)init;
-- (id)purgeAllAssetsAndReturnErrorLocalOnly:(BOOL)arg1;
 - (void)purgeAllAssetsLocalOnly:(BOOL)arg1;
 
 @end

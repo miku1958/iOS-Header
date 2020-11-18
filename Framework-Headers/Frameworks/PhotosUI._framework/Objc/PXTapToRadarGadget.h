@@ -19,9 +19,9 @@
     UIButton *_tapToRadarButton;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -42,9 +42,7 @@
 - (void).cxx_destruct;
 - (void)_tapToRadarTapped:(id)arg1;
 - (struct NSObject *)contentView;
-- (BOOL)hasLoadedContentData;
 - (void)layoutSubviews;
-- (void)loadContentData;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

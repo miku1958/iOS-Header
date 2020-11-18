@@ -10,9 +10,7 @@
 {
 }
 
-+ (id)_decodeHelperConnection;
 + (id)_pixelDataForImage:(id)arg1;
-+ (void)decodeImageData:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)flatImage:(id)arg1 withColor:(id)arg2;
 + (BOOL)image:(id)arg1 isEqualToImage:(id)arg2;
 + (struct CGSize)imageSizeScalingSize:(struct CGSize)arg1 proportionallyToFitSize:(struct CGSize)arg2;

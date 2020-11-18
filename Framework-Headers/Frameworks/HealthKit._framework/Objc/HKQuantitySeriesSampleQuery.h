@@ -8,24 +8,41 @@
 
 #import <HealthKit/HKQuantitySeriesSampleQueryClientInterface-Protocol.h>
 
-@class HKQuantitySample, NSString;
+@class HKQuantitySample, NSData, NSDate, NSDictionary, NSMutableDictionary, NSString;
 
 @interface HKQuantitySeriesSampleQuery : HKQuery <HKQuantitySeriesSampleQueryClientInterface>
 {
-    CDUnknownBlockType _quantityHandler;
+    CDUnknownBlockType _seriesHandler;
     HKQuantitySample *_sample;
     long long _anchor;
+    double _startTime;
+    CDUnknownBlockType _enumerationHandler;
+    NSMutableDictionary *_receivedSamplesByUUID;
+    BOOL _hasMaximumReceivedStartTime;
+    double _maximumReceivedStartTime;
+    NSData *_latestReceivedUUIDData;
+    NSDate *_latestSampleStartDate;
+    BOOL _includeSample;
+    BOOL _orderByQuantitySampleStartDate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL includeSample; // @synthesize includeSample=_includeSample;
+@property (nonatomic) BOOL orderByQuantitySampleStartDate; // @synthesize orderByQuantitySampleStartDate=_orderByQuantitySampleStartDate;
+@property (readonly, nonatomic) CDUnknownBlockType quantityHandlerWithSample;
+@property (readonly, nonatomic) CDUnknownBlockType quantityHandlerWithoutSample;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSDictionary *unitTest_cachedQuantitySamplesByUUID;
 
 + (id)clientInterfaceProtocol;
 + (Class)configurationClass;
 - (void).cxx_destruct;
+- (id)_quantitySampleForEnumerationResult:(id)arg1 UUID:(id)arg2;
+- (void)client_deliverEnumerationResults:(id)arg1 isFinal:(BOOL)arg2 query:(id)arg3;
 - (void)client_deliverQuantitySeries:(id)arg1 seriesAnchor:(long long)arg2 isFinal:(BOOL)arg3 query:(id)arg4;
+- (id)initWithQuantityType:(id)arg1 predicate:(id)arg2 quantityHandler:(CDUnknownBlockType)arg3;
 - (id)initWithSample:(id)arg1 quantityHandler:(CDUnknownBlockType)arg2;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;

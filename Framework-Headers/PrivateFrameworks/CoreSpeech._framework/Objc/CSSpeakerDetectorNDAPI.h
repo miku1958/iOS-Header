@@ -20,17 +20,17 @@
 @property (weak, nonatomic) id<CSSpeakerDetectorNDAPIDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (float)_computeSATScore:(id)arg1;
 - (BOOL)_initializeNDAPI:(id)arg1 resourcePath:(id)arg2;
 - (BOOL)_initializeSAT:(id)arg1;
 - (BOOL)addLastTriggerToProfile;
 - (BOOL)addLastTriggerToProfileWithSuperVector:(id)arg1;
 - (id)analyzeWavForEnrollment:(id)arg1 numSamples:(unsigned long long)arg2;
+- (float)computeSATScore:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)getMaxSpeakerVectorsToPersist;
 - (unsigned long long)getSATVectorCount;
+- (float)getSatThreshold;
 - (id)initWithAsset:(id)arg1 speakerModel:(id)arg2;
-- (void)processSuperVector:(id)arg1 withResult:(id)arg2;
 - (void)reset;
 
 @end

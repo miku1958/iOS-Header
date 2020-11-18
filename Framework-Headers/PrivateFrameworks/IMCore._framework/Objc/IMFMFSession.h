@@ -15,6 +15,7 @@
     NSString *_establishingAccountID;
     FMFSession *_session;
     FMFDevice *_activeDevice;
+    unsigned long long _fmfProvisionedState;
 }
 
 @property (strong, nonatomic) FMFDevice *activeDevice; // @synthesize activeDevice=_activeDevice;
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL disableLocationSharing;
 @property (strong, nonatomic) NSString *establishingAccountID; // @synthesize establishingAccountID=_establishingAccountID;
+@property (nonatomic) unsigned long long fmfProvisionedState; // @synthesize fmfProvisionedState=_fmfProvisionedState;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL restrictLocationSharing;
 @property (strong, nonatomic) FMFSession *session; // @synthesize session=_session;
@@ -30,6 +32,8 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (Class)__FMFSessionClass;
+- (id)_accountStore;
+- (void)_accountStoreDidChangeNotification:(id)arg1;
 - (id)_bestAccountForAddresses:(id)arg1;
 - (id)_callerIDForChat:(id)arg1;
 - (void)_postNotification:(id)arg1 object:(id)arg2 userInfo:(id)arg3;
@@ -60,6 +64,7 @@
 - (void)friendshipWasRemoved:(id)arg1;
 - (BOOL)handleIsFollowingMyLocation:(id)arg1;
 - (BOOL)handleIsSharingLocationWithMe:(id)arg1;
+- (BOOL)imIsProvisionedForLocationSharing;
 - (id)init;
 - (id)locationForFMFHandle:(id)arg1;
 - (id)locationForHandle:(id)arg1;

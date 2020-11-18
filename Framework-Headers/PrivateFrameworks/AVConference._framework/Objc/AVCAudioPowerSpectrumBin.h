@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) float powerLevel; // @synthesize powerLevel=_powerLevel;
 
 + (BOOL)supportsSecureCoding;
-- (void)assign:(id)arg1;
+- (void)assign:(const struct _VCAudioPowerSpectrumEntry *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

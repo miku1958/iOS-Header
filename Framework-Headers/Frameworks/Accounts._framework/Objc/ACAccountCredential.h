@@ -28,7 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDirty) BOOL dirty; // @synthesize dirty=_dirty;
-@property (readonly, nonatomic) NSSet *dirtyProperties; // @synthesize dirtyProperties=_dirtyProperties;
+@property (readonly, nonatomic) NSSet *dirtyProperties;
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (strong, nonatomic) NSDate *expiryDate;
 @property (copy, nonatomic) NSString *findMyiPhoneToken;

@@ -6,7 +6,7 @@
 
 #import <VoiceServices/NSObject-Protocol.h>
 
-@class NSArray, NSString, VSPresynthesizedAudioRequest, VSSpeechRequest, VSVoiceAsset;
+@class NSArray, NSString, SATTSSpeechSynthesisStreaming, VSPresynthesizedAudioRequest, VSSpeechRequest, VSVoiceAsset;
 
 @protocol VSSpeechXPCServiceProtocol <NSObject>
 - (oneway void)beginAudioPowerUpdateWithReply:(void (^)(AFXPCWrapper *))arg1;
@@ -14,7 +14,8 @@
 - (oneway void)cleanUnusedAssets:(void (^)(NSError *))arg1;
 - (oneway void)continueSpeechRequest;
 - (oneway void)endAudioPowerUpdate;
-- (oneway void)getAutoDownloadedVoiceAssets:(void (^)(NSArray *))arg1;
+- (oneway void)forwardStreamObject:(SATTSSpeechSynthesisStreaming *)arg1;
+- (oneway void)getAutoDownloadedVoiceAssetsWithClientID:(NSString *)arg1 reply:(void (^)(NSArray *))arg2;
 - (oneway void)getFootprintsForVoiceName:(NSString *)arg1 languageCode:(NSString *)arg2 reply:(void (^)(NSArray *))arg3;
 - (oneway void)getLocalVoiceResourcesReply:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)getLocalVoicesReply:(void (^)(NSArray *, NSError *))arg1;
@@ -28,7 +29,7 @@
 - (oneway void)pauseSpeechRequestAtMark:(long long)arg1;
 - (oneway void)prewarmIfNeededWithRequest:(VSSpeechRequest *)arg1;
 - (oneway void)queryPhaticCapabilityWithRequest:(VSSpeechRequest *)arg1 reply:(void (^)(BOOL))arg2;
-- (oneway void)setAutoDownloadedVoiceAssets:(NSArray *)arg1;
+- (oneway void)setAutoDownloadedVoiceAssets:(NSArray *)arg1 withClientID:(NSString *)arg2;
 - (oneway void)setLogToFile:(BOOL)arg1;
 - (oneway void)startPresynthesizedAudioRequest:(VSPresynthesizedAudioRequest *)arg1;
 - (oneway void)startSpeechRequest:(VSSpeechRequest *)arg1;

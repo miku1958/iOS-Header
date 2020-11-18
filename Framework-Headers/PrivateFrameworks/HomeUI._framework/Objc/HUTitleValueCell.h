@@ -21,13 +21,11 @@
     UIFont *_titleFont;
     NSString *_valueText;
     UIFont *_valueFont;
-    long long _compressionResistancePolicy;
     NSArray *_stackViewConstraints;
     UIStackView *_labelsStackView;
 }
 
 @property (nonatomic) BOOL allowCopyValueToPasteboard; // @synthesize allowCopyValueToPasteboard=_allowCopyValueToPasteboard;
-@property (nonatomic) long long compressionResistancePolicy; // @synthesize compressionResistancePolicy=_compressionResistancePolicy;
 @property (nonatomic) BOOL hideTitle; // @synthesize hideTitle=_hideTitle;
 @property (nonatomic) BOOL hideValue; // @synthesize hideValue=_hideValue;
 @property (strong, nonatomic) UIStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
@@ -46,13 +44,13 @@
 - (void)_addTitleLabel;
 - (void)_addValueLabel;
 - (void)_ensureCorrectHeaderViewOrientation;
-- (void)_updateCompressionResistance;
 - (void)_updateTitle;
 - (void)_updateValue;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutMarginsDidChange;
 - (void)prepareForReuse;
 - (void)setDisabled:(BOOL)arg1;
 - (void)tintColorDidChange;

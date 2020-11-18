@@ -10,30 +10,41 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBRunVoiceCommandIntent-Protocol.h>
 
-@class NSString, _INPBDataString, _INPBIntentMetadata, _INPBVoiceCommandDeviceInformation;
+@class NSString, _INPBDataString, _INPBIntentExecutionResult, _INPBIntentMetadata, _INPBVoiceCommandDeviceInformation;
 
 @interface _INPBRunVoiceCommandIntent : PBCodable <_INPBRunVoiceCommandIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
+    _INPBIntentExecutionResult *_executionResult;
     _INPBIntentMetadata *_intentMetadata;
     _INPBVoiceCommandDeviceInformation *_originDevice;
+    NSString *_previousIntentIdentifier;
     _INPBDataString *_voiceCommand;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _INPBIntentExecutionResult *executionResult; // @synthesize executionResult=_executionResult;
+@property (readonly, nonatomic) BOOL hasExecutionResult;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasOriginDevice;
+@property (readonly, nonatomic) BOOL hasPreviousIntentIdentifier;
 @property (readonly, nonatomic) BOOL hasVoiceCommand;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBVoiceCommandDeviceInformation *originDevice; // @synthesize originDevice=_originDevice;
+@property (copy, nonatomic) NSString *previousIntentIdentifier; // @synthesize previousIntentIdentifier=_previousIntentIdentifier;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBDataString *voiceCommand; // @synthesize voiceCommand=_voiceCommand;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

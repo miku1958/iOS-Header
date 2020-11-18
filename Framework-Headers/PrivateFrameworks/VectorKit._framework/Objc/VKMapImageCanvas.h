@@ -9,43 +9,33 @@
 #import <VectorKit/MDSnapshotMap-Protocol.h>
 #import <VectorKit/VKMapModelDelegate-Protocol.h>
 
-@class NSString, VKMapModel;
+@class NSString, VKCamera, VKMapModel;
 
 __attribute__((visibility("hidden")))
 @interface VKMapImageCanvas : VKImageCanvas <VKMapModelDelegate, MDSnapshotMap>
 {
     VKMapModel *_mapModel;
+    VKCamera *_camera;
+    struct MapEngine *_mapEngine;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL showsBuildings;
-@property (nonatomic) BOOL showsVenues;
 @property (readonly) Class superclass;
 
 - (void)cancelTileRequests;
 - (void)clearScene;
 - (void)dealloc;
 - (id)initWithMapEngine:(struct MapEngine *)arg1;
-- (id)initWithMapEngine:(struct MapEngine *)arg1 localizeLabels:(BOOL)arg2 mapType:(long long)arg3;
-- (BOOL)isShowingNoDataPlaceholders;
-- (struct LabelSettings *)labelSettings;
 - (void)mapModel:(id)arg1 labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg2;
 - (void)mapModel:(id)arg1 selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg2;
-- (void)mapModel:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
-- (void)mapModelDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(BOOL)arg2;
-- (void)mapModelDidBecomePartiallyDrawn:(id)arg1;
-- (void)mapModelDidFailLoadingTiles:(id)arg1 withError:(id)arg2;
-- (void)mapModelDidFinishLoadingTiles:(id)arg1;
-- (void)mapModelDidStartLoadingTiles:(id)arg1;
 - (void)mapModelDidUpdateMinMaxZoomLevel:(id)arg1;
 - (void)mapModelLabelsDidLayout:(id)arg1;
-- (void)mapModelWillBecomeFullyDrawn:(id)arg1;
-- (void)setEmphasis:(unsigned char)arg1;
+- (void)resetCameraController;
 - (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
-- (void)setMapType:(long long)arg1;
-- (void)update;
+- (void)setMapType:(int)arg1;
+- (void)updateWithTimestamp:(double)arg1;
 
 @end
 

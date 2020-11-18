@@ -8,8 +8,10 @@
 
 @interface NSValue (GrayColorResult)
 
-@property (readonly) CDStruct_92960315 gu_grayColorResultValue;
+@property (readonly) CDStruct_145c54d4 RGBResultValue;
+@property (readonly) CDStruct_92960315 pi_grayColorResultValue;
 
-+ (id)gu_valueWithGrayColorResult:(CDStruct_92960315)arg1;
++ (id)pi_valueWithGrayColorResult:(CDStruct_92960315)arg1;
++ (id)valueWithRGBResult:(CDStruct_145c54d4)arg1;
 @end
 

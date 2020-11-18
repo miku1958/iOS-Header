@@ -20,6 +20,7 @@
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
 - (void)dealloc;
 - (id)glTextureCache;
+- (id)metalTextureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 - (double)nextFrameTime;
 - (BOOL)prefersGL3;
 - (void)renderWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;

@@ -17,6 +17,7 @@
     CDStruct_95bda58d _excludedAttributes;
     CDStruct_95bda58d _includedAttributes;
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBString *_albumName;
     _INPBContactList *_contentPerson;
     _INPBDateTimeRange *_dateCreated;
@@ -27,6 +28,7 @@
     _INPBStringList *_searchTerm;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBString *albumName; // @synthesize albumName=_albumName;
 @property (strong, nonatomic) _INPBContactList *contentPerson; // @synthesize contentPerson=_contentPerson;
 @property (strong, nonatomic) _INPBDateTimeRange *dateCreated; // @synthesize dateCreated=_dateCreated;
@@ -52,6 +54,7 @@
 @property (strong, nonatomic) _INPBStringList *searchTerm; // @synthesize searchTerm=_searchTerm;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsExcludedAttributes:(id)arg1;
 - (int)StringAsIncludedAttributes:(id)arg1;
@@ -60,11 +63,14 @@
 - (void)clearExcludedAttributes;
 - (void)clearIncludedAttributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (int)excludedAttributeAtIndex:(unsigned long long)arg1;
 - (id)excludedAttributesAsString:(int)arg1;
 - (int)includedAttributeAtIndex:(unsigned long long)arg1;
 - (id)includedAttributesAsString:(int)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setExcludedAttributes:(int *)arg1 count:(unsigned long long)arg2;

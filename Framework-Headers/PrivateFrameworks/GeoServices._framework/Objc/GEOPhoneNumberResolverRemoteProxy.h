@@ -9,12 +9,10 @@
 #import <GeoServices/GEOPhoneNumberResolving-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface GEOPhoneNumberResolverRemoteProxy : NSObject <GEOPhoneNumberResolving>
 {
-    NSObject<OS_dispatch_queue> *_xcpWorkQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,8 +20,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
-- (id)init;
 - (void)resolvePhoneNumbers:(id)arg1 handler:(CDUnknownBlockType)arg2 queue:(id)arg3;
 
 @end

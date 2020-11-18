@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSString;
+@class NSMapTable, NSString, PRSQueryRankingConfiguration;
 
 @interface PRSRankingItemRanker : NSObject
 {
+    PRSQueryRankingConfiguration *_rankingConfiguration;
     BOOL _isInternalDevice;
     BOOL _policyDisabled;
     BOOL _isCancelled;
@@ -22,9 +23,11 @@
     double _experimentalWeight1;
     double _experimentalWeight2;
     NSString *_meContactIdentifier;
+    double _currentTime;
 }
 
 @property (strong, nonatomic) NSMapTable *bundleFeatures; // @synthesize bundleFeatures=_bundleFeatures;
+@property (nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property (nonatomic) double experimentalWeight1; // @synthesize experimentalWeight1=_experimentalWeight1;
 @property (nonatomic) double experimentalWeight2; // @synthesize experimentalWeight2=_experimentalWeight2;
 @property BOOL isCJK; // @synthesize isCJK=_isCJK;
@@ -38,41 +41,55 @@
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 
 + (id)appsBundle;
++ (id)calculatorBundle;
 + (id)calendarBundle;
++ (id)calendarContentType;
 + (void)clearState;
++ (id)contactContentType;
 + (id)contactsBundle;
++ (id)conversionBundle;
++ (id)dictionaryBundle;
++ (id)documentsAppBundle;
++ (id)filesBundle;
 + (id)importantAttributesForBundle:(id)arg1;
 + (void)initialize;
 + (BOOL)isCJK;
 + (id)mailBundle;
++ (id)mailContentType;
 + (id)messagesBundle;
++ (id)messagesContentType;
 + (id)musicBundle;
 + (id)notesBundle;
++ (id)relatedSearchesBundle;
++ (id)remindersBundle;
++ (id)remindersContentType;
 + (id)requiredAttributes;
++ (id)safariBundle;
++ (id)searchBundle;
 + (void)setDockApps:(id)arg1;
 + (id)settingsBundle;
-+ (CDUnknownBlockType)shouldUpdateFuncForSnippetFeature:(unsigned long long)arg1;
++ (CDUnknownBlockType)shouldUpdateFuncForSnippetFeature:(long long)arg1;
 + (id)sortedUniqueBundleFeatureValuesFromBundleFeatures:(id)arg1;
 - (void).cxx_destruct;
 - (void)activate;
 - (void)cancel;
 - (CDUnknownBlockType)comparatorByJoiningComparator:(CDUnknownBlockType)arg1 withPredicate:(id)arg2;
+- (void)computePolicyFeaturesForBundleItems:(id)arg1 isCJK:(BOOL)arg2;
 - (void)computeRelativeFeatureForContext:(id)arg1 items:(id)arg2;
 - (void)computeResultSetDependantFeatures:(id)arg1 allItems:(id)arg2;
 - (float *)computeScoresForVectors:(id)arg1 withBundleFeatures:(id)arg2;
 - (void)deactivate;
 - (void)dealloc;
-- (void)hackMusicResultsWithItem:(id)arg1 featureVector:(id)arg2;
 - (id)init;
-- (id)initWithSearchString:(id)arg1 language:(id)arg2;
-- (id)initWithSearchString:(id)arg1 language:(id)arg2 isCJK:(BOOL)arg3 experimentalWeight1:(double)arg4 experimentalWeight2:(double)arg5;
+- (id)initWithSearchString:(id)arg1 language:(id)arg2 currentTime:(double)arg3;
+- (id)initWithSearchString:(id)arg1 language:(id)arg2 isCJK:(BOOL)arg3 experimentalWeight1:(double)arg4 experimentalWeight2:(double)arg5 currentTime:(double)arg6;
 - (void)pickMostRecentDateForItem:(id)arg1 pastItems:(id *)arg2 futureItems:(id *)arg3;
 - (void)populateLocalResultSetDateFeaturesForItems:(id)arg1;
 - (void)populateMailContactFeaturesWithMailItems:(id)arg1 contactItems:(id)arg2;
 - (void)populateRankResultSetBundleFeaturesWithBundleItems:(id)arg1 withUniqueBundleMaxScores:(id)arg2;
 - (void)prepareItems:(id)arg1 inBundle:(id)arg2;
 - (id)rankingConfiguration;
-- (id)rankingConfigurationWithMeContact:(id)arg1 emailAddresses:(id)arg2 phoneFavorites:(id)arg3 vipList:(id)arg4 clientBundle:(id)arg5;
+- (id)rankingConfigurationWithMeContact:(id)arg1 emailAddresses:(id)arg2 phoneFavorites:(id)arg3 vipList:(id)arg4 clientBundle:(id)arg5 isScopedSearch:(BOOL)arg6 spotlightQuery:(id)arg7;
 - (void)relevantResultSetPRSL2FeaturesFromBundleFeature:(unsigned long long)arg1 absRankFeatureOut:(unsigned short *)arg2 relRankFeatureOut:(unsigned short *)arg3;
 - (void)rerankItemsWithPolicyForBundleItems:(id)arg1 isCJK:(BOOL)arg2;
 - (void)resetbundleFeaturesScratchBuf:(float *)arg1;
@@ -80,7 +97,8 @@
 - (void)setRenderEngagementFeaturesForItemAsShorts:(id)arg1 counts:(short [6])arg2 isRender:(BOOL)arg3 bundleDict:(id)arg4;
 - (void)updateResultSetContext:(struct _resultset_computation_ctx *)arg1 andUniqueScores:(id)arg2 withResultSetItems:(id)arg3;
 - (void)updateResultSetFeaturesOnItems:(id)arg1 withContext:(struct _resultset_computation_ctx *)arg2 uniqueScores:(id)arg3;
-- (void)updateScoresForPreparedItems:(id)arg1 isCJK:(BOOL)arg2;
+- (void)updateScoresForPreparedItems:(id)arg1;
+- (void)updateScoresForPreparedItems:(id)arg1 isCJK:(BOOL)arg2 clientBundle:(id)arg3;
 - (BOOL)wasItemCreatedWithinAWeek:(id)arg1;
 
 @end

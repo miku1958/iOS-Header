@@ -9,13 +9,11 @@
 #import <PhotosUICore/PXUIScrollViewDelegate-Protocol.h>
 #import <PhotosUICore/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, UIScrollView, UIView, _PXUIScrollView;
+@class NSString, UIScrollView, _PXUIScrollView;
 
 @interface PXUIScrollViewController : PXScrollViewController <PXUIScrollViewDelegate, UIScrollViewDelegate>
 {
     _PXUIScrollView *_scrollView;
-    BOOL _isUpdatingContentBounds;
-    UIView *_contentView;
     BOOL _isScrollingToTop;
 }
 
@@ -32,7 +30,13 @@
 - (void)addSubviewToScrollView:(struct NSObject *)arg1;
 - (void)applyScrollInfo:(id)arg1;
 - (id)contentCoordinateSpace;
+- (BOOL)deferContentOffsetUpdates;
+- (BOOL)hasWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)isDecelerating;
+- (BOOL)isDragging;
+- (BOOL)isScrolledAtEdge:(unsigned int)arg1 tolerance:(double)arg2;
+- (BOOL)isTracking;
 - (void)removeGestureRecognizer:(id)arg1;
 - (void)scrollRectToVisible:(struct CGRect)arg1 avoidingContentInsetEdges:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)scrollView:(id)arg1 willBeginScrollingAnimationTowardsContentEdges:(unsigned long long)arg2;
@@ -53,6 +57,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)scrollViewWillLayoutSubviews:(id)arg1;
+- (void)setDeferContentOffsetUpdates:(BOOL)arg1;
 - (void)setScrollViewContentBounds:(struct CGRect)arg1;
 - (void)setScrollViewNeedsLayout;
 - (void)setVisibleOrigin:(struct CGPoint)arg1;

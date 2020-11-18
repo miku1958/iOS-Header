@@ -15,6 +15,7 @@
 + (Class)rendererContextClass;
 - (id)JPEGDataWithCompressionQuality:(double)arg1 actions:(CDUnknownBlockType)arg2;
 - (id)PNGDataWithActions:(CDUnknownBlockType)arg1;
+- (void)_prepareContextForReuse:(struct CGContext *)arg1;
 - (BOOL)allowsImageOutput;
 - (id)imageWithActions:(CDUnknownBlockType)arg1;
 - (id)init;

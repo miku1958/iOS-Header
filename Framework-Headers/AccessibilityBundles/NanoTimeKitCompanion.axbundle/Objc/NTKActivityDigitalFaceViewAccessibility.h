@@ -18,11 +18,7 @@
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
 - (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(BOOL)arg3 animated:(BOOL)arg4;
 - (void)_axFormatAXLabelOnLabel:(id)arg1 prefix:(id)arg2 suffixFormat:(id)arg3;
-- (void)_axSetTimeViewAXLabel;
 - (void)_axUpdateDigitalLabels;
-- (void)_axUpdateRings;
-- (void)_axUpdateTimeView;
-- (void)_loadSnapshotContentViews;
 - (void)setShowSeconds:(BOOL)arg1;
 
 @end

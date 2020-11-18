@@ -15,12 +15,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long count;
 
 + (id)rectListWithDifference:(struct CGRect)arg1 withRect:(struct CGRect)arg2;
++ (id)rectListWithRect:(struct CGRect)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addRect:(struct CGRect)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (id)initWithRect:(struct CGRect)arg1;
 - (id)initWithRectList:(id)arg1;
-- (void)insertRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (struct CGRect)rectAtIndex:(unsigned long long)arg1;
 
 @end

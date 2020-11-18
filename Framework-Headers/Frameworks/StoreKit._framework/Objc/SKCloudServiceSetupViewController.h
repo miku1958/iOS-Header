@@ -50,12 +50,14 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (BOOL)isModalInPresentation;
 - (void)loadWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)overrideCreditCardPresentationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)overrideRedeemCameraPerformAction:(long long)arg1 withObject:(id)arg2;
 - (void)reloadWithContext:(id)arg1;
 - (void)safariViewController:(id)arg1 didCompleteInitialLoad:(BOOL)arg2;
 - (void)safariViewControllerDidFinish:(id)arg1;
+- (void)setModalInPresentation:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

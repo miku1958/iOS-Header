@@ -6,7 +6,25 @@
 
 #import <Foundation/NSLayoutConstraint.h>
 
+@class _NSLayoutConstraintConstant;
+
 @interface NSLayoutConstraint (StatusBarAdditions)
+
+@property (getter=_encodedConstant, setter=_setEncodedConstant:) _NSLayoutConstraintConstant *encodedConstant;
+
++ (BOOL)_UIWantsMarginAttributeSupport;
++ (double)_constraintConstantLimit;
++ (id)constraintWithAnchor:(id)arg1 relatedBy:(long long)arg2 toAnchor:(id)arg3 withSystemSpacingMultipliedBy:(double)arg4;
+- (id)_baselineLoweringInfoForFirstItem:(BOOL)arg1;
+- (id)_debuggableEquationBaseDescription;
+- (id)_debuggableEquationDescriptionWithoutLegend;
+- (id)_debuggableEquationLegendDescription;
+- (id)_ola_dimensionItem;
+- (id)_ola_dimensionRefItem;
+- (void)_setBaselineLoweringInfo:(id)arg1 forFirstItem:(BOOL)arg2;
+- (id)_uiFirstRefView;
+- (id)_uiSecondRefView;
 - (id)_ui_constraintWithPriority:(float)arg1;
+- (id)spacingMultiplier;
 @end
 

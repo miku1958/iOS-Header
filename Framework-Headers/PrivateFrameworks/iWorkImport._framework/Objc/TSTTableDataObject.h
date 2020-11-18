@@ -8,19 +8,43 @@
 
 #import <iWorkImport/TSPCopying-Protocol.h>
 
+@class NSString, TSDCommentStorage, TSKFormat, TSSStyle, TSTCellSpec, TSTConditionalStyleSet, TSTImportWarningSet, TSTPopUpMenuModel, TSUCustomFormat, TSWPStorage;
+
 __attribute__((visibility("hidden")))
 @interface TSTTableDataObject : NSObject <TSPCopying>
 {
     unsigned int _refCount;
+    unsigned long long _byteSizeForArchiving;
 }
 
+@property (readonly, nonatomic) unsigned long long byteSizeForArchiving; // @synthesize byteSizeForArchiving=_byteSizeForArchiving;
+@property (readonly, nonatomic) TSTCellSpec *cellSpec; // @dynamic cellSpec;
+@property (readonly, nonatomic) TSDCommentStorage *commentStorage; // @dynamic commentStorage;
+@property (readonly, nonatomic) TSTConditionalStyleSet *conditionalStyleSet; // @dynamic conditionalStyleSet;
+@property (readonly, nonatomic) TSUCustomFormat *customFormat; // @dynamic customFormat;
+@property (readonly, nonatomic) TSKFormat *format; // @dynamic format;
+@property (readonly, nonatomic) TSWPStorage *formulaError; // @dynamic formulaError;
+@property (readonly, nonatomic) TSTImportWarningSet *importWarningSet; // @dynamic importWarningSet;
+@property (readonly, nonatomic) TSTPopUpMenuModel *popUpMenuModel; // @dynamic popUpMenuModel;
 @property (readonly, nonatomic) unsigned int refCount; // @synthesize refCount=_refCount;
+@property (readonly, nonatomic) TSWPStorage *richTextStorage; // @dynamic richTextStorage;
+@property (readonly, nonatomic) NSString *string; // @dynamic string;
+@property (readonly, nonatomic) TSSStyle *style; // @dynamic style;
 
++ (void)loadObjectFromArchive:(const struct TableDataList_ListEntry *)arg1 listType:(int)arg2 unarchiver:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)objectWithRefCount:(unsigned int)arg1;
 - (void)addReferencesFromObject:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (BOOL)dropReference;
+- (BOOL)dropReferences:(unsigned int)arg1;
+- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 key:(unsigned int)arg2 archiver:(id)arg3;
+- (unsigned long long)estimateByteSize;
 - (id)initWithRefCount:(unsigned int)arg1;
+- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)p_sharedInitWithRefCount:(unsigned int)arg1;
+- (unsigned int)sharedLoadFromArchive:(const struct TableDataList_ListEntry *)arg1;
 - (void)takeReference;
+- (void)takeReferences:(unsigned int)arg1;
 
 @end
 

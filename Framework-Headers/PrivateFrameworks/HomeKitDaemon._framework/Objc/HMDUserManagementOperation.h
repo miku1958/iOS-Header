@@ -56,7 +56,7 @@
 @property (nonatomic) BOOL lastOperationFailed; // @synthesize lastOperationFailed=_lastOperationFailed;
 @property (strong, nonatomic) HMDUserManagementOperationManager *operationManager; // @synthesize operationManager=_operationManager;
 @property (readonly, nonatomic) unsigned long long operationType; // @synthesize operationType=_operationType;
-@property (strong, nonatomic) HAPPairingIdentity *ownerPairingIdentity; // @synthesize ownerPairingIdentity=_ownerPairingIdentity;
+@property (copy, nonatomic) HAPPairingIdentity *ownerPairingIdentity; // @synthesize ownerPairingIdentity=_ownerPairingIdentity;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic, getter=isReady) BOOL ready;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
@@ -64,6 +64,7 @@
 @property (readonly, nonatomic) HMDUser *user; // @synthesize user=_user;
 
 + (id)addUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
++ (void)initialize;
 + (id)operationWithDictionary:(id)arg1 home:(id)arg2;
 + (id)removeUserManagementOperationForUser:(id)arg1 accessory:(id)arg2 model:(id)arg3;
 + (id)shortDescription;

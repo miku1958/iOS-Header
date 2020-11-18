@@ -8,16 +8,17 @@
 
 #import <HomeUI/HUControlPanelControllerDelegate-Protocol.h>
 
-@class HFControlPanelItemProvider, HFItem, HFServiceBuilder, HFStaticItem, HFStaticItemProvider, HFValveServiceItem, HUControlPanelController, NSString;
+@class HFControlPanelItemProvider, HFItem, HFServiceBuilder, HFStaticItem, HFStaticItemProvider, HFValveServiceItem, HUControlPanelController, HUNameItemModule, NSString;
 
 @interface HUValveEditorItemManager : HFItemManager <HUControlPanelControllerDelegate>
 {
-    HFItem *_nameItem;
+    HUNameItemModule *_nameModule;
     HFStaticItem *_identifyItem;
     HUControlPanelController *_controlPanelController;
     HFServiceBuilder *_serviceBuilder;
     unsigned long long _editorMode;
     HFValveServiceItem *_sourceValveItem;
+    HFItem *_nameItem;
     HFControlPanelItemProvider *_controlPanelItemProvider;
     HFStaticItemProvider *_staticItemProvider;
 }
@@ -30,6 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HFStaticItem *identifyItem; // @synthesize identifyItem=_identifyItem;
 @property (strong, nonatomic) HFItem *nameItem; // @synthesize nameItem=_nameItem;
+@property (strong, nonatomic) HUNameItemModule *nameModule; // @synthesize nameModule=_nameModule;
 @property (strong, nonatomic) HFServiceBuilder *serviceBuilder; // @synthesize serviceBuilder=_serviceBuilder;
 @property (strong, nonatomic) HFValveServiceItem *sourceValveItem; // @synthesize sourceValveItem=_sourceValveItem;
 @property (strong, nonatomic) HFStaticItemProvider *staticItemProvider; // @synthesize staticItemProvider=_staticItemProvider;

@@ -8,6 +8,7 @@
 
 @class AVDisplayCriteria, AVObservationController, AVPlayer, AVPlayerLayer, AVSecondScreen, AVSecondScreenDebugAssistant, AVSecondScreenViewController, UIView, UIViewController;
 
+__attribute__((visibility("hidden")))
 @interface AVSecondScreenConnection : NSObject
 {
     BOOL _readyToConnect;
@@ -34,7 +35,7 @@
 @property (nonatomic) struct CGSize maximumVideoResolution; // @synthesize maximumVideoResolution=_maximumVideoResolution;
 @property (readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property (readonly, nonatomic) AVPlayer *player; // @synthesize player=_player;
-@property (weak, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
+@property (readonly, weak, nonatomic) AVPlayerLayer *playerLayer; // @synthesize playerLayer=_playerLayer;
 @property (nonatomic, getter=isPlaying) BOOL playing; // @synthesize playing=_playing;
 @property (strong, nonatomic) AVDisplayCriteria *preferredDisplayCriteria; // @synthesize preferredDisplayCriteria=_preferredDisplayCriteria;
 @property (nonatomic, getter=isReady) BOOL ready; // @synthesize ready=_ready;
@@ -56,6 +57,7 @@
 - (void)connectWithScreen:(id)arg1 active:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithPlayer:(id)arg1 playerLayer:(id)arg2;
+- (void)setPlayerLayer:(id)arg1;
 - (void)setReadyToConnect:(BOOL)arg1;
 - (void)startUpdates;
 

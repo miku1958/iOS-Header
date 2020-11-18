@@ -14,14 +14,17 @@
 {
     VMUTaskMemoryScanner *_scanner;
     struct _CSTypeRef _symbolicator;
+    unsigned long long _msl_payload_version;
 }
 
+@property (readonly) BOOL coldestFrameIsNotThreadId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSSet *excludedFrames;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL inspectingLiveProcess;
 @property (readonly) BOOL is64bit;
+@property (readonly) unsigned long long nodesInUniquingTable;
 @property (readonly) VMUVMRegionTracker *regionTracker;
 @property (weak, nonatomic) VMUTaskMemoryScanner *scanner; // @synthesize scanner=_scanner;
 @property (readonly) Class superclass;
@@ -32,6 +35,7 @@
 - (id)binaryImagePathForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange)binaryImageRangeForPCaddress:(unsigned long long)arg1;
 - (void)dealloc;
+- (int)enumerateMSLRecordsAndPayloads:(CDUnknownBlockType)arg1;
 - (int)enumerateRecords:(CDUnknownBlockType)arg1;
 - (id)functionNameForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange)functionRangeContainingPCaddress:(unsigned long long)arg1;
@@ -40,6 +44,8 @@
 - (long long)getFramesForStackID:(unsigned long long)arg1 stackFramesBuffer:(unsigned long long *)arg2;
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2;
+- (CDStruct_69d7cc99)liteMSLPayloadforMallocAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
+- (CDStruct_69d7cc99)liteMSLPayloadforVMregionAddress:(unsigned long long)arg1;
 - (unsigned long long)liteModeStackIDforAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
 - (unsigned long long)liteModeStackIDforVMregionAddress:(unsigned long long)arg1;
 - (id)sourceFileNameAndLineNumberForPCaddress:(unsigned long long)arg1 fullPath:(BOOL)arg2;

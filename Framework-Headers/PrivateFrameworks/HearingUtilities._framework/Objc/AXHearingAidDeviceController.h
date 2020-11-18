@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HearingUtilities/HUDeviceController.h>
 
 #import <HearingUtilities/AXHADeviceControllerProtocol-Protocol.h>
 #import <HearingUtilities/CBCentralManagerDelegate-Protocol.h>
 
-@class AXDispatchTimer, CBCentralManager, NSLock, NSMutableArray, NSMutableDictionary, NSString;
+@class AXDispatchTimer, CBCentralManager, NSLock, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface AXHearingAidDeviceController : NSObject <CBCentralManagerDelegate, AXHADeviceControllerProtocol>
+@interface AXHearingAidDeviceController : HUDeviceController <CBCentralManagerDelegate, AXHADeviceControllerProtocol>
 {
     CBCentralManager *_bluetoothManager;
     NSLock *_centralRequestsLock;
     BOOL _isScanning;
     BOOL _isResetting;
+    BOOL _centralIsOn;
     NSObject<OS_dispatch_queue> *_bluetoothCentralQueue;
     NSMutableArray *_availableSearchBlocks;
     NSMutableArray *_connectedSearchBlocks;
@@ -62,13 +63,14 @@
 - (void)centralManager:(id)arg1 didRetrieveConnectedPeripherals:(id)arg2;
 - (void)centralManager:(id)arg1 didRetrievePeripherals:(id)arg2;
 - (void)centralManagerDidUpdateState:(id)arg1;
+- (void)checkPartiallyPairedWithCompletion:(CDUnknownBlockType)arg1;
+- (void)checkPeripheralPaired:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)clearAvailableDevices;
 - (void)clearConnectedDevices;
 - (void)clearLoadedDevices;
 - (void)clearMissingHearingAids;
 - (void)connectToPeripheral:(id)arg1;
 - (void)dealloc;
-- (void)device:(id)arg1 didUpdateProperty:(unsigned long long)arg2;
 - (void)deviceDidFinishLoading:(id)arg1;
 - (void)disconnectFromHearingAidWithDeviceUUID:(id)arg1;
 - (void)disconnectFromPeripheral:(id)arg1;
@@ -80,8 +82,8 @@
 - (id)init;
 - (BOOL)isBluetoothAvailable;
 - (BOOL)isConnected;
+- (BOOL)isPaired;
 - (BOOL)isPartiallyConnected;
-- (BOOL)isPartiallyPaired;
 - (BOOL)isScanning;
 - (void)loadedDevicesDidChange;
 - (void)mergeDevice:(id)arg1 withDevice:(id)arg2;
@@ -89,8 +91,7 @@
 - (void)pairingAgent:(id)arg1 peerDidCompletePairing:(id)arg2;
 - (void)pairingAgent:(id)arg1 peerDidFailToCompletePairing:(id)arg2 error:(id)arg3;
 - (void)pairingAgent:(id)arg1 peerDidUnpair:(id)arg2;
-- (BOOL)peripheralIsPaired:(id)arg1;
-- (void)registerForPropertyUpdates:(CDUnknownBlockType)arg1;
+- (void)persistPairedHearingAids;
 - (void)removeAvailableDevice:(id)arg1;
 - (void)removeConnectedDevice:(id)arg1;
 - (void)removeLoadedDevice:(id)arg1;
@@ -99,12 +100,10 @@
 - (void)searchForAvailableDevicesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)searchForConnectedDevices;
 - (void)sendRequestToCentralManager:(CDUnknownBlockType)arg1;
-- (void)stopPropertyUpdates;
+- (void)shouldRelinquishForPartialConnection:(CDUnknownBlockType)arg1;
 - (void)stopSearching;
 - (void)unpairPeripheralWithUUID:(id)arg1;
-- (void)updateProperty:(unsigned long long)arg1 forDeviceID:(id)arg2;
 - (id)valueForProperty:(unsigned long long)arg1 forDeviceID:(id)arg2;
-- (void)writeValue:(id)arg1 forProperty:(unsigned long long)arg2 forDeviceID:(id)arg3;
 
 @end
 

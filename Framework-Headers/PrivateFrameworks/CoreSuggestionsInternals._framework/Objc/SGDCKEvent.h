@@ -8,18 +8,21 @@
 
 #import <CoreSuggestionsInternals/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, SGDCKTimeRange;
+@class NSData, NSMutableArray, NSString, SGDCKInteractionInfo, SGDCKTimeRange;
 
 @interface SGDCKEvent : PBCodable <NSCopying>
 {
     double _creationTimestamp;
     double _lastModifiedTimestamp;
-    unsigned long long _categoryType;
+    long long _parentEntityType;
+    int _categoryType;
     NSString *_content;
     NSString *_domain;
     NSString *_extraKey;
     NSString *_groupId;
+    SGDCKInteractionInfo *_interactionInfo;
     NSMutableArray *_locations;
+    NSData *_metadata;
     NSData *_schemaOrg;
     NSString *_sourceKey;
     NSString *_templateName;
@@ -30,6 +33,7 @@
     struct {
         unsigned int creationTimestamp:1;
         unsigned int lastModifiedTimestamp:1;
+        unsigned int parentEntityType:1;
         unsigned int categoryType:1;
         unsigned int allDay:1;
         unsigned int cancelled:1;
@@ -38,7 +42,7 @@
 
 @property (nonatomic) BOOL allDay; // @synthesize allDay=_allDay;
 @property (nonatomic) BOOL cancelled; // @synthesize cancelled=_cancelled;
-@property (nonatomic) unsigned long long categoryType; // @synthesize categoryType=_categoryType;
+@property (nonatomic) int categoryType; // @synthesize categoryType=_categoryType;
 @property (strong, nonatomic) NSString *content; // @synthesize content=_content;
 @property (nonatomic) double creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
 @property (strong, nonatomic) NSString *domain; // @synthesize domain=_domain;
@@ -52,14 +56,20 @@
 @property (readonly, nonatomic) BOOL hasDomain;
 @property (readonly, nonatomic) BOOL hasExtraKey;
 @property (readonly, nonatomic) BOOL hasGroupId;
+@property (readonly, nonatomic) BOOL hasInteractionInfo;
 @property (nonatomic) BOOL hasLastModifiedTimestamp;
+@property (readonly, nonatomic) BOOL hasMetadata;
+@property (nonatomic) BOOL hasParentEntityType;
 @property (readonly, nonatomic) BOOL hasSchemaOrg;
 @property (readonly, nonatomic) BOOL hasSourceKey;
 @property (readonly, nonatomic) BOOL hasTemplateName;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasWhen;
+@property (strong, nonatomic) SGDCKInteractionInfo *interactionInfo; // @synthesize interactionInfo=_interactionInfo;
 @property (nonatomic) double lastModifiedTimestamp; // @synthesize lastModifiedTimestamp=_lastModifiedTimestamp;
 @property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
+@property (strong, nonatomic) NSData *metadata; // @synthesize metadata=_metadata;
+@property (nonatomic) long long parentEntityType; // @synthesize parentEntityType=_parentEntityType;
 @property (strong, nonatomic) NSData *schemaOrg; // @synthesize schemaOrg=_schemaOrg;
 @property (strong, nonatomic) NSString *sourceKey; // @synthesize sourceKey=_sourceKey;
 @property (strong, nonatomic) NSString *templateName; // @synthesize templateName=_templateName;
@@ -68,9 +78,9 @@
 
 + (Class)locationsType;
 - (void).cxx_destruct;
-- (unsigned long long)StringAsCategoryType:(id)arg1;
+- (int)StringAsCategoryType:(id)arg1;
 - (void)addLocations:(id)arg1;
-- (id)categoryTypeAsString:(unsigned long long)arg1;
+- (id)categoryTypeAsString:(int)arg1;
 - (void)clearLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

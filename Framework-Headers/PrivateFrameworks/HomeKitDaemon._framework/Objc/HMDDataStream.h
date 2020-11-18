@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPSecuritySessionEncryption, HMDDataStreamControlProtocol, HMFTimer, NSMapTable, NSString;
+@class HAPSecuritySessionEncryption, HMDDataStreamControlProtocol, HMFTimer, NSMapTable, NSMutableSet, NSString;
 @protocol HMDDataStreamDelegate, HMDDataStreamTransport, OS_dispatch_queue;
 
 @interface HMDDataStream : NSObject <HMFLogging, HMFTimerDelegate>
@@ -22,6 +22,8 @@
     HMDDataStreamControlProtocol *_controlProtocol;
     HMFTimer *_helloMessageResponseTimer;
     NSObject<OS_dispatch_queue> *_workQueue;
+    unsigned long long _nextRequestIdentifier;
+    NSMutableSet *_pendingRequests;
 }
 
 @property (strong, nonatomic) HMDDataStreamControlProtocol *controlProtocol; // @synthesize controlProtocol=_controlProtocol;
@@ -31,6 +33,8 @@
 @property (nonatomic) BOOL firstMessageReceived; // @synthesize firstMessageReceived=_firstMessageReceived;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMFTimer *helloMessageResponseTimer; // @synthesize helloMessageResponseTimer=_helloMessageResponseTimer;
+@property (nonatomic) unsigned long long nextRequestIdentifier; // @synthesize nextRequestIdentifier=_nextRequestIdentifier;
+@property (readonly, nonatomic) NSMutableSet *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (strong, nonatomic) NSMapTable *protocols; // @synthesize protocols=_protocols;
 @property (strong, nonatomic) HAPSecuritySessionEncryption *sessionEncryption; // @synthesize sessionEncryption=_sessionEncryption;
 @property (readonly) Class superclass;
@@ -43,11 +47,15 @@
 - (void)addProtocol:(id)arg1 name:(id)arg2;
 - (void)close;
 - (void)connect;
+- (id)createRequestIdentifier;
+- (void)fulfillPendingRequestWithResponseHeader:(id)arg1 payload:(id)arg2;
+- (BOOL)handleFirstMessageReceivedOnDataStream:(id)arg1 payload:(id)arg2;
+- (void)handlePendingRequests;
 - (id)initWithTransport:(id)arg1 sessionEncryption:(id)arg2 workQueue:(id)arg3;
-- (BOOL)mayHandleFirstMessageReceivedOnDataStream:(id)arg1 payload:(id)arg2;
 - (id)protocolDelegateHandle;
 - (void)sendEventForProtocol:(id)arg1 topic:(id)arg2 payload:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendRequestForProtocol:(id)arg1 topic:(id)arg2 identifier:(unsigned long long)arg3 payload:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)sendRequestForProtocol:(id)arg1 topic:(id)arg2 payload:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendResponseForRequestHeader:(id)arg1 payload:(id)arg2 status:(unsigned short)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)startHelloMessageResponseTimer;
 - (void)timerDidFire:(id)arg1;

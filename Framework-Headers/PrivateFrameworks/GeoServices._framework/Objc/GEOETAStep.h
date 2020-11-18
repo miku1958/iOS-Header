@@ -8,35 +8,39 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTimeCheckpoints;
+@class GEOTimeCheckpoints, PBUnknownFields;
 
 @interface GEOETAStep : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    GEOTimeCheckpoints *_timeCheckpoints;
     unsigned int _distanceRemaining;
     unsigned int _expectedTime;
     unsigned int _stepID;
-    GEOTimeCheckpoints *_timeCheckpoints;
     int _zilchPointIndex;
     struct {
-        unsigned int distanceRemaining:1;
-        unsigned int expectedTime:1;
-        unsigned int stepID:1;
-        unsigned int zilchPointIndex:1;
-    } _has;
+        unsigned int has_distanceRemaining:1;
+        unsigned int has_expectedTime:1;
+        unsigned int has_stepID:1;
+        unsigned int has_zilchPointIndex:1;
+    } _flags;
 }
 
 @property (nonatomic) unsigned int distanceRemaining;
-@property (nonatomic) unsigned int expectedTime; // @synthesize expectedTime=_expectedTime;
+@property (nonatomic) unsigned int expectedTime;
 @property (nonatomic) BOOL hasDistanceRemaining;
 @property (nonatomic) BOOL hasExpectedTime;
 @property (nonatomic) BOOL hasStepID;
 @property (readonly, nonatomic) BOOL hasTimeCheckpoints;
 @property (nonatomic) BOOL hasZilchPointIndex;
-@property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
-@property (strong, nonatomic) GEOTimeCheckpoints *timeCheckpoints; // @synthesize timeCheckpoints=_timeCheckpoints;
-@property (nonatomic) int zilchPointIndex; // @synthesize zilchPointIndex=_zilchPointIndex;
+@property (nonatomic) unsigned int stepID;
+@property (strong, nonatomic) GEOTimeCheckpoints *timeCheckpoints;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (nonatomic) int zilchPointIndex;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +48,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

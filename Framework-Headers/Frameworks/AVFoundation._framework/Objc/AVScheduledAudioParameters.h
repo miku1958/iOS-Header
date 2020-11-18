@@ -19,13 +19,13 @@
 @property (copy, nonatomic, getter=_ramps, setter=_setRamps:) NSArray *ramps;
 
 - (id)_audioVolumeCurve;
-- (void)_setVolumeRampFromStartVolume:(float)arg1 toEndVolume:(float)arg2 timeRange:(CDStruct_e83c9415)arg3;
+- (void)_setVolumeRampFromStartVolume:(float)arg1 toEndVolume:(float)arg2 timeRange:(CDStruct_e83c9415)arg3 rampMode:(long long)arg4;
 - (id)_volumeCurveAsString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (BOOL)getVolumeRampForTime:(CDStruct_1b6d18a9)arg1 startVolume:(float *)arg2 endVolume:(float *)arg3 timeRange:(CDStruct_e83c9415 *)arg4;
+- (BOOL)getVolumeRampForTime:(CDStruct_1b6d18a9)arg1 startVolume:(float *)arg2 endVolume:(float *)arg3 timeRange:(CDStruct_e83c9415 *)arg4 rampMode:(long long *)arg5;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

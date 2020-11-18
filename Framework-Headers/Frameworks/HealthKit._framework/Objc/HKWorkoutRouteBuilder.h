@@ -23,6 +23,7 @@
 + (void)configureClientInterface:(id)arg1;
 + (void)configureServerInterface:(id)arg1;
 + (id)serverInterface;
++ (id)taskServerIdentifier;
 - (void)_resourceQueue_finishRouteWithWorkout:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_resourceQueue_insertRouteData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;

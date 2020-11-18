@@ -10,7 +10,7 @@
 @protocol SXDocumentSectionBlueprint;
 
 @protocol SXDocumentSectionManager <NSObject>
-- (void)applySectionBlueprint:(id<SXDocumentSectionBlueprint>)arg1 identifier:(NSString *)arg2 offset:(struct CGPoint)arg3 width:(double)arg4;
-- (double)heightForBlueprint:(SXDocumentSectionBlueprint *)arg1 width:(double)arg2 traitCollection:(UITraitCollection *)arg3;
+- (void)applySectionBlueprint:(id<SXDocumentSectionBlueprint>)arg1 identifier:(NSString *)arg2 offset:(struct CGPoint)arg3 size:(struct CGSize)arg4;
+- (double)heightForBlueprint:(SXDocumentSectionBlueprint *)arg1 canvasSize:(struct CGSize)arg2 traitCollection:(UITraitCollection *)arg3;
 @end
 

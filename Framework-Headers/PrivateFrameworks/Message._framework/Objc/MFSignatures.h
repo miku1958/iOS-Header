@@ -13,12 +13,9 @@
 + (id)sharedInstance;
 + (id)signatureMarkupFormat:(id)arg1;
 + (id)signaturePlainTextFormat:(id)arg1;
-+ (id)stripSignatureMarkup:(id)arg1;
 - (id)_getValue:(id)arg1;
 - (id)_modelSpecificLocalizedStringKeyForKey:(id)arg1;
-- (void)_setValue:(id)arg1 value:(void *)arg2;
 - (void)clearSignature;
-- (void)dealloc;
 - (id)defaultSignature;
 - (id)init;
 - (void)setSignature:(id)arg1;

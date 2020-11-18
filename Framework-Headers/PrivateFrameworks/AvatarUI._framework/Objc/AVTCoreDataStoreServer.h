@@ -11,7 +11,7 @@
 #import <AvatarUI/AVTCoreDataCloudKitMirroringHandlerDelegate-Protocol.h>
 #import <AvatarUI/AVTPushNotificationsSupportDelegate-Protocol.h>
 
-@class AVTAvatarRecordImageGenerator, AVTCoreEnvironment, NSXPCStoreServer;
+@class AVTAvatarRecordImageGenerator, AVTCoreEnvironment, AVTStickerChangeObserver, NSXPCStoreServer;
 @protocol AVTAvatarRecordChangeTracker, AVTAvatarsDaemonServer, AVTBlockScheduler, AVTCoreDataCloudKitMirroringHandler, AVTCoreDataPersistentStoreLocalConfiguration, AVTCoreDataRemoteChangesObserver, AVTCoreDataStoreMaintenance, AVTPushNotificationsSupport, AVTStoreBackend, AVTSyncSchedulingAuthority, AVTUILogger, OS_dispatch_queue;
 
 @interface AVTCoreDataStoreServer : NSObject <AVTPushNotificationsSupportDelegate, AVTCoreDataCloudKitMirroringHandlerDelegate, AVTAvatarsDaemonServerDelegate, AVTAvatarStoreServer>
@@ -30,10 +30,12 @@
     id<AVTSyncSchedulingAuthority> _schedulingAuthority;
     id<AVTCoreDataRemoteChangesObserver> _remoteChangesObserver;
     AVTAvatarRecordImageGenerator *_imageGenerator;
+    AVTStickerChangeObserver *_stickerChangeObserver;
     id<AVTAvatarRecordChangeTracker> _changeTracker;
     id<AVTAvatarsDaemonServer> _daemonServer;
     id<AVTCoreDataStoreMaintenance> _storeMaintenance;
     CDUnknownBlockType _migrationActivityCompletion;
+    CDUnknownBlockType _userRequestedBackupActivityCompletion;
 }
 
 @property (readonly, nonatomic) id<AVTStoreBackend> backend; // @synthesize backend=_backend;
@@ -53,16 +55,20 @@
 @property (readonly, nonatomic) id<AVTSyncSchedulingAuthority> schedulingAuthority; // @synthesize schedulingAuthority=_schedulingAuthority;
 @property (strong, nonatomic) NSXPCStoreServer *server; // @synthesize server=_server;
 @property (nonatomic) BOOL setupCompleted; // @synthesize setupCompleted=_setupCompleted;
+@property (readonly, nonatomic) AVTStickerChangeObserver *stickerChangeObserver; // @synthesize stickerChangeObserver=_stickerChangeObserver;
 @property (readonly, nonatomic) id<AVTCoreDataStoreMaintenance> storeMaintenance; // @synthesize storeMaintenance=_storeMaintenance;
+@property (copy, nonatomic) CDUnknownBlockType userRequestedBackupActivityCompletion; // @synthesize userRequestedBackupActivityCompletion=_userRequestedBackupActivityCompletion;
 
 + (id)imageGeneratorForEnvironment:(id)arg1;
 + (BOOL)resetSyncShouldPreserveContentForReason:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)clientDidCheckInForServer:(id)arg1;
 - (void)completeMigrationActivityIfNeeded;
+- (void)completeUserRequestedBackupActivityIfNeeded;
+- (void)deleteStickerRecents;
 - (void)didReceivePushNotification:(id)arg1;
 - (id)initWithEnvironment:(id)arg1;
-- (id)initWithLocalBackend:(id)arg1 configuration:(id)arg2 migratorProvider:(CDUnknownBlockType)arg3 pushSupport:(id)arg4 mirroringHandler:(id)arg5 schedulingAuthority:(id)arg6 remoteChangesObserver:(id)arg7 imageGenerator:(id)arg8 changeTracker:(id)arg9 daemonServer:(id)arg10 storeMaintenance:(id)arg11 backgroundQueue:(id)arg12 environment:(id)arg13;
+- (id)initWithLocalBackend:(id)arg1 configuration:(id)arg2 migratorProvider:(CDUnknownBlockType)arg3 pushSupport:(id)arg4 mirroringHandler:(id)arg5 schedulingAuthority:(id)arg6 remoteChangesObserver:(id)arg7 imageGenerator:(id)arg8 stickerChangeObserver:(id)arg9 changeTracker:(id)arg10 daemonServer:(id)arg11 storeMaintenance:(id)arg12 backgroundQueue:(id)arg13 environment:(id)arg14;
 - (void)migrate;
 - (void)mirroringHandler:(id)arg1 didResetSyncWithReason:(unsigned long long)arg2;
 - (void)mirroringHandler:(id)arg1 willResetSyncWithReason:(unsigned long long)arg2;

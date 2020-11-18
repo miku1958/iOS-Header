@@ -14,20 +14,26 @@
 
 @property (nonatomic) BOOL allowsItemLiking; // @dynamic allowsItemLiking;
 @property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @dynamic artworkCatalogBlock;
+@property (copy, nonatomic) NSString *attributionLabel; // @dynamic attributionLabel;
 @property (nonatomic, getter=isBeats1) BOOL beats1; // @dynamic beats1;
 @property (copy, nonatomic) NSString *editorNotes; // @dynamic editorNotes;
 @property (nonatomic) BOOL hasExplicitContent; // @dynamic hasExplicitContent;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (copy, nonatomic) NSString *providerName; // @dynamic providerName;
 @property (copy, nonatomic) NSString *shortEditorNotes; // @dynamic shortEditorNotes;
+@property (nonatomic) long long subtype; // @dynamic subtype;
 @property (nonatomic) long long type; // @dynamic type;
 
 + (id)__allowsItemLiking_KEY;
 + (id)__artworkCatalogBlock_KEY;
++ (id)__attributionLabel_KEY;
 + (id)__beats1_KEY;
 + (id)__editorNotes_KEY;
 + (id)__hasExplicitContent_KEY;
 + (id)__name_KEY;
++ (id)__providerName_KEY;
 + (id)__shortEditorNotes_KEY;
++ (id)__subtype_KEY;
 + (id)__type_KEY;
 + (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
 - (id)artworkCatalog;

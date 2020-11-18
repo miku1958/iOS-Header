@@ -4,58 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <SearchUI/SearchUIRowModel.h>
 
-#import <SearchUI/SearchUIAuxilliaryFieldProtocol-Protocol.h>
-#import <SearchUI/SearchUIRowModel-Protocol.h>
-
-@class NSString, SFActionItem, SFCard, SFCardSection, SFImage, SFRichText, SFSearchResult;
-
-@interface SearchUICardSectionRowModel : NSObject <SearchUIAuxilliaryFieldProtocol, SearchUIRowModel>
+@interface SearchUICardSectionRowModel : SearchUIRowModel
 {
-    SFCardSection *_cardSection;
-    SFSearchResult *_identifyingResult;
+    BOOL _isInline;
+    Class _customCardSectionViewClass;
 }
 
-@property (readonly) SFActionItem *action;
-@property (readonly) NSString *auxiliaryBottomText;
-@property (readonly) int auxiliaryBottomTextColor;
-@property (readonly) NSString *auxiliaryMiddleText;
-@property (readonly) NSString *auxiliaryTopText;
-@property (readonly) SFCard *card;
-@property (strong) SFCardSection *cardSection; // @synthesize cardSection=_cardSection;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long hash;
-@property (readonly) SFSearchResult *identifyingResult;
-@property (strong) SFSearchResult *identifyingResult; // @synthesize identifyingResult=_identifyingResult;
-@property (readonly) Class superclass;
-@property (readonly) Class superclass;
-@property (readonly) SFImage *thumbnail;
-@property (readonly) SFRichText *title;
+@property (readonly) Class customCardSectionViewClass; // @synthesize customCardSectionViewClass=_customCardSectionViewClass;
+@property (nonatomic) BOOL isInline; // @synthesize isInline=_isInline;
 
 - (void).cxx_destruct;
 - (BOOL)anyInlineCardSectionsHaveNextCards;
 - (BOOL)anyInlineCardSectionsHavePunchouts;
-- (id)detailedRowCardSection;
-- (id)dragAppBundleID;
+- (Class)cellViewClass;
+- (id)description;
 - (id)dragSubtitle;
 - (id)dragText;
 - (id)dragTitle;
 - (id)dragURL;
-- (id)initWithResult:(id)arg1 cardSection:(id)arg2;
+- (id)initWithResult:(id)arg1 cardSection:(id)arg2 isInline:(BOOL)arg3 queryId:(unsigned long long)arg4;
 - (BOOL)isDraggable;
-- (BOOL)isSuggestion;
+- (BOOL)isQuerySuggestion;
 - (BOOL)isTappable;
 - (double)leadingSeparatorImageInset;
 - (id)nextCard;
 - (id)punchouts;
 - (id)reuseIdentifier;
 - (int)separatorStyle;
-- (Class)viewClass;
 
 @end
 

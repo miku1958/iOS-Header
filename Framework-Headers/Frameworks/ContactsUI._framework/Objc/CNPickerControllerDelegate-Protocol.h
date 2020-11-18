@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ContactsUI/UINavigationControllerDelegate-Protocol.h>
+#import <ContactsUI/NSObject-Protocol.h>
 
 @class UIViewController;
 
-@protocol CNPickerControllerDelegate <UINavigationControllerDelegate>
+@protocol CNPickerControllerDelegate <NSObject>
 - (void)picker:(UIViewController *)arg1 didPickItem:(id)arg2;
 - (void)pickerDidCancel:(UIViewController *)arg1;
+
+@optional
+- (void)picker:(UIViewController *)arg1 didDeleteItem:(id)arg2;
 @end
 

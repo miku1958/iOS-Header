@@ -8,39 +8,57 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDModuleLayoutEntry : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_applicationIds;
     NSString *_debugLayoutId;
     NSMutableArray *_modules;
     int _platformType;
     struct {
-        unsigned int platformType:1;
-    } _has;
+        unsigned int has_platformType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_applicationIds:1;
+        unsigned int read_debugLayoutId:1;
+        unsigned int read_modules:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_applicationIds:1;
+        unsigned int wrote_debugLayoutId:1;
+        unsigned int wrote_modules:1;
+        unsigned int wrote_platformType:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *applicationIds; // @synthesize applicationIds=_applicationIds;
-@property (strong, nonatomic) NSString *debugLayoutId; // @synthesize debugLayoutId=_debugLayoutId;
+@property (strong, nonatomic) NSMutableArray *applicationIds;
+@property (strong, nonatomic) NSString *debugLayoutId;
 @property (readonly, nonatomic) BOOL hasDebugLayoutId;
 @property (nonatomic) BOOL hasPlatformType;
-@property (strong, nonatomic) NSMutableArray *modules; // @synthesize modules=_modules;
-@property (nonatomic) int platformType; // @synthesize platformType=_platformType;
+@property (strong, nonatomic) NSMutableArray *modules;
+@property (nonatomic) int platformType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)applicationIdType;
++ (BOOL)isValid:(id)arg1;
 + (Class)modulesType;
 - (void).cxx_destruct;
 - (int)StringAsPlatformType:(id)arg1;
+- (void)_addNoFlagsApplicationId:(id)arg1;
+- (void)_addNoFlagsModules:(id)arg1;
+- (void)_readApplicationIds;
+- (void)_readDebugLayoutId;
+- (void)_readModules;
 - (void)addApplicationId:(id)arg1;
 - (void)addModules:(id)arg1;
 - (id)applicationIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)applicationIdsCount;
 - (void)clearApplicationIds;
 - (void)clearModules;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -51,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (id)modulesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)modulesCount;
 - (id)platformTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

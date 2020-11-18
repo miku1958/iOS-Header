@@ -15,10 +15,12 @@
 @interface _INPBContactList : PBCodable <_INPBContactList, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBCondition *_condition;
     NSArray *_contacts;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
 @property (copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (readonly, nonatomic) unsigned long long contactsCount;
@@ -29,12 +31,15 @@
 @property (readonly) Class superclass;
 
 + (Class)contactType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addContact:(id)arg1;
 - (void)clearContacts;
 - (id)contactAtIndex:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

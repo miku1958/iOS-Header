@@ -47,11 +47,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;
 
 + (id)_entityPlaceholderImageForDownloadEntity:(id)arg1;
-+ (id)_episodePlaceholderImage;
++ (id)_generateMetaDataHeaderFirstLabelForDownloadEntity:(id)arg1;
 + (void)configureVUIDownloadEntityTableViewCell:(id)arg1 withDownloadEntity:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addDownloadButtonIfRequired:(id)arg1;
 - (void)_configureViewElementsForAX;
+- (id)_episodePlaceholderImage;
 - (id)_expirationLabelWithMediaEntity:(id)arg1;
 - (double)_imageHeightForCurrentSizeClass;
 - (struct CGSize)_layoutForCategoryAccessibility:(struct CGSize)arg1 metricsOnly:(BOOL)arg2;
@@ -67,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)willTransitionToState:(unsigned long long)arg1;
 
 @end

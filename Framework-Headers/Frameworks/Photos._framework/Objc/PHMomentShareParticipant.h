@@ -6,16 +6,18 @@
 
 #import <Photos/PHObject.h>
 
-@class NSString;
+@class NSPersonNameComponents, NSString;
 
 @interface PHMomentShareParticipant : PHObject
 {
     unsigned short _type;
     NSString *_emailAddress;
+    NSPersonNameComponents *_nameComponents;
     NSString *_phoneNumber;
 }
 
 @property (readonly, copy, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
+@property (readonly, copy, nonatomic) NSPersonNameComponents *nameComponents; // @synthesize nameComponents=_nameComponents;
 @property (readonly, copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (readonly, nonatomic) unsigned short type; // @synthesize type=_type;
 

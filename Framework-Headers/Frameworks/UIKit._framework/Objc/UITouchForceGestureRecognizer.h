@@ -37,10 +37,10 @@
 @property (nonatomic) unsigned long long maximumNumberOfTouches; // @synthesize maximumNumberOfTouches=_maximumNumberOfTouches;
 @property (nonatomic) double minimumRequiredTouchForce; // @synthesize minimumRequiredTouchForce=_minimumRequiredTouchForce;
 @property (nonatomic, getter=isSteady) BOOL steady; // @synthesize steady=_steady;
+@property (readonly, nonatomic) double touchDuration;
 @property (nonatomic) double touchForce; // @synthesize touchForce=_touchForce;
 @property (nonatomic) double velocity; // @synthesize velocity=_velocity;
 
-+ (BOOL)_supportsTouchContinuation;
 - (void).cxx_destruct;
 - (void)_beginForContinuousEvaluationForTouches:(id)arg1;
 - (void)_endContinuousEvaluation;
@@ -50,7 +50,7 @@
 - (void)_evaluateWithTouchForce:(double)arg1 centroidAtLocation:(struct CGPoint)arg2;
 - (BOOL)_hasExceededAllowableMovement;
 - (BOOL)_hasExceededMaximumNumberOfTouches;
-- (BOOL)_shouldReceiveTouch:(id)arg1 recognizerView:(id)arg2 touchView:(id)arg3;
+- (BOOL)_shouldReceiveTouch:(id)arg1 forEvent:(id)arg2 recognizerView:(id)arg3;
 - (void)_updateForContinuousEvaluation:(id)arg1;
 - (void)_updateTouchForce:(double)arg1;
 - (BOOL)_validateHysteresis;

@@ -13,6 +13,7 @@
 
 @interface CKAsset : NSObject <CKRecordValue, NSSecureCoding>
 {
+    BOOL _shouldReadAssetContentUsingClientProxy;
     BOOL _wasCached;
     BOOL _hasSize;
     BOOL _uploaded;
@@ -107,6 +108,7 @@
 @property (copy, nonatomic) NSString *recordKey; // @synthesize recordKey=_recordKey;
 @property (strong, nonatomic) NSData *referenceSignature; // @synthesize referenceSignature=_referenceSignature;
 @property (strong, nonatomic) NSString *requestor; // @synthesize requestor=_requestor;
+@property (readonly, nonatomic) BOOL shouldReadAssetContentUsingClientProxy; // @synthesize shouldReadAssetContentUsingClientProxy=_shouldReadAssetContentUsingClientProxy;
 @property (nonatomic) BOOL shouldReadRawEncryptedData; // @synthesize shouldReadRawEncryptedData=_shouldReadRawEncryptedData;
 @property (copy, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property (nonatomic) unsigned long long size; // @synthesize size=_size;
@@ -135,6 +137,7 @@
 - (id)downloadURLWithFileName:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithAssetContent:(id)arg1 itemTypeHint:(id)arg2;
 - (id)initWithAssetReference:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCopyInfo:(id)arg1 fileURL:(id)arg2;

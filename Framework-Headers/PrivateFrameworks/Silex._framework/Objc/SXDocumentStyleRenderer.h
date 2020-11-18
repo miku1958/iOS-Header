@@ -9,48 +9,30 @@
 #import <Silex/SXDocumentStyleRenderer-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSString, SXFillView, SXGradientFillView, SXImageFillView, SXVideoFillView, SXViewport, UIView;
-@protocol SXGradientFactory, SXImageFillViewFactory, SXVideoFillViewFactory;
+@class NSString, SXViewport, UIView;
+@protocol SXGradientFactory;
 
 @interface SXDocumentStyleRenderer : NSObject <SXViewportChangeListener, SXDocumentStyleRenderer>
 {
-    id<SXImageFillViewFactory> _imageFillViewFactory;
-    id<SXVideoFillViewFactory> _videoFillViewFactory;
     SXViewport *_viewport;
     id<SXGradientFactory> _gradientFactory;
     UIView *_topBackgroundView;
-    SXGradientFillView *_gradientFillView;
-    SXImageFillView *_imageFillView;
-    SXVideoFillView *_videoFillView;
-    SXFillView *_fillView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) SXFillView *fillView; // @synthesize fillView=_fillView;
 @property (readonly, nonatomic) id<SXGradientFactory> gradientFactory; // @synthesize gradientFactory=_gradientFactory;
-@property (strong, nonatomic) SXGradientFillView *gradientFillView; // @synthesize gradientFillView=_gradientFillView;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SXImageFillView *imageFillView; // @synthesize imageFillView=_imageFillView;
-@property (readonly, nonatomic) id<SXImageFillViewFactory> imageFillViewFactory; // @synthesize imageFillViewFactory=_imageFillViewFactory;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *topBackgroundView; // @synthesize topBackgroundView=_topBackgroundView;
-@property (strong, nonatomic) SXVideoFillView *videoFillView; // @synthesize videoFillView=_videoFillView;
-@property (readonly, nonatomic) id<SXVideoFillViewFactory> videoFillViewFactory; // @synthesize videoFillViewFactory=_videoFillViewFactory;
 @property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
 
 - (void).cxx_destruct;
 - (void)applyBackgroundColorForStyle:(id)arg1 onView:(id)arg2;
-- (void)applyFillForStyle:(id)arg1 onView:(id)arg2;
 - (void)applyStyle:(id)arg1 onView:(id)arg2;
 - (void)applyTopBackgroundForStyle:(id)arg1 onView:(id)arg2;
-- (id)gradientViewForFill:(id)arg1;
-- (id)imageViewForFill:(id)arg1;
-- (id)initWithViewport:(id)arg1 imageFillViewFactory:(id)arg2 videoFillViewFactory:(id)arg3 gradientFactory:(id)arg4;
-- (void)layoutFillView;
+- (id)initWithViewport:(id)arg1 gradientFactory:(id)arg2;
 - (void)layoutTopBackgroundView;
-- (id)videoPlayerViewForFill:(id)arg1;
-- (id)viewForFill:(id)arg1;
 - (void)viewport:(id)arg1 boundsDidChangeFromBounds:(struct CGRect)arg2;
 
 @end

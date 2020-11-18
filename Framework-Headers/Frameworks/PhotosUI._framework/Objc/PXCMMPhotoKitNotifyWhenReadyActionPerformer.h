@@ -6,9 +6,15 @@
 
 #import <PhotosUICore/PXCMMActionPerformer.h>
 
-@interface PXCMMPhotoKitNotifyWhenReadyActionPerformer : PXCMMActionPerformer
+#import <PhotosUICore/PXCMMPhotoKitActionPerformer-Protocol.h>
+
+@class PXCMMPhotoKitSession;
+
+@interface PXCMMPhotoKitNotifyWhenReadyActionPerformer : PXCMMActionPerformer <PXCMMPhotoKitActionPerformer>
 {
 }
+
+@property (readonly, nonatomic) PXCMMPhotoKitSession *session;
 
 - (BOOL)_needsToNotifyForMomentShare:(id)arg1 localAssetCount:(long long)arg2;
 - (void)performBackgroundTask;

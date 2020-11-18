@@ -10,6 +10,7 @@
 
 @class CNChangeHistoryAnchor, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface CNChangeHistoryResult : NSObject <NSSecureCoding>
 {
     BOOL _changesTruncated;
@@ -17,22 +18,27 @@
     CNChangeHistoryAnchor *_latestChangeAnchor;
     NSArray *_contactChanges;
     NSArray *_groupChanges;
+    NSArray *_labeledValueChanges;
 }
 
 @property (nonatomic) BOOL changesTruncated; // @synthesize changesTruncated=_changesTruncated;
 @property (strong, nonatomic) NSArray *contactChanges; // @synthesize contactChanges=_contactChanges;
 @property (strong, nonatomic) NSArray *groupChanges; // @synthesize groupChanges=_groupChanges;
+@property (strong, nonatomic) NSArray *labeledValueChanges; // @synthesize labeledValueChanges=_labeledValueChanges;
 @property (strong, nonatomic) CNChangeHistoryAnchor *latestChangeAnchor; // @synthesize latestChangeAnchor=_latestChangeAnchor;
 @property (nonatomic) BOOL unifyResults; // @synthesize unifyResults=_unifyResults;
 
++ (BOOL)enumerateEnumerator:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)contactChangesEnumeratorWithKeysToFetch:(id)arg1 contactStore:(id)arg2;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)enumerateContactChangesWithKeysToFetch:(id)arg1 fromContactStore:(id)arg2 error:(id *)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (BOOL)enumerateGroupChangesFromContactStore:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)groupChangesEnumeratorWithContactStore:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isDeleteChange:(long long)arg1;
+- (id)labeledValueChangesEnumeratorWithContactStore:(id)arg1;
 
 @end
 

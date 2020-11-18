@@ -8,6 +8,7 @@
 
 @protocol ISVitalitySettings;
 
+__attribute__((visibility("hidden")))
 @interface ISLivePhotoVitalityFilter : NSObject
 {
     BOOL _isPerformingInputChanges;

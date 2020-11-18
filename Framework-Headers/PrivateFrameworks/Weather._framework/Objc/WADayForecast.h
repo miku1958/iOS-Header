@@ -12,6 +12,7 @@
 
 @interface WADayForecast : NSObject <NSCopying>
 {
+    BOOL _isYesterday;
     WFTemperature *_high;
     WFTemperature *_low;
     unsigned long long _icon;
@@ -23,6 +24,7 @@
 @property (nonatomic) unsigned long long dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
 @property (copy, nonatomic) WFTemperature *high; // @synthesize high=_high;
 @property (nonatomic) unsigned long long icon; // @synthesize icon=_icon;
+@property (nonatomic) BOOL isYesterday; // @synthesize isYesterday=_isYesterday;
 @property (copy, nonatomic) WFTemperature *low; // @synthesize low=_low;
 
 + (id)dayForecastForLocation:(id)arg1 conditions:(id)arg2;

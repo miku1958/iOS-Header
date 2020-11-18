@@ -18,17 +18,11 @@
 }
 
 - (void).cxx_destruct;
-- (BOOL)_allowApplication:(CDStruct_6ad76789)arg1 bundleIdentifier:(id)arg2;
 - (void)_backBoardApplicationStateChanged:(id)arg1;
 - (void)_createApplicationStateMonitorIfNeeded;
-- (BOOL)_hasCarrierRemoteInspectorEntitlement:(CDStruct_6ad76789)arg1;
-- (BOOL)_hasRemoteInspectorEntitlement:(CDStruct_6ad76789)arg1;
-- (BOOL)_isProxyApplication:(id)arg1 bundleIdentifier:(id)arg2;
-- (BOOL)_isWhitelistedSimulatorApp:(id)arg1;
-- (BOOL)_usedDevelopmentProvisioningProfile:(CDStruct_6ad76789)arg1;
 - (void)relay:(id)arg1 activateApplicationWithBundleIdentifier:(id)arg2;
 - (BOOL)relay:(id)arg1 allowIncomingApplicationConnection:(id)arg2 bundleIdentifier:(id)arg3;
-- (BOOL)relay:(id)arg1 allowIncomingApplicationViaProxy:(CDStruct_6ad76789)arg2;
+- (BOOL)relay:(id)arg1 allowIncomingApplicationViaProxy:(CDStruct_6ad76789)arg2 pid:(int)arg3;
 - (void)relay:(id)arg1 applicationConnected:(id)arg2;
 - (void)relay:(id)arg1 applicationDisconnected:(id)arg2;
 - (id)relay:(id)arg1 applicationInfoForIncomingConnection:(id)arg2 bundleIdentifier:(id)arg3;

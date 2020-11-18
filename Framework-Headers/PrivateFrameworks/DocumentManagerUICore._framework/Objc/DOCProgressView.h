@@ -6,29 +6,33 @@
 
 #import <UIKit/UIView.h>
 
-@class DOCDeterminateProgressRingView, DOCGhostRingView, DOCIndeterminateProgressRingView, NSOperationQueue, NSProgress, UIColor;
+@class DOCDeterminateProgressRingView, DOCGhostRingView, DOCIndeterminateProgressRingView, NSOperationQueue, NSProgress, UIColor, UITapGestureRecognizer;
 
 @interface DOCProgressView : UIView
 {
     NSOperationQueue *_pendingAnimationQueue;
-    BOOL _graduallyIncreasingProgress;
-    double _progress;
     BOOL _canShowStopButton;
+    BOOL _graduallyIncreasingProgress;
     UIColor *_inactiveStrokeColor;
     UIColor *_activeStrokeColor;
     NSProgress *_observedProgress;
     DOCGhostRingView *_ghostRingView;
     DOCDeterminateProgressRingView *_determinateProgressRingView;
     DOCIndeterminateProgressRingView *_indeterminateProgressRingView;
+    double _progress;
+    UITapGestureRecognizer *_tapGestureRecognizer;
 }
 
-@property (strong, nonatomic) UIColor *activeStrokeColor; // @synthesize activeStrokeColor=_activeStrokeColor;
+@property (copy, nonatomic) UIColor *activeStrokeColor; // @synthesize activeStrokeColor=_activeStrokeColor;
 @property (nonatomic) BOOL canShowStopButton; // @synthesize canShowStopButton=_canShowStopButton;
 @property (strong, nonatomic) DOCDeterminateProgressRingView *determinateProgressRingView; // @synthesize determinateProgressRingView=_determinateProgressRingView;
 @property (strong, nonatomic) DOCGhostRingView *ghostRingView; // @synthesize ghostRingView=_ghostRingView;
-@property (strong, nonatomic) UIColor *inactiveStrokeColor; // @synthesize inactiveStrokeColor=_inactiveStrokeColor;
+@property (nonatomic) BOOL graduallyIncreasingProgress; // @synthesize graduallyIncreasingProgress=_graduallyIncreasingProgress;
+@property (copy, nonatomic) UIColor *inactiveStrokeColor; // @synthesize inactiveStrokeColor=_inactiveStrokeColor;
 @property (strong, nonatomic) DOCIndeterminateProgressRingView *indeterminateProgressRingView; // @synthesize indeterminateProgressRingView=_indeterminateProgressRingView;
 @property (strong, nonatomic) NSProgress *observedProgress; // @synthesize observedProgress=_observedProgress;
+@property (nonatomic) double progress; // @synthesize progress=_progress;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 
 - (void).cxx_destruct;
 - (void)_addToPendingAnimationQueue:(CDUnknownBlockType)arg1;
@@ -39,6 +43,7 @@
 - (void)beginGraduallyIncreasingProgress;
 - (void)dealloc;
 - (void)fadeoutWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleTap:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

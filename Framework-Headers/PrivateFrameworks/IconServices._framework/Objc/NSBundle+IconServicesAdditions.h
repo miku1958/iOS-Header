@@ -9,6 +9,7 @@
 @interface NSBundle (IconServicesAdditions)
 + (id)__IS__frameworkBundle;
 + (id)__IS__frameworkLocalizedString:(id)arg1;
++ (id)__IS__iconsetResourceAssetsCatalogURL;
 + (id)__IS__iconsetResourceBundle;
 @end
 

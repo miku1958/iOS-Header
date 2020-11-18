@@ -18,6 +18,8 @@
 - (UINavigationController *)navigationController;
 - (void)performScrollTestWithCompletion:(void (^)(void))arg1;
 - (void)performScrollTestWithHandlerForFirstScrollCompletion:(void (^)(void))arg1 completion:(void (^)(void))arg2;
+- (struct CGRect)scrollToIndexPath:(NSIndexPath *)arg1;
 - (void)tapAtIndexPath:(NSIndexPath *)arg1;
+- (void)toggleShowMoreForSection:(unsigned long long)arg1;
 @end
 

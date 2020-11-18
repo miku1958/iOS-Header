@@ -36,6 +36,7 @@
 - (void)deleteObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)deleteObjects:(id)arg1 synchronous:(BOOL)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (BOOL)deleteRemoteState:(id *)arg1;
+- (id)deviceUUID;
 - (id)executeQuery:(id)arg1 error:(id *)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

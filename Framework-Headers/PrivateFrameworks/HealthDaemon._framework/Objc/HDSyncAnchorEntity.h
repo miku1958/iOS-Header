@@ -14,25 +14,26 @@
 + (id)_predicateForSyncEntityIdentifier:(id)arg1;
 + (id)_predicateForSyncEntityIdentifier:(id)arg1 syncStore:(id)arg2;
 + (id)_predicateForSyncStore:(id)arg1;
-+ (BOOL)_setSyncAnchor:(long long)arg1 options:(unsigned long long)arg2 updatePolicy:(long long)arg3 entityIdentifier:(id)arg4 store:(id)arg5 database:(id)arg6 error:(id *)arg7;
-+ (BOOL)_setSyncAnchor:(long long)arg1 options:(unsigned long long)arg2 updatePolicy:(long long)arg3 entityIdentifier:(id)arg4 store:(id)arg5 profile:(id)arg6 error:(id *)arg7;
++ (BOOL)_setAnchorsWithMap:(id)arg1 updateDate:(double)arg2 store:(id)arg3 updateOptions:(unsigned long long)arg4 updatePolicy:(long long)arg5 resetInvalid:(BOOL)arg6 profile:(id)arg7 error:(id *)arg8;
++ (BOOL)_setSyncAnchor:(long long)arg1 updateDate:(double)arg2 options:(unsigned long long)arg3 updatePolicy:(long long)arg4 entityIdentifier:(id)arg5 store:(id)arg6 profile:(id)arg7 error:(id *)arg8;
++ (BOOL)_setSyncAnchor:(long long)arg1 updateDate:(double)arg2 options:(unsigned long long)arg3 updatePolicy:(long long)arg4 entityIdentifier:(id)arg5 store:(id)arg6 transaction:(id)arg7 error:(id *)arg8;
 + (long long)_syncAnchorForProperty:(id)arg1 entityIdentifier:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (BOOL)enumerateSyncAnchorsForStoreID:(long long)arg1 database:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-+ (BOOL)getAckedAnchorsWithMap:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
-+ (BOOL)getNextAnchorsWithMap:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
-+ (BOOL)getReceivedAnchorsWithMap:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
-+ (long long)nextSyncAnchorForEntityIdentifier:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (BOOL)getMinimumSyncAnchorsOfType:(long long)arg1 anchorMap:(id)arg2 updatedSince:(id)arg3 profile:(id)arg4 error:(id *)arg5;
++ (BOOL)getSyncAnchorsOfType:(long long)arg1 anchorMap:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
++ (BOOL)prepareSyncAnchorsForEntityIdentifiers:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (long long)protectionClass;
-+ (long long)receivedAnchorForEntityIdentifier:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
-+ (BOOL)resetNextSyncAnchor:(long long)arg1 entityIdentifier:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
-+ (BOOL)resetReceivedAnchorsForStore:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (BOOL)resetSyncAnchorsOfType:(long long)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)resetSyncStore:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (BOOL)setAcknowledgedAnchorsWithMap:(id)arg1 store:(id)arg2 resetNext:(BOOL)arg3 resetInvalid:(BOOL)arg4 profile:(id)arg5 error:(id *)arg6;
-+ (BOOL)setNextSyncAnchor:(long long)arg1 entityIdentifier:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
-+ (BOOL)setReceivedAnchor:(long long)arg1 entityIdentifier:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
++ (long long)syncAnchorOfType:(long long)arg1 entityIdentifier:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)uniquedColumns;
++ (BOOL)updateSyncAnchor:(long long)arg1 type:(long long)arg2 entityIdentifier:(id)arg3 store:(id)arg4 updatePolicy:(long long)arg5 profile:(id)arg6 error:(id *)arg7;
++ (BOOL)updateSyncAnchor:(long long)arg1 type:(long long)arg2 updateDate:(id)arg3 entityIdentifier:(id)arg4 store:(id)arg5 updatePolicy:(long long)arg6 profile:(id)arg7 error:(id *)arg8;
++ (BOOL)updateSyncAnchorsWithMap:(id)arg1 type:(long long)arg2 store:(id)arg3 updatePolicy:(long long)arg4 resetInvalid:(BOOL)arg5 profile:(id)arg6 error:(id *)arg7;
++ (BOOL)updateSyncAnchorsWithMap:(id)arg1 type:(long long)arg2 updateDate:(id)arg3 store:(id)arg4 updatePolicy:(long long)arg5 resetInvalid:(BOOL)arg6 profile:(id)arg7 error:(id *)arg8;
 
 @end
 

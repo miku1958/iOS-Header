@@ -42,7 +42,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *parPunchoutActionTarget; // @synthesize parPunchoutActionTarget=_parPunchoutActionTarget;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (copy, nonatomic) NSString *resultId; // @synthesize resultId=_resultId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;

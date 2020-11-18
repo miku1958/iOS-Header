@@ -58,6 +58,7 @@
 @property (strong, nonatomic) NSData *remoteSKEData; // @synthesize remoteSKEData=_remoteSKEData;
 @property (nonatomic) long long state; // @synthesize state=_state;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)init;

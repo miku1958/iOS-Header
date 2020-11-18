@@ -16,9 +16,13 @@
 
 @property (weak, nonatomic) id<WLKNotificationCenterDelegate> delegate; // @synthesize delegate=_delegate;
 
++ (id)defaultCenter;
 - (void).cxx_destruct;
 - (id)init;
+- (BOOL)isCategoryEnabledByUser:(long long)arg1;
 - (void)post:(id)arg1 title:(id)arg2 body:(id)arg3 options:(id)arg4;
+- (void)setBadgeNumber:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)setBadgeString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

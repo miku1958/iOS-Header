@@ -8,12 +8,13 @@
 
 #import <CoreSpeech/CSAssetManagerDelegate-Protocol.h>
 #import <CoreSpeech/CSEndpointAnalyzerImpl-Protocol.h>
+#import <CoreSpeech/CSFirstUnlockMonitorDelegate-Protocol.h>
 #import <CoreSpeech/EARCaesuraSilencePosteriorGeneratorDelegate-Protocol.h>
 
 @class CSAsset, CSServerEndpointFeatures, EARCaesuraSilencePosteriorGenerator, EARClientSilenceFeatures, NSDate, NSDictionary, NSMutableArray, NSString, _EAREndpointer;
-@protocol CSEndpointAnalyzerDelegate, OS_dispatch_queue;
+@protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate, OS_dispatch_queue;
 
-@interface CSHybridEndpointAnalyzer : NSObject <CSAssetManagerDelegate, EARCaesuraSilencePosteriorGeneratorDelegate, CSEndpointAnalyzerImpl>
+@interface CSHybridEndpointAnalyzer : NSObject <CSAssetManagerDelegate, CSFirstUnlockMonitorDelegate, EARCaesuraSilencePosteriorGeneratorDelegate, CSEndpointAnalyzerImpl>
 {
     BOOL _saveSamplesSeenInReset;
     BOOL _canProcessCurrentRequest;
@@ -25,6 +26,7 @@
     BOOL _recordingDidStop;
     BOOL _didDetectSpeech;
     id<CSEndpointAnalyzerDelegate> _delegate;
+    id<CSEndpointAnalyzerImplDelegate> _implDelegate;
     unsigned long long _activeChannel;
     long long _endpointStyle;
     long long _endpointMode;
@@ -92,6 +94,7 @@
 @property (nonatomic) double hepAudioOriginInMs; // @synthesize hepAudioOriginInMs=_hepAudioOriginInMs;
 @property (strong, nonatomic) _EAREndpointer *hybridClassifier; // @synthesize hybridClassifier=_hybridClassifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *hybridClassifierQueue; // @synthesize hybridClassifierQueue=_hybridClassifierQueue;
+@property (weak, nonatomic) id<CSEndpointAnalyzerImplDelegate> implDelegate; // @synthesize implDelegate=_implDelegate;
 @property (nonatomic) double interspeechWaitTime; // @synthesize interspeechWaitTime=_interspeechWaitTime;
 @property (readonly, nonatomic) double lastEndOfVoiceActivityTime;
 @property (strong, nonatomic) CSServerEndpointFeatures *lastKnownServerEPFeatures; // @synthesize lastKnownServerEPFeatures=_lastKnownServerEPFeatures;
@@ -117,9 +120,11 @@
 
 - (void).cxx_destruct;
 - (void)CSAssetManagerDidDownloadNewAsset:(id)arg1;
+- (void)CSFirstUnlockMonitor:(id)arg1 didReceiveFirstUnlock:(BOOL)arg2;
 - (void)CSLanguageCodeUpdateMonitor:(id)arg1 didReceiveLanguageCodeChanged:(id)arg2;
 - (id)_getCSHybridEndpointerConfigForAsset:(id)arg1;
 - (void)_readClientLagParametersFromHEPAsset:(id)arg1;
+- (BOOL)_shouldUsePhaticWithRecordContext;
 - (void)_updateAssetWithCurrentLanguage;
 - (void)_updateAssetWithLanguage:(id)arg1;
 - (void)clientSilenceFeaturesAvailable:(id)arg1;
@@ -128,11 +133,13 @@
 - (void)preheat;
 - (void)processAudioSamplesAsynchronously:(id)arg1;
 - (void)processServerEndpointFeatures:(id)arg1;
-- (void)recordingStoppedForReason:(unsigned long long)arg1;
+- (void)recordingStoppedForReason:(long long)arg1;
 - (void)reset;
-- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
+- (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2 recordSettings:(id)arg3;
 - (id)serverFeaturesLatencyDistributionDictionary;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)stopEndpointer;
+- (void)terminateProcessing;
 - (void)updateEndpointerDelayedTrigger:(BOOL)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
 

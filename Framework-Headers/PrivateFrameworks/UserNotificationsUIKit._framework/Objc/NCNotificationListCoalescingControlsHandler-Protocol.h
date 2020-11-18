@@ -6,13 +6,10 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class NSString;
 @protocol NCNotificationListCoalescingControlsHandlerDelegate;
 
 @protocol NCNotificationListCoalescingControlsHandler <NSObject>
 
-@property (copy, nonatomic) NSString *coalescingIdentifier;
-@property (nonatomic) unsigned long long groupingSection;
 @property (weak, nonatomic) id<NCNotificationListCoalescingControlsHandlerDelegate> handlerDelegate;
 
 - (BOOL)dismissModalFullScreenIfNeeded;

@@ -23,9 +23,17 @@
 + (id)newVerifiedPersonsFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newVerifiedPersonsWithAtLeastOneFaceFetchOptionsWithPhotoLibrary:(id)arg1;
 + (id)newVisibleFacesFetchOptionsWithPhotoLibrary:(id)arg1;
++ (unsigned short)phFaceAgeTypeFromPVFace:(id)arg1;
++ (unsigned short)phFaceBaldTypeFromPVFace:(id)arg1;
 + (id)phFaceCropFromPVFaceCrop:(id)arg1 withFetchOptions:(id)arg2;
 + (id)phFaceCropsFromPVFaceCrops:(id)arg1 withFetchOptions:(id)arg2;
++ (unsigned short)phFaceEyesStateFromPVFace:(id)arg1;
++ (unsigned short)phFaceFacialHairTypeFromPVFace:(id)arg1;
 + (id)phFaceFromPVFace:(id)arg1 withFetchOptions:(id)arg2;
++ (unsigned short)phFaceGenderFromPVFace:(id)arg1;
++ (unsigned short)phFaceGlassesTypeFromPVFace:(id)arg1;
++ (unsigned short)phFaceHairColorTypeFromPVFace:(id)arg1;
++ (unsigned short)phFaceSmileTypeFromPVFace:(id)arg1;
 + (id)phFaceprintFromPVFaceprint:(id)arg1;
 + (id)phFacesFromPVFaces:(id)arg1 withFetchOptions:(id)arg2;
 + (id)pvFaceCropFromPHFaceCrop:(id)arg1;
@@ -45,6 +53,14 @@
 + (id)pvPersonsArrayFromPHPersons:(id)arg1;
 + (id)pvPersonsSetFromPHFetchResult:(id)arg1;
 + (id)pvPersonsSetFromPHPersons:(id)arg1;
++ (id)vnFaceAttributeAgeToPHFaceAgeTypeMap;
++ (id)vnFaceAttributeBaldToPHFaceBaldTypeMap;
++ (id)vnFaceAttributeEyesToPHEyesStateMap;
++ (id)vnFaceAttributeFacialHairToPHFacialHairTypeMap;
++ (id)vnFaceAttributeGenderToPHFaceGenderTypeMap;
++ (id)vnFaceAttributeGlassesToPHFaceGlassesTypeMap;
++ (id)vnFaceAttributeHairColorToPHFaceHairColorTypeMap;
++ (id)vnFaceAttributeSmileToPHFaceSmileTypeMap;
 
 @end
 

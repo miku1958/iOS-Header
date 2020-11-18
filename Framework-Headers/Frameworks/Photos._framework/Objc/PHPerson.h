@@ -11,6 +11,8 @@
 @interface PHPerson : PHObject
 {
     BOOL _inPersonNamingModel;
+    unsigned short _ageType;
+    unsigned short _genderType;
     NSString *_name;
     NSString *_displayName;
     long long _type;
@@ -19,25 +21,33 @@
     long long _faceCount;
     NSDictionary *_contactMatchingDictionary;
     long long _verifiedType;
+    long long _questionType;
 }
 
+@property (readonly, nonatomic) unsigned short ageType; // @synthesize ageType=_ageType;
 @property (readonly, nonatomic) NSDictionary *contactMatchingDictionary; // @synthesize contactMatchingDictionary=_contactMatchingDictionary;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) long long faceCount; // @synthesize faceCount=_faceCount;
+@property (readonly, nonatomic) unsigned short genderType; // @synthesize genderType=_genderType;
 @property (readonly, nonatomic, getter=isInPersonNamingModel) BOOL inPersonNamingModel; // @synthesize inPersonNamingModel=_inPersonNamingModel;
 @property (readonly, nonatomic) unsigned long long manualOrder; // @synthesize manualOrder=_manualOrder;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *personUri; // @synthesize personUri=_personUri;
+@property (readonly, nonatomic) long long questionType; // @synthesize questionType=_questionType;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic, getter=isVerified) BOOL verified;
 @property (readonly, nonatomic) long long verifiedType; // @synthesize verifiedType=_verifiedType;
 
-+ (id)_convertToPersonSuggestion:(id)arg1;
++ (id)_assetLocalIdentifiersForAssetCollection:(id)arg1;
++ (id)_convertToPersonSuggestion:(id)arg1 photoLibrary:(id)arg2;
++ (id)_fetchSuggestedPersonsForRecipients:(id)arg1 options:(id)arg2 photoLibrary:(id)arg3;
++ (id)_fetchSuggestedRecipientsForFocusedAssetCollection:(id)arg1 assetCollection:(id)arg2 options:(id)arg3 client:(unsigned long long)arg4;
 + (id)_momentLocalIdentifiersForAssetCollection:(id)arg1;
-+ (id)_packageSuggestionList:(id)arg1;
++ (id)_packageSuggestionList:(id)arg1 photoLibrary:(id)arg2;
 + (id)_personSuggestionMarkedAsConfirmed:(BOOL)arg1 fromPersonSuggestion:(id)arg2;
 + (long long)_personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3 fromClient:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)_verifiedPersonWithLocalIdentifier:(id)arg1 fromPhotoLibrary:(id)arg2;
++ (id)batchFetchSuggestedRecipientsForAssets:(id)arg1 options:(id)arg2;
 + (id)displayNameFromContact:(id)arg1;
 + (id)entityKeyMap;
 + (id)fetchAssociatedPersonsGroupedByFaceGroupLocalIdentifierForFaceGroups:(id)arg1 options:(id)arg2;
@@ -49,15 +59,21 @@
 + (id)fetchPersonCountGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsForAssetCollection:(id)arg1 options:(id)arg2;
++ (id)fetchPersonsForContactIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsForContacts:(id)arg1 options:(id)arg2;
++ (id)fetchPersonsForReferences:(id)arg1 photoLibrary:(id)arg2;
 + (id)fetchPersonsGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsInAsset:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsWithOptions:(id)arg1;
++ (id)fetchPersonsWithQuestionType:(long long)arg1 options:(id)arg2;
 + (id)fetchPersonsWithType:(long long)arg1 options:(id)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchRejectedPersonsForFace:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedPersonsForAssetCollection:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedPersonsForFocusedAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchSuggestedRecipientsForAssetCollection:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedRecipientsForFocusedAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)fullNameFromContact:(id)arg1;
 + (id)identifierCode;
@@ -81,6 +97,7 @@
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (id)linkedContactWithKeysToFetch:(id)arg1;
 - (void)markAsNeedingKeyFace;
+- (id)objectReference;
 - (id)suggestedContacts;
 
 @end

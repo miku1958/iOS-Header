@@ -13,13 +13,11 @@
 @interface _MPCPlayerDisableModificationsCommand : _MPCPlayerCommand <MPCPlayerDisableModificationsCommand>
 {
     BOOL _disabled;
-    BOOL _disable;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isDisabled) BOOL disable; // @synthesize disable=_disable;
-@property (readonly, nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
+@property (nonatomic, getter=isDisabled, setter=_setDisabled:) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

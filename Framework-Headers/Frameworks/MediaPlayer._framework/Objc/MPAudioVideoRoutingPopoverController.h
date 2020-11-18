@@ -26,7 +26,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_tableViewController;
 - (void)dealloc;
 - (id)initWithContentViewController:(id)arg1;
 - (id)initWithType:(long long)arg1;

@@ -21,8 +21,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_didReceiveSleepGesture;
+- (void)_didReceiveWakeGesture;
+- (void)_startMonitoringWithQueue:(id)arg1;
+- (void)_stopMonitoring;
 - (id)init;
-- (void)startObserving;
 - (void)wakeGestureManager:(id)arg1 didUpdateWakeGesture:(long long)arg2;
 
 @end

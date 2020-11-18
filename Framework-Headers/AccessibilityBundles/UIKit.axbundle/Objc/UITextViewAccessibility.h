@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityActivateLink:(id)arg1;
 - (id)_accessibilityAttributedTextRetrieval;
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
+- (unsigned long long)_accessibilityAutomationType;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
 - (double)_accessibilityFontSize;
@@ -25,7 +26,7 @@
 - (id)_accessibilityInternalTextLinks;
 - (id)_accessibilityLinksForRange:(struct _NSRange)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (BOOL)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
+- (BOOL)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
 - (id)_accessibilityParagraphElements;
 - (id)_accessibilityParagraphElementsWithLinks;
 - (id)_accessibilityParagraphLinksCustomRotor;
@@ -34,6 +35,7 @@
 - (void)_accessibilitySetValue:(id)arg1;
 - (id)_accessibilitySupplementaryHeaderViews;
 - (id)_accessibilityTextSelectionRectWithLargestVisualRangeFromCandidates:(id)arg1;
+- (BOOL)_accessibilityTextViewShouldBreakUpParagraphs;
 - (BOOL)_allowCustomActionHintSpeakOverride;
 - (void)_axClearCachedLinkData;
 - (void)_axDidFinishDataDetectorURLification:(id)arg1;
@@ -54,6 +56,7 @@
 - (id)accessibilityPlaceholderValue;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;
 - (BOOL)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(BOOL)arg3;

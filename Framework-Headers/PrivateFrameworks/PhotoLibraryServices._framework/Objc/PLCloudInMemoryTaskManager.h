@@ -14,10 +14,10 @@
     NSMutableDictionary *_taskIDsToDownloadTasks;
 }
 
+- (void).cxx_destruct;
 - (id)_identifierForResource:(id)arg1;
 - (BOOL)addClientHandlerAndCreateTaskIfNecessaryForResource:(id)arg1 taskIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)cancelTaskWithTaskIdentifier:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)reportCompletionForResource:(id)arg1 withData:(id)arg2 error:(id)arg3;
 - (void)reset;

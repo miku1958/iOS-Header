@@ -8,28 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAssociatedApp : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_alternateAppAdamIds;
     NSString *_preferredAppAdamId;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_alternateAppAdamIds:1;
+        unsigned int read_preferredAppAdamId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_alternateAppAdamIds:1;
+        unsigned int wrote_preferredAppAdamId:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *alternateAppAdamIds; // @synthesize alternateAppAdamIds=_alternateAppAdamIds;
+@property (strong, nonatomic) NSMutableArray *alternateAppAdamIds;
 @property (readonly, nonatomic) BOOL hasPreferredAppAdamId;
-@property (strong, nonatomic) NSString *preferredAppAdamId; // @synthesize preferredAppAdamId=_preferredAppAdamId;
+@property (strong, nonatomic) NSString *preferredAppAdamId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)alternateAppAdamIdType;
 + (id)associatedAppForPlaceData:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAlternateAppAdamId:(id)arg1;
+- (void)_readAlternateAppAdamIds;
+- (void)_readPreferredAppAdamId;
 - (void)addAlternateAppAdamId:(id)arg1;
 - (id)alternateAppAdamIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)alternateAppAdamIdsCount;
 - (void)clearAlternateAppAdamIds;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

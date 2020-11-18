@@ -7,7 +7,6 @@
 #import <ContactsUI/CNMaskingTableView.h>
 
 @class CNContact, CNContactHeaderView, NSDictionary, UIColor, UIView;
-@protocol ABContactViewDataSource, ABContactViewDelegate;
 
 @interface CNContactView : CNMaskingTableView
 {
@@ -29,9 +28,7 @@
 @property (nonatomic, getter=isCellsLayoutCachingEnabled) BOOL cellsLayoutCachingEnabled; // @synthesize cellsLayoutCachingEnabled=_cellsLayoutCachingEnabled;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (strong, nonatomic) UIView *customHeaderView; // @synthesize customHeaderView=_customHeaderView;
-@property (weak, nonatomic) id<ABContactViewDataSource> dataSource; // @dynamic dataSource;
 @property (readonly, nonatomic) CNContactHeaderView *defaultHeaderView;
-@property (weak, nonatomic) id<ABContactViewDelegate> delegate; // @dynamic delegate;
 @property (copy, nonatomic) NSDictionary *labelTextAttributes; // @synthesize labelTextAttributes=_labelTextAttributes;
 @property (nonatomic) BOOL needsUpdateVisibleCells; // @synthesize needsUpdateVisibleCells=_needsUpdateVisibleCells;
 @property (nonatomic) struct CGSize oldSize; // @synthesize oldSize=_oldSize;
@@ -42,6 +39,7 @@
 @property (copy, nonatomic) NSDictionary *valueTextAttributes; // @synthesize valueTextAttributes=_valueTextAttributes;
 
 + (id)allCardProperties;
++ (id)allImageProperties;
 + (id)cellIdentifierForActions;
 + (id)cellIdentifierForClass:(Class)arg1;
 + (id)cellIdentifierForEditingProperty:(id)arg1;

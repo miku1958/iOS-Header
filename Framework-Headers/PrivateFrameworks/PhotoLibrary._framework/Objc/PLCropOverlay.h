@@ -37,6 +37,7 @@
     BOOL _displayedInPopover;
     PLContactPhotoOverlay *_contactPhotoOverlay;
     NSString *_defaultOKButtonTitle;
+    NSString *_defaultCancelButtonTitle;
     id<PLCropOverlayDelegate> _delegate;
     PLCropOverlayBottomBar *__bottomBar;
     UIButton *__cameraCancelButton;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic) UIButton *_cameraCancelButton; // @synthesize _cameraCancelButton=__cameraCancelButton;
 @property (strong, nonatomic) UIView *cameraBottomBar;
 @property (readonly, nonatomic) PLContactPhotoOverlay *contactPhotoOverlay; // @synthesize contactPhotoOverlay=_contactPhotoOverlay;
+@property (copy, nonatomic) NSString *defaultCancelButtonTitle; // @synthesize defaultCancelButtonTitle=_defaultCancelButtonTitle;
 @property (copy, nonatomic) NSString *defaultOKButtonTitle; // @synthesize defaultOKButtonTitle=_defaultOKButtonTitle;
 @property (weak, nonatomic) id<PLCropOverlayDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isDisplayedInPopover) BOOL displayedInPopover; // @synthesize displayedInPopover=_displayedInPopover;
@@ -57,7 +59,7 @@
 @property (readonly, nonatomic) PLCropOverlayWallpaperBottomBar *wallpaperBottomBar;
 
 - (void).cxx_destruct;
-- (void)_backgroundSavePhoto:(id)arg1;
+- (void)_backgroundSavePhoto:(id)arg1 cropRect:(struct CGRect)arg2 minimalCropDimension:(double)arg3;
 - (void)_createCropView;
 - (void)_fadeOutCompleted:(id)arg1;
 - (id)_newOverlayViewWithFrame:(struct CGRect)arg1 lighterEdgeOnTop:(BOOL)arg2;
@@ -73,6 +75,7 @@
 - (void)_tappedBottomBarSetHomeButton;
 - (void)_tappedBottomBarSetLockButton;
 - (void)_updateCropRectInRect:(struct CGRect)arg1;
+- (void)_updateEditImageCancelButtonTitle;
 - (void)_updateEditImageDoneButtonTitle;
 - (void)_updateMotionToggle;
 - (void)_updateTitle;

@@ -30,9 +30,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)_animateToPosition:(Matrix_6e1d3589)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_animateToPosition:(Matrix_6e1d3589)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 timingCurve:(CDUnknownBlockType)arg5 forceDestination:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)_jumpToCenterPoint:(Matrix_6e1d3589)arg1 pitchRadians:(double)arg2 yawRadians:(double)arg3;
 - (CDStruct_c3b9c2ee)_mercatorCenterCoordinateForMapRegion:(id)arg1;
 - (BOOL)allowDatelineWraparound;
 - (double)altitude;
+- (void)animateRegionWithDuration:(double)arg1 timingFunction:(CDUnknownBlockType)arg2 stepHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)canEnter3DMode;
 - (BOOL)canEnter3DModeNoUpdate;
 - (BOOL)canRotate;
@@ -54,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)exit3DMode;
 - (double)heading;
 - (float)idealPitchForNormalizedZoomLevel:(float)arg1;
-- (id)init;
+- (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 - (BOOL)isFullyPitched;
 - (BOOL)isPitched;
 - (float)maxPitchForNormalizedZoomLevel:(float)arg1;
@@ -66,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (float)normalizedZoomLevelAdjustmentForTileSize:(long long)arg1;
 - (void)panWithOffset:(struct CGPoint)arg1 relativeToScreenPoint:(struct CGPoint)arg2 animated:(BOOL)arg3 duration:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (double)pitch;
+- (Matrix_6e1d3589)positionClampedToCameraRestriction:(Matrix_6e1d3589)arg1;
 - (double)presentationYaw;
 - (BOOL)restoreViewportFromInfo:(id)arg1;
 - (void)rotateToPitch:(double)arg1 withPoint:(const Matrix_6e1d3589 *)arg2 preserveAltitude:(BOOL)arg3 animated:(BOOL)arg4 exaggerate:(BOOL)arg5;
@@ -73,8 +77,11 @@ __attribute__((visibility("hidden")))
 - (void)setAllowDatelineWraparound:(BOOL)arg1;
 - (void)setCenterCoordinate3D:(CDStruct_071ac149)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 forceDestination:(BOOL)arg8 completion:(CDUnknownBlockType)arg9;
+- (void)setCenterCoordinateDistanceRange:(CDStruct_c3b9c2ee)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setGesturing:(BOOL)arg1;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setYaw:(double)arg1 animated:(BOOL)arg2;
 - (BOOL)snapMapIfNecessary:(BOOL)arg1;
 - (void)startTrackingAnnotation:(id)arg1 trackHeading:(BOOL)arg2 animated:(BOOL)arg3;

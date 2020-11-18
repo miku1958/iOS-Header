@@ -24,6 +24,7 @@
     NSString *_type;
     _SFPBColor *_backgroundColor;
     NSString *_playbackRouteUniqueIdentifier;
+    NSString *_playbackBundleIdentifier;
 }
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *playbackBundleIdentifier; // @synthesize playbackBundleIdentifier=_playbackBundleIdentifier;
 @property (copy, nonatomic) NSString *playbackRouteUniqueIdentifier; // @synthesize playbackRouteUniqueIdentifier=_playbackRouteUniqueIdentifier;
 @property (nonatomic) BOOL playbackRouteUniqueIdentifierIsEncrypted; // @synthesize playbackRouteUniqueIdentifierIsEncrypted=_playbackRouteUniqueIdentifierIsEncrypted;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;

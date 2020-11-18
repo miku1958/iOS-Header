@@ -13,17 +13,19 @@
     unsigned int _contextID;
 }
 
-@property (readonly, nonatomic) CAContext *CAContext; // @dynamic CAContext;
+@property (readonly, nonatomic) CAContext *CAContext;
 @property (readonly, nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
 
 + (id)layerWithCAContext:(id)arg1;
-- (id)_initWithCAContext:(id)arg1 contextID:(unsigned int)arg2 level:(double)arg3;
+- (id)_initWithCAContext:(id)arg1 contextID:(unsigned int)arg2 fallbackLevel:(double)arg3;
+- (id)_succinctDescription;
 - (id)description;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCAContext:(id)arg1;
 - (id)initWithCAContextID:(unsigned int)arg1 level:(double)arg2;
 - (id)initWithXPCDictionary:(id)arg1;
+- (BOOL)isCAContextLayer;
 - (BOOL)isEqual:(id)arg1;
 
 @end

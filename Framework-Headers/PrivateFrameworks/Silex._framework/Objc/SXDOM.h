@@ -10,7 +10,7 @@
 #import <Silex/NSMutableCopying-Protocol.h>
 
 @class NSDictionary, SXComponents;
-@protocol SXAutoPlacement;
+@protocol SXAutoPlacement, SXDocumentStyle;
 
 @interface SXDOM : NSObject <NSCopying, NSMutableCopying>
 {
@@ -21,6 +21,7 @@
     NSDictionary *_textStyles;
     NSDictionary *_resources;
     id<SXAutoPlacement> _autoPlacement;
+    id<SXDocumentStyle> _documentStyle;
 }
 
 @property (readonly, nonatomic) id<SXAutoPlacement> autoPlacement; // @synthesize autoPlacement=_autoPlacement;
@@ -28,13 +29,14 @@
 @property (readonly, copy, nonatomic) NSDictionary *componentStyles; // @synthesize componentStyles=_componentStyles;
 @property (readonly, copy, nonatomic) NSDictionary *componentTextStyles; // @synthesize componentTextStyles=_componentTextStyles;
 @property (readonly, copy, nonatomic) SXComponents *components; // @synthesize components=_components;
+@property (readonly, nonatomic) id<SXDocumentStyle> documentStyle; // @synthesize documentStyle=_documentStyle;
 @property (readonly, copy, nonatomic) NSDictionary *resources; // @synthesize resources=_resources;
 @property (readonly, copy, nonatomic) NSDictionary *textStyles; // @synthesize textStyles=_textStyles;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7;
+- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7 documentStyle:(id)arg8;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

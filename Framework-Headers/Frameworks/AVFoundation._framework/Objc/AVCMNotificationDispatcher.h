@@ -26,7 +26,6 @@
 - (id)_copyAndRemoveListenerAndCallbackForWeakReferenceToListener:(id)arg1 callback:(CDUnknownFunctionPointerType)arg2 name:(struct __CFString *)arg3 object:(const void *)arg4;
 - (void)addListenerWithWeakReference:(id)arg1 callback:(CDUnknownFunctionPointerType)arg2 name:(struct __CFString *)arg3 object:(const void *)arg4 flags:(unsigned int)arg5;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithCMNotificationCenter:(struct opaqueCMNotificationCenter *)arg1;
 - (void)removeListenerWithWeakReference:(id)arg1 callback:(CDUnknownFunctionPointerType)arg2 name:(struct __CFString *)arg3 object:(const void *)arg4;

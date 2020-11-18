@@ -8,11 +8,11 @@
 
 #import <RelevanceEngine/NSCoding-Protocol.h>
 #import <RelevanceEngine/NSCopying-Protocol.h>
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
 @class NSArray, NSString, REContent, REElementAction;
 
-@interface REElement : NSObject <REIndentedDescription, NSCopying, NSCoding>
+@interface REElement : NSObject <REAutomaticExportedInterface, NSCopying, NSCoding>
 {
     NSString *_bundleIdentifier;
     NSString *_identifier;
@@ -25,24 +25,23 @@
 
 @property (readonly, nonatomic) REElementAction *action; // @synthesize action=_action;
 @property (readonly, nonatomic) REContent *content; // @synthesize content=_content;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) REContent *idealizedContent; // @synthesize idealizedContent=_idealizedContent;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) unsigned long long privacyBehavior; // @synthesize privacyBehavior=_privacyBehavior;
 @property (readonly, nonatomic) NSArray *relevanceProviders; // @synthesize relevanceProviders=_relevanceProviders;
-@property (readonly) Class superclass;
 
 + (id)_supportedDictionaryEncodingKeys;
 - (void).cxx_destruct;
+- (BOOL)_relevanceProvidersEqualToElement:(id)arg1;
 - (void)_updateIdentifier:(id)arg1;
 - (id)bundleIdentifier;
 - (id)copyElementWithUpdatedRelevanceProviders:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
 - (id)dictionaryEncodingWithRelevanceProviderGenerator:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)finalizeContent;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 relevanceProviderGenerator:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 content:(id)arg2 action:(id)arg3 relevanceProviders:(id)arg4;

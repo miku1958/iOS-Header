@@ -8,18 +8,21 @@
 
 #import <SafariShared/WBSHistoryStoreDelegate-Protocol.h>
 
-@class NSArray, NSCountedSet, NSData, NSMutableDictionary, NSString;
+@class NSArray, NSCountedSet, NSData, NSMutableDictionary, NSString, WBSHistoryTagMap;
 @protocol OS_dispatch_queue, WBSHistoryStore;
 
 @interface WBSHistory : NSObject <WBSHistoryStoreDelegate>
 {
     NSObject<OS_dispatch_queue> *_entriesByURLStringAccessQueue;
     NSMutableDictionary *_entriesByURLString;
+    NSObject<OS_dispatch_queue> *_hostnameToHistoryItemCountAccessQueue;
+    NSCountedSet *_hostnameToHistoryItemCount;
     NSCountedSet *_stringsForUserTypedDomainExpansion;
     double _historyAgeLimit;
     BOOL _hasStartedLoadingHistory;
     NSObject<OS_dispatch_queue> *_waitUntilHistoryHasLoadedQueue;
     id<WBSHistoryStore> _historyStore;
+    WBSHistoryTagMap *_historyTagMap;
 }
 
 @property (readonly) NSArray *allItems;
@@ -30,6 +33,7 @@
 @property (readonly, nonatomic) BOOL hasAnyHistoryItems;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double historyAgeLimit; // @synthesize historyAgeLimit=_historyAgeLimit;
+@property (readonly, nonatomic) WBSHistoryTagMap *historyTagMap; // @synthesize historyTagMap=_historyTagMap;
 @property (copy, nonatomic) NSData *longLivedSaveOperationData;
 @property (readonly, nonatomic) unsigned long long numberOfHistoryItems;
 @property (readonly, nonatomic) unsigned long long numberOfHistoryItemsOnHistoryQueue;
@@ -37,6 +41,7 @@
 @property (copy, nonatomic) NSData *pushThrottlerData;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;
+@property (nonatomic) BOOL syncsWithManateeContainer;
 
 + (void)clearExistingSharedHistory;
 + (id)existingSharedHistory;
@@ -47,7 +52,9 @@
 - (void)_addItem:(id)arg1 addToStringsForUserTypedDomainExpansions:(BOOL)arg2;
 - (void)_addItemToStringsForUserTypedDomainExpansion:(id)arg1;
 - (void)_addVisitedLinksForItemsIfNeeded:(id)arg1;
+- (void)_clearHostnameCount;
 - (id)_createHistoryStore;
+- (void)_dispatchDidRemoveHostnames:(id)arg1;
 - (void)_dispatchHistoryCleared:(id)arg1;
 - (void)_dispatchHistoryItemDidChange:(id)arg1 byUserInitiatedAction:(BOOL)arg2;
 - (void)_dispatchHistoryItemWillChange:(id)arg1;
@@ -70,9 +77,12 @@
 - (void)_setAttributes:(unsigned long long)arg1 forVisit:(id)arg2;
 - (void)_startLoading;
 - (void)_unload;
+- (void)_updateHostnameCountWithAddedHistoryItems:(id)arg1;
+- (id)_updateHostnameCountWithDeletedHistoryItems:(id)arg1;
 - (void)_waitUntilHistoryHasLoadedMainThread;
 - (void)addAttributes:(unsigned long long)arg1 toVisit:(id)arg2;
 - (void)addAutocompleteTrigger:(id)arg1 forURLString:(id)arg2;
+- (void)addTagWithIdentifier:(id)arg1 title:(id)arg2 toItemAtURL:(id)arg3 level:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)canRecordRedirectFromVisit:(id)arg1 to:(id)arg2;
 - (void)checkIfLocalVisitExistsInAnyOfItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)clearHistory;
@@ -83,12 +93,15 @@
 - (void)closeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)enumerateItemsAsynchronouslyUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 limit:(unsigned long long)arg3 minimumItemCount:(unsigned long long)arg4 sortOrder:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)getAllTombstonesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getServerChangeTokenDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getVisitsAndTombstonesNeedingSyncWithVisitSyncWindow:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getVisitsCreatedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)historyLoader:(id)arg1 didLoadItems:(id)arg2 discardedItems:(id)arg3 stringsForUserTypeDomainExpansion:(id)arg4;
 - (void)historyLoaderDidFinishLoading:(id)arg1;
+- (void)historyStore:(id)arg1 didAddVisits:(id)arg2;
 - (void)historyStore:(id)arg1 didPrepareToDeleteWithDeletionPlan:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveItems:(id)arg2;
 - (void)historyStore:(id)arg1 didRemoveVisits:(id)arg2;
@@ -97,6 +110,7 @@
 - (id)init;
 - (id)itemForURL:(id)arg1;
 - (id)itemForURLString:(id)arg1;
+- (id)itemForURLString:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (id)itemRedirectedFrom:(id)arg1 to:(id)arg2 origin:(long long)arg3 date:(id)arg4;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(BOOL)arg4 wasFailure:(BOOL)arg5 increaseVisitCount:(BOOL)arg6 origin:(long long)arg7;
 - (id)itemVisitedAtURLString:(id)arg1 title:(id)arg2 timeOfVisit:(double)arg3 wasHTTPNonGet:(BOOL)arg4 wasFailure:(BOOL)arg5 increaseVisitCount:(BOOL)arg6 origin:(long long)arg7 attributes:(unsigned long long)arg8;
@@ -113,8 +127,10 @@
 - (void)savePendingChangesBeforeTerminationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (void)setServerChangeTokenData:(id)arg1;
+- (void)setTitle:(id)arg1 ofTag:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateTitle:(id)arg1 forVisit:(id)arg2;
+- (void)vacuumHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)visitIdentifiersMatchingExistingVisits:(id)arg1 populateAssociatedVisits:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)waitUntilHistoryHasLoaded;
 

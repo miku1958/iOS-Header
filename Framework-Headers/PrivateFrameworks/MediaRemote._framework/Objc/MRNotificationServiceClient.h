@@ -43,7 +43,7 @@
 - (void)_postDefaultAppilicationNotifications:(id)arg1;
 - (void)_postDefaultOriginNotifications:(id)arg1;
 - (void)_postDefaultPlayerNotificationsWithUserInfo:(id)arg1 object:(id)arg2;
-- (void)_processActiveApplicationInvalidationHandlersForNotifciation:(id)arg1;
+- (void)_processActiveApplicationInvalidationHandlersForNotification:(id)arg1;
 - (void)_processActiveOriginInvalidationHandlersForNotification:(id)arg1;
 - (void)_processActivePlayerInvalidationHandlersForNotification:(id)arg1;
 - (void)_processApplicationInvalidationHandlersForNotification:(id)arg1;

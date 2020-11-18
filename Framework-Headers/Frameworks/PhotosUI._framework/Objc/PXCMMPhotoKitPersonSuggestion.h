@@ -13,7 +13,7 @@
 @interface PXCMMPhotoKitPersonSuggestion : NSObject <PXCMMPersonSuggestion>
 {
     CNContact *_fetchQueue_linkedContact;
-    NSString *_displayName;
+    NSString *_localizedName;
     PHPerson *_person;
     PHFetchResult *_keyFaceFetchResult;
     PHFetchResult *_keyAssetFetchResult;
@@ -23,11 +23,11 @@
 @property (strong, nonatomic) PXRecipientTransport *bestTransport; // @synthesize bestTransport=_bestTransport;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHFetchResult *keyAssetFetchResult; // @synthesize keyAssetFetchResult=_keyAssetFetchResult;
 @property (readonly, nonatomic) PHFetchResult *keyFaceFetchResult; // @synthesize keyFaceFetchResult=_keyFaceFetchResult;
 @property (readonly, nonatomic) CNContact *linkedContact;
+@property (readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property (readonly) Class superclass;
 

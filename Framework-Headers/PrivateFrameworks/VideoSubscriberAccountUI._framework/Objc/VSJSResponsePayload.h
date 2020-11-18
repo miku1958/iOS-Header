@@ -25,8 +25,10 @@ __attribute__((visibility("hidden")))
     NSNumber *_expectedAction;
     NSArray *_subscriptions;
     NSArray *_clearSubscriptions;
+    NSString *_appBundleIdentifier;
 }
 
+@property (copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (copy, nonatomic) NSString *authN; // @synthesize authN=_authN;
 @property (copy, nonatomic) NSString *authenticationScheme; // @synthesize authenticationScheme=_authenticationScheme;
 @property (copy, nonatomic) NSArray *clearSubscriptions; // @synthesize clearSubscriptions=_clearSubscriptions;

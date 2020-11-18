@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL mIsSpecial;
     TSCH3DShaderVariable *mGenericName;
     NSArray *mElements;
+    unsigned long long mComponentCount;
 }
 
 @property (readonly, nonatomic) unsigned long long arraySize; // @synthesize arraySize=mArraySize;

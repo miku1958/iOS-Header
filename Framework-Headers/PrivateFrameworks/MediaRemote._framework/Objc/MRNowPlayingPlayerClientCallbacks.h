@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     MSVMultiCallback *_infoCallbacks;
     MSVMultiCallback *_lyricsCallbacks;
     MSVMultiCallback *_artworkCallbacks;
+    CDUnknownBlockType _playbackSessionCallback;
+    CDUnknownBlockType _playbackSessionMigrateRequestCallback;
     CDUnknownBlockType _beginLyricsEventCallback;
     CDUnknownBlockType _endLyricsEventCallback;
     CDUnknownBlockType _videoThumbnailsCallback;
@@ -47,6 +49,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) MSVMultiCallback *languageOptionsCallbacks; // @synthesize languageOptionsCallbacks=_languageOptionsCallbacks;
 @property (readonly, nonatomic) MSVMultiCallback *lyricsCallbacks; // @synthesize lyricsCallbacks=_lyricsCallbacks;
 @property (readonly, nonatomic) MSVMultiCallback *metadataCallbacks; // @synthesize metadataCallbacks=_metadataCallbacks;
+@property (copy, nonatomic) CDUnknownBlockType playbackSessionCallback;
+@property (copy, nonatomic) CDUnknownBlockType playbackSessionMigrateRequestCallback;
 @property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
 @property (copy, nonatomic) CDUnknownBlockType videoThumbnailsCallback;
 

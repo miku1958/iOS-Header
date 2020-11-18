@@ -33,11 +33,12 @@
 + (id)_fetchResultForEmptyDataSourceManager;
 + (id)_fetchResultForMockRecentLargeMomentsDataSourceManager;
 + (id)_fetchResultForTypeGraphWithContext:(id)arg1;
++ (id)currentDataSourceManager;
 + (id)dataSourceManager;
-+ (id)dataSourceManagerWithParticipants:(id)arg1;
 + (id)dataSourceManagerWithParticipants:(id)arg1 fetchLimit:(long long)arg2 shouldShowAccepted:(BOOL)arg3 message:(id)arg4 date:(id)arg5 matchingStrategy:(unsigned long long)arg6;
 + (id)emptyDataSourceManager;
-+ (id)mockDataSourceManagerFromRecentLargeMoments:(unsigned long long)arg1;
++ (id)keyPathsAffectingCurrentDataSourceManager;
++ (id)mockDataSourceManagerFromRecentLargeMoments;
 + (id)mostRecentCreationDate;
 + (id)new;
 - (void).cxx_destruct;

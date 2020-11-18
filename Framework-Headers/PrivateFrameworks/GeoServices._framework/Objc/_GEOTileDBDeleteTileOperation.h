@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) struct _GEOTileKey *key;
-@property (readonly) unsigned long long sizeInBytes;
+@property (readonly, nonatomic) struct _GEOTileKey *key;
+@property (readonly, nonatomic) unsigned long long sizeInBytes;
 @property (readonly) Class superclass;
 
 - (BOOL)canIncreaseDataSizeInDB;

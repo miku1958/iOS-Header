@@ -15,12 +15,13 @@
     GKNotificationBannerViewController *_currentBannerViewController;
 }
 
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_semaphore> *bannerSemaphore; // @synthesize bannerSemaphore=_bannerSemaphore;
+@property (readonly, nonatomic) NSObject<OS_dispatch_semaphore> *bannerSemaphore; // @synthesize bannerSemaphore=_bannerSemaphore;
 @property (strong, nonatomic) GKNotificationBannerViewController *currentBannerViewController; // @synthesize currentBannerViewController=_currentBannerViewController;
 
 + (id)bannerWindow;
 + (void)enqueBanner:(id)arg1;
 + (id)queue;
+- (void).cxx_destruct;
 - (BOOL)_canAffectStatusBarAppearance;
 - (BOOL)_canBecomeKeyWindow;
 - (void)_hideBanner:(id)arg1 quickly:(BOOL)arg2;

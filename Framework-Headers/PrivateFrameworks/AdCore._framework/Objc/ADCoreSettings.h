@@ -70,6 +70,7 @@
 @property (nonatomic) int segmentRetrievalInterval;
 @property (strong, nonatomic) NSString *storefrontLocalizationLanguage; // @synthesize storefrontLocalizationLanguage=_storefrontLocalizationLanguage;
 @property (nonatomic) float timezone; // @synthesize timezone=_timezone;
+@property (readonly) BOOL unitTesting;
 
 + (BOOL)educationModeEnabled;
 + (id)sharedInstance;

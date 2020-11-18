@@ -12,20 +12,22 @@ __attribute__((visibility("hidden")))
 @interface _CFXPreferences : NSObject
 {
     struct __CFDictionary *_sources;
-    struct _opaque_pthread_mutex_t *_sourcesLock;
     struct __CFDictionary *_namedVolatileSources;
-    struct _opaque_pthread_mutex_t *_namedVolatileSourcesLock;
     struct __CFDictionary *_searchLists;
-    struct _opaque_pthread_mutex_t *_searchListsLock;
     NSObject<OS_xpc_object> *_agentConnection;
     NSObject<OS_xpc_object> *_daemonConnection;
-    NSObject<OS_xpc_object> *_observationConnection;
+    NSObject<OS_xpc_object> *_directConnection;
     unsigned int _launchdUID;
     unsigned int _euid;
+    _Atomic char _userHomeDirectoryState;
+    struct os_unfair_lock_s _sourcesLock;
+    struct os_unfair_lock_s _searchListsLock;
+    struct os_unfair_lock_s _namedVolatileSourcesLock;
 }
 
 + (id)copyDefaultPreferences;
 - (id)_copyDaemonConnectionSettingUpIfNecessaryForRole:(int)arg1;
+- (void)_deliverPendingKVONotifications;
 - (void)addSuitePreferences:(struct __CFString *)arg1 toAppIdentifier:(struct __CFString *)arg2 container:(struct __CFString *)arg3;
 - (void)alreadylocked_withNamedVolatileSources:(CDUnknownBlockType)arg1;
 - (void)alreadylocked_withSearchLists:(CDUnknownBlockType)arg1;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (struct __CFDictionary *)copyManagedValuesForKeys:(struct __CFArray *)arg1 identifier:(struct __CFString *)arg2 useSystemContainer:(BOOL)arg3;
 - (void *)copyValueForKey:(struct __CFString *)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
 - (struct __CFDictionary *)copyValuesForKeys:(struct __CFArray *)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
+- (BOOL)currentUserHasInvalidHomeDirectory;
 - (void)dealloc;
 - (void)destroyConnections;
 - (unsigned int)euid;
@@ -73,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2 identifier:(struct __CFString *)arg3 user:(struct __CFString *)arg4 host:(struct __CFString *)arg5 container:(struct __CFString *)arg6;
 - (void)setValuesForKeys:(struct __CFDictionary *)arg1 removingValuesForKeys:(struct __CFArray *)arg2 identifier:(struct __CFString *)arg3 user:(struct __CFString *)arg4 host:(struct __CFString *)arg5 container:(struct __CFString *)arg6;
 - (_Atomic unsigned int *)shmemForRole:(int)arg1 name:(const char *)arg2;
+- (void)simulateTimerSynchronizeForTestingForUser:(struct __CFString *)arg1;
 - (void)synchronizeEverything;
 - (unsigned char)synchronizeIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 host:(struct __CFString *)arg3 container:(struct __CFString *)arg4;
 - (void)unregisterUserDefaultsInstance:(id)arg1;
@@ -85,7 +89,6 @@ __attribute__((visibility("hidden")))
 - (void)withNamedVolatileSources:(CDUnknownBlockType)arg1;
 - (void)withSearchListForIdentifier:(struct __CFString *)arg1 container:(struct __CFString *)arg2 cloudConfigurationURL:(struct __CFURL *)arg3 perform:(CDUnknownBlockType)arg4;
 - (void)withSearchLists:(CDUnknownBlockType)arg1;
-- (void)withSnapshotSearchList:(CDUnknownBlockType)arg1;
 - (void)withSourceForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(BOOL)arg3 container:(struct __CFString *)arg4 cloud:(BOOL)arg5 perform:(CDUnknownBlockType)arg6;
 - (void)withSources:(CDUnknownBlockType)arg1;
 - (void)withSuiteSearchListForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 locked:(BOOL)arg3 perform:(CDUnknownBlockType)arg4;

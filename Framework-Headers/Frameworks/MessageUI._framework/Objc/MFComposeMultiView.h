@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MessageUI/MFComposeHeaderView.h>
+#import <MessageUI/MFMailComposeHeaderView.h>
 
-@class MFHeaderLabelView, NSString, UILabel;
+@class CNComposeHeaderLabelView, NSString, UILabel;
 
-@interface MFComposeMultiView : MFComposeHeaderView
+@interface MFComposeMultiView : MFMailComposeHeaderView
 {
     UILabel *_accountLabel;
-    MFHeaderLabelView *_imageSizeHeaderLabelView;
+    CNComposeHeaderLabelView *_imageSizeHeaderLabelView;
     UILabel *_imageSizeLabel;
     UILabel *_placeholderImageSizeLabel;
     BOOL _imageSizeShown;
@@ -23,9 +23,9 @@
 @property (nonatomic, getter=isAccountAutoselected) BOOL accountAutoselected; // @synthesize accountAutoselected=_accountAutoselected;
 @property (nonatomic) BOOL accountHasUnsafeDomain; // @synthesize accountHasUnsafeDomain=_accountHasUnsafeDomain;
 
+- (void).cxx_destruct;
 - (id)_accountDescriptionAttributedString;
 - (id)accountLabel;
-- (void)dealloc;
 - (id)imageSizeHeaderLabelView;
 - (id)imageSizeLabel;
 - (id)initWithFrame:(struct CGRect)arg1;

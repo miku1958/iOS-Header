@@ -6,32 +6,44 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, PLXPCTransaction;
+#import <PhotoLibraryServices/NSSecureCoding-Protocol.h>
+
+@class NSString, NSXPCConnection, PLAssetsdClient, PLLibraryServicesManager, PLXPCTransaction;
 @protocol OS_xpc_object;
 
-@interface PLDaemonJob : NSObject
+@interface PLDaemonJob : NSObject <NSSecureCoding>
 {
     NSObject<OS_xpc_object> *_xpcReply;
     PLXPCTransaction *_transaction;
+    CDUnknownBlockType _replyHandler;
     unsigned long long _signpostId;
-    NSObject<OS_xpc_object> *_connection;
+    PLLibraryServicesManager *_libraryServicesManager;
+    NSXPCConnection *_clientConnection;
+    PLAssetsdClient *_assetsdClient;
 }
 
-@property (readonly, nonatomic) BOOL clientWantsReply;
-@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *connection;
-@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *connection; // @synthesize connection=_connection;
-@property (readonly, strong, nonatomic) NSError *replyError;
-@property (readonly, nonatomic) BOOL replyIsError;
+@property (readonly, nonatomic) PLAssetsdClient *assetsdClient; // @synthesize assetsdClient=_assetsdClient;
+@property (strong, nonatomic) NSXPCConnection *clientConnection;
+@property (strong, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
+@property (readonly, nonatomic) NSString *jobDescription;
+@property (strong, nonatomic) PLLibraryServicesManager *libraryServicesManager;
+@property (copy, nonatomic) CDUnknownBlockType replyHandler;
 @property (nonatomic) NSObject<OS_xpc_object> *xpcReply;
-@property (nonatomic) NSObject<OS_xpc_object> *xpcReply;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *xpcReply;
 
-+ (void)runDaemonSideWithXPCEvent:(id)arg1 connection:(id)arg2;
++ (void)runDaemonSideWithXPCEvent:(id)arg1 libraryServicesManager:(id)arg2;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)archiveXPCToDisk:(id)arg1;
 - (long long)daemonOperation;
-- (void)dealloc;
 - (void)encodeToXPCObject:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)handleReply;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)init;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
+- (id)initWithAssetsdClient:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)newDictionaryReplyForObject:(id)arg1;
 - (void)run;
 - (void)runDaemonSide;
 - (void)sendToAssetsd;

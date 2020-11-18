@@ -6,10 +6,12 @@
 
 #import <MediaPlayer/MPAVRoutingViewController.h>
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsRoutingViewController : MPAVRoutingViewController
 {
 }
 
+- (BOOL)_canShowWhileLocked;
 - (id)_createVolumeSlider;
 
 @end

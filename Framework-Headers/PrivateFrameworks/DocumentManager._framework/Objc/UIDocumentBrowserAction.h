@@ -9,18 +9,20 @@
 #import <DocumentManager/NSCopying-Protocol.h>
 #import <DocumentManager/NSSecureCoding-Protocol.h>
 
-@class FPUIAction, NSArray, NSPredicate, NSString, UIImage;
+@class NSArray, NSPredicate, NSString, UIDocumentBrowserActionDescriptor, UIImage;
 
 @interface UIDocumentBrowserAction : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _supportsMultipleItems;
     BOOL _requiresResolvedItems;
     BOOL _requiresVersioning;
+    BOOL _performActionExitsEditMode;
     NSString *_identifier;
     NSString *_localizedTitle;
     long long _availability;
     UIImage *_image;
     NSArray *_supportedContentTypes;
+    CDUnknownBlockType _handler;
     CDUnknownBlockType _resolvedHandler;
     CDUnknownBlockType _unresolvedHandler;
     NSString *_uiActionProviderIdentifier;
@@ -28,23 +30,27 @@
     long long _navigationSide;
     unsigned long long _menuSortOrder;
     NSPredicate *_filteringPredicate;
-    FPUIAction *_uiAction;
+    long long _actionStyle;
+    UIDocumentBrowserActionDescriptor *_uiActionDescriptor;
 }
 
+@property (nonatomic) long long actionStyle; // @synthesize actionStyle=_actionStyle;
 @property (nonatomic) long long availability; // @synthesize availability=_availability;
 @property (strong, nonatomic) NSPredicate *filteringPredicate; // @synthesize filteringPredicate=_filteringPredicate;
+@property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (nonatomic) unsigned long long menuSortOrder; // @synthesize menuSortOrder=_menuSortOrder;
 @property (nonatomic) long long navigationSide; // @synthesize navigationSide=_navigationSide;
+@property (nonatomic) BOOL performActionExitsEditMode; // @synthesize performActionExitsEditMode=_performActionExitsEditMode;
 @property (nonatomic) BOOL requiresResolvedItems; // @synthesize requiresResolvedItems=_requiresResolvedItems;
 @property (nonatomic) BOOL requiresVersioning; // @synthesize requiresVersioning=_requiresVersioning;
 @property (copy, nonatomic) CDUnknownBlockType resolvedHandler; // @synthesize resolvedHandler=_resolvedHandler;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (copy, nonatomic) NSArray *supportedContentTypes; // @synthesize supportedContentTypes=_supportedContentTypes;
 @property (nonatomic) BOOL supportsMultipleItems; // @synthesize supportsMultipleItems=_supportsMultipleItems;
-@property (strong, nonatomic) FPUIAction *uiAction; // @synthesize uiAction=_uiAction;
+@property (strong, nonatomic) UIDocumentBrowserActionDescriptor *uiActionDescriptor; // @synthesize uiActionDescriptor=_uiActionDescriptor;
 @property (copy, nonatomic) NSString *uiActionProviderIdentifier; // @synthesize uiActionProviderIdentifier=_uiActionProviderIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType unresolvedHandler; // @synthesize unresolvedHandler=_unresolvedHandler;
 
@@ -58,7 +64,8 @@
 - (id)initWithIdentifier:(id)arg1 localizedTitle:(id)arg2 availability:(long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)initWithIdentifier:(id)arg1 localizedTitle:(id)arg2 resolvedHandler:(CDUnknownBlockType)arg3;
 - (id)initWithIdentifier:(id)arg1 localizedTitle:(id)arg2 unresolvedHandler:(CDUnknownBlockType)arg3;
-- (id)initWithUIAction:(id)arg1;
+- (id)initWithUIActionDescriptor:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

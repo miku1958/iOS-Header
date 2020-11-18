@@ -9,7 +9,7 @@
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSSet, NSString, NSUUID, TUContactsDataProvider, TUHandle;
+@class NSSet, NSString, NSUUID, TUContactsDataProvider, TUConversationMember, TUHandle;
 
 @interface TUConversation : NSObject <NSCopying, NSSecureCoding>
 {
@@ -24,6 +24,8 @@
     NSSet *_remoteMembers;
     NSSet *_activeRemoteParticipants;
     long long _avcSessionToken;
+    NSString *_avcSessionIdentifier;
+    TUConversationMember *_localMember;
     NSUUID *_messagesGroupUUID;
     TUHandle *_initiator;
     NSString *_messagesGroupName;
@@ -35,10 +37,12 @@
 @property (readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (copy, nonatomic) NSSet *activeRemoteParticipants; // @synthesize activeRemoteParticipants=_activeRemoteParticipants;
 @property (nonatomic, getter=isAudioEnabled) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
+@property (copy, nonatomic) NSString *avcSessionIdentifier; // @synthesize avcSessionIdentifier=_avcSessionIdentifier;
 @property (nonatomic) long long avcSessionToken; // @synthesize avcSessionToken=_avcSessionToken;
 @property (readonly, nonatomic) TUContactsDataProvider *contactsDataProvider; // @synthesize contactsDataProvider=_contactsDataProvider;
 @property (readonly, nonatomic) NSUUID *groupUUID; // @synthesize groupUUID=_groupUUID;
 @property (strong, nonatomic) TUHandle *initiator; // @synthesize initiator=_initiator;
+@property (strong, nonatomic) TUConversationMember *localMember; // @synthesize localMember=_localMember;
 @property (nonatomic, getter=isLocallyCreated) BOOL locallyCreated; // @synthesize locallyCreated=_locallyCreated;
 @property (nonatomic) long long maxVideoDecodesAllowed; // @synthesize maxVideoDecodesAllowed=_maxVideoDecodesAllowed;
 @property (copy, nonatomic) NSString *messagesGroupName; // @synthesize messagesGroupName=_messagesGroupName;

@@ -12,14 +12,12 @@
 {
     NSString *_input;
     NSString *_eventName;
-    unsigned long long _queryId;
     unsigned long long _nanosecondInterval;
 }
 
 @property (copy, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
 @property (copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property unsigned long long nanosecondInterval; // @synthesize nanosecondInterval=_nanosecondInterval;
-@property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

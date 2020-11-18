@@ -23,7 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned int iconAttributeKey;
 @property (readonly, nonatomic) unsigned int iconAttributeValue;
-@property (readonly, nonatomic) long long iconType;
+@property (readonly, nonatomic) int iconType;
 @property (readonly) Class superclass;
 
 - (id)initWithCartoId:(unsigned int)arg1 defaultTransitType:(unsigned int)arg2;

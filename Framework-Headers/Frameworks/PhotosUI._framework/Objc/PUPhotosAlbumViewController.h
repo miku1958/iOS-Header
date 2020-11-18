@@ -59,6 +59,7 @@
 - (BOOL)canDragIn;
 - (BOOL)canDragOut;
 - (BOOL)canHandleDropSession:(id)arg1;
+- (BOOL)canRouteToDestination:(id)arg1;
 - (long long)cellFillMode;
 - (void)configureGlobalFooterView:(id)arg1;
 - (void)configureGlobalHeaderView:(id)arg1;
@@ -78,6 +79,7 @@
 - (BOOL)isCameraRoll;
 - (BOOL)isTrashBinViewController;
 - (id)localizedTitleForAssets:(id)arg1;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newGridLayout;
 - (long long)oneUpPresentationOrigin;
 - (void)photosDataSource:(id)arg1 didReceivePhotoLibraryChange:(id)arg2;

@@ -8,6 +8,9 @@
 
 @interface NSAttributedString (NSAttributedStringUIFoundationAdditions)
 + (id)_documentTypeForFileType:(id)arg1;
++ (BOOL)_isAttributedStringAgent;
++ (id)allowedSecureCodingClasses;
++ (id)attributedStringWithAttachment:(id)arg1;
 - (id)RTFDFileWrapperFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2;
 - (id)RTFDFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2;
 - (id)RTFFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2;
@@ -23,6 +26,10 @@
 - (unsigned long long)_lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2 usesAlternativeBreaker:(BOOL)arg3;
 - (struct _NSRange)_rangeOfTextTableRow:(id)arg1 atIndex:(unsigned long long)arg2;
 - (struct _NSRange)_rangeOfTextTableRow:(id)arg1 atIndex:(unsigned long long)arg2 completeRow:(BOOL *)arg3;
+- (id)_ui_attributedSubstringFromRange:(struct _NSRange)arg1 scaledByScaleFactor:(double)arg2;
+- (id)_ui_attributedSubstringFromRange:(struct _NSRange)arg1 withTrackingAdjustment:(double)arg2;
+- (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2;
+- (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2 context:(id)arg3;
 - (BOOL)containsAttachments;
 - (BOOL)containsAttachmentsInRange:(struct _NSRange)arg1;
 - (id)dataFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;
@@ -30,8 +37,13 @@
 - (id)docFormatFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2;
 - (struct _NSRange)doubleClickAtIndex:(unsigned long long)arg1;
 - (struct _NSRange)doubleClickAtIndex:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
+- (void)drawAtPoint:(struct CGPoint)arg1;
+- (void)drawInRect:(struct CGRect)arg1;
+- (void)drawWithRect:(struct CGRect)arg1 options:(long long)arg2;
+- (void)drawWithRect:(struct CGRect)arg1 options:(long long)arg2 context:(id)arg3;
 - (id)fileWrapperFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;
 - (id)fontAttributesInRange:(struct _NSRange)arg1;
+- (BOOL)hasColorGlyphsInRange:(struct _NSRange)arg1;
 - (id)initWithData:(id)arg1 options:(id)arg2 documentAttributes:(id *)arg3 error:(id *)arg4;
 - (id)initWithDocFormat:(id)arg1 documentAttributes:(id *)arg2;
 - (id)initWithFileURL:(id)arg1 options:(id)arg2 documentAttributes:(id *)arg3 error:(id *)arg4;
@@ -52,6 +64,7 @@
 - (struct _NSRange)rangeOfTextList:(id)arg1 atIndex:(unsigned long long)arg2;
 - (struct _NSRange)rangeOfTextTable:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)rulerAttributesInRange:(struct _NSRange)arg1;
+- (struct CGSize)size;
 - (id)stringByStrippingAttachmentCharactersAndConvertingWritingDirectionToBidiControlCharactersFromRange:(struct _NSRange)arg1;
 @end
 

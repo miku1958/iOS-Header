@@ -9,12 +9,13 @@
 #import <FTServices/FTMessageQueueDelegate-Protocol.h>
 
 @class IDSServerBag;
-@protocol FTMessageDeliveryRemoteURLConnection, FTMessageDeliveryRemoteURLConnectionFactory;
+@protocol FTMessageDeliveryHTTPMobileNetworkManager, FTMessageDeliveryRemoteURLConnection, FTMessageDeliveryRemoteURLConnectionFactory;
 
 @interface FTMessageDelivery_HTTP : FTMessageDelivery <FTMessageQueueDelegate>
 {
     id<FTMessageDeliveryRemoteURLConnectionFactory> _remoteConnectionFactory;
     id<FTMessageDeliveryRemoteURLConnection> _remoteConnection;
+    id<FTMessageDeliveryHTTPMobileNetworkManager> _mobileNetworkManager;
     BOOL _pendingRetryAfterAirplaneMode;
     double _retryTimeAfterAirplaneMode;
     CDUnknownBlockType _retryBackoffProvider;
@@ -33,12 +34,12 @@
 - (void)_serverBagLoaded:(id)arg1;
 - (BOOL)_tryRetryMessageWithTimeInterval:(double)arg1;
 - (void)_updateWiFiAssertions;
-- (void)_urlRequestWithURL:(id)arg1 andData:(id)arg2 message:(id)arg3 missingAnisetteHeaders:(BOOL *)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)_urlRequestWithURL:(id)arg1 andData:(id)arg2 message:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (BOOL)busy;
 - (void)cancelMessage:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithIDSServerBag:(id)arg1 iMessageServerBag:(id)arg2 remoteConnectionFactory:(id)arg3 retryBackoffProvider:(CDUnknownBlockType)arg4;
+- (id)initWithIDSServerBag:(id)arg1 iMessageServerBag:(id)arg2 remoteConnectionFactory:(id)arg3 mobileNetworkManager:(id)arg4 retryBackoffProvider:(CDUnknownBlockType)arg5;
 - (void)invalidate;
 - (void)networkStateChanged;
 - (void)queue:(id)arg1 hitTimeoutForMessage:(id)arg2;

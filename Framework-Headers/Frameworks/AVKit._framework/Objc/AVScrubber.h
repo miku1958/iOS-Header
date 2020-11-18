@@ -12,9 +12,9 @@
 @class NSArray, NSMutableArray, NSString, NSTimer, UIImageView, UIScrollView, UISelectionFeedbackGenerator, UIView;
 @protocol AVScrubberDelegate;
 
+__attribute__((visibility("hidden")))
 @interface AVScrubber : UISlider <UIScrollViewDelegate, AVExternalGestureRecognizerPreventing>
 {
-    struct CGPoint _previousTouchLocationInView;
     double _trackingStartTime;
     float _previousValue;
     double _previousValueChangeTime;
@@ -23,10 +23,14 @@
     BOOL _scrollScrubbing;
     BOOL _slowKnobMovementDetected;
     BOOL _shouldRecoverFromPrecisionScrubbingIfNeeded;
+    BOOL _scrubsWhenTappedAnywhere;
+    BOOL _canChangeScrubbingSpeed;
     BOOL _collapsed;
     BOOL _included;
+    BOOL _removed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
+    BOOL _hasChangedLocationAtLeastOnce;
     float _estimatedFrameRate;
     float _rate;
     UISelectionFeedbackGenerator *_feedbackGenerator;
@@ -44,6 +48,7 @@
     struct NSDirectionalEdgeInsets _hitRectInsets;
 }
 
+@property (nonatomic) BOOL canChangeScrubbingSpeed; // @synthesize canChangeScrubbingSpeed=_canChangeScrubbingSpeed;
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
 @property (weak, nonatomic) UIImageView *currentThumbView; // @synthesize currentThumbView=_currentThumbView;
@@ -54,6 +59,7 @@
 @property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
 @property (readonly, nonatomic) UISelectionFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
+@property (nonatomic) BOOL hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
@@ -63,10 +69,12 @@
 @property (readonly, nonatomic) NSString *localizedScrubbingSpeedName;
 @property (strong, nonatomic) NSMutableArray *previousScrubberVelocities; // @synthesize previousScrubberVelocities=_previousScrubberVelocities;
 @property (nonatomic) float rate; // @synthesize rate=_rate;
+@property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (nonatomic) double resolution; // @synthesize resolution=_resolution;
 @property (nonatomic, getter=isScrollScrubbing) BOOL scrollScrubbing; // @synthesize scrollScrubbing=_scrollScrubbing;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) long long scrubbingSpeed; // @synthesize scrubbingSpeed=_scrubbingSpeed;
+@property (nonatomic) BOOL scrubsWhenTappedAnywhere; // @synthesize scrubsWhenTappedAnywhere=_scrubsWhenTappedAnywhere;
 @property (nonatomic) BOOL shouldRecoverFromPrecisionScrubbingIfNeeded; // @synthesize shouldRecoverFromPrecisionScrubbingIfNeeded=_shouldRecoverFromPrecisionScrubbingIfNeeded;
 @property (nonatomic) BOOL slowKnobMovementDetected; // @synthesize slowKnobMovementDetected=_slowKnobMovementDetected;
 @property (readonly) Class superclass;
@@ -101,6 +109,7 @@
 - (double)normalizedScrollOffset;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;
+- (void)setHidden:(BOOL)arg1;
 - (void)setValue:(float)arg1;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;

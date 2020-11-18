@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableSet, NSSet, NSString, NSUUID;
+@class HKSource, NSMutableArray, NSMutableSet, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_source;
 
 @interface _HDAuthorizationRequestGroup : NSObject
@@ -14,7 +14,7 @@
     NSMutableSet *_typesToWrite;
     NSMutableSet *_typesToRead;
     BOOL _inTransaction;
-    NSString *_bundleIdentifier;
+    HKSource *_source;
     NSUUID *_promptSessionIdentifier;
     CDUnknownBlockType _promptHandler;
     NSMutableArray *_requests;
@@ -22,7 +22,7 @@
     NSObject<OS_dispatch_source> *_sessionTimeoutSource;
 }
 
-@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (strong, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
 @property (nonatomic, getter=isInTransaction) BOOL inTransaction; // @synthesize inTransaction=_inTransaction;
 @property (copy, nonatomic) CDUnknownBlockType promptHandler; // @synthesize promptHandler=_promptHandler;
@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) unsigned long long requestCount;
 @property (strong, nonatomic) NSMutableArray *requests; // @synthesize requests=_requests;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *sessionTimeoutSource; // @synthesize sessionTimeoutSource=_sessionTimeoutSource;
+@property (readonly, copy, nonatomic) HKSource *source; // @synthesize source=_source;
 @property (readonly, copy, nonatomic) NSSet *typesToRead; // @synthesize typesToRead=_typesToRead;
 @property (readonly, copy, nonatomic) NSSet *typesToWrite; // @synthesize typesToWrite=_typesToWrite;
 
@@ -41,7 +42,7 @@
 - (void)cancelRequestsWithIdentifiers:(id)arg1 error:(id)arg2;
 - (id)description;
 - (void)finishRequestsWithError:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1;
+- (id)initWithSource:(id)arg1;
 - (BOOL)promptIfNecessaryWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

@@ -21,6 +21,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @optional
+- (long long)_accessibility_indexForEntryAtPoint:(struct CGPoint)arg1;
 - (void)deflectionReset:(BOOL)arg1;
 - (void)deflectionUpdated;
 - (void)displayEntriesUpdated;

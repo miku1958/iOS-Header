@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
     struct WeakObjCPtr<WKWebView> _webViewToTrack;
     struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
+    BOOL _lastObservedStateWasBackground;
 }
 
 @property (readonly, nonatomic) UIView *_contentView;

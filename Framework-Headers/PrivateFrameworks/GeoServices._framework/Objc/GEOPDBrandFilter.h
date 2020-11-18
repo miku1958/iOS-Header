@@ -16,15 +16,17 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     unsigned long long _brandMuid;
     struct {
-        unsigned int brandMuid:1;
-    } _has;
+        unsigned int has_brandMuid:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned long long brandMuid; // @synthesize brandMuid=_brandMuid;
+@property (nonatomic) unsigned long long brandMuid;
 @property (nonatomic) BOOL hasBrandMuid;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

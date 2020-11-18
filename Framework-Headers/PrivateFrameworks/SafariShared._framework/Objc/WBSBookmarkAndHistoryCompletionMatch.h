@@ -18,7 +18,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithBookmarkAndHistoryCompletionMatch:(Ref_a2762e75 *)arg1 userInput:(id)arg2;
+- (id)initWithBookmarkAndHistoryCompletionMatch:(Ref_a2762e75 *)arg1 userInput:(id)arg2 forQueryID:(long long)arg3;
 - (id)originalURLString;
 - (id)parsecDomainIdentifier;
 - (id)title;

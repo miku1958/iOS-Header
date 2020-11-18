@@ -9,7 +9,7 @@
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSDecimalNumber, NSDictionary, NSOrderedSet, NSSet, NSString, NSTimeZone, NSUUID, PKAccountEvent, PKCurrencyAmount, PKMerchant, PKPaymentTransactionFees, PKPaymentTransactionForeignExchangeInformation, PKPaymentTransactionRewards;
+@class CLLocation, NSArray, NSData, NSDate, NSDecimalNumber, NSDictionary, NSNumber, NSOrderedSet, NSSet, NSString, NSTimeZone, NSUUID, PKAccountEvent, PKCurrencyAmount, PKMerchant, PKPaymentTransactionFees, PKPaymentTransactionForeignExchangeInformation, PKPaymentTransactionRewards;
 
 @interface PKPaymentTransaction : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
@@ -48,6 +48,7 @@
     long long _transitType;
     unsigned long long _transitModifiers;
     NSString *_stationCodeProvider;
+    NSNumber *_cityCode;
     NSData *_startStationCode;
     NSString *_startStation;
     double _startStationLatitude;
@@ -115,6 +116,7 @@
 @property (strong, nonatomic) NSString *cardIdentifier; // @synthesize cardIdentifier=_cardIdentifier;
 @property (strong, nonatomic) NSString *cardNumberSuffix; // @synthesize cardNumberSuffix=_cardNumberSuffix;
 @property (nonatomic) unsigned long long cardType; // @synthesize cardType=_cardType;
+@property (copy, nonatomic) NSNumber *cityCode; // @synthesize cityCode=_cityCode;
 @property (copy, nonatomic) NSString *clearingNetworkData; // @synthesize clearingNetworkData=_clearingNetworkData;
 @property (readonly, nonatomic) PKCurrencyAmount *currencyAmount;
 @property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
@@ -136,6 +138,7 @@
 @property (readonly, nonatomic) NSString *formattedBalanceAdjustmentAbsoluteAmount;
 @property (readonly, nonatomic) NSString *formattedBalanceAdjustmentAmount;
 @property (readonly, nonatomic) NSString *formattedBalanceAdjustmentSubtotalAmount;
+@property (readonly, nonatomic) BOOL fullyProcessed;
 @property (nonatomic) BOOL hasAssociatedPaymentApplication; // @synthesize hasAssociatedPaymentApplication=_hasAssociatedPaymentApplication;
 @property (readonly, nonatomic) BOOL hasBackingData;
 @property (readonly, nonatomic) BOOL hasEffectiveTransactionSource;

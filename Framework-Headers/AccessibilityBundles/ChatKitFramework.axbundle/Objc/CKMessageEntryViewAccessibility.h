@@ -17,7 +17,6 @@
 - (void)_accessibilityApplyBrowserLabel;
 - (void)_accessibilityApplyPhotoLabel;
 - (void)_accessibilityApplyPlaceholderLabel;
-- (void)_accessibilityApplySelectedTraitToMediaButton;
 - (BOOL)_accessibilityIsMediaJoystickVisible;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
@@ -31,7 +30,7 @@
 - (void)browserButtonTapped:(id)arg1;
 - (void)collapsedPlaceholderLabelTapped:(id)arg1;
 - (void)configureAudioActionMenuControllerForPlayback:(BOOL)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(BOOL)arg3 shouldShowSendButton:(BOOL)arg4 shouldShowSubject:(BOOL)arg5 shouldShowPluginButtons:(BOOL)arg6 shouldShowCharacterCount:(BOOL)arg7;
+- (id)initWithFrame:(struct CGRect)arg1 marginInsets:(struct UIEdgeInsets)arg2 shouldAllowImpact:(BOOL)arg3 shouldShowSendButton:(BOOL)arg4 shouldShowSubject:(BOOL)arg5 shouldShowPluginButtons:(BOOL)arg6 shouldShowCharacterCount:(BOOL)arg7 traitCollection:(id)arg8;
 - (void)layoutSubviews;
 - (void)loadRecordedAudioViewsIfNeeded;
 - (void)presentAudioActionMenu;

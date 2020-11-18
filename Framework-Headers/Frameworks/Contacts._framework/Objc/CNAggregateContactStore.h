@@ -33,10 +33,14 @@ __attribute__((visibility("hidden")))
 - (void)didFetchContacts:(id)arg1 forPredicate:(id)arg2 fromStore:(id)arg3 unifiedFetch:(BOOL)arg4;
 - (BOOL)enumerateContactsAndMatchInfoWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateNonUnifiedContactsWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)enumeratorForChangeHistoryFetchRequest:(id)arg1 error:(id *)arg2;
+- (id)enumeratorForContactFetchRequest:(id)arg1 error:(id *)arg2;
+- (BOOL)executeChangeHistoryClearRequest:(id)arg1 error:(id *)arg2;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
 - (id)groupWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (BOOL)hasMultipleGroupsOrAccounts;
 - (id)iOSMapper;
 - (id)initWithContactStores:(id)arg1;
 - (id)mainContactStore;
@@ -46,6 +50,8 @@ __attribute__((visibility("hidden")))
 - (id)policyForContainerWithIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)requestAccessForEntityType:(long long)arg1;
+- (BOOL)resetSortDataIfNeededWithError:(id *)arg1;
+- (id)sectionListOffsetsForSortOrder:(long long)arg1 error:(id *)arg2;
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (BOOL)setMeContact:(id)arg1 error:(id *)arg2;
 - (BOOL)setMeContact:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;

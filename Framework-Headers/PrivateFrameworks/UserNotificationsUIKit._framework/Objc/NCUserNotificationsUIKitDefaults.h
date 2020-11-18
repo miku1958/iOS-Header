@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/BSAbstractDefaultDomain.h>
+#import <FrontBoardServices/BSAbstractDefaultDomain.h>
 
 @interface NCUserNotificationsUIKitDefaults : BSAbstractDefaultDomain
 {

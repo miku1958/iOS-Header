@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/UICollectionViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UICollectionViewDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NTKEditOptionCollection, NTKFaceView, UICollectionView, UICollectionViewFlowLayout, UILabel;
+@class NSDictionary, NSString, NTKEditOptionCollection, NTKFace, NTKFaceView, UICollectionView, UICollectionViewFlowLayout, UILabel;
 @protocol NTKCFaceDetailEditOptionCellDelegate;
 
 @interface NTKCFaceDetailEditOptionCell : NTKCDetailTableViewCell <UICollectionViewDelegate, UICollectionViewDataSource>
@@ -20,6 +20,7 @@
     long long _selectedIndex;
     NTKEditOptionCollection *_collection;
     NTKFaceView *_faceView;
+    NTKFace *_face;
     NSDictionary *_selectedOptions;
     id<NTKCFaceDetailEditOptionCellDelegate> _delegate;
     UICollectionView *_collectionView;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NTKCFaceDetailEditOptionCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) NTKFace *face; // @synthesize face=_face;
 @property (weak, nonatomic) NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UICollectionViewFlowLayout *layout; // @synthesize layout=_layout;
@@ -54,7 +56,7 @@
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)ensureIndexVisible:(long long)arg1 animated:(BOOL)arg2;
 - (void)ensureSelectedOptionVisible:(BOOL)arg1;
-- (id)initWithCollection:(id)arg1 forFaceView:(id)arg2;
+- (id)initWithCollection:(id)arg1 forFaceView:(id)arg2 face:(id)arg3;
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)reloadVisibleCells;

@@ -6,14 +6,14 @@
 
 #import <PassKitUI/PKExplanationViewController.h>
 
-#import <PassKitUI/AAUIDeviceToDeviceEncryptionHelperDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 
 @class NSString, PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentSetupFlowHeroView, PKPeerPaymentTermsController, PKPeerPaymentWebService, UIImage;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPeerPaymentPassActivationViewController : PKExplanationViewController <PKPaymentSetupViewControllerDelegate, AAUIDeviceToDeviceEncryptionHelperDelegate, PKExplanationViewControllerDelegate>
+@interface PKPeerPaymentPassActivationViewController : PKExplanationViewController <PKPaymentSetupViewControllerDelegate, PKExplanationViewControllerDelegate, PKExplanationViewDelegate>
 {
     PKPaymentProvisioningController *_provisioningController;
     PKPeerPaymentCredential *_credential;
@@ -58,7 +58,6 @@
 - (struct CGSize)_snapshotSize;
 - (void)_terminateSetupFlow;
 - (id)_titleStringForState;
-- (void)deviceToDeviceEncryptionHelper:(id)arg1 shouldContinueUpgradingUserToHSA2WithCompletion:(CDUnknownBlockType)arg2;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;

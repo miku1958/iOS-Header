@@ -8,7 +8,7 @@
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 
-@class CPLEngineFileStorage, CPLPlatformObject, NSCountedSet, NSDate, NSMutableDictionary, NSObject, NSString, NSURL;
+@class CPLEngineFileStorage, CPLPlatformObject, NSMutableDictionary, NSObject, NSString, NSURL, _CPLPruneRequestCounter;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineResourceStorage : CPLEngineStorage <CPLAbstractObject>
@@ -17,10 +17,8 @@
     NSMutableDictionary *_identitiesToDelete;
     NSURL *_tempFolderURL;
     NSObject<OS_dispatch_queue> *_pruneStatsQueue;
-    NSCountedSet *_successfulPruneStatsPerResourceType;
-    NSCountedSet *_failedPruneStatsPerResourceType;
-    unsigned long long _successfulPruneSize;
-    NSDate *_lastPruneRequestDate;
+    _CPLPruneRequestCounter *_pruneRequests;
+    _CPLPruneRequestCounter *_purgeabilityCheckRequests;
     CPLEngineFileStorage *_fileStorage;
 }
 
@@ -38,8 +36,8 @@
 - (BOOL)dropResourceForUpload:(id)arg1 error:(id *)arg2;
 - (BOOL)hasResource:(id)arg1;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
-- (void)notePruningRequestForResource:(id)arg1 successful:(BOOL)arg2;
-- (void)notePruningRequestForResource:(id)arg1 successful:(BOOL)arg2 prunedSize:(unsigned long long)arg3;
+- (void)notePruningRequestForResource:(id)arg1 realPrune:(BOOL)arg2 successful:(BOOL)arg3;
+- (void)notePruningRequestForResource:(id)arg1 realPrune:(BOOL)arg2 successful:(BOOL)arg3 prunedSize:(unsigned long long)arg4;
 - (BOOL)openWithError:(id *)arg1;
 - (BOOL)releaseFileURL:(id)arg1 forResource:(id)arg2 error:(id *)arg3;
 - (BOOL)resetWithError:(id *)arg1;

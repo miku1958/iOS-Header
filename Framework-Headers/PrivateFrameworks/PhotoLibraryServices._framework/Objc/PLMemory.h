@@ -7,11 +7,12 @@
 #import <PhotoLibraryServices/PLManagedObject.h>
 
 #import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
+#import <PhotoLibraryServices/PLFileSystemMetadataPersistence-Protocol.h>
 #import <PhotoLibraryServices/PLSearchableAssetCollection-Protocol.h>
 
 @class NSData, NSDate, NSDictionary, NSSet, NSString, PLManagedAsset;
 
-@interface PLMemory : PLManagedObject <PLSearchableAssetCollection, PLCloudDeletable>
+@interface PLMemory : PLManagedObject <PLSearchableAssetCollection, PLCloudDeletable, PLFileSystemMetadataPersistence>
 {
     BOOL _needsPersistenceUpdate;
 }
@@ -75,7 +76,6 @@
 + (id)cloudUUIDKeyForDeletion;
 + (void)deleteMemoriesWithObjectIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (void)deletePendingMemoriesCreatedBefore:(id)arg1 inPhotoLibrary:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (BOOL)indexTitleForMemoryCategory:(unsigned long long)arg1;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 creationDate:(id)arg5;
@@ -92,13 +92,18 @@
 - (void)didSave;
 - (BOOL)isSyncableChange;
 - (BOOL)isValidForPersistence;
-- (void)persistMetadataToFileSystem;
+- (id)momentShare;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (id)payloadIDForTombstone:(id)arg1;
+- (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (void)prepareForDeletion;
-- (void)removePersistedFileSystemData;
+- (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (unsigned long long)searchIndexCategory;
 - (id)searchIndexContents;
 - (BOOL)supportsCloudUpload;
 - (void)updateWithCPLMemoryChange:(id)arg1 inPhotoLibrary:(id)arg2;
+- (BOOL)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (void)willSave;
 
 @end

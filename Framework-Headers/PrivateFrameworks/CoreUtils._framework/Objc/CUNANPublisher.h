@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+#import <CoreUtils/WiFiAwarePublisherDelegate-Protocol.h>
+
+@class NSDictionary, NSString, WiFiAwarePublisher;
 @protocol OS_dispatch_queue;
 
-@interface CUNANPublisher : NSObject
+@interface CUNANPublisher : NSObject <WiFiAwarePublisherDelegate>
 {
     CDUnknownBlockType _activateCompletion;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     struct NSMutableDictionary *_sessions;
     struct LogCategory *_ucat;
+    WiFiAwarePublisher *_wfaPublisher;
     BOOL _dataPathEnabled;
     int _port;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -32,23 +35,35 @@
 @property (nonatomic) BOOL dataPathEnabled; // @synthesize dataPathEnabled=_dataPathEnabled;
 @property (copy, nonatomic) CDUnknownBlockType dataSessionEndedHandler; // @synthesize dataSessionEndedHandler=_dataSessionEndedHandler;
 @property (copy, nonatomic) CDUnknownBlockType dataSessionStartedHandler; // @synthesize dataSessionStartedHandler=_dataSessionStartedHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int port; // @synthesize port=_port;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *textInfo; // @synthesize textInfo=_textInfo;
 
 - (void).cxx_destruct;
+- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_invalidate;
 - (void)_invalidated;
+- (void)_publisher:(id)arg1 dataConfirmedForHandle:(id)arg2 localInterfaceIndex:(unsigned int)arg3 serviceSpecificInfo:(id)arg4;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)description;
 - (id)init;
 - (void)invalidate;
+- (void)publisher:(id)arg1 dataConfirmedForHandle:(id)arg2 localInterfaceIndex:(unsigned int)arg3 serviceSpecificInfo:(id)arg4;
+- (void)publisher:(id)arg1 dataIndicatedForHandle:(id)arg2 serviceSpecificInfo:(id)arg3;
+- (void)publisher:(id)arg1 dataTerminatedForHandle:(id)arg2 reason:(long long)arg3;
+- (void)publisher:(id)arg1 failedToStartWithError:(long long)arg2;
+- (void)publisher:(id)arg1 receivedMessage:(id)arg2 fromSubscriberID:(unsigned char)arg3 subscriberAddress:(id)arg4;
+- (void)publisher:(id)arg1 terminatedWithReason:(long long)arg2;
+- (void)publisherStarted:(id)arg1;
 
 @end
 

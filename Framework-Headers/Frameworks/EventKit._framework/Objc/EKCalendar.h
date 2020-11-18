@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) long long type;
 
++ (id)_eventKitBundle;
 + (id)calendarForEntityType:(unsigned long long)arg1 eventStore:(id)arg2;
 + (id)calendarForEntityTypes:(unsigned long long)arg1 eventStore:(id)arg2;
 + (id)calendarWithEventStore:(id)arg1;
@@ -37,9 +38,11 @@
 - (int)_allowedEntities;
 - (void)_clearCGColorCache;
 - (BOOL)_flagValueWithMask:(unsigned int)arg1;
+- (BOOL)_reset;
 - (void)_setAllowedEntities:(int)arg1;
 - (void)_setFlagValue:(BOOL)arg1 withMask:(unsigned int)arg2;
 - (void)_setSource:(id)arg1;
+- (BOOL)_validateDeletable:(id *)arg1;
 - (void)addAlarms:(id)arg1;
 - (void)addSharee:(id)arg1;
 - (id)alarms;
@@ -54,6 +57,7 @@
 - (BOOL)canBeShared;
 - (void)clearInvitationStatus;
 - (id)colorString;
+- (id)colorStringRaw;
 - (BOOL)commit:(id *)arg1;
 - (BOOL)couldBeJunk;
 - (id)description;
@@ -72,6 +76,7 @@
 - (BOOL)hasTasks;
 - (id)init;
 - (unsigned long long)invitationStatus;
+- (BOOL)isAffectingAvailability;
 - (BOOL)isAlarmAcknowledgedPropertyDirty;
 - (BOOL)isDefaultSchedulingCalendar;
 - (BOOL)isFacebookBirthdayCalendar;
@@ -80,6 +85,7 @@
 - (BOOL)isHolidaySubscribedCalendar;
 - (BOOL)isIgnoringEventAlerts;
 - (BOOL)isIgnoringSharedCalendarNotifications;
+- (BOOL)isImmutableRaw;
 - (BOOL)isInbox;
 - (BOOL)isManaged;
 - (BOOL)isMarkedImmutableSharees;
@@ -98,6 +104,7 @@
 - (id)ownerIdentityDisplayName;
 - (id)ownerIdentityEmail;
 - (id)ownerIdentityFirstName;
+- (int)ownerIdentityId;
 - (id)ownerIdentityLastName;
 - (id)ownerIdentityPhoneNumber;
 - (BOOL)prohibitsScheduling;
@@ -110,6 +117,7 @@
 - (void)removeAllSnoozedAlarms;
 - (void)removeSharee:(id)arg1;
 - (void)reset;
+- (id)selectionSyncIdentifier;
 - (id)selfIdentityAddress;
 - (id)selfIdentityDisplayName;
 - (id)selfIdentityEmail;
@@ -130,6 +138,7 @@
 - (void)setCanBePublished:(BOOL)arg1;
 - (void)setCanBeShared:(BOOL)arg1;
 - (void)setColorString:(id)arg1;
+- (void)setColorStringRaw:(id)arg1;
 - (void)setDigest:(id)arg1;
 - (void)setDisplayOrder:(int)arg1;
 - (void)setExternalID:(id)arg1;
@@ -143,17 +152,21 @@
 - (void)setImmutable:(BOOL)arg1;
 - (void)setInbox:(BOOL)arg1;
 - (void)setInvitationStatus:(unsigned long long)arg1;
+- (void)setIsAffectingAvailability:(BOOL)arg1;
 - (void)setIsDefaultSchedulingCalendar:(BOOL)arg1;
 - (void)setIsIgnoringEventAlerts:(BOOL)arg1;
 - (void)setIsIgnoringSharedCalendarNotifications:(BOOL)arg1;
 - (void)setIsJunk:(BOOL)arg1;
 - (void)setIsPublished:(BOOL)arg1;
+- (void)setMarkedImmutableSharees:(BOOL)arg1;
+- (void)setMarkedUndeletable:(BOOL)arg1;
 - (void)setNotes:(id)arg1;
 - (void)setNotificationsCollection:(BOOL)arg1;
 - (void)setOwnerIdentityAddress:(id)arg1;
 - (void)setOwnerIdentityDisplayName:(id)arg1;
 - (void)setOwnerIdentityEmail:(id)arg1;
 - (void)setOwnerIdentityFirstName:(id)arg1;
+- (void)setOwnerIdentityId:(id)arg1;
 - (void)setOwnerIdentityLastName:(id)arg1;
 - (void)setOwnerIdentityPhoneNumber:(id)arg1;
 - (void)setProhibitsScheduling:(BOOL)arg1;

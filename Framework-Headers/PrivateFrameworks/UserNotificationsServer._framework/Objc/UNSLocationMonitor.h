@@ -24,7 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_triggerDidFireForRegion:(id)arg1;
+- (void)_queue_triggerDidFireForRegion:(id)arg1;
 - (void)addObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)init;
 - (id)initWithQueue:(id)arg1 locationManager:(id)arg2;

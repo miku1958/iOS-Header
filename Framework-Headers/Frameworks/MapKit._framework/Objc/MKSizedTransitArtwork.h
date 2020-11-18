@@ -27,8 +27,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)badgeImageToDisplayWithScreenScale:(double)arg1;
-- (id)imageToDisplayWithScreenScale:(double)arg1;
+- (id)badgeImageToDisplayWithScreenScale:(double)arg1 nightMode:(BOOL)arg2;
+- (id)imageToDisplayWithScreenScale:(double)arg1 nightMode:(BOOL)arg2;
 - (id)initWithArtwork:(id)arg1 shieldSize:(long long)arg2;
 - (id)initWithArtwork:(id)arg1 shieldSize:(long long)arg2 artworkCache:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

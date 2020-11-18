@@ -6,26 +6,28 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaTextToSpeechEnd-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
-@interface SISchemaTextToSpeechEnd : PBCodable <NSCopying>
+@interface SISchemaTextToSpeechEnd : PBCodable <SISchemaTextToSpeechEnd, NSSecureCoding>
 {
     NSString *_aceID;
 }
 
-@property (strong, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
-@property (readonly, nonatomic) BOOL hasAceID;
+@property (copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

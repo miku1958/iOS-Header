@@ -43,6 +43,7 @@
 @property (readonly, nonatomic) BOOL serviceRequiresHost;
 @property (readonly, nonatomic) BOOL serviceRequiresSingleAccount;
 @property (readonly, nonatomic) BOOL serviceShouldBeAlwaysLoggedIn;
+@property (readonly, nonatomic) BOOL serviceSupportsAuthorization;
 @property (readonly, nonatomic) BOOL serviceSupportsOneSessionForAllAccounts;
 @property (readonly, nonatomic) BOOL serviceSupportsPresence;
 @property (readonly, nonatomic) BOOL serviceSupportsRegistration;

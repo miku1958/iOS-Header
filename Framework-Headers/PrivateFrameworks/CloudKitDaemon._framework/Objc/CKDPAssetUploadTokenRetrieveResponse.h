@@ -13,16 +13,13 @@
 __attribute__((visibility("hidden")))
 @interface CKDPAssetUploadTokenRetrieveResponse : PBCodable <NSCopying>
 {
-    NSData *_authCopyResponse;
     NSData *_authPutResponse;
     NSMutableArray *_contentResponseHeaders;
     NSMutableArray *_uploadTokens;
 }
 
-@property (strong, nonatomic) NSData *authCopyResponse; // @synthesize authCopyResponse=_authCopyResponse;
 @property (strong, nonatomic) NSData *authPutResponse; // @synthesize authPutResponse=_authPutResponse;
 @property (strong, nonatomic) NSMutableArray *contentResponseHeaders; // @synthesize contentResponseHeaders=_contentResponseHeaders;
-@property (readonly, nonatomic) BOOL hasAuthCopyResponse;
 @property (readonly, nonatomic) BOOL hasAuthPutResponse;
 @property (strong, nonatomic) NSMutableArray *uploadTokens; // @synthesize uploadTokens=_uploadTokens;
 

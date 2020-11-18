@@ -11,7 +11,6 @@
 }
 
 + (BOOL)_isMailDropDevice;
-+ (BOOL)_limitMailDropOverCellular;
 + (unsigned long long)_mailDropLimit;
 + (id)capabilitiesDictionary;
 + (unsigned long long)currentDownloadLimit;

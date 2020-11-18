@@ -116,11 +116,6 @@ struct AUv3RenderAdapter {
     CDUnknownBlockType _field3;
 };
 
-struct AVHapticPlayerFixedParameter {
-    unsigned long long type;
-    float value;
-};
-
 struct AddressToParameter;
 
 struct AllParameterListener;
@@ -132,6 +127,8 @@ struct AudioComponentDescription {
     unsigned int componentFlags;
     unsigned int componentFlagsMask;
 };
+
+struct AudioComponentPluginScanner;
 
 struct AudioComponentRegistrarImpl {
     BOOL _field1;
@@ -146,7 +143,8 @@ struct AudioComponentRegistrarImpl {
     struct AudioComponentVector _field10;
     struct PurgeableDataWrapper _field11;
     struct PurgeableDataWrapper _field12;
-    struct shared_ptr<applesauce::experimental::sync::Synchronized<AUExtensionScanner, std::__1::mutex, applesauce::experimental::sync::EmptyAtomicInterface<AUExtensionScanner>>> _field13;
+    struct unique_ptr<AudioComponentPluginScanner, std::__1::default_delete<AudioComponentPluginScanner>> _field13;
+    struct shared_ptr<caulk::synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>>> _field14;
 };
 
 struct AudioComponentVector {
@@ -179,8 +177,6 @@ struct CASerializer {
     struct __CFData *_field1;
 };
 
-struct ClientSyncCaller;
-
 struct ConnectionInfo {
     NSXPCConnection *mConnection;
     int mExtUsePermission;
@@ -188,18 +184,6 @@ struct ConnectionInfo {
 };
 
 struct Element;
-
-struct HapticSharedMemory {
-    CDUnknownFunctionPointerType *_vptr$SharableMemoryBase;
-    BOOL mIsOwner;
-    BOOL mWasMapped;
-    unsigned long long mSize;
-    void *mBuffer;
-    unsigned int mPort;
-    int mFileDesc;
-    int mSerial;
-    NSObject *mXPCObject;
-};
 
 struct HostCallbackInfo {
     void *hostUserData;
@@ -218,6 +202,7 @@ struct IPCAURenderingClient {
     BOOL mRenderPrioritySet;
     BOOL mIsOffline;
     BOOL mSentWorkInterval;
+    BOOL mMessengerCanSend;
     struct IPCAUSharedMemory mSharedMemory;
     struct unique_ptr<SemaphoreIOMessenger_Sender, std::__1::default_delete<SemaphoreIOMessenger_Sender>> mMessenger;
     double mOutputSampleRate;
@@ -259,10 +244,6 @@ struct InterAppAudioAppInfo {
     struct __CFString *_field4;
     struct __CFString *_field5;
     struct __CFURL *_field6;
-};
-
-struct NSMutableDictionary {
-    Class _field1;
 };
 
 struct NewServerListener;
@@ -317,8 +298,6 @@ struct SemaphoreIOMessenger_Receiver;
 
 struct SemaphoreIOMessenger_Sender;
 
-struct Synchronized<AUExtensionScanner, std::__1::mutex, applesauce::experimental::sync::EmptyAtomicInterface<AUExtensionScanner>>;
-
 struct TAtomicStack<AURenderEventStruct> {
     struct AURenderEventStruct *mHead;
 };
@@ -359,18 +338,31 @@ struct _opaque_pthread_mutex_t {
 };
 
 struct function<NSData *()> {
-    struct type _field1;
-    struct __base<NSData *()> *_field2;
+    struct __value_func<NSData *()> {
+        struct type _field1;
+        struct __base<NSData *()> *_field2;
+    } _field1;
 };
 
 struct function<void ()> {
-    struct type __buf_;
-    struct __base<void ()> *__f_;
+    struct __value_func<void ()> {
+        struct type __buf_;
+        struct __base<void ()> *__f_;
+    } __f_;
+};
+
+struct function<void (AudioComponentVector &, AudioComponentVector &)> {
+    struct __value_func<void (AudioComponentVector &, AudioComponentVector &)> {
+        struct type __buf_;
+        struct __base<void (AudioComponentVector &, AudioComponentVector &)> *__f_;
+    } __f_;
 };
 
 struct function<void (const AudioComponentVector &, AudioComponentVector &)> {
-    struct type _field1;
-    struct __base<void (const AudioComponentVector &, AudioComponentVector &)> *_field2;
+    struct __value_func<void (const AudioComponentVector &, AudioComponentVector &)> {
+        struct type _field1;
+        struct __base<void (const AudioComponentVector &, AudioComponentVector &)> *_field2;
+    } _field1;
 };
 
 struct map<unsigned int, AUProcessingBlock, std::__1::less<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, AUProcessingBlock>>> {
@@ -424,10 +416,12 @@ struct shared_ptr<APComponent> {
     struct __shared_weak_count *__cntrl_;
 };
 
-struct shared_ptr<applesauce::experimental::sync::Synchronized<AUExtensionScanner, std::__1::mutex, applesauce::experimental::sync::EmptyAtomicInterface<AUExtensionScanner>>> {
-    struct Synchronized<AUExtensionScanner, std::__1::mutex, applesauce::experimental::sync::EmptyAtomicInterface<AUExtensionScanner>> *_field1;
+struct shared_ptr<caulk::synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>>> {
+    struct synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>> *_field1;
     struct __shared_weak_count *_field2;
 };
+
+struct synchronized<AUExtensionScanner, caulk::mach::unfair_lock, caulk::empty_atomic_interface<AUExtensionScanner>>;
 
 struct type {
     unsigned char __lx[32];
@@ -453,15 +447,15 @@ struct unique_ptr<AUv3InstanceBase::AllParameterListener, std::__1::default_dele
 
 struct unique_ptr<AUv3InstanceBase::ClientPropertyListener, std::__1::default_delete<AUv3InstanceBase::ClientPropertyListener>>;
 
+struct unique_ptr<AudioComponentPluginScanner, std::__1::default_delete<AudioComponentPluginScanner>> {
+    struct __compressed_pair<AudioComponentPluginScanner *, std::__1::default_delete<AudioComponentPluginScanner>> {
+        struct AudioComponentPluginScanner *_field1;
+    } _field1;
+};
+
 struct unique_ptr<CAMutex, std::__1::default_delete<CAMutex>> {
     struct __compressed_pair<CAMutex *, std::__1::default_delete<CAMutex>> {
         struct CAMutex *__value_;
-    } __ptr_;
-};
-
-struct unique_ptr<ClientSyncCaller, std::__1::default_delete<ClientSyncCaller>> {
-    struct __compressed_pair<ClientSyncCaller *, std::__1::default_delete<ClientSyncCaller>> {
-        struct ClientSyncCaller *__value_;
     } __ptr_;
 };
 

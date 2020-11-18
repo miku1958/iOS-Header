@@ -35,6 +35,7 @@
 + (CDStruct_14d5dc5e)localTransformWithObject:(id)arg1 atTime:(double)arg2;
 - (void).cxx_destruct;
 - (id)addMatrixOp:(id)arg1 inverse:(BOOL)arg2;
+- (id)addOrientOp:(id)arg1 inverse:(BOOL)arg2;
 - (id)addRotateOp:(id)arg1 order:(unsigned long long)arg2 inverse:(BOOL)arg3;
 - (id)addRotateXOp:(id)arg1 inverse:(BOOL)arg2;
 - (id)addRotateYOp:(id)arg1 inverse:(BOOL)arg2;
@@ -42,6 +43,7 @@
 - (id)addScaleOp:(id)arg1 inverse:(BOOL)arg2;
 - (id)addTranslateOp:(id)arg1 inverse:(BOOL)arg2;
 - (id)animatedMatrix4x4WithName:(id)arg1 shouldCreateIfMissing:(BOOL)arg2;
+- (id)animatedQuaternionWithName:(id)arg1 shouldCreateIfMissing:(BOOL)arg2;
 - (id)animatedScalarWithName:(id)arg1 shouldCreateIfMissing:(BOOL)arg2;
 - (id)animatedValueWithName:(id)arg1;
 - (id)animatedVector3WithName:(id)arg1 shouldCreateIfMissing:(BOOL)arg2;
@@ -49,9 +51,11 @@
 - (void)clearTransformStack;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
+- (id)decomposedTransformAnimation;
 - (CDStruct_14d5dc5e)double4x4AtTime:(double)arg1;
 - (CDStruct_14d5dc5e)float4x4AtTime:(double)arg1;
 - (id)init;
+- (BOOL)isScaleRotateTransformOrder;
 - (CDStruct_14d5dc5e)localTransformAtTime:(double)arg1;
 - (void)setLocalTransform:(CDStruct_14d5dc5e)arg1;
 - (void)setLocalTransform:(CDStruct_14d5dc5e)arg1 forTime:(double)arg2;

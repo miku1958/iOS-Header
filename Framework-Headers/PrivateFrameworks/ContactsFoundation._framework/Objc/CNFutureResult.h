@@ -17,7 +17,9 @@
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) id result; // @synthesize result=_result;
 
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)setResult:(id)arg1 error:(id)arg2;
 
 @end

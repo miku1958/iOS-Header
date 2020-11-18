@@ -6,11 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@class NSURL;
+@protocol OS_dispatch_queue;
+
 @interface FMDFMIPManager : NSObject
 {
+    NSURL *_managedLostModeFileURL;
+    NSURL *_needsLocateAckLostModeFileURL;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
+@property (strong, nonatomic) NSURL *managedLostModeFileURL; // @synthesize managedLostModeFileURL=_managedLostModeFileURL;
+@property (strong, nonatomic) NSURL *needsLocateAckLostModeFileURL; // @synthesize needsLocateAckLostModeFileURL=_needsLocateAckLostModeFileURL;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (BOOL)_checkLostModeInSharedContainer;
 - (void)_disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_forceFMWUpgradeAlertWithCompletion:(CDUnknownBlockType)arg1;
@@ -45,6 +56,7 @@
 - (void)getAccessoriesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)getManagedLostModeFileURL;
 - (id)getNeedsLocateAckLostModeFileURL;
+- (id)init;
 - (void)initiateLostModeExitAuthForIDSDeviceID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)initiateLostModeExitAuthWithCompletion:(CDUnknownBlockType)arg1;
 - (void)isActivationLockAllowedWithCompletion:(CDUnknownBlockType)arg1;

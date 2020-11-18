@@ -14,7 +14,6 @@
 __attribute__((visibility("hidden")))
 @interface TSWPEquationInlineRep : TSDMediaRep <CALayerDelegate, TSDMagicMoveMatching>
 {
-    BOOL _showEquationHighlight;
     BOOL _layerContentsAreFlipped;
     CALayer *_equationLayer;
 }
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSWPEquationLayout *equationLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL layerContentsAreFlipped; // @synthesize layerContentsAreFlipped=_layerContentsAreFlipped;
-@property (nonatomic) BOOL showEquationHighlight; // @synthesize showEquationHighlight=_showEquationHighlight;
 @property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;

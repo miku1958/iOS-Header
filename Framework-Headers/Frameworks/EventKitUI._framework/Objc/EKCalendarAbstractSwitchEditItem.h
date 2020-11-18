@@ -31,6 +31,7 @@
 - (id)cell;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (id)cellText;
+- (BOOL)cellWrapsLongText;
 - (id)descriptionLabelText;
 - (double)footerHeightForSection;
 - (id)footerView;

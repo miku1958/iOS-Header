@@ -7,6 +7,7 @@
 #import <Preferences/PSViewController.h>
 
 #import <Preferences/PSSpecifierObserver-Protocol.h>
+#import <Preferences/PSURLControllerHandlerDelegate-Protocol.h>
 #import <Preferences/PSViewControllerOffsetProtocol-Protocol.h>
 #import <Preferences/UIAlertViewDelegate-Protocol.h>
 #import <Preferences/UIAppearance-Protocol.h>
@@ -15,10 +16,10 @@
 #import <Preferences/UITableViewDataSourcePrefetching-Protocol.h>
 #import <Preferences/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSString, UIColor, UIKeyboard, UITableView, UIView;
+@class NSArray, NSDictionary, NSIndexPath, NSMutableArray, NSMutableDictionary, NSString, PSURLControllerHandler, UIColor, UIKeyboard, UITableView, UIView;
 @protocol PSSpecifierDataSource;
 
-@interface PSListController : PSViewController <UIAppearance, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, PSSpecifierObserver, PSViewControllerOffsetProtocol>
+@interface PSListController : PSViewController <UIAppearance, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UIAlertViewDelegate, UIPopoverPresentationControllerDelegate, PSSpecifierObserver, PSViewControllerOffsetProtocol, PSURLControllerHandlerDelegate>
 {
     NSMutableArray *_prequeuedReusablePSTableCells;
     NSMutableDictionary *_cells;
@@ -32,12 +33,12 @@
     NSString *_specifierID;
     NSMutableArray *_bundleControllers;
     BOOL _bundlesLoaded;
-    BOOL _showingSetupController;
     BOOL _keyboardWasVisible;
     UIKeyboard *_keyboard;
     BOOL _popupIsModal;
     BOOL _popupIsDismissing;
     BOOL _hasAppeared;
+    BOOL _showingSetupController;
     float _verticalContentOffset;
     NSString *_offsetItemName;
     struct CGPoint _contentOffsetWithKeyboard;
@@ -50,13 +51,17 @@
     NSIndexPath *_savedSelectedIndexPath;
     BOOL _edgeToEdgeCells;
     BOOL _prefetchingEnabled;
+    BOOL _contentSizeDidChange;
     BOOL _usesDarkTheme;
     NSDictionary *_pendingURLResourceDictionary;
     NSString *_specifierIDPendingPush;
+    CDUnknownBlockType _urlHandlingCompletion;
+    PSURLControllerHandler *_urlHandler;
     UIColor *_backgroundColor;
     UIColor *_foregroundColor;
     UIColor *_separatorColor;
     UIColor *_cellHighlightColor;
+    UIColor *_padSelectionColor;
     UIColor *_cellAccessoryColor;
     UIColor *_cellAccessoryHighlightColor;
     UIColor *_textColor;
@@ -77,6 +82,7 @@
 @property (strong, nonatomic) UIColor *cellAccessoryColor; // @synthesize cellAccessoryColor=_cellAccessoryColor;
 @property (strong, nonatomic) UIColor *cellAccessoryHighlightColor; // @synthesize cellAccessoryHighlightColor=_cellAccessoryHighlightColor;
 @property (strong, nonatomic) UIColor *cellHighlightColor; // @synthesize cellHighlightColor=_cellHighlightColor;
+@property (nonatomic) BOOL contentSizeDidChange; // @synthesize contentSizeDidChange=_contentSizeDidChange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL edgeToEdgeCells; // @synthesize edgeToEdgeCells=_edgeToEdgeCells;
@@ -90,14 +96,18 @@
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long observerType;
+@property (strong, nonatomic) UIColor *padSelectionColor; // @synthesize padSelectionColor=_padSelectionColor;
 @property (strong, nonatomic) NSDictionary *pendingURLResourceDictionary; // @synthesize pendingURLResourceDictionary=_pendingURLResourceDictionary;
 @property (nonatomic, getter=isPrefetchingEnabled) BOOL prefetchingEnabled; // @synthesize prefetchingEnabled=_prefetchingEnabled;
 @property (strong, nonatomic) UIColor *segmentedSliderTrackColor; // @synthesize segmentedSliderTrackColor=_segmentedSliderTrackColor;
 @property (strong, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
+@property (nonatomic, getter=isShowingSetupController) BOOL showingSetupController; // @synthesize showingSetupController=_showingSetupController;
 @property (strong, nonatomic) id<PSSpecifierDataSource> specifierDataSource;
 @property (copy, nonatomic) NSString *specifierIDPendingPush; // @synthesize specifierIDPendingPush=_specifierIDPendingPush;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
+@property (strong, nonatomic) PSURLControllerHandler *urlHandler; // @synthesize urlHandler=_urlHandler;
+@property (copy, nonatomic) CDUnknownBlockType urlHandlingCompletion; // @synthesize urlHandlingCompletion=_urlHandlingCompletion;
 @property (nonatomic) BOOL usesDarkTheme; // @synthesize usesDarkTheme=_usesDarkTheme;
 
 + (id)aggregateReportingDomainOverride;
@@ -148,9 +158,9 @@
 - (void)clearCache;
 - (void)clearPendingURL;
 - (void)confirmationViewAcceptedForSpecifier:(id)arg1;
+- (void)confirmationViewAlternateAcceptedForSpecifier:(id)arg1;
 - (void)confirmationViewCancelledForSpecifier:(id)arg1;
 - (BOOL)containsSpecifier:(id)arg1;
-- (void)contentSizeChangedNotificationPosted:(id)arg1;
 - (void)contentSizeDidChange:(id)arg1;
 - (id)controllerForRowAtIndexPath:(id)arg1;
 - (id)controllerForSpecifier:(id)arg1;
@@ -158,12 +168,15 @@
 - (void)createPrequeuedPSTableCells:(unsigned long long)arg1;
 - (void)dataSource:(id)arg1 performUpdates:(id)arg2;
 - (void)dealloc;
+- (void)delayedContentSizeDidChange;
+- (void)didBecomeActive:(id)arg1;
 - (void)dismissConfirmationViewAnimated:(BOOL)arg1;
 - (void)dismissPopover;
 - (void)dismissPopoverAnimated:(BOOL)arg1;
+- (void)dismissPopoverAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dismissPopoverWithCompletion:(CDUnknownBlockType)arg1;
 - (void)endUpdates;
 - (id)findFirstVisibleResponder;
-- (void)fontSliderDidEndSlidingNotificationPosted:(id)arg1;
 - (void)formSheetViewWillDisappear;
 - (BOOL)getGroup:(long long *)arg1 row:(long long *)arg2 ofSpecifier:(id)arg3;
 - (BOOL)getGroup:(long long *)arg1 row:(long long *)arg2 ofSpecifierAtIndex:(long long)arg3;
@@ -171,7 +184,7 @@
 - (id)getGroupSpecifierForSpecifier:(id)arg1;
 - (id)getGroupSpecifierForSpecifierID:(id)arg1;
 - (BOOL)handlePendingURL;
-- (void)handleURL:(id)arg1;
+- (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)highlightSpecifierWithID:(id)arg1;
 - (long long)indexForIndexPath:(id)arg1;
 - (long long)indexForRow:(long long)arg1 inGroup:(long long)arg2;
@@ -210,6 +223,7 @@
 - (BOOL)performActionForSpecifier:(id)arg1;
 - (BOOL)performButtonActionForSpecifier:(id)arg1;
 - (BOOL)performConfirmationActionForSpecifier:(id)arg1;
+- (BOOL)performConfirmationAlternateActionForSpecifier:(id)arg1;
 - (BOOL)performConfirmationCancelActionForSpecifier:(id)arg1;
 - (BOOL)performLoadActionForSpecifier:(id)arg1;
 - (void)performSpecifierUpdates:(id)arg1;
@@ -218,6 +232,7 @@
 - (void)popupViewWillDisappear;
 - (void)prefetchResourcesFor:(id)arg1;
 - (BOOL)prepareHandlingURLForSpecifierID:(id)arg1 resourceDictionary:(id)arg2 animatePush:(BOOL *)arg3;
+- (BOOL)prepareHandlingURLForSpecifierID:(id)arg1 resourceDictionary:(id)arg2 animatePush:(BOOL *)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)prepareSpecifiersMetadata;
 - (void)pushController:(id)arg1 animate:(BOOL)arg2;
 - (struct _NSRange)rangeOfSpecifiersInGroupID:(id)arg1;
@@ -245,6 +260,7 @@
 - (void)returnPressedAtEnd;
 - (long long)rowsForGroup:(long long)arg1;
 - (void)selectRowForSpecifier:(id)arg1;
+- (id)selectSpecifier:(id)arg1;
 - (void)setCachesCells:(BOOL)arg1;
 - (void)setDesiredVerticalContentOffset:(float)arg1;
 - (void)setDesiredVerticalContentOffsetItemNamed:(id)arg1;
@@ -254,6 +270,7 @@
 - (void)setSpecifiers:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (BOOL)shouldDeferPushForSpecifierID:(id)arg1;
+- (BOOL)shouldDeferPushForSpecifierID:(id)arg1 urlDictionary:(id)arg2;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (BOOL)shouldSelectResponderOnAppearance;
 - (void)showConfirmationViewForSpecifier:(id)arg1;

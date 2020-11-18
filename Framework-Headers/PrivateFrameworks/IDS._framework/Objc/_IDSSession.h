@@ -88,6 +88,7 @@
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3 delegateContext:(id)arg4;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 transportType:(long long)arg3 delegateContext:(id)arg4;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 transportType:(long long)arg3 uniqueID:(id)arg4 delegateContext:(id)arg5;
+- (void)reconnectSession;
 - (void)sendAllocationRequest:(id)arg1;
 - (BOOL)sendData:(id)arg1 error:(id *)arg2;
 - (void)sendInvitationWithData:(id)arg1 declineOnError:(BOOL)arg2;

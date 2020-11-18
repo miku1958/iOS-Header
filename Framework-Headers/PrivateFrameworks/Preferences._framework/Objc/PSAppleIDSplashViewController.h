@@ -9,7 +9,7 @@
 #import <Preferences/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <Preferences/RemoteUIControllerDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationController, CNMonogrammer, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem;
+@class AKAppleIDAuthenticationController, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem;
 
 @interface PSAppleIDSplashViewController : PSListController <AKAppleIDAuthenticationInAppContextPasswordDelegate, RemoteUIControllerDelegate>
 {
@@ -19,7 +19,6 @@
     UIBarButtonItem *_spinnerBarItem;
     UIBarButtonItem *_nextButtonBarItem;
     UIBarButtonItem *_cancelButtonBarItem;
-    CNMonogrammer *_monogrammer;
     PSSpecifier *_createNewAccountButtonSpecifier;
     PSSpecifier *_createNewAccountGroupSpecifier;
     PSSpecifier *_signInButtonSpecifier;
@@ -54,7 +53,6 @@
 - (double)_heightForCreateNewAccountFooterWithWidth:(double)arg1;
 - (double)_heightForCreateNewAccountSpecifierWithWidth:(double)arg1;
 - (void)_iForgotButtonWasTapped:(id)arg1;
-- (id)_monogrammer;
 - (void)_openWebBasedCredentialRecoveryFlow;
 - (id)_passwordForSpecifier:(id)arg1;
 - (void)_presentAppleIDPrivacyInformationPane;
@@ -68,6 +66,7 @@
 - (BOOL)_shouldShowCancelDone;
 - (void)_signInButtonWasTapped:(id)arg1;
 - (void)_signInWithUsername:(id)arg1 password:(id)arg2;
+- (id)_silhouetteMonogram;
 - (id)_specifierForGroupWithiForgotLink;
 - (id)_specifierForLoginPasswordForm;
 - (id)_specifierForLoginUserForm;

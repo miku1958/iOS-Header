@@ -14,7 +14,6 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
-- (void)fetchAllSourcesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)serviceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)updateAppearance:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)updateAppearance:(id)arg1 shouldFlushCA:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;

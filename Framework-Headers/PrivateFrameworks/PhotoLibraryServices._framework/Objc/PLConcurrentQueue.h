@@ -21,8 +21,8 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *targetQueue; // @synthesize targetQueue=_targetQueue;
 @property (readonly, nonatomic) long long width; // @synthesize width=_width;
 
+- (void).cxx_destruct;
 - (void)_internalQueue_tryDispatchingNextPendingBlock;
-- (void)dealloc;
 - (void)dispatchAsync:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithTargetQueue:(id)arg1 width:(long long)arg2;

@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)trackEventWithScalar:(unsigned long long)arg1 type:(struct SGMContactDetailType_)arg2 extracted:(struct SGMDetailExtractionType_)arg3;
+- (void)trackEventWithScalar:(unsigned long long)arg1 type:(struct SGMContactDetailType_)arg2 extracted:(struct SGMDetailExtractionType_)arg3 extractionModelVersion:(unsigned long long)arg4;
 
 @end
 

@@ -20,9 +20,11 @@
 - (id)_allObservedTypes;
 - (void)_callObservers:(id)arg1 withType:(id)arg2 samplesAdded:(id)arg3 objectsRemoved:(id)arg4;
 - (void)_createQueryForType:(id)arg1 retryCount:(long long)arg2;
+- (void)_handleHighFrequencyObserverCallbacksForType:(id)arg1;
 - (void)_handleQueryCallbackForType:(id)arg1 samplesAdded:(id)arg2 objectsDeleted:(id)arg3 error:(id)arg4 retryCount:(long long)arg5;
 - (void)_handleQueryErrorForType:(id)arg1 retryCount:(long long)arg2;
 - (void)_handleQuerySuccessForType:(id)arg1 samplesAdded:(id)arg2 objectsRemoved:(id)arg3;
+- (BOOL)_isHighFrequencyDataType:(id)arg1;
 - (id)_observersForType:(id)arg1;
 - (long long)_queryStateForType:(id)arg1;
 - (void)_removeQueryForType:(id)arg1;

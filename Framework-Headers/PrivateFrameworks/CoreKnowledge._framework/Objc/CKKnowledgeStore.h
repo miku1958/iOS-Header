@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSString, NSURL;
 @protocol CKKnowledgeStoreDelegate;
 
 @interface CKKnowledgeStore : NSObject
@@ -18,13 +18,13 @@
 }
 
 @property (nonatomic, strong) id<CKKnowledgeStoreDelegate> delegate; // @synthesize delegate;
+@property (nonatomic, readonly) NSURL *filePathURL;
 @property (nonatomic, readonly) long long hash;
 @property (nonatomic, readonly) NSString *name;
-@property (nonatomic, readonly) NSString *path;
 
 + (id)defaultKnowledgeStore;
 + (id)defaultSynchedKnowledgeStore;
-+ (id)directoryPath;
++ (id)directoryURL;
 + (id)inMemoryKnowledgeStore;
 + (id)knowledgeStoreWithName:(id)arg1;
 + (id)synchedKnowledgeStoreWithName:(id)arg1;

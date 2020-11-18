@@ -12,22 +12,23 @@
 
 @interface GEOTelemetricEntity : PBCodable <NSCopying>
 {
-    unsigned long long _eventValue;
     NSString *_eventDetail;
+    unsigned long long _eventValue;
     int _eventKey;
     struct {
-        unsigned int eventValue:1;
-        unsigned int eventKey:1;
-    } _has;
+        unsigned int has_eventValue:1;
+        unsigned int has_eventKey:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *eventDetail; // @synthesize eventDetail=_eventDetail;
-@property (nonatomic) int eventKey; // @synthesize eventKey=_eventKey;
-@property (nonatomic) unsigned long long eventValue; // @synthesize eventValue=_eventValue;
+@property (strong, nonatomic) NSString *eventDetail;
+@property (nonatomic) int eventKey;
+@property (nonatomic) unsigned long long eventValue;
 @property (readonly, nonatomic) BOOL hasEventDetail;
 @property (nonatomic) BOOL hasEventKey;
 @property (nonatomic) BOOL hasEventValue;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsEventKey:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -38,6 +39,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -6,15 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <MessageUI/MFContactsSearchConsumer-Protocol.h>
+#import <MessageUI/CNAutocompleteSearchConsumer-Protocol.h>
 
-@class MFContactsSearchManager, MFContactsSearchResultsModel, NSMutableArray, NSNumber, NSString;
+@class CNAutocompleteSearchManager, NSMutableArray, NSNumber, NSString;
 @protocol MFMailComposeContactsSearchControllerDelegate;
 
-@interface MFMailComposeContactsSearchController : NSObject <MFContactsSearchConsumer>
+@interface MFMailComposeContactsSearchController : NSObject <CNAutocompleteSearchConsumer>
 {
-    MFContactsSearchManager *_manager;
-    MFContactsSearchResultsModel *_model;
+    CNAutocompleteSearchManager *_manager;
     NSMutableArray *_autocompleteSearchResults;
     NSMutableArray *_corecipientSearchResults;
     NSNumber *_corecipientSearchTaskID;
@@ -25,12 +24,13 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<MFMailComposeContactsSearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MFMailComposeContactsSearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *taskID; // @synthesize taskID=_taskID;
 
+- (void).cxx_destruct;
 - (void)_cancelSearchAndNotify:(BOOL)arg1;
 - (void)_finishSearch;
 - (void)_reset;
@@ -38,14 +38,11 @@
 - (void)cancelSearch;
 - (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (void)consumeCorecipientSearchResults:(id)arg1 taskID:(id)arg2;
-- (void)consumeSearchResults:(id)arg1 type:(unsigned long long)arg2 taskID:(id)arg3;
-- (void)dealloc;
 - (void)didSelectRecipient:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)endedNetworkActivity;
 - (void)findCorecipientsWithRecipients:(id)arg1;
 - (void)finishedSearchingForAutocompleteResults;
 - (void)finishedSearchingForCorecipients;
-- (void)finishedSearchingForType:(unsigned long long)arg1;
 - (void)finishedTaskWithID:(id)arg1;
 - (id)init;
 - (void)removeRecipient:(id)arg1;

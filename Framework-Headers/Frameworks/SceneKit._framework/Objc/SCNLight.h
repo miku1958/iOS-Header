@@ -9,11 +9,10 @@
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
-#import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
 @class MISSING_TYPE, NSArray, NSData, NSMutableDictionary, NSString, NSURL, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
 
-@interface SCNLight : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
+@interface SCNLight : NSObject <SCNAnimatable, NSCopying, NSSecureCoding>
 {
     struct __C3DLight *_light;
     unsigned int _isPresentationInstance:1;
@@ -64,11 +63,18 @@
     SCNTechnique *_technique;
     NSData *_sphericalHarmonics;
     SCNMaterialProperty *_probeEnvironment;
-    NSArray *_probeTextureMipsArray;
+    long long _areaType;
+    MISSING_TYPE *_areaExtents;
+    NSArray *_areaPolygonVertices;
+    BOOL _drawsArea;
+    BOOL _doubleSided;
 }
 
 @property (strong, nonatomic) NSURL *IESProfileURL;
 @property (readonly) NSArray *animationKeys;
+@property (nonatomic) MISSING_TYPE *areaExtents;
+@property (copy, nonatomic) NSArray *areaPolygonVertices;
+@property (nonatomic) long long areaType;
 @property (nonatomic) double attenuationEndDistance;
 @property (nonatomic) double attenuationFalloffExponent;
 @property (nonatomic) double attenuationStartDistance;
@@ -78,6 +84,8 @@
 @property (strong, nonatomic) id color;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL doubleSided;
+@property (nonatomic) BOOL drawsArea;
 @property (nonatomic) BOOL forcesBackFaceCasters;
 @property (readonly, nonatomic) SCNMaterialProperty *gobo;
 @property (readonly) unsigned long long hash;
@@ -85,6 +93,14 @@
 @property (nonatomic) double maximumShadowDistance;
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) double orthographicScale;
+@property (nonatomic) MISSING_TYPE *parallaxCenterOffset;
+@property (nonatomic) BOOL parallaxCorrectionEnabled;
+@property (nonatomic) MISSING_TYPE *parallaxExtentsFactor;
+@property (readonly, nonatomic) SCNMaterialProperty *probeEnvironment;
+@property (nonatomic) MISSING_TYPE *probeExtents;
+@property (nonatomic) MISSING_TYPE *probeOffset;
+@property (nonatomic) long long probeType;
+@property (nonatomic) long long probeUpdateType;
 @property (nonatomic) BOOL sampleDistributedShadowMaps;
 @property (nonatomic) double shadowBias;
 @property (nonatomic) unsigned long long shadowCascadeCount;
@@ -98,7 +114,6 @@
 @property (nonatomic) double spotInnerAngle;
 @property (nonatomic) double spotOuterAngle;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) SCNTechnique *technique;
 @property (nonatomic) double temperature;
 @property (copy, nonatomic) NSString *type;
 @property (nonatomic) double zFar;
@@ -116,7 +131,7 @@
 - (void)_customEncodingOfSCNLight:(id)arg1;
 - (void)_didDecodeSCNLight:(id)arg1;
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
-- (id)_probeTextureMipsArray;
+- (void)_resyncObjCModelOfPerTypeParameters;
 - (id)_scnAnimationForKey:(id)arg1;
 - (id)_scnBindings;
 - (double)_shadowCascadeDebugFactor;
@@ -140,6 +155,7 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)forceBackFaceCasters;
+- (BOOL)hasGobo;
 - (id)identifier;
 - (id)init;
 - (id)initPresentationLightWithLightRef:(struct __C3DLight *)arg1;
@@ -150,17 +166,9 @@
 - (BOOL)isPausedOrPausedByInheritance;
 - (struct __C3DLight *)lightRef;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (MISSING_TYPE *)parallaxCenterOffset;
-- (BOOL)parallaxCorrectionEnabled;
-- (MISSING_TYPE *)parallaxExtentsFactor;
 - (void)pauseAnimationForKey:(id)arg1;
 - (id)presentationInstance;
 - (id)presentationLight;
-- (id)probeEnvironment;
-- (MISSING_TYPE *)probeExtents;
-- (MISSING_TYPE *)probeOffset;
-- (long long)probeType;
-- (long long)probeUpdateType;
 - (void)removeAllAnimations;
 - (void)removeAllBindings;
 - (void)removeAnimationForKey:(id)arg1;
@@ -173,27 +181,22 @@
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (void)setBaked:(BOOL)arg1;
 - (void)setForceBackFaceCasters:(BOOL)arg1;
+- (void)setIESProfileURL:(id)arg1 resolvedURL:(id)arg2;
 - (void)setIdentifier:(id)arg1;
-- (void)setParallaxCenterOffset: /* Error: Ran out of types for this method. */;
-- (void)setParallaxCorrectionEnabled:(BOOL)arg1;
-- (void)setParallaxExtentsFactor: /* Error: Ran out of types for this method. */;
-- (void)setProbeExtents: /* Error: Ran out of types for this method. */;
-- (void)setProbeOffset: /* Error: Ran out of types for this method. */;
-- (void)setProbeType:(long long)arg1;
-- (void)setProbeUpdateType:(long long)arg1;
 - (void)setShouldBakeDirectLighting:(BOOL)arg1;
 - (void)setShouldBakeIndirectLighting:(BOOL)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
 - (void)setSphericalHarmonicsCoefficients:(id)arg1;
 - (void)setSpotFalloffExponent:(double)arg1;
+- (void)setTechnique:(id)arg1;
 - (void)setUsesDeferredShadows:(BOOL)arg1;
 - (void)setUsesModulatedMode:(BOOL)arg1;
-- (void)set_probeTextureMipsArray:(id)arg1;
 - (void)set_shadowCascadeDebugFactor:(double)arg1;
 - (void)set_sphericalHarmonics:(id)arg1;
 - (BOOL)shouldBakeDirectLighting;
 - (BOOL)shouldBakeIndirectLighting;
 - (double)spotFalloffExponent;
+- (id)technique;
 - (void)unbindAnimatablePath:(id)arg1;
 - (BOOL)usesDeferredShadows;
 - (BOOL)usesModulatedMode;

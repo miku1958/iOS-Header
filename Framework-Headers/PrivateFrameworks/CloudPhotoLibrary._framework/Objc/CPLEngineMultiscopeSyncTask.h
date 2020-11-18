@@ -38,9 +38,10 @@
 - (void)cancel;
 - (void)dispatchAsyncWithCurrentSubtask:(CDUnknownBlockType)arg1;
 - (id)enumerateScopesForTaskInTransaction:(id)arg1;
-- (id)initWithEngineLibrary:(id)arg1;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 - (void)launch;
-- (id)newScopedTaskWithScope:(id)arg1 transportScope:(id)arg2 clientCacheIdentifier:(id)arg3;
+- (id)newScopedTaskWithScope:(id)arg1 session:(id)arg2 transportScope:(id)arg3 clientCacheIdentifier:(id)arg4;
+- (id)phaseDescription;
 - (void)setForceSync:(BOOL)arg1;
 - (void)setForeground:(BOOL)arg1;
 - (BOOL)shouldContinueAfterError:(id)arg1 fromTask:(id)arg2;

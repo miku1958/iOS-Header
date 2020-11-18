@@ -50,6 +50,7 @@
 @property (readonly, copy, nonatomic) NSString *mediaKind;
 @property (readonly, nonatomic) unsigned long long minimumRankOfTopHitToSuppressResult;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property (readonly, nonatomic) long long parsecQueryID;
 @property (strong, nonatomic) id<WBSParsecSearchSession> parsecSearchSession;
 @property (readonly, copy, nonatomic) NSString *query;
 @property (readonly, copy, nonatomic) NSString *referrerForLoadingResult;
@@ -69,6 +70,8 @@
 @property (readonly, nonatomic) long long type;
 @property (readonly, nonatomic) NSString *urlString;
 
++ (long long)typeForSFSearchResult:(id)arg1;
++ (long long)typeForSFSearchResult:(id)arg1 isOneLine:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_genericResult;
 - (id)_mapsResult;

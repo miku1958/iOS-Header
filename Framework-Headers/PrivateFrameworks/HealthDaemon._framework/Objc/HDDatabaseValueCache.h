@@ -6,28 +6,44 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+#import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@interface HDDatabaseValueCache : NSObject
+@class NSMutableDictionary, NSString;
+
+@interface HDDatabaseValueCache : NSObject <HDDiagnosticObject>
 {
     NSMutableDictionary *_cache;
-    NSObject<OS_dispatch_queue> *_resourceQueue;
     NSString *_threadLocalKey;
+    long long _cacheScope;
+    struct os_unfair_lock_s _lock;
+    struct {
+        long long faultCount;
+        long long lookupCount;
+        long long resetCount;
+    } _statistics;
+    NSString *_name;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *cache; // @synthesize cache=_cache;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
-@property (copy, nonatomic) NSString *threadLocalKey; // @synthesize threadLocalKey=_threadLocalKey;
+@property (readonly) long long cacheScope;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *name; // @synthesize name=_name;
+@property (readonly) CDStruct_2ec95fd7 statistics;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_commitTransactionStorage:(id)arg1;
-- (id)_resourceQueue_objectForKey:(id)arg1 database:(id)arg2;
-- (void)_resourceQueue_removeAllObjectsWithDatabase:(id)arg1;
-- (void)_resourceQueue_storeObject:(id)arg1 forKey:(id)arg2 database:(id)arg3;
+- (id)_lock_objectForKey:(id)arg1 database:(id)arg2;
+- (void)_lock_removeAllObjectsWithDatabase:(id)arg1;
+- (void)_lock_storeObject:(id)arg1 forKey:(id)arg2 database:(id)arg3;
 - (id)_transactionStorageWithDatabase:(id)arg1 createIfNecessary:(BOOL)arg2;
+- (void)dealloc;
+- (id)diagnosticDescription;
 - (id)fetchObjectForKey:(id)arg1 database:(id)arg2 error:(id *)arg3 faultHandler:(CDUnknownBlockType)arg4;
 - (id)init;
+- (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 cacheScope:(long long)arg2;
 - (id)objectForKey:(id)arg1;
 - (void)removeAllObjectsWithDatabase:(id)arg1;
 - (void)removeObjectForKey:(id)arg1 database:(id)arg2;

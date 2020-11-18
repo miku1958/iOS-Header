@@ -18,9 +18,7 @@
 @property (nonatomic) struct CGRect relativeRect;
 @property (strong, nonatomic) NSValue *relativeRectValue; // @dynamic relativeRectValue;
 
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 - (void)delete;
 
 @end

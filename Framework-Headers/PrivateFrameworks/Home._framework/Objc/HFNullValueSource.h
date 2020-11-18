@@ -9,31 +9,31 @@
 #import <Home/HFCharacteristicValueSource-Protocol.h>
 #import <Home/HFMediaValueSource-Protocol.h>
 
-@class NSError, NSString;
-@protocol HFCharacteristicOperationContextProviding, HFMediaProfileContainer;
+@class NSString;
+@protocol HFCharacteristicOperationContextProviding;
 
 @interface HFNullValueSource : NSObject <HFCharacteristicValueSource, HFMediaValueSource>
 {
 }
 
-@property (readonly, nonatomic) NSError *cachedPlaybackStateWriteError;
 @property (readonly, nonatomic) id<HFCharacteristicOperationContextProviding> contextProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasPendingWrites;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer;
 @property (readonly) Class superclass;
 
 + (id)na_identity;
 - (void)beginTransactionWithReason:(id)arg1 readPolicy:(id)arg2 logger:(id)arg3;
+- (id)cachedPlaybackStateWriteErrorForRouteID:(id)arg1;
 - (id)cachedValueForCharacteristic:(id)arg1;
 - (void)commitTransactionWithReason:(id)arg1;
+- (BOOL)hasPendingWritesForRouteID:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (long long)lastPlaybackStateForProfile;
+- (long long)lastPlaybackStateForProfileForRouteID:(id)arg1;
+- (id)mediaProfileContainerForRouteID:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
-- (id)writePlaybackState:(long long)arg1;
+- (id)writePlaybackState:(long long)arg1 playbackArchive:(id)arg2 forRouteID:(id)arg3;
 - (id)writeValuesForCharacteristics:(id)arg1;
 
 @end

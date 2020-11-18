@@ -10,8 +10,8 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct ranking_index_score_t {
-    unsigned long long lsb;
-    unsigned long long msb;
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
 };
 

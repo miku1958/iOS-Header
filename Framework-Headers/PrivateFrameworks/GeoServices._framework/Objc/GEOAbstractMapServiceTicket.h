@@ -8,9 +8,8 @@
 
 #import <GeoServices/GEOMapServiceTicket-Protocol.h>
 
-@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
+@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface GEOAbstractMapServiceTicket : GEOAbstractTicket <GEOMapServiceTicket>
 {
     GEOMapRegion *_resultBoundingRegion;
@@ -26,16 +25,20 @@ __attribute__((visibility("hidden")))
     GEOResolvedItem *_clientResolvedResult;
     GEODirectionIntent *_directionIntent;
     NSArray *_retainedSearchMetadata;
+    NSArray *_searchResultSections;
     unsigned int _dymSuggestionVisibleTime;
     BOOL _showDymSuggestionCloseButton;
     GEOPDMerchantLookupResult *_merchantLookupResult;
+    GEOCategorySearchResultSection *_categorySearchResultSection;
 }
 
 @property (readonly, nonatomic) NSArray *browseCategories; // @synthesize browseCategories=_browseCategories;
 @property (nonatomic) unsigned long long cachePolicy;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
+@property (readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection; // @synthesize categorySearchResultSection=_categorySearchResultSection;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet; // @synthesize chainResultSet=_chainResultSet;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult; // @synthesize clientResolvedResult=_clientResolvedResult;
+@property (readonly, nonatomic) CDStruct_d1a7ebee dataRequestKind;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion; // @synthesize defaultRelatedSuggestion=_defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
@@ -50,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *resultDisplayHeader; // @synthesize resultDisplayHeader=_resultDisplayHeader;
 @property (readonly, nonatomic) NSString *resultSectionHeader; // @synthesize resultSectionHeader=_resultSectionHeader;
 @property (readonly, nonatomic) NSArray *retainedSearchMetadata; // @synthesize retainedSearchMetadata=_retainedSearchMetadata;
+@property (readonly, nonatomic) NSArray *searchResultSections; // @synthesize searchResultSections=_searchResultSections;
 @property (readonly, nonatomic) int searchResultType; // @synthesize searchResultType=_searchResultType;
 @property (readonly, nonatomic) BOOL shouldEnableRedoSearch; // @synthesize shouldEnableRedoSearch=_shouldEnableRedoSearch;
 @property (readonly, nonatomic) BOOL showDymSuggestionCloseButton; // @synthesize showDymSuggestionCloseButton=_showDymSuggestionCloseButton;

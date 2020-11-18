@@ -16,6 +16,7 @@
 {
     long long _selectedIndex;
     BOOL _dateSlot;
+    BOOL _isRichSlot;
     NSArray *_complications;
     NSString *_slot;
     id<NTKCFaceDetailComplicationPickerCellDelegate> _delegate;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) id<NTKCFaceDetailComplicationPickerCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isRichSlot; // @synthesize isRichSlot=_isRichSlot;
 @property (strong, nonatomic) UIPickerView *picker; // @synthesize picker=_picker;
 @property (strong, nonatomic) NTKComplication *selectedComplication;
 @property (strong, nonatomic) CAShapeLayer *selectionIndicator; // @synthesize selectionIndicator=_selectionIndicator;
@@ -46,7 +48,7 @@
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (double)pickerView:(id)arg1 rowHeightForComponent:(long long)arg2;
-- (void)setComplications:(id)arg1 forSlot:(id)arg2 dateSlot:(BOOL)arg3;
+- (void)setComplications:(id)arg1 forSlot:(id)arg2 dateSlot:(BOOL)arg3 isRichSlot:(BOOL)arg4;
 
 @end
 

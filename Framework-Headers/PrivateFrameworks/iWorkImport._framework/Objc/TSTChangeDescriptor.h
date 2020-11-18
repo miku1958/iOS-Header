@@ -19,13 +19,18 @@ __attribute__((visibility("hidden")))
     TSTCellRegion *_strokeRegion;
     TSKShuffleMapping *_shuffleMapping;
     NSSet *_annotations;
+    unsigned long long _beforeCountValue;
+    unsigned long long _afterCountValue;
 }
 
+@property (nonatomic) unsigned long long afterCountValue; // @synthesize afterCountValue=_afterCountValue;
 @property (strong, nonatomic) NSSet *annotations; // @synthesize annotations=_annotations;
+@property (nonatomic) unsigned long long beforeCountValue; // @synthesize beforeCountValue=_beforeCountValue;
 @property (nonatomic) struct TSUCellCoord cellID; // @synthesize cellID=_cellID;
 @property (readonly, nonatomic) struct TSUCellRect cellRange;
 @property (strong, nonatomic) TSTCellRegion *cellRegion; // @synthesize cellRegion=_cellRegion;
 @property (nonatomic) int changeDescriptor; // @synthesize changeDescriptor=_changeDescriptor;
+@property (readonly, nonatomic) BOOL hasBeforeAfterCounts;
 @property (nonatomic) BOOL processedByMasterLayout; // @synthesize processedByMasterLayout=_processedByMasterLayout;
 @property (strong, nonatomic) NSHashTable *referenceIdentifiers; // @synthesize referenceIdentifiers=_referenceIdentifiers;
 @property (strong, nonatomic) TSKShuffleMapping *shuffleMapping; // @synthesize shuffleMapping=_shuffleMapping;
@@ -41,7 +46,9 @@ __attribute__((visibility("hidden")))
 + (id)changeDescriptorWithType:(int)arg1 cellRange:(struct TSUCellRect)arg2;
 + (id)changeDescriptorWithType:(int)arg1 cellRange:(struct TSUCellRect)arg2 strokeRange:(struct TSUCellRect)arg3;
 + (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2;
++ (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2 beforeCount:(unsigned long long)arg3 afterCount:(unsigned long long)arg4;
 + (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2 strokeRegion:(id)arg3;
++ (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2 strokeRegion:(id)arg3 beforeCount:(unsigned long long)arg4 afterCount:(unsigned long long)arg5;
 + (id)changeDescriptorWithType:(int)arg1 referenceIdentifiers:(id)arg2;
 + (id)changeDescriptorWithType:(int)arg1 shuffleMapping:(id)arg2;
 + (id)changeDescriptorWithType:(int)arg1 strokeRange:(struct TSUCellRect)arg2;

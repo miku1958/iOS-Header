@@ -62,7 +62,6 @@
 - (void)dealloc;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
 - (id)extendedLanguageTag;
-- (void)finalize;
 - (id)init;
 - (id)initWithMediaType:(id)arg1 outputSettings:(id)arg2;
 - (id)initWithMediaType:(id)arg1 outputSettings:(id)arg2 sourceFormatHint:(struct opaqueCMFormatDescription *)arg3;
@@ -101,6 +100,7 @@
 - (void)setSampleReferenceBaseURL:(id)arg1;
 - (void)setTransform:(struct CGAffineTransform)arg1;
 - (void)setWritesMediaDataToBeginningOfFile:(BOOL)arg1;
+- (void)stopRequestingMediaData;
 - (struct CGAffineTransform)transform;
 - (BOOL)writesMediaDataToBeginningOfFile;
 

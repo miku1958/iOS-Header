@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TVButton *playButton; // @synthesize playButton=_playButton;
 @property (strong, nonatomic) _TVProgressView *progressView; // @synthesize progressView=_progressView;
 
-+ (id)_episodePlaceholderImage;
 + (void)configureEpisodeFrameView:(id)arg1 withMedia:(id)arg2 layout:(long long)arg3 imageSize:(struct CGSize)arg4;
 - (void).cxx_destruct;
 - (void)_playButtonPressed;

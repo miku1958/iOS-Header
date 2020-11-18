@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/BSXPCCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSString, UIColor;
 
-@interface _UILegibilitySettings : NSObject <NSSecureCoding, NSCopying>
+@interface _UILegibilitySettings : NSObject <NSSecureCoding, NSCopying, BSXPCCoding>
 {
     long long _style;
     UIColor *_contentColor;
@@ -26,6 +27,9 @@
 }
 
 @property (strong, nonatomic) UIColor *contentColor; // @synthesize contentColor=_contentColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double imageOutset; // @synthesize imageOutset=_imageOutset;
 @property (nonatomic) double minFillHeight; // @synthesize minFillHeight=_minFillHeight;
 @property (strong, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
@@ -35,19 +39,21 @@
 @property (copy, nonatomic) NSString *shadowCompositingFilterName; // @synthesize shadowCompositingFilterName=_shadowCompositingFilterName;
 @property (nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 
 + (id)sharedInstanceForStyle:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentColor:(id)arg1;
 - (id)initWithContentColor:(id)arg1 contrast:(double)arg2;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithStyle:(long long)arg1 contentColor:(id)arg2;
 - (id)initWithStyle:(long long)arg1 primaryColor:(id)arg2 secondaryColor:(id)arg3 shadowColor:(id)arg4;
+- (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)setPropertiesForStyle:(long long)arg1;
 

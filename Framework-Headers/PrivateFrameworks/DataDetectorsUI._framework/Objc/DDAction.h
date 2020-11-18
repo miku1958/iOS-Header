@@ -9,7 +9,7 @@
 #import <DataDetectorsUI/NSCoding-Protocol.h>
 #import <DataDetectorsUI/NSSecureCoding-Protocol.h>
 
-@class CNContact, NSDictionary, NSString, NSURL, UIViewController;
+@class CNContact, NSDictionary, NSString, NSURL, UIImage, UIViewController;
 @protocol DDActionDelegate;
 
 @interface DDAction : NSObject <NSCoding, NSSecureCoding>
@@ -34,8 +34,9 @@
 @property (readonly, weak, nonatomic) DDAction *companionAction;
 @property (strong) CNContact *contact; // @synthesize contact=_contact;
 @property (weak, nonatomic) NSObject<DDActionDelegate> *delegate; // @synthesize delegate=_delegate;
-@property int hostApplication; // @synthesize hostApplication=_hostApplication;
-@property BOOL isDefaultAction; // @synthesize isDefaultAction=_isDefaultAction;
+@property (nonatomic) int hostApplication; // @synthesize hostApplication=_hostApplication;
+@property (readonly, nonatomic) UIImage *icon;
+@property (nonatomic) BOOL isDefaultAction; // @synthesize isDefaultAction=_isDefaultAction;
 @property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 + (BOOL)actionAvailableForContact:(id)arg1;
@@ -64,12 +65,14 @@
 - (id)description;
 - (id)displayNameForEmails:(id)arg1 phoneNumbers:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (id)generateIdentifier;
 - (BOOL)hasUserInterface;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (int)interactionType;
 - (void)invalidate;
 - (id)localizedName;
+- (id)localizedSubItemName;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;
 - (id)notificationURL;

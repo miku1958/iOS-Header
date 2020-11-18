@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKUITableViewCellWithPrimaryAndSecondaryFonts.h>
 
-@class ColorBarView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSObject, NSString, UIColor, UIImageView, UIVisualEffect, UIVisualEffectView;
+@class ColorBarView, EKCalendarDate, EKUIOccurrenceTableViewCellLabel, NSArray, NSDate, NSDictionary, NSLayoutConstraint, NSObject, NSString, UIColor, UIImageView, UIView, UIVisualEffect, UIVisualEffectView;
 @protocol OS_dispatch_source;
 
 @interface EKUIOccurrenceTableViewCell : EKUITableViewCellWithPrimaryAndSecondaryFonts
@@ -24,6 +24,9 @@
     UIImageView *_accessoryImageView;
     NSArray *_ekUIOccurrenceTableViewCellConstraints;
     BOOL _areCurrentCellConstraintsForLargeText;
+    BOOL _carplayMode;
+    BOOL _includesTopTimeLabel;
+    struct CGSize _sizeWhenLayerLastCalculated;
     UIVisualEffectView *_primaryVisualEffectParentView;
     UIVisualEffectView *_secondaryVisualEffectParentView;
     BOOL _travelTimeTemplate;
@@ -41,10 +44,8 @@
     NSLayoutConstraint *_countdownLabelRightMarginConstraint;
     NSLayoutConstraint *_countdownLabelBaseling_to_contentBottom_Constraint;
     double _travelTime;
-    UIColor *_eventCalendarColor;
     UIColor *_selectedBackGroundColor;
     NSDate *_eventStartDateIncludingTravelTime;
-    EKCalendarDate *_eventStartDate;
     EKCalendarDate *_eventEndDate;
     NSString *_eventTitle;
     NSString *_eventLocation;
@@ -70,14 +71,21 @@
     BOOL _cancelled;
     BOOL _opaque;
     NSObject<OS_dispatch_source> *_countdownLabelUpdateTimer;
+    BOOL _secondaryLabelShouldShowAlertDot;
     BOOL _doesNotUseTemplate;
     BOOL _isTemplateCell;
     BOOL _isFakeInvitation;
+    UIColor *_eventCalendarColor;
+    UIView *_coloredBackgroundView;
+    EKCalendarDate *_eventStartDate;
     UIVisualEffect *_primaryVisualEffect;
     UIVisualEffect *_secondaryVisualEffect;
 }
 
+@property (strong, nonatomic) UIView *coloredBackgroundView; // @synthesize coloredBackgroundView=_coloredBackgroundView;
 @property (nonatomic) BOOL doesNotUseTemplate; // @synthesize doesNotUseTemplate=_doesNotUseTemplate;
+@property (strong, nonatomic) UIColor *eventCalendarColor; // @synthesize eventCalendarColor=_eventCalendarColor;
+@property (readonly, nonatomic) EKCalendarDate *eventStartDate; // @synthesize eventStartDate=_eventStartDate;
 @property (nonatomic) BOOL isFakeInvitation; // @synthesize isFakeInvitation=_isFakeInvitation;
 @property (nonatomic) BOOL isTemplateCell; // @synthesize isTemplateCell=_isTemplateCell;
 @property (strong, nonatomic) UIVisualEffect *primaryVisualEffect; // @synthesize primaryVisualEffect=_primaryVisualEffect;
@@ -85,45 +93,37 @@
 
 + (id)_allDayLocalizedString;
 + (void)_clearCaches;
-+ (id)_needsReplyAngledStripeBackground;
-+ (id)_needsReplyDot;
++ (id)_needsReplyAngledStripeBackground:(id)arg1;
 + (id)_nowLocalizedString;
 + (double)_rightImageSpacing;
-+ (id)_tentativeAngledStripeBackground;
++ (id)_tentativeAngledStripeBackground:(id)arg1;
 + (id)allReuseIdentifiers;
 + (id)cancelledDeclinedColorBarColor;
 + (double)cellHeightForWidth:(double)arg1;
++ (id)color:(id)arg1 lightenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
 + (void)initialize;
-+ (id)invitationPrimaryTextColor;
-+ (id)needsReplyBackgroundColor;
 + (double)needsReplyStripeBackgroundAlpha;
 + (id)needsReplyStripeColor;
 + (id)normalBackgroundColor;
-+ (id)normalBottomTimeTextColor;
-+ (id)normalPrimaryTextColor;
-+ (id)normalSecondaryTextColor;
-+ (id)normalTopTimeTextColor;
-+ (id)prefixPrimaryTextColor;
 + (BOOL)requiresConstraintBasedLayout;
 + (id)reuseIdentifierForEvent:(id)arg1;
 + (id)reuseIdentifierForTemplate;
 + (id)reuseIdentifierForTemplateInvitation;
 + (id)reuseIdentifierForTemplateWithTravelTime;
-+ (id)strikethroughPrimaryTextColor;
-+ (id)strikethroughSecondaryTextColor;
-+ (id)strikethroughTimeTextColor;
-+ (id)tentativeBackgroundColor;
 + (double)tentativeStripeBackgroundAlpha;
 + (id)tentativeStripeColor;
 + (BOOL)vibrant;
 - (void).cxx_destruct;
 - (id)_birthdayIcon;
+- (id)_coloredBackgroundViewLayer;
 - (void)_countdownTimerFired;
 - (id)_createParentVisualEffectViewWithVisualEffect:(id)arg1;
 - (void)_createViewsForReuseIdentifier:(id)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (BOOL)_eventIsNow;
 - (void)_installCountdownTimerWithFireDate:(id)arg1;
 - (double)_leftMarginForTimeViewsFromTimeWidth:(double)arg1;
+- (id)_needsReplyDot;
 - (void)_resetCountdownTimerBasedOnCurrentDateForStringGeneration:(id)arg1;
 - (double)_rightMarginForTimeViewsFromTimeWidth:(double)arg1;
 - (id)_selectedBackgroundViewWithColor:(id)arg1;
@@ -137,9 +137,9 @@
 - (id)_textForTopTimeLabel;
 - (void)_uninstallCountdownTimer;
 - (void)_updateAccessoryImage;
-- (void)_updateAngleBackgroundColor;
 - (void)_updateBottomTimeLabel;
 - (void)_updateColorBarColor;
+- (void)_updateColoredBackgroundViewColor;
 - (void)_updateContentForSizeCategoryChange:(id)arg1;
 - (void)_updateCountdownLabel;
 - (void)_updateNumberOfLinesForLabel:(id)arg1 isRightAlignedInStandardLayout:(BOOL)arg2;
@@ -155,27 +155,53 @@
 - (double)_verticalSpacingTopToTopForNonPrimaryLabel;
 - (double)_widthForTimeViews;
 - (id)accessoryImage;
+- (id)birthdayIconColor;
+- (id)cancelledDeclinedColorBarColor;
+- (id)colorBarColor;
+- (id)coloredBackgroundViewColor;
+- (id)coloredBackgroundViewFilter;
+- (id)coloredBackgroundViewFilterColor;
 - (void)contentCategorySizeChanged;
 - (void)dealloc;
 - (id)detailTextLabel;
 - (void)forceUpdateOfAllElements;
+- (void)hideUnwantedItemsInCarplayMode;
 - (id)imageView;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (id)invitationPrimaryTextColor;
 - (BOOL)isAllDay;
 - (BOOL)isBirthday;
 - (BOOL)isCancelled;
 - (BOOL)isDeclined;
 - (BOOL)isPast;
 - (BOOL)isTentative;
+- (void)layoutSubviews;
 - (BOOL)needsReply;
+- (id)needsReplyAngledStripeBackground;
+- (double)needsReplyStripeBackgroundAlpha;
+- (id)needsReplyStripeColor;
+- (id)normalBackgroundColor;
+- (id)prefixTextColor;
+- (id)primaryPastTextColor;
+- (id)primaryStrikethroughTextColor;
+- (id)primaryTextColor;
 - (id)reuseIdentifier;
+- (id)secondaryPastTextColor;
+- (id)secondaryStrikethroughTextColor;
+- (id)secondaryTextColor;
 - (void)setCalendarColor:(id)arg1;
 - (void)setColorBarLayerFilter:(id)arg1;
+- (id)tentativeAngledStripeBackground;
+- (double)tentativeStripeBackgroundAlpha;
+- (id)tentativeStripeColor;
 - (id)textLabel;
+- (id)topTimeColor;
+- (void)updateAngleBackgroundColor;
 - (void)updateConstraints;
 - (void)updateWithEvent:(id)arg1 calendar:(id)arg2 placedUnderDayWithStartDate:(id)arg3 opaque:(BOOL)arg4 drawsDimmedForPast:(BOOL)arg5;
 - (void)updateWithEvent:(id)arg1 calendar:(id)arg2 placedUnderDayWithStartDate:(id)arg3 opaque:(BOOL)arg4 drawsDimmedForPast:(BOOL)arg5 includingTravelTime:(BOOL)arg6;
 - (void)updateWithEvent:(id)arg1 calendar:(id)arg2 placedUnderDayWithStartDate:(id)arg3 opaque:(BOOL)arg4 drawsDimmedForPast:(BOOL)arg5 includingTravelTime:(BOOL)arg6 includingCountdown:(BOOL)arg7;
+- (void)updateWithEvent:(id)arg1 calendar:(id)arg2 placedUnderDayWithStartDate:(id)arg3 opaque:(BOOL)arg4 drawsDimmedForPast:(BOOL)arg5 includingTravelTime:(BOOL)arg6 includingCountdown:(BOOL)arg7 includingTopTimeLabel:(BOOL)arg8 carplayMode:(BOOL)arg9;
 
 @end
 

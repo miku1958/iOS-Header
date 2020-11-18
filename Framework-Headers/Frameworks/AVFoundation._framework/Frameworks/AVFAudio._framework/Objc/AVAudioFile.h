@@ -22,6 +22,8 @@
 - (void)dealloc;
 - (id)initForReading:(id)arg1 commonFormat:(unsigned long long)arg2 interleaved:(BOOL)arg3 error:(id *)arg4;
 - (id)initForReading:(id)arg1 error:(id *)arg2;
+- (id)initForReadingFromExtAudioFile:(struct OpaqueExtAudioFile *)arg1 commonFormat:(unsigned long long)arg2 interleaved:(BOOL)arg3 error:(id *)arg4;
+- (id)initForReadingFromExtAudioFile:(struct OpaqueExtAudioFile *)arg1 error:(id *)arg2;
 - (id)initForWriting:(id)arg1 settings:(id)arg2 commonFormat:(unsigned long long)arg3 interleaved:(BOOL)arg4 error:(id *)arg5;
 - (id)initForWriting:(id)arg1 settings:(id)arg2 error:(id *)arg3;
 - (id)initSecondaryReader:(id)arg1 format:(id)arg2 error:(id *)arg3;

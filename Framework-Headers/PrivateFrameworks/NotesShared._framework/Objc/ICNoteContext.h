@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <NotesShared/ICManagedObjectContextUpdaterDelegate-Protocol.h>
 #import <NotesShared/ICNoteContainer-Protocol.h>
 
-@class ICAccount, ICAccountUtilities, ICNote, ICNotesCrossProcessChangeCoordinator, ICPersistentContainer, ICXPCStoreCrossProcessChangeListener, NSError, NSManagedObjectContext, NSString, NSTimer;
+@class ICAccount, ICAccountUtilities, ICFolderCustomNoteSortType, ICManagedObjectContextUpdater, ICNote, ICNotesCrossProcessChangeCoordinator, ICPersistentContainer, NSArray, NSData, NSDictionary, NSError, NSManagedObjectContext, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
-@interface ICNoteContext : NSObject <ICNoteContainer>
+@interface ICNoteContext : NSObject <ICManagedObjectContextUpdaterDelegate, ICNoteContainer>
 {
     BOOL _delaySaving;
     BOOL _databaseOpenFailedDueToLowDiskSpace;
     BOOL _saving;
+    BOOL _shouldEnsureLocalAccount;
     ICPersistentContainer *_persistentContainer;
     ICNotesCrossProcessChangeCoordinator *_crossProcessChangeCoordinator;
     NSManagedObjectContext *_managedObjectContext;
@@ -23,31 +25,44 @@
     NSError *_databaseOpenError;
     NSTimer *_updateAttachmentLocationsTimer;
     unsigned long long _contextOptions;
-    ICXPCStoreCrossProcessChangeListener *_xpcStoreCrossProcessListener;
+    ICManagedObjectContextUpdater *_contextUpdater;
     ICAccountUtilities *_accountUtilities;
     NSTimer *_trashDeletionTimer;
     NSObject<OS_dispatch_queue> *_backgroundTaskQueue;
+    NSDictionary *_persistentStoresByAccountId;
 }
 
 @property (strong, nonatomic) ICAccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *backgroundTaskQueue; // @synthesize backgroundTaskQueue=_backgroundTaskQueue;
+@property (readonly, nonatomic) BOOL canBeSharedViaICloud;
+@property (readonly, nonatomic) NSString *containerIdentifier;
 @property (nonatomic) unsigned long long contextOptions; // @synthesize contextOptions=_contextOptions;
+@property (strong, nonatomic) ICManagedObjectContextUpdater *contextUpdater; // @synthesize contextUpdater=_contextUpdater;
 @property (strong, nonatomic) ICNotesCrossProcessChangeCoordinator *crossProcessChangeCoordinator; // @synthesize crossProcessChangeCoordinator=_crossProcessChangeCoordinator;
 @property (strong, nonatomic) ICNote *currentNote; // @synthesize currentNote=_currentNote;
+@property (readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
 @property (strong, nonatomic) NSError *databaseOpenError; // @synthesize databaseOpenError=_databaseOpenError;
 @property (nonatomic) BOOL databaseOpenFailedDueToLowDiskSpace; // @synthesize databaseOpenFailedDueToLowDiskSpace=_databaseOpenFailedDueToLowDiskSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL delaySaving; // @synthesize delaySaving=_delaySaving;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isAllNotesContainer;
+@property (readonly, nonatomic) BOOL isSharedContext;
+@property (readonly, nonatomic) BOOL isSharedViaICloud;
+@property (readonly, nonatomic) BOOL isTrashFolder;
 @property (strong) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (readonly, nonatomic) ICAccount *noteContainerAccount;
 @property (readonly) ICPersistentContainer *persistentContainer; // @synthesize persistentContainer=_persistentContainer;
+@property (strong, nonatomic) NSDictionary *persistentStoresByAccountId; // @synthesize persistentStoresByAccountId=_persistentStoresByAccountId;
 @property (getter=isSaving) BOOL saving; // @synthesize saving=_saving;
+@property (nonatomic) BOOL shouldEnsureLocalAccount; // @synthesize shouldEnsureLocalAccount=_shouldEnsureLocalAccount;
+@property (strong, nonatomic) NSData *subFolderOrderMergeableData;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsEditingNotes;
 @property (strong, nonatomic) NSTimer *trashDeletionTimer; // @synthesize trashDeletionTimer=_trashDeletionTimer;
 @property (strong, nonatomic) NSTimer *updateAttachmentLocationsTimer; // @synthesize updateAttachmentLocationsTimer=_updateAttachmentLocationsTimer;
-@property (strong, nonatomic) ICXPCStoreCrossProcessChangeListener *xpcStoreCrossProcessListener; // @synthesize xpcStoreCrossProcessListener=_xpcStoreCrossProcessListener;
+@property (readonly, nonatomic) NSArray *visibleSubFolders;
 
 + (void)crashThisApp;
 + (id)filenameFromFileWrapper:(id)arg1;
@@ -68,30 +83,36 @@
 - (void)addOrDeleteLocalAccountIfNecessary;
 - (id)allICloudACAccounts;
 - (void)applicationWillTerminate;
-- (BOOL)canBeSharedViaICloud;
+- (void)cleanupAdditionalPersistentStores;
 - (void)clearPersistentContainer;
 - (void)cloudContextFetchRecordChangeOperationDidFinish:(id)arg1;
+- (void)createAdditionalPersistentStoresWithAccountIdentifiers:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)createAdditionalPersistentStoresWithAccountIdentifiers:(id)arg1 persistentContainer:(id)arg2;
+- (id)customNoteSortTypeValue;
 - (void)dealloc;
+- (id)defaultPersistentStoreFromPersistentStores:(id)arg1;
 - (void)deleteEverything;
 - (void)destroyPersistentStore;
+- (id)detailForTableViewCell;
 - (id)fetchedResultsControllerForFetchRequest:(id)arg1 sectionNameKeyPath:(id)arg2;
 - (BOOL)hasAnyContextOptions:(unsigned long long)arg1;
 - (BOOL)hasContextOptions:(unsigned long long)arg1;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (BOOL)isDeleted;
+- (BOOL)isModernCustomFolder;
+- (void)loadAdditionalPersistentStores;
 - (void)managedObjectContextDidSave:(id)arg1;
+- (void)managedObjectContextUpdater:(id)arg1 objectDidChange:(id)arg2;
+- (BOOL)mergeWithSubFolderMergeableData:(id)arg1;
 - (id)newFetchedResultsControllerForAllAccounts;
-- (id)newFetchedResultsControllerForAllFoldersIncludingHiddenNoteContainers:(BOOL)arg1;
-- (id)newFetchedResultsControllerForAllNoteContainersWithPredicate:(id)arg1;
-- (id)newFetchedResultsControllerForAllRegularFoldersAndAccounts;
 - (id)newWorkerManagedObjectContext;
 - (BOOL)noteIsVisible:(id)arg1;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (id)persistentContainerQueue;
 - (id)persistentStoreCoordinator;
+- (id)persistentStoreForAccountID:(id)arg1;
 - (void)postMoveUpdateChangeCountForNote:(id)arg1;
 - (id)predicateForPinnedNotes;
-- (id)predicateForRegularFoldersAndAccounts;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleNotes;
@@ -100,18 +121,21 @@
 - (void)purgeEverything;
 - (BOOL)recoverFromSaveError;
 - (void)refreshAll;
+- (void)refreshPersistentStoresByAccountIdFromPersistentStores:(id)arg1;
 - (void)reloadPersistentContainer;
 - (BOOL)save;
 - (BOOL)save:(id *)arg1;
 - (void)saveAndClearDecryptedDataIfNecessary;
 - (BOOL)saveImmediately;
+- (void)saveSubFolderMergeableDataIfNeeded;
 - (void)setupCrossProcessChangeCoordinator;
 - (void)setupTrashDeletionTimer;
 - (void)startSearchIndexerChangeObservingIfNecessary;
-- (BOOL)supportsEditingNotes;
+- (id)storeFilenameForAccountIdentifier:(id)arg1;
 - (BOOL)supportsVisibilityTestingType:(long long)arg1;
 - (id)titleForNavigationBar;
 - (id)titleForTableViewCell;
+- (void)updateSubFolderMergeableDataChangeCount;
 - (id)visibleNotes;
 - (unsigned long long)visibleNotesCount;
 

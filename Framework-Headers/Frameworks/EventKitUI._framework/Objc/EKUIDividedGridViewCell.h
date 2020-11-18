@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithBackgroundColor:(id)arg1;
+- (id)selectedTextColor;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 
 @end

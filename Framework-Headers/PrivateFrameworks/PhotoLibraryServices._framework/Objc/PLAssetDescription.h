@@ -15,6 +15,9 @@
 @property (strong, nonatomic) PLAdditionalAssetAttributes *assetAttributes; // @dynamic assetAttributes;
 @property (strong, nonatomic) NSString *longDescription; // @dynamic longDescription;
 
++ (id)entityName;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
 - (void)prepareForDeletion;
 - (void)willSave;
 

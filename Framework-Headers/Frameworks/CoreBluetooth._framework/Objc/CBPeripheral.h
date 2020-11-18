@@ -30,7 +30,9 @@
     } _delegateFlags;
     NSMutableDictionary *_attributes;
     BOOL _canSendWriteWithoutResponse;
+    BOOL _ancsAuthorized;
     BOOL _isConnectedToSystem;
+    BOOL _visibleInSettings;
     BOOL _connectedToSystem;
     unsigned int _writesPending;
     id<CBPeripheralDelegate> _delegate;
@@ -40,14 +42,11 @@
     NSArray *_services;
     NSHashTable *_l2capChannels;
     NSString *_BDAddress;
-    long long _PID;
-    long long _VID;
 }
 
 @property (strong) NSString *BDAddress; // @synthesize BDAddress=_BDAddress;
-@property long long PID; // @synthesize PID=_PID;
 @property (strong) NSNumber *RSSI; // @synthesize RSSI=_RSSI;
-@property long long VID; // @synthesize VID=_VID;
+@property BOOL ancsAuthorized; // @synthesize ancsAuthorized=_ancsAuthorized;
 @property BOOL canSendWriteWithoutResponse; // @synthesize canSendWriteWithoutResponse=_canSendWriteWithoutResponse;
 @property (readonly, nonatomic, getter=isConnectedToSystem) BOOL connectedToSystem; // @synthesize connectedToSystem=_connectedToSystem;
 @property (weak, nonatomic) id<CBPeripheralDelegate> delegate; // @synthesize delegate=_delegate;
@@ -56,6 +55,7 @@
 @property (strong) NSString *name; // @synthesize name=_name;
 @property (strong) NSArray *services; // @synthesize services=_services;
 @property long long state; // @synthesize state=_state;
+@property (readonly) BOOL visibleInSettings; // @synthesize visibleInSettings=_visibleInSettings;
 @property unsigned int writesPending; // @synthesize writesPending=_writesPending;
 
 - (void).cxx_destruct;
@@ -91,7 +91,7 @@
 - (void)handleServicesDiscovered:(id)arg1;
 - (void)handleSuccessfulConnection:(id)arg1;
 - (void)handleTimeSyncResponse:(id)arg1;
-- (BOOL)hasTag:(id)arg1;
+- (void)handleVisibilityChanged:(id)arg1;
 - (id)initWithCentralManager:(id)arg1 info:(id)arg2;
 - (void)invalidateAllAttributes;
 - (BOOL)isConnected;
@@ -115,8 +115,6 @@
 - (void)setNotifyValue:(BOOL)arg1 forCharacteristic:(id)arg2;
 - (void)setOrphan;
 - (void)setPeripheralName:(id)arg1;
-- (void)tag:(id)arg1;
-- (void)untag:(id)arg1;
 - (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 type:(long long)arg3;
 - (void)writeValue:(id)arg1 forDescriptor:(id)arg2;
 

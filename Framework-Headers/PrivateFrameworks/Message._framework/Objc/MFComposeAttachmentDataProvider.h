@@ -23,10 +23,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_dataForAttachment:(id)arg1;
 - (void)addData:(id)arg1 forContentID:(id)arg2;
 - (id)dataForContentID:(id)arg1;
-- (void)dealloc;
 - (void)fetchDataForAttachment:(id)arg1 consumer:(id)arg2 progress:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fetchLocalDataForAttachment:(id)arg1;
 - (id)initWithData:(id)arg1 forContentID:(id)arg2;

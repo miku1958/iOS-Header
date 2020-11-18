@@ -6,22 +6,28 @@
 
 #import <UIKit/UIViewController.h>
 
-@class UIButton;
+@class NSString, UIButton;
 @protocol PULivePhotoKeyFrameSelectionViewControllerDelegate;
 
 @interface PULivePhotoKeyFrameSelectionViewController : UIViewController
 {
     id<PULivePhotoKeyFrameSelectionViewControllerDelegate> _delegate;
+    NSString *_selectionTitle;
     UIButton *_makeKeyPhotoBtn;
 }
 
 @property (weak, nonatomic) id<PULivePhotoKeyFrameSelectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIButton *makeKeyPhotoBtn; // @synthesize makeKeyPhotoBtn=_makeKeyPhotoBtn;
+@property (copy, nonatomic) NSString *selectionTitle; // @synthesize selectionTitle=_selectionTitle;
 
 - (void).cxx_destruct;
-- (void)loadView;
+- (BOOL)_canShowWhileLocked;
+- (void)_updateButtonTitle;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (struct CGSize)preferredContentSize;
 - (void)tapMakeKeyPhoto:(id)arg1;
+- (void)viewDidLoad;
 
 @end
 

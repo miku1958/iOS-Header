@@ -24,6 +24,10 @@
     BOOL _chromeVisibilityDidChange;
     BOOL _presentingOverOneUpDidChange;
     BOOL _reviewScreenBarsModelDidChange;
+    BOOL _videoOverlayPlayStateDidChange;
+    BOOL _isAttemptingToPlayVideoOverlayDidChange;
+    BOOL _isScrubbingActivationDidChange;
+    BOOL _isVideoContentAllowedDidChange;
 }
 
 @property (readonly, nonatomic) NSMapTable *_mutableSharedViewModelChangesByAsset;
@@ -36,12 +40,16 @@
 @property (nonatomic, setter=_setCurrentAssetDidChange:) BOOL currentAssetDidChange; // @synthesize currentAssetDidChange=_currentAssetDidChange;
 @property (nonatomic, setter=_setCurrentAssetTransitionProgressDidChange:) BOOL currentAssetTransitionProgressDidChange; // @synthesize currentAssetTransitionProgressDidChange=_currentAssetTransitionProgressDidChange;
 @property (nonatomic, setter=_setAnimatingAnyTransitionDidChange:) BOOL isAnimatingAnyTransitionDidChange; // @synthesize isAnimatingAnyTransitionDidChange=_isAnimatingAnyTransitionDidChange;
+@property (nonatomic, setter=_setIsAttemptingToPlayVideoOverlayDidChange:) BOOL isAttemptingToPlayVideoOverlayDidChange; // @synthesize isAttemptingToPlayVideoOverlayDidChange=_isAttemptingToPlayVideoOverlayDidChange;
 @property (nonatomic, setter=_setIsScrollingDidChange:) BOOL isScrollingDidChange; // @synthesize isScrollingDidChange=_isScrollingDidChange;
+@property (nonatomic, setter=_setIsScrubbingActivationDidChange:) BOOL isScrubbingActivationDidChange; // @synthesize isScrubbingActivationDidChange=_isScrubbingActivationDidChange;
 @property (nonatomic, setter=_setIsScrubbingDidChange:) BOOL isScrubbingDidChange; // @synthesize isScrubbingDidChange=_isScrubbingDidChange;
+@property (nonatomic) BOOL isVideoContentAllowedDidChange; // @synthesize isVideoContentAllowedDidChange=_isVideoContentAllowedDidChange;
 @property (nonatomic, setter=_setPresentingOverOneUpDidChange:) BOOL presentingOverOneUpDidChange; // @synthesize presentingOverOneUpDidChange=_presentingOverOneUpDidChange;
 @property (nonatomic, setter=_setReviewScreenBarsModelDidChange:) BOOL reviewScreenBarsModelDidChange; // @synthesize reviewScreenBarsModelDidChange=_reviewScreenBarsModelDidChange;
 @property (nonatomic, setter=_setSecondScreenSizeDidChange:) BOOL secondScreenSizeDidChange; // @synthesize secondScreenSizeDidChange=_secondScreenSizeDidChange;
 @property (nonatomic, setter=_setTransitionDriverIdentifierDidChange:) BOOL transitionDriverIdentifierDidChange; // @synthesize transitionDriverIdentifierDidChange=_transitionDriverIdentifierDidChange;
+@property (nonatomic, setter=_setVideoOverlayPlayStateDidChange:) BOOL videoOverlayPlayStateDidChange; // @synthesize videoOverlayPlayStateDidChange=_videoOverlayPlayStateDidChange;
 
 - (void).cxx_destruct;
 - (BOOL)hasChanges;

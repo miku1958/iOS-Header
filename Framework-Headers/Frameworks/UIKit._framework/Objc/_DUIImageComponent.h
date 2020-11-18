@@ -4,28 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/_DUIImageComponentWithoutSlot.h>
+#import <objc/NSObject.h>
 
-@interface _DUIImageComponent : _DUIImageComponentWithoutSlot
+#import <UIKitCore/NSSecureCoding-Protocol.h>
+
+@interface _DUIImageComponent : NSObject <NSSecureCoding>
 {
+    BOOL _ignoresAccessibilityFilters;
     BOOL _hidesImage;
     unsigned int _slotID;
     unsigned int _contextID;
     unsigned long long _renderID;
+    struct CGRect _frame;
 }
 
 @property (nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
+@property (nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property (nonatomic) BOOL hidesImage; // @synthesize hidesImage=_hidesImage;
+@property (nonatomic) BOOL ignoresAccessibilityFilters; // @synthesize ignoresAccessibilityFilters=_ignoresAccessibilityFilters;
 @property (nonatomic) unsigned long long renderID; // @synthesize renderID=_renderID;
 @property (readonly, nonatomic) BOOL representsPortal;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 
 + (BOOL)supportsSecureCoding;
 - (void)_configurePortalLayer:(id)arg1;
-- (id)addPortalLayerToView:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)imageComponentWithoutSlot;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)portalView;

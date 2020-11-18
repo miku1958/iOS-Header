@@ -10,28 +10,28 @@
 {
 }
 
++ (id)airplaneModeStream;
 + (id)airplayPredictionStream;
++ (id)alarmStream;
 + (id)appActivityStream;
-+ (id)appBulletinStream;
 + (id)appInFocusStream;
 + (id)appInstallStream;
 + (id)appIntentsStream;
++ (id)appLaunchFeedbackStream;
 + (id)appLocationActivityStream;
-+ (id)appRelevantActionsStream;
 + (id)appRelevantShortcutsStream;
 + (id)appUsageStream;
 + (id)appViewedInDockStream;
 + (id)appWebUsageStream;
 + (id)audioInputRouteStream;
 + (id)audioOutputRoutStream;
++ (id)audioOutputRouteStream;
 + (id)bluetoothIsConnectedStream;
 + (id)calendarEventStream;
 + (id)callInProgressStream;
 + (id)carPlayIsConnectedStream;
-+ (id)contextStorePersistentRuleStream;
-+ (id)dayOfWeekEventStream;
 + (id)defaultPairedDeviceNearbyStream;
-+ (id)detectedSleepEventStream;
++ (id)deviceActivityLevelFeedbackStream;
 + (id)deviceActivityLevelStream;
 + (id)deviceBatteryPercentageStream;
 + (id)deviceBatterySaverStream;
@@ -39,39 +39,38 @@
 + (id)deviceIsLockedStream;
 + (id)deviceIsPluggedInStream;
 + (id)deviceIsSleepingStream;
++ (id)deviceLowPowerModeStream;
++ (id)discoverabilitySignalsStream;
++ (id)discoverabilityUsageStream;
++ (id)diskSubsystemAccessStream;
 + (id)displayIsBacklit;
 + (id)displayOrientationStream;
 + (id)doNotDisturbStream;
-+ (id)glanceLaunchStream;
 + (id)homeKitAccessoryControlStream;
 + (id)homeKitAppViewStream;
 + (id)homeKitSceneStream;
 + (id)internalQueryDataCollectionStream;
-+ (id)isSleepEventStream;
-+ (id)isWeekendEventStream;
 + (id)keybagIsLockedStream;
 + (id)locationVisitStream;
++ (id)mapsShareEtaFeedbackStream;
 + (id)microLocationVisitStream;
 + (id)motionStream;
-+ (id)nextCalendarEventStream;
 + (id)nextEventForTopOffProtectionStream;
-+ (id)nextSleepEventStream;
 + (id)notificationUsageStream;
 + (id)nowPlayingStream;
 + (id)pairedDeviceForecastStream;
-+ (id)periodOfDayEventStream;
 + (id)remoteDeviceInBedTimesStream;
 + (id)safariHistoryStream;
 + (id)searchFeedbackStream;
-+ (id)spotlightActivityStream;
-+ (id)sunriseSunsetStream;
++ (id)shareSheetFeedbackStream;
++ (id)siriServiceStream;
++ (id)standbyTimerStream;
++ (id)timerStream;
 + (id)tombstoneStream;
-+ (id)userActivityDetectedStream;
-+ (id)userIsCurrentlyAsleepStream;
 + (id)userIsFirstBacklightOnAfterWakeup;
-+ (id)userNextSleepPeriodStream;
 + (id)watchActiveStream;
 + (id)watchNearbyStream;
++ (id)widgetsViewedStream;
 
 @end
 

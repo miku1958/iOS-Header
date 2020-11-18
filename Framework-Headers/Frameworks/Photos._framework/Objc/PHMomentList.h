@@ -6,20 +6,15 @@
 
 #import <Photos/PHCollectionList.h>
 
-@class NSData, NSDate;
+@class NSDate;
 
 @interface PHMomentList : PHCollectionList
 {
-    NSData *_reverseLocationData;
-    BOOL _reverseLocationDataIsValid;
-    BOOL _reverseLocationDataContainsLocation;
     short _granularityLevel;
-    short _generationType;
     int _sortIndex;
     NSDate *_representativeDate;
 }
 
-@property (readonly, nonatomic) short generationType; // @synthesize generationType=_generationType;
 @property (readonly, nonatomic) short granularityLevel; // @synthesize granularityLevel=_granularityLevel;
 @property (readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 @property (readonly, nonatomic) int sortIndex; // @synthesize sortIndex=_sortIndex;
@@ -32,7 +27,6 @@
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
-- (void)_decodeTitlesIfNeeded;
 - (Class)changeRequestClass;
 - (BOOL)collectionHasFixedOrder;
 - (long long)collectionListType;
@@ -40,7 +34,6 @@
 - (BOOL)hasLocalizedTitle;
 - (BOOL)hasLocationInfo;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
-- (BOOL)isMeaningful;
 - (id)localizedLocationNames;
 - (id)localizedTitle;
 

@@ -27,23 +27,14 @@
 - (void).cxx_destruct;
 - (void)cancelPendingActivationEvent:(int)arg1;
 - (BOOL)handleActivationEvent:(int)arg1 eventSource:(int)arg2 context:(void *)arg3;
-- (void)handleBluetoothDismissal;
-- (void)handlePreheatCommand;
-- (void)handleViewFullyRevealed;
 - (BOOL)handledButtonDownEventFromSource:(int)arg1;
 - (BOOL)handledButtonTapFromSource:(int)arg1;
 - (BOOL)handledButtonUpEventFromSource:(int)arg1;
-- (BOOL)handledMenuButtonDownEvent;
-- (BOOL)handledMenuButtonTap;
-- (BOOL)handledMenuButtonUpEvent;
 - (BOOL)handledPasscodeUnlockWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)handledWiredMicButtonTap;
 - (void)prepareForActivationEvent:(int)arg1 eventSource:(int)arg2 afterInterval:(double)arg3;
 - (void)registeredWithHost;
-- (BOOL)shouldBreadcrumbLaunchedApplicationWithBundleIdentifier:(id)arg1;
 - (BOOL)supportedAndEnabled;
 - (id)viewControllerForActivationContext:(id)arg1;
-- (void)viewPartiallyRevealedWithPercentRevealed:(double)arg1;
 - (BOOL)wantsActivationEvent:(int)arg1 eventSource:(int)arg2 interval:(double *)arg3;
 
 @end

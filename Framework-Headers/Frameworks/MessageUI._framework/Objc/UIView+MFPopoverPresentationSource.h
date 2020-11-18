@@ -17,6 +17,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (double)mf_currentScreenScale;
+- (id)mf_enclosingScrollView;
+- (id)mf_frontSibling;
+- (void)mf_pinToView:(id)arg1 usingLayoutMargins:(BOOL)arg2;
 - (void)mf_setAsSourceForPopoverPresentationController:(id)arg1;
+- (void)mf_setAsSourceWithExtendedRectForPopoverPresentationController:(id)arg1;
 @end
 

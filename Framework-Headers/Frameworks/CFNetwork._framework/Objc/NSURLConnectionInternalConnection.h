@@ -10,7 +10,6 @@
 
 @class NSString, NSURLAuthenticationChallenge;
 
-__attribute__((visibility("hidden")))
 @interface NSURLConnectionInternalConnection : NSURLConnectionInternal <NSURLConnectionRequired>
 {
     int _cfConnLock;
@@ -31,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (struct _CFURLConnection *)_CFURLConnection;
 - (struct _CFURLConnection *)_atomic_CFURLConnection;
 - (void)_invalidate;
-- (void)_reportTimingDataToAWD;
 - (void)_resumeLoading;
 - (struct _CFURLConnection *)_retainCFURLConnection;
 - (void)_setDelegateQueue:(id)arg1;

@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
     TSDFill *mDynamicFill;
     NSArray *mDynamicStrokeOffsetArray;
     BOOL mIsDynamicallyInvisible;
+    struct CGSize mLastParentLimitedSize;
 }
 
 @property (readonly, nonatomic) TSUBezierPath *clippedPathForLineEnds;
@@ -116,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)p_invalidateClippedPath;
 - (void)p_invalidateHead;
 - (void)p_invalidateTail;
+- (BOOL)p_isInlineInsideResizingParentContainer;
 - (id)p_unitePath:(id)arg1 withLineEndForHead:(BOOL)arg2 stroke:(id)arg3;
 - (struct CGRect)p_updatedCachedClipRectIfNeededForRotation:(struct CGAffineTransform)arg1;
 - (void)p_validateHeadAndTail;
@@ -123,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (void)p_validateTailLineEnd;
 - (void)processChangedProperty:(int)arg1;
 - (id)reliedOnLayouts;
+- (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (void)setGeometry:(id)arg1;
 - (struct CGRect)shapeFrameWithTransform:(struct CGAffineTransform)arg1;
 - (struct CGRect)shapeFrameWithTransform:(struct CGAffineTransform)arg1 strokeDrawOptions:(unsigned long long)arg2;
@@ -136,6 +139,7 @@ __attribute__((visibility("hidden")))
 - (id)textWrapperForExteriorWrap;
 - (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
 - (void)validate;
+- (int)wrapType;
 
 @end
 

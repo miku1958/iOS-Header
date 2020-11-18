@@ -56,6 +56,7 @@
 - (void)pageURLStringsPrefixedWithVariantsOfDomainString:(id)arg1 includingPrivateData:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)rejectedResourceInfoForPageURLString:(id)arg1 iconURLString:(id)arg2 includingPrivateData:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)removeAllIconsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)removeIconFilesNotReferencedInDatabaseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeIconWithPageURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeIconsWithURLStringsNotFoundIn:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)savePendingChangesBeforeTermination;

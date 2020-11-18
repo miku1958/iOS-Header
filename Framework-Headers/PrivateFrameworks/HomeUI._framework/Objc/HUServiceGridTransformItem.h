@@ -6,27 +6,27 @@
 
 #import <Home/HFHomeKitTransformItem.h>
 
-#import <HomeUI/HFCharacteristicWriteActionBuilderFactory-Protocol.h>
+#import <HomeUI/HFActionBuilderFactory-Protocol.h>
 #import <HomeUI/HFServiceVendor-Protocol.h>
 
-@class HFItem, NSString;
-@protocol HFHomeKitItemProtocol><HFServiceVendor><HFCharacteristicWriteActionBuilderFactory;
+@class HFItem, NSSet, NSString;
+@protocol HFHomeKitItemProtocol><HFServiceVendor><HFActionBuilderFactory;
 
-@interface HUServiceGridTransformItem : HFHomeKitTransformItem <HFServiceVendor, HFCharacteristicWriteActionBuilderFactory>
+@interface HUServiceGridTransformItem : HFHomeKitTransformItem <HFServiceVendor, HFActionBuilderFactory>
 {
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HFItem<HFHomeKitItemProtocol><HFServiceVendor><HFCharacteristicWriteActionBuilderFactory> *sourceServicePickerItem;
+@property (readonly, nonatomic) NSSet *services;
+@property (readonly, nonatomic) HFItem<HFHomeKitItemProtocol><HFServiceVendor><HFActionBuilderFactory> *sourceServicePickerItem;
 @property (readonly) Class superclass;
 
 - (id)accessories;
 - (BOOL)actionsMayRequireDeviceUnlock;
-- (BOOL)containsActionableCharacteristics;
+- (BOOL)containsActions;
 - (id)currentStateActionBuildersForHome:(id)arg1;
-- (id)services;
 
 @end
 

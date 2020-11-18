@@ -36,6 +36,8 @@
 - (BOOL)isTimeoutSuspended;
 - (BOOL)openSensitiveURL:(id)arg1;
 - (id)peerInfoForCurrentCommand;
+- (void)prepareForAudioHandoffFailedWithCompletion:(CDUnknownBlockType)arg1;
+- (void)prepareForAudioHandoffWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

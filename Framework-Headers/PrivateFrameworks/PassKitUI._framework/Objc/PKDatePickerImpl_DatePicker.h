@@ -20,7 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)initShowingDay:(BOOL)arg1 month:(BOOL)arg2 year:(BOOL)arg3 useDarkAppearance:(BOOL)arg4;
+- (id)initShowingDay:(BOOL)arg1 month:(BOOL)arg2 year:(BOOL)arg3 useDarkAppearance:(BOOL)arg4 locale:(id)arg5 calendar:(id)arg6;
 - (void)prepareToDie;
 - (void)setDateValueChangedTarget:(id)arg1 action:(SEL)arg2;
 

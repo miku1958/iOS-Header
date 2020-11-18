@@ -10,7 +10,10 @@
 
 @interface _DKQuery : NSObject <NSSecureCoding>
 {
+    BOOL _executeConcurrently;
 }
+
+@property (nonatomic) BOOL executeConcurrently; // @synthesize executeConcurrently=_executeConcurrently;
 
 + (id)endDateSortDescriptorAscending:(BOOL)arg1;
 + (id)executableQueryForQuery:(id)arg1;
@@ -31,12 +34,14 @@
 + (id)predicateForEventsWithIntegerValue:(long long)arg1;
 + (id)predicateForEventsWithLocalCreationInDateRangeFrom:(id)arg1 toBefore:(id)arg2;
 + (id)predicateForEventsWithLocalCreationInDateRangeFromAfter:(id)arg1 to:(id)arg2;
++ (id)predicateForEventsWithMinimumDuration:(double)arg1;
 + (id)predicateForEventsWithMinumumDuration:(double)arg1;
 + (id)predicateForEventsWithNoSource;
 + (id)predicateForEventsWithNullSourceDeviceID;
 + (id)predicateForEventsWithQuantityValue:(id)arg1;
 + (id)predicateForEventsWithSourceDeviceID:(id)arg1 userID:(id)arg2;
 + (id)predicateForEventsWithSourceDeviceIDs:(id)arg1;
++ (id)predicateForEventsWithSourceGroupIDs:(id)arg1;
 + (id)predicateForEventsWithSourceID:(id)arg1;
 + (id)predicateForEventsWithSourceID:(id)arg1 bundleID:(id)arg2;
 + (id)predicateForEventsWithSourceID:(id)arg1 bundleID:(id)arg2 groupIDs:(id)arg3;
@@ -59,6 +64,7 @@
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 andStringValue:(id)arg2;
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 andValue:(id)arg2;
 + (id)predicateForObjectsWithMetadataKey:(id)arg1 inValues:(id)arg2;
++ (id)predicateForObjectsWithMetadataKey:(id)arg1 likeStringValue:(id)arg2;
 + (id)predicateForObjectsWithStructuredMetadataKey:(id)arg1 andValue:(id)arg2;
 + (id)predicateForObjectsWithUUIDs:(id)arg1;
 + (id)predicateForSpotlightEventsWithBundleID:(id)arg1;

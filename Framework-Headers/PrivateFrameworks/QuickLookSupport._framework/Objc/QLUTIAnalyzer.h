@@ -17,7 +17,8 @@
 
 @property (readonly) NSString *contentType; // @synthesize contentType=_contentType;
 
-+ (id)UTIForFileName:(id)arg1;
++ (id)UTIForURL:(id)arg1;
++ (BOOL)_shouldOverrideUTIForZip;
 + (BOOL)isTypeAudioOnly:(id)arg1;
 + (id)knownExtensions;
 + (id)privateUTIFromFileName:(id)arg1;
@@ -27,7 +28,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentType:(id)arg1;
-- (id)initWithFileName:(id)arg1;
+- (id)initWithURL:(id)arg1;
 - (BOOL)isAudioOnly;
 
 @end

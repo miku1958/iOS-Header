@@ -6,11 +6,11 @@
 
 #import <TemplateKit/TLKView.h>
 
-#import <TemplateKit/NUIContainerGridViewDelegate-Protocol.h>
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerGridView, TLKImage, TLKImageView, TLKRichText, TLKVibrantLabel;
+@class NSString, NUIContainerGridView, TLKImage, TLKImageView, TLKLabel, TLKRichText;
 
-@interface TLKSimpleRowView : TLKView <NUIContainerGridViewDelegate>
+@interface TLKSimpleRowView : TLKView <NUIContainerViewDelegate>
 {
     TLKImage *_leadingImage;
     TLKRichText *_leadingTitle;
@@ -19,51 +19,51 @@
     TLKRichText *_trailingTitle;
     TLKRichText *_trailingSubtitle;
     TLKImageView *_leadingImageView;
-    TLKVibrantLabel *_leadingTitleLabel;
-    TLKVibrantLabel *_leadingSubtitleLabel;
-    TLKVibrantLabel *_trailingTitleLabel;
-    TLKVibrantLabel *_trailingSubtitleLabel;
+    TLKLabel *_leadingTitleLabel;
+    TLKLabel *_leadingSubtitleLabel;
+    TLKLabel *_trailingTitleLabel;
+    TLKLabel *_trailingSubtitleLabel;
     TLKImageView *_trailingImageView;
-    NUIContainerGridView *_containerView;
 }
 
-@property (strong) NUIContainerGridView *containerView; // @synthesize containerView=_containerView;
+@property (strong, nonatomic) NUIContainerGridView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKImage *leadingImage; // @synthesize leadingImage=_leadingImage;
-@property (strong) TLKImageView *leadingImageView; // @synthesize leadingImageView=_leadingImageView;
+@property (strong, nonatomic) TLKImageView *leadingImageView; // @synthesize leadingImageView=_leadingImageView;
 @property (strong, nonatomic) TLKRichText *leadingSubtitle; // @synthesize leadingSubtitle=_leadingSubtitle;
-@property (strong) TLKVibrantLabel *leadingSubtitleLabel; // @synthesize leadingSubtitleLabel=_leadingSubtitleLabel;
+@property (strong, nonatomic) TLKLabel *leadingSubtitleLabel; // @synthesize leadingSubtitleLabel=_leadingSubtitleLabel;
 @property (strong, nonatomic) TLKRichText *leadingTitle; // @synthesize leadingTitle=_leadingTitle;
-@property (strong) TLKVibrantLabel *leadingTitleLabel; // @synthesize leadingTitleLabel=_leadingTitleLabel;
+@property (strong, nonatomic) TLKLabel *leadingTitleLabel; // @synthesize leadingTitleLabel=_leadingTitleLabel;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TLKImage *trailingImage; // @synthesize trailingImage=_trailingImage;
-@property (strong) TLKImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
+@property (strong, nonatomic) TLKImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
 @property (strong, nonatomic) TLKRichText *trailingSubtitle; // @synthesize trailingSubtitle=_trailingSubtitle;
-@property (strong) TLKVibrantLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
+@property (strong, nonatomic) TLKLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
 @property (strong, nonatomic) TLKRichText *trailingTitle; // @synthesize trailingTitle=_trailingTitle;
-@property (strong) TLKVibrantLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
+@property (strong, nonatomic) TLKLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
 
 + (void)applyText:(id)arg1 toLabel:(id)arg2;
 - (void).cxx_destruct;
 - (id)bottomRowViews;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (id)fontForTextInLabel:(id)arg1;
 - (id)gridOfAllViews;
 - (BOOL)hasSubtitles;
-- (id)init;
 - (id)leadingSubtitleLabelString;
 - (id)leadingTitleLabelFont;
 - (id)leadingTitleLabelString;
 - (void)observedPropertiesChanged;
+- (id)setupContentView;
 - (id)stringForLabel:(id)arg1;
-- (void)styleDidChange:(unsigned long long)arg1;
 - (id)topRowViews;
 - (id)trailingSubtitleLabelFont;
 - (id)trailingSubtitleLabelString;
 - (id)trailingTitleLabelFont;
 - (id)trailingTitleLabelString;
+- (BOOL)usesDefaultInsets;
 - (double)widthOfColumnAtIndex:(unsigned long long)arg1;
 
 @end

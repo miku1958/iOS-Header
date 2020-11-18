@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/UIInteraction-Protocol.h>
+#import <UIKitCore/UIInteraction_Internal-Protocol.h>
 
 @class NSString, UIView;
 @protocol UIPencilInteractionDelegate;
 
-@interface UIPencilInteraction : NSObject <UIInteraction>
+@interface UIPencilInteraction : NSObject <UIInteraction_Internal, UIInteraction>
 {
     BOOL _enabled;
     id<UIPencilInteractionDelegate> _delegate;
@@ -28,6 +29,7 @@
 
 + (long long)preferredTapAction;
 - (void).cxx_destruct;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)dealloc;
 - (void)didMoveToView:(id)arg1;
 - (id)init;

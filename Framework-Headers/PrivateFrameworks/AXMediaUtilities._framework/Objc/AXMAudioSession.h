@@ -23,7 +23,9 @@
 - (void)_handleRouteChanged:(unsigned long long)arg1 previousRoute:(id)arg2;
 - (void)_handleSessionInterrupted:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)_handleSilenceSecondaryAudio:(unsigned long long)arg1;
+- (id)_stringForRouteChangeReason:(unsigned long long)arg1;
 - (BOOL)activateSessionWithError:(id *)arg1;
+- (BOOL)deactivateSessionWithError:(id *)arg1;
 - (void)dealloc;
 - (id)init;
 

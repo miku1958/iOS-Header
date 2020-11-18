@@ -13,23 +13,31 @@
 @interface WBSSearchProvider : NSObject <NSSecureCoding>
 {
     WBSURLSuffixChecker *_suffixChecker;
-    NSArray *_pathPrefixes;
+    NSString *_queryKey;
+    BOOL _usesSearchTermsFromFragment;
+    NSString *_shortName;
     WBSOpenSearchURLTemplate *_searchURLTemplate;
     WBSOpenSearchURLTemplate *_safeSearchURLTemplate;
     NSDictionary *_safeSearchURLQueryParameters;
-    NSArray *_hostSuffixes;
-    BOOL _usesSearchTermsFromFragment;
-    NSString *_queryKey;
     WBSOpenSearchURLTemplate *_suggestionsURLTemplate;
+    NSArray *_hostSuffixes;
+    NSArray *_pathPrefixes;
 }
 
+@property (readonly, copy, nonatomic) NSArray *hostSuffixes; // @synthesize hostSuffixes=_hostSuffixes;
+@property (readonly, copy, nonatomic) NSArray *pathPrefixes; // @synthesize pathPrefixes=_pathPrefixes;
+@property (readonly, copy, nonatomic) NSDictionary *safeSearchURLQueryParameters; // @synthesize safeSearchURLQueryParameters=_safeSearchURLQueryParameters;
+@property (readonly, nonatomic) WBSOpenSearchURLTemplate *safeSearchURLTemplate; // @synthesize safeSearchURLTemplate=_safeSearchURLTemplate;
+@property (readonly, nonatomic) WBSOpenSearchURLTemplate *searchURLTemplate; // @synthesize searchURLTemplate=_searchURLTemplate;
+@property (readonly, copy, nonatomic) NSString *shortName; // @synthesize shortName=_shortName;
 @property (readonly, nonatomic) WBSOpenSearchURLTemplate *suggestionsURLTemplate; // @synthesize suggestionsURLTemplate=_suggestionsURLTemplate;
+@property (readonly, nonatomic) BOOL usesSearchTermsFromFragment; // @synthesize usesSearchTermsFromFragment=_usesSearchTermsFromFragment;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSearchURLTemplate:(id)arg1 safeSearchURLTemplate:(id)arg2 safeSearchURLQueryParameters:(id)arg3 usesSearchTermsFromFragment:(BOOL)arg4 suggestionsURLTemplate:(id)arg5 hostSuffixes:(id)arg6 pathPrefixes:(id)arg7;
+- (id)initWithShortName:(id)arg1 searchURLTemplate:(id)arg2 safeSearchURLTemplate:(id)arg3 safeSearchURLQueryParameters:(id)arg4 usesSearchTermsFromFragment:(BOOL)arg5 suggestionsURLTemplate:(id)arg6 hostSuffixes:(id)arg7 pathPrefixes:(id)arg8;
 - (id)safeSearchURLForSearchURL:(id)arg1;
 - (BOOL)searchShouldUseSafeSearchTemplate;
 - (id)searchURLForUserTypedString:(id)arg1;

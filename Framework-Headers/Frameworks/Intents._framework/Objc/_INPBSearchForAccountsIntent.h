@@ -18,6 +18,7 @@
         unsigned int accountType:1;
         unsigned int requestedBalanceType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _accountType;
     int _requestedBalanceType;
     _INPBDataString *_accountNickname;
@@ -25,6 +26,7 @@
     _INPBDataString *_organizationName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDataString *accountNickname; // @synthesize accountNickname=_accountNickname;
 @property (nonatomic) int accountType; // @synthesize accountType=_accountType;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,12 +42,15 @@
 @property (nonatomic) int requestedBalanceType; // @synthesize requestedBalanceType=_requestedBalanceType;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsAccountType:(id)arg1;
 - (int)StringAsRequestedBalanceType:(id)arg1;
 - (id)accountTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestedBalanceTypeAsString:(int)arg1;

@@ -6,19 +6,18 @@
 
 #import <UIKitCore/UINavigationController.h>
 
+@protocol _UIDictationPrivacySheetControllerDelegate;
+
 __attribute__((visibility("hidden")))
 @interface _UIDictationPrivacySheetController : UINavigationController
 {
-    CDUnknownBlockType _dismissHandler;
+    id<_UIDictationPrivacySheetControllerDelegate> _privacyDelegate;
 }
 
-@property (copy) CDUnknownBlockType dismissHandler; // @synthesize dismissHandler=_dismissHandler;
+@property (nonatomic) id<_UIDictationPrivacySheetControllerDelegate> privacyDelegate; // @synthesize privacyDelegate=_privacyDelegate;
 
-+ (id)controllerWithDismissHandler:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)dismiss;
-- (void)dismissAnimated:(BOOL)arg1;
-- (id)initWithHandler:(CDUnknownBlockType)arg1;
+- (id)init;
 
 @end
 

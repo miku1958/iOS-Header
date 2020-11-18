@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)setRenderState:(const struct RenderState *)arg1;
 - (void)texcoords:(id)arg1;
 - (void)updateRenderState;
+- (void)wipeActiveFramebuffer:(const tvec4_ac57c72d *)arg1;
 
 @end
 

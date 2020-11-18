@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HKDataMetadataDetailSection, NSDate, NSDictionary;
+#import <HealthUI/HKDataMetadataProvider-Protocol.h>
 
-@protocol HKDataMetadataObject
+@class NSDate, NSDictionary;
+
+@protocol HKDataMetadataObject <HKDataMetadataProvider>
 
 @property (readonly, nonatomic) NSDictionary *metadata;
 
-- (void)addDetailValuesToSection:(HKDataMetadataDetailSection *)arg1;
 - (NSDate *)startDate;
 @end
 

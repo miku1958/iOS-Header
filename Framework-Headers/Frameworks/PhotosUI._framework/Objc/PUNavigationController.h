@@ -6,13 +6,13 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <PhotosUI/PLDismissableViewController-Protocol.h>
+#import <PhotosUI/PXForcedDismissableViewController-Protocol.h>
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
 @class NSString, PUAbstractNavigationBanner, UIViewController, _UINavigationControllerPalette;
 @protocol PXNavigationRoot;
 
-@interface PUNavigationController : UINavigationController <PLDismissableViewController, UINavigationControllerDelegate>
+@interface PUNavigationController : UINavigationController <PXForcedDismissableViewController, UINavigationControllerDelegate>
 {
     BOOL _pu_preventsAutorotation;
     CDUnknownBlockType _ppt_onDidShowViewControllerBlock;
@@ -39,15 +39,18 @@
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_commonPUNavigationControllerInitialization;
 - (id)_extendedToolbar;
 - (void)_insertNavigationDisplayModeButtonItem;
 - (BOOL)_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
 - (void)_removeNavigationDisplayModeButtonItem;
 - (void)_setCurrentToolbarViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)_setNavigationBarHidden:(BOOL)arg1 edge:(unsigned long long)arg2 duration:(double)arg3;
 - (void)_updateBarStyle;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRootViewController:(id)arg1;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)navigationController:(id)arg1 interactionControllerForAnimationController:(id)arg2;
@@ -61,6 +64,8 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewController:(id)arg1 willSetupInitialBarsVisibilityOnViewWillAppearAnimated:(BOOL)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

@@ -28,6 +28,7 @@
     BOOL _enableAutoMode;
     BOOL _enableClimateControl;
     BOOL _enableFan;
+    BOOL __encodeLegacyGloryData;
     int _airCirculationMode;
     int _climateZone;
     int _relativeFanSpeedSetting;
@@ -39,6 +40,7 @@
     _INPBTemperature *_temperature;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int airCirculationMode; // @synthesize airCirculationMode=_airCirculationMode;
 @property (strong, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
 @property (nonatomic) int climateZone; // @synthesize climateZone=_climateZone;
@@ -70,6 +72,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBTemperature *temperature; // @synthesize temperature=_temperature;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsAirCirculationMode:(id)arg1;
 - (int)StringAsClimateZone:(id)arg1;
@@ -79,6 +82,8 @@
 - (id)climateZoneAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)relativeFanSpeedSettingAsString:(int)arg1;

@@ -15,19 +15,18 @@
     PBUnknownFields *_unknownFields;
     unsigned int _key;
     unsigned int _value;
-    struct {
-        unsigned int key:1;
-        unsigned int value:1;
-    } _has;
+    CDStruct_a4cc0a70 _flags;
 }
 
 @property (nonatomic) BOOL hasKey;
 @property (nonatomic) BOOL hasValue;
-@property (nonatomic) unsigned int key; // @synthesize key=_key;
+@property (nonatomic) unsigned int key;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) unsigned int value; // @synthesize value=_value;
+@property (nonatomic) unsigned int value;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +34,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

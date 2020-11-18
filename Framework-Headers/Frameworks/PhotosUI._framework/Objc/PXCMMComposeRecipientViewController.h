@@ -10,14 +10,16 @@
 #import <PhotosUICore/PXCMMComposeRecipientDataSourceManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMComposeRecipientSelectionManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMComposeRecipientValidationManagerDelegate-Protocol.h>
+#import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
 #import <PhotosUICore/PXPhotoRecipientViewControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUICore/UITableViewDataSource-Protocol.h>
 #import <PhotosUICore/UITableViewDelegate-Protocol.h>
 
 @class NSMutableSet, NSProgress, NSString, PXCMMAddRecipientButton, PXCMMComposeRecipientDataSource, PXCMMComposeRecipientDataSourceManager, PXCMMComposeRecipientSelectionManager, PXCMMComposeRecipientValidationManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSession, PXCMMSpecManager, PXPhotoRecipientViewController, PXUpdater, UIButton, UILabel, UITableView, UIVisualEffectView;
 @protocol PXCMMActionControllerDelegate, PXCMMComposeRecipientViewControllerDelegate, PXCMMPersonSuggestion;
 
-@interface PXCMMComposeRecipientViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PXPhotoRecipientViewControllerDelegate, PXCMMComposeRecipientDataSourceManagerDelegate, PXCMMComposeRecipientSelectionManagerDelegate, PXCMMComposeRecipientValidationManagerDelegate, CNContactViewControllerDelegate>
+@interface PXCMMComposeRecipientViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, PXPhotoRecipientViewControllerDelegate, PXCMMComposeRecipientDataSourceManagerDelegate, PXCMMComposeRecipientSelectionManagerDelegate, PXCMMComposeRecipientValidationManagerDelegate, CNContactViewControllerDelegate, PXSettingsKeyObserver, PXDiagnosticsEnvironment>
 {
     PXCMMSession *_session;
     id<PXCMMComposeRecipientViewControllerDelegate> _delegate;
@@ -95,6 +97,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)photoRecipientViewController:(id)arg1 didCompleteWithRecipients:(id)arg2;
 - (void)photoRecipientViewControllerDidCancel:(id)arg1;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;

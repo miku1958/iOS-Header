@@ -14,11 +14,13 @@
 
 @property (nonatomic) unsigned long long changedFields; // @dynamic changedFields;
 @property (nonatomic) BOOL changesAcknowledged; // @dynamic changesAcknowledged;
+@property (copy, nonatomic) NSString *extractionGroupIdentifier; // @dynamic extractionGroupIdentifier;
 @property (copy, nonatomic) NSString *opaqueKey; // @dynamic opaqueKey;
 @property (nonatomic) EKPersistentEvent *owner; // @dynamic owner;
 @property (copy, nonatomic) NSDate *timestamp; // @dynamic timestamp;
 @property (copy, nonatomic) NSString *uniqueKey; // @dynamic uniqueKey;
 
++ (Class)meltedClass;
 + (id)relations;
 + (id)suggestedEventInfoWithOpaqueKey:(id)arg1 uniqueKey:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;

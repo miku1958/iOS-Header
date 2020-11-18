@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, PARSession, SPAppService;
+@class NSArray, PARSession;
 
 @interface SPClientSession : NSObject
 {
@@ -14,7 +14,6 @@
     BOOL _observersAdded;
     int _prefsToken;
     PARSession *_session;
-    SPAppService *_appService;
     long long _contentFilter;
     BOOL _infinitePatience;
 }

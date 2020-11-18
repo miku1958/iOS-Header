@@ -8,7 +8,7 @@
 
 #import <ControlCenterUIKit/CCUIContentModuleContentViewController-Protocol.h>
 
-@class CCUIButtonModuleView, CCUICAPackageDescription, NSString, UIColor, UIImage;
+@class CCUIButtonModuleView, CCUICAPackageDescription, NSString, UIColor, UIImage, UIViewPropertyAnimator;
 
 @interface CCUIButtonModuleViewController : UIViewController <CCUIContentModuleContentViewController>
 {
@@ -17,16 +17,20 @@
 }
 
 @property (readonly, nonatomic) CCUIButtonModuleView *buttonView;
+@property (readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
+@property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
 @property (strong, nonatomic) UIColor *glyphColor;
 @property (strong, nonatomic) UIImage *glyphImage;
 @property (strong, nonatomic) CCUICAPackageDescription *glyphPackageDescription;
+@property (nonatomic) double glyphScale;
 @property (copy, nonatomic) NSString *glyphState;
+@property (readonly, nonatomic) BOOL hasGlyph;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double preferredExpandedContentHeight;
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
+@property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
 @property (nonatomic, getter=isSelected) BOOL selected;
 @property (strong, nonatomic) UIColor *selectedGlyphColor;
@@ -35,9 +39,12 @@
 
 - (void).cxx_destruct;
 - (void)_buttonTapped:(id)arg1 forEvent:(id)arg2;
+- (void)_buttonTouchDown:(id)arg1 forEvent:(id)arg2;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;
+- (void)buttonTouchDown:(id)arg1 forEvent:(id)arg2;
 - (void)didTransitionToExpandedContentMode:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 - (void)willTransitionToExpandedContentMode:(BOOL)arg1;
 
 @end

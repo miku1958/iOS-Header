@@ -13,17 +13,17 @@
     NSDictionary *_info;
 }
 
-@property (readonly, strong, nonatomic) NSString *GUID;
-@property (readonly, strong, nonatomic) NSString *conferenceID;
+@property (readonly, nonatomic) NSString *GUID;
+@property (readonly, nonatomic) NSString *conferenceID;
 @property (nonatomic) double connectionTimeoutTime;
-@property (readonly, strong, nonatomic) NSNumber *dataDownloaded;
-@property (readonly, strong, nonatomic) NSNumber *dataUploaded;
-@property (readonly, strong, nonatomic) NSDate *dateConnected;
-@property (readonly, strong, nonatomic) NSDate *dateEnded;
+@property (readonly, nonatomic) NSNumber *dataDownloaded;
+@property (readonly, nonatomic) NSNumber *dataUploaded;
+@property (readonly, nonatomic) NSDate *dateConnected;
+@property (readonly, nonatomic) NSDate *dateEnded;
 @property (readonly, nonatomic) int endedError;
 @property (readonly, nonatomic) unsigned int endedReason;
 @property (readonly, nonatomic) BOOL hasReceivedFirstFrame;
-@property (readonly, strong, nonatomic) IMHandle *initiatorIMHandle;
+@property (readonly, nonatomic) IMHandle *initiatorIMHandle;
 @property (nonatomic) double invitationTimeoutTime;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isCaller;
@@ -32,18 +32,18 @@
 @property (nonatomic) BOOL isSendingVideo;
 @property (readonly, nonatomic) BOOL isStateFinal;
 @property (readonly, nonatomic) BOOL isVideo;
-@property (readonly, strong, nonatomic) IMHandle *otherIMHandle;
+@property (readonly, nonatomic) IMHandle *otherIMHandle;
 @property (nonatomic, getter=isRelayed) BOOL relayed;
-@property (readonly, strong, nonatomic) NSArray *remoteParticipants;
+@property (readonly, nonatomic) NSArray *remoteParticipants;
 @property (readonly, nonatomic) unsigned int sessionID;
 @property (readonly, nonatomic) unsigned int state;
 
+- (void).cxx_destruct;
 - (BOOL)_isCallUpgradeTo:(id)arg1;
 - (BOOL)_isProxy;
 - (void)acceptInvitation;
 - (id)account;
 - (void)cancelInvitation;
-- (void)dealloc;
 - (void)declineInvitation;
 - (id)description;
 - (void)endChat;

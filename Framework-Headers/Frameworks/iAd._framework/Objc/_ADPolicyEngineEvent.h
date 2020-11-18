@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_considerCallingLoadedHandler;
 - (void)addBannerForCreativeType:(int)arg1;
 - (void)bannerView:(id)arg1 didFailToReceiveAdWithError:(id)arg2;

@@ -21,6 +21,7 @@
 @property (nonatomic) unsigned int scannableSize; // @dynamic scannableSize;
 @property (nonatomic) unsigned int stride; // @dynamic stride;
 
+- (void)addSubField:(id)arg1;
 - (void)mutateTypeFieldsRecursivelyWithBlock:(CDUnknownBlockType)arg1 parentOffset:(unsigned int)arg2;
 - (BOOL)replaceFieldRecursively:(id)arg1 withField:(id)arg2;
 - (void)setOffset:(unsigned int)arg1;

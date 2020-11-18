@@ -13,22 +13,27 @@
 
 @interface AMSMetricsEvent : NSObject <NSCopying>
 {
-    NSObject<OS_dispatch_queue> *_internalQueue;
     NSMutableDictionary *_underlyingDictionary;
     ACAccount *_account;
+    NSObject<OS_dispatch_queue> *_internalQueue;
     NSNumber *_databasePID;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (strong, nonatomic) NSString *app;
 @property (strong, nonatomic) NSString *appVersion;
 @property (strong, nonatomic) NSNumber *baseVersion;
 @property (strong, nonatomic) NSString *canaryIdentifier;
+@property (strong, nonatomic) NSString *clientEventID;
 @property (readonly, nonatomic) NSDictionary *databaseEventBody;
 @property (strong, nonatomic) NSNumber *databasePID; // @synthesize databasePID=_databasePID;
+@property (readonly, nonatomic) NSDictionary *dictionaryForPosting;
 @property (strong, nonatomic) NSNumber *eventTime;
 @property (strong, nonatomic) NSString *eventType;
 @property (strong, nonatomic) NSNumber *eventVersion;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSString *osVersion;
+@property (nonatomic) BOOL preventSampling;
 @property (strong, nonatomic) NSNumber *timezoneOffset;
 @property (strong, nonatomic) NSString *topic;
 @property (readonly, nonatomic) NSMutableDictionary *underlyingDictionary; // @synthesize underlyingDictionary=_underlyingDictionary;
@@ -40,6 +45,8 @@
 + (id)createEventFromAuthenticationContext:(id)arg1 error:(id)arg2;
 + (id)metricsAuthenticationAttemptDictionaryForAuthKitError:(id)arg1;
 - (void).cxx_destruct;
+- (id)_propertyForBodyKey:(id)arg1 clientOnly:(BOOL)arg2;
+- (void)_setProperty:(id)arg1 forBodyKey:(id)arg2 clientOnly:(BOOL)arg3;
 - (void)addPropertiesWithDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithDatabaseEventBody:(id)arg1;
@@ -47,7 +54,6 @@
 - (id)initWithUnderlyingDictionary:(id)arg1;
 - (id)propertyForBodyKey:(id)arg1;
 - (void)removePropertiesForKeys:(id)arg1;
-- (id)reportingURLFromBaseURL:(id)arg1;
 - (void)setProperty:(id)arg1 forBodyKey:(id)arg2;
 
 @end

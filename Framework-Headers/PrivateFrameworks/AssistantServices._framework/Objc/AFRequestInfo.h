@@ -9,13 +9,15 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFSpeechRequestOptions, NSData, NSDictionary, NSNumber, NSString, NSUUID, SAStartLocalRequest, SAStartRequest;
+@class AFRequestCompletionOptions, AFSpeechRequestOptions, NSData, NSDictionary, NSNumber, NSString, NSUUID, SAStartLocalRequest, SAStartRequest;
 
 @interface AFRequestInfo : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _handoffRequiresUserInteraction;
     unsigned long long _timestamp;
     struct NSUUID *_turnIdentifier;
+    AFRequestCompletionOptions *_requestCompletionOptions;
+    NSUUID *_uuid;
     unsigned long long _options;
     NSNumber *_notifyState;
     NSString *_text;
@@ -59,6 +61,7 @@
 @property (copy, nonatomic) NSNumber *originalRank; // @synthesize originalRank=_originalRank;
 @property (copy, nonatomic) NSNumber *originalScore; // @synthesize originalScore=_originalScore;
 @property (copy, nonatomic) NSString *previousUtterance; // @synthesize previousUtterance=_previousUtterance;
+@property (copy, nonatomic) AFRequestCompletionOptions *requestCompletionOptions; // @synthesize requestCompletionOptions=_requestCompletionOptions;
 @property (copy, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
 @property (copy, nonatomic) AFSpeechRequestOptions *speechRequestOptions; // @synthesize speechRequestOptions=_speechRequestOptions;
 @property (copy, nonatomic) SAStartLocalRequest *startLocalRequest; // @synthesize startLocalRequest=_startLocalRequest;
@@ -67,6 +70,7 @@
 @property (readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (copy, nonatomic) NSUUID *turnIdentifier; // @synthesize turnIdentifier=_turnIdentifier;
 @property (copy, nonatomic) NSString *utteranceSource; // @synthesize utteranceSource=_utteranceSource;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

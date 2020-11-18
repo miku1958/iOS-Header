@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)_writeDataForTransparency:(id)arg1;
 + (id)wrappedMessage:(id)arg1;
 - (void)postMetricId:(unsigned int)arg1 message:(id)arg2;
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapItemTransitInfo-Protocol.h>
 
-@class GEOPDTransitInfo, GEOPDTransitSchedule, NSArray, NSDate, NSMapTable, NSString, NSTimeZone;
+@class GEOComposedRoute, GEOPDTransitInfo, GEOPDTransitSchedule, NSArray, NSDate, NSMapTable, NSString, NSTimeZone;
 
 __attribute__((visibility("hidden")))
 @interface _GEOMapItemTransitInfo : NSObject <GEOMapItemTransitInfo>
@@ -25,8 +25,12 @@ __attribute__((visibility("hidden")))
     NSArray *_connections;
     NSString *_displayName;
     NSMapTable *_cachedHeadSignsForLine;
+    CDStruct_2c43369c _coordinate;
+    NSArray *_transitStops;
+    GEOComposedRoute *_composedRoute;
 }
 
+@property (readonly, nonatomic) GEOComposedRoute *composedRoute;
 @property (readonly, nonatomic) NSArray *connections;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSArray *departureSequences;
@@ -40,9 +44,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDate *lastFullScheduleValidDate;
 @property (readonly, nonatomic) NSArray *lines;
 @property (readonly, nonatomic) unsigned long long linesCount;
+@property (readonly, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *systems;
 @property (readonly, nonatomic) unsigned long long systemsCount;
+@property (readonly, nonatomic) double timeToLive;
+@property (readonly, nonatomic) NSString *title;
+@property (readonly, nonatomic) NSArray *transitTripStops;
 
 - (void).cxx_destruct;
 - (id)_departureSequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 ignoreDirectionFilter:(BOOL)arg3 direction:(id)arg4 validForDateFromBlock:(CDUnknownBlockType)arg5;
@@ -51,10 +59,9 @@ __attribute__((visibility("hidden")))
 - (id)directionsForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 validForDateFromBlock:(CDUnknownBlockType)arg3 hasSequencesWithNoDirection:(out BOOL *)arg4;
 - (id)headSignsForLine:(id)arg1;
 - (id)inactiveLinesForSystem:(id)arg1 relativeToDateFromBlock:(CDUnknownBlockType)arg2 excludingIncidentEntities:(id)arg3;
-- (id)initWithTransitInfo:(id)arg1 schedule:(id)arg2 timeZone:(id)arg3 incidents:(id)arg4 hasTransitIncidentComponent:(BOOL)arg5 incidentExpirationDate:(id)arg6 providerID:(int)arg7;
+- (id)initWithTransitInfo:(id)arg1 schedule:(id)arg2 timeZone:(id)arg3 incidents:(id)arg4 hasTransitIncidentComponent:(BOOL)arg5 incidentExpirationDate:(id)arg6 providerID:(int)arg7 coordinate:(CDStruct_c3b9c2ee)arg8 transitStops:(id)arg9 composedRoute:(id)arg10;
 - (id)linesForSystem:(id)arg1;
 - (unsigned long long)numAdditionalDeparturesForSequence:(id)arg1;
-- (id)sequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
 - (id)serviceResumesDateForLine:(id)arg1 excludingIncidentEntities:(id)arg2 afterDate:(id)arg3 blocked:(out BOOL *)arg4;
 
 @end

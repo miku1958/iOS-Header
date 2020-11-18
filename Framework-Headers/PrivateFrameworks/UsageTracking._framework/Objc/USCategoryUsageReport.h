@@ -8,7 +8,7 @@
 
 #import <UsageTracking/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSString;
 
 @interface USCategoryUsageReport : NSObject <NSSecureCoding>
 {
@@ -18,11 +18,10 @@
     NSArray *_webUsage;
 }
 
-@property (readonly, copy) NSArray *applicationUsage; // @synthesize applicationUsage=_applicationUsage;
+@property (copy) NSArray *applicationUsage; // @synthesize applicationUsage=_applicationUsage;
 @property (readonly, copy) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (readonly) double totalUsageTime; // @synthesize totalUsageTime=_totalUsageTime;
 @property (readonly, copy) NSArray *webUsage; // @synthesize webUsage=_webUsage;
-@property (readonly, copy) NSDictionary *webUsageByDomain;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

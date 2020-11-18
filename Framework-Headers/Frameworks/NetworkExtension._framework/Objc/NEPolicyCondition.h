@@ -19,6 +19,7 @@
     unsigned int _uid;
     unsigned int _trafficClassStart;
     unsigned int _trafficClassEnd;
+    unsigned int _clientFlags;
     long long _conditionType;
     NSUUID *_applicationUUID;
     NSString *_accountIdentifier;
@@ -35,6 +36,7 @@
 @property (copy) NSString *agentDomain; // @synthesize agentDomain=_agentDomain;
 @property (copy) NSString *agentType; // @synthesize agentType=_agentType;
 @property (copy) NSUUID *applicationUUID; // @synthesize applicationUUID=_applicationUUID;
+@property unsigned int clientFlags; // @synthesize clientFlags=_clientFlags;
 @property long long conditionType; // @synthesize conditionType=_conditionType;
 @property (copy) NSString *customEntitlement; // @synthesize customEntitlement=_customEntitlement;
 @property (copy) NSString *domain; // @synthesize domain=_domain;
@@ -51,14 +53,28 @@
 
 + (id)accountIdentifier:(id)arg1;
 + (id)allInterfaces;
++ (id)clientFlags:(unsigned int)arg1;
++ (id)clientProhibitsContrained;
++ (id)clientProhibitsExpensive;
 + (id)customEntitlement:(id)arg1;
 + (id)domain:(id)arg1;
 + (id)effectiveApplication:(id)arg1;
 + (id)effectivePID:(int)arg1;
 + (id)entitlement;
++ (id)fallbackTraffic;
++ (id)flowIPProtocol:(unsigned short)arg1;
++ (id)flowLocalAddress:(id)arg1 prefix:(unsigned char)arg2;
++ (id)flowLocalAddressEmpty;
++ (id)flowLocalAddressStart:(id)arg1 end:(id)arg2;
++ (id)flowRemoteAddress:(id)arg1 prefix:(unsigned char)arg2;
++ (id)flowRemoteAddressEmpty;
++ (id)flowRemoteAddressStart:(id)arg1 end:(id)arg2;
 + (id)ipProtocol:(unsigned short)arg1;
++ (id)isInbound;
++ (id)isListener;
 + (id)localAddress:(id)arg1 prefix:(unsigned char)arg2;
 + (id)localAddressStart:(id)arg1 end:(id)arg2;
++ (id)localNetworks;
 + (id)realApplication:(id)arg1;
 + (id)remoteAddress:(id)arg1 prefix:(unsigned char)arg2;
 + (id)remoteAddressStart:(id)arg1 end:(id)arg2;
@@ -66,6 +82,7 @@
 + (id)scopedInterface:(id)arg1;
 + (id)trafficClassStart:(unsigned int)arg1 end:(unsigned int)arg2;
 + (id)uid:(unsigned int)arg1;
++ (id)usesModernNetworkAPI;
 - (void).cxx_destruct;
 - (BOOL)addTLVsToMessage:(id)arg1;
 - (id)conditionTypeString;

@@ -9,6 +9,7 @@
 @interface UIDevice (IC)
 + (BOOL)ic_isLargeiPad;
 + (BOOL)ic_isPlusiPhone;
++ (BOOL)ic_isSmalliPhone;
 + (BOOL)ic_isiPad;
 + (BOOL)ic_isiPhone;
 @end

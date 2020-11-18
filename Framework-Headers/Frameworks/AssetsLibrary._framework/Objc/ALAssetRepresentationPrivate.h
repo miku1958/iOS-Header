@@ -8,7 +8,8 @@
 
 #import <AssetsLibrary/ALAssetsLibraryAsset-Protocol.h>
 
-@class ALAssetsLibrary, NSString, PLManagedAsset, PLPhotoLibrary, PLSidecarFile;
+@class ALAssetsLibrary, NSString, PLManagedAsset, PLPhotoLibrary;
+@protocol PLSidecar;
 
 __attribute__((visibility("hidden")))
 @interface ALAssetRepresentationPrivate : NSObject <ALAssetsLibraryAsset>
@@ -16,7 +17,7 @@ __attribute__((visibility("hidden")))
     ALAssetsLibrary *_library;
     BOOL _isValid;
     PLManagedAsset *_photo;
-    PLSidecarFile *_sidecar;
+    id<PLSidecar> _sidecar;
     NSString *_extension;
     PLPhotoLibrary *_photoLibrary;
 }
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isValid; // @synthesize isValid=_isValid;
 @property (nonatomic) ALAssetsLibrary *library;
 @property (strong, nonatomic) PLManagedAsset *photo; // @synthesize photo=_photo;
-@property (strong, nonatomic) PLSidecarFile *sidecar; // @synthesize sidecar=_sidecar;
+@property (strong, nonatomic) id<PLSidecar> sidecar; // @synthesize sidecar=_sidecar;
 @property (readonly) Class superclass;
 
 + (void)_clearFileDescriptorQueue;

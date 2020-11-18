@@ -9,26 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface PUMomentsSettings : PXSettings
 {
-    BOOL _allowCollectionInfluence;
-    unsigned long long _order;
 }
 
-@property (nonatomic) BOOL allowCollectionInfluence; // @synthesize allowCollectionInfluence=_allowCollectionInfluence;
-@property (nonatomic) unsigned long long order; // @synthesize order=_order;
-
-+ (void)_clearSelection;
-+ (id)_currentlySelectedAssets;
-+ (void)_mergeMoments;
 + (void)_rebuildMoments;
-+ (void)_renameCollection;
-+ (void)_renameMoment;
-+ (void)_splitMomentsWithBoth:(BOOL)arg1;
-+ (void)_tagSelectionForCollections;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (id)parentSettings;
-- (void)performPostSaveActions;
-- (void)setDefaultValues;
 
 @end
 

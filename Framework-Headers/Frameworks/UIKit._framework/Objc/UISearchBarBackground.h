@@ -15,15 +15,12 @@ __attribute__((visibility("hidden")))
 {
     UIColor *_barTintColor;
     NSMutableDictionary *_customBackgroundImages;
-    NSMutableDictionary *_generatedBackgroundImages;
     long long _barPosition;
     unsigned long long _searchBarStyle;
-    unsigned int _barStyle:3;
-    unsigned int _barTranslucence:3;
-    unsigned int _usesEmbeddedAppearance:1;
-    unsigned int _actingAsNavBar:1;
-    unsigned int _usesContiguousBarBackground:1;
-    unsigned int _barHasController;
+    long long _barStyle;
+    long long _barTranslucence;
+    BOOL _usesEmbeddedAppearance;
+    BOOL _usesContiguousBarBackground;
 }
 
 @property (readonly, nonatomic) UIImage *backgroundImage;
@@ -43,12 +40,13 @@ __attribute__((visibility("hidden")))
 - (id)_backgroundImageForBarPosition:(long long)arg1 barMetrics:(long long)arg2;
 - (long long)_barPosition;
 - (id)_createBackgroundImageForBarStyle:(long long)arg1 alpha:(double)arg2;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (BOOL)_hasCustomBackgroundImage;
 - (void)_setBackgroundImage:(id)arg1 forBarPosition:(long long)arg2 barMetrics:(long long)arg3;
 - (void)_setBarPosition:(long long)arg1;
-- (void)_setBehavesAsIfSearchBarHasController:(BOOL)arg1;
 - (void)_updateBackgroundImage;
 - (void)_updateBackgroundImageIfPossible;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

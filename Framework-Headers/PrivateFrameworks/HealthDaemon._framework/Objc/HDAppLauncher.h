@@ -9,13 +9,13 @@
 #import <HealthDaemon/HDAssertionObserver-Protocol.h>
 #import <HealthDaemon/HDProcessStateObserver-Protocol.h>
 
-@class FBSSystemService, HDAssertionManager, HDProcessStateManager, NSMutableDictionary, NSMutableSet, NSString;
+@class FBSOpenApplicationService, HDAssertionManager, HDProcessStateManager, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDAppLauncher : NSObject <HDProcessStateObserver, HDAssertionObserver>
 {
     HDProcessStateManager *_processStateManager;
-    FBSSystemService *_systemService;
+    FBSOpenApplicationService *_openApplicationService;
     NSObject<OS_dispatch_queue> *_queue;
     HDAssertionManager *_assertionManager;
     NSMutableDictionary *_registeredAssertionsByIdentifier;
@@ -38,7 +38,7 @@
 - (void)_queue_launchClientIfNeeded:(id)arg1;
 - (void)_queue_scheduleLaunchForClient:(id)arg1;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
-- (id)initWithProcessStateManager:(id)arg1 systemService:(id)arg2;
+- (id)initWithProcessStateManager:(id)arg1 openApplicationService:(id)arg2;
 - (void)processTerminated:(id)arg1;
 - (id)takeKeepAliveAssertionForApplicationBundleIdentifier:(id)arg1 processBundleIdentifier:(id)arg2 payloadOptions:(id)arg3;
 - (BOOL)unitTest_hasAssertionForBundleIdentifier:(id)arg1;

@@ -7,15 +7,10 @@
 #import <PassKitCore/PKPaymentPass.h>
 
 @interface PKPaymentPass (NanoPassKit)
-- (id)npkDeviceContactlessPaymentApplications;
-- (id)npkDeviceInAppPaymentApplications;
 - (id)npkDevicePaymentApplicationForAID:(id)arg1;
 - (BOOL)npkHasUserSelectableContactlessPaymentApplications;
-- (BOOL)npkHasUserSelectableInAppPaymentApplications;
 - (id)npkPreferredContactlessPaymentApplication;
-- (id)npkPreferredInAppPaymentApplication;
 - (void)npkSetPreferredPaymentApplication:(id)arg1;
 - (id)npkSortedDeviceContactlessPaymentApplications;
-- (id)npkSortedDeviceInAppPaymentApplications;
 @end
 

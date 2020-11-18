@@ -10,24 +10,58 @@
 
 @interface OTControl : NSObject
 {
+    BOOL _synchronous;
+    BOOL _sync;
     NSXPCConnection *_connection;
 }
 
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property BOOL sync; // @synthesize sync=_sync;
+@property BOOL synchronous; // @synthesize synchronous=_synchronous;
 
 + (id)controlObject:(id *)arg1;
++ (id)controlObject:(BOOL)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (void)attemptSosUpgrade:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)createRecoveryKey:(id)arg1 contextID:(id)arg2 recoveryKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)dealloc;
 - (void)encryptionKey:(CDUnknownBlockType)arg1;
-- (id)initWithConnection:(id)arg1;
+- (void)establish:(id)arg1 context:(id)arg2 altDSID:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)fetchAllViableBottles:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchCliqueStatus:(id)arg1 context:(id)arg2 configuration:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)fetchEgoPeerID:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchEscrowContents:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchTrustStatus:(id)arg1 context:(id)arg2 configuration:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (id)getConnection:(CDUnknownBlockType)arg1;
+- (void)handleIdentityChangeForSigningKey:(id)arg1 ForEncryptionKey:(id)arg2 ForPeerID:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)healthCheck:(id)arg1 context:(id)arg2 skipRateLimitingCheck:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
+- (id)initWithConnection:(id)arg1 sync:(BOOL)arg2;
+- (void)joinWithRecoveryKey:(id)arg1 contextID:(id)arg2 recoveryKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)launchBottledPeer:(id)arg1 bottleID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)leaveClique:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)listOfEligibleBottledPeerRecords:(CDUnknownBlockType)arg1;
 - (void)listOfRecords:(CDUnknownBlockType)arg1;
+- (void)notifyIDMSTrustLevelChangeForContainer:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)octagonEncryptionPublicKey:(CDUnknownBlockType)arg1;
+- (void)octagonSigningPublicKey:(CDUnknownBlockType)arg1;
+- (void)peerDeviceNamesByPeerID:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)postCDPFollowupResult:(BOOL)arg1 type:(id)arg2 error:(id)arg3 containerName:(id)arg4 contextName:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)preflightBottledPeer:(id)arg1 dsid:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)removeFriendsInClique:(id)arg1 context:(id)arg2 peerIDs:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)reset:(CDUnknownBlockType)arg1;
+- (void)resetAndEstablish:(id)arg1 context:(id)arg2 altDSID:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)restore:(id)arg1 contextID:(id)arg2 bottleSalt:(id)arg3 entropy:(id)arg4 bottleID:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)restore:(id)arg1 dsid:(id)arg2 secret:(id)arg3 escrowRecordID:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)rpcEpochWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rpcJoinWithConfiguration:(id)arg1 vouchData:(id)arg2 vouchSig:(id)arg3 preapprovedKeys:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)rpcPrepareIdentityAsApplicantWithConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rpcVoucherWithConfiguration:(id)arg1 peerID:(id)arg2 permanentInfo:(id)arg3 permanentInfoSig:(id)arg4 stableInfo:(id)arg5 stableInfoSig:(id)arg6 reply:(CDUnknownBlockType)arg7;
 - (void)scrubBottledPeer:(id)arg1 bottleID:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)signIn:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)signOut:(CDUnknownBlockType)arg1;
+- (void)signIn:(id)arg1 container:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)signOut:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)signingKey:(CDUnknownBlockType)arg1;
+- (void)startOctagonStateMachine:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)status:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 
 @end
 

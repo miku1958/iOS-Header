@@ -8,9 +8,16 @@
 
 @interface CAMStopPanoramaCommand : CAMCaptureCommand
 {
+    BOOL __interrupted;
 }
 
+@property (readonly, nonatomic) BOOL _interrupted; // @synthesize _interrupted=__interrupted;
+
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (void)executeWithContext:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithInterrupted:(BOOL)arg1;
 
 @end
 

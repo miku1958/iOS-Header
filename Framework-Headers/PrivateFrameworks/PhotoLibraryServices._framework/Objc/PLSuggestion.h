@@ -51,9 +51,7 @@
 + (id)cloudUUIDKeyForDeletion;
 + (unsigned long long)deleteAllMomentShareSuggestionsInManagedObjectContext:(id)arg1;
 + (unsigned long long)deletePendingSuggestionsCreatedBefore:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2;
 + (id)predicateForAllAssetsInSuggestion:(id)arg1 managedObjectContext:(id)arg2;
 + (id)predicateForAllMomentsFromRepresentativeAssetsInSuggestion:(id)arg1 managedObjectContext:(id)arg2;
@@ -68,6 +66,7 @@
 - (BOOL)isEmpty;
 - (BOOL)isPending;
 - (BOOL)isSyncableChange;
+- (id)momentShare;
 - (id)mutableKeyAssets;
 - (id)mutableRepresentativeAssets;
 - (void)prepareForDeletion;

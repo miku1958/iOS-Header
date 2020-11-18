@@ -7,7 +7,7 @@
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
 @class GEOAutomobileOptions, GEOComposedWaypoint, GEOLocation, NSString;
-@protocol GEOMapItem;
+@protocol GEOMapItem, GEOVenueIdentifier;
 
 @protocol MapsSuggestionsNetworkRequester <MapsSuggestionsObject>
 - (BOOL)ETAsFromHereWaypoint:(GEOComposedWaypoint *)arg1 destinationWaypoints:(struct NSArray *)arg2 transportType:(int)arg3 automobileOptions:(GEOAutomobileOptions *)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
@@ -15,7 +15,10 @@
 - (BOOL)composedWaypointForLocation:(GEOLocation *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
 - (BOOL)composedWaypointForMapItem:(id<GEOMapItem>)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
 - (BOOL)forwardGeocodeAddressString:(NSString *)arg1 completion:(void (^)(struct NSArray *, NSError *))arg2;
+- (BOOL)forwardGeocodePostalAddress:(id)arg1 completion:(void (^)(struct NSArray *, NSError *))arg2;
 - (BOOL)resolveMapItemHandleData:(struct NSData *)arg1 completion:(void (^)(struct NSArray *, NSError *))arg2;
 - (BOOL)reverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 completion:(void (^)(struct NSArray *, NSError *))arg2;
+- (BOOL)searchString:(NSString *)arg1 maxResults:(unsigned int)arg2 completion:(void (^)(struct NSArray *, NSError *))arg3;
+- (BOOL)searchString:(NSString *)arg1 ofPOICategory:(NSString *)arg2 withinVenue:(id<GEOVenueIdentifier>)arg3 maxResults:(unsigned int)arg4 completion:(void (^)(struct NSArray *, NSError *))arg5;
 @end
 

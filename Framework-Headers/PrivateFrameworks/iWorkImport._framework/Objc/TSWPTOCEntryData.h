@@ -7,11 +7,12 @@
 #import <iWorkImport/TSPObject.h>
 
 #import <iWorkImport/TSPCopying-Protocol.h>
+#import <iWorkImport/TSSStyleClient-Protocol.h>
 
 @class NSString, TSWPListStyle, TSWPParagraphStyle, TSWPStorage;
 
 __attribute__((visibility("hidden")))
-@interface TSWPTOCEntryData : TSPObject <TSPCopying>
+@interface TSWPTOCEntryData : TSPObject <TSPCopying, TSSStyleClient>
 {
     TSWPStorage *_storage;
     unsigned long long _paragraphIndex;
@@ -24,6 +25,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _indexedParagraphLevel;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *heading; // @synthesize heading=_heading;
 @property (readonly, nonatomic) unsigned long long indexedListStart; // @synthesize indexedListStart=_indexedListStart;
 @property (readonly, nonatomic) TSWPListStyle *indexedListStyle; // @synthesize indexedListStyle=_indexedListStyle;
@@ -32,19 +36,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *numberFormat; // @synthesize numberFormat=_numberFormat;
 @property (readonly, nonatomic) unsigned long long pageNumber; // @synthesize pageNumber=_pageNumber;
 @property (readonly, nonatomic) unsigned long long paragraphIndex; // @synthesize paragraphIndex=_paragraphIndex;
-@property (readonly, nonatomic) unsigned long long sectionIndex;
 @property (readonly, weak, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
+@property (readonly) Class superclass;
 
 + (id)tocEntryDataWithStorage:(id)arg1 paragraphIndex:(unsigned long long)arg2 pageNumber:(unsigned long long)arg3 numberFormat:(id)arg4 heading:(id)arg5 indexedStyle:(id)arg6 indexedListStyle:(id)arg7 indexedListStart:(unsigned long long)arg8 indexedParagraphLevel:(unsigned long long)arg9;
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)copyWithContext:(id)arg1;
-- (id)description;
-- (unsigned long long)hash;
 - (id)initWithStorage:(id)arg1 paragraphIndex:(unsigned long long)arg2 pageNumber:(unsigned long long)arg3 numberFormat:(id)arg4 heading:(id)arg5 indexedStyle:(id)arg6 indexedListStyle:(id)arg7 indexedListStart:(unsigned long long)arg8 indexedParagraphLevel:(unsigned long long)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadFromArchive:(const struct TOCEntryInstanceArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)referencedStyles;
+- (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)saveToArchive:(struct TOCEntryInstanceArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 

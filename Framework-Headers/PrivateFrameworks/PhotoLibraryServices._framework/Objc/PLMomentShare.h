@@ -54,11 +54,11 @@
 + (id)cloudUUIDKeyForDeletion;
 + (void)deleteAllMomentSharesInManagedObjectContext:(id)arg1;
 + (void)deleteExpiredMomentSharesInManagedObjectContext:(id)arg1;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (void)fetchMomentShareFromShareURL:(id)arg1 inPhotoLibrary:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)insertInPhotoLibrary:(id)arg1;
 + (id)listOfSyncedProperties;
++ (id)momentShareWithOriginatingScopeIdentifier:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;
 + (id)momentShareWithScopeIdentifier:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;
 + (id)momentShareWithScopedIdentifier:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;
 + (id)momentShareWithShareURL:(id)arg1 includeTrashed:(BOOL)arg2 inManagedObjectContext:(id)arg3;

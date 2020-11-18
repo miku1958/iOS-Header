@@ -17,9 +17,11 @@
 + (id)avt_groupDialCellTextColor;
 + (id)avt_groupDialSelectionBackgroundColor;
 + (id)avt_separatorColor;
++ (id)avt_simplePickerSelectedBackground;
 + (id)avt_splashScreenButtonBackgroundColor;
 + (id)avt_splashScreenButtonHighlightedTextColor;
 + (id)avt_splashScreenButtonNormalTextColor;
++ (id)avt_stickerPlaceholderBackgroundColor;
 + (id)avt_templateInstructionLabelTextColor;
 + (id)avt_userInfoLabelColor;
 @end

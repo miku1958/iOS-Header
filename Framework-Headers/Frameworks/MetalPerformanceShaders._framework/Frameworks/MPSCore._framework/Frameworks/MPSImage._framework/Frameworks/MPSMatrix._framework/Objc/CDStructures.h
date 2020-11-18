@@ -4,42 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MPSCommandBufferImageCache;
-
 #pragma mark Function Pointers
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct MPSAutoBuffer {
-    struct atomic<void *> _buffer;
-    unsigned long long _requestedSize;
-    id _device;
-    MPSCommandBufferImageCache *_cache;
-    struct {
-        unsigned long long size;
-        unsigned long long align;
-    } _resourceSize;
-};
-
-struct MPSDevice {
-    CDUnknownFunctionPointerType *_field1;
-    struct MPSDevice *_field2;
-    id _field3;
-    struct MPSDeviceFreeList *_field4;
-    struct atomic<MTLLibraryNode *> _field5;
-    struct atomic<void *> _field6[2][2][2];
-    struct MPSPixelCapabilities _field7[563];
-    struct MPSFunctionTable *_field8;
-    struct atomic<void *> _field9;
-    unsigned int _field10;
-    int _field11;
-    struct MPSGPUInfo _field12;
-    struct atomic<MPSLibrary *> _field13[79];
-};
-
-struct MPSDeviceFreeList;
 
 struct MPSDeviceSpecificInfo {
     struct MPSKernelInfo *_field1;
@@ -47,20 +16,7 @@ struct MPSDeviceSpecificInfo {
     unsigned long long _field3;
 };
 
-struct MPSFunctionTable;
-
-struct MPSGPUInfo {
-    unsigned int :8;
-    unsigned int :8;
-    unsigned int :8;
-    unsigned int :16;
-    unsigned int :4;
-    unsigned int :20;
-};
-
 struct MPSKernelInfo;
-
-struct MPSLibrary;
 
 struct MPSLibraryInfo {
     int _field1;
@@ -84,31 +40,7 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field19;
     struct MPSDeviceSpecificInfo _field20;
     struct MPSDeviceSpecificInfo _field21;
-};
-
-struct MPSPixelCapabilities {
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :2;
-    unsigned int :1;
-    unsigned int :8;
-};
-
-struct MTLLibraryNode;
-
-struct atomic<MPSLibrary *> {
-    _Atomic struct MPSLibrary *_field1;
-};
-
-struct atomic<MTLLibraryNode *> {
-    _Atomic struct MTLLibraryNode *_field1;
-};
-
-struct atomic<void *> {
-    _Atomic void *__a_;
+    struct MPSDeviceSpecificInfo _field22;
 };
 
 #pragma mark Typedef'd Structures

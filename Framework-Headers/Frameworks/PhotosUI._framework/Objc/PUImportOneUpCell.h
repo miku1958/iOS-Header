@@ -8,14 +8,14 @@
 
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class NSString, PUImportItemViewModel, UITextField;
+@class NSString, PXImportItemViewModel, UITextField;
 @protocol PUImportOneUpCellDisplayDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUImportOneUpCell : PUPhotosSharingGridCell <PXChangeObserver>
 {
     id<PUImportOneUpCellDisplayDelegate> _displayDelegate;
-    PUImportItemViewModel *_importItem;
+    PXImportItemViewModel *_importItem;
     UITextField *_debugTextField;
     long long _thumbnailRequestID;
 }
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<PUImportOneUpCellDisplayDelegate> displayDelegate; // @synthesize displayDelegate=_displayDelegate;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PUImportItemViewModel *importItem; // @synthesize importItem=_importItem;
+@property (strong, nonatomic) PXImportItemViewModel *importItem; // @synthesize importItem=_importItem;
 @property (readonly) Class superclass;
 @property (nonatomic) long long thumbnailRequestID; // @synthesize thumbnailRequestID=_thumbnailRequestID;
 

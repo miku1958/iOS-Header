@@ -57,11 +57,15 @@
     NSString *_backgroundColorName;
     long long _backgroundColorSpaceID;
     NSArray *_backgroundColorComponents;
+    long long _textAlignment;
+    long long _scalingStyle;
     double _maxPointSize;
     double _minPointSize;
     NSValue *_iconSize;
     NSString *_appearanceName;
     long long _appearanceIdentifier;
+    NSString *_localizationName;
+    long long _localizationIdentifier;
     struct CGSize _resizableSliceSize;
     struct CGSize _physicalSizeInMeters;
     struct CGSize _canvasSize;
@@ -97,6 +101,8 @@
 @property (nonatomic) BOOL isTemplate;
 @property (copy, nonatomic) NSArray *layerReferences; // @synthesize layerReferences=_layerReferences;
 @property (nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
+@property (nonatomic) long long localizationIdentifier; // @synthesize localizationIdentifier=_localizationIdentifier;
+@property (copy, nonatomic) NSString *localizationName; // @synthesize localizationName=_localizationName;
 @property (nonatomic) double lossyCompressionQuality; // @synthesize lossyCompressionQuality=_lossyCompressionQuality;
 @property (nonatomic) double maxPointSize; // @synthesize maxPointSize=_maxPointSize;
 @property (nonatomic) unsigned long long memoryClass; // @synthesize memoryClass=_memoryClass;
@@ -112,6 +118,7 @@
 @property (nonatomic) struct CGSize resizableSliceSize; // @synthesize resizableSliceSize=_resizableSliceSize;
 @property (nonatomic) long long resizingMode; // @synthesize resizingMode=_resizingMode;
 @property (nonatomic) unsigned long long scaleFactor; // @synthesize scaleFactor=_scaleFactor;
+@property (nonatomic) long long scalingStyle; // @synthesize scalingStyle=_scalingStyle;
 @property (nonatomic) long long sizeClassHorizontal; // @synthesize sizeClassHorizontal=_sizeClassHorizontal;
 @property (nonatomic) long long sizeClassVertical; // @synthesize sizeClassVertical=_sizeClassVertical;
 @property (nonatomic) CDStruct_3c058996 sliceInsets; // @synthesize sliceInsets=_sliceInsets;
@@ -119,6 +126,7 @@
 @property (strong, nonatomic) NSString *systemColorName; // @synthesize systemColorName=_systemColorName;
 @property (copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 @property (nonatomic) long long templateRenderingMode; // @synthesize templateRenderingMode=_templateRenderingMode;
+@property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (nonatomic) unsigned long long textureDepth; // @synthesize textureDepth=_textureDepth;
 @property (nonatomic) unsigned long long textureHeight; // @synthesize textureHeight=_textureHeight;
 @property (copy, nonatomic) NSArray *textureInfos; // @synthesize textureInfos=_textureInfos;

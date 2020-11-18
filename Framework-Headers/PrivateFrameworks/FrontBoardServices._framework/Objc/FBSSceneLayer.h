@@ -8,42 +8,32 @@
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 
-@class CAContext, FBSScene, NSString;
-@protocol FBSSceneLayerDelegate;
+@class CAContext, NSString;
 
 @interface FBSSceneLayer : NSObject <BSXPCCoding>
 {
-    FBSScene *_scene;
     CAContext *_context;
-    unsigned int _identifier;
     double _level;
-    long long _alignment;
-    id<FBSSceneLayerDelegate> _delegate;
-    BOOL _shouldObserveUpdates;
 }
 
-@property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
+@property (readonly, nonatomic) long long alignment;
+@property (readonly, nonatomic, getter=_context) CAContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<FBSSceneLayerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) double level; // @synthesize level=_level;
-@property (weak, nonatomic) FBSScene *scene; // @synthesize scene=_scene;
-@property (readonly, nonatomic) BOOL shouldObserveUpdates; // @synthesize shouldObserveUpdates=_shouldObserveUpdates;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_initWithLevel:(double)arg1 context:(id)arg2;
-- (void)_setLevel:(double)arg1 fromObserver:(BOOL)arg2;
-- (void)_synchronize:(CDUnknownBlockType)arg1;
-- (void)_updateProperties;
+- (id)_initWithCAContext:(id)arg1 fallbackLevel:(double)arg2;
+- (id)_succinctDescription;
+- (void)_unsafe_captureLevel;
+- (double)_unsafe_level;
 - (void)dealloc;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isCAContextLayer;
 - (BOOL)isExternalSceneLayer;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

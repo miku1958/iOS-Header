@@ -10,7 +10,7 @@
 
 @interface _TtC13CoreKnowledge8CKLogger : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *category;
+    MISSING_TYPE *osLog;
 }
 
 @end

@@ -30,6 +30,8 @@
 @property (readonly) Class superclass;
 
 + (id)btDiscoveryConfiguration;
++ (id)emergencyCallInfoPublisherConfiguration;
++ (id)eraseDeviceServiceConfiguration;
 + (id)fmipConfiguration;
 + (id)helperConfiguration;
 + (id)identityConfiguration;

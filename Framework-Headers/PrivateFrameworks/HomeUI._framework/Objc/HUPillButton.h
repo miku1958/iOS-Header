@@ -34,7 +34,9 @@
 + (CDStruct_d2b197d1)defaultMetrics;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (void)_didTap:(id)arg1;
 - (void)_setupConstraintSet;
+- (id)description;
 - (void)didMoveToSuperview;
 - (id)initWithBackgroundStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;

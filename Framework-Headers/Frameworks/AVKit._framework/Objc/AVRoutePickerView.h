@@ -30,12 +30,14 @@
 @property (strong, nonatomic) UIColor *activeTintColor;
 @property (weak, nonatomic) id<AVRoutePickerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSString *overrideRoutingContextUID; // @synthesize overrideRoutingContextUID=_overrideRoutingContextUID;
+@property (nonatomic) BOOL prioritizesVideoDevices;
 @property (nonatomic) long long routePickerButtonStyle; // @synthesize routePickerButtonStyle=_routePickerButtonStyle;
 
 - (void).cxx_destruct;
 - (void)_createOrUpdateRoutePickerButton;
 - (id)_defaultActiveTintColor;
 - (BOOL)_isAirPlayActive;
+- (struct CGRect)_normalizedRectInWindow;
 - (void)_registerNotifications;
 - (void)_routePickerButtonTapped:(id)arg1;
 - (void)_routePickerButtonTouchDown:(id)arg1;
@@ -51,10 +53,8 @@
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isAirPlayActive;
 - (void)layoutSubviews;
-- (BOOL)prioritizesVideoDevices;
 - (void)setAirPlayActive:(BOOL)arg1;
 - (void)setCustomButton:(id)arg1;
-- (void)setPrioritizesVideoDevices:(BOOL)arg1;
 - (void)tintColorDidChange;
 - (void)updateButtonAppearance;
 

@@ -18,6 +18,7 @@
     BOOL _isDelayed;
     BOOL _sentPressesEnded;
     BOOL _longClick;
+    unsigned int _contextID;
     double _timestamp;
     long long _phase;
     long long _type;
@@ -32,6 +33,7 @@
 @property (nonatomic, setter=_setForwardablePhase:) long long _forwardablePhase;
 @property (strong, nonatomic, setter=_setResponder:) UIResponder *_responder;
 @property (nonatomic) unsigned long long clickCount; // @synthesize clickCount=_clickCount;
+@property (readonly, nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double force; // @synthesize force=_force;

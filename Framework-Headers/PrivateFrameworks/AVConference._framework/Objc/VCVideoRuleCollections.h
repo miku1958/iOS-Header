@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSDictionary *rules; // @synthesize rules=_rules;
 @property (readonly) NSArray *supportedPayloads; // @synthesize supportedPayloads=_supportedPayloads;
 
++ (id)newCorrectedVideoRules:(id)arg1 payload:(int)arg2;
 - (void)addSupportedPayload:(int)arg1;
 - (void)addVideoRules:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;
 - (void)appendVideoRules:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)filterRules:(id)arg1 byBitrateRule:(id)arg2;
 - (id)getVideoRulesForTransport:(unsigned char)arg1 payload:(int)arg2 encodingType:(unsigned char)arg3;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isPayloadSupported:(int)arg1;
 - (void)removeVideoRulesWithWidth:(int)arg1 height:(int)arg2 transportType:(unsigned char)arg3 encodingType:(unsigned char)arg4;
 - (id)supportedVideoRulesForBitrate:(id)arg1 transportType:(unsigned char)arg2 payload:(int)arg3 encodingType:(unsigned char)arg4;

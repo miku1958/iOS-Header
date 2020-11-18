@@ -10,8 +10,10 @@
 + (BOOL)tsu_object:(id)arg1 isEqualToObject:(id)arg2;
 + (BOOL)tsu_overridesClassSelector:(SEL)arg1 ofBaseClass:(Class)arg2;
 + (BOOL)tsu_overridesSelector:(SEL)arg1 ofBaseClass:(Class)arg2;
+- (void)tp_performSelector:(SEL)arg1 withIndexesFromSet:(id)arg2;
 - (id)tsu_addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)tsu_performSelector:(SEL)arg1 withValue:(id)arg2;
 - (void)tsu_removeObserverForToken:(id)arg1;
+- (void)tsu_runBlock;
 @end
 

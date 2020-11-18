@@ -7,9 +7,20 @@
 #import <Foundation/NSValue.h>
 
 @interface NSValue (MKAdditions)
+
+@property (readonly) CDStruct_c3b9c2ee MKCoordinateSpanValue;
+@property (readonly) struct CLLocationCoordinate2D MKCoordinateValue;
+
++ (id)_mapkit_valueWithCGAffineTransform:(struct CGAffineTransform)arg1;
++ (id)_mapkit_valueWithCGPoint:(struct CGPoint)arg1;
++ (id)valueWithMKCoordinate:(struct CLLocationCoordinate2D)arg1;
++ (id)valueWithMKCoordinateSpan:(CDStruct_c3b9c2ee)arg1;
 - (struct CGPoint)CADoublePointValue;
 - (struct CGRect)CADoubleRectValue;
 - (CDStruct_02837cd9)MKMapRectValue;
+- (struct CGAffineTransform)_mapkit_CGAffineTransformValue;
+- (struct CGPoint)_mapkit_CGPointValue;
+- (struct CGRect)_mapkit_CGRectValue;
 - (id)_mapkit_initWithCADoublePoint:(struct CGPoint)arg1;
 - (id)_mapkit_initWithCADoubleRect:(struct CGRect)arg1;
 - (id)_mapkit_initWithCGPoint:(struct CGPoint)arg1;

@@ -10,9 +10,12 @@
 
 @interface MPModelStoreBrowseSection : MPModelObject
 {
+    BOOL _containsOnlyEditorialElements;
 }
 
 @property (nonatomic, getter=isBrick) BOOL brick; // @dynamic brick;
+@property (nonatomic) BOOL containsOnlyEditorialElements; // @synthesize containsOnlyEditorialElements=_containsOnlyEditorialElements;
+@property (nonatomic) BOOL displaysAsGridCellInCarPlay; // @dynamic displaysAsGridCellInCarPlay;
 @property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @dynamic loadAdditionalContentURL;
 @property (nonatomic, getter=isMemberOfChartSet) BOOL memberOfChartSet; // @dynamic memberOfChartSet;
 @property (strong, nonatomic) MPModelStoreBrowseResponse *previouslyRetrievedNestedResponse; // @dynamic previouslyRetrievedNestedResponse;
@@ -21,6 +24,7 @@
 @property (nonatomic) long long uniformContentItemType; // @dynamic uniformContentItemType;
 
 + (id)__brick_KEY;
++ (id)__displaysAsGridCellInCarPlay_KEY;
 + (id)__loadAdditionalContentURL_KEY;
 + (id)__memberOfChartSet_KEY;
 + (id)__previouslyRetrievedNestedResponse_KEY;

@@ -6,26 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class INCExtensionRequest, INCExtensionTransactionState, INIntent, NSMutableDictionary, NSUserActivity;
+@class INCExtensionRequest, INCExtensionTransactionState, INIntent, INIntentResponse, NSMutableDictionary, NSUserActivity;
+@protocol OS_dispatch_queue;
 
 @interface INCExtensionTransaction : NSObject
 {
     NSMutableDictionary *_userActivitiesByIdentifier;
+    NSObject<OS_dispatch_queue> *_queue;
+    BOOL _shouldResetRequestAfterHandle;
+    NSUserActivity *_currentUserActivity;
     INCExtensionRequest *_request;
     INIntent *_currentIntent;
-    NSUserActivity *_currentUserActivity;
+    INIntentResponse *_currentIntentResponse;
     INCExtensionTransactionState *_state;
 }
 
-@property (readonly, nonatomic) INIntent *currentIntent; // @synthesize currentIntent=_currentIntent;
+@property (strong, nonatomic, setter=_setCurrentIntent:) INIntent *currentIntent; // @synthesize currentIntent=_currentIntent;
+@property (strong, nonatomic, setter=_setCurrentIntentResponse:) INIntentResponse *currentIntentResponse; // @synthesize currentIntentResponse=_currentIntentResponse;
 @property (readonly, copy, nonatomic) NSUserActivity *currentUserActivity; // @synthesize currentUserActivity=_currentUserActivity;
 @property (readonly, nonatomic) INCExtensionRequest *request; // @synthesize request=_request;
+@property (nonatomic) BOOL shouldResetRequestAfterHandle; // @synthesize shouldResetRequestAfterHandle=_shouldResetRequestAfterHandle;
 @property (strong, nonatomic) INCExtensionTransactionState *state; // @synthesize state=_state;
 
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_addUserActivities:(id)arg1;
-- (void)_updateCurrentIntent:(id)arg1;
 - (void)_updateCurrentUserActivityForType:(long long)arg1 intent:(id)arg2 intentResponse:(id)arg3;
 - (id)description;
 - (id)initWithIntent:(id)arg1;

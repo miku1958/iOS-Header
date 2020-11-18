@@ -8,12 +8,11 @@
 
 #import <PhotoLibrary/UIApplicationDelegate-Protocol.h>
 
-@class BLActivityAlert, NSDictionary, NSSet, NSString, UIWindow;
+@class NSDictionary, NSSet, NSString, UIWindow;
 
 @interface PLPhotosApplication : UIApplication <UIApplicationDelegate>
 {
     BOOL _receivingRemoteControlEvents;
-    UIWindow *_window;
     int _observeForRechabilityChanges;
     BOOL _isReachable;
     BOOL _isOnWifi;
@@ -24,8 +23,8 @@
     int _sharedPhotoStreamInvitationFailureToken;
     NSString *_currentTestName;
     NSDictionary *_currentTestOptions;
+    long long _waitForGraphCount;
     NSSet *_notificationSuppressionContexts;
-    BLActivityAlert *_iPhotoMigrationActivityAlert;
 }
 
 @property (strong, nonatomic) NSString *currentTestName; // @synthesize currentTestName=_currentTestName;
@@ -33,20 +32,20 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) BLActivityAlert *iPhotoMigrationActivityAlert; // @synthesize iPhotoMigrationActivityAlert=_iPhotoMigrationActivityAlert;
 @property (readonly, nonatomic) BOOL isOnWifi; // @synthesize isOnWifi=_isOnWifi;
 @property (readonly, nonatomic) BOOL isReachable; // @synthesize isReachable=_isReachable;
 @property (copy, nonatomic) NSSet *notificationSuppressionContexts; // @synthesize notificationSuppressionContexts=_notificationSuppressionContexts;
 @property (readonly) Class superclass;
+@property (nonatomic) long long waitForGraphCount; // @synthesize waitForGraphCount=_waitForGraphCount;
 @property (strong, nonatomic) UIWindow *window;
 
 + (void)initialize;
 - (void)_applicationDidBecomeActive:(id)arg1;
-- (void)_applicationDidResignActive:(id)arg1;
+- (void)_applicationDidEnterBackground:(id)arg1;
+- (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_cleanUpOutboundSharingAssets;
 - (void)_networkReachabilityDidChange:(id)arg1;
 - (void)_registerForPhotoStreamActivityNotifications;
-- (void)_setImageOptions;
 - (void)_startObservingReachabilityChanges;
 - (void)_stopObservingReachabilityChanges;
 - (void)_unregisterForPhotoStreamActivityNotifications;
@@ -54,23 +53,17 @@
 - (void)_updatePhotoStreamProgressDisplay;
 - (void)_updateSharedPhotoStreamProgressDisplay;
 - (void)_updateSuspensionSettings;
-- (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationDidFinishLaunching:(id)arg1;
-- (void)applicationWillEnterForeground:(id)arg1;
 - (void)dealloc;
 - (void)disableNetworkObservation;
 - (void)enableNetworkObservation;
-- (void *)getSharedAddressBook;
-- (id)getSharedContactStore;
 - (void)handleImportCompleteAlertResponse:(struct __CFUserNotification *)arg1 flags:(unsigned long long)arg2;
-- (id)mainWindow;
 - (void)photosPreferencesChanged;
-- (id)rootViewController;
+- (void)prepareForApplicationDidBecomeActive;
+- (void)prepareForApplicationDidEnterBackground;
+- (void)prepareForApplicationWillEnterForeground;
 - (void)setReceivingRemoteControlEvents:(BOOL)arg1;
-- (void)sharedFinishedLaunching:(BOOL)arg1;
-- (BOOL)shouldAllowSBAlertSupression;
 - (BOOL)useCompatibleSuspensionAnimation;
-- (BOOL)visitViewControllersWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

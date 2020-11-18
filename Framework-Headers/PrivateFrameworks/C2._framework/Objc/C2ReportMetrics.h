@@ -8,7 +8,7 @@
 
 #import <C2/C2RequestDelegate-Protocol.h>
 
-@class C2RequestOptions, NSMutableURLRequest, NSString, NSURLSessionTask;
+@class C2MetricOptions, C2RequestOptions, NSMutableURLRequest, NSString, NSURLSessionTask;
 
 @interface C2ReportMetrics : NSObject <C2RequestDelegate>
 {
@@ -18,6 +18,7 @@
     NSMutableURLRequest *_metricRequest;
     C2RequestOptions *_metricsTransportRequestOptions;
     NSURLSessionTask *_metricTask;
+    C2MetricOptions *_metricOptions;
     CDUnknownBlockType _testBehavior_tooManyTasksRunning;
     CDUnknownBlockType _testBehavior_didCompleteWithError;
 }
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreRequestThrottle; // @synthesize ignoreRequestThrottle=_ignoreRequestThrottle;
+@property (strong, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;
 @property (strong, nonatomic) NSMutableURLRequest *metricRequest; // @synthesize metricRequest=_metricRequest;
 @property (strong, nonatomic) NSURLSessionTask *metricTask; // @synthesize metricTask=_metricTask;
 @property (strong, nonatomic) C2RequestOptions *metricsTransportRequestOptions; // @synthesize metricsTransportRequestOptions=_metricsTransportRequestOptions;

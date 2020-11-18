@@ -6,51 +6,51 @@
 
 #import <MapKit/MKCustomSeparatorTableViewCell.h>
 
-@class MKTransitIncidentItemCellBackgroundView, NSLayoutConstraint, UIButton, UIImageView, _MKUILabel;
+@class MKTransitIncidentItemCellBackgroundView, NSArray, NSLayoutConstraint, UIImageView, _MKUILabel;
 
-__attribute__((visibility("hidden")))
 @interface MKTransitItemIncidentCell : MKCustomSeparatorTableViewCell
 {
     UIImageView *_incidentIconImageView;
+    BOOL _needsConstraintsRebuild;
+    NSArray *_constraints;
     _MKUILabel *_titleLabel;
-    _MKUILabel *_summaryLabel;
     _MKUILabel *_lastUpdatedLabel;
     MKTransitIncidentItemCellBackgroundView *_backgroundView;
     BOOL _incidentIsBlocking;
+    BOOL _useCondensedWidthLayout;
     NSLayoutConstraint *_titleLabelToTopConstraint;
-    NSLayoutConstraint *_summaryToTitleConstraint;
-    NSLayoutConstraint *_lastUpdatedToSummaryConstraint;
-    NSLayoutConstraint *_titleToButtonConstraint;
-    NSLayoutConstraint *_titleToTrailingConstraint;
+    NSLayoutConstraint *_bottomToLabelConstraint;
+    NSLayoutConstraint *_lastUpdatedToTitleBaselineConstraint;
+    NSLayoutConstraint *_titleToLastUpdatedLabelConstraint;
     NSLayoutConstraint *_bottomToBackgroundConstraint;
-    NSLayoutConstraint *_bottomToIconImageConstraint;
-    NSLayoutConstraint *_bottomToUpdatedLabelConstraint;
-    NSLayoutConstraint *_bottomToSummaryLabelConstraint;
-    NSLayoutConstraint *_bottomToTitleLabelConstraint;
-    BOOL _showMoreDetailsButton;
     BOOL _padBottom;
-    UIButton *_moreDetailsButton;
 }
 
-@property (readonly, nonatomic) UIButton *moreDetailsButton; // @synthesize moreDetailsButton=_moreDetailsButton;
 @property (nonatomic) BOOL padBottom; // @synthesize padBottom=_padBottom;
 @property (nonatomic) long long position;
-@property (nonatomic, getter=isShowingMoreDetailsButton) BOOL showMoreDetailsButton; // @synthesize showMoreDetailsButton=_showMoreDetailsButton;
 
 - (void).cxx_destruct;
 - (id)_blockingImage;
+- (void)_configureWithMessage:(id)arg1 referenceDate:(id)arg2 lastUpdated:(id)arg3 incidentIsBlocking:(BOOL)arg4 shouldShowImage:(BOOL)arg5 inSiri:(BOOL)arg6;
 - (void)_contentSizeCategoryDidChange;
+- (double)_leadingMargin;
 - (id)_nonBlockingImage;
+- (double)_trailingMargin;
 - (void)_updateBottomConstraints;
 - (void)_updateConstraintValues;
+- (void)configureViews;
 - (void)configureWithIncident:(id)arg1 referenceDate:(id)arg2 shouldShowImage:(BOOL)arg3 inSiri:(BOOL)arg4;
+- (void)configureWithIncidentMessage:(id)arg1 referenceDate:(id)arg2 shouldShowImage:(BOOL)arg3 inSiri:(BOOL)arg4;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)rebuildConstraints;
 - (void)setLeadingSeparatorInset:(double)arg1;
 - (void)setSeparatorHidden:(BOOL)arg1;
 - (void)setTrailingSeparatorInset:(double)arg1;
+- (void)updateConstraints;
 
 @end
 

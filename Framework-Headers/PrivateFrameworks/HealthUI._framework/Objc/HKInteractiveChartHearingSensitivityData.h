@@ -13,12 +13,14 @@
 @interface HKInteractiveChartHearingSensitivityData : NSObject <HKGraphSeriesChartData>
 {
     BOOL _isLeftEar;
+    BOOL _isAverage;
     double _sensitivityDbHL;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isAverage; // @synthesize isAverage=_isAverage;
 @property (nonatomic) BOOL isLeftEar; // @synthesize isLeftEar=_isLeftEar;
 @property (nonatomic) double sensitivityDbHL; // @synthesize sensitivityDbHL=_sensitivityDbHL;
 @property (readonly) Class superclass;

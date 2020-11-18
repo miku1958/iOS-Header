@@ -30,6 +30,7 @@
 @property (weak, nonatomic) id<TKTonePickerTableViewControllerHelper> tonePickerTableViewControllerHelper; // @synthesize tonePickerTableViewControllerHelper=_tonePickerTableViewControllerHelper;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)canBeShownFromSuspendedState;
 - (void)dealloc;
 - (void)didReloadTones;

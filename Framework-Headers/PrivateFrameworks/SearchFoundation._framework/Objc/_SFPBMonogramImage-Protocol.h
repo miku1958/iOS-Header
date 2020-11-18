@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *monogramLetters;
+@property (nonatomic) int monogramStyle;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

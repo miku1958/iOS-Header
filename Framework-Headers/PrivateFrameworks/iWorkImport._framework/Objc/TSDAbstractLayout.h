@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double interimPositionY;
 @property (readonly, nonatomic) BOOL isAxisAlignedUnflippedInRoot;
 @property (readonly, nonatomic) BOOL isRootLayoutForInspectorGeometry;
+@property (readonly, nonatomic) BOOL isRootLevelForInlineGeometry;
 @property (readonly, nonatomic) struct CGPoint lastInterimPosition; // @synthesize lastInterimPosition=_lastInterimPosition;
 @property (readonly, nonatomic) NSArray *layoutsForProvidingGuidesForChildLayouts;
 @property (readonly, nonatomic) unsigned int pageIndex;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGPoint positionInRootForAttachmentPositioner;
 @property (readonly, nonatomic) BOOL providesGuidesForChildLayouts;
 @property (readonly, nonatomic) TSDAbstractLayout *root;
+@property (readonly, nonatomic) BOOL shouldBeIncludedInParentFrameForCulling;
 @property (readonly, nonatomic) BOOL shouldSnapWhileResizing;
 @property (readonly, nonatomic) BOOL supportsCalloutAttributes;
 @property (readonly, nonatomic) BOOL supportsFlipping;
@@ -78,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertChild:(id)arg1 below:(id)arg2;
 - (void)offsetGeometryBy:(struct CGPoint)arg1;
+- (void)p_clearParentPointerForDealloc;
 - (void)p_fixTransformFromInterimPosition:(struct CGPoint)arg1 interimPositionXSet:(BOOL)arg2 interimPositionYSet:(BOOL)arg3;
 - (struct CGRect)rectInParent:(struct CGRect)arg1;
 - (struct CGRect)rectInRoot:(struct CGRect)arg1;

@@ -29,12 +29,16 @@
     BOOL _shouldSoundRepeat;
     BOOL _shouldSuppressSyncDismissalWhenRemoved;
     BOOL _shouldUseRequestIdentifierForDismissalSync;
+    BOOL _shouldPreemptPresentedNotification;
+    BOOL _shouldPreemptSTAR;
     BOOL _allowsDefaultDestinations;
     BOOL _allowsAlertDestination;
     BOOL _allowsLockScreenDestination;
     BOOL _allowsNotificationCenterDestination;
     BOOL _allowsCarPlayDestination;
+    BOOL _allowsSpokenDestination;
     BOOL _triggerRepeats;
+    NSString *_accessoryImageName;
     NSArray *_attachments;
     NSNumber *_badge;
     NSString *_body;
@@ -70,9 +74,11 @@
     NSString *_titleLocalizationKey;
     NSString *_summaryArgument;
     unsigned long long _summaryArgumentCount;
+    NSString *_targetContentIdentifier;
     NSString *_toneAlertTopic;
     long long _toneAlertType;
     NSString *_toneFileName;
+    NSURL *_toneFileURL;
     NSString *_toneIdentifier;
     unsigned long long _toneMediaLibraryItemIdentifier;
     NSSet *_topicIdentifiers;
@@ -86,14 +92,16 @@
     NSString *_triggerType;
     NSDictionary *_userInfo;
     NSString *_vibrationIdentifier;
-    NSDictionary *_vibrationPattern;
+    NSURL *_vibrationPatternFileURL;
 }
 
+@property (copy, nonatomic) NSString *accessoryImageName; // @synthesize accessoryImageName=_accessoryImageName;
 @property (nonatomic) BOOL allowsAlertDestination; // @synthesize allowsAlertDestination=_allowsAlertDestination;
 @property (nonatomic) BOOL allowsCarPlayDestination; // @synthesize allowsCarPlayDestination=_allowsCarPlayDestination;
 @property (nonatomic) BOOL allowsDefaultDestinations; // @synthesize allowsDefaultDestinations=_allowsDefaultDestinations;
 @property (nonatomic) BOOL allowsLockScreenDestination; // @synthesize allowsLockScreenDestination=_allowsLockScreenDestination;
 @property (nonatomic) BOOL allowsNotificationCenterDestination; // @synthesize allowsNotificationCenterDestination=_allowsNotificationCenterDestination;
+@property (nonatomic) BOOL allowsSpokenDestination; // @synthesize allowsSpokenDestination=_allowsSpokenDestination;
 @property (copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
 @property (copy, nonatomic) NSNumber *audioVolume; // @synthesize audioVolume=_audioVolume;
@@ -137,6 +145,8 @@
 @property (nonatomic) BOOL shouldIgnoreDowntime; // @synthesize shouldIgnoreDowntime=_shouldIgnoreDowntime;
 @property (nonatomic) BOOL shouldIgnoreRingerSwitch; // @synthesize shouldIgnoreRingerSwitch=_shouldIgnoreRingerSwitch;
 @property (nonatomic) BOOL shouldPlaySound; // @synthesize shouldPlaySound=_shouldPlaySound;
+@property (nonatomic) BOOL shouldPreemptPresentedNotification; // @synthesize shouldPreemptPresentedNotification=_shouldPreemptPresentedNotification;
+@property (nonatomic) BOOL shouldPreemptSTAR; // @synthesize shouldPreemptSTAR=_shouldPreemptSTAR;
 @property (nonatomic) BOOL shouldPresentAlert; // @synthesize shouldPresentAlert=_shouldPresentAlert;
 @property (nonatomic) BOOL shouldPreventNotificationDismissalAfterDefaultAction; // @synthesize shouldPreventNotificationDismissalAfterDefaultAction=_shouldPreventNotificationDismissalAfterDefaultAction;
 @property (nonatomic) BOOL shouldSoundRepeat; // @synthesize shouldSoundRepeat=_shouldSoundRepeat;
@@ -150,6 +160,7 @@
 @property (copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
 @property (nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property (copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSArray *titleLocalizationArguments; // @synthesize titleLocalizationArguments=_titleLocalizationArguments;
@@ -157,6 +168,7 @@
 @property (copy, nonatomic) NSString *toneAlertTopic; // @synthesize toneAlertTopic=_toneAlertTopic;
 @property (nonatomic) long long toneAlertType; // @synthesize toneAlertType=_toneAlertType;
 @property (copy, nonatomic) NSString *toneFileName; // @synthesize toneFileName=_toneFileName;
+@property (copy, nonatomic) NSURL *toneFileURL; // @synthesize toneFileURL=_toneFileURL;
 @property (copy, nonatomic) NSString *toneIdentifier; // @synthesize toneIdentifier=_toneIdentifier;
 @property (nonatomic) unsigned long long toneMediaLibraryItemIdentifier; // @synthesize toneMediaLibraryItemIdentifier=_toneMediaLibraryItemIdentifier;
 @property (copy, nonatomic) NSSet *topicIdentifiers; // @synthesize topicIdentifiers=_topicIdentifiers;
@@ -171,7 +183,7 @@
 @property (copy, nonatomic) NSString *triggerType; // @synthesize triggerType=_triggerType;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (copy, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
-@property (copy, nonatomic) NSDictionary *vibrationPattern; // @synthesize vibrationPattern=_vibrationPattern;
+@property (copy, nonatomic) NSURL *vibrationPatternFileURL; // @synthesize vibrationPatternFileURL=_vibrationPatternFileURL;
 
 - (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

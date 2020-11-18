@@ -60,7 +60,7 @@
 - (void)deleteFromBundle:(id)arg1 sinceDate:(id)arg2;
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
-- (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2;
+- (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2 retainedData:(id)arg3;
 - (void)disableReceiver;
 - (BOOL)disabled;
 - (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2;

@@ -7,34 +7,36 @@
 #import <objc/NSObject.h>
 
 #import <AXMediaUtilities/AXMDescribing-Protocol.h>
-#import <AXMediaUtilities/AXMFeatureTrackingManagerDelegate-Protocol.h>
 #import <AXMediaUtilities/AXMTaskDispatcherDelegate-Protocol.h>
 #import <AXMediaUtilities/AXMVisionEngineNodeConnectionDelegate-Protocol.h>
 #import <AXMediaUtilities/NSCopying-Protocol.h>
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMFeatureTrackingManager, AXMService, AXMTaskDispatcher, AXMVisionEngineCache, NSArray, NSMapTable, NSMutableArray, NSString, _AXMVisionEngineAnalysisTask;
+@class AXMImageRegistrationNode, AXMSequenceRequestManager, AXMService, AXMTaskDispatcher, AXMVisionEngineCache, NSArray, NSMutableArray, NSString, _AXMVisionEngineAnalysisTask;
 @protocol OS_dispatch_queue;
 
-@interface AXMVisionEngine : NSObject <AXMVisionEngineNodeConnectionDelegate, AXMFeatureTrackingManagerDelegate, AXMTaskDispatcherDelegate, NSCopying, NSSecureCoding, AXMDescribing>
+@interface AXMVisionEngine : NSObject <AXMVisionEngineNodeConnectionDelegate, AXMTaskDispatcherDelegate, NSCopying, NSSecureCoding, AXMDescribing>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_queue_sourceNodes;
     NSMutableArray *_queue_evaluationNodes;
+    AXMImageRegistrationNode *_queue_imageRegistrationNode;
     NSMutableArray *_queue_resultHandlers;
     BOOL _queue_shouldNotifyServiceOfEngineConfigChange;
     _AXMVisionEngineAnalysisTask *_queue_currentTask;
-    AXMFeatureTrackingManager *_queue_featureTrackingManager;
-    NSMapTable *_queue_featureTrackingObservers;
     BOOL _prioritySchedulingEnabled;
-    BOOL _featureTrackingEnabled;
+    BOOL _prioritySchedulingAllowMultipleNodeExecution;
+    BOOL _imageRegistrationFilteringEnabled;
     BOOL _diagnosticsEnabled;
+    BOOL _disableResultLogging;
     NSString *_identifier;
     long long _maximumQueueSize;
     unsigned long long _thresholdPriority;
+    long long _minimumImageRegistrationSignalLevel;
     AXMVisionEngineCache *_cache;
     AXMService *_axMediaUtilsService;
     AXMTaskDispatcher *_taskDispatcher;
+    AXMSequenceRequestManager *_sequenceRequestManager;
 }
 
 @property (strong, nonatomic) AXMService *axMediaUtilsService; // @synthesize axMediaUtilsService=_axMediaUtilsService;
@@ -43,30 +45,30 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=areDiagnosticsEnabled) BOOL diagnosticsEnabled; // @synthesize diagnosticsEnabled=_diagnosticsEnabled;
+@property (nonatomic) BOOL disableResultLogging; // @synthesize disableResultLogging=_disableResultLogging;
 @property (readonly, nonatomic) NSArray *evaluationNodes;
-@property (nonatomic, getter=isFeatureTrackingEnabled) BOOL featureTrackingEnabled; // @synthesize featureTrackingEnabled=_featureTrackingEnabled;
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL imageRegistrationFilteringEnabled; // @synthesize imageRegistrationFilteringEnabled=_imageRegistrationFilteringEnabled;
 @property (readonly, nonatomic) BOOL isCachingEnabled;
 @property long long maximumQueueSize; // @synthesize maximumQueueSize=_maximumQueueSize;
+@property (nonatomic) long long minimumImageRegistrationSignalLevel; // @synthesize minimumImageRegistrationSignalLevel=_minimumImageRegistrationSignalLevel;
+@property BOOL prioritySchedulingAllowMultipleNodeExecution; // @synthesize prioritySchedulingAllowMultipleNodeExecution=_prioritySchedulingAllowMultipleNodeExecution;
 @property BOOL prioritySchedulingEnabled; // @synthesize prioritySchedulingEnabled=_prioritySchedulingEnabled;
+@property (strong, nonatomic) AXMSequenceRequestManager *sequenceRequestManager; // @synthesize sequenceRequestManager=_sequenceRequestManager;
 @property (readonly, nonatomic) NSArray *sourceNodes;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) AXMTaskDispatcher *taskDispatcher; // @synthesize taskDispatcher=_taskDispatcher;
 @property unsigned long long thresholdPriority; // @synthesize thresholdPriority=_thresholdPriority;
-@property (readonly, nonatomic) NSArray *trackedFaces;
-@property (readonly, nonatomic) NSArray *trackedModelClassifiers;
-@property (readonly, nonatomic) NSArray *trackedRectangles;
-@property (readonly, nonatomic) NSArray *trackedText;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_commonInit;
+- (void)_invokeFullQueueResultHandlersForContext:(id)arg1;
 - (void)_invokeResultHandlers:(id)arg1 withError:(id)arg2;
 - (void)_invokeResultHandlers:(id)arg1 withResult:(id)arg2;
 - (BOOL)_queue_activeEvaluationNodesExclusivelyUseVisionFramework:(id)arg1;
-- (id)_queue_activeEvaluationNodesForOptions:(id)arg1 applyPriorityScheduling:(BOOL)arg2;
-- (void)_queue_addFeatureTrackingObbserver:(id)arg1 targetQueue:(id)arg2;
+- (id)_queue_activeEvaluationNodesForOptions:(id)arg1 applyPriorityScheduling:(BOOL)arg2 prioritySchedulingAllowMultipleNodeExecution:(BOOL)arg3;
 - (void)_queue_addResultHandler:(CDUnknownBlockType)arg1;
 - (void)_queue_evaluateWithSource:(id)arg1 context:(id)arg2;
 - (id)_queue_evaluationNodeWithIdentifier:(id)arg1;
@@ -75,15 +77,12 @@
 - (id)_queue_makeUniqueIdentifierForNode:(Class)arg1;
 - (BOOL)_queue_nodeIdentifierExists:(id)arg1;
 - (void)_queue_remotelyEvaluateWithSource:(id)arg1 context:(id)arg2;
-- (void)_queue_removeAllFeatureTrackingObservers;
 - (void)_queue_removeAllResultHandlers;
-- (void)_queue_removeFeatureTrackingObbserver:(id)arg1;
 - (void)_queue_removeResultHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_queue_shouldContinueWithoutResultHandlers:(id)arg1;
 - (BOOL)_queue_shouldEvaluateNode:(id)arg1 withOptions:(id)arg2;
 - (id)_queue_sourceNodeWithIdentifier:(id)arg1;
 - (void)addEvaluationNode:(id)arg1;
-- (void)addFeatureTrackingObbserver:(id)arg1 targetQueue:(id)arg2;
 - (void)addResultHandler:(CDUnknownBlockType)arg1;
 - (void)addSourceNode:(id)arg1;
 - (void)addSourceNodes:(id)arg1 evaluationNodes:(id)arg2;
@@ -115,18 +114,13 @@
 - (void)prewarmEngine;
 - (void)purgeResources:(CDUnknownBlockType)arg1;
 - (void)removeAllEvaluationNodes;
-- (void)removeAllFeatureTrackingObservers;
 - (void)removeAllResultHandlers;
 - (void)removeAllSourceNodes;
 - (void)removeEvaluationNode:(id)arg1;
-- (void)removeFeatureTrackingObbserver:(id)arg1;
 - (void)removeResultHandler:(CDUnknownBlockType)arg1;
 - (void)removeSourceNode:(id)arg1;
 - (id)resultHandlers;
 - (id)sourceNodeWithIdentifier:(id)arg1;
-- (void)trackingManager:(id)arg1 didBeginTrackingFeature:(id)arg2 appliedOrientation:(id)arg3;
-- (void)trackingManager:(id)arg1 didFinishTrackingFeature:(id)arg2 appliedOrientation:(id)arg3;
-- (void)trackingManager:(id)arg1 trackingFeatureLocationDidChange:(id)arg2 appliedOrientation:(id)arg3;
 - (void)triggerWithSource:(id)arg1 context:(id)arg2;
 - (void)updateEngineConfiguration:(CDUnknownBlockType)arg1;
 

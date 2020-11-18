@@ -6,36 +6,42 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class CNContact, CNContactFormatter, CNContactMatchInfo;
-@protocol ABStyleProvider, CNCancelable;
+@class CNContact, CNContactFormatter, CNContactListStyleApplier, CNContactMatchInfo;
+@protocol CNCancelable;
 
 __attribute__((visibility("hidden")))
 @interface CNContactListTableViewCell : UITableViewCell
 {
     BOOL _isMeCard;
     BOOL _enabled;
-    id<ABStyleProvider> _styleProvider;
-    CNContactFormatter *_contactFormatter;
+    BOOL _isEmergencyContact;
+    BOOL _hasBeenDisplayed;
     CNContact *_contact;
     CNContactMatchInfo *_contactMatchInfo;
+    CNContactFormatter *_contactFormatter;
+    CNContactListStyleApplier *_contactListStyleApplier;
     CDUnknownBlockType _selectedBackgroundViewConfiguration;
     id<CNCancelable> _summaryCancelationToken;
 }
 
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
+@property (strong, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
 @property (strong, nonatomic) CNContactMatchInfo *contactMatchInfo; // @synthesize contactMatchInfo=_contactMatchInfo;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
+@property (nonatomic) BOOL hasBeenDisplayed; // @synthesize hasBeenDisplayed=_hasBeenDisplayed;
+@property (nonatomic) BOOL isEmergencyContact; // @synthesize isEmergencyContact=_isEmergencyContact;
 @property (nonatomic) BOOL isMeCard; // @synthesize isMeCard=_isMeCard;
 @property (copy, nonatomic) CDUnknownBlockType selectedBackgroundViewConfiguration; // @synthesize selectedBackgroundViewConfiguration=_selectedBackgroundViewConfiguration;
-@property (readonly, nonatomic) id<ABStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property (strong, nonatomic) id<CNCancelable> summaryCancelationToken; // @synthesize summaryCancelationToken=_summaryCancelationToken;
 
 - (void).cxx_destruct;
-- (void)_cnui_applyContactStyle;
+- (void)cancelAsyncOperations;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setContactMatchInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 

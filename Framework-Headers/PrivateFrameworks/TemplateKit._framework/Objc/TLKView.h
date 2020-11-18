@@ -9,31 +9,34 @@
 #import <TemplateKit/TLKObservable-Protocol.h>
 #import <TemplateKit/TLKObserver-Protocol.h>
 
-@class NSString;
+@class NSString, TLKAppearance;
 @protocol TLKObserver;
 
 @interface TLKView : UIView <TLKObserver, TLKObservable>
 {
     BOOL inBatchUpdate;
     id<TLKObserver> observer;
-    unsigned long long _style;
-    UIView *_containerView;
+    UIView *_contentView;
+    TLKAppearance *_tlkAppearance;
 }
 
-@property (strong) UIView *containerView; // @synthesize containerView=_containerView;
+@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property BOOL inBatchUpdate; // @synthesize inBatchUpdate;
 @property (weak) id<TLKObserver> observer; // @synthesize observer;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) TLKAppearance *tlkAppearance; // @synthesize tlkAppearance=_tlkAppearance;
+@property (readonly) BOOL usesDefaultInsets;
 
 + (struct UIEdgeInsets)defaultInsets;
++ (void)enableLightKeylineStroke:(BOOL)arg1 forView:(id)arg2;
 + (void)enableShadow:(BOOL)arg1 forView:(id)arg2;
 + (Class)layerClass;
 + (void)makeContainerShadowCompatible:(id)arg1;
 - (void).cxx_destruct;
+- (struct CGSize)containerSizeForSize:(struct CGSize)arg1;
 - (void)disableUnbatchedUpdates;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
@@ -43,11 +46,8 @@
 - (void)observedPropertiesChanged;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)propertiesDidChange;
-- (void)setContainer:(id)arg1 withInsets:(struct UIEdgeInsets)arg2;
-- (void)setContainerWithDefaultInsets:(id)arg1;
+- (id)setupContentView;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)styleDidChange:(unsigned long long)arg1;
-- (BOOL)supportsAsynchronousMeasurement;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 - (id)viewForFirstBaselineLayout;

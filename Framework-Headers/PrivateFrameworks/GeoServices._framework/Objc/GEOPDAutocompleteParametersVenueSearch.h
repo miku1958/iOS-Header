@@ -8,33 +8,49 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo, NSMutableArray, NSString, PBUnknownFields;
+@class GEOPDViewportInfo, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteParametersVenueSearch : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     unsigned long long _buildingId;
+    NSMutableArray *_categorys;
     unsigned long long _levelId;
+    NSString *_query;
     unsigned long long _sectionId;
     unsigned long long _venueId;
-    NSMutableArray *_categorys;
-    int _maxResults;
-    NSString *_query;
     GEOPDViewportInfo *_viewportInfo;
+    int _maxResults;
     BOOL _highlightDiff;
     struct {
-        unsigned int buildingId:1;
-        unsigned int levelId:1;
-        unsigned int sectionId:1;
-        unsigned int venueId:1;
-        unsigned int maxResults:1;
-        unsigned int highlightDiff:1;
-    } _has;
+        unsigned int has_buildingId:1;
+        unsigned int has_levelId:1;
+        unsigned int has_sectionId:1;
+        unsigned int has_venueId:1;
+        unsigned int has_maxResults:1;
+        unsigned int has_highlightDiff:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_categorys:1;
+        unsigned int read_query:1;
+        unsigned int read_viewportInfo:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_buildingId:1;
+        unsigned int wrote_categorys:1;
+        unsigned int wrote_levelId:1;
+        unsigned int wrote_query:1;
+        unsigned int wrote_sectionId:1;
+        unsigned int wrote_venueId:1;
+        unsigned int wrote_viewportInfo:1;
+        unsigned int wrote_maxResults:1;
+        unsigned int wrote_highlightDiff:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned long long buildingId; // @synthesize buildingId=_buildingId;
-@property (strong, nonatomic) NSMutableArray *categorys; // @synthesize categorys=_categorys;
+@property (nonatomic) unsigned long long buildingId;
+@property (strong, nonatomic) NSMutableArray *categorys;
 @property (nonatomic) BOOL hasBuildingId;
 @property (nonatomic) BOOL hasHighlightDiff;
 @property (nonatomic) BOOL hasLevelId;
@@ -43,21 +59,27 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasSectionId;
 @property (nonatomic) BOOL hasVenueId;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
-@property (nonatomic) BOOL highlightDiff; // @synthesize highlightDiff=_highlightDiff;
-@property (nonatomic) unsigned long long levelId; // @synthesize levelId=_levelId;
-@property (nonatomic) int maxResults; // @synthesize maxResults=_maxResults;
-@property (strong, nonatomic) NSString *query; // @synthesize query=_query;
-@property (nonatomic) unsigned long long sectionId; // @synthesize sectionId=_sectionId;
+@property (nonatomic) BOOL highlightDiff;
+@property (nonatomic) unsigned long long levelId;
+@property (nonatomic) int maxResults;
+@property (strong, nonatomic) NSString *query;
+@property (nonatomic) unsigned long long sectionId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) unsigned long long venueId; // @synthesize venueId=_venueId;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
+@property (nonatomic) unsigned long long venueId;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
 + (Class)categoryType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsCategory:(id)arg1;
+- (void)_readCategorys;
+- (void)_readQuery;
+- (void)_readViewportInfo;
 - (void)addCategory:(id)arg1;
 - (id)categoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categorysCount;
 - (void)clearCategorys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -65,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

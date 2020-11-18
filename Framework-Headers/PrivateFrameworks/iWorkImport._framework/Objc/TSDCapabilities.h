@@ -23,6 +23,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isRendererH4OrBelow;
 @property (readonly, nonatomic) BOOL isRendererH5OrBelow;
 @property (readonly, nonatomic) struct CGSize maximumHardcodedTextureSize;
+@property (readonly, nonatomic) struct CGSize maximumImageSize;
+@property (readonly, nonatomic) unsigned long long physicalMemory;
 @property (readonly, nonatomic) long long platform; // @synthesize platform=_platform;
 @property (readonly, nonatomic) long long renderer; // @synthesize renderer=_renderer;
 

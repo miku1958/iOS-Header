@@ -30,7 +30,6 @@
 + (id)_cachedSceneSourceForURL:(id)arg1 options:(id)arg2;
 + (void)_removeCachedSceneSourceIfNeededForURL:(id)arg1;
 + (BOOL)_shouldCacheWithOptions:(id)arg1;
-+ (void)patchColorSecureDecodingIfNeeded;
 + (id)sceneFileTypes;
 + (id)sceneSourceWithData:(id)arg1 options:(id)arg2;
 + (id)sceneSourceWithURL:(id)arg1 options:(id)arg2;

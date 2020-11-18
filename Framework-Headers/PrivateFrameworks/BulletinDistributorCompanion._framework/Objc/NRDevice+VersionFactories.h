@@ -7,19 +7,26 @@
 #import <NanoRegistry/NRDevice.h>
 
 @interface NRDevice (VersionFactories)
-+ (BOOL)activePairedDeviceSupportIsGreaterEqualVersion:(unsigned int)arg1;
++ (BOOL)activePairedDeviceSupportIsGreaterEqualVersion:(unsigned long long)arg1;
 + (BOOL)activePairedDeviceSupportsAddBulletinReplyToken;
 + (BOOL)activePairedDeviceSupportsAttachmentFiles;
 + (BOOL)activePairedDeviceSupportsAuthorizationStatusLockScreenAndNCSettings;
 + (BOOL)activePairedDeviceSupportsCriticalAndGroupingSettings;
 + (BOOL)activePairedDeviceSupportsDisplayingSubtitle;
++ (BOOL)activePairedDeviceSupportsEmergencyAlerts;
 + (BOOL)activePairedDeviceSupportsFileBulletinAdd;
 + (BOOL)activePairedDeviceSupportsFileSettingSync;
++ (BOOL)activePairedDeviceSupportsIconsPerNotification;
 + (BOOL)activePairedDeviceSupportsMultiplteAttachments;
 + (BOOL)activePairedDeviceSupportsNSNullPListExtenion;
++ (BOOL)activePairedDeviceSupportsNoLocalRemoteNotificationInBulletinContext;
++ (BOOL)activePairedDeviceSupportsNotSendingTemporarySequenceNumbers;
 + (BOOL)activePairedDeviceSupportsSendingOnlyCategoryID;
 + (BOOL)activePairedDeviceSupportsSiriActionAppList;
++ (BOOL)activePairedDeviceSupportsSpokenNotificationSettings;
 + (BOOL)activePairedDeviceSupportsUserNotificationListDestination;
++ (id)versionForString:(id)arg1;
 - (unsigned long long)bltVersion;
+- (unsigned long long)watchOSVersion;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDURLRequest.h>
 
-@class NSData, NSString;
+@class NSData, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface CKDCodeLocalFunctionInvokeURLRequest : CKDURLRequest
@@ -15,8 +15,10 @@ __attribute__((visibility("hidden")))
     NSString *_serviceName;
     NSString *_functionName;
     NSData *_serializedParameters;
+    NSURL *_explicitBaseURL;
 }
 
+@property (copy, nonatomic) NSURL *explicitBaseURL; // @synthesize explicitBaseURL=_explicitBaseURL;
 @property (copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property (strong, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
 @property (copy, nonatomic) CDUnknownBlockType serializedResultsCallback; // @synthesize serializedResultsCallback=_serializedResultsCallback;
@@ -26,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)additionalHeaderValues;
 - (BOOL)allowsAnonymousAccount;
 - (Class)expectedResponseClass;
-- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3;
+- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 explicitBaseURL:(id)arg4;
 - (BOOL)parsingStandaloneMessage;
 - (long long)partitionType;
 - (id)requestBodyStream;
@@ -34,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (BOOL)requestGETPreAuth;
 - (Class)requestMessageClass;
-- (BOOL)requiresSignature;
 - (long long)serverType;
 - (BOOL)shouldCompressBody;
 - (id)url;

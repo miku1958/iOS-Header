@@ -35,7 +35,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int sortOrdering; // @synthesize sortOrdering=_sortOrdering;
 @property (readonly) Class superclass;
 
++ (id)makeSerialFetchSchedulerUsingSchedulerProvider:(id)arg1;
 + (id)observableWithPredicates:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4 environment:(id)arg5;
++ (id)schedulerForIdentifier:(id)arg1 provider:(id)arg2;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithPredicate:(id)arg1 sortOrdering:(unsigned int)arg2 options:(unsigned long long)arg3 addressBook:(void *)arg4 environment:(id)arg5;

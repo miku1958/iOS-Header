@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSDictionary *extraTransportOptions;
 
+- (void)currentDeviceConnectionChanged:(BOOL)arg1;
 - (void)currentDeviceProximityChanged:(BOOL)arg1;
 - (void)deliveredMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;
 - (void)enqueuedMessageWithID:(NSString *)arg1 context:(NSDictionary *)arg2;

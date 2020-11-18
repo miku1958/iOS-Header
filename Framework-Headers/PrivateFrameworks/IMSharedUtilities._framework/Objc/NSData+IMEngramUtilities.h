@@ -7,6 +7,8 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (IMEngramUtilities)
++ (id)dataWithMessageSummaryInfoDictionary:(id)arg1;
 - (id)__im_engramStringRepresentation;
+- (BOOL)isArchivable_im;
 @end
 

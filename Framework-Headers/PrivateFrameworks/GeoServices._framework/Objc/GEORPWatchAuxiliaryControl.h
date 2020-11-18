@@ -8,23 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEORPWatchAuxiliaryControl : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_hardwareIdentifier;
     NSString *_osBuild;
     NSString *_osVersion;
+    struct {
+        unsigned int read_hardwareIdentifier:1;
+        unsigned int read_osBuild:1;
+        unsigned int read_osVersion:1;
+        unsigned int wrote_hardwareIdentifier:1;
+        unsigned int wrote_osBuild:1;
+        unsigned int wrote_osVersion:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *hardwareIdentifier; // @synthesize hardwareIdentifier=_hardwareIdentifier;
+@property (strong, nonatomic) NSString *hardwareIdentifier;
 @property (readonly, nonatomic) BOOL hasHardwareIdentifier;
 @property (readonly, nonatomic) BOOL hasOsBuild;
 @property (readonly, nonatomic) BOOL hasOsVersion;
-@property (strong, nonatomic) NSString *osBuild; // @synthesize osBuild=_osBuild;
-@property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
+@property (strong, nonatomic) NSString *osBuild;
+@property (strong, nonatomic) NSString *osVersion;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readHardwareIdentifier;
+- (void)_readOsBuild;
+- (void)_readOsVersion;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +46,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

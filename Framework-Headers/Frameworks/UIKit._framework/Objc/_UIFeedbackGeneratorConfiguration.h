@@ -46,9 +46,11 @@
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
 - (void)_preferencesUpdated:(id)arg1;
-- (BOOL)_setupRegardlessOfPreferences:(BOOL)arg1;
+- (BOOL)_setupIfNecessary;
 - (BOOL)_shouldEnable;
 - (void)_updateEnabled;
+- (id)_updateFeedbackForOutputMode:(id)arg1;
+- (id)_updateFeedbacksForOutputMode:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

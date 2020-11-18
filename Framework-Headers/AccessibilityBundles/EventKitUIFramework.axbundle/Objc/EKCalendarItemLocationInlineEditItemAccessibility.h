@@ -13,8 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axAnnotateLocationCell;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 
 @end

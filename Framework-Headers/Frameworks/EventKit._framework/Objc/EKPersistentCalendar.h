@@ -48,6 +48,7 @@
 
 + (id)calendarWithRandomUUID;
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 - (id)alarms;
 - (int)allowedEntities;
@@ -57,6 +58,8 @@
 - (id)externalIDTag;
 - (id)externalRepresentation;
 - (id)notes;
+- (id)notifications;
+- (int)ownerIdentityId;
 - (void)setAlarms:(id)arg1;
 - (void)setAllowedEntities:(int)arg1;
 - (void)setDigest:(id)arg1;
@@ -64,6 +67,8 @@
 - (void)setExternalRepresentation:(id)arg1;
 - (void)setIsPublished:(BOOL)arg1;
 - (void)setNotes:(id)arg1;
+- (void)setNotifications:(id)arg1;
+- (void)setOwnerIdentityId:(int)arg1;
 - (void)setSyncToken:(id)arg1;
 - (id)syncToken;
 

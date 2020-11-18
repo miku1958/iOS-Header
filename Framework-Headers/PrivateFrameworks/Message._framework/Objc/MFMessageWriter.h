@@ -21,19 +21,19 @@
 }
 
 @property (readonly, nonatomic) NSDictionary *compositionSpecification; // @synthesize compositionSpecification=_compositionSpecification;
-@property (nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL shouldWriteAttachmentPlaceholders; // @synthesize shouldWriteAttachmentPlaceholders=_shouldWriteAttachmentPlaceholders;
 
+- (void).cxx_destruct;
 - (BOOL)allows8BitMimeParts;
 - (BOOL)allowsBinaryMimeParts;
 - (BOOL)allowsQuotedPrintable;
 - (void)appendDataForMimePart:(id)arg1 toData:(id)arg2 withPartData:(id)arg3;
+- (id)createMessageWithHTMLStringAndMIMECharset:(id)arg1 plainTextAlternative:(id)arg2 otherHtmlStringsAndAttachments:(id)arg3 headers:(id)arg4;
 - (id)createMessageWithHtmlString:(id)arg1 attachments:(id)arg2 headers:(id)arg3;
-- (id)createMessageWithHtmlString:(id)arg1 plainTextAlternative:(id)arg2 otherHtmlStringsAndAttachments:(id)arg3 charsets:(id)arg4 headers:(id)arg5;
 - (id)createMessageWithHtmlString:(id)arg1 plainTextAlternative:(id)arg2 otherHtmlStringsAndAttachments:(id)arg3 headers:(id)arg4;
 - (id)createMessageWithPlainTextDocumentsAndAttachments:(id)arg1 headers:(id)arg2;
 - (id)createMessageWithString:(id)arg1 headers:(id)arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initWithCompositionSpecification:(id)arg1;
 - (id)newDataForMimePart:(id)arg1 withPartData:(id)arg2;

@@ -29,6 +29,7 @@
     NSData *_appMetricsData;
     int _artworkDataHeightDeprecated;
     int _artworkDataWidthDeprecated;
+    NSString *_artworkFileURL;
     NSString *_artworkIdentifier;
     NSString *_artworkMIMEType;
     NSString *_artworkURL;
@@ -52,6 +53,7 @@
     int _episodeType;
     NSString *_genre;
     NSString *_localizedContentRating;
+    NSString *_localizedDurationString;
     NSString *_lyricsURL;
     int _mediaSubType;
     int _mediaType;
@@ -150,6 +152,7 @@
 @property (nonatomic) BOOL artworkAvailable; // @synthesize artworkAvailable=_artworkAvailable;
 @property (nonatomic) int artworkDataHeightDeprecated; // @synthesize artworkDataHeightDeprecated=_artworkDataHeightDeprecated;
 @property (nonatomic) int artworkDataWidthDeprecated; // @synthesize artworkDataWidthDeprecated=_artworkDataWidthDeprecated;
+@property (strong, nonatomic) NSString *artworkFileURL; // @synthesize artworkFileURL=_artworkFileURL;
 @property (strong, nonatomic) NSString *artworkIdentifier; // @synthesize artworkIdentifier=_artworkIdentifier;
 @property (strong, nonatomic) NSString *artworkMIMEType; // @synthesize artworkMIMEType=_artworkMIMEType;
 @property (strong, nonatomic) NSString *artworkURL; // @synthesize artworkURL=_artworkURL;
@@ -181,6 +184,7 @@
 @property (nonatomic) BOOL hasArtworkAvailable;
 @property (nonatomic) BOOL hasArtworkDataHeightDeprecated;
 @property (nonatomic) BOOL hasArtworkDataWidthDeprecated;
+@property (readonly, nonatomic) BOOL hasArtworkFileURL;
 @property (readonly, nonatomic) BOOL hasArtworkIdentifier;
 @property (readonly, nonatomic) BOOL hasArtworkMIMEType;
 @property (readonly, nonatomic) BOOL hasArtworkURL;
@@ -226,6 +230,7 @@
 @property (nonatomic) BOOL hasLanguageOptionsAvailable;
 @property (nonatomic) BOOL hasLegacyUniqueIdentifier;
 @property (readonly, nonatomic) BOOL hasLocalizedContentRating;
+@property (readonly, nonatomic) BOOL hasLocalizedDurationString;
 @property (nonatomic) BOOL hasLyricsAvailable;
 @property (readonly, nonatomic) BOOL hasLyricsURL;
 @property (nonatomic) BOOL hasMediaSubType;
@@ -274,6 +279,7 @@
 @property (nonatomic) BOOL languageOptionsAvailable; // @synthesize languageOptionsAvailable=_languageOptionsAvailable;
 @property (nonatomic) long long legacyUniqueIdentifier; // @synthesize legacyUniqueIdentifier=_legacyUniqueIdentifier;
 @property (strong, nonatomic) NSString *localizedContentRating; // @synthesize localizedContentRating=_localizedContentRating;
+@property (strong, nonatomic) NSString *localizedDurationString; // @synthesize localizedDurationString=_localizedDurationString;
 @property (nonatomic) BOOL lyricsAvailable; // @synthesize lyricsAvailable=_lyricsAvailable;
 @property (strong, nonatomic) NSString *lyricsURL; // @synthesize lyricsURL=_lyricsURL;
 @property (nonatomic) int mediaSubType; // @synthesize mediaSubType=_mediaSubType;

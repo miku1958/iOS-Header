@@ -10,7 +10,6 @@
 
 @class MISSING_TYPE, UIView;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit14TapInteraction : NSObject <UIInteraction>
 {
     MISSING_TYPE *view;

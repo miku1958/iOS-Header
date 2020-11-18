@@ -27,6 +27,7 @@
 - (void)_handleStreamedObject:(id)arg1 usingProxy:(id)arg2;
 - (void)activate;
 - (id)initWithLiveSource:(id)arg1;
+- (void)invalidate;
 - (void)setDroppedEventHandler:(CDUnknownBlockType)arg1;
 - (void)setFilterPredicate:(id)arg1;
 

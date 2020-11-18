@@ -23,6 +23,7 @@
 
 @property (strong, nonatomic) NSString *inviteMessage; // @synthesize inviteMessage=_inviteMessage;
 @property (strong, nonatomic) GKPlayerInternal *invitedBy; // @synthesize invitedBy=_invitedBy;
+@property (readonly, nonatomic) BOOL isAutomatchParticipant; // @dynamic isAutomatchParticipant;
 @property (strong, nonatomic) NSDate *lastTurnDate; // @synthesize lastTurnDate=_lastTurnDate;
 @property (nonatomic) unsigned int matchOutcome; // @synthesize matchOutcome=_matchOutcome;
 @property (strong, nonatomic) GKPlayerInternal *player; // @synthesize player=_player;

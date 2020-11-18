@@ -30,14 +30,9 @@
 
 + (void)createCanvasWithDelegate:(id)arg1 outICC:(id *)arg2 outLayerHost:(id *)arg3 iccClass:(Class)arg4 layerHostClass:(Class)arg5;
 - (void).cxx_destruct;
-- (id)_gestureHitLink:(id)arg1 wpRep:(id *)arg2;
-- (BOOL)canHandleGesture:(id)arg1;
 - (id)closestRepToPoint:(struct CGPoint)arg1 forStorage:(id)arg2;
 - (void)didBeginEditingText;
 - (void)endUISession;
-- (id)extraMenuItems;
-- (id)gestureWithKind:(id)arg1;
-- (BOOL)handleGesture:(id)arg1;
 - (id)hitRep:(struct CGPoint)arg1 withGesture:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (id)i_topLevelLayersForTiling;
 - (BOOL)p_currentlyScrolling;
@@ -50,7 +45,6 @@
 - (BOOL)scrollViewShouldScrollToTop:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setSelection:(id)arg1 onModel:(id)arg2 withFlags:(unsigned long long)arg3;
-- (BOOL)tappedOnHyperlink:(id)arg1;
 - (void)teardown;
 - (id)topLevelRepsForHitTesting;
 

@@ -14,7 +14,6 @@
 + (int)_directBTStatus;
 + (int)bluetoothStatus;
 + (void)cleanup;
-+ (void)initialize;
 + (void)turnBluetoothOn;
 
 @end

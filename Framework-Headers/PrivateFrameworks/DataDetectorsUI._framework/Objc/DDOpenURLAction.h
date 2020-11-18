@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)appLink;
 - (BOOL)canBePerformedByOpeningURL;
 - (id)companionAction;
+- (id)icon;
 - (id)localizedName;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationURL;

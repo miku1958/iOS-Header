@@ -14,6 +14,7 @@
 + (id)appleIDClientIdentifier;
 + (id)clientInfoHeader;
 + (id)currentInfo;
++ (BOOL)hasiCloudSignOutRestriction;
 + (id)infoDictionary;
 + (BOOL)isInternalBuild;
 + (BOOL)isMultiUserMode;

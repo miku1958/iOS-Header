@@ -15,9 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityUseAccessibilityFrameForHittest;
-- (BOOL)_accessibilityViewIsVisible;
-- (id)_axComposeNavController;
-- (struct CGRect)_axFrameForDismissDraftsElement;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (void)setPresented:(BOOL)arg1 animated:(BOOL)arg2;

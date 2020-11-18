@@ -13,7 +13,6 @@
 + (BOOL)addDevicePasscodeGuardedItem:(id)arg1 forIdentifier:(id)arg2 error:(id *)arg3;
 + (BOOL)addItem:(id)arg1 forIdentifier:(id)arg2 secAccessControlObject:(id)arg3 error:(id *)arg4;
 + (BOOL)addItemWithoutGuardian:(id)arg1 forIdentifier:(id)arg2 error:(id *)arg3;
-+ (BOOL)addTouchIDGuardedItem:(id)arg1 forIdentifier:(id)arg2 error:(id *)arg3;
 + (void)beginEvaluatePolicyReplyBlock;
 + (BOOL)biometricIDIsEnrolled;
 + (void)endEvaluatePolicyReplyBlock;

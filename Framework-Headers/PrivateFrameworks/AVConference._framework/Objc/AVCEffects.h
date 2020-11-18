@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVConferenceXPCClient;
-@protocol OS_dispatch_queue;
+@protocol AVCEffectsDelegate, OS_dispatch_queue;
 
 @interface AVCEffects : NSObject
 {
@@ -20,17 +20,16 @@
     int _effectType;
 }
 
+@property (nonatomic) id<AVCEffectsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) int effectType; // @synthesize effectType=_effectType;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
 
 - (void)avcVideoFrameDidRelease:(id)arg1;
 - (void)dealloc;
-- (id)delegate;
 - (void)deregisterBlocksForNotifications;
 - (void)encodeProcessedVideoFrame:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)registerBlocksForNotifications;
-- (void)setDelegate:(id)arg1;
 
 @end
 

@@ -44,7 +44,7 @@
 - (void)_commonCAMModeDialInitializationWithLayoutStyle:(long long)arg1;
 - (void)_configureGradientForLayoutStyle:(long long)arg1;
 - (void)_configureMeshTransformForLayoutStyle:(long long)arg1;
-- (id)_fontForLayoutStyle:(long long)arg1;
+- (id)_fontForLayoutStyle:(long long)arg1 selected:(BOOL)arg2;
 - (struct CGPoint)_horizontalContainerCenterForMode:(long long)arg1;
 - (id)_horizontalMeshTransform;
 - (struct CGSize)_interpolatedHorizontalMeshTransformSize;
@@ -53,7 +53,6 @@
 - (id)_meshTransformForLayoutStyle:(long long)arg1;
 - (long long)_nearestCaptureModeForLocation:(struct CGPoint)arg1;
 - (id)_selectedItem;
-- (id)_titleForMode:(long long)arg1;
 - (void)_updateContainerCenterFromSelectedModeAnimated:(BOOL)arg1;
 - (void)_updateForLayoutStyle;
 - (void)_updateItemsForLayoutStyle:(long long)arg1;

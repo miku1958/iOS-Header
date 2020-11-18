@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *playbackBundleIdentifier;
 @property (copy, nonatomic) NSString *playbackRouteUniqueIdentifier;
 @property (nonatomic) BOOL playbackRouteUniqueIdentifierIsEncrypted;
 @property (copy, nonatomic) NSArray *punchoutOptions;

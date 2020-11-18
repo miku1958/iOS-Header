@@ -12,18 +12,20 @@
 
 @interface ATXAVRouteInfo : NSObject <NSSecureCoding>
 {
+    BOOL _isExternalRoute;
     NSString *_deviceName;
     NSString *_deviceID;
 }
 
 @property (readonly, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (readonly, nonatomic) NSString *deviceName; // @synthesize deviceName=_deviceName;
+@property (readonly, nonatomic) BOOL isExternalRoute; // @synthesize isExternalRoute=_isExternalRoute;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceName:(id)arg1 deviceID:(id)arg2;
+- (id)initWithDeviceName:(id)arg1 deviceID:(id)arg2 isExternalRoute:(BOOL)arg3;
 
 @end
 

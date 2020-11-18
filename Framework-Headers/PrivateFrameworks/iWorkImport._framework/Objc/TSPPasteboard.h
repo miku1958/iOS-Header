@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 + (id)pasteboardWithName:(id)arg1 create:(BOOL)arg2;
 + (id)pasteboardWithPasteboard:(id)arg1;
 + (id)pasteboardWithUniqueName;
-+ (id)stylePasteboard;
 - (void).cxx_destruct;
 - (void)addData:(id)arg1 forPasteboardType:(id)arg2;
 - (void)addItems:(id)arg1;

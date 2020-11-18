@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (float)applicableOutputSampleRateForDesiredSampleRate:(float)arg1 rounding:(long long)arg2;
 - (unsigned int)availableOutputChannelCountForDesiredChannelCount:(unsigned int)arg1 rounding:(long long)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)setInputPropertiesFromASBD:(struct AudioStreamBasicDescription)arg1;
 

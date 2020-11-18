@@ -13,10 +13,10 @@
 + (BOOL)checkTransparencyForImageAtCorners:(id)arg1;
 + (void)executeBlock:(CDUnknownBlockType)arg1 async:(BOOL)arg2;
 + (BOOL)hasTransparencyAtPoint:(struct CGPoint)arg1 forImage:(id)arg2;
-+ (id)imageForSearchUIImage:(id)arg1;
-+ (id)imageForSearchUIImage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (id)imageForSFImage:(id)arg1;
++ (id)imageForSFImage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)imageIsProbablyOpaque:(id)arg1;
-+ (id)imagesForSearchUIImages:(id)arg1;
++ (id)imagesForSFImages:(id)arg1;
 
 @end
 

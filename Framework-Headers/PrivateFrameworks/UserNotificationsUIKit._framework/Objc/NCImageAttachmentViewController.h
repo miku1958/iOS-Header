@@ -21,6 +21,7 @@
 @property (strong, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (struct CGSize)contentSize;
 - (void)dealloc;
 - (id)initWithAttachment:(id)arg1 forNotificationRequest:(id)arg2;

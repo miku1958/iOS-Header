@@ -8,7 +8,7 @@
 
 #import <iWorkImport/NSFilePresenter-Protocol.h>
 
-@class NSData, NSError, NSOperationQueue, NSSet, NSString, NSURL, TSUURLTracker;
+@class NSData, NSError, NSOperationQueue, NSSet, NSString, NSURL, TSUSandboxedURL, TSUURLTracker;
 @protocol OS_dispatch_queue, TSULogContext, TSUURLTrackerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,46 +22,48 @@ __attribute__((visibility("hidden")))
     NSError *_latestBookmarkError;
     id<TSUURLTrackerDelegate> _delegate;
     struct os_unfair_lock_s _propertiesLock;
-    NSURL *_URLIfAvailable;
+    TSUSandboxedURL *_sandboxedURLIfAvailable;
     NSData *_bookmarkDataIfAvailable;
     BOOL _deleted;
+    BOOL _isValid;
     NSOperationQueue *_presentedItemOperationQueue;
 }
 
-@property (readonly) NSURL *URLIfAvailable;
-@property (readonly) NSData *bookmarkData;
 @property (readonly) NSData *bookmarkDataIfAvailable;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) BOOL deleted;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isValid; // @synthesize isValid=_isValid;
 @property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
 @property (readonly, strong) NSOperationQueue *presentedItemOperationQueue; // @synthesize presentedItemOperationQueue=_presentedItemOperationQueue;
 @property (readonly, copy) NSURL *presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;
+@property (readonly) TSUSandboxedURL *sandboxedURLIfAvailable;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)URLAndReturnError:(id *)arg1;
 - (void)accommodatePresentedItemDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)bookmarkDataAndReturnError:(id *)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1 bookmarkData:(id)arg2 urlTracker:(id)arg3 logContext:(id)arg4 delegate:(id)arg5;
-- (id)p_URLAndReturnError:(id *)arg1;
-- (id)p_URLIfAvailableLoadingLastKnownURLFromBookmark:(BOOL)arg1;
-- (id)p_bookmarkData;
-- (id)p_bookmarkDataAndReturnError:(id *)arg1;
+- (id)p_bookmarkDataForcingRecalculation:(BOOL)arg1 error:(id *)arg2;
 - (id)p_lastKnownURLFromBookmark:(id)arg1;
 - (void)p_notifyURLTrackerPresentedItemContentsDidChange;
 - (void)p_notifyURLTrackerPresentedItemDidMoveToURL:(id)arg1;
 - (void)p_notifyURLTrackerPresentedItemWasDeleted;
+- (id)p_sandboxedURLForcingRecalculation:(BOOL)arg1 error:(id *)arg2;
+- (id)p_sandboxedURLIfAvailableLoadingLastKnownURLFromBookmark:(BOOL)arg1;
 - (void)p_setBookmarkDataIfAvailable:(id)arg1;
 - (void)p_setDeleted:(BOOL)arg1;
-- (void)p_setURLIfAvailable:(id)arg1;
+- (void)p_setSandboxedURLIfAvailable:(id)arg1;
 - (void)pauseForEnteringBackground:(BOOL)arg1;
 - (void)presentedItemDidChangeUbiquityAttributes:(id)arg1;
 - (void)presentedItemDidMoveToURL:(id)arg1;
+- (id)recalculateBookmarkDataAndReturnError:(id *)arg1;
+- (id)recalculateSandboxedURLAndReturnError:(id *)arg1;
 - (void)relinquishPresentedItemToWriter:(CDUnknownBlockType)arg1;
+- (id)sandboxedURLAndReturnError:(id *)arg1;
 - (void)startOrResumeForEnteringForeground:(BOOL)arg1;
 - (void)stop;
 

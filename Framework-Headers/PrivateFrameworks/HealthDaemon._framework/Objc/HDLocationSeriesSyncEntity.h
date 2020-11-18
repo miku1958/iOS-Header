@@ -19,8 +19,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_baseDataObjectPredicate;
++ (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
 + (id)_objectWithCodable:(id)arg1;
++ (id)_predicateForSyncSession:(id)arg1;
++ (Class)_syncedSampleTypeClass;
 + (Class)healthEntityClass;
 + (int)nanoSyncObjectType;
 + (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;

@@ -6,61 +6,27 @@
 
 #import <objc/NSObject.h>
 
-#import <AVConference/VCAudioIOSink-Protocol.h>
+#import <AVConference/VCAudioPowerSpectrumProtocol-Protocol.h>
 
 @class NSString;
-@protocol VCAudioPowerSpectrumDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioPowerSpectrum : NSObject <VCAudioIOSink>
+@interface VCAudioPowerSpectrum : NSObject <VCAudioPowerSpectrumProtocol>
 {
-    struct _VCRange _frequencyRange;
-    unsigned int _sampleRate;
-    unsigned int _fftSampleCount;
-    struct AudioStreamBasicDescription _format;
-    struct opaqueVCAudioBufferList *_sampleBuffer;
-    float *_hanningWindow;
-    unsigned int *_octave2IndexTable6;
-    unsigned int _octave2IndexTable6Count;
-    float _fftNormFactor;
-    struct _VCAudioPowerSpectrumChannel *_channelSettings;
-    float *_lerpIdxs;
-    unsigned int _outputBinCount;
-    _Atomic BOOL _powerSpectrumConfigured;
-    id<VCAudioPowerSpectrumDelegate> _delegate;
     long long _streamToken;
+    struct _VCAudioPowerSpectrumRealtimeContext _realtimeContext;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<VCAudioPowerSpectrumDelegate> delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) struct _VCRange frequencyRange; // @synthesize frequencyRange=_frequencyRange;
+@property (readonly, nonatomic) struct _VCRange frequencyRange;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) void *realtimeContext;
 @property (readonly, nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 @property (readonly) Class superclass;
 
-- (void)cleanUp;
-- (void)cleanupBinInterpolation;
-- (void)cleanupBinsForChannel:(struct _VCAudioPowerSpectrumChannel *)arg1;
-- (void)cleanupChannel:(struct _VCAudioPowerSpectrumChannel *)arg1;
-- (void)cleanupFFTForChannel:(struct _VCAudioPowerSpectrumChannel *)arg1;
-- (void)cleanupHanningWindow;
-- (void)cleanupOctave2IndexTable;
-- (void)cleanupOctave2IndexTableForChannel:(struct _VCAudioPowerSpectrumChannel *)arg1;
-- (void)computeSpectrumForChannelIndex:(unsigned int)arg1;
 - (void)dealloc;
-- (id)frequencyBinsForChannelIndex:(unsigned int)arg1;
-- (unsigned int)getNumChannels;
-- (id)initWithBinCount:(unsigned int)arg1 streamToken:(long long)arg2 delegate:(id)arg3;
-- (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
-- (BOOL)setupAudioPowerSpectrumWithBinCount:(unsigned int)arg1 format:(const struct AudioStreamBasicDescription *)arg2;
-- (BOOL)setupBinInterpolationWithBinCount:(unsigned int)arg1;
-- (BOOL)setupBinsForChannel:(struct _VCAudioPowerSpectrumChannel *)arg1;
-- (BOOL)setupChannel:(struct _VCAudioPowerSpectrumChannel *)arg1;
-- (BOOL)setupFFTForChannel:(struct _VCAudioPowerSpectrumChannel *)arg1;
-- (BOOL)setupHanningWindow;
-- (BOOL)setupOctave2IndexTableForChannel:(struct _VCAudioPowerSpectrumChannel *)arg1;
-- (BOOL)setupOctave2IndexTableWithBinCount:(unsigned int)arg1;
+- (id)initWithBinCount:(unsigned int)arg1 streamToken:(long long)arg2 sinkContext:(void *)arg3 sinkCallback:(CDUnknownFunctionPointerType)arg4;
 
 @end
 

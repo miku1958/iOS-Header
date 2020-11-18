@@ -18,6 +18,7 @@
 + (void)cleanupAllSoftwareUpdateAssets;
 + (id)copyInstalledAssets;
 + (id)copySUAssetForAssetID:(id)arg1;
++ (id)copySuAssetInCatalogMatchingDescriptor:(id)arg1;
 + (id)defaultAssetDownloadOptionsWithPriority:(int)arg1;
 + (id)findAssetWithMatcher:(id)arg1 localSearch:(BOOL)arg2 error:(id *)arg3;
 + (id)findAssetWithMatcher:(id)arg1 localSearch:(BOOL)arg2 releaseDate:(id *)arg3 error:(id *)arg4;
@@ -25,6 +26,7 @@
 + (id)getLocalDefaultSoftwareUpdateAssetIfExists;
 + (id)getLocalDefaultSoftwareUpdateAssetIfExistsWithReleaseDate:(id *)arg1;
 + (void)purgeMSUUpdate:(CDUnknownBlockType)arg1;
++ (id)queryMetaDataOfType:(id)arg1 WithFilter:(id)arg2 installedOnly:(BOOL)arg3 error:(id *)arg4;
 + (long long)requestCatalogDownload:(id)arg1;
 + (void)setAssetQueryFilters:(id)arg1;
 + (void)setSUFilters:(id)arg1;

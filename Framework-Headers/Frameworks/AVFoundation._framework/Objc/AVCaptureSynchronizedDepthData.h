@@ -19,6 +19,8 @@
 
 - (id)_initWithDepthData:(id)arg1 timestamp:(CDStruct_1b6d18a9)arg2 depthDataWasDropped:(BOOL)arg3 droppedReason:(long long)arg4;
 - (void)dealloc;
+- (id)debugDescription;
+- (id)description;
 
 @end
 

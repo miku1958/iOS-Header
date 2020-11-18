@@ -11,17 +11,22 @@
 
 @interface _EARSpeechRecognizer : NSObject
 {
+    NSObject<OS_dispatch_queue> *_formatterQueue;
+    _EARFormatter *_formatter;
     struct unique_ptr<quasar::SpeechRecognizer, std::__1::default_delete<quasar::SpeechRecognizer>> _recognizer;
     struct unique_ptr<quasar::TextTokenizer, std::__1::default_delete<quasar::TextTokenizer>> _tokenizer;
     _EARSpeechRecognitionAudioBuffer *_currentAudioBuffer;
-    _EARFormatter *_formatter;
-    NSObject<OS_dispatch_queue> *_formatterQueue;
+    struct weak_ptr<ResultStreamWrapper> _currentResultStreamWrapper;
+    NSString *_currentLanguage;
+    NSString *_currentTask;
+    unsigned long long _currentSamplingRate;
     NSObject<OS_dispatch_queue> *_recognitionQueue;
     NSString *_configPath;
     BOOL _detectUtterances;
     BOOL _concatenateUtterances;
     BOOL _recognizeEagerCandidates;
     BOOL _farField;
+    BOOL _highPriority;
     NSData *_userProfileData;
     NSData *_jitProfileData;
     double _endpointStart;
@@ -30,12 +35,20 @@
     NSDictionary *_recognitionConfidenceSubtraction;
     NSArray *_leftContext;
     NSString *_inputOrigin;
+    NSString *_deviceId;
+    NSString *_refTranscriptForErrorBlaming;
+    NSString *_bluetoothDeviceId;
+    NSString *_userId;
+    NSString *_sessionId;
 }
 
+@property (copy, nonatomic) NSString *bluetoothDeviceId; // @synthesize bluetoothDeviceId=_bluetoothDeviceId;
 @property (nonatomic) BOOL concatenateUtterances; // @synthesize concatenateUtterances=_concatenateUtterances;
 @property (nonatomic) BOOL detectUtterances; // @synthesize detectUtterances=_detectUtterances;
+@property (copy, nonatomic) NSString *deviceId; // @synthesize deviceId=_deviceId;
 @property (nonatomic) double endpointStart; // @synthesize endpointStart=_endpointStart;
 @property (nonatomic) BOOL farField; // @synthesize farField=_farField;
+@property (nonatomic) BOOL highPriority; // @synthesize highPriority=_highPriority;
 @property (copy, nonatomic) NSString *inputOrigin; // @synthesize inputOrigin=_inputOrigin;
 @property (copy, nonatomic) NSData *jitProfileData; // @synthesize jitProfileData=_jitProfileData;
 @property (copy, nonatomic) NSArray *leftContext; // @synthesize leftContext=_leftContext;
@@ -44,6 +57,9 @@
 @property (copy, nonatomic) NSDictionary *recognitionConfidenceSubtraction; // @synthesize recognitionConfidenceSubtraction=_recognitionConfidenceSubtraction;
 @property (copy, nonatomic) NSDictionary *recognitionReplacements; // @synthesize recognitionReplacements=_recognitionReplacements;
 @property (nonatomic) BOOL recognizeEagerCandidates; // @synthesize recognizeEagerCandidates=_recognizeEagerCandidates;
+@property (copy, nonatomic) NSString *refTranscriptForErrorBlaming; // @synthesize refTranscriptForErrorBlaming=_refTranscriptForErrorBlaming;
+@property (copy, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
+@property (copy, nonatomic) NSString *userId; // @synthesize userId=_userId;
 @property (copy, nonatomic) NSData *userProfileData; // @synthesize userProfileData=_userProfileData;
 
 + (void)initialize;
@@ -52,6 +68,8 @@
 + (id)rawTokenResultsFromRecognitionResults:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (shared_ptr_809f9c31)_audioBufferWithLangauge:(id)arg1 task:(id)arg2 samplingRate:(unsigned long long)arg3 userProfileData:(id)arg4 resultStream:(shared_ptr_5cb47a18)arg5;
+- (void)_restartActiveRecognition;
 - (struct TextTokenizer *)_tokenizer;
 - (void)cancelRecognition;
 - (void)getFormatterWithBlock:(CDUnknownBlockType)arg1;
@@ -74,6 +92,7 @@
 - (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4 userProfileData:(id)arg5;
 - (void)setAlternateRawRecognitionTokenSausage:(id)arg1;
 - (void)setLeftContextText:(id)arg1;
+- (void)updateJitProfileData:(id)arg1;
 - (void)updateUserProfileData:(id)arg1;
 
 @end

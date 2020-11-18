@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileTimer/NSObject-Protocol.h>
+#import <MobileTimer/MTXPCServer-Protocol.h>
 
 @class MTTimer, NSString;
 
-@protocol MTTimerServer <NSObject>
+@protocol MTTimerServer <MTXPCServer>
 - (void)addTimer:(MTTimer *)arg1 withCompletion:(void (^)(NSError *))arg2;
-- (void)checkIn;
 - (void)dismissTimerWithIdentifier:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)getTimersWithCompletion:(void (^)(NSArray *, MTTimer *, NSError *))arg1;
 - (void)removeTimer:(MTTimer *)arg1 withCompletion:(void (^)(NSError *))arg2;

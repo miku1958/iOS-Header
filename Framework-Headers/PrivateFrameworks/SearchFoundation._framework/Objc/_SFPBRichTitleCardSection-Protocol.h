@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBActionItem, _SFPBColor, _SFPBImage, _SFPBMediaOffer, _SFPBPunchout;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBActionItem, _SFPBColor, _SFPBImage, _SFPBMediaOffer, _SFPBPunchout, _SFPBRichText;
 
 @protocol _SFPBRichTitleCardSection <NSObject>
 
@@ -38,6 +38,7 @@
 @property (strong, nonatomic) _SFPBImage *reviewGlyph;
 @property (nonatomic) BOOL reviewNewLine;
 @property (copy, nonatomic) NSString *reviewText;
+@property (strong, nonatomic) _SFPBRichText *richSubtitle;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *subtitle;
 @property (nonatomic) BOOL thumbnailCropCircle;

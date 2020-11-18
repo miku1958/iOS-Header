@@ -8,32 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOUserPreferences;
+@class GEOUserPreferences, PBUnknownFields;
 
 @interface GEOAutomobileOptions : PBCodable <NSCopying>
 {
-    int _trafficType;
+    PBUnknownFields *_unknownFields;
     GEOUserPreferences *_userPreferences;
+    int _trafficType;
     BOOL _includeHistoricTravelTime;
     BOOL _includeStaticTravelTime;
     struct {
-        unsigned int trafficType:1;
-        unsigned int includeHistoricTravelTime:1;
-        unsigned int includeStaticTravelTime:1;
-    } _has;
+        unsigned int has_trafficType:1;
+        unsigned int has_includeHistoricTravelTime:1;
+        unsigned int has_includeStaticTravelTime:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIncludeHistoricTravelTime;
 @property (nonatomic) BOOL hasIncludeStaticTravelTime;
 @property (nonatomic) BOOL hasTrafficType;
 @property (readonly, nonatomic) BOOL hasUserPreferences;
-@property (nonatomic) BOOL includeHistoricTravelTime; // @synthesize includeHistoricTravelTime=_includeHistoricTravelTime;
-@property (nonatomic) BOOL includeStaticTravelTime; // @synthesize includeStaticTravelTime=_includeStaticTravelTime;
-@property (nonatomic) int trafficType; // @synthesize trafficType=_trafficType;
-@property (strong, nonatomic) GEOUserPreferences *userPreferences; // @synthesize userPreferences=_userPreferences;
+@property (nonatomic) BOOL includeHistoricTravelTime;
+@property (nonatomic) BOOL includeStaticTravelTime;
+@property (nonatomic) int trafficType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) GEOUserPreferences *userPreferences;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTrafficType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)trafficTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

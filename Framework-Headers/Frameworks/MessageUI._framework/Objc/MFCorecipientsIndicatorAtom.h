@@ -16,10 +16,10 @@
     NSArray *_recipients;
 }
 
-@property (nonatomic) id<MFCorecipientsIndicatorAtomDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MFCorecipientsIndicatorAtomDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithRecipients:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

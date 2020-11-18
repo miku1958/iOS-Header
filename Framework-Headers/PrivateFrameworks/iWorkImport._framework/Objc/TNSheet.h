@@ -14,7 +14,7 @@
 #import <iWorkImport/TSWPHeaderFooterProvider-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
 
-@class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSString, TNDocumentRoot, TSDInfoGeometry, TSWPStorage;
+@class NSArray, NSEnumerator, NSMutableArray, NSMutableSet, NSObject, NSString, TNDocumentRoot, TSDInfoGeometry, TSDLayoutController, TSWPStorage;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
@@ -37,15 +37,17 @@ __attribute__((visibility("hidden")))
     long long _startPageNumber;
     double _pageHeaderInset;
     double _pageFooterInset;
+    TSDLayoutController *_activeRootSearchLayoutController;
     struct UIEdgeInsets _printMargins;
 }
 
+@property (strong, nonatomic) TSDLayoutController *activeRootSearchLayoutController; // @synthesize activeRootSearchLayoutController=_activeRootSearchLayoutController;
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) BOOL autoListRecognition;
 @property (readonly, nonatomic) BOOL autoListTermination;
 @property (readonly, nonatomic) double bodyWidth;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) NSArray *containedModels;
 @property (nonatomic) double contentScale; // @synthesize contentScale=mContentScale;
 @property (readonly, nonatomic) long long contentWritingDirection;
@@ -61,6 +63,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL inPortraitPageOrientation; // @synthesize inPortraitPageOrientation=mInPortraitPageOrientation;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
 @property (nonatomic) BOOL isAutofitOn; // @synthesize isAutofitOn=mIsAutofitOn;
+@property (readonly, nonatomic) BOOL isMaster;
+@property (readonly, nonatomic) BOOL isTopmostContainerInfo;
 @property (nonatomic) int layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (strong, nonatomic) NSString *name;
@@ -73,11 +77,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (nonatomic) struct UIEdgeInsets printMargins; // @synthesize printMargins=_printMargins;
+@property (readonly, nonatomic) NSArray *printableInfos;
 @property (nonatomic) BOOL showPageNumbers; // @synthesize showPageNumbers=mShowPageNumbers;
 @property long long startPageNumber; // @synthesize startPageNumber=_startPageNumber;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (nonatomic) BOOL usesSingleHeaderFooter; // @synthesize usesSingleHeaderFooter=mUsesSingleHeaderFooter;
@@ -148,7 +152,6 @@ __attribute__((visibility("hidden")))
 - (unsigned int)saveNextUntitledResolverIndex;
 - (void)saveToArchive:(struct SheetArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)setChildInfos:(id)arg1;
 - (void)setPrimitiveGeometry:(id)arg1;
 - (BOOL)shouldBeDisplayed;
 - (id)tableInfoForName:(id)arg1 caseSensitive:(BOOL)arg2;

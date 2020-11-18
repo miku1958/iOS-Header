@@ -18,5 +18,9 @@
 @property (readonly) Class superclass;
 
 - (void)mf_setAsSourceForPopoverPresentationController:(id)arg1;
+- (void)mf_setImageOffset:(struct CGPoint)arg1;
+- (void)mf_setImageVerticalOffset:(double)arg1;
+- (void)mf_setLandscapeImagePhoneOffset:(struct CGPoint)arg1;
+- (void)mf_setLandscapeImagePhoneVerticalOffset:(double)arg1;
 @end
 

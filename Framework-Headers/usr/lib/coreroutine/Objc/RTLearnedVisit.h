@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <coreroutine/RTCoreDataTransformable-Protocol.h>
+#import <coreroutine/RTCoreDataReadable-Protocol.h>
+#import <coreroutine/RTCoreDataWritable-Protocol.h>
 
 @class NSDate, NSString, NSUUID, RTLearnedLocation;
 
-@interface RTLearnedVisit : NSObject <RTCoreDataTransformable>
+@interface RTLearnedVisit : NSObject <RTCoreDataReadable, RTCoreDataWritable>
 {
     NSUUID *_identifier;
     RTLearnedLocation *_location;
@@ -35,13 +36,14 @@
 @property (nonatomic) unsigned long long placeSource; // @synthesize placeSource=_placeSource;
 @property (readonly) Class superclass;
 
++ (id)createWithLearnedLocationOfInterestVisitMO:(id)arg1;
++ (id)createWithLearnedVisitMO:(id)arg1;
++ (id)createWithManagedObject:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 location:(id)arg2 entryDate:(id)arg3 exitDate:(id)arg4 creationDate:(id)arg5 expirationDate:(id)arg6;
 - (id)initWithIdentifier:(id)arg1 location:(id)arg2 entryDate:(id)arg3 exitDate:(id)arg4 creationDate:(id)arg5 expirationDate:(id)arg6 placeConfidence:(double)arg7 placeSource:(unsigned long long)arg8;
-- (id)initWithLocationOfInterestVisitMO:(id)arg1;
 - (id)initWithVisit:(id)arg1 locationOfInterest:(id)arg2 creationDate:(id)arg3 expirationDate:(id)arg4;
-- (id)initWithVisitMO:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)managedObjectWithContext:(id)arg1;
 

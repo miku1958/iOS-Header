@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)_errorHandlingExtensionContextProxy;
 - (void)requestHandlingOfIntent:(id)arg1;
 - (void)setExtensionContextState:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)willBeginEditing;
 
 @end
 

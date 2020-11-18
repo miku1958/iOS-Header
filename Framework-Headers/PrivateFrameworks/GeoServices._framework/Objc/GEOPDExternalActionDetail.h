@@ -8,29 +8,49 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDExternalActionDetail : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_actionLabel;
     NSString *_actionUrlComponent;
     NSString *_actionUrlVerb;
     NSString *_logoId;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_actionLabel:1;
+        unsigned int read_actionUrlComponent:1;
+        unsigned int read_actionUrlVerb:1;
+        unsigned int read_logoId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_actionLabel:1;
+        unsigned int wrote_actionUrlComponent:1;
+        unsigned int wrote_actionUrlVerb:1;
+        unsigned int wrote_logoId:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *actionLabel; // @synthesize actionLabel=_actionLabel;
-@property (strong, nonatomic) NSString *actionUrlComponent; // @synthesize actionUrlComponent=_actionUrlComponent;
-@property (strong, nonatomic) NSString *actionUrlVerb; // @synthesize actionUrlVerb=_actionUrlVerb;
+@property (strong, nonatomic) NSString *actionLabel;
+@property (strong, nonatomic) NSString *actionUrlComponent;
+@property (strong, nonatomic) NSString *actionUrlVerb;
 @property (readonly, nonatomic) BOOL hasActionLabel;
 @property (readonly, nonatomic) BOOL hasActionUrlComponent;
 @property (readonly, nonatomic) BOOL hasActionUrlVerb;
 @property (readonly, nonatomic) BOOL hasLogoId;
-@property (strong, nonatomic) NSString *logoId; // @synthesize logoId=_logoId;
+@property (strong, nonatomic) NSString *logoId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readActionLabel;
+- (void)_readActionUrlComponent;
+- (void)_readActionUrlVerb;
+- (void)_readLogoId;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

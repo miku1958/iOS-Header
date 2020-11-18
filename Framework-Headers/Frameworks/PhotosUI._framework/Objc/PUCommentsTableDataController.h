@@ -49,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (void)_fontCacheDidChange:(id)arg1;
 - (double)_heightForComment:(id)arg1 forWidth:(double)arg2 forInterfaceOrientation:(long long)arg3;
 - (BOOL)_isAssetOwnerSectionVisible;
-- (BOOL)_isEditingAllowed;
 - (long long)_postCommentSection;
 - (void)_postCommentWithText:(id)arg1;
 - (void)_scrollToComment:(id)arg1 animated:(BOOL)arg2;

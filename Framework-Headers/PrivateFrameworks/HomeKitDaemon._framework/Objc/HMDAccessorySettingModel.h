@@ -12,11 +12,11 @@
 {
 }
 
-@property (strong, nonatomic) NSNumber *configurationVersion; // @dynamic configurationVersion;
-@property (strong, nonatomic) NSString *name; // @dynamic name;
-@property (strong, nonatomic) NSNumber *properties; // @dynamic properties;
-@property (strong, nonatomic) NSNumber *type; // @dynamic type;
-@property (strong, nonatomic) NSData *value; // @dynamic value;
+@property (copy, nonatomic) NSNumber *configurationVersion; // @dynamic configurationVersion;
+@property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (copy, nonatomic) NSNumber *properties; // @dynamic properties;
+@property (copy, nonatomic) NSNumber *type; // @dynamic type;
+@property (copy, nonatomic) NSData *value; // @dynamic value;
 
 + (id)properties;
 + (id)schemaHashRoot;

@@ -12,14 +12,23 @@ __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationBlobBandwidthSettings : PBCodable <NSCopying>
 {
     int _configuration;
+    int _configurationExtension;
     unsigned int _maxBandwidth;
+    struct {
+        unsigned int configurationExtension:1;
+    } _has;
 }
 
 @property (nonatomic) int configuration; // @synthesize configuration=_configuration;
+@property (nonatomic) int configurationExtension; // @synthesize configurationExtension=_configurationExtension;
+@property (nonatomic) BOOL hasConfigurationExtension;
 @property (nonatomic) unsigned int maxBandwidth; // @synthesize maxBandwidth=_maxBandwidth;
 
++ (int)bandwidthConfigurationWithOperatingMode:(int)arg1 connectionType:(int)arg2;
 - (int)StringAsConfiguration:(id)arg1;
+- (int)StringAsConfigurationExtension:(id)arg1;
 - (id)configurationAsString:(int)arg1;
+- (id)configurationExtensionAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -27,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)newBandwidthConfigurations;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

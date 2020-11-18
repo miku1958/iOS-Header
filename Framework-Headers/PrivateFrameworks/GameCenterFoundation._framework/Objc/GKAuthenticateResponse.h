@@ -17,18 +17,22 @@
     NSURL *_passwordChangeURL;
     NSString *_alertTitle;
     NSString *_alertMessage;
+    NSString *_lastPersonalizationVersionDisplayed;
+    unsigned long long _lastPrivacyNoticeVersionDisplayed;
 }
 
 @property (strong, nonatomic) NSString *alertMessage; // @synthesize alertMessage=_alertMessage;
 @property (strong, nonatomic) NSString *alertTitle; // @synthesize alertTitle=_alertTitle;
 @property (strong, nonatomic) GKPlayerCredential *credential; // @synthesize credential=_credential;
+@property (strong, nonatomic) NSString *lastPersonalizationVersionDisplayed; // @synthesize lastPersonalizationVersionDisplayed=_lastPersonalizationVersionDisplayed;
+@property (nonatomic) unsigned long long lastPrivacyNoticeVersionDisplayed; // @synthesize lastPrivacyNoticeVersionDisplayed=_lastPrivacyNoticeVersionDisplayed;
 @property (nonatomic) BOOL loginDisabled; // @synthesize loginDisabled=_loginDisabled;
 @property (nonatomic) BOOL passwordChangeRequired; // @synthesize passwordChangeRequired=_passwordChangeRequired;
 @property (strong, nonatomic) NSURL *passwordChangeURL; // @synthesize passwordChangeURL=_passwordChangeURL;
 @property (nonatomic) BOOL shouldShowLinkAccountsUI; // @synthesize shouldShowLinkAccountsUI=_shouldShowLinkAccountsUI;
 
 + (id)secureCodedPropertyKeys;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

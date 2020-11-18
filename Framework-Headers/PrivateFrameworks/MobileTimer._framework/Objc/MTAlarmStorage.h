@@ -9,7 +9,7 @@
 #import <MobileTimer/MTAlarmScheduleDelegate-Protocol.h>
 #import <MobileTimer/MTAlarmStorage-Protocol.h>
 
-@class MTAlarm, MTAlarmMigrator, MTAlarmScheduler, NSArray, NSDate, NSHashTable, NSMutableArray, NSString;
+@class MTAlarm, MTAlarmMigrator, MTAlarmScheduler, MTObserverStore, NSArray, NSDate, NSMutableArray, NSString;
 @protocol MTPersistence, NAScheduler;
 
 @interface MTAlarmStorage : NSObject <MTAlarmScheduleDelegate, MTAlarmStorage>
@@ -19,7 +19,7 @@
     MTAlarm *_sleepAlarm;
     NSDate *_lastModifiedDate;
     id<NAScheduler> _serializer;
-    NSHashTable *_observers;
+    MTObserverStore *_observers;
     MTAlarmMigrator *_migrator;
     id<MTPersistence> _persistence;
     CDUnknownBlockType _currentDateProvider;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (strong, nonatomic) MTAlarmMigrator *migrator; // @synthesize migrator=_migrator;
 @property (readonly, nonatomic) MTAlarm *nextAlarm;
-@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) MTObserverStore *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) NSMutableArray *orderedAlarms; // @synthesize orderedAlarms=_orderedAlarms;
 @property (strong, nonatomic) id<MTPersistence> persistence; // @synthesize persistence=_persistence;
 @property (weak, nonatomic) MTAlarmScheduler *scheduler; // @synthesize scheduler=_scheduler;
@@ -42,11 +42,9 @@
 @property (strong, nonatomic) MTAlarm *sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
 @property (readonly) Class superclass;
 
-+ (id)_alarmsByMergingAlarms:(id)arg1 withAlarms:(id)arg2 addedAlarms:(id)arg3 updatedAlarms:(id)arg4;
 + (id)_diagnosticDictionaryForAlarm:(id)arg1;
-+ (id)alarmsByMergingAlarms:(id)arg1 withAlarms:(id)arg2;
 - (void).cxx_destruct;
-- (id)_applyNecessaryChangesFromOldAlarm:(id)arg1 currentAlarm:(id)arg2;
+- (id)_applyNecessaryChangesFromExistingAlarm:(id)arg1 updatedAlarm:(id)arg2;
 - (id)_cleanUpForInternalBuild:(id)arg1;
 - (id)_cleanUpSleepAlarmRepeat:(id)arg1;
 - (id)_cleanUpSnoozeFireDate:(id)arg1;
@@ -67,8 +65,8 @@
 - (id)_queue_alarmMatchingAlarmIdentifier:(id)arg1;
 - (id)_queue_allAlarms;
 - (void)_queue_dismissAlarmWithIdentifier:(id)arg1 dismissDate:(id)arg2 dismissAction:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4 source:(id)arg5;
+- (void)_queue_dismissMutableAlarm:(id)arg1 dismissDate:(id)arg2 dismissAction:(unsigned long long)arg3;
 - (BOOL)_queue_hasMatchingAlarm:(id)arg1;
-- (void)_queue_mergeAlarms:(id)arg1 sleepAlarm:(id)arg2 source:(id)arg3;
 - (void)_queue_persistAlarms;
 - (void)_queue_removeAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)_queue_removeAlarmWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
@@ -79,18 +77,23 @@
 - (void)_queue_snoozeAlarmWithIdentifier:(id)arg1 snoozeDate:(id)arg2 snoozeAction:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4 source:(id)arg5;
 - (void)_queue_sortAlarms;
 - (id)_queue_updateAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
+- (void)_queue_updateAlarmWithIdentifier:(id)arg1 changeSet:(id)arg2 withCompletion:(CDUnknownBlockType)arg3 source:(id)arg4;
 - (void)addAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
+- (void)alarmWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)dismissAlarmWithIdentifier:(id)arg1 dismissAction:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3 source:(id)arg4;
 - (void)dismissAlarmWithIdentifier:(id)arg1 dismissDate:(id)arg2 dismissAction:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4 source:(id)arg5;
 - (id)gatherDiagnostics;
 - (void)getAlarmsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleF5Reset;
+- (void)handleMigrationFinish;
+- (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (id)init;
 - (id)initWithPersistence:(id)arg1;
-- (id)initWithPersistence:(id)arg1 migrator:(id)arg2 scheduler:(id)arg3 currentDateProvider:(CDUnknownBlockType)arg4;
+- (id)initWithPersistence:(id)arg1 migrator:(id)arg2 serializer:(id)arg3 callbackScheduler:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
 - (void)loadAlarms;
 - (void)loadAlarmsSync;
-- (void)mergeAlarms:(id)arg1 sleepAlarm:(id)arg2 source:(id)arg3;
 - (void)printDiagnostics;
 - (void)registerObserver:(id)arg1;
 - (void)removeAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
@@ -101,8 +104,9 @@
 - (void)setAllAlarms:(id)arg1 sleepAlarm:(id)arg2 source:(id)arg3;
 - (void)snoozeAlarmWithIdentifier:(id)arg1 snoozeAction:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3 source:(id)arg4;
 - (void)snoozeAlarmWithIdentifier:(id)arg1 snoozeDate:(id)arg2 snoozeAction:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4 source:(id)arg5;
+- (void)timeListener:(id)arg1 didDetectSignificantTimeChangeWithCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)updateAlarm:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
-- (id)updateBedTimeDNDForAlarm:(id)arg1;
+- (void)updateAlarmWithIdentifier:(id)arg1 changeSet:(id)arg2 withCompletion:(CDUnknownBlockType)arg3 source:(id)arg4;
 
 @end
 

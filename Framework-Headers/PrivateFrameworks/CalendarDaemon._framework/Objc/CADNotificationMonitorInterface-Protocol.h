@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CADObjectID;
+@class CADObjectID, NSString;
 
 @protocol CADNotificationMonitorInterface
 - (void)CADCalendar:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;
 - (void)CADCalendarSetClearedFromNotificationCenter:(CADObjectID *)arg1 error:(void (^)(int))arg2;
-- (void)CADDatabaseGetEventNotificationItems:(void (^)(int, NSArray *, NSArray *, NSArray *))arg1;
+- (void)CADDatabaseGetEventNotificationItemsFilteredByShowsNotificationsFlag:(BOOL)arg1 reply:(void (^)(int, NSArray *, NSArray *, NSArray *))arg2;
 - (void)CADDatabaseGetInboxRepliedSectionItems:(void (^)(int, NSArray *, NSArray *))arg1;
 - (void)CADDatabaseGetInviteReplyNotifications:(void (^)(int, NSArray *))arg1;
-- (void)CADDatabaseGetReminderNotificationItems:(void (^)(int, NSArray *, NSArray *, NSArray *))arg1;
+- (void)CADDatabaseGetNotificationCountForSourceWithExternalIdentifier:(NSString *)arg1 excludingDelegateSources:(BOOL)arg2 filteredByShowsNotificationsFlag:(BOOL)arg3 reply:(void (^)(int, unsigned long long))arg4;
 - (void)CADDatabaseGetResourceChanges:(void (^)(int, NSArray *))arg1;
 - (void)CADDatabaseGetSharedCalendarInvitationsWithReply:(void (^)(int, NSArray *))arg1;
 - (void)CADEvent:(CADObjectID *)arg1 setAlertedWithError:(void (^)(int))arg2;

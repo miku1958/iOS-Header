@@ -21,7 +21,6 @@
 @property (readonly, nonatomic) unsigned long long hoursType;
 @property (readonly, nonatomic) BOOL isBrandTypeHours; // @synthesize isBrandTypeHours=_isBrandTypeHours;
 @property (readonly, nonatomic) NSString *localizedMessage;
-@property (readonly, nonatomic) NSString *localizedShortMessage;
 @property (readonly, nonatomic) unsigned int openingSoonThresholdInSeconds;
 @property (readonly, nonatomic) NSArray *pdHours;
 @property (readonly, nonatomic) NSArray *placeDailyHours; // @synthesize placeDailyHours=_placeDailyHours;
@@ -33,6 +32,7 @@
 - (void).cxx_destruct;
 - (id)initWithGEOPDBusinessHours:(id)arg1 timeZone:(id)arg2;
 - (id)initWithGEOPDHours:(id)arg1 timeZone:(id)arg2;
+- (BOOL)pdHoursAreValid;
 
 @end
 

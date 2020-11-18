@@ -8,7 +8,6 @@
 
 @protocol PXMutableImageLayerModulator_Private <PXMutableImageLayerModulator>
 
-@property (nonatomic, getter=isDisplayingVideoComplement) BOOL displayingVideoComplement;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (nonatomic) double intensity;
 

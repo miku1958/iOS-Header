@@ -8,5 +8,7 @@
 
 @interface HMSetupAccessoryDescription (Internal)
 - (id)debugDescription;
+- (BOOL)matchesAccessoryServer:(id)arg1;
+- (BOOL)matchesSetupID:(id)arg1 serverIdentifier:(id)arg2;
 @end
 

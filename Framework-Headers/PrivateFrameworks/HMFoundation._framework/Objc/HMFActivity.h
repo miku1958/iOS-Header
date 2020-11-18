@@ -9,24 +9,26 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFObject-Protocol.h>
 
-@class HMFUnfairLock, NSArray, NSDate, NSObject, NSString, NSUUID;
-@protocol OS_os_activity;
+@class HMFUnfairLock, NSArray, NSDate, NSMutableSet, NSObject, NSString, NSUUID;
+@protocol OS_os_activity, OS_voucher;
 
 @interface HMFActivity : HMFObject <HMFLogging, HMFObject>
 {
-    NSObject<OS_os_activity> *_internal;
     HMFUnfairLock *_lock;
+    NSObject<OS_os_activity> *_internal;
     struct os_activity_scope_state_s *_state;
+    NSObject<OS_voucher> *_voucher;
+    NSMutableSet *_threadContexts;
     BOOL _valid;
     NSUUID *_identifier;
     HMFActivity *_parent;
     NSString *_name;
-    unsigned long long _assertions;
+    unsigned long long _options;
     NSArray *_internalAssertions;
     NSDate *_startDate;
 }
 
-@property (readonly) unsigned long long assertions; // @synthesize assertions=_assertions;
+@property (readonly) unsigned long long assertions;
 @property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -34,6 +36,7 @@
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSArray *internalAssertions; // @synthesize internalAssertions=_internalAssertions;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
+@property (readonly) unsigned long long options; // @synthesize options=_options;
 @property (readonly, weak) HMFActivity *parent; // @synthesize parent=_parent;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
@@ -45,21 +48,27 @@
 + (void)activityWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)activityWithName:(id)arg1 parent:(id)arg2 assertions:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 + (void)activityWithName:(id)arg1 parent:(id)arg2 block:(CDUnknownBlockType)arg3;
-+ (id)assertionsForActivityAssertions:(unsigned long long)arg1 name:(id)arg2;
++ (void)activityWithName:(id)arg1 parent:(id)arg2 options:(unsigned long long)arg3 block:(CDUnknownBlockType)arg4;
 + (id)bundleIdentifier;
++ (id)currentActivity;
++ (void)initialize;
 + (id)logCategory;
 + (id)shortDescription;
 - (void).cxx_destruct;
+- (void)begin;
 - (void)dealloc;
+- (void)end;
 - (id)init;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 parent:(id)arg2;
 - (id)initWithName:(id)arg1 parent:(id)arg2 assertions:(unsigned long long)arg3;
+- (id)initWithName:(id)arg1 parent:(id)arg2 options:(unsigned long long)arg3;
 - (void)invalidate;
 - (id)logIdentifier;
 - (void)mark;
 - (void)markWithFormat:(id)arg1;
 - (void)markWithReason:(id)arg1;
+- (void)performBlock:(CDUnknownBlockType)arg1;
 
 @end
 

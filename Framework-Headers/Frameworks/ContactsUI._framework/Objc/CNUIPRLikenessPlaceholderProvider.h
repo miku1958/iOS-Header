@@ -25,7 +25,6 @@
 + (id)imageNameForDiameter:(double)arg1;
 - (void).cxx_destruct;
 - (struct CGImage *)_cnui_circularImageForSize:(struct CGSize)arg1 scale:(double)arg2;
-- (id)_cnui_likenessForSize:(struct CGSize)arg1;
 - (id)_cnui_likenessForSize:(struct CGSize)arg1 scale:(double)arg2;
 - (unsigned long long)_cnui_likenessType;
 - (struct CGImage *)_cnui_roundedRectImageForSize:(struct CGSize)arg1 scale:(double)arg2;

@@ -29,6 +29,7 @@
 
 + (id)_recordWithEncodedInfo:(id)arg1 error:(id *)arg2;
 + (id)migrateDictionaryRepresentation:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
++ (id)newWithDictionaryRepresentation:(id)arg1;
 + (id)recordForLegacyPrivilegedSenderType:(unsigned long long)arg1 legacyAddressBookID:(int)arg2;
 - (void).cxx_destruct;
 - (id)_initWithImmediateBypassEventSourceType:(id)arg1 immediateBypassCNGroupIdentifier:(id)arg2 repeatEventSourceBehaviorEnabledSetting:(id)arg3;
@@ -36,7 +37,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (id)init;
-- (id)initWithDictionaryRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)legacyPrivilegedSenderType;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

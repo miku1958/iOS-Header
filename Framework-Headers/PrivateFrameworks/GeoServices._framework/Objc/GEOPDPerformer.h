@@ -8,29 +8,49 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocalizedString, NSString, PBUnknownFields;
+@class GEOLocalizedString, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPerformer : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_itunesId;
     NSString *_itunesUrl;
     GEOLocalizedString *_name;
     NSString *_performerId;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_itunesId:1;
+        unsigned int read_itunesUrl:1;
+        unsigned int read_name:1;
+        unsigned int read_performerId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_itunesId:1;
+        unsigned int wrote_itunesUrl:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_performerId:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasItunesId;
 @property (readonly, nonatomic) BOOL hasItunesUrl;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasPerformerId;
-@property (strong, nonatomic) NSString *itunesId; // @synthesize itunesId=_itunesId;
-@property (strong, nonatomic) NSString *itunesUrl; // @synthesize itunesUrl=_itunesUrl;
-@property (strong, nonatomic) GEOLocalizedString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *performerId; // @synthesize performerId=_performerId;
+@property (strong, nonatomic) NSString *itunesId;
+@property (strong, nonatomic) NSString *itunesUrl;
+@property (strong, nonatomic) GEOLocalizedString *name;
+@property (strong, nonatomic) NSString *performerId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readItunesId;
+- (void)_readItunesUrl;
+- (void)_readName;
+- (void)_readPerformerId;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

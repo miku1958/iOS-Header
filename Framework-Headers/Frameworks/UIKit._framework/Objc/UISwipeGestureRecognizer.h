@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) struct CGPoint startPoint;
 
 + (BOOL)_shouldDefaultToTouches;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_appendSubclassDescription:(id)arg1;
 - (BOOL)_checkForSwipeWithDelta:(struct CGPoint)arg1 time:(double)arg2;

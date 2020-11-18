@@ -6,26 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSConditionLock, NSMutableArray;
+#import <Message/EFLoggable-Protocol.h>
 
-@interface MFRequestQueue : NSObject
+@class NSMutableArray, NSString;
+
+@interface MFRequestQueue : NSObject <EFLoggable>
 {
-    NSConditionLock *_condition;
-    unsigned int _waitingOutside;
-    unsigned int _waitingInside;
-    NSMutableArray *_requests;
+    struct os_unfair_lock_s _lock;
+    NSMutableArray *_requestPairs;
 }
 
-@property (strong, nonatomic) NSMutableArray *requests; // @synthesize requests=_requests;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableArray *requestPairs; // @synthesize requestPairs=_requestPairs;
+@property (readonly) Class superclass;
 
-- (void)_processRequests:(id)arg1 consumers:(id)arg2;
-- (void)addRequest:(id)arg1 consumer:(id)arg2;
-- (void)addRequests:(id)arg1 consumers:(id)arg2;
-- (void)dealloc;
++ (id)log;
++ (id)signpostLog;
+- (void).cxx_destruct;
+- (void)_processRequests:(id)arg1;
+- (void)addRequest:(struct EFPair *)arg1;
+- (void)addRequests:(id)arg1;
 - (id)init;
-- (void)processRequest:(id)arg1 consumer:(id)arg2;
-- (void)processRequests:(id)arg1 consumers:(id)arg2;
-- (void)willAddRequests:(id)arg1 consumers:(id)arg2;
+- (void)processRequest:(struct EFPair *)arg1;
+- (void)processRequests:(id)arg1;
+- (unsigned long long)signpostID;
 
 @end
 

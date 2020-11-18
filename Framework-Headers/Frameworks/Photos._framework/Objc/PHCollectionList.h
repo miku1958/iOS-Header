@@ -6,7 +6,7 @@
 
 #import <Photos/PHCollection.h>
 
-@class NSArray, NSDate, NSString, PHQuery;
+@class NSArray, NSDate, NSManagedObjectID, NSString, PHQuery;
 
 @interface PHCollectionList : PHCollection
 {
@@ -19,6 +19,7 @@
     NSArray *_collections;
     PHQuery *_query;
     NSString *_transientIdentifier;
+    NSManagedObjectID *_parentFolderObjectID;
     int _plAlbumKind;
     CDUnknownBlockType _childCollectionsSortingComparator;
     unsigned long long _unreadAssetCollectionsCount;
@@ -40,6 +41,7 @@
 
 + (id)entityKeyMap;
 + (id)fetchCollectionListsContainingCollection:(id)arg1 options:(id)arg2;
++ (id)fetchCollectionListsForReferences:(id)arg1 photoLibrary:(id)arg2;
 + (id)fetchCollectionListsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchCollectionListsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchCollectionListsWithType:(long long)arg1 localIdentifiers:(id)arg2 options:(id)arg3;
@@ -48,6 +50,7 @@
 + (id)fetchMomentListsWithSubtype:(long long)arg1 options:(id)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchRootAlbumCollectionListWithOptions:(id)arg1;
++ (id)fetchRootProjectCollectionListWithOptions:(id)arg1;
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
@@ -59,6 +62,7 @@
 + (id)transientCollectionListWithAssetCollectionsFetchResult:(id)arg1 title:(id)arg2 identifier:(id)arg3;
 + (id)transientCollectionListWithCollections:(id)arg1 title:(id)arg2;
 + (id)transientCollectionListWithCollections:(id)arg1 title:(id)arg2 identifier:(id)arg3;
++ (id)transientCollectionListWithCollections:(id)arg1 title:(id)arg2 identifier:(id)arg3 photoLibrary:(id)arg4;
 + (id)transientCollectionListWithCollectionsFetchResult:(id)arg1 title:(id)arg2;
 + (id)transientCollectionListWithCollectionsFetchResult:(id)arg1 title:(id)arg2 identifier:(id)arg3;
 - (void).cxx_destruct;
@@ -68,10 +72,13 @@
 - (unsigned long long)collectionFixedOrderPriority;
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
+- (id)effectiveCustomSortKey;
 - (BOOL)hasLocationInfo;
-- (id)initTransientWithCollections:(id)arg1 orQuery:(id)arg2 title:(id)arg3 identifier:(id)arg4;
+- (id)initTransientWithCollections:(id)arg1 orQuery:(id)arg2 title:(id)arg3 identifier:(id)arg4 photoLibrary:(id)arg5;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (id)localizedTitle;
+- (id)objectReference;
+- (id)parentFolderID;
 - (id)pl_assetContainerList;
 
 @end

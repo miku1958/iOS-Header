@@ -6,7 +6,7 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSURL, WBSOneTimeCodeMonitor, _SFFormAutoFillController;
+@class NSURL, _SFFormAutoFillController;
 
 @protocol SFFormAutoFillControllerDelegate <NSObject>
 - (BOOL)formAutoFillControllerCanPrefillForm:(_SFFormAutoFillController *)arg1;
@@ -16,7 +16,6 @@
 - (void)formAutoFillControllerDidFocusSensitiveFormField:(_SFFormAutoFillController *)arg1;
 - (BOOL)formAutoFillControllerDidUserDeclineAutomaticStrongPasswordForCurrentDomain:(_SFFormAutoFillController *)arg1;
 - (void)formAutoFillControllerGetAuthenticationForAutoFill:(_SFFormAutoFillController *)arg1 completion:(void (^)(BOOL))arg2;
-- (WBSOneTimeCodeMonitor *)formAutoFillControllerOneTimeCodeMonitor:(_SFFormAutoFillController *)arg1;
 - (BOOL)formAutoFillControllerShouldDisableStreamlinedLogin:(_SFFormAutoFillController *)arg1;
 - (BOOL)formAutoFillControllerShouldShowIconsInPasswordPicker:(_SFFormAutoFillController *)arg1;
 - (void)formAutoFillControllerUserChoseToUseGeneratedPassword:(_SFFormAutoFillController *)arg1;

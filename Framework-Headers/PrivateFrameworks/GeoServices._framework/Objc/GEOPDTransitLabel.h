@@ -9,19 +9,28 @@
 #import <GeoServices/GEOTransitLabelItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitArtwork, NSString, PBUnknownFields;
+@class GEOPBTransitArtwork, NSString, PBDataReader, PBUnknownFields;
 @protocol GEOTransitArtworkDataSource;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTransitLabel : PBCodable <GEOTransitLabelItem, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPBTransitArtwork *_labelArtwork;
     NSString *_labelTextString;
     int _labelType;
     struct {
-        unsigned int labelType:1;
-    } _has;
+        unsigned int has_labelType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_labelArtwork:1;
+        unsigned int read_labelTextString:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_labelArtwork:1;
+        unsigned int wrote_labelTextString:1;
+        unsigned int wrote_labelType:1;
+    } _flags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,22 +40,27 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasLabelType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> labelArtwork; // @dynamic labelArtwork;
-@property (strong, nonatomic) GEOPBTransitArtwork *labelArtwork; // @synthesize labelArtwork=_labelArtwork;
+@property (strong, nonatomic) GEOPBTransitArtwork *labelArtwork;
 @property (readonly, nonatomic) NSString *labelString;
-@property (strong, nonatomic) NSString *labelTextString; // @synthesize labelTextString=_labelTextString;
-@property (nonatomic) int labelType; // @synthesize labelType=_labelType;
+@property (strong, nonatomic) NSString *labelTextString;
+@property (nonatomic) int labelType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsLabelType:(id)arg1;
+- (void)_readLabelArtwork;
+- (void)_readLabelTextString;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (id)labelTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

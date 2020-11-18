@@ -20,6 +20,7 @@
     NSString *_title;
     long long _state;
     double _duration;
+    long long _type;
     double _fireTimeInterval;
     NSDate *_fireDate;
     NSDate *_firedDate;
@@ -48,6 +49,7 @@
 @property (readonly, copy, nonatomic) NSUUID *timerID; // @synthesize timerID=_timerID;
 @property (readonly, copy, nonatomic) NSURL *timerURL; // @synthesize timerURL=_timerURL;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
@@ -56,7 +58,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTimerID:(id)arg1 timerURL:(id)arg2 isFiring:(BOOL)arg3 title:(id)arg4 state:(long long)arg5 duration:(double)arg6 fireTimeInterval:(double)arg7 fireDate:(id)arg8 firedDate:(id)arg9 dismissedDate:(id)arg10 lastModifiedDate:(id)arg11;
+- (id)initWithTimerID:(id)arg1 timerURL:(id)arg2 isFiring:(BOOL)arg3 title:(id)arg4 state:(long long)arg5 duration:(double)arg6 type:(long long)arg7 fireTimeInterval:(double)arg8 fireDate:(id)arg9 firedDate:(id)arg10 dismissedDate:(id)arg11 lastModifiedDate:(id)arg12;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 

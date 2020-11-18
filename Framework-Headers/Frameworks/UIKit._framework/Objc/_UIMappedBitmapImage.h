@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configureImage:(id)arg1;
+- (void)_configureImage:(id)arg1 assumePreconfigured:(BOOL)arg2;
 - (void)_preheatBitmapData;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

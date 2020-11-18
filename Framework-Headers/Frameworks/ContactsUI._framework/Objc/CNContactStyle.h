@@ -17,6 +17,7 @@
     BOOL _shouldPresentInCurrentContext;
     BOOL _blurSupported;
     UIColor *_textColor;
+    UIColor *_sectionHeaderTextColor;
     UIColor *_taglineTextColor;
     UIColor *_disabledTextColor;
     UIColor *_placeholderTextColor;
@@ -40,11 +41,13 @@
     long long _separatorStyle;
     UIColor *_sectionBackgroundColor;
     UIColor *_selectedCellBackgroundColor;
+    UIColor *_groupedBackgroundColor;
     long long _barStyle;
     long long _keyboardAppearance;
     long long _modalTransitionStyle;
     long long _topActionsViewStyle;
     long long _inlineActionsViewStyle;
+    struct UIEdgeInsets _separatorInset;
 }
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -54,6 +57,7 @@
 @property (strong, nonatomic) UIColor *contactHeaderBackgroundColor; // @synthesize contactHeaderBackgroundColor=_contactHeaderBackgroundColor;
 @property (strong, nonatomic) UIColor *contactHeaderDropShadowColor; // @synthesize contactHeaderDropShadowColor=_contactHeaderDropShadowColor;
 @property (strong, nonatomic) UIColor *disabledTextColor; // @synthesize disabledTextColor=_disabledTextColor;
+@property (strong, nonatomic) UIColor *groupedBackgroundColor; // @synthesize groupedBackgroundColor=_groupedBackgroundColor;
 @property (strong, nonatomic) UIColor *headerBackgroundColor; // @synthesize headerBackgroundColor=_headerBackgroundColor;
 @property (strong, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
 @property (nonatomic) long long inlineActionsViewStyle; // @synthesize inlineActionsViewStyle=_inlineActionsViewStyle;
@@ -64,10 +68,12 @@
 @property (strong, nonatomic) UIColor *readOnlyTextColor; // @synthesize readOnlyTextColor=_readOnlyTextColor;
 @property (strong, nonatomic) UIColor *searchBarBackgroundColor; // @synthesize searchBarBackgroundColor=_searchBarBackgroundColor;
 @property (strong, nonatomic) UIColor *sectionBackgroundColor; // @synthesize sectionBackgroundColor=_sectionBackgroundColor;
+@property (strong, nonatomic) UIColor *sectionHeaderTextColor; // @synthesize sectionHeaderTextColor=_sectionHeaderTextColor;
 @property (strong, nonatomic) UIColor *sectionIndexBackgroundColor; // @synthesize sectionIndexBackgroundColor=_sectionIndexBackgroundColor;
 @property (strong, nonatomic) UIColor *selectedCellBackgroundColor; // @synthesize selectedCellBackgroundColor=_selectedCellBackgroundColor;
 @property (nonatomic) long long separatorBackdropOverlayBlendMode; // @synthesize separatorBackdropOverlayBlendMode=_separatorBackdropOverlayBlendMode;
 @property (strong, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
+@property (nonatomic) struct UIEdgeInsets separatorInset; // @synthesize separatorInset=_separatorInset;
 @property (nonatomic) long long separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (nonatomic) BOOL shouldPresentInCurrentContext; // @synthesize shouldPresentInCurrentContext=_shouldPresentInCurrentContext;
 @property (strong, nonatomic) UIColor *suggestedLabelTextColor; // @synthesize suggestedLabelTextColor=_suggestedLabelTextColor;
@@ -89,7 +95,6 @@
 + (id)faceTimeStyle;
 + (void)setCurrentStyle:(id)arg1;
 + (id)siriStyle;
-+ (id)starkStyle;
 + (BOOL)supportsSecureCoding;
 + (id)testStyle;
 + (id)watchStyle;

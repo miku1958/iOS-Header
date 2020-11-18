@@ -10,7 +10,7 @@
 #import <PhotosUI/PXCollectionsDataSourceManagerObserver-Protocol.h>
 
 @class NSIndexPath, NSString, PHCollection, PUImportAddToAlbumsPickerCell, PXPhotoKitCollectionsDataSource, PXPhotoKitCollectionsDataSourceManager, PXPhotoKitCollectionsDataSourceManagerConfiguration;
-@protocol PUImportAlbumPickerDelegate;
+@protocol PXImportAlbumPickerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUImportAddToAlbumsPickerViewController : UITableViewController <PXCollectionsDataSourceManagerObserver, PUAlbumCreatorDelegate>
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     PHCollection *_createdAlbum;
     BOOL _needsDatasourceUpdate;
     PXPhotoKitCollectionsDataSourceManagerConfiguration *_dataSourceManagerConfiguration;
-    id<PUImportAlbumPickerDelegate> _delegate;
+    id<PXImportAlbumPickerDelegate> _delegate;
     PXPhotoKitCollectionsDataSource *_dataSource;
     PXPhotoKitCollectionsDataSourceManager *_dataSourceManager;
 }
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PXPhotoKitCollectionsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (strong, nonatomic) PXPhotoKitCollectionsDataSourceManagerConfiguration *dataSourceManagerConfiguration; // @synthesize dataSourceManagerConfiguration=_dataSourceManagerConfiguration;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PUImportAlbumPickerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PXImportAlbumPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

@@ -7,6 +7,9 @@
 #import <Intents/INStartVideoCallIntent.h>
 
 @interface INStartVideoCallIntent (_CDSpotlightRecorderAdditions)
+- (id)cd_groupName;
+- (long long)cd_interactionMechanism;
+- (id)cd_recipients;
 - (BOOL)cd_saveToPeopleStore;
 @end
 

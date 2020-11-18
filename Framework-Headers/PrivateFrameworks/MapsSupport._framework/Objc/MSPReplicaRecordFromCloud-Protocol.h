@@ -4,15 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MapsSupport/NSObject-Protocol.h>
+#import <MapsSupport/MSPReplicaRecord-Protocol.h>
 
-@protocol MSPCloudRecord;
+@class CKRecord, CKRecordID, MSPReplicaEditInsertRecord, MSPReplicaEditUpdateContents, NSUUID;
+@protocol MSPReplicaRecordFromCloud;
 
-@protocol MSPReplicaRecordFromCloud <NSObject>
+@protocol MSPReplicaRecordFromCloud <MSPReplicaRecord>
 
+@property (strong, nonatomic) CKRecord *record;
+@property (readonly, nonatomic, getter=recordIdentifier) NSUUID *recordIdentifier;
 @property (readonly, nonatomic, getter=isTombstoneRepresentedByCloudRecord) BOOL tombstoneRepresentedByCloudRecord;
 
-+ (id)tombstone;
-- (id)initWithCloudRecord:(id<MSPCloudRecord>)arg1;
++ (id<MSPReplicaRecordFromCloud>)recordFromInsertEdit:(MSPReplicaEditInsertRecord *)arg1;
++ (id<MSPReplicaRecordFromCloud>)tombstoneWithRecordIdentifier:(NSUUID *)arg1;
+- (void)applyUpdateEdit:(MSPReplicaEditUpdateContents *)arg1;
+- (CKRecord *)recordRepresentation;
+- (CKRecordID *)tombstoneRecordRepresentation;
 @end
 

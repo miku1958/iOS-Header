@@ -6,14 +6,19 @@
 
 #import <PhotoLibraryServices/PLAssetSearchResult.h>
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray;
 
 @interface PLCombinedAssetSearchResult : PLAssetSearchResult
 {
+    unsigned long long _assetCount;
+    NSArray *_assetUUIDs;
+    BOOL _resultsCanOverlap;
     NSMutableArray *_assetSearchResults;
 }
 
 @property (strong, nonatomic) NSMutableArray *assetSearchResults; // @synthesize assetSearchResults=_assetSearchResults;
+@property (readonly, nonatomic) NSArray *groupResults;
+@property (nonatomic) BOOL resultsCanOverlap; // @synthesize resultsCanOverlap=_resultsCanOverlap;
 
 - (void).cxx_destruct;
 - (void)addAssetSearchResult:(id)arg1 isMainSearchResult:(BOOL)arg2;
@@ -22,6 +27,7 @@
 - (unsigned long long)categoryMask;
 - (id)groupDescription;
 - (id)initWithAssetSearchResult:(id)arg1;
+- (id)initWithAssetSearchResults:(id)arg1 canOverlap:(BOOL)arg2;
 
 @end
 

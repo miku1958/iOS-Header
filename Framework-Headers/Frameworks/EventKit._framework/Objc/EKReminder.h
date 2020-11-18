@@ -6,57 +6,62 @@
 
 #import <EventKit/EKCalendarItem.h>
 
-@class EKObjectID, NSDate, NSDateComponents;
+@class EKObjectID, NSDate, NSDateComponents, NSTimeZone;
 
 @interface EKReminder : EKCalendarItem
 {
+    NSDateComponents *_startDateComponents;
+    NSDateComponents *_dueDateComponents;
     EKObjectID *_parentID;
 }
 
 @property (nonatomic, getter=isCompleted) BOOL completed;
 @property (copy, nonatomic) NSDate *completionDate;
-@property (copy, nonatomic) NSDateComponents *dueDateComponents;
+@property (copy, nonatomic) NSDateComponents *dueDateComponents; // @synthesize dueDateComponents=_dueDateComponents;
+@property (readonly, nonatomic) NSTimeZone *dueDateTimeZone;
 @property (strong, nonatomic) EKObjectID *parentID; // @synthesize parentID=_parentID;
 @property (nonatomic) unsigned long long priority; // @dynamic priority;
-@property (copy, nonatomic) NSDateComponents *startDateComponents;
+@property (copy, nonatomic) NSDateComponents *startDateComponents; // @synthesize startDateComponents=_startDateComponents;
 
-+ (id)_dateComponentsWithDate:(id)arg1 timeZone:(id)arg2 allDay:(BOOL)arg3;
 + (void)_removeSnoozedAlarmsFromReminder:(id)arg1 usingDueDate:(id)arg2;
 + (Class)frozenClass;
 + (id)generateUniqueIDWithReminder:(id)arg1 calendar:(id)arg2;
 + (id)reminderWithEventStore:(id)arg1;
 - (void).cxx_destruct;
+- (void)_adjustPersistedStartDateComponentsForNewTimeZone:(id)arg1;
 - (id)_generateNewUniqueID;
+- (BOOL)_reset;
 - (id)bestDisplayAlarm;
 - (void)clearParentID;
-- (BOOL)commit:(id *)arg1;
 - (id)description;
 - (unsigned long long)displayOrder;
 - (id)dueDate;
 - (BOOL)dueDateAllDay;
-- (id)dueDateRaw;
-- (id)dueDateTimeZone;
-- (id)dueDateTimeZoneName;
 - (id)externalURI;
 - (id)firstAlertDate;
+- (void)forceUpdateFrozenCalendar:(id)arg1;
+- (id)init;
 - (id)initWithPersistentObject:(id)arg1;
+- (BOOL)isAllDay;
+- (BOOL)refresh;
 - (id)reminderIdentifier;
+- (void)reset;
+- (void)rollback;
+- (void)setAllDay:(BOOL)arg1;
 - (void)setDisplayOrder:(unsigned long long)arg1;
 - (void)setDueDate:(id)arg1;
-- (void)setDueDateAllDay:(BOOL)arg1;
-- (void)setDueDateRaw:(id)arg1;
-- (void)setDueDateTimeZone:(id)arg1;
-- (void)setDueDateTimeZoneName:(id)arg1;
 - (void)setFirstAlertDate:(id)arg1;
 - (void)setStartDateAllDay:(BOOL)arg1;
-- (void)setStartDateRaw:(id)arg1;
 - (void)setStartDateTimeZone:(id)arg1;
+- (void)setStartTimeZone:(id)arg1;
 - (void)setTimeZone:(id)arg1;
 - (void)snoozeAlarm:(id)arg1 withTimeIntervalFromNow:(double)arg2;
 - (BOOL)startDateAllDay;
+- (id)startDateComponentsRaw;
 - (id)startDateForRecurrence;
-- (id)startDateRaw;
 - (id)startDateTimeZone;
+- (id)startTimeZone;
+- (id)timeZone;
 - (BOOL)validate:(id *)arg1;
 
 @end

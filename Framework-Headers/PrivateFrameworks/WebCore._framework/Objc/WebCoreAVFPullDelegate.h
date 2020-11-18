@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WebCoreAVFPullDelegate : NSObject <AVPlayerItemOutputPullDelegate>
 {
-    WeakPtr_db8b46a6 m_player;
+    WeakPtr_1a409454 m_player;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,9 +23,9 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithPlayer:(WeakPtr_db8b46a6 *)arg1;
-- (void)outputMediaDataWillChange:(struct AVPlayerItemVideoOutput *)arg1;
-- (void)outputSequenceWasFlushed:(struct AVPlayerItemVideoOutput *)arg1;
+- (id)initWithPlayer:(WeakPtr_1a409454 *)arg1;
+- (void)outputMediaDataWillChange:(id)arg1;
+- (void)outputSequenceWasFlushed:(id)arg1;
 
 @end
 

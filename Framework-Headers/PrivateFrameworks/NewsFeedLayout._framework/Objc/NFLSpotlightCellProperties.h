@@ -15,7 +15,6 @@
 
 - (double)_titleTopOffsetWithTemplate:(id)arg1;
 - (id)accessoryFont;
-- (id)accessoryIconColor;
 - (double)accessoryViewToBottomSpacing;
 - (double)excerptToAccessorySpacing;
 - (double)horizontalTextSpacing;

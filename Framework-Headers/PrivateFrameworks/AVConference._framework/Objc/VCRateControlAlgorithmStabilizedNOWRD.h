@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
     unsigned int _remoteBandwidthEstimation;
     unsigned int _localBandwidthEstimation;
     double _owrd;
-    CDStruct_714379fe _owrdList;
+    CDStruct_55dce769 _owrdList;
     BOOL _isOWRDListReady;
     BOOL _isOWRDConstant;
     double _nowrd;
@@ -60,8 +60,10 @@ __attribute__((visibility("hidden")))
     double _outVideoBitrate;
     double _inAudioBitrate;
     double _outAudioBitrate;
-    unsigned int _actualSendBitrate;
+    unsigned int _actualVideoBitrateFromAFRC;
     unsigned int _fastRampDownBitrateRange;
+    unsigned int _consecutiveRampDown;
+    double _lastTimeStartRampingDown;
     double _basebandNotificationArrivalTime;
     unsigned int _basebandAverageBitrate;
     unsigned int _basebandTotalQueueDepth;
@@ -73,10 +75,13 @@ __attribute__((visibility("hidden")))
     double _lastHighNBDCDTime;
     int _basebandAdditionalTiersForRampUp;
     unsigned int _totalPacketReceived;
+    unsigned int _packetReceivedVideo;
     unsigned int _mostBurstLoss;
+    unsigned int _packetBurstLoss;
     unsigned int _roundTripTimeTick;
     double _roundTripTime;
     double _packetLossRate;
+    double _packetLossRateVideo;
     int _currentTierIndex;
     int _previousTierIndex;
     unsigned int _targetBitrate;
@@ -97,6 +102,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int mostBurstLoss; // @synthesize mostBurstLoss=_mostBurstLoss;
 @property (readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
 @property (readonly, nonatomic) double packetLossRate; // @synthesize packetLossRate=_packetLossRate;
+@property (readonly, nonatomic) double packetLossRateVideo; // @synthesize packetLossRateVideo=_packetLossRateVideo;
 @property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (readonly, nonatomic) unsigned int rateChangeCounter; // @synthesize rateChangeCounter=_rateChangeCounter;
 @property (readonly, nonatomic) double roundTripTime; // @synthesize roundTripTime=_roundTripTime;
@@ -106,8 +112,7 @@ __attribute__((visibility("hidden")))
 
 - (int)basebandAdditionalTiersForRampUp;
 - (void)calculateCongestionMetricsFromOWRD:(double)arg1 time:(double)arg2;
-- (double)calculateNOWRDWithDuration:(double)arg1;
-- (void)calculatePacketLossWithReceivedPacketCount:(unsigned short)arg1 packetBurstLoss:(unsigned short)arg2;
+- (void)calculatePacketLossWithReceivedPacketCount:(unsigned int)arg1 receivedPacketCountVideo:(unsigned int)arg2 packetBurstLoss:(unsigned short)arg3;
 - (void)calculateRoundTripTime;
 - (void)checkBandwidthOvershoot;
 - (void)checkCongestionStatus;
@@ -116,8 +121,9 @@ __attribute__((visibility("hidden")))
 - (id)className;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
 - (void)dealloc;
-- (void)doRateControlWithBasebandStatistics:(CDStruct_48a7b5a5)arg1;
-- (BOOL)doRateControlWithStatistics:(CDStruct_48a7b5a5)arg1;
+- (BOOL)doRateControlWithBasebandStatistics:(CDStruct_b21f1e06)arg1;
+- (BOOL)doRateControlWithStatistics:(CDStruct_b21f1e06)arg1;
+- (BOOL)doRateControlWithVCRCStatistics:(CDStruct_b21f1e06)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(BOOL)arg2;
 - (double)getDoubleTimeFromTimestamp:(unsigned int)arg1 timestampTick:(unsigned int)arg2 wrapAroundCounter:(unsigned int)arg3;
@@ -125,7 +131,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (BOOL)keepOvershootingRampDownBandwidth;
 - (void)logToDumpFilesWithString:(id)arg1;
-- (BOOL)prepareOWRDList:(double)arg1 time:(double)arg2;
 - (void)printRateControlInfoToLogDump;
 - (int)rampDownTier;
 - (int)rampDownTierDueToBaseband;
@@ -142,6 +147,8 @@ __attribute__((visibility("hidden")))
 - (void)stateChangeTo:(int)arg1;
 - (void)stateEnter;
 - (void)stateExit;
+- (void)updateCongestionStatusWhenRampDown:(double)arg1;
+- (void)updateCongestionStatusWhenRampUp;
 - (void)updateInternalStatus;
 
 @end

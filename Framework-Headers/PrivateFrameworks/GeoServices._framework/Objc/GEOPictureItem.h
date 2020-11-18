@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSString *secondaryText; // @synthesize secondaryText=_secondaryText;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithPhoto:(id)arg1 pictureItemPhotoType:(int)arg2 primaryText:(id)arg3 secondaryText:(id)arg4;
 - (id)initWithPictureItem:(id)arg1;
 

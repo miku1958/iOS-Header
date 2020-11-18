@@ -11,17 +11,14 @@
 @interface CUINamedColor : CUINamedLookup
 {
     struct CGColor *_cgColor;
-    long long _displayGamut;
     NSString *_colorName;
+    BOOL _substituteWithSystemColor;
 }
 
-@property (readonly, nonatomic) struct CGColor *cgColor; // @synthesize cgColor=_cgColor;
-@property (readonly, nonatomic) long long displayGamut; // @synthesize displayGamut=_displayGamut;
-@property (readonly, nonatomic) BOOL substituteWithSystemColor;
-@property (readonly, nonatomic) NSString *systemColorName;
+@property (readonly, nonatomic) struct CGColor *cgColor;
+@property (readonly, nonatomic) BOOL substituteWithSystemColor; // @synthesize substituteWithSystemColor=_substituteWithSystemColor;
+@property (readonly, nonatomic) NSString *systemColorName; // @synthesize systemColorName=_colorName;
 
-- (struct CGColorSpace *)_colorSpaceWithID:(long long)arg1;
-- (struct CGColor *)cgColorCreateCopyWithColorSpaceID:(long long)arg1;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3;
 

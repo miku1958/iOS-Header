@@ -101,6 +101,7 @@
     NSString *_fbr;
     NSString *_srf;
     unsigned long long _blockId;
+    NSData *_entityData;
 }
 
 @property (strong, nonatomic) SFActionItem *action; // @synthesize action=_action;
@@ -128,6 +129,7 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) BOOL doNotFold; // @synthesize doNotFold=_doNotFold;
 @property (strong, nonatomic) NSNumber *engagementScore; // @synthesize engagementScore=_engagementScore;
+@property (strong, nonatomic) NSData *entityData; // @synthesize entityData=_entityData;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
 @property (copy, nonatomic) NSDictionary *featureScaling; // @synthesize featureScaling=_featureScaling;
 @property (copy, nonatomic) NSString *fileProviderDomainIdentifier; // @synthesize fileProviderDomainIdentifier=_fileProviderDomainIdentifier;

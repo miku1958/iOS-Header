@@ -58,6 +58,7 @@
 - (id)geocodeStartDate;
 - (id)geocodeStartTimeZone;
 - (id)geocodedEventWithStartDate:(id)arg1 startTimeZone:(id)arg2 endDate:(id)arg3 endTimeZone:(id)arg4 locations:(id)arg5;
+- (unsigned long long)geocodingMode;
 - (id)initWithRecordId:(id)arg1 duplicateKey:(id)arg2 sourceKey:(id)arg3 content:(id)arg4 title:(id)arg5 creationTimestamp:(struct SGUnixTimestamp_)arg6 lastModifiedTimestamp:(struct SGUnixTimestamp_)arg7 tags:(id)arg8 when:(id)arg9 locations:(id)arg10 structuredData:(id)arg11 state:(unsigned int)arg12 curated:(BOOL)arg13;
 - (BOOL)isAllDay;
 - (BOOL)isCancelled;
@@ -65,6 +66,7 @@
 - (BOOL)isEqualToStorageEvent:(id)arg1;
 - (BOOL)isFromDataDetectors;
 - (BOOL)isFromSuggestions;
+- (id)poiFilters;
 - (id)urlFromTags;
 
 @end

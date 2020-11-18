@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (readonly, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
 
++ (id)healthAppUserDefaultsDomainWithProfile:(id)arg1;
 - (void).cxx_destruct;
 - (id)allValuesWithError:(id *)arg1;
 - (id)dataForKey:(id)arg1 error:(id *)arg2;
@@ -26,11 +27,13 @@
 - (id)initWithCategory:(long long)arg1 domainName:(id)arg2 profile:(id)arg3;
 - (id)modificationDatesForKeys:(id)arg1 error:(id *)arg2;
 - (id)numberForKey:(id)arg1 error:(id *)arg2;
+- (id)propertyListValueForKey:(id)arg1 error:(id *)arg2;
 - (id)quantityForKey:(id)arg1 unit:(id)arg2 error:(id *)arg3;
 - (BOOL)removeValuesForKeys:(id)arg1 error:(id *)arg2;
 - (BOOL)setData:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (BOOL)setDate:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (BOOL)setNumber:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (BOOL)setPropertyListValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (BOOL)setQuantity:(id)arg1 unit:(id)arg2 forKey:(id)arg3 error:(id *)arg4;
 - (BOOL)setString:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (BOOL)setValuesWithDictionary:(id)arg1 error:(id *)arg2;

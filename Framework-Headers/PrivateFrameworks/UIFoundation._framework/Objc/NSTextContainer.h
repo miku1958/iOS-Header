@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <UIFoundation/NSCoding-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 #import <UIFoundation/NSTextLayoutOrientationProvider-Protocol.h>
 
-@class NSArray, NSDictionary, NSLayoutManager, UIView;
+@class NSArray, NSDictionary, NSLayoutManager, NSTextLayoutManager, UIView;
 @protocol NSTextContainerView;
 
-@interface NSTextContainer : NSObject <NSCoding, NSTextLayoutOrientationProvider>
+@interface NSTextContainer : NSObject <NSSecureCoding, NSTextLayoutOrientationProvider>
 {
     NSLayoutManager *_layoutManager;
     UIView<NSTextContainerView> *_textView;
@@ -27,6 +27,7 @@
         unsigned int oldAPI:1;
         unsigned int _reserved:8;
     } _tcFlags;
+    NSTextLayoutManager *_textLayoutManager;
     NSArray *_exclusionPaths;
     struct CGPath *_cachedBoundingPath;
     struct __CFArray *_cachedClippingAttributes;
@@ -51,6 +52,7 @@
 @property (nonatomic) BOOL widthTracksTextView;
 
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (void)_commonInit;
 - (BOOL)_containerObservesTextViewFrameChanges;
 - (void)_containerTextViewFrameChanged:(id)arg1;
@@ -59,6 +61,7 @@
 - (struct CGSize)containerSize;
 - (BOOL)containsPoint:(struct CGPoint)arg1;
 - (void)coordinateAccess:(CDUnknownBlockType)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -74,10 +77,12 @@
 - (void)setContainerSize:(struct CGSize)arg1;
 - (void)setLayoutOrientation:(long long)arg1;
 - (void)setMinimumLineFragmentWidth:(double)arg1;
+- (void)setTextLayoutManager:(id)arg1;
 - (void)setTextView:(id)arg1;
 - (struct NSEdgeInsets)textContainerInsetsForView:(id)arg1;
 - (struct NSEdgeInsets)textContainerInsetsForView_iOS:(id)arg1;
 - (struct CGPoint)textContainerOrigin;
+- (id)textLayoutManager;
 - (id)textView;
 
 @end

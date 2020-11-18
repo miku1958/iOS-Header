@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource;
 
 - (NSSet *)allCharacteristicsForCharacteristicType:(NSString *)arg1;
+- (NSSet *)allServices;
 - (id)copyWithValueSource:(id<HFCharacteristicValueSource>)arg1;
 - (HMCharacteristicMetadata *)metadataForCharacteristicType:(NSString *)arg1;
 - (NAFuture *)readValuesForCharacteristicTypes:(NSSet *)arg1;

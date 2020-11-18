@@ -20,7 +20,6 @@
     HFItem *_item;
     NSString *_titleText;
     UIFont *_titleFont;
-    long long _compressionResistancePolicy;
     UILabel *_titleLabel;
     NSArray *_titleLabelConstraints;
     NSArray *_valueTextFieldConstraints;
@@ -28,7 +27,6 @@
     NSLayoutConstraint *_minimumHeightConstraint;
 }
 
-@property (nonatomic) long long compressionResistancePolicy; // @synthesize compressionResistancePolicy=_compressionResistancePolicy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
@@ -50,7 +48,6 @@
 - (void).cxx_destruct;
 - (void)_addTitleLabel;
 - (void)_addValueTextField;
-- (void)_updateCompressionResistance;
 - (void)_updateTitle;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;

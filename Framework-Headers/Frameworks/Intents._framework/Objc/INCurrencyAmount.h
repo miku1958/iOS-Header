@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INCodableAttributeRelationComparing-Protocol.h>
 #import <Intents/INCurrencyAmountExport-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSDecimalNumber, NSString;
 
-@interface INCurrencyAmount : NSObject <INCurrencyAmountExport, NSCopying, NSSecureCoding>
+@interface INCurrencyAmount : NSObject <INCodableAttributeRelationComparing, INCurrencyAmountExport, NSCopying, NSSecureCoding>
 {
     NSDecimalNumber *_amount;
     NSString *_currencyCode;
@@ -21,14 +22,19 @@
 @property (readonly, copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
 @property (readonly, copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (BOOL)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -4,34 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHChangeRequest.h>
 
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSManagedObjectID, NSString, PHChangeRequestHelper, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
+@class NSManagedObjectID, NSString, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
-@interface PHSuggestionChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
+@interface PHSuggestionChangeRequest : PHChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
-    BOOL _clientEntitled;
-    int _clientProcessID;
-    PHChangeRequestHelper *_helper;
-    NSString *_clientName;
     PHRelationshipChangeRequestHelper *_keyAssetsHelper;
     PHRelationshipChangeRequestHelper *_representativeAssetsHelper;
 }
 
-@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
-@property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
-@property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
+@property (readonly, nonatomic) NSString *clientName;
+@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
+@property (readonly) BOOL isNewRequest;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *keyAssetsHelper; // @synthesize keyAssetsHelper=_keyAssetsHelper;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, getter=isMutated) BOOL mutated;
-@property (readonly, getter=isNew) BOOL new;
 @property (nonatomic) unsigned short notificationState;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedSuggestion;
@@ -39,7 +34,6 @@
 @property (strong, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title;
-@property (readonly, nonatomic) NSString *uuid;
 
 + (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForSuggestion:(id)arg1;
@@ -51,17 +45,16 @@
 - (id)actionData;
 - (id)activationDate;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
-- (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
+- (BOOL)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (id)creationDate;
-- (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)endDate;
 - (id)expungeDate;
 - (id)featuresData;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (void)markAccepted;
 - (void)markActive;
 - (void)markDeclined;
@@ -92,7 +85,6 @@
 - (unsigned short)state;
 - (unsigned short)subtype;
 - (unsigned short)type;
-- (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (long long)version;
 

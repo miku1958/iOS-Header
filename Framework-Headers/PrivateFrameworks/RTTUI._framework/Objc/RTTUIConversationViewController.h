@@ -12,8 +12,7 @@
 #import <RTTUI/UITableViewDelegate-Protocol.h>
 #import <RTTUI/UITextViewDelegate-Protocol.h>
 
-@class AXDispatchTimer, CAShapeLayer, DDParsecCollectionViewController, NSDictionary, NSLock, NSMutableArray, NSMutableCharacterSet, NSMutableString, NSObject, NSString, RTTConversation, RTTUITextView, RTTUtterance, TUCall, UIButton, UITableView;
-@protocol OS_dispatch_queue;
+@class AXDispatchTimer, CAShapeLayer, DDParsecCollectionViewController, NSDictionary, NSMutableCharacterSet, NSMutableString, NSString, RTTConversation, RTTUITextView, RTTUtterance, TUCall, UIButton, UITableView;
 
 @interface RTTUIConversationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, RTTUIUtteranceCellDelegate, UITextViewDelegate, RTTUIServiceCellDelegate>
 {
@@ -21,21 +20,18 @@
     CAShapeLayer *_bubbleLayer;
     UIButton *_gaButton;
     AXDispatchTimer *_ttyPredictionsTimer;
+    AXDispatchTimer *_realTimeTimeout;
     NSMutableCharacterSet *_unsupportedCharacterSet;
     NSDictionary *_asciiSubstitutions;
     AXDispatchTimer *_voAnnouncementTimer;
     NSMutableString *_voAnnouncementBuffer;
-    NSLock *_realtimeSendLock;
-    NSObject<OS_dispatch_queue> *_utteranceRequestQueue;
     BOOL _serviceMessageVisible;
-    BOOL _processingUtteranceBuffer;
     RTTConversation *_conversation;
     NSString *_currentServiceMessage;
     DDParsecCollectionViewController *_lookupController;
     UITableView *_tableView;
     RTTUtterance *_currentUtterance;
     TUCall *_call;
-    NSMutableArray *_utteranceBuffer;
 }
 
 @property (strong, nonatomic) TUCall *call; // @synthesize call=_call;
@@ -46,21 +42,23 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) DDParsecCollectionViewController *lookupController; // @synthesize lookupController=_lookupController;
-@property (nonatomic) BOOL processingUtteranceBuffer; // @synthesize processingUtteranceBuffer=_processingUtteranceBuffer;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-@property (strong, nonatomic) NSMutableArray *utteranceBuffer; // @synthesize utteranceBuffer=_utteranceBuffer;
 
++ (BOOL)_validRectangle:(struct CGRect)arg1;
 + (id)viewControllerForCall:(id)arg1;
 + (id)viewControllerForConversation:(id)arg1;
 - (void).cxx_destruct;
 - (void)_define:(id)arg1;
-- (void)_sendNewUtteranceString:(id)arg1 atIndex:(unsigned long long)arg2 forCellPath:(id)arg3;
+- (void)_processRealtimeTimeout;
+- (void)_scrollToIndexPathIfNecessary:(id)arg1 animated:(BOOL)arg2;
+- (void)_updateServiceCellWithString:(id)arg1;
 - (id)addUtterance:(id)arg1;
 - (void)callDidConnect:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)cannedResponses;
 - (id)cellAtIndexPath:(id)arg1;
+- (id)contactDisplayString;
 - (id)currentCall;
 - (id)currentContactPath;
 - (void)dealloc;
@@ -68,11 +66,11 @@
 - (void)gaButtonPressed:(id)arg1;
 - (id)init;
 - (id)inputTextView;
+- (id)lastRowPathForUtterance:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)processUtteranceQueue;
+- (id)onHoldMessage;
 - (void)realtimeTextDidChange;
 - (void)replyCell:(id)arg1 didActivateWithReplyButtonType:(unsigned long long)arg2;
-- (void)sendNewUtteranceString:(id)arg1;
 - (void)setTextViewUtterance:(id)arg1;
 - (void)setupTableView;
 - (void)shareCallInfo:(id)arg1;
@@ -85,14 +83,17 @@
 - (void)textViewDidChangeSelection:(id)arg1;
 - (id)textViewUtterance;
 - (void)toggleMute:(id)arg1;
+- (void)updateCallActiveStatus:(BOOL)arg1;
 - (void)updateGAButton:(BOOL)arg1;
 - (void)updateMuteButton;
 - (void)updateServiceCellWithString:(id)arg1;
 - (void)updateTableViewSizeAnimated:(BOOL)arg1;
+- (void)updateUtterance:(id)arg1 forIndexPath:(id)arg2;
 - (void)updateViewForKeyboard:(id)arg1;
 - (void)updateVoiceOverAnnouncement:(id)arg1;
 - (void)utteranceCellDidUpdateContent:(id)arg1;
 - (BOOL)utteranceIsSelected;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

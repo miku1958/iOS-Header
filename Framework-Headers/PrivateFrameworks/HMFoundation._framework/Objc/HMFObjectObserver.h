@@ -17,7 +17,7 @@
 }
 
 @property (readonly) unsigned long long cachedHash; // @synthesize cachedHash=_cachedHash;
-@property (copy, nonatomic) CDUnknownBlockType deallocationBlock; // @synthesize deallocationBlock=_deallocationBlock;
+@property (copy) CDUnknownBlockType deallocationBlock; // @synthesize deallocationBlock=_deallocationBlock;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, weak) id observedObject; // @synthesize observedObject=_observedObject;
 

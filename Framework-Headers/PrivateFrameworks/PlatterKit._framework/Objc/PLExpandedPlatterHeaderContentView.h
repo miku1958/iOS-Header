@@ -17,6 +17,7 @@
 - (void)_configureDateLabel;
 - (void)_configureIconButtonsForIcons:(id)arg1;
 - (void)_configureUtilityButton;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_ellipsisHighlightedBackgroundImage;
 - (double)_headerHeightForWidth:(double)arg1;
 - (double)_iconDimension;

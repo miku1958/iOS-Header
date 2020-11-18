@@ -10,6 +10,7 @@
 
 @protocol PVFaceProtocol <NSObject>
 
+@property (readonly, nonatomic) unsigned short ageType;
 @property (readonly, nonatomic) double centerX;
 @property (readonly, nonatomic) double centerY;
 @property (readonly, nonatomic) long long clusterSequenceNumber;

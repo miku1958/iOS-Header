@@ -47,12 +47,14 @@
 - (void)service:(id)arg1 account:(id)arg2 incomingUnhandledProtobuf:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
+- (void)service:(id)arg1 linkedDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (id)serviceIdentifier;
 - (void)setupServiceMessageSelectorMappings;
 - (void)startReachabilityTimer;
 - (void)transportBecameReachable;
 - (void)transportBecameUnreachable;
+- (void)updateConnectivityTimer:(id)arg1;
 
 @end
 

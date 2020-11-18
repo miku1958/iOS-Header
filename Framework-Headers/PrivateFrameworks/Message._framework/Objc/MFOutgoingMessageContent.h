@@ -20,8 +20,8 @@
 @property (strong, nonatomic) NSArray *placeholders; // @synthesize placeholders=_placeholders;
 @property (readonly, nonatomic) MFOutgoingRichtextMessageContent *richtextContent;
 
+- (void).cxx_destruct;
 - (id)copy;
-- (void)dealloc;
 
 @end
 

@@ -69,6 +69,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL is2DRepFor3DChartRep; // @synthesize is2DRepFor3DChartRep=mIs2DRepFor3DChartRep;
 @property (readonly, nonatomic) BOOL isCorrectRepClassForInfo;
 @property (readonly, nonatomic) TSCHSearchSelection *selection; // @synthesize selection=_selection;
+@property (readonly, nonatomic) struct CGColor *subSelectionKnobFillColor;
+@property (readonly, nonatomic) double subSelectionKnobRadius;
+@property (readonly, nonatomic) struct CGColor *subSelectionKnobStrokeColor;
 @property (readonly) Class superclass;
 @property (nonatomic) int textureByGlyphStyle; // @synthesize textureByGlyphStyle=mTextureByGlyphStyle;
 @property (nonatomic) unsigned long long textureDeliveryStyle; // @synthesize textureDeliveryStyle=mTextureDeliveryStyle;

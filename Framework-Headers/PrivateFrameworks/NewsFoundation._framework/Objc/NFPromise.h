@@ -13,7 +13,17 @@
     NFPromiseSeal *_seal;
 }
 
+@property (readonly) CDUnknownBlockType delay;
+@property (readonly) CDUnknownBlockType delayOn;
+@property (readonly) CDUnknownBlockType error;
+@property (readonly) CDUnknownBlockType errorOn;
+@property (readonly) CDUnknownBlockType pipe;
+@property (readonly) CDUnknownBlockType pipeOn;
+@property (readonly) CDUnknownBlockType resolve;
+@property (readonly) CDUnknownBlockType resolveOn;
 @property (strong, nonatomic) NFPromiseSeal *seal; // @synthesize seal=_seal;
+@property (readonly) CDUnknownBlockType then;
+@property (readonly) CDUnknownBlockType thenOn;
 
 + (id)asDelay:(double)arg1 onQueue:(id)arg2 withError:(id)arg3;
 + (id)asDelay:(double)arg1 onQueue:(id)arg2 withValue:(id)arg3;
@@ -22,6 +32,7 @@
 + (id)asVoid;
 + (id)asVoid:(id)arg1;
 + (id)firstly:(CDUnknownBlockType)arg1;
++ (id)new;
 - (void).cxx_destruct;
 - (id)always:(CDUnknownBlockType)arg1;
 - (id)alwaysOn:(id)arg1 always:(CDUnknownBlockType)arg2;

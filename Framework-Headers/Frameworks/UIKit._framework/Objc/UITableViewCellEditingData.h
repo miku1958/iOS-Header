@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UITableViewCell, UITableViewCellDeleteConfirmationControl_Legacy, UITableViewCellEditControl, UITableViewCellReorderControl, UIView;
+@class UITableViewCell, UITableViewCellEditControl, UITableViewCellReorderControl, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellEditingData : NSObject
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     long long _editingStyle;
     UITableViewCellEditControl *_editControl;
     UITableViewCellReorderControl *_reorderControl;
-    UITableViewCellDeleteConfirmationControl_Legacy *_deleteConfirmationControl;
     UIView *_reorderSeparatorView;
 }
 
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)deleteConfirmationControl:(BOOL)arg1;
 - (id)editControl:(BOOL)arg1;
 - (id)initWithTableViewCell:(id)arg1 editingStyle:(long long)arg2;
 - (id)reorderControl:(BOOL)arg1;

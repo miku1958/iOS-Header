@@ -11,9 +11,12 @@
 @interface PDMeasurement : NSObject
 {
     BOOL _largerBetter;
+    BOOL _summary;
+    BOOL _context;
     NSString *_metric;
     NSString *_unitString;
     NSDictionary *_variables;
+    NSDictionary *_labels;
     unsigned long long _group;
     NSNumber *_value;
     NSNumber *_sampleCount;
@@ -28,8 +31,10 @@
 
 @property (strong, nonatomic) NSString *cachedMetricFilter; // @synthesize cachedMetricFilter=_cachedMetricFilter;
 @property (weak, nonatomic) PDContainer *container; // @synthesize container=_container;
+@property (nonatomic, getter=isContext) BOOL context; // @synthesize context=_context;
 @property (nonatomic) unsigned long long group; // @synthesize group=_group;
 @property (readonly, nonatomic) unsigned long long histogramBucketCount;
+@property (strong, nonatomic) NSDictionary *labels; // @synthesize labels=_labels;
 @property (nonatomic) BOOL largerBetter; // @synthesize largerBetter=_largerBetter;
 @property (strong, nonatomic) NSNumber *maximum; // @synthesize maximum=_maximum;
 @property (strong, nonatomic) NSNumber *mean; // @synthesize mean=_mean;
@@ -39,6 +44,7 @@
 @property (readonly, nonatomic) unsigned long long percentileCount;
 @property (strong, nonatomic) NSNumber *sampleCount; // @synthesize sampleCount=_sampleCount;
 @property (strong, nonatomic) NSNumber *standardDeviation; // @synthesize standardDeviation=_standardDeviation;
+@property (nonatomic, getter=isSummary) BOOL summary; // @synthesize summary=_summary;
 @property (strong, nonatomic) NSString *unitString; // @synthesize unitString=_unitString;
 @property (strong, nonatomic) NSNumber *value; // @synthesize value=_value;
 @property (strong, nonatomic) NSDictionary *variables; // @synthesize variables=_variables;

@@ -6,73 +6,79 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableURLRequest, NSString, NSURLRequest, __NSCFURLSession;
+@class NSMutableURLRequest, NSURLRequest, NSURLSessionEffectiveConfiguration, NSUUID, __CFN_TaskMetrics, __NSCFURLSession;
 
-__attribute__((visibility("hidden")))
 @interface CONNECTION_SessionTask : NSObject
 {
-    struct _CFURLRequest *_originalRequest;
-    struct _CFURLRequest *_currentRequest;
+    NSURLRequest *_originalRequest;
+    NSMutableURLRequest *_currentRequest;
+    double _startTime;
     struct __CFDictionary *_connectionProperties;
     struct __CFDictionary *_socketProperties;
     NSMutableURLRequest *_nsCurrentRequest;
     NSURLRequest *_nsOriginalRequest;
-    __NSCFURLSession *_session;
-    NSString *_uniqueIdentifier;
+    __NSCFURLSession *_session_ivar;
+    NSURLSessionEffectiveConfiguration *_effectiveConfiguration;
+    NSUUID *_uniqueIdentifier;
     BOOL _is_cellular;
     Class _my_protocolForTask;
-    struct __PerformanceTiming *__performanceTiming;
     BOOL __shouldSkipPreferredClientCertificateLookup;
-    struct __CFDictionary *__atsContext;
-    NSMutableArray *_transactionMetrics;
-    struct os_unfair_lock_s _unfair_lock;
+    struct __CFDictionary *_atsStateCache;
+    __CFN_TaskMetrics *_metrics;
 }
+
+@property (strong, nonatomic) __CFN_TaskMetrics *_metrics; // @synthesize _metrics;
 
 - (id)_APSRelayTopic;
 - (const struct __CFDictionary **)_DuetActivityProperties;
 - (const struct __CFData **)_TCPConnectionMetadata;
 - (unsigned short)_TLSNegotiatedCipherSuite;
+- (void)_adoptEffectiveConfiguration:(id)arg1;
 - (unsigned long long)_allowedProtocolTypes;
 - (id)_allowsCellular;
+- (id)_allowsCellularOverride;
+- (id)_allowsConstrainedOverride;
+- (id)_allowsExpensiveOverride;
 - (BOOL)_allowsQUIC;
+- (BOOL)_appSSOFallback;
 - (void)_appendCountOfPendingBytesReceivedEncoded:(long long)arg1;
-- (id)_backgroundTaskTimingData;
+- (id)_backgroundTransactionMetrics;
 - (id)_boundInterfaceIdentifier;
 - (long long)_bytesPerSecondLimit;
 - (BOOL)_cacheOnly;
-- (int)_cachePolicy;
+- (unsigned long long)_cachePolicy;
 - (id)_cfCache;
 - (id)_cfCookies;
 - (id)_cfCreds;
 - (id)_cfHSTS;
+- (BOOL)_connectionIsCompanionLink;
 - (id)_connectionPropertyDuet;
 - (void)_consumePendingBytesReceivedEncoded;
 - (id)_contentDispositionFallbackArray;
 - (int)_cookieAcceptPolicy;
 - (struct __CFDictionary *)_copyATSState;
-- (struct _CFURLRequest *)_copyCurrentCFURLRequest;
 - (struct _CFHSTSPolicy *)_copyHSTSPolicy;
-- (struct _CFURLRequest *)_copyOriginalCFURLRequest;
 - (struct __CFDictionary *)_copySocketStreamProperties;
 - (id)_countOfBytesReceivedEncoded;
 - (id)_countOfPendingBytesReceivedEncoded;
 - (const struct XCookieStorage *)_createXCookieStorage;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
-- (struct _CFURLRequest *)_currentCFURLRequest;
 - (struct __CFDictionary *)_dependencyInfo;
 - (id)_disallowCellular;
 - (long long)_discretionaryOverrride;
+- (id)_effectiveConfiguration;
+- (unsigned long long)_expectedProgressTarget;
 - (id)_expectedWorkload;
-- (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse *)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_getAuthenticationHeadersForResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (struct __CFSet *)_getAuthenticatorStatusCodes;
+- (id)_httpConnectionInfoCompletionBlock;
+- (id)_incompleteCurrentTaskTransactionMetrics;
 - (id)_incompleteTaskMetrics;
-- (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
 - (BOOL)_isTopLevelNavigation;
 - (id)_loggableDescription;
 - (id)_networkServiceType;
-- (struct __PerformanceTiming *)_performanceTiming;
 - (BOOL)_preconnect;
-- (void)_prepareNewTimingDataContainer;
+- (BOOL)_preventsAppSSO;
 - (unsigned char)_preventsIdleSystemSleep;
 - (BOOL)_preventsSystemHTTPProxyAuthentication;
 - (id)_priorityValue;
@@ -102,7 +108,7 @@ __attribute__((visibility("hidden")))
 - (id)_timeWindowDuration;
 - (double)_timeoutInterval;
 - (id)_trailers;
-- (id)_transactionMetrics;
+- (id)_uniqueIdentifier;
 - (void)_withXURLCache:(CDUnknownBlockType)arg1;
 - (id)countOfBytesExpectedToReceive;
 - (id)countOfBytesExpectedToSend;
@@ -114,20 +120,21 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)error;
 - (BOOL)hasExtractor;
-- (id)initWithRequest:(struct _CFURLRequest *)arg1 mutableCurrent:(struct _CFURLRequest *)arg2 connProps:(struct __CFDictionary *)arg3 sockProps:(struct __CFDictionary *)arg4 session:(id)arg5;
+- (id)initWithRequest:(id)arg1 mutableCurrent:(id)arg2 connProps:(struct __CFDictionary *)arg3 sockProps:(struct __CFDictionary *)arg4 session:(id)arg5;
 - (id)originalRequest;
 - (float)priority;
 - (id)session;
 - (void)set_TCPConnectionMetadata:(id)arg1;
 - (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_allowsQUIC:(BOOL)arg1;
+- (void)set_connectionIsCompanionLink:(BOOL)arg1;
 - (void)set_discretionaryOverride:(long long)arg1;
-- (void)set_incompleteTaskMetrics:(id)arg1;
+- (void)set_expectedProgressTarget:(unsigned long long)arg1;
 - (void)set_preconnect:(BOOL)arg1;
 - (void)set_protocolForTask:(id)arg1;
 - (void)set_trailers:(id)arg1;
 - (BOOL)shouldHandleCookiesAndSchemeIsAppropriate;
-- (id)startTime;
+- (double)startTime;
 - (id)state;
 - (id)taskIdentifier;
 - (void)updateCurrentRequest:(id)arg1;

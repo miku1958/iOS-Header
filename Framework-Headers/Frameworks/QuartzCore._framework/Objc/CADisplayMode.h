@@ -29,6 +29,7 @@
 - (id)_display;
 - (id)_initWithMode:(struct Mode)arg1 display:(id)arg2;
 - (struct Mode)_mode;
+- (void)_setPreferredUIScale:(unsigned int)arg1;
 - (void)_setWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)description;

@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthKit/HKQuantitySample.h>
+#import <HealthKit/HKCumulativeQuantitySample.h>
 
 @class HKQuantity;
 
-@interface HKCumulativeQuantitySeriesSample : HKQuantitySample
+@interface HKCumulativeQuantitySeriesSample : HKCumulativeQuantitySample
 {
 }
 
-@property (copy, nonatomic, setter=_setSum:) HKQuantity *sum;
+@property (readonly, copy) HKQuantity *sum;
 
-+ (BOOL)_isConcreteObjectClass;
-+ (BOOL)supportsSecureCoding;
 
 @end
 

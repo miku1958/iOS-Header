@@ -7,5 +7,8 @@
 #import <AssetsLibraryServices/NSObject-Protocol.h>
 
 @protocol PLAssetsdDemoServiceProtocol <NSObject>
+- (void)cleanupForStoreDemoMode;
+- (void)hasCompletedMomentAnalysisWithReply:(void (^)(BOOL))arg1;
+- (void)hasCompletedRestorePostProcessingWithReply:(void (^)(BOOL))arg1;
 @end
 

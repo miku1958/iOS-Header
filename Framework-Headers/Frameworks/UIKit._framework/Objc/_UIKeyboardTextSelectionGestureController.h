@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _isLongPressing;
     BOOL _isPanning;
     BOOL _isSpacePan;
-    BOOL _hadSpacePanTap;
+    BOOL _hadAddedTouch;
     BOOL _didFloatCursor;
     int _previousForcePressCount;
     id<_UIKeyboardTextSelectionGestureControllerDelegate> _delegate;
@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL didFloatCursor; // @synthesize didFloatCursor=_didFloatCursor;
 @property (nonatomic) BOOL didSuppressSelectionGrabbers; // @synthesize didSuppressSelectionGrabbers=_didSuppressSelectionGrabbers;
 @property (strong, nonatomic) _UIStatesFeedbackGenerator *feedbackBehaviour; // @synthesize feedbackBehaviour=_feedbackBehaviour;
-@property (nonatomic) BOOL hadSpacePanTap; // @synthesize hadSpacePanTap=_hadSpacePanTap;
+@property (nonatomic) BOOL hadAddedTouch; // @synthesize hadAddedTouch=_hadAddedTouch;
 @property (nonatomic) BOOL isLongPressing; // @synthesize isLongPressing=_isLongPressing;
 @property (nonatomic) BOOL isPanning; // @synthesize isPanning=_isPanning;
 @property (nonatomic) BOOL isSpacePan; // @synthesize isSpacePan=_isSpacePan;
@@ -88,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)redisableEnclosingScrollViewNestedPinching;
 - (void)removeDeallocationHandler:(id)arg1;
 - (id)selectionController;
+- (BOOL)shouldAddForceGesture;
 - (Class)textInteractionClass;
 - (void)willRemoveSelectionController;
 

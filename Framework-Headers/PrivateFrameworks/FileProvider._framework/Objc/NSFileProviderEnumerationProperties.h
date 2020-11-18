@@ -4,37 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <FileProvider/FPEnumerationSettings.h>
 
-#import <FileProvider/NSSecureCoding-Protocol.h>
+@class NSArray, NSDictionary, NSString;
 
-@class FPItemID, NSArray, NSDictionary, NSString, NSURL;
-
-@interface NSFileProviderEnumerationProperties : NSObject <NSSecureCoding>
+@interface NSFileProviderEnumerationProperties : FPEnumerationSettings
 {
-    BOOL _recursiveEnumeration;
-    NSURL *_enumeratedItemURL;
-    FPItemID *_enumeratedItemID;
     NSArray *_fileTypes;
-    unsigned long long _requestedBatchSize;
-    NSString *_enumeratingApplicationBundleIdentifier;
     NSDictionary *_userInfo;
+    NSString *_enumeratingApplicationBundleIdentifier;
+    NSString *_enumeratedItemIdentifier;
 }
 
-@property (copy, getter=_enumeratedItemURL, setter=_setEnumeratedItemURL:) NSURL *_enumeratedItemURL; // @synthesize _enumeratedItemURL;
-@property (copy) FPItemID *enumeratedItemID; // @synthesize enumeratedItemID=_enumeratedItemID;
-@property (copy) NSString *enumeratedItemIdentifier;
+@property (copy) NSString *enumeratedItemIdentifier; // @synthesize enumeratedItemIdentifier=_enumeratedItemIdentifier;
 @property (copy) NSString *enumeratingApplicationBundleIdentifier; // @synthesize enumeratingApplicationBundleIdentifier=_enumeratingApplicationBundleIdentifier;
 @property (copy) NSArray *fileTypes; // @synthesize fileTypes=_fileTypes;
-@property BOOL recursiveEnumeration; // @synthesize recursiveEnumeration=_recursiveEnumeration;
-@property unsigned long long requestedBatchSize; // @synthesize requestedBatchSize=_requestedBatchSize;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
 
 @end
 

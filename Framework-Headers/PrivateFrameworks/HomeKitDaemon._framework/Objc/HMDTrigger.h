@@ -57,7 +57,7 @@
 @property (readonly, nonatomic) BOOL requiresDataVersion4;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long triggerType; // @synthesize triggerType=_triggerType;
-@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (BOOL)hasMessageReceiverChildren;
@@ -78,6 +78,7 @@
 - (void)_handleRemoveTriggerOwnedActionSetRequest:(id)arg1 postUpdate:(BOOL)arg2;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_handleTriggerUpdate:(id)arg1 message:(id)arg2;
+- (void)_handleUpdateActionSetRequest:(id)arg1;
 - (void)_handleUpdateActionSetRequest:(id)arg1 postUpdate:(BOOL)arg2;
 - (BOOL)_isTriggerFiredNotificationEntitled;
 - (void)_recentFireDateUpdated:(id)arg1;

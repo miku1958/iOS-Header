@@ -11,11 +11,15 @@
 @interface NUIContentScrollView : UIScrollView
 {
     NUIMultilineSizingHelper *_multilineSizeHelper;
+    BOOL _canScrollDocumentViewHorizontally;
+    BOOL _canScrollDocumentViewVertically;
     UIView *_documentView;
     long long _horizontalAlignment;
     long long _verticalAlignment;
 }
 
+@property (nonatomic) BOOL canScrollDocumentViewHorizontally; // @synthesize canScrollDocumentViewHorizontally=_canScrollDocumentViewHorizontally;
+@property (nonatomic) BOOL canScrollDocumentViewVertically; // @synthesize canScrollDocumentViewVertically=_canScrollDocumentViewVertically;
 @property (strong, nonatomic) UIView *contentView;
 @property (strong, nonatomic) UIView *documentView; // @synthesize documentView=_documentView;
 @property (nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;

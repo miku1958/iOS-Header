@@ -32,9 +32,10 @@
 - (id)init;
 - (id)initWithExtendedTraitCollection:(id)arg1;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;
+- (void)invalidateSpec;
 - (id)mutableChangeObject;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (BOOL)shouldUpdateSpecForExtendedTraitCollectionChange:(unsigned long long)arg1;
+- (BOOL)shouldUpdateSpecForExtendedTraitCollection:(id)arg1 change:(unsigned long long)arg2;
 - (Class)specClass;
 
 @end

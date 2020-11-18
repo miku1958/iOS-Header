@@ -7,7 +7,7 @@
 #import <SceneKit/SCNView.h>
 
 @class AVTAvatar, AVTAvatarEnvironment, AVTFaceTracker, AVTHUDView, NSLock, NSTimer, SCNNode;
-@protocol AVTViewFaceTrackingDelegate, SCNSceneRendererDelegate;
+@protocol AVTViewFaceTrackingDelegate;
 
 @interface AVTView : SCNView
 {
@@ -26,7 +26,6 @@
     BOOL _arMode;
     unsigned long long _lastTrackingUpdateTimestamp;
     unsigned long long _noTrackingFrameCount;
-    id<SCNSceneRendererDelegate> _fwdDelegate;
     double _currentlyRenderedTrackingDate;
     struct {
         struct os_unfair_lock_s lock;
@@ -66,8 +65,11 @@
 - (void)_enablePhysics:(BOOL)arg1;
 - (void)_fireTrackingLoss;
 - (void)_refreshPerfTimesInfo;
+- (void)_renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
+- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
+- (void)_renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
 - (void)_resetFaceToRandomPosition;
 - (void)_updateAvatarForARMode:(BOOL)arg1;
 - (void)_updateFocal;
@@ -78,8 +80,8 @@
 - (double)currentAudioTime;
 - (double)currentlyRenderedTrackingDate;
 - (void)dealloc;
-- (id)delegate;
 - (void)didLostTrackingForAWhile;
+- (void)didMoveToWindow;
 - (BOOL)directRetargetingMode;
 - (id)environment;
 - (BOOL)faceIsFullyActive;
@@ -96,14 +98,7 @@
 - (BOOL)isDoubleBuffered;
 - (void)layoutSubviews;
 - (void)lockAvatar;
-- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 didApplyConstraintsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 didRenderScene:(id)arg2 atTime:(double)arg3;
-- (void)renderer:(id)arg1 didSimulatePhysicsAtTime:(double)arg2;
-- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
-- (void)renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
 - (void)setCaptureImageIsTooDark:(BOOL)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setDirectRetargetingMode:(BOOL)arg1;
 - (void)setFaceIsTracked:(BOOL)arg1;
 - (void)setFaceTracker:(id)arg1;
@@ -120,6 +115,7 @@
 - (void)unlockAvatar;
 - (void)updateAtTime:(double)arg1;
 - (void)updateForChangedFaceTrackingPaused;
+- (void)updateInterfaceOrientation;
 - (void)warmupMemoji;
 - (void)willUpdateAvatarWithNewFaceTrackingData:(double)arg1;
 

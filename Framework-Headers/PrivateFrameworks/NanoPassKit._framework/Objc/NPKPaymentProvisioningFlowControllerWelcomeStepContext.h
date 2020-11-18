@@ -6,19 +6,18 @@
 
 #import <NanoPassKit/NPKPaymentProvisioningFlowStepContext.h>
 
-@class NSArray, PKPaymentHeroImageManifest;
+@class NSArray;
 
 @interface NPKPaymentProvisioningFlowControllerWelcomeStepContext : NPKPaymentProvisioningFlowStepContext
 {
-    PKPaymentHeroImageManifest *_heroImageManifest;
-    NSArray *_featuredNetworks;
+    NSArray *_heroImages;
 }
 
-@property (strong, nonatomic) NSArray *featuredNetworks; // @synthesize featuredNetworks=_featuredNetworks;
-@property (strong, nonatomic) PKPaymentHeroImageManifest *heroImageManifest; // @synthesize heroImageManifest=_heroImageManifest;
+@property (strong, nonatomic) NSArray *heroImages; // @synthesize heroImages=_heroImages;
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithRequestContext:(id)arg1;
 
 @end
 

@@ -13,6 +13,7 @@
 
 @property (nonatomic) unsigned long long suspendCount; // @synthesize suspendCount=_suspendCount;
 
+- (void)cancelOperationsForAttachment:(id)arg1;
 - (void)resume;
 - (void)suspend;
 

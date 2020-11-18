@@ -7,10 +7,15 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (HUAdditions)
-+ (id)hu_homePodLightGrayColor;
++ (id)hu_alarmsBackgroundColor;
++ (id)hu_alarmsCellAccessoryColor;
++ (id)hu_alarmsCellHighlightColor;
++ (id)hu_alarmsDisabledTextColor;
++ (id)hu_alarmsPrimaryColor;
++ (id)hu_alarmsPrimaryTextColor;
++ (id)hu_alarmsSwitchTintColor;
 + (id)hu_keyColor;
-+ (id)hu_tableViewGroupedBackgroundColor;
-+ (id)hu_vibrantGreenTextColor;
-+ (id)hu_vibrantRedTextColor;
++ (id)hu_mediaPlatterBackgroundColor;
++ (id)hu_quickControlBackgroundGrayColor;
 @end
 

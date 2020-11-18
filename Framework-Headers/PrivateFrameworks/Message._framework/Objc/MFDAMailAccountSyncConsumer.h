@@ -10,37 +10,36 @@
 #import <Message/DAMailboxStreamingContentConsumer-Protocol.h>
 
 @class MFActivityMonitor, NSArray, NSConditionLock, NSMutableData, NSMutableDictionary, NSString;
+@protocol DAMailboxStreamingContentConsumer;
 
 @interface MFDAMailAccountSyncConsumer : MFDAMailAccountConsumer <DAMailboxRequestConsumer, DAMailboxStreamingContentConsumer>
 {
-    NSArray *_requests;
-    NSArray *_consumers;
-    NSString *_tag;
+    NSArray *_requestPairs;
     NSString *_accountID;
     MFActivityMonitor *_monitor;
-    id _streamConsumer;
     NSMutableData *_bodyData;
-    BOOL _moreAvailable;
     BOOL _receivedFirstItem;
     BOOL _firstSyncBatch;
     int _syncKeyResets;
     int _serverErrors;
     NSMutableDictionary *_syncResponseConsumersByMessageId;
     NSConditionLock *_accountHierarchyLock;
+    BOOL _moreAvailable;
+    NSString *_tag;
+    id<DAMailboxStreamingContentConsumer> _streamConsumer;
 }
 
 @property (readonly, nonatomic) BOOL moreAvailable; // @synthesize moreAvailable=_moreAvailable;
-@property (strong, nonatomic) id streamConsumer; // @synthesize streamConsumer=_streamConsumer;
-@property (readonly, nonatomic) NSString *tag; // @synthesize tag=_tag;
+@property (strong, nonatomic) id<DAMailboxStreamingContentConsumer> streamConsumer; // @synthesize streamConsumer=_streamConsumer;
+@property (copy, nonatomic) NSString *tag; // @synthesize tag=_tag;
 
-- (void)_setTag:(id)arg1;
+- (void).cxx_destruct;
 - (void)accountHierarchyChanged:(id)arg1;
 - (id)actionsConsumer;
 - (void)consumeData:(char *)arg1 length:(int)arg2 format:(int)arg3 mailMessage:(id)arg4;
-- (void)dealloc;
 - (void)didEndStreamingForMailMessage:(id)arg1;
 - (void)handleSyncResponses:(id)arg1;
-- (id)initWithCurrentTag:(id)arg1 accountID:(id)arg2 requests:(id)arg3 consumers:(id)arg4;
+- (id)initWithCurrentTag:(id)arg1 accountID:(id)arg2 requests:(id)arg3;
 - (id)originalThreadMonitor;
 - (void)partialResultsForMailbox:(id)arg1 actions:(id)arg2 responses:(id)arg3 percentComplete:(double)arg4 moreAvailable:(BOOL)arg5;
 - (BOOL)refreshFolderHierarchyAndWait:(unsigned long long)arg1;

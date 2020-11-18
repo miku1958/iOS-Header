@@ -8,13 +8,14 @@
 
 @interface AFThreeArgumentSafetyBlock : NSObject
 {
+    struct atomic_flag _hasInvoked;
     CDUnknownBlockType _block;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
-- (void)invokeWithValue:(id)arg1 andValue:(id)arg2 andValue:(id)arg3;
+- (BOOL)invokeWithValue:(id)arg1 andValue:(id)arg2 andValue:(id)arg3;
 
 @end
 

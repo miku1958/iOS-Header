@@ -25,6 +25,7 @@
     BOOL _accessoryViewVisibilityChanged;
     BOOL _contentOffsetChanged;
     BOOL _isInEditModeChanged;
+    BOOL _toggleCTMChanged;
     PUBrowsingVideoPlayerChange *_videoPlayerChange;
     PUBrowsingIrisPlayerChange *_irisPlayerChange;
     PUBrowsingAnimatedImagePlayerChange *_animatedImageChange;
@@ -47,6 +48,7 @@
 @property (nonatomic, setter=_setModelTileTransformChanged:) BOOL modelTileTransformChanged; // @synthesize modelTileTransformChanged=_modelTileTransformChanged;
 @property (nonatomic, setter=_setSaveProgressChanged:) BOOL saveProgressChanged; // @synthesize saveProgressChanged=_saveProgressChanged;
 @property (nonatomic, setter=_setSaveStateChanged:) BOOL saveStateChanged; // @synthesize saveStateChanged=_saveStateChanged;
+@property (nonatomic, setter=_setToggleCTMChanged:) BOOL toggleCTMChanged; // @synthesize toggleCTMChanged=_toggleCTMChanged;
 @property (strong, nonatomic, setter=_setVideoPlayerChange:) PUBrowsingVideoPlayerChange *videoPlayerChange; // @synthesize videoPlayerChange=_videoPlayerChange;
 
 - (void).cxx_destruct;

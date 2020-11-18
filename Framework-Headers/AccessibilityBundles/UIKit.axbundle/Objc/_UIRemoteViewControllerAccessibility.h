@@ -13,12 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)__handleFocusMovementAction:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityLoadAccessibilityInformation:(BOOL)arg1;
 - (id)_accessibilityResponderElement;
 - (void)_awakeWithConnectionInfo:(id)arg1;
 - (void)_axRemoteViewLoadRequest:(id)arg1;
+- (BOOL)_axShouldTakeBackFocus;
+- (id)disconnect;
 
 @end
 

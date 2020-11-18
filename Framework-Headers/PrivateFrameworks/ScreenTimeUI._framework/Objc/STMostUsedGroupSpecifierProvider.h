@@ -8,6 +8,7 @@
 
 @class NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface STMostUsedGroupSpecifierProvider : STShowMoreUsageGroupSpecifierProvider
 {
     NSDictionary *_allowancesByActiveBudgetedIdentifier;
@@ -18,6 +19,8 @@
 @property (nonatomic) unsigned long long selectedItemType; // @synthesize selectedItemType=_selectedItemType;
 
 - (void).cxx_destruct;
+- (void)_allowancesByIdentifierDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_selectedUsageReportDidChangeFrom:(id)arg1 to:(id)arg2;
 - (id)allowanceIconForUsageItem:(id)arg1;
 - (id)getUsageItem:(id)arg1;
 - (id)init;

@@ -13,8 +13,10 @@
 
 @interface ARCamera : NSObject <NSSecureCoding, NSCopying>
 {
+    float _exposureOffset;
     long long _trackingState;
     long long _trackingStateReason;
+    double _exposureDuration;
     unsigned long long _lensType;
     long long _devicePosition;
     struct CGSize _imageResolution;
@@ -26,6 +28,8 @@
 
 @property (nonatomic) long long devicePosition; // @synthesize devicePosition=_devicePosition;
 @property (readonly, nonatomic) MISSING_TYPE *eulerAngles;
+@property (nonatomic) double exposureDuration; // @synthesize exposureDuration=_exposureDuration;
+@property (nonatomic) float exposureOffset; // @synthesize exposureOffset=_exposureOffset;
 @property (nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
 @property (nonatomic) CDStruct_8e0628e6 intrinsics; // @synthesize intrinsics=_intrinsics;
 @property (nonatomic) unsigned long long lensType; // @synthesize lensType=_lensType;

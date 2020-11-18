@@ -12,6 +12,7 @@
 {
     BOOL _cloudKitManateeEnabled;
     BOOL _internalSettingManateeEnabled;
+    unsigned int _pcsReportManateeStatus;
     long long _operation;
     long long _reason;
     unsigned long long _options;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) long long operation; // @synthesize operation=_operation;
 @property (readonly, copy, nonatomic) NSUUID *operationID; // @synthesize operationID=_operationID;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (readonly, nonatomic) unsigned int pcsReportManateeStatus; // @synthesize pcsReportManateeStatus=_pcsReportManateeStatus;
 @property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property (readonly, copy, nonatomic) NSString *syncCirclePrefix; // @synthesize syncCirclePrefix=_syncCirclePrefix;

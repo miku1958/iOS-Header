@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct Context *_impl;
 }
 
+- (id)annotation;
 - (BOOL)colorMatchUntaggedContent;
 - (struct CGColorSpace *)colorSpace;
 - (unsigned int)commitPriority;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)deleteSlot:(unsigned int)arg1;
 - (float)desiredDynamicRange;
+- (unsigned int)displayId;
 - (unsigned int)hitTestContext:(struct CGPoint)arg1;
 - (id)initRemoteWithOptions:(id)arg1;
 - (id)initWithOptions:(id)arg1 localContext:(BOOL)arg2;
@@ -36,6 +38,8 @@ __attribute__((visibility("hidden")))
 - (void)orderAbove:(unsigned int)arg1;
 - (void)orderBelow:(unsigned int)arg1;
 - (struct Context *)renderContext;
+- (struct Context *)retainRenderContext;
+- (void)setAnnotation:(id)arg1;
 - (void)setColorMatchUntaggedContent:(BOOL)arg1;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
 - (void)setCommitPriority:(unsigned int)arg1;

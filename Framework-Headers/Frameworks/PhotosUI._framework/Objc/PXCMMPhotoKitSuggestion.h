@@ -50,6 +50,7 @@
 + (id)_fetchPeopleSuggestionsForAssetCollection:(id)arg1;
 + (id)_fetchPreviewAssetsForAssetCollection:(id)arg1;
 + (id)fastSuggestionWithAssetCollection:(id)arg1;
++ (id)sharedCachingImageManager;
 + (id)suggestionWithAssetCollection:(id)arg1;
 - (void).cxx_destruct;
 - (id)contextForActivityType:(unsigned long long)arg1 sourceType:(unsigned long long)arg2;

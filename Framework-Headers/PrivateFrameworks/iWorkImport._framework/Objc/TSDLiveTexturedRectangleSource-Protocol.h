@@ -4,10 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSDMetalContext;
+#import <iWorkImport/NSObject-Protocol.h>
 
-@protocol TSDLiveTexturedRectangleSource
+@class TSDMetalContext;
+@protocol MTLTexture;
+
+@protocol TSDLiveTexturedRectangleSource <NSObject>
 - (void)drawToMetalTextureWithContext:(TSDMetalContext *)arg1;
 - (BOOL)shouldDrawToMetalTextureWithContext:(TSDMetalContext *)arg1;
+
+@optional
+- (id<MTLTexture>)metalTextureWithContext:(TSDMetalContext *)arg1;
+- (BOOL)requiresOffscreenPass;
 @end
 

@@ -16,8 +16,8 @@
 @property (nonatomic) BOOL simulateCloudConnectedOnly;
 
 - (id)initWithServiceName:(NSString *)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2 delegate:(id<NNMKSyncServiceTransportDelegate>)arg3;
-- (NSString *)sendProtobufData:(NSData *)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 shortTimeout:(BOOL)arg4 allowCloudDelivery:(BOOL)arg5;
 - (NSString *)sendProtobufData:(NSData *)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 timeout:(double)arg4 allowCloudDelivery:(BOOL)arg5;
+- (NSString *)sendProtobufData:(NSData *)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 timeoutCategory:(unsigned long long)arg4 allowCloudDelivery:(BOOL)arg5;
 
 @optional
 - (void)forceFailureForNextRequest;

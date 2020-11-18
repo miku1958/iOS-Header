@@ -12,10 +12,10 @@
 {
 }
 
-@property (strong, nonatomic) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @dynamic documentationMetadata;
-@property (strong, nonatomic) NSNumber *downloadSize; // @dynamic downloadSize;
-@property (strong, nonatomic) HMFSoftwareVersion *softwareVersion; // @dynamic softwareVersion;
-@property (strong, nonatomic) NSNumber *state; // @dynamic state;
+@property (copy, nonatomic) HMSoftwareUpdateDocumentationMetadata *documentationMetadata; // @dynamic documentationMetadata;
+@property (copy, nonatomic) NSNumber *downloadSize; // @dynamic downloadSize;
+@property (copy, nonatomic) HMFSoftwareVersion *softwareVersion; // @dynamic softwareVersion;
+@property (copy, nonatomic) NSNumber *state; // @dynamic state;
 
 + (id)properties;
 

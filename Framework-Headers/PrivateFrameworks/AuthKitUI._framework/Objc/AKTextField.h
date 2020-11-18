@@ -34,10 +34,6 @@
 @property (nonatomic) BOOL usesVibrancy; // @synthesize usesVibrancy=_usesVibrancy;
 @property (strong, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 
-+ (id)_backgroundImageForRowIdentifier:(long long)arg1 blurEffectStyle:(long long)arg2 backgroundColor:(id)arg3;
-+ (id)_cachedImageForRowIdentifier:(long long)arg1 blurEffectStyle:(long long)arg2 backgroundColor:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
-+ (void)drawFillForStyle:(long long)arg1 pathRect:(struct CGRect)arg2 roundedCorners:(int)arg3 cornerRadius:(double)arg4 backgroundColor:(id)arg5;
-+ (void)drawStrokeForStyle:(long long)arg1 pathRect:(struct CGRect)arg2 roundedCorners:(int)arg3 cornerRadius:(double)arg4 pathSegments:(int)arg5;
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (id)_fieldTextColor;
@@ -46,7 +42,11 @@
 - (void)_setupInlineEntryStyleViews;
 - (void)_setupLabelAndFieldStyles;
 - (void)_updateFonts:(id)arg1;
+- (id)backgroundImage;
+- (id)cachedImageUsingBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)drawFillForPathRect:(struct CGRect)arg1 roundedCorners:(int)arg2 cornerRadius:(double)arg3;
+- (void)drawStrokeForPathRect:(struct CGRect)arg1 roundedCorners:(int)arg2 cornerRadius:(double)arg3 pathSegments:(int)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

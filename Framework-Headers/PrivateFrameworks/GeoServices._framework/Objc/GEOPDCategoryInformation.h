@@ -8,28 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocalizedString, GEOStyleAttributes, NSString, PBUnknownFields;
+@class GEOLocalizedString, GEOStyleAttributes, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPDCategoryInformation : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOLocalizedString *_localizedMapsCategoryName;
     NSString *_mapsCategoryId;
     GEOStyleAttributes *_mapsCategoryStyleAttributes;
     NSString *_walletCategoryId;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_localizedMapsCategoryName:1;
+        unsigned int read_mapsCategoryId:1;
+        unsigned int read_mapsCategoryStyleAttributes:1;
+        unsigned int read_walletCategoryId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_localizedMapsCategoryName:1;
+        unsigned int wrote_mapsCategoryId:1;
+        unsigned int wrote_mapsCategoryStyleAttributes:1;
+        unsigned int wrote_walletCategoryId:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasLocalizedMapsCategoryName;
 @property (readonly, nonatomic) BOOL hasMapsCategoryId;
 @property (readonly, nonatomic) BOOL hasMapsCategoryStyleAttributes;
 @property (readonly, nonatomic) BOOL hasWalletCategoryId;
-@property (strong, nonatomic) GEOLocalizedString *localizedMapsCategoryName; // @synthesize localizedMapsCategoryName=_localizedMapsCategoryName;
-@property (strong, nonatomic) NSString *mapsCategoryId; // @synthesize mapsCategoryId=_mapsCategoryId;
-@property (strong, nonatomic) GEOStyleAttributes *mapsCategoryStyleAttributes; // @synthesize mapsCategoryStyleAttributes=_mapsCategoryStyleAttributes;
+@property (strong, nonatomic) GEOLocalizedString *localizedMapsCategoryName;
+@property (strong, nonatomic) NSString *mapsCategoryId;
+@property (strong, nonatomic) GEOStyleAttributes *mapsCategoryStyleAttributes;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *walletCategoryId; // @synthesize walletCategoryId=_walletCategoryId;
+@property (strong, nonatomic) NSString *walletCategoryId;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readLocalizedMapsCategoryName;
+- (void)_readMapsCategoryId;
+- (void)_readMapsCategoryStyleAttributes;
+- (void)_readWalletCategoryId;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +57,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

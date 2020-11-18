@@ -26,7 +26,6 @@
 + (BOOL)schemeIsValidForURL:(id)arg1;
 + (BOOL)schemeIsValidForURLReference:(id)arg1;
 + (id)urlReferenceFromURL:(id)arg1;
-+ (id)urlWithEmailAddress:(id)arg1 subject:(id)arg2;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)allowsEditing;
 - (id)canonicalRepresentationURL;

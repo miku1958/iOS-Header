@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
         BOOL respondsToShouldBindRowsTogether;
         BOOL respondsToShowcaseRowMetricsForExpectedWidth;
     } _shelfViewFlags;
-    UIVisualEffectView *_bgVisualEffectView;
-    BOOL _addBlurBackground;
     UIView *_shelfView;
+    UIVisualEffectView *_backgroundVisualEffectView;
 }
 
+@property (strong, nonatomic) UIVisualEffectView *backgroundVisualEffectView; // @synthesize backgroundVisualEffectView=_backgroundVisualEffectView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

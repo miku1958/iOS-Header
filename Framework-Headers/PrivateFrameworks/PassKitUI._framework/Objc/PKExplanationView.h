@@ -8,11 +8,12 @@
 
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
+#import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class NSAttributedString, NSString, OBPrivacyLinkController, PKCheckGlyphLayer, PKPaymentSetupDockView, UIActivityIndicatorView, UIButton, UIFont, UIImage, UIImageView, UILabel, UIScrollView, UITextView, _UIBackdropView;
+@class NSAttributedString, NSString, OBPrivacyLinkController, PKCheckGlyphLayer, PKPaymentSetupDockView, UIActivityIndicatorView, UIButton, UIFont, UIImage, UIImageView, UILabel, UIScrollView, UITextView, _PKUIKVisibilityBackdropView;
 @protocol PKExplanationViewDelegate;
 
-@interface PKExplanationView : UIView <UIScrollViewDelegate, UITextViewDelegate>
+@interface PKExplanationView : UIView <UIScrollViewDelegate, UITextViewDelegate, _PKUIKVisibilityBackdropViewDelegate>
 {
     long long _context;
     BOOL _privacyFooterShouldPin;
@@ -22,10 +23,8 @@
     UILabel *_titleLabel;
     UIActivityIndicatorView *_activityIndicator;
     PKCheckGlyphLayer *_checkmarkLayer;
-    _UIBackdropView *_backdropView;
-    long long _backdropStyle;
+    _PKUIKVisibilityBackdropView *_backdropView;
     double _backdropWeight;
-    BOOL _updatingBackdropSettings;
     BOOL _showPrivacyView;
     double _topMargin;
     struct CGRect _titleLabelFrame;
@@ -35,18 +34,19 @@
     UITextView *_secondaryBodyTextView;
     BOOL _forceShowSetupLaterButton;
     BOOL _hideTitleText;
-    BOOL _titleTextIsNaturalAlgined;
-    BOOL _bodyTextIsNaturalAlgined;
     id<PKExplanationViewDelegate> _delegate;
     UIImage *_image;
     UIView *_heroView;
     UIImage *_titleImage;
     UIFont *_titleFont;
+    long long _titleTextAlignment;
     NSString *_bodyText;
     NSAttributedString *_attributedBodyText;
     NSAttributedString *_attributedSecondaryBodyText;
     NSString *_bodyButtonText;
     UIView *_bodyView;
+    long long _bodyTextAlignment;
+    unsigned long long _bodyDataDetectorTypes;
     OBPrivacyLinkController *_privacyLink;
     UIScrollView *_scrollView;
     UIImageView *_logoImageView;
@@ -57,8 +57,10 @@
 @property (copy, nonatomic) NSAttributedString *attributedBodyText; // @synthesize attributedBodyText=_attributedBodyText;
 @property (copy, nonatomic) NSAttributedString *attributedSecondaryBodyText; // @synthesize attributedSecondaryBodyText=_attributedSecondaryBodyText;
 @property (copy, nonatomic) NSString *bodyButtonText; // @synthesize bodyButtonText=_bodyButtonText;
+@property (nonatomic) unsigned long long bodyDataDetectorTypes; // @synthesize bodyDataDetectorTypes=_bodyDataDetectorTypes;
 @property (copy, nonatomic) NSString *bodyText; // @synthesize bodyText=_bodyText;
-@property (nonatomic) BOOL bodyTextIsNaturalAlgined; // @synthesize bodyTextIsNaturalAlgined=_bodyTextIsNaturalAlgined;
+@property (nonatomic) long long bodyTextAlignment; // @synthesize bodyTextAlignment=_bodyTextAlignment;
+@property (readonly, nonatomic) UIFont *bodyTextFont;
 @property (strong, nonatomic) UITextView *bodyTextView; // @synthesize bodyTextView=_bodyTextView;
 @property (strong, nonatomic) UIView *bodyView; // @synthesize bodyView=_bodyView;
 @property (readonly, nonatomic) PKCheckGlyphLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
@@ -80,20 +82,21 @@
 @property (copy, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (strong, nonatomic) UIImage *titleImage; // @synthesize titleImage=_titleImage;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
-@property (nonatomic) BOOL titleTextIsNaturalAlgined; // @synthesize titleTextIsNaturalAlgined=_titleTextIsNaturalAlgined;
+@property (nonatomic) long long titleTextAlignment; // @synthesize titleTextAlignment=_titleTextAlignment;
 @property (nonatomic) double topMargin; // @synthesize topMargin=_topMargin;
 
 - (void).cxx_destruct;
-- (void)_accessibilitySettingsDidChange:(id)arg1;
 - (void)_bodyButtonTapped;
 - (void)_calculateBlur;
 - (void)_continue;
 - (id)_createBodyTextView;
 - (void)_createSubviews;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (BOOL)_isBuddyiPad;
 - (void)_setupLater;
 - (BOOL)_showTitleLogoImageView;
 - (void)_updateCachedTitleLabelLastLine;
+- (void)_updateCheckmarkColor;
 - (void)_updateTitleLabel;
 - (void)dealloc;
 - (id)init;
@@ -105,6 +108,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)tintColorDidChange;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end
 

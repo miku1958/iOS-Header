@@ -27,6 +27,7 @@
 - (vector_72a15614)extractSubLandmarksFromCrop192:(struct vImage_Buffer)arg1 centers192:(vector_72a15614 *)arg2;
 - (id)init;
 - (id)initWithNetworkAtPath:(id)arg1 context:(shared_ptr_ae8b808b)arg2 platform:(int)arg3 computePath:(int)arg4;
+- (id)initWithNetworkAtPath:(id)arg1 contextObjC:(id)arg2 platform:(int)arg3 computePath:(int)arg4;
 
 @end
 

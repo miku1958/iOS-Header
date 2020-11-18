@@ -17,8 +17,8 @@
 
 - (void)dealloc;
 - (id)debugName;
+- (id)initWithRecognitionSession:(id)arg1;
 - (void)q_updateQueryResult;
-- (BOOL)wantsHighFrequencyNotifications;
 
 @end
 

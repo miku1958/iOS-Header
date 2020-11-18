@@ -6,35 +6,31 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaSpeechTranscription-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
-@interface SISchemaSpeechTranscription : PBCodable <NSCopying>
+@interface SISchemaSpeechTranscription : PBCodable <SISchemaSpeechTranscription, NSSecureCoding>
 {
-    NSString *_aceID;
     int _speechTranscriptionType;
-    struct {
-        unsigned int speechTranscriptionType:1;
-    } _has;
+    NSString *_aceID;
 }
 
-@property (strong, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
-@property (readonly, nonatomic) BOOL hasAceID;
-@property (nonatomic) BOOL hasSpeechTranscriptionType;
+@property (copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int speechTranscriptionType; // @synthesize speechTranscriptionType=_speechTranscriptionType;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (int)StringAsSpeechTranscriptionType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)speechTranscriptionTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

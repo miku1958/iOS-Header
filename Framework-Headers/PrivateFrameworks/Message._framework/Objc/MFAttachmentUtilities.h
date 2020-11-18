@@ -14,7 +14,7 @@
 + (id)mimeTypeForFileName:(id)arg1;
 + (id)temporaryDirectory;
 + (id)temporaryFileURLWithExtension:(id)arg1;
-+ (id)temporaryFileURLWithFileName:(id)arg1;
++ (id)writeData:(id)arg1 toTemporaryFileURLWithFileName:(id)arg2;
 
 @end
 

@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <LocalAuthentication/NSSecureCoding-Protocol.h>
+
 @class LAClient, NSData, NSNumber, NSString;
 @protocol LAPrearmContextXPC, LAUIDelegate;
 
-@interface LAContext : NSObject
+@interface LAContext : NSObject <NSSecureCoding>
 {
     LAClient *_client;
     id<LAPrearmContextXPC> _prearmContext;
-    BOOL _cancelButtonVisible;
-    BOOL _fallbackButtonVisible;
     NSNumber *_maxBiometryFailures;
     NSData *_evaluatedPolicyDomainState;
     long long _biometryType;
@@ -22,10 +22,8 @@
 }
 
 @property (nonatomic) long long biometryType; // @synthesize biometryType=_biometryType;
-@property (nonatomic, getter=isCancelButtonVisible) BOOL cancelButtonVisible; // @synthesize cancelButtonVisible=_cancelButtonVisible;
 @property (strong, nonatomic) NSData *evaluatedPolicyDomainState; // @synthesize evaluatedPolicyDomainState=_evaluatedPolicyDomainState;
 @property (strong, nonatomic) NSData *externalizedContext; // @synthesize externalizedContext=_externalizedContext;
-@property (nonatomic, getter=isFallbackButtonVisible) BOOL fallbackButtonVisible; // @synthesize fallbackButtonVisible=_fallbackButtonVisible;
 @property (nonatomic) BOOL interactionNotAllowed;
 @property (copy, nonatomic) NSString *localizedCancelTitle;
 @property (copy, nonatomic) NSString *localizedFallbackTitle;
@@ -35,8 +33,8 @@
 @property (strong, nonatomic) NSNumber *touchIDAuthenticationRetryLimit;
 @property (weak, nonatomic) id<LAUIDelegate> uiDelegate;
 
-+ (id)currentContext;
 + (void)notifyEvent:(long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(id)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)_evaluationMechanismsFromReturnedError:(id)arg1 error:(id *)arg2;
@@ -47,7 +45,8 @@
 - (void)authMethodWithReply:(CDUnknownBlockType)arg1;
 - (BOOL)canEvaluatePolicy:(long long)arg1 error:(id *)arg2;
 - (void)dealloc;
-- (void)enterPassword:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)evaluateAccessControl:(struct __SecAccessControl *)arg1 aksOperation:(void *)arg2 options:(id)arg3 error:(id *)arg4;
 - (void)evaluateAccessControl:(struct __SecAccessControl *)arg1 aksOperation:(void *)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(long long)arg2 localizedReason:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)evaluateAccessControl:(struct __SecAccessControl *)arg1 operation:(long long)arg2 options:(id)arg3 error:(id *)arg4;
@@ -60,8 +59,10 @@
 - (void)failProcessedEvent:(long long)arg1 failureError:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithExternalizedContext:(id)arg1;
 - (id)initWithExternalizedContext:(id)arg1 uiDelegate:(id)arg2;
+- (id)initWithExternalizedContext:(id)arg1 userSession:(unsigned int *)arg2;
 - (id)initWithUIDelegate:(id)arg1;
 - (void)invalidate;
 - (BOOL)isCredentialSet:(long long)arg1;
@@ -137,7 +138,6 @@
 - (void)setOptionUserCancel:(id)arg1;
 - (void)setOptionUserFallback:(id)arg1;
 - (void)setShowingCoachingHint:(BOOL)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)withCurrentContextExecute:(CDUnknownBlockType)arg1 queue:(id)arg2;
 
 @end
 

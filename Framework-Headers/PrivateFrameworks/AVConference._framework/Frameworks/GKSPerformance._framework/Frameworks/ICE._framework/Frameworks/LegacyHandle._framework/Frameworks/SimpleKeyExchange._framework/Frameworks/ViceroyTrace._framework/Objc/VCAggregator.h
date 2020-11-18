@@ -8,7 +8,7 @@
 
 #import <ViceroyTrace/VCAdaptiveLearningDelegate-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 @protocol OS_dispatch_queue, VCAggregatorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,26 +16,31 @@ __attribute__((visibility("hidden")))
 {
     int _interval;
     int _frequency;
-    BOOL _isDuplicationEnabled;
     NSString *_localInterfaceType;
     NSString *_connectionType;
     unsigned int _switchIntoDupCount;
+    unsigned int _direction;
+    NSNumber *_streamToken;
     NSObject<OS_dispatch_queue> *_stateQueue;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
     id<VCAggregatorDelegate> _delegate;
+    CDUnknownBlockType _periodicAggregationOccuredHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) id<VCAggregatorDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) unsigned int direction; // @synthesize direction=_direction;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSNumber *streamToken; // @synthesize streamToken=_streamToken;
 @property (readonly) Class superclass;
 
+- (unsigned int)RTPeriod;
 - (int)adaptiveLearningState;
 - (id)aggregatedCallReports;
 - (id)aggregatedSegmentQRReport;
 - (id)aggregatedSegmentReport:(int)arg1;
 - (id)aggregatedSessionReport;
-- (BOOL)changeDuplication:(BOOL)arg1;
 - (void)dealloc;
 - (BOOL)didUpdateStringFrom:(id *)arg1 toString:(id)arg2;
 - (void)flushCurrentSegment;
@@ -51,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (int)previousISBRForSegment:(id)arg1;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
 - (void)saveCallSegmentHistory;
+- (void)setPeriodicAggregationOccuredHandler:(CDUnknownBlockType)arg1;
 - (int)shortTermAverageBWEForSegment:(id)arg1;
 - (int)shortTermAverageISBRForSegment:(id)arg1;
 - (int)shortTermAverageSARBRForSegment:(id)arg1;

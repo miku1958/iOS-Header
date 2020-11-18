@@ -17,17 +17,17 @@
     NSDate *_endDate;
     NSDateComponents *_moveIntervalComponents;
     NSDateComponents *_exerciseIntervalComponents;
-    CDUnknownBlockType _updateHandler;
-    CDUnknownBlockType _initialResultsHandler;
+    CDUnknownBlockType _queryUpdateHandler;
+    CDUnknownBlockType _initialQueryResultsHandler;
     double _updateInterval;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) CDUnknownBlockType initialResultsHandler; // @synthesize initialResultsHandler=_initialResultsHandler;
+@property (copy, nonatomic) CDUnknownBlockType initialQueryResultsHandler; // @synthesize initialQueryResultsHandler=_initialQueryResultsHandler;
+@property (copy, nonatomic) CDUnknownBlockType queryUpdateHandler; // @synthesize queryUpdateHandler=_queryUpdateHandler;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 @property (nonatomic, getter=_updateInterval, setter=_setUpdateInterval:) double updateInterval; // @synthesize updateInterval=_updateInterval;
 
 + (id)clientInterfaceProtocol;
@@ -35,8 +35,8 @@
 + (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
 - (void)_validateIntervalComponents:(id)arg1;
-- (void)client_deliverActivityMoveStatistics:(id)arg1 exerciseStatistics:(id)arg2 standHoursInfo:(id)arg3 workouts:(id)arg4 query:(id)arg5;
-- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 moveIntervalComponents:(id)arg3 exerciseIntervalComponents:(id)arg4 initialResultsHandler:(CDUnknownBlockType)arg5;
+- (void)client_deliverResult:(id)arg1 query:(id)arg2;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 moveIntervalComponents:(id)arg3 exerciseIntervalComponents:(id)arg4 initialQueryResultsHandler:(CDUnknownBlockType)arg5;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;

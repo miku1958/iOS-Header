@@ -8,21 +8,22 @@
 
 #import <QuickLook/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, QLToolbarButtonItemRepresentation, QLToolbarUnderlyingButton, UIAlertController, UIImage;
+@class NSArray, NSString, QLToolbarButtonItemRepresentation, UIAlertController, UIImage;
 
 @interface QLToolbarButton : NSObject <NSSecureCoding>
 {
     QLToolbarButtonItemRepresentation *_currentItemRepresentation;
     UIAlertController *_alertController;
     id _target;
-    QLToolbarUnderlyingButton *_underlyingButton;
     SEL _action;
     BOOL _forceToNavBar;
     BOOL _selected;
     BOOL _enabled;
     BOOL _roundedSelectedIndicator;
+    BOOL _disappearsOnTap;
     NSString *_identifier;
     UIImage *_image;
+    NSString *_systemImageName;
     long long _systemItem;
     NSString *_title;
     NSString *_accessibilityIdentifier;
@@ -31,6 +32,7 @@
 }
 
 @property (copy) NSString *accessibilityIdentifier; // @synthesize accessibilityIdentifier=_accessibilityIdentifier;
+@property BOOL disappearsOnTap; // @synthesize disappearsOnTap=_disappearsOnTap;
 @property BOOL enabled; // @synthesize enabled=_enabled;
 @property BOOL forceToNavBar; // @synthesize forceToNavBar=_forceToNavBar;
 @property (readonly) NSString *identifier; // @synthesize identifier=_identifier;
@@ -39,6 +41,7 @@
 @property unsigned long long placement; // @synthesize placement=_placement;
 @property BOOL roundedSelectedIndicator; // @synthesize roundedSelectedIndicator=_roundedSelectedIndicator;
 @property BOOL selected; // @synthesize selected=_selected;
+@property (copy, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
 @property long long systemItem; // @synthesize systemItem=_systemItem;
 @property (copy) NSString *title; // @synthesize title=_title;
 

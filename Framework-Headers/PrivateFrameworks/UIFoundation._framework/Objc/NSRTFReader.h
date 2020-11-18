@@ -73,6 +73,11 @@
     int _currentListLevel;
     NSCalendar *_gregorianCalendar;
     NSMutableDictionary *_fontAttributesTable;
+    long long _cocoaTextScaling;
+    long long _cocoaPlatform;
+    long long _targetTextScaling;
+    long long _sourceTextScaling;
+    long long _finalTextScaling;
 }
 
 - (id)_RTFDFileWrapper;
@@ -87,6 +92,8 @@
 - (id)_currentTable;
 - (id)_currentTableCell;
 - (BOOL)_currentTableCellIsPlaceholder;
+- (void)_determineFinalTextScalingType;
+- (void)_determineSourceTextScalingType;
 - (id)_documentInfoDictionary;
 - (void)_endTableCell;
 - (void)_endTableCellDefinition;
@@ -106,15 +113,20 @@
 - (void)_setCurrentListLevel:(long long)arg1;
 - (void)_setCurrentListNumber:(long long)arg1;
 - (void)_setRTFDFileWrapper:(id)arg1;
+- (void)_setSourceTextScaling:(long long)arg1;
 - (void)_setTableCells;
 - (void)_setTableNestingLevel:(long long)arg1;
+- (void)_setTargetTextScaling:(long long)arg1;
 - (void)_startTableRowDefinition;
 - (void)_updateAttributes;
+- (double)_updateFontSizeForTextScalingIfNeeded:(double)arg1;
 - (id)attributedString;
 - (id)attributedStringToEndOfGroup;
 - (id)attributesAtEndOfGroup;
 - (long long)baseWritingDirection;
+- (long long)cocoaPlatform;
 - (long long)cocoaSubVersion;
+- (long long)cocoaTextScaling;
 - (long long)cocoaVersion;
 - (void)dealloc;
 - (id)defaultParagraphStyle;
@@ -133,7 +145,9 @@
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBaseWritingDirection:(long long)arg1;
 - (void)setBottomMargin:(double)arg1;
+- (void)setCocoaPlatform:(long long)arg1;
 - (void)setCocoaSubVersion:(long long)arg1;
+- (void)setCocoaTextScaling:(long long)arg1;
 - (void)setCocoaVersion:(long long)arg1;
 - (void)setDefaultTabInterval:(double)arg1;
 - (void)setHyphenationFactor:(float)arg1;

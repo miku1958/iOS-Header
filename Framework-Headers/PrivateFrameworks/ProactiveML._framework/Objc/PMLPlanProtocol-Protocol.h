@@ -10,7 +10,6 @@
 
 @protocol PMLPlanProtocol <PMLPlistAndChunksSerializableProtocol>
 
-@property (readonly, nonatomic) BOOL isSynchronous;
 @property (readonly, nonatomic) NSString *planId;
 
 - (NSDictionary *)runWhile:(BOOL (^)(void))arg1 didFinish:(BOOL *)arg2;

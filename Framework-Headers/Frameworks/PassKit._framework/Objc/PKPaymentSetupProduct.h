@@ -74,7 +74,7 @@
 + (id)partnerProductsFromArrayOfPartners:(id)arg1 andProducts:(id)arg2;
 + (id)productsFromBrowseableBankApps:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13 onboardingItems:(id)arg14 actionBaseURL:(id)arg15 productState:(id)arg16;
+- (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12 suppressPendingPurchases:(id)arg13 supportedTransitNetworkIdentifiers:(id)arg14 onboardingItems:(id)arg15 actionBaseURL:(id)arg16 productState:(id)arg17;
 - (long long)allSupportedProtocols;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFeatureIdentifier:(unsigned long long)arg1;

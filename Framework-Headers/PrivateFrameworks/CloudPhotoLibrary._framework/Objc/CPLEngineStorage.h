@@ -34,6 +34,7 @@
 - (BOOL)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
 - (BOOL)openWithError:(id *)arg1;
+- (id)redactedDescription;
 - (id)status;
 - (id)statusDictionary;
 - (id)statusPerScopeIndex;

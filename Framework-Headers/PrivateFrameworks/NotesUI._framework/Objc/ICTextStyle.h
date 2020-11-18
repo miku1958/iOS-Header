@@ -17,6 +17,7 @@
 
 @property (strong) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (readonly, nonatomic) NSString *icaxStyleDescription;
+@property (readonly) BOOL isTextList;
 @property (strong) NSString *name; // @synthesize name=_name;
 @property unsigned int ttStyle; // @synthesize ttStyle=_ttStyle;
 
@@ -33,6 +34,8 @@
 + (void)setAutoListInsertionEnabled:(BOOL)arg1;
 + (void)setNoteDefaultNamedStyle:(unsigned int)arg1;
 + (id)settingsDescriptionForNamedStyle:(unsigned int)arg1;
++ (id)styleForNamedStyle:(unsigned int)arg1;
++ (id)subheadingStyle;
 + (id)titleForNamedStyle:(unsigned int)arg1;
 + (id)titleStyle;
 + (unsigned int)validatedNamedStyle:(unsigned int)arg1;

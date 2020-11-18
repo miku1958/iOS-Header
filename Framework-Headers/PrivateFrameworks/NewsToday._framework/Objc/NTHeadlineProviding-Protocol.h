@@ -38,6 +38,7 @@
 @property (readonly, copy, nonatomic) NSString *storyType;
 @property (readonly, nonatomic) BOOL supportsSavingForLater;
 @property (readonly, nonatomic) struct CGRect thumbnailFocalFrame;
+@property (copy, nonatomic) NSString *thumbnailIdentifier;
 @property (readonly, copy, nonatomic) NSURL *thumbnailRemoteURL;
 @property (readonly, nonatomic) unsigned long long thumbnailSizePreset;
 @property (readonly, copy, nonatomic) NSString *title;

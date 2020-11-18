@@ -41,12 +41,14 @@
 - (unsigned long long)_effectiveBoundariesBlockingFocusMovementRequest:(id)arg1;
 - (unsigned long long)_effectiveFocusableBoundariesForHeading:(unsigned long long)arg1;
 - (unsigned long long)_focusableBoundaries;
+- (id)_focusedItemForLinearSorting:(id)arg1 inMap:(id)arg2;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (id)_occludingRegions;
 - (long long)_preferredDistanceComparisonType;
 - (id)_resizeToRect:(struct CGRect)arg1;
 - (BOOL)_shouldCropRegionToSearchArea;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
+- (BOOL)_shouldUseNextFocusedItemForLinearSorting;
 - (id)_subregionWithFrame:(struct CGRect)arg1;
 - (id)_visibleSubregionsWhenOccludedByRegion:(id)arg1;
 - (void)_willParticipateAsDestinationRegionInFocusUpdate:(id)arg1;

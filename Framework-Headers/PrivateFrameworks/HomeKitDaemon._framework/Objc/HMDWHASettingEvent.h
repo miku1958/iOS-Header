@@ -19,9 +19,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
+@property (copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) AWDHomeKitValue *value; // @synthesize value=_value;
+@property (copy, nonatomic) AWDHomeKitValue *value; // @synthesize value=_value;
 
 + (id)eventWithKeyPath:(id)arg1 value:(id)arg2;
 + (void)initialize;

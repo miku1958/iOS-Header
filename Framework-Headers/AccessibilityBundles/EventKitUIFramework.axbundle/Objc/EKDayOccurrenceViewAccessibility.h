@@ -32,6 +32,8 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
+- (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
 - (void)prepareForReuse;
 - (void)setDrawsResizeHandles:(BOOL)arg1;

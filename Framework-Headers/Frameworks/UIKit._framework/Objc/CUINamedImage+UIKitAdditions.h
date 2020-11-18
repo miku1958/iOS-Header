@@ -7,7 +7,8 @@
 #import <CoreUI/CUINamedImage.h>
 
 @interface CUINamedImage (UIKitAdditions)
-- (id)UIImageWithVectorImage:(id)arg1;
-- (id)traitCollection;
+- (id)UIImageWithAsset:(id)arg1 configuration:(id)arg2 flippedHorizontally:(BOOL)arg3 optionalVectorImage:(id)arg4;
+- (id)configuration;
+- (id)imageObj;
 @end
 

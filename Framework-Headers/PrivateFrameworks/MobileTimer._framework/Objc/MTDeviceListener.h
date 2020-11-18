@@ -31,8 +31,8 @@
 - (void).cxx_destruct;
 - (BOOL)_hasBeenUnlockedSinceBoot;
 - (id)gatherDiagnostics;
-- (void)handleNotification:(id)arg1;
-- (BOOL)handlesNotification:(id)arg1;
+- (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (id)init;
 - (void)printDiagnostics;
 

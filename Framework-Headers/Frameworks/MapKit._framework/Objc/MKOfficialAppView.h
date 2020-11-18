@@ -35,10 +35,10 @@ __attribute__((visibility("hidden")))
 - (void)_contentSizeDidChangeNotificationHandler;
 - (void)_createConstraints;
 - (void)_punchOutButtonSelected:(id)arg1;
-- (void)_updateFonts:(id)arg1;
+- (void)_updateFonts;
 - (void)_updateLabelText;
 - (void)_updateShouldLayoutStack;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)updateButtonText;
 

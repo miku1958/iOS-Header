@@ -7,7 +7,7 @@
 #import <UIKitCore/UIDocumentBrowserViewControllerDelegate-Protocol.h>
 
 @class DOCConcreteLocation, NSArray, NSURL, UIBarButtonItem, UIDocumentBrowserViewController;
-@protocol DOCServicePopoverTrackerProtocol;
+@protocol DOCItemActivityPerformer, DOCServicePopoverTrackerProtocol;
 
 @protocol UIDocumentBrowserViewControllerPrivateDelegate <UIDocumentBrowserViewControllerDelegate>
 
@@ -18,7 +18,7 @@
 - (void)documentBrowser:(UIDocumentBrowserViewController *)arg1 didPickImportedURLs:(NSArray *)arg2;
 - (BOOL)documentBrowser:(UIDocumentBrowserViewController *)arg1 shouldHandleLocation:(DOCConcreteLocation *)arg2;
 - (BOOL)documentBrowser:(UIDocumentBrowserViewController *)arg1 shouldShowActivityViewControllerForDocumentURLs:(NSArray *)arg2 barButtonItem:(UIBarButtonItem *)arg3 popoverTracker:(id<DOCServicePopoverTrackerProtocol>)arg4;
-- (BOOL)documentBrowser:(UIDocumentBrowserViewController *)arg1 shouldShowActivityViewControllerForDocumentURLs:(NSArray *)arg2 barButtonItem:(UIBarButtonItem *)arg3 popoverTracker:(id<DOCServicePopoverTrackerProtocol>)arg4 sourceIsManaged:(BOOL)arg5;
+- (BOOL)documentBrowser:(UIDocumentBrowserViewController *)arg1 shouldShowActivityViewControllerForDocumentURLs:(NSArray *)arg2 popoverTracker:(id<DOCServicePopoverTrackerProtocol>)arg3 isContentManaged:(BOOL)arg4 additionalActivities:(NSArray *)arg5 activityProxy:(id<DOCItemActivityPerformer>)arg6;
 - (void)documentManagerWasCancelled:(UIDocumentBrowserViewController *)arg1;
 - (void)willDismissDocumentManager:(UIDocumentBrowserViewController *)arg1;
 @end

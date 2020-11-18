@@ -7,9 +7,18 @@
 #import <HealthKit/HKObject.h>
 
 @interface HKObject (HDCodingSupport)
++ (id)hd_allObjectsToInsertWithObjects:(id)arg1;
++ (Class)hd_dataEntityClass;
 - (BOOL)addCodableRepresentationToCollection:(id)arg1;
 - (BOOL)addCodableRepresentationToCollectionForJournal:(id)arg1;
 - (BOOL)addCodableRepresentationToCollectionForSync:(id)arg1;
 - (id)codableRepresentationForSync;
+- (long long)entityType;
+- (id)hd_associatedObjects;
+- (id)hd_associatedSampleTypes;
+- (Class)hd_dataEntityClass;
+- (BOOL)hd_insertRelatedDataWithPersistentID:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id *)arg5;
+- (id)hd_relatedJournalEntries;
+- (id)hd_sampleType;
 @end
 

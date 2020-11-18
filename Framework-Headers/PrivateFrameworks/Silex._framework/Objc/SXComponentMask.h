@@ -6,21 +6,9 @@
 
 #import <Silex/SXJSONObject.h>
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
-
-@class NSString;
-
-@interface SXComponentMask : SXJSONObject <SXClassFactoryProtocol>
+@interface SXComponentMask : SXJSONObject
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-+ (void)initializeObject;
-+ (id)typeString;
 
 @end
 

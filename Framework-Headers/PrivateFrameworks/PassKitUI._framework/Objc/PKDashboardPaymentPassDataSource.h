@@ -138,7 +138,6 @@
 - (void)_updateTransitBalance;
 - (void)_updateWithTransactionGroups:(id)arg1;
 - (void)_verificationButtonTapped;
-- (void)accountServiceAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)dealloc;
 - (void)didChangeVerificationPresentation;

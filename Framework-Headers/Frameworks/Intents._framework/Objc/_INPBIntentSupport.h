@@ -15,10 +15,13 @@
 @interface _INPBIntentSupport : PBCodable <_INPBIntentSupport, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_intentsRestrictedWhileLockeds;
     NSArray *_intentsSupporteds;
+    NSArray *_supportedMediaCategories;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,20 +30,28 @@
 @property (copy, nonatomic) NSArray *intentsSupporteds; // @synthesize intentsSupporteds=_intentsSupporteds;
 @property (readonly, nonatomic) unsigned long long intentsSupportedsCount;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *supportedMediaCategories; // @synthesize supportedMediaCategories=_supportedMediaCategories;
+@property (readonly, nonatomic) unsigned long long supportedMediaCategoriesCount;
 
 + (Class)intentsRestrictedWhileLockedType;
 + (Class)intentsSupportedType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addIntentsRestrictedWhileLocked:(id)arg1;
 - (void)addIntentsSupported:(id)arg1;
+- (void)addSupportedMediaCategories:(id)arg1;
 - (void)clearIntentsRestrictedWhileLockeds;
 - (void)clearIntentsSupporteds;
+- (void)clearSupportedMediaCategories;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)intentsRestrictedWhileLockedAtIndex:(unsigned long long)arg1;
 - (id)intentsSupportedAtIndex:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)supportedMediaCategoriesAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

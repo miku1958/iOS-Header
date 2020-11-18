@@ -28,8 +28,10 @@
 @property (readonly, nonatomic) HMFVersion *bsoDataVersion; // @synthesize bsoDataVersion=_bsoDataVersion;
 @property BOOL bsoDataVersionOverride; // @synthesize bsoDataVersionOverride=_bsoDataVersionOverride;
 @property (weak, nonatomic) id<HMDBackingStoreObjectProtocol> bsoDelegate; // @synthesize bsoDelegate=_bsoDelegate;
+@property (readonly, nonatomic) BOOL bsoIgnoreModel;
+@property (strong, nonatomic) HMFVersion *bsoIgnoredBefore;
 @property (readonly) unsigned long long bsoLogRowID; // @synthesize bsoLogRowID=_bsoLogRowID;
-@property (readonly, nonatomic) CKRecord *bsoRecord; // @synthesize bsoRecord=_bsoRecord;
+@property (strong, nonatomic) CKRecord *bsoRecord; // @synthesize bsoRecord=_bsoRecord;
 @property (strong, nonatomic) NSString *bsoType; // @synthesize bsoType=_bsoType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSSet *dependentUUIDs; // @dynamic dependentUUIDs;
@@ -43,6 +45,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (Class)backedObjectClass;
 + (id)bsoSchemaHash;
 + (id)formatValue:(id)arg1;
 + (Class)genericRepresentation;
@@ -59,6 +62,7 @@
 + (id)schemaHashRoot;
 - (void).cxx_destruct;
 - (BOOL)_validateType:(id)arg1 error:(id *)arg2;
+- (id)backedObjectWithParent:(id)arg1 error:(id *)arg2;
 - (void)clearVersionOverride;
 - (id)debugString:(BOOL)arg1;
 - (id)defaultValueForPropertyNamed:(id)arg1 isSet:(BOOL *)arg2;

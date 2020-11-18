@@ -10,17 +10,16 @@
 #import <PhotoLibraryServices/PSIQueryDelegate-Protocol.h>
 #import <PhotoLibraryServices/PSITableDelegate-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSMutableString, NSString, PSIIntArray, PSIStatement, PSITokenizer, PSITripTable, PSIWordEmbeddingTable;
+@class NSDictionary, NSMutableArray, NSMutableString, NSString, PSIIntArray, PSIStatement, PSITokenizer, PSIWordEmbeddingTable;
 @protocol OS_dispatch_queue;
 
 @interface PSIDatabase : NSObject <PSITableDelegate, PSIQueryDelegate, PSIGroupCacheDelegate>
 {
     struct sqlite3 *_inqDatabase;
     BOOL _databaseIsValid;
-    NSDictionary *_inqPreparedStatements;
+    struct __CFDictionary *_inqPreparedStatements;
     PSIIntArray *_matchingIds;
     PSIWordEmbeddingTable *_inqWordEmbeddingTable;
-    PSITripTable *_inqTripTable;
     PSIStatement *_assetUUIDByAssetIdWithAssetIdsStatement;
     PSIStatement *_collectionResultByCollectionIdWithCollectionIdsStatement;
     PSIStatement *_inqAssetIdsByGroupIdForAssetIdsStatement;
@@ -34,8 +33,6 @@
     PSIStatement *_inqIdsOfAllGroupsMatchedByCollectionsStatement;
     PSIStatement *_inqRemoveUnmatchedGroupsFromGroupsStatement;
     PSIStatement *_inqIdsOfAllGroupsInPrefixStatement;
-    PSIStatement *_inqRemoveGroupsFromPrefixStatement;
-    PSIStatement *_inqRemoveUnmatchedGroupsFromPrefixStatement;
     PSIStatement *_inqIdsOfAllGroupsInLookupStatement;
     PSIStatement *_inqRemoveGroupsFromLookupStatement;
     PSIStatement *_inqRemoveUnmatchedGroupsFromLookupStatement;
@@ -67,13 +64,15 @@
 @property (readonly) PSITokenizer *tokenizer;
 
 + (void)_dropDatabase:(struct sqlite3 *)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (BOOL)_integrityCheckDatabase:(struct sqlite3 *)arg1;
 + (struct sqlite3 *)_openDatabaseAtPath:(id)arg1 options:(long long)arg2;
 + (void)dropDatabaseAtPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-+ (BOOL)integrityCheckDatabase:(struct sqlite3 *)arg1;
 + (id)searchDatabaseLog;
+- (void).cxx_destruct;
 - (void)_executeQuery:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
 - (void)_inSearchQueueAsync:(CDUnknownBlockType)arg1;
-- (void)_inqAddToSearchTableWithGroupId:(unsigned long long)arg1 text:(id)arg2 category:(short)arg3 textIsSearchable:(BOOL)arg4;
+- (void)_ingRebuildPrefixTableIfNeeded;
+- (void)_inqAddToLookupTableWithGroupId:(unsigned long long)arg1 text:(id)arg2 category:(short)arg3;
 - (unsigned long long)_inqAssetIdForUUID:(id)arg1;
 - (unsigned long long)_inqAssetIdForUUID:(id)arg1 uuid_0:(unsigned long long *)arg2 uuid_1:(unsigned long long *)arg3;
 - (unsigned long long)_inqAssetIdWithAsset:(id)arg1;
@@ -89,17 +88,20 @@
 - (id)_inqCollectionResultByCollectionIdWithCollectionIds:(id)arg1;
 - (id)_inqCollectionResultsForCollectionIds:(struct __CFArray *)arg1 range:(struct _NSRange)arg2;
 - (id)_inqContentStringForGroupId:(unsigned long long)arg1;
+- (void)_inqDeleteFromLookupTableWithGroupId:(unsigned long long)arg1;
 - (id)_inqDequeueGroupObjectWithId:(unsigned long long)arg1 isCachedGroup:(BOOL *)arg2;
 - (void)_inqExecutePreparedStatement:(struct sqlite3_stmt *)arg1 allowError:(int)arg2 withStatementBlock:(CDUnknownBlockType)arg3;
 - (void)_inqExecutePreparedStatement:(struct sqlite3_stmt *)arg1 withStatementBlock:(CDUnknownBlockType)arg2;
-- (void)_inqGetTokensFromString:(id)arg1 forIndexing:(BOOL)arg2 useWildcard:(BOOL)arg3 tokenOutput:(struct tokenOutput_t *)arg4;
+- (id)_inqFilenameGroupsWithMatchingGroupIds:(struct __CFSet *)arg1 dateFilter:(id)arg2 matchingPredicateBlock:(CDUnknownBlockType)arg3;
+- (void)_inqGetTokensFromString:(id)arg1 category:(short)arg2 tokenOutput:(struct tokenOutput_t *)arg3;
 - (id)_inqGroupArraysFromGroupIdSets:(id)arg1 dateFilter:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
-- (unsigned long long)_inqGroupIdForCategory:(short)arg1 owningGroupId:(unsigned long long)arg2 contentString:(id)arg3 identifier:(id)arg4 insertIfNeeded:(BOOL)arg5 tokenOutput:(const struct tokenOutput_t *)arg6 shouldUpdateOwningGroupId:(BOOL)arg7 didUpdateGroup:(out BOOL *)arg8;
-- (id)_inqGroupResultWithDateFilter:(id)arg1;
+- (unsigned long long)_inqGroupIdForCategory:(short)arg1 owningGroupId:(unsigned long long)arg2 contentString:(id)arg3 normalizedString:(id)arg4 identifier:(id)arg5 insertIfNeeded:(BOOL)arg6 tokenOutput:(const struct tokenOutput_t *)arg7 shouldUpdateOwningGroupId:(BOOL)arg8 didUpdateGroup:(out BOOL *)arg9;
+- (id)_inqGroupResultWithDateFilter:(id)arg1 datedTokens:(id)arg2;
+- (id)_inqGroupWithFilenameStatement:(struct sqlite3_stmt *)arg1 dateFilter:(id)arg2 excludingGroupId:(unsigned long long)arg3;
 - (id)_inqGroupWithMatchingGroupId:(unsigned long long)arg1 dateFilter:(id)arg2;
 - (id)_inqGroupWithStatement:(struct sqlite3_stmt *)arg1 dateFilter:(id)arg2 includeObjects:(BOOL)arg3;
+- (id)_inqGroupWithStatement:(struct sqlite3_stmt *)arg1 dateFilter:(id)arg2 includeObjects:(BOOL)arg3 isFilenameStatement:(BOOL)arg4 excludingGroupId:(unsigned long long)arg5;
 - (id)_inqGroupsWithMatchingGroupIds:(struct __CFSet *)arg1 dateFilter:(id)arg2 includeObjects:(BOOL)arg3 matchingPredicateBlock:(CDUnknownBlockType)arg4;
-- (void)_inqInsertToSearchTablesWithGroupId:(unsigned long long)arg1 text:(id)arg2 identifier:(id)arg3 category:(short)arg4;
 - (struct __CFArray *)_inqNewAssetIdsForGroupId:(unsigned long long)arg1 dateFilter:(id)arg2;
 - (struct __CFArray *)_inqNewAssetIdsWithDateFilter:(id)arg1;
 - (struct __CFArray *)_inqNewCollectionIdsForGroupId:(unsigned long long)arg1 dateFilter:(id)arg2;
@@ -112,8 +114,8 @@
 - (struct __CFSet *)_inqNewGroupIdsMatchingString:(id)arg1 textIsSearchable:(BOOL)arg2;
 - (struct __CFSet *)_inqNewGroupIdsWithCategories:(id)arg1;
 - (struct __CFSet *)_inqNewGroupIdsWithOwningGroupIds:(struct __CFSet *)arg1;
-- (struct __CFSet *)_inqNewSurvivingGroupIdsForDeleteOperationWithMatchingGroupIds:(struct __CFSet *)arg1;
 - (id)_inqNewSynonymTextsByOwningGroupIdWithGroupIds:(struct __CFSet *)arg1;
+- (id)_inqNonFilenameGroupsWithMatchingGroupIds:(struct __CFSet *)arg1 dateFilter:(id)arg2 includeObjects:(BOOL)arg3 matchingPredicateBlock:(CDUnknownBlockType)arg4;
 - (id)_inqNumberOfAssetsByGroupIdMatchingGroupsWithIds:(id)arg1;
 - (unsigned long long)_inqNumberOfAssetsMatchingGroupWithId:(unsigned long long)arg1;
 - (id)_inqNumberOfCollectionsByGroupIdMatchingGroupsWithIds:(id)arg1;
@@ -129,7 +131,7 @@
 - (void)_inqUpdateGATableWithGroupId:(unsigned long long)arg1 assetId:(unsigned long long)arg2;
 - (void)_inqUpdateGCTableWithGroupId:(unsigned long long)arg1 collectionId:(unsigned long long)arg2;
 - (unsigned long long)_inqUpdateGroupForText:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningGroupId:(unsigned long long)arg4 didUpdateGroup:(out BOOL *)arg5;
-- (unsigned long long)_inqUpdateGroupForText:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningGroupId:(unsigned long long)arg4 shouldUpdateOwningGroupId:(BOOL)arg5 didUpdateGroup:(out BOOL *)arg6;
+- (unsigned long long)_inqUpdateGroupForText:(id)arg1 normalizedText:(id)arg2 identifier:(id)arg3 category:(short)arg4 owningGroupId:(unsigned long long)arg5 shouldUpdateOwningGroupId:(BOOL)arg6 didUpdateGroup:(out BOOL *)arg7;
 - (void)_inqUpdateSearchTermsWithSearchableTermsByGroupIds:(id)arg1;
 - (void)_prepareTokenOutput:(struct tokenOutput_t *)arg1 forIndexing:(BOOL)arg2;
 - (void)_processNextKeywordSuggestionsForQuery:(id)arg1 groupResults:(id)arg2 allowIdentifiers:(BOOL)arg3;
@@ -138,12 +140,9 @@
 - (void)addAssets:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addCollection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addCollections:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)addTrip:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)addTrips:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)allAssetUUIDsForGroupsWithCategories:(id)arg1;
 - (id)allCollectionUUIDsWithCollectionType:(unsigned long long)arg1;
 - (id)allGroupIds;
-- (id)allTripUUIDs;
 - (BOOL)assetExistsWithUUID:(id)arg1;
 - (id)assetUUIDByAssetIdWithAssetIds:(id)arg1;
 - (void)bindMatchingIds:(struct __CFSet *)arg1;
@@ -151,6 +150,7 @@
 - (void)bindMatchingIds:(struct __CFArray *)arg1 range:(struct _NSRange)arg2;
 - (id)collectionResultByCollectionIdWithCollectionIds:(id)arg1;
 - (void)dealloc;
+- (void)deleteFromLookupTableWithGroupId:(unsigned long long)arg1;
 - (void)dropDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (id)dumpLookupStrings;
 - (id)dumpPrefixStrings;
@@ -160,39 +160,35 @@
 - (void)executeStatementFromString:(id)arg1;
 - (void)executeStatementFromString:(id)arg1 withResultEnumerationBlock:(CDUnknownBlockType)arg2;
 - (void)fetchAssetUUIDsForAssetIDs:(struct __CFArray *)arg1 creationDateSorted:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)group:(id)arg1 fetchOwningContentString:(BOOL)arg2 assetIdRange:(struct _NSRange)arg3 collectionIdRange:(struct _NSRange)arg4 tripIdRange:(struct _NSRange)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)group:(id)arg1 fetchOwningContentString:(BOOL)arg2 assetIdRange:(struct _NSRange)arg3 collectionIdRange:(struct _NSRange)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)groupArraysFromGroupIdSets:(id)arg1 dateFilter:(id)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)groupIdsInLookupTable;
 - (id)groupIdsInPrefixTable;
 - (const struct __CFSet *)groupIdsMatchingString:(id)arg1 categories:(id)arg2 textIsSearchable:(BOOL)arg3;
-- (id)groupResultWithDateFilter:(id)arg1;
+- (id)groupResultWithDateFilter:(id)arg1 datedTokens:(id)arg2;
 - (id)groupWithMatchingGroupId:(unsigned long long)arg1 dateFilter:(id)arg2;
 - (id)initWithPath:(id)arg1 options:(long long)arg2 searchMetadata:(id)arg3;
 - (long long)insertAsset:(id)arg1;
 - (long long)insertCollection:(id)arg1;
 - (long long)insertGroup:(id)arg1;
-- (long long)insertTrip:(id)arg1;
+- (BOOL)isDatabaseCorrupted;
+- (BOOL)isLookupTableOutOfSync;
 - (long long)lastInsertedRowID;
 - (void)linkAssetWithId:(long long)arg1 toGroupWithId:(long long)arg2;
 - (void)linkCollectionWithId:(long long)arg1 toGroupWithId:(long long)arg2;
-- (void)linkTripWithId:(long long)arg1 toGroupWithId:(long long)arg2;
 - (id)meNodeIdentifier;
 - (id)newQueryWithSearchText:(id)arg1;
 - (id)newQueryWithSearchText:(id)arg1 identifiers:(id)arg2 useWildcardSearchText:(BOOL)arg3;
 - (id)newQueryWithSearchText:(id)arg1 queryTokens:(id)arg2 useWildcardSearchText:(BOOL)arg3;
 - (id)newQueryWithSearchText:(id)arg1 representedObjects:(id)arg2 useWildcardSearchText:(BOOL)arg3;
 - (void)prepareForNumberOfMatchingIds:(unsigned long long)arg1;
-- (void)removeAllTripsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeAssetWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeAssetsWithUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeCollectionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeCollectionsWithUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)removeTripWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)removeTripsWithUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeUnusedGroups;
 - (id)statementFromString:(id)arg1;
 - (id)suggestionWhitelistedScenes;
-- (id)tripResultByTripIdWithTripIds:(id)arg1;
 - (void)unbindMatchingIds;
 - (void)unprepareMatchingIds;
 - (unsigned long long)updateGroupForText:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningGroupId:(unsigned long long)arg4 didUpdateGroup:(out BOOL *)arg5;

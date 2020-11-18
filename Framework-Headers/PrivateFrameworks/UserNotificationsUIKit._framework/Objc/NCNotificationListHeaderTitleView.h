@@ -43,7 +43,6 @@
 - (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -18,10 +18,12 @@
 @property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 
 - (id)description;
+- (BOOL)hasExplicitCrop;
 - (id)init;
 - (id)initWithTargetSize:(struct CGSize)arg1;
 - (id)initWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2;
 - (id)initWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 normalizedCropRect:(struct CGRect)arg3;
+- (BOOL)isTargetingMaximumSizeWithFullSizedWidth:(long long)arg1 height:(long long)arg2;
 - (struct CGSize)requestSizeFromFullSizedWidth:(long long)arg1 height:(long long)arg2;
 - (id)shortDescription;
 

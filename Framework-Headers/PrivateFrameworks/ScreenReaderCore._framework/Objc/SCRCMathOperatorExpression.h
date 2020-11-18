@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isTermSeparator;
 - (id)latexFormatStringAsOver;
 - (id)mathMLString;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2;
 
 @end
 

@@ -7,11 +7,10 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <VoiceShortcuts/NSCopying-Protocol.h>
-#import <VoiceShortcuts/SYChange-Protocol.h>
 
 @class NSData, NSString;
 
-@interface VCPBChange : PBCodable <SYChange, NSCopying>
+@interface VCPBChange : PBCodable <NSCopying>
 {
     int _changeType;
     NSData *_message;
@@ -19,16 +18,9 @@
     NSString *_uniqueID;
 }
 
-@property (readonly, nonatomic) long long changeType;
 @property (nonatomic) int changeType; // @synthesize changeType=_changeType;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSData *message; // @synthesize message=_message;
 @property (nonatomic) int messageType; // @synthesize messageType=_messageType;
-@property (readonly, nonatomic) NSString *objectIdentifier;
-@property (readonly, nonatomic) NSString *sequencer;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 
 - (void).cxx_destruct;
@@ -37,8 +29,9 @@
 - (id)changeTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)dictionaryRepresentation;
-- (id)initWithVoiceShortcutChange:(id)arg1;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)messageTypeAsString:(int)arg1;

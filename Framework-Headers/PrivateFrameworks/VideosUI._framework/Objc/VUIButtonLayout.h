@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 
 + (id)standardTitleLayoutWithStyle:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)_configureBarButtonItem;
 - (void)_configureImageButton;
 - (void)_configurePrimaryButton;
 - (void)_configureProductSecondaryButton;

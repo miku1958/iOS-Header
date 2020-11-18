@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableArray, NSMutableSet, NSNotificationCenter, NSNumber, PLManagedObjectContext;
+@class NSDictionary, NSMutableArray, NSMutableSet, NSNotificationCenter, NSNumber, PLChangeList, PLContentChanges, PLManagedObjectContext;
 @protocol OS_dispatch_queue;
 
 @interface PLChangeNotificationCenter : NSObject
@@ -16,17 +16,17 @@
     NSNumber *_cameraPreviewChangedToken;
     NSObject<OS_dispatch_queue> *_notificationHandlingQueue;
     NSMutableArray *_snapshots;
-    struct changeList_s _changedAlbumLists;
-    struct contentChanges_s _albumListsContent;
-    struct changeList_s _changedAlbums;
-    struct contentChanges_s _albumsContent;
-    struct changeList_s _changedAssets;
+    PLChangeList *_changedAlbumLists;
+    PLContentChanges *_albumListsContent;
+    PLChangeList *_changedAlbums;
+    PLContentChanges *_albumsContent;
+    PLChangeList *_changedAssets;
     NSMutableSet *_assetsWithCloudCommentChanges;
-    struct contentChanges_s _momentsContent;
-    struct changeList_s _changedMoments;
-    struct contentChanges_s _momentListsContent;
-    struct changeList_s _changedMomentLists;
-    struct changeList_s _changedCloudFeedEntries;
+    PLContentChanges *_momentsContent;
+    PLChangeList *_changedMoments;
+    PLContentChanges *_momentListsContent;
+    PLChangeList *_changedMomentLists;
+    PLChangeList *_changedCloudFeedEntries;
     PLManagedObjectContext *_moc;
     NSMutableArray *_enqueuedNotifications;
     NSDictionary *_remoteNotificationData;
@@ -37,10 +37,11 @@
 @property (readonly, nonatomic) BOOL _shouldForceFetchingAlbumsToReload;
 @property (readonly, strong, nonatomic) NSNotificationCenter *backingCenter;
 
-+ (id)allManagedObjectKeysStrategy;
++ (id)allManagedObjectKeysStrategyWithContext:(id)arg1;
 + (id)defaultCenter;
 + (void)forceFetchingAlbumReload;
-+ (void)getInsertedAssetCount:(unsigned long long *)arg1 deletedAssetCount:(unsigned long long *)arg2 fromContextDidChangeNotification:(id)arg3;
++ (void)getInsertedAssetCount:(unsigned long long *)arg1 deletedAssetCount:(unsigned long long *)arg2 updatedAssets:(id)arg3 fromContextDidChangeNotification:(id)arg4;
+- (void).cxx_destruct;
 - (id)_attributesOfInterestForObject:(id)arg1;
 - (void)_cleanupState;
 - (void)_enqueueAlbumChangeNotification:(id)arg1;
@@ -94,7 +95,7 @@
 - (void)managedObjectContextWillBeOverloaded:(id)arg1 withNotificationData:(id)arg2 usingObjectIDs:(BOOL)arg3;
 - (id)observeCameraPreviewWellImageChangeOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)postShouldReloadNotification;
+- (void)postShouldReloadNotificationWithPhotoLibrary:(id)arg1;
 - (void)processContextDidChangeNotification:(id)arg1;
 - (void)processContextDidSaveObjectIDsNotification:(id)arg1;
 - (void)removeAssetChangeObserver:(id)arg1;

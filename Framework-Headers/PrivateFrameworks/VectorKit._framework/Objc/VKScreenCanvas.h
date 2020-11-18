@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKCameraControllerDelegate-Protocol.h>
-
-@class ARSession, NSString, VKCamera, VKCameraController;
+@class ARSession, VKCamera, VKCameraController;
 @protocol MDMapControllerDelegate, MDRenderTarget;
 
 __attribute__((visibility("hidden")))
-@interface VKScreenCanvas : NSObject <VKCameraControllerDelegate>
+@interface VKScreenCanvas : NSObject
 {
     struct MapEngine *_mapEngine;
     struct RunLoopController *_runLoopController;
@@ -22,66 +20,40 @@ __attribute__((visibility("hidden")))
     id<MDRenderTarget> _displayTarget;
     BOOL _userIsGesturing;
     VKCameraController *_cameraController;
-    float _debugFramesPerSecond;
     struct VKEdgeInsets _edgeInsets;
     struct VKEdgeInsets _fullyOccludedEdgeInsets;
-    struct VKEdgeInsets _labelEdgeInsets;
     BOOL _deallocing;
-    struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _renderQueue;
-    Renderer_3c643a9a *_mapRenderer;
+    struct Renderer {
+        CDUnknownFunctionPointerType *;
+        shared_ptr_e963992e;
+        struct unique_ptr<md::PassList, std::__1::default_delete<md::PassList>>;
+        struct unique_ptr<md::RenderTargetRegistry, std::__1::default_delete<md::RenderTargetRegistry>>;
+        struct vector<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>, std::__1::allocator<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>>>;
+        struct linear_map<md::CommandBufferLocation, md::RenderLayer *, std::__1::equal_to<md::CommandBufferLocation>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>, std::__1::vector<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>>>;
+        struct RunLoopController *;
+        struct MapEngine *;
+    } *_mapRenderer;
     struct LayoutContext *_layoutContext;
-    Matrix_5173352a _bgColor;
     id<MDMapControllerDelegate> _mapDelegate;
     struct PerspectiveView<double> _view;
     ARSession *_arSession;
 }
 
-@property (nonatomic) unsigned char applicationUILayout;
-@property (readonly, nonatomic) Matrix_5173352a bgColor; // @synthesize bgColor=_bgColor;
 @property (readonly, nonatomic) VKCamera *camera; // @synthesize camera=_camera;
-@property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) float debugFramesPerSecond; // @synthesize debugFramesPerSecond=_debugFramesPerSecond;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) struct VKEdgeInsets edgeInsets;
-@property (nonatomic) unsigned char emphasis;
 @property (nonatomic) struct VKEdgeInsets fullyOccludedEdgeInsets; // @synthesize fullyOccludedEdgeInsets=_fullyOccludedEdgeInsets;
 @property (nonatomic, getter=isGesturing) BOOL gesturing;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) struct VKEdgeInsets labelEdgeInsets;
 @property (nonatomic) id<MDMapControllerDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
 @property (readonly, nonatomic) struct MapEngine *mapEngine; // @synthesize mapEngine=_mapEngine;
-@property (readonly) Class superclass;
-@property (nonatomic) unsigned char targetDisplay;
-@property (nonatomic) struct VehicleState vehicleState;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (shared_ptr_430519ce)buildingMarkerAtScreenPoint:(struct CGPoint)arg1;
 - (id)cameraController;
-- (void)cameraController:(id)arg1 canEnter3DModeDidChange:(BOOL)arg2;
-- (void)cameraController:(id)arg1 canZoomInDidChange:(BOOL)arg2;
-- (void)cameraController:(id)arg1 canZoomOutDidChange:(BOOL)arg2;
-- (void)cameraController:(id)arg1 didBecomePitched:(BOOL)arg2;
-- (void)cameraController:(id)arg1 didChangeRegionAnimated:(BOOL)arg2;
-- (void)cameraController:(id)arg1 flyoverModeDidChange:(int)arg2;
-- (void)cameraController:(id)arg1 flyoverModeWillChange:(int)arg2;
-- (id)cameraController:(id)arg1 presentationForAnnotation:(id)arg2;
 - (void)cameraController:(id)arg1 requestsDisplayRate:(long long)arg2;
-- (void)cameraController:(id)arg1 willChangeRegionAnimated:(BOOL)arg2;
-- (void)cameraControllerDidChangeCameraState:(id)arg1;
-- (void)cameraControllerDidFinishInitialTrackingAnimation:(id)arg1;
-- (void)cameraControllerDidLeaveDefaultZoom:(id)arg1;
-- (void)cameraControllerDidReturnToDefaultZoom:(id)arg1;
-- (void)cameraControllerHasStartedPanning:(id)arg1;
-- (void)cameraControllerHasStoppedPanning:(id)arg1;
-- (void)cameraControllerRequestsLayout:(id)arg1;
-- (void)cameraControllerRequestsUpdateDisplayLinkStatus:(id)arg1;
-- (BOOL)currentSceneRequiresMSAA;
 - (void)dealloc;
 - (void)didPresent;
 - (void)didReceiveMemoryWarning:(BOOL)arg1 beAggressive:(BOOL)arg2;
 - (shared_ptr_430519ce)featureMarkerAtScreenPoint:(struct CGPoint)arg1;
-- (void)gglWillDrawWithTimestamp;
 - (id)initWithMapEngine:(struct MapEngine *)arg1 inBackground:(BOOL)arg2;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
 - (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
@@ -89,12 +61,6 @@ __attribute__((visibility("hidden")))
 - (void)runAnimation:(id)arg1;
 - (void)setCameraController:(id)arg1;
 - (void)setContentsScale:(double)arg1;
-- (void)setNeedsLayout;
-- (void)setWantsLayout;
-- (void)softDealloc;
-- (shared_ptr_144c31f6)styleForFeature:(const shared_ptr_430519ce *)arg1;
-- (shared_ptr_a3c46825)styleManager;
-- (shared_ptr_664b6d77)stylesheet;
 - (long long)tileSize;
 - (void)transferStateFromCanvas:(id)arg1;
 - (void)updateCameraForFrameResize;

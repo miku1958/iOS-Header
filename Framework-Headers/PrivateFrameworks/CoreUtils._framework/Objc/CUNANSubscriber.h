@@ -6,16 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+#import <CoreUtils/WiFiAwareSubscriberDelegate-Protocol.h>
+
+@class NSArray, NSString, WiFiAwareSubscriber;
 @protocol OS_dispatch_queue;
 
-@interface CUNANSubscriber : NSObject
+@interface CUNANSubscriber : NSObject <WiFiAwareSubscriberDelegate>
 {
     CDUnknownBlockType _activateCompletion;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     struct _opaque_pthread_mutex_t _mutex;
     struct LogCategory *_ucat;
+    struct NSMutableDictionary *_wfaEndpoints;
+    WiFiAwareSubscriber *_wfaSubscriber;
     unsigned int _changeFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_label;
@@ -28,26 +32,38 @@
 }
 
 @property (nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSArray *discoveredEndpoints;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType endpointChangedHandler; // @synthesize endpointChangedHandler=_endpointChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType endpointFoundHandler; // @synthesize endpointFoundHandler=_endpointFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType endpointLostHandler; // @synthesize endpointLostHandler=_endpointLostHandler;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_invalidate;
 - (void)_invalidated;
 - (void)_lostAllEndpoints;
+- (void)_subscriber:(id)arg1 lostDiscoveryResultForPublishID:(unsigned char)arg2 address:(id)arg3;
+- (void)_subscriber:(id)arg1 receivedDiscoveyResult:(id)arg2;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)description;
 - (id)descriptionWithLevel:(int)arg1;
 - (id)init;
 - (void)invalidate;
+- (void)subscriber:(id)arg1 failedToStartWithError:(long long)arg2;
+- (void)subscriber:(id)arg1 lostDiscoveryResultForPublishID:(unsigned char)arg2 address:(id)arg3;
+- (void)subscriber:(id)arg1 receivedDiscoveyResult:(id)arg2;
+- (void)subscriber:(id)arg1 receivedMessage:(id)arg2 fromPublishID:(unsigned char)arg3 address:(id)arg4;
+- (void)subscriber:(id)arg1 terminatedWithReason:(long long)arg2;
+- (void)subscriberStarted:(id)arg1;
 
 @end
 

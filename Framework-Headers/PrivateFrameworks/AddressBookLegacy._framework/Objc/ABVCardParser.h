@@ -90,7 +90,6 @@
 - (id)defaultADRLabel;
 - (id)defaultLabel;
 - (id)defaultURLLabel;
-- (void)finalize;
 - (id)genericLabel;
 - (BOOL)hasImportErrors;
 - (BOOL)importToPerson:(void *)arg1 foundProperties:(const struct __CFArray **)arg2;
@@ -114,6 +113,9 @@
 - (BOOL)parseAlternateBirthday;
 - (BOOL)parseBDAY;
 - (BOOL)parseEMAIL;
+- (BOOL)parseGuardianWhitelisted;
+- (BOOL)parseIMAGEHASH;
+- (BOOL)parseIMAGETYPE;
 - (BOOL)parseIMPP;
 - (id)parseInstantMessengerProfile:(id)arg1;
 - (BOOL)parseItem;

@@ -9,7 +9,7 @@
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
 #import <ARKit/ARReplaySensorDelegate-Protocol.h>
 
-@class ARScreenRecording, NSMutableData, NSMutableDictionary, NSOutputStream, NSString, UILabel;
+@class ARPresentationStats, ARScreenRecording, NSArray, NSDictionary, NSMutableData, NSMutableDictionary, NSOutputStream, NSString, UILabel;
 @protocol ARQATracerDelegate, OS_dispatch_queue;
 
 @interface ARQATracer : NSObject <ARInternalSessionObserver, ARReplaySensorDelegate>
@@ -20,12 +20,15 @@
     NSMutableData *_dataBuffer;
     NSOutputStream *_framesStreamToFile;
     NSObject<OS_dispatch_queue> *_processingQueue;
+    NSDictionary *_raycastQueryData;
+    NSArray *_raycastResultData;
     BOOL _forceQuitApp;
     BOOL _recordScreen;
     id<ARQATracerDelegate> _delegate;
     NSString *_traceOutputFilePath;
     UILabel *_replayFrameLabel;
     ARScreenRecording *_screenRecorder;
+    ARPresentationStats *_presentationStats;
     struct CGPoint _offset;
 }
 
@@ -35,6 +38,7 @@
 @property (nonatomic) BOOL forceQuitApp; // @synthesize forceQuitApp=_forceQuitApp;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
+@property (strong, nonatomic) ARPresentationStats *presentationStats; // @synthesize presentationStats=_presentationStats;
 @property (nonatomic) BOOL recordScreen; // @synthesize recordScreen=_recordScreen;
 @property (strong, nonatomic) UILabel *replayFrameLabel; // @synthesize replayFrameLabel=_replayFrameLabel;
 @property (strong, nonatomic) ARScreenRecording *screenRecorder; // @synthesize screenRecorder=_screenRecorder;
@@ -45,6 +49,7 @@
 - (void).cxx_destruct;
 - (void)addFrameLabel:(id)arg1;
 - (id)createTraceOutputDirectory;
+- (void)dealloc;
 - (void)flushDataBufferToFile;
 - (id)init;
 - (void)receiveDefaults;
@@ -53,7 +58,9 @@
 - (void)session:(id)arg1 didUpdateFrame:(id)arg2;
 - (void)start:(id)arg1;
 - (void)stop;
-- (void)update:(id)arg1;
+- (void)traceRaycastQuery:(id)arg1;
+- (void)traceRaycastResults:(id)arg1;
+- (void)update:(id)arg1 session:(id)arg2;
 - (void)writeJSONObjectToStream:(id)arg1 prefix:(id)arg2;
 - (void)writeStringToOutputStream:(id)arg1;
 

@@ -6,32 +6,26 @@
 
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSObject, NSOrderedSet, NSString;
-@protocol NSCopying, PLMomentData;
+@class NSArray, NSDate, NSObject, NSSet, NSString;
+@protocol NSCopying;
 
 @protocol PLMomentListData <PLMomentRefreshable>
 
 @property (readonly, strong, nonatomic) NSArray *batchedMoments;
 @property (strong, nonatomic) NSDate *endDate;
-@property (nonatomic) short generationType;
 @property (nonatomic) short granularityLevel;
-@property (strong, nonatomic) NSOrderedSet *moments;
+@property (readonly, strong, nonatomic) NSString *momentListDebugDescription;
+@property (readonly, strong, nonatomic) NSSet *moments;
 @property (strong, nonatomic) NSDate *representativeDate;
-@property (strong, nonatomic) NSData *reverseLocationData;
-@property (nonatomic) BOOL reverseLocationDataContainsLocation;
-@property (nonatomic) BOOL reverseLocationDataIsValid;
 @property (nonatomic) int sortIndex;
 @property (strong, nonatomic) NSDate *startDate;
+@property (readonly, strong, nonatomic) NSString *title;
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *uniqueObjectID;
-@property (strong, nonatomic) NSArray *userTitles;
 
-- (void)addMomentToFront:(id<PLMomentData>)arg1;
-- (void)addMoments:(NSOrderedSet *)arg1;
+- (void)addMoments:(NSSet *)arg1;
 - (void)delete;
 - (BOOL)isDeleted;
-- (void)removeMoments:(NSOrderedSet *)arg1;
 
 @optional
-- (NSString *)momentListDebugDescription;
 @end
 

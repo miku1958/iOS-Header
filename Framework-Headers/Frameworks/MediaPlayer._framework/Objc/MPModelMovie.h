@@ -15,6 +15,7 @@
 @property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @dynamic artworkCatalogBlock;
 @property (copy, nonatomic) NSArray *clips; // @dynamic clips;
 @property (copy, nonatomic) NSString *descriptionText; // @dynamic descriptionText;
+@property (readonly, copy, nonatomic) NSDate *downloadedDate; // @dynamic downloadedDate;
 @property (nonatomic) double duration; // @dynamic duration;
 @property (copy, nonatomic) CDUnknownBlockType editorialArtworkCatalogBlock; // @dynamic editorialArtworkCatalogBlock;
 @property (nonatomic) long long explicitRating; // @dynamic explicitRating;
@@ -35,6 +36,7 @@
 + (id)__artworkCatalogBlock_KEY;
 + (id)__clips_KEY;
 + (id)__descriptionText_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__duration_KEY;
 + (id)__editorialArtworkCatalogBlock_KEY;
 + (id)__explicitRating_KEY;

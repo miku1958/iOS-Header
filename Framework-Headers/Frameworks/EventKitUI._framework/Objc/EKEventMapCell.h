@@ -6,20 +6,23 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class EKEventMapDetailItem, UIView;
+@class EKEventMapDetailItem;
 
 @interface EKEventMapCell : UITableViewCell
 {
-    UIView *_mapView;
+    BOOL _currentlyLoading;
+    BOOL _mapViewSetup;
     EKEventMapDetailItem *_detailItem;
 }
 
+@property (nonatomic) BOOL currentlyLoading; // @synthesize currentlyLoading=_currentlyLoading;
 @property (weak, nonatomic) EKEventMapDetailItem *detailItem; // @synthesize detailItem=_detailItem;
-@property (strong, nonatomic) UIView *mapView; // @synthesize mapView=_mapView;
+@property (nonatomic) BOOL mapViewSetup; // @synthesize mapViewSetup=_mapViewSetup;
 
 - (void).cxx_destruct;
 - (void)_drawContentInRect:(struct CGRect)arg1 selected:(BOOL)arg2;
 - (void)_drawSeparatorInRect:(struct CGRect)arg1;
+- (void)layoutSubviews;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <MediaPlaybackCore/MPCMediaRemoteMiddlewareControllerProviding-Protocol.h>
 #import <MediaPlaybackCore/MPMiddlewareAutomaticDependencyOperation-Protocol.h>
 
-@class MPCFuture, MPCMediaRemoteController, MPCMediaRemoteMiddleware, MPCPlayerRequest, NSArray, NSError, NSMapTable, NSString;
+@class MPCFuture, MPCMediaRemoteController, MPCMediaRemoteMiddleware, MPCPlayerPath, NSArray, NSError, NSMapTable, NSString;
 
 @interface MPCMediaRemoteMiddlewareControllerOperation : MPAsyncOperation <MPCMediaRemoteMiddlewareControllerProviding, MPMiddlewareAutomaticDependencyOperation>
 {
@@ -17,11 +17,12 @@
     CDUnknownBlockType _invalidationHandler;
     NSArray *_invalidationObservers;
     MPCMediaRemoteMiddleware *_middleware;
-    MPCPlayerRequest *_playerRequest;
+    MPCPlayerPath *_playerPath;
     MPCFuture *_controllerFuture;
 }
 
 @property (readonly, nonatomic) MPCMediaRemoteController *controller;
+@property (readonly, nonatomic) MPCFuture *controllerFuture;
 @property (strong, nonatomic) MPCFuture *controllerFuture; // @synthesize controllerFuture=_controllerFuture;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,18 +32,18 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *inputOperations; // @synthesize inputOperations=_inputOperations;
-@property (readonly, nonatomic) NSArray *inputsProtocols;
+@property (readonly, nonatomic) NSArray *inputProtocols;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (readonly, nonatomic) NSArray *invalidationObservers; // @synthesize invalidationObservers=_invalidationObservers;
 @property (strong, nonatomic) MPCMediaRemoteMiddleware *middleware; // @synthesize middleware=_middleware;
 @property (readonly, nonatomic) NSArray *outputProtocols;
-@property (strong, nonatomic) MPCPlayerRequest *playerRequest; // @synthesize playerRequest=_playerRequest;
+@property (strong, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)execute;
-- (id)initWithMiddleware:(id)arg1 playerRequest:(id)arg2;
+- (id)initWithMiddleware:(id)arg1 playerPath:(id)arg2;
 - (id)timeoutDescription;
 
 @end

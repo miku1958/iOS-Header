@@ -12,7 +12,6 @@
 @protocol BCSAction <NSObject>
 
 @property (readonly, copy, nonatomic) NSArray *actionPickerItems;
-@property (readonly, nonatomic) BOOL canSkipUnlock;
 @property (readonly, copy, nonatomic) NSString *defaultActionTargetApplicationBundleIdentifier;
 @property (weak, nonatomic) id<BCSActionDelegate> delegate;
 @property (readonly, copy, nonatomic) NSString *localizedActionDescription;
@@ -23,5 +22,8 @@
 - (void)performAction;
 - (void)performDefaultAction;
 - (void)showActionPicker;
+
+@optional
+- (void)performDefaultActionWithCompletionHandler:(void (^)(NSError *))arg1;
 @end
 

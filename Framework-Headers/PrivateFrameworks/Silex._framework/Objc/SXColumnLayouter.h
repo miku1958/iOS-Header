@@ -43,7 +43,7 @@
 - (id)initWithLayouterFactory:(id)arg1 layoutContextFactory:(id)arg2 unitConverterFactory:(id)arg3;
 - (BOOL)intersectionPossibleForComponentWithBlueprint:(id)arg1 anchoredToComponentWithBlueprint:(id)arg2 layoutBlueprint:(id)arg3 columnStack:(id)arg4;
 - (int)layoutAttributeForAnchor:(long long)arg1;
-- (void)layoutBlueprint:(id)arg1 columnLayout:(id)arg2 shouldContinue:(BOOL *)arg3;
+- (void)layoutBlueprint:(id)arg1 columnLayout:(id)arg2 description:(id)arg3 shouldContinue:(BOOL *)arg4;
 - (id)sortComponentDependencies:(id)arg1 forBlueprint:(id)arg2;
 - (BOOL)stack:(id)arg1 stackComponents:(id)arg2 containsComponentIncludingAnchoredComponents:(id)arg3 forSourceComponent:(id)arg4;
 

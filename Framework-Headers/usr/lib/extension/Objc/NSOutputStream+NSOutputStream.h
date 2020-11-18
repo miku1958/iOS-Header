@@ -12,7 +12,9 @@
 + (id)outputStreamToFileAtPath:(id)arg1 append:(BOOL)arg2;
 + (id)outputStreamToMemory;
 + (id)outputStreamWithURL:(id)arg1 append:(BOOL)arg2;
+- (CDStruct_87dc826d)_cfStreamError;
 - (unsigned long long)_cfTypeID;
+- (void)dealloc;
 - (BOOL)hasSpaceAvailable;
 - (id)initToBuffer:(char *)arg1 capacity:(unsigned long long)arg2;
 - (id)initToMemory;

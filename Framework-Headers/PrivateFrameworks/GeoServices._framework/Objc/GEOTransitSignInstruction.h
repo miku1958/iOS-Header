@@ -6,28 +6,59 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <GeoServices/GEOComposedRouteStepTransitInstructionMerging-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-@interface GEOTransitSignInstruction : PBCodable <NSCopying>
+@interface GEOTransitSignInstruction : PBCodable <GEOComposedRouteStepTransitInstructionMerging, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_commandFormatteds;
     NSMutableArray *_detailFormatteds;
     NSMutableArray *_noticeFormatteds;
     NSMutableArray *_priceFormatteds;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_commandFormatteds:1;
+        unsigned int read_detailFormatteds:1;
+        unsigned int read_noticeFormatteds:1;
+        unsigned int read_priceFormatteds:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_commandFormatteds:1;
+        unsigned int wrote_detailFormatteds:1;
+        unsigned int wrote_noticeFormatteds:1;
+        unsigned int wrote_priceFormatteds:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *commandFormatteds; // @synthesize commandFormatteds=_commandFormatteds;
-@property (strong, nonatomic) NSMutableArray *detailFormatteds; // @synthesize detailFormatteds=_detailFormatteds;
-@property (strong, nonatomic) NSMutableArray *noticeFormatteds; // @synthesize noticeFormatteds=_noticeFormatteds;
-@property (strong, nonatomic) NSMutableArray *priceFormatteds; // @synthesize priceFormatteds=_priceFormatteds;
+@property (strong, nonatomic) NSMutableArray *commandFormatteds;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableArray *detailFormatteds;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableArray *noticeFormatteds;
+@property (strong, nonatomic) NSMutableArray *priceFormatteds;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)commandFormattedType;
 + (Class)detailFormattedType;
++ (BOOL)isValid:(id)arg1;
 + (Class)noticeFormattedType;
 + (Class)priceFormattedType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsCommandFormatted:(id)arg1;
+- (void)_addNoFlagsDetailFormatted:(id)arg1;
+- (void)_addNoFlagsNoticeFormatted:(id)arg1;
+- (void)_addNoFlagsPriceFormatted:(id)arg1;
+- (void)_readCommandFormatteds;
+- (void)_readDetailFormatteds;
+- (void)_readNoticeFormatteds;
+- (void)_readPriceFormatteds;
+- (void)_transit_prepareForDeepMergeFrom:(id)arg1;
 - (void)addCommandFormatted:(id)arg1;
 - (void)addDetailFormatted:(id)arg1;
 - (void)addNoticeFormatted:(id)arg1;
@@ -36,21 +67,21 @@
 - (void)clearDetailFormatteds;
 - (void)clearNoticeFormatteds;
 - (void)clearPriceFormatteds;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (id)commandFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)commandFormattedsCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)detailFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)detailFormattedsCount;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)noticeFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)noticeFormattedsCount;
 - (id)priceFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)priceFormattedsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

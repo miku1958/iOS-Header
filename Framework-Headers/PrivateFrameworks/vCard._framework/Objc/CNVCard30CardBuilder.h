@@ -42,6 +42,7 @@
 - (void)addCardDAVUID;
 - (void)addCategories;
 - (void)addCompanyMarker;
+- (void)addDowntimeWhitelist;
 - (void)addEmailAddresses;
 - (void)addEndOfCard;
 - (void)addFullName;

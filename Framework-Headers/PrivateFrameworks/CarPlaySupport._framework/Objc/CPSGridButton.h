@@ -24,6 +24,7 @@
 
 + (id)buttonWithGridButton:(id)arg1 templateDelegate:(id)arg2;
 - (void).cxx_destruct;
+- (void)_updateLabelColor;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)layoutSubviews;
 - (double)preferredLabelWidth;
@@ -31,6 +32,7 @@
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

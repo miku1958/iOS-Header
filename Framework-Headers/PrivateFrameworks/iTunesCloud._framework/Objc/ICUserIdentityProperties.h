@@ -10,7 +10,7 @@
 #import <iTunesCloud/NSMutableCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICDelegateToken, NSDate, NSNumber, NSString;
+@class ICDelegateToken, NSArray, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface ICUserIdentityProperties : NSObject <NSMutableCopying, NSCopying, NSSecureCoding>
 {
@@ -29,19 +29,33 @@
     BOOL _subscriptionStatusEnabled;
     NSString *_username;
     NSDate *_ageVerificationExpirationDate;
+    NSNumber *_mergeToCloudLibraryPreference;
+    NSArray *_homeUserIdentifiers;
+    NSDictionary *_cloudLibraryStateReason;
+    NSNumber *_privateListeningEnabled;
+    BOOL _activeLocker;
+    BOOL _active;
+    NSDictionary *_privateListeningEnabledForHomeUsers;
 }
 
 @property (readonly, copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_dsid;
+@property (readonly, nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (readonly, nonatomic, getter=isActiveLocker) BOOL activeLocker; // @synthesize activeLocker=_activeLocker;
 @property (readonly, copy, nonatomic) NSDate *ageVerificationExpirationDate;
 @property (readonly, copy, nonatomic) NSString *alternateDSID;
 @property (readonly, copy, nonatomic) NSString *carrierBundleDeviceIdentifier;
 @property (nonatomic, getter=isCloudBackupEnabled) BOOL cloudBackupEnabled; // @synthesize cloudBackupEnabled=_cloudBackupEnabled;
+@property (readonly, copy, nonatomic) NSDictionary *cloudLibraryStateReason;
 @property (readonly, copy, nonatomic) ICDelegateToken *delegateToken; // @synthesize delegateToken=_delegateToken;
 @property (readonly, nonatomic, getter=isDelegated) BOOL delegated; // @synthesize delegated=_delegated;
 @property (readonly, copy, nonatomic) NSString *firstName;
+@property (copy, nonatomic) NSArray *homeUserIdentifiers; // @synthesize homeUserIdentifiers=_homeUserIdentifiers;
 @property (copy, nonatomic, setter=setICloudPersonID:) NSString *iCloudPersonID; // @synthesize iCloudPersonID=_iCloudPersonID;
 @property (readonly, copy, nonatomic) NSString *lastName;
 @property (readonly, nonatomic, getter=isManagedAppleID) BOOL managedAppleID; // @synthesize managedAppleID=_managedAppleID;
+@property (readonly, copy, nonatomic) NSNumber *mergeToCloudLibraryPreference;
+@property (readonly, copy, nonatomic) NSNumber *privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
+@property (copy, nonatomic) NSDictionary *privateListeningEnabledForHomeUsers; // @synthesize privateListeningEnabledForHomeUsers=_privateListeningEnabledForHomeUsers;
 @property (readonly, nonatomic, getter=isSandboxed) BOOL sandboxed; // @synthesize sandboxed=_sandboxed;
 @property (readonly, copy, nonatomic) NSString *storefrontIdentifier;
 @property (readonly, nonatomic, getter=isSubscriptionStatusEnabled) BOOL subscriptionStatusEnabled; // @synthesize subscriptionStatusEnabled=_subscriptionStatusEnabled;

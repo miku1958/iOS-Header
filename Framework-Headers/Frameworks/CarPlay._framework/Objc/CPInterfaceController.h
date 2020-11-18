@@ -10,18 +10,20 @@
 #import <CarPlay/CPTemplateServiceClientInterface-Protocol.h>
 
 @class CPTemplate, CPWindow, NSArray, NSMutableArray, NSString, NSXPCConnection;
-@protocol CPInterfaceControllerDelegate, CPTemplateProviding;
+@protocol CPInterfaceControllerDelegate, CPTemplateProviding, CPWindowProviding;
 
 @interface CPInterfaceController : NSObject <CPTemplateDelegate, CPTemplateServiceClientInterface>
 {
+    BOOL _prefersDarkUserInterfaceStyle;
     id<CPInterfaceControllerDelegate> _delegate;
     CPTemplate *_rootTemplate;
     NSXPCConnection *_connection;
     id<CPTemplateProviding> _templateProvider;
-    CPWindow *_carWindow;
     NSMutableArray *_templateStack;
     CPTemplate *_presentedTemplate;
     CPTemplate *_lastPresentedTemplate;
+    CPWindow *_carWindow;
+    id<CPWindowProviding> _windowProvider;
 }
 
 @property (strong, nonatomic) CPWindow *carWindow; // @synthesize carWindow=_carWindow;
@@ -31,6 +33,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CPTemplate *lastPresentedTemplate; // @synthesize lastPresentedTemplate=_lastPresentedTemplate;
+@property (nonatomic) BOOL prefersDarkUserInterfaceStyle; // @synthesize prefersDarkUserInterfaceStyle=_prefersDarkUserInterfaceStyle;
 @property (strong, nonatomic) CPTemplate *presentedTemplate; // @synthesize presentedTemplate=_presentedTemplate;
 @property (strong, nonatomic) CPTemplate *rootTemplate; // @synthesize rootTemplate=_rootTemplate;
 @property (readonly) Class superclass;
@@ -38,22 +41,19 @@
 @property (strong, nonatomic) NSMutableArray *templateStack; // @synthesize templateStack=_templateStack;
 @property (readonly, nonatomic) NSArray *templates;
 @property (readonly, nonatomic) CPTemplate *topTemplate;
+@property (weak, nonatomic) id<CPWindowProviding> windowProvider; // @synthesize windowProvider=_windowProvider;
 
 + (id)_templateClientInterface;
 + (id)_templateProvidingInterface;
 + (void)_whitelistClassesForBaseTemplateProvider:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (id)_activeMapTemplate;
 - (BOOL)_applicationHasMapsEntitlement;
-- (void)_canvasDidConnect:(id)arg1;
-- (void)_canvasWillDisconnect:(id)arg1;
 - (void)_connectToListenerEndpoint:(id)arg1;
 - (void)_connectionInterrupted;
 - (void)_connectionInvalidated;
-- (void)_handleConnectedCanvas:(id)arg1;
-- (void)_handleDisconnectedCanvas:(id)arg1;
 - (id)_init;
+- (void)_invalidate;
 - (id)_listenerEndpointForSettings:(id)arg1;
 - (void)_presentActionSheetTemplate:(id)arg1 animated:(BOOL)arg2;
 - (void)_presentAlertTemplate:(id)arg1 animated:(BOOL)arg2;
@@ -63,13 +63,15 @@
 - (void)_pushSearchTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)_pushTemplate:(id)arg1 presentationStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)_pushVoiceControlTemplate:(id)arg1 animated:(BOOL)arg2;
-- (id)_windowForCarScreen:(id)arg1;
+- (void)_sceneConnect:(id)arg1;
+- (id)_synchronousTemplateProvider;
 - (void)bannerDidAppearWithIdentifier:(id)arg1;
 - (void)bannerDidDisappearWithIdentifier:(id)arg1;
 - (void)bannerTappedWithIdentifier:(id)arg1;
 - (void)clientExceededHierarchyDepthLimit;
 - (void)dismissTemplateAnimated:(BOOL)arg1;
 - (void)handleActionForControlIdentifier:(id)arg1;
+- (BOOL)isCarPlayCanvasActive;
 - (void)popTemplateAnimated:(BOOL)arg1;
 - (void)popToRootTemplateAnimated:(BOOL)arg1;
 - (void)popToTemplate:(id)arg1 animated:(BOOL)arg2;

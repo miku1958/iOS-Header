@@ -38,8 +38,6 @@
 @property (readonly, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (readonly, nonatomic) CSSearchableItemAttributeSet *contentAttributeSet; // @synthesize contentAttributeSet=_contentAttributeSet;
 @property (readonly, nonatomic) ATXActionCriteria *criteria;
-@property (readonly, nonatomic) NSString *customSubtitle;
-@property (readonly, nonatomic) NSString *customTitle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -56,6 +54,7 @@
 @property (readonly, nonatomic) NSString *userActivityString; // @synthesize userActivityString=_userActivityString;
 
 + (id)_extractValueInKeyValueBlob:(id)arg1 withKey:(id)arg2;
++ (BOOL)_isTVIntent:(id)arg1 bundleId:(id)arg2;
 + (BOOL)_isTVWhiteListedLongFormMediaIntent:(id)arg1 bundleId:(id)arg2;
 + (unsigned long long)_userActivityHashForUserInfoDict:(id)arg1 activityType:(id)arg2 webpageURL:(id)arg3;
 + (id)getActionKeyForBundleId:(id)arg1 actionType:(id)arg2;
@@ -69,7 +68,7 @@
 - (id)actionKey;
 - (id)actionSubtitle;
 - (id)actionTitle;
-- (id)atx_actionWithRouteInfo:(id)arg1;
+- (id)actionWithRouteInfo:(id)arg1;
 - (id)copyWithParameterWhitelist:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dateForAction;
@@ -78,13 +77,12 @@
 - (id)init;
 - (id)initWithActivity:(id)arg1 activityString:(id)arg2 itemIdentifier:(id)arg3 contentAttributeSet:(id)arg4 intent:(id)arg5 actionUUID:(id)arg6 bundleId:(id)arg7 type:(unsigned long long)arg8 heuristic:(id)arg9 heuristicMetadata:(id)arg10 criteria:(id)arg11 isFutureMedia:(BOOL)arg12 routeInfo:(id)arg13 title:(id)arg14 subtitle:(id)arg15;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIntent:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 heuristic:(id)arg4 criteria:(id)arg5 isFutureMedia:(BOOL)arg6 title:(id)arg7 subtitle:(id)arg8;
 - (id)initWithIntent:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 heuristic:(id)arg4 heuristicMetadata:(id)arg5 criteria:(id)arg6 isFutureMedia:(BOOL)arg7 title:(id)arg8 subtitle:(id)arg9;
-- (id)initWithNSUserActivity:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 contentAttributeSet:(id)arg4 itemIdentifier:(id)arg5 heuristic:(id)arg6 criteria:(id)arg7 isFutureMedia:(BOOL)arg8 title:(id)arg9 subtitle:(id)arg10;
 - (id)initWithNSUserActivity:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 contentAttributeSet:(id)arg4 itemIdentifier:(id)arg5 heuristic:(id)arg6 heuristicMetadata:(id)arg7 criteria:(id)arg8 isFutureMedia:(BOOL)arg9 title:(id)arg10 subtitle:(id)arg11;
-- (id)initWithNSUserActivityString:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 itemIdentifier:(id)arg4 contentAttributeSet:(id)arg5 heuristic:(id)arg6 isFutureMedia:(BOOL)arg7 title:(id)arg8 subtitle:(id)arg9;
+- (id)initWithNSUserActivityString:(id)arg1 actionUUID:(id)arg2 bundleId:(id)arg3 itemIdentifier:(id)arg4 contentAttributeSet:(id)arg5 heuristic:(id)arg6 heuristicMetadata:(id)arg7 isFutureMedia:(BOOL)arg8 title:(id)arg9 subtitle:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAction:(id)arg1;
+- (BOOL)isTVAction;
 - (id)json;
 - (id)predictionTypeStringForPET;
 - (void)setCriteria:(id)arg1;

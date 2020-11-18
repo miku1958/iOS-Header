@@ -8,5 +8,6 @@
 
 @protocol DCDeviceMetadataProtocol <NSObject>
 - (void)fetchOpaqueBlobWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)isSupportedDeviceWithCompletion:(void (^)(BOOL, NSError *))arg1;
 @end
 

@@ -20,7 +20,7 @@
 + (void)_performAuthenticationWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)_userAccount;
 + (BOOL)allowsAccountModification;
-+ (void)requestAuthenticationWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)requestAuthenticationAlwaysPrompt:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)sharedInstance;
 + (void)signInUserWithAppleID:(id)arg1 password:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)signOutUserWithCompletionHandler:(CDUnknownBlockType)arg1;

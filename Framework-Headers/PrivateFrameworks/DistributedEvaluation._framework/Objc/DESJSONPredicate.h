@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)_testStrings:(id)arg1 test:(id)arg2 caseInsensitive:(BOOL)arg3;
 + (BOOL)evaluateAnd:(id)arg1 onObj:(id)arg2;
 + (BOOL)evaluateArrayOp:(id)arg1 onObj:(id)arg2;
 + (BOOL)evaluateBoolOp:(id)arg1 onObj:(id)arg2;

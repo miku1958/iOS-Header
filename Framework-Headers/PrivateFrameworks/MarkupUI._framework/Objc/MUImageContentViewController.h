@@ -20,6 +20,7 @@
     BOOL _usePlaceholderAsDisplayImageIfPossible;
     BOOL _inDoubleTapZoom;
     BOOL _didSetup;
+    BOOL _firstLoadZoomToFit;
     UIImage *_tentativePlaceholderImage;
     double _maxImageDimension;
     unsigned long long _inkStyle;
@@ -46,6 +47,7 @@
 @property double downsampledImageScale; // @synthesize downsampledImageScale=_downsampledImageScale;
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (weak, nonatomic) AKRectAnnotation *editingAnnotaiton; // @synthesize editingAnnotaiton=_editingAnnotaiton;
+@property (nonatomic) BOOL firstLoadZoomToFit; // @synthesize firstLoadZoomToFit=_firstLoadZoomToFit;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL inDoubleTapZoom; // @synthesize inDoubleTapZoom=_inDoubleTapZoom;
@@ -70,6 +72,7 @@
 - (void)_annotationDidEndEditing:(id)arg1;
 - (struct CGRect)_annotationRectInOverlay:(id)arg1 pageIndex:(unsigned long long)arg2;
 - (void)_annotationWillBeginEditing:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_doubleTap:(id)arg1;
 - (void)_downsampleImageForDisplay:(struct CGImage *)arg1 fromImageSource:(struct CGImageSource *)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_imageIsSize:(struct CGSize)arg1 isSmallerThanSize:(struct CGSize)arg2;

@@ -16,7 +16,7 @@
 - (void)applyToLabel:(id)arg1;
 - (void)applyToNavigationController:(id)arg1;
 - (void)applyToObjectModel:(id)arg1;
-- (id)barBackgroundImage;
+- (id)barBackgroundImageForUserInterfaceStyle:(long long)arg1;
 - (id)init;
 
 @end

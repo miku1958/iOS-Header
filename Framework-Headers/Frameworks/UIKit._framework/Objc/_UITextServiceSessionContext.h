@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct _NSRange selectedRange; // @synthesize selectedRange=_selectedRange;
 @property (readonly, nonatomic) UIResponder<UITextInput> *textInput; // @synthesize textInput=_textInput;
 @property (readonly, copy, nonatomic) NSString *textWithContext; // @synthesize textWithContext=_textWithContext;
-@property (readonly, nonatomic) UIView *view; // @synthesize view=_view;
+@property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
 + (id)sessionContextForType:(long long)arg1 withTextInput:(id)arg2;
 + (id)sessionContextWithText:(id)arg1 withRect:(struct CGRect)arg2 withRange:(struct _NSRange)arg3 withView:(id)arg4;

@@ -40,7 +40,6 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) CDUnknownBlockType thumbnailProvider; // @synthesize thumbnailProvider=_thumbnailProvider;
 
-+ (id)defaultThumbnail;
 - (void).cxx_destruct;
 - (void)discardContent;
 - (id)initWithIdentifier:(id)arg1 localizedName:(id)arg2 thumbnailProvider:(CDUnknownBlockType)arg3 presetResourcesProvider:(CDUnknownBlockType)arg4 avatarUpdater:(CDUnknownBlockType)arg5 heightRatio:(double)arg6 selected:(BOOL)arg7;

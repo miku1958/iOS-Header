@@ -18,14 +18,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) TSUColor *numbersKeyColor; // @synthesize numbersKeyColor=_numbersKeyColor;
 
 - (void).cxx_destruct;
+- (BOOL)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(BOOL)arg3;
 - (id)appChartPropertyOverrides;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (id)applicationDisplayName;
 - (id)applicationName;
-- (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (unsigned long long)applicationType;
 - (id)bladerunnerContainerIdentifier;
 - (id)cloudKitContainerIdentifier;
+- (id)cloudKitSyncContainerIdentifier;
 - (void)configureSharedCode;
 - (id)createCompatibilityDelegate;
 - (Class)documentRootClass;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)registerSOSClassTypeMappings;
 - (id)sharedAlertMessageWithUserName:(id)arg1;
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
+- (id)stringForApplePencilDoubleTapSettingsDescription;
 - (id)stringForApplicationUpdateError;
 - (id)stringForBoxCollaborationOptInMessage;
 - (id)stringForChangePasswordWhileConnectingAlertMessage;
@@ -73,6 +76,8 @@ __attribute__((visibility("hidden")))
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
+- (id)stringForMoveInlineToFloatingButtonTitle;
+- (id)stringForMoveInlineToFloatingButtonToolTip;
 - (id)stringForNoItemsSyncingListItem;
 - (id)stringForOwnerHasCollabEnabledMessage;
 - (id)stringForOwnerHasCollabEnabledTitle;

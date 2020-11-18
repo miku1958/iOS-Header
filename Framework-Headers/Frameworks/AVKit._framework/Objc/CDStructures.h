@@ -11,12 +11,12 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 #pragma mark Named Structures
 
 struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
+    double a;
+    double b;
+    double c;
+    double d;
+    double tx;
+    double ty;
 };
 
 struct CGPoint {
@@ -34,11 +34,30 @@ struct CGSize {
     double height;
 };
 
+struct CVSMPTETime {
+    short subframes;
+    short subframeDivisor;
+    unsigned int counter;
+    unsigned int type;
+    unsigned int flags;
+    short hours;
+    short minutes;
+    short seconds;
+    short frames;
+};
+
 struct NSDirectionalEdgeInsets {
     double top;
     double leading;
     double bottom;
     double trailing;
+};
+
+struct NSEdgeInsets {
+    double top;
+    double left;
+    double bottom;
+    double right;
 };
 
 struct UIEdgeInsets {

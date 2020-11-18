@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) INFSentenceContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) INFSentenceToken *originalToken; // @synthesize originalToken=_originalToken;
 @property (copy, nonatomic) NSString *placeholderName; // @synthesize placeholderName=_placeholderName;
-@property (getter=isResolved) BOOL resolved; // @synthesize resolved=_resolved;
+@property (nonatomic, getter=isResolved) BOOL resolved; // @synthesize resolved=_resolved;
 
 + (id)sentenceResolvedTokenWithOriginalToken:(id)arg1 placeholderName:(id)arg2;
 - (void).cxx_destruct;

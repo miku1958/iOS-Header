@@ -6,13 +6,13 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDSQLiteDatabase, HDSQLiteStatement, NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
+@class HDSQLiteDatabase, HDSQLiteOrderingTerm, HDSQLiteStatement, NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSSortDescriptor, NSString, NSUUID;
 
 @protocol HDSQLiteEntity <NSObject>
 + (NSArray *)allDatabaseColumnNames;
 + (NSSet *)checkConstraints;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
-+ (NSArray *)columnsDefinition;
++ (NSString *)createTableSQL;
 + (NSString *)databaseName;
 + (NSString *)databaseTable;
 + (HDSQLiteStatement *)deleteStatementWithProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
@@ -25,8 +25,10 @@
 + (NSArray *)indices;
 + (BOOL)isTemporary;
 + (NSSet *)joinClausesForProperty:(NSString *)arg1;
++ (HDSQLiteOrderingTerm *)orderingTermForSortDescriptor:(NSSortDescriptor *)arg1;
 + (NSArray *)privateSubEntities;
 + (NSArray *)tableAliases;
++ (NSArray *)uniquedColumns;
 - (NSUUID *)UUIDForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
 - (BOOL)booleanForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
 - (NSDate *)dateForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
@@ -37,8 +39,5 @@
 - (NSString *)stringForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
 - (id)valueForProperty:(NSString *)arg1 database:(HDSQLiteDatabase *)arg2;
 - (void)willDeleteFromDatabase:(HDSQLiteDatabase *)arg1;
-
-@optional
-+ (NSString *)columnNameForSortIdentifier:(NSString *)arg1;
 @end
 

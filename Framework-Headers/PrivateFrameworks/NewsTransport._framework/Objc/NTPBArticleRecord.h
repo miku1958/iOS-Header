@@ -14,6 +14,7 @@
 {
     long long _backendArticleVersion;
     long long _behaviorFlags;
+    long long _bodyTextLength;
     unsigned long long _halfLifeMilliseconds;
     long long _minimumNewsVersion;
     long long _publisherArticleVersion;
@@ -88,6 +89,7 @@
     struct {
         unsigned int backendArticleVersion:1;
         unsigned int behaviorFlags:1;
+        unsigned int bodyTextLength:1;
         unsigned int halfLifeMilliseconds:1;
         unsigned int minimumNewsVersion:1;
         unsigned int publisherArticleVersion:1;
@@ -119,6 +121,7 @@
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
 @property (strong, nonatomic) NSMutableArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
+@property (nonatomic) long long bodyTextLength; // @synthesize bodyTextLength=_bodyTextLength;
 @property (strong, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
 @property (nonatomic) int contentType; // @synthesize contentType=_contentType;
 @property (strong, nonatomic) NSString *contentURL; // @synthesize contentURL=_contentURL;
@@ -134,6 +137,7 @@
 @property (nonatomic) BOOL hasBackendArticleVersion;
 @property (readonly, nonatomic) BOOL hasBase;
 @property (nonatomic) BOOL hasBehaviorFlags;
+@property (nonatomic) BOOL hasBodyTextLength;
 @property (readonly, nonatomic) BOOL hasClusterID;
 @property (nonatomic) BOOL hasContentType;
 @property (readonly, nonatomic) BOOL hasContentURL;

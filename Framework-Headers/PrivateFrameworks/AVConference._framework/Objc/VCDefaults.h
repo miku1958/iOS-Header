@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     int _forceVideoPayload;
     int _forceRecvVideoPayload;
     int _forceKeyFrameInterval;
+    BOOL _forceWiFiAssist;
+    BOOL _forceWiFiAssistOutOfBudget;
 }
 
 @property (readonly) unsigned int aacBlockSize;
@@ -38,6 +40,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL dumpMediaBlob;
 @property (readonly) int enable2vuyCapture;
 @property (readonly) BOOL enableBitstreamCapture;
+@property (readonly) BOOL enableGFTStatsReceiveThread;
+@property (readonly) BOOL enableGFTStatsReporting;
+@property (readonly) BOOL enableHEIFAndHEVCForMoments;
 @property (readonly) BOOL enablePacketLogging;
 @property (readonly) BOOL enableRecvBitstreamDump;
 @property (readonly) BOOL enableTxBitstreamDump;
@@ -60,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) int forceCaptureHeight;
 @property (readonly) int forceCaptureWidth;
 @property (readonly) BOOL forceDisableAudioPowerSpectrumRegister;
+@property (readonly) BOOL forceDisableEffectsHealthCheck;
 @property (readonly) BOOL forceDisableFaceZoom;
 @property (readonly) BOOL forceDisableMediaEncryption;
 @property (readonly) BOOL forceDisableMediaPriority;
@@ -89,14 +95,19 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL forceScreenHWI;
 @property (readonly) BOOL forceUseFloat;
 @property (readonly) int forceVideoPayload;
+@property (readonly) BOOL forceVideoStreamDisableBitrateCap;
 @property (readonly) int forceVideoStreamFramerate;
 @property (readonly) int forceVideoStreamKeyFrameInterval;
+@property (readonly) BOOL forceVideoStreamLowLatency;
+@property (readonly) int forceVideoStreamPayload;
 @property (readonly) int forceVideoStreamResolution;
 @property (readonly) int forceVideoStreamRxMaxBitrate;
 @property (readonly) int forceVideoStreamRxMinBitrate;
 @property (readonly) int forceVideoStreamTxMaxBitrate;
 @property (readonly) int forceVideoStreamTxMinBitrate;
 @property (readonly) unsigned int forceVisibilityIndex;
+@property (readonly) BOOL forceWiFiAssist; // @synthesize forceWiFiAssist=_forceWiFiAssist;
+@property (readonly) BOOL forceWiFiAssistOutOfBudget; // @synthesize forceWiFiAssistOutOfBudget=_forceWiFiAssistOutOfBudget;
 @property (readonly) int localWRMLinkType;
 @property (readonly) int max2GRate;
 @property (readonly) unsigned int maxActiveVideoDecoders;
@@ -108,20 +119,28 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int multiwayAudioNetworkBitrateCapWifi;
 @property (readonly) unsigned int multiwayVideoNetworkBitrateCapCellular;
 @property (readonly) unsigned int multiwayVideoNetworkBitrateCapWifi;
+@property (readonly) int packetExpirationTime;
 @property (readonly) float pauseHeartbeatInterval;
 @property (readonly) unsigned int prominenceActiveAccumulationThreshold;
 @property (readonly) unsigned int prominenceActiveProbabilityThreshold;
 @property (readonly) unsigned int prominenceInactiveAccumulationThreshold;
 @property (readonly) unsigned int prominenceInactiveProbabilityThreshold;
+@property (readonly) BOOL rateControlAllowBurstyLossRampDown;
+@property (readonly) BOOL rateControlAllowVideoStop;
 @property (readonly) BOOL rateControlDumpEnabled;
 @property (readonly) int rateControlForceRxCap;
 @property (readonly) int rateControlForceRxRate;
 @property (readonly) int rateControlForceTxCap;
 @property (readonly) int rateControlForceTxRate;
 @property (readonly) BOOL rateControlLogEnabled;
+@property (readonly) int rateControlStatisticsQueueWaitTime;
+@property (readonly) int rateControllerType;
+@property (readonly) BOOL rearCameraVideoStablization;
 @property (readonly) int redundancyControlForceVideoRedundancyPercentage;
+@property (readonly) double remoteMediaStallTimeout;
 @property (readonly) BOOL shouldDisplayVideoInfoLayer;
 @property (readonly) unsigned int silenceLevelMovingAveragePeriod;
+@property (readonly) int tilesPerVideoFrame;
 @property (readonly) BOOL useSBR;
 @property (readonly) int videoStreamRateControlAlgorithm;
 @property (readonly) BOOL videoStreamRateControlDumpEnabled;
@@ -138,6 +157,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)enableAudioDumpParticipantLocal:(BOOL)arg1;
 - (BOOL)enableAudioDumpParticipantRemote:(BOOL)arg1;
 - (unsigned int)forceThermalLevelFramerate:(unsigned int)arg1;
+- (BOOL)forceUseInternalRTPThreadingWithDefaultValue:(BOOL)arg1;
+- (BOOL)forceWifiAssist;
+- (BOOL)forceWifiAssistOutOfBudget;
 - (id)init;
 - (oneway void)release;
 - (id)retain;

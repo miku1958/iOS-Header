@@ -15,7 +15,7 @@
     NSArray *_signerInfoSet;
 }
 
-@property (readonly) NSArray *signerInfoSet; // @synthesize signerInfoSet=_signerInfoSet;
+@property (readonly, strong) NSArray *signerInfoSet; // @synthesize signerInfoSet=_signerInfoSet;
 
 - (void).cxx_destruct;
 - (void)addSignerInfo:(id)arg1;

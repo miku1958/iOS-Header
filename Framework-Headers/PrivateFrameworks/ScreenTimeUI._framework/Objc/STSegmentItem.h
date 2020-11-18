@@ -14,16 +14,18 @@
     NSString *_detailText;
     UIColor *_titleColor;
     UIImage *_detailImage;
+    UIColor *_detailImageTintColor;
 }
 
 @property (readonly, nonatomic) UIImage *detailImage; // @synthesize detailImage=_detailImage;
+@property (readonly, copy) UIColor *detailImageTintColor; // @synthesize detailImageTintColor=_detailImageTintColor;
 @property (readonly, copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property (readonly, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
 @property (readonly, copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 
 - (void).cxx_destruct;
 - (unsigned long long)hash;
-- (id)initWithTitleText:(id)arg1 detailText:(id)arg2 titleColor:(id)arg3 detailImage:(id)arg4;
+- (id)initWithTitleText:(id)arg1 detailText:(id)arg2 titleColor:(id)arg3 detailImage:(id)arg4 detailImageTintColor:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

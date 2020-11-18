@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSArray *formattedTextItems; // @synthesize formattedTextItems=_formattedTextItems;
 @property (readonly) BOOL hasContent;
+@property (readonly) BOOL hasOnlyImage;
 
 - (void).cxx_destruct;
 - (id)description;

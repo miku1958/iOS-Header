@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     GEONavigationMapMatcher *_mapMatcher;
     GEOETAUpdater *_etaUpdater;
     MNNavigationTraceManager *_traceManager;
-    BOOL _requestNonRecommendedRoutes;
     BOOL _routingInProgress;
     unsigned long long _destinationID;
     MNCommuteDestinationSuggestion *_suggestion;
@@ -33,15 +32,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOComposedWaypoint *destination;
 @property (nonatomic) unsigned long long destinationID; // @synthesize destinationID=_destinationID;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL requestNonRecommendedRoutes; // @synthesize requestNonRecommendedRoutes=_requestNonRecommendedRoutes;
 @property (readonly, nonatomic) GEOComposedRoute *route;
 @property (nonatomic) BOOL routingInProgress; // @synthesize routingInProgress=_routingInProgress;
 @property (readonly, nonatomic) MNCommuteDestinationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_checkArrivalForLocation:(id)arg1 route:(id)arg2 destination:(id)arg3;
 - (id)_directionsRequestFeedback;
 - (void)_handleDirectionsResponse:(id)arg1 error:(id)arg2 forRequest:(id)arg3;
+- (void)_handleWaypoint:(id)arg1 fromLocation:(id)arg2 error:(id)arg3;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (id)_matchedLocationForMatchResult:(id)arg1 originalLocation:(id)arg2;
 - (void)_requestRouteFromLocation:(id)arg1;

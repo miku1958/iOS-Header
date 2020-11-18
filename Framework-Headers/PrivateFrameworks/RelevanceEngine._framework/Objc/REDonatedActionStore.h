@@ -11,6 +11,8 @@
 
 @interface REDonatedActionStore : REObservableSingleton
 {
+    BOOL _isMonitoringLockState;
+    BOOL _synchronized;
     NSObject<OS_dispatch_queue> *_queue;
     REUpNextScheduler *_donationsScheduler;
     REUpNextScheduler *_deletionsScheduler;
@@ -18,21 +20,23 @@
 
 - (void).cxx_destruct;
 - (void)_beginLoadingData;
-- (void)_distributeAllDonatedActions;
-- (void)_distributeRecentDeletedActions;
-- (void)_distributeRecentDonatedActions;
-- (void)_finishLoadingData;
+- (void)_finishLoadingData:(unsigned long long)arg1;
+- (id)_init;
+- (void)_notified_distributeRecentDeletedActions:(id)arg1;
+- (void)_notified_distributeRecentDonatedActions:(id)arg1;
+- (void)_notified_removeThenDistributeAllActions:(id)arg1;
+- (void)_queue_autoreleased_distributeAllDonatedActions;
 - (void)_queue_distributeAllDonatedActions;
 - (void)_queue_distributeRecentDeletedActions;
 - (void)_queue_distributeRecentDonatedActions;
-- (void)_removeThenDistributeAllActions;
+- (BOOL)_shouldLimitQueries;
 - (void)_subscribeToNotifications;
 - (id)callbackQueue;
 - (void)dealloc;
 - (void)fetchDonationWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)init;
 - (void)start;
-- (void)triggerDistributeAllDonatedActions;
+- (void)synchronizeDonationsIfNecessary;
+- (void)triggerDistributeAllDonatedActions:(BOOL)arg1;
 
 @end
 

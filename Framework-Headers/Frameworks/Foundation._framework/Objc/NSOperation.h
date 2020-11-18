@@ -6,13 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSHashTable, NSMutableArray, NSOperationQueue, NSString;
+@protocol OS_voucher;
 
 @interface NSOperation : NSObject
 {
-    id _private;
-    int _private1;
-    int _private1b;
+    struct {
+        NSOperation *__prevOp;
+        NSOperation *__nextOp;
+        NSOperation *__nextPriOp;
+        NSOperationQueue *__queue;
+        NSMutableArray *__dependencies;
+        NSHashTable *__down_dependencies;
+        long long __unfinished_deps;
+        CDUnknownBlockType __completion;
+        void *__obsInfo;
+        void *__implicitObsInfo;
+        double __thread_prio;
+        char *__nameBuffer;
+        NSObject<OS_voucher> *_voucher;
+        CDUnknownBlockType __schedule;
+        struct _opaque_pthread_mutex_t __wait_mutex;
+        struct _opaque_pthread_cond_t {
+            long long __sig;
+            char __opaque[40];
+        } __wait_cond;
+        struct os_unfair_lock_s __lock;
+        BOOL _shouldRemoveDependenciesAfterFinish;
+        _Atomic unsigned char __state;
+        char __prio;
+        _Atomic BOOL __cached_isReady;
+        _Atomic BOOL __isCancelled;
+        _Atomic unsigned char __propertyQoS;
+        _Atomic unsigned char __isExecutingObserverCount;
+        _Atomic unsigned char __isFinishedObserverCount;
+        _Atomic unsigned char __isReadyObserverCount;
+        _Atomic unsigned char __isCancelledObserverCount;
+    } _iop;
 }
 
 @property (readonly, getter=isAsynchronous) BOOL asynchronous;
@@ -40,7 +70,6 @@
 + (id)keyPathsForValuesAffectingIsReady;
 + (id)keyPathsForValuesAffectingReady;
 - (id)__graphDescription:(unsigned long long)arg1;
-- (id)_activity;
 - (CDUnknownBlockType)_copyCompletionBlock;
 - (id)_implicitObservationInfo;
 - (void)addDependency:(id)arg1;

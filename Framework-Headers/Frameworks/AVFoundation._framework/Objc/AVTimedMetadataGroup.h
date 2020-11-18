@@ -25,7 +25,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithItems:(id)arg1 timeRange:(CDStruct_e83c9415)arg2;

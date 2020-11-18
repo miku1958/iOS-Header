@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void)invalidateSelectionAnimated:(BOOL)arg1;
 - (void)pickerDidCancel;
+- (void)pickerDidSelectAddNewContact;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;

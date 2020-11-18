@@ -13,7 +13,7 @@
 - (void)addPresenter:(id<NSFilePresenterXPCInterface>)arg1 withID:(id)arg2 fileURL:(NSURL *)arg3 lastPresentedItemEventIdentifier:(NSNumber *)arg4 ubiquityAttributes:(NSSet *)arg5 options:(unsigned long long)arg6 responses:(unsigned long long)arg7;
 - (void)addProvider:(id<NSFileProviderXPCInterface>)arg1 withID:(id)arg2 uniqueID:(NSUUID *)arg3 forProvidedItemsURL:(NSURL *)arg4 options:(unsigned long long)arg5 withServer:(NSXPCListenerEndpoint *)arg6 reply:(void (^)(BOOL))arg7;
 - (void)getItemHasPresentersAtURL:(NSURL *)arg1 completionHandler:(void (^)(BOOL))arg2;
-- (void)grantAccessClaim:(NSFileAccessClaim *)arg1 withReply:(void (^)(NSArray *, NSArray *, NSArray *, NSError *))arg2;
+- (void)grantAccessClaim:(NSFileAccessClaim *)arg1 withReply:(void (^)(NSArray *, NSArray *, NSArray *, BOOL, NSError *))arg2;
 - (void)grantSubarbitrationClaim:(NSFileSubarbitrationClaim *)arg1 withServer:(NSXPCListenerEndpoint *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)performBarrierWithCompletionHandler:(void (^)(void))arg1;
 - (oneway void)prepareToArbitrateForURLs:(NSArray *)arg1;

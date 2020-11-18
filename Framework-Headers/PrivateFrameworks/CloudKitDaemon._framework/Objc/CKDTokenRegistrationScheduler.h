@@ -35,25 +35,25 @@
 @property (strong, nonatomic) NSMutableDictionary *unitTestingPushTokens; // @synthesize unitTestingPushTokens=_unitTestingPushTokens;
 
 + (id)sharedScheduler;
-+ (id)sharedSchedulerWithUnitTestingAccountInfoProvider:(id)arg1;
++ (id)sharedSchedulerWithUnitTestingContextInfoProvider:(id)arg1 accountInfoProvider:(id)arg2;
 - (void).cxx_destruct;
-- (void)_refreshApsToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 darkWakeEnabled:(BOOL)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
-- (void)_removeApsToken:(id)arg1 appContainerTuple:(id)arg2 apsEnvironmentString:(id)arg3 darkWakeEnabled:(BOOL)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)_handlePushToken:(id)arg1 forAppContainerAccountTuple:(id)arg2 applicationMetadata:(id)arg3 appContainerIntersectionMetadata:(id)arg4;
+- (void)_refreshApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 apsEnvironmentString:(id)arg3 pushBundleIdentifier:(id)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)_removeApsToken:(id)arg1 appContainerAccountTuple:(id)arg2 apsEnvironmentString:(id)arg3 pushBundleIdentifier:(id)arg4 isCKSystemService:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (BOOL)canRunGivenAvailabilityState:(unsigned long long)arg1;
 - (void)dealloc;
-- (void)ensureTokenRefreshForAppContainerTuple:(id)arg1 apsEnvironmentString:(id)arg2 darkWakeEnabled:(BOOL)arg3 isCKSystemService:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)ensureTokenRefreshForAppContainerAccountTuple:(id)arg1 contextInfoProvider:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)forceTokenRefreshForAllClients;
 - (void)handlePublicPushTokenDidUpdate:(id)arg1;
-- (void)handlePushTokenDidUpdate:(id)arg1;
 - (id)init;
 - (id)initWithAccountInfoProvider:(id)arg1;
-- (void)refreshAllClientsNow;
+- (void)refreshAllClientsNow:(BOOL)arg1;
 - (void)registerTokenRefreshActivity;
 - (void)setSchedulerAvailable:(BOOL)arg1;
 - (void)systemAvailabilityChanged:(unsigned long long)arg1;
 - (void)tokenRefreshChanged;
-- (void)unregisterAllTokensWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)unregisterTokenForAppContainerTuple:(id)arg1;
+- (void)unregisterAllTokensForAccountID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)unregisterTokenForAppContainerAccountTuple:(id)arg1;
 
 @end
 

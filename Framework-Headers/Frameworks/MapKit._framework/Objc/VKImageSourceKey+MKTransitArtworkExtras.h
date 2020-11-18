@@ -11,13 +11,13 @@
 #import <MapKit/GEOTransitShieldDataSource-Protocol.h>
 
 @class NSString;
-@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource;
+@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
 @interface VKImageSourceKey (MKTransitArtworkExtras) <GEOTransitArtworkDataSource, GEOTransitIconDataSource, GEOTransitShieldDataSource>
 
 @property (readonly, nonatomic) NSString *accessibilityText;
-@property (readonly, nonatomic) long long artworkSourceType;
-@property (readonly, nonatomic) long long artworkUseType;
+@property (readonly, nonatomic) int artworkSourceType;
+@property (readonly, nonatomic) int artworkUseType;
 @property (readonly, nonatomic) unsigned int cartoID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned int defaultTransitType;
@@ -28,12 +28,13 @@
 @property (readonly, nonatomic) unsigned int iconAttributeValue;
 @property (readonly, nonatomic) id<GEOTransitIconDataSource> iconDataSource;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> iconFallbackShieldDataSource;
-@property (readonly, nonatomic) long long iconType;
+@property (readonly, nonatomic) int iconType;
 @property (readonly, nonatomic) NSString *shieldColorString;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> shieldDataSource;
 @property (readonly, nonatomic) NSString *shieldText;
 @property (readonly, nonatomic) long long shieldType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<GEOTransitTextDataSource> textDataSource;
 
 @end
 

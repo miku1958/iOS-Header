@@ -45,6 +45,7 @@
 - (void).cxx_destruct;
 - (void)addDataSource:(id)arg1;
 - (void)cancelIndexingOperationsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)clearObjectIDsToProcess;
 - (void)clearRetryForSelector:(SEL)arg1;
 - (void)dataSourceDidChange:(id)arg1;
 - (id)dataSourceWithIdentifier:(id)arg1;
@@ -52,16 +53,17 @@
 - (void)finishRemainingOperationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)newContextsForAllDataSources;
+- (id)objectForManagedObjectIDURI:(id)arg1 inContexts:(id)arg2;
 - (id)objectForSearchableItem:(id)arg1 context:(id)arg2;
-- (id)objectForSearchableItemIdentifier:(id)arg1 inContexts:(id)arg2;
 - (id)objectsDictionaryForSearchableItems:(id)arg1 inContexts:(id)arg2;
 - (id)objectsForSearchableItems:(id)arg1 inContexts:(id)arg2;
+- (id)pendingReindexingOperation;
 - (void)processChanges;
 - (void)reindexAllSearchableItemsInIndex;
 - (void)reindexAllSearchableItemsInIndex:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reindexAllSearchableItemsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)reindexSearchableItemsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)reindexSearchableItemsWithIdentifiers:(id)arg1 inIndex:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)reindexSearchableItemsWithObjectIDURIs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)reindexSearchableItemsWithObjectIDURIs:(id)arg1 inIndex:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeDataSource:(id)arg1;
 - (void)retrySelector:(SEL)arg1;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;

@@ -33,9 +33,14 @@
 - (long long)_enabledLevelForCategory:(id)arg1;
 - (id)_levelPrefsForCategory:(id)arg1;
 - (long long)_persistedLevelForCategory:(id)arg1;
+- (id)_prefsForCategory:(id)arg1;
 - (void)_resetCategory:(id)arg1;
 - (void)_setEnabledLevel:(long long)arg1 forCategory:(id)arg2;
 - (void)_setPersistedLevel:(long long)arg1 forCategory:(id)arg2;
+- (void)_setSignpostEnabled:(BOOL)arg1 forCategory:(id)arg2;
+- (void)_setSignpostPersisted:(BOOL)arg1 forCategory:(id)arg2;
+- (BOOL)_signpostEnabledForCategory:(id)arg1;
+- (BOOL)_signpostPersistedForCategory:(id)arg1;
 - (long long)defaultEnabledLevel;
 - (long long)defaultPersistedLevel;
 - (id)initWithName:(id)arg1;

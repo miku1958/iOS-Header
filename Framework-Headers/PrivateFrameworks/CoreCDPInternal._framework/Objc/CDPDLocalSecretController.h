@@ -12,7 +12,7 @@
 @class CDPContext, CDPDCircleController, CDPDSecureBackupController;
 @protocol CDPLocalSecretFollowUpProvider, CDPStateUIProviderInternal;
 
-@interface CDPDLocalSecretController : NSObject <CDPDSecureBackupDelegate, CDPDCircleDelegate>
+@interface CDPDLocalSecretController : NSObject <CDPDCircleDelegate, CDPDSecureBackupDelegate>
 {
     CDPContext *_context;
     CDPDCircleController *_circleController;
@@ -28,13 +28,15 @@
 @property (strong, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
 - (void).cxx_destruct;
+- (void)_attemptToEscrowPreRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_cdpStateMachine;
 - (void)_collectLocalSecretWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_createContextForSecret:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_handleCompletionStatus:(BOOL)arg1;
+- (void)_handleCompletionStatus:(BOOL)arg1 preRecord:(BOOL)arg2;
 - (void)_localSecretChangedTo:(id)arg1 secretType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_repairWithStateMachine:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setContextWithAuthResults:(id)arg1;
+- (void)attemptToEscrowPreRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;
 - (id)contextForController:(id)arg1;

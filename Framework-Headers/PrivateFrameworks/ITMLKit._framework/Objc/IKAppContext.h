@@ -10,7 +10,7 @@
 #import <ITMLKit/IKJSInspectorControllerDelegate-Protocol.h>
 #import <ITMLKit/ISURLOperationDelegate-Protocol.h>
 
-@class IKAppCache, IKAppReloadContext, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKJSViewModelService, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString, NSThread, NSURL;
+@class IKAppCache, IKAppReloadContext, IKJSApplication, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKJSViewModelService, IKJSWeakMap, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString, NSThread, NSURL;
 @protocol IKAppContextDelegate, IKAppScriptFallbackHandler, IKApplication, OS_dispatch_source;
 
 @interface IKAppContext : NSObject <ISURLOperationDelegate, IKAppCacheDelegate, IKJSInspectorControllerDelegate>
@@ -51,7 +51,9 @@
     NSMutableArray *_pendingQueue;
     NSURL *_resolvedBootURL;
     NSMutableArray *_postEvaluationBlocks;
+    IKJSApplication *_jsApp;
     IKJSFoundation *_jsFoundation;
+    IKJSWeakMap *_jsWeakMap;
     IKJSViewModelService *_jsViewModelService;
     IKViewElementRegistry *_viewElementRegistry;
     IKJSInspectorController *_webInspectorController;
@@ -69,9 +71,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property BOOL isValid; // @synthesize isValid=_isValid;
+@property (strong, nonatomic) IKJSApplication *jsApp; // @synthesize jsApp=_jsApp;
 @property (strong, nonatomic) JSContext *jsContext; // @synthesize jsContext=_jsContext;
 @property (strong, nonatomic) IKJSFoundation *jsFoundation; // @synthesize jsFoundation=_jsFoundation;
 @property (strong, nonatomic) IKJSViewModelService *jsViewModelService; // @synthesize jsViewModelService=_jsViewModelService;
+@property (strong, nonatomic) IKJSWeakMap *jsWeakMap; // @synthesize jsWeakMap=_jsWeakMap;
 @property (nonatomic) BOOL mescalPrimeEnabledForXHRRequests; // @synthesize mescalPrimeEnabledForXHRRequests=_mescalPrimeEnabledForXHRRequests;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;

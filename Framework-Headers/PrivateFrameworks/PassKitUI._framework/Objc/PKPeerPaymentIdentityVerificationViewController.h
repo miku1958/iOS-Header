@@ -40,8 +40,6 @@
 - (id)initWithController:(id)arg1 visibleFieldIdentifiers:(id)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (id)visibleFieldIdentifiers;
 
 @end

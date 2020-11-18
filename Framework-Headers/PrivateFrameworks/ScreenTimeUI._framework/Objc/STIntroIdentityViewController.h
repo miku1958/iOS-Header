@@ -4,13 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ScreenTimeUI/STIntroSplashViewController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
-@interface STIntroIdentityViewController : STIntroSplashViewController
+@class STIntroductionModel;
+
+__attribute__((visibility("hidden")))
+@interface STIntroIdentityViewController : OBWelcomeController
 {
+    STIntroductionModel *_model;
+    CDUnknownBlockType _continueHandler;
 }
 
-- (void)viewDidLoad;
+@property (readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
+@property (readonly) STIntroductionModel *model; // @synthesize model=_model;
+
+- (void).cxx_destruct;
+- (void)_myChildsDevice:(id)arg1;
+- (void)_myDevice:(id)arg1;
+- (id)initWithIntroductionModel:(id)arg1 continueHandler:(CDUnknownBlockType)arg2;
+- (void)loadView;
 
 @end
 

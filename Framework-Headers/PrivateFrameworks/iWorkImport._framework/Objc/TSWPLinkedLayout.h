@@ -16,10 +16,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSWPLayoutManager *layoutManager; // @dynamic layoutManager;
 @property (nonatomic) BOOL textLayoutValid; // @dynamic textLayoutValid;
 
+- (BOOL)descendersCannotClip;
+- (BOOL)discardLayoutsForDrawableAttachmentsInRange:(struct _NSRange)arg1;
 - (void)i_validateTextLayout;
 - (BOOL)isLastTarget;
 - (BOOL)isLinked;
 - (BOOL)isOverflowing;
+- (void)killDrawableLayouts:(id)arg1;
 - (id)nextTargetFirstColumn;
 - (id)nextTargetTopicNumbers;
 - (id)previousTargetLastColumn;
@@ -27,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)repShouldPreventCaret;
 - (void)validate;
 - (void)willBeRemovedFromLayoutController:(id)arg1;
+- (void)wrappableChildInvalidated:(id)arg1;
 
 @end
 

@@ -35,6 +35,7 @@
 @property (strong, nonatomic) NSString *tzVersion; // @synthesize tzVersion=_tzVersion;
 @property (strong, nonatomic) NSNumber *uses24hTime; // @synthesize uses24hTime=_uses24hTime;
 
++ (id)currentContext;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_yearMonthDay;

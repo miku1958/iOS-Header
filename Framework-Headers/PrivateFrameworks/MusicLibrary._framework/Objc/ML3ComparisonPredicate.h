@@ -10,19 +10,18 @@
 
 @interface ML3ComparisonPredicate : ML3PropertyPredicate
 {
-    id _value;
-    NSString *_transformFunction;
-    int _comparison;
     BOOL _caseInsensitive;
+    int _comparison;
+    id _value;
     NSString *_treatNullAsString;
+    NSString *_transformFunction;
 }
 
-@property (nonatomic) BOOL caseInsensitive; // @synthesize caseInsensitive=_caseInsensitive;
-@property (nonatomic) int comparison; // @synthesize comparison=_comparison;
-@property (readonly, copy, nonatomic) NSString *operator;
-@property (copy, nonatomic) NSString *transformFunction; // @synthesize transformFunction=_transformFunction;
-@property (copy, nonatomic) NSString *treatNullAsString; // @synthesize treatNullAsString=_treatNullAsString;
-@property (strong, nonatomic) id value; // @synthesize value=_value;
+@property (readonly, nonatomic) BOOL caseInsensitive; // @synthesize caseInsensitive=_caseInsensitive;
+@property (readonly, nonatomic) int comparison; // @synthesize comparison=_comparison;
+@property (readonly, copy, nonatomic) NSString *transformFunction; // @synthesize transformFunction=_transformFunction;
+@property (readonly, copy, nonatomic) NSString *treatNullAsString; // @synthesize treatNullAsString=_treatNullAsString;
+@property (readonly, nonatomic) id value; // @synthesize value=_value;
 
 + (id)predicateWithProperty:(id)arg1 equalToInt64:(long long)arg2;
 + (id)predicateWithProperty:(id)arg1 equalToInteger:(long long)arg2;
@@ -42,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProperty:(id)arg1 value:(id)arg2 comparison:(int)arg3 caseInsensitive:(BOOL)arg4 transformFunction:(id)arg5 treatNullAsString:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
+- (id)operator;
 - (id)valueToBindForOperation:(long long)arg1;
 
 @end

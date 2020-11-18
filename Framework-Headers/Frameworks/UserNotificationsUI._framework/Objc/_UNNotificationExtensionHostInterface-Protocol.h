@@ -7,14 +7,12 @@
 @class NSArray, NSString, UIColor, UNNotificationResponse;
 
 @protocol _UNNotificationExtensionHostInterface
-- (void)_extensionAudioAccessoryViewContextId:(unsigned int)arg1;
 - (void)_extensionDidCompleteNotificationResponse:(UNNotificationResponse *)arg1 withOption:(unsigned long long)arg2;
 - (void)_extensionDidUpdateControls;
 - (void)_extensionMediaPlayingPaused;
 - (void)_extensionMediaPlayingStarted;
 - (void)_extensionRequestsDefaultAction;
 - (void)_extensionRequestsDismiss;
-- (void)_extensionRequestsToSetDismissEnabled:(BOOL)arg1;
 - (void)_extensionSetPlayPauseMediaButtonColor:(UIColor *)arg1;
 - (void)_extensionSetPlayPauseMediaButtonFrame:(struct CGRect)arg1;
 - (void)_extensionSetPlayPauseMediaButtonType:(unsigned long long)arg1;

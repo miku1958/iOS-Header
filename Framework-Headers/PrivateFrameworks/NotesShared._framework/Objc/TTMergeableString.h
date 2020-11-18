@@ -65,7 +65,7 @@
 - (void)dumpMergeData:(id)arg1;
 - (void)endEditing;
 - (vector_c5c053b6 *)endNodes;
-- (void)enumerateRangesModifiedAfter:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateRangesModifiedAfter:(id)arg1 includingAttributes:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateSubstrings:(CDUnknownBlockType)arg1;
 - (void)generateIdsForLocalChanges;
 - (void)generateIdsForLocalChangesSafeForSharedTimestamp:(BOOL)arg1;
@@ -115,6 +115,7 @@
 - (vector_c5c053b6 *)startNodes;
 - (id)string;
 - (long long)substring:(struct TopoSubstring *)arg1 modifiedAfter:(id)arg2;
+- (long long)substring:(struct TopoSubstring *)arg1 modifiedAfter:(id)arg2 includeAttributes:(BOOL)arg3;
 - (BOOL)textEitherSideOfSelectionAnchor:(struct TopoID)arg1 wasModifiedAfter:(id)arg2;
 - (id)tombstone;
 - (void)traverseUnordered:(CDUnknownBlockType)arg1;

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     NSFileAccessProcessManager *_processManager;
     NSObject<OS_dispatch_semaphore> *_claimerWaiter;
     BOOL _hasInvokedClaimer;
+    BOOL _shouldEnableMaterializationDuringAccessorBlock;
     id _claimerOrNil;
     CDUnknownBlockType _serverClaimerOrNil;
     NSMutableArray *_sandboxTokens;
@@ -43,13 +44,16 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSArray *allURLs;
 @property (readonly) NSObject<OS_dispatch_semaphore> *claimerWaiter; // @synthesize claimerWaiter=_claimerWaiter;
+@property BOOL shouldEnableMaterializationDuringAccessorBlock; // @synthesize shouldEnableMaterializationDuringAccessorBlock=_shouldEnableMaterializationDuringAccessorBlock;
 
-+ (BOOL)canReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapWritingItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
-+ (BOOL)canWritingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapWritingItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
++ (BOOL)canNewWriteOfItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapExistingWriteOfItemAtLocation:(id)arg3 options:(unsigned long long)arg4;
++ (BOOL)canReadingItemAtLocation:(id)arg1 options:(unsigned long long)arg2 safelyOverlapNewWriting:(BOOL)arg3 ofItemAtLocation:(id)arg4 options:(unsigned long long)arg5;
 + (BOOL)supportsSecureCoding;
+- (void)_checkIfMovingRequiresProvidingAmongWritingLocations:(id)arg1 options:(unsigned long long *)arg2 thenContinue:(CDUnknownBlockType)arg3;
 - (void)_setupWithClaimID:(id)arg1 purposeID:(id)arg2 originatingReactorQueueID:(id)arg3;
 - (BOOL)_writeArchiveOfDirectoryAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (void)acceptClaimFromClient:(id)arg1 arbiterQueue:(id)arg2 grantHandler:(CDUnknownBlockType)arg3;
+- (void)addBlockingReactorID:(id)arg1;
 - (void)addPendingClaim:(id)arg1;
 - (void)block;
 - (void)blockClaimerForReason:(id)arg1;
@@ -91,11 +95,13 @@ __attribute__((visibility("hidden")))
 - (void)makeProviderOfItemAtLocation:(id)arg1 provideOrAttachPhysicalURLIfNecessaryForPurposeID:(id)arg2 readingOptions:(unsigned long long)arg3 thenContinue:(CDUnknownBlockType)arg4;
 - (void)makeProviderOfItemAtLocation:(id)arg1 provideOrAttachPhysicalURLIfNecessaryForPurposeID:(id)arg2 writingOptions:(unsigned long long)arg3 thenContinue:(CDUnknownBlockType)arg4;
 - (void)makeProviderOfItemAtLocation:(id)arg1 providePhysicalURLThenContinue:(CDUnknownBlockType)arg2;
+- (void)makeProvidersProvideItemsForReadingLocations:(id)arg1 options:(unsigned long long *)arg2 andWritingLocationsIfNecessary:(id)arg3 options:(unsigned long long *)arg4 thenContinue:(CDUnknownBlockType)arg5;
 - (id)pendingClaims;
 - (void)prepareClaimForGrantingWithArbiterQueue:(id)arg1;
 - (void)prepareItemForUploadingFromURL:(id)arg1 thenContinue:(CDUnknownBlockType)arg2;
 - (id)purposeID;
 - (id)purposeIDOfClaimOnItemAtLocation:(id)arg1 forMessagingPresenter:(id)arg2;
+- (void)removeBlockingReactorID:(id)arg1;
 - (void)removePendingClaims:(id)arg1;
 - (void)revoked;
 - (void)scheduleBlockedClaim:(id)arg1;
@@ -104,7 +110,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldBeRevokedPriorToInvokingAccessor;
 - (BOOL)shouldCancelInsteadOfWaiting;
 - (BOOL)shouldInformProvidersAboutEndOfWriteWithOptions:(unsigned long long)arg1;
+- (BOOL)shouldMakeProviderProvideItemAtLocation:(id)arg1 withOptions:(unsigned long long)arg2;
 - (BOOL)shouldReadingWithOptions:(unsigned long long)arg1 causePresenterToRelinquish:(id)arg2;
+- (BOOL)shouldWritingWithOptions:(unsigned long long)arg1 causePresenterToRelinquish:(id)arg2;
 - (void)startObservingClientState;
 - (void)unblock;
 - (void)unblockClaimerForReason:(id)arg1;

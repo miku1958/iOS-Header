@@ -4,24 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKShapeView.h>
+#import <UIKit/UIView.h>
 
-@class UIImage, UIImageView;
+@class UIColor, UIImage, UIImageView;
 
-@interface PKBillPaymentCircularView : PKShapeView
+@interface PKBillPaymentCircularView : UIView
 {
+    UIView *_primaryView;
+    UIView *_secondaryView;
     UIImageView *_imageView;
-    struct CGRect _lastBounds;
-    double _startCircleAngle;
-    double _endCircleAngle;
+    UIColor *_primaryColor;
+    struct CGRect _shadowFrame;
+    UIColor *_secondaryColor;
     UIImage *_image;
 }
 
-@property (nonatomic) double endCircleAngle; // @synthesize endCircleAngle=_endCircleAngle;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (nonatomic) double startCircleAngle; // @synthesize startCircleAngle=_startCircleAngle;
+@property (copy, nonatomic) UIColor *primaryColor;
+@property (copy, nonatomic) UIColor *secondaryColor; // @synthesize secondaryColor=_secondaryColor;
 
 - (void).cxx_destruct;
+- (id)_defaultSecondaryColor;
+- (void)_updateColors;
 - (id)init;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

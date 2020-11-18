@@ -13,8 +13,9 @@
 
 @interface PPNamedEntityQuery : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _overrideDecayRate;
     BOOL _matchCategory;
+    BOOL _excludeWithoutSentiment;
+    BOOL _orderByName;
     unsigned long long _limit;
     NSDate *_fromDate;
     NSDate *_toDate;
@@ -26,26 +27,35 @@
     NSString *_matchingName;
     NSSet *_matchingCategories;
     NSSet *_excludingAlgorithms;
+    NSString *_matchingEntityTrie;
+    unsigned long long _locationConsumer;
 }
 
 @property (nonatomic) double decayRate; // @synthesize decayRate=_decayRate;
 @property (nonatomic) unsigned long long deviceFilter; // @synthesize deviceFilter=_deviceFilter;
+@property (nonatomic) BOOL excludeWithoutSentiment; // @synthesize excludeWithoutSentiment=_excludeWithoutSentiment;
 @property (strong, nonatomic) NSSet *excludingAlgorithms; // @synthesize excludingAlgorithms=_excludingAlgorithms;
 @property (strong, nonatomic) NSSet *excludingSourceBundleIds; // @synthesize excludingSourceBundleIds=_excludingSourceBundleIds;
 @property (strong, nonatomic) NSDate *fromDate; // @synthesize fromDate=_fromDate;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
+@property (nonatomic) unsigned long long locationConsumer; // @synthesize locationConsumer=_locationConsumer;
 @property (nonatomic) BOOL matchCategory; // @synthesize matchCategory=_matchCategory;
 @property (strong, nonatomic) NSSet *matchingCategories; // @synthesize matchingCategories=_matchingCategories;
+@property (strong, nonatomic) NSString *matchingEntityTrie; // @synthesize matchingEntityTrie=_matchingEntityTrie;
 @property (copy, nonatomic) NSString *matchingName; // @synthesize matchingName=_matchingName;
 @property (strong, nonatomic) NSSet *matchingSourceBundleIds; // @synthesize matchingSourceBundleIds=_matchingSourceBundleIds;
-@property (nonatomic) BOOL overrideDecayRate; // @synthesize overrideDecayRate=_overrideDecayRate;
+@property (nonatomic) BOOL orderByName; // @synthesize orderByName=_orderByName;
+@property (nonatomic) BOOL overrideDecayRate;
 @property (strong, nonatomic) NSDate *scoringDate; // @synthesize scoringDate=_scoringDate;
 @property (strong, nonatomic) NSDate *toDate; // @synthesize toDate=_toDate;
 
++ (id)_excludingAlgorithmsDescription:(id)arg1;
++ (id)_matchingCategoriesDescription:(id)arg1;
 + (id)locationQueryWithLimit:(unsigned long long)arg1 fromDate:(id)arg2 consumerType:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)customizedDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

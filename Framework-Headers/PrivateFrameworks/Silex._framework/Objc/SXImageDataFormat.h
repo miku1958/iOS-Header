@@ -15,7 +15,5 @@
 @property (readonly, nonatomic) struct _SXConvertibleValue minimumHeight; // @dynamic minimumHeight;
 @property (readonly, nonatomic) struct _SXConvertibleValue minimumWidth; // @dynamic minimumWidth;
 
-+ (id)typeString;
-
 @end
 

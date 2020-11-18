@@ -12,8 +12,6 @@
 
 + (void)_determineCompatibilityMode;
 + (long long)coreUICompatibleMode;
-+ (long long)currentLookGradation;
-+ (struct _themelook *)currentSystemThemeLook;
 
 @end
 

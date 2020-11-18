@@ -10,10 +10,12 @@
 {
     unsigned long long _detectedObjectID;
     void *_imageContext;
+    double _estimatedScaleFactor;
     CDStruct_14d5dc5e _visionTransform;
 }
 
 @property (nonatomic) unsigned long long detectedObjectID; // @synthesize detectedObjectID=_detectedObjectID;
+@property (nonatomic) double estimatedScaleFactor; // @synthesize estimatedScaleFactor=_estimatedScaleFactor;
 @property (nonatomic) void *imageContext; // @synthesize imageContext=_imageContext;
 @property (nonatomic) CDStruct_14d5dc5e visionTransform; // @synthesize visionTransform=_visionTransform;
 

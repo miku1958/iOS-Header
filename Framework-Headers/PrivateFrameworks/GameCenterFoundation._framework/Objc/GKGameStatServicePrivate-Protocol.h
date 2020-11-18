@@ -6,10 +6,10 @@
 
 #import <GameCenterFoundation/GKGameStatService-Protocol.h>
 
-@class GKLeaderboardScoreRequest, NSArray, NSDictionary;
+@class GKGameDescriptor, GKLeaderboardScoreRequest, NSArray;
 
 @protocol GKGameStatServicePrivate <GKGameStatService>
 - (oneway void)getAchievementLeaderboardForRequest:(GKLeaderboardScoreRequest *)arg1 handler:(void (^)(GKLeaderboardInternal *, NSError *))arg2;
-- (oneway void)getHypotheticalLeaderboardRanksForScores:(NSArray *)arg1 forGameDescriptor:(NSDictionary *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
+- (oneway void)getHypotheticalLeaderboardRanksForScores:(NSArray *)arg1 forGameDescriptor:(GKGameDescriptor *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 @end
 

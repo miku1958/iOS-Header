@@ -9,10 +9,11 @@
 #import <MapKit/MKAnnotationPrivate-Protocol.h>
 #import <MapKit/MKAnnotationRepresentation-Protocol.h>
 #import <MapKit/MKCustomFeatureAnnotation-Protocol.h>
+#import <MapKit/MKGeoJSONObject-Protocol.h>
 
 @class CLLocation, NSString, VKCustomFeature;
 
-@interface MKPointAnnotation : MKShape <MKCustomFeatureAnnotation, MKAnnotationRepresentation, MKAnnotationPrivate>
+@interface MKPointAnnotation : MKShape <MKGeoJSONObject, MKCustomFeatureAnnotation, MKAnnotationRepresentation, MKAnnotationPrivate>
 {
     struct CLLocationCoordinate2D _coordinate;
     long long _representation;
@@ -23,22 +24,30 @@
 @property (nonatomic) struct CLLocationCoordinate2D coordinate; // @synthesize coordinate=_coordinate;
 @property (nonatomic) double course;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) long long representation; // @synthesize representation=_representation;
 @property (readonly, nonatomic) BOOL showsBalloonCallout;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
+- (id)_initWithGeoJSONObject:(id)arg1 error:(id *)arg2;
 - (void)_invalidateCachedCoordinate;
 - (BOOL)_isPendingSelectionAnimated;
 - (void)_setHiddenForOffscreen:(BOOL)arg1;
 - (BOOL)_shouldDeselectWhenDragged;
 - (id)annotation;
 - (id)feature;
+- (id)init;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1;
+- (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 title:(id)arg2 subtitle:(id)arg3;
 - (BOOL)isPersistent;
 - (void)prepareForReuse;
 - (id)reuseIdentifier;

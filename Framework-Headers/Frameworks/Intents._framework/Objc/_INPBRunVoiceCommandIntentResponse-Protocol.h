@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL hasInterstitialDisabled;
 @property (readonly, nonatomic) BOOL hasLocalizedAppName;
 @property (readonly, nonatomic) BOOL hasParameters;
+@property (nonatomic) BOOL hasPrefersExecutionOnCompanion;
 @property (readonly, nonatomic) BOOL hasResponseTemplate;
 @property (nonatomic) BOOL hasToggleState;
 @property (readonly, nonatomic) BOOL hasUnderlyingIntent;
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL interstitialDisabled;
 @property (copy, nonatomic) NSString *localizedAppName;
 @property (strong, nonatomic) _INPBDictionary *parameters;
+@property (nonatomic) BOOL prefersExecutionOnCompanion;
 @property (copy, nonatomic) NSString *responseTemplate;
 @property (copy, nonatomic) NSArray *steps;
 @property (readonly, nonatomic) unsigned long long stepsCount;

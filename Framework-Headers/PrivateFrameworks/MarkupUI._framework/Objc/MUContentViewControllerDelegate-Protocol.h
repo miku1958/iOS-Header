@@ -15,6 +15,8 @@
 - (NSUndoManager *)undoManagerForContentViewController:(MUContentViewController *)arg1;
 
 @optional
+- (struct CGSize)adjustedSourceImageSize;
+- (void)annotationController:(AKController *)arg1 detectedEditOfType:(unsigned long long)arg2;
 - (BOOL)contentViewController:(MUPDFContentViewController *)arg1 shouldHandleURL:(NSURL *)arg2;
 - (void)controllerWillDismissSignatureCaptureView:(AKController *)arg1;
 - (void)controllerWillDismissSignatureManagerView:(AKController *)arg1;

@@ -15,15 +15,19 @@ __attribute__((visibility("hidden")))
 {
     PBUnknownFields *_unknownFields;
     int _transportType;
-    CDStruct_a995201b _has;
+    struct {
+        unsigned int has_transportType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasTransportType;
-@property (nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property (nonatomic) int transportType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -31,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

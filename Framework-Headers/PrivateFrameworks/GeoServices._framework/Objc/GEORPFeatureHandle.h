@@ -21,20 +21,20 @@
     int _style;
     int _type;
     struct {
-        unsigned int featureIndex:1;
-        unsigned int featureTileX:1;
-        unsigned int featureTileY:1;
-        unsigned int featureTileZ:1;
-        unsigned int identifier:1;
-        unsigned int style:1;
-        unsigned int type:1;
-    } _has;
+        unsigned int has_featureIndex:1;
+        unsigned int has_featureTileX:1;
+        unsigned int has_featureTileY:1;
+        unsigned int has_featureTileZ:1;
+        unsigned int has_identifier:1;
+        unsigned int has_style:1;
+        unsigned int has_type:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int featureIndex; // @synthesize featureIndex=_featureIndex;
-@property (nonatomic) unsigned int featureTileX; // @synthesize featureTileX=_featureTileX;
-@property (nonatomic) unsigned int featureTileY; // @synthesize featureTileY=_featureTileY;
-@property (nonatomic) unsigned int featureTileZ; // @synthesize featureTileZ=_featureTileZ;
+@property (nonatomic) unsigned int featureIndex;
+@property (nonatomic) unsigned int featureTileX;
+@property (nonatomic) unsigned int featureTileY;
+@property (nonatomic) unsigned int featureTileZ;
 @property (nonatomic) BOOL hasFeatureIndex;
 @property (nonatomic) BOOL hasFeatureTileX;
 @property (nonatomic) BOOL hasFeatureTileY;
@@ -42,12 +42,13 @@
 @property (nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasStyle;
 @property (nonatomic) BOOL hasType;
-@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) int style; // @synthesize style=_style;
+@property (nonatomic) unsigned int identifier;
+@property (nonatomic) int style;
 @property (readonly, nonatomic) struct GEORPFeatureHandleStyleAttribute *styleAttributes;
 @property (readonly, nonatomic) unsigned long long styleAttributesCount;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) int type;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsStyle:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)addStyleAttribute:(struct GEORPFeatureHandleStyleAttribute)arg1;
@@ -60,6 +61,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setStyleAttributes:(struct GEORPFeatureHandleStyleAttribute *)arg1 count:(unsigned long long)arg2;
 - (id)styleAsString:(int)arg1;

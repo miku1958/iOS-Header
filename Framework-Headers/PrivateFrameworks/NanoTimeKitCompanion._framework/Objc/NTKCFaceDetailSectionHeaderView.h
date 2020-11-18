@@ -14,6 +14,7 @@
     NTKCSeparatorView *_bottomSeparator;
 }
 
+@property (copy, nonatomic) NSString *groupName;
 @property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *title;
 
@@ -21,6 +22,8 @@
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 - (void)_fontSizeDidChange;
+- (id)_traitCollectionAdjustedIfNeeded;
+- (void)_updateLabelFonts;
 - (id)init;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (void)layoutSubviews;

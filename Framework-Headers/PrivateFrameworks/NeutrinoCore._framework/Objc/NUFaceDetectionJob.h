@@ -17,6 +17,7 @@
 @property (readonly) NUFaceDetectionRequest *faceDetectionRequest;
 
 - (void).cxx_destruct;
+- (id)cacheKey;
 - (void)cleanUp;
 - (id)detectFaceLandmarksInBuffer:(struct __CVBuffer *)arg1 withFaceRects:(id)arg2 error:(out id *)arg3;
 - (id)detectFaceRectsInBuffer:(struct __CVBuffer *)arg1 maxResultCount:(unsigned long long)arg2 error:(out id *)arg3;

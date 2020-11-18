@@ -17,11 +17,11 @@ struct CacheFrame {
 struct HeapNodeBlock;
 
 struct MPSAutoBuffer {
-    struct atomic<void *> _field1;
-    unsigned long long _field2;
-    id _field3;
-    id _field4;
-    CDStruct_328d5c87 _field5;
+    struct atomic<void *> _buffer;
+    unsigned long long _requestedSize;
+    id _device;
+    MPSCommandBufferImageCache *_cache;
+    CDStruct_328d5c87 _resourceSize;
 };
 
 struct MPSAutoCache {
@@ -31,9 +31,10 @@ struct MPSAutoCache {
 };
 
 struct MPSAutoTexture {
-    struct atomic<void *> _texture;
+    struct atomic<id<MTLTexture>> _texture;
     CDStruct_328d5c87 _resourceSize;
     unsigned long long _rowBytes;
+    struct MPSPixelInfo _pixelInfo;
     union {
         struct {
             struct MPSAutoTexture *parent;
@@ -44,7 +45,7 @@ struct MPSAutoTexture {
             MTLTextureDescriptor *_descriptor;
             union {
                 struct {
-                    id device;
+                    struct MPSDevice *device;
                 } _tex;
                 struct {
                     MPSCommandBufferImageCache *cache;
@@ -64,12 +65,11 @@ struct MPSDevice {
     struct atomic<MTLLibraryNode *> _field5;
     struct atomic<void *> _field6[2][2][2];
     struct MPSPixelCapabilities _field7[563];
-    struct MPSFunctionTable *_field8;
-    struct atomic<void *> _field9;
-    unsigned int _field10;
-    int _field11;
-    struct MPSGPUInfo _field12;
-    struct atomic<MPSLibrary *> _field13[79];
+    struct atomic<void *> _field8;
+    unsigned int _field9;
+    int _field10;
+    struct MPSGPUInfo _field11;
+    struct atomic<MPSLibrary *> _field12[106];
 };
 
 struct MPSDeviceBehaviors;
@@ -82,7 +82,10 @@ struct MPSDeviceSpecificInfo {
     unsigned long long _field3;
 };
 
-struct MPSFunctionTable;
+struct MPSDimensionSlice {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
 
 struct MPSGPUInfo {
     unsigned int :8;
@@ -91,6 +94,12 @@ struct MPSGPUInfo {
     unsigned int :16;
     unsigned int :4;
     unsigned int :20;
+};
+
+struct MPSImageCoordinate {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
 };
 
 struct MPSKernelInfo;
@@ -136,6 +145,7 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field19;
     struct MPSDeviceSpecificInfo _field20;
     struct MPSDeviceSpecificInfo _field21;
+    struct MPSDeviceSpecificInfo _field22;
 };
 
 struct MPSPixelCapabilities {
@@ -168,7 +178,8 @@ struct MPSPixelInfo {
     unsigned int isCompressed:1;
     unsigned int chunkSizePlane2:6;
     unsigned int log2MinAlignment:4;
-    unsigned int _padding:5;
+    unsigned int featureChannelFormat:3;
+    unsigned int _padding:2;
 };
 
 struct MPSStateResource {
@@ -206,6 +217,15 @@ struct ResourceNode {
     id _field2;
 };
 
+struct UserBufferBindingData_s {
+    id userBoundBuffer;
+    BOOL userBoundBuffer_set;
+    void *userBoundBytes;
+    unsigned long long userBoundBytes_length;
+    BOOL userBoundBytes_set;
+    unsigned long long userBoundOffset;
+};
+
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -221,11 +241,26 @@ struct atomic<MTLLibraryNode *> {
     _Atomic struct MTLLibraryNode *_field1;
 };
 
+struct atomic<id<MTLTexture>> {
+    _Atomic id __a_;
+};
+
+struct atomic<long> {
+    _Atomic long long __a_;
+};
+
 struct atomic<void *> {
     _Atomic void *__a_;
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    unsigned char _field1;
+    unsigned char _field2;
+    unsigned char _field3;
+    unsigned char _field4;
+} CDStruct_a06f635e;
 
 typedef struct {
     unsigned long long _field1;

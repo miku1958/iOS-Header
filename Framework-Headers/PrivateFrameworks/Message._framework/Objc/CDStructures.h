@@ -12,6 +12,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CGSize {
+    double width;
+    double height;
+};
+
 struct CentralDirectory {
     unsigned char _field1[4];
     unsigned short _field2;
@@ -45,6 +50,10 @@ struct CentralHeader {
     char *_field19;
 };
 
+struct EFPair {
+    Class _field1;
+};
+
 struct _CommandStackEntry {
     struct *_field1;
     id _field2;
@@ -55,17 +64,18 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct _opaque_pthread_t {
-    long long _field1;
-    struct __darwin_pthread_handler_rec *_field2;
-    char _field3[8176];
-};
-
 struct internal_state;
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
+
+struct os_unfair_recursive_lock_s {
+    struct os_unfair_lock_s _field1;
+    unsigned int _field2;
+};
+
+struct sqlite3;
 
 struct z_stream_s {
     char *_field1;
@@ -88,19 +98,25 @@ struct z_stream_s {
 
 typedef struct {
     id _field1;
-    id _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    BOOL _field5;
-    BOOL _field6;
-    BOOL _field7;
-} CDStruct_f28f5ac0;
-
-typedef struct {
-    id _field1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :2;
 } CDStruct_3441fd00;
+
+typedef struct {
+    id _field1;
+    id _field2;
+    id _field3;
+    unsigned int _field4;
+    float _field5;
+    unsigned long long _field6;
+    double _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    struct sqlite3 *_field10;
+    BOOL _field11;
+    id _field12;
+    BOOL _field13;
+} CDStruct_6c71af79;
 

@@ -58,6 +58,7 @@
 - (id)dictionaryRepresentationsOfSupplementaryItems;
 - (id)initWithDictionary:(id)arg1;
 - (void)setOrganizerForContactDictionary:(id)arg1;
+- (void)updateUpcomingEventNotificationWithHypothesisMessage:(id)arg1;
 
 @end
 

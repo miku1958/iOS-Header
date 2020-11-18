@@ -41,6 +41,8 @@
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL shouldReturnFilteredPhotosAsSingleAsset; // @synthesize shouldReturnFilteredPhotosAsSingleAsset=_shouldReturnFilteredPhotosAsSingleAsset;
+@property (readonly, nonatomic) NSSet *unreceivedPhotoSpecifiers;
+@property (readonly, nonatomic) NSSet *unreceivedVideoSpecifiers;
 
 - (void).cxx_destruct;
 - (BOOL)_attemptDispatchForPairWithFilteredResultSpecifiers:(unsigned long long)arg1 unfilteredResultSpecifiers:(unsigned long long)arg2 forceRemainingDispatches:(BOOL)arg3;

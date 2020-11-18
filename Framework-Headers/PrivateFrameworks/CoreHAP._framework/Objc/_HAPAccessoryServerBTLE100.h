@@ -191,7 +191,7 @@
 - (void)securitySession:(id)arg1 didReceiveSetupExchangeData:(id)arg2;
 - (void)securitySessionDidOpen:(id)arg1;
 - (void)securitySessionIsOpening:(id)arg1;
-- (void)startPairingWithConsentRequired:(BOOL)arg1;
+- (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (BOOL)tryPairingPassword:(id)arg1 error:(id *)arg2;
 - (void)updateConnectionIdleTime:(unsigned char)arg1;

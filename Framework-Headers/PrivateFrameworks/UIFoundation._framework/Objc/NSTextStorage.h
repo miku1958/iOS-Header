@@ -6,10 +6,12 @@
 
 #import <Foundation/NSMutableAttributedString.h>
 
-@class NSArray, NSMutableArray;
-@protocol NSTextStorageDelegate;
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 
-@interface NSTextStorage : NSMutableAttributedString
+@class NSArray, NSMutableArray;
+@protocol NSTextStorageController, NSTextStorageDelegate;
+
+@interface NSTextStorage : NSMutableAttributedString <NSSecureCoding>
 {
     struct _NSRange _editedRange;
     long long _editedDelta;
@@ -22,6 +24,7 @@
     } _flags;
     NSMutableArray *_layoutManagers;
     id _sideData;
+    id<NSTextStorageController> _textStorageController;
 }
 
 @property (readonly, nonatomic) long long changeInLength;
@@ -70,6 +73,8 @@
 - (void)processEditing;
 - (void)removeLayoutManager:(id)arg1;
 - (void)setEditedMask:(unsigned long long)arg1;
+- (void)setTextStorageController:(id)arg1;
+- (id)textStorageController;
 
 @end
 

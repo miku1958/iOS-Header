@@ -17,7 +17,7 @@
 }
 
 @property (strong, nonatomic) NSString *address;
-@property (copy, nonatomic) NSString *addressBookEntityID;
+@property (copy, nonatomic) NSString *contactLabel;
 @property (copy, nonatomic) NSString *derivedFrom;
 @property (strong, nonatomic) CLLocation *geoLocation;
 @property (readonly, nonatomic) BOOL hasKnownSpatialData;
@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSString *title;
 
 + (id)_stringByStrippingControlCharactersFromString:(id)arg1;
++ (id)displayLabelForContact:(id)arg1 unlocalizedLabel:(id)arg2;
 + (Class)frozenClass;
 + (id)locationWithMapItem:(id)arg1;
 + (id)locationWithTitle:(id)arg1;

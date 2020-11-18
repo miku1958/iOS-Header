@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface VSViewModel : NSObject
 {
+    BOOL _preValidate;
     unsigned long long _viewState;
     unsigned long long _validationState;
     NSError *_error;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
+@property (nonatomic, getter=shouldPreValidate) BOOL preValidate; // @synthesize preValidate=_preValidate;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) unsigned long long validationState; // @synthesize validationState=_validationState;
 @property (nonatomic) unsigned long long viewState; // @synthesize viewState=_viewState;

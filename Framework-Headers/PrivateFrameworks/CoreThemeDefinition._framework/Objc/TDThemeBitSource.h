@@ -15,7 +15,6 @@
 @property (strong, nonatomic) NSSet *assets; // @dynamic assets;
 @property (strong, nonatomic) NSString *path; // @dynamic path;
 
-- (id)filePathWithDocument:(id)arg1;
 - (id)fileURLWithDocument:(id)arg1;
 - (id)name;
 - (void)setName:(id)arg1;

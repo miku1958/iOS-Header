@@ -8,10 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBDataReader;
 
 @interface GEOPDFlyover : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     struct GEOPDCameraPathFrame *_cameraPaths;
     unsigned long long _cameraPathsCount;
     unsigned long long _cameraPathsSpace;
@@ -22,8 +24,17 @@
     NSMutableArray *_notificationMessages;
     BOOL _useSplines;
     struct {
-        unsigned int useSplines:1;
-    } _has;
+        unsigned int has_useSplines:1;
+        unsigned int read_cameraPaths:1;
+        unsigned int read_labelFrames:1;
+        unsigned int read_labels:1;
+        unsigned int read_notificationMessages:1;
+        unsigned int wrote_cameraPaths:1;
+        unsigned int wrote_labelFrames:1;
+        unsigned int wrote_labels:1;
+        unsigned int wrote_notificationMessages:1;
+        unsigned int wrote_useSplines:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) struct GEOPDCameraPathFrame *cameraPaths;
@@ -31,14 +42,23 @@
 @property (nonatomic) BOOL hasUseSplines;
 @property (readonly, nonatomic) struct GEOPDLabelFrame *labelFrames;
 @property (readonly, nonatomic) unsigned long long labelFramesCount;
-@property (strong, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
-@property (strong, nonatomic) NSMutableArray *notificationMessages; // @synthesize notificationMessages=_notificationMessages;
-@property (nonatomic) BOOL useSplines; // @synthesize useSplines=_useSplines;
+@property (strong, nonatomic) NSMutableArray *labels;
+@property (strong, nonatomic) NSMutableArray *notificationMessages;
+@property (nonatomic) BOOL useSplines;
 
 + (id)flyoverForPlaceData:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 + (Class)labelType;
 + (Class)notificationMessageType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsCameraPath:(struct GEOPDCameraPathFrame)arg1;
+- (void)_addNoFlagsLabel:(id)arg1;
+- (void)_addNoFlagsLabelFrame:(struct GEOPDLabelFrame)arg1;
+- (void)_addNoFlagsNotificationMessage:(id)arg1;
+- (void)_readCameraPaths;
+- (void)_readLabelFrames;
+- (void)_readLabels;
+- (void)_readNotificationMessages;
 - (void)addCameraPath:(struct GEOPDCameraPathFrame)arg1;
 - (void)addLabel:(id)arg1;
 - (void)addLabelFrame:(struct GEOPDLabelFrame)arg1;
@@ -63,6 +83,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)notificationMessageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)notificationMessagesCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setCameraPaths:(struct GEOPDCameraPathFrame *)arg1 count:(unsigned long long)arg2;
 - (void)setLabelFrames:(struct GEOPDLabelFrame *)arg1 count:(unsigned long long)arg2;

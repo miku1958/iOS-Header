@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)cellRegionFromTable:(id)arg1;
 - (void)enumerateCellUIDRangesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initFromMessage:(const struct CellUIDRegionArchive *)arg1;
+- (id)initWithCellUIDRangeVector:(const vector_793e6c56 *)arg1;
 - (void)saveToMessage:(struct CellUIDRegionArchive *)arg1;
 
 @end

@@ -6,41 +6,29 @@
 
 #import <HMFoundation/HMFMessageTransport.h>
 
-#import <HomeKit/HMXPCMessageTransport-Protocol.h>
+@class NSXPCConnection;
 
-@class NSObject, NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
-
-@interface HMXPCClient : HMFMessageTransport <HMXPCMessageTransport>
+__attribute__((visibility("hidden")))
+@interface HMXPCClient : HMFMessageTransport
 {
     BOOL _connectionValid;
     BOOL _requiresCheckin;
     BOOL _notifyRegistered;
     int _notifyRegisterToken;
-    NSXPCConnection *_xpcConnection;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
+    NSXPCConnection *_connection;
     CDUnknownBlockType _reconnectionHandler;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (nonatomic) BOOL connectionValid; // @synthesize connectionValid=_connectionValid;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) int notifyRegisterToken; // @synthesize notifyRegisterToken=_notifyRegisterToken;
 @property (nonatomic) BOOL notifyRegistered; // @synthesize notifyRegistered=_notifyRegistered;
 @property (copy, nonatomic) CDUnknownBlockType reconnectionHandler; // @synthesize reconnectionHandler=_reconnectionHandler;
 @property (nonatomic) BOOL requiresCheckin; // @synthesize requiresCheckin=_requiresCheckin;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
-- (id)connection;
 - (void)dealloc;
-- (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4;
-- (void)handleMessageWithName:(id)arg1 messageIdentifier:(id)arg2 messagePayload:(id)arg3 target:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (id)init;
-- (void)recheckinIfRequired:(id)arg1;
 - (void)registerReconnectionHandler:(CDUnknownBlockType)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

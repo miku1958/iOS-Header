@@ -6,43 +6,56 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFMessageTransportDelegate-Protocol.h>
+#import <HMFoundation/HMFTimerDelegate-Protocol.h>
 
-@class HMFMessageTransport, NSMutableDictionary, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class HMFMessageTransport, HMFTimer, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSSet, NSString;
+@protocol HMFLocking, OS_dispatch_queue;
 
-@interface HMFMessageDispatcher : HMFObject <HMFMessageTransportDelegate>
+@interface HMFMessageDispatcher : HMFObject <HMFLogging, HMFTimerDelegate, HMFMessageTransportDelegate>
 {
-    BOOL _remote;
+    id<HMFLocking> _lock;
+    NSMutableOrderedSet *_handlers;
+    HMFTimer *_indexWatchdog;
+    NSMutableArray *_indexOperations;
+    NSSet *_filterClasses;
     HMFMessageTransport *_transport;
+    NSMutableDictionary *_destinationHandlerIndexes;
+    NSMutableDictionary *_nameHandlerIndexes;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSMutableDictionary *_notificationHandlers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSMutableDictionary *destinationHandlerIndexes; // @synthesize destinationHandlerIndexes=_destinationHandlerIndexes;
+@property (copy) NSSet *filterClasses; // @synthesize filterClasses=_filterClasses;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableDictionary *notificationHandlers; // @synthesize notificationHandlers=_notificationHandlers;
-@property (nonatomic, getter=isRemote) BOOL remote; // @synthesize remote=_remote;
+@property (readonly) NSMutableDictionary *nameHandlerIndexes; // @synthesize nameHandlerIndexes=_nameHandlerIndexes;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HMFMessageTransport *transport; // @synthesize transport=_transport;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)logCategory;
 - (void).cxx_destruct;
-- (void)_deregisterForMessage:(id)arg1 receiver:(id)arg2 token:(id)arg3;
 - (void)deregisterForMessage:(id)arg1 receiver:(id)arg2;
 - (void)deregisterReceiver:(id)arg1;
 - (void)dispatchMessage:(id)arg1;
 - (void)dispatchMessage:(id)arg1 target:(id)arg2;
+- (id)handlersForMessage:(id)arg1;
 - (id)init;
 - (id)initWithTransport:(id)arg1;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)registerForMessage:(id)arg1 receiver:(id)arg2 messageHandler:(CDUnknownBlockType)arg3;
+- (void)registerForMessage:(id)arg1 receiver:(id)arg2 policies:(id)arg3 messageHandler:(CDUnknownBlockType)arg4;
+- (void)registerForMessage:(id)arg1 receiver:(id)arg2 policies:(id)arg3 selector:(SEL)arg4;
+- (void)registerForMessage:(id)arg1 receiver:(id)arg2 selector:(SEL)arg3;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)sendMessage:(id)arg1 target:(id)arg2;
 - (void)sendMessage:(id)arg1 target:(id)arg2 andInvokeCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)sendMessage:(id)arg1 target:(id)arg2 responseQueue:(id)arg3 responseHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)timerDidFire:(id)arg1;
 
 @end
 

@@ -10,18 +10,23 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityAlternativesForTextAtPosition:(unsigned long long)arg1;
 - (id)_accessibilityBeginningOfDocument;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (void)_accessibilityCheckBorderHit:(BOOL)arg1 left:(BOOL)arg2;
 - (id)_accessibilityEndOfDocument;
+- (BOOL)_accessibilityHandlesTabKey;
+- (BOOL)_accessibilityInsertTextWithAlternatives:(id)arg1;
 - (long long)_accessibilityLineEndPosition;
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (long long)_accessibilityLineStartPosition;
 - (long long)_accessibilityOffsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (id)_accessibilityPositionFromPosition:(id)arg1 offset:(long long)arg2;
+- (unsigned long long)_accessibilityPositionInDirection:(long long)arg1 offset:(unsigned long long)arg2 forPosition:(unsigned long long)arg3;
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (struct _NSRange)_accessibilityRawRangeForUITextRange:(id)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
@@ -31,12 +36,15 @@
 - (id)_accessibilityTextRangeFromNSRange:(struct _NSRange)arg1;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (void)_axResetFKAFocusToFirstResponder;
 - (id)_moveLeft:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveRight:(BOOL)arg1 withHistory:(id)arg2;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (BOOL)becomeFirstResponder;
 - (BOOL)isAccessibilityElement;
+- (BOOL)resignFirstResponder;
 
 @end
 

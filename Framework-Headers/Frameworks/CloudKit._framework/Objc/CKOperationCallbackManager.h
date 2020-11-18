@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)_performCallbackForOperation:(id)arg1 callback:(CDUnknownBlockType)arg2 errorCallback:(CDUnknownBlockType)arg3;
+- (void)handleCancelForOperationWithID:(id)arg1;
 - (void)handleOperationCheckpoint:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationCompletion:(id)arg1 forOperationWithID:(id)arg2;
 - (void)handleOperationProgress:(id)arg1 forOperationWithID:(id)arg2 reply:(CDUnknownBlockType)arg3;

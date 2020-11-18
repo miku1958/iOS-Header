@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_bestAllowedSizeForAllowedSizesDictionary:(id)arg1;
 - (id)_errorHandlingHostProxy;
 - (void)_requestHandlingOfIntent:(id)arg1;
+- (void)_willBeginEditing;
 - (struct CGSize)hostedViewMaximumAllowedSize;
 - (struct CGSize)hostedViewMinimumAllowedSize;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;

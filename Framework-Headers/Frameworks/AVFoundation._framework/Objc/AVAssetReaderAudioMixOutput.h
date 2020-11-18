@@ -29,7 +29,6 @@
 - (void)_setAudioVolumeCurve:(id)arg1 forTrack:(id)arg2;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithAudioTracks:(id)arg1 audioSettings:(id)arg2;
 - (id)mediaType;

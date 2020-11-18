@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityDeleteWeatherCard;
+- (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_axIsLocalWeatherAtFirstIndex;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;

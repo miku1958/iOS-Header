@@ -6,10 +6,23 @@
 
 #import <EventKit/EKObjectChange.h>
 
-__attribute__((visibility("hidden")))
-@interface EKContactChange : EKObjectChange
+#import <EventKit/EKOwnerIDProviding-Protocol.h>
+
+@class EKObjectID;
+
+@interface EKContactChange : EKObjectChange <EKOwnerIDProviding>
 {
+    EKObjectID *_ownerID;
 }
+
+@property (readonly, nonatomic) EKObjectID *ownerID; // @synthesize ownerID=_ownerID;
+
++ (int)entityType;
++ (void)fetchContactChangesInCalendar:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchContactChangesInSource:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
++ (void)fetchContactChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
+- (id)initWithChangeProperties:(id)arg1;
 
 @end
 

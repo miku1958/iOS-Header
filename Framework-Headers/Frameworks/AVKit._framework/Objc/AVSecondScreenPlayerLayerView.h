@@ -8,6 +8,7 @@
 
 @class AVObservationController, AVPlayerLayer;
 
+__attribute__((visibility("hidden")))
 @interface AVSecondScreenPlayerLayerView : UIView
 {
     AVPlayerLayer *_activeSourcePlayerLayer;

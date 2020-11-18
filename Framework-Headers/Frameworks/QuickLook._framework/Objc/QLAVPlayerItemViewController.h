@@ -27,9 +27,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;

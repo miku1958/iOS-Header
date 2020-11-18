@@ -8,39 +8,48 @@
 
 #import <IMSharedUtilities/XCTestObservation-Protocol.h>
 
-@class NSString;
+@class IMUnitTestBundleLoader, IMUnitTestFrameworkLoader, IMUnitTestLogger, NSArray, NSMutableArray, NSString;
 @protocol IMUnitTestRunnerDelegate;
 
 @interface IMUnitTestRunner : NSObject <XCTestObservation>
 {
+    NSMutableArray *_failedTests;
     id<IMUnitTestRunnerDelegate> _delegate;
+    IMUnitTestBundleLoader *_bundleLoader;
+    IMUnitTestLogger *_logger;
+    IMUnitTestFrameworkLoader *_frameworkLoader;
 }
 
+@property (readonly) IMUnitTestBundleLoader *bundleLoader; // @synthesize bundleLoader=_bundleLoader;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) NSString *defaultPathToXCTestFramework;
-@property (weak, nonatomic) id<IMUnitTestRunnerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<IMUnitTestRunnerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSArray *failedTests; // @synthesize failedTests=_failedTests;
+@property (readonly) IMUnitTestFrameworkLoader *frameworkLoader; // @synthesize frameworkLoader=_frameworkLoader;
 @property (readonly) unsigned long long hash;
+@property (readonly) IMUnitTestLogger *logger; // @synthesize logger=_logger;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_loadFrameworksIfNeeded:(id *)arg1;
 - (id)dateFormatter;
 - (id)descriptionFromResult:(id)arg1;
-- (id)loadTestBundle:(id)arg1 error:(id *)arg2;
-- (BOOL)loadXCTestFramework;
-- (id)logFileHandle;
+- (id)init;
+- (id)initWithLogger:(id)arg1 bundleLoader:(id)arg2;
+- (id)initWithLogger:(id)arg1 bundleLoader:(id)arg2 frameworkLoader:(id)arg3;
+- (void)log:(id)arg1;
+- (void)logBanner:(id)arg1;
 - (id)pathToPluginBundle:(id)arg1;
+- (long long)runTestsInBundleAtPath:(id)arg1;
 - (id)runTestsInBundleAtPath:(id)arg1 error:(id *)arg2;
 - (id)runTestsInBundleNamed:(id)arg1 error:(id *)arg2;
 - (void)testCase:(id)arg1 didFailWithDescription:(id)arg2 inFile:(id)arg3 atLine:(unsigned long long)arg4;
 - (void)testCaseDidFinish:(id)arg1;
 - (void)testCaseWillStart:(id)arg1;
 - (void)testLogWithFormat:(id)arg1;
-- (void)testLogWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
 - (void)testSuite:(id)arg1 didFailWithDescription:(id)arg2 inFile:(id)arg3 atLine:(unsigned long long)arg4;
 - (void)testSuiteDidFinish:(id)arg1;
 - (void)testSuiteWillStart:(id)arg1;
-- (void)writeOutputToStdout:(id)arg1;
 
 @end
 

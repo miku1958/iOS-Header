@@ -17,7 +17,6 @@
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (void)_enumerateColoringStackedImagesViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateColoringViewsWithBlock:(CDUnknownBlockType)arg1;

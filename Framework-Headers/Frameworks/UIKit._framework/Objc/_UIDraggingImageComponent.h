@@ -8,15 +8,15 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSString, UIImage, UIView;
+@class UIImage, UIView;
 
+__attribute__((visibility("hidden")))
 @interface _UIDraggingImageComponent : NSObject <NSCopying>
 {
     BOOL _ignoresAccessibilityFilters;
     BOOL _hidesImage;
     UIView *_view;
     UIImage *_image;
-    NSString *_key;
     struct CGRect _frame;
 }
 
@@ -24,16 +24,14 @@
 @property (readonly, nonatomic) BOOL hidesImage; // @synthesize hidesImage=_hidesImage;
 @property (readonly, nonatomic) BOOL ignoresAccessibilityFilters; // @synthesize ignoresAccessibilityFilters=_ignoresAccessibilityFilters;
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (readonly, copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
-- (id)_initWithNoImageAndFrame:(struct CGRect)arg1 key:(id)arg2;
+- (id)_initWithNoImageAndFrame:(struct CGRect)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initHidingDragImage;
-- (id)initWithImage:(id)arg1 frame:(struct CGRect)arg2 ignoreAccessibilityFilters:(BOOL)arg3 key:(id)arg4;
-- (id)initWithImage:(id)arg1 frame:(struct CGRect)arg2 key:(id)arg3;
+- (id)initWithImage:(id)arg1 frame:(struct CGRect)arg2 ignoreAccessibilityFilters:(BOOL)arg3;
 - (id)initWithView:(id)arg1;
 
 @end

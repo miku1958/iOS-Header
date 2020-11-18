@@ -23,17 +23,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MFOutgoingMessageContent *originalMessageContent; // @synthesize originalMessageContent=_originalMessageContent;
-@property (nonatomic) id<MFMessageRewriterPlaceholderResolver> placeholderResolver; // @synthesize placeholderResolver=_placeholderResolver;
+@property (weak, nonatomic) id<MFMessageRewriterPlaceholderResolver> placeholderResolver; // @synthesize placeholderResolver=_placeholderResolver;
 @property (readonly) Class superclass;
 
 + (id)_deriveOutgoingMessageContentFromLibraryMessageContent:(id)arg1;
+- (void).cxx_destruct;
 - (id)accountProxyGenerator;
 - (id)attachments;
 - (id)bccRecipients;
 - (id)bodyField;
 - (id)ccRecipients;
-- (void)dealloc;
-- (BOOL)hasAnyHiddenTrailingEmptyQuote;
 - (id)init;
 - (id)initWithOriginalMessageContent:(id)arg1 resolver:(id)arg2;
 - (id)rewrittenMessageContent;
@@ -43,7 +42,7 @@
 - (void)setBccRecipients:(id)arg1;
 - (void)setCcRecipients:(id)arg1;
 - (void)setSavedHeaders:(id)arg1;
-- (void)setSendingEmailAddress:(id)arg1 addIfNotPresent:(BOOL)arg2;
+- (void)setSendingEmailAddress:(id)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setToRecipients:(id)arg1;
 - (id)shouldCreateRichTextRepresentation;

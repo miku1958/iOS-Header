@@ -29,7 +29,7 @@
 - (BOOL)_deliverOneSample:(id)arg1 client:(id)arg2 errorOut:(id *)arg3;
 - (void)_queue_start;
 - (void)authorizeSamples:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)samplesBeforeAuthorizationWithSortDescriptors:(id)arg1 errorOut:(id *)arg2;
 
 @end

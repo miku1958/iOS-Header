@@ -6,15 +6,21 @@
 
 #import <CloudKit/CKDatabaseOperationInfo.h>
 
-@class NSArray;
+@class NSArray, NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface CKDUploadAssetsOperationInfo : CKDatabaseOperationInfo
 {
+    BOOL _temporary;
     NSArray *_assetsToUpload;
+    NSDictionary *_assetUUIDToExpectedProperties;
+    NSDictionary *_packageUUIDToExpectedProperties;
 }
 
+@property (strong, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property (strong, nonatomic) NSArray *assetsToUpload; // @synthesize assetsToUpload=_assetsToUpload;
+@property (strong, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
+@property (nonatomic) BOOL temporary; // @synthesize temporary=_temporary;
 
 - (void).cxx_destruct;
 

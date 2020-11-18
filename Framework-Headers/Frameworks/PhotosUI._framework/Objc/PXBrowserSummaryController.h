@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXInfoUpdaterObserver-Protocol.h>
 #import <PhotosUICore/PXMutableBrowserSummaryController-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDateInterval, NSDateIntervalFormatter, NSDictionary, NSObject, NSString, PXInfoUpdater, PXSelectedItemsStack;
+@class NSArray, NSAttributedString, NSDateFormatter, NSDateInterval, NSDateIntervalFormatter, NSDictionary, NSObject, NSString, PXInfoUpdater, PXSelectedItemsStack;
 @protocol OS_dispatch_queue, PXBrowserSelectionSnapshot, PXBrowserSummaryControllerDataSource;
 
 @interface PXBrowserSummaryController : PXObservable <PXMutableBrowserSummaryController, PXInfoUpdaterObserver, PXInfoProvider>
@@ -35,9 +35,12 @@
         BOOL visibleContentSnapshot;
         BOOL selectionSnapshot;
         BOOL filteringContainerContent;
+        BOOL useAssetImportDate;
     } _dataSourceRespondsTo;
     BOOL _shouldUseSubtitles;
     BOOL _shouldUseNavigationTitle;
+    BOOL _shouldUseAbbreviatedDates;
+    BOOL _shouldShowLocationNames;
     BOOL _filteringContainerContent;
     NSDictionary *_defaultAttributes;
     NSDictionary *_emphasizedAttributes;
@@ -49,10 +52,12 @@
     NSString *_navigationTitle;
     NSAttributedString *_attributedSelectionTitle;
     NSArray *_stackedAssets;
-    PXInfoUpdater *_visibleDateRangeInfoUpdater;
+    PXInfoUpdater *_visibleMetadataInfoUpdater;
     PXInfoUpdater *_selectionInfoUpdater;
+    PXInfoUpdater *_titlesInfoUpdater;
     NSObject<OS_dispatch_queue> *_queue;
     NSDateIntervalFormatter *_dateIntervalFormatter;
+    NSDateFormatter *_importDateFormatter;
     NSString *_localizedComponentsSeparator;
     NSString *_containerTitle;
     NSString *_localizedContainerItemsCount;
@@ -74,6 +79,7 @@
 @property (copy, nonatomic) NSDictionary *emphasizedAttributes; // @synthesize emphasizedAttributes=_emphasizedAttributes;
 @property (nonatomic, getter=isFilteringContainerContent) BOOL filteringContainerContent; // @synthesize filteringContainerContent=_filteringContainerContent;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSDateFormatter *importDateFormatter; // @synthesize importDateFormatter=_importDateFormatter;
 @property (readonly, nonatomic) NSString *localizedComponentsSeparator; // @synthesize localizedComponentsSeparator=_localizedComponentsSeparator;
 @property (copy, nonatomic) NSString *localizedContainerItemsCount; // @synthesize localizedContainerItemsCount=_localizedContainerItemsCount;
 @property (copy, nonatomic) NSString *navigationTitle; // @synthesize navigationTitle=_navigationTitle;
@@ -82,41 +88,38 @@
 @property (copy, nonatomic) NSString *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
 @property (strong, nonatomic) PXSelectedItemsStack *selectedAssetsStack; // @synthesize selectedAssetsStack=_selectedAssetsStack;
 @property (copy, nonatomic) NSDictionary *selectionAttributes; // @synthesize selectionAttributes=_selectionAttributes;
-@property (readonly, copy, nonatomic) PXInfoUpdater *selectionInfoUpdater; // @synthesize selectionInfoUpdater=_selectionInfoUpdater;
+@property (readonly, nonatomic) PXInfoUpdater *selectionInfoUpdater; // @synthesize selectionInfoUpdater=_selectionInfoUpdater;
 @property (strong, nonatomic) id<PXBrowserSelectionSnapshot> selectionSnapshot; // @synthesize selectionSnapshot=_selectionSnapshot;
+@property (nonatomic) BOOL shouldShowLocationNames; // @synthesize shouldShowLocationNames=_shouldShowLocationNames;
+@property (nonatomic) BOOL shouldUseAbbreviatedDates; // @synthesize shouldUseAbbreviatedDates=_shouldUseAbbreviatedDates;
 @property (nonatomic) BOOL shouldUseNavigationTitle; // @synthesize shouldUseNavigationTitle=_shouldUseNavigationTitle;
 @property (nonatomic) BOOL shouldUseSubtitles; // @synthesize shouldUseSubtitles=_shouldUseSubtitles;
 @property (copy, nonatomic) NSArray *stackedAssets; // @synthesize stackedAssets=_stackedAssets;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *tertiaryTitle; // @synthesize tertiaryTitle=_tertiaryTitle;
-@property (readonly, copy, nonatomic) PXInfoUpdater *visibleDateRangeInfoUpdater; // @synthesize visibleDateRangeInfoUpdater=_visibleDateRangeInfoUpdater;
+@property (readonly, nonatomic) PXInfoUpdater *titlesInfoUpdater; // @synthesize titlesInfoUpdater=_titlesInfoUpdater;
+@property (readonly, nonatomic) PXInfoUpdater *visibleMetadataInfoUpdater; // @synthesize visibleMetadataInfoUpdater=_visibleMetadataInfoUpdater;
 
 - (void).cxx_destruct;
-- (void)_invalidateAttributedPrimaryTitle;
 - (void)_invalidateAttributedSelectionTitle;
 - (void)_invalidateContainerDateInterval;
 - (void)_invalidateContainerTitle;
 - (void)_invalidateFilteringContainerContent;
 - (void)_invalidateLocalizedContainerItemsCount;
-- (void)_invalidateNavigationTitle;
-- (void)_invalidateSecondaryTitle;
 - (void)_invalidateSelectionSnapshot;
 - (void)_invalidateStackedAssets;
-- (void)_invalidateTertiaryTitle;
+- (void)_invalidateTitles;
 - (BOOL)_needsUpdate;
+- (id)_requestTitlesInfoWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)_setNeedsUpdate;
-- (void)_updateAttributedPrimaryTitleIfNeeded;
 - (void)_updateAttributedSelectionTitleIfNeeded;
 - (void)_updateContainerDateIntervalIfNeeded;
 - (void)_updateContainerTitleIfNeeded;
 - (void)_updateFilteringContainerContentIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updateLocalizedContainerItemsCountIfNeeded;
-- (void)_updateNavigationTitleIfNeeded;
-- (void)_updateSecondaryTitleIfNeeded;
 - (void)_updateSelectionSnapshotIfNeeded;
 - (void)_updateStackedAssetsIfNeeded;
-- (void)_updateTertiaryTitleIfNeeded;
 - (void)didPerformChanges;
 - (void)infoUpdaterDidUpdate:(id)arg1;
 - (id)init;
@@ -127,6 +130,7 @@
 - (void)invalidateSelection;
 - (void)invalidateVisibleContent;
 - (id)mutableChangeObject;
+- (void)performBlockWhenDoneUpdating:(CDUnknownBlockType)arg1;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (long long)priorityForInfoRequestOfKind:(id)arg1;
 - (id)requestInfoOfKind:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;

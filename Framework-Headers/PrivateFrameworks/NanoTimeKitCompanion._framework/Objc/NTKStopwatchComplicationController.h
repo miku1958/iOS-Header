@@ -6,28 +6,31 @@
 
 #import <NanoTimeKitCompanion/NTKComplicationController.h>
 
+#import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
+
+@class NSDate;
 @protocol NTKStopwatchComplicationDisplay;
 
-@interface NTKStopwatchComplicationController : NTKComplicationController
+@interface NTKStopwatchComplicationController : NTKComplicationController <NTKTimeTravel>
 {
+    NSDate *_timeTravelDate;
 }
 
 @property (readonly, weak, nonatomic) id<NTKStopwatchComplicationDisplay> legacyDisplay; // @dynamic legacyDisplay;
+@property (strong, nonatomic) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
 
 + (BOOL)_acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
+- (void).cxx_destruct;
 - (void)_activate;
 - (void)_configureForLegacyDisplay:(id)arg1;
 - (void)_deactivate;
-- (void)_handleLocaleChange;
-- (void)_handleReloadNotification;
-- (void)_handleTimeFormatChange;
-- (void)_startStopwatchTimerUpdates;
-- (void)_stopStopwatchTimerUpdates;
+- (void)_handleStopwatchChange;
 - (void)_updateDisplay;
 - (id)complicationApplicationIdentifier;
 - (BOOL)hasTapAction;
 - (void)performTapAction;
 - (void)setDataMode:(long long)arg1 forDisplayWrapper:(id)arg2;
+- (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

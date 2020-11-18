@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SetupAssistantUI/BFFSplashController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UINavigationControllerDelegate-Protocol.h>
@@ -12,10 +12,9 @@
 @class NSString;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSAddCellularPlanViewController : BFFSplashController <UINavigationControllerDelegate, TSSetupFlowItem>
+@interface TSAddCellularPlanViewController : OBWelcomeController <UINavigationControllerDelegate, TSSetupFlowItem>
 {
     BOOL _allowDismiss;
-    BOOL _showAddPlan;
     id<TSSIMSetupFlowDelegate> _delegate;
 }
 
@@ -27,7 +26,8 @@
 
 - (void).cxx_destruct;
 - (void)_cancelButtonTapped;
-- (id)initShowAddPlan:(BOOL)arg1 allowDismiss:(BOOL)arg2;
+- (void)_doneButtonTapped;
+- (id)initWithType:(unsigned long long)arg1 allowDismiss:(BOOL)arg2;
 - (void)viewDidLoad;
 
 @end

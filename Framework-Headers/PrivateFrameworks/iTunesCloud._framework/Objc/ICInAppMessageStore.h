@@ -14,7 +14,8 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSMutableDictionary *_messageEntryCache;
-    NSMutableDictionary *_propertyCache;
+    NSMutableDictionary *_globalPropertyCache;
+    NSMutableDictionary *_applicationPropertyCache;
     NSMutableDictionary *_messageMetadataCache;
     NSMutableArray *_pendingEvents;
     NSString *_filePath;
@@ -26,12 +27,14 @@
 - (void)_load;
 - (void)addMessageEntry:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addPendingMessageEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)allApplicationStorePropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)allStorePropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAllMessageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAllMessageEntriesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAllMetadataForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getMessageEntryWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getStorePropertyForKey:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getStorePropertyForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithFilePath:(id)arg1;
@@ -45,6 +48,7 @@
 - (void)resetStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateMessageEntry:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateMetadata:(id)arg1 messageIdentifier:(id)arg2 bundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)updateStoreProperty:(id)arg1 forKey:(id)arg2 bundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateStoreProperty:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

@@ -30,8 +30,6 @@
 @property (readonly, nonatomic) BOOL roadsWithSimpleLineMeshesAvailable;
 @property (readonly, nonatomic) double routeLineSimplificationEpsilon;
 @property (readonly, nonatomic) BOOL shouldDrawWhenReady;
-@property (readonly, nonatomic) BOOL shouldLayoutLabelsInParallel;
-@property (readonly, nonatomic) BOOL shouldPregenerateLabelGlyphs;
 @property (readonly, nonatomic) BOOL shouldStyleLabelsInParallel;
 @property (readonly, nonatomic) BOOL supports3DBuildingStrokes; // @synthesize supports3DBuildingStrokes=_supports3DBuildingStrokes;
 @property (readonly, nonatomic) BOOL supports3DBuildings;

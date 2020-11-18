@@ -17,6 +17,8 @@
 - (id)_axAffordanceView;
 - (void)_axAnnotateAffordanceView;
 - (BOOL)_axSeparatorHidden;
+- (void)_beginLayoutStateTransitionWithTransitionContext:(id)arg1;
+- (void)_doCommonCleanupUponEndingLayoutTransitionWithInterruption:(BOOL)arg1;
 - (void)_updateAuxiliaryViews;
 - (void)loadView;
 - (void)viewDidLoad;

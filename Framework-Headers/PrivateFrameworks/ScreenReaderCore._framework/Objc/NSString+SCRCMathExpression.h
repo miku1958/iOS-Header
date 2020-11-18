@@ -7,8 +7,32 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (SCRCMathExpression)
++ (id)stringWithCGRect:(struct CGRect)arg1;
 + (id)stringWithDollarCode:(id)arg1;
+- (unsigned char)_countNumberOfGlyphs:(unsigned char)arg1;
+- (int)character32AtIndex:(unsigned long long)arg1 returningNumberOfComposedChars:(unsigned long long *)arg2;
+- (BOOL)containsAttachmentCharSet;
+- (id)contentsOfEmbeddedCommand:(id)arg1;
+- (struct _NSRange)enclosingSentenceRangeForRange:(struct _NSRange)arg1;
+- (unsigned int)fourCharCodeValue;
+- (BOOL)hasMultipleWordsWithLocaleName:(const char *)arg1 ignorePunctuation:(BOOL)arg2;
+- (struct _NSRange)nextWordFromPosition:(long long)arg1;
+- (struct _NSRange)previousWordFromPosition:(long long)arg1;
+- (id)scrStringByTrimmingTrailingNewlines;
+- (id)scrc_composedCharacterAtIndex:(unsigned long long)arg1;
+- (id)scrc_composedCharacterEnumerator;
+- (BOOL)scrc_containsNumberOfGlyphs:(unsigned char)arg1;
+- (BOOL)scrc_containsOnlyOneGlyph;
+- (unsigned char)scrc_countNumberOfGlyphs;
+- (id)scrc_decodeUnicodeForKVO;
+- (id)scrc_encodeUnicodeForKVO;
+- (struct _NSRange)sentenceBreakInDirection:(BOOL)arg1 fromIndex:(unsigned long long)arg2 skipCurrent:(BOOL)arg3;
+- (id)stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
+- (id)stringByTrimmingEmptySpaceEdges;
+- (id)stringByTruncatingToWordAtIndex:(unsigned long long)arg1 addElipses:(BOOL)arg2;
+- (id)stringWithMathIndicators;
 - (id)stringWrappedInMathMLTag:(id)arg1;
 - (id)stringWrappedInMathMLTag:(id)arg1 withAttributes:(id)arg2;
+- (id)threadDescription;
 @end
 

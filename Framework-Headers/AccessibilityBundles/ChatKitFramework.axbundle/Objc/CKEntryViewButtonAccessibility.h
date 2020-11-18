@@ -13,7 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityControlShouldPerformAccessibilityActivate;
+- (long long)_axButtonType;
+- (id)accessibilityHint;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (BOOL)isAccessibilityElement;
 
 @end
 

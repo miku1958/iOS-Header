@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *memoryMonitoringSource; // @synthesize memoryMonitoringSource=_memoryMonitoringSource;
 
 + (void)initialize;
++ (void *)newAddressBookWithDelegateInfo:(id)arg1;
 + (void *)newAddressBookWithURL:(id)arg1;
 + (void *)newInMemoryAddressBook;
 - (void).cxx_destruct;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void *)popAddressBook;
 - (void *)preparedAddressBook:(void *)arg1;
 - (void)pushAddressBook:(void *)arg1;
+- (id)resultWithInvalidatedAddressBook:(CDUnknownBlockType)arg1;
 
 @end
 

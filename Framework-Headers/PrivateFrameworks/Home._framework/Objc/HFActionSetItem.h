@@ -10,13 +10,14 @@
 #import <Home/NSCopying-Protocol.h>
 
 @class HMActionSet, NSString;
-@protocol HFCharacteristicValueSource, HFHomeKitObject;
+@protocol HFCharacteristicValueSource, HFHomeKitObject, HFServiceLikeItem;
 
 @interface HFActionSetItem : HFItem <HFHomeKitItemProtocol, NSCopying>
 {
     HMActionSet *_actionSet;
     unsigned long long _actionSetItemStyle;
     id<HFCharacteristicValueSource> _valueSource;
+    HFItem<HFServiceLikeItem> *_serviceLikeItem;
 }
 
 @property (readonly, nonatomic) HMActionSet *actionSet; // @synthesize actionSet=_actionSet;
@@ -25,11 +26,12 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (copy, nonatomic) HFItem<HFServiceLikeItem> *serviceLikeItem; // @synthesize serviceLikeItem=_serviceLikeItem;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 + (id)_primaryStateForActionSet:(id)arg1 valueSource:(id)arg2 logger:(id)arg3;
-+ (BOOL)_value:(id)arg1 isApproximatelyEqualToValue:(id)arg2 characteristicMetadata:(id)arg3;
++ (BOOL)_value:(id)arg1 isApproximatelyEqualToValue:(id)arg2 forMinimumValue:(id)arg3 maximumValue:(id)arg4;
 - (void).cxx_destruct;
 - (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
 - (id)_mostCommonRoomForActionSet:(id)arg1;

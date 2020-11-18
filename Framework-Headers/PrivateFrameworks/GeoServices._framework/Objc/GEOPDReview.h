@@ -8,40 +8,60 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDRating, GEOPDUser, NSMutableArray, NSString, PBUnknownFields;
+@class GEOPDRating, GEOPDUser, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDReview : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    double _reviewTime;
     GEOPDRating *_rating;
     NSString *_reviewId;
+    double _reviewTime;
     GEOPDUser *_reviewer;
     NSMutableArray *_snippets;
     struct {
-        unsigned int reviewTime:1;
-    } _has;
+        unsigned int has_reviewTime:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_rating:1;
+        unsigned int read_reviewId:1;
+        unsigned int read_reviewer:1;
+        unsigned int read_snippets:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_rating:1;
+        unsigned int wrote_reviewId:1;
+        unsigned int wrote_reviewTime:1;
+        unsigned int wrote_reviewer:1;
+        unsigned int wrote_snippets:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasRating;
 @property (readonly, nonatomic) BOOL hasReviewId;
 @property (nonatomic) BOOL hasReviewTime;
 @property (readonly, nonatomic) BOOL hasReviewer;
-@property (strong, nonatomic) GEOPDRating *rating; // @synthesize rating=_rating;
-@property (strong, nonatomic) NSString *reviewId; // @synthesize reviewId=_reviewId;
-@property (nonatomic) double reviewTime; // @synthesize reviewTime=_reviewTime;
-@property (strong, nonatomic) GEOPDUser *reviewer; // @synthesize reviewer=_reviewer;
-@property (strong, nonatomic) NSMutableArray *snippets; // @synthesize snippets=_snippets;
+@property (strong, nonatomic) GEOPDRating *rating;
+@property (strong, nonatomic) NSString *reviewId;
+@property (nonatomic) double reviewTime;
+@property (strong, nonatomic) GEOPDUser *reviewer;
+@property (strong, nonatomic) NSMutableArray *snippets;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (id)reviewsForPlaceData:(id)arg1;
 + (Class)snippetType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsSnippet:(id)arg1;
 - (id)_bestSnippet;
 - (id)_bestSnippetLocale;
+- (void)_readRating;
+- (void)_readReviewId;
+- (void)_readReviewer;
+- (void)_readSnippets;
 - (void)addSnippet:(id)arg1;
 - (void)clearSnippets;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -49,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)snippetAtIndex:(unsigned long long)arg1;
 - (unsigned long long)snippetsCount;

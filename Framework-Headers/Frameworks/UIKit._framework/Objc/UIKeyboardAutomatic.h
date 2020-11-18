@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsCandidateBar; // @synthesize showsCandidateBar;
 @property (nonatomic) BOOL showsCandidateInline; // @synthesize showsCandidateInline;
 
++ (id)activeInstance;
++ (id)sharedInstance;
 - (BOOL)_isAutomaticKeyboard;
 - (void)activate;
 - (void)dealloc;

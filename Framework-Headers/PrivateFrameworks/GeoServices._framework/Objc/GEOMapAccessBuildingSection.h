@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)dealloc;
-- (id)initWithFeature:(CDStruct_8e575d68 *)arg1 sectionIndex:(unsigned long long)arg2;
+- (id)initWithFeature:(CDStruct_0c54f6ee *)arg1 sectionIndex:(unsigned long long)arg2;
 
 @end
 

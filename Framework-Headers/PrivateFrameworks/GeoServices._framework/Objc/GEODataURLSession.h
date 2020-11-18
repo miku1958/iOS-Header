@@ -8,11 +8,12 @@
 
 #import <GeoServices/GEODataSession-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
+#import <GeoServices/NSURLSessionDownloadDelegate-Protocol.h>
 
 @class GEODataURLSessionList, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface GEODataURLSession : NSObject <NSURLSessionDataDelegate, GEODataSession>
+@interface GEODataURLSession : NSObject <NSURLSessionDataDelegate, NSURLSessionDownloadDelegate, GEODataSession>
 {
     GEODataURLSessionList *_urlSessions;
     NSObject<OS_dispatch_queue> *_sessionIsolation;
@@ -40,6 +41,7 @@
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 _willSendRequestForEstablishedConnection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
@@ -50,12 +52,13 @@
 - (id)createNewURLSessionWithRequest:(id)arg1;
 - (void)dealloc;
 - (void)didReceiveMemoryPressureWarning;
+- (id)downloadTaskWithRequest:(id)arg1 priority:(float)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (id)init;
 - (void)pruneInactiveSessions;
 - (id)removeTaskForURLSession:(id)arg1 task:(id)arg2;
 - (id)taskForURLSession:(id)arg1 task:(id)arg2;
-- (id)taskWithRequest:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
-- (id)taskWithRequest:(id)arg1 rules:(id)arg2 priority:(float)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
+- (id)taskWithRequest:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
+- (id)taskWithRequest:(id)arg1 priority:(float)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (void)tearDown;
 - (id)urlSessionForRequest:(id)arg1;
 

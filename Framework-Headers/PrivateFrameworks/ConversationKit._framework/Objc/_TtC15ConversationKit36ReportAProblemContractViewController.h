@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit36ReportAProblemContractViewController : UIViewController
 {
     MISSING_TYPE *call;

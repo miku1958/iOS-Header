@@ -13,8 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (unsigned long long)_accessibilityRepresentedTimePeriod;
-- (void)_accessibilitySetRepresentedTimePeriod:(unsigned long long)arg1;
 - (void)_accessibilitySetUnderlyingRepresentedTimePeriod:(unsigned long long)arg1;
 - (unsigned long long)_accessibilityUnderlyingRepresentedTimePeriod;
 - (struct CGRect)accessibilityFrame;

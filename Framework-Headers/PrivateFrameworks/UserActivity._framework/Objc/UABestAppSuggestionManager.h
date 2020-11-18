@@ -26,14 +26,17 @@
 - (void)bestAppSuggestionLaunchWasCancelled:(id)arg1;
 - (void)bestAppSuggestionWasLaunched:(id)arg1 withInteractionType:(int)arg2;
 - (id)bestAppSuggestions:(long long)arg1;
+- (id)createAppSuggestionFromActivityInfo:(id)arg1 atTime:(id)arg2;
 - (void)dealloc;
 - (BOOL)determineBestAppWithDelay:(double)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (BOOL)fetchAllNearbyAppSuggestions;
 - (id)init;
+- (BOOL)isActivityInfo:(id)arg1 atTime:(id)arg2 similarToAppSuggestion:(id)arg3;
 - (void)launchAppWithBestAppSuggestion:(id)arg1;
 - (void)launchAppWithBundleIdentifier:(id)arg1 taskContinuationIdentifier:(id)arg2;
 - (void)launchAppWithBundleIdentifier:(id)arg1 userActivityUniqueIdentifier:(id)arg2 userActivityTypeIdentifier:(id)arg3;
 - (void)launchAppWithBundleIdentifier:(id)arg1 userActivityUniqueIdentifier:(id)arg2 userActivityTypeIdentifier:(id)arg3 deviceName:(id)arg4 deviceIdentifier:(id)arg5 deviceType:(id)arg6;
-- (void)notifyBestAppChanged:(id)arg1 type:(unsigned long long)arg2 options:(id)arg3 bundleIdentifier:(id)arg4 activityType:(id)arg5 dynamicIdentifier:(id)arg6 when:(id)arg7 confidence:(double)arg8 deviceName:(id)arg9 deviceIdentifier:(id)arg10 deviceType:(id)arg11;
+- (void)notifyBestAppsChanged:(id)arg1 when:(id)arg2 confidence:(double)arg3;
 - (void)queueFetchOfPayloadForBestAppSuggestion:(id)arg1;
 - (void)removeBestApp:(id)arg1 options:(id)arg2;
 - (void)removeBestAppByUUID:(id)arg1 options:(id)arg2;

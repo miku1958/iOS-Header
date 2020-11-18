@@ -17,18 +17,20 @@ __attribute__((visibility("hidden")))
     unsigned int _length;
     unsigned int _startIndex;
     struct {
-        unsigned int length:1;
-        unsigned int startIndex:1;
-    } _has;
+        unsigned int has_length:1;
+        unsigned int has_startIndex:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasLength;
 @property (nonatomic) BOOL hasStartIndex;
-@property (nonatomic) unsigned int length; // @synthesize length=_length;
-@property (nonatomic) unsigned int startIndex; // @synthesize startIndex=_startIndex;
+@property (nonatomic) unsigned int length;
+@property (nonatomic) unsigned int startIndex;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

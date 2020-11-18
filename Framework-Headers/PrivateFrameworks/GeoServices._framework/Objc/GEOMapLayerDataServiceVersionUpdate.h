@@ -8,27 +8,35 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapLayerDataServiceLayer, GEOMapLayerDataServiceLayerIndex, GEOMapLayerDataServiceVersion;
+@class GEOMapLayerDataServiceLayer, GEOMapLayerDataServiceLayerIndex, GEOMapLayerDataServiceVersion, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOMapLayerDataServiceVersionUpdate : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOMapLayerDataServiceLayerIndex *_index;
     GEOMapLayerDataServiceLayer *_layer;
     GEOMapLayerDataServiceVersion *_sourceVersion;
     GEOMapLayerDataServiceVersion *_targetVersion;
+    CDStruct_2c11db96 _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasIndex;
 @property (readonly, nonatomic) BOOL hasLayer;
 @property (readonly, nonatomic) BOOL hasSourceVersion;
 @property (readonly, nonatomic) BOOL hasTargetVersion;
-@property (strong, nonatomic) GEOMapLayerDataServiceLayerIndex *index; // @synthesize index=_index;
-@property (strong, nonatomic) GEOMapLayerDataServiceLayer *layer; // @synthesize layer=_layer;
-@property (strong, nonatomic) GEOMapLayerDataServiceVersion *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
-@property (strong, nonatomic) GEOMapLayerDataServiceVersion *targetVersion; // @synthesize targetVersion=_targetVersion;
+@property (strong, nonatomic) GEOMapLayerDataServiceLayerIndex *index;
+@property (strong, nonatomic) GEOMapLayerDataServiceLayer *layer;
+@property (strong, nonatomic) GEOMapLayerDataServiceVersion *sourceVersion;
+@property (strong, nonatomic) GEOMapLayerDataServiceVersion *targetVersion;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readIndex;
+- (void)_readLayer;
+- (void)_readSourceVersion;
+- (void)_readTargetVersion;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

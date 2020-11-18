@@ -6,9 +6,18 @@
 
 #import <AVFoundation/AVCaptureDevice.h>
 
+@class AVCaptureDeviceFormat;
+
 @interface AVCaptureDevice (CAMDebugging)
+
+@property (readonly, nonatomic) AVCaptureDeviceFormat *cam_formatForPortraitFrontFacingZoomed;
+
 - (void)cam_debugExposureState;
 - (void)cam_debugFocusAndExposureState;
 - (void)cam_debugFocusState;
+- (id)cam_highestQualityFormatForConfiguration:(long long)arg1 colorSpace:(long long)arg2;
+- (id)cameraPanoramaFormatForConfiguration:(id)arg1;
+- (id)cameraVideoFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)cameraVideoPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
 @end
 

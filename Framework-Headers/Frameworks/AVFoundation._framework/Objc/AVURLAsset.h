@@ -33,7 +33,7 @@
 + (id)_figStreamingMIMETypes;
 + (id)_figStreamingUTIs;
 + (id)_fileUTTypes;
-+ (id)_getFigAssetCreationOptionsFromURLAssetInitializationOptions:(id)arg1 figAssetCreationFlags:(unsigned long long *)arg2 error:(id *)arg3;
++ (id)_getFigAssetCreationOptionsFromURLAssetInitializationOptions:(id)arg1 assetLoggingIdentifier:(id)arg2 figAssetCreationFlags:(unsigned long long *)arg3 error:(id *)arg4;
 + (id)_getFigAssetiTunesStoreContentInfoFromURLAssetiTunesStoreContentInfo:(id)arg1;
 + (id)_streamingUTTypes;
 + (id)audiovisualMIMETypes;
@@ -56,7 +56,6 @@
 - (void)_ensureAssetDownloadCache;
 - (id)_errorForFigNotificationPayload:(struct __CFDictionary *)arg1 key:(struct __CFString *)arg2;
 - (struct OpaqueFigFormatReader *)_formatReader;
-- (void)_handleURLRequest:(id)arg1;
 - (BOOL)_hasResourceLoaderDelegate;
 - (id)_installHandlerForNSURLSessionConfiguration:(id)arg1 queue:(id)arg2;
 - (id)_instanceIdentifier;
@@ -77,7 +76,6 @@
 - (id)downloadDestinationURL;
 - (unsigned long long)downloadToken;
 - (void)expire;
-- (void)finalize;
 - (id)identifyingTag;
 - (id)identifyingTagClass;
 - (id)init;

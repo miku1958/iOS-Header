@@ -14,6 +14,7 @@
 {
     NSUUID *_identifier;
     NSString *_name;
+    double _timeout;
     long long _qualityOfService;
     HMFMessageDestination *_destination;
     HMFMessageTransport *_transport;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
+@property (nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property (weak, nonatomic) HMFMessageTransport *transport; // @synthesize transport=_transport;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 

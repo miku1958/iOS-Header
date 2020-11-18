@@ -67,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)_mangledFilenameForURL:(id)arg1;
 - (void)_prepareForDisplayWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_presentError:(id)arg1 forThirdPartyPickerWithDescription:(id)arg2;
+- (void)_setIsContentManaged:(BOOL)arg1;
 - (void)_setSourceIsManaged:(BOOL)arg1;
 - (void)_setTintColor:(id)arg1;
 - (void)_setUploadURLWrapper:(id)arg1;

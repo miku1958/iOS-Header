@@ -46,7 +46,7 @@
 - (void)firingAlarmChanged:(id)arg1;
 - (void)firingAlarmDismissed:(id)arg1;
 - (void)getAlarmSnapshotWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getNotifiedFiringAlarmIDsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getFiringAlarmIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)removeListener:(id)arg1;

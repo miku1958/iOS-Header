@@ -10,12 +10,12 @@
 {
 }
 
-+ (id)_appleWatchSamplesPredicateForSession:(id)arg1;
-+ (id)_companionNanoSyncPredicateConjunctionForSession:(id)arg1;
-+ (id)_defaultCompanionNanoSyncSampleAgePredicateForSession:(id)arg1;
++ (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
++ (id)_predicateForDateIntervalInSyncSession:(id)arg1;
++ (id)_predicateForSampleAgeInSyncSession:(id)arg1 sampleTypeClass:(Class)arg2;
++ (id)_predicateForSyncSession:(id)arg1;
++ (Class)_syncedSampleTypeClass;
 + (int)nanoSyncObjectType;
-+ (id)nanoSyncPredicateForSession:(id)arg1;
-+ (unsigned long long)supportedNanoSyncDirectionsForProtocolVersion:(int)arg1;
 + (BOOL)supportsSpeculativeNanoSyncChanges;
 
 @end

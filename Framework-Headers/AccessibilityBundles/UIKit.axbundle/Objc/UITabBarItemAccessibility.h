@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_createViewForTabBar:(id)arg1 asProxyView:(BOOL)arg2;
+- (id)accessibilityLabel;
 - (id)accessibilityLocalizationBundleID;
 - (id)accessibilityLocalizationBundlePath;
 - (id)accessibilityLocalizedStringKey;

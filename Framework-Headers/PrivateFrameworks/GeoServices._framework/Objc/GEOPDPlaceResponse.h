@@ -8,36 +8,59 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOClientMetrics, GEOPDDatasetABStatus, GEOPDPlaceGlobalResult, NSMutableArray, NSString, PBUnknownFields;
+@class GEOClientMetrics, GEOPDDatasetABStatus, GEOPDPlaceGlobalResult, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPDPlaceResponse : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _debugLatencyMs;
     GEOClientMetrics *_clientMetrics;
     GEOPDDatasetABStatus *_datasetAbStatus;
     NSString *_debugApiKey;
+    unsigned long long _debugLatencyMs;
     NSMutableArray *_displayLanguages;
     NSString *_displayRegion;
     GEOPDPlaceGlobalResult *_globalResult;
     NSMutableArray *_placeResults;
-    int _requestType;
     NSMutableArray *_spokenLanguages;
+    int _requestType;
     int _status;
     struct {
-        unsigned int debugLatencyMs:1;
-        unsigned int requestType:1;
-        unsigned int status:1;
-    } _has;
+        unsigned int has_debugLatencyMs:1;
+        unsigned int has_requestType:1;
+        unsigned int has_status:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_clientMetrics:1;
+        unsigned int read_datasetAbStatus:1;
+        unsigned int read_debugApiKey:1;
+        unsigned int read_displayLanguages:1;
+        unsigned int read_displayRegion:1;
+        unsigned int read_globalResult:1;
+        unsigned int read_placeResults:1;
+        unsigned int read_spokenLanguages:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_clientMetrics:1;
+        unsigned int wrote_datasetAbStatus:1;
+        unsigned int wrote_debugApiKey:1;
+        unsigned int wrote_debugLatencyMs:1;
+        unsigned int wrote_displayLanguages:1;
+        unsigned int wrote_displayRegion:1;
+        unsigned int wrote_globalResult:1;
+        unsigned int wrote_placeResults:1;
+        unsigned int wrote_spokenLanguages:1;
+        unsigned int wrote_requestType:1;
+        unsigned int wrote_status:1;
+    } _flags;
 }
 
 @property (strong, nonatomic) GEOClientMetrics *clientMetrics;
-@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
-@property (strong, nonatomic) NSString *debugApiKey; // @synthesize debugApiKey=_debugApiKey;
+@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
+@property (strong, nonatomic) NSString *debugApiKey;
 @property (nonatomic) unsigned long long debugLatencyMs;
-@property (strong, nonatomic) NSMutableArray *displayLanguages; // @synthesize displayLanguages=_displayLanguages;
-@property (strong, nonatomic) NSString *displayRegion; // @synthesize displayRegion=_displayRegion;
-@property (strong, nonatomic) GEOPDPlaceGlobalResult *globalResult; // @synthesize globalResult=_globalResult;
+@property (strong, nonatomic) NSMutableArray *displayLanguages;
+@property (strong, nonatomic) NSString *displayRegion;
+@property (strong, nonatomic) GEOPDPlaceGlobalResult *globalResult;
 @property (readonly, nonatomic) BOOL hasClientMetrics;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
 @property (readonly, nonatomic) BOOL hasDebugApiKey;
@@ -46,25 +69,39 @@
 @property (readonly, nonatomic) BOOL hasGlobalResult;
 @property (nonatomic) BOOL hasRequestType;
 @property (nonatomic) BOOL hasStatus;
-@property (strong, nonatomic) NSMutableArray *placeResults; // @synthesize placeResults=_placeResults;
-@property (nonatomic) int requestType; // @synthesize requestType=_requestType;
-@property (strong, nonatomic) NSMutableArray *spokenLanguages; // @synthesize spokenLanguages=_spokenLanguages;
-@property (nonatomic) int status; // @synthesize status=_status;
+@property (strong, nonatomic) NSMutableArray *placeResults;
+@property (nonatomic) int requestType;
+@property (strong, nonatomic) NSMutableArray *spokenLanguages;
+@property (nonatomic) int status;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)displayLanguageType;
++ (BOOL)isValid:(id)arg1;
 + (Class)placeResultType;
 + (Class)spokenLanguageType;
 - (void).cxx_destruct;
 - (int)StringAsRequestType:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
+- (void)_addNoFlagsDisplayLanguage:(id)arg1;
+- (void)_addNoFlagsPlaceResult:(id)arg1;
+- (void)_addNoFlagsSpokenLanguage:(id)arg1;
 - (id)_disambiguationLabels;
+- (void)_readClientMetrics;
+- (void)_readDatasetAbStatus;
+- (void)_readDebugApiKey;
+- (void)_readDisplayLanguages;
+- (void)_readDisplayRegion;
+- (void)_readGlobalResult;
+- (void)_readPlaceResults;
+- (void)_readSpokenLanguages;
 - (void)addDisplayLanguage:(id)arg1;
 - (void)addPlaceResult:(id)arg1;
 - (void)addSpokenLanguage:(id)arg1;
 - (void)clearDisplayLanguages;
 - (void)clearPlaceResults;
+- (void)clearSensitiveFields;
 - (void)clearSpokenLanguages;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -77,6 +114,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)placeResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)placeResultsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestTypeAsString:(int)arg1;
 - (id)spokenLanguageAtIndex:(unsigned long long)arg1;

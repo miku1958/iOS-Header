@@ -8,10 +8,11 @@
 
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
+#import <TelephonyUtilities/TUFilteredRequest-Protocol.h>
 
 @class NSSet, NSString, NSURL, NSUUID, TUHandle;
 
-@interface TUJoinConversationRequest : NSObject <NSCopying, NSSecureCoding>
+@interface TUJoinConversationRequest : NSObject <TUFilteredRequest, NSCopying, NSSecureCoding>
 {
     BOOL _videoEnabled;
     BOOL _shouldSuppressInCallUI;
@@ -28,11 +29,15 @@
 @property (readonly, nonatomic) NSURL *URL;
 @property (strong, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (strong, nonatomic) TUHandle *callerID; // @synthesize callerID=_callerID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *messagesGroupName; // @synthesize messagesGroupName=_messagesGroupName;
 @property (copy, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
 @property (readonly, copy, nonatomic) NSSet *remoteMembers; // @synthesize remoteMembers=_remoteMembers;
 @property (nonatomic) BOOL shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property (nonatomic) BOOL showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
+@property (readonly) Class superclass;
 @property (nonatomic, getter=isUplinkMuted) BOOL uplinkMuted; // @synthesize uplinkMuted=_uplinkMuted;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 @property (nonatomic) BOOL wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
@@ -43,14 +48,16 @@
 + (id)remoteMembersFromURLComponents:(id)arg1;
 + (id)sanitizedMembersFromMembers:(id)arg1;
 + (BOOL)shouldSuppressInCallUIFromURLComponents:(id)arg1;
++ (BOOL)showUIPromptFromURLComponents:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (BOOL)videoEnabledFromURLComponents:(id)arg1;
 + (BOOL)wantsStagingAreaFromURLComponents:(id)arg1;
 - (void).cxx_destruct;
+- (id)bundleIdentifier;
 - (id)callerIDQueryItem;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)handles;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConversation:(id)arg1;
 - (id)initWithGroupUUID:(id)arg1 localParticipantHandle:(id)arg2 remoteParticipantHandles:(id)arg3;
@@ -61,6 +68,7 @@
 - (id)queryItems;
 - (id)remoteMembersQueryItem;
 - (id)shouldSuppressInCallUIQueryItem;
+- (id)showUIPromptQueryItem;
 - (id)videoEnabledQueryItem;
 - (id)wantsStagingAreaQueryItem;
 

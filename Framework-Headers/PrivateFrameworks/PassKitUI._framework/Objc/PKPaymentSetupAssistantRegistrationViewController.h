@@ -31,11 +31,16 @@
 + (BOOL)setupAssistantNeedsToRunReturningRequirements:(unsigned long long *)arg1;
 - (void).cxx_destruct;
 - (void)_setExternalDelegate:(id)arg1;
+- (void)bridgeSetupAssistantDidFailToChangePasscode;
+- (void)bridgeSetupAssistantDidFinishPasscodeChange;
 - (id)delegate;
 - (id)initWithPaymentWebService:(id)arg1 context:(long long)arg2 delegate:(id)arg3;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeWithCompletion:(CDUnknownBlockType)arg2;
+- (void)viewControllerDidFailToChangePasscodeComplex:(id)arg1;
+- (void)viewControllerDidFinishChangingPasscodeComplex:(id)arg1;
 - (void)viewControllerDidShowEligibilityIssue:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

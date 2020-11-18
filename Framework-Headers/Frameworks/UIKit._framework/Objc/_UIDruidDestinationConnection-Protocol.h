@@ -4,23 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <UIKitCore/NSObject-Protocol.h>
+
 @class NSArray, _DUIPotentialDrop;
 
-@protocol _UIDruidDestinationConnection
+@protocol _UIDruidDestinationConnection <NSObject>
 
 @property (copy, nonatomic) CDUnknownBlockType connectionBlock;
 @property (copy, nonatomic) CDUnknownBlockType dragEndBlock;
+@property (copy, nonatomic) CDUnknownBlockType dragPreviewProviderBlock;
 @property (copy, nonatomic) CDUnknownBlockType dropPerformBlock;
 @property (copy, nonatomic) CDUnknownBlockType handOffDroppedItemsBlock;
-@property (copy, nonatomic) CDUnknownBlockType itemDetailProviderBlock;
-@property (copy, nonatomic) CDUnknownBlockType itemImageProviderBlock;
-@property (copy, nonatomic) CDUnknownBlockType itemUpdateBlock;
 @property (copy, nonatomic) CDUnknownBlockType itemsAddedBlock;
 @property (readonly, nonatomic) unsigned int sessionIdentifier;
 
 - (void)dirtyItems:(NSArray *)arg1;
 - (void)enableKeyboardIfNeeded;
+- (id)init;
+- (id)initWithSessionIdentifier:(unsigned int)arg1 systemPolicy:(BOOL)arg2;
 - (void)requestDropWithOperation:(unsigned long long)arg1;
+- (void)requestVisibleItems:(void (^)(NSArray *))arg1;
 - (void)sawDragEndEvent;
 - (void)takePotentialDrop:(_DUIPotentialDrop *)arg1;
 @end

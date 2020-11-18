@@ -7,18 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
-#import <PhotosUICore/PXWidget-Protocol.h>
+#import <PhotosUICore/PXUIWidget-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PHPerson, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXUIPeopleSuggestionDataSource, PXWidgetSpec, UIButton, UILabel, UIView;
+@class NSLayoutConstraint, NSString, PHPerson, PXOneUpPresentation, PXPeopleSuggestionDataSource, PXPhotosDetailsContext, PXSectionedSelectionManager, PXTilingController, PXWidgetSpec, UIButton, UILabel, UIView;
 @protocol PXWidgetDelegate, PXWidgetUnlockDelegate;
 
-@interface PXPeopleCandidateWidget : NSObject <PXChangeObserver, PXWidget>
+@interface PXPeopleCandidateWidget : NSObject <PXChangeObserver, PXUIWidget>
 {
     BOOL _dismissed;
     PXPhotosDetailsContext *_context;
     PXWidgetSpec *_spec;
     id<PXWidgetDelegate> _widgetDelegate;
-    PXUIPeopleSuggestionDataSource *_dataSource;
+    PXPeopleSuggestionDataSource *_dataSource;
     UIView *_contentView;
     UILabel *_label;
     PHPerson *_person;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) long long contentViewAnchoringType;
 @property (strong, nonatomic) PXPhotosDetailsContext *context; // @synthesize context=_context;
-@property (strong, nonatomic) PXUIPeopleSuggestionDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property (strong, nonatomic) PXPeopleSuggestionDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dismissed; // @synthesize dismissed=_dismissed;
@@ -49,6 +49,7 @@
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (weak, nonatomic) UIButton *notNowButton; // @synthesize notNowButton=_notNowButton;
 @property (strong, nonatomic) NSLayoutConstraint *notNowToTrailingConstraint; // @synthesize notNowToTrailingConstraint=_notNowToTrailingConstraint;
+@property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property (strong, nonatomic) PHPerson *person; // @synthesize person=_person;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
@@ -65,6 +66,7 @@
 - (void)_suggestionsDidFinish:(id)arg1;
 - (void)_updateAndSetDescriptionFont;
 - (void)contentSizeCategoryDidChange:(id)arg1;
+- (void)controllerTraitCollectionDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)loadContentData;
 - (void)notNowTapped:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;

@@ -13,10 +13,12 @@
 
 @interface EKUIProposedTimeEventViewController : EKEventViewController <EKEditItemViewControllerProtocol>
 {
+    CDUnknownBlockType _completionBlock;
     EKCalendarEventInvitationNotificationAttendee *_proposedTimeAttendee;
     EKUIRecurrenceAlertController *_recurrenceAlertController;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (weak, nonatomic) id<EKEditItemViewControllerDelegate> editDelegate;
 @property (nonatomic) BOOL editItemShouldBeAskedForInjectableViewController;
 @property (nonatomic) BOOL presentModally;

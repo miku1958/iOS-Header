@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (id)customAttributes;
 - (id)_combine:(id)arg1;
 - (id)_kernelKmeans;
+- (id)defuse:(id)arg1 seed:(int)arg2;
 - (id)outputImage;
 
 @end

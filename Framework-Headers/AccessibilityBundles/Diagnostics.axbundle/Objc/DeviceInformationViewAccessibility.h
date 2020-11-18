@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axLoadLabelAccessibility;
+- (void)infoLabelTapped;
 - (id)subviewsForStackViewElement;
 
 @end

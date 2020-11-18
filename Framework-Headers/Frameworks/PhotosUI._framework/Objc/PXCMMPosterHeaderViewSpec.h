@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class UIFont;
+
 @interface PXCMMPosterHeaderViewSpec : NSObject
 {
     BOOL _canShowStatus;
@@ -30,6 +32,14 @@
 @property (readonly, nonatomic) unsigned int bottomGradientFontDescriptorSymbolicTraits; // @synthesize bottomGradientFontDescriptorSymbolicTraits=_bottomGradientFontDescriptorSymbolicTraits;
 @property (readonly, nonatomic) long long bottomGradientFontTextStyle; // @synthesize bottomGradientFontTextStyle=_bottomGradientFontTextStyle;
 @property (readonly, nonatomic) BOOL canShowStatus; // @synthesize canShowStatus=_canShowStatus;
+@property (readonly, nonatomic) UIFont *preferredStatusFont;
+@property (readonly, nonatomic) UIFont *preferredSubtitleFont;
+@property (readonly, nonatomic) UIFont *preferredTitleFont;
+@property (readonly, nonatomic) double scaledBottomGradientBaselineOffset;
+@property (readonly, nonatomic) double scaledStatusBaselineOffset;
+@property (readonly, nonatomic) double scaledSubtitleBaselineOffset;
+@property (readonly, nonatomic) double scaledTitleBaselineOffset;
+@property (readonly, nonatomic) double scaledTopGradientBaselineOffset;
 @property (readonly, nonatomic) double statusBaselineOffset; // @synthesize statusBaselineOffset=_statusBaselineOffset;
 @property (readonly, nonatomic) unsigned int statusFontDescriptorSymbolicTraits; // @synthesize statusFontDescriptorSymbolicTraits=_statusFontDescriptorSymbolicTraits;
 @property (readonly, nonatomic) long long statusFontTextStyle; // @synthesize statusFontTextStyle=_statusFontTextStyle;

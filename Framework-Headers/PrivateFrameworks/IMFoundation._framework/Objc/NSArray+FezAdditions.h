@@ -20,6 +20,8 @@
 - (BOOL)_hasSameMembers:(id)arg1;
 - (BOOL)containsObject:(id)arg1 matchingComparison:(SEL)arg2;
 - (BOOL)containsObjectIdenticalTo:(id)arg1;
+- (void)differencesFromArray:(id)arg1 removedIndexes:(id *)arg2 insertedIndexes:(id *)arg3;
+- (void)differencesFromArray:(id)arg1 usingComparator:(CDUnknownBlockType)arg2 removedIndexes:(id *)arg3 insertedIndexes:(id *)arg4;
 - (long long)indexOfObject:(id)arg1 matchingComparison:(SEL)arg2;
 @end
 

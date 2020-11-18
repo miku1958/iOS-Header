@@ -44,6 +44,7 @@
 + (id)singletonInstance;
 - (void).cxx_destruct;
 - (void)addActivityObserver:(id)arg1;
+- (BOOL)atexitHandler;
 - (void)backgroundActivityAssertionsDidChange;
 - (BOOL)canGoEarlyClean;
 - (id)createMemoryPressureSource;

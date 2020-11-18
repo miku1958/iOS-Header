@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKUIRemoteViewController.h>
+#import <GameCenterUI/GKExtensionRemoteViewController.h>
 
 #import <GameCenterUI/GKGameCenterDashboardServiceProtocol-Protocol.h>
 
 @class GKGame, GKGameCenterViewController, NSObject, NSString;
 
-@interface GKDashboardHostViewController : GKUIRemoteViewController <GKGameCenterDashboardServiceProtocol>
+@interface GKDashboardHostViewController : GKExtensionRemoteViewController <GKGameCenterDashboardServiceProtocol>
 {
     GKGameCenterViewController *_delegateWeak;
     NSObject *_dashboardAssetController;

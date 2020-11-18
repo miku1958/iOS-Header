@@ -7,7 +7,7 @@
 #import <BaseBoardUI/BSUIEmojiLabelView.h>
 
 @interface BSUIEmojiLabelView (MTVibrantStylingAdditions)
-- (void)mt_applyVibrantStyling:(id)arg1;
-- (void)mt_removeAllVibrantStyling;
+- (void)_mt_applyVisualStyling:(id)arg1;
+- (void)mt_removeAllVisualStyling;
 @end
 

@@ -6,32 +6,58 @@
 
 #import <objc/NSObject.h>
 
-@class GCController, GCControllerButtonInput, GCControllerDirectionPad;
+@class GCController, GCControllerButtonInput, GCControllerDirectionPad, GCMotion;
 
 @interface GCMicroGamepad : NSObject
 {
-    BOOL _allowsRotation;
+    BOOL _dpadFlippedY;
     BOOL _reportsAbsoluteDpadValues;
+    BOOL _allowsRotation;
+    GCMotion *_motion;
+    GCControllerButtonInput *_button0;
+    GCControllerButtonInput *_button1;
+    GCController *_controller;
+    CDUnknownBlockType _valueChangedHandler;
+    GCControllerDirectionPad *_dpad;
+    GCControllerButtonInput *_buttonMenu;
+    long long _deviceType;
 }
 
 @property (nonatomic) BOOL allowsRotation; // @synthesize allowsRotation=_allowsRotation;
-@property (readonly, strong, nonatomic) GCControllerButtonInput *buttonA;
-@property (readonly, strong, nonatomic) GCControllerButtonInput *buttonX;
-@property (readonly, weak, nonatomic) GCController *controller;
-@property (readonly, strong, nonatomic) GCControllerDirectionPad *dpad;
+@property (readonly, strong, nonatomic) GCControllerButtonInput *buttonA; // @synthesize buttonA=_button0;
+@property (readonly, nonatomic) GCControllerButtonInput *buttonMenu; // @synthesize buttonMenu=_buttonMenu;
+@property (readonly, strong, nonatomic) GCControllerButtonInput *buttonX; // @synthesize buttonX=_button1;
+@property (readonly, weak, nonatomic) GCController *controller; // @synthesize controller=_controller;
+@property (nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
+@property (readonly, strong, nonatomic) GCControllerDirectionPad *dpad; // @synthesize dpad=_dpad;
 @property (nonatomic) BOOL reportsAbsoluteDpadValues; // @synthesize reportsAbsoluteDpadValues=_reportsAbsoluteDpadValues;
-@property (copy, nonatomic) CDUnknownBlockType valueChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
 
-+ (BOOL)supportsUSBInterfaceProtocol:(unsigned char)arg1;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)_motion;
 - (id)button0;
 - (id)button1;
 - (id)buttonB;
+- (void)encodeWithCoder:(id)arg1;
+- (void)handleEvent:(struct __IOHIDEvent *)arg1;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithController:(id)arg1;
-- (id)inputForElement:(struct __IOHIDElement *)arg1;
+- (id)initWithController:(id)arg1 dpadFlippedY:(BOOL)arg2;
+- (BOOL)isBluetoothAndUSBMirrored;
+- (void)microControllerWithDigitizerX:(float)arg1 digitizerY:(float)arg2 timestamp:(unsigned long long)arg3 touchDown:(BOOL)arg4;
+- (id)name;
+- (id)productCategory;
 - (id)saveSnapshot;
 - (void)setButton:(id)arg1 pressed:(BOOL)arg2;
 - (void)setButton:(id)arg1 value:(double)arg2;
+- (void)setController:(id)arg1;
+- (void)setControllerForElements;
 - (void)setDpad:(id)arg1 x:(double)arg2 y:(double)arg3;
+- (void)setPlayerIndex:(long long)arg1;
+- (void)setStateFromMicroGamepad:(id)arg1;
+- (void)set_motion:(id)arg1;
 - (BOOL)supportsDpadTaps;
 
 @end

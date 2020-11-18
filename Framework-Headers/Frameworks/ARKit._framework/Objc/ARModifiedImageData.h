@@ -6,11 +6,15 @@
 
 #import <ARKit/ARImageData.h>
 
+@class NSDictionary;
+
 @interface ARModifiedImageData : ARImageData
 {
     ARImageData *_originalImage;
+    NSDictionary *_metaData;
 }
 
+@property (copy, nonatomic) NSDictionary *metaData; // @synthesize metaData=_metaData;
 @property (readonly, nonatomic) ARImageData *originalImage;
 
 - (void).cxx_destruct;

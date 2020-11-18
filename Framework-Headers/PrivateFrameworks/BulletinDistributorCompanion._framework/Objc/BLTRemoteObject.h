@@ -48,14 +48,13 @@
 - (void)_handleNewSessionState:(unsigned long long)arg1;
 - (BOOL)_idsQueueCallSendCompletionHandlerWithSuccess:(BOOL)arg1 identifier:(id)arg2 error:(id)arg3;
 - (void)_queueHandleIDSProtobuf:(id)arg1;
-- (void)_queuePerformSend:(CDUnknownBlockType)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8;
-- (void)_queueSendMessage:(id)arg1 type:(unsigned short)arg2 responseToRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8 didQueue:(CDUnknownBlockType)arg9;
+- (void)_queuePerformSend:(CDUnknownBlockType)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 allowCloudDelivery:(BOOL)arg7 didSend:(CDUnknownBlockType)arg8 andResponse:(CDUnknownBlockType)arg9;
+- (void)_queueSendRequest:(id)arg1;
 - (void)_queueUpdateConnectionStatusWithResetDefaulteDevice:(BOOL)arg1;
 - (void)_removeAndHandleResponseHandler:(id)arg1;
 - (void)_sendAckInitialSequenceNumberForSession:(id)arg1 sessionState:(unsigned long long)arg2;
 - (void)_sendAckInitialSequenceNumberForSession:(id)arg1 withAssert:(BOOL)arg2 sessionState:(unsigned long long *)arg3;
 - (void)_sendAssertForSession;
-- (void)_sendMessage:(id)arg1 type:(unsigned short)arg2 responseToRequest:(id)arg3 withTimeout:(id)arg4 withDescription:(id)arg5 onlyOneFor:(id)arg6 didSend:(CDUnknownBlockType)arg7 andResponse:(CDUnknownBlockType)arg8 didQueue:(CDUnknownBlockType)arg9;
 - (BOOL)_sequenceErrorDidHappenAndHandled:(long long)arg1 service:(id)arg2 incomingIdentifier:(id)arg3;
 - (void)_setStandaloneTestModeEnabled:(BOOL)arg1;
 - (void)_storeProtobufAction:(SEL)arg1 messageType:(unsigned short)arg2 messageSendType:(long long)arg3;
@@ -74,6 +73,7 @@
 - (id)initWithServiceName:(id)arg1 idsQueueName:(char *)arg2 andClientQueue:(id)arg3;
 - (void)registerProtobufHandlers;
 - (void)sendFileURL:(id)arg1 withTimeout:(id)arg2 extraMetadata:(id)arg3 responseHandlers:(id)arg4 didSend:(CDUnknownBlockType)arg5 didQueue:(CDUnknownBlockType)arg6;
+- (void)sendRequest:(id)arg1;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 didSend:(CDUnknownBlockType)arg3;
 - (void)sendRequest:(id)arg1 type:(unsigned short)arg2 withTimeout:(id)arg3 didSend:(CDUnknownBlockType)arg4;

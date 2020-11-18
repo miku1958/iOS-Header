@@ -31,13 +31,18 @@
 @property (readonly, nonatomic) struct CGSize intrinsicContentSize;
 @property (nonatomic, getter=isMergeableDataDirty) BOOL mergeableDataDirty; // @synthesize mergeableDataDirty=_mergeableDataDirty;
 @property (readonly, nonatomic) BOOL needsFullSizePreview;
+@property (readonly, nonatomic) BOOL preferLocalPreviewImages;
 @property BOOL previewGenerationOperationCancelled; // @synthesize previewGenerationOperationCancelled=_previewGenerationOperationCancelled;
 @property (readonly, nonatomic) NSString *previewImageTypeUTI;
 @property (readonly, nonatomic) NSString *previewItemTitle;
 @property (readonly, nonatomic) NSURL *previewItemURL;
+@property (readonly, nonatomic) BOOL previewsSupportMultipleAppearances;
+@property (readonly, nonatomic) BOOL requiresPostProcessing;
 @property (readonly, nonatomic) NSURL *saveURL;
 @property (readonly, nonatomic) BOOL showThumbnailInNoteList;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsImageClassification;
+@property (readonly, nonatomic) BOOL supportsOCR;
 @property (readonly, nonatomic) BOOL supportsQuickLook;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;

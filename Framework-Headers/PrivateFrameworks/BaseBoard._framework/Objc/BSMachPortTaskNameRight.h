@@ -11,15 +11,16 @@
 @interface BSMachPortTaskNameRight : BSMachPortSendRight
 {
     int _pid;
-    BSAuditToken *_auditToken;
+    BSAuditToken *_critical_auditToken;
 }
 
-@property (readonly, nonatomic) BSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (readonly, nonatomic) BSAuditToken *auditToken; // @dynamic auditToken;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
 
 + (BOOL)supportsSecureCoding;
 + (id)taskNameForPID:(int)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;

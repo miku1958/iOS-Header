@@ -9,7 +9,7 @@
 @class NSDictionary, NSNumber, NSString, SSLookupItem;
 
 @protocol SKProductPageExtensionServiceInterface <NSObject>
-- (void)lookupItemDidLoad:(SSLookupItem *)arg1 parameters:(NSDictionary *)arg2;
+- (void)clientLookupItemDidLoad:(SSLookupItem *)arg1 parameters:(NSDictionary *)arg2;
 - (void)setAskToBuy:(BOOL)arg1;
 - (void)setCancelButtonTitle:(NSString *)arg1;
 - (void)setPromptString:(NSString *)arg1;

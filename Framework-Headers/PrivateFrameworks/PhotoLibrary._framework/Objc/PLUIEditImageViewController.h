@@ -23,7 +23,7 @@
 - (void)cropOverlayWasCancelled:(id)arg1;
 - (void)cropOverlayWasOKed:(id)arg1;
 - (void)dealloc;
-- (int)imageFormat;
+- (unsigned short)imageFormat;
 - (id)imageTile;
 - (id)initWithPhoto:(id)arg1;
 - (id)photo;

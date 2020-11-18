@@ -22,7 +22,6 @@
     NSString *_transparencyRendererURL;
     NSDictionary *_transparencyDetailsDictionary;
     UILabel *_errorLabel;
-    double _statusBarOffset;
     WKWebView *_myNewsPrivacyWebView;
     UINavigationBar *_transparencyNavBar;
 }
@@ -35,7 +34,6 @@
 @property (nonatomic) BOOL isClientTodayWidget; // @synthesize isClientTodayWidget=_isClientTodayWidget;
 @property (nonatomic) BOOL isiPad; // @synthesize isiPad=_isiPad;
 @property (strong, nonatomic) WKWebView *myNewsPrivacyWebView; // @synthesize myNewsPrivacyWebView=_myNewsPrivacyWebView;
-@property (nonatomic) double statusBarOffset; // @synthesize statusBarOffset=_statusBarOffset;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSDictionary *transparencyDetailsDictionary; // @synthesize transparencyDetailsDictionary=_transparencyDetailsDictionary;
 @property (readonly, nonatomic) NSString *transparencyDetailsUnavailableMessage; // @synthesize transparencyDetailsUnavailableMessage=_transparencyDetailsUnavailableMessage;

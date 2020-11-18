@@ -6,24 +6,19 @@
 
 #import <ARKit/ARTechnique.h>
 
-@class ARDirectionalLightEstimate, ARFaceTrackingData, NSObject;
+@class ARDirectionalLightEstimate, NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ARFaceLightEstimationTechnique : ARTechnique
 {
     NSObject<OS_dispatch_semaphore> *_resultSemaphore;
     ARDirectionalLightEstimate *_lastLightEstimate;
-    struct __CVBuffer *_pixelBufferRef;
     float _lightIntensity;
     float _temperature;
     struct ExponentialSmoother<float> _smoother;
-    ARFaceTrackingData *_lastFaceData;
-    CDStruct_14d5dc5e _lastCameraTransform;
-    BOOL _cameraTransformAvailable;
     NSObject<OS_dispatch_queue> *_lightEstimationQueue;
     NSObject<OS_dispatch_semaphore> *_estimatingSemaphore;
     struct FacialLightEstimation _faceLightEstimator;
-    struct FLEOptions _faceLightEstimationOptions;
     float _shSmoothingAlpha;
 }
 

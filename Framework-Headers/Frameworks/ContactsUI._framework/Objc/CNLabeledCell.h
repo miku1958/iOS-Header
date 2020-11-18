@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *valueString;
 @property (copy, nonatomic) NSDictionary *valueTextAttributes;
 @property (readonly, nonatomic) UIView<ABText> *valueView;
+@property (readonly, nonatomic) double valueViewBottomMargin;
 @property (nonatomic) BOOL valueViewNeedsHuggingContent; // @synthesize valueViewNeedsHuggingContent=_valueViewNeedsHuggingContent;
 
 + (BOOL)wantsChevron;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)constantConstraintsForHorizontalLayout;
 - (id)constantConstraintsForStandardLayout;
 - (id)constantConstraintsForVerticalLayout;
+- (BOOL)displaysCellSelectionState;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (double)minCellHeight;
 - (void)removeChevron;

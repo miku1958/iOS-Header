@@ -8,28 +8,46 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDVenueBuilding, GEOPDVenueContainer, NSMutableArray, PBUnknownFields;
+@class GEOPDVenueBuilding, GEOPDVenueContainer, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDFeatureBuilding : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDVenueBuilding *_building;
     NSMutableArray *_levels;
     GEOPDVenueContainer *_venueContainer;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_building:1;
+        unsigned int read_levels:1;
+        unsigned int read_venueContainer:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_building:1;
+        unsigned int wrote_levels:1;
+        unsigned int wrote_venueContainer:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDVenueBuilding *building; // @synthesize building=_building;
+@property (strong, nonatomic) GEOPDVenueBuilding *building;
 @property (readonly, nonatomic) BOOL hasBuilding;
 @property (readonly, nonatomic) BOOL hasVenueContainer;
-@property (strong, nonatomic) NSMutableArray *levels; // @synthesize levels=_levels;
+@property (strong, nonatomic) NSMutableArray *levels;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDVenueContainer *venueContainer; // @synthesize venueContainer=_venueContainer;
+@property (strong, nonatomic) GEOPDVenueContainer *venueContainer;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)levelType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsLevel:(id)arg1;
+- (void)_readBuilding;
+- (void)_readLevels;
+- (void)_readVenueContainer;
 - (void)addLevel:(id)arg1;
 - (void)clearLevels;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (id)levelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)levelsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

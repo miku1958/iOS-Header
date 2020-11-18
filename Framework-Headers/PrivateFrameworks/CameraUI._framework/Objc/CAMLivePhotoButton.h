@@ -12,12 +12,14 @@
 
 @interface CAMLivePhotoButton : CAMExpandableMenuButton <CAMAccessibilityHUDImageProvider>
 {
+    BOOL _allowsAutomaticMode;
     UIImageView *__imageView;
     NSDictionary *__enablingAnimationImages;
 }
 
 @property (copy, nonatomic, setter=_setEnablingAnimationImages:) NSDictionary *_enablingAnimationImages; // @synthesize _enablingAnimationImages=__enablingAnimationImages;
 @property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property (nonatomic) BOOL allowsAutomaticMode; // @synthesize allowsAutomaticMode=_allowsAutomaticMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -46,6 +48,7 @@
 - (void)preloadEnablingAnimation;
 - (void)prepareHeaderViewForExpanding:(BOOL)arg1;
 - (void)reloadData;
+- (void)setAllowsAutomaticMode:(BOOL)arg1 needsReloadData:(BOOL)arg2;
 - (void)setSelectedIndex:(long long)arg1;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 

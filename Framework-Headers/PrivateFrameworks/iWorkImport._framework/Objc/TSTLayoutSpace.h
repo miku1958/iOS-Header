@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     TSTLayoutSpaceBezierPathCache *mBezierPathCache;
     BOOL mLayoutDirectionIsLeftToRight;
     struct _opaque_pthread_rwlock_t mLock;
+    BOOL mInvalidatedForEditingCell;
 }
 
 @property (readonly, nonatomic) TSTLayoutSpaceBezierPathCache *bezierPathCache; // @synthesize bezierPathCache=mBezierPathCache;
@@ -70,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateCoordinates;
 - (void)invalidateCoordinatesAfterColumn:(unsigned short)arg1;
 - (void)invalidateCoordinatesAfterRow:(unsigned int)arg1;
+- (void)invalidateCoordinatesForEditingCellID:(struct TSUCellCoord)arg1;
 - (void)invalidateTableOffset;
 - (void)lockForRead;
 - (void)lockForWrite;

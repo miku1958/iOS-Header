@@ -11,7 +11,7 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessory, HMApplicationData, HMBulletinBoardNotification, HMFUnfairLock, HMMutableArray, NSArray, NSNumber, NSString, NSURL, NSUUID, _HMContext;
+@class HMAccessory, HMApplicationData, HMBulletinBoardNotification, HMFUnfairLock, HMMutableArray, NSArray, NSDictionary, NSNumber, NSString, NSURL, NSUUID, _HMContext;
 
 @interface HMService : NSObject <HMFLogging, NSSecureCoding, HMObjectMerge, HMMutableApplicationData>
 {
@@ -44,11 +44,12 @@
 
 @property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) HMApplicationData *applicationData;
+@property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (copy, nonatomic) NSString *associatedServiceType; // @synthesize associatedServiceType=_associatedServiceType;
 @property (readonly, nonatomic) HMBulletinBoardNotification *bulletinBoardNotificationInternal; // @synthesize bulletinBoardNotificationInternal=_bulletinBoardNotificationInternal;
 @property (readonly, copy, nonatomic) NSArray *characteristics;
 @property (nonatomic) long long configurationState; // @synthesize configurationState=_configurationState;
-@property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
+@property (copy, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (copy, nonatomic) HMMutableArray *currentCharacteristics; // @synthesize currentCharacteristics=_currentCharacteristics;
 @property (readonly, copy) NSString *debugDescription;
@@ -67,6 +68,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property BOOL nameModifiable; // @synthesize nameModifiable=_nameModifiable;
 @property (readonly, nonatomic, getter=isPrimaryService) BOOL primaryService; // @synthesize primaryService=_primaryService;
+@property (readonly, copy) NSDictionary *serializedDictionaryRepresentation;
 @property (copy, nonatomic) NSString *serviceSubtype; // @synthesize serviceSubtype=_serviceSubtype;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
@@ -78,21 +80,27 @@
 + (id)_mapToIsConfiguredValueFromServiceConfigurationState:(long long)arg1;
 + (long long)_mapToServiceConfigurationStateFromIsConfiguredValue:(id)arg1;
 + (id)_serviceTypeAsString:(id)arg1;
++ (id)characteristicBlacklistForShortcutConditions;
++ (id)defaultCharacteristicByServiceDictionary;
++ (void)initializeCharacteristicDictionaries;
 + (id)localizedDescriptionForServiceType:(id)arg1;
 + (id)logCategory;
++ (id)serviceWithSerializedDictionaryRepresentation:(id)arg1 home:(id)arg2;
++ (id)serviceWithServiceReference:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 - (void)_addCharacteristic:(id)arg1;
 - (void)_addLastKnownSleepDiscoveryModeDidUpdateDelegateCallbackToOperations:(id)arg1;
 - (id)_findCharacteristic:(id)arg1;
+- (id)_findCharacteristicWithUniqueIdentifier:(id)arg1;
 - (void)_handleMarkServiceInteractive:(id)arg1;
 - (void)_handleMediaSourceIdentifierUpdated:(id)arg1;
 - (void)_handleUpdateAssociatedServiceType:(id)arg1;
 - (void)_handleUpdateConfigurationState:(long long)arg1;
-- (void)_handleUpdateConfiguredName:(id)arg1;
 - (void)_handleUpdateDefaultName:(id)arg1;
 - (void)_handleUpdateName:(id)arg1;
+- (void)_handleUpdateServicePrimary:(id)arg1;
 - (void)_handleUpdateServiceSubtype:(id)arg1;
 - (BOOL)_hasCharacteristic:(id)arg1;
 - (BOOL)_hasCharacteristicOfType:(id)arg1;
@@ -103,6 +111,8 @@
 - (void)_updateConfigurationState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)bulletinBoardNotification;
+- (id)characteristicsSupportedForShortcutConditions;
+- (id)defaultCharacteristic;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasSleepDiscoveryMode;
 - (id)homeObjectURL;

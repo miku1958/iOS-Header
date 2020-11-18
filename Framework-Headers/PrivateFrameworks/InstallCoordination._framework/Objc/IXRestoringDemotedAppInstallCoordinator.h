@@ -8,11 +8,10 @@
 
 #import <InstallCoordination/IXCoordinatorWithImportance-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithUserDataPromise-Protocol.h>
-#import <InstallCoordination/IXUserInitiatedCoordinator-Protocol.h>
 
 @class NSString;
 
-@interface IXRestoringDemotedAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithUserDataPromise, IXUserInitiatedCoordinator, IXCoordinatorWithImportance>
+@interface IXRestoringDemotedAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithUserDataPromise, IXCoordinatorWithImportance>
 {
 }
 
@@ -21,14 +20,11 @@
 @property (readonly, nonatomic) BOOL hasUserDataPromise;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, getter=isUserInitiated) BOOL userInitiated;
 
 + (id)coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 createIfNotExisting:(BOOL)arg3 created:(BOOL *)arg4 error:(id *)arg5;
 + (void)enumerateCoordinatorsUsingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)enumerateCoordinatorsWithError:(id *)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (BOOL)setUserDataPromise:(id)arg1 error:(id *)arg2;
-- (id)userDataPromiseWithError:(id *)arg1;
-- (id)userDataRestoreShouldBegin:(BOOL *)arg1;
++ (id)existingCoordinatorForAppWithBundleID:(id)arg1 error:(id *)arg2;
 - (id)validInstallTypes;
 
 @end

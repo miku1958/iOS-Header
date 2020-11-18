@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDDataCollectionObserverState, HKObjectType, NSString;
+@class HKObjectType, NSString;
 
 @protocol HDHealthDataCollector <NSObject>
 
@@ -19,8 +19,5 @@
 - (void)updateHistoricalData;
 - (void)updateHistoricalDataForcedUpdate:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)updateHistoricalDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
-
-@optional
-- (BOOL)shouldCollectForObserverState:(HDDataCollectionObserverState *)arg1;
 @end
 

@@ -18,6 +18,8 @@
 @property (weak, nonatomic) id<NFAWDLoggerDelegate> delegate;
 
 + (id)sharedAWDLogger;
+- (void)_postAWDHCIEndOfTransactionEventWithParametersLegacy:(id)arg1 currentTimestamp:(unsigned long long)arg2;
+- (void)_postAWDHCIStartOfTransactionEventWithParametersLegacy:(id)arg1 currentTimestamp:(unsigned long long)arg2;
 - (void)_updateStats:(id)arg1 reset:(BOOL)arg2;
 - (void)dealloc;
 - (void)enableQueryMetricsListener;
@@ -41,9 +43,7 @@
 - (void)postAWDHCEStateChangeEvent:(unsigned int)arg1;
 - (void)postAWDHCIActivityTimeout:(id)arg1;
 - (void)postAWDHCIEndOfTransactionEventWithParameters:(id)arg1;
-- (void)postAWDHCIEndOfTransactionV2EventWithParameters:(id)arg1;
-- (void)postAWDHCIStartOfTransactionEventWithVersion:(unsigned int)arg1 withStatus:(unsigned int)arg2;
-- (void)postAWDHCIStartOfTransactionV2EventWithParameters:(id)arg1;
+- (void)postAWDHCIStartOfTransactionEventWithParameters:(id)arg1;
 - (void)postAWDMiddlewareException:(unsigned int)arg1 mwVersion:(unsigned int)arg2 errorType:(unsigned int)arg3 errorCode:(unsigned int)arg4 breadcrumb:(unsigned long long)arg5 checkMaxExceptionCounter:(BOOL)arg6;
 - (void)postAWDMobileSoftwareUpdateException:(unsigned int)arg1;
 - (void)postAWDPLLUnlockEvent;
@@ -68,6 +68,8 @@
 - (void)postAWDVASSelectOSE:(id)arg1;
 - (void)postAWDVASTransactionException:(unsigned int)arg1 withSWStatus:(unsigned int)arg2;
 - (void)postAWDVersionInfo:(id)arg1;
+- (void)postReaderModeIngestionSessionEnded:(id)arg1 startTime:(unsigned long long)arg2;
+- (void)postReaderModeIngestionSessionStarted:(id)arg1;
 - (void)updateStats:(id)arg1 reset:(BOOL)arg2;
 
 @end

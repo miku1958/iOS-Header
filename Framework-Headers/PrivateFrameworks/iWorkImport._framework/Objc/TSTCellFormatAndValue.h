@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _applySpareFormatOnly;
     int _spareFormatType;
     BOOL _boolValue;
-    double _doubleValue;
+    struct TSUDecimal _decimalValue;
     NSObject *_objValue;
     NSString *_formattedValue;
     TSWPStorage *_formattedRichTextStorage;
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isApplySpareFormatOnly;
 @property (readonly, nonatomic) BOOL isFormulaSyntaxError;
-@property (readonly, nonatomic) double numberOrCurrencyDoubleValue;
+@property (readonly, nonatomic) struct TSUDecimal numberOrCurrencyDecimalValue;
 @property (readonly, nonatomic) TSWPStorage *richTextOrErrorTextStorageValue;
 @property (readonly, copy, nonatomic) NSString *stringValue;
 @property (readonly) Class superclass;
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2;
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2 forceNoContent:(BOOL)arg3;
 + (id)formatAndValueFromRichTextCell:(id)arg1 updatingStorageWithBlock:(CDUnknownBlockType)arg2;
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)applyToCell:(id)arg1;
 - (id)cellValueWithLocale:(id)arg1;
@@ -68,7 +69,6 @@ __attribute__((visibility("hidden")))
 - (id)p_copyStorage:(id)arg1;
 - (id)p_formatForFormatType:(unsigned int)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
-- (void)setDateValue:(id)arg1;
 
 @end
 

@@ -15,6 +15,7 @@
 - (void)fullscreenAppViewController:(id<CKFullScreenAppViewControllerProtocol>)arg1 hasUpdatedLastTouchDate:(NSDate *)arg2;
 - (void)fullscreenAppViewController:(id<CKFullScreenAppViewControllerProtocol>)arg1 wantsToSwitchToPlugin:(IMBalloonPlugin *)arg2 datasource:(IMBalloonPluginDataSource *)arg3;
 - (double)fullscreenAppViewControllerCollapsedContentHeight:(id<CKFullScreenAppViewControllerProtocol>)arg1;
+- (double)fullscreenAppViewControllerCollapsedHeaderHeight:(id<CKFullScreenAppViewControllerProtocol>)arg1;
 - (void)fullscreenAppViewControllerDidTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (BOOL)fullscreenAppViewControllerShouldDismissOnDragSuccess:(id<CKFullScreenAppViewControllerProtocol>)arg1;
 - (void)fullscreenAppViewControllerSwitcherDidSelectAppManager:(id<CKFullScreenAppViewControllerProtocol>)arg1;

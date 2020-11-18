@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-+ (id)weatherAttributionButtonWithDelegate:(id)arg1;
 - (id)_switchCellWithText:(id)arg1 enabled:(BOOL)arg2 selected:(BOOL)arg3 target:(id)arg4 action:(SEL)arg5;
+- (id)weatherAttributionButton;
 
 @end
 

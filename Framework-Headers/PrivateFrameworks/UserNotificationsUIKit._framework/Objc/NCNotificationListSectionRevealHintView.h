@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKit/UIView.h>
 
 #import <UserNotificationsUIKit/NCLegibilitySettingsAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
 @class NSString, SBUILegibilityLabel, _UILegibilitySettings;
 
-@interface NCNotificationListSectionRevealHintView : UICollectionReusableView <NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting>
+@interface NCNotificationListSectionRevealHintView : UIView <NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting>
 {
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _forceRevealed;
@@ -45,7 +45,6 @@
 - (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

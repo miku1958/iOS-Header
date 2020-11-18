@@ -8,16 +8,16 @@
 
 #import <Intents/INControlHomeIntentResponseExport-Protocol.h>
 
-@class NSString, _INPBControlHomeIntentResponse;
+@class NSArray, NSString;
 
 @interface INControlHomeIntentResponse : INIntentResponse <INControlHomeIntentResponseExport>
 {
-    _INPBControlHomeIntentResponse *_responseMessagePBRepresentation;
 }
 
 @property (readonly, nonatomic) long long code;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *entityResponses;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -26,11 +26,10 @@
 + (int)_errorCodeFromCode:(long long)arg1;
 + (int)_typeFromCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

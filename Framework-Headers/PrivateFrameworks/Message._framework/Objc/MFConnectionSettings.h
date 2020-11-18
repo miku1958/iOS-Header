@@ -40,6 +40,7 @@
 @property (nonatomic) BOOL usesOpportunisticSockets; // @synthesize usesOpportunisticSockets=_usesOpportunisticSockets;
 @property (nonatomic) BOOL usesSSL; // @synthesize usesSSL=_usesSSL;
 
+- (void).cxx_destruct;
 - (struct __CFString *)connectionServiceType;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

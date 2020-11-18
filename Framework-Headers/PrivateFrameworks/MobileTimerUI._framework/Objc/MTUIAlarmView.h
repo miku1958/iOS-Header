@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <AppSupportUI/NUIContainerGridView.h>
 
 @class MTUIDigitalClockLabel, NSArray, NSDictionary, NSString, UIFont, UILabel, UISwitch;
 
-@interface MTUIAlarmView : UIView
+@interface MTUIAlarmView : NUIContainerGridView
 {
     id _contentSizeFontAdjustObserver;
     BOOL _shouldAddLayoutConstraints;
-    BOOL _switchVisible;
     long long _style;
     MTUIDigitalClockLabel *_timeLabel;
     NSString *_name;
@@ -21,6 +20,7 @@
     UIFont *_nameFont;
     UIFont *_repeatFont;
     UISwitch *_enabledSwitch;
+    NSDictionary *_viewsByIdentifier;
     NSArray *_currentConstraints;
 }
 
@@ -33,16 +33,16 @@
 @property (copy, nonatomic) NSString *repeatText; // @synthesize repeatText=_repeatText;
 @property (nonatomic) BOOL shouldAddLayoutConstraints; // @synthesize shouldAddLayoutConstraints=_shouldAddLayoutConstraints;
 @property (nonatomic) long long style; // @synthesize style=_style;
-@property (nonatomic, getter=isSwitchVisible) BOOL switchVisible; // @synthesize switchVisible=_switchVisible;
+@property (nonatomic, getter=isSwitchVisible) BOOL switchVisible;
 @property (readonly, nonatomic) MTUIDigitalClockLabel *timeLabel; // @synthesize timeLabel=_timeLabel;
-@property (readonly, nonatomic) NSDictionary *viewsByIdentifier;
+@property (readonly, nonatomic) NSDictionary *viewsByIdentifier; // @synthesize viewsByIdentifier=_viewsByIdentifier;
 
 - (void).cxx_destruct;
 - (void)_loadFontsWithTextStyles;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setLayoutMargins:(struct UIEdgeInsets)arg1;
 - (void)setName:(id)arg1 andRepeatText:(id)arg2 textColor:(id)arg3;
 - (void)tearDownContentSizeChangeObserver;
-- (void)updateConstraints;
 - (void)updatePreferredMaxLayoutWidthForDetailContainerLabels;
 
 @end

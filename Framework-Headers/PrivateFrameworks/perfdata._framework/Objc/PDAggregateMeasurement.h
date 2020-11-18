@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _validMin;
     BOOL _validMax;
+    NSMutableDictionary *_labels;
     PDContainer *_container;
     NSString *_metric;
     NSString *_unitString;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) PDContainer *container; // @synthesize container=_container;
+@property (strong, nonatomic) NSMutableDictionary *labels; // @synthesize labels=_labels;
 @property (nonatomic) double max; // @synthesize max=_max;
 @property (readonly, nonatomic) PDMeasurement *measurement;
 @property (strong, nonatomic) NSString *metric; // @synthesize metric=_metric;

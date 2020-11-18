@@ -6,6 +6,8 @@
 
 #import <VectorKit/VKAnnotationTrackingCameraController.h>
 
+@class VKCameraRegionRestriction;
+
 __attribute__((visibility("hidden")))
 @interface VKGlobeAnnotationTrackingCameraController : VKAnnotationTrackingCameraController
 {
@@ -16,18 +18,22 @@ __attribute__((visibility("hidden")))
         Geocentric_d8fde6f2;
         double;
         struct MercatorTile;
-        struct shared_ptr<altitude::AnchorManager>;
+        struct AnchorManager *;
         BOOL;
     } *_anchor;
     CDStruct_071ac149 _currentAnimationStartCoordinate;
     CDStruct_2c43369c _currentAnimationPresentationStartCoordinate;
+    CDStruct_2c43369c _currentAnimationPresentationEndCoordinate;
     CDStruct_2c43369c _currentAnimationEndCoordinate;
+    VKCameraRegionRestriction *_regionRestriction;
 }
 
 @property (nonatomic) struct GlobeView *globeView; // @synthesize globeView=_globeView;
+@property (strong, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
 
 - (Matrix_443f5d51)_centerCursor;
 - (void)_goToAnnotationAnimated:(BOOL)arg1 duration:(double)arg2 isInitial:(BOOL)arg3;
+- (Matrix_443f5d51)_nonOffsetCenterCursor;
 - (void)_rotateToHeadingAnimated:(BOOL)arg1 duration:(double)arg2;
 - (void)dealloc;
 - (id)init;

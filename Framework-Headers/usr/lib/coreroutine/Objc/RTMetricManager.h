@@ -28,13 +28,10 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL ready; // @synthesize ready=_ready;
 
-+ (id)addonMetricFromAddon:(id)arg1;
-+ (id)addonStringFromType:(int)arg1;
 + (int)doubleToInt:(double)arg1 shifts:(int)arg2;
 + (double)doubleWithSignificantDigits:(double)arg1 digits:(int)arg2;
 + (int)intWithSignificantDigits:(int)arg1 digits:(int)arg2;
 + (id)metricForType:(unsigned long long)arg1;
-+ (int)modelTypeFromSupportingEventClass:(Class)arg1;
 + (id)productionMetrics;
 + (int)roundTimeInterval:(double)arg1 byIntervalUnit:(unsigned long long)arg2;
 - (void).cxx_destruct;
@@ -45,8 +42,6 @@
 - (BOOL)_routineConfiguredForMetric:(id)arg1;
 - (void)_setupWithConfiguredClasses:(id)arg1;
 - (void)_submitMetric:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)_submitMetricWithIdentifier:(id)arg1 dictionary:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)convertMetricWithIdentifier:(id)arg1 dictionary:(id)arg2;
 - (id)createMetricForType:(unsigned long long)arg1;
 - (void)fetchDiagnosticsEnabled:(CDUnknownBlockType)arg1;
 - (id)init;
@@ -56,7 +51,6 @@
 - (void)shutdown;
 - (void)submitMetric:(id)arg1;
 - (void)submitMetric:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)submitMetricWithIdentifier:(id)arg1 dictionary:(id)arg2 handler:(CDUnknownBlockType)arg3;
 
 @end
 

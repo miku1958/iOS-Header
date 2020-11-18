@@ -7,12 +7,14 @@
 #import <Foundation/NSInvocation.h>
 
 @interface NSInvocation (GKProxyHelpers)
++ (id)_gkInvocationWithBlock:(id)arg1;
 - (void)__gkPrepareForFakeCallbackWithNoData:(BOOL)arg1 orError:(id)arg2;
 - (void)_gkCallbackWithError:(id)arg1 queue:(id)arg2;
 - (void)_gkClearArgumentAtIndex:(unsigned long long)arg1;
 - (void)_gkClearCopiedArguments;
 - (void)_gkClearTarget;
 - (void)_gkCopyArguments;
+- (BOOL)_gkHasReplyBlock;
 - (void)_gkInvokeOnce;
 - (void)_gkInvokeOnceWithTarget:(id)arg1;
 - (void)_gkPrepareForCallWithError:(id)arg1;

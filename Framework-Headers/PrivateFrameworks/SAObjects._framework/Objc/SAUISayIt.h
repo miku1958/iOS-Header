@@ -14,6 +14,7 @@
 }
 
 @property (strong, nonatomic) SAUIAudioData *audioData;
+@property (copy, nonatomic) NSString *audioDataUrl;
 @property (nonatomic) BOOL canUseServerTTS;
 @property (strong, nonatomic) id<SAAceSerializable> context;
 @property (copy, nonatomic) NSString *dialogIdentifier;

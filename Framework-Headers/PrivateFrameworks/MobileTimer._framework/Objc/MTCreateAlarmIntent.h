@@ -6,13 +6,15 @@
 
 #import <Intents/INIntent.h>
 
-@class INObject, NSString;
+@class INObject, NSArray, NSDateComponents, NSString;
 
 @interface MTCreateAlarmIntent : INIntent
 {
 }
 
+@property (copy, nonatomic) NSDateComponents *dateComponents; // @dynamic dateComponents;
 @property (copy, nonatomic) NSString *label; // @dynamic label;
+@property (copy, nonatomic) NSArray *repeatSchedule; // @dynamic repeatSchedule;
 @property (nonatomic) long long requiresAppLaunch; // @dynamic requiresAppLaunch;
 @property (copy, nonatomic) INObject *time; // @dynamic time;
 

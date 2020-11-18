@@ -11,8 +11,6 @@
     CDStruct_1b6d18a9 _livePhotoKeyFrameTime;
 }
 
-- (CDStruct_912cb5d2)_evenPixelSizeFromPixelSize:(CDStruct_912cb5d2)arg1;
-- (void)_setCleanApertureInSettings:(id)arg1 withSize:(CDStruct_912cb5d2)arg2 horizontalOffset:(long long)arg3 verticalOffset:(long long)arg4;
 - (id)generateVideoComposition:(out id *)arg1;
 - (id)initWithExportRequest:(id)arg1;
 - (id)initWithVideoExportRequest:(id)arg1;

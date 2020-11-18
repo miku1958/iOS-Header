@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/HDSQLiteQueryDescriptor.h>
 
-@class HDProfile, HKObjectType, NSArray, NSMutableDictionary, NSNumber, NSSet, NSString, _HKFilter;
+@class HDDatabaseTransactionContext, HDProfile, HKObjectType, NSArray, NSMutableDictionary, NSNumber, NSSet, NSString, _HKFilter;
 
 @interface HDDataEntityEnumerator : HDSQLiteQueryDescriptor
 {
@@ -22,11 +22,13 @@
     NSNumber *_anchor;
     NSNumber *_deletedObjectsAnchor;
     NSArray *_sortDescriptors;
+    HDDatabaseTransactionContext *_databaseTransactionContext;
     NSString *_lastSQL;
 }
 
 @property (strong, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;
 @property (copy, nonatomic) CDUnknownBlockType authorizationFilter; // @synthesize authorizationFilter=_authorizationFilter;
+@property (copy, nonatomic) HDDatabaseTransactionContext *databaseTransactionContext; // @synthesize databaseTransactionContext=_databaseTransactionContext;
 @property (strong, nonatomic) NSNumber *deletedObjectsAnchor; // @synthesize deletedObjectsAnchor=_deletedObjectsAnchor;
 @property (strong, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property (nonatomic) BOOL ignoreEntityClassAdditionalPredicateForEnumeration; // @synthesize ignoreEntityClassAdditionalPredicateForEnumeration=_ignoreEntityClassAdditionalPredicateForEnumeration;
@@ -38,17 +40,17 @@
 
 - (void).cxx_destruct;
 - (BOOL)_enumerateObjectsOnDatabase:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)_initWithEntityClass:(Class)arg1 profile:(id)arg2;
+- (id)_initWithObjectType:(id)arg1 entityClass:(Class)arg2 profile:(id)arg3;
 - (id)_joinClauseForProperties:(id)arg1;
 - (BOOL)_prepareDeletedObjectsAndSamplesDescriptor:(id)arg1 error:(id *)arg2;
 - (BOOL)_prepareDescriptor:(id)arg1 error:(id *)arg2;
-- (BOOL)_setColumnNamesAndSortOrderingsOnDescriptor:(id)arg1 error:(id *)arg2;
+- (BOOL)_setOrderingTermsOnDescriptor:(id)arg1 error:(id *)arg2;
 - (void)addEncodingOptionsFromDictionary:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)encodingOptionForKey:(id)arg1;
 - (BOOL)enumerateIncludingDeletedObjects:(BOOL)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateWithError:(id *)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)initWithEntityClass:(Class)arg1 profile:(id)arg2;
-- (id)initWithObjectType:(id)arg1 entityClass:(Class)arg2 profile:(id)arg3;
 - (void)setEncodingOption:(id)arg1 forKey:(id)arg2;
 
 @end

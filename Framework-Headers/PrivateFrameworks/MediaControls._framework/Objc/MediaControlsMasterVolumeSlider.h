@@ -11,11 +11,12 @@
 @class NSString, UIImpactFeedbackGenerator, UILongPressGestureRecognizer, UINotificationFeedbackGenerator, UIView;
 @protocol MediaControlsMasterVolumeSliderDelegate;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsMasterVolumeSlider : MediaControlsVolumeSlider <UIGestureRecognizerDelegate>
 {
     UIView *_growingThumbView;
     double _forcePercent;
-    float _initialValue;
+    float _initialX;
     BOOL _syncingEnabled;
     id<MediaControlsMasterVolumeSliderDelegate> _delegate;
     long long _syncState;
@@ -44,7 +45,7 @@
 - (void)handleLongPress:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)shrinkThumb;
+- (void)shrinkThumbAfterDelay:(double)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

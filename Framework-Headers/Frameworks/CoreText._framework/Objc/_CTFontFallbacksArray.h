@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
 {
     struct TUnfairLock _lock;
     const struct TBaseFont *_baseFont;
-    struct TTraitsValues _traitsValue;
     const struct TTraitsValues *_refTraits;
     unsigned long long _count;
     NSArray *_cascade;
     NSMutableArray *_fallbacks;
     unsigned long long _hash;
+    int _uiUse;
 }
 
 - (id).cxx_construct;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
 - (void)getObjects:(id *)arg1 range:(struct _NSRange)arg2;
-- (id)initWithBaseFont:(const struct TBaseFont *)arg1 cascade:(id)arg2;
+- (id)initWithBaseFont:(const struct TBaseFont *)arg1 cascade:(id)arg2 uiUse:(int)arg3;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndex:(unsigned long long)arg1 shouldLock:(BOOL)arg2 addRanges:(BOOL)arg3;
 

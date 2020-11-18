@@ -13,9 +13,9 @@
 
 @interface HDContentProtectionManager : NSObject <HDDiagnosticObject>
 {
-    int _contentProtectionState;
-    int _shouldIgnoreUnlockedState;
-    int _unlockedSinceBoot;
+    _Atomic int _contentProtectionState;
+    _Atomic BOOL _shouldIgnoreUnlockedState;
+    _Atomic BOOL _unlockedSinceBoot;
     int _notifyToken;
     NSObject<OS_dispatch_queue> *_observationQueue;
     NSMapTable *_observers;

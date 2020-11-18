@@ -47,7 +47,6 @@
 - (BOOL)shouldSendUsageUsingNewLogManager;
 - (void)unregisterLogMsgStateOfType:(int)arg1;
 - (void)updateAdaptorPolicyConfiguration:(id)arg1;
-- (void)waitForEmptyLoggingQueue:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -13,6 +13,7 @@
 @interface PXPlacesMapThumbnailAnnotationView : MKAnnotationView <PXPlacesMapAnnotationViewFadable>
 {
     long long _geotaggablesCount;
+    BOOL _imageIsPlaceholder;
     CDUnknownBlockType _displayCompletion;
     PKExtendedTraitCollection *_extendedTraitCollection;
     id _extendedTraitObserver;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) id extendedTraitObserver; // @synthesize extendedTraitObserver=_extendedTraitObserver;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXPlacesImageCache *imageCache; // @synthesize imageCache=_imageCache;
+@property (nonatomic) BOOL imageIsPlaceholder; // @synthesize imageIsPlaceholder=_imageIsPlaceholder;
 @property (readonly) Class superclass;
 
 + (id)_thumbnailCreationOperationQueue;
@@ -44,6 +46,7 @@
 - (void)_reloadCount:(long long)arg1;
 - (void)_reloadData:(BOOL)arg1;
 - (void)_showCountLabel;
+- (void)_updatePlaceholderImageIfNeeded;
 - (void)dealloc;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2 extendedTraitCollection:(id)arg3 imageCache:(id)arg4;
 - (void)prepareForReuse;
@@ -51,6 +54,8 @@
 - (id)renderToImage;
 - (void)setAnnotation:(id)arg1;
 - (void)setImage:(id)arg1;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)userCacheKey;
 
 @end

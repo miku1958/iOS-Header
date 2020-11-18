@@ -4,8 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol LAContextExternalizationProt
+#import <LocalAuthentication/NSObject-Protocol.h>
+
+@class NSData;
+
+@protocol LAContextExternalizationProt <NSObject>
 - (void)authMethodWithReply:(void (^)(NSData *, NSError *))arg1;
 - (void)externalizedContextWithReply:(void (^)(NSData *, NSError *))arg1;
+
+@optional
+- (NSData *)synchronousExternalizedContextWithError:(id *)arg1;
 @end
 

@@ -28,7 +28,7 @@
 
 @property unsigned long long bootstrapType; // @synthesize bootstrapType=_bootstrapType;
 @property (copy, nonatomic) CDUnknownBlockType cancelBlock; // @synthesize cancelBlock=_cancelBlock;
-@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *localizedName;
 @property (strong) PXPeopleNameSelection *nameSelection; // @synthesize nameSelection=_nameSelection;
 @property (strong, nonatomic) id<PXCMMPersonSuggestion> personSuggestion; // @synthesize personSuggestion=_personSuggestion;
 @property (copy, nonatomic) CDUnknownBlockType preCommitBlock; // @synthesize preCommitBlock=_preCommitBlock;

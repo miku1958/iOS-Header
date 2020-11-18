@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUIRenditionKey, NSString;
+@class CUIRenditionKey, CUIThemeRendition, NSString;
 
 @interface CUINamedLookup : NSObject
 {
@@ -18,31 +18,33 @@
     unsigned int _odContent:1;
 }
 
+@property (readonly, nonatomic) BOOL _cacheRenditionProperties;
+@property (readonly, nonatomic) unsigned int _distilledInVersion;
+@property (readonly, nonatomic) CUIThemeRendition *_rendition;
 @property (readonly, nonatomic) NSString *appearance;
+@property (readonly, nonatomic) long long appearanceIdentifier;
 @property (readonly, nonatomic) long long displayGamut;
 @property (readonly, nonatomic) long long graphicsClass;
 @property (readonly, nonatomic) long long idiom;
 @property (copy, nonatomic) CUIRenditionKey *key; // @synthesize key=_key;
+@property (readonly, nonatomic) NSString *keySignature;
 @property (readonly, nonatomic) long long layoutDirection;
 @property (readonly, nonatomic) long long memoryClass;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) CUIRenditionKey *renditionKey;
+@property (readonly, nonatomic) NSString *renditionName;
 @property (readonly, nonatomic) BOOL representsOnDemandContent;
 @property (readonly, nonatomic) long long sizeClassHorizontal;
 @property (readonly, nonatomic) long long sizeClassVertical;
 @property (nonatomic) unsigned long long storageRef; // @synthesize storageRef=_storageRef;
 @property (readonly, nonatomic) unsigned long long subtype;
 
-- (BOOL)_cacheRenditionProperties;
-- (unsigned int)_distilledInVersion;
-- (id)_rendition;
 - (id)_renditionForSpecificKey:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isTintable;
-- (id)renditionKey;
-- (id)renditionName;
 - (void)setRepresentsOnDemandContent:(BOOL)arg1;
 
 @end

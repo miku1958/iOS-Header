@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_mapkit_accessoryControlToExtendWithCallout;
-- (void)_mapkit_setCalloutTextColor:(id)arg1;
 - (id)initWithView:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 

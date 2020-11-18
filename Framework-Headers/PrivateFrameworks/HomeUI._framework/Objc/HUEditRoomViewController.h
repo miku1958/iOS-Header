@@ -58,9 +58,9 @@
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (void)updateTitle;
@@ -71,6 +71,7 @@
 - (void)wallpaperEditingDidCancel:(id)arg1;
 - (void)wallpaperPicker:(id)arg1 didReceiveDroppedImage:(id)arg2;
 - (void)wallpaperPicker:(id)arg1 didSelectWallpaper:(id)arg2 withImage:(id)arg3;
+- (void)wallpaperPickerDidCancel:(id)arg1;
 - (void)wallpaperPickerDidFinish:(id)arg1 wallpaper:(id)arg2 image:(id)arg3;
 - (void)wallpaperPickerRequestOpenWallpaperEditor:(id)arg1;
 - (void)wallpaperThumbnailCell:(id)arg1 didReceiveDroppedImage:(id)arg2;

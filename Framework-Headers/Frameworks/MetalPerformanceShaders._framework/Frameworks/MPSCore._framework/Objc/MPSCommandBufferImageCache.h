@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol MTLCommandBuffer;
+@protocol MPSHeapProvider, MTLCommandBuffer;
 
 @interface MPSCommandBufferImageCache : NSObject
 {
@@ -22,16 +22,21 @@
     BOOL _needsRetain;
     unsigned long long _totalAllocationBytes;
     unsigned long long _cacheDelay;
+    struct atomic<long> _commandBufferCount;
+    id<MPSHeapProvider> _heapProvider;
+    BOOL _isMPSCommandBuffer;
 }
 
 @property (nonatomic) unsigned long long batchSizeHint; // @synthesize batchSizeHint=_batchSize;
 @property (readonly, nonatomic) id<MTLCommandBuffer> commandBuffer; // @synthesize commandBuffer=_cmdBuffer;
+@property (strong, nonatomic) id<MPSHeapProvider> heapProvider; // @synthesize heapProvider=_heapProvider;
 
+- (void)addHandlerToCommandBuffer:(id)arg1;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)initWithCommandBuffer:(id)arg1;
 - (id)newHeapBlock:(unsigned long long)arg1;
-- (void)releaseHeapBlock:(id)arg1;
+- (void)releaseHeapBlock:(id)arg1 heapProvider:(id)arg2;
 
 @end
 

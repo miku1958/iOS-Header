@@ -33,7 +33,6 @@
 - (id)init;
 - (id)initWithAssetPlist:(id)arg1;
 - (id)initWithBundle:(id)arg1;
-- (struct __LSMMap *)polarityMapForLanguageID:(id)arg1;
 - (id)stringsFromTable:(id)arg1 forLanguageIdentifier:(id)arg2;
 
 @end

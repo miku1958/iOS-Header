@@ -6,7 +6,7 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXBorder, SXComponentMask, SXDataTableStyle, SXFill, SXShadow, UIColor;
+@class SXBorder, SXComponentMask, SXComponentShadow, SXDataTableStyle, SXFill, UIColor;
 
 @protocol SXComponentStyleProperties <NSObject>
 
@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) SXFill *fill;
 @property (readonly, nonatomic) SXComponentMask *mask;
 @property (readonly, nonatomic) double opacity;
-@property (readonly, nonatomic) SXShadow *shadow;
+@property (readonly, nonatomic) SXComponentShadow *shadow;
 @property (readonly, nonatomic) SXDataTableStyle *tableStyle;
 @property (readonly, nonatomic) unsigned long long traits;
 

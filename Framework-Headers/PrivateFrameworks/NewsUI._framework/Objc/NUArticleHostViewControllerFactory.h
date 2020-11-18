@@ -9,16 +9,18 @@
 #import <NewsUI/NUArticleHostViewControllerFactory-Protocol.h>
 
 @class NSString;
-@protocol NUArticleViewControllerFactory, NUErrorMessageFactory, NUSettings;
+@protocol NUArticleContentSizeManager, NUArticleViewControllerFactory, NUErrorMessageFactory, NUSettings;
 
 @interface NUArticleHostViewControllerFactory : NSObject <NUArticleHostViewControllerFactory>
 {
     id<NUArticleViewControllerFactory> _articleViewControllerFactory;
     id<NUSettings> _settings;
     id<NUErrorMessageFactory> _errorMessageFactory;
+    id<NUArticleContentSizeManager> _contentSizeManager;
 }
 
 @property (readonly, nonatomic) id<NUArticleViewControllerFactory> articleViewControllerFactory; // @synthesize articleViewControllerFactory=_articleViewControllerFactory;
+@property (readonly, nonatomic) id<NUArticleContentSizeManager> contentSizeManager; // @synthesize contentSizeManager=_contentSizeManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<NUErrorMessageFactory> errorMessageFactory; // @synthesize errorMessageFactory=_errorMessageFactory;
@@ -28,7 +30,7 @@
 
 - (void).cxx_destruct;
 - (id)createArticleHostViewControllerForArticle:(id)arg1;
-- (id)initWithArticleViewControllerFactory:(id)arg1 settings:(id)arg2 errorMessageFactory:(id)arg3;
+- (id)initWithArticleViewControllerFactory:(id)arg1 settings:(id)arg2 errorMessageFactory:(id)arg3 contentSizeManager:(id)arg4;
 
 @end
 

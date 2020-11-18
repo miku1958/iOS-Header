@@ -28,7 +28,6 @@
 + (BOOL)isSupported;
 + (BOOL)supportsSecureCoding;
 + (id)title;
-- (id)_prepareRectangleRequestOptions;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluate:(id)arg1;
 - (id)initWithCoder:(id)arg1;

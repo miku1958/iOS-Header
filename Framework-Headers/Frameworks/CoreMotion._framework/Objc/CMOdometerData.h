@@ -8,10 +8,11 @@
 
 #import <CoreMotion/NSCopying-Protocol.h>
 #import <CoreMotion/NSSecureCoding-Protocol.h>
+#import <CoreMotion/SRSampling-Protocol.h>
 
-@class NSDate, NSNumber;
+@class NSDate, NSNumber, NSString;
 
-@interface CMOdometerData : NSObject <NSSecureCoding, NSCopying>
+@interface CMOdometerData : NSObject <SRSampling, NSSecureCoding, NSCopying>
 {
     NSDate *_startDate;
     NSDate *_endDate;
@@ -22,15 +23,20 @@
 
 @property (readonly, nonatomic) NSNumber *averageSpeed; // @synthesize averageSpeed=_averageSpeed;
 @property (readonly, nonatomic) NSNumber *currentSpeed; // @synthesize currentSpeed=_currentSpeed;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSNumber *distance; // @synthesize distance=_distance;
 @property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (id)binarySampleRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDistance:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 currentSpeed:(id)arg4 averageSpeed:(id)arg5;
 

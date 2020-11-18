@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *redactedDescription;
 
 - (id)autorelease;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isNSCFConstantString__;
 - (oneway void)release;

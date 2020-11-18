@@ -14,7 +14,6 @@
 }
 
 + (id)sideTableContext;
-+ (id)sideTableContextWithPath:(id)arg1;
 - (void).cxx_destruct;
 - (id)_alarmsMatchingPredicate:(id)arg1;
 - (id)_managedObjectModel;
@@ -26,8 +25,7 @@
 - (id)alarmsBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (id)delayedProximityAlarms;
 - (void)deleteAllAlarms;
-- (id)init;
-- (id)initWithPath:(id)arg1;
+- (id)initWithConcurrencyType:(unsigned long long)arg1;
 - (id)insertNewAlarm;
 - (id)nextAlarmFireTime;
 - (BOOL)refiringAlarmAlreadyExists:(int)arg1;

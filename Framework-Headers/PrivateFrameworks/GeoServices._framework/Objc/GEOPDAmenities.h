@@ -23,10 +23,12 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)amentiesForPlaceData:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addAmenity:(struct GEOPDAmenityValue)arg1;
 - (struct GEOPDAmenityValue)amenityAtIndex:(unsigned long long)arg1;
 - (void)clearAmenitys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -36,6 +38,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAmenitys:(struct GEOPDAmenityValue *)arg1 count:(unsigned long long)arg2;
 - (BOOL)valueForAmenityType:(int)arg1;

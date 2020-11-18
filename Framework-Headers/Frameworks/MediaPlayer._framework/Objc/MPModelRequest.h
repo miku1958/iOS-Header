@@ -13,7 +13,6 @@
 
 @interface MPModelRequest : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _shouldIncludeContentItemID;
     NSString *_label;
     MPModelKind *_sectionKind;
     MPPropertySet *_sectionProperties;
@@ -32,8 +31,10 @@
 @property (strong, nonatomic) MPModelKind *sectionKind; // @synthesize sectionKind=_sectionKind;
 @property (copy, nonatomic) MPPropertySet *sectionProperties; // @synthesize sectionProperties=_sectionProperties;
 @property (copy, nonatomic) NSArray *sectionSortDescriptors; // @synthesize sectionSortDescriptors=_sectionSortDescriptors;
-@property (nonatomic) BOOL shouldIncludeContentItemID; // @synthesize shouldIncludeContentItemID=_shouldIncludeContentItemID;
 
++ (id)preferredQueue;
++ (BOOL)requiresNetwork;
++ (id)sharedNetworkQueue;
 + (id)sharedQueue;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

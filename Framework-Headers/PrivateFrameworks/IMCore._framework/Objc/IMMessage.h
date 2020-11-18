@@ -38,6 +38,7 @@
     long long _associatedMessageType;
     NSDictionary *_messageSummaryInfo;
     NSString *_associatedBalloonBundleID;
+    NSString *_sourceApplicationID;
     NSData *_customTypingIndicatorIcon;
     NSString *_notificationIDSTokenURI;
     unsigned long long _sortID;
@@ -92,6 +93,7 @@
 @property (strong, nonatomic, setter=_updateSender:) IMHandle *sender; // @synthesize sender=_sender;
 @property (readonly, nonatomic) NSString *senderName;
 @property (nonatomic) unsigned long long sortID; // @synthesize sortID=_sortID;
+@property (strong, nonatomic) NSString *sourceApplicationID; // @synthesize sourceApplicationID=_sourceApplicationID;
 @property (readonly, nonatomic) IMHandle *subject; // @synthesize subject=_subject;
 @property (readonly, nonatomic) NSString *summaryString;
 @property (strong, nonatomic, setter=_updateText:) NSAttributedString *text; // @synthesize text=_text;
@@ -134,6 +136,7 @@
 - (id)description;
 - (id)descriptionForPurpose:(long long)arg1;
 - (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2;
+- (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2 senderDisplayName:(id)arg3;
 - (id)initWithSender:(id)arg1 fileTransfer:(id)arg2;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 fileTransferGUIDs:(id)arg4 flags:(unsigned long long)arg5 error:(id)arg6 guid:(id)arg7 subject:(id)arg8;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9;

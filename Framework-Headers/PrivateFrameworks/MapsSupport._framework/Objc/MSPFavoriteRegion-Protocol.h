@@ -9,7 +9,9 @@
 @class GEOMapRegion, NSString;
 
 @protocol MSPFavoriteRegion <MSPFavorite>
-- (GEOMapRegion *)geoMapRegion;
-- (NSString *)title;
+
+@property (readonly, nonatomic) GEOMapRegion *geoMapRegion;
+@property (readonly, copy, nonatomic) NSString *title;
+
 @end
 

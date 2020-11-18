@@ -11,7 +11,7 @@
 @protocol SPDaemonQueryDelegate <NSObject>
 - (void)searchDaemonLocalSuggestionsData:(NSData *)arg1;
 - (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 encounteredError:(NSError *)arg2;
-- (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 gotResultSet:(SPResultSet *)arg2 replace:(BOOL)arg3 complete:(BOOL)arg4 finished:(BOOL)arg5 delayed:(BOOL)arg6 delayedTopHit:(BOOL)arg7 blendingDuration:(double)arg8 geoEntityString:(NSString *)arg9;
+- (void)searchDaemonQuery:(SPDaemonQueryToken *)arg1 gotResultSet:(SPResultSet *)arg2 replace:(BOOL)arg3 complete:(BOOL)arg4 finished:(BOOL)arg5 delayed:(BOOL)arg6 delayedTopHit:(BOOL)arg7 unchanged:(BOOL)arg8 blendingDuration:(double)arg9 geoEntityString:(NSString *)arg10 supportedAppScopes:(NSArray *)arg11;
 - (void)searchDaemonRankingLog:(NSString *)arg1;
 - (void)searchDaemonSuggestionsArray:(NSArray *)arg1;
 @end

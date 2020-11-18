@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)beginsWithSpace;
 - (BOOL)canBeUsedWithBase;
 - (BOOL)canBeUsedWithRange;
-- (id)childSpeakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 parentTreePosition:(id)arg3 childIndex:(unsigned long long *)arg4;
+- (id)childSpeakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 parentTreePosition:(id)arg3 childIndex:(unsigned long long *)arg4;
 - (id)dollarCodeDescriptionWithNumberOfOuterRadicals:(unsigned long long)arg1 treePosition:(id)arg2;
 - (BOOL)endsWithSpace;
 - (unsigned long long)fractionLevel;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isWordOrAbbreviation;
 - (id)latexDescriptionInMathMode:(BOOL)arg1;
 - (id)mathMLTag;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2;
 - (id)speakableSummary;
 
 @end

@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SSURLConnectionRequest;
+@class ICURLRequest, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HSAccountStore : NSObject
 {
     int _defaultsDidChangeToken;
-    SSURLConnectionRequest *_groupIDRequest;
+    ICURLRequest *_groupIDRequest;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (copy, nonatomic) NSString *appleID; // @dynamic appleID;
 @property (copy, nonatomic) NSString *groupID; // @dynamic groupID;
-@property (strong, nonatomic) SSURLConnectionRequest *groupIDRequest; // @synthesize groupIDRequest=_groupIDRequest;
+@property (strong, nonatomic) ICURLRequest *groupIDRequest; // @synthesize groupIDRequest=_groupIDRequest;
 @property (copy, nonatomic) NSString *password; // @dynamic password;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 

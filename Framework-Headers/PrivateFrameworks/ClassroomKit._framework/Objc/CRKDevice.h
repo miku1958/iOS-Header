@@ -44,7 +44,7 @@
     NSString *_primaryOpenApplication;
     NSString *_secondaryOpenApplication;
     NSArray *_allOpenApplications;
-    NSArray *_installedApplications;
+    NSArray *_installedApplicationInfo;
     NSString *_stagedAdHocIdentityCertificateFingerprint;
     NSArray *_trustedAnchorCertificateFingerprints;
     NSString *_userIdentifier;
@@ -57,6 +57,7 @@
     unsigned long long _loginState;
     NSString *_studentImageIdentifier;
     NSString *_instructorImageIdentifier;
+    NSString *_currentLocaleIdentifier;
     NSDictionary *_activeAirPlayRoute;
     NSArray *_availableAirPlayRoutes;
     NSString *_managementLockPasscode;
@@ -79,6 +80,8 @@
 @property (copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 @property (nonatomic) unsigned long long chargingState;
 @property (nonatomic) unsigned long long chargingState; // @synthesize chargingState=_chargingState;
+@property (copy, nonatomic) NSString *currentLocaleIdentifier;
+@property (copy, nonatomic) NSString *currentLocaleIdentifier; // @synthesize currentLocaleIdentifier=_currentLocaleIdentifier;
 @property (nonatomic) unsigned long long deviceOrientation;
 @property (nonatomic) unsigned long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
 @property (nonatomic) float displayBackingScaleFactor;
@@ -92,8 +95,10 @@
 @property (nonatomic, getter=isEphemeralMultiUser) BOOL ephemeralMultiUser;
 @property (nonatomic, getter=isEphemeralMultiUser) BOOL ephemeralMultiUser; // @synthesize ephemeralMultiUser=_ephemeralMultiUser;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSArray *installedApplicationInfo;
+@property (copy, nonatomic) NSArray *installedApplicationInfo; // @synthesize installedApplicationInfo=_installedApplicationInfo;
 @property (copy, nonatomic) NSArray *installedApplications;
-@property (copy, nonatomic) NSArray *installedApplications; // @synthesize installedApplications=_installedApplications;
+@property (copy, nonatomic) NSArray *installedApplications;
 @property (copy, nonatomic) NSString *instructorImageIdentifier;
 @property (copy, nonatomic) NSString *instructorImageIdentifier; // @synthesize instructorImageIdentifier=_instructorImageIdentifier;
 @property (nonatomic) unsigned long long interfaceOrientation;
@@ -155,6 +160,7 @@
 
 + (id)CRKKeyForDMFKey:(id)arg1;
 + (id)allPropertyKeys;
++ (id)applicationInfoFromBundleIdentifiers:(id)arg1;
 + (id)keyTranslations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

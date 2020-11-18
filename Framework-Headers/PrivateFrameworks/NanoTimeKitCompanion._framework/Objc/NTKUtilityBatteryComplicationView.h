@@ -11,7 +11,6 @@
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void)_updateForTemplateChange;
 - (void)updateRingWithRingDescription:(id)arg1 backgroundRingAlpha:(double)arg2;
 

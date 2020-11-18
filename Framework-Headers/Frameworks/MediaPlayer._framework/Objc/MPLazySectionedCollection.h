@@ -15,7 +15,9 @@
     long long _cachedNumberOfSections;
     BOOL _hasValidCachedNumberOfSections;
     NSCache *_itemsCache;
+    struct map<long, MPIdentifierSet *, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, MPIdentifierSet *>>> _itemIdentifierSetMap;
     NSCache *_sectionsCache;
+    struct map<long, MPIdentifierSet *, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, MPIdentifierSet *>>> _sectionIdentifierSetMap;
     id<MPLazySectionedCollectionDataSource> _dataSource;
 }
 
@@ -24,7 +26,10 @@
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)cachedObjectAtIndexPath:(id)arg1;
+- (id)_cachedObjectAtIndexPath:(id)arg1;
+- (void)_updateCacheWithObject:(id)arg1 atIndexPath:(id)arg2;
+- (id)allItems;
+- (id)allSections;
 - (void)enumerateItemsInSectionAtIndex:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionsUsingBlock:(CDUnknownBlockType)arg1;
@@ -42,7 +47,6 @@
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (id)sectionAtIndex:(long long)arg1;
-- (void)updateCacheWithObject:(id)arg1 atIndexPath:(id)arg2;
 
 @end
 

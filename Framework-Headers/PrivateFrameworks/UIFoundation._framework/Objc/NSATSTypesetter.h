@@ -45,6 +45,8 @@
 - (void)_setBusy:(BOOL)arg1;
 - (void)_setForceWordWrapping:(BOOL)arg1;
 - (unsigned long long)_sweepDirectionForGlyphAtIndex:(long long)arg1;
+- (id)_textContainerForAttachmentProtocol;
+- (id)_textStorageForAttachmentProtocol;
 - (BOOL)_usesScreenFonts;
 - (unsigned long long)actionForControlCharacterAtIndex:(unsigned long long)arg1;
 - (double)baselineOffsetInLayoutManager:(id)arg1 glyphIndex:(unsigned long long)arg2;

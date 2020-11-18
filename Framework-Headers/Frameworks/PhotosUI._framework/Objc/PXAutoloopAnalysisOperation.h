@@ -6,14 +6,13 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSDictionary, NSError, NSNumber, NSProgress, NSURL;
+@class NSDictionary, NSError, NSNumber, NSProgress, PLLivePhotoEditSource;
 
 @interface PXAutoloopAnalysisOperation : NSOperation
 {
     NSDictionary *_recipesByVariationType;
     BOOL _succeeded;
-    NSURL *_inputImageURL;
-    NSURL *_inputVideoURL;
+    PLLivePhotoEditSource *_editSource;
     NSProgress *_progress;
     NSError *_error;
     NSNumber *_duration;
@@ -22,9 +21,8 @@
 
 @property (readonly, nonatomic) NSDictionary *analysisResult; // @synthesize analysisResult=_analysisResult;
 @property (readonly, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic) PLLivePhotoEditSource *editSource; // @synthesize editSource=_editSource;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, nonatomic) NSURL *inputImageURL; // @synthesize inputImageURL=_inputImageURL;
-@property (readonly, nonatomic) NSURL *inputVideoURL; // @synthesize inputVideoURL=_inputVideoURL;
 @property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) BOOL succeeded; // @synthesize succeeded=_succeeded;
 
@@ -32,7 +30,7 @@
 - (void)_timeout;
 - (void)cancel;
 - (id)init;
-- (id)initWithInputImageURL:(id)arg1 inputVideoURL:(id)arg2;
+- (id)initWithEditSource:(id)arg1;
 - (void)main;
 - (id)recipeForVariationType:(long long)arg1;
 

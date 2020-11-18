@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
 @property (readonly, nonatomic) PPNamedEntityRecord *mostRelevantRecord;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) double sentimentScore;
 
 + (id)describeCategory:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;

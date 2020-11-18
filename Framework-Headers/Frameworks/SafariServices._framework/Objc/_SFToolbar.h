@@ -9,39 +9,41 @@
 #import <SafariServices/_SFBarCommon-Protocol.h>
 #import <SafariServices/_SFBarRegistrationObserving-Protocol.h>
 
-@class NSString, UIView, _UIBackdropView, _UIBackdropViewSettings;
+@class NSString, UIBlurEffect, UIView, UIVisualEffectView, _SFBarTheme;
 @protocol _SFBarRegistrationToken;
 
 @interface _SFToolbar : UIToolbar <_SFBarCommon, _SFBarRegistrationObserving>
 {
-    _UIBackdropView *_backgroundView;
-    _UIBackdropViewSettings *_customBackdropSettings;
+    UIVisualEffectView *_backgroundView;
+    UIBlurEffect *_customBackdropEffect;
     UIView *_separator;
-    BOOL _usesDarkTheme;
+    BOOL _usesLegacyDarkBackdrop;
     long long _placement;
-    unsigned long long _tintStyle;
+    _SFBarTheme *_theme;
     id<_SFBarRegistrationToken> _barRegistration;
+    UIView *_superviewOwningLayout;
 }
 
-@property (readonly, nonatomic) double URLFieldHorizontalMargin;
 @property (copy, nonatomic) NSString *backdropGroupName;
 @property (weak, nonatomic) id<_SFBarRegistrationToken> barRegistration; // @synthesize barRegistration=_barRegistration;
+@property (readonly, nonatomic) double baselineOffsetAdjustment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long placement; // @synthesize placement=_placement;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long tintStyle; // @synthesize tintStyle=_tintStyle;
-@property (readonly, nonatomic) long long toolbarSize;
+@property (weak, nonatomic) UIView *superviewOwningLayout; // @synthesize superviewOwningLayout=_superviewOwningLayout;
+@property (strong, nonatomic) _SFBarTheme *theme; // @synthesize theme=_theme;
+@property (nonatomic) BOOL usesLegacyDarkBackdrop; // @synthesize usesLegacyDarkBackdrop=_usesLegacyDarkBackdrop;
 
 - (void).cxx_destruct;
-- (id)_backdropInputSettings;
 - (void)_cancelLinkAnimations;
-- (id)_controlsTintColor;
-- (BOOL)_tintUsesDarkTheme;
+- (double)_contentMargin;
+- (void)_updateBackgroundViewEffects;
 - (void)animateLinkImage:(struct CGImage *)arg1 fromRect:(struct CGRect)arg2 inView:(id)arg3 toBarItem:(long long)arg4 afterImageDisappearsBlock:(CDUnknownBlockType)arg5 afterDestinationLayerBouncesBlock:(CDUnknownBlockType)arg6;
 - (void)animateSafariIconLinkFromPoint:(struct CGPoint)arg1 inView:(id)arg2;
 - (void)dealloc;
+- (void)didChangeArrangedBarItems:(id)arg1;
 - (void)didCompleteBarRegistrationWithToken:(id)arg1;
 - (id)initWithPlacement:(long long)arg1;
 - (BOOL)isMinibar;
@@ -49,9 +51,6 @@
 - (id)popoverSourceInfoForBarItem:(long long)arg1;
 - (void)setItems:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)updateBackdropSettings:(id)arg1;
-- (void)updateTintColor;
 
 @end
 

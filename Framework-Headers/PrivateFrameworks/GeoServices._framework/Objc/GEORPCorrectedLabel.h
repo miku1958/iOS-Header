@@ -8,39 +8,60 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOMapRegion, NSMutableArray, NSString;
+@class GEOLatLng, GEOMapRegion, NSMutableArray, NSString, PBDataReader;
 
 @interface GEORPCorrectedLabel : PBCodable <NSCopying>
 {
-    unsigned long long _uid;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_coordinate;
     NSString *_correctedValue;
     NSMutableArray *_featureHandles;
     GEOMapRegion *_featureRegion;
     NSString *_originalValue;
+    unsigned long long _uid;
     BOOL _localizedLabels;
     struct {
-        unsigned int uid:1;
-        unsigned int localizedLabels:1;
-    } _has;
+        unsigned int has_uid:1;
+        unsigned int has_localizedLabels:1;
+        unsigned int read_coordinate:1;
+        unsigned int read_correctedValue:1;
+        unsigned int read_featureHandles:1;
+        unsigned int read_featureRegion:1;
+        unsigned int read_originalValue:1;
+        unsigned int wrote_coordinate:1;
+        unsigned int wrote_correctedValue:1;
+        unsigned int wrote_featureHandles:1;
+        unsigned int wrote_featureRegion:1;
+        unsigned int wrote_originalValue:1;
+        unsigned int wrote_uid:1;
+        unsigned int wrote_localizedLabels:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOLatLng *coordinate; // @synthesize coordinate=_coordinate;
-@property (strong, nonatomic) NSString *correctedValue; // @synthesize correctedValue=_correctedValue;
-@property (strong, nonatomic) NSMutableArray *featureHandles; // @synthesize featureHandles=_featureHandles;
-@property (strong, nonatomic) GEOMapRegion *featureRegion; // @synthesize featureRegion=_featureRegion;
+@property (strong, nonatomic) GEOLatLng *coordinate;
+@property (strong, nonatomic) NSString *correctedValue;
+@property (strong, nonatomic) NSMutableArray *featureHandles;
+@property (strong, nonatomic) GEOMapRegion *featureRegion;
 @property (readonly, nonatomic) BOOL hasCoordinate;
 @property (readonly, nonatomic) BOOL hasCorrectedValue;
 @property (readonly, nonatomic) BOOL hasFeatureRegion;
 @property (nonatomic) BOOL hasLocalizedLabels;
 @property (readonly, nonatomic) BOOL hasOriginalValue;
 @property (nonatomic) BOOL hasUid;
-@property (nonatomic) BOOL localizedLabels; // @synthesize localizedLabels=_localizedLabels;
-@property (strong, nonatomic) NSString *originalValue; // @synthesize originalValue=_originalValue;
-@property (nonatomic) unsigned long long uid; // @synthesize uid=_uid;
+@property (nonatomic) BOOL localizedLabels;
+@property (strong, nonatomic) NSString *originalValue;
+@property (nonatomic) unsigned long long uid;
 
 + (Class)featureHandleType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsFeatureHandle:(id)arg1;
+- (void)_readCoordinate;
+- (void)_readCorrectedValue;
+- (void)_readFeatureHandles;
+- (void)_readFeatureRegion;
+- (void)_readOriginalValue;
 - (void)addFeatureHandle:(id)arg1;
 - (void)clearFeatureHandles;
 - (void)copyTo:(id)arg1;
@@ -52,6 +73,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -39,8 +39,10 @@
 - (id)locationItemsWithCriteria:(id)arg1 earliest:(id)arg2 latest:(id)arg3 limit:(unsigned long long)arg4 consumer:(unsigned long long)arg5 explanationSet:(id)arg6;
 - (void)refreshMostRecentPasteboardItemFromNotification:(BOOL)arg1 explanationSet:(id)arg2;
 - (void)setCacheObject:(id)arg1 forKey:(id)arg2;
+- (void)setPasteboardTextForTesting:(id)arg1;
 - (void)setTestLocale:(id)arg1;
 - (id)supportedSemanticTags;
+- (void)unsetPasteboardTextForTestingAndClearCache;
 - (id)validUTTypes;
 
 @end

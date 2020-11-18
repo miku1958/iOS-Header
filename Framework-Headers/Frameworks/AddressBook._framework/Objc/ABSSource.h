@@ -33,6 +33,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int type;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (unsigned long long)_cfTypeID;
 - (const void *)copyValueForProperty:(int)arg1;

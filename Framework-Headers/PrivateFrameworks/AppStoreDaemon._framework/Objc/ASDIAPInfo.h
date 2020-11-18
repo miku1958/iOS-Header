@@ -10,30 +10,35 @@
 #import <AppStoreDaemon/NSMutableCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSDate, NSNumber, NSString;
 
 @interface ASDIAPInfo : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
-    NSNumber *_adamId;
-    NSNumber *_appAdamId;
-    NSNumber *_expirationTimestamp;
+    BOOL _autoRenewStatus;
     BOOL _hasUsedFreeOffer;
     BOOL _hasUsedIntroPricingOffer;
-    NSNumber *_lastModifiedTimestamp;
-    NSNumber *_purchaseTimestamp;
-    NSString *_subscriptionFamilyId;
     unsigned char _type;
+    NSNumber *_adamId;
+    NSNumber *_appAdamId;
+    NSDate *_expirationDate;
+    NSDate *_lastModifiedDate;
+    NSDate *_purchaseDate;
+    NSString *_subscriptionFamilyId;
 }
 
-@property (readonly, nonatomic) NSNumber *adamId;
-@property (readonly, nonatomic) NSNumber *appAdamId;
+@property (strong, nonatomic) NSNumber *adamId; // @synthesize adamId=_adamId;
+@property (strong, nonatomic) NSNumber *appAdamId; // @synthesize appAdamId=_appAdamId;
+@property (nonatomic) BOOL autoRenewStatus; // @synthesize autoRenewStatus=_autoRenewStatus;
+@property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic) NSNumber *expirationTimestamp;
-@property (readonly, nonatomic) BOOL hasUsedFreeOffer;
-@property (readonly, nonatomic) BOOL hasUsedIntroPricingOffer;
+@property (nonatomic) BOOL hasUsedFreeOffer; // @synthesize hasUsedFreeOffer=_hasUsedFreeOffer;
+@property (nonatomic) BOOL hasUsedIntroPricingOffer; // @synthesize hasUsedIntroPricingOffer=_hasUsedIntroPricingOffer;
+@property (strong, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, nonatomic) NSNumber *lastModifiedTimestamp;
+@property (strong, nonatomic) NSDate *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
 @property (readonly, nonatomic) NSNumber *purchaseTimestamp;
-@property (readonly, nonatomic) NSString *subscriptionFamilyId;
-@property (readonly, nonatomic) unsigned char type;
+@property (strong, nonatomic) NSString *subscriptionFamilyId; // @synthesize subscriptionFamilyId=_subscriptionFamilyId;
+@property (nonatomic) unsigned char type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

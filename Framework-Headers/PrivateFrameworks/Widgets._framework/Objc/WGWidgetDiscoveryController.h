@@ -12,7 +12,7 @@
 #import <Widgets/WGWidgetListEditViewControllerDelegate-Protocol.h>
 #import <Widgets/WGWidgetViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPointerArray, NSString, WGWidgetListEditViewController, WGWidgetPersistentStateController;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSPointerArray, NSString, WGWidgetListEditViewController, WGWidgetPersistentStateController, WGWidgetStatsController;
 @protocol OS_dispatch_queue, WGWidgetDebugging, WGWidgetDiscoveryControllerDelegate;
 
 @interface WGWidgetDiscoveryController : NSObject <WGWidgetViewControllerDelegate, WGWidgetDataSourceObserver, WGWidgetListEditViewControllerDataSource, WGWidgetListEditViewControllerDelegate, LSApplicationWorkspaceObserverProtocol>
@@ -30,18 +30,20 @@
     NSArray *_orderedVisibleWidgetsIdentifiers;
     NSPointerArray *_observers;
     WGWidgetPersistentStateController *_persistentStateController;
+    WGWidgetStatsController *_statsController;
     NSObject<OS_dispatch_queue> *_newWidgetsCountPostQueue;
     BOOL _shouldPurgeNonCAMLSnapshots;
     BOOL _shouldPurgeNonASTCSnapshots;
     id<WGWidgetDiscoveryControllerDelegate> _delegate;
-    NSMutableDictionary *_widgetIDsToPendingTestCompletions;
-    NSMutableDictionary *_widgetIDsToPendingTestTearDowns;
     NSMutableDictionary *_widgetIDsToWidgets;
     id<WGWidgetDebugging> _debuggingHandler;
     WGWidgetListEditViewController *_presentedEditViewController;
     id _presentedEditViewControllerStatusBarAssertion;
+    NSMutableDictionary *_widgetIDsToPendingTestCompletions;
+    NSMutableDictionary *_widgetIDsToPendingTestTearDowns;
 }
 
+@property (nonatomic) BOOL bootstrapFavoriteWidgets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WGWidgetDebugging> debuggingHandler; // @synthesize debuggingHandler=_debuggingHandler;
@@ -58,9 +60,11 @@
 @property (strong, nonatomic) NSMutableDictionary *widgetIDsToPendingTestTearDowns; // @synthesize widgetIDsToPendingTestTearDowns=_widgetIDsToPendingTestTearDowns;
 @property (readonly, nonatomic, getter=_widgetIDsToWidgets) NSMutableDictionary *widgetIDsToWidgets; // @synthesize widgetIDsToWidgets=_widgetIDsToWidgets;
 
-+ (CDUnknownBlockType)generatorForWidgetViewControllerWithBundleID:(id)arg1 containingBundleID:(id)arg2 timeout:(unsigned long long)arg3;
++ (BOOL)hasWidgetForBundleID:(id)arg1 containingBundleID:(id)arg2;
 + (long long)layoutModeForSize:(struct CGSize)arg1;
++ (id)widgetViewControllerWithWidgetBundleID:(id)arg1 containingBundleID:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+- (void)_addDefaultPinnedWidgets;
 - (void)_applicationIconChanged:(id)arg1;
 - (void)_beginObservingDataSourcesIfNecessary;
 - (void)_calculateAndPostNewWidgetsCount;
@@ -74,11 +78,13 @@
 - (void)_invalidateWidgetListEditViewControllerStatusBarAssertion:(id)arg1;
 - (BOOL)_isApplicationLockedOutWithProxy:(id)arg1;
 - (BOOL)_isElementWithIdentifierEnabled:(id)arg1;
+- (BOOL)_isElementWithIdentifierFavorited:(id)arg1;
 - (BOOL)_isElementWithIdentifierKnown:(id)arg1;
 - (id)_newWidgetListEditViewController;
 - (id)_newWidgetListEditViewControllerStatusBarAssertion;
 - (id)_newWidgetWithIdentifier:(id)arg1 delegate:(id)arg2;
-- (void)_notifyObserversOfOrderChange;
+- (void)_notifyObserversOfOrderChangeForWidgetIdentifiers:(id)arg1;
+- (void)_notifyObserversOfSignificantWidgetsChange;
 - (void)_notifyObserversOfVisibilityChange:(BOOL)arg1 ofWidgetWithIdentifier:(id)arg2 inGroup:(id)arg3;
 - (id)_orderedEnabledIdentifiersForGroup:(id)arg1;
 - (id)_orderedEnabledWidgetIdentifiersForGroup:(id)arg1 includingNoContent:(BOOL)arg2;
@@ -89,15 +95,21 @@
 - (void)_removeWidgetWithIdentifier:(id)arg1;
 - (void)_requestUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_setEnabled:(BOOL)arg1 forElementWithIdentifier:(id)arg2;
+- (void)_setWidgetsPinned:(BOOL)arg1;
+- (void)_updateFavoriteWidgetIDs:(id)arg1;
 - (void)_updateLockedOutStateForWidget:(id)arg1;
 - (void)_updateLockedOutStateForWidget:(id)arg1 withContainingAppProxy:(id)arg2;
 - (id)_updatePublicationStateOfDatumWithIdentifier:(id)arg1 visibilityChanged:(BOOL)arg2 contentStateChanged:(BOOL)arg3 insertAtTop:(BOOL)arg4 notifyingObservers:(BOOL)arg5;
 - (void)_widget:(id)arg1 withIdentifier:(id)arg2 didRemoveSnapshotAtURL:(id)arg3;
+- (long long)_widgetListEditViewControllerStatusBarLegibilityStyle;
 - (void)_widgetListEditViewControllerWillDisappear:(id)arg1;
 - (void)_widgetViewControllerDidRemoveSnapshot:(id)arg1;
 - (void)_widgetViewControllerRequestsAdd:(id)arg1;
 - (id)_widgetViewControllerWithBundleID:(id)arg1 containingBundleID:(id)arg2 didConnect:(CDUnknownBlockType)arg3 canTearDown:(CDUnknownBlockType)arg4;
 - (void)addDiscoveryObserver:(id)arg1;
+- (BOOL)alwaysShowsFavoriteWidgets;
+- (BOOL)areWidgetsPinned;
+- (BOOL)areWidgetsPinnedForWidgetListEditViewController:(id)arg1;
 - (void)beginDiscovery;
 - (void)debugWidgetWithBundleID:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deviceManagementPolicyDidChange:(id)arg1;
@@ -106,12 +118,17 @@
 - (void)dismissWidgetListEditViewController:(id)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)dismissWidgetListEditViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)enabledWidgetIdentifiersForAllGroups;
+- (id)favoriteWidgetIdentifiers;
 - (id)groupsForWidgetListEditViewController:(id)arg1;
 - (id)init;
+- (void)invalidateVisibleIdentifiers;
+- (BOOL)isElementWithIdentifierFavorited:(id)arg1;
 - (long long)largestAvailableDisplayModeForWidget:(id)arg1;
 - (long long)largestAvailableDisplayModeForWidgetWithIdentifier:(id)arg1;
 - (long long)layoutModeForWidgetListEditViewController:(id)arg1;
+- (void)noteWidgetsPinningViewControllerDidDismiss:(BOOL)arg1;
 - (void)presentWidgetListEditViewControllerFromViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)registerIdentifierForRefreshEvents:(id)arg1;
 - (void)remoteViewControllerDidConnectForWidgetViewController:(id)arg1;
 - (void)remoteViewControllerViewDidAppearForWidgetViewController:(id)arg1;
 - (void)removeDiscoveryObserver:(id)arg1;
@@ -124,6 +141,9 @@
 - (BOOL)shouldPurgeNonASTCSnapshotsForWidget:(id)arg1;
 - (BOOL)shouldPurgeNonCAMLSnapshotsForWidget:(id)arg1;
 - (BOOL)shouldRemoveSnapshotWhenNotVisibleForWidget:(id)arg1;
+- (BOOL)shouldShowWidgetsPinButtonForWidgetListEditViewController:(id)arg1;
+- (BOOL)shouldShowWidgetsPinningTeachingView;
+- (void)unregisterIdentifierForRefreshEvents:(id)arg1;
 - (long long)userSpecifiedDisplayModeForWidget:(id)arg1;
 - (long long)userSpecifiedDisplayModeForWidgetWithIdentifier:(id)arg1;
 - (id)visibleWidgetIdentifiersForGroup:(id)arg1;
@@ -134,16 +154,23 @@
 - (void)widget:(id)arg1 didRemoveSnapshotAtURL:(id)arg2;
 - (void)widgetDataSource:(id)arg1 removeDatum:(id)arg2;
 - (void)widgetDataSource:(id)arg1 replaceWithDatum:(id)arg2;
+- (void)widgetEditListViewController:(id)arg1 traitCollectionDidChange:(id)arg2;
 - (void)widgetListEditViewController:(id)arg1 acknowledgeInterfaceItemsWithIdentifiers:(id)arg2;
 - (id)widgetListEditViewController:(id)arg1 defaultGroupForItemWithIdentifier:(id)arg2;
+- (void)widgetListEditViewController:(id)arg1 didChangeWidgetsPinning:(BOOL)arg2;
 - (void)widgetListEditViewController:(id)arg1 didReorderItemsWithIdentifiersInGroups:(id)arg2;
 - (id)widgetListEditViewController:(id)arg1 displayNameForItemWithIdentifier:(id)arg2;
 - (BOOL)widgetListEditViewController:(id)arg1 isItemWithIdentifierEnabled:(id)arg2;
+- (BOOL)widgetListEditViewController:(id)arg1 isItemWithIdentifierFavorited:(id)arg2;
 - (BOOL)widgetListEditViewController:(id)arg1 isItemWithIdentifierNew:(id)arg2;
 - (id)widgetListEditViewController:(id)arg1 itemIdentifiersForGroup:(id)arg2;
 - (void)widgetListEditViewController:(id)arg1 requestsIconForItemWithIdentifier:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)widgetListEditViewController:(id)arg1 setEnabled:(BOOL)arg2 forItemsWithIdentifiers:(id)arg3;
+- (void)widgetListEditViewController:(id)arg1 updateFavoritesToIdentifiers:(id)arg2;
 - (BOOL)widgetListEditViewControllerShouldIncludeInternalWidgets:(id)arg1;
+- (BOOL)widgetListEditViewControllerShouldShowFavorites:(id)arg1;
+- (void)widgetViewControllerNeedsToBeRegisteredForRefreshNotification:(id)arg1;
+- (void)widgetViewControllerNeedsToBeUnregisteredForRefreshNotification:(id)arg1;
 - (id)widgetWithIdentifier:(id)arg1 delegate:(id)arg2 forRequesterWithIdentifier:(id)arg3;
 
 @end

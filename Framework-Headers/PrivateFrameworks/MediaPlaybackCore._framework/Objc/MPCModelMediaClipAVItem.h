@@ -38,7 +38,6 @@
 - (double)durationFromExternalMetadata;
 - (id)initWithMediaClip:(id)arg1;
 - (BOOL)isAssetURLValid;
-- (BOOL)isCloudItem;
 - (BOOL)isStreamable;
 - (BOOL)isValidPlayerSubstituteForItem:(id)arg1;
 - (void)loadAssetAndPlayerItem;

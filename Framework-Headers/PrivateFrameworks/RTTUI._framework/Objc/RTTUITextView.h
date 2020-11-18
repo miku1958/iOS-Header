@@ -25,8 +25,8 @@
     UIView *_iPadBufferView;
     BOOL _showTTYPredictions;
     BOOL _isHandlingKeyboardFrameChanged;
-    UICollectionView *_predictionsCollectionView;
     NSArray *_ttyAbbreviations;
+    UICollectionView *_predictionsCollectionView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -55,6 +55,7 @@
 - (void)_updateBlackBarPositioning;
 - (void)_updateTTYBarPosition;
 - (id)accessibilityIdentifier;
+- (unsigned long long)accessibilityTraits;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

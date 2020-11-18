@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (BOOL)canBePerformedByOpeningURL;
+- (id)icon;
 - (int)interactionType;
 - (id)localizedName;
 - (void)messageComposeViewController:(id)arg1 didFinishWithResult:(long long)arg2;

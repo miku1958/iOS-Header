@@ -34,6 +34,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)filterPointCloudFrom:ellipsoid: /* Error: Ran out of types for this method. */;
+- (id)filterPointCloudWithIdentifiers:(set_8479fffa)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPointData:(id)arg1;

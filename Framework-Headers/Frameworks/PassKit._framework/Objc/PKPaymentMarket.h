@@ -38,6 +38,7 @@
 - (void).cxx_destruct;
 - (id)_geoFenceWithDictionary:(id)arg1;
 - (BOOL)containsLocation:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

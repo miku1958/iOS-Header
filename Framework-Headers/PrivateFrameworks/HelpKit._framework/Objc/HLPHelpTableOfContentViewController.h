@@ -15,11 +15,12 @@
 
 @interface HLPHelpTableOfContentViewController : UITableViewController <UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
 {
+    UIView *_tableBackgroundView;
+    UIView *_tableFooterSeparatorView;
     UILabel *_copyrightFooterLabel;
     UIButton *_footerViewOverlayButton;
     NSLayoutConstraint *_copyrightFooterLabelHeightConstraint;
     NSLayoutConstraint *_copyrightFooterLabelTopConstraint;
-    HLPHelpSearchResultTableViewController *_searchResultTableViewController;
     BOOL _fullBookView;
     id<HLPHelpTableOfContentViewControllerDelegate> _delegate;
     NSArray *_searchTerms;
@@ -31,6 +32,7 @@
     UISearchController *_searchController;
     UIView *_tableFooterView;
     HLPHelpSearchIndexController *_helpSearchIndexController;
+    HLPHelpSearchResultTableViewController *_searchResultTableViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +46,7 @@
 @property (strong, nonatomic) HLPHelpLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSMutableArray *openSections; // @synthesize openSections=_openSections;
 @property (strong, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
+@property (strong, nonatomic) HLPHelpSearchResultTableViewController *searchResultTableViewController; // @synthesize searchResultTableViewController=_searchResultTableViewController;
 @property (strong, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *tableFooterView; // @synthesize tableFooterView=_tableFooterView;
@@ -51,6 +54,7 @@
 
 - (void).cxx_destruct;
 - (void)appendChildrenForSectionItem:(id)arg1;
+- (void)cancelSpotlightSearchDelay;
 - (void)closeSectionItem:(id)arg1;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)copyrightButtonTapped;
@@ -65,11 +69,15 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)showHelpBookInfo;
 - (void)showTopicItem:(id)arg1 fromTableView:(id)arg2;
+- (void)spotlightSearchDelay;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCellSelectionWithScollPosition:(long long)arg1 helpItem:(id)arg2 animated:(BOOL)arg3;
+- (void)updateFooterViewBackgroundColor;
 - (void)updateFooterViewLayout;
+- (void)updateSearchResultViewSeparatorValue;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)updateWithHelpBookController:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

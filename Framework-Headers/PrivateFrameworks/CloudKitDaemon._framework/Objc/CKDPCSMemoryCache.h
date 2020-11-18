@@ -46,7 +46,7 @@ __attribute__((visibility("hidden")))
 @property double oldestCacheEntry; // @synthesize oldestCacheEntry=_oldestCacheEntry;
 
 + (id)globalEvictQueue;
-+ (void)registerEvictionActivity;
++ (void)registerEvictionTimer;
 - (void).cxx_destruct;
 - (id)CKStatusReportArray;
 - (unsigned long long)_cacheCount;

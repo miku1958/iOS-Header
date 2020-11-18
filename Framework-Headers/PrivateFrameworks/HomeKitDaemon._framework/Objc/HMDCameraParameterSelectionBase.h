@@ -8,17 +8,17 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraSessionID, NSString;
+@class HMDCameraStreamSessionID, NSString;
 
 @interface HMDCameraParameterSelectionBase : HMFObject <HMFLogging>
 {
-    HMDCameraSessionID *_sessionID;
+    HMDCameraStreamSessionID *_sessionID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly) Class superclass;
 
 + (id)logCategory;

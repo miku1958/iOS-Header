@@ -8,23 +8,38 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEORPCurrentEnvironmentManifestURLs : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_environmentDisplayName;
     NSString *_environmentReleaseName;
     NSMutableArray *_urls;
+    struct {
+        unsigned int read_environmentDisplayName:1;
+        unsigned int read_environmentReleaseName:1;
+        unsigned int read_urls:1;
+        unsigned int wrote_environmentDisplayName:1;
+        unsigned int wrote_environmentReleaseName:1;
+        unsigned int wrote_urls:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *environmentDisplayName; // @synthesize environmentDisplayName=_environmentDisplayName;
-@property (strong, nonatomic) NSString *environmentReleaseName; // @synthesize environmentReleaseName=_environmentReleaseName;
+@property (strong, nonatomic) NSString *environmentDisplayName;
+@property (strong, nonatomic) NSString *environmentReleaseName;
 @property (readonly, nonatomic) BOOL hasEnvironmentDisplayName;
 @property (readonly, nonatomic) BOOL hasEnvironmentReleaseName;
-@property (strong, nonatomic) NSMutableArray *urls; // @synthesize urls=_urls;
+@property (strong, nonatomic) NSMutableArray *urls;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)urlType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsUrl:(id)arg1;
+- (void)_readEnvironmentDisplayName;
+- (void)_readEnvironmentReleaseName;
+- (void)_readUrls;
 - (void)addUrl:(id)arg1;
 - (void)clearUrls;
 - (void)copyTo:(id)arg1;
@@ -34,6 +49,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)urlAtIndex:(unsigned long long)arg1;
 - (unsigned long long)urlsCount;

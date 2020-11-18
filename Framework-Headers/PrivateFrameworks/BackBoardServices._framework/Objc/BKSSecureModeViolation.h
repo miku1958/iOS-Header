@@ -8,18 +8,20 @@
 
 #import <BackBoardServices/BSDescriptionProviding-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface BKSSecureModeViolation : NSObject <BSDescriptionProviding>
 {
     NSNumber *_processId;
     NSArray *_contextIds;
+    NSDictionary *_layerNamesByContext;
 }
 
 @property (copy, nonatomic) NSArray *contextIds; // @synthesize contextIds=_contextIds;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSDictionary *layerNamesByContext; // @synthesize layerNamesByContext=_layerNamesByContext;
 @property (strong, nonatomic) NSNumber *processId; // @synthesize processId=_processId;
 @property (readonly) Class superclass;
 

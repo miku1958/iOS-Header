@@ -9,37 +9,51 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class ASDProgress, NSProgress, NSString;
+@class ASDProgress, NSError, NSNumber, NSProgress, NSString, NSUUID;
 
 @interface ASDApp : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _betaApp;
     BOOL _familyShared;
+    NSString *_artistName;
     NSString *_bundleID;
     NSString *_bundlePath;
+    NSString *_bundleShortVersion;
+    NSString *_bundleVersion;
     NSString *_localizedName;
     long long _storeExternalVersionID;
+    NSString *_storeCohort;
+    NSNumber *_storeFront;
     long long _storeItemID;
     long long _downloaderDSID;
     long long _familyID;
     long long _purchaserDSID;
+    NSError *_installError;
+    NSUUID *_installID;
     NSProgress *_progress;
+    NSString *_updateBuyParams;
+    long long _watchApplicationMode;
     long long _extensions;
     long long _status;
     ASDProgress *_remoteProgress;
 }
 
-@property (readonly, getter=isBetaApp) BOOL betaApp; // @synthesize betaApp=_betaApp;
+@property (strong) NSString *artistName; // @synthesize artistName=_artistName;
+@property (readonly, getter=isBetaApp) BOOL betaApp;
 @property (readonly) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
+@property (strong) NSString *bundleShortVersion; // @synthesize bundleShortVersion=_bundleShortVersion;
+@property (strong) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property long long downloaderDSID; // @synthesize downloaderDSID=_downloaderDSID;
 @property long long extensions; // @synthesize extensions=_extensions;
 @property long long familyID; // @synthesize familyID=_familyID;
 @property (readonly, getter=isFamilyShared) BOOL familyShared; // @synthesize familyShared=_familyShared;
+@property (readonly) NSError *installError; // @synthesize installError=_installError;
+@property (readonly) NSUUID *installID; // @synthesize installID=_installID;
 @property (readonly, getter=isInstalled) BOOL installed;
 @property (readonly, getter=isLaunchProhibited) BOOL launchProhibited;
 @property (strong) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, getter=hasMessagesExtension) BOOL messasgesExtension;
+@property (readonly, getter=isOcelot) BOOL ocelot;
 @property (readonly, getter=isOpenable) BOOL openable;
 @property (readonly, getter=isPlaceholder) BOOL placeholder;
 @property (strong) NSProgress *progress; // @synthesize progress=_progress;
@@ -47,9 +61,14 @@
 @property (strong) ASDProgress *remoteProgress; // @synthesize remoteProgress=_remoteProgress;
 @property long long status; // @synthesize status=_status;
 @property (readonly, getter=isStoreApp) BOOL storeApp;
+@property (strong) NSString *storeCohort; // @synthesize storeCohort=_storeCohort;
 @property long long storeExternalVersionID; // @synthesize storeExternalVersionID=_storeExternalVersionID;
+@property (strong) NSNumber *storeFront; // @synthesize storeFront=_storeFront;
 @property long long storeItemID; // @synthesize storeItemID=_storeItemID;
 @property (readonly, getter=isSystemApp) BOOL systemApp;
+@property (readonly, getter=isUpdateAvailable) BOOL updateAvailable;
+@property (strong) NSString *updateBuyParams; // @synthesize updateBuyParams=_updateBuyParams;
+@property long long watchApplicationMode; // @synthesize watchApplicationMode=_watchApplicationMode;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -59,7 +78,6 @@
 - (unsigned long long)hash;
 - (id)initWithBundleID:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isBeta;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToApp:(id)arg1;
 

@@ -40,7 +40,7 @@
 - (void)_webProcessPlugInBrowserContextController:(id)arg1 willSendSubmitEventToForm:(id)arg2 inFrame:(id)arg3 targetFrame:(id)arg4 values:(id)arg5;
 - (id)_webProcessPlugInBrowserContextController:(id)arg1 willSubmitForm:(id)arg2 toFrame:(id)arg3 fromFrame:(id)arg4 withValues:(id)arg5;
 - (BOOL)_webProcessPlugInBrowserContextControllerShouldNotifyOnFormChanges:(id)arg1;
-- (BOOL)_willNavigateFrameWithUnsubmittedForm:(id)arg1 loadingWillBeDeferred:(BOOL)arg2;
+- (void)_willNavigateFrameWithUnsubmittedForm:(id)arg1;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 fillSynchronously:(BOOL)arg3 setAutoFilled:(BOOL)arg4 focusFieldAfterFilling:(BOOL)arg5 fieldToFocus:(id)arg6 submitForm:(BOOL)arg7;
 - (void)autoFillFormInFrame:(id)arg1 withValues:(id)arg2 fillSynchronously:(BOOL)arg3 setAutoFilled:(BOOL)arg4 selectFieldAfterFilling:(id)arg5;
 - (void)clearField:(id)arg1 inFrame:(id)arg2;
@@ -52,7 +52,7 @@
 - (void)dealloc;
 - (void)didFindSearchURLTemplateString:(id)arg1 inFrame:(id)arg2 pageController:(id)arg3;
 - (void)didSameDocumentNavigation:(long long)arg1 inFrame:(id)arg2;
-- (BOOL)didStartProvisionalLoadForFrame:(id)arg1;
+- (void)didStartProvisionalLoadForFrame:(id)arg1;
 - (id)fillForm:(double)arg1 inFrame:(id)arg2 withPassword:(id)arg3;
 - (void)finishedAutoFillingForm:(id)arg1 inFrame:(id)arg2 shouldSubmit:(BOOL)arg3;
 - (void)focusFormForStreamlinedLogin:(double)arg1 inFrame:(id)arg2;

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
+#import <iWorkImport/TSUCloudKitResourceInfo-Protocol.h>
 
 @class NSSet, NSString, TSUColor;
 
 __attribute__((visibility("hidden")))
-@interface TSPDocumentResourceInfo : NSObject <NSCopying>
+@interface TSPDocumentResourceInfo : NSObject <NSCopying, TSUCloudKitResourceInfo>
 {
     NSString *_digestString;
     NSString *_locator;
@@ -19,21 +20,33 @@ __attribute__((visibility("hidden")))
     unsigned long long _fileSize;
     NSSet *_tags;
     TSUColor *_fallbackColor;
+    struct CGSize _pixelSize;
 }
 
+@property (readonly, nonatomic) NSString *assetFieldName;
+@property (readonly, nonatomic) long long assetFieldType;
+@property (readonly, nonatomic) NSString *assetFilename;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *digestString; // @synthesize digestString=_digestString;
+@property (readonly, nonatomic) unsigned long long estimatedResourceSize;
 @property (readonly, copy, nonatomic) TSUColor *fallbackColor; // @synthesize fallbackColor=_fallbackColor;
 @property (readonly, copy, nonatomic) NSString *fileExtension; // @synthesize fileExtension=_fileExtension;
 @property (readonly, nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *locator; // @synthesize locator=_locator;
+@property (readonly, nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
+@property (readonly, nonatomic) NSString *recordName;
+@property (readonly, nonatomic) NSString *recordType;
+@property (readonly, nonatomic) NSString *resourceIdentifier;
+@property (readonly, nonatomic) NSSet *resourceTags;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (unsigned long long)hash;
 - (id)init;
-- (id)initWithDigestString:(id)arg1 locator:(id)arg2 fileExtension:(id)arg3 fileSize:(unsigned long long)arg4 tags:(id)arg5 fallbackColor:(id)arg6;
+- (id)initWithDigestString:(id)arg1 locator:(id)arg2 fileExtension:(id)arg3 fileSize:(unsigned long long)arg4 tags:(id)arg5 pixelSize:(struct CGSize)arg6 fallbackColor:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDocumentResourceInfo:(id)arg1;
 

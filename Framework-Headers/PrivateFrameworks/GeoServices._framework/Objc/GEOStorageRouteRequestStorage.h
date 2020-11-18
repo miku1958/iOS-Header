@@ -8,28 +8,44 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOURLRouteHandle, NSMutableArray, PBUnknownFields;
+@class GEOURLRouteHandle, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOStorageRouteRequestStorage : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOURLRouteHandle *_routeHandle;
-    int _transportType;
     NSMutableArray *_waypoints;
-    CDStruct_a995201b _has;
+    int _transportType;
+    struct {
+        unsigned int has_transportType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_routeHandle:1;
+        unsigned int read_waypoints:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_routeHandle:1;
+        unsigned int wrote_waypoints:1;
+        unsigned int wrote_transportType:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasRouteHandle;
 @property (nonatomic) BOOL hasTransportType;
-@property (strong, nonatomic) GEOURLRouteHandle *routeHandle; // @synthesize routeHandle=_routeHandle;
-@property (nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property (strong, nonatomic) GEOURLRouteHandle *routeHandle;
+@property (nonatomic) int transportType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *waypoints; // @synthesize waypoints=_waypoints;
+@property (strong, nonatomic) NSMutableArray *waypoints;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)waypointsType;
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
+- (void)_addNoFlagsWaypoints:(id)arg1;
+- (void)_readRouteHandle;
+- (void)_readWaypoints;
 - (void)addWaypoints:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearWaypoints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -38,6 +54,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transportTypeAsString:(int)arg1;
 - (id)waypointsAtIndex:(unsigned long long)arg1;

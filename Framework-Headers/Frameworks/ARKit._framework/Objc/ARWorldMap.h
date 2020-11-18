@@ -34,6 +34,7 @@
 
 + (CDStruct_183601bc)boundsForTrackingData:(id)arg1;
 + (id)featurePointsForTrackingData:(id)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2;
++ (id)keyframesForTrackingData:(id)arg1 withFeaturePoints:(id)arg2 referenceOriginTransform:(CDStruct_14d5dc5e)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

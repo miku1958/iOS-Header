@@ -9,14 +9,14 @@
 #import <UIKitCore/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
 #import <UIKitCore/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
 
-@class NSString, _UIBlendingHighlightView, _UIDimmingKnockoutBackdropView;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UIAlertControlleriOSActionSheetCancelBackgroundView : UIView <UIInterfaceActionVisualBackgroundDisplaying, UIInterfaceActionVisualGroupBackgroundDisplaying>
 {
     UIView *backgroundView;
-    _UIDimmingKnockoutBackdropView *blurView;
-    _UIBlendingHighlightView *highlightView;
+    UIView *highlightBackgroundView;
+    UIView *highlightView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
 - (void)setCornerRadius:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPressed:(BOOL)arg1;

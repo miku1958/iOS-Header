@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 
 - (void)_willDeallocOrFinalize;
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

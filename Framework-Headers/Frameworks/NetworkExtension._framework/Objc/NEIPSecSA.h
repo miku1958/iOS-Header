@@ -8,7 +8,7 @@
 
 #import <NetworkExtension/NSCopying-Protocol.h>
 
-@class NSData, NSString, NWAddressEndpoint, NWInterface;
+@class NSData, NSString, NWAddressEndpoint;
 
 @interface NEIPSecSA : NSObject <NSCopying>
 {
@@ -16,7 +16,9 @@
     BOOL _natDetectedOnPeer;
     BOOL _natKeepaliveEnabled;
     BOOL _natKeepaliveOffloadEnabled;
+    BOOL _sequencePerTrafficClass;
     unsigned short _natTraversalPort;
+    unsigned short _natTraversalSrcPort;
     unsigned int _spi;
     int _direction;
     int _mode;
@@ -27,7 +29,7 @@
     unsigned int _internalSAID;
     NWAddressEndpoint *_localAddress;
     NWAddressEndpoint *_remoteAddress;
-    NWInterface *_boundInterface;
+    NSString *_boundInterfaceName;
     NSString *_tunnelInterfaceName;
     unsigned long long _lifetimeSeconds;
     NSData *_encryptionKey;
@@ -38,7 +40,7 @@
 
 @property int authenticationAlgorithm; // @synthesize authenticationAlgorithm=_authenticationAlgorithm;
 @property (strong) NSData *authenticationKey; // @synthesize authenticationKey=_authenticationKey;
-@property (strong) NWInterface *boundInterface; // @synthesize boundInterface=_boundInterface;
+@property (strong) NSString *boundInterfaceName; // @synthesize boundInterfaceName=_boundInterfaceName;
 @property (readonly) int direction; // @synthesize direction=_direction;
 @property int encryptionAlgorithm; // @synthesize encryptionAlgorithm=_encryptionAlgorithm;
 @property (strong) NSData *encryptionKey; // @synthesize encryptionKey=_encryptionKey;
@@ -53,9 +55,11 @@
 @property unsigned long long natKeepaliveOffloadIntervalSeconds; // @synthesize natKeepaliveOffloadIntervalSeconds=_natKeepaliveOffloadIntervalSeconds;
 @property BOOL natTraversalEnabled; // @synthesize natTraversalEnabled=_natTraversalEnabled;
 @property unsigned short natTraversalPort; // @synthesize natTraversalPort=_natTraversalPort;
+@property unsigned short natTraversalSrcPort; // @synthesize natTraversalSrcPort=_natTraversalSrcPort;
 @property int protocol; // @synthesize protocol=_protocol;
 @property (strong) NWAddressEndpoint *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
 @property unsigned int replayWindowSize; // @synthesize replayWindowSize=_replayWindowSize;
+@property BOOL sequencePerTrafficClass; // @synthesize sequencePerTrafficClass=_sequencePerTrafficClass;
 @property unsigned int spi; // @synthesize spi=_spi;
 @property (strong) NSString *tunnelInterfaceName; // @synthesize tunnelInterfaceName=_tunnelInterfaceName;
 
@@ -63,6 +67,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createDictionary;
 - (void)dealloc;
+- (id)description;
+- (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)hash;
 - (id)initInboundSA;
 - (id)initOutboundSAWithSPI:(unsigned int)arg1;

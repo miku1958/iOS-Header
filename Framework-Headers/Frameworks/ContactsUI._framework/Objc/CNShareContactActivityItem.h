@@ -6,21 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <ContactsUI/UIActivityItemLinkPresentationSource-Protocol.h>
 #import <ContactsUI/UIActivityItemSource-Protocol.h>
 #import <ContactsUI/UIActivityItemSourceAttachment-Protocol.h>
 
-@class CNContact, NSString;
+@class CNContact, LPFileMetadata, LPLinkMetadata, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CNShareContactActivityItem : NSObject <UIActivityItemSource, UIActivityItemSourceAttachment>
+@interface CNShareContactActivityItem : NSObject <UIActivityItemSource, UIActivityItemSourceAttachment, UIActivityItemLinkPresentationSource>
 {
     CNContact *_contact;
+    LPLinkMetadata *_linkMetadata;
+    LPFileMetadata *_fileMetadata;
 }
 
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) LPFileMetadata *fileMetadata; // @synthesize fileMetadata=_fileMetadata;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) LPLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -29,8 +34,10 @@ __attribute__((visibility("hidden")))
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
+- (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
 - (id)initWithContact:(id)arg1;
+- (id)thumbnailImage;
 
 @end
 

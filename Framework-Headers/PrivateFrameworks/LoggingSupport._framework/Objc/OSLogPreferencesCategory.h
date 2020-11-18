@@ -20,6 +20,8 @@
 @property (readonly, nonatomic) BOOL isLocked;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long persistedLevel;
+@property (nonatomic) BOOL signpostEnabled;
+@property (nonatomic) BOOL signpostPersisted;
 @property (readonly, nonatomic) OSLogPreferencesSubsystem *subsystem; // @synthesize subsystem=_subsystem;
 
 - (void).cxx_destruct;

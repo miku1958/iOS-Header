@@ -34,7 +34,6 @@
 - (void)dealloc;
 - (void)finishBooting;
 - (id)initWithQueue:(id)arg1;
-- (void)restart;
 - (void)sendActions:(id)arg1;
 - (void)start;
 

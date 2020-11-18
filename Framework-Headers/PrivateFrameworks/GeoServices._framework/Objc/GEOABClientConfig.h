@@ -8,30 +8,49 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOABClientConfig : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_assignedAbBranchId;
     NSMutableArray *_configKeyValues;
     NSMutableArray *_debugExperimentBranchs;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_assignedAbBranchId:1;
+        unsigned int read_configKeyValues:1;
+        unsigned int read_debugExperimentBranchs:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_assignedAbBranchId:1;
+        unsigned int wrote_configKeyValues:1;
+        unsigned int wrote_debugExperimentBranchs:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *assignedAbBranchId; // @synthesize assignedAbBranchId=_assignedAbBranchId;
-@property (strong, nonatomic) NSMutableArray *configKeyValues; // @synthesize configKeyValues=_configKeyValues;
-@property (strong, nonatomic) NSMutableArray *debugExperimentBranchs; // @synthesize debugExperimentBranchs=_debugExperimentBranchs;
+@property (strong, nonatomic) NSString *assignedAbBranchId;
+@property (strong, nonatomic) NSMutableArray *configKeyValues;
+@property (strong, nonatomic) NSMutableArray *debugExperimentBranchs;
 @property (readonly, nonatomic) BOOL hasAssignedAbBranchId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)configKeyValueType;
 + (Class)debugExperimentBranchType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsConfigKeyValue:(id)arg1;
+- (void)_addNoFlagsDebugExperimentBranch:(id)arg1;
+- (void)_readAssignedAbBranchId;
+- (void)_readConfigKeyValues;
+- (void)_readDebugExperimentBranchs;
 - (void)addConfigKeyValue:(id)arg1;
 - (void)addDebugExperimentBranch:(id)arg1;
 - (void)clearConfigKeyValues;
 - (void)clearDebugExperimentBranchs;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (id)configKeyValueAtIndex:(unsigned long long)arg1;
 - (unsigned long long)configKeyValuesCount;
 - (void)copyTo:(id)arg1;
@@ -43,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

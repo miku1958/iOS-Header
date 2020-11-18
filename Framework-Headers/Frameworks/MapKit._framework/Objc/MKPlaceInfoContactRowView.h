@@ -8,8 +8,8 @@
 
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CNLabeledValue, MKPlaceSectionHeaderView, MKPlatterView, NSArray, NSLayoutConstraint, NSString, UIColor, UITapGestureRecognizer, _MKUILabel;
-@protocol UIItemProviderWriting;
+@class CNLabeledValue, MKPlaceSectionHeaderView, MKVibrantLabel, NSArray, NSLayoutConstraint, NSString, UIColor, _MKUILabel;
+@protocol NSItemProviderWriting;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceInfoContactRowView : MKPlaceSectionRowView <UIGestureRecognizerDelegate>
@@ -21,30 +21,26 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_valueToTrailingViewConstraint;
     NSArray *_iconConstraints;
     NSArray *_titleConstraints;
-    UITapGestureRecognizer *_tapRecognizer;
-    BOOL _bottomHairlineFullWidth;
+    BOOL _isInRightMouseDownEvent;
+    BOOL _textIsSelectable;
     CNLabeledValue *_labeledValue;
-    _MKUILabel *_titleLabel;
+    MKVibrantLabel *_titleLabel;
     _MKUILabel *_valueLabel;
-    MKPlatterView *_iconView;
     CDUnknownBlockType _iconSelectedBlock;
     NSLayoutConstraint *_valueToBottomConstraint;
     UIColor *_labelColor;
 }
 
 @property (readonly, nonatomic) int analyticsTarget;
-@property (nonatomic, getter=isBottomHairlineFullWidth) BOOL bottomHairlineFullWidth; // @synthesize bottomHairlineFullWidth=_bottomHairlineFullWidth;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) id<UIItemProviderWriting> draggableContent;
+@property (readonly, nonatomic) id<NSItemProviderWriting> draggableContent;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType iconSelectedBlock; // @synthesize iconSelectedBlock=_iconSelectedBlock;
-@property (readonly, nonatomic) MKPlatterView *iconView; // @synthesize iconView=_iconView;
-@property (nonatomic, getter=isIconVisible) BOOL iconVisible;
 @property (strong, nonatomic) UIColor *labelColor; // @synthesize labelColor=_labelColor;
 @property (strong, nonatomic) CNLabeledValue *labeledValue; // @synthesize labeledValue=_labeledValue;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) _MKUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly, nonatomic) MKVibrantLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (readonly, nonatomic) _MKUILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 @property (strong, nonatomic) NSLayoutConstraint *valueToBottomConstraint; // @synthesize valueToBottomConstraint=_valueToBottomConstraint;
 
@@ -53,13 +49,9 @@ __attribute__((visibility("hidden")))
 - (void)_contentSizeDidChange;
 - (id)_icon;
 - (id)_iconAccessibilityLabel;
-- (BOOL)_iconTapped:(id)arg1;
 - (Class)_labeledValueExpectedValueType;
-- (BOOL)_pointIsInIcon:(struct CGPoint)arg1;
-- (void)_updateGestureRecognizer;
 - (id)_valueString;
 - (void)copy:(id)arg1;
-- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

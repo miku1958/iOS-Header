@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVPropertyStorage, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class AVAudioSession, AVAudioSessionMediaPlayerOnly, AVOutputContext, AVPixelBufferAttributeMediator, AVPlayerItem, AVWeakReference, NSArray, NSDictionary, NSError, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol AVCallbackCancellation><AVKVOIntrospection, AVLoggingIdentifier, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface AVPlayerInternal : NSObject
 {
     AVWeakReference *weakReference;
-    AVPropertyStorage *propertyStorage;
     AVPixelBufferAttributeMediator *pixelBufferAttributeMediator;
     NSObject<OS_dispatch_queue> *stateDispatchQueue;
     NSObject<OS_dispatch_queue> *figConfigurationQueue;
@@ -38,8 +37,10 @@ __attribute__((visibility("hidden")))
     NSDictionary *vibrationPattern;
     AVOutputContext *outputContext;
     BOOL IOwnTheFigPlayer;
+    BOOL pausesAudioVisualPlaybackInBackground;
     NSMutableArray *handlersToCallWhenReadyToPlay;
     BOOL shouldReduceResourceUsage;
+    long long resourceConservationLevelWhilePaused;
     NSString *playerRole;
     NSString *externalPlaybackVideoGravity;
     long long actionAtItemEnd;
@@ -75,6 +76,7 @@ __attribute__((visibility("hidden")))
     BOOL airPlayVideoActive;
     BOOL isConnectedToPhysicalSecondScreen;
     BOOL outputObscuredDueToInsufficientExternalProtection;
+    long long externalProtectionStatus;
     NSString *ancillaryPerformanceInformationForDisplay;
     float rate;
     BOOL automaticallyWaitsToMinimizeStalling;
@@ -83,15 +85,17 @@ __attribute__((visibility("hidden")))
     NSString *reasonForWaitingToPlay;
     struct CGSize currentItemPresentationSize;
     BOOL currentItemNonForcedSubtitlesEnabled;
+    unsigned long long preferredVideoDecoderGPURegistryID;
     BOOL disallowsAutoPauseOnRouteRemovalIfNoAudio;
-    struct __CFDictionary *videoLayers;
+    BOOL hostApplicationInForeground;
+    NSMutableArray *videoLayers;
     NSMutableArray *subtitleLayers;
     NSMutableArray *closedCaptionLayers;
     NSHashTable *avPlayerLayers;
     int nextPrerollIDToGenerate;
     int pendingPrerollID;
     CDUnknownBlockType prerollCompletionHandler;
-    id<AVCallbackCancellation><AVKVOIntrospection> currentItemSuppressesVideoLayersCallbackInvoker;
+    id currentItemSuppressesVideoLayersNotificationToken;
     id<AVCallbackCancellation><AVKVOIntrospection> currentItemPreferredPixelBufferAttributesCallbackInvoker;
     struct OpaqueFigPlayer *figPlayer;
     struct OpaqueFigPlaybackItem *figPlaybackItemToIdentifyNextCurrentItem;
@@ -100,13 +104,11 @@ __attribute__((visibility("hidden")))
     NSArray *itemsInFigPlayQueue;
     NSArray *expectedAssetTypes;
     BOOL reevaluateBackgroundPlayback;
-    BOOL hostApplicationInForeground;
     BOOL hadAssociatedOnscreenPlayerLayerWhenSuspended;
     BOOL suspensionExpected;
     struct OpaqueCMClock *figMasterClock;
     NSString *captionRenderingStrategy;
     NSArray *displaysUsedForPlayback;
-    unsigned long long preferredVideoDecoderGPURegistryID;
     id<AVLoggingIdentifier> loggingIdentifier;
 }
 

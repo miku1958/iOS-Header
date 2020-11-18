@@ -18,23 +18,25 @@ __attribute__((visibility("hidden")))
     int _labelType;
     int _status;
     struct {
-        unsigned int confidence:1;
-        unsigned int labelType:1;
-        unsigned int status:1;
-    } _has;
+        unsigned int has_confidence:1;
+        unsigned int has_labelType:1;
+        unsigned int has_status:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int confidence; // @synthesize confidence=_confidence;
+@property (nonatomic) unsigned int confidence;
 @property (nonatomic) BOOL hasConfidence;
 @property (nonatomic) BOOL hasLabelType;
 @property (nonatomic) BOOL hasStatus;
-@property (nonatomic) int labelType; // @synthesize labelType=_labelType;
-@property (nonatomic) int status; // @synthesize status=_status;
+@property (nonatomic) int labelType;
+@property (nonatomic) int status;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsLabelType:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (id)labelTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

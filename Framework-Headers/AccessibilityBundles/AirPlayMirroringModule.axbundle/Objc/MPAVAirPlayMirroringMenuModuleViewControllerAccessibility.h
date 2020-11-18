@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityControlCenterElementToFocusAfterClose;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)setupUnexpandedLayout;
+- (void)viewDidLoad;
 
 @end
 

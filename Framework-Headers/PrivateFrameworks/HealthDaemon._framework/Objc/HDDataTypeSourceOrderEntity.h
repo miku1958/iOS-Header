@@ -10,10 +10,11 @@
 {
 }
 
-+ (id)_orderedSourceIDsForType:(id)arg1 userOrdered:(BOOL *)arg2 database:(id)arg3 error:(id *)arg4;
-+ (BOOL)_saveOrderedSourceIDs:(id)arg1 dataTypeCode:(long long)arg2 userOrdered:(BOOL)arg3 syncProvenance:(long long)arg4 database:(id)arg5 error:(id *)arg6;
++ (BOOL)_updateOrderedSourcesForType:(id)arg1 profile:(id)arg2 transaction:(id)arg3 error:(id *)arg4 updateHandler:(CDUnknownBlockType)arg5;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
++ (BOOL)enumerateOrderedSourceIDsForType:(id)arg1 profile:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
++ (BOOL)enumerateOrderedSourceIDsForType:(id)arg1 profile:(id)arg2 transaction:(id)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
 + (id)foreignKeys;
 + (id)indices;
 + (id)joinClausesForProperty:(id)arg1;
@@ -22,6 +23,7 @@
 + (long long)protectionClass;
 + (BOOL)saveOrderedSourceIDs:(id)arg1 type:(id)arg2 userOrdered:(BOOL)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)tableAliases;
++ (BOOL)updateOrderedSourcesForType:(id)arg1 profile:(id)arg2 error:(id *)arg3 updateHandler:(CDUnknownBlockType)arg4;
 
 @end
 

@@ -6,10 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class CCUICAPackageDescription, CCUIRoundButton, NSString, UIColor, UIImage, UILabel;
+@class CCUICAPackageDescription, CCUIRoundButton, MTVisualStylingProvider, NSString, UIColor, UIImage, UILabel;
 
 @interface CCUILabeledRoundButton : UIView
 {
+    MTVisualStylingProvider *_visualStylingProvider;
     BOOL _labelsVisible;
     BOOL _useAlternateBackground;
     NSString *_title;
@@ -40,8 +41,10 @@
 - (void)_layoutLabels;
 - (void)_setupLabelsBounds;
 - (BOOL)_shouldUseLargeTextLayout;
+- (void)_updateVisualStylingOfLabel:(id)arg1;
 - (void)buttonTapped:(id)arg1;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 useLightStyle:(BOOL)arg3;
 - (id)initWithGlyphPackageDescription:(id)arg1 highlightColor:(id)arg2;

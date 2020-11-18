@@ -40,13 +40,10 @@
 - (id)_getAndClearCachedData;
 - (BOOL)_isRequestForContentKey;
 - (void)_performCancellationByClient;
-- (id)_requestDictionary;
 - (unsigned long long)_requestID;
 - (struct __CFDictionary *)_requestInfo;
 - (id)_resourceLoader;
-- (void)_sendDataIncrementally:(id)arg1 data:(id)arg2;
 - (void)_sendDataToCustomURLHandler:(id)arg1;
-- (void)_sendDictionaryForURLRequest:(id)arg1 context:(id)arg2;
 - (void)_sendFinishLoadingToCustomURLHandler;
 - (void)_sendFinishLoadingToCustomURLHandlerWithError:(id)arg1;
 - (void)_sendResponseInfoToCustomURLHandler;
@@ -55,9 +52,7 @@
 - (BOOL)_shouldInformDelegateOfFigCancellation;
 - (BOOL)_tryToMarkAsCancelled;
 - (id)_weakReference;
-- (id)createKeyRequestDataUsingCryptorForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 performAsync:(BOOL)arg4 error:(id *)arg5;
 - (void)dealloc;
-- (void)finalize;
 - (void)finishLoading;
 - (void)finishLoadingWithError:(id)arg1;
 - (void)finishLoadingWithResponse:(id)arg1 data:(id)arg2 redirect:(id)arg3;
@@ -65,9 +60,9 @@
 - (void)forwardRequestToContentKeySession;
 - (void)generateStreamingContentKeyRequestDataAsynchronouslyForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
-- (id)initWithResourceLoader:(id)arg1 URL:(id)arg2 httpRequestHeaders:(id)arg3 requestOffset:(id)arg4 requestLength:(id)arg5 allowedContentTypes:(id)arg6 figCryptor:(struct OpaqueFigCPECryptor *)arg7 cryptorKeyRequestID:(unsigned long long)arg8 figPlaybackItem:(struct OpaqueFigPlaybackItem *)arg9 figAssetImageGenerator:(struct OpaqueFigAssetImageGenerator *)arg10;
-- (id)initWithResourceLoader:(id)arg1 requestDictionary:(id)arg2;
+- (id)initWithResourceLoader:(id)arg1 URL:(id)arg2 httpRequestHeaders:(id)arg3 requestOffset:(id)arg4 requestLength:(id)arg5 allowedContentTypes:(id)arg6 figCryptor:(struct OpaqueFigCPECryptor *)arg7 cryptorKeyRequestID:(unsigned long long)arg8;
 - (id)initWithResourceLoader:(id)arg1 requestInfo:(struct __CFDictionary *)arg2 requestID:(unsigned long long)arg3;
+- (id)keyRequestDataUsingCryptorForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 performAsync:(BOOL)arg4 error:(id *)arg5;
 - (id)persistentContentKeyFromKeyVendorResponse:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)serializableRepresentation;
 - (id)streamingContentKeyRequestDataForApp:(id)arg1 contentIdentifier:(id)arg2 options:(id)arg3 error:(id *)arg4;

@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)performDefaultAction;
 - (id)rightMostView;
 - (void)tintColorDidChange;
+- (void)updateHorizontalTouchAreas;
 - (id)variableConstraints;
 
 @end

@@ -47,6 +47,7 @@
     BOOL _canDisplayLoadingIndicators;
     BOOL _useUserTransformTiles;
     BOOL _shouldPinContentToTop;
+    BOOL _shouldHideMainContent;
     id<PUOneUpTilingLayoutDelegate> _delegate;
     long long _windowInterfaceOrientation;
     long long _tileInitialContentMode;
@@ -74,6 +75,7 @@
 @property (strong, nonatomic) PUParallaxComputer *parallaxComputer; // @synthesize parallaxComputer=_parallaxComputer;
 @property (nonatomic) struct CGSize playButtonSize; // @synthesize playButtonSize=_playButtonSize;
 @property (nonatomic) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
+@property (nonatomic) BOOL shouldHideMainContent; // @synthesize shouldHideMainContent=_shouldHideMainContent;
 @property (nonatomic) BOOL shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;
 @property (nonatomic) long long tileInitialContentMode; // @synthesize tileInitialContentMode=_tileInitialContentMode;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;

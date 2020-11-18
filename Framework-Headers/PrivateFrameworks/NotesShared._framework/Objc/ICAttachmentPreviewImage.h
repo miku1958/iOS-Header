@@ -8,15 +8,17 @@
 
 #import <NotesShared/ICAttachmentPreviewImageUI-Protocol.h>
 
-@class ICAttachment, NSData, NSDate, NSObject, NSString;
+@class ICAccount, ICAttachment, NSData, NSDate, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICAttachmentPreviewImage : ICCloudSyncingObject <ICAttachmentPreviewImageUI>
 {
+    ICAccount *placeholderAccount;
     NSObject<OS_dispatch_queue> *_fileQueue;
     unsigned long long _imageID;
 }
 
+@property (nonatomic) short appearanceType; // @dynamic appearanceType;
 @property (strong, nonatomic) ICAttachment *attachment; // @dynamic attachment;
 @property (strong, nonatomic) NSData *cryptoMetadataInitializationVector; // @dynamic cryptoMetadataInitializationVector;
 @property (strong, nonatomic) NSData *cryptoMetadataTag; // @dynamic cryptoMetadataTag;
@@ -29,6 +31,7 @@
 @property (nonatomic) unsigned long long imageID; // @synthesize imageID=_imageID;
 @property (strong, nonatomic) NSData *metadata; // @dynamic metadata;
 @property (strong, nonatomic) NSDate *modifiedDate; // @dynamic modifiedDate;
+@property (weak, nonatomic) ICAccount *placeholderAccount; // @synthesize placeholderAccount;
 @property (nonatomic) double scale; // @dynamic scale;
 @property (nonatomic) BOOL scaleWhenDrawing; // @dynamic scaleWhenDrawing;
 @property (readonly) Class superclass;
@@ -44,18 +47,20 @@
 + (void)deleteStrandedAttachmentPreviewImagesInContext:(id)arg1;
 + (id)fileGlobalQueue;
 + (id)fileQueueGroup;
-+ (id)identifierForContentIdentifier:(id)arg1 scale:(double)arg2 width:(double)arg3 height:(double)arg4;
-+ (id)newAttachmentPreviewImageWithIdentifier:(id)arg1 inContext:(id)arg2;
-+ (id)previewImageDirectoryURL;
-+ (id)previewImageURLsForIdentifier:(id)arg1;
++ (id)identifierForContentIdentifier:(id)arg1 scale:(double)arg2 width:(double)arg3 height:(double)arg4 appearanceType:(unsigned long long)arg5;
++ (id)newAttachmentPreviewImageWithIdentifier:(id)arg1 attachment:(id)arg2;
++ (id)previewImageURLsForIdentifier:(id)arg1 account:(id)arg2;
 + (void)purgeAllAttachmentPreviewImagesInContext:(id)arg1;
 + (void)purgeAllPreviewImageFiles;
-+ (void)purgePreviewImageFilesForIdentifiers:(id)arg1;
++ (void)purgePreviewImageFilesForIdentifiers:(id)arg1 account:(id)arg2;
 + (long long)updateFileWriteCounterBy:(long long)arg1 identifier:(id)arg2;
 + (id)visibleAttachmentPreviewImagesInContext:(id)arg1;
 + (void)waitUntilAllFileWritesAreFinished;
 - (void).cxx_destruct;
 - (id)_decryptedImageData;
+- (void)accountWillChangeToAccount:(id)arg1;
+- (id)cloudAccount;
+- (id)containerAccount;
 - (void)createOrientedPreviewIfNeeded;
 - (id)decryptedImageData;
 - (void)deleteFromLocalDatabase;
@@ -69,6 +74,7 @@
 - (void)invalidateImage;
 - (void)invalidateOrientedImage;
 - (BOOL)makeSurePreviewImageDirectoryExists:(id *)arg1;
+- (long long)minimumSupportedNotesVersion;
 - (BOOL)needsInitialFetchFromCloud;
 - (BOOL)needsToBeDeletedFromCloud;
 - (BOOL)needsToBeFetchedFromCloud;
@@ -82,13 +88,11 @@
 - (id)previewImageURL;
 - (void)removeItemAtURL:(id)arg1;
 - (void)saveAndClearDecryptedData;
-- (void)saveScaledImageFromImageSrc:(struct CGImageSource *)arg1 typeUTI:(struct __CFString *)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setImageData:(id)arg1 withSize:(struct CGSize)arg2 scale:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)setImageData:(id)arg1 withSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4;
+- (BOOL)setScaledImageFromImageSrc:(struct CGImageSource *)arg1 typeUTI:(struct __CFString *)arg2;
 - (BOOL)shouldSyncToCloud;
 - (struct CGSize)size;
 - (void)updateFlagToExcludeFromCloudBackup;
-- (void)updateFlagToExcludeFromCloudBackupForURL:(id)arg1;
-- (void)updateFlagToExcludeFromCloudBackupForURLs:(id)arg1;
 - (void)willTurnIntoFault;
 - (BOOL)writeEncryptedImageFromData:(id)arg1;
 

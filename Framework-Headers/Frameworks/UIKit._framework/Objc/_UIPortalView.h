@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL allowsBackdropGroups; // @dynamic allowsBackdropGroups;
+@property (nonatomic) BOOL allowsHitTesting;
 @property (nonatomic) BOOL hidesSourceView; // @dynamic hidesSourceView;
 @property (nonatomic) BOOL matchesAlpha; // @dynamic matchesAlpha;
 @property (nonatomic) BOOL matchesPosition; // @dynamic matchesPosition;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithFrame:(struct CGRect)arg1;
 
 @end
 

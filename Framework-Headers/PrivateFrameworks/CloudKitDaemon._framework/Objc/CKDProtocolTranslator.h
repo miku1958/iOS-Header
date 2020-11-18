@@ -12,7 +12,7 @@
 @interface CKDProtocolTranslator : NSObject
 {
     BOOL _dontCreateValidatingParentReferences;
-    NSString *_bundleIdentifier;
+    NSString *_packageStagingDirectory;
     NSString *_orgAdminUserID;
     long long _databaseScope;
     id<CKDProtocolTranslatorIdentityDelegate> _identityDelegate;
@@ -21,7 +21,6 @@
     NSMutableDictionary *_downloadPreauthorizationMap;
 }
 
-@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
 @property (readonly, nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property (nonatomic) BOOL dontCreateValidatingParentReferences; // @synthesize dontCreateValidatingParentReferences=_dontCreateValidatingParentReferences;
@@ -30,15 +29,15 @@
 @property (copy, nonatomic) NSString *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property (copy, nonatomic) NSString *overriddenContainerScopedUserID; // @synthesize overriddenContainerScopedUserID=_overriddenContainerScopedUserID;
 @property (readonly, nonatomic) CKDPIdentifier *pUserID;
+@property (copy, nonatomic) NSString *packageStagingDirectory; // @synthesize packageStagingDirectory=_packageStagingDirectory;
 
-+ (id)translatorIgnoringUserIDsWithDatabaseScope:(long long)arg1;
++ (id)translatorIgnoringUserIDsWithPackageStagingDirectory:(id)arg1 databaseScope:(long long)arg2;
 - (void).cxx_destruct;
-- (id)_initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 bundleIdentifier:(id)arg3 databaseScope:(long long)arg4;
+- (id)_initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 packageStagingDirectory:(id)arg3 databaseScope:(long long)arg4;
 - (BOOL)_isDefaultUserNameFromClient:(id)arg1;
 - (BOOL)_isDefaultUserNameFromServer:(id)arg1;
 - (id)_pRecordFromRecordSansValues:(id)arg1 forCache:(BOOL)arg2;
 - (BOOL)_valueTypeIsAnEncryptedBytesTypeForField:(id)arg1;
-- (id)ancestorFromPAncestor:(id)arg1 error:(id *)arg2;
 - (id)assetFromPAsset:(id)arg1 error:(id *)arg2;
 - (unsigned long long)capabilitiesFromPZoneCapabilities:(id)arg1;
 - (void)consumeResponseHeader:(id)arg1;
@@ -47,13 +46,14 @@
 - (id)encryptedFieldValueOfType:(int)arg1 withObject:(id)arg2;
 - (id)encryptedObjectRepresentationFromFieldValue:(id)arg1;
 - (id)fieldValueFromObject:(id)arg1;
-- (id)fieldValueListOfType:(int)arg1 withList:(id)arg2;
+- (id)fieldValueFromObject:(id)arg1 forCache:(BOOL)arg2;
 - (id)fieldValueOfType:(int)arg1 withObject:(id)arg2;
+- (id)fieldValueOfType:(int)arg1 withObject:(id)arg2 forCache:(BOOL)arg3;
 - (int)fieldValueTypeFromEncryptedDataObject:(id)arg1 isInList:(BOOL)arg2;
 - (int)fieldValueTypeFromObject:(id)arg1;
 - (id)identityFromPUser:(id)arg1;
-- (id)initWithBundleIdentifier:(id)arg1 databaseScope:(long long)arg2;
-- (id)initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 bundleIdentifier:(id)arg3 databaseScope:(long long)arg4;
+- (id)initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 packageStagingDirectory:(id)arg3 databaseScope:(long long)arg4;
+- (id)initWithPackageStagingDirectory:(id)arg1 databaseScope:(long long)arg2;
 - (id)locationFieldValueWithLatitude:(double)arg1 longitude:(double)arg2;
 - (id)notificationFromPPushMessage:(id)arg1;
 - (BOOL)objectIsAnEncryptedType:(id)arg1;
@@ -67,7 +67,9 @@
 - (id)pContainerScopedRecordIdentifierWithPRecordIdentifier:(id)arg1;
 - (id)pContainerScopedRecordZoneIdentifierFromFromPRecordZoneIdentifier:(id)arg1;
 - (id)pContainerScopedUserIdentifierFromPUserIdentifier:(id)arg1;
+- (id)pFieldActionWithLocation:(long long)arg1 length:(unsigned long long)arg2 values:(id)arg3;
 - (id)pFieldWithKey:(id)arg1 value:(id)arg2;
+- (id)pFieldWithKey:(id)arg1 value:(id)arg2 forCache:(BOOL)arg3;
 - (id)pIdentifierFromUserRecordID:(id)arg1;
 - (id)pPackageFromPackage:(id)arg1;
 - (id)pParticipantFromShareParticipant:(id)arg1 forCache:(BOOL)arg2;
@@ -81,6 +83,7 @@
 - (id)pReferenceFromReference:(id)arg1 error:(id *)arg2;
 - (id)pShareFromShare:(id)arg1 forCache:(BOOL)arg2;
 - (id)pShareIdentifierFromRecordID:(id)arg1;
+- (id)pStreamingAssetFromStreamingAsset:(id)arg1 forCache:(BOOL)arg2;
 - (id)pSubscriptionFromSubscription:(id)arg1 error:(id *)arg2;
 - (id)pUserIdentifierFromUserRecordName:(id)arg1;
 - (id)packageFromPPackage:(id)arg1 error:(id *)arg2;
@@ -93,6 +96,7 @@
 - (id)referenceFromPReference:(id)arg1 error:(id *)arg2;
 - (id)shareFromPShare:(id)arg1 error:(id *)arg2;
 - (id)shareParticipantFromPParticipant:(id)arg1 error:(id *)arg2;
+- (id)streamingAssetFromPStreamingAsset:(id)arg1 error:(id *)arg2;
 - (id)subscriptionFromPSubscription:(id)arg1 error:(id *)arg2;
 - (id)userNameFromPIdentifier:(id)arg1 error:(id *)arg2;
 

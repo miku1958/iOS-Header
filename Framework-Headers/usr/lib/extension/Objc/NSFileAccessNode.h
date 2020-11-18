@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     BOOL _isArbitrationBoundary;
     BOOL _isFilePackageIsFigured;
     BOOL _isFilePackage;
+    BOOL _symbolicLinkIsFirmlink;
     NSString *_lastRequestedChildName;
     NSFileAccessNode *_lastRequestedChild;
     id _progressPublisherOrPublishers;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)_childrenExcludingExcessNodes:(BOOL)arg1 excludingReactors:(BOOL)arg2;
 - (void)_forEachRelevantAccessClaimExcludingClaimsFromSuperarbiter:(BOOL)arg1 performProcedure:(CDUnknownBlockType)arg2;
 - (BOOL)_mayContainCriticalDebuggingInformationExcludingReactors:(BOOL)arg1;
+- (void)_setLinkDestination:(id)arg1;
 - (void)addAccessClaim:(id)arg1;
 - (void)addPresenter:(id)arg1;
 - (void)addProgressPublisher:(id)arg1;
@@ -86,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (id)sensitiveSubarbiterDescription;
 - (void)setArbitrationBoundary;
 - (void)setChild:(id)arg1 forName:(id)arg2 normalizedName:(id)arg3;
+- (void)setFirmlinkDestination:(id)arg1;
 - (void)setParent:(id)arg1 name:(id)arg2;
 - (BOOL)setProvider:(id)arg1;
 - (void)setSymbolicLinkDestination:(id)arg1;

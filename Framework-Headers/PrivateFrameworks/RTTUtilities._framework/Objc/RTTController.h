@@ -10,13 +10,15 @@
 #import <RTTUtilities/RTTCallDelegate-Protocol.h>
 #import <RTTUtilities/TUCallCapabilitiesDelegate-Protocol.h>
 
-@class AXUIClient, NSMutableArray, NSString;
+@class AXDispatchTimer, AXUIClient, NSMutableArray, NSMutableDictionary, NSString;
 @protocol HCHeardControllerProtocol, OS_dispatch_queue;
 
 @interface RTTController : NSObject <AXUIClientDelegate, RTTCallDelegate, TUCallCapabilitiesDelegate>
 {
     AXUIClient *_actionUIClient;
     NSObject<OS_dispatch_queue> *_workerQueue;
+    NSMutableDictionary *_localSettingsCache;
+    AXDispatchTimer *_preferredRelayCoalescer;
     BOOL _shouldSuppressIncomingNotification;
     NSMutableArray *_rttCalls;
     id<HCHeardControllerProtocol> _delegate;
@@ -34,6 +36,10 @@
 
 + (id)sharedController;
 - (void).cxx_destruct;
+- (id)_callForUUIDWithoutRefresh:(id)arg1;
+- (void)_handlePreferredRelayNumberUpdate;
+- (void)_refreshCurrentCallList;
+- (void)_refreshCurrentCallListWithExistingCalls:(id)arg1;
 - (id)actionClient;
 - (void)callDidConnect:(id)arg1;
 - (id)callForUUID:(id)arg1;
@@ -48,6 +54,7 @@
 - (id)handleSettingsRequest:(id)arg1;
 - (void)handleUpdatedCalls:(id)arg1;
 - (id)init;
+- (void)invalidateServerCaches:(id)arg1;
 - (void)ttyCall:(id)arg1 didReceiveString:(id)arg2 forUtterance:(id)arg3;
 - (void)ttyCall:(id)arg1 didSendRemoteString:(id)arg2 forUtterance:(id)arg3;
 - (void)ttyCall:(id)arg1 shouldDisplayServiceMessage:(id)arg2;

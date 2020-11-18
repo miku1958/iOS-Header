@@ -10,17 +10,25 @@
 #import <FrontBoardServices/NSCopying-Protocol.h>
 
 @class NSString;
+@protocol NSCopying;
 
 @interface FBSShutdownOptions : NSObject <BSXPCCoding, NSCopying>
 {
     NSString *_reason;
     long long _rebootType;
     long long _source;
+    long long _LPEMOption;
+    id<NSCopying> _localContext;
 }
 
+@property (nonatomic) long long LPEMOption; // @synthesize LPEMOption=_LPEMOption;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isReboot;
+@property (readonly, nonatomic) BOOL isShutdown;
+@property (readonly, nonatomic) BOOL isUserInitiated;
+@property (weak, nonatomic) id<NSCopying> localContext; // @synthesize localContext=_localContext;
 @property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (nonatomic) long long rebootType; // @synthesize rebootType=_rebootType;
 @property (nonatomic) long long source; // @synthesize source=_source;

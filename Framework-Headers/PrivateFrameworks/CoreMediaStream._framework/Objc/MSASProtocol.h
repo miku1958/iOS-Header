@@ -79,7 +79,6 @@
 - (void)addSharingRelationships:(id)arg1 toAlbum:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)albumSummaryAlbum:(id)arg1 albumURLString:(id)arg2 resetSync:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)createAlbum:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (void)deleteAlbum:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)deleteAssetCollections:(id)arg1 inAlbum:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)deleteComment:(id)arg1 fromAssetCollection:(id)arg2 inAlbum:(id)arg3 albumURLString:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;

@@ -15,28 +15,44 @@
 
 @property (readonly, nonatomic) AVCaptureDevice *device;
 @property (nonatomic) BOOL unifiedAutoExposureDefaultsEnabled;
+@property (nonatomic) CDStruct_1b6d18a9 videoMinFrameDurationOverride;
 
 + (id)deviceInputWithDevice:(id)arg1 error:(id *)arg2;
 + (void)initialize;
+- (void)_applyVideoMinFrameDurationOverride;
 - (BOOL)_authorizedToUseDeviceAndRequestIfNecessary:(id)arg1;
 - (void)_handleNotification:(id)arg1 payload:(id)arg2;
+- (void)_resetPortraitLightingEffectStrength;
+- (void)_resetSimulatedAperture;
+- (void)_resetVideoMinFrameDurationOverride;
 - (void)_sourceFormatDidChange:(struct opaqueCMFormatDescription *)arg1;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (struct OpaqueCMClock *)clock;
 - (void)dealloc;
 - (id)description;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (id)init;
 - (id)initWithDevice:(id)arg1 error:(id *)arg2;
 - (BOOL)isBuiltInMicrophoneStereoAudioCaptureEnabled;
 - (BOOL)isBuiltInMicrophoneStereoAudioCaptureSupported;
+- (BOOL)isMaxGainOverrideSupported;
 - (BOOL)isVisionDataDeliveryEnabled;
+- (float)maxGainOverride;
+- (id)multiCamPorts;
 - (id)notReadyError;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (float)portraitLightingEffectStrength;
 - (id)ports;
+- (id)portsWithMediaType:(id)arg1 sourceDeviceType:(id)arg2 sourceDevicePosition:(long long)arg3;
 - (void)setBuiltInMicrophoneStereoAudioCaptureEnabled:(BOOL)arg1;
+- (void)setMaxGainOverride:(float)arg1;
+- (void)setPortraitLightingEffectStrength:(float)arg1;
+- (void)setSession:(id)arg1;
 - (void)setSimulatedAperture:(float)arg1;
 - (void)setVisionDataDeliveryEnabled:(BOOL)arg1;
 - (float)simulatedAperture;
+- (id)videoDevice;
 
 @end
 

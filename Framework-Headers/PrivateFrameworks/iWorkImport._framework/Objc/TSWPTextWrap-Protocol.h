@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, TSDLayout, TSWPColumn;
+@class NSArray, TSDLayout, TSUMutableRectList, TSWPColumn;
 @protocol TSWPLayoutTarget;
 
 @protocol TSWPTextWrap
-- (id)beginWrappingToColumn:(TSWPColumn *)arg1 target:(TSDLayout<TSWPLayoutTarget> *)arg2 hasWrapables:(BOOL *)arg3;
+- (id)beginWrappingToColumn:(TSWPColumn *)arg1 columnTransformFromWP:(struct CGAffineTransform)arg2 target:(TSDLayout<TSWPLayoutTarget> *)arg3 hasWrappables:(out BOOL *)arg4;
 - (BOOL)checkForUnobstructedSpan:(struct CGRect)arg1 wrappableAttachments:(NSArray *)arg2 userInfo:(id)arg3;
 - (double)nextUnobstructedSpanStartingAt:(struct CGRect)arg1 wrappableAttachments:(NSArray *)arg2 userInfo:(id)arg3;
-- (unsigned int)splitLine:(struct CGRect)arg1 lineSegmentRects:(out struct CGRect [128])arg2 wrappableAttachments:(NSArray *)arg3 ignoreFloatingGraphics:(BOOL)arg4 canvasCausedWrap:(out BOOL *)arg5 skipHint:(out double *)arg6 userInfo:(id)arg7;
+- (void)splitLine:(struct CGRect)arg1 lineSegmentRects:(inout TSUMutableRectList *)arg2 wrappableAttachments:(NSArray *)arg3 ignoreFloatingGraphics:(BOOL)arg4 canvasCausedWrap:(out BOOL *)arg5 skipHint:(out double *)arg6 userInfo:(id)arg7;
 @end
 

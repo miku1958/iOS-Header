@@ -6,39 +6,45 @@
 
 #import <objc/NSObject.h>
 
-#import <IMSharedUI/IMFullScreenEffectDelegate-Protocol.h>
+#import <IMSharedUI/IMFullScreenEffectPlayerDelegate-Protocol.h>
 
-@class IMFullScreenEffect, IMScheduledUpdater, NSMutableArray, NSString, NSTimer;
+@class IMFullScreenEffect, IMFullScreenEffectPlayer, IMScheduledUpdater, NSMutableArray, NSString;
 @protocol IMFullScreenEffectManagerDelegate;
 
-@interface IMFullScreenEffectManager : NSObject <IMFullScreenEffectDelegate>
+@interface IMFullScreenEffectManager : NSObject <IMFullScreenEffectPlayerDelegate>
 {
-    IMFullScreenEffect *_currentEffect;
-    NSObject<IMFullScreenEffectManagerDelegate> *_delegate;
+    id<IMFullScreenEffectManagerDelegate> _delegate;
+    IMFullScreenEffectPlayer *_currentEffectPlayer;
     NSMutableArray *_effectQueue;
-    NSTimer *_effectDurationTimer;
     IMScheduledUpdater *_triggerUpdater;
 }
 
-@property (strong, nonatomic) IMFullScreenEffect *currentEffect; // @synthesize currentEffect=_currentEffect;
+@property (readonly, nonatomic) IMFullScreenEffect *currentEffect;
+@property (strong, nonatomic) IMFullScreenEffectPlayer *currentEffectPlayer; // @synthesize currentEffectPlayer=_currentEffectPlayer;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) NSObject<IMFullScreenEffectManagerDelegate> *delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<IMFullScreenEffectManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSTimer *effectDurationTimer; // @synthesize effectDurationTimer=_effectDurationTimer;
 @property (strong, nonatomic) NSMutableArray *effectQueue; // @synthesize effectQueue=_effectQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) IMScheduledUpdater *triggerUpdater; // @synthesize triggerUpdater=_triggerUpdater;
 
 - (void).cxx_destruct;
+- (void)_stopCurrentFullscreenEffect:(BOOL)arg1;
+- (double)adjustedEffectDurationForTesting:(id)arg1;
 - (void)beginHoldingUpdatesForKey:(id)arg1;
 - (void)dealloc;
 - (void)endHoldingUpdatesForKey:(id)arg1;
-- (void)fullScreenEffectDidPrepareSoundEffect:(id)arg1;
+- (void)fullScreenEffectPlayerDidFinish:(id)arg1;
+- (void)fullScreenEffectPlayerDidPrepare:(id)arg1;
+- (void)fullScreenEffectPlayerDidStart:(id)arg1;
 - (id)init;
-- (void)startFullscreenEffectForChatItem:(id)arg1 language:(id)arg2;
-- (void)stopFullscreenEffect;
+- (BOOL)isFullScreenEffectQueued:(id)arg1;
+- (void)queueFullScreenEffectPlayer:(id)arg1 withRepeating:(BOOL)arg2;
+- (void)stopAllFullscreenEffectPlayers;
+- (void)stopCurrentFullscreenEffectPlayer;
 - (void)triggerNextEffect;
+- (void)willStartFullScreenEffect:(id)arg1;
 
 @end
 

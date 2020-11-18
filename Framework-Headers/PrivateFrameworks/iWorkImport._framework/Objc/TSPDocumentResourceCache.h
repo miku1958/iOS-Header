@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/TSPDocumentResourceFileURLProvider-Protocol.h>
+#import <iWorkImport/TSUResourceCache-Protocol.h>
+#import <iWorkImport/TSUResourceFileURLProvider-Protocol.h>
 
-@class NSString, NSURL;
-@protocol OS_dispatch_queue;
+@class NSOperationQueue, NSString, NSURL, TSPDocumentResourceRegistry;
 
 __attribute__((visibility("hidden")))
-@interface TSPDocumentResourceCache : NSObject <TSPDocumentResourceFileURLProvider>
+@interface TSPDocumentResourceCache : NSObject <TSUResourceCache, TSUResourceFileURLProvider>
 {
     NSURL *_URL;
-    NSObject<OS_dispatch_queue> *_ioQueue;
+    TSPDocumentResourceRegistry *_documentResourceRegistry;
+    NSOperationQueue *_ioOperationQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,11 +26,14 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedCache;
 - (void).cxx_destruct;
-- (void)cacheDocumentResourceAtURL:(id)arg1 copy:(BOOL)arg2 forInfo:(id)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)fileURLForDocumentResourceInfo:(id)arg1;
+- (void)cacheResourceAtURL:(id)arg1 forInfo:(id)arg2 copy:(BOOL)arg3 completionQueue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)cachedFileURLForDocumentResourceInfo:(id)arg1;
+- (BOOL)cachedResourceExistsForInfo:(id)arg1;
+- (id)fileURLForResourceInfo:(id)arg1;
 - (id)init;
-- (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 documentResourceRegistry:(id)arg2;
 - (void)purge;
+- (void)purgeLegacyCaches;
 
 @end
 

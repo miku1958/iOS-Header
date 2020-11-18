@@ -52,15 +52,6 @@ struct TSUFlushableObjectInfo {
     unsigned int _field5[2];
 };
 
-struct TSUOpstat_s {
-    BOOL running;
-    unsigned long long count;
-    struct timeval min_time;
-    struct timeval max_time;
-    struct timeval total_time;
-    struct timeval last_time;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -157,11 +148,6 @@ struct sockaddr_in {
     unsigned short _field3;
     struct in_addr _field4;
     char _field5[8];
-};
-
-struct timeval {
-    long long tv_sec;
-    int tv_usec;
 };
 
 struct vector<TSUCustomFormatCondition, std::__1::allocator<TSUCustomFormatCondition>> {

@@ -6,23 +6,24 @@
 
 #import <SearchUI/SearchUIAccessoryViewController.h>
 
-@class SKUIItemOfferButton;
+@class TLKStoreButton;
 
 @interface SearchUIAppStoreButtonViewController : SearchUIAccessoryViewController
 {
     BOOL _appIsInstalled;
-    SKUIItemOfferButton *_appStoreButton;
+    TLKStoreButton *_appStoreButton;
 }
 
-@property BOOL appIsInstalled; // @synthesize appIsInstalled=_appIsInstalled;
-@property (strong) SKUIItemOfferButton *appStoreButton; // @synthesize appStoreButton=_appStoreButton;
+@property (nonatomic) BOOL appIsInstalled; // @synthesize appIsInstalled=_appIsInstalled;
+@property (strong, nonatomic) TLKStoreButton *appStoreButton; // @synthesize appStoreButton=_appStoreButton;
 
-+ (BOOL)supportsResult:(id)arg1;
++ (BOOL)supportsRowModel:(id)arg1;
 - (void).cxx_destruct;
 - (void)buttonPressed;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (id)setupView;
 - (BOOL)shouldTopAlignForAccessibilityContentSizes;
-- (void)updateWithResult:(id)arg1;
+- (unsigned long long)type;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

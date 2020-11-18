@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityAttributeValue:(long long)arg1;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (id)accessibilityComplicationIdentifier;
 - (id)accessibilityComplicationSlotIdentifier;
 - (id)accessibilityFaceIdentifier;

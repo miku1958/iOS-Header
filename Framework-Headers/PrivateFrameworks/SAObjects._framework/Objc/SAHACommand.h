@@ -15,6 +15,7 @@
 }
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
+@property (copy, nonatomic) NSArray *actionRequests;
 @property (copy, nonatomic) NSArray *actions;
 @property (copy, nonatomic) NSString *appId; // @dynamic appId;
 @property (copy, nonatomic) NSArray *callbacks; // @dynamic callbacks;

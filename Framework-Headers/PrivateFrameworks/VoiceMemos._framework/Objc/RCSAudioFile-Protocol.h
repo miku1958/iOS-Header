@@ -6,12 +6,13 @@
 
 #import <VoiceMemos/NSObject-Protocol.h>
 
-@class AVAudioFormat, NSURL;
+@class AVAudioFormat, NSDictionary, NSURL;
 
 @protocol RCSAudioFile <NSObject>
 
 @property (readonly, nonatomic) AVAudioFormat *fileFormat;
 @property (readonly, nonatomic) AVAudioFormat *processingFormat;
+@property (readonly, nonatomic) NSDictionary *settings;
 @property (readonly, nonatomic) NSURL *url;
 
 @end

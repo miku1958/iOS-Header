@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKit/UIViewController.h>
 
 @protocol DCDocumentCameraViewControllerDelegate;
 
-@interface DCDocumentCameraViewController : UINavigationController
+@interface DCDocumentCameraViewController : UIViewController
 {
+    UIViewController *_childViewController;
     id<DCDocumentCameraViewControllerDelegate> _docCamDelegate;
 }
 
+@property (strong, nonatomic, setter=setChildViewController:) UIViewController *childViewController; // @synthesize childViewController=_childViewController;
 @property (weak, nonatomic) id<DCDocumentCameraViewControllerDelegate> docCamDelegate; // @synthesize docCamDelegate=_docCamDelegate;
 
 + (id)defaultViewControllerWithDelegate:(id)arg1;
@@ -20,8 +22,10 @@
 + (BOOL)isAvailable;
 + (id)viewServiceViewControllerWithDelegate:(id)arg1;
 - (void).cxx_destruct;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
-- (id)initWithDelegate:(id)arg1 rootViewController:(id)arg2;
+- (id)initWithDelegate:(id)arg1 childViewController:(id)arg2;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 
 @end
 

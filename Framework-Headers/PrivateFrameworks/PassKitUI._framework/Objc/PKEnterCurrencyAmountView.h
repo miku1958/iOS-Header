@@ -66,6 +66,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 
++ (id)_defaultTextColor;
 - (void).cxx_destruct;
 - (void)_addSuperscriptToAttributedString:(id)arg1 formattedCurrencyAmount:(id)arg2 currencyAmountWithoutSymbols:(id)arg3;
 - (void)_addSuperscriptToAttributedString:(id)arg1 inRange:(struct _NSRange)arg2;

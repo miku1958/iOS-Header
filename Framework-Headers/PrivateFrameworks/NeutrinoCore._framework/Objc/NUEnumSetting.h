@@ -14,6 +14,7 @@
 }
 
 @property (readonly) NSString *defaultValue;
+@property (readonly) NSString *identityValue;
 @property (readonly) NSArray *values; // @synthesize values=_values;
 
 + (id)deserializeFromDictionary:(id)arg1 error:(out id *)arg2;

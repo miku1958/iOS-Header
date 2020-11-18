@@ -6,19 +6,28 @@
 
 #import <UIKit/UIView.h>
 
-@class UILabel;
+@class NSString, UIColor, UIFont, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CNLabeledBadge : UIView
 {
     UILabel *_label;
+    double _height;
+    struct CGSize _cachedTextSize;
 }
 
-@property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (copy, nonatomic) UIFont *font;
+@property (copy, nonatomic) NSString *text;
+@property (copy, nonatomic) UIColor *textColor;
 
 + (id)labeledBadgeWithText:(id)arg1;
 - (void).cxx_destruct;
-- (void)setText:(id)arg1;
+- (void)cacheTextSizeIfNeeded;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)invalidateCachedTextSize;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

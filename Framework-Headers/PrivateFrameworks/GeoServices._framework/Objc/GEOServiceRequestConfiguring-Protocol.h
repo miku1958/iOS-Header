@@ -6,22 +6,19 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, PBRequest;
+@class GEOMapServiceTraits, NSArray, NSDictionary, NSNumber, NSString, PBRequest;
 
 @protocol GEOServiceRequestConfiguring <NSObject>
 - (NSDictionary *)additionalHTTPHeaders;
 - (NSArray *)additionalURLQueryItems;
-- (int)dataRequestKindForRequest:(PBRequest *)arg1;
+- (CDStruct_d1a7ebee)dataRequestKindForRequest:(PBRequest *)arg1 traits:(GEOMapServiceTraits *)arg2;
 - (NSString *)debugRequestName;
-- (int)experimentDispatcherRequestTypeForRequest:(PBRequest *)arg1;
-- (long long)experimentType;
 - (unsigned char)requestCounterInfoTypeForRequest:(PBRequest *)arg1;
 - (NSNumber *)serviceTypeNumber;
-- (BOOL)shouldThrottleRequests;
-- (NSString *)throttleKey;
 - (unsigned long long)urlType;
 
 @optional
+- (unsigned long long)multipathServiceType;
 - (double)timeout;
 @end
 

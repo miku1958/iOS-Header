@@ -11,6 +11,7 @@
 @interface HKGraphZoomLevelConfiguration : NSObject
 {
     NSDateComponents *_axisLabelIntervalComponents;
+    NSDateComponents *_minorAxisIntervalComponents;
     NSDateComponents *_seriesPointIntervalComponents;
     NSDateComponents *_referencePointIntervalComponents;
     long long _intendedTimeScope;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) double canonicalSize; // @synthesize canonicalSize=_canonicalSize;
 @property (readonly, nonatomic) long long intendedTimeScope; // @synthesize intendedTimeScope=_intendedTimeScope;
 @property (readonly, nonatomic) unsigned long long majorTickCalendarUnit; // @synthesize majorTickCalendarUnit=_majorTickCalendarUnit;
+@property (readonly, nonatomic) NSDateComponents *minorAxisIntervalComponents; // @synthesize minorAxisIntervalComponents=_minorAxisIntervalComponents;
 @property (readonly, nonatomic) NSDateComponents *referencePointIntervalComponents; // @synthesize referencePointIntervalComponents=_referencePointIntervalComponents;
 @property (readonly, nonatomic) double seriesBlockSize; // @synthesize seriesBlockSize=_seriesBlockSize;
 @property (readonly, nonatomic) NSDateComponents *seriesPointIntervalComponents; // @synthesize seriesPointIntervalComponents=_seriesPointIntervalComponents;

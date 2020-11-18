@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityIsBuddyRunning;
 - (BOOL)_accessibilityIsInSleepState;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)lockViewAccessibilityLabel;
 - (BOOL)lockViewIsAccessibilityElement;

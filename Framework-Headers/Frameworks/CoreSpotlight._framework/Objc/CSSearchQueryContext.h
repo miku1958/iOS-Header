@@ -13,10 +13,11 @@
 
 @interface CSSearchQueryContext : NSObject <NSSecureCoding, NSCopying>
 {
+    NSArray *_fetchAttributes;
     unsigned char _flags;
     int _rankingType;
+    unsigned int _qos;
     NSString *_clientBundleID;
-    NSArray *_fetchAttributes;
     NSArray *_protectionClasses;
     NSArray *_bundleIDs;
     NSArray *_rankingQueries;
@@ -36,6 +37,8 @@
     NSString *_completionString;
     NSArray *_completionAttributes;
     double _currentTime;
+    NSArray *_mountPoints;
+    NSArray *_scopes;
     MISSING_TYPE *_fuzzyMask;
     MISSING_TYPE *_fuzzyMatch;
 }
@@ -51,7 +54,7 @@
 @property (strong, nonatomic) NSArray *disableBundles; // @synthesize disableBundles=_disableBundles;
 @property (nonatomic) long long dominantRankingQueryCount; // @synthesize dominantRankingQueryCount=_dominantRankingQueryCount;
 @property (nonatomic) long long dominatedRankingQueryCount; // @synthesize dominatedRankingQueryCount=_dominatedRankingQueryCount;
-@property (strong, nonatomic) NSArray *fetchAttributes; // @synthesize fetchAttributes=_fetchAttributes;
+@property (strong, nonatomic) NSArray *fetchAttributes;
 @property (copy, nonatomic) NSArray *filterQueries; // @synthesize filterQueries=_filterQueries;
 @property (strong, nonatomic) NSString *filterQuery; // @synthesize filterQuery=_filterQuery;
 @property (nonatomic) unsigned char flags; // @synthesize flags=_flags;
@@ -64,12 +67,16 @@
 @property (nonatomic) BOOL lowPriority;
 @property (strong, nonatomic) NSArray *markedTextArray; // @synthesize markedTextArray=_markedTextArray;
 @property (nonatomic) long long maxCount; // @synthesize maxCount=_maxCount;
+@property (strong, nonatomic) NSArray *mountPoints; // @synthesize mountPoints=_mountPoints;
 @property (copy, nonatomic) NSDictionary *options;
+@property (nonatomic) BOOL parseUserQuery;
 @property (strong, nonatomic) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
 @property (strong, nonatomic) NSArray *protectionClasses; // @synthesize protectionClasses=_protectionClasses;
+@property (nonatomic) unsigned int qos; // @synthesize qos=_qos;
 @property (nonatomic) long long queryID; // @synthesize queryID=_queryID;
 @property (strong, nonatomic) NSArray *rankingQueries; // @synthesize rankingQueries=_rankingQueries;
 @property (nonatomic) int rankingType; // @synthesize rankingType=_rankingType;
+@property (strong, nonatomic) NSArray *scopes; // @synthesize scopes=_scopes;
 @property (nonatomic) long long strongRankingQueryCount; // @synthesize strongRankingQueryCount=_strongRankingQueryCount;
 @property (strong, nonatomic) NSString *userQuery; // @synthesize userQuery=_userQuery;
 
@@ -81,6 +88,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithQoS:(unsigned int)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)xpc_dictionary;
 

@@ -11,6 +11,7 @@
 @protocol PUEditableAsset <PUDisplayAsset>
 
 @property (readonly, nonatomic, getter=isAdjusted) BOOL adjusted;
+@property (readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) BOOL cloudPhotoLibraryEnabled;
 @property (readonly, nonatomic, getter=isContentAdjustmentAllowed) BOOL contentAdjustmentAllowed;
 @property (readonly, nonatomic, getter=isHighFramerateVideo) BOOL highFramerateVideo;
 @property (readonly, nonatomic) NSDictionary *imageProperties;
@@ -23,7 +24,9 @@
 @property (readonly, copy, nonatomic) NSString *pathForOriginalImageFile;
 @property (readonly, copy, nonatomic) NSString *pathForOriginalVideoFile;
 @property (readonly, copy, nonatomic) NSString *pathForTrimmedVideoFile;
+@property (readonly, nonatomic) unsigned long long reframeVariation;
 @property (readonly, nonatomic, getter=isResourceDownloadPossible) BOOL resourceDownloadPossible;
+@property (readonly, nonatomic, getter=isTrimmableType) BOOL trimmableType;
 @property (readonly, nonatomic) PFVideoAVObjectBuilder *videoObjectBuilder;
 
 - (void)cancelContentEditingInputRequest:(unsigned long long)arg1;

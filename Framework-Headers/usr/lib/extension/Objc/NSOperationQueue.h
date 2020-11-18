@@ -6,20 +6,48 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+#import <Foundation/NSProgressReporting-Protocol.h>
+
+@class NSMutableArray, NSOperation, NSPointerArray, NSProgress, NSString, _NSOperationQueueProgress;
 @protocol OS_dispatch_queue;
 
-@interface NSOperationQueue : NSObject
+@interface NSOperationQueue : NSObject <NSProgressReporting>
 {
-    id _private;
-    void *_reserved;
+    struct {
+        struct os_unfair_lock_s __queueLock;
+        NSOperation *__firstOperation;
+        NSOperation *__lastOperation;
+        NSOperation *__firstPriOperation[6];
+        NSOperation *__lastPriOperation[6];
+        NSMutableArray *_barriers;
+        _NSOperationQueueProgress *_progress;
+        _Atomic unsigned long long __operationCount;
+        NSPointerArray *__activeThreads;
+        long long __maxNumOps;
+        int __actualMaxNumOps;
+        int __numExecOps;
+        NSObject<OS_dispatch_queue> *__dispatch_queue;
+        NSObject<OS_dispatch_queue> *__backingQueue;
+        NSString *__name;
+        char __nameBuffer[300];
+        _Atomic BOOL __suspended;
+        _Atomic BOOL __overcommit;
+        _Atomic unsigned char __propertyQoS;
+        _Atomic unsigned char __operationsObserverCount;
+        _Atomic unsigned char __operationCountObserverCount;
+        _Atomic unsigned char __progressReporting;
+        unsigned char __mainQ;
+    } _iqp;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property long long maxConcurrentOperationCount;
 @property (copy) NSString *name;
-@property (readonly) unsigned long long operationCount;
-@property (readonly, copy) NSArray *operations;
+@property (readonly) NSProgress *progress;
 @property long long qualityOfService;
+@property (readonly) Class superclass;
 @property (getter=isSuspended) BOOL suspended;
 @property NSObject<OS_dispatch_queue> *underlyingQueue;
 
@@ -29,14 +57,16 @@
 - (id)__graphDescription;
 - (void)_fc_addUncancellableOperationForReactorID:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_fc_addUncancellableOperationWithBlock:(CDUnknownBlockType)arg1;
+- (void)addBarrierBlock:(CDUnknownBlockType)arg1;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)addOperation:(id)arg1;
 - (void)addOperationWithBlock:(CDUnknownBlockType)arg1;
 - (void)addOperations:(id)arg1 waitUntilFinished:(BOOL)arg2;
 - (void)cancelAllOperations;
 - (void)dealloc;
-- (id)description;
 - (id)init;
+- (unsigned long long)operationCount;
+- (id)operations;
 - (BOOL)overcommitsOperations;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)setOvercommitsOperations:(BOOL)arg1;

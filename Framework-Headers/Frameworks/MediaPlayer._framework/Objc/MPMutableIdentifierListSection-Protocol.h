@@ -11,6 +11,7 @@
 @protocol MPMutableIdentifierListSection <NSObject>
 
 @property (readonly, copy, nonatomic) NSArray *itemIdentifiers;
+@property (readonly, copy, nonatomic) NSString *sectionIdentifier;
 
 - (void)applyChanges:(MPChangeDetails *)arg1 itemLookupBlock:(NSString * (^)(long long))arg2;
 - (void)insertItems:(NSArray *)arg1 afterItem:(NSString *)arg2;

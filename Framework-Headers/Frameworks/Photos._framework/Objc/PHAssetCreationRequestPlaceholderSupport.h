@@ -6,38 +6,30 @@
 
 #import <Photos/PHAssetCreationRequest.h>
 
-#import <Photos/PHClientSenderPropertySet-Protocol.h>
+@class NSXPCConnection, PLClientServerTransaction;
 
-@class NSManagedObjectID, NSString, PLAssetsdClientServiceSender, PLClientServerTransaction;
-
-@interface PHAssetCreationRequestPlaceholderSupport : PHAssetCreationRequest <PHClientSenderPropertySet>
+@interface PHAssetCreationRequestPlaceholderSupport : PHAssetCreationRequest
 {
     PLClientServerTransaction *_serverTransaction;
     long long _placeholderCreationMode;
-    PLAssetsdClientServiceSender *clientSender;
+    NSXPCConnection *_clientConnection;
 }
 
-@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
-@property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) int clientProcessID;
-@property (strong, nonatomic) PLAssetsdClientServiceSender *clientSender; // @synthesize clientSender;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *managedEntityName;
-@property (readonly, nonatomic) NSManagedObjectID *objectID;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *uuid;
+@property (readonly, weak, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
 
-+ (BOOL)_shouldBakeInAdjustmentsAndFlattenLivePhoto:(BOOL *)arg1 forSourceAsset:(id)arg2;
++ (BOOL)_shouldBakeInAdjustmentsAndFlattenLivePhoto:(BOOL *)arg1 forSourceAsset:(id)arg2 adjustmentBakeInOptions:(id)arg3;
++ (BOOL)_shouldCopySpatialOverCaptureResourcesMetadataCopyOptions:(id)arg1;
++ (BOOL)_shouldCopyTitleDescriptionAndKeywordsForMetadataCopyOptions:(id)arg1;
 - (void).cxx_destruct;
 - (id)_createPlaceholderManagedAssetFromSourceManagedAsset:(id)arg1 inPhotoLibrary:(id)arg2 error:(id *)arg3;
-- (id)_fetchOptionsForDuplicateAssetPhotoLibraryType;
+- (id)_fetchOptionsForDuplicateAssetPhotoLibraryType:(id)arg1;
 - (void)_setDestinationAssetAvailabilityHandler:(CDUnknownBlockType)arg1;
 - (void)_updateManagedAssetAfterResourceDownload:(id)arg1;
-- (void)changeFailedOnClientWithError:(id)arg1;
-- (void)changeFailedOnDaemonWithError:(id)arg1;
+- (void)changeFailedOnClientWithLibrary:(id)arg1 error:(id)arg2;
+- (void)changeFailedOnDaemonWithLibrary:(id)arg1 error:(id)arg2;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
+- (id)initForNewObjectWithUUID:(id)arg1;
+- (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 

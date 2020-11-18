@@ -24,7 +24,6 @@
 - (void)aa_addLoggedInAppleIDHeaderWithAccount:(id)arg1;
 - (void)aa_addMultiUserDeviceHeaderIfEnabled;
 - (void)aa_addTokenAuthHeaderWithAccount:(id)arg1;
-- (void)aa_addiTunesHeadersWithAccount:(id)arg1;
 - (void)aa_setBodyWithParameters:(id)arg1;
 - (id)aa_setXMLBodyWithParameters:(id)arg1;
 - (void)aa_setXMLBodyWithParameters:(id)arg1 signingSession:(id)arg2;

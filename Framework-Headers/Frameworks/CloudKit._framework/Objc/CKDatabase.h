@@ -35,6 +35,7 @@
 - (void)clearCacheEntriesForZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearCachesWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearRecordCache;
+- (unsigned long long)countAssetCacheItems;
 - (id)daemonWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)deleteRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

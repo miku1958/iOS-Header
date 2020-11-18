@@ -6,25 +6,26 @@
 
 #import <RelevanceEngine/RERelevanceProvider.h>
 
-@class REFeature, REFeatureValue;
+@class REFeature;
 
 @interface RECustomRelevanceProvider : RERelevanceProvider
 {
     REFeature *_feature;
-    REFeatureValue *_value;
+    unsigned long long _value;
 }
 
 @property (readonly, nonatomic) REFeature *feature; // @synthesize feature=_feature;
-@property (readonly, nonatomic) REFeatureValue *value; // @synthesize value=_value;
+@property (readonly, nonatomic) unsigned long long value; // @synthesize value=_value;
 
 + (id)relevanceSimulatorID;
 - (void).cxx_destruct;
 - (unsigned long long)_hash;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryEncoding;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithFeature:(id)arg1 value:(id)arg2;
+- (id)initWithFeature:(id)arg1 value:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

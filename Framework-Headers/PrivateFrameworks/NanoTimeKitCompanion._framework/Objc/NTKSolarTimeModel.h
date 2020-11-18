@@ -39,6 +39,8 @@
 - (BOOL)includesDate:(id)arg1;
 - (id)init;
 - (id)initWithReferenceDate:(id)arg1 referenceLocation:(id)arg2;
+- (id)normalizeDateIntervalForDate:(id)arg1;
+- (id)ntkCacheableKey;
 - (double)percentageThroughPeriodForDate:(id)arg1;
 - (double)percentageThroughPeriodForIdealizedTimeInCurrentSolarDay;
 - (double)percentageThroughPeriodInCurrentSolarDayForDate:(id)arg1;

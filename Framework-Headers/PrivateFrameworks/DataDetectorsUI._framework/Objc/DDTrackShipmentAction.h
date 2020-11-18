@@ -11,6 +11,7 @@
 }
 
 - (BOOL)canBePerformedByOpeningURL;
+- (id)icon;
 - (id)localizedName;
 - (id)notificationIconBundleIdentifier;
 - (id)notificationTitle;

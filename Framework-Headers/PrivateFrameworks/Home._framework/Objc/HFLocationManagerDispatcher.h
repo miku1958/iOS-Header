@@ -9,9 +9,11 @@
 #import <Home/CLLocationManagerDelegate-Protocol.h>
 
 @class CLLocationManager, NAFuture, NSHashTable, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HFLocationManagerDispatcher : NSObject <CLLocationManagerDelegate>
 {
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _hasInitializedAuthorizationStatus;
     int _cachedAuthorizationStatus;
     CLLocationManager *_locationManager;
@@ -37,6 +39,7 @@
 - (void)_updateCachedAuthorizationStatus:(int)arg1;
 - (void)_updateMacAuthorizationStatus:(int)arg1;
 - (void)addObserver:(id)arg1;
+- (void)dealloc;
 - (void)dispatchLocationManagerObserverMessage:(SEL)arg1 withBlock:(CDUnknownBlockType)arg2 sender:(id)arg3;
 - (id)init;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;

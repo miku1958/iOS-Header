@@ -72,6 +72,7 @@
 - (void)_setParticipantIndex:(id)arg1 forParticipantAddress:(id)arg2;
 - (void)_updateCell:(id)arg1 forParticipantAtIndex:(long long)arg2 animated:(BOOL)arg3;
 - (void)_updateCellForParticipantWithAddress:(id)arg1;
+- (id)actionsForRow:(id)arg1;
 - (BOOL)canEditRow:(id)arg1;
 - (BOOL)canSelectRow:(id)arg1;
 - (void)cancelOutstandingOperations;

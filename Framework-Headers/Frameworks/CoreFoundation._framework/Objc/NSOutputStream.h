@@ -8,6 +8,7 @@
 
 @interface NSOutputStream : NSStream
 {
+    unsigned char _reserved[128];
 }
 
 @property (readonly) BOOL hasSpaceAvailable; // @dynamic hasSpaceAvailable;

@@ -8,7 +8,7 @@
 
 #import <AMPCoreUI/UIScrollViewDelegate-Protocol.h>
 
-@class AMPOnboardingHeaderView, AMPOnboardingMultiFeatureHeaderView, AMPTintedBackgroundButton, NSObject, NSString, OBPrivacyLinkController, UIImage, UITraitCollection, UIVisualEffectView, _UIBackdropView;
+@class AMSUIOnboardingViewController, NSObject, NSString, OBPrivacyLinkController, UIImage, UITraitCollection, UIVisualEffectView, _UIBackdropView;
 @protocol OS_dispatch_queue;
 
 @interface AMPOnboardingViewController : UIViewController <UIScrollViewDelegate>
@@ -16,9 +16,11 @@
     BOOL _viewHasAppeared;
     OBPrivacyLinkController *_privacyLinkController;
     CDUnknownBlockType _primaryButtonCallback;
-    AMPOnboardingHeaderView *_headerView;
-    AMPOnboardingMultiFeatureHeaderView *_multiFeatureHeaderView;
-    AMPTintedBackgroundButton *_primaryButton;
+    AMSUIOnboardingViewController *_onboardingController;
+    UIImage *_image;
+    NSString *_titleText;
+    NSString *_descriptionText;
+    NSString *_primaryButtonText;
     UIVisualEffectView *_statusBarVisualEffectView;
     _UIBackdropView *_backdropView;
     NSObject<OS_dispatch_queue> *_metricsQueue;
@@ -28,38 +30,34 @@
 @property (readonly, nonatomic) UITraitCollection *cappedTraitCollection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *descriptionText;
+@property (strong, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIImage *headerImage;
-@property (strong, nonatomic) AMPOnboardingHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) BOOL isPresentedInFormSheet;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metricsQueue; // @synthesize metricsQueue=_metricsQueue;
-@property (strong, nonatomic) AMPOnboardingMultiFeatureHeaderView *multiFeatureHeaderView; // @synthesize multiFeatureHeaderView=_multiFeatureHeaderView;
-@property (strong, nonatomic) AMPTintedBackgroundButton *primaryButton; // @synthesize primaryButton=_primaryButton;
+@property (strong, nonatomic) AMSUIOnboardingViewController *onboardingController; // @synthesize onboardingController=_onboardingController;
 @property (copy, nonatomic) CDUnknownBlockType primaryButtonCallback; // @synthesize primaryButtonCallback=_primaryButtonCallback;
-@property (readonly, nonatomic) NSString *primaryButtonText;
-@property (strong, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
+@property (strong, nonatomic) NSString *primaryButtonText; // @synthesize primaryButtonText=_primaryButtonText;
+@property (readonly, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 @property (strong, nonatomic) UIVisualEffectView *statusBarVisualEffectView; // @synthesize statusBarVisualEffectView=_statusBarVisualEffectView;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *titleText;
+@property (strong, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) BOOL viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 
 - (void).cxx_destruct;
 - (id)childTraitCollectionForViewController:(id)arg1;
-- (void)commonInitWithPrimaryButtonText:(id)arg1 privacyLinkController:(id)arg2;
 - (void)didTapPrimaryButton:(id)arg1;
 - (id)initWithHeaderImage:(id)arg1 titleText:(id)arg2 descriptionText:(id)arg3 primaryButtonText:(id)arg4 privacyLinkController:(id)arg5;
 - (id)initWithTitleText:(id)arg1 features:(id)arg2 primaryButtonText:(id)arg3 privacyLinkController:(id)arg4;
-- (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
-- (void)scrollViewDidScroll:(id)arg1;
+- (BOOL)isModalInPresentation;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateBackdropMaterialForScrollView:(id)arg1;
 - (void)updateOverrideTraits;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

@@ -23,7 +23,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct AudioBufferList *)_audioBufferListFromData:(id)arg1;
 - (void)_processPayload:(id)arg1;
 - (void)_processPayloadWithAudioSample:(id)arg1 type:(long long)arg2;
 - (void)_processPayloadWithVideoSample:(id)arg1;

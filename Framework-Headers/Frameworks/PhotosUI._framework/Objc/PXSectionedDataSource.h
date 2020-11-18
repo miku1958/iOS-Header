@@ -9,7 +9,7 @@
 #import <PhotosUICore/NSCopying-Protocol.h>
 #import <PhotosUICore/PXSectionedLayoutEngineDataSourceSnapshot-Protocol.h>
 
-@class NSString;
+@class NSString, PXIndexPathSet;
 @protocol OS_os_log;
 
 @interface PXSectionedDataSource : NSObject <NSCopying, PXSectionedLayoutEngineDataSourceSnapshot>
@@ -17,14 +17,18 @@
     unsigned long long _identifier;
 }
 
+@property (readonly, nonatomic) PXIndexPathSet *allItemIndexPaths;
+@property (readonly, nonatomic) PXIndexPathSet *allSectionIndexPaths;
 @property (readonly, nonatomic) BOOL containsAnyItems;
 @property (readonly, nonatomic) BOOL containsMultipleItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct PXSimpleIndexPath firstItemIndexPath;
+@property (readonly, nonatomic) struct PXSimpleIndexPath firstSectionIndexPath;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) struct PXSimpleIndexPath lastItemIndexPath;
+@property (readonly, nonatomic) struct PXSimpleIndexPath lastSectionIndexPath;
 @property (readonly, nonatomic) long long numberOfSections;
 @property (readonly, nonatomic) NSObject<OS_os_log> *sectionedDataSourceLog;
 @property (readonly) Class superclass;
@@ -35,7 +39,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)couldObjectReferenceAppear:(id)arg1;
 - (void)enumerateItemIndexPathsStartingAtIndexPath:(struct PXSimpleIndexPath)arg1 reverseDirection:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateItemIndexPathsStartingAtIndexPath:(struct PXSimpleIndexPath)arg1 untilEndIndexPath:(struct PXSimpleIndexPath)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)fetchAllItemObjects;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
+- (id)indexPathSetForItemsInIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)indexPathSetFromIndexPath:(struct PXSimpleIndexPath)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2;
 - (id)init;
 - (id)inputForItem:(id)arg1;
@@ -50,6 +57,8 @@
 - (id)objectReferenceForObjectReference:(id)arg1;
 - (id)objectsInIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)prefetchIndexPaths:(id)arg1;
+- (void)prefetchSections:(id)arg1;
+- (unsigned long long)totalItemCount;
 
 @end
 

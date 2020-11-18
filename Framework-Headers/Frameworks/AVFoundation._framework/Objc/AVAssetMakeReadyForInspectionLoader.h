@@ -45,7 +45,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (CDStruct_1b6d18a9)duration;
 - (id)figChapterGroupInfo;
-- (void)finalize;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (BOOL)hasProtectedContent;
 - (id)initWithURL:(id)arg1;
 - (BOOL)isComposable;

@@ -8,6 +8,7 @@
 
 #import <UIKitCore/_UIFocusMovementActionForwarding-Protocol.h>
 #import <UIKitCore/_UIHostedTextServiceSessionDelegate-Protocol.h>
+#import <UIKitCore/_UISheetPresentationControllerDelegate-Protocol.h>
 #import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
 #import <UIKitCore/_UIViewServiceDeputyRotationSource-Protocol.h>
 #import <UIKitCore/_UIViewServiceDummyPopoverControllerDelegate-Protocol.h>
@@ -17,7 +18,7 @@
 @protocol _UIViewServiceViewControllerOperatorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewServiceViewControllerOperator : UIViewController <_UIViewServiceViewControllerOperator_RemoteViewControllerInterface, _UIHostedTextServiceSessionDelegate, _UIViewServiceDummyPopoverControllerDelegate, _UIFocusMovementActionForwarding, _UIViewServiceDeputy, _UIViewServiceDeputyRotationSource>
+@interface _UIViewServiceViewControllerOperator : UIViewController <_UIViewServiceViewControllerOperator_RemoteViewControllerInterface, _UIHostedTextServiceSessionDelegate, _UIViewServiceDummyPopoverControllerDelegate, _UISheetPresentationControllerDelegate, _UIFocusMovementActionForwarding, _UIViewServiceDeputy, _UIViewServiceDeputyRotationSource>
 {
     int __automatic_invalidation_retainCount;
     BOOL __automatic_invalidation_invalidated;
@@ -68,8 +69,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)__automatic_invalidation_logic;
 - (void)__cancelAlertActionWithToken:(long long)arg1;
-- (void)__createViewController:(id)arg1 withAppearanceSerializedRepresentations:(id)arg2 legacyAppearance:(BOOL)arg3 hostAccessibilityServerPort:(id)arg4 replyHandler:(CDUnknownBlockType)arg5;
-- (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 legacyAppearance:(BOOL)arg5 traitCollection:(id)arg6 initialInterfaceOrientation:(long long)arg7 hostAccessibilityServerPort:(id)arg8 replyHandler:(CDUnknownBlockType)arg9;
+- (void)__createViewController:(id)arg1 withAppearanceSerializedRepresentations:(id)arg2 hostAccessibilityServerPort:(id)arg3 canShowTextServices:(BOOL)arg4 replyHandler:(CDUnknownBlockType)arg5;
+- (void)__createViewController:(id)arg1 withContextToken:(id)arg2 fbsDisplays:(id)arg3 appearanceSerializedRepresentations:(id)arg4 traitCollection:(id)arg5 initialInterfaceOrientation:(long long)arg6 hostAccessibilityServerPort:(id)arg7 canShowTextServices:(BOOL)arg8 replyHandler:(CDUnknownBlockType)arg9;
 - (void)__dimmingViewWasTapped;
 - (void)__exchangeAccessibilityPortInformation:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)__hostDidAttachDisplay:(id)arg1;
@@ -81,8 +82,8 @@ __attribute__((visibility("hidden")))
 - (void)__hostDidPromoteFirstResponder;
 - (void)__hostDidRotateFromInterfaceOrientation:(long long)arg1 skipSelf:(BOOL)arg2;
 - (void)__hostDidSetContentOverlayInsets:(struct UIEdgeInsets)arg1 andLeftMargin:(double)arg2 rightMargin:(double)arg3;
-- (void)__hostDidSetPresentationControllerClassName:(id)arg1 canShowTextServices:(BOOL)arg2;
-- (void)__hostDidUpdateAppearanceWithSerializedRepresentations:(id)arg1 originalSource:(id)arg2 legacyAppearance:(BOOL)arg3;
+- (void)__hostDidSetPresentationControllerClassName:(id)arg1;
+- (void)__hostDidUpdateAppearanceWithSerializedRepresentations:(id)arg1 originalSource:(id)arg2;
 - (void)__hostDidUpdateDisplay:(id)arg1;
 - (void)__hostDisablesAutomaticKeyboardBehavior:(BOOL)arg1;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
@@ -91,12 +92,12 @@ __attribute__((visibility("hidden")))
 - (void)__hostViewDidMoveToScreenWithFBSDisplayIdentity:(id)arg1 newHostingHandleReplyHandler:(CDUnknownBlockType)arg2;
 - (void)__hostViewWillAppear:(BOOL)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)__hostViewWillDisappear:(BOOL)arg1;
-- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 boundingPath:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(BOOL)arg5 whenDone:(CDUnknownBlockType)arg6;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 boundingPath:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(BOOL)arg5 fence:(id)arg6 whenDone:(CDUnknownBlockType)arg7;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(BOOL)arg3;
 - (void)__hostWillEnterForeground;
 - (void)__hostWillResignActive;
 - (void)__hostWillRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(BOOL)arg3;
-- (void)__hostWillTransitionToTraitCollection:(id)arg1 withContextDescription:(id)arg2 deferIfAnimated:(BOOL)arg3;
+- (void)__hostWillTransitionToTraitCollection:(id)arg1 withContextDescription:(id)arg2 deferIfAnimated:(BOOL)arg3 inRemoteViewHierarchy:(BOOL)arg4;
 - (BOOL)__knownPresentationWithoutPresentationControllerInstance;
 - (void)__prepareForDisconnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)__redoActionWithToken:(long long)arg1;
@@ -110,12 +111,14 @@ __attribute__((visibility("hidden")))
 - (void)__setHostTraitCollection:(id)arg1 deferIfAnimated:(BOOL)arg2;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;
 - (void)__setServiceInPopover:(BOOL)arg1;
+- (void)__setSheetConfiguration:(id)arg1;
 - (void)__showEditAlertView;
 - (void)__textServiceDidDismiss;
 - (void)__undoActionWithToken:(long long)arg1;
 - (id)_appearanceSource;
 - (BOOL)_canShowTextServices;
 - (double)_canvasSystemMinimumMargin;
+- (void)_completeInteractiveSheetTransitionInHost:(BOOL)arg1 immediately:(BOOL)arg2 offset:(double)arg3 duration:(double)arg4 timingCurve:(id)arg5;
 - (struct UIEdgeInsets)_customBasePresentationInsetsForView:(id)arg1;
 - (id)_dataFromPressesEvent:(id)arg1;
 - (void)_didBecomeContentViewControllerOfPopover:(id)arg1;
@@ -125,8 +128,6 @@ __attribute__((visibility("hidden")))
 - (void)_firstResponderDidChange:(id)arg1;
 - (void)_forwardFocusMovementAction:(id)arg1;
 - (BOOL)_forwardPresses:(id)arg1 withEvent:(id)arg2 canceled:(BOOL)arg3;
-- (struct CGRect)_frameForContainerViewInSheetForBounds:(struct CGRect)arg1;
-- (struct CGRect)_frameForContainerViewInSheetForBounds:(struct CGRect)arg1 displayingTopView:(BOOL)arg2 andBottomView:(BOOL)arg3;
 - (id)_inputViewsKey;
 - (void)_invalidateUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (BOOL)_isDeallocating;
@@ -144,8 +145,10 @@ __attribute__((visibility("hidden")))
 - (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 - (id)_showServiceForType:(long long)arg1 withContext:(id)arg2;
+- (void)_startInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
 - (id)_supportedInterfaceOrientationsForViewController:(id)arg1;
 - (BOOL)_tryRetain;
+- (void)_updateInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
 - (void)_updateSupportedInterfaceOrientationsIfNecessary;
 - (BOOL)_validateSessionIdentifier:(id)arg1 restorationAnchor:(id)arg2 functionName:(const char *)arg3;
 - (id)_viewControllersForRotationCallbacks;
@@ -156,7 +159,6 @@ __attribute__((visibility("hidden")))
 - (id)_window;
 - (void)_windowDidRegisterScrollToTopView;
 - (void)_windowDidUnregisterScrollToTopView;
-- (void)_windowDidUpdateCurrentTintView:(id)arg1;
 - (void)addDeputyRotationDelegate:(id)arg1;
 - (id)autorelease;
 - (BOOL)becomeFirstResponder;
@@ -172,11 +174,13 @@ __attribute__((visibility("hidden")))
 - (void)dummyPopoverController:(id)arg1 popoverViewDidSetUseToolbarShine:(BOOL)arg2;
 - (void)establishViewControllerDeputyWithProxy:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)invalidate;
+- (BOOL)isModalInPresentation;
 - (void)loadView;
 - (void)motionEnded:(long long)arg1 withEvent:(id)arg2;
 - (struct CGSize)preferredContentSize;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (id)preferredFocusEnvironments;
+- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesChanged:(id)arg1 withEvent:(id)arg2;

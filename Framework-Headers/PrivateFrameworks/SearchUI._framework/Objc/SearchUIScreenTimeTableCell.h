@@ -6,17 +6,17 @@
 
 #import <SearchUI/SearchUITableViewCell.h>
 
-@class SearchUIVibrantLabel;
+@class TLKLabel;
 
 @interface SearchUIScreenTimeTableCell : SearchUITableViewCell
 {
-    SearchUIVibrantLabel *_label;
+    TLKLabel *_label;
 }
 
-@property (strong) SearchUIVibrantLabel *label; // @synthesize label=_label;
+@property (strong, nonatomic) TLKLabel *label; // @synthesize label=_label;
 
 - (void).cxx_destruct;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)updateWithRowModel:(id)arg1;
 - (id)visibleResults;
 

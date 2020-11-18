@@ -9,11 +9,13 @@
 #import <CoreCDPInternal/CDPKeychainCircleProxy-Protocol.h>
 
 @class KCPairingChannel, NSString;
+@protocol CDPDCircleProxy;
 
 @interface CDPTTSUPayloadProvider : NSObject <CDPKeychainCircleProxy>
 {
     KCPairingChannel *_pairingChannel;
     BOOL _complete;
+    id<CDPDCircleProxy> _circleProxy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)initWithCircleProxy:(id)arg1;
 - (id)initiatingPayload:(id *)arg1;
 - (BOOL)isComplete;
 - (id)processIncomingPayload:(id)arg1 error:(id *)arg2;

@@ -20,6 +20,8 @@
 + (id)timeLabelsFont;
 - (struct UIEdgeInsets)layoutMargins;
 - (id)primaryTextLabelFont;
+- (id)secondaryTextLabelFont;
+- (id)timeLabelsFont;
 
 @end
 

@@ -39,7 +39,6 @@
 - (unsigned int)cursor;
 - (void)dealloc;
 - (int)errorCount;
-- (void)finalize;
 - (id)initWithData:(id)arg1 watchdogTimer:(id)arg2;
 - (id)nextArraySeperatedByToken:(int)arg1 stoppingAt:(int)arg2 inEncoding:(unsigned long long)arg3;
 - (id)nextBase64Data;

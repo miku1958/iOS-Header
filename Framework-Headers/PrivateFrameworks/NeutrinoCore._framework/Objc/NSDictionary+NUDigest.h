@@ -7,6 +7,8 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (NUDigest)
+- (id)nu_evaluateWithPipelineState:(id)arg1 error:(out id *)arg2;
+- (id)nu_unwrapJSValue;
 - (void)nu_updateDigest:(id)arg1;
 @end
 

@@ -8,11 +8,12 @@
 #import <Navigation/NSObject-Protocol.h>
 
 @class NSArray, NSString;
-@protocol GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
+@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
 
 @protocol GEOServerFormatToken <NSObject, NSCoding>
 
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artworkValue;
+@property (readonly, nonatomic) id<GEOServerFormatTokenCountdownValue> countdownValue;
 @property (readonly, nonatomic) id<GEOServerFormatTokenPriceValue> priceValue;
 @property (readonly, nonatomic) NSString *stringValue;
 @property (readonly, nonatomic) NSArray *timeStampValues;

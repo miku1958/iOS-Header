@@ -27,30 +27,40 @@
 }
 
 @property (readonly, weak, nonatomic) _UIAssetManager *_assetManager; // @synthesize _assetManager;
+@property (readonly, nonatomic) UITraitCollection *_defaultTraitCollection;
 @property (strong, nonatomic) CUINamedLayerStack *_layerStack; // @synthesize _layerStack=__layerStack;
 @property (copy, nonatomic) NSString *assetName; // @synthesize assetName=_assetName;
 @property (copy, nonatomic) CDUnknownBlockType creationBlock; // @synthesize creationBlock=_creationBlock;
 
-+ (id)_assetGeneratingImagesWithDrawingBlock:(CDUnknownBlockType)arg1;
++ (id)_dynamicAssetNamed:(id)arg1 generator:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_cacheRendition:(id)arg1 forSize:(struct CGSize)arg2 tintColor:(id)arg3 traitCollection:(id)arg4 bold:(BOOL)arg5 letterpress:(BOOL)arg6 drawMode:(unsigned int)arg7;
+- (id)_cachedRenditionWithSize:(struct CGSize)arg1 tintColor:(id)arg2 traitCollection:(id)arg3 bold:(BOOL)arg4 letterpress:(BOOL)arg5 drawMode:(unsigned int)arg6;
 - (void)_clearResolvedImageResources;
 - (BOOL)_containsImagesInPath:(id)arg1;
-- (id)_defaultTraitCollection;
 - (void)_disconnectFromAssetManager;
 - (id)_initWithAssetName:(id)arg1 forFilesInBundle:(id)arg2;
 - (id)_initWithAssetName:(id)arg1 forManager:(id)arg2;
+- (id)_lookUpRegisteredObjectForTraitCollection:(id)arg1 withAccessorWithAppearanceName:(CDUnknownBlockType)arg2;
 - (id)_mutableCatalog;
 - (id)_nameForStoringRuntimeRegisteredImagesInMutableCatalog;
-- (void)_registerImage:(id)arg1 withTraitCollection:(id)arg2 cache:(BOOL)arg3;
-- (id)_updateAssetFromBlockGenerationWithTraitCollection:(id)arg1 resolvedCatalogImage:(id)arg2;
+- (void)_registerImage:(id)arg1 withConfiguration:(id)arg2;
+- (void)_registerImage:(id)arg1 withTraitCollection:(id)arg2;
+- (id)_registeredAppearanceNames;
+- (id)_renditionCache:(BOOL)arg1;
+- (id)_symbolConfiguration;
+- (id)_updateAssetFromBlockGenerationWithConfiguration:(id)arg1 resolvedCatalogImage:(id)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (id)imageWithConfiguration:(id)arg1;
 - (id)imageWithTraitCollection:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)registerImage:(id)arg1 withConfiguration:(id)arg2;
 - (void)registerImage:(id)arg1 withTraitCollection:(id)arg2;
+- (void)unregisterImageWithConfiguration:(id)arg1;
 - (void)unregisterImageWithTraitCollection:(id)arg1;
 
 @end

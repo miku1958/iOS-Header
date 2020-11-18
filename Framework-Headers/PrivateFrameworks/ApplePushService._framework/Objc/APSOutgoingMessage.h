@@ -11,17 +11,21 @@
 @interface APSOutgoingMessage : APSMessage
 {
     APSOutgoingMessageCheckpointTrace *_checkpointTrace;
+    BOOL _ackReceived;
 }
 
+@property (nonatomic) BOOL ackReceived; // @synthesize ackReceived=_ackReceived;
+@property (nonatomic) unsigned long long ackTimestamp;
 @property (strong, nonatomic) APSOutgoingMessageCheckpointTrace *checkpointTrace; // @synthesize checkpointTrace=_checkpointTrace;
 @property (nonatomic, getter=isCritical) BOOL critical;
 @property (nonatomic) unsigned long long payloadFormat;
 @property (nonatomic) unsigned long long payloadLength;
+@property (nonatomic) BOOL sendRetried;
 @property (copy, nonatomic) NSString *senderTokenName;
 @property (nonatomic) unsigned long long timeout;
 
+- (void).cxx_destruct;
 - (unsigned long long)_effectiveSendTimeout;
-- (void)dealloc;
 - (id)eagernessTimeoutTime;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasTimedOut;
@@ -30,6 +34,7 @@
 - (unsigned long long)messageID;
 - (id)originator;
 - (long long)priority;
+- (unsigned long long)pushType;
 - (id)rawTimeoutTime;
 - (long long)sendInterface;
 - (id)sendTimeoutTime;
@@ -38,6 +43,7 @@
 - (void)setMessageID:(unsigned long long)arg1;
 - (void)setOriginator:(id)arg1;
 - (void)setPriority:(long long)arg1;
+- (void)setPushType:(unsigned long long)arg1;
 - (void)setSendInterface:(long long)arg1;
 - (void)setSent:(BOOL)arg1;
 - (void)setSentTimestamp:(id)arg1;

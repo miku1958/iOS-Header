@@ -6,42 +6,52 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, SFResultSection, TLKStackView, UIButton, UILabel;
+@class NSString, SFResultSection, TLKLabel, TLKStackView, TLKTextButton, UIView;
 @protocol SFFeedbackListener, SearchUITableHeaderViewDelegate;
 
-@interface SearchUITableHeaderView : UITableViewHeaderFooterView <NUIContainerStackViewDelegate>
+@interface SearchUITableHeaderView : UITableViewHeaderFooterView <NUIContainerViewDelegate>
 {
+    BOOL _shouldUseInsetRoundedSections;
+    BOOL _shouldUseStandardSectionInsets;
+    BOOL _useShorterHeaders;
     BOOL _usesInsetRoundedSections;
     id<SearchUITableHeaderViewDelegate> _delegate;
     id<SFFeedbackListener> _feedbackListener;
     unsigned long long _headerType;
     SFResultSection *_section;
-    UILabel *_titleLabel;
-    UIButton *_headerOptionButton;
+    TLKLabel *_titleLabel;
+    UIView *_bannerView;
+    TLKTextButton *_headerOptionButton;
     TLKStackView *_stackView;
 }
 
+@property (strong, nonatomic) UIView *bannerView; // @synthesize bannerView=_bannerView;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<SearchUITableHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SearchUITableHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (weak) id<SFFeedbackListener> feedbackListener; // @synthesize feedbackListener=_feedbackListener;
+@property (weak, nonatomic) id<SFFeedbackListener> feedbackListener; // @synthesize feedbackListener=_feedbackListener;
 @property (readonly) unsigned long long hash;
-@property (strong) UIButton *headerOptionButton; // @synthesize headerOptionButton=_headerOptionButton;
-@property unsigned long long headerType; // @synthesize headerType=_headerType;
-@property (strong) SFResultSection *section; // @synthesize section=_section;
-@property (strong) TLKStackView *stackView; // @synthesize stackView=_stackView;
+@property (strong, nonatomic) TLKTextButton *headerOptionButton; // @synthesize headerOptionButton=_headerOptionButton;
+@property (nonatomic) unsigned long long headerType; // @synthesize headerType=_headerType;
+@property (strong, nonatomic) SFResultSection *section; // @synthesize section=_section;
+@property (nonatomic) BOOL shouldUseInsetRoundedSections; // @synthesize shouldUseInsetRoundedSections=_shouldUseInsetRoundedSections;
+@property (nonatomic) BOOL shouldUseStandardSectionInsets; // @synthesize shouldUseStandardSectionInsets=_shouldUseStandardSectionInsets;
+@property (strong, nonatomic) TLKStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly) Class superclass;
 @property (readonly) NSString *title;
-@property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property BOOL usesInsetRoundedSections; // @synthesize usesInsetRoundedSections=_usesInsetRoundedSections;
+@property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (nonatomic) BOOL useShorterHeaders; // @synthesize useShorterHeaders=_useShorterHeaders;
+@property (nonatomic) BOOL usesInsetRoundedSections; // @synthesize usesInsetRoundedSections=_usesInsetRoundedSections;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (void)didMoveToWindow;
 - (void)headerOptionButtonPressed;
-- (id)initWithStyle:(unsigned long long)arg1;
+- (id)init;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)moreButtonPressed;
@@ -50,9 +60,11 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)supportsShowMoreInApp;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAlignmentRectInsets;
 - (void)updateHeaderButtonVisibility;
+- (void)updateSectionTitle;
 - (void)updateWithSection:(id)arg1 isExpanded:(BOOL)arg2 usesInsetRoundedSection:(BOOL)arg3;
 
 @end

@@ -25,6 +25,7 @@
 - (BOOL)_accessibilityActivateForPanAlternate:(BOOL)arg1 isSecondAlternate:(BOOL)arg2;
 - (BOOL)_accessibilityActivatePanAlternate:(id)arg1;
 - (BOOL)_accessibilityAllowsAlternativeCharacterActivation;
+- (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityDismissAlternativeKeyPicker;
 - (BOOL)_accessibilityHasVariantKeys;
 - (BOOL)_accessibilityIsDeleteKey;
@@ -44,6 +45,7 @@
 - (BOOL)_accessibilityWasForcedToUseForeignKB;
 - (BOOL)_allowCachingAccessibilityLabel;
 - (void)_applyCapitalLetterTransform;
+- (BOOL)_axDisplaysGlobeKeyAsEmojiKey;
 - (id)_axDualStringLabel;
 - (BOOL)_axIsDictationKey;
 - (BOOL)_axIsShifted;

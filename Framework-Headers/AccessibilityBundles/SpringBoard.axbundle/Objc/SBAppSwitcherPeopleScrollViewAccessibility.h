@@ -16,9 +16,9 @@
 - (BOOL)_accessibilityIsFirstElementForFocus;
 - (BOOL)_accessibilityOpaqueElementScrollsContentIntoView;
 - (id)_accessibilitySortedElementsWithin;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 - (long long)accessibilityNavigationStyle;
-- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityOpaqueElementProvider;
 - (BOOL)shouldGroupAccessibilityChildren;
 

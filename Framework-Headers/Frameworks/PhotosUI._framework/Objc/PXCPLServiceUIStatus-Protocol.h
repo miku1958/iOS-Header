@@ -10,7 +10,7 @@
 
 @protocol PXCPLServiceUIStatus <NSObject>
 
-@property (readonly, nonatomic) CDUnknownBlockType action;
+@property (readonly, copy, nonatomic) CDUnknownBlockType action;
 @property (readonly, nonatomic) NSString *actionConfirmationAlertButtonTitle;
 @property (readonly, nonatomic) NSString *actionConfirmationAlertSubtitle;
 @property (readonly, nonatomic) NSString *actionConfirmationAlertTitle;

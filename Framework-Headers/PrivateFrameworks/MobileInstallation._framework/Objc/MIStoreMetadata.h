@@ -9,7 +9,7 @@
 #import <MobileInstallation/NSCopying-Protocol.h>
 #import <MobileInstallation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface MIStoreMetadata : NSObject <NSSecureCoding, NSCopying>
 {
@@ -54,6 +54,9 @@
     NSArray *_subGenres;
     NSString *_referrerURL;
     NSString *_referrerApp;
+    NSString *_enterpriseInstallURL;
+    NSString *_redownloadParams;
+    NSDictionary *_nameTranscriptions;
 }
 
 @property (strong, nonatomic) NSNumber *DSPersonID; // @synthesize DSPersonID=_DSPersonID;
@@ -65,6 +68,7 @@
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (nonatomic) BOOL deviceBasedVPP; // @synthesize deviceBasedVPP=_deviceBasedVPP;
 @property (strong, nonatomic) NSNumber *downloaderID; // @synthesize downloaderID=_downloaderID;
+@property (copy, nonatomic) NSString *enterpriseInstallURL; // @synthesize enterpriseInstallURL=_enterpriseInstallURL;
 @property (strong, nonatomic) NSNumber *familyID; // @synthesize familyID=_familyID;
 @property (nonatomic, getter=isGameCenterEnabled) BOOL gameCenterEnabled; // @synthesize gameCenterEnabled=_gameCenterEnabled;
 @property (nonatomic) BOOL gameCenterEverEnabled; // @synthesize gameCenterEverEnabled=_gameCenterEverEnabled;
@@ -81,11 +85,13 @@
 @property (copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic, getter=isLaunchProhibited) BOOL launchProhibited; // @synthesize launchProhibited=_launchProhibited;
+@property (copy, nonatomic) NSDictionary *nameTranscriptions; // @synthesize nameTranscriptions=_nameTranscriptions;
 @property (copy, nonatomic) NSString *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
 @property (nonatomic, getter=isPurchasedRedownload) BOOL purchasedRedownload; // @synthesize purchasedRedownload=_purchasedRedownload;
 @property (strong, nonatomic) NSNumber *purchaserID; // @synthesize purchaserID=_purchaserID;
 @property (copy, nonatomic) NSString *ratingLabel; // @synthesize ratingLabel=_ratingLabel;
 @property (strong, nonatomic) NSNumber *ratingRank; // @synthesize ratingRank=_ratingRank;
+@property (copy, nonatomic) NSString *redownloadParams; // @synthesize redownloadParams=_redownloadParams;
 @property (copy, nonatomic) NSString *referrerApp; // @synthesize referrerApp=_referrerApp;
 @property (copy, nonatomic) NSString *referrerURL; // @synthesize referrerURL=_referrerURL;
 @property (copy, nonatomic) NSString *releaseDate; // @synthesize releaseDate=_releaseDate;

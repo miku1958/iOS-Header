@@ -18,12 +18,12 @@
 - (void).cxx_destruct;
 - (id)_compositionRenderNodeForPipelineState:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImage:(out id *)arg1;
-- (id)_evaluateImageGeometry:(out id *)arg1;
-- (id)_evaluateImageProperties:(out id *)arg1;
+- (id)_evaluateImageGeometryWithSourceOptions:(id)arg1 error:(out id *)arg2;
+- (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)initWithComposition:(id)arg1 renderPipeline:(id)arg2 settings:(id)arg3;
 - (id)initWithSettings:(id)arg1;
 - (BOOL)load:(out id *)arg1;
-- (CDStruct_912cb5d2)pixelSize;
+- (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
 - (id)preparedNodeWithSourceContainer:(id)arg1 pipelineState:(id)arg2 pipelineSettings:(id)arg3 sourceSettings:(id)arg4 error:(out id *)arg5;
 - (BOOL)shouldCacheNodeForPipelineState:(id)arg1;
 

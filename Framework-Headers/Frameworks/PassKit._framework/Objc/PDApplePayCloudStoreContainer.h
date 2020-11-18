@@ -72,7 +72,7 @@
 - (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithDataSource:(id)arg1 transactionProcessor:(id)arg2 paymentWebServiceCoordinator:(id)arg3 accountManager:(id)arg4;
 - (void)invalidateCloudStoreIfPossibleWithOperationGroupNameSuffix:(id)arg1;
-- (void)passWithUniqueIdentifierDidDisappear:(id)arg1;
+- (void)passDidDisappear:(id)arg1;
 - (void)populateEvents:(id)arg1 forAccountIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)processFetchedCloudStoreDataWithModifiedRecords:(id)arg1 deletedRecords:(id)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 shouldUpdateLocalDatabase:(BOOL)arg5 userInfo:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)processResultWithError:(id)arg1 nextExpectedState:(unsigned long long)arg2 operationGroupNameSuffix:(id)arg3 retryCount:(unsigned long long)arg4 shouldRetry:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
@@ -81,6 +81,8 @@
 - (void)requestUpdatesForPassUniqueIdentifier:(id)arg1;
 - (void)saveCachedContainerValues;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)shouldFetchAndStoreCloudDataAtStartupWithCompletion:(CDUnknownBlockType)arg1;
+- (void)syncOriginatingTransactionsToCloudStore;
 - (void)uploadTransaction:(id)arg1 forPassWithUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

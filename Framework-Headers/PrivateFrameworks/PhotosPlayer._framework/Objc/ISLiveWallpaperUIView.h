@@ -6,21 +6,31 @@
 
 #import <PhotosPlayer/ISBasePlayerUIView.h>
 
-@class ISLiveWallpaperPlayer, UIGestureRecognizer;
+@class ISLiveWallpaperPlayer, NSTimer, UIGestureRecognizer;
 
 @interface ISLiveWallpaperUIView : ISBasePlayerUIView
 {
+    BOOL _touching;
     UIGestureRecognizer *_playbackGestureRecognizer;
+    double _force;
+    NSTimer *_updateTimer;
 }
 
+@property (nonatomic) double force; // @synthesize force=_force;
 @property (readonly, nonatomic) UIGestureRecognizer *playbackGestureRecognizer; // @synthesize playbackGestureRecognizer=_playbackGestureRecognizer;
 @property (strong, nonatomic) ISLiveWallpaperPlayer *player; // @dynamic player;
+@property (nonatomic) BOOL touching; // @synthesize touching=_touching;
+@property (strong, nonatomic) NSTimer *updateTimer; // @synthesize updateTimer=_updateTimer;
 
 - (void).cxx_destruct;
 - (void)_ISLiveWallpaperUIViewCommonInitialization;
 - (void)_handlePlaybackRecognizer:(id)arg1;
+- (void)_handleUpdateTimer;
+- (void)_updatePlayer;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

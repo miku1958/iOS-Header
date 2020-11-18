@@ -29,7 +29,6 @@
 @property (readonly, strong, nonatomic) id localID;
 @property (strong, nonatomic) NSManagedObject *mediaMetadata; // @dynamic mediaMetadata;
 @property (strong, nonatomic) NSString *mediaMetadataType; // @dynamic mediaMetadataType;
-@property (strong, nonatomic) NSSet *modernResources; // @dynamic modernResources;
 @property (strong, nonatomic) PLMomentShare *momentShare; // @dynamic momentShare;
 @property (strong, nonatomic) NSString *originalFilename; // @dynamic originalFilename;
 @property (nonatomic) short originalOrientation; // @dynamic originalOrientation;
@@ -37,6 +36,7 @@
 @property (nonatomic) short placeholderState; // @dynamic placeholderState;
 @property (strong, nonatomic) NSSet *resources; // @dynamic resources;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSSet *transientModernResources; // @dynamic transientModernResources;
 @property (strong, nonatomic) NSString *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;
 @property (nonatomic) short videoFrameRate; // @dynamic videoFrameRate;
 
@@ -44,7 +44,6 @@
 + (id)cloudMasterWithGUID:(id)arg1 inMomentShare:(id)arg2 inManagedObjectContext:(id)arg3;
 + (id)cloudMasterWithScopedIdentifier:(id)arg1 inManagedObjectContext:(id)arg2;
 + (void)deleteAllCloudMastersInManagedObjectContext:(id)arg1;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertIntoPhotoLibrary:(id)arg1 withCloudMasterGUID:(id)arg2 inMomentShare:(id)arg3;
 + (id)listOfSyncedProperties;
@@ -54,21 +53,22 @@
 - (BOOL)allOriginalsAreLocallyAvailableForAssetUuid:(id)arg1 useOriginalAltInsteadOfOriginal:(BOOL)arg2;
 - (BOOL)allOriginalsAreUploaded;
 - (void)applyPropertiesFromCPLMasterChange:(id)arg1;
-- (void)applyResourcesFromCPLMasterChange:(id)arg1 inPhotoLibrary:(id)arg2;
 - (id)assetUUIDToCloudResources;
 - (void)awakeFromInsert;
 - (id)cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
 - (id)cloudResourcesForResourceType:(unsigned long long)arg1;
 - (id)cplFullRecord;
+- (id)cplMasterPropertyChangeForAsset:(id)arg1;
 - (id)cplPropertyRecord;
-- (id)cplResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
-- (void)deleteAllResourcesForAssetUuid:(id)arg1;
 - (BOOL)hasResourcesOtherThanForAssetUuid:(id)arg1;
 - (BOOL)isSyncableChange;
-- (void)nrm_applyResourcesFromCPLMasterChange:(id)arg1 inPhotoLibrary:(id)arg2;
-- (id)nrm_assetUUIDToCloudResources;
-- (id)nrm_cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
-- (id)nrm_cloudResourcesForResourceType:(unsigned long long)arg1;
+- (id)originalFilenameForResourceType:(unsigned long long)arg1 filePath:(id)arg2;
+- (id)payloadsForChangedKeys:(id)arg1;
+- (void)rm_applyExpungeableResourceStatesFromCPLMasterChange:(id)arg1 inPhotoLibrary:(id)arg2;
+- (id)rm_applyResourcesFromCPLMasterChange:(id)arg1 inPhotoLibrary:(id)arg2;
+- (id)rm_assetUUIDToCloudResources;
+- (id)rm_cloudResourceForResourceType:(unsigned long long)arg1 forAssetUuid:(id)arg2;
+- (id)rm_cloudResourcesForResourceType:(unsigned long long)arg1;
 - (id)scopedIdentifier;
 - (unsigned long long)sizeOfOriginal;
 - (BOOL)supportsCloudUpload;

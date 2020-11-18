@@ -14,6 +14,7 @@
 
 @property unsigned long long currentAvailability; // @synthesize currentAvailability=_currentAvailability;
 
++ (BOOL)onlyDrawWithApplePencil;
 - (void)dealloc;
 - (id)init;
 - (void)postConnectionStatusNotification;

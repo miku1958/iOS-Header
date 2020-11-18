@@ -30,6 +30,7 @@
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (short)closestVertexIndexToLabeledFacePosition:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initPrivate;
@@ -39,7 +40,9 @@
 - (id)initWithFaceTrackingData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)normalCount;
+- (MISSING_TYPE *)normalForLabeledFacePosition:(id)arg1;
 - (const MISSING_TYPE **)normals;
+- (MISSING_TYPE *)positionForLabeledFacePosition:(id)arg1;
 
 @end
 

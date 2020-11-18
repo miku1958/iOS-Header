@@ -6,15 +6,15 @@
 
 #import <PhotosUICore/PXBarsController.h>
 
-#import <PhotosUICore/PXActionMenuDelegate-Protocol.h>
-#import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
+#import <PhotosUICore/PXAssetCollectionActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
+#import <PhotosUICore/PXPhotosDetailsActionMenuDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, PXActionMenuController, PXActionPerformer, PXAssetActionManager, PXAssetCollectionActionManager, PXBarAppearance, PXExtendedTraitCollection, PXPhotosDataSource, PXPhotosDetailsBarSpec, PXPhotosDetailsContext, PXPhotosDetailsUIViewController, PXPhotosDetailsViewModel, PXSectionedSelectionManager, UIView;
+@class NSMutableDictionary, NSString, PXActionPerformer, PXAssetActionManager, PXAssetCollectionActionManager, PXBarAppearance, PXExtendedTraitCollection, PXPhotoDetailsActionMenuController, PXPhotosDataSource, PXPhotosDetailsBarSpec, PXPhotosDetailsContext, PXPhotosDetailsUIViewController, PXPhotosDetailsViewModel, PXSectionedSelectionManager, UIView;
 
-@interface PXPhotosDetailsBarsController : PXBarsController <PXPhotosDataSourceChangeObserver, PXChangeObserver, PXActionPerformerDelegate, PXActionMenuDelegate, UIPopoverPresentationControllerDelegate>
+@interface PXPhotosDetailsBarsController : PXBarsController <PXPhotosDataSourceChangeObserver, PXChangeObserver, PXAssetCollectionActionPerformerDelegate, PXPhotosDetailsActionMenuDelegate, UIPopoverPresentationControllerDelegate>
 {
     struct {
         BOOL assetActionManager;
@@ -29,7 +29,7 @@
     PXSectionedSelectionManager *__selectionManager;
     PXActionPerformer *__activePerformer;
     PXActionPerformer *__lastActionPerformer;
-    PXActionMenuController *__activeMenuController;
+    PXPhotoDetailsActionMenuController *__activeMenuController;
     UIView *__titleView;
     PXPhotosDetailsContext *__context;
     PXPhotosDataSource *__dataSource;
@@ -38,7 +38,7 @@
     NSMutableDictionary *__barButtonItemCacheByBarItemIdentifier;
 }
 
-@property (strong, nonatomic) PXActionMenuController *_activeMenuController; // @synthesize _activeMenuController=__activeMenuController;
+@property (strong, nonatomic) PXPhotoDetailsActionMenuController *_activeMenuController; // @synthesize _activeMenuController=__activeMenuController;
 @property (strong, nonatomic, setter=_setActivePerformer:) PXActionPerformer *_activePerformer; // @synthesize _activePerformer=__activePerformer;
 @property (readonly, nonatomic) PXAssetActionManager *_assetActionManager; // @synthesize _assetActionManager=__assetActionManager;
 @property (readonly, nonatomic) PXAssetCollectionActionManager *_assetCollectionActionManager; // @synthesize _assetCollectionActionManager=__assetCollectionActionManager;
@@ -76,8 +76,9 @@
 - (long long)_titleViewVerticalSizeClassForExtendedTraitCollection:(id)arg1;
 - (void)_updateTitleViewAlpha;
 - (void)actionMenu:(id)arg1 actionPerformer:(id)arg2 didChangeState:(unsigned long long)arg3;
-- (BOOL)actionMenu:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)actionMenu:(id)arg1 presentViewController:(id)arg2;
+- (BOOL)actionMenu:(id)arg1 actionPerformer:(id)arg2 dismissViewController:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)actionMenu:(id)arg1 actionPerformer:(id)arg2 presentViewController:(id)arg3;
+- (void)actionMenu:(id)arg1 assetCollectionActionPerformer:(id)arg2 playMovieForAssetCollection:(id)arg3;
 - (void)actionMenuButtonItemTapped:(id)arg1;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;

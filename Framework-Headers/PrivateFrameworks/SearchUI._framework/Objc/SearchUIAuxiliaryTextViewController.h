@@ -14,15 +14,15 @@
     TLKAuxilliaryTextView *_auxilliaryTextView;
 }
 
-@property (strong) TLKAuxilliaryTextView *auxilliaryTextView; // @synthesize auxilliaryTextView=_auxilliaryTextView;
-@property BOOL shouldCenter; // @synthesize shouldCenter=_shouldCenter;
+@property (strong, nonatomic) TLKAuxilliaryTextView *auxilliaryTextView; // @synthesize auxilliaryTextView=_auxilliaryTextView;
+@property (nonatomic) BOOL shouldCenter; // @synthesize shouldCenter=_shouldCenter;
 
-+ (BOOL)supportsResult:(id)arg1;
++ (BOOL)supportsRowModel:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)isPrimarilyTextView;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (id)setupView;
 - (BOOL)shouldVerticallyCenter;
-- (void)updateWithResult:(id)arg1;
+- (unsigned long long)type;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

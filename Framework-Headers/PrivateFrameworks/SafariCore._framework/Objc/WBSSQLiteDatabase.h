@@ -31,7 +31,6 @@
 + (id)inMemoryDatabaseURL;
 + (void)initialize;
 + (id)privateOnDiskDatabaseURL;
-+ (void)setUpLogCollection;
 + (id)writeAheadLogSharedMemoryURLForDatabaseURL:(id)arg1;
 + (id)writeAheadLogURLForDatabaseURL:(id)arg1;
 - (void).cxx_destruct;

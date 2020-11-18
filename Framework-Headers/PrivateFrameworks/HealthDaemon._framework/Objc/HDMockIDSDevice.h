@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSString, NSUUID;
+@class NSArray, NSString, NSUUID;
 
 @interface HDMockIDSDevice : NSObject <NSCopying>
 {
@@ -26,6 +26,7 @@
     NSString *_modelNumber;
     NSString *_systemVersion;
     NSString *_regionCode;
+    NSArray *_identities;
     NSString *_electrocardiogramVersion;
     NSString *_backgroundAtrialFibrillationVersion;
 }
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSString *backgroundAtrialFibrillationVersion; // @synthesize backgroundAtrialFibrillationVersion=_backgroundAtrialFibrillationVersion;
 @property (copy, nonatomic) NSString *buildType; // @synthesize buildType=_buildType;
 @property (copy, nonatomic) NSString *electrocardiogramVersion; // @synthesize electrocardiogramVersion=_electrocardiogramVersion;
+@property (copy, nonatomic) NSArray *identities; // @synthesize identities=_identities;
 @property (nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
 @property (readonly, nonatomic) BOOL isLocallyPaired;
@@ -55,6 +57,7 @@
 - (id)hd_deviceIdentifier;
 - (BOOL)hd_isEquivalentToDevice:(id)arg1;
 - (id)hd_shortDescription;
+- (unsigned long long)relationship;
 
 @end
 

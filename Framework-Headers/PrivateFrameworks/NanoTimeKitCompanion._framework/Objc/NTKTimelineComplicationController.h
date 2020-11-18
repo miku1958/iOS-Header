@@ -6,11 +6,22 @@
 
 #import <NanoTimeKitCompanion/NTKComplicationController.h>
 
+@class CLKComplicationTemplate;
+
 @interface NTKTimelineComplicationController : NTKComplicationController
 {
+    BOOL _ignoreNewTemplates;
+    CLKComplicationTemplate *_alwaysOnTemplate;
+    CLKComplicationTemplate *_lockedTemplate;
 }
 
+@property (readonly, nonatomic) CLKComplicationTemplate *activeDisplayTemplate;
+@property (readonly, nonatomic) CLKComplicationTemplate *alwaysOnTemplate; // @synthesize alwaysOnTemplate=_alwaysOnTemplate;
+@property (nonatomic) BOOL ignoreNewTemplates; // @synthesize ignoreNewTemplates=_ignoreNewTemplates;
+@property (readonly, nonatomic) CLKComplicationTemplate *lockedTemplate; // @synthesize lockedTemplate=_lockedTemplate;
+
 + (BOOL)_isLegacy;
+- (void).cxx_destruct;
 - (void)_aggdAppLaunchForTimeTravelDate:(id)arg1 timelineEntryDate:(id)arg2;
 - (unsigned long long)_animationForTimelineEntryTransitionFrom:(id)arg1 to:(id)arg2 withAnimationBehavior:(unsigned long long)arg3;
 

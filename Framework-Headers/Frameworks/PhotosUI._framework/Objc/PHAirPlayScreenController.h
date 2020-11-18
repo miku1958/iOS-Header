@@ -52,7 +52,7 @@
 - (void)_recordSessionEnded;
 - (id)_screenAvailabilityName;
 - (BOOL)_shouldIgnoreScreen:(id)arg1;
-- (void)_updateScreenContentAnimated:(BOOL)arg1;
+- (void)_updateScreenContentWithShouldTryToFindAvailableScreen:(BOOL)arg1;
 - (void)airPlayRouteObserverRegistryRouteAvailabilityChanged:(id)arg1 forRouteObserver:(id)arg2;
 - (id)init;
 - (void)notifyDidPresentAirPlayRoutesFromShareSheet;

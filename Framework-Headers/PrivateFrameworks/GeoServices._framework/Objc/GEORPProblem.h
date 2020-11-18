@@ -8,35 +8,50 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPProblemContext, GEORPProblemCorrections;
+@class GEORPProblemContext, GEORPProblemCorrections, PBDataReader;
 
 @interface GEORPProblem : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _userPaths;
     GEORPProblemContext *_problemContext;
     GEORPProblemCorrections *_problemCorrections;
     int _problemType;
     unsigned int _protocolVersion;
     struct {
-        unsigned int problemType:1;
-        unsigned int protocolVersion:1;
-    } _has;
+        unsigned int has_problemType:1;
+        unsigned int has_protocolVersion:1;
+        unsigned int read_userPaths:1;
+        unsigned int read_problemContext:1;
+        unsigned int read_problemCorrections:1;
+        unsigned int wrote_userPaths:1;
+        unsigned int wrote_problemContext:1;
+        unsigned int wrote_problemCorrections:1;
+        unsigned int wrote_problemType:1;
+        unsigned int wrote_protocolVersion:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasProblemContext;
 @property (readonly, nonatomic) BOOL hasProblemCorrections;
 @property (nonatomic) BOOL hasProblemType;
 @property (nonatomic) BOOL hasProtocolVersion;
-@property (strong, nonatomic) GEORPProblemContext *problemContext; // @synthesize problemContext=_problemContext;
-@property (strong, nonatomic) GEORPProblemCorrections *problemCorrections; // @synthesize problemCorrections=_problemCorrections;
-@property (nonatomic) int problemType; // @synthesize problemType=_problemType;
-@property (nonatomic) unsigned int protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (strong, nonatomic) GEORPProblemContext *problemContext;
+@property (strong, nonatomic) GEORPProblemCorrections *problemCorrections;
+@property (nonatomic) int problemType;
+@property (nonatomic) unsigned int protocolVersion;
 @property (readonly, nonatomic) int *userPaths;
 @property (readonly, nonatomic) unsigned long long userPathsCount;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsProblemType:(id)arg1;
 - (int)StringAsUserPaths:(id)arg1;
+- (void)_addNoFlagsUserPath:(int)arg1;
+- (void)_readProblemContext;
+- (void)_readProblemCorrections;
+- (void)_readUserPaths;
 - (void)addUserPath:(int)arg1;
 - (void)clearUserPaths;
 - (void)copyTo:(id)arg1;
@@ -49,6 +64,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)problemTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setUserPaths:(int *)arg1 count:(unsigned long long)arg2;
 - (int)userPathAtIndex:(unsigned long long)arg1;

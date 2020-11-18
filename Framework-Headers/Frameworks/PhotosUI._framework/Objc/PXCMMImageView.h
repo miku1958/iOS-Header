@@ -8,35 +8,31 @@
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSString, PXImageRequester, UIImageView;
-@protocol PXDisplayAsset, PXUIImageProvider;
+@class NSString, PXCMMImageViewModel, PXImageRequesterHelper, UIImageView;
 
 @interface PXCMMImageView : UIView <PXChangeObserver>
 {
     UIImageView *_imageView;
     UIView *_highlightView;
-    id<PXDisplayAsset> _asset;
-    id<PXUIImageProvider> _mediaProvider;
-    PXImageRequester *_imageRequester;
+    PXImageRequesterHelper *_imageRequesterHelper;
+    PXCMMImageViewModel *_viewModel;
 }
 
-@property (strong, nonatomic) id<PXDisplayAsset> asset; // @synthesize asset=_asset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted;
-@property (strong, nonatomic) PXImageRequester *imageRequester; // @synthesize imageRequester=_imageRequester;
-@property (strong, nonatomic) id<PXUIImageProvider> mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) PXCMMImageViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
-- (void)_updateContent;
-- (void)_updateImageRequester;
-- (void)_updateImageView;
+- (void)_updateContentsRect;
+- (void)_updateHighlighted;
+- (void)_updateImage;
+- (void)_updateImageRequestHelper;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)setAsset:(id)arg1 mediaProvider:(id)arg2;
 - (void)setFrame:(struct CGRect)arg1;
+- (BOOL)test_highlighted;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

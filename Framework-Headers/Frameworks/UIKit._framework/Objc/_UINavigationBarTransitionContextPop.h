@@ -15,13 +15,17 @@ __attribute__((visibility("hidden")))
     double _titleTransitionAdjustment;
 }
 
+- (void)_animateBackgroundView;
 - (void)_animateContentView;
 - (void)_animateLargeTitleView;
 - (void)_animateScaleTransition;
-- (void)_finishWithFinalLayout:(id)arg1 finalLargeTitleLayout:(id)arg2 invalidLayout:(id)arg3 invalidLargeTitleLayout:(id)arg4;
+- (void)_animateSearchBar;
+- (void)_finishWithFinalLayout:(id)arg1 invalidLayout:(id)arg2;
+- (void)_prepareBackgroundView;
 - (void)_prepareContentView;
 - (void)_prepareLargeTitleView;
 - (void)_prepareScaleTransition;
+- (void)_prepareSearchBar;
 - (void)animate;
 - (void)cancel;
 - (void)complete;

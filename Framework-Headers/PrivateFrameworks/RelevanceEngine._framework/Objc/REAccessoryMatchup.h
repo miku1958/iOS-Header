@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RelevanceEngine/NSCoding-Protocol.h>
 #import <RelevanceEngine/NSCopying-Protocol.h>
+#import <RelevanceEngine/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString, REImage;
 
-@interface REAccessoryMatchup : NSObject <NSCopying, NSCoding>
+@interface REAccessoryMatchup : NSObject <NSCopying, NSSecureCoding>
 {
     REImage *_homeTeamImage;
     NSString *_homeTeamName;
@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) NSDate *matchupStartDate; // @synthesize matchupStartDate=_matchupStartDate;
 @property (readonly, nonatomic) unsigned long long status; // @synthesize status=_status;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

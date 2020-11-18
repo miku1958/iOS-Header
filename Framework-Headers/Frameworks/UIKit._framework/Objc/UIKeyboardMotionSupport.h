@@ -8,13 +8,14 @@
 
 #import <UIKitCore/_UIScreenBasedObject-Protocol.h>
 
-@class NSDictionary, NSString, UIScreen;
+@class NSDictionary, NSString, UIScreen, UIWindowScene;
 @protocol UISplitKeyboardSource;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardMotionSupport : NSObject <_UIScreenBasedObject>
 {
     UIScreen *_screen;
+    UIWindowScene *_canvas;
     id<UISplitKeyboardSource> _controller;
 }
 
@@ -27,9 +28,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)supportForScreen:(id)arg1;
++ (id)supportForUIScene:(id)arg1;
 - (void)_connectController:(id)arg1;
 - (void)_disconnectingController:(id)arg1;
+- (id)_initWithCanvas:(id)arg1 options:(id)arg2;
 - (id)_initWithScreen:(id)arg1 options:(id)arg2;
+- (id)_intendedCanvas;
 - (BOOL)_matchingOptions:(id)arg1;
 - (void)_updatedController;
 - (void)dealloc;

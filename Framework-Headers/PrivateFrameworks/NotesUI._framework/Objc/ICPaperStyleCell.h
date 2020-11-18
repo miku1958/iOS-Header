@@ -22,6 +22,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
+- (id)preferredTintColor;
 - (void)prepareForReuse;
 - (void)setSelected:(BOOL)arg1;
 - (void)setupCell;

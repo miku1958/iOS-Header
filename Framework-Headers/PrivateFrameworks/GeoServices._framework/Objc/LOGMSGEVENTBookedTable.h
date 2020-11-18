@@ -12,8 +12,8 @@
 
 @interface LOGMSGEVENTBookedTable : PBCodable <NSCopying>
 {
-    unsigned long long _muid;
     NSString *_appId;
+    unsigned long long _muid;
     BOOL _bookedUsingMaps;
     BOOL _called;
     BOOL _cancelled;
@@ -27,26 +27,26 @@
     BOOL _viewedInPlacecard;
     BOOL _viewedInProactiveTray;
     struct {
-        unsigned int muid:1;
-        unsigned int bookedUsingMaps:1;
-        unsigned int called:1;
-        unsigned int cancelled:1;
-        unsigned int isAsync:1;
-        unsigned int routed:1;
-        unsigned int shared:1;
-        unsigned int tappedCancelReservation:1;
-        unsigned int tappedChangeReservation:1;
-        unsigned int tappedProactiveTrayItem:1;
-        unsigned int viewedDetailsFromPlacecard:1;
-        unsigned int viewedInPlacecard:1;
-        unsigned int viewedInProactiveTray:1;
-    } _has;
+        unsigned int has_muid:1;
+        unsigned int has_bookedUsingMaps:1;
+        unsigned int has_called:1;
+        unsigned int has_cancelled:1;
+        unsigned int has_isAsync:1;
+        unsigned int has_routed:1;
+        unsigned int has_shared:1;
+        unsigned int has_tappedCancelReservation:1;
+        unsigned int has_tappedChangeReservation:1;
+        unsigned int has_tappedProactiveTrayItem:1;
+        unsigned int has_viewedDetailsFromPlacecard:1;
+        unsigned int has_viewedInPlacecard:1;
+        unsigned int has_viewedInProactiveTray:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *appId; // @synthesize appId=_appId;
-@property (nonatomic) BOOL bookedUsingMaps; // @synthesize bookedUsingMaps=_bookedUsingMaps;
-@property (nonatomic) BOOL called; // @synthesize called=_called;
-@property (nonatomic) BOOL cancelled; // @synthesize cancelled=_cancelled;
+@property (strong, nonatomic) NSString *appId;
+@property (nonatomic) BOOL bookedUsingMaps;
+@property (nonatomic) BOOL called;
+@property (nonatomic) BOOL cancelled;
 @property (readonly, nonatomic) BOOL hasAppId;
 @property (nonatomic) BOOL hasBookedUsingMaps;
 @property (nonatomic) BOOL hasCalled;
@@ -61,17 +61,18 @@
 @property (nonatomic) BOOL hasViewedDetailsFromPlacecard;
 @property (nonatomic) BOOL hasViewedInPlacecard;
 @property (nonatomic) BOOL hasViewedInProactiveTray;
-@property (nonatomic) BOOL isAsync; // @synthesize isAsync=_isAsync;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (nonatomic) BOOL routed; // @synthesize routed=_routed;
-@property (nonatomic) BOOL shared; // @synthesize shared=_shared;
-@property (nonatomic) BOOL tappedCancelReservation; // @synthesize tappedCancelReservation=_tappedCancelReservation;
-@property (nonatomic) BOOL tappedChangeReservation; // @synthesize tappedChangeReservation=_tappedChangeReservation;
-@property (nonatomic) BOOL tappedProactiveTrayItem; // @synthesize tappedProactiveTrayItem=_tappedProactiveTrayItem;
-@property (nonatomic) BOOL viewedDetailsFromPlacecard; // @synthesize viewedDetailsFromPlacecard=_viewedDetailsFromPlacecard;
-@property (nonatomic) BOOL viewedInPlacecard; // @synthesize viewedInPlacecard=_viewedInPlacecard;
-@property (nonatomic) BOOL viewedInProactiveTray; // @synthesize viewedInProactiveTray=_viewedInProactiveTray;
+@property (nonatomic) BOOL isAsync;
+@property (nonatomic) unsigned long long muid;
+@property (nonatomic) BOOL routed;
+@property (nonatomic) BOOL shared;
+@property (nonatomic) BOOL tappedCancelReservation;
+@property (nonatomic) BOOL tappedChangeReservation;
+@property (nonatomic) BOOL tappedProactiveTrayItem;
+@property (nonatomic) BOOL viewedDetailsFromPlacecard;
+@property (nonatomic) BOOL viewedInPlacecard;
+@property (nonatomic) BOOL viewedInProactiveTray;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -80,6 +81,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

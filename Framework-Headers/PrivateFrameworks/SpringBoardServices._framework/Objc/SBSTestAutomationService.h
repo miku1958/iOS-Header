@@ -10,11 +10,14 @@
 {
 }
 
+- (id)acquireHUDHiddenAssertionForIdentifier:(id)arg1;
+- (void)countScenesForBundleIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resetToHomeScreenAnimated:(BOOL)arg1;
 - (void)setAlertsEnabled:(BOOL)arg1;
 - (void)setApplicationBundleIdentifier:(id)arg1 blockedForScreenTime:(BOOL)arg2;
 - (void)setIdleTimerEnabled:(BOOL)arg1;
 - (void)setOrientationLockEnabled:(BOOL)arg1;
+- (void)setTestRunnerRecoveryApplicationBundleIdentifier:(id)arg1;
 - (void)suspendAllDisplays;
 
 @end

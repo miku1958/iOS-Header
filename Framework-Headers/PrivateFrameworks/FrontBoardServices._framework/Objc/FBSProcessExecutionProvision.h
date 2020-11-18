@@ -10,16 +10,16 @@
 #import <FrontBoardServices/NSCopying-Protocol.h>
 
 @class NSError, NSString;
-@protocol FBSProcess, FBSProcessExecutionProvisionDelegate, OS_dispatch_queue;
+@protocol FBSProcessExecutionProvisionDelegate, FBSProcessInternal, OS_dispatch_queue;
 
 @interface FBSProcessExecutionProvision : NSObject <BSDescriptionProviding, NSCopying>
 {
-    id<FBSProcess> _process;
+    id<FBSProcessInternal> _process;
     BOOL _activated;
-    NSError *_error;
     NSObject<OS_dispatch_queue> *_delegateCalloutQueue;
     BOOL _monitoring;
     BOOL _violated;
+    NSError *_error;
     id<FBSProcessExecutionProvisionDelegate> _delegate;
 }
 
@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isMonitoring) BOOL monitoring; // @synthesize monitoring=_monitoring;
-@property (readonly, weak, nonatomic) id<FBSProcess> process; // @synthesize process=_process;
+@property (readonly, weak, nonatomic) id<FBSProcessInternal> process; // @synthesize process=_process;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isViolated) BOOL violated; // @synthesize violated=_violated;
 

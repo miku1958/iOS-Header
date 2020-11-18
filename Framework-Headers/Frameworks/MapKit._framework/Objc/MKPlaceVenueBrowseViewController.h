@@ -47,13 +47,14 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)canDisplayForMapItem:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_ppt_postNotificationName:(id)arg1 object:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (double)collectionViewBottomPadding;
 - (void)contentSizeCategoryDidChange:(id)arg1;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithMapItem:(id)arg1;
 - (int)placeCardTypeForAnalytics;
 - (void)setupCollectionView;

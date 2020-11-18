@@ -80,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithContacts:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)refreshActions;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateActionsControllerHeightConstraint;
 - (void)updateActionsViewBackgroundColor;
 - (void)updateViewConstraints;

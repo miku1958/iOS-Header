@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKOverlay-Protocol.h>
+#import <VectorKit/VKRouteOverlay-Protocol.h>
 
 @class GEOMapRegion, NSMutableSet, NSSet, NSString, VKPolylineOverlay;
 
-@interface VKPolylineGroupOverlay : NSObject <VKOverlay>
+@interface VKPolylineGroupOverlay : NSObject <VKRouteOverlay>
 {
     NSMutableSet *_polylines;
     GEOMapRegion *_boundingMapRegion;
     struct __CFSet *_observers;
     VKPolylineOverlay *_selectedPolyline;
+    VKPolylineOverlay *_focusedPolyline;
     BOOL _containsTransit;
     BOOL _showTraffic;
 }
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) CDStruct_c3b9c2ee coordinate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) VKPolylineOverlay *focusedPolyline; // @synthesize focusedPolyline=_focusedPolyline;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSSet *polylines; // @synthesize polylines=_polylines;
 @property (strong, nonatomic) VKPolylineOverlay *selectedPolyline; // @synthesize selectedPolyline=_selectedPolyline;

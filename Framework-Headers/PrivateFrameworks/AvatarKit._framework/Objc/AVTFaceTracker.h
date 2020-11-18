@@ -13,7 +13,7 @@
 {
     NSMutableArray *_delegates;
     AVTFaceTrackingInfo *_trackingInfo;
-    CDStruct_40c3f62d _trackingData;
+    CDStruct_32896d86 _trackingData;
     NSLock *_trackingDataLock;
     unsigned long long _lastTrackingCaptureTimestamp;
     CDStruct_14d5dc5e _rawTransform;
@@ -22,6 +22,7 @@
     BOOL _trackingIsPaused;
     BOOL _isActive;
     BOOL _shouldConstraintHeadPose;
+    BOOL _shouldUseAudioData;
     struct {
         double refTimestamp;
         double arDelegateTimestamp;
@@ -60,6 +61,7 @@
 @property (readonly) CDStruct_14d5dc5e rawTransform;
 @property (readonly, getter=isSensorCovered) BOOL sensorCovered; // @synthesize sensorCovered=_isSensorCovered;
 @property (nonatomic) BOOL shouldConstraintHeadPose; // @synthesize shouldConstraintHeadPose=_shouldConstraintHeadPose;
+@property (nonatomic) BOOL shouldUseAudioData;
 @property (nonatomic) BOOL skipUpdates; // @synthesize skipUpdates=_skipUpdates;
 
 + (void)setUsesInternalTrackingPipeline:(BOOL)arg1;
@@ -68,7 +70,7 @@
 - (void)_setupARKitWithRecordTechnique:(BOOL)arg1;
 - (void)addDelegate:(id)arg1;
 - (void)beginQuery;
-- (void)copyTrackingData:(CDStruct_40c3f62d *)arg1;
+- (void)copyTrackingData:(CDStruct_32896d86 *)arg1;
 - (void)decreaseFrameRate;
 - (void)endQuery;
 - (void)enumerateDelegates:(CDUnknownBlockType)arg1;

@@ -17,11 +17,10 @@ __attribute__((visibility("hidden")))
 + (BOOL)requiresEventOrReminderAccess;
 + (BOOL)requiresReminderAccess;
 - (void)CADDatabaseCanModifyCalendarDatabase:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseClearSuperfluousChanges:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseCommitWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseExportICSDataForCalendarItems:(id)arg1 preventLineFolding:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseFetchChangedObjectIDsSinceSequenceNumber:(long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseFetchObjectChangesForEntityType:(int)arg1 insideObject:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADDatabaseFetchObjectChangesForEntityTypes:(id)arg1 insideObject:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetChangedEntityIDsSinceTimestamp:(double)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetChangesSinceSequenceNumber:(int)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetNextAssignableColorWithReply:(CDUnknownBlockType)arg1;
@@ -30,14 +29,17 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseImportICSData:(id)arg1 intoCalendarsWithIDs:(id)arg2 optionsMask:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseMarkIndividualChangesConsumed:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseRegisterForDetailedChangeTracking:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseResetWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseRollbackWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseSaveWithReply:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseSetInitializationOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseSetShowsDeclinedEvents:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseUnregisterForDetailedChangeTracking:(CDUnknownBlockType)arg1;
 - (BOOL)_CADDatabaseCanModifyCalendarDatabase;
+- (struct __CFArray *)_copyToIntCFArrayRef:(id)arg1;
+- (struct __CFSet *)_copyToIntCFSetRef:(id)arg1;
 - (id)_importData:(id)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 outError:(int *)arg4;
 
 @end

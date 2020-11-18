@@ -25,6 +25,7 @@
 - (void)encodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (id)init;
 - (BOOL)isEqualForContact:(id)arg1 other:(id)arg2;
+- (void)resetGuardianManagedValueOnContact:(id)arg1;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;
 
 @end

@@ -23,12 +23,14 @@
 - (void).cxx_destruct;
 - (unsigned long long)_effectiveGoalTypeForWorkout:(id)arg1;
 - (id)_energyBurnedUnitStringForUnit:(id)arg1 useShortString:(BOOL)arg2;
+- (id)_localizedEnergyDescriptionForWorkout:(id)arg1 withValue:(id *)arg2 appendActivityType:(BOOL)arg3 activityTypeString:(id)arg4;
 - (id)_localizedKeyMetricCyclingStringWithWorkout:(id)arg1 withUnitStyle:(unsigned long long)arg2;
 - (id)_localizedKeyMetricDistanceStringForWorkout:(id)arg1 withUnitStyle:(unsigned long long)arg2;
 - (id)_localizedKeyMetricDurationStringWithWorkout:(id)arg1;
 - (id)_localizedKeyMetricEnergyBurnedStringForWorkout:(id)arg1 withUnitStyle:(unsigned long long)arg2;
 - (id)_localizedOpenGoalKeyMetricStringForWorkout:(id)arg1 withUnitStyle:(unsigned long long)arg2;
 - (id)_localizedStringWithDistanceUnit:(unsigned long long)arg1 distanceInUnit:(double)arg2 unitStyle:(long long)arg3 decimalPrecision:(unsigned long long)arg4;
+- (id)_localizedTimeDescriptionForWorkout:(id)arg1 withValue:(id *)arg2 appendActivityType:(BOOL)arg3 activityTypeString:(id)arg4;
 - (unsigned long long)_naturalScaleUnitForDistanceInMeters:(double)arg1 distanceType:(unsigned long long)arg2;
 - (id)_stringByReplacingThirtyThreeAndAThirdIfNeeded:(id)arg1 distanceInMeters:(double)arg2 distanceUnit:(unsigned long long)arg3;
 - (BOOL)_workoutSupportsDistanceMetricForGoalDisplay:(id)arg1;
@@ -45,6 +47,7 @@
 - (id)localizedGoalDescriptionForWorkout:(id)arg1 withValue:(id *)arg2 appendActivityType:(BOOL)arg3;
 - (id)localizedHeartRateUnitString;
 - (id)localizedInSessionDescriptionForElevation:(unsigned long long)arg1;
+- (id)localizedInSessionDescriptionForGroundElevation:(unsigned long long)arg1;
 - (id)localizedKeyMetricStringForWorkout:(id)arg1 unitStyle:(unsigned long long)arg2;
 - (id)localizedLongActiveEnergyUnitString;
 - (id)localizedLongActiveEnergyUnitStringWithTextCase:(unsigned long long)arg1;
@@ -67,8 +70,10 @@
 - (id)localizedSpeedUnitString;
 - (id)localizedStringWithActiveEnergy:(id)arg1;
 - (id)localizedStringWithActiveEnergy:(id)arg1 unitStyle:(unsigned long long)arg2;
+- (id)localizedStringWithActiveHours:(id)arg1;
 - (id)localizedStringWithBeatsPerMinute:(double)arg1;
 - (id)localizedStringWithBeatsPerMinute:(double)arg1 requirePositiveValue:(BOOL)arg2;
+- (id)localizedStringWithBriskMinutes:(id)arg1;
 - (id)localizedStringWithDistanceInMeters:(double)arg1 distanceType:(unsigned long long)arg2 unitStyle:(unsigned long long)arg3;
 - (id)localizedStringWithDistanceInMeters:(double)arg1 distanceUnit:(unsigned long long)arg2 unitStyle:(unsigned long long)arg3 decimalPrecision:(unsigned long long)arg4;
 - (id)localizedStringWithEnergy:(id)arg1 energyType:(unsigned long long)arg2 unitStyle:(unsigned long long)arg3;

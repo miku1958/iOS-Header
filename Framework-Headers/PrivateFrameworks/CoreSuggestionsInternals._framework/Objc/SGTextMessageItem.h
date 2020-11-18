@@ -15,10 +15,12 @@
     SGTextMessage *_message;
     NSString *_content;
     NSString *_language;
+    NSArray *_detectedData;
     NSArray *_features;
 }
 
 @property (readonly) NSString *content; // @synthesize content=_content;
+@property (readonly) NSArray *detectedData; // @synthesize detectedData=_detectedData;
 @property (strong) NSArray *features; // @synthesize features=_features;
 @property (readonly) NSString *language; // @synthesize language=_language;
 @property (readonly) SGTextMessage *message; // @synthesize message=_message;
@@ -28,6 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTextMessage:(id)arg1;
+- (id)initWithTextMessage:(id)arg1 andDetectedData:(id)arg2;
 
 @end
 

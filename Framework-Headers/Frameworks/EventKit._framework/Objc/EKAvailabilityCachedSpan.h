@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithSpan:(id)arg1;
 
 @end
 

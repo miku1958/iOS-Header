@@ -39,9 +39,13 @@
 - (void)_operation:(id)arg1 finishedWithResult:(id)arg2 error:(id)arg3;
 - (void)_sendCallback:(id)arg1 inContext:(id)arg2 success:(BOOL)arg3;
 - (void)evaluate;
+- (void)evaluateScripts;
+- (void)handleScirptLoadFailure;
 - (id)initWithScripts:(id)arg1 withContext:(id)arg2 callback:(id)arg3 jingleRequest:(BOOL)arg4;
 - (void)operation:(id)arg1 failedWithError:(id)arg2;
 - (void)operation:(id)arg1 finishedWithOutput:(id)arg2;
+- (void)parseScriptData:(id)arg1 successPredicate:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)scriptDidLoadWithID:(id)arg1 data:(id)arg2 error:(id)arg3;
 
 @end
 

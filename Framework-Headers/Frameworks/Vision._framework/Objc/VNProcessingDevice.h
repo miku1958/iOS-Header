@@ -12,8 +12,8 @@
 {
 }
 
-+ (void)_lockOnceTokensLock;
-+ (void)_unlockOnceTokensLock;
++ (void)_lockStaticObjectsAccessLock;
++ (void)_unlockStaticObjectsAccessLock;
 + (id)allDevices;
 + (id)defaultANEDevice;
 + (id)defaultCPUDevice;

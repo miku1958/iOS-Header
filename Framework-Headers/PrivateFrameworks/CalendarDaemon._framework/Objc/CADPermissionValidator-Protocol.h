@@ -9,12 +9,15 @@
 @protocol CADPermissionValidator <NSObject>
 
 @property (readonly) BOOL canMakeSpotlightChanges;
+@property (readonly) BOOL canModifyBirthdayCalendar;
 @property (readonly) BOOL canModifyCalendarDatabase;
 @property (readonly) BOOL canModifySuggestedEventCalendar;
 @property (readonly) BOOL hasCalendarToolEntitlement;
 @property (readonly) BOOL hasChangeIdTrackingOverrideEntitlement;
 @property (readonly) BOOL hasContactsUIEntitlement;
+@property (readonly) BOOL hasManagedConfigurationBundleIDOverrideEntitlement;
 @property (readonly) BOOL hasMigrationEntitlement;
+@property (readonly) BOOL hasNotificationCountEntitlement;
 @property (readonly) BOOL hasSyncClientEntitlement;
 @property (readonly) BOOL internalAccessLevelGranted;
 @property (readonly) BOOL shouldTrustClientEnforcedManagedConfigurationAccess;

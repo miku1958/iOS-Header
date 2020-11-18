@@ -6,7 +6,19 @@
 
 #import <Foundation/NSCoder.h>
 
+@class UIStoryboardDecodingContext;
+
 @interface NSCoder (UIGeometryKeyedCoding)
+
+@property (readonly, nonatomic) UIStoryboardDecodingContext *_storyboardDecodingContext;
+
+- (void)_createStoryboardDecodingContextIfNeeded;
+- (id)_decodeObjectsAndTrackChildViewControllerIndexWithParent:(id)arg1 forKey:(id)arg2;
+- (id)_decodeObjectsWithSourceSegueTemplate:(id)arg1 creator:(CDUnknownBlockType)arg2 sender:(id)arg3 forKey:(id)arg4;
+- (void)_initializeClassSwapperWithCurrentDecodingViewControllerIfNeeded:(id)arg1;
+- (id)_ui_decodeTextAttributesForKey:(id)arg1;
+- (void)_ui_encodeTextAttributes:(id)arg1 forKey:(id)arg2;
+- (BOOL)_ui_isInterprocess;
 - (struct CGAffineTransform)decodeCGAffineTransformForKey:(id)arg1;
 - (struct CGPoint)decodeCGPointForKey:(id)arg1;
 - (struct CGRect)decodeCGRectForKey:(id)arg1;

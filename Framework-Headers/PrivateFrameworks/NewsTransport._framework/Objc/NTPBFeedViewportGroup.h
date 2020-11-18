@@ -18,6 +18,10 @@
     NTPBColor *_cardBackgroundColor;
     NTPBDate *_creationDate;
     int _ctaTextRef;
+    NTPBColorGradient *_darkStyleBackgroundGradient;
+    NTPBColor *_darkStyleCardBackgroundColor;
+    NTPBColorGradient *_darkStyleSauceGradient;
+    NTPBColor *_darkStyleTitleColor;
     NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
     NTPBDate *_editionFeedEndDate;
     NTPBDate *_editionFeedStartDate;
@@ -54,6 +58,10 @@
 @property (strong, nonatomic) NTPBColor *cardBackgroundColor; // @synthesize cardBackgroundColor=_cardBackgroundColor;
 @property (strong, nonatomic) NTPBDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic) int ctaTextRef; // @synthesize ctaTextRef=_ctaTextRef;
+@property (strong, nonatomic) NTPBColorGradient *darkStyleBackgroundGradient; // @synthesize darkStyleBackgroundGradient=_darkStyleBackgroundGradient;
+@property (strong, nonatomic) NTPBColor *darkStyleCardBackgroundColor; // @synthesize darkStyleCardBackgroundColor=_darkStyleCardBackgroundColor;
+@property (strong, nonatomic) NTPBColorGradient *darkStyleSauceGradient; // @synthesize darkStyleSauceGradient=_darkStyleSauceGradient;
+@property (strong, nonatomic) NTPBColor *darkStyleTitleColor; // @synthesize darkStyleTitleColor=_darkStyleTitleColor;
 @property (strong, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo; // @synthesize discoverMoreVideosInfo=_discoverMoreVideosInfo;
 @property (strong, nonatomic) NTPBDate *editionFeedEndDate; // @synthesize editionFeedEndDate=_editionFeedEndDate;
 @property (strong, nonatomic) NTPBDate *editionFeedStartDate; // @synthesize editionFeedStartDate=_editionFeedStartDate;
@@ -63,6 +71,10 @@
 @property (readonly, nonatomic) BOOL hasCardBackgroundColor;
 @property (readonly, nonatomic) BOOL hasCreationDate;
 @property (nonatomic) BOOL hasCtaTextRef;
+@property (readonly, nonatomic) BOOL hasDarkStyleBackgroundGradient;
+@property (readonly, nonatomic) BOOL hasDarkStyleCardBackgroundColor;
+@property (readonly, nonatomic) BOOL hasDarkStyleSauceGradient;
+@property (readonly, nonatomic) BOOL hasDarkStyleTitleColor;
 @property (readonly, nonatomic) BOOL hasDiscoverMoreVideosInfo;
 @property (readonly, nonatomic) BOOL hasEditionFeedEndDate;
 @property (readonly, nonatomic) BOOL hasEditionFeedStartDate;

@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *mathMLTag;
 
 - (void).cxx_destruct;
-- (id)childSpeakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 parentTreePosition:(id)arg3 childIndex:(unsigned long long *)arg4;
+- (id)childSpeakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 parentTreePosition:(id)arg3 childIndex:(unsigned long long *)arg4;
 - (id)children;
 - (id)description;
 - (BOOL)hasSimpleArrayOfChildren;
@@ -27,8 +27,8 @@ __attribute__((visibility("hidden")))
 - (id)localizableSuffixForChildAtIndex:(unsigned long long)arg1;
 - (id)mathMLString;
 - (id)prefixForChildAtIndex:(unsigned long long)arg1;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
-- (id)speakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2;
+- (id)speakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
 - (id)subExpressions;
 - (id)suffixForChildAtIndex:(unsigned long long)arg1;
 

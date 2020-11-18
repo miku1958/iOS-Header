@@ -16,7 +16,7 @@
 }
 
 @property (strong, nonatomic) CXCallObserver *callObserver; // @synthesize callObserver=_callObserver;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 
 - (void).cxx_destruct;
 - (void)_requestTransaction:(id)arg1 completion:(CDUnknownBlockType)arg2;

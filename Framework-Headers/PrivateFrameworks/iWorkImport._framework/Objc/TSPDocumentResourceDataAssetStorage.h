@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)length;
 - (BOOL)needsDownload;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
+- (struct CGSize)pixelSize;
 
 @end
 

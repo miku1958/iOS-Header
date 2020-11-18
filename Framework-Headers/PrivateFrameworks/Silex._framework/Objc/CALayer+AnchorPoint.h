@@ -7,6 +7,8 @@
 #import <QuartzCore/CALayer.h>
 
 @interface CALayer (AnchorPoint)
+- (struct CGRect)frameUsingCenterAndBounds;
 - (void)setAnchorPointWithoutChangingPosition:(struct CGPoint)arg1;
+- (void)setFrameUsingCenterAndBounds:(struct CGRect)arg1;
 @end
 

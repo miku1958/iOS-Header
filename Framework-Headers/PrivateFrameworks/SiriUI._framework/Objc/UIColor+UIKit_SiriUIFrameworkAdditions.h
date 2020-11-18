@@ -13,7 +13,6 @@
 + (id)siriui_highlightColor;
 + (id)siriui_insertionPointColor;
 + (id)siriui_keylineColor;
-+ (id)siriui_keylineColorStark;
 + (id)siriui_lightHighlightColor;
 + (id)siriui_lightInsertionPointColor;
 + (id)siriui_lightKeylineColor;
@@ -31,10 +30,12 @@
 + (id)siriui_platterMaskingColor;
 + (id)siriui_platterMaskingHighlightColor;
 + (id)siriui_platterOverlayBackgroundColor;
++ (id)siriui_platterOverlayDarkBackgroundColor;
 + (id)siriui_platterSemiTransparentTextColor;
 + (id)siriui_platterTextColor;
 + (id)siriui_platterTextHighlightColor;
 + (id)siriui_sashOverlayBackgroundColor;
++ (id)siriui_semiTransparentLightTextColor;
 + (id)siriui_semiTransparentTextColor;
 + (id)siriui_snippetBackgroundColor;
 + (id)siriui_tapToEditColor;

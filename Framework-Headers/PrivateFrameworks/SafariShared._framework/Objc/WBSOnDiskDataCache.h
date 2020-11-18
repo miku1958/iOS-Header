@@ -52,6 +52,7 @@
 - (id)init;
 - (id)initWithCacheDirectoryURL:(id)arg1;
 - (void)removeEntriesForKeyStrings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeEntriesForKeyStringsNotIncludedIn:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)requestEntryForKeyString:(id)arg1;
 - (void)reset;
 - (void)savePendingChangesBeforeTearDown;

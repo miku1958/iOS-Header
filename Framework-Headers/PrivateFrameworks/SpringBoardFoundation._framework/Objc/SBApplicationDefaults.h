@@ -12,7 +12,6 @@
 {
 }
 
-@property (readonly, nonatomic) double backgroundMultitaskingWatchdogTimeout; // @dynamic backgroundMultitaskingWatchdogTimeout;
 @property (nonatomic) NSString *bundleIdentifierToForceHomeAffordanceInset; // @dynamic bundleIdentifierToForceHomeAffordanceInset;
 @property (readonly, nonatomic) BOOL forcesMedusaAdoption; // @dynamic forcesMedusaAdoption;
 @property (readonly, nonatomic) BOOL ignoresDeclaredNetworkUsage; // @dynamic ignoresDeclaredNetworkUsage;

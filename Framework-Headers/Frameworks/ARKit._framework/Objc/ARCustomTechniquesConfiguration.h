@@ -26,7 +26,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)ensureTechniqueAndCustomSensorCompatibility;
+- (id)imageSensorSettings;
+- (id)imageSensorSettingsForSuperWide;
 - (id)init;
+- (id)initPrivate;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLightEstimationEnabled;
 - (void)setCameraPosition:(long long)arg1;

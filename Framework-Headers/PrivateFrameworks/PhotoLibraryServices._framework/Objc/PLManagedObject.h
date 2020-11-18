@@ -6,18 +6,37 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSString, PLPhotoLibrary;
+#import <PhotoLibraryServices/PLJournalEntryPayloadManagedObjectUpdate-Protocol.h>
+#import <PhotoLibraryServices/PLValidatedManagedObject-Protocol.h>
 
-@interface PLManagedObject : NSManagedObject
+@class NSString, PLPhotoLibrary, PLPhotoLibraryPathManager;
+
+@interface PLManagedObject : NSManagedObject <PLJournalEntryPayloadManagedObjectUpdate, PLValidatedManagedObject>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRegisteredWithUserInterfaceContext;
-@property (readonly, strong, nonatomic) PLPhotoLibrary *photoLibrary;
+@property (readonly, nonatomic) PLPhotoLibraryPathManager *pathManager;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (readonly, copy, nonatomic) NSString *shortObjectIDURI;
+@property (readonly) Class superclass;
 
++ (id)attributeValidationRules;
++ (id)entityInManagedObjectContext:(id)arg1;
++ (id)entityName;
++ (id)insertInManagedObjectContext:(id)arg1;
++ (id)objectIDDescription;
 - (BOOL)isSyncableChange;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (id)payloadIDForTombstone:(id)arg1;
+- (id)payloadIDsByPayloadClassIDToDeleteOnInsert;
+- (id)payloadsForChangedKeys:(id)arg1;
 - (BOOL)supportsCloudUpload;
+- (BOOL)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (void)willSave;
 
 @end

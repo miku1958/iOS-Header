@@ -22,7 +22,7 @@
 - (id)_allHTTPHeaderFieldsAsArrays;
 - (id)_clientCertificateChain;
 - (id)_clientCertificateState;
-- (id)_initWithCFURLResponse:(struct _CFURLResponse *)arg1;
+- (id)_initWithCFURLResponse:(id)arg1;
 - (id)_peerCertificateChain;
 - (struct __SecTrust *)_peerTrust;
 - (void)_setPeerTrust:(struct __SecTrust *)arg1;
@@ -32,6 +32,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURL:(id)arg1 statusCode:(long long)arg2 HTTPVersion:(id)arg3 headerFields:(id)arg4;
 - (id)initWithURL:(id)arg1 statusCode:(long long)arg2 headerFields:(id)arg3 requestTime:(double)arg4;
+- (id)valueForHTTPHeaderField:(id)arg1;
 
 @end
 

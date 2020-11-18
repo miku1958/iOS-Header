@@ -25,7 +25,7 @@
 
 + (id)_stocksComplication;
 - (void).cxx_destruct;
-- (id)initWithDictionary:(id)arg1 supportedFamilies:(id)arg2;
+- (id)initWithRemoteApplication:(id)arg1 supportedFamilies:(id)arg2;
 
 @end
 

@@ -6,30 +6,35 @@
 
 #import <UIKit/UIView.h>
 
+#import <Widgets/MTMaterialGrouping-Protocol.h>
 #import <Widgets/UITextViewDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, UIFont, WGNewWidgetsButton, WGShortLookStyleButton, _UILegibilitySettings;
 @protocol WGWidgetListFooterViewDelegate;
 
-@interface WGWidgetListFooterView : UIView <UITextViewDelegate>
+@interface WGWidgetListFooterView : UIView <UITextViewDelegate, MTMaterialGrouping>
 {
     WGShortLookStyleButton *_editButton;
     WGNewWidgetsButton *_newWidgetsButton;
     NSMutableDictionary *_widgetIDsToAttributionViews;
     UIFont *_referenceFont;
+    BOOL _shouldSizeContent;
+    UIView *_contentView;
     long long _layoutMode;
     _UILegibilitySettings *_legibilitySettings;
     id<WGWidgetListFooterViewDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WGWidgetListFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSString *groupName; // @dynamic groupName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutMode; // @synthesize layoutMode=_layoutMode;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (copy, nonatomic) NSString *materialGroupNameBase;
 @property (nonatomic) BOOL shouldBlurContent; // @dynamic shouldBlurContent;
+@property (nonatomic) BOOL shouldSizeContent; // @synthesize shouldSizeContent=_shouldSizeContent;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

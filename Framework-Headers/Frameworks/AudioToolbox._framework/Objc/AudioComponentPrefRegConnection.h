@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolbox/AudioComponentPreferenceProtocol-Protocol.h>
+#import <AudioToolboxCore/AudioComponentPreferenceProtocol-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface AudioComponentPrefRegConnection : NSObject <AudioComponentPreferenceProtocol>

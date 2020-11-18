@@ -10,9 +10,9 @@
 
 @interface MCMContainer : NSObject
 {
-    unsigned int _userId;
     NSString *_identifier;
     NSUUID *_uuid;
+    NSString *_personaUniqueString;
     long long _containerClass;
     struct container_object *_thisContainer;
 }
@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) long long containerClass;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSDictionary *info;
+@property (readonly, nonatomic) NSString *personaUniqueString;
 @property (readonly, nonatomic, getter=isTemporary) BOOL temporary;
 @property (readonly, nonatomic) struct container_object *thisContainer;
 @property (readonly, nonatomic) NSURL *url;
@@ -40,7 +41,7 @@
 - (id)infoValueForKey:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 createIfNecessary:(BOOL)arg2 existed:(BOOL *)arg3 temp:(BOOL)arg4 error:(id *)arg5;
-- (id)initWithIdentifier:(id)arg1 userId:(unsigned int)arg2 uuid:(id)arg3 error:(id *)arg4;
+- (id)initWithIdentifier:(id)arg1 uuid:(id)arg2 personaUniqueString:(id)arg3 error:(id *)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (void)markDeleted;
 - (BOOL)recreateDefaultStructureWithError:(id *)arg1;

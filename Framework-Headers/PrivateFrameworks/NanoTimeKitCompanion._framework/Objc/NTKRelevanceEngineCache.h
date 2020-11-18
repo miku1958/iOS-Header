@@ -34,12 +34,14 @@
 - (void)_beginLoadingDataForEngine:(id)arg1;
 - (void)_clockViewControllerDidBeginEditing;
 - (void)_clockViewControllerDidEndEditing;
+- (void)_clockViewControllerDidEnterAddable;
 - (BOOL)_faceCollectionContainsFaceNeedingElementCoordinator:(id)arg1;
 - (BOOL)_faceNeedsElementCoordinator:(id)arg1;
 - (void)_loadCoordinatorIfNeeded;
 - (BOOL)_needsLiveElementCoordinator;
 - (void)_unloadCoordinatorIfNeeded;
 - (id)canonicalRelevanceEngine;
+- (id)canonicalRelevanceEngineIgnoringAppInstallations;
 - (void)dealloc;
 - (void)faceCollection:(id)arg1 didAddFace:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)faceCollection:(id)arg1 didRemoveFace:(id)arg2 atIndex:(unsigned long long)arg3;

@@ -10,7 +10,7 @@
 
 @protocol SearchUITableHeaderViewDelegate <NSObject>
 
-@property (readonly) NSString *currentQueryString;
+@property (readonly) NSString *queryString;
 
 - (void)clearResultsFromSection:(SFResultSection *)arg1;
 - (BOOL)sectionIsClearable:(SFResultSection *)arg1;

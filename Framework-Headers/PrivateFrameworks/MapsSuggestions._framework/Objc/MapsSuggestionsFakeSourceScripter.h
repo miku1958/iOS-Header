@@ -8,28 +8,27 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class MapsSuggestionsFakeSource, MapsSuggestionsFakeSourceScripterStep, NSMutableArray, NSString;
+@class MapsSuggestionsFakePullSource, NSMutableArray, NSString, _MapsSuggestionsFakeSourceScripterStep;
 @protocol OS_dispatch_queue;
 
 @interface MapsSuggestionsFakeSourceScripter : NSObject <MapsSuggestionsObject>
 {
     NSMutableArray *_steps;
-    MapsSuggestionsFakeSourceScripterStep *_previousStep;
+    _MapsSuggestionsFakeSourceScripterStep *_previousStep;
     NSObject<OS_dispatch_queue> *_queue;
-    MapsSuggestionsFakeSource *_fakeSource;
+    MapsSuggestionsFakePullSource *_fakeSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) MapsSuggestionsFakeSource *fakeSource; // @synthesize fakeSource=_fakeSource;
+@property (strong, nonatomic) MapsSuggestionsFakePullSource *fakeSource; // @synthesize fakeSource=_fakeSource;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
 - (void)_sendStep:(id)arg1;
-- (void)addEntriesToAdd:(struct NSArray *)arg1 deleteMissing:(BOOL)arg2;
-- (void)addEntriesToDelete:(struct NSArray *)arg1;
+- (void)addEntriesToAdd:(struct NSArray *)arg1;
 - (id)initWithFakeSource:(id)arg1;
 - (void)resendSameAfterSeconds:(double)arg1;
 - (void)resendSameNow;

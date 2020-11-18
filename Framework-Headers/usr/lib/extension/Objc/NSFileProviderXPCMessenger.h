@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_makeProvider:(id)arg1 provideItemAtURL:(id)arg2 options:(unsigned long long)arg3 forAccessClaimWithID:(id)arg4 processIdentifier:(int)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_makeProvider:(id)arg1 provideItemAtURL:(id)arg2 options:(unsigned long long)arg3 forAccessClaimWithID:(id)arg4 processIdentifier:(int)arg5 kernelOperation:(unsigned int)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (oneway void)cancelProvidingItemAtURL:(id)arg1 forClaimWithID:(id)arg2;
 - (void)checkInProviderWithReply:(CDUnknownBlockType)arg1;
 - (void)collectDebuggingInformationWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -32,9 +32,10 @@ __attribute__((visibility("hidden")))
 - (id)initWithFileProvider:(id)arg1 queue:(id)arg2;
 - (id)initWithFileProviderProxy:(id)arg1;
 - (void)invalidate;
+- (void)movingItemAtURL:(id)arg1 requiresProvidingWithDestinationURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (oneway void)observeEndOfWriteAtURL:(id)arg1 forClaimWithID:(id)arg2 fromProcessWithIdentifier:(int)arg3;
 - (oneway void)observePresentationChangeOfKind:(id)arg1 forPresenterWithID:(id)arg2 fromProcessWithIdentifier:(int)arg3 observedUbiquityAttributes:(id)arg4 url:(id)arg5 newURL:(id)arg6;
-- (void)provideItemAtURL:(id)arg1 forClaimWithID:(id)arg2 madeByClientWithProcessIdentifier:(int)arg3 options:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)provideItemAtURL:(id)arg1 forClaimWithID:(id)arg2 madeByClientWithProcessIdentifier:(int)arg3 options:(unsigned long long)arg4 kernelOperation:(unsigned int)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)providePhysicalItemForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

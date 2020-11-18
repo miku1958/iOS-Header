@@ -23,8 +23,10 @@
 - (NSIndexSet *)characterIndexesForQuadPoints:(NSArray *)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(AKController *)arg3;
 - (void)clearHighlightableSelectionForAnnotationController:(AKController *)arg1;
 - (void)controller:(AKController *)arg1 didPlaceSingleShotAnnotation:(AKAnnotation *)arg2 onPageModelController:(AKPageModelController *)arg3;
+- (void)controller:(AKController *)arg1 performActionForMode:(unsigned long long)arg2 fromSender:(long long)arg3 withAttribute:(long long)arg4 onPageAtIndex:(unsigned long long)arg5;
 - (void)controller:(AKController *)arg1 willPlaceSingleShotAnnotation:(AKAnnotation *)arg2 onProposedPageModelController:(id *)arg3;
 - (NSArray *)controller:(AKController *)arg1 willSetToolbarItems:(NSArray *)arg2;
+- (void)controllerDidDismissPopover:(AKController *)arg1;
 - (void)controllerDidEnterToolMode:(AKController *)arg1;
 - (void)controllerDidExitToolMode:(AKController *)arg1;
 - (BOOL)controllerShouldDetectFormElements:(AKController *)arg1;

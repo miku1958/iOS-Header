@@ -6,36 +6,33 @@
 
 #import <TemplateKit/TLKStackView.h>
 
-#import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSMutableArray, NSString, NUIContainerStackView, TLKRichTextField, TLKTitleContainerView, UIButton;
-@protocol TLKDetailsViewDelegate;
+@class NSMutableArray, NSString, NUIContainerStackView, TLKRichTextField, TLKTextButton, TLKTitleContainerView;
+@protocol TLKTextAreaViewDelegate;
 
-@interface TLKTextAreaView : TLKStackView <NUIContainerStackViewDelegate, TLKTextAreaViewTesting>
+@interface TLKTextAreaView : TLKStackView <TLKTextAreaViewTesting>
 {
     BOOL _disableAllObservers;
-    id<TLKDetailsViewDelegate> _buttonDelegate;
+    id<TLKTextAreaViewDelegate> _buttonDelegate;
     TLKTitleContainerView *_titleContainer;
     NSMutableArray *_detailsFields;
     TLKRichTextField *_footnoteLabel;
-    UIButton *_footnoteButton;
+    TLKTextButton *_footnoteButton;
     NUIContainerStackView *_footnoteContainer;
-    unsigned long long _style;
 }
 
-@property (weak) id<TLKDetailsViewDelegate> buttonDelegate; // @synthesize buttonDelegate=_buttonDelegate;
+@property (weak) id<TLKTextAreaViewDelegate> buttonDelegate; // @synthesize buttonDelegate=_buttonDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NSMutableArray *detailsFields; // @synthesize detailsFields=_detailsFields;
-@property BOOL disableAllObservers; // @synthesize disableAllObservers=_disableAllObservers;
-@property (strong) UIButton *footnoteButton; // @synthesize footnoteButton=_footnoteButton;
-@property (strong) NUIContainerStackView *footnoteContainer; // @synthesize footnoteContainer=_footnoteContainer;
-@property (strong) TLKRichTextField *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
+@property (strong, nonatomic) NSMutableArray *detailsFields; // @synthesize detailsFields=_detailsFields;
+@property (nonatomic) BOOL disableAllObservers; // @synthesize disableAllObservers=_disableAllObservers;
+@property (strong, nonatomic) TLKTextButton *footnoteButton; // @synthesize footnoteButton=_footnoteButton;
+@property (strong, nonatomic) NUIContainerStackView *footnoteContainer; // @synthesize footnoteContainer=_footnoteContainer;
+@property (strong, nonatomic) TLKRichTextField *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
 @property (readonly) unsigned long long hash;
-@property unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
-@property (strong) TLKTitleContainerView *titleContainer; // @synthesize titleContainer=_titleContainer;
+@property (strong, nonatomic) TLKTitleContainerView *titleContainer; // @synthesize titleContainer=_titleContainer;
 
 + (id)footNoteLabelFont;
 - (void).cxx_destruct;
@@ -47,7 +44,6 @@
 - (BOOL)noRichTextFields;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (id)secondaryTitleLabelString;
-- (void)styleDidChange:(unsigned long long)arg1;
 - (id)textAreaLabelStrings;
 - (id)titleLabelString;
 - (id)titleView;

@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSArray *iconImages; // @synthesize iconImages=_iconImages;
 @property (nonatomic) double iconPadding; // @synthesize iconPadding=_iconPadding;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (double)preferredWidth;
 

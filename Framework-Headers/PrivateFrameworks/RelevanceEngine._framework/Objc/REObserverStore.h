@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSHashTable, NSLock;
+@class NSArray, NSHashTable;
 
 @interface REObserverStore : NSObject
 {
-    NSLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSHashTable *_observers;
 }
 
@@ -21,6 +21,7 @@
 - (void)addObserver:(id)arg1;
 - (void)enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithFunctionsOptions:(unsigned long long)arg1;
 - (void)removeObserver:(id)arg1;
 
 @end

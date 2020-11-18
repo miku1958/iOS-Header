@@ -6,9 +6,11 @@
 
 #import <GeoServices/GEOComposedEnrouteNotice.h>
 
+#import <GeoServices/NSSecureCoding-Protocol.h>
+
 @class GEOTrafficCamera, NSString;
 
-@interface GEOComposedTrafficCamera : GEOComposedEnrouteNotice
+@interface GEOComposedTrafficCamera : GEOComposedEnrouteNotice <NSSecureCoding>
 {
     GEOTrafficCamera *_trafficCamera;
 }
@@ -22,9 +24,12 @@
 @property (readonly, nonatomic) double speedThreshold;
 @property (readonly, nonatomic) int type;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (id)detailFormatForLocation:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithEnrouteNotice:(id)arg1 trafficCamera:(id)arg2 onRoute:(id)arg3;
 - (id)position;
 - (id)titleFormatForLocation:(id)arg1;

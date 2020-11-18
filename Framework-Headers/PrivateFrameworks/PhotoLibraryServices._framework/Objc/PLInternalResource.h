@@ -4,46 +4,65 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreData/NSManagedObject.h>
+#import <PhotoLibraryServices/PLManagedObject.h>
 
-#import <PhotoLibraryServices/PLCloudResource-Protocol.h>
+#import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
+#import <PhotoLibraryServices/PLCloudResourceCommon-Protocol.h>
 #import <PhotoLibraryServices/PLResource-Protocol.h>
+#import <PhotoLibraryServices/PLResourceAvailabilityMarking-Protocol.h>
+#import <PhotoLibraryServices/PLValidatesResourceModel-Protocol.h>
 
-@class CPLScopedIdentifier, NSData, NSDate, NSManagedObjectID, NSString, PLCloudMaster, PLCodec, PLColorSpace, PLInternalResourceCloudAttributes, PLManagedAsset, PLUniformTypeIdentifier;
-@protocol PLAssetID, PLCodecIdentity, PLColorSpaceIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
+@class CPLScopedIdentifier, NSData, NSDate, NSManagedObjectID, NSNumber, NSString, PLCloudMaster, PLCodec, PLFileSystemBookmark, PLFileSystemVolume, PLInternalResourceSidecarRepresentation, PLManagedAsset, PLUniformTypeIdentifier;
+@protocol PLAssetID, PLCodecIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
 
-@interface PLInternalResource : NSManagedObject <PLResource, PLCloudResource>
+@interface PLInternalResource : PLManagedObject <PLCloudResourceCommon, PLResource, PLValidatesResourceModel, PLResourceAvailabilityMarking, PLCloudDeletable>
 {
+    PLInternalResourceSidecarRepresentation *_sidecarRepresentation;
 }
 
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property (readonly, copy, nonatomic) id<PLAssetID> assetID;
 @property (readonly, strong, nonatomic) NSString *assetUuid;
-@property (strong, nonatomic) PLInternalResourceCloudAttributes *cloudAttributes; // @dynamic cloudAttributes;
+@property (strong, nonatomic) NSString *cloudDeleteAssetUUIDWithResourceType; // @dynamic cloudDeleteAssetUUIDWithResourceType;
+@property (nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
+@property (readonly) long long cloudDeletionType;
+@property (strong, nonatomic) NSDate *cloudLastOnDemandDownloadDate; // @dynamic cloudLastOnDemandDownloadDate;
+@property (strong, nonatomic) NSDate *cloudLastPrefetchDate; // @dynamic cloudLastPrefetchDate;
 @property (nonatomic) short cloudLocalState;
-@property (strong, nonatomic) PLCloudMaster *cloudMaster; // @dynamic cloudMaster;
+@property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
+@property (strong, nonatomic) NSDate *cloudMasterDateCreated; // @dynamic cloudMasterDateCreated;
+@property (nonatomic) short cloudPrefetchCount; // @dynamic cloudPrefetchCount;
+@property (strong, nonatomic) NSDate *cloudPrunedAt; // @dynamic cloudPrunedAt;
+@property (nonatomic) int cloudSourceType; // @dynamic cloudSourceType;
+@property (readonly, copy) NSString *cloudUUIDForDeletion;
 @property (strong, nonatomic) PLCodec *codec; // @dynamic codec;
 @property (readonly, nonatomic) id<PLCodecIdentity> codecID;
-@property (strong, nonatomic) PLColorSpace *colorSpace; // @dynamic colorSpace;
-@property (readonly, nonatomic) id<PLColorSpaceIdentity> colorSpaceID;
-@property (nonatomic) unsigned long long cplType; // @dynamic cplType;
+@property (readonly, nonatomic) unsigned long long cplType;
+@property (readonly, nonatomic) unsigned long long cplType; // @dynamic cplType;
 @property (nonatomic) long long dataLength; // @dynamic dataLength;
 @property (readonly, nonatomic) id<PLResourceDataStore> dataStore;
-@property (nonatomic) short dataStoreID; // @dynamic dataStoreID;
+@property (nonatomic) short dataStoreClassID; // @dynamic dataStoreClassID;
 @property (readonly, nonatomic) id<PLResourceDataStoreKey> dataStoreKey;
 @property (copy, nonatomic) NSData *dataStoreKeyData; // @dynamic dataStoreKeyData;
 @property (nonatomic) long long dataStoreSubtype; // @dynamic dataStoreSubtype;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long estimatedDataLength; // @dynamic estimatedDataLength;
+@property (nonatomic) long long fileID; // @dynamic fileID;
 @property (readonly, strong, nonatomic) NSString *filePath;
 @property (readonly, nonatomic) unsigned long long fileSize;
+@property (strong, nonatomic) PLFileSystemBookmark *fileSystemBookmark; // @dynamic fileSystemBookmark;
+@property (strong, nonatomic) PLFileSystemVolume *fileSystemVolume; // @dynamic fileSystemVolume;
+@property (readonly, strong, nonatomic) NSString *fingerprint;
 @property (strong, nonatomic) NSString *fingerprint; // @dynamic fingerprint;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long height;
 @property (nonatomic) BOOL isAvailable;
 @property (readonly, nonatomic) BOOL isDerivative; // @dynamic isDerivative;
 @property (readonly, nonatomic) BOOL isLocallyAvailable;
-@property (readonly, strong, nonatomic) NSString *itemIdentifier;
 @property (strong, nonatomic) NSDate *lastOnDemandDownloadDate;
 @property (strong, nonatomic) NSDate *lastPrefetchDate;
 @property (nonatomic) short localAvailability; // @dynamic localAvailability;
@@ -54,71 +73,109 @@
 @property (readonly, nonatomic) long long orientedWidth;
 @property (nonatomic) short prefetchCount;
 @property (strong, nonatomic) NSDate *prunedAt;
+@property (nonatomic) long long ptpTrashedState; // @dynamic ptpTrashedState;
 @property (nonatomic) int qualitySortValue; // @dynamic qualitySortValue;
 @property (nonatomic) unsigned int recipeID; // @dynamic recipeID;
 @property (nonatomic) short remoteAvailability; // @dynamic remoteAvailability;
 @property (nonatomic) short remoteAvailabilityTarget; // @dynamic remoteAvailabilityTarget;
-@property (nonatomic) short resourceType; // @dynamic resourceType;
+@property (readonly, nonatomic) unsigned int resourceRecipeID;
+@property (nonatomic) unsigned int resourceType; // @dynamic resourceType;
+@property (readonly, nonatomic) float scale;
 @property (readonly, strong, nonatomic) CPLScopedIdentifier *scopedIdentifier;
-@property (readonly, nonatomic) unsigned long long sourceCplType; // @dynamic sourceCplType;
+@property (strong, nonatomic) NSNumber *sidecarIndex; // @dynamic sidecarIndex;
+@property (readonly, nonatomic) PLInternalResourceSidecarRepresentation *sidecarRepresentation; // @synthesize sidecarRepresentation=_sidecarRepresentation;
+@property (readonly, nonatomic) unsigned long long sourceCplType;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) PLCloudMaster *transientCloudMaster; // @dynamic transientCloudMaster;
+@property (strong, nonatomic) NSDate *trashedDate; // @dynamic trashedDate;
+@property (nonatomic) short trashedState; // @dynamic trashedState;
 @property (strong, nonatomic) PLUniformTypeIdentifier *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;
 @property (readonly, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
 @property (nonatomic) long long unorientedHeight; // @dynamic unorientedHeight;
 @property (nonatomic) long long unorientedWidth; // @dynamic unorientedWidth;
 @property (readonly, strong, nonatomic) NSString *utiString;
-@property (nonatomic) short version; // @dynamic version;
+@property (nonatomic) unsigned int version; // @dynamic version;
 @property (readonly, nonatomic) long long width;
 
 + (BOOL)_countOfLocallyAvailableCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 forMediumSized:(BOOL)arg3 localCount:(unsigned long long *)arg4 unavailableCount:(unsigned long long *)arg5 error:(id *)arg6;
-+ (id)_persistedResourcesForManagedAsset:(id)arg1 resourceIdentity:(id)arg2 error:(id *)arg3;
++ (id)_obsoleteResourceRecipesWithCPLOff;
++ (BOOL)batchResetFileIDInManagedObjectContext:(id)arg1 error:(id *)arg2;
++ (unsigned long long)bytesForAllResourcesInLibrary:(id)arg1;
 + (unsigned long long)bytesNeededToDownloadOriginalResourcesInLibrary:(id)arg1;
++ (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)cloudUUIDKeyForDeletion;
 + (BOOL)countOfLocallyAvailableCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 localCount:(unsigned long long *)arg3 unavailableCount:(unsigned long long *)arg4 error:(id *)arg5;
 + (BOOL)countOfMediumOriginalLocallyAvailableCloudResourcesInManagedObjectContext:(id)arg1 localCount:(unsigned long long *)arg2 unavailableCount:(unsigned long long *)arg3 error:(id *)arg4;
-+ (id)entityInManagedObjectContext:(id)arg1;
++ (unsigned long long)cplExpungedStateForTrashedState:(short)arg1;
++ (BOOL)deleteObsoleteResourcesInManagedObjectContext:(id)arg1 error:(id *)arg2;
 + (id)entityName;
-+ (id)insertIntoManagedObjectContext:(id)arg1;
 + (id)insertResourceForAssetObjectID:(id)arg1 resourceIdentity:(id)arg2 inManagedObjectContext:(id)arg3;
 + (id)insertResourceForMasterObjectID:(id)arg1 withExternalCPLResource:(id)arg2 inManagedObjectContext:(id)arg3;
-+ (id)nonLocalResourcesInManagedObjectContext:(id)arg1 forAssetUUIDs:(id)arg2 cplResourceTypes:(id)arg3;
-+ (id)nonPersistedResourcesForManagedAsset:(id)arg1;
++ (BOOL)isCPLJPEGThumbnailResource:(id)arg1;
++ (id)listOfSyncedProperties;
++ (id)nonOriginalCPLResourceTypes;
++ (id)originalCPLResourceTypes;
++ (id)originalCPLResourceTypesForAsset;
++ (id)originalCPLResourceTypesForMaster;
++ (short)plTrashedStateForCPLExpungedState:(unsigned long long)arg1;
++ (id)predicateForAllFullSizeResourcesLocallyAvailable;
++ (id)predicateForAllOriginalResourcesLocallyAvailable;
 + (id)predicateForAvailableResources;
 + (id)predicateForImageResourcePixelsLessOrEqual:(long long)arg1;
 + (id)predicateForMaxFilesize:(long long)arg1;
-+ (id)predicateForNonLocalFullSizeResources;
-+ (id)predicateForNonLocalOriginalResources;
-+ (id)predicateForNonLocalOriginalResources_Unused;
-+ (id)predicateForOrginalsToDownload;
++ (id)predicateForOriginalsToDownload;
++ (id)predicateForPurgeableOriginalResources;
 + (id)predicateForResourceCreatedAfterDate:(id)arg1;
 + (id)prefetchResourcePredicateForCPLResourceType:(unsigned long long)arg1 isAssetResource:(BOOL)arg2 maxRetry:(unsigned long long)arg3 additionalResourcePredicates:(id)arg4;
++ (id)prunePredicateForAllCPLResourceTypes;
 + (id)prunePredicateForCPLResourceTypes:(id)arg1;
-+ (int)qualitySortValueBasedOnFullSizeWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 isNativeColorSpace:(BOOL)arg3 forResource:(id)arg4;
++ (id)purgeablePushedPredicateForCPLResourceTypes:(id)arg1 urgency:(long long)arg2;
 + (void)resetCloudResourcesStateForCloudInManagedObjectContext:(id)arg1 hardReset:(BOOL)arg2;
-+ (void)resetPrefetchStateForResourcesWithResourceType:(long long)arg1 itemIdentifiers:(id)arg2 inLibrary:(id)arg3;
-+ (id)resourceForManagedAsset:(id)arg1 resourceIdentity:(id)arg2 createIfNeeded:(BOOL)arg3 error:(id *)arg4;
++ (void)resetPrefetchStateForResourcesWithVersion:(unsigned int)arg1 cplType:(unsigned long long)arg2 assetUuids:(id)arg3 inLibrary:(id)arg4;
 + (id)resourceForManagedAsset:(id)arg1 sharedStreamsType:(unsigned int)arg2 managedObjectContext:(id)arg3 error:(id *)arg4;
-+ (id)resourcesForAssetObjectID:(id)arg1 versions:(id)arg2 inManagedObjectContext:(id)arg3 error:(id *)arg4;
++ (BOOL)supportsTrashedStateForResourceIdentity:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)_colorSpaceIsNativeForDisplay;
+- (void)applyTrashedState:(short)arg1;
+- (void)applyTrashedState:(short)arg1 trashedDate:(id)arg2;
+- (BOOL)canRepresentAsSidecar;
 - (id)cplFileURL;
 - (id)cplResourceIncludeFile:(BOOL)arg1;
+- (void)deleteResource;
+- (id)expungeableResourceStateRepresentation;
 - (id)fileURL;
+- (BOOL)isAdjustedFullSizeRenderResource;
 - (BOOL)isAdjustedResource;
 - (BOOL)isCPLAssetResource;
+- (BOOL)isCPLJPEGThumbnail;
 - (BOOL)isCPLMasterResource;
+- (BOOL)isCPLOriginalResource;
+- (BOOL)isCPLResource;
 - (BOOL)isDefaultOrientation;
-- (BOOL)isPrimaryUTI;
-- (const void *)keyStruct;
+- (BOOL)isPlayableVideo;
+- (BOOL)isSyncableChange;
+- (BOOL)isTrashedOrExpunged;
 - (void)markAsLocallyAvailableWithFilePath:(id)arg1;
 - (void)markAsNotLocallyAvailable;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (void)persistTrashedStateToFilesystem;
 - (id)photosCTLDescription;
 - (id)photosCTLJSONDict;
 - (void)prepareForDeletion;
+- (BOOL)repairResourceValidationErrors:(id)arg1 managedObjectContext:(id)arg2;
+- (void)setCloudAttributesWithExternalResource:(id)arg1;
 - (void)setQualitySortValueBasedOnAssetWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (void)setResourceIdentity:(id)arg1 managedObjectContext:(id)arg2;
+- (BOOL)shouldPersistTrashedState;
 - (BOOL)supportsCloudUpload;
+- (BOOL)supportsTrashedState;
 - (void)transitional_reconsiderLocalAvailabilityBasedOnExistingLocationOfCPLResourceAtFilePath:(id)arg1;
 - (void)updateResourceForMasterExternalCPLResource:(id)arg1 inManagedObjectContext:(id)arg2;
-- (id)validatedExternalCPLResourceForFileURL:(id)arg1;
+- (id)validateForAssetID:(id)arg1 resourceIdentity:(id)arg2;
+- (id)validatedExternalResourceRepresentationUsingFileURL:(id)arg1;
+- (void)willSave;
 
 @end
 

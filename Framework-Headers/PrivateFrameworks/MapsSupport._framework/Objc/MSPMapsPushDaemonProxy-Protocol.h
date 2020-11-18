@@ -6,44 +6,50 @@
 
 #import <MapsSupport/MSPRemoteModelAccess-Protocol.h>
 
-@class GEOAnnouncement, MNCommuteNotificationDetails, MSPLowFuelDetails, NSData, NSString, NSURL, RTVehicleEvent;
+@class GEOAnnouncement, GEOCommuteNotificationDetails, MSPLowFuelDetails, NSData, NSString, NSURL, RTVehicleEvent;
 
 @protocol MSPMapsPushDaemonProxy <MSPRemoteModelAccess>
 - (void)checkin;
 - (void)clearBulletinWithRecordID:(NSString *)arg1;
 - (void)clearCurrentAnnouncement;
 - (void)clearLowFuelAlertBulletin;
+- (void)clearMapsSuggestionsBulletin;
 - (void)clearParkedCarBulletin;
 - (void)clearPredictedRouteTrafficIncidentBulletin;
+- (void)clearShownAnnouncements;
 - (void)clearTrafficConditionsBulletin;
 - (void)clearTrafficIncidentBulletinWithAlertID:(NSData *)arg1;
 - (void)clearTrafficIncidentsBulletin;
-- (void)clearTransitAlightAlertBulletin;
 - (void)eraseRAPData;
+- (void)fetchAnnouncementsFilePath:(void (^)(NSString *))arg1;
+- (void)fetchAnnouncementsURLPath:(void (^)(NSString *))arg1;
 - (void)fetchCurrentAnnouncement:(void (^)(GEOAnnouncement *))arg1;
 - (void)fetchDevicePushToken:(void (^)(NSData *))arg1;
+- (void)fetchDownloadedAnnouncements:(void (^)(NSArray *))arg1;
 - (void)fetchProblemStatus;
+- (void)fetchShownAnnouncements:(void (^)(NSArray *))arg1;
 - (void)fetchUserRoutingPreferencesWithCompletion:(void (^)(MSPUserRoutingPreferences *, NSError *))arg1;
 - (void)handleMapsApplicationRemoval:(void (^)(NSError *))arg1;
-- (void)mapsLocationAuthorizationStatusChanged;
 - (void)problemStatusResponseWithNotificationID:(NSString *)arg1 completion:(void (^)(GEORPProblemStatusResponse *))arg2;
 - (void)registerForTopic;
 - (void)removeProblemStatusResponseWithNotificationID:(NSString *)arg1;
-- (void)resetShownAnnouncements;
+- (void)resetAnnouncements;
 - (void)setShouldUseDevAPNS:(BOOL)arg1;
 - (void)shouldUseDevAPNS:(void (^)(BOOL))arg1;
 - (void)showLowFuelAlertBulletinForLowFuelDetails:(MSPLowFuelDetails *)arg1;
+- (void)showMapsSuggestionsBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 actionURL:(NSURL *)arg3;
 - (void)showParkedCarBulletinForEvent:(RTVehicleEvent *)arg1;
 - (void)showParkedCarBulletinForEvent:(RTVehicleEvent *)arg1 afterDelay:(double)arg2;
 - (void)showParkedCarReplacementBulletinForEvent:(RTVehicleEvent *)arg1 replacingEvent:(RTVehicleEvent *)arg2;
 - (void)showParkedCarReplacementBulletinForEvent:(RTVehicleEvent *)arg1 replacingEvent:(RTVehicleEvent *)arg2 afterDelay:(double)arg3;
-- (void)showPredictedRouteTrafficIncidentBulletinForCommuteDetails:(MNCommuteNotificationDetails *)arg1;
-- (void)showPredictedRouteTrafficIncidentBulletinForCommuteDetails:(MNCommuteNotificationDetails *)arg1 afterDelay:(double)arg2;
+- (void)showPredictedRouteTrafficIncidentBulletinForCommuteDetails:(GEOCommuteNotificationDetails *)arg1;
+- (void)showPredictedRouteTrafficIncidentBulletinForCommuteDetails:(GEOCommuteNotificationDetails *)arg1 afterDelay:(double)arg2;
 - (void)showTrafficConditionsBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 actionURL:(NSURL *)arg3;
-- (void)showTrafficIncidentAlertWithID:(NSData *)arg1 type:(unsigned long long)arg2 title:(NSString *)arg3 description:(NSString *)arg4;
-- (void)showTransitAlightAlertWithTitle:(NSString *)arg1 message:(NSString *)arg2;
-- (void)simulateAnnouncement:(GEOAnnouncement *)arg1;
+- (void)showTrafficIncidentAlertWithID:(NSData *)arg1 withReroute:(BOOL)arg2 title:(NSString *)arg3 description:(NSString *)arg4;
+- (void)simulateAnnouncement:(GEOAnnouncement *)arg1 afterDelay:(double)arg2;
 - (void)simulateProblemResolution;
+- (void)updateActiveAnnouncement;
+- (void)updateAnnouncements:(void (^)(BOOL))arg1;
 - (oneway void)updateMapsModelBackupAttributesIfNeeded;
 @end
 

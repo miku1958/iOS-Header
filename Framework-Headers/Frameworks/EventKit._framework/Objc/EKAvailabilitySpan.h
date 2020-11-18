@@ -6,21 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
+#import <EventKit/CalDateRangeProtocol-Protocol.h>
 
-@interface EKAvailabilitySpan : NSObject
+@class NSDate, NSString;
+
+@interface EKAvailabilitySpan : NSObject <CalDateRangeProtocol>
 {
     long long _type;
     NSDate *_startDate;
     NSDate *_endDate;
 }
 
-@property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
-- (id)description;
 - (id)init;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 type:(long long)arg3;
 

@@ -7,22 +7,24 @@
 #import <iWorkImport/TSPObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
+#import <iWorkImport/TSTCellMapChangeDescriptorDelivering-Protocol.h>
 
 @class NSMutableArray, TSTCellUIDList;
 
 __attribute__((visibility("hidden")))
-@interface TSTCellMap : TSPObject <NSCopying>
+@interface TSTCellMap : TSPObject <NSCopying, TSTCellMapChangeDescriptorDelivering>
 {
     vector_38b190b0 _cellIDs;
     NSMutableArray *_mergeActions;
+    struct unordered_map<TSUCellCoord, TSTCell *, std::__1::hash<TSUCellCoord>, std::__1::equal_to<TSUCellCoord>, std::__1::allocator<std::__1::pair<const TSUCellCoord, TSTCell *>>> *_searchableIDMap;
+    struct unordered_map<TSTCellUID, TSTCell *, std::__1::hash<TSTCellUID>, std::__1::equal_to<TSTCellUID>, std::__1::allocator<std::__1::pair<const TSTCellUID, TSTCell *>>> *_searchableUIDMap;
+    BOOL _uidBased;
     BOOL _mayModifyFormulasInCells;
     BOOL _mayModifyValuesReferencedByFormulas;
-    BOOL _uidBased;
     BOOL _oneToMany;
+    BOOL _shallowCopy;
     TSTCellUIDList *_cellUIDs;
     NSMutableArray *_cellLists;
-    unordered_map_d2ee14f6 *_searchableIDMap;
-    unordered_map_7f472e10 *_searchableUIDMap;
 }
 
 @property (strong, nonatomic) NSMutableArray *cellLists; // @synthesize cellLists=_cellLists;
@@ -30,8 +32,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL mayModifyFormulasInCells; // @synthesize mayModifyFormulasInCells=_mayModifyFormulasInCells;
 @property (nonatomic) BOOL mayModifyValuesReferencedByFormulas; // @synthesize mayModifyValuesReferencedByFormulas=_mayModifyValuesReferencedByFormulas;
 @property (readonly, nonatomic, getter=isOneToMany) BOOL oneToMany; // @synthesize oneToMany=_oneToMany;
-@property (nonatomic) unordered_map_d2ee14f6 *searchableIDMap; // @synthesize searchableIDMap=_searchableIDMap;
-@property (nonatomic) unordered_map_7f472e10 *searchableUIDMap; // @synthesize searchableUIDMap=_searchableUIDMap;
+@property (nonatomic) BOOL shallowCopy; // @synthesize shallowCopy=_shallowCopy;
 @property (nonatomic, getter=isUIDBased) BOOL uidBased; // @synthesize uidBased=_uidBased;
 
 + (id)cellMapWithContext:(id)arg1;
@@ -49,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)cellIDBasedCellMapByTableInfo:(id)arg1;
 - (const vector_38b190b0 *)cellIDs;
 - (id)cellMapMaskedByUIDs:(const vector_4dc5f307 *)arg1 inRows:(BOOL)arg2;
-- (id)changeDescriptorsForTable:(id)arg1 outCellRegion:(out id *)arg2;
+- (id)changeDescriptorsForTable:(id)arg1;
 - (void)clearDataListIDs;
 - (void)clearMerges;
 - (const vector_4dc5f307 *)columnUIDs;
@@ -57,11 +58,11 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 copyingCells:(BOOL)arg2;
 - (unsigned long long)count;
-- (void)dealloc;
 - (void)enumerateCellsWithIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateCellsWithUIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)findCellForCellID:(struct TSUCellCoord)arg1;
 - (id)findCellForCellUID:(const struct TSTCellUID *)arg1;
+- (id)initShallowMapWithContext:(id)arg1 uidBased:(BOOL)arg2;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 cell:(id)arg2 cellIDList:(const vector_38b190b0 *)arg3;
 - (id)initWithContext:(id)arg1 cell:(id)arg2 cellUIDList:(id)arg3;

@@ -8,6 +8,5 @@
 
 @interface NSDictionary (UIAccessibilityElementTraversal)
 - (id)_accessibilityLeafDescendantsWithCount:(unsigned long long)arg1 shouldStopAtRemoteElement:(BOOL)arg2 options:(id)arg3 treeLogger:(id)arg4;
-- (id)_rearrangeKeyboardIfNecessaryWithOriginalArray:(id)arg1 processedArray:(id)arg2;
 @end
 

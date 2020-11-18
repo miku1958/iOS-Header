@@ -25,7 +25,6 @@
 
 + (id)faceBalanceKernels;
 + (struct CGColorSpace *)linearWideGamutColorSpace;
-+ (struct CGColorSpace *)newLinearWideGamutColorSpace;
 - (void).cxx_destruct;
 - (id)outputImage;
 

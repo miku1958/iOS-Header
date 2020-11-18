@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldRespondToInitialPassDescription;
 - (void)startPassAnalysis;
 - (long long)status;
+- (void)stopRequestingMediaData;
 
 @end
 

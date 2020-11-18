@@ -19,11 +19,11 @@
 
 + (void)_enableImageDataUsesMap;
 - (struct CGImage *)CGImageWithOptions:(id)arg1;
-- (struct CGImage *)CGImageWithOptions:(id)arg1 format:(int)arg2;
+- (struct CGImage *)CGImageWithOptions:(id)arg1 format:(unsigned short)arg2;
 - (id)UTI;
 - (int)_fileDescriptor;
 - (id)_imageData;
-- (struct CGImage *)_largeDisplayableImageForFormatID:(int)arg1;
+- (struct CGImage *)_largeDisplayableImageForFormatID:(unsigned short)arg1;
 - (void)dealloc;
 - (id)description;
 - (struct CGSize)dimensions;

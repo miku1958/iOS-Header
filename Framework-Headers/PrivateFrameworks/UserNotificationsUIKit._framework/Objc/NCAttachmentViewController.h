@@ -8,7 +8,7 @@
 
 #import <UserNotificationsUIKit/NCNotificationCustomContent-Protocol.h>
 
-@class NCNotificationAction, NCNotificationRequest, NSString, UNNotificationAttachment;
+@class NCNotificationRequest, NSString, UNNotificationAttachment;
 @protocol NCNotificationCustomContentDelegate;
 
 @interface NCAttachmentViewController : UIViewController <NCNotificationCustomContent>
@@ -26,7 +26,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
-@property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title;
 

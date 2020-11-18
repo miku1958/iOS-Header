@@ -11,7 +11,7 @@
 #import <UIKitCore/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
 #import <UIKitCore/_UIViewRepresentingKeyboardLayout-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UIKeyboardTypingStyleEstimator, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
 @protocol OS_dispatch_queue;
 
 @interface UIKeyboardLayout : UIView <_UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout, _UIScreenEdgePanRecognizerDelegate>
@@ -25,6 +25,7 @@
     unsigned long long _cursorLocation;
     BOOL _disableInteraction;
     UIKeyboardTaskQueue *_taskQueue;
+    UIKeyboardTypingStyleEstimator *_typingStyleEstimator;
     BOOL hideKeysUnderIndicator;
     BOOL _hasPreferredHeight;
     BOOL _isExecutingDeferredTouchTasks;
@@ -79,11 +80,13 @@
 @property (strong, nonatomic) _UIKBRTTouchDrifting *touchDrifting; // @synthesize touchDrifting=_touchDrifting;
 @property (strong, nonatomic) NSMutableSet *touchIgnoredUUIDSet; // @synthesize touchIgnoredUUIDSet=_touchIgnoredUUIDSet;
 @property (strong, nonatomic) _UIKBRTTouchVelocities *touchVelocities; // @synthesize touchVelocities=_touchVelocities;
+@property (readonly, nonatomic) UIKeyboardTypingStyleEstimator *typingStyleEstimator;
 
 + (BOOL)_showSmallDisplayKeyplane;
 + (Class)_subclassForScreenTraits:(id)arg1;
 + (struct CGSize)keyboardSizeForInputMode:(id)arg1 screenTraits:(id)arg2 keyboardType:(long long)arg3;
 - (void)_addTouchToScreenEdgePanRecognizer:(id)arg1;
+- (BOOL)_allowContinuousPathUI;
 - (BOOL)_canAddTouchesToScreenGestureRecognizer:(id)arg1;
 - (void)_clearDeferredTouchTasks;
 - (void)_enumerateDeferredTouchUUIDs:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
@@ -108,7 +111,6 @@
 - (void)_updateTouchState:(id)arg1 errorVector:(struct CGPoint)arg2 rowOffsetFromHomeRow:(long long)arg3;
 - (void)acceptRecentInputIfNecessary;
 - (id)activationIndicatorView;
-- (void)addWipeRecognizer;
 - (void)assertSavedLocation:(struct CGPoint)arg1 onTouch:(id)arg2 inWindow:(id)arg3 resetPrevious:(BOOL)arg4;
 - (id)baseKeyForString:(id)arg1;
 - (double)biasedKeyboardWidthRatio;
@@ -151,6 +153,7 @@
 - (struct CGSize)handRestRecognizerStandardKeyPixelSize;
 - (SEL)handlerForNotification:(id)arg1;
 - (BOOL)hasAccentKey;
+- (BOOL)hasActiveContinuousPathInput;
 - (BOOL)hasCandidateKeys;
 - (double)hitBuffer;
 - (BOOL)ignoresShiftState;
@@ -158,7 +161,12 @@
 - (id)internationalKeyDisplayStringOnEmojiKeyboard;
 - (BOOL)isAlphabeticPlane;
 - (BOOL)isEmojiKeyplane;
+- (BOOL)isGeometricShiftOrMoreKeyForTouch:(id)arg1;
+- (BOOL)isHandwritingPlane;
+- (BOOL)isKanaPlane;
 - (BOOL)isReachableDevice;
+- (BOOL)isResized;
+- (BOOL)isResizing;
 - (BOOL)isShiftKeyBeingHeld;
 - (BOOL)isShiftKeyPlaneChooser;
 - (BOOL)keyplaneContainsDismissKey;
@@ -206,6 +214,7 @@
 - (BOOL)shouldMergeAssistantBarWithKeyboardLayout;
 - (BOOL)shouldShowIndicator;
 - (void)showKeyboardWithInputTraits:(id)arg1 screenTraits:(id)arg2 splitTraits:(id)arg3;
+- (BOOL)showsDedicatedEmojiKeyAlongsideGlobeButton;
 - (id)simulateTouch:(struct CGPoint)arg1;
 - (id)simulateTouchForCharacter:(id)arg1 errorVector:(struct CGPoint)arg2 shouldTypeVariants:(BOOL)arg3 baseKeyForVariants:(BOOL)arg4;
 - (struct CGSize)stretchFactor;
@@ -235,6 +244,7 @@
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEstimatedPropertiesUpdated:(id)arg1;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)traitCollectionDidChange;
 - (void)triggerSpaceKeyplaneSwitchIfNecessary;
 - (void)updateBackgroundCorners;
 - (void)updateGlobeKeyAndLayoutOriginBeforeSnapshotForInputView:(id)arg1;
@@ -245,7 +255,6 @@
 - (BOOL)usesAutoShift;
 - (void)willBeginIndirectSelectionGesture;
 - (void)willMoveToWindow:(id)arg1;
-- (void)wipeGestureRecognized:(id)arg1;
 
 @end
 

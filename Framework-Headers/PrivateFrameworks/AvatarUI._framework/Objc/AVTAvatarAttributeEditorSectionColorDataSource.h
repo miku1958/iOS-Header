@@ -18,13 +18,11 @@
     long long _displayMode;
 }
 
-@property (readonly, nonatomic) BOOL canShowSubsection;
 @property (strong, nonatomic) AVTAvatarAttributeEditorColorSection *colorSection; // @synthesize colorSection=_colorSection;
 @property (nonatomic) id<AVTAvatarAttributeEditorSectionColorDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long displayMode; // @synthesize displayMode=_displayMode;
 @property (readonly, nonatomic) BOOL isShowingExtended;
 @property (readonly, nonatomic) BOOL isShowingSlider;
-@property (readonly, nonatomic) BOOL isShowingSubsection;
 @property (nonatomic) long long selectedExtendedColorIndex; // @synthesize selectedExtendedColorIndex=_selectedExtendedColorIndex;
 @property (readonly, nonatomic) long long selectedItemIndex;
 @property (nonatomic) long long selectedPrimaryColorIndex; // @synthesize selectedPrimaryColorIndex=_selectedPrimaryColorIndex;
@@ -32,9 +30,7 @@
 + (long long)indexOfItem:(id)arg1 inItems:(id)arg2;
 + (id)selectedItemFromItems:(id)arg1;
 - (void).cxx_destruct;
-- (id)indexPathForLastPrimary;
 - (id)indexPathOfExtendedIcon;
-- (id)indexPathOfNaturalColor;
 - (id)init;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (void)resetToDefaultDisplayMode;
@@ -42,7 +38,7 @@
 - (void)selectSectionItemAtIndexPath:(id)arg1;
 - (void)toggleExtendedMode;
 - (void)toggleSliderMode;
-- (void)updateSelectedIndexesSelectingItem:(id)arg1;
+- (void)updateSelectedIndexesSelectingItem:(id)arg1 fromUserInteraction:(BOOL)arg2;
 
 @end
 

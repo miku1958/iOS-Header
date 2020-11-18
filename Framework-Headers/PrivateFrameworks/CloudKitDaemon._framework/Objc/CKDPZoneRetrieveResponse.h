@@ -8,14 +8,17 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSData, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CKDPZoneRetrieveResponse : PBCodable <NSCopying>
 {
+    NSData *_continuationMarker;
     NSMutableArray *_zoneSummarys;
 }
 
+@property (strong, nonatomic) NSData *continuationMarker; // @synthesize continuationMarker=_continuationMarker;
+@property (readonly, nonatomic) BOOL hasContinuationMarker;
 @property (strong, nonatomic) NSMutableArray *zoneSummarys; // @synthesize zoneSummarys=_zoneSummarys;
 
 + (Class)zoneSummaryType;

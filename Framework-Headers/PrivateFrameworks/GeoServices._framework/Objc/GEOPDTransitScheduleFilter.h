@@ -8,27 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDDeparturePredicate, PBUnknownFields;
+@class GEOPDDeparturePredicate, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTransitScheduleFilter : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    struct GEOPDTimeRange _operatingHoursRange;
     GEOPDDeparturePredicate *_departurePredicateCountdown;
     GEOPDDeparturePredicate *_departurePredicateStamp;
-    CDStruct_65124bb5 _has;
+    struct GEOPDTimeRange _operatingHoursRange;
+    BOOL _includeRealTimeDepartures;
+    CDStruct_34971647 _flags;
 }
 
-@property (strong, nonatomic) GEOPDDeparturePredicate *departurePredicateCountdown; // @synthesize departurePredicateCountdown=_departurePredicateCountdown;
-@property (strong, nonatomic) GEOPDDeparturePredicate *departurePredicateStamp; // @synthesize departurePredicateStamp=_departurePredicateStamp;
+@property (strong, nonatomic) GEOPDDeparturePredicate *departurePredicateCountdown;
+@property (strong, nonatomic) GEOPDDeparturePredicate *departurePredicateStamp;
 @property (readonly, nonatomic) BOOL hasDeparturePredicateCountdown;
 @property (readonly, nonatomic) BOOL hasDeparturePredicateStamp;
+@property (nonatomic) BOOL hasIncludeRealTimeDepartures;
 @property (nonatomic) BOOL hasOperatingHoursRange;
-@property (nonatomic) struct GEOPDTimeRange operatingHoursRange; // @synthesize operatingHoursRange=_operatingHoursRange;
+@property (nonatomic) BOOL includeRealTimeDepartures;
+@property (nonatomic) struct GEOPDTimeRange operatingHoursRange;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDeparturePredicateCountdown;
+- (void)_readDeparturePredicateStamp;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

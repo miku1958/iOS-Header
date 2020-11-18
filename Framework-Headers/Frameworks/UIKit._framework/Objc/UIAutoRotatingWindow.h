@@ -15,6 +15,7 @@
 + (id)sharedPopoverHostingWindow;
 - (void)_didRemoveSubview:(id)arg1;
 - (id)_initWithFrame:(struct CGRect)arg1 attached:(BOOL)arg2;
+- (id)_initWithFrame:(struct CGRect)arg1 debugName:(id)arg2 windowScene:(id)arg3;
 - (void)commonInit;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)updateForOrientation:(long long)arg1;

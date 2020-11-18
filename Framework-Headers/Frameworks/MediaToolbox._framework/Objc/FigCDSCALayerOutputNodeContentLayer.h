@@ -6,6 +6,7 @@
 
 #import <MediaToolbox/FigBaseCALayer.h>
 
+__attribute__((visibility("hidden")))
 @interface FigCDSCALayerOutputNodeContentLayer : FigBaseCALayer
 {
     struct OpaqueFigCDSCALayerOutputNodeContentLayerInternal *layerInternal;
@@ -13,7 +14,6 @@
 
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 
 @end

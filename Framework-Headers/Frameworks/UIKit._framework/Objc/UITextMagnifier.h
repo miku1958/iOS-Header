@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     UIView *_magnifierRenderer;
     UIView *_autoscrollRenderer;
     int _autoscrollDirections;
+    BOOL _isAnimating;
+    long long _delayedAnimationType;
 }
 
 @property (nonatomic) struct CGPoint animationPoint; // @synthesize animationPoint=_animationPoint;
@@ -33,12 +35,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL terminalPointPlacedCarefully; // @synthesize terminalPointPlacedCarefully=_terminalPointPlacedCarefully;
 @property (strong, nonatomic) UIResponder<UITextInput> *text; // @synthesize text=_text;
 
-+ (id)getLoupeBackgroundColor:(id)arg1;
++ (Class)renderClass;
 - (void).cxx_destruct;
+- (struct CGPoint)adjustMagnificationPoint:(struct CGPoint)arg1;
 - (void)animateToAutoscrollRenderer;
 - (void)animateToMagnifierRenderer;
 - (void)autoscrollWillNotStart;
 - (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
+- (void)beginZoomDownAnimation:(CDUnknownBlockType)arg1 withDuration:(double)arg2 postponeHandler:(CDUnknownBlockType)arg3;
+- (void)beginZoomUpAnimation:(CDUnknownBlockType)arg1 withDuration:(double)arg2;
 - (void)detectLostTouches:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)postAutoscrollPoint:(struct CGPoint)arg1;
@@ -48,11 +53,10 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsDisplay;
 - (void)setToMagnifierRenderer;
 - (void)stopMagnifying:(BOOL)arg1;
+- (void)updateFrameAndOffset;
 - (void)windowWillRotate:(id)arg1;
 - (void)zoomDownAnimation;
-- (void)zoomDownAnimationDidStop:(id)arg1 finished:(id)arg2;
 - (void)zoomUpAnimation;
-- (void)zoomUpAnimationDidStop:(id)arg1 finished:(id)arg2;
 
 @end
 

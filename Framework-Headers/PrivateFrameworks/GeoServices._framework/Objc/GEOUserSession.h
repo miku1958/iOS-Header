@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOUserSessionEntity, GEOUserSessionSnapshot, NSData, NSLock;
+@class GEOUserSessionEntity, GEOUserSessionSnapshot, NSData;
 @protocol OS_dispatch_queue;
 
 @interface GEOUserSession : NSObject
@@ -14,14 +14,16 @@
     struct GEOSessionID _sessionID;
     double _sessionCreationTime;
     unsigned int _sequenceNumber;
-    struct GEOSessionID _usageCollectionSessionID;
-    double _usageSessionIDGenerationTime;
+    struct GEOSessionID _longSessionID;
+    double _longSessionIDGenerationTime;
+    struct GEOSessionID _thirtyDayCountsSessionID;
+    double _thirtyDayCountsSessionIDGenerationTime;
     BOOL _shareSessionWithMaps;
     GEOUserSessionEntity *_mapsUserSessionEntity;
     BOOL _zeroSessionIDMode;
     struct GEOSessionID _cohortSessionID;
     double _cohortSessionStartTime;
-    NSLock *_lock;
+    struct os_unfair_lock_s _lock;
     NSData *_navigationDirectionsID;
     struct GEOSessionID _navigationSessionID;
     double _navigationSessionStartTime;
@@ -38,29 +40,29 @@
     int _shortSessionChangedToken;
 }
 
-@property (readonly) GEOUserSessionEntity *cohortSessionEntity;
-@property (readonly) GEOUserSessionEntity *longSessionEntity;
+@property (readonly, nonatomic) GEOUserSessionEntity *cohortSessionEntity;
+@property (readonly, nonatomic) GEOUserSessionEntity *longSessionEntity;
+@property (readonly, nonatomic) struct GEOSessionID longSessionID;
 @property (strong, nonatomic) GEOUserSessionEntity *mapsUserSessionEntity; // @synthesize mapsUserSessionEntity=_mapsUserSessionEntity;
-@property (readonly) GEOUserSessionEntity *navSessionEntity;
+@property (readonly, nonatomic) GEOUserSessionEntity *navSessionEntity;
 @property (nonatomic) BOOL shareSessionWithMaps; // @synthesize shareSessionWithMaps=_shareSessionWithMaps;
-@property (readonly) struct GEOSessionID usageCollectionSessionID;
-@property (readonly) GEOUserSessionSnapshot *userSessionSnapshot;
-@property BOOL zeroSessionIDMode; // @synthesize zeroSessionIDMode=_zeroSessionIDMode;
+@property (readonly, nonatomic) GEOUserSessionSnapshot *userSessionSnapshot;
+@property (nonatomic) BOOL zeroSessionIDMode; // @synthesize zeroSessionIDMode=_zeroSessionIDMode;
 
 + (BOOL)isGeod;
 + (void)setIsGeod;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_defaultForKey:(id)arg1;
 - (void)_generateNewNavSessionID;
-- (double)_getCFAbsoluteCurrentTime;
+- (double)_getCurrentTime;
 - (void)_overrideShortSessionId:(struct GEOSessionID)arg1 sessionMachBasisTime:(unsigned long long)arg2 sessionStartTime:(double)arg3;
 - (void)_renewCohortSessionID;
-- (void)_renewUsageCollectionSessionID;
+- (void)_renewLongSessionID;
+- (void)_renewThirtyDayCountsSessionID;
 - (void)_resetSessionID;
 - (void)_safe_renewCohortSessionID;
-- (void)_safe_renewUsageCollectionSessionID;
-- (void)_setDefault:(id)arg1 forKey:(id)arg2;
+- (void)_safe_renewLongSessionID;
+- (void)_safe_renewThirtyDayCountsSessionID;
 - (void)_shortSessionWithBasisComponentsCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateNavSessionID;
 - (void)_updateWithNewUUIDForSessionID:(struct GEOSessionID *)arg1;
@@ -72,6 +74,8 @@
 - (void)setSharedMapsUserSessionEntity:(id)arg1 shareSessionIDWithMaps:(BOOL)arg2;
 - (id)shortSessionEntity;
 - (void)startNavigationSessionWithDirectionsID:(id)arg1 originalDirectionsID:(id)arg2;
+- (id)thirtyDayCountsEntity;
+- (struct GEOSessionID)thirtyDayCountsSessionID;
 
 @end
 

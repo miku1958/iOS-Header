@@ -7,6 +7,8 @@
 #import <UIKit/UIResponder.h>
 
 @interface UIResponder (UITextAccessibilityUtilities)
+- (BOOL)_accessibilityBeginUndoableTextInsertion;
+- (BOOL)_accessibilityEndUndoableTextInsertion;
 - (BOOL)_accessibilityHasTextOperations;
 - (BOOL)_accessibilitySupportsRichTextEditing;
 - (id)_accessibilityTextOperations;

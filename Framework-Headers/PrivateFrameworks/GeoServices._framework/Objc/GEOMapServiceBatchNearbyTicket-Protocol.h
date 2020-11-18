@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GeoServices/NSObject-Protocol.h>
+#import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
+#import <GeoServices/GEOMapServiceThrottlableTicket-Protocol.h>
 
 @class GEOApplicationAuditToken, GEOMapServiceTraits, GEOSearchCategory, NSString;
 
-@protocol GEOMapServiceBatchNearbyTicket <NSObject>
+@protocol GEOMapServiceBatchNearbyTicket <GEOMapServiceCancellableTicket, GEOMapServiceThrottlableTicket>
 
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 

@@ -17,9 +17,10 @@
 }
 
 @property (readonly, nonatomic) long long anchorPosition;
-@property (readonly, weak) MKAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
+@property (readonly, weak, nonatomic) MKAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
+@property (readonly, nonatomic) BOOL hasPendingVisibility;
 @property (nonatomic) BOOL parallaxEnabled; // @synthesize parallaxEnabled=_parallaxEnabled;
-@property (readonly, nonatomic, getter=isVisibile) BOOL visible;
+@property (readonly, nonatomic, getter=isVisible) BOOL visible;
 
 - (void).cxx_destruct;
 - (void)dismissAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;

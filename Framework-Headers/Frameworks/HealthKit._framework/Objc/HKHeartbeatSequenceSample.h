@@ -4,40 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthKit/HKSample.h>
+#import <HealthKit/HKHeartbeatSeriesSample.h>
 
-#import <HealthKit/_HKBinarySample-Protocol.h>
-
-@class NSData, NSNumber, NSString;
-
-@interface HKHeartbeatSequenceSample : HKSample <_HKBinarySample>
+@interface HKHeartbeatSequenceSample : HKHeartbeatSeriesSample
 {
-    NSData *_heartbeatData;
-    NSNumber *_cachedMinBeatsPerMinute;
-    NSNumber *_cachedMaxBeatsPerMinute;
-    long long _numberOfDataPoints;
 }
-
-@property (readonly) NSNumber *_maximumBeatsPerMinute;
-@property (readonly) NSNumber *_minimumBeatsPerMinute;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) long long numberOfDataPoints; // @synthesize numberOfDataPoints=_numberOfDataPoints;
-@property (readonly) Class superclass;
-
-+ (id)heartBeatSequenceSampleFromCSV:(id)arg1 startDate:(id)arg2 metadata:(id)arg3 error:(out id *)arg4;
-+ (id)heartbeatSequenceSampleWithData:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 metadata:(id)arg4;
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (void)_computeMinimumAndMaximumBeatsPerMinute;
-- (void)_setPayload:(id)arg1;
-- (id)_validateConfiguration;
-- (void)encodeWithCoder:(id)arg1;
-- (void)enumerateHeartbeatDataWithBlock:(CDUnknownBlockType)arg1;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
-- (id)payload;
 
 @end
 

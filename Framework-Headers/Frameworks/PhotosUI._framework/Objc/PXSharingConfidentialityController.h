@@ -12,7 +12,10 @@
 
 + (id)confidentialFeatureWarningMessage;
 + (BOOL)confidentialWarningRequiredForAsset:(id)arg1;
++ (BOOL)confidentialWarningRequiredForAssetReferences:(id)arg1;
 + (BOOL)confidentialWarningRequiredForAssets:(id)arg1;
++ (BOOL)confidentialWarningRequiredForShareableSelection:(id)arg1;
++ (id)confidentialityAlertWithActions:(id)arg1;
 + (BOOL)confidentialityCheckRequired;
 + (id)confidentialityWarningMessage;
 + (id)confidentialityWarningTitle;

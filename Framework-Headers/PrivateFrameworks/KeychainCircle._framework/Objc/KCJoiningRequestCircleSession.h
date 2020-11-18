@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class KCAESGCMDuplexSession;
+@class KCAESGCMDuplexSession, OTControl, OTJoiningConfiguration;
 @protocol KCJoiningRequestCircleDelegate;
 
 @interface KCJoiningRequestCircleSession : NSObject
@@ -14,20 +14,31 @@
     int _state;
     NSObject<KCJoiningRequestCircleDelegate> *_circleDelegate;
     KCAESGCMDuplexSession *_session;
+    unsigned long long _piggy_version;
+    OTControl *_otControl;
+    OTJoiningConfiguration *_joiningConfiguration;
 }
 
 @property (readonly) NSObject<KCJoiningRequestCircleDelegate> *circleDelegate; // @synthesize circleDelegate=_circleDelegate;
+@property (strong, nonatomic) OTJoiningConfiguration *joiningConfiguration; // @synthesize joiningConfiguration=_joiningConfiguration;
+@property (strong, nonatomic) OTControl *otControl; // @synthesize otControl=_otControl;
+@property (nonatomic) unsigned long long piggy_version; // @synthesize piggy_version=_piggy_version;
 @property (readonly) KCAESGCMDuplexSession *session; // @synthesize session=_session;
 @property int state; // @synthesize state=_state;
 
 + (id)sessionWithCircleDelegate:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
+- (void)attemptSosUpgrade;
+- (id)encryptedInitialMessage:(id)arg1 error:(id *)arg2;
 - (id)encryptedPeerInfo:(id *)arg1;
 - (id)handleCircleBlob:(id)arg1 error:(id *)arg2;
 - (id)initWithCircleDelegate:(id)arg1 session:(id)arg2 error:(id *)arg3;
+- (id)initWithCircleDelegate:(id)arg1 session:(id)arg2 otcontrol:(id)arg3 error:(id *)arg4;
 - (id)initialMessage:(id *)arg1;
 - (BOOL)isDone;
 - (id)processMessage:(id)arg1 error:(id *)arg2;
+- (void)setControlObject:(id)arg1;
+- (void)setJoiningConfigurationObject:(id)arg1;
 
 @end
 

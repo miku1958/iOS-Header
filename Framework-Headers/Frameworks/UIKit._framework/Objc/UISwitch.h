@@ -17,10 +17,10 @@
     BOOL _on;
     BOOL _alwaysShowOnOffLabel;
     UIColor *_onTintColor;
-    UIColor *_tintColor;
     UIColor *_thumbTintColor;
     UIImage *_onImage;
     UIImage *_offImage;
+    UIColor *_tintColor;
     UISwitchVisualElement *_visualElement;
 }
 
@@ -44,13 +44,11 @@
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
 - (unsigned long long)_controlEventsForActionTriggered;
-- (void)_encodeFrameWithCoder:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_refreshVisualElement;
 - (void)_refreshVisualElementForTraitCollection:(id)arg1;
 - (void)_refreshVisualElementForTraitCollection:(id)arg1 populatingAPIProperties:(BOOL)arg2;
-- (BOOL)_shouldAlterCodedFrame;
 - (BOOL)_shouldShowOnOffLabels;
 - (void)_showingOnOffLabelChanged;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -69,6 +67,7 @@
 - (void)setOn:(BOOL)arg1 animated:(BOOL)arg2 notifyingVisualElement:(BOOL)arg3;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)visualElement:(id)arg1 transitionedToOn:(BOOL)arg2;
 - (void)visualElementHadTouchUpInside:(id)arg1;

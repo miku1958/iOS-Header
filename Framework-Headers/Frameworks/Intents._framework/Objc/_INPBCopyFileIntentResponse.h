@@ -17,11 +17,13 @@
     CDStruct_be739ab4 _has;
     BOOL _overwrite;
     BOOL _success;
+    BOOL __encodeLegacyGloryData;
     int _entityType;
     _INPBString *_destinationName;
     _INPBString *_entityName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
@@ -37,11 +39,14 @@
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsEntityType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityTypeAsString:(int)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

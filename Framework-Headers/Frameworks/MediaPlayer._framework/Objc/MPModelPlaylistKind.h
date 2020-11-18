@@ -19,13 +19,16 @@
 @property (readonly, nonatomic) MPModelPlaylistEntryKind *playlistEntryKind; // @synthesize playlistEntryKind=_playlistEntryKind;
 @property (readonly, nonatomic) unsigned long long variants; // @synthesize variants=_variants;
 
++ (id)identityKind;
 + (id)kindWithVariants:(unsigned long long)arg1 playlistEntryKind:(id)arg2 options:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)humanDescription;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (shared_ptr_cf7b8a22)predicateWithBaseProperty:(struct ModelPropertyBase *)arg1;
 - (shared_ptr_cf7b8a22)representedSearchScopePredicate;
 

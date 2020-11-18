@@ -12,8 +12,8 @@
 {
 }
 
-@property (strong, nonatomic) NSNumber *type; // @dynamic type;
-@property (strong, nonatomic) NSData *value; // @dynamic value;
+@property (copy, nonatomic) NSNumber *type; // @dynamic type;
+@property (copy, nonatomic) NSData *value; // @dynamic value;
 
 + (id)properties;
 + (id)schemaHashRoot;

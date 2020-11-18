@@ -7,12 +7,15 @@
 #import <Silex/NSObject-Protocol.h>
 
 @class AVPlayerViewController, NSError;
+@protocol UIViewControllerTransitionCoordinator;
 
 @protocol AVPlayerViewControllerDelegate <NSObject>
 
 @optional
 - (void)playerViewController:(AVPlayerViewController *)arg1 failedToStartPictureInPictureWithError:(NSError *)arg2;
 - (void)playerViewController:(AVPlayerViewController *)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(void (^)(BOOL))arg2;
+- (void)playerViewController:(AVPlayerViewController *)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id<UIViewControllerTransitionCoordinator>)arg2;
+- (void)playerViewController:(AVPlayerViewController *)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id<UIViewControllerTransitionCoordinator>)arg2;
 - (void)playerViewControllerDidStartPictureInPicture:(AVPlayerViewController *)arg1;
 - (void)playerViewControllerDidStopPictureInPicture:(AVPlayerViewController *)arg1;
 - (BOOL)playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart:(AVPlayerViewController *)arg1;

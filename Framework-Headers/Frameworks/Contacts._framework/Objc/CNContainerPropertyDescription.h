@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (int)abPropertyID;
 - (BOOL)isConvertibleABValue:(void *)arg1;
 - (BOOL)isValidValue:(id)arg1 error:(id *)arg2;
+- (BOOL)isValue:(id)arg1 equalToEmptyEquivalentOrValue:(id)arg2;
+- (id)nilValue;
 - (BOOL)setABValue:(void *)arg1 onABSource:(void *)arg2 error:(struct __CFError **)arg3;
 - (void)setCNValue:(id)arg1 onContainer:(id)arg2;
 

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIView.h>
+#import <UIKitCore/_UIVisibilityPropagationView.h>
 
 @class CALayerHost;
 
-__attribute__((visibility("hidden")))
-@interface _UILayerHostView : UIView
+@interface _UILayerHostView : _UIVisibilityPropagationView
 {
+    int _pid;
+    unsigned int _contextID;
 }
 
 @property (nonatomic) unsigned int contextID;
@@ -19,7 +20,10 @@ __attribute__((visibility("hidden")))
 
 + (Class)layerClass;
 - (void)dealloc;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 pid:(int)arg2 contextID:(unsigned int)arg3;
+- (void)setPid:(int)arg1 contextID:(unsigned int)arg2;
 
 @end
 

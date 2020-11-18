@@ -46,6 +46,7 @@
 - (void)runWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runWithValueApplier:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)runWithValueApplier:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2 forScreen:(id)arg3 runLoopMode:(id)arg4;
+- (double)settlingDuration;
 
 @end
 

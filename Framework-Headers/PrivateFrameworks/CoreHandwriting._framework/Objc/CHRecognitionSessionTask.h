@@ -6,43 +6,54 @@
 
 #import <objc/NSObject.h>
 
-@class CHRecognitionSessionResult, NSArray;
+@class CHRecognitionSessionResult, NSArray, NSSet;
 @protocol CHRecognitionSessionTaskDelegate, CHStrokeProvider, OS_dispatch_queue;
 
 @interface CHRecognitionSessionTask : NSObject
 {
     BOOL _cancelled;
     BOOL _saveInputDrawings;
+    BOOL _strokeGroupingOnly;
+    CHRecognitionSessionResult *_inputResult;
     long long _status;
     id<CHRecognitionSessionTaskDelegate> _delegate;
     NSArray *_locales;
     NSArray *_preferredLocales;
     id<CHStrokeProvider> _strokeProvider;
     CHRecognitionSessionResult *_outputResult;
-    CHRecognitionSessionResult *__inputResult;
+    long long _recognitionEnvironment;
+    NSSet *_forceRecognitionStrokeGroupIdentifiers;
     NSObject<OS_dispatch_queue> *__recognizersQueue;
 }
 
-@property (readonly, strong, nonatomic) CHRecognitionSessionResult *_inputResult; // @synthesize _inputResult=__inputResult;
 @property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *_recognizersQueue; // @synthesize _recognizersQueue=__recognizersQueue;
 @property BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (nonatomic) id<CHRecognitionSessionTaskDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) NSSet *forceRecognitionStrokeGroupIdentifiers; // @synthesize forceRecognitionStrokeGroupIdentifiers=_forceRecognitionStrokeGroupIdentifiers;
+@property (readonly, strong, nonatomic) CHRecognitionSessionResult *inputResult; // @synthesize inputResult=_inputResult;
 @property (readonly, copy, nonatomic) NSArray *locales; // @synthesize locales=_locales;
 @property (strong, nonatomic, setter=_setOutputResult:) CHRecognitionSessionResult *outputResult; // @synthesize outputResult=_outputResult;
 @property (readonly, copy, nonatomic) NSArray *preferredLocales; // @synthesize preferredLocales=_preferredLocales;
+@property (readonly, nonatomic) long long recognitionEnvironment; // @synthesize recognitionEnvironment=_recognitionEnvironment;
 @property (nonatomic) BOOL saveInputDrawings; // @synthesize saveInputDrawings=_saveInputDrawings;
 @property (nonatomic, setter=_setStatus:) long long status; // @synthesize status=_status;
+@property (nonatomic) BOOL strokeGroupingOnly; // @synthesize strokeGroupingOnly=_strokeGroupingOnly;
 @property (readonly, strong, nonatomic) id<CHStrokeProvider> strokeProvider; // @synthesize strokeProvider=_strokeProvider;
 
-- (void)_filterResultsByLocale:(id)arg1 fitnessByLocale:(id)arg2;
 - (BOOL)_isTransitionValidFromStatus:(long long)arg1 toStatus:(long long)arg2;
 - (void)_logResultsIfAppropriateWithStrokeProvider:(id)arg1;
-- (id)_recognitionResultsForStrokeGroup:(id)arg1 groupingStrategy:(id)arg2;
+- (id)_recognitionResultsForNonTextStrokeGroup:(id)arg1 groupingManager:(id)arg2;
+- (id)_textRecognitionResultsForTextStrokeGroup:(id)arg1 groupingManager:(id)arg2;
+- (id)_tokenizedTextResultForDrawing:(id)arg1 usingRecognizer:(id)arg2 isRemoteRecognizer:(BOOL)arg3 locale:(id)arg4 strokeLimit:(long long)arg5 recognitionError:(id *)arg6;
 - (void)cancel;
+- (id)clutterFilter;
 - (void)dealloc;
 - (id)init;
-- (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4 recognitionQOSClass:(unsigned int)arg5;
+- (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4 recognitionQOSClass:(unsigned int)arg5 recognitionEnvironment:(long long)arg6;
 - (void)main;
+- (id)newGroupingManager;
+- (id)newStrokeClassifier;
+- (id)recognitionResultsForGroupingResult:(id)arg1 groupingManager:(id)arg2;
 
 @end
 

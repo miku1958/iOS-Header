@@ -6,31 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class SFCrossfadingImageView;
+@class UIImageView, UIView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface _SFURLLabelAccessoryItem : NSObject
 {
     BOOL _centerAligned;
-    SFCrossfadingImageView *_view;
+    UIImageView *_view;
+    UIImageView *_squishedView;
+    UIVisualEffectView *_effectView;
+    UIVisualEffectView *_squishedEffectView;
     double _spacing;
-    double _squishedSpacing;
-    double _squishedVerticalOffset;
-    double _verticalOffset;
     struct CGSize _size;
-    struct CGSize _squishedSize;
-    struct CGSize _interpolatedSize;
 }
 
 @property (nonatomic) BOOL centerAligned; // @synthesize centerAligned=_centerAligned;
-@property (nonatomic) struct CGSize interpolatedSize; // @synthesize interpolatedSize=_interpolatedSize;
+@property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
+@property (nonatomic) struct CGRect frame;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (nonatomic) double spacing; // @synthesize spacing=_spacing;
-@property (nonatomic) struct CGSize squishedSize; // @synthesize squishedSize=_squishedSize;
-@property (nonatomic) double squishedSpacing; // @synthesize squishedSpacing=_squishedSpacing;
-@property (nonatomic) double squishedVerticalOffset; // @synthesize squishedVerticalOffset=_squishedVerticalOffset;
-@property (nonatomic) double verticalOffset; // @synthesize verticalOffset=_verticalOffset;
-@property (strong, nonatomic) SFCrossfadingImageView *view; // @synthesize view=_view;
+@property (strong, nonatomic) UIVisualEffectView *squishedEffectView; // @synthesize squishedEffectView=_squishedEffectView;
+@property (strong, nonatomic) UIImageView *squishedView; // @synthesize squishedView=_squishedView;
+@property (strong, nonatomic) UIImageView *view; // @synthesize view=_view;
+@property (readonly, nonatomic) UIView *viewForLayout;
 
 - (void).cxx_destruct;
 

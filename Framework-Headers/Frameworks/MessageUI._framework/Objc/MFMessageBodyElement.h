@@ -24,7 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *nodes;
-@property (nonatomic) MFMessageBodyParser *parser; // @synthesize parser=_parser;
+@property (weak, nonatomic) MFMessageBodyParser *parser; // @synthesize parser=_parser;
 @property (readonly) Class superclass;
 
 - (BOOL)_hasValueForAttributes:(int)arg1;

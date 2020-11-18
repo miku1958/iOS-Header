@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *accessory;
 @property (copy, nonatomic) NSURL *accessoryIdentifier;
+@property (copy, nonatomic) NSString *accessoryType;
 @property (copy, nonatomic) NSArray *attributes;
 @property (copy, nonatomic) NSNumber *currentDevice;
 @property (copy, nonatomic) NSString *entityType;
@@ -21,8 +22,11 @@
 @property (copy, nonatomic) NSString *home;
 @property (copy, nonatomic) NSURL *homeIdentifier;
 @property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSURL *primaryServiceIdentifier;
+@property (copy, nonatomic) NSArray *relatedEntityIdentifiers;
 @property (copy, nonatomic) NSString *room;
 @property (copy, nonatomic) NSURL *roomIdentifier;
+@property (copy, nonatomic) NSArray *sceneActions;
 @property (copy, nonatomic) NSString *sceneType;
 @property (copy, nonatomic) NSString *serviceGroup;
 @property (copy, nonatomic) NSArray *serviceGroupIdentifiers;

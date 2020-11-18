@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (id)_addPersonCell;
 - (void)_applyStyleToUILabel:(id)arg1;
+- (void)_dismissShareePicker;
 - (void)_popBackToCalendarEditor:(BOOL)arg1;
 - (id)_shareeCellForName:(id)arg1 detailText:(id)arg2 additionalDetailText:(id)arg3;
 - (id)_stringForShareeAccessLevel:(unsigned long long)arg1;

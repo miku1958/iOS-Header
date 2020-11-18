@@ -6,31 +6,64 @@
 
 #import <Message/MFMailMessage.h>
 
-@class MFLock, NSMutableDictionary, NSMutableSet, NSString;
+#import <Message/EDLibraryMessage-Protocol.h>
 
-@interface MFLibraryMessage : MFMailMessage
+@class ECAngleBracketIDHash, ECMessageFlags, ECSubject, MFMailboxUid, MFMessageHeaders, MailAccount, NSArray, NSDate, NSDictionary, NSSet, NSString, NSUUID;
+@protocol ECMimePart;
+
+@interface MFLibraryMessage : MFMailMessage <EDLibraryMessage>
 {
-    unsigned int _libraryID;
+    long long _libraryID;
     NSString *_remoteID;
     unsigned int _uid;
     unsigned long long _uniqueRemoteId;
     unsigned long long _size;
-    unsigned int _mailboxID;
-    unsigned int _originalMailboxID;
+    long long _mailboxID;
+    long long _originalMailboxID;
     NSString *_messageID;
     unsigned long long _conversationFlags;
-    NSMutableDictionary *_metadata;
-    NSMutableSet *_metadataChangedKeys;
-    MFLock *_metadataLock;
+    NSArray *_references;
 }
 
-+ (id)messageWithLibraryID:(unsigned int)arg1;
+@property (readonly, nonatomic) MailAccount *account; // @dynamic account;
+@property (readonly, copy, nonatomic) NSArray *bcc;
+@property (readonly, nonatomic) id<ECMimePart> bodyPart;
+@property (readonly, copy, nonatomic) NSArray *cc;
+@property (readonly, nonatomic) long long conversationID;
+@property (readonly, nonatomic) NSDate *dateReceived;
+@property (readonly, nonatomic) NSDate *dateSent;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSUUID *documentID; // @dynamic documentID;
+@property (readonly, nonatomic) ECMessageFlags *flags;
+@property (readonly, copy, nonatomic) NSArray *from;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MFMessageHeaders *headers; // @dynamic headers;
+@property (readonly, copy, nonatomic) NSDictionary *headersDictionary;
+@property (readonly) NSSet *labels;
+@property (readonly, nonatomic) long long libraryID;
+@property (readonly, nonatomic) ECAngleBracketIDHash *listIDHash;
+@property (readonly, copy, nonatomic) NSArray *listUnsubscribe;
+@property (readonly, nonatomic) MFMailboxUid *mailbox; // @dynamic mailbox;
+@property (readonly, copy, nonatomic) NSString *messageIDHeader;
+@property (readonly, nonatomic) ECAngleBracketIDHash *messageIDHeaderHash;
+@property (readonly, nonatomic) unsigned long long numberOfAttachments;
+@property (readonly, nonatomic, getter=isPartOfExistingThread) BOOL partOfExistingThread;
+@property (readonly, copy, nonatomic) NSString *persistentID;
+@property (copy, nonatomic) NSArray *references; // @synthesize references=_references;
+@property (readonly, copy, nonatomic) NSString *remoteID;
+@property (readonly, copy, nonatomic) NSArray *senders;
+@property (readonly, copy, nonatomic) ECSubject *subject;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSArray *to;
+
++ (id)log;
++ (id)messageWithLibraryID:(long long)arg1;
+- (void).cxx_destruct;
 - (id)_attachmentStorageLocation;
 - (void)_forceLoadOfMessageSummaryFromProtectedStore;
-- (void)_initializeMetadata;
 - (id)_privacySafeDescription;
 - (void)_updateUID;
-- (id)account;
 - (id)attachmentStorageLocation;
 - (void)commit;
 - (long long)compareByUidWithMessage:(id)arg1;
@@ -38,20 +71,16 @@
 - (id)copyMessageInfo;
 - (id)dataConsumerForMimePart:(id)arg1;
 - (id)dataPathForMimePart:(id)arg1;
-- (void)dealloc;
 - (unsigned long long)fileSize;
 - (BOOL)hasTemporaryUid;
-- (unsigned long long)hash;
-- (id)initWithLibraryID:(unsigned int)arg1;
+- (id)initWithLibraryID:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLibraryMessage;
 - (BOOL)isMessageContentsLocallyAvailable;
 - (BOOL)isPartial;
 - (id)library;
-- (unsigned int)libraryID;
 - (void)loadCachedHeaderValuesFromHeaders:(id)arg1;
-- (id)mailbox;
-- (unsigned int)mailboxID;
+- (long long)mailboxID;
 - (id)mailboxName;
 - (void)markAsFlagged;
 - (void)markAsForwarded;
@@ -62,28 +91,24 @@
 - (id)messageID;
 - (unsigned long long)messageSize;
 - (id)messageStore;
-- (id)metadataValueOfClass:(Class)arg1 forKey:(id)arg2;
-- (unsigned int)originalMailboxID;
+- (long long)originalMailboxID;
 - (id)originalMailboxURL;
 - (id)path;
-- (id)persistentID;
-- (id)preferredEmailAddressToReplyWith;
-- (id)remoteID;
+- (id)preferredAccountToUseForReplying;
 - (void)setConversationFlags:(unsigned long long)arg1;
 - (void)setFlags:(unsigned long long)arg1;
 - (void)setHasTemporaryUid:(BOOL)arg1;
 - (void)setIsPartial:(BOOL)arg1;
-- (void)setMailboxID:(unsigned int)arg1;
+- (void)setMailboxID:(long long)arg1;
 - (void)setMessageData:(id)arg1 isPartial:(BOOL)arg2;
 - (void)setMessageFlags:(unsigned long long)arg1;
 - (void)setMessageFlagsWithoutCommitting:(unsigned long long)arg1;
 - (void)setMessageSize:(unsigned long long)arg1;
-- (void)setMetadataValue:(id)arg1 forKey:(id)arg2;
 - (void)setMutableInfoFromMessage:(id)arg1;
-- (void)setOriginalMailboxID:(unsigned int)arg1;
+- (void)setOriginalMailboxID:(long long)arg1;
 - (void)setPreferredEncoding:(unsigned int)arg1;
 - (void)setRemoteID:(id)arg1;
-- (void)setRemoteID:(const char *)arg1 flags:(unsigned long long)arg2 size:(unsigned int)arg3 mailboxID:(unsigned int)arg4 originalMailboxID:(unsigned int)arg5;
+- (void)setRemoteID:(id)arg1 flags:(unsigned long long)arg2 size:(unsigned int)arg3 mailboxID:(long long)arg4 originalMailboxID:(long long)arg5;
 - (void)setSummary:(id)arg1;
 - (void)setUid:(unsigned int)arg1;
 - (void)setUniqueRemoteId:(unsigned long long)arg1;

@@ -18,7 +18,6 @@
 @property (nonatomic) unsigned long long variant; // @synthesize variant=_variant;
 
 + (id)appIconForBundleIdentifier:(id)arg1 variant:(unsigned long long)arg2;
-+ (id)appIconForBundleIdentifier:(id)arg1 webClipIdentifier:(id)arg2 variant:(unsigned long long)arg3;
 + (id)appIconForImage:(id)arg1 variant:(unsigned long long)arg2;
 + (id)appIconForResult:(id)arg1 variant:(unsigned long long)arg2;
 + (double)cornerRadiusForVariant:(unsigned long long)arg1;
@@ -26,11 +25,14 @@
 + (struct CGSize)sizeForVariant:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)generateImageWithFormat:(int)arg1;
+- (unsigned long long)hash;
 - (id)initWithBundleIdentifier:(id)arg1 variant:(unsigned long long)arg2;
+- (BOOL)isEqual:(id)arg1;
 - (id)loadImage;
 - (BOOL)needsTinting;
 - (void)setUiImage:(id)arg1;
 - (id)uiImage;
+- (id)uniqueIdentifier;
 
 @end
 

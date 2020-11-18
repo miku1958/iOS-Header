@@ -6,23 +6,38 @@
 
 #import <Foundation/NSMutableSet.h>
 
-@interface EAEmailAddressSet : NSMutableSet
+#import <EmailAddressing/EFLoggable-Protocol.h>
+#import <EmailAddressing/NSSecureCoding-Protocol.h>
+
+@class NSData, NSString;
+
+@interface EAEmailAddressSet : NSMutableSet <EFLoggable, NSSecureCoding>
 {
     NSMutableSet *_internalSet;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *internalSet; // @synthesize internalSet=_internalSet;
+@property (readonly, nonatomic) NSData *serializedRepresentation;
+@property (readonly) Class superclass;
 
++ (id)log;
 + (id)set;
 + (id)setWithCapacity:(unsigned long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addObject:(id)arg1;
 - (id)allObjects;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_58648341 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCapacity:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithSerializedRepresentation:(id)arg1;
 - (void)intersectSet:(id)arg1;
 - (BOOL)intersectsSet:(id)arg1;
 - (BOOL)isEqualToSet:(id)arg1;

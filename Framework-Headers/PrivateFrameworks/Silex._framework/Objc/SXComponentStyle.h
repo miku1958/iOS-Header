@@ -8,7 +8,7 @@
 
 #import <Silex/SXComponentStyle-Protocol.h>
 
-@class NSString, SXBorder, SXComponentMask, SXDataTableStyle, SXFill, SXJSONArray, SXShadow, UIColor;
+@class NSString, SXBorder, SXComponentMask, SXComponentShadow, SXDataTableStyle, SXFill, SXJSONArray, UIColor;
 
 @interface SXComponentStyle : SXJSONObject <SXComponentStyle>
 {
@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (readonly, nonatomic) SXComponentMask *mask; // @dynamic mask;
 @property (readonly, nonatomic) double opacity; // @dynamic opacity;
-@property (readonly, nonatomic) SXShadow *shadow; // @dynamic shadow;
+@property (readonly, nonatomic) SXComponentShadow *shadow; // @dynamic shadow;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SXDataTableStyle *tableStyle; // @dynamic tableStyle;
 @property (readonly, nonatomic) unsigned long long traits;

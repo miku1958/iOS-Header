@@ -6,64 +6,43 @@
 
 #import <objc/NSObject.h>
 
+#import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
-
-@interface PPContactNameRecord : NSObject <NSSecureCoding>
+@interface PPContactNameRecord : NSObject <NSSecureCoding, NSCopying>
 {
-    unsigned char _source;
-    unsigned char _changeType;
-    NSString *_identifier;
-    double _score;
-    NSString *_sourceIdentifier;
-    NSString *_firstName;
-    NSString *_phoneticFirstName;
-    NSString *_middleName;
-    NSString *_phoneticMiddleName;
-    NSString *_lastName;
-    NSString *_phoneticLastName;
-    NSString *_organizationName;
-    NSString *_jobTitle;
-    NSString *_nickname;
-    NSDictionary *_relatedNames;
-    NSArray *_streetNames;
-    NSArray *_cityNames;
 }
 
-@property (nonatomic) unsigned char changeType; // @synthesize changeType=_changeType;
-@property (strong, nonatomic) NSArray *cityNames; // @synthesize cityNames=_cityNames;
-@property (strong, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) NSString *jobTitle; // @synthesize jobTitle=_jobTitle;
-@property (strong, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
-@property (strong, nonatomic) NSString *middleName; // @synthesize middleName=_middleName;
-@property (strong, nonatomic) NSString *nickname; // @synthesize nickname=_nickname;
-@property (strong, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
-@property (strong, nonatomic) NSString *phoneticFirstName; // @synthesize phoneticFirstName=_phoneticFirstName;
-@property (strong, nonatomic) NSString *phoneticLastName; // @synthesize phoneticLastName=_phoneticLastName;
-@property (strong, nonatomic) NSString *phoneticMiddleName; // @synthesize phoneticMiddleName=_phoneticMiddleName;
-@property (strong, nonatomic) NSDictionary *relatedNames; // @synthesize relatedNames=_relatedNames;
-@property (nonatomic) double score; // @synthesize score=_score;
-@property (nonatomic) unsigned char source; // @synthesize source=_source;
-@property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
-@property (strong, nonatomic) NSArray *streetNames; // @synthesize streetNames=_streetNames;
-
-+ (id)contactNameRecordWithScore:(double)arg1 source:(unsigned char)arg2 sourceIdentifier:(id)arg3 changeType:(unsigned char)arg4 firstName:(id)arg5 phoneticFirstName:(id)arg6 middleName:(id)arg7 phoneticMiddleName:(id)arg8 lastName:(id)arg9 phoneticLastName:(id)arg10 organizationName:(id)arg11 jobTitle:(id)arg12 nickname:(id)arg13 relatedNames:(id)arg14 streetNames:(id)arg15 cityNames:(id)arg16;
 + (id)describeChangeType:(unsigned char)arg1;
 + (id)describeSource:(unsigned char)arg1;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
+- (unsigned char)changeType;
+- (id)cityNames;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (BOOL)hasScoreSimilarToRecord:(id)arg1;
+- (id)firstName;
 - (unsigned long long)hash;
+- (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 score:(double)arg2 source:(unsigned char)arg3 sourceIdentifier:(id)arg4 changeType:(unsigned char)arg5 firstName:(id)arg6 phoneticFirstName:(id)arg7 middleName:(id)arg8 phoneticMiddleName:(id)arg9 lastName:(id)arg10 phoneticLastName:(id)arg11 organizationName:(id)arg12 jobTitle:(id)arg13 nickname:(id)arg14 relatedNames:(id)arg15 streetNames:(id)arg16 cityNames:(id)arg17;
+- (id)init_;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContactNameRecord:(id)arg1;
+- (id)jobTitle;
+- (id)lastName;
+- (id)middleName;
+- (id)nickname;
+- (id)organizationName;
+- (id)phoneticFirstName;
+- (id)phoneticLastName;
+- (id)phoneticMiddleName;
+- (id)relatedNames;
+- (double)score;
+- (unsigned char)source;
+- (id)sourceIdentifier;
+- (id)streetNames;
 
 @end
 

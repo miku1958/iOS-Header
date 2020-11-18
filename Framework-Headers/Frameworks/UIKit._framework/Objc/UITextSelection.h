@@ -27,8 +27,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UITextRange *initialExtent; // @synthesize initialExtent=_initialExtent;
 @property (readonly, nonatomic) BOOL isCommitting; // @synthesize isCommitting=_isCommitting;
 @property (strong, nonatomic) UITextRange *selectedRange; // @synthesize selectedRange=_selectedRange;
+@property (readonly, nonatomic) BOOL willSelectionChange;
 
 - (void).cxx_destruct;
+- (void)aggressivelyExpandSelectionToSmartSelectionContainingCaretSelection;
 - (void)aggressivelyExpandSelectionToWordContainingCaretSelection;
 - (void)alterSelection:(struct CGPoint)arg1 granularity:(long long)arg2;
 - (void)alterSelectionGranularity:(long long)arg1;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)increaseSelectionGranularity;
 - (id)initWithDocument:(id)arg1;
 - (void)invalidate;
+- (BOOL)isRangedSelectionSpanningDocument;
 - (void)moveCaretToBoundaryOfWhitespaceOrLine;
 - (unsigned long long)offsetInMarkedText;
 - (BOOL)pointAtEndOfLine:(struct CGPoint)arg1;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)selectedText;
 - (void)selectionChanged;
 - (id)selectionRects;
+- (void)setGranularRangedSelectionWithExtentPoint:(struct CGPoint)arg1;
 - (void)setHybridSelectionWithPoint:(struct CGPoint)arg1;
 - (void)setRangedSelectionBaseToCurrentSelection;
 - (void)setRangedSelectionBaseToCurrentSelectionEnd;

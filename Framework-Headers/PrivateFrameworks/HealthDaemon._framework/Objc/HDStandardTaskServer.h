@@ -9,18 +9,18 @@
 #import <HealthDaemon/HDTaskServer-Protocol.h>
 #import <HealthDaemon/HKUnitTestingTaskServerInterface-Protocol.h>
 
-@class HDProfile, HDXPCClient, NSString, NSUUID;
+@class HDHealthStoreClient, HDProfile, NSString, NSUUID;
 @protocol HDTaskServerDelegate;
 
 @interface HDStandardTaskServer : NSObject <HDTaskServer, HKUnitTestingTaskServerInterface>
 {
     NSUUID *_taskUUID;
     HDProfile *_profile;
-    HDXPCClient *_client;
+    HDHealthStoreClient *_client;
     id<HDTaskServerDelegate> _delegate;
 }
 
-@property (readonly, nonatomic) HDXPCClient *client; // @synthesize client=_client;
+@property (readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<HDTaskServerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -34,8 +34,9 @@
 - (void).cxx_destruct;
 - (void)connectionInvalidated;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)remoteInterface;
+- (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)remote_unitTesting_createTaskServerNoOpWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

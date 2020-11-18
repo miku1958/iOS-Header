@@ -10,6 +10,7 @@
 
 @interface TPSBundleController : PSBundleController
 {
+    BOOL _supportsDisabledSubscriptions;
     TPSTelephonyController *_telephonyController;
     CTXPCServiceSubscriptionContext *_subscriptionContext;
     NSArray *_specifiers;
@@ -19,13 +20,17 @@
 @property (readonly, weak, nonatomic) PSListController *parentListController;
 @property (copy, nonatomic) NSArray *specifiers; // @synthesize specifiers=_specifiers;
 @property (strong, nonatomic) CTXPCServiceSubscriptionContext *subscriptionContext; // @synthesize subscriptionContext=_subscriptionContext;
+@property (readonly, nonatomic, getter=isSubscriptionListHidden) BOOL subscriptionListHidden;
 @property (readonly, copy, nonatomic) NSOrderedSet *subscriptions;
+@property (readonly, copy, nonatomic) NSOrderedSet *supportedSubscriptions;
+@property (readonly, nonatomic) BOOL supportsDisabledSubscriptions; // @synthesize supportsDisabledSubscriptions=_supportsDisabledSubscriptions;
 @property (readonly, nonatomic) TPSTelephonyController *telephonyController; // @synthesize telephonyController=_telephonyController;
 
 - (void).cxx_destruct;
 - (id)initWithParentListController:(id)arg1;
 - (id)specifiersWithSpecifier:(id)arg1;
 - (id)subscriptionContextForSpecifier:(id)arg1;
+- (void)telephonyController:(id)arg1 didChangeActiveSubscriptions:(id)arg2;
 - (void)telephonyController:(id)arg1 didChangeSubscriptions:(id)arg2;
 
 @end

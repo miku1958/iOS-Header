@@ -12,21 +12,21 @@
 
 @interface GEOLogMsgEventLogFramework : PBCodable <NSCopying>
 {
-    unsigned long long _messageSize;
     NSMutableArray *_logFrameworkItems;
+    unsigned long long _messageSize;
     unsigned int _messageCount;
     int _messageType;
     int _metricState;
     int _metricType;
     int _purgeReason;
     struct {
-        unsigned int messageSize:1;
-        unsigned int messageCount:1;
-        unsigned int messageType:1;
-        unsigned int metricState:1;
-        unsigned int metricType:1;
-        unsigned int purgeReason:1;
-    } _has;
+        unsigned int has_messageSize:1;
+        unsigned int has_messageCount:1;
+        unsigned int has_messageType:1;
+        unsigned int has_metricState:1;
+        unsigned int has_metricType:1;
+        unsigned int has_purgeReason:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMessageCount;
@@ -35,14 +35,15 @@
 @property (nonatomic) BOOL hasMetricState;
 @property (nonatomic) BOOL hasMetricType;
 @property (nonatomic) BOOL hasPurgeReason;
-@property (strong, nonatomic) NSMutableArray *logFrameworkItems; // @synthesize logFrameworkItems=_logFrameworkItems;
-@property (nonatomic) unsigned int messageCount; // @synthesize messageCount=_messageCount;
-@property (nonatomic) unsigned long long messageSize; // @synthesize messageSize=_messageSize;
-@property (nonatomic) int messageType; // @synthesize messageType=_messageType;
-@property (nonatomic) int metricState; // @synthesize metricState=_metricState;
-@property (nonatomic) int metricType; // @synthesize metricType=_metricType;
-@property (nonatomic) int purgeReason; // @synthesize purgeReason=_purgeReason;
+@property (strong, nonatomic) NSMutableArray *logFrameworkItems;
+@property (nonatomic) unsigned int messageCount;
+@property (nonatomic) unsigned long long messageSize;
+@property (nonatomic) int messageType;
+@property (nonatomic) int metricState;
+@property (nonatomic) int metricType;
+@property (nonatomic) int purgeReason;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)logFrameworkItemType;
 - (void).cxx_destruct;
 - (int)StringAsMessageType:(id)arg1;
@@ -64,6 +65,7 @@
 - (id)metricStateAsString:(int)arg1;
 - (id)metricTypeAsString:(int)arg1;
 - (id)purgeReasonAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

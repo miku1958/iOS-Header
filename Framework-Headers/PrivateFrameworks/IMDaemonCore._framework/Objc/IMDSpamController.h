@@ -12,10 +12,12 @@
 {
     NSMutableDictionary *_chatGUIDToSpamCheckTimerMap;
     NSMutableDictionary *_chatGUIDToCountMap;
+    double _spamExtensionCutoffTime;
 }
 
 @property (strong) NSMutableDictionary *chatGUIDToCountMap; // @synthesize chatGUIDToCountMap=_chatGUIDToCountMap;
 @property (strong) NSMutableDictionary *chatGUIDToSpamCheckTimerMap; // @synthesize chatGUIDToSpamCheckTimerMap=_chatGUIDToSpamCheckTimerMap;
+@property (nonatomic) double spamExtensionCutoffTime; // @synthesize spamExtensionCutoffTime=_spamExtensionCutoffTime;
 
 + (id)sharedInstance;
 - (void)__queryServerForID:(id)arg1 count:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -23,9 +25,11 @@
 - (void)_spamCheckTimerFired:(id)arg1;
 - (void)_updateSpamCheckTimerWithInterval:(double)arg1 forChatGUID:(id)arg2;
 - (id)chatRegistry;
+- (void)checkForSpamWithExtensionInChat:(id)arg1 forMessageBody:(id)arg2 sender:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (void)detectSpam:(id)arg1 chatGUID:(id)arg2;
 - (id)init;
+- (BOOL)shouldCheckForSpamWithExtensionInChat:(id)arg1 fromIdentifier:(id)arg2 toIdentifier:(id)arg3;
 
 @end
 

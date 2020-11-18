@@ -20,6 +20,7 @@
 @property (readonly, copy, nonatomic) NSError *error; // @synthesize error=_error;
 
 - (void).cxx_destruct;
+- (void)_execute;
 - (void)execute;
 - (void)finish;
 - (void)finishWithError:(id)arg1;

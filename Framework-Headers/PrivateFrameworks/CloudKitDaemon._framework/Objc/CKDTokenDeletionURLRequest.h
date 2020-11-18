@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
 - (BOOL)requiresTokenRegistration;
+- (id)sourceApplicationBundleIdentifier;
+- (id)sourceApplicationSecondaryIdentifier;
 
 @end
 

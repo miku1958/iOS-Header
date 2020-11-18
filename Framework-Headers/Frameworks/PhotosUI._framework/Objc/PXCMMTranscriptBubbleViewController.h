@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosUICore/PXTouchingUIGestureRecognizerDelegate-Protocol.h>
 
-@class NSError, NSString, NSURL, PHFetchResult, PHMomentShare, PHPhotoLibrary, PXCMMAssetsProgressListener, PXCMMPreviewAsset, PXCMMPreviewUIImageProvider, PXCMMSpecManager, PXCMMTranscriptBubbleStatusView, PXCMMTranscriptBubbleView;
+@class NSError, NSString, NSURL, PHFetchResult, PHMomentShare, PHPhotoLibrary, PXCMMPreviewAsset, PXCMMPreviewUIImageProvider, PXCMMSpecManager, PXCMMTranscriptBubbleStatusView, PXCMMTranscriptBubbleView, PXMomentShareStatusPresentation;
 @protocol PXCMMTranscriptBubbleTouchDelegate, PXUIImageProvider;
 
 @interface PXCMMTranscriptBubbleViewController : PXTranscriptBubbleViewController <PXPhotoLibraryUIChangeObserver, PXChangeObserver, PXTouchingUIGestureRecognizerDelegate>
@@ -18,7 +18,7 @@
     PHPhotoLibrary *_photoLibrary;
     PHFetchResult *_backingFetchResult;
     PHFetchResult *_keyAssetFetch;
-    PXCMMAssetsProgressListener *_progressListener;
+    PXMomentShareStatusPresentation *_momentShareStatusPresentation;
     long long _saveInProgressTotal;
     PXCMMTranscriptBubbleView *_bubbleView;
     PXCMMTranscriptBubbleStatusView *_errorStatusView;
@@ -47,7 +47,7 @@
 @property (readonly, nonatomic) BOOL isPending; // @synthesize isPending=_isPending;
 @property (readonly, nonatomic) BOOL isSender; // @synthesize isSender=_isSender;
 @property (readonly, nonatomic) PHMomentShare *momentShare;
-@property (strong, nonatomic) PXCMMAssetsProgressListener *progressListener; // @synthesize progressListener=_progressListener;
+@property (strong, nonatomic) PXMomentShareStatusPresentation *momentShareStatusPresentation; // @synthesize momentShareStatusPresentation=_momentShareStatusPresentation;
 @property (readonly) Class superclass;
 @property (nonatomic) long long targetState; // @synthesize targetState=_targetState;
 @property (weak, nonatomic) id<PXCMMTranscriptBubbleTouchDelegate> touchDelegate; // @synthesize touchDelegate=_touchDelegate;
@@ -79,7 +79,7 @@
 - (void)_updateBubbleState;
 - (void)_updateBubbleView;
 - (void)_updateContent;
-- (void)_updateProgressListener;
+- (void)_updateMomentShareStatusPresentation;
 - (struct CGSize)contentSizeThatFits:(struct CGSize)arg1;
 - (void)dealloc;
 - (id)init;
@@ -88,8 +88,8 @@
 - (id)initWithURL:(id)arg1 isSender:(BOOL)arg2 isPending:(BOOL)arg3;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
-- (void)touchingUIGestureRecognizerDidBeginTouching:(id)arg1;
-- (void)touchingUIGestureRecognizerDidEndTouching:(id)arg1;
+- (void)touchingUIGestureRecognizerWillBeginTouching:(id)arg1;
+- (void)touchingUIGestureRecognizerWillEndTouching:(id)arg1;
 - (void)viewDidLoad;
 - (struct CGSize)workaroundSizeForSize:(struct CGSize)arg1;
 

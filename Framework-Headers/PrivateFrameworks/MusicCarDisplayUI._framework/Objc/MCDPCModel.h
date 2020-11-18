@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class MCDPCItem, MPWeakTimer, NSIndexPath, NSMutableDictionary, NSString;
+#import <MusicCarDisplayUI/MCDNowPlayingContentManagerDelegate-Protocol.h>
+
+@class MCDPCItem, MCDPlayableContentPlaybackManager, MPWeakTimer, NSIndexPath, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MCDPCModel : NSObject
+@interface MCDPCModel : NSObject <MCDNowPlayingContentManagerDelegate>
 {
-    BOOL _initiatedActivityInSession;
+    BOOL _currentPlayingApp;
     BOOL _didFinishInitialLoad;
-    BOOL _shouldReloadAgain;
     unsigned int _supportedAPIMask;
     NSString *_bundleID;
     MCDPCItem *_rootItem;
+    MCDPlayableContentPlaybackManager *_playableContentPlaybackManager;
     CDUnknownBlockType _playbackCompletion;
     CDUnknownBlockType _containerCompletion;
     NSIndexPath *_selectedIndexPath;
@@ -24,7 +26,6 @@
     NSMutableDictionary *_beginLoadingBlocks;
     MPWeakTimer *_beginLoadingTimeoutTimer;
     MPWeakTimer *_playbackProgressTimeoutTimer;
-    MPWeakTimer *_modelSourceInvalidatedTimer;
     NSObject<OS_dispatch_queue> *_mediaRemoteNotificationQueue;
     NSObject<OS_dispatch_queue> *_mediaRemoteItemQueue;
     struct CGSize _imageSize;
@@ -35,18 +36,21 @@
 @property (strong, nonatomic) MPWeakTimer *beginLoadingTimeoutTimer; // @synthesize beginLoadingTimeoutTimer=_beginLoadingTimeoutTimer;
 @property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (copy, nonatomic) CDUnknownBlockType containerCompletion; // @synthesize containerCompletion=_containerCompletion;
+@property (nonatomic, getter=isCurrentPlayingApp) BOOL currentPlayingApp; // @synthesize currentPlayingApp=_currentPlayingApp;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didFinishInitialLoad; // @synthesize didFinishInitialLoad=_didFinishInitialLoad;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property (nonatomic) BOOL initiatedActivityInSession; // @synthesize initiatedActivityInSession=_initiatedActivityInSession;
 @property (strong, nonatomic) NSMutableDictionary *items; // @synthesize items=_items;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *mediaRemoteItemQueue; // @synthesize mediaRemoteItemQueue=_mediaRemoteItemQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *mediaRemoteNotificationQueue; // @synthesize mediaRemoteNotificationQueue=_mediaRemoteNotificationQueue;
-@property (strong, nonatomic) MPWeakTimer *modelSourceInvalidatedTimer; // @synthesize modelSourceInvalidatedTimer=_modelSourceInvalidatedTimer;
+@property (strong, nonatomic) MCDPlayableContentPlaybackManager *playableContentPlaybackManager; // @synthesize playableContentPlaybackManager=_playableContentPlaybackManager;
 @property (copy, nonatomic) CDUnknownBlockType playbackCompletion; // @synthesize playbackCompletion=_playbackCompletion;
 @property (strong, nonatomic) MPWeakTimer *playbackProgressTimeoutTimer; // @synthesize playbackProgressTimeoutTimer=_playbackProgressTimeoutTimer;
 @property (readonly, nonatomic) MCDPCItem *rootItem; // @synthesize rootItem=_rootItem;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
-@property (nonatomic) BOOL shouldReloadAgain; // @synthesize shouldReloadAgain=_shouldReloadAgain;
+@property (readonly) Class superclass;
 @property (nonatomic) unsigned int supportedAPIMask; // @synthesize supportedAPIMask=_supportedAPIMask;
 
 - (void).cxx_destruct;
@@ -65,16 +69,15 @@
 - (void)_setupPlaybackProgressTimeoutTimerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beginLoadingItemAtIndexPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)containerForRoot;
+- (void)contentManager:(id)arg1 itemDidChange:(id)arg2 response:(id)arg3;
 - (void)dealloc;
 - (void)getChildrenAtIndexPath:(id)arg1 inRange:(struct _NSRange)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getChildrenSupportsPlaybackProgressForIndexPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getCountOfChildrenAtIndexPath:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getNowPlayingIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getRemoteAppIsPlaying:(CDUnknownBlockType)arg1;
 - (id)initWithBundleID:(id)arg1;
 - (void)initiatePlaybackAtIndexPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)itemsFromMRContentItems:(id)arg1;
-- (void)reloadAgainIfInvalidationCalled;
 
 @end
 

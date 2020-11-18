@@ -24,8 +24,15 @@ __attribute__((visibility("hidden")))
 - (void)_setRemoteValues:(id)arg1 forKeys:(id)arg2;
 - (void)acknowledgeWithSuccess:(BOOL)arg1;
 - (void)becomeCurrentWithPendingUnitCount:(long long)arg1;
+- (id)byteCompletedCount;
+- (id)byteTotalCount;
 - (void)cancel;
 - (void)dealloc;
+- (id)estimatedTimeRemaining;
+- (id)fileCompletedCount;
+- (id)fileOperationKind;
+- (id)fileTotalCount;
+- (id)fileURL;
 - (double)fractionCompleted;
 - (BOOL)isOld;
 - (void)pause;
@@ -33,6 +40,8 @@ __attribute__((visibility("hidden")))
 - (void)publish;
 - (void)resignCurrent;
 - (void)resume;
+- (void)setByteCompletedCount:(id)arg1;
+- (void)setByteTotalCount:(id)arg1;
 - (void)setCancellable:(BOOL)arg1;
 - (void)setCancellationHandler:(CDUnknownBlockType)arg1;
 - (void)setCompletedUnitCount:(long long)arg1;
@@ -50,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)setThroughput:(id)arg1;
 - (void)setTotalUnitCount:(long long)arg1;
 - (void)setUserInfoObject:(id)arg1 forKey:(id)arg2;
+- (id)throughput;
 - (void)unpublish;
 
 @end

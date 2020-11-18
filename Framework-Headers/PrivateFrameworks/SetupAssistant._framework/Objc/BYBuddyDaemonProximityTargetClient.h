@@ -41,7 +41,7 @@
 - (void)proximityConnectionPreparing:(id)arg1;
 - (void)proximityConnectionReconnected;
 - (void)proximityConnectionTerminated;
-- (void)receivedLanguages:(id)arg1 locale:(id)arg2 model:(id)arg3 deviceClass:(id)arg4;
+- (void)receivedLanguages:(id)arg1 locale:(id)arg2 model:(id)arg3 deviceClass:(id)arg4 accessibilitySettings:(id)arg5;
 - (void)resumeProximitySetup:(CDUnknownBlockType)arg1;
 - (void)sendData:(id)arg1;
 - (void)showMigrationInterfaceOnSource;

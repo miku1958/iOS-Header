@@ -23,11 +23,15 @@
 @property (readonly, nonatomic) CKOperationGroup *operationGroup; // @synthesize operationGroup=_operationGroup;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
+@property (readonly, nonatomic) BOOL rebaseProhibited;
 @property (readonly, nonatomic) HDCloudSyncRepository *repository; // @synthesize repository=_repository;
 @property (readonly, copy, nonatomic) NSString *syncContainerPrefix; // @synthesize syncContainerPrefix=_syncContainerPrefix;
-@property (readonly, nonatomic) NSUUID *syncIdentifier; // @synthesize syncIdentifier=_syncIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *syncIdentifier; // @synthesize syncIdentifier=_syncIdentifier;
 
 - (void).cxx_destruct;
+- (id)databaseForContainer:(id)arg1;
+- (void)dealloc;
+- (id)descriptionForSignpost;
 - (id)initWithRepository:(id)arg1 operationGroup:(id)arg2 syncContainerPrefix:(id)arg3 options:(unsigned long long)arg4 reason:(long long)arg5 accessibilityAssertion:(id)arg6 syncIdentifier:(id)arg7;
 - (id)pushStoreIdentifierForContainer:(id)arg1 error:(id *)arg2;
 - (id)pushStoreWithIdentifier:(id)arg1 container:(id)arg2 error:(id *)arg3;

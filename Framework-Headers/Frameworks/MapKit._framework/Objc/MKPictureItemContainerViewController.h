@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)didTapOnPictureItemView:(id)arg1;
 - (void)downloadImageForVisiblePictureItemViews;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithPictureItemContainer:(id)arg1 attribution:(id)arg2;
 - (void)placePhotoViewerAttributionTappedForPhotoAtIndex:(unsigned long long)arg1 photo:(id)arg2;
 - (id)placePhotoViewerViewForPhotoAtIndex:(unsigned long long)arg1;

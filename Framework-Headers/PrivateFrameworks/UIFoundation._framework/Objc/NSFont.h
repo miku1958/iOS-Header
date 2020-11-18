@@ -7,13 +7,17 @@
 #import <UIFoundation/UIFont.h>
 
 #import <UIFoundation/NSCopying-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 
-@interface NSFont : UIFont <NSCopying>
+@interface NSFont : UIFont <NSSecureCoding, NSCopying>
 {
 }
 
 + (id)fontWithName:(id)arg1 size:(double)arg2;
++ (BOOL)supportsSecureCoding;
+- (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 
 @end

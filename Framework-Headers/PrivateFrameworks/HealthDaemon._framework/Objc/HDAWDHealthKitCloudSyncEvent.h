@@ -12,6 +12,7 @@
 
 @interface HDAWDHealthKitCloudSyncEvent : PBCodable <NSCopying>
 {
+    unsigned long long _pcsReportManateeStatus;
     NSString *_cloudKitUUID;
     NSString *_containerID;
     int _operation;
@@ -23,6 +24,7 @@
     BOOL _hasCKManateeEnabled;
     BOOL _hasInternalSettingManateeEnabled;
     struct {
+        unsigned int pcsReportManateeStatus:1;
         unsigned int operation:1;
         unsigned int options:1;
         unsigned int reason:1;
@@ -42,12 +44,14 @@
 @property (nonatomic) BOOL hasOperation;
 @property (readonly, nonatomic) BOOL hasOperationUUID;
 @property (nonatomic) BOOL hasOptions;
+@property (nonatomic) BOOL hasPcsReportManateeStatus;
 @property (nonatomic) BOOL hasReason;
 @property (readonly, nonatomic) BOOL hasSyncCirclePrefix;
 @property (readonly, nonatomic) BOOL hasSyncUUID;
 @property (nonatomic) int operation; // @synthesize operation=_operation;
 @property (strong, nonatomic) NSString *operationUUID; // @synthesize operationUUID=_operationUUID;
 @property (nonatomic) unsigned int options; // @synthesize options=_options;
+@property (nonatomic) unsigned long long pcsReportManateeStatus; // @synthesize pcsReportManateeStatus=_pcsReportManateeStatus;
 @property (nonatomic) int reason; // @synthesize reason=_reason;
 @property (strong, nonatomic) NSString *syncCirclePrefix; // @synthesize syncCirclePrefix=_syncCirclePrefix;
 @property (strong, nonatomic) NSString *syncUUID; // @synthesize syncUUID=_syncUUID;

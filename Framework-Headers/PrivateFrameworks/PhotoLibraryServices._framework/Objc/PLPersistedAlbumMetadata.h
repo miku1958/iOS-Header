@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableOrderedSet, NSNumber, NSString, NSURL, PLGenericAlbum;
+@class NSData, NSMutableOrderedSet, NSNumber, NSString, NSURL, PLGenericAlbum;
 
 @interface PLPersistedAlbumMetadata : NSObject
 {
@@ -23,6 +23,7 @@
     NSString *_customKeyAssetUUID;
     NSMutableOrderedSet *_assetUUIDs;
     NSString *_importSessionID;
+    NSData *_userQueryData;
     PLGenericAlbum *_genericAlbum;
     NSURL *_metadataURL;
 }
@@ -41,15 +42,16 @@
 @property (strong, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property (nonatomic, getter=isPinned) BOOL pinned; // @synthesize pinned=_pinned;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSData *userQueryData; // @synthesize userQueryData=_userQueryData;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)isValidPath:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)_readMetadata;
 - (void)_saveMetadata;
-- (void)dealloc;
 - (id)description;
 - (id)init;
-- (id)initWithPLGenericAlbum:(id)arg1;
+- (id)initWithPLGenericAlbum:(id)arg1 pathManager:(id)arg2;
 - (id)initWithPersistedDataAtURL:(id)arg1;
 - (id)initWithTitle:(id)arg1 uuid:(id)arg2 cloudGUID:(id)arg3 kind:(id)arg4 assetUUIDs:(id)arg5 persistedAlbumDataDirectory:(id)arg6;
 - (id)insertAlbumFromDataInManagedObjectContext:(id)arg1;

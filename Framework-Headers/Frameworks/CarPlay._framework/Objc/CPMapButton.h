@@ -9,7 +9,7 @@
 #import <CarPlay/CPControl-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID, UIImage;
+@class CPImageSet, NSString, NSUUID, UIImage;
 @protocol CPMapButtonDelegate;
 
 @interface CPMapButton : NSObject <CPControl, NSSecureCoding>
@@ -17,9 +17,9 @@
     BOOL _enabled;
     BOOL _hidden;
     NSUUID *_identifier;
-    UIImage *_image;
     UIImage *_focusedImage;
     CDUnknownBlockType _handler;
+    CPImageSet *_imageSet;
     id<CPMapButtonDelegate> _controlDelegate;
 }
 
@@ -32,7 +32,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;

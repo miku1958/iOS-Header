@@ -6,7 +6,7 @@
 
 #import <GameCenterFoundation/GKInternalRepresentation.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class GKTournamentInternal, NSArray, NSData, NSDictionary, NSString;
 
 @interface GKMatchRequestInternal : GKInternalRepresentation
 {
@@ -19,11 +19,13 @@
     NSString *_rid;
     unsigned int _version;
     BOOL _preloadedMatch;
-    int _playerGroup;
+    unsigned long long _playerGroup;
     unsigned int _playerAttributes;
     unsigned char _minPlayers;
     unsigned char _maxPlayers;
     unsigned char _defaultNumberOfPlayers;
+    BOOL _restrictToAutomatch;
+    GKTournamentInternal *_tournamentForInvitePool;
 }
 
 @property (nonatomic) unsigned char defaultNumberOfPlayers; // @synthesize defaultNumberOfPlayers=_defaultNumberOfPlayers;
@@ -33,12 +35,14 @@
 @property (nonatomic) unsigned char maxPlayers; // @synthesize maxPlayers=_maxPlayers;
 @property (nonatomic) unsigned char minPlayers; // @synthesize minPlayers=_minPlayers;
 @property (nonatomic) unsigned int playerAttributes; // @synthesize playerAttributes=_playerAttributes;
-@property (nonatomic) int playerGroup; // @synthesize playerGroup=_playerGroup;
+@property (nonatomic) unsigned long long playerGroup; // @synthesize playerGroup=_playerGroup;
 @property (nonatomic, getter=isPreloadedMatch) BOOL preloadedMatch; // @synthesize preloadedMatch=_preloadedMatch;
 @property (strong, nonatomic) NSArray *recipientPlayerIDs; // @synthesize recipientPlayerIDs=_recipientPlayerIDs;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
+@property (nonatomic) BOOL restrictToAutomatch; // @synthesize restrictToAutomatch=_restrictToAutomatch;
 @property (strong, nonatomic) NSString *rid; // @synthesize rid=_rid;
 @property (strong, nonatomic) NSData *sessionToken; // @synthesize sessionToken=_sessionToken;
+@property (strong, nonatomic) GKTournamentInternal *tournamentForInvitePool; // @synthesize tournamentForInvitePool=_tournamentForInvitePool;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 
 + (id)secureCodedPropertyKeys;

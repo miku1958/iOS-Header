@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HomeKit/HMSetting.h>
 
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/_HMAccesorySettingDelegate-Protocol.h>
 
 @class HMAccessorySettingGroup, NSString, _HMAccessorySetting;
-@protocol NSObject><NSCopying><NSSecureCoding;
 
-@interface HMAccessorySetting : NSObject <_HMAccesorySettingDelegate, HMFLogging>
+@interface HMAccessorySetting : HMSetting <_HMAccesorySettingDelegate, HMFLogging>
 {
     _HMAccessorySetting *_internal;
     HMAccessorySettingGroup *_group;
@@ -24,12 +23,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) _HMAccessorySetting *internal; // @synthesize internal=_internal;
 @property (readonly, copy) NSString *keyPath;
-@property (readonly, copy) NSString *localizedTitle;
 @property (readonly, getter=isReflected) BOOL reflected;
 @property (readonly) Class superclass;
-@property (readonly, copy) id<NSObject><NSCopying><NSSecureCoding> value;
 @property (readonly) Class valueClass;
-@property (readonly, getter=isWritable) BOOL writable;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)logCategory;
@@ -43,8 +39,10 @@
 - (id)initWithInternal:(id)arg1;
 - (id)initWithKey:(id)arg1 properties:(unsigned long long)arg2 value:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isWritable;
 - (id)logIdentifier;
 - (void)updateValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)value;
 
 @end
 

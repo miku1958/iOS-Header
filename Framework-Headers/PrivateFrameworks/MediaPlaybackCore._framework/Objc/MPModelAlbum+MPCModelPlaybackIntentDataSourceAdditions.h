@@ -7,6 +7,8 @@
 #import <MediaPlayer/MPModelAlbum.h>
 
 @interface MPModelAlbum (MPCModelPlaybackIntentDataSourceAdditions)
+- (id)MPC_modelObjectWithStoreFrontLocalEquivalentModelObject:(id)arg1;
 - (id)mpc_protoContainerRepresentation;
+- (id)mpc_radioContentReference;
 @end
 

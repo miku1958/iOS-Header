@@ -14,6 +14,7 @@
     HMHome *_home;
     HMActionSet *_actionSet;
     HFItemBuilder<HFActionSetBuilderProtocol> *_actionSetBuilder;
+    CDUnknownBlockType _filter;
     NSMutableSet *_actionItems;
     HFActionSetValueSource *_valueSource;
 }
@@ -22,13 +23,18 @@
 @property (strong, nonatomic) HMActionSet *actionSet; // @synthesize actionSet=_actionSet;
 @property (strong, nonatomic) HFItemBuilder<HFActionSetBuilderProtocol> *actionSetBuilder; // @synthesize actionSetBuilder=_actionSetBuilder;
 @property (weak, nonatomic) id<HFActionSetValueSourceDelegate> actionSetValueSourceDelegate;
+@property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) HFActionSetValueSource *valueSource; // @synthesize valueSource=_valueSource;
 
 - (void).cxx_destruct;
 - (id)_actionItemForCharacteristic:(id)arg1 addedActionItems:(id)arg2 home:(id)arg3;
+- (id)_actionItemForMediaProfile:(id)arg1 addedActionItems:(id)arg2 home:(id)arg3;
 - (id)_addOrUpdateActionItemWithAction:(id)arg1 actionBuilder:(id)arg2 addedActionItems:(id)arg3 home:(id)arg4;
+- (id)_addOrUpdateActionItemWithMediaAction:(id)arg1 mediaActionBuilder:(id)arg2 addedActionItems:(id)arg3 home:(id)arg4;
 - (id)_createActionItemForCharacteristic:(id)arg1 home:(id)arg2;
+- (id)_createActionItemForMediaProfile:(id)arg1 home:(id)arg2;
+- (id)_findServiceActionForIdentifier:(id)arg1 addedActionItems:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1 actionSet:(id)arg2;

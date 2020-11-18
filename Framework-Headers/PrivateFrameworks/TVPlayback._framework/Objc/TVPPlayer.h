@@ -245,6 +245,8 @@
 + (void)removeTemporaryDownloadDirectory;
 + (id)savedPreferredAudioLanguageCode;
 + (void)setSavedPreferredAudioLanguageCode:(id)arg1;
++ (void)setShouldDeactivateAVAudioSession:(BOOL)arg1;
++ (BOOL)shouldDeactivateAVAudioSession;
 - (void).cxx_destruct;
 - (void)_HDCPStatusPollTimerFired:(id)arg1;
 - (void)_HDCPUnprotectedTooLongTimerFired:(id)arg1;

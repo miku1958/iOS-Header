@@ -10,13 +10,13 @@
 #import <PlatterKit/UIScrollViewDelegate-Protocol.h>
 
 @class NSString, UIScrollView, UIViewController;
-@protocol PLExpandedPlatter><PLContentSizeCategoryAdjusting, PLExpandedPlatterPresentationViewDelegate, PLPreviewInteractionPresentable;
+@protocol PLClickPresentationInteractionPresentable, PLExpandedPlatter><PLContentSizeCategoryAdjusting, PLExpandedPlatterPresentationViewDelegate;
 
 @interface PLExpandedPlatterPresentationView : UIView <UIScrollViewDelegate, PLContentSizeManaging>
 {
     UIView<PLExpandedPlatter><PLContentSizeCategoryAdjusting> *_expandedPlatterView;
     UIScrollView *_scrollView;
-    UIViewController<PLPreviewInteractionPresentable> *_presentableViewController;
+    UIViewController<PLClickPresentationInteractionPresentable> *_presentableViewController;
     id<PLExpandedPlatterPresentationViewDelegate> _delegate;
 }
 
@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIView<PLExpandedPlatter><PLContentSizeCategoryAdjusting> *expandedPlatterView; // @synthesize expandedPlatterView=_expandedPlatterView;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) UIViewController<PLPreviewInteractionPresentable> *presentableViewController; // @synthesize presentableViewController=_presentableViewController;
+@property (weak, nonatomic) UIViewController<PLClickPresentationInteractionPresentable> *presentableViewController; // @synthesize presentableViewController=_presentableViewController;
 @property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
 

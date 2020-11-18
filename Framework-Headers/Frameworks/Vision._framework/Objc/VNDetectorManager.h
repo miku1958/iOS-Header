@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeAllCachedDetectors;
 - (void)_removeCachedDetectorClasses:(id)arg1;
 - (void)_removeCachedDetectorTypes:(id)arg1;
-- (id)_specialCaseLookUpOfExistingDetectorType:(id)arg1 configuredWithOptions:(id)arg2;
+- (BOOL)_specialCaseLookUpOfExistingDetector:(id *)arg1 forType:(id)arg2 configuredWithOptions:(id)arg3 error:(id *)arg4;
 - (id)_synchronizationQueueForDetectorType:(id)arg1;
 - (Class)detectorClassForDetectorType:(id)arg1 options:(id)arg2;
 - (id)detectorOfType:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)forcedCleanupWithOptions:(id)arg1;
 - (id)init;
 - (id)loadedDetectors;
+- (id)saliencyHeatmapBoundingBoxGeneratorForDetector:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (id)wisdomParametersForMetalDeviceWithName:(id)arg1;
 
 @end

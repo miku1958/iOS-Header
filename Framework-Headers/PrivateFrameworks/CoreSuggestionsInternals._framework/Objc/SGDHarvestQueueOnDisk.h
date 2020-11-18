@@ -6,13 +6,13 @@
 
 #import <CoreSuggestionsInternals/SGDHarvestQueue.h>
 
-@class NSObject, NSString, SGDHarvestQueueFileReader, SGDHarvestQueueFileWriter, SGSqliteDatabase;
+@class NSObject, NSString, SGDHarvestQueueFileReader, SGDHarvestQueueFileWriter, SGDSqlHarvestQueueStore;
 @protocol OS_dispatch_queue;
 
 @interface SGDHarvestQueueOnDisk : SGDHarvestQueue
 {
     NSString *_dirPath;
-    SGSqliteDatabase *_db;
+    SGDSqlHarvestQueueStore *_store;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_backingQueue;
     SGDHarvestQueueFileWriter *_writerHighPriority;
@@ -31,14 +31,11 @@
 @property (nonatomic) unsigned long long maxQueueItems;
 
 - (void).cxx_destruct;
+- (void)_flushFilesWhileUnlocked;
 - (void)_garbageCollectFilesAsync;
-- (id)_getDb;
-- (void)_initIdCounter;
-- (BOOL)_migrateDb:(id)arg1;
 - (void)_openFilesForProcessingWhileLocked;
-- (void)_popWithStringAfterWhereClause:(id)arg1 binder:(CDUnknownBlockType)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)_processPoppedItemResult:(CDStruct_7663941a)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_read:(CDStruct_beb4cc23)arg1 fileId:(int)arg2 callback:(CDUnknownBlockType)arg3;
-- (id)_recreateDb;
 - (void)_trimPermafailDirectory;
 - (void)_unlinkFileWithIdLocked:(int)arg1;
 - (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;

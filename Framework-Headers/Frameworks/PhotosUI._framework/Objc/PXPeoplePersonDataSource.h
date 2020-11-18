@@ -35,14 +35,13 @@
 - (id)_itemsArrayFromObjects:(id)arg1;
 - (id)_membersForModelObjects:(id)arg1;
 - (long long)_personTypeForFetchType:(unsigned long long)arg1;
-- (void)addVisiblePerson:(id)arg1;
 - (void)cancelImageLoadingForItem:(id)arg1;
+- (id)faceTileAtIndex:(long long)arg1;
 - (id)generateFetchResult;
 - (id)initWithName:(id)arg1 personFetchType:(unsigned long long)arg2;
 - (id)initWithName:(id)arg1 personFetchType:(unsigned long long)arg2 fetchLimit:(unsigned long long)arg3;
 - (void)loadObjectsAndUpdateMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)photoLibraryDidChange:(id)arg1;
-- (void)removeVisiblePerson:(id)arg1;
 - (void)startListeningForChanges;
 - (void)stopListeningForChanges;
 - (id)titleAtIndex:(unsigned long long)arg1;

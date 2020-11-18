@@ -8,25 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDBrowseCategory, PBUnknownFields;
+@class GEOPDBrowseCategory, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchResultsForCategoryEntry : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _placeIndexs;
     GEOPDBrowseCategory *_category;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_placeIndexs:1;
+        unsigned int read_category:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_placeIndexs:1;
+        unsigned int wrote_category:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDBrowseCategory *category; // @synthesize category=_category;
+@property (strong, nonatomic) GEOPDBrowseCategory *category;
 @property (readonly, nonatomic) BOOL hasCategory;
 @property (readonly, nonatomic) unsigned int *placeIndexs;
 @property (readonly, nonatomic) unsigned long long placeIndexsCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsPlaceIndex:(unsigned int)arg1;
+- (void)_readCategory;
+- (void)_readPlaceIndexs;
 - (void)addPlaceIndex:(unsigned int)arg1;
 - (void)clearPlaceIndexs;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -36,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned int)placeIndexAtIndex:(unsigned long long)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setPlaceIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

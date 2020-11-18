@@ -9,6 +9,7 @@
 @class NSArray, NSError, NSString, UIDictationConnection, UIDictationConnectionOptions, UIDictationSerializableResults;
 
 @protocol UIDictationConnectionDelegate <NSObject>
+- (void)dictationConnection:(UIDictationConnection *)arg1 didDetectLanguage:(NSString *)arg2;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didFailRecognitionWithError:(NSError *)arg2;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didFailRecordingWithError:(NSError *)arg2;
 - (void)dictationConnection:(UIDictationConnection *)arg1 didReceiveSearchResults:(NSArray *)arg2 recognizedText:(NSString *)arg3 stable:(BOOL)arg4 final:(BOOL)arg5;

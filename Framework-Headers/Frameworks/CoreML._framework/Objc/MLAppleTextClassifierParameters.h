@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @interface MLAppleTextClassifierParameters : NSObject
 {
@@ -16,17 +16,20 @@
     NSString *_outputFeatureName;
     NSData *_modelParameterData;
     NSArray *_labelNames;
+    NSDictionary *_metadata;
 }
 
 @property (strong) NSString *inputFeatureName; // @synthesize inputFeatureName=_inputFeatureName;
 @property (strong) NSArray *labelNames; // @synthesize labelNames=_labelNames;
 @property (strong) NSString *language; // @synthesize language=_language;
+@property (strong) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (strong) NSData *modelParameterData; // @synthesize modelParameterData=_modelParameterData;
 @property (strong) NSString *outputFeatureName; // @synthesize outputFeatureName=_outputFeatureName;
 @property unsigned long long revision; // @synthesize revision=_revision;
 
 - (void).cxx_destruct;
 - (id)initWithData:(unsigned long long)arg1 language:(id)arg2 inputFeatureName:(id)arg3 outputFeatureName:(id)arg4 modelData:(id)arg5 labelNames:(id)arg6 error:(id *)arg7;
+- (id)initWithData:(unsigned long long)arg1 language:(id)arg2 inputFeatureName:(id)arg3 outputFeatureName:(id)arg4 modelData:(id)arg5 labelNames:(id)arg6 metadata:(id)arg7 error:(id *)arg8;
 
 @end
 

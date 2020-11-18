@@ -6,21 +6,24 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSMutableSet;
+@class NSArray, NSDate, NSMutableDictionary, NSMutableSet;
 @protocol MMCSOperationStateTimeRange;
 
 @protocol MMCSOperationMetric <NSObject>
 
 @property unsigned long long bytesDownloaded;
 @property unsigned long long bytesUploaded;
+@property (readonly) NSMutableDictionary *chunkCountByChunkProfile;
 @property unsigned long long connections;
 @property unsigned long long connectionsCreated;
 @property (readonly) double duration;
 @property double executing;
+@property (readonly) NSMutableDictionary *fileCountByChunkProfile;
 @property double queueing;
 @property (readonly) NSArray *rangesCopy;
 @property (readonly) NSMutableSet *requestUUIDs;
 @property (readonly) NSDate *startDate;
+@property (readonly) NSMutableDictionary *totalBytesByChunkProfile;
 
 - (void)addRange:(id<MMCSOperationStateTimeRange>)arg1;
 - (id<MMCSOperationStateTimeRange>)newRangeWithOperationState:(unsigned long long)arg1 startDate:(NSDate *)arg2 duration:(double)arg3;

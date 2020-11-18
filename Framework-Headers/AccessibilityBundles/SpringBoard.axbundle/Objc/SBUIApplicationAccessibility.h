@@ -13,10 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityDashboardViewController;
+- (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityCoverSheetViewController;
 - (BOOL)_accessibilityLeftOfHomeTodayViewIsVisible;
 - (BOOL)_accessibilityLeftOfLockTodayViewIsVisible;
-- (id)_accessibilityRootFolderView;
+- (id)_accessibilityRootFolderController;
+- (id)_accessibilityRootFolderViewController;
 - (id)_accessibilitySpeakThisViewController;
 - (BOOL)_accessibilitySpotlightIsVisible;
 - (id)_accessibilitySpotlightMultiplexingViewController;

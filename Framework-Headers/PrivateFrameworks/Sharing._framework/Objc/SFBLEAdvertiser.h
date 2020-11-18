@@ -48,7 +48,6 @@
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)init;
 - (id)initWithType:(long long)arg1;
 - (void)invalidate;
 - (void)setPayloadData:(id)arg1;

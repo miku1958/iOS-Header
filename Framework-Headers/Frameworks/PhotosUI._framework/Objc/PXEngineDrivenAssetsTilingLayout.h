@@ -11,7 +11,7 @@
 
 @interface PXEngineDrivenAssetsTilingLayout : PXAssetsTilingLayout
 {
-    struct _needsUpdateFlags;
+    CDStruct_183601bc _needsUpdateFlags;
     struct {
         BOOL respondsToEngineDrivenLayoutReferenceSizeDidChange;
         BOOL respondsToEngineDrivenLayoutAspectRatioForItemAtIndexPath;

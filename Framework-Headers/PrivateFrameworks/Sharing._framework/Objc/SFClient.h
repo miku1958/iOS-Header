@@ -32,11 +32,14 @@
 - (void)activateAssertionWithIdentifier:(id)arg1;
 - (void)activityStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)appleIDInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)broadwayPresentCardWithCode:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)contactIDForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)displayNameForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)displayStringForContactIdentifier:(id)arg1 deviceIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)findContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getDeviceAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getPeopleSuggestions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
 - (void)openSetupURL:(id)arg1 completion:(CDUnknownBlockType)arg2;

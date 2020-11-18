@@ -14,5 +14,6 @@
 @property (readonly) NSString *npkRelevancyUniqueID;
 
 + (id)npkRelevancyTupleWithUniqueID:(id)arg1 relevantText:(id)arg2;
+- (id)npk_objectForKey:(id)arg1 class:(Class)arg2;
 @end
 

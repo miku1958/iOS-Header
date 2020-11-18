@@ -22,6 +22,7 @@
     NSNumber *_loyaltyBalance;
     NSDecimalNumber *_amount;
     NSNumber *_loyaltyAmount;
+    NSNumber *_cityCode;
     NSData *_startStation;
     NSData *_endStation;
     NSString *_transitDetail;
@@ -30,6 +31,7 @@
 
 @property (copy, nonatomic) NSDecimalNumber *amount; // @synthesize amount=_amount;
 @property (copy, nonatomic) NSDecimalNumber *balance; // @synthesize balance=_balance;
+@property (copy, nonatomic) NSNumber *cityCode; // @synthesize cityCode=_cityCode;
 @property (nonatomic) unsigned long long detail; // @synthesize detail=_detail;
 @property (copy, nonatomic) NSData *endStation; // @synthesize endStation=_endStation;
 @property (copy, nonatomic) NSNumber *historySequenceNumber; // @synthesize historySequenceNumber=_historySequenceNumber;

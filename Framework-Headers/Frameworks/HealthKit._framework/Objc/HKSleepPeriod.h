@@ -39,10 +39,10 @@
 @property (readonly, nonatomic) double asleepDurationGoal; // @synthesize asleepDurationGoal=_asleepDurationGoal;
 @property (readonly, nonatomic) long long asleepDurationGoalSource; // @synthesize asleepDurationGoalSource=_asleepDurationGoalSource;
 @property (readonly, nonatomic, getter=isConsistent) BOOL consistent; // @synthesize consistent=_consistent;
-@property (readonly, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (readonly, copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) double efficiency; // @synthesize efficiency=_efficiency;
-@property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly, nonatomic) BOOL endDateConformsToIntendedBedtime; // @synthesize endDateConformsToIntendedBedtime=_endDateConformsToIntendedBedtime;
 @property (readonly, nonatomic) double endDateOffsetFromIntendedBedtime; // @synthesize endDateOffsetFromIntendedBedtime=_endDateOffsetFromIntendedBedtime;
 @property (readonly, nonatomic) double inBedDuration; // @synthesize inBedDuration=_inBedDuration;
@@ -50,7 +50,7 @@
 @property (readonly, nonatomic) long long intendedBedtimeType; // @synthesize intendedBedtimeType=_intendedBedtimeType;
 @property (readonly, nonatomic) long long numberOfInterruptions; // @synthesize numberOfInterruptions=_numberOfInterruptions;
 @property (readonly, copy, nonatomic) NSArray *segments; // @synthesize segments=_segments;
-@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, nonatomic) BOOL startDateConformsToIntendedBedtime; // @synthesize startDateConformsToIntendedBedtime=_startDateConformsToIntendedBedtime;
 @property (readonly, nonatomic) double startDateOffsetFromIntendedBedtime; // @synthesize startDateOffsetFromIntendedBedtime=_startDateOffsetFromIntendedBedtime;
 @property (readonly, nonatomic) double timeAwakeDuringIntendedSleepPeriod; // @synthesize timeAwakeDuringIntendedSleepPeriod=_timeAwakeDuringIntendedSleepPeriod;

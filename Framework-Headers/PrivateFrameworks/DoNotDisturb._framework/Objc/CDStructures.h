@@ -8,3 +8,13 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+

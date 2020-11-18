@@ -41,9 +41,14 @@
 @property (nonatomic) BOOL shouldAdjustOnAnalyze; // @synthesize shouldAdjustOnAnalyze=_shouldAdjustOnAnalyze;
 @property (nonatomic) int textContentType;
 
++ (id)baseLayout;
 + (void)loadMobileAssetContentsForInputModes:(id)arg1 assetContentTypes:(id)arg2 inMecabra:(struct __Mecabra *)arg3 onQueue:(id)arg4;
++ (void)loadMobileAssetContentsForInputModes:(id)arg1 assetContentTypes:(id)arg2 onQueue:(id)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
 + (void)loadMobileAssetContentsForInputModes:(id)arg1 inMecabra:(struct __Mecabra *)arg2 onQueue:(id)arg3;
++ (void)loadMobileAssetContentsForInputModes:(id)arg1 onQueue:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
++ (id)loadMobileAssetContentsWhenMobileAssetChangesForCHRecognizer:(id)arg1 inputModes:(id)arg2 onQueue:(id)arg3 oldMobileAssetChangeListener:(id)arg4;
 + (id)loadMobileAssetContentsWhenMobileAssetChangesForMecabra:(struct __Mecabra *)arg1 inputModes:(id)arg2 onQueue:(id)arg3 oldMobileAssetChangeListener:(id)arg4;
++ (int)maxNumberOfDrawSamples;
 + (void)removeMobileAssetListener:(id)arg1;
 - (void).cxx_destruct;
 - (void)acceptInlineCandidates;
@@ -56,8 +61,10 @@
 - (void)adjustEnvironmentDirectly:(long long)arg1;
 - (void)adjustEnvironmentOnAction:(long long)arg1;
 - (void)analyzeCandidateContextWithSplit:(BOOL)arg1;
+- (BOOL)analyzeInput:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)analyzeString:(id)arg1 options:(unsigned long long)arg2;
 - (unsigned long long)candidateIndex;
+- (void)commitPredictionCandidate:(void *)arg1;
 - (void)compareDocumentAndEnvironmentCandidates;
 - (void)completelyCommitInlineCandidate:(void *)arg1;
 - (void)createNewCandidatesFromDocumentContext;
@@ -73,6 +80,7 @@
 - (void)setAppContext:(id)arg1;
 - (void)setCandidateIndex:(long long)arg1;
 - (void)setGeometryModel:(void *)arg1 modelData:(struct __CFArray *)arg2;
+- (void)setKeyboardLayout:(id)arg1;
 - (void)setLeftDocumentContextInternal:(id)arg1;
 - (void)setShuangpinType:(int)arg1;
 - (void)updateCursorPosition;

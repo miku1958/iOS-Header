@@ -18,6 +18,7 @@
     BOOL _hasBottomPadding;
     BOOL _isContact;
     int _separatorStyle;
+    int _suggestionType;
     NSArray *_punchoutOptions;
     NSString *_punchoutPickerTitle;
     NSString *_punchoutPickerDismissText;
@@ -42,6 +43,7 @@
 @property (copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier; // @synthesize scopedSearchSectionBundleIdentifier=_scopedSearchSectionBundleIdentifier;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (strong, nonatomic) _SFPBRichText *suggestionText; // @synthesize suggestionText=_suggestionText;
+@property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 

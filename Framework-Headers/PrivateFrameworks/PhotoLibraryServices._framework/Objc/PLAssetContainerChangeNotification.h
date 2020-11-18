@@ -16,12 +16,13 @@
     NSDictionary *_userInfo;
 }
 
-@property (readonly, strong, nonatomic) NSObject<PLAlbumProtocol> *album;
-@property (readonly, strong, nonatomic) id<PLAssetContainer> container;
+@property (readonly, nonatomic) NSObject<PLAlbumProtocol> *album;
+@property (readonly, nonatomic) id<PLAssetContainer> container;
 @property (readonly, nonatomic) BOOL keyAssetDidChange;
 @property (readonly, nonatomic) BOOL titleDidChange;
 
 + (id)notificationWithContainer:(id)arg1 snapshot:(id)arg2 changedAssets:(id)arg3;
+- (void).cxx_destruct;
 - (void)_calculateDiffs;
 - (id)_contentRelationshipName;
 - (BOOL)_getOldSet:(id *)arg1 newSet:(id *)arg2;

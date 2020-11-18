@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID;
+@class NSArray, NSUUID;
 
 @interface DMFiCloudPolicyMonitor : NSObject
 {
     long long _iCloudLogoutPolicy;
-    NSUUID *_policyMonitorIdentifier;
+    NSArray *_policyTypes;
+    NSUUID *_identifier;
 }
 
 @property (nonatomic) long long iCloudLogoutPolicy; // @synthesize iCloudLogoutPolicy=_iCloudLogoutPolicy;
-@property (readonly, nonatomic) NSUUID *policyMonitorIdentifier; // @synthesize policyMonitorIdentifier=_policyMonitorIdentifier;
+@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 
 + (BOOL)automaticallyNotifiesObserversOfICloudLogoutPolicy;
 - (void).cxx_destruct;

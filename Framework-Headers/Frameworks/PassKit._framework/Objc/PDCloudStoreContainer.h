@@ -92,6 +92,7 @@
 - (void)detachFromContainerWithState:(unsigned long long)arg1;
 - (BOOL)ensureContainerState:(unsigned long long)arg1;
 - (id)errorWithCode:(long long)arg1 description:(id)arg2;
+- (void)fetchAndProccessRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 operationGroupNameSuffix:(id)arg3 zone:(id)arg4 shouldUpdateLocalDatabase:(BOOL)arg5 userInfo:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)fetchAndStoreChanges:(BOOL)arg1 forceFetch:(BOOL)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 userInfo:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)fetchAndStoreChanges:(BOOL)arg1 forceFetch:(BOOL)arg2 operationGroupName:(id)arg3 operationGroupNameSuffix:(id)arg4 userInfo:(id)arg5 proccessedCloudStoreRecords:(id)arg6 processedDeletedRecords:(id)arg7 serverChangeToken:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)fetchRecordsWithQuery:(id)arg1 operationGroupName:(id)arg2 zone:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -126,7 +127,7 @@
 - (void)saveServerZonesForKey:(id)arg1;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setContainerState:(unsigned long long)arg1 operationGroupNameSuffix:(id)arg2 retryCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (BOOL)shouldFetchAndStoreCloudDataAtStartup;
+- (void)shouldFetchAndStoreCloudDataAtStartupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)simulateCloudStorePushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)zoneForCloudStoreItemType:(unsigned long long)arg1;

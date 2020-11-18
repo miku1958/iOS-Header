@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 @class AMSProcessInfo, NSData, NSDictionary, NSError, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics;
-@protocol AMSMetricsBagContract;
+@protocol AMSBagProtocol;
 
 @interface AMSMetricsLoadURLContext : NSObject
 {
-    id<AMSMetricsBagContract> _bagContract;
+    id<AMSBagProtocol> _bag;
     NSError *_error;
     AMSProcessInfo *_processInfo;
     NSData *_responseBody;
@@ -21,7 +21,7 @@
     NSDictionary *_decodedResponseBody;
 }
 
-@property (strong, nonatomic) id<AMSMetricsBagContract> bagContract; // @synthesize bagContract=_bagContract;
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) NSDictionary *decodedResponseBody; // @synthesize decodedResponseBody=_decodedResponseBody;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
@@ -31,8 +31,10 @@
 @property (strong, nonatomic) NSURLSessionTaskMetrics *taskMetrics; // @synthesize taskMetrics=_taskMetrics;
 
 - (void).cxx_destruct;
+- (id)bagContract;
 - (id)initWithTask:(id)arg1 metrics:(id)arg2;
 - (id)initWithTaskInfo:(id)arg1 serverPayload:(id)arg2;
+- (void)setBagContract:(id)arg1;
 
 @end
 

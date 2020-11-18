@@ -7,6 +7,9 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (SpIdMetadataLogging)
+- (id)_cs_initWithXPCObject:(id)arg1;
+- (id)_cs_xpcObject;
 - (void)logSpeakerIdMetadataAtFilepath:(id)arg1 additionalMetadata:(id)arg2;
+- (id)speakerIdDetected;
 @end
 

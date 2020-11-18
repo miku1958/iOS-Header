@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPAsset, CKDPDate, CKDPLocationCoordinate, CKDPPackage, CKDPRecordReference, NSData, NSMutableArray, NSString;
+@class CKDPAsset, CKDPDate, CKDPLocationCoordinate, CKDPPackage, CKDPRecordReference, CKDPStreamingAsset, NSData, NSMutableArray, NSString;
 
 @interface CKDPRecordFieldValue : PBCodable <NSCopying>
 {
@@ -21,6 +21,7 @@
     CKDPLocationCoordinate *_locationValue;
     CKDPPackage *_packageValue;
     CKDPRecordReference *_referenceValue;
+    CKDPStreamingAsset *_streamingAssetValue;
     NSString *_stringValue;
     int _type;
     BOOL _isEncrypted;
@@ -45,6 +46,7 @@
 @property (readonly, nonatomic) BOOL hasPackageValue;
 @property (readonly, nonatomic) BOOL hasReferenceValue;
 @property (nonatomic) BOOL hasSignedValue;
+@property (readonly, nonatomic) BOOL hasStreamingAssetValue;
 @property (readonly, nonatomic) BOOL hasStringValue;
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) BOOL isEncrypted; // @synthesize isEncrypted=_isEncrypted;
@@ -53,6 +55,7 @@
 @property (strong, nonatomic) CKDPPackage *packageValue; // @synthesize packageValue=_packageValue;
 @property (strong, nonatomic) CKDPRecordReference *referenceValue; // @synthesize referenceValue=_referenceValue;
 @property (nonatomic) long long signedValue; // @synthesize signedValue=_signedValue;
+@property (strong, nonatomic) CKDPStreamingAsset *streamingAssetValue; // @synthesize streamingAssetValue=_streamingAssetValue;
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (nonatomic) int type; // @synthesize type=_type;
 

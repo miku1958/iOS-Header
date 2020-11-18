@@ -64,7 +64,9 @@
 - (id)bloodGlucoseForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)bolusInsulinDeliveryForFoodItems:(id)arg1 totalDailyInsulinInUnits:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (void)generateFirstRunSampleForDemoPerson:(id)arg1 firstDate:(id)arg2 objectCollection:(id)arg3;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
+- (void)generateWaterAndCaffeineSampleForTodayIfNeededWith:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (long long)mealTypeForTime:(double)arg1;

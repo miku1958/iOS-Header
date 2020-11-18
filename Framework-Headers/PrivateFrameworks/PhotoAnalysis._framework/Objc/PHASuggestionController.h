@@ -22,22 +22,24 @@
 @property (readonly, nonatomic) NSArray *existingSuggestions;
 
 + (unsigned long long)_retirementDelayInDaysForSuggestionType:(unsigned short)arg1;
++ (id)availableSuggestionTypeInfosWithProfile:(unsigned char)arg1;
 - (void).cxx_destruct;
 - (id)collidableMemoriesWithReferenceDate:(id)arg1 andDelay:(double)arg2;
 - (id)collidableSuggestionsWithOptions:(id)arg1;
 - (id)collidableSuggestionsWithReferenceDate:(id)arg1 andDelay:(double)arg2 sharingSuggestionsOnly:(BOOL)arg3;
 - (id)commitSuggestions:(id)arg1 options:(id)arg2;
+- (id)existingSuggestionsInSuggestions:(id)arg1 atDate:(id)arg2 processExistingSuggestions:(BOOL)arg3;
 - (id)generateSharingSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)generateSingleAssetSuggestionsWithOptions:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (id)generateSuggestionsWithProfile:(unsigned char)arg1 options:(id)arg2 progress:(CDUnknownBlockType)arg3;
 - (id)initWithGraphManager:(id)arg1;
-- (id)processExistingSuggestions:(id)arg1 atDate:(id)arg2 shouldPerformChanges:(BOOL)arg3;
 - (void)processExistingSuggestionsWithOptions:(id)arg1;
 - (void)recordCreatedSuggestions:(id)arg1 duringSession:(id)arg2;
 - (void)recordDeletedSuggestions:(id)arg1;
 - (void)recordRetiredSuggestions:(id)arg1;
 - (BOOL)shouldDeleteSuggestion:(id)arg1 atDate:(id)arg2;
 - (BOOL)shouldRetireSuggestion:(id)arg1 atDate:(id)arg2;
+- (id)suggestionInfosWithOptions:(id)arg1;
 
 @end
 

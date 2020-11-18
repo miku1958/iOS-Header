@@ -6,7 +6,7 @@
 
 #import <ARKit/ARImageBasedTechnique.h>
 
-@class ARImageDetectionResultData, ARODTHandleManager, NSArray, NSDictionary, NSObject;
+@class ARImageDetectionResultData, ARODTHandleManager, ARWorldTrackingPoseData, NSArray, NSDictionary, NSObject;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ARImageDetectionTechnique : ARImageBasedTechnique
@@ -22,10 +22,14 @@
     BOOL _deterministicMode;
     struct shared_ptr<arkit::KeyMapBuffer<const void *, std::__1::vector<unsigned char, std::__1::allocator<unsigned char>>>> _poseBuffer;
     BOOL _needsWorldTrackingPoseData;
+    BOOL _enableAutomaticImageScaleEstimation;
+    ARWorldTrackingPoseData *_currentWorldTrackingPose;
     ARODTHandleManager *_odtTHandleManger;
     NSDictionary *_referenceImageMap;
 }
 
+@property (strong) ARWorldTrackingPoseData *currentWorldTrackingPose; // @synthesize currentWorldTrackingPose=_currentWorldTrackingPose;
+@property (nonatomic) BOOL enableAutomaticImageScaleEstimation; // @synthesize enableAutomaticImageScaleEstimation=_enableAutomaticImageScaleEstimation;
 @property (readonly, nonatomic) BOOL finishedLoadingImages;
 @property (readonly) ARODTHandleManager *odtTHandleManger; // @synthesize odtTHandleManger=_odtTHandleManger;
 @property (readonly) NSDictionary *referenceImageMap; // @synthesize referenceImageMap=_referenceImageMap;
@@ -43,6 +47,7 @@
 - (unsigned long long)requiredSensorDataTypes;
 - (double)requiredTimeInterval;
 - (BOOL)syncWithProcessedImage;
+- (void)updateARPresentationMode:(long long)arg1;
 
 @end
 

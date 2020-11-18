@@ -14,8 +14,8 @@
 @interface PLAvalanche : NSObject <PLAssetContainer, PLAssetChangeObserver>
 {
     NSString *_uuid;
-    NSOrderedSet *_assets;
     PLPhotoLibrary *_photoLibrary;
+    NSOrderedSet *_assets;
     NSIndexSet *__originalAutoPickIndexes;
     NSMutableIndexSet *__autoPickIndexes;
     NSIndexSet *__originalUserFavoriteIndexes;
@@ -49,31 +49,33 @@
 @property (strong, nonatomic) PLManagedAsset *keyAsset;
 @property (readonly, copy, nonatomic) NSArray *localizedLocationNames;
 @property (readonly, copy, nonatomic) NSString *localizedTitle;
-@property (strong, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, nonatomic) unsigned long long photosCount;
 @property (strong, nonatomic) PLManagedAsset *secondaryKeyAsset;
 @property (readonly, strong, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PLManagedAsset *tertiaryKeyAsset;
 @property (readonly, strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) unsigned long long videosCount;
 
++ (BOOL)_allowMPSmodificationForBurstChangesOnLibrary:(id)arg1;
 + (id)_assetAmongAssets:(id)arg1 fromIndexes:(id)arg2 excludingIndexes:(id)arg3;
 + (unsigned long long)_calculateStackAssetForAssetCount:(unsigned long long)arg1 autoPicks:(id)arg2 userFavorites:(id)arg3;
 + (void)_handleUpdatesForContextWillSave:(id)arg1;
 + (void)_updateMembershipForAssets:(id)arg1 autoPicks:(id)arg2 stackAsset:(id)arg3 userFavorites:(id)arg4 deleteNonPicks:(BOOL)arg5 allowDissolve:(BOOL)arg6 inLibrary:(id)arg7;
 + (id)_updatePropertiesForAssets:(id)arg1 autoPicks:(id)arg2 stackAsset:(id)arg3 userFavorites:(id)arg4 deleteNonPicks:(BOOL)arg5 setFirstPick:(BOOL)arg6 allowDissolve:(BOOL)arg7;
 + (id)_visibleIndexesAmongAssets:(id)arg1 fromUserFavoriteIndexes:(id)arg2 stackIndex:(unsigned long long)arg3;
-+ (id)assetsWithAvalancheUUID:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (unsigned long long)countForAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
-+ (void)disolveBurstForAssets:(id)arg1;
++ (unsigned long long)countForNonMPSAssetsWithAvalancheUUID:(id)arg1 inLibrary:(id)arg2;
++ (void)disolveBurstForAssets:(id)arg1 permanently:(BOOL)arg2;
 + (struct CGRect)frameOfTopImageInStackForStackFrame:(struct CGRect)arg1;
 + (BOOL)isValidBurstWithAssets:(id)arg1;
++ (id)nonMPSAssetsWithAvalancheUUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (void)removeFavoriteStatus:(id)arg1;
 + (id)revalidateAvalancheAssets:(id)arg1 inLibrary:(id)arg2 deleteNonPicks:(BOOL)arg3 allowDissolve:(BOOL)arg4;
 + (BOOL)shouldHideAvalanchesFromPhotoStream;
 + (BOOL)shouldOnlyShowAvalanchePicks;
+- (void).cxx_destruct;
 - (void)_recalculateStackAsset;
 - (void)addUserFavorite:(id)arg1;
 - (void)applyChangesAndDeleteNonPicks:(BOOL)arg1 currentContainer:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

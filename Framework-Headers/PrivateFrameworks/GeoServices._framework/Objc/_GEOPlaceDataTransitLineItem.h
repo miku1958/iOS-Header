@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSArray *incidents;
+@property (readonly, nonatomic) BOOL isBus;
 @property (readonly, nonatomic) BOOL isIncidentsTTLExpired;
 @property (readonly, nonatomic) NSArray *labelItems;
 @property (readonly, nonatomic) NSString *lineColorString;

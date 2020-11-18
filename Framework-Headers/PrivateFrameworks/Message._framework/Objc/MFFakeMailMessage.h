@@ -6,20 +6,25 @@
 
 #import <Message/MFMailMessage.h>
 
-@class MFMailboxUid, MFMessageHeaders, MailAccount;
+@class MFMailboxUid, MFMessageHeaders, MailAccount, NSString;
 
 @interface MFFakeMailMessage : MFMailMessage
 {
+    NSString *_persistentID;
     MFMailboxUid *_mailbox;
-    MFMessageHeaders *_headers;
     MailAccount *_account;
+    MFMessageHeaders *_fakeHeaders;
 }
 
 @property (strong, nonatomic) MailAccount *account; // @synthesize account=_account;
-@property (strong, nonatomic) MFMessageHeaders *headers; // @synthesize headers=_headers;
+@property (strong, nonatomic) MFMessageHeaders *fakeHeaders; // @synthesize fakeHeaders=_fakeHeaders;
+@property (strong, nonatomic) MFMessageHeaders *headers;
 @property (strong, nonatomic) MFMailboxUid *mailbox; // @synthesize mailbox=_mailbox;
 
 - (void).cxx_destruct;
+- (id)init;
+- (long long)mailboxID;
+- (id)persistentID;
 
 @end
 

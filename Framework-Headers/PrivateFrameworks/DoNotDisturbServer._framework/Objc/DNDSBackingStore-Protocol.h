@@ -6,10 +6,13 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class NSArray;
+@protocol DNDSBackingStoreDelegate, DNDSBackingStoreRecord;
 
 @protocol DNDSBackingStore <NSObject>
-- (NSArray *)readAllRecordsWithError:(id *)arg1 lastUpdateDate:(out id *)arg2;
-- (BOOL)writeAllRecords:(NSArray *)arg1 withError:(id *)arg2;
+
+@property (weak, nonatomic) id<DNDSBackingStoreDelegate> delegate;
+
+- (id)readRecordWithError:(id *)arg1;
+- (BOOL)writeRecord:(id<DNDSBackingStoreRecord>)arg1 error:(id *)arg2;
 @end
 

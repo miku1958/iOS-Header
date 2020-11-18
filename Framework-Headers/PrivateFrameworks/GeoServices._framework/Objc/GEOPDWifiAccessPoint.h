@@ -14,27 +14,29 @@ __attribute__((visibility("hidden")))
 @interface GEOPDWifiAccessPoint : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSString *_macId;
     unsigned long long _scanTimestamp;
     unsigned int _age;
     int _channel;
-    NSString *_macId;
     int _rssi;
-    CDStruct_823dd0e8 _has;
+    CDStruct_e664d718 _flags;
 }
 
-@property (nonatomic) unsigned int age; // @synthesize age=_age;
-@property (nonatomic) int channel; // @synthesize channel=_channel;
+@property (nonatomic) unsigned int age;
+@property (nonatomic) int channel;
 @property (nonatomic) BOOL hasAge;
 @property (nonatomic) BOOL hasChannel;
 @property (readonly, nonatomic) BOOL hasMacId;
 @property (nonatomic) BOOL hasRssi;
 @property (nonatomic) BOOL hasScanTimestamp;
-@property (strong, nonatomic) NSString *macId; // @synthesize macId=_macId;
-@property (nonatomic) int rssi; // @synthesize rssi=_rssi;
-@property (nonatomic) unsigned long long scanTimestamp; // @synthesize scanTimestamp=_scanTimestamp;
+@property (strong, nonatomic) NSString *macId;
+@property (nonatomic) int rssi;
+@property (nonatomic) unsigned long long scanTimestamp;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithGEOWifiAccessPoint:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

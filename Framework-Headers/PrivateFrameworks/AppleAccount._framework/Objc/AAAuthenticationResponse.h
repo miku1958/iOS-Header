@@ -14,8 +14,6 @@
     NSDictionary *_appleAccount;
 }
 
-@property (readonly, nonatomic) NSString *HSAAction;
-@property (readonly, nonatomic) NSString *HSAData;
 @property (readonly, nonatomic) NSString *altDSID;
 @property (readonly, nonatomic) NSString *authToken;
 @property (readonly, nonatomic) NSString *cloudKitToken;
@@ -23,7 +21,6 @@
 @property (readonly, nonatomic) NSString *fmfToken;
 @property (readonly, nonatomic) NSString *fmipLostModeToken;
 @property (readonly, nonatomic) NSString *fmipToken;
-@property (readonly, nonatomic) NSString *hsaToken;
 @property (readonly, nonatomic) NSString *mapsToken;
 @property (readonly, nonatomic) NSString *mdmServerToken;
 @property (readonly, nonatomic) NSString *personID;

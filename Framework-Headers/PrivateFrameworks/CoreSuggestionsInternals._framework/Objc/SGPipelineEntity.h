@@ -6,12 +6,13 @@
 
 #import <CoreSuggestionsInternals/SGEntity.h>
 
-@class NSArray, NSData, NSIndexSet, NSMutableArray, NSMutableDictionary, NSSet, NSString, SGMessage;
+@class INInteraction, NSArray, NSData, NSIndexSet, NSMutableArray, NSMutableDictionary, NSSet, NSString, SGMessage;
 
 @interface SGPipelineEntity : SGEntity
 {
     NSMutableArray *_enrichments;
     NSMutableArray *_externalEnrichments;
+    NSMutableArray *_taggedCharacterRanges;
     NSString *_plainTextContentCache;
     BOOL _plainTextContentCacheGenerated;
     struct _opaque_pthread_mutex_t _plainTextContentCacheLock;
@@ -31,6 +32,7 @@
     NSMutableDictionary *_emailToCanonicalEmailCache;
     SGMessage *_message;
     NSData *_contentHash;
+    INInteraction *_interaction;
     NSArray *_invalidatedMessageIdentifiers;
     NSArray *_authorMatchingContacts;
     NSSet *_authorMatchingContactsKeys;
@@ -52,6 +54,7 @@
 @property (readonly, nonatomic) unsigned long long *htmlOffsets; // @synthesize htmlOffsets=_htmlOffsets;
 @property (readonly, nonatomic) CDStruct_f96224e3 *inhumanFeatures;
 @property (readonly, nonatomic) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
+@property (readonly, nonatomic) INInteraction *interaction; // @synthesize interaction=_interaction;
 @property (strong) NSArray *invalidatedMessageIdentifiers; // @synthesize invalidatedMessageIdentifiers=_invalidatedMessageIdentifiers;
 @property (readonly, nonatomic) SGMessage *message; // @synthesize message=_message;
 @property (nonatomic) BOOL pendingGeocode; // @synthesize pendingGeocode=_pendingGeocode;
@@ -63,29 +66,36 @@
 @property (strong, nonatomic) NSIndexSet *plainTextSigHtmlBlockRegions; // @synthesize plainTextSigHtmlBlockRegions=_plainTextSigHtmlBlockRegions;
 @property (nonatomic) struct _NSRange plainTextSigRange; // @synthesize plainTextSigRange=_plainTextSigRange;
 @property (strong, nonatomic) NSIndexSet *plainTextTabularRegions; // @synthesize plainTextTabularRegions=_plainTextTabularRegions;
+@property (strong, nonatomic) NSArray *taggedCharacterRanges; // @synthesize taggedCharacterRanges=_taggedCharacterRanges;
 
-+ (id)address:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
-+ (id)emailAddress:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
-+ (id)fromCloudKitRecord:(id)arg1 parentEntity:(id)arg2;
-+ (id)instantMessageAddress:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
-+ (id)phoneNumber:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
-+ (id)socialProfile:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionType:(unsigned long long)arg7;
++ (id)address:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionInfo:(id)arg7;
++ (id)birthday:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionInfo:(id)arg7;
++ (id)emailAddress:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionInfo:(id)arg7;
++ (id)fromCloudKitRecord:(id)arg1;
++ (id)instantMessageAddress:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionInfo:(id)arg7;
++ (id)phoneNumber:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionInfo:(id)arg7;
++ (id)socialProfile:(id)arg1 forIdentity:(id)arg2 parent:(id)arg3 curated:(BOOL)arg4 context:(id)arg5 contextRangeOfInterest:(struct _NSRange)arg6 extractionInfo:(id)arg7;
 - (void).cxx_destruct;
 - (void)acquireDissectorLock;
+- (void)addBirthdayEnrichment:(id)arg1;
+- (void)addCuratedBirthday:(id)arg1;
 - (void)addCuratedEmailAddress:(id)arg1;
 - (void)addCuratedPhoneNumber:(id)arg1;
 - (void)addCuratedPostalAddress:(id)arg1;
-- (void)addDetectedEmailAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
-- (void)addDetectedInstantMessageAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
-- (void)addDetectedPhoneNumber:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
-- (void)addDetectedPostalAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
-- (void)addDetectedSocialProfile:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionType:(unsigned long long)arg5;
-- (void)addDetection:(id)arg1 forIdentity:(id)arg2 extractionType:(unsigned long long)arg3;
+- (void)addDetectedBirthday:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
+- (void)addDetectedEmailAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
+- (void)addDetectedInstantMessageAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
+- (void)addDetectedPhoneNumber:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
+- (void)addDetectedPostalAddress:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
+- (void)addDetectedSocialProfile:(id)arg1 forIdentity:(id)arg2 context:(id)arg3 contextRangeOfInterest:(struct _NSRange)arg4 extractionInfo:(id)arg5;
+- (void)addDetection:(id)arg1 forIdentity:(id)arg2 extractionInfo:(id)arg3;
 - (void)addEmailAddressEnrichment:(id)arg1;
 - (void)addEnrichment:(id)arg1;
 - (void)addExternalEnrichment:(id)arg1;
 - (void)addInstantMessageAddressEnrichment:(id)arg1;
+- (void)addOrReplacePreferredEnrichment:(id)arg1;
 - (void)addSocialProfileEnrichment:(id)arg1;
+- (void)addTaggedCharacterRanges:(id)arg1;
 - (void)addUnrecognizedLookupEmailAddress:(id)arg1;
 - (void)addUnrecognizedLookupPhoneNumber:(id)arg1;
 - (void)chopOffContentAfterIndex:(unsigned long long)arg1;
@@ -96,10 +106,12 @@
 - (void)enumeratePlainTextLines:(CDUnknownBlockType)arg1;
 - (unsigned long long)eventEnrichmentsCount;
 - (BOOL)hasEventEnrichment;
-- (id)initWithContactDetailWithKey:(id)arg1 type:(unsigned long long)arg2 extractionType:(unsigned long long)arg3 curated:(BOOL)arg4 parent:(id)arg5 value:(id)arg6 context:(id)arg7 contextRangeOfInterest:(struct _NSRange)arg8;
+- (id)initWithContactDetailWithKey:(id)arg1 type:(unsigned long long)arg2 extractionInfo:(id)arg3 curated:(BOOL)arg4 parent:(id)arg5 value:(id)arg6 context:(id)arg7 contextRangeOfInterest:(struct _NSRange)arg8;
 - (id)initWithDuplicateKey:(id)arg1 title:(id)arg2 parent:(id)arg3;
 - (id)initWithEmailMessage:(id)arg1 fromSource:(id)arg2;
 - (id)initWithIntentPersonAtDate:(id)arg1 bundleId:(id)arg2 handle:(id)arg3 displayName:(id)arg4;
+- (id)initWithInteraction:(id)arg1 fromBundleIdentifier:(id)arg2;
+- (id)initWithInteractionIdentifier:(id)arg1 fromBundleIdentifier:(id)arg2;
 - (id)initWithMessage:(id)arg1 fromSource:(id)arg2;
 - (id)initWithPseudoContactWithKey:(id)arg1 parent:(id)arg2 name:(id)arg3;
 - (id)initWithTextMessage:(id)arg1 fromSource:(id)arg2;
@@ -116,7 +128,7 @@
 - (void)setPlainTextLines:(id)arg1 utf8Offsets:(id)arg2 isAscii:(BOOL)arg3;
 - (void)stripContactInformation;
 - (void)stripEventInformation;
-- (id)toCloudKitRecordWithId:(id)arg1;
+- (id)toCloudKitRecordWithId:(id)arg1 parentEntityType:(long long)arg2;
 
 @end
 

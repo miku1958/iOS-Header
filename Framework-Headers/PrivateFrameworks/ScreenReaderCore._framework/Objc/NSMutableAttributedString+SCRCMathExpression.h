@@ -7,6 +7,8 @@
 #import <Foundation/NSMutableAttributedString.h>
 
 @interface NSMutableAttributedString (SCRCMathExpression)
+- (id)attributedStringByTrimmingEmptySpaceEdges;
+- (unsigned long long)replaceOccurrencesOfString:(id)arg1 withString:(id)arg2;
 - (void)scrcAppendFormat:(id)arg1;
 @end
 

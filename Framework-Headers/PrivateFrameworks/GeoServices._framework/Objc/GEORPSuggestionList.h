@@ -8,26 +8,44 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlaceRequest, GEOPDPlaceResponse, NSMutableArray, NSString;
+@class GEOPDPlaceRequest, GEOPDPlaceResponse, NSMutableArray, NSString, PBDataReader;
 
 @interface GEORPSuggestionList : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOPDPlaceRequest *_autocompleteRequest;
     GEOPDPlaceResponse *_autocompleteResponse;
     NSMutableArray *_entrys;
     NSString *_query;
+    struct {
+        unsigned int read_autocompleteRequest:1;
+        unsigned int read_autocompleteResponse:1;
+        unsigned int read_entrys:1;
+        unsigned int read_query:1;
+        unsigned int wrote_autocompleteRequest:1;
+        unsigned int wrote_autocompleteResponse:1;
+        unsigned int wrote_entrys:1;
+        unsigned int wrote_query:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDPlaceRequest *autocompleteRequest; // @synthesize autocompleteRequest=_autocompleteRequest;
-@property (strong, nonatomic) GEOPDPlaceResponse *autocompleteResponse; // @synthesize autocompleteResponse=_autocompleteResponse;
-@property (strong, nonatomic) NSMutableArray *entrys; // @synthesize entrys=_entrys;
+@property (strong, nonatomic) GEOPDPlaceRequest *autocompleteRequest;
+@property (strong, nonatomic) GEOPDPlaceResponse *autocompleteResponse;
+@property (strong, nonatomic) NSMutableArray *entrys;
 @property (readonly, nonatomic) BOOL hasAutocompleteRequest;
 @property (readonly, nonatomic) BOOL hasAutocompleteResponse;
 @property (readonly, nonatomic) BOOL hasQuery;
-@property (strong, nonatomic) NSString *query; // @synthesize query=_query;
+@property (strong, nonatomic) NSString *query;
 
 + (Class)entryType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsEntry:(id)arg1;
+- (void)_readAutocompleteRequest;
+- (void)_readAutocompleteResponse;
+- (void)_readEntrys;
+- (void)_readQuery;
 - (void)addEntry:(id)arg1;
 - (void)clearEntrys;
 - (void)copyTo:(id)arg1;
@@ -39,6 +57,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

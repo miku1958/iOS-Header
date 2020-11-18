@@ -11,13 +11,15 @@
 }
 
 + (BOOL)_boolForSelectorString:(id)arg1 modifierString:(id)arg2 bundle:(id)arg3 table:(id)arg4;
-+ (id)_keyCommandWithSelector:(SEL)arg1 discoverabilityTitle:(id)arg2;
 + (id)_keyForSelectorString:(id)arg1 bundle:(id)arg2 table:(id)arg3;
++ (id)_localizedKeyCommandWithSelector:(SEL)arg1 discoverabilityTitle:(id)arg2 webInterceptable:(BOOL)arg3;
 + (long long)_modifierFlagsForSelectorString:(id)arg1 bundle:(id)arg2 table:(id)arg3;
-+ (void)_setUpKeyCommandsIfNecessary;
-+ (id)browserKeyCommands;
-+ (id)browserKeyCommandsByAddingCommands:(id)arg1 commandsNotConflictingWithEditing:(id)arg2;
-+ (id)keyCommandWithSelector:(SEL)arg1 discoverabilityTitle:(id)arg2 bundle:(id)arg3 table:(id)arg4;
++ (id)_placeholderKeyCommandForCommand:(id)arg1;
++ (void)_setUpKeyCommandsIfNecessaryForPersona:(unsigned long long)arg1;
++ (id)browserKeyCommandsForPersona:(unsigned long long)arg1 shouldAddEditingCommands:(BOOL)arg2;
++ (id)localizedKeyCommandWithSelector:(SEL)arg1 discoverabilityTitle:(id)arg2 bundle:(id)arg3 table:(id)arg4 webInterceptable:(BOOL)arg5;
++ (id)unlocalizedKeyCommandWithSelector:(SEL)arg1 input:(id)arg2 modifierFlags:(long long)arg3 discoverabilityTitle:(id)arg4 webInterceptable:(BOOL)arg5;
++ (id)unlocalizedKeyCommandWithSelector:(SEL)arg1 input:(id)arg2 modifierFlags:(long long)arg3 webInterceptable:(BOOL)arg4;
 
 @end
 

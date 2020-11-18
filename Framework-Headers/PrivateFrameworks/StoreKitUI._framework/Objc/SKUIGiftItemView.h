@@ -8,6 +8,7 @@
 
 @class NSString, SKUIClientContext, SKUIGiftTheme, SKUIItem, SKUIItemArtworkContext, SKUIItemOfferButton, SKUIItemState, UIImage, UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftItemView : UIView
 {
     NSString *_artistName;
@@ -27,6 +28,7 @@
     UILabel *_titleLabel;
     float _userRating;
     UILabel *_userRatingCountLabel;
+    BOOL _leftToRight;
 }
 
 @property (copy, nonatomic) NSString *artistName; // @synthesize artistName=_artistName;
@@ -37,6 +39,7 @@
 @property (strong, nonatomic) UIImage *itemImage;
 @property (readonly, nonatomic) SKUIItemOfferButton *itemOfferButton; // @synthesize itemOfferButton=_itemOfferButton;
 @property (strong, nonatomic) SKUIItemState *itemState; // @synthesize itemState=_itemState;
+@property (nonatomic) BOOL leftToRight; // @synthesize leftToRight=_leftToRight;
 @property (nonatomic) long long numberOfUserRatings; // @synthesize numberOfUserRatings=_numberOfUserRatings;
 @property (copy, nonatomic) NSString *price; // @synthesize price=_price;
 @property (copy, nonatomic) SKUIGiftTheme *theme; // @synthesize theme=_theme;
@@ -49,8 +52,8 @@
 - (struct CGSize)_imageSize;
 - (void)_itemOfferConfirmAction:(id)arg1;
 - (id)_newLabel;
-- (double)_paddingLeft;
-- (double)_paddingRight;
+- (double)_paddingLeading;
+- (double)_paddingTrailing;
 - (void)_reloadItemState:(BOOL)arg1;
 - (void)_reloadSubtitles;
 - (void)_reloadUserRatingViews;

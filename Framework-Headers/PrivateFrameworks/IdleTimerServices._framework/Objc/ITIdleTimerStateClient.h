@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSServiceFacilityClient.h>
+#import <objc/NSObject.h>
 
+#import <IdleTimerServices/ITIdleTimerClientInterface-Protocol.h>
 #import <IdleTimerServices/ITIdleTimerStateRequestHandling-Protocol.h>
 
-@class NSMutableSet, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class BSServiceConnection, NSString;
+@protocol ITIdleTimerStateRequestDelegate;
 
-@interface ITIdleTimerStateClient : FBSServiceFacilityClient <ITIdleTimerStateRequestHandling>
+@interface ITIdleTimerStateClient : NSObject <ITIdleTimerClientInterface, ITIdleTimerStateRequestHandling>
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSMutableSet *_assertionReasons;
+    struct os_unfair_lock_s _accessLock;
+    unsigned long long _serviceAvailability;
+    BSServiceConnection *_connection;
+    id<ITIdleTimerStateRequestDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,14 +25,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_init;
-- (void)_queue_setIdleTimerDisabled:(BOOL)arg1 forReason:(id)arg2;
-- (BOOL)_requestIsIdleTimerServiceAvailable;
-- (void)configureConnectMessage:(id)arg1;
+- (void)_access_addIdleTimerConfiguration:(id)arg1 forReason:(id)arg2;
+- (void)_access_removeIdleTimerConfiguration:(id)arg1 forReason:(id)arg2;
+- (void)_connectionInterrupted;
+- (void)addIdleTimerConfiguration:(id)arg1 forReason:(id)arg2;
+- (BOOL)handleIdleEvent:(id)arg1 usingConfigurationWithIdentifier:(id)arg2;
+- (id)initWithDelegate:(id)arg1;
 - (BOOL)isIdleTimerServiceAvailable;
-- (void)setIdleTimerDisabled:(BOOL)arg1 forReason:(id)arg2;
+- (void)removeIdleTimerConfiguration:(id)arg1 forReason:(id)arg2;
 
 @end
 

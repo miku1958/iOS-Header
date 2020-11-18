@@ -12,14 +12,14 @@
 {
     struct atomic_flag _isFiring;
     struct atomic_flag _hasWaiter;
-    unsigned int _waitTime;
+    double _waitSeconds;
     NSMapTable *_blockMap;
     NSString *_name;
 }
 
 @property (strong, nonatomic) NSMapTable *blockMap; // @synthesize blockMap=_blockMap;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) unsigned int waitTime; // @synthesize waitTime=_waitTime;
+@property (nonatomic) double waitSeconds; // @synthesize waitSeconds=_waitSeconds;
 
 - (void).cxx_destruct;
 - (void)_clearFlags;
@@ -27,7 +27,7 @@
 - (void)addObserverBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (id)description;
 - (void)fire;
-- (id)initWithName:(id)arg1 waitTime:(unsigned int)arg2;
+- (id)initWithName:(id)arg1 waitSeconds:(double)arg2;
 
 @end
 

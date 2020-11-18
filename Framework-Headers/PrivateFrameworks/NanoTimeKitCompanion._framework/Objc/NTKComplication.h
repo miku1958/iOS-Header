@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ClockComplications/CLKCComplication.h>
 
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
 
-@interface NTKComplication : NSObject <NSSecureCoding, NSCopying>
+@interface NTKComplication : CLKCComplication <NSSecureCoding, NSCopying>
 {
     unsigned long long _complicationType;
 }
@@ -40,6 +40,8 @@
 - (BOOL)isEqual:(id)arg1 subclassesAllowed:(BOOL)arg2;
 - (id)localizedDetailText;
 - (id)localizedKeylineLabelText;
+- (id)localizedRichDetailText;
+- (id)localizedRichKeylineLabelText;
 - (BOOL)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
 
 @end

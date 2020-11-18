@@ -6,36 +6,45 @@
 
 #import <Vision/VNDetectedObjectObservation.h>
 
-@class NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceLandmarkSegments, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceRegionMap, VNFaceTorsoprint, VNFaceprint, VNTorsoprint;
+@class NSArray, NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceRegionMap, VNFaceSegments, VNFaceTorsoprint, VNFaceprint, VNTorsoprint;
 
 @interface VNFaceObservation : VNDetectedObjectObservation
 {
     VNFaceLandmarks2D *_cachedLandmarks;
+    VNFaceLandmarks2D *_cachedLandmarks65;
     VNFaceLandmarks3D *_cachedLandmarks3d;
     VNFaceRegionMap *_faceRegionMap;
     VNFaceAttributes *_faceAttributes;
+    VNFaceprint *_faceprint;
     VNTorsoprint *_torsoprint;
     VNFaceTorsoprint *_faceTorsoprint;
-    VNFaceLandmarkSegments *_faceLandmarkSegments;
+    VNFaceSegments *_faceSegments;
     float _landmarkScore;
     BOOL _isBlinking;
     float _blinkScore;
     NSDictionary *_expressionsAndScores;
     float _faceJunkinessIndex;
     float _faceOrientationIndex;
-    BOOL _hasBBoxBeenAligned;
-    float _alignedRotationAngle;
-    float _faceIdConfidence;
-    NSNumber *_roll;
-    NSNumber *_yaw;
-    VNFaceLandmarks2D *_landmarks;
+    struct _Geometry2D_rect2D_ _alignedBoundingBox;
+    struct CGRect _unalignedBoundingBox;
     NSData *_landmarkPoints;
+    NSData *_landmarkPoints65;
+    unsigned long long _landmarksConstellation;
+    NSArray *_landmarkPrecisionEstimatesPerPoint;
+    NSArray *_landmarkOcclusionFlagsPerPoint;
     NSData *_landmarkPoints3d;
     NSData *_poseData;
-    NSData *_alignedMeanShape;
+    float _faceIdConfidence;
     unsigned long long _faceId;
-    VNFaceprint *_faceprint;
-    struct _Geometry2D_rect2D_ _alignedBoundingBox;
+    BOOL _hasBBoxBeenAligned;
+    float _alignedRotationAngle;
+    NSNumber *_roll;
+    NSNumber *_yaw;
+    NSData *_alignedMeanShape;
+    NSNumber *_faceCaptureQuality;
+    unsigned long long _landmarksRequestRevision;
+    unsigned long long _landmarks3DRequestRevision;
+    VNFaceLandmarks2D *_landmarks;
 }
 
 @property (nonatomic) struct _Geometry2D_rect2D_ alignedBoundingBox; // @synthesize alignedBoundingBox=_alignedBoundingBox;
@@ -44,24 +53,34 @@
 @property (readonly) float blinkScore;
 @property (readonly, copy, nonatomic) NSDictionary *expressionsAndConfidence;
 @property (readonly, nonatomic) VNFaceAttributes *faceAttributes; // @synthesize faceAttributes=_faceAttributes;
+@property (readonly, nonatomic) NSNumber *faceCaptureQuality; // @synthesize faceCaptureQuality=_faceCaptureQuality;
 @property (nonatomic) unsigned long long faceId; // @synthesize faceId=_faceId;
 @property (nonatomic) float faceIdConfidence; // @synthesize faceIdConfidence=_faceIdConfidence;
 @property (readonly, nonatomic, getter=faceJunkinessIndex) float faceJunkinessIndex;
-@property (readonly, nonatomic) VNFaceLandmarkSegments *faceLandmarkSegments; // @synthesize faceLandmarkSegments=_faceLandmarkSegments;
 @property (readonly, nonatomic, getter=faceOrientationIndex) float faceOrientationIndex;
 @property (readonly, nonatomic) VNFaceRegionMap *faceRegionMap; // @synthesize faceRegionMap=_faceRegionMap;
-@property (readonly, nonatomic) VNFaceTorsoprint *faceTorsoprint;
+@property (readonly, nonatomic) VNFaceSegments *faceSegments; // @synthesize faceSegments=_faceSegments;
+@property (strong, nonatomic) VNFaceTorsoprint *faceTorsoprint;
 @property (strong, nonatomic) VNFaceprint *faceprint; // @synthesize faceprint=_faceprint;
 @property (nonatomic) BOOL hasBBoxBeenAligned; // @synthesize hasBBoxBeenAligned=_hasBBoxBeenAligned;
+@property (strong, nonatomic) NSArray *landmarkOcclusionFlagsPerPoint; // @synthesize landmarkOcclusionFlagsPerPoint=_landmarkOcclusionFlagsPerPoint;
 @property (strong, nonatomic) NSData *landmarkPoints; // @synthesize landmarkPoints=_landmarkPoints;
 @property (strong, nonatomic) NSData *landmarkPoints3d; // @synthesize landmarkPoints3d=_landmarkPoints3d;
+@property (strong, nonatomic) NSData *landmarkPoints65; // @synthesize landmarkPoints65=_landmarkPoints65;
+@property (strong, nonatomic) NSArray *landmarkPrecisionEstimatesPerPoint; // @synthesize landmarkPrecisionEstimatesPerPoint=_landmarkPrecisionEstimatesPerPoint;
 @property (strong, nonatomic) VNFaceLandmarks2D *landmarks; // @synthesize landmarks=_landmarks;
+@property (nonatomic) unsigned long long landmarks3DRequestRevision; // @synthesize landmarks3DRequestRevision=_landmarks3DRequestRevision;
 @property (readonly, nonatomic) VNFaceLandmarks3D *landmarks3d;
+@property (readonly, nonatomic) VNFaceLandmarks2D *landmarks65;
+@property (nonatomic) unsigned long long landmarksConstellation; // @synthesize landmarksConstellation=_landmarksConstellation;
+@property (nonatomic) unsigned long long landmarksRequestRevision; // @synthesize landmarksRequestRevision=_landmarksRequestRevision;
 @property (readonly, nonatomic) float nameConfidence;
 @property (readonly, nonatomic) CDStruct_f1db2b5e pose;
 @property (strong, nonatomic) NSData *poseData; // @synthesize poseData=_poseData;
+@property (readonly, nonatomic) struct poseQuaternion;
 @property (strong, nonatomic) NSNumber *roll; // @synthesize roll=_roll;
 @property (strong, nonatomic) VNTorsoprint *torsoprint;
+@property (readonly, nonatomic) struct CGRect unalignedBoundingBox; // @synthesize unalignedBoundingBox=_unalignedBoundingBox;
 @property (strong, nonatomic) NSNumber *yaw; // @synthesize yaw=_yaw;
 
 + (BOOL)_exifOrientationFromFaceRollAngle:(float)arg1 exifOrientation:(int *)arg2 error:(id *)arg3;
@@ -72,8 +91,11 @@
 + (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 andAlignedBoundingBox:(struct CGRect)arg3;
 + (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 faceprint:(id)arg3;
 + (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 roll:(id)arg3 yaw:(id)arg4;
++ (id)faceObservationWithRequestRevision:(unsigned long long)arg1 unalignedBoundingBox:(struct CGRect)arg2 alignedBoundingBox:(struct CGRect)arg3;
++ (id)observationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)VNPersonsModelFaceprintWithRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (struct CGRect)alignedBoundingBoxAsCGRect;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -83,7 +105,6 @@
 - (BOOL)getComputedRectifyingTransform:(struct CGAffineTransform *)arg1;
 - (BOOL)getFaceEXIFOrientation:(int *)arg1 error:(id *)arg2;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isBlinking;
 - (BOOL)isEqual:(id)arg1;
@@ -91,13 +112,14 @@
 - (void)setBlinkScore:(float)arg1;
 - (void)setExpressionsAndScores:(id)arg1;
 - (void)setFaceAttributes:(id)arg1;
+- (void)setFaceCaptureQuality:(id)arg1;
 - (void)setFaceJunkinessIndex:(float)arg1;
-- (void)setFaceLandmarkSegments:(id)arg1;
 - (void)setFaceOrientationIndex:(float)arg1;
 - (void)setFaceRegionMap:(id)arg1;
-- (void)setFaceTorsoprint:(id)arg1;
+- (void)setFaceSegments:(id)arg1;
 - (void)setIsBlinking:(BOOL)arg1;
 - (void)setLandmarkScore:(float)arg1;
+- (void)setUnalignedBoundingBox:(struct CGRect)arg1;
 
 @end
 

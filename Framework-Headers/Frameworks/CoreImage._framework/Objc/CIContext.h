@@ -22,6 +22,8 @@
 + (id)contextWithCGContext:(struct CGContext *)arg1 options:(id)arg2;
 + (id)contextWithEAGLContext:(id)arg1;
 + (id)contextWithEAGLContext:(id)arg1 options:(id)arg2;
++ (id)contextWithMTLCommandQueue:(id)arg1;
++ (id)contextWithMTLCommandQueue:(id)arg1 options:(id)arg2;
 + (id)contextWithMTLDevice:(id)arg1;
 + (id)contextWithMTLDevice:(id)arg1 options:(id)arg2;
 + (id)contextWithOptions:(id)arg1;
@@ -31,6 +33,7 @@
 + (struct Context *)internalCLContextWithOptions:(id)arg1;
 + (struct Context *)internalCLContextWithOptions:(id)arg1 glContext:(void *)arg2;
 + (struct Context *)internalContextWithEAGLContext:(id)arg1 options:(id)arg2;
++ (struct Context *)internalContextWithMTLCommandQueue:(id)arg1 options:(id)arg2;
 + (struct Context *)internalContextWithMTLDevice:(id)arg1 options:(id)arg2;
 + (struct Context *)internalGLContextWithOptions:(id)arg1;
 - (struct CGAffineTransform)CTM;
@@ -38,8 +41,8 @@
 - (id)JPEGRepresentationOfImage:(id)arg1 colorSpace:(struct CGColorSpace *)arg2 options:(id)arg3;
 - (id)PNGRepresentationOfImage:(id)arg1 format:(int)arg2 colorSpace:(struct CGColorSpace *)arg3 options:(id)arg4;
 - (id)TIFFRepresentationOfImage:(id)arg1 format:(int)arg2 colorSpace:(struct CGColorSpace *)arg3 options:(id)arg4;
-- (int)_contextColorForInstruments;
-- (struct CGImage *)_createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 deferred:(BOOL)arg5 textureLimit:(unsigned long long)arg6;
+- (struct CGImage *)_createCGImage:(id)arg1 fromRect:(struct CGRect)arg2 format:(int)arg3 colorSpace:(struct CGColorSpace *)arg4 deferred:(struct Trilean)arg5;
+- (id)_createClone;
 - (void)_gpuContextCheck;
 - (id)_initWithInternalRepresentation:(void *)arg1;
 - (void)_insertEventMarker:(const char *)arg1;
@@ -61,6 +64,7 @@
 - (struct CGLayer *)createCGLayerWithSize:(struct CGSize)arg1 info:(struct __CFDictionary *)arg2;
 - (id)createColorCubeDataForFilters:(id)arg1 dimension:(int)arg2;
 - (void)dealloc;
+- (id)depthBlurEffectFilterForImage:(id)arg1 disparityImage:(id)arg2 portraitEffectsMatte:(id)arg3 hairSemanticSegmentation:(id)arg4 orientation:(unsigned int)arg5 options:(id)arg6;
 - (id)depthBlurEffectFilterForImage:(id)arg1 disparityImage:(id)arg2 portraitEffectsMatte:(id)arg3 orientation:(unsigned int)arg4 options:(id)arg5;
 - (id)depthBlurEffectFilterForImageData:(id)arg1 options:(id)arg2;
 - (id)depthBlurEffectFilterForImageURL:(id)arg1 options:(id)arg2;
@@ -73,6 +77,7 @@
 - (id)initWithCGContext:(struct CGContext *)arg1 options:(id)arg2;
 - (id)initWithEAGLContext:(id)arg1;
 - (id)initWithEAGLContext:(id)arg1 options:(id)arg2;
+- (id)initWithMTLCommandQueue:(id)arg1 options:(id)arg2;
 - (id)initWithMTLDevice:(id)arg1 options:(id)arg2;
 - (id)initWithOptions:(id)arg1;
 - (struct CGSize)inputImageMaximumSize;
@@ -89,6 +94,7 @@
 - (void)render:(id)arg1 toBitmap:(void *)arg2 rowBytes:(long long)arg3 bounds:(struct CGRect)arg4 format:(int)arg5 colorSpace:(struct CGColorSpace *)arg6;
 - (void)render:(id)arg1 toCVPixelBuffer:(struct __CVBuffer *)arg2;
 - (void)render:(id)arg1 toCVPixelBuffer:(struct __CVBuffer *)arg2 bounds:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4;
+- (void)render:(id)arg1 toIOSurface:(struct __IOSurface *)arg2 bounds:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4;
 - (void)render:(id)arg1 toMTLTexture:(id)arg2 commandBuffer:(id)arg3 bounds:(struct CGRect)arg4 colorSpace:(struct CGColorSpace *)arg5;
 - (void)render:(id)arg1 toTexture:(unsigned int)arg2 bounds:(struct CGRect)arg3 colorSpace:(struct CGColorSpace *)arg4;
 - (void)render:(id)arg1 toTexture:(unsigned int)arg2 target:(unsigned int)arg3 bounds:(struct CGRect)arg4 colorSpace:(struct CGColorSpace *)arg5;

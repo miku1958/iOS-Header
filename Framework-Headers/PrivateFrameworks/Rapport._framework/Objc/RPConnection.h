@@ -8,7 +8,7 @@
 
 #import <Rapport/RPAuthenticatable-Protocol.h>
 
-@class CUBLEConnection, CUBluetoothScalablePipe, CUBonjourDevice, CUHomeKitManager, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSData, NSDictionary, NSError, NSString, NSUUID, RPCompanionLinkDevice, RPIdentity, RPIdentityDaemon, RPMetrics;
+@class CUBLEConnection, CUBluetoothScalablePipe, CUBonjourDevice, CUHomeKitManager, CUNetLinkManager, CUPairingSession, CUPairingStream, CUTCPConnection, NSData, NSDictionary, NSError, NSString, NSUUID, RPCloudDaemon, RPCloudSession, RPCompanionLinkDevice, RPIdentity, RPIdentityDaemon;
 @protocol CUReadWriteRequestable, OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPConnection : NSObject <RPAuthenticatable>
@@ -18,6 +18,7 @@
     NSString *_selfAddrString;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
+    NSObject<OS_dispatch_source> *_idleTimer;
     NSObject<OS_dispatch_source> *_probeTimer;
     BOOL _retryFired;
     unsigned long long _retryTicks;
@@ -46,6 +47,8 @@
     struct NSMutableArray *_sendArray;
     struct LogCategory *_ucat;
     unsigned int _xidLast;
+    unsigned long long _receivedFrameCountCurrent;
+    unsigned long long _receivedFrameCountLast;
     BOOL _clientMode;
     BOOL _flowControlReadEnabled;
     BOOL _invalidationHandled;
@@ -74,6 +77,10 @@
     CUBonjourDevice *_bonjourPeerDevice;
     CUBluetoothScalablePipe *_btPipe;
     id _client;
+    RPCloudDaemon *_cloudDaemon;
+    NSString *_cloudDeviceIdentifier;
+    NSString *_cloudServiceID;
+    RPCloudSession *_cloudSession;
     unsigned long long _controlFlags;
     NSString *_destinationString;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -88,7 +95,6 @@
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
     RPCompanionLinkDevice *_localDeviceInfo;
-    RPMetrics *_metrics;
     CUNetLinkManager *_netLinkManager;
     CDUnknownBlockType _pairVerifyCompletion;
     RPCompanionLinkDevice *_peerDeviceInfo;
@@ -113,6 +119,10 @@
 @property (strong, nonatomic) CUBluetoothScalablePipe *btPipe; // @synthesize btPipe=_btPipe;
 @property (strong, nonatomic) id client; // @synthesize client=_client;
 @property (nonatomic) BOOL clientMode; // @synthesize clientMode=_clientMode;
+@property (strong, nonatomic) RPCloudDaemon *cloudDaemon; // @synthesize cloudDaemon=_cloudDaemon;
+@property (copy, nonatomic) NSString *cloudDeviceIdentifier; // @synthesize cloudDeviceIdentifier=_cloudDeviceIdentifier;
+@property (copy, nonatomic) NSString *cloudServiceID; // @synthesize cloudServiceID=_cloudServiceID;
+@property (strong, nonatomic) RPCloudSession *cloudSession; // @synthesize cloudSession=_cloudSession;
 @property (nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
 @property (copy, nonatomic) NSString *destinationString; // @synthesize destinationString=_destinationString;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
@@ -134,7 +144,6 @@
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) int linkType; // @synthesize linkType=_linkType;
 @property (strong, nonatomic) RPCompanionLinkDevice *localDeviceInfo; // @synthesize localDeviceInfo=_localDeviceInfo;
-@property (strong, nonatomic) RPMetrics *metrics; // @synthesize metrics=_metrics;
 @property (strong, nonatomic) CUNetLinkManager *netLinkManager; // @synthesize netLinkManager=_netLinkManager;
 @property (nonatomic) unsigned int pairSetupFlags; // @synthesize pairSetupFlags=_pairSetupFlags;
 @property (copy, nonatomic) CDUnknownBlockType pairVerifyCompletion; // @synthesize pairVerifyCompletion=_pairVerifyCompletion;
@@ -166,6 +175,7 @@
 - (void)_clientConnectStart;
 - (void)_clientConnectStartBLE;
 - (void)_clientConnectStartBTPipe;
+- (void)_clientConnectStartCloud;
 - (void)_clientConnectStartTCP;
 - (BOOL)_clientError:(id)arg1;
 - (void)_clientNetworkError:(id)arg1 label:(const char *)arg2;
@@ -182,11 +192,14 @@
 - (void)_clientRetryStart;
 - (void)_clientRun;
 - (void)_clientStartSession;
+- (void)_clientStarted;
 - (id)_identityProofDataClient;
 - (id)_identityProofDataServer;
 - (void)_identityProofsAdd:(id)arg1 update:(BOOL)arg2;
 - (void)_identityProofsVerify:(id)arg1;
 - (void)_identityProofsVerifyHomeKitSignature:(id)arg1 identifier:(id)arg2;
+- (void)_idleTimerFired;
+- (void)_idleTimerStart:(unsigned int)arg1 repeat:(unsigned int)arg2;
 - (void)_invalidate;
 - (void)_invalidateCore:(id)arg1;
 - (void)_invalidateWithError:(id)arg1;
@@ -215,6 +228,7 @@
 - (void)_serverAccept;
 - (void)_serverAcceptBLE;
 - (void)_serverAcceptBTPipe;
+- (void)_serverAcceptCloud;
 - (void)_serverAcceptTCP;
 - (id)_serverAllowMACAddresses;
 - (void)_serverError:(id)arg1;
@@ -244,6 +258,7 @@
 - (void)sendEncryptedEventID:(id)arg1 event:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendEncryptedRequestID:(id)arg1 request:(id)arg2 xpcID:(unsigned int)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
 - (void)sendReachabilityProbe:(const char *)arg1;
+- (void)sessionStopped:(id)arg1;
 - (void)tryPassword:(id)arg1;
 
 @end

@@ -29,13 +29,15 @@
 @property (nonatomic) BOOL threeDTouchEnabled; // @synthesize threeDTouchEnabled=_threeDTouchEnabled;
 
 + (id)defaultSettings;
++ (id)defaultSettingsWithCacheSize:(unsigned long long)arg1 threeDTouchEnabled:(BOOL)arg2;
 + (id)settingsWithContactStore:(id)arg1;
++ (id)settingsWithContactStore:(id)arg1 cacheSize:(unsigned long long)arg2 threeDTouchEnabled:(BOOL)arg3;
 + (id)settingsWithContactStore:(id)arg1 personaStore:(id)arg2 threeDTouchEnabled:(BOOL)arg3;
 + (id)settingsWithContactStore:(id)arg1 threeDTouchEnabled:(BOOL)arg2;
-+ (id)settingsWithLikenessResolver:(id)arg1 likenessRenderer:(id)arg2 threeDTouchEnabled:(BOOL)arg3 schedulerProvider:(id)arg4;
++ (id)settingsWithLikenessResolver:(id)arg1 likenessRenderer:(id)arg2 contactStore:(id)arg3 threeDTouchEnabled:(BOOL)arg4 schedulerProvider:(id)arg5;
 + (BOOL)threeDTouchEnabledDefaultValue;
 - (void).cxx_destruct;
-- (id)initWithLikenessResolver:(id)arg1 likenessRenderer:(id)arg2 threeDTouchEnabled:(BOOL)arg3 schedulerProvider:(id)arg4;
+- (id)initWithLikenessResolver:(id)arg1 likenessRenderer:(id)arg2 contactStore:(id)arg3 threeDTouchEnabled:(BOOL)arg4 schedulerProvider:(id)arg5;
 
 @end
 

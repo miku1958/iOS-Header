@@ -7,6 +7,9 @@
 #import <BulletinBoard/BBSectionInfo.h>
 
 @interface BBSectionInfo (PBConversions)
+- (void)bltApplyNotificationLevel:(unsigned long long)arg1;
+- (BOOL)blt_overrideSendToNotificationCenter;
+- (BOOL)blt_overrideShowsAlerts;
 - (id)dataProviderIDs;
 - (void)enableAlertsForGizmo:(BOOL)arg1;
 - (id)factorySectionID;

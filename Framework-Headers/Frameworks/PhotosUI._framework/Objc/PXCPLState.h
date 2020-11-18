@@ -12,9 +12,11 @@
 
 @interface PXCPLState : NSObject <NSCopying>
 {
+    BOOL _isEnabled;
     BOOL _isSyncing;
     BOOL _isUserPaused;
-    BOOL _isInBatterySaverMode;
+    BOOL _isInLowDataMode;
+    BOOL _isInLowPowerMode;
     BOOL _isExceedingBatteryQuota;
     BOOL _isExceedingCellularQuota;
     BOOL _isExceedingLocalStorageQuota;
@@ -33,11 +35,13 @@
 
 @property (copy, nonatomic) NSDate *exitDate; // @synthesize exitDate=_exitDate;
 @property (nonatomic) BOOL isClientVersionTooOld; // @synthesize isClientVersionTooOld=_isClientVersionTooOld;
+@property (nonatomic) BOOL isEnabled; // @synthesize isEnabled=_isEnabled;
 @property (nonatomic) BOOL isExceedingBatteryQuota; // @synthesize isExceedingBatteryQuota=_isExceedingBatteryQuota;
 @property (nonatomic) BOOL isExceedingCellularQuota; // @synthesize isExceedingCellularQuota=_isExceedingCellularQuota;
 @property (nonatomic) BOOL isExceedingLocalStorageQuota; // @synthesize isExceedingLocalStorageQuota=_isExceedingLocalStorageQuota;
 @property (nonatomic) BOOL isExceedingQuota; // @synthesize isExceedingQuota=_isExceedingQuota;
-@property (nonatomic) BOOL isInBatterySaverMode; // @synthesize isInBatterySaverMode=_isInBatterySaverMode;
+@property (nonatomic) BOOL isInLowDataMode; // @synthesize isInLowDataMode=_isInLowDataMode;
+@property (nonatomic) BOOL isInLowPowerMode; // @synthesize isInLowPowerMode=_isInLowPowerMode;
 @property (nonatomic) BOOL isOffline; // @synthesize isOffline=_isOffline;
 @property (nonatomic) BOOL isSyncing; // @synthesize isSyncing=_isSyncing;
 @property (nonatomic) BOOL isUserPaused; // @synthesize isUserPaused=_isUserPaused;

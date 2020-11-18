@@ -35,7 +35,9 @@
 @property (nonatomic) BOOL supportsApplicationShortcuts; // @synthesize supportsApplicationShortcuts=_supportsApplicationShortcuts;
 
 - (void).cxx_destruct;
+- (id)contentViewControllerForContext:(id)arg1;
 - (void)handleTapWithTouchType:(long long)arg1;
+- (void)handleTouchDownWithTouchType:(long long)arg1;
 - (id)init;
 - (id)launchURLForTouchType:(long long)arg1;
 

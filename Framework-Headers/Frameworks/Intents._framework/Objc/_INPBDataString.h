@@ -15,29 +15,37 @@
 @interface _INPBDataString : PBCodable <_INPBDataString, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_alternatives;
     NSString *_localizedValue;
+    NSString *_pronunciationHint;
     NSString *_vocabularyIdentifier;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *alternatives; // @synthesize alternatives=_alternatives;
 @property (readonly, nonatomic) unsigned long long alternativesCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasLocalizedValue;
+@property (readonly, nonatomic) BOOL hasPronunciationHint;
 @property (readonly, nonatomic) BOOL hasVocabularyIdentifier;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *localizedValue; // @synthesize localizedValue=_localizedValue;
+@property (copy, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *vocabularyIdentifier; // @synthesize vocabularyIdentifier=_vocabularyIdentifier;
 
 + (Class)alternativesType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addAlternatives:(id)arg1;
 - (id)alternativesAtIndex:(unsigned long long)arg1;
 - (void)clearAlternatives;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

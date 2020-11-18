@@ -6,45 +6,41 @@
 
 #import <objc/NSObject.h>
 
-#import <VoiceShortcuts/VCVoiceShortcutSyncService-Protocol.h>
+#import <VoiceShortcuts/VCSpotlightSyncOperationDelegate-Protocol.h>
+#import <VoiceShortcuts/WFDatabaseResultObserver-Protocol.h>
 
-@class NSString, VCVoiceShortcutManager;
-@protocol OS_dispatch_queue;
+@class CSSearchableIndex, NSString, VCSpotlightSyncOperation, WFDatabaseResult, WFDebouncer;
+@protocol OS_dispatch_queue, VCDatabaseProvider;
 
-@interface VCSpotlightSyncService : NSObject <VCVoiceShortcutSyncService>
+@interface VCSpotlightSyncService : NSObject <WFDatabaseResultObserver, VCSpotlightSyncOperationDelegate>
 {
-    BOOL _hasBeenStarted;
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    VCVoiceShortcutManager *_voiceShortcutManager;
+    BOOL _isFetchingClientState;
+    WFDatabaseResult *_workflows;
+    WFDebouncer *_debouncer;
+    VCSpotlightSyncOperation *_syncOperation;
+    id<VCDatabaseProvider> _databaseProvider;
+    CSSearchableIndex *_index;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
+@property (readonly, nonatomic) id<VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
+@property (readonly, nonatomic) WFDebouncer *debouncer; // @synthesize debouncer=_debouncer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasBeenStarted; // @synthesize hasBeenStarted=_hasBeenStarted;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
+@property (nonatomic) BOOL isFetchingClientState; // @synthesize isFetchingClientState=_isFetchingClientState;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *syncServiceIdentifier;
-@property (readonly, nonatomic) VCVoiceShortcutManager *voiceShortcutManager; // @synthesize voiceShortcutManager=_voiceShortcutManager;
+@property (strong, nonatomic) VCSpotlightSyncOperation *syncOperation; // @synthesize syncOperation=_syncOperation;
+@property (readonly, nonatomic) WFDatabaseResult *workflows; // @synthesize workflows=_workflows;
 
-+ (void)initialize;
 - (void).cxx_destruct;
-- (void)binChanges:(struct NSOrderedSet *)arg1 intoAdded:(struct NSOrderedSet **)arg2 deleted:(struct NSOrderedSet **)arg3 inactiveChanges:(struct NSOrderedSet **)arg4;
-- (struct NSOrderedSet *)changesInLocalStore;
-- (BOOL)deleteShortcutsIndex;
-- (id)inactiveShortcuts;
-- (BOOL)indexShortcuts:(id)arg1;
-- (id)initWithVoiceShortcutManager:(id)arg1;
-- (void)markChanges:(struct NSOrderedSet *)arg1 asSynced:(BOOL)arg2;
-- (void)markShortcuts:(id)arg1 asSynced:(BOOL)arg2;
-- (void)requestFullResync;
+- (void)databaseResult:(id)arg1 didUpdateObjects:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
+- (id)initWithDatabaseProvider:(id)arg1;
 - (void)requestSync;
-- (BOOL)resetSpotlightSyncStateInLocalStore;
-- (BOOL)startSyncService:(id *)arg1;
 - (void)sync;
-- (BOOL)unindexShortcutsWithIdentifiers:(id)arg1;
-- (void)updateSpotlightIndexWithShortcutChanges:(struct NSOrderedSet *)arg1;
-- (void)voiceShortcutsDidChange;
+- (void)syncOperationFinishedWithRequestToRelaunch:(BOOL)arg1;
 
 @end
 

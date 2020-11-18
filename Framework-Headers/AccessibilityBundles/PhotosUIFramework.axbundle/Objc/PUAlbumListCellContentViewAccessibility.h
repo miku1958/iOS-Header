@@ -19,6 +19,7 @@
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (id)_axCustomContentType;
+- (BOOL)_axRenameAlbumAction;
 - (void)_axSetCellCustomContentType:(id)arg1;
 - (BOOL)_axShowsDeleteButton;
 - (id)_axTypeStringWithCount:(long long)arg1;
@@ -26,12 +27,14 @@
 - (void)_setAXCustomContentType:(id)arg1;
 - (struct CGPoint)accessibilityActivationPoint;
 - (struct CGPoint)accessibilityActivationPoint:(id)arg1;
+- (id)accessibilityCustomActions;
 - (id)accessibilityElements;
 - (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame:(id)arg1;
 - (id)accessibilityHint:(id)arg1;
 - (id)accessibilityLabel;
 - (id)accessibilityLabel:(id)arg1;
+- (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)initWithFrame:(struct CGRect)arg1;

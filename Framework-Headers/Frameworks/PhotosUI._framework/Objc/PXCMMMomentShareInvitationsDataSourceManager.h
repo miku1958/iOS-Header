@@ -30,8 +30,6 @@
 + (id)_dataSourceManagerWithPredicate:(id)arg1;
 + (id)dataSourceManager;
 + (id)emptyDataSourceManager;
-+ (id)mockIncomingDataSourceManager;
-+ (id)mockOutgoingDataSourceManager;
 + (id)mostRecentCreationDate;
 - (void).cxx_destruct;
 - (void)_handleFinishedFetchingBatch:(id)arg1 preparedChangeDetails:(id)arg2 forFetchResult:(id)arg3 changedObjects:(id)arg4;

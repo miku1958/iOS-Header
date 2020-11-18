@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoardServices/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardServices/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface SBSStatusBarStyleOverridesAssertionData : NSObject <NSSecureCoding>
+@interface SBSStatusBarStyleOverridesAssertionData : NSObject <NSSecureCoding, BSDescriptionProviding>
 {
     int _statusBarStyleOverrides;
     int _pid;
@@ -20,20 +21,28 @@
     NSString *_uniqueIdentifier;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isExclusive) BOOL exclusive; // @synthesize exclusive=_exclusive;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) int pid; // @synthesize pid=_pid;
 @property (nonatomic) BOOL showsWhenForeground; // @synthesize showsWhenForeground=_showsWhenForeground;
 @property (nonatomic) int statusBarStyleOverrides; // @synthesize statusBarStyleOverrides=_statusBarStyleOverrides;
 @property (copy, nonatomic) NSString *statusString; // @synthesize statusString=_statusString;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(BOOL)arg3 showsWhenForeground:(BOOL)arg4;
 - (id)initWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(BOOL)arg3 showsWhenForeground:(BOOL)arg4 uniqueIdentifier:(id)arg5;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

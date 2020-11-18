@@ -29,7 +29,10 @@
 @property (readonly, nonatomic) NSArray *scheduledAlertsAndNotifications;
 @property (readonly, nonatomic) NSArray *scheduledObjects;
 
++ (CDUnknownBlockType)_dateIntervalFilter:(id)arg1;
++ (id)_filterScheduledObjects:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (id)_nextScheduledObjectInSets:(id)arg1;
++ (CDUnknownBlockType)_scheduledObjectComparator;
 + (void)_sort:(id)arg1;
 - (void).cxx_destruct;
 - (void)_performScheduleChangingBlock:(CDUnknownBlockType)arg1 withCompletion:(CDUnknownBlockType)arg2;

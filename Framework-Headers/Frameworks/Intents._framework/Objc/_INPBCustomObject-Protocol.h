@@ -6,10 +6,12 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString, _INPBDataString;
 
 @protocol _INPBCustomObject <NSObject>
 
+@property (copy, nonatomic) NSArray *alternatives;
+@property (readonly, nonatomic) unsigned long long alternativesCount;
 @property (copy, nonatomic) NSString *displayString;
 @property (readonly, nonatomic) BOOL hasDisplayString;
 @property (readonly, nonatomic) BOOL hasIdentifier;
@@ -17,5 +19,9 @@
 @property (copy, nonatomic) NSString *identifier;
 @property (copy, nonatomic) NSString *pronunciationHint;
 
++ (Class)alternativeType;
+- (void)addAlternative:(_INPBDataString *)arg1;
+- (_INPBDataString *)alternativeAtIndex:(unsigned long long)arg1;
+- (void)clearAlternatives;
 @end
 

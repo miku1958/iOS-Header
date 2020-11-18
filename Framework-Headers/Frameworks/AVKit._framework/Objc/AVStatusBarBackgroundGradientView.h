@@ -8,6 +8,7 @@
 
 @class AVStatusBarBackgroundGradientViewSubview, CABackdropLayer;
 
+__attribute__((visibility("hidden")))
 @interface AVStatusBarBackgroundGradientView : UIView
 {
     AVStatusBarBackgroundGradientViewSubview *_gradientView;

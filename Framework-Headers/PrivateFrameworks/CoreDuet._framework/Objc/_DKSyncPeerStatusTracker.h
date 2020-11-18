@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreDuet/_DKSyncContextObject.h>
 
-@class NSDate, NSMutableArray, NSMutableDictionary, _DKKnowledgeStorage;
+@class NSDate, NSMutableArray, NSMutableDictionary, _DKKnowledgeStorage, _DKSyncPeer;
 
-@interface _DKSyncPeerStatusTracker : NSObject
+@interface _DKSyncPeerStatusTracker : _DKSyncContextObject
 {
     NSMutableDictionary *_peerInfos;
+    _DKSyncPeer *_pseudoPeer;
     NSMutableArray *_observers;
     NSMutableDictionary *_lastSuccessfulActivityDates;
     NSDate *_firstForeignPeersCountDate;
@@ -19,7 +20,10 @@
 
 @property (weak, nonatomic) _DKKnowledgeStorage *storage; // @synthesize storage=_storage;
 
++ (id)peerStatusTrackerWithContext:(id)arg1;
 + (id)sharedInstance;
++ (id)stringForTransports:(long long)arg1;
++ (id)syncPeerTransportsStrings;
 - (void).cxx_destruct;
 - (void)_loadPeers;
 - (void)_modifyActiveTransportInPeer:(id)arg1 withNewTransportsBlock:(CDUnknownBlockType)arg2;
@@ -31,9 +35,11 @@
 - (id)allPeers;
 - (void)debugLogPeers;
 - (id)description;
+- (id)existingPeerWithIDSDeviceIdentifier:(id)arg1;
 - (id)existingPeerWithSourceDeviceID:(id)arg1;
 - (unsigned long long)foreignPeersCount;
-- (id)initWithStorage:(id)arg1;
+- (id)initWithContext:(id)arg1;
+- (BOOL)isSingleDevice;
 - (id)lastSuccessfulActivityDateOnTransport:(long long)arg1 forPeer:(id)arg2;
 - (id)peerWithCompanionLinkDevice:(id)arg1;
 - (id)peerWithIDSDeviceIdentifier:(id)arg1;
@@ -48,8 +54,7 @@
 - (void)removeStatusChangeObserver:(id)arg1;
 - (void)setLastSeenDate:(id)arg1 onPeer:(id)arg2;
 - (void)setLastSuccessfulActivityDate:(id)arg1 onTransport:(long long)arg2 forPeer:(id)arg3;
-- (void)setSourceDeviceID:(id)arg1 peer:(id)arg2;
-- (id)stringForTransports:(long long)arg1;
+- (void)setSourceDeviceID:(id)arg1 version:(id)arg2 peer:(id)arg3;
 - (id)uuidWithUUIDString:(id)arg1;
 
 @end

@@ -33,6 +33,7 @@
     CDUnknownBlockType _screenOnChangedHandler;
     CDUnknownBlockType _screenSaverChangedHandler;
     CDUnknownBlockType _systemLockStateChangedHandler;
+    CDUnknownBlockType _systemNameChangedHandler;
     CDUnknownBlockType _firstUnlockHandler;
     CDUnknownBlockType _wifiStateChangedHandler;
 }
@@ -64,6 +65,7 @@
 @property (copy) CDUnknownBlockType netFlagsChangedHandler; // @synthesize netFlagsChangedHandler=_netFlagsChangedHandler;
 @property (readonly) BOOL powerUnlimited;
 @property (copy) CDUnknownBlockType powerUnlimitedChangedHandler; // @synthesize powerUnlimitedChangedHandler=_powerUnlimitedChangedHandler;
+@property (readonly, copy) NSString *primaryAppleID;
 @property (copy) CDUnknownBlockType primaryAppleIDChangedHandler; // @synthesize primaryAppleIDChangedHandler=_primaryAppleIDChangedHandler;
 @property (readonly) BOOL primaryAppleIDIsHSA2;
 @property (copy) CDUnknownBlockType primaryIPChangedHandler; // @synthesize primaryIPChangedHandler=_primaryIPChangedHandler;
@@ -82,6 +84,8 @@
 @property (copy) CDUnknownBlockType screenSaverChangedHandler; // @synthesize screenSaverChangedHandler=_screenSaverChangedHandler;
 @property (readonly, nonatomic) int systemLockState;
 @property (copy, nonatomic) CDUnknownBlockType systemLockStateChangedHandler; // @synthesize systemLockStateChangedHandler=_systemLockStateChangedHandler;
+@property (readonly, copy) NSString *systemName;
+@property (copy) CDUnknownBlockType systemNameChangedHandler; // @synthesize systemNameChangedHandler=_systemNameChangedHandler;
 @property (readonly, nonatomic) unsigned int wifiFlags;
 @property (readonly, nonatomic) int wifiState;
 @property (copy, nonatomic) CDUnknownBlockType wifiStateChangedHandler; // @synthesize wifiStateChangedHandler=_wifiStateChangedHandler;

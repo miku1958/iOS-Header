@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)_shouldAcceptEventsFromStateMachine:(id)arg1;
 - (id)_stateMachine;
 - (void)loadView;

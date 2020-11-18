@@ -12,19 +12,24 @@
 
 @interface NUDocumentSectionBlueprintProvider : NSObject <NUDocumentSectionBlueprintProvider>
 {
-    FCObservable *_observableHeaderBlueprint;
-    FCObservable *_observableFooterBlueprint;
+    FCObservable *_tempObservableHeaderBlueprint;
+    FCObservable *_tempObservableFooterBlueprint;
+    FCObservable *_tempObservableContentOverlayBlueprintData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) FCObservable *observableFooterBlueprint; // @synthesize observableFooterBlueprint=_observableFooterBlueprint;
-@property (readonly, nonatomic) FCObservable *observableHeaderBlueprint; // @synthesize observableHeaderBlueprint=_observableHeaderBlueprint;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) FCObservable *tempObservableContentOverlayBlueprintData; // @synthesize tempObservableContentOverlayBlueprintData=_tempObservableContentOverlayBlueprintData;
+@property (readonly, nonatomic) FCObservable *tempObservableFooterBlueprint; // @synthesize tempObservableFooterBlueprint=_tempObservableFooterBlueprint;
+@property (readonly, nonatomic) FCObservable *tempObservableHeaderBlueprint; // @synthesize tempObservableHeaderBlueprint=_tempObservableHeaderBlueprint;
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)observableContentOverlayBlueprintData;
+- (id)observableFooterBlueprint;
+- (id)observableHeaderBlueprint;
 
 @end
 

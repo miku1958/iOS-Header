@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <TelephonyUtilities/TURouteControllerClient-Protocol.h>
-
-@class NSArray, NSDictionary, NSHashTable, NSString, TURoute;
+@class NSArray, NSDictionary, NSHashTable, TURoute;
 @protocol OS_dispatch_queue, TURouteControllerActions;
 
-@interface TURouteController : NSObject <TURouteControllerClient>
+@interface TURouteController : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<TURouteControllerActions> _actionsDelegate;
@@ -20,27 +18,24 @@
 }
 
 @property (readonly, weak, nonatomic) id<TURouteControllerActions> actionsDelegate; // @synthesize actionsDelegate=_actionsDelegate;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSHashTable *delegates; // @synthesize delegates=_delegates;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) TURoute *pickedRoute;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, copy, nonatomic) TURoute *receiverRoute;
 @property (readonly, copy, nonatomic) NSArray *routes;
 @property (copy, nonatomic) NSDictionary *routesByUniqueIdentifier; // @synthesize routesByUniqueIdentifier=_routesByUniqueIdentifier;
 @property (readonly, copy, nonatomic) TURoute *speakerRoute;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1;
-- (oneway void)handleRoutesByUniqueIdentifierUpdated:(id)arg1;
+- (void)handleRoutesByUniqueIdentifierUpdated:(id)arg1;
 - (void)handleServerDisconnect;
 - (void)handleServerReconnect;
 - (id)initWithActionsDelegate:(id)arg1 serialQueue:(id)arg2;
 - (void)pickRoute:(id)arg1;
 - (void)pickRouteWithUniqueIdentifier:(id)arg1;
 - (void)removeDelegate:(id)arg1;
+- (void)requeryRoutes;
 
 @end
 

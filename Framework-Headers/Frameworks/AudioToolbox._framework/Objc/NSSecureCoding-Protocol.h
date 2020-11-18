@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/NSCoding-Protocol.h>
+#import <AudioToolboxCore/NSCoding-Protocol.h>
 
 @protocol NSSecureCoding <NSCoding>
 + (BOOL)supportsSecureCoding;

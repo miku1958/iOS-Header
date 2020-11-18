@@ -29,7 +29,6 @@
 - (BOOL)appendPixelBuffer:(struct __CVBuffer *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2;
 - (void)dealloc;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
-- (void)finalize;
 - (id)init;
 - (id)initWithAssetWriterInput:(id)arg1 sourcePixelBufferAttributes:(id)arg2;
 

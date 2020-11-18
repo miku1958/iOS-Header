@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, SKPaymentQueueClient;
+@class NSArray, SKPaymentQueueClient, SKStorefront;
+@protocol SKPaymentQueueDelegate;
 
 @interface SKPaymentQueue : NSObject
 {
     id _internal;
 }
 
+@property (weak, nonatomic) id<SKPaymentQueueDelegate> delegate;
 @property (readonly, nonatomic) SKPaymentQueueClient *paymentQueueClient;
+@property (readonly, nonatomic) SKStorefront *storefront;
 @property (readonly, nonatomic) NSArray *transactions;
 
 + (BOOL)canMakePayments;
@@ -47,21 +50,30 @@
 - (void)_sendAppStorePendingPaymentsRequestForMessage:(id)arg1;
 - (void)_sendCommand:(long long)arg1 forDownloads:(id)arg2;
 - (void)_setTransactionsWithReply:(id)arg1;
+- (BOOL)_shouldContinueTransactionForMessage:(id)arg1;
 - (void)_updateDownloadsForMessage:(id)arg1;
 - (void)_updatePaymentsForMessage:(id)arg1;
 - (void)addPayment:(id)arg1;
 - (void)addTransactionObserver:(id)arg1;
 - (void)cancelDownloads:(id)arg1;
 - (void)dealloc;
+- (void)downloadAdded:(id)arg1;
+- (void)downloadRemoved:(id)arg1;
+- (void)downloadStatusChanged:(id)arg1;
 - (void)finishTransaction:(id)arg1;
+- (void)forceSandboxForBundleIdentifier:(id)arg1 untilDate:(id)arg2;
 - (id)init;
 - (id)initWithPaymentQueueClient:(id)arg1;
 - (void)pauseDownloads:(id)arg1;
 - (void)removeTransactionObserver:(id)arg1;
+- (void)removedTransactions:(id)arg1;
 - (void)restoreCompletedTransactions;
 - (void)restoreCompletedTransactionsWithApplicationUsername:(id)arg1;
 - (void)resumeDownloads:(id)arg1;
+- (void)shouldContinueTransaction:(id)arg1 withNewStorefront:(id)arg2 replyBlock:(CDUnknownBlockType)arg3;
 - (void)startDownloads:(id)arg1;
+- (void)storefrontChanged:(id)arg1;
+- (void)updatedTransactions:(id)arg1;
 
 @end
 

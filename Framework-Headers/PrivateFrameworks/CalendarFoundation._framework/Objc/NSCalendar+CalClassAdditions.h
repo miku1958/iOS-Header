@@ -11,7 +11,7 @@
 + (id)CalDateFromBirthdayComponents:(id)arg1;
 + (id)CalGregorianCalendarForTimeZone:(id)arg1;
 + (id)CalGregorianGMTCalendar;
-+ (id)overlayCalendarForCalendarIdentifier:(id)arg1 timezone:(id)arg2;
++ (id)CalYearlessDateThreshold;
 + (id)sharedAutoupdatingCurrentCalendar;
 - (id)CalDateBySubtractingComponents:(id)arg1 fromDate:(id)arg2;
 - (id)CalDateFromComponents:(id)arg1 inTimeZone:(id)arg2;
@@ -23,6 +23,7 @@
 - (long long)daysInMonthContainingDate:(id)arg1;
 - (long long)daysInWeek;
 - (long long)hoursInDay;
+- (id)mapDatesFromDate:(id)arg1 stepSize:(unsigned long long)arg2 range:(unsigned long long)arg3 mapBlock:(CDUnknownBlockType)arg4;
 - (long long)minutesInHour;
 - (long long)monthsInYearForDate:(id)arg1;
 - (long long)secondsInDay;

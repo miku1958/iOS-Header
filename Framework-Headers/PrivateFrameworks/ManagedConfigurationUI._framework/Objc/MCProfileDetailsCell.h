@@ -4,44 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
-
-@class UIImageView, UILabel, UIView;
+#import <ManagedConfigurationUI/MCProfileInfoCell.h>
 
 __attribute__((visibility("hidden")))
-@interface MCProfileDetailsCell : UITableViewCell
+@interface MCProfileDetailsCell : MCProfileInfoCell
 {
-    UIImageView *_detailImageView;
-    UIView *_detailView;
-    UILabel *_detailTitleLabel;
-    UILabel *_detailSubtitle1Label;
-    UILabel *_detailSubtitle2Label;
+    unsigned long long _cellStyle;
 }
 
-@property (strong, nonatomic) UIImageView *detailImageView; // @synthesize detailImageView=_detailImageView;
-@property (strong, nonatomic) UILabel *detailSubtitle1Label; // @synthesize detailSubtitle1Label=_detailSubtitle1Label;
-@property (strong, nonatomic) UILabel *detailSubtitle2Label; // @synthesize detailSubtitle2Label=_detailSubtitle2Label;
-@property (strong, nonatomic) UILabel *detailTitleLabel; // @synthesize detailTitleLabel=_detailTitleLabel;
-@property (strong, nonatomic) UIView *detailView; // @synthesize detailView=_detailView;
+@property (nonatomic) unsigned long long cellStyle; // @synthesize cellStyle=_cellStyle;
 
-+ (double)cellHeight;
-- (void).cxx_destruct;
+- (id)_attributedTextForSolitaryTitleLabel:(id)arg1 defaultColor:(id)arg2;
+- (id)_combineSubtitleAndApplyAttributeWithSubtitle1:(id)arg1 subtitle2:(id)arg2 font:(id)arg3 defaultColor:(id)arg4 expirationColor:(id)arg5 nearExpiration:(BOOL)arg6;
+- (BOOL)_containsTitleLabelOnly;
 - (id)_detailImage;
 - (id)_imageForApplicationIdentifier:(id)arg1;
 - (void)_setPayloadInfo:(id)arg1;
-- (void)_setupCell;
+- (void)_setTitle:(id)arg1 subtitle1:(id)arg2 subtitle2:(id)arg3;
+- (void)_setTitle:(id)arg1 subtitle1:(id)arg2 subtitle2:(id)arg3 nearExpiration:(BOOL)arg4;
 - (id)_textForLabel:(id)arg1 value:(id)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)layoutSubviews;
+- (void)prepareForReuse;
 - (void)setCertificate:(struct __SecCertificate *)arg1;
 - (void)setManagedApp:(id)arg1;
 - (void)setManagedBook:(id)arg1;
 - (void)setPayload:(id)arg1;
 - (void)setPayloadInfo:(id)arg1;
-- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setTitle:(id)arg1 subtitle1:(id)arg2 subtitle2:(id)arg3;
 - (void)setUnmanagedEnterpriseApp:(id)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
 
 @end
 

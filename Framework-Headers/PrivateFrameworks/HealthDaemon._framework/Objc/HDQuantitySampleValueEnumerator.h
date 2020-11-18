@@ -12,11 +12,11 @@
 
 + (long long)_enumerateWithEnumerator:(id)arg1 endTime:(double)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 + (id)_propertiesForEnumeration;
-+ (id)_queryForEnumerationWithPredicate:(id)arg1 transaction:(id)arg2 orderByUUID:(BOOL)arg3;
-+ (BOOL)orderedQuantityValuesForPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-+ (BOOL)orderedQuantityValuesForPredicate:(id)arg1 profile:(id)arg2 expandSeries:(BOOL)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
-+ (BOOL)orderedQuantityValuesForPredicate:(id)arg1 transaction:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-+ (BOOL)orderedQuantityValuesForPredicate:(id)arg1 transaction:(id)arg2 expandSeries:(BOOL)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
++ (id)_queryForEnumerationWithPredicate:(id)arg1 transaction:(id)arg2 options:(long long)arg3;
++ (BOOL)orderedQuantityValuesBySeriesForPredicate:(id)arg1 profile:(id)arg2 options:(long long)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
++ (BOOL)orderedQuantityValuesBySeriesForPredicate:(id)arg1 transaction:(id)arg2 options:(long long)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
++ (BOOL)orderedQuantityValuesForPredicate:(id)arg1 profile:(id)arg2 options:(long long)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
++ (BOOL)orderedQuantityValuesForPredicate:(id)arg1 transaction:(id)arg2 options:(long long)arg3 error:(id *)arg4 handler:(CDUnknownBlockType)arg5;
 
 @end
 

@@ -6,28 +6,29 @@
 
 #import <RelevanceEngine/REHistogram.h>
 
-@class REFeatureValue, RESortedDictionary;
+@class RESortedDictionary;
 
 @interface _REContinuousHistogram : REHistogram
 {
-    REFeatureValue *_binningValue;
+    unsigned long long _binningValue;
     RESortedDictionary *_values;
 }
 
 - (void).cxx_destruct;
-- (void)_enumerateValuesBetweenMinValue:(id)arg1 maxValue:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (void)addValue:(id)arg1;
+- (void)_enumerateValuesBetweenMinValue:(unsigned long long)arg1 maxValue:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
+- (void)addValue:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (unsigned long long)countForValue:(id)arg1;
-- (unsigned long long)countOfValuesBetweenMinValue:(id)arg1 maxValue:(id)arg2;
+- (unsigned long long)countForValue:(unsigned long long)arg1;
+- (unsigned long long)countOfValuesBetweenMinValue:(unsigned long long)arg1 maxValue:(unsigned long long)arg2;
+- (void)dealloc;
 - (void)enumerateValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
-- (id)initWithFeature:(id)arg1 binningSize:(id)arg2;
+- (id)initWithFeature:(id)arg1 binningSize:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (id)mean;
-- (void)removeValue:(id)arg1;
-- (id)standardDeviation;
+- (unsigned long long)mean;
+- (void)removeValue:(unsigned long long)arg1;
+- (unsigned long long)standardDeviation;
 
 @end
 

@@ -7,11 +7,5 @@
 #import <VectorKit/NSObject-Protocol.h>
 
 @protocol MDSnapshotMap <NSObject>
-
-@property (nonatomic) BOOL showsBuildings;
-@property (nonatomic) BOOL showsVenues;
-
-- (BOOL)isShowingNoDataPlaceholders;
-- (struct LabelSettings *)labelSettings;
 @end
 

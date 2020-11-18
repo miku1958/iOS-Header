@@ -21,7 +21,6 @@
 - (void)addTypes:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)grouping;
 - (id)initWithName:(id)arg1;
 - (BOOL)isPrimary;

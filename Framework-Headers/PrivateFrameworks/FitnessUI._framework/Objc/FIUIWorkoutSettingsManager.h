@@ -22,7 +22,9 @@
 @property (strong, nonatomic) NPSDomainAccessor *domainAccessor; // @synthesize domainAccessor=_domainAccessor;
 @property (strong, nonatomic) NPSManager *syncManager; // @synthesize syncManager=_syncManager;
 
++ (void)obliterateUserConfiguredWorkoutMetrics;
 - (void).cxx_destruct;
+- (void)_clearOldMetricsIfNeeded;
 - (BOOL)_enabledMetricsAreDefaultAfterPaceMigration:(id)arg1 workoutActivityType:(id)arg2;
 - (BOOL)_hasUserMadeMetricChangesToWorkoutType:(id)arg1 enabledMetrics:(id)arg2 settingOverridesByMetric:(id)arg3 metricFormatVersion:(id)arg4;
 - (void)_migratePaceViewSettingIfNeeded;

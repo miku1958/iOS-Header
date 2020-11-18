@@ -8,14 +8,14 @@
 
 #import <PhotosUICore/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSString, PXGadgetLayoutSpec;
+@class NSString, PXGadgetSpec;
 @protocol PXGadgetCollectionViewLayoutDelegate;
 
 @interface PXGadgetCollectionViewLayout : UICollectionViewFlowLayout <UICollectionViewDelegateFlowLayout>
 {
     BOOL _pagingEnabled;
     BOOL _isPageFullColumnnWidth;
-    PXGadgetLayoutSpec *_spec;
+    PXGadgetSpec *_spec;
     id<PXGadgetCollectionViewLayoutDelegate> _delegate;
     long long _pageSizeClass;
     double _columnWidth;
@@ -31,7 +31,7 @@
 @property (nonatomic) BOOL isPageFullColumnnWidth; // @synthesize isPageFullColumnnWidth=_isPageFullColumnnWidth;
 @property (nonatomic) long long pageSizeClass; // @synthesize pageSizeClass=_pageSizeClass;
 @property (nonatomic) BOOL pagingEnabled; // @synthesize pagingEnabled=_pagingEnabled;
-@property (strong, nonatomic) PXGadgetLayoutSpec *spec; // @synthesize spec=_spec;
+@property (strong, nonatomic) PXGadgetSpec *spec; // @synthesize spec=_spec;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

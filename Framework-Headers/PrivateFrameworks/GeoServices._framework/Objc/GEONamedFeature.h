@@ -13,15 +13,17 @@
 @interface GEONamedFeature : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    double _value;
     NSString *_name;
+    double _value;
 }
 
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSString *name;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) double value; // @synthesize value=_value;
+@property (nonatomic) double value;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,6 +31,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

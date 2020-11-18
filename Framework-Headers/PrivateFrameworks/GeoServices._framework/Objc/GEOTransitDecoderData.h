@@ -8,10 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOTransitDecoderData : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_accessPoints;
     NSMutableArray *_artworks;
     NSMutableArray *_halls;
@@ -24,24 +27,54 @@
     NSMutableArray *_transitIncidents;
     NSMutableArray *_walkings;
     NSMutableArray *_zilchPoints;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_accessPoints:1;
+        unsigned int read_artworks:1;
+        unsigned int read_halls:1;
+        unsigned int read_lines:1;
+        unsigned int read_stations:1;
+        unsigned int read_steps:1;
+        unsigned int read_stops:1;
+        unsigned int read_systems:1;
+        unsigned int read_transitIncidentMessages:1;
+        unsigned int read_transitIncidents:1;
+        unsigned int read_walkings:1;
+        unsigned int read_zilchPoints:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_accessPoints:1;
+        unsigned int wrote_artworks:1;
+        unsigned int wrote_halls:1;
+        unsigned int wrote_lines:1;
+        unsigned int wrote_stations:1;
+        unsigned int wrote_steps:1;
+        unsigned int wrote_stops:1;
+        unsigned int wrote_systems:1;
+        unsigned int wrote_transitIncidentMessages:1;
+        unsigned int wrote_transitIncidents:1;
+        unsigned int wrote_walkings:1;
+        unsigned int wrote_zilchPoints:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *accessPoints; // @synthesize accessPoints=_accessPoints;
-@property (strong, nonatomic) NSMutableArray *artworks; // @synthesize artworks=_artworks;
-@property (strong, nonatomic) NSMutableArray *halls; // @synthesize halls=_halls;
-@property (strong, nonatomic) NSMutableArray *lines; // @synthesize lines=_lines;
-@property (strong, nonatomic) NSMutableArray *stations; // @synthesize stations=_stations;
-@property (strong, nonatomic) NSMutableArray *steps; // @synthesize steps=_steps;
-@property (strong, nonatomic) NSMutableArray *stops; // @synthesize stops=_stops;
-@property (strong, nonatomic) NSMutableArray *systems; // @synthesize systems=_systems;
-@property (strong, nonatomic) NSMutableArray *transitIncidentMessages; // @synthesize transitIncidentMessages=_transitIncidentMessages;
-@property (strong, nonatomic) NSMutableArray *transitIncidents; // @synthesize transitIncidents=_transitIncidents;
-@property (strong, nonatomic) NSMutableArray *walkings; // @synthesize walkings=_walkings;
-@property (strong, nonatomic) NSMutableArray *zilchPoints; // @synthesize zilchPoints=_zilchPoints;
+@property (strong, nonatomic) NSMutableArray *accessPoints;
+@property (strong, nonatomic) NSMutableArray *artworks;
+@property (strong, nonatomic) NSMutableArray *halls;
+@property (strong, nonatomic) NSMutableArray *lines;
+@property (strong, nonatomic) NSMutableArray *stations;
+@property (strong, nonatomic) NSMutableArray *steps;
+@property (strong, nonatomic) NSMutableArray *stops;
+@property (strong, nonatomic) NSMutableArray *systems;
+@property (strong, nonatomic) NSMutableArray *transitIncidentMessages;
+@property (strong, nonatomic) NSMutableArray *transitIncidents;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) NSMutableArray *walkings;
+@property (strong, nonatomic) NSMutableArray *zilchPoints;
 
 + (Class)accessPointType;
 + (Class)artworkType;
 + (Class)hallType;
++ (BOOL)isValid:(id)arg1;
 + (Class)lineType;
 + (Class)stationType;
 + (Class)stepType;
@@ -52,6 +85,30 @@
 + (Class)walkingType;
 + (Class)zilchPointsType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAccessPoint:(id)arg1;
+- (void)_addNoFlagsArtwork:(id)arg1;
+- (void)_addNoFlagsHall:(id)arg1;
+- (void)_addNoFlagsLine:(id)arg1;
+- (void)_addNoFlagsStation:(id)arg1;
+- (void)_addNoFlagsStep:(id)arg1;
+- (void)_addNoFlagsStop:(id)arg1;
+- (void)_addNoFlagsSystem:(id)arg1;
+- (void)_addNoFlagsTransitIncident:(id)arg1;
+- (void)_addNoFlagsTransitIncidentMessage:(id)arg1;
+- (void)_addNoFlagsWalking:(id)arg1;
+- (void)_addNoFlagsZilchPoints:(id)arg1;
+- (void)_readAccessPoints;
+- (void)_readArtworks;
+- (void)_readHalls;
+- (void)_readLines;
+- (void)_readStations;
+- (void)_readSteps;
+- (void)_readStops;
+- (void)_readSystems;
+- (void)_readTransitIncidentMessages;
+- (void)_readTransitIncidents;
+- (void)_readWalkings;
+- (void)_readZilchPoints;
 - (id)accessPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)accessPointsCount;
 - (void)addAccessPoint:(id)arg1;
@@ -79,6 +136,7 @@
 - (void)clearSystems;
 - (void)clearTransitIncidentMessages;
 - (void)clearTransitIncidents;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearWalkings;
 - (void)clearZilchPoints;
 - (void)copyTo:(id)arg1;
@@ -92,6 +150,7 @@
 - (id)lineAtIndex:(unsigned long long)arg1;
 - (unsigned long long)linesCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)stationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)stationsCount;

@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBRichTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBActionItem, _SFPBColor, _SFPBImage;
+@class NSArray, NSData, NSString, _SFPBActionItem, _SFPBColor, _SFPBImage, _SFPBRichText;
 
 @interface _SFPBRichTitleCardSection : PBCodable <_SFPBRichTitleCardSection, NSSecureCoding>
 {
@@ -49,6 +49,7 @@
     _SFPBActionItem *_playAction;
     NSArray *_offers;
     NSString *_footnote;
+    _SFPBRichText *_richSubtitle;
 }
 
 @property (nonatomic) int auxiliaryAlignment; // @synthesize auxiliaryAlignment=_auxiliaryAlignment;
@@ -82,6 +83,7 @@
 @property (strong, nonatomic) _SFPBImage *reviewGlyph; // @synthesize reviewGlyph=_reviewGlyph;
 @property (nonatomic) BOOL reviewNewLine; // @synthesize reviewNewLine=_reviewNewLine;
 @property (copy, nonatomic) NSString *reviewText; // @synthesize reviewText=_reviewText;
+@property (strong, nonatomic) _SFPBRichText *richSubtitle; // @synthesize richSubtitle=_richSubtitle;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;

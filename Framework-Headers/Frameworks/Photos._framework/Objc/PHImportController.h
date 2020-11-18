@@ -8,43 +8,44 @@
 
 #import <Photos/ICDeviceBrowserDelegate-Protocol.h>
 
-@class ICDeviceBrowser, NSMutableDictionary, NSString, NSXPCConnection, PFDispatchQueue;
-@protocol OS_os_log, PHImportDelegate;
+@class ICDeviceBrowser, NSHashTable, NSMutableDictionary, NSString;
 
 @interface PHImportController : NSObject <ICDeviceBrowserDelegate>
 {
     struct os_unfair_lock_s _sourceListLock;
-    PFDispatchQueue *_queue;
-    NSObject<OS_os_log> *_log;
-    NSXPCConnection *_connection;
+    struct os_unfair_lock_s _importInProgressLock;
+    BOOL _importInProgress;
     ICDeviceBrowser *_deviceBrowser;
-    NSMutableDictionary *_importSourcesByDevice;
-    id<PHImportDelegate> _delegate;
+    NSMutableDictionary *_importDeviceSources;
+    NSHashTable *_observers;
+    id _processInfoActivityToken;
 }
 
-@property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PHImportDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) ICDeviceBrowser *deviceBrowser; // @synthesize deviceBrowser=_deviceBrowser;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableDictionary *importSourcesByDevice; // @synthesize importSourcesByDevice=_importSourcesByDevice;
-@property (strong, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
-@property (readonly) PFDispatchQueue *queue; // @synthesize queue=_queue;
-@property (nonatomic) struct os_unfair_lock_s sourceListLock; // @synthesize sourceListLock=_sourceListLock;
+@property (strong, nonatomic) NSMutableDictionary *importDeviceSources; // @synthesize importDeviceSources=_importDeviceSources;
+@property (nonatomic) BOOL importInProgress; // @synthesize importInProgress=_importInProgress;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) id processInfoActivityToken; // @synthesize processInfoActivityToken=_processInfoActivityToken;
 @property (readonly) Class superclass;
 
++ (id)importSourceForUrls:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)accessSourceList:(CDUnknownBlockType)arg1;
+- (void)addImportControllerObserver:(id)arg1;
 - (void)deviceBrowser:(id)arg1 didAddDevice:(id)arg2 moreComing:(BOOL)arg3;
 - (void)deviceBrowser:(id)arg1 didRemoveDevice:(id)arg2 moreGoing:(BOOL)arg3;
-- (id)filterDuplicates:(id)arg1 onSource:(id)arg2 options:(id)arg3 library:(id)arg4;
-- (id)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibrary:(id)arg3 withOptions:(id)arg4 delegate:(id)arg5 atEnd:(CDUnknownBlockType)arg6;
-- (id)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibrary:(id)arg3 withOptions:(id)arg4 delegate:(id)arg5 performanceDelegate:(id)arg6 atEnd:(CDUnknownBlockType)arg7;
-- (id)importSourceForUrls:(id)arg1;
-- (id)importUrls:(id)arg1 intoLibrary:(id)arg2 withOptions:(id)arg3 delegate:(id)arg4 atEnd:(CDUnknownBlockType)arg5;
+- (id)filterDuplicates:(id)arg1 onSource:(id)arg2 library:(id)arg3 options:(id)arg4 delegate:(id)arg5;
+- (void)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibrary:(id)arg3 withOptions:(id)arg4 progress:(id *)arg5 delegate:(id)arg6 performanceDelegate:(id)arg7 atEnd:(CDUnknownBlockType)arg8;
+- (void)importAssets:(id)arg1 fromImportSource:(id)arg2 intoLibraryAtURL:(id)arg3 withOptions:(id)arg4 progress:(id *)arg5 delegate:(id)arg6 performanceDelegate:(id)arg7 atEnd:(CDUnknownBlockType)arg8;
+- (void)importAssets:(id)arg1 fromImportSource:(id)arg2 withOptions:(id)arg3 progress:(id *)arg4 delegate:(id)arg5 atEnd:(CDUnknownBlockType)arg6;
+- (void)importEnding;
+- (void)importStarting;
 - (id)importUrls:(id)arg1 intoLibrary:(id)arg2 withOptions:(id)arg3 delegate:(id)arg4 performanceDelegate:(id)arg5 atEnd:(CDUnknownBlockType)arg6;
+- (id)importUrls:(id)arg1 withOptions:(id)arg2 delegate:(id)arg3 atEnd:(CDUnknownBlockType)arg4;
 - (id)init;
 - (BOOL)sourceIsConnected:(id)arg1;
 

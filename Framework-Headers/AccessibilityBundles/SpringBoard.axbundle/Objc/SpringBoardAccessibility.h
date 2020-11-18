@@ -16,10 +16,10 @@
 - (void)__accessibilityUpdateSpeakScreenGestureRecognizer;
 - (id)_accessibilityAppSwitcherApps;
 - (long long)_accessibilityApplicationOrientation;
-- (BOOL)_accessibilityAssistantIsListening;
 - (id)_accessibilityCenterPointOfScreen;
 - (int)_accessibilityCurrentCallState;
 - (void)_accessibilityDeactivationAnimationWillBegin;
+- (void)_accessibilityFocusOnAppWithPid:(int)arg1 bundleIdentifier:(id)arg2;
 - (void)_accessibilityHandleOrientationChange;
 - (void)_accessibilityHandleSpeakScreenGesture:(id)arg1;
 - (BOOL)_accessibilityHitTestsStatusBar;
@@ -45,26 +45,34 @@
 - (id)_accessibilitySideAppDividerElement;
 - (id)_accessibilitySoftwareMimicKeyboard;
 - (id)_accessibilitySpeakScreenGestureRecognizer;
+- (BOOL)_accessibilitySpringBoardIsModal;
 - (id)_accessibilityStatusBar;
+- (id)_accessibilityStatusBarElements;
 - (void)_accessibilityStatusChanged:(id)arg1;
+- (void)_accessibilitySwitchNativeFocusedApplicationInDirection:(long long)arg1;
+- (void)_accessibilitySwitchNativeFocusedApplicationWithPID:(int)arg1;
 - (BOOL)_accessibilitySystemAppServerIsReady;
 - (BOOL)_accessibilitySystemWideGestureInProgress;
 - (void)_accessibilityUpdateSpeakScreenGestureRecognizer;
+- (id)_axKeyboardFocusController;
+- (void)_axPerformDidFocusOnApplicationActionWithPid:(int)arg1;
+- (id)_axProcessesForNativeFocus;
+- (id)_firstStatusBarElement;
+- (id)_iosAccessibilityAttributeValue:(long long)arg1;
+- (BOOL)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (BOOL)_isDim;
 - (void)_keyboardOrCaseLatchWantsToAttemptUnlock:(int)arg1;
+- (id)_lastStatusBarElement;
 - (void)_processAccessibilityStatusChange:(id)arg1;
+- (void)_takeScreenshotAndEdit:(BOOL)arg1;
 - (void)_updateRingerState:(int)arg1 withVisuals:(BOOL)arg2 updatePreferenceRegister:(BOOL)arg3;
-- (id)accessibilityAttributeValue:(long long)arg1;
 - (void)accessibilityDisable;
 - (void)accessibilityInitialize;
-- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (BOOL)accessibilityStartStopToggle;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (BOOL)handleDoubleHeightStatusBarTapWithStyleOverride:(int)arg1;
 - (void)noteInterfaceOrientationChanged:(long long)arg1 duration:(double)arg2 updateMirroredDisplays:(BOOL)arg3 force:(BOOL)arg4 logMessage:(id)arg5;
-- (void)powerDownRequested:(id)arg1;
 - (void)restartManagerWillReboot:(id)arg1;
-- (void)takeScreenshotAndEdit:(BOOL)arg1;
 
 @end
 

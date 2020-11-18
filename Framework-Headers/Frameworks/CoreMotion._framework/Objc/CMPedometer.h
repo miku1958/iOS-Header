@@ -40,6 +40,7 @@
 - (void)startPedometerUpdatesFromDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)stopPedometerEventUpdates;
 - (void)stopPedometerUpdates;
+- (id)strideCalibrationDump;
 
 @end
 

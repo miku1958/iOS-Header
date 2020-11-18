@@ -6,19 +6,99 @@
 
 #import <Photos/PHAsset.h>
 
+#import <PhotosUICore/PXLayoutItemInput-Protocol.h>
 #import <PhotosUICore/PXMetadataAsset-Protocol.h>
+#import <PhotosUICore/PXPhotoKitAdjustedDisplayAsset-Protocol.h>
+#import <PhotosUICore/PXShareable-Protocol.h>
 
-@class CLLocation, NSDate, NSString;
+@class CLLocation, NSAttributedString, NSDate, NSString, NSValue, PXDebugValueList;
 
-@interface PHAsset (PXMetadataAssetAdoption) <PXMetadataAsset>
+@interface PHAsset (PXMetadataAssetAdoption) <PXMetadataAsset, PXLayoutItemInput, PXPhotoKitAdjustedDisplayAsset, PXShareable>
 
+@property (readonly, nonatomic) struct CGRect acceptableCropRect;
+@property (readonly, nonatomic) NSString *adjustedContentIdentifier;
+@property (readonly, nonatomic) double aspectRatio;
+@property (readonly, nonatomic) unsigned long long burstSelectionTypes;
 @property (readonly, nonatomic) BOOL cloudIsDeletable;
 @property (readonly, nonatomic) NSDate *creationDate;
+@property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) Class defaultImageProviderClass;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double duration;
+@property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSDate *importDate;
+@property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
+@property (readonly, nonatomic) BOOL isInCloud;
+@property (readonly, nonatomic) NSDate *localCreationDate;
+@property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) CLLocation *location;
+@property (readonly, nonatomic) unsigned long long mediaSubtypes;
+@property (readonly, nonatomic) long long mediaType;
+@property (readonly, nonatomic) PHAsset *photoKitAsset;
+@property (readonly, nonatomic) unsigned long long pixelHeight;
+@property (readonly, nonatomic) unsigned long long pixelWidth;
+@property (readonly, nonatomic) long long playbackStyle;
+@property (readonly, nonatomic) long long playbackVariation;
+@property (readonly, nonatomic) struct CGPoint positionOffset;
+@property (readonly, nonatomic) struct CGRect preferredCropRect;
+@property (readonly, copy, nonatomic) NSString *px_adjustmentUuid;
+@property (readonly, nonatomic) NSAttributedString *px_curationDebugString;
+@property (readonly, nonatomic) PXDebugValueList *px_curationDebugValues;
+@property (readonly, nonatomic) long long px_currentVariationType;
+@property (readonly, nonatomic) struct CGRect px_faceAreaRect;
+@property (readonly, nonatomic) struct CGRect px_originalFaceAreaRect;
+@property (readonly, nonatomic) NSValue *px_originalFaceAreaRectValue;
+@property (readonly, nonatomic) BOOL representsBurst;
+@property (readonly, nonatomic) BOOL requiresConfidentiality;
+@property (readonly, nonatomic) struct CGSize size;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long thumbnailIndex;
+@property (readonly, nonatomic) unsigned long long thumbnailVersion;
+@property (readonly, nonatomic) struct CGAffineTransform transform;
+@property (readonly, nonatomic) NSString *uuid;
+@property (readonly, nonatomic) BOOL wantsAdjustments;
+@property (readonly, nonatomic) double weight;
 
++ (id)addressWithoutUnitedStatesZipCode:(id)arg1;
++ (id)px_fetchAssetsInArray:(id)arg1 photoLibrary:(id)arg2;
++ (id)px_fetchPlacesAssetsInAssetCollection:(id)arg1 options:(id)arg2;
++ (id)px_orderedAssetsFromAssets:(id)arg1 sortDescriptors:(id)arg2;
+- (struct CGRect)_adjustedRectWithFaceAreaRect:(struct CGRect)arg1 proposedCropRect:(struct CGRect)arg2 assetRect:(struct CGRect)arg3 verticalContentMode:(long long)arg4;
+- (id)_deferredProcessingStringWithEnum:(unsigned short)arg1;
+- (id)_faceNamesStringForAsset;
+- (id)_imageProccessingFlagsWithMainFileURL:(id)arg1;
+- (id)_junkClassificationStringWithClassifications:(id)arg1;
+- (id)_sceneClassificationStringWithClassifications:(id)arg1;
+- (id)applyAdjustmentsToCompositionController:(id)arg1 renderer:(id)arg2;
+- (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
+- (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
+- (long long)isContentEqualTo:(id)arg1;
+- (id)localizedDetailedGeoDescriptionForRTL:(BOOL)arg1;
+- (id)px_accessibilityLabelForStyles:(unsigned long long)arg1;
+- (id)px_detailedDebugDescriptionInLibrary:(id)arg1;
+- (BOOL)px_isConfidentialAdjustmentsVersion:(id)arg1;
+- (BOOL)px_isRecommendationSeenForVariationType:(long long)arg1;
+- (BOOL)px_isSupportedApp:(id)arg1;
+- (BOOL)px_isVariationTypeRecommended:(long long)arg1;
+- (float)px_playbackScore;
+- (id)px_singleLineMailingAddress;
+- (id)stringMinutesTimeRangeFromTimeRange:(CDStruct_e83c9415)arg1;
+- (double)weightUsingCriterion:(long long)arg1;
+- (double)weightUsingWeightingScheme:(long long)arg1;
 @end
 

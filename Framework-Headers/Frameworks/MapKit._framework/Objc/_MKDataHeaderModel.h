@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MKTransitInfoLabelView, _MKLineHeaderModel;
+@class MKTransitInfoLabelView, UIView, _MKLineHeaderModel;
 
 __attribute__((visibility("hidden")))
 @interface _MKDataHeaderModel : NSObject
 {
+    UIView *_ownerView;
     _MKLineHeaderModel *_firstLine;
     _MKLineHeaderModel *_secondLine;
     _MKLineHeaderModel *_thirdLine;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) _MKLineHeaderModel *firstLine; // @synthesize firstLine=_firstLine;
 @property (strong, nonatomic) _MKLineHeaderModel *forthLine; // @synthesize forthLine=_forthLine;
+@property (weak, nonatomic) UIView *ownerView; // @synthesize ownerView=_ownerView;
 @property (strong, nonatomic) _MKLineHeaderModel *secondLine; // @synthesize secondLine=_secondLine;
 @property (strong, nonatomic) _MKLineHeaderModel *secondaryNameLine; // @synthesize secondaryNameLine=_secondaryNameLine;
 @property (strong, nonatomic) _MKLineHeaderModel *thirdLine; // @synthesize thirdLine=_thirdLine;

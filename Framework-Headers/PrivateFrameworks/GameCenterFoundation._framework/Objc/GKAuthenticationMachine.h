@@ -24,6 +24,7 @@
 + (id)authMachineForEnvironment:(long long)arg1;
 + (void)migratePreBlacktailAccountInformation;
 + (void)migratePreSundanceAccountInformation;
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

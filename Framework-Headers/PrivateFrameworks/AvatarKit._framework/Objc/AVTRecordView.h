@@ -8,7 +8,7 @@
 
 #import <AvatarKit/AVTFaceTrackerDelegate-Protocol.h>
 
-@class AVAssetWriter, AVAssetWriterInput, AVCaptureMovieFileOutput, AVPlayer, CAAnimationGroup, CALayer, NSLock, NSMutableArray, NSMutableData, NSObject, NSString;
+@class AVAssetWriter, AVAssetWriterInput, AVCaptureMovieFileOutput, AVPlayer, AVTAvatar, CAAnimationGroup, CALayer, NSLock, NSMutableArray, NSMutableData, NSObject, NSString;
 @protocol AVTRecordViewDelegate, OS_dispatch_queue;
 
 @interface AVTRecordView : AVTView <AVTFaceTrackerDelegate>
@@ -30,6 +30,7 @@
     int _recordedCount;
     int _recordingCapacity;
     CAAnimationGroup *_recordedAnimationGroup;
+    AVTAvatar *_avatarForMovieExport;
     AVCaptureMovieFileOutput *_movieFileOutput;
     AVPlayer *_audioPlayer;
     AVAssetWriterInput *_audioWriterInput;
@@ -73,6 +74,7 @@
 - (void)_playLivePreviewAnimation;
 - (void)_processInfoThermalStateDidChange:(id)arg1;
 - (double)_renderer:(id)arg1 inputTimeForCurrentFrameWithTime:(double)arg2;
+- (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)_setEffectivePreferredFramesPerSecond;
 - (void)_smoothRecordedData;
 - (id)_tmpAudioURL;
@@ -114,7 +116,7 @@
 - (BOOL)recording;
 - (double)recordingDuration;
 - (void)removeRecordedAnimationFromAvatar:(id)arg1;
-- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
+- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)setAvatar:(id)arg1;
 - (void)setDisableRendering:(BOOL)arg1;
 - (void)setFaceTrackingPaused:(BOOL)arg1;

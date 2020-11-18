@@ -8,10 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPCorrectedCoordinate, GEORPCorrectedLabel, GEORPCorrectedSearch, GEORPDirectionsProblem, GEORPMapLocation, GEORPMerchantLookupCorrections, GEORPPlaceProblem, NSMutableArray, NSString;
+@class GEORPCorrectedCoordinate, GEORPCorrectedLabel, GEORPCorrectedSearch, GEORPDirectionsProblem, GEORPMapLocation, GEORPMerchantLookupCorrections, GEORPPlaceProblem, NSMutableArray, NSString, PBDataReader;
 
 @interface GEORPProblemCorrections : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_comments;
     GEORPCorrectedCoordinate *_correctedCoordinate;
     NSMutableArray *_correctedFields;
@@ -25,19 +27,42 @@
     GEORPPlaceProblem *_placeProblem;
     BOOL _delayed;
     struct {
-        unsigned int delayed:1;
-    } _has;
+        unsigned int has_delayed:1;
+        unsigned int read_comments:1;
+        unsigned int read_correctedCoordinate:1;
+        unsigned int read_correctedFields:1;
+        unsigned int read_correctedFlags:1;
+        unsigned int read_correctedLabel:1;
+        unsigned int read_correctedMapLocation:1;
+        unsigned int read_correctedSearch:1;
+        unsigned int read_directionsProblem:1;
+        unsigned int read_merchantLookupCorrections:1;
+        unsigned int read_photoWithMetadatas:1;
+        unsigned int read_placeProblem:1;
+        unsigned int wrote_comments:1;
+        unsigned int wrote_correctedCoordinate:1;
+        unsigned int wrote_correctedFields:1;
+        unsigned int wrote_correctedFlags:1;
+        unsigned int wrote_correctedLabel:1;
+        unsigned int wrote_correctedMapLocation:1;
+        unsigned int wrote_correctedSearch:1;
+        unsigned int wrote_directionsProblem:1;
+        unsigned int wrote_merchantLookupCorrections:1;
+        unsigned int wrote_photoWithMetadatas:1;
+        unsigned int wrote_placeProblem:1;
+        unsigned int wrote_delayed:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *comments; // @synthesize comments=_comments;
-@property (strong, nonatomic) GEORPCorrectedCoordinate *correctedCoordinate; // @synthesize correctedCoordinate=_correctedCoordinate;
-@property (strong, nonatomic) NSMutableArray *correctedFields; // @synthesize correctedFields=_correctedFields;
-@property (strong, nonatomic) NSMutableArray *correctedFlags; // @synthesize correctedFlags=_correctedFlags;
-@property (strong, nonatomic) GEORPCorrectedLabel *correctedLabel; // @synthesize correctedLabel=_correctedLabel;
-@property (strong, nonatomic) GEORPMapLocation *correctedMapLocation; // @synthesize correctedMapLocation=_correctedMapLocation;
-@property (strong, nonatomic) GEORPCorrectedSearch *correctedSearch; // @synthesize correctedSearch=_correctedSearch;
-@property (nonatomic) BOOL delayed; // @synthesize delayed=_delayed;
-@property (strong, nonatomic) GEORPDirectionsProblem *directionsProblem; // @synthesize directionsProblem=_directionsProblem;
+@property (strong, nonatomic) NSString *comments;
+@property (strong, nonatomic) GEORPCorrectedCoordinate *correctedCoordinate;
+@property (strong, nonatomic) NSMutableArray *correctedFields;
+@property (strong, nonatomic) NSMutableArray *correctedFlags;
+@property (strong, nonatomic) GEORPCorrectedLabel *correctedLabel;
+@property (strong, nonatomic) GEORPMapLocation *correctedMapLocation;
+@property (strong, nonatomic) GEORPCorrectedSearch *correctedSearch;
+@property (nonatomic) BOOL delayed;
+@property (strong, nonatomic) GEORPDirectionsProblem *directionsProblem;
 @property (readonly, nonatomic) BOOL hasComments;
 @property (readonly, nonatomic) BOOL hasCorrectedCoordinate;
 @property (readonly, nonatomic) BOOL hasCorrectedLabel;
@@ -47,14 +72,29 @@
 @property (readonly, nonatomic) BOOL hasDirectionsProblem;
 @property (readonly, nonatomic) BOOL hasMerchantLookupCorrections;
 @property (readonly, nonatomic) BOOL hasPlaceProblem;
-@property (strong, nonatomic) GEORPMerchantLookupCorrections *merchantLookupCorrections; // @synthesize merchantLookupCorrections=_merchantLookupCorrections;
-@property (strong, nonatomic) NSMutableArray *photoWithMetadatas; // @synthesize photoWithMetadatas=_photoWithMetadatas;
-@property (strong, nonatomic) GEORPPlaceProblem *placeProblem; // @synthesize placeProblem=_placeProblem;
+@property (strong, nonatomic) GEORPMerchantLookupCorrections *merchantLookupCorrections;
+@property (strong, nonatomic) NSMutableArray *photoWithMetadatas;
+@property (strong, nonatomic) GEORPPlaceProblem *placeProblem;
 
 + (Class)correctedFieldType;
 + (Class)correctedFlagType;
++ (BOOL)isValid:(id)arg1;
 + (Class)photoWithMetadataType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsCorrectedField:(id)arg1;
+- (void)_addNoFlagsCorrectedFlag:(id)arg1;
+- (void)_addNoFlagsPhotoWithMetadata:(id)arg1;
+- (void)_readComments;
+- (void)_readCorrectedCoordinate;
+- (void)_readCorrectedFields;
+- (void)_readCorrectedFlags;
+- (void)_readCorrectedLabel;
+- (void)_readCorrectedMapLocation;
+- (void)_readCorrectedSearch;
+- (void)_readDirectionsProblem;
+- (void)_readMerchantLookupCorrections;
+- (void)_readPhotoWithMetadatas;
+- (void)_readPlaceProblem;
 - (void)addCorrectedField:(id)arg1;
 - (void)addCorrectedFlag:(id)arg1;
 - (void)addPhotoWithMetadata:(id)arg1;
@@ -74,6 +114,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)photoWithMetadataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoWithMetadatasCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

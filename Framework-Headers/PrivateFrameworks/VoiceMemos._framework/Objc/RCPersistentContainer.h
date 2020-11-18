@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSCloudKitMirroringDelegateOptions *mirroringOptions; // @synthesize mirroringOptions=_mirroringOptions;
 
 + (void)initialize;
++ (id)mirroringContainer;
 + (id)newObjectModel;
 + (id)sharedContainer;
 - (void).cxx_destruct;
@@ -46,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)_migrateDatabaseIfNecessary;
 - (id)_nextTransactionAfterToken:(id)arg1 context:(id)arg2 error:(id *)arg3;
 - (id)_valueForDatabaseProperty:(id)arg1 context:(id)arg2;
-- (void)dealloc;
 - (id)newContextWithConcurrencyType:(unsigned long long)arg1;
 
 @end

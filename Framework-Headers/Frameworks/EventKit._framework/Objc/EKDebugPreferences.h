@@ -29,8 +29,7 @@
 @property (nonatomic) BOOL saveGeocodedLocationsInTravelEngine;
 @property (nonatomic) BOOL shouldBypassTravelEngineThrottle;
 @property (nonatomic) BOOL showDepartureDateForTransitTimeToLeave;
-@property (nonatomic) BOOL showVerboseMessagesForTimeToLeave;
-@property (nonatomic) BOOL useAverageETAForTimeToLeave;
+@property (nonatomic) BOOL syntheticTravelAdvisoriesEnabled;
 @property (nonatomic) BOOL verifyIntegrityOfAvailabilityTimeSearchTimelines;
 
 + (id)shared;

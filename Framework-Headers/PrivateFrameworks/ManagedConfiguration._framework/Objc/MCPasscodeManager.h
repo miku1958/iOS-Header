@@ -38,6 +38,7 @@
 - (int)defaultNewPasscodeEntryScreenTypeWithOutSimplePasscodeType:(int *)arg1;
 - (BOOL)isCurrentPasscodeCompliantOutError:(id *)arg1;
 - (BOOL)isDeviceLocked;
+- (BOOL)isPasscodeCompliantWithNamedPolicy:(id)arg1 outError:(id *)arg2;
 - (BOOL)isPasscodeSet;
 - (id)localizedDescriptionOfDefaultNewPasscodePolicy;
 - (id)localizedDescriptionOfPasscodePolicy;

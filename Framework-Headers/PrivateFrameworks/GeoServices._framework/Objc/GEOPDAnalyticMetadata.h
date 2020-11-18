@@ -8,14 +8,15 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAbAssignInfo, GEOLocalTime, NSMutableArray, NSString, PBUnknownFields;
+@class GEOAbAssignInfo, GEOLocalTime, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAnalyticMetadata : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOSessionID _sessionId;
-    double _relativeTimestamp;
     GEOAbAssignInfo *_abAssignInfo;
     NSString *_appIdentifier;
     NSString *_appMajorVersion;
@@ -24,29 +25,59 @@ __attribute__((visibility("hidden")))
     NSString *_loggedAbExperiment;
     NSString *_osVersion;
     NSString *_productName;
-    int _requestSource;
+    double _relativeTimestamp;
     GEOLocalTime *_requestTime;
-    unsigned int _sequenceNumber;
     NSMutableArray *_serviceTags;
+    int _requestSource;
+    unsigned int _sequenceNumber;
     BOOL _isFromApi;
     BOOL _isInternalInstall;
     BOOL _isInternalTool;
     struct {
-        unsigned int sessionId:1;
-        unsigned int relativeTimestamp:1;
-        unsigned int requestSource:1;
-        unsigned int sequenceNumber:1;
-        unsigned int isFromApi:1;
-        unsigned int isInternalInstall:1;
-        unsigned int isInternalTool:1;
-    } _has;
+        unsigned int has_sessionId:1;
+        unsigned int has_relativeTimestamp:1;
+        unsigned int has_requestSource:1;
+        unsigned int has_sequenceNumber:1;
+        unsigned int has_isFromApi:1;
+        unsigned int has_isInternalInstall:1;
+        unsigned int has_isInternalTool:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_abAssignInfo:1;
+        unsigned int read_appIdentifier:1;
+        unsigned int read_appMajorVersion:1;
+        unsigned int read_appMinorVersion:1;
+        unsigned int read_hardwareModel:1;
+        unsigned int read_loggedAbExperiment:1;
+        unsigned int read_osVersion:1;
+        unsigned int read_productName:1;
+        unsigned int read_requestTime:1;
+        unsigned int read_serviceTags:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_sessionId:1;
+        unsigned int wrote_abAssignInfo:1;
+        unsigned int wrote_appIdentifier:1;
+        unsigned int wrote_appMajorVersion:1;
+        unsigned int wrote_appMinorVersion:1;
+        unsigned int wrote_hardwareModel:1;
+        unsigned int wrote_loggedAbExperiment:1;
+        unsigned int wrote_osVersion:1;
+        unsigned int wrote_productName:1;
+        unsigned int wrote_relativeTimestamp:1;
+        unsigned int wrote_requestTime:1;
+        unsigned int wrote_serviceTags:1;
+        unsigned int wrote_requestSource:1;
+        unsigned int wrote_sequenceNumber:1;
+        unsigned int wrote_isFromApi:1;
+        unsigned int wrote_isInternalInstall:1;
+        unsigned int wrote_isInternalTool:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOAbAssignInfo *abAssignInfo; // @synthesize abAssignInfo=_abAssignInfo;
-@property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
-@property (strong, nonatomic) NSString *appMajorVersion; // @synthesize appMajorVersion=_appMajorVersion;
-@property (strong, nonatomic) NSString *appMinorVersion; // @synthesize appMinorVersion=_appMinorVersion;
-@property (strong, nonatomic) NSString *hardwareModel; // @synthesize hardwareModel=_hardwareModel;
+@property (strong, nonatomic) GEOAbAssignInfo *abAssignInfo;
+@property (strong, nonatomic) NSString *appIdentifier;
+@property (strong, nonatomic) NSString *appMajorVersion;
+@property (strong, nonatomic) NSString *appMinorVersion;
+@property (strong, nonatomic) NSString *hardwareModel;
 @property (readonly, nonatomic) BOOL hasAbAssignInfo;
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (readonly, nonatomic) BOOL hasAppMajorVersion;
@@ -63,25 +94,38 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasRequestTime;
 @property (nonatomic) BOOL hasSequenceNumber;
 @property (nonatomic) BOOL hasSessionId;
-@property (nonatomic) BOOL isFromApi; // @synthesize isFromApi=_isFromApi;
-@property (nonatomic) BOOL isInternalInstall; // @synthesize isInternalInstall=_isInternalInstall;
-@property (nonatomic) BOOL isInternalTool; // @synthesize isInternalTool=_isInternalTool;
-@property (strong, nonatomic) NSString *loggedAbExperiment; // @synthesize loggedAbExperiment=_loggedAbExperiment;
-@property (strong, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
-@property (strong, nonatomic) NSString *productName; // @synthesize productName=_productName;
-@property (nonatomic) double relativeTimestamp; // @synthesize relativeTimestamp=_relativeTimestamp;
-@property (nonatomic) int requestSource; // @synthesize requestSource=_requestSource;
-@property (strong, nonatomic) GEOLocalTime *requestTime; // @synthesize requestTime=_requestTime;
-@property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
-@property (strong, nonatomic) NSMutableArray *serviceTags; // @synthesize serviceTags=_serviceTags;
-@property (nonatomic) struct GEOSessionID sessionId; // @synthesize sessionId=_sessionId;
+@property (nonatomic) BOOL isFromApi;
+@property (nonatomic) BOOL isInternalInstall;
+@property (nonatomic) BOOL isInternalTool;
+@property (strong, nonatomic) NSString *loggedAbExperiment;
+@property (strong, nonatomic) NSString *osVersion;
+@property (strong, nonatomic) NSString *productName;
+@property (nonatomic) double relativeTimestamp;
+@property (nonatomic) int requestSource;
+@property (strong, nonatomic) GEOLocalTime *requestTime;
+@property (nonatomic) unsigned int sequenceNumber;
+@property (strong, nonatomic) NSMutableArray *serviceTags;
+@property (nonatomic) struct GEOSessionID sessionId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)serviceTagType;
 - (void).cxx_destruct;
 - (int)StringAsRequestSource:(id)arg1;
+- (void)_addNoFlagsServiceTag:(id)arg1;
+- (void)_readAbAssignInfo;
+- (void)_readAppIdentifier;
+- (void)_readAppMajorVersion;
+- (void)_readAppMinorVersion;
+- (void)_readHardwareModel;
+- (void)_readLoggedAbExperiment;
+- (void)_readOsVersion;
+- (void)_readProductName;
+- (void)_readRequestTime;
+- (void)_readServiceTags;
 - (void)addServiceTag:(id)arg1;
 - (void)clearServiceTags;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -90,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithTraits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestSourceAsString:(int)arg1;
 - (id)serviceTagAtIndex:(unsigned long long)arg1;

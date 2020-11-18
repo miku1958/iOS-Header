@@ -7,7 +7,7 @@
 #import <SceneKit/NSObject-Protocol.h>
 
 @class AVAudioEngine, AVAudioEnvironmentNode, NSArray, NSDictionary, SCNNode, SCNScene, SKScene, SKTransition;
-@protocol SCNSceneRendererDelegate;
+@protocol MTLCommandQueue, MTLDevice, MTLRenderCommandEncoder, SCNSceneRendererDelegate;
 
 @protocol SCNSceneRenderer <NSObject>
 
@@ -15,9 +15,15 @@
 @property (readonly, nonatomic) AVAudioEnvironmentNode *audioEnvironmentNode;
 @property (strong, nonatomic) SCNNode *audioListener;
 @property (nonatomic) BOOL autoenablesDefaultLighting;
+@property (readonly, nonatomic) unsigned long long colorPixelFormat;
+@property (readonly, nonatomic) id<MTLCommandQueue> commandQueue;
 @property (readonly, nonatomic) void *context;
+@property (readonly, nonatomic) id<MTLRenderCommandEncoder> currentRenderCommandEncoder;
+@property (readonly, nonatomic) struct CGRect currentViewport;
 @property (nonatomic) unsigned long long debugOptions;
 @property (weak, nonatomic) id<SCNSceneRendererDelegate> delegate;
+@property (readonly, nonatomic) unsigned long long depthPixelFormat;
+@property (readonly, nonatomic) id<MTLDevice> device;
 @property (nonatomic, getter=isJitteringEnabled) BOOL jitteringEnabled;
 @property (nonatomic) BOOL loops;
 @property (strong, nonatomic) SKScene *overlaySKScene;
@@ -27,6 +33,9 @@
 @property (strong, nonatomic) SCNScene *scene;
 @property (nonatomic) double sceneTime;
 @property (nonatomic) BOOL showsStatistics;
+@property (readonly, nonatomic) unsigned long long stencilPixelFormat;
+@property (nonatomic, getter=isTemporalAntialiasingEnabled) BOOL temporalAntialiasingEnabled;
+@property (nonatomic) BOOL usesReverseZ;
 
 - (NSArray *)hitTest:(struct CGPoint)arg1 options:(NSDictionary *)arg2;
 - (BOOL)isNodeInsideFrustum:(SCNNode *)arg1 withPointOfView:(SCNNode *)arg2;

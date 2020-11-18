@@ -57,7 +57,6 @@
 - (void)beginCollectionForDataAggregator:(id)arg1 lastPersistedSensorDatum:(id)arg2;
 - (void)configureCollectorsAndAggregators;
 - (void)dataAggregator:(id)arg1 wantsCollectionWithConfiguration:(id)arg2;
-- (id)deviceForDataAggregator:(id)arg1;
 - (void)handleDataCharacteristic:(id)arg1;
 - (id)identifierForDataAggregator:(id)arg1;
 - (id)initWithFitnessMachineType:(unsigned long long)arg1 profile:(id)arg2;

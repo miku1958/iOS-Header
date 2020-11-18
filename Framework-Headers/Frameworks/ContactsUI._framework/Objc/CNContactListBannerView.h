@@ -8,18 +8,20 @@
 
 #import <ContactsUI/UIDragInteractionDelegate-Protocol.h>
 
-@class CNContact, CNContactFormatter, NSArray, NSLayoutConstraint, NSString, UIDragInteraction, UIGestureRecognizer, UILabel;
+@class CNContact, CNContactFormatter, CNContactListStyleApplier, CNContactStore, NSArray, NSLayoutConstraint, NSString, UIDragInteraction, UIGestureRecognizer, UILabel;
 @protocol CNContactListBannerViewDelegate;
 
 @interface CNContactListBannerView : UIView <UIDragInteractionDelegate>
 {
     id<CNContactListBannerViewDelegate> _delegate;
+    CNContactListStyleApplier *_contactListStyleApplier;
     UIView *_bottomSeparator;
+    CNContactStore *_contactStore;
     CNContactFormatter *_formatter;
     CNContact *_meContact;
     UIGestureRecognizer *_longPress;
-    UIView *_avatarViewContainer;
     UIView *_avatarView;
+    UIView *_avatarViewContainer;
     UILabel *_titleLabel;
     UIView *_footnoteContainer;
     UILabel *_footnoteLabel;
@@ -34,6 +36,8 @@
 @property (readonly, nonatomic) UIView *avatarViewContainer; // @synthesize avatarViewContainer=_avatarViewContainer;
 @property (readonly, nonatomic) UIView *bottomSeparator; // @synthesize bottomSeparator=_bottomSeparator;
 @property (strong, nonatomic) NSArray *constraintsPendingActivation; // @synthesize constraintsPendingActivation=_constraintsPendingActivation;
+@property (strong, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
+@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNContactListBannerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -53,6 +57,7 @@
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
 - (void)activatePendingConstraints;
+- (void)applyStyle;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cellWasLongPressed:(id)arg1;
@@ -62,8 +67,6 @@
 - (void)dealloc;
 - (BOOL)displaysContactInfo;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
-- (id)footnoteFont;
-- (id)footnoteTextColor;
 - (id)init;
 - (void)menuDidHide:(id)arg1;
 - (void)setMeContact:(id)arg1 footnoteTitle:(id)arg2 footnoteValue:(id)arg3;

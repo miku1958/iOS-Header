@@ -61,6 +61,7 @@
 - (id)initWithMomentShare:(id)arg1;
 - (id)invitationWithUpdatedParticipantsFetchResult:(id)arg1;
 - (id)invitationWithUpdatedPreviewAssetsFetchResult:(id)arg1;
+- (id)momentShareStatus;
 
 @end
 

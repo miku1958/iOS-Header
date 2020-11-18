@@ -15,11 +15,15 @@
 {
     struct CGSize _preferredContentSize;
     struct CGRect _initialLayerFrame;
+    NSString *_sceneSessionPersistentIdentifier;
     BOOL _isPictureInPicturePossible;
     BOOL _isPictureInPictureActive;
     BOOL _isPictureInPictureSuspended;
     BOOL _pictureInPictureShouldStartWhenEnteringBackground;
     BOOL _pictureInPictureWasStartedWhenEnteringBackground;
+    BOOL _shouldCancelActivePictureInPictureOnStart;
+    BOOL _shouldPullCancellationPolicyOnStart;
+    id _windowSceneActivationStateObserver;
     double _playbackProgress;
     double _playbackRate;
     NSArray *_loadedTimeRanges;
@@ -35,6 +39,7 @@
     struct {
         unsigned int pictureInPictureProxyInterfaceOrientationForTransitionAnimation:1;
         unsigned int pictureInPictureProxyViewFrameForTransitionAnimation:1;
+        unsigned int pictureInPictureProxyViewControllerWindowForTransitionAnimation:1;
         unsigned int pictureInPictureProxy_willStartPictureInPictureWithAnimationType:1;
         unsigned int pictureInPictureProxy_didStartPictureInPictureWithAnimationType:1;
         unsigned int pictureInPictureProxy_failedToStartPictureInPictureWithAnimationType_error:1;
@@ -48,7 +53,7 @@
     UIViewController<PGPictureInPictureViewController> *_viewController;
 }
 
-@property (readonly, nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
+@property (nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PGPictureInPictureProxyDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -66,9 +71,22 @@
 + (BOOL)isPictureInPictureSupported;
 + (id)pictureInPictureProxyWithControlsStyle:(long long)arg1 viewController:(id)arg2;
 - (void).cxx_destruct;
+- (void)_actuallyStartAnimated:(BOOL)arg1 animationType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_didStartWithSuccess:(BOOL)arg1 animationType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_executeDelegateCallbackBlock:(CDUnknownBlockType)arg1 assumeApplicationActive:(BOOL)arg2;
+- (id)_expectedScene;
 - (long long)_interfaceOrientationForTransitionAnimationAssumeApplicationActive:(BOOL)arg1;
+- (BOOL)_isViewControllerWindowSceneActive;
+- (void)_manageStartAnimated:(BOOL)arg1 cancelActiveOnStart:(BOOL)arg2 competionHandler:(CDUnknownBlockType)arg3;
+- (id)_sceneSessionPersistentIdentifierForTransitionAnimationAssumeApplicationActive:(BOOL)arg1;
+- (void)_setupStart:(BOOL)arg1 animationType:(long long)arg2 initialLayerFrame:(struct CGRect)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)_sourceScene;
 - (void)_startPictureInPictureAnimated:(BOOL)arg1 enteringBackground:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)_stopPictureInPictureAnimated:(BOOL)arg1 activateApplicationIfNeededAndRestoreUserInterface:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_stopObservingWindowSceneActivationState;
+- (void)_stopPictureInPictureAnimated:(BOOL)arg1 restoreUserInterface:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)_updateAutoPIPSettingsAndNotifyRemoteObject;
+- (void)_updateAutoPIPSettingsAndNotifyRemoteObjectIfNeeded;
+- (void)_updateCancellationPolicyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (struct CGRect)_viewFrameForTransitionAnimationAssumeApplicationActive:(BOOL)arg1;
 - (oneway void)actionButtonTapped;
 - (void)dealloc;
@@ -90,6 +108,7 @@
 - (double)playbackRate;
 - (void)preferredContentSizeDidChangeForViewController;
 - (void)rotateContentContainer:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)setControlsStyle:(long long)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)setLoadedTimeRanges:(id)arg1;
 - (void)setPlaybackProgress:(double)arg1 playbackRate:(double)arg2;
 - (void)startPictureInPicture;
@@ -97,6 +116,7 @@
 - (oneway void)updateHostedWindowSize:(struct CGSize)arg1 animationType:(long long)arg2 initialSpringVelocity:(double)arg3 synchronizationFence:(id)arg4;
 - (oneway void)updatePictureInPicturePossible:(BOOL)arg1;
 - (void)viewFrameForInteractiveTransitionAnimationWhenEnteringBackgroundDidChangeForViewController;
+- (void)windowSceneForInteractiveTransitionAnimationWhenEnteringBackgroundDidChangeForViewController;
 
 @end
 

@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *videoGravity;
+@property (copy, nonatomic) NSString *videoGravity;
 
 + (id)keyPathsForValuesAffectingPreferredContentSize;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;

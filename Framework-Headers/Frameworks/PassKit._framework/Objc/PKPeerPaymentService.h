@@ -44,6 +44,7 @@
 - (void)presentRegistrationFlowWithAccount:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)receivedPeerPaymentMessageData:(id)arg1;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)registerDeviceWithForceReregister:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registrationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resumeAccountChangedNotifications;

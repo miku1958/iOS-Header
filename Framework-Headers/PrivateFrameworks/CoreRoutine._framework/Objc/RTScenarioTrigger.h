@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
++ (id)scenarioTriggerSettledStateToString:(unsigned long long)arg1;
 + (id)scenarioTriggerTypeToString:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)description;

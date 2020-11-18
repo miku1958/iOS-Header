@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 @interface VCControlChannel : VCObject
 {
     id _messageReceivedDelegate;
+    id _dataReceivedDelegate;
     int _bytesSent;
     int _lastProcessedBytesSent;
     int _bytesSentToReport;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_asyncProcessingQueue;
 }
 
+@property (nonatomic) id dataReceivedDelegate;
 @property (nonatomic) id messageReceivedDelegate; // @synthesize messageReceivedDelegate=_messageReceivedDelegate;
 
 - (void)broadcastUnreliableMessage:(id)arg1;

@@ -6,11 +6,14 @@
 
 #import <AVFoundation/AVAsset.h>
 
-@class NSURL;
+@class AVAssetTrack, NSDictionary, NSURL;
 
 @interface AVAsset (RCAdditions)
 
+@property (readonly, nonatomic) AVAssetTrack *rc_audioTrack;
 @property (strong, nonatomic, setter=rc_setComposedAVURL:) NSURL *rc_composedAVURL;
+@property (readonly, nonatomic) NSDictionary *rc_recordingMetadata;
 
++ (BOOL)rc_updateMetadataInFile:(id)arg1 withMetadata:(id)arg2 error:(id *)arg3;
 @end
 

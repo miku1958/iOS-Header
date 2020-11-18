@@ -4,26 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ProtocolBuffer/PBRequest.h>
+#import <ProtocolBuffer/PBCodable.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
 
 @class GEOPDPlaceRequest;
 
-@interface GEOLogMsgStatePlaceRequest : PBRequest <NSCopying>
+@interface GEOLogMsgStatePlaceRequest : PBCodable <NSCopying>
 {
     GEOPDPlaceRequest *_placeDataRequest;
     int _placeRequestType;
     struct {
-        unsigned int placeRequestType:1;
-    } _has;
+        unsigned int has_placeRequestType:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasPlaceDataRequest;
 @property (nonatomic) BOOL hasPlaceRequestType;
-@property (strong, nonatomic) GEOPDPlaceRequest *placeDataRequest; // @synthesize placeDataRequest=_placeDataRequest;
-@property (nonatomic) int placeRequestType; // @synthesize placeRequestType=_placeRequestType;
+@property (strong, nonatomic) GEOPDPlaceRequest *placeDataRequest;
+@property (nonatomic) int placeRequestType;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsPlaceRequestType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -34,6 +35,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeRequestTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

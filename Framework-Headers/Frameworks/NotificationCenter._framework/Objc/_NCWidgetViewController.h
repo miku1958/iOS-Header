@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     NSString *_widgetIdentifier;
     NSString *_containerIdentifier;
     struct UIEdgeInsets _clientMarginInsets;
+    struct UIEdgeInsets _initialLayoutMargins;
 }
 
 @property (nonatomic, getter=_clientMarginInsets, setter=_setClientMarginInsets:) struct UIEdgeInsets clientMarginInsets; // @synthesize clientMarginInsets=_clientMarginInsets;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=_initialLayoutMargins, setter=_setInitialLayoutMargins:) struct UIEdgeInsets initialLayoutMargins; // @synthesize initialLayoutMargins=_initialLayoutMargins;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=_visibilityState, setter=_setVisibilityState:) long long visibilityState; // @synthesize visibilityState=_visibilityState;
 @property (copy, nonatomic, getter=_widgetIdentifier) NSString *widgetIdentifier; // @synthesize widgetIdentifier=_widgetIdentifier;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)__requestEncodedLayerTreeToURL:(id)arg1 withCodingImageFormat:(id)arg2 withReplyHandler:(CDUnknownBlockType)arg3;
 - (void)__setActiveDisplayMode:(long long)arg1;
 - (void)__setMaximumSize:(struct CGSize)arg1 forDisplayMode:(long long)arg2;
+- (void)__updateLayoutMargins:(id)arg1;
 - (void)__updateVisibilityState:(long long)arg1;
 - (void)__updateVisibleFrame:(struct CGRect)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (long long)_clientLargestSupportedDisplayMode;

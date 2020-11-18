@@ -94,6 +94,7 @@
 - (BOOL)saveCalendarItemWithSpan:(long long)arg1 error:(id *)arg2;
 - (void)setupDeleteButton;
 - (BOOL)shouldAutorotate;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

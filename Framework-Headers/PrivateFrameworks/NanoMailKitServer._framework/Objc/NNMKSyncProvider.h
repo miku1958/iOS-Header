@@ -90,6 +90,7 @@
 - (void)_handleFetchRequestFromWatch:(id)arg1;
 - (void)_handleForwardNotificationPayload:(CDUnknownBlockType)arg1 forBulletin:(id)arg2;
 - (void)_handleHaltSyncForMailbox:(id)arg1;
+- (void)_handleMailboxesDesync;
 - (id)_initialSyncForMailbox:(id)arg1 messages:(id)arg2 shouldUseProtectedChannel:(BOOL)arg3;
 - (BOOL)_isConnectedToWatch;
 - (BOOL)_isPaired;
@@ -121,6 +122,7 @@
 - (void)_sendStandaloneAccountIdentity:(id)arg1 resendInterval:(unsigned long long)arg2;
 - (void)_sendUpdatedMailboxSelection:(unsigned long long)arg1;
 - (void)_sendUpdatedMailboxSelection:(unsigned long long)arg1 resendInterval:(unsigned long long)arg2;
+- (void)_sendWatchAccountStatusRequest;
 - (void)_setPairedDeviceSupportsMultipleMailboxes:(BOOL)arg1;
 - (void)_stopTaks;
 - (void)_storeScreenRelatedValues;
@@ -137,7 +139,7 @@
 - (id)_watchAccounts;
 - (void)accountsSyncServiceServer:(id)arg1 didChangeAccountSourceType:(id)arg2;
 - (void)accountsSyncServiceServer:(id)arg1 didFailSendingProtobufWithIDSIdentifier:(id)arg2 errorCode:(long long)arg3;
-- (void)accountsSyncServiceServer:(id)arg1 didReceivedAccountAuthenticationStatus:(id)arg2;
+- (void)accountsSyncServiceServer:(id)arg1 didReceivedAccountAuthenticationStatus:(id)arg2 requestTime:(double)arg3;
 - (void)accountsSyncServiceServer:(id)arg1 didSendProtobufSuccessfullyWithIDSIdentifier:(id)arg2;
 - (void)addImageAttachment:(id)arg1 forMessageId:(id)arg2 contentId:(id)arg3 loadedProtected:(BOOL)arg4;
 - (void)addMessageContent:(id)arg1 forMessage:(id)arg2 loadedProtected:(BOOL)arg3;
@@ -213,6 +215,7 @@
 - (void)syncStateManagerDidChangePairedDevice:(id)arg1;
 - (void)syncStateManagerDidInvalidateSyncSession:(id)arg1 syncSessionIdentifier:(id)arg2;
 - (void)syncStateManagerDidUnpair:(id)arg1;
+- (BOOL)syncStateManagerShouldAddFavoriteSubsectionForMailboxId:(id)arg1;
 - (id)syncedMailboxes;
 - (void)trackerDidFinishSendingInitialSyncContentToPairedDevice:(id)arg1;
 - (void)updateMailboxSelection:(id)arg1;

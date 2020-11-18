@@ -30,6 +30,7 @@
 
 + (CDUnknownBlockType)defaultItemProviderCreatorWithOptions:(unsigned long long)arg1;
 + (id)itemServiceTypesToHide;
++ (CDUnknownBlockType)transformationBlockWithOptions:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_addAllServicesInSectionFromButton:(id)arg1;
 - (void)_addItemToSelection:(id)arg1;

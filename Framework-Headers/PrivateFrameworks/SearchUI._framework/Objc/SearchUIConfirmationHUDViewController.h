@@ -18,11 +18,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong) SearchUIConfirmationHUDView *view; // @dynamic view;
+@property (strong, nonatomic) SearchUIConfirmationHUDView *view; // @dynamic view;
 
+- (BOOL)_canShowWhileLocked;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)init;
+- (long long)preferredUserInterfaceStyle;
 - (void)setTitle:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 

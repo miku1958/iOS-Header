@@ -8,11 +8,12 @@
 
 #import <ProactiveML/PMLTrainingProtocol-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface PMLTrainingMock : NSObject <PMLTrainingProtocol>
 {
     NSMutableArray *_internalCollectedSessions;
+    NSMutableDictionary *_lastTrainingFeaturizations;
     NSArray *_collectedSessions;
 }
 
@@ -30,10 +31,11 @@
 - (void)deleteSessionsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)deleteSessionsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (id)init;
-- (BOOL)modelServerUpdateWithPayload:(id)arg1 error:(id *)arg2;
+- (id)lastTrainingFeaturizationForModelName:(id)arg1 andLocale:(id)arg2;
 - (id)planReceivedWithPayload:(id)arg1 error:(id *)arg2;
-- (void)trainWhile:(CDUnknownBlockType)arg1;
+- (void)setSourceRecoverer:(CDUnknownBlockType)arg1;
 - (void)trimDb;
+- (void)updateLastTrainingFeaturizationForModel:(id)arg1 andData:(id)arg2;
 - (void)updateSessionsAndLabelForModel:(id)arg1 block:(CDUnknownBlockType)arg2;
 
 @end

@@ -8,7 +8,6 @@
 
 @class MNCommuteDestination, MNCommuteDestinationSuggestion, NSDate, NSHashTable, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MNCommuteDestinationScore : NSObject
 {
     BOOL _destinationInvalid;
@@ -19,13 +18,13 @@ __attribute__((visibility("hidden")))
     NSHashTable *_observers;
 }
 
-@property (readonly) NSString *descriptionExtras; // @synthesize descriptionExtras=_descriptionExtras;
+@property (readonly, nonatomic) NSString *descriptionExtras; // @synthesize descriptionExtras=_descriptionExtras;
 @property (weak, nonatomic) MNCommuteDestination *destination; // @synthesize destination=_destination;
-@property (readonly) BOOL destinationInvalid; // @synthesize destinationInvalid=_destinationInvalid;
+@property (readonly, nonatomic) BOOL destinationInvalid; // @synthesize destinationInvalid=_destinationInvalid;
 @property (readonly) MNCommuteDestinationSuggestion *destinationSuggestion;
 @property (strong, nonatomic) NSDate *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
-@property (strong) NSHashTable *observers; // @synthesize observers=_observers;
-@property (readonly) int score; // @synthesize score=_score;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (readonly, nonatomic) int score; // @synthesize score=_score;
 @property (readonly) double weightedScore;
 
 + (id)sessionStartDate;

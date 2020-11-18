@@ -17,7 +17,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *messageId; // @dynamic messageId;
+@property (readonly) NSString *messageId;
 @property (readonly) Class superclass;
 
 + (BOOL)isSupportedEntityType:(long long)arg1;

@@ -1495,19 +1495,21 @@ struct SKCVideoNode {
     CDStruct_14d5dc5e _field28;
     BOOL _field29;
     id _field30;
-    float _field31;
-    shared_ptr_bb77cfd9 _field32;
-    shared_ptr_bb77cfd9 _field33;
-    struct __CVBuffer *_field34;
-    struct __CVBuffer *_field35;
-    struct __CVOpenGLESTextureCache *_field36;
-    id _field37;
-    struct __CVBuffer *_field38;
-    struct list<__CVBuffer *, std::__1::allocator<__CVBuffer *>> _field39;
+    id _field31;
+    float _field32;
+    BOOL _field33;
+    shared_ptr_bb77cfd9 _field34;
+    shared_ptr_bb77cfd9 _field35;
+    struct __CVBuffer *_field36;
+    struct __CVBuffer *_field37;
+    struct __CVMetalTextureCache *_field38;
+    id _field39;
+    struct __CVBuffer *_field40;
+    struct list<__CVBuffer *, std::__1::allocator<__CVBuffer *>> _field41;
     struct __list_iterator<__CVBuffer *, void *> {
         struct __list_node_base<__CVBuffer *, void *> *_field1;
-    } _field40;
-    id _field41;
+    } _field42;
+    id _field43;
 };
 
 struct SKCWait {

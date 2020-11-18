@@ -26,6 +26,7 @@
 - (struct CGRect)accessibilityFrame;
 - (void)accessibilityIncrement;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (void)adjustComponentsIncrement:(BOOL)arg1;

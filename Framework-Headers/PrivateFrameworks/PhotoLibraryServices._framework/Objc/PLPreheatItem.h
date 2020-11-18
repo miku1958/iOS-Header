@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, PLAssetsdCloudClient;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface PLPreheatItem : NSObject
 {
-    int _format;
+    unsigned short _format;
     long long _imageType;
     struct CGSize _optimalSourcePixelSize;
     NSString *_assetUUID;
@@ -22,34 +22,35 @@
     BOOL _CPLPrefetchingCancelled;
     NSObject<OS_dispatch_group> *_CPLPrefetchingWaitGroup;
     BOOL _cachingAllowed;
-    int _requestCount;
+    _Atomic int _requestCount;
+    PLAssetsdCloudClient *_cloudClient;
     BOOL _didCompleteCPLPrefetchingWithSuccessOrError;
     BOOL _CPLPrefetchingWasCancelled;
-    int _bestFormat;
+    unsigned short _bestFormat;
     NSString *_virtualCPLTaskIdentifier;
 }
 
 @property (readonly, nonatomic) BOOL CPLPrefetching; // @synthesize CPLPrefetching=_CPLPrefetching;
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_group> *CPLPrefetchingWaitGroup; // @synthesize CPLPrefetchingWaitGroup=_CPLPrefetchingWaitGroup;
+@property (readonly, nonatomic) NSObject<OS_dispatch_group> *CPLPrefetchingWaitGroup; // @synthesize CPLPrefetchingWaitGroup=_CPLPrefetchingWaitGroup;
 @property BOOL CPLPrefetchingWasCancelled; // @synthesize CPLPrefetchingWasCancelled=_CPLPrefetchingWasCancelled;
 @property (readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
-@property (nonatomic) int bestFormat; // @synthesize bestFormat=_bestFormat;
+@property (nonatomic) unsigned short bestFormat; // @synthesize bestFormat=_bestFormat;
 @property (nonatomic) BOOL cachingAllowed; // @synthesize cachingAllowed=_cachingAllowed;
 @property BOOL didCompleteCPLPrefetchingWithSuccessOrError; // @synthesize didCompleteCPLPrefetchingWithSuccessOrError=_didCompleteCPLPrefetchingWithSuccessOrError;
-@property (readonly, nonatomic) int format; // @synthesize format=_format;
+@property (readonly, nonatomic) unsigned short format; // @synthesize format=_format;
 @property (readonly, nonatomic) long long imageType; // @synthesize imageType=_imageType;
 @property (readonly, nonatomic) struct CGSize optimalSourcePixelSize; // @synthesize optimalSourcePixelSize=_optimalSourcePixelSize;
 @property (strong) NSString *virtualCPLTaskIdentifier; // @synthesize virtualCPLTaskIdentifier=_virtualCPLTaskIdentifier;
 
+- (void).cxx_destruct;
 - (BOOL)addImageHandler:(CDUnknownBlockType)arg1;
-- (id)cachedImage:(BOOL *)arg1;
-- (id)cachedImageIfAvailable:(BOOL *)arg1;
+- (struct NSObject *)cachedImage:(BOOL *)arg1;
+- (struct NSObject *)cachedImageIfAvailable:(BOOL *)arg1;
 - (void)cancelPreheatRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (long long)decrementRequestCount;
 - (id)description;
 - (long long)incrementRequestCount;
-- (id)initForCPLPrefetchingWithAssetUUID:(id)arg1 format:(int)arg2;
+- (id)initForCPLPrefetchingWithAssetUUID:(id)arg1 format:(unsigned short)arg2 assetsdClient:(id)arg3;
 - (BOOL)isCancelled;
 - (BOOL)isRetained;
 - (void)startPreheatRequestWithCompletionHandler:(CDUnknownBlockType)arg1;

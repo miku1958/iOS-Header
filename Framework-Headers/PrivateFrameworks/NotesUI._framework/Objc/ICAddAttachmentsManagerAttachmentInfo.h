@@ -19,21 +19,22 @@
     NSString *_mediaFilenameExtension;
     struct UIImage *_image;
     NSAttributedString *_attributedContentText;
-    NSDictionary *_webScrapeResults;
 }
 
 @property (strong, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
 @property (strong, nonatomic) NSAttributedString *attributedContentText; // @synthesize attributedContentText=_attributedContentText;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) BOOL isPhoto;
+@property (readonly, nonatomic) BOOL isVideo;
 @property (strong, nonatomic) NSData *mediaData; // @synthesize mediaData=_mediaData;
 @property (strong, nonatomic) NSString *mediaFilenameExtension; // @synthesize mediaFilenameExtension=_mediaFilenameExtension;
 @property (strong, nonatomic) NSURL *mediaURL; // @synthesize mediaURL=_mediaURL;
 @property (strong, nonatomic) NSString *mediaUTI; // @synthesize mediaUTI=_mediaUTI;
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-@property (strong, nonatomic) NSDictionary *webScrapeResults; // @synthesize webScrapeResults=_webScrapeResults;
 
 - (void).cxx_destruct;
+- (id)attachmentIfExistsForAccount:(id)arg1;
 - (id)description;
 - (id)initWithFileURL:(id)arg1;
 - (unsigned long long)mediaSize;

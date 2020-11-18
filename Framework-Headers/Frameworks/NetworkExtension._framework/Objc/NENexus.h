@@ -67,7 +67,8 @@
 - (BOOL)handleRequestNexusFromClient:(id)arg1;
 - (void)handleStartFromClient:(id)arg1;
 - (void)handleUnassertFromClient:(id)arg1;
-- (id)initWithLevel:(unsigned long long)arg1 name:(id)arg2 virtualInterfaceType:(long long)arg3 delegate:(id)arg4;
+- (id)initWithLevel:(unsigned long long)arg1 name:(id)arg2 virtualInterfaceType:(long long)arg3 delegate:(id)arg4 channelCount:(unsigned int)arg5;
+- (id)initWithLevel:(unsigned long long)arg1 name:(id)arg2 virtualInterfaceType:(long long)arg3 delegate:(id)arg4 channelCount:(unsigned int)arg5 netifRingSize:(unsigned int)arg6 kernelPipeTxRingSize:(unsigned int)arg7 kernelPipeRxRingSize:(unsigned int)arg8;
 - (id)initWithName:(id)arg1 delegate:(id)arg2;
 - (void)rejectFlowWithClientIdentifier:(id)arg1;
 - (BOOL)setupFlowManager;

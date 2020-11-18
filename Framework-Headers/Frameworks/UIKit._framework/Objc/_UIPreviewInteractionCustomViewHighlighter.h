@@ -13,10 +13,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIPreviewInteractionCustomViewHighlighter : NSObject <_UIPreviewInteractionHighlighting>
 {
+    BOOL _customViewFlipsHorizontalAxis;
     UIView *_customView;
 }
 
 @property (strong, nonatomic) UIView *customView; // @synthesize customView=_customView;
+@property (nonatomic) BOOL customViewFlipsHorizontalAxis; // @synthesize customViewFlipsHorizontalAxis=_customViewFlipsHorizontalAxis;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

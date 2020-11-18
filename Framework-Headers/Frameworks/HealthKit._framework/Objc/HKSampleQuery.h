@@ -13,7 +13,7 @@
 @interface HKSampleQuery : HKQuery <HKSampleQueryClientInterface>
 {
     unsigned long long _limit;
-    BOOL _includeTimeZones;
+    BOOL _includeAutomaticTimeZones;
     NSArray *_sortDescriptors;
     NSMutableArray *_samplesPendingDelivery;
     CDUnknownBlockType _resultHandler;
@@ -22,9 +22,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL includeTimeZones; // @synthesize includeTimeZones=_includeTimeZones;
+@property (nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property (readonly) unsigned long long limit;
-@property (readonly, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
 @property (readonly, copy) NSArray *sortDescriptors;
 @property (readonly) Class superclass;
 

@@ -8,6 +8,7 @@
 
 @class NSString, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface SKUIReviewInAppRatingButtonViewController : UIViewController
 {
     BOOL _enabled;

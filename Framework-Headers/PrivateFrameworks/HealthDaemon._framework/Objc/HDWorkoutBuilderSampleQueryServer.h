@@ -26,18 +26,18 @@
 
 + (Class)queryClass;
 + (id)requiredEntitlements;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)_queue_performHistoricalQuery;
 - (void)_queue_scheduleHistoricalQuery;
 - (void)_queue_start;
 - (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
-- (BOOL)_shouldListenForUpdates;
 - (BOOL)_shouldObserveDatabaseProtectedDataAvailability;
 - (BOOL)_shouldObserveOnPause;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)didCreateTaskServer:(id)arg1;
 - (void)didInvalidateTaskServer:(id)arg1;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)workoutBuilderSampleQueryClientWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)workoutBuilderServer:(id)arg1 addedSamples:(id)arg2;
 

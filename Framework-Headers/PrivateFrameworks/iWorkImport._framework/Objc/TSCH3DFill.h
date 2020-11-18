@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didInitFromSOS;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
-- (int)fillType;
+- (long long)fillType;
 - (BOOL)hasCompleteData;
 - (unsigned long long)hash;
 - (BOOL)identifierReferencesUnavailableLocalBundle;
@@ -51,8 +51,8 @@ __attribute__((visibility("hidden")))
 - (id)lightenByPercent:(float)arg1;
 - (void)nonatomicallyClearLightingModel;
 - (void)nonatomicallySetLightingModel:(id)arg1;
-- (id)p_convertToTSDFillWithSize:(unsigned long long)arg1 technique:(int)arg2;
-- (id)p_convertToTSDFillWithSize:(unsigned long long)arg1 technique:(int)arg2 context:(id)arg3;
+- (id)p_convertToTSDFillWithSize:(unsigned long long)arg1 technique:(unsigned long long)arg2;
+- (id)p_convertToTSDFillWithSize:(unsigned long long)arg1 technique:(unsigned long long)arg2 context:(id)arg3;
 - (id)p_iconFill;
 - (id)p_imageFillForRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (id)p_imageFillForSize:(struct CGSize)arg1 context:(id)arg2;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDateComponents, NSString;
 
-@interface INMessageLinkMetadata : NSObject <NSCopying, NSSecureCoding>
+@interface INMessageLinkMetadata : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
     NSString *_siteName;
     NSString *_summary;
@@ -70,6 +71,9 @@
 @property (copy, nonatomic) NSString *bookAuthor; // @synthesize bookAuthor=_bookAuthor;
 @property (copy, nonatomic) NSString *bookName; // @synthesize bookName=_bookName;
 @property (copy, nonatomic) NSString *creator; // @synthesize creator=_creator;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *iTunesStoreFrontIdentifier; // @synthesize iTunesStoreFrontIdentifier=_iTunesStoreFrontIdentifier;
 @property (copy, nonatomic) NSString *iTunesStoreIdentifier; // @synthesize iTunesStoreIdentifier=_iTunesStoreIdentifier;
 @property (copy, nonatomic) NSArray *iconURLs; // @synthesize iconURLs=_iconURLs;
@@ -99,6 +103,7 @@
 @property (copy, nonatomic) NSString *songArtist; // @synthesize songArtist=_songArtist;
 @property (copy, nonatomic) NSString *songTitle; // @synthesize songTitle=_songTitle;
 @property (copy, nonatomic) NSString *summary; // @synthesize summary=_summary;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *tvEpisodeEpisodeName; // @synthesize tvEpisodeEpisodeName=_tvEpisodeEpisodeName;
 @property (copy, nonatomic) NSString *tvEpisodeGenre; // @synthesize tvEpisodeGenre=_tvEpisodeGenre;
@@ -106,14 +111,14 @@
 @property (copy, nonatomic) NSString *tvSeasonGenre; // @synthesize tvSeasonGenre=_tvSeasonGenre;
 @property (copy, nonatomic) NSString *tvSeasonName; // @synthesize tvSeasonName=_tvSeasonName;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSiteName:(id)arg1 summary:(id)arg2 title:(id)arg3 itemType:(id)arg4 originalURL:(id)arg5 imageURLs:(id)arg6 iconURLs:(id)arg7 creator:(id)arg8 linkMediaType:(long long)arg9 iTunesStoreIdentifier:(id)arg10 iTunesStoreFrontIdentifier:(id)arg11 songTitle:(id)arg12 songArtist:(id)arg13 songAlbum:(id)arg14 albumName:(id)arg15 albumArtist:(id)arg16 musicVideoName:(id)arg17 musicVideoArtist:(id)arg18 artistName:(id)arg19 artistGenre:(id)arg20 playlistName:(id)arg21 playlistCurator:(id)arg22 radioName:(id)arg23 radioCurator:(id)arg24 softwareName:(id)arg25 softwareGenre:(id)arg26 softwarePlatform:(id)arg27 bookName:(id)arg28 bookAuthor:(id)arg29 audioBookName:(id)arg30 audioBookAuthor:(id)arg31 audioBookNarrator:(id)arg32 podcastName:(id)arg33 podcastArtist:(id)arg34 podcastEpisodeName:(id)arg35 podcastEpisodePodcastName:(id)arg36 podcastEpisodeArtist:(id)arg37 podcastEpisodeReleaseDate:(id)arg38 tvEpisodeEpisodeName:(id)arg39 tvEpisodeSeasonName:(id)arg40 tvEpisodeGenre:(id)arg41 tvSeasonName:(id)arg42 tvSeasonGenre:(id)arg43 movieName:(id)arg44 movieGenre:(id)arg45;

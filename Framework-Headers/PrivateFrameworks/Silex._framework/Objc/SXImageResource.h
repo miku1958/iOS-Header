@@ -24,7 +24,6 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL wideColorSpace;
 
-+ (id)typeString;
 - (double)heightForImageWidth:(double)arg1;
 - (struct CGSize)sizeThatFills:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2;
+- (BOOL)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(BOOL)arg3;
 - (id)invalidURLSchemes;
 - (id)stringForEquationChoiceBody;
 - (id)stringForEquationChoiceTitle;

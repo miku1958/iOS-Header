@@ -7,6 +7,11 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (FezAdditions)
+
+@property (readonly, nonatomic) BOOL hasMobileMeSuffix;
+@property (readonly, nonatomic) NSString *mobileMeDomain;
+@property (readonly, nonatomic) NSString *stripMobileMSuffixIfPresent;
+
 + (id)copyStringGUID;
 + (id)copyStringGUIDForObject:(id)arg1;
 + (id)generatedRoomNameForGroupChat;
@@ -37,6 +42,7 @@
 - (BOOL)_appearsToBePhoneNumber;
 - (id)_bestGuessURI;
 - (id)_bestGuessURIFromCanicalizedID;
+- (id)_imInitWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
 - (id)_md5Hash;
 - (id)_stripFZIDPrefix;
 - (id)_stripPotentialTokenURIWithToken:(id *)arg1;

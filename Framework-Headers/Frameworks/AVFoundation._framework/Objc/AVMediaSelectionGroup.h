@@ -37,7 +37,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionary;
-- (void)finalize;
 - (id)init;
 - (id)mediaSelectionOptionWithPropertyList:(id)arg1;
 

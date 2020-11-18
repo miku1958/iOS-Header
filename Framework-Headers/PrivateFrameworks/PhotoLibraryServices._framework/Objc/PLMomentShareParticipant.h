@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
-@class NSString, PLMomentShare;
+@class NSPersonNameComponents, NSString, PLMomentShare;
 
 @interface PLMomentShareParticipant : PLManagedObject
 {
@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *emailAddress; // @dynamic emailAddress;
 @property (strong, nonatomic) PLMomentShare *momentShare; // @dynamic momentShare;
+@property (copy, nonatomic) NSPersonNameComponents *nameComponents; // @dynamic nameComponents;
 @property (copy, nonatomic) NSString *phoneNumber; // @dynamic phoneNumber;
 @property (nonatomic) short status; // @dynamic status;
 @property (nonatomic) short type; // @dynamic type;
@@ -21,7 +22,6 @@
 @property (copy, nonatomic) NSString *uuid; // @dynamic uuid;
 
 + (id)_momentShareParticipantsWithPredicate:(id)arg1 fetchLimit:(unsigned long long)arg2 inManagedObjectContext:(id)arg3;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertInPhotoLibrary:(id)arg1;
 + (id)participantsWithUUIDs:(id)arg1 inPhotoLibrary:(id)arg2;

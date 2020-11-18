@@ -22,9 +22,6 @@
 + (id)currentLanguageCode;
 + (id)currentLocationCode;
 + (void)initialize;
-+ (id)overlayCalendar;
-+ (id)overlayCalendarID;
-+ (void)overlayCalendarPrefChanged;
 + (void)setActiveTimeZone:(id)arg1;
 
 @end

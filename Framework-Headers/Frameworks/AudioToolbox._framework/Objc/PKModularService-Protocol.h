@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/NSObject-Protocol.h>
+#import <AudioToolboxCore/NSObject-Protocol.h>
 
-@class NSBundle;
+@class NSBundle, NSDictionary;
 @protocol PKModularService, PKSubsystemServicePersonality;
 
 @protocol PKModularService <NSObject>
-+ (id<PKModularService>)initForPlugInKit;
 
 @optional
++ (id<PKModularService>)initForPlugInKit;
++ (id<PKModularService>)initForPlugInKitWithOptions:(NSDictionary *)arg1;
 - (void)beginUsing:(id<PKSubsystemServicePersonality>)arg1 withBundle:(NSBundle *)arg2;
 - (void)communicationsFailed:(id<PKSubsystemServicePersonality>)arg1;
 - (void)endUsing:(id<PKSubsystemServicePersonality>)arg1;

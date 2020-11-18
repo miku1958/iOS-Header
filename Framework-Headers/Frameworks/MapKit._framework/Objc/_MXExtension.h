@@ -46,7 +46,6 @@
 - (id)resolveIntentSlot:(id)arg1 forIntent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)siblingExtensions;
 - (void)startExtensionServiceWithInputItems:(id)arg1 begin:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)startRideSharingSearchRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)startSendingUpdatesForIntent:(id)arg1 toObserver:(id)arg2;
 - (id)startSendingUpdatesForRequest:(id)arg1 requestDispatcher:(id)arg2 toObserver:(id)arg3;
 

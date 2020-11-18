@@ -22,20 +22,31 @@
 @property (copy, nonatomic) CDUnknownBlockType voiceTriggerBlock; // @synthesize voiceTriggerBlock=_voiceTriggerBlock;
 @property (readonly, nonatomic) unsigned long long voiceTriggerPastDataFramesAvailable;
 
++ (BOOL)isAPIAvailable;
+- (void)callServerResetBlock;
 - (void)dealloc;
+- (void)enableBargeInMode:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)enableSpeakerStateListening:(BOOL)arg1;
+- (void)enableSpeakerStateListening:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)enableVoiceTriggerListening:(BOOL)arg1;
 - (void)enableVoiceTriggerListening:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)handleMediaServerDeath:(id)arg1;
 - (void)handleMediaServerReset:(id)arg1;
+- (BOOL)hasBargeInSupport;
+- (void)hasBargeInSupportCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)listeningEnabledCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)setListeningProperty:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)speakerMuteStateChangedNotification:(BOOL)arg1;
 - (BOOL)speakerStateActive;
+- (void)speakerStateActiveCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)speakerStateChangedNotification:(id)arg1;
 - (BOOL)speakerStateMuted;
+- (void)speakerStateMutedCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)updateVoiceTriggerConfiguration:(id)arg1;
 - (void)updateVoiceTriggerConfiguration:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)voiceTriggerNotification:(id)arg1;
+- (void)voiceTriggerPastDataFramesAvailableCompletion:(CDUnknownBlockType)arg1;
 - (id)voiceTriggerServerConnection;
 
 @end

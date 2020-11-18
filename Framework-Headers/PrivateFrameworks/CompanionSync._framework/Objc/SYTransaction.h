@@ -9,10 +9,12 @@
 #import <CompanionSync/SYChangeTracking-Protocol.h>
 
 @class NSDictionary, NSMutableArray, NSString, SYLegacyStore;
+@protocol OS_os_transaction;
 
 @interface SYTransaction : NSObject <SYChangeTracking>
 {
     _Atomic BOOL _inTransaction;
+    NSObject<OS_os_transaction> *_transaction;
     NSDictionary *_contextInfo;
     NSDictionary *_idsOptions;
     CDUnknownBlockType _completion;

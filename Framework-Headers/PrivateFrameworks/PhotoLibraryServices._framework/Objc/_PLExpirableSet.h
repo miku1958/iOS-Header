@@ -15,6 +15,7 @@
     double _secondsToExpire;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_didExpireObject:(id)arg1;
 - (void)_touch:(id)arg1;
 - (void)addObject:(id)arg1;

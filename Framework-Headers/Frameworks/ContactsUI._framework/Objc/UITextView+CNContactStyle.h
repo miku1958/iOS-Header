@@ -6,7 +6,19 @@
 
 #import <UIKit/UITextView.h>
 
-@interface UITextView (CNContactStyle)
+#import <ContactsUI/ABText-Protocol.h>
+
+@class NSDictionary, NSString;
+
+@interface UITextView (CNContactStyle) <ABText>
+
+@property (copy, nonatomic) NSString *ab_text;
+@property (copy, nonatomic) NSDictionary *ab_textAttributes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void)_cnui_applyContactStyle;
 @end
 

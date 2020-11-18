@@ -6,9 +6,9 @@
 
 #import <NewsFoundation/NSObject-Protocol.h>
 
-@class NFDefinition, NSString;
+@class NFDefinition, NFKey;
 
 @protocol NFDefinitionContainer <NSObject>
-- (NFDefinition *)definitionForKey:(NSString *)arg1;
+- (NFDefinition *)definitionForKey:(NFKey *)arg1;
 @end
 

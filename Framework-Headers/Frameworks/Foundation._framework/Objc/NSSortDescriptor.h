@@ -27,6 +27,7 @@
 
 + (id)_defaultSelectorName;
 + (void)initialize;
++ (id)sortDescriptorWithKey:(id)arg1;
 + (id)sortDescriptorWithKey:(id)arg1 ascending:(BOOL)arg2;
 + (id)sortDescriptorWithKey:(id)arg1 ascending:(BOOL)arg2 comparator:(CDUnknownBlockType)arg3;
 + (id)sortDescriptorWithKey:(id)arg1 ascending:(BOOL)arg2 selector:(SEL)arg3;
@@ -44,6 +45,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithKey:(id)arg1;
 - (id)initWithKey:(id)arg1 ascending:(BOOL)arg2;
 - (id)initWithKey:(id)arg1 ascending:(BOOL)arg2 comparator:(CDUnknownBlockType)arg3;
 - (id)initWithKey:(id)arg1 ascending:(BOOL)arg2 selector:(SEL)arg3;

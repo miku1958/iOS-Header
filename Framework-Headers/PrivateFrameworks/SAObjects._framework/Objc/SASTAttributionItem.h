@@ -15,7 +15,8 @@
 {
 }
 
-@property (strong, nonatomic) id<SASTTemplateAction> action; // @dynamic action;
+@property (strong, nonatomic) id<SASTTemplateAction> action;
+@property (copy, nonatomic) NSString *attributionPosition;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

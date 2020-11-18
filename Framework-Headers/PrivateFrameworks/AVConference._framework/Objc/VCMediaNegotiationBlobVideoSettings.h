@@ -13,13 +13,27 @@
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationBlobVideoSettings : PBCodable <NSCopying>
 {
+    unsigned int _customVideoHeight;
+    unsigned int _customVideoWidth;
     unsigned int _rtpSSRC;
+    unsigned int _tilesPerFrame;
     NSMutableArray *_videoPayloadCollections;
     BOOL _allowRTCPFB;
+    struct {
+        unsigned int customVideoHeight:1;
+        unsigned int customVideoWidth:1;
+        unsigned int tilesPerFrame:1;
+    } _has;
 }
 
 @property (nonatomic) BOOL allowRTCPFB; // @synthesize allowRTCPFB=_allowRTCPFB;
+@property (nonatomic) unsigned int customVideoHeight; // @synthesize customVideoHeight=_customVideoHeight;
+@property (nonatomic) unsigned int customVideoWidth; // @synthesize customVideoWidth=_customVideoWidth;
+@property (nonatomic) BOOL hasCustomVideoHeight;
+@property (nonatomic) BOOL hasCustomVideoWidth;
+@property (nonatomic) BOOL hasTilesPerFrame;
 @property (nonatomic) unsigned int rtpSSRC; // @synthesize rtpSSRC=_rtpSSRC;
+@property (nonatomic) unsigned int tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
 @property (strong, nonatomic) NSMutableArray *videoPayloadCollections; // @synthesize videoPayloadCollections=_videoPayloadCollections;
 
 + (Class)videoPayloadCollectionsType;
@@ -34,10 +48,11 @@ __attribute__((visibility("hidden")))
 - (id)getPayloadSettingsForPayload:(int)arg1;
 - (unsigned long long)hash;
 - (id)initWithSSRC:(unsigned int)arg1 allowRTCPFB:(BOOL)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(BOOL)arg5;
-- (id)initWithScreenSSRC:(unsigned int)arg1 allowRTCPFB:(BOOL)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(BOOL)arg5;
+- (id)initWithScreenSSRC:(unsigned int)arg1 allowRTCPFB:(BOOL)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(BOOL)arg5 customVideoWidth:(unsigned int)arg6 customVideoHeight:(unsigned int)arg7 tilesPerFrame:(unsigned int)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)newVideoRuleCollectionsForScreen:(BOOL)arg1 isCellular16x9Capable:(BOOL)arg2;
+- (id)newFeatureStrings;
+- (id)newVideoRuleCollectionsForScreen:(BOOL)arg1 isCellular16x9Capable:(BOOL)arg2 isLocalConfig:(BOOL)arg3;
 - (id)parameterSetStringFromPayloadSettings:(id)arg1;
 - (void)printScreenWithLogFile:(void *)arg1;
 - (void)printVideoWithLogFile:(void *)arg1;

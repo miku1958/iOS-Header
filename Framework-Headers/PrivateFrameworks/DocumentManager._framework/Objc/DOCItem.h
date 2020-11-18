@@ -25,7 +25,10 @@
 @property (strong) FPItem *fileProviderItem; // @synthesize fileProviderItem=_fileProviderItem;
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 
++ (void)_fetchDocumentURLFromBookmarkableString:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)_wrapperForURL:(id)arg1 error:(id *)arg2;
 + (id)documentsURLsForItems:(id)arg1;
++ (BOOL)isAnyFPItemAFault:(id)arg1;
 + (BOOL)isAnyItemAFault:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

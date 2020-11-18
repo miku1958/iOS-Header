@@ -13,6 +13,7 @@
 @interface CLPCellWifiCollectionRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_cdmaCellTowerLocations;
+    NSMutableArray *_cellOutOfServiceInfos;
     NSMutableArray *_cellTowerLocations;
     NSMutableArray *_lteCellTowerLocations;
     CLPMeta *_meta;
@@ -21,6 +22,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *cdmaCellTowerLocations; // @synthesize cdmaCellTowerLocations=_cdmaCellTowerLocations;
+@property (strong, nonatomic) NSMutableArray *cellOutOfServiceInfos; // @synthesize cellOutOfServiceInfos=_cellOutOfServiceInfos;
 @property (strong, nonatomic) NSMutableArray *cellTowerLocations; // @synthesize cellTowerLocations=_cellTowerLocations;
 @property (strong, nonatomic) NSMutableArray *lteCellTowerLocations; // @synthesize lteCellTowerLocations=_lteCellTowerLocations;
 @property (strong, nonatomic) CLPMeta *meta; // @synthesize meta=_meta;
@@ -28,21 +30,26 @@
 @property (strong, nonatomic) NSMutableArray *wifiAPLocations; // @synthesize wifiAPLocations=_wifiAPLocations;
 
 + (Class)cdmaCellTowerLocationType;
++ (Class)cellOutOfServiceInfoType;
 + (Class)cellTowerLocationType;
 + (Class)lteCellTowerLocationType;
 + (Class)scdmaCellTowerLocationType;
 + (Class)wifiAPLocationType;
 - (void).cxx_destruct;
 - (void)addCdmaCellTowerLocation:(id)arg1;
+- (void)addCellOutOfServiceInfo:(id)arg1;
 - (void)addCellTowerLocation:(id)arg1;
 - (void)addLteCellTowerLocation:(id)arg1;
 - (void)addScdmaCellTowerLocation:(id)arg1;
 - (void)addWifiAPLocation:(id)arg1;
 - (id)cdmaCellTowerLocationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)cdmaCellTowerLocationsCount;
+- (id)cellOutOfServiceInfoAtIndex:(unsigned long long)arg1;
+- (unsigned long long)cellOutOfServiceInfosCount;
 - (id)cellTowerLocationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)cellTowerLocationsCount;
 - (void)clearCdmaCellTowerLocations;
+- (void)clearCellOutOfServiceInfos;
 - (void)clearCellTowerLocations;
 - (void)clearLteCellTowerLocations;
 - (void)clearScdmaCellTowerLocations;

@@ -7,11 +7,15 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (MFMessageBodyParser)
++ (id)mf_commaSeparatedRecipientListWithRecipientCount:(unsigned long long)arg1 prefixForRecipientAtIndex:(CDUnknownBlockType)arg2 stringForRecipientAtIndex:(CDUnknownBlockType)arg3 lengthValidationBlock:(CDUnknownBlockType)arg4;
+- (id)mf_copyDisplayableAddressComment;
 - (BOOL)mf_isAttribution;
 - (BOOL)mf_isAttributionPrefix;
 - (BOOL)mf_isForwardSeparator;
 - (BOOL)mf_isHorizontalSeparator;
 - (BOOL)mf_isSignature;
 - (BOOL)mf_isWhitespace;
+- (id)mf_substringTruncatedInRange:(struct _NSRange)arg1;
+- (id)mf_substringTruncatedToIndex:(unsigned long long)arg1;
 @end
 

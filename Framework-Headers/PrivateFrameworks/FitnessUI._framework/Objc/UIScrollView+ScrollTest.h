@@ -10,16 +10,16 @@
 
 @interface UIScrollView (ScrollTest)
 
-@property (strong, nonatomic) UIScrollTestToBottomParameters *scrollTestParameters;
+@property (strong, nonatomic) UIScrollTestToBottomParameters *scrollTestToBottomParameters;
 
 + (id)_implicitAnimationCulprits;
+- (id)_fiui_scrollTestExtraResults;
 - (void)_incrementForScrollTest;
 - (void)_performScrollTestToBottom:(id)arg1 iterations:(int)arg2 delta:(int)arg3;
 - (void)_performScrollTestToBottom:(id)arg1 iterations:(int)arg2 delta:(int)arg3 length:(int)arg4;
 - (void)_performScrollTestToBottom:(id)arg1 iterations:(int)arg2 delta:(int)arg3 length:(int)arg4 scrollAxis:(int)arg5;
 - (void)_performScrollTestToBottom:(id)arg1 iterations:(int)arg2 delta:(int)arg3 scrollAxis:(int)arg4;
 - (void)_reenableImplicitAnimationsAfterScrollTest;
-- (id)_scrollTestExtraResults:(id)arg1;
 - (void)_suppressImplicitAnimationsForScrollTest;
 @end
 

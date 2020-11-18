@@ -8,8 +8,8 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class CALayer, NSMapTable, NSOperation, NSString, TSDBitmapRenderingQualityInfo, TSDTextureSet, TSUBezierPath, TSUColor;
-@protocol MTLTexture, TSDLiveTexturedRectangleSource;
+@class CALayer, NSMapTable, NSOperation, NSString, NSUUID, TSDBitmapRenderingQualityInfo, TSDTextureSet, TSUBezierPath, TSUColor;
+@protocol MTLTexture;
 
 __attribute__((visibility("hidden")))
 @interface TSDTexturedRectangle : NSObject <NSCopying>
@@ -28,11 +28,15 @@ __attribute__((visibility("hidden")))
     BOOL _isVerticalText;
     BOOL _isFlattenedRepresentation;
     BOOL _shouldGenerateMipmap;
+    BOOL _shouldUseDisplayLinkPresentationTime;
     unsigned int _singleTextureName;
+    NSUUID *_uuid;
     struct CGImage *_bakedImage;
     TSDBitmapRenderingQualityInfo *_bitmapRenderingQualityInfo;
+    TSUColor *_backgroundColor;
     CALayer *_layer;
     id<MTLTexture> _metalTexture;
+    TSDTexturedRectangle *_metalTextureProxy;
     TSDTextureSet *_parent;
     NSOperation *_renderingOperation;
     NSOperation *_renderingOperationOpenGL;
@@ -44,7 +48,6 @@ __attribute__((visibility("hidden")))
     double _textXHeight;
     long long _textureType;
     double _textureOpacity;
-    id<TSDLiveTexturedRectangleSource> _liveTexturedRectangleSource;
     struct CGPoint _offset;
     struct CGPoint _originalPosition;
     struct CGSize _singleTextureSize;
@@ -53,6 +56,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _contentRect;
 }
 
+@property (copy, nonatomic) TSUColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property struct CGImage *bakedImage; // @synthesize bakedImage=_bakedImage;
 @property (weak, nonatomic) TSDBitmapRenderingQualityInfo *bitmapRenderingQualityInfo; // @synthesize bitmapRenderingQualityInfo=_bitmapRenderingQualityInfo;
 @property (nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
@@ -71,9 +75,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isValid;
 @property (nonatomic) BOOL isVerticalText; // @synthesize isVerticalText=_isVerticalText;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
-@property (strong) id<TSDLiveTexturedRectangleSource> liveTexturedRectangleSource; // @synthesize liveTexturedRectangleSource=_liveTexturedRectangleSource;
 @property (readonly, nonatomic) id<MTLTexture> metalTexture; // @synthesize metalTexture=_metalTexture;
+@property (weak, nonatomic) TSDTexturedRectangle *metalTextureProxy; // @synthesize metalTextureProxy=_metalTextureProxy;
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
+@property (readonly, nonatomic) struct CGRect originalFrame; // @synthesize originalFrame=_originalFrame;
 @property (nonatomic) struct CGPoint originalPosition; // @synthesize originalPosition=_originalPosition;
 @property (weak, nonatomic) TSDTextureSet *parent; // @synthesize parent=_parent;
 @property (readonly, nonatomic) CALayer *parentLayer;
@@ -82,6 +87,7 @@ __attribute__((visibility("hidden")))
 @property (weak) NSOperation *renderingOperationOpenGL; // @synthesize renderingOperationOpenGL=_renderingOperationOpenGL;
 @property (copy, nonatomic) TSUBezierPath *shapePath; // @synthesize shapePath=_shapePath;
 @property (nonatomic) BOOL shouldGenerateMipmap; // @synthesize shouldGenerateMipmap=_shouldGenerateMipmap;
+@property (nonatomic) BOOL shouldUseDisplayLinkPresentationTime; // @synthesize shouldUseDisplayLinkPresentationTime=_shouldUseDisplayLinkPresentationTime;
 @property (readonly, nonatomic) unsigned int singleTextureName; // @synthesize singleTextureName=_singleTextureName;
 @property (readonly, nonatomic) double singleTextureOpacity;
 @property (readonly, nonatomic) struct CGSize singleTextureSize; // @synthesize singleTextureSize=_singleTextureSize;
@@ -95,6 +101,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double textXHeight; // @synthesize textXHeight=_textXHeight;
 @property (nonatomic) double textureOpacity; // @synthesize textureOpacity=_textureOpacity;
 @property (nonatomic) long long textureType; // @synthesize textureType=_textureType;
+@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (struct CGRect)boundingRectForTextures:(id)arg1;
 + (struct CGRect)boundingRectOnCanvasForTextures:(id)arg1;
@@ -108,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)drawFrameWithMetalContext:(id)arg1;
 - (void)evictRenderedResources;
+- (BOOL)hasLiveTexturedRectangleSource;
 - (id)init;
 - (id)initWithCGImage:(struct CGImage *)arg1;
 - (id)initWithLayer:(id)arg1;
@@ -125,10 +133,11 @@ __attribute__((visibility("hidden")))
 - (void)p_initializeMap;
 - (id)p_latestTextureNotAfterLayerTime:(double)arg1;
 - (void)p_makeMetalTextureCPUReadable:(id)arg1 metalContext:(id)arg2;
-- (struct CGImage *)p_newImageAndBufferWithAngle:(double)arg1 scale:(double)arg2 offset:(struct CGPoint)arg3 transform:(struct CGAffineTransform *)arg4;
+- (id)p_newImageAndBufferWithTransform:(struct CGAffineTransform)arg1;
 - (void)p_renderIntoContext:(struct CGContext *)arg1 viewLayer:(id)arg2 shouldApplyAlpha:(BOOL)arg3 shouldIgnoreLayerVisibility:(BOOL)arg4 shouldClipToBounds:(BOOL)arg5;
 - (void)p_setupSingleTextureAndGenerateMipMaps:(BOOL)arg1 withContext:(id)arg2;
-- (char *)p_setupTextureDataWithSize:(struct CGSize)arg1 isBGRA:(BOOL)arg2;
+- (char *)p_setupTextureDataWithSize:(struct CGSize)arg1;
+- (struct CGAffineTransform)p_transformWithAngle:(double)arg1 scale:(double)arg2 offset:(struct CGPoint)arg3;
 - (void)p_updateFrame;
 - (void)releaseMetalTexture;
 - (void)releaseSingleTexture;
@@ -138,6 +147,8 @@ __attribute__((visibility("hidden")))
 - (void)renderLayerContentsIfNeeded;
 - (void)resetAnchorPointAtEventIndex:(unsigned long long)arg1;
 - (void)resetToSourceImageAtEventIndex:(unsigned long long)arg1;
+- (void)setLiveTexturedRectangleSource:(id)arg1;
+- (void)setLiveTexturedRectangleSourceProxy:(id)arg1;
 - (void)setupMetalTextureForContext:(id)arg1;
 - (void)setupMetalTextureForDevice:(id)arg1 commandQueue:(id)arg2;
 - (void)setupSingleTexture;

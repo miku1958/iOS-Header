@@ -11,7 +11,7 @@
 @interface _TtC15ConversationKit23PlatformDisplayLinkBase : _TtCs12_SwiftObject
 {
     MISSING_TYPE *callbackWrapper;
-    MISSING_TYPE *displayLink.storage;
+    MISSING_TYPE *$__lazy_storage_$_displayLink;
 }
 
 @end

@@ -19,6 +19,7 @@
 }
 
 @property (readonly, nonatomic) HDCloudSyncOperationConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) long long minimumSupportedProtocolVersion;
 @property (readonly, nonatomic) HDCloudSyncZone *primaryPushZone; // @synthesize primaryPushZone=_primaryPushZone;
 @property (readonly, nonatomic) NSSet *pullZones;
 @property (readonly, nonatomic) NSSet *seizedZones;

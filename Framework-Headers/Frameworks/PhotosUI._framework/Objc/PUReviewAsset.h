@@ -32,6 +32,7 @@
     unsigned long long _pixelHeight;
     CLLocation *_location;
     NSDate *_creationDate;
+    NSDate *_localCreationDate;
     NSDate *_modificationDate;
     double _duration;
     NSString *_burstIdentifier;
@@ -54,9 +55,11 @@
 @property (readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
 @property (readonly, nonatomic) BOOL canPlayLoopingVideo;
 @property (readonly, nonatomic) BOOL canPlayPhotoIris; // @synthesize canPlayPhotoIris=_canPlayPhotoIris;
+@property (readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) BOOL cloudPhotoLibraryEnabled;
 @property (readonly, nonatomic, getter=isContentAdjustmentAllowed) BOOL contentAdjustmentAllowed;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) unsigned long long deferredLogInfo;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
@@ -75,6 +78,7 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 livePhotoSynchronizedDisplayTime; // @synthesize livePhotoSynchronizedDisplayTime=_livePhotoSynchronizedDisplayTime;
 @property (readonly, nonatomic, getter=isLivePhotoVisibilityAdjustmentAllowed) BOOL livePhotoVisibilityAdjustmentAllowed;
 @property (readonly, nonatomic) unsigned long long livePhotoVisibilityState;
+@property (readonly, nonatomic) NSDate *localCreationDate; // @synthesize localCreationDate=_localCreationDate;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
@@ -102,12 +106,15 @@
 @property (readonly, nonatomic) PHLivePhoto *providedLivePhoto; // @synthesize providedLivePhoto;
 @property (readonly, nonatomic) UIImage *providedPreviewImage; // @synthesize providedPreviewImage=_providedPreviewImage;
 @property (readonly, nonatomic) NSURL *providedVideoURL; // @synthesize providedVideoURL=_providedVideoURL;
+@property (readonly, nonatomic) unsigned long long reframeVariation;
 @property (readonly, nonatomic) BOOL representsBurst; // @synthesize representsBurst=_representsBurst;
 @property (readonly, nonatomic) BOOL requiresConfidentiality; // @synthesize requiresConfidentiality=_requiresConfidentiality;
 @property (readonly, nonatomic, getter=isResourceDownloadPossible) BOOL resourceDownloadPossible;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isTrimmableType) BOOL trimmableType;
 @property (readonly, nonatomic) NSString *uniformTypeIdentifier;
 @property (readonly, nonatomic) NSString *uuid;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 @property (readonly, nonatomic) PFVideoAVObjectBuilder *videoObjectBuilder;
 
 + (unsigned long long)_confidentialityWarningsVersionForAdjustments:(id)arg1;
@@ -132,6 +139,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)exifOrientationForImageVersion:(long long)arg1;
 - (id)initWithAVAsset:(id)arg1 audioMix:(id)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 duration:(double)arg6 previewImage:(id)arg7 videoURL:(id)arg8 adjustments:(id)arg9 identifier:(id)arg10;
+- (id)initWithAVAsset:(id)arg1 audioMix:(id)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 duration:(double)arg6 previewImage:(id)arg7 videoURL:(id)arg8 unadjustedVideoURL:(id)arg9 adjustments:(id)arg10 identifier:(id)arg11;
 - (id)initWithConformingAsset:(id)arg1;
 - (id)initWithLivePhoto:(id)arg1 fullsizeUnadjustedImageURL:(id)arg2 fullsizeUnadjustedVideoURL:(id)arg3 assetAdjustments:(id)arg4 width:(unsigned long long)arg5 height:(unsigned long long)arg6 captureDate:(id)arg7 metadata:(id)arg8 duration:(double)arg9 previewImage:(id)arg10 identifier:(id)arg11;
 - (id)initWithPhoto:(id)arg1 mediaSubtypes:(unsigned long long)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 captureDate:(id)arg5 metadata:(id)arg6 burstIdentifier:(id)arg7 representedCount:(unsigned long long)arg8 fullsizeImageURL:(id)arg9 fullsizeUnadjustedImageURL:(id)arg10 assetAdjustments:(id)arg11 identifier:(id)arg12;

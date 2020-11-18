@@ -13,8 +13,9 @@
     id<GKAchievementViewControllerDelegate> _achievementDelegate;
 }
 
-@property (nonatomic) id<GKAchievementViewControllerDelegate> achievementDelegate; // @synthesize achievementDelegate=_achievementDelegate;
+@property (weak, nonatomic) id<GKAchievementViewControllerDelegate> achievementDelegate; // @synthesize achievementDelegate=_achievementDelegate;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)notifyDelegateOnWillFinish;

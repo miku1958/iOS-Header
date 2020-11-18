@@ -10,15 +10,15 @@
 #import <PhotosUICore/PXReusableObject-Protocol.h>
 #import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@class NSString, PXCMMAssetsProgressListener, PXCMMViewModel, UIButton, UILabel, UIView;
-@protocol PXImportStatusManager;
+@class NSString, PXCMMViewModel, PXMomentShareStatusPresentation, UIButton, UILabel, UIView;
+@protocol PXAssetImportStatusManager;
 
 @interface PXCMMSectionHeaderController : NSObject <PXChangeObserver, PXUIViewBasicTile, PXReusableObject>
 {
     unsigned long long _activityType;
     PXCMMViewModel *_viewModel;
-    PXCMMAssetsProgressListener *_assetsProgressListener;
-    id<PXImportStatusManager> _importStatusManager;
+    PXMomentShareStatusPresentation *_momentShareStatusPresentation;
+    id<PXAssetImportStatusManager> _importStatusManager;
     BOOL _isViewLoaded;
     UIView *_underlyingView;
     UIButton *_actionButton;
@@ -52,7 +52,7 @@
 - (void)becomeReusable;
 - (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;
 - (id)init;
-- (id)initWithActivityType:(unsigned long long)arg1 viewModel:(id)arg2 assetsProgressListener:(id)arg3 importStatusManager:(id)arg4;
+- (id)initWithActivityType:(unsigned long long)arg1 viewModel:(id)arg2 momentShareStatusPresentation:(id)arg3 importStatusManager:(id)arg4;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForReuse;
 

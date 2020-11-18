@@ -15,8 +15,8 @@
     unsigned long long _role;
     UILabel *_unitNameLabel;
     UIView *_unitImageView;
-    HUMonogramView *_unitBadgeLabel;
     id<HUHomePodDetailViewDelegate> _delegate;
+    HUMonogramView *_unitBadgeLabel;
 }
 
 @property (weak, nonatomic) id<HUHomePodDetailViewDelegate> delegate; // @synthesize delegate=_delegate;

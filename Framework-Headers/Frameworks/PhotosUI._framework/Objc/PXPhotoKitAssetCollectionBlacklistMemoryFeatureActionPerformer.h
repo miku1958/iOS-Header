@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSString *userResponse; // @synthesize userResponse=_userResponse;
 
 + (BOOL)canPerformOnAssetCollection:(id)arg1 people:(id)arg2;
-+ (id)createPreviewActionGroupForAssetCollection:(id)arg1 mutableActionTypeToPreviewActionMap:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
++ (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 - (void).cxx_destruct;
 - (id)_memoryFeatureFromMemory:(id)arg1 forActionType:(id)arg2;
 - (unsigned long long)_memoryFeatureTypeFromActionType:(id)arg1;

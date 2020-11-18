@@ -36,7 +36,7 @@
 - (void)load;
 - (BOOL)present;
 - (id)presentingViewController;
-- (void)viewController:(id)arg1 willDismissWithAction:(long long)arg2;
+- (void)viewController:(id)arg1 didReportDismissalAction:(long long)arg2;
 - (void)webMessageControllerWebViewDidReportEvent:(id)arg1 event:(id)arg2;
 - (void)webMessageControllerWebViewDidRequestAction:(id)arg1 actionConfiguration:(id)arg2;
 - (void)webMessageControllerWebViewDidRequestClose:(id)arg1;

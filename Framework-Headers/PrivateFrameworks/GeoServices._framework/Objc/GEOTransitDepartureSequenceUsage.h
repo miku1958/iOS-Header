@@ -8,26 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEOTransitDepartureSequenceUsage : PBCodable <NSCopying>
 {
-    unsigned long long _lineId;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_direction;
     NSString *_headsign;
+    unsigned long long _lineId;
     struct {
-        unsigned int lineId:1;
-    } _has;
+        unsigned int has_lineId:1;
+        unsigned int read_direction:1;
+        unsigned int read_headsign:1;
+        unsigned int wrote_direction:1;
+        unsigned int wrote_headsign:1;
+        unsigned int wrote_lineId:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *direction; // @synthesize direction=_direction;
+@property (strong, nonatomic) NSString *direction;
 @property (readonly, nonatomic) BOOL hasDirection;
 @property (readonly, nonatomic) BOOL hasHeadsign;
 @property (nonatomic) BOOL hasLineId;
-@property (strong, nonatomic) NSString *headsign; // @synthesize headsign=_headsign;
-@property (nonatomic) unsigned long long lineId; // @synthesize lineId=_lineId;
+@property (strong, nonatomic) NSString *headsign;
+@property (nonatomic) unsigned long long lineId;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDirection;
+- (void)_readHeadsign;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

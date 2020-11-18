@@ -73,6 +73,7 @@
 - (struct CGPoint)layoutPositionFromAnchoredAttachmentPosition:(struct CGPoint)arg1;
 - (struct CGPoint)layoutPositionFromInlineAttachmentPosition:(struct CGPoint)arg1;
 - (unsigned int)pageIndex;
+- (void)scaleTextPercentDidChange:(unsigned long long)arg1;
 - (BOOL)siblingTargetIsManipulatingDrawable:(TSDDrawableInfo *)arg1;
 - (void)startedIterativePositioningProcessForDrawableAttachment:(TSWPDrawableAttachment *)arg1;
 @end

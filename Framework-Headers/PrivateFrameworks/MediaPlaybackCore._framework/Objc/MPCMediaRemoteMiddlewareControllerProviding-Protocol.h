@@ -6,11 +6,12 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class MPCMediaRemoteController;
+@class MPCFuture, MPCMediaRemoteController;
 
 @protocol MPCMediaRemoteMiddlewareControllerProviding <NSObject>
 
 @property (readonly, nonatomic) MPCMediaRemoteController *controller;
+@property (readonly, nonatomic) MPCFuture *controllerFuture;
 
 @end
 

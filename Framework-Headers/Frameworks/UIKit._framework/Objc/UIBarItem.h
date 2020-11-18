@@ -50,7 +50,6 @@
 + (id)appearanceWhenContainedInInstancesOfClasses:(id)arg1;
 - (void).cxx_destruct;
 - (id)_attributedTitleForState:(unsigned long long)arg1 withDefaultAttributes:(id)arg2;
-- (id)_imageForState:(unsigned long long)arg1 metrics:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

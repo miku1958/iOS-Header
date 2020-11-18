@@ -16,7 +16,7 @@
 
 @property (nonatomic, readonly) NSString *debugDescription;
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, copy) NSArray *devices; // @synthesize devices;
+@property (nonatomic, copy) NSArray *devices;
 @property (nonatomic) long long resultCode; // @synthesize resultCode;
 
 + (BOOL)supportsSecureCoding;

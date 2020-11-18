@@ -33,12 +33,14 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     id<SCKOperationThrottler> _saveThrottler;
     NSObject<OS_dispatch_source> *_changeListenerSource;
+    NSSet *_allowedCommandClasses;
     NSURL *_storeURL;
     unsigned long long _diskReadCount;
     unsigned long long _diskWriteCount;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property (strong, nonatomic) NSSet *allowedCommandClasses; // @synthesize allowedCommandClasses=_allowedCommandClasses;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *changeListenerSource; // @synthesize changeListenerSource=_changeListenerSource;
 @property (nonatomic, getter=isCloudBackupEnabled) BOOL cloudBackupEnabled; // @synthesize cloudBackupEnabled=_cloudBackupEnabled;
 @property (readonly, copy) NSString *debugDescription;
@@ -70,6 +72,7 @@
 - (void).cxx_destruct;
 - (void)_applyCloudBackupEnabledPropertyToStoreURL;
 - (id)_decodeCodableObjectOfClass:(Class)arg1 from:(id)arg2 error:(id *)arg3;
+- (id)_decodeCodableObjectOfClasses:(id)arg1 from:(id)arg2 error:(id *)arg3;
 - (id)_decodeDate:(id)arg1;
 - (id)_encodeCodableObject:(id)arg1;
 - (id)_encodeDate:(id)arg1;
@@ -81,7 +84,9 @@
 - (void)addObserver:(id)arg1;
 - (BOOL)flushToDiskWithTimeout:(double)arg1;
 - (id)initWithSchema:(id)arg1 fileURL:(id)arg2;
+- (id)initWithSchema:(id)arg1 fileURL:(id)arg2 allowedCommands:(id)arg3;
 - (id)initWithSchema:(id)arg1 parentDirectoryURL:(id)arg2;
+- (id)initWithSchema:(id)arg1 parentDirectoryURL:(id)arg2 allowedCommands:(id)arg3;
 - (void)operationThrottlerPerformOperation:(id)arg1;
 - (void)readWithAccessor:(CDUnknownBlockType)arg1;
 - (void)readZone:(id)arg1 withAccessor:(CDUnknownBlockType)arg2;

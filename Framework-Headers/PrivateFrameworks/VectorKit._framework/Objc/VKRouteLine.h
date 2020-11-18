@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBounds:(id)arg1;
 - (void)_updateTilesCovered:(id)arg1;
 - (double)boundsUnitsPerMeter;
-- (BOOL)buildRouteLine:(id)arg1 tiles:(id)arg2 viewUnitsPerPoint:(double)arg3 force:(BOOL)arg4 selected:(BOOL)arg5 isNavMode:(BOOL)arg6;
+- (BOOL)buildRouteLine:(id)arg1 matchToRoads:(BOOL)arg2 viewUnitsPerPoint:(double)arg3 force:(BOOL)arg4;
 - (void)createMeshIfNecessary:(long long)arg1;
 - (void)dealloc;
 - (void)forEachSection:(CDUnknownBlockType)arg1;
@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (Matrix_08d701e4)inverseManeuverTransform;
 - (BOOL)isTrafficUpToDate;
 - (BOOL)isTrafficUptoDate:(double)arg1;
-- (vector_1a7ef145)maneuverPoints;
+- (vector_d9a07fc0)maneuverPoints;
 - (Matrix_08d701e4)maneuverTransform;
 - (BOOL)needsUpdateForViewingScale:(double)arg1;
 - (void)splitRouteLineAtAnnotation:(id)arg1;

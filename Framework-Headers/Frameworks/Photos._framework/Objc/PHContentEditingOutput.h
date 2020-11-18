@@ -16,15 +16,23 @@
     long long _baseVersion;
     BOOL _isSubstandardRender;
     BOOL _loopingLivePhoto;
+    BOOL _isAsyncAdjustment;
+    BOOL _isSwappingFullSizeRenderWithAlternateRender;
     NSURL *_renderedContentURL;
     NSNumber *_originalResourceChoice;
     long long _fullSizeRenderWidth;
     long long _fullSizeRenderHeight;
     NSData *_penultimateRenderedJPEGData;
+    NSURL *_penultimateRenderedVideoContentURL;
+    NSURL *_renderedVideoPosterURL;
     NSURL *_renderedVideoComplementContentURL;
     NSURL *_penultimateRenderedVideoComplementContentURL;
     NSURL *_editorBundleURL;
     long long _mediaType;
+    NSURL *_renderedPreviewContentURL;
+    NSNumber *_playbackVariation;
+    NSNumber *_videoDuration;
+    NSNumber *_reframeVariation;
 }
 
 @property (strong) PHAdjustmentData *adjustmentData;
@@ -32,26 +40,40 @@
 @property (strong) NSURL *editorBundleURL; // @synthesize editorBundleURL=_editorBundleURL;
 @property (nonatomic) long long fullSizeRenderHeight; // @synthesize fullSizeRenderHeight=_fullSizeRenderHeight;
 @property (nonatomic) long long fullSizeRenderWidth; // @synthesize fullSizeRenderWidth=_fullSizeRenderWidth;
+@property (nonatomic) BOOL isAsyncAdjustment; // @synthesize isAsyncAdjustment=_isAsyncAdjustment;
 @property (nonatomic) BOOL isSubstandardRender; // @synthesize isSubstandardRender=_isSubstandardRender;
+@property (nonatomic) BOOL isSwappingFullSizeRenderWithAlternateRender; // @synthesize isSwappingFullSizeRenderWithAlternateRender=_isSwappingFullSizeRenderWithAlternateRender;
 @property (readonly, getter=isLoopingLivePhoto) BOOL loopingLivePhoto; // @synthesize loopingLivePhoto=_loopingLivePhoto;
 @property (readonly) long long mediaType; // @synthesize mediaType=_mediaType;
 @property (strong, nonatomic) NSNumber *originalResourceChoice; // @synthesize originalResourceChoice=_originalResourceChoice;
 @property (strong) NSData *penultimateRenderedJPEGData; // @synthesize penultimateRenderedJPEGData=_penultimateRenderedJPEGData;
 @property (copy) NSURL *penultimateRenderedVideoComplementContentURL; // @synthesize penultimateRenderedVideoComplementContentURL=_penultimateRenderedVideoComplementContentURL;
+@property (copy) NSURL *penultimateRenderedVideoContentURL; // @synthesize penultimateRenderedVideoContentURL=_penultimateRenderedVideoContentURL;
+@property (strong, nonatomic) NSNumber *playbackVariation; // @synthesize playbackVariation=_playbackVariation;
+@property (strong, nonatomic) NSNumber *reframeVariation; // @synthesize reframeVariation=_reframeVariation;
 @property (copy) NSURL *renderedContentURL; // @synthesize renderedContentURL=_renderedContentURL;
+@property (strong, nonatomic) NSURL *renderedPreviewContentURL; // @synthesize renderedPreviewContentURL=_renderedPreviewContentURL;
 @property (copy) NSURL *renderedVideoComplementContentURL; // @synthesize renderedVideoComplementContentURL=_renderedVideoComplementContentURL;
+@property (copy) NSURL *renderedVideoPosterURL; // @synthesize renderedVideoPosterURL=_renderedVideoPosterURL;
+@property (strong, nonatomic) NSNumber *videoDuration; // @synthesize videoDuration=_videoDuration;
 
 + (unsigned long long)maximumAdjustmentDataLength;
++ (id)outputForFlippingFullSizeRenderWithContentEditingInput:(id)arg1 error:(id *)arg2;
++ (id)renderURLWithExtensionForMediaType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_setupRequiredRenderedContentURLsWithEditingInput:(id)arg1 options:(id)arg2;
 - (id)assetAdjustmentsWithEditorBundleID:(id)arg1;
 - (void)clearRenderedContentURL;
+- (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAdjustmentBaseVersion:(long long)arg1 mediaType:(long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentEditingInput:(id)arg1;
+- (id)initWithContentEditingInput:(id)arg1 withOptions:(id)arg2;
 - (id)initWithPlaceholderForCreatedAsset:(id)arg1;
+- (BOOL)isOnlyChangingOriginalChoice;
 - (id)renderURLWithExtensionForMediaType:(long long)arg1;
 - (void)setRenderedJPEGData:(id)arg1;
 

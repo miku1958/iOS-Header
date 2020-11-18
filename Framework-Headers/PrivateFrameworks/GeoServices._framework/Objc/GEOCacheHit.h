@@ -15,22 +15,23 @@
     int _requestorType;
     int _tileSourceType;
     struct {
-        unsigned int bytes:1;
-        unsigned int count:1;
-        unsigned int requestorType:1;
-        unsigned int tileSourceType:1;
-    } _has;
+        unsigned int has_bytes:1;
+        unsigned int has_count:1;
+        unsigned int has_requestorType:1;
+        unsigned int has_tileSourceType:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int bytes; // @synthesize bytes=_bytes;
-@property (nonatomic) unsigned int count; // @synthesize count=_count;
+@property (nonatomic) unsigned int bytes;
+@property (nonatomic) unsigned int count;
 @property (nonatomic) BOOL hasBytes;
 @property (nonatomic) BOOL hasCount;
 @property (nonatomic) BOOL hasRequestorType;
 @property (nonatomic) BOOL hasTileSourceType;
-@property (nonatomic) int requestorType; // @synthesize requestorType=_requestorType;
-@property (nonatomic) int tileSourceType; // @synthesize tileSourceType=_tileSourceType;
+@property (nonatomic) int requestorType;
+@property (nonatomic) int tileSourceType;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsRequestorType:(id)arg1;
 - (int)StringAsTileSourceType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -40,6 +41,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestorTypeAsString:(int)arg1;
 - (id)tileSourceTypeAsString:(int)arg1;

@@ -6,35 +6,33 @@
 
 #import <TemplateKit/TLKView.h>
 
-#import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, NUIContainerStackView;
 
-@interface TLKImagesView : TLKView <NUIContainerStackViewDelegate>
+@interface TLKImagesView : TLKView <NUIContainerViewDelegate>
 {
     BOOL _paddingDisabled;
     NSArray *_images;
     NSMutableArray *_imageViews;
-    NUIContainerStackView *_stackView;
 }
 
+@property (strong, nonatomic) NUIContainerStackView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
+@property (strong, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
 @property (strong, nonatomic) NSArray *images; // @synthesize images=_images;
 @property (nonatomic, getter=isPaddingDisabled) BOOL paddingDisabled; // @synthesize paddingDisabled=_paddingDisabled;
-@property (strong) NUIContainerStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly) Class superclass;
 
-+ (struct UIEdgeInsets)defaultInsets;
 - (void).cxx_destruct;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
-- (id)init;
 - (void)observedPropertiesChanged;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)setupContentView;
 - (void)updateForPaddingDisabled:(BOOL)arg1;
 - (void)updateWithImages:(id)arg1;
+- (BOOL)usesDefaultInsets;
 
 @end
 

@@ -69,13 +69,14 @@
 - (void)removeObserver:(id)arg1;
 - (struct CGRect)renderBounds;
 - (void)renderContentsIfNeededForComponents:(id)arg1;
+- (void)updatePresentationStateForNestedComponentView:(id)arg1 presentationState:(long long)arg2;
+- (void)updatePresentationStateForNestedComponentViews:(id)arg1 presentationState:(long long)arg2;
 - (void)updateVisibilityStatesForComponentViews:(id)arg1;
 - (void)updateVisibilityStatesForComponentViews:(id)arg1 parentComponent:(id)arg2 withOffset:(struct CGPoint)arg3;
 - (void)updateVisibilityStatesForComponentViews:(id)arg1 toState:(long long)arg2;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (void)viewport:(id)arg1 boundsDidChangeFromBounds:(struct CGRect)arg2;
 - (void)viewport:(id)arg1 dynamicBoundsDidChangeFromBounds:(struct CGRect)arg2;
-- (struct CGSize)viewportSize;
 
 @end
 

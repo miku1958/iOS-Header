@@ -32,6 +32,7 @@
 + (id)targetZoneFromMetadata:(id)arg1;
 - (id)description;
 - (id)initWithType:(long long)arg1 min:(double)arg2 max:(double)arg3 currentValue:(double)arg4;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isSingleThreshold;
 
 @end

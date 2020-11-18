@@ -9,11 +9,12 @@
 @interface PXDiagnosticsSettings : PXSettings
 {
     BOOL _enableContextualGesture;
+    BOOL _enableInternalSettingsService;
     BOOL _enableGenericService;
-    BOOL _enableMemoriesRelatedService;
+    BOOL _enableGraphService;
     BOOL _enableTitleFontService;
     BOOL _enableCompleteMyMomentService;
-    BOOL _simulateLaunchedToTest;
+    BOOL _enableDebugDictionaryService;
     BOOL _enableScrollService;
     double _scrollSpeed;
     long long _scrollIterations;
@@ -21,13 +22,14 @@
 
 @property (nonatomic) BOOL enableCompleteMyMomentService; // @synthesize enableCompleteMyMomentService=_enableCompleteMyMomentService;
 @property (nonatomic) BOOL enableContextualGesture; // @synthesize enableContextualGesture=_enableContextualGesture;
+@property (nonatomic) BOOL enableDebugDictionaryService; // @synthesize enableDebugDictionaryService=_enableDebugDictionaryService;
 @property (nonatomic) BOOL enableGenericService; // @synthesize enableGenericService=_enableGenericService;
-@property (nonatomic) BOOL enableMemoriesRelatedService; // @synthesize enableMemoriesRelatedService=_enableMemoriesRelatedService;
+@property (nonatomic) BOOL enableGraphService; // @synthesize enableGraphService=_enableGraphService;
+@property (nonatomic) BOOL enableInternalSettingsService; // @synthesize enableInternalSettingsService=_enableInternalSettingsService;
 @property (nonatomic) BOOL enableScrollService; // @synthesize enableScrollService=_enableScrollService;
 @property (nonatomic) BOOL enableTitleFontService; // @synthesize enableTitleFontService=_enableTitleFontService;
 @property (nonatomic) long long scrollIterations; // @synthesize scrollIterations=_scrollIterations;
 @property (nonatomic) double scrollSpeed; // @synthesize scrollSpeed=_scrollSpeed;
-@property (nonatomic) BOOL simulateLaunchedToTest; // @synthesize simulateLaunchedToTest=_simulateLaunchedToTest;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;

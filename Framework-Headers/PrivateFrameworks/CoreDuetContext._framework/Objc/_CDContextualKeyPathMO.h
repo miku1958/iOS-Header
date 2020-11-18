@@ -13,7 +13,7 @@
 }
 
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
-@property (nonatomic) unsigned long long deviceID; // @dynamic deviceID;
+@property (strong, nonatomic) NSString *deviceIDString; // @dynamic deviceIDString;
 @property (nonatomic) BOOL isEphemeral; // @dynamic isEphemeral;
 @property (nonatomic) BOOL isUserCentric; // @dynamic isUserCentric;
 @property (strong, nonatomic) NSString *key; // @dynamic key;

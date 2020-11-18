@@ -6,19 +6,29 @@
 
 #import <UIKit/UIView.h>
 
-@interface MediaControlsMaterialView : UIView
+#import <MediaControls/MTVisualStylingProviding-Protocol.h>
+
+@class NSString;
+
+__attribute__((visibility("hidden")))
+@interface MediaControlsMaterialView : UIView <MTVisualStylingProviding>
 {
     UIView *_backgroundView;
     UIView *_highlightView;
     BOOL _highlighted;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end
 

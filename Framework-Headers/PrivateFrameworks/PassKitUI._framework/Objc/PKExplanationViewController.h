@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
 
 @class NSString, OBPrivacyLinkController, PKExplanationView, UIActivityIndicatorView, UIBarButtonItem;
 @protocol PKExplanationViewControllerDelegate;
 
-@interface PKExplanationViewController : PKViewController <PKExplanationViewDelegate>
+@interface PKExplanationViewController : UIViewController <PKExplanationViewDelegate>
 {
     UIBarButtonItem *_spinningItem;
     UIBarButtonItem *_hiddenRightBarButtonItem;
@@ -42,11 +42,10 @@
 - (void)_dismissViewController;
 - (void)_donePressed;
 - (void)_setNavigationBarEnabled:(BOOL)arg1;
+- (id)contentScrollView;
 - (id)init;
 - (id)initWithContext:(long long)arg1;
 - (void)loadView;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)showNavigationBarSpinner:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

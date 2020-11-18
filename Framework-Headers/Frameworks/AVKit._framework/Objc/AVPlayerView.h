@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <AVKit/AVPresentationContainerView.h>
 
 @class AVPlayerViewControllerContentView;
 
-@interface AVPlayerView : UIView
+__attribute__((visibility("hidden")))
+@interface AVPlayerView : AVPresentationContainerView
 {
     BOOL _needsInitialLayout;
     AVPlayerViewControllerContentView *_contentView;
@@ -21,7 +22,6 @@
 - (void)beginManagingContentView;
 - (id)initWithFrame:(struct CGRect)arg1 contentView:(id)arg2;
 - (void)layoutSubviews;
-- (void)setClipsToBounds:(BOOL)arg1;
 
 @end
 

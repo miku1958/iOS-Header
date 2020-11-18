@@ -13,6 +13,7 @@
 
 @interface _SFMailContentProvider : NSObject <MFMailComposeViewControllerDelegate>
 {
+    BOOL _restrictAddingPDFContent;
     id<_SFMailContentProviderDataSource> _dataSource;
 }
 
@@ -20,10 +21,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL restrictAddingPDFContent; // @synthesize restrictAddingPDFContent=_restrictAddingPDFContent;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (long long)_bestContentTypeForPreferredContentType:(long long)arg1;
+- (BOOL)_canProvideContentType:(long long)arg1;
+- (long long)_defaultPreferredContentType;
+- (void)_getPDFDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_getReaderContentWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_getWebArchiveDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_preferentiallyOrderedAvailableContentTypes;
 - (id)_preferentiallyOrderedContentTypes;
 - (void)getMailComposeViewControllerWithMailToURL:(id)arg1 contentURL:(id)arg2 preferredContentType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;

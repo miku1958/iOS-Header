@@ -6,80 +6,89 @@
 
 #import <objc/NSObject.h>
 
-@class RTHintManager, RTLearnedLocationManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTVisitMonitorState;
+@class NSMutableDictionary, RTDefaultsManager, RTHintManager, RTLearnedLocationManager, RTLocationAwarenessManager, RTLocationManager, RTMetricManager, RTMotionActivityManager, RTPlatform, RTTimer, RTTimerManager, RTVisitFeedBuffer, RTVisitMonitorState;
 @protocol OS_dispatch_queue, RTVisitMonitorDelegate;
 
 @interface RTVisitMonitor : NSObject
 {
+    RTVisitFeedBuffer *_feedBuffer;
+    RTTimer *_feedBufferTimer;
     BOOL _monitoringVisitIncidents;
     BOOL _monitoringLeechedVisitIncidents;
     BOOL _monitoringLowConfidenceVisitIncidents;
     id<RTVisitMonitorDelegate> _delegate;
-    RTLocationManager *_locationManager;
-    RTLearnedLocationManager *_learnedLocationManager;
+    RTDefaultsManager *_defaultsManager;
     RTHintManager *_hintManager;
-    RTMetricManager *_metricManager;
+    RTLearnedLocationManager *_learnedLocationManager;
     RTLocationAwarenessManager *_locationAwarenessManager;
+    RTLocationManager *_locationManager;
+    RTMetricManager *_metricManager;
+    RTMotionActivityManager *_motionActivityManager;
+    RTPlatform *_platform;
+    RTTimerManager *_timerManager;
     RTVisitMonitorState *_state;
     NSObject<OS_dispatch_queue> *_queue;
-    unsigned long long _engineDependentCount;
+    unsigned long long _feedBufferReferenceCounter;
+    unsigned long long _lowConfidencePipelineReferenceCounter;
+    unsigned long long _highConfidencePipelineReferenceCounter;
+    NSMutableDictionary *_pipelines;
 }
 
+@property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property (weak, nonatomic) id<RTVisitMonitorDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) unsigned long long engineDependentCount; // @synthesize engineDependentCount=_engineDependentCount;
+@property (nonatomic) unsigned long long feedBufferReferenceCounter; // @synthesize feedBufferReferenceCounter=_feedBufferReferenceCounter;
+@property (nonatomic) unsigned long long highConfidencePipelineReferenceCounter; // @synthesize highConfidencePipelineReferenceCounter=_highConfidencePipelineReferenceCounter;
 @property (strong, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
 @property (strong, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property (strong, nonatomic) RTLocationAwarenessManager *locationAwarenessManager; // @synthesize locationAwarenessManager=_locationAwarenessManager;
 @property (strong, nonatomic) RTLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property (nonatomic) unsigned long long lowConfidencePipelineReferenceCounter; // @synthesize lowConfidencePipelineReferenceCounter=_lowConfidencePipelineReferenceCounter;
 @property (strong, nonatomic) RTMetricManager *metricManager; // @synthesize metricManager=_metricManager;
 @property (nonatomic) BOOL monitoringLeechedVisitIncidents; // @synthesize monitoringLeechedVisitIncidents=_monitoringLeechedVisitIncidents;
 @property (nonatomic) BOOL monitoringLowConfidenceVisitIncidents; // @synthesize monitoringLowConfidenceVisitIncidents=_monitoringLowConfidenceVisitIncidents;
 @property (nonatomic) BOOL monitoringVisitIncidents; // @synthesize monitoringVisitIncidents=_monitoringVisitIncidents;
+@property (strong, nonatomic) RTMotionActivityManager *motionActivityManager; // @synthesize motionActivityManager=_motionActivityManager;
+@property (strong, nonatomic) NSMutableDictionary *pipelines; // @synthesize pipelines=_pipelines;
+@property (strong, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) RTVisitMonitorState *state; // @synthesize state=_state;
+@property (strong, nonatomic) RTTimerManager *timerManager; // @synthesize timerManager=_timerManager;
 
 + (double)LocationHeartbeatWhileAwake;
-+ (double)MinStaticIntervalForSLVArrival;
-+ (double)MinStaticIntervalForSLVArrivalWithHint;
-+ (double)convertLongitudeAtDateLineFromSum:(double)arg1 fromLongitude:(double)arg2;
-+ (double)convertLongitudeInto180Format:(double)arg1;
-+ (double)evalMaxUncFromMotionDevMotionInducedDev:(double)arg1 andMeasInducedDev:(double)arg2;
-+ (double)evaluateClustThresFromClustThresSlv:(double)arg1 motionInducedDev:(double)arg2 adaptionBasis:(double)arg3 adaptionSampleCnt:(long long)arg4 adaptionRate:(double)arg5;
-+ (double)evaluateMotionInducedDeviationFromDataPtCnt:(long long)arg1 sumLat_deg:(double)arg2 sumLat2_deg:(double)arg3 sumLon_deg:(double)arg4 sumLon2_deg:(double)arg5;
++ (id)bucketLocations:(id)arg1 interval:(double)arg2;
++ (id)hyperParameterForPipelineType:(id)arg1;
 - (void).cxx_destruct;
-- (void)_fetchVisitIncidentsFromLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)considerLowConfidenceVisitIncidentEntryAtLocation:(id)arg1;
-- (void)considerLowConfidenceVisitIncidentExitAtLocation:(id)arg1;
-- (void)fetchLastLowConfidenceVisitIncidentWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchLastVisitIncidentWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchLowConfidenceVisitMonitorStatusWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchNumberOfSamplesForAdaptationWithHandler:(CDUnknownBlockType)arg1;
+- (void)_batchProcess:(id)arg1 fromDate:(id)arg2 toDate:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)_configurationForPipelineType:(id)arg1;
+- (id)_createPipelineWithType:(id)arg1 name:(id)arg2 lastVisit:(id)arg3;
+- (id)_moduleWithName:(id)arg1 pipelineType:(id)arg2 hyperParameter:(id)arg3;
+- (id)_modulesForPipelineType:(id)arg1 hyperParameter:(id)arg2;
+- (void)_processLeechedLocations:(id)arg1;
+- (void)_processMatureLocations;
+- (void)_processRealtimeVisits:(id)arg1 withPipeline:(id)arg2 withType:(id)arg3;
+- (void)_setupRealtimePipelineWithType:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_startFeedBuffer;
+- (void)_startFeedBufferTimer;
+- (void)_stopFeedBuffer;
 - (void)fetchVisitIncidentsFromLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchVisitMonitorState:(CDUnknownBlockType)arg1;
 - (void)fetchVisitMonitorStatusWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchVisitsFromDate:(id)arg1 toDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)handleLeechedVisitIncident:(id)arg1;
 - (void)handleLowConfidenceVisitIncident:(id)arg1;
 - (void)handleVisitIncident:(id)arg1;
-- (void)handleVisitMonitorStateChange;
-- (double)horizontalUncertaintyFromSampleSize:(long long)arg1 sumLat_deg:(double)arg2 sumLat2_deg:(double)arg3 sumLon_deg:(double)arg4 sumLon2_deg:(double)arg5;
 - (id)init;
-- (id)initWithQueue:(id)arg1 state:(id)arg2 locationManager:(id)arg3 learnedLocationManager:(id)arg4 hintManager:(id)arg5 metricManager:(id)arg6 locationAwarenessManager:(id)arg7;
+- (id)initWithDefaultsManager:(id)arg1 hintManager:(id)arg2 learnedLocationManager:(id)arg3 locationAwarenessManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 motionActivityManager:(id)arg7 platform:(id)arg8 queue:(id)arg9 state:(id)arg10;
+- (id)initWithDefaultsManager:(id)arg1 hintManager:(id)arg2 learnedLocationManager:(id)arg3 locationAwarenessManager:(id)arg4 locationManager:(id)arg5 metricManager:(id)arg6 motionActivityManager:(id)arg7 platform:(id)arg8 queue:(id)arg9 state:(id)arg10 timerManager:(id)arg11;
 - (void)logHintSourceUsageWithLocation:(id)arg1;
 - (void)onLeechedLocationsNotification:(id)arg1;
-- (void)processLeechedLocations:(id)arg1;
-- (id)recursiveVisitsFromLocation:(id)arg1;
-- (void)resetForCurrentSampleAsHypothesis:(id)arg1;
-- (id)resetWithTempBufferAsHypothesis;
 - (void)shutdown;
-- (void)startEngine;
 - (void)startMonitoringLeechedVisitIncidents;
 - (void)startMonitoringLowConfidenceVisitIncidents;
 - (void)startMonitoringVisitIncidents;
-- (void)stopEngine;
 - (void)stopMonitoringLeechedVisitIncidents;
 - (void)stopMonitoringLowConfidenceVisitIncidents;
 - (void)stopMonitoringVisitIncidents;
-- (id)visitsFromLocation:(id)arg1;
 
 @end
 

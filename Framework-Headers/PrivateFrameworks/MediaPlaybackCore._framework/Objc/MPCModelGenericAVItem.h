@@ -12,7 +12,7 @@
 #import <MediaPlaybackCore/MPMusicSubscriptionLeasePlaybackParticipating-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
 
-@class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
+@class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSDictionary, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
 @protocol MPCModelPlaybackAssetCacheProviding, MPCReportingIdentityPropertiesLoading, OS_dispatch_queue;
 
 @interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPMusicSubscriptionLeasePlaybackParticipating, MPRTCReportingItemSessionCreating>
@@ -53,6 +53,7 @@
     NSURL *_streamingKeyServerURL;
     id _rtcReportingParentHierarchyToken;
     NSString *_rtcReportingServiceIdentifier;
+    MPCModelGenericAVItemUserIdentityPropertySet *_identityPropertySet;
     BOOL supportsRadioTrackActions;
     BOOL _radioPlayback;
     BOOL _radioStreamPlayback;
@@ -109,7 +110,7 @@
 - (void)_getSubscriptionLeasePropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getUnverifiedSubscriptionLeaseSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handlePlaybackFinishedTime:(double)arg1 didFinishByHittingEnd:(BOOL)arg2;
-- (void)_handleUpdatedLikedState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleUpdatedLikedState:(long long)arg1 forUserIdentity:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_invalidateContentItem;
 - (id)_isPrivateListeningEnabled;
 - (id)_modelPlaybackPosition;
@@ -157,7 +158,9 @@
 - (id)cloudUniversalLibraryID;
 - (id)composer;
 - (unsigned long long)composerPersistentID;
+- (id)containerUniqueID;
 - (id)copyrightText;
+- (id)databaseID;
 - (void)dealloc;
 - (double)durationFromExternalMetadata;
 - (void)environmentMonitorDidChangeNetworkType:(id)arg1;
@@ -165,7 +168,7 @@
 - (id)genre;
 - (unsigned long long)genrePersistentID;
 - (BOOL)hasStoreLyrics;
-- (id)initWithGenericObject:(id)arg1 itemProperties:(id)arg2 playbackRequestEnvironment:(id)arg3;
+- (id)initWithGenericObject:(id)arg1 itemProperties:(id)arg2 playbackRequestEnvironment:(id)arg3 identityPropertySet:(id)arg4;
 - (BOOL)isAlwaysLive;
 - (BOOL)isAssetURLValid;
 - (BOOL)isExplicitTrack;
@@ -194,6 +197,7 @@
 - (void)notePlaybackFinishedByHittingEnd;
 - (void)nowPlayingInfoCenter:(id)arg1 lyricsForContentItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (unsigned long long)persistentID;
+- (id)personID;
 - (id)playbackError;
 - (id)playbackInfo;
 - (BOOL)prefersSeekOverSkip;
@@ -214,14 +218,18 @@
 - (long long)stationID;
 - (id)stationName;
 - (id)stationStringID;
+- (id)storeAccountID;
 - (id)storeFrontIdentifier;
 - (long long)storeItemInt64ID;
+- (long long)storePurchasedAdamID;
 - (long long)storeSubscriptionAdamID;
 - (BOOL)supportsLikedState;
 - (long long)type;
 - (id)urlTimeMarkers;
 - (BOOL)useEmbeddedChapterData;
+- (id)useListeningHistory;
 - (float)userRating;
+- (BOOL)usesSubscriptionLease;
 
 @end
 

@@ -15,14 +15,18 @@
 {
     NSString *_formattedString;
     NSArray *_segments;
+    double _speakingRate;
+    double _averagePauseDuration;
 }
 
+@property (readonly, nonatomic) double averagePauseDuration; // @synthesize averagePauseDuration=_averagePauseDuration;
 @property (readonly, copy, nonatomic) NSString *formattedString; // @synthesize formattedString=_formattedString;
 @property (readonly, copy, nonatomic) NSArray *segments; // @synthesize segments=_segments;
+@property (readonly, nonatomic) double speakingRate; // @synthesize speakingRate=_speakingRate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithSegments:(id)arg1 formattedString:(id)arg2;
+- (id)_initWithSegments:(id)arg1 formattedString:(id)arg2 speakingRate:(double)arg3 averagePauseDuration:(double)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

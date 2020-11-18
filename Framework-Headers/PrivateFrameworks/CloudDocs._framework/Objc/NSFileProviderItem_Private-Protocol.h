@@ -6,17 +6,24 @@
 
 #import <CloudDocs/NSFileProviderItem-Protocol.h>
 
-@class NSArray, NSNumber, NSString, NSURL;
+@class NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
 
 @protocol NSFileProviderItem_Private <NSFileProviderItem>
 
 @property (readonly, copy) NSString *containerDisplayName;
 @property (readonly, copy, nonatomic) NSString *displayName;
 @property (readonly, copy, getter=isDownloadRequested) NSNumber *downloadRequested;
+@property (readonly, copy) NSString *fileSystemFilename;
 @property (readonly, copy) NSURL *fileURL;
-@property (readonly, copy) NSString *fp_appContainerBundleIdentifier;
+@property (readonly, nonatomic, getter=fp_isAddedByCurrentUser) BOOL fp_addedByCurrentUser;
+@property (readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
+@property (readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
+@property (readonly, copy) NSString *fp_cloudContainerIdentifier;
 @property (readonly, copy) NSString *fp_domainIdentifier;
 @property (readonly) BOOL fp_isContainer;
+@property (readonly) BOOL fp_isContainerPristine;
+@property (readonly, nonatomic, getter=fp_isLastModifiedByCurrentUser) BOOL fp_lastModifiedByCurrentUser;
+@property (readonly, copy) NSString *fp_parentDomainIdentifier;
 @property (readonly, copy) NSString *fp_spotlightDomainIdentifier;
 @property (readonly, getter=fp_isUbiquitous) BOOL fp_ubiquitous;
 @property (readonly, copy) NSNumber *hasUnresolvedConflicts;
@@ -25,7 +32,7 @@
 @property (readonly, nonatomic) NSString *preformattedOwnerName;
 @property (readonly, copy) NSString *providerIdentifier;
 @property (readonly, copy) NSString *sharingPermissions;
-@property (readonly, copy) NSArray *tags;
+@property (readonly, nonatomic, getter=isTopLevelSharedItem) BOOL topLevelSharedItem;
 
 
 @optional

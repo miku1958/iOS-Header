@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelWriting;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)initWithURL:(id)arg1 fileType:(id)arg2;
+- (void)setDelegate:(id)arg1;
 - (void)setDirectoryForTemporaryFiles:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setMovieFragmentInterval:(CDStruct_1b6d18a9)arg1;

@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *comparison;
     MISSING_TYPE *value;
-    MISSING_TYPE *sql.storage;
+    MISSING_TYPE *$__lazy_storage_$_sql;
 }
 
 @end

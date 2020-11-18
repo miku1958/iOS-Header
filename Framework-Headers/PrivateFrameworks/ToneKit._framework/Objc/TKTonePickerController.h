@@ -8,7 +8,7 @@
 
 #import <ToneKit/TLToneStoreDownloadObserver-Protocol.h>
 
-@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSString, TKTonePickerItem, TLAlert, TLToneManager;
+@class NSArray, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, TKTonePickerItem, TLAlert, TLToneManager;
 @protocol TKTonePickerControllerDelegate, TLToneStoreDownloadController;
 
 @interface TKTonePickerController : NSObject <TLToneStoreDownloadObserver>
@@ -33,6 +33,7 @@
     NSMutableArray *_toneGroupLists;
     NSMutableArray *_toneGroupNames;
     NSMutableArray *_toneGroupBucketIdentifiers;
+    NSMutableSet *_identifiersOfRemovableTones;
     TLAlert *_playingAlert;
     BOOL _showsDefault;
     BOOL _showsNone;
@@ -103,6 +104,7 @@
 + (void)_updateLatestRedownloadAllTonesDate;
 - (void).cxx_destruct;
 - (id)_annotatedNameForToneIdentifier:(id)arg1;
+- (void)_applyBatchUpdatesWithDeletedPickerRowItems:(id)arg1 deletedTonePickerSectionItems:(id)arg2 insertedPickerRowItems:(id)arg3 insertedTonePickerSectionItems:(id)arg4 tonePickerSectionItemsWithUpdatedHeaderText:(id)arg5 tonePickerSectionItemsWithUpdatedFooterText:(id)arg6;
 - (void)_cachePickerRowItem:(id)arg1 atIndex:(long long)arg2 inSectionForItem:(id)arg3;
 - (void)_cachePickerSectionItem:(id)arg1 forSection:(long long)arg2;
 - (void)_cacheToneClassicsPickerItem:(id)arg1 forIndex:(long long)arg2 headerKind:(unsigned long long)arg3;
@@ -148,6 +150,7 @@
 - (unsigned long long)_mediaItemsCount;
 - (id)_nameForToneIdentifier:(id)arg1;
 - (id)_nameOfSelectedVibrationIdentifier;
+- (void)_performBatchUpdates:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_pickerRowItemAtIndex:(long long)arg1 inSectionForItem:(id)arg2;
 - (void)_playToneWithIdentifier:(id)arg1;
 - (void)_redownloadAllTones;
@@ -172,7 +175,9 @@
 - (void)_uncachePickerRowItemAtIndex:(long long)arg1 inSectionForItem:(id)arg2;
 - (void)_unregisterForUserGeneratedVibrationsDidChangeNotification;
 - (void)_updateDetailTextOfVibrationItem;
+- (BOOL)canDeleteTonePickerItem:(id)arg1;
 - (void)dealloc;
+- (void)deleteTonePickerItem:(id)arg1;
 - (void)didFinishCheckingForAvailableToneStoreDownloads:(BOOL)arg1;
 - (BOOL)didSelectTonePickerItem:(id)arg1;
 - (void)finishedWithPicker;

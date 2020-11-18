@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property unsigned int uplinkBitrateCap;
 @property BOOL waitToBeNominated; // @synthesize waitToBeNominated=_waitToBeNominated;
 
+- (struct tagIPPORT)IPPortForNWConnection:(id)arg1;
 - (int)cellularMTU;
 - (id)copy;
 - (void)dealloc;

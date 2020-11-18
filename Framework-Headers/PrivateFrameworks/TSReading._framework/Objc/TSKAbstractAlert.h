@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BOOL inBackground; // @synthesize inBackground=_inBackground;
 @property (strong, nonatomic) id<TSKUIAlertProtocol> retainedDelegate; // @synthesize retainedDelegate=_retainedDelegate;
 
+- (void)_didPresentAlertView:(id)arg1;
 - (long long)addButtonWithTitle:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
@@ -40,7 +41,6 @@
 - (void)clickedButtonAtIndex:(long long)arg1;
 - (void)dealloc;
 - (void)didDismissWithButtonIndex:(long long)arg1;
-- (void)didPresentAlertView;
 - (void)dismissWithClickedButtonIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)enterBackground;
 - (long long)firstOtherButtonIndex;

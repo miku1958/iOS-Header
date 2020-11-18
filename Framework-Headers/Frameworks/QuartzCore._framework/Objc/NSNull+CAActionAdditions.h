@@ -9,6 +9,7 @@
 #import <QuartzCore/CAAction-Protocol.h>
 
 @interface NSNull (CAActionAdditions) <CAAction>
+- (id)CAMLType;
 - (void)runActionForKey:(id)arg1 object:(id)arg2 arguments:(id)arg3;
 @end
 

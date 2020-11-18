@@ -6,32 +6,39 @@
 
 #import <CoreCDP/NSObject-Protocol.h>
 
-@class CDPContext, NSDictionary, NSSet, NSString;
+@class CDPContext, KCPairingChannel, NSDictionary, NSError, NSSet, NSString, OTClique;
 
 @protocol CDPDCircleProxy <NSObject>
 
-@property (strong, nonatomic) CDPContext *cdpContext;
+@property (readonly, nonatomic) CDPContext *cdpContext;
 
-+ (BOOL)canAuthenticate;
 - (BOOL)anyPeerHasEnabledViewsInSet:(NSSet *)arg1 error:(id *)arg2;
-- (int)circleStatus:(id *)arg1;
+- (unsigned long long)cachedCircleStatus:(id *)arg1;
+- (BOOL)canAuthenticate;
+- (unsigned long long)circleStatus:(id *)arg1;
+- (void)didJoinCircleAfterRecovery:(OTClique *)arg1;
 - (NSString *)generateRecoveryKeyWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
-- (NSDictionary *)generateVerifierWithRcoveryKey:(NSString *)arg1 error:(id *)arg2;
+- (NSDictionary *)generateVerifierWithRecoveryKey:(NSString *)arg1 error:(id *)arg2;
 - (BOOL)hasNonViewAwarePeers;
-- (id)initWithContext:(CDPContext *)arg1;
 - (BOOL)isLastBackupMakingPeer:(id *)arg1;
+- (KCPairingChannel *)pairingChannelAcceptor:(id *)arg1;
+- (KCPairingChannel *)pairingChannelInitiator:(id *)arg1;
 - (unsigned long long)peerCount;
 - (NSDictionary *)peerDeviceNamesByPeerID;
 - (NSString *)peerId;
+- (BOOL)registerCredentials;
+- (BOOL)registerCredentialsIfMissing;
 - (BOOL)removeNonViewAwarePeers:(id *)arg1;
 - (BOOL)removeThisDeviceFromCircle:(id *)arg1;
+- (void)reportFailure:(NSError *)arg1;
+- (void)reportSuccess;
 - (BOOL)requestToJoinCircle:(id *)arg1;
 - (BOOL)requestToJoinCircleAfterRestore:(id *)arg1;
 - (BOOL)requestToResetCircle:(id *)arg1;
 - (BOOL)requestToResetCloudKitDataForReason:(NSString *)arg1 error:(id *)arg2;
 - (BOOL)setViewsWithEnableSet:(NSSet *)arg1 disableSet:(NSSet *)arg2;
 - (BOOL)synchronizeCircleViews;
+- (BOOL)tryRegisteringCredentials;
 - (BOOL)viewMemberForAutofillPasswords:(id *)arg1;
-- (BOOL)viewMemberForPCSMaster:(id *)arg1;
 @end
 

@@ -42,7 +42,6 @@
     CDUnknownBlockType _networkActivity;
     BOOL _enabled;
     BOOL _useCourseForHeading;
-    BOOL _logStartStopLocationUpdates;
     double _lastVehicleHeading;
     double _lastVehicleSpeed;
     double _lastVehicleHeadingUpdateTime;
@@ -59,6 +58,7 @@
     NSLock *_observersLock;
     BOOL _hasCustomDesiredAccuracy;
     BOOL _continuesWhileInactive;
+    BOOL _logStartStopLocationUpdates;
     NSError *_locationError;
 }
 
@@ -154,6 +154,7 @@
 - (void)locationProviderDidPauseLocationUpdates:(id)arg1;
 - (void)locationProviderDidResumeLocationUpdates:(id)arg1;
 - (BOOL)locationProviderShouldPauseLocationUpdates:(id)arg1;
+- (id)observersDescription;
 - (void)pushLocation:(id)arg1;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;

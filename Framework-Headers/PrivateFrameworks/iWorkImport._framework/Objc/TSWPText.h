@@ -89,13 +89,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int verticalAlignment;
 @property (readonly, nonatomic) BOOL wantsLineFragments;
 
++ (double)columnLayoutWidthForBodyWidth:(double)arg1 padding:(double)arg2 delta:(inout double *)arg3;
 - (void).cxx_destruct;
 - (void)addAttachmentLayout:(id)arg1;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
 - (BOOL)caresAboutStorageChanges;
+- (void)clearHiddenInlineDrawableLayoutMarks;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
+- (BOOL)containsStartOfRange:(struct _NSRange)arg1;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
+- (BOOL)descendersCannotClip;
 - (void)didLayoutChangingDirtyRanges;
 - (void)drawColumn:(id)arg1 inContext:(struct CGContext *)arg2 isFlipped:(BOOL)arg3 viewScale:(double)arg4;
 - (void)drawColumn:(id)arg1 selection:(id)arg2 inContext:(struct CGContext *)arg3 isFlipped:(BOOL)arg4 viewScale:(double)arg5;
@@ -107,6 +111,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithParagraphStyle:(id)arg1 columnStyle:(id)arg2;
 - (id)initWithParagraphStyle:(id)arg1 listStyle:(id)arg2 columnStyle:(id)arg3;
 - (id)initWithStylesheet:(id)arg1 paragraphStyle:(id)arg2 listStyle:(id)arg3 columnStyle:(id)arg4 alignmentForNaturalAlignment:(int)arg5 naturalDirection:(int)arg6;
+- (id)interiorClippingPath;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
 - (void)layoutManager:(id)arg1 didClearDirtyRangeWithDelta:(long long)arg2 afterCharIndex:(unsigned long long)arg3;
@@ -115,11 +120,13 @@ __attribute__((visibility("hidden")))
 - (id)layoutText:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 pageNumber:(unsigned long long)arg5 pageCount:(unsigned long long)arg6 flags:(int)arg7;
+- (void)markHiddenInlineDrawableLayout:(id)arg1;
 - (struct CGSize)measureText:(id)arg1;
 - (void)p_setParentLayoutMaximumFrameSizeForChildren;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;
 - (void)setNeedsDisplayInTargetRect:(struct CGRect)arg1;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
+- (double)textScaleForChild:(id)arg1;
 - (id)textWrapper;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
 - (id)validatedLayoutForInlineDrawable:(id)arg1;

@@ -9,8 +9,10 @@
 @interface EKEvent (AttendeeSorting)
 - (id)_sortedEKParticipantsForSortingIgnoringNonHumans:(id)arg1;
 - (id)attendeesWithoutOrganizerAndLocations;
+- (long long)daySpan;
 - (BOOL)hasHumanInviteesToDisplay;
 - (id)sortEKParticipantsIgnoringNonHumans:(id)arg1;
+- (id)sortedEKAttachmentsDisplayStrings;
 - (id)sortedEKParticipantsDisplayStringsIgnoringNonHumans:(id)arg1;
 @end
 

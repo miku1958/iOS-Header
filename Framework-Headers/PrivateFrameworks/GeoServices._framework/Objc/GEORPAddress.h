@@ -8,23 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOPDAddressObject, NSString;
+@class GEOAddress, GEOPDAddressObject, NSString, PBDataReader;
 
 @interface GEORPAddress : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOPDAddressObject *_addressObject;
     NSString *_addressString;
     GEOAddress *_geoAddress;
+    struct {
+        unsigned int read_addressObject:1;
+        unsigned int read_addressString:1;
+        unsigned int read_geoAddress:1;
+        unsigned int wrote_addressObject:1;
+        unsigned int wrote_addressString:1;
+        unsigned int wrote_geoAddress:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDAddressObject *addressObject; // @synthesize addressObject=_addressObject;
-@property (strong, nonatomic) NSString *addressString; // @synthesize addressString=_addressString;
-@property (strong, nonatomic) GEOAddress *geoAddress; // @synthesize geoAddress=_geoAddress;
+@property (strong, nonatomic) GEOPDAddressObject *addressObject;
+@property (strong, nonatomic) NSString *addressString;
+@property (strong, nonatomic) GEOAddress *geoAddress;
 @property (readonly, nonatomic) BOOL hasAddressObject;
 @property (readonly, nonatomic) BOOL hasAddressString;
 @property (readonly, nonatomic) BOOL hasGeoAddress;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readAddressObject;
+- (void)_readAddressString;
+- (void)_readGeoAddress;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +46,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

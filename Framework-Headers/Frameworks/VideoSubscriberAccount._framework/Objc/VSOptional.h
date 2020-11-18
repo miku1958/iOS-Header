@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) id object; // @synthesize object=_object;
 
++ (id)decodableClasses;
 + (id)optionalWithObject:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

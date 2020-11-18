@@ -8,14 +8,14 @@
 
 #import <StoreKitUI/SKUIMoreNavigationControllerDelegate-Protocol.h>
 
-@class NSString, SKUIFloatingOverlayView, SKUITabBarBackgroundView, UIViewController;
+@class NSString, SKUIFloatingOverlayView, UIViewController;
 
 @interface SKUITabBarController : UITabBarController <SKUIMoreNavigationControllerDelegate>
 {
     SKUIFloatingOverlayView *_floatingOverlayView;
     UIViewController *_floatingOverlayViewController;
-    SKUITabBarBackgroundView *_tabBarBackgroundView;
     BOOL _sizeTransitionInProgress;
+    long long _forcedUserInterfaceStyle;
 }
 
 @property (readonly, nonatomic) BOOL containsTransientViewControllerOnly;
@@ -27,16 +27,17 @@
 
 + (Class)_moreNavigationControllerClass;
 - (void).cxx_destruct;
-- (id)_backdropGroupName;
 - (void)_layoutFloatingOverlayView;
 - (void)_setSelectedViewController:(id)arg1;
 - (void)cancelTransientViewController:(id)arg1;
 - (id)floatingOverlayViewController;
+- (long long)forcedUserInterfaceStyle;
 - (id)init;
 - (id)moreNavigationController;
 - (void)moreNavigationController:(id)arg1 didSelectItemAtIndex:(long long)arg2;
+- (long long)preferredUserInterfaceStyle;
 - (void)setFloatingOverlayViewController:(id)arg1 animated:(BOOL)arg2;
-- (void)setTabBarBackdropStyle:(long long)arg1;
+- (void)setForcedUserInterfaceStyle:(long long)arg1;
 - (void)setTransientViewController:(id)arg1 animated:(BOOL)arg2;
 - (id)traitCollection;
 - (void)viewDidLayoutSubviews;

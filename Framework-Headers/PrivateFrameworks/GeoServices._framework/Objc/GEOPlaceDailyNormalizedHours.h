@@ -19,11 +19,11 @@
 }
 
 @property (nonatomic) double closingSoonThresholdSeconds; // @synthesize closingSoonThresholdSeconds=_closingSoonThresholdSeconds;
-@property (readonly) NSArray *localTimeIntervals; // @synthesize localTimeIntervals=_localTimeIntervals;
-@property (readonly) BOOL openFromMidnight; // @synthesize openFromMidnight=_openFromMidnight;
-@property (readonly) BOOL openToMidnight; // @synthesize openToMidnight=_openToMidnight;
+@property (readonly, nonatomic) NSArray *localTimeIntervals; // @synthesize localTimeIntervals=_localTimeIntervals;
+@property (readonly, nonatomic) BOOL openFromMidnight; // @synthesize openFromMidnight=_openFromMidnight;
+@property (readonly, nonatomic) BOOL openToMidnight; // @synthesize openToMidnight=_openToMidnight;
 @property (nonatomic) double openingSoonThresholdSeconds; // @synthesize openingSoonThresholdSeconds=_openingSoonThresholdSeconds;
-@property (readonly) long long weekday; // @synthesize weekday=_weekday;
+@property (readonly, nonatomic) long long weekday; // @synthesize weekday=_weekday;
 
 + (id)dailyNormalizedHoursForWeekday:(long long)arg1 timeIntervals:(id)arg2 closingThreshold:(double)arg3 openingThreshold:(double)arg4 openToMidnight:(BOOL)arg5 openFromMidnight:(BOOL)arg6;
 + (long long)getWeekdayForDate:(id)arg1 inNormalizedHours:(id)arg2 timeZone:(id)arg3;

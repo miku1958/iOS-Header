@@ -14,13 +14,16 @@ __attribute__((visibility("hidden")))
     TSDCommentStorage *_commentStorage;
 }
 
-@property (readonly, nonatomic) TSDCommentStorage *commentStorage; // @synthesize commentStorage=_commentStorage;
-
++ (id)objectWithCommentStorage:(id)arg1 refCount:(unsigned int)arg2;
 - (void).cxx_destruct;
+- (id)commentStorage;
 - (id)description;
+- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 key:(unsigned int)arg2 archiver:(id)arg3;
+- (unsigned long long)estimateByteSize;
 - (unsigned long long)hash;
 - (id)initObjectWithCommentStorage:(id)arg1 refCount:(unsigned int)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

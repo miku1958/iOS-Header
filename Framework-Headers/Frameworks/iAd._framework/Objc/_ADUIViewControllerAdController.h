@@ -14,7 +14,6 @@
 
 @interface _ADUIViewControllerAdController : NSObject <_UIViewControllerContentViewEmbedding, ADBannerViewDelegate, ADInterstitialAdDelegate>
 {
-    UIViewController *_contentViewController;
     BOOL _canDisplayBannerAds;
     BOOL _canOwnSharedBanner;
     BOOL _presentingFullScreenAd;
@@ -24,6 +23,7 @@
     NSURL *_interstitialServerURL;
     NSString *_interstitialAdSection;
     NSString *_interstitialAuthUserName;
+    UIViewController *_contentViewController;
     long long _interstitialPresentationPolicy;
     ADBannerView *_bannerView;
     ADInterstitialAd *_interstitialAd;
@@ -35,7 +35,7 @@
 @property (strong, nonatomic) ADBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property (nonatomic) BOOL canDisplayBannerAds; // @synthesize canDisplayBannerAds=_canDisplayBannerAds;
 @property (nonatomic) BOOL canOwnSharedBanner; // @synthesize canOwnSharedBanner=_canOwnSharedBanner;
-@property (readonly, weak, nonatomic) UIViewController *contentViewController;
+@property (weak, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDisplayingBannerAd) BOOL displayingBannerAd;
@@ -50,6 +50,7 @@
 
 + (id)_sharedBannerView;
 + (void)prepareInterstitialAds;
+- (void).cxx_destruct;
 - (void)_considerTakingBannerViewAnimated:(BOOL)arg1;
 - (void)_hideBannerView;
 - (void)_layoutContentAndBannerViewAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -59,7 +60,6 @@
 - (void)bannerViewActionDidFinish:(id)arg1;
 - (BOOL)bannerViewActionShouldBegin:(id)arg1 willLeaveApplication:(BOOL)arg2;
 - (void)bannerViewDidLoadAd:(id)arg1;
-- (void)dealloc;
 - (id)initWithContentViewController:(id)arg1;
 - (void)interstitialAd:(id)arg1 didFailWithError:(id)arg2;
 - (void)interstitialAdActionDidFinish:(id)arg1;

@@ -6,6 +6,7 @@
 
 #import <MapKit/MKPlaceSectionViewController.h>
 
+#import <MapKit/MKInfoCardThemeListener-Protocol.h>
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
@@ -13,7 +14,8 @@
 @class MKMapItem, MKPlaceSectionHeaderView, NSArray, NSString, NSTimeZone;
 @protocol _MKInfoCardAnalyticsDelegate;
 
-@interface MKPlaceHoursViewController : MKPlaceSectionViewController <MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
+__attribute__((visibility("hidden")))
+@interface MKPlaceHoursViewController : MKPlaceSectionViewController <MKStackingViewControllerFixedHeightAware, MKInfoCardThemeListener, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
 {
     BOOL _isExpanded;
     MKPlaceSectionHeaderView *_headerView;
@@ -35,6 +37,7 @@
 
 + (id)placeHoursWithMapItem:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_contentSizeDidChange;
 - (void)_setExpanded:(BOOL)arg1;
 - (BOOL)_shouldOnlyShowExpanded;
@@ -42,7 +45,8 @@
 - (void)_updateHoursAnimated:(BOOL)arg1;
 - (id)hoursBuilderWithHours:(id)arg1;
 - (id)infoCardChildPossibleActions;
-- (void)infoCardThemeChanged:(id)arg1;
+- (id)infoCardChildUnactionableUIElements;
+- (void)infoCardThemeChanged;
 - (id)initWithMapItem:(id)arg1;
 - (id)titleString;
 - (void)viewDidLoad;

@@ -8,35 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABDebugPanelExperimentBranch, NSString, PBUnknownFields;
+@class GEOABDebugPanelExperimentBranch, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOABExperimentAssignment : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOABDebugPanelExperimentBranch *_debugExperimentBranch;
-    int _placeRequestType;
+    NSString *_offlineAbJson;
     NSString *_querySubstring;
+    int _placeRequestType;
     int _serviceType;
     struct {
-        unsigned int placeRequestType:1;
-        unsigned int serviceType:1;
-    } _has;
+        unsigned int has_placeRequestType:1;
+        unsigned int has_serviceType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_debugExperimentBranch:1;
+        unsigned int read_offlineAbJson:1;
+        unsigned int read_querySubstring:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_debugExperimentBranch:1;
+        unsigned int wrote_offlineAbJson:1;
+        unsigned int wrote_querySubstring:1;
+        unsigned int wrote_placeRequestType:1;
+        unsigned int wrote_serviceType:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOABDebugPanelExperimentBranch *debugExperimentBranch; // @synthesize debugExperimentBranch=_debugExperimentBranch;
+@property (strong, nonatomic) GEOABDebugPanelExperimentBranch *debugExperimentBranch;
 @property (readonly, nonatomic) BOOL hasDebugExperimentBranch;
+@property (readonly, nonatomic) BOOL hasOfflineAbJson;
 @property (nonatomic) BOOL hasPlaceRequestType;
 @property (readonly, nonatomic) BOOL hasQuerySubstring;
 @property (nonatomic) BOOL hasServiceType;
-@property (nonatomic) int placeRequestType; // @synthesize placeRequestType=_placeRequestType;
-@property (strong, nonatomic) NSString *querySubstring; // @synthesize querySubstring=_querySubstring;
-@property (nonatomic) int serviceType; // @synthesize serviceType=_serviceType;
+@property (strong, nonatomic) NSString *offlineAbJson;
+@property (nonatomic) int placeRequestType;
+@property (strong, nonatomic) NSString *querySubstring;
+@property (nonatomic) int serviceType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsPlaceRequestType:(id)arg1;
 - (int)StringAsServiceType:(id)arg1;
+- (void)_readDebugExperimentBranch;
+- (void)_readOfflineAbJson;
+- (void)_readQuerySubstring;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -45,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeRequestTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)serviceTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

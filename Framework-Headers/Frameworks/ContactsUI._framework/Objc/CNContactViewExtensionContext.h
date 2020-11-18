@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)didChangeToEditMode:(BOOL)arg1;
 - (void)didCompleteWithContact:(id)arg1;
 - (void)didDeleteContact:(id)arg1;
+- (void)didExecuteClearRecentsDataAction;
+- (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)editCancel;
 - (id)host;
 - (void)isPresentingEditingController:(BOOL)arg1;

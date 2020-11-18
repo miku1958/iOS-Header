@@ -15,7 +15,7 @@
 - (void)accountManager:(PDAccountManager *)arg1 didAddAccountEvent:(PKAccountEvent *)arg2;
 - (void)accountManager:(PDAccountManager *)arg1 didRemoveAccount:(PKAccount *)arg2;
 - (void)accountManager:(PDAccountManager *)arg1 didRemoveAccountEvent:(PKAccountEvent *)arg2;
-- (void)accountManager:(PDAccountManager *)arg1 didSetScheduledPayments:(NSArray *)arg2 forAccount:(PKAccount *)arg3;
+- (void)accountManager:(PDAccountManager *)arg1 didSetScheduledPayments:(NSArray *)arg2 forAccountIdentifier:(NSString *)arg3;
 - (void)accountManager:(PDAccountManager *)arg1 didUpdateAccount:(PKAccount *)arg2 oldAccount:(PKAccount *)arg3;
 - (void)accountManager:(PDAccountManager *)arg1 didUpdateAccountEvent:(PKAccountEvent *)arg2;
 - (void)accountManager:(PDAccountManager *)arg1 scheduledPaymentsChangedForAccountIdentifier:(NSString *)arg2;

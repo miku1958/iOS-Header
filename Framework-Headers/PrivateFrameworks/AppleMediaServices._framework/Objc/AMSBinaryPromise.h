@@ -17,7 +17,10 @@
 
 + (id)_globalPromiseStorage;
 + (id)_globalPromiseStorageAccessQueue;
++ (id)promiseWithAll:(id)arg1;
++ (id)promiseWithAny:(id)arg1;
 + (id)promiseWithError:(id)arg1;
++ (id)promiseWithFlattenedPromises:(id)arg1;
 + (id)promiseWithPromise:(id)arg1;
 + (id)promiseWithSuccess;
 - (void).cxx_destruct;
@@ -25,14 +28,18 @@
 - (void)addErrorBlock:(CDUnknownBlockType)arg1;
 - (void)addFinishBlock:(CDUnknownBlockType)arg1;
 - (void)addSuccessBlock:(CDUnknownBlockType)arg1;
+- (BOOL)cancel;
+- (id)catchWithBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)completionHandlerAdapter;
 - (BOOL)finishWithError:(id)arg1;
+- (BOOL)finishWithPromise:(id)arg1;
 - (BOOL)finishWithSuccess;
 - (BOOL)finishWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (id)init;
 - (id)promiseAdapter;
 - (BOOL)resultWithError:(id *)arg1;
 - (BOOL)resultWithTimeout:(double)arg1 error:(id *)arg2;
+- (id)thenWithBlock:(CDUnknownBlockType)arg1;
 - (void)waitUntilFinished;
 - (void)waitUntilFinishedWithTimeout:(double)arg1;
 

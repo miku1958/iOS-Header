@@ -8,10 +8,13 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSMutableArray;
+@class GEOFormattedString, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEODrivingWalkingSpokenInstruction : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOFormattedString *_continueStage;
     NSMutableArray *_executionStages;
     GEOFormattedString *_initialStage;
@@ -19,26 +22,48 @@
     GEOFormattedString *_proceedStage;
     unsigned int _shortChainedInstructionIndex;
     struct {
-        unsigned int shortChainedInstructionIndex:1;
-    } _has;
+        unsigned int has_shortChainedInstructionIndex:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_continueStage:1;
+        unsigned int read_executionStages:1;
+        unsigned int read_initialStage:1;
+        unsigned int read_preparationStage:1;
+        unsigned int read_proceedStage:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_continueStage:1;
+        unsigned int wrote_executionStages:1;
+        unsigned int wrote_initialStage:1;
+        unsigned int wrote_preparationStage:1;
+        unsigned int wrote_proceedStage:1;
+        unsigned int wrote_shortChainedInstructionIndex:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOFormattedString *continueStage; // @synthesize continueStage=_continueStage;
-@property (strong, nonatomic) NSMutableArray *executionStages; // @synthesize executionStages=_executionStages;
+@property (strong, nonatomic) GEOFormattedString *continueStage;
+@property (strong, nonatomic) NSMutableArray *executionStages;
 @property (readonly, nonatomic) BOOL hasContinueStage;
 @property (readonly, nonatomic) BOOL hasInitialStage;
 @property (readonly, nonatomic) BOOL hasPreparationStage;
 @property (readonly, nonatomic) BOOL hasProceedStage;
 @property (nonatomic) BOOL hasShortChainedInstructionIndex;
-@property (strong, nonatomic) GEOFormattedString *initialStage; // @synthesize initialStage=_initialStage;
-@property (strong, nonatomic) GEOFormattedString *preparationStage; // @synthesize preparationStage=_preparationStage;
-@property (strong, nonatomic) GEOFormattedString *proceedStage; // @synthesize proceedStage=_proceedStage;
-@property (nonatomic) unsigned int shortChainedInstructionIndex; // @synthesize shortChainedInstructionIndex=_shortChainedInstructionIndex;
+@property (strong, nonatomic) GEOFormattedString *initialStage;
+@property (strong, nonatomic) GEOFormattedString *preparationStage;
+@property (strong, nonatomic) GEOFormattedString *proceedStage;
+@property (nonatomic) unsigned int shortChainedInstructionIndex;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)executionStageType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsExecutionStage:(id)arg1;
+- (void)_readContinueStage;
+- (void)_readExecutionStages;
+- (void)_readInitialStage;
+- (void)_readPreparationStage;
+- (void)_readProceedStage;
 - (void)addExecutionStage:(id)arg1;
 - (void)clearExecutionStages;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,6 +73,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HomeKit/HMSettingGroup.h>
 
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/_HMAccesorySettingGroupDelegate-Protocol.h>
 
 @class HMFUnfairLock, NSArray, NSMutableSet, NSString, _HMAccessorySettingGroup;
 
-@interface HMAccessorySettingGroup : NSObject <_HMAccesorySettingGroupDelegate, HMFLogging>
+@interface HMAccessorySettingGroup : HMSettingGroup <_HMAccesorySettingGroupDelegate, HMFLogging>
 {
     HMFUnfairLock *_lock;
     NSMutableSet *_settings;

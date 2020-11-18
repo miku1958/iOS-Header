@@ -8,30 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTransitDepartureSequenceUsage, NSString;
+@class GEOTransitDepartureSequenceUsage, NSString, PBDataReader;
 
 @interface GEOTransitPlaceCard : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_incidentType;
-    int _transitCategory;
     GEOTransitDepartureSequenceUsage *_transitDepartureSequenceUsage;
     NSString *_transitSystemName;
+    int _transitCategory;
     struct {
-        unsigned int transitCategory:1;
-    } _has;
+        unsigned int has_transitCategory:1;
+        unsigned int read_incidentType:1;
+        unsigned int read_transitDepartureSequenceUsage:1;
+        unsigned int read_transitSystemName:1;
+        unsigned int wrote_incidentType:1;
+        unsigned int wrote_transitDepartureSequenceUsage:1;
+        unsigned int wrote_transitSystemName:1;
+        unsigned int wrote_transitCategory:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasIncidentType;
 @property (nonatomic) BOOL hasTransitCategory;
 @property (readonly, nonatomic) BOOL hasTransitDepartureSequenceUsage;
 @property (readonly, nonatomic) BOOL hasTransitSystemName;
-@property (strong, nonatomic) NSString *incidentType; // @synthesize incidentType=_incidentType;
-@property (nonatomic) int transitCategory; // @synthesize transitCategory=_transitCategory;
-@property (strong, nonatomic) GEOTransitDepartureSequenceUsage *transitDepartureSequenceUsage; // @synthesize transitDepartureSequenceUsage=_transitDepartureSequenceUsage;
-@property (strong, nonatomic) NSString *transitSystemName; // @synthesize transitSystemName=_transitSystemName;
+@property (strong, nonatomic) NSString *incidentType;
+@property (nonatomic) int transitCategory;
+@property (strong, nonatomic) GEOTransitDepartureSequenceUsage *transitDepartureSequenceUsage;
+@property (strong, nonatomic) NSString *transitSystemName;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransitCategory:(id)arg1;
+- (void)_readIncidentType;
+- (void)_readTransitDepartureSequenceUsage;
+- (void)_readTransitSystemName;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +52,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transitCategoryAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

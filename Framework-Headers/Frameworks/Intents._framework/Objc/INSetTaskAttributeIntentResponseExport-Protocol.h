@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) long long code;
 @property (copy, nonatomic) INTask *modifiedTask;
+@property (nonatomic) unsigned long long warnings;
 
 @end
 

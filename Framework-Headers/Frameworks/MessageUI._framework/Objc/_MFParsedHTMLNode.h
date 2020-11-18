@@ -29,8 +29,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *htmlString; // @synthesize htmlString=_htmlString;
 @property (readonly, nonatomic) _MFParsedHTMLNode *lastChild;
-@property (nonatomic) _MFParsedHTMLNode *nextSibling; // @synthesize nextSibling=_nextSibling;
-@property (nonatomic) _MFParsedHTMLNode *parentNode; // @synthesize parentNode=_parentNode;
+@property (weak, nonatomic) _MFParsedHTMLNode *nextSibling; // @synthesize nextSibling=_nextSibling;
+@property (weak, nonatomic) _MFParsedHTMLNode *parentNode; // @synthesize parentNode=_parentNode;
 @property (nonatomic) unsigned long long startLocation; // @synthesize startLocation=_startLocation;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *tagName;

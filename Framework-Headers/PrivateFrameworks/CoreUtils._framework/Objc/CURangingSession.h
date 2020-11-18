@@ -6,15 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+#import <CoreUtils/PRSharingSessionDelegate-Protocol.h>
+
+@class NSArray, NSString, PRContactWhitelist, PRSharingSession;
 @protocol OS_dispatch_queue;
 
-@interface CURangingSession : NSObject
+@interface CURangingSession : NSObject <PRSharingSessionDelegate>
 {
     BOOL _activateCalled;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
     BOOL _peersChanged;
+    NSArray *_peersRanging;
+    PRContactWhitelist *_prResponder;
+    int _prRangingInitiated;
+    PRSharingSession *_prRangingSession;
     struct LogCategory *_ucat;
     unsigned int _flags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -26,14 +32,18 @@
     NSArray *_peers;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) CDUnknownBlockType measurementHandler; // @synthesize measurementHandler=_measurementHandler;
 @property (copy, nonatomic) CDUnknownBlockType measurementHandlerEx; // @synthesize measurementHandlerEx=_measurementHandlerEx;
 @property (copy, nonatomic) NSArray *peers; // @synthesize peers=_peers;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_invalidate;
@@ -43,9 +53,12 @@
 - (void)_updatePeers;
 - (void)_updateResponder;
 - (void)activate;
+- (void)addSample:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (void)session:(id)arg1 didEstimateScores:(id)arg2;
+- (void)session:(id)arg1 didFailwithError:(id)arg2;
 
 @end
 

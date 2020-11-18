@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) unsigned long long nextAvailableInputBus;
 @property (nonatomic) float outputVolume;
 @property (readonly) Class superclass;
-@property (nonatomic) float volume;
+@property (nonatomic) float volume; // @dynamic volume;
 
 - (void)didAttachToEngine:(id)arg1;
 - (id)init;

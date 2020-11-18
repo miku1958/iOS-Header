@@ -38,6 +38,7 @@
 - (unsigned char)groupLevelForGroupUid:(const UUIDData_5fbc143e *)arg1;
 - (unsigned long long)groupingColumnLevelCountForColumn:(unsigned short)arg1;
 - (BOOL)groupingTypesAreUniqueForColumn:(unsigned short)arg1;
+- (NSIndexSet *)indexesForBodyAndFooterRows;
 - (NSIndexSet *)indexesForBodyColumns;
 - (NSIndexSet *)indexesForBodyRows;
 - (NSIndexSet *)indexesForBodyRowsInGroupWithRowAtIndex:(unsigned int)arg1;

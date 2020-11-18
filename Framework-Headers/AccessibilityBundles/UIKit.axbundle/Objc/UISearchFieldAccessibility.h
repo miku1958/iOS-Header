@@ -12,6 +12,8 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityCapturedImages;
 - (unsigned long long)accessibilityTraits;
 
 @end

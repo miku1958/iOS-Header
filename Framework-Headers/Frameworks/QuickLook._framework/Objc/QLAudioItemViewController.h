@@ -8,7 +8,7 @@
 
 #import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, QLOverlayPlayButton, QLWaveformScrubberView, UIScrollView, UIView;
+@class NSLayoutConstraint, NSString, QLOverlayPlayButton, QLVideoScrubberView, QLWaveformScrubberViewProvider, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface QLAudioItemViewController : QLMediaItemViewController <UIGestureRecognizerDelegate>
@@ -16,7 +16,8 @@ __attribute__((visibility("hidden")))
     QLOverlayPlayButton *_playButton;
     UIView *_scrubberContainer;
     UIScrollView *_scrubberContainerScrollView;
-    QLWaveformScrubberView *_scrubber;
+    QLVideoScrubberView *_scrubber;
+    QLWaveformScrubberViewProvider *_scrubberViewProvider;
     BOOL _previewIsVisisble;
     BOOL _scrubbing;
     NSLayoutConstraint *_topScrubber;
@@ -32,8 +33,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong) NSLayoutConstraint *topScrubber; // @synthesize topScrubber=_topScrubber;
 
-+ (id)AV_indicatorBackgroundColor;
-+ (id)AV_indicatorForegroundColor;
 - (void).cxx_destruct;
 - (void)_tapRecognized:(id)arg1;
 - (id)accessoryView;
@@ -42,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)didChangePlayingStatus;
-- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;

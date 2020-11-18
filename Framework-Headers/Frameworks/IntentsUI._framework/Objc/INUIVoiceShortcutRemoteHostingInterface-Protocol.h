@@ -4,9 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IntentsUI/INUIVoiceShortcutRemoteViewControllerAddDelegate-Protocol.h>
-#import <IntentsUI/INUIVoiceShortcutRemoteViewControllerEditDelegate-Protocol.h>
+#import <IntentsUI/INUIVoiceShortcutRemoteViewControllerDelegate-Protocol.h>
 
-@protocol INUIVoiceShortcutRemoteHostingInterface <INUIVoiceShortcutRemoteViewControllerAddDelegate, INUIVoiceShortcutRemoteViewControllerEditDelegate>
+@protocol INUIVoiceShortcutRemoteHostingInterface <INUIVoiceShortcutRemoteViewControllerDelegate>
 @end
 

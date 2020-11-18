@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class GEODirectionIntent, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, MKMapItem, NSArray, NSString;
+@class GEODirectionIntent, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, MKMapItem, NSArray, NSString;
 @protocol GEOCompletionItem;
 
 @interface MKLocalSearchCompletion : NSObject
 {
     id<GEOCompletionItem> _item;
+    unsigned long long _serverSectionIndex;
+    unsigned long long _serverItemIndexInSection;
     NSString *_sourceID;
     NSString *_localizedSectionHeader;
     MKMapItem *_mapItem;
@@ -22,6 +24,7 @@
 }
 
 @property (readonly, nonatomic, getter=_alreadySentFeedback) BOOL alreadySentFeedback; // @synthesize alreadySentFeedback=_alreadySentFeedback;
+@property (readonly, nonatomic) long long autocompleteCellType;
 @property (readonly, nonatomic) GEOSearchCategory *category;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolved;
 @property (readonly, nonatomic) GEODirectionIntent *directionIntent;
@@ -29,13 +32,19 @@
 @property (strong, nonatomic) MKLocalSearchCompletion *directionIntentOrigin; // @synthesize directionIntentOrigin=_directionIntentOrigin;
 @property (readonly, nonatomic, getter=_disambiguationRadiusMeters) float disambiguationRadiusMeters;
 @property (readonly, nonatomic) NSArray *displayLines;
+@property (readonly, nonatomic) long long entryTapBehavior;
 @property (readonly, nonatomic) id<GEOCompletionItem> geoCompletionItem;
 @property (readonly, nonatomic, getter=_hasDisambiguationRadiusMeters) BOOL hasDisambiguationRadiusMeters;
+@property (readonly, nonatomic) BOOL hasQueryAcceleratorAffordanceEnabled;
 @property (readonly, nonatomic) BOOL hasSortPriority;
 @property (copy, nonatomic) NSString *localizedSectionHeader; // @synthesize localizedSectionHeader=_localizedSectionHeader;
 @property (readonly, nonatomic) MKMapItem *mapItem;
 @property (readonly, nonatomic, getter=_placeType) int placeType;
+@property (readonly, nonatomic) NSString *queryAcceleratorCompletionString;
 @property (readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
+@property (readonly, nonatomic) unsigned long long serverItemIndexInSection; // @synthesize serverItemIndexInSection=_serverItemIndexInSection;
+@property (readonly, nonatomic) GEOServerResultScoreMetadata *serverResultScoreMetadata;
+@property (readonly, nonatomic) unsigned long long serverSectionIndex; // @synthesize serverSectionIndex=_serverSectionIndex;
 @property (readonly, nonatomic) long long sortPriority;
 @property (copy, nonatomic) NSString *sourceID; // @synthesize sourceID=_sourceID;
 @property (readonly, nonatomic) NSString *subtitle;
@@ -45,6 +54,7 @@
 @property (readonly, nonatomic, getter=_type) long long type;
 
 - (void).cxx_destruct;
+- (id)_geoCompletionItem;
 - (id)calloutTitle;
 - (id)copyStorage;
 - (id)description;
@@ -52,7 +62,7 @@
 - (unsigned long long)hash;
 - (id)highlightsForLine:(unsigned long long)arg1;
 - (id)iconWithScale:(double)arg1;
-- (id)initWithGeoCompletionItem:(id)arg1;
+- (id)initWithGeoCompletionItem:(id)arg1 serverSectionIndex:(unsigned long long)arg2 serverItemIndexInSection:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (id)queryLine;

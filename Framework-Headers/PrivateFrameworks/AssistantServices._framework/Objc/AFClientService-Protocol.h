@@ -25,13 +25,14 @@
 - (oneway void)adviseSessionArbiterToContinueWithPreviousWinner:(BOOL)arg1;
 - (oneway void)beginUpdateOutputAudioPowerWithReply:(void (^)(AFXPCWrapper *))arg1;
 - (oneway void)boostedPreheatWithStyle:(long long)arg1 completion:(void (^)(void))arg2;
-- (oneway void)cancelRequest;
+- (oneway void)cancelRequestForReason:(long long)arg1;
 - (oneway void)clearContext;
 - (oneway void)continuePendingSpeechRequestWithId:(unsigned long long)arg1 fromTimestamp:(double)arg2;
 - (oneway void)didDismissUI;
 - (oneway void)endSession;
 - (oneway void)endUpdateOutputAudioPower;
-- (oneway void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(void (^)(unsigned int, NSError *))arg3;
+- (oneway void)fetchAppicationContextForApplicationInfo:(NSArray *)arg1 supplementalContext:(NSArray *)arg2 refID:(NSString *)arg3;
+- (oneway void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 reason:(long long)arg2 speechRequestOptions:(AFSpeechRequestOptions *)arg3 completion:(void (^)(unsigned int, NSError *))arg4;
 - (oneway void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(void (^)(void))arg2;
 - (oneway void)getDeferredObjectsWithIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)getRemoteClockTimerSnapshotWithCompletion:(void (^)(AFClockTimerSnapshot *, NSError *))arg1;
@@ -54,9 +55,7 @@
 - (oneway void)setCarDNDActive:(BOOL)arg1;
 - (oneway void)setConfiguration:(AFClientConfiguration *)arg1;
 - (oneway void)setLockState:(BOOL)arg1 showingLockScreen:(BOOL)arg2;
-- (oneway void)setMyriadDecisionResult:(BOOL)arg1;
 - (oneway void)setOverriddenApplicationContext:(NSString *)arg1 withContext:(id)arg2;
-- (oneway void)setShouldWaitForMyriad:(BOOL)arg1;
 - (oneway void)startAcousticIDRequestWithOptions:(AFSpeechRequestOptions *)arg1 context:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)startAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg1 options:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
 - (oneway void)startRecordingForPendingSpeechRequestWithOptions:(AFSpeechRequestOptions *)arg1 requestId:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;

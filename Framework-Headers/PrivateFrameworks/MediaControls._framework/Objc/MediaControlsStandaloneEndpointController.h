@@ -10,58 +10,34 @@
 #import <MediaControls/MediaControlsEndpointControllerConnectionDelegate-Protocol.h>
 #import <MediaControls/MediaControlsEndpointObserverDelegate-Protocol.h>
 
-@class MPAVRoutingController, MPCFuture, MPMRAVEndpointObserverWrapper, MSVPersistentTimer, NSString;
+@class MPAVRoutingController, MPMRAVEndpointObserverWrapper, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsStandaloneEndpointController : MediaControlsEndpointController <MPAVRoutingControllerDelegate, MediaControlsEndpointObserverDelegate, MediaControlsEndpointControllerConnectionDelegate>
 {
-    BOOL _isDeferred;
-    long long _routeType;
     NSString *_routeUID;
     MPAVRoutingController *_routingController;
     MPMRAVEndpointObserverWrapper *_endpointObserver;
-    MPCFuture *_deferredPlayerPathFuture;
-    id _deferredPlayerPathInvalidationToken;
-    MSVPersistentTimer *_deferredPlayerPathTimer;
-    NSString *_activeEndpointUID;
 }
 
-@property (strong, nonatomic) NSString *activeEndpointUID; // @synthesize activeEndpointUID=_activeEndpointUID;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) MPCFuture *deferredPlayerPathFuture; // @synthesize deferredPlayerPathFuture=_deferredPlayerPathFuture;
-@property (strong, nonatomic) id deferredPlayerPathInvalidationToken; // @synthesize deferredPlayerPathInvalidationToken=_deferredPlayerPathInvalidationToken;
-@property (strong, nonatomic) MSVPersistentTimer *deferredPlayerPathTimer; // @synthesize deferredPlayerPathTimer=_deferredPlayerPathTimer;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MPMRAVEndpointObserverWrapper *endpointObserver; // @synthesize endpointObserver=_endpointObserver;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isDeferred; // @synthesize isDeferred=_isDeferred;
-@property (nonatomic) long long routeType; // @synthesize routeType=_routeType;
 @property (strong, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property (readonly, nonatomic) MPAVRoutingController *routingController; // @synthesize routingController=_routingController;
 @property (readonly) Class superclass;
 
-+ (double)mediaRecentlyPlayedTimeout;
 - (void).cxx_destruct;
-- (void)_activeSystemRouteDidChangeNotification:(id)arg1;
-- (void)_activeSystemRouteDidChangeWithChangeType:(long long)arg1;
-- (void)_fetchActiveSystemRoute:(CDUnknownBlockType)arg1;
-- (void)_maybeRestoreDeferredPlayerPath;
-- (void)_maybeUpdateActiveSystemRoute;
-- (void)_resetDeferredPlayerPath;
-- (void)_restoreDeferredPlayerPath;
-- (void)_updateActiveSystemRoute;
+- (id)_routeForEndpoint:(void *)arg1;
 - (void)beginObserving;
 - (BOOL)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (void)dealloc;
 - (void)endObserving;
-- (void)endpointController:(id)arg1 willAttemptToConnectToRoute:(id)arg2;
-- (id)initWithActiveRouteType:(long long)arg1;
 - (id)initWithEndpoint:(id)arg1;
 - (id)initWithRouteUID:(id)arg1;
 - (id)proxyDelegate;
-- (id)routeForEndpoint:(void *)arg1;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
-- (void)setDeviceUnlocked:(BOOL)arg1;
-- (void)setOnScreen:(BOOL)arg1;
 
 @end
 

@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) NSDictionary *additionalDocumentPropertiesForWrite;
 @property (readonly, nonatomic) NSDictionary *additionalDocumentSupportPropertiesForWrite;
+@property (readonly, nonatomic) long long archiveValidationMode;
 @property (readonly, nonatomic) BOOL areNewExternalReferencesToDataAllowed;
 @property (readonly, nonatomic) NSUUID *baseUUIDForObjectUUID;
 @property (readonly, nonatomic) id<NSFilePresenter> filePresenter;
@@ -40,7 +41,6 @@
 - (BOOL)isInReadOnlyMode;
 - (NSDictionary *)packageDataForWrite;
 - (NSSet *)persistenceWarningsForData:(TSPData *)arg1 flags:(unsigned long long)arg2;
-- (NSSet *)preferredResourceRequestTagsForContext:(TSPObjectContext *)arg1;
 - (void)presentPersistenceError:(NSError *)arg1;
 - (BOOL)preserveDocumentRevisionIdentifierForSaveURL:(NSURL *)arg1;
 - (void)requestAutosave;
@@ -48,6 +48,7 @@
 - (void)resumeAutosaveWithReason:(NSString *)arg1;
 - (void)resumeSaveAndAutosaveWithReason:(NSString *)arg1;
 - (BOOL)retrievePassphraseWithConsumer:(id<TSPPassphraseConsumer>)arg1 error:(id *)arg2;
+- (BOOL)shouldAttemptRecoveryAfterOriginalDocumentURLMismatchForContext:(TSPObjectContext *)arg1;
 - (BOOL)shouldLoadAllComponentsForContext:(TSPObjectContext *)arg1 documentURL:(NSURL *)arg2;
 - (void)suspendAutosaveWithReason:(NSString *)arg1;
 - (void)suspendSaveAndAutosaveWithReason:(NSString *)arg1;

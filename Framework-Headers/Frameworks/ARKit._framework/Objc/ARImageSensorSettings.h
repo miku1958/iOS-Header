@@ -8,26 +8,28 @@
 
 #import <ARKit/NSCopying-Protocol.h>
 
-@class ARVideoFormat, AVCaptureSession, NSDictionary;
+@class ARVideoFormat, NSDictionary, NSString;
 
 @interface ARImageSensorSettings : NSObject <NSCopying>
 {
     BOOL _autoFocusEnabled;
     BOOL _mirrorVideoOutput;
-    BOOL _audioCaptureEnabled;
-    BOOL _allowCameraInMultipleForegroundAppLayout;
     BOOL _visionDataOutputEnabled;
+    BOOL _geometricDistortionCorrectionEnabled;
+    BOOL _enabled;
+    float _maxGainOverride;
     ARVideoFormat *_videoFormat;
+    NSString *_metaData;
     NSDictionary *_visionDataOutputParameters;
-    AVCaptureSession *_captureSession;
 }
 
-@property (nonatomic) BOOL allowCameraInMultipleForegroundAppLayout; // @synthesize allowCameraInMultipleForegroundAppLayout=_allowCameraInMultipleForegroundAppLayout;
-@property (nonatomic) BOOL audioCaptureEnabled; // @synthesize audioCaptureEnabled=_audioCaptureEnabled;
 @property (nonatomic) BOOL autoFocusEnabled; // @synthesize autoFocusEnabled=_autoFocusEnabled;
-@property (strong, nonatomic) AVCaptureSession *captureSession; // @synthesize captureSession=_captureSession;
+@property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (nonatomic) BOOL geometricDistortionCorrectionEnabled; // @synthesize geometricDistortionCorrectionEnabled=_geometricDistortionCorrectionEnabled;
+@property (nonatomic) float maxGainOverride; // @synthesize maxGainOverride=_maxGainOverride;
+@property (copy, nonatomic) NSString *metaData; // @synthesize metaData=_metaData;
 @property (nonatomic) BOOL mirrorVideoOutput; // @synthesize mirrorVideoOutput=_mirrorVideoOutput;
-@property (readonly, nonatomic) ARVideoFormat *videoFormat; // @synthesize videoFormat=_videoFormat;
+@property (strong, nonatomic) ARVideoFormat *videoFormat; // @synthesize videoFormat=_videoFormat;
 @property (nonatomic) BOOL visionDataOutputEnabled; // @synthesize visionDataOutputEnabled=_visionDataOutputEnabled;
 @property (strong, nonatomic) NSDictionary *visionDataOutputParameters; // @synthesize visionDataOutputParameters=_visionDataOutputParameters;
 

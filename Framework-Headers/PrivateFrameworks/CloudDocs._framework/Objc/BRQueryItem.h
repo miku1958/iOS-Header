@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <CloudDocs/NSCopying-Protocol.h>
+#import <CloudDocs/NSFileProviderItemDecorating-Protocol.h>
 #import <CloudDocs/NSFileProviderItem_Private-Protocol.h>
 #import <CloudDocs/NSSecureCoding-Protocol.h>
 
-@class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSString, NSURL;
+@class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSFileProviderItemVersion, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSSet, NSString, NSURL;
+@protocol NSFileProviderItemFlags;
 
-@interface BRQueryItem : NSObject <NSFileProviderItem_Private, NSSecureCoding, NSCopying>
+@interface BRQueryItem : NSObject <NSFileProviderItem_Private, NSFileProviderItemDecorating, NSSecureCoding, NSCopying>
 {
     NSString *_appLibraryID;
     NSString *_parentPath;
@@ -72,6 +74,7 @@
 @property (readonly, copy, nonatomic) NSDate *contentModificationDate;
 @property (readonly, copy, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) NSArray *decorations;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned short diffs;
 @property (readonly, copy, nonatomic) NSString *displayName;
@@ -80,13 +83,23 @@
 @property (readonly, nonatomic, getter=isDownloaded) BOOL downloaded;
 @property (readonly, nonatomic, getter=isDownloading) BOOL downloading;
 @property (readonly, copy, nonatomic) NSError *downloadingError;
+@property (readonly, nonatomic, getter=isExcludedFromSync) BOOL excludedFromSync;
+@property (readonly, nonatomic) NSDictionary *extendedAttributes;
 @property (readonly, nonatomic) NSNumber *favoriteRank;
 @property (readonly, nonatomic) BRFileObjectID *fileObjectID;
+@property (readonly, copy) NSString *fileSystemFilename;
 @property (readonly, copy) NSURL *fileURL;
 @property (readonly, copy, nonatomic) NSString *filename;
-@property (readonly, copy) NSString *fp_appContainerBundleIdentifier;
+@property (readonly, nonatomic) id<NSFileProviderItemFlags> flags;
+@property (readonly, nonatomic, getter=fp_isAddedByCurrentUser) BOOL fp_addedByCurrentUser;
+@property (readonly, nonatomic) NSPersonNameComponents *fp_addedByNameComponents;
+@property (readonly, copy) NSSet *fp_cloudContainerClientBundleIdentifiers;
+@property (readonly, copy) NSString *fp_cloudContainerIdentifier;
 @property (readonly, copy) NSString *fp_domainIdentifier;
 @property (readonly) BOOL fp_isContainer;
+@property (readonly) BOOL fp_isContainerPristine;
+@property (readonly, nonatomic, getter=fp_isLastModifiedByCurrentUser) BOOL fp_lastModifiedByCurrentUser;
+@property (readonly, copy) NSString *fp_parentDomainIdentifier;
 @property (readonly, copy) NSString *fp_spotlightDomainIdentifier;
 @property (readonly, getter=fp_isUbiquitous) BOOL fp_ubiquitous;
 @property (readonly, copy) NSNumber *hasUnresolvedConflicts;
@@ -108,6 +121,7 @@
 @property (readonly, nonatomic) BOOL isTrashed;
 @property (readonly, nonatomic) BOOL isUploadActive;
 @property (readonly, copy, nonatomic) NSString *itemIdentifier;
+@property (readonly, nonatomic) NSFileProviderItemVersion *itemVersion;
 @property (readonly, copy, nonatomic) NSDate *lastUsedDate;
 @property (readonly, nonatomic) NSNumber *lastUsedTime;
 @property (readonly, nonatomic) NSURL *localRepresentationURL;
@@ -130,7 +144,7 @@
 @property (readonly, nonatomic) NSNumber *size;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSData *tagData;
-@property (readonly, copy) NSArray *tags;
+@property (readonly, nonatomic, getter=isTopLevelSharedItem) BOOL topLevelSharedItem;
 @property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
 @property (readonly, copy, nonatomic) NSString *typeIdentifier;
 @property (readonly, nonatomic, getter=isUploaded) BOOL uploaded;
@@ -164,6 +178,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)filePath;
 - (id)fileSize;
+- (id)fp_appContainerBundleIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQueryItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

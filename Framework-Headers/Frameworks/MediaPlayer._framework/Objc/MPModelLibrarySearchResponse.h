@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayer/MPModelResponse.h>
+#import <MediaPlayer/MPModelLibraryResponse.h>
 
-@interface MPModelLibrarySearchResponse : MPModelResponse
+@interface MPModelLibrarySearchResponse : MPModelLibraryResponse
 {
 }
 

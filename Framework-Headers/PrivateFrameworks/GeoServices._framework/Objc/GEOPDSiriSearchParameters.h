@@ -8,33 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOPDIndexQueryNode, GEOPDRecentRouteInfo, GEOPDViewportInfo, NSMutableArray, NSString, PBUnknownFields;
+@class GEOAddress, GEOPDIndexQueryNode, GEOPDRecentRouteInfo, GEOPDViewportInfo, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSiriSearchParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOAddress *_address;
     NSMutableArray *_businessCategoryFilters;
     GEOPDIndexQueryNode *_indexFilter;
-    unsigned int _maxResultCount;
     GEOPDRecentRouteInfo *_recentRouteInfo;
     NSString *_searchString;
     NSMutableArray *_searchSubstringDescriptors;
-    int _sortOrder;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _maxResultCount;
+    int _sortOrder;
     BOOL _isStrictMapRegion;
     BOOL _structuredSearch;
     struct {
-        unsigned int maxResultCount:1;
-        unsigned int sortOrder:1;
-        unsigned int isStrictMapRegion:1;
-        unsigned int structuredSearch:1;
-    } _has;
+        unsigned int has_maxResultCount:1;
+        unsigned int has_sortOrder:1;
+        unsigned int has_isStrictMapRegion:1;
+        unsigned int has_structuredSearch:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_address:1;
+        unsigned int read_businessCategoryFilters:1;
+        unsigned int read_indexFilter:1;
+        unsigned int read_recentRouteInfo:1;
+        unsigned int read_searchString:1;
+        unsigned int read_searchSubstringDescriptors:1;
+        unsigned int read_viewportInfo:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_address:1;
+        unsigned int wrote_businessCategoryFilters:1;
+        unsigned int wrote_indexFilter:1;
+        unsigned int wrote_recentRouteInfo:1;
+        unsigned int wrote_searchString:1;
+        unsigned int wrote_searchSubstringDescriptors:1;
+        unsigned int wrote_viewportInfo:1;
+        unsigned int wrote_maxResultCount:1;
+        unsigned int wrote_sortOrder:1;
+        unsigned int wrote_isStrictMapRegion:1;
+        unsigned int wrote_structuredSearch:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOAddress *address; // @synthesize address=_address;
-@property (strong, nonatomic) NSMutableArray *businessCategoryFilters; // @synthesize businessCategoryFilters=_businessCategoryFilters;
+@property (strong, nonatomic) GEOAddress *address;
+@property (strong, nonatomic) NSMutableArray *businessCategoryFilters;
 @property (readonly, nonatomic) BOOL hasAddress;
 @property (readonly, nonatomic) BOOL hasIndexFilter;
 @property (nonatomic) BOOL hasIsStrictMapRegion;
@@ -44,27 +66,38 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasSortOrder;
 @property (nonatomic) BOOL hasStructuredSearch;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
-@property (strong, nonatomic) GEOPDIndexQueryNode *indexFilter; // @synthesize indexFilter=_indexFilter;
-@property (nonatomic) BOOL isStrictMapRegion; // @synthesize isStrictMapRegion=_isStrictMapRegion;
-@property (nonatomic) unsigned int maxResultCount; // @synthesize maxResultCount=_maxResultCount;
-@property (strong, nonatomic) GEOPDRecentRouteInfo *recentRouteInfo; // @synthesize recentRouteInfo=_recentRouteInfo;
-@property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-@property (strong, nonatomic) NSMutableArray *searchSubstringDescriptors; // @synthesize searchSubstringDescriptors=_searchSubstringDescriptors;
-@property (nonatomic) int sortOrder; // @synthesize sortOrder=_sortOrder;
-@property (nonatomic) BOOL structuredSearch; // @synthesize structuredSearch=_structuredSearch;
+@property (strong, nonatomic) GEOPDIndexQueryNode *indexFilter;
+@property (nonatomic) BOOL isStrictMapRegion;
+@property (nonatomic) unsigned int maxResultCount;
+@property (strong, nonatomic) GEOPDRecentRouteInfo *recentRouteInfo;
+@property (strong, nonatomic) NSString *searchString;
+@property (strong, nonatomic) NSMutableArray *searchSubstringDescriptors;
+@property (nonatomic) int sortOrder;
+@property (nonatomic) BOOL structuredSearch;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
 + (Class)businessCategoryFilterType;
++ (BOOL)isValid:(id)arg1;
 + (Class)searchSubstringDescriptorType;
 - (void).cxx_destruct;
 - (int)StringAsSortOrder:(id)arg1;
+- (void)_addNoFlagsBusinessCategoryFilter:(id)arg1;
+- (void)_addNoFlagsSearchSubstringDescriptor:(id)arg1;
+- (void)_readAddress;
+- (void)_readBusinessCategoryFilters;
+- (void)_readIndexFilter;
+- (void)_readRecentRouteInfo;
+- (void)_readSearchString;
+- (void)_readSearchSubstringDescriptors;
+- (void)_readViewportInfo;
 - (void)addBusinessCategoryFilter:(id)arg1;
 - (void)addSearchSubstringDescriptor:(id)arg1;
 - (id)businessCategoryFilterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)businessCategoryFiltersCount;
 - (void)clearBusinessCategoryFilters;
 - (void)clearSearchSubstringDescriptors;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -72,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)searchSubstringDescriptorAtIndex:(unsigned long long)arg1;
 - (unsigned long long)searchSubstringDescriptorsCount;

@@ -15,14 +15,14 @@
     PLPhotoLibrary *_photoLibrary;
 }
 
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_group> *group; // @synthesize group=_group;
-@property (readonly, strong, nonatomic) PLPhotoLibrary *photoLibrary;
+@property (readonly, nonatomic) NSObject<OS_dispatch_group> *group; // @synthesize group=_group;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 
+- (void).cxx_destruct;
 - (void)_logAssets:(id)arg1 forAlbum:(id)arg2 indent:(unsigned long long)arg3;
 - (BOOL)compressFileFromPath:(id)arg1 toPath:(id)arg2;
 - (BOOL)copyFilesMatching:(id)arg1 andExcluding:(id)arg2 fromPath:(id)arg3 toPath:(id)arg4 usingCompression:(BOOL)arg5;
 - (void)createSnapshot;
-- (void)dealloc;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (void)logAlbum:(id)arg1 index:(unsigned long long)arg2 indent:(unsigned long long)arg3 completeMetadata:(BOOL)arg4 printAssets:(BOOL)arg5;
 - (void)logAlbumLists;

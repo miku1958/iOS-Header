@@ -27,6 +27,9 @@
 @property (copy, nonatomic) HKStrokeStyle *strokeStyle; // @synthesize strokeStyle=_strokeStyle;
 @property (copy, nonatomic) HKStrokeStyle *tiledStrokeStyle; // @synthesize tiledStrokeStyle=_tiledStrokeStyle;
 
++ (id)_sleepCircleImageWithWidth:(double)arg1 diameter:(double)arg2 color:(id)arg3;
++ (id)asleepImageCompatibleWithFont:(id)arg1 withColor:(id)arg2;
++ (id)inBedImageCompatibleWithFont:(id)arg1 withColor:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addAnnotationForValue:(double)arg1;
 - (void)_assertCoordinateCompatibility:(id)arg1;

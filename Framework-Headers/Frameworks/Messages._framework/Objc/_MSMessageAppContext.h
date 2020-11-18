@@ -18,7 +18,6 @@
     NSMapTable *_conversationsByIdentifier;
     id<_MSMessageComposeExtensionImplProtocol> _containingContext;
     MSConversation *_activeConversation;
-    id<_MSMessageComposeHostImplProtocol> _hostContext;
 }
 
 @property (readonly, nonatomic) MSConversation *activeConversation; // @synthesize activeConversation=_activeConversation;
@@ -26,7 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<_MSMessageComposeHostImplProtocol> hostContext; // @synthesize hostContext=_hostContext;
+@property (strong, nonatomic) id<_MSMessageComposeHostImplProtocol> hostContext;
 @property (nonatomic) unsigned long long presentationContext;
 @property (nonatomic) unsigned long long presentationStyle;
 @property (readonly, weak, nonatomic) UIViewController *stickerViewController;

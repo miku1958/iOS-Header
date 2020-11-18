@@ -4,20 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUActivity.h>
+#import <PhotosUICore/PXActivity.h>
+
+#import <PhotosUI/PXFeedbackImageQualityUIViewControllerDelegate-Protocol.h>
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PUInternalImageQualityFeedbackActivity : PUActivity
+@interface PUInternalImageQualityFeedbackActivity : PXActivity <PXFeedbackImageQualityUIViewControllerDelegate>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (long long)activityCategory;
-- (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
+- (id)activityViewController;
 - (id)assets;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
-- (void)performActivity;
+- (void)feedbackImageQualityUIViewController:(id)arg1 didFinish:(BOOL)arg2;
 
 @end
 

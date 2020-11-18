@@ -11,7 +11,6 @@
 
 @interface MFSecureMIMECompositionManager : NSObject
 {
-    id<MFSecureMIMECompositionManagerDelegate> _delegate;
     NSLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
     MailAccount *_sendingAccount;
@@ -30,9 +29,10 @@
     unsigned long long _encryptionStatusSemaphore;
     unsigned long long _signingStatusSemaphore;
     BOOL _invalidated;
+    id<MFSecureMIMECompositionManagerDelegate> _delegate;
 }
 
-@property id<MFSecureMIMECompositionManagerDelegate> delegate;
+@property (weak) id<MFSecureMIMECompositionManagerDelegate> delegate;
 @property (readonly) int encryptionPolicy;
 @property (readonly) int encryptionStatus;
 @property (readonly) NSSet *recipients;
@@ -45,6 +45,7 @@
 + (struct __SecIdentity *)copyEncryptionIdentityForAccount:(id)arg1 sendingAddress:(id)arg2 error:(id *)arg3;
 + (struct __SecIdentity *)copySigningIdentityForAccount:(id)arg1 sendingAddress:(id)arg2 error:(id *)arg3;
 + (unsigned int)evaluateTrustForSigningCertificate:(struct __SecCertificate *)arg1 sendingAddress:(id)arg2;
+- (void).cxx_destruct;
 - (void)_determineEncryptionStatusWithNewRecipients:(id)arg1;
 - (void)_determineEncryptionStatusWithSendingAddress:(id)arg1;
 - (void)_determineIdentitiesWithSendingAddress:(id)arg1 forSigning:(BOOL)arg2 encryption:(BOOL)arg3;

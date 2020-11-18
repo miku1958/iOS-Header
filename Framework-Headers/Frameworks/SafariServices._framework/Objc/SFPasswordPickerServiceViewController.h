@@ -8,6 +8,7 @@
 
 #import <SafariServices/SFCredentialProviderExtensionManagerObserver-Protocol.h>
 #import <SafariServices/SFPasswordPickerServiceViewControllerProtocol-Protocol.h>
+#import <SafariServices/UIPresentationControllerDelegatePrivate-Protocol.h>
 #import <SafariServices/_ASCredentialListViewControllerDelegate-Protocol.h>
 #import <SafariServices/_ASPasswordCredentialAuthenticationViewControllerDelegate-Protocol.h>
 #import <SafariServices/_SFAuthenticationClient-Protocol.h>
@@ -16,7 +17,7 @@
 @class NSArray, NSString, NSURL, SFPasswordPickerViewController, _ASPasswordCredentialAuthenticationViewController, _SFAuthenticationContext;
 
 __attribute__((visibility("hidden")))
-@interface SFPasswordPickerServiceViewController : SFPasswordServiceViewController <SFCredentialProviderExtensionManagerObserver, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate, SFPasswordPickerServiceViewControllerProtocol>
+@interface SFPasswordPickerServiceViewController : SFPasswordServiceViewController <SFCredentialProviderExtensionManagerObserver, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate, UIPresentationControllerDelegatePrivate, SFPasswordPickerServiceViewControllerProtocol>
 {
     _ASPasswordCredentialAuthenticationViewController *_externalCredentialViewController;
     SFPasswordPickerViewController *_passwordPickerViewController;
@@ -61,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)passcodePromptForContext:(id)arg1;
 - (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)setAuthenticationGracePeriod:(double)arg1;
 - (void)setExternallyVerifiedAndApprovedSharedWebCredentialsDomains:(id)arg1;
 - (void)setRemoteAppID:(id)arg1;

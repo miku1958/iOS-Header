@@ -22,6 +22,7 @@
 + (void)_fetchViewController:(id)arg1 requestIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_fetchViewControllerForExtension:(id)arg1 inputItems:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)exportedInterface;
++ (BOOL)isIOSMacExtension:(id)arg1;
 + (id)serviceViewControllerInterface;
 - (id)exportedInterface;
 - (id)serviceViewControllerInterface;

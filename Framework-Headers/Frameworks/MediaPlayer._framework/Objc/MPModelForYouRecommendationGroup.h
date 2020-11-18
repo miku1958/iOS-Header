@@ -11,8 +11,11 @@
 @interface MPModelForYouRecommendationGroup : MPModelObject
 {
     NSURL *_refreshURL;
+    BOOL _groupRecommendation;
 }
 
+@property (nonatomic) BOOL displaysAsGridCellInCarPlay; // @dynamic displaysAsGridCellInCarPlay;
+@property (nonatomic, getter=isGroupRecommendation) BOOL groupRecommendation; // @synthesize groupRecommendation=_groupRecommendation;
 @property (nonatomic) unsigned long long groupType; // @dynamic groupType;
 @property (strong, nonatomic) NSDate *lastUpdatedDate; // @dynamic lastUpdatedDate;
 @property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @dynamic loadAdditionalContentURL;
@@ -22,6 +25,7 @@
 @property (copy, nonatomic) NSArray *subgroups; // @dynamic subgroups;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 
++ (id)__displaysAsGridCellInCarPlay_KEY;
 + (id)__groupType_KEY;
 + (id)__lastUpdatedDate_KEY;
 + (id)__loadAdditionalContentURL_KEY;

@@ -82,8 +82,6 @@
 - (void)activeAccountsChanged:(id)arg1 forService:(id)arg2;
 - (void)addHandler:(id)arg1;
 - (void)databaseChatSpamUpdated:(id)arg1;
-- (void)databaseFull;
-- (void)databaseNoLongerFull;
 - (void)databaseUpdated:(id)arg1;
 - (void)defaultsChanged:(id)arg1 forService:(id)arg2;
 - (void)didAttemptToDisableAllDevicesResult:(BOOL)arg1;
@@ -101,10 +99,13 @@
 - (void)fileTransferHighQualityDownloadFailed:(id)arg1;
 - (void)fileTransfers:(id)arg1 createdWithLocalPaths:(id)arg2;
 - (void)forwardInvocation:(id)arg1;
+- (void)handlesSharingNicknamesDidChange;
 - (void)holdChatMessages;
 - (id)init;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (void)nicknameRequestResponse:(id)arg1 encodedNicknameData:(id)arg2;
 - (void)oneTimeCodesDidChange:(id)arg1;
+- (void)pendingNicknamesOrHandledNicknamesDidChange;
 - (void)persistentProperty:(id)arg1 changedTo:(id)arg2 from:(id)arg3;
 - (void)pinCodeAlertCompleted:(id)arg1 deviceName:(id)arg2 deviceType:(id)arg3 phoneNumber:(id)arg4 responseFromDevice:(BOOL)arg5 wasCancelled:(BOOL)arg6;
 - (void)property:(id)arg1 changedTo:(id)arg2 from:(id)arg3;
@@ -117,9 +118,12 @@
 - (id)serviceWithName:(id)arg1;
 - (void)services:(id)arg1 properties:(id)arg2 persistentProperties:(id)arg3;
 - (void)setupComplete:(BOOL)arg1 info:(id)arg2;
-- (void)standaloneFileTransferRegistered:(id)arg1;
 - (void)updateCloudKitState;
 - (void)updateCloudKitStateWithDictionary:(id)arg1;
+- (void)updateNicknameData:(id)arg1;
+- (void)updateNicknameHandlesSharing:(id)arg1 handlesBlocked:(id)arg2;
+- (void)updatePendingNicknameUpdates:(id)arg1 handledNicknameUpdates:(id)arg2;
+- (void)updatePersonalNickname:(id)arg1;
 - (id)valueOfPersistentProperty:(id)arg1;
 - (id)valueOfProperty:(id)arg1;
 - (void)vcCapabilitiesChanged:(unsigned long long)arg1;

@@ -26,21 +26,21 @@
 }
 
 @property (strong, nonatomic) id<MFCollectingDataConsumer> alternatePartConsumer; // @synthesize alternatePartConsumer=_alternatePartConsumer;
-@property (readonly, strong, nonatomic) NSMutableData *bodyData; // @synthesize bodyData=_bodyData;
+@property (readonly, nonatomic) NSMutableData *bodyData; // @synthesize bodyData=_bodyData;
 @property (strong, nonatomic) id<MFMessageDataConsumerFactory> consumerFactory; // @synthesize consumerFactory=_consumerFactory;
 @property (strong, nonatomic) id<MFCollectingDataConsumer> dataConsumer; // @synthesize dataConsumer=_dataConsumer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) DAMailMessage *message; // @synthesize message=_message;
+@property (readonly, nonatomic) DAMailMessage *message; // @synthesize message=_message;
 @property (nonatomic) int requestedFormat; // @synthesize requestedFormat=_requestedFormat;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeOfLastActivity; // @synthesize timeOfLastActivity=_timeOfLastActivity;
 
+- (void).cxx_destruct;
 - (void)consumeData:(char *)arg1 length:(int)arg2 format:(int)arg3 mailMessage:(id)arg4;
 - (id)data;
 - (id)dataConsumerForPart:(id)arg1;
-- (void)dealloc;
 - (BOOL)didBeginStreaming;
 - (void)didEndStreamingForMailMessage:(id)arg1;
 - (BOOL)shouldBeginStreamingForMailMessage:(id)arg1 format:(int)arg2;

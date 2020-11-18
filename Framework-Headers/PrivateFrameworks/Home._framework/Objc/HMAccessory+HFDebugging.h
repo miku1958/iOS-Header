@@ -6,17 +6,106 @@
 
 #import <HomeKit/HMAccessory.h>
 
+#import <Home/HFFavoritable-Protocol.h>
+#import <Home/HFHomeContainedObject-Protocol.h>
+#import <Home/HFReorderableHomeKitObject-Protocol.h>
+#import <Home/HFRoomContextProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class HFServiceNameComponents, HMHome, HMResidentDevice, HMRoom, NSArray, NSDate, NSSet, NSString, NSUUID;
 
-@interface HMAccessory (HFDebugging) <HFStateDumpBuildable>
+@interface HMAccessory (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeContainedObject, HFRoomContextProviding, HFReorderableHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long hf_appPunchOutReason;
+@property (readonly, nonatomic) BOOL hf_areAllServicesInGroups;
+@property (readonly, nonatomic) NSArray *hf_bridgedAccessories;
+@property (readonly, copy, nonatomic) NSSet *hf_componentServices;
+@property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
+@property (readonly, copy, nonatomic) NSString *hf_displayName;
+@property (readonly, copy, nonatomic) NSSet *hf_displayNamesForVisibleTiles;
+@property (readonly, nonatomic) BOOL hf_fake8021xNetworkSymptom;
+@property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
+@property (readonly, nonatomic) BOOL hf_fakeGeneralFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeHardwareFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeHomeKitSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeICloudSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeITunesSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeInternetFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeNetworkNotShareableSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeNetworkProfileFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeNetworkProfileInstallSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeShouldDisplayManualFixOption;
+@property (readonly, nonatomic) BOOL hf_fakeUnreachableError;
+@property (readonly, nonatomic) BOOL hf_fakeVPNProfileExpired;
+@property (nonatomic) BOOL hf_fakeWiFiMismatchSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeWiFiPerformanceSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeWiFiSymptom;
+@property (readonly, nonatomic) BOOL hf_hasSetFavorite;
+@property (readonly, nonatomic) BOOL hf_isAirPortExpressSpeaker;
+@property (readonly, nonatomic) BOOL hf_isAppleTV;
+@property (readonly, nonatomic) BOOL hf_isBridge;
+@property (readonly, nonatomic) BOOL hf_isCamera;
+@property (readonly, nonatomic) BOOL hf_isDumbSpeaker;
+@property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_isHomePod;
+@property (readonly, nonatomic) BOOL hf_isMediaAccessory;
+@property (readonly, nonatomic) BOOL hf_isMultiServiceAccessory;
+@property (readonly, nonatomic) BOOL hf_isNetworkRouter;
+@property (readonly, nonatomic) BOOL hf_isNonServiceBasedAccessory;
+@property (readonly, nonatomic) BOOL hf_isNotificationSupportedCamera;
+@property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
+@property (readonly, nonatomic) BOOL hf_isRemoteControl;
+@property (readonly, nonatomic) BOOL hf_isSingleServiceAccessory;
+@property (readonly, nonatomic) BOOL hf_isTelevision;
+@property (readonly, nonatomic) BOOL hf_isVisibleAccessory;
+@property (readonly, nonatomic) BOOL hf_isVisibleAsBridge;
+@property (readonly, nonatomic) HMResidentDevice *hf_linkedResidentDevice;
+@property (readonly, nonatomic) unsigned long long hf_mediaAccessControlCapabilities;
+@property (readonly, nonatomic) BOOL hf_needsReprovisioningCheck;
+@property (readonly, nonatomic) BOOL hf_needsSoftwareUpdateToSupportBeingAddedToMediaSystem;
+@property (readonly, nonatomic) NSArray *hf_networkConfigurationProfiles;
+@property (readonly, nonatomic) NSArray *hf_networkRouterProfiles;
+@property (readonly, nonatomic) unsigned long long hf_numberOfProgrammableSwitches;
+@property (readonly, nonatomic) HMAccessory *hf_owningBridgeAccessory;
+@property (readonly, weak, nonatomic) HMRoom *hf_parentRoom;
+@property (readonly, nonatomic) NSSet *hf_programmableSwitchNamespaceServices;
+@property (readonly, nonatomic) BOOL hf_requiresFirmwareUpdate;
+@property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) NSSet *hf_servicesBehindBridge;
+@property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
+@property (readonly, copy, nonatomic) NSSet *hf_standardServices;
+@property (readonly, copy, nonatomic) NSSet *hf_visibleServices;
+@property (readonly, weak, nonatomic) HMHome *home;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
+- (void)_pushSymptomUpdate;
+- (id)accessories;
+- (BOOL)hf_anyServiceIsFavorite;
+- (id)hf_identifyHomePod;
+- (BOOL)hf_isValidObject;
+- (id)hf_primaryService;
+- (id)hf_serviceOfType:(id)arg1;
+- (BOOL)hf_shouldDisplayManualFixOptionForSymptom:(long long)arg1;
+- (BOOL)hf_shouldShowSoftwareUpdateInfo;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_updateDateAdded:(id)arg1;
+- (id)hf_updateIsFavorite:(BOOL)arg1;
 @end
 

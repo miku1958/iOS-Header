@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_prepareLayer:(id)arg1 forView:(id)arg2;
 - (id)blinkAnimation;
 - (void)interaction:(id)arg1 didChangeWithContext:(id)arg2;
 

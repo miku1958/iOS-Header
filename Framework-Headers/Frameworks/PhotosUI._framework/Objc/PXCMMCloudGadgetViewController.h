@@ -23,10 +23,10 @@
     PXCMMCloudView *_cloudView;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
 @property (strong, nonatomic) PXCMMCloudView *cloudView; // @synthesize cloudView=_cloudView;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXCMMCloudGadgetViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

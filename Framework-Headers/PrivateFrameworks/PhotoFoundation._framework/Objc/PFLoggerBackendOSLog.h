@@ -12,11 +12,12 @@
 {
     NSMutableDictionary *_osLogs;
     NSString *_sender;
+    struct os_unfair_lock_s _lock;
 }
 
 + (id)backendsFromUserDefaultsWithLogLevel:(int)arg1;
 - (void).cxx_destruct;
-- (void)_logFromCodeLocation:(CDStruct_98c8119d)arg1 subsystem:(id)arg2 type:(unsigned int)arg3 message:(const char *)arg4;
+- (void)_logFromCodeLocation:(CDStruct_98c8119d)arg1 subsystem:(id)arg2 type:(unsigned int)arg3;
 - (BOOL)allowsConcurrentAccess;
 - (BOOL)formatsMessage;
 - (id)initWithSender:(id)arg1;

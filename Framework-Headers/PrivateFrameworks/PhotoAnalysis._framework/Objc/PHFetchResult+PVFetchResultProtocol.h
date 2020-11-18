@@ -16,5 +16,7 @@
 @property (readonly, nonatomic) NSArray *fetchedObjects;
 
 - (id)allObjects;
+- (id)resultsAsArray;
+- (id)resultsAsSet;
 @end
 

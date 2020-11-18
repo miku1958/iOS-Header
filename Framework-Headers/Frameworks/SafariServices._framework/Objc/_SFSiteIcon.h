@@ -10,11 +10,12 @@
 {
 }
 
++ (long long)_defaultIconSize;
 + (double)cornerRadius;
-+ (id)defaultBackgroundColor;
 + (id)defaultGlyph;
 + (id)defaultIconKeyColor;
 + (struct CGSize)defaultSize;
++ (double)fontPointSizeForIconSize:(long long)arg1;
 + (struct CGSize)minimumAcceptableSizeForDownloadedIcon;
 + (id)precompositedDefaultIcon;
 + (struct CGSize)sizeForIconSize:(long long)arg1;

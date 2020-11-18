@@ -23,8 +23,8 @@
 - (void).cxx_destruct;
 - (id)_convertIndexPathToSuper:(id)arg1;
 - (void)addRouteData:(id)arg1 hasFinishedQuery:(BOOL)arg2;
-- (id)initWithSample:(id)arg1 delegate:(id)arg2;
-- (id)initWithWorkoutRoute:(id)arg1 healthStore:(id)arg2 delegate:(id)arg3;
+- (id)initWithSample:(id)arg1 usingInsetStyling:(BOOL)arg2 delegate:(id)arg3;
+- (id)initWithWorkoutRoute:(id)arg1 healthStore:(id)arg2 usingInsetStyling:(BOOL)arg3 delegate:(id)arg4;
 - (void)loadRoute;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)parseAndDisplayRouteData;

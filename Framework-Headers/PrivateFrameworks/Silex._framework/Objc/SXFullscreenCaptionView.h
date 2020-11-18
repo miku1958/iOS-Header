@@ -72,7 +72,6 @@
 - (void)didMoveToSuperview;
 - (BOOL)forceFullExpandsionMode;
 - (struct CGRect)frameWithSuperview:(id)arg1 size:(struct CGSize)arg2 forExpansionMode:(int)arg3;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleSwipeGestureRecognizer:(id)arg1;
 - (void)handleTapGestureRecognizer:(id)arg1;

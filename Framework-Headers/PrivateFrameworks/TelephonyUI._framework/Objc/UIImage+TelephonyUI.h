@@ -7,33 +7,54 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (TelephonyUI)
++ (id)_tpImageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)favoritesAudioGlyphImage;
++ (id)favoritesGlyphForSymbolType:(long long)arg1;
 + (id)favoritesMailGlyphImage;
 + (id)favoritesMessageGlyphImage;
 + (id)favoritesTTYDirectGlyphImage;
 + (id)favoritesTTYRelayGlyphImage;
 + (id)favoritesVideoGlyphImage;
-+ (id)favoritesWidgetAudioGlyphImage;
-+ (id)favoritesWidgetMailGlyphImage;
-+ (id)favoritesWidgetMessageGlyphImage;
-+ (id)favoritesWidgetTTYDirectGlyphImage;
-+ (id)favoritesWidgetTTYRelayGlyphImage;
-+ (id)favoritesWidgetVideoGlyphImage;
++ (id)recentsGlyphForSymbolType:(long long)arg1;
++ (id)recentsOutgoingAudioCallGlyphImage;
++ (id)recentsOutgoingVideoCallGlyphImage;
++ (id)recentsRTTChevronImage;
++ (id)recentsTTYDirectGlyphImage;
++ (id)recentsTTYGlyphImage;
++ (id)recentsTTYRelayGlyphImage;
++ (id)recentsVerifiedCheckmarkImage;
++ (long long)scaleForTPScale:(long long)arg1;
++ (id)systemImageNameForSymbolType:(long long)arg1;
 + (id)telephonyUIActionButtonGlyphImage;
 + (id)telephonyUIImageNamed:(id)arg1;
++ (id)telephonyUIInfoButtonGlyphImage;
 + (id)telephonyUIUnreadIndicatorGlyphImage;
 + (id)telephonyUI_AudioControlsGlyphForDeviceType:(long long)arg1;
 + (id)telephonyUI_AudioRouteGlyphForDeviceType:(long long)arg1;
-+ (id)telephonyUI_BluetoothAudioControlGlyphImage;
++ (id)telephonyUI_BluetoothAudioControlsGlyphImage;
 + (id)telephonyUI_BluetoothAudioRouteGlyphImage;
 + (id)telephonyUI_CarPlayAudioRouteGlyphImage;
++ (id)telephonyUI_headphonesAudioControlsGlyphImage;
 + (id)telephonyUI_headphonesAudioRouteGlyphImage;
 + (id)telephonyUI_iPadAudioRouteGlyphImage;
 + (id)telephonyUI_iPhoneAudioRouteGlyphImage;
 + (id)telephonyUI_iPodAudioRouteGlyphImage;
 + (id)telephonyUI_muteAudioRouteGlyphImage;
 + (id)telephonyUI_speakerAudioRouteGlyphImage;
++ (id)tpImageForSymbolType:(long long)arg1 configuration:(id)arg2;
++ (id)tpImageForSymbolType:(long long)arg1 pointSize:(double)arg2;
++ (id)tpImageForSymbolType:(long long)arg1 textStyle:(id)arg2 scale:(long long)arg3 isStaticSize:(BOOL)arg4;
++ (id)tpImageNamed:(id)arg1 inBundle:(id)arg2;
++ (id)voicemailAudioRouteGlyphImage;
++ (id)voicemailDeleteGlyphImage;
++ (id)voicemailDialRequestGlyphImage;
++ (id)voicemailGlyphForSymbolType:(long long)arg1;
++ (id)voicemailPauseGlyphImage;
++ (id)voicemailPlayGlyphImage;
++ (id)voicemailReportFeedbackGlyphImage;
++ (id)voicemailUndeleteGlyphImage;
 - (id)imageWithEtchedBorderOfColor:(id)arg1 radius:(double)arg2;
 - (id)imageWithShadow:(id)arg1;
+- (id)tpFlattenedWithColor:(id)arg1;
 @end
 

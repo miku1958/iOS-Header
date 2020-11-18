@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoardServices/BSXPCCoding-Protocol.h>
+#import <SpringBoardServices/BSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface SBSUnlockOptions : NSObject <BSXPCCoding>
+@interface SBSUnlockOptions : NSObject <BSXPCCoding, BSXPCSecureCoding>
 {
     BOOL _aboveOtherContexts;
 }
@@ -21,7 +22,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsBSXPCSecureCoding;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 
 @end

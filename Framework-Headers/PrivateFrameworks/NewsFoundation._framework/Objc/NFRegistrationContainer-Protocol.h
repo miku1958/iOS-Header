@@ -6,11 +6,12 @@
 
 #import <NewsFoundation/NSObject-Protocol.h>
 
-@class NFDefinition, NSString, Protocol;
+@class NFDefinition, NFKey, NSString, Protocol;
 
 @protocol NFRegistrationContainer <NSObject>
 - (NFDefinition *)registerClass:(Class)arg1 factory:(id (^)(id<NFResolver>))arg2;
 - (NFDefinition *)registerClass:(Class)arg1 name:(NSString *)arg2 factory:(id (^)(id<NFResolver>))arg3;
+- (NFDefinition *)registerKey:(NFKey *)arg1 factory:(id (^)(id<NFResolver>))arg2;
 - (NFDefinition *)registerProtocol:(Protocol *)arg1 factory:(id (^)(id<NFResolver>))arg2;
 - (NFDefinition *)registerProtocol:(Protocol *)arg1 name:(NSString *)arg2 factory:(id (^)(id<NFResolver>))arg3;
 - (NFDefinition *)unsafeRegisterForKey:(NSString *)arg1 name:(NSString *)arg2 factory:(id (^)(id<NFResolver>))arg3;

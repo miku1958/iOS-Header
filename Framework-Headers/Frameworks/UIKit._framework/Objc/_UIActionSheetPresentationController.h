@@ -14,12 +14,14 @@
 @interface _UIActionSheetPresentationController : UIPopoverPresentationController <_UIActionSheetCompactPresentationControllerDelegate>
 {
     BOOL _dismissActionUsesShorterHeightWhenCompactVertically;
+    BOOL __shouldUseCompactPresentationControllerWhenPresentedInSheet;
     BOOL _avoidsKeyboardDisabled;
     NSString *_dismissActionTitle;
     id<UIActionSheetPresentationControllerDelegate> _actionSheetDelegate;
     _UIActionSheetCompactPresentationController *_compactPresentationController;
 }
 
+@property (nonatomic, setter=_setShouldUseCompactPresentationControllerWhenPresentedInSheet:) BOOL _shouldUseCompactPresentationControllerWhenPresentedInSheet; // @synthesize _shouldUseCompactPresentationControllerWhenPresentedInSheet=__shouldUseCompactPresentationControllerWhenPresentedInSheet;
 @property (weak, nonatomic) id<UIActionSheetPresentationControllerDelegate> actionSheetDelegate; // @synthesize actionSheetDelegate=_actionSheetDelegate;
 @property (nonatomic) BOOL avoidsKeyboardDisabled; // @synthesize avoidsKeyboardDisabled=_avoidsKeyboardDisabled;
 @property (strong, nonatomic) _UIActionSheetCompactPresentationController *compactPresentationController; // @synthesize compactPresentationController=_compactPresentationController;

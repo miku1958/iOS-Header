@@ -10,7 +10,7 @@
 #import <CloudKitDaemon/CKDURLRequestAuthRetryDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDURLRequestMetricsDelegate-Protocol.h>
 
-@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationResult, CKTimeLogger, NSDate, NSError, NSMutableArray, NSNumber, NSObject, NSString;
+@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationResult, NSDate, NSError, NSMutableArray, NSNumber, NSObject, NSString;
 @protocol NSObject, OS_dispatch_group, OS_dispatch_queue, OS_os_activity;
 
 __attribute__((visibility("hidden")))
@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
     BOOL _useClearAssetEncryption;
     BOOL _isProxyOperation;
     BOOL _shouldPipelineFetchAllChangesRequests;
+    BOOL _didAttemptDugongKeyRoll;
     _Atomic int _pcsWaitCount;
     CKDURLRequest *_request;
-    CKTimeLogger *_timeLogger;
     NSDate *_startDate;
     CKDOperation *_parentOperation;
     CKDClientContext *_context;
@@ -64,11 +64,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceIdentifier;
-@property (readonly, nonatomic) unsigned long long discretionaryNetworkBehavior;
+@property (nonatomic) BOOL didAttemptDugongKeyRoll; // @synthesize didAttemptDugongKeyRoll=_didAttemptDugongKeyRoll;
+@property (readonly, nonatomic) unsigned long long discretionaryWhenBackgroundedState;
+@property (readonly, nonatomic) unsigned long long duetPreClearedMode;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSMutableArray *finishedChildOperationIDs; // @synthesize finishedChildOperationIDs=_finishedChildOperationIDs;
 @property (readonly, nonatomic) NSString *flowControlKey;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCloudKitSupportOperation;
 @property (nonatomic) BOOL isExecuting; // @synthesize isExecuting=_isExecuting;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
 @property (readonly, nonatomic) BOOL isLongLived;
@@ -90,6 +93,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKDURLRequest *request; // @synthesize request=_request;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletedBlock; // @synthesize requestCompletedBlock=_requestCompletedBlock;
 @property (strong, nonatomic) NSMutableArray *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
+@property (readonly, nonatomic) BOOL resolvedAutomaticallyRetryNetworkFailures;
+@property (readonly, nonatomic) unsigned long long resolvedDiscretionaryNetworkBehavior;
 @property (readonly, nonatomic) BOOL shouldCheckAppVersion;
 @property (nonatomic) BOOL shouldPipelineFetchAllChangesRequests; // @synthesize shouldPipelineFetchAllChangesRequests=_shouldPipelineFetchAllChangesRequests;
 @property (readonly, nonatomic) BOOL shouldSkipZonePCSUpdate;
@@ -99,7 +104,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long state;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *stateTransitionGroup; // @synthesize stateTransitionGroup=_stateTransitionGroup;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
+@property (readonly, nonatomic) unsigned long long systemScheduler;
 @property (readonly, nonatomic) double timeoutIntervalForRequest;
 @property (readonly, nonatomic) double timeoutIntervalForResource;
 @property (readonly, weak, nonatomic) CKDOperation *topmostParentOperation;
@@ -133,20 +138,27 @@ __attribute__((visibility("hidden")))
 - (id)_stateFlags;
 - (id)activityCreate;
 - (id)additionalRequestHTTPHeaders;
+- (id)analyticsPayload;
+- (id)baseOperationAndErrorInfoCoreAnalyticsPayloadWithError:(id)arg1;
 - (void)cancel;
 - (id)ckShortDescription;
 - (void)combineMetricsWithOperation:(id)arg1;
+- (void)configureQualityOfServiceFromOperationInfo:(id)arg1;
 - (void)configureRequest:(id)arg1;
 - (id)createConcurrentQueue;
 - (id)createInactiveConcurrentQueue;
 - (id)createInactiveSerialQueue;
 - (id)createSerialQueue;
 - (void)dealloc;
+- (unsigned long long)discretionaryNetworkBehavior;
+- (id)dugongKeyRollAnalyticsPayloadWithError:(id)arg1;
 - (void)fillOutOperationResult:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (BOOL)isConcurrent;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isNetworkingBehaviorEquivalentForOperation:(id)arg1;
+- (BOOL)isTopLevelDaemonOperationForMetrics;
 - (BOOL)isWaitingOnPCS;
 - (void)main;
 - (BOOL)makeStateTransition;
@@ -159,7 +171,9 @@ __attribute__((visibility("hidden")))
 - (void)request:(id)arg1 didFinishWithMetrics:(id)arg2 w3cNavigationTiming:(id)arg3;
 - (void)requestDidBeginWaitingForUserAuth:(id)arg1;
 - (void)requestDidEndWaitingForUserAuth:(id)arg1;
+- (void)sendCoreAnalyticsEventOperationFinished;
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)setQualityOfService:(long long)arg1;
 - (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 operationConfigurationBlock:(CDUnknownBlockType)arg3;
 - (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 clientContext:(id)arg4 operationConfigurationBlock:(CDUnknownBlockType)arg5;
 - (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 operationConfigurationBlock:(CDUnknownBlockType)arg4;

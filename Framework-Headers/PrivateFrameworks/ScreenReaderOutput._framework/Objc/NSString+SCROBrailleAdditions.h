@@ -8,9 +8,7 @@
 
 @interface NSString (SCROBrailleAdditions)
 - (id)_illegalCharacterSet;
-- (long long)_indexAdjustedForWhitespace:(long long)arg1;
 - (id)_legalWhiteSpaceSet;
-- (struct _NSRange)_nsRangeForCFRange:(CDStruct_912cb5d2)arg1;
 - (struct _NSRange)_rangeIsolatingIllegalCharacters:(struct _NSRange)arg1 forwards:(BOOL)arg2;
 - (struct _NSRange)rangeOfWordAfterWordAtIndex:(long long)arg1;
 - (struct _NSRange)rangeOfWordBeforeWordAtIndex:(long long)arg1;

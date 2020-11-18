@@ -33,7 +33,7 @@
 - (void).cxx_destruct;
 - (void)_accessToFitnessDataDidChange:(id)arg1;
 - (id)_migrateDataCollectionContextForType:(id)arg1 error:(id *)arg2;
-- (void)_queue_beginUpdates;
+- (void)_queue_beginUpdatesWithTargetCollectionType:(unsigned long long)arg1;
 - (id)_queue_diagnosticDescription;
 - (void)_queue_forwardCoreMotionData:(id)arg1;
 - (void)_queue_forwardCoreMotionData:(id)arg1 forType:(id)arg2;
@@ -45,15 +45,16 @@
 - (Class)coreMotionDatumClass;
 - (id)coreMotionDatumFromSensorDatum:(id)arg1;
 - (void)dataAggregator:(id)arg1 wantsCollectionWithConfiguration:(id)arg2;
-- (id)deviceForDataAggregator:(id)arg1;
+- (void)dealloc;
 - (void)didReceiveCoreMotionData:(id)arg1 startingDatum:(id)arg2 error:(id)arg3;
 - (id)identifierForDataAggregator:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (id)persistentIdentifier;
-- (BOOL)queue_canBeginStreaming;
 - (double)queue_differenceFromDatum:(id)arg1 toDatum:(id)arg2 type:(id)arg3;
 - (id)queue_newDataSource;
 - (void)queue_recomputeCurrentState;
+- (unsigned long long)queue_targetCollectionTypeForRequestedCollectionType:(unsigned long long)arg1;
+- (void)registerWithAggregators;
 - (Class)sensorDatumClassForAggregator:(id)arg1;
 - (id)sourceForDataAggregator:(id)arg1;
 

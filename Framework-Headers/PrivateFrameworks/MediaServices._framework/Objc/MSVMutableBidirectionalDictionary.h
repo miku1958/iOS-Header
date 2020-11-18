@@ -11,6 +11,7 @@
 }
 
 - (void)removeAllObjects;
+- (void)removeKeyForObject:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;
 - (void)setKey:(id)arg1 forObject:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;

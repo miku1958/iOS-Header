@@ -12,6 +12,7 @@
 
 @interface HKStatisticsQuery : HKQuery <HKStatisticsQueryClientInterface>
 {
+    BOOL _requireQuantityType;
     CDUnknownBlockType _completionHandler;
     unsigned long long _options;
     unsigned long long _mergeStrategy;
@@ -35,6 +36,7 @@
 - (id)_filterForDateInterval:(id)arg1;
 - (void)client_deliverStatistics:(id)arg1 forQuery:(id)arg2;
 - (id)initWithQuantityType:(id)arg1 quantitySamplePredicate:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithSampleType:(id)arg1 samplePredicate:(id)arg2 options:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;

@@ -6,20 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSNumber, NSSet, NSString;
+#import <PhotoLibraryServices/NSSecureCoding-Protocol.h>
 
-@interface PLRevGeoPlaceInfo : NSObject
+@class NSString;
+
+@interface PLRevGeoPlaceInfo : NSObject <NSSecureCoding>
 {
-    NSMutableSet *_geoPlaceInfos;
+    BOOL _hasArea;
     NSString *_placeName;
+    double _minimumArea;
+    double _maximumArea;
 }
 
-@property (readonly, strong, nonatomic) NSSet *geoPlaceInfos; // @synthesize geoPlaceInfos=_geoPlaceInfos;
-@property (readonly, strong, nonatomic) NSNumber *minimumArea;
+@property (readonly, nonatomic) BOOL hasArea; // @synthesize hasArea=_hasArea;
+@property (readonly, nonatomic) double maximumArea; // @synthesize maximumArea=_maximumArea;
+@property (readonly, nonatomic) double minimumArea; // @synthesize minimumArea=_minimumArea;
 @property (readonly, copy, nonatomic) NSString *placeName; // @synthesize placeName=_placeName;
 
-- (void)addPlaceInfo:(id)arg1;
-- (void)dealloc;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)addPlaceInfoArea:(double)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPlaceName:(id)arg1;
 
 @end

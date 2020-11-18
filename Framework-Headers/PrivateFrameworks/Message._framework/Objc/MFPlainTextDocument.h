@@ -14,10 +14,10 @@
     NSMutableArray *_fragments;
 }
 
+- (void).cxx_destruct;
 - (void)appendArchivedRepresentation:(id)arg1;
 - (void)appendString:(id)arg1 withQuoteLevel:(unsigned int)arg2;
 - (id)archivedRepresentation;
-- (void)dealloc;
 - (unsigned long long)fragmentCount;
 - (void)getFormatFlowedString:(id *)arg1 insertedTrailingSpaces:(BOOL *)arg2 encoding:(unsigned int)arg3;
 - (void)getString:(id *)arg1 quoteLevel:(unsigned int *)arg2 ofFragmentAtIndex:(unsigned long long)arg3;

@@ -22,6 +22,7 @@
 - (void)finishedWritingRemoteFavorites;
 - (void)readingFavorites:(void (^)(void (^)(void)))arg1;
 - (void)rematchingFavorites:(void (^)(void (^)(void)))arg1;
+- (void)reportFavoritesAccessedBeforeFirstUnlock;
 - (void)writingFavorites:(void (^)(void (^)(void)))arg1;
 @end
 

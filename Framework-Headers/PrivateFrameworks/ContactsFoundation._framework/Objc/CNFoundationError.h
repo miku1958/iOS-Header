@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)errorWithCode:(unsigned long long)arg1 underlyingError:(id)arg2;
-+ (id)errorWithCode:(unsigned long long)arg1 userInfo:(id)arg2;
++ (id)errorWithCode:(long long)arg1 underlyingError:(id)arg2;
++ (id)errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)errorWithErrno;
 + (id)errorWithErrno:(int)arg1;
 + (id)errorWithErrno:(int)arg1 userInfo:(id)arg2;

@@ -17,13 +17,15 @@
 @property (copy) NSString *HTTPMethod;
 @property BOOL HTTPShouldHandleCookies;
 @property BOOL HTTPShouldUsePipelining;
-@property (copy) NSURL *URL;
+@property (copy) NSURL *URL; // @dynamic URL;
 @property (copy) NSDictionary *allHTTPHeaderFields;
-@property BOOL allowsCellularAccess;
-@property unsigned long long cachePolicy;
-@property (copy) NSURL *mainDocumentURL;
-@property unsigned long long networkServiceType;
-@property double timeoutInterval;
+@property BOOL allowsCellularAccess; // @dynamic allowsCellularAccess;
+@property BOOL allowsConstrainedNetworkAccess; // @dynamic allowsConstrainedNetworkAccess;
+@property BOOL allowsExpensiveNetworkAccess; // @dynamic allowsExpensiveNetworkAccess;
+@property unsigned long long cachePolicy; // @dynamic cachePolicy;
+@property (copy) NSURL *mainDocumentURL; // @dynamic mainDocumentURL;
+@property unsigned long long networkServiceType; // @dynamic networkServiceType;
+@property double timeoutInterval; // @dynamic timeoutInterval;
 
 - (void)_setIgnoreHSTS:(BOOL)arg1;
 - (void)_setPayloadTransmissionTimeout:(double)arg1;

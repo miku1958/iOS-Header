@@ -16,10 +16,12 @@
     double _confidence;
     NSArray *_schemaOrg;
     NSArray *_participants;
+    NSArray *_eventActivities;
 }
 
 @property (readonly, nonatomic) NSString *categoryDescription; // @synthesize categoryDescription=_categoryDescription;
 @property (readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
+@property (readonly, nonatomic) NSArray *eventActivities; // @synthesize eventActivities=_eventActivities;
 @property (readonly, nonatomic) NSString *originBundleId; // @synthesize originBundleId=_originBundleId;
 @property (readonly, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property (readonly, nonatomic) NSArray *schemaOrg; // @synthesize schemaOrg=_schemaOrg;
@@ -30,6 +32,7 @@
 + (unsigned char)eventTypeFromString:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithType:(unsigned char)arg1 categoryDescription:(id)arg2 originBundleId:(id)arg3 confidence:(double)arg4 schemaOrg:(id)arg5 participants:(id)arg6;
+- (id)initWithType:(unsigned char)arg1 categoryDescription:(id)arg2 originBundleId:(id)arg3 confidence:(double)arg4 schemaOrg:(id)arg5 participants:(id)arg6 eventActivities:(id)arg7;
 - (id)jsonObject;
 - (id)toJsonString;
 

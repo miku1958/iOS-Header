@@ -7,7 +7,9 @@
 #import <ITMLKit/IKViewElement.h>
 
 @interface IKViewElement (VSAdditions)
+- (BOOL)vs_boolAttributeValueForKey:(id)arg1;
 - (unsigned long long)vs_elementType;
 - (id)vs_itemElementsOfType:(unsigned long long)arg1;
+- (unsigned long long)vs_selectedChildElementIndex;
 @end
 

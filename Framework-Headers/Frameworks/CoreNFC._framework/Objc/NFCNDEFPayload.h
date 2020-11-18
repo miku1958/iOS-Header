@@ -12,6 +12,7 @@
 
 @interface NFCNDEFPayload : NSObject <NSSecureCoding>
 {
+    unsigned long long _chunkSize;
     unsigned char _typeNameFormat;
     NSData *_type;
     NSData *_identifier;
@@ -24,11 +25,23 @@
 @property (nonatomic) unsigned char typeNameFormat; // @synthesize typeNameFormat=_typeNameFormat;
 
 + (BOOL)supportsSecureCoding;
++ (id)wellKnowTypeTextPayloadWithString:(id)arg1 locale:(id)arg2;
++ (id)wellKnownTypeTextPayloadWithString:(id)arg1 locale:(id)arg2;
++ (id)wellKnownTypeURIPayloadWithString:(id)arg1;
++ (id)wellKnownTypeURIPayloadWithURL:(id)arg1;
+- (id)asData;
+- (unsigned long long)chunkSize;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFormatType:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4;
+- (id)initWithFormat:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4;
+- (id)initWithFormat:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4 chunkSize:(unsigned long long)arg5;
+- (id)initWithFormatType:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4 chunkSize:(unsigned long long)arg5;
+- (id)resolveURIString:(id)arg1;
+- (void)setChunkSize:(unsigned long long)arg1;
+- (id)wellKnownTypeTextPayloadWithLocale:(id *)arg1;
+- (id)wellKnownTypeURIPayload;
 
 @end
 

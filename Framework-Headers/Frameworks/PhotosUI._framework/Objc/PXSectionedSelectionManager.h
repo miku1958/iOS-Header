@@ -18,15 +18,17 @@
     PXSectionedDataSourceManager *_dataSourceManager;
     PXSelectionSnapshot *_selectionSnapshot;
     PXSectionedDataSource *_dataSource;
-    PXMutableIndexPathSet *__selectedIndexPaths;
+    PXMutableIndexPathSet *_selectedIndexPaths;
+    struct PXSimpleIndexPath _cursorIndexPath;
 }
 
-@property (strong, nonatomic, setter=_setSelectedIndexPaths:) PXMutableIndexPathSet *_selectedIndexPaths; // @synthesize _selectedIndexPaths=__selectedIndexPaths;
+@property (nonatomic, setter=_setCursorIndexPath:) struct PXSimpleIndexPath cursorIndexPath; // @synthesize cursorIndexPath=_cursorIndexPath;
 @property (strong, nonatomic, setter=_setDataSource:) PXSectionedDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) PXSectionedDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic, setter=_setSelectedIndexPaths:) PXMutableIndexPathSet *selectedIndexPaths; // @synthesize selectedIndexPaths=_selectedIndexPaths;
 @property (strong, nonatomic, setter=_setSelectionSnapshot:) PXSelectionSnapshot *selectionSnapshot; // @synthesize selectionSnapshot=_selectionSnapshot;
 @property (readonly) Class superclass;
 
@@ -36,7 +38,6 @@
 - (void)_setDataSource:(id)arg1 withChangeHistory:(id)arg2;
 - (void)_updateIfNeeded;
 - (void)_updateSelectionSnapshotIfNeeded;
-- (BOOL)areAllUnsavedAssetsSelectedWithImportStatusManager:(id)arg1;
 - (void)deselectAll;
 - (void)didPerformChanges;
 - (id)init;
@@ -47,6 +48,8 @@
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
 - (void)selectAllItems;
 - (void)selectNonCopiedAssetsWithImportStatusManager:(id)arg1;
+- (void)setCursorIndexPath:(struct PXSimpleIndexPath)arg1;
+- (void)setSelectedIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)setSelectedIndexPaths:(id)arg1;
 - (void)setSelectedState:(BOOL)arg1 forIndexPath:(struct PXSimpleIndexPath)arg2;
 - (void)setSelectedState:(BOOL)arg1 forIndexPathSet:(id)arg2;

@@ -11,6 +11,7 @@
 
 @interface MFMessageComposeViewController : UINavigationController
 {
+    id _internal;
     id<MFMessageComposeViewControllerDelegate> _messageComposeDelegate;
     NSArray *_recipients;
     NSString *_body;
@@ -24,14 +25,19 @@
     NSArray *_cloudPhotoIDs;
     NSArray *_contentText;
     NSArray *_contentURLs;
+    NSString *_chatGUID;
+    NSString *_groupName;
+    NSString *_shareSheetSessionID;
     NSArray *_attachments;
 }
 
 @property (readonly, copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (copy, nonatomic) NSString *body; // @synthesize body=_body;
+@property (copy, nonatomic) NSString *chatGUID; // @synthesize chatGUID=_chatGUID;
 @property (nonatomic) unsigned long long currentAttachedAudioCount; // @synthesize currentAttachedAudioCount=_currentAttachedAudioCount;
 @property (nonatomic) unsigned long long currentAttachedImageCount; // @synthesize currentAttachedImageCount=_currentAttachedImageCount;
 @property (nonatomic) unsigned long long currentAttachedVideoCount; // @synthesize currentAttachedVideoCount=_currentAttachedVideoCount;
+@property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (copy, nonatomic) MSMessage *message; // @synthesize message=_message;
 @property (nonatomic) id<MFMessageComposeViewControllerDelegate> messageComposeDelegate; // @synthesize messageComposeDelegate=_messageComposeDelegate;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
@@ -54,6 +60,7 @@
 + (BOOL)isiMessageEnabled;
 + (double)maxTrimDurationForAudio;
 + (double)maxTrimDurationForVideo;
+- (void).cxx_destruct;
 - (id)UTITypes;
 - (id)_MIMETypeForURL:(id)arg1;
 - (id)_contentTypeForMIMEType:(id)arg1;
@@ -75,6 +82,7 @@
 - (void)dealloc;
 - (void)disableUserAttachments;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)insertSharedItemAndReturnEntryViewFrame:(id)arg1 withAlternateFilename:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)mutableAttachmentURLs;
 - (id)photoIDs;
 - (void)setCloudPhotoIDs:(id)arg1;
@@ -82,8 +90,12 @@
 - (void)setContentURLs:(id)arg1;
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)setPhotoIDs:(id)arg1;
+- (void)setShareSheetSessionID:(id)arg1;
 - (void)setUTITypes:(id)arg1;
+- (id)shareSheetSessionID;
+- (void)showSharedItemInEntryView;
 - (void)smsComposeControllerCancelled:(id)arg1;
+- (void)smsComposeControllerEntryViewContentInserted:(id)arg1;
 - (void)smsComposeControllerSendStarted:(id)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidAppear:(BOOL)arg1;

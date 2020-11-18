@@ -8,19 +8,28 @@
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 
+@class NSUUID;
+
 @interface TITypologyRecord : NSObject <NSSecureCoding>
 {
     double _timestamp;
+    NSUUID *_recordID;
 }
 
+@property (strong, nonatomic) NSUUID *recordID; // @synthesize recordID=_recordID;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 + (id)recordClasses;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
+- (id)changedText;
+- (id)currentKeyboardState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)removeContextFromKeyboardState;
+- (void)replaceDocumentState:(id)arg1;
 - (id)shortDescription;
 - (id)textSummary;
 - (id)textSummaryForAutocorrection:(id)arg1;

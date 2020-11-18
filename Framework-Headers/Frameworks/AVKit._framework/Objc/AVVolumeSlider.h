@@ -11,12 +11,17 @@
 
 @class AVVolumeWarningView, NSNumber, NSString, UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface AVVolumeSlider : UISlider <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
 {
     BOOL _included;
     BOOL _collapsed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
+    BOOL _removed;
+    BOOL _animatingVolumeChange;
+    BOOL _hasChangedLocationAtLeastOnce;
+    BOOL _scrubsWhenTappedAnywhere;
     float _effectiveVolumeLimit;
     UIImageView *_thumbView;
     NSNumber *_unclampedValue;
@@ -24,6 +29,7 @@
     struct CGSize _extrinsicContentSize;
 }
 
+@property (nonatomic, getter=isAnimatingVolumeChange) BOOL animatingVolumeChange; // @synthesize animatingVolumeChange=_animatingVolumeChange;
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,15 +37,19 @@
 @property (nonatomic) float effectiveVolumeLimit; // @synthesize effectiveVolumeLimit=_effectiveVolumeLimit;
 @property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
+@property (nonatomic) BOOL hasChangedLocationAtLeastOnce; // @synthesize hasChangedLocationAtLeastOnce=_hasChangedLocationAtLeastOnce;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
+@property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
+@property (nonatomic) BOOL scrubsWhenTappedAnywhere; // @synthesize scrubsWhenTappedAnywhere=_scrubsWhenTappedAnywhere;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImageView *thumbView; // @synthesize thumbView=_thumbView;
 @property (strong, nonatomic) NSNumber *unclampedValue; // @synthesize unclampedValue=_unclampedValue;
 @property (weak, nonatomic) AVVolumeWarningView *volumeWarningView; // @synthesize volumeWarningView=_volumeWarningView;
 
 - (void).cxx_destruct;
+- (void)_endTracking;
 - (BOOL)_shouldTrackTouchAtPoint:(struct CGPoint)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (BOOL)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
@@ -47,6 +57,7 @@
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)createThumbView;
+- (void)didMoveToWindow;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (struct CGRect)hitRect;
@@ -54,6 +65,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setHidden:(BOOL)arg1;
 - (void)setValue:(float)arg1 animated:(BOOL)arg2;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;

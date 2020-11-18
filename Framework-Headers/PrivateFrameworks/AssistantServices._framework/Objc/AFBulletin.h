@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class BBBulletin, NSArray, NSDate, NSString;
 
-@interface AFBulletin : NSObject <NSSecureCoding>
+@interface AFBulletin : NSObject <NSSecureCoding, NSCopying>
 {
+    BOOL _availableOnLockScreen;
+    BOOL _supportsSpokenNotification;
     BOOL _read;
     BOOL _allDay;
     BOOL _previewRestricted;
+    NSString *_displayName;
     BBBulletin *_bbBulletin;
     NSString *_bulletinID;
     NSString *_recordID;
@@ -30,16 +34,19 @@
     NSString *_title;
     NSArray *_intentIDs;
     NSString *_publisherBulletinID;
-    NSString *_displayName;
+    NSString *_threadID;
+    NSString *_internalID;
 }
 
 @property (readonly, nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
+@property (nonatomic) BOOL availableOnLockScreen; // @synthesize availableOnLockScreen=_availableOnLockScreen;
 @property (readonly, nonatomic) BBBulletin *bbBulletin; // @synthesize bbBulletin=_bbBulletin;
 @property (readonly, copy, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
 @property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
 @property (readonly, copy, nonatomic) NSArray *intentIDs; // @synthesize intentIDs=_intentIDs;
+@property (readonly, copy, nonatomic) NSString *internalID; // @synthesize internalID=_internalID;
 @property (readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, copy, nonatomic) NSString *modalAlertContentMessage; // @synthesize modalAlertContentMessage=_modalAlertContentMessage;
 @property (readonly, nonatomic) BOOL previewRestricted; // @synthesize previewRestricted=_previewRestricted;
@@ -50,14 +57,20 @@
 @property (readonly, copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property (readonly, nonatomic) long long sectionSubtype; // @synthesize sectionSubtype=_sectionSubtype;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (nonatomic) BOOL supportsSpokenNotification; // @synthesize supportsSpokenNotification=_supportsSpokenNotification;
+@property (readonly, copy, nonatomic) NSString *threadID; // @synthesize threadID=_threadID;
 @property (readonly, copy, nonatomic) NSString *timeZone; // @synthesize timeZone=_timeZone;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (id)internalIDForBBBulletinID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_displayNameForBulletin:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setBulletin:(id)arg1;
+- (void)setNotification:(id)arg1 fromSourceApp:(id)arg2;
 
 @end
 

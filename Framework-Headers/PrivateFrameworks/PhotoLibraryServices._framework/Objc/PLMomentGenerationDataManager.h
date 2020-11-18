@@ -6,96 +6,121 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLMomentGenerationDataManagement_Private-Protocol.h>
+#import <PhotoLibraryServices/PLHighlightItemModelReader-Protocol.h>
+#import <PhotoLibraryServices/PLMomentGenerationDataManagement-Protocol.h>
 
-@class NSArray, NSDictionary, NSManagedObjectContext, NSString, PLMomentAnalyzer, PLMomentGeneration, PLPhotoLibrary, PLXPCTransaction;
+@class CNContactStore, NSDictionary, NSManagedObjectContext, NSString, PLCameraAppWatcher, PLLibraryServicesManager, PLMomentGeneration, PLPhotoLibrary, PLPhotoLibraryPathManager, PLRoutineService, PLXPCTransaction;
 
-@interface PLMomentGenerationDataManager : NSObject <PLMomentGenerationDataManagement_Private>
+@interface PLMomentGenerationDataManager : NSObject <PLMomentGenerationDataManagement, PLHighlightItemModelReader>
 {
     PLXPCTransaction *_keepAliveTransaction;
     CDUnknownBlockType _reachabilityBlock;
-    void *_addressBook;
+    CNContactStore *_contactStore;
     PLMomentGeneration *_generator;
-    PLMomentAnalyzer *_analyzer;
-    NSArray *_locationsOfInterest;
     NSDictionary *_generationOptions;
     BOOL _observingReachability;
     BOOL _isLightweightMigrationManager;
-    BOOL _simulatesTimeout;
+    PLPhotoLibraryPathManager *_lightWeightMigrationPathManager;
+    PLLibraryServicesManager *_libraryServicesManager;
+    PLRoutineService *_routineManager;
+    BOOL _shouldPerformLightweightValidation;
+    BOOL _previousValidationSucceeded;
+    long long _previousValidatedModelVersion;
+    PLCameraAppWatcher *_cameraWatcher;
     NSManagedObjectContext *_managedObjectContext;
     PLPhotoLibrary *_momentGenerationLibrary;
 }
 
-@property (readonly, nonatomic) void *_addressBook;
+@property (readonly, weak, nonatomic) CNContactStore *_contactStore;
+@property (readonly, nonatomic) PLCameraAppWatcher *cameraWatcher; // @synthesize cameraWatcher=_cameraWatcher;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *generationOptions;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (strong, nonatomic) PLPhotoLibrary *momentGenerationLibrary; // @synthesize momentGenerationLibrary=_momentGenerationLibrary;
-@property (nonatomic) BOOL simulatesTimeout; // @synthesize simulatesTimeout=_simulatesTimeout;
+@property (nonatomic) long long previousValidatedModelVersion; // @synthesize previousValidatedModelVersion=_previousValidatedModelVersion;
+@property (nonatomic) BOOL previousValidationSucceeded; // @synthesize previousValidationSucceeded=_previousValidationSucceeded;
+@property (nonatomic) BOOL shouldPerformLightweightValidation; // @synthesize shouldPerformLightweightValidation=_shouldPerformLightweightValidation;
 @property (readonly) Class superclass;
 
 + (void)_setManagedObjectContextMomentarilyBlessed:(id)arg1;
++ (void)initialize;
 + (BOOL)isManagedObjectContextMomentarilyBlessed:(id)arg1;
-+ (BOOL)isManagerMomentarilyBlessed:(id)arg1;
 + (void)setManagerMomentarilyBlessed:(id)arg1;
-+ (id)sharedMomentGenerationDataManager;
-- (id)_addressDictionaryForABRecord:(void *)arg1 identifier:(int)arg2;
+- (void).cxx_destruct;
+- (BOOL)_batchDeleteForEntityName:(id)arg1 error:(id *)arg2;
 - (id)_currentHomeAddressDictionary;
 - (void)_finalizeInit;
-- (id)_locationsOfInterest;
-- (id)_metadataPath;
+- (id)_highlightsRelationshipKeyPathsForPrefetching;
+- (id)_highlightsRelationshipKeyPathsForPrefetchingForKind:(unsigned short)arg1;
 - (void)_networkReachabilityDidChange:(id)arg1;
 - (void)_removeKeepAlive;
-- (id)_serverVersionInfoFilePath;
 - (void)_updateKeepAlive;
 - (id)allAssetIDsNeedingLocationShiftWithError:(id *)arg1;
 - (id)allAssetIDsToBeIncludedInMomentsWithError:(id *)arg1;
 - (id)allAssetsToBeIncludedInMomentsWithError:(id *)arg1;
+- (id)allEmptyPhotosHighlightsOfKind:(unsigned short)arg1 error:(id *)arg2;
+- (id)allInvalidAssetsWithError:(id *)arg1;
+- (id)allInvalidMomentIDsWithError:(id *)arg1;
+- (id)allInvalidMomentsWithError:(id *)arg1;
+- (id)allInvalidPhotosHighlightsOfAllKindsWithError:(id *)arg1;
+- (id)allMomentIDsWithError:(id *)arg1;
+- (id)allMomentLists;
 - (id)allMomentListsForLevel:(short)arg1;
-- (id)allMomentListsWithInvalidReverseLocationDataForLevel:(short)arg1;
 - (id)allMomentsWithError:(id *)arg1;
 - (id)allMomentsWithInvalidReverseLocationData;
-- (id)analysisMetadata;
-- (id)analyzer;
+- (id)allPhotosHighlightsOfAllKindsWithError:(id *)arg1;
+- (id)allPhotosHighlightsOfKind:(unsigned short)arg1 error:(id *)arg2;
+- (id)allPhotosHighlightsOfKind:(unsigned short)arg1 withPredicate:(id)arg2 error:(id *)arg3;
+- (id)allPhotosHighlightsWithPredicate:(id)arg1 error:(id *)arg2;
 - (id)assetWithUniqueID:(id)arg1 error:(id *)arg2;
 - (id)assetsWithUniqueIDs:(id)arg1 error:(id *)arg2;
 - (void)beginObservingNetworkReachabilityChangesWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)cameraIsActive;
 - (void)dealloc;
+- (BOOL)deleteAllHighlightsWithError:(id *)arg1;
+- (BOOL)deleteAllMomentListsWithError:(id *)arg1;
+- (BOOL)deleteAllMomentsWithError:(id *)arg1;
 - (id)deletedObjects;
 - (void)enumerateAssetsWithIDs:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)findOrCreateYearMomentListForYear:(long long)arg1;
-- (id)generationOptions;
+- (id)fetchChildHighlightItemsForHighlightItem:(id)arg1;
+- (id)fetchNeighborHighlightItemsForHighlightItems:(id)arg1;
+- (id)fetchParentHighlightItemsForHighlightItems:(id)arg1;
 - (id)generator;
 - (unsigned long long)hardGenerationBatchSizeLimit;
 - (BOOL)hasChanges;
-- (BOOL)hasLocationsOfInterestInformation;
+- (id)highlightsIntersectingDateInterval:(id)arg1 ofKind:(unsigned short)arg2;
 - (id)homeAddressDictionary;
-- (id)initWithManagedObjectContextForLightweightMigration:(id)arg1;
+- (id)initWithLibraryServicesManager:(id)arg1;
+- (id)initWithManagedObjectContext:(id)arg1 pathManagerForLightweightMigration:(id)arg2;
 - (id)insertNewMoment;
 - (id)insertNewMomentListForGranularityLevel:(short)arg1;
+- (id)insertNewPhotosHighlight;
 - (id)insertedObjects;
+- (id)invalidAssetsIgnoringAssetIdentifiers:(id)arg1 error:(id *)arg2;
+- (void)invalidateAllHighlightSubtitles;
 - (void)invalidateLocationDataForAssetsInMoment:(id)arg1;
 - (void)invalidateLocationDataForAssetsWithOIDs:(id)arg1;
-- (void)invalidateLocationsOfInterest;
 - (void)invalidateShiftedLocationForAllAssetsInMoments;
-- (BOOL)isMomentAnalysisNeeded;
-- (BOOL)isMomentsSupportedOnPlatform;
 - (BOOL)isNetworkReachable;
 - (id)locationCoordinatesForAssetIDs:(id)arg1;
 - (id)locationsOfInterest;
+- (void)logRoutineInformation;
 - (id)momentAnalysisTransactionWithName:(const char *)arg1;
 - (Class)momentAssetDataClass;
 - (Class)momentDataClass;
-- (id)momentListContainingDate:(id)arg1 forLevel:(short)arg2 wantsEarliest:(BOOL)arg3;
 - (Class)momentListDataClassForGranularityLevel:(short)arg1;
 - (id)momentListWithUniqueID:(id)arg1 forLevel:(short)arg2 error:(id *)arg3;
 - (id)momentWithUniqueID:(id)arg1 error:(id *)arg2;
 - (id)momentsBetweenDate:(id)arg1 andDate:(id)arg2 sorted:(BOOL)arg3;
 - (id)momentsForAssetsWithUniqueIDs:(id)arg1 error:(id *)arg2;
+- (id)momentsIntersectingDateInterval:(id)arg1;
+- (id)momentsRequiringLocationProcessingWhenFrequentLocationsChangedWithError:(id *)arg1;
 - (id)momentsSinceDate:(id)arg1;
-- (id)momentsWithinDateInterval:(id)arg1;
-- (BOOL)needsLocationsOfInterestProcessing;
+- (id)momentsWithLocationTypeUnprocessedWithError:(id *)arg1;
+- (id)momentsWithUniqueIDs:(id)arg1 error:(id *)arg2;
+- (id)monthMomentListForMonth:(long long)arg1 year:(long long)arg2;
 - (id)orphanedAssetIDsWithError:(id *)arg1;
 - (void)pendingChangesUpdated:(unsigned long long)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 synchronously:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -107,18 +132,14 @@
 - (void)reloadGenerationOptions;
 - (id)replayLogPath;
 - (void)resetOnFailure;
+- (BOOL)routineIsAvailable;
 - (void)runPeriodicMaintenanceTasks:(unsigned long long)arg1 withTransaction:(id)arg2;
 - (BOOL)save:(id *)arg1;
-- (BOOL)saveAnalysisMetadata:(id)arg1;
-- (BOOL)saveServerVersionInfo:(id)arg1;
-- (id)serverVersionInfo;
-- (void)setMomentAnalysisNeeded:(BOOL)arg1;
-- (void)setupPhotoLibrary;
 - (void)stopObservingNetworkReachabilityChanges;
 - (id)updatedObjects;
-- (void)verifyAndRepairOrphanedAssets:(id)arg1;
+- (void)verifyAndRepairOrphanedAssets:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (BOOL)wantsMomentReplayLogging;
-- (id)yearMomentListForYear:(long long)arg1 wantsEarliest:(BOOL)arg2;
+- (id)yearMomentListForYear:(long long)arg1;
 
 @end
 

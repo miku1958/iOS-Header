@@ -7,6 +7,51 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (BRCSyncOperationThrottle)
++ (id)brc_daemonAccessDisabledError;
++ (id)brc_errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3;
++ (void)initialize;
+- (id)_brc_cloudKitInternalWithErrorCode:(long long)arg1;
+- (id)_brc_cloudKitPluginErrorPayload;
+- (BOOL)_brc_isCloudKitErrorCode:(long long)arg1;
+- (BOOL)_brc_isCloudKitInternalErrorCode:(long long)arg1;
+- (BOOL)_brc_isCloudKitInternalErrorSafeToSyncUpWithoutSyncDown;
+- (BOOL)_brc_isCloudKitPluginErrorCode:(long long)arg1;
+- (BOOL)_brc_isCloudKitZoneNotFoundError;
+- (BOOL)_brc_isCloudKitZoneUserDeletedError;
+- (id)br_cloudKitErrorForIdentifier:(id)arg1;
+- (double)br_suggestedRetryTimeInterval;
+- (BOOL)brc_checkErrorsFromCloudKit:(CDUnknownBlockType)arg1;
+- (id)brc_cloudKitErrorForRecordID:(id)arg1;
+- (id)brc_cloudKitErrorForSubscriptionID:(id)arg1;
+- (id)brc_cloudKitErrorForZone:(id)arg1;
+- (unsigned long long)brc_containerResetErrorForSharedZone:(BOOL)arg1 resetReason:(const char **)arg2;
+- (BOOL)brc_containsCloudKitErrorCode:(long long)arg1;
+- (BOOL)brc_containsCloudKitInternalErrorCode:(long long)arg1;
+- (id)brc_description;
+- (BOOL)brc_isBatchRequestFailed;
+- (BOOL)brc_isBlacklistError;
+- (BOOL)brc_isCloudKitAssetFileModified;
+- (BOOL)brc_isCloudKitCancellationError;
+- (BOOL)brc_isCloudKitErrorImplyingZoneNeedsCreation;
+- (BOOL)brc_isCloudKitErrorNeedsPCSPrep;
+- (BOOL)brc_isCloudKitErrorRequiringAssetRescan;
+- (BOOL)brc_isCloudKitErrorRequiringAssetReupload;
+- (BOOL)brc_isCloudKitErrorRequiringSkipThrottling;
+- (BOOL)brc_isCloudKitErrorSafeToSyncUpWithoutSyncDown;
+- (BOOL)brc_isCloudKitErrorUnsupportedOSForItemAndGetMinimumSupported:(id *)arg1;
+- (BOOL)brc_isCloudKitErrorUnsupportedOSForZoneAndGetMinimumSupported:(id *)arg1;
+- (BOOL)brc_isCloudKitErrorZoneMigrated;
+- (BOOL)brc_isCloudKitErrorZoneUndergoingMigration;
+- (BOOL)brc_isCloudKitOutOfQuota;
+- (BOOL)brc_isCloudKitPCSDecryptionFailure;
+- (BOOL)brc_isCloudKitUnknownItemError;
+- (BOOL)brc_isEverRetriable;
+- (BOOL)brc_isOutOfSpaceError;
+- (BOOL)brc_isResetError;
+- (BOOL)brc_isRetriable;
+- (id)brc_staleUpdateRecordIDs;
+- (id)brc_strippedError;
 - (int)brc_syncOperationErrorKind;
+- (id)brc_wrappedError;
 @end
 

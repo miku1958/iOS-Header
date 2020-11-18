@@ -52,7 +52,6 @@
 - (void)discardContents;
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint)arg2;
 - (void)finishMediaViewEvent;
-- (void)forceFullScreen;
 - (id)fullScreenCanvasController:(id)arg1 canvasViewControllerForShowable:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)fullScreenCanvasController:(id)arg1 captionForShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(id)arg1 didHideShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
@@ -73,8 +72,6 @@
 - (void)layoutImageView;
 - (void)loadComponent:(id)arg1;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)renderContents;
 - (BOOL)requestInteractivityFocusForFullScreenCanvasController:(id)arg1;
 - (void)submitEvents;

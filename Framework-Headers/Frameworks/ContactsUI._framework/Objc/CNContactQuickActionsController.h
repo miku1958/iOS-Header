@@ -9,8 +9,8 @@
 #import <ContactsUI/CNContactActionsControllerDelegate-Protocol.h>
 #import <ContactsUI/CNUIUserActionListConsumer-Protocol.h>
 
-@class CNContact, CNContactActionsController, NSArray, NSDictionary, NSString, UIAlertController;
-@protocol CNCancelable, CNContactQuickActionViewContainer, CNContactQuickActionsControllerDelegate, CNSchedulerProvider, CNUIUserActionContext, CNUIUserActionListDataSource;
+@class CNContact, CNContactActionsController, CNContactQuickActionsDisambiguationMenuPresentation, NSArray, NSDictionary, NSString, UIViewController;
+@protocol CNCancelable, CNContactQuickActionViewContainer, CNContactQuickActionsControllerDelegate, CNSchedulerProvider, CNUINavigationListStyle, CNUIUserActionContext, CNUIUserActionListDataSource;
 
 @interface CNContactQuickActionsController : NSObject <CNUIUserActionListConsumer, CNContactActionsControllerDelegate>
 {
@@ -23,8 +23,10 @@
     id<CNCancelable> _actionDisoveryToken;
     NSDictionary *_actionListModelsByActionType;
     id<CNUIUserActionContext> _userActionContext;
-    UIAlertController *_disambiguationMenuAlertController;
     CNContactActionsController *_disambiguationMenuController;
+    UIViewController *_disambiguationMenuViewController;
+    CNContactQuickActionsDisambiguationMenuPresentation *_disambiguationMenuPresentation;
+    id<CNUINavigationListStyle> _navigationListStyle;
 }
 
 @property (strong, nonatomic) id<CNCancelable> actionDisoveryToken; // @synthesize actionDisoveryToken=_actionDisoveryToken;
@@ -35,9 +37,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNContactQuickActionsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UIAlertController *disambiguationMenuAlertController; // @synthesize disambiguationMenuAlertController=_disambiguationMenuAlertController;
 @property (strong, nonatomic) CNContactActionsController *disambiguationMenuController; // @synthesize disambiguationMenuController=_disambiguationMenuController;
+@property (readonly, nonatomic) CNContactQuickActionsDisambiguationMenuPresentation *disambiguationMenuPresentation; // @synthesize disambiguationMenuPresentation=_disambiguationMenuPresentation;
+@property (strong, nonatomic) UIViewController *disambiguationMenuViewController; // @synthesize disambiguationMenuViewController=_disambiguationMenuViewController;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<CNUINavigationListStyle> navigationListStyle; // @synthesize navigationListStyle=_navigationListStyle;
 @property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<CNUIUserActionContext> userActionContext; // @synthesize userActionContext=_userActionContext;
@@ -51,12 +55,14 @@
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
 - (void)dealloc;
 - (id)defaultTitleForActionType:(id)arg1;
+- (void)disambiguationViewControllerDismissedExternally:(id)arg1;
 - (void)discoverActions;
 - (void)executeLongPressBehaviorForActionType:(id)arg1;
 - (void)executeTapBehaviorForActionType:(id)arg1;
 - (id)init;
 - (id)initWithActionTypes:(id)arg1 contactQuickActionViewContainer:(id)arg2;
-- (id)initWithActionTypes:(id)arg1 contactQuickActionViewContainer:(id)arg2 userActionListDataSource:(id)arg3 schedulerProvider:(id)arg4 userActionContext:(id)arg5;
+- (id)initWithActionTypes:(id)arg1 contactQuickActionViewContainer:(id)arg2 disambiguationMenuPresentation:(id)arg3;
+- (id)initWithActionTypes:(id)arg1 contactQuickActionViewContainer:(id)arg2 disambiguationMenuPresentation:(id)arg3 userActionListDataSource:(id)arg4 schedulerProvider:(id)arg5 userActionContext:(id)arg6;
 - (void)performAction:(id)arg1;
 - (void)processDiscoveredModels:(id)arg1;
 - (void)reportStoredModel:(id)arg1 forActionType:(id)arg2 toQuickActionContainer:(id)arg3;

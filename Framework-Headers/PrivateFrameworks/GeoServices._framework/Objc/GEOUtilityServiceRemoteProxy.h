@@ -9,11 +9,9 @@
 #import <GeoServices/GEOUtilityServiceProxy-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue;
 
 @interface GEOUtilityServiceRemoteProxy : NSObject <GEOUtilityServiceProxy>
 {
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,12 +19,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
 - (id)_getPathSynchronous:(const char *)arg1;
 - (void)getCurrentGeoServicesState:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)getGeoServicesCacheDirectoryPath;
 - (id)getHomeDirectoryPath;
-- (id)init;
 
 @end
 

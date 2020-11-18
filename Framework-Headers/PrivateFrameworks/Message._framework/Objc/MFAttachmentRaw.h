@@ -23,7 +23,7 @@
 
 + (id)attachmentData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3;
 + (id)attachmentData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

@@ -26,5 +26,6 @@
 - (id)CDVURLWithUser:(id)arg1;
 - (id)CDVfixedURLByAppendingPathComponent:(id)arg1;
 - (id)initWithCDVScheme:(id)arg1 user:(id)arg2 password:(id)arg3 host:(id)arg4 port:(id)arg5 path:(id)arg6 parameterString:(id)arg7 query:(id)arg8 fragment:(id)arg9;
+- (id)initWithCDVScheme:(id)arg1 user:(id)arg2 password:(id)arg3 host:(id)arg4 port:(id)arg5 path:(id)arg6 query:(id)arg7 fragment:(id)arg8;
 @end
 

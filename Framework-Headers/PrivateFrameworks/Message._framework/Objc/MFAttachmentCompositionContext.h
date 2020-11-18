@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSURL;
+@class MFAttachmentManager, NSArray, NSMutableDictionary, NSString, NSURL;
 
 @interface MFAttachmentCompositionContext : NSObject
 {
+    NSMutableDictionary *_hostIdentifierToAttachmentContentIDMap;
     NSString *_contextID;
     NSURL *_attachmentsBaseURL;
+    MFAttachmentManager *_attachmentsManager;
 }
 
 @property (readonly, nonatomic) NSArray *attachments;
-@property (copy, nonatomic) NSURL *attachmentsBaseURL; // @synthesize attachmentsBaseURL=_attachmentsBaseURL;
+@property (strong, nonatomic) NSURL *attachmentsBaseURL; // @synthesize attachmentsBaseURL=_attachmentsBaseURL;
+@property (strong, nonatomic) MFAttachmentManager *attachmentsManager; // @synthesize attachmentsManager=_attachmentsManager;
 @property (readonly, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
 
+- (void).cxx_destruct;
+- (id)attachmentForHostIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithContextID:(id)arg1;
+- (void)setHostIdentifier:(id)arg1 forAttachment:(id)arg2;
 
 @end
 

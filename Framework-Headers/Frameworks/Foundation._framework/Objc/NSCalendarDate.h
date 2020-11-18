@@ -17,7 +17,6 @@
     void *_reserved;
 }
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)calendarDate;
 + (id)dateWithNaturalLanguageString:(id)arg1 date:(id)arg2 locale:(id)arg3;
 + (id)dateWithString:(id)arg1 calendarFormat:(id)arg2;

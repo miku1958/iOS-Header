@@ -7,8 +7,14 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (MPTimeMakerHelper)
++ (id)requiredStoreLibraryPersonalizationProperties;
+- (id)MPMediaLibraryDataProviderSystemML3CoercedString;
+- (id)MP_shortDescription;
 - (void)__crossedTimeMarkerNotification:(id)arg1;
+- (id)objectWithStoreLibraryPersonalizationRelativeModelObject:(id)arg1;
+- (id)personalizationScopedPropertiesForProperties:(id)arg1;
 - (void)registerForTimeMarkerNotificationsIfNecessaryForPlayer:(id)arg1;
+- (id)relativeModelObjectForStoreLibraryPersonalization;
 - (void)unregisterForTimeMarkerNotifications;
 @end
 

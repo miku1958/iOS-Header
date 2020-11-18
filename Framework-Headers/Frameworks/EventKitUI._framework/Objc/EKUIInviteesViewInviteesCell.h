@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class EKUILabeledAvatarView, NSArray, NSLayoutConstraint, UIActivityIndicatorView, UIImageView, UILabel;
+@class EKUILabeledAvatarView, NSArray, UIActivityIndicatorView, UIImageView, UILabel, UIView;
 
 @interface EKUIInviteesViewInviteesCell : UITableViewCell
 {
@@ -14,32 +14,33 @@
     BOOL _showSpinner;
     UILabel *_nameLabel;
     UILabel *_commentLabel;
+    UILabel *_optionalInviteeLabel;
     UIImageView *_statusImageView;
     EKUILabeledAvatarView *_contactAvatarView;
+    UIView *_textContainerView;
     NSArray *_persistentConstraints;
     NSArray *_removableConstraints;
-    NSLayoutConstraint *_minimumHeightConstraint;
-    NSLayoutConstraint *_nameBaselineToTopConstraint;
     UIActivityIndicatorView *_spinner;
 }
 
 @property (strong, nonatomic) UILabel *commentLabel; // @synthesize commentLabel=_commentLabel;
 @property (strong, nonatomic) EKUILabeledAvatarView *contactAvatarView; // @synthesize contactAvatarView=_contactAvatarView;
 @property BOOL hideStatus; // @synthesize hideStatus=_hideStatus;
-@property (strong, nonatomic) NSLayoutConstraint *minimumHeightConstraint; // @synthesize minimumHeightConstraint=_minimumHeightConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *nameBaselineToTopConstraint; // @synthesize nameBaselineToTopConstraint=_nameBaselineToTopConstraint;
 @property (strong, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
+@property (strong, nonatomic) UILabel *optionalInviteeLabel; // @synthesize optionalInviteeLabel=_optionalInviteeLabel;
 @property (strong, nonatomic) NSArray *persistentConstraints; // @synthesize persistentConstraints=_persistentConstraints;
 @property (strong, nonatomic) NSArray *removableConstraints; // @synthesize removableConstraints=_removableConstraints;
 @property (nonatomic) BOOL showSpinner; // @synthesize showSpinner=_showSpinner;
 @property (strong, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
 @property (strong, nonatomic) UIImageView *statusImageView; // @synthesize statusImageView=_statusImageView;
+@property (strong, nonatomic) UIView *textContainerView; // @synthesize textContainerView=_textContainerView;
 
 + (id)_commentLabelFont;
-+ (double)_leftTextInset;
 + (id)_nameLabelFont;
 - (void).cxx_destruct;
+- (id)_statusImageViewSymbolConfiguration;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)updateCommonElements:(id)arg1 statusImage:(id)arg2;
 - (void)updateConstraints;
 - (void)updateWithParticipantForSorting:(id)arg1;
 - (void)updateWithParticipantForSorting:(id)arg1 availabilityType:(long long)arg2 showSpinner:(BOOL)arg3 animated:(BOOL)arg4;

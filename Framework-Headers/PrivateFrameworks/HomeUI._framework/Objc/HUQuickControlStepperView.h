@@ -7,15 +7,17 @@
 #import <UIKit/UIView.h>
 
 #import <HomeUI/HUQuickControlInteractiveView-Protocol.h>
+#import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HUQuickControlStepperViewProfile, NSArray, NSNumber, NSString, UILongPressGestureRecognizer;
+@class HUQuickControlStepperViewProfile, NSArray, NSNumber, NSString, UIImpactFeedbackGenerator, UILongPressGestureRecognizer;
 @protocol HUQuickControlViewInteractionDelegate;
 
-@interface HUQuickControlStepperView : UIView <HUQuickControlInteractiveView>
+@interface HUQuickControlStepperView : UIView <UIGestureRecognizerDelegate, HUQuickControlInteractiveView>
 {
     BOOL _userInteractionActive;
     id<HUQuickControlViewInteractionDelegate> _interactionDelegate;
     HUQuickControlStepperViewProfile *_profile;
+    unsigned long long _reachabilityState;
     UIView *_backgroundView;
     NSArray *_segmentViews;
     NSArray *_separatorViews;
@@ -23,18 +25,23 @@
     UILongPressGestureRecognizer *_gestureRecognizer;
     double _accumulatedTouchDistance;
     NSNumber *_trackingSegmentIndex;
+    NSArray *_constraints;
+    UIImpactFeedbackGenerator *_feedbackGenerator;
     struct CGPoint _lastTouchLocation;
 }
 
 @property (nonatomic) double accumulatedTouchDistance; // @synthesize accumulatedTouchDistance=_accumulatedTouchDistance;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (strong, nonatomic) UILongPressGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<HUQuickControlViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property (nonatomic) struct CGPoint lastTouchLocation; // @synthesize lastTouchLocation=_lastTouchLocation;
 @property (copy, nonatomic) HUQuickControlStepperViewProfile *profile; // @synthesize profile=_profile;
+@property (nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) NSArray *segmentViews; // @synthesize segmentViews=_segmentViews;
 @property (strong, nonatomic) NSNumber *selectedSegmentIndex; // @synthesize selectedSegmentIndex=_selectedSegmentIndex;
@@ -45,16 +52,23 @@
 @property (strong, nonatomic) id value;
 
 - (void).cxx_destruct;
+- (void)_actuateTapticFeedbackIfAvailable;
 - (void)_createSegmentAndSeparatorViews;
 - (void)_handleGesture:(id)arg1;
 - (void)_layoutSegmentViews;
+- (void)_prepareForTapticFeedbackIfAvailable;
 - (BOOL)_shouldRequireMinimumDragDistanceForGestureRecognizer:(id)arg1;
+- (id)_stepperViewMetricsForControlSize:(unsigned long long)arg1;
 - (void)_updateSegmentHighlightedState;
+- (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 - (void)_updateUserInteractionActive:(BOOL)arg1 forFirstTouch:(BOOL)arg2;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithProfile:(id)arg1;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (void)layoutSubviews;
+- (void)tintColorDidChange;
+- (void)updateConstraints;
 
 @end
 

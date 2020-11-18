@@ -14,10 +14,11 @@
     NSDictionary *_userInfo;
 }
 
-@property (readonly, strong, nonatomic) PLGenericAlbum *album;
+@property (readonly, nonatomic) PLGenericAlbum *album;
 @property (readonly, nonatomic) BOOL invitationRecordsDidChange;
 
 + (id)notificationWithAlbum:(id)arg1 snapshot:(id)arg2;
+- (void).cxx_destruct;
 - (void)_calculateDiffs;
 - (id)name;
 - (id)userInfo;

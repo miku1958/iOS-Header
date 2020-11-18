@@ -20,8 +20,11 @@
 @property (readonly) Class superclass;
 
 + (id)_ams_cookiesForURL:(id)arg1;
+- (id)_activeItunesAccount;
+- (id)_connectionType;
 - (id)_cookies;
 - (id)_diskUsage;
+- (id)_userType;
 - (id)capacityData;
 - (id)capacityDataAvailable;
 - (id)capacityDisk;

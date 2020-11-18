@@ -19,6 +19,7 @@
 - (id)initWithDefaults:(id)arg1 key:(id)arg2 classes:(id)arg3;
 - (id)initWithKey:(id)arg1 classes:(id)arg2;
 - (id)initWithStore:(id)arg1 key:(id)arg2 classes:(id)arg3;
+- (void)registerDefaultValue:(id)arg1;
 - (void)setValue:(id)arg1;
 - (BOOL)setValue:(id)arg1 error:(id *)arg2;
 - (id)value;

@@ -21,6 +21,7 @@
     long long __nextRegime;
     long long __nextRegimeCount;
     struct CGPoint _scrollVelocity;
+    struct CGPoint _lastScrollDirection;
     struct CGPoint _scrollAcceleration;
     struct CGRect __lastVisibleRect;
 }
@@ -34,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasRampedUpForCurrentAnimatedScroll; // @synthesize hasRampedUpForCurrentAnimatedScroll=_hasRampedUpForCurrentAnimatedScroll;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGPoint lastScrollDirection; // @synthesize lastScrollDirection=_lastScrollDirection;
 @property (readonly, nonatomic) long long previousRegime; // @synthesize previousRegime=_previousRegime;
 @property (readonly, nonatomic) long long regime; // @synthesize regime=_regime;
 @property (nonatomic) struct CGPoint scrollAcceleration; // @synthesize scrollAcceleration=_scrollAcceleration;

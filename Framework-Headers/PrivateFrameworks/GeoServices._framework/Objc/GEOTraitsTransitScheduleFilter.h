@@ -8,25 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTraitsTransitScheduleModeFilter, GEOTraitsTransitScheduleTimeRange, PBUnknownFields;
+@class GEOTraitsTransitScheduleModeFilter, GEOTraitsTransitScheduleTimeRange, PBDataReader, PBUnknownFields;
 
 @interface GEOTraitsTransitScheduleFilter : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOTraitsTransitScheduleModeFilter *_highFrequencyFilter;
     GEOTraitsTransitScheduleModeFilter *_lowFrequencyFilter;
     GEOTraitsTransitScheduleTimeRange *_operatingHoursRange;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_highFrequencyFilter:1;
+        unsigned int read_lowFrequencyFilter:1;
+        unsigned int read_operatingHoursRange:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_highFrequencyFilter:1;
+        unsigned int wrote_lowFrequencyFilter:1;
+        unsigned int wrote_operatingHoursRange:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasHighFrequencyFilter;
 @property (readonly, nonatomic) BOOL hasLowFrequencyFilter;
 @property (readonly, nonatomic) BOOL hasOperatingHoursRange;
-@property (strong, nonatomic) GEOTraitsTransitScheduleModeFilter *highFrequencyFilter; // @synthesize highFrequencyFilter=_highFrequencyFilter;
-@property (strong, nonatomic) GEOTraitsTransitScheduleModeFilter *lowFrequencyFilter; // @synthesize lowFrequencyFilter=_lowFrequencyFilter;
-@property (strong, nonatomic) GEOTraitsTransitScheduleTimeRange *operatingHoursRange; // @synthesize operatingHoursRange=_operatingHoursRange;
+@property (strong, nonatomic) GEOTraitsTransitScheduleModeFilter *highFrequencyFilter;
+@property (strong, nonatomic) GEOTraitsTransitScheduleModeFilter *lowFrequencyFilter;
+@property (strong, nonatomic) GEOTraitsTransitScheduleTimeRange *operatingHoursRange;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readHighFrequencyFilter;
+- (void)_readLowFrequencyFilter;
+- (void)_readOperatingHoursRange;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +51,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

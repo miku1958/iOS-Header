@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_calendarCanBeChanged;
 - (void)_contentSizeCategoryChanged:(id)arg1;
-- (id)cellForSubitemAtIndex:(unsigned long long)arg1;
+- (id)cellForSubitemAtIndex:(unsigned long long)arg1 withTraitCollection:(id)arg2;
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (void)dealloc;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;

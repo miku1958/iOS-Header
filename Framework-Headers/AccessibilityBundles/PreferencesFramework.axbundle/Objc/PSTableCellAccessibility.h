@@ -15,7 +15,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityLanguageOverriddesUser;
 - (void)_accessibilityLoadAccessibilityInformation;
@@ -28,6 +27,7 @@
 - (id)accessibilityHint;
 - (void)accessibilityIncrement;
 - (id)accessibilityLabel;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;

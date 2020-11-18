@@ -17,9 +17,9 @@
 
 @property (readonly, nonatomic) BOOL isSetupComplete; // @synthesize isSetupComplete=_setupComplete;
 
+- (void).cxx_destruct;
 - (void)_noteDisconnected;
 - (void)addHandler:(id)arg1;
-- (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (id)methodSignatureForSelector:(SEL)arg1;

@@ -6,36 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class SFSearchResult, SearchUITableViewCell, UIView;
-@protocol SearchUIFeedbackDelegate;
+#import <SearchUI/SearchUIDetailedRowComponent-Protocol.h>
 
-@interface SearchUIAccessoryViewController : NSObject
+@class NSString, SearchUIDetailedRowModel, UIView;
+@protocol SearchUIAccessoryViewDelegate, SearchUIFeedbackDelegate;
+
+@interface SearchUIAccessoryViewController : NSObject <SearchUIDetailedRowComponent>
 {
-    UIView *_view;
-    id<SearchUIFeedbackDelegate> _feedbackDelegate;
-    SearchUITableViewCell *_cell;
-    SFSearchResult *_resultForFeedback;
+    SearchUIDetailedRowModel *rowModel;
+    UIView *view;
+    id<SearchUIFeedbackDelegate> feedbackDelegate;
+    id<SearchUIAccessoryViewDelegate> _delegate;
 }
 
-@property (weak) SearchUITableViewCell *cell; // @synthesize cell=_cell;
-@property (weak) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
-@property (strong) SFSearchResult *resultForFeedback; // @synthesize resultForFeedback=_resultForFeedback;
-@property (strong) UIView *view; // @synthesize view=_view;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak) id<SearchUIAccessoryViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SearchUIDetailedRowModel *rowModel; // @synthesize rowModel;
+@property (readonly) Class superclass;
+@property (readonly) unsigned long long type;
+@property (strong, nonatomic) UIView *view; // @synthesize view;
 
-+ (Class)accessoryViewClassForResult:(id)arg1;
-+ (BOOL)supportsResult:(id)arg1;
++ (Class)accessoryViewClassForRowModel:(id)arg1;
++ (BOOL)supportsRowModel:(id)arg1;
 - (void).cxx_destruct;
 - (void)buttonPressed;
 - (id)controlInView:(id)arg1;
-- (void)didEngageAction:(unsigned long long)arg1 destination:(unsigned long long)arg2 actionPerformed:(BOOL)arg3;
-- (id)initWithUIStyle:(unsigned long long)arg1 cell:(id)arg2;
-- (BOOL)isPrimarilyTextView;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (void)didEngageAction:(unsigned long long)arg1 destination:(unsigned long long)arg2;
+- (void)hide;
+- (id)init;
+- (id)setupView;
 - (BOOL)shouldTopAlignForAccessibilityContentSizes;
 - (BOOL)shouldVerticallyCenter;
-- (void)updateWithResult:(id)arg1;
-- (void)updateWithResult:(id)arg1 resultForFeedback:(id)arg2;
-- (id)viewControllerForPresenting;
+- (void)updateWithContacts:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

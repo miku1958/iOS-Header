@@ -8,7 +8,7 @@
 
 #import <ContactsUICore/CNUIPRLikenessResolver-Protocol.h>
 
-@class CNCache, CNContactStore, CNQueue, CNSchedulerProvider, NSString, PRPersonaStore;
+@class CNCache, CNContactStore, CNQueue, CNSchedulerProvider, NSString;
 @protocol CNSchedulerProvider, CNUIPRLikenessResolver, CNUIPlaceholderProviderFactory, OS_dispatch_source;
 
 @interface CNUIPRLikenessResolver : NSObject <CNUIPRLikenessResolver>
@@ -30,7 +30,6 @@
 @property (strong, nonatomic) id<CNUIPRLikenessResolver> likenessResolver; // @synthesize likenessResolver=_likenessResolver;
 @property (strong, nonatomic) id<CNSchedulerProvider> mainThreadSchedulerProvider; // @synthesize mainThreadSchedulerProvider=_mainThreadSchedulerProvider;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *memoryMonitoringSource; // @synthesize memoryMonitoringSource=_memoryMonitoringSource;
-@property (readonly, nonatomic) PRPersonaStore *personaStore;
 @property (strong, nonatomic) id<CNUIPlaceholderProviderFactory> placeholderProviderFactory; // @synthesize placeholderProviderFactory=_placeholderProviderFactory;
 @property (nonatomic) long long prohibitedSources;
 @property (readonly, nonatomic) CNSchedulerProvider *schedulerProvider;
@@ -39,16 +38,19 @@
 + (id)_cacheKeyForContact:(id)arg1;
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
-- (id)basicMonogramObservableFromString:(id)arg1;
+- (id)basicMonogramObservableFromString:(id)arg1 color:(id)arg2;
 - (void)dealloc;
 - (void)emptyCache:(id)arg1;
-- (id)initWithContactStore:(id)arg1 personaStore:(id)arg2 scheduler:(id)arg3;
-- (id)initWithContactStore:(id)arg1 personaStore:(id)arg2 scheduler:(id)arg3 meMonitor:(id)arg4;
+- (id)initWithContactStore:(id)arg1 scheduler:(id)arg2;
+- (id)initWithContactStore:(id)arg1 scheduler:(id)arg2 meMonitor:(id)arg3;
 - (id)initWithLikenessResolver:(id)arg1;
+- (id)initWithLikenessResolver:(id)arg1 capacity:(unsigned long long)arg2;
+- (id)initWithLikenessResolver:(id)arg1 capacity:(unsigned long long)arg2 schedulerProvider:(id)arg3;
 - (id)likenessLookup;
-- (id)likenessesForContact:(id)arg1;
+- (id)likenessesForContact:(id)arg1 options:(id)arg2 workScheduler:(id)arg3;
+- (id)likenessesForContact:(id)arg1 workScheduler:(id)arg2;
 - (void)refreshCacheKey:(id)arg1;
-- (id)resolveLikenessesForContacts:(id)arg1 withContentHandler:(CDUnknownBlockType)arg2;
+- (id)resolveLikenessesForContacts:(id)arg1 workScheduler:(id)arg2 withContentHandler:(CDUnknownBlockType)arg3;
 
 @end
 

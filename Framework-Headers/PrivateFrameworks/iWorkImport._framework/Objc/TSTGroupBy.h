@@ -202,7 +202,6 @@ __attribute__((visibility("hidden")))
 - (void)p_setCell:(id)arg1 forDayGroupingTypeWithGroupColumnValue:(id)arg2 toBeInGroup:(id)arg3;
 - (void)p_setCell:(id)arg1 forDayOfWeekGroupingTypeWithGroupColumnValue:(id)arg2 toBeInGroup:(id)arg3;
 - (void)p_setCell:(id)arg1 forMonthGroupingTypeWithGroupColumnValue:(id)arg2 toBeInGroup:(id)arg3;
-- (void)p_setCell:(id)arg1 forRoundGroupingTypeWithGroupColumnValue:(id)arg2 toBeInGroup:(id)arg3;
 - (void)p_setCell:(id)arg1 forUniqueGroupingTypeWithGroupColumnValue:(id)arg2 toBeInGroup:(id)arg3;
 - (void)p_setCell:(id)arg1 forYearGroupingTypeWithGroupColumnValue:(id)arg2 toBeInGroup:(id)arg3;
 - (void)p_setCell:(id)arg1 forYearQuarterGroupingTypeWithGroupColumnValue:(id)arg2 toBeInGroup:(id)arg3;

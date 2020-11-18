@@ -16,7 +16,7 @@
 + (Class)expectedOperationClass;
 + (void)initialize;
 + (Class)operationClassForIdentifier:(id)arg1;
-+ (id)playbackSettingsForAdjustments:(id)arg1 editSource:(long long)arg2;
++ (id)playbackSettingsForAdjustments:(id)arg1;
 + (id)presetifyAdjustmentStack:(id)arg1;
 - (id)archivalRepresentation;
 - (id)debugDescription;
@@ -25,8 +25,8 @@
 - (id)descriptionByInsertingOrReplacingOperation:(id)arg1;
 - (id)descriptionByReplacingOperation:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)descriptionWithOperations:(id)arg1;
-- (id)initWithOperations:(id)arg1 editSource:(long long)arg2;
-- (id)initWithOperations:(id)arg1 editSource:(long long)arg2 naturalDuration:(CDStruct_1b6d18a9)arg3;
+- (id)initWithOperations:(id)arg1;
+- (id)initWithOperations:(id)arg1 naturalDuration:(CDStruct_1b6d18a9)arg2;
 - (BOOL)isEqualToDescription:(id)arg1;
 - (CDStruct_e83c9415)naturalPlaybackRange;
 - (CDStruct_1b6d18a9)naturalTimeForPosterFrame;

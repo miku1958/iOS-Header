@@ -6,41 +6,37 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableArray;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface IDSMessageHashStore : NSObject
 {
+    unsigned long long _initialProcessTime;
+    unsigned long long _initialServerTime;
     NSObject<OS_dispatch_queue> *_ivarQueue;
     NSObject<OS_dispatch_source> *_databaseCloseTimer;
     double _databaseLastUpdateTime;
-    unsigned long long __initialProcessTime;
-    unsigned long long __initialServerTime;
+    NSMutableArray *_recentlySeenHashes;
 }
 
-@property (nonatomic) unsigned long long _initialProcessTime; // @synthesize _initialProcessTime=__initialProcessTime;
-@property (nonatomic) unsigned long long _initialServerTime; // @synthesize _initialServerTime=__initialServerTime;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *databaseCloseTimer; // @synthesize databaseCloseTimer=_databaseCloseTimer;
+@property (nonatomic) double databaseLastUpdateTime; // @synthesize databaseLastUpdateTime=_databaseLastUpdateTime;
+@property (nonatomic) unsigned long long initialProcessTime; // @synthesize initialProcessTime=_initialProcessTime;
+@property (nonatomic) unsigned long long initialServerTime; // @synthesize initialServerTime=_initialServerTime;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *ivarQueue; // @synthesize ivarQueue=_ivarQueue;
+@property (strong, nonatomic) NSMutableArray *recentlySeenHashes; // @synthesize recentlySeenHashes=_recentlySeenHashes;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)__closeDatabaseOnIvarQueue;
-- (void)_clearDatabaseCloseTimerOnIvarQueue;
 - (unsigned long long)_currentLocalTime;
 - (void)_performInitialHousekeeping;
 - (void)_runCleanup;
 - (void)_setDatabaseCloseTimerOnIvarQueue;
 - (void)_startCleanupTimer;
-- (void)_storeInitialServerTime;
 - (void)addMessageHash:(id)arg1;
 - (void)closeDatabase;
 - (BOOL)containsMessageHash:(id)arg1;
-- (unsigned int)dataProtectionClass;
-- (void)dealloc;
 - (id)init;
-- (void)performBlock:(CDUnknownBlockType)arg1;
-- (void)performBlock:(CDUnknownBlockType)arg1 afterDelay:(double)arg2;
-- (void)performBlock:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
-- (void)systemDidEnterMemoryPressure;
-- (void)systemDidLeaveMemoryPressure;
 - (void)updateCreationDateForHash:(id)arg1;
 
 @end

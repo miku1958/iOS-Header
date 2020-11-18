@@ -9,14 +9,18 @@
 #import <NotesUI/ICScrollViewKeyboardResizerDelegate-Protocol.h>
 #import <NotesUI/UITextFieldDelegate-Protocol.h>
 
-@class ICLearnMoreTextView, ICPasswordUtilities, ICScrollViewKeyboardResizer, NSArray, NSLayoutConstraint, NSString, UIBarButtonItem, UILabel, UIScrollView, UISwitch, UITextField, UIView;
+@class ICAccount, ICLearnMoreTextView, ICPasswordUtilities, ICScrollViewKeyboardResizer, NSArray, NSLayoutConstraint, NSString, UIBarButtonItem, UILabel, UIScrollView, UISwitch, UITextField, UIView;
 
 @interface ICPasswordChangeViewController : UIViewController <ICScrollViewKeyboardResizerDelegate, UITextFieldDelegate>
 {
     BOOL _isSetupForChangePassword;
     BOOL _isInSettings;
-    BOOL _isSetupForInitialPassword;
+    BOOL _isSettingInitialPassword;
+    BOOL _didAttemptToSubmitWithoutHint;
     BOOL _usingLargerAXSizes;
+    ICAccount *_account;
+    NSArray *_textBackgroundViews;
+    UIView *_headerBackground;
     ICScrollViewKeyboardResizer *_scrollViewResizer;
     UIScrollView *_scrollView;
     ICPasswordUtilities *_passwordUtilities;
@@ -25,6 +29,7 @@
     UILabel *_passwordLabel;
     UILabel *_verifyLabel;
     UILabel *_hintLabel;
+    UILabel *_warningLabel;
     ICLearnMoreTextView *_disclaimerLabel;
     UITextField *_oldPasswordTextField;
     UITextField *_passwordTextField;
@@ -46,6 +51,7 @@
     NSArray *_alternateConstraintsForAXLargerTextSizes;
 }
 
+@property (strong, nonatomic) ICAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) NSArray *alternateConstraintsForAXLargerTextSizes; // @synthesize alternateConstraintsForAXLargerTextSizes=_alternateConstraintsForAXLargerTextSizes;
 @property (weak, nonatomic) UIView *biometricIDContainer; // @synthesize biometricIDContainer=_biometricIDContainer;
 @property (weak, nonatomic) NSLayoutConstraint *biometricIDTopConstraint; // @synthesize biometricIDTopConstraint=_biometricIDTopConstraint;
@@ -55,17 +61,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSArray *defaultConstraints; // @synthesize defaultConstraints=_defaultConstraints;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didAttemptToSubmitWithoutHint; // @synthesize didAttemptToSubmitWithoutHint=_didAttemptToSubmitWithoutHint;
 @property (weak, nonatomic) NSLayoutConstraint *disclaimerHeightConstraint; // @synthesize disclaimerHeightConstraint=_disclaimerHeightConstraint;
 @property (weak, nonatomic) ICLearnMoreTextView *disclaimerLabel; // @synthesize disclaimerLabel=_disclaimerLabel;
 @property (weak, nonatomic) UIBarButtonItem *doneButton; // @synthesize doneButton=_doneButton;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) UIView *headerBackground; // @synthesize headerBackground=_headerBackground;
 @property (weak, nonatomic) UILabel *headerLabel; // @synthesize headerLabel=_headerLabel;
 @property (weak, nonatomic) UILabel *hintLabel; // @synthesize hintLabel=_hintLabel;
 @property (weak, nonatomic) UITextField *hintTextField; // @synthesize hintTextField=_hintTextField;
 @property (nonatomic) long long incorrectPasswordAttempts; // @synthesize incorrectPasswordAttempts=_incorrectPasswordAttempts;
 @property (nonatomic) BOOL isInSettings; // @synthesize isInSettings=_isInSettings;
+@property (nonatomic) BOOL isSettingInitialPassword; // @synthesize isSettingInitialPassword=_isSettingInitialPassword;
 @property (nonatomic) BOOL isSetupForChangePassword; // @synthesize isSetupForChangePassword=_isSetupForChangePassword;
-@property (readonly, nonatomic) BOOL isSetupForInitialPassword; // @synthesize isSetupForInitialPassword=_isSetupForInitialPassword;
 @property (weak, nonatomic) NSLayoutConstraint *oldPasswordHeightConstraint; // @synthesize oldPasswordHeightConstraint=_oldPasswordHeightConstraint;
 @property (weak, nonatomic) UILabel *oldPasswordLabel; // @synthesize oldPasswordLabel=_oldPasswordLabel;
 @property (weak, nonatomic) UITextField *oldPasswordTextField; // @synthesize oldPasswordTextField=_oldPasswordTextField;
@@ -77,11 +85,13 @@
 @property (weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) ICScrollViewKeyboardResizer *scrollViewResizer; // @synthesize scrollViewResizer=_scrollViewResizer;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSArray *textBackgroundViews; // @synthesize textBackgroundViews=_textBackgroundViews;
 @property (weak, nonatomic) UILabel *useBiometricIDLabel; // @synthesize useBiometricIDLabel=_useBiometricIDLabel;
 @property (weak, nonatomic) UISwitch *useBiometricIDSwitch; // @synthesize useBiometricIDSwitch=_useBiometricIDSwitch;
 @property (nonatomic) BOOL usingLargerAXSizes; // @synthesize usingLargerAXSizes=_usingLargerAXSizes;
 @property (weak, nonatomic) UILabel *verifyLabel; // @synthesize verifyLabel=_verifyLabel;
 @property (weak, nonatomic) UITextField *verifyTextField; // @synthesize verifyTextField=_verifyTextField;
+@property (weak, nonatomic) UILabel *warningLabel; // @synthesize warningLabel=_warningLabel;
 
 - (void).cxx_destruct;
 - (void)cancelButtonPressed:(id)arg1;
@@ -89,12 +99,13 @@
 - (void)contentSizeCategoryDidChange;
 - (void)dealloc;
 - (id)disclaimerAttributedString;
+- (void)dismissKeyboardIfNeeded;
 - (void)doneButtonPressed:(id)arg1;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)keyboardResizerScrollView;
 - (void)resetTextFields;
-- (void)setUpForChangePassword;
-- (void)setUpForInitialPassword;
+- (void)setUpForChangePasswordWithAccount:(id)arg1;
+- (void)setUpForInitialPasswordWithAccount:(id)arg1;
 - (void)setUpNavigationBar;
 - (void)setupAccessibility;
 - (void)showEnterAPasswordAlert;

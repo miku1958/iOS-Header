@@ -10,12 +10,13 @@
 #import <CoreDuet/_DKKnowledgeQuerying-Protocol.h>
 #import <CoreDuet/_DKKnowledgeSaving-Protocol.h>
 
-@class _DKPrivacyPolicyEnforcer, _DKRateLimitPolicyEnforcer;
+@class _DKPrivacyPolicyEnforcer, _DKQueryDispatcher, _DKRateLimitPolicyEnforcer;
 @protocol OS_dispatch_queue, _DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeEventStreamDeleting;
 
 @interface _DKKnowledgeStore : NSObject <_DKKnowledgeSaving, _DKKnowledgeDeleting, _DKKnowledgeQuerying>
 {
     NSObject<_DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeEventStreamDeleting> *_knowledgeStoreHandle;
+    _DKQueryDispatcher *_queryDispatcher;
     _DKRateLimitPolicyEnforcer *_rateLimitEnforcer;
     _DKPrivacyPolicyEnforcer *_privacyEnforcer;
     NSObject<OS_dispatch_queue> *_defaultQueue;
@@ -24,6 +25,7 @@
 @property (strong) NSObject<OS_dispatch_queue> *defaultQueue; // @synthesize defaultQueue=_defaultQueue;
 @property (strong, nonatomic) NSObject<_DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeEventStreamDeleting> *knowledgeStoreHandle; // @synthesize knowledgeStoreHandle=_knowledgeStoreHandle;
 @property (readonly) _DKPrivacyPolicyEnforcer *privacyEnforcer; // @synthesize privacyEnforcer=_privacyEnforcer;
+@property (strong, nonatomic) _DKQueryDispatcher *queryDispatcher; // @synthesize queryDispatcher=_queryDispatcher;
 @property (readonly) _DKRateLimitPolicyEnforcer *rateLimitEnforcer; // @synthesize rateLimitEnforcer=_rateLimitEnforcer;
 
 + (id)_knowledgeStoreWithStoreDirectory:(id)arg1 readOnly:(BOOL)arg2;
@@ -33,6 +35,7 @@
 + (id)knowledgeStoreWithDirectReadWriteAccess;
 + (id)userKnowledgeStore;
 + (id)userKnowledgeStoreWithDirectReadOnlyAccess;
++ (id)userKnowledgeStoreWithDirectReadWriteAccess;
 - (void).cxx_destruct;
 - (id)_sanitizeObjectsBeforeSaving:(id)arg1;
 - (unsigned long long)deleteAllEventsInEventStream:(id)arg1 error:(id *)arg2;
@@ -42,6 +45,7 @@
 - (BOOL)deleteObjects:(id)arg1 error:(id *)arg2;
 - (void)deleteObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)deleteRemoteState:(id *)arg1;
+- (id)deviceUUID;
 - (id)executeQuery:(id)arg1 error:(id *)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

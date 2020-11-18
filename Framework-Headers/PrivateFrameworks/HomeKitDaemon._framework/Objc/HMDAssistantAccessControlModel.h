@@ -12,10 +12,10 @@
 {
 }
 
-@property (strong, nonatomic) NSArray *accessoryModelIDs; // @dynamic accessoryModelIDs;
+@property (copy, nonatomic) NSArray *accessoryModelIDs; // @dynamic accessoryModelIDs;
 @property (strong, nonatomic) NSString *changeTag; // @dynamic changeTag;
-@property (strong, nonatomic) NSNumber *enabled; // @dynamic enabled;
-@property (strong, nonatomic) NSNumber *options; // @dynamic options;
+@property (copy, nonatomic) NSNumber *enabled; // @dynamic enabled;
+@property (copy, nonatomic) NSNumber *options; // @dynamic options;
 
 + (id)properties;
 - (id)dependentUUIDs;

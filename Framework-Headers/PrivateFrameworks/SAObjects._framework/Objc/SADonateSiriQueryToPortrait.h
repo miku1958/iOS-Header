@@ -12,8 +12,11 @@
 {
 }
 
+@property (copy, nonatomic) NSString *domain;
 @property (copy, nonatomic) NSString *originalQuery;
 @property (copy, nonatomic) NSString *qid;
+@property (nonatomic) long long rank;
+@property (nonatomic) double rankerConfidence;
 
 + (id)donateSiriQueryToPortrait;
 + (id)donateSiriQueryToPortraitWithDictionary:(id)arg1 context:(id)arg2;

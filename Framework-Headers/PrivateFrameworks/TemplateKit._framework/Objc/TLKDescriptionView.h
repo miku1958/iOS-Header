@@ -6,63 +6,71 @@
 
 #import <TemplateKit/TLKView.h>
 
-#import <TemplateKit/NUIContainerBoxViewDelegate-Protocol.h>
-#import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerBoxView, TLKImage, TLKImageView, TLKMultilineText, UIBezierPath, UIButton, UILabel, UITextView;
+@class NSString, NUIContainerBoxView, TLKImage, TLKImageView, TLKLabel, TLKMultilineText, TLKStackView, TLKTextButton, TLKTextView, UIBezierPath;
 @protocol TLKDescriptionViewDelegate;
 
-@interface TLKDescriptionView : TLKView <NUIContainerBoxViewDelegate, NUIContainerStackViewDelegate>
+@interface TLKDescriptionView : TLKView <NUIContainerViewDelegate>
 {
     TLKImage *_image;
     TLKMultilineText *_text;
     TLKMultilineText *_title;
+    NSString *_footnoteButtonText;
     NSString *_moreButtonText;
     id<TLKDescriptionViewDelegate> _delegate;
-    UILabel *_titleLabel;
-    UIButton *_moreButton;
-    UITextView *_detailsTextView;
-    NUIContainerBoxView *_imageAndDescriptionBoxView;
+    TLKStackView *_stackView;
+    TLKLabel *_titleLabel;
+    TLKTextView *_detailsTextView;
+    TLKTextButton *_moreButton;
     TLKImageView *_imageView;
+    NUIContainerBoxView *_imageAndDescriptionBoxView;
     UIBezierPath *_imageViewExclusionPath;
     UIBezierPath *_moreButtonExclusionPath;
+    TLKTextButton *_footnoteButton;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<TLKDescriptionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong) UITextView *detailsTextView; // @synthesize detailsTextView=_detailsTextView;
+@property (strong, nonatomic) TLKTextView *detailsTextView; // @synthesize detailsTextView=_detailsTextView;
+@property (strong, nonatomic) TLKTextButton *footnoteButton; // @synthesize footnoteButton=_footnoteButton;
+@property (strong, nonatomic) NSString *footnoteButtonText; // @synthesize footnoteButtonText=_footnoteButtonText;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKImage *image; // @synthesize image=_image;
-@property (strong) NUIContainerBoxView *imageAndDescriptionBoxView; // @synthesize imageAndDescriptionBoxView=_imageAndDescriptionBoxView;
-@property (strong) TLKImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong) UIBezierPath *imageViewExclusionPath; // @synthesize imageViewExclusionPath=_imageViewExclusionPath;
-@property (strong) UIButton *moreButton; // @synthesize moreButton=_moreButton;
-@property (strong) UIBezierPath *moreButtonExclusionPath; // @synthesize moreButtonExclusionPath=_moreButtonExclusionPath;
+@property (strong, nonatomic) NUIContainerBoxView *imageAndDescriptionBoxView; // @synthesize imageAndDescriptionBoxView=_imageAndDescriptionBoxView;
+@property (strong, nonatomic) TLKImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIBezierPath *imageViewExclusionPath; // @synthesize imageViewExclusionPath=_imageViewExclusionPath;
+@property (strong, nonatomic) TLKTextButton *moreButton; // @synthesize moreButton=_moreButton;
+@property (strong, nonatomic) UIBezierPath *moreButtonExclusionPath; // @synthesize moreButtonExclusionPath=_moreButtonExclusionPath;
 @property (strong, nonatomic) NSString *moreButtonText; // @synthesize moreButtonText=_moreButtonText;
+@property (strong, nonatomic) TLKStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TLKMultilineText *text; // @synthesize text=_text;
 @property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
-@property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
-- (long long)containerBoxView:(id)arg1 horizontalAlignmentForArrangedSubview:(id)arg2;
-- (long long)containerBoxView:(id)arg1 verticalAlignmentForArrangedSubview:(id)arg2;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
-- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (id)detailTextViewText;
+- (void)didMoveToWindow;
 - (id)exclusionPathsForTextView;
+- (void)footnoteButtonPressed;
 - (id)imageExclusionPath;
-- (id)init;
 - (BOOL)moreButtonIsHidden;
 - (void)moreButtonPressed;
 - (long long)numberOfLines;
 - (void)observedPropertiesChanged;
+- (void)setExclusionPathInContainer:(id)arg1 includeMoreButton:(BOOL)arg2;
+- (id)setupContentView;
 - (BOOL)shouldHideMoreButtonForTextView:(id)arg1;
 - (void)simulateMoreButtonPress;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (struct CGSize)textSizeForTextView:(id)arg1 width:(double)arg2 lineCount:(unsigned long long)arg3;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (BOOL)usesDefaultInsets;
 
 @end
 

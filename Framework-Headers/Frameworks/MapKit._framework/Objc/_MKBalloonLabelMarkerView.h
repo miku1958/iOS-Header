@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (BOOL)shouldShowCallout;
+- (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)updateCalloutViewIfNeededAnimated:(BOOL)arg1;
 
 @end

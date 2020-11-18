@@ -40,6 +40,7 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setBackgroundColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

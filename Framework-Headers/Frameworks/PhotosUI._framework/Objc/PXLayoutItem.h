@@ -14,21 +14,26 @@
 {
     double _weight;
     struct CGSize _size;
+    struct CGPoint _positionOffset;
     struct CGRect _preferredCropRect;
     struct CGRect _acceptableCropRect;
+    struct CGAffineTransform _transform;
 }
 
-@property (readonly, nonatomic) struct CGRect acceptableCropRect; // @synthesize acceptableCropRect=_acceptableCropRect;
+@property (nonatomic) struct CGRect acceptableCropRect; // @synthesize acceptableCropRect=_acceptableCropRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) struct CGRect preferredCropRect; // @synthesize preferredCropRect=_preferredCropRect;
-@property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (nonatomic) struct CGPoint positionOffset; // @synthesize positionOffset=_positionOffset;
+@property (nonatomic) struct CGRect preferredCropRect; // @synthesize preferredCropRect=_preferredCropRect;
+@property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) double weight; // @synthesize weight=_weight;
+@property (nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
+@property (nonatomic) double weight; // @synthesize weight=_weight;
 
 - (id)init;
 - (id)initWithSize:(struct CGSize)arg1 weight:(double)arg2;
+- (double)weightUsingCriterion:(long long)arg1;
 
 @end
 

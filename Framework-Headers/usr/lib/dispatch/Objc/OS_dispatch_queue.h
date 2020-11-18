@@ -19,9 +19,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)load;
 - (void)_xref_dispose;
 - (id)init;
+- (oneway void)release;
 
 @end
 

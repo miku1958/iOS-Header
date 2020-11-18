@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *session;
     MISSING_TYPE *pendingTask;
-    MISSING_TYPE *encoder.storage;
+    MISSING_TYPE *$__lazy_storage_$_encoder;
     MISSING_TYPE *decoder;
 }
 

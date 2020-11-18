@@ -90,7 +90,6 @@
 - (id)metadataFromStructuredMetadata:(id)arg1;
 - (id)metadataFromStructuredMetadata:(id)arg1 cache:(id)arg2;
 - (id)primaryValue;
-- (id)relevantAction;
 - (id)relevantShortcut;
 - (id)stringValue;
 - (id)toPBCodable;

@@ -21,7 +21,6 @@
 
 + (double)_calculateHeightNeededForTextLabelWithNumberOfLines:(unsigned long long)arg1;
 + (struct CGSize)_thumbnailSizeWithMetric:(double)arg1;
-+ (id)_thumbnailWidthInterpolator;
 + (id)attributedStringForCellLabelWithString:(id)arg1;
 + (BOOL)cellLabelTextNeedsMultipleLines:(id)arg1 cellWidth:(double)arg2;
 + (struct CGSize)cellSizeForAccessibilityTextWithTextLabelNumberOfLines:(unsigned long long)arg1 collectionInset:(struct UIEdgeInsets)arg2 collectionCellSpacing:(double)arg3 screenWidth:(double)arg4;
@@ -32,6 +31,8 @@
 + (id)reuseIdentifier;
 + (struct CGSize)thumbnailSize;
 + (struct CGSize)thumbnailSizeForAccessibilityTextUsingCollectionInset:(struct UIEdgeInsets)arg1 cellSpacing:(double)arg2 screenWidth:(double)arg3;
++ (id)thumbnailWidthInterpolator;
++ (double)verticalSpacing;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;

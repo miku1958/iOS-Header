@@ -12,5 +12,6 @@
 
 @property (readonly, nonatomic) NSNumber *hf_representativeValue;
 
+- (BOOL)hf_isEqual:(id)arg1;
 @end
 

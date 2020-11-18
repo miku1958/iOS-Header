@@ -19,11 +19,14 @@
         unsigned int customResponsesDisabled:1;
         unsigned int intentCategory:1;
         unsigned int interstitialDisabled:1;
+        unsigned int prefersExecutionOnCompanion:1;
         unsigned int toggleState:1;
     } _has;
     BOOL _continueRunning;
     BOOL _customResponsesDisabled;
     BOOL _interstitialDisabled;
+    BOOL _prefersExecutionOnCompanion;
+    BOOL __encodeLegacyGloryData;
     int _intentCategory;
     int _toggleState;
     NSString *_appBundleId;
@@ -37,6 +40,7 @@
     NSString *_verb;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
 @property (nonatomic) BOOL continueRunning; // @synthesize continueRunning=_continueRunning;
 @property (nonatomic) BOOL customResponsesDisabled; // @synthesize customResponsesDisabled=_customResponsesDisabled;
@@ -49,6 +53,7 @@
 @property (nonatomic) BOOL hasInterstitialDisabled;
 @property (readonly, nonatomic) BOOL hasLocalizedAppName;
 @property (readonly, nonatomic) BOOL hasParameters;
+@property (nonatomic) BOOL hasPrefersExecutionOnCompanion;
 @property (readonly, nonatomic) BOOL hasResponseTemplate;
 @property (nonatomic) BOOL hasToggleState;
 @property (readonly, nonatomic) BOOL hasUnderlyingIntent;
@@ -60,6 +65,7 @@
 @property (nonatomic) BOOL interstitialDisabled; // @synthesize interstitialDisabled=_interstitialDisabled;
 @property (copy, nonatomic) NSString *localizedAppName; // @synthesize localizedAppName=_localizedAppName;
 @property (strong, nonatomic) _INPBDictionary *parameters; // @synthesize parameters=_parameters;
+@property (nonatomic) BOOL prefersExecutionOnCompanion; // @synthesize prefersExecutionOnCompanion=_prefersExecutionOnCompanion;
 @property (copy, nonatomic) NSString *responseTemplate; // @synthesize responseTemplate=_responseTemplate;
 @property (copy, nonatomic) NSArray *steps; // @synthesize steps=_steps;
 @property (readonly, nonatomic) unsigned long long stepsCount;
@@ -71,6 +77,7 @@
 @property (copy, nonatomic) NSString *verb; // @synthesize verb=_verb;
 
 + (Class)stepType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsIntentCategory:(id)arg1;
 - (int)StringAsToggleState:(id)arg1;
@@ -78,6 +85,8 @@
 - (void)clearSteps;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)intentCategoryAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

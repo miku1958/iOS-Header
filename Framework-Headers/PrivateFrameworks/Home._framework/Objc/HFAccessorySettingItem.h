@@ -6,16 +6,17 @@
 
 #import <Home/HFItem.h>
 
-#import <Home/HFAccessorySettingItemProtocol-Protocol.h>
+#import <Home/HFHomeKitSettingItemProtocol-Protocol.h>
 
-@class HFAccessorySettingsEntity, HMAccessorySetting, NSString;
-@protocol HFHomeKitObject, HFMediaProfileContainer;
+@class HFAccessorySettingsEntity, HMSetting, NSDictionary, NSString;
+@protocol HFHomeKitObject, HFHomeKitSettingsVendor;
 
-@interface HFAccessorySettingItem : HFItem <HFAccessorySettingItemProtocol>
+@interface HFAccessorySettingItem : HFItem <HFHomeKitSettingItemProtocol>
 {
-    id<HFMediaProfileContainer> _mediaProfileContainer;
-    HMAccessorySetting *_setting;
+    id<HFHomeKitSettingsVendor> _homeKitSettingsVendor;
+    HMSetting *_setting;
     HFAccessorySettingsEntity *_entity;
+    NSDictionary *_usageOptions;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,10 +24,11 @@
 @property (strong, nonatomic) HFAccessorySettingsEntity *entity; // @synthesize entity=_entity;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
-@property (strong, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
-@property (strong, nonatomic) HMAccessorySetting *setting; // @synthesize setting=_setting;
+@property (strong, nonatomic) id<HFHomeKitSettingsVendor> homeKitSettingsVendor; // @synthesize homeKitSettingsVendor=_homeKitSettingsVendor;
+@property (strong, nonatomic) HMSetting *setting; // @synthesize setting=_setting;
 @property (readonly, nonatomic) NSString *settingKeyPath;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSDictionary *usageOptions; // @synthesize usageOptions=_usageOptions;
 
 - (void).cxx_destruct;
 - (void)_decorateHiddenOrDisabled:(id)arg1;
@@ -36,7 +38,7 @@
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (BOOL)_validateKeyPathDependencies;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithMediaProfileContainer:(id)arg1 setting:(id)arg2;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 usageOptions:(id)arg2 setting:(id)arg3;
 - (id)updateValue:(id)arg1;
 - (id)value;
 

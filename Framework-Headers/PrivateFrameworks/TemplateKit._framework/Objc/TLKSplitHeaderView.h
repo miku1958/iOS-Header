@@ -6,11 +6,11 @@
 
 #import <TemplateKit/TLKView.h>
 
-#import <TemplateKit/NUIContainerGridViewDelegate-Protocol.h>
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerGridView, TLKBadgedLabel, TLKImage, TLKImageView, TLKMultilineText, TLKVibrantLabel;
+@class NSString, NUIContainerGridView, TLKEmbossedLabel, TLKImage, TLKImageView, TLKLabel, TLKMultilineText;
 
-@interface TLKSplitHeaderView : TLKView <NUIContainerGridViewDelegate>
+@interface TLKSplitHeaderView : TLKView <NUIContainerViewDelegate>
 {
     BOOL _shouldBadgeSubtitle;
     TLKMultilineText *_title;
@@ -22,63 +22,61 @@
     TLKImage *_trailingImage;
     TLKMultilineText *_trailingTitle;
     TLKMultilineText *_trailingSubtitle;
-    NUIContainerGridView *_gridView;
     TLKImageView *_leadingImageView;
-    TLKVibrantLabel *_leadingTitleLabel;
-    TLKVibrantLabel *_leadingSubtitleLabel;
+    TLKLabel *_leadingTitleLabel;
+    TLKLabel *_leadingSubtitleLabel;
     TLKImageView *_trailingImageView;
-    TLKVibrantLabel *_trailingTitleLabel;
-    TLKVibrantLabel *_trailingSubtitleLabel;
-    TLKVibrantLabel *_titleLabel;
-    TLKVibrantLabel *_subtitle1Label;
-    TLKBadgedLabel *_subtitle2Label;
+    TLKLabel *_trailingTitleLabel;
+    TLKLabel *_trailingSubtitleLabel;
+    TLKLabel *_titleLabel;
+    TLKLabel *_subtitle1Label;
+    TLKEmbossedLabel *_subtitle2Label;
 }
 
+@property (strong, nonatomic) NUIContainerGridView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NUIContainerGridView *gridView; // @synthesize gridView=_gridView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKImage *leadingImage; // @synthesize leadingImage=_leadingImage;
-@property (strong) TLKImageView *leadingImageView; // @synthesize leadingImageView=_leadingImageView;
+@property (strong, nonatomic) TLKImageView *leadingImageView; // @synthesize leadingImageView=_leadingImageView;
 @property (strong, nonatomic) TLKMultilineText *leadingSubtitle; // @synthesize leadingSubtitle=_leadingSubtitle;
-@property (strong) TLKVibrantLabel *leadingSubtitleLabel; // @synthesize leadingSubtitleLabel=_leadingSubtitleLabel;
+@property (strong, nonatomic) TLKLabel *leadingSubtitleLabel; // @synthesize leadingSubtitleLabel=_leadingSubtitleLabel;
 @property (strong, nonatomic) TLKMultilineText *leadingTitle; // @synthesize leadingTitle=_leadingTitle;
-@property (strong) TLKVibrantLabel *leadingTitleLabel; // @synthesize leadingTitleLabel=_leadingTitleLabel;
+@property (strong, nonatomic) TLKLabel *leadingTitleLabel; // @synthesize leadingTitleLabel=_leadingTitleLabel;
 @property (nonatomic) BOOL shouldBadgeSubtitle; // @synthesize shouldBadgeSubtitle=_shouldBadgeSubtitle;
 @property (strong, nonatomic) TLKMultilineText *subtitle1; // @synthesize subtitle1=_subtitle1;
-@property (strong) TLKVibrantLabel *subtitle1Label; // @synthesize subtitle1Label=_subtitle1Label;
+@property (strong, nonatomic) TLKLabel *subtitle1Label; // @synthesize subtitle1Label=_subtitle1Label;
 @property (strong, nonatomic) TLKMultilineText *subtitle2; // @synthesize subtitle2=_subtitle2;
-@property (strong) TLKBadgedLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
+@property (strong, nonatomic) TLKEmbossedLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
-@property (strong) TLKVibrantLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) TLKImage *trailingImage; // @synthesize trailingImage=_trailingImage;
-@property (strong) TLKImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
+@property (strong, nonatomic) TLKImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
 @property (strong, nonatomic) TLKMultilineText *trailingSubtitle; // @synthesize trailingSubtitle=_trailingSubtitle;
-@property (strong) TLKVibrantLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
+@property (strong, nonatomic) TLKLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
 @property (strong, nonatomic) TLKMultilineText *trailingTitle; // @synthesize trailingTitle=_trailingTitle;
-@property (strong) TLKVibrantLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
+@property (strong, nonatomic) TLKLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
 
 + (id)footnoteFont;
 - (void).cxx_destruct;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (struct UIEdgeInsets)effectiveAlignmentRectInsets;
 - (id)firstRowOfViews;
+- (id)footnoteLabel;
 - (id)grid;
-- (id)init;
 - (id)leadingImageInView;
 - (id)leadingSubtitleText;
 - (void)observedPropertiesChanged;
 - (BOOL)secondRowIsHidden;
 - (id)secondRowOfViews;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)setupContentView;
 - (id)subtitleLabelText;
 - (id)thirdRowOfViews;
 - (id)titleFont;
 - (id)titleLabelText;
 - (id)trailingImageInView;
 - (id)trailingSubtitleText;
-- (id)vibrantFootnoteLabel:(BOOL)arg1;
 
 @end
 

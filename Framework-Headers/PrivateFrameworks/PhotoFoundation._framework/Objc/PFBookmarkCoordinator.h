@@ -20,7 +20,6 @@
 - (void)_decrementRefcountForURL:(id)arg1;
 - (void)_incrementRefcountForURL:(id)arg1 callStart:(BOOL)arg2;
 - (void)addPowerBoxURL:(id)arg1;
-- (void)addPowerBoxURLs:(id)arg1;
 - (id)description;
 - (id)init;
 - (void)logRefCountForUrl:(id)arg1 withPrefix:(id)arg2 sender:(id)arg3;

@@ -39,6 +39,7 @@
 - (void)finalizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithLibraryManager:(id)arg1;
+- (id)redactedDescription;
 - (void)tearDownWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

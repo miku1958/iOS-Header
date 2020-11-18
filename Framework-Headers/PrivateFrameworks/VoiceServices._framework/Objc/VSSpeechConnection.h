@@ -40,7 +40,8 @@ __attribute__((visibility("hidden")))
 - (void)continueCurrentSpeechRequest;
 - (void)dealloc;
 - (void)endAudioPowerUpdate;
-- (void)getAutoDownloadedVoiceAssets:(CDUnknownBlockType)arg1;
+- (void)forwardStreamObject:(id)arg1;
+- (void)getAutoDownloadedVoiceAssetsWithClientID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;
 - (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;
 - (void)getLogToFile:(CDUnknownBlockType)arg1;
@@ -53,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)pauseCurrentSpeechRequestAtMark:(long long)arg1;
 - (void)prewarmIfNeededWithRequest:(id)arg1;
 - (BOOL)queryPhaticCapabilityWithRequest:(id)arg1;
-- (void)setAutoDownloadedVoiceAssets:(id)arg1;
+- (void)setAutoDownloadedVoiceAssets:(id)arg1 withClientID:(id)arg2;
 - (void)setLogToFile:(BOOL)arg1;
 - (void)setPresynthesizedAudioRequest:(id)arg1;
 - (void)setRequest:(id)arg1;

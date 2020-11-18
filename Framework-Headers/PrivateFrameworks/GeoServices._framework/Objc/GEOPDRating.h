@@ -19,26 +19,28 @@ __attribute__((visibility("hidden")))
     int _numRatingsUsedForScore;
     int _ratingType;
     struct {
-        unsigned int maxScore:1;
-        unsigned int score:1;
-        unsigned int numRatingsUsedForScore:1;
-        unsigned int ratingType:1;
-    } _has;
+        unsigned int has_maxScore:1;
+        unsigned int has_score:1;
+        unsigned int has_numRatingsUsedForScore:1;
+        unsigned int has_ratingType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMaxScore;
 @property (nonatomic) BOOL hasNumRatingsUsedForScore;
 @property (nonatomic) BOOL hasRatingType;
 @property (nonatomic) BOOL hasScore;
-@property (nonatomic) double maxScore; // @synthesize maxScore=_maxScore;
-@property (nonatomic) int numRatingsUsedForScore; // @synthesize numRatingsUsedForScore=_numRatingsUsedForScore;
-@property (nonatomic) int ratingType; // @synthesize ratingType=_ratingType;
-@property (nonatomic) double score; // @synthesize score=_score;
+@property (nonatomic) double maxScore;
+@property (nonatomic) int numRatingsUsedForScore;
+@property (nonatomic) int ratingType;
+@property (nonatomic) double score;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (id)ratingForPlaceData:(id)arg1 type:(int)arg2;
 - (void).cxx_destruct;
 - (int)StringAsRatingType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)ratingTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

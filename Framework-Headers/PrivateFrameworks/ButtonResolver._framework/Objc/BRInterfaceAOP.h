@@ -29,7 +29,6 @@
 @property (readonly, nonatomic) BOOL fastHaptics; // @synthesize fastHaptics=_fastHaptics;
 @property (nonatomic) unsigned int service; // @synthesize service=_service;
 
-+ (int)_convertAssertion:(unsigned long long)arg1;
 + (int)_convertClickState:(unsigned long long)arg1;
 + (int)_convertForceFeel:(unsigned long long)arg1;
 + (id)interface;

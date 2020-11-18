@@ -4,38 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUITableViewController.h>
+#import <UIKit/UIViewController.h>
 
-@class SFCard, UIActivityIndicatorView, UILabel, UIView;
+@class NSTimer, NUIContainerBoxView, SFCard, SearchUIBackgroundView, SearchUICardTableViewController, TLKLabel, UIActivityIndicatorView;
+@protocol SFFeedbackListener, SearchUICardViewDelegate;
 
-@interface SearchUICardViewController : SearchUITableViewController
+@interface SearchUICardViewController : UIViewController
 {
-    unsigned long long _level;
-    SFCard *_card;
-    UIView *_loadingView;
+    NUIContainerBoxView *_loadingView;
     UIActivityIndicatorView *_loadingSpinner;
-    UILabel *_loadingLabel;
+    TLKLabel *_loadingLabel;
+    NSTimer *_loadingScreenTimer;
+    unsigned long long _level;
+    SearchUICardTableViewController *_tableViewController;
 }
 
-@property (strong) SFCard *card; // @synthesize card=_card;
-@property unsigned long long level; // @synthesize level=_level;
-@property (strong) UILabel *loadingLabel; // @synthesize loadingLabel=_loadingLabel;
-@property (strong) UIActivityIndicatorView *loadingSpinner; // @synthesize loadingSpinner=_loadingSpinner;
-@property (strong) UIView *loadingView; // @synthesize loadingView=_loadingView;
+@property (strong, nonatomic) SFCard *card;
+@property (weak, nonatomic) id<SearchUICardViewDelegate> delegate;
+@property (weak, nonatomic) id<SFFeedbackListener> feedbackListener;
+@property (nonatomic, getter=isInPreviewPlatter) BOOL inPreviewPlatter;
+@property (nonatomic) unsigned long long level; // @synthesize level=_level;
+@property (strong, nonatomic) TLKLabel *loadingLabel; // @synthesize loadingLabel=_loadingLabel;
+@property (strong, nonatomic) NSTimer *loadingScreenTimer; // @synthesize loadingScreenTimer=_loadingScreenTimer;
+@property (strong, nonatomic) UIActivityIndicatorView *loadingSpinner; // @synthesize loadingSpinner=_loadingSpinner;
+@property (strong, nonatomic) NUIContainerBoxView *loadingView; // @synthesize loadingView=_loadingView;
+@property (nonatomic) BOOL shouldUseInsetRoundedSections;
+@property (strong, nonatomic) SearchUICardTableViewController *tableViewController; // @synthesize tableViewController=_tableViewController;
+@property (nonatomic) BOOL threeDTouchEnabled;
+@property (strong, nonatomic) SearchUIBackgroundView *view; // @dynamic view;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)cardViewDidAppear;
-- (void)displayLoadingView;
-- (id)initWithCard:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-- (double)offScreenContentScrollDistance;
-- (void)setShouldUseInsetRoundedSections:(BOOL)arg1;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (double)contentHeightForWidth:(double)arg1;
+- (void)displayLoadingViewAfterDelay:(double)arg1 withSpinner:(BOOL)arg2;
+- (id)init;
+- (id)initWithCard:(id)arg1 feedbackListener:(id)arg2;
+- (id)initWithCard:(id)arg1 style:(unsigned long long)arg2 feedbackListener:(id)arg3;
+- (void)prepareLoadingView;
 - (id)testingTableViewController;
+- (void)updateTimerAndCardSections:(id)arg1;
 - (void)updateWithCardSections:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

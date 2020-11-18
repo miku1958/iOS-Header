@@ -18,6 +18,7 @@
 @property (readonly) BOOL sampleBufferWasDropped;
 
 - (id)_initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 sampleBufferWasDropped:(BOOL)arg2;
+- (int)constituentDeviceCaptureID;
 - (void)dealloc;
 - (BOOL)hasCorrespondingDepthData;
 - (BOOL)hasCorrespondingVisionData;

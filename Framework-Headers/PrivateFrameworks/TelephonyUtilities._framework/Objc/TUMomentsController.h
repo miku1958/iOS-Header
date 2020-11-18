@@ -17,39 +17,39 @@
     id<TUMomentsControllerDataSource> _dataSource;
     id<TUMomentsControllerDelegate> _delegate;
     NSMutableDictionary *_capabilitiesByVideoStreamToken;
-    NSMutableDictionary *_callByVideoStreamToken;
+    NSMutableDictionary *_providerByVideoStreamToken;
 }
 
-@property (readonly, nonatomic) NSMutableDictionary *callByVideoStreamToken; // @synthesize callByVideoStreamToken=_callByVideoStreamToken;
 @property (readonly, nonatomic) NSMutableDictionary *capabilitiesByVideoStreamToken; // @synthesize capabilitiesByVideoStreamToken=_capabilitiesByVideoStreamToken;
 @property (readonly, nonatomic) id<TUMomentsControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<TUMomentsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableDictionary *providerByVideoStreamToken; // @synthesize providerByVideoStreamToken=_providerByVideoStreamToken;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
-+ (CDUnknownBlockType)faceTimePhotosEnabledGenerator;
++ (CDUnknownBlockType)faceTimePhotosEnabledDeterminer;
 + (BOOL)isFaceTimePhotosEnabled;
 + (BOOL)isFaceTimePhotosEnabledByDefault;
 + (BOOL)isFaceTimePhotosRestricted;
 + (void)setFaceTimePhotosEnabled:(BOOL)arg1;
-+ (void)setFaceTimePhotosEnabledGenerator:(CDUnknownBlockType)arg1;
++ (void)setFaceTimePhotosEnabledDeterminer:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (id)capabilitiesForCall:(id)arg1;
+- (id)capabilitiesForProvider:(id)arg1;
 - (void)dataSource:(id)arg1 didReceiveLocallyRequestedMomentDescriptor:(id)arg2;
 - (void)dataSource:(id)arg1 didUpdateCapabilities:(id)arg2 forVideoStreamToken:(long long)arg3;
+- (void)dataSource:(id)arg1 willCaptureRemoteRequestFromRequesterID:(id)arg2;
 - (void)dealloc;
 - (void)endRequestWithTransactionID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 dataSource:(id)arg2;
-- (void)registerCall:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)registerProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)serverDiedForDataSource:(id)arg1;
-- (void)startRequestWithMediaType:(int)arg1 forCall:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)unregisterCall:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)willCaptureRemoteRequestForDataSource:(id)arg1;
+- (void)startRequestWithMediaType:(int)arg1 forProvider:(id)arg2 requesteeID:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)unregisterProvider:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

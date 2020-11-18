@@ -16,7 +16,10 @@
     BOOL _enablePFS;
     BOOL _enableRevocationCheck;
     BOOL _strictRevocationCheck;
+    BOOL _enableFallback;
     BOOL _wakeForRekey;
+    BOOL _opportunisticPFS;
+    BOOL _disableInitialContact;
     int _natKeepAliveOffloadEnable;
     int _natKeepAliveOffloadInterval;
     int _disableMOBIKERetryOnWake;
@@ -32,6 +35,7 @@
     NSArray *_IKESecurityAssociationParametersArray;
     NSArray *_childSecurityAssociationParametersArray;
     NSString *_providerBundleIdentifier;
+    long long _tunnelKind;
 }
 
 @property (readonly) NEVPNIKEv2SecurityAssociationParameters *IKESecurityAssociationParameters; // @synthesize IKESecurityAssociationParameters=_IKESecurityAssociationParameters;
@@ -40,20 +44,24 @@
 @property (readonly) NEVPNIKEv2SecurityAssociationParameters *childSecurityAssociationParameters; // @synthesize childSecurityAssociationParameters=_childSecurityAssociationParameters;
 @property (strong) NSArray *childSecurityAssociationParametersArray; // @synthesize childSecurityAssociationParametersArray=_childSecurityAssociationParametersArray;
 @property long long deadPeerDetectionRate; // @synthesize deadPeerDetectionRate=_deadPeerDetectionRate;
+@property BOOL disableInitialContact; // @synthesize disableInitialContact=_disableInitialContact;
 @property BOOL disableMOBIKE; // @synthesize disableMOBIKE=_disableMOBIKE;
 @property int disableMOBIKERetryOnWake; // @synthesize disableMOBIKERetryOnWake=_disableMOBIKERetryOnWake;
 @property BOOL disableRedirect; // @synthesize disableRedirect=_disableRedirect;
+@property BOOL enableFallback; // @synthesize enableFallback=_enableFallback;
 @property BOOL enablePFS; // @synthesize enablePFS=_enablePFS;
 @property BOOL enableRevocationCheck; // @synthesize enableRevocationCheck=_enableRevocationCheck;
 @property long long maximumTLSVersion; // @synthesize maximumTLSVersion=_maximumTLSVersion;
 @property long long minimumTLSVersion; // @synthesize minimumTLSVersion=_minimumTLSVersion;
 @property int natKeepAliveOffloadEnable; // @synthesize natKeepAliveOffloadEnable=_natKeepAliveOffloadEnable;
 @property int natKeepAliveOffloadInterval; // @synthesize natKeepAliveOffloadInterval=_natKeepAliveOffloadInterval;
+@property BOOL opportunisticPFS; // @synthesize opportunisticPFS=_opportunisticPFS;
 @property (readonly) NSString *pluginType; // @synthesize pluginType=_pluginType;
 @property (copy) NSString *providerBundleIdentifier; // @synthesize providerBundleIdentifier=_providerBundleIdentifier;
 @property (copy) NSString *serverCertificateCommonName; // @synthesize serverCertificateCommonName=_serverCertificateCommonName;
 @property (copy) NSString *serverCertificateIssuerCommonName; // @synthesize serverCertificateIssuerCommonName=_serverCertificateIssuerCommonName;
 @property BOOL strictRevocationCheck; // @synthesize strictRevocationCheck=_strictRevocationCheck;
+@property long long tunnelKind; // @synthesize tunnelKind=_tunnelKind;
 @property BOOL useConfigurationAttributeInternalIPSubnet; // @synthesize useConfigurationAttributeInternalIPSubnet=_useConfigurationAttributeInternalIPSubnet;
 @property BOOL wakeForRekey; // @synthesize wakeForRekey=_wakeForRekey;
 

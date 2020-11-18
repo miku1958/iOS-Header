@@ -13,6 +13,8 @@
 {
     BOOL _isRequestingExtension;
     NSExtension *_extension;
+    long long _extensionScore;
+    unsigned long long _externalResourcesPermission;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_completionHandlersQueue;
     NSExtensionContext *_context;
@@ -28,7 +30,10 @@
 @property (strong, nonatomic) NSExtensionContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property (strong, nonatomic) NSMutableArray *extensionRequestHandlers; // @synthesize extensionRequestHandlers=_extensionRequestHandlers;
+@property long long extensionScore; // @synthesize extensionScore=_extensionScore;
+@property unsigned long long externalResourcesPermission; // @synthesize externalResourcesPermission=_externalResourcesPermission;
 @property (strong, nonatomic) QLGracePeriodTimer *gracePeriodTimer; // @synthesize gracePeriodTimer=_gracePeriodTimer;
+@property (nonatomic) BOOL isRequestingExtension; // @synthesize isRequestingExtension=_isRequestingExtension;
 @property (strong, nonatomic) NSMutableSet *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) id requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;

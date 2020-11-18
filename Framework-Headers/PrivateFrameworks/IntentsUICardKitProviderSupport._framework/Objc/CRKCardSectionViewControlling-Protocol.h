@@ -12,5 +12,8 @@
 
 @property (weak, nonatomic) id<CRKCardSectionViewControllingDelegate> cardSectionViewControllingDelegate;
 
+
+@optional
+- (void)desiresInteractivity:(void (^)(BOOL))arg1;
 @end
 

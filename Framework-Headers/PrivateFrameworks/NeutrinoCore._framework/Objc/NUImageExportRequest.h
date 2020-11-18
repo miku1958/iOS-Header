@@ -6,24 +6,29 @@
 
 #import <NeutrinoCore/NUExportRequest.h>
 
-@class NSDictionary, NUColorSpace, NUImageExportFormat;
+#import <NeutrinoCore/NUTimeBased-Protocol.h>
 
-@interface NUImageExportRequest : NUExportRequest
+@class NSDictionary, NSString, NUColorSpace, NUImageExportFormat;
+
+@interface NUImageExportRequest : NUExportRequest <NUTimeBased>
 {
     BOOL _renderToData;
     NUColorSpace *_colorSpace;
     NUImageExportFormat *_format;
     NSDictionary *_imageProperties;
-    NSDictionary *_auxiliaryDataByType;
-    CDStruct_1b6d18a9 _time;
+    NSDictionary *_coreGraphicsInfoDictionariesByAuxiliaryType;
 }
 
-@property (copy) NSDictionary *auxiliaryDataByType; // @synthesize auxiliaryDataByType=_auxiliaryDataByType;
 @property (strong, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+@property (copy) NSDictionary *coreGraphicsInfoDictionariesByAuxiliaryType; // @synthesize coreGraphicsInfoDictionariesByAuxiliaryType=_coreGraphicsInfoDictionariesByAuxiliaryType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NUImageExportFormat *format; // @synthesize format=_format;
+@property (readonly) unsigned long long hash;
 @property (copy) NSDictionary *imageProperties; // @synthesize imageProperties=_imageProperties;
 @property (nonatomic) BOOL renderToData; // @synthesize renderToData=_renderToData;
-@property CDStruct_1b6d18a9 time; // @synthesize time=_time;
+@property (readonly) Class superclass;
+@property (nonatomic) CDStruct_1b6d18a9 time;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

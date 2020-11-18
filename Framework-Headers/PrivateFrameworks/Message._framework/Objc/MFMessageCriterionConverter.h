@@ -15,6 +15,11 @@
 
 @property (weak, nonatomic) id<MFMessageCriterionConverterDelegate> delegate; // @synthesize delegate=_delegate;
 
++ (id)spotlightBodySearchPredicateForValue:(id)arg1;
++ (id)spotlightRecipientSearchPredicateForValue:(id)arg1 operator:(unsigned long long)arg2;
++ (id)spotlightSearchPredicateForValue:(id)arg1;
++ (id)spotlightSenderSearchPredicateForValue:(id)arg1 operator:(unsigned long long)arg2;
++ (id)spotlightSubjectSearchPredicateForValue:(id)arg1 operator:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (long long)_criterionTypeForKey:(id)arg1;
 - (long long)_criterionTypeFromExpression:(id)arg1;

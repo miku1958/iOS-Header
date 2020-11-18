@@ -7,6 +7,7 @@
 #import <Foundation/NSValue.h>
 
 @interface NSValue (CPLArchiver)
+- (id)cplFullDescription;
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
 @end

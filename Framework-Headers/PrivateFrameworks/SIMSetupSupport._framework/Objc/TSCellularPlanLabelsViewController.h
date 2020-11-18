@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SetupAssistantUI/BFFSplashController.h>
+#import <OnBoardingKit/OBTableWelcomeController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UINavigationControllerDelegate-Protocol.h>
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TSCellularPlanLabelPickerViewController, UITableView, UITableViewCell;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, OBBoldTrayButton, TSCellularPlanLabelPickerViewController, UITableViewCell;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanLabelsViewController : BFFSplashController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
+@interface TSCellularPlanLabelsViewController : OBTableWelcomeController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
 {
+    OBBoldTrayButton *_doneButton;
     BOOL _allowDismiss;
     id<TSSIMSetupFlowDelegate> _delegate;
-    UITableView *_tableView;
+    NSLayoutConstraint *_heightAnchor;
     UITableViewCell *_sectionFooter;
     NSMutableArray *_sortedPlanItemsWithPendingLabels;
     TSCellularPlanLabelPickerViewController *_labelPickerViewController;
@@ -31,16 +32,18 @@
 @property (weak) id<TSSIMSetupFlowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property (readonly) NSString *iccid; // @synthesize iccid=_iccid;
 @property (strong) TSCellularPlanLabelPickerViewController *labelPickerViewController; // @synthesize labelPickerViewController=_labelPickerViewController;
 @property (strong) NSArray *planItemBadges; // @synthesize planItemBadges=_planItemBadges;
 @property (strong) UITableViewCell *sectionFooter; // @synthesize sectionFooter=_sectionFooter;
 @property (strong) NSMutableArray *sortedPlanItemsWithPendingLabels; // @synthesize sortedPlanItemsWithPendingLabels=_sortedPlanItemsWithPendingLabels;
 @property (readonly) Class superclass;
-@property (strong) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
 - (void)_cancelButtonTapped;
+- (void)_doneButtonTapped;
+- (BOOL)canBeShownFromSuspendedState;
 - (id)getPendingLabelAtIndex:(long long)arg1;
 - (id)getPlanItemByIndex:(long long)arg1;
 - (id)getPredefinedUserLabels;

@@ -8,25 +8,30 @@
 
 #import <NeutrinoCore/NUDisplay-Protocol.h>
 
-@class CADisplay, NSString;
+@class CADisplay, NSString, NUColorSpace, NUPixelFormat;
 
 @interface NUDisplay_iOS : NSObject <NUDisplay>
 {
     CADisplay *_display;
 }
 
+@property (readonly) NUColorSpace *colorSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CADisplay *display; // @synthesize display=_display;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id identifier;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly) NUPixelFormat *pixelFormat;
 @property (readonly, nonatomic) CDStruct_912cb5d2 size;
 @property (readonly) Class superclass;
 
 + (id)displays;
++ (id)mainDisplay;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithCADisplay:(id)arg1;
+- (BOOL)wideColor;
 
 @end
 

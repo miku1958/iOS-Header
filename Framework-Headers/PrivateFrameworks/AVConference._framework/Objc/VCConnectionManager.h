@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <AVConference/VCConnectionHealthMonitorDelegate-Protocol.h>
+#import <AVConference/VCWifiAssistManagerDelegate-Protocol.h>
 
-@class NSString, VCConnectionHealthMonitor, VCStatsRecorder;
+@class NSString, VCConnectionHealthMonitor, VCStatsRecorder, VCWifiAssistManager;
 @protocol OS_dispatch_queue, VCConnectionManagerDelegate, VCConnectionProtocol;
 
 __attribute__((visibility("hidden")))
-@interface VCConnectionManager : NSObject <VCConnectionHealthMonitorDelegate>
+@interface VCConnectionManager : NSObject <VCConnectionHealthMonitorDelegate, VCWifiAssistManagerDelegate>
 {
     unsigned int _callID;
+    int _connectionSelectionVersion;
     int _relayServerProvider;
     struct _opaque_pthread_rwlock_t _stateRWlock;
     id<VCConnectionProtocol> _primaryConnection;
@@ -23,10 +25,16 @@ __attribute__((visibility("hidden")))
     id<VCConnectionProtocol> _lastPrimaryConnectionInUse;
     struct opaqueRTCReporting *_reportingAgent;
     BOOL _isInitialConnectionEstablished;
-    int _mediaExcessiveCellularTxBytes;
-    int _mediaExcessiveCellularRxBytes;
-    int _signalingExcessiveCellularTxBytes;
-    int _signalingExcessiveCellularRxBytes;
+    unsigned int _mediaExcessiveCellularTxBytes;
+    unsigned int _mediaExcessiveCellularRxBytes;
+    unsigned int _signalingExcessiveCellularTxBytes;
+    unsigned int _signalingExcessiveCellularRxBytes;
+    unsigned int _budgetConsumingCellularTxBytes;
+    unsigned int _budgetConsumingCellularRxBytes;
+    unsigned long long _mediaCellularTxBytes;
+    unsigned long long _mediaCellularRxBytes;
+    unsigned long long _mediaWifiTxBytes;
+    unsigned long long _mediaWifiRxBytes;
     id _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     int _duplicationType;
@@ -40,9 +48,12 @@ __attribute__((visibility("hidden")))
     int _preferredLocalInterfaceForDuplication;
     int _preferredRemoteInterfaceForDuplication;
     BOOL _isPrimaryLocalUsingCell;
+    BOOL _isPreWarmStateEnabled;
+    VCWifiAssistManager *_vcWifiAssist;
+    BOOL _hasAssertedCell;
     VCConnectionHealthMonitor *_connectionHealthMonitor;
-    CDStruct_b3143830 _localConnectionStats;
-    CDStruct_b3143830 _remoteConnectionStats;
+    CDStruct_50492349 _localConnectionStats;
+    CDStruct_50492349 _remoteConnectionStats;
     double _remoteNoRemotePacketInterval;
     BOOL _isAudioOnly;
     int _localiRATLinkTypeSuggestion;
@@ -59,29 +70,46 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType _wrmRequestNotificationCallback;
     void *_wrmCallbacksContext;
     VCStatsRecorder *_statsRecorder;
+    BOOL _preferRelayOverP2PEnabled;
+    BOOL _fastMediaDuplicationEnabled;
+    BOOL _cellPrimaryInterfaceChangeEnabled;
+    BOOL _duplicateImportantPktsEnabled;
+    double _noRemoteDuplicationThresholdFast;
 }
 
+@property (readonly) unsigned int budgetConsumingCellularRxBytes; // @synthesize budgetConsumingCellularRxBytes=_budgetConsumingCellularRxBytes;
+@property (readonly) unsigned int budgetConsumingCellularTxBytes; // @synthesize budgetConsumingCellularTxBytes=_budgetConsumingCellularTxBytes;
 @property unsigned int callID; // @synthesize callID=_callID;
+@property BOOL cellPrimaryInterfaceChangeEnabled; // @synthesize cellPrimaryInterfaceChangeEnabled=_cellPrimaryInterfaceChangeEnabled;
 @property (readonly) int connectionCount;
 @property (strong, nonatomic) id<VCConnectionProtocol> connectionForDuplication; // @synthesize connectionForDuplication=_connectionForDuplication;
 @property (readonly, copy) NSString *debugDescription;
 @property id<VCConnectionManagerDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property BOOL duplicateImportantPktsEnabled; // @synthesize duplicateImportantPktsEnabled=_duplicateImportantPktsEnabled;
+@property BOOL fastMediaDuplicationEnabled; // @synthesize fastMediaDuplicationEnabled=_fastMediaDuplicationEnabled;
 @property (readonly) unsigned long long hash;
 @property BOOL isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
 @property (nonatomic, setter=setDuplicationEnabled:) BOOL isDuplicationEnabled; // @synthesize isDuplicationEnabled=_enableDuplication;
 @property (readonly) BOOL isLocalCellularInterfaceUsed;
+@property (readonly) BOOL isPreWarmStateEnabled; // @synthesize isPreWarmStateEnabled=_isPreWarmStateEnabled;
 @property (strong, nonatomic) id<VCConnectionProtocol> lastPrimaryConnectionInUse; // @synthesize lastPrimaryConnectionInUse=_lastPrimaryConnectionInUse;
-@property (readonly) int mediaExcessiveCellularRxBytes; // @synthesize mediaExcessiveCellularRxBytes=_mediaExcessiveCellularRxBytes;
-@property (readonly) int mediaExcessiveCellularTxBytes; // @synthesize mediaExcessiveCellularTxBytes=_mediaExcessiveCellularTxBytes;
+@property (readonly) unsigned long long mediaCellularRxBytes; // @synthesize mediaCellularRxBytes=_mediaCellularRxBytes;
+@property (readonly) unsigned long long mediaCellularTxBytes; // @synthesize mediaCellularTxBytes=_mediaCellularTxBytes;
+@property (readonly) unsigned int mediaExcessiveCellularRxBytes; // @synthesize mediaExcessiveCellularRxBytes=_mediaExcessiveCellularRxBytes;
+@property (readonly) unsigned int mediaExcessiveCellularTxBytes; // @synthesize mediaExcessiveCellularTxBytes=_mediaExcessiveCellularTxBytes;
+@property (readonly) unsigned long long mediaWifiRxBytes; // @synthesize mediaWifiRxBytes=_mediaWifiRxBytes;
+@property (readonly) unsigned long long mediaWifiTxBytes; // @synthesize mediaWifiTxBytes=_mediaWifiTxBytes;
+@property double noRemoteDuplicationThresholdFast; // @synthesize noRemoteDuplicationThresholdFast=_noRemoteDuplicationThresholdFast;
+@property BOOL preferRelayOverP2PEnabled; // @synthesize preferRelayOverP2PEnabled=_preferRelayOverP2PEnabled;
 @property int preferredLocalInterfaceForDuplication; // @synthesize preferredLocalInterfaceForDuplication=_preferredLocalInterfaceForDuplication;
 @property int preferredRemoteInterfaceForDuplication; // @synthesize preferredRemoteInterfaceForDuplication=_preferredRemoteInterfaceForDuplication;
 @property (strong, nonatomic) id<VCConnectionProtocol> primaryConnection; // @synthesize primaryConnection=_primaryConnection;
 @property int relayServerProvider; // @synthesize relayServerProvider=_relayServerProvider;
 @property (readonly) double remoteNoRemotePacketInterval; // @synthesize remoteNoRemotePacketInterval=_remoteNoRemotePacketInterval;
 @property (strong, nonatomic) id<VCConnectionProtocol> secondaryConnection; // @synthesize secondaryConnection=_secondaryConnection;
-@property (readonly) int signalingExcessiveCellularRxBytes; // @synthesize signalingExcessiveCellularRxBytes=_signalingExcessiveCellularRxBytes;
-@property (readonly) int signalingExcessiveCellularTxBytes; // @synthesize signalingExcessiveCellularTxBytes=_signalingExcessiveCellularTxBytes;
+@property (readonly) unsigned int signalingExcessiveCellularRxBytes; // @synthesize signalingExcessiveCellularRxBytes=_signalingExcessiveCellularRxBytes;
+@property (readonly) unsigned int signalingExcessiveCellularTxBytes; // @synthesize signalingExcessiveCellularTxBytes=_signalingExcessiveCellularTxBytes;
 @property (readonly, nonatomic) VCStatsRecorder *statsRecorder; // @synthesize statsRecorder=_statsRecorder;
 @property (readonly) Class superclass;
 @property BOOL supportDuplication; // @synthesize supportDuplication=_supportDuplication;
@@ -89,15 +117,19 @@ __attribute__((visibility("hidden")))
 - (int)addConnection:(id)arg1;
 - (void)checkiRATSuggestion;
 - (void)checkiRATSuggestionDefaultValue;
+- (void)checkpointPrimaryConnection:(id)arg1;
 - (id)connectionForQuality:(int)arg1;
 - (id)connectionForQualityInternal:(int)arg1;
 - (void)connectionHealthDidUpdate:(int)arg1 isLocalConnection:(BOOL)arg2;
 - (id)copyConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(BOOL *)arg2;
-- (struct tagVCSourceDestinationInfo *)createSourceDestinationInfoList;
+- (struct tagVCSourceDestinationInfo *)createSourceDestinationInfoListWithForceDuplication:(BOOL)arg1;
 - (void)dealloc;
+- (void)didChangeWifiAssistAvailable:(BOOL)arg1 reason:(unsigned char)arg2;
+- (void)disableRemotePreferredInterfaceInference:(BOOL)arg1;
 - (unsigned int)getByteCountWithIndex:(unsigned char)arg1 isOutgoing:(BOOL)arg2;
 - (int)getCellularMTUForActiveConnectionWithQuality:(int)arg1;
 - (int)getCellularTechForActiveConnectionWithQuality:(int)arg1 forLocalInterface:(BOOL)arg2;
+- (int)getConnectionSelectionVersionFromFrameworkVersion:(id)arg1;
 - (int)getConnectionTypeForActiveConnectionWithQuality:(int)arg1 forLocalInterface:(BOOL)arg2;
 - (int)getNumberOfConnectionsInternal;
 - (unsigned int)getPacketCountWithIndex:(unsigned char)arg1 isOutgoing:(BOOL)arg2;
@@ -105,12 +137,13 @@ __attribute__((visibility("hidden")))
 - (BOOL)isBetterConnection:(id)arg1 asPrimary:(BOOL)arg2;
 - (BOOL)isConnectedOnIPv6ForActiveConnectionWithQuality:(int)arg1;
 - (BOOL)isConnectedOnRelayForActiveConnectionWithQuality:(int)arg1;
+- (BOOL)isInterfaceConstrainedForActiveConnectionWithQuality:(int)arg1 forLocalInterface:(BOOL)arg2;
 - (BOOL)isInterfaceOnCellularForActiveConnectionWithQuality:(int)arg1 forLocalInterface:(BOOL)arg2;
 - (BOOL)isOptimalConnection:(id)arg1 asPrimary:(BOOL)arg2 interfaceMask:(int)arg3;
 - (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
 - (int)processConnectionHealthFromControlInfo:(void *)arg1;
 - (int)processRemoteWRMSuggestion:(int)arg1 isRemoteDuplicating:(BOOL)arg2;
-- (int)processWRMNotification:(CDStruct_d2860d30 *)arg1;
+- (int)processWRMNotification:(CDStruct_0693755d *)arg1;
 - (void)promoteSecondaryConnectionToPrimary:(id)arg1;
 - (const char *)reasonStringWithDuplicationType:(int)arg1;
 - (int)removeConnection:(id)arg1;
@@ -118,32 +151,41 @@ __attribute__((visibility("hidden")))
 - (void)requestWRMNotificationAtTime:(double)arg1;
 - (int)setConnectionHealthOnControlInfo:(void *)arg1;
 - (void)setConnectionPause:(BOOL)arg1 isLocalConnection:(BOOL)arg2;
+- (void)setConnectionSelectionVersionWithLocalFrameworkVersion:(id)arg1 remoteFrameworkVersion:(id)arg2;
 - (void)setDuplicationCallback:(CDUnknownFunctionPointerType)arg1 withContext:(void *)arg2;
 - (void)setDuplicationEnabledInternal:(BOOL)arg1;
 - (void)setDuplicationFlag:(BOOL)arg1 withPreferredLocalLinkTypeForDuplication:(int)arg2;
+- (void)setPreWarmState:(BOOL)arg1;
 - (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
 - (int)setWRMUpdateCallback:(CDUnknownFunctionPointerType)arg1 requestNotificationCallback:(CDUnknownFunctionPointerType)arg2 withContext:(void *)arg3;
 - (void)setupConnectionHealthMonitor;
 - (BOOL)shouldAcceptDataFromSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
-- (BOOL)shouldHandoverWhenUpdateWRMDuplication:(int)arg1;
+- (BOOL)shouldDuplicatePacket:(BOOL)arg1;
 - (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(BOOL *)arg2 isSourceIPv6:(BOOL *)arg3;
+- (void)start;
+- (void)stop;
 - (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
 - (void)updateCellularExcessiveBytesWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytes:(int)arg2 isMediaData:(BOOL)arg3 isOutgoing:(BOOL)arg4;
 - (void)updateCellularMTU:(int)arg1;
 - (void)updateCellularTech:(int)arg1 forLocalInterface:(BOOL)arg2;
+- (void)updateConnectionForDuplication;
 - (void)updateConnectionHealthWithIndicator:(BOOL)arg1;
-- (void)updateConnectionStatsWithIndicatorNoPackets:(CDStruct_b3143830 *)arg1;
-- (void)updateConnectionStatsWithIndicatorNone:(CDStruct_b3143830 *)arg1;
-- (void)updateConnectionStatsWithIndicatorPrimaryImproved:(CDStruct_b3143830 *)arg1;
+- (void)updateConnectionStatsWithIndicatorNoPacket:(CDStruct_50492349 *)arg1;
+- (void)updateConnectionStatsWithIndicatorNone:(CDStruct_50492349 *)arg1;
+- (void)updateConnectionStatsWithIndicatorOnlyPrimaryNoPacket:(CDStruct_50492349 *)arg1;
+- (void)updateConnectionStatsWithIndicatorPrimaryImproved:(CDStruct_50492349 *)arg1;
 - (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(BOOL)arg4 isOutgoing:(BOOL)arg5;
+- (void)updateReceivedBytes:(int)arg1 isOnCell:(BOOL)arg2 isIPv6:(BOOL)arg3;
 - (void)updateReceivedExcessiveBytes:(int)arg1 isMediaData:(BOOL)arg2 isIPv6:(BOOL)arg3;
 - (void)updateReceivedPacketsAndBytesWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytesReceived:(int)arg2 isMediaData:(BOOL)arg3 shouldCountPacket:(BOOL)arg4 numOfStreamId:(int)arg5 isPriorityIncluded:(BOOL)arg6;
 - (void)updateSessionStats:(unsigned short)arg1;
+- (void)updateTransmittedBytes:(int)arg1 isOnCell:(BOOL)arg2 isIPv6:(BOOL)arg3;
 - (void)updateTransmittedExcessiveBytes:(int)arg1 isMediaData:(BOOL)arg2 isIPv6:(BOOL)arg3;
 - (void)updateTransmittedPacketsAndBytesWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytesSent:(int)arg2 isMediaData:(BOOL)arg3 shouldCountPacket:(BOOL)arg4 numOfStreamId:(int)arg5 isPriorityIncluded:(BOOL)arg6;
 - (void)updateWRMDuplicationForHandover;
 - (BOOL)updateWRMDuplicationForLocaliRATSuggestion;
 - (void)updateWRMDuplicationForRemoteiRATSuggestion;
+- (void)useCellPrimayInterface:(BOOL)arg1;
 - (void)useConnectionAsPrimary:(id)arg1;
 
 @end

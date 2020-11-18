@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSString, WiFiAwareDiscoveryResult;
 
 __attribute__((visibility("hidden")))
 @interface CUNANEndpoint : NSObject
@@ -16,8 +16,10 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     NSString *_serviceType;
     NSDictionary *_textInfo;
+    WiFiAwareDiscoveryResult *_discoveryResult;
 }
 
+@property (strong, nonatomic) WiFiAwareDiscoveryResult *discoveryResult; // @synthesize discoveryResult=_discoveryResult;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int port; // @synthesize port=_port;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;
+- (unsigned int)updateWithDiscoveryResult:(id)arg1;
 
 @end
 

@@ -9,6 +9,9 @@
 @protocol SVVideoAccessoryItemTransitionContext;
 
 @protocol SVVideoAccessoryItemTransitioning <NSObject>
+
+@property (readonly, nonatomic) BOOL animated;
+
 - (void)animateWithContext:(id<SVVideoAccessoryItemTransitionContext>)arg1;
 - (void)cancelTransition;
 @end

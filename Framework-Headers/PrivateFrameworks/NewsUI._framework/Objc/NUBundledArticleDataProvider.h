@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)cancelAssetPrefetch;
 - (id)embedForType:(id)arg1;
 - (id)fileURLForBundleURL:(id)arg1;
 - (void)fileURLForURL:(id)arg1 onCompletion:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
@@ -33,6 +34,7 @@
 - (void)loadContextWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)loadImagesForImageRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)performBlockForFontsInBundle:(CDUnknownBlockType)arg1;
+- (void)prefetchAssets;
 - (void)registerFontsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)translateURL:(id)arg1;
 

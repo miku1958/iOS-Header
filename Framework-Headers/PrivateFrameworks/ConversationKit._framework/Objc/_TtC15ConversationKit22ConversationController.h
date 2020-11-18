@@ -8,15 +8,16 @@
 
 @class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit22ConversationController : NSObject
 {
     MISSING_TYPE *localParticipant;
     MISSING_TYPE *remoteParticipants;
     MISSING_TYPE *includeLocalParticipantInVisibleParticipants;
     MISSING_TYPE *audioFrequencyController;
+    MISSING_TYPE *momentsController;
     MISSING_TYPE *audioCallbackQueue;
     MISSING_TYPE *recentPresentationContexts;
+    MISSING_TYPE *scheduledIsChangingMirroredVideoResetDates;
     MISSING_TYPE *conversationState;
     MISSING_TYPE *deviceOrientation;
     MISSING_TYPE *broadcastingState;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *participantsMediaPrioritiesDidChange;
     MISSING_TYPE *participantAudioPowerDidChange;
     MISSING_TYPE *audioRouteDidChange;
+    MISSING_TYPE *cameraZoomAvailabiltyDidChange;
     MISSING_TYPE *carPlayConnectedDidChange;
     MISSING_TYPE *didUpdateLocalParticipant;
     MISSING_TYPE *didStartVideoForLocalParticipant;
@@ -37,12 +39,12 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *callCenter;
     MISSING_TYPE *call;
     MISSING_TYPE *conversationUUID;
-    MISSING_TYPE *availableParticipantColors;
 }
 
 @property (nonatomic, readonly) NSString *description;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 
 @end

@@ -6,15 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-#import <UserNotificationsUIKit/MTVibrantStylingProviderObserving-Protocol.h>
-#import <UserNotificationsUIKit/MTVibrantStylingRequiring-Protocol.h>
+#import <UserNotificationsUIKit/MTVisualStylingRequiring-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/UITextViewDelegate-Protocol.h>
 
-@class BSUIEmojiLabelView, BSUIFontProvider, MTVibrantStylingProvider, NSMutableDictionary, NSString, NSStringDrawingContext, UIImage, UIImageView, UILabel, UITextView;
+@class BSUIEmojiLabelView, BSUIFontProvider, MTVisualStylingProvider, NSArray, NSMutableDictionary, NSString, NSStringDrawingContext, UIImage, UIImageView, UILabel, UITextView;
 @protocol NCNotificationContentViewDelegate;
 
-@interface NCNotificationContentView : UIView <UITextViewDelegate, MTVibrantStylingProviderObserving, MTVibrantStylingRequiring, PLContentSizeCategoryAdjusting>
+@interface NCNotificationContentView : UIView <UITextViewDelegate, MTVisualStylingRequiring, PLContentSizeCategoryAdjusting>
 {
     long long _lookStyle;
     struct UIEdgeInsets _contentInsets;
@@ -22,13 +21,19 @@
     UIImageView *_thumbnailImageView;
     NSMutableDictionary *_widthToFontToStringToMeasuredNumLines;
     NSStringDrawingContext *_drawingContext;
+    MTVisualStylingProvider *_visualStylingProvider;
+    BOOL _hasUpdatedContent;
     BOOL _adjustsFontForContentSizeCategory;
+    BOOL _useSmallTopMargin;
     UILabel *_secondaryLabel;
     UITextView *_secondaryTextView;
-    MTVibrantStylingProvider *_vibrantStylingProvider;
     NSString *_preferredContentSizeCategory;
     id<NCNotificationContentViewDelegate> _delegate;
     UIView *_accessoryView;
+    unsigned long long _maximumNumberOfPrimaryTextLines;
+    unsigned long long _maximumNumberOfPrimaryLargeTextLines;
+    unsigned long long _maximumNumberOfSecondaryTextLines;
+    unsigned long long _maximumNumberOfSecondaryLargeTextLines;
     BSUIFontProvider *_fontProvider;
     UILabel *_primaryLabel;
     UILabel *_primarySubtitleLabel;
@@ -42,12 +47,16 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic, getter=_fontProvider, setter=_setFontProvider:) BSUIFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long messageNumberOfLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines; // @synthesize maximumNumberOfPrimaryLargeTextLines=_maximumNumberOfPrimaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryTextLines; // @synthesize maximumNumberOfPrimaryTextLines=_maximumNumberOfPrimaryTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryLargeTextLines; // @synthesize maximumNumberOfSecondaryLargeTextLines=_maximumNumberOfSecondaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryTextLines; // @synthesize maximumNumberOfSecondaryTextLines=_maximumNumberOfSecondaryTextLines;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property (strong, nonatomic, getter=_primaryLabel, setter=_setPrimaryLabel:) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property (strong, nonatomic, getter=_primarySubtitleLabel, setter=_setPrimarySubtitleLabel:) UILabel *primarySubtitleLabel; // @synthesize primarySubtitleLabel=_primarySubtitleLabel;
 @property (strong, nonatomic) NSString *primarySubtitleText;
 @property (strong, nonatomic) NSString *primaryText;
+@property (readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 @property (readonly, nonatomic, getter=_secondaryLabel) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) NSString *secondaryText;
 @property (readonly, nonatomic, getter=_secondaryTextView) UITextView *secondaryTextView; // @synthesize secondaryTextView=_secondaryTextView;
@@ -55,7 +64,7 @@
 @property (strong, nonatomic) NSString *summaryText;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *thumbnail;
-@property (strong, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider; // @synthesize vibrantStylingProvider=_vibrantStylingProvider;
+@property (nonatomic) BOOL useSmallTopMargin; // @synthesize useSmallTopMargin=_useSmallTopMargin;
 
 - (void).cxx_destruct;
 - (unsigned long long)_cachedNumberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forWidth:(double)arg3;
@@ -65,8 +74,9 @@
 - (struct UIEdgeInsets)_contentInsetsForLongLook;
 - (struct UIEdgeInsets)_contentInsetsForShortLook;
 - (struct UIEdgeInsets)_contentInsetsForStyle:(long long)arg1;
-- (struct CGRect)_frameForThumbnailInRect:(struct CGRect)arg1;
+- (struct CGRect)_frameForThumbnailInRect:(struct CGRect)arg1 withContentViewInsets:(struct UIEdgeInsets)arg2;
 - (void)_invalidateNumberOfLinesCache;
+- (void)_layoutSubviews;
 - (id)_lazyPrimaryLabel;
 - (id)_lazyPrimarySubtitleLabel;
 - (id)_lazySecondaryLabel;
@@ -84,6 +94,7 @@
 - (double)_primarySubtitleTextBaselineOffsetForCurrentStyle;
 - (unsigned long long)_primarySubtitleTextMeasuredNumberOfLinesForWidth:(double)arg1;
 - (unsigned long long)_primarySubtitleTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
+- (double)_primaryTextBaselineOffsetForCurrentStyle;
 - (double)_primaryTextBaselineOffsetWithBaseValue:(double)arg1;
 - (unsigned long long)_primaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
 - (unsigned long long)_primaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
@@ -95,29 +106,32 @@
 - (unsigned long long)_secondaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
 - (id)_secondaryTextSupportingView;
 - (struct CGRect)_secondaryTextViewBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
-- (void)_setSecondaryTextNumberOfLines:(unsigned long long)arg1;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2;
 - (struct CGRect)_summaryLabelBoundsForSize:(struct CGSize)arg1 withContentInsets:(struct UIEdgeInsets)arg2 andNumberOfLines:(unsigned long long)arg3;
 - (double)_summaryTextBaselineOffsetForCurrentStyle;
 - (double)_summaryTextBaselineOffsetWithBaseValue:(double)arg1;
 - (unsigned long long)_summaryTextMeasuredNumberOfLinesForWidth:(double)arg1;
 - (unsigned long long)_summaryTextNumberOfLinesWithMeasuredNumberOfLines:(unsigned long long)arg1;
-- (void)_updateFontForSecondaryTextSupportingView:(id)arg1 withStyle:(long long)arg2;
+- (void)_updateContentInsets;
+- (void)_updateContentModeForThumbnailImage:(id)arg1;
 - (void)_updateStyleForPrimaryLabel:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateStyleForSecondaryTextSupportingView:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateStyleForSummaryLabel:(id)arg1 withStyle:(long long)arg2;
-- (void)_updateTextAttributesForLabel:(id)arg1;
+- (void)_updateStyleForThumbnailImage:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateTextAttributesForPrimaryLabel:(id)arg1 withStyle:(long long)arg2;
+- (void)_updateTextAttributesForSecondaryTextSupportingView:(id)arg1 withStyle:(long long)arg2;
 - (void)_updateTextAttributesForSummaryLabel:(id)arg1 withStyle:(long long)arg2;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)layoutSubviews;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (double)topMarginToPrimaryLabelForCurrentStyle;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)vibrantStylingDidChangeForProvider:(id)arg1;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end
 

@@ -9,14 +9,12 @@
 #import <AccountsDaemon/ACDAccountStoreDelegate-Protocol.h>
 #import <AccountsDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class ACDAccessPluginManager, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDDatabaseBackupActivity, ACDDataclassOwnersManager, ACRemoteDeviceProxy, NSMutableArray, NSMutableDictionary, NSString, NSXPCListener;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class ACDAccessPluginManager, ACDAccountNotifier, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDDatabaseBackupActivity, ACDDataclassOwnersManager, ACRemoteDeviceProxy, NSMutableArray, NSMutableDictionary, NSString, NSXPCListener;
+@protocol ACDClientProviderProtocol, ACDDatabaseProtocol, OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface ACDServer : NSObject <NSXPCListenerDelegate, ACDAccountStoreDelegate>
+@interface ACDServer : NSObject <ACDAccountStoreDelegate, NSXPCListenerDelegate>
 {
-    NSXPCListener *_accountStoreListener;
-    NSXPCListener *_oauthSignerListener;
-    NSXPCListener *_authenticationDialogListener;
+    struct os_unfair_lock_s _propertyLock;
     NSMutableArray *_accountStoreClients;
     NSMutableArray *_oauthSignerClients;
     NSMutableArray *_authenticationDialogManagerClients;
@@ -24,30 +22,40 @@
     NSObject<OS_dispatch_queue> *_deferredConnectionResumeQueue;
     NSObject<OS_dispatch_semaphore> *_deferredConnectionResumeQueueSemaphore;
     NSObject<OS_dispatch_queue> *_performMigrationQueue;
+    NSXPCListener *_accountStoreListener;
+    NSXPCListener *_oauthSignerListener;
+    NSXPCListener *_authenticationDialogListener;
     ACDAuthenticationPluginManager *_authenticationPluginManager;
     ACDAccessPluginManager *_accessPluginManager;
     ACDDataclassOwnersManager *_dataclassOwnersManager;
     ACDAuthenticationDialogManager *_authenticationDialogManager;
+    ACDAccountNotifier *_accountNotifier;
     ACRemoteDeviceProxy *_remoteDeviceProxy;
+    id<ACDClientProviderProtocol> _clientProvider;
+    id<ACDDatabaseProtocol> _database;
     ACDDatabaseBackupActivity *_databaseBackupActivity;
 }
 
 @property (strong, nonatomic) ACDAccessPluginManager *accessPluginManager; // @synthesize accessPluginManager=_accessPluginManager;
+@property (strong, nonatomic) ACDAccountNotifier *accountNotifier; // @synthesize accountNotifier=_accountNotifier;
+@property (readonly, nonatomic) NSXPCListener *accountStoreListener; // @synthesize accountStoreListener=_accountStoreListener;
+@property (readonly, nonatomic) NSXPCListener *authenticationDialogListener; // @synthesize authenticationDialogListener=_authenticationDialogListener;
 @property (strong, nonatomic) ACDAuthenticationDialogManager *authenticationDialogManager; // @synthesize authenticationDialogManager=_authenticationDialogManager;
 @property (strong, nonatomic) ACDAuthenticationPluginManager *authenticationPluginManager; // @synthesize authenticationPluginManager=_authenticationPluginManager;
+@property (strong, nonatomic) id<ACDClientProviderProtocol> clientProvider; // @synthesize clientProvider=_clientProvider;
+@property (strong, nonatomic) id<ACDDatabaseProtocol> database; // @synthesize database=_database;
 @property (strong, nonatomic) ACDDatabaseBackupActivity *databaseBackupActivity; // @synthesize databaseBackupActivity=_databaseBackupActivity;
 @property (strong, nonatomic) ACDDataclassOwnersManager *dataclassOwnersManager; // @synthesize dataclassOwnersManager=_dataclassOwnersManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSXPCListener *oauthSignerListener; // @synthesize oauthSignerListener=_oauthSignerListener;
 @property (strong, nonatomic) ACRemoteDeviceProxy *remoteDeviceProxy; // @synthesize remoteDeviceProxy=_remoteDeviceProxy;
 @property (readonly) Class superclass;
 
-+ (id)sharedServer;
 - (void).cxx_destruct;
 - (void)_beginObservingIDSProxyNotifications;
 - (void)_beginObservingLanguageChangeNotfication;
-- (void)_beginObservingLaunchNotifications;
 - (void)_beginObservingMigrationDidFinishDarwinNotifications;
 - (void)_endObservingLanguageChangeNotification;
 - (void)_endObservingMigrationDidFinishDarwinNotifications;
@@ -59,12 +67,14 @@
 - (void)accountStore:(id)arg1 didSaveAccount:(id)arg2;
 - (id)clientForConnection:(id)arg1;
 - (id)createClientForConnection:(id)arg1;
+- (id)createDatabaseConnection;
 - (void)credentialsDidChangeForAccountWithIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithAccountStoreListener:(id)arg1 oauthSignerListener:(id)arg2 authenticationDialogListener:(id)arg3;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)setUpWithAccountStoreConnectionListener:(id)arg1 oauthSignerConnectionListener:(id)arg2 authenticationDialogConnectionListener:(id)arg3;
 - (void)shutdown;
+- (void)start;
 
 @end
 

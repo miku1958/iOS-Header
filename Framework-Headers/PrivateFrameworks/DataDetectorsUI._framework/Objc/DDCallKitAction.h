@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)hostApplicationIsEntitled;
 - (void).cxx_destruct;
 - (long long)TTYType;
+- (id)dialRequest;
 - (id)localizedName;
 
 @end

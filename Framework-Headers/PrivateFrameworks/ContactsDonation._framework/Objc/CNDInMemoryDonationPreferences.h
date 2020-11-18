@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)observableWithPreferences:(id)arg1 notificationCenter:(id)arg2 schedulerProvider:(id)arg3;
 
 @end
 

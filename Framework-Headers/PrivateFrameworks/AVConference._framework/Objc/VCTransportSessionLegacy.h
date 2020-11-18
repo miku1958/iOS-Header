@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 
 - (struct tagIPPORT)IPPortForPrimaryConnectionOnLocalInterface:(BOOL)arg1;
 - (void)connectionCallback:(id)arg1 isInitialConnection:(BOOL)arg2;
+- (id)connectionData:(char *)arg1 connectionDataSizeInBytes:(int)arg2 shouldUseRelay:(BOOL)arg3;
 - (id)connectionDataUsingRelay:(BOOL)arg1 isInitialRelay:(BOOL)arg2 nonCellularCandidateTimeout:(double)arg3 error:(id *)arg4;
 - (void)connectionResultCallback:(struct tagCONNRESULT *)arg1 didReceiveICEPacket:(BOOL)arg2 didUseRelay:(BOOL)arg3 secretKey:(id)arg4 skeResult:(int)arg5;
 - (unsigned int)connectionSetupRTTEstimate;

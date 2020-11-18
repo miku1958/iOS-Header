@@ -29,6 +29,7 @@
     NSString *_ocean;
     NSArray *_areasOfInterest;
     NSDate *_creationDate;
+    NSDate *_expirationDate;
 }
 
 @property (readonly, copy, nonatomic) NSString *administrativeArea; // @synthesize administrativeArea=_administrativeArea;
@@ -37,6 +38,7 @@
 @property (readonly, copy, nonatomic) NSString *country; // @synthesize country=_country;
 @property (readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *inlandWater; // @synthesize inlandWater=_inlandWater;
 @property (readonly, nonatomic) BOOL isIsland; // @synthesize isIsland=_isIsland;
@@ -57,7 +59,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(BOOL)arg15 creationDate:(id)arg16;
+- (id)initWithIdentifier:(id)arg1 subThoroughfare:(id)arg2 thoroughfare:(id)arg3 subLocality:(id)arg4 locality:(id)arg5 subAdministrativeArea:(id)arg6 administrativeArea:(id)arg7 administrativeAreaCode:(id)arg8 postalCode:(id)arg9 country:(id)arg10 countryCode:(id)arg11 inlandWater:(id)arg12 ocean:(id)arg13 areasOfInterest:(id)arg14 isIsland:(BOOL)arg15 creationDate:(id)arg16 expirationDate:(id)arg17;
 - (id)initWithThoroughfare:(id)arg1 locality:(id)arg2 administrativeArea:(id)arg3 postalCode:(id)arg4 country:(id)arg5 countryCode:(id)arg6;
 - (id)initWithThoroughfare:(id)arg1 subLocality:(id)arg2 locality:(id)arg3 subAdministrativeArea:(id)arg4 administrativeArea:(id)arg5 postalCode:(id)arg6 country:(id)arg7 countryCode:(id)arg8;
 - (BOOL)isEqual:(id)arg1;

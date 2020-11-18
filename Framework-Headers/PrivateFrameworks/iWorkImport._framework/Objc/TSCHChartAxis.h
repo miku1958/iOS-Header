@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
-@property (readonly, nonatomic) int currentAxisScaleSetting;
+@property (readonly, nonatomic) long long currentAxisScaleSetting;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -9,18 +9,21 @@
 #import <network/OS_nw_socks5_connection-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_connection, OS_nw_error;
+@protocol OS_dispatch_queue, OS_nw_connection, OS_nw_error, OS_nw_path_evaluator, OS_nw_socks5_server;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_socks5_connection : NSObject <OS_nw_socks5_connection>
 {
     unsigned long long sc_id;
     NWConcrete_nw_socks5_connection *sc_internally_retained_object;
+    NSObject<OS_nw_socks5_server> *sc_parent;
     NSObject<OS_nw_connection> *sc_in_connection;
     NSObject<OS_dispatch_queue> *sc_queue;
     CDUnknownBlockType sc_cancel;
     unsigned char sc_state;
     unsigned char sc_out_address_type;
+    NSObject<OS_nw_path_evaluator> *sc_prefer_wifi_path_evaluator;
+    int sc_prefer_wifi_previous_path_status;
     union {
         char *byte_pointer;
         struct in_addr *ipv4_addr;
@@ -35,6 +38,9 @@ __attribute__((visibility("hidden")))
     unsigned int sc_in_connection_failed_or_sent_write_close:1;
     unsigned int sc_out_disable_proxy:1;
     unsigned int sc_sent_reply:1;
+    unsigned int sc_has_read_from_in_connection:1;
+    unsigned int sc_out_udp:1;
+    unsigned int sc_should_prefer_wifi:1;
     unsigned long long sc_out_connection_bytes_read;
     unsigned long long sc_out_connection_bytes_written;
     unsigned long long sc_in_connection_bytes_read;
@@ -48,7 +54,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithConnection:(id)arg1 queue:(id)arg2 shoes:(BOOL)arg3 disableProxy:(BOOL)arg4;
+- (id)initWithConnection:(id)arg1 queue:(id)arg2 parent:(id)arg3 shoes:(BOOL)arg4 disableProxy:(BOOL)arg5;
 
 @end
 

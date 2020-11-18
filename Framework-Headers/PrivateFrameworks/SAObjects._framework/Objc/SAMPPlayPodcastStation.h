@@ -6,13 +6,15 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSArray, SAMPPodcastStation;
+@class NSArray, NSString, SAMPPodcastStation;
 
 @interface SAMPPlayPodcastStation : SADomainCommand
 {
 }
 
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
+@property (copy, nonatomic) NSString *requesterSharedUserId;
+@property (copy, nonatomic) NSString *sharedUserIdFromPlayableITunesAccount;
 @property (nonatomic) BOOL startPlaying;
 @property (strong, nonatomic) SAMPPodcastStation *station;
 

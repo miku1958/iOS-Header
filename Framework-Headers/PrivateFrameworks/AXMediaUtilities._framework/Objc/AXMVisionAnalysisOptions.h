@@ -8,45 +8,60 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMLanguage, NSArray, NSSet;
+@class AXMTextDetectionOptions, NSArray;
 
 @interface AXMVisionAnalysisOptions : NSObject <NSSecureCoding>
 {
-    BOOL _detectText;
-    BOOL _detectFaces;
+    BOOL _detectFaceRectangles;
+    BOOL _detectFaceNames;
+    BOOL _detectFaceAttributes;
+    BOOL _detectFaceExpressions;
+    BOOL _detectFaceLandmarks;
+    BOOL _detectFacePose;
     BOOL _detectScenes;
     BOOL _detectModelClassifications;
+    BOOL _detectCaptions;
     BOOL _detectTraits;
     BOOL _detectRectangles;
-    BOOL _detectHumans;
     BOOL _detectHorizon;
-    BOOL _correctSpelling;
+    BOOL _detectProminentObjects;
+    BOOL _detectAesthetics;
+    BOOL _detectIconClass;
+    BOOL _detectText;
     BOOL _includeImageInResult;
     long long _clientID;
-    AXMLanguage *_textDetectionLanguage;
-    NSSet *_spellCheckingLanguages;
+    AXMTextDetectionOptions *_textDetectionOptions;
     NSArray *_ignoredLayerContextIDs;
 }
 
 @property (nonatomic) long long clientID; // @synthesize clientID=_clientID;
-@property (nonatomic) BOOL correctSpelling; // @synthesize correctSpelling=_correctSpelling;
-@property (nonatomic) BOOL detectFaces; // @synthesize detectFaces=_detectFaces;
+@property (nonatomic) BOOL detectAesthetics; // @synthesize detectAesthetics=_detectAesthetics;
+@property (nonatomic) BOOL detectCaptions; // @synthesize detectCaptions=_detectCaptions;
+@property (nonatomic) BOOL detectFaceAttributes; // @synthesize detectFaceAttributes=_detectFaceAttributes;
+@property (nonatomic) BOOL detectFaceExpressions; // @synthesize detectFaceExpressions=_detectFaceExpressions;
+@property (nonatomic) BOOL detectFaceLandmarks; // @synthesize detectFaceLandmarks=_detectFaceLandmarks;
+@property (nonatomic) BOOL detectFaceNames; // @synthesize detectFaceNames=_detectFaceNames;
+@property (nonatomic) BOOL detectFacePose; // @synthesize detectFacePose=_detectFacePose;
+@property (nonatomic) BOOL detectFaceRectangles; // @synthesize detectFaceRectangles=_detectFaceRectangles;
+@property (readonly, nonatomic) BOOL detectFaces;
 @property (nonatomic) BOOL detectHorizon; // @synthesize detectHorizon=_detectHorizon;
-@property (nonatomic) BOOL detectHumans; // @synthesize detectHumans=_detectHumans;
+@property (nonatomic) BOOL detectIconClass; // @synthesize detectIconClass=_detectIconClass;
 @property (nonatomic) BOOL detectModelClassifications; // @synthesize detectModelClassifications=_detectModelClassifications;
+@property (nonatomic) BOOL detectProminentObjects; // @synthesize detectProminentObjects=_detectProminentObjects;
 @property (nonatomic) BOOL detectRectangles; // @synthesize detectRectangles=_detectRectangles;
 @property (nonatomic) BOOL detectScenes; // @synthesize detectScenes=_detectScenes;
 @property (nonatomic) BOOL detectText; // @synthesize detectText=_detectText;
 @property (nonatomic) BOOL detectTraits; // @synthesize detectTraits=_detectTraits;
+@property (readonly, nonatomic) BOOL hasDetectionsEnabled;
 @property (strong, nonatomic) NSArray *ignoredLayerContextIDs; // @synthesize ignoredLayerContextIDs=_ignoredLayerContextIDs;
 @property (nonatomic) BOOL includeImageInResult; // @synthesize includeImageInResult=_includeImageInResult;
-@property (strong, nonatomic) NSSet *spellCheckingLanguages; // @synthesize spellCheckingLanguages=_spellCheckingLanguages;
-@property (strong, nonatomic) AXMLanguage *textDetectionLanguage; // @synthesize textDetectionLanguage=_textDetectionLanguage;
+@property (strong, nonatomic) AXMTextDetectionOptions *textDetectionOptions; // @synthesize textDetectionOptions=_textDetectionOptions;
 
 + (id)defaultOptions;
 + (BOOL)supportsSecureCoding;
 + (id)voiceOverOptions;
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

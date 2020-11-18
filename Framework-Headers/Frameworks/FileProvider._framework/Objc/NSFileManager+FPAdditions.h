@@ -7,6 +7,8 @@
 #import <Foundation/NSFileManager.h>
 
 @interface NSFileManager (FPAdditions)
+- (void)fp_createPathIfNeeded:(id)arg1;
 - (BOOL)fp_trashItemAtURL:(id)arg1 resultingItemURL:(id *)arg2 error:(id *)arg3;
+- (id)fp_trashURLForItemAtURL:(id)arg1 error:(id *)arg2;
 @end
 

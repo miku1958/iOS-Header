@@ -21,7 +21,10 @@
     NSString *_transaction;
     NSString *_transportProtocolVersion;
     int _transportType;
+    unsigned int _underlyingErrorCode;
+    NSString *_underlyingErrorDomain;
     AWDHomeKitVendorInformation *_vendorDetails;
+    BOOL _isCached;
     BOOL _isRemote;
     BOOL _isTimedWrite;
     BOOL _isWrite;
@@ -32,6 +35,8 @@
         unsigned int errorCode:1;
         unsigned int source:1;
         unsigned int transportType:1;
+        unsigned int underlyingErrorCode:1;
+        unsigned int isCached:1;
         unsigned int isRemote:1;
         unsigned int isTimedWrite:1;
         unsigned int isWrite:1;
@@ -45,6 +50,7 @@
 @property (nonatomic) BOOL hasCertified;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasErrorCode;
+@property (nonatomic) BOOL hasIsCached;
 @property (nonatomic) BOOL hasIsRemote;
 @property (nonatomic) BOOL hasIsTimedWrite;
 @property (nonatomic) BOOL hasIsWrite;
@@ -53,7 +59,10 @@
 @property (readonly, nonatomic) BOOL hasTransaction;
 @property (readonly, nonatomic) BOOL hasTransportProtocolVersion;
 @property (nonatomic) BOOL hasTransportType;
+@property (nonatomic) BOOL hasUnderlyingErrorCode;
+@property (readonly, nonatomic) BOOL hasUnderlyingErrorDomain;
 @property (readonly, nonatomic) BOOL hasVendorDetails;
+@property (nonatomic) BOOL isCached; // @synthesize isCached=_isCached;
 @property (nonatomic) BOOL isRemote; // @synthesize isRemote=_isRemote;
 @property (nonatomic) BOOL isTimedWrite; // @synthesize isTimedWrite=_isTimedWrite;
 @property (nonatomic) BOOL isWrite; // @synthesize isWrite=_isWrite;
@@ -62,6 +71,8 @@
 @property (strong, nonatomic) NSString *transaction; // @synthesize transaction=_transaction;
 @property (strong, nonatomic) NSString *transportProtocolVersion; // @synthesize transportProtocolVersion=_transportProtocolVersion;
 @property (nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property (nonatomic) unsigned int underlyingErrorCode; // @synthesize underlyingErrorCode=_underlyingErrorCode;
+@property (strong, nonatomic) NSString *underlyingErrorDomain; // @synthesize underlyingErrorDomain=_underlyingErrorDomain;
 @property (strong, nonatomic) AWDHomeKitVendorInformation *vendorDetails; // @synthesize vendorDetails=_vendorDetails;
 
 + (Class)characteristicsType;

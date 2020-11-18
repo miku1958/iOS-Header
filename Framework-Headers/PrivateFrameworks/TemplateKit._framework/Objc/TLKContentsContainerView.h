@@ -8,14 +8,13 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface TLKContentsContainerView : TLKStackView
 {
-    unsigned long long _style;
     NSMutableArray *_contentsViews;
 }
 
-@property (strong) NSMutableArray *contentsViews; // @synthesize contentsViews=_contentsViews;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
+@property (strong, nonatomic) NSMutableArray *contentsViews; // @synthesize contentsViews=_contentsViews;
 
 - (void).cxx_destruct;
 - (id)init;

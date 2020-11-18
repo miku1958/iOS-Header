@@ -25,6 +25,7 @@
 @property (readonly, copy, nonatomic) INDateComponentsRange *scheduledPickupTime;
 @property (readonly) Class superclass;
 
++ (id)_ignoredParameters;
 - (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
 - (long long)_intentCategory;

@@ -16,23 +16,34 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     unsigned long long _featureId;
     GEOLatLng *_location;
-    CDStruct_b1448a5c _has;
+    int _formattedAddressType;
+    struct {
+        unsigned int has_featureId:1;
+        unsigned int has_formattedAddressType:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned long long featureId; // @synthesize featureId=_featureId;
+@property (nonatomic) unsigned long long featureId;
+@property (nonatomic) int formattedAddressType;
 @property (nonatomic) BOOL hasFeatureId;
+@property (nonatomic) BOOL hasFormattedAddressType;
 @property (readonly, nonatomic) BOOL hasLocation;
-@property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
+@property (strong, nonatomic) GEOLatLng *location;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsFormattedAddressType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)formattedAddressTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

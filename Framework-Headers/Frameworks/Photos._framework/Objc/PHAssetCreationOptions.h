@@ -6,17 +6,27 @@
 
 #import <objc/NSObject.h>
 
+@class PHAssetCreationAdjustmentBakeInOptions, PHAssetCreationMetadataCopyOptions;
+
 @interface PHAssetCreationOptions : NSObject
 {
     BOOL _shouldDownloadOrCloudReReferenceMissingResources;
     BOOL _resetUserSpecificMetadata;
     BOOL _copyStillPhotoFromLivePhoto;
+    BOOL _copyOriginal;
+    BOOL _copySinglePhotoFromBurst;
     CDUnknownBlockType _destinationAssetAvailabilityHandler;
+    PHAssetCreationAdjustmentBakeInOptions *_adjustmentBakeInOptions;
+    PHAssetCreationMetadataCopyOptions *_metadataCopyOptions;
     CDStruct_1b6d18a9 _stillSourceTime;
 }
 
+@property (copy, nonatomic) PHAssetCreationAdjustmentBakeInOptions *adjustmentBakeInOptions; // @synthesize adjustmentBakeInOptions=_adjustmentBakeInOptions;
+@property (nonatomic) BOOL copyOriginal; // @synthesize copyOriginal=_copyOriginal;
+@property (nonatomic) BOOL copySinglePhotoFromBurst; // @synthesize copySinglePhotoFromBurst=_copySinglePhotoFromBurst;
 @property (nonatomic) BOOL copyStillPhotoFromLivePhoto; // @synthesize copyStillPhotoFromLivePhoto=_copyStillPhotoFromLivePhoto;
 @property (copy, nonatomic) CDUnknownBlockType destinationAssetAvailabilityHandler; // @synthesize destinationAssetAvailabilityHandler=_destinationAssetAvailabilityHandler;
+@property (copy, nonatomic) PHAssetCreationMetadataCopyOptions *metadataCopyOptions; // @synthesize metadataCopyOptions=_metadataCopyOptions;
 @property (nonatomic) BOOL resetUserSpecificMetadata; // @synthesize resetUserSpecificMetadata=_resetUserSpecificMetadata;
 @property (nonatomic) BOOL shouldDownloadOrCloudReReferenceMissingResources; // @synthesize shouldDownloadOrCloudReReferenceMissingResources=_shouldDownloadOrCloudReReferenceMissingResources;
 @property (nonatomic) CDStruct_1b6d18a9 stillSourceTime; // @synthesize stillSourceTime=_stillSourceTime;

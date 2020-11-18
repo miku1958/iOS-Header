@@ -4,13 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSString;
+#import <TouchRemote/NSObject-Protocol.h>
 
-@protocol AKAnisetteServiceProtocol
+@class NSData, NSString, NSURLRequest;
+
+@protocol AKAnisetteServiceProtocol <NSObject>
 - (void)eraseAnisetteWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)fetchAnisetteDataAndProvisionIfNecessary:(BOOL)arg1 withCompletion:(void (^)(AKAnisetteData *, NSError *))arg2;
 - (void)legacyAnisetteDataForDSID:(NSString *)arg1 withCompletion:(void (^)(AKAnisetteData *, NSError *))arg2;
 - (void)provisionAnisetteWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)syncAnisetteWithSIMData:(NSData *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+
+@optional
+- (void)fetchPeerAttestationDataForRequest:(NSURLRequest *)arg1 completion:(void (^)(AKAttestationData *, NSError *))arg2;
 @end
 

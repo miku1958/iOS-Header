@@ -7,22 +7,33 @@
 #import <objc/NSObject.h>
 
 #import <RTTUtilities/CoreTelephonyClientCarrierBundleDelegate-Protocol.h>
+#import <RTTUtilities/TUCallCapabilitiesDelegate-Protocol.h>
 #import <RTTUtilities/TUCallCapabilitiesDelegatePrivate-Protocol.h>
 
-@class ACAccountStore, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSString;
+@class ACAccountStore, AXDispatchTimer, CNContactStore, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSNumber, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface RTTTelephonyUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate, TUCallCapabilitiesDelegatePrivate>
+@interface RTTTelephonyUtilities : NSObject <CoreTelephonyClientCarrierBundleDelegate, TUCallCapabilitiesDelegatePrivate, TUCallCapabilitiesDelegate>
 {
     ACAccountStore *_accountStore;
+    AXDispatchTimer *_icloudAccountConsolidator;
+    AXDispatchTimer *_icloudRelayConsolidator;
     BOOL _headphoneJackSupportsTTY;
     CTXPCServiceSubscriptionContext *_defaultVoiceContext;
     unsigned long long _activeContextCount;
+    NSSet *_allVoiceContexts;
+    CNContactStore *_contactStore;
     CoreTelephonyClient *_telephonyClient;
     NSObject<OS_dispatch_queue> *_telephonyUpdateQueue;
+    NSObject<OS_dispatch_queue> *_accountStoreQueue;
+    NSNumber *_callCapabilitiesSupportsTelephonyCalls;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *accountStoreQueue; // @synthesize accountStoreQueue=_accountStoreQueue;
 @property (nonatomic) unsigned long long activeContextCount; // @synthesize activeContextCount=_activeContextCount;
+@property (strong, nonatomic) NSSet *allVoiceContexts; // @synthesize allVoiceContexts=_allVoiceContexts;
+@property (strong, nonatomic) NSNumber *callCapabilitiesSupportsTelephonyCalls; // @synthesize callCapabilitiesSupportsTelephonyCalls=_callCapabilitiesSupportsTelephonyCalls;
+@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) CTXPCServiceSubscriptionContext *defaultVoiceContext; // @synthesize defaultVoiceContext=_defaultVoiceContext;
 @property (readonly, copy) NSString *description;
@@ -40,6 +51,7 @@
 + (BOOL)isOnlyRTTSupportedForContext:(id)arg1;
 + (BOOL)isRTTSupported;
 + (BOOL)isRTTSupportedForContext:(id)arg1;
++ (BOOL)isRelayRTTSupported;
 + (BOOL)isTTYSupported;
 + (BOOL)isTTYSupportedForContext:(id)arg1;
 + (void)performCallCenterTask:(CDUnknownBlockType)arg1;
@@ -54,6 +66,7 @@
 + (BOOL)softwareTTYIsSupported;
 + (BOOL)softwareTTYIsSupportedForContext:(id)arg1;
 - (void).cxx_destruct;
+- (void)_icloudAccountChanged;
 - (void)activeSubscriptionsDidChange;
 - (void)carrierSettingsDidChange;
 - (BOOL)contactIsTTYContact:(id)arg1;
@@ -61,8 +74,10 @@
 - (BOOL)contactPathIsMe:(id)arg1;
 - (unsigned long long)currentPreferredTransportMethod;
 - (unsigned long long)currentPreferredTransportMethodForContext:(id)arg1;
+- (BOOL)currentProcessHandlesCloudRelay;
 - (void)dealloc;
 - (void)didChangeOutgoingRelayCallerID;
+- (void)didChangeTelephonyCallingSupport;
 - (id)getCarrierValueForKey:(id)arg1 andContext:(id)arg2;
 - (id)getCarrierValueForKeyHierarchy:(id)arg1 andContext:(id)arg2;
 - (void)headphoneStateChangedNotification:(id)arg1;
@@ -71,6 +86,7 @@
 - (id)init;
 - (BOOL)isTTYOverIMSSupportedForContext:(id)arg1;
 - (BOOL)isTTYSupportedForContext:(id)arg1;
+- (id)labelFromUUID:(id)arg1;
 - (void)listenForCloudRelayChanges;
 - (void)mediaServerDied;
 - (id)myPhoneNumber;
@@ -81,7 +97,7 @@
 - (id)relayNumberForContext:(id)arg1;
 - (BOOL)relayRTTIsSupported;
 - (void)reloadDefaultVoiceContext;
-- (void)reloadRelayPhoneNumbers;
+- (BOOL)reloadRelayPhoneNumbers;
 - (void)setTTYDictionaryAvailability:(BOOL)arg1;
 - (void)simLessSubscriptionsDidChange;
 - (id)subscriptionContexts;

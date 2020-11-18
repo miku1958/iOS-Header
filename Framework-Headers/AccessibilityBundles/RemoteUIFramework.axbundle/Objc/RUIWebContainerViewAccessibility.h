@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (float)_accessibilityActivationDelay;
 - (id)_axSubviewText;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

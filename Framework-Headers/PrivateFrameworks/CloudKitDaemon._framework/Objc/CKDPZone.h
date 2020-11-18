@@ -8,27 +8,38 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPProtectionInfo, CKDPRecordZoneIdentifier, NSData;
+@class CKDPProtectionInfo, CKDPRecordStableUrl, CKDPRecordZoneIdentifier, CKDPShareIdentifier, NSData, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface CKDPZone : PBCodable <NSCopying>
 {
-    NSData *_encryptedLastZoneishPCSRollDate;
+    NSData *_encryptedZoneishLastRollDate;
     CKDPProtectionInfo *_protectionInfo;
+    NSMutableArray *_protectionInfoKeysToRemoves;
     CKDPProtectionInfo *_recordProtectionInfo;
+    CKDPShareIdentifier *_shareId;
+    CKDPRecordStableUrl *_stableUrl;
     CKDPRecordZoneIdentifier *_zoneIdentifier;
 }
 
-@property (strong, nonatomic) NSData *encryptedLastZoneishPCSRollDate; // @synthesize encryptedLastZoneishPCSRollDate=_encryptedLastZoneishPCSRollDate;
-@property (readonly, nonatomic) BOOL hasEncryptedLastZoneishPCSRollDate;
+@property (strong, nonatomic) NSData *encryptedZoneishLastRollDate; // @synthesize encryptedZoneishLastRollDate=_encryptedZoneishLastRollDate;
+@property (readonly, nonatomic) BOOL hasEncryptedZoneishLastRollDate;
 @property (readonly, nonatomic) BOOL hasProtectionInfo;
 @property (readonly, nonatomic) BOOL hasRecordProtectionInfo;
+@property (readonly, nonatomic) BOOL hasShareId;
+@property (readonly, nonatomic) BOOL hasStableUrl;
 @property (readonly, nonatomic) BOOL hasZoneIdentifier;
 @property (strong, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
+@property (strong, nonatomic) NSMutableArray *protectionInfoKeysToRemoves; // @synthesize protectionInfoKeysToRemoves=_protectionInfoKeysToRemoves;
 @property (strong, nonatomic) CKDPProtectionInfo *recordProtectionInfo; // @synthesize recordProtectionInfo=_recordProtectionInfo;
+@property (strong, nonatomic) CKDPShareIdentifier *shareId; // @synthesize shareId=_shareId;
+@property (strong, nonatomic) CKDPRecordStableUrl *stableUrl; // @synthesize stableUrl=_stableUrl;
 @property (strong, nonatomic) CKDPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
++ (Class)protectionInfoKeysToRemoveType;
 - (void).cxx_destruct;
+- (void)addProtectionInfoKeysToRemove:(id)arg1;
+- (void)clearProtectionInfoKeysToRemoves;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +47,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)protectionInfoKeysToRemoveAtIndex:(unsigned long long)arg1;
+- (unsigned long long)protectionInfoKeysToRemovesCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

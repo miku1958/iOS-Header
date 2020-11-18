@@ -23,10 +23,11 @@
 @property (strong, nonatomic) NSURL *mediaURL; // @synthesize mediaURL=_mediaURL;
 @property (strong, nonatomic) PFVideoComplement *videoComplement; // @synthesize videoComplement=_videoComplement;
 
+- (void).cxx_destruct;
 - (void)_cleanupIfNeededMediaAtURL:(id)arg1;
 - (void)cleanupResources;
-- (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
+- (id)photoLibrary;
 - (id)serializedDictionary;
 
 @end

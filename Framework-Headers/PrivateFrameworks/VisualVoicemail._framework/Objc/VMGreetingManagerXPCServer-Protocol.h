@@ -9,9 +9,9 @@
 @class NSUUID, VMVoicemailGreeting;
 
 @protocol VMGreetingManagerXPCServer <NSObject>
-- (oneway void)greetingForAccountUUID:(NSUUID *)arg1 reply:(void (^)(VMVoicemailGreeting *, NSError *))arg2;
-- (oneway void)isGreetingChangeSupportedForAccountUUID:(NSUUID *)arg1 reply:(void (^)(BOOL))arg2;
-- (oneway void)maximumGreetingDurationForAccountUUID:(NSUUID *)arg1 reply:(void (^)(double))arg2;
-- (oneway void)setGreeting:(VMVoicemailGreeting *)arg1 forAccountUUID:(NSUUID *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
+- (void)greetingForAccountUUID:(NSUUID *)arg1 reply:(void (^)(VMVoicemailGreeting *, NSError *))arg2;
+- (void)isGreetingChangeSupportedForAccountUUID:(NSUUID *)arg1 reply:(void (^)(BOOL))arg2;
+- (void)maximumGreetingDurationForAccountUUID:(NSUUID *)arg1 reply:(void (^)(double))arg2;
+- (void)setGreeting:(VMVoicemailGreeting *)arg1 forAccountUUID:(NSUUID *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 @end
 

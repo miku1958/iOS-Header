@@ -92,7 +92,11 @@
 @property (nonatomic) double nonCellularEarlyFireConstantInterval; // @synthesize nonCellularEarlyFireConstantInterval=_nonCellularEarlyFireConstantInterval;
 @property (readonly, nonatomic) double pollingInterval;
 @property (nonatomic) BOOL powerOptimizationsForExpensiveNetworkingDisabled; // @synthesize powerOptimizationsForExpensiveNetworkingDisabled=_powerOptimizationsForExpensiveNetworkingDisabled;
+@property (nonatomic) double serverStatsExpectedKeepAliveInterval;
+@property (nonatomic) double serverStatsMaxKeepAliveInterval;
+@property (nonatomic) double serverStatsMinKeepAliveInterval;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL usingServerStatsAggressively;
 
 + (BOOL)_isCachedKeepAliveIntervalStillValid:(double)arg1 date:(id)arg2;
 + (id)_keepAliveCachePath;
@@ -125,6 +129,7 @@
 - (void)_resolveStateWithAction:(int)arg1;
 - (void)_saveWWANKeepAliveInterval;
 - (void)_setMaximumKeepAliveInterval:(double)arg1 onInterface:(long long)arg2;
+- (void)_setMinimumKeepAliveInterval:(double)arg1 onInterface:(long long)arg2;
 - (void)_setTimerGuidance:(double)arg1;
 - (void)_setupKeepAliveForReconnect;
 - (void)_setupTimerForPollForAdjustment:(BOOL)arg1;

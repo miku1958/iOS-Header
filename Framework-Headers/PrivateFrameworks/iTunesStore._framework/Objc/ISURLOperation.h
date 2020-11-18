@@ -30,6 +30,7 @@
     ISURLRequestPerformance *_performanceMetrics;
     BOOL _loadsHTTPFailures;
     BOOL _uploadProgressRequested;
+    NSString *_logKey;
     NSArray *_passThroughErrors;
     NSNumber *__accountDSIDOverride;
 }
@@ -51,6 +52,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isURLBagRequest;
+@property (strong) NSString *logKey; // @synthesize logKey=_logKey;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentage;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSamplingPercentageCachedResponses;
 @property (readonly, nonatomic) NSNumber *metricsLoadURLSessionDuration;

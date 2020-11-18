@@ -43,6 +43,7 @@
 - (void)cloudRecordWithObjectIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudRecordsForParentID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteCloudRecord:(id)arg1;
+- (void)deleteCloudRecordNames:(id)arg1;
 - (id)description;
 - (void)fetchCloudRecordMap:(CDUnknownBlockType)arg1;
 - (id)init;

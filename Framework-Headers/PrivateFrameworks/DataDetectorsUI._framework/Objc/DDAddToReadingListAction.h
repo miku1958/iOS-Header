@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)icon;
 - (id)localizedName;
 - (void)performFromView:(id)arg1;
 

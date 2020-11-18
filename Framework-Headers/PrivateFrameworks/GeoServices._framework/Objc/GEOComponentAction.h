@@ -15,18 +15,19 @@ __attribute__((visibility("hidden")))
     int _component;
     BOOL _handleLocally;
     struct {
-        unsigned int component:1;
-        unsigned int handleLocally:1;
-    } _has;
+        unsigned int has_component:1;
+        unsigned int has_handleLocally:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *actions;
 @property (readonly, nonatomic) unsigned long long actionsCount;
-@property (nonatomic) int component; // @synthesize component=_component;
-@property (nonatomic) BOOL handleLocally; // @synthesize handleLocally=_handleLocally;
+@property (nonatomic) int component;
+@property (nonatomic) BOOL handleLocally;
 @property (nonatomic) BOOL hasComponent;
 @property (nonatomic) BOOL hasHandleLocally;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsActions:(id)arg1;
 - (int)StringAsComponent:(id)arg1;
 - (id)actionsAsString:(int)arg1;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setActions:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

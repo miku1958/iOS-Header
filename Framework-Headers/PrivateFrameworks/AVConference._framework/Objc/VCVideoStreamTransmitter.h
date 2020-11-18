@@ -6,7 +6,7 @@
 
 #import <AVConference/VCVideoTransmitterBase.h>
 
-@class NSObject, VCMediaStreamStats;
+@class AVCStatisticsCollector, NSObject, VCMediaStreamStats;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
@@ -49,6 +49,12 @@ __attribute__((visibility("hidden")))
         struct tagHANDLE *encoderHandle;
     } _encoder;
     struct tagVCMemoryPool *_encodingArgPool;
+    BOOL _forceDisableBitrateCap;
+    AVCStatisticsCollector *_statisticsCollector;
+    unsigned int _totalPacketsSent;
+    unsigned long long _totalBytesSent;
+    unsigned int _tilesPerFrame;
+    struct __CFAllocator *_videoPacketAllocator;
 }
 
 - (void)dealloc;
@@ -66,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)setFECRatio:(double)arg1;
 - (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
 - (void)setStreamIDs:(unsigned short *)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short *)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
+- (void)setTargetBitrate:(unsigned int)arg1;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;
 - (void)startVideo;
 - (void)stopVideo;
@@ -73,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (int)transmitEncodedVideoFrame:(char *)arg1 size:(unsigned long long)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 cameraStatusBits:(unsigned char)arg5;
 - (int)transmitFrameInGroups:(char *)arg1 numOfPackets:(int)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 cameraStatusBits:(unsigned char)arg5;
 - (int)transmitVideoPackets:(const char *)arg1 packetSizes:(int *)arg2 startPacket:(int)arg3 packetCount:(int)arg4 lastGroup:(int)arg5 timestamp:(unsigned int)arg6 hostTime:(double)arg7 cameraStatusBits:(unsigned char)arg8 bytesSent:(int *)arg9;
+- (void)updateSendStatisticsWithTimestamp:(unsigned int)arg1 frameSize:(unsigned int)arg2 packetsInFrame:(unsigned int)arg3;
 
 @end
 

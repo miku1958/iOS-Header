@@ -11,10 +11,11 @@
 #import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
 #import <UIKitCore/_UIHostedFocusSystemDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIColor, UILongPressGestureRecognizer, UISegment, UIView, _UIHostedFocusSystem;
+@class NSMutableArray, NSString, UIColor, UIImageView, UILongPressGestureRecognizer, UISegment, UIView, _UIHostedFocusSystem;
 
 @interface UISegmentedControl : UIControl <_UIBasicAnimationFactory, UIPopoverPresentationControllerDelegate, _UIHostedFocusSystemDelegate, NSCoding>
 {
+    UIImageView *_selectionImageView;
     NSMutableArray *_segments;
     long long _selectedSegment;
     long long _highlightedSegment;
@@ -22,10 +23,10 @@
     UISegment *_focusedSegment;
     long long _barStyle;
     id _appearanceStorage;
-    UIView *_backgroundBarView;
     double _enabledAlpha;
+    UIColor *_selectedSegmentTintColor;
+    UIColor *_backgroundTintColor;
     struct {
-        unsigned int style:3;
         unsigned int size:2;
         unsigned int delegateAlwaysNotifiesDelegateOfSegmentClicks:1;
         unsigned int momentaryClick:1;
@@ -37,13 +38,12 @@
         unsigned int useProportionalWidthSegments:1;
         unsigned int translucentBackground:1;
         unsigned int appearanceNeedsUpdate:1;
+        unsigned int selectionIndicatorDragged:1;
     } _segmentedControlFlags;
-    BOOL __hasTranslucentOptionsBackground;
     _UIHostedFocusSystem *_internalFocusSystem;
     UILongPressGestureRecognizer *_axLongPressGestureRecognizer;
 }
 
-@property (nonatomic, setter=_setTranslucentOptionsBackground:) BOOL _hasTranslucentOptionsBackground; // @synthesize _hasTranslucentOptionsBackground=__hasTranslucentOptionsBackground;
 @property (nonatomic) BOOL apportionsSegmentWidthsByContent;
 @property (strong, nonatomic) UILongPressGestureRecognizer *axLongPressGestureRecognizer; // @synthesize axLongPressGestureRecognizer=_axLongPressGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
@@ -55,14 +55,24 @@
 @property (strong, nonatomic) UIView *removedSegment; // @synthesize removedSegment=_removedSegment;
 @property (nonatomic) long long segmentedControlStyle;
 @property (nonatomic) long long selectedSegmentIndex;
+@property (strong, nonatomic) UIColor *selectedSegmentTintColor;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 
-+ (double)_cornerRadiusForTraitCollection:(id)arg1;
-+ (double)_dividerWidthForTraitCollection:(id)arg1;
-+ (double)_lineWidthForTraitCollection:(id)arg1;
-+ (id)_modernBackgroundSelected:(BOOL)arg1 highlighted:(BOOL)arg2 traitCollection:(id)arg3;
-+ (id)_modernDividerImageForTraitCollection:(id)arg1;
++ (struct CGColor *)_backgroundPrimaryColorSelected:(BOOL)arg1 highlighted:(BOOL)arg2 traitCollection:(id)arg3 tintColor:(id)arg4;
++ (double)_cornerRadiusForTraitCollection:(id)arg1 size:(int)arg2;
++ (struct CGColor *)_dividerPrimaryColorBackground:(BOOL)arg1 traitCollection:(id)arg2 tintColor:(id)arg3;
++ (double)_dividerWidthForTraitCollection:(id)arg1 size:(int)arg2;
++ (id)_fontForTraitCollection:(id)arg1 size:(int)arg2 selected:(BOOL)arg3;
++ (struct CATransform3D)_hiddenSelectionTransform;
++ (struct CATransform3D)_highlightSelectionTransform;
++ (double)_lineWidthForTraitCollection:(id)arg1 size:(int)arg2;
++ (id)_modernBackgroundSelected:(BOOL)arg1 disableShadow:(BOOL)arg2 highlighted:(BOOL)arg3 traitCollection:(id)arg4 tintColor:(id)arg5 size:(int)arg6;
++ (id)_modernDividerImageBackground:(BOOL)arg1 traitCollection:(id)arg2 tintColor:(id)arg3 size:(int)arg4;
++ (double)_sectionIndicatorInsetForTraitCollection:(id)arg1 size:(int)arg2;
++ (double)_sectionIndicatorOverflowForTraitCollection:(id)arg1 size:(int)arg2;
++ (struct CGRect)_selectionFrameForBounds:(struct CGRect)arg1 size:(int)arg2 traitCollection:(id)arg3 accessibilityView:(BOOL)arg4;
++ (id)_selectionOpacityAnimationFromValue:(float)arg1 toValue:(float)arg2;
++ (id)_selectionPopAnimationForKey:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 + (id)_tvDefaultTextColorDisabledSelected;
 + (id)_tvDefaultTextColorDisabledUserInterfaceStyleDark;
 + (id)_tvDefaultTextColorDisabledUserInterfaceStyleLight;
@@ -78,6 +88,7 @@
 - (void)_animateContentChangeWithAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_attributedTitleForSegmentAtIndex:(unsigned long long)arg1;
 - (void)_axLongPressHandler:(id)arg1;
+- (id)_backgroundTintColor;
 - (double)_backgroundVerticalPositionAdjustmentForBarMetrics:(long long)arg1;
 - (id)_badgeValueForSegmentAtIndex:(unsigned long long)arg1;
 - (double)_barHeight;
@@ -92,6 +103,7 @@
 - (id)_createSegmentAtIndex:(int)arg1 position:(unsigned int)arg2 withInfo:(id)arg3;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
+- (BOOL)_disableSlidingControl;
 - (void)_emitValueChanged;
 - (id)_focusMapContainerForFocusSystem:(id)arg1;
 - (BOOL)_focusSystem:(id)arg1 containsChildOfHostEnvironment:(id)arg2;
@@ -99,48 +111,43 @@
 - (BOOL)_hasEnabledSegment;
 - (void)_insertSegment:(int)arg1 withInfo:(id)arg2 animated:(BOOL)arg3;
 - (void)_insertSegmentWithAttributedTitle:(id)arg1 atIndex:(unsigned long long)arg2 animated:(BOOL)arg3;
+- (void)_insertSelectionViewForSegment:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
-- (BOOL)_isInMiniBar;
-- (BOOL)_isInTranslucentToolbar;
-- (id)_optionsBackgroundImage;
-- (BOOL)_optionsShadowHidden;
-- (void)_populateArchivedSubviews:(id)arg1;
 - (id)_preferredFocusEnvironmentsForFocusSystem:(id)arg1;
-- (void)_removeSegmentAnimationFinished:(id)arg1 finished:(id)arg2 context:(id)arg3;
 - (void)_resetForAppearanceChange;
 - (id)_segmentAtIndex:(int)arg1;
+- (id)_segmentToHighlight:(BOOL *)arg1;
 - (void)_selectFocusedSegment;
 - (void)_sendDelayedFocusActionIfNecessary;
 - (void)_setAppearanceIsTiled:(BOOL)arg1 leftCapWidth:(unsigned long long)arg2 rightCapWidth:(unsigned long long)arg3;
 - (void)_setAttributedTitle:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
 - (void)_setAutosizeText:(BOOL)arg1;
 - (void)_setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;
+- (void)_setBackgroundTintColor:(id)arg1;
 - (void)_setBackgroundVerticalPositionAdjustment:(double)arg1 forBarMetrics:(long long)arg2;
 - (void)_setBadgeValue:(id)arg1 forSegmentAtIndex:(unsigned long long)arg2;
 - (void)_setControlSize:(int)arg1 andInvalidate:(BOOL)arg2;
-- (void)_setCurrentBackgroundImage:(id)arg1;
 - (void)_setDividerImage:(id)arg1 forLeftSegmentState:(unsigned long long)arg2 rightSegmentState:(unsigned long long)arg3 barMetrics:(long long)arg4;
 - (void)_setEnabled:(BOOL)arg1 forcePropagateToSegments:(BOOL)arg2;
 - (void)_setHighlightedSegmentHighlighted:(BOOL)arg1;
 - (void)_setNeedsAppearanceUpdate;
-- (void)_setOptionsBackgroundImage:(id)arg1;
-- (void)_setOptionsShadowHidden:(BOOL)arg1;
 - (void)_setSegmentedControlAppearance:(CDStruct_41b0f204 *)arg1;
 - (void)_setSelected:(BOOL)arg1 forSegmentAtIndex:(int)arg2 forceInfoDisplay:(BOOL)arg3;
+- (void)_setSelected:(BOOL)arg1 highlighted:(BOOL)arg2 forSegmentAtIndex:(int)arg3 forceInfoDisplay:(BOOL)arg4;
 - (void)_setSelectedSegmentIndex:(long long)arg1 notify:(BOOL)arg2;
 - (void)_setSelectedSegmentIndex:(long long)arg1 notify:(BOOL)arg2 animate:(BOOL)arg3;
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (void)_setUsesNewAnimations:(BOOL)arg1;
 - (BOOL)_shouldConsumeEventWithPresses:(id)arg1;
 - (BOOL)_shouldSelectSegmentAtIndex:(long long)arg1;
-- (void)_tapSegmentAtPoint:(struct CGPoint)arg1;
+- (void)_tapSegmentAtPoint:(struct CGPoint)arg1 touchDown:(BOOL)arg2;
 - (id)_tintColorArchivingKey;
 - (id)_uiktest_labelsWithState:(unsigned long long)arg1;
 - (id)_uiktest_segmentAtIndex:(unsigned long long)arg1;
 - (void)_updateAxLongPressGestureRecognizer;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned long long)arg1;
-- (void)_updateOptionsBackground;
-- (void)_updateTitleTextAttributes;
+- (void)_updateSelectionIndicator;
+- (void)_updateSelectionToSegment:(id)arg1 highlight:(BOOL)arg2 shouldAnimate:(BOOL)arg3;
 - (BOOL)_usesNewAnimations;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;

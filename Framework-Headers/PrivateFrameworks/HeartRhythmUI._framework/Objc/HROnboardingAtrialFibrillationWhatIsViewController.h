@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HeartRhythmUI/HROnboardingLeadingAlignedExplanationViewController.h>
+#import <HeartRhythmUI/HROnboardingHeroExplanationViewController.h>
 
 @class HRVideoPlayerView;
 
-@interface HROnboardingAtrialFibrillationWhatIsViewController : HROnboardingLeadingAlignedExplanationViewController
+@interface HROnboardingAtrialFibrillationWhatIsViewController : HROnboardingHeroExplanationViewController
 {
     HRVideoPlayerView *_videoPlayerView;
 }
@@ -20,6 +20,7 @@
 - (id)buttonTitleString;
 - (id)createHeroView;
 - (id)initForOnboarding:(BOOL)arg1;
+- (void)setUpUI;
 - (long long)stackedButtonViewLastButtonMode;
 - (id)titleString;
 - (void)viewDidDisappear:(BOOL)arg1;

@@ -49,6 +49,8 @@
 - (void)layoutSubviews;
 - (void)rebuildFramesArray;
 - (void)reindexate;
+- (void)scrollToNext;
+- (void)scrollToPrevious;
 - (void)setActiveViewIndex:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)viewManagementForRange:(struct _NSRange)arg1;

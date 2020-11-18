@@ -10,6 +10,12 @@
 
 @interface TIKeyboardTouchEvent : NSObject <NSSecureCoding>
 {
+    union {
+        long long integerValue;
+        struct {
+            unsigned int continuousPathState:4;
+        } fields;
+    } _mask;
     int _stage;
     int _fingerID;
     double _radius;
@@ -19,6 +25,7 @@
     struct CGPoint _location;
 }
 
+@property (readonly, nonatomic) int continuousPathState;
 @property (readonly, nonatomic) int fingerID; // @synthesize fingerID=_fingerID;
 @property (readonly, nonatomic) long long forcedKeyCode; // @synthesize forcedKeyCode=_forcedKeyCode;
 @property (readonly, nonatomic) struct CGPoint location; // @synthesize location=_location;
@@ -29,11 +36,12 @@
 
 + (BOOL)supportsSecureCoding;
 + (id)touchEventWithStage:(int)arg1 location:(struct CGPoint)arg2 radius:(double)arg3 timestamp:(double)arg4 pathIndex:(long long)arg5 fingerID:(int)arg6 forcedKeyCode:(long long)arg7;
++ (id)touchEventWithStage:(int)arg1 location:(struct CGPoint)arg2 radius:(double)arg3 timestamp:(double)arg4 pathIndex:(long long)arg5 fingerID:(int)arg6 forcedKeyCode:(long long)arg7 continuousPathState:(int)arg8;
 + (id)touchEventWithStage:(int)arg1 location:(struct CGPoint)arg2 radius:(double)arg3 timestamp:(double)arg4 pathIndex:(long long)arg5 forcedKeyCode:(long long)arg6;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithStage:(int)arg1 location:(struct CGPoint)arg2 radius:(double)arg3 timestamp:(double)arg4 pathIndex:(long long)arg5 fingerID:(int)arg6 forcedKeyCode:(long long)arg7;
+- (id)initWithStage:(int)arg1 location:(struct CGPoint)arg2 radius:(double)arg3 timestamp:(double)arg4 pathIndex:(long long)arg5 fingerID:(int)arg6 forcedKeyCode:(long long)arg7 continuousPathState:(int)arg8;
 - (id)shortDescription;
 
 @end

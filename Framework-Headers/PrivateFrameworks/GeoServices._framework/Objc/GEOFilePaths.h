@@ -11,24 +11,22 @@
 }
 
 + (id)aleStringsCacheDirectoryPath;
++ (id)analtyicsPipelineFilePath;
++ (id)analyticsUploadDirectoryPath;
 + (id)geoServicesCacheDirectoryPath;
 + (id)geodCacheDirectoryPath;
 + (id)geodLibraryDirectoryURL;
 + (id)homeDirectory;
++ (id)imageServiceDBFileURL;
 + (void)initialize;
-+ (id)layerDataTrackerDBFilePath;
 + (id)locationShifterDBFilePath;
-+ (id)logMessageCacheDirectoryPath;
-+ (id)mapLayerDataDirectoryPath;
 + (id)mapsSuggestionsCacheDirectoryPath;
-+ (id)navTracesDirectoryPath;
-+ (id)navdCacheDirectoryPath;
++ (id)pdPlaceCacheFilePath;
 + (id)phoneNumberMUIDMappingFilePath;
 + (id)placeDataCacheDirectoryPath;
 + (id)preferencesDirectoryPath;
 + (id)requestCountsDBFilePath;
 + (id)tileCacheDirectoryPath;
-+ (id)traceExtension;
 
 @end
 

@@ -6,20 +6,30 @@
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailEditOptionSectionController.h>
 
-@class NSMutableArray;
+@class NSMutableArray, NSString, NTKCFaceDetailDescriptionCell;
 
 @interface NTKCFaceDetailEditOptionVerticalSectionController : NTKCFaceDetailEditOptionSectionController
 {
+    NTKCFaceDetailDescriptionCell *_footerCell;
+    NSString *_footer;
 }
 
+@property (strong, nonatomic) NSString *footer; // @synthesize footer=_footer;
+@property (strong, nonatomic) NTKCFaceDetailDescriptionCell *footerCell; // @synthesize footerCell=_footerCell;
 @property (strong, nonatomic) NSMutableArray *rows; // @dynamic rows;
 
+- (void).cxx_destruct;
 - (BOOL)_canSelectRow:(long long)arg1;
+- (id)_overrideTextForOption:(id)arg1;
+- (void)_refreshOverrideTexts;
 - (void)_setupWithCollection:(id)arg1;
+- (id)cellForRow:(long long)arg1;
 - (BOOL)collectionChanged:(id)arg1 withSelectedOptions:(id)arg2;
 - (void)didSelectRow:(long long)arg1;
 - (void)faceDidChange;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
+- (double)heightForRow:(long long)arg1;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
+- (long long)numberOfRows;
 - (void)reloadActionRow;
 - (void)setSelectedOptions:(id)arg1;
 

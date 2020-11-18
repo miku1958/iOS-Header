@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotoLibraryServices/PLAbstractLibraryServicesManagerService.h>
 
 #import <PhotoLibraryServices/PLAssetsdDebugServiceProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PLAssetsdCPLResourceDownloader, PLPhotoLibraryBundleController;
 
-@interface PLAssetsdDebugService : NSObject <PLAssetsdDebugServiceProtocol>
+@interface PLAssetsdDebugService : PLAbstractLibraryServicesManagerService <PLAssetsdDebugServiceProtocol>
 {
+    PLAssetsdCPLResourceDownloader *_resourceDownloader;
+    PLPhotoLibraryBundleController *_bundleController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,7 +21,40 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (void)asynchronousUnloadImageFilesForAssetWithObjectURI:(id)arg1 minimumFormat:(unsigned short)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)cleanupEmptyHighlightsWithReply:(CDUnknownBlockType)arg1;
+- (void)coalesceJournalsForPayloadClassIDs:(id)arg1 withChangeJournalOverThreshold:(float)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)debugSidecarURLsWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)deferredLogDumpWithFormat:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)dropSearchIndexWithReply:(CDUnknownBlockType)arg1;
+- (void)dumpMetadataForMomentsToPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)dumpMomentsMetadataToPath:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getCPLStateWithReply:(CDUnknownBlockType)arg1;
+- (void)getXPCTransactionStatusWithReply:(CDUnknownBlockType)arg1;
+- (id)initWithLibraryServicesManager:(id)arg1 resourceDownloader:(id)arg2 bundleController:(id)arg3;
+- (void)invalidateHighlightSubtitlesAndRegenerateHighlightTitlesWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)momentGenerationStatusWithReply:(CDUnknownBlockType)arg1;
+- (void)prefetchResourcesForHighlights:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)prefetchResourcesForMemories:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)prefetchResourcesWithMode:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)privateDownloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)processRecentHighlightsWithReply:(CDUnknownBlockType)arg1;
+- (void)processUnprocessedMomentLocationsWithReply:(CDUnknownBlockType)arg1;
+- (void)pruneAssetsWithUUID:(id)arg1 resourceTypes:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)rebuildAllThumbnails;
+- (void)rebuildCloudFeedWithReply:(CDUnknownBlockType)arg1;
+- (void)rebuildHighlightsDeletingExistingHighlights:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rebuildMomentsDeletingExistingMoments:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rebuildSearchIndexWithReply:(CDUnknownBlockType)arg1;
+- (void)recoverAssetsInInconsistentCloudState;
+- (void)resetDupesAnalysis;
+- (void)revertToOriginalWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)setSearchIndexPaused:(BOOL)arg1 reason:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)snapshotJournalsForPayloadClassIDs:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)statusWithReply:(CDUnknownBlockType)arg1;
+- (void)updateHighlightTitlesWithReply:(CDUnknownBlockType)arg1;
+- (void)updateSiriVocabulary;
 
 @end
 

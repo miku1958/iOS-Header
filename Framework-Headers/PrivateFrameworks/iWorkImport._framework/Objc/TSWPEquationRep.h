@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) TSWPEquationInfo *equationInfo;
 @property (readonly, nonatomic) TSWPEquationLayout *equationLayout;
+@property (nonatomic) BOOL layerContentsAreFlipped; // @synthesize layerContentsAreFlipped=_layerContentsAreFlipped;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
 - (BOOL)canDrawInParallel;

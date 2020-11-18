@@ -13,7 +13,7 @@
 }
 
 @property (copy, nonatomic) NSData *body; // @dynamic body;
-@property (strong, nonatomic) NSDictionary *headerFields; // @dynamic headerFields;
+@property (copy, nonatomic) NSDictionary *headerFields; // @dynamic headerFields;
 @property (nonatomic) double timeoutInterval; // @dynamic timeoutInterval;
 
 - (id)initWithInternalRequest:(id)arg1;

@@ -8,13 +8,14 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSString, geo_isolater;
 
 @interface GEOApplicationAuditToken : NSObject <NSSecureCoding>
 {
     NSData *_tokenData;
     NSString *_proxiedBundleId;
     NSString *_resolvedBundleId;
+    geo_isolater *_isolater;
 }
 
 @property (readonly, nonatomic) NSString *proxiedBundleId; // @synthesize proxiedBundleId=_proxiedBundleId;
@@ -26,6 +27,7 @@
 - (id)bundleId;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithAuditTokenData:(id)arg1;
 - (id)initWithCoder:(id)arg1;

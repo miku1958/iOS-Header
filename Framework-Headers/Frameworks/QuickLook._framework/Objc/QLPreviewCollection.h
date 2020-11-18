@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     QLAppearance *_appearance;
     NSString *_loadingString;
     unsigned long long _visibilityState;
+    BOOL _previewCollectionIsPartOfViewHierarchy;
     unsigned long long _appearanceActions;
     BOOL _isAvailable;
     BOOL _allowInteractiveTransitions;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
     QLTransitionContext *_transitionContext;
     id<QLTransitionControllerProtocol> _transitionController;
     QLTransitionDriver *_transitionDriver;
+    NSString *_hostApplicationBundleIdentifier;
 }
 
 @property (nonatomic) BOOL allowInteractiveTransitions; // @synthesize allowInteractiveTransitions=_allowInteractiveTransitions;
@@ -58,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
 @property BOOL hasTriggeredInteractiveTransitionAnimation; // @synthesize hasTriggeredInteractiveTransitionAnimation=_hasTriggeredInteractiveTransitionAnimation;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *hostApplicationBundleIdentifier; // @synthesize hostApplicationBundleIdentifier=_hostApplicationBundleIdentifier;
 @property (nonatomic) BOOL isAvailable; // @synthesize isAvailable=_isAvailable;
 @property (nonatomic) BOOL isEditing; // @synthesize isEditing=_isEditing;
 @property (nonatomic) BOOL isTransitioningPage; // @synthesize isTransitioningPage=_isTransitioningPage;
@@ -79,17 +82,23 @@ __attribute__((visibility("hidden")))
 + (void)remotePreviewCollectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (void)_cleanAccessoryViewContainer;
+- (id)_defaultKeyCommands;
 - (void)_installGestures;
 - (BOOL)_isBeingDismissed;
 - (BOOL)_isVisible;
+- (BOOL)_itemViewControllerIsCurrentlyPresentedItemViewController:(id)arg1;
 - (void)_notifyHostPreviewCollectionIsReadyForInvalidationIfNeeded;
+- (id)_sandboxExtensionForEditedFileAtURL:(id)arg1;
+- (void)_setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)_setUpTransitionDriverForPresenting:(BOOL)arg1 duration:(double)arg2;
 - (void)_tapGestureRecognized;
 - (void)_tearDownTransition:(BOOL)arg1;
+- (BOOL)_toggleFullscreenIfPossible;
 - (void)_updateAccessoryViewWithPreviewItemViewController:(id)arg1;
 - (void)_updateCanChangeCurrentPage;
 - (void)_updateFullscreen;
 - (void)_updateFullscreenBackgroundColor;
+- (void)_updateOverlay:(BOOL)arg1;
 - (void)_updateOverlayVisibility;
 - (void)_updatePreferredContentSize;
 - (void)_updatePreviewVisibility:(BOOL)arg1;
@@ -100,9 +109,10 @@ __attribute__((visibility("hidden")))
 - (void)completeTransition:(BOOL)arg1 withDuration:(double)arg2;
 - (void)configureWithNumberOfItems:(long long)arg1 currentPreviewItemIndex:(unsigned long long)arg2 itemProvider:(id)arg3 stateManager:(id)arg4;
 - (long long)dragDataOwnerForPreviewItemViewController:(id)arg1;
-- (void)expandContentOfPreviewItemViewController:(id)arg1;
+- (void)expandContentOfPreviewItemViewController:(id)arg1 unarchivedItemsURL:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)gestureTracker;
 - (void)hostApplicationDidBecomeActive;
@@ -131,9 +141,11 @@ __attribute__((visibility("hidden")))
 - (void)previewItemViewController:(id)arg1 didFailWithError:(id)arg2;
 - (void)previewItemViewController:(id)arg1 hasUnsavedEdits:(BOOL)arg2;
 - (void)previewItemViewController:(id)arg1 wantsFullScreen:(BOOL)arg2;
+- (void)previewItemViewController:(id)arg1 wantsToForwardMessageToHost:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)previewItemViewController:(id)arg1 wantsToOpenURL:(id)arg2;
-- (void)previewItemViewController:(id)arg1 wantsToShowShareSheetWithPopoverTracker:(id)arg2 dismissCompletion:(CDUnknownBlockType)arg3;
-- (void)previewItemViewControllerDidEditPreview:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)previewItemViewController:(id)arg1 wantsToShowShareSheetWithPopoverTracker:(id)arg2 customSharedURL:(id)arg3 dismissCompletion:(CDUnknownBlockType)arg4;
+- (void)previewItemViewControllerDidChangeCurrentPreviewController:(id)arg1;
+- (void)previewItemViewControllerDidEditCopyOfPreviewItem:(id)arg1 editedCopy:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)previewItemViewControllerDidUpdatePreferredContentSize:(id)arg1;
 - (void)previewItemViewControllerDidUpdateTitle:(id)arg1;
 - (void)previewItemViewControllerWantsToDismissQuickLook:(id)arg1;
@@ -143,11 +155,12 @@ __attribute__((visibility("hidden")))
 - (void)previewItemViewControllerWantsUpdateOverlay:(id)arg1 animated:(BOOL)arg2;
 - (void)previewItemViewControllerWantsUpdatePrinter:(id)arg1;
 - (void)rotationOrPinchGestureRecognized:(id)arg1;
+- (void)saveCurrentPreviewEditsSynchronously:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
+- (void)setIsContentManaged:(BOOL)arg1;
 - (void)setLoadingString:(id)arg1;
 - (void)setRemoteAccessoryContainer:(id)arg1;
-- (void)setSourceIsManaged:(BOOL)arg1;
 - (void)slideToDismissGestureRecognized:(id)arg1;
 - (void)startNonInteractiveTransitionPresenting:(BOOL)arg1;
 - (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(BOOL)arg3 useInteractiveTransition:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -159,6 +172,8 @@ __attribute__((visibility("hidden")))
 - (void)updateCurrentPreviewConfiguration;
 - (void)updateTransitionWithProgress:(double)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

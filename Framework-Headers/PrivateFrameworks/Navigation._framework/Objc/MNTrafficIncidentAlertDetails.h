@@ -8,7 +8,7 @@
 
 #import <Navigation/NSCopying-Protocol.h>
 
-@class GEOETARoute, GEORoute, MNRouteCoordinate, NSData, NSMutableArray;
+@class GEOETARoute, GEORoute, MNRouteCoordinate, NSData;
 
 @interface MNTrafficIncidentAlertDetails : PBCodable <NSCopying>
 {
@@ -18,12 +18,13 @@
     NSData *_alertID;
     unsigned int _alertType;
     GEORoute *_alternateRoute;
+    NSData *_alternateRouteTrafficData;
     MNRouteCoordinate *_endValidCoordinateRange;
     NSData *_etaResponseID;
     GEOETARoute *_etaRoute;
     MNRouteCoordinate *_incidentCoordinate;
     GEORoute *_originalRoute;
-    NSMutableArray *_originalRouteIncidentsDatas;
+    NSData *_originalRouteTrafficData;
     MNRouteCoordinate *_startValidCoordinateRange;
     BOOL _isAutomaticReroute;
     struct {
@@ -39,6 +40,7 @@
 @property (nonatomic) double alertTimestamp; // @synthesize alertTimestamp=_alertTimestamp;
 @property (nonatomic) unsigned int alertType; // @synthesize alertType=_alertType;
 @property (strong, nonatomic) GEORoute *alternateRoute; // @synthesize alternateRoute=_alternateRoute;
+@property (strong, nonatomic) NSData *alternateRouteTrafficData; // @synthesize alternateRouteTrafficData=_alternateRouteTrafficData;
 @property (nonatomic) double distanceToIncident; // @synthesize distanceToIncident=_distanceToIncident;
 @property (strong, nonatomic) MNRouteCoordinate *endValidCoordinateRange; // @synthesize endValidCoordinateRange=_endValidCoordinateRange;
 @property (strong, nonatomic) NSData *etaResponseID; // @synthesize etaResponseID=_etaResponseID;
@@ -48,6 +50,7 @@
 @property (nonatomic) BOOL hasAlertTimestamp;
 @property (nonatomic) BOOL hasAlertType;
 @property (readonly, nonatomic) BOOL hasAlternateRoute;
+@property (readonly, nonatomic) BOOL hasAlternateRouteTrafficData;
 @property (nonatomic) BOOL hasDistanceToIncident;
 @property (readonly, nonatomic) BOOL hasEndValidCoordinateRange;
 @property (readonly, nonatomic) BOOL hasEtaResponseID;
@@ -56,18 +59,16 @@
 @property (readonly, nonatomic) BOOL hasIncidentCoordinate;
 @property (nonatomic) BOOL hasIsAutomaticReroute;
 @property (readonly, nonatomic) BOOL hasOriginalRoute;
+@property (readonly, nonatomic) BOOL hasOriginalRouteTrafficData;
 @property (readonly, nonatomic) BOOL hasStartValidCoordinateRange;
 @property (strong, nonatomic) MNRouteCoordinate *incidentCoordinate; // @synthesize incidentCoordinate=_incidentCoordinate;
 @property (nonatomic) BOOL isAutomaticReroute; // @synthesize isAutomaticReroute=_isAutomaticReroute;
 @property (strong, nonatomic) GEORoute *originalRoute; // @synthesize originalRoute=_originalRoute;
-@property (strong, nonatomic) NSMutableArray *originalRouteIncidentsDatas; // @synthesize originalRouteIncidentsDatas=_originalRouteIncidentsDatas;
+@property (strong, nonatomic) NSData *originalRouteTrafficData; // @synthesize originalRouteTrafficData=_originalRouteTrafficData;
 @property (strong, nonatomic) MNRouteCoordinate *startValidCoordinateRange; // @synthesize startValidCoordinateRange=_startValidCoordinateRange;
 
 + (id)detailsForTrafficIncidentAlert:(id)arg1;
-+ (Class)originalRouteIncidentsDataType;
 - (void).cxx_destruct;
-- (void)addOriginalRouteIncidentsData:(id)arg1;
-- (void)clearOriginalRouteIncidentsDatas;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -75,8 +76,6 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)originalRouteIncidentsDataAtIndex:(unsigned long long)arg1;
-- (unsigned long long)originalRouteIncidentsDatasCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

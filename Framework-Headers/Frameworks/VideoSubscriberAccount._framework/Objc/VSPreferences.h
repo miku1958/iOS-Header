@@ -12,6 +12,7 @@
 {
     NSUndoManager *_undoManager;
     NSUserDefaults *_userDefaults;
+    NSUserDefaults *_globalUserDefaults;
     VSDevice *_device;
 }
 
@@ -19,6 +20,7 @@
 @property (nonatomic) long long cachedDeveloperProviderStatus;
 @property (nonatomic) long long cachedStoreProviderStatus;
 @property (strong, nonatomic) VSDevice *device; // @synthesize device=_device;
+@property (strong, nonatomic) NSUserDefaults *globalUserDefaults; // @synthesize globalUserDefaults=_globalUserDefaults;
 @property (readonly, nonatomic) BOOL hasSentWelcomeMessage;
 @property (readonly, copy, nonatomic) NSURL *overridingAppBootURL;
 @property (readonly, nonatomic) BOOL shouldAlwaysAllowRemoteInspection;
@@ -30,13 +32,19 @@
 - (void).cxx_destruct;
 - (void)_updateShouldSkipSetupWithNumber:(id)arg1;
 - (void)_updateValue:(id)arg1 forKey:(id)arg2;
+- (BOOL)allowInsecureAuthContext;
 - (BOOL)hasChosenDesiredApp;
+- (BOOL)ignoreSetTopBoxProfile;
 - (BOOL)isInSTBMode;
+- (id)metricUserID;
+- (id)metricUserIDLastGenerated;
 - (void)noteDesiredApp:(id)arg1;
 - (void)noteDidSendWelcomeMessage;
 - (void)noteIsInSTBMode:(BOOL)arg1;
 - (void)noteShouldSkipSetup;
 - (void)removeSkipSetupPreset;
+- (void)setIgnoreSetTopBoxProfile:(BOOL)arg1;
+- (void)setMetricUserID:(id)arg1;
 - (id)setTopBoxInfoAppAdamIdOverride;
 - (id)setTopBoxInfoBundleIdentifierOverride;
 - (BOOL)setTopBoxInfoIsSetTopBoxOverride;

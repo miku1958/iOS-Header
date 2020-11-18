@@ -15,7 +15,8 @@
     BOOL _initialHandlerCalled;
     NSMutableArray *_samplesPendingDelivery;
     NSMutableArray *_deletedObjectsPendingDelivery;
-    BOOL _includeDeletedObjects;
+    _Atomic BOOL _includeDeletedObjects;
+    BOOL _includeAutomaticTimeZones;
     CDUnknownBlockType _updateHandler;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
@@ -23,13 +24,14 @@
     CDUnknownBlockType _completionHandler;
 }
 
-@property (strong, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
+@property (copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
 @property (nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
 @property (readonly, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL includeDeletedObjects; // @synthesize includeDeletedObjects=_includeDeletedObjects;
+@property (nonatomic) BOOL ignoreDeletedObjects;
+@property (nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;

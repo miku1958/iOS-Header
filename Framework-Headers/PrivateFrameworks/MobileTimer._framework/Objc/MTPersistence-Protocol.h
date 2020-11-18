@@ -11,6 +11,7 @@
 @protocol MTPersistence <NSObject>
 - (float)floatForKey:(NSString *)arg1;
 - (id)objectForKey:(NSString *)arg1;
+- (id)objectForKey:(NSString *)arg1 defaultValue:(id)arg2;
 - (void)setFloat:(float)arg1 forKey:(NSString *)arg2;
 - (void)setObject:(id)arg1 forKey:(NSString *)arg2;
 @end

@@ -6,7 +6,7 @@
 
 #import <Metal/MTLArgument.h>
 
-@class MTLType, NSString;
+@class MTLStructType, MTLType, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MTLArgumentInternal : MTLArgument
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) unsigned long long bufferALUType; // @dynamic bufferALUType;
 @property (readonly) unsigned long long bufferPixelFormat; // @dynamic bufferPixelFormat;
+@property (readonly) MTLStructType *structType; // @dynamic structType;
 
 - (unsigned long long)access;
 - (unsigned long long)arrayLength;

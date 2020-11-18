@@ -8,10 +8,11 @@
 
 #import <SafariServices/_SFAuthenticationContextDelegate-Protocol.h>
 
-@class NSString, _SFAuthenticationContext;
+@class NSString, WBSOneTimeCodeMonitor, _SFAuthenticationContext;
 
 @interface _SFFormDataController : WBUFormDataController <_SFAuthenticationContextDelegate>
 {
+    WBSOneTimeCodeMonitor *_oneTimeCodeMonitor;
     _SFAuthenticationContext *_autoFillAuthenticationContext;
 }
 
@@ -28,6 +29,7 @@
 - (BOOL)contextShouldAllowPasscodeFallback:(id)arg1;
 - (id)initWithAggressiveKeychainCaching:(BOOL)arg1;
 - (double)invalidationTimeoutIfApplicationEntersBackgroundDuringAuthenticationForContext:(id)arg1;
+- (id)oneTimeCodeMonitor;
 
 @end
 

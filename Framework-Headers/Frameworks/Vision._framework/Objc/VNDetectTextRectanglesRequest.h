@@ -25,7 +25,6 @@
 - (BOOL)_detectCreditCardTextWithRequestPerformingContext:(id)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)_detectTextWithRequestPerformingContext:(id)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 

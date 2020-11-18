@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _canShowSupportedAppsButton;
     VSIdentityProvider *_identityProvider;
     NSString *_providerAccountUsername;
+    NSString *_preferredAppID;
     VSAppDescription *_msoAppDescription;
     NSArray *_bundlesIDsToConsent;
     NSDictionary *_vouchersByBundleID;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL canShowSupportedAppsButton; // @synthesize canShowSupportedAppsButton=_canShowSupportedAppsButton;
 @property (strong, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
 @property (strong, nonatomic) VSAppDescription *msoAppDescription; // @synthesize msoAppDescription=_msoAppDescription;
+@property (copy, nonatomic) NSString *preferredAppID; // @synthesize preferredAppID=_preferredAppID;
 @property (copy, nonatomic) NSString *providerAccountUsername; // @synthesize providerAccountUsername=_providerAccountUsername;
 @property (nonatomic) BOOL shouldOfferAuthenticationFlow; // @synthesize shouldOfferAuthenticationFlow=_shouldOfferAuthenticationFlow;
 @property (nonatomic) BOOL shouldOfferSTBAuthenticationFlow; // @synthesize shouldOfferSTBAuthenticationFlow=_shouldOfferSTBAuthenticationFlow;

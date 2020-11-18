@@ -13,6 +13,7 @@
 + (id)CDVStringWithNumberOfSpaces:(unsigned long long)arg1;
 - (BOOL)CDVIsHTTPStatusLineWithStatusCode:(long long)arg1;
 - (id)CDVStringByAddingPercentEscapesForHREF;
+- (id)CDVStringByAddingPercentEscapesForHREFIncludingPercent;
 - (id)CDVStringByAddingPercentEscapesForUserOrPassword;
 - (id)CDVStringByAppendingSlashIfNeeded;
 - (id)CDVStringByRemovingPercentEscapesForHREF;

@@ -14,9 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_axGetNubView;
-- (id)_axGetNubViewContainer;
+- (id)_axInlineExposeViewController;
 - (void)_axLoadNubViewAccessibilityInformation;
+- (id)_axNubView;
+- (id)_axNubViewContainer;
+- (void)_axSetUpExposeViewController;
+- (id)initWithDeviceApplicationSceneHandle:(id)arg1 inlineContainerViewController:(id)arg2 layoutRole:(long long)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

@@ -95,6 +95,7 @@
 + (id)allServiceSessions;
 + (id)existingServiceSessionForService:(id)arg1;
 + (void)initialize;
+- (void)_IMDStoreMessage:(id)arg1 inMessage:(id)arg2 forceReplace:(BOOL)arg3 modifyError:(BOOL)arg4 modifyFlags:(BOOL)arg5 calculateUnreadCount:(BOOL)arg6 flagMask:(unsigned long long)arg7 shouldStoreBlock:(CDUnknownBlockType)arg8 didStoreBlock:(CDUnknownBlockType)arg9 block:(CDUnknownBlockType)arg10;
 - (void)__forceSetLoginStatus:(unsigned int)arg1 oldStatus:(unsigned int)arg2 message:(id)arg3 reason:(int)arg4 properties:(id)arg5 account:(id)arg6;
 - (void)_abandonPWFetcher;
 - (void)_abandonSystemProxySettingsFetcher;
@@ -121,6 +122,7 @@
 - (void)_handleRoutingWithDictionary:(id)arg1;
 - (void)_handleWatchdogWithDictionary:(id)arg1;
 - (BOOL)_hasSuppressedMessageID:(id)arg1 chatGUID:(id)arg2;
+- (BOOL)_isActivated;
 - (void)_login_checkUsernameAndPasswordWithAccount:(id)arg1;
 - (void)_login_serverSettingsReadyWithAccount:(id)arg1;
 - (void)_login_usernameAndPasswordReadyWithAccount:(id)arg1;
@@ -129,6 +131,7 @@
 - (void)_markChatAsDowngraded:(id)arg1;
 - (void)_networkChanged:(id)arg1;
 - (id)_newHashForChat:(id)arg1 style:(unsigned char)arg2;
+- (void)_postMessagesFromStorage:(id)arg1;
 - (void)_processConnectionMonitorUpdate;
 - (void)_processPotentialNetworkChange;
 - (void)_reconnectIfNecessary;
@@ -136,9 +139,13 @@
 - (void)_routingTimerFired;
 - (void)_setAutoReconnectTimer;
 - (void)_setPendingConnectionMonitorUpdate;
+- (void)_setReplyGUIDOnMessage:(id)arg1 forChat:(id)arg2;
+- (void)_setSortIDForMessage:(id)arg1 forChat:(id)arg2;
 - (void)_setSuppressedMessage:(id)arg1 inChatWithGUID:(id)arg2;
+- (id)_sharedAccountController;
+- (id)_sharedMessageStore;
 - (void)_storageTimerFired;
-- (void)_storeMessage:(id)arg1 chatIdentifier:(id)arg2 localChat:(id)arg3 style:(unsigned char)arg4 account:(id)arg5 messagesToPostArray:(id)arg6;
+- (BOOL)_storeMessage:(id)arg1 chatIdentifier:(id)arg2 localChat:(id)arg3 style:(unsigned char)arg4 account:(id)arg5 messagesToPostArray:(id)arg6;
 - (void)_suppresionTimerFired:(id)arg1;
 - (id)_transcodeController;
 - (void)_updateConnectionMonitorFromAccountDefaultsIgnoringProxy:(BOOL)arg1;
@@ -232,7 +239,7 @@
 - (void)didReceiveMessageReadReceiptForMessageID:(id)arg1 date:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)didReceiveMessageSavedForMessageID:(id)arg1 ofType:(long long)arg2 forChat:(id)arg3 fromHandle:(id)arg4 fromMe:(BOOL)arg5 date:(id)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)didReceiveMessageSavedForMessageID:(id)arg1 ofType:(long long)arg2 forChat:(id)arg3 fromHandle:(id)arg4 fromMe:(BOOL)arg5 date:(id)arg6 useMessageSuppression:(BOOL)arg7 account:(id)arg8 completionBlock:(CDUnknownBlockType)arg9;
-- (void)didReceiveMessages:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4;
+- (BOOL)didReceiveMessages:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4;
 - (void)didReceiveReplaceMessageID:(int)arg1 forChat:(id)arg2 style:(unsigned char)arg3;
 - (void)didSendBalloonPayload:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3 messageGUID:(id)arg4 account:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)didSendMessage:(id)arg1 forChat:(id)arg2 style:(unsigned char)arg3;
@@ -351,6 +358,8 @@
 - (void)sendMessage:(id)arg1 toChat:(id)arg2 style:(unsigned char)arg3;
 - (void)sendMessage:(id)arg1 toChat:(id)arg2 style:(unsigned char)arg3 account:(id)arg4;
 - (void)sendMessage:(id)arg1 toChatID:(id)arg2 identifier:(id)arg3 style:(unsigned char)arg4;
+- (void)sendNicknameInfoToChatID:(id)arg1;
+- (BOOL)sendNicknameUpdatesToPeerDevices:(id)arg1 toDestinations:(id)arg2;
 - (void)sendPlayedReceiptForMessage:(id)arg1 toChatID:(id)arg2 identifier:(id)arg3 style:(unsigned char)arg4;
 - (void)sendReadReceiptForMessage:(id)arg1 toChatID:(id)arg2 identifier:(id)arg3 style:(unsigned char)arg4;
 - (void)sendSavedReceiptForMessage:(id)arg1 toChatID:(id)arg2 identifier:(id)arg3 style:(unsigned char)arg4;
@@ -383,6 +392,7 @@
 - (void)unregisterChat:(id)arg1 style:(unsigned char)arg2;
 - (void)unvalidateAliases:(id)arg1 account:(id)arg2;
 - (void)updateAuthorizationCredentials:(id)arg1 token:(id)arg2 account:(id)arg3;
+- (void)updateChatGUID:(id)arg1 withLastReadTimeStamp:(long long)arg2 withLastSeenMessageGUID:(id)arg3 fromMe:(BOOL)arg4;
 - (void)updateConnectionMonitorWithLocalSocketAddress:(id)arg1 remoteSocketAddress:(id)arg2;
 - (void)updateDisplayName:(id)arg1 fromDisplayName:(id)arg2 forChatID:(id)arg3 identifier:(id)arg4 style:(unsigned char)arg5;
 - (void)useChatRoom:(id)arg1 forGroupChatIdentifier:(id)arg2;

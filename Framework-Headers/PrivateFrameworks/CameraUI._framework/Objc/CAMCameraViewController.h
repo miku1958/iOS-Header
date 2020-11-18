@@ -8,18 +8,19 @@
 
 #import <CameraUI/CAMCVCStillImageResultCoordinatorDelegate-Protocol.h>
 #import <CameraUI/CAMCaptureResultDelegate-Protocol.h>
-#import <CameraUI/CAMIrisVideoControllerDelegate-Protocol.h>
 #import <CameraUI/CAMPersistenceResultDelegate-Protocol.h>
 #import <CameraUI/CAMViewfinderReviewButtonSource-Protocol.h>
 #import <CameraUI/NSCoding-Protocol.h>
 #import <CameraUI/NSSecureCoding-Protocol.h>
 
-@class CAMBurstController, CAMIrisVideoController, CAMKeepAliveController, CAMLocationController, CAMMotionController, CAMNebulaDaemonProxyManager, CAMPersistenceController, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMReviewButton, CAMThumbnailGenerator, CAMTimelapseController, CAMViewfinderViewController, CUCaptureController, NSMutableDictionary, NSObject, NSString;
+@class CAMBurstController, CAMKeepAliveController, CAMLocationController, CAMMotionController, CAMNebulaDaemonProxyManager, CAMPersistenceController, CAMPowerController, CAMProtectionController, CAMRemoteShutterController, CAMReviewButton, CAMThumbnailGenerator, CAMTimelapseController, CAMViewfinderViewController, CUCaptureController, NSMutableDictionary, NSObject, NSString, PAImageConversionServiceClient, PAVideoConversionServiceClient;
 @protocol CAMCameraCaptureDelegate, CAMCameraConfigurationDelegate, CAMCameraViewControllerCameraSessionDelegate, CAMCameraViewControllerPresentationDelegate, CAMCreativeCameraDelegate, OS_dispatch_queue;
 
-@interface CAMCameraViewController : UIViewController <CAMCaptureResultDelegate, CAMPersistenceResultDelegate, CAMCVCStillImageResultCoordinatorDelegate, CAMIrisVideoControllerDelegate, CAMViewfinderReviewButtonSource, NSCoding, NSSecureCoding>
+@interface CAMCameraViewController : UIViewController <CAMCaptureResultDelegate, CAMPersistenceResultDelegate, CAMCVCStillImageResultCoordinatorDelegate, CAMViewfinderReviewButtonSource, NSCoding, NSSecureCoding>
 {
     BOOL _automaticallyManagesCameraSession;
+    PAImageConversionServiceClient *__imageConversionClient;
+    PAVideoConversionServiceClient *__videoConversionClient;
     id<CAMCameraCaptureDelegate> _captureDelegate;
     CUCaptureController *_captureController;
     CAMTimelapseController *_timelapseController;
@@ -32,7 +33,6 @@
     CAMProtectionController *_protectionController;
     CAMRemoteShutterController *_remoteShutterController;
     CAMNebulaDaemonProxyManager *_nebulaDaemonProxyManager;
-    CAMIrisVideoController *_irisVideoController;
     CAMReviewButton *__reviewButton;
     NSObject<OS_dispatch_queue> *__resultProcessingQueue;
     NSMutableDictionary *__resultQueueStillImageResultCoordinators;
@@ -42,10 +42,12 @@
     id<CAMCameraViewControllerCameraSessionDelegate> _cameraSessionDelegate;
 }
 
+@property (readonly, nonatomic) PAImageConversionServiceClient *_imageConversionClient; // @synthesize _imageConversionClient=__imageConversionClient;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_resultProcessingQueue; // @synthesize _resultProcessingQueue=__resultProcessingQueue;
 @property (readonly, nonatomic) NSMutableDictionary *_resultQueueStillImageResultCoordinators; // @synthesize _resultQueueStillImageResultCoordinators=__resultQueueStillImageResultCoordinators;
 @property (readonly, nonatomic) CAMThumbnailGenerator *_resultQueueThumbnailGenerator; // @synthesize _resultQueueThumbnailGenerator=__resultQueueThumbnailGenerator;
 @property (readonly, nonatomic) CAMReviewButton *_reviewButton; // @synthesize _reviewButton=__reviewButton;
+@property (readonly, nonatomic) PAVideoConversionServiceClient *_videoConversionClient; // @synthesize _videoConversionClient=__videoConversionClient;
 @property (nonatomic) BOOL automaticallyAdjustsApplicationIdleTimer;
 @property (nonatomic) BOOL automaticallyManagesCameraSession; // @synthesize automaticallyManagesCameraSession=_automaticallyManagesCameraSession;
 @property (readonly, nonatomic) CAMBurstController *burstController; // @synthesize burstController=_burstController;
@@ -65,7 +67,6 @@
 @property (nonatomic) long long flashMode;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, setter=setHDRMode:) long long hdrMode;
-@property (readonly, nonatomic) CAMIrisVideoController *irisVideoController; // @synthesize irisVideoController=_irisVideoController;
 @property (readonly, nonatomic) CAMKeepAliveController *keepAliveController; // @synthesize keepAliveController=_keepAliveController;
 @property (nonatomic) long long livePhotoMode;
 @property (readonly, nonatomic) CAMLocationController *locationController; // @synthesize locationController=_locationController;
@@ -75,6 +76,7 @@
 @property (nonatomic, getter=isPerformingTileTransition) BOOL performingTileTransition;
 @property (nonatomic) unsigned long long persistenceBehavior;
 @property (readonly, nonatomic) CAMPersistenceController *persistenceController; // @synthesize persistenceController=_persistenceController;
+@property (nonatomic) long long photoModeAspectRatioCrop;
 @property (readonly, nonatomic) CAMPowerController *powerController; // @synthesize powerController=_powerController;
 @property (weak, nonatomic) id<CAMCameraViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly, nonatomic, getter=isPreventingAdditionalCaptures) BOOL preventingAdditionalCaptures;
@@ -90,21 +92,25 @@
 + (BOOL)isEmulatingImagePicker;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_assetAdjustmentsFromFilters:(id)arg1 portraitMetadata:(id)arg2 properties:(id)arg3;
 - (id)_behaviorDefinedDestinationURLForRequest:(id)arg1 withLocalDestinationURL:(id)arg2 linkedDestinationURL:(id)arg3;
 - (unsigned long long)_capturePersistenceBehaviorForViewfinderPersistenceBehavior:(unsigned long long)arg1;
-- (id)_clientPropertiesForLivePhotoVideoURL:(id)arg1 duration:(CDStruct_1b6d18a9)arg2;
+- (id)_clientPropertiesForLivePhotoVideoURL:(id)arg1 duration:(CDStruct_1b6d18a9)arg2 error:(id)arg3;
 - (id)_clientPropertiesForStillImageWithURL:(id)arg1 captureMode:(long long)arg2 captureOrientation:(long long)arg3 previewSurface:(void *)arg4 previewOrientation:(long long)arg5 uniqueIdentifier:(id)arg6 savedToPhotoLibrary:(BOOL)arg7 captureResult:(id)arg8;
-- (id)_clientPropertiesForVideoURL:(id)arg1 duration:(CDStruct_1b6d18a9)arg2 size:(struct CGSize)arg3 creationDate:(id)arg4 captureOrientation:(long long)arg5 previewSurface:(void *)arg6 previewOrientation:(long long)arg7 adjustments:(id)arg8 uniqueIdentifier:(id)arg9 savedToPhotoLibrary:(BOOL)arg10;
+- (id)_clientPropertiesForVideoURL:(id)arg1 renderedURL:(id)arg2 duration:(CDStruct_1b6d18a9)arg3 size:(struct CGSize)arg4 creationDate:(id)arg5 captureOrientation:(long long)arg6 previewOrientation:(long long)arg7 adjustments:(id)arg8 uniqueIdentifier:(id)arg9 savedToPhotoLibrary:(BOOL)arg10;
 - (void)_commonCAMCameraViewControllerInitializationWithOverrides:(id)arg1 usingEmulationMode:(long long)arg2 initialLayoutStyle:(long long)arg3 privateOptions:(long long)arg4;
+- (id)_exportPropertiesForClientProperties:(id)arg1;
+- (void)_handleCTMVideoLocalPersistenceResult:(id)arg1 forCaptureResult:(id)arg2 fromRequest:(id)arg3;
+- (void)_handleCTMVideoLocalPersistenceResult:(id)arg1 forCaptureResult:(id)arg2 fromRequest:(id)arg3 size:(struct CGSize)arg4 videoURL:(id)arg5 renderedToURL:(id)arg6 renderedAdjustments:(id)arg7;
 - (void)_handleLivePhotoVideoLocalPersistenceResult:(id)arg1 forCaptureResult:(id)arg2 fromRequest:(id)arg3;
 - (void)_handleVideoLocalPersistenceResult:(id)arg1 forCaptureResult:(id)arg2 fromRequest:(id)arg3;
+- (id)_mediaConversionOptionsForAdjustments:(id)arg1 mediaType:(long long)arg2;
 - (void)_notifyCaptureDelegateOfCompletedCaptureOfLivePhoto:(id)arg1 withProperties:(id)arg2 error:(id)arg3;
 - (void)_notifyCaptureDelegateOfCompletedCaptureOfPhoto:(id)arg1 withProperties:(id)arg2 error:(id)arg3;
+- (void)_notifyCaptureDelegateOfCompletedCaptureOfVideo:(id)arg1 withProperties:(id)arg2 error:(id)arg3;
 - (id)_previewImageFromVideoURL:(id)arg1;
 - (id)_resultQueueSafeImageFromSurface:(void *)arg1 imageOrientation:(long long)arg2;
 - (void)_resultQueue_forceCompletionIfPossibleForRequest:(id)arg1;
-- (id)_resultQueue_getOrCreateStillImageResultCoordinatorForRequest:(id)arg1 allExpectedResultSpecifiers:(id)arg2 isExpectingPairedVideo:(BOOL)arg3 isDisablingMultipleCaptures:(BOOL)arg4;
+- (id)_resultQueue_getOrCreateStillImageResultCoordinatorForRequest:(id)arg1 captureTimeExpectedResultSpecifiers:(id)arg2 isExpectingPairedVideo:(BOOL)arg3 isDisablingMultipleCaptures:(BOOL)arg4 isGeneratingFilteredMedia:(BOOL)arg5;
 - (id)_resultQueue_getStillImageResultCoordinatorForRequest:(id)arg1;
 - (void)_resultQueue_removeStillImageResultCoordinatorForRequest:(id)arg1;
 - (unsigned long long)_viewfinderPersistenceBehaviorForCapturePersistenceBehavior:(unsigned long long)arg1;
@@ -123,8 +129,6 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithOverrides:(id)arg1 initialLayoutStyle:(long long)arg2 privateOptions:(long long)arg3;
 - (id)initWithOverrides:(id)arg1 usingEmulationMode:(long long)arg2;
-- (void)irisVideoController:(id)arg1 didPersistVideoCaptureResult:(id)arg2 forCaptureResult:(id)arg3 request:(id)arg4;
-- (double)irisVideoController:(id)arg1 willPersistVideoCaptureResult:(id)arg2 forRequest:(id)arg3;
 - (void)loadView;
 - (void)persistenceController:(id)arg1 didCompleteAllLocalPersistenceForRequest:(id)arg2;
 - (void)persistenceController:(id)arg1 didGenerateStillImageLocalPersistenceResult:(id)arg2 forCaptureResult:(id)arg3 fromRequest:(id)arg4;

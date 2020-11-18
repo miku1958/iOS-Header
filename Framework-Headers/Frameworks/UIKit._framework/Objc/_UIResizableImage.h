@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)supportsSecureCoding;
-- (void)_configureImage:(id)arg1;
+- (void)_configureImage:(id)arg1 assumePreconfigured:(BOOL)arg2;
 - (struct CGRect)_contentInsetsInPixels:(struct UIEdgeInsets)arg1 emptySizeFallback:(CDUnknownBlockType)arg2;
 - (struct CGRect)_contentRectInPixels;
 - (struct CGRect)_contentStretchInPixels;

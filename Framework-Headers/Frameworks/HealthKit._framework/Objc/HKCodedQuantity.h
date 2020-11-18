@@ -39,6 +39,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRawValue:(id)arg1 comparatorCoding:(id)arg2 unitCoding:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)quantityRepresentationWithUCUMConverter:(id)arg1 error:(id *)arg2;
 
 @end
 

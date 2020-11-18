@@ -6,17 +6,17 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NPKPassSyncChange, NPKPassSyncEngine, NPKPassSyncState, NPKPassSyncStateItem, NSData, NSString, NSUUID;
+@class NPKPassSyncChange, NPKPassSyncEngine, NPKPassSyncState, NPKPassSyncStateItem, NSData, NSDictionary, NSString, NSUUID;
 
 @protocol NPKPassSyncEngineDelegate <NSObject>
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 requestsAddPassData:(NSData *)arg2 forSyncStateItem:(NPKPassSyncStateItem *)arg3 completion:(void (^)(BOOL))arg4;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 requestsRemovePassWithUniqueID:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
-- (void)passSyncEngine:(NPKPassSyncEngine *)arg1 requestsUpdatePassData:(NSData *)arg2 forSyncStateItem:(NPKPassSyncStateItem *)arg3 completion:(void (^)(BOOL))arg4;
+- (void)passSyncEngine:(NPKPassSyncEngine *)arg1 requestsUpdatePassData:(NSData *)arg2 forSyncStateItem:(NPKPassSyncStateItem *)arg3 baseManifestHashForPartialUpdate:(NSData *)arg4 remoteAssetsForPartialUpdate:(NSDictionary *)arg5 completion:(void (^)(BOOL, BOOL))arg6;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendProposedReconciledState:(NPKPassSyncState *)arg2;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendReconciledStateAcceptedWithHash:(NSData *)arg2;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendReconciledStateUnrecognizedWithHash:(NSData *)arg2 currentPassSyncState:(NPKPassSyncState *)arg3;
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendStateChange:(NPKPassSyncChange *)arg2;
-- (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendStateChangeProcessedWithUUID:(NSUUID *)arg2 changeAccepted:(BOOL)arg3;
+- (void)passSyncEngine:(NPKPassSyncEngine *)arg1 sendStateChangeProcessedWithUUID:(NSUUID *)arg2 changeAccepted:(BOOL)arg3 fullPassRequired:(BOOL)arg4;
 
 @optional
 - (void)passSyncEngine:(NPKPassSyncEngine *)arg1 finishedProcessingChange:(NPKPassSyncChange *)arg2;

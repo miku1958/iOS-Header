@@ -8,30 +8,81 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class GEOLatLng, GEOStyleAttributes, GEOTimezone, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTransitInfoSnippet : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_artworks;
     NSMutableArray *_labels;
     NSString *_searchDisplayName;
+    GEOLatLng *_stopLocationForTrip;
+    GEOStyleAttributes *_styleAttributesForTrip;
     NSMutableArray *_systemNames;
+    GEOTimezone *_timezone;
+    unsigned long long _transitId;
+    NSString *_transitName;
+    struct {
+        unsigned int has_transitId:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_artworks:1;
+        unsigned int read_labels:1;
+        unsigned int read_searchDisplayName:1;
+        unsigned int read_stopLocationForTrip:1;
+        unsigned int read_styleAttributesForTrip:1;
+        unsigned int read_systemNames:1;
+        unsigned int read_timezone:1;
+        unsigned int read_transitName:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_artworks:1;
+        unsigned int wrote_labels:1;
+        unsigned int wrote_searchDisplayName:1;
+        unsigned int wrote_stopLocationForTrip:1;
+        unsigned int wrote_styleAttributesForTrip:1;
+        unsigned int wrote_systemNames:1;
+        unsigned int wrote_timezone:1;
+        unsigned int wrote_transitId:1;
+        unsigned int wrote_transitName:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *artworks; // @synthesize artworks=_artworks;
+@property (strong, nonatomic) NSMutableArray *artworks;
 @property (readonly, nonatomic) BOOL hasSearchDisplayName;
-@property (strong, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
-@property (strong, nonatomic) NSString *searchDisplayName; // @synthesize searchDisplayName=_searchDisplayName;
-@property (strong, nonatomic) NSMutableArray *systemNames; // @synthesize systemNames=_systemNames;
+@property (readonly, nonatomic) BOOL hasStopLocationForTrip;
+@property (readonly, nonatomic) BOOL hasStyleAttributesForTrip;
+@property (readonly, nonatomic) BOOL hasTimezone;
+@property (nonatomic) BOOL hasTransitId;
+@property (readonly, nonatomic) BOOL hasTransitName;
+@property (strong, nonatomic) NSMutableArray *labels;
+@property (strong, nonatomic) NSString *searchDisplayName;
+@property (strong, nonatomic) GEOLatLng *stopLocationForTrip;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributesForTrip;
+@property (strong, nonatomic) NSMutableArray *systemNames;
+@property (strong, nonatomic) GEOTimezone *timezone;
+@property (nonatomic) unsigned long long transitId;
+@property (strong, nonatomic) NSString *transitName;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)artworkType;
++ (BOOL)isValid:(id)arg1;
 + (Class)labelType;
 + (Class)systemNameType;
 + (id)transitInfoSnippetForPlaceData:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsArtwork:(id)arg1;
+- (void)_addNoFlagsLabel:(id)arg1;
+- (void)_addNoFlagsSystemName:(id)arg1;
+- (void)_readArtworks;
+- (void)_readLabels;
+- (void)_readSearchDisplayName;
+- (void)_readStopLocationForTrip;
+- (void)_readStyleAttributesForTrip;
+- (void)_readSystemNames;
+- (void)_readTimezone;
+- (void)_readTransitName;
 - (void)addArtwork:(id)arg1;
 - (void)addLabel:(id)arg1;
 - (void)addSystemName:(id)arg1;
@@ -40,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)clearArtworks;
 - (void)clearLabels;
 - (void)clearSystemNames;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -49,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (id)labelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)labelsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)systemNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)systemNamesCount;

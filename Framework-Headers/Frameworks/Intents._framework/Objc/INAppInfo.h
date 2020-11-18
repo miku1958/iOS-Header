@@ -18,6 +18,7 @@
     NSSet *_supportedActionsByExtensions;
     NSSet *_actionsRestrictedWhileLocked;
     NSSet *_actionsRestrictedWhileProtectedDataUnavailable;
+    NSSet *_supportedMediaCategories;
     NSSet *_definedIntents;
 }
 
@@ -29,9 +30,12 @@
 @property (copy, nonatomic) NSSet *definedIntents; // @synthesize definedIntents=_definedIntents;
 @property (copy, nonatomic) NSSet *supportedActions; // @synthesize supportedActions=_supportedActions;
 @property (copy, nonatomic) NSSet *supportedActionsByExtensions; // @synthesize supportedActionsByExtensions=_supportedActionsByExtensions;
+@property (copy, nonatomic) NSSet *supportedMediaCategories; // @synthesize supportedMediaCategories=_supportedMediaCategories;
 
++ (id)_appInfoWithAppProxy:(id)arg1 plugInKitPlugins:(id)arg2 userActivityTypes:(id)arg3;
 + (id)appInfoWithAppProxy:(id)arg1;
 + (id)appInfoWithData:(id)arg1 error:(id *)arg2;
++ (id)appInfoWithIntent:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

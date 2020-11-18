@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CKAccountOverrideInfo, NSString;
+#import <CloudKit/NSSecureCoding-Protocol.h>
 
-@interface CKContainerOptions : NSObject
+@class CKAccountOverrideInfo, CKUploadRequestConfiguration, NSString;
+
+@interface CKContainerOptions : NSObject <NSSecureCoding>
 {
     BOOL _captureResponseHTTPHeaders;
     BOOL _useZoneWidePCS;
     BOOL _wantsSiloedContext;
     BOOL _returnPCSMetadata;
-    BOOL _useMMCSEncryptionV2;
     BOOL _bypassPCSEncryption;
     BOOL _enforceNamedOperationGroups;
     BOOL _forceEnableReadOnlyManatee;
     CKAccountOverrideInfo *_accountInfoOverride;
+    unsigned long long _mmcsEncryptionSupport;
     NSString *_encryptionServiceName;
+    CKUploadRequestConfiguration *_uploadRequestConfiguration;
+    NSString *_personaIdentifier;
 }
 
 @property (copy, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
@@ -28,12 +32,19 @@
 @property (strong, nonatomic) NSString *encryptionServiceName; // @synthesize encryptionServiceName=_encryptionServiceName;
 @property (nonatomic) BOOL enforceNamedOperationGroups; // @synthesize enforceNamedOperationGroups=_enforceNamedOperationGroups;
 @property (nonatomic) BOOL forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
+@property (nonatomic) unsigned long long mmcsEncryptionSupport; // @synthesize mmcsEncryptionSupport=_mmcsEncryptionSupport;
+@property (strong, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
 @property (nonatomic) BOOL returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
-@property (nonatomic) BOOL useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
+@property (strong, nonatomic) CKUploadRequestConfiguration *uploadRequestConfiguration; // @synthesize uploadRequestConfiguration=_uploadRequestConfiguration;
 @property (nonatomic) BOOL useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;
 @property (nonatomic) BOOL wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (void)setUseMMCSEncryptionV2:(BOOL)arg1;
 
 @end
 

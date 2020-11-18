@@ -19,13 +19,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)isAbsintheV4Enabled;
-+ (BOOL)isBAACertDisabled;
-+ (BOOL)isDebugPiscoLoggingEnabled;
-+ (BOOL)isDeviceScoringEnabled;
 + (BOOL)isEngramEnabled;
 + (BOOL)isLiveDeliveryWarmUpEnabled;
-+ (BOOL)isPiscoDisabled;
 + (long long)phoneNumberValidationMode;
 + (id)phoneNumberValidationPreflightTestData;
 + (void)setEnableEngram:(BOOL)arg1;

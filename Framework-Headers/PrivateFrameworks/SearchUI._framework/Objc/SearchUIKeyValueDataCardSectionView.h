@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong) TLKKeyValueView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKKeyValueView *contentView; // @dynamic contentView;
 
 + (int)separatorStyleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;

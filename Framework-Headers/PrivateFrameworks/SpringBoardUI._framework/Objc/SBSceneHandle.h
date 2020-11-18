@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoardUI/BSDescriptionProviding-Protocol.h>
-#import <SpringBoardUI/FBSceneHostManagerObserver-Protocol.h>
 #import <SpringBoardUI/FBSceneMonitorDelegate-Protocol.h>
+#import <SpringBoardUI/FBSceneObserver-Protocol.h>
 
 @class FBSDisplayIdentity, FBSSceneDefinition, FBScene, FBSceneMonitor, NSHashTable, NSMapTable, NSString;
 
-@interface SBSceneHandle : NSObject <FBSceneMonitorDelegate, FBSceneHostManagerObserver, BSDescriptionProviding>
+@interface SBSceneHandle : NSObject <FBSceneMonitorDelegate, FBSceneObserver, BSDescriptionProviding>
 {
     FBSSceneDefinition *_definition;
     FBScene *_scene;
@@ -44,7 +44,7 @@
 - (void)_didCreateScene:(id)arg1;
 - (void)_didDestroyScene:(id)arg1;
 - (void)_didUpdateClientSettingsWithDiff:(id)arg1 transitionContext:(id)arg2;
-- (void)_didUpdateHostContentState:(long long)arg1;
+- (void)_didUpdateContentState:(long long)arg1;
 - (void)_didUpdatePairingStatusForExternalSceneIdentifiers:(id)arg1;
 - (void)_didUpdateSettingsWithDiff:(id)arg1 previousSettings:(id)arg2;
 - (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
@@ -53,16 +53,16 @@
 - (id)_initWithScene:(id)arg1 displayIdentity:(id)arg2;
 - (void)_noteSceneCreated:(id)arg1;
 - (void)_noteSceneDestroyed:(id)arg1;
-- (void)_setContentState:(long long)arg1;
 - (void)_setScene:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isPairedWithExternalSceneWithIdentifier:(id)arg1;
 - (void)removeObserver:(id)arg1;
-- (void)sceneHostManagerContentStateDidChange:(id)arg1;
+- (void)sceneContentStateDidChange:(id)arg1;
 - (void)sceneMonitor:(id)arg1 pairingStatusDidChangeForExternalSceneIDs:(id)arg2;
 - (void)sceneMonitor:(id)arg1 sceneClientSettingsDidChangeWithDiff:(id)arg2 transitionContext:(id)arg3;
 - (void)sceneMonitor:(id)arg1 sceneSettingsDidChangeWithDiff:(id)arg2 previousSettings:(id)arg3;

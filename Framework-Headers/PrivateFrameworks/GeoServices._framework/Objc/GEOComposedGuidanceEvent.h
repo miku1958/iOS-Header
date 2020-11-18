@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEOComposedRouteStep, GEOGuidanceEvent, GEOJunction, GEONameInfo, NSArray, NSMutableArray, NSString, NSUUID;
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
-@interface GEOComposedGuidanceEvent : NSObject
+@class GEOComposedRoute, GEOComposedRouteStep, GEOGuidanceEvent, GEOJunction, GEOJunctionView, GEONameInfo, NSArray, NSMutableArray, NSString, NSUUID;
+
+@interface GEOComposedGuidanceEvent : NSObject <NSSecureCoding>
 {
     NSUUID *_uniqueID;
     unsigned long long _creationOrder;
@@ -18,7 +20,6 @@
     unsigned long long _stepIndex;
     unsigned long long _enrouteNoticeIndex;
     unsigned long long _sourceIndex;
-    BOOL _clampToStep;
     NSMutableArray *_lanes;
     double _startValidDistance;
     double _endValidDistance;
@@ -36,10 +37,12 @@
 @property (readonly, nonatomic) NSString *exclusiveSetIdentifier;
 @property (strong, nonatomic) GEOGuidanceEvent *guidanceEvent; // @synthesize guidanceEvent=_guidanceEvent;
 @property (readonly, nonatomic) BOOL hasHaptics;
+@property (readonly, nonatomic) BOOL hasJunctionView;
 @property (readonly, nonatomic) BOOL hasSignGuidance;
 @property (readonly, nonatomic) BOOL hasSpokenGuidance;
 @property (readonly, nonatomic) BOOL isLaneGuidanceForManeuver;
 @property (readonly, nonatomic) BOOL isSticky;
+@property (readonly, nonatomic) GEOJunctionView *junctionView;
 @property (readonly, nonatomic) NSArray *laneInstructions;
 @property (readonly, nonatomic) NSArray *laneTitles;
 @property (readonly, nonatomic) NSArray *lanes;
@@ -58,9 +61,10 @@
 @property (readonly, nonatomic) GEOComposedRouteStep *step;
 @property (readonly, nonatomic) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_MapsCarPlay_isEqual:(id)arg1;
 - (void)_findSource;
+- (unsigned long long)_junctionViewIDForData:(id)arg1;
 - (void)_lazyInit;
 - (BOOL)_needsLazyInit;
 - (long long)compare:(id)arg1;
@@ -68,9 +72,13 @@
 - (long long)comparePriority:(id)arg1;
 - (id)description;
 - (double)desiredTimeGapToEvent:(id)arg1 chained:(BOOL)arg2;
+- (void)encodeWithCoder:(id)arg1;
 - (double)endDistanceForSpeed:(double)arg1;
-- (id)initWithGuidanceEvent:(id)arg1 stepIndex:(unsigned long long)arg2 composedRoute:(id)arg3 clampToStep:(BOOL)arg4;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithGuidanceEvent:(id)arg1 stepIndex:(unsigned long long)arg2 composedRoute:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidForSpeed:(double)arg1;
+- (void)setRoute:(id)arg1;
 - (double)startDistanceForSpeed:(double)arg1;
 - (double)triggerDistanceForSpeed:(double)arg1 andDuration:(CDUnknownBlockType)arg2;
 

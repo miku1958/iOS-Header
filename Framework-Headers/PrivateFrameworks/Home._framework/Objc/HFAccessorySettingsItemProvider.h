@@ -6,30 +6,32 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HMAccessorySettingGroup, NATreeNode, NSMutableDictionary, NSMutableSet;
-@protocol HFMediaProfileContainer;
+@class HMSettingGroup, NATreeNode, NSDictionary, NSMutableDictionary, NSMutableSet;
+@protocol HFHomeKitSettingsVendor;
 
 @interface HFAccessorySettingsItemProvider : HFItemProvider
 {
-    HMAccessorySettingGroup *_settingGroup;
+    HMSettingGroup *_settingGroup;
     CDUnknownBlockType _filter;
-    id<HFMediaProfileContainer> _mediaProfileContainer;
-    NSMutableDictionary *_tupleCache;
+    id<HFHomeKitSettingsVendor> _homeKitSettingsVendor;
+    NSDictionary *_usageOptions;
+    NSMutableDictionary *_settingToItemCache;
     NSMutableSet *_settingItems;
     NATreeNode *_parentNode;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
-@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
+@property (readonly, nonatomic) id<HFHomeKitSettingsVendor> homeKitSettingsVendor; // @synthesize homeKitSettingsVendor=_homeKitSettingsVendor;
 @property (readonly, nonatomic) NATreeNode *parentNode; // @synthesize parentNode=_parentNode;
-@property (strong, nonatomic) HMAccessorySettingGroup *settingGroup; // @synthesize settingGroup=_settingGroup;
+@property (strong, nonatomic) HMSettingGroup *settingGroup; // @synthesize settingGroup=_settingGroup;
 @property (strong, nonatomic) NSMutableSet *settingItems; // @synthesize settingItems=_settingItems;
-@property (strong, nonatomic) NSMutableDictionary *tupleCache; // @synthesize tupleCache=_tupleCache;
+@property (strong, nonatomic) NSMutableDictionary *settingToItemCache; // @synthesize settingToItemCache=_settingToItemCache;
+@property (strong, nonatomic) NSDictionary *usageOptions; // @synthesize usageOptions=_usageOptions;
 
-+ (id)buildSettingsObjectForMediaProfileContainer:(id)arg1 settingGroup:(id)arg2 underNode:(id)arg3 cache:(id)arg4;
++ (id)buildItemTuplesForHomeKitSettings:(id)arg1 usageOptions:(id)arg2 settingGroup:(id)arg3 underNode:(id)arg4 cache:(id)arg5;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithMediaProfileContainer:(id)arg1 settingGroup:(id)arg2;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 settingGroup:(id)arg2 usageOptions:(id)arg3;
 - (id)invalidationReasons;
 - (id)items;
 - (id)reloadItems;

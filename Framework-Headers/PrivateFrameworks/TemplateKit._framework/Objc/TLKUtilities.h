@@ -10,13 +10,18 @@
 {
 }
 
-+ (id)buttonColorForStyle:(unsigned long long)arg1;
 + (BOOL)deviceSupportsRotation;
++ (void)dispatchAsyncIfNecessary:(CDUnknownBlockType)arg1;
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
 + (double)onePixelForCurrentScreenResolution;
++ (void)performAnimatableChanges:(CDUnknownBlockType)arg1;
++ (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
++ (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
++ (BOOL)recursivelyCheckIfSubviewTapped:(id)arg1 forTappedView:(id)arg2;
 + (struct UIEdgeInsets)standardInsets;
 + (double)standardTableCellContentInset;
-+ (id)vibrantButtonColorForStyle:(unsigned long long)arg1;
++ (id)testImageWithSize:(struct CGSize)arg1;
++ (id)testImageWithSize:(struct CGSize)arg1 text:(id)arg2;
 
 @end
 

@@ -6,32 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSUUID;
+#import <MapsSupport/MSPCloudReplica-Protocol.h>
 
-@interface MSPReplica : NSObject
+@class NSDictionary, NSString, NSUUID;
+
+@interface MSPReplica : NSObject <MSPCloudReplica>
 {
     NSUUID *_clientIdentifier;
     NSDictionary *_records;
 }
 
-@property (readonly, nonatomic) NSUUID *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDictionary *records; // @synthesize records=_records;
+@property (readonly) Class superclass;
 
 + (void)_switchForEdit:(id)arg1 caseIsInsertRecord:(CDUnknownBlockType)arg2 caseIsEditContents:(CDUnknownBlockType)arg3;
 + (id)allowedEditClasses;
 - (void).cxx_destruct;
-- (id)_additionalEditsToUpdateContentsOfRecord:(id)arg1 identifier:(id)arg2;
 - (BOOL)_containerSerializationRequiresTrackingPositionEdits;
 - (void)_mergeSelfRecord:(id)arg1 withRecordFromOtherReplica:(id)arg2 identifier:(id)arg3 options:(id)arg4 edits:(id)arg5;
 - (id)_replicaByApplyingContainerEdits:(id)arg1 toOldContents:(id)arg2 forNewContents:(id)arg3 recordCreationHandler:(CDUnknownBlockType)arg4 replicaEditApplier:(CDUnknownBlockType)arg5 error:(out id *)arg6;
-- (id)description;
+- (id)changesMergingCloudChanges:(id)arg1 withReplica:(id)arg2 lastSyncDate:(id)arg3;
 - (id)editsToInsertOrUpdateRecords:(id)arg1;
 - (id)editsToMergeWithReplica:(id)arg1;
 - (id)editsToMergeWithReplica:(id)arg1 mergeOptions:(id)arg2;
 - (id)editsToRemoveRecordsWithIdentifiers:(id)arg1;
 - (id)init;
 - (id)initWithRecords:(id)arg1 clientIdentifier:(id)arg2;
+- (id)mergeOptionsWithLastSyncDate:(id)arg1;
 - (id)replicaByApplyingContainerEdits:(id)arg1 toOldContents:(id)arg2 forNewContents:(id)arg3 recordCreationHandler:(CDUnknownBlockType)arg4 replicaEditApplier:(CDUnknownBlockType)arg5 error:(out id *)arg6;
+- (Class)replicaRecordClass;
 - (id)tombstoneRecordForRecord:(id)arg1;
 
 @end

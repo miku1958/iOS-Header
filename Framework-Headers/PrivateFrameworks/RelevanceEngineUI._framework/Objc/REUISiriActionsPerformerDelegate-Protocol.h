@@ -10,9 +10,11 @@
 
 @protocol REUISiriActionsPerformerDelegate <NSObject>
 - (void)siriActionsPerformer:(REUISiriActionsPerformer *)arg1 didFailWithError:(NSError *)arg2;
+- (BOOL)siriActionsPerformer:(REUISiriActionsPerformer *)arg1 wantsToDismissViewController:(UIViewController *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
 - (BOOL)siriActionsPerformer:(REUISiriActionsPerformer *)arg1 wantsToPresentViewController:(UIViewController *)arg2;
 - (void)siriActionsPerformerDidSucceed:(REUISiriActionsPerformer *)arg1;
 - (UIImage *)siriActionsPerformerWantsAlertBackgroundImage:(REUISiriActionsPerformer *)arg1;
 - (UIView *)siriActionsPerformerWantsBackgroundViewToBlur:(REUISiriActionsPerformer *)arg1;
+- (void)siriActionsPerformerWantsToSuppressDismissal:(REUISiriActionsPerformer *)arg1;
 @end
 

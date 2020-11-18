@@ -29,6 +29,7 @@
 - (id)accessibilityLabel;
 - (void)determineNumberOfLines;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)preferredContentSizeCategoryDidChange;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSubtitle:(id)arg1 animated:(BOOL)arg2;

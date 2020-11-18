@@ -29,9 +29,9 @@
 @property (readonly, nonatomic) double curvedAngle; // @synthesize curvedAngle=_curvedAngle;
 @property (readonly, nonatomic) struct CGPoint curvedCenter; // @synthesize curvedCenter=_curvedCenter;
 @property (readonly, nonatomic) BOOL curvedInterior; // @synthesize curvedInterior=_curvedInterior;
-@property (strong, nonatomic) UIImage *curvedMask;
 @property (readonly, nonatomic) double curvedRadius; // @synthesize curvedRadius=_curvedRadius;
 @property (weak, nonatomic) id<NTKComplicationPickerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (strong, nonatomic) UIImage *maskImage;
 @property (readonly, nonatomic) NTKComplication *selectedComplication;
 @property (readonly, nonatomic) NTKComplicationDisplayWrapperView *selectedComplicationDisplay;
 @property (nonatomic) long long style; // @synthesize style=_style;
@@ -48,6 +48,7 @@
 - (id)complicationAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithAllowedComplications:(id)arg1 selectedComplication:(id)arg2 complicationSlot:(id)arg3;
+- (void)layoutSubviews;
 - (void)reloadIfNeeded;
 - (void)setCurvedRadius:(double)arg1 curvedAngle:(double)arg2 curvedCenter:(struct CGPoint)arg3 curvedInterior:(BOOL)arg4;
 - (void)setNeedsReload;

@@ -15,14 +15,17 @@
 }
 
 + (id)sharedFontMetricCache;
+- (void).cxx_destruct;
 - (void)_didReceivePreferredFontChangedNotification:(id)arg1;
 - (void)_invalidateCache;
 - (double)cachedFloat:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (id)cachedFont:(CDUnknownBlockType)arg1 forKey:(id)arg2;
+- (id)cachedImage:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (id)cachedPreferredFontForStyle:(id)arg1;
+- (id)cachedPreferredFontForStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
 - (double)cachedScaledFloatWithValue:(double)arg1 fontStyle:(id)arg2;
+- (double)cachedScaledFloatWithValue:(double)arg1 fontStyle:(id)arg2 maximumContentSizeCategory:(id)arg3;
 - (double)cachedScaledFloatWithValue:(double)arg1 forKey:(id)arg2;
-- (void)dealloc;
 - (BOOL)ensureCacheIsValid;
 - (id)init;
 - (id)metricCacheDictionary;

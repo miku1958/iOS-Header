@@ -26,12 +26,12 @@
 @property (copy, nonatomic) NSString *warningLabelText;
 
 + (id)_explanationLabelDefaultAttributes;
+- (void).cxx_destruct;
 - (void)_insert:(BOOL)arg1 subview:(id)arg2;
 - (id)_secureLabel;
 - (void)_setText:(id)arg1 forLabel:(id)arg2;
 - (id)_signedLabel;
 - (id)_warningLabel;
-- (void)dealloc;
 - (double)heightOfBottomMargin;
 - (double)heightThatFitsButtons;
 - (double)heightThatFitsMainLabel:(struct CGSize)arg1;

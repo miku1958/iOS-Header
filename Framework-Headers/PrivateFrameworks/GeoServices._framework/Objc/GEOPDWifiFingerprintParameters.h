@@ -14,22 +14,25 @@ __attribute__((visibility("hidden")))
 @interface GEOPDWifiFingerprintParameters : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    unsigned int _maxLabels;
     NSMutableArray *_measurements;
+    unsigned int _maxLabels;
     struct {
-        unsigned int maxLabels:1;
-    } _has;
+        unsigned int has_maxLabels:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMaxLabels;
-@property (nonatomic) unsigned int maxLabels; // @synthesize maxLabels=_maxLabels;
-@property (strong, nonatomic) NSMutableArray *measurements; // @synthesize measurements=_measurements;
+@property (nonatomic) unsigned int maxLabels;
+@property (strong, nonatomic) NSMutableArray *measurements;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)measurementType;
 - (void).cxx_destruct;
 - (void)addMeasurement:(id)arg1;
 - (void)clearMeasurements;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)measurementAtIndex:(unsigned long long)arg1;
 - (unsigned long long)measurementsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

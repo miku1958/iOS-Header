@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDConceptIndexManagerObserver-Protocol.h>
 #import <HealthDaemon/HDDeepBreathingSessionServerDelegate-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthStoreServerInterface-Protocol.h>
@@ -13,11 +14,12 @@
 #import <HealthDaemon/HDTaskServerDelegate-Protocol.h>
 #import <HealthDaemon/HDUnitPreferencesManagerObserver-Protocol.h>
 
-@class HDAuthorizationServer, HDCloudSyncServer, HDDaemon, HDDataCollectionManager, HDHealthServicesServer, HDMedicalIDServer, HDNanoSyncServer, HDNotificationServer, HDProfile, HDProfileServer, HDQueryControlServer, HDStaticSyncServer, HDUtilityServer, HDWorkoutServer, HDXPCClient, HKServerConfiguration, NSMutableDictionary, NSMutableSet, NSString;
+@class HDAuthorizationServer, HDCloudSyncServer, HDDaemon, HDHealthServicesServer, HDHealthStoreClient, HDMedicalIDServer, HDNanoSyncServer, HDNotificationServer, HDProfile, HDProfileServer, HDQueryControlServer, HDStaticSyncServer, HDUtilityServer, HDWorkoutServer, HKHealthStoreConfiguration, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HDHealthStoreServer : NSObject <HDDiagnosticObject, HDUnitPreferencesManagerObserver, HDDeepBreathingSessionServerDelegate, HDSampleSaving, HDTaskServerDelegate, HDHealthStoreServerInterface>
+@interface HDHealthStoreServer : NSObject <HDDiagnosticObject, HDUnitPreferencesManagerObserver, HDDeepBreathingSessionServerDelegate, HDSampleSaving, HDConceptIndexManagerObserver, HDTaskServerDelegate, HDHealthStoreServerInterface>
 {
+    NSObject<OS_dispatch_queue> *_connectionQueue;
     NSMutableDictionary *_deepBreathingSessionServersByUUID;
     NSObject<OS_dispatch_source> *_clientTransactionTimer;
     NSString *_clientSourceVersion;
@@ -25,13 +27,10 @@
     NSMutableDictionary *_taskServerObserversByUUID;
     HDDaemon *_daemon;
     HDProfile *_profile;
-    HKServerConfiguration *_configuration;
-    HDXPCClient *_client;
+    HKHealthStoreConfiguration *_configuration;
+    HDHealthStoreClient *_client;
     NSObject<OS_dispatch_queue> *_queue;
     HDAuthorizationServer *_authorizationServer;
-    HDDataCollectionManager *_dataCollectMgr;
-    NSString *_serverID;
-    NSString *_clientDebuggingIdentifier;
     NSMutableSet *_subservers;
     HDCloudSyncServer *_cloudSyncServer;
     HDHealthServicesServer *_healthServicesServer;
@@ -45,13 +44,12 @@
     HDWorkoutServer *_workoutServer;
 }
 
-@property (strong, nonatomic) HDAuthorizationServer *authorizationServer; // @synthesize authorizationServer=_authorizationServer;
-@property (strong, nonatomic) HDXPCClient *client; // @synthesize client=_client;
-@property (strong, nonatomic) NSString *clientDebuggingIdentifier; // @synthesize clientDebuggingIdentifier=_clientDebuggingIdentifier;
+@property (readonly, nonatomic) HDAuthorizationServer *authorizationServer; // @synthesize authorizationServer=_authorizationServer;
+@property (readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
+@property (readonly, copy, nonatomic) NSString *clientDebuggingIdentifier;
 @property (strong, nonatomic) HDCloudSyncServer *cloudSyncServer; // @synthesize cloudSyncServer=_cloudSyncServer;
-@property (readonly, nonatomic) HKServerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, copy, nonatomic) HKHealthStoreConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
-@property (strong, nonatomic) HDDataCollectionManager *dataCollectMgr; // @synthesize dataCollectMgr=_dataCollectMgr;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -63,7 +61,6 @@
 @property (strong, nonatomic) HDProfileServer *profileServer; // @synthesize profileServer=_profileServer;
 @property (strong, nonatomic) HDQueryControlServer *queryControlServer; // @synthesize queryControlServer=_queryControlServer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) NSString *serverID; // @synthesize serverID=_serverID;
 @property (strong, nonatomic) HDStaticSyncServer *staticSyncServer; // @synthesize staticSyncServer=_staticSyncServer;
 @property (strong, nonatomic) NSMutableSet *subservers; // @synthesize subservers=_subservers;
 @property (readonly) Class superclass;
@@ -78,6 +75,7 @@
 - (id)_clientRemoteObjectProxy;
 - (id)_clientSourceVersion;
 - (void)_fetchSubserverWithRequiredEntitlement:(id)arg1 subserverHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_getHealthRecordsPlugin;
 - (void)_holdActiveClientTransactionWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_insertedObjects:(id)arg1 containsQuantitySampleWithType:(id)arg2;
 - (id)_objectsToInsertWithObjects:(id)arg1 error:(id *)arg2;
@@ -102,10 +100,12 @@
 - (void)_serverActivityChanged;
 - (void)addObserver:(id)arg1 forTaskServerUUID:(id)arg2;
 - (id)clientSourceWithError:(id *)arg1;
+- (void)conceptIndexManagerDidBecomeQuiescent:(id)arg1 samplesProcessedCount:(long long)arg2;
+- (void)conceptIndexManagerDidChangeExecutionState:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)deepBreathingServerDidDeactivate:(id)arg1;
 - (id)diagnosticDescription;
-- (id)initWithClient:(id)arg1 profile:(id)arg2 queue:(id)arg3 configuration:(id)arg4;
+- (id)initWithClient:(id)arg1 profile:(id)arg2 configuration:(id)arg3 connectionQueue:(id)arg4;
 - (void)invalidate;
 - (CDUnknownBlockType)objectAuthorizationPromptHandler;
 - (void)performIfAuthorizedToDeleteObjectTypes:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
@@ -114,7 +114,7 @@
 - (void)remote_allAuthorizationRecordsForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_allAuthorizationRecordsForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_allObjectAuthorizationRecordsForSampleWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_allSourcesRequestingTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remote_allSourcesRequestingAuthorizationForTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_allSourcesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_authorizationStatusForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_badgeHealthAppForEmergencyContactsConsolidationWithCompletion:(CDUnknownBlockType)arg1;
@@ -123,8 +123,9 @@
 - (void)remote_clientWillSuspendWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_closeTransactionWithDataType:(id)arg1 anchor:(id)arg2 ackTime:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remote_containerAppExtensionEntitlementsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_createTaskServerForIdentifier:(id)arg1 taskUUID:(id)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)remote_createTaskServerEndpointForIdentifier:(id)arg1 pluginURL:(id)arg2 taskUUID:(id)arg3 configuration:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)remote_deleteAllSamplesWithTypes:(id)arg1 sourceBundleIdentifier:(id)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)remote_deleteClientSourceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_deleteDataObjects:(id)arg1 options:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)remote_deleteDataObjectsOfType:(id)arg1 matchingFilter:(id)arg2 options:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)remote_deleteObjectsWithUUIDs:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
@@ -137,7 +138,6 @@
 - (void)remote_fetchPluginServiceEndpointWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchServerURLForAssetType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_fetchUnitPreferencesForTypes:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)remote_getDefaultForKey:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)remote_getHealthDirectorySizeInBytesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_getHealthLiteValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_getIsFeatureSetAvailable:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -159,7 +159,6 @@
 - (void)remote_proxyForStaticSyncServerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_proxyForUtilityServerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_proxyForWorkoutServerWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_removeDefaultForKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)remote_requestAuthorizationToShareTypes:(id)arg1 readTypes:(id)arg2 shouldPrompt:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remote_resetAuthorizationStatusForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_resetObjectAuthorizationStatusForBundleIdentifier:(id)arg1 objectType:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -171,17 +170,14 @@
 - (void)remote_setBackgroundDeliveryFrequency:(long long)arg1 forDataType:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)remote_setCharacteristic:(id)arg1 forDataType:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)remote_setDaemonPreferenceValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_setDefaultValue:(id)arg1 forKey:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)remote_setHealthLiteValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setObjectAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setPreferredUnit:(id)arg1 forType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setRequestedAuthorizationForBundleIdentifier:(id)arg1 shareTypes:(id)arg2 readTypes:(id)arg3 prompt:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)remote_setServerURL:(id)arg1 forAssetType:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_splitTotalCalories:(double)arg1 timeInterval:(double)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)remote_submitMetricsIgnoringAnchor:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_suppressActivityAlertsForIdentifier:(id)arg1 suppressionReason:(long long)arg2 timeoutUntilDate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remote_updateOrderedSources:(id)arg1 forObjectType:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_weeklySummaryInfoForDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1 forTaskServerUUID:(id)arg2;
 - (void)removeTaskServerObserver:(id)arg1;
 - (id)sampleSavingDelegate;

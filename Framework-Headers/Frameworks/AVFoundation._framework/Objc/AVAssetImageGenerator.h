@@ -38,7 +38,6 @@
 - (void)cancelAllCGImageGeneration;
 - (struct CGImage *)copyCGImageAtTime:(CDStruct_1b6d18a9)arg1 actualTime:(CDStruct_1b6d18a9 *)arg2 error:(id *)arg3;
 - (void)dealloc;
-- (void)finalize;
 - (void)generateCGImagesAsynchronouslyForTimes:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithAsset:(id)arg1;

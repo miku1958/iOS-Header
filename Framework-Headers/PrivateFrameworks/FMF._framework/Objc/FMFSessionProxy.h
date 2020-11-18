@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (oneway void)didUpdateHideFromFollowersStatus:(BOOL)arg1;
 - (oneway void)didUpdateLocations:(id)arg1;
 - (oneway void)didUpdatePendingOffersForHandles:(id)arg1;
+- (oneway void)didUpdatePreferences:(id)arg1;
 - (oneway void)failedToGetLocationForHandle:(id)arg1 error:(id)arg2;
 - (id)initWithFMFSession:(id)arg1;
 - (oneway void)modelDidLoad;

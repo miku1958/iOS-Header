@@ -77,6 +77,7 @@
 - (BOOL)pointOfInterestHandoffEnabled;
 - (id)ppid;
 - (id)preferredApp;
+- (id)protocolDetails;
 - (void)requestIAPAccessoryWiFiCredentials;
 - (void)resetIAPTimeSyncKalmanFilter;
 - (BOOL)sendDestinationInformation:(id)arg1 identifier:(id)arg2;
@@ -107,8 +108,11 @@
 - (BOOL)supportsAccessibility;
 - (BOOL)supportsCamera;
 - (BOOL)supportsCarPlay;
+- (BOOL)supportsCarPlayAppLinks;
+- (BOOL)supportsDestinationSharing;
 - (BOOL)supportsLocation;
 - (BOOL)supportsOOBBTPairing;
+- (BOOL)supportsOOBBTPairing2;
 - (BOOL)supportsPointOfInterest;
 - (BOOL)supportsPublicIap;
 - (BOOL)supportsUSBCarPlay;

@@ -8,9 +8,11 @@
 
 @interface TIMecabraWrapper : NSObject
 {
+    int _inputMethodType;
     struct __Mecabra *_mecabraRef;
 }
 
+@property (readonly) int inputMethodType; // @synthesize inputMethodType=_inputMethodType;
 @property (readonly) struct __Mecabra *mecabraRef; // @synthesize mecabraRef=_mecabraRef;
 
 - (void)dealloc;

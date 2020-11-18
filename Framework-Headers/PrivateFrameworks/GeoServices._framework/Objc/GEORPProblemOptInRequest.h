@@ -8,33 +8,49 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPUserCredentials, NSData, NSString;
+@class GEORPUserCredentials, NSData, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEORPProblemOptInRequest : PBRequest <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSData *_devicePushToken;
     NSString *_problemId;
     GEORPUserCredentials *_userCredentials;
     NSString *_userEmail;
     BOOL _didOptIn;
     struct {
-        unsigned int didOptIn:1;
-    } _has;
+        unsigned int has_didOptIn:1;
+        unsigned int read_devicePushToken:1;
+        unsigned int read_problemId:1;
+        unsigned int read_userCredentials:1;
+        unsigned int read_userEmail:1;
+        unsigned int wrote_devicePushToken:1;
+        unsigned int wrote_problemId:1;
+        unsigned int wrote_userCredentials:1;
+        unsigned int wrote_userEmail:1;
+        unsigned int wrote_didOptIn:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSData *devicePushToken; // @synthesize devicePushToken=_devicePushToken;
-@property (nonatomic) BOOL didOptIn; // @synthesize didOptIn=_didOptIn;
+@property (strong, nonatomic) NSData *devicePushToken;
+@property (nonatomic) BOOL didOptIn;
 @property (readonly, nonatomic) BOOL hasDevicePushToken;
 @property (nonatomic) BOOL hasDidOptIn;
 @property (readonly, nonatomic) BOOL hasProblemId;
 @property (readonly, nonatomic) BOOL hasUserCredentials;
 @property (readonly, nonatomic) BOOL hasUserEmail;
-@property (strong, nonatomic) NSString *problemId; // @synthesize problemId=_problemId;
-@property (strong, nonatomic) GEORPUserCredentials *userCredentials; // @synthesize userCredentials=_userCredentials;
-@property (strong, nonatomic) NSString *userEmail; // @synthesize userEmail=_userEmail;
+@property (strong, nonatomic) NSString *problemId;
+@property (strong, nonatomic) GEORPUserCredentials *userCredentials;
+@property (strong, nonatomic) NSString *userEmail;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDevicePushToken;
+- (void)_readProblemId;
+- (void)_readUserCredentials;
+- (void)_readUserEmail;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSubmissionID:(id)arg1 allowContactBackAtEmailAddress:(id)arg2 traits:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

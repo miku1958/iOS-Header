@@ -8,6 +8,7 @@
 
 @interface NSData (ContactsFoundation)
 + (id)_cn_dataFromHexString:(id)arg1;
+- (id)_cn_SHA1String;
 - (id)_cn_SHA256HashDataWithSalt:(id)arg1;
 - (BOOL)_cn_containsData:(id)arg1;
 - (id)_cn_decodeBase64;

@@ -6,7 +6,7 @@
 
 #import <ARKit/ARAnchor.h>
 
-@class ARPatchGrid, ARPlaneGeometry, MISSING_TYPE, NSDictionary;
+@class ARPatchGrid, ARPlaneGeometry, MISSING_TYPE, NSDictionary, NSString;
 
 @interface ARPlaneAnchor : ARAnchor
 {
@@ -18,6 +18,7 @@
     ARPatchGrid *_gridExtent;
     long long _worldAlignmentRotation;
     NSDictionary *_possibleClassifications;
+    NSString *_classificationLabel;
     MISSING_TYPE *_center;
     MISSING_TYPE *_extent;
 }
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property (nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
 @property (nonatomic) long long classification; // @synthesize classification=_classification;
+@property (strong, nonatomic) NSString *classificationLabel; // @synthesize classificationLabel=_classificationLabel;
 @property (nonatomic) long long classificationStatus; // @synthesize classificationStatus=_classificationStatus;
 @property (nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
 @property (strong, nonatomic) ARPlaneGeometry *geometry; // @synthesize geometry=_geometry;

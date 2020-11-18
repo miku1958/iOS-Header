@@ -33,10 +33,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *userSnippets; // @synthesize userSnippets=_userSnippets;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_showReview:(id)arg1 index:(unsigned long long)arg2;
 - (void)_updateAttribution;
 - (void)_viewAllReviews;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (void)loadCells;
 - (id)reviewAtIndex:(unsigned long long)arg1;
 - (unsigned long long)reviewsCount;

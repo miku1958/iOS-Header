@@ -8,28 +8,44 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDClientMetadata, NSString, PBUnknownFields;
+@class GEOPDClientMetadata, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOABAssignmentRequest : PBRequest <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDClientMetadata *_clientMetadata;
     NSString *_guid;
     int _requestType;
-    CDStruct_7c66fec0 _has;
+    struct {
+        unsigned int has_requestType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_clientMetadata:1;
+        unsigned int read_guid:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_clientMetadata:1;
+        unsigned int wrote_guid:1;
+        unsigned int wrote_requestType:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDClientMetadata *clientMetadata; // @synthesize clientMetadata=_clientMetadata;
-@property (strong, nonatomic) NSString *guid; // @synthesize guid=_guid;
+@property (strong, nonatomic) GEOPDClientMetadata *clientMetadata;
+@property (strong, nonatomic) NSString *guid;
 @property (readonly, nonatomic) BOOL hasClientMetadata;
 @property (readonly, nonatomic) BOOL hasGuid;
 @property (nonatomic) BOOL hasRequestType;
-@property (nonatomic) int requestType; // @synthesize requestType=_requestType;
+@property (nonatomic) int requestType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsRequestType:(id)arg1;
+- (void)_readClientMetadata;
+- (void)_readGuid;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestTypeAsString:(int)arg1;
 - (unsigned int)requestTypeCode;

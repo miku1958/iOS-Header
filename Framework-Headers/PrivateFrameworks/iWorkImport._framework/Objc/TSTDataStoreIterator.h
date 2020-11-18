@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)p_setupTileAndRowAtCellID:(struct TSUCellCoord)arg1;
 - (void)terminate;
 - (void)updateCellData:(id)arg1;
+- (void)updateFormulaForCellData:(id)arg1;
 
 @end
 

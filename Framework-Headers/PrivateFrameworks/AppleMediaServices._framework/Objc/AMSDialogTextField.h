@@ -6,32 +6,30 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface AMSDialogTextField : NSObject
+@interface AMSDialogTextField : NSObject <NSSecureCoding>
 {
-    NSString *_placeholder;
     BOOL _secure;
-    NSString *_text;
     long long _keyboardType;
-    id _textField;
+    NSString *_placeholder;
     long long _tag;
-    NSString *_title;
+    NSString *_text;
 }
 
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
+@property (copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property (nonatomic) BOOL secure; // @synthesize secure=_secure;
 @property (nonatomic) long long tag; // @synthesize tag=_tag;
-@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 
-+ (id)textFieldWithTitle:(id)arg1 nsTextField:(id)arg2;
-+ (id)textFieldWithTitle:(id)arg1 secure:(BOOL)arg2;
-+ (id)textFieldWithTitle:(id)arg1 uiTextField:(id)arg2;
++ (BOOL)supportsSecureCoding;
++ (id)textFieldWithPlaceholder:(id)arg1 secure:(BOOL)arg2;
 - (void).cxx_destruct;
-- (void)_setupTextField:(id)arg1;
-- (id)generateNSTextField;
-- (id)generateUITextField;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

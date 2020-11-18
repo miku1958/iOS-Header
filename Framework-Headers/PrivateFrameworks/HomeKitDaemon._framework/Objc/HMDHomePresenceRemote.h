@@ -17,14 +17,12 @@
 
 @property (readonly, nonatomic) NSDictionary *userPresenceMap; // @synthesize userPresenceMap=_userPresenceMap;
 
-+ (id)presenceRemoteWithDictionary:(id)arg1 presenceIdentifierDict:(id)arg2;
 - (void).cxx_destruct;
-- (void)_initializeWithPresenceIdentifierMap:(id)arg1;
-- (void)_initializeWithPresenceMap:(id)arg1;
 - (BOOL)areUsersAtHome:(id)arg1;
 - (BOOL)areUsersNotAtHome:(id)arg1;
 - (id)description;
-- (id)initWithDictionary:(id)arg1 presenceIdentifierDict:(id)arg2;
+- (id)initWithPresenceByPairingIdentity:(id)arg1;
+- (id)initWithPresenceByUserId:(id)arg1;
 - (BOOL)isAnyUserAtHome;
 - (BOOL)isNoUserAtHome;
 - (BOOL)isUserAtHome:(id)arg1;

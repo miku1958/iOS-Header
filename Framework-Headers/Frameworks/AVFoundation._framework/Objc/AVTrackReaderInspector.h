@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)dimensions;
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
-- (void)finalize;
 - (id)formatDescriptions;
+- (BOOL)hasAudioSampleDependencies;
 - (unsigned long long)hash;
 - (BOOL)isDecodable;
 - (BOOL)isEnabled;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPlayable;
 - (BOOL)isSelfContained;
 - (id)languageCode;
+- (CDStruct_1b6d18a9)latentBaseDecodeTimeStampOfFirstTrackFragment;
 - (long long)layer;
 - (id)loudnessInfo;
 - (id)mediaCharacteristics;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)naturalSize;
 - (int)naturalTimeScale;
 - (float)nominalFrameRate;
+- (float)peakDataRate;
 - (int)playabilityValidationResult;
 - (struct CGAffineTransform)preferredTransform;
 - (float)preferredVolume;

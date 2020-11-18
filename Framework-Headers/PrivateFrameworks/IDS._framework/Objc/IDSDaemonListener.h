@@ -8,11 +8,12 @@
 
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class NSHashTable, NSMutableDictionary, NSProtocolChecker, NSString;
+@class IDSInternalQueueController, NSHashTable, NSMutableDictionary, NSProtocolChecker, NSString;
 @protocol OS_dispatch_queue;
 
 @interface IDSDaemonListener : NSObject <IDSDaemonListenerProtocol>
 {
+    IDSInternalQueueController *_internalQueueController;
     NSObject<OS_dispatch_queue> *_ivarQueue;
     NSHashTable *_handlers;
     NSProtocolChecker *_protocol;
@@ -20,6 +21,7 @@
     NSMutableDictionary *_topicToEnabledAccounts;
     NSMutableDictionary *_accountToDevices;
     NSMutableDictionary *_accountToActiveDeviceUniqueID;
+    NSMutableDictionary *_serviceToActiveDeviceUniqueID;
     NSString *_deviceIdentifier;
     BOOL _setupComplete;
     BOOL _postedSetupComplete;
@@ -76,8 +78,9 @@
 - (void)continuityDidStartAdvertisingOfType:(long long)arg1;
 - (void)continuityDidStartScanningForType:(long long)arg1;
 - (void)continuityDidStopAdvertisingOfType:(long long)arg1;
+- (void)continuityDidStopAdvertisingOfType:(long long)arg1 withError:(id)arg2;
 - (void)continuityDidStopScanningForType:(long long)arg1;
-- (void)continuityDidUpdateState:(long long)arg1;
+- (void)continuityDidUpdateStateToState:(long long)arg1;
 - (void)deactivatePairedDevices;
 - (id)dependentDevicesForAccount:(id)arg1;
 - (void)device:(id)arg1 nsuuidChanged:(id)arg2;
@@ -87,12 +90,14 @@
 - (id)enabledAccountsForService:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
+- (id)initWithQueueController:(id)arg1 ivarQueue:(id)arg2;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)refreshRegistrationForAccount:(id)arg1;
 - (void)registrationFailedForAccount:(id)arg1 needsDeletion:(id)arg2;
 - (void)removeHandler:(id)arg1;
 - (void)setupCompleteWithInfo:(id)arg1;
 - (void)switchActivePairedDevice:(id)arg1 forAccount:(id)arg2;
+- (void)updateAccount:(id)arg1 withAccountInfo:(id)arg2;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 
 @end

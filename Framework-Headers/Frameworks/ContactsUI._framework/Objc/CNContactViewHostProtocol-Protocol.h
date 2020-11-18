@@ -12,6 +12,8 @@
 - (void)didChangePreferredContentSize:(struct CGSize)arg1;
 - (void)didCompleteWithContact:(CNContact *)arg1;
 - (void)didDeleteContact:(CNContact *)arg1;
+- (void)didExecuteClearRecentsDataAction;
+- (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (void)isPresentingEditingController:(BOOL)arg1;
 - (void)isPresentingFullscreen:(BOOL)arg1;
 - (BOOL)shouldPerformDefaultActionForContact:(CNContact *)arg1 propertyKey:(NSString *)arg2 propertyIdentifier:(NSString *)arg3;

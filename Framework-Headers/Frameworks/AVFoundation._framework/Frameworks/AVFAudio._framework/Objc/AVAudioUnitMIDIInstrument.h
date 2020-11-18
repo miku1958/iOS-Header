@@ -18,7 +18,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic) float volume;
+@property (nonatomic) float volume; // @dynamic volume;
 
 - (id)initWithAudioComponentDescription:(struct AudioComponentDescription)arg1;
 - (void)sendController:(unsigned char)arg1 withValue:(unsigned char)arg2 onChannel:(unsigned char)arg3;

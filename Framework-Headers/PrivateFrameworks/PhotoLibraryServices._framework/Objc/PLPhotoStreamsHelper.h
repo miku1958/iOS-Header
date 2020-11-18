@@ -11,10 +11,10 @@
     BOOL _appHasPolledOnceThisForegroundSession;
 }
 
++ (BOOL)_photoStreamsEnabled;
 + (BOOL)canInitiateDistributedPhotoStreamDeletionForAssetUUID:(id)arg1;
 + (id)iCloudServiceAccount;
-+ (BOOL)photoStreamsEnabled;
-+ (id)publishBreadcrumbsPath;
++ (BOOL)photoStreamsEnabledForPhotoLibraryURL:(id)arg1;
 + (id)sharedPhotoStreamsHelper;
 + (BOOL)writeBreadcrumbContent:(id)arg1 forHashString:(id)arg2;
 - (void)_accountStoreDidChange:(id)arg1;
@@ -54,7 +54,6 @@
 - (void)resume_mstreamd:(id)arg1;
 - (void)savePhotoStreamMetadata:(id)arg1 forAsset:(id)arg2;
 - (BOOL)shouldPublishScreenShots;
-- (BOOL)shouldUploadVideos;
 - (id)temporaryPathForConvertedAssetWithUUID:(id)arg1;
 - (id)temporaryPathForRecentlyUploadedAsset:(id)arg1;
 - (void)writeDidEnqueueBreadcrumbForHash:(id)arg1 imagePath:(id)arg2;

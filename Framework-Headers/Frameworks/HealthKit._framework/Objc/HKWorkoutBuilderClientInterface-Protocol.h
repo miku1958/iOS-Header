@@ -11,6 +11,7 @@
 @protocol HKWorkoutBuilderClientInterface <NSObject>
 - (void)clientRemote_didChangeElapsedTimeBasisWithStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2;
 - (void)clientRemote_didFailWithError:(NSError *)arg1;
+- (void)clientRemote_didFinishRecovery;
 - (void)clientRemote_didRecoverSeriesBuilders:(NSDictionary *)arg1;
 - (void)clientRemote_didUpdateEvents:(NSArray *)arg1;
 - (void)clientRemote_didUpdateMetadata:(NSDictionary *)arg1;

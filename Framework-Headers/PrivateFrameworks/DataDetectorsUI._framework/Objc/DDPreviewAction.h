@@ -11,14 +11,22 @@
 }
 
 + (id)previewActionForURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
+- (id)additionalMenuActions;
 - (id)commitURL;
 - (id)createViewController;
 - (void)dealloc;
+- (id)expandViewController;
+- (id)menuActionClasses;
+- (id)menuActions;
 - (id)platterSubtitle;
 - (id)platterTitle;
+- (BOOL)prefersActionMenuStyle;
 - (BOOL)requiresEmbeddingNavigationController;
 - (void)setPreviewMode:(BOOL)arg1;
+- (BOOL)showMenuTitle;
+- (struct CGSize)suggestedContentSize;
 - (id)viewController;
+- (BOOL)wantsCustomViewControllerCommit;
 - (BOOL)wantsSeamlessCommit;
 
 @end

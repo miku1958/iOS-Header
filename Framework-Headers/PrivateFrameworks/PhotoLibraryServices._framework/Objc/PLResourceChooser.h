@@ -20,7 +20,6 @@
 + (unsigned long long)cloudResourceTypeForAsset:(id)arg1 format:(id)arg2 filePath:(id *)arg3 imageType:(long long *)arg4;
 + (id)fileReservationForImageFileForAsset:(id)arg1 format:(id)arg2 outFilePath:(id *)arg3 outImageType:(long long *)arg4;
 + (id)fileReservationForLargeDisplayableImageFileForAsset:(id)arg1 format:(id)arg2 allowMetadataSnapshot:(BOOL)arg3 forceLarge:(BOOL)arg4 outFilePath:(id *)arg5 outImageType:(long long *)arg6;
-- (void)dealloc;
 - (id)init;
 
 @end

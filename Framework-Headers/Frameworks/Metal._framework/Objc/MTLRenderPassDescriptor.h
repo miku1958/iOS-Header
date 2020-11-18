@@ -9,7 +9,7 @@
 #import <Metal/NSCopying-Protocol.h>
 
 @class MTLRenderPassColorAttachmentDescriptorArray, MTLRenderPassDepthAttachmentDescriptor, MTLRenderPassStencilAttachmentDescriptor;
-@protocol MTLBuffer;
+@protocol MTLBuffer, MTLRasterizationRateMap;
 
 @interface MTLRenderPassDescriptor : NSObject <NSCopying>
 {
@@ -17,13 +17,13 @@
     unsigned long long _threadgroupMemoryLength;
     unsigned long long _tileWidth;
     unsigned long long _tileHeight;
-    unsigned long long _defaultRasterSampleCount;
 }
 
 @property (readonly) MTLRenderPassColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
-@property (nonatomic) unsigned long long defaultRasterSampleCount; // @synthesize defaultRasterSampleCount=_defaultRasterSampleCount;
+@property (nonatomic) unsigned long long defaultRasterSampleCount; // @dynamic defaultRasterSampleCount;
 @property (copy, nonatomic) MTLRenderPassDepthAttachmentDescriptor *depthAttachment; // @dynamic depthAttachment;
 @property (nonatomic) unsigned long long imageblockSampleLength; // @synthesize imageblockSampleLength=_imageblockSampleLength;
+@property (strong, nonatomic) id<MTLRasterizationRateMap> rasterizationRateMap; // @dynamic rasterizationRateMap;
 @property (nonatomic) unsigned long long renderTargetArrayLength; // @dynamic renderTargetArrayLength;
 @property (nonatomic) unsigned long long renderTargetHeight; // @dynamic renderTargetHeight;
 @property (nonatomic) unsigned long long renderTargetWidth; // @dynamic renderTargetWidth;

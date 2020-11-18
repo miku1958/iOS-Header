@@ -16,6 +16,8 @@
     BOOL _personBuildingDisabled;
     BOOL _personBuilderMergeCandidatesDisabled;
     float _faceClusteringThreshold;
+    float _faceClusteringJunkThreshold;
+    float _faceClusteringAgeThreshold;
     float _faceMergeFaceprintDistanceThreshold;
     float _facePrimarySuggestionsThreshold;
     unsigned int _faceAlgorithmUmbrellaVersion;
@@ -27,7 +29,9 @@
 }
 
 @property (nonatomic) unsigned int faceAlgorithmUmbrellaVersion; // @synthesize faceAlgorithmUmbrellaVersion=_faceAlgorithmUmbrellaVersion;
+@property (nonatomic) float faceClusteringAgeThreshold; // @synthesize faceClusteringAgeThreshold=_faceClusteringAgeThreshold;
 @property (nonatomic) BOOL faceClusteringDisabled; // @synthesize faceClusteringDisabled=_faceClusteringDisabled;
+@property (nonatomic) float faceClusteringJunkThreshold; // @synthesize faceClusteringJunkThreshold=_faceClusteringJunkThreshold;
 @property (nonatomic) float faceClusteringThreshold; // @synthesize faceClusteringThreshold=_faceClusteringThreshold;
 @property (nonatomic) float faceMergeFaceprintDistanceThreshold; // @synthesize faceMergeFaceprintDistanceThreshold=_faceMergeFaceprintDistanceThreshold;
 @property (nonatomic) float facePrimarySuggestionsThreshold; // @synthesize facePrimarySuggestionsThreshold=_facePrimarySuggestionsThreshold;

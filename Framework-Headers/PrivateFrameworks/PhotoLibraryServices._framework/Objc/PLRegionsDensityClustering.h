@@ -13,7 +13,6 @@
     BOOL _includeExtensiveClusters;
     BOOL _removeExtensiveClustersObjectsFromDataset;
     BOOL _removeExtensiveClustersContainingDefiniteClusters;
-    BOOL _clusterAllRemainingObjects;
     unsigned long long _algorithm;
     double _definiteClusterTimeIntervalDistance;
     double _definiteClusterMaximumDistanceUnit;
@@ -26,7 +25,6 @@
 }
 
 @property (nonatomic) unsigned long long algorithm; // @synthesize algorithm=_algorithm;
-@property (nonatomic) BOOL clusterAllRemainingObjects; // @synthesize clusterAllRemainingObjects=_clusterAllRemainingObjects;
 @property (nonatomic) double definiteClusterMaximumDistanceUnit; // @synthesize definiteClusterMaximumDistanceUnit=_definiteClusterMaximumDistanceUnit;
 @property (nonatomic) unsigned long long definiteClusterMinimumNumberOfObjects; // @synthesize definiteClusterMinimumNumberOfObjects=_definiteClusterMinimumNumberOfObjects;
 @property (nonatomic) double definiteClusterMinimumNumberOfObjectsPercent; // @synthesize definiteClusterMinimumNumberOfObjectsPercent=_definiteClusterMinimumNumberOfObjectsPercent;

@@ -8,12 +8,13 @@
 
 #import <ClassroomKit/CATRemoteConnectionDelegate-Protocol.h>
 
-@class DMFControlSessionIdentifier, NSString;
+@class DMFControlSessionIdentifier, NSDate, NSString;
 
 @interface CRKClassSession : CRKSession <CATRemoteConnectionDelegate>
 {
     unsigned short _flags;
     DMFControlSessionIdentifier *_identifier;
+    NSDate *_lastBeaconFoundDate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,11 +22,14 @@
 @property (nonatomic) unsigned short flags; // @synthesize flags=_flags;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) DMFControlSessionIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSDate *lastBeaconFoundDate; // @synthesize lastBeaconFoundDate=_lastBeaconFoundDate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)foundBeaconWithFlags:(unsigned short)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (id)lastMatchMessageForCurrentDate:(id)arg1;
+- (void)logBeaconFound;
 - (void)lostBeacon;
 
 @end

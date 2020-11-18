@@ -12,6 +12,7 @@
 {
     GEOUserSessionEntity *_shortSessionEntity;
     GEOUserSessionEntity *_longSessionEntity;
+    GEOUserSessionEntity *_thirtyDayCountsSessionEntity;
     GEOUserSessionEntity *_navSessionEntity;
     GEOUserSessionEntity *_cohortSessionEntity;
     double _usageEventTime;
@@ -21,10 +22,11 @@
 @property (strong, nonatomic) GEOUserSessionEntity *longSessionEntity; // @synthesize longSessionEntity=_longSessionEntity;
 @property (strong, nonatomic) GEOUserSessionEntity *navSessionEntity; // @synthesize navSessionEntity=_navSessionEntity;
 @property (strong, nonatomic) GEOUserSessionEntity *shortSessionEntity; // @synthesize shortSessionEntity=_shortSessionEntity;
+@property (strong, nonatomic) GEOUserSessionEntity *thirtyDayCountsSessionEntity; // @synthesize thirtyDayCountsSessionEntity=_thirtyDayCountsSessionEntity;
 @property (nonatomic) double usageEventTime; // @synthesize usageEventTime=_usageEventTime;
 
 - (void).cxx_destruct;
-- (id)initWithShortSessionEntity:(id)arg1 longSessionEntity:(id)arg2 navSessionEntity:(id)arg3 cohortSessionEntity:(id)arg4;
+- (id)initWithShortSessionEntity:(id)arg1 longSessionEntity:(id)arg2 thirtyDayCountsSessionEntity:(id)arg3 navSessionEntity:(id)arg4 cohortSessionEntity:(id)arg5;
 
 @end
 

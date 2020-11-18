@@ -67,6 +67,7 @@
 - (id)_cloudCoverImageData;
 - (id)_cloudDictionaryRepresentation;
 - (void)_setCloudCoverImageData:(id)arg1;
+- (void)_setFileURL:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

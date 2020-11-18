@@ -24,6 +24,7 @@
 + (id)_localNotificationForDistributedNotification:(id)arg1;
 + (id)sharedUserDefaults;
 - (void).cxx_destruct;
+- (void)_cleanupObserversForNotification:(id)arg1;
 - (void)_postNotification:(id)arg1;
 - (BOOL)boolForKey:(id)arg1;
 - (BOOL)boolForKey:(id)arg1 exists:(BOOL *)arg2;

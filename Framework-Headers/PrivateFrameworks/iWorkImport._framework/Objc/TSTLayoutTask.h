@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateCellStatesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithLayoutTask:(id)arg1;
 - (id)initWithMasterLayout:(id)arg1;
-- (void)writeToMasterLayoutCaches;
+- (void)writeToMasterLayoutCaches:(id)arg1;
 
 @end
 

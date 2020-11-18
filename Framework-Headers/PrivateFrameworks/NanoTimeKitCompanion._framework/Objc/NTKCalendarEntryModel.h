@@ -14,6 +14,7 @@
     BOOL _displayAsConflicting;
     BOOL _displayAsFirstInDay;
     BOOL _overlappingDates;
+    BOOL _displayEntryDateInGraphicCircularView;
     NSString *_identifier;
     NSDate *_eventStartDate;
     NSDate *_eventEndDate;
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL displayAsConflicting; // @synthesize displayAsConflicting=_displayAsConflicting;
 @property (nonatomic) BOOL displayAsFirstInDay; // @synthesize displayAsFirstInDay=_displayAsFirstInDay;
 @property (nonatomic) BOOL displayAsTomorrow; // @synthesize displayAsTomorrow=_displayAsTomorrow;
+@property (nonatomic) BOOL displayEntryDateInGraphicCircularView; // @synthesize displayEntryDateInGraphicCircularView=_displayEntryDateInGraphicCircularView;
 @property (strong, nonatomic) NSArray *eventColors; // @synthesize eventColors=_eventColors;
 @property (strong, nonatomic) NSDate *eventEndDate; // @synthesize eventEndDate=_eventEndDate;
 @property (strong, nonatomic) NSDate *eventStartDate; // @synthesize eventStartDate=_eventStartDate;

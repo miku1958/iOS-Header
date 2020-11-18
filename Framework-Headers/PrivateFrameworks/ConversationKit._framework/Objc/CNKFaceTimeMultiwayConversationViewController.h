@@ -19,9 +19,10 @@
     MISSING_TYPE *inCallControlsDismissTimer;
     MISSING_TYPE *hideInactiveParticipantsTimer;
     MISSING_TYPE *effectsLayoutController;
+    MISSING_TYPE *pipZoomControl;
+    MISSING_TYPE *shouldShowZoomControls;
     MISSING_TYPE *deviceOrientation;
     MISSING_TYPE *delegate;
-    MISSING_TYPE *shouldInitializeEffects;
     MISSING_TYPE *effectsEnabled;
     MISSING_TYPE *isPipped;
 }
@@ -35,8 +36,10 @@
 @property (nonatomic, readonly) BOOL wantsApplicationDismissalStyle;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)accessibilityConstraintController;
 - (void)dealloc;
+- (void)hideEffectsBrowser;
 - (id)initWithActiveCall:(id)arg1;
 - (id)initWithActiveCall:(id)arg1 stagingAreaViewController:(id)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -54,6 +57,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

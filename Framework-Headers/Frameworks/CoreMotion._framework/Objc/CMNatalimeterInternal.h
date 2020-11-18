@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMNatalimeterInternal : NSObject
 {
     struct CLConnectionClient *fLocationdConnection;
     NSObject<OS_dispatch_queue> *fInternalQueue;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     BOOL fStartedUpdates;
     CDUnknownBlockType fHandler;
 }
@@ -22,9 +21,7 @@
 - (void)_queryAbsoluteNatalimetryDataSinceDataRecord:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_queryAbsoluteNatalimetryDataSinceRecord:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_startAbsoluteNatalimetryDataUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)_startWatchdogCheckins;
 - (void)_stopAbsoluteNatalimetryDataUpdates;
-- (void)_stopWatchdogCheckins;
 - (void)_teardown;
 - (void)dealloc;
 - (id)init;

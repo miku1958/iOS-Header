@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUActivity.h>
+#import <PhotosUICore/PXActivity.h>
 
 @class PUAssetHidingHelper;
 
 __attribute__((visibility("hidden")))
-@interface PUHideActivity : PUActivity
+@interface PUHideActivity : PXActivity
 {
     PUAssetHidingHelper *_assetHidingHelper;
 }
 
 + (long long)activityCategory;
 - (void).cxx_destruct;
-- (id)_activityBundleImageConfiguration;
-- (id)_activityImageName;
 - (id)_assetHidingHelper;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

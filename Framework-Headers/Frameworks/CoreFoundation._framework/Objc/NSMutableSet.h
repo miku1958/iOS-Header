@@ -36,6 +36,8 @@
 - (void)removeObjectsWithOptions:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (void)replaceObject:(id)arg1;
 - (void)setArray:(id)arg1;
+- (id)setByAddingObjectsFromArray:(id)arg1;
+- (id)setByAddingObjectsFromSet:(id)arg1;
 - (void)setObject:(id)arg1;
 - (void)setOrderedSet:(id)arg1;
 - (void)setSet:(id)arg1;

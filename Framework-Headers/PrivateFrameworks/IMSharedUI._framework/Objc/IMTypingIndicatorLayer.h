@@ -8,15 +8,16 @@
 
 #import <IMSharedUI/IMTypingIndicatorLayerProtocol-Protocol.h>
 
-@class CAReplicatorLayer, NSString, UIColor;
+@class CAReplicatorLayer, NSString, UIColor, UITraitCollection;
 
 @interface IMTypingIndicatorLayer : CALayer <IMTypingIndicatorLayerProtocol>
 {
     BOOL _hasDarkBackground;
-    struct UIColor *_bubbleColor;
-    double _bubbleOpacity;
     id _iconImage;
+    struct UIColor *_bubbleColor;
     struct UIColor *_thinkingDotColor;
+    UITraitCollection *_traitCollection;
+    double _bubbleOpacity;
     double _thinkingDotOpacity;
     struct UIColor *_customBubbleColor;
     CALayer *_bubbleContainer;
@@ -48,6 +49,7 @@
 @property (strong, nonatomic) CALayer *thinkingDotContainer; // @synthesize thinkingDotContainer=_thinkingDotContainer;
 @property (nonatomic) double thinkingDotOpacity; // @synthesize thinkingDotOpacity=_thinkingDotOpacity;
 @property (strong, nonatomic) CAReplicatorLayer *thinkingDots; // @synthesize thinkingDots=_thinkingDots;
+@property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 + (struct UIColor *)defaultBubbleColor;
 + (double)defaultBubbleOpacity;
@@ -81,6 +83,7 @@
 - (void)_updateForImage;
 - (double)convertedCurrentMediaTime;
 - (id)init;
+- (id)resolvedColor:(id)arg1 forTraitCollection:(id)arg2;
 - (void)startGrowAnimation;
 - (void)startGrowAnimationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)startPulseAnimation;

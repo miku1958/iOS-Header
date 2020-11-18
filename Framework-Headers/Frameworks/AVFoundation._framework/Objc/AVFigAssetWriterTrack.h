@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)beginPassReturningError:(id *)arg1;
 - (void)dealloc;
 - (void)endPassWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)finalize;
 - (id)init;
 - (id)initWithFigAssetWriter:(struct OpaqueFigAssetWriter *)arg1 mediaType:(id)arg2 mediaFileType:(id)arg3 formatSpecification:(id)arg4 sourcePixelBufferAttributes:(id)arg5 multiPass:(BOOL)arg6 error:(id *)arg7;
 - (BOOL)markEndOfDataReturningError:(id *)arg1;

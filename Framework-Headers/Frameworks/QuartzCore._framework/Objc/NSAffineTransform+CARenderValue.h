@@ -7,7 +7,12 @@
 #import <Foundation/NSAffineTransform.h>
 
 @interface NSAffineTransform (CARenderValue)
+- (id)CAMLType;
+- (struct CGAffineTransform)CA_CGAffineTransformValue;
+- (id)CA_addValue:(id)arg1 multipliedBy:(int)arg2;
 - (unsigned long long)CA_copyNumericValue:(double [20])arg1;
 - (struct Object *)CA_copyRenderValue;
+- (id)CA_interpolateValue:(id)arg1 byFraction:(float)arg2;
+- (void)encodeWithCAMLWriter:(id)arg1;
 @end
 

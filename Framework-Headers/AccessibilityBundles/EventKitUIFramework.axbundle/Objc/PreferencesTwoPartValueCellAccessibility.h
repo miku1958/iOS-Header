@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 

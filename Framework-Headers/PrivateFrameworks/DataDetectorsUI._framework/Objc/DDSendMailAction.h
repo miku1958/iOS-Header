@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (BOOL)canBePerformedByOpeningURL;
+- (id)icon;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (int)interactionType;
 - (id)localizedName;

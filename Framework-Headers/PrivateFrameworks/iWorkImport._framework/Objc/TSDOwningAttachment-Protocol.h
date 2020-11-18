@@ -11,11 +11,14 @@
 @property (readonly, nonatomic) BOOL isAnchored;
 @property (readonly, nonatomic) BOOL isAttachedToBodyText;
 @property (readonly, nonatomic) BOOL isDrawable;
+@property (readonly, nonatomic) BOOL isHorizontallyCentered;
 @property (readonly, nonatomic) BOOL isPartitioned;
 @property (readonly, nonatomic) BOOL isSearchable;
+@property (readonly, nonatomic) BOOL isVerticallyCentered;
 @property (readonly, nonatomic) Class positionerClass;
 @property (readonly, nonatomic) BOOL specifiesEnabledKnobMask;
 
 - (void)infoChanged;
+- (void)invalidateSize;
 @end
 

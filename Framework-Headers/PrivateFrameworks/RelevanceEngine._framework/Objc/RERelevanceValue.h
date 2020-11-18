@@ -7,18 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <RelevanceEngine/NSCopying-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
-@class NSArray;
+@class RETaggedFeatureValueArray;
 
-@interface RERelevanceValue : NSObject <NSCopying>
+@interface RERelevanceValue : NSObject <NSCopying, REAutomaticExportedInterface>
 {
     unsigned long long _hash;
     BOOL _isHistoric;
-    NSArray *_values;
+    RETaggedFeatureValueArray *_values;
 }
 
 @property (readonly, nonatomic) BOOL isHistoric; // @synthesize isHistoric=_isHistoric;
-@property (readonly, nonatomic) NSArray *values; // @synthesize values=_values;
+@property (readonly, nonatomic) RETaggedFeatureValueArray *values; // @synthesize values=_values;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

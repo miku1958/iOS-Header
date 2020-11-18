@@ -11,10 +11,14 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)compilePipelines:(id)arg1;
++ (void)compilePipelinesIfNeeded:(id)arg1;
 + (int)formatForInputAtIndex:(int)arg1;
++ (BOOL)hasValidPipelines;
 + (int)outputFormat;
 + (BOOL)outputIsOpaque;
 + (BOOL)processWithInputs:(id)arg1 arguments:(id)arg2 output:(id)arg3 error:(id *)arg4;
++ (void)releasePipelines;
 + (struct CGRect)roiForInput:(int)arg1 arguments:(id)arg2 outputRect:(struct CGRect)arg3;
 + (BOOL)synchronizeInputs;
 

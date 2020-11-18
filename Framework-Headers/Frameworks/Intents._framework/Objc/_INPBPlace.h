@@ -17,12 +17,14 @@
     struct {
         unsigned int personalPlaceType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _personalPlaceType;
     NSArray *_placeDescriptors;
     _INPBString *_placeSubType;
     _INPBString *_placeType;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasPersonalPlaceType;
@@ -37,12 +39,15 @@
 @property (readonly) Class superclass;
 
 + (Class)placeDescriptorsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsPersonalPlaceType:(id)arg1;
 - (void)addPlaceDescriptors:(id)arg1;
 - (void)clearPlaceDescriptors;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)personalPlaceTypeAsString:(int)arg1;
 - (id)placeDescriptorsAtIndex:(unsigned long long)arg1;

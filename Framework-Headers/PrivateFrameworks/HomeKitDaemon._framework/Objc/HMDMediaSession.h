@@ -12,12 +12,11 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDMediaEndpoint, HMDMediaSessionState, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
+@class HMDMediaEndpoint, HMDMediaSessionState, HMFTimer, NSArray, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDMediaSession : HMFObject <HMFTimerDelegate, HMDHomeMessageReceiver, HMFDumpState, HMFLogging, NSSecureCoding>
 {
-    HMFMessageDispatcher *_msgDispatcher;
     NSMutableSet *_mediaProfiles;
     BOOL _connected;
     BOOL _currentAccessorySession;
@@ -43,7 +42,6 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (readonly, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (strong, nonatomic) NSMutableArray *setPlaybackStateCompletionHandlers; // @synthesize setPlaybackStateCompletionHandlers=_setPlaybackStateCompletionHandlers;

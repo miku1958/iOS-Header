@@ -33,6 +33,7 @@
 - (void)xpcEndDiscoveryWithBlock:(CDUnknownBlockType)arg1;
 - (void)xpcEnterCompatibilityState:(unsigned short)arg1 withDeviceID:(id)arg2;
 - (void)xpcFakePairedSyncIsCompleteWithCompletion:(CDUnknownBlockType)arg1;
+- (void)xpcGetInitialSyncCompletedForPairingID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)xpcGetLastMigrationRequestPhoneNameWithCompletion:(CDUnknownBlockType)arg1;
 - (void)xpcGetLastSwitchIndex:(CDUnknownBlockType)arg1;
 - (void)xpcGetMigrationCountForPairingID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -40,6 +41,8 @@
 - (void)xpcGizmoOOBAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
 - (void)xpcGizmoPasscodeAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
 - (void)xpcInvalidateSwitchAssertionWithIdentifier:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)xpcIsAssertionActive:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)xpcIsPhoneReadyToMigrateDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)xpcKeepPhoneUnlockedInternalTestSPI:(CDUnknownBlockType)arg1;
 - (void)xpcNotifyActivationCompleted:(id)arg1 withSuccess:(BOOL)arg2;
 - (void)xpcNotifyPasscode:(id)arg1 withDeviceID:(id)arg2;

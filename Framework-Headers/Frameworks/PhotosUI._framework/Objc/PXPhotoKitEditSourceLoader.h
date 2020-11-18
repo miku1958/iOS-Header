@@ -8,22 +8,21 @@
 
 #import <PhotosUICore/PXEditSourceLoader-Protocol.h>
 
-@class NSDate, NSError, NSNumber, NSProgress, NSString, NSURL, PHAsset, PLEditSource, PLPhotoEditModel;
+@class NSDate, NSError, NSNumber, NSProgress, NSString, PHAsset, PICompositionController, PLEditSource;
 @protocol OS_dispatch_queue;
 
 @interface PXPhotoKitEditSourceLoader : NSObject <PXEditSourceLoader>
 {
-    int _imageRequestID;
-    int _videoRequestID;
-    int _adjustmentDataRequestID;
-    NSURL *_imageURL;
-    NSURL *_videoURL;
+    unsigned long long _imageRequestID;
     BOOL _didBeginLoading;
     NSDate *_loadingStartDate;
     NSProgress *_editSourceCreationProgress;
     NSObject<OS_dispatch_queue> *_loadingQueue;
+    BOOL _overcaptureSourceIsActive;
     PLEditSource *_editSource;
-    PLPhotoEditModel *_editModel;
+    PLEditSource *_overcaptureEditSource;
+    PICompositionController *_compositionController;
+    PICompositionController *_originalCompositionController;
     NSProgress *_progress;
     NSError *_error;
     long long _baseVersion;
@@ -32,26 +31,26 @@
     PHAsset *_asset;
 }
 
+@property (readonly, nonatomic) PLEditSource *activeEditSource;
 @property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) long long baseVersion; // @synthesize baseVersion=_baseVersion;
+@property (readonly, copy, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property (readonly, copy, nonatomic) NSString *contentIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) PLPhotoEditModel *editModel; // @synthesize editModel=_editModel;
 @property (readonly, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *livePhotoPairingIdentifier; // @synthesize livePhotoPairingIdentifier=_livePhotoPairingIdentifier;
 @property (readonly, nonatomic) NSNumber *loadDuration; // @synthesize loadDuration=_loadDuration;
+@property (readonly, copy, nonatomic) PICompositionController *originalCompositionController; // @synthesize originalCompositionController=_originalCompositionController;
+@property (readonly, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_createEditSourceIfPossible;
-- (void)_handleAdjustmentDataInfo:(id)arg1;
 - (void)_handleCancellation;
-- (void)_handleImageURLResult:(id)arg1 info:(id)arg2;
-- (void)_handleVideoURLResult:(id)arg1 info:(id)arg2;
+- (void)_handleContentEditingInputRequestCompletion:(id)arg1 info:(id)arg2 asset:(id)arg3;
 - (void)beginLoading;
 - (id)initWithAsset:(id)arg1;
 

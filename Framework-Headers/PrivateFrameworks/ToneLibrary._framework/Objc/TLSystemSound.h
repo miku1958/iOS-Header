@@ -12,16 +12,18 @@
 {
     unsigned int _soundID;
     BOOL _shouldDisposeOfSoundID;
+    BOOL _requiresLongFormPlayback;
     NSURL *_soundFileURL;
 }
 
+@property (readonly, nonatomic) BOOL requiresLongFormPlayback; // @synthesize requiresLongFormPlayback=_requiresLongFormPlayback;
 @property (readonly, nonatomic) NSURL *soundFileURL; // @synthesize soundFileURL=_soundFileURL;
 @property (readonly, nonatomic) unsigned int soundID;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
-- (id)initWithSoundFileURL:(id)arg1 soundID:(unsigned int)arg2;
+- (id)initWithSoundFileURL:(id)arg1 soundID:(unsigned int)arg2 requiresLongFormPlayback:(BOOL)arg3;
 
 @end
 

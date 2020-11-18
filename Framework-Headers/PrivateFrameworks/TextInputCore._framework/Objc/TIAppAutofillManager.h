@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class IMOneTimeCodeAccelerator, LAContext, NSDictionary, NSString, NSUUID;
+@class IMOneTimeCodeAccelerator, LAContext, NSDictionary, NSString, NSUUID, TIKeyboardSecureCandidateRenderer;
 @protocol OS_dispatch_queue;
 
 @interface TIAppAutofillManager : NSObject
 {
+    TIKeyboardSecureCandidateRenderer *_secureCandidateRenderer;
     NSDictionary *_currentOneTimeCode;
     NSUUID *_documentIdentifierForLastAutofillGeneration;
     NSString *_clientIdentifierForLastAutofillGeneration;
@@ -29,13 +30,15 @@
 @property (strong, nonatomic) IMOneTimeCodeAccelerator *oneTimeCodeAccelerator; // @synthesize oneTimeCodeAccelerator=_oneTimeCodeAccelerator;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *oneTimeCodeAcceleratorQueue; // @synthesize oneTimeCodeAcceleratorQueue=_oneTimeCodeAcceleratorQueue;
 @property (strong, nonatomic) NSDictionary *queuedCustomInfo; // @synthesize queuedCustomInfo=_queuedCustomInfo;
+@property (readonly, nonatomic) TIKeyboardSecureCandidateRenderer *secureCandidateRenderer;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (BOOL)_simulatesAutofillCandidates;
 - (id)customInfoFromCredential:(id)arg1;
-- (id)generateAutofillFormCandidatesWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
-- (id)generateAutofillFormSuggestedUsernameWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
-- (id)generateOneTimeCodeCandidatesWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
+- (id)generateAutofillFormCandidatesWithRenderTraits:(id)arg1 withKeyboardState:(id)arg2;
+- (id)generateAutofillFormSuggestedUsernameWithRenderTraits:(id)arg1 withKeyboardState:(id)arg2;
+- (id)generateOneTimeCodeCandidatesWithRenderTraits:(id)arg1 withKeyboardState:(id)arg2;
 - (id)getCredentialsWithApplicationIdentifier:(id)arg1 autofillContext:(id)arg2;
 - (id)initPrivate;
 - (BOOL)isValidedString:(id)arg1;

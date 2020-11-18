@@ -6,12 +6,18 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationView.h>
 
+@protocol NTKRichComplicationRectangularBaseViewDelegate;
+
 @interface NTKRichComplicationRectangularBaseView : NTKRichComplicationView
 {
+    id<NTKRichComplicationRectangularBaseViewDelegate> _delegate;
 }
 
-+ (void)startDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
+@property (weak, nonatomic) id<NTKRichComplicationRectangularBaseViewDelegate> delegate; // @synthesize delegate=_delegate;
+
++ (void)updateCustomDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 animationType:(unsigned long long)arg4 animationDuration:(double)arg5 animationFraction:(float)arg6;
 + (id)viewWithLegacyComplicationType:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (id)_createAndAddColoringLabelWithFontSize:(double)arg1 weight:(double)arg2 usesTextProviderTintColoring:(BOOL)arg3;
 - (void)_transitToHighlightState:(BOOL)arg1 fraction:(double)arg2;
 - (id)init;

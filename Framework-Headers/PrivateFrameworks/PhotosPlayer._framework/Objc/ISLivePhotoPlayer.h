@@ -22,6 +22,7 @@
     double _lastAppliedScale;
     BOOL _playingVitality;
     BOOL _hinting;
+    BOOL _isAttemptingToPlayback;
     BOOL _immediatelyShowsPhotoWhenPlaybackEnds;
     BOOL _playbackAllowed;
     BOOL __settleAutomaticallyWhenReady;
@@ -50,6 +51,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHinting, setter=_setHinting:) BOOL hinting; // @synthesize hinting=_hinting;
 @property (nonatomic) BOOL immediatelyShowsPhotoWhenPlaybackEnds; // @synthesize immediatelyShowsPhotoWhenPlaybackEnds=_immediatelyShowsPhotoWhenPlaybackEnds;
+@property (nonatomic, setter=_setIsAttemptingToPlayback:) BOOL isAttemptingToPlayback; // @synthesize isAttemptingToPlayback=_isAttemptingToPlayback;
 @property (nonatomic, getter=isPlaybackAllowed) BOOL playbackAllowed; // @synthesize playbackAllowed=_playbackAllowed;
 @property (readonly, nonatomic) NSSet *playbackFilters;
 @property (nonatomic, getter=isPlayingVitality, setter=_setPlayingVitality:) BOOL playingVitality; // @synthesize playingVitality=_playingVitality;
@@ -86,6 +88,7 @@
 - (double)lastAppliedScale;
 - (void)livePhotoPlaybackBehaviorDidBeginPlaying:(id)arg1;
 - (void)livePhotoPlaybackBehaviorDidFinish:(id)arg1;
+- (void)livePhotoPlaybackBehaviorWillTransitionToPhoto:(id)arg1;
 - (void)livePhotoSettleBehaviorDidFinish:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)playHintWhenReady;
@@ -94,6 +97,7 @@
 - (void)prepareForHintWhenReady;
 - (void)prepareForVitality;
 - (void)removePlaybackFilter:(id)arg1;
+- (void)setIsAttemptingToPlayback:(BOOL)arg1;
 - (void)setSeekTime:(CDStruct_1b6d18a9)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startPlaybackWithStyle:(long long)arg1;
 - (void)startPlaybackWithStyle:(long long)arg1 settleAutomatically:(BOOL)arg2;

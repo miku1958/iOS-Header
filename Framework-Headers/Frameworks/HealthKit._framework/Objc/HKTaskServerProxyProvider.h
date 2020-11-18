@@ -6,14 +6,16 @@
 
 #import <HealthKit/HKProxyProvider.h>
 
-@class HKTaskConfiguration, NSString, NSUUID;
+@class HKTaskConfiguration, NSString, NSURL, NSUUID;
 
 @interface HKTaskServerProxyProvider : HKProxyProvider
 {
     NSUUID *_taskUUID;
+    NSURL *_pluginURL;
     HKTaskConfiguration *_taskConfiguration;
 }
 
+@property (copy, nonatomic) NSURL *pluginURL; // @synthesize pluginURL=_pluginURL;
 @property (copy) HKTaskConfiguration *taskConfiguration; // @synthesize taskConfiguration=_taskConfiguration;
 @property (readonly, copy, nonatomic) NSString *taskIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *taskUUID; // @synthesize taskUUID=_taskUUID;

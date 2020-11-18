@@ -15,6 +15,7 @@
 
 + (void)addEntriesToPostDictionary:(id)arg1 forStub:(id)arg2;
 + (BOOL)attemptSetRequest:(id)arg1 toPostWithJSONDict:(id)arg2;
++ (id)stringTimeOfLastBackup;
 - (void).cxx_destruct;
 - (void)addCommonHeadersToRequest:(id)arg1;
 - (id)initWithAccount:(id)arg1;

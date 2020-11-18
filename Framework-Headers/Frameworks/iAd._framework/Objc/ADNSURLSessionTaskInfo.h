@@ -11,18 +11,18 @@
 
 @interface ADNSURLSessionTaskInfo : NSObject
 {
-    id<NSURLSessionDataDelegate> _delegate;
     NSURLSessionDataTask *_task;
+    id<NSURLSessionDataDelegate> _delegate;
     NSThread *_thread;
     NSArray *_modes;
 }
 
-@property (weak) id<NSURLSessionDataDelegate> delegate;
+@property (weak) id<NSURLSessionDataDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy) NSArray *modes; // @synthesize modes=_modes;
-@property (readonly, strong) NSURLSessionDataTask *task; // @synthesize task=_task;
+@property (readonly) NSURLSessionDataTask *task; // @synthesize task=_task;
 @property (strong) NSThread *thread; // @synthesize thread=_thread;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 modes:(id)arg3;
 - (void)invalidate;
 - (void)perform:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;

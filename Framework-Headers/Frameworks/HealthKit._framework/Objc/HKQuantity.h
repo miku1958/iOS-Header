@@ -13,11 +13,12 @@
 
 @interface HKQuantity : NSObject <NSSecureCoding, NSCopying>
 {
-    double _value;
     HKUnit *_unit;
+    double _value;
 }
 
 @property (readonly, nonatomic, getter=_unit) HKUnit *unit; // @synthesize unit=_unit;
+@property (readonly, nonatomic, getter=_value) double value; // @synthesize value=_value;
 
 + (id)_quantityWithBeatsPerMinute:(double)arg1;
 + (id)quantityWithUnit:(id)arg1 doubleValue:(double)arg2;

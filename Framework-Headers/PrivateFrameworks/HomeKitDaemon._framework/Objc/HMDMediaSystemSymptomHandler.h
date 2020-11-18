@@ -6,14 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDMediaSystem, HMFMessageDispatcher, NSDictionary, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDMediaSystemSymptomHandler : HMFObject <NSSecureCoding, HMFLogging, HMDHomeMessageReceiver>
+@interface HMDMediaSystemSymptomHandler : HMFObject <NSSecureCoding, HMFLogging>
 {
     NSUUID *_uuid;
     HMDMediaSystem *_mediaSystem;
@@ -22,21 +21,17 @@
     HMFMessageDispatcher *_msgDispatcher;
 }
 
-@property (strong, nonatomic) NSDictionary *currentSymptoms; // @synthesize currentSymptoms=_currentSymptoms;
+@property (copy, nonatomic) NSDictionary *currentSymptoms; // @synthesize currentSymptoms=_currentSymptoms;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) HMDMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
 @property (readonly, nonatomic) NSSet *mergedSymptoms;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, copy) NSSet *messageReceiverChildren;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

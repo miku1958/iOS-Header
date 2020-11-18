@@ -18,24 +18,46 @@ struct CGSize {
 };
 
 struct CLLocationCoordinate2D {
-    double latitude;
-    double longitude;
-};
-
-struct NSArray {
-    Class _field1;
+    double _field1;
+    double _field2;
 };
 
 struct NSMapTable {
     Class _field1;
 };
 
+struct RTPair {
+    Class _field1;
+};
+
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned int _field1;
-    float _field2;
-} CDStruct_f48a8b00;
+    char *_field1;
+} CDStruct_b8464340;
+
+typedef struct {
+    void *data;
+    void *reserved;
+    unsigned long long dim[4];
+    unsigned long long stride[4];
+    unsigned long long width;
+    unsigned long long height;
+    unsigned long long channels;
+    unsigned long long batch_number;
+    unsigned long long sequence_length;
+    unsigned long long stride_width;
+    unsigned long long stride_height;
+    unsigned long long stride_channels;
+    unsigned long long stride_batch_number;
+    unsigned long long stride_sequence_length;
+    int storage_type;
+} CDStruct_0a65202a;
 
 typedef struct {
     double _field1;

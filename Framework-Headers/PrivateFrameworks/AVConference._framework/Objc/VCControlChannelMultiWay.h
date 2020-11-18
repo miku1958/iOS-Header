@@ -56,13 +56,14 @@ __attribute__((visibility("hidden")))
 - (void)flushReportingStats;
 - (int)getKeyDerivationCryptoSet:(CDStruct_5b6da142 *)arg1 withKeyMaterial:(id)arg2 derivedSSRC:(unsigned int *)arg3;
 - (id)initWithTransportSessionID:(unsigned int)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
+- (id)initWithTransportSessionID:(unsigned int)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2 mode:(int)arg3;
 - (void)initializeEncryption;
 - (void)initializeSRTPInfo:(struct tagSRTPINFO *)arg1;
 - (BOOL)isParticipantActive:(unsigned long long)arg1;
 - (id)lastUsedMKIBytes;
 - (void)messageReceived:(id)arg1 participantInfo:(CDStruct_94aa5fb4 *)arg2;
 - (void)periodicTask:(void *)arg1;
-- (id)processEncryptedMessage:(id)arg1 sequenceNumber:(id)arg2 MKIData:(id)arg3 participantID:(id)arg4;
+- (id)processEncryptedPayload:(id)arg1 isData:(BOOL)arg2 sequenceNumber:(id)arg3 MKIData:(id)arg4 participantID:(id)arg5;
 - (void)registerPeriodicTask;
 - (void)removeActiveParticipant:(unsigned long long)arg1;
 - (void)removeAllActiveParticipants;

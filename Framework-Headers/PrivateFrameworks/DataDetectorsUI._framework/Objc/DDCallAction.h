@@ -10,13 +10,14 @@
 {
 }
 
++ (id)callProvider;
 + (BOOL)isAvailable;
 - (long long)TTYType;
 - (double)_systemFontSize;
 - (BOOL)_titleFitsInActionSheet:(id)arg1;
-- (id)callProvider;
 - (BOOL)canBePerformedByOpeningURL;
 - (id)dialRequest;
+- (id)dialRequestWithProvider:(id)arg1;
 - (int)interactionType;
 - (BOOL)isEmail;
 - (id)localizedCallStringForName:(id)arg1 usingCallRelay:(BOOL)arg2;

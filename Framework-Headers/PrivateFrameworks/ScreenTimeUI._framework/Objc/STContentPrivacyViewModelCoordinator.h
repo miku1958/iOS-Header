@@ -10,13 +10,14 @@
 #import <ScreenTimeUI/STContentPrivacyViewModelCoordinator-Protocol.h>
 
 @class NSArray, NSManagedObjectID, NSMutableDictionary, NSNumber, NSString, STContentPrivacyViewModel;
-@protocol RMPersistenceControllerProtocol;
+@protocol STPersistenceControllerProtocol;
 
+__attribute__((visibility("hidden")))
 @interface STContentPrivacyViewModelCoordinator : NSObject <NSFetchedResultsControllerDelegate, STContentPrivacyViewModelCoordinator>
 {
     BOOL _isLocalDevice;
     STContentPrivacyViewModel *_viewModel;
-    id<RMPersistenceControllerProtocol> _persistenceController;
+    id<STPersistenceControllerProtocol> _persistenceController;
     NSString *_organizationIdentifier;
     NSNumber *_userDSID;
     NSString *_userName;
@@ -34,7 +35,7 @@
 @property (nonatomic) BOOL isLocalDevice; // @synthesize isLocalDevice=_isLocalDevice;
 @property unsigned long long numExpectedChanges; // @synthesize numExpectedChanges=_numExpectedChanges;
 @property (copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
-@property (readonly, nonatomic) id<RMPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
+@property (readonly, nonatomic) id<STPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 @property (copy, nonatomic) NSString *userName; // @synthesize userName=_userName;
@@ -43,15 +44,13 @@
 
 - (void).cxx_destruct;
 - (id)_activationIdentifier;
+- (void)_contactStoreDidChange:(id)arg1;
 - (id)_createUnrestrictedConfiguration:(id)arg1;
-- (id)_getSettingsRestrictionsEnabledWithContext:(id)arg1 error:(id *)arg2;
 - (id)_identifierForConfigurationType:(id)arg1;
 - (id)_localDeviceRestrictions;
-- (BOOL)_rebuildActivationInContext:(id)arg1 withNewConfigurations:(id)arg2 error:(id *)arg3;
-- (void)_registerForPersistenceStoreNotifications;
+- (void)_registerForPersistentStoreNotifications;
 - (id)_remoteDeviceRestrictions;
 - (id)_restrictionsForWebFilterState:(unsigned long long)arg1;
-- (BOOL)_setSettingsRestrictionsEnabled:(BOOL)arg1 error:(id *)arg2;
 - (void)_setValue:(id)arg1 forMCFeature:(id)arg2;
 - (void)_setValue:(id)arg1 forSBCapability:(id)arg2;
 - (void)_updateConfiguration:(id)arg1 keyPath:(id)arg2 value:(id)arg3;
@@ -65,6 +64,7 @@
 - (id)initWithPersistenceController:(id)arg1 organizationIdentifier:(id)arg2 userDSID:(id)arg3 userName:(id)arg4;
 - (void)loadViewModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)reloadViewModelForRemoteChanges;
+- (void)saveCommunicationLimits:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveContentPrivacyEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)saveRestrictionValue:(id)arg1 forItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)saveValuesForRestrictions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

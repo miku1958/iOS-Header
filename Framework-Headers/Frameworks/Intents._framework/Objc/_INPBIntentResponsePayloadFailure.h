@@ -19,10 +19,12 @@
         unsigned int errorCode:1;
     } _has;
     BOOL _appLaunchRequested;
+    BOOL __encodeLegacyGloryData;
     int _errorCode;
     NSString *_enumTypeName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL appLaunchRequested; // @synthesize appLaunchRequested=_appLaunchRequested;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -34,9 +36,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

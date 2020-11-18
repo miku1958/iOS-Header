@@ -87,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (id)thinKeycapsFontName;
 - (double)tinyPunctuationGlyphFontSize;
 - (struct CGPoint)tinyPunctuationGlyphOffset;
+- (struct CGPoint)variantAnnotationTextOffset;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;
 - (struct UIEdgeInsets)variantPaddedFrameInsets;

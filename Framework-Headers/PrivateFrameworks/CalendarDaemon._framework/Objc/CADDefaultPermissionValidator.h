@@ -10,13 +10,13 @@
 
 @class ClientConnection, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CADDefaultPermissionValidator : NSObject <CADPermissionValidator>
 {
     ClientConnection *_connection;
 }
 
 @property (readonly) BOOL canMakeSpotlightChanges;
+@property (readonly) BOOL canModifyBirthdayCalendar;
 @property (readonly) BOOL canModifyCalendarDatabase;
 @property (readonly) BOOL canModifySuggestedEventCalendar;
 @property (readonly, weak, nonatomic) ClientConnection *connection; // @synthesize connection=_connection;
@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL hasCalendarToolEntitlement;
 @property (readonly) BOOL hasChangeIdTrackingOverrideEntitlement;
 @property (readonly) BOOL hasContactsUIEntitlement;
+@property (readonly) BOOL hasManagedConfigurationBundleIDOverrideEntitlement;
 @property (readonly) BOOL hasMigrationEntitlement;
+@property (readonly) BOOL hasNotificationCountEntitlement;
 @property (readonly) BOOL hasSyncClientEntitlement;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL internalAccessLevelGranted;

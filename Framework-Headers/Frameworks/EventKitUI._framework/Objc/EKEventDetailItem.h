@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<EKEventDetailItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL detailItemVisibilityChanged;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long maximumNumberOfSubItems;
 @property (readonly, nonatomic) BOOL requiresLayoutForSubitemCount;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
+- (id)cellForSubitemAtIndex:(unsigned long long)arg1 withTraitCollection:(id)arg2;
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (void)dealloc;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
@@ -53,7 +55,10 @@ __attribute__((visibility("hidden")))
 - (void)eventViewController:(id)arg1 didSelectReadOnlySubitem:(unsigned long long)arg2;
 - (void)eventViewController:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (void)eventViewController:(id)arg1 didUnhighlightSubitem:(unsigned long long)arg2;
+- (void)eventViewController:(id)arg1 tableViewDidScroll:(id)arg2;
 - (BOOL)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
+- (BOOL)isPrivateEvent;
+- (BOOL)isReadOnlyDelegateCalendar;
 - (void)layoutCellsForWidth:(double)arg1 position:(int)arg2;
 - (void)notifyDidEndEditing;
 - (void)notifyDidStartEditing;

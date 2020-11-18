@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDictionary, NSNumber, NSString, PPNamedEntityQuery;
+#import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 
-@protocol PPNamedEntityReadOnlyServerProtocol
-- (void)feedbackEngagedNamedEntities:(NSDictionary *)arg1;
-- (void)feedbackNamedEntitiesOverallEngagement:(NSNumber *)arg1;
-- (void)feedbackUsedNamedEntities:(NSArray *)arg1;
+@class NSString, PPNamedEntityQuery;
+
+@protocol PPNamedEntityReadOnlyServerProtocol <PPFeedbackAccepting>
 - (void)mapItemForPlaceName:(NSString *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)namedEntityRecordsWithQuery:(PPNamedEntityQuery *)arg1 queryId:(unsigned long long)arg2;
 - (void)rankedNamedEntitiesWithQuery:(PPNamedEntityQuery *)arg1 queryId:(unsigned long long)arg2;

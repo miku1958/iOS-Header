@@ -69,6 +69,7 @@
 - (BOOL)evaluateWithUserPresence:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2;
+- (BOOL)isActive;
 - (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)presenceMetricData;

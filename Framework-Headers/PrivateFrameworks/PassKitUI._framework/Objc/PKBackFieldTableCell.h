@@ -12,13 +12,14 @@
 {
     PKPassField *_field;
     UITextView *_valueTextView;
+    double _cachedWidth;
+    double _computedHeight;
     BOOL _showLinks;
 }
 
 @property (strong, nonatomic) PKPassField *field; // @synthesize field=_field;
 @property (nonatomic) BOOL showLinks; // @synthesize showLinks=_showLinks;
 
-+ (id)_linkColor;
 + (id)_linkTextAttributes;
 + (id)reuseIdentifier;
 + (id)titleFont;
@@ -26,11 +27,12 @@
 - (void).cxx_destruct;
 - (void)_detectLinks;
 - (void)_setupTextAttributes;
-- (struct CGSize)_sizeForValueTextWithWidth:(double)arg1;
+- (struct CGRect)_textBounds;
 - (void)dealloc;
 - (id)initWithField:(id)arg1 showLinks:(BOOL)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

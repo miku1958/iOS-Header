@@ -21,6 +21,7 @@
 @property (strong, nonatomic) PKPeerPaymentTransactionMetadata *peerPaymentTransactionMetadata; // @synthesize peerPaymentTransactionMetadata=_peerPaymentTransactionMetadata;
 @property (nonatomic) long long status; // @synthesize status=_status;
 
++ (id)sanitizedErrors:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

@@ -14,11 +14,8 @@
 
 @interface PLTitledPlatterView : PLPlatterView <PLPlatterInternal, PLTitled, PLContentSizeCategoryAdjusting>
 {
-    UIView *_headerContainerView;
-    UIView *_headerOverlayView;
     PLPlatterHeaderContentView *_headerContentView;
-    BOOL _didSetInitialCustomContentViewFrame;
-    BOOL _sashHidden;
+    BOOL _largerHeaderMarginEnabled;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory;
@@ -33,19 +30,17 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *iconButtons;
 @property (copy, nonatomic) NSArray *icons;
+@property (nonatomic, getter=isLargerHeaderMarginEnabled) BOOL largerHeaderMarginEnabled; // @synthesize largerHeaderMarginEnabled=_largerHeaderMarginEnabled;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
-@property (nonatomic, getter=isSashHidden) BOOL sashHidden; // @synthesize sashHidden=_sashHidden;
+@property (nonatomic, getter=isSashHidden) BOOL sashHidden;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSTimeZone *timeZone;
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) UIButton *utilityButton;
 
 - (void).cxx_destruct;
-- (void)_configureHeaderContainerViewIfNecessary;
 - (void)_configureHeaderContentView;
 - (void)_configureHeaderContentViewIfNecessary;
-- (void)_configureHeaderOverlayViewIfNecessary;
-- (void)_configureMainOverlayView;
 - (id)_headerContentView;
 - (void)_layoutHeaderViews;
 - (struct CGRect)_mainContentFrame;
@@ -56,9 +51,8 @@
 - (void)setHeaderHeedsHorizontalLayoutMargins:(BOOL)arg1;
 - (void)setNeedsLayout;
 - (void)setUtilityView:(id)arg1;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (id)utilityView;
 
 @end

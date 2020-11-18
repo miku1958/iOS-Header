@@ -8,11 +8,12 @@
 
 #import <CommunicationsSetupUI/AKAppleIDAuthenticationDelegate-Protocol.h>
 #import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
+#import <CommunicationsSetupUI/CNMeCardSharingSettingsViewControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
 
 @class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, IMCTXPCServiceSubscriptionInfo, NSString;
 
-@interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler>
+@interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler, CNMeCardSharingSettingsViewControllerDelegate>
 {
     BOOL _showingChildViewController;
     int _profileToken;
@@ -38,14 +39,18 @@
 + (id)currentKeepMessages;
 + (BOOL)currentMessageAutoKeepForType:(int)arg1;
 + (int)currentMessageAutoKeepOptionForType:(int)arg1;
++ (id)removeFirstPartyExtensionFromArray:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_allAccountsAreDeactivated;
 - (void)_clearMessagesAppExtensionSalt;
+- (BOOL)_imageForkedFromMeCard;
 - (BOOL)_isMadridAccountOperational;
 - (BOOL)_isMadridSwitchOn;
 - (BOOL)_isRaiseGestureSupported;
 - (BOOL)_isSMSDevice;
 - (id)_madridSettingsController;
+- (unsigned long long)_meCardSharingAudience;
+- (BOOL)_meCardSharingEnabled;
 - (void)_setupAccountHandlers;
 - (void)_setupAccountHandlersForDisabling;
 - (void)_setupMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(BOOL)arg2;
@@ -54,6 +59,7 @@
 - (void)_showMadridSetupIfNecessary;
 - (void)_showMadridSetupIfNecessary:(BOOL)arg1;
 - (void)_showPrivacySheet:(id)arg1;
+- (void)_showSetupMeCardAlert;
 - (void)_showSignInController;
 - (id)_smsRelayDevicesController;
 - (void)_startListeningForProfileChanges;
@@ -82,6 +88,7 @@
 - (id)getAccountSummaryForSpecifier:(id)arg1;
 - (id)getAudioMessageAutoKeep:(id)arg1;
 - (id)getKeepMessages:(id)arg1;
+- (id)getNameAndPhotoSharingSpecifierSummary:(id)arg1;
 - (id)getPreviewTranscodingEnabled:(id)arg1;
 - (id)getRaiseToListenEnabled:(id)arg1;
 - (id)getSMSRelayDevicesSummary:(id)arg1;
@@ -94,13 +101,14 @@
 - (BOOL)isPersonalCompanionEnabled;
 - (id)isSiriToneNotificationEnabled:(id)arg1;
 - (id)logName;
-- (id)madridAccountsMultipleSubscriptionsSpecifierIdentifiers;
 - (id)madridAccountsSpecifierIdentifiers;
 - (id)madridSigninButtonTextForSpecifier:(id)arg1;
 - (id)madridSigninSpecifiers;
 - (void)madridSigninTappedWithSpecifier:(id)arg1;
 - (id)madridSwitchSpecifierIdentifiers;
 - (void)messageFilteringTapped:(id)arg1;
+- (void)nameAndPhotoSharingForSpecifier:(id)arg1;
+- (id)nameAndPhotoSharingSpecifiers;
 - (void)newCarrierNotification;
 - (void)notifyThatConversationFilteringChanged;
 - (id)raiseToListenSpecifierIdentifiers;
@@ -118,6 +126,10 @@
 - (void)setSiriToneNotificationEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setSpecifierLoading:(id)arg1 loading:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)setWillSendGroupMMS:(id)arg1 specifier:(id)arg2;
+- (void)sharingSettingsViewController:(id)arg1 didSelectSharingAudience:(unsigned long long)arg2;
+- (void)sharingSettingsViewController:(id)arg1 didUpdateSharingState:(BOOL)arg2;
+- (void)sharingSettingsViewController:(id)arg1 didUpdateWithSharingResult:(id)arg2;
+- (void)sharingSettingsViewControllerDidUpdateContact:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (BOOL)shouldShowAudioMessageSettings;
 - (BOOL)shouldShowBlacklistSettings;
@@ -125,16 +137,19 @@
 - (BOOL)shouldShowContactPhotoSettings;
 - (BOOL)shouldShowDeliveryReceipts;
 - (BOOL)shouldShowGenericSettings;
-- (BOOL)shouldShowIDSSubscriptions;
 - (BOOL)shouldShowMadridAccounts;
 - (BOOL)shouldShowMadridSignin;
 - (BOOL)shouldShowMadridSwitch;
+- (BOOL)shouldShowNicknames;
 - (BOOL)shouldShowRaiseToListenSwitch;
 - (BOOL)shouldShowReadReceipts;
 - (BOOL)shouldShowSMSRelaySettings;
 - (BOOL)shouldShowSendAsSMS;
 - (BOOL)shouldShowSiriSettings;
 - (BOOL)shouldShowiMessageFilteringSettings:(id)arg1;
+- (void)showAccountsMismatchedAlertForNicknames;
+- (void)showMeCardViewControllerWithNickname:(id)arg1;
+- (void)showMultiplePhoneNumbersAlerForNicknames;
 - (id)siriSettingsIdentifiers;
 - (id)smsRelaySettingsSpecifierIdentifiers;
 - (id)spamFilteringSpecifierIdentifiers;

@@ -20,6 +20,7 @@
     BOOL _allowRouting;
     BOOL _allowExpiredDNSBehavior;
     BOOL __allowsRetryForBackgroundDataTasks;
+    BOOL _redactRemoteEndpointFromNetworkMetrics;
     BOOL _outOfProcessDiscretionary;
     BOOL _metricRequest;
     long long _qualityOfService;
@@ -30,6 +31,7 @@
     NSString *__sourceApplicationSecondaryIdentifier;
     NSString *__appleIDContextSessionIdentifier;
     unsigned long long _discretionaryNetworkBehavior;
+    unsigned long long _duetPreClearedMode;
     NSString *_identifier;
     NSDictionary *_resolvedEndpointsWithHostname;
     C2MetricOptions *_metricOptions;
@@ -55,6 +57,7 @@
 @property (nonatomic) unsigned long long c2MetricsReportFrequency; // @synthesize c2MetricsReportFrequency=_c2MetricsReportFrequency;
 @property (nonatomic) unsigned long long c2MetricsReportFrequencyBase; // @synthesize c2MetricsReportFrequencyBase=_c2MetricsReportFrequencyBase;
 @property (nonatomic) unsigned long long discretionaryNetworkBehavior; // @synthesize discretionaryNetworkBehavior=_discretionaryNetworkBehavior;
+@property (nonatomic) unsigned long long duetPreClearedMode; // @synthesize duetPreClearedMode=_duetPreClearedMode;
 @property (readonly, nonatomic) double emptySessionExpiryInSeconds;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSURL *invokedURL; // @synthesize invokedURL=_invokedURL;
@@ -65,12 +68,14 @@
 @property (nonatomic) BOOL outOfProcessDiscretionary; // @synthesize outOfProcessDiscretionary=_outOfProcessDiscretionary;
 @property (copy, nonatomic) NSString *outOfProcessPoolName; // @synthesize outOfProcessPoolName=_outOfProcessPoolName;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
+@property (nonatomic) BOOL redactRemoteEndpointFromNetworkMetrics; // @synthesize redactRemoteEndpointFromNetworkMetrics=_redactRemoteEndpointFromNetworkMetrics;
 @property (strong, nonatomic) NSDictionary *resolvedEndpointsWithHostname; // @synthesize resolvedEndpointsWithHostname=_resolvedEndpointsWithHostname;
 @property (copy, nonatomic) CDUnknownBlockType testBehavior_sessionGroupCreated; // @synthesize testBehavior_sessionGroupCreated=_testBehavior_sessionGroupCreated;
 @property (nonatomic) BOOL tlsPinning; // @synthesize tlsPinning=_tlsPinning;
 @property (nonatomic) BOOL useAdaptiveTimeouts; // @synthesize useAdaptiveTimeouts=_useAdaptiveTimeouts;
 
 + (id)stringForDiscretionaryNetworkBehavior:(unsigned long long)arg1;
++ (id)stringForDuetPreClearedMode:(unsigned long long)arg1;
 + (id)stringForQualityOfService:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 + (BOOL)triesteMetricsEnabled;

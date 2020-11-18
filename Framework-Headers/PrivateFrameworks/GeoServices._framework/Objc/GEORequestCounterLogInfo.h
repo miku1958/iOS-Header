@@ -15,6 +15,7 @@
     NSDictionary *_dict;
 }
 
+@property (readonly, nonatomic) double oldestTimestamp;
 @property (readonly, nonatomic) unsigned char requestType;
 
 + (id)counterLogInfoWithDictionary:(id)arg1;
@@ -22,15 +23,14 @@
 - (void).cxx_destruct;
 - (id)_formattedCSVString;
 - (id)_formattedString;
+- (long long)compare:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)recvBytes;
-- (unsigned long long)recvBytesForMode:(unsigned char)arg1;
 - (unsigned long long)xmitBytes;
-- (unsigned long long)xmitBytesForMode:(unsigned char)arg1;
 
 @end
 

@@ -34,29 +34,29 @@
 - (BOOL)hasHorizontalScroller;
 - (BOOL)hasVerticalScroller;
 - (float)horizontalLineScroll;
-- (int)horizontalScrollingMode;
+- (unsigned char)horizontalScrollingMode;
 - (BOOL)inProgrammaticScroll;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)reflectScrolledClipView:(id)arg1;
 - (struct CGPoint)scrollOrigin;
 - (void)scrollPoint:(struct CGPoint)arg1;
 - (void)scrollWheel:(id)arg1;
-- (void)scrollingModes:(int *)arg1 vertical:(int *)arg2;
+- (void)scrollingModes:(unsigned char *)arg1 vertical:(unsigned char *)arg2;
 - (void)setActualScrollPosition:(struct CGPoint)arg1;
 - (void)setDocumentView:(id)arg1;
 - (void)setDrawsBackground:(BOOL)arg1;
 - (void)setHasHorizontalScroller:(BOOL)arg1;
 - (void)setHasVerticalScroller:(BOOL)arg1;
-- (void)setHorizontalScrollingMode:(int)arg1;
+- (void)setHorizontalScrollingMode:(unsigned char)arg1;
 - (void)setLineScroll:(float)arg1;
 - (void)setScrollBarsSuppressed:(BOOL)arg1 repaintOnUnsuppress:(BOOL)arg2;
 - (void)setScrollOrigin:(struct CGPoint)arg1 updatePositionAtAll:(BOOL)arg2 immediately:(BOOL)arg3;
-- (void)setScrollingMode:(int)arg1;
-- (void)setScrollingModes:(int)arg1 vertical:(int)arg2 andLock:(BOOL)arg3;
-- (void)setVerticalScrollingMode:(int)arg1;
+- (void)setScrollingMode:(unsigned char)arg1;
+- (void)setScrollingModes:(unsigned char)arg1 vertical:(unsigned char)arg2 andLock:(BOOL)arg3;
+- (void)setVerticalScrollingMode:(unsigned char)arg1;
 - (struct CGRect)unobscuredContentRect;
 - (float)verticalLineScroll;
-- (int)verticalScrollingMode;
+- (unsigned char)verticalScrollingMode;
 
 @end
 

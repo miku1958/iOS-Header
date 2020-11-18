@@ -16,7 +16,6 @@
 + (id)inMemoryHandler;
 - (void).cxx_destruct;
 - (id)_valuesForKeys:(id)arg1 error:(id *)arg2;
-- (void)dealloc;
 - (long long)decreaseWeightForLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3;
 - (BOOL)dropLinkWithLabel:(id)arg1 between:(id)arg2 and:(id)arg3 error:(id *)arg4;
 - (BOOL)dropLinksBetween:(id)arg1 and:(id)arg2 error:(id *)arg3;

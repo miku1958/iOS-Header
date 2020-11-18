@@ -9,22 +9,28 @@
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSString, PPTopicRecord;
 
 @interface PPTopic : NSObject <NSCopying, NSSecureCoding>
 {
-    NSString *_id;
+    NSString *_topicIdentifier;
 }
 
-@property (readonly, nonatomic) NSString *id; // @synthesize id=_id;
+@property (readonly, nonatomic) PPTopicRecord *mostRelevantRecord;
+@property (readonly, nonatomic) double sentimentScore;
+@property (readonly, nonatomic) NSString *topicIdentifier; // @synthesize topicIdentifier=_topicIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)id;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithId:(id)arg1;
+- (id)initWithTopicIdentifier:(id)arg1;
+- (id)initWithTopicIdentifier:(id)arg1 mostRelevantRecord:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTopic:(id)arg1;
 

@@ -8,11 +8,16 @@
 
 #import <GeoServices/GEONavigationServerPushStateXPCInterface-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class GEONavdPeer, NSData, NSMutableArray, NSString;
 
 @interface GEONavigationServer : NSObject <GEONavigationServerPushStateXPCInterface>
 {
-    NSMutableArray *_peers;
+    GEONavdPeer *_pushStatePeer;
+    NSMutableArray *_listenerPeers;
+    BOOL _isListenerConnectionOpen;
+    int _listenerConnectionOpenToken;
+    unsigned long long _state;
+    int _transportType;
     NSData *_routeSummaryData;
     NSData *_transitSummaryData;
     NSData *_guidanceStateData;
@@ -34,7 +39,10 @@
 
 + (id)identifier;
 - (void).cxx_destruct;
+- (void)_closePushStatePeerConnection;
 - (void)_forEachValidPeerProxy:(CDUnknownBlockType)arg1;
+- (void)_notifyListenersOpenConnection;
+- (void)_openPushStatePeerConnection:(id)arg1;
 - (void)_requestActiveRouteDetailsDataWithPeer:(id)arg1;
 - (void)_requestGuidanceStateWithPeer:(id)arg1;
 - (void)_requestNavigationVoiceVolumeWithPeer:(id)arg1;
@@ -53,6 +61,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)setCurrentRoadName:(id)arg1;
+- (void)setNavigationSessionState:(unsigned long long)arg1 transportType:(int)arg2;
 - (void)setNavigationVoiceVolumeWithData:(id)arg1;
 - (void)setRouteSummaryWithActiveRouteDetailsData:(id)arg1;
 - (void)setRouteSummaryWithGuidanceStateData:(id)arg1;

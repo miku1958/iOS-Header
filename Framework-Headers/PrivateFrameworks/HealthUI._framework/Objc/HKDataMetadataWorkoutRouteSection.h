@@ -22,8 +22,8 @@
 @property (readonly, nonatomic) HKLocationReadings *locationReadings; // @synthesize locationReadings=_locationReadings;
 
 - (void).cxx_destruct;
-- (void)_generateRouteImage;
 - (id)cellForIndex:(unsigned long long)arg1 tableView:(id)arg2;
+- (void)generateRouteImage;
 - (id)initWithLocationReadings:(id)arg1;
 - (unsigned long long)numberOfRowsInSection;
 - (id)sectionTitle;

@@ -6,14 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class HKLocationReadings;
+@class HKLocationReadings, MKMapSnapshotter, UIColor;
 
 @interface HKRouteMapGenerator : NSObject
 {
+    BOOL _useRelativeColorForSpeed;
+    BOOL _useMarkerAnnotations;
     HKLocationReadings *_locationReadings;
+    UIColor *_startPointColor;
+    UIColor *_endPointColor;
+    MKMapSnapshotter *_runningSnapshotter;
 }
 
+@property (strong, nonatomic) UIColor *endPointColor; // @synthesize endPointColor=_endPointColor;
 @property (strong, nonatomic) HKLocationReadings *locationReadings; // @synthesize locationReadings=_locationReadings;
+@property (strong, nonatomic) MKMapSnapshotter *runningSnapshotter; // @synthesize runningSnapshotter=_runningSnapshotter;
+@property (strong, nonatomic) UIColor *startPointColor; // @synthesize startPointColor=_startPointColor;
+@property (nonatomic) BOOL useMarkerAnnotations; // @synthesize useMarkerAnnotations=_useMarkerAnnotations;
+@property (nonatomic) BOOL useRelativeColorForSpeed; // @synthesize useRelativeColorForSpeed=_useRelativeColorForSpeed;
 
 - (void).cxx_destruct;
 - (CDStruct_90e2a262)_adjustedMapRectForPolyline:(id)arg1 withSize:(struct CGSize)arg2;
@@ -22,8 +32,9 @@
 - (id)_imageWithPolyline:(id)arg1 lineWidth:(double)arg2 mapRect:(CDStruct_90e2a262)arg3 onSnapshot:(id)arg4;
 - (void)_overlayAnnotationView:(id)arg1 point:(CDStruct_c3b9c2ee)arg2 onSnapshot:(id)arg3 context:(struct CGContext *)arg4;
 - (void)drawLinesWithPolyline:(id)arg1 lineWidth:(double)arg2 mapRect:(CDStruct_90e2a262)arg3 context:(struct CGContext *)arg4 pointFromMapPoint:(CDUnknownBlockType)arg5;
+- (id)init;
 - (id)relativeColorForSpeed:(double)arg1;
-- (void)snapshotWithSize:(struct CGSize)arg1 lineWidth:(double)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)snapshotWithSize:(struct CGSize)arg1 lineWidth:(double)arg2 traitCollection:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

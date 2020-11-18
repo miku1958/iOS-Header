@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)numberPadKeyPrimaryTextOffset;
 - (struct CGPoint)numberPadKeySecondaryTextOffset;
 - (struct CGPoint)numberPadVBarSecondaryTextOffset;
-- (int)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
+- (unsigned long long)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
 - (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
 - (id)shiftedControlKeyTraits;
 - (id)shiftedWhiteControlKeyTraits;

@@ -52,6 +52,7 @@
 - (void)_scheduleCloudStoreContainerSetupBackgroundActivityWithNextInterval:(unsigned long long)arg1;
 - (void)_scheduleFirstCloudStoreContainerSetupBackgroundActivityIfNeccessary;
 - (BOOL)_shouldScheduleInitalCloudStoreContainerSetupBackgroundActivity;
+- (void)_syncOriginatingTransactionsToCloudStore;
 - (void)_unregisterForPushNotifications;
 - (void)_unscheduleBackgroundContainerSetupActivities;
 - (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -74,6 +75,7 @@
 - (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)scheduleTransactionDeviceDataSyncBackgroundActivity;
 - (void)setupCloudDatabaseForContainerName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)simulateCloudStorePushForContainerIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)unregisterObserver:(id)arg1;

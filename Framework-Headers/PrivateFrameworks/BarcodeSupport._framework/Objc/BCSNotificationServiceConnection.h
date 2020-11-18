@@ -8,7 +8,6 @@
 
 @class NSXPCConnection;
 
-__attribute__((visibility("hidden")))
 @interface BCSNotificationServiceConnection : NSObject
 {
     NSXPCConnection *_serviceConnection;
@@ -19,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)cancelNotificationsForCodeType:(long long)arg1;
 - (void)dealloc;
+- (void)didReceiveNotificationResponse:(id)arg1;
 - (void)notifyParsedCodeWithData:(id)arg1 codePayload:(id)arg2 shouldReplacePreviousNotifications:(BOOL)arg3 withReply:(CDUnknownBlockType)arg4;
 
 @end

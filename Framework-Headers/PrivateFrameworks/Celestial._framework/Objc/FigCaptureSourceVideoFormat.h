@@ -6,17 +6,16 @@
 
 #import <Celestial/FigCaptureSourceFormat.h>
 
-@class FigCaptureSourceCompanionFormat, NSArray;
+@class FigCaptureSourceCompanionFormat, FigCaptureSourceDepthDataFormat, NSArray;
 
 @interface FigCaptureSourceVideoFormat : FigCaptureSourceFormat
 {
-    BOOL _isMultiStreamFormat;
-    BOOL _isExternalFormat;
     NSArray *_frontEndScalerCompanionFormats;
     BOOL _sifrSupported;
     FigCaptureSourceCompanionFormat *_nonSIFRCompanionFormat;
     FigCaptureSourceCompanionFormat *_depthCompanionFormat;
     NSArray *_supportedDepthDataFormats;
+    FigCaptureSourceDepthDataFormat *_streamingDXDYDepthDataFormat;
     BOOL _isStreamingDisparitySupported;
     BOOL _isStreamingDepthSupported;
     BOOL _isStillImageDisparitySupported;
@@ -26,15 +25,21 @@
 @property (readonly) NSArray *AVCaptureSessionPresets;
 @property (readonly, getter=isSIFRSupported) BOOL SIFRSupported;
 @property (readonly) int autoFocusSystem;
+@property (readonly) int baseSensorPowerConsumption;
 @property (readonly, getter=isBinned) BOOL binned;
+@property (readonly) BOOL configureForSpatialOverCaptureSupport;
 @property (readonly) BOOL configureForStillImageStabilizationSupport;
 @property (readonly) float defaultMaxFrameRate;
 @property (readonly) float defaultMinFrameRate;
+@property (readonly) float defaultPortraitLightingEffectStrength;
 @property (readonly) float defaultSimulatedAperture;
+@property (readonly, getter=isDeferredPhotoProcessingSupported) BOOL deferredPhotoProcessingSupported;
+@property (readonly, getter=isDigitalFlashSupported) BOOL digitalFlashSupported;
 @property (readonly) CDStruct_79c71658 dimensions;
-@property (readonly, getter=isExternalFormat) BOOL externalFormat;
 @property (readonly) float fieldOfView;
 @property (readonly) int formatIndex;
+@property (readonly) float geometricDistortionCorrectedFieldOfView;
+@property (readonly) float hardwareCost;
 @property (readonly) BOOL hasSensorHDRCompanionIndex;
 @property (readonly, getter=isHDRSupported) BOOL hdrSupported;
 @property (readonly, getter=isHighProfileH264Supported) BOOL highProfileH264Supported;
@@ -44,19 +49,25 @@
 @property (readonly, getter=isIrisSupported) BOOL irisSupported;
 @property (readonly, getter=isIrisVideoStabilizationSupported) BOOL irisVideoStabilizationSupported;
 @property (readonly, getter=isISPMultiBandNoiseReductionSupported) BOOL ispMultiBandNoiseReductionSupported;
+@property (readonly) int ispPowerConsumption;
 @property (readonly, getter=isLowLightVideoCaptureSupported) BOOL lowLightVideoCaptureSupported;
 @property (readonly) CDStruct_1b6d18a9 maxExposureDuration;
 @property (readonly) float maxISO;
+@property (readonly) float maxPortraitLightingEffectStrength;
 @property (readonly) float maxSimulatedAperture;
 @property (readonly) float maxSupportedFrameRate;
 @property (readonly) float maxZoomFactor;
 @property (readonly) float maxZoomFactorForDepthDataDelivery;
 @property (readonly) CDStruct_1b6d18a9 minExposureDuration;
 @property (readonly) float minISO;
+@property (readonly) float minPortraitLightingEffectStrength;
 @property (readonly) float minSimulatedAperture;
 @property (readonly) float minSupportedFrameRate;
 @property (readonly) float minZoomFactorForDepthDataDelivery;
+@property (readonly, getter=isMomentCaptureMovieRecordingSupported) BOOL momentCaptureMovieRecordingSupported;
+@property (readonly, getter=isMultiCamSupported) BOOL multiCamSupported;
 @property (readonly) BOOL needsPreviewDPCC;
+@property (readonly, getter=isNonDestructiveCropSupported) BOOL nonDestructiveCropSupported;
 @property (readonly, getter=isPhotoFormat) BOOL photoFormat;
 @property (readonly) BOOL prefersSensorHDREnabled;
 @property (readonly) CDStruct_79c71658 previewDimensions;
@@ -65,6 +76,10 @@
 @property (readonly, getter=isRedEyeReductionSupported) BOOL redEyeReductionSupported;
 @property (readonly, getter=isSecondaryScalerUnavailable) BOOL secondaryScalerUnavailable;
 @property (readonly) CDStruct_79c71658 sensorDimensions;
+@property (readonly) int sensorPowerConsumption;
+@property (readonly) CDStruct_79c71658 spatialOverCaptureHighResStillImageDimensions;
+@property (readonly) float spatialOverCapturePercentage;
+@property (readonly, getter=isSpatialOverCaptureSupported) BOOL spatialOverCaptureSupported;
 @property (readonly, getter=isStagePreviewRenderingSupported) BOOL stagePreviewRenderingSupported;
 @property (readonly, getter=isStereoFusionSupported) BOOL stereoFusionSupported;
 @property (readonly, getter=isStillImageDepthSupported) BOOL stillImageDepthSupported;
@@ -77,6 +92,8 @@
 @property (readonly) NSArray *supportedColorSpaces;
 @property (readonly) NSArray *supportedDepthDataFormats;
 @property (readonly) unsigned int supportedRawPixelFormat;
+@property (readonly, getter=isVariableFrameRateVideoCaptureSupported) BOOL variableFrameRateVideoCaptureSupported;
+@property (readonly) int variableSensorPowerConsumption;
 @property (readonly, getter=isVisionDataDeliverySupported) BOOL visionDataDeliverySupported;
 @property (readonly, getter=isWideAsStatsMasterEnabled) BOOL wideAsStatsMasterEnabled;
 @property (readonly, getter=isWideColorSupported) BOOL wideColorSupported;
@@ -90,17 +107,20 @@
 + (BOOL)supportsSecureCoding;
 - (CDStruct_79c71658)_highQualitySensorDimensions;
 - (CDStruct_79c71658)_maxUseableSensorDimensions;
+- (CDStruct_79c71658)_nativeDimensionsWithoutCrop;
 - (CDStruct_79c71658)_outputDimensions;
 - (void)_resolveProperties;
 - (CDStruct_79c71658)_visibleSensorDimensionsIncludingCinematic:(BOOL)arg1;
 - (float)aeMaxGain;
 - (BOOL)capturesStillsFromVideoStream;
+- (float)cinematicStabilizationExtendedLookAheadDuration;
 - (id)copyWithNewPixelFormat:(unsigned int)arg1;
 - (CDStruct_79c71658)cropDimensionsForFES;
 - (void)dealloc;
 - (id)depthCompanionFormat;
+- (float)depthDataAEMaxGain;
+- (float)depthDataMaxIntegrationTimeOverride;
 - (int)fesBinningFactorHorizontal;
-- (int)fesBinningFactorVertical;
 - (CDStruct_79c71658)fesInputCropDimensions;
 - (struct opaqueCMFormatDescription *)formatDescription;
 - (id)frontEndScalerCompanionFormats;
@@ -108,12 +128,13 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFigCaptureStreamFormatDictionary:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
+- (BOOL)isCaptureTimePhotoCurationSupported;
 - (BOOL)isCompatibleWithInfraredFormat:(id)arg1;
-- (BOOL)isMultiStreamFormat;
 - (BOOL)isStabilizationModeSupported:(int)arg1;
 - (BOOL)isStillImageISPChromaNoiseReductionEnabled;
 - (BOOL)isValidDerivedBravoFormatForUnderlyingFormat:(id)arg1;
 - (BOOL)ispChromaNoiseReductionEnabled;
+- (float)lowLightVideoAEMaxGain;
 - (int)maxIntegrationTimeOverride;
 - (struct CGRect)maxVisibleSensorRect;
 - (unsigned int)mediaType;
@@ -121,6 +142,7 @@
 - (id)nonSIFRCompanionFormat;
 - (int)previewImageQueueSyncStrategy;
 - (id)rawLensShadingCorrection;
+- (int)redEyeReductionVersion;
 - (CDStruct_79c71658)sensorCropDimensions;
 - (int)sensorHDRCompanionIndex;
 - (CDStruct_79c71658)sourceCropAspectRatio;
@@ -129,8 +151,10 @@
 - (int)stabilizationTypeOverrideForCinematic;
 - (int)stabilizationTypeOverrideForStandard;
 - (int)stillImageNoiseReductionAndStabilizationScheme;
+- (id)streamingDXDYDepthDataFormat;
 - (BOOL)sushiRawBlackBorderingEnabled;
 - (int)temporalNoiseReductionMode;
+- (BOOL)usesPacked10BitFirmwareStillImageOutputPixelFormat;
 - (int)verticalSensorBinningFactor;
 
 @end

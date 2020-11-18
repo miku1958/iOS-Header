@@ -112,12 +112,12 @@ __attribute__((visibility("hidden")))
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (void)p_strokePathChunk:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2 wantsInteriorStroke:(BOOL)arg3;
 - (void)paintLineEnd:(id)arg1 atPoint:(struct CGPoint)arg2 atAngle:(double)arg3 withScale:(double)arg4 inContext:(struct CGContext *)arg5;
 - (void)paintLineEnd:(id)arg1 atPoint:(struct CGPoint)arg2 atAngle:(double)arg3 withScale:(double)arg4 inContext:(struct CGContext *)arg5 useFastDrawing:(BOOL)arg6;
 - (void)paintPath:(const struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintPath:(const struct CGPath *)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3;
 - (void)paintPath:(const struct CGPath *)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(BOOL)arg4 parameterized:(BOOL)arg5 shouldReverseDrawOrder:(BOOL)arg6;
-- (void)paintPathWithNormalClip:(const struct CGPath *)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3;
 - (id)pathForLineEnd:(id)arg1 wrapPath:(BOOL)arg2 atPoint:(struct CGPoint)arg3 atAngle:(double)arg4 withScale:(double)arg5;

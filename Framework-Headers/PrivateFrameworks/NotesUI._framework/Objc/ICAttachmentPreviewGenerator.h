@@ -8,7 +8,7 @@
 
 #import <NotesUI/ICProgressIndicatorTrackerDelegate-Protocol.h>
 
-@class ICAttachmentPreviewGeneratorOperationQueue, ICProgressIndicatorTracker, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@class ICAttachmentPreviewGeneratorOperationQueue, ICProgressIndicatorTracker, NSMapTable, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICAttachmentPreviewGenerator : NSObject <ICProgressIndicatorTrackerDelegate>
@@ -21,6 +21,9 @@
     NSMutableSet *_attachmentIDsPending;
     NSMutableDictionary *_attachmentIDsProgress;
     ICProgressIndicatorTracker *_progressTracker;
+    ICAttachmentPreviewGeneratorOperationQueue *_postProcessingQueue;
+    NSMutableOrderedSet *_postProcessingIDsPending;
+    unsigned long long _postProcessingRequestIndex;
     unsigned long long _previewGenerationState;
     NSObject<OS_dispatch_queue> *_previewQueue;
     NSObject<OS_dispatch_queue> *_previewProgressQueue;
@@ -35,23 +38,36 @@
 @property (strong, nonatomic) ICAttachmentPreviewGeneratorOperationQueue *generatorQueue; // @synthesize generatorQueue=_generatorQueue;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *lastOperationForAttachmentID; // @synthesize lastOperationForAttachmentID=_lastOperationForAttachmentID;
+@property (strong, nonatomic) NSMutableOrderedSet *postProcessingIDsPending; // @synthesize postProcessingIDsPending=_postProcessingIDsPending;
+@property (strong, nonatomic) ICAttachmentPreviewGeneratorOperationQueue *postProcessingQueue; // @synthesize postProcessingQueue=_postProcessingQueue;
+@property unsigned long long postProcessingRequestIndex; // @synthesize postProcessingRequestIndex=_postProcessingRequestIndex;
 @property unsigned long long previewGenerationState; // @synthesize previewGenerationState=_previewGenerationState;
+@property (readonly, nonatomic) BOOL previewOperationsIdle;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *previewProgressQueue; // @synthesize previewProgressQueue=_previewProgressQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *previewQueue; // @synthesize previewQueue=_previewQueue;
 @property (strong, nonatomic) ICProgressIndicatorTracker *progressTracker; // @synthesize progressTracker=_progressTracker;
 @property (nonatomic) _Atomic BOOL shouldGenerateAttachmentsWhenReachable; // @synthesize shouldGenerateAttachmentsWhenReachable=_shouldGenerateAttachmentsWhenReachable;
 @property (readonly) Class superclass;
 
++ (BOOL)imageClassificationEnabled;
++ (BOOL)ocrGenerationEnabled;
++ (void)purgeImageClassificationsInContext:(id)arg1;
++ (void)purgeOCRInContext:(id)arg1;
++ (void)setImageClassificationTemporarilyDisabled:(BOOL)arg1;
 + (id)sharedGenerator;
 - (void).cxx_destruct;
 - (void)attachmentDidLoad:(id)arg1;
+- (void)attachmentNeedsPostProcessingNotification:(id)arg1;
 - (void)attachmentNeedsPreviewGenerationNotification:(id)arg1;
 - (void)attachmentWillBeDeleted:(id)arg1;
+- (void)beginPostProcessingAfterDelayIfNecessaryWithForceDelay:(BOOL)arg1;
 - (void)cancelGenerationOfPendingPreviews;
 - (void)cancelIfNeededForAttachment:(id)arg1;
 - (void)dealloc;
+- (void)didRecieveMemoryWarning;
 - (void)disableAutomaticPreviewGeneration;
 - (void)enableAutomaticPreviewGeneration;
+- (void)generateMissingOrOutdatedAttachmentMetaDataIfNeededInContext:(id)arg1;
 - (void)generatePendingPreviewForAttachment:(id)arg1;
 - (void)generatePendingPreviews;
 - (void)generatePreviewIfNeededForAttachment:(id)arg1;
@@ -61,7 +77,13 @@
 - (BOOL)isPreviewGenerationSupported;
 - (void)managedObjectContextDidSave:(id)arg1;
 - (void)mediaDidLoad:(id)arg1;
+- (id)missingOrOutdatedImageClassificationSummaryAttachmentsInContext:(id)arg1;
+- (id)missingOrOutdatedMetaDataAttachmentsInContext:(id)arg1;
+- (id)missingOrOutdatedOCRSummaryAttachmentsInContext:(id)arg1;
 - (void)operationComplete:(id)arg1;
+- (void)postProcessIfNeededForAttachment:(id)arg1;
+- (void)postProcessPendingPreviews;
+- (void)postProcessPreviewForAttachment:(id)arg1;
 - (id)progressForObjectID:(id)arg1;
 - (void)progressIndicatorTrackerStartAnimation;
 - (void)progressIndicatorTrackerStopAnimation;

@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateCoordinates;
 - (void)invalidateCoordinatesAfterColumn:(unsigned short)arg1;
 - (void)invalidateCoordinatesAfterRow:(unsigned int)arg1;
+- (void)invalidateCoordinatesForEditingCellID:(struct TSUCellCoord)arg1;
 - (void)invalidateTableOffsets;
 - (int)validateLayoutSpaces;
 

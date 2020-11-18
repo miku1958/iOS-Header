@@ -6,7 +6,7 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitAppletState;
+@class NSArray, NSDictionary, NSSet, NSString, PKPaymentPass, PKPaymentWebServiceBackgroundContext, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKTransitAppletState, PKVerificationChannel;
 
 @protocol NPKPaymentWebServiceCompanionTargetDeviceDelegate <NSObject>
 - (void)archiveWebServiceBackgroundContext:(PKPaymentWebServiceBackgroundContext *)arg1;
@@ -23,9 +23,11 @@
 - (void)handleRemoveTransactionsWithIdentifiers:(NSArray *)arg1;
 - (void)handleUpdatePaymentPassWithTypeIdentifier:(NSString *)arg1;
 - (void)handleUpdatedPeerPaymentWebServiceContext:(PKPeerPaymentWebServiceContext *)arg1 account:(PKPeerPaymentAccount *)arg2;
+- (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
 - (void)sendPaymentOptionsDefaultsToWatch;
 - (void)sendWebServiceContextToWatch;
 - (void)setNewAuthRandom:(void (^)(BOOL))arg1;
 - (void)showPaymentSetupForAppDisplayName:(NSString *)arg1;
+- (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;
 @end
 

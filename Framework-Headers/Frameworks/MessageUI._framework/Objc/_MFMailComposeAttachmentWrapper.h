@@ -25,7 +25,7 @@
 
 + (id)wrapperWithData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 + (id)wrapperWithFileURL:(id)arg1 mimeType:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)fileSize;
 - (id)initWithData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;

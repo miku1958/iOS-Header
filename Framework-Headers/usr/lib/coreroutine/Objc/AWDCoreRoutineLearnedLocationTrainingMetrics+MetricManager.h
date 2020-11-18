@@ -18,6 +18,7 @@
 @property (readonly) Class superclass;
 
 - (id)_init;
+- (id)initWithLearnedLocationEngineMetrics:(id)arg1;
 - (long long)metricId;
 - (BOOL)valid:(id *)arg1;
 @end

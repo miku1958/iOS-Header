@@ -8,15 +8,15 @@
 
 #import <HomeSharing/HSCloudAvailability-Protocol.h>
 
-@class HSConnectionConfiguration, NSString, NSXPCConnection;
+@class ICCloudClient, ICConnectionConfiguration, NSString;
 
 @interface HSCloudClient : NSObject <HSCloudAvailability>
 {
     BOOL _active;
-    HSConnectionConfiguration *_configuration;
-    NSXPCConnection *_nsxpcConnection;
+    ICConnectionConfiguration *_configuration;
     unsigned long long _daemonConfiguration;
     long long _preferredVideoQuality;
+    ICCloudClient *_icCloudClient;
     CDUnknownBlockType _updateInProgressChangedHandler;
     CDUnknownBlockType _updateSagaInProgressChangedHandler;
     CDUnknownBlockType _updateJaliscoInProgressChangedHandler;
@@ -31,8 +31,8 @@
 @property (copy, nonatomic) CDUnknownBlockType updateSagaInProgressChangedHandler; // @synthesize updateSagaInProgressChangedHandler=_updateSagaInProgressChangedHandler;
 
 - (void).cxx_destruct;
-- (void)_sendConfigurationToDaemon;
-- (void)_serverDidLaunch;
+- (id)_ICCloudItemIDListFromHSCloudItemIDList:(id)arg1;
+- (id)_ICConnectionConfigurationFromHSConnectionConfiguration:(id)arg1;
 - (void)_serverJaliscoUpdateInProgressDidChange;
 - (void)_serverSagaUpdateInProgressDidChange;
 - (void)addGeniusPlaylistWithPersistentID:(long long)arg1 name:(id)arg2 seedItemSagaIDs:(id)arg3 itemSagaIDs:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -41,7 +41,7 @@
 - (void)addStoreItemWithAdamID:(long long)arg1 toPlaylistWithPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addStorePlaylistWithGlobalID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)authenticateAndStartInitialImport:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)authenticateAndStartInitialImport:(BOOL)arg1 mergeWithCloudLibrary:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)authenticateAndStartInitialImport:(BOOL)arg1 mergeWithCloudLibrary:(BOOL)arg2 isExplicitUserAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)authenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)becomeActive;
 - (BOOL)canSetItemProperty:(id)arg1;
@@ -51,9 +51,9 @@
 - (BOOL)canShowCloudVideo;
 - (void)cancelUpdateJaliscoGeniusDataInProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)cloudAddToPlaylistBehavior;
-- (id)connection;
 - (void)createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 trackList:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
+- (void)deauthenticateAndDisableActiveLockerAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deauthenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)deprioritizeAlbumArtistHeroImageForPersistentID:(long long)arg1;
 - (void)deprioritizeArtistHeroImageForPersistentID:(long long)arg1;
@@ -88,7 +88,7 @@
 - (BOOL)isCellularDataRestrictedForMusic;
 - (BOOL)isCellularDataRestrictedForStoreApps;
 - (BOOL)isCellularDataRestrictedForVideos;
-- (void)jaliscoAppsImageDataForStoreID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)isMediaKindDisabledForJaliscoLibrary:(long long)arg1;
 - (void)loadArtworkInfoForContainerSagaID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadArtworkInfoForContainerSagaIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadArtworkInfoForPurchaseHistoryID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -104,11 +104,11 @@
 - (void)loadIsJaliscoGeniusSupportedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadIsJaliscoUpdateInProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadIsSagaUpdateInProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)loadIsUpdateInProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoGeniusCUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoGeniusLearnMoreURLWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoGeniusOperationStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadJaliscoUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadLastKnownEnableICMLErrorStatusWithCompletionHander:(CDUnknownBlockType)arg1;
 - (void)loadSagaUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadScreenshotInfoForPurchaseHistoryID:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadScreenshotInfoForPurchaseHistoryIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -118,7 +118,6 @@
 - (void)loadScreenshotInfoForSubscriptionPersistentIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadUpdateProgressWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)publishPlaylistWithSagaID:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)redownloadPurchaseAppWithStoreID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeItemsWithSagaIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeJaliscoLibraryWithCompletionHander:(CDUnknownBlockType)arg1;
 - (void)removePlaylistsWithSagaIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -127,11 +126,9 @@
 - (void)sdk_addStoreItemWithOpaqueID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)sdk_addStoreItemWithOpaqueID:(id)arg1 toPlaylistWithPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)sdk_createPlaylistWithPersistentID:(long long)arg1 properties:(id)arg2 tracklist:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)searchJaliscoAppsLibrary:(id)arg1 searchMethod:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setAlbumProperties:(id)arg1 forAlbumPersistentID:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setCloudAddToPlaylistBehavior:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setCollectionProperties:(id)arg1 forCollectionWithPersistentID:(long long)arg2 groupingType:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setDaemonConfiguration:(unsigned long long)arg1;
-- (void)setHidden:(BOOL)arg1 purchasedAppWithStoreID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setItemProperties:(id)arg1 forPurchaseHistoryID:(unsigned long long)arg2;
 - (void)setItemProperties:(id)arg1 forSagaID:(unsigned long long)arg2;
 - (void)setJaliscoGeniusCUID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -141,12 +138,10 @@
 - (BOOL)shouldProhibitMusicActionForCurrentNetworkConditions;
 - (BOOL)shouldProhibitStoreAppsActionForCurrentNetworkConditions;
 - (BOOL)shouldProhibitVideosActionForCurrentNetworkConditions;
-- (void)unhideAllPurchasedApps:(CDUnknownBlockType)arg1;
 - (void)updateArtistHeroImages;
-- (void)updateGeniusDataWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)updateJaliscoAppsLibraryForFamilyMemberStoreID:(id)arg1 withReason:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateJaliscoAppsLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateJaliscoGeniusDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateJaliscoLibraryByAddingMediaKind:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateJaliscoLibraryByRemovingMediaKind:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateJaliscoLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateJaliscoLibraryWithReason:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateSagaLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;

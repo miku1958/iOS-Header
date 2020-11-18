@@ -8,27 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEOLogMsgEventUserAction : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_userActionEventKey;
-    int _userActionEventTarget;
     NSString *_userActionEventValue;
+    int _userActionEventAction;
+    int _userActionEventTarget;
     struct {
-        unsigned int userActionEventTarget:1;
-    } _has;
+        unsigned int has_userActionEventAction:1;
+        unsigned int has_userActionEventTarget:1;
+        unsigned int read_userActionEventKey:1;
+        unsigned int read_userActionEventValue:1;
+        unsigned int wrote_userActionEventKey:1;
+        unsigned int wrote_userActionEventValue:1;
+        unsigned int wrote_userActionEventAction:1;
+        unsigned int wrote_userActionEventTarget:1;
+    } _flags;
 }
 
+@property (nonatomic) BOOL hasUserActionEventAction;
 @property (readonly, nonatomic) BOOL hasUserActionEventKey;
 @property (nonatomic) BOOL hasUserActionEventTarget;
 @property (readonly, nonatomic) BOOL hasUserActionEventValue;
-@property (strong, nonatomic) NSString *userActionEventKey; // @synthesize userActionEventKey=_userActionEventKey;
-@property (nonatomic) int userActionEventTarget; // @synthesize userActionEventTarget=_userActionEventTarget;
-@property (strong, nonatomic) NSString *userActionEventValue; // @synthesize userActionEventValue=_userActionEventValue;
+@property (nonatomic) int userActionEventAction;
+@property (strong, nonatomic) NSString *userActionEventKey;
+@property (nonatomic) int userActionEventTarget;
+@property (strong, nonatomic) NSString *userActionEventValue;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsUserActionEventAction:(id)arg1;
 - (int)StringAsUserActionEventTarget:(id)arg1;
+- (void)_readUserActionEventKey;
+- (void)_readUserActionEventValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,7 +52,9 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)userActionEventActionAsString:(int)arg1;
 - (id)userActionEventTargetAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

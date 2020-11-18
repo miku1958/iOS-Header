@@ -84,6 +84,7 @@
 
 - (void).cxx_destruct;
 - (id)_adjustedNameForVibrationWithDesiredName:(id)arg1 vibrationIdentifier:(id)arg2;
+- (BOOL)_canShowWhileLocked;
 - (CDStruct_3d581f42)_cellAccessoriesDescriptorForRowAtIndexPath:(id)arg1;
 - (id)_customHeaderViewForHeaderInSection:(long long)arg1;
 - (struct UIEdgeInsets)_defaultSectionHeaderLabelContainerViewLabelPaddingInsets;

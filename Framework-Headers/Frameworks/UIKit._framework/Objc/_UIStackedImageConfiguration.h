@@ -29,6 +29,7 @@
     double _scaleSizeIncrease;
     double _pressedScaleAdjustment;
     double _cornerRadius;
+    double _continuousCornerRadiusEnabled;
     double _specularHighlightHorizontalPositionSensitivity;
     double _specularHighlightVerticalPosition;
     double _specularHighlightVerticalPositionSensitivity;
@@ -67,6 +68,7 @@
 @property (nonatomic) BOOL adjustMotionForSize; // @synthesize adjustMotionForSize=_adjustMotionForSize;
 @property (nonatomic) BOOL allowsNonOpaqueShadow; // @synthesize allowsNonOpaqueShadow=_allowsNonOpaqueShadow;
 @property (nonatomic) BOOL boostBrightness; // @synthesize boostBrightness=_boostBrightness;
+@property (nonatomic, getter=isContinuousCornerRadiusEnabled) double continuousCornerRadiusEnabled; // @synthesize continuousCornerRadiusEnabled=_continuousCornerRadiusEnabled;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (nonatomic) double defaultFocusedShadowOpacity; // @synthesize defaultFocusedShadowOpacity=_defaultFocusedShadowOpacity;
 @property (nonatomic) double defaultFocusedShadowRadius; // @synthesize defaultFocusedShadowRadius=_defaultFocusedShadowRadius;

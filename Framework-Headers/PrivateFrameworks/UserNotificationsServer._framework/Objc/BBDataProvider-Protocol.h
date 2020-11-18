@@ -23,7 +23,6 @@
 - (id)clearedInfoForClearingBulletinsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2 lastClearedInfo:(id)arg3;
 - (void)dataProviderDidLoad;
 - (NSArray *)defaultSubsectionInfos;
-- (NSString *)displayNameForFilterID:(NSString *)arg1;
 - (NSString *)displayNameForSubsectionID:(NSString *)arg1;
 - (void)getAspectRatioForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 withCompletionHandler:(void (^)(float))arg3;
 - (void)getDataForAttachmentUUID:(NSUUID *)arg1 recordID:(NSString *)arg2 withCompletionHandler:(void (^)(NSData *))arg3;

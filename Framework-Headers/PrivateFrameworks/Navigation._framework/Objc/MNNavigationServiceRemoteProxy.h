@@ -7,60 +7,64 @@
 #import <objc/NSObject.h>
 
 #import <Navigation/MNNavigationServiceProxy-Protocol.h>
-#import <Navigation/MNNavigationServiceReconnectorDelegate-Protocol.h>
 
-@class MNNavigationServiceReconnector, MNSettings, NSDate, NSHashTable, NSMutableArray, NSString, NSXPCConnection;
-@protocol MNNavigationServiceRemoteProxyDelegate;
+@class MNSettings, NSHashTable, NSMutableArray, NSString, NSXPCConnection;
+@protocol MNNavigationServiceClientInterface;
 
 __attribute__((visibility("hidden")))
-@interface MNNavigationServiceRemoteProxy : NSObject <MNNavigationServiceReconnectorDelegate, MNNavigationServiceProxy>
+@interface MNNavigationServiceRemoteProxy : NSObject <MNNavigationServiceProxy>
 {
     BOOL _applicationActive;
     NSXPCConnection *_connection;
-    MNNavigationServiceReconnector *_reconnector;
-    NSDate *_lastReconnectionDate;
-    NSMutableArray *_recentConnectionInterruptions;
     MNSettings *_settings;
     NSHashTable *_clients;
-    id<MNNavigationServiceRemoteProxyDelegate> _delegate;
+    NSMutableArray *_interruptionDates;
+    BOOL _isReconnecting;
+    CDUnknownBlockType _predictionHandler;
+    long long _sandboxHandle;
+    id<MNNavigationServiceClientInterface> _delegate;
 }
 
+@property (readonly, nonatomic) unsigned long long clientCount;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<MNNavigationServiceRemoteProxyDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MNNavigationServiceClientInterface> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long interruptionCount;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_abandonConnection;
-- (void)_cleanupReconnector;
 - (void)_closeConnection;
-- (void)_emptyMethod;
-- (void)_initializeReconnectorWithDetails:(id)arg1 shouldPrepare:(BOOL)arg2;
-- (id)_methodSignatureForEmptyMethod;
+- (void)_consumeSandboxExtension:(char *)arg1;
+- (void)_handleInterruption;
 - (void)_openConnection;
-- (void)_reconnectIfAllowed;
+- (void)_releaseSandboxExtension;
 - (id)_remoteObjectProxy;
+- (void)_restoreIdleConnection;
+- (void)_restoreNavigationSession;
+- (void)_restorePredictionSession;
+- (BOOL)_shouldReconnectWithInterruptionOnDate:(id)arg1;
 - (void)_updateConnection;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
 - (void)changeSettings:(id)arg1;
+- (void)checkinForNavigationService:(CDUnknownBlockType)arg1;
 - (void)closeForClient:(id)arg1;
 - (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
-- (id)init;
 - (void)interfaceHashesWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)isOpenForClient:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)navigationServiceProxy:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
 - (void)navigationServiceProxy:(id)arg1 didUpdateNavigationDetails:(id)arg2;
 - (void)navigationServiceProxy:(id)arg1 willChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
-- (void)navigationServiceReconnector:(id)arg1 didReconnectWithDetails:(id)arg2;
 - (void)openForClient:(id)arg1;
-- (void)prepareNavigationWithRouteDetails:(id)arg1;
+- (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
+- (void)recordPedestrianTracePath:(id)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(id)arg1;
 - (void)repeatCurrentGuidanceWithReply:(CDUnknownBlockType)arg1;
 - (void)repeatCurrentTrafficAlertWithReply:(CDUnknownBlockType)arg1;
 - (void)resumeOriginalDestination;
+- (void)resumeRealtimeUpdatesForSubscriber:(id)arg1;
 - (void)setCurrentAudioOutputSetting:(id)arg1;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setFullGuidanceMode:(BOOL)arg1;
@@ -68,17 +72,20 @@ __attribute__((visibility("hidden")))
 - (void)setHFPPreference:(BOOL)arg1 forSetting:(id)arg2;
 - (void)setHeadingOrientation:(int)arg1;
 - (void)setIsConnectedToCarplay:(BOOL)arg1;
+- (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
+- (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)setTraceIsPlaying:(BOOL)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTracePosition:(double)arg1;
-- (void)startNavigationForRouteDetails:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)startNavigationWithDetails:(id)arg1 activeBlock:(CDUnknownBlockType)arg2;
 - (void)startPredictingDestinationsWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopCurrentGuidancePrompt;
 - (void)stopNavigation;
 - (void)stopPredictingDestinations;
-- (void)switchToRouteWithDetails:(id)arg1;
+- (void)switchToRoute:(id)arg1;
 - (void)updateDestination:(id)arg1;
+- (void)updateGuidanceWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 
 @end

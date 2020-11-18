@@ -49,6 +49,7 @@
 + (id)fontSizeNumberFormatter;
 - (void).cxx_destruct;
 - (void)_alignmentSegmentChanged:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_commonInit;
 - (void)_sendFontAction;
 - (void)_sendTextAttributesAction;

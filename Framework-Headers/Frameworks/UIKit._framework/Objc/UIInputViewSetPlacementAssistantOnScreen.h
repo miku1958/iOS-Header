@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (double)extraHeightForInputViewSet:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (BOOL)accessoryViewWillAppear;
 - (Class)applicatorClassForKeyboard:(BOOL)arg1;
+- (double)inputAssistantViewHeightForInputViewSet:(id)arg1;
 - (BOOL)inputViewWillAppear;
 - (struct CGRect)remoteIntrinsicContentSizeForInputViewInSet:(id)arg1 includingIAV:(BOOL)arg2;
 - (BOOL)showsInputViews;

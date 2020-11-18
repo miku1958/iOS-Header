@@ -11,14 +11,11 @@
 
 @interface PFCoalescer : NSObject
 {
-    long long _sequenceNumber;
-    long long _fireSequenceNumber;
     long long _resetSequenceNumber;
     long long _lastUpdateResetSequenceNumber;
     BOOL _usesTarget;
     BOOL _initialDelayTimerIsArmed;
     double _initialDelay;
-    long long _mode;
     NSString *_label;
     id _target;
     id _buffer;
@@ -42,7 +39,6 @@
 @property BOOL initialDelayTimerIsArmed; // @synthesize initialDelayTimerIsArmed=_initialDelayTimerIsArmed;
 @property (strong) NSObject<OS_dispatch_queue> *isolationQueue; // @synthesize isolationQueue=_isolationQueue;
 @property (strong) NSString *label; // @synthesize label=_label;
-@property long long mode; // @synthesize mode=_mode;
 @property long long queueType; // @synthesize queueType=_queueType;
 @property (copy) CDUnknownBlockType snapshotAndDrainHandler; // @synthesize snapshotAndDrainHandler=_snapshotAndDrainHandler;
 @property (strong) NSObject<OS_dispatch_source> *source; // @synthesize source=_source;
@@ -67,11 +63,13 @@
 + (id)setCoalescerWithLabel:(id)arg1 queue:(id)arg2 action:(CDUnknownBlockType)arg3;
 + (id)setCoalescerWithLabel:(id)arg1 target:(id)arg2 queue:(id)arg3 action:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
+- (void)_resetWhileLocked;
 - (void)dealloc;
-- (void)dispatch_after:(unsigned long long)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithLabel:(id)arg1 target:(id)arg2 buffer:(id)arg3 queue:(id)arg4 bufferDrainer:(CDUnknownBlockType)arg5 action:(CDUnknownBlockType)arg6;
+- (void)performEventActionWithTarget:(id)arg1;
 - (void)reset;
+- (void)resetAndShutDown;
 - (void)setupStateCaptureHandler;
 - (id)stateInformation;
 - (void)update;

@@ -17,11 +17,13 @@
 @property (readonly) NSArray *outputs;
 @property (readonly) unsigned long long siriInputSource;
 @property (readonly) NSString *siriRemoteInputIdentifier;
+@property (readonly) BOOL supportsDoAP;
+@property (readonly) BOOL supportsSoftwareVolume;
 
 - (void)dealloc;
 - (id)description;
 - (id)init;
-- (id)initWithCategory:(id)arg1;
+- (id)initWithCategory:(id)arg1 owningSession:(id)arg2;
 - (id)initWithRawDescription:(id)arg1 owningSession:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRoute:(id)arg1;

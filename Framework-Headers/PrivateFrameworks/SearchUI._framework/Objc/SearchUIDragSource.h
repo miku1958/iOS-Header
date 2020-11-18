@@ -9,25 +9,25 @@
 #import <SearchUI/UIDragInteractionDelegate-Protocol.h>
 #import <SearchUI/UIDragInteractionDelegate_Private-Protocol.h>
 
-@class NSString, SearchUIDropTarget, UIView;
-@protocol SearchUIDragObject;
+@class NSString, SearchUIRowModel, UIView;
+@protocol OS_os_transaction;
 
 @interface SearchUIDragSource : NSObject <UIDragInteractionDelegate, UIDragInteractionDelegate_Private>
 {
-    id<SearchUIDragObject> _dragObject;
+    SearchUIRowModel *_dragObject;
     UIView *_overrideDragPreviewView;
     UIView *_dragSourceView;
-    SearchUIDropTarget *_dropTarget;
+    NSObject<OS_os_transaction> *_transaction;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) id<SearchUIDragObject> dragObject; // @synthesize dragObject=_dragObject;
+@property (strong, nonatomic) SearchUIRowModel *dragObject; // @synthesize dragObject=_dragObject;
 @property (weak) UIView *dragSourceView; // @synthesize dragSourceView=_dragSourceView;
-@property (strong) SearchUIDropTarget *dropTarget; // @synthesize dropTarget=_dropTarget;
 @property (readonly) unsigned long long hash;
-@property (strong) UIView *overrideDragPreviewView; // @synthesize overrideDragPreviewView=_overrideDragPreviewView;
+@property (strong, nonatomic) UIView *overrideDragPreviewView; // @synthesize overrideDragPreviewView=_overrideDragPreviewView;
 @property (readonly) Class superclass;
+@property (strong) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 
 + (id)dragSourceForView:(id)arg1 dragObject:(id)arg2;
 - (void).cxx_destruct;
@@ -36,6 +36,7 @@
 - (BOOL)_shouldPerformHitTestingForDragSessionInView:(id)arg1;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (BOOL)dragInteraction:(id)arg1 sessionAllowsMoveOperation:(id)arg2;
 - (BOOL)dragInteraction:(id)arg1 sessionIsRestrictedToDraggingApplication:(id)arg2;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;

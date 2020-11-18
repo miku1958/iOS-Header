@@ -19,9 +19,12 @@
 
 - (void).cxx_destruct;
 - (id)_buildHorizontalPercentageCache;
+- (double)_computeDistanceBetweenPointA:(struct CGPoint)arg1 andPointB:(struct CGPoint)arg2;
 - (struct CGPoint)_computePointOnPathForHorizontalPercentage:(double)arg1;
+- (double)_estimatePercentageForEndPadding:(double)arg1;
 - (id)initWithPath:(id)arg1;
 - (struct CGPoint)pointOnPathForHorizontalPercentage:(double)arg1;
+- (struct CGPoint)pointOnPathForHorizontalPercentage:(double)arg1 withEndPadding:(double)arg2;
 
 @end
 

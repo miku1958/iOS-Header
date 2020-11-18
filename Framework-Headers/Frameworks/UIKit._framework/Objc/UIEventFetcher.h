@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _receiveBlock;
     CDUnknownBlockType _addToFilteredEventsBlock;
     CDUnknownBlockType _gameControllerEventFilterGenerator;
+    CDUnknownBlockType _passiveObservationFilterGenerator;
     CDUnknownBlockType _watchSystemAppFilter;
     NSMutableArray *_eventFilters;
     int _displayLinkIdleTicks;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
     double _lastSignalTimestamp;
     double _estimatedDisplayLinkDrift;
     long long _lastSignalType;
+    unsigned long long _lastSignalReason;
     BOOL _needsSignalOnDisplayLink;
     id<UIEventFetcherSink> _eventFetcherSink;
     double _commitTimeForTouchEvents;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
     double _latestMoveDragEventResendTimestamp;
 }
 
+@property (readonly, nonatomic) struct __CFRunLoop *_eventFetchRunLoop;
 @property (nonatomic) double commitTimeForTouchEvents; // @synthesize commitTimeForTouchEvents=_commitTimeForTouchEvents;
 @property (strong, nonatomic) id<UIEventFetcherSink> eventFetcherSink; // @synthesize eventFetcherSink=_eventFetcherSink;
 @property (nonatomic) double latestMoveDragEventResendTimestamp; // @synthesize latestMoveDragEventResendTimestamp=_latestMoveDragEventResendTimestamp;
@@ -50,7 +53,9 @@ __attribute__((visibility("hidden")))
 - (void)_receiveHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)_receiveHIDEventInternal:(struct __IOHIDEvent *)arg1;
 - (void)_removeHIDEventFilter:(CDUnknownBlockType)arg1;
+- (void)_removeHIDEventObserver;
 - (void)_removeHIDGameControllerEventObserver;
+- (void)_setHIDEventObserver:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)_setHIDGameControllerEventObserver:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)_setupFilterChain;
 - (void)displayLinkDidFire:(id)arg1;

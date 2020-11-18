@@ -8,6 +8,7 @@
 
 #import <StoreKitUI/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface SKUINavigationStackEnsureConsistencyRequest : NSObject <NSCopying>
 {
     BOOL _operationDidComplete;

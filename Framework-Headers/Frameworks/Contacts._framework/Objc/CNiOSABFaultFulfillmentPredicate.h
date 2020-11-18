@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int legacyIdentifier; // @synthesize legacyIdentifier=_legacyIdentifier;
 @property (readonly) Class superclass;
 
++ (id)os_log;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct __CFArray *)cn_copyPeopleInAddressBook:(void *)arg1 fetchRequest:(id)arg2 matchInfos:(id *)arg3 environment:(id)arg4 error:(struct __CFError **)arg5;

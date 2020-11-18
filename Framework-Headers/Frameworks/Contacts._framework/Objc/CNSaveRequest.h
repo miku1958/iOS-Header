@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Contacts/CNObjectValidation-Protocol.h>
 #import <Contacts/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
-@interface CNSaveRequest : NSObject <CNObjectValidation, NSSecureCoding>
+@interface CNSaveRequest : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_addedContactsByIdentifier;
     NSMutableArray *_updatedContacts;
@@ -29,10 +28,13 @@
     NSMutableDictionary *_deletedContainersByIdentifier;
     NSMutableDictionary *_movedContainersByIdentifier;
     NSMutableDictionary *_addedAccountContainersByIdentifier;
+    NSMutableDictionary *_defaultAccountContainersByIdentifier;
     NSMutableArray *_contactChangeRequests;
     NSMutableArray *_addedAccounts;
+    NSMutableArray *_removedAccounts;
     NSMutableDictionary *_parentRecordsByIdentifier;
     BOOL _unsafeApplyChangesOnly;
+    BOOL _ignoresGuardianRestrictions;
     NSString *_saveRequestIdentifier;
     NSString *_changeHistoryClientIdentifier;
 }
@@ -52,20 +54,20 @@
 @property (readonly, copy, nonatomic) NSArray *allGroups;
 @property (copy, nonatomic) NSString *changeHistoryClientIdentifier; // @synthesize changeHistoryClientIdentifier=_changeHistoryClientIdentifier;
 @property (readonly, copy, nonatomic) NSArray *contactChangeRequests;
-@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy, nonatomic) NSDictionary *defaultAccountContainersByAccountIdentifier;
 @property (readonly, copy, nonatomic) NSArray *deletedContacts;
 @property (readonly, copy, nonatomic) NSDictionary *deletedContactsByIdentifier; // @synthesize deletedContactsByIdentifier=_deletedContactsByIdentifier;
 @property (readonly, copy, nonatomic) NSArray *deletedContainers;
 @property (readonly, copy, nonatomic) NSArray *deletedGroups;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoresGuardianRestrictions; // @synthesize ignoresGuardianRestrictions=_ignoresGuardianRestrictions;
+@property (nonatomic) BOOL ignoresParentalRestrictions;
 @property (readonly, copy, nonatomic) NSString *meCardIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *movedContainersByParentContainerIdentifier;
+@property (readonly, copy, nonatomic) NSArray *removedAccounts; // @synthesize removedAccounts=_removedAccounts;
 @property (readonly, copy, nonatomic) NSDictionary *removedMembersByGroupIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *removedSubgroupsByGroupIdentifier;
 @property (readonly, copy, nonatomic) NSString *saveRequestIdentifier; // @synthesize saveRequestIdentifier=_saveRequestIdentifier;
 @property (readonly, copy, nonatomic) NSString *storeIdentifier;
-@property (readonly) Class superclass;
 @property (nonatomic) BOOL unsafeApplyChangesOnly; // @synthesize unsafeApplyChangesOnly=_unsafeApplyChangesOnly;
 @property (readonly, copy, nonatomic) NSArray *updatedContacts;
 @property (readonly, copy, nonatomic) NSArray *updatedContainers;
@@ -96,14 +98,15 @@
 - (id)groupWithRemovedSubgroupForGroupIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isValid:(id *)arg1;
 - (void)linkContact:(id)arg1 toContact:(id)arg2;
 - (void)moveContainer:(id)arg1 toContainerWithIdentifier:(id)arg2;
 - (void)preferLinkedContactForImage:(id)arg1 inUnifiedContact:(id)arg2;
 - (void)preferLinkedContactForName:(id)arg1 inUnifiedContact:(id)arg2;
 - (void)queueUpdatedObject:(id)arg1 intoArray:(id)arg2;
+- (void)removeAccount:(id)arg1;
 - (void)removeMember:(id)arg1 fromGroup:(id)arg2;
 - (void)removeSubgroup:(id)arg1 fromGroup:(id)arg2;
+- (void)setContainer:(id)arg1 asDefaultContainerOfAccountWithIdentifier:(id)arg2;
 - (void)setLinkIdentifier:(id)arg1 forContact:(id)arg2;
 - (void)setMeCardIdentifier:(id)arg1;
 - (void)unlinkContact:(id)arg1;

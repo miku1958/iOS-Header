@@ -6,13 +6,14 @@
 
 #import <UIKit/UINavigationController.h>
 
-@class NSOperationQueue, NSString, SKUIClientContext, SKUIRedeemConfiguration, SUClientInterface, UIActivityIndicatorView;
+@class NSOperationQueue, NSString, SKUIClientContext, SKUIRedeemConfiguration, SUClientInterface, UIActivityIndicatorView, UIViewController;
 @protocol SKUIRedeemViewCameraOverrideDelegate;
 
 @interface SKUIRedeemViewController : UINavigationController
 {
     BOOL _attempsAutomaticRedeem;
     BOOL _cameraRedeemVisible;
+    BOOL _finishedLoading;
     BOOL _shouldPerformInitialOperationOnAppear;
     long long _category;
     id<SKUIRedeemViewCameraOverrideDelegate> _cameraDelegate;
@@ -21,6 +22,7 @@
     SUClientInterface *_clientInterface;
     NSOperationQueue *_operationQueue;
     UIActivityIndicatorView *_activityIndicator;
+    UIViewController *_embeddedViewController;
     SKUIRedeemConfiguration *_redeemConfiguration;
 }
 
@@ -31,6 +33,8 @@
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
 @property (strong, nonatomic) SUClientInterface *clientInterface; // @synthesize clientInterface=_clientInterface;
+@property (strong, nonatomic) UIViewController *embeddedViewController; // @synthesize embeddedViewController=_embeddedViewController;
+@property (nonatomic) BOOL finishedLoading; // @synthesize finishedLoading=_finishedLoading;
 @property (copy, nonatomic) NSString *initialCode; // @synthesize initialCode=_initialCode;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (strong, nonatomic) SKUIRedeemConfiguration *redeemConfiguration; // @synthesize redeemConfiguration=_redeemConfiguration;
@@ -47,6 +51,7 @@
 - (void)_setupNavigationItem;
 - (void)_startActivityIndicator;
 - (void)_stopActivityIndicator;
+- (void)clientInterfaceDidFinishLoading:(id)arg1;
 - (id)initWithRedeemCategory:(long long)arg1;
 - (void)loadView;
 - (void)viewDidLoad;

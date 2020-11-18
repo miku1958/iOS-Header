@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (int)removeConnectionWithIPPortInternal:(struct tagIPPORT *)arg1 isLocalInterface:(BOOL)arg2;
 - (void)reportConnection:(id)arg1 isInitialConnection:(BOOL)arg2;
 - (BOOL)shouldAcceptDataFromSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
-- (BOOL)shouldHandoverWhenUpdateWRMDuplication:(int)arg1;
 - (int)shouldNominateCandidatePair:(struct tagCANDIDATEPAIR *)arg1 interfaceMask:(int)arg2 nominated:(int *)arg3 demote:(int *)arg4 connectionPriority:(int *)arg5 replaceOnly:(int *)arg6;
 - (int)shouldNominateCandidatePairInternal:(struct tagCANDIDATEPAIR *)arg1 interfaceMask:(int)arg2 nominated:(int *)arg3 demote:(int *)arg4 connectionPriority:(int *)arg5 replaceOnly:(int *)arg6;
 - (BOOL)shouldNominateConnection:(id)arg1;
@@ -44,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
 - (void)updateCellularMTU:(int)arg1;
 - (void)updateCellularTech:(int)arg1 forLocalInterface:(BOOL)arg2;
+- (void)updateConnectionForDuplication;
 - (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(BOOL)arg4 isOutgoing:(BOOL)arg5;
 - (void)updateSessionStats:(unsigned short)arg1;
 - (int)updateStateWithCurrentConnection:(id)arg1 asPrimary:(BOOL)arg2 interfaceMask:(int)arg3 demote:(int *)arg4 replaceOnly:(int *)arg5;

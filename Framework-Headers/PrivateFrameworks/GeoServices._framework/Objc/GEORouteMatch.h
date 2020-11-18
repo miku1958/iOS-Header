@@ -22,7 +22,7 @@
     unsigned long long _consecutiveProgressionsOffRoute;
     double _distanceTraveledOffRoute;
     BOOL _isGoodMatch;
-    CDStruct_a2ef2718 *_road;
+    CDStruct_c8b5ad3f *_road;
     double _roadWidth;
     GEORouteMatch *_projectedFrom;
     NSDate *_timestamp;
@@ -37,13 +37,14 @@
 @property (nonatomic) double distanceFromRoute; // @synthesize distanceFromRoute=_distanceFromRoute;
 @property (nonatomic) double distanceTraveledOffRoute; // @synthesize distanceTraveledOffRoute=_distanceTraveledOffRoute;
 @property (nonatomic) BOOL isGoodMatch; // @synthesize isGoodMatch=_isGoodMatch;
+@property (readonly, nonatomic) BOOL isOnParkingLotRoad;
 @property (nonatomic) BOOL isTunnelProjection; // @synthesize isTunnelProjection=_isTunnelProjection;
 @property (nonatomic) CDStruct_c3b9c2ee locationCoordinate; // @synthesize locationCoordinate=_locationCoordinate;
 @property (readonly, nonatomic) double matchedCourse; // @synthesize matchedCourse=_matchedCourse;
 @property (nonatomic) double modifiedCourseAccuracy; // @synthesize modifiedCourseAccuracy=_modifiedCourseAccuracy;
 @property (nonatomic) double modifiedHorizontalAccuracy; // @synthesize modifiedHorizontalAccuracy=_modifiedHorizontalAccuracy;
 @property (strong, nonatomic) GEORouteMatch *projectedFrom; // @synthesize projectedFrom=_projectedFrom;
-@property (nonatomic) CDStruct_a2ef2718 *road; // @synthesize road=_road;
+@property (nonatomic) CDStruct_c8b5ad3f *road; // @synthesize road=_road;
 @property (readonly, nonatomic) double roadWidth; // @synthesize roadWidth=_roadWidth;
 @property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (readonly, nonatomic) struct PolylineCoordinate routeCoordinate; // @synthesize routeCoordinate=_routeCoordinate;

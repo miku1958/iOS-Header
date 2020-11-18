@@ -8,7 +8,7 @@
 
 #import <CameraUI/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSError, NSString, NSURL;
+@class CAMCaptureCoordinationInfo, NSData, NSDate, NSError, NSString, NSURL;
 
 @interface CAMVideoLocalPersistenceResult : NSObject <NSSecureCoding>
 {
@@ -16,19 +16,27 @@
     NSURL *_filteredLocalDestinationURL;
     NSURL *_linkedDestinationURL;
     NSURL *_filteredLinkedDestinationURL;
+    NSString *_filteredVideoPreviewPath;
     NSString *_localPersistenceUUID;
+    CDStruct_79c71658 _dimensions;
     NSString *_stillPersistenceUUID;
     NSDate *_creationDate;
+    NSData *_adjustmentsData;
+    CAMCaptureCoordinationInfo *_coordinationInfo;
     NSError *_error;
     CDStruct_1b6d18a9 _duration;
     CDStruct_1b6d18a9 _stillDisplayTime;
 }
 
+@property (readonly, nonatomic) NSData *adjustmentsData; // @synthesize adjustmentsData=_adjustmentsData;
+@property (readonly, nonatomic) CAMCaptureCoordinationInfo *coordinationInfo; // @synthesize coordinationInfo=_coordinationInfo;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, nonatomic) CDStruct_79c71658 dimensions; // @synthesize dimensions=_dimensions;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, copy, nonatomic) NSURL *filteredLinkedDestinationURL; // @synthesize filteredLinkedDestinationURL=_filteredLinkedDestinationURL;
 @property (readonly, copy, nonatomic) NSURL *filteredLocalDestinationURL; // @synthesize filteredLocalDestinationURL=_filteredLocalDestinationURL;
+@property (readonly, copy, nonatomic) NSString *filteredVideoPreviewPath; // @synthesize filteredVideoPreviewPath=_filteredVideoPreviewPath;
 @property (readonly, copy, nonatomic) NSURL *linkedDestinationURL; // @synthesize linkedDestinationURL=_linkedDestinationURL;
 @property (readonly, copy, nonatomic) NSURL *localDestinationURL; // @synthesize localDestinationURL=_localDestinationURL;
 @property (readonly, copy, nonatomic) NSString *localPersistenceUUID; // @synthesize localPersistenceUUID=_localPersistenceUUID;
@@ -39,7 +47,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 linkedURL:(id)arg3 filteredLinkedURL:(id)arg4 UUID:(id)arg5 duration:(CDStruct_1b6d18a9)arg6 stillPersistenceUUID:(id)arg7 stillDisplayTime:(CDStruct_1b6d18a9)arg8 creationDate:(id)arg9 error:(id)arg10;
+- (id)initWithURL:(id)arg1 filteredLocalDestinationURL:(id)arg2 linkedURL:(id)arg3 filteredLinkedURL:(id)arg4 videoThumbnailPath:(id)arg5 UUID:(id)arg6 duration:(CDStruct_1b6d18a9)arg7 dimensions:(CDStruct_79c71658)arg8 stillPersistenceUUID:(id)arg9 stillDisplayTime:(CDStruct_1b6d18a9)arg10 creationDate:(id)arg11 adjustmentsData:(id)arg12 coordinationInfo:(id)arg13 error:(id)arg14;
 
 @end
 

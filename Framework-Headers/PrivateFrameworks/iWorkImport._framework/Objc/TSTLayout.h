@@ -103,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)dependentLayouts;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (BOOL)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (BOOL)inFindReplaceMode;
 - (BOOL)inPrintPreviewMode;

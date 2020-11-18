@@ -12,10 +12,12 @@
 
 + (BOOL)bitAtPosition:(long long)arg1 isTrueInValue:(unsigned long long)arg2;
 + (CDUnknownBlockType)bodyOfNoteOrAttachmentMatchingRule;
++ (unsigned long long)bucketOfTimeInterval:(double)arg1;
 + (id)initializeScoreArrayOfLength:(unsigned long long)arg1 setAllZeros:(BOOL)arg2;
++ (id)modificationDateBucketForSearchableItems:(id)arg1;
 + (CDUnknownBlockType)participantNameOrEmailMatchingRule;
-+ (id)rankingRules;
-+ (id)rankingScoresForSearchableItems:(id)arg1 withRankingQueryBitDictionary:(id)arg2;
++ (id)rankingRulesByMatchedField;
++ (id)rankingScoresForSearchableItems:(id)arg1 withRankingQueryBitDictionary:(id)arg2 matchedFields:(id *)arg3 isPrefixMatch:(id *)arg4;
 + (id)relevanceBitFieldForSearchableItems:(id)arg1;
 + (CDUnknownBlockType)titleOfNoteOrAttachmentMatchingRule;
 

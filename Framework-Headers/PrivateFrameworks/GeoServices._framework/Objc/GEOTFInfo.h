@@ -8,21 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOTFInfo : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_comment;
     NSString *_language;
+    struct {
+        unsigned int read_comment:1;
+        unsigned int read_language:1;
+        unsigned int wrote_comment:1;
+        unsigned int wrote_language:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *comment; // @synthesize comment=_comment;
+@property (strong, nonatomic) NSString *comment;
 @property (readonly, nonatomic) BOOL hasComment;
 @property (readonly, nonatomic) BOOL hasLanguage;
-@property (strong, nonatomic) NSString *language; // @synthesize language=_language;
+@property (strong, nonatomic) NSString *language;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readComment;
+- (void)_readLanguage;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

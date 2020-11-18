@@ -12,11 +12,9 @@
 {
     MFActivityMonitor *_monitor;
     BOOL _shouldLogInvocation;
-    BOOL _isLowPriority;
     NSString *_powerAssertionId;
 }
 
-@property (nonatomic) BOOL isLowPriority; // @synthesize isLowPriority=_isLowPriority;
 @property (readonly, nonatomic) MFActivityMonitor *monitor; // @synthesize monitor=_monitor;
 @property (copy, nonatomic) NSString *powerAssertionId; // @synthesize powerAssertionId=_powerAssertionId;
 
@@ -24,6 +22,7 @@
 + (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 object1:(id)arg3 object2:(id)arg4 taskName:(id)arg5 priority:(int)arg6 canBeCancelled:(BOOL)arg7;
 + (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 object:(id)arg3 taskName:(id)arg4 priority:(int)arg5 canBeCancelled:(BOOL)arg6;
 + (id)invocationWithSelector:(SEL)arg1 target:(id)arg2 taskName:(id)arg3 priority:(int)arg4 canBeCancelled:(BOOL)arg5;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (void)invoke;

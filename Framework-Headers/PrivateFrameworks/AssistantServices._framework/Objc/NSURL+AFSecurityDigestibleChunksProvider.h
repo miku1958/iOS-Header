@@ -17,6 +17,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_af_URLWithMessageIdentifier:(id)arg1;
+- (id)_af_messageIdentifierValue;
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)isAMOSCommittedIdentifier;
+- (BOOL)isAMOSIdentifier;
 @end
 

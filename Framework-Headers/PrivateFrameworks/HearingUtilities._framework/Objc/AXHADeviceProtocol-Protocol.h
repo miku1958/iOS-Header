@@ -62,6 +62,7 @@
 
 - (void)connect;
 - (BOOL)containsPeripheralWithUUID:(NSString *)arg1;
+- (unsigned long long)deviceType;
 - (BOOL)didLoadBasicProperties;
 - (BOOL)didLoadRequiredProperties;
 - (void)disconnectAndUnpair:(BOOL)arg1;

@@ -6,30 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoardUI/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardUI/NSCopying-Protocol.h>
 
-@class NSDictionary, NSString;
+@class FBProcess, NSDictionary, NSString;
 @protocol FBSProcess, SBLockScreenPluginLifecycleObserver;
 
-@interface SBLockScreenPluginContext : NSObject <NSCopying>
+@interface SBLockScreenPluginContext : NSObject <BSDescriptionProviding, NSCopying>
 {
     NSString *_name;
     NSDictionary *_userInfo;
-    id<FBSProcess> _process;
+    FBProcess<FBSProcess> *_process;
     CDUnknownBlockType _auxiliaryAnimation;
     id<SBLockScreenPluginLifecycleObserver> _observer;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType auxiliaryAnimation; // @synthesize auxiliaryAnimation=_auxiliaryAnimation;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) id<SBLockScreenPluginLifecycleObserver> observer; // @synthesize observer=_observer;
-@property (strong, nonatomic) id<FBSProcess> process; // @synthesize process=_process;
+@property (strong, nonatomic) FBProcess<FBSProcess> *process; // @synthesize process=_process;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (id)contextWithName:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)succinctDescription;

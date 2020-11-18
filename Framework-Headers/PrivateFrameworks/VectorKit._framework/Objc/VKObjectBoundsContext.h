@@ -17,7 +17,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addPoints:(const vector_554e3200 *)arg1;
-- (CDStruct_90e2a262)boundingRect;
+- (CDStruct_02837cd9)boundingRect;
 - (BOOL)isEmpty;
 
 @end

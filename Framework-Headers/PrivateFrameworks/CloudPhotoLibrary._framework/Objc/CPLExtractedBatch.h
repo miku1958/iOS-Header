@@ -17,9 +17,9 @@
     NSSet *_untrustableScopedIdentifiers;
     NSMutableSet *_mutableUntrustableScopedIndentifiers;
     BOOL _resourceSizeIsCalculated;
+    unsigned long long _resourceSize;
     BOOL _full;
     BOOL _batchCanLowerQuota;
-    unsigned long long _resourceSize;
     CPLChangeBatch *_batch;
     NSString *_clientCacheIdentifier;
 }
@@ -32,7 +32,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)addChange:(id)arg1;
+- (void)addChange:(id)arg1 fromStorage:(id)arg2;
+- (unsigned long long)effectiveResourceSizeToUploadUsingStorage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)forceScopeIndexOnAllRecordsTo:(long long)arg1;
 - (id)init;

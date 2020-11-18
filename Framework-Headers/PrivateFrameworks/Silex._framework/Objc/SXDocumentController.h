@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, SXDocument, SXImageController, SXJSONObjectMerger, SXMetaData, UIColor;
+#import <Silex/SXDocumentShareURLProvider-Protocol.h>
 
-@interface SXDocumentController : NSObject
+@class NSMutableDictionary, NSString, SXDocument, SXImageController, SXJSONObjectMerger, SXMetaData, UIColor;
+
+@interface SXDocumentController : NSObject <SXDocumentShareURLProvider>
 {
+    NSString *_shareURL;
     SXDocument *_document;
     SXJSONObjectMerger *_componentStyleMerger;
     SXImageController *_imageController;
@@ -18,10 +21,15 @@
 
 @property (readonly, nonatomic) SXJSONObjectMerger *componentStyleMerger; // @synthesize componentStyleMerger=_componentStyleMerger;
 @property (strong, nonatomic) NSMutableDictionary *componentStyles; // @synthesize componentStyles=_componentStyles;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) SXDocument *document; // @synthesize document=_document;
 @property (readonly, nonatomic) UIColor *documentBackgroundColor;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SXImageController *imageController; // @synthesize imageController=_imageController;
 @property (readonly, nonatomic) SXMetaData *metaData;
+@property (readonly, nonatomic) NSString *shareURL; // @synthesize shareURL=_shareURL;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UIColor *topBackgroundColor;
 
 - (void).cxx_destruct;
@@ -32,7 +40,7 @@
 - (id)componentStyleForComponent:(id)arg1;
 - (id)filterImageResources;
 - (id)imageResourceForIdentifier:(id)arg1;
-- (id)initWithDocument:(id)arg1;
+- (id)initWithDocument:(id)arg1 shareURL:(id)arg2;
 - (id)mergedObjectsWithIdentifiers:(id)arg1 fromDictionary:(id)arg2 merger:(id)arg3;
 - (id)requiredResourceURLs;
 - (id)resourceForIdentifier:(id)arg1;

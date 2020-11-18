@@ -6,25 +6,27 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeUI/RMGroupFetchedResultsControllerDelegate-Protocol.h>
+#import <ScreenTimeUI/STGroupFetchedResultsControllerDelegate-Protocol.h>
 #import <ScreenTimeUI/STRootViewModelCoordinator-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSNumber, NSString, RMGroupFetchedResultsController, STRootViewModel;
-@protocol RMPersistenceControllerProtocol, STContentPrivacyViewModelCoordinator, STTimeAllowancesViewModelCoordinator, STUsageDetailsViewModelCoordinator;
+@class NSMutableDictionary, NSNumber, NSString, STAdminPersistenceController, STGroupFetchedResultsController, STRootViewModel;
+@protocol STContentPrivacyViewModelCoordinator, STTimeAllowancesViewModelCoordinator, STUsageDetailsViewModelCoordinator;
 
-@interface STRootViewModelCoordinator : NSObject <RMGroupFetchedResultsControllerDelegate, STRootViewModelCoordinator>
+@interface STRootViewModelCoordinator : NSObject <STGroupFetchedResultsControllerDelegate, STRootViewModelCoordinator>
 {
     BOOL _hasAlreadyEnteredPINForSession;
     BOOL _isLocalUser;
     NSObject<STUsageDetailsViewModelCoordinator> *_usageDetailsCoordinator;
     NSObject<STTimeAllowancesViewModelCoordinator> *_timeAllowancesCoordinator;
     NSObject<STContentPrivacyViewModelCoordinator> *_contentPrivacyCoordinator;
-    id<RMPersistenceControllerProtocol> _persistenceController;
+    STAdminPersistenceController *_persistenceController;
     STRootViewModel *_viewModel;
-    RMGroupFetchedResultsController *_fetchedResultsController;
+    STGroupFetchedResultsController *_fetchedResultsController;
     NSMutableDictionary *_coordinatorsByChildDSID;
     NSNumber *_userDSID;
-    NSArray *_selectedDeviceIdentifiers;
+    NSString *_deviceIdentifier;
+    NSNumber *_usageReportType;
+    long long _usageHistoryType;
     NSString *_userName;
 }
 
@@ -32,17 +34,19 @@
 @property (strong, nonatomic) NSMutableDictionary *coordinatorsByChildDSID; // @synthesize coordinatorsByChildDSID=_coordinatorsByChildDSID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) RMGroupFetchedResultsController *fetchedResultsController; // @synthesize fetchedResultsController=_fetchedResultsController;
+@property (readonly, copy) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (strong, nonatomic) STGroupFetchedResultsController *fetchedResultsController; // @synthesize fetchedResultsController=_fetchedResultsController;
 @property (nonatomic) BOOL hasAlreadyEnteredPINForSession; // @synthesize hasAlreadyEnteredPINForSession=_hasAlreadyEnteredPINForSession;
 @property (nonatomic) BOOL hasShownMiniBuddy;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isLocalUser; // @synthesize isLocalUser=_isLocalUser;
 @property (readonly, nonatomic, getter=isPasscodeEnabled) BOOL passcodeEnabled;
-@property (strong, nonatomic) id<RMPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
-@property (copy, nonatomic) NSArray *selectedDeviceIdentifiers; // @synthesize selectedDeviceIdentifiers=_selectedDeviceIdentifiers;
+@property (readonly) STAdminPersistenceController *persistenceController; // @synthesize persistenceController=_persistenceController;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<STTimeAllowancesViewModelCoordinator> *timeAllowancesCoordinator; // @synthesize timeAllowancesCoordinator=_timeAllowancesCoordinator;
 @property (readonly) NSObject<STUsageDetailsViewModelCoordinator> *usageDetailsCoordinator; // @synthesize usageDetailsCoordinator=_usageDetailsCoordinator;
+@property (readonly) long long usageHistoryType; // @synthesize usageHistoryType=_usageHistoryType;
+@property (readonly, copy) NSNumber *usageReportType; // @synthesize usageReportType=_usageReportType;
 @property (copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 @property (copy, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property (strong, nonatomic) STRootViewModel *viewModel; // @synthesize viewModel=_viewModel;
@@ -51,22 +55,14 @@
 + (id)keyPathsForValuesAffectingUsageDetailsCoordinator;
 + (id)loadViewModelFromManagedObjectContext:(id)arg1 isLocalUser:(BOOL)arg2 userDSID:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
-- (id)_automaticDateTimeConfigurationIdentifier;
-- (void)_createUserManagementConfigurationsForCoreUser:(id)arg1 inContext:(id)arg2;
-- (void)_deleteUserManagementConfigurationsForCoreUser:(id)arg1 fromContext:(id)arg2;
-- (id)_iCloudLogoutConfigurationIdentifier;
-- (id)_managedUserActivationIdentifier;
-- (void)_notifyServerOfScreenTimeEnabled:(BOOL)arg1 forDSID:(id)arg2;
 - (void)_passcodeSessionHasEnded:(id)arg1;
-- (void)_registerForPersistenceStoreNotifications;
+- (void)_registerForPersistentStoreNotifications;
 - (void)_registerForWillResignActiveNotifications;
-- (id)coordinatorForChild:(id)arg1;
+- (id)coordinatorForChild:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3;
 - (void)enableScreenTimeWithPIN:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)groupResultsControllerDidChangeContents:(id)arg1;
 - (id)init;
-- (id)initWithPersistenceController:(id)arg1;
-- (id)initWithPersistenceController:(id)arg1 userDSID:(id)arg2 selectedDevices:(id)arg3;
-- (id)initWithUserDSID:(id)arg1;
+- (id)initWithUserDSID:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3 usageHistoryType:(long long)arg4;
 - (void)loadViewModelRightNow;
 - (void)loadViewModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)organizationIdentifierForManagement;

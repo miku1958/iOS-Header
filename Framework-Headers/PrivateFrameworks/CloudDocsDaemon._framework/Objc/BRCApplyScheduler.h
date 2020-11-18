@@ -51,9 +51,9 @@ __attribute__((visibility("hidden")))
 - (void)rescheduleMissingTargetAliasesWithTarget:(id)arg1;
 - (void)resetBackoffForServerItem:(id)arg1;
 - (void)schedule;
-- (void)setState:(int)arg1 andApplyKind:(unsigned int)arg2 forRank:(long long)arg3 zone:(id)arg4;
+- (void)setState:(int)arg1 andApplyKind:(unsigned int)arg2 forRank:(long long)arg3 zoneRowID:(id)arg4;
 - (void)setState:(int)arg1 andApplyKind:(unsigned int)arg2 forServerItem:(id)arg3 localItem:(id)arg4;
-- (void)setState:(int)arg1 forRank:(long long)arg2 zone:(id)arg3;
+- (void)setState:(int)arg1 forRank:(long long)arg2 zoneRowID:(id)arg3;
 - (void)setState:(int)arg1 forServerItem:(id)arg2 localItem:(id)arg3;
 - (BOOL)startWriteCoordinationInAppLibrary:(id)arg1;
 - (void)stopMonitoringFaultingForZone:(id)arg1;

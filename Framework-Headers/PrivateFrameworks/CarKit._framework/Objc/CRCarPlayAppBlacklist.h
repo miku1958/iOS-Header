@@ -6,22 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet;
-@protocol OS_dispatch_queue;
+@class NSSet, NSXPCConnection;
 
 @interface CRCarPlayAppBlacklist : NSObject
 {
-    NSObject<OS_dispatch_queue> *_blacklistAccessQueue;
+    NSXPCConnection *_connection;
     NSSet *_blacklistedBundleIDs;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *blacklistAccessQueue; // @synthesize blacklistAccessQueue=_blacklistAccessQueue;
 @property (strong, nonatomic) NSSet *blacklistedBundleIDs; // @synthesize blacklistedBundleIDs=_blacklistedBundleIDs;
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 
 - (void).cxx_destruct;
-- (void)_fetchAppBlacklistWithReply:(CDUnknownBlockType)arg1;
-- (id)_init;
+- (id)_blacklistPreference;
+- (void)_requestBlacklistUpdate;
+- (void)_setupConnection;
 - (BOOL)containsBundleIdentifier:(id)arg1;
+- (void)dealloc;
 - (id)init;
 
 @end

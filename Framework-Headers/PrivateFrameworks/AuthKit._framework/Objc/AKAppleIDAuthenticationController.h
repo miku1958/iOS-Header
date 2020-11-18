@@ -25,6 +25,7 @@
 + (id)sensitiveAuthenticationKeys;
 - (void).cxx_destruct;
 - (id)_authenticationServiceConnection;
+- (id)_urlBagFromCache:(BOOL)arg1 withError:(id *)arg2;
 - (id)accountNamesForAltDSID:(id)arg1;
 - (id)activeLoginCode:(id *)arg1;
 - (void)authenticateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -32,15 +33,19 @@
 - (void)checkSecurityUpgradeEligibilityForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)configurationInfoWithIdentifiers:(id)arg1 forAltDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
+- (BOOL)deleteAuthorizationDatabase:(id *)arg1;
 - (void)fetchAuthModeWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)fetchAuthorizedAppListWithContext:(id)arg1 error:(id *)arg2;
 - (void)fetchDeviceListWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fetchDeviceListWithContext:(id)arg1 error:(id *)arg2;
 - (void)fetchDeviceMapWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)fetchPrimaryBundleIDForWebServiceWithInfo:(id)arg1 error:(id *)arg2;
 - (void)fetchURLBagWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchUserInformationForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateLoginCodeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getServerUILoadDelegateForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getServerUILoadDelegateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getUserInformationForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithDaemonXPCEndpoint:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
@@ -51,6 +56,7 @@
 - (void)renewRecoveryTokenWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reportSignOutForAllAppleIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reportSignOutForAppleID:(id)arg1 service:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)revokeAuthorizationForApplicationWithClientID:(id)arg1 error:(id *)arg2;
 - (void)setAppleIDWithAltDSID:(id)arg1 inUse:(BOOL)arg2 forService:(long long)arg3;
 - (void)setAppleIDWithDSID:(id)arg1 inUse:(BOOL)arg2 forService:(long long)arg3;
 - (void)setConfigurationInfo:(id)arg1 forIdentifier:(id)arg2 forAltDSID:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -59,10 +65,10 @@
 - (void)teardownFollowUpWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateStateWithExternalAuthenticationResponse:(id)arg1 forAppleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateStateWithExternalAuthenticationResponse:(id)arg1 forContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)urlBagWithError:(id *)arg1;
 - (void)validateLoginCode:(unsigned long long)arg1 forAppleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)validateVettingToken:(id)arg1 forAltDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)verifyMasterKey:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)warmUpVerificationSessionWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

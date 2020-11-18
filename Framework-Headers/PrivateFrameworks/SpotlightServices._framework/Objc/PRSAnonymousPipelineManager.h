@@ -11,7 +11,6 @@
 
 @interface PRSAnonymousPipelineManager : NSObject
 {
-    BOOL _debugEnabled;
     BOOL _isInternalDevice;
     BOOL _submissionEnabled;
     NSUserDefaults *_userDefaults;
@@ -22,7 +21,6 @@
     id<SFFeedbackListener> _delegate;
 }
 
-@property BOOL debugEnabled; // @synthesize debugEnabled=_debugEnabled;
 @property (strong, nonatomic) id<SFFeedbackListener> delegate; // @synthesize delegate=_delegate;
 @property BOOL isInternalDevice; // @synthesize isInternalDevice=_isInternalDevice;
 @property (strong, nonatomic) NSArray *lastTopHitQueryItems; // @synthesize lastTopHitQueryItems=_lastTopHitQueryItems;
@@ -38,6 +36,7 @@
 + (id)dateFormatter;
 + (id)dateFromFileURL:(id)arg1;
 + (id)engagementCountKeyForBundle:(id)arg1;
++ (void)initialize;
 + (id)logURLForCurrentTimeAndBundle:(id)arg1;
 + (id)relativePositionKey;
 + (id)sharedManager;
@@ -47,19 +46,20 @@
 + (id)whitelistedBundles;
 - (void).cxx_destruct;
 - (id)_abandonedItemsFromItems:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2;
-- (void)_addQueryInfoToJSONWriter:(struct json_writer *)arg1 withQuery:(id)arg2 cepData:(id)arg3 forClient:(id)arg4 keyboardPrimaryLanguage:(id)arg5;
-- (void)_addRelativePositionToFeatureDict:(id)arg1 relativePosition:(id)arg2 forItem:(id)arg3;
-- (void)_extractTrainingSamplesForQuery:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2 withItems:(id)arg3 withCEPData:(id)arg4 forClientBundle:(id)arg5 keyboardPrimaryLanguage:(id)arg6;
+- (void)_addQueryInfoToJSONWriter:(struct json_writer *)arg1 withQuery:(id)arg2 cepData:(id)arg3 forClient:(id)arg4 debugInfoAllowed:(BOOL)arg5 keyboardPrimaryLanguage:(id)arg6;
+- (void)_addRelativePositionToFeatureDict:(id)arg1 relativePosition:(id)arg2 forItem:(id)arg3 debugInfoEnabled:(BOOL)arg4;
+- (void)_extractTrainingSamplesForQuery:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2 withItems:(id)arg3 withCEPData:(id)arg4 forClientBundle:(id)arg5 debugInfoEnabled:(BOOL)arg6 keyboardPrimaryLanguage:(id)arg7;
 - (void)_increaseUserDefaultsEngagementCountForBundle:(id)arg1;
 - (id)_relativePositionForItem:(id)arg1 inItems:(id)arg2 withIndexOfEngagedItem:(long long)arg3;
 - (BOOL)_shouldDataCollectWithEngagedBundle:(id)arg1 withQueryId:(id)arg2 forClientBundle:(id)arg3;
 - (void)_updateUserDefaultsWithEngagedBundle:(id)arg1 andQueryID:(id)arg2 forClientBundle:(id)arg3;
+- (void)_writeResult:(struct json_writer *)arg1 item:(id)arg2;
 - (void)cleanUp;
 - (BOOL)dateIsExpired:(id)arg1;
 - (void)deleteCandidateLogs;
 - (void)deleteExpiredSubmittedLogs;
 - (void)extractTrainingDataWithItemAtIndex:(unsigned long long)arg1 withItems:(id)arg2 forQuery:(id)arg3 dataCollectAllowed:(BOOL)arg4 forClientBundle:(id)arg5 keyboardPrimaryLanguage:(id)arg6;
-- (void)extractTrainingDataWithItemAtIndex:(unsigned long long)arg1 withItems:(id)arg2 forQuery:(id)arg3 dataCollectAllowed:(BOOL)arg4 queryID:(id)arg5 withCEPData:(id)arg6 forClientBundle:(id)arg7 keyboardPrimaryLanguage:(id)arg8;
+- (void)extractTrainingDataWithItemAtIndex:(unsigned long long)arg1 withItems:(id)arg2 forQuery:(id)arg3 dataCollectAllowed:(BOOL)arg4 queryID:(id)arg5 withCEPData:(id)arg6 forClientBundle:(id)arg7 debugInfoEnabled:(BOOL)arg8 keyboardPrimaryLanguage:(id)arg9;
 - (id)init;
 - (void)queryWillFinishWithItems:(id)arg1 forClient:(id)arg2 forQuery:(id)arg3 anonymousDataCollectionAllowed:(BOOL)arg4;
 - (void)registerXPCActivity;

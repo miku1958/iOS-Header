@@ -8,7 +8,7 @@
 
 #import <Silex/SXTextStyle-Protocol.h>
 
-@class NSString, SXJSONArray, SXShadow, SXTextDecoration, SXTextStroke, UIColor;
+@class NSString, SXJSONArray, SXTextDecoration, SXTextShadow, SXTextStroke, UIColor;
 @protocol SXTextStyleFontAttributes;
 
 @interface SXTextStyle : SXJSONObject <SXTextStyle>
@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) SXTextStroke *stroke; // @dynamic stroke;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIColor *textColor; // @dynamic textColor;
-@property (readonly, nonatomic) SXShadow *textShadow; // @dynamic textShadow;
+@property (readonly, nonatomic) SXTextShadow *textShadow; // @dynamic textShadow;
 @property (readonly, nonatomic) long long textTransform; // @dynamic textTransform;
 @property (readonly, nonatomic) double tracking; // @dynamic tracking;
 @property (readonly, nonatomic) SXTextDecoration *underline; // @dynamic underline;

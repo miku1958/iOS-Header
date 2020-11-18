@@ -6,15 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class CNChangeHistoryAnchor;
+
 @interface ContactFolderItemsSyncContext : NSObject
 {
     int _abPersonChangeId;
     int _abGroupChangeId;
+    CNChangeHistoryAnchor *_cnChangeAnchor;
 }
 
 @property (nonatomic) int abGroupChangeId; // @synthesize abGroupChangeId=_abGroupChangeId;
 @property (nonatomic) int abPersonChangeId; // @synthesize abPersonChangeId=_abPersonChangeId;
+@property (strong, nonatomic) CNChangeHistoryAnchor *cnChangeAnchor; // @synthesize cnChangeAnchor=_cnChangeAnchor;
 
+- (void).cxx_destruct;
 
 @end
 

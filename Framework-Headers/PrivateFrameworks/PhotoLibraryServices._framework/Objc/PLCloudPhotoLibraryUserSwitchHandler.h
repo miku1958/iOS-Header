@@ -22,6 +22,7 @@
 @property (strong) id<PLCloudUserSessionHandling> sessionHandler; // @synthesize sessionHandler=_sessionHandler;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)willSwitchUser;

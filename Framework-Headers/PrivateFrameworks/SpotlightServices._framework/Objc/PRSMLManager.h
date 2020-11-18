@@ -34,22 +34,13 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)addCategoryAndGroupNameToTrainCategories:(id)arg1 groupName:(id)arg2;
-- (void)addResultToTrainCategories:(id)arg1;
-- (void)addResultToTrainingData:(id)arg1 queryString:(id)arg2 action:(id)arg3;
 - (void)dumpPredictionStatsToFlatFiles;
 - (unsigned long long)getCountForCategory:(id)arg1;
 - (id)getLastSavedCategoryRankings;
 - (id)getRankedCategoriesAsDictionaryForDays:(long long)arg1;
-- (double)getTimeStampWhenLastLogged;
-- (id)getTopHitResultForQuery:(id)arg1 resultSet:(id)arg2;
-- (unsigned long long)getTotalResultsUsedCount;
 - (unsigned long long)getTotalResultsUsedCountForDuet;
 - (id)initManager;
 - (void)saveLastRankingForCategories:(id)arg1;
-- (void)setTimeStampWhenLastLogged:(double)arg1;
-- (void)setTotalResultsUsedCount:(unsigned long long)arg1;
-- (void)trackQueryCountsForQuery:(id)arg1 resultSet:(id)arg2 staticModelTopHit:(id)arg3;
-- (void)updateCountsForUsedResult:(id)arg1;
 
 @end
 

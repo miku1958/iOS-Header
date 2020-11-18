@@ -8,12 +8,12 @@
 
 #import <ControlCenterUIKit/CCUIContentModule-Protocol.h>
 
-@class CCUICAPackageDescription, CCUIContentModuleContext, CCUIToggleViewController, NSString, UIColor, UIImage, UIViewController;
+@class CCUICAPackageDescription, CCUIContentModuleContext, NSHashTable, NSString, UIColor, UIImage, UIViewController;
 @protocol CCUIContentModuleBackgroundViewController, CCUIContentModuleContentViewController;
 
 @interface CCUIToggleModule : NSObject <CCUIContentModule>
 {
-    CCUIToggleViewController *_viewController;
+    NSHashTable *_contentViewControllers;
     CCUIContentModuleContext *_contentModuleContext;
     CCUICAPackageDescription *_glyphPackageDescription;
 }
@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) CCUICAPackageDescription *glyphPackageDescription; // @synthesize glyphPackageDescription=_glyphPackageDescription;
+@property (readonly, nonatomic) double glyphScale;
 @property (readonly, copy, nonatomic) NSString *glyphState;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) UIImage *iconGlyph; // @dynamic iconGlyph;
@@ -33,6 +34,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)contentViewControllerForContext:(id)arg1;
 - (id)glyphPackage;
 - (void)reconfigureView;
 - (void)refreshState;

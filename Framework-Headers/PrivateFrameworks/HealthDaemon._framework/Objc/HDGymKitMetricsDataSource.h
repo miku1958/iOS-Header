@@ -28,7 +28,7 @@
 
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
-+ (BOOL)validateConfiguration:(id)arg1 error:(out id *)arg2;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_metadataFromMetrics:(id)arg1;
 - (void)_startObservingMetrics;
@@ -36,7 +36,7 @@
 - (void)connectionInvalidated;
 - (void)dealloc;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (void)metricsCollector:(id)arg1 didCollectMetrics:(id)arg2;
 - (id)remoteInterface;
 - (void)remote_startTaskServerIfNeeded;

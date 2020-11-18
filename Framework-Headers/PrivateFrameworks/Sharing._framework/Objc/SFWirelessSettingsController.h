@@ -24,7 +24,7 @@
 @property (weak) id<SFWirelessSettingsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly) BOOL deviceSupportsWAPI;
 @property (getter=isWifiEnabled) BOOL wifiEnabled;
-@property (readonly, getter=isWirelessAccessPointEnabled) BOOL wirelessAccessPointEnabled;
+@property (getter=isWirelessAccessPointEnabled) BOOL wirelessAccessPointEnabled;
 @property (readonly, getter=isWirelessCarPlayEnabled) BOOL wirelessCarPlayEnabled;
 
 - (void).cxx_destruct;

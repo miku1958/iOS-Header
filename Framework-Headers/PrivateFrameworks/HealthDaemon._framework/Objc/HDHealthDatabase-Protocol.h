@@ -7,24 +7,26 @@
 #import <HealthDaemon/NSObject-Protocol.h>
 
 @class HDAssertion, HDDatabaseTransactionContext, HDJournalEntry, NSArray, NSObject, NSString;
-@protocol HDDatabaseProtectedDataObserver, OS_dispatch_queue;
+@protocol HDDatabaseJournalMergeObserver, HDDatabaseProtectedDataObserver, OS_dispatch_queue;
 
 @protocol HDHealthDatabase <NSObject>
 
 @property (readonly, nonatomic, getter=isDataProtectedByFirstUnlockAvailable) BOOL dataProtectedByFirstUnlockAvailable;
 @property (readonly, nonatomic, getter=isProtectedDataAvailable) BOOL protectedDataAvailable;
 
+- (void)addDatabaseJournalMergeObserver:(id<HDDatabaseJournalMergeObserver>)arg1 journalType:(long long)arg2 queue:(NSObject<OS_dispatch_queue> *)arg3;
 - (BOOL)addJournalEntries:(NSArray *)arg1 error:(id *)arg2;
 - (BOOL)addJournalEntry:(HDJournalEntry *)arg1 error:(id *)arg2;
 - (void)addProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1;
 - (void)addProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
 - (HDAssertion *)cloneAccessibilityAssertion:(HDAssertion *)arg1 ownerIdentifier:(NSString *)arg2 error:(id *)arg3;
 - (void)performAsynchronously:(void (^)(void))arg1;
-- (BOOL)performTransactionWithContext:(HDDatabaseTransactionContext *)arg1 options:(unsigned long long)arg2 error:(id *)arg3 block:(BOOL (^)(HDDatabaseTransaction *, id *))arg4 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg5;
-- (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 block:(BOOL (^)(HDDatabaseTransaction *, id *))arg3 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg4;
-- (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 usingBlock:(BOOL (^)(HDSQLiteDatabase *, id *))arg3 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg4;
+- (void)performAsynchronouslySerial:(void (^)(void))arg1;
+- (BOOL)performTransactionWithContext:(HDDatabaseTransactionContext *)arg1 error:(id *)arg2 block:(BOOL (^)(HDDatabaseTransaction *, id *))arg3 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg4;
 - (void)performWhenDataProtectedByFirstUnlockIsAvailable:(void (^)(void))arg1;
+- (void)performWhenDataProtectedByFirstUnlockIsAvailableOnQueue:(NSObject<OS_dispatch_queue> *)arg1 block:(void (^)(void))arg2;
 - (BOOL)performWithTransactionContext:(HDDatabaseTransactionContext *)arg1 error:(id *)arg2 block:(BOOL (^)(id *))arg3;
+- (void)removeDatabaseJournalMergeObserver:(id<HDDatabaseJournalMergeObserver>)arg1 journalType:(long long)arg2;
 - (void)removeProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1;
 - (HDAssertion *)takeAccessibilityAssertionWithOwnerIdentifier:(NSString *)arg1 timeout:(double)arg2 error:(id *)arg3;
 @end

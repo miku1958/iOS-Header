@@ -17,18 +17,20 @@ __attribute__((visibility("hidden")))
     unsigned long long _lineMuid;
     BOOL _isTransitOnly;
     struct {
-        unsigned int lineMuid:1;
-        unsigned int isTransitOnly:1;
-    } _has;
+        unsigned int has_lineMuid:1;
+        unsigned int has_isTransitOnly:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsTransitOnly;
 @property (nonatomic) BOOL hasLineMuid;
-@property (nonatomic) BOOL isTransitOnly; // @synthesize isTransitOnly=_isTransitOnly;
-@property (nonatomic) unsigned long long lineMuid; // @synthesize lineMuid=_lineMuid;
+@property (nonatomic) BOOL isTransitOnly;
+@property (nonatomic) unsigned long long lineMuid;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

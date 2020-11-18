@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIViewController.h>
+#import <OnBoardingKit/OBBaseWelcomeController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UITextFieldDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, TSCellularPlanTableViewCell, UILabel, UITableView;
+@class NSLayoutConstraint, NSString, TSCellularPlanTableViewCell, UIBarButtonItem, UILabel, UITableView;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanConfirmationCodeViewController : UIViewController <UITextFieldDelegate, TSSetupFlowItem>
+@interface TSCellularPlanConfirmationCodeViewController : OBBaseWelcomeController <UITextFieldDelegate, TSSetupFlowItem>
 {
     TSCellularPlanTableViewCell *_confirmationCodeCell;
     NSString *_fauxCardData;
     NSString *_confirmationCode;
     long long _userConsentResponse;
     BOOL _isMidOperation;
+    UIBarButtonItem *_nextButton;
     id<TSSIMSetupFlowDelegate> _delegate;
     UILabel *_confirmationCodeTitleLabel;
     UITableView *_infoTableView;
@@ -36,12 +37,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)canBeShownFromSuspendedState;
 - (void)confirm:(id)arg1;
 - (id)initAsMidOperation;
 - (id)initWithCardData:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

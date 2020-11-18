@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMapTable *observerMapTable; // @synthesize observerMapTable=_observerMapTable;
 @property (nonatomic) int playbackReportToken; // @synthesize playbackReportToken=_playbackReportToken;
 
++ (BOOL)_isAppRefreshEventType:(id)arg1;
 + (id)sharedMonitor;
 - (void).cxx_destruct;
 - (void)_handleAccountDidChangeNotification:(id)arg1;

@@ -7,6 +7,16 @@
 #import <CoreServices/LSApplicationProxy.h>
 
 @interface LSApplicationProxy (MCUIMISBlockedApps)
+- (id)appIconForTableCell;
+- (BOOL)hasAppVPN;
+- (BOOL)hasManagedRestrictions;
 - (BOOL)isBlacklisted;
+- (BOOL)isExcludedFromBackup;
+- (BOOL)isExcludedFromCloudSync;
+- (BOOL)isUnableToExportToUnmanaged;
+- (BOOL)isUnableToImportFromUnmanaged;
+- (BOOL)isUnableToUseCellData;
+- (BOOL)isUnableToUseRoamingCellData;
+- (BOOL)isUninstalledOnMDMRemoval;
 @end
 

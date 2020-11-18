@@ -17,6 +17,7 @@
 @property (nonatomic) double bloomBlurRadius;
 @property (nonatomic) double bloomIntensity;
 @property (nonatomic) unsigned long long bloomIteration;
+@property (nonatomic) unsigned long long bloomIterationSpread;
 @property (nonatomic) double bloomThreshold;
 @property (nonatomic) unsigned long long categoryBitMask;
 @property (nonatomic) double colorFringeIntensity;
@@ -34,6 +35,9 @@
 @property (nonatomic) double focalLength;
 @property (nonatomic) double focalSize;
 @property (nonatomic) double focusDistance;
+@property (nonatomic) double grainIntensity;
+@property (nonatomic) double grainIsColored;
+@property (nonatomic) double grainScale;
 @property (nonatomic) double maximumExposure;
 @property (nonatomic) double minimumExposure;
 @property (nonatomic) double motionBlurIntensity;
@@ -54,6 +58,8 @@
 @property (nonatomic) BOOL wantsDepthOfField;
 @property (nonatomic) BOOL wantsExposureAdaptation;
 @property (nonatomic) BOOL wantsHDR;
+@property (nonatomic) double whiteBalanceTemperature;
+@property (nonatomic) double whiteBalanceTint;
 @property (nonatomic) double whitePoint;
 @property (nonatomic) double xFov;
 @property (nonatomic) double yFov;

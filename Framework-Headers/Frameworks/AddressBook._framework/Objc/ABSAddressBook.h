@@ -27,9 +27,11 @@
 @property (readonly, nonatomic) CNContactStore *store;
 @property (readonly, nonatomic) CNFuture *storeFuture; // @synthesize storeFuture=_storeFuture;
 
++ (void)ABInitialize;
 + (long long)authorizationStatus;
 + (void)callLocalChangeCallbacks:(BOOL)arg1;
 + (BOOL)eraseAllDataAtLocationName:(id)arg1 error:(id *)arg2;
++ (void)initialize;
 + (id)localizedLabelForLabel:(id)arg1;
 + (void)requestAccessWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
@@ -46,6 +48,9 @@
 - (void)completePerson:(id)arg1 withKeysToFetch:(id)arg2;
 - (id)contactsWithIdentifiers:(id)arg1 keysToFetch:(id)arg2;
 - (id)defaultSource;
+- (id)findPersonMatchingEmailAddress:(id)arg1;
+- (id)findPersonMatchingPhoneNumber:(id)arg1 country:(id)arg2;
+- (id)findPersonMatchingURL:(id)arg1;
 - (long long)groupCount;
 - (id)groupWithRecordID:(int)arg1;
 - (id)groupsInSource:(id)arg1;
@@ -69,8 +74,10 @@
 - (BOOL)removeRecord:(id)arg1 error:(id *)arg2;
 - (void)revert;
 - (BOOL)save:(id *)arg1;
+- (int)saveSequenceCount;
 - (id)sourceForRecord:(id)arg1;
 - (id)sourceWithRecordID:(int)arg1;
+- (id)uniqueDatabaseVersionIdentifier;
 - (BOOL)unlinkPerson:(id)arg1;
 - (void)unregisterExternalChangeCallback:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2;
 - (void)updateFetchingAllPropertiesForGroups:(id)arg1;

@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PersonalizationPortrait/PPRecordLoadingDelegate.h>
 
-@class NSString;
-
-@interface PPContactNameRecordLoadingDelegate : NSObject
+@interface PPContactNameRecordLoadingDelegate : PPRecordLoadingDelegate
 {
-    NSString *_name;
     CDUnknownBlockType _contactNameRecordsSetup;
     CDUnknownBlockType _contactNameRecordsHandler;
     CDUnknownBlockType _contactNameRecordsCompletion;
@@ -23,7 +20,6 @@
 @property (copy, nonatomic) CDUnknownBlockType contactNameRecordsCompletion; // @synthesize contactNameRecordsCompletion=_contactNameRecordsCompletion;
 @property (copy, nonatomic) CDUnknownBlockType contactNameRecordsHandler; // @synthesize contactNameRecordsHandler=_contactNameRecordsHandler;
 @property (copy, nonatomic) CDUnknownBlockType contactNameRecordsSetup; // @synthesize contactNameRecordsSetup=_contactNameRecordsSetup;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) CDUnknownBlockType recentContactNameRecordsCompletion; // @synthesize recentContactNameRecordsCompletion=_recentContactNameRecordsCompletion;
 @property (copy, nonatomic) CDUnknownBlockType recentContactNameRecordsHandler; // @synthesize recentContactNameRecordsHandler=_recentContactNameRecordsHandler;
 @property (copy, nonatomic) CDUnknownBlockType recentContactNameRecordsSetup; // @synthesize recentContactNameRecordsSetup=_recentContactNameRecordsSetup;
@@ -32,6 +28,13 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithName:(id)arg1;
+- (void)recentRecordLoadingCompletion;
+- (unsigned char)recentRecordLoadingHandler:(id)arg1;
+- (unsigned char)recentRecordLoadingSetup;
+- (void)recordLoadingCompletion;
+- (unsigned char)recordLoadingHandler:(id)arg1;
+- (unsigned char)recordLoadingSetup;
+- (void)resetRecordData;
 
 @end
 

@@ -14,17 +14,15 @@ __attribute__((visibility("hidden")))
     NSString *_identityString;
     struct _PCSIdentitySetData *_identitySet;
     NSString *_primaryServiceName;
-    NSString *_dsid;
 }
 
-@property (readonly, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 @property (readonly, nonatomic) struct _PCSIdentitySetData *identitySet; // @synthesize identitySet=_identitySet;
 @property (readonly, nonatomic) NSString *identityString; // @synthesize identityString=_identityString;
 @property (readonly, nonatomic) NSString *primaryServiceName; // @synthesize primaryServiceName=_primaryServiceName;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithIdentitySet:(struct _PCSIdentitySetData *)arg1 withPrimaryServiceName:(id)arg2 dsid:(id)arg3;
+- (id)initWithIdentitySet:(struct _PCSIdentitySetData *)arg1 withPrimaryServiceName:(id)arg2;
 
 @end
 

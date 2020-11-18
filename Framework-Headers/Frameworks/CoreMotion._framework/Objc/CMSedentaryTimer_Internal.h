@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMSedentaryTimer_Internal : NSObject
 {
     NSObject<OS_dispatch_queue> *fClientQueue;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     NSObject<OS_dispatch_queue> *fDaemonQueue;
     struct CLConnectionClient *fLocationdConnection;
     BOOL _timerArmed;
@@ -23,8 +22,6 @@
 - (void)_handleStartStopTimerResponse:(shared_ptr_bdcc6d0f)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_isActive;
 - (void)_registerForAlarmsWithHandler:(CDUnknownBlockType)arg1;
-- (void)_startWatchdogCheckins;
-- (void)_stopWatchdogCheckins;
 - (void)_teardown;
 - (void)dealloc;
 - (id)init;

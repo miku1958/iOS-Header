@@ -11,15 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface NSFilePresenterRelinquishment : NSObject
 {
+    struct os_unfair_lock_s _lock;
     NSCountedSet *_blockingAccessClaimIDs;
     NSMutableArray *_relinquishReplies;
     CDUnknownBlockType _reacquirer;
-    BOOL _prerelinquishInProgress;
     NSMutableArray *_blockingPrerelinquishReplies;
+    BOOL _prerelinquishInProgress;
 }
 
-- (void)addPrerelinquishReply:(CDUnknownBlockType)arg1;
-- (void)addRelinquishReply:(CDUnknownBlockType)arg1;
+- (void)_locked_addPrerelinquishReply:(CDUnknownBlockType)arg1;
+- (BOOL)_locked_addRelinquishReply:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)didRelinquish;
 - (void)performRelinquishmentToAccessClaimIfNecessary:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 withReply:(CDUnknownBlockType)arg3;

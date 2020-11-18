@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) double minViewportAspectRatio; // @dynamic minViewportAspectRatio;
 @property (readonly, nonatomic) double minViewportWidth; // @dynamic minViewportWidth;
 @property (readonly, nonatomic) NSString *platform; // @dynamic platform;
+@property (readonly, nonatomic) unsigned long long preferredColorScheme; // @dynamic preferredColorScheme;
 @property (readonly, nonatomic) NSString *subscriptionStatus; // @dynamic subscriptionStatus;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long testing; // @dynamic testing;
@@ -45,6 +46,7 @@
 - (id)minContentSizeCategoryWithValue:(id)arg1 withType:(int)arg2;
 - (double)minViewportAspectRatioWithValue:(id)arg1 withType:(int)arg2;
 - (double)minViewportWidthWithValue:(id)arg1 withType:(int)arg2;
+- (unsigned long long)preferredColorSchemeWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)testingWithValue:(id)arg1 withType:(int)arg2;
 - (long long)verticalSizeClassWithValue:(id)arg1 withType:(int)arg2;
 

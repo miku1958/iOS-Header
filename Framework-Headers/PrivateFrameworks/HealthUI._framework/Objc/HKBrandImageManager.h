@@ -12,8 +12,8 @@
 {
     NSCache *_fetchedImages;
     NSMutableDictionary *_outstandingRequests;
-    NSOperationQueue *_fileOperationQueue;
     HKHealthRecordsStore *_healthRecordsStore;
+    NSOperationQueue *_fileOperationQueue;
 }
 
 @property (strong, nonatomic) NSCache *fetchedImages; // @synthesize fetchedImages=_fetchedImages;
@@ -24,7 +24,6 @@
 + (id)_fetchOrCreateSalt;
 + (double)defaultLogoDimension;
 + (id)imageManagerWithHealthRecordsStore:(id)arg1;
-+ (id)standardTableViewCellSpacerImage;
 - (void).cxx_destruct;
 - (id)_hashedSaltedStringFromString:(id)arg1;
 - (id)_logoURLForBrand:(id)arg1;
@@ -33,7 +32,7 @@
 - (void)cacheFeaturedBrandLogosWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dispatchResponsesForBrand:(id)arg1 image:(id)arg2 error:(id)arg3;
 - (void)fetchLogoForBrand:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)init;
+- (id)initWithHealthRecordsStore:(id)arg1;
 - (id)loadStoredLogoForBrand:(id)arg1;
 - (void)onMainQueue:(CDUnknownBlockType)arg1;
 - (void)processFetchResponseWithData:(id)arg1 error:(id)arg2 brand:(id)arg3;

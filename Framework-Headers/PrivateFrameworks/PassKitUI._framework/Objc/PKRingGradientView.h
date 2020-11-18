@@ -16,7 +16,11 @@
     CAShapeLayer *_backgroundLayer;
     CAShapeLayer *_backgroundCap;
     CAShapeLayer *_gradientCap;
-    UIColor *_baseColor;
+    struct CGColor *_effectiveFillColor;
+    struct CGColor *_effectiveStrokeColor;
+    BOOL _gradientCapIsFillColor;
+    BOOL _enabled;
+    UIColor *_fillColor;
     UIColor *_strokeColor;
     UIColor *_gradientStartColor;
     UIColor *_gradientEndColor;
@@ -24,8 +28,9 @@
     double _currentAngle;
 }
 
-@property (copy, nonatomic) UIColor *baseColor; // @synthesize baseColor=_baseColor;
 @property (nonatomic) double currentAngle; // @synthesize currentAngle=_currentAngle;
+@property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (copy, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;
 @property (copy, nonatomic) UIColor *gradientEndColor; // @synthesize gradientEndColor=_gradientEndColor;
 @property (copy, nonatomic) UIColor *gradientStartColor; // @synthesize gradientStartColor=_gradientStartColor;
 @property (nonatomic) double minimumAngle; // @synthesize minimumAngle=_minimumAngle;
@@ -36,11 +41,14 @@
 - (void).cxx_destruct;
 - (struct CGPoint)_center;
 - (struct CGPoint)_centerPointForMaskViewWithAngle:(double)arg1 adjustToCover:(BOOL)arg2;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (double)_maskRadius;
 - (double)_offsetEndAngle;
 - (double)_offsetStartAngle;
 - (double)_radius;
+- (void)_updateEffectiveColors;
 - (void)_updateGradient;
+- (void)dealloc;
 - (id)init;
 - (void)layoutSubviews;
 - (double)ringWidth;

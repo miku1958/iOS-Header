@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) unsigned long long horizontalContentAlignment;
 @property (readonly, nonatomic) unsigned long long ignoreDocumentGutter;
 @property (readonly, nonatomic) unsigned long long ignoreDocumentMargin;
+@property (readonly, nonatomic) unsigned long long ignoreViewportPadding;
 @property (readonly, nonatomic) id<SXEdgeSpacing> margin;
 @property (readonly, nonatomic) struct _SXConvertibleValue maximumContentWidth;
 @property (readonly, nonatomic) struct _SXConvertibleValue maximumWidth;

@@ -12,6 +12,7 @@
 @interface NUAVPlayerView : UIView
 {
     _Atomic int _updateReadyForDisplayID;
+    BOOL _observerDetached;
     BOOL _readyForDisplay;
     AVPlayer *_player;
     id<NUAVPlayerViewDelegate> _delegate;
@@ -25,6 +26,7 @@
 - (void).cxx_destruct;
 - (void)_updateReadyForDisplayWithID:(_Atomic int)arg1;
 - (void)dealloc;
+- (void)dispose;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

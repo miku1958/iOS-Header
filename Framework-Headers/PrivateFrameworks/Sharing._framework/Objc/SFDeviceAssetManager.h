@@ -19,8 +19,6 @@
     CUReachabilityMonitor *_reachabilityMonitor;
     NSDictionary *_productTypesMappingTable;
     NSDictionary *_cachedProductMappingsTable;
-    NSDictionary *_mpnMappingTable;
-    NSDictionary *_cachedMpnMappingTable;
     NSURL *_cacheDirectory;
     NSMutableDictionary *_cachedQueryPaths;
     BOOL _useProcessLocalCache;
@@ -43,14 +41,11 @@
 - (id)init;
 - (void)invalidate;
 - (id)localCacheWithFileName:(id)arg1;
-- (id)locallyCachedMPNsForProductType:(id)arg1;
 - (id)locallyCachedProductMappings;
 - (id)locallyCachedQueryResults;
 - (void)logNetworkStatus;
 - (void)mappedProductTypeForProductType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)mpnMappingFileNameForProductType:(id)arg1;
 - (void)onqueue_activate;
-- (id)onqueue_assetMappedMPNForMPN:(id)arg1 forProductType:(id)arg2;
 - (id)onqueue_assetMappedProductTypeForProductType:(id)arg1;
 - (void)onqueue_downloadAsset:(id)arg1 ucat:(struct LogCategory *)arg2 queryLogString:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)onqueue_executeNextMAQueryForTask:(id)arg1;
@@ -64,12 +59,10 @@
 - (id)onqueue_sharingManagementAsset;
 - (void)onqueue_updateMetaDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)onqueue_updateSharingManagementAssetIfNecessary;
-- (void)onqueue_validateMPNInQuery:(id)arg1;
 - (void)onqueue_validateProductTypeInQuery:(id)arg1;
 - (BOOL)pathInLocalCache:(id)arg1;
 - (void)purgeAssetsMatchingQuery:(id)arg1;
 - (void)storeEntries:(id)arg1 inLocalCacheWithFileName:(id)arg2;
-- (void)storeMPNsInLocalCache:(id)arg1 forProductType:(id)arg2;
 - (void)storeProductMappingsInLocalCache:(id)arg1;
 
 @end

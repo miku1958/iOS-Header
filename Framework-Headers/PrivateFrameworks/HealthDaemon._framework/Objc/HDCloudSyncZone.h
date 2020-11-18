@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class HDCloudSyncMasterRecord, HDCloudSyncRepository, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZoneIdentifier, NSMutableArray, NSUUID;
+@class CKShare, HDCloudSyncDataUploadRequestRecord, HDCloudSyncMasterRecord, HDCloudSyncRepository, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZoneIdentifier, NSMutableArray, NSUUID;
 
 @interface HDCloudSyncZone : NSObject
 {
     NSMutableArray *_sequenceRecords;
     BOOL _hasFutureSchemaRecord;
+    BOOL _validatedForSharing;
     HDCloudSyncRepository *_repository;
     HDCloudSyncZoneIdentifier *_zoneIdentifier;
     long long _zoneType;
@@ -19,8 +20,11 @@
     HDCloudSyncMasterRecord *_masterRecord;
     HDCloudSyncStore *_store;
     long long _purpose;
+    CKShare *_zoneShare;
+    HDCloudSyncDataUploadRequestRecord *_dataUploadRequestRecord;
 }
 
+@property (readonly, nonatomic) HDCloudSyncDataUploadRequestRecord *dataUploadRequestRecord; // @synthesize dataUploadRequestRecord=_dataUploadRequestRecord;
 @property (nonatomic) BOOL hasFutureSchemaRecord; // @synthesize hasFutureSchemaRecord=_hasFutureSchemaRecord;
 @property (readonly, nonatomic) BOOL hasOrphanedSequenceRecords;
 @property (readonly, nonatomic) BOOL isEmpty;
@@ -30,10 +34,13 @@
 @property (strong, nonatomic) HDCloudSyncStore *store; // @synthesize store=_store;
 @property (readonly, copy, nonatomic) NSUUID *storeIdentifier;
 @property (readonly, nonatomic) HDCloudSyncStoreRecord *storeRecord; // @synthesize storeRecord=_storeRecord;
+@property (nonatomic) BOOL validatedForSharing; // @synthesize validatedForSharing=_validatedForSharing;
 @property (readonly, copy, nonatomic) HDCloudSyncZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
+@property (strong, nonatomic) CKShare *zoneShare; // @synthesize zoneShare=_zoneShare;
 @property (readonly, nonatomic) long long zoneType; // @synthesize zoneType=_zoneType;
 
 - (void).cxx_destruct;
+- (BOOL)_addSubscriptionRecord:(id)arg1 error:(id *)arg2;
 - (BOOL)addRecord:(id)arg1 error:(id *)arg2;
 - (id)description;
 - (id)initForZoneIdentifier:(id)arg1 repository:(id)arg2 type:(long long)arg3;

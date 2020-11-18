@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) NSString *fullDescription;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) long long iconType;
+@property (readonly, nonatomic) int iconType;
 @property (readonly, nonatomic) NSDate *lastUpdated;
 @property (readonly, nonatomic) NSString *messageForNonRoutable;
 @property (readonly, nonatomic) NSString *messageForRoutePlanning;

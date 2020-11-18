@@ -8,13 +8,14 @@
 
 #import <PhotosUICore/PXSectionedLayoutDataSourceChangeDetails-Protocol.h>
 
-@class NSDictionary, NSIndexSet, NSString, PXArrayChangeDetails;
+@class NSDictionary, NSIndexSet, NSNumber, NSString, PXArrayChangeDetails;
 
 @interface PXSectionedDataSourceChangeDetails : NSObject <PXSectionedLayoutDataSourceChangeDetails>
 {
     NSDictionary *_itemChangeDetailsBySection;
     NSDictionary *_itemsWithSubitemChangesBySection;
     NSDictionary *_subitemChangeDetailsByItemBySection;
+    NSNumber *_hasAnyInsertionsRemovalsOrMovesCache;
     unsigned long long _fromDataSourceIdentifier;
     unsigned long long _toDataSourceIdentifier;
     PXArrayChangeDetails *_sectionChanges;
@@ -24,12 +25,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long fromDataSourceIdentifier; // @synthesize fromDataSourceIdentifier=_fromDataSourceIdentifier;
+@property (readonly, nonatomic) BOOL hasAnyInsertionsRemovalsOrMoves;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PXArrayChangeDetails *sectionChanges; // @synthesize sectionChanges=_sectionChanges;
 @property (readonly, nonatomic) NSIndexSet *sectionsWithItemChanges; // @synthesize sectionsWithItemChanges=_sectionsWithItemChanges;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long toDataSourceIdentifier; // @synthesize toDataSourceIdentifier=_toDataSourceIdentifier;
 
++ (id)changeDetailsWithNoChangesFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
++ (id)changeDetailsWithoutIncrementalChangesFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
++ (BOOL)changesHaveAnyInsertionsRemovalsOrMoves:(id)arg1;
 + (void)debug_assertValidChangeDetails:(id)arg1 fromDataSource:(id)arg2 toDataSource:(id)arg3;
 + (struct PXSimpleIndexPath)indexPathAfterApplyingChanges:(id)arg1 toIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out BOOL *)arg3 objectChanged:(out BOOL *)arg4;
 + (struct PXSimpleIndexPath)indexPathAfterRevertingChanges:(id)arg1 fromIndexPath:(struct PXSimpleIndexPath)arg2 hasIncrementalChanges:(out BOOL *)arg3 objectChanged:(out BOOL *)arg4;

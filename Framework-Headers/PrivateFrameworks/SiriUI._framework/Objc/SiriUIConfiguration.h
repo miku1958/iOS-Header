@@ -11,15 +11,15 @@
 @interface SiriUIConfiguration : NSObject <NSCopying>
 {
     BOOL _isSystemHostedPresentation;
-    int _flamesViewFidelity;
+    long long _flamesViewFidelity;
 }
 
-@property (readonly, nonatomic) int flamesViewFidelity; // @synthesize flamesViewFidelity=_flamesViewFidelity;
+@property (readonly, nonatomic) long long flamesViewFidelity; // @synthesize flamesViewFidelity=_flamesViewFidelity;
 @property (readonly, nonatomic) BOOL isSystemHostedPresentation; // @synthesize isSystemHostedPresentation=_isSystemHostedPresentation;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithFlamesViewFidelity:(int)arg1 isSystemHostedPresentation:(BOOL)arg2;
+- (id)initWithFlamesViewFidelity:(long long)arg1 isSystemHostedPresentation:(BOOL)arg2;
 
 @end
 

@@ -21,8 +21,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_init;
 - (void)dealloc;
-- (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 
 @end

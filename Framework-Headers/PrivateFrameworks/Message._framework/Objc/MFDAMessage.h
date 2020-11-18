@@ -10,15 +10,15 @@
 
 @interface MFDAMessage : MFMailMessage
 {
-    DAMailMessage *_DAMailMessage;
     MFMessage *_rfc822CreatedMessage;
     MFMailboxUid *_mailbox;
     NSString *_externalConversationID;
+    DAMailMessage *_DAMailMessage;
 }
 
 @property (readonly, nonatomic) DAMailMessage *DAMailMessage; // @synthesize DAMailMessage=_DAMailMessage;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)externalConversationID;
 - (id)headers;
 - (id)headersIfAvailable;

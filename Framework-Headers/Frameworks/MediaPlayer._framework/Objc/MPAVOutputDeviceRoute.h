@@ -36,8 +36,10 @@
 - (BOOL)isDeviceRoute;
 - (BOOL)isDeviceSpeakerRoute;
 - (BOOL)isHomePodRoute;
+- (BOOL)isLowLatencyRoute;
 - (BOOL)isPickedOnPairedDevice;
 - (BOOL)isProxyGroupPlayer;
+- (BOOL)isSplitterCapable;
 - (BOOL)isStereoPair;
 - (BOOL)isVolumeControlAvailable;
 - (long long)pickableRouteType;

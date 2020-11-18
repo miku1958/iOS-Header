@@ -35,7 +35,6 @@
 - (void)_updateAvatarOnTransactionCell:(id)arg1 withTransaction:(id)arg2 contact:(id)arg3;
 - (void)_updatePrimaryLabelOnTransactionCell:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 contact:(id)arg3;
 - (id)cachedIconForTransaction:(id)arg1 size:(struct CGSize)arg2;
-- (BOOL)cachedIconRequiresStrokeForTransaction:(id)arg1 size:(struct CGSize)arg2;
 - (void)configureCell:(id)arg1 forTransaction:(id)arg2 paymentPass:(id)arg3 account:(id)arg4 detailStyle:(long long)arg5 deviceName:(id)arg6 avatarViewDelegate:(id)arg7;
 - (void)iconForTransaction:(id)arg1 size:(struct CGSize)arg2 requestType:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithContactResolver:(id)arg1;

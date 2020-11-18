@@ -6,11 +6,13 @@
 
 #import <CFNetwork/NSURLProtectionSpace.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface NSURLProtectionSpace (SafariServicesExtras)
 
+@property (readonly, nonatomic) BOOL _sf_canAuthenticate;
 @property (readonly, copy, nonatomic) NSString *_sf_highLevelDomainAndPort;
+@property (readonly, nonatomic) NSArray *_sf_identities;
 
 @end
 

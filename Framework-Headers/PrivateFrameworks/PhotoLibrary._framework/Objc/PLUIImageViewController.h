@@ -7,13 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <PhotoLibrary/PLCropOverlayDelegate-Protocol.h>
-#import <PhotoLibrary/PLImageLoadingQueueDelegate-Protocol.h>
 #import <PhotoLibrary/PLPhotoTileViewControllerDelegate-Protocol.h>
 #import <PhotoLibrary/PLVideoViewDelegate-Protocol.h>
 
-@class NSString, NSURL, PLCropOverlay, PLImageCache, PLImageLoadingQueue, PLImageSource, PLManagedAsset, PLPhotoTileViewController, PLProgressView, PLVideoRemaker, PLVideoView, UIImage;
+@class NSString, NSURL, PLCropOverlay, PLManagedAsset, PLPhotoTileViewController, PLProgressView, PLVideoRemaker, PLVideoView, UIImage;
 
-@interface PLUIImageViewController : UIViewController <PLVideoViewDelegate, PLImageLoadingQueueDelegate, PLPhotoTileViewControllerDelegate, PLCropOverlayDelegate>
+@interface PLUIImageViewController : UIViewController <PLVideoViewDelegate, PLPhotoTileViewControllerDelegate, PLCropOverlayDelegate>
 {
     PLManagedAsset *_photo;
     struct CGImage *_imageRef;
@@ -25,9 +24,6 @@
     PLVideoRemaker *_remaker;
     PLProgressView *_progressView;
     NSURL *_videoURL;
-    PLImageCache *_imageCache;
-    PLImageLoadingQueue *_imageLoadingQueue;
-    PLImageSource *_imageSource;
     long long _previousStatusBarStyle;
     long long _newStatusBarStyle;
     unsigned int _allowEditing:1;
@@ -59,6 +55,7 @@
 - (struct CGRect)_viewFrame;
 - (void)attachScrubberPalette;
 - (void)beginDisplayingProgress;
+- (id)cancelButtonTitle;
 - (id)chooseButtonTitle;
 - (BOOL)clientIsWallpaper;
 - (id)cropOverlay;
@@ -68,6 +65,7 @@
 - (void)cropOverlayPlay:(id)arg1;
 - (void)cropOverlayWasCancelled:(id)arg1;
 - (void)cropOverlayWasOKed:(id)arg1;
+- (id)customBackgroundColor;
 - (void)dealloc;
 - (long long)desiredStatusBarAnimation;
 - (void)didChooseVideoAtURL:(id)arg1 options:(id)arg2;
@@ -80,8 +78,7 @@
 - (void)handleAutoloopSelected;
 - (void)handleMediaSelectionUsingTile:(id)arg1 managedAsset:(id)arg2 args:(id)arg3 includeEditing:(BOOL)arg4;
 - (void)handleVideoSelectionWithURL:(id)arg1 args:(id)arg2;
-- (int)imageFormat;
-- (void)imageLoadingQueue:(id)arg1 didLoadImage:(id)arg2 forAsset:(id)arg3 fromSource:(id)arg4;
+- (unsigned short)imageFormat;
 - (BOOL)imagePickerAllowsEditing;
 - (unsigned long long)imagePickerSavingOptions;
 - (id)initWithImage:(struct CGImage *)arg1 cropRect:(struct CGRect)arg2;
@@ -91,6 +88,7 @@
 - (id)initWithVideoURL:(id)arg1;
 - (BOOL)isDisplayedInPhotoPicker;
 - (void)loadView;
+- (id)maxZoomScaleOverride;
 - (void)photoTileViewController:(id)arg1 didAppear:(BOOL)arg2;
 - (void)photoTileViewController:(id)arg1 didDisappear:(BOOL)arg2;
 - (void)photoTileViewController:(id)arg1 willAppear:(BOOL)arg2;
@@ -109,6 +107,7 @@
 - (void)setAllowsEditing:(BOOL)arg1;
 - (void)setCropOverlayDone;
 - (void)setupNavigationItem;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)videoMaximumDuration;
 - (id)videoQuality;
 - (void)videoRemakerDidBeginRemaking:(id)arg1;
@@ -122,7 +121,6 @@
 - (void)videoViewIsReadyToBeginPlayback:(id)arg1;
 - (double)videoViewScrubberYOrigin:(id)arg1 forOrientation:(long long)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (BOOL)viewImageBeforeSelecting;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

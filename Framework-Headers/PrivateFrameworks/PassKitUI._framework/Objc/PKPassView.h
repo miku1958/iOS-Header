@@ -38,8 +38,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL frontFaceBodyContentCreated;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isForcedFrontFaceResized;
-@property (readonly, nonatomic) BOOL isFrontFaceResized;
 @property (nonatomic) double modalShadowVisibility; // @synthesize modalShadowVisibility=_modalShadowVisibility;
 @property (nonatomic, getter=isModallyPresented) BOOL modallyPresented; // @synthesize modallyPresented=_modallyPresented;
 @property (readonly, strong, nonatomic) PKPass *pass; // @synthesize pass=_pass;
@@ -53,7 +51,6 @@
 - (void)_applyContentMode:(BOOL)arg1;
 - (long long)_frontFaceBackgroundModeForContentMode;
 - (unsigned long long)_regionsForCurrentModes;
-- (void)_resizePassAnimated:(BOOL)arg1 notify:(BOOL)arg2;
 - (void)_updateFrontFaceSuppressedContent;
 - (void)_updateHighEndLayerShadowAnimated:(BOOL)arg1 withDelay:(double)arg2;
 - (void)_updateLayerShadowAnimated:(BOOL)arg1 withDelay:(double)arg2;
@@ -62,6 +59,7 @@
 - (BOOL)canShowBarcode;
 - (void)dealloc;
 - (void)didAuthenticate;
+- (void)drawFrontFaceAtSize:(struct CGSize)arg1;
 - (struct CGRect)frameOfVisibleFace;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -74,7 +72,6 @@
 - (void)layoutSubviews;
 - (void)passcodeLockManager:(id)arg1 didReceivePasscodeSet:(BOOL)arg2;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)resizePassAnimated:(BOOL)arg1 notify:(BOOL)arg2;
 - (void)setContentMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)setContentMode:(long long)arg1 animated:(BOOL)arg2 withDelay:(double)arg3;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;

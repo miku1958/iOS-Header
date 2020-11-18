@@ -6,12 +6,39 @@
 
 #import <Foundation/NSURL.h>
 
-@interface NSURL (TSUAdditions)
+#import <iWorkImport/TSUURLWrapper-Protocol.h>
 
+@class NSString, NSUUID, TSUSandboxedURL;
+
+@interface NSURL (TSUAdditions) <TSUURLWrapper>
+
+@property (readonly) NSURL *URL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isSheetURL;
+@property (readonly) TSUSandboxedURL *sandboxedURL;
+@property (readonly, nonatomic) NSUUID *sheetUUID;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *tsu_UTI;
 @property (readonly, getter=tsu_isInTrash) BOOL tsu_inTrash;
 
++ (id)sheetHyperlinkURLScheme;
++ (id)tsp_iWorkAVAssetURLWithUUID:(id)arg1 filename:(id)arg2 contentTypeUTI:(id)arg3;
 + (id)tsu_fileURLWithPath:(id)arg1;
+- (id)initWithDefaultSheetURLForDocumentRoot:(id)arg1;
+- (id)initWithSheet:(id)arg1;
+- (id)tsp_embeddedUTI;
+- (id)tsp_fileIdentifier;
+- (BOOL)tsp_getIsUbiquitousValue:(BOOL *)arg1 promised:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)tsp_isIWorkAVAssetURL;
+- (BOOL)tsp_isUbiquitous;
+- (BOOL)tsp_matchesURL:(id)arg1;
+- (BOOL)tsp_matchesURL:(id)arg1 canCompareFileID:(BOOL)arg2;
+- (id)tsp_queryDictionary;
 - (id)tsu_URLExceptPrivate;
+- (BOOL)tsu_conformsToAnyUTI:(id)arg1;
+- (BOOL)tsu_conformsToUTI:(id)arg1;
 - (id)tsu_contentModificationDateWithLogContext:(id)arg1;
 - (id)tsu_documentIdentifier;
 - (id)tsu_fileProviderBookmarkableStringAndReturnError:(id *)arg1;

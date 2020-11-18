@@ -30,10 +30,13 @@
 + (id)notImplementedError;
 + (id)operationCancelledError;
 + (id)posixErrorForURL:(id)arg1;
++ (id)readOnlyError;
++ (id)sessionHasBeenDeferredError;
 + (id)transportErrorFromTransportError:(id)arg1;
 + (id)underlyingErrorWithReason:(id)arg1;
 + (id)unknownError;
 + (id)unknownPrimaryScope;
++ (id)unsafeResources:(id)arg1 withError:(id)arg2 realPrune:(BOOL)arg3 resourceStorage:(id)arg4;
 + (id)unsafeResources:(id)arg1 withError:(id)arg2 resourceStorage:(id)arg3;
 + (id)versionMismatchError;
 

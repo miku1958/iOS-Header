@@ -6,40 +6,35 @@
 
 #import <UIKitCore/UIImageView.h>
 
-#import <UIKitCore/_UIVisualEffectSubviewSource-Protocol.h>
+#import <UIKitCore/_UIVisualEffectViewParticipating-Protocol.h>
 
-@class NSArray, NSString, _UIVisualEffectViewBackdropCaptureGroup;
+@class NSArray, NSString, UIView, _UIVisualEffectViewBackdropCaptureGroup;
+@protocol _UIVisualEffectViewParticipating;
 
 __attribute__((visibility("hidden")))
-@interface _UIVisualEffectImageView : UIImageView <_UIVisualEffectSubviewSource>
+@interface _UIVisualEffectImageView : UIImageView <_UIVisualEffectViewParticipating>
 {
     _UIVisualEffectViewBackdropCaptureGroup *_primaryCaptureGroup;
     NSArray *_viewEffects;
     NSArray *_filters;
 }
 
+@property (strong, nonatomic) UIView<_UIVisualEffectViewParticipating> *containedView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *filters; // @synthesize filters=_filters;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *primaryCaptureGroup; // @synthesize primaryCaptureGroup=_primaryCaptureGroup;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSArray *viewEffects; // @synthesize viewEffects=_viewEffects;
+@property (copy, nonatomic) NSArray *viewEffects; // @synthesize viewEffects=_viewEffects;
 
 - (void).cxx_destruct;
-- (void)_applyFilterValues:(id)arg1 baseName:(id)arg2 toLayer:(id)arg3;
 - (id)_initialValueForLayer:(id)arg1 keyPath:(id)arg2 usePresentationValue:(BOOL)arg3;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (void)addViewEffects:(id)arg1;
 - (void)applyIdentityFilterEffects;
 - (void)applyIdentityViewEffects;
 - (void)applyRequestedFilterEffects;
 - (void)applyRequestedViewEffects;
-- (id)asBackdropView;
-- (id)asImageView;
-- (id)asLayer;
-- (id)asView;
-- (void)removeViewEffects;
 
 @end
 

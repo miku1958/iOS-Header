@@ -43,6 +43,7 @@
 - (void)enumerateQueryResults:(unsigned long long)arg1 stringCache:(CDStruct_6130f9a9 *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)initWithByteVector:(char *)arg1 count:(unsigned int)arg2 deallocator:(CDUnknownBlockType)arg3;
 - (id)initWithByteVector:(char *)arg1 count:(unsigned int)arg2 shouldDeallocate:(BOOL)arg3;
+- (id)initWithByteVector:(char *)arg1 count:(unsigned int)arg2 trusted:(unsigned char)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

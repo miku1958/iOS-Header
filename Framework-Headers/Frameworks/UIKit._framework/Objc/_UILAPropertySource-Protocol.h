@@ -6,15 +6,17 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSSet;
+@class NSLayoutConstraint, NSSet;
 
 @protocol _UILAPropertySource <NSObject>
 
 @property (readonly, nonatomic) NSSet *_newlyHiddenItems;
 @property (readonly, nonatomic) NSSet *_newlyUnhiddenItems;
 @property (nonatomic) long long axis;
+@property (readonly, nonatomic) NSSet *invalidBaselineConstraints;
 @property (nonatomic) BOOL layoutFillsCanvas;
 @property (nonatomic) BOOL layoutUsesCanvasMarginsWhenFilling;
 
+- (void)_invalidateBaselineConstraint:(NSLayoutConstraint *)arg1;
 @end
 

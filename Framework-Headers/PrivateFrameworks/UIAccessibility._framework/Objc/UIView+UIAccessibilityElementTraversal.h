@@ -8,13 +8,32 @@
 
 @interface UIView (UIAccessibilityElementTraversal)
 + (id)_accessibilityElementsAndContainersDescendingFromViews:(id)arg1 options:(id)arg2 sorted:(BOOL)arg3;
++ (id)_accessibilityTitleForSystemTag:(long long)arg1;
++ (id)_subviewsReplacedByModalViewSubviewsIfNecessary:(id)arg1;
+- (BOOL)_accessibilityAllowsSiblingsWhenOvergrown;
+- (id)_accessibilityComputedLabelForNavigationBarWithAssociatedBarButtonItem:(id)arg1;
+- (struct CGSize)_accessibilityFrameExpansion;
 - (BOOL)_accessibilityIsSortingInUpperFrame;
+- (BOOL)_accessibilityOverridesInvalidFrames;
+- (void)_accessibilitySetAllowsSiblingsWhenOvergrown:(BOOL)arg1;
+- (void)_accessibilitySetFrameExpansion:(struct CGSize)arg1;
 - (void)_accessibilitySetIsSortingInUpperFrame:(BOOL)arg1;
+- (void)_accessibilitySetOverridesInvalidFrames:(BOOL)arg1;
+- (void)_accessibilitySetViewIsVisible:(BOOL)arg1;
 - (BOOL)_accessibilityShouldBeAddedToViewChildrenWithOptions:(id)arg1;
 - (BOOL)_accessibilityShouldBeProcessed:(id)arg1;
 - (BOOL)_accessibilityShouldUseSupplementaryViews;
+- (id)_accessibilitySubviews;
 - (id)_accessibilitySubviewsForGettingElementsWithOptions:(id)arg1;
 - (id)_accessibilityViewChildrenWithOptions:(id)arg1;
+- (BOOL)_accessibilityViewIsActive;
+- (BOOL)_accessibilityViewIsVisible;
+- (BOOL)_accessibilityViewIsVisibleIgnoringAXOverrides:(BOOL)arg1;
+- (BOOL)_accessibilityViewIsVisibleIgnoringAXOverrides:(BOOL)arg1 stoppingBeforeContainer:(id)arg2;
+- (id)_accessibleSubviews;
+- (id)_accessibleSubviews:(int)arg1;
 - (void)_addAccessibilityElementsAndOrderedContainersWithOptions:(id)arg1 toCollection:(id)arg2;
+- (struct CGPoint)accessibilityConvertPointFromSceneReferenceCoordinates:(struct CGPoint)arg1;
+- (struct CGRect)accessibilityConvertRectToSceneReferenceCoordinates:(struct CGRect)arg1;
 @end
 

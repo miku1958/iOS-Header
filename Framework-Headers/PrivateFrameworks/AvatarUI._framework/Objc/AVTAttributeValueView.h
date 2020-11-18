@@ -9,19 +9,20 @@
 #import <AvatarUI/AVTDiscardableContent-Protocol.h>
 #import <AvatarUI/AVTSectionItemTransitionModel-Protocol.h>
 
-@class CAShapeLayer, NSString, NSUUID, UIImage, UIImageView;
+@class CALayer, CAShapeLayer, NSString, NSUUID, UIImage, UILabel;
 
 @interface AVTAttributeValueView : UIView <AVTSectionItemTransitionModel, AVTDiscardableContent>
 {
+    BOOL _showPlaceholder;
     CDUnknownBlockType discardableContentHandler;
     UIImage *_image;
-    UIImageView *_imageView;
+    CALayer *_imageLayer;
     unsigned long long _selectionStyle;
     NSUUID *_displaySessionUUID;
-    UIImageView *_transitionImageView;
     CAShapeLayer *_clippingLayer;
     CAShapeLayer *_selectionLayer;
-    UIView *_highlightView;
+    CALayer *_transitionImageLayer;
+    UILabel *_titleLabel;
     struct CGSize _imageSizeRatio;
 }
 
@@ -30,24 +31,26 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType discardableContentHandler; // @synthesize discardableContentHandler;
 @property (strong, nonatomic) NSUUID *displaySessionUUID; // @synthesize displaySessionUUID=_displaySessionUUID;
+@property (strong, nonatomic) NSString *displayedTitle;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) CALayer *imageLayer; // @synthesize imageLayer=_imageLayer;
 @property (nonatomic) struct CGSize imageSizeRatio; // @synthesize imageSizeRatio=_imageSizeRatio;
-@property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) CAShapeLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
 @property (nonatomic) unsigned long long selectionStyle; // @synthesize selectionStyle=_selectionStyle;
+@property (nonatomic) BOOL showPlaceholder; // @synthesize showPlaceholder=_showPlaceholder;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIImageView *transitionImageView; // @synthesize transitionImageView=_transitionImageView;
+@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) CALayer *transitionImageLayer; // @synthesize transitionImageLayer=_transitionImageLayer;
 
 + (struct CGRect)imageViewRectForBounds:(struct CGRect)arg1 imageSizeRatio:(struct CGSize)arg2 scale:(double)arg3;
 - (void).cxx_destruct;
 - (void)bringSelectionLayersToFront;
 - (void)cleanupAfterTransition;
 - (id)clippingBezierPath;
-- (void)configureImageView:(id)arg1;
+- (void)configureImageLayer:(id)arg1;
 - (void)discardContent;
-- (id)fromView;
+- (id)fromLayer;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForTransitionToImage:(id)arg1;
@@ -55,7 +58,8 @@
 - (id)selectionBezierPath;
 - (struct CGRect)selectorRect;
 - (struct CGRect)shapeLayerRect;
-- (id)toView;
+- (id)toLayer;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCornerRadii;
 - (void)updateHighlightedState:(BOOL)arg1 animated:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)updateSelectedState:(BOOL)arg1 animated:(BOOL)arg2;

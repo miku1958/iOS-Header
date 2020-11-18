@@ -51,7 +51,6 @@
 - (void)_play;
 - (void)_preroll;
 - (BOOL)_readyToPerformRequest;
-- (void)_resetRequestState;
 - (void)_seekToTime:(CDStruct_1b6d18a9)arg1;
 - (void)_showPausedView;
 - (void)_stopObservingPlayerItem;
@@ -67,6 +66,7 @@
 - (void)prepareNextQueuedVideo;
 - (void)preroll;
 - (void)queueVideo:(id)arg1;
+- (void)resetRequestState;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1 tolerance:(CDStruct_1b6d18a9)arg2;
 

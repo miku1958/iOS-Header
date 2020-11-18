@@ -19,6 +19,7 @@
     BOOL _allowNonSecureHTTP;
     id<RUIParserDelegate> _parserDelegate;
     RUIStyle *_style;
+    long long _userInterfaceStyle;
 }
 
 @property (nonatomic) BOOL allowNonSecureHTTP; // @synthesize allowNonSecureHTTP=_allowNonSecureHTTP;
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) id<RUIParserDelegate> parserDelegate; // @synthesize parserDelegate=_parserDelegate;
 @property (strong, nonatomic) RUIStyle *style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 
 - (void).cxx_destruct;
 - (id)URL;

@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isFirstInDeliveryGroup;
 @property (readonly, nonatomic) BOOL isFirstOnSlide;
 @property (readonly, nonatomic) KNBuildChunk *nextChunkOnSlide;
+@property (readonly, nonatomic) KNBuildChunk *previousActiveChunkWithReferentRelativeToEnd;
 @property (readonly, nonatomic) KNBuildChunk *previousChunkOnSlide;
 @property (nonatomic) unsigned long long referent;
 @property (readonly, nonatomic) KNSlide *slide;
@@ -82,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isComplementOfBuildChunk:(id)arg1;
 - (void)loadFromArchive:(const struct BuildChunkArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)localizedNameForEventTrigger:(unsigned long long)arg1 includeLineBreaks:(BOOL)arg2;
 - (void)p_setDelayFromBuildAttributes:(id)arg1 withReferent:(unsigned long long)arg2 automatic:(BOOL)arg3;
 - (void)p_setDurationFromBuildAttributes:(id)arg1;
 - (id)p_stringForReferent:(unsigned long long)arg1;

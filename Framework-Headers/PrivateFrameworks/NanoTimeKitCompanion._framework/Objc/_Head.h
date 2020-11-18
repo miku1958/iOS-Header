@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/_Geometry.h>
 
-@class NSMutableArray;
+@class MISSING_TYPE, NSMutableArray;
 
 @interface _Head : _Geometry
 {
@@ -17,17 +17,17 @@
     int _inAnimation;
     NSMutableArray *_texs;
     NSMutableArray *_blinkTexs;
-    union _GLKVector2 _bone;
-    union _GLKVector2 _offset;
+    MISSING_TYPE *_bone;
+    MISSING_TYPE *_offset;
 }
 
 @property (strong, nonatomic) NSMutableArray *blinkTexs; // @synthesize blinkTexs=_blinkTexs;
-@property (nonatomic) union _GLKVector2 bone; // @synthesize bone=_bone;
+@property (nonatomic) MISSING_TYPE *bone; // @synthesize bone=_bone;
 @property (nonatomic) float curHeadTilt; // @synthesize curHeadTilt=_curHeadTilt;
 @property (nonatomic) float curHeadX; // @synthesize curHeadX=_curHeadX;
 @property (nonatomic) float height; // @synthesize height=_height;
 @property (nonatomic) int inAnimation; // @synthesize inAnimation=_inAnimation;
-@property (nonatomic) union _GLKVector2 offset; // @synthesize offset=_offset;
+@property (nonatomic) MISSING_TYPE *offset; // @synthesize offset=_offset;
 @property (strong, nonatomic) NSMutableArray *texs; // @synthesize texs=_texs;
 @property (nonatomic) float width; // @synthesize width=_width;
 

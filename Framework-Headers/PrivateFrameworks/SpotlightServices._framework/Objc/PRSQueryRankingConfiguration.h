@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSArray, NSSet;
+@class MISSING_TYPE, NSArray, NSOrderedSet;
 
 @interface PRSQueryRankingConfiguration : NSObject
 {
     BOOL _allowAnonymousDataCollection;
-    NSSet *_requiredAttributes;
+    NSOrderedSet *_requiredAttributes;
     NSArray *_rankingQueries;
     unsigned long long _strongRankingQueryCount;
     unsigned long long _dominantRankingQueryCount;
@@ -28,7 +28,7 @@
 @property MISSING_TYPE *fuzzyMatchMask; // @synthesize fuzzyMatchMask=_fuzzyMatchMask;
 @property unsigned long long rankingBitCount; // @synthesize rankingBitCount=_rankingBitCount;
 @property (strong) NSArray *rankingQueries; // @synthesize rankingQueries=_rankingQueries;
-@property (strong) NSSet *requiredAttributes; // @synthesize requiredAttributes=_requiredAttributes;
+@property (strong) NSOrderedSet *requiredAttributes; // @synthesize requiredAttributes=_requiredAttributes;
 @property unsigned long long strongRankingQueryCount; // @synthesize strongRankingQueryCount=_strongRankingQueryCount;
 
 + (void)updateMailVIP:(id)arg1 phoneFavorites:(id)arg2 meEmailAddresses:(id)arg3;

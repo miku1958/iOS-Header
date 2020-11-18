@@ -16,6 +16,7 @@
     NSXPCListener *_listener;
     WGWidgetDiscoveryController *_discoveryController;
     NSMutableDictionary *_widgetIdentifiersToCachedState;
+    BOOL _canCacheState;
 }
 
 @property (readonly, copy) NSString *debugDescription;

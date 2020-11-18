@@ -16,16 +16,21 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL forceFaceprintCreation;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *inputFaceObservations;
 @property (readonly) Class superclass;
 
++ (Class)configurationClass;
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (const CDStruct_7d93034e *)revisionAvailability;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputFacesThatNeedFaceprints:(id)arg4;
 - (long long)dependencyProcessingOrdinality;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

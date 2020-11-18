@@ -6,7 +6,19 @@
 
 #import <HomeKit/HMCharacteristicEvent.h>
 
-@interface HMCharacteristicEvent (HFDebugging)
+#import <Home/HFCharacteristicLikeEvent-Protocol.h>
+
+@class HMCharacteristic, NSString;
+
+@interface HMCharacteristicEvent (HFDebugging) <HFCharacteristicLikeEvent>
+
+@property (readonly, nonatomic) HMCharacteristic *characteristic;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id hf_representativeTriggerValue;
+@property (readonly) Class superclass;
+
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

@@ -12,7 +12,7 @@
 @property (readonly, nonatomic) unsigned int defaultTransitType;
 @property (readonly, nonatomic) unsigned int iconAttributeKey;
 @property (readonly, nonatomic) unsigned int iconAttributeValue;
-@property (readonly, nonatomic) long long iconType;
+@property (readonly, nonatomic) int iconType;
 
 
 @optional

@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) NSString *assetId; // @synthesize assetId=_assetId;
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property (readonly, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
-@property (readonly, nonatomic) long long state; // @synthesize state=_state;
+@property (readonly) long long state; // @synthesize state=_state;
 
 + (void)startCatalogDownload:(id)arg1 options:(id)arg2 then:(CDUnknownBlockType)arg3;
 + (void)startCatalogDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
@@ -34,12 +34,16 @@
 - (long long)configDownloadSync:(id)arg1;
 - (id)createExtractor;
 - (void)dealloc;
+- (id)description;
 - (id)getLocalFileUrl;
 - (id)getLocalUrl;
+- (unsigned long long)hash;
 - (id)hashToString:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
+- (void)invokeClientCompletion:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)logAsset;
+- (BOOL)overrideGarbageCollectionThreshold:(unsigned long long)arg1;
 - (void)purge:(CDUnknownBlockType)arg1;
 - (long long)purgeSync;
 - (BOOL)refreshState;

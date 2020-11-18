@@ -56,6 +56,7 @@
 + (id)_sharedCachesQueue;
 + (id)assetCacheWithApplicationBundleID:(id)arg1 assetDirectoryContext:(id)arg2 didInit:(BOOL *)arg3 error:(id *)arg4;
 + (int)openFdForDownloadPath:(id)arg1 error:(id *)arg2;
++ (void)registerExpirationForAssetHandles;
 - (void).cxx_destruct;
 - (unsigned long long)_clearForced:(BOOL)arg1 group:(id)arg2;
 - (void)_deleteAssetHandlesAndUnregisterItemsForUnmountedAssetVolumesWithDB:(id)arg1;
@@ -78,6 +79,7 @@
 - (void)cleanup;
 - (void)clearAssetCache;
 - (unsigned long long)clearForced:(BOOL)arg1;
+- (unsigned long long)countAssetCacheItems;
 - (void)dealloc;
 - (void)deferredStopTrackingAssetHandlesByItemIDs:(id)arg1;
 - (void)deferredUpdateLastTimeUsedForUUID:(id)arg1;

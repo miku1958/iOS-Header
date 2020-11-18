@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotoLibraryServices/PLValidatesResourceModel-Protocol.h>
 #import <PhotoLibraryServices/PLWriteableResource-Protocol.h>
 
-@class NSString;
-@protocol PLAssetID, PLCodecIdentity, PLColorSpaceIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
+@class NSDate, NSString, NSURL, PLVirtualResourceUniformTypeIdentifierProxy;
+@protocol PLAssetID, PLCodecIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
 
-@interface PLVirtualResource : NSObject <PLWriteableResource>
+@interface PLVirtualResource : NSObject <PLWriteableResource, PLValidatesResourceModel>
 {
-    short _version;
-    short _resourceType;
     short _localAvailabilityTarget;
     short _remoteAvailability;
     short _remoteAvailabilityTarget;
+    short _trashedState;
+    unsigned int _version;
+    unsigned int _resourceType;
     unsigned int _recipeID;
     unsigned int _orientation;
     int _qualitySortValue;
+    float _scale;
     id<PLAssetID> _assetID;
     id<PLResourceDataStore> _dataStore;
     long long _dataStoreSubtype;
@@ -28,23 +31,21 @@
     long long _unorientedWidth;
     long long _unorientedHeight;
     id<PLCodecIdentity> _codecID;
-    id<PLColorSpaceIdentity> _colorSpaceID;
     id<PLUniformTypeIdentifierIdentity> _uniformTypeIdentifierID;
-    NSString *_fingerprint;
-    long long _dataLength;
+    NSDate *_trashedDate;
 }
 
 @property (readonly, copy, nonatomic) id<PLAssetID> assetID; // @synthesize assetID=_assetID;
 @property (readonly, nonatomic) id<PLCodecIdentity> codecID;
-@property (readonly, nonatomic) id<PLColorSpaceIdentity> colorSpaceID;
 @property (readonly, nonatomic) unsigned long long cplType; // @dynamic cplType;
-@property (nonatomic) long long dataLength; // @synthesize dataLength=_dataLength;
+@property (readonly, nonatomic) long long dataLength; // @dynamic dataLength;
 @property (readonly, nonatomic) id<PLResourceDataStore> dataStore;
 @property (readonly, nonatomic) id<PLResourceDataStoreKey> dataStoreKey;
 @property (readonly, nonatomic) long long dataStoreSubtype;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSString *fingerprint; // @synthesize fingerprint=_fingerprint;
+@property (readonly, nonatomic) long long estimatedDataLength; // @dynamic estimatedDataLength;
+@property (readonly, nonatomic) NSURL *fileURL;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) short localAvailability;
 @property (readonly, nonatomic) short localAvailabilityTarget; // @synthesize localAvailabilityTarget=_localAvailabilityTarget;
@@ -55,21 +56,25 @@
 @property (readonly, nonatomic) unsigned int recipeID;
 @property (readonly, nonatomic) short remoteAvailability;
 @property (readonly, nonatomic) short remoteAvailabilityTarget; // @synthesize remoteAvailabilityTarget=_remoteAvailabilityTarget;
-@property (readonly, nonatomic) short resourceType;
+@property (readonly, nonatomic) unsigned int resourceType;
+@property (readonly, nonatomic) float scale;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSDate *trashedDate; // @synthesize trashedDate=_trashedDate;
+@property (readonly, nonatomic) short trashedState; // @synthesize trashedState=_trashedState;
+@property (readonly, nonatomic) PLVirtualResourceUniformTypeIdentifierProxy *uniformTypeIdentifier;
 @property (readonly, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
 @property (readonly, nonatomic) long long unorientedHeight;
 @property (readonly, nonatomic) long long unorientedWidth;
-@property (readonly, nonatomic) short version;
+@property (readonly, nonatomic) unsigned int version;
 
 - (void).cxx_destruct;
+- (id)initWithAsset:(id)arg1 resourceType:(unsigned int)arg2 version:(unsigned int)arg3 recipeID:(unsigned int)arg4;
 - (id)initWithRecipe:(id)arg1 forAsset:(id)arg2;
 - (BOOL)isDefaultOrientation;
 - (BOOL)isDerivative;
-- (BOOL)isPrimaryUTI;
+- (BOOL)isPlayableVideo;
 - (id)photosCTLJSONDict;
 - (void)setCodecID:(id)arg1;
-- (void)setColorSpaceID:(id)arg1;
 - (void)setDataStore:(id)arg1;
 - (void)setDataStoreKey:(id)arg1;
 - (void)setDataStoreSubtype:(long long)arg1;
@@ -77,11 +82,13 @@
 - (void)setQualitySortValue:(int)arg1;
 - (void)setRecipeID:(unsigned int)arg1;
 - (void)setRemoteAvailability:(short)arg1;
-- (void)setResourceType:(short)arg1;
+- (void)setResourceType:(unsigned int)arg1;
+- (void)setScale:(float)arg1;
 - (void)setUniformTypeIdentifierID:(id)arg1;
 - (void)setUnorientedHeight:(long long)arg1;
 - (void)setUnorientedWidth:(long long)arg1;
-- (void)setVersion:(short)arg1;
+- (void)setVersion:(unsigned int)arg1;
+- (id)validateForAssetID:(id)arg1 resourceIdentity:(id)arg2;
 
 @end
 

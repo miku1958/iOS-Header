@@ -50,6 +50,7 @@
 - (BOOL)_isInterestingToUser:(id)arg1;
 - (Class)changeRequestClass;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (id)personInfoManager;
 - (BOOL)shouldNotifyAsNotificationWithMediaStreamInfo:(id)arg1 asCaptionOnly:(BOOL *)arg2;
 
 @end

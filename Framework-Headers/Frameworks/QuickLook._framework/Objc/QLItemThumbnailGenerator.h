@@ -25,7 +25,6 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) QLItemURLThumbnailGenerator *urlGenerator; // @synthesize urlGenerator=_urlGenerator;
 
-+ (BOOL)hasThirdPartyThumbnailGeneratorForItem:(id)arg1;
 - (void).cxx_destruct;
 - (id)_fetcherClassesForPreviewItem:(id)arg1;
 - (void)generateThumbnailForItem:(id)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 completionBlock:(CDUnknownBlockType)arg6;

@@ -51,7 +51,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isPlaybackQueueTransactionActive;
 @property (readonly, nonatomic) NSArray *items;
-@property (nonatomic) BOOL limitsBandwidthForCellularAccess;
 @property (readonly, nonatomic) BOOL outputObscuredDueToInsufficientExternalProtection;
 @property (copy, nonatomic) CDUnknownBlockType playbackQueueCommitHandler; // @synthesize playbackQueueCommitHandler=_playbackQueueCommitHandler;
 @property (readonly, nonatomic) id playerAVAudioSession;
@@ -71,7 +70,6 @@
 - (void)_setEQPreset:(int)arg1;
 - (void)_setExpectedAssetTypes:(id)arg1;
 - (void)_setPreferredLanguageList:(id)arg1;
-- (void)_setPreparesItemsForPlaybackAsynchronously:(BOOL)arg1;
 - (void)_setStoppingFadeOutDuration:(float)arg1;
 - (void)_setUserVolume:(float)arg1;
 - (void)_setWantsVolumeChangesWhenPausedOrInactive:(BOOL)arg1;

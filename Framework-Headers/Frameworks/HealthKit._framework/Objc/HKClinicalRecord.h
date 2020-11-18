@@ -22,13 +22,14 @@
 @property (readonly, copy) NSString *displayName;
 
 + (BOOL)_isConcreteObjectClass;
++ (id)_newClinicalRecordWithType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5 displayName:(id)arg6 FHIRResource:(id)arg7 config:(CDUnknownBlockType)arg8;
 + (id)clinicalRecordWithType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5 displayName:(id)arg6 FHIRResource:(id)arg7;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_setDisplayName:(id)arg1;
 - (void)_setFHIRResource:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

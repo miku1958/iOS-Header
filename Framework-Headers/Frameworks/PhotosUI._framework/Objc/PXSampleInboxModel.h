@@ -16,11 +16,12 @@
     BOOL _userIsSender;
     BOOL _seen;
     NSDate *_creationDate;
-    long long _type;
+    long long _inboxModelType;
     NSString *_inboxModelTitle;
     unsigned long long _assetsCount;
     NSArray *_senderNames;
     NSArray *_assetsForOneUp;
+    long long _type;
 }
 
 @property (nonatomic) unsigned long long assetsCount; // @synthesize assetsCount=_assetsCount;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *inboxModelTitle; // @synthesize inboxModelTitle=_inboxModelTitle;
+@property (readonly, nonatomic) long long inboxModelType; // @synthesize inboxModelType=_inboxModelType;
 @property (readonly, nonatomic) NSString *keyCommentGUID;
 @property (readonly, nonatomic) NSArray *leftPreviewItems;
 @property (readonly, nonatomic) NSString *ownerEmail;

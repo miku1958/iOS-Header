@@ -6,19 +6,29 @@
 
 #import <UIKit/UIView.h>
 
-@class CLKComplicationTemplate, NTKColoringImageView;
+#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 
-@interface NTKWorkoutRichComplicationBaseCircularView : UIView
+@class CLKComplicationTemplate, NSString, NTKColoringImageView, UIColor;
+@protocol CLKMonochromeFilterProvider;
+
+@interface NTKWorkoutRichComplicationBaseCircularView : UIView <CLKMonochromeComplicationView>
 {
     UIView *_backgroundView;
+    UIColor *_immutableBackgroundColor;
     NTKColoringImageView *_staticImageView;
     long long _state;
     BOOL _paused;
+    id<CLKMonochromeFilterProvider> _filterProvider;
     CLKComplicationTemplate *_complicationTemplate;
 }
 
 @property (strong, nonatomic) CLKComplicationTemplate *complicationTemplate; // @synthesize complicationTemplate=_complicationTemplate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL paused; // @synthesize paused=_paused;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_applyChanges;
@@ -26,6 +36,8 @@
 - (void)dealloc;
 - (id)initWithNoActiveWorkoutImageName:(id)arg1 animatedImagesName:(id)arg2;
 - (void)layoutSubviews;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

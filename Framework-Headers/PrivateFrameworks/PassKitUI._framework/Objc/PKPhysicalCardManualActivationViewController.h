@@ -32,9 +32,9 @@
 
 - (void).cxx_destruct;
 - (void)_presentDisplayableError:(id)arg1;
-- (void)_presentLocationAuthorizationIfNecessary;
 - (void)_setupForCurrentState;
 - (void)_showSpinner:(BOOL)arg1;
+- (void)dealloc;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithAccountService:(id)arg1 account:(id)arg2 paymentPass:(id)arg3 physicalCard:(id)arg4 activationCode:(id)arg5;

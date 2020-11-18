@@ -27,16 +27,16 @@
 
 @property (strong, nonatomic) PHAsset *assetContainingFace; // @synthesize assetContainingFace=_assetContainingFace;
 @property (readonly, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
-@property (getter=isCanceled) BOOL canceled; // @synthesize canceled=_canceled;
+@property BOOL canceled; // @synthesize canceled=_canceled;
 @property (strong, nonatomic) PHFace *face; // @synthesize face=_face;
-@property (getter=isFullResMissing) BOOL fullResMissing; // @synthesize fullResMissing=_fullResMissing;
+@property BOOL fullResMissing; // @synthesize fullResMissing=_fullResMissing;
 @property int imageManagerRequestID; // @synthesize imageManagerRequestID=_imageManagerRequestID;
 @property (nonatomic) struct CGSize lastDeliveredSize; // @synthesize lastDeliveredSize=_lastDeliveredSize;
 @property (nonatomic) struct CGRect normalizedActualFaceRect; // @synthesize normalizedActualFaceRect=_normalizedActualFaceRect;
 @property (nonatomic) struct CGRect normalizedFaceCropRect; // @synthesize normalizedFaceCropRect=_normalizedFaceCropRect;
 @property (strong, nonatomic) PHObject *originalRequestObject; // @synthesize originalRequestObject=_originalRequestObject;
 @property (readonly, nonatomic) struct PXFaceTileImageParams params; // @synthesize params=_params;
-@property (copy, nonatomic, setter=ppt_setRequestStartDate:) NSDate *ppt_requestStartDate; // @synthesize ppt_requestStartDate=_ppt_requestStartDate;
+@property (copy, nonatomic) NSDate *ppt_requestStartDate; // @synthesize ppt_requestStartDate=_ppt_requestStartDate;
 @property (readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
 
 - (void).cxx_destruct;

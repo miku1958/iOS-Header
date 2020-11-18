@@ -17,6 +17,7 @@
 
 - (id)_initWithTimestamp:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_1b6d18a9)adjustedTimestamp;
+- (int)constituentDeviceCaptureID;
 - (void)dealloc;
 - (BOOL)hasCorrespondingDepthData;
 - (BOOL)hasCorrespondingVisionData;

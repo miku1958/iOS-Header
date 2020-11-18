@@ -12,9 +12,11 @@
 - (void)discardSearchResultsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 searchId:(NSString *)arg3;
 - (void)focusWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3;
 - (void)getAccessibilityPropertiesForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolDOMAccessibilityProperties *))arg2 nodeId:(int)arg3;
+- (void)getAssociatedDataForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(id *))arg2 nodeId:(int)arg3;
 - (void)getAttributesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
+- (void)getDataBindingsForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)getDocumentWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(RWIProtocolDOMNode *))arg2;
-- (void)getEventListenersForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3 objectGroup:(id *)arg4;
+- (void)getEventListenersForNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3;
 - (void)getOuterHTMLWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 nodeId:(int)arg3;
 - (void)getSearchResultsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 searchId:(NSString *)arg3 fromIndex:(int)arg4 toIndex:(int)arg5;
 - (void)getSupportedEventNamesWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2;
@@ -28,7 +30,7 @@
 - (void)insertAdjacentHTMLWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 position:(NSString *)arg4 html:(NSString *)arg5;
 - (void)markUndoableStateWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2;
 - (void)moveToWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 nodeId:(int)arg3 targetNodeId:(int)arg4 insertBeforeNodeId:(int *)arg5;
-- (void)performSearchWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *, int))arg2 query:(NSString *)arg3 nodeIds:(id *)arg4;
+- (void)performSearchWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *, int))arg2 query:(NSString *)arg3 nodeIds:(id *)arg4 caseSensitive:(BOOL *)arg5;
 - (void)pushNodeByPathToFrontendWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 path:(NSString *)arg3;
 - (void)querySelectorAllWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSArray *))arg2 nodeId:(int)arg3 selector:(NSString *)arg4;
 - (void)querySelectorWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 nodeId:(int)arg3 selector:(NSString *)arg4;
@@ -43,7 +45,7 @@
 - (void)setAttributesAsTextWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 text:(NSString *)arg4 name:(id *)arg5;
 - (void)setBreakpointForEventListenerWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3;
 - (void)setEventListenerDisabledWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 eventListenerId:(int)arg3 disabled:(BOOL)arg4;
-- (void)setInspectModeEnabledWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 enabled:(BOOL)arg3 highlightConfig:(id *)arg4;
+- (void)setInspectModeEnabledWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 enabled:(BOOL)arg3 highlightConfig:(id *)arg4 showRulers:(BOOL *)arg5;
 - (void)setInspectedNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3;
 - (void)setNodeNameWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(int))arg2 nodeId:(int)arg3 name:(NSString *)arg4;
 - (void)setNodeValueWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 nodeId:(int)arg3 value:(NSString *)arg4;

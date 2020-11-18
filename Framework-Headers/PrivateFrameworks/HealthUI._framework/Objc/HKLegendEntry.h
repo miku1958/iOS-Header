@@ -15,19 +15,21 @@
     UIColor *_innerDotColor;
     UIColor *_labelColor;
     UIImage *_icon;
+    UIColor *_iconTint;
 }
 
 @property (strong, nonatomic) UIColor *dotColor; // @synthesize dotColor=_dotColor;
 @property (strong, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property (strong, nonatomic) UIColor *iconTint; // @synthesize iconTint=_iconTint;
 @property (strong, nonatomic) UIColor *innerDotColor; // @synthesize innerDotColor=_innerDotColor;
 @property (strong, nonatomic) UIColor *labelColor; // @synthesize labelColor=_labelColor;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)legendEntryWithTitle:(id)arg1 dotColor:(id)arg2 innerDotColor:(id)arg3;
-+ (id)legendEntryWithTitle:(id)arg1 icon:(id)arg2;
++ (id)legendEntryWithTitle:(id)arg1 icon:(id)arg2 iconTint:(id)arg3;
 + (id)legendEntryWithTitle:(id)arg1 labelColor:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithTitle:(id)arg1 dotColor:(id)arg2 innerDotColor:(id)arg3 labelColor:(id)arg4 icon:(id)arg5;
+- (id)initWithTitle:(id)arg1 dotColor:(id)arg2 innerDotColor:(id)arg3 labelColor:(id)arg4 icon:(id)arg5 iconTint:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

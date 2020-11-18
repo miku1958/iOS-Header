@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSString, UIButton, UILabel, UITraitCollection, _UIBackdropView;
+@class NSString, UIButton, UILabel, UITraitCollection, UIVisualEffectView;
 @protocol PUImportHistorySectionHeaderViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     UILabel *_spacerLabel;
     UILabel *_secondaryLabel;
     UIButton *_actionButton;
-    _UIBackdropView *_backdropView;
+    UIVisualEffectView *_visualEffectView;
     UITraitCollection *_selfSizingTraits;
     struct PXSimpleIndexPath _sectionIndexPath;
     struct UIEdgeInsets _contentInsets;
@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIButton *actionButton; // @synthesize actionButton=_actionButton;
 @property (nonatomic) BOOL actionButtonEnabled; // @synthesize actionButtonEnabled=_actionButtonEnabled;
 @property (copy, nonatomic) NSString *actionText; // @synthesize actionText=_actionText;
-@property (strong, nonatomic) _UIBackdropView *backdropView; // @synthesize backdropView=_backdropView;
 @property (copy, nonatomic) NSString *backdropViewGroupName; // @synthesize backdropViewGroupName=_backdropViewGroupName;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property (weak, nonatomic) id<PUImportHistorySectionHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -52,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsActionButton; // @synthesize showsActionButton=_showsActionButton;
 @property (strong, nonatomic) UILabel *spacerLabel; // @synthesize spacerLabel=_spacerLabel;
 @property (nonatomic) BOOL supportsMultipleLinesInCompactLayout; // @synthesize supportsMultipleLinesInCompactLayout=_supportsMultipleLinesInCompactLayout;
+@property (readonly, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 
 - (void).cxx_destruct;
 - (void)_actionButtonPressed:(id)arg1;

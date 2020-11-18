@@ -29,8 +29,10 @@
 @property (nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) int identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isLocal;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (id)localOrigin;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -39,7 +41,6 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isLocal;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;

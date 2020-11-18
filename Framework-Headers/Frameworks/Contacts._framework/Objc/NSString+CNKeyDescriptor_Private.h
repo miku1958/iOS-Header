@@ -16,6 +16,7 @@
 @property (readonly) Class superclass;
 
 - (void)_cn_executeGetterForRepresentedKeys:(CDUnknownBlockType)arg1;
+- (id)_cn_ignorableKeys;
 - (id)_cn_optionalKeys;
 - (id)_cn_requiredKeys;
 @end

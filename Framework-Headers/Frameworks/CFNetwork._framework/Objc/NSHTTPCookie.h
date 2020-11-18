@@ -14,6 +14,7 @@
 }
 
 @property (readonly, getter=isHTTPOnly) BOOL HTTPOnly;
+@property (readonly) struct HTTPCookie *_inner; // @dynamic _inner;
 @property (readonly, copy) NSString *comment;
 @property (readonly, copy) NSURL *commentURL;
 @property (readonly, copy) NSString *domain;
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *path;
 @property (readonly, copy) NSArray *portList;
 @property (readonly, copy) NSDictionary *properties;
+@property (readonly, copy) NSString *sameSitePolicy;
 @property (readonly, getter=isSecure) BOOL secure;
 @property (readonly, getter=isSessionOnly) BOOL sessionOnly;
 @property (readonly, copy) NSString *value;
@@ -32,7 +34,7 @@
 + (id)_cookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2 singleCookie:(BOOL)arg3;
 + (const struct __CFArray *)_ns2cfCookies:(id)arg1;
 + (id)_parsedCookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2;
-+ (id)cookieWithCFHTTPCookie:(struct OpaqueCFHTTPCookie *)arg1;
++ (id)cookieWithCFHTTPCookie:(id)arg1;
 + (id)cookieWithProperties:(id)arg1;
 + (id)cookiesWithResponseHeaderFields:(id)arg1 forURL:(id)arg2;
 + (id)requestHeaderFieldsWithCookies:(id)arg1;
@@ -46,27 +48,32 @@
 - (id)OriginURL;
 - (id)Path;
 - (id)Port;
-- (id)SameSite;
+- (id)SameSitePolicy;
 - (id)Secure;
 - (id)StoragePartition;
 - (id)Value;
 - (id)Version;
-- (const struct OpaqueCFHTTPCookie *)_CFHTTPCookie;
-- (const struct OpaqueCFHTTPCookie *)_GetInternalCFHTTPCookie;
+- (id)_CFHTTPCookie;
+- (id)_GetInternalCFHTTPCookie;
 - (long long)_compareForHeaderOrder:(id)arg1;
+- (id)_initWithCookie:(id)arg1 partition:(id)arg2;
+- (id)_initWithHeader:(const struct CompactCookieHeader *)arg1;
+- (id)_initWithInternal:(id)arg1;
+- (id)_initWithProperties:(id)arg1 fromString:(BOOL)arg2;
+- (id)_initWithReference:(const struct CompactCookieArray *)arg1 index:(long long)arg2;
 - (BOOL)_isExpired;
 - (id)_key;
 - (id)_storagePartition;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)ensureCookieValid;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithCFHTTPCookie:(struct OpaqueCFHTTPCookie *)arg1;
+- (id)initWithCFHTTPCookie:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProperties:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)sameSitePolicy;
 
 @end
 

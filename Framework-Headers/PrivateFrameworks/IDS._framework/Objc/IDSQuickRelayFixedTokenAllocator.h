@@ -17,11 +17,13 @@
     NSData *_relaySessionID;
     NSNumber *_relayCombinedSoftwareID;
     NSData *_appleID;
+    NSData *_relayIPv6;
 }
 
 @property (copy) NSData *appleID; // @synthesize appleID=_appleID;
 @property (copy) NSNumber *relayCombinedSoftwareID; // @synthesize relayCombinedSoftwareID=_relayCombinedSoftwareID;
 @property (copy) NSData *relayIP; // @synthesize relayIP=_relayIP;
+@property (copy) NSData *relayIPv6; // @synthesize relayIPv6=_relayIPv6;
 @property (copy) NSNumber *relayPort; // @synthesize relayPort=_relayPort;
 @property (copy) NSData *relaySessionID; // @synthesize relaySessionID=_relaySessionID;
 @property (copy) NSData *relaySessionKey; // @synthesize relaySessionKey=_relaySessionKey;

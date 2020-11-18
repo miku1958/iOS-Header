@@ -10,8 +10,8 @@
 @protocol SearchUIAutoLayoutItem;
 
 @protocol SearchUIAutoLayoutItem <NSObject>
-- (UIView *)containingView;
-- (BOOL)isContainedByItem:(id<SearchUIAutoLayoutItem>)arg1;
-- (UIView *)view;
+- (UIView *)searchui_containingView;
+- (BOOL)searchui_isContainedByItem:(id<SearchUIAutoLayoutItem>)arg1;
+- (UIView *)searchui_view;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_xpc_object;
+@protocol OS_dispatch_group, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface _CFPasteboardEntry : NSObject
@@ -20,7 +20,9 @@ __attribute__((visibility("hidden")))
     unsigned char _isHidden;
     CDUnknownBlockType _promisor;
     CDUnknownBlockType _asyncPromisor;
-    int _promiseState;
+    _Atomic int _promiseState;
+    NSObject<OS_dispatch_group> *_promiseGroup;
+    struct os_unfair_lock_s _lock;
     NSObject<OS_xpc_object> *_promisorConnection;
     int _itemIdentifier;
     unsigned char _isPendingFlush;
@@ -47,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFlavorName:(const struct __CFString *)arg1 itemIdentifier:(int)arg2;
 - (void)promiseDataWithBlock:(CDUnknownBlockType)arg1 forPasteboard:(struct __CFPasteboard *)arg2 generation:(long long)arg3;
 - (void)promiseDataWithFetchOperation:(id)arg1;
-- (void)resolveClientPromisedDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)resolveClientPromisedDataWithQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned char)resolveLocalPromisedData;
 - (void)setData:(struct __CFData *)arg1;
 

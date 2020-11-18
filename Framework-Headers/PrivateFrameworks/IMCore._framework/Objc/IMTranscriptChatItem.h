@@ -6,9 +6,11 @@
 
 #import <IMCore/IMChatItem.h>
 
-@class NSString;
+#import <IMCore/IMChatTranscriptItem-Protocol.h>
 
-@interface IMTranscriptChatItem : IMChatItem
+@class IMHandle, IMServiceImpl, NSAttributedString, NSDate, NSString;
+
+@interface IMTranscriptChatItem : IMChatItem <IMChatTranscriptItem>
 {
     NSString *_guid;
     unsigned char _contiguousType;
@@ -19,7 +21,17 @@
 @property (readonly, nonatomic) unsigned char attachmentContiguousType;
 @property (readonly, nonatomic, getter=isContiguous) BOOL contiguous;
 @property (readonly, nonatomic) unsigned char contiguousType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isFromMe) BOOL fromMe;
 @property (copy, nonatomic, setter=_setGUID:) NSString *guid; // @synthesize guid=_guid;
+@property (readonly, nonatomic) IMHandle *handle;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) IMServiceImpl *service;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSDate *transcriptDate;
+@property (readonly, copy, nonatomic) NSAttributedString *transcriptText;
+@property (readonly, nonatomic) BOOL wantsTail;
 
 - (void).cxx_destruct;
 - (BOOL)_isContiguousLoaded;
@@ -27,8 +39,6 @@
 - (void)_setContiguousLoaded:(BOOL)arg1;
 - (void)_setContiguousType:(unsigned char)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (unsigned long long)hash;
 - (BOOL)isAttachmentContiguousWithChatItem:(id)arg1;
 - (BOOL)isContiguousWithChatItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

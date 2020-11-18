@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HKActivityCache, NSArray, NSUUID;
+@class HKCurrentActivityCacheQueryResult, NSUUID;
 
 @protocol HKCurrentActivityCacheQueryClientInterface
-- (void)client_deliverCurrentActivityCache:(HKActivityCache *)arg1 moveStatistics:(NSArray *)arg2 exerciseStatistics:(NSArray *)arg3 standHoursInfo:(NSArray *)arg4 queryUUID:(NSUUID *)arg5;
+- (void)client_deliverQueryResult:(HKCurrentActivityCacheQueryResult *)arg1 queryUUID:(NSUUID *)arg2;
 @end
 

@@ -8,7 +8,7 @@
 
 #import <ARKit/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
 
-@class ARFaceData, AVCaptureDepthDataOutput, AVCaptureMetadataOutput, NSArray, NSObject, NSString;
+@class ARFaceData, AVCaptureConnection, AVCaptureDepthDataOutput, AVCaptureMetadataOutput, NSArray, NSObject, NSString;
 @protocol OS_dispatch_semaphore;
 
 @interface ARFaceTrackingImageSensor : ARImageSensor <AVCaptureMetadataOutputObjectsDelegate>
@@ -23,15 +23,15 @@
     double _startTime;
     unsigned long long _droppedFramesPerSec;
     BOOL _previousImageDataValid;
+    AVCaptureConnection *_depthConnection;
+    AVCaptureConnection *_metadataConnection;
     BOOL _recordingMode;
-    NSString *_requiredFaceMetaDataObjectType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL recordingMode; // @synthesize recordingMode=_recordingMode;
-@property (copy, nonatomic) NSString *requiredFaceMetaDataObjectType; // @synthesize requiredFaceMetaDataObjectType=_requiredFaceMetaDataObjectType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -43,11 +43,10 @@
 - (id)configureCaptureSession;
 - (void)dataOutputSynchronizer:(id)arg1 didOutputSynchronizedDataCollection:(id)arg2;
 - (void)dealloc;
-- (id)init;
-- (id)initWithSettings:(id)arg1;
+- (id)initWithSettings:(id)arg1 captureSession:(id)arg2 captureQueue:(id)arg3;
 - (id)outputsForSynchronizer;
+- (id)prepareToStart;
 - (unsigned long long)providedDataTypes;
-- (void)start;
 - (void)stop;
 
 @end

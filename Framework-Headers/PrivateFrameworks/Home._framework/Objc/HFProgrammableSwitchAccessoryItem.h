@@ -6,14 +6,14 @@
 
 #import <Home/HFItem.h>
 
-#import <Home/HFCharacteristicWriteActionBuilderFactory-Protocol.h>
+#import <Home/HFActionBuilderFactory-Protocol.h>
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMAccessory, NSString;
+@class HMAccessory, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
-@interface HFProgrammableSwitchAccessoryItem : HFItem <HFServiceLikeItem, HFServiceLikeBuilderCreating, HFCharacteristicWriteActionBuilderFactory>
+@interface HFProgrammableSwitchAccessoryItem : HFItem <HFServiceLikeItem, HFServiceLikeBuilderCreating, HFActionBuilderFactory>
 {
     HMAccessory *_accessory;
     id<HFCharacteristicValueSource> _valueSource;
@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
@@ -31,14 +32,14 @@
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
 - (BOOL)actionsMayRequireDeviceUnlock;
-- (BOOL)containsActionableCharacteristics;
+- (BOOL)containsActions;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)currentStateActionBuildersForHome:(id)arg1;
 - (id)init;
 - (id)initWithAccessory:(id)arg1 valueSource:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 - (id)serviceLikeBuilderInHome:(id)arg1;
-- (id)services;
 - (BOOL)shouldReduceOptionItemsForNotifyingCharacteristics;
 
 @end

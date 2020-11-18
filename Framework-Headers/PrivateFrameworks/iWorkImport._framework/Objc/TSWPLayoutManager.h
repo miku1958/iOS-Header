@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _useLigatures;
     BOOL _layoutFinished;
     BOOL _shouldClearTypesetterCache;
+    BOOL _isLayingOut;
     TSWPMutableDirtyRangeArray *_dirtyRanges;
     TSWPCTTypesetterCache *_typesetterCache;
     TSWPMutableTopicNumberHints *_initialTopicNumbers;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSWPDirtyRangeArray *dirtyRanges; // @synthesize dirtyRanges=_dirtyRanges;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSObject<TSWPTopicNumberHints> *initialTopicNumberHints; // @synthesize initialTopicNumberHints=_initialTopicNumbers;
+@property (readonly, nonatomic) BOOL isLayingOut; // @synthesize isLayingOut=_isLayingOut;
 @property (readonly, nonatomic) BOOL layoutFinished; // @synthesize layoutFinished=_layoutFinished;
 @property (readonly, weak, nonatomic) id<TSWPLayoutOwner> owner; // @synthesize owner=_owner;
 @property (readonly, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
@@ -46,17 +48,17 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)deflateTarget:(id)arg1 intoHints:(inout id)arg2 childHints:(inout id)arg3 anchoredDrawablePositions:(id *)arg4 startingPartitionedAttachments:(out id *)arg5 topicNumbers:(out id *)arg6 layoutState:(void *)arg7;
 - (void)destroyLayoutState:(void *)arg1;
-- (void)inflateTarget:(id)arg1 fromHints:(id)arg2 childHint:(id)arg3 anchoredDrawablePositions:(id)arg4 topicNumbers:(id)arg5;
+- (void)inflateTarget:(id)arg1 fromHints:(id)arg2 childHint:(id)arg3 anchoredDrawablePositions:(id)arg4 topicNumbers:(id)arg5 footnoteLayoutRange:(struct _NSRange)arg6;
 - (id)initWithStorage:(id)arg1 owner:(id)arg2;
-- (void *)layoutIntoTarget:(id)arg1 withLayoutState:(void *)arg2 outSync:(BOOL *)arg3;
+- (void *)layOutIntoTarget:(id)arg1 withLayoutState:(void *)arg2 outSync:(BOOL *)arg3;
 - (id)layoutMetricsCache;
-- (void *)layoutStateForLayoutAfterHint:(id)arg1 childHint:(id)arg2 topicNumbers:(id)arg3;
-- (void *)layoutStateForLayoutWithHint:(id)arg1 topicNumbers:(id)arg2;
+- (void *)layoutStateForLayoutAfterHint:(id)arg1 firstTarget:(id)arg2 childHint:(id)arg3 topicNumbers:(id)arg4;
+- (void *)layoutStateForLayoutWithHint:(id)arg1 firstTarget:(id)arg2 topicNumbers:(id)arg3;
 - (BOOL)needsLayoutInColumn:(id)arg1;
 - (unsigned long long)p_layoutConfigFlagsForTarget:(id)arg1;
 - (void)removeDirtyRange:(struct _NSRange)arg1;
 - (void)resetDirtyRange;
-- (void)storage:(id)arg1 didChangeRange:(struct _NSRange)arg2 delta:(long long)arg3 broadcastKind:(int)arg4;
+- (void)storage:(id)arg1 didChangeRange:(struct _NSRange)arg2 delta:(long long)arg3 broadcastKind:(unsigned long long)arg4;
 - (id)styleProvider;
 - (void)willRemoveAttachmentLayout:(id)arg1;
 

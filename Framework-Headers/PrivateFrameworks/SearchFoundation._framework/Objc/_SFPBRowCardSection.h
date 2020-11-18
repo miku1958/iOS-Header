@@ -31,8 +31,6 @@
     _SFPBImage *_image;
     _SFPBRichText *_leadingText;
     _SFPBRichText *_trailingText;
-    NSString *_leftText;
-    NSString *_rightText;
     _SFPBImage *_attributionImage;
     NSString *_key;
     NSString *_value;
@@ -57,11 +55,9 @@
 @property (nonatomic) int keyWeight; // @synthesize keyWeight=_keyWeight;
 @property (strong, nonatomic) _SFPBRichText *leadingSubtitle; // @synthesize leadingSubtitle=_leadingSubtitle;
 @property (strong, nonatomic) _SFPBRichText *leadingText; // @synthesize leadingText=_leadingText;
-@property (copy, nonatomic) NSString *leftText; // @synthesize leftText=_leftText;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
-@property (copy, nonatomic) NSString *rightText; // @synthesize rightText=_rightText;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _SFPBRichText *trailingSubtitle; // @synthesize trailingSubtitle=_trailingSubtitle;

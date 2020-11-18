@@ -6,22 +6,27 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <Widgets/WGMajorListViewControllerDelegate-Protocol.h>
 #import <Widgets/WGWidgetDebugging-Protocol.h>
 #import <Widgets/WGWidgetDiscoveryObserving-Protocol.h>
 #import <Widgets/WGWidgetExtensionVisibilityProviding-Protocol.h>
+#import <Widgets/WGWidgetIconAnimationExtraViewsProviding-Protocol.h>
 #import <Widgets/WGWidgetListViewControllerDelegatePrivate-Protocol.h>
 
-@class NSString, UIScrollView, WGMajorListViewController, WGWidgetDiscoveryController;
+@class NSArray, NSString, UIControl, UILabel, UIScrollView, UIView, WGCarouselListViewController, WGWidgetDiscoveryController;
 @protocol WGWidgetGroupViewControllerDelegate;
 
-@interface WGWidgetGroupViewController : UIViewController <WGWidgetDebugging, WGWidgetDiscoveryObserving, WGWidgetListViewControllerDelegatePrivate, WGWidgetExtensionVisibilityProviding>
+@interface WGWidgetGroupViewController : UIViewController <WGWidgetDebugging, WGWidgetDiscoveryObserving, WGWidgetListViewControllerDelegatePrivate, WGMajorListViewControllerDelegate, WGWidgetExtensionVisibilityProviding, WGWidgetIconAnimationExtraViewsProviding>
 {
     WGWidgetDiscoveryController *_discoveryController;
-    WGMajorListViewController *_majorColumnListViewController;
+    WGCarouselListViewController *_majorColumnListViewController;
     unsigned long long _lastWidgetCount;
+    struct WGWidgetListSettings _listSettings;
+    UILabel *_debugLabel;
     BOOL _shouldBlurContent;
     id<WGWidgetGroupViewControllerDelegate> _delegate;
     unsigned long long _location;
+    UIControl *_editButton;
     struct UIEdgeInsets _contentOccludingInset;
 }
 
@@ -31,10 +36,18 @@
 @property (weak, nonatomic) id<WGWidgetGroupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIControl *editButton; // @synthesize editButton=_editButton;
+@property (nonatomic, getter=isEditingIcons) BOOL editingIcons;
+@property (readonly, copy, nonatomic) NSArray *extraViews;
+@property (readonly, nonatomic) UIView *extraViewsContainer;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIViewController *headerContentViewController;
+@property (readonly, nonatomic, getter=isHeaderVisible) BOOL headerVisible;
+@property (nonatomic) struct WGWidgetListSettings listSettings; // @synthesize listSettings=_listSettings;
 @property (nonatomic) unsigned long long location; // @synthesize location=_location;
 @property (readonly, nonatomic) UIScrollView *majorScrollView;
+@property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 @property (nonatomic) BOOL shouldBlurContent; // @synthesize shouldBlurContent=_shouldBlurContent;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -42,6 +55,7 @@
 
 - (void).cxx_destruct;
 - (long long)_activeLayoutMode;
+- (BOOL)_canShowWhileLocked;
 - (long long)_layoutModeForSize:(struct CGSize)arg1;
 - (void)_loadWidgetListViewController;
 - (id)_scrollViewForListViewController:(id)arg1;
@@ -49,9 +63,10 @@
 - (void)editViewDidDisappear:(id)arg1;
 - (void)editViewWillAppear:(id)arg1;
 - (void)editViewWillDisappear:(id)arg1;
-- (id)initWithWidgetDiscoveryController:(id)arg1;
+- (id)initWithWidgetDiscoveryController:(id)arg1 listSettings:(struct WGWidgetListSettings)arg2;
 - (void)invalidateVisibleWidgets;
 - (BOOL)isWidgetExtensionVisible:(id)arg1;
+- (void)majorListViewControllerDidChangeHeaderVisibility:(id)arg1;
 - (void)makeVisibleWidgetWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentEditViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

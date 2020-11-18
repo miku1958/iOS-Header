@@ -13,7 +13,7 @@
 #import <AvatarUI/UICollectionViewDelegate-Protocol.h>
 #import <AvatarUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class AVTAvatarListImageItem, AVTCenteringCollectionViewDelegate, AVTEngagementLayout, AVTFunCamAvatarPickerListLayout, AVTRenderingScope, AVTUIEnvironment, NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, UIView, _AVTAvatarRecordImageProvider;
+@class AVTAvatarListImageItem, AVTCenteringCollectionViewDelegate, AVTFunCamAvatarPickerCollectionViewLayout, AVTFunCamAvatarPickerStyle, AVTRenderingScope, AVTUIEnvironment, NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, UIView, _AVTAvatarRecordImageProvider;
 @protocol AVTAvatarPickerDelegate, AVTAvatarRecord, AVTAvatarStoreInternal, AVTPresenterDelegate, AVTUILogger, NSObject;
 
 @interface AVTFunCamAvatarPickerController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, AVTViewSessionProviderDelegate, AVTObjectViewController, AVTAvatarPicker>
@@ -21,12 +21,13 @@
     id<AVTPresenterDelegate> presenterDelegate;
     id<AVTAvatarPickerDelegate> avatarPickerDelegate;
     unsigned long long _mode;
-    UIView *_container;
+    AVTFunCamAvatarPickerStyle *_style;
     UICollectionView *_collectionView;
-    UIView *_listBottomClippingView;
+    UIView *_titlesContainer;
+    UICollectionView *_titlesCollectionView;
+    UIView *_titlesClippingView;
     id<AVTAvatarRecord> _selectedAvatarRecord;
-    AVTEngagementLayout *_engagementLayout;
-    AVTFunCamAvatarPickerListLayout *_listLayout;
+    AVTFunCamAvatarPickerCollectionViewLayout *_listLayout;
     UICollectionViewFlowLayout *_gridLayout;
     AVTCenteringCollectionViewDelegate *_centeringDelegate;
     NSArray *_puppetRecords;
@@ -40,26 +41,25 @@
     AVTRenderingScope *_editableRecordsListRenderingScope;
     AVTRenderingScope *_gridRenderingScope;
     id<NSObject> _changeNotificationToken;
+    struct CGRect _lastUpdateViewBounds;
 }
 
 @property (weak, nonatomic) id<AVTAvatarPickerDelegate> avatarPickerDelegate; // @synthesize avatarPickerDelegate;
 @property (strong, nonatomic) AVTCenteringCollectionViewDelegate *centeringDelegate; // @synthesize centeringDelegate=_centeringDelegate;
 @property (strong, nonatomic) id<NSObject> changeNotificationToken; // @synthesize changeNotificationToken=_changeNotificationToken;
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
-@property (strong, nonatomic) UIView *container; // @synthesize container=_container;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *editableRecords; // @synthesize editableRecords=_editableRecords;
 @property (readonly, nonatomic) AVTRenderingScope *editableRecordsListRenderingScope; // @synthesize editableRecordsListRenderingScope=_editableRecordsListRenderingScope;
-@property (strong, nonatomic) AVTEngagementLayout *engagementLayout; // @synthesize engagementLayout=_engagementLayout;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (strong, nonatomic) UICollectionViewFlowLayout *gridLayout; // @synthesize gridLayout=_gridLayout;
 @property (readonly, nonatomic) AVTRenderingScope *gridRenderingScope; // @synthesize gridRenderingScope=_gridRenderingScope;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) _AVTAvatarRecordImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
 @property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
-@property (strong, nonatomic) UIView *listBottomClippingView; // @synthesize listBottomClippingView=_listBottomClippingView;
-@property (strong, nonatomic) AVTFunCamAvatarPickerListLayout *listLayout; // @synthesize listLayout=_listLayout;
+@property (nonatomic) struct CGRect lastUpdateViewBounds; // @synthesize lastUpdateViewBounds=_lastUpdateViewBounds;
+@property (strong, nonatomic) AVTFunCamAvatarPickerCollectionViewLayout *listLayout; // @synthesize listLayout=_listLayout;
 @property (readonly, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) AVTAvatarListImageItem *noneItem; // @synthesize noneItem=_noneItem;
@@ -67,19 +67,22 @@
 @property (strong, nonatomic) NSArray *puppetRecords; // @synthesize puppetRecords=_puppetRecords;
 @property (strong, nonatomic) id<AVTAvatarRecord> selectedAvatarRecord; // @synthesize selectedAvatarRecord=_selectedAvatarRecord;
 @property (strong, nonatomic) id<AVTAvatarStoreInternal> store; // @synthesize store=_store;
+@property (copy, nonatomic) AVTFunCamAvatarPickerStyle *style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIView *titlesClippingView; // @synthesize titlesClippingView=_titlesClippingView;
+@property (strong, nonatomic) UICollectionView *titlesCollectionView; // @synthesize titlesCollectionView=_titlesCollectionView;
+@property (strong, nonatomic) UIView *titlesContainer; // @synthesize titlesContainer=_titlesContainer;
 @property (readonly, nonatomic) UIView *view;
 
 + (id)createClippingViewForSize:(struct CGSize)arg1;
-+ (double)edgeLengthFittingWidth:(double)arg1 environment:(id)arg2;
-+ (id)funCamAvatarPickerControllerForStore:(id)arg1;
-+ (CDUnknownBlockType)imageItemInsetsForGrid;
-+ (CDUnknownBlockType)imageItemInsetsForList;
++ (id)funCamAvatarPickerControllerForStore:(id)arg1 style:(id)arg2;
 + (id)itemsFromRecords:(id)arg1;
 + (id)newGridLayout;
 + (id)sessionProviderWithEnvironment:(id)arg1 delegate:(id)arg2;
 - (void).cxx_destruct;
 - (void)buildCollectionView;
+- (id)buildCollectionViewLayout;
+- (id)buildTitlesCollectionViewLayout;
 - (BOOL)canCreateAvatar;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -90,7 +93,7 @@
 - (long long)indexForRecord:(id)arg1;
 - (long long)indexForRecordIdentifier:(id)arg1;
 - (id)indexPathForNoneItem;
-- (id)initWithStore:(id)arg1 environment:(id)arg2;
+- (id)initWithStore:(id)arg1 environment:(id)arg2 style:(id)arg3;
 - (BOOL)isDisplayingGridLayout;
 - (void)loadView;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
@@ -99,6 +102,7 @@
 - (void)reloadModel;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)selectAvatarRecordWithIdentifier:(id)arg1 animated:(BOOL)arg2;
 - (void)selectItemAtCenterNotifyDelegate:(BOOL)arg1;
 - (void)selectItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 notifyDelegate:(BOOL)arg3;
@@ -108,9 +112,12 @@
 - (void)sessionProviderDidEndCameraSession:(id)arg1;
 - (void)sessionProviderWillStartCameraSession:(id)arg1;
 - (void)startObservingChangesIfNeeded;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateTitlesClippingViewMask;
 - (void)updateViewForCurrentMode;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

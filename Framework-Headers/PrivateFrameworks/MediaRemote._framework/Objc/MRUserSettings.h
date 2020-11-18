@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) double broadcastCommandWaitDuration;
 @property (readonly, nonatomic) BOOL computeNowPlayingApplication;
 @property (readonly, nonatomic) BOOL connectToAllEndpointsWhenAnyEndpointBeginsPlayback;
+@property (readonly, nonatomic) BOOL connectToAllEndpointsWhenInProximityToAnyDevice;
 @property (readonly, nonatomic) BOOL connectToEndpointWhenBeginsPlayback;
 @property (readonly, nonatomic) BOOL connectToUserSelectedEndpoint;
 @property (strong, nonatomic) NSArray *connectedClientPIDs;
@@ -35,21 +36,28 @@
 @property (readonly, nonatomic) long long externalDeviceSocketQOSLevel;
 @property (readonly, nonatomic) double externalDeviceTimeoutDuration;
 @property (readonly, nonatomic) BOOL hasExternalDeviceSocketQOSLevelSet;
+@property (readonly, nonatomic) double lastPlayingDeviceThresholdInterval;
+@property (readonly, nonatomic) double launchApplicationTimeoutInterval;
 @property (readonly, nonatomic) long long maxTransactionMemorySize;
 @property (readonly, nonatomic) double mediaRecentlyPlayedInterval;
 @property (readonly, nonatomic) BOOL needNowPlayingForegroundState;
 @property (readonly, nonatomic) double nowPlayingApplicationTimeout;
+@property (readonly, nonatomic) double queuedCommandsTimeoutInterval;
+@property (readonly, nonatomic) BOOL sendLastPlayingDeviceToHome;
+@property (readonly, nonatomic) double sendPlaybackSessionUpdateToCompanionCoalesceInterval;
 @property (readonly, nonatomic) BOOL shouldInitializeGenericBonjourService;
 @property (readonly, nonatomic) BOOL shouldInitializeRapportService;
 @property (readonly, nonatomic) BOOL shouldInitializeTelevisionBonjourService;
 @property (readonly, nonatomic) BOOL shouldLogArtwork;
 @property (readonly, nonatomic) BOOL shouldLogPairingSetupCode;
+@property (readonly, nonatomic) BOOL supportLastPlayingDevice;
+@property (readonly, nonatomic) BOOL supportMigration;
+@property (readonly, nonatomic) BOOL supportProximityMigration;
 @property (readonly, nonatomic) BOOL takelockScreenAssertion;
 @property (readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
 @property (readonly, nonatomic) double transactionWaitDurationOnOutOfMemory;
 @property (readonly, nonatomic) double transactionWaitDurationOnXpcSend;
 @property (readonly, nonatomic) BOOL useDebugAVRouteWithoutVolumeControl;
-@property (readonly, nonatomic) BOOL useDeviceLockStateToRestoreDeferredPlayerPaths;
 @property (readonly, nonatomic) BOOL useExternalDeviceSystemPairing;
 @property (readonly, nonatomic) BOOL useGenericTransportForHostedEndpoints;
 @property (readonly, nonatomic) BOOL useNoDelayOptionForExternalDeviceSockets;
@@ -63,7 +71,14 @@
 - (double)_doubleValueForKey:(id)arg1 usingDefaultValue:(double)arg2;
 - (long long)_integerValueForKey:(id)arg1 usingDefaultValue:(long long)arg2;
 - (void)_removeValueForKey:(id)arg1;
+- (id)defaultSupportedCommandsData;
+- (id)defaultSupportedCommandsDataForClient:(id)arg1;
 - (id)init;
+- (id)localLastPlayingDate;
+- (unsigned int)localPlaybackState;
+- (void)setLocalLastPlayingDate:(id)arg1;
+- (void)setLocalPlaybackState:(unsigned int)arg1;
+- (void)updateDefaultSupportedCommandsData:(id)arg1 forClient:(id)arg2;
 
 @end
 

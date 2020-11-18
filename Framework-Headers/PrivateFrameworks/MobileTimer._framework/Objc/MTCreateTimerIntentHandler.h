@@ -20,12 +20,14 @@
 @property (readonly) Class superclass;
 
 - (void)_createTimerWithIntent:(id)arg1 dryRun:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_isPlayingMediaFromMRPlaybackState:(unsigned int)arg1;
 - (id)_responseToCreateTimerIntent:(id)arg1 withCreatedTimer:(id)arg2 error:(id)arg3 dryRun:(BOOL)arg4;
 - (BOOL)_timer:(id)arg1 conflictsWithRunningTimersInTimers:(id)arg2;
 - (void)confirmCreateTimer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleCreateTimer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resolveDurationForCreateTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resolveLabelForCreateTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)resolveTypeForCreateTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

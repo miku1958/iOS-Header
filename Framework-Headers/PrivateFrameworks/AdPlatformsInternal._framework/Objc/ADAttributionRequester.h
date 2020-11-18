@@ -25,7 +25,7 @@
 - (int)appRunState;
 - (void)attachDownloadDataTo:(id)arg1 forAdamID:(id)arg2;
 - (void)attachSearchMetadataTo:(id)arg1 forAdamID:(id)arg2;
-- (void)beginAttributionRequest:(id)arg1 xpcToken:(unsigned int)arg2 reason:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)beginAttributionRequest:(id)arg1 reason:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithConnection:(id)arg1 bundleID:(id)arg2 transactionID:(id)arg3;
 - (void)makeAttributionRequestWithObject:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
 - (void)overrideAttributionData:(id)arg1;

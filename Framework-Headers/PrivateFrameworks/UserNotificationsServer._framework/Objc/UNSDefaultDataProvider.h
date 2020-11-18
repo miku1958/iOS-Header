@@ -11,7 +11,7 @@
 #import <UserNotificationsServer/UNSNotificationRepositoryObserver-Protocol.h>
 #import <UserNotificationsServer/UNSNotificationTopicRepositoryObserver-Protocol.h>
 
-@class BBDataProviderProxy, BBSectionIcon, BBSectionInfo, BSCFBundle, NSMutableDictionary, NSString, UNSApplicationLauncher, UNSAttachmentsService, UNSDaemonLauncher, UNSNotificationCategoryRepository, UNSNotificationRepository, UNSNotificationSourceDescription, UNSNotificationTopicRepository;
+@class BBDataProviderProxy, BBSectionIcon, BBSectionInfo, BSCFBundle, NSMutableDictionary, NSString, UNSApplicationLauncher, UNSAttachmentsService, UNSDaemonLauncher, UNSLocalizationService, UNSNotificationCategoryRepository, UNSNotificationRepository, UNSNotificationSourceDescription, UNSNotificationTopicRepository;
 @protocol OS_dispatch_queue;
 
 @interface UNSDefaultDataProvider : NSObject <UNSNotificationRepositoryObserver, UNSNotificationCategoryRepositoryObserver, UNSNotificationTopicRepositoryObserver, BBRemoteDataProvider>
@@ -26,6 +26,7 @@
     UNSNotificationCategoryRepository *_categoryRepository;
     UNSNotificationTopicRepository *_topicRepository;
     UNSAttachmentsService *_attachmentsService;
+    UNSLocalizationService *_localizationService;
     BBDataProviderProxy *_proxy;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_primaryAttachments;
@@ -51,7 +52,6 @@
 - (id)_defaultActionWithNotification:(id)arg1;
 - (id)_dismissActionForCategory:(id)arg1;
 - (void)_handleBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (BOOL)_isPushDataProvider;
 - (BOOL)_isResourceValidForPath:(id)arg1 withContainerPath:(id)arg2;
 - (id)_localizeClientString:(id)arg1 inBundle:(id)arg2;
 - (id)_pathForSoundName:(id)arg1;
@@ -63,8 +63,9 @@
 - (BOOL)_queue_supportsCriticalAlertsForSubsectionIDs:(id)arg1;
 - (void)_queue_withdrawBulletinForNotification:(id)arg1;
 - (id)_sectionIconForNotificationSourceDescription:(id)arg1;
-- (id)_sectionIconVariantForImageName:(id)arg1 bundlePath:(id)arg2 format:(long long)arg3;
+- (id)_sectionIconVariantForImageName:(id)arg1 bundlePath:(id)arg2 format:(long long)arg3 precomposed:(BOOL)arg4;
 - (id)_silenceActionForCategory:(id)arg1;
+- (id)_soundsDirectoryPathForContainerBasePath:(id)arg1;
 - (id)_supplementaryActionsForForCategoryRecord:(id)arg1;
 - (id)_topicForIdentifier:(id)arg1;
 - (id)_unarchiveNotificationFromData:(id)arg1;
@@ -80,9 +81,11 @@
 - (id)defaultSubsectionInfos;
 - (id)displayNameForSubsectionID:(id)arg1;
 - (void)handleBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)initWithNotificationSourceDescription:(id)arg1 applicationLauncher:(id)arg2 daemonLauncher:(id)arg3 categoryRepository:(id)arg4 notificationRepository:(id)arg5 topicRepository:(id)arg6 attachmentsService:(id)arg7 queue:(id)arg8;
+- (id)initWithNotificationSourceDescription:(id)arg1 applicationLauncher:(id)arg2 daemonLauncher:(id)arg3 categoryRepository:(id)arg4 notificationRepository:(id)arg5 topicRepository:(id)arg6 attachmentsService:(id)arg7 localizationService:(id)arg8 queue:(id)arg9;
 - (void)invalidate;
+- (void)noteSectionInfoDidChange:(id)arg1;
 - (id)notificationRecords;
+- (void)notificationRepository:(id)arg1 didDiscoverContentOnFirstUnlockForBundleIdentifier:(id)arg2;
 - (void)notificationRepository:(id)arg1 didPerformUpdates:(id)arg2 forBundleIdentifier:(id)arg3;
 - (id)primaryAttachmentDataForRecordID:(id)arg1;
 - (id)sectionDisplayName;

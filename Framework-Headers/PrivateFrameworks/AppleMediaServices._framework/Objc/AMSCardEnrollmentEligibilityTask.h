@@ -6,20 +6,36 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-@class NSString;
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@interface AMSCardEnrollmentEligibilityTask : AMSTask
+@class NSString;
+@protocol AMSBagProtocol;
+
+@interface AMSCardEnrollmentEligibilityTask : AMSTask <AMSBagConsumer>
 {
+    id<AMSBagProtocol> _bag;
     NSString *_countryCode;
 }
 
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (readonly, copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)_bagKeySet;
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 - (void).cxx_destruct;
 - (unsigned long long)_cardTypeForPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
 - (id)_performSilentEnrollmentCheckWithRequest:(id)arg1;
 - (void)canWriteBillingInfoWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
+- (id)initWithBag:(id)arg1;
+- (id)initWithBag:(id)arg1 countryCode:(id)arg2;
 - (id)initWithCountryCode:(id)arg1;
 - (id)performCanWriteBillingInfoQueryWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
 

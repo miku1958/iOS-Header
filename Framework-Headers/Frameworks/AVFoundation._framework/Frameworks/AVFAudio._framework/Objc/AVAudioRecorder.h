@@ -19,7 +19,7 @@
 @property (strong) AVAudioSession *audioSession;
 @property (copy, nonatomic) NSArray *channelAssignments;
 @property (readonly) double currentTime;
-@property id<AVAudioRecorderDelegate> delegate;
+@property (weak) id<AVAudioRecorderDelegate> delegate;
 @property (readonly) double deviceCurrentTime;
 @property (readonly) AVAudioFormat *format;
 @property (nonatomic) BOOL instantaneousMetering;

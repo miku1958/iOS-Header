@@ -7,13 +7,42 @@
 #import <PersonalizationPortrait/PPPortrait.h>
 
 @interface PPPortrait (Maintenance)
-+ (BOOL)_logDailyMetricsWithError:(id *)arg1;
++ (void)_addMediaItem:(id)arg1 ofType:(int)arg2 withBundleId:(id)arg3 dateInterval:(id)arg4 to:(id)arg5;
++ (BOOL)_checkDeferralAndAvoidDuetRateLimitWithBatchInterval:(double)arg1 lastSyncDate:(id)arg2 activity:(id)arg3;
++ (id)_dateOfLastNamedEntityDKSyncViaCTS;
++ (id)_dateOfLastTopicDKSyncViaCTS;
++ (void)_deleteAllLocationsExceedingMaxAgeSeconds:(double)arg1;
++ (void)_deleteAllNamedEntitiesExceedingMaxAgeSeconds:(double)arg1;
++ (void)_deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 maxAgeSeconds:(double)arg3;
++ (void)_deleteAllTopicsExceedingMaxAgeSeconds:(double)arg1;
++ (void)_deleteAllTopicsFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 maxAgeSeconds:(double)arg3;
++ (BOOL)_logDailyMetricsWithError:(id *)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2;
++ (BOOL)_logPerplexityForNamedEntitiesWithError:(id *)arg1;
++ (BOOL)_logPerplexityForTopicsWithError:(id *)arg1;
++ (BOOL)_logPerplexityWithError:(id *)arg1;
++ (BOOL)_logUniqueTopicsWithError:(id *)arg1;
++ (id)_quantizeAndFilterEntities:(id)arg1 withLimit:(unsigned int)arg2;
++ (id)_quantizeTopics:(id)arg1;
++ (void)_registerAssetMetadataUpdate;
++ (void)_registerContactsImport;
 + (void)_registerCoreRoutineImport;
-+ (void)_registerKnowledgeStoreCleanup;
++ (void)_registerDailyMetricsLogging;
++ (void)_registerDataCollection;
++ (void)_registerEntityBackfilling;
++ (void)_registerEventKitImport;
++ (void)_registerKnowledgeStoreSync;
 + (void)_registerMapsImport;
++ (void)_registerNowPlayingMPRequestResponseController;
 + (void)_registerPeriodicMetrics;
++ (void)_registerProcessPendingFeedback;
 + (void)_registerRTCSendLogs;
++ (void)_registerRemotelyDonatedRecordCleanup;
 + (void)_registerTTLBasedDonationCleanup;
++ (BOOL)_runPortraitMusicDataCollectionWithError:(id *)arg1 shouldContinueBlock:(CDUnknownBlockType)arg2;
++ (void)_setDateOfLastNamedEntityDKSyncViaCTSToDate:(id)arg1;
++ (void)_setDateOfLastTopicDKSyncViaCTSToDate:(id)arg1;
++ (void)processPendingFeedbackWithShouldContinueBlock:(CDUnknownBlockType)arg1;
 + (void)registerMaintenanceTasksInternal;
++ (id)runPortraitMusicDataCollectionWithTopicStore:(id)arg1 namedEntityStore:(id)arg2 collectIntents:(BOOL)arg3 error:(id *)arg4 shouldContinueBlock:(CDUnknownBlockType)arg5;
 @end
 

@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
 @property (strong, nonatomic) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
 
++ (id)forecastRequestForLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)forecastRequestForLocation:(id)arg1 date:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)cleanup;

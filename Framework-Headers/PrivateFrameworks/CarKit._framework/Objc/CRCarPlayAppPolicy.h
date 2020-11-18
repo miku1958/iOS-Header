@@ -13,18 +13,22 @@
     BOOL _carPlaySupported;
     BOOL _canDisplayOnCarScreen;
     BOOL _launchUsingSiri;
+    BOOL _launchNotificationsUsingSiri;
     BOOL _launchUsingMusicUIService;
     BOOL _badgesAppIcon;
     BOOL _showsNotifications;
     BOOL _handlesCarIntents;
     BOOL _launchUsingMapsTemplateUI;
     NSDictionary *_siriActivationOptions;
+    unsigned long long _applicationCategory;
 }
 
+@property (nonatomic) unsigned long long applicationCategory; // @synthesize applicationCategory=_applicationCategory;
 @property (nonatomic) BOOL badgesAppIcon; // @synthesize badgesAppIcon=_badgesAppIcon;
 @property (nonatomic) BOOL canDisplayOnCarScreen; // @synthesize canDisplayOnCarScreen=_canDisplayOnCarScreen;
 @property (nonatomic, getter=isCarPlaySupported) BOOL carPlaySupported; // @synthesize carPlaySupported=_carPlaySupported;
 @property (nonatomic) BOOL handlesCarIntents; // @synthesize handlesCarIntents=_handlesCarIntents;
+@property (nonatomic) BOOL launchNotificationsUsingSiri; // @synthesize launchNotificationsUsingSiri=_launchNotificationsUsingSiri;
 @property (nonatomic) BOOL launchUsingMapsTemplateUI; // @synthesize launchUsingMapsTemplateUI=_launchUsingMapsTemplateUI;
 @property (nonatomic) BOOL launchUsingMusicUIService; // @synthesize launchUsingMusicUIService=_launchUsingMusicUIService;
 @property (nonatomic) BOOL launchUsingSiri; // @synthesize launchUsingSiri=_launchUsingSiri;

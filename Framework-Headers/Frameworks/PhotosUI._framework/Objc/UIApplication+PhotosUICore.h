@@ -6,7 +6,16 @@
 
 #import <UIKit/UIApplication.h>
 
-@interface UIApplication (PhotosUICore)
+#import <PhotosUICore/PXPPTDelegate-Protocol.h>
+
+@protocol PXNotificationSuppressionContextManager;
+
+@interface UIApplication (PhotosUICore) <PXPPTDelegate>
+
+@property (readonly, nonatomic) id<PXNotificationSuppressionContextManager> notificationSuppressionContextManager;
+
+- (void)_px_navigateToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)failedTest:(id)arg1 withFailureFormat:(id)arg2;
 - (void)px_navigateToMomentsViewRevealingAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)px_navigateToMomentsViewRevealingAssetWithUUID:(id)arg1 openOneUp:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)px_navigateToOneUpShowingAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

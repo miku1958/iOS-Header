@@ -10,6 +10,7 @@
 
 @interface HDDemoDataPerson : NSObject
 {
+    BOOL _createHighFidelityData;
     BOOL _sexualActivityIsTryingToConceive;
     BOOL _useContinuousGlucoseMonitoring;
     NSString *_firstName;
@@ -156,6 +157,7 @@
 @property (nonatomic) double bodyTempSampleNoiseStdDev; // @synthesize bodyTempSampleNoiseStdDev=_bodyTempSampleNoiseStdDev;
 @property (nonatomic) double breakfastTime; // @synthesize breakfastTime=_breakfastTime;
 @property (nonatomic) double continuousGlucoseMonitoringSampleFrequency; // @synthesize continuousGlucoseMonitoringSampleFrequency=_continuousGlucoseMonitoringSampleFrequency;
+@property (nonatomic) BOOL createHighFidelityData; // @synthesize createHighFidelityData=_createHighFidelityData;
 @property (nonatomic) double dawnTime; // @synthesize dawnTime=_dawnTime;
 @property (nonatomic) double dinnerTime; // @synthesize dinnerTime=_dinnerTime;
 @property (nonatomic) double exerciseCooldownTime; // @synthesize exerciseCooldownTime=_exerciseCooldownTime;

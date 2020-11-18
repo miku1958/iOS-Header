@@ -18,6 +18,7 @@
         BOOL respondsToWillUpdateBarAppearanceOnViewWillAppear;
         BOOL respondsToIsStatusBarVisible;
     } _implementationDelegateFlags;
+    long long _transitionsCounter;
     BOOL _prefersStatusBarVisible;
     BOOL _prefersNavigationBarVisible;
     BOOL _prefersToolbarVisible;
@@ -48,6 +49,7 @@
 @property (readonly, weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
+- (void)_performBarsTransition:(CDUnknownBlockType)arg1;
 - (void)_setNavigationBarVisible:(BOOL)arg1 withAnimationOptions:(id)arg2;
 - (void)_setTabBarVisible:(BOOL)arg1 withAnimationOptions:(id)arg2;
 - (void)_setToolbarVisible:(BOOL)arg1 withAnimationOptions:(id)arg2;

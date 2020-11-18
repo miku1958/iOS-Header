@@ -16,6 +16,7 @@
 - (struct UIEdgeInsets)contentMargin;
 - (UIScreen *)defaultScreen;
 - (double)horizontalImageContentSpacing;
+- (double)minimumImageGapWidth;
 - (UIView<UIInterfaceActionVisualBackgroundDisplaying> *)newActionBackgroundViewForViewState:(UIInterfaceActionViewState *)arg1;
 - (UIView<UIInterfaceActionVisualGroupBackgroundDisplaying> *)newGroupBackgroundViewWithGroupViewState:(UIInterfaceActionGroupViewState *)arg1;
 - (double)verticalImageContentSpacing;

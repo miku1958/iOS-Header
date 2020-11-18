@@ -14,11 +14,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsFolder;
+- (BOOL)_accessibilitySubviewIsVisible:(id)arg1;
 - (id)_axAttrTitle;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityDropPointDescriptors;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 
 @end

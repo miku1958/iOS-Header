@@ -13,13 +13,17 @@
 }
 
 @property (readonly, nonatomic) NSURL *URL;
+@property (readonly, nonatomic) NSURL *URLForPendingFileCopy;
 @property (readonly, nonatomic) NSString *UUID;
 @property (readonly, nonatomic) NSString *fileFormat;
 @property (readonly, nonatomic) NSString *fileName;
 @property (readonly, nonatomic) NSNumber *fileSize;
 @property (readonly, nonatomic) BOOL isBinary;
+@property (readonly, nonatomic) NSString *localRelativePath;
 @property (readonly, nonatomic) NSURL *localURL;
 
++ (id)_copyFileAtURLToTemporaryDirectory:(id)arg1;
++ (id)createTempDestinationURLWithExtension:(id)arg1;
 + (Class)frozenClass;
 - (id)XPropertiesData;
 - (long long)compareFileNames:(id)arg1;
@@ -27,15 +31,16 @@
 - (id)description;
 - (id)externalId;
 - (id)fileNameRaw;
-- (id)fileSizeRaw;
+- (id)initWithFilepath:(id)arg1;
 - (id)semanticIdentifier;
 - (void)setExternalId:(id)arg1;
 - (void)setFileFormat:(id)arg1;
 - (void)setFileNameRaw:(id)arg1;
-- (void)setFileSizeRaw:(id)arg1;
+- (void)setFileSize:(id)arg1;
 - (void)setIsBinary:(BOOL)arg1;
-- (void)setLocalURL:(id)arg1;
+- (void)setLocalRelativePath:(id)arg1;
 - (void)setURL:(id)arg1;
+- (void)setURLForPendingFileCopy:(id)arg1;
 - (void)setXPropertiesData:(id)arg1;
 
 @end

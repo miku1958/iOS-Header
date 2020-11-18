@@ -14,7 +14,7 @@
     AVPlayerItemVideoOutputInternal *_videoOutputInternal;
 }
 
-@property (readonly, nonatomic) id<AVPlayerItemOutputPullDelegate> delegate;
+@property (readonly, weak) id<AVPlayerItemOutputPullDelegate> delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue;
 
 - (BOOL)_attachToPlayerItem:(id)arg1;
@@ -34,7 +34,6 @@
 - (struct __CVBuffer *)copyPixelBufferForItemTime:(CDStruct_1b6d18a9)arg1 remove:(BOOL)arg2 itemTimeForDisplay:(CDStruct_1b6d18a9 *)arg3;
 - (void)dealloc;
 - (CDStruct_1b6d18a9)earliestAvailablePixelBufferItemTime;
-- (void)finalize;
 - (BOOL)hasNewPixelBufferForItemTime:(CDStruct_1b6d18a9)arg1;
 - (id)init;
 - (id)initWithOutputSettings:(id)arg1;

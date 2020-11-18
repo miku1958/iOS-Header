@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TelephonyUI/TPSimpleNumberPadButton.h>
+#import <TelephonyUI/TPNumberPadDynamicButton.h>
 
-@interface TPSetPINKeyPadButton : TPSimpleNumberPadButton
+__attribute__((visibility("hidden")))
+@interface TPSetPINKeyPadButton : TPNumberPadDynamicButton
 {
 }
 

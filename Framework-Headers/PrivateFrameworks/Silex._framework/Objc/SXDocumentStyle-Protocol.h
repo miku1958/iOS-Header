@@ -4,16 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/NSObject-Protocol.h>
+#import <Silex/SXConditionalObject-Protocol.h>
+#import <Silex/SXDocumentStyleProperties-Protocol.h>
 
-@class SXFill, SXJSONLinearGradient, UIColor;
-
-@protocol SXDocumentStyle <NSObject>
-
-@property (readonly, nonatomic) UIColor *backgroundColor;
-@property (readonly, nonatomic) SXFill *fill;
-@property (readonly, nonatomic) UIColor *topBackgroundColor;
-@property (readonly, nonatomic) SXJSONLinearGradient *topBackgroundGradient;
-
+@protocol SXDocumentStyle <SXDocumentStyleProperties, SXConditionalObject>
 @end
 

@@ -8,6 +8,7 @@
 
 @protocol SKUIScrollingTabBarContentCollectionViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUIScrollingTabBarContentCollectionView : SKUIViewControllerContainerCollectionView
 {
     BOOL _performingLayout;

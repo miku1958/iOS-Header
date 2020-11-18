@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (id)descriptionForItem:(id)arg1 context:(id)arg2;
 - (id)descriptionForJobID:(id)arg1 context:(id)arg2;
 - (void)finishedSyncingUpItem:(id)arg1 withOutOfQuotaError:(id)arg2;
+- (void)forceScheduleQuotaFetchForOwner:(id)arg1;
 - (BOOL)hasItemsOverQuotaForOwner:(id)arg1;
 - (BOOL)hasItemsOverQuotaInZone:(id)arg1;
 - (id)initWithAccountSession:(id)arg1;

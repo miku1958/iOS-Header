@@ -56,6 +56,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_reloadStickersAtIndexes:(id)arg1;
 - (void)_startAnimating;
 - (id)_stickerAtIndexPath:(id)arg1;
 - (void)_stopAnimating;

@@ -19,8 +19,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL peerSupportsAdjustmentBaseResources;
+@property (readonly, nonatomic) BOOL peerSupportsTranscodeChoice;
+@property (readonly, nonatomic) BOOL penultimateIsPublic;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsTranscodeChoice;
 
 - (void).cxx_destruct;
 - (id)conversionResultForAsset:(id)arg1 isVideo:(BOOL)arg2 isRender:(BOOL)arg3 forceLegacyConversion:(BOOL)arg4;

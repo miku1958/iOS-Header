@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
-- (void)eventDidOccur;
+- (void)eventDidOccur:(CDUnknownBlockType)arg1;
 - (id)initWithDelay:(double)arg1 queue:(id)arg2 logger:(id)arg3;
 - (void)registerEventForCoalescingWithLabel:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

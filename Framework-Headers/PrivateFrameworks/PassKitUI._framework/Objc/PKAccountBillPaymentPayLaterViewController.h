@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKAccountServicePerformActionViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <PassKitUI/PKAccountBillPaymentControllerDelegate-Protocol.h>
 #import <PassKitUI/PKAccountBillPaymentPayInterestDescriptionViewDelegate-Protocol.h>
@@ -12,11 +12,14 @@
 #import <PassKitUI/UIPickerViewDataSource-Protocol.h>
 #import <PassKitUI/UIPickerViewDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSCalendar, NSDate, NSDateFormatter, NSDecimalNumber, NSString, PKAccountBillPaymentController, PKAccountBillPaymentPayInterestDescriptionView, PKAddBankAccountInformationViewController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, UILabel, UIPickerView;
+@class CLInUseAssertion, NSCalendar, NSDate, NSDateFormatter, NSDecimalNumber, NSString, PKAccount, PKAccountBillPaymentController, PKAccountBillPaymentPayInterestDescriptionView, PKAddBankAccountInformationViewController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKPaymentPass, UILabel, UIPickerView;
+@protocol PKAccountBillPaymentObserver;
 
-@interface PKAccountBillPaymentPayLaterViewController : PKAccountServicePerformActionViewController <UIPickerViewDelegate, UIPickerViewDataSource, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKAccountBillPaymentPayInterestDescriptionViewDelegate>
+@interface PKAccountBillPaymentPayLaterViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKAccountBillPaymentPayInterestDescriptionViewDelegate>
 {
     CLInUseAssertion *_CLInUse;
+    PKAccount *_account;
+    PKPaymentPass *_pass;
     PKAccountBillPaymentController *_billPaymentCoordinator;
     PKBillPaymentSuggestedAmountList *_suggestionList;
     unsigned long long _screenType;
@@ -40,14 +43,17 @@
     PKCompoundInterestCalculator *_interestCalculator;
     PKAccountBillPaymentPayInterestDescriptionView *_interestDescriptionView;
     PKAddBankAccountInformationViewController *_addBankAccountViewController;
+    id<PKAccountBillPaymentObserver> _observer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<PKAccountBillPaymentObserver> observer; // @synthesize observer=_observer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_accountDidChange:(id)arg1;
 - (id)_addBankAccountInformationViewController;
 - (id)_dateForRow:(long long)arg1;
 - (id)_dateStringForRow:(long long)arg1 formatter:(id)arg2;
@@ -68,6 +74,7 @@
 - (void)addBankAccountInformationViewControllerDidFinish:(id)arg1;
 - (void)bankAccountInformationViewControllerChangedBankAccountInformation:(id)arg1;
 - (void)billPaymentPayInterestDescriptionViewHasTappedLearnMore:(id)arg1;
+- (void)dealloc;
 - (id)initWithAccount:(id)arg1 billPaymentController:(id)arg2 paymentPass:(id)arg3 suggestionList:(id)arg4 selectedAmount:(id)arg5;
 - (void)loadView;
 - (long long)numberOfComponentsInPickerView:(id)arg1;

@@ -20,12 +20,14 @@
 @property (strong, nonatomic) NSString *constraintsPath; // @dynamic constraintsPath;
 @property (strong, nonatomic) NoteStoreObject *defaultStore; // @dynamic defaultStore;
 @property (nonatomic) BOOL didChooseToMigrate; // @dynamic didChooseToMigrate;
+@property (readonly, nonatomic) BOOL isICloudIMAPAccount;
 @property (strong, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) NSString *pathToConstraintsPlist;
 @property (readonly, nonatomic) BOOL preventMovingNotesToOtherAccounts;
 @property (strong, nonatomic) NSSet *stores; // @dynamic stores;
 @property (strong, nonatomic) NSNumber *type; // @dynamic type;
 
++ (BOOL)shouldDataAccessCreateAccountForACAccount:(id)arg1;
 - (void).cxx_destruct;
 - (id)basicAccountIdentifier;
 - (id)collectionInfo;

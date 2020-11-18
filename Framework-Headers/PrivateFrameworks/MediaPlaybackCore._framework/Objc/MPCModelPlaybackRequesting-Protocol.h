@@ -16,6 +16,5 @@
 @optional
 - (void)setAllowsPlaybackResponseBatching:(BOOL)arg1;
 - (void)setPlaybackPrioritizedIndexPaths:(NSArray *)arg1;
-- (void)setShouldExcludeNonShuffleItems:(BOOL)arg1;
 @end
 

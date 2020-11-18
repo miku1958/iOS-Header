@@ -28,6 +28,9 @@
     CKOperationGroup *_group;
     CKOperationConfiguration *_perOpConfiguration;
     id _parentOperation;
+    unsigned long long _duetPreClearedMode;
+    unsigned long long _discretionaryWhenBackgroundedState;
+    unsigned long long _systemScheduler;
 }
 
 @property (strong, nonatomic) CKOperationMMCSRequestOptions *MMCSRequestOptions; // @synthesize MMCSRequestOptions=_MMCSRequestOptions;
@@ -39,7 +42,10 @@
 @property (nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (readonly, nonatomic) unsigned long long discretionaryNetworkBehavior;
+@property (nonatomic) unsigned long long discretionaryWhenBackgroundedState; // @synthesize discretionaryWhenBackgroundedState=_discretionaryWhenBackgroundedState;
+@property (nonatomic) unsigned long long duetPreClearedMode; // @synthesize duetPreClearedMode=_duetPreClearedMode;
 @property (strong, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
+@property (readonly, nonatomic) BOOL isCloudKitSupportOperation;
 @property (nonatomic) BOOL isLongLived; // @synthesize isLongLived=_isLongLived;
 @property (nonatomic) BOOL isOutstandingOperation; // @synthesize isOutstandingOperation=_isOutstandingOperation;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
@@ -55,6 +61,7 @@
 @property (readonly, nonatomic) BOOL shouldSkipZonePCSUpdate;
 @property (readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
+@property (nonatomic) unsigned long long systemScheduler; // @synthesize systemScheduler=_systemScheduler;
 @property (readonly, nonatomic) double timeoutIntervalForRequest;
 @property (readonly, nonatomic) double timeoutIntervalForResource;
 @property (nonatomic) BOOL wantsRequestStatistics; // @synthesize wantsRequestStatistics=_wantsRequestStatistics;

@@ -11,7 +11,6 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (void)initialize;
 + (id)stringWithCapacity:(unsigned long long)arg1;
 - (void)_cfAppendCString:(const char *)arg1 length:(long long)arg2;
 - (void)_cfCapitalize:(const void *)arg1;

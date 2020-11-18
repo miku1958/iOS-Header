@@ -40,7 +40,6 @@
 + (id)_workoutTintColor;
 + (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (BOOL)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
-+ (Class)richComplicationDisplayViewClassForType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void).cxx_destruct;
 - (id)_animationImages;
 - (BOOL)_hasActiveWorkout;
@@ -66,6 +65,7 @@
 - (id)lockedTemplate;
 - (void)pause;
 - (void)resume;
+- (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 
 @end
 

@@ -17,6 +17,7 @@
 + (void)requestImageFromPeopleAlbumForPerson:(id)arg1 targetSize:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)requestMeContactWithCompletion:(CDUnknownBlockType)arg1;
 + (void)requestPersonImageWithTargetSize:(struct CGSize)arg1 matchingEmail:(id)arg2 orPhone:(id)arg3 withFirstName:(id)arg4 lastName:(id)arg5 prefersPhotosImage:(BOOL)arg6 withCompletion:(CDUnknownBlockType)arg7;
++ (id)sharedWorkQueue;
 + (id)textForDate:(id)arg1;
 
 @end

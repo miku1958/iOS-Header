@@ -42,7 +42,7 @@
 @property (readonly, nonatomic) BOOL isAtEnd;
 @property (nonatomic) struct CGSize noCaptionSpacing; // @synthesize noCaptionSpacing=_noCaptionSpacing;
 @property (nonatomic) long long numberOfMagneticGuidelines; // @synthesize numberOfMagneticGuidelines=_numberOfMagneticGuidelines;
-@property (nonatomic) CDUnknownBlockType parsedFrameBlock; // @synthesize parsedFrameBlock=_parsedFrameBlock;
+@property (copy, nonatomic) CDUnknownBlockType parsedFrameBlock; // @synthesize parsedFrameBlock=_parsedFrameBlock;
 @property (nonatomic) double roundingScale; // @synthesize roundingScale=_roundingScale;
 @property (nonatomic) long long scanLocation; // @synthesize scanLocation=_scanLocation;
 @property (nonatomic) long long scanSpecialSequenceCount; // @synthesize scanSpecialSequenceCount=_scanSpecialSequenceCount;

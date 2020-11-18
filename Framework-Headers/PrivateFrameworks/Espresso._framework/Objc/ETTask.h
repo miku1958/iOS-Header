@@ -10,6 +10,7 @@
 
 @interface ETTask : NSObject
 {
+    shared_ptr_d082c67d network;
     BOOL _dumpData;
     ETModelDef *_model;
     ETOptimizerDef *_optimizer;
@@ -21,14 +22,24 @@
 @property (strong, nonatomic) ETModelDef *model; // @synthesize model=_model;
 @property (strong, nonatomic) ETOptimizerDef *optimizer; // @synthesize optimizer=_optimizer;
 
+- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)evaluate:(id)arg1;
+- (BOOL)fit:(id)arg1 numberOfBatches:(unsigned int)arg2 outputNames:(id)arg3 batchCallback:(CDUnknownBlockType)arg4;
 - (float)fit:(id)arg1 numberOfBatches:(unsigned int)arg2 withProgress:(CDUnknownBlockType)arg3;
+- (BOOL)fit:(id)arg1 numberOfEpochs:(int)arg2 outputNames:(id)arg3 batchCallback:(CDUnknownBlockType)arg4;
 - (float)fit:(id)arg1 numberOfEpochs:(int)arg2 withProgress:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 extractor:(id)arg3;
 - (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 extractor:(id)arg3 needWeightsInitialization:(BOOL)arg4;
+- (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 lossConfig:(id)arg3;
+- (id)initWithModelDef:(id)arg1 optimizerDef:(id)arg2 lossConfig:(id)arg3 extractor:(id)arg4;
+- (BOOL)moveToGPU:(int)arg1 error:(id *)arg2;
+- (vector_ebb6ef3e)reinitializeVariables;
+- (BOOL)runBatches:(id)arg1 numberOfBatches:(unsigned int)arg2 outputNames:(id)arg3 batchCallback:(CDUnknownBlockType)arg4;
+- (BOOL)runInference:(id)arg1 outputNames:(id)arg2 batchCallback:(CDUnknownBlockType)arg3;
 - (void)saveNetwork:(id)arg1;
+- (void)saveNetwork:(id)arg1 revertToInferenceMode:(BOOL)arg2;
 
 @end
 

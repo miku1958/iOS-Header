@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray;
+#import <FrontBoardServices/BSServiceDispatchingQueue-Protocol.h>
+
+@class NSArray, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface FBSSerialQueue : NSObject
+@interface FBSSerialQueue : NSObject <BSServiceDispatchingQueue>
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableArray *_blocks;
@@ -18,10 +20,15 @@
     NSObject<OS_dispatch_queue> *_targetQueue;
     NSArray *_mainRunLoopModes;
     struct __CFRunLoopSource *_runLoopSource;
-    BOOL _runLoopSourceHandlingBlock;
+    BOOL _callingOut;
     NSObject<OS_dispatch_semaphore> *_synchronizingEnqueueSemaphore;
     unsigned long long _lastSynchronizingWorkspaceName;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)queueWithDispatchQueue:(id)arg1;
 + (id)queueWithMainRunLoopModes:(id)arg1;
@@ -31,15 +38,16 @@
 - (BOOL)_performNext;
 - (void)_performNextFromRunLoopSource;
 - (void)_queue_performAsync:(CDUnknownBlockType)arg1;
+- (BOOL)_queue_performNextIfPossible;
 - (void)_setSynchronizingEnqueueSemaphore:(id)arg1 forWorkspaceWithName:(unsigned long long)arg2;
 - (void)assertOnQueue;
+- (id)backingQueueIfExists;
 - (void)dealloc;
-- (id)description;
-- (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (void)performAfter:(double)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)performAsync:(CDUnknownBlockType)arg1;
+- (void)performAsync:(CDUnknownBlockType)arg1 withHandoff:(id)arg2;
 
 @end
 

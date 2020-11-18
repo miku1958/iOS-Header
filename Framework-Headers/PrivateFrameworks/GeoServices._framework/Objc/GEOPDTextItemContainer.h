@@ -8,25 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDTextItemDisplayConfig, NSMutableArray, PBUnknownFields;
+@class GEOPDTextItemDisplayConfig, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTextItemContainer : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDTextItemDisplayConfig *_displayConf;
     NSMutableArray *_textItems;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_displayConf:1;
+        unsigned int read_textItems:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_displayConf:1;
+        unsigned int wrote_textItems:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDTextItemDisplayConfig *displayConf; // @synthesize displayConf=_displayConf;
+@property (strong, nonatomic) GEOPDTextItemDisplayConfig *displayConf;
 @property (readonly, nonatomic) BOOL hasDisplayConf;
-@property (strong, nonatomic) NSMutableArray *textItems; // @synthesize textItems=_textItems;
+@property (strong, nonatomic) NSMutableArray *textItems;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)textItemType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsTextItem:(id)arg1;
+- (void)_readDisplayConf;
+- (void)_readTextItems;
 - (void)addTextItem:(id)arg1;
 - (void)clearTextItems;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)textItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)textItemsCount;

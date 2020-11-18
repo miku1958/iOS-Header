@@ -6,20 +6,23 @@
 
 #import <RelevanceEngine/REPredictor.h>
 
+#import <RelevanceEngine/RECompanionAppUsagePredictorProperties-Protocol.h>
+
 @class NSDictionary;
 
-@interface RECompanionAppUsagePredictor : REPredictor
+@interface RECompanionAppUsagePredictor : REPredictor <RECompanionAppUsagePredictorProperties>
 {
     NSDictionary *_predictions;
 }
 
+@property (readonly, nonatomic) NSDictionary *predictions;
+
 + (double)updateInterval;
 - (void).cxx_destruct;
+- (id)_init;
 - (void)_loadStoreIfNeeded;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
-- (id)init;
 - (void)update;
 
 @end

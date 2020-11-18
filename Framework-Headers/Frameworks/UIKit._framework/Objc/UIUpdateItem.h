@@ -13,11 +13,9 @@ __attribute__((visibility("hidden")))
 {
     UICollectionViewUpdateItem *_collectionViewUpdateItem;
     BOOL _headerFooterOnly;
-    BOOL _skipAnimation;
     int _action;
     NSIndexPath *_indexPath;
     long long _animation;
-    double _offset;
     UITableViewUpdateGap *_gap;
 }
 
@@ -27,8 +25,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UITableViewUpdateGap *gap; // @synthesize gap=_gap;
 @property (nonatomic) BOOL headerFooterOnly; // @synthesize headerFooterOnly=_headerFooterOnly;
 @property (readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
-@property (nonatomic) double offset; // @synthesize offset=_offset;
-@property (nonatomic) BOOL skipAnimation; // @synthesize skipAnimation=_skipAnimation;
+@property (readonly, nonatomic) BOOL isDecomposedFromReload;
 
 - (void).cxx_destruct;
 - (id)_actionDescription;

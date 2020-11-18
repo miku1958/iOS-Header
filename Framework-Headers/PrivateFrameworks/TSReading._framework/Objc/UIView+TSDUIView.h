@@ -13,5 +13,14 @@
 @property (nonatomic) double tsdAlpha;
 @property (copy, nonatomic) UIColor *tsdBackgroundColor;
 
+- (id)childAtPoint:(struct CGPoint)arg1;
+- (void)p_translateToView:(id)arg1 above:(BOOL)arg2 siblingView:(id)arg3 shouldScale:(BOOL)arg4;
+- (void)translateAndScaleToView:(id)arg1;
+- (void)translateAndScaleToView:(id)arg1 aboveSubview:(id)arg2;
+- (void)translateAndScaleToView:(id)arg1 belowSubview:(id)arg2;
+- (void)translateToView:(id)arg1;
+- (void)translateToView:(id)arg1 aboveSubview:(id)arg2;
+- (void)translateToView:(id)arg1 belowSubview:(id)arg2;
+- (id)ts_windowForView;
 @end
 

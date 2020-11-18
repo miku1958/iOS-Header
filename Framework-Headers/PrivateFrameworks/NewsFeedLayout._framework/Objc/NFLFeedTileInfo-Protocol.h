@@ -17,6 +17,7 @@
 @property (readonly, copy, nonatomic) NSString *groupIdentifier;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL pageable;
+@property (readonly, nonatomic, getter=isSelectable) BOOL selectable;
 @property (readonly, nonatomic) unsigned long long tileInfoType;
 @property (readonly, nonatomic) NSArray *underlyingFeedElements;
 

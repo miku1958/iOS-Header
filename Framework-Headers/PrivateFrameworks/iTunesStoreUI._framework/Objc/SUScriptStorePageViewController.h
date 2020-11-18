@@ -42,6 +42,7 @@
 + (void)initialize;
 + (id)webScriptNameForKeyName:(id)arg1;
 + (id)webScriptNameForSelector:(SEL)arg1;
+- (void).cxx_destruct;
 - (id)_className;
 - (id)_copyURLsFromURLStrings:(id)arg1;
 - (BOOL)_isSegmentedControlValid:(id)arg1;
@@ -51,7 +52,6 @@
 - (id)_storePageViewController;
 - (void)applyURLStrings:(id)arg1 toViewController:(id)arg2;
 - (id)attributeKeys;
-- (void)dealloc;
 - (id)init;
 - (id)initWithURLStrings:(id)arg1;
 - (id)loadWebArchiveWithIdentifier:(id)arg1 fromDirectory:(id)arg2;

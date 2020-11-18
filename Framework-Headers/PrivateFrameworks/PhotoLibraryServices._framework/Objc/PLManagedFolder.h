@@ -8,10 +8,12 @@
 
 #import <PhotoLibraryServices/PLAlbumContainer-Protocol.h>
 #import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
+#import <PhotoLibraryServices/PLDeletableManagedObject-Protocol.h>
+#import <PhotoLibraryServices/PLFileSystemAlbumMetadataPersistence-Protocol.h>
 
 @class NSOrderedSet, NSString;
 
-@interface PLManagedFolder : PLGenericAlbum <PLAlbumContainer, PLCloudDeletable>
+@interface PLManagedFolder : PLGenericAlbum <PLAlbumContainer, PLCloudDeletable, PLFileSystemAlbumMetadataPersistence, PLDeletableManagedObject>
 {
     BOOL _needsPersistenceUpdate;
     BOOL _needsFixedOrderKeysComplianceUpdate;
@@ -39,9 +41,7 @@
 + (id)childKeyForOrdering;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)cloudUUIDKeyForDeletion;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 + (id)localizedRecoveredTitle;
 + (id)validKindsForPersistence;
 - (void)addChildCollections:(id)arg1;
@@ -54,6 +54,7 @@
 - (unsigned long long)assetsCount;
 - (BOOL)canEditAlbums;
 - (BOOL)canEditContainers;
+- (BOOL)canPerformDeleteOperation;
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
 - (id)childKeyForOrdering;
 - (id)containers;
@@ -67,11 +68,12 @@
 - (void)insertChildCollections:(id)arg1 atIndexes:(id)arg2;
 - (void)insertObject:(id)arg1 inChildCollectionsAtIndex:(unsigned long long)arg2;
 - (BOOL)isEmpty;
-- (BOOL)isValidKindForPersistence;
+- (BOOL)isValidForPersistence;
 - (void)moveChildCollectionsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
 - (id)mutableAssets;
 - (BOOL)needsReordering;
-- (void)persistMetadataToFileSystem;
+- (id)payloadForChangedKeys:(id)arg1;
+- (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (unsigned long long)photosCount;
 - (void)preheatAlbumsAtIndexes:(id)arg1 forProperties:(id)arg2 relationships:(id)arg3;
 - (void)preheatAlbumsForProperties:(id)arg1 relationships:(id)arg2;
@@ -81,7 +83,7 @@
 - (void)removeChildCollectionsAtIndexes:(id)arg1;
 - (void)removeChildCollectionsObject:(id)arg1;
 - (void)removeObjectFromChildCollectionsAtIndex:(unsigned long long)arg1;
-- (void)removePersistedFileSystemData;
+- (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (void)replaceChildCollectionsAtIndexes:(id)arg1 withChildCollections:(id)arg2;
 - (void)replaceObjectInChildCollectionsAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)setNeedsReordering;

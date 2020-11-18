@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) NSArray *visits; // @synthesize visits=_visits;
 
 + (id)geoMapItemSourceToString:(long long)arg1;
++ (BOOL)locationOfInterestTypeIsValid:(long long)arg1;
 + (id)locationOfInterestTypeSourceToString:(long long)arg1;
 + (id)locationOfInterestTypeToString:(long long)arg1;
 + (BOOL)supportsSecureCoding;

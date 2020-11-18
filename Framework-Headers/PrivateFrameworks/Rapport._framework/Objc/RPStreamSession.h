@@ -39,6 +39,7 @@
     CDUnknownBlockType _receivedRequestHandler;
     NSString *_streamID;
     NSData *_streamKey;
+    NSString *_trafficSessionID;
     NSString *_destinationString;
     NSData *_pskData;
     CDUnknownBlockType _streamAcceptHandler;
@@ -62,6 +63,7 @@
 @property (nonatomic) int streamSocket; // @synthesize streamSocket=_streamSocket;
 @property (nonatomic) int streamType; // @synthesize streamType=_streamType;
 @property (nonatomic) unsigned int trafficFlags; // @synthesize trafficFlags=_trafficFlags;
+@property (copy, nonatomic) NSString *trafficSessionID; // @synthesize trafficSessionID=_trafficSessionID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

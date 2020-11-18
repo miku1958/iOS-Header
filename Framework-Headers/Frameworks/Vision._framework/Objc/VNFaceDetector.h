@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 + (void)fullyPopulateConfigurationOptions:(id)arg1;
++ (void)printDebugInfo:(id)arg1 facesDataRaw:(vector_41a7cb1a *)arg2 faceDetectorBGRAImage:(struct __CVBuffer *)arg3 tempImage:(struct vImage_Buffer)arg4;
 + (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 + (BOOL)shouldDumpDebugIntermediates;
 - (void)purgeIntermediates;

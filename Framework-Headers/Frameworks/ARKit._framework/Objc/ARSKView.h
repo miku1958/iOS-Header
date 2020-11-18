@@ -7,11 +7,12 @@
 #import <SpriteKit/SKView.h>
 
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
+#import <ARKit/ARSessionProviding-Protocol.h>
 
 @class ARSession, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol ARSKViewDelegate;
 
-@interface ARSKView : SKView <ARInternalSessionObserver>
+@interface ARSKView : SKView <ARInternalSessionObserver, ARSessionProviding>
 {
     ARSession *_session;
     NSMutableDictionary *_nodesByAnchorIdentifier;
@@ -34,7 +35,6 @@
 - (id)anchorForNode:(id)arg1;
 - (void)commonInit;
 - (void)dealloc;
-- (void)deviceOrientationDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

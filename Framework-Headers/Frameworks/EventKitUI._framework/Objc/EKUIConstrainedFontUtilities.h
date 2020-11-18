@@ -18,6 +18,7 @@
 + (id)constrainedFontForTextStyle:(id)arg1 minimumContentSizeCategory:(id)arg2;
 + (id)constrainedFontForTextStyle:(id)arg1 minimumContentSizeCategory:(id)arg2 maximumContentSizeCategory:(id)arg3;
 + (void)initialize;
++ (long long)tableViewCellCappedSymbolImageScaleWithScale:(long long)arg1 traitCollection:(id)arg2;
 
 @end
 

@@ -25,6 +25,8 @@
     NSDictionary *_standardRingStates;
     NSDictionary *_colorStops;
     NSDecimalNumber *_displayAmount;
+    NSDecimalNumber *_overrideDisplayAmount;
+    NSDecimalNumber *_effectiveDisplayAmount;
     BOOL _selectedSuggestedAmountIsTarget;
     PKBillPaymentSuggestedAmount *_selectedSuggestedAmount;
     PKBillPaymentSuggestedAmount *_highlightedSuggestedAmount;
@@ -61,6 +63,7 @@
     UILabel *_interestLabel;
     PKCurvedTextLabel *_topCurvedTextLabel;
     PKCurvedTextLabel *_bottomCurvedTextLabel;
+    BOOL _enabled;
     BOOL _isSmall;
     id<PKBillPaymentRingViewDelegate> _delegate;
     id<PKBillPaymentRingViewDataSource> _dataSource;
@@ -73,6 +76,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PKBillPaymentRingViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isSmall; // @synthesize isSmall=_isSmall;
 @property (readonly, nonatomic) double ringWidth;
@@ -99,7 +103,6 @@
 - (void)_dragRecognizerChanged:(id)arg1;
 - (void)_dragStarted:(id)arg1;
 - (id)_gradientStateForSuggestedAmount:(id)arg1;
-- (struct CGRect)_insetBounds;
 - (BOOL)_isAmount:(id)arg1 withinRoundingUnitOfAmount:(id)arg2;
 - (double)_offsetAngle:(double)arg1;
 - (double)_offsetCurrentAngle;
@@ -119,6 +122,9 @@
 - (void)_tapRecognized:(id)arg1;
 - (id)_targetGradientStateForAngle:(double)arg1;
 - (unsigned long long)_unnormalizedAngleIndexForAngle:(double)arg1;
+- (void)_updateCurvedText;
+- (BOOL)_updateEffectiveDisplayAmount;
+- (void)_updateForEnabledState;
 - (void)_updateHandleImage;
 - (void)_updateInterestText;
 - (void)_updatePausedState;
@@ -138,12 +144,10 @@
 - (void)layoutSubviews;
 - (void)prepareForInitialDisplayWithAmount:(id)arg1;
 - (void)renderLoop:(id)arg1 drawAtTime:(double)arg2;
-- (struct CGSize)ringSizeWhenIsSmall:(BOOL)arg1;
 - (void)setAmount:(id)arg1 animated:(BOOL)arg2;
 - (void)setAngle:(double)arg1 animated:(BOOL)arg2 forExplicitAmount:(id)arg3 userInitiated:(BOOL)arg4;
 - (void)setHandleScale:(double)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)smallRingSize;
 
 @end
 

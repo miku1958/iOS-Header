@@ -6,11 +6,19 @@
 
 #import <Foundation/NSError.h>
 
-@class NSString;
+@class NSDate, NSDictionary, NSString;
 
 @interface NSError (CPSafeDescription)
 
 @property (readonly, nonatomic) NSString *CPSafeDescription;
+@property (readonly, nonatomic, getter=isFromRequest) BOOL fromRequest;
+@property (readonly, nonatomic) NSString *idsIdentifier;
+@property (readonly, nonatomic) unsigned short messageID;
+@property (readonly, nonatomic) NSDate *messageSent;
+@property (readonly, nonatomic) NSDictionary *persistentUserInfo;
 
++ (id)errorFromSYErrorInfo:(id)arg1;
++ (id)errorWithSYError:(long long)arg1 userInfo:(id)arg2;
+- (id)initWithSYError:(long long)arg1 userInfo:(id)arg2;
 @end
 

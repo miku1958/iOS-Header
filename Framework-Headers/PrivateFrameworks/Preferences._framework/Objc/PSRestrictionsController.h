@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <SettingsFoundation/SFRestrictionsController.h>
 
-@interface PSRestrictionsController : NSObject
+@interface PSRestrictionsController : SFRestrictionsController
 {
 }
-
-+ (id)TCCServices;
-+ (void)resetRestrictions;
-+ (void)resetRestrictionsPassword;
-+ (id)restrictionSpecifiers;
-+ (void)setSpringBoardCapability:(id)arg1 enabled:(BOOL)arg2;
 
 @end
 

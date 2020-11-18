@@ -4,6 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CalendarDaemon/CADAccessInterface-Protocol.h>
 #import <CalendarDaemon/CADAlarmEngineInterface-Protocol.h>
 #import <CalendarDaemon/CADCalendarInterface-Protocol.h>
 #import <CalendarDaemon/CADCalendarItemInterface-Protocol.h>
@@ -12,6 +13,7 @@
 #import <CalendarDaemon/CADEventInterface-Protocol.h>
 #import <CalendarDaemon/CADInternalInterface-Protocol.h>
 #import <CalendarDaemon/CADMigrationInterface-Protocol.h>
+#import <CalendarDaemon/CADNotificationCountInterface-Protocol.h>
 #import <CalendarDaemon/CADNotificationMonitorInterface-Protocol.h>
 #import <CalendarDaemon/CADObjectInterface-Protocol.h>
 #import <CalendarDaemon/CADReminderInterface-Protocol.h>
@@ -20,6 +22,6 @@
 #import <CalendarDaemon/CADSyncInterface-Protocol.h>
 #import <CalendarDaemon/CADTestingInterface-Protocol.h>
 
-@protocol CADInterface <CADDatabaseInterface, CADObjectInterface, CADSourceInterface, CADCalendarInterface, CADCalendarItemInterface, CADEventInterface, CADReminderInterface, CADAlarmEngineInterface, CADNotificationMonitorInterface, CADSpotlightInterface, CADInternalInterface, CADTestingInterface, CADMigrationInterface, CADSyncInterface, CADCalendarToolInterface>
+@protocol CADInterface <CADAccessInterface, CADDatabaseInterface, CADObjectInterface, CADSourceInterface, CADCalendarInterface, CADCalendarItemInterface, CADEventInterface, CADReminderInterface, CADAlarmEngineInterface, CADNotificationMonitorInterface, CADSpotlightInterface, CADInternalInterface, CADTestingInterface, CADMigrationInterface, CADSyncInterface, CADCalendarToolInterface, CADNotificationCountInterface>
 @end
 

@@ -21,6 +21,7 @@
     UISelectionFeedbackGenerator *_feedbackRetargetBehavior;
     BOOL _reversesActions;
     NSArray *_actions;
+    unsigned long long _systemInteractionStartIndex;
     UILongPressGestureRecognizer *_gestureRecognizer;
     long long _imagePosition;
     id<SBUIActionPlatterViewControllerDelegate> _delegate;
@@ -35,6 +36,7 @@
 @property (nonatomic) long long imagePosition; // @synthesize imagePosition=_imagePosition;
 @property (nonatomic) BOOL reversesActions; // @synthesize reversesActions=_reversesActions;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long systemInteractionStartIndex; // @synthesize systemInteractionStartIndex=_systemInteractionStartIndex;
 
 - (void).cxx_destruct;
 - (void)_handleLongPressGestureRecognizer:(id)arg1;

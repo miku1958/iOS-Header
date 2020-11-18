@@ -7,6 +7,9 @@
 #import <Foundation/NSInvocation.h>
 
 @interface NSInvocation (NSInvocationDebugDescription)
+- (BOOL)_hasBlockArgument;
 - (id)debugDescription;
+- (void)setUserInfo:(id)arg1;
+- (id)userInfo;
 @end
 

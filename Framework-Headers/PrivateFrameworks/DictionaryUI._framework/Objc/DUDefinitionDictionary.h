@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class ASAsset, NSString;
+@class MAAsset, NSString;
 
 @interface DUDefinitionDictionary : NSObject
 {
     struct __DCSDictionary *_dictionary;
-    ASAsset *_assetToUpgrade;
+    MAAsset *_assetToUpgrade;
     BOOL _activated;
     BOOL _isAppleDictionary;
     BOOL _isTTYDictionary;
     float _progress;
-    ASAsset *_rawAsset;
+    MAAsset *_rawAsset;
     NSString *_definitionLanguage;
 }
 
@@ -30,12 +30,14 @@
 @property (readonly) NSString *localizedSortName;
 @property (readonly) BOOL needsDownloadNewerVersion;
 @property float progress; // @synthesize progress=_progress;
-@property (readonly) ASAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
+@property (readonly) MAAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
 
 + (id)displayNameForLanguageIdentifier:(id)arg1 forSorting:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_definitionValueForTerm:(id)arg1;
 - (BOOL)_hasDefinitionForTerm:(id)arg1;
+- (BOOL)assetIsDeletable;
+- (BOOL)assetIsLocal;
 - (void)dealloc;
 - (id)description;
 - (id)initWithAsset:(id)arg1;

@@ -17,6 +17,7 @@
 @property (nonatomic) int configuredLookbackTimeInDays;
 @property (strong, nonatomic) _CPDeviceContext *context;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) int totalEngagements;
 @property (nonatomic) int totalUsagesInCollectionPeriod;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

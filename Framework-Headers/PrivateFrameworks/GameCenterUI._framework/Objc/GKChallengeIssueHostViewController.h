@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKUIRemoteViewController.h>
+#import <GameCenterUI/GKExtensionRemoteViewController.h>
 
 #import <GameCenterUI/GKChallengeIssueHostProtocol-Protocol.h>
 
 @class GKGame, GKHostedChallengeIssueController, NSString;
 
-@interface GKChallengeIssueHostViewController : GKUIRemoteViewController <GKChallengeIssueHostProtocol>
+@interface GKChallengeIssueHostViewController : GKExtensionRemoteViewController <GKChallengeIssueHostProtocol>
 {
     GKHostedChallengeIssueController *_delegateWeak;
 }

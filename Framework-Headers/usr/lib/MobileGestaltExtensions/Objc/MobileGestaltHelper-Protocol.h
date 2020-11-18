@@ -10,5 +10,6 @@
 - (void)getAppleTVMode:(void (^)(NSDictionary *))arg1;
 - (void)getServerAnswerForQuestion:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)getSpringboardRegionOverride:(NSString *)arg1 reply:(void (^)(NSNumber *))arg2;
+- (void)rebuildCache:(void (^)(BOOL))arg1;
 @end
 

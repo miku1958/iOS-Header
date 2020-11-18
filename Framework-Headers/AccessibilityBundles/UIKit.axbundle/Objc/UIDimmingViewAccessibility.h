@@ -16,13 +16,13 @@
 - (BOOL)_accessibilityCoversScreen;
 - (id)_accessibilityObscuredScreenAllowedViews;
 - (BOOL)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint;
+- (long long)accessibilityContainerType;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
-- (unsigned long long)accessibilityTraits;
 - (BOOL)accessibilityViewIsModal;
-- (void)mouseUp:(struct __GSEvent *)arg1;
 
 @end
 

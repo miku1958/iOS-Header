@@ -21,12 +21,14 @@
     NSMutableSet *_changePausingTokens;
 }
 
+@property (readonly, nonatomic, getter=areChangesPaused) BOOL changesPaused;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_notifyPausedStateChange;
 - (id)beginPausingChangesWithTimeout:(double)arg1;
 - (void)dealloc;
 - (void)distributeChangeOnMainQueue:(id)arg1;

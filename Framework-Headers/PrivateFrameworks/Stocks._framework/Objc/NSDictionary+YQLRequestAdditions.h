@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (YQLRequestAdditions)
+- (id)sck_objectsForKeys:(id)arg1;
 - (id)yql_objectForKey:(id)arg1 ofClass:(Class)arg2;
 @end
 

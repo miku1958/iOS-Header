@@ -109,7 +109,7 @@ __attribute__((visibility("hidden")))
 + (struct CGRect)supportRectangleWithFaceArray:(id)arg1 options:(id)arg2;
 + (struct CGRect)supportRectangleWithRepair:(id)arg1 imageSize:(struct CGSize)arg2;
 + (BOOL)verifyBorderPoints:(CDStruct_94ca5ecd *)arg1 rect:(CDStruct_a734b2e2)arg2 inside:(CDStruct_f7cf7ab1 *)arg3 outside:(CDStruct_f7cf7ab1 *)arg4 error:(char [256])arg5;
-- (void)acquireProminences:(CDStruct_a3f7b727 [7])arg1 onSide:(int)arg2 metrics:(CDStruct_265c7ca9)arg3;
+- (void)acquireProminences:(CDStruct_85f69347 [7])arg1 onSide:(int)arg2 metrics:(CDStruct_3882bc9d)arg3;
 - (void)alignPupils;
 - (void)allocateAndPopulateBitmaps;
 - (BOOL)analyzeIrisColors:(CDStruct_9d808415 *)arg1 side:(int)arg2;
@@ -139,16 +139,16 @@ __attribute__((visibility("hidden")))
 - (float)facePoseYawAngle;
 - (id)failureCauses;
 - (char *)falloffFunctionName:(int)arg1;
-- (BOOL)findProminenceWithSide:(int)arg1 record:(CDStruct_a3f7b727 *)arg2;
+- (BOOL)findProminenceWithSide:(int)arg1 record:(CDStruct_85f69347 *)arg2;
 - (float)floatOption:(id)arg1 in:(id)arg2 theDefault:(float)arg3;
 - (void)freeBitmaps;
-- (void)freeChoiceRecord:(CDStruct_a3f7b727 *)arg1;
+- (void)freeChoiceRecord:(CDStruct_85f69347 *)arg1;
 - (BOOL)gatherFaceStatistics;
 - (struct CGPoint)globalBitmapPointWithDictionaryPoint:(struct CGPoint)arg1;
 - (CDStruct_a734b2e2)globalBitmapRectWithDictionaryRectArray:(id)arg1;
 - (BOOL)hasBeautyMarkWithBase:(char *)arg1 side:(int)arg2;
 - (CDStruct_0b15f989)improveBitmask:(CDStruct_94ca5ecd *)arg1 radius:(int)arg2 inChannel:(CDStruct_c3faddef *)arg3 rect:(CDStruct_a734b2e2)arg4;
-- (void)initChoiceRecord:(CDStruct_a3f7b727 *)arg1 type:(int)arg2 title:(char *)arg3 plusWhiteTitle:(char *)arg4 name:(char *)arg5 canPlusWhite:(BOOL)arg6 canSpecular:(BOOL)arg7 metrics:(CDStruct_265c7ca9)arg8;
+- (void)initChoiceRecord:(CDStruct_85f69347 *)arg1 type:(int)arg2 title:(char *)arg3 plusWhiteTitle:(char *)arg4 name:(char *)arg5 canPlusWhite:(BOOL)arg6 canSpecular:(BOOL)arg7 metrics:(CDStruct_3882bc9d)arg8;
 - (id)initWithExternalBuffer:(char *)arg1 subRectangle:(struct CGRect)arg2 rowBytes:(unsigned long long)arg3 options:(id)arg4;
 - (int)intOption:(id)arg1 in:(id)arg2 theDefault:(int)arg3;
 - (struct CGAffineTransform)inverseImageTransformForOrientation:(int)arg1;
@@ -169,7 +169,7 @@ __attribute__((visibility("hidden")))
 - (void)repairExternalBuffer;
 - (CDStruct_c3faddef *)repairMap;
 - (CDStruct_a734b2e2)repairRect;
-- (CDStruct_9d808415)repairWithProminence:(CDStruct_a3f7b727)arg1 white:(CDStruct_a3f7b727 *)arg2 onSide:(int)arg3 metrics:(CDStruct_265c7ca9)arg4 rect:(CDStruct_a734b2e2)arg5;
+- (CDStruct_9d808415)repairWithProminence:(CDStruct_85f69347)arg1 white:(CDStruct_85f69347 *)arg2 onSide:(int)arg3 metrics:(CDStruct_3882bc9d)arg4 rect:(CDStruct_a734b2e2)arg5;
 - (id)repairWithSide:(int)arg1;
 - (void)setInspector:(id)arg1;
 - (void)setUpWithOptions:(id)arg1;
@@ -180,7 +180,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_9d808415)unpackRepairDictionary:(id)arg1;
 - (void)updateWithFaceIndex:(int)arg1;
 - (int)validateRepair:(id)arg1;
-- (CDStruct_a3f7b727)winningProminence:(CDStruct_a3f7b727 [7])arg1 metrics:(CDStruct_265c7ca9)arg2;
+- (CDStruct_85f69347)winningProminence:(CDStruct_85f69347 [7])arg1 metrics:(CDStruct_3882bc9d)arg2;
 
 @end
 

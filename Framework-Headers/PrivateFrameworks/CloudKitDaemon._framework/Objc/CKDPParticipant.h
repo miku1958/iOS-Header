@@ -8,19 +8,23 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPContactInformation, CKDPIdentifier, CKDPProtectionInfo, NSData;
+@class CKDPContactInformation, CKDPDate, CKDPIdentifier, CKDPProtectionInfo, NSData;
 
 @interface CKDPParticipant : PBCodable <NSCopying>
 {
     long long _acceptTimestamp;
+    CKDPDate *_acceptedTimestampDate;
     CKDPContactInformation *_contactInformation;
+    CKDPDate *_inviteTimestampDate;
     CKDPIdentifier *_inviterId;
+    int _keyHealth;
     int _outOfNetworkKeyType;
     NSData *_outOfNetworkPrivateKey;
     CKDPIdentifier *_participantId;
     int _participantType;
     int _permission;
     CKDPProtectionInfo *_protectionInfo;
+    NSData *_protectionInfoPublicKey;
     CKDPProtectionInfo *_publicKey;
     int _publicKeyVersion;
     int _state;
@@ -31,6 +35,7 @@
     BOOL _isOrgUser;
     struct {
         unsigned int acceptTimestamp:1;
+        unsigned int keyHealth:1;
         unsigned int outOfNetworkKeyType:1;
         unsigned int participantType:1;
         unsigned int permission:1;
@@ -45,40 +50,49 @@
 
 @property (nonatomic) long long acceptTimestamp; // @synthesize acceptTimestamp=_acceptTimestamp;
 @property (nonatomic) BOOL acceptedInProcess; // @synthesize acceptedInProcess=_acceptedInProcess;
+@property (strong, nonatomic) CKDPDate *acceptedTimestampDate; // @synthesize acceptedTimestampDate=_acceptedTimestampDate;
 @property (strong, nonatomic) CKDPContactInformation *contactInformation; // @synthesize contactInformation=_contactInformation;
 @property (nonatomic) BOOL createdInProcess; // @synthesize createdInProcess=_createdInProcess;
 @property (nonatomic) BOOL hasAcceptTimestamp;
 @property (nonatomic) BOOL hasAcceptedInProcess;
+@property (readonly, nonatomic) BOOL hasAcceptedTimestampDate;
 @property (readonly, nonatomic) BOOL hasContactInformation;
 @property (nonatomic) BOOL hasCreatedInProcess;
+@property (readonly, nonatomic) BOOL hasInviteTimestampDate;
 @property (readonly, nonatomic) BOOL hasInviterId;
 @property (nonatomic) BOOL hasIsInNetwork;
 @property (nonatomic) BOOL hasIsOrgUser;
+@property (nonatomic) BOOL hasKeyHealth;
 @property (nonatomic) BOOL hasOutOfNetworkKeyType;
 @property (readonly, nonatomic) BOOL hasOutOfNetworkPrivateKey;
 @property (readonly, nonatomic) BOOL hasParticipantId;
 @property (nonatomic) BOOL hasParticipantType;
 @property (nonatomic) BOOL hasPermission;
 @property (readonly, nonatomic) BOOL hasProtectionInfo;
+@property (readonly, nonatomic) BOOL hasProtectionInfoPublicKey;
 @property (readonly, nonatomic) BOOL hasPublicKey;
 @property (nonatomic) BOOL hasPublicKeyVersion;
 @property (nonatomic) BOOL hasState;
 @property (readonly, nonatomic) BOOL hasUserId;
+@property (strong, nonatomic) CKDPDate *inviteTimestampDate; // @synthesize inviteTimestampDate=_inviteTimestampDate;
 @property (strong, nonatomic) CKDPIdentifier *inviterId; // @synthesize inviterId=_inviterId;
 @property (nonatomic) BOOL isInNetwork; // @synthesize isInNetwork=_isInNetwork;
 @property (nonatomic) BOOL isOrgUser; // @synthesize isOrgUser=_isOrgUser;
+@property (nonatomic) int keyHealth; // @synthesize keyHealth=_keyHealth;
 @property (nonatomic) int outOfNetworkKeyType; // @synthesize outOfNetworkKeyType=_outOfNetworkKeyType;
 @property (strong, nonatomic) NSData *outOfNetworkPrivateKey; // @synthesize outOfNetworkPrivateKey=_outOfNetworkPrivateKey;
 @property (strong, nonatomic) CKDPIdentifier *participantId; // @synthesize participantId=_participantId;
 @property (nonatomic) int participantType; // @synthesize participantType=_participantType;
 @property (nonatomic) int permission; // @synthesize permission=_permission;
 @property (strong, nonatomic) CKDPProtectionInfo *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
+@property (strong, nonatomic) NSData *protectionInfoPublicKey; // @synthesize protectionInfoPublicKey=_protectionInfoPublicKey;
 @property (strong, nonatomic) CKDPProtectionInfo *publicKey; // @synthesize publicKey=_publicKey;
 @property (nonatomic) int publicKeyVersion; // @synthesize publicKeyVersion=_publicKeyVersion;
 @property (nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) CKDPIdentifier *userId; // @synthesize userId=_userId;
 
 - (void).cxx_destruct;
+- (int)StringAsKeyHealth:(id)arg1;
 - (int)StringAsParticipantType:(id)arg1;
 - (int)StringAsPermission:(id)arg1;
 - (int)StringAsState:(id)arg1;
@@ -91,6 +105,7 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)keyHealthAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)participantTypeAsString:(int)arg1;
 - (id)permissionAsString:(int)arg1;

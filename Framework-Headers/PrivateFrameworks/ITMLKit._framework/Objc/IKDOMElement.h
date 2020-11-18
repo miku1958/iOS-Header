@@ -56,11 +56,11 @@
 - (id)domb_boundCSSRule;
 - (id)domb_dataBinding;
 - (id)domb_domBindingController;
-- (id)domb_mutationRules;
+- (id)domb_mutationRuleSet;
 - (void)domb_setBoundCSSRule:(id)arg1;
 - (void)domb_setDOMBindingController:(id)arg1;
 - (void)domb_setDataBinding:(id)arg1;
-- (void)domb_setMutationRules:(id)arg1;
+- (void)domb_setMutationRuleSet:(id)arg1;
 - (id)dombs_items;
 - (void)dombs_setItems:(id)arg1;
 - (id)domib_appDataSet;

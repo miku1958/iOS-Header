@@ -6,22 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSXPCListener, NSXPCListenerEndpoint;
+@class NSXPCListenerEndpoint;
 
 @interface ACDTestManager : NSObject
 {
-    NSXPCListener *_accountStoreConnectionListener;
-    NSXPCListener *_oauthSignerConnectionListener;
-    NSXPCListener *_authenticationDialogConnectionListener;
-    NSString *_storePath;
 }
 
 @property (readonly, nonatomic) NSXPCListenerEndpoint *remoteAccountStoreEndpoint;
 @property (readonly, nonatomic) NSXPCListenerEndpoint *remoteOAuthSignerEndpoint;
 
 + (id)testServer;
-- (void).cxx_destruct;
-- (id)_pseudoUniqueDatabasePath;
 - (void)startTestServer;
 - (void)stopTestServer;
 

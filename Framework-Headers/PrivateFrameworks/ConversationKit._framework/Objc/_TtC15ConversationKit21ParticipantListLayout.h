@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit21ParticipantListLayout : UICollectionViewFlowLayout
 {
     MISSING_TYPE *indexPathLayoutAttributes;

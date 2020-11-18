@@ -6,9 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@interface EMPersistenceLayoutManager : NSObject
+#import <Email/EFLoggable-Protocol.h>
+
+@class NSString;
+
+@interface EMPersistenceLayoutManager : NSObject <EFLoggable>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_nonContainerizedBaseMailDirectoryPathCreated:(BOOL *)arg1;
 + (id)baseMailDirectory;

@@ -51,7 +51,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isExpiredWithFallbackMaxAge:(double)arg1 allowedToReachEndpoint:(BOOL)arg2;
+- (BOOL)isExpiredWithMaxTTL:(double)arg1 allowedToReachEndpoint:(BOOL)arg2;
 
 @end
 

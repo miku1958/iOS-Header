@@ -31,12 +31,14 @@
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidUnregisterScrollToTopView;
+- (BOOL)_canShowWhileLocked;
 - (void)_openTransactionForAppearanceCallWithState:(int)arg1 withIdentifier:(id)arg2;
 - (void)_performUpdateWithReplyHandler:(CDUnknownBlockType)arg1;
 - (void)_requestEncodedLayerTreeAtURL:(id)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_serviceHasScrollToTopView;
 - (void)_setActiveDisplayMode:(long long)arg1;
 - (void)_setMaximumSize:(struct CGSize)arg1 forDisplayMode:(long long)arg2;
+- (void)_updateLayoutMargins:(struct UIEdgeInsets)arg1;
 - (void)_updateVisibilityState:(long long)arg1;
 - (void)_updateVisibleFrame:(struct CGRect)arg1 withReplyHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

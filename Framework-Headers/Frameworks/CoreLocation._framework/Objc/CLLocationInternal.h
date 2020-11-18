@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocationMatchInfo;
+@class CLLocationMatchInfo, _CLLocationGroundAltitude;
 
 @interface CLLocationInternal : NSObject
 {
-    CDStruct_05ee51d2 fLocation;
+    CDStruct_0f4838e9 fLocation;
     CLLocationMatchInfo *fMatchInfo;
+    _CLLocationGroundAltitude *fGroundAltitude;
     double fTrustedTimestamp;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithClientLocation:(CDStruct_05ee51d2)arg1;
-- (id)initWithClientLocation:(CDStruct_05ee51d2)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3;
+- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1;
+- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 clientLocationPrivate:(CDStruct_f185aced)arg2;
+- (id)initWithClientLocation:(CDStruct_0f4838e9)arg1 matchInfo:(id)arg2 trustedTimestamp:(double)arg3 groundAltitude:(id)arg4;
 
 @end
 

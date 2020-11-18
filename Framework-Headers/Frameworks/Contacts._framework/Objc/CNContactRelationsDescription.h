@@ -8,33 +8,50 @@
 
 #import <Contacts/CNAbstractPropertyDescription-Protocol.h>
 
-@class NSString;
+@class CNContactRelationsDescriptionLabels, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CNContactRelationsDescription : CNMultiValuePropertyDescription <CNAbstractPropertyDescription>
 {
+    NSObject<OS_dispatch_queue> *_generationQueue;
+    CNContactRelationsDescriptionLabels *_cachedLabels;
+    Class _provider;
 }
 
+@property (strong, nonatomic) CNContactRelationsDescriptionLabels *cachedLabels; // @synthesize cachedLabels=_cachedLabels;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSObject<OS_dispatch_queue> *generationQueue; // @synthesize generationQueue=_generationQueue;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) Class provider; // @synthesize provider=_provider;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void *)ABMultiValueValueFromCNLabeledValueValue:(id)arg1;
 - (id)CNLabeledValueValueFromABMultiValueValue:(void *)arg1;
 - (id)CNLabeledValueValueFromABMultiValueValueBytes:(char *)arg1 length:(unsigned long long)arg2;
 - (id)CNValueForContact:(id)arg1;
+- (void)_addLocalizedLabels:(id)arg1 fromLanguagePlist:(id)arg2 languageIdentifier:(id)arg3 toDictionary:(id)arg4 conflictInfo:(id)arg5;
+- (id)_builtInExtendedLabels;
+- (id)_builtInStandardLabels;
 - (BOOL)abPropertyID:(int *)arg1;
+- (id)cachedLabelsForPreferredLanguages:(id)arg1;
 - (BOOL)canUnifyValue:(id)arg1 withValue:(id)arg2;
 - (void)decodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (void)encodeUsingCoder:(id)arg1 contact:(id)arg2;
 - (CDUnknownBlockType)fromPlistTransform;
 - (id)init;
+- (id)initWithLocalizationProvider:(Class)arg1;
 - (BOOL)isEqualForContact:(id)arg1 other:(id)arg2;
 - (BOOL)isNonnull;
 - (Class)labeledValueClass;
+- (id)labelsForPreferredLanguages:(id)arg1;
+- (id)localizedStringForLabel:(id)arg1;
+- (id)managedLabels;
 - (CDUnknownBlockType)plistTransform;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;
 - (id)standardLabels;
+- (id)standardLabelsWithOptions:(unsigned long long)arg1;
 
 @end
 

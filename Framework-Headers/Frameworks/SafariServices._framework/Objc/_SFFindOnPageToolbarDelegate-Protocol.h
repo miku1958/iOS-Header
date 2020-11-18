@@ -9,7 +9,6 @@
 @protocol _SFFindOnPageToolbarDelegate
 - (void)done;
 - (BOOL)hasMatches;
-- (NSString *)longMatchLabelText;
 - (NSString *)matchLabelText;
 - (void)next;
 - (void)previous;

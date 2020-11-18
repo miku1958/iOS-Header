@@ -23,14 +23,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double position; // @synthesize position=_position;
 
 + (id)displayStringFromTabLeader:(id)arg1;
-+ (id)stringFromTabAlignment:(int)arg1 isRTL:(BOOL)arg2;
++ (id)stringFromTabAlignment:(int)arg1 isRTL:(BOOL)arg2 isVertical:(BOOL)arg3;
 + (id)tab;
 + (int)tabAlignmentFromString:(id)arg1 isRTL:(BOOL)arg2;
 + (id)tabLeaderFromDisplayString:(id)arg1;
++ (id)tabStopAlignmentStringBottom;
 + (id)tabStopAlignmentStringCenter;
 + (id)tabStopAlignmentStringDecimal;
 + (id)tabStopAlignmentStringLeft;
++ (id)tabStopAlignmentStringMiddle;
 + (id)tabStopAlignmentStringRight;
++ (id)tabStopAlignmentStringTop;
 + (id)tabStopDisplayStringArrow;
 + (id)tabStopDisplayStringDash;
 + (id)tabStopDisplayStringNone;

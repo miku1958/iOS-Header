@@ -6,9 +6,11 @@
 
 #import <RelevanceEngine/REPredictor.h>
 
+#import <RelevanceEngine/REActiveWorkoutPredictorProperties-Protocol.h>
+
 @class HKQuery, NSDate, REUpNextTimer;
 
-@interface REActiveWorkoutPredictor : REPredictor
+@interface REActiveWorkoutPredictor : REPredictor <REActiveWorkoutPredictorProperties>
 {
     int _workoutStateNotifyToken;
     float _dailyAverageWorkouts;
@@ -20,22 +22,24 @@
 }
 
 @property (readonly, nonatomic, getter=isActiveWorkout) BOOL activeWorkout;
+@property (readonly, nonatomic) BOOL currentlyHasActiveWorkout;
+@property (readonly, nonatomic) float dailyAverageWorkouts;
 @property BOOL hasActiveWorkout; // @synthesize hasActiveWorkout=_hasActiveWorkout;
 @property (strong) NSDate *lastCompletedWorkoutDate; // @synthesize lastCompletedWorkoutDate=_lastCompletedWorkoutDate;
 @property (readonly, nonatomic) NSDate *lastWorkoutDate;
+@property (readonly, nonatomic) unsigned long long numberOfWorkoutsPerformedToday;
 
 + (id)supportedFeatures;
 + (double)updateInterval;
 - (void).cxx_destruct;
 - (void)_cancelMonitoringWorkoutIfNeeded;
-- (void)_processWorkoutHistoryData:(id)arg1;
+- (id)_init;
+- (void)_processWorkoutHistoryData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_fetchWorkoutHistory;
 - (void)_scheduleFetchWorkoutTimer;
 - (void)_updateWorkoutState;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
-- (id)init;
 - (void)pause;
 - (void)resume;
 - (void)update;

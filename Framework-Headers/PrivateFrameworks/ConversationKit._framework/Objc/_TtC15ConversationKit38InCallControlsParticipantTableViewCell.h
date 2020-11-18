@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE, _TtC15ConversationKit19InCallControlButton;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit38InCallControlsParticipantTableViewCell : UITableViewCell
 {
     MISSING_TYPE *nameLabel;
@@ -16,12 +15,6 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *cameraIcon;
     MISSING_TYPE *avatarView;
     MISSING_TYPE *ringButton;
-    MISSING_TYPE *isAccessiblityConstraintsEnabled;
-    MISSING_TYPE *nameLabelFirstBaselineLayoutConstraint;
-    MISSING_TYPE *subtitleLabelFirstBaselineLayoutConstraint;
-    MISSING_TYPE *subtitleLabelLastBaselineLayoutConstraint;
-    MISSING_TYPE *constraintsForCameraIconVisibleState;
-    MISSING_TYPE *constraintsForRingButtonVisibleState;
     MISSING_TYPE *callDelegate;
     MISSING_TYPE *delegate;
 }
@@ -32,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)didTapRing:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)layoutSubviews;
 
 @end
 

@@ -8,36 +8,37 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOETARoute, GEOETATrafficUpdateResponse, GEORouteInitializerData, NSArray, NSDate, NSUUID;
+@class GEOComposedRoute, GEOComposedRouteTraffic, GEOETARoute, GEOETATrafficUpdateResponse, GEOTransitRouteUpdateRequest, NSDate, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface MNActiveRouteInfo : NSObject <NSSecureCoding>
 {
-    GEORouteInitializerData *_routeInitializerData;
-    NSUUID *_routeID;
     GEOComposedRoute *_route;
     GEOETARoute *_etaRoute;
-    NSArray *_routeIncidents;
+    GEOETATrafficUpdateResponse *_etaResponse;
     NSDate *_displayETA;
     unsigned long long _displayRemainingMinutes;
+    GEOComposedRouteTraffic *_traffic;
     unsigned long long _alternateRouteIndex;
 }
 
 @property (nonatomic) unsigned long long alternateRouteIndex; // @synthesize alternateRouteIndex=_alternateRouteIndex;
 @property (strong, nonatomic) NSDate *displayETA; // @synthesize displayETA=_displayETA;
 @property (nonatomic) unsigned long long displayRemainingMinutes; // @synthesize displayRemainingMinutes=_displayRemainingMinutes;
-@property (strong, nonatomic) GEOETATrafficUpdateResponse *etaResponse;
+@property (strong, nonatomic) GEOETATrafficUpdateResponse *etaResponse; // @synthesize etaResponse=_etaResponse;
 @property (strong, nonatomic) GEOETARoute *etaRoute; // @synthesize etaRoute=_etaRoute;
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
-@property (readonly, nonatomic) NSUUID *routeID; // @synthesize routeID=_routeID;
-@property (strong, nonatomic) NSArray *routeIncidents; // @synthesize routeIncidents=_routeIncidents;
+@property (readonly, nonatomic) NSUUID *routeID;
+@property (strong, nonatomic) GEOComposedRouteTraffic *traffic; // @synthesize traffic=_traffic;
+@property (readonly, nonatomic) GEOTransitRouteUpdateRequest *transitRouteUpdateRequest;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRoute:(id)arg1;
-- (void)setRouteID:(id)arg1;
+- (id)initWithRoute:(id)arg1 traffic:(id)arg2;
+- (id)initWithRoute:(id)arg1 trafficRoute:(id)arg2 routeInitalizerData:(id)arg3;
 - (void)updateWithETARoute:(id)arg1 offsetInMeters:(double)arg2;
 
 @end

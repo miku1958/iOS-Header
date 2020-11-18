@@ -8,6 +8,9 @@
 
 @interface NSXPCConnection (UserNotificationsServer)
 - (id)uns_clientBundleProxy;
+- (BOOL)uns_hasEntitlement:(id)arg1 capability:(id)arg2;
+- (BOOL)uns_isAllowedToReadSettings;
 - (BOOL)uns_isAllowedToRequestUserNotificationsForBundleIdentifier:(id)arg1;
+- (BOOL)uns_isAllowedToWriteSettings;
 @end
 

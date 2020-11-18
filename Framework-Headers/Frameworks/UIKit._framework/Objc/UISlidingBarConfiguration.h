@@ -15,25 +15,33 @@
     BOOL _leadingMayBeHidden;
     BOOL _trailingMayBeHidden;
     BOOL _allowMixedSideBySideAndOverlay;
+    BOOL __leadingBorderWidthIsInPixels;
+    BOOL __trailingBorderWidthIsInPixels;
     double _minimumMainWidthFraction;
     double _minimumMainWidthFractionForSecondColumn;
     double _maximumMainWidth;
     NSArray *_leadingWidths;
     NSArray *_trailingWidths;
-    double _leadingBorderWidth;
-    double _trailingBorderWidth;
     UIColor *_borderColor;
+    double __rawLeadingBorderWidth;
+    double __rawTrailingBorderWidth;
+    long long __leadingBackgroundStyle;
+    long long __trailingBackgroundStyle;
 }
 
+@property (nonatomic, setter=_setLeadingBackgroundStyle:) long long _leadingBackgroundStyle; // @synthesize _leadingBackgroundStyle=__leadingBackgroundStyle;
+@property (nonatomic, setter=_setLeadingBorderWidthIsInPixels:) BOOL _leadingBorderWidthIsInPixels; // @synthesize _leadingBorderWidthIsInPixels=__leadingBorderWidthIsInPixels;
+@property (nonatomic, setter=_setRawLeadingBorderWidth:) double _rawLeadingBorderWidth; // @synthesize _rawLeadingBorderWidth=__rawLeadingBorderWidth;
+@property (nonatomic, setter=_setRawTrailingBorderWidth:) double _rawTrailingBorderWidth; // @synthesize _rawTrailingBorderWidth=__rawTrailingBorderWidth;
+@property (nonatomic, setter=_setTrailingBackgroundStyle:) long long _trailingBackgroundStyle; // @synthesize _trailingBackgroundStyle=__trailingBackgroundStyle;
+@property (nonatomic, setter=_setTrailingBorderWidthIsInPixels:) BOOL _trailingBorderWidthIsInPixels; // @synthesize _trailingBorderWidthIsInPixels=__trailingBorderWidthIsInPixels;
 @property (nonatomic) BOOL allowMixedSideBySideAndOverlay; // @synthesize allowMixedSideBySideAndOverlay=_allowMixedSideBySideAndOverlay;
 @property (strong, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
-@property (nonatomic) double leadingBorderWidth; // @synthesize leadingBorderWidth=_leadingBorderWidth;
 @property (nonatomic) BOOL leadingMayBeHidden; // @synthesize leadingMayBeHidden=_leadingMayBeHidden;
 @property (copy, nonatomic) NSArray *leadingWidths; // @synthesize leadingWidths=_leadingWidths;
 @property (nonatomic) double maximumMainWidth; // @synthesize maximumMainWidth=_maximumMainWidth;
 @property (nonatomic) double minimumMainWidthFraction; // @synthesize minimumMainWidthFraction=_minimumMainWidthFraction;
 @property (nonatomic) double minimumMainWidthFractionForSecondColumn; // @synthesize minimumMainWidthFractionForSecondColumn=_minimumMainWidthFractionForSecondColumn;
-@property (nonatomic) double trailingBorderWidth; // @synthesize trailingBorderWidth=_trailingBorderWidth;
 @property (nonatomic) BOOL trailingMayBeHidden; // @synthesize trailingMayBeHidden=_trailingMayBeHidden;
 @property (copy, nonatomic) NSArray *trailingWidths; // @synthesize trailingWidths=_trailingWidths;
 
@@ -42,6 +50,12 @@
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (double)leadingBorderWidthForScale:(double)arg1;
+- (void)setLeadingBorderWidthInPixels:(double)arg1;
+- (void)setLeadingBorderWidthInPoints:(double)arg1;
+- (void)setTrailingBorderWidthInPixels:(double)arg1;
+- (void)setTrailingBorderWidthInPoints:(double)arg1;
+- (double)trailingBorderWidthForScale:(double)arg1;
 
 @end
 

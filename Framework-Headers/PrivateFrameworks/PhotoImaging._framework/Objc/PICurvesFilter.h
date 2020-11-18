@@ -6,21 +6,19 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class CIImage, NSData, NSNumber;
+@class CIImage;
 
 @interface PICurvesFilter : CIFilter
 {
-    CIImage *inputImage;
-    NSData *inputRGBData;
-    NSData *inputRedData;
-    NSData *inputGreenData;
-    NSData *inputBlueData;
-    NSNumber *inputGrayChoice;
+    CIImage *_inputImage;
+    CIImage *_inputTableImage;
 }
 
-+ (id)curvesKernels;
+@property (strong) CIImage *inputImage; // @synthesize inputImage=_inputImage;
+@property (strong) CIImage *inputTableImage; // @synthesize inputTableImage=_inputTableImage;
+
++ (id)curvesKernel;
 - (void).cxx_destruct;
-- (id)makeImageFromCurveData;
 - (id)outputImage;
 
 @end

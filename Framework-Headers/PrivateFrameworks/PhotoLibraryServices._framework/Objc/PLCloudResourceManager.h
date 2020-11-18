@@ -18,10 +18,11 @@
     BOOL _enqueuedOperation;
 }
 
+- (void).cxx_destruct;
 - (void)_runOnWorkQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
-- (void)dealloc;
+- (void)handleOptimizeModeChange;
 - (id)init;
-- (id)initWithCPLManager:(id)arg1;
+- (id)initWithCPLManager:(id)arg1 library:(id)arg2;
 - (void)startAutomaticPrefetchAndPruneWithTimeout:(BOOL)arg1;
 - (id)statusForDebug:(BOOL)arg1;
 - (void)stop;

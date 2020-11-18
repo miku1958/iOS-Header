@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class NSString, PUImportItemViewModel, UIActivityIndicatorView;
+@class NSString, PXImportItemViewModel, UIActivityIndicatorView;
 @protocol PUImportOneUpScrubberCellDisplayDelegate;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _selectable;
     BOOL _needsBadgeUpdate;
     id<PUImportOneUpScrubberCellDisplayDelegate> _displayDelegate;
-    PUImportItemViewModel *_importItem;
+    PXImportItemViewModel *_importItem;
     long long _badgeType;
     UIActivityIndicatorView *_spinner;
     long long _thumbnailRequestID;
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<PUImportOneUpScrubberCellDisplayDelegate> displayDelegate; // @synthesize displayDelegate=_displayDelegate;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PUImportItemViewModel *importItem; // @synthesize importItem=_importItem;
+@property (strong, nonatomic) PXImportItemViewModel *importItem; // @synthesize importItem=_importItem;
 @property (nonatomic) BOOL needsBadgeUpdate; // @synthesize needsBadgeUpdate=_needsBadgeUpdate;
 @property (nonatomic) BOOL selectable; // @synthesize selectable=_selectable;
 @property (readonly, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;

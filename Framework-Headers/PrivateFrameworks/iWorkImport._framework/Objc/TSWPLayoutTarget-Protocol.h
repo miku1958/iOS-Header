@@ -48,19 +48,24 @@
 @property (readonly, nonatomic) BOOL wantsLineFragments;
 
 - (void)addAttachmentLayout:(TSDLayout *)arg1;
+- (void)clearHiddenInlineDrawableLayoutMarks;
 - (NSObject<TSWPColumnMetrics> *)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
+- (BOOL)containsStartOfRange:(struct _NSRange)arg1;
 - (NSArray *)currentAnchoredDrawableLayouts;
 - (NSArray *)currentInlineDrawableLayouts;
+- (BOOL)descendersCannotClip;
+- (TSUBezierPath *)interiorClippingPath;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
+- (void)markHiddenInlineDrawableLayout:(TSDLayout *)arg1;
 - (void)setNeedsDisplayInTargetRect:(struct CGRect)arg1;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
+- (double)textScaleForChild:(TSDLayout *)arg1;
 - (TSDLayout *)validatedLayoutForAnchoredDrawable:(id<TSDInfo>)arg1;
 - (TSDLayout *)validatedLayoutForInlineDrawable:(id<TSDInfo>)arg1;
 
 @optional
 - (struct CGPoint)anchoredAttachmentPositionFromLayoutPosition:(struct CGPoint)arg1;
-- (TSUBezierPath *)interiorClippingPath;
 - (TSDWrapSegments *)interiorWrapSegments;
 - (BOOL)invalidateForPageCountChange;
 - (struct CGPoint)layoutPositionFromAnchoredAttachmentPosition:(struct CGPoint)arg1;

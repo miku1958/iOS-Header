@@ -48,6 +48,22 @@ struct IMPerfMeasurement_t {
     double _field7;
 };
 
+struct _IMDHandleRecordStruct;
+
+struct _IMDMessageRecordStruct {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    long long _field2;
+    struct __CFArray *_field3;
+    struct _IMDHandleRecordStruct *_field4;
+    struct _IMDHandleRecordStruct *_field5;
+    struct __CFArray *_field6;
+};
+
+struct __CFArray;
+
 struct __CFString;
 
 struct sqlite3;

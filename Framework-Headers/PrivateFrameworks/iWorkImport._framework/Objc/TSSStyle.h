@@ -14,7 +14,7 @@
 #import <iWorkImport/TSSStyleClient-Protocol.h>
 #import <iWorkImport/TSSStyleObject-Protocol.h>
 
-@class NSString, TSSPropertyMap, TSSStylesheet, TSURetainedPointerSet;
+@class NSString, TSSPropertyMap, TSSStylesheet, TSUColor, TSURetainedPointerSet;
 
 __attribute__((visibility("hidden")))
 @interface TSSStyle : TSPObject <NSCopying, TSSPropertyValueValidator, TSSStyleObject, TSSPropertySource, TSSStyleClient, TSKModel, TSKTransformableObject>
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) TSURetainedPointerSet *descendants;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) TSUColor *fallbackFontColorWhenUnableToReadCharacterFillColor;
 @property (readonly, nonatomic) TSSStyle *firstIdentifiedAncestor;
 @property (readonly, nonatomic) TSSStyle *firstNamedAncestor;
 @property (readonly) unsigned long long hash;
@@ -49,6 +50,8 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) TSSStylesheet *stylesheet; // @synthesize stylesheet=mStylesheet;
 @property (readonly) Class superclass;
 
++ (void)addIgnoreAndPreserveRulesAndDocumentWarningsForPropertyMap:(id)arg1 withArchiver:(id)arg2;
++ (id)adjustPropertyMapForFontColorArchiving:(id)arg1 fallbackColor:(id)arg2;
 + (id)boxedDefaultValueForProperty:(int)arg1;
 + (double)defaultDoubleValueForProperty:(int)arg1;
 + (float)defaultFloatValueForProperty:(int)arg1;
@@ -62,9 +65,11 @@ __attribute__((visibility("hidden")))
 + (BOOL)needsObjectUUID;
 + (struct __CTFont *)pCreateFontWithName:(id)arg1 fontSize:(double)arg2;
 + (id)pReplacementForMissingFontName:(id)arg1 outBold:(int *)arg2 outItalic:(int *)arg3 outQuiet:(BOOL *)arg4;
++ (BOOL)p_isFillAdvanced:(id)arg1;
 + (id)properties;
 + (id)propertiesAllowingNSNull;
 + (BOOL)shouldWarnWithPersistingWithoutStylesheet;
++ (void)upgradeFontColorToIncludeCharacterFillInPropertyMap:(id)arg1 forOwningTSPObject:(id)arg2;
 + (BOOL)validateDoubleValue:(double *)arg1 forProperty:(int)arg2;
 + (BOOL)validateFloatValue:(float *)arg1 forProperty:(int)arg2;
 + (id)validateFontInPropertyMap:(id)arg1 parentStyle:(id)arg2 checkedFontMap:(id)arg3;
@@ -133,6 +138,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)overridesAnyProperty;
 - (BOOL)overridesProperty:(int)arg1;
 - (BOOL)p_hasEqualValuesTo:(id)arg1 forProperty:(int)arg2;
+- (void)p_removeFontColorPropertyInPropertyMap:(id)arg1;
+- (void)p_upgradeOutlinesToStrokesInPropertyMap:(id)arg1 forcingUpgradeForUnderspecifiedCharacterStyles:(BOOL)arg2;
 - (id)parentStyleForFixingOrphanVariation;
 - (id)propertyMap;
 - (id)propertyMapIgnoringStyle:(id)arg1;
@@ -141,7 +148,8 @@ __attribute__((visibility("hidden")))
 - (void)removeAllValues;
 - (void)removeValueForProperty:(int)arg1;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
-- (void)saveCharacterStylePropertiesToArchive:(struct CharacterStylePropertiesArchive *)arg1 archiver:(id)arg2;
+- (id)resolvedValueForProperty:(int)arg1 inStyles:(id)arg2;
+- (void)saveCharacterStylePropertiesToArchive:(struct CharacterStylePropertiesArchive *)arg1 archiver:(id)arg2 archivingForCommand:(BOOL)arg3;
 - (void)saveParagraphStylePropertiesToArchive:(struct ParagraphStylePropertiesArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchive:(struct StyleArchive *)arg1 archiver:(id)arg2;
 - (void)setBoolValue:(BOOL)arg1 forProperty:(int)arg2;
@@ -160,6 +168,7 @@ __attribute__((visibility("hidden")))
 - (id)shapeStyleByRemovingShadowFrameAndReflectionForContext:(id)arg1;
 - (id)shapeStyleByRemovingTextShadowForContext:(id)arg1;
 - (BOOL)transformsFontSizes;
+- (void)upgradeOutlinesToStrokesForcingUpgradeForUnderspecifiedCharacterStyles:(BOOL)arg1;
 - (BOOL)validateDoubleValue:(double *)arg1 forProperty:(int)arg2;
 - (BOOL)validateFloatValue:(float *)arg1 forProperty:(int)arg2;
 - (id)validateFontWithCheckedFontMap:(id)arg1;
@@ -169,6 +178,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)validateObjectValue:(id *)arg1 withClass:(Class)arg2 forProperty:(int)arg3;
 - (id)valueForProperty:(int)arg1;
 - (id)valuesForProperties:(id)arg1;
+- (BOOL)wantsCustomResolveLogicForProperty:(int)arg1 forStyles:(id)arg2;
 
 @end
 

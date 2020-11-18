@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
         unsigned int delegateRespondsToFilePresenter:1;
         unsigned int delegateRespondsToSupportDirectoryURLReturningIsUnique:1;
         unsigned int delegateRespondsToSupportDirectoryURL:1;
+        unsigned int delegateRespondsToArchiveValidationMode:1;
         unsigned int delegateRespondsToIgnoreDocumentSupport:1;
         unsigned int delegateRespondsToIsDocumentSupportTemporary:1;
         unsigned int delegateRespondsToShouldLoadAllComponents:1;
@@ -174,7 +175,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isNativeOrTangierEditingFormatURL:(id)arg1 hasNativeUTI:(BOOL)arg2 nestedDocumentFilename:(id)arg3;
 + (BOOL)isTangierEditingDirectoryFormatURL:(id)arg1;
 + (BOOL)isTangierEditingFormatURL:(id)arg1;
-+ (void)purgeSharedDocumentResourceCache;
 + (id)releaseQueue;
 + (void)removeDefaultSupportDirectory;
 + (id)supportBundleURLForDocumentUUID:(id)arg1 delegate:(id)arg2;
@@ -186,6 +186,7 @@ __attribute__((visibility("hidden")))
 - (void)addLoadObserver:(id)arg1 action:(SEL)arg2 forObjectIdentifier:(long long)arg3 objectOrNil:(id)arg4;
 - (id)addLoadedObjectsAndEnqueueNotifications:(id)arg1;
 - (void)addObjectModifyDelegate:(id)arg1;
+- (long long)archiveValidationMode;
 - (BOOL)areExternalReferencesSupported;
 - (BOOL)areExternalReferencesToDataAllowedAtURL:(id)arg1;
 - (id)baseUUIDForObjectUUID;
@@ -197,13 +198,14 @@ __attribute__((visibility("hidden")))
 - (void)beginWriteOperation;
 - (void)beginWriteWithOriginalURL:(id)arg1;
 - (void)beginWriteWithOriginalURL:(id)arg1 relativeURLForExternalData:(id)arg2;
+- (BOOL)canModifyObject:(id)arg1;
 - (void)canPerformUserActionUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)canPerformUserActions;
 - (BOOL)canSetObjectUUIDForObject:(id)arg1;
 - (void)checkforDataWarningsWithPackageURL:(id)arg1;
 - (void)close;
 - (void)closeFromDealloc:(BOOL)arg1;
-- (void)conditionallyPerformResourceAccessUsingQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)conditionallyBeginAccessingResourcesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)containsDataConformingToUTI:(id)arg1;
 - (BOOL)continueReadingDocumentObjectFromDatabasePackageURL:(id)arg1 error:(id *)arg2;
 - (BOOL)continueReadingDocumentObjectFromPackageURL:(id)arg1 areExternalDataReferencesAllowed:(BOOL)arg2 error:(id *)arg3;
@@ -238,13 +240,13 @@ __attribute__((visibility("hidden")))
 - (id)initForQuickLookWithURL:(id)arg1 registry:(id)arg2 delegate:(id)arg3 passphrase:(id)arg4 error:(id *)arg5;
 - (id)initForSpotlightWithURL:(id)arg1 delegate:(id)arg2 registry:(id)arg3 error:(id *)arg4;
 - (id)initWithDelegate:(id)arg1;
-- (id)initWithDelegate:(id)arg1 registry:(id)arg2;
+- (id)initWithDelegate:(id)arg1 registry:(id)arg2 resourceContext:(id)arg3;
 - (id)initWithPartialDocumentURL:(id)arg1 delegate:(id)arg2 passphrase:(id)arg3 error:(id *)arg4;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
-- (id)initWithURL:(id)arg1 delegate:(id)arg2 mode:(unsigned int)arg3 passphrase:(id)arg4 skipDocumentUpgrade:(BOOL)arg5 error:(id *)arg6;
 - (id)initWithURL:(id)arg1 delegate:(id)arg2 passphrase:(id)arg3 error:(id *)arg4;
-- (id)initWithURL:(id)arg1 delegate:(id)arg2 passphrase:(id)arg3 skipDocumentUpgrade:(BOOL)arg4 error:(id *)arg5;
-- (id)initWithURL:(id)arg1 delegate:(id)arg2 registry:(id)arg3 mode:(unsigned int)arg4 passphrase:(id)arg5 skipDocumentUpgrade:(BOOL)arg6 error:(id *)arg7;
+- (id)initWithURL:(id)arg1 delegate:(id)arg2 registry:(id)arg3 resourceContext:(id)arg4 mode:(unsigned int)arg5 passphrase:(id)arg6 skipDocumentUpgrade:(BOOL)arg7 error:(id *)arg8;
+- (id)initWithURL:(id)arg1 delegate:(id)arg2 resourceContext:(id)arg3 mode:(unsigned int)arg4 passphrase:(id)arg5 skipDocumentUpgrade:(BOOL)arg6 error:(id *)arg7;
+- (id)initWithURL:(id)arg1 delegate:(id)arg2 resourceContext:(id)arg3 passphrase:(id)arg4 skipDocumentUpgrade:(BOOL)arg5 error:(id *)arg6;
 - (BOOL)isInCollaborationMode;
 - (BOOL)isObjectInDocument:(id)arg1;
 - (long long)modifyObjectTokenForNewObject;
@@ -272,6 +274,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForDocumentReplacementWithSuccess:(BOOL)arg1 forSafeSave:(BOOL)arg2;
 - (id)prepareSaveProgress;
 - (void)prepareToReadSupportObjectExternalDataReferencesAllowed:(BOOL)arg1 accessor:(CDUnknownBlockType)arg2;
+- (void)presentPersistenceError:(id)arg1;
 - (void)proxyObjectMapping:(id)arg1 willProxyReferencedObject:(id)arg2;
 - (BOOL)readComponent:(id)arg1 isWeakReference:(BOOL)arg2 documentPackage:(id)arg3 supportPackage:(id)arg4 rootObject:(id *)arg5 allObjects:(id *)arg6 error:(id *)arg7;
 - (BOOL)readComponent:(id)arg1 isWeakReference:(BOOL)arg2 rootObject:(id *)arg3 allObjects:(id *)arg4 error:(id *)arg5;

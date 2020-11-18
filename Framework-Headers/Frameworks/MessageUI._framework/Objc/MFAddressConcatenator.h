@@ -24,8 +24,8 @@
 @property (strong, nonatomic) NSString *truncatedAddressFormat; // @synthesize truncatedAddressFormat=_truncatedAddressFormat;
 
 + (id)defaultRecipientListConcatenator;
+- (void).cxx_destruct;
 - (id)commaSeparatedAddressListWithAddressCount:(unsigned long long)arg1 prefixForAddressAtIndex:(CDUnknownBlockType)arg2 stringForAddressAtIndex:(CDUnknownBlockType)arg3 lengthValidationBlock:(CDUnknownBlockType)arg4;
-- (void)dealloc;
 - (void)getCommaSeparatedAddressList:(out id *)arg1 andListSuffix:(out id *)arg2 withAddressCount:(unsigned long long)arg3 prefixForAddressAtIndex:(CDUnknownBlockType)arg4 stringForAddressAtIndex:(CDUnknownBlockType)arg5 lengthValidationBlock:(CDUnknownBlockType)arg6;
 
 @end

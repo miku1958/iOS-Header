@@ -32,6 +32,8 @@
 - (id)initWithAVVCRecordDeviceInfo:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRoute:(id)arg1 isRemoteDevice:(BOOL)arg2 remoteDeviceUID:(id)arg3 remoteDeviceProductIdentifier:(id)arg4;
+- (id)initWithXPCObject:(id)arg1;
+- (id)xpcObject;
 
 @end
 

@@ -9,12 +9,12 @@
 #import <HomeKitDaemon/HMDCameraGetSnapshotProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDCameraSessionID, HMDSnapshotFile, NSDictionary, NSObject, NSString;
+@class HMDAccessory, HMDCameraSnapshotSessionID, HMDSnapshotFile, NSDictionary, NSObject, NSString;
 @protocol HMDCameraSnapshotLocalDelegate, HMDSnapshotRequestHandlerProtocol, OS_dispatch_queue;
 
 @interface HMDCameraSnapshotLocal : HMFObject <HMDCameraGetSnapshotProtocol, HMFLogging>
 {
-    HMDCameraSessionID *_sessionID;
+    HMDCameraSnapshotSessionID *_sessionID;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDAccessory *_accessory;
     NSDictionary *_options;
@@ -31,7 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDictionary *options; // @synthesize options=_options;
-@property (readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly, nonatomic) HMDCameraSnapshotSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) HMDSnapshotFile *snapshotFile; // @synthesize snapshotFile=_snapshotFile;
 @property (readonly, nonatomic) id<HMDSnapshotRequestHandlerProtocol> snapshotRequestHandler; // @synthesize snapshotRequestHandler=_snapshotRequestHandler;
 @property (readonly) Class superclass;

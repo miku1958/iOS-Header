@@ -17,6 +17,7 @@
     BOOL isVideoSourceScreen;
     BOOL isDuplexAudioOnly;
     BOOL isDuplexVideoOnly;
+    BOOL isHalfDuplexAudio;
     BOOL isKeyExchangeEnabled;
     BOOL isRelayEnabled;
     BOOL isRelayForced;
@@ -37,6 +38,7 @@
 @property BOOL isDTLSEnabled; // @synthesize isDTLSEnabled;
 @property BOOL isDuplexAudioOnly; // @synthesize isDuplexAudioOnly;
 @property BOOL isDuplexVideoOnly; // @synthesize isDuplexVideoOnly;
+@property BOOL isHalfDuplexAudio; // @synthesize isHalfDuplexAudio;
 @property BOOL isKeyExchangeEnabled; // @synthesize isKeyExchangeEnabled;
 @property BOOL isRelayEnabled; // @synthesize isRelayEnabled;
 @property BOOL isRelayForced; // @synthesize isRelayForced;

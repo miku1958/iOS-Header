@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <IMFoundation/IMNetworkManager.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, NSNumber, NSRecursiveLock;
 
-@interface IMMobileNetworkManager : IMNetworkManager
+@interface IMMobileNetworkManager : NSObject
 {
     BOOL _registered;
     BOOL _shouldBringUpDataContext;
-    BOOL _isDataContextAttached;
+    BOOL _isDataPossible;
     BOOL _isDataContextActive;
     BOOL _isDataIndicatorNone;
     BOOL _isDataContextUsable;
     NSRecursiveLock *_lock;
     NSMutableSet *_cellAutoAssociationTokens;
-    NSMutableSet *_wiFiAutoAssociationTokens;
 }
 
 @property (readonly, nonatomic) BOOL autoAssociateCellular;
@@ -32,9 +31,9 @@
 @property (readonly, nonatomic) BOOL isAirplaneModeEnabled;
 @property (readonly, nonatomic) BOOL isDataConnectionActive;
 @property (nonatomic) BOOL isDataContextActive; // @synthesize isDataContextActive=_isDataContextActive;
-@property (nonatomic) BOOL isDataContextAttached; // @synthesize isDataContextAttached=_isDataContextAttached;
 @property (nonatomic) BOOL isDataContextUsable; // @synthesize isDataContextUsable=_isDataContextUsable;
 @property (nonatomic) BOOL isDataIndicatorNone; // @synthesize isDataIndicatorNone=_isDataIndicatorNone;
+@property (nonatomic) BOOL isDataPossible; // @synthesize isDataPossible=_isDataPossible;
 @property (readonly, nonatomic) BOOL isDataSwitchEnabled;
 @property (readonly, nonatomic) BOOL isHostingWiFiHotSpot;
 @property (readonly, nonatomic) BOOL isSIMLocked;
@@ -47,13 +46,13 @@
 @property (nonatomic) BOOL registered; // @synthesize registered=_registered;
 @property (readonly, nonatomic) BOOL requiresSIMInserted;
 @property (nonatomic) BOOL shouldBringUpDataContext; // @synthesize shouldBringUpDataContext=_shouldBringUpDataContext;
-@property (strong, nonatomic) NSMutableSet *wiFiAutoAssociationTokens; // @synthesize wiFiAutoAssociationTokens=_wiFiAutoAssociationTokens;
 @property (readonly, strong, nonatomic) NSNumber *wiFiScaledRSSI;
 @property (readonly, strong, nonatomic) NSNumber *wiFiScaledRate;
 @property (readonly, strong, nonatomic) NSNumber *wiFiSignalStrength;
 @property (readonly, nonatomic) BOOL willTryToAutoAssociateWiFiNetwork;
 @property (readonly, nonatomic) BOOL willTryToSearchForWiFiNetwork;
 
++ (id)sharedInstance;
 - (void)_adjustCellularAutoAssociation;
 - (BOOL)_isDataConnectionAvailable;
 - (BOOL)_legacy_inValidSIMState;
@@ -63,7 +62,6 @@
 - (void)addCellularAutoAssociationClientToken:(id)arg1;
 - (void)addFastDormancyDisableToken:(id)arg1;
 - (void)addWiFiAutoAssociationClientToken:(id)arg1;
-- (void)cutWiFiManagerLinkDidChange:(id)arg1 context:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)removeCellularAutoAssociationClientToken:(id)arg1;

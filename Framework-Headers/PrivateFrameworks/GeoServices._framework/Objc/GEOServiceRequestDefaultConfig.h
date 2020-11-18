@@ -21,14 +21,10 @@
 
 - (id)additionalHTTPHeaders;
 - (id)additionalURLQueryItems;
-- (int)dataRequestKindForRequest:(id)arg1;
+- (CDStruct_d1a7ebee)dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
 - (id)debugRequestName;
-- (int)experimentDispatcherRequestTypeForRequest:(id)arg1;
-- (long long)experimentType;
 - (unsigned char)requestCounterInfoTypeForRequest:(id)arg1;
 - (id)serviceTypeNumber;
-- (BOOL)shouldThrottleRequests;
-- (id)throttleKey;
 - (unsigned long long)urlType;
 
 @end

@@ -13,8 +13,10 @@
 
 @interface PXPlacesSnapshotFactory : NSObject <PHPhotoLibraryChangeObserver>
 {
-    NSString *_cachedFilePath;
-    UIImage *_cachedSnapshotImage;
+    NSString *_cachedFilePathLight;
+    NSString *_cachedFilePathDark;
+    UIImage *_cachedSnapshotImageLight;
+    UIImage *_cachedSnapshotImageDark;
     NSString *_cachedSnapshotImageIdentifier;
     UIImage *_placeholderImage;
     long long _cachedCount;
@@ -23,6 +25,7 @@
     NSObject<OS_dispatch_queue> *_concurentQueue;
     BOOL _isRegisteredForPhotoLibraryChanges;
     BOOL _countCacheInvalidated;
+    long long _currentUserInterfaceStyle;
     id<PXPlacesSnapshotFactoryDelegate> _delegate;
     PHAssetCollection *_placesCollection;
     PHAsset *_snapshottedAsset;
@@ -35,6 +38,7 @@
 @property (strong, nonatomic) NSTimer *assetCountChangedTimer; // @synthesize assetCountChangedTimer=_assetCountChangedTimer;
 @property (strong, nonatomic) PHFetchResult *assetCountFetchResult; // @synthesize assetCountFetchResult=_assetCountFetchResult;
 @property (nonatomic) BOOL countCacheInvalidated; // @synthesize countCacheInvalidated=_countCacheInvalidated;
+@property (nonatomic) long long currentUserInterfaceStyle; // @synthesize currentUserInterfaceStyle=_currentUserInterfaceStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXPlacesSnapshotFactoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -60,7 +64,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)photoLibraryDidChange:(id)arg1;
-- (void)removePreviousCachedImage;
+- (void)removePreviousCachedImages;
 - (void)requestAssetCountWithForcedRefresh:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestMapSnapshotForQuery:(id)arg1 snapshotOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestPlacesImageOfAsset:(id)arg1 withSnapshotOptions:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;

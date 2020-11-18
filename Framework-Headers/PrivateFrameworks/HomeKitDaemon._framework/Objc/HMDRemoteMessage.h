@@ -10,16 +10,16 @@
 
 @interface HMDRemoteMessage : HMFMessage
 {
+    double _remoteTimeout;
     long long _type;
     NSUUID *_transactionIdentifier;
-    double _timeout;
     HMDHomeKitVersion *_sourceVersion;
 }
 
 @property (nonatomic) unsigned long long restriction;
 @property (nonatomic, getter=isSecure) BOOL secure;
 @property (strong, nonatomic) HMDHomeKitVersion *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
-@property (readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
+@property (readonly, nonatomic) double timeout; // @synthesize timeout=_remoteTimeout;
 @property (copy, nonatomic) NSUUID *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 @property (nonatomic) long long type; // @synthesize type=_type;
 

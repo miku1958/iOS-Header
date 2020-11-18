@@ -6,10 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSLayoutConstraint, UITextView, _HKClinicalBulletedListLayoutManager;
+@class HKSource, NSLayoutConstraint, UITextView, _HKClinicalBulletedListLayoutManager;
 
 @interface HKClinicalAuthorizationPrivacyDetailsCell : UITableViewCell
 {
+    HKSource *_source;
     NSLayoutConstraint *_superviewTopToContentsTextViewFirstBaselineConstraint;
     NSLayoutConstraint *_contentsTextViewLastBaselineToSuperviewBottomConstraint;
     UITextView *_contentsTextView;
@@ -19,6 +20,7 @@
 @property (readonly, nonatomic) _HKClinicalBulletedListLayoutManager *bulletLayoutManager; // @synthesize bulletLayoutManager=_bulletLayoutManager;
 @property (readonly, nonatomic) UITextView *contentsTextView; // @synthesize contentsTextView=_contentsTextView;
 @property (readonly, nonatomic) NSLayoutConstraint *contentsTextViewLastBaselineToSuperviewBottomConstraint; // @synthesize contentsTextViewLastBaselineToSuperviewBottomConstraint=_contentsTextViewLastBaselineToSuperviewBottomConstraint;
+@property (weak, nonatomic) HKSource *source; // @synthesize source=_source;
 @property (readonly, nonatomic) NSLayoutConstraint *superviewTopToContentsTextViewFirstBaselineConstraint; // @synthesize superviewTopToContentsTextViewFirstBaselineConstraint=_superviewTopToContentsTextViewFirstBaselineConstraint;
 
 - (void).cxx_destruct;

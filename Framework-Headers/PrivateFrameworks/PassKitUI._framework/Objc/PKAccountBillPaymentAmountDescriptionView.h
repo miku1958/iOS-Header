@@ -23,6 +23,7 @@
     PKBillPaymentSuggestedAmountList *_suggestionList;
     PKAccount *_account;
     BOOL _showDescriptionLabels;
+    BOOL _showDescriptionSubtitle;
     id<PKAccountBillPaymentAmountDescriptionViewDelegate> _delegate;
     PKAccountBillPaymentAmountContainerView *_amountContainerView;
     NSString *_titleText;
@@ -42,16 +43,17 @@
 @property (copy, nonatomic) NSDecimalNumber *minimumAmount; // @synthesize minimumAmount=_minimumAmount;
 @property (nonatomic) BOOL showAmount;
 @property (nonatomic) BOOL showDescriptionLabels; // @synthesize showDescriptionLabels=_showDescriptionLabels;
+@property (nonatomic) BOOL showDescriptionSubtitle; // @synthesize showDescriptionSubtitle=_showDescriptionSubtitle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 
 - (void).cxx_destruct;
-- (BOOL)_currentStatementIsLastMonthsStatement;
 - (void)_enteredAmountDidChangeTo:(id)arg1;
 - (BOOL)_isEnteredAmountValid;
 - (id)_keypadSuggestions;
 - (BOOL)_shouldShakeWithNewAmount:(id)arg1;
 - (id)_sugestedAmountDescriptionAttributedString;
+- (void)_updateDescriptionAlpha;
 - (void)_updateEnteredAmount:(id)arg1;
 - (void)dismissKeyboard;
 - (BOOL)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;

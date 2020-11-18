@@ -10,16 +10,17 @@
 
 @interface CKDBackingAccount : NSObject
 {
-    BOOL _canAuthWithCloudKit;
+    BOOL _isPrimaryEmailVerified;
 }
 
-@property (readonly, nonatomic) BOOL canAuthWithCloudKit; // @synthesize canAuthWithCloudKit=_canAuthWithCloudKit;
 @property (readonly, nonatomic) NSString *displayedHostname;
 @property (readonly, nonatomic) NSString *dsid;
 @property (readonly, nonatomic) NSPersonNameComponents *fullName;
 @property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isFakeAccount;
+@property (readonly, nonatomic) BOOL isPrimaryEmailVerified; // @synthesize isPrimaryEmailVerified=_isPrimaryEmailVerified;
+@property (readonly, nonatomic) NSString *personaIdentifier;
 @property (readonly, nonatomic) NSString *primaryEmail;
 @property (readonly, nonatomic) NSURL *privateCloudDBURL;
 @property (readonly, nonatomic) NSURL *privateCodeServiceURL;
@@ -35,6 +36,7 @@
 + (Class)_platformBackingAccountClass;
 + (id)accountQueue;
 + (id)accountWithIdentifier:(id)arg1 inStore:(id)arg2;
++ (void)deviceCountForAccount:(id)arg1 ignoreCache:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)ensureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
 + (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
 + (id)primaryAccountInStore:(id)arg1;
@@ -43,14 +45,16 @@
 - (BOOL)canRenew;
 - (id)ckAccount;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
-- (void)displayAuthenticationPromptWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)deviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)iCloudAuthTokenWithError:(id *)arg1;
 - (id)init;
 - (BOOL)isDataclassEnabled:(id)arg1;
 - (id)parentAppleAccount;
+- (id)privateCodeServiceURLPreferringGateway:(BOOL)arg1;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)urlForDataclass:(id)arg1;
+- (id)urlForDataclass:(id)arg1 preferringGateway:(BOOL)arg2;
 - (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

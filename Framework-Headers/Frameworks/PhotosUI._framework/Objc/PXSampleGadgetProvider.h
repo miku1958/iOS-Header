@@ -13,17 +13,19 @@
     BOOL _includeHorizontal;
     BOOL _hasLoadedData;
     NSArray *_sampleGadgets;
+    double _minimumHeight;
 }
 
 @property (nonatomic) BOOL hasLoadedData; // @synthesize hasLoadedData=_hasLoadedData;
 @property (readonly, nonatomic) BOOL includeHorizontal; // @synthesize includeHorizontal=_includeHorizontal;
+@property (nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property (strong, nonatomic) NSArray *sampleGadgets; // @synthesize sampleGadgets=_sampleGadgets;
 
 - (void).cxx_destruct;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
-- (id)initWithHorizontalGadget:(BOOL)arg1;
+- (id)initWithMinimumHeight:(double)arg1;
 - (void)loadDataForGadgets;
 
 @end

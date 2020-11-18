@@ -8,23 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPlaceResult;
+@class GEOPlaceResult, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOCluster : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _indexs;
     GEOPlaceResult *_container;
+    struct {
+        unsigned int read_indexs:1;
+        unsigned int read_container:1;
+        unsigned int wrote_indexs:1;
+        unsigned int wrote_container:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPlaceResult *container; // @synthesize container=_container;
+@property (strong, nonatomic) GEOPlaceResult *container;
 @property (readonly, nonatomic) BOOL hasContainer;
 @property (readonly, nonatomic) int *indexs;
 @property (readonly, nonatomic) unsigned long long indexsCount;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsIndex:(int)arg1;
+- (void)_readContainer;
+- (void)_readIndexs;
 - (void)addIndex:(int)arg1;
 - (void)clearIndexs;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -34,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (int)indexAtIndex:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setIndexs:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

@@ -24,6 +24,7 @@
 - (void)dismissServerProvidedUIWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentBiometricOrPasscodeValidationForAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 

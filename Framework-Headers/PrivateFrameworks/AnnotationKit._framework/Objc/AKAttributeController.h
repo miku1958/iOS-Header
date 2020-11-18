@@ -50,11 +50,14 @@
 - (void)_restorePersistedAttributes;
 - (void)_syncAttributesFromSelectedAnnotationsToUI;
 - (void)_syncAttributesFromSenderToSelfAndSelectedAnnotations:(id)arg1 segment:(long long)arg2;
+- (void)_updateInk;
 - (void)_updateStateOnSender:(id)arg1 segment:(long long)arg2;
 - (BOOL)_updateStateOnSender:(id)arg1 segment:(long long)arg2 fromSelectedAnnotations:(id)arg3;
 - (void)_updateStateOnSenderFromSelf:(id)arg1 segment:(long long)arg2;
+- (void)annotationEditingDidEnd;
 - (void)beganDrawingStroke;
 - (void)didEndOrCancelStroke;
+- (void)forceHideRuler;
 - (id)initWithController:(id)arg1;
 - (BOOL)isAttributeSenderEnabled:(id)arg1 segment:(long long)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -65,6 +68,7 @@
 - (BOOL)strokeColorIsEqualTo:(id)arg1;
 - (void)syncFillColorOnSelectionToUI;
 - (void)syncStrokeColorOnSelectionToUI;
+- (void)toggleRuler;
 - (void)updateAttributeSenderState:(id)arg1 segment:(long long)arg2 enabled:(BOOL)arg3;
 - (void)updateInkIfNeeded:(id)arg1;
 

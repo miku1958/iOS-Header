@@ -7,17 +7,24 @@
 #import <UIKit/UINavigationController.h>
 
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
+#import <HomeUI/HUPresentationDelegate-Protocol.h>
 
 @class NSString;
 
-@interface UINavigationController (HUPreloadingNavigationPresentation) <HUPreloadableViewController>
+@interface UINavigationController (HUPreloadingNavigationPresentation) <HUPreloadableViewController, HUPresentationDelegate>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
+- (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (id)hu_preloadContent;
+- (id)hu_presentedItem;
 - (id)hu_pushPreloadableViewController:(id)arg1 animated:(BOOL)arg2;
 @end
 

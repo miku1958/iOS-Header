@@ -16,9 +16,9 @@
 @property (strong, nonatomic) NSMutableDictionary *servingAdSpaces; // @synthesize servingAdSpaces=_servingAdSpaces;
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (void)actionViewController:(id)arg1 dismissForIdentifier:(id)arg2;
 - (void)cancelRequestForActionViewControllerForAdSpace:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)requestActionViewControllerForAdSpace:(id)arg1;
 

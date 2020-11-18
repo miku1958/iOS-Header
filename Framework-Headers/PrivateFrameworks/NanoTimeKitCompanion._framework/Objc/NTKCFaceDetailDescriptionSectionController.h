@@ -33,7 +33,7 @@
 - (id)_faceDescription;
 - (void)descriptionCellDidExpand:(id)arg1;
 - (void)faceDidChange;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 external:(BOOL)arg4;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 external:(BOOL)arg4;
 - (id)titleForHeader;
 
 @end

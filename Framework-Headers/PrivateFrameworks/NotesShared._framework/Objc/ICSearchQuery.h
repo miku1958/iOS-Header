@@ -7,27 +7,37 @@
 #import <objc/NSObject.h>
 
 @class CSSearchQuery, NSArray, NSDictionary, NSString;
+@protocol OS_dispatch_semaphore;
 
 @interface ICSearchQuery : NSObject
 {
+    BOOL _wasForceStopped;
+    BOOL _modernResultsOnly;
     NSDictionary *_queryResults;
     NSString *_highlightString;
     unsigned long long _rankingInterpretation;
     NSString *_queryString;
     NSArray *_rankingQueries;
     CSSearchQuery *_searchQuery;
+    NSObject<OS_dispatch_semaphore> *_synchronousSemaphore;
 }
 
 @property (strong, nonatomic) NSString *highlightString; // @synthesize highlightString=_highlightString;
+@property (nonatomic) BOOL modernResultsOnly; // @synthesize modernResultsOnly=_modernResultsOnly;
 @property (strong, nonatomic) NSDictionary *queryResults; // @synthesize queryResults=_queryResults;
 @property (copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (nonatomic) unsigned long long rankingInterpretation; // @synthesize rankingInterpretation=_rankingInterpretation;
 @property (strong, nonatomic) NSArray *rankingQueries; // @synthesize rankingQueries=_rankingQueries;
 @property (strong, nonatomic) CSSearchQuery *searchQuery; // @synthesize searchQuery=_searchQuery;
+@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *synchronousSemaphore; // @synthesize synchronousSemaphore=_synchronousSemaphore;
+@property (nonatomic) BOOL wasForceStopped; // @synthesize wasForceStopped=_wasForceStopped;
 
++ (id)defaultAttributesToReturnFromCoreSpotlight;
 - (void).cxx_destruct;
 - (void)cancel;
-- (id)initWithQueryString:(id)arg1 rankingQueries:(id)arg2 rankingInterpretation:(unsigned long long)arg3 highlightString:(id)arg4;
+- (id)description;
+- (void)forceStop;
+- (id)initWithQueryString:(id)arg1 rankingQueries:(id)arg2 rankingInterpretation:(unsigned long long)arg3 highlightString:(id)arg4 modernResultsOnly:(BOOL)arg5;
 - (BOOL)run:(id *)arg1;
 - (void)setup;
 

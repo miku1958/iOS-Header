@@ -6,35 +6,34 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaClientEventMetadata-Protocol.h>
 
 @class NSData, NSString;
 
-@interface SISchemaClientEventMetadata : PBCodable <NSCopying>
+@interface SISchemaClientEventMetadata : PBCodable <SISchemaClientEventMetadata, NSSecureCoding>
 {
-    long long _eventGeneratedRelativeToBootTimeTimestampNs;
-    NSString *_eventGeneratedTimestampRefId;
     NSData *_turnID;
-    struct {
-        unsigned int eventGeneratedRelativeToBootTimeTimestampNs:1;
-    } _has;
+    NSData *_siriDeviceID;
+    NSString *_eventGeneratedTimestampRefId;
+    long long _eventGeneratedRelativeToBootTimeTimestampNs;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long eventGeneratedRelativeToBootTimeTimestampNs; // @synthesize eventGeneratedRelativeToBootTimeTimestampNs=_eventGeneratedRelativeToBootTimeTimestampNs;
-@property (strong, nonatomic) NSString *eventGeneratedTimestampRefId; // @synthesize eventGeneratedTimestampRefId=_eventGeneratedTimestampRefId;
-@property (nonatomic) BOOL hasEventGeneratedRelativeToBootTimeTimestampNs;
-@property (readonly, nonatomic) BOOL hasEventGeneratedTimestampRefId;
-@property (readonly, nonatomic) BOOL hasTurnID;
-@property (strong, nonatomic) NSData *turnID; // @synthesize turnID=_turnID;
+@property (copy, nonatomic) NSString *eventGeneratedTimestampRefId; // @synthesize eventGeneratedTimestampRefId=_eventGeneratedTimestampRefId;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSData *siriDeviceID; // @synthesize siriDeviceID=_siriDeviceID;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSData *turnID; // @synthesize turnID=_turnID;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

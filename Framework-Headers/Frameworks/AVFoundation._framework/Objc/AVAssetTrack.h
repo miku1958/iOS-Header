@@ -54,13 +54,15 @@
 - (struct CGSize)dimensions;
 - (float)estimatedDataRate;
 - (id)extendedLanguageTag;
-- (void)finalize;
 - (id)formatDescriptions;
+- (BOOL)hasAudibleBooksContent;
+- (BOOL)hasAudioSampleDependencies;
 - (BOOL)hasMediaCharacteristic:(id)arg1;
 - (BOOL)hasMediaCharacteristics:(id)arg1;
 - (BOOL)hasProtectedContent;
 - (unsigned long long)hash;
 - (id)init;
+- (BOOL)isAudibleBooksContentAuthorized;
 - (BOOL)isDecodable;
 - (BOOL)isEnabled;
 - (BOOL)isEqual:(id)arg1;
@@ -68,6 +70,7 @@
 - (BOOL)isPlayable;
 - (BOOL)isSelfContained;
 - (id)languageCode;
+- (CDStruct_1b6d18a9)latentBaseDecodeTimeStampOfFirstTrackFragment;
 - (long long)layer;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)locale;
@@ -82,6 +85,7 @@
 - (struct CGSize)naturalSize;
 - (int)naturalTimeScale;
 - (float)nominalFrameRate;
+- (float)peakDataRate;
 - (int)playabilityValidationResult;
 - (struct CGAffineTransform)preferredTransform;
 - (float)preferredVolume;

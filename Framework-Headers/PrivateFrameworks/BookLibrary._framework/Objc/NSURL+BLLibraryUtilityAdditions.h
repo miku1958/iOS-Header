@@ -7,6 +7,15 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (BLLibraryUtilityAdditions)
+- (BOOL)bl_boolFromResourceValue:(id)arg1;
+- (BOOL)bl_isDownloaded;
+- (BOOL)bl_isDownloadedWithResourceValue:(id)arg1;
+- (BOOL)bl_isDownloading;
+- (BOOL)bl_isUbiquitous;
+- (BOOL)bl_isUbiquitousPromise;
+- (BOOL)hasUnresolvedConflicts;
 - (id)identifierFromPermlink;
+- (BOOL)isUploaded;
+- (BOOL)isUploading;
 @end
 

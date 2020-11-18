@@ -8,12 +8,10 @@
 
 @interface ICAttachmentWebModel : ICAttachmentModel
 {
-    id _reservedForWebView;
     CDUnknownBlockType _pendingFetchCompletionHandler;
 }
 
 @property (copy) CDUnknownBlockType pendingFetchCompletionHandler; // @synthesize pendingFetchCompletionHandler=_pendingFetchCompletionHandler;
-@property (strong) id reservedForWebView; // @synthesize reservedForWebView=_reservedForWebView;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;

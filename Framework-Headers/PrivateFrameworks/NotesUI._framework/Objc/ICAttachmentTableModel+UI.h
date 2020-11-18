@@ -10,6 +10,9 @@
 - (id)activityItems;
 - (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
 - (BOOL)canConvertToHTMLForSharing;
+- (void)drawPreviewInRect:(struct CGRect)arg1;
 - (id)htmlString;
+- (struct CGSize)previewInAvailableSize:(struct CGSize)arg1 shouldDraw:(BOOL)arg2;
+- (id)quicklookPreviewItems;
 @end
 

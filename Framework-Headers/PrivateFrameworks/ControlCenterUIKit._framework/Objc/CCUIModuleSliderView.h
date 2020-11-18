@@ -4,108 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <ControlCenterUIKit/CCUISteppedSliderView.h>
 
-#import <ControlCenterUIKit/CCUIContentClipping-Protocol.h>
-#import <ControlCenterUIKit/CCUIContentModuleExpandedStateListener-Protocol.h>
-#import <ControlCenterUIKit/CCUIContentModuleTopLevelGestureProvider-Protocol.h>
-#import <ControlCenterUIKit/CCUIGroupRendering-Protocol.h>
-#import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
-
-@class CALayer, CCUICAPackageDescription, CCUICAPackageView, NSArray, NSString, NSTimer, UIImage, UIImageView, UIPanGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer, UIView, _UIEdgeFeedbackGenerator;
-
-@interface CCUIModuleSliderView : UIControl <UIGestureRecognizerDelegate, CCUIContentModuleTopLevelGestureProvider, CCUIContentModuleExpandedStateListener, CCUIContentClipping, CCUIGroupRendering>
+@interface CCUIModuleSliderView : CCUISteppedSliderView
 {
-    UIImageView *_glyphImageView;
-    CCUICAPackageView *_glyphPackageView;
-    CCUICAPackageView *_compensatingGlyphPackageView;
-    NSArray *_stepBackgroundViews;
-    UIView *_continuousValueClippingView;
-    UIView *_continuousValueBackgroundView;
-    NSArray *_separatorViews;
-    double _startingHeight;
-    float _startingValue;
-    BOOL _gestureStartedInside;
-    NSTimer *_updatesCommitTimer;
-    float _previousValue;
-    UIPanGestureRecognizer *_valueChangeGestureRecognizer;
-    UITapGestureRecognizer *_tapGestureRecognizer;
-    UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
-    _UIEdgeFeedbackGenerator *_edgeFeedbackGenerator;
-    BOOL _glyphVisible;
-    BOOL _throttleUpdates;
-    BOOL _firstStepIsDisabled;
-    BOOL _firstStepIsOff;
-    BOOL _interactiveWhenUnexpanded;
-    float _value;
-    UIImage *_glyphImage;
-    CCUICAPackageDescription *_glyphPackageDescription;
-    NSString *_glyphState;
-    double _continuousSliderCornerRadius;
-    unsigned long long _numberOfSteps;
-    unsigned long long _step;
 }
-
-@property (readonly, nonatomic, getter=isContentClippingRequired) BOOL contentClippingRequired;
-@property (nonatomic) double continuousSliderCornerRadius; // @synthesize continuousSliderCornerRadius=_continuousSliderCornerRadius;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL firstStepIsDisabled; // @synthesize firstStepIsDisabled=_firstStepIsDisabled;
-@property (nonatomic) BOOL firstStepIsOff; // @synthesize firstStepIsOff=_firstStepIsOff;
-@property (strong, nonatomic) UIImage *glyphImage; // @synthesize glyphImage=_glyphImage;
-@property (strong, nonatomic) CCUICAPackageDescription *glyphPackageDescription; // @synthesize glyphPackageDescription=_glyphPackageDescription;
-@property (strong, nonatomic) NSString *glyphState; // @synthesize glyphState=_glyphState;
-@property (nonatomic, getter=isGlyphVisible) BOOL glyphVisible; // @synthesize glyphVisible=_glyphVisible;
-@property (readonly, nonatomic, getter=isGroupRenderingRequired) BOOL groupRenderingRequired;
-@property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isInteractiveWhenUnexpanded) BOOL interactiveWhenUnexpanded; // @synthesize interactiveWhenUnexpanded=_interactiveWhenUnexpanded;
-@property (nonatomic) unsigned long long numberOfSteps; // @synthesize numberOfSteps=_numberOfSteps;
-@property (readonly, nonatomic) CALayer *punchOutRootLayer;
-@property (nonatomic) unsigned long long step; // @synthesize step=_step;
-@property (readonly, nonatomic, getter=isStepped) BOOL stepped;
-@property (readonly) Class superclass;
-@property (nonatomic) BOOL throttleUpdates; // @synthesize throttleUpdates=_throttleUpdates;
-@property (readonly, nonatomic) NSArray *topLevelBlockingGestureRecognizers;
-@property (readonly, nonatomic) NSArray *topLevelGestureRecognizers;
-@property (nonatomic) float value; // @synthesize value=_value;
-
-- (void).cxx_destruct;
-- (void)_beginTrackingWithGestureRecognizer:(id)arg1;
-- (void)_configureCompensatingGlyphPackageView:(id)arg1;
-- (void)_configureGlyphPackageView:(id)arg1;
-- (void)_continueTrackingWithGestureRecognizer:(id)arg1;
-- (id)_continuousValueClippingView;
-- (id)_createBackgroundViewForStep:(unsigned long long)arg1;
-- (void)_createContinuousSliderClippingViewWithBackgroundView:(id)arg1;
-- (id)_createSeparatorView;
-- (void)_createSeparatorViewsForNumberOfSteps:(unsigned long long)arg1;
-- (void)_createStepViewsForNumberOfSteps:(unsigned long long)arg1;
-- (void)_endTrackingWithGestureRecognizer:(id)arg1;
-- (double)_fullStepHeight;
-- (void)_handleValueChangeGestureRecognizer:(id)arg1;
-- (void)_handleValueTapGestureRecognizer:(id)arg1;
-- (double)_heightForStep:(unsigned long long)arg1;
-- (void)_layoutContinuousValueView;
-- (void)_layoutContinuousValueViewForValue:(float)arg1;
-- (void)_layoutValueViews;
-- (void)_layoutValueViewsForStepChange;
-- (void)_layoutValueViewsForStepChange:(BOOL)arg1;
-- (id)_newGlyphPackageView;
-- (double)_sliderHeight;
-- (double)_sliderHeightForValue:(float)arg1;
-- (unsigned long long)_stepFromValue:(float)arg1;
-- (unsigned long long)_stepFromValue:(float)arg1 avoidCurrentStep:(BOOL)arg2;
-- (void)_updateStepFromValue:(float)arg1 playHaptic:(BOOL)arg2;
-- (void)_updateStepFromValue:(float)arg1 playHaptic:(BOOL)arg2 toggleCurrentStep:(BOOL)arg3;
-- (void)_updateValueForPanGestureRecognizer:(id)arg1 withAbsolutePosition:(BOOL)arg2 forContinuedGesture:(BOOL)arg3;
-- (float)_valueForPanGestureRecognizer:(id)arg1 withAbsoluteReference:(BOOL)arg2;
-- (float)_valueForTouchLocation:(struct CGPoint)arg1;
-- (float)_valueForTouchTranslation:(struct CGPoint)arg1;
-- (float)_valueFromStep:(unsigned long long)arg1;
-- (void)contentModuleWillTransitionToExpandedContentMode:(BOOL)arg1;
-- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
 
 @end
 

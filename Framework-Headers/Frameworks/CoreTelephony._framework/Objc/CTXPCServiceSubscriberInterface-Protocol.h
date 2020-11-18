@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CTServiceDescriptor, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSData, NSDictionary, NSString;
+@class CTServiceDescriptor, CTSubscriberAuthDataHolder, CTSubscriberAuthRequest, CTXPCServiceSubscriptionContext, NSData, NSString;
 
 @protocol CTXPCServiceSubscriberInterface
 - (void)SIMUnlockProcedureDidComplete;
@@ -20,12 +20,13 @@
 - (void)copyMobileSubscriberCountryCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileSubscriberIdentity:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copyMobileSubscriberIsoCountryCode:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
+- (void)copyMobileSubscriberIsoSubregionCode:(NSString *)arg1 MNC:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)copyMobileSubscriberNetworkCode:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)copySIMIdentity:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)createEncryptedIdentity:(CTXPCServiceSubscriptionContext *)arg1 identity:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)evaluateMobileSubscriberIdentity:(CTXPCServiceSubscriptionContext *)arg1 identity:(NSData *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)fetchSIMLockValue:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
-- (void)generateUICCAuthenticationInfo:(CTXPCServiceSubscriptionContext *)arg1 authParams:(NSDictionary *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)generateAuthenticationInfoUsingSim:(CTXPCServiceSubscriptionContext *)arg1 authParams:(CTSubscriberAuthDataHolder *)arg2 completion:(void (^)(CTSubscriberAuthDataHolder *, NSError *))arg3;
 - (void)getMobileSubscriberHomeCountryList:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getRemainingPINAttemptCount:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
 - (void)getRemainingPUKAttemptCount:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
@@ -33,13 +34,14 @@
 - (void)getSIMTrayStatus:(void (^)(NSString *, NSError *))arg1;
 - (void)getShortLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getSimLabel:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSimLabel *, NSError *))arg2;
+- (void)getTypeAllocationCode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)getUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
+- (void)getUserDefaultVoiceSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
 - (void)isEsimFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(long long, NSError *))arg2;
 - (void)promptForSIMUnlock:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)refreshUserAuthToken:(CTServiceDescriptor *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)saveSIMLockValue:(CTXPCServiceSubscriptionContext *)arg1 enabled:(BOOL)arg2 pin:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setActiveUserDataSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)setAllowedToLaunchSimUnlockDuringBuddy:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setDefaultVoice:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setLabel:(CTXPCServiceSubscriptionContext *)arg1 label:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)unlockPIN:(CTXPCServiceSubscriptionContext *)arg1 pin:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, NSNumber, NSSet, NSString, VUIContentRating, VUIMediaEntityKind, VUIMediaEntityType, VUIMediaLibrary;
+@class NSDate, NSMutableDictionary, NSNumber, NSSet, NSString, VUIMediaEntityKind, VUIMediaEntityType, VUIMediaLibrary, _TVContentRating;
 @protocol VUIMediaEntityIdentifier, VUIMediaEntityIdentifierInternal;
 
 @interface VUIMediaEntity : NSObject
@@ -29,7 +29,7 @@
 @property (readonly, copy, nonatomic) NSString *canonicalID;
 @property (readonly, copy, nonatomic) NSNumber *colorCapability;
 @property (readonly, copy, nonatomic) NSString *contentDescription;
-@property (readonly, copy, nonatomic) VUIContentRating *contentRating;
+@property (readonly, copy, nonatomic) _TVContentRating *contentRating;
 @property (readonly, copy, nonatomic) NSString *coverArtImageIdentifier;
 @property (strong, nonatomic) NSMutableDictionary *firstAccessPropertiesCache; // @synthesize firstAccessPropertiesCache=_firstAccessPropertiesCache;
 @property (readonly, copy, nonatomic) NSString *genreTitle;

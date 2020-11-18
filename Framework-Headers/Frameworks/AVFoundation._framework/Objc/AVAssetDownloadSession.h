@@ -28,6 +28,7 @@
 + (id)assetDownloadSessionWithAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 + (id)assetDownloadSessionWithDownloadToken:(unsigned long long)arg1;
 + (id)assetDownloadSessionWithURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
++ (void)registerDownloadLocation:(id)arg1 forURLAsset:(id)arg2;
 - (void)_addFigAssetDownloaderListeners;
 - (void)_addFigAssetListeners;
 - (void)_addFigPlaybackItemListeners;
@@ -54,7 +55,6 @@
 - (id)_verifyDownloadConfigurationForAssetType;
 - (id)_weakReference;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithAsset:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (id)initWithDownloadToken:(unsigned long long)arg1;

@@ -13,11 +13,9 @@
     NSString *_input;
     NSString *_uuid;
     unsigned long long _triggerEvent;
-    unsigned long long _queryId;
 }
 
 @property (copy, nonatomic) NSString *input; // @synthesize input=_input;
-@property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (nonatomic) unsigned long long triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 

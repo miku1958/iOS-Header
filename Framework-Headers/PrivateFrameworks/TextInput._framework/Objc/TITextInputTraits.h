@@ -29,6 +29,9 @@
             unsigned int smartQuotesEnabled:1;
             unsigned int smartDashesEnabled:1;
             unsigned int disablePrediction:1;
+            unsigned int smartInsertDeleteType:2;
+            unsigned int smartQuotesType:2;
+            unsigned int smartDashesType:2;
         } fields;
     } _mask;
     NSString *_textContentType;
@@ -45,8 +48,11 @@
 @property (nonatomic) unsigned long long returnKeyType;
 @property (nonatomic) BOOL secureTextEntry;
 @property (nonatomic) BOOL smartDashesEnabled;
+@property (nonatomic) unsigned long long smartDashesType;
 @property (nonatomic) BOOL smartInsertDeleteEnabled;
+@property (nonatomic) unsigned long long smartInsertDeleteType;
 @property (nonatomic) BOOL smartQuotesEnabled;
+@property (nonatomic) unsigned long long smartQuotesType;
 @property (nonatomic) unsigned long long spellCheckingType;
 @property (copy, nonatomic) NSString *textContentType; // @synthesize textContentType=_textContentType;
 @property (nonatomic) unsigned long long textScriptType;

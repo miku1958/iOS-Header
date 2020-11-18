@@ -11,14 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequestAccountConfig : PBCodable <NSCopying>
 {
+    long long _lastWebActivityUTCMills;
     BOOL _corporateSharingEnabled;
     struct {
+        unsigned int lastWebActivityUTCMills:1;
         unsigned int corporateSharingEnabled:1;
     } _has;
 }
 
 @property (nonatomic) BOOL corporateSharingEnabled; // @synthesize corporateSharingEnabled=_corporateSharingEnabled;
 @property (nonatomic) BOOL hasCorporateSharingEnabled;
+@property (nonatomic) BOOL hasLastWebActivityUTCMills;
+@property (nonatomic) long long lastWebActivityUTCMills; // @synthesize lastWebActivityUTCMills=_lastWebActivityUTCMills;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

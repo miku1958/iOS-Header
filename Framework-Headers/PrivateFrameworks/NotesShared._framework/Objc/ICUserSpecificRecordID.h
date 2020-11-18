@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class CKRecordID, NSString;
 
 @interface ICUserSpecificRecordID : NSObject
 {
@@ -19,9 +19,13 @@
 }
 
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
+@property (readonly, nonatomic) CKRecordID *recordID;
+@property (readonly, nonatomic) NSString *recordName;
 @property (strong, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
 @property (strong, nonatomic) NSString *shareOwnerName; // @synthesize shareOwnerName=_shareOwnerName;
+@property (readonly, nonatomic) CKRecordID *sharedRecordID;
 @property (strong, nonatomic) NSString *sharedRecordName; // @synthesize sharedRecordName=_sharedRecordName;
+@property (readonly, nonatomic) NSString *sharedRecordType;
 @property (strong, nonatomic) NSString *userSpecificOwnerName; // @synthesize userSpecificOwnerName=_userSpecificOwnerName;
 @property (strong, nonatomic) NSString *zoneName; // @synthesize zoneName=_zoneName;
 
@@ -31,10 +35,6 @@
 - (void).cxx_destruct;
 - (id)initWithRecordName:(id)arg1;
 - (id)initWithRecordType:(id)arg1 shareOwnerName:(id)arg2 databaseScope:(long long)arg3 zoneName:(id)arg4 userSpecificOwnerName:(id)arg5 sharedRecordName:(id)arg6;
-- (id)recordID;
-- (id)recordName;
-- (id)sharedRecordID;
-- (id)sharedRecordType;
 
 @end
 

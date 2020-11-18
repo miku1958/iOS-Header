@@ -18,18 +18,18 @@
     BOOL _tapped;
     BOOL _visible;
     struct {
-        unsigned int proactiveItemType:1;
-        unsigned int timeSinceStart:1;
-        unsigned int deleted:1;
-        unsigned int edited:1;
-        unsigned int shared:1;
-        unsigned int tapped:1;
-        unsigned int visible:1;
-    } _has;
+        unsigned int has_proactiveItemType:1;
+        unsigned int has_timeSinceStart:1;
+        unsigned int has_deleted:1;
+        unsigned int has_edited:1;
+        unsigned int has_shared:1;
+        unsigned int has_tapped:1;
+        unsigned int has_visible:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL deleted; // @synthesize deleted=_deleted;
-@property (nonatomic) BOOL edited; // @synthesize edited=_edited;
+@property (nonatomic) BOOL deleted;
+@property (nonatomic) BOOL edited;
 @property (nonatomic) BOOL hasDeleted;
 @property (nonatomic) BOOL hasEdited;
 @property (nonatomic) BOOL hasProactiveItemType;
@@ -37,12 +37,13 @@
 @property (nonatomic) BOOL hasTapped;
 @property (nonatomic) BOOL hasTimeSinceStart;
 @property (nonatomic) BOOL hasVisible;
-@property (nonatomic) int proactiveItemType; // @synthesize proactiveItemType=_proactiveItemType;
-@property (nonatomic) BOOL shared; // @synthesize shared=_shared;
-@property (nonatomic) BOOL tapped; // @synthesize tapped=_tapped;
-@property (nonatomic) int timeSinceStart; // @synthesize timeSinceStart=_timeSinceStart;
-@property (nonatomic) BOOL visible; // @synthesize visible=_visible;
+@property (nonatomic) int proactiveItemType;
+@property (nonatomic) BOOL shared;
+@property (nonatomic) BOOL tapped;
+@property (nonatomic) int timeSinceStart;
+@property (nonatomic) BOOL visible;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsProactiveItemType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -52,6 +53,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)proactiveItemTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

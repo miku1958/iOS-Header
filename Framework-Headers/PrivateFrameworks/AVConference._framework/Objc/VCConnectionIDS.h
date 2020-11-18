@@ -8,13 +8,14 @@
 
 #import <AVConference/VCConnectionProtocol-Protocol.h>
 
-@class IDSDataChannelLinkContext, NSData, NSString, NSUUID;
+@class IDSDataChannelLinkContext, NSData, NSString, NSUUID, VCDatagramChannelIDS;
 
 __attribute__((visibility("hidden")))
 @interface VCConnectionIDS : NSObject <VCConnectionProtocol>
 {
     IDSDataChannelLinkContext *_linkContext;
     unsigned int _datagramChannelToken;
+    VCDatagramChannelIDS *_datagramChannel;
     int _priority;
     unsigned int _type;
     int _localCellTech;
@@ -22,20 +23,25 @@ __attribute__((visibility("hidden")))
     int _connectionMTU;
     unsigned int _uplinkBitrateCap;
     unsigned int _downlinkBitrateCap;
+    BOOL _isLocalConstrained;
+    BOOL _isRemoteConstrained;
 }
 
 @property (readonly) int connectionId;
 @property int connectionMTU;
 @property (readonly) NSUUID *connectionUUID;
+@property (readonly) VCDatagramChannelIDS *datagramChannel; // @synthesize datagramChannel=_datagramChannel;
 @property (readonly) unsigned int datagramChannelToken; // @synthesize datagramChannelToken=_datagramChannelToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property unsigned int downlinkBitrateCap; // @synthesize downlinkBitrateCap=_downlinkBitrateCap;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isIPv6;
+@property (readonly) BOOL isLocalConstrained; // @synthesize isLocalConstrained=_isLocalConstrained;
 @property (readonly) BOOL isLocalOnCellular;
 @property (readonly) BOOL isLocalOnWiFi;
 @property (readonly) BOOL isRelay;
+@property (readonly) BOOL isRemoteConstrained; // @synthesize isRemoteConstrained=_isRemoteConstrained;
 @property (readonly) BOOL isRemoteOnCellular;
 @property (readonly) BOOL isRemoteOnWiFi;
 @property (readonly) BOOL isVPN;
@@ -59,7 +65,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)getSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (id)initWithLinkContext:(id)arg1 dataChannelToken:(unsigned int)arg2;
+- (BOOL)isOnSameInterfacesAndQRSessionWithConnection:(id)arg1;
 - (BOOL)isOnSameInterfacesWithConnection:(id)arg1;
+- (BOOL)isOnSameQRSessionWithConnection:(id)arg1;
 - (BOOL)isSameAsConnection:(id)arg1;
 - (BOOL)matchesChannelTokenWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (BOOL)matchesSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;

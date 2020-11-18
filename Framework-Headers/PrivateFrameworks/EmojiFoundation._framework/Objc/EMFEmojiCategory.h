@@ -50,16 +50,12 @@
 + (void)insertToSortedCountries:(id)arg1 withAdditionalFlags:(id)arg2;
 + (id)insertionFlagsForCountryCodes:(id)arg1 inSortedCountryCodes:(id)arg2;
 + (id)localizedRecentsDescription;
-+ (id)localizedRecentsDescriptionForLocale:(id)arg1;
 + (id)localizedSkinToneEmojiDescription;
-+ (id)localizedSkinToneEmojiDescriptionForLocale:(id)arg1;
 + (id)stringToRegionalIndicatorString:(id)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)emojiTokensForLocaleData:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
-- (id)localizedNameForLocale:(id)arg1;
-- (id)shortLocalizedNameForLocale:(id)arg1;
 
 @end
 

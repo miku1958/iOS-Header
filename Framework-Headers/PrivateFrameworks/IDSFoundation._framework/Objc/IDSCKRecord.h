@@ -6,12 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class IDSCKRecordID;
+@protocol IDSCKRecordKeyValueSetting;
+
 @interface IDSCKRecord : NSObject
 {
+    IDSCKRecordID *_recordID;
+    id<IDSCKRecordKeyValueSetting> _encryptedValuesByKey;
 }
+
+@property (readonly, nonatomic) id<IDSCKRecordKeyValueSetting> encryptedValuesByKey; // @synthesize encryptedValuesByKey=_encryptedValuesByKey;
+@property (readonly, copy, nonatomic) IDSCKRecordID *recordID; // @synthesize recordID=_recordID;
 
 + (Class)__class;
 + (id)alloc;
+- (void).cxx_destruct;
 
 @end
 

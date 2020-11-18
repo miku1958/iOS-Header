@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class GEOApplicationAuditToken, MNLocation, MNNavigationSession, MNObserverHashTable;
+#import <Navigation/MNNavigationSessionObserver-Protocol.h>
+#import <Navigation/MNSessionUpdateManagerDelegate-Protocol.h>
 
-@interface MNLocationTracker : NSObject
+@class GEOApplicationAuditToken, MNLocation, MNNavigationSession, MNObserverHashTable, NSString;
+
+@interface MNLocationTracker : NSObject <MNNavigationSessionObserver, MNSessionUpdateManagerDelegate>
 {
     MNObserverHashTable *_safeDelegate;
     int _state;
@@ -19,20 +22,23 @@
 }
 
 @property (strong, nonatomic, getter=_auditToken, setter=_setAuditToken:) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasArrived;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isRerouting;
 @property (readonly, nonatomic) MNLocation *lastMatchedLocation; // @synthesize lastMatchedLocation=_lastMatchedLocation;
 @property (readonly, weak, nonatomic) MNNavigationSession *navigationSession; // @synthesize navigationSession=_navigationSession;
 @property (readonly, nonatomic) MNObserverHashTable *safeDelegate; // @synthesize safeDelegate=_safeDelegate;
 @property (readonly, nonatomic) BOOL shouldProjectAlongRoute;
 @property (nonatomic, setter=_setState:) int state; // @synthesize state=_state;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) int transportType;
 
 - (void).cxx_destruct;
-- (BOOL)_checkArrivalForLocation:(id)arg1;
-- (BOOL)_checkArrivalForLocation:(id)arg1 route:(id)arg2 destination:(id)arg3;
 - (void)_defaultsDidChange;
 - (id)_matchedLocationForLocation:(id)arg1;
-- (void)_roadFeaturesForFeature:(CDStruct_c707fdd0 *)arg1 outRoadName:(id *)arg2 outShieldText:(id *)arg3 outShieldType:(long long *)arg4;
+- (void)_roadFeaturesForFeature:(CDStruct_123780e2 *)arg1 outRoadName:(id *)arg2 outShieldText:(id *)arg3 outShieldType:(long long *)arg4;
 - (void)_setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (void)_switchedToStepAtIndex:(unsigned long long)arg1;
 - (void)_updateMatchedLocation:(id)arg1;
@@ -47,6 +53,7 @@
 - (void)reroute:(id)arg1 reason:(unsigned long long)arg2;
 - (void)resetForTracePlayerAtLocation:(id)arg1;
 - (void)resume;
+- (id)routeInfoForUpdateManager:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (BOOL)shouldAllowPause;
 - (void)startTracking;
@@ -57,8 +64,19 @@
 - (void)tracePaused;
 - (void)updateDestination:(id)arg1 finishedHandler:(CDUnknownBlockType)arg2;
 - (void)updateLocation:(id)arg1;
+- (void)updateManager:(id)arg1 didReceiveETAError:(id)arg2;
+- (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2 toRequest:(id)arg3;
+- (void)updateManager:(id)arg1 didReceiveTransitError:(id)arg2;
+- (void)updateManager:(id)arg1 didReceiveTransitUpdateResponse:(id)arg2;
+- (void)updateManager:(id)arg1 didReceiveTransitUpdates:(id)arg2;
+- (void)updateManager:(id)arg1 didUpdateETAForRouteInfo:(id)arg2;
+- (void)updateManager:(id)arg1 willSendETARequest:(id)arg2;
+- (void)updateManager:(id)arg1 willSendTransitUpdateRequestForRouteIDs:(id)arg2;
+- (void)updateManager:(id)arg1 willSendTransitUpdateRequests:(id)arg2;
 - (void)updateVehicleHeading:(double)arg1 timestamp:(id)arg2;
 - (void)updateVehicleSpeed:(double)arg1 timestamp:(id)arg2;
+- (id)userLocationForUpdateManager:(id)arg1;
+- (BOOL)wantsETAUpdates;
 
 @end
 

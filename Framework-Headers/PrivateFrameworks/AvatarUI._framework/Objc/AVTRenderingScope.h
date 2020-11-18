@@ -32,13 +32,16 @@
 + (id)largeThumbnailScope;
 + (id)listControllerThumbnailScope;
 + (unsigned long long)scopeOptionsForEnvironment:(id)arg1;
++ (id)simplePickerThumbnailScope;
 + (double)thumbnailHeightRatioForFramingMode:(id)arg1;
 + (id)thumbnailScope;
 + (double)widthForRenderingType:(long long)arg1 options:(unsigned long long)arg2;
 + (double)widthForSunflowerRenderingType:(long long)arg1;
+- (void).cxx_destruct;
 - (id)adaptedFramingModeForObjectType:(long long)arg1;
 - (unsigned long long)cacheableResourceAssociatedCost;
 - (id)cacheableResourceAssociatedIdentifier;
+- (id)copyApplyingPoseOverride:(id)arg1;
 - (id)copyWithFramingMode:(id)arg1;
 - (id)copyWithSizeModifier:(float)arg1;
 - (id)description;

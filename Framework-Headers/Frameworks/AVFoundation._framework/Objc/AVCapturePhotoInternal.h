@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class AVApplePortraitMetadata, AVCameraCalibrationData, AVCaptureBracketedStillImageSettings, AVCapturePhotoSettings, AVCaptureResolvedPhotoSettings, AVDepthData, AVPortraitEffectsMatte, NSDictionary, NSString;
+@class AVApplePortraitMetadata, AVCameraCalibrationData, AVCaptureBracketedStillImageSettings, AVCapturePhotoPrivateClientMetadata, AVCapturePhotoSettings, AVCaptureResolvedPhotoSettings, AVDepthData, AVPortraitEffectsMatte, AVSemanticSegmentationMatte, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVCapturePhotoInternal : NSObject
 {
     CDStruct_1b6d18a9 timestamp;
-    void *photoSurface;
+    struct __IOSurface *photoSurface;
     unsigned long long photoSurfaceSize;
+    NSString *processedFileType;
     struct __CVBuffer *photoPixelBuffer;
     struct __CVBuffer *previewPixelBuffer;
     struct __CVBuffer *embeddedThumbnailSourcePixelBuffer;
@@ -25,6 +27,12 @@
     BOOL didTryToDecodeDepthData;
     AVPortraitEffectsMatte *portraitEffectsMatte;
     BOOL didTryToDecodePortraitEffectsMatte;
+    AVSemanticSegmentationMatte *hairSegmentationMatte;
+    BOOL didTryToDecodeHairSegmentationMatte;
+    AVSemanticSegmentationMatte *skinSegmentationMatte;
+    BOOL didTryToDecodeSkinSegmentationMatte;
+    AVSemanticSegmentationMatte *teethSegmentationMatte;
+    BOOL didTryToDecodeTeethSegmentationMatte;
     BOOL isRawPhoto;
     AVCaptureBracketedStillImageSettings *bracketSettings;
     unsigned long long sequenceCount;
@@ -32,6 +40,7 @@
     NSString *sourceDeviceType;
     unsigned int expectedPhotoProcessingFlags;
     unsigned int actualPhotoProcessingFlags;
+    AVCapturePhotoPrivateClientMetadata *privateClientMetadata;
     AVApplePortraitMetadata *portraitMetadata;
     BOOL lensStabilizationSupported;
 }

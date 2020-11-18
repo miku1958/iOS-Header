@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_finishWithError:(id)arg1;
 - (void)_finishWithSupportedProviders:(id)arg1;
 - (id)_privacyServiceWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)_promptForPrivacyWithDisplayNameIfRequired:(id)arg1 providerID:(id)arg2 allowUI:(BOOL)arg3;
+- (void)_promptForPrivacyWithDisplayNameIfRequired:(id)arg1 providerID:(id)arg2 providerIsSupported:(BOOL)arg3 allowUI:(BOOL)arg4;
 - (void)cancel;
 - (void)dealloc;
 - (void)executionDidBegin;

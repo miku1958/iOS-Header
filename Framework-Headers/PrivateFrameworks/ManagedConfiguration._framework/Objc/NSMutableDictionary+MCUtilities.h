@@ -11,6 +11,8 @@
 - (void)MCDeepCopyMissingEntriesFromDictionary:(id)arg1;
 - (void)MCDeleteBoolRestriction:(id)arg1;
 - (void)MCFilterRestrictionPayloadKeys:(id)arg1;
+- (void)MCFixUpRestrictionsDictionaryForMDMReporting;
+- (id)MCMutableDictionaryContainingValidatedKeysAndClasses:(id)arg1 removeKeys:(BOOL)arg2 outError:(id *)arg3;
 - (void)MCSetBoolRestriction:(id)arg1 value:(BOOL)arg2;
 - (void)MCSetIntersectionRestriction:(id)arg1 values:(id)arg2;
 - (void)MCSetIntersectionSetting:(id)arg1 values:(id)arg2;
@@ -18,5 +20,9 @@
 - (void)MCSetUnionRestriction:(id)arg1 values:(id)arg2;
 - (void)MCSetUnionSetting:(id)arg1 values:(id)arg2;
 - (void)MCSetValueRestriction:(id)arg1 value:(id)arg2;
+- (id)MCValidateAndRemoveArrayOfClass:(Class)arg1 withKey:(id)arg2 isRequired:(BOOL)arg3 allowZeroLengthString:(BOOL)arg4 outError:(id *)arg5;
+- (id)MCValidateAndRemoveArrayOfClass:(Class)arg1 withKey:(id)arg2 isRequired:(BOOL)arg3 outError:(id *)arg4;
+- (id)MCValidateAndRemoveNonZeroLengthStringWithKey:(id)arg1 isRequired:(BOOL)arg2 outError:(id *)arg3;
+- (id)MCValidateAndRemoveObjectOfClass:(Class)arg1 withKey:(id)arg2 isRequired:(BOOL)arg3 outError:(id *)arg4;
 @end
 

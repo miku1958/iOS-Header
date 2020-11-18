@@ -7,14 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <NanoPassKit/NPKCompanionClientProtocol-Protocol.h>
+#import <NanoPassKit/PKXPCServiceDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection, PKPaymentWebServiceContext;
+@class NSMutableDictionary, NSMutableSet, NSString, PKPaymentWebServiceContext, PKXPCService;
 @protocol NPKCompanionAgentConnectionDelegate, OS_dispatch_queue;
 
-@interface NPKCompanionAgentConnection : NSObject <NPKCompanionClientProtocol>
+@interface NPKCompanionAgentConnection : NSObject <NPKCompanionClientProtocol, PKXPCServiceDelegate>
 {
-    NSXPCConnection *_xpcConnection;
-    NSObject<OS_dispatch_queue> *_xpcConnectionQueue;
     NSObject<OS_dispatch_queue> *_cacheQueue;
     int _notifyToken;
     BOOL _queueAppropriateFailedActions;
@@ -24,6 +23,7 @@
     NSMutableDictionary *_cachedPasses;
     NSMutableDictionary *_connectionAvailableActions;
     PKPaymentWebServiceContext *_connectionUnavailableWebServiceContext;
+    PKXPCService *_remoteService;
 }
 
 @property (strong) NSMutableDictionary *cachedPasses; // @synthesize cachedPasses=_cachedPasses;
@@ -36,8 +36,8 @@
 @property (nonatomic) BOOL hasQueuedPaymentPasses; // @synthesize hasQueuedPaymentPasses=_hasQueuedPaymentPasses;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL queueAppropriateFailedActions; // @synthesize queueAppropriateFailedActions=_queueAppropriateFailedActions;
+@property (strong, nonatomic) PKXPCService *remoteService; // @synthesize remoteService=_remoteService;
 @property (readonly) Class superclass;
-@property (readonly) NSXPCConnection *xpcConnection;
 
 + (BOOL)isIssuerAppProvisioningSupported;
 + (BOOL)isSetupAssistantProvisioningSupported;
@@ -56,13 +56,16 @@
 - (void)_handleServerPaymentPassesChanged:(id)arg1;
 - (void)_invalidateCachedPassWithUniqueID:(id)arg1;
 - (int)_isApplePaySupportedInCurrentRegion;
+- (id)_remoteObjectProxySynchronize:(BOOL)arg1 withFailureHandler:(CDUnknownBlockType)arg2;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (void)_removePassWithUniqueIDFromCache:(id)arg1;
 - (void)_savePaymentPass:(id)arg1 atURL:(id)arg2 forDevice:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setCachedUniqueIDs:(id)arg1;
 - (void)_sharedPaymentWebServiceContextForDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)balanceReminderForBalance:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)balancesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)commutePlanReminderIntervalForCommutePlan:(id)arg1 pass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)consistencyCheckWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)defaultCardUniqueID:(CDUnknownBlockType)arg1;
@@ -75,11 +78,15 @@
 - (id)init;
 - (void)initiateLostModeExitAuthWithCompletion:(CDUnknownBlockType)arg1;
 - (void)markAllAppletsForDeletionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
 - (void)noteProvisioningPreflightCompleteWithSuccess:(BOOL)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)noteWatchOfferShownForPaymentPass:(id)arg1;
 - (void)paymentPassUniqueIDs:(CDUnknownBlockType)arg1;
+- (void)paymentPassUniqueIDsSynchronous:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)paymentPassWithDeviceAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)paymentPassWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)paymentPassWithUniqueID:(id)arg1 synchronous:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableMessageService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
@@ -90,8 +97,12 @@
 - (void)provisionPassForAccountIdentifier:(id)arg1 makeDefault:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)redownloadAllPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
+- (void)remoteService:(id)arg1 didEstablishConnection:(id)arg2;
+- (void)remoteService:(id)arg1 didInterruptConnection:(id)arg2;
 - (void)removePaymentPassWithUniqueID:(id)arg1 forDevice:(id)arg2 waitForConfirmation:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)savePaymentPass:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setBalanceReminder:(id)arg1 forBalance:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setCommutePlanReminderInterval:(double)arg1 forCommutePlan:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setDefaultCardUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassWithUniqueID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPeerPaymentAccount:(id)arg1 forDevice:(id)arg2;
@@ -102,6 +113,7 @@
 - (id)sharedPeerPaymentWebServiceContextForDevice:(id)arg1;
 - (void)shouldShowApplePaySettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)shouldShowWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 startDate:(id)arg4 endDate:(id)arg5 orderedByDate:(long long)arg6 limit:(long long)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)transitStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(id)arg1 sessionData:(id)arg2 handler:(CDUnknownBlockType)arg3;

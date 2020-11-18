@@ -4,42 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ScreenTimeUI/STIntroSplashViewController.h>
+#import <ScreenTimeUI/STTableWelcomeController.h>
 
-#import <ScreenTimeUI/UITableViewDataSource-Protocol.h>
-#import <ScreenTimeUI/UITableViewDelegate-Protocol.h>
+@class STIntroDowntimeTableViewController, STIntroductionModel;
 
-@class NSString, STDeviceBedtime, UITableView;
-
-@interface STIntroDowntimeViewController : STIntroSplashViewController <UITableViewDataSource, UITableViewDelegate>
+__attribute__((visibility("hidden")))
+@interface STIntroDowntimeViewController : STTableWelcomeController
 {
-    UITableView *_tableView;
-    unsigned long long _datePickerVisibility;
-    STDeviceBedtime *_bedtimeModel;
+    STIntroductionModel *_model;
+    CDUnknownBlockType _continueHandler;
 }
 
-@property (strong) STDeviceBedtime *bedtimeModel; // @synthesize bedtimeModel=_bedtimeModel;
-@property unsigned long long datePickerVisibility; // @synthesize datePickerVisibility=_datePickerVisibility;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-@property (strong) UITableView *tableView; // @synthesize tableView=_tableView;
+@property (readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
+@property (readonly) STIntroductionModel *model; // @synthesize model=_model;
+@property (strong, nonatomic) STIntroDowntimeTableViewController *tableViewController;
 
 - (void).cxx_destruct;
-- (void)datePickerChanged:(id)arg1;
-- (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)stringForDateComponents:(id)arg1;
-- (long long)tableRowForDatePicker;
-- (unsigned long long)tableRowForEndLabelRow;
-- (unsigned long long)tableRowForStartLabelRow;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
+- (void)_notNow:(id)arg1;
+- (void)_setDowntime:(id)arg1;
+- (id)initWithIntroductionModel:(id)arg1 continueHandler:(CDUnknownBlockType)arg2;
+- (void)loadView;
 
 @end
 

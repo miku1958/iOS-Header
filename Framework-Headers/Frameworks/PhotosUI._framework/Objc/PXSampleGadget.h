@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <objc/NSObject.h>
 
 #import <PhotosUICore/PXGadget-Protocol.h>
+#import <PhotosUICore/PXSampleGadgetViewDelegate-Protocol.h>
 
-@class NSString, PXGadgetSpec, UIView;
+@class NSString, PXGadgetSpec, UIColor;
 @protocol PXGadgetDelegate;
 
-@interface PXSampleGadget : UIViewController <PXGadget>
+@interface PXSampleGadget : NSObject <PXSampleGadgetViewDelegate, PXGadget>
 {
     BOOL _hasContentToDisplay;
     BOOL _expanded;
-    BOOL _hasBeenToldToLoadContent;
     long long _priority;
     id<PXGadgetDelegate> _delegate;
     unsigned long long _accessoryButtonType;
@@ -23,13 +23,13 @@
     NSString *_gadgetTitle;
     unsigned long long _preferredHeight;
     unsigned long long _preferredExpandedHeight;
-    UIView *_colorView;
+    UIColor *_backgroundColor;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (nonatomic) unsigned long long accessoryButtonType; // @synthesize accessoryButtonType=_accessoryButtonType;
-@property (strong, nonatomic) UIView *colorView; // @synthesize colorView=_colorView;
+@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -37,7 +37,6 @@
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (copy, nonatomic) NSString *gadgetTitle; // @synthesize gadgetTitle=_gadgetTitle;
 @property (readonly, nonatomic) unsigned long long gadgetType;
-@property (nonatomic) BOOL hasBeenToldToLoadContent; // @synthesize hasBeenToldToLoadContent=_hasBeenToldToLoadContent;
 @property (readonly, nonatomic) BOOL hasContentToDisplay; // @synthesize hasContentToDisplay=_hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
@@ -52,14 +51,13 @@
 @property (nonatomic) struct CGRect visibleContentRect;
 
 - (void).cxx_destruct;
-- (struct NSObject *)contentViewController;
-- (BOOL)hasLoadedContentData;
+- (void)_prepareView:(id)arg1;
 - (id)init;
-- (void)loadContentData;
+- (id)initWithMininumHeight:(double)arg1;
+- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)userDidSelectAccessoryButton:(id)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
+- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
+- (struct CGRect)view:(id)arg1 colorFrameForBounds:(struct CGRect)arg2;
 
 @end
 

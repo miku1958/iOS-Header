@@ -68,6 +68,7 @@
 - (id)initWithSize:(struct CGSize)arg1 offset:(struct CGPoint)arg2 renderBlock:(CDUnknownBlockType)arg3;
 - (struct CGColorSpace *)p_colorSpace;
 - (struct CGImage *)p_newImageAndBufferWithAngle:(double)arg1 scale:(double)arg2 offset:(struct CGPoint)arg3;
+- (char *)p_setupTextureDataWithSize:(struct CGSize)arg1 isBGRA:(BOOL)arg2;
 - (void)releaseSingleTexture;
 - (void)renderIntoContext:(struct CGContext *)arg1;
 - (void)renderLayerContentsIfNeeded;

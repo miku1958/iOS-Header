@@ -7,7 +7,10 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (HDCodingSupport)
++ (id)_hd_queryParamsForCompatibilityVersion:(long long)arg1;
++ (id)hd_dictionaryFromXPCObject:(id)arg1;
 + (id)hk_dictionaryWithCodableMetadata:(id)arg1;
+- (BOOL)hd_validateMetadataKeysAndValuesWithClient:(id)arg1 error:(id *)arg2;
 - (id)hk_codableMetadata;
 @end
 

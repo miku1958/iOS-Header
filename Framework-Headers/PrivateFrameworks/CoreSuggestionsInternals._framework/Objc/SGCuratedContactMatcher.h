@@ -21,6 +21,7 @@
 + (void)clearMeContactCache;
 + (id)curatedContactsFromContactStore:(id)arg1 matchingPseudoContact:(id)arg2 error:(id *)arg3;
 + (id)fetchMeContactFromContactStore:(id)arg1;
++ (id)filterCandidates:(id)arg1 withDetailSubsetOfCNContact:(id)arg2;
 + (id)realtimeContactWithContactStore:(id)arg1 forPseudoContact:(id)arg2 error:(id *)arg3;
 
 @end

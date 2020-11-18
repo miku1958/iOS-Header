@@ -8,10 +8,11 @@
 
 #import <CoreMotion/NSCopying-Protocol.h>
 #import <CoreMotion/NSSecureCoding-Protocol.h>
+#import <CoreMotion/SRSampling-Protocol.h>
 
-@class NSDate, NSUUID;
+@class NSDate, NSString, NSUUID;
 
-@interface CMElevationData : NSObject <NSSecureCoding, NSCopying>
+@interface CMElevationData : NSObject <SRSampling, NSSecureCoding, NSCopying>
 {
     unsigned long long fRecordId;
     NSUUID *fSourceId;
@@ -19,23 +20,31 @@
     NSDate *fEndDate;
     unsigned long long fElevationAscended;
     unsigned long long fElevationDescended;
+    long long fSource;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long elevationAscended;
 @property (readonly, nonatomic) unsigned long long elevationDescended;
 @property (readonly, nonatomic) NSDate *endDate;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long recordId;
+@property (readonly, nonatomic) long long source;
 @property (readonly, nonatomic) NSUUID *sourceId;
 @property (readonly, nonatomic) NSDate *startDate;
+@property (readonly) Class superclass;
 
++ (id)sourceName:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (id)binarySampleRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithBinarySampleRepresentation:(id)arg1 metadata:(id)arg2 timestamp:(double)arg3;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRecordId:(unsigned long long)arg1 sourceId:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 elevationAscended:(unsigned long long)arg5 elevationDescended:(unsigned long long)arg6;
 - (id)initWithSignificantElevationSample:(id)arg1;
+- (id)initWithStartDate:(id)arg1 endDate:(id)arg2 elevationAscended:(unsigned long long)arg3 elevationDescended:(unsigned long long)arg4 source:(long long)arg5 recordId:(unsigned long long)arg6 sourceId:(id)arg7;
 
 @end
 

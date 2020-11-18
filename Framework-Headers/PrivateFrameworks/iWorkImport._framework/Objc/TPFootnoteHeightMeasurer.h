@@ -27,14 +27,19 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)addFootnoteReferenceStorage:(id)arg1;
+- (BOOL)canHaveFootnotesFromPreviousTarget:(id)arg1;
+- (double)footnoteBlockHeight;
 - (double)footnoteBlockHeightForTarget:(id)arg1;
-- (BOOL)footnoteContainerFits;
-- (id)initWithFootnoteMarkProvider:(id)arg1 pageDelegate:(id)arg2 maxFootnoteLineWidth:(double)arg3 maxFootnoteBlockHeight:(double)arg4 vertical:(BOOL)arg5 footnoteSpacing:(double)arg6;
+- (BOOL)footnoteContainerFitsForTarget:(id)arg1;
+- (BOOL)footnoteContainerIsOnSamePageAsTarget:(id)arg1;
+- (BOOL)hasFootnotes;
+- (id)initWithFootnoteMarkProvider:(id)arg1 documentRoot:(id)arg2 pageDelegate:(id)arg3 maxFootnoteLineWidth:(double)arg4 maxFootnoteBlockHeight:(double)arg5 vertical:(BOOL)arg6 footnoteSpacing:(double)arg7;
 - (void)p_clearFootnoteLayoutCache;
 - (void)removeAllFootnoteReferenceStorages;
 - (void)removeFootnoteReferenceStorage:(id)arg1;
 - (void)setContainerLineWidth:(double)arg1;
 - (void)setFootnoteSpacing:(long long)arg1;
+- (void)tearDown;
 
 @end
 

@@ -24,6 +24,8 @@
 - (void)_ensureConnected_sync;
 - (void)_plansForRenewal:(BOOL)arg1 progress:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3 additionalParameters:(id)arg4;
 - (void)_reconnect;
+- (void)activatePlanPendingTransfer:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addNewAddonPlanDuringBuddy:(BOOL)arg1 userConsent:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addNewPlanWithAddress:(id)arg1 matchingId:(id)arg2 oid:(id)arg3 confirmationCode:(id)arg4 triggerType:(long long)arg5 userConsent:(long long)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2 triggerType:(long long)arg3 userConsent:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)addNewPlanWithCarrierItem:(id)arg1 triggerType:(long long)arg2 userConsent:(long long)arg3 completion:(CDUnknownBlockType)arg4;
@@ -40,6 +42,7 @@
 - (void)danglingPlanItemsShouldUpdate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)deleteAllRemoteProfiles;
+- (void)deletePlanPendingTransfer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteRemoteProfile:(id)arg1;
 - (void)didCancelRemotePlan;
 - (void)didDeletePlanItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -51,11 +54,11 @@
 - (void)didSelectPlanForData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)didSelectPlanForDefaultVoice:(id)arg1;
 - (void)didSelectPlanForDefaultVoice:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)didSelectPlanForIMessage:(id)arg1;
-- (void)didSelectPlanForIMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)didSelectPlanItem:(id)arg1 isEnable:(BOOL)arg2;
 - (void)didSelectPlanItem:(id)arg1 isEnable:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)didSelectPlansForIMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)didSelectRemotePlanItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)didTransferPlanForCsn:(id)arg1 iccid:(id)arg2 profileServer:(id)arg3 state:(id)arg4;
 - (void)enableVinylFlowTypeOverride:(BOOL)arg1;
 - (void)enterSimSetupWithCompletion:(CDUnknownBlockType)arg1;
 - (void)eraseAllPlans:(CDUnknownBlockType)arg1;
@@ -71,6 +74,8 @@
 - (void)getESimServerURL:(CDUnknownBlockType)arg1;
 - (BOOL)getEnableVinylFlowTypeOverride;
 - (void)getIMEIPrefix:(CDUnknownBlockType)arg1;
+- (void)getPhoneAuthTokenWithMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)getPlansPendingTransfer:(id *)arg1;
 - (id)getPredefinedLabels;
 - (void)getRemoteInfo:(CDUnknownBlockType)arg1;
 - (void)getRoamingSignupOverrideWithCompletion:(CDUnknownBlockType)arg1;

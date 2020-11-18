@@ -6,12 +6,13 @@
 
 #import <HealthKit/HKMedicalRecord.h>
 
+#import <HealthKit/HKConceptIndexable-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKMedicalCoding, HKMedicalDate, HKMedicationRecordType, NSArray, NSString;
+@class HKConcept, HKMedicalCoding, HKMedicalDate, HKMedicationRecordType, NSArray, NSLocale, NSString, NSUUID;
 
-@interface HKMedicationRecord : HKMedicalRecord <NSSecureCoding, NSCopying>
+@interface HKMedicationRecord : HKMedicalRecord <HKConceptIndexable, NSSecureCoding, NSCopying>
 {
     NSArray *_medicationCodings;
     long long _assertionType;
@@ -25,27 +26,44 @@
     NSArray *_reasonsNotTakenCodings;
     HKMedicalDate *_effectiveStartDate;
     HKMedicalDate *_effectiveEndDate;
+    HKConcept *_medication;
+    HKConcept *_status;
+    HKConcept *_reasonForUse;
+    NSArray *_reasonsNotTaken;
 }
 
+@property (readonly) NSUUID *UUID;
 @property (readonly, copy) NSString *asserter;
 @property (readonly, copy) HKMedicalDate *assertionDate;
 @property (readonly) long long assertionType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSArray *dosages;
 @property (readonly, copy) HKMedicalDate *earliestDosageDate;
 @property (readonly, copy) HKMedicalDate *effectiveEndDate;
 @property (readonly, copy) HKMedicalDate *effectiveStartDate;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSLocale *locale;
+@property (readonly, copy) HKConcept *medication;
 @property (readonly, copy) NSArray *medicationCodings;
 @property (readonly, copy) HKMedicationRecordType *medicationRecordType;
 @property (readonly) BOOL notTaken;
+@property (readonly, copy) HKConcept *reasonForUse;
 @property (readonly, copy) NSArray *reasonForUseCodings;
+@property (readonly, copy) NSArray *reasonsNotTaken;
 @property (readonly, copy) NSArray *reasonsNotTakenCodings;
+@property (readonly, copy) HKConcept *status;
 @property (readonly, copy) HKMedicalCoding *statusCoding;
+@property (readonly) Class superclass;
 
 + (BOOL)_isConcreteObjectClass;
++ (id)_newMedicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 medicationCodings:(id)arg11 assertionType:(long long)arg12 asserter:(id)arg13 assertionDate:(id)arg14 statusCoding:(id)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 reasonForUseCodings:(id)arg18 notTaken:(BOOL)arg19 reasonsNotTakenCodings:(id)arg20 effectiveStartDate:(id)arg21 effectiveEndDate:(id)arg22 config:(CDUnknownBlockType)arg23;
++ (id)cachedConceptRelationshipKeyPaths;
 + (id)defaultDisplayString;
++ (id)indexableConceptKeyPaths;
 + (id)medicationCodingsPreferredSystems;
-+ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 medicationCodings:(id)arg9 assertionType:(long long)arg10 asserter:(id)arg11 assertionDate:(id)arg12 statusCoding:(id)arg13 dosages:(id)arg14 earliestDosageDate:(id)arg15 reasonForUseCodings:(id)arg16 notTaken:(BOOL)arg17 reasonsNotTakenCodings:(id)arg18 effectiveStartDate:(id)arg19 effectiveEndDate:(id)arg20;
-+ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 medicationCodings:(id)arg10 assertionType:(long long)arg11 asserter:(id)arg12 assertionDate:(id)arg13 statusCoding:(id)arg14 dosages:(id)arg15 earliestDosageDate:(id)arg16 reasonForUseCodings:(id)arg17 notTaken:(BOOL)arg18 reasonsNotTakenCodings:(id)arg19 effectiveStartDate:(id)arg20 effectiveEndDate:(id)arg21;
++ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 medicationCodings:(id)arg10 assertionType:(long long)arg11 asserter:(id)arg12 assertionDate:(id)arg13 statusCoding:(id)arg14 dosages:(id)arg15 earliestDosageDate:(id)arg16 reasonForUseCodings:(id)arg17 notTaken:(BOOL)arg18 reasonsNotTakenCodings:(id)arg19 effectiveStartDate:(id)arg20 effectiveEndDate:(id)arg21;
++ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 medicationCodings:(id)arg11 assertionType:(long long)arg12 asserter:(id)arg13 assertionDate:(id)arg14 statusCoding:(id)arg15 dosages:(id)arg16 earliestDosageDate:(id)arg17 reasonForUseCodings:(id)arg18 notTaken:(BOOL)arg19 reasonsNotTakenCodings:(id)arg20 effectiveStartDate:(id)arg21 effectiveEndDate:(id)arg22;
 + (id)reasonForUseCodingsPreferredSystems;
 + (id)reasonsNotTakenCodingsPreferredSystems;
 + (id)statusCodingPreferredSystems;
@@ -59,14 +77,19 @@
 - (void)_setEarliestDosageDate:(id)arg1;
 - (void)_setEffectiveEndDate:(id)arg1;
 - (void)_setEffectiveStartDate:(id)arg1;
+- (void)_setMedication:(id)arg1;
 - (void)_setMedicationCodings:(id)arg1;
 - (void)_setNotTaken:(BOOL)arg1;
+- (void)_setReasonForUse:(id)arg1;
 - (void)_setReasonForUseCodings:(id)arg1;
+- (void)_setReasonsNotTaken:(id)arg1;
 - (void)_setReasonsNotTakenCodings:(id)arg1;
+- (void)_setStatus:(id)arg1;
 - (void)_setStatusCoding:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)indexKeywords;
 - (id)init;
@@ -74,9 +97,17 @@
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
 - (id)medicalRecordPreferredSystems;
+- (id)medicationCodingsCollection;
+- (id)medicationCodingsContext;
 - (id)medicationCodingsTasks;
+- (id)reasonForUseCodingsCollection;
+- (id)reasonForUseCodingsContext;
 - (id)reasonForUseCodingsTasks;
+- (id)reasonsNotTakenCodingsCollection;
+- (id)reasonsNotTakenCodingsContexts;
 - (id)reasonsNotTakenCodingsTasks;
+- (id)statusCodingCollection;
+- (id)statusCodingContext;
 - (id)statusCodingTasks;
 
 @end

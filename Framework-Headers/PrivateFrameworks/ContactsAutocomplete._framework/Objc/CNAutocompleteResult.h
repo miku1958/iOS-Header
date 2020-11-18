@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNAutocompleteNameComponents, CNAutocompleteResultValue, NSArray, NSDictionary, NSString;
+@class CNAutocompleteNameComponents, CNAutocompleteResultValue, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface CNAutocompleteResult : NSObject
 {
@@ -25,6 +25,7 @@
     NSArray *_diagnosticLogs;
     CDUnknownBlockType _ignoreResultBlock;
     long long _resultType;
+    NSNumber *_recentsIdentifier;
 }
 
 @property (readonly, copy) id address;
@@ -40,6 +41,7 @@
 @property (copy) NSString *lastSendingAddress; // @synthesize lastSendingAddress=_lastSendingAddress;
 @property (copy, nonatomic) CDUnknownBlockType membersProvider; // @synthesize membersProvider=_membersProvider;
 @property (copy) CNAutocompleteNameComponents *nameComponents; // @synthesize nameComponents=_nameComponents;
+@property (strong, nonatomic) NSNumber *recentsIdentifier; // @synthesize recentsIdentifier=_recentsIdentifier;
 @property long long resultType; // @synthesize resultType=_resultType;
 @property unsigned long long sourceType; // @synthesize sourceType=_sourceType;
 @property (copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;

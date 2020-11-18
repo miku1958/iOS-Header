@@ -9,7 +9,7 @@
 #import <CoreRoutine/NSCopying-Protocol.h>
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSUUID, RTLocation;
+@class NSDate, RTLocation;
 
 @interface RTVisit : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,31 +18,29 @@
     RTLocation *_location;
     NSDate *_entry;
     NSDate *_exit;
-    NSUUID *_locationOfInterestIdentifier;
+    double _confidence;
     long long _dataPointCount;
 }
 
+@property (readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (readonly, nonatomic) long long dataPointCount; // @synthesize dataPointCount=_dataPointCount;
 @property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, copy, nonatomic) NSDate *entry; // @synthesize entry=_entry;
 @property (readonly, copy, nonatomic) NSDate *exit; // @synthesize exit=_exit;
 @property (readonly, copy, nonatomic) RTLocation *location; // @synthesize location=_location;
-@property (readonly, copy, nonatomic) NSUUID *locationOfInterestIdentifier; // @synthesize locationOfInterestIdentifier=_locationOfInterestIdentifier;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)stringFromVisitIncidentType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
-+ (id)visitIncidentFromDefaultsDictionary:(id)arg1;
 + (long long)visitIncidentTypeFromString:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDate:(id)arg1 type:(long long)arg2 location:(id)arg3 entry:(id)arg4 exit:(id)arg5 locationOfInterestIdentifier:(id)arg6;
-- (id)initWithDate:(id)arg1 type:(long long)arg2 location:(id)arg3 entry:(id)arg4 exit:(id)arg5 locationOfInterestIdentifier:(id)arg6 dataPointCount:(long long)arg7;
-- (id)initWithType:(long long)arg1 location:(id)arg2 entry:(id)arg3 exit:(id)arg4 locationOfInterestIdentifier:(id)arg5;
+- (id)initWithDate:(id)arg1 type:(long long)arg2 location:(id)arg3 entry:(id)arg4 exit:(id)arg5 dataPointCount:(long long)arg6 confidence:(double)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToVisit:(id)arg1;
 

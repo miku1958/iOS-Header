@@ -40,9 +40,9 @@
 - (void)requestParsecParametersWithReply:(CDUnknownBlockType)arg1;
 - (void)retrieveFirstTimeExperienceTextWithReply:(CDUnknownBlockType)arg1;
 - (void)sendApps:(id)arg1;
-- (void)sendMessageForToken:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3;
+- (void)sendMessageForToken:(id)arg1;
 - (void)sendSFFeedback:(id)arg1 type:(long long)arg2 queryId:(unsigned long long)arg3;
-- (id)startQuery:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3 queue:(id)arg4 delegate:(id)arg5;
+- (id)startQuery:(id)arg1 queue:(id)arg2 delegate:(id)arg3;
 
 @end
 

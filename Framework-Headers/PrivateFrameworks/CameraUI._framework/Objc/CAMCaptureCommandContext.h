@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVCaptureDevice, AVCaptureDeviceFormat, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCaptureMovieFileOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, CAMCaptureEngine, CAMPanoramaConfiguration, CAMPanoramaOutput, NSString;
-@protocol AVCaptureFileOutputRecordingDelegate, AVCapturePhotoCaptureDelegate;
+@protocol AVCaptureFileOutputRecordingDelegate, AVCapturePhotoCaptureDelegate, AVMomentCaptureMovieRecordingDelegate;
 
 @interface CAMCaptureCommandContext : NSObject
 {
@@ -36,6 +36,7 @@
 @property (strong, nonatomic) AVCaptureDeviceFormat *currentDepthDataFormat; // @synthesize currentDepthDataFormat=_currentDepthDataFormat;
 @property (strong, nonatomic) AVCaptureVideoDataOutput *currentEffectsPreviewOutput; // @synthesize currentEffectsPreviewOutput=_currentEffectsPreviewOutput;
 @property (strong, nonatomic) AVCaptureMetadataOutput *currentMetadataOutput; // @synthesize currentMetadataOutput=_currentMetadataOutput;
+@property (readonly, weak, nonatomic) id<AVMomentCaptureMovieRecordingDelegate> currentMomentCaptureMovieRecordingDelegate;
 @property (strong, nonatomic) AVCaptureMovieFileOutput *currentMovieFileOutput; // @synthesize currentMovieFileOutput=_currentMovieFileOutput;
 @property (readonly, nonatomic) CAMPanoramaConfiguration *currentPanoramaConfiguration;
 @property (strong, nonatomic) CAMPanoramaOutput *currentPanoramaOutput; // @synthesize currentPanoramaOutput=_currentPanoramaOutput;
@@ -52,7 +53,10 @@
 - (void).cxx_destruct;
 - (id)_captureEngineDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;
 - (id)audioDeviceInput;
+- (void)cacheMomentCaptureSettings:(id)arg1 forIdentifier:(id)arg2;
+- (id)cachedMomentCaptureSettingsForIdentifier:(id)arg1;
 - (void)clear;
+- (void)clearCachedMomentCaptureSettingsForIdentifier:(id)arg1;
 - (id)initWithCaptureEngine:(id)arg1;
 - (id)metadataOutputForMode:(long long)arg1;
 - (id)outputsForMode:(long long)arg1 shouldUseThumbnailOutputForFilters:(BOOL)arg2;
@@ -60,7 +64,7 @@
 - (void)registerStillImageCaptureRequest:(id)arg1 withSettings:(id)arg2;
 - (void)registerVideoCaptureRequest:(id)arg1;
 - (void)startPanoramaCaptureWithRequest:(id)arg1;
-- (void)stopPanoramaCapture;
+- (void)stopPanoramaCaptureInterrupted:(BOOL)arg1;
 - (id)videoDeviceForMode:(long long)arg1 desiredDevice:(long long)arg2 videoConfiguration:(long long)arg3 resolvedDevice:(long long *)arg4;
 
 @end

@@ -32,7 +32,9 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_fetchAllPeerPaymentTransactionsWithPeerPaymentPassID:(id)arg1;
+- (void)_passLibraryChanged:(id)arg1;
 - (id)_sharedPeerPaymentWebService;
 - (unsigned long long)_transactionQueue_statusOfPaymentTransactionWithServiceIdentifier:(id)arg1;
 - (void)_transactionsQueue_notifyStatusUpdateOfTransactionWithServiceIdentifier:(id)arg1;

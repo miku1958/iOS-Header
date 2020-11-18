@@ -17,7 +17,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)pk_fetchPlacesAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 - (long long)compareTo:(id)arg1;
 - (struct CLLocationCoordinate2D)coordinate;
+- (long long)pk_isContentEqualTo:(id)arg1;
 @end
 

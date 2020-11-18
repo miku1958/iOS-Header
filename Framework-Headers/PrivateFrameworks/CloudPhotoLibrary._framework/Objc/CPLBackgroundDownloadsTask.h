@@ -35,7 +35,7 @@
 - (void)_updateActiveDownloadTaskCount;
 - (void)cancel;
 - (id)description;
-- (id)initWithEngineLibrary:(id)arg1;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2;
 - (void)launch;
 - (void)taskDidFinishWithError:(id)arg1;
 - (id)taskIdentifier;

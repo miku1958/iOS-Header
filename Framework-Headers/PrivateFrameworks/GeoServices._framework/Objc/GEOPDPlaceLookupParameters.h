@@ -8,34 +8,53 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPlaceLookupParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _muids;
     NSMutableArray *_identifiers;
     int _resultProviderId;
     BOOL _enablePartialClientization;
-    CDStruct_2527025c _has;
+    struct {
+        unsigned int has_resultProviderId:1;
+        unsigned int has_enablePartialClientization:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_muids:1;
+        unsigned int read_identifiers:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_muids:1;
+        unsigned int wrote_identifiers:1;
+        unsigned int wrote_resultProviderId:1;
+        unsigned int wrote_enablePartialClientization:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL enablePartialClientization; // @synthesize enablePartialClientization=_enablePartialClientization;
+@property (nonatomic) BOOL enablePartialClientization;
 @property (nonatomic) BOOL hasEnablePartialClientization;
 @property (nonatomic) BOOL hasResultProviderId;
 @property (strong, nonatomic) NSMutableArray *identifiers;
 @property (readonly, nonatomic) unsigned long long *muids;
 @property (readonly, nonatomic) unsigned long long muidsCount;
-@property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
+@property (nonatomic) int resultProviderId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)identifierType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsIdentifier:(id)arg1;
+- (void)_addNoFlagsMuid:(unsigned long long)arg1;
+- (void)_readIdentifiers;
+- (void)_readMuids;
 - (void)addIdentifier:(id)arg1;
 - (void)addMuid:(unsigned long long)arg1;
 - (void)clearIdentifiers;
 - (void)clearMuids;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -48,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (unsigned long long)muidAtIndex:(unsigned long long)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setMuids:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

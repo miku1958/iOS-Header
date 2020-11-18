@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (void)_loadIfNecessary;
 - (void)fireCompletionIfNecessaryForResult:(BOOL)arg1;
-- (id)initWithDownload:(id)arg1 autoInstallOperation:(id)arg2 forInstallTonight:(BOOL)arg3 canDeferInstallation:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (id)initWithDownload:(id)arg1 autoInstallOperation:(id)arg2 forInstallTonight:(BOOL)arg3 canDeferInstallation:(BOOL)arg4 completionQueue:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
 
 @end
 

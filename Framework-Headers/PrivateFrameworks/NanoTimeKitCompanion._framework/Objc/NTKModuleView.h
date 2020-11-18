@@ -6,15 +6,18 @@
 
 #import <UIKit/UIControl.h>
 
+#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKContainerViewLayoutDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKControl-Protocol.h>
 
 @class CLKDevice, NSString, NTKContainerView, NTKFaceColorScheme, UIColor, UIView;
+@protocol CLKMonochromeFilterProvider;
 
-@interface NTKModuleView : UIControl <NTKContainerViewLayoutDelegate, NTKControl>
+@interface NTKModuleView : UIControl <NTKContainerViewLayoutDelegate, NTKControl, CLKMonochromeComplicationView>
 {
     NTKContainerView *_contentView;
     UIView *_highlightView;
+    id<CLKMonochromeFilterProvider> filterProvider;
     CLKDevice *_device;
     UIColor *_foregroundColor;
     UIColor *_secondaryForegroundColor;
@@ -34,6 +37,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider;
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double highlightAlpha; // @synthesize highlightAlpha=_highlightAlpha;
@@ -46,6 +50,8 @@
 + (double)_defaultCornerRadiusForDevice:(id)arg1;
 + (double)cornerRadiusForComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
+- (void)_applyMonochromeTransitionFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3;
+- (void)_enumerateAllForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateSecondaryForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_layoutContentView;
@@ -59,6 +65,8 @@
 - (void)naturalHorizontalLayoutForViewsAndSpacing:(id)arg1 columnAlignmentSpacing:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (BOOL)shouldCancelTouchesInScrollview;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 - (id)viewsAndSpacingArrayForSpace:(double)arg1 view:(id)arg2;
 - (id)viewsAndSpacingArrayForSpace:(double)arg1 view:(id)arg2 space:(double)arg3 view:(id)arg4;
 

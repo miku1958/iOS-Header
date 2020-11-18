@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)insertAnyRef:(const struct TSCEAnyRef *)arg1;
 - (void)insertCellRef:(const struct TSCECellRef *)arg1;
 - (void)insertRangeRef:(const struct TSCERangeRef *)arg1;
+- (void)insertRefs:(id)arg1;
 - (void)insertSpanningRangeRef:(const struct TSCESpanningRangeRef *)arg1;
 - (void)removeCellRef:(const struct TSCECellRef *)arg1;
 

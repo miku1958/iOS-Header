@@ -17,7 +17,6 @@
 @interface VNImageprint : NSObject <VNSerializingInternal, NSCopying, NSSecureCoding, VNSerializing, VNRequestRevisionProviding>
 {
     unsigned long long _requestRevision;
-    unsigned long long _version;
     VNMPImageDescriptor *_descriptor;
     unsigned long long _type;
 }
@@ -26,10 +25,7 @@
 @property (readonly, nonatomic) unsigned long long requestRevision;
 @property (readonly, nonatomic) unsigned long long serializedLength;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
-@property (readonly, nonatomic) unsigned long long version; // @synthesize version=_version;
 
-+ (unsigned long long)currentVersion;
-+ (BOOL)isSerializedImageprintCompatibleWithCurrentVersion:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

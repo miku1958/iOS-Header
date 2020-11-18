@@ -8,17 +8,17 @@
 
 #import <ITMLKit/IKDataSourceElementImplementing-Protocol.h>
 
-@class IKAppDataSet, IKChangeSet, IKDataSourceElement, NSArray, NSDictionary, NSMutableDictionary, NSMutableIndexSet, NSString;
+@class IKAppDataSet, IKChangeSet, IKDataSourceElement, NSArray, NSDictionary, NSMutableDictionary, NSMutableIndexSet, NSString, _IKDSEPrototypeBundle;
 
 __attribute__((visibility("hidden")))
 @interface IKDSEBoundItemsImpl : NSObject <IKDataSourceElementImplementing>
 {
     BOOL _visibleIndexRangeIsDirty;
     IKDataSourceElement *_dataSourceElement;
-    NSArray *_prototypes;
     IKChangeSet *_itemsChangeSet;
     IKAppDataSet *_dataSet;
-    NSDictionary *_usedPrototypesByType;
+    NSDictionary *_usedPrototypeMappingsByIdentifier;
+    _IKDSEPrototypeBundle *_prototypeBundle;
     NSDictionary *_childrenByItemID;
     NSMutableIndexSet *_visibleIndexSet;
     NSMutableDictionary *_proxiedItemElementsByItemID;
@@ -32,16 +32,20 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSDictionary *indexTitles;
 @property (strong, nonatomic) IKChangeSet *itemsChangeSet; // @synthesize itemsChangeSet=_itemsChangeSet;
-@property (strong, nonatomic) NSArray *prototypes; // @synthesize prototypes=_prototypes;
+@property (readonly, nonatomic) NSArray *masterPrototypes;
+@property (strong, nonatomic) _IKDSEPrototypeBundle *prototypeBundle; // @synthesize prototypeBundle=_prototypeBundle;
+@property (readonly, nonatomic) NSArray *prototypes;
 @property (readonly, copy, nonatomic) NSArray *proxiedItemElements;
 @property (strong, nonatomic) NSMutableDictionary *proxiedItemElementsByItemID; // @synthesize proxiedItemElementsByItemID=_proxiedItemElementsByItemID;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSDictionary *usedPrototypesByType; // @synthesize usedPrototypesByType=_usedPrototypesByType;
+@property (copy, nonatomic) NSDictionary *usedPrototypeMappingsByIdentifier; // @synthesize usedPrototypeMappingsByIdentifier=_usedPrototypeMappingsByIdentifier;
 @property (strong, nonatomic) NSMutableIndexSet *visibleIndexSet; // @synthesize visibleIndexSet=_visibleIndexSet;
 
 + (BOOL)_canProxiedItemElementsBeUpdatedWithLoadedElements;
 - (void).cxx_destruct;
 - (void)_appendVisibleIndexSetWithIndex:(long long)arg1;
+- (id)_elementForItemAtIndex:(long long)arg1;
+- (id)_prototypeMappingForItemAtIndex:(long long)arg1;
 - (void)applyUpdatesWithImplementation:(id)arg1 usingUpdater:(CDUnknownBlockType)arg2;
 - (BOOL)canProxyUnloadedChildElement:(id)arg1;
 - (void)configureUpdatesWithImplementation:(id)arg1;
@@ -50,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDataSourceElement:(id)arg1;
 - (void)initializeWithElementFactory:(id)arg1;
 - (void)loadIndex:(long long)arg1;
+- (id)masterPrototypeForItemAtIndex:(unsigned long long)arg1;
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
 - (id)proxyElementForLoadedChildElement:(id)arg1;

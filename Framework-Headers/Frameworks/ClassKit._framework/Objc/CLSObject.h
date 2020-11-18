@@ -17,6 +17,7 @@
 {
     BOOL _deleted;
     BOOL _modified;
+    BOOL _enforceImmutablility;
     CLSDataStore *_dataStore;
     NSString *_parentObjectID;
     NSString *_appIdentifier;
@@ -28,15 +29,18 @@
     NSDate *_dateCreated;
     NSDate *_dateLastModified;
     NSString *_objectID;
+    NSDate *_dateExpires;
 }
 
 @property (copy, nonatomic) NSString *appIdentifier;
 @property (weak, nonatomic) CLSDataStore *dataStore;
 @property (strong, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (strong, nonatomic) NSDate *dateExpires; // @synthesize dateExpires=_dateExpires;
 @property (strong, nonatomic) NSDate *dateLastModified; // @synthesize dateLastModified=_dateLastModified;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, getter=isDeleted) BOOL deleted;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isImmutablilityEnforced) BOOL enforceImmutablility;
 @property unsigned int generation; // @synthesize generation=_generation;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isModified) BOOL modified;

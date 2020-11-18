@@ -13,7 +13,7 @@
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 #import <MediaPlayer/UIAlertViewDelegate-Protocol.h>
 
-@class MPAVController, MPAVItem, MPInlineAudioOverlay, MPInlineVideoFullscreenViewController, MPSwipableView, MPTVOutWindow, MPVideoBackgroundView, MPVideoContainerView, MPVideoPlaybackOverlayView, MPVideoView, MPVolumeController, MPWeakTimer, NSSet, NSString, UIActivityIndicatorView, UIAlertView, UIColor, UIImage, UINavigationController, UIPinchGestureRecognizer, UITapGestureRecognizer, UIView, UIWindow, _UIHostedWindow;
+@class MPAVController, MPAVItem, MPInlineVideoFullscreenViewController, MPSwipableView, MPTVOutWindow, MPVideoBackgroundView, MPVideoContainerView, MPVideoPlaybackOverlayView, MPVideoView, MPVolumeController, MPWeakTimer, NSSet, NSString, UIActivityIndicatorView, UIAlertView, UIColor, UIImage, UINavigationController, UIPinchGestureRecognizer, UITapGestureRecognizer, UIView, UIWindow, _UIHostedWindow;
 @protocol MPVideoOverlay;
 
 @interface MPInlineVideoController : NSObject <MPVolumeControllerDelegate, MPVideoControllerProtocol, MPSwipableViewDelegate, MPVideoOverlayDelegate, MPTransportControlsTarget, UIAlertViewDelegate>
@@ -26,7 +26,7 @@
     BOOL _allowsDetailScrubbing;
     BOOL _allowsWirelessPlayback;
     BOOL _alwaysAllowHidingControlsOverlay;
-    int _artworkImageStyle;
+    long long _artworkImageStyle;
     BOOL _attemptAutoPlayWhenControlsHidden;
     MPVideoBackgroundView *_backgroundView;
     UIColor *_backstopColor;
@@ -50,14 +50,12 @@
     MPSwipableView *_view;
     MPVideoPlaybackOverlayView *_videoOverlayView;
     unsigned long long _visibleParts;
-    long long _audioOverlayStyle;
     BOOL _navigationBarHidden;
     NSString *_playbackErrorDescription;
     long long _videoOverlayStyle;
     UIView *_advertisementView;
     UIAlertView *_alertSheet;
     UIWindow *_alternateTracksWindow;
-    MPInlineAudioOverlay *_audioOverlayView;
     unsigned long long _backgroundTaskId;
     BOOL _batteryMonitoringWasEnabled;
     UINavigationController *_chaptersContainerController;
@@ -95,9 +93,8 @@
 @property (nonatomic) BOOL allowsDetailScrubbing; // @synthesize allowsDetailScrubbing=_allowsDetailScrubbing;
 @property (nonatomic) BOOL allowsWirelessPlayback; // @synthesize allowsWirelessPlayback=_allowsWirelessPlayback;
 @property (nonatomic) BOOL alwaysAllowHidingControlsOverlay; // @synthesize alwaysAllowHidingControlsOverlay=_alwaysAllowHidingControlsOverlay;
-@property (nonatomic) int artworkImageStyle; // @synthesize artworkImageStyle=_artworkImageStyle;
+@property (nonatomic) long long artworkImageStyle; // @synthesize artworkImageStyle=_artworkImageStyle;
 @property (nonatomic) BOOL attemptAutoPlayWhenControlsHidden; // @synthesize attemptAutoPlayWhenControlsHidden=_attemptAutoPlayWhenControlsHidden;
-@property (nonatomic) long long audioOverlayStyle; // @synthesize audioOverlayStyle=_audioOverlayStyle;
 @property (nonatomic) BOOL autoPlayWhenLikelyToKeepUp;
 @property (nonatomic) BOOL automaticallyHandleTransportControls; // @synthesize automaticallyHandleTransportControls=_automaticallyHandleTransportControls;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
@@ -150,7 +147,6 @@
 - (BOOL)_canEnableAirPlayVideoRoutes;
 - (void)_cancelOverlayIdleTimer;
 - (void)_delayedShowLoadingIndicator;
-- (void)_destroyAudioOverlayView;
 - (void)_destroyVideoOverlayView;
 - (void)_destroyVideoSnapshotView;
 - (void)_doneWithChapters:(id)arg1;

@@ -30,12 +30,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_factoids;
 - (id)_textBlockText;
 - (id)_textBlockTitle;
 - (void)_updateViews;
 - (void)_viewEncyclopedicContent;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (void)viewDidLoad;
 
 @end

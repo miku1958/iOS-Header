@@ -8,5 +8,6 @@
 
 @interface UIWindow (UIAccessibilityElementTraversal)
 - (BOOL)_accessibilityIsModalWithKeyboard;
+- (struct CGRect)_axConvertRect:(struct CGRect)arg1 toWindow:(id)arg2;
 @end
 

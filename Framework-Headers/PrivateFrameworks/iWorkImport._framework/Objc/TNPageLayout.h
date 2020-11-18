@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)dependentLayouts;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (BOOL)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (id)headerFooterProvider;
 - (id)initWithPageController:(id)arg1 pageCoordinate:(struct TSUCellCoord)arg2;
@@ -68,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (Class)repClassForTextLayout:(id)arg1;
 - (Class)repClassOverride;
 - (void)setChildren:(id)arg1;
-- (void)storage:(id)arg1 didChangeRange:(struct _NSRange)arg2 delta:(long long)arg3 broadcastKind:(int)arg4;
+- (void)storage:(id)arg1 didChangeRange:(struct _NSRange)arg2 delta:(long long)arg3 broadcastKind:(unsigned long long)arg4;
 - (BOOL)textIsVertical;
 - (void)updateChildrenFromInfo;
 - (int)verticalAlignmentForTextLayout:(id)arg1;

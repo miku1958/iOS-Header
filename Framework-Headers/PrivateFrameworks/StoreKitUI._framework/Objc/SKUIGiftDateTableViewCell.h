@@ -8,6 +8,7 @@
 
 @class NSString, UIImageView, UILabel, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftDateTableViewCell : UITableViewCell
 {
     UIView *_bottomBorderView;
@@ -17,11 +18,13 @@
     UILabel *_labelLabel;
     UILabel *_placeholderLabel;
     UIView *_topBorderView;
+    BOOL _leftToRight;
 }
 
 @property (nonatomic, getter=isChecked) BOOL checked; // @synthesize checked=_checked;
 @property (copy, nonatomic) NSString *dateString;
 @property (copy, nonatomic) NSString *label;
+@property (nonatomic) BOOL leftToRight; // @synthesize leftToRight=_leftToRight;
 @property (copy, nonatomic) NSString *placeholder;
 
 - (void).cxx_destruct;

@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isRangeSubSuperscript;
 - (id)latexMathModeDescription;
 - (id)mathMLString;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
-- (id)speakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2;
+- (id)speakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
 - (id)subExpressions;
 
 @end

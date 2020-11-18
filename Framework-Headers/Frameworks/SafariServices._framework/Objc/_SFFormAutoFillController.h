@@ -11,7 +11,7 @@
 #import <SafariServices/_SFAuthenticationClient-Protocol.h>
 #import <SafariServices/_SFAutoFillInputViewDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, NSTimer, SFFormAutoFillFrameHandle, SFFormAutocompleteState, UIView, WBSCreditCardData, WBSFormMetadata, WBSOneTimeCodeMonitor, WKWebView, _SFAuthenticationContext, _SFAutoFillInputView, _SFFormAutoFillInputSession, _WKRemoteObjectInterface;
+@class CNContact, NSArray, NSDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, NSTimer, SFFormAutoFillFrameHandle, SFFormAutocompleteState, UIView, WBSCreditCardData, WBSFormMetadata, WBSOneTimeCodeMonitor, WKWebView, _SFAuthenticationContext, _SFAutoFillInputView, _SFFormAutoFillInputSession, _WKRemoteObjectInterface;
 @protocol SFFormAutoFillControllerDelegate, SFFormAutoFiller, WBUFormAutoFillWebView;
 
 @interface _SFFormAutoFillController : NSObject <SFCredentialProviderExtensionManagerObserver, _SFAutoFillInputViewDelegate, SFFormMetadataObserver, _SFAuthenticationClient>
@@ -37,6 +37,7 @@
     NSArray *_preservedTrailingBarButtonGroups;
     NSDictionary *_externalCredentialIdentitiesForStreamlinedAutoFill;
     BOOL _metadataCorrectionsEnabled;
+    CNContact *_lastFilledContact;
     WBSCreditCardData *_lastFilledCreditCardData;
     NSSet *_lastFilledCreditCardDataTypes;
 }
@@ -45,6 +46,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CNContact *lastFilledContact; // @synthesize lastFilledContact=_lastFilledContact;
 @property (strong, nonatomic) WBSCreditCardData *lastFilledCreditCardData; // @synthesize lastFilledCreditCardData=_lastFilledCreditCardData;
 @property (strong, nonatomic) NSSet *lastFilledCreditCardDataTypes; // @synthesize lastFilledCreditCardDataTypes=_lastFilledCreditCardDataTypes;
 @property (nonatomic) BOOL metadataCorrectionsEnabled; // @synthesize metadataCorrectionsEnabled=_metadataCorrectionsEnabled;
@@ -117,7 +119,7 @@
 - (void)textFieldFocused:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3 inputSession:(id)arg4;
 - (void)updateSuggestions;
 - (void)usernameFieldFocused:(id)arg1 inForm:(id)arg2 inFrame:(id)arg3 inputSession:(id)arg4;
-- (void)willNavigateFrame:(id)arg1 withUnsubmittedForm:(id)arg2 loadingIsDeferred:(BOOL)arg3;
+- (void)willNavigateFrame:(id)arg1 withUnsubmittedForm:(id)arg2;
 - (void)willSubmitForm:(id)arg1 inFrame:(id)arg2 submissionHandler:(CDUnknownBlockType)arg3;
 - (void)willSubmitFormValues:(id)arg1 userObject:(id)arg2 submissionHandler:(CDUnknownBlockType)arg3;
 

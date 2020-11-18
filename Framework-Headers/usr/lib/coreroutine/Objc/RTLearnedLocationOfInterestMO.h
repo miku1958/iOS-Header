@@ -32,10 +32,13 @@
 @property (strong, nonatomic) NSOrderedSet *visits; // @dynamic visits;
 
 + (id)fetchRequest;
++ (id)fetchRequestSortedByCreation;
 + (id)managedObjectWithLocationOfInterest:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)managedObjectWithLocationOfInterest:(id)arg1 managedObject:(id)arg2 inManagedObjectContext:(id)arg3;
 - (void).cxx_destruct;
 - (id)mapItem;
 - (void)setMapItem:(id)arg1;
+- (void)updateWithLearnedLocation:(id)arg1;
 
 @end
 

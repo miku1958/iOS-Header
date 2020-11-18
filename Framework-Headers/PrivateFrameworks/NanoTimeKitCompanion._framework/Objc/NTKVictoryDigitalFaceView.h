@@ -6,9 +6,11 @@
 
 #import <NanoTimeKitCompanion/NTKFaceView.h>
 
-@class NTKComplicationDisplayWrapperView, NTKUtilityComplicationFactory, UIColor;
+#import <NanoTimeKitCompanion/NTKVictoryDigitalTimeViewDelegate-Protocol.h>
 
-@interface NTKVictoryDigitalFaceView : NTKFaceView
+@class NSString, NTKComplicationDisplayWrapperView, NTKUtilityComplicationFactory, UIColor;
+
+@interface NTKVictoryDigitalFaceView : NTKFaceView <NTKVictoryDigitalTimeViewDelegate>
 {
     NTKUtilityComplicationFactory *_utilityComplicationFactory;
     UIColor *_complicationForegroundColor;
@@ -18,6 +20,11 @@
     double _currentLogoPlatterXOffset;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
@@ -26,6 +33,7 @@
 - (void)_applyColor:(id)arg1 platterColor:(id)arg2 toComplicationView:(id)arg3;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3 fromPlatterColor:(id)arg4 toPlatterColor:(id)arg5 fromBackgroundColor:(id)arg6 toBackgroundColor:(id)arg7 slot:(id)arg8;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (double)_bottomComplicationAlphaForEditMode:(long long)arg1;
 - (void)_cleanupAfterEditing;
@@ -60,10 +68,12 @@
 - (double)_timeTravelStatusModuleCaptionConstraintPadding;
 - (struct CGRect)_timeViewFrame;
 - (void)_unloadSnapshotContentViews;
+- (void)_updateImageToBlur;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (double)_verticalPaddingForStatusBar;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
+- (void)victoryDigitalTimeViewDidChangeTime:(id)arg1;
 
 @end
 

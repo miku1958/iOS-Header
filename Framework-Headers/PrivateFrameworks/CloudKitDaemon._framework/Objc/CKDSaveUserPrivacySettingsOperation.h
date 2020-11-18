@@ -6,20 +6,15 @@
 
 #import <CloudKitDaemon/CKDOperation.h>
 
-@class NSString;
-
 __attribute__((visibility("hidden")))
 @interface CKDSaveUserPrivacySettingsOperation : CKDOperation
 {
     long long _discoverable;
-    NSString *_applicationBundleID;
 }
 
-@property (copy, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
 @property (nonatomic) long long discoverable; // @synthesize discoverable=_discoverable;
 
 + (long long)isPredominatelyDownload;
-- (void).cxx_destruct;
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;

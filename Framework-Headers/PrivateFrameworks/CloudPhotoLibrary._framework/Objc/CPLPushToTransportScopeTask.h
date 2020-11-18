@@ -6,7 +6,7 @@
 
 #import <CloudPhotoLibrary/CPLEngineScopedTask.h>
 
-@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, CPLExtractedBatch, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class CPLBatchExtractionStrategy, CPLChangeBatch, CPLDerivativesFilter, CPLEnginePushRepository, CPLEngineScheduler, CPLEngineScopeStorage, CPLEngineTransport, CPLExtractedBatch, NSArray, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol CPLEngineTransportCheckRecordsExistenceTask, CPLEngineTransportGroup, CPLEngineTransportUploadBatchTask, OS_dispatch_queue;
 
 @interface CPLPushToTransportScopeTask : CPLEngineScopedTask
@@ -21,6 +21,7 @@
     CPLChangeBatch *_uploadBatch;
     CPLChangeBatch *_batchToCommit;
     NSError *_preparationError;
+    CPLDerivativesFilter *_derivativesFilter;
     NSArray *_uploadResourceTasks;
     NSDictionary *_recordsWithGeneratedResources;
     NSMutableDictionary *_recordsWithSparseResources;
@@ -56,17 +57,20 @@
     NSString *_currentTaskKey;
     NSDate *_taskStartDate;
     unsigned long long _recordCount;
+    BOOL _didExtractOneBatch;
     BOOL _highPriority;
+    NSString *_phaseDescription;
 }
 
 @property (nonatomic) BOOL highPriority; // @synthesize highPriority=_highPriority;
+@property (copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
 
 - (void).cxx_destruct;
 - (void)_checkForRecordExistence;
 - (void)_clearUploadBatch;
 - (void)_deleteGeneratedResourcesAfterError:(id)arg1;
 - (void)_detectUpdatesNeedingExistenceCheck:(id)arg1;
-- (void)_didFinishTaskWithKey:(id)arg1 error:(BOOL)arg2;
+- (void)_didFinishTaskWithKey:(id)arg1 error:(BOOL)arg2 cancelled:(BOOL)arg3;
 - (void)_didStartTaskWithKey:(id)arg1 recordCount:(unsigned long long)arg2;
 - (BOOL)_discardUploadedExtractedBatchWithError:(id *)arg1;
 - (void)_doOneIteration;
@@ -85,7 +89,7 @@
 - (void)_uploadBatch;
 - (void)cancel;
 - (void)cancel:(BOOL)arg1;
-- (id)initWithEngineLibrary:(id)arg1 clientCacheIdentifier:(id)arg2 scope:(id)arg3 transportScope:(id)arg4;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2 clientCacheIdentifier:(id)arg3 scope:(id)arg4 transportScope:(id)arg5;
 - (void)launch;
 - (id)taskIdentifier;
 

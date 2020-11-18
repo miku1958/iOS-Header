@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)documentRoot;
 - (BOOL)drawPageInContext:(struct CGContext *)arg1 createPage:(BOOL)arg2;
+- (id)dynamicOverrideForLayout:(id)arg1;
 - (id)dynamicOverrideForRep:(id)arg1;
 - (void)i_setDrawsOnlyBelowInfo:(id)arg1;
 - (id)init;

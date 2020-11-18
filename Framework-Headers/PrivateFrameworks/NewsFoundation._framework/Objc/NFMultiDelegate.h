@@ -22,7 +22,6 @@
 - (void)addDelegate:(id)arg1;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (void)forwardInvocation:(id)arg1;
-- (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 delegateProtocol:(id)arg2;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)removeDelegate:(id)arg1;

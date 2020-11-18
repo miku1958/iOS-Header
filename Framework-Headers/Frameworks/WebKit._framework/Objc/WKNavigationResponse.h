@@ -16,6 +16,7 @@
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) NSString *_downloadAttribute;
 @property (readonly, nonatomic) WKFrameInfo *_frame;
 @property (readonly, nonatomic) NSURLRequest *_request;
 @property (readonly, nonatomic) BOOL canShowMIMEType;

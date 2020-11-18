@@ -13,6 +13,7 @@
     UIImageView *_imageView;
     PXStateBadgeView *_clusterStateBadgeView;
     PXStateBadgeView *_stateBadgeView;
+    PXStateBadgeView *_alternateStateBadgeView;
     PXDedupingBadgeView *_dedupingBadgeView;
     PXTextSymbolView *_sdofOrHDRBadgeView;
     PXTextSymbolView *_favoriteBadgeView;
@@ -20,6 +21,7 @@
     PXTextSymbolView *_blurryBadgeView;
     PXScoreView *_aestheticScoreView;
     PXScoreView *_contentScoreView;
+    PXScoreView *_criteriaScoreView;
     PXSymbolBadgeView *_symbolBadgeView;
     PXSymbolBadgeView *_dedupedSymbolBadgeView;
     PXIndexView *_indexView;
@@ -31,9 +33,11 @@
     NSString *_representedAssetIdentifier;
     NSDictionary *_debugInfo;
     NSString *_state;
+    NSString *_alternateState;
     NSString *_clusterState;
     double _aestheticScore;
     double _contentScore;
+    double _criteriaScore;
     NSNumber *_symbolIndex;
     NSString *_dedupingType;
     NSNumber *_dedupedSymbolIndex;
@@ -41,9 +45,11 @@
 }
 
 @property (nonatomic) double aestheticScore; // @synthesize aestheticScore=_aestheticScore;
+@property (strong, nonatomic) NSString *alternateState; // @synthesize alternateState=_alternateState;
 @property (nonatomic, getter=isBlurry) BOOL blurry; // @synthesize blurry=_isBlurry;
 @property (strong, nonatomic) NSString *clusterState; // @synthesize clusterState=_clusterState;
 @property (nonatomic) double contentScore; // @synthesize contentScore=_contentScore;
+@property (nonatomic) double criteriaScore; // @synthesize criteriaScore=_criteriaScore;
 @property (strong, nonatomic) NSDictionary *debugInfo; // @synthesize debugInfo=_debugInfo;
 @property (strong, nonatomic) NSNumber *dedupedSymbolIndex; // @synthesize dedupedSymbolIndex=_dedupedSymbolIndex;
 @property (strong, nonatomic) NSString *dedupingType; // @synthesize dedupingType=_dedupingType;
@@ -62,6 +68,7 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setClusterParity:(unsigned long long)arg1;
+- (void)setComparisonMatch:(BOOL)arg1;
 
 @end
 

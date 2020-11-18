@@ -18,8 +18,10 @@
     UILabel *_descriptionLabel;
     NSString *_titleText;
     UIFont *_titleFont;
+    unsigned long long _maxNumberOfTitleLines;
     NSString *_descriptionText;
     UIFont *_descriptionFont;
+    unsigned long long _maxNumberOfDescriptionLines;
     UIImage *_descriptionIcon;
     double _textAlpha;
     NSArray *_verticalLabelConstraints;
@@ -37,6 +39,8 @@
 @property (nonatomic) BOOL hideDescriptionIcon; // @synthesize hideDescriptionIcon=_hideDescriptionIcon;
 @property (nonatomic) BOOL hideTitle; // @synthesize hideTitle=_hideTitle;
 @property (strong, nonatomic) NSArray *horizontalLabelConstraints; // @synthesize horizontalLabelConstraints=_horizontalLabelConstraints;
+@property (nonatomic) unsigned long long maxNumberOfDescriptionLines; // @synthesize maxNumberOfDescriptionLines=_maxNumberOfDescriptionLines;
+@property (nonatomic) unsigned long long maxNumberOfTitleLines; // @synthesize maxNumberOfTitleLines=_maxNumberOfTitleLines;
 @property (nonatomic) double textAlpha; // @synthesize textAlpha=_textAlpha;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -48,7 +52,6 @@
 - (void)_addDescriptionLabel;
 - (void)_addTitleLabel;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (id)labelWithText:(id)arg1 font:(id)arg2;
 - (void)prepareForReuse;
 - (void)setDisabled:(BOOL)arg1;
 - (void)updateConstraints;

@@ -8,30 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSMutableArray;
+@class GEOLocation, NSMutableArray, PBDataReader;
 
 @interface GEODirectionsFeedbackLogMessage : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     struct GEONavigationAudioFeedback _navigationAudioFeedback;
-    double _durationOfTrip;
     NSMutableArray *_directionsFeedbacks;
+    double _durationOfTrip;
     GEOLocation *_finalLocation;
     BOOL _arrivedAtDestination;
-    CDStruct_47a5651d _has;
+    CDStruct_57366784 _flags;
 }
 
-@property (nonatomic) BOOL arrivedAtDestination; // @synthesize arrivedAtDestination=_arrivedAtDestination;
-@property (strong, nonatomic) NSMutableArray *directionsFeedbacks; // @synthesize directionsFeedbacks=_directionsFeedbacks;
-@property (nonatomic) double durationOfTrip; // @synthesize durationOfTrip=_durationOfTrip;
-@property (strong, nonatomic) GEOLocation *finalLocation; // @synthesize finalLocation=_finalLocation;
+@property (nonatomic) BOOL arrivedAtDestination;
+@property (strong, nonatomic) NSMutableArray *directionsFeedbacks;
+@property (nonatomic) double durationOfTrip;
+@property (strong, nonatomic) GEOLocation *finalLocation;
 @property (nonatomic) BOOL hasArrivedAtDestination;
 @property (nonatomic) BOOL hasDurationOfTrip;
 @property (readonly, nonatomic) BOOL hasFinalLocation;
 @property (nonatomic) BOOL hasNavigationAudioFeedback;
-@property (nonatomic) struct GEONavigationAudioFeedback navigationAudioFeedback; // @synthesize navigationAudioFeedback=_navigationAudioFeedback;
+@property (nonatomic) struct GEONavigationAudioFeedback navigationAudioFeedback;
 
 + (Class)directionsFeedbackType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsDirectionsFeedback:(id)arg1;
+- (void)_readDirectionsFeedbacks;
+- (void)_readFinalLocation;
 - (void)addDirectionsFeedback:(id)arg1;
 - (void)clearDirectionsFeedbacks;
 - (void)copyTo:(id)arg1;
@@ -43,6 +49,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -9,11 +9,10 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPClientSession-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _CPImagesUsagePropensity, _CPNewsUsagePropensity, _CPSafariUsagePropensity, _CPSpotlightUsagePropensity, _CPUsageSinceLookback;
+@class NSArray, NSData, NSDictionary, NSString, _CPUsageEnvelope, _CPUsageSinceLookback;
 
 @interface _CPClientSession : PBCodable <_CPClientSession, NSSecureCoding>
 {
-    BOOL _firstUseOfTheDay;
     BOOL _removeTimestamps;
     BOOL _duEnabled;
     int _previousSessionEndReason;
@@ -21,45 +20,34 @@
     NSString *_userGuidString;
     NSDictionary *_resourceVersions;
     double _sessionStart;
-    double _firstUseDate;
     NSString *_parsecDeveloperID;
     NSString *_countryCode;
     NSString *_locale;
     _CPUsageSinceLookback *_usageSinceLookback;
-    _CPSafariUsagePropensity *_safariPropensity;
-    _CPSpotlightUsagePropensity *_spotlightPropensity;
-    _CPNewsUsagePropensity *_newsPropensity;
-    _CPImagesUsagePropensity *_imagesPropensity;
+    _CPUsageEnvelope *_cohortsFeedback;
     NSData *_jsonFeedback;
     NSArray *_feedbacks;
-    unsigned long long _whichPropensity;
 }
 
 @property (copy, nonatomic) NSString *agent; // @synthesize agent=_agent;
+@property (strong, nonatomic) _CPUsageEnvelope *cohortsFeedback; // @synthesize cohortsFeedback=_cohortsFeedback;
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL duEnabled; // @synthesize duEnabled=_duEnabled;
 @property (copy, nonatomic) NSArray *feedbacks; // @synthesize feedbacks=_feedbacks;
-@property (nonatomic) double firstUseDate; // @synthesize firstUseDate=_firstUseDate;
-@property (nonatomic) BOOL firstUseOfTheDay; // @synthesize firstUseOfTheDay=_firstUseOfTheDay;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) _CPImagesUsagePropensity *imagesPropensity; // @synthesize imagesPropensity=_imagesPropensity;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSData *jsonFeedback; // @synthesize jsonFeedback=_jsonFeedback;
 @property (copy, nonatomic) NSString *locale; // @synthesize locale=_locale;
-@property (strong, nonatomic) _CPNewsUsagePropensity *newsPropensity; // @synthesize newsPropensity=_newsPropensity;
 @property (copy, nonatomic) NSString *parsecDeveloperID; // @synthesize parsecDeveloperID=_parsecDeveloperID;
 @property (nonatomic) int previousSessionEndReason; // @synthesize previousSessionEndReason=_previousSessionEndReason;
 @property (nonatomic) BOOL removeTimestamps; // @synthesize removeTimestamps=_removeTimestamps;
 @property (copy, nonatomic) NSDictionary *resourceVersions; // @synthesize resourceVersions=_resourceVersions;
-@property (strong, nonatomic) _CPSafariUsagePropensity *safariPropensity; // @synthesize safariPropensity=_safariPropensity;
 @property (nonatomic) double sessionStart; // @synthesize sessionStart=_sessionStart;
-@property (strong, nonatomic) _CPSpotlightUsagePropensity *spotlightPropensity; // @synthesize spotlightPropensity=_spotlightPropensity;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _CPUsageSinceLookback *usageSinceLookback; // @synthesize usageSinceLookback=_usageSinceLookback;
 @property (copy, nonatomic) NSString *userGuidString; // @synthesize userGuidString=_userGuidString;
-@property (readonly, nonatomic) unsigned long long whichPropensity; // @synthesize whichPropensity=_whichPropensity;
 
 - (void).cxx_destruct;
 - (void)addFeedback:(id)arg1;
@@ -72,7 +60,6 @@
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)setFeedback:(id)arg1;
 - (void)setResourceVersions:(id)arg1 forKey:(id)arg2;
 - (void)writeTo:(id)arg1;

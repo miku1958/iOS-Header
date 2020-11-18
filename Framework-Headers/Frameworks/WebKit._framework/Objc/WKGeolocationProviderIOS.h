@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)_setEnableHighAccuracy:(BOOL)arg1;
 - (void)_startUpdating;
 - (void)_stopUpdating;
-- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 completionHandler:(Function_f7a043c0 *)arg3 view:(id)arg4;
+- (void)decidePolicyForGeolocationRequestFromOrigin:(struct SecurityOrigin *)arg1 frame:(struct WebFrameProxy *)arg2 completionHandler:(Function_da50b38b *)arg3 view:(id)arg4;
 - (void)errorOccurred:(id)arg1;
 - (void)geolocationAuthorizationDenied;
 - (void)geolocationAuthorizationGranted;

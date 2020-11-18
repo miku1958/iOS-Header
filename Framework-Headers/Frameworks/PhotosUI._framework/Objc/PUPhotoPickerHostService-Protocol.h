@@ -7,7 +7,7 @@
 #import <PhotosUI/PUPhotoPickerSelectionService-Protocol.h>
 #import <PhotosUI/PUPhotoPickerTestSupportHandler-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSUUID;
+@class NSArray, NSData, NSDictionary, NSNumber;
 
 @protocol PUPhotoPickerHostService <PUPhotoPickerSelectionService, PUPhotoPickerTestSupportHandler>
 - (void)cancelPhotoPicker;
@@ -16,15 +16,7 @@
 - (void)didSelectMediaWithInfoDictionary:(NSDictionary *)arg1;
 - (void)didSelectMultipleMediaItemsWithInfoDictionaries:(NSArray *)arg1;
 - (void)dismissCurrentViewControllerFromPhotoPickerAnimated:(NSNumber *)arg1;
-- (void)displayActionTypeDescription:(NSString *)arg1;
-- (void)displayActionWithType:(NSNumber *)arg1;
-- (void)displaySecondaryActionWithType:(NSNumber *)arg1;
 - (void)invalidatePhotoPickerHostServices;
-- (void)performAppearanceUpdateUsingPhotoPickerAppearanceDictionary:(NSDictionary *)arg1;
 - (void)performTraitCollectionUpdateUsingData:(NSData *)arg1 completion:(void (^)(NSNumber *))arg2;
-- (void)requestViewControllerFromPhotoPickerWithRequestIdentifier:(NSUUID *)arg1;
-- (void)setPhotoPickerNavigationBarHidden:(NSNumber *)arg1;
-- (void)setPhotoPickerViewControllerPrompt:(NSString *)arg1;
-- (void)setPhotoPickerViewControllerTitle:(NSString *)arg1;
 @end
 

@@ -8,33 +8,54 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDMapsIdentifier, GEOStyleAttributes, NSString, PBUnknownFields;
+@class GEOLatLng, GEOPDMapsIdentifier, GEOStyleAttributes, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDLinkedPlace : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _featureId;
     GEOLatLng *_center;
+    unsigned long long _featureId;
     GEOPDMapsIdentifier *_mapsId;
     NSString *_name;
     GEOStyleAttributes *_styleAttributes;
-    CDStruct_b1448a5c _has;
+    struct {
+        unsigned int has_featureId:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_center:1;
+        unsigned int read_mapsId:1;
+        unsigned int read_name:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_featureId:1;
+        unsigned int wrote_mapsId:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_styleAttributes:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
-@property (nonatomic) unsigned long long featureId; // @synthesize featureId=_featureId;
+@property (strong, nonatomic) GEOLatLng *center;
+@property (nonatomic) unsigned long long featureId;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (nonatomic) BOOL hasFeatureId;
 @property (readonly, nonatomic) BOOL hasMapsId;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
-@property (strong, nonatomic) GEOPDMapsIdentifier *mapsId; // @synthesize mapsId=_mapsId;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
+@property (strong, nonatomic) GEOPDMapsIdentifier *mapsId;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readCenter;
+- (void)_readMapsId;
+- (void)_readName;
+- (void)_readStyleAttributes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

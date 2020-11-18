@@ -12,10 +12,12 @@
 {
     PKImage *_iconImage;
     PKImage *_notificationIconImage;
+    PKImage *_rawIcon;
 }
 
 @property (strong, nonatomic) PKImage *iconImage; // @synthesize iconImage=_iconImage;
 @property (strong, nonatomic) PKImage *notificationIconImage; // @synthesize notificationIconImage=_notificationIconImage;
+@property (strong, nonatomic) PKImage *rawIcon; // @synthesize rawIcon=_rawIcon;
 
 + (id)archiveName;
 + (unsigned int)currentVersion;

@@ -22,7 +22,6 @@
     NSString *_transparencyDetails;
     NSDictionary *_transparencyDetailsData;
     UILabel *_errorLabel;
-    double _statusBarOffset;
     WKWebView *_myWebView;
     UINavigationBar *_transparencyNavBar;
 }
@@ -34,7 +33,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isiPad; // @synthesize isiPad=_isiPad;
 @property (strong, nonatomic) WKWebView *myWebView; // @synthesize myWebView=_myWebView;
-@property (nonatomic) double statusBarOffset; // @synthesize statusBarOffset=_statusBarOffset;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *transparencyDetails; // @synthesize transparencyDetails=_transparencyDetails;
 @property (strong, nonatomic) NSDictionary *transparencyDetailsData; // @synthesize transparencyDetailsData=_transparencyDetailsData;

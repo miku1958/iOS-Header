@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)af_arrayByMappingWithBlock:(CDUnknownBlockType)arg1;
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 @end
 

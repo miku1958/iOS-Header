@@ -7,7 +7,6 @@
 #import <objc/NSObject.h>
 
 @class PDFLayerController, PDFRenderingPropertiesPrivate, PDFView, UIColor;
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface PDFRenderingProperties : NSObject
@@ -22,10 +21,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL enableTileUpdates;
 @property (nonatomic) double greekingThreshold;
 @property (nonatomic) long long interpolationQuality;
-@property (nonatomic, setter=forceWebKitMainThread:) BOOL isForcingWebKitMainThread;
 @property (nonatomic) BOOL isUsingPDFExtensionView;
 @property (nonatomic) double lineWidthThreshold;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *loupeWorkQueue;
 @property (strong, nonatomic) UIColor *pageColor;
 @property (weak, nonatomic, setter=setPDFLayerController:) PDFLayerController *pdfLayerController;
 @property (weak, nonatomic, setter=setPDFView:) PDFView *pdfView;

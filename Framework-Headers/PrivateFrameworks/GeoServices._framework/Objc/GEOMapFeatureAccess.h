@@ -29,6 +29,8 @@
 - (id)_findTransitPointsOfType:(unsigned long long)arg1 nearCoordinate:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3 handler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (CDUnknownBlockType)_openTileLoaderWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_preloadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 tileSetStyle:(int)arg3 tileSize:(int)arg4 tileScale:(int)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)findAllRoadsAtNextIntersectionOf:(id)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)findAllRoadsAtPreviousIntersectionOf:(id)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)findBuildingsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)findRoadsFromJunction:(id)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)findRoadsFromNextIntersectionOf:(id)arg1 handler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;

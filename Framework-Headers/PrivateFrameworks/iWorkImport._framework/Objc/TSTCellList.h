@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSPointerArray *cells;
 
+- (void).cxx_destruct;
 - (id)addCell:(id)arg1;
 - (id)cellAtIndex:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1;
 - (id)lastCell;
 - (void)loadFromUnarchiver:(id)arg1;

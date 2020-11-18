@@ -18,12 +18,14 @@
         unsigned int charging:1;
     } _has;
     BOOL _charging;
+    BOOL __encodeLegacyGloryData;
     _INPBDouble *_chargePercentRemaining;
     _INPBDistance *_distanceRemaining;
     _INPBDouble *_fuelPercentRemaining;
     _INPBInteger *_minutesToFull;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDouble *chargePercentRemaining; // @synthesize chargePercentRemaining=_chargePercentRemaining;
 @property (nonatomic) BOOL charging; // @synthesize charging=_charging;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,9 +41,12 @@
 @property (strong, nonatomic) _INPBInteger *minutesToFull; // @synthesize minutesToFull=_minutesToFull;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

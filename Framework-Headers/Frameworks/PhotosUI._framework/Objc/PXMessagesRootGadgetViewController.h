@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXGadgetViewController.h>
+#import <PhotosUICore/PXGadgetUIViewController.h>
 
 @class PXMessagesGadgetDataSourceManager;
 
-@interface PXMessagesRootGadgetViewController : PXGadgetViewController
+@interface PXMessagesRootGadgetViewController : PXGadgetUIViewController
 {
     PXMessagesGadgetDataSourceManager *_messagesDataSourceManager;
 }

@@ -16,8 +16,10 @@
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 
 - (void).cxx_destruct;
-- (id)generateImageWithFormat:(int)arg1;
+- (unsigned long long)hash;
 - (id)initWithDate:(id)arg1 variant:(unsigned long long)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (id)loadImage;
 
 @end
 

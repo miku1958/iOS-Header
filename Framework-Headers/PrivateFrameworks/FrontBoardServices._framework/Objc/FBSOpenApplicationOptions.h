@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
+#import <FrontBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
 
 @class NSDictionary, NSMutableDictionary, NSString, NSURL;
 
-@interface FBSOpenApplicationOptions : NSObject <BSXPCCoding, NSCopying>
+@interface FBSOpenApplicationOptions : NSObject <BSXPCCoding, BSXPCSecureCoding, NSCopying>
 {
     NSMutableDictionary *_payload;
 }
@@ -24,12 +25,15 @@
 @property (readonly, nonatomic) NSURL *url;
 
 + (id)optionsWithDictionary:(id)arg1;
++ (BOOL)supportsBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (void)_sanitizeAndValidatePayload;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

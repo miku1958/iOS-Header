@@ -34,6 +34,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_createMotionManagerIfNecessary;
 - (void)_handleDirectionChange:(id)arg1;
 - (void)_updateWithAccelerometerData:(id)arg1 captureOrientation:(long long)arg2;

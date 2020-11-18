@@ -47,8 +47,10 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithVertexCount:(unsigned long long)arg1 vertices:(const struct CAMeshVertex *)arg2 faceCount:(unsigned long long)arg3 faces:(const struct CAMeshFace *)arg4 depthNormalization:(id)arg5;
+- (id)inverseMesh;
 - (id)meshTransformForLayer:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)subdividedMesh:(int)arg1;
 - (struct CAMeshVertex)vertexAtIndex:(unsigned long long)arg1;
 
 @end

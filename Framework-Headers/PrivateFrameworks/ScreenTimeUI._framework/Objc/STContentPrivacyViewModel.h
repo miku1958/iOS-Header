@@ -6,8 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSNumber, NSSet, NSString;
+@class NSMutableDictionary, NSNumber, NSSet, NSString, STCommunicationLimits;
 
+__attribute__((visibility("hidden")))
 @interface STContentPrivacyViewModel : NSObject
 {
     BOOL _isLoaded;
@@ -17,9 +18,11 @@
     NSString *_userName;
     NSNumber *_userDSID;
     NSMutableDictionary *_valuesByRestriction;
+    STCommunicationLimits *_communicationLimits;
     NSSet *_visibleRestrictions;
 }
 
+@property (strong) STCommunicationLimits *communicationLimits; // @synthesize communicationLimits=_communicationLimits;
 @property (nonatomic) BOOL isLoaded; // @synthesize isLoaded=_isLoaded;
 @property (nonatomic) BOOL isLocalDevice; // @synthesize isLocalDevice=_isLocalDevice;
 @property (nonatomic) BOOL restrictionsEnabled; // @synthesize restrictionsEnabled=_restrictionsEnabled;

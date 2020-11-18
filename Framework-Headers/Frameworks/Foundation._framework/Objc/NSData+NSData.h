@@ -7,6 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (NSData)
++ (id)_alloc;
 + (BOOL)_base64DecodingAlwaysSucceedsForOptions:(unsigned long long)arg1;
 + (id)_newZeroingDataWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 + (id)_newZeroingDataWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 deallocator:(CDUnknownBlockType)arg3;
@@ -29,17 +30,26 @@
 - (unsigned long long)_cfTypeID;
 - (BOOL)_copyWillRetain;
 - (id)_createDispatchData;
+- (id)_dataWithCompressionOperation:(int)arg1 algorithm:(long long)arg2;
 - (BOOL)_decodeBase64EncodedCharacterBuffer:(const char *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 buffer:(char *)arg4 bufferLength:(unsigned long long)arg5 state:(CDStruct_6243051c *)arg6;
 - (id)_initWithBase64EncodedObject:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)_isCompact;
 - (BOOL)_isDispatchData;
 - (BOOL)_providesConcreteBacking;
+- (id)_replaceCString:(const char *)arg1 withCString:(const char *)arg2;
+- (id)_web_guessedMIMEType;
+- (id)_web_guessedMIMETypeForExtension:(id)arg1;
+- (id)_web_guessedMIMETypeForXML;
+- (id)_web_parseRFC822HeaderFields;
 - (id)base64EncodedDataWithOptions:(unsigned long long)arg1;
 - (id)base64EncodedStringWithOptions:(unsigned long long)arg1;
 - (id)base64Encoding;
 - (const void *)bytes;
 - (Class)classForCoder;
+- (id)compressedDataUsingAlgorithm:(long long)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
+- (id)decompressedDataUsingAlgorithm:(long long)arg1 error:(id *)arg2;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateByteRangesUsingBlock:(CDUnknownBlockType)arg1;
@@ -69,10 +79,12 @@
 - (id)initWithData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToData:(id)arg1;
+- (BOOL)isNSData__;
 - (unsigned long long)length;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (struct _NSRange)rangeOfData:(id)arg1 options:(unsigned long long)arg2 range:(struct _NSRange)arg3;
 - (id)replacementObjectForCoder:(id)arg1;
+- (id)replacementObjectForPortCoder:(id)arg1;
 - (id)subdataWithRange:(struct _NSRange)arg1;
 - (BOOL)writeToFile:(id)arg1 atomically:(BOOL)arg2;
 - (BOOL)writeToFile:(id)arg1 atomically:(BOOL)arg2 error:(id *)arg3;

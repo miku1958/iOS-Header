@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setFadingInFromCustomAlpha:) BOOL _isFadingInFromCustomAlpha; // @synthesize _isFadingInFromCustomAlpha=__isFadingInFromCustomAlpha;
 
 - (void).cxx_destruct;
-- (void)_adjustLabelTrackingIfNecessary;
 - (void)_cleanUpCrossView;
 - (void)_crossFadeHiddingButton:(BOOL)arg1;
 - (id)_currentTextColorForBarStyle:(long long)arg1;
@@ -41,7 +40,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateLabel;
 - (void)_updateLabelColor;
 - (void)_updateLabelContents;
-- (BOOL)_useSilverLookForBarStyle:(long long)arg1;
 - (id)description;
 - (id)font;
 - (id)initWithNavigationItem:(id)arg1;

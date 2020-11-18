@@ -124,11 +124,11 @@
 - (void)_sendDelayedActions;
 - (void)_setValue:(double)arg1 andSendAction:(BOOL)arg2;
 - (void)_setZoomAnimating:(BOOL)arg1;
-- (void)_sliderAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
-- (void)_sliderAnimationWillStart:(id)arg1 context:(id)arg2;
+- (void)_sliderAnimationDidStop:(BOOL)arg1;
+- (void)_sliderAnimationWillStart;
 - (void)_sliderValueDidChange:(id)arg1;
 - (void)_trackPressWasHeld;
-- (void)_trimAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_trimAnimationDidStop:(BOOL)arg1 glassView:(id)arg2;
 - (void)_updateThumbLocation;
 - (void)_updateTimes;
 - (double)_valueForLocatable:(id)arg1;

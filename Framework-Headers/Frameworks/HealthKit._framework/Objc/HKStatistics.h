@@ -9,11 +9,11 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKQuantity, HKQuantityType, NSArray, NSDate, NSDateInterval, NSDictionary;
+@class HKObjectType, HKQuantity, HKQuantityType, NSArray, NSDate, NSDateInterval, NSDictionary;
 
 @interface HKStatistics : NSObject <NSSecureCoding, NSCopying>
 {
-    HKQuantityType *_quantityType;
+    HKObjectType *_dataType;
     NSDate *_startDate;
     NSDate *_endDate;
     NSArray *_sources;
@@ -23,12 +23,14 @@
     HKQuantity *_maximumQuantity;
     HKQuantity *_mostRecentQuantity;
     NSDateInterval *_mostRecentQuantityDateInterval;
+    HKQuantity *_duration;
     NSDictionary *_averageQuantityBySource;
     NSDictionary *_minimumQuantityBySource;
     NSDictionary *_maximumQuantityBySource;
     NSDictionary *_mostRecentQuantityBySource;
     NSDictionary *_mostRecentQuantityDateIntervalBySource;
     NSDictionary *_dataCountBySource;
+    NSDictionary *_durationBySource;
     HKQuantity *_sumQuantity;
     NSDictionary *_sumQuantityBySource;
     NSDictionary *_sumQuantityBySourceID;
@@ -38,6 +40,8 @@
 @property (copy, nonatomic) NSDictionary *averageQuantityBySource; // @synthesize averageQuantityBySource=_averageQuantityBySource;
 @property (nonatomic) unsigned long long dataCount; // @synthesize dataCount=_dataCount;
 @property (copy, nonatomic) NSDictionary *dataCountBySource; // @synthesize dataCountBySource=_dataCountBySource;
+@property (copy, nonatomic) HKQuantity *duration; // @synthesize duration=_duration;
+@property (copy, nonatomic) NSDictionary *durationBySource; // @synthesize durationBySource=_durationBySource;
 @property (readonly) NSDate *endDate;
 @property (copy, nonatomic) HKQuantity *maximumQuantity; // @synthesize maximumQuantity=_maximumQuantity;
 @property (copy, nonatomic) NSDictionary *maximumQuantityBySource; // @synthesize maximumQuantityBySource=_maximumQuantityBySource;
@@ -57,6 +61,7 @@
 + (void)_validateOptions:(unsigned long long)arg1 forDataType:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_copyOverwritingObjectType:(id)arg1;
 - (id)_initAsCopyOf:(id)arg1;
 - (id)_initWithDataType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (void)_setEndDate:(id)arg1;
@@ -65,6 +70,7 @@
 - (id)averageQuantityForSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)durationForSource:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

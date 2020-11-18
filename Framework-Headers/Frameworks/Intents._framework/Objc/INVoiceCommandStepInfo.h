@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface INVoiceCommandStepInfo : NSObject <NSCopying, NSSecureCoding>
+@interface INVoiceCommandStepInfo : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
     NSString *_applicationIdentifier;
     long long _category;
@@ -20,16 +21,20 @@
 
 @property (readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithApplicationIdentifier:(id)arg1 category:(long long)arg2 name:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

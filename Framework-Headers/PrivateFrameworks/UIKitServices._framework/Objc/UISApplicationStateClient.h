@@ -4,23 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSServiceFacilityClient.h>
+#import <objc/NSObject.h>
 
-@class NSString;
+#import <UIKitServices/BSInvalidatable-Protocol.h>
 
-@interface UISApplicationStateClient : FBSServiceFacilityClient
+@class BSServiceConnection, NSString;
+
+@interface UISApplicationStateClient : NSObject <BSInvalidatable>
 {
+    struct os_unfair_lock_s _lock;
+    BSServiceConnection *_lock_connection;
     NSString *_bundleIdentifier;
+    BOOL _lock_invalidated;
 }
 
 @property (copy, nonatomic) NSString *badgeValue;
-@property (nonatomic) double minimumBackgroundFetchInterval;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double nextWakeIntervalSinceReferenceDate;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL usesBackgroundNetwork;
 
 - (void).cxx_destruct;
-- (void)configureConnectMessage:(id)arg1;
+- (id)_remoteTarget;
+- (void)dealloc;
 - (id)initWithBundleIdentifier:(id)arg1;
+- (void)invalidate;
+- (void)setMinimumBackgroundFetchInterval:(double)arg1;
 
 @end
 

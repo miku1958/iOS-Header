@@ -6,6 +6,30 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
+@class NSArray, NSDictionary, NSString, NSURL;
+
 @protocol PLAssetsdCloudInternalServiceProtocol <NSObject>
+- (void)acceptMomentShareWithUUID:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
+- (void)cloudSharingSpaceManagementRequestWithType:(unsigned long long)arg1 optionalBytesToPurge:(unsigned long long)arg2 reply:(void (^)(unsigned long long, NSError *))arg3;
+- (void)createPhotostreamAlbumWithStreamID:(NSString *)arg1;
+- (void)emailAddressForKey:(long long)arg1 reply:(void (^)(NSString *, NSError *))arg2;
+- (void)enablePhotostreamsWithStreamID:(NSString *)arg1;
+- (void)fetchMomentShareWithURL:(NSURL *)arg1 reply:(void (^)(BOOL, NSString *, NSError *))arg2;
+- (void)forceSyncMomentShareWithUUID:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
+- (void)getCurrentTransferProgress:(void (^)(unsigned long long, unsigned long long, unsigned long long, unsigned long long))arg1;
+- (void)getSystemBudgetsWithReply:(void (^)(BOOL, BOOL, NSError *))arg1;
+- (void)isReadyForCloudPhotoLibraryWithReply:(void (^)(BOOL))arg1;
+- (void)keyForEmailAddress:(NSString *)arg1 reply:(void (^)(long long, NSError *))arg2;
+- (void)overrideSystemBudgetsForSyncSession:(BOOL)arg1 systemBudgets:(unsigned long long)arg2 reply:(void (^)(BOOL, NSError *))arg3;
+- (void)personInfoDictionaryForPersonID:(NSString *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)publishMomentShareWithUUID:(NSString *)arg1 reply:(void (^)(BOOL, NSURL *, NSError *))arg2;
+- (void)queryUserIdentitiesWithEmails:(NSArray *)arg1 phoneNumbers:(NSArray *)arg2 reply:(void (^)(BOOL, NSDictionary *, NSError *))arg3;
+- (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 reply:(void (^)(BOOL, unsigned long long, NSError *))arg3;
+- (void)setCloudPhotoLibraryEnabledState:(BOOL)arg1;
+- (void)setCloudPhotoLibraryPauseState:(BOOL)arg1 reason:(short)arg2;
+- (void)setPersonInfoDictionary:(NSDictionary *)arg1 forPersonID:(NSString *)arg2;
+- (void)shouldAutoEnableiCPLOnOSXWithReply:(void (^)(BOOL, NSError *))arg1;
+- (void)syncCloudPhotoLibrary;
+- (void)updateSharedAlbumsCachedServerConfigurationLimits;
 @end
 

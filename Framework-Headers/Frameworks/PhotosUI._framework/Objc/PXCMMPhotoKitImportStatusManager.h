@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUICore/PXImportStatusManager-Protocol.h>
+#import <PhotosUICore/PXAssetImportStatusManager-Protocol.h>
 
 @class NSHashTable, NSMutableDictionary, NSString;
 
-@interface PXCMMPhotoKitImportStatusManager : NSObject <PXImportStatusManager>
+@interface PXCMMPhotoKitImportStatusManager : NSObject <PXAssetImportStatusManager>
 {
     NSHashTable *_statusObservers;
     NSMutableDictionary *_simulatedStateByAssetID;
@@ -26,13 +26,13 @@
 - (void).cxx_destruct;
 - (void)_notifySimulationObserversForAssetReference:(id)arg1;
 - (long long)_simulatedStateForAsset:(id)arg1;
-- (void)addImportStatusObserver:(id)arg1;
+- (void)addAssetImportStatusObserver:(id)arg1;
 - (void)beginSimulatedImportForAssetReference:(id)arg1;
 - (void)completeSimulatedImportForAssetReference:(id)arg1 withSuccess:(BOOL)arg2;
 - (long long)importStateForAsset:(id)arg1;
 - (id)init;
 - (id)initAllowingSimulation:(BOOL)arg1;
-- (void)removeImportStatusObserver:(id)arg1;
+- (void)removeAssetImportStatusObserver:(id)arg1;
 
 @end
 

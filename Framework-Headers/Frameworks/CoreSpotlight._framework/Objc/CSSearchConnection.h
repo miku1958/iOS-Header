@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) BOOL previouslyInitialized; // @synthesize previouslyInitialized=_previouslyInitialized;
 @property (strong, nonatomic) NSMutableDictionary *queries; // @synthesize queries=_queries;
 
-+ (void)initialize;
++ (id)sharedCSUserFSConnection;
 + (id)sharedSearchConnection;
 - (void).cxx_destruct;
 - (void)cancelQuery:(unsigned long long)arg1;
@@ -25,6 +25,7 @@
 - (void)handleError:(id)arg1;
 - (void)handleReply:(id)arg1;
 - (id)init;
+- (id)initWithMachServiceName:(id)arg1;
 - (id)queryForID:(id)arg1;
 - (id)removeQueryForID:(id)arg1;
 - (void)sendMessageAsync:(id)arg1 completion:(CDUnknownBlockType)arg2;

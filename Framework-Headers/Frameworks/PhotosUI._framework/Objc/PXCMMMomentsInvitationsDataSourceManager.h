@@ -27,7 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)mockDataSourceManagerFromRecentLargeMoments:(unsigned long long)arg1;
++ (id)mockDataSourceManagerFromRecentLargeMoments;
 + (id)new;
 - (void).cxx_destruct;
 - (id)_createInvitationsDataSourceFromCurrentState;

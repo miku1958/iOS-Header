@@ -8,11 +8,10 @@
 
 #import <Intents/INSetTaskAttributeIntentResponseExport-Protocol.h>
 
-@class INTask, NSString, _INPBSetTaskAttributeIntentResponse;
+@class INTask, NSString;
 
 @interface INSetTaskAttributeIntentResponse : INIntentResponse <INSetTaskAttributeIntentResponseExport>
 {
-    _INPBSetTaskAttributeIntentResponse *_responseMessagePBRepresentation;
 }
 
 @property (readonly, nonatomic) long long code;
@@ -21,17 +20,17 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) INTask *modifiedTask;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long warnings;
 
 + (BOOL)_appLaunchRequestedFromCode:(long long)arg1;
 + (long long)_codeFromType:(int)arg1 errorCode:(int)arg2 appLaunchRequested:(BOOL)arg3;
 + (int)_errorCodeFromCode:(long long)arg1;
 + (int)_typeFromCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

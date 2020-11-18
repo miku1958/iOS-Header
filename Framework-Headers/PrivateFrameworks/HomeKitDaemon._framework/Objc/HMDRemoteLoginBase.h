@@ -38,7 +38,6 @@
 
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
-+ (BOOL)shouldAcceptMessage:(id)arg1 home:(id)arg2;
 - (void).cxx_destruct;
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 - (id)initWithUUID:(id)arg1 accessory:(id)arg2 remoteLoginHandler:(id)arg3;

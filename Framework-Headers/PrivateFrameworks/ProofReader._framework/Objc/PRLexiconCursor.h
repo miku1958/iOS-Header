@@ -6,28 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class PRLexicon, PRLexiconStemSuffixCursor;
+@class PRLexicon;
 
+__attribute__((visibility("hidden")))
 @interface PRLexiconCursor : NSObject
 {
     PRLexicon *_lexicon;
-    PRLexiconStemSuffixCursor *_subcursor;
     struct _LXCursor *_cursor;
-    unsigned long long _stemSuffixState;
 }
 
 - (void)_advance:(id)arg1;
 - (void)_enumerateCompletions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)addSubcursor:(id)arg1;
 - (void)advanceWithCombinedCharacterSequence:(id)arg1;
 - (void)advanceWithString:(id)arg1;
 - (void)dealloc;
+- (void)enumerateCompletionEntries:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateCompletions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasChildren;
 - (BOOL)hasEntries;
 - (id)initWithLexicon:(id)arg1;
 - (BOOL)isValid;
+- (double)prefixProbability;
+- (double)terminationProbability;
 
 @end
 

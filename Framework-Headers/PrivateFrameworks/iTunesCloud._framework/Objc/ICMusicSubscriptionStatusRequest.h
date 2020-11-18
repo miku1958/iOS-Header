@@ -13,13 +13,14 @@
 
 @interface ICMusicSubscriptionStatusRequest : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _shouldIgnoreCache;
     BOOL _allowsFallbackToExpiredStatus;
     BOOL _allowsFallbackToStatusNeedingReload;
-    BOOL _shouldIgnoreCache;
-    long long _carrierBundleProvisioningStyle;
+    BOOL _shouldReturnLastKnownStatusOnly;
+    ICStoreRequestContext *_storeRequestContext;
     long long _reason;
     long long _maximumRetryCount;
-    ICStoreRequestContext *_storeRequestContext;
+    long long _carrierBundleProvisioningStyle;
 }
 
 @property (nonatomic) BOOL allowsFallbackToExpiredStatus; // @synthesize allowsFallbackToExpiredStatus=_allowsFallbackToExpiredStatus;
@@ -28,6 +29,7 @@
 @property (nonatomic) long long maximumRetryCount; // @synthesize maximumRetryCount=_maximumRetryCount;
 @property (nonatomic) long long reason; // @synthesize reason=_reason;
 @property (nonatomic) BOOL shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
+@property (nonatomic) BOOL shouldReturnLastKnownStatusOnly; // @synthesize shouldReturnLastKnownStatusOnly=_shouldReturnLastKnownStatusOnly;
 @property (copy, nonatomic) ICStoreRequestContext *storeRequestContext; // @synthesize storeRequestContext=_storeRequestContext;
 
 + (BOOL)supportsSecureCoding;

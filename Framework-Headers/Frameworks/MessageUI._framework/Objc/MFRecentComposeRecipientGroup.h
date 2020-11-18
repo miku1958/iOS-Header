@@ -15,7 +15,7 @@
 
 @property (readonly, strong, nonatomic) CRRecentContact *recentContact; // @synthesize recentContact=_recentContact;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithChildren:(id)arg1 displayString:(id)arg2 recentContact:(id)arg3;
 - (id)label;
 - (id)placeholderName;

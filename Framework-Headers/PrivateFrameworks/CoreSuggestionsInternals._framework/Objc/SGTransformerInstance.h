@@ -6,32 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class PMLSessionDescriptor;
 @protocol PMLTransformerProtocol;
 
 @interface SGTransformerInstance : NSObject
 {
-    Class _modelClass;
-    unsigned long long _window;
-    unsigned long long _ngrams;
-    NSString *_language;
-    NSString *_featuresVersion;
-    NSString *_featuresModelId;
+    PMLSessionDescriptor *_sessionDescriptor;
     id<PMLTransformerProtocol> _transformer;
+    Class _modelClass;
 }
 
-@property (copy, nonatomic) NSString *featuresModelId; // @synthesize featuresModelId=_featuresModelId;
-@property (copy, nonatomic) NSString *featuresVersion; // @synthesize featuresVersion=_featuresVersion;
-@property (copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
-@property (nonatomic) unsigned long long ngrams; // @synthesize ngrams=_ngrams;
+@property (strong, nonatomic) PMLSessionDescriptor *sessionDescriptor; // @synthesize sessionDescriptor=_sessionDescriptor;
 @property (strong, nonatomic) id<PMLTransformerProtocol> transformer; // @synthesize transformer=_transformer;
-@property (nonatomic) unsigned long long window; // @synthesize window=_window;
 
++ (id)defaultSessionDescriptorForModelId:(id)arg1 featureVersion:(id)arg2 language:(id)arg3 windowAndNgrams:(id)arg4;
++ (id)defaultWindowAndNgrams;
 - (void).cxx_destruct;
-- (id)featuresOf:(id)arg1;
-- (id)initWithLanguage:(id)arg1;
-- (id)sessionDescriptor;
+- (id)initWithTransformer:(id)arg1 sessionDescriptor:(id)arg2 modelClass:(Class)arg3;
+- (id)trainingFeaturesOf:(id)arg1;
 
 @end
 

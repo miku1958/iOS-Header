@@ -36,7 +36,6 @@
 
 - (void).cxx_destruct;
 - (void)assertBusyAssertion;
-- (void)dealloc;
 - (void)deassertBusyAssertion;
 - (void)flushQueueCompletionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasEnqueuedItems;

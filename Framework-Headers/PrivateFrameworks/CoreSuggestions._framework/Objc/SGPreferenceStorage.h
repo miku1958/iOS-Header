@@ -19,6 +19,7 @@
 + (id)defaultsForTests;
 + (BOOL)detectContacts;
 + (BOOL)detectNLEvents;
++ (BOOL)detectReminders;
 + (BOOL)detectStructuredEvents;
 + (long long)hashedSessionsLogging;
 + (BOOL)hidePastEventsForTests;
@@ -29,6 +30,7 @@
 + (int)registerBlockOnSuggestionsSettingsChange:(CDUnknownBlockType)arg1;
 + (void)removeDeprecatedDefaults;
 + (void)resetAllPreferences;
++ (void)resumeNotificationQueue;
 + (void)setAllowAgeBasedPruning:(BOOL)arg1;
 + (void)setAllowGeocode:(BOOL)arg1;
 + (void)setAllowGeocodeForTests:(BOOL)arg1;
@@ -38,6 +40,7 @@
 + (void)setContactsDetectionEnabledForTests:(BOOL)arg1;
 + (void)setDetectContacts:(BOOL)arg1;
 + (void)setDetectNLEvents:(BOOL)arg1;
++ (void)setDetectReminders:(BOOL)arg1;
 + (void)setDetectStructuredEvents:(BOOL)arg1;
 + (void)setFirstPartyCalendarAppIsInstalled:(BOOL)arg1;
 + (void)setFirstPartyMailAppIsInstalled:(BOOL)arg1;
@@ -48,13 +51,13 @@
 + (void)setNLEventsDetectionEnabledForTests:(BOOL)arg1;
 + (void)setOnlyShowSignificantNLEvents:(BOOL)arg1;
 + (void)setOnlyShowSignificantPseudoContacts:(BOOL)arg1;
++ (void)setOnlyShowSignificantPseudoContactsForTests:(BOOL)arg1;
 + (void)setParsecFlightCachingAPIBaseURL:(id)arg1;
-+ (void)setProactiveEnabledForTests:(BOOL)arg1;
++ (void)setRemindersDetectionEnabledForTests:(BOOL)arg1;
 + (void)setShowCancelledEventsForTests:(BOOL)arg1;
 + (void)setShowContactsFoundInMail:(BOOL)arg1;
-+ (void)setShowContactsFoundInMailForTests:(BOOL)arg1;
 + (void)setShowEventsFoundInMail:(BOOL)arg1;
-+ (void)setShowEventsFoundInMailForTests:(BOOL)arg1;
++ (void)setShowOperatingSystemVersionInSnippets:(BOOL)arg1;
 + (void)setShowPastEvents:(BOOL)arg1;
 + (void)setStructuredEventsDetectionEnabledForTests:(BOOL)arg1;
 + (void)setSyncHistoryToCloud:(BOOL)arg1;
@@ -63,18 +66,23 @@
 + (void)setUseMLModelForContacts:(BOOL)arg1;
 + (void)setUseMLModelForSelfId:(BOOL)arg1;
 + (void)setUseMLModelForSelfIdForTests:(BOOL)arg1;
++ (void)setUseManateeSaltForHistory:(BOOL)arg1;
 + (BOOL)shouldHarvestEvents;
 + (BOOL)showContactsFoundInMail;
 + (BOOL)showEventsFoundInMail;
++ (BOOL)showOperatingSystemVersionInSnippets;
 + (BOOL)showPastEvents;
 + (BOOL)showSuggestionsCalendar;
 + (long long)suggestionsLogLevel;
++ (void)suspendNotificationQueue;
 + (BOOL)syncHistoryToCloud;
 + (void)updateBoolSettingKey:(id)arg1 withValue:(BOOL)arg2;
++ (void)updateDetection:(BOOL)arg1 forKey:(id)arg2;
 + (void)updateIntSettingKey:(id)arg1 withValue:(int)arg2;
 + (BOOL)useMLModelForContactSharing;
 + (BOOL)useMLModelForContacts;
 + (BOOL)useMLModelForSelfId;
++ (BOOL)useManateeSaltForHistory;
 
 @end
 

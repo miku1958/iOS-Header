@@ -37,6 +37,7 @@
 - (void)_noteWillMutate;
 - (id)abridgedBookmarkStorageForSpotlightStorage;
 - (id)copyIfValidWithError:(out id *)arg1;
+- (id)debugTitle;
 - (void)ifMutablePlace:(CDUnknownBlockType)arg1 ifMutableRoute:(CDUnknownBlockType)arg2 ifMutableRegion:(CDUnknownBlockType)arg3 ifMutableTransitLine:(CDUnknownBlockType)arg4;
 - (void)ifPlace:(CDUnknownBlockType)arg1 ifRoute:(CDUnknownBlockType)arg2 ifRegion:(CDUnknownBlockType)arg3 ifTransitLine:(CDUnknownBlockType)arg4;
 - (id)init;

@@ -6,7 +6,7 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class HMDCameraSessionID, NSDictionary, NSError, NSNumber;
+@class HMDCameraStreamSessionID, NSDictionary, NSError, NSNumber;
 @protocol HMDCameraStreamControlManagerProtocol;
 
 @protocol HMDCameraStreamControlManagerDelegate <NSObject>
@@ -16,6 +16,6 @@
 - (void)streamControlManagerDidReconfigureStream:(id<HMDCameraStreamControlManagerProtocol>)arg1;
 - (void)streamControlManagerDidSetupRemoteConnection:(id<HMDCameraStreamControlManagerProtocol>)arg1;
 - (void)streamControlManagerDidStartStream:(id<HMDCameraStreamControlManagerProtocol>)arg1 slotIdentifier:(NSNumber *)arg2;
-- (void)streamControlManagerDidStopStreamForSessionID:(HMDCameraSessionID *)arg1 error:(NSError *)arg2;
+- (void)streamControlManagerDidStopStreamForSessionID:(HMDCameraStreamSessionID *)arg1 error:(NSError *)arg2;
 @end
 

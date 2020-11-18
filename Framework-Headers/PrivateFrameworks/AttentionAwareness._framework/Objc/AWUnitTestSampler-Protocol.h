@@ -9,8 +9,15 @@
 - (void)resetStats;
 - (void)setDisplayCallback:(void (^)(BOOL))arg1;
 - (void)setDisplayState:(BOOL)arg1;
+- (void)setDisplayState:(BOOL)arg1 reply:(void (^)(NSError *))arg2;
+- (void)setPearlErrorState:(BOOL)arg1;
+- (void)setPearlErrorState:(BOOL)arg1 reply:(void (^)(NSError *))arg2;
 - (void)setSampleState:(BOOL)arg1;
+- (void)setSampleState:(BOOL)arg1 deliverEvent:(BOOL)arg2;
+- (void)setSampleState:(BOOL)arg1 deliverEvent:(BOOL)arg2 reply:(void (^)(NSError *))arg3;
+- (void)setSampleState:(BOOL)arg1 reply:(void (^)(NSError *))arg2;
 - (void)setSmartCoverCallback:(void (^)(BOOL))arg1;
 - (void)setSmartCoverClosed:(BOOL)arg1;
+- (void)setSmartCoverClosed:(BOOL)arg1 reply:(void (^)(NSError *))arg2;
 @end
 

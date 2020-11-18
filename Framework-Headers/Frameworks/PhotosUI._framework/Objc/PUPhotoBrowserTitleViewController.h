@@ -79,7 +79,6 @@ __attribute__((visibility("hidden")))
 - (void)_updateIfNeeded;
 - (void)_updateLabelsIfNeeded;
 - (void)_updatePlayClockDescriptionIfNeeded;
-- (void)dealloc;
 - (id)init;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MessageUI/MFComposeRecipientTextView.h>
+#import <MessageUI/MFMailComposeRecipientTextView.h>
 
 @class MFComposeSMIMELockButton;
 @protocol MFMailComposeToFieldDelegate;
 
-@interface MFMailComposeToField : MFComposeRecipientTextView
+@interface MFMailComposeToField : MFMailComposeRecipientTextView
 {
     MFComposeSMIMELockButton *_smimeButton;
     BOOL _wantsEncryption;
@@ -22,8 +22,9 @@
 @property (readonly, nonatomic) MFComposeSMIMELockButton *SMIMEButton;
 @property (nonatomic) BOOL smimeButtonEnabled; // @synthesize smimeButtonEnabled=_smimeButtonEnabled;
 @property (nonatomic) BOOL smimeButtonVisible; // @synthesize smimeButtonVisible=_smimeButtonVisible;
-@property (nonatomic) id<MFMailComposeToFieldDelegate> toFieldDelegate; // @synthesize toFieldDelegate=_toFieldDelegate;
+@property (weak, nonatomic) id<MFMailComposeToFieldDelegate> toFieldDelegate; // @synthesize toFieldDelegate=_toFieldDelegate;
 
+- (void).cxx_destruct;
 - (void)_setSMIMEButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_tappedSMIMEButton:(id)arg1;
 - (id)_textContainerExclusionPathsWithAddButton:(BOOL)arg1;

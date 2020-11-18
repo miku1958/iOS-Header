@@ -77,6 +77,7 @@
 - (id)geocodeStartTimeZone;
 - (void)geocodeWithCallback:(CDUnknownBlockType)arg1;
 - (id)geocodedEventWithStartDate:(id)arg1 startTimeZone:(id)arg2 endDate:(id)arg3 endTimeZone:(id)arg4 locations:(id)arg5;
+- (unsigned long long)geocodingMode;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(BOOL)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tagStrings:(id)arg15 URL:(id)arg16 naturalLanguageEventIdentifier:(id)arg17 naturalLanguageEventAttributes:(unsigned long long)arg18 schemaOrg:(id)arg19;
 - (id)initWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(BOOL)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tags:(id)arg15 URL:(id)arg16;
@@ -85,6 +86,9 @@
 - (void)mergeIntoEKEvent:(id)arg1;
 - (void)mergeIntoEKEvent:(id)arg1 withStore:(id)arg2;
 - (void)mergeIntoEKEvent:(id)arg1 withStore:(id)arg2 preservingValuesDifferentFrom:(id)arg3;
+- (id)poiFilters;
+- (BOOL)shouldAllowNotificationsInCalendar;
+- (BOOL)shouldAllowNotificationsInCalendarForBundleId:(id)arg1 appIsInForeground:(BOOL)arg2;
 - (id)startDateComponents;
 - (id)toEKEventWithStore:(id)arg1;
 

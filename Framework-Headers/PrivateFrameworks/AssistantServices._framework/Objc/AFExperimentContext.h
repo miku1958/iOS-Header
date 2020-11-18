@@ -10,7 +10,7 @@
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class AFExperiment, NSDictionary;
-@protocol AFExperimentForSiriVOXSounds, AFExperimentForSiriVOXTapToSiriBehavior;
+@protocol AFExperimentForSiriVOXSounds, AFExperimentForSiriVOXTapToSiriBehavior, AFInvocationFeedbackExperiment;
 
 @interface AFExperimentContext : NSObject <NSCopying, NSSecureCoding>
 {
@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) AFExperiment<AFExperimentForSiriVOXSounds> *experimentForSiriVOXSounds;
 @property (readonly, nonatomic) AFExperiment<AFExperimentForSiriVOXTapToSiriBehavior> *experimentForSiriVOXTapToSiriBehavior;
 @property (readonly, copy, nonatomic) NSDictionary *experimentsByConfigurationIdentifier; // @synthesize experimentsByConfigurationIdentifier=_experimentsByConfigurationIdentifier;
+@property (readonly, nonatomic) AFExperiment<AFInvocationFeedbackExperiment> *invocationFeedbackExperiment;
 
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;

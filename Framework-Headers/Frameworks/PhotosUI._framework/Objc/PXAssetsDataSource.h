@@ -6,25 +6,48 @@
 
 #import <PhotosUICore/PXSectionedDataSource.h>
 
+@protocol PXDisplayAssetCollection;
+
 @interface PXAssetsDataSource : PXSectionedDataSource
 {
 }
 
+@property (readonly, nonatomic) id<PXDisplayAssetCollection> firstAssetCollection;
+@property (readonly, nonatomic) id<PXDisplayAssetCollection> lastAssetCollection;
+
 - (long long)aggregateMediaType;
 - (id)assetAtItemIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)assetCollectionAtSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)assetCollectionReferenceAtSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)assetCollectionReferenceForAssetCollectionReference:(id)arg1;
+- (id)assetCollectionReferenceNearestToObjectReference:(id)arg1;
+- (id)assetCollectionReferencesWithParentAssetCollectionReference:(id)arg1;
+- (id)assetCollectionReferencesWithParentAssetCollectionReference:(id)arg1 assetCollectionReferenceWithSameKeyAssetAsParent:(id *)arg2;
+- (id)assetIdentifierAtItemIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)assetReferenceAtItemIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)assetReferenceForAssetReference:(id)arg1;
 - (id)assetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (unsigned long long)estimatedAssetCountForSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)estimatedAssetsCountLocalizedString;
+- (long long)estimatedAssetsCountWithEnrichmentState:(unsigned short)arg1;
 - (BOOL)hasCurationForAssetCollection:(id)arg1;
+- (struct PXSimpleIndexPath)indexPathForAssetCollectionReference:(id)arg1;
 - (struct PXSimpleIndexPath)indexPathForAssetReference:(id)arg1;
 - (BOOL)isAssetAtIndexPathPartOfCuratedSet:(struct PXSimpleIndexPath)arg1;
-- (id)keyAssetsForAssetCollectionAtSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (struct PXSimpleIndexPath)keyAssetIndexPathForSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)keyAssetsForAssetCollection:(id)arg1;
+- (id)keyAssetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)metadataAssetAtItemIndexPath:(struct PXSimpleIndexPath)arg1;
+- (long long)numberOfCuratedItemsInAssetCollection:(id)arg1;
+- (long long)numberOfCuratedItemsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
+- (long long)numberOfSectionsWithEnrichmentState:(unsigned short)arg1;
+- (long long)numberOfUncuratedItemsInAssetCollection:(id)arg1;
+- (long long)numberOfUncuratedItemsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (Class)objectReferenceClassForItem;
+- (Class)objectReferenceClassForSection;
 - (id)objectReferenceNearestToObjectReference:(id)arg1;
 - (id)photosGraphSuggestedContributions;
+- (void)prefetchIndexPaths:(id)arg1 level:(unsigned long long)arg2;
 - (id)startingAssetReference;
 - (long long)totalNumberOfItems;
 

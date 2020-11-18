@@ -8,29 +8,30 @@
 
 #import <TemplateKit/TLKGridArrangementItem-Protocol.h>
 
-@class NSString, NUISizeCache, TLKFormattedText;
+@class NSString, NUISizeCache, TLKRichText;
 
+__attribute__((visibility("hidden")))
 @interface TLKLabelItem : NSObject <TLKGridArrangementItem>
 {
     unsigned long long row;
     double horizontalHuggingPriority;
     double horizontalCompressionResistance;
     NUISizeCache *sizeCache;
-    TLKFormattedText *_formattedText;
+    TLKRichText *_richText;
     struct _NSRange columnRange;
     struct CGRect frame;
 }
 
-@property struct _NSRange columnRange; // @synthesize columnRange;
+@property (nonatomic) struct _NSRange columnRange; // @synthesize columnRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak) TLKFormattedText *formattedText; // @synthesize formattedText=_formattedText;
-@property struct CGRect frame;
+@property (nonatomic) struct CGRect frame;
 @property (readonly) unsigned long long hash;
-@property double horizontalCompressionResistance; // @synthesize horizontalCompressionResistance;
-@property double horizontalHuggingPriority; // @synthesize horizontalHuggingPriority;
-@property unsigned long long row; // @synthesize row;
-@property (strong) NUISizeCache *sizeCache; // @synthesize sizeCache;
+@property (nonatomic) double horizontalCompressionResistance; // @synthesize horizontalCompressionResistance;
+@property (nonatomic) double horizontalHuggingPriority; // @synthesize horizontalHuggingPriority;
+@property (strong, nonatomic) TLKRichText *richText; // @synthesize richText=_richText;
+@property (nonatomic) unsigned long long row; // @synthesize row;
+@property (strong, nonatomic) NUISizeCache *sizeCache; // @synthesize sizeCache;
 @property (readonly) Class superclass;
 
 + (id)font;
@@ -38,6 +39,7 @@
 + (double)minimumWidthForLabelItem;
 + (void)setFontValues;
 - (void).cxx_destruct;
+- (id)attributedString;
 - (float)contentCompressionResistancePriorityForAxis:(long long)arg1;
 - (float)contentHuggingPriorityForAxis:(long long)arg1;
 - (double)effectiveBaselineOffsetFromContentBottom;

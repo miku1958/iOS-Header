@@ -10,21 +10,24 @@
 
 @class GEOPDPlaceRequestParameters;
 
-__attribute__((visibility("hidden")))
 @interface GEOMapItemInitialRequestData : PBCodable <NSCopying>
 {
     GEOPDPlaceRequestParameters *_placeRequestParameters;
     int _requestType;
-    CDStruct_7c66fec0 _has;
+    struct {
+        unsigned int has_requestType:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasPlaceRequestParameters;
 @property (nonatomic) BOOL hasRequestType;
-@property (strong, nonatomic) GEOPDPlaceRequestParameters *placeRequestParameters; // @synthesize placeRequestParameters=_placeRequestParameters;
-@property (nonatomic) int requestType; // @synthesize requestType=_requestType;
+@property (strong, nonatomic) GEOPDPlaceRequestParameters *placeRequestParameters;
+@property (nonatomic) int requestType;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsRequestType:(id)arg1;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

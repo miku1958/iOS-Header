@@ -14,6 +14,8 @@
 @property (copy, nonatomic) NSArray *attachments;
 @property (copy, nonatomic) NSString *content;
 @property (copy, nonatomic) NSString *conversationIdentifier;
+@property (nonatomic) long long effect;
+@property (nonatomic) long long messageType;
 @property (copy, nonatomic) NSArray *recipients;
 @property (copy, nonatomic) INPerson *sender;
 @property (copy, nonatomic) NSString *serviceName;

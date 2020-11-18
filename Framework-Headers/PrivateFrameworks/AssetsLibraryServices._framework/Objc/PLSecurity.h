@@ -11,9 +11,6 @@
 }
 
 + (id)_secTask:(struct __SecTask *)arg1 grantedEntitlements:(id)arg2;
-+ (unsigned long long)assetsdEntitlementTypesForConnection:(id)arg1;
-+ (unsigned long long)assetsdEntitlementTypesForCurrentProcess;
-+ (unsigned long long)assetsdEntitlementTypesFromSecTask:(struct __SecTask *)arg1;
 + (BOOL)auditToken:(CDStruct_6ad76789)arg1 hasEntitlement:(id)arg2;
 + (id)connection:(id)arg1 grantedEntitlements:(id)arg2;
 + (BOOL)connection:(id)arg1 hasEntitlement:(id)arg2;
@@ -21,7 +18,6 @@
 + (id)connection:(id)arg1 valuesForEntitlements:(id)arg2;
 + (BOOL)connectionIsEntitledForPhotoKit:(id)arg1;
 + (BOOL)containsPhotoKitEntitlement:(id)arg1;
-+ (BOOL)isEntitledForCloudSharingData;
 + (BOOL)isEntitledForPhotoKit;
 + (BOOL)secTask:(struct __SecTask *)arg1 hasEntitlement:(id)arg2;
 

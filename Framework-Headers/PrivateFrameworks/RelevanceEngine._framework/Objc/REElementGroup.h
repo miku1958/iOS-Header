@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <RelevanceEngine/NSCopying-Protocol.h>
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
 @class NSString;
 
-@interface REElementGroup : NSObject <REIndentedDescription, NSCopying>
+@interface REElementGroup : NSObject <REAutomaticExportedInterface, NSCopying>
 {
     NSString *_groupIdentifier;
     unsigned long long _behavior;
@@ -19,18 +19,15 @@
 }
 
 @property (nonatomic) unsigned long long behavior; // @synthesize behavior=_behavior;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) long long maxElementCount; // @synthesize maxElementCount=_maxElementCount;
-@property (readonly) Class superclass;
 
 + (id)adjoiningElementGroupWithIdentifier:(id)arg1;
 + (id)topElementGroupWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
+- (unsigned long long)hash;
 - (id)initWithGroupIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

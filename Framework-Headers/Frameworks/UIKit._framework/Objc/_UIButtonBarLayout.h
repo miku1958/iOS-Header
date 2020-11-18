@@ -34,10 +34,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)compact;
 - (void)configure;
 - (id)description;
+- (void)dirtyLayoutForPlainAppearanceChange:(BOOL)arg1 doneAppearanceChanged:(BOOL)arg2;
 - (id)init;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (double)minimumLayoutWidthGivenMinimumSpaceWidth:(double)arg1;
+- (void)setSuppressSpacing:(BOOL)arg1;
+- (void)setUseGroupSizing:(BOOL)arg1;
 - (BOOL)shouldHoriziontallyCenterView:(id)arg1;
+- (BOOL)suppressSpacing;
+- (BOOL)useGroupSizing;
 
 @end
 

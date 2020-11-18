@@ -7,6 +7,7 @@
 #import <Foundation/NSOrderedSet.h>
 
 @interface NSOrderedSet (PLAdditions)
+- (id)_pl_prettyDescriptionWithIndent:(long long)arg1;
 - (unsigned long long)pl_indexOfObjectIdenticalTo:(id)arg1;
 - (BOOL)pl_isSortedUsingComparator:(CDUnknownBlockType)arg1;
 - (id)pl_shortDescription;

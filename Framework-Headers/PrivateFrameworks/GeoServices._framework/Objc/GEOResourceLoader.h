@@ -9,7 +9,7 @@
 #import <GeoServices/NSProgressReporting-Protocol.h>
 
 @class GEOApplicationAuditToken, GEOPowerAssertion, GEOReportedProgress, NSArray, NSMapTable, NSMutableArray, NSProgress, NSString, NSURL;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_log;
 
 @interface GEOResourceLoader : NSObject <NSProgressReporting>
 {
@@ -17,7 +17,7 @@
     NSString *_additionalDirectoryToConsider;
     NSMutableArray *_resourcesToLoad;
     CDUnknownBlockType _completionHandler;
-    long long _numberOfDownloadsInProgress;
+    unsigned long long _numberOfDownloadsInProgress;
     long long _numberOfCopiesInProgress;
     BOOL _canceled;
     BOOL _requiresWiFi;
@@ -34,12 +34,16 @@
     NSObject<OS_dispatch_queue> *_callbackQueue;
     GEOReportedProgress *_progress;
     NSURL *_authProxyURL;
+    NSObject<OS_os_log> *_log;
+    unsigned long long _signpostID;
+    BOOL _preferDirectNetworking;
 }
 
 @property (strong, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL preferDirectNetworking; // @synthesize preferDirectNetworking=_preferDirectNetworking;
 @property (readonly) NSProgress *progress;
 @property (nonatomic) BOOL requiresWiFi; // @synthesize requiresWiFi=_requiresWiFi;
 @property (readonly) Class superclass;
@@ -53,7 +57,8 @@
 - (void)_loadResourcesFromDisk;
 - (void)_writeResourceToDisk:(id)arg1 withData:(id)arg2 checksum:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 callbackQueue:(id)arg5;
 - (void)cancel;
-- (id)initWithTargetDirectory:(id)arg1 baseURL:(id)arg2 proxyURL:(id)arg3 resources:(id)arg4 maximumConcurrentLoads:(unsigned long long)arg5 additionalDirectoryToConsider:(id)arg6;
+- (id)init;
+- (id)initWithTargetDirectory:(id)arg1 baseURL:(id)arg2 proxyURL:(id)arg3 resources:(id)arg4 maximumConcurrentLoads:(unsigned long long)arg5 additionalDirectoryToConsider:(id)arg6 log:(id)arg7 signpostID:(unsigned long long)arg8;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 
 @end

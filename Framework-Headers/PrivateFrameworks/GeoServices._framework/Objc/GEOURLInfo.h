@@ -14,20 +14,30 @@
 {
     PBUnknownFields *_unknownFields;
     NSString *_url;
+    unsigned int _alternativeMultipathTCPPort;
+    BOOL _supportsMultipathTCP;
     BOOL _useAuthProxy;
     struct {
-        unsigned int useAuthProxy:1;
-    } _has;
+        unsigned int has_alternativeMultipathTCPPort:1;
+        unsigned int has_supportsMultipathTCP:1;
+        unsigned int has_useAuthProxy:1;
+    } _flags;
 }
 
+@property (nonatomic) unsigned int alternativeMultipathTCPPort;
+@property (nonatomic) BOOL hasAlternativeMultipathTCPPort;
+@property (nonatomic) BOOL hasSupportsMultipathTCP;
 @property (readonly, nonatomic) BOOL hasUrl;
 @property (nonatomic) BOOL hasUseAuthProxy;
 @property (readonly, nonatomic) NSURL *nsURL;
+@property (nonatomic) BOOL supportsMultipathTCP;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
-@property (nonatomic) BOOL useAuthProxy; // @synthesize useAuthProxy=_useAuthProxy;
+@property (strong, nonatomic) NSString *url;
+@property (nonatomic) BOOL useAuthProxy;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

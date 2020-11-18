@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
     BOOL _containsEnd;
     BOOL _containsStart;
     BOOL _vertical;
+    BOOL __drawsOwnHighlight;
     struct CGRect _rect;
 }
 
+@property (nonatomic, setter=_setDrawsOwnHighlight:) BOOL _drawsOwnHighlight; // @synthesize _drawsOwnHighlight=__drawsOwnHighlight;
 @property (nonatomic) BOOL containsEnd; // @synthesize containsEnd=_containsEnd;
 @property (nonatomic) BOOL containsStart; // @synthesize containsStart=_containsStart;
 @property (readonly, nonatomic) struct CGRect rect; // @synthesize rect=_rect;

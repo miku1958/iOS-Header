@@ -26,6 +26,7 @@
 - (id)init;
 - (void)interactionSummaryMetricsWithQueryId:(unsigned long long)arg1;
 - (void)logEventInteractionForEventWithEventIdentifier:(id)arg1 interface:(unsigned short)arg2 actionType:(unsigned short)arg3;
+- (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resolveEventNameRecordChanges:(id)arg1 client:(id)arg2 queryId:(unsigned long long)arg3;
 - (void)sendRTCLogsWithWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setRemoteObjectProxy:(id)arg1;

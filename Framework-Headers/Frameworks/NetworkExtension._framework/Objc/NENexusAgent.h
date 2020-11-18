@@ -35,6 +35,8 @@
 @property (nonatomic) BOOL requiresAssert;
 @property (nonatomic, getter=isSpecificUseOnly) BOOL specificUseOnly;
 @property (nonatomic) BOOL supportsBrowseRequests; // @synthesize supportsBrowseRequests;
+@property (nonatomic) BOOL supportsResolveRequests;
+@property (nonatomic) BOOL updateClientsImmediately;
 @property (nonatomic, getter=isUserActivated) BOOL userActivated;
 @property (nonatomic, getter=isVoluntary) BOOL voluntary;
 

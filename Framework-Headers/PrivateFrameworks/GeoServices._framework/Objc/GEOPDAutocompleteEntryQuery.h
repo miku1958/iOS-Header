@@ -15,13 +15,26 @@ __attribute__((visibility("hidden")))
 {
     PBUnknownFields *_unknownFields;
     NSString *_completion;
+    int _tapBehavior;
+    BOOL _showIntermediateStateTapBehaviorListView;
+    struct {
+        unsigned int has_tapBehavior:1;
+        unsigned int has_showIntermediateStateTapBehaviorListView:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *completion; // @synthesize completion=_completion;
+@property (strong, nonatomic) NSString *completion;
 @property (readonly, nonatomic) BOOL hasCompletion;
+@property (nonatomic) BOOL hasShowIntermediateStateTapBehaviorListView;
+@property (nonatomic) BOOL hasTapBehavior;
+@property (nonatomic) BOOL showIntermediateStateTapBehaviorListView;
+@property (nonatomic) int tapBehavior;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsTapBehavior:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,7 +42,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)tapBehaviorAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

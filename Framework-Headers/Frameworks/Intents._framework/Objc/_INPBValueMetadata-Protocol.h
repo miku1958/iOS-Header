@@ -6,13 +6,15 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, _INPBConfidenceScore;
 
 @protocol _INPBValueMetadata <NSObject>
 
 @property (copy, nonatomic) NSString *canonicalValue;
+@property (strong, nonatomic) _INPBConfidenceScore *confidenceScore;
 @property (nonatomic) BOOL confirmed;
 @property (readonly, nonatomic) BOOL hasCanonicalValue;
+@property (readonly, nonatomic) BOOL hasConfidenceScore;
 @property (nonatomic) BOOL hasConfirmed;
 @property (readonly, nonatomic) BOOL hasInput;
 @property (readonly, nonatomic) BOOL hasSource;

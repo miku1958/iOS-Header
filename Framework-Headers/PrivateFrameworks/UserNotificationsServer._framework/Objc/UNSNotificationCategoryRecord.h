@@ -13,6 +13,7 @@
     BOOL _hasCustomDismissAction;
     BOOL _hasCustomSilenceAction;
     BOOL _shouldAllowInCarPlay;
+    BOOL _shouldAllowSpoken;
     BOOL _privacyOptionShowTitle;
     BOOL _privacyOptionShowSubtitle;
     BOOL _preventAutomaticRemovalFromRecent;
@@ -20,6 +21,13 @@
     BOOL _preventAutomaticLock;
     BOOL _preventDismissWhenClosed;
     BOOL _presentFullScreenAlertOverList;
+    BOOL _shouldAllowActionsInCarPlay;
+    BOOL _shouldAllowPersistentBannersInCarPlay;
+    BOOL _playMediaWhenRaised;
+    BOOL _preventClearFromList;
+    BOOL _alwaysDisplayNotificationsIndicator;
+    BOOL _suppressDelayForForwardedNotifications;
+    BOOL _suppressDismissActionInCarPlay;
     NSArray *_actions;
     NSString *_identifier;
     NSArray *_intentIdentifiers;
@@ -31,6 +39,7 @@
 }
 
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (nonatomic) BOOL alwaysDisplayNotificationsIndicator; // @synthesize alwaysDisplayNotificationsIndicator=_alwaysDisplayNotificationsIndicator;
 @property (copy, nonatomic) NSString *backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (nonatomic) BOOL hasCustomDismissAction; // @synthesize hasCustomDismissAction=_hasCustomDismissAction;
 @property (nonatomic) BOOL hasCustomSilenceAction; // @synthesize hasCustomSilenceAction=_hasCustomSilenceAction;
@@ -38,16 +47,23 @@
 @property (copy, nonatomic) NSArray *intentIdentifiers; // @synthesize intentIdentifiers=_intentIdentifiers;
 @property (copy, nonatomic) NSString *listPriority; // @synthesize listPriority=_listPriority;
 @property (copy, nonatomic) NSArray *minimalActions; // @synthesize minimalActions=_minimalActions;
+@property (nonatomic) BOOL playMediaWhenRaised; // @synthesize playMediaWhenRaised=_playMediaWhenRaised;
 @property (nonatomic) BOOL presentFullScreenAlertOverList; // @synthesize presentFullScreenAlertOverList=_presentFullScreenAlertOverList;
 @property (nonatomic) BOOL preventAutomaticLock; // @synthesize preventAutomaticLock=_preventAutomaticLock;
 @property (nonatomic) BOOL preventAutomaticRemovalFromRecent; // @synthesize preventAutomaticRemovalFromRecent=_preventAutomaticRemovalFromRecent;
+@property (nonatomic) BOOL preventClearFromList; // @synthesize preventClearFromList=_preventClearFromList;
 @property (nonatomic) BOOL preventDismissWhenClosed; // @synthesize preventDismissWhenClosed=_preventDismissWhenClosed;
 @property (nonatomic) BOOL privacyOptionShowSubtitle; // @synthesize privacyOptionShowSubtitle=_privacyOptionShowSubtitle;
 @property (nonatomic) BOOL privacyOptionShowTitle; // @synthesize privacyOptionShowTitle=_privacyOptionShowTitle;
 @property (copy, nonatomic) NSString *privateBody; // @synthesize privateBody=_privateBody;
 @property (nonatomic) BOOL revealAdditionalContentWhenPresented; // @synthesize revealAdditionalContentWhenPresented=_revealAdditionalContentWhenPresented;
+@property (nonatomic) BOOL shouldAllowActionsInCarPlay; // @synthesize shouldAllowActionsInCarPlay=_shouldAllowActionsInCarPlay;
 @property (nonatomic) BOOL shouldAllowInCarPlay; // @synthesize shouldAllowInCarPlay=_shouldAllowInCarPlay;
+@property (nonatomic) BOOL shouldAllowPersistentBannersInCarPlay; // @synthesize shouldAllowPersistentBannersInCarPlay=_shouldAllowPersistentBannersInCarPlay;
+@property (nonatomic) BOOL shouldAllowSpoken; // @synthesize shouldAllowSpoken=_shouldAllowSpoken;
 @property (copy, nonatomic) NSString *summaryFormat; // @synthesize summaryFormat=_summaryFormat;
+@property (nonatomic) BOOL suppressDelayForForwardedNotifications; // @synthesize suppressDelayForForwardedNotifications=_suppressDelayForForwardedNotifications;
+@property (nonatomic) BOOL suppressDismissActionInCarPlay; // @synthesize suppressDismissActionInCarPlay=_suppressDismissActionInCarPlay;
 
 - (void).cxx_destruct;
 - (id)description;

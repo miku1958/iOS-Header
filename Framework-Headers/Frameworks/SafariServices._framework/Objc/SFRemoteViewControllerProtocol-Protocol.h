@@ -6,13 +6,14 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSNumber, NSString, NSURL;
+@class LSAppLink, NSNumber, NSString, NSURL;
 
 @protocol SFRemoteViewControllerProtocol <NSObject>
 - (void)didChangeFullScreen:(BOOL)arg1;
 - (void)didDecideCookieSharingForURL:(NSURL *)arg1 shouldCancel:(BOOL)arg2;
 - (void)didFinishInitialLoad:(BOOL)arg1;
 - (void)didLoadWebView;
+- (void)didResolveRedirectionWithURL:(NSURL *)arg1 appLink:(LSAppLink *)arg2;
 - (void)executeCustomActivityProxyID:(NSNumber *)arg1;
 - (void)fetchActivityViewControllerInfoForURL:(NSURL *)arg1 title:(NSString *)arg2;
 - (void)initialLoadDidRedirectToURL:(NSURL *)arg1;

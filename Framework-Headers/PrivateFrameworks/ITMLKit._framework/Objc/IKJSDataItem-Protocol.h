@@ -13,9 +13,6 @@
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *type;
 
-- (JSValue *)getPropertyPath:(NSString *)arg1;
 - (id)initConstructor:(JSValue *)arg1:(JSValue *)arg2;
-- (void)setPropertyPath:(NSString *)arg1:(JSValue *)arg2;
-- (void)touchPropertyPath:(NSString *)arg1;
 @end
 

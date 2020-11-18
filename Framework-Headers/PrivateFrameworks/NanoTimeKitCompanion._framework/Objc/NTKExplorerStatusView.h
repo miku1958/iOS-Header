@@ -6,21 +6,41 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray;
+#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 
-@interface NTKExplorerStatusView : UIView
+@class NSArray, NSString, NTKExplorerDotColorOptions, NTKExplorerDotLayoutConstraints, UIColor;
+@protocol CLKMonochromeFilterProvider;
+
+@interface NTKExplorerStatusView : UIView <CLKMonochromeComplicationView>
 {
     NSArray *_dotLayers;
     BOOL _observing;
     long long _targetDotPosition;
     BOOL _showsFullSignalStrength;
+    id<CLKMonochromeFilterProvider> _filterProvider;
+    NTKExplorerDotLayoutConstraints *_dotLayoutConstraints;
+    NTKExplorerDotColorOptions *_dotColorOptions;
     long long _position;
     long long _signalStrengthBars;
 }
 
+@property (readonly, nonatomic) UIColor *connectedDotBackgroundColor;
+@property (readonly, nonatomic) UIColor *connectedDotColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) double dotBorderWidth;
+@property (strong, nonatomic) NTKExplorerDotColorOptions *dotColorOptions; // @synthesize dotColorOptions=_dotColorOptions;
+@property (readonly) double dotDiameter;
+@property (strong, nonatomic) NTKExplorerDotLayoutConstraints *dotLayoutConstraints; // @synthesize dotLayoutConstraints=_dotLayoutConstraints;
+@property (readonly) double dotSpacing;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIColor *noServiceDotColor;
+@property (readonly) double noServiceDotHeight;
 @property (readonly, nonatomic) long long position; // @synthesize position=_position;
 @property (nonatomic) BOOL showsFullSignalStrength; // @synthesize showsFullSignalStrength=_showsFullSignalStrength;
 @property (nonatomic) long long signalStrengthBars; // @synthesize signalStrengthBars=_signalStrengthBars;
+@property (readonly) Class superclass;
 
 + (id)connectedDotColor;
 + (double)dotBorderWidth;
@@ -29,10 +49,14 @@
 + (id)noServiceDotColor;
 + (double)noServiceDotHeight;
 - (void).cxx_destruct;
+- (void)_layoutDotLayers;
 - (void)_updateDotFillStates;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 dotLayoutConstraints:(id)arg2 dotColorOptions:(id)arg3;
 - (void)setDotPosition:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

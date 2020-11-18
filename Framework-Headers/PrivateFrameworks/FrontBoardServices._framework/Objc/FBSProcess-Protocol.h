@@ -4,13 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/NSObject-Protocol.h>
+#import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 
-@class NSString;
+@protocol FBSProcess <BSDescriptionProviding>
 
-@protocol FBSProcess <NSObject>
-
-@property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) int pid;
 
 @end

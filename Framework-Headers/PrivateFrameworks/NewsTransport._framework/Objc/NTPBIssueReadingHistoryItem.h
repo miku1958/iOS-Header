@@ -15,6 +15,8 @@
     NSString *_identifier;
     NSString *_issueID;
     NTPBDate *_lastBadgedPBDate;
+    NTPBDate *_lastEngagedPBDate;
+    NTPBDate *_lastRemovedFromMyMagazinesPBDate;
     NSString *_lastVisitedArticleID;
     NTPBDate *_lastVisitedPBDate;
     NSString *_lastVisitedPageID;
@@ -23,12 +25,16 @@
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasIssueID;
 @property (readonly, nonatomic) BOOL hasLastBadgedPBDate;
+@property (readonly, nonatomic) BOOL hasLastEngagedPBDate;
+@property (readonly, nonatomic) BOOL hasLastRemovedFromMyMagazinesPBDate;
 @property (readonly, nonatomic) BOOL hasLastVisitedArticleID;
 @property (readonly, nonatomic) BOOL hasLastVisitedPBDate;
 @property (readonly, nonatomic) BOOL hasLastVisitedPageID;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *issueID; // @synthesize issueID=_issueID;
 @property (strong, nonatomic) NTPBDate *lastBadgedPBDate; // @synthesize lastBadgedPBDate=_lastBadgedPBDate;
+@property (strong, nonatomic) NTPBDate *lastEngagedPBDate; // @synthesize lastEngagedPBDate=_lastEngagedPBDate;
+@property (strong, nonatomic) NTPBDate *lastRemovedFromMyMagazinesPBDate; // @synthesize lastRemovedFromMyMagazinesPBDate=_lastRemovedFromMyMagazinesPBDate;
 @property (strong, nonatomic) NSString *lastVisitedArticleID; // @synthesize lastVisitedArticleID=_lastVisitedArticleID;
 @property (strong, nonatomic) NTPBDate *lastVisitedPBDate; // @synthesize lastVisitedPBDate=_lastVisitedPBDate;
 @property (strong, nonatomic) NSString *lastVisitedPageID; // @synthesize lastVisitedPageID=_lastVisitedPageID;

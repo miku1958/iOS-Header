@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)immutablePlaceholder;
-+ (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

@@ -17,6 +17,7 @@
 - (void).cxx_destruct;
 - (id)contactAndLabelForPhoneNumber:(id *)arg1;
 - (id)contactsMatchingPhoneNumber:(id)arg1 inContactStore:(id)arg2;
+- (id)icon;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (id)labelToUseForEmail:(id)arg1 ofContact:(id)arg2;
 - (id)labelToUseForPhoneNumber:(id)arg1 ofContact:(id)arg2;

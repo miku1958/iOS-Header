@@ -6,12 +6,50 @@
 
 #import <UIKit/UIView.h>
 
-@interface UIView (AVAdditions)
+#import <AVKit/AVKitLayoutItem-Protocol.h>
+
+@class NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString;
+
+@interface UIView (AVAdditions) <AVKitLayoutItem>
+
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *bottomAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *centerXAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *centerYAnchor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSLayoutDimension *heightAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *leadingAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *leftAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *rightAnchor;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *topAnchor;
+@property (readonly, nonatomic) NSLayoutXAxisAnchor *trailingAnchor;
+@property (readonly, nonatomic) NSLayoutDimension *widthAnchor;
+
 - (id)avkit_ancestorViewPassingTest:(CDUnknownBlockType)arg1;
+- (id)avkit_backdropGroupLeader;
+- (id)avkit_constraintsFromCenterAnchorsToCenterAnchorsOfItem:(id)arg1;
+- (id)avkit_constraintsFromCenterAndDimensionAnchorsToCenterAndDimensionAnchorsOfItem:(id)arg1;
+- (id)avkit_constraintsFromDimensionAnchorsToSize:(struct CGSize)arg1;
+- (id)avkit_constraintsFromEdgeAnchorsToEdgeAnchorsOfItem:(id)arg1;
+- (BOOL)avkit_hasFullScreenLayoutClass;
 - (id)avkit_hitTestControlForPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)avkit_hitTestControlForPoint:(struct CGPoint)arg1 withEvent:(id)arg2 bestSoFar:(inout id *)arg3 shortestDistanceSoFar:(inout double *)arg4;
 - (BOOL)avkit_isAncestorOfViewPassingTest:(CDUnknownBlockType)arg1;
+- (BOOL)avkit_isBeingScrollTested;
+- (BOOL)avkit_isBeingScrolled;
+- (BOOL)avkit_isBeingScrolledQuickly;
+- (BOOL)avkit_isCompletelyTransparent;
+- (BOOL)avkit_isDescendantOfNonPagingScrollView;
 - (BOOL)avkit_isDescendantOfViewPassingTest:(CDUnknownBlockType)arg1;
+- (BOOL)avkit_isInAScrollView;
 - (BOOL)avkit_isInAWindowAndVisible;
+- (BOOL)avkit_isVideoGravityFrozen;
+- (struct CGRect)avkit_largestInscribedRectInBoundingPathWithCenter:(struct CGPoint)arg1 aspectRatio:(double)arg2;
+- (void)avkit_makeSubtreeDisallowGroupBlending;
+- (void)avkit_needsUpdateBackdropCaptureViewHidden;
+- (struct UIEdgeInsets)avkit_overrideLayoutMarginsForCounterRotation;
+- (BOOL)avkit_wantsAnimatedViewTransitions;
 @end
 

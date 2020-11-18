@@ -8,8 +8,8 @@
 
 #import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class NSString, PUImportItemViewModel, PUPhotoView, UIActivityIndicatorView, UIImageView, UITextField;
-@protocol PUImportDisplayDelegate;
+@class NSString, PUPhotoView, PXImportItemViewModel, UIActivityIndicatorView, UITextField, UIView;
+@protocol PUCameraImportItemCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PUCameraImportItemCell : UICollectionViewCell <PXChangeObserver>
@@ -18,28 +18,30 @@ __attribute__((visibility("hidden")))
     BOOL _needsThumbnailRefresh;
     BOOL _selectable;
     BOOL _needsBadgeUpdate;
-    id<PUImportDisplayDelegate> _displayDelegate;
-    PUImportItemViewModel *_representedImportItem;
-    long long _badgeType;
-    UIImageView *_badgeImageView;
-    UIActivityIndicatorView *_spinner;
+    id<PUCameraImportItemCellDelegate> _delegate;
+    PXImportItemViewModel *_representedImportItem;
     PUPhotoView *_photoView;
+    long long _badgeType;
+    UIView *_badgeContainerView;
+    UIView *_badgeView;
+    UIActivityIndicatorView *_spinner;
     UITextField *_debugTextField;
     long long _thumbnailRequestID;
     struct CGRect _scaledDisplayRect;
 }
 
-@property (strong, nonatomic) UIImageView *badgeImageView; // @synthesize badgeImageView=_badgeImageView;
+@property (strong, nonatomic) UIView *badgeContainerView; // @synthesize badgeContainerView=_badgeContainerView;
 @property (nonatomic) long long badgeType; // @synthesize badgeType=_badgeType;
+@property (strong, nonatomic) UIView *badgeView; // @synthesize badgeView=_badgeView;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) UITextField *debugTextField; // @synthesize debugTextField=_debugTextField;
+@property (weak, nonatomic) id<PUCameraImportItemCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<PUImportDisplayDelegate> displayDelegate; // @synthesize displayDelegate=_displayDelegate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL needsBadgeUpdate; // @synthesize needsBadgeUpdate=_needsBadgeUpdate;
 @property (readonly, nonatomic) BOOL needsThumbnailRefresh; // @synthesize needsThumbnailRefresh=_needsThumbnailRefresh;
 @property (strong, nonatomic) PUPhotoView *photoView; // @synthesize photoView=_photoView;
-@property (strong, nonatomic) PUImportItemViewModel *representedImportItem; // @synthesize representedImportItem=_representedImportItem;
+@property (strong, nonatomic) PXImportItemViewModel *representedImportItem; // @synthesize representedImportItem=_representedImportItem;
 @property (nonatomic) struct CGRect scaledDisplayRect; // @synthesize scaledDisplayRect=_scaledDisplayRect;
 @property (nonatomic) BOOL selectable; // @synthesize selectable=_selectable;
 @property (strong, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
@@ -56,7 +58,6 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityElementDidBecomeFocused;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (id)badgeView;
 - (void)cancelThumbnailLoadIfActive;
 - (void)clearImage;
 - (void)dealloc;

@@ -19,6 +19,7 @@
     unsigned int _truthSource;
     unsigned int _truthType;
     unsigned int _type;
+    BOOL _isRotted;
     struct {
         unsigned int addressComponentMatches:1;
         unsigned int distanceFromTruth:1;
@@ -29,6 +30,7 @@
         unsigned int truthSource:1;
         unsigned int truthType:1;
         unsigned int type:1;
+        unsigned int isRotted:1;
     } _has;
 }
 
@@ -38,12 +40,14 @@
 @property (nonatomic) BOOL hasAddressComponentMatches;
 @property (nonatomic) BOOL hasDistanceFromTruth;
 @property (nonatomic) BOOL hasEfficacy;
+@property (nonatomic) BOOL hasIsRotted;
 @property (nonatomic) BOOL hasPreviousType;
 @property (nonatomic) BOOL hasSource;
 @property (nonatomic) BOOL hasTruthSource;
 @property (nonatomic) BOOL hasTruthType;
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) BOOL hasUncertainty;
+@property (nonatomic) BOOL isRotted; // @synthesize isRotted=_isRotted;
 @property (nonatomic) unsigned int previousType; // @synthesize previousType=_previousType;
 @property (nonatomic) unsigned int source; // @synthesize source=_source;
 @property (nonatomic) unsigned int truthSource; // @synthesize truthSource=_truthSource;

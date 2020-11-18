@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     BOOL _couldEnter3DMode;
     double _currentZoomLevel;
     double _maxZoomLevel;
+    double _minZoomLevel;
     double _lastRotation;
     struct CGPoint _panStartScreenPoint;
     struct CGPoint _panLastScreenPoint;
@@ -46,6 +47,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateIsPitched;
 - (void)adjustLoadingForAnimation:(float)arg1 progressFactor:(float)arg2;
 - (double)altitude;
+- (void)animateRegionWithDuration:(double)arg1 timingFunction:(CDUnknownBlockType)arg2 cursor:(Matrix_443f5d51)arg3 stepHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)animateToRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (Geocentric_d8fde6f2)cameraPosition;
 - (BOOL)canEnter3DMode;
 - (CDStruct_c3b9c2ee)centerCoordinate;
@@ -61,7 +64,7 @@ __attribute__((visibility("hidden")))
 - (double)geocAngleBetween:(CDStruct_c3b9c2ee)arg1 andCoordinate:(CDStruct_c3b9c2ee)arg2;
 - (double)greatCircleMidPointLatitude:(double)arg1 fromLongitude:(double)arg2 toLongitude:(double)arg3;
 - (double)heading;
-- (id)initWithTaskContext:(shared_ptr_e963992e)arg1;
+- (id)initWithTaskContext:(shared_ptr_e963992e)arg1 mapDataAccess:(struct MapDataAccess *)arg2 animationRunner:(struct AnimationRunner *)arg3 runLoopController:(struct RunLoopController *)arg4 cameraDelegate:(id)arg5;
 - (void)interruptFlyoverTourAnimation;
 - (BOOL)isFlyoverTourStarted;
 - (BOOL)isFullyPitched;
@@ -83,10 +86,13 @@ __attribute__((visibility("hidden")))
 - (void)rotateTo:(double)arg1 animated:(BOOL)arg2;
 - (void)setCenterCoordinate3D:(CDStruct_071ac149)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)setCenterCoordinateDistanceRange:(CDStruct_c3b9c2ee)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setCurrentZoomLevel:(double)arg1;
 - (void)setGesturing:(BOOL)arg1;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setMaxZoomLevel:(double)arg1;
+- (void)setMinZoomLevel:(double)arg1;
+- (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setYaw:(double)arg1 animated:(BOOL)arg2;
 - (float)slowDownFactorFromLoadProgress;
 - (BOOL)snapMapIfNecessary:(BOOL)arg1;

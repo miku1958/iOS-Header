@@ -11,21 +11,22 @@
 @property (readonly) BOOL mf_isAttachment;
 @property (readonly) BOOL mf_isBody;
 
-- (void)_fixParagraphsAndQuotesFromMicrosoftNodesToRemove:(id)arg1;
 - (id)mf_appendBlockPlaceholder;
 - (id)mf_blockNodeAncestor;
+- (id)mf_childNodeAtIndex:(int)arg1;
 - (id)mf_commonAncestorWithNode:(id)arg1;
 - (id)mf_containingBlockQuote;
 - (BOOL)mf_containsOnlySelectionMarkers;
 - (BOOL)mf_containsRichText;
 - (id)mf_findElementWithTag:(id)arg1 className:(id)arg2 andIdName:(id)arg3;
 - (id)mf_firstDescendantBlockQuote;
-- (void)mf_fixParagraphsAndQuotesFromMicrosoft;
+- (id)mf_firstSibling;
 - (id)mf_highestContainingBlockQuote;
 - (BOOL)mf_isAtBeginningOfContainerNode:(id)arg1;
 - (BOOL)mf_isAtEndOfContainerNode:(id)arg1;
 - (BOOL)mf_isDescendantOfNode:(id)arg1;
 - (BOOL)mf_isQuoteOrWithinQuote;
+- (id)mf_lastSibling;
 - (id)mf_nextSiblingOrAunt;
 - (int)mf_quoteLevelDelta;
 - (id)mf_topmostContainingNodeWithNameInArray:(id)arg1;

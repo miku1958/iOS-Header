@@ -13,13 +13,14 @@
     AVCompositionTrackInternal *_priv;
 }
 
+@property (readonly) NSArray *formatDescriptionReplacements;
 @property (readonly, copy, nonatomic) NSArray *segments;
 
 - (id)_initWithAsset:(id)arg1 trackID:(int)arg2 trackIndex:(long long)arg3;
 - (struct OpaqueFigMutableComposition *)_mutableComposition;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
+- (BOOL)isEnabled;
 - (id)segmentForTrackTime:(CDStruct_1b6d18a9)arg1;
 
 @end

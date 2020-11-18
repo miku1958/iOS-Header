@@ -25,13 +25,13 @@ __attribute__((visibility("hidden")))
     NSMapTable *_textureDescriptionAndSetForRepMap;
     double _transitionStartTime;
     NSMapTable *_eventToSlideTextureMap;
-    NSMutableSet *_movieControllers;
     BOOL _isSlideBuildable;
     BOOL _shouldStopAnimations;
     BOOL _isInDelayBeforeActiveBuild;
     BOOL _sInDelayBeforeActiveTransition;
     BOOL _isSerialized;
     BOOL _transitionHasFinishedCallbackPending;
+    BOOL _wasMetalLayerActiveWhenPaused;
     id _eventStartCallbackTarget;
     SEL _eventStartCallbackSelector;
     id _eventAnimationActiveCallbackTarget;
@@ -57,12 +57,15 @@ __attribute__((visibility("hidden")))
     KNPlaybackSession *_session;
     KNSlide *_slide;
     KNSlideNode *_slideNode;
+    NSArray *_movieControllers;
     NSLock *_setTextureLock;
     NSLock *_canvasLock;
 }
 
 @property (readonly, copy, nonatomic) NSMutableSet *activeAnimatedBuilds; // @synthesize activeAnimatedBuilds=_activeAnimatedBuilds;
+@property (readonly, nonatomic) NSSet *activeMovieHosts;
 @property (readonly, nonatomic) NSArray *allInfos;
+@property (readonly, nonatomic) NSArray *allInfosIncludingAudio;
 @property (readonly, nonatomic) unsigned long long buildEventCount;
 @property (readonly, nonatomic) TSDCanvas *canvas; // @synthesize canvas=_canvas;
 @property (strong) NSLock *canvasLock; // @synthesize canvasLock=_canvasLock;
@@ -79,9 +82,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isInDelayBeforeActiveTransition; // @synthesize isInDelayBeforeActiveTransition=_isInDelayBeforeActiveTransition;
 @property (readonly, nonatomic) BOOL isNonAmbientAnimationActive;
 @property (readonly, nonatomic) BOOL isNonAmbientAnimationAnimating;
-@property (readonly) BOOL isPlayingMovies;
+@property (readonly) BOOL isPlayingMoviesWithMovieControllers;
 @property (readonly, nonatomic) KNAnimatedSlideModel *model; // @synthesize model=_model;
-@property (readonly) NSSet *movieControllers;
+@property (readonly) NSArray *movieControllers; // @synthesize movieControllers=_movieControllers;
 @property (readonly, nonatomic) NSSet *movieRenderers;
 @property (readonly, nonatomic) KNAnimatedSlideView *nextASV;
 @property (nonatomic) BOOL playsAutomaticTransitions; // @synthesize playsAutomaticTransitions=_playsAutomaticTransitions;
@@ -96,6 +99,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL triggerQueued; // @synthesize triggerQueued=_triggerQueued;
 
 + (void)initialize;
++ (id)keyPathsForValuesAffectingActiveMovieHosts;
 + (void)registerUserDefaults;
 - (void).cxx_destruct;
 - (void)addActiveAnimatedBuild:(id)arg1;

@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CNPropertyGroupItem *propertyItem;
 @property (readonly, nonatomic, getter=isSuggested) BOOL suggested;
 @property (readonly, nonatomic) BOOL supportsTintColorValue;
+@property (readonly, nonatomic) BOOL supportsValueColorUsesLabelColor;
 
 + (id)labelStringFromAppName:(id)arg1 andPropertyLabel:(id)arg2;
 - (void).cxx_destruct;

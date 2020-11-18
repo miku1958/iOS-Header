@@ -25,7 +25,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsFragments;
 - (void)dealloc;
 - (CDStruct_1b6d18a9)duration;
-- (void)finalize;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (unsigned long long)hash;
 - (id)initWithFormatReader:(struct OpaqueFigFormatReader *)arg1;
 - (BOOL)isComposable;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isReadable;
 - (id)lyrics;
 - (id)metadataForFormat:(id)arg1;
+- (CDStruct_1b6d18a9)minimumTimeOffsetFromLive;
 - (struct CGSize)naturalSize;
 - (int)naturalTimeScale;
 - (CDStruct_1b6d18a9)overallDurationHint;

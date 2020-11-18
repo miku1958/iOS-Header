@@ -6,26 +6,33 @@
 
 #import <MapKit/MKMultiPoint.h>
 
+#import <MapKit/MKGeoJSONObject-Protocol.h>
 #import <MapKit/MKOverlay-Protocol.h>
 
 @class NSString;
 
-@interface MKPolyline : MKMultiPoint <MKOverlay>
+@interface MKPolyline : MKMultiPoint <MKGeoJSONObject, MKOverlay>
 {
 }
 
 @property (readonly, nonatomic) CDStruct_02837cd9 boundingMapRect;
 @property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *subtitle;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title;
 
 + (id)polylineWithCoordinates:(const struct CLLocationCoordinate2D *)arg1 count:(unsigned long long)arg2;
 + (id)polylineWithPoints:(const CDStruct_c3b9c2ee *)arg1 count:(unsigned long long)arg2;
 - (void)_calculateBounds;
+- (id)_initWithGeoJSONObject:(id)arg1 error:(id *)arg2;
+- (id)_initWithGeoJSONPoints:(struct NSArray *)arg1 error:(id *)arg2;
 - (BOOL)intersectsMapRect:(CDStruct_02837cd9)arg1;
 
 @end

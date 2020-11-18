@@ -9,7 +9,7 @@
 #import <Navigation/MNTimeProvider-Protocol.h>
 #import <Navigation/MNTracePlayerSchedulerDelegate-Protocol.h>
 
-@class GEOETAUpdater, MNLocation, MNTrace, MNTracePlayerETAUpdater, MNTracePlayerScheduler, MNTracePlayerTimelineStream, NSData, NSDate, NSHashTable, NSString;
+@class MNLocation, MNSessionUpdateManager, MNTrace, MNTracePlayerETAUpdater, MNTracePlayerScheduler, MNTracePlayerTimelineStream, NSData, NSDate, NSHashTable, NSString;
 
 @interface MNTracePlayer : NSObject <MNTracePlayerSchedulerDelegate, MNTimeProvider>
 {
@@ -22,7 +22,6 @@
     BOOL _isPlaying;
     BOOL _isPaused;
     double _duration;
-    int _mainTransportType;
     double _speedMultiplier;
     BOOL _forceDirectionsResponsesFromTrace;
     MNTracePlayerTimelineStream *_directionsStream;
@@ -36,15 +35,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
-@property (readonly, nonatomic) GEOETAUpdater *etaUpdater; // @synthesize etaUpdater=_etaUpdater;
 @property (nonatomic) BOOL forceDirectionsResponsesFromTrace; // @synthesize forceDirectionsResponsesFromTrace=_forceDirectionsResponsesFromTrace;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isPaused; // @synthesize isPaused=_isPaused;
 @property (readonly, nonatomic) BOOL isPlaying; // @synthesize isPlaying=_isPlaying;
-@property (readonly, nonatomic) int mainTransportType; // @synthesize mainTransportType=_mainTransportType;
+@property (readonly, nonatomic) int mainTransportType;
 @property (readonly, nonatomic) double position;
 @property (readonly, nonatomic) NSData *selectedRouteID;
 @property (readonly, nonatomic) unsigned long long selectedRouteIndex;
+@property (readonly, nonatomic) MNSessionUpdateManager *sessionUpdater;
 @property (nonatomic) BOOL shouldPlayETARequests; // @synthesize shouldPlayETARequests=_shouldPlayETARequests;
 @property (nonatomic) double speedMultiplier; // @synthesize speedMultiplier=_speedMultiplier;
 @property (readonly) Class superclass;

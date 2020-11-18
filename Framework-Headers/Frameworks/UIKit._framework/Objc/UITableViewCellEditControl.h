@@ -6,14 +6,13 @@
 
 #import <UIKitCore/UIControl.h>
 
-@class UIImageView, UITableViewCell, _UITableViewCellEditControlMinusView;
+@class UIImageView, UITableViewCell;
 
 __attribute__((visibility("hidden")))
 @interface UITableViewCellEditControl : UIControl
 {
     UITableViewCell *_cell;
     UIImageView *_imageView;
-    _UITableViewCellEditControlMinusView *_minusView;
     UIImageView *_shadowView;
     double _focalY;
     double _focalHeight;
@@ -29,29 +28,32 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (unsigned long long)_controlEventsForActionTriggered;
+- (void)_createImageViewIfNeccessary;
 - (id)_currentImage;
-- (id)_deleteImage:(double)arg1;
+- (id)_deleteImage;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_imageView;
-- (id)_insertImage:(double)arg1;
-- (struct CGRect)_minusRect;
-- (id)_minusView;
-- (id)_multiSelectHighlightedImage;
+- (id)_insertImage;
 - (id)_multiSelectNotSelectedImage;
 - (id)_multiSelectSelectedImage;
 - (void)_multiselectColorChanged;
+- (id)_renderedImage;
 - (id)_shadowImage;
 - (void)_toggleRotate;
-- (void)_toggleRotateAnimationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (void)_toggleRotateAnimationDidStop;
 - (void)_updateImageView;
 - (void)adjustLayoutForFocalRect:(struct CGRect)arg1;
 - (struct CGSize)defaultSize;
 - (id)initWithTableViewCell:(id)arg1 editingStyle:(long long)arg2;
 - (BOOL)isRotating;
 - (void)layoutSubviews;
-- (void)setFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setRotated:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

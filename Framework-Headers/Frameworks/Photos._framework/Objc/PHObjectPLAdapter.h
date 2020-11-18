@@ -9,10 +9,11 @@
 #import <Photos/PHFetchDictionaryAccessing-Protocol.h>
 #import <Photos/PHMutableFetchDictionaryAccessing-Protocol.h>
 
-@class NSMutableDictionary, NSMutableOrderedSet, NSString, PLManagedObject;
+@class NSMutableDictionary, NSMutableOrderedSet, NSString, PHPhotoLibrary, PLManagedObject;
 
 @interface PHObjectPLAdapter : NSObject <PHFetchDictionaryAccessing, PHMutableFetchDictionaryAccessing>
 {
+    PHPhotoLibrary *_photoLibrary;
     PLManagedObject *_backingManagedObject;
     NSMutableOrderedSet *_ignoredKeys;
     NSMutableDictionary *_modifiedKeyValues;
@@ -24,10 +25,11 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableOrderedSet *ignoredKeys; // @synthesize ignoredKeys=_ignoredKeys;
 @property (strong, nonatomic) NSMutableDictionary *modifiedKeyValues; // @synthesize modifiedKeyValues=_modifiedKeyValues;
+@property (readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithPLManagedObject:(id)arg1;
+- (id)initWithPLManagedObject:(id)arg1 photoLibrary:(id)arg2;
 - (id)mutableAccessingCopy;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;

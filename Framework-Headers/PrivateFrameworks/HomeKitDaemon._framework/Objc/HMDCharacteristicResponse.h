@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSDate *valueUpdatedTime; // @synthesize valueUpdatedTime=_valueUpdatedTime;
 
 + (id)responseWithRequest:(id)arg1 error:(id)arg2;
++ (id)responsesWithRequests:(id)arg1 error:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithRequest:(id)arg1 error:(id)arg2;

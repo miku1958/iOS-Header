@@ -14,7 +14,6 @@
 + (id)_secondaryTextColor;
 + (id)cancelledDeclinedColorBarColor;
 + (id)invitationPrimaryTextColor;
-+ (id)needsReplyBackgroundColor;
 + (double)needsReplyStripeBackgroundAlpha;
 + (id)needsReplyStripeColor;
 + (id)normalBackgroundColor;

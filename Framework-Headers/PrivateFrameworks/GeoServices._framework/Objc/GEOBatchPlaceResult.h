@@ -15,16 +15,18 @@ __attribute__((visibility("hidden")))
 {
     GEOPlaceResult *_placeResult;
     int _statusCode;
-    CDStruct_bcb1eac0 _has;
+    CDStruct_ade9d5f7 _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasPlaceResult;
 @property (nonatomic) BOOL hasStatusCode;
-@property (strong, nonatomic) GEOPlaceResult *placeResult; // @synthesize placeResult=_placeResult;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (strong, nonatomic) GEOPlaceResult *placeResult;
+@property (nonatomic) int statusCode;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUICore/PXObservable.h>
 
+#import <PhotosUI/PHAssetExportRequestDelegate-Protocol.h>
+#import <PhotosUI/PUActivityItemSourceOperationDelegate-Protocol.h>
+#import <PhotosUI/PUMutableActivityItemSource-Protocol.h>
 #import <PhotosUI/UIActivityItemApplicationExtensionSource-Protocol.h>
 #import <PhotosUI/UIActivityItemDeferredSource-Protocol.h>
 #import <PhotosUI/UIActivityItemImageDataProvider-Protocol.h>
 #import <PhotosUI/UIActivityItemSource-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSProgress, NSString, NSURL, PFSharingRemaker, PHAsset, PHAssetExportRequest, PLVideoRemaker, PUActivityItemSourceAnchorOperation, _PUActivityItemSourceOperation;
-@protocol OS_dispatch_group;
+@class NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSObject, NSProgress, NSString, NSURL, PHAsset, PHAssetExportRequest, PUActivityItemSourceAnchorOperation, PUActivityItemSourceConfiguration, PUActivityItemSourceOperation;
+@protocol OS_dispatch_group, OS_dispatch_queue;
 
-@interface PUActivityItemSource : NSObject <UIActivityItemDeferredSource, UIActivityItemApplicationExtensionSource, UIActivityItemImageDataProvider, UIActivityItemSource>
+@interface PUActivityItemSource : PXObservable <PHAssetExportRequestDelegate, PUActivityItemSourceOperationDelegate, PUMutableActivityItemSource, UIActivityItemDeferredSource, UIActivityItemApplicationExtensionSource, UIActivityItemImageDataProvider, UIActivityItemSource>
 {
     PHAsset *_asset;
     NSDictionary *_cachedSharingVariants;
@@ -22,27 +25,24 @@
     NSMutableSet *_onDemandExports;
     NSMutableDictionary *_sharingURLs;
     NSString *_sharingUUID;
-    NSString *_assetOriginalFilename;
-    BOOL _hasRecognizedVideoAdjustments;
-    _PUActivityItemSourceOperation *_currentOperation;
+    NSString *_assetOriginalFilenameBase;
+    PUActivityItemSourceOperation *_currentOperation;
     PUActivityItemSourceAnchorOperation *_anchorOperation;
-    PLVideoRemaker *_remaker;
-    CDUnknownBlockType _remakerCompletionHandler;
-    id _strongSelf;
-    PFSharingRemaker *_photoRemaker;
-    NSArray *_nonLocalAssetsActivities;
-    BOOL _useStillImage;
     BOOL _shouldSkipPreparation;
     BOOL _shouldAnchorPreparation;
+    CDStruct_7f880b36 _sharingPreferences;
+    unsigned long long _state;
     CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _postCompletionHandler;
-    long long __remakerWasCancelled;
+    NSError *_lastPreparationError;
+    PUActivityItemSourceConfiguration *_exportConfiguration;
     PHAssetExportRequest *__assetExportRequest;
     NSProgress *__exportProgress;
     CDUnknownBlockType __exportProgressHandler;
     NSDictionary *__pasteboardRepresentation;
     NSURL *__assetsLibraryURL;
+    NSObject<OS_dispatch_queue> *_externalIsolation;
 }
 
 @property (strong, nonatomic, setter=_setAssetExportRequest:) PHAssetExportRequest *_assetExportRequest; // @synthesize _assetExportRequest=__assetExportRequest;
@@ -50,86 +50,78 @@
 @property (strong, nonatomic, setter=_setExportProgress:) NSProgress *_exportProgress; // @synthesize _exportProgress=__exportProgress;
 @property (copy, nonatomic, setter=_setExportProgressHandler:) CDUnknownBlockType _exportProgressHandler; // @synthesize _exportProgressHandler=__exportProgressHandler;
 @property (strong, setter=_setPasteboardRepresentation:) NSDictionary *_pasteboardRepresentation; // @synthesize _pasteboardRepresentation=__pasteboardRepresentation;
-@property (setter=_setRemakerWasCancelled:) long long _remakerWasCancelled; // @synthesize _remakerWasCancelled=__remakerWasCancelled;
 @property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (copy) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PUActivityItemSourceConfiguration *exportConfiguration; // @synthesize exportConfiguration=_exportConfiguration;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *externalIsolation; // @synthesize externalIsolation=_externalIsolation;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSError *lastPreparationError; // @synthesize lastPreparationError=_lastPreparationError;
 @property (copy) CDUnknownBlockType postCompletionHandler; // @synthesize postCompletionHandler=_postCompletionHandler;
 @property (copy) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (readonly, nonatomic) CDStruct_2a4d9400 sharingPreferences; // @synthesize sharingPreferences=_sharingPreferences;
+@property (readonly, nonatomic) NSString *sharingUUID;
 @property (nonatomic) BOOL shouldAnchorPreparation; // @synthesize shouldAnchorPreparation=_shouldAnchorPreparation;
 @property (nonatomic) BOOL shouldSkipPreparation; // @synthesize shouldSkipPreparation=_shouldSkipPreparation;
+@property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL useStillImage; // @synthesize useStillImage=_useStillImage;
 
-+ (id)_photosInternalActivities;
 + (id)_sharingErrorWithCode:(long long)arg1 underlyingError:(id)arg2 localizedDescription:(id)arg3 additionalInfo:(id)arg4;
 + (id)activityItemSourceLog;
++ (unsigned long long)assetBundleMediaSubtypesFromPHAssetMediaSubtypes:(unsigned long long)arg1;
++ (long long)assetBundleMediaTypeFromPHAssetMediaType:(long long)arg1;
++ (long long)assetBundlePlaybackStyleFromPHAssetPlaybackStyle:(long long)arg1;
++ (unsigned long long)assetBundlePlaybackVariationFromPHAssetPlaybackVariation:(unsigned short)arg1;
++ (unsigned long long)assetBundleReframeVariationFromPHAssetReframeVariation:(unsigned long long)arg1;
++ (unsigned short)assetBundleVideoComplementVisibilityStateFromPHVideoComplementVisibilityState:(unsigned short)arg1;
 + (void)initialize;
 + (BOOL)supportsAssetLocalIdentifierForActivityType:(id)arg1;
-+ (BOOL)supportsPhotoIrisBundleForActivityType:(id)arg1;
 - (void).cxx_destruct;
 - (id)_activityOperationQueue;
 - (void)_beginObservingExportRequest:(id)arg1 withProgressHandler:(CDUnknownBlockType)arg2;
-- (void)_cancelVideoRemaking:(id)arg1;
-- (void)_cleanupPhotoRemaker;
-- (void)_cleanupProgress;
-- (void)_cleanupRemaker;
 - (BOOL)_copyResourceAtURL:(id)arg1 toURL:(id)arg2 shouldMove:(BOOL)arg3;
 - (id)_createManagedURLForResourceAtURL:(id)arg1 shouldMove:(BOOL)arg2 forType:(long long)arg3;
-- (id)_createTempPhotoIrisBundle;
+- (id)_createTempAssetBundleForAsset:(id)arg1 withError:(id *)arg2;
+- (id)_createTempLivePhotoBundleWithError:(id *)arg1;
 - (id)_customAccessibilityLabel;
-- (void)_fetchAlternateForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_fetchImageForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_fetchPhotoIrisForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchAlternateWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchImageWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchLivePhotoWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchSharingVariants;
-- (void)_fetchVideoForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)_generateURLForType:(long long)arg1 desiredPathExtension:(id)arg2;
-- (BOOL)_isColorOptimizationNeededForAsset:(id)arg1 imageURL:(id)arg2;
+- (void)_fetchVideoWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_generateURLForType:(long long)arg1 withPathExtension:(id)arg2 preferredFilename:(id)arg3;
 - (id)_itemForActivityType:(id)arg1;
-- (unsigned long long)_maxFileSizeLimitForActivityType:(id)arg1 asset:(id)arg2;
 - (id)_newOperationForActivityType:(id)arg1;
 - (id)_newPasteboardRepresentationForURL:(id)arg1;
-- (void)_operation:(id)arg1 prepareItemForActivityType:(id)arg2;
 - (id)_outboundResourcesDirectoryURL;
+- (void)_removeTempAssetBundleFile;
 - (void)_removeTempFiles;
-- (void)_removeTempIrisBundleFile;
-- (void)_removeTempPhotoRemakerFile;
-- (void)_removeTempVideoRemakerFile;
+- (void)_removeTempLivePhotoBundleFile;
+- (void)_resetState;
 - (id)_resourceURLForType:(long long)arg1;
 - (void)_runExportRequestWithOptions:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_runOnDemandExportForAsset:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setResourceURL:(id)arg1 forType:(long long)arg2;
 - (id)_sharingVariants;
-- (BOOL)_shouldExcludeAlternateVariantForActivityType:(id)arg1;
 - (void)_stopObservingExportRequest;
 - (id)_uniformTypeIdentifierForActivityType:(id)arg1;
-- (BOOL)_wantsAlternateVariantForActivityType:(id)arg1;
-- (BOOL)_wantsAssetsLibraryURLForActivityType:(id)arg1;
-- (BOOL)_wantsCompatibleFormatForActivityType:(id)arg1;
-- (BOOL)_wantsIrisRemakerURLForActivityType:(id)arg1;
-- (BOOL)_wantsLocalAssetsForActivityType:(id)arg1;
-- (BOOL)_wantsPhotoIrisBundleForActivityType:(id)arg1;
-- (BOOL)_wantsPhotoRemakerURLForActivityType:(id)arg1;
-- (BOOL)_wantsVideoRemakerForActivityType:(id)arg1;
+- (void)activityItemSourceOperation:(id)arg1 prepareItemForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 thumbnailImageDataForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)activityViewControllerApplicationExtensionItem:(id)arg1;
 - (id)activityViewControllerOperation:(id)arg1;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
+- (void)assetExportRequest:(id)arg1 didChangeToState:(unsigned long long)arg2 fromState:(unsigned long long)arg3;
 - (void)cancel;
-- (void)cancelRemaking;
 - (void)dealloc;
-- (id)initWithAsset:(id)arg1 useStillImage:(BOOL)arg2;
+- (id)initWithAsset:(id)arg1 sharingPreferences:(CDStruct_2a4d9400)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)remakePhotoWithURL:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)remakeVideoWithTrimStartTime:(double)arg1 endTime:(double)arg2 forMail:(BOOL)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)runWithActivityType:(id)arg1;
+- (void)setSharingPreferences:(CDStruct_2a4d9400)arg1;
+- (void)setState:(unsigned long long)arg1;
 - (void)signalAnchorCompletion;
-- (void)videoRemakerDidBeginRemaking:(id)arg1;
-- (void)videoRemakerDidEndRemaking:(id)arg1 temporaryPath:(id)arg2;
 
 @end
 

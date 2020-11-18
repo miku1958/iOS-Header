@@ -19,6 +19,7 @@
 @interface HDWorkoutBuilderServer : HDStandardTaskServer <HDWorkoutDataAccumulator, HKDataFlowLinkProcessor, HKStateMachineDelegate, HKWorkoutBuilderServerInterface, HDWorkoutDataDestination, HDTaskServerObserver>
 {
     struct os_unfair_lock_s _lock;
+    _Atomic BOOL _invalidated;
     HDWorkoutBuilderEntity *_persistentEntity;
     NSError *_error;
     HKObserverSet *_dataAccumulatorObservers;
@@ -46,6 +47,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL invalidated;
 @property (strong, nonatomic) NSMutableDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HDWorkoutDataAccumulator> workoutDataAccumulator;
@@ -64,16 +66,17 @@
 + (id)recoveredWorkoutBuilderConfigurationForClient:(id)arg1 sessionIdentifier:(id)arg2 builderIdentifierOut:(id *)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
-+ (BOOL)validateConfiguration:(id)arg1 error:(out id *)arg2;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)_addMetadata:(id)arg1 error:(id *)arg2;
 - (void)_attemptRequeryForInvalidatedStatisticsCalculators;
 - (BOOL)_canAddDataWithError:(id *)arg1;
 - (void)_didChangeElapsedTimeBasis;
+- (void)_didFinishRecovery;
 - (void)_didUpdateEvents:(id)arg1;
 - (void)_didUpdateMetadata:(id)arg1;
 - (void)_didUpdateStatistics:(id)arg1;
-- (void)_discardWorkout;
+- (BOOL)_discardWorkoutWithError:(id *)arg1;
 - (id)_finishWorkoutWithError:(id *)arg1;
 - (BOOL)_insertWorkoutEvents:(id)arg1 error:(id *)arg2;
 - (void)_loadOrCreatePersistentEntity;
@@ -81,6 +84,7 @@
 - (id)_lock_associateSamples:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (id)_lock_configurationForPersistenceWithTransaction:(id)arg1 error:(id *)arg2;
 - (BOOL)_lock_createPersistentEntityForConfiguration:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
+- (void)_lock_didUpdateStartDate;
 - (void)_lock_failWithError:(id)arg1;
 - (BOOL)_lock_loadOrCreatePersistentEntityInTransaction:(id)arg1 error:(id *)arg2;
 - (id)_lock_maskedIntervalsForStatisticsOfType:(id)arg1;
@@ -115,7 +119,7 @@
 - (void)didInvalidateTaskServer:(id)arg1;
 - (BOOL)enumerateSamplesOfType:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)remoteInterface;
 - (void)remote_addDataSourcesWithIdentifiers:(id)arg1;
 - (void)remote_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -123,6 +127,7 @@
 - (void)remote_addWorkoutEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_recoverWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_removeDataSourcesWithIdentifiers:(id)arg1;
+- (void)remote_setShouldCollectEvents:(BOOL)arg1;
 - (void)remote_setStatisticsComputationMethod:(long long)arg1 forType:(id)arg2;
 - (void)remote_setStatisticsMergeStrategy:(unsigned long long)arg1 forType:(id)arg2;
 - (void)remote_setTargetConstructionState:(long long)arg1 startDate:(id)arg2 endDate:(id)arg3 completion:(CDUnknownBlockType)arg4;

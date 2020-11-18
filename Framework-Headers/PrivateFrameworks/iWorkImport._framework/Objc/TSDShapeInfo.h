@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
 - (id)animationFilters;
 - (BOOL)canAspectRatioLockBeChangedByUser;
+- (BOOL)canCopyData;
 - (id)copyWithContext:(id)arg1;
 - (int)elementKind;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreDuetContext/_CDUserContext-Protocol.h>
+#import <CoreDuetContext/_CDAsyncLocalContext-Protocol.h>
+#import <CoreDuetContext/_CDAsyncUserContext-Protocol.h>
 #import <CoreDuetContext/_CDUserContextServerMonitoring-Protocol.h>
 
 @class NSCountedSet, NSMutableDictionary, NSString, NSXPCConnection, NSXPCListenerEndpoint;
-@protocol OS_dispatch_queue, OS_os_log;
+@protocol OS_dispatch_queue, OS_os_log, _CDRemoteUserContextServer;
 
-@interface _CDClientContext : NSObject <_CDUserContext, _CDUserContextServerMonitoring>
+@interface _CDClientContext : NSObject <_CDAsyncUserContext, _CDAsyncLocalContext, _CDUserContextServerMonitoring>
 {
     BOOL _interrupted;
     NSObject<OS_dispatch_queue> *_queue;
@@ -25,6 +26,7 @@
     NSObject<OS_dispatch_queue> *_registrationCallbackQueue;
     NSMutableDictionary *_openRegistrationTokens;
     NSObject<OS_os_log> *_log;
+    id<_CDRemoteUserContextServer> _remoteUserContextProxy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -39,6 +41,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *registrationCallbackQueue; // @synthesize registrationCallbackQueue=_registrationCallbackQueue;
 @property (strong, nonatomic) NSMutableDictionary *registrations; // @synthesize registrations=_registrations;
+@property (strong, nonatomic) id<_CDRemoteUserContextServer> remoteUserContextProxy; // @synthesize remoteUserContextProxy=_remoteUserContextProxy;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
@@ -46,34 +49,63 @@
 + (id)clientInterface;
 + (id)serverInterface;
 + (id)userContext;
++ (id)userContextWithEndpoint:(id)arg1;
 - (void).cxx_destruct;
+- (void)activateDevices:(id)arg1 remoteUserContextProxySourceDeviceUUID:(id)arg2;
 - (void)addKeyPathsWithRegistrationsForAnyChangeFromRegistration:(id)arg1;
 - (BOOL)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3;
+- (void)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3 responseQueue:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
+- (BOOL)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3 synchronous:(BOOL)arg4 responseQueue:(id)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (BOOL)addObjects:(id)arg1 toArrayAtKeyPath:(id)arg2;
+- (void)addObjects:(id)arg1 toArrayAtKeyPath:(id)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (BOOL)addObjects:(id)arg1 toArrayAtKeyPath:(id)arg2 synchronous:(BOOL)arg3 responseQueue:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (id)cachedValueIfClientHasRegistrationsForKeyPath:(id)arg1;
 - (void)cleanupInternalReferencesToRegistration:(id)arg1;
 - (void)clearCacheForKeyPathsWithFireOnChangeRegistrations:(id)arg1;
 - (id)currentConnection;
+- (void)deactivateDevices:(id)arg1 remoteUserContextProxySourceDeviceUUID:(id)arg2;
 - (void)dealloc;
+- (id)defaultCallbackQueue;
 - (void)deregisterCallback:(id)arg1;
 - (BOOL)evaluatePredicate:(id)arg1;
-- (void)handleContextualChange:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)handleContextualChange:(id)arg1 info:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)handleFetchPropertiesEvent:(id)arg1;
+- (void)handleFetchProxySourceDeviceUUIDEvent:(id)arg1;
+- (void)handleKeepAliveEvent:(id)arg1;
+- (void)handleMDCSEvent:(id)arg1;
+- (void)handleNotificationEvent:(id)arg1;
 - (void)handleRegistrationCompleted:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)handleRequestActivateDevicesEvent:(id)arg1;
+- (void)handleSubscribeToContextValueNotificationsEvent:(id)arg1;
+- (void)handleUnsubscribeFromContextValueNotificationsEvent:(id)arg1;
 - (BOOL)hasKnowledgeOfContextualKeyPath:(id)arg1;
 - (id)initWithEndpoint:(id)arg1;
 - (id)lastModifiedDateForContextualKeyPath:(id)arg1;
+- (void)lastModifiedDateForContextualKeyPath:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)lastModifiedDateForContextualKeyPath:(id)arg1 synchronous:(BOOL)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)localContext;
 - (id)objectForContextualKeyPath:(id)arg1;
+- (void)objectForContextualKeyPath:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)objectForContextualKeyPath:(id)arg1 synchronous:(BOOL)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)registerCallback:(id)arg1;
 - (void)removeKeyPathsWithRegistrationsForAnyChangeFromRegistration:(id)arg1;
 - (BOOL)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2;
+- (void)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (BOOL)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2 synchronous:(BOOL)arg3 responseQueue:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)retryTimes:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)setCachedValueIfClientHasRegistrations:(id)arg1 forKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
+- (void)setObject:(id)arg1 forContextualKeyPath:(id)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2 synchronous:(BOOL)arg3 responseQueue:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (BOOL)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+- (BOOL)setObject:(id)arg1 lastModifiedDate:(id)arg2 forContextualKeyPath:(id)arg3;
+- (void)subscribeToEventStreams;
 - (void)unprotectedSetUpXPCConnectionWithEndpoint:(id)arg1;
+- (struct NSDictionary *)valuesForKeyPaths:(id)arg1;
 - (id)valuesForKeyPaths:(id)arg1 inContextsMatchingPredicate:(id)arg2;
+- (void)valuesForKeyPaths:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (struct NSDictionary *)valuesForKeyPaths:(id)arg1 synchronous:(BOOL)arg2 responseQueue:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 
 @end
 

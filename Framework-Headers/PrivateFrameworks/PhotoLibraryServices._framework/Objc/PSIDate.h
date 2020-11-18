@@ -13,12 +13,12 @@
 }
 
 @property (readonly) long long day;
+@property (readonly) long long era;
 @property (readonly) long long int64Representation; // @synthesize int64Representation=_int64Representation;
 @property (readonly) long long int64RepresentationMask; // @synthesize int64RepresentationMask=_int64RepresentationMask;
 @property (readonly) long long month;
 @property (readonly) long long year;
 
-+ (id)descriptionWithInt64Representation:(long long)arg1;
 + (id)distantFuture;
 + (id)distantPast;
 - (id)dateComponents;

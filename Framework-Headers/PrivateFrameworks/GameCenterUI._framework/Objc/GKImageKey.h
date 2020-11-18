@@ -12,8 +12,8 @@
 {
     NSString *_filePath;
     NSString *_cacheKey;
-    NSString *_imageID;
     NSString *_basename;
+    NSString *_imageID;
     struct CGSize _size;
 }
 
@@ -25,7 +25,7 @@
 
 + (id)fileNameWithIdentifierInImageSource:(id)arg1;
 + (id)keyForImageIdentifier:(id)arg1 withImageSource:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

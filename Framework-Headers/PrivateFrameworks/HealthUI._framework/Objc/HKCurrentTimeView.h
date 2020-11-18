@@ -16,6 +16,7 @@
     HKCurrentTimeChevronButton *_nextTimeIndexButton;
     BOOL _disableControls;
     BOOL _currentTimeButtonEnabled;
+    BOOL _omitPrevNextButtons;
     NSString *_currentTimeString;
     id<HKCurrentTimeViewDelegate> _delegate;
 }
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) id<HKCurrentTimeViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL disableControls; // @synthesize disableControls=_disableControls;
 @property (nonatomic) BOOL nextTimeButtonEnabled;
+@property (nonatomic) BOOL omitPrevNextButtons; // @synthesize omitPrevNextButtons=_omitPrevNextButtons;
 @property (nonatomic) BOOL previousTimeButtonEnabled;
 
 - (void).cxx_destruct;
@@ -40,6 +42,7 @@
 - (id)_labelColor:(BOOL)arg1;
 - (id)_tintColor:(BOOL)arg1;
 - (void)currentTimeButtonTapped:(id)arg1;
+- (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithWideHorizontalMargin:(BOOL)arg1;

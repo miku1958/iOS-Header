@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     double maxAllowedRotationAngle;
 }
 
-@property (weak, nonatomic) SCNNode *joint; // @synthesize joint;
+@property (nonatomic) SCNNode *joint; // @synthesize joint;
 @property (nonatomic) double maxAllowedRotationAngle; // @synthesize maxAllowedRotationAngle;
 
 

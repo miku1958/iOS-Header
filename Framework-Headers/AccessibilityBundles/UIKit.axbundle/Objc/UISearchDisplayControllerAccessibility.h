@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_setTableViewVisible:(BOOL)arg1 inView:(id)arg2;

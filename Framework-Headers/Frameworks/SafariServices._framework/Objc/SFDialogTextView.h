@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_updateFontStyling;
 - (void)_updateText;
+- (void)_updateTextContainerInset;
 - (void)flashScrollIndicators;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

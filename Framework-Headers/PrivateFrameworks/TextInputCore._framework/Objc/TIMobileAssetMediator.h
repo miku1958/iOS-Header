@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, TIMobileAssetSyncState;
+#import <TextInputCore/TIMobileAssetMediator-Protocol.h>
+
+@class NSMutableSet, NSString, TIMobileAssetSyncState;
 @protocol OS_dispatch_queue;
 
-@interface TIMobileAssetMediator : NSObject
+@interface TIMobileAssetMediator : NSObject <TIMobileAssetMediator>
 {
     BOOL _isWaitingForReachability;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -18,10 +20,14 @@
     struct __SCNetworkReachability *_reachabilityRef;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isWaitingForReachability; // @synthesize isWaitingForReachability=_isWaitingForReachability;
 @property (readonly, nonatomic) NSMutableSet *queuedAssetMatchSet; // @synthesize queuedAssetMatchSet=_queuedAssetMatchSet;
 @property (readonly, nonatomic) struct __SCNetworkReachability *reachabilityRef; // @synthesize reachabilityRef=_reachabilityRef;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) TIMobileAssetSyncState *syncState; // @synthesize syncState=_syncState;
 
 + (id)assetDownloadsInProgress;
@@ -51,8 +57,10 @@
 - (void)downloadUninstalledAssetsMatching:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (void)downloadUninstalledAssetsMatchingQueuedAssetMatchSet;
 - (id)fetchInstalledAssetInformation;
+- (id)fetchLatestAssetsMatchingAny:(id)arg1;
+- (id)fetchLatestInstalledAssetsMatchingAny:(id)arg1;
 - (oneway void)fetchUninstalledAssetInformationMatchingAny:(id)arg1 continuation:(CDUnknownBlockType)arg2;
-- (id)initWithDispatchQueue:(id)arg1;
+- (id)init;
 - (void)reachabilityChanged;
 - (void)registerReachabilityCallback;
 - (void)retryDownloadsWhenReachable;

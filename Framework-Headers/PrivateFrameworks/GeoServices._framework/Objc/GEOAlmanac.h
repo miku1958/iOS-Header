@@ -27,7 +27,6 @@
 @property (readonly, nonatomic) NSDate *transit;
 
 - (void).cxx_destruct;
-- (id)_newRiseTransitSetForLocation:(CDStruct_c3b9c2ee)arg1 julianDay:(double)arg2 altitude:(double)arg3;
 - (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1;
 - (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1 altitudeInDegrees:(double)arg2;
 - (void)calculateAstronomicalTimeForLocation:(CDStruct_c3b9c2ee)arg1 date:(id)arg2 altitudeInDegrees:(double)arg3;

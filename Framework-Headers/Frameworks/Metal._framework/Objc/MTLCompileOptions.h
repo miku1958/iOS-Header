@@ -21,6 +21,7 @@
 @property (nonatomic) BOOL glBufferBindPoints; // @dynamic glBufferBindPoints;
 @property (nonatomic) unsigned long long languageVersion; // @dynamic languageVersion;
 @property (copy, nonatomic) NSDictionary *preprocessorMacros; // @dynamic preprocessorMacros;
+@property (nonatomic) unsigned char sourceLanguage; // @dynamic sourceLanguage;
 @property (nonatomic) BOOL tracingEnabled; // @dynamic tracingEnabled;
 
 + (id)alloc;

@@ -8,11 +8,11 @@
 
 #import <Message/MFMessageIterationFilter-Protocol.h>
 
-@class NSIndexSet, NSString;
+@class EFMutableInt64Set, NSString;
 
 @interface MFMailboxMessageIterationFilter : NSObject <MFMessageIterationFilter>
 {
-    NSIndexSet *_mailboxes;
+    EFMutableInt64Set *_mailboxes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,7 +20,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
+- (BOOL)filterMessageWithRow:(id)arg1;
 - (BOOL)filterMessageWithStatement:(struct sqlite3_stmt *)arg1;
 - (id)initWithMailboxes:(id)arg1;
 

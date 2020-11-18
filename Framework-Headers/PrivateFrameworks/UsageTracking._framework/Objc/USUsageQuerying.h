@@ -6,32 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@protocol _CDUserContext, _DKKnowledgeQuerying><_DKKnowledgeSynchronizing;
+@protocol _CDUserContext, _DKKnowledgeQuerying;
 
 @interface USUsageQuerying : NSObject
 {
     id<_CDUserContext> _context;
-    id<_DKKnowledgeQuerying><_DKKnowledgeSynchronizing> _eventStorage;
+    id<_DKKnowledgeQuerying> _eventStorage;
 }
 
 @property (readonly) id<_CDUserContext> context; // @synthesize context=_context;
-@property (readonly) id<_DKKnowledgeQuerying><_DKKnowledgeSynchronizing> eventStorage; // @synthesize eventStorage=_eventStorage;
+@property (readonly) id<_DKKnowledgeQuerying> eventStorage; // @synthesize eventStorage=_eventStorage;
 
++ (id)getLocalDeviceIdentifierAndReturnError:(id *)arg1;
++ (void)synchronizeUsageWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (id)_computeApplicationUsageWithEvents:(id)arg1 bundleIdentifiers:(id)arg2 unboundApplicationUsageIntervalsByDevice:(id *)arg3 timeZoneByDevice:(id)arg4 lastEventDateByDevice:(id)arg5 categoryUsageIntervalsByDevice:(id)arg6 aggregatedApplicationUsageIntervalsByDevice:(id)arg7 categoryByBundleIdentifier:(id)arg8 partition:(id)arg9 referenceDate:(id)arg10;
+- (id)_computeApplicationUsageWithEvents:(id)arg1 unboundApplicationUsageIntervalsByDevice:(id *)arg2 timeZoneByDevice:(id)arg3 lastEventDateByDevice:(id)arg4 categoryUsageIntervalsByDevice:(id)arg5 aggregatedApplicationUsageIntervalsByDevice:(id)arg6 categoryByBundleIdentifier:(id)arg7 partition:(id)arg8 referenceDate:(id)arg9;
 - (id)_computeNotificationsWithEvents:(id)arg1 timeZoneByDevice:(id)arg2 lastEventDateByDevice:(id)arg3 partition:(id)arg4;
 - (id)_computeScreenTime:(BOOL)arg1 withEvents:(id)arg2 intersectingScreenTimeIntervalsByDevice:(id *)arg3 longestSessionByDevice:(id *)arg4 timeZoneByDevice:(id)arg5 lastEventDateByDevice:(id)arg6 partition:(id)arg7 referenceDate:(id)arg8;
 - (void)_computeUncategorizedLocalWebUsageWithApplicationUsageEvents:(id)arg1 webUsageEvents:(id)arg2 uncategorizedDomains:(id)arg3 interval:(id)arg4 referenceDate:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (double)_computeUsageForBudgetType:(long long)arg1 items:(id)arg2 displayBacklitEvents:(id)arg3 applicationUsageEvents:(id)arg4 webUsageEvents:(id)arg5 categoryByBundleIdentifier:(id)arg6 categoryByWebDomain:(id)arg7 interval:(id)arg8 referenceDate:(id)arg9;
+- (double)_computeUsageForApplications:(id)arg1 webDomains:(id)arg2 categories:(id)arg3 applicationUsageEvents:(id)arg4 webUsageEvents:(id)arg5 categoryByBundleIdentifier:(id)arg6 categoryByWebDomain:(id)arg7 interval:(id)arg8 referenceDate:(id)arg9;
 - (void)_computeUsageWithDisplayBacklitEvents:(id)arg1 applicationUsageEvents:(id)arg2 webUsageEvents:(id)arg3 notificationEvents:(id)arg4 categoryByBundleIdentifier:(id)arg5 categoryByWebDomain:(id)arg6 interval:(id)arg7 partitionInterval:(double)arg8 referenceDate:(id)arg9 completionHandler:(CDUnknownBlockType)arg10;
-- (id)_computeWebUsageWithEvents:(id)arg1 webDomains:(id)arg2 applicationUsageIntervalsByDevice:(id)arg3 timeZoneByDevice:(id)arg4 lastEventDateByDevice:(id)arg5 categoryUsageIntervalsByDevice:(id)arg6 aggregatedApplicationUsageIntervalsByDevice:(id)arg7 aggregatedWebUsageIntervalsByDevice:(id)arg8 categoryByWebDomain:(id)arg9 partition:(id)arg10 referenceDate:(id)arg11;
+- (id)_computeWebUsageWithEvents:(id)arg1 applicationUsageIntervalsByDevice:(id)arg2 timeZoneByDevice:(id)arg3 lastEventDateByDevice:(id)arg4 categoryUsageIntervalsByDevice:(id)arg5 aggregatedApplicationUsageIntervalsByDevice:(id)arg6 aggregatedWebUsageIntervalsByDevice:(id)arg7 categoryByWebDomain:(id)arg8 partition:(id)arg9 referenceDate:(id)arg10;
 - (id)_currentScreenTimeIntervalDuringInterval:(id)arg1 usageStartDate:(id *)arg2 referenceDate:(id)arg3;
-- (void)_enumerateCurrentApplicationUsageIntervalsDuringInterval:(id)arg1 referenceDate:(id)arg2 matchingBundleIdentifiers:(id)arg3 block:(CDUnknownBlockType)arg4;
-- (void)_enumerateCurrentWebUsageIntervalsDuringInterval:(id)arg1 referenceDate:(id)arg2 matchingWebDomains:(id)arg3 block:(CDUnknownBlockType)arg4;
+- (void)_enumerateCurrentApplicationUsageIntervalsDuringInterval:(id)arg1 referenceDate:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)_enumerateCurrentWebUsageIntervalsDuringInterval:(id)arg1 referenceDate:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)_enumerateEvents:(id)arg1 intervalEndDate:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)_generatePickupsByBundleIdentifierWithPickupIntervals:(id)arg1 applicationUsageIntervals:(id)arg2 pickupsWithoutApplicationUsage:(unsigned long long *)arg3 firstPickup:(id *)arg4;
 - (id)_generateUncategorizedLocalWebUsageWithWebUsageIntervals:(id)arg1 uncategorizedDomains:(id)arg2;
-- (double)_generateUsageTimeWithScreenTimeIntervals:(id)arg1 applicationUsageIntervals:(id)arg2 webUsageIntervalsByDevice:(id)arg3 categoryUsageIntervalsByDevice:(id)arg4 aggregatedApplicationUsageIntervalsByDevice:(id)arg5 aggregatedWebUsageIntervalsByDevice:(id)arg6 categoryByWebDomain:(id)arg7 budgetType:(long long)arg8 items:(id)arg9;
+- (double)_generateUsageTimeWithApplicationUsageIntervals:(id)arg1 webUsageIntervalsByDevice:(id)arg2 categoryUsageIntervalsByDevice:(id)arg3 aggregatedApplicationUsageIntervalsByDevice:(id)arg4 aggregatedWebUsageIntervalsByDevice:(id)arg5 categoryByBundleIdentifier:(id)arg6 categoryByWebDomain:(id)arg7 applications:(id)arg8 webDomains:(id)arg9 categories:(id)arg10;
 - (id)_getApplicationsFromUsageEvents:(id)arg1 interval:(id)arg2 referenceDate:(id)arg3;
 - (id)_getWebDomainsFromUsageEvents:(id)arg1 interval:(id)arg2 referenceDate:(id)arg3;
 - (id)_newReportWithNonIntersectingScreenTimeIntervals:(id)arg1 pickupsByBundleIdentifier:(id)arg2 pickupsWithoutApplicationUsage:(unsigned long long)arg3 firstPickup:(id)arg4 longestSession:(id)arg5 applicationUsageIntervals:(id)arg6 webUsageIntervals:(id)arg7 categoryUsageIntervals:(id)arg8 aggregatedApplicationUsageIntervals:(id)arg9 aggregatedWebUsageIntervals:(id)arg10 categoryByBundleIdentifier:(id)arg11 categoryByWebDomain:(id)arg12 notifications:(id)arg13 interval:(id)arg14 timeZone:(id)arg15 lastEventDate:(id)arg16;
@@ -40,13 +42,12 @@
 - (void)_updateNotificationsWithEvent:(id)arg1 deviceIdentifier:(id)arg2 notificationsByDevice:(id)arg3 timeZoneByDevice:(id)arg4 lastEventDateByDevice:(id)arg5;
 - (void)_updateScreenTimeWithInterval:(id)arg1 rawInterval:(id)arg2 deviceIdentifier:(id)arg3 partition:(id)arg4 event:(id)arg5 nonIntersectingScreenTimeIntervalsByDevice:(id)arg6 intersectingScreenTimeIntervalsByDevice:(id)arg7 longestSessionByDevice:(id)arg8 timeZoneByDevice:(id)arg9 lastEventDateByDevice:(id)arg10;
 - (void)_updateWebUsageWithInterval:(id)arg1 webDomain:(id)arg2 bundleIdentifier:(id)arg3 deviceIdentifier:(id)arg4 event:(id)arg5 applicationIntervalsByDevice:(id)arg6 webUsageIntervalsByDevice:(id)arg7 categoryUsageIntervalsByDevice:(id)arg8 aggregatedApplicationUsageIntervalsByDevice:(id)arg9 aggregatedWebUsageIntervalsByDevice:(id)arg10 categoryByWebDomain:(id)arg11 timeZoneByDevice:(id)arg12 lastEventDateByDevice:(id)arg13;
-- (id)getLocalDeviceIdentifierAndReturnError:(id *)arg1;
 - (id)init;
 - (id)initWithContext:(id)arg1 eventStorage:(id)arg2;
-- (id)queryForBudgetType:(long long)arg1 items:(id)arg2 interval:(id)arg3 focalOnly:(BOOL)arg4 error:(id *)arg5;
+- (id)queryForApplications:(id)arg1 webDomains:(id)arg2 categories:(id)arg3 interval:(id)arg4 focalOnly:(BOOL)arg5 error:(id *)arg6;
 - (void)queryForUncategorizedLocalWebUsageDuringInterval:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)queryUsageDuringInterval:(id)arg1 partitionInterval:(double)arg2 focalOnly:(BOOL)arg3 forceImmediateSync:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)queryUsageDuringInterval:(id)arg1 partitionInterval:(double)arg2 forceImmediateSync:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)queryUsageDuringInterval:(id)arg1 partitionInterval:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)queryUsageDuringInterval:(id)arg1 partitionInterval:(double)arg2 focalOnly:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

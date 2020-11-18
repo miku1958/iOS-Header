@@ -17,9 +17,10 @@
 
 @property (readonly, nonatomic) double *parameters;
 @property (readonly, nonatomic) unsigned long long parametersCount;
-@property (nonatomic) double radius; // @synthesize radius=_radius;
-@property (nonatomic) int status; // @synthesize status=_status;
+@property (nonatomic) double radius;
+@property (nonatomic) int status;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
 - (void)addParameters:(double)arg1;
 - (void)clearParameters;
@@ -32,6 +33,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (double)parametersAtIndex:(unsigned long long)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setParameters:(double *)arg1 count:(unsigned long long)arg2;
 - (id)statusAsString:(int)arg1;

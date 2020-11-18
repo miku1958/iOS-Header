@@ -90,7 +90,6 @@
 - (void)subscribeStorageProtocol:(id)arg1 didFinishRetrievingAsset:(id)arg2 error:(id)arg3;
 - (void)subscribeStorageProtocolDidFinishRetrievingAllAssets:(id)arg1;
 - (void)subscribeStreamsProtocol:(id)arg1 didFindDisappearedSubscriptionForPersonID:(id)arg2;
-- (void)subscribeStreamsProtocol:(id)arg1 didFindShareState:(id)arg2;
 - (void)subscribeStreamsProtocol:(id)arg1 didFindTemporarilyUnavailableSubscriptionForPersonID:(id)arg2;
 - (void)subscribeStreamsProtocol:(id)arg1 didFinishError:(id)arg2;
 - (void)subscribeStreamsProtocol:(id)arg1 didFinishReceivingUpdatesForPersonID:(id)arg2 ctag:(id)arg3;

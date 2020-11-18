@@ -15,11 +15,13 @@
 @interface _INPBAppendToNoteIntent : PBCodable <_INPBAppendToNoteIntent, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBNoteContent *_content;
     _INPBIntentMetadata *_intentMetadata;
     _INPBNote *_targetNote;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBNoteContent *content; // @synthesize content=_content;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,9 +33,12 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBNote *targetNote; // @synthesize targetNote=_targetNote;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

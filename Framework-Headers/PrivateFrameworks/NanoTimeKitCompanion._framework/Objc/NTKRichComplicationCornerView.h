@@ -22,12 +22,12 @@
 @property (nonatomic) long long position; // @synthesize position=_position;
 
 + (id)_createHitTestPathWithViewBounds:(struct CGRect)arg1 position:(long long)arg2 forDevice:(id)arg3;
-+ (struct UIEdgeInsets)_keylinePaddingForPosition:(long long)arg1 conentSize:(struct CGSize)arg2 forDevice:(id)arg3;
-+ (id)keylineImageForPosition:(long long)arg1 filled:(BOOL)arg2 forDevice:(id)arg3;
-+ (id)keylineViewForPosition:(long long)arg1 forDevice:(id)arg2;
-+ (id)layoutRuleForState:(long long)arg1 position:(long long)arg2 faceBounds:(struct CGRect)arg3 forDevice:(id)arg4;
-+ (void)startDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
++ (struct UIEdgeInsets)_keylinePaddingForPosition:(long long)arg1 conentSize:(struct CGSize)arg2 forDevice:(id)arg3 narrowTopSlots:(BOOL)arg4;
++ (id)keylineImageForPosition:(long long)arg1 filled:(BOOL)arg2 forDevice:(id)arg3 narrowTopSlots:(BOOL)arg4;
++ (id)keylineViewForPosition:(long long)arg1 forDevice:(id)arg2 narrowTopSlots:(BOOL)arg3;
++ (id)layoutRuleForState:(long long)arg1 position:(long long)arg2 faceBounds:(struct CGRect)arg3 forDevice:(id)arg4 narrowTopSlots:(BOOL)arg5;
 + (struct CGAffineTransform)transformForState:(long long)arg1 position:(long long)arg2 device:(id)arg3;
++ (void)updateCustomDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 animationType:(unsigned long long)arg4 animationDuration:(double)arg5 animationFraction:(float)arg6;
 + (struct CGSize)viewSizeForDevice:(id)arg1;
 + (id)viewWithLegacyComplicationType:(unsigned long long)arg1;
 - (void).cxx_destruct;

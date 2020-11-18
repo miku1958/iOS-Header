@@ -6,7 +6,7 @@
 
 #import <IMCore/NSObject-Protocol.h>
 
-@class IMItem, IMMessageItem, NSArray, NSData, NSDictionary, NSError, NSNumber, NSString;
+@class IMItem, IMMessageItem, IMNickname, NSArray, NSData, NSDictionary, NSError, NSNumber, NSSet, NSString;
 
 @protocol IMDaemonListenerProtocol <NSObject>
 - (void)account:(NSString *)arg1 allowListChanged:(NSArray *)arg2;
@@ -23,7 +23,7 @@
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 error:(NSError *)arg5;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 groupID:(NSString *)arg5 chatPersonCentricID:(NSString *)arg6 messageReceived:(IMItem *)arg7;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 groupID:(NSString *)arg5 chatPersonCentricID:(NSString *)arg6 messageSent:(IMMessageItem *)arg7;
-- (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 groupID:(NSString *)arg5 chatPersonCentricID:(NSString *)arg6 messagesReceived:(NSArray *)arg7;
+- (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 groupID:(NSString *)arg5 chatPersonCentricID:(NSString *)arg6 messagesReceived:(NSArray *)arg7 messagesComingFromStorage:(BOOL)arg8;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 groupID:(NSString *)arg5 chatPersonCentricID:(NSString *)arg6 statusChanged:(int)arg7 handleInfo:(NSArray *)arg8;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 invitationReceived:(IMMessageItem *)arg5;
 - (void)account:(NSString *)arg1 chat:(NSString *)arg2 style:(unsigned char)arg3 chatProperties:(NSDictionary *)arg4 member:(NSDictionary *)arg5 statusChanged:(int)arg6;
@@ -60,12 +60,12 @@
 - (void)chat:(NSString *)arg1 isFilteredUpdated:(BOOL)arg2;
 - (void)chat:(NSString *)arg1 lastAddressedHandleUpdated:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 lastAddressedSIMIDUpdated:(NSString *)arg2;
+- (void)chat:(NSString *)arg1 nicknamesUpdated:(NSDictionary *)arg2;
 - (void)chat:(NSString *)arg1 propertiesUpdated:(NSDictionary *)arg2;
 - (void)chat:(NSString *)arg1 updated:(NSDictionary *)arg2;
 - (void)chatLoadedWithChatIdentifier:(NSString *)arg1 chats:(NSArray *)arg2;
+- (void)chatsNeedRemerging:(NSArray *)arg1 groupedChats:(NSArray *)arg2;
 - (void)databaseChatSpamUpdated:(NSString *)arg1;
-- (void)databaseFull;
-- (void)databaseNoLongerFull;
 - (void)databaseUpdated;
 - (void)databaseUpdated:(NSString *)arg1;
 - (void)defaultsChanged:(NSDictionary *)arg1 forService:(NSString *)arg2;
@@ -87,6 +87,7 @@
 - (void)fileTransfers:(NSArray *)arg1 createdWithLocalPaths:(NSArray *)arg2;
 - (void)finishedDownloadingPurgedAssetsForChatIDs:(NSArray *)arg1;
 - (void)frequentRepliesQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4 limit:(unsigned long long)arg5;
+- (void)handlesSharingNicknamesDidChange;
 - (void)historicalMessageGUIDsDeleted:(NSArray *)arg1 chatGUIDs:(NSArray *)arg2 queryID:(NSString *)arg3;
 - (void)historyQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSArray *)arg4 limit:(unsigned long long)arg5;
 - (void)isDownloadingQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(BOOL)arg4;
@@ -96,9 +97,11 @@
 - (void)loadedChats:(NSArray *)arg1;
 - (void)markAsSpamQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSNumber *)arg4;
 - (void)messageQuery:(NSString *)arg1 finishedWithResult:(IMMessageItem *)arg2 chatGUIDs:(NSArray *)arg3;
+- (void)nicknameRequestResponse:(NSString *)arg1 encodedNicknameData:(NSData *)arg2;
 - (void)oneTimeCodesDidChange:(NSArray *)arg1;
 - (void)pagedHistoryQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5 finishedWithResult:(NSArray *)arg6;
 - (void)pendingACRequestComplete;
+- (void)pendingNicknamesOrHandledNicknamesDidChange;
 - (void)pendingVCRequestComplete;
 - (void)persistentProperty:(NSString *)arg1 changedTo:(id)arg2 from:(id)arg3;
 - (void)pinCodeAlertCompleted:(NSString *)arg1 deviceName:(NSString *)arg2 deviceType:(NSString *)arg3 phoneNumber:(NSString *)arg4 responseFromDevice:(BOOL)arg5 wasCancelled:(BOOL)arg6;
@@ -106,17 +109,21 @@
 - (void)qosClassWhileServicingRequestsResponse:(unsigned int)arg1 identifier:(NSString *)arg2;
 - (void)receivedUrgentRequestForMessages:(NSArray *)arg1;
 - (void)returnMOCEnabledState:(unsigned long long)arg1;
+- (void)screenTimeEnablementChanged:(BOOL)arg1;
 - (void)setupComplete;
 - (void)setupComplete:(BOOL)arg1 info:(NSDictionary *)arg2;
 - (void)showForgotPasswordNotificationForAccount:(NSString *)arg1;
 - (void)showInvalidCertNotificationForAccount:(NSString *)arg1;
-- (void)standaloneFileTransferRegistered:(NSString *)arg1;
 - (void)stickerPackRemoved:(NSArray *)arg1;
 - (void)stickerPackUpdated:(NSDictionary *)arg1;
 - (void)uncachedAttachmentCountQuery:(NSString *)arg1 chatID:(NSString *)arg2 services:(NSArray *)arg3 finishedWithResult:(NSNumber *)arg4;
 - (void)unreadCountChanged:(long long)arg1;
 - (void)updateCloudKitState;
 - (void)updateCloudKitStateWithDictionary:(NSDictionary *)arg1;
+- (void)updateNicknameData:(NSData *)arg1;
+- (void)updateNicknameHandlesSharing:(NSSet *)arg1 handlesBlocked:(NSSet *)arg2;
+- (void)updatePendingNicknameUpdates:(NSDictionary *)arg1 handledNicknameUpdates:(NSDictionary *)arg2;
+- (void)updatePersonalNickname:(IMNickname *)arg1;
 - (void)vcCapabilitiesChanged:(unsigned long long)arg1;
 @end
 

@@ -20,32 +20,40 @@
     HDActivitySummaryBuilder *_activitySummaryBuilder;
     BOOL _initialResultsSent;
     BOOL _needsUpdateAfterUnlock;
+    BOOL _shouldBatchSummaries;
     NSMutableDictionary *_previousActivityCachesByCacheIndex;
     long long _lastProcessedAnchor;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     CDUnknownBlockType _initialResultsHandler;
     CDUnknownBlockType _updateHandler;
+    CDUnknownBlockType _batchedInitialResultsHandler;
+    CDUnknownBlockType _batchedUpdateHandler;
+    long long _enumeratedSummaryCount;
 }
 
+@property (readonly, copy, nonatomic) CDUnknownBlockType batchedInitialResultsHandler; // @synthesize batchedInitialResultsHandler=_batchedInitialResultsHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType batchedUpdateHandler; // @synthesize batchedUpdateHandler=_batchedUpdateHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (setter=_setEnumeratedSummaryCount:) long long enumeratedSummaryCount; // @synthesize enumeratedSummaryCount=_enumeratedSummaryCount;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) CDUnknownBlockType initialResultsHandler; // @synthesize initialResultsHandler=_initialResultsHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType initialResultsHandler; // @synthesize initialResultsHandler=_initialResultsHandler;
+@property (nonatomic) unsigned long long limit;
+@property (nonatomic) BOOL orderByDateAscending;
 @property BOOL shouldIncludePrivateProperties;
 @property BOOL shouldIncludeStatistics;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
 - (void).cxx_destruct;
 - (id)_fetchActivityCacheIndicesWithAnchor:(long long)arg1 predicate:(id)arg2 error:(id *)arg3;
 - (id)_queue_addActivityCacheToCachedSamples:(id)arg1;
 - (void)_queue_deliverActivitySummariesMatchingPredicate:(id)arg1;
-- (void)_queue_deliverActivitySummariesToClient:(id)arg1;
+- (void)_queue_deliverActivitySummariesToClient:(id)arg1 isFinalBatch:(BOOL)arg2 clearPendingBatches:(BOOL)arg3;
 - (void)_queue_deliverErrorToClient:(id)arg1;
 - (void)_queue_deliverInitialResults;
 - (void)_queue_deliverUpdates;
-- (id)_queue_fetchActivitySummariesWithPredicate:(id)arg1 error:(id *)arg2;
 - (id)_queue_filterActivityCaches:(id)arg1;
 - (void)_queue_start;
 - (void)_queue_stop;
@@ -54,6 +62,7 @@
 - (BOOL)_shouldStopProcessing;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
+- (id)initWithProfile:(id)arg1 filter:(id)arg2 batchedInitialResultsHandler:(CDUnknownBlockType)arg3 batchedUpdateHandler:(CDUnknownBlockType)arg4;
 - (id)initWithProfile:(id)arg1 filter:(id)arg2 initialResultsHandler:(CDUnknownBlockType)arg3 updateHandler:(CDUnknownBlockType)arg4;
 - (void)pause;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;

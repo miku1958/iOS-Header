@@ -20,7 +20,6 @@
 - (id)_externalDevice;
 - (id)_figEndpointHIDInputMode;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithExternalDeviceAndHIDDictionary:(id)arg1 hidDictionary:(id)arg2;
 
 @end

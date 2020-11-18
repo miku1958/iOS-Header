@@ -12,7 +12,7 @@
 {
     BOOL _mayHaveFacebookSource;
     int _mergeDestinationSourceID;
-    long long _facebookContactsCount;
+    unsigned long long _facebookContactsCount;
     NSString *_destinationDescription;
     void *_addressBook;
     ACAccountStore *_accountStore;
@@ -23,7 +23,7 @@
 @property (nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
 @property (nonatomic, getter=isCheckDone) BOOL checkDone;
 @property (strong, nonatomic) NSString *destinationDescription; // @synthesize destinationDescription=_destinationDescription;
-@property (nonatomic) long long facebookContactsCount; // @synthesize facebookContactsCount=_facebookContactsCount;
+@property (nonatomic) unsigned long long facebookContactsCount; // @synthesize facebookContactsCount=_facebookContactsCount;
 @property (nonatomic) void *facebookSource; // @synthesize facebookSource=_facebookSource;
 @property (nonatomic) BOOL mayHaveFacebookSource; // @synthesize mayHaveFacebookSource=_mayHaveFacebookSource;
 @property (nonatomic) int mergeDestinationSourceID; // @synthesize mergeDestinationSourceID=_mergeDestinationSourceID;
@@ -44,6 +44,7 @@
 - (void)deleteFacebookContacts;
 - (int)findBestMergeDestinationSourceID;
 - (id)initWithAddressBook:(void *)arg1;
+- (id)initWithAddressBook:(void *)arg1 accountStore:(id)arg2;
 - (void)mergeFacebookContacts;
 - (void)performPendingMergeOrDeleteAction;
 

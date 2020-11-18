@@ -10,20 +10,33 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBControlHomeIntentResponse-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface _INPBControlHomeIntentResponse : PBCodable <_INPBControlHomeIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
+    NSArray *_entityResponses;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *entityResponses; // @synthesize entityResponses=_entityResponses;
+@property (readonly, nonatomic) unsigned long long entityResponsesCount;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (Class)entityResponsesType;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)addEntityResponses:(id)arg1;
+- (void)clearEntityResponses;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)entityResponsesAtIndex:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

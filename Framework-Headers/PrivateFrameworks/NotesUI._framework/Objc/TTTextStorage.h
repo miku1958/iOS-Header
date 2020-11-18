@@ -19,6 +19,7 @@
     BOOL _directlyEditing;
     BOOL _previouslyHadMarkedText;
     BOOL _wantsUndoCommands;
+    BOOL _wantsUpdateTrackingForInitialLoading;
     BOOL _convertAttributes;
     BOOL _shouldConvertTablesToTabs;
     BOOL _retainOriginalFormatting;
@@ -27,13 +28,16 @@
     BOOL _filterSubstringAttributesForPlainText;
     BOOL _disableUndoCoalesceBreaking;
     BOOL _isDictating;
+    BOOL _isPerformingAccessibilityUndoableTextInsertion;
     BOOL _isHandlingTextCheckingResults;
     BOOL _isTypingOrMarkingText;
     BOOL _isSelectingText;
     BOOL _hasEditedCharactersAfterTextSelection;
     BOOL _isDragging;
+    BOOL _isDropping;
     BOOL _isResettingBaseWritingDirection;
     BOOL _isReadingSelectionFromPasteboard;
+    BOOL _shouldRemoveLeadingWhitespaceForChecklistDrop;
     BOOL _isChangingSelectionByGestures;
     BOOL _isApplyingUndoCommand;
     BOOL _isEndingEditing;
@@ -78,10 +82,12 @@
 @property (nonatomic) BOOL isChangingSelectionByGestures; // @synthesize isChangingSelectionByGestures=_isChangingSelectionByGestures;
 @property (nonatomic) BOOL isDictating; // @synthesize isDictating=_isDictating;
 @property (nonatomic) BOOL isDragging; // @synthesize isDragging=_isDragging;
+@property (nonatomic) BOOL isDropping; // @synthesize isDropping=_isDropping;
 @property (readonly, nonatomic) BOOL isEditingTemporaryAttributes;
 @property (nonatomic) BOOL isEndingEditing; // @synthesize isEndingEditing=_isEndingEditing;
 @property (nonatomic) BOOL isFixing; // @synthesize isFixing=_isFixing;
 @property (nonatomic) BOOL isHandlingTextCheckingResults; // @synthesize isHandlingTextCheckingResults=_isHandlingTextCheckingResults;
+@property (nonatomic) BOOL isPerformingAccessibilityUndoableTextInsertion; // @synthesize isPerformingAccessibilityUndoableTextInsertion=_isPerformingAccessibilityUndoableTextInsertion;
 @property (nonatomic) BOOL isReadingSelectionFromPasteboard; // @synthesize isReadingSelectionFromPasteboard=_isReadingSelectionFromPasteboard;
 @property (nonatomic) BOOL isResettingBaseWritingDirection; // @synthesize isResettingBaseWritingDirection=_isResettingBaseWritingDirection;
 @property (nonatomic) BOOL isSelectingText; // @synthesize isSelectingText=_isSelectingText;
@@ -93,6 +99,7 @@
 @property (nonatomic) BOOL pendingFixupAfterEditing; // @synthesize pendingFixupAfterEditing=_pendingFixupAfterEditing;
 @property (nonatomic) BOOL retainOriginalFormatting; // @synthesize retainOriginalFormatting=_retainOriginalFormatting;
 @property (nonatomic) BOOL shouldConvertTablesToTabs; // @synthesize shouldConvertTablesToTabs=_shouldConvertTablesToTabs;
+@property (nonatomic) BOOL shouldRemoveLeadingWhitespaceForChecklistDrop; // @synthesize shouldRemoveLeadingWhitespaceForChecklistDrop=_shouldRemoveLeadingWhitespaceForChecklistDrop;
 @property (strong, nonatomic) id<TTTextStorageStyler> styler; // @synthesize styler=_styler;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *textViews;
@@ -103,6 +110,7 @@
 @property (strong, nonatomic) NSUndoManager *undoManager; // @synthesize undoManager=_undoManager;
 @property (readonly, nonatomic) NSObject<TTTextUndoTarget> *undoTarget;
 @property (nonatomic) BOOL wantsUndoCommands; // @synthesize wantsUndoCommands=_wantsUndoCommands;
+@property (nonatomic) BOOL wantsUpdateTrackingForInitialLoading; // @synthesize wantsUpdateTrackingForInitialLoading=_wantsUpdateTrackingForInitialLoading;
 
 + (id)bulletTextAttributesWithTextFont:(struct UIFont *)arg1 paragraphStyle:(id)arg2 letterpress:(BOOL)arg3 withStyler:(id)arg4;
 + (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(BOOL)arg3 forStandardizedText:(BOOL)arg4 fixAttachments:(BOOL)arg5;
@@ -132,7 +140,7 @@
 - (id)correctParagraphStyleReuseForRange:(struct _NSRange)arg1 withNewAttributedString:(id)arg2;
 - (id)customPasteboardDataFromRange:(struct _NSRange)arg1 persistenceHelper:(id)arg2;
 - (id)dataFromRange:(struct _NSRange)arg1 documentAttributes:(id)arg2 error:(id *)arg3;
-- (void)dd_makeLinksForResultsInAttributesOfType:(unsigned long long)arg1 context:(id)arg2;
+- (void)dd_makeLinksForResultsInAttributesOfType:(unsigned long long)arg1 context:(id)arg2 range:(struct _NSRange)arg3;
 - (void)dd_resetResults;
 - (void)edited:(unsigned long long)arg1 range:(struct _NSRange)arg2 changeInLength:(long long)arg3;
 - (void)editedAttributeRange:(struct _NSRange)arg1;
@@ -156,9 +164,12 @@
 - (BOOL)isDeletingDictationAttachmentWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
 - (BOOL)isEditing;
 - (BOOL)isEditingOrConvertingMarkedText:(BOOL)arg1;
+- (id)itemProviderForRange:(struct _NSRange)arg1 andNote:(id)arg2;
+- (unsigned long long)length;
 - (struct _NSRange)logicalRangeForLocation:(unsigned long long)arg1;
 - (unsigned long long)mergeWithDocument:(id)arg1;
 - (BOOL)mergeableStringIsEqualAfterSerialization:(id)arg1;
+- (id)mergeableStringReplicaUUIDAtIndex:(unsigned long long)arg1;
 - (id)newCoalescingUndoGroup;
 - (void)preReplaceCharactersInRange:(struct _NSRange)arg1 withStringLength:(unsigned long long)arg2;
 - (void)removeAttribute:(id)arg1 range:(struct _NSRange)arg2;
@@ -176,6 +187,7 @@
 - (void)setAttributes:(id)arg1 range:(struct _NSRange)arg2;
 - (BOOL)shouldBreakUndoCoalescingWithReplacementRange:(struct _NSRange)arg1 replacementLength:(unsigned long long)arg2;
 - (id)standardizedAttributedStringFixingTextAttachments;
+- (id)standardizedAttributedStringFixingTextAttachmentsForRange:(struct _NSRange)arg1;
 - (id)string;
 - (void)styleTextInRange:(struct _NSRange)arg1;
 - (BOOL)textViewHasMarkedText:(struct UITextView *)arg1;

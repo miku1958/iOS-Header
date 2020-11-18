@@ -51,6 +51,7 @@
 @property (copy, nonatomic) NSString *info;
 @property (nonatomic) long long legacyUniqueID;
 @property (copy, nonatomic) NSString *localizedContentRating;
+@property (copy, nonatomic) NSString *localizedDurationString;
 @property (copy, nonatomic) MPNowPlayingInfoLyricsItem *lyrics;
 @property (nonatomic) unsigned long long mediaType;
 @property (copy, nonatomic) NSDictionary *nowPlayingInfo;
@@ -82,6 +83,7 @@
 + (BOOL)shouldPushArtworkData;
 - (void).cxx_destruct;
 - (void)_mergeContentItem:(id)arg1;
+- (id)copyWithNewIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)invalidateArtwork;
 - (void)invalidateDescription;

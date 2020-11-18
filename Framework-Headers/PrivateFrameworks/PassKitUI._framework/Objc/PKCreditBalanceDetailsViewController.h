@@ -14,6 +14,7 @@
 {
     PKPaymentPass *_paymentPass;
     PKAccount *_account;
+    unsigned long long _feature;
     PKCreditAccountStatement *_statement;
     PKCreditAccountStatement *_previousStatement;
     PKBalanceSummaryFetcher *_fetcher;
@@ -40,7 +41,6 @@
     NSDateFormatter *_dateFormatter;
     PKDashboardTitleHeaderView *_sampleView;
     PKDashboardFooterTextView *_sampleFooterView;
-    BOOL _navigationBarOpaque;
     NSArray *_sectionMap;
     unsigned long long _numberOfStaticSections;
     long long _style;
@@ -62,7 +62,6 @@
 - (BOOL)_shouldInset;
 - (void)_sortStatementsForPresentation;
 - (id)_summaryItemForIndexPath:(id)arg1;
-- (void)_updateNavBarContent;
 - (void)_updateStatements;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -76,12 +75,11 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (id)initWithStyle:(long long)arg1 paymentPass:(id)arg2 webService:(id)arg3 account:(id)arg4 statement:(id)arg5 previousStatements:(id)arg6;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)statementsChangedForAccountIdentifier:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

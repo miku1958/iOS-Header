@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (id)getSecondaryConnectionToBeCompared;
 - (void)handlePrimaryConnectionRemoved;
 - (void)handleSecondaryConnectionRemoved;
-- (void)handoverWithWRMSuggestion:(BOOL)arg1;
 - (id)initWithMultiwayEnabled:(BOOL)arg1;
 - (BOOL)isPrimaryConnectionSameAsConnection:(id)arg1;
 - (void)optOutAllStreamsForNonPrimaryConnections;
@@ -45,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)setPreferredLocalInterfaceForDuplication:(int)arg1;
 - (void)setPreferredRemoteInterfaceForDuplication:(int)arg1;
 - (BOOL)shouldAcceptDataFromSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
-- (BOOL)shouldHandoverWhenUpdateWRMDuplication:(int)arg1;
 - (BOOL)shouldReplaceConnection:(id)arg1 withConnection:(id)arg2;
 - (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(BOOL *)arg2 isSourceIPv6:(BOOL *)arg3;
 - (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;

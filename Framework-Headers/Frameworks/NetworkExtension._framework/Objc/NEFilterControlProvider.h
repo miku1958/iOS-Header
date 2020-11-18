@@ -26,7 +26,6 @@
 - (void).cxx_destruct;
 - (void)handleNewFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleRemediationForFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)handleReport:(id)arg1;
 - (void)notifyRulesChanged;
 
 @end

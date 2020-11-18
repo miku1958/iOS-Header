@@ -42,6 +42,7 @@
 - (id)initWithContact:(id)arg1;
 - (void)removeActionWithTarget:(id)arg1 selector:(SEL)arg2;
 - (void)removeActionWithTitle:(id)arg1;
+- (void)removeAllActions;
 - (SEL)unwrappedSelectorForAction:(id)arg1;
 - (id)unwrappedTargetForAction:(id)arg1;
 

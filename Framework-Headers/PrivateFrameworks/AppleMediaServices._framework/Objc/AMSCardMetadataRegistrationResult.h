@@ -6,11 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSDictionary, NSString;
 
 @interface AMSCardMetadataRegistrationResult : NSObject
 {
-    NSData *_artwork;
     NSString *_cardArtwork;
     long long _cardType;
     NSString *_descriptionLong;
@@ -21,7 +20,6 @@
     NSDictionary *_dictionary;
 }
 
-@property (strong, nonatomic) NSData *artwork; // @synthesize artwork=_artwork;
 @property (strong, nonatomic) NSString *cardArtwork; // @synthesize cardArtwork=_cardArtwork;
 @property (nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property (strong, nonatomic) NSString *descriptionLong; // @synthesize descriptionLong=_descriptionLong;

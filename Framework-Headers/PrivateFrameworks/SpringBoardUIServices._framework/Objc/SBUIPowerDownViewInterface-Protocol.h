@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) id<SBUIPowerDownViewDelegate> delegate;
 
-- (void)hideAnimated:(BOOL)arg1;
-- (void)showAnimated:(BOOL)arg1;
+- (void)hideAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
+- (void)showAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
 @end
 

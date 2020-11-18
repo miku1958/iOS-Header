@@ -9,6 +9,7 @@
 @interface PXEditorialLayoutMetrics : PXLayoutMetrics
 {
     BOOL _useSaliency;
+    BOOL _useNewImplementation;
     unsigned long long _numberOfColumns;
     double _interTileSpacing;
     double _headerHeight;
@@ -21,6 +22,7 @@
 @property (nonatomic) unsigned long long lowerItemCountThreshold; // @synthesize lowerItemCountThreshold=_lowerItemCountThreshold;
 @property (nonatomic) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
+@property (nonatomic) BOOL useNewImplementation; // @synthesize useNewImplementation=_useNewImplementation;
 @property (nonatomic) BOOL useSaliency; // @synthesize useSaliency=_useSaliency;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

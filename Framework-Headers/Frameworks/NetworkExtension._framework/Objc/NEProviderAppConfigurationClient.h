@@ -8,7 +8,7 @@
 
 #import <NetworkExtension/NSXPCListenerDelegate-Protocol.h>
 
-@class NEVPNManager, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
+@class NEDNSProxyManager, NEFilterManager, NEVPNManager, NSMutableArray, NSString, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
 @protocol NEConfigurationCommandHandling;
 
 @interface NEProviderAppConfigurationClient : NEUtilConfigurationClient <NSXPCListenerDelegate>
@@ -16,6 +16,8 @@
     BOOL _isServerMode;
     NSXPCListener *_listener;
     NEVPNManager *_currentManager;
+    NEFilterManager *_filterManager;
+    NEDNSProxyManager *_dnsProxyManager;
     NSMutableArray *_createdManagers;
     NSMutableArray *_currentManagers;
     NSString *_targetAppBundleID;
@@ -29,6 +31,8 @@
 @property (strong) NSMutableArray *currentManagers; // @synthesize currentManagers=_currentManagers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong) NEDNSProxyManager *dnsProxyManager; // @synthesize dnsProxyManager=_dnsProxyManager;
+@property (strong) NEFilterManager *filterManager; // @synthesize filterManager=_filterManager;
 @property (readonly) unsigned long long hash;
 @property BOOL isServerMode; // @synthesize isServerMode=_isServerMode;
 @property (readonly) NSXPCListener *listener; // @synthesize listener=_listener;
@@ -40,7 +44,9 @@
 - (void).cxx_destruct;
 - (BOOL)createConfigurationWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (int)deleteKeychainItemWithPersistentReference:(id)arg1;
+- (id)dnsProxyConfiguration;
 - (BOOL)enabled;
+- (id)filterConfiguration;
 - (void)handleCommand:(int)arg1 forConfigWithName:(id)arg2 withParameters:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handleConfigChanged:(id)arg1;
 - (id)initForServerMode;
@@ -53,7 +59,6 @@
 - (id)onDemandRules;
 - (id)protocolForParameters:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
-- (BOOL)setFilterPluginWithParameters:(id)arg1 errorStr:(id *)arg2;
 - (int)setKeychainItemData:(id)arg1 withName:(id)arg2 persistentReference:(id *)arg3;
 - (void)setOnDemandEnabled:(BOOL)arg1;
 - (void)setOnDemandRules:(id)arg1;

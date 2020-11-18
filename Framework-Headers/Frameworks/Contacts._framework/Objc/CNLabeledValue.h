@@ -15,12 +15,13 @@
 
 @interface CNLabeledValue : NSObject <CNSuggested, NSCopying, NSSecureCoding>
 {
+    CNLabelValuePair *_labelValuePair;
     NSString *_identifier;
     int _iOSLegacyIdentifier;
-    CNLabelValuePair *_labelValuePair;
     NSString *_storeIdentifier;
     NSDictionary *_storeInfo;
     NSSet *_linkedIdentifiers;
+    BOOL _isValueMutable;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -52,6 +53,7 @@
 + (id)labeledValueWithLabel:(id)arg1 value:(id)arg2;
 + (id)localizedStringForLabel:(id)arg1;
 + (id)makeIdentifier;
++ (id)propertyDescriptionOwnersByLabel;
 + (BOOL)supportsSecureCoding;
 + (CDUnknownBlockType)testMatchingIdentifier:(id)arg1;
 + (id)valueForIdentifier:(id)arg1 inArray:(id)arg2;
@@ -59,6 +61,7 @@
 - (void)addStoreInfo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 label:(id)arg2 value:(id)arg3;
 - (id)initWithLabel:(id)arg1 value:(id)arg2;
@@ -69,6 +72,7 @@
 - (id)labeledValueBySettingLabel:(id)arg1;
 - (id)labeledValueBySettingLabel:(id)arg1 value:(id)arg2;
 - (id)labeledValueBySettingValue:(id)arg1;
+- (id)primitiveInitWithIdentifier:(id)arg1 label:(id)arg2 value:(id)arg3;
 - (id)valueOrigin;
 
 @end

@@ -8,12 +8,15 @@
 
 #import <CoreUI/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface CUIStyleEffectConfiguration : NSObject <NSCopying>
 {
     long long _state;
     long long _presentationState;
     long long _value;
     unsigned long long _dimension1;
+    NSString *_appearanceName;
     BOOL _useSimplifiedEffect;
     BOOL _foregroundColorShouldTintEffects;
     double _brightnessMultiplier;
@@ -21,6 +24,7 @@
     unsigned long long _colorTemperature;
 }
 
+@property (copy, nonatomic) NSString *appearanceName; // @synthesize appearanceName=_appearanceName;
 @property (nonatomic) double brightnessMultiplier; // @synthesize brightnessMultiplier=_brightnessMultiplier;
 @property (nonatomic) unsigned long long colorTemperature; // @synthesize colorTemperature=_colorTemperature;
 @property (nonatomic) unsigned long long dimension1; // @synthesize dimension1=_dimension1;
@@ -32,6 +36,7 @@
 @property (nonatomic) long long value; // @synthesize value=_value;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)init;
 - (BOOL)shouldIgnoreForegroundColor;

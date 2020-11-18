@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CAMSnapshotView, CAMViewfinderView;
+@class CAMSnapshotView;
+@protocol CAMViewfinderTransitionable;
 
 @interface CAMViewfinderFlipTransition : NSObject
 {
-    CAMViewfinderView *__viewfinderView;
+    id<CAMViewfinderTransitionable> __transitionableViewfinder;
     CAMSnapshotView *__frontSnapshotView;
     CAMSnapshotView *__backSnapshotView;
     CAMSnapshotView *__targetSnapshotView;
@@ -21,7 +22,7 @@
 @property (nonatomic, setter=_setCurrentAnimationID:) unsigned long long _currentAnimationID; // @synthesize _currentAnimationID=__currentAnimationID;
 @property (strong, nonatomic, setter=_setFrontSnapshotView:) CAMSnapshotView *_frontSnapshotView; // @synthesize _frontSnapshotView=__frontSnapshotView;
 @property (strong, nonatomic, setter=_setTargetSnapshotView:) CAMSnapshotView *_targetSnapshotView; // @synthesize _targetSnapshotView=__targetSnapshotView;
-@property (readonly, weak, nonatomic) CAMViewfinderView *_viewfinderView; // @synthesize _viewfinderView=__viewfinderView;
+@property (readonly, weak, nonatomic) id<CAMViewfinderTransitionable> _transitionableViewfinder; // @synthesize _transitionableViewfinder=__transitionableViewfinder;
 
 - (void).cxx_destruct;
 - (double)_backSnapshotTargetRadiansForDirection:(unsigned long long)arg1 frontSnapshotRadians:(double)arg2;
@@ -30,7 +31,7 @@
 - (void)_getCurrentRadians:(out double *)arg1 targetRadians:(out double *)arg2 forDirection:(unsigned long long)arg3 withAnimation:(id)arg4 onFrontSnapshotLayer:(id)arg5;
 - (id)_snapshotFlipAnimationFromValue:(double)arg1 toValue:(double)arg2;
 - (void)completeTransitionToLivePreviewWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithViewfinderView:(id)arg1;
+- (id)initWithTransitionableViewfinder:(id)arg1;
 - (void)performFlipTransitionWithDirection:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

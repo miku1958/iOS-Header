@@ -10,7 +10,6 @@
 
 @protocol FTMessageDeliveryRemoteURLConnection <NSObject>
 
-@property BOOL alwaysForceCellular;
 @property (copy) CDUnknownBlockType block;
 @property (strong) NSString *bundleIdentifierForDataUsage;
 @property int concurrentConnections;

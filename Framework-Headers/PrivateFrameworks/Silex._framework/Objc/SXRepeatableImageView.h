@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)image;
+- (BOOL)isAccessibilityElement;
 - (void)setImage:(id)arg1;
 
 @end

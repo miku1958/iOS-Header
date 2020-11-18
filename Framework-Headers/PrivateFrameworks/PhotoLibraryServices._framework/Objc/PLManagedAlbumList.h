@@ -23,7 +23,7 @@
 @property (readonly, strong, nonatomic) NSString *_prettyDescription;
 @property (readonly, strong, nonatomic) NSString *_typeDescription;
 @property (nonatomic) short albumListType;
-@property (readonly, strong, nonatomic) NSMutableOrderedSet *albums;
+@property (readonly, nonatomic) NSMutableOrderedSet *albums;
 @property (readonly, nonatomic) unsigned long long albumsCount;
 @property (readonly, copy, nonatomic) CDUnknownBlockType albumsSortingComparator;
 @property (readonly, nonatomic) BOOL canEditAlbums;
@@ -63,7 +63,7 @@
 + (BOOL)isValidPathForPersistence:(id)arg1;
 + (BOOL)isValidTypeForPersistence:(short)arg1;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
-+ (void)persistAlbumListUUIDs:(id)arg1 type:(short)arg2 allowsOverwrite:(BOOL)arg3;
++ (void)persistAlbumListUUIDs:(id)arg1 type:(short)arg2 pathManager:(id)arg3 allowsOverwrite:(BOOL)arg4;
 + (id)placesAlbumListInManagedObjectContext:(id)arg1;
 + (id)placesAlbumListInPhotoLibrary:(id)arg1;
 + (unsigned long long)priorityForAlbumKind:(int)arg1;
@@ -71,6 +71,7 @@
 + (BOOL)restoreAlbumListFromPersistedDataAtPath:(id)arg1 library:(id)arg2;
 + (id)scenesAlbumListInManagedObjectContext:(id)arg1;
 + (id)scenesAlbumListInPhotoLibrary:(id)arg1;
+- (void).cxx_destruct;
 - (id)_albumsCountFetchRequest;
 - (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
 - (void)awakeFromFetch;
@@ -86,6 +87,9 @@
 - (void)insertIntoOrderedAlbumsAtIndexByPriorityForAlbum:(id)arg1;
 - (BOOL)isEmpty;
 - (BOOL)needsReordering;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (id)payloadIDForTombstone:(id)arg1;
 - (void)preheatAlbumsAtIndexes:(id)arg1 forProperties:(id)arg2 relationships:(id)arg3;
 - (void)preheatAlbumsForProperties:(id)arg1 relationships:(id)arg2;
 - (void)registerDerivedAlbumList:(struct NSObject *)arg1;

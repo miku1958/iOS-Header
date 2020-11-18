@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailComplicationPickerCellDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, NTKCFaceDetailComplicationPickerCell, NTKCFaceDetailComplicationsHiddenCell, NTKFaceView;
+@class NSMutableArray, NSSet, NSString, NTKCFaceDetailComplicationPickerCell, NTKCFaceDetailComplicationsHiddenCell, NTKFaceView;
 @protocol NTKCFaceDetailComplicationSectionDelegate;
 
 @interface NTKCFaceDetailComplicationSectionController : NTKCFaceDetailSectionController <NTKCFaceDetailComplicationPickerCellDelegate>
@@ -18,6 +18,7 @@
     NTKCFaceDetailComplicationPickerCell *_pickerCell;
     NTKCFaceDetailComplicationPickerCell *_dismissingPickerCell;
     NTKCFaceDetailComplicationsHiddenCell *_hiddenCell;
+    NSSet *_richComplicationSlots;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NTKCFaceDetailComplicationsHiddenCell *hiddenCell; // @synthesize hiddenCell=_hiddenCell;
 @property (strong, nonatomic) NTKCFaceDetailComplicationPickerCell *pickerCell; // @synthesize pickerCell=_pickerCell;
+@property (strong, nonatomic) NSSet *richComplicationSlots; // @synthesize richComplicationSlots=_richComplicationSlots;
 @property (strong, nonatomic) NSMutableArray *rows; // @dynamic rows;
 @property (readonly) Class superclass;
 
@@ -41,7 +43,7 @@
 - (void)didSelectRow:(long long)arg1;
 - (void)faceDidChange;
 - (double)heightForRow:(long long)arg1;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 faceView:(id)arg3 inGallery:(BOOL)arg4;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 faceView:(id)arg3 inGallery:(BOOL)arg4;
 - (id)titleForHeader;
 - (void)toggleRow:(long long)arg1 shouldScroll:(BOOL)arg2;
 

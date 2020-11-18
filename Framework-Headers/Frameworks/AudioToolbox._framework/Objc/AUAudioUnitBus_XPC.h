@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/AUAudioUnitBus.h>
+#import <AudioToolboxCore/AUAudioUnitBus.h>
 
-#import <AudioToolbox/NSSecureCoding-Protocol.h>
+#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
 
 @class AUAudioUnit_XH, AVAudioFormat, NSArray, NSXPCConnection;
 

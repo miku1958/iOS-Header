@@ -30,10 +30,10 @@
 - (id)_folderNameForReferenceResource:(id)arg1 adjustment:(id)arg2;
 - (BOOL)_isUnsupportedFormatError:(id)arg1;
 - (id)_tempFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2;
-- (void)_updateChange:(id *)arg1 fromOldChange:(id)arg2 withResources:(id)arg3;
+- (void)_updateChange:(id *)arg1 fromOldChange:(id)arg2 withResources:(id)arg3 includeThumbnail:(BOOL)arg4;
 - (id)cachedResourcesForReferenceResource:(id)arg1 adjustment:(id)arg2;
 - (void)discardCache;
-- (void)generateDerivativesForChange:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)generateDerivativesForChange:(id)arg1 derivativesFilter:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithCacheURL:(id)arg1;
 - (void)noteGeneratedResouces:(id)arg1 haveBeenGeneratedForReferenceResource:(id)arg2 adjustment:(id)arg3;
 - (id)tempFolderURLForGeneratedResourcesWithReferenceResource:(id)arg1 adjustment:(id)arg2;

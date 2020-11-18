@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <RTTUtilities/NSCopying-Protocol.h>
 #import <RTTUtilities/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface RTTUtterance : NSObject <NSSecureCoding>
+@interface RTTUtterance : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _isMe;
+    BOOL _ignoreTimeoutTemporarily;
     NSString *_contactPath;
     NSString *_text;
     NSDate *_lastChangeDate;
 }
 
 @property (strong, nonatomic) NSString *contactPath; // @synthesize contactPath=_contactPath;
+@property (nonatomic) BOOL ignoreTimeoutTemporarily; // @synthesize ignoreTimeoutTemporarily=_ignoreTimeoutTemporarily;
 @property (nonatomic) BOOL isMe; // @synthesize isMe=_isMe;
 @property (strong, nonatomic) NSDate *lastChangeDate; // @synthesize lastChangeDate=_lastChangeDate;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
@@ -27,6 +30,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)utteranceWithContactPath:(id)arg1 andText:(id)arg2;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

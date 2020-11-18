@@ -6,20 +6,21 @@
 
 #import <UIKit/UISaveToCameraRollActivity.h>
 
-#import <PhotosUI/PUActivity-Protocol.h>
+#import <PhotosUI/PXActivity-Protocol.h>
 
-@class NSString, PUActivityItemSourceController;
+@class NSString;
+@protocol PXActivityItemSourceController;
 
 __attribute__((visibility("hidden")))
-@interface PUSaveToCameraRollActivity : UISaveToCameraRollActivity <PUActivity>
+@interface PUSaveToCameraRollActivity : UISaveToCameraRollActivity <PXActivity>
 {
-    PUActivityItemSourceController *_itemSourceController;
+    id<PXActivityItemSourceController> _itemSourceController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) PUActivityItemSourceController *itemSourceController; // @synthesize itemSourceController=_itemSourceController;
+@property (weak, nonatomic) id<PXActivityItemSourceController> itemSourceController; // @synthesize itemSourceController=_itemSourceController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

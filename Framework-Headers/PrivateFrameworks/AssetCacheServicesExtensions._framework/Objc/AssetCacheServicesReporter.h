@@ -36,7 +36,7 @@
 - (void)reportFreshServersWithKeyPath:(id)arg1;
 - (void)reportMightHaveWithKeyPath:(id)arg1;
 - (void)reportPublicIPAddress;
-- (void)reportPublicIPAddressRangesWithKeyPath:(id)arg1;
+- (void)reportPublicIPAddressRangesAndFavoredServerRangesWithKeyPath:(id)arg1;
 - (void)reportReachability;
 - (void)reportServersWithKeyPath:(id)arg1 generateOptions:(CDUnknownBlockType)arg2;
 - (id)serverSortInfoForHostPort:(id)arg1 rank:(id)arg2;

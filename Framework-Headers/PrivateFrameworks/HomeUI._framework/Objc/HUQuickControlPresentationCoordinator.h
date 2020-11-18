@@ -6,46 +6,85 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeUI/HUCardViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlContainerViewControllerDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <HomeUI/UIPresentationControllerDelegatePrivate-Protocol.h>
 #import <HomeUI/UITraitEnvironment-Protocol.h>
+#import <HomeUI/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <HomeUI/_UIClickPresentationInteractionDelegate-Protocol.h>
+#import <HomeUI/_UISheetPresentationControllerDelegate-Protocol.h>
 
-@class HUForceInterpolatedPressGestureRecognizer, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
+@class HUCardViewController, HUForceInterpolatedPressGestureRecognizer, HUGridActionSetTitleAndDescriptionView, HUGridServiceCell, HUGridServiceCellTextView, HUIconView, HUItemTableViewController, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UIImpactFeedbackGenerator, UILabel, UINavigationController, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
 @protocol HUQuickControlPresentationCoordinatorDelegate, NACancelable;
 
-@interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, UITraitEnvironment>
+@interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, HUCardViewControllerDelegate, UIPresentationControllerDelegatePrivate, _UIClickPresentationInteractionDelegate, UIViewControllerTransitioningDelegate, _UISheetPresentationControllerDelegate, UITraitEnvironment>
 {
+    HUCardViewController *_cardViewController;
     HUQuickControlPresentationContext *_presentationContext;
     HUQuickControlContainerViewController *_quickControlViewController;
+    HUGridServiceCell *_pressedTile;
     UIView *_targetView;
     id<HUQuickControlPresentationCoordinatorDelegate> _delegate;
+    UINavigationController *_cardNavigationController;
+    HUItemTableViewController *_settingsViewController;
     UITapGestureRecognizer *_singleTapGestureRecognizer;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
     HUForceInterpolatedPressGestureRecognizer *_pressGestureRecognizer;
     NSMutableSet *_mutuallyExclusiveGestureRecognizers;
     id<NACancelable> _pressGestureActiveTimerCancellationToken;
     NSMapTable *_pressedItemContexts;
+    _UIClickPresentationInteraction *_presentationInteraction;
+    UIVisualEffectView *_pressedTileBlurEffectView;
+    HUIconView *_transitionIconView;
+    HUIconView *_transitionIconViewVibrant;
+    UILabel *_transitionPrimaryLabel;
+    HUGridServiceCellTextView *_transitionTextView;
+    HUGridServiceCellTextView *_transitionTextViewVibrant;
+    UIVisualEffectView *_transitionTextViewVibrantEffectView;
+    HUGridActionSetTitleAndDescriptionView *_transitionTitleAndDescriptionView;
+    UIVisualEffectView *_transitionTitleAndDescriptionVibrantEffectView;
+    UILabel *_transitionSecondaryLabel;
+    UIVisualEffectView *_transitionSecondaryLabelVibrantEffectView;
+    UIImpactFeedbackGenerator *_feedbackGenerator;
 }
 
 @property (readonly, nonatomic) HUPressedItemContext *activePressedItemContext;
+@property (strong, nonatomic) UINavigationController *cardNavigationController; // @synthesize cardNavigationController=_cardNavigationController;
+@property (strong, nonatomic) HUCardViewController *cardViewController; // @synthesize cardViewController=_cardViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUQuickControlPresentationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer; // @synthesize doubleTapGestureRecognizer=_doubleTapGestureRecognizer;
+@property (strong, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableSet *mutuallyExclusiveGestureRecognizers; // @synthesize mutuallyExclusiveGestureRecognizers=_mutuallyExclusiveGestureRecognizers;
 @property (strong, nonatomic) HUQuickControlPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
+@property (strong, nonatomic) _UIClickPresentationInteraction *presentationInteraction; // @synthesize presentationInteraction=_presentationInteraction;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
 @property (strong, nonatomic) id<NACancelable> pressGestureActiveTimerCancellationToken; // @synthesize pressGestureActiveTimerCancellationToken=_pressGestureActiveTimerCancellationToken;
 @property (strong, nonatomic) HUForceInterpolatedPressGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
 @property (readonly, nonatomic) NSMapTable *pressedItemContexts; // @synthesize pressedItemContexts=_pressedItemContexts;
+@property (strong, nonatomic) HUGridServiceCell *pressedTile; // @synthesize pressedTile=_pressedTile;
+@property (strong, nonatomic) UIVisualEffectView *pressedTileBlurEffectView; // @synthesize pressedTileBlurEffectView=_pressedTileBlurEffectView;
 @property (readonly, nonatomic, getter=isQuickControlPresented) BOOL quickControlIsPresented;
 @property (strong, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
+@property (strong, nonatomic) HUItemTableViewController *settingsViewController; // @synthesize settingsViewController=_settingsViewController;
 @property (strong, nonatomic) UITapGestureRecognizer *singleTapGestureRecognizer; // @synthesize singleTapGestureRecognizer=_singleTapGestureRecognizer;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
+@property (strong, nonatomic) HUIconView *transitionIconView; // @synthesize transitionIconView=_transitionIconView;
+@property (strong, nonatomic) HUIconView *transitionIconViewVibrant; // @synthesize transitionIconViewVibrant=_transitionIconViewVibrant;
+@property (strong, nonatomic) UILabel *transitionPrimaryLabel; // @synthesize transitionPrimaryLabel=_transitionPrimaryLabel;
+@property (strong, nonatomic) UILabel *transitionSecondaryLabel; // @synthesize transitionSecondaryLabel=_transitionSecondaryLabel;
+@property (strong, nonatomic) UIVisualEffectView *transitionSecondaryLabelVibrantEffectView; // @synthesize transitionSecondaryLabelVibrantEffectView=_transitionSecondaryLabelVibrantEffectView;
+@property (strong, nonatomic) HUGridServiceCellTextView *transitionTextView; // @synthesize transitionTextView=_transitionTextView;
+@property (strong, nonatomic) HUGridServiceCellTextView *transitionTextViewVibrant; // @synthesize transitionTextViewVibrant=_transitionTextViewVibrant;
+@property (strong, nonatomic) UIVisualEffectView *transitionTextViewVibrantEffectView; // @synthesize transitionTextViewVibrantEffectView=_transitionTextViewVibrantEffectView;
+@property (strong, nonatomic) UIVisualEffectView *transitionTitleAndDescriptionVibrantEffectView; // @synthesize transitionTitleAndDescriptionVibrantEffectView=_transitionTitleAndDescriptionVibrantEffectView;
+@property (strong, nonatomic) HUGridActionSetTitleAndDescriptionView *transitionTitleAndDescriptionView; // @synthesize transitionTitleAndDescriptionView=_transitionTitleAndDescriptionView;
 
 - (void).cxx_destruct;
 - (void)_actuateTapticFeedbackIfAvailable;
@@ -53,8 +92,12 @@
 - (void)_cleanupForQuickControlDismissal;
 - (void)_configureInitialStateForPressedItemContext:(id)arg1 userInitiated:(BOOL)arg2;
 - (id)_createPressedContextForItem:(id)arg1 userInitiated:(BOOL)arg2;
+- (void)_createTransitionViewsForDismissal;
+- (void)_createTransitionViewsForPresentation;
+- (id)_dismissCardViewController;
+- (void)_dismissChildViewController;
 - (id)_dismissQuickControlViewControllerAnimated:(BOOL)arg1;
-- (void)_endUsingTapticFeedbackIfAvailable;
+- (id)_dismissServiceDetailsViewController:(id)arg1 animated:(BOOL)arg2;
 - (id)_gestureInstallationView;
 - (void)_handleDoubleTapGesture:(id)arg1;
 - (void)_handleMutuallyExclusiveGesture:(id)arg1;
@@ -65,14 +108,24 @@
 - (void)_logUserMetricsAfterPress;
 - (void)_prepareForTapticFeedbackIfAvailable;
 - (void)_preparePressedItemContextForItem:(id)arg1 startApplier:(BOOL)arg2;
+- (id)_prepareSettingsViewController;
 - (void)_pressGestureDidBecomeActive;
 - (void)_pressGestureDidBeginWithLocation:(struct CGPoint)arg1;
 - (void)_pressGestureDidEnd:(BOOL)arg1;
 - (void)_pressedStateDidEndForItem:(id)arg1 clearPresentationContext:(BOOL)arg2;
+- (id)_sheetPresentationControllerViewForTouchContinuation:(id)arg1;
 - (void)_updateOverrideAttributesWithScale:(double)arg1 forItem:(id)arg2;
 - (void)_updateOverrideAttributesWithTransform:(struct CGAffineTransform)arg1 alpha:(double)arg2 forItem:(id)arg3;
 - (void)_validatePresentationContext:(id)arg1;
 - (void)addMutuallyExclusiveGestureRecognizer:(id)arg1;
+- (id)animationControllerForDismissedController:(id)arg1;
+- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (void)cardViewControllerRequestingDismissal:(id)arg1;
+- (id)clickPresentationInteraction:(id)arg1 presentationForPresentingViewController:(id)arg2;
+- (id)clickPresentationInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
+- (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(BOOL)arg2;
+- (BOOL)clickPresentationInteractionShouldBegin:(id)arg1;
+- (BOOL)clickPresentationInteractionShouldPresent:(id)arg1;
 - (id)detailsViewControllerForQuickControlViewController:(id)arg1 item:(id)arg2;
 - (id)dismissQuickControlAnimated:(BOOL)arg1;
 - (id)dismissQuickControlAnimated:(BOOL)arg1 wasDismissed:(BOOL *)arg2;
@@ -81,13 +134,32 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)hasDetailsActionForQuickControlViewController:(id)arg1 item:(id)arg2;
+- (struct CGRect)iconFrameInActionSetTile;
+- (struct CGRect)iconFrameInNavigationBar;
+- (struct CGRect)iconFrameInTile;
+- (unsigned long long)iconSizeInActionSetTile;
+- (unsigned long long)iconSizeInNavigationBar;
+- (unsigned long long)iconSizeInTile;
 - (id)initWithTargetView:(id)arg1 delegate:(id)arg2;
+- (BOOL)isActionSetTile;
+- (BOOL)isTileOff;
 - (void)playBounceForItem:(id)arg1;
 - (id)presentQuickControlWithContext:(id)arg1 animated:(BOOL)arg2;
+- (void)presentationControllerWillDismiss:(id)arg1;
+- (struct CGRect)primaryLabelFrameInActionSetTile;
+- (struct CGRect)primaryLabelFrameInNavigationBar;
+- (struct CGRect)primaryLabelFrameInTile;
 - (id)quickControlViewController:(id)arg1 applierForSourceViewTransitionWithAnimationSettings:(id)arg2 presenting:(BOOL)arg3;
 - (double)quickControlViewController:(id)arg1 sourceViewInitialScaleForPresentation:(BOOL)arg2;
+- (void)quickControlViewControllerDidTapDetailsButton:(id)arg1;
 - (void)quickControlViewControllerWillDismissDetailsViewController:(id)arg1 shouldDismissQuickControl:(BOOL)arg2;
+- (void)removeAllTransitionSubviews;
 - (void)removeMutuallyExclusiveGestureRecognizer:(id)arg1;
+- (struct CGRect)secondaryLabelFrameInActionSetTile;
+- (struct CGRect)secondaryLabelFrameInNavigationBar;
+- (struct CGRect)secondaryLabelFrameInTile;
+- (BOOL)shouldDismissWholePresentationHierarchy;
+- (struct CGRect)titleAndDescriptionViewFrameInActionSetTile;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

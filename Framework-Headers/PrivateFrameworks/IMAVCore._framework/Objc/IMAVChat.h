@@ -8,7 +8,7 @@
 
 #import <IMAVCore/IMSystemMonitorListener-Protocol.h>
 
-@class IMAVChatParticipant, IMAccount, IMHandle, IMPair, IMTimingCollection, NSArray, NSData, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSTimer;
+@class IMAVChatParticipant, IMAccount, IMHandle, IMTimingCollection, NSArray, NSData, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 @interface IMAVChat : NSObject <IMSystemMonitorListener>
@@ -42,12 +42,10 @@
     NSDictionary *_callerProperties;
     NSObject<OS_dispatch_queue> *_conferenceQueue;
     NSData *_relayRemotePrimaryIdentifier;
-    id _conferenceController;
     unsigned int _sessionID;
     NSError *_error;
     unsigned int _localState;
     unsigned int _lastPostedState;
-    IMPair *_pendingPreemptiveRelayInitate;
     NSString *_callStatisticsGUID;
     double _connectionTimeoutTime;
     double _invitationTimeoutTime;
@@ -70,6 +68,7 @@
     BOOL _didRemotePause;
     BOOL _airplaneModeEnabled;
     BOOL _metadataFinalized;
+    id _conferenceController;
     NSTimer *_inviteTimeoutTimer;
     NSDate *_inviteTimeoutTimerStart;
     NSTimer *_firstFrameTimeoutTimer;
@@ -90,9 +89,9 @@
 @property (nonatomic, setter=_setConnectionStarted:) BOOL _connectionStarted; // @synthesize _connectionStarted;
 @property (nonatomic, setter=_setConnectionType:) int _connectionType; // @synthesize _connectionType;
 @property (readonly, nonatomic) NSNumber *_currentNatType;
-@property (readonly, strong) NSDictionary *_extraServerContext; // @synthesize _extraServerContext;
+@property (readonly) NSDictionary *_extraServerContext; // @synthesize _extraServerContext;
 @property (strong, nonatomic, setter=_setFrontCameraCaptureTime:) NSNumber *_frontCameraCaptureTime; // @synthesize _frontCameraCaptureTime;
-@property (readonly, strong, nonatomic) NSArray *_imHandles;
+@property (readonly, nonatomic) NSArray *_imHandles;
 @property (strong, nonatomic, setter=_setInterruptionBegan:) NSDate *_interruptionBegan; // @synthesize _interruptionBegan;
 @property (nonatomic, setter=_setIsAudioInterrupted:) BOOL _isAudioInterrupted; // @synthesize _isAudioInterrupted;
 @property (readonly, nonatomic) BOOL _isProxy;
@@ -109,7 +108,7 @@
 @property (readonly, nonatomic) NSNumber *_remoteNatType;
 @property (nonatomic, setter=_setRemoteNetworkConnectionType:) unsigned long long _remoteNetworkConnectionType; // @synthesize _remoteNetworkConnectionType;
 @property (readonly, nonatomic) BOOL _usesRelay;
-@property (readonly, strong, nonatomic) IMAccount *account;
+@property (readonly, nonatomic) IMAccount *account;
 @property (nonatomic, setter=_setAirplaneModeEnabled:) BOOL airplaneModeEnabled; // @synthesize airplaneModeEnabled=_airplaneModeEnabled;
 @property (strong, nonatomic, setter=_setCallerProperties:) NSDictionary *callerProperties; // @synthesize callerProperties=_callerProperties;
 @property (nonatomic) unsigned int cameraOrientation;
@@ -120,9 +119,9 @@
 @property (strong, nonatomic, setter=setDataDownloaded:) NSNumber *dataDownloaded; // @synthesize dataDownloaded=_dataDownloaded;
 @property (strong, nonatomic, setter=setDataRate:) NSNumber *dataRate; // @synthesize dataRate=_dataRate;
 @property (strong, nonatomic, setter=setDataUploaded:) NSNumber *dataUploaded; // @synthesize dataUploaded=_dataUploaded;
-@property (readonly, strong, nonatomic) NSDate *dateConnected; // @synthesize dateConnected=_dateConnected;
-@property (readonly, strong, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
-@property (readonly, strong, nonatomic) NSDate *dateEnded; // @synthesize dateEnded=_dateEnded;
+@property (readonly, nonatomic) NSDate *dateConnected; // @synthesize dateConnected=_dateConnected;
+@property (readonly, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (readonly, nonatomic) NSDate *dateEnded; // @synthesize dateEnded=_dateEnded;
 @property (readonly, nonatomic) BOOL didRemoteMute;
 @property (nonatomic, setter=_setDidRemoteMute:) BOOL didRemoteMute; // @synthesize didRemoteMute=_didRemoteMute;
 @property (readonly, nonatomic) BOOL didRemotePause;
@@ -131,8 +130,8 @@
 @property (readonly, nonatomic) unsigned int endedReason;
 @property (strong, nonatomic, setter=_setFirstFrameTimeoutTimer:) NSTimer *firstFrameTimeoutTimer; // @synthesize firstFrameTimeoutTimer=_firstFrameTimeoutTimer;
 @property (readonly, nonatomic) BOOL hasReceivedFirstFrame;
-@property (readonly, strong, nonatomic) IMHandle *initiatorIMHandle; // @synthesize initiatorIMHandle=_initiator;
-@property (readonly, strong, nonatomic) IMAVChatParticipant *initiatorParticipant; // @dynamic initiatorParticipant;
+@property (readonly, nonatomic) IMHandle *initiatorIMHandle; // @synthesize initiatorIMHandle=_initiator;
+@property (readonly, nonatomic) IMAVChatParticipant *initiatorParticipant; // @dynamic initiatorParticipant;
 @property (nonatomic) double invitationTimeoutTime;
 @property (strong, nonatomic, setter=_setInviteTimeoutTimer:) NSTimer *inviteTimeoutTimer; // @synthesize inviteTimeoutTimer=_inviteTimeoutTimer;
 @property (strong, nonatomic, setter=_setInviteTimeoutTimerStart:) NSDate *inviteTimeoutTimerStart; // @synthesize inviteTimeoutTimerStart=_inviteTimeoutTimerStart;
@@ -147,16 +146,16 @@
 @property (readonly, nonatomic) BOOL isUsingWifi;
 @property (readonly, nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 @property (nonatomic, setter=_setLandscapeAspectRatios:) struct CGSize landscapeAspectRatios; // @synthesize landscapeAspectRatios=_landscapeAspectRatios;
-@property (readonly, strong, nonatomic) IMAVChatParticipant *localParticipant; // @synthesize localParticipant=_localParticipant;
+@property (readonly, nonatomic) IMAVChatParticipant *localParticipant; // @synthesize localParticipant=_localParticipant;
 @property (nonatomic) void *localVideoBackLayer;
 @property (nonatomic) void *localVideoLayer;
 @property (nonatomic) BOOL mayRequireBreakBeforeMake; // @synthesize mayRequireBreakBeforeMake=_mayRequireBreakBeforeMake;
 @property (nonatomic, setter=_setMetadataFinalized:) BOOL metadataFinalized; // @synthesize metadataFinalized=_metadataFinalized;
-@property (readonly, strong, nonatomic) IMHandle *otherIMHandle;
-@property (readonly, strong, nonatomic) NSArray *participants; // @synthesize participants=_participants;
+@property (readonly, nonatomic) IMHandle *otherIMHandle;
+@property (readonly, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property (nonatomic, setter=_setPortraitAspectRatios:) struct CGSize portraitAspectRatios; // @synthesize portraitAspectRatios=_portraitAspectRatios;
 @property (nonatomic, getter=isRelayed) BOOL relayed; // @synthesize relayed=_relayed;
-@property (readonly, strong, nonatomic) NSArray *remoteParticipants; // @dynamic remoteParticipants;
+@property (readonly, nonatomic) NSArray *remoteParticipants; // @dynamic remoteParticipants;
 @property (readonly, nonatomic) unsigned int sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly, nonatomic) unsigned int state; // @synthesize state=_localState;
 @property (nonatomic, getter=isTerminating, setter=_setTerminating:) BOOL terminating; // @synthesize terminating=_terminating;
@@ -199,6 +198,7 @@
 + (void)setDefaultConnectionTimeoutTime:(double)arg1;
 + (void)setDefaultInvitationTimeoutTime:(double)arg1;
 + (int)systemSupportsNewOutgoingConferenceTo:(id)arg1 isVideo:(BOOL)arg2;
+- (void).cxx_destruct;
 - (void)__responseToVCInvite:(id)arg1;
 - (void)__sendEndCallMetricToAWDWithReason:(unsigned int)arg1 andError:(int)arg2;
 - (void)__sendEndCallMetricToViceroyWithReason:(unsigned int)arg1 andError:(int)arg2;

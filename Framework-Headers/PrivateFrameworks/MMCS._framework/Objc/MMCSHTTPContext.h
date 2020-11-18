@@ -14,7 +14,7 @@
 #import <MMCS/NSURLSessionTaskDelegate-Protocol.h>
 #import <MMCS/NSURLSessionTaskDelegatePrivate-Protocol.h>
 
-@class MMCSBoundedQueue, NSDictionary, NSInputStream, NSOutputStream, NSString, NSURLSession, NSURLSessionDataTask;
+@class NSDictionary, NSInputStream, NSOutputStream, NSString, NSURLSession, NSURLSessionDataTask;
 
 __attribute__((visibility("hidden")))
 @interface MMCSHTTPContext : NSObject <C2RequestDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegatePrivate, NSStreamDelegate>
@@ -29,13 +29,11 @@ __attribute__((visibility("hidden")))
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
     NSURLSessionDataTask *_dataTask;
-    MMCSBoundedQueue *_boundedQueue;
     NSDictionary *_timingData;
     struct os_activity_s *_activityMarker;
 }
 
 @property (nonatomic) struct os_activity_s *activityMarker; // @synthesize activityMarker=_activityMarker;
-@property (strong, nonatomic) MMCSBoundedQueue *boundedQueue; // @synthesize boundedQueue=_boundedQueue;
 @property (strong, nonatomic) NSURLSessionDataTask *dataTask; // @synthesize dataTask=_dataTask;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

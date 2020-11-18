@@ -6,31 +6,43 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class CLPlacemark;
+@class CLPlacemark, NSArray, NSString;
 
-@interface INSpatialEventTrigger : NSObject <NSCopying, NSSecureCoding>
+@interface INSpatialEventTrigger : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
     CLPlacemark *_placemark;
     long long _event;
+    NSArray *_suggestedValues;
+    long long _mobileSpace;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long event; // @synthesize event=_event;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long mobileSpace; // @synthesize mobileSpace=_mobileSpace;
 @property (readonly, copy, nonatomic) CLPlacemark *placemark; // @synthesize placemark=_placemark;
+@property (readonly, copy, nonatomic) NSArray *suggestedValues; // @synthesize suggestedValues=_suggestedValues;
+@property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithMobileSpace:(long long)arg1 event:(long long)arg2;
 - (id)initWithPlacemark:(id)arg1 event:(long long)arg2;
+- (id)initWithPlacemark:(id)arg1 event:(long long)arg2 suggestedValues:(id)arg3 mobileSpace:(long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

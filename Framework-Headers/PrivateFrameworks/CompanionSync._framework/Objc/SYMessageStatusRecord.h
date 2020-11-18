@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
+- (id)initFiller;
 - (id)initWithMessageID:(id)arg1;
 
 @end

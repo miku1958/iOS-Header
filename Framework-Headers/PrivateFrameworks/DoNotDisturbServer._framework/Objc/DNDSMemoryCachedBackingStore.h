@@ -7,27 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <DoNotDisturbServer/DNDSBackingStore-Protocol.h>
+#import <DoNotDisturbServer/DNDSBackingStoreDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSString;
-@protocol DNDSBackingStore, OS_dispatch_queue;
+@class NSString;
+@protocol DNDSBackingStore, DNDSBackingStoreDelegate, DNDSBackingStoreRecord;
 
-@interface DNDSMemoryCachedBackingStore : NSObject <DNDSBackingStore>
+@interface DNDSMemoryCachedBackingStore : NSObject <DNDSBackingStoreDelegate, DNDSBackingStore>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     id<DNDSBackingStore> _underlyingBackingStore;
-    NSArray *_cache;
-    NSDate *_lastUpdateDate;
+    id<DNDSBackingStoreRecord> _cache;
+    struct os_unfair_lock_s _lock;
+    id<DNDSBackingStoreDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<DNDSBackingStoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)backingStore:(id)arg1 migrateDictionaryRepresentation:(id)arg2 fromVersionNumber:(unsigned long long)arg3 toVersionNumber:(unsigned long long)arg4;
 - (id)initWithUnderlyingBackingStore:(id)arg1;
-- (id)readAllRecordsWithError:(id *)arg1 lastUpdateDate:(out id *)arg2;
-- (BOOL)writeAllRecords:(id)arg1 withError:(id *)arg2;
+- (id)readRecordWithError:(id *)arg1;
+- (BOOL)writeRecord:(id)arg1 error:(id *)arg2;
 
 @end
 

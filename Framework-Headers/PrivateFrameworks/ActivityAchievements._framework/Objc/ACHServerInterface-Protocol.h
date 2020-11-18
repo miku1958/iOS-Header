@@ -11,6 +11,7 @@
 @protocol ACHServerInterface <NSObject>
 - (void)remote_addEarnedInstance:(ACHEarnedInstance *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_addTemplate:(ACHTemplate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_availableMobileAssetsWithCompletion:(void (^)(NSArray *))arg1;
 - (void)remote_fetchAchievementWithTemplateUniqueName:(NSString *)arg1 completion:(void (^)(ACHAchievement *, NSError *))arg2;
 - (void)remote_fetchActivityChallengeAssetsServerURLWithCompletion:(void (^)(NSURL *, NSError *))arg1;
 - (void)remote_fetchAllAchievementsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
@@ -22,6 +23,7 @@
 - (void)remote_removeAllTemplatesWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_removeEarnedInstance:(ACHEarnedInstance *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_removeTemplate:(ACHTemplate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_runMonthlyChallengesWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_setActivityChallengeAssetsServerURL:(NSURL *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

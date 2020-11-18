@@ -17,13 +17,15 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_quickLinkItems;
 }
 
-@property (strong, nonatomic) NSMutableArray *quickLinkItems; // @synthesize quickLinkItems=_quickLinkItems;
+@property (strong, nonatomic) NSMutableArray *quickLinkItems;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)quickLinkItemType;
 - (void).cxx_destruct;
 - (void)addQuickLinkItem:(id)arg1;
 - (void)clearQuickLinkItems;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)quickLinkItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)quickLinkItemsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

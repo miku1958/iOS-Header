@@ -6,11 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+@class UIImageView;
 @protocol BCSAction;
 
 __attribute__((visibility("hidden")))
 @interface SFQRImageHeaderView : UIView
 {
+    UIImageView *_iconView;
     id<BCSAction> _action;
 }
 
@@ -19,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_actionTypeString;
 - (id)_title;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

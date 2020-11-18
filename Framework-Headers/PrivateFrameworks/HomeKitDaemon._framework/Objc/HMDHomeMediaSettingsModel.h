@@ -12,9 +12,9 @@
 {
 }
 
-@property (strong, nonatomic) NSString *mediaPassword; // @dynamic mediaPassword;
-@property (strong, nonatomic) NSNumber *mediaPeerToPeerEnabled; // @dynamic mediaPeerToPeerEnabled;
-@property (strong, nonatomic) NSNumber *minimumMediaUserPrivilege; // @dynamic minimumMediaUserPrivilege;
+@property (copy, nonatomic) NSString *mediaPassword; // @dynamic mediaPassword;
+@property (copy, nonatomic) NSNumber *mediaPeerToPeerEnabled; // @dynamic mediaPeerToPeerEnabled;
+@property (copy, nonatomic) NSNumber *minimumMediaUserPrivilege; // @dynamic minimumMediaUserPrivilege;
 
 + (id)defaultModelForHome:(id)arg1;
 + (id)modelIDForHome:(id)arg1;

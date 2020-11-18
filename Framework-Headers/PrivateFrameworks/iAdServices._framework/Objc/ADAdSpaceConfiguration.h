@@ -28,17 +28,17 @@
 }
 
 @property (copy, nonatomic) NSString *adSpaceContextJSON; // @synthesize adSpaceContextJSON=_adSpaceContextJSON;
-@property (copy, nonatomic) NSString *advertisingSection; // @synthesize advertisingSection=_advertisingSection;
-@property (copy, nonatomic) NSString *authenticationUserName; // @synthesize authenticationUserName=_authenticationUserName;
+@property (strong, nonatomic) NSString *advertisingSection; // @synthesize advertisingSection=_advertisingSection;
+@property (strong, nonatomic) NSString *authenticationUserName; // @synthesize authenticationUserName=_authenticationUserName;
 @property (nonatomic) float containerHeight; // @synthesize containerHeight=_containerHeight;
 @property (nonatomic) float containerWidth; // @synthesize containerWidth=_containerWidth;
 @property (copy, nonatomic) NSSet *context; // @synthesize context=_context;
 @property (nonatomic) int creativeType; // @synthesize creativeType=_creativeType;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (nonatomic) float reorientedContainerHeight; // @synthesize reorientedContainerHeight=_reorientedContainerHeight;
 @property (nonatomic) float reorientedContainerWidth; // @synthesize reorientedContainerWidth=_reorientedContainerWidth;
-@property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
+@property (strong, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

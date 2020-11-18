@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <PersonalizationPortrait/PPFeedbackAccepting-Protocol.h>
+
 @class NSArray, NSError;
 
-@protocol PPEventClientProtocol
+@protocol PPEventClientProtocol <PPFeedbackAccepting>
 - (void)eventHighlightsBatch:(NSArray *)arg1 isLast:(BOOL)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(BOOL))arg5;
 - (void)eventNameRecordBatch:(NSArray *)arg1 isLast:(BOOL)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(BOOL))arg5;
 - (void)eventNameRecordChangesBatch:(NSArray *)arg1 isLast:(BOOL)arg2 error:(NSError *)arg3 queryId:(unsigned long long)arg4 completion:(void (^)(BOOL))arg5;

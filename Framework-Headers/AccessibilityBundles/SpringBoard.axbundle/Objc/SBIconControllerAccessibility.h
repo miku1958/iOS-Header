@@ -13,31 +13,26 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityCancelSBAXIconMoveSpeakTimer;
 - (BOOL)_accessibilityCloseOpenFolder;
-- (void)_accessibilityDropGrabbedIconsOnReceivingIconView:(id)arg1;
 - (long long)_accessibilityIconListCount;
 - (long long)_accessibilityIconListIndex;
 - (void)_accessibilityMarkIconAsAnimating:(id)arg1;
-- (void)_accessibilitySimpleMoveIconDropDidFinish:(id)arg1;
 - (void)_accessibilityStatusChanged;
 - (void)_accessibilitySwitchControlStatusChanged;
 - (void)_accessibilityVoiceOverStatusChanged;
 - (id)_axCurrentPageControl;
 - (id)_axGrabbedIcons;
 - (id)_axGrabbedIconsLabel;
+- (BOOL)_axHideTodayView;
 - (id)_axIconScrollView;
 - (BOOL)_axIsIconDragging;
+- (BOOL)_axIsShowingHomeScreenTodayView;
+- (BOOL)_axIsSidebarPinned;
 - (id)_axLabelForIcons:(id)arg1;
 - (id)_axRecipientIconView;
-- (void)_axSetCurrentFolderScrollEnabled:(BOOL)arg1;
-- (void)animateScrollToPageZeroWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)closeFolderAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)createNewFolderFromRecipientIcon:(id)arg1 grabbedIcon:(id)arg2;
+- (BOOL)_axSetTodayViewVisible:(BOOL)arg1;
+- (BOOL)_axShowTodayView;
 - (id)init;
-- (void)pushExpandedIcon:(id)arg1 location:(long long)arg2 withTransitionRequest:(id)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)resetCurrentVisibleIconListImageVisibilityAndJitterState;
-- (void)setIsEditing:(BOOL)arg1 withFeedbackBehavior:(id)arg2;
 
 @end
 

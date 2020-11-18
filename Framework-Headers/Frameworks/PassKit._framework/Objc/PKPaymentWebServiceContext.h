@@ -6,11 +6,14 @@
 
 #import <PassKitCore/PKWebServiceContext.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSObject, NSString, PKPaymentWebServiceConfiguration, PKPaymentWebServiceRegion;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSObject, NSString, NSURL, PKPaymentWebServiceConfiguration, PKPaymentWebServiceRegion;
 @protocol OS_dispatch_queue;
 
 @interface PKPaymentWebServiceContext : PKWebServiceContext
 {
+    struct os_unfair_lock_s _lock_context;
+    NSMutableDictionary *_verificationRequestsByPassUniqueID;
+    NSDictionary *_regions;
     NSObject<OS_dispatch_queue> *_queue;
     struct os_unfair_lock_s _cacheLock;
     NSMutableDictionary *_featureSupportedLangaugeCache;
@@ -26,9 +29,7 @@
     NSDate *_registrationDate;
     NSDate *_configurationDate;
     PKPaymentWebServiceConfiguration *_configuration;
-    NSDictionary *_regions;
     NSString *_primaryRegionIdentifier;
-    NSMutableDictionary *_verificationRequestsByPassUniqueID;
     long long _consistencyCheckBackoffLevel;
     NSArray *_certificates;
     NSString *_lastUpdatedTag;
@@ -42,17 +43,18 @@
 @property long long consistencyCheckBackoffLevel; // @synthesize consistencyCheckBackoffLevel=_consistencyCheckBackoffLevel;
 @property BOOL devSigned; // @synthesize devSigned=_devSigned;
 @property (copy) NSString *deviceID; // @synthesize deviceID=_deviceID;
+@property (readonly, nonatomic) BOOL hasPeerPaymentAccount;
 @property BOOL ignoreProvisioningEnablementPercentage; // @synthesize ignoreProvisioningEnablementPercentage=_ignoreProvisioningEnablementPercentage;
 @property (copy) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property BOOL messageServiceDisabled; // @synthesize messageServiceDisabled=_messageServiceDisabled;
+@property (readonly, nonatomic) NSURL *peerPaymentServiceURL;
 @property (readonly, weak) PKPaymentWebServiceRegion *primaryRegion;
 @property (copy) NSString *primaryRegionIdentifier; // @synthesize primaryRegionIdentifier=_primaryRegionIdentifier;
 @property (copy) NSString *pushToken; // @synthesize pushToken=_pushToken;
-@property (strong) NSDictionary *regions; // @synthesize regions=_regions;
+@property (strong) NSDictionary *regions;
 @property (copy) NSDate *registrationDate; // @synthesize registrationDate=_registrationDate;
 @property (copy) NSString *secureElementID; // @synthesize secureElementID=_secureElementID;
 @property BOOL transactionServiceDisabled; // @synthesize transactionServiceDisabled=_transactionServiceDisabled;
-@property (strong) NSMutableDictionary *verificationRequestsByPassUniqueID; // @synthesize verificationRequestsByPassUniqueID=_verificationRequestsByPassUniqueID;
 @property long long version; // @synthesize version=_version;
 
 + (void)_migrateContext:(id)arg1;
@@ -63,6 +65,7 @@
 - (id)TSMPushTopics;
 - (double)_contextProvisioningEnablementValue;
 - (void)_localizationUpdated;
+- (id)_regionWithPeerPaymentServiceURL;
 - (void)addVerificationRequestRecord:(id)arg1 forUniqueID:(id)arg2;
 - (id)applyServiceFeaturesForRegionMeetingEnablementThreshold:(id)arg1;
 - (id)applyServiceLocalizationBundleForfeatureIdentifier:(unsigned long long)arg1;

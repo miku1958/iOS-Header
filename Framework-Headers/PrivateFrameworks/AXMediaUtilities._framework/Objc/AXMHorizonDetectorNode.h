@@ -6,13 +6,19 @@
 
 #import <AXMediaUtilities/AXMEvaluationNode.h>
 
+@class VNDetectHorizonRequest;
+
 @interface AXMHorizonDetectorNode : AXMEvaluationNode
 {
+    VNDetectHorizonRequest *__detectHorizonRequest;
 }
+
+@property (strong, nonatomic, setter=_setDetectHorizonRequest:) VNDetectHorizonRequest *_detectHorizonRequest; // @synthesize _detectHorizonRequest=__detectHorizonRequest;
 
 + (BOOL)isSupported;
 + (BOOL)supportsSecureCoding;
 + (id)title;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluate:(id)arg1;
 - (id)initWithCoder:(id)arg1;

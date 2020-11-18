@@ -14,29 +14,31 @@ __attribute__((visibility("hidden")))
 @interface GEOPDDateTimeRange : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    unsigned long long _endDate;
-    unsigned long long _startDate;
     struct GEOPDLocalTimeRange *_timeRanges;
     unsigned long long _timeRangesCount;
     unsigned long long _timeRangesSpace;
+    unsigned long long _endDate;
+    unsigned long long _startDate;
     struct {
-        unsigned int endDate:1;
-        unsigned int startDate:1;
-    } _has;
+        unsigned int has_endDate:1;
+        unsigned int has_startDate:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned long long endDate; // @synthesize endDate=_endDate;
+@property (nonatomic) unsigned long long endDate;
 @property (nonatomic) BOOL hasEndDate;
 @property (nonatomic) BOOL hasStartDate;
 @property (readonly, nonatomic) BOOL hasValidStartAndEndDates;
-@property (nonatomic) unsigned long long startDate; // @synthesize startDate=_startDate;
+@property (nonatomic) unsigned long long startDate;
 @property (readonly, nonatomic) struct GEOPDLocalTimeRange *timeRanges;
 @property (readonly, nonatomic) unsigned long long timeRangesCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addTimeRange:(struct GEOPDLocalTimeRange)arg1;
 - (void)clearTimeRanges;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setTimeRanges:(struct GEOPDLocalTimeRange *)arg1 count:(unsigned long long)arg2;
 - (struct GEOPDLocalTimeRange)timeRangeAtIndex:(unsigned long long)arg1;

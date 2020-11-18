@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *localizationKey; // @synthesize localizationKey=mLocalizationKey;
 @property (copy, nonatomic) NSString *userDefinedName; // @synthesize userDefinedName=mName;
 
-+ (id)pathSourceForShapeType:(int)arg1 naturalSize:(struct CGSize)arg2;
++ (id)pathSourceForShapeType:(long long)arg1 naturalSize:(struct CGSize)arg2;
 + (id)pathSourceWithArchive:(const struct PathSourceArchive *)arg1;
 - (void).cxx_destruct;
 - (id)bezierPath;

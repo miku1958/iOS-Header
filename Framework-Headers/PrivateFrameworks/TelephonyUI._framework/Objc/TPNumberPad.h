@@ -28,6 +28,7 @@
 - (void)buttonLongPressedViaGesture:(id)arg1;
 - (void)buttonTapped:(id)arg1;
 - (void)buttonUp:(id)arg1;
+- (void)buttonUpOutside:(id)arg1;
 - (void)dealloc;
 - (void)handleCurrentLocaleDidChangeNotification:(id)arg1;
 - (id)initWithButtons:(id)arg1;

@@ -39,12 +39,13 @@ __attribute__((visibility("hidden")))
 - (void)_applyVisualStyle;
 - (void)_applyVisualStyleToDisplayedViews;
 - (void)_arrangeDisplayedViews;
+- (id)_constraintForBaselineAligningOrVerticallyCenteringImageViewToLabelsView:(id)arg1;
+- (id)_constraintForVerticallyCenteringLabelsView;
 - (id)_constraintsForHorizontallyCenteringLabelsView;
 - (id)_constraintsForInsettingImageViewsLeadingAndTrailingEdge;
 - (id)_constraintsForInsettingLabelsViewLeadingAndTrailing;
 - (id)_constraintsForInsettingLabelsViewLeadingAndTrailingHorizontalEdgeReferenceExact:(BOOL)arg1;
 - (id)_constraintsForInsettingLabelsViewLeadingAndTrailingToImageViewsExact:(BOOL)arg1;
-- (id)_constraintsForVeritcallyCenteringViews:(id)arg1;
 - (id)_constraintsToEnsureContainerHeightTallEnoughForViews:(id)arg1;
 - (BOOL)_displayedViewsConstraintsNeedsLoading;
 - (BOOL)_hasLoadedContents;

@@ -10,17 +10,21 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
+- (id)_accessibilityCapturedImages;
 - (long long)_accessibilityCountAccessibleChildren:(id)arg1;
 - (id)_accessibilityGetValue;
+- (BOOL)_accessibilityHandwritingAttributeAcceptsContractedBraille;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityInternalFakeTextField;
 - (id)_accessibilityInternalFakeTextField:(BOOL)arg1;
 - (id)_accessibilityLeftButtons;
 - (id)_accessibilityNativeFocusPreferredElement;
-- (BOOL)_accessibilityOverridesLabelValueHintSelector:(SEL)arg1;
+- (BOOL)_accessibilityOverridesPotentiallyAttributedAPISelector:(SEL)arg1;
 - (id)_accessibilityPlaceholderValue:(BOOL)arg1;
 - (id)_accessibilityResponderElement;
 - (id)_accessibilityRightButtons;

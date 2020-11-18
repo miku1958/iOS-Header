@@ -10,13 +10,10 @@
 
 @protocol PLResourceIdentity <NSObject>
 
-@property (readonly, nonatomic) unsigned int orientation;
 @property (readonly, nonatomic) unsigned int recipeID;
-@property (readonly, nonatomic) short resourceType;
+@property (readonly, nonatomic) unsigned int resourceType;
 @property (readonly, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
-@property (readonly, nonatomic) long long unorientedHeight;
-@property (readonly, nonatomic) long long unorientedWidth;
-@property (readonly, nonatomic) short version;
+@property (readonly, nonatomic) unsigned int version;
 
 @end
 

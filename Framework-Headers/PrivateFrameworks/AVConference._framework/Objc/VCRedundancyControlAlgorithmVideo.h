@@ -15,7 +15,15 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _redundancyPercentage;
     double _redundancyInterval;
-    unsigned int _packetLossPercentage;
+    double _packetLossPercentage;
+    double _packetLossPercentageVideo;
+    double _plrEnvelope;
+    BOOL _isNetworkCongested;
+    unsigned int _maxAllowedRedundancyPercentage;
+    unsigned int _burstyLoss[8];
+    unsigned int _burstyLossArraySize;
+    unsigned int _burstyLossArrayIndex;
+    unsigned int _redundancyMode;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,8 +33,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int redundancyPercentage; // @synthesize redundancyPercentage=_redundancyPercentage;
 @property (readonly) Class superclass;
 
-- (void)computeRedundancyInfo;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_48a7b5a5)arg1;
+- (unsigned int)computeRedundancyWithBurstyLoss;
+- (unsigned int)computeRedundancyWithLossPercentage;
+- (id)initWithRedundancyControllerMode:(unsigned int)arg1 maxAllowedRedundancyPercentage:(unsigned int)arg2;
+- (void)updateBurstyLoss:(unsigned int)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
 
 @end
 

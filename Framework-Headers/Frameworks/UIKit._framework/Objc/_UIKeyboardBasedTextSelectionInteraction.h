@@ -6,12 +6,21 @@
 
 #import <UIKitCore/_UIKeyboardTextSelectionInteraction.h>
 
+@class UITextGestureTuning;
+
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardBasedTextSelectionInteraction : _UIKeyboardTextSelectionInteraction
 {
+    UITextGestureTuning *_gestureTuning;
 }
 
+@property (readonly, nonatomic) UITextGestureTuning *gestureTuning; // @synthesize gestureTuning=_gestureTuning;
+
+- (void)_createGestureTuningIfNecessary;
+- (void)_processGestureForCustomHighlighter:(id)arg1;
 - (void)beginOneFingerSelectWithTranslation:(struct CGPoint)arg1 executionContext:(id)arg2;
+- (void)dealloc;
+- (void)didMoveToView:(id)arg1;
 - (BOOL)enclosingScrollViewIsScrolling;
 - (void)endOneFingerSelectWithExecutionContext:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

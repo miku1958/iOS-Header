@@ -18,30 +18,9 @@ struct NSMapTable {
     Class _field1;
 };
 
-struct XSPerfCollection {
-    struct _opaque_pthread_mutex_t {
-        long long _field1;
-        char _field2[56];
-    } _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    _Atomic unsigned short _field5;
-    struct XSPerfCounter *_field6;
-    struct XSPerfMetric *_field7;
-    struct XSPerfString *_field8;
-    char *_field9;
-};
-
-struct XSPerfCounter;
-
-struct XSPerfMetric;
-
-struct XSPerfString;
-
 struct _CDPerfEvent {
-    unsigned long long CDPM_startTime;
-    unsigned long long CDPM_endTime;
+    double startTime;
+    double endTime;
 };
 
 struct _cdp_prediction_result {

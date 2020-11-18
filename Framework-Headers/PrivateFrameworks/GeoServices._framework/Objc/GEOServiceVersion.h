@@ -14,21 +14,23 @@ __attribute__((visibility("hidden")))
 @interface GEOServiceVersion : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    unsigned int _minimumVersion;
     NSMutableArray *_versionDomains;
+    unsigned int _minimumVersion;
     struct {
-        unsigned int minimumVersion:1;
-    } _has;
+        unsigned int has_minimumVersion:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMinimumVersion;
-@property (nonatomic) unsigned int minimumVersion; // @synthesize minimumVersion=_minimumVersion;
+@property (nonatomic) unsigned int minimumVersion;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *versionDomains; // @synthesize versionDomains=_versionDomains;
+@property (strong, nonatomic) NSMutableArray *versionDomains;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)versionDomainType;
 - (void).cxx_destruct;
 - (void)addVersionDomain:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearVersionDomains;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)versionDomainAtIndex:(unsigned long long)arg1;
 - (unsigned long long)versionDomainsCount;

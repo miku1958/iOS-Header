@@ -50,6 +50,7 @@
 
 + (id)allSupportedProperties;
 - (void).cxx_destruct;
+- (long long)contentItemTypeForMusicAPIType:(id)arg1;
 - (long long)contentItemTypeForRawResponseKindIdentifierValue:(long long)arg1;
 - (long long)contentItemTypeForRawResponseKindIdentifiers:(id)arg1;
 - (long long)contentItemTypeForStoreItemMetadata:(id)arg1;

@@ -6,35 +6,51 @@
 
 #import <MediaPlayer/MPPlaybackContext.h>
 
-@class MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelRequest, NSDictionary;
+#import <MediaPlaybackCore/MPCPlaybackContextPrivateListeningOverridable-Protocol.h>
+#import <MediaPlaybackCore/MPCPlaybackContextUserIdentityConsuming-Protocol.h>
 
-@interface MPCModelPlaybackContext : MPPlaybackContext
+@class ICUserIdentity, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, NSDictionary, NSString;
+
+@interface MPCModelPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable>
 {
+    ICUserIdentity *_userIdentity;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     MPModelRequest *_request;
     MPIdentifierSet *_startItemIdentifiers;
     NSDictionary *_startTimeModifications;
     NSDictionary *_endTimeModifications;
     NSDictionary *_assetStoreFronts;
+    MPModelGenericObject *_fallbackSectionRepresentation;
+    NSString *_encodedMediaLibraryUniqueID;
 }
 
 @property (copy, nonatomic) NSDictionary *assetStoreFronts; // @synthesize assetStoreFronts=_assetStoreFronts;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *encodedMediaLibraryUniqueID; // @synthesize encodedMediaLibraryUniqueID=_encodedMediaLibraryUniqueID;
 @property (copy, nonatomic) NSDictionary *endTimeModifications; // @synthesize endTimeModifications=_endTimeModifications;
+@property (copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
 @property (copy, nonatomic) MPModelRequest *request; // @synthesize request=_request;
 @property (copy, nonatomic) MPIdentifierSet *startItemIdentifiers; // @synthesize startItemIdentifiers=_startItemIdentifiers;
 @property (copy, nonatomic) NSDictionary *startTimeModifications; // @synthesize startTimeModifications=_startTimeModifications;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 
-+ (id)defaultRequestEnvironment;
 + (Class)queueFeederClass;
 + (id)requiredPropertiesForStaticMediaClips;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)containsRestorableContent;
+- (BOOL)containsTransportableContent;
 - (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isSupported;
+- (void)setPrivateListeningOverride:(id)arg1;
 
 @end
 

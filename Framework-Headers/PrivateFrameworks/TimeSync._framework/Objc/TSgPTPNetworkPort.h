@@ -6,11 +6,12 @@
 
 #import <TimeSync/TSgPTPPort.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface TSgPTPNetworkPort : TSgPTPPort
 {
     unsigned int _connection;
+    NSMutableArray *_clients;
     BOOL _remoteIsSameDevice;
     BOOL _asCapable;
     BOOL _localSyncLogMeanInterval;
@@ -85,6 +86,7 @@
 - (BOOL)_commonInitWithService:(unsigned int)arg1;
 - (id)_destinationAddressString;
 - (BOOL)_enabled;
+- (void)_handleNotification:(int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
 - (BOOL)_hasLocalFrequencyStability;
 - (BOOL)_hasLocalFrequencyTolerance;
 - (BOOL)_hasRemoteFrequencyStability;
@@ -115,13 +117,15 @@
 - (BOOL)_remoteSyncLogMeanInterval;
 - (unsigned char)_remoteTimestampingMode;
 - (id)_sourceAddressString;
+- (void)addClient:(id)arg1;
 - (void)dealloc;
+- (BOOL)deregisterAsyncCallbackError:(id *)arg1;
 - (BOOL)disablePortError:(id *)arg1;
 - (BOOL)enablePortError:(id *)arg1;
 - (BOOL)getCurrentPortInfo:(CDStruct_57c52001 *)arg1 error:(id *)arg2;
-- (id)initWithMatchingDictionary:(id)arg1;
-- (id)initWithService:(unsigned int)arg1;
 - (BOOL)overrideReceiveMatchingWithRemoteClockIdentity:(unsigned long long)arg1 remotePortNumber:(unsigned short)arg2 error:(id *)arg3;
+- (BOOL)registerAsyncCallbackError:(id *)arg1;
+- (void)removeClient:(id)arg1;
 - (BOOL)requestRemoteMessageIntervalsWithPDelayMessageInterval:(BOOL)arg1 syncMessageInterval:(BOOL)arg2 announceMessageInterval:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)restoreReceiveMatchingError:(id *)arg1;
 - (void)updateProperties;

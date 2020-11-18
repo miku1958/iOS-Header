@@ -12,6 +12,9 @@
 - (BOOL)_cn_any:(CDUnknownBlockType)arg1;
 - (id)_cn_arrayByRotatingRange:(struct _NSRange)arg1 by:(long long)arg2;
 - (id)_cn_balancedSlicesWithMaximumCount:(unsigned long long)arg1;
+- (id)_cn_compactMap:(CDUnknownBlockType)arg1;
+- (id)_cn_concurrentMap:(CDUnknownBlockType)arg1;
+- (BOOL)_cn_containsObject:(id)arg1;
 - (id)_cn_distinctObjects;
 - (void)_cn_each:(CDUnknownBlockType)arg1;
 - (void)_cn_each:(CDUnknownBlockType)arg1 until:(CDUnknownBlockType)arg2;
@@ -42,6 +45,7 @@
 - (id)_cn_sortedArrayUsingAuxiliarySortOrder:(id)arg1 transform:(CDUnknownBlockType)arg2;
 - (id)_cn_tail;
 - (id)_cn_take:(unsigned long long)arg1;
+- (id)_cn_takeLast:(unsigned long long)arg1;
 - (id)_cn_zip:(id)arg1;
 - (void)_cn_zip:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 @end

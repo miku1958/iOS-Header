@@ -12,6 +12,7 @@
 
 @interface PKApplyOfferViewController : PKApplyExplanationViewController <PKApplyFlowControllerProtocol>
 {
+    UIView *_topBackgroundView;
     PKAccountFlowController *_accountController;
     PKApplyOfferCreditCardView *_offerView;
     NSString *_offerTermsIdentifier;
@@ -29,12 +30,14 @@
 - (void)_openTermsAndConditions;
 - (void)_setupForBroadwayApplication:(id)arg1;
 - (void)_termsAccepted:(BOOL)arg1;
+- (void)dealloc;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
 - (id)initWithController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 applyPage:(id)arg4;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

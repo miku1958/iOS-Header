@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSDictionary *audioSettings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id delegateOverride;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sampleBufferCallbackQueue;
@@ -27,7 +28,7 @@
 
 + (void)initialize;
 + (id)new;
-- (BOOL)canAddConnectionForMediaType:(id)arg1;
+- (BOOL)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (id)init;

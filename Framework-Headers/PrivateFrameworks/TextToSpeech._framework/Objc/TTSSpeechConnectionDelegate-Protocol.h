@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSError, NSString, TTSSpeechRequest, TTSSpeechRequestOwner;
+@class NSError, NSString, NSURL, TTSSpeechRequest, TTSSpeechRequestOwner;
 
 @protocol TTSSpeechConnectionDelegate
 - (void)connection:(TTSSpeechRequestOwner *)arg1 speechRequest:(TTSSpeechRequest *)arg2 didStopAtEnd:(BOOL)arg3 phonemesSpoken:(NSString *)arg4 error:(NSError *)arg5;
+- (void)connection:(TTSSpeechRequestOwner *)arg1 speechRequest:(TTSSpeechRequest *)arg2 didSynthesizeSilentlyToURL:(NSURL *)arg3;
 - (void)connection:(TTSSpeechRequestOwner *)arg1 speechRequest:(TTSSpeechRequest *)arg2 willSpeakMark:(long long)arg3 inRange:(struct _NSRange)arg4;
 - (void)connection:(TTSSpeechRequestOwner *)arg1 speechRequestDidContinue:(TTSSpeechRequest *)arg2;
 - (void)connection:(TTSSpeechRequestOwner *)arg1 speechRequestDidPause:(TTSSpeechRequest *)arg2;

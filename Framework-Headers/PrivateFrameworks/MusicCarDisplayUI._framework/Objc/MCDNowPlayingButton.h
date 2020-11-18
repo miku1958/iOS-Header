@@ -6,27 +6,33 @@
 
 #import <UIKit/UIButton.h>
 
-@class CALayer;
+#import <MusicCarDisplayUI/MCDNowPlayingObserverDelegate-Protocol.h>
 
-@interface MCDNowPlayingButton : UIButton
+@class MCDNowPlayingButtonView, NSString, UIImageView;
+
+@interface MCDNowPlayingButton : UIButton <MCDNowPlayingObserverDelegate>
 {
-    CALayer *_leadingBorder;
-    CALayer *_focusColorLayer;
-    struct CGSize _layoutFrameSize;
+    MCDNowPlayingButtonView *_nowPlayingView;
+    UIImageView *_focusBackgroundView;
+    NSString *_stateName;
     double _height;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;
+@property (copy, nonatomic) NSString *stateName; // @synthesize stateName=_stateName;
+@property (readonly) Class superclass;
 
 + (id)buttonWithHeight:(double)arg1;
 - (void).cxx_destruct;
 - (BOOL)canBecomeFocused;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
-- (void)layoutSubviews;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)sizeToFit;
-- (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)nowPlayingObserver:(id)arg1 stateDidChanged:(BOOL)arg2;
+- (void)setHighlighted:(BOOL)arg1;
 
 @end
 

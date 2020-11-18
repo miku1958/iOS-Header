@@ -8,14 +8,15 @@
 
 @interface AFSafetyBlock : NSObject
 {
+    struct atomic_flag _hasInvoked;
     CDUnknownBlockType _block;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
-- (void)invoke;
-- (void)invokeWithSignal:(long long)arg1;
+- (BOOL)invoke;
+- (BOOL)invokeWithSignal:(long long)arg1;
 
 @end
 

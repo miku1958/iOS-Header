@@ -102,6 +102,7 @@
 - (id)_localizedEncryptionTypeString;
 - (BOOL)_qosMarkingConfigIsValid:(id)arg1 error:(id *)arg2;
 - (id)description;
+- (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)installationWarnings;
 - (id)payloadDescriptionKeyValueSections;

@@ -22,6 +22,7 @@
     UIImageView *_thumbView;
     UIImageView *_minTrackView;
     UIImageView *_maxTrackView;
+    UIView *_minTrackClipView;
     UIView *_maxTrackClipView;
     struct {
         unsigned int continuous:1;
@@ -38,7 +39,6 @@
     UIColor *_maxTintColor;
     UIColor *_thumbTintColor;
     UIView *_thumbViewNeue;
-    BOOL _useLookNeue;
     NSArray *_trackColors;
     BOOL _trackIsArtworkBased;
     BOOL _thumbIsArtworkBased;
@@ -65,6 +65,7 @@
 @property (nonatomic) float value; // @dynamic value;
 
 + (BOOL)_allowActionsToQueue;
++ (id)_modernThumbImageWithTraitCollection:(id)arg1 tintColor:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
 - (void)_buildTrackArtwork;
@@ -97,19 +98,21 @@
 - (void)_setMinimumTrackVisible:(BOOL)arg1 withDuration:(double)arg2;
 - (void)_setThumbEnabled:(BOOL)arg1;
 - (void)_setThumbImage:(id)arg1 forStates:(unsigned long long)arg2;
-- (void)_setThumbTintColor:(id)arg1 forStates:(unsigned long long)arg2;
 - (void)_setTrackEnabled:(BOOL)arg1;
 - (void)_setUseLookNeue:(BOOL)arg1;
 - (void)_setValue:(float)arg1 andSendAction:(BOOL)arg2;
 - (void)_setValue:(float)arg1 minValue:(float)arg2 maxValue:(float)arg3 andSendAction:(BOOL)arg4;
 - (void)_setupFeedback;
-- (void)_sliderAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
-- (void)_sliderAnimationWillStart:(id)arg1 context:(id)arg2;
+- (BOOL)_shouldBeginTrackingAtPoint:(struct CGPoint)arg1 pointInKnob:(struct CGPoint *)arg2 inKnob:(BOOL *)arg3;
+- (void)_sliderAnimationDidStop:(BOOL)arg1;
+- (void)_sliderAnimationWillStart;
 - (struct UIEdgeInsets)_thumbHitEdgeInsets;
 - (id)_thumbImageForState:(unsigned long long)arg1;
 - (BOOL)_trackEnabled;
+- (void)_traitCollectionDidChangeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (void)_updateAppearanceForEnabled:(BOOL)arg1;
 - (void)_updateMaxTrackColorForInitialization:(BOOL)arg1;
+- (void)_updateMinimumTrackTintColor;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)cancelMouseTracking;

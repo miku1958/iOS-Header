@@ -10,13 +10,14 @@
 
 @interface WKBrowsingContextHandle : NSObject <NSSecureCoding>
 {
-    unsigned long long _pageID;
+    ObjectIdentifier_8136369e _pageID;
 }
 
-@property (readonly, nonatomic, getter=_pageID) unsigned long long pageID; // @synthesize pageID=_pageID;
+@property (readonly, nonatomic, getter=_pageID) ObjectIdentifier_8136369e pageID; // @synthesize pageID=_pageID;
 
 + (BOOL)supportsSecureCoding;
-- (id)_initWithPageID:(unsigned long long)arg1;
+- (id).cxx_construct;
+- (id)_initWithPageID:(ObjectIdentifier_8136369e)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

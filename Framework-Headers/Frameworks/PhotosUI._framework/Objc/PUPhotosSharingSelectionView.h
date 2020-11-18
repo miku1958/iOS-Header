@@ -6,20 +6,18 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class UIImageView;
+@class UIView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotosSharingSelectionView : UICollectionReusableView
 {
-    UIImageView *_imageView;
-    BOOL _selected;
+    UIView *_selectedCheckmarkView;
+    UIView *_unselectedCheckmarkView;
 }
 
-@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
-
 - (void).cxx_destruct;
-- (void)_updateSelected;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setSelected:(BOOL)arg1;
 
 @end
 

@@ -6,25 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSXPCConnection;
+#import <DoNotDisturbServer/NSCopying-Protocol.h>
+#import <DoNotDisturbServer/NSMutableCopying-Protocol.h>
 
-@interface DNDSClientConnectionDetails : NSObject
+@class NSSet, NSUUID;
+
+@interface DNDSClientConnectionDetails : NSObject <NSCopying, NSMutableCopying>
 {
+    NSUUID *_interruptionInvalidationAssertionUUID;
+    NSSet *_assertionUpdateClientIdentifiers;
     BOOL _wantsStateUpdates;
-    BOOL _wantsAssertionUpdates;
     BOOL _wantsSettingsUpdates;
-    NSString *_identifier;
-    NSXPCConnection *_connection;
 }
 
-@property (readonly, weak, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) BOOL wantsAssertionUpdates; // @synthesize wantsAssertionUpdates=_wantsAssertionUpdates;
-@property (nonatomic) BOOL wantsSettingsUpdates; // @synthesize wantsSettingsUpdates=_wantsSettingsUpdates;
-@property (nonatomic) BOOL wantsStateUpdates; // @synthesize wantsStateUpdates=_wantsStateUpdates;
+@property (readonly, copy, nonatomic) NSSet *assertionUpdateClientIdentifiers; // @synthesize assertionUpdateClientIdentifiers=_assertionUpdateClientIdentifiers;
+@property (readonly, copy, nonatomic) NSUUID *interruptionInvalidationAssertionUUID; // @synthesize interruptionInvalidationAssertionUUID=_interruptionInvalidationAssertionUUID;
+@property (readonly, nonatomic) BOOL wantsSettingsUpdates; // @synthesize wantsSettingsUpdates=_wantsSettingsUpdates;
+@property (readonly, nonatomic) BOOL wantsStateUpdates; // @synthesize wantsStateUpdates=_wantsStateUpdates;
 
 - (void).cxx_destruct;
-- (id)initWithIdentifier:(id)arg1 connection:(id)arg2;
+- (id)_initWithDetails:(id)arg1;
+- (id)_initWithInterruptionInvalidationAssertionUUID:(id)arg1 assertionUpdateClientIdentifiers:(id)arg2 wantsStateUpdates:(BOOL)arg3 wantsSettingsUpdates:(BOOL)arg4;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

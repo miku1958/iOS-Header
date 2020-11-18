@@ -72,6 +72,7 @@
 - (void).cxx_destruct;
 - (BOOL)PDFView:(id)arg1 shouldHandleLink:(id)arg2;
 - (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(BOOL)arg2;
+- (BOOL)_canShowWhileLocked;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
 - (void)_createPDFView;
 - (struct CGSize)_medianSizeForCurrentDocumentInPDFViewWithGetter:(CDUnknownBlockType)arg1;
@@ -85,6 +86,7 @@
 - (void)_updateThumbnailViewAppearance;
 - (void)_updateThumbnailViewHolderConstraints;
 - (void)_userChangedScrollViewMagnificationNotification:(id)arg1;
+- (void)annotationController:(id)arg1 detectedEditOfType:(unsigned long long)arg2;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (struct CGSize)contentSize;
 - (id)contentSnapshot;
@@ -95,12 +97,10 @@
 - (void)controllerWillShowSignatureManagerView:(id)arg1;
 - (void)dealloc;
 - (void)editCheckpointReachedForAnnotationController:(id)arg1;
-- (void)editDetectedForAnnotationController:(id)arg1;
 - (void)highlight:(id)arg1;
 - (struct CGSize)idealContentSizeForScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
 - (id)initWithPDFDocument:(id)arg1 delegate:(id)arg2;
 - (void)loadContentWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (id)menuItems:(id)arg1 forPage:(id)arg2;
 - (void)pdfDocumentDidUnlock:(id)arg1;
 - (void)pdfViewDidChangeCurrentPage:(id)arg1;
 - (void)penStrokeCompletedForAnnotationController:(id)arg1;

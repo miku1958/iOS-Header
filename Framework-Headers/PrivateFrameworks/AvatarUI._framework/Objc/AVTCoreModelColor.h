@@ -36,6 +36,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)copyForPairedCategory:(long long)arg1;
 - (id)copyWithRangeMin:(float)arg1 rangeMax:(float)arg2 showSlider:(BOOL)arg3;
 - (unsigned long long)costForScope:(id)arg1;
 - (id)initWithColorPreset:(id)arg1 settingKind:(CDStruct_597dd055)arg2 order:(unsigned long long)arg3 derivedColorsByCategories:(id)arg4;

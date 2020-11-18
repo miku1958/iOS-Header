@@ -27,10 +27,11 @@
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
-- (unsigned long long)addOrUpdateMySuggestionEntries:(struct NSArray *)arg1 deleteMissing:(BOOL)arg2;
+- (unsigned long long)addOrUpdateMySuggestionEntries:(struct NSArray *)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
-- (id)currentBestLocation;
-- (unsigned long long)deleteMyEntries:(struct NSArray *)arg1;
+- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
+- (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
+- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 name:(struct NSString *)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;

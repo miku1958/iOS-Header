@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_updateConsiderExecuteAnnouncement:(id)arg1 location:(id)arg2;
 - (void)_updatePrepareForNextStep;
 - (int)transportType;
-- (void)updateGuidanceForProceedToRouteAtLocation:(CDStruct_2c43369c)arg1 routeMatch:(id)arg2 remainingTime:(double)arg3 distanceUntilDestination:(double)arg4;
+- (void)updateGuidanceForProceedToRouteAtLocation:(CDStruct_c3b9c2ee)arg1 routeMatch:(id)arg2 remainingTime:(double)arg3 distanceUntilDestination:(double)arg4;
 
 @end
 

@@ -8,37 +8,56 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTransitPlaceCard, NSString;
+@class GEOTransitPlaceCard, NSString, PBDataReader;
 
 @interface GEOPlaceActionDetails : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    NSString *_actionUrl;
     unsigned long long _animationID;
     unsigned long long _businessID;
+    NSString *_destinationApp;
+    NSString *_photoId;
     long long _placeID;
+    NSString *_richProviderId;
     double _searchResponseRelativeTimestamp;
     unsigned long long _targetID;
-    NSString *_actionUrl;
-    NSString *_destinationApp;
-    int _localSearchProviderID;
-    NSString *_photoId;
-    int _resultIndex;
-    NSString *_richProviderId;
     GEOTransitPlaceCard *_transitPlaceCard;
+    int _localSearchProviderID;
+    int _resultIndex;
     struct {
-        unsigned int animationID:1;
-        unsigned int businessID:1;
-        unsigned int placeID:1;
-        unsigned int searchResponseRelativeTimestamp:1;
-        unsigned int targetID:1;
-        unsigned int localSearchProviderID:1;
-        unsigned int resultIndex:1;
-    } _has;
+        unsigned int has_animationID:1;
+        unsigned int has_businessID:1;
+        unsigned int has_placeID:1;
+        unsigned int has_searchResponseRelativeTimestamp:1;
+        unsigned int has_targetID:1;
+        unsigned int has_localSearchProviderID:1;
+        unsigned int has_resultIndex:1;
+        unsigned int read_actionUrl:1;
+        unsigned int read_destinationApp:1;
+        unsigned int read_photoId:1;
+        unsigned int read_richProviderId:1;
+        unsigned int read_transitPlaceCard:1;
+        unsigned int wrote_actionUrl:1;
+        unsigned int wrote_animationID:1;
+        unsigned int wrote_businessID:1;
+        unsigned int wrote_destinationApp:1;
+        unsigned int wrote_photoId:1;
+        unsigned int wrote_placeID:1;
+        unsigned int wrote_richProviderId:1;
+        unsigned int wrote_searchResponseRelativeTimestamp:1;
+        unsigned int wrote_targetID:1;
+        unsigned int wrote_transitPlaceCard:1;
+        unsigned int wrote_localSearchProviderID:1;
+        unsigned int wrote_resultIndex:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *actionUrl; // @synthesize actionUrl=_actionUrl;
-@property (nonatomic) unsigned long long animationID; // @synthesize animationID=_animationID;
-@property (nonatomic) unsigned long long businessID; // @synthesize businessID=_businessID;
-@property (strong, nonatomic) NSString *destinationApp; // @synthesize destinationApp=_destinationApp;
+@property (strong, nonatomic) NSString *actionUrl;
+@property (nonatomic) unsigned long long animationID;
+@property (nonatomic) unsigned long long businessID;
+@property (strong, nonatomic) NSString *destinationApp;
 @property (readonly, nonatomic) BOOL hasActionUrl;
 @property (nonatomic) BOOL hasAnimationID;
 @property (nonatomic) BOOL hasBusinessID;
@@ -51,14 +70,14 @@
 @property (nonatomic) BOOL hasSearchResponseRelativeTimestamp;
 @property (nonatomic) BOOL hasTargetID;
 @property (readonly, nonatomic) BOOL hasTransitPlaceCard;
-@property (nonatomic) int localSearchProviderID; // @synthesize localSearchProviderID=_localSearchProviderID;
-@property (strong, nonatomic) NSString *photoId; // @synthesize photoId=_photoId;
-@property (nonatomic) long long placeID; // @synthesize placeID=_placeID;
-@property (nonatomic) int resultIndex; // @synthesize resultIndex=_resultIndex;
-@property (strong, nonatomic) NSString *richProviderId; // @synthesize richProviderId=_richProviderId;
-@property (nonatomic) double searchResponseRelativeTimestamp; // @synthesize searchResponseRelativeTimestamp=_searchResponseRelativeTimestamp;
-@property (nonatomic) unsigned long long targetID; // @synthesize targetID=_targetID;
-@property (strong, nonatomic) GEOTransitPlaceCard *transitPlaceCard; // @synthesize transitPlaceCard=_transitPlaceCard;
+@property (nonatomic) int localSearchProviderID;
+@property (strong, nonatomic) NSString *photoId;
+@property (nonatomic) long long placeID;
+@property (nonatomic) int resultIndex;
+@property (strong, nonatomic) NSString *richProviderId;
+@property (nonatomic) double searchResponseRelativeTimestamp;
+@property (nonatomic) unsigned long long targetID;
+@property (strong, nonatomic) GEOTransitPlaceCard *transitPlaceCard;
 
 + (id)actionDetailsWithChildPlace:(id)arg1 timestamp:(double)arg2 resultIndex:(int)arg3;
 + (id)actionDetailsWithDetails:(id)arg1 timestamp:(double)arg2;
@@ -67,7 +86,13 @@
 + (id)actionDetailsWithMapItem:(id)arg1 timestamp:(double)arg2 resultIndex:(int)arg3 targetID:(unsigned long long)arg4;
 + (id)actionDetailsWithMapItem:(id)arg1 timestamp:(double)arg2 resultIndex:(int)arg3 targetID:(unsigned long long)arg4 transitCardCategory:(int)arg5 transitSystem:(id)arg6 transitDepartureSequence:(id)arg7 transitIncident:(id)arg8;
 + (id)actionDetailsWithTargetID:(unsigned long long)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readActionUrl;
+- (void)_readDestinationApp;
+- (void)_readPhotoId;
+- (void)_readRichProviderId;
+- (void)_readTransitPlaceCard;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -78,6 +103,7 @@
 - (id)initWithMapItem:(id)arg1 relativeTimestamp:(double)arg2 resultIndex:(int)arg3 targetID:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

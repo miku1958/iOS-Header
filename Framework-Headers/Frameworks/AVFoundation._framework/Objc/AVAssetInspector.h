@@ -29,12 +29,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) AVMetadataItem *creationDate;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration;
 @property (readonly, nonatomic, getter=isExportable) BOOL exportable;
+@property (readonly, nonatomic) long long firstFragmentSequenceNumber;
+@property (readonly, nonatomic) long long fragmentCount;
 @property (readonly, nonatomic) NSString *identifyingTag;
 @property (readonly, nonatomic) NSString *identifyingTagClass;
 @property (readonly, nonatomic, getter=_instanceIdentifier) NSString *instanceIdentifier;
 @property (readonly, nonatomic) NSString *lyrics;
 @property (readonly, nonatomic) struct CGSize maximumVideoResolution;
 @property (readonly, nonatomic, getter=_mediaSelectionGroupDictionaries) NSArray *mediaSelectionGroupDictionaries;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 minimumTimeOffsetFromLive;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) int naturalTimeScale;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 overallDurationHint;
@@ -54,6 +57,7 @@ __attribute__((visibility("hidden")))
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)hasProtectedContent;
+- (BOOL)isCompatibleWithPhotosTranscodingServiceWithOptions:(id)arg1;
 - (id)makePropertyListForProxyWithOptions:(id)arg1;
 - (id)metadataForFormat:(id)arg1;
 

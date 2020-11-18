@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/CLLocationSmootherDelegate-Protocol.h>
+#import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
+#import <HealthDaemon/HDForegroundClientProcessObserver-Protocol.h>
 
 @class CLLocationSmoother, HDProfile, HDSmoothingTask, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HDWorkoutLocationSmoother : NSObject <CLLocationSmootherDelegate>
+@interface HDWorkoutLocationSmoother : NSObject <CLLocationSmootherDelegate, HDDatabaseProtectedDataObserver, HDForegroundClientProcessObserver>
 {
-    NSString *_xpcTransactionName;
     CLLocationSmoother *_smoother;
     NSObject<OS_dispatch_queue> *_queue;
     HDProfile *_profile;
@@ -21,6 +22,8 @@
     HDSmoothingTask *_currentSmoothingTask;
     NSObject<OS_dispatch_source> *_timeoutSource;
     double _smoothingTaskTimeout;
+    BOOL _needToCheckForLocationSeriesOnUnlock;
+    BOOL _isFirstLaunchAndNotYetSmoothed;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,10 +32,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_associationsSyncedForWorkout:(id)arg1;
 - (BOOL)_containsWorkoutObject:(id)arg1 error:(id *)arg2;
 - (id)_createWorkoutRouteWithMetadata:(id)arg1 sourceEntity:(id)arg2 locations:(id)arg3 error:(id *)arg4;
 - (BOOL)_deleteSample:(id)arg1 error:(id *)arg2;
-- (void)_finishSmoothingSample;
+- (void)_finishSmoothingSampleWithTask:(id)arg1;
 - (id)_locationsForSampleUUID:(id)arg1 error:(id *)arg2;
 - (void)_queue_cancelTimeout;
 - (id)_queue_createNewSeriesFromTask:(id)arg1 locations:(id)arg2 error:(id *)arg3;
@@ -40,12 +44,16 @@
 - (void)_queue_locationManagerDidSmoothLocations:(id)arg1 forTask:(id)arg2 error:(id)arg3;
 - (void)_queue_saveLocations:(id)arg1 forTask:(id)arg2 smoothingError:(id)arg3;
 - (void)_queue_scheduleSmoothingTimeoutTimerForTask:(id)arg1;
+- (void)_queue_smoothAllUnsmoothedLocationSeries;
 - (void)_queue_smoothNextSample;
 - (void)_queue_smoothRouteSampleForTask:(id)arg1;
 - (void)_queue_smoothingDidFailForTask:(id)arg1 error:(id)arg2 shouldRetry:(BOOL)arg3;
 - (void)_queue_startSmoothingTask:(id)arg1;
+- (void)_setupLocationObserversIfNeeded;
+- (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
+- (void)dealloc;
+- (void)foregroundClientProcessesDidChange:(id)arg1 previouslyForegroundBundleIdentifiers:(id)arg2;
 - (id)initWithProfile:(id)arg1;
-- (void)smoothRouteSample:(id)arg1;
 - (void)unitTest_smoothRouteSample:(id)arg1 withSmoother:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

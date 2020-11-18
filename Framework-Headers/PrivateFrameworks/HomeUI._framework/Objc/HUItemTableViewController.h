@@ -23,6 +23,7 @@
     BOOL _hasFinishedInitialLoad;
     BOOL _automaticallyUpdatesViewControllerTitle;
     BOOL _visibilityUpdatesEnabled;
+    BOOL _shouldUseAlternateCellColor;
     unsigned long long _appearState;
     HUItemTableViewScrollDestination *_pendingScrollDestination;
     HFItemManager *_itemManager;
@@ -49,6 +50,7 @@
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property (strong, nonatomic) HUItemTableViewScrollDestination *pendingScrollDestination; // @synthesize pendingScrollDestination=_pendingScrollDestination;
 @property (readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
+@property (nonatomic) BOOL shouldUseAlternateCellColor; // @synthesize shouldUseAlternateCellColor=_shouldUseAlternateCellColor;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
 @property (nonatomic) BOOL viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
@@ -66,6 +68,7 @@
 - (BOOL)_shouldHideFooterForSection:(long long)arg1;
 - (BOOL)_shouldHideHeaderForSection:(long long)arg1;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
+- (void)_updatePreferredContentSizeIfNecessary;
 - (void)_updateTableHeaderAndFooter;
 - (void)_updateTitle;
 - (id)_visibleCellForItem:(id)arg1;
@@ -103,9 +106,11 @@
 - (id)itemTableHeaderView;
 - (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
 - (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
+- (id)moduleController:(id)arg1 textFieldForVisibleItem:(id)arg2;
 - (id)moduleControllerForItem:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
+- (id)presentingViewControllerForModuleController:(id)arg1;
 - (void)recursivelyDisableItemUpdates:(BOOL)arg1 withReason:(id)arg2;
 - (void)scrollToItem:(id)arg1 animated:(BOOL)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;

@@ -33,8 +33,11 @@ __attribute__((visibility("hidden")))
 - (id)_imageLayout;
 - (id)_titleLayout;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)largeContentImage;
+- (id)largeContentTitle;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (BOOL)scalesLargeContentImage;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

@@ -18,11 +18,14 @@
 @property (readonly, getter=isBiometricStateEnabled) BOOL biometricStateEnabled;
 @property (readonly) NSNumber *lastRegisteredAccountIdentifier;
 
++ (id)applePayClassicNetworks;
++ (id)countryCode;
 + (id)diskBasedPaymentSheet;
 + (id)keychainLabelForAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)keychainLabelForCertWithAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)keychainLabelForKeyWithAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)sharedInstance;
++ (BOOL)shouldUseApplePayClassic;
 + (BOOL)shouldUseAutoEnrollment;
 + (BOOL)shouldUseExtendedEnrollment;
 + (BOOL)shouldUseUpsellEnrollment;

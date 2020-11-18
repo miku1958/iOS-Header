@@ -6,29 +6,28 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaSiriCue-Protocol.h>
 
-@interface SISchemaSiriCue : PBCodable <NSCopying>
+@class NSData, NSString;
+
+@interface SISchemaSiriCue : PBCodable <SISchemaSiriCue, NSSecureCoding>
 {
     int _siriCueType;
-    struct {
-        unsigned int siriCueType:1;
-    } _has;
 }
 
-@property (nonatomic) BOOL hasSiriCueType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int siriCueType; // @synthesize siriCueType=_siriCueType;
+@property (readonly) Class superclass;
 
-- (int)StringAsSiriCueType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)siriCueTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

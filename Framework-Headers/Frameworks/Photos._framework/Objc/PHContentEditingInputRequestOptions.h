@@ -6,21 +6,55 @@
 
 #import <objc/NSObject.h>
 
-@interface PHContentEditingInputRequestOptions : NSObject
+#import <Photos/PHMediaRequestThreadingOptions-Protocol.h>
+
+@class NSString;
+@protocol OS_dispatch_queue;
+
+@interface PHContentEditingInputRequestOptions : NSObject <PHMediaRequestThreadingOptions>
 {
     BOOL _networkAccessAllowed;
+    BOOL _shouldForceOriginalChoice;
     BOOL _dontAllowRAW;
+    BOOL _forceRunAsUnadjustedAsset;
+    BOOL _forceReturnFullLivePhoto;
+    BOOL _forcePrepareCurrentBaseVersionInAddition;
+    BOOL _editAsOvercapture;
+    BOOL _loadResourcesToFlip;
+    BOOL _skipDisplaySizeImage;
     CDUnknownBlockType _canHandleAdjustmentData;
     CDUnknownBlockType _progressHandler;
+    long long _contentMode;
+    CDUnknownBlockType _canHandleRAW;
+    unsigned long long _originalChoice;
+    NSObject<OS_dispatch_queue> *_resultHandlerQueue;
+    struct CGSize _targetSize;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType canHandleAdjustmentData; // @synthesize canHandleAdjustmentData=_canHandleAdjustmentData;
+@property (copy, nonatomic) CDUnknownBlockType canHandleRAW; // @synthesize canHandleRAW=_canHandleRAW;
+@property (nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dontAllowRAW; // @synthesize dontAllowRAW=_dontAllowRAW;
+@property (nonatomic) BOOL editAsOvercapture; // @synthesize editAsOvercapture=_editAsOvercapture;
+@property (nonatomic) BOOL forcePrepareCurrentBaseVersionInAddition; // @synthesize forcePrepareCurrentBaseVersionInAddition=_forcePrepareCurrentBaseVersionInAddition;
+@property (nonatomic) BOOL forceReturnFullLivePhoto; // @synthesize forceReturnFullLivePhoto=_forceReturnFullLivePhoto;
+@property (nonatomic) BOOL forceRunAsUnadjustedAsset; // @synthesize forceRunAsUnadjustedAsset=_forceRunAsUnadjustedAsset;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL loadResourcesToFlip; // @synthesize loadResourcesToFlip=_loadResourcesToFlip;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
+@property (nonatomic) unsigned long long originalChoice; // @synthesize originalChoice=_originalChoice;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
+@property (nonatomic) BOOL shouldForceOriginalChoice; // @synthesize shouldForceOriginalChoice=_shouldForceOriginalChoice;
+@property (nonatomic) BOOL skipDisplaySizeImage; // @synthesize skipDisplaySizeImage=_skipDisplaySizeImage;
+@property (readonly) Class superclass;
+@property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isSynchronous;
 
 @end
 

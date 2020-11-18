@@ -9,7 +9,7 @@
 #import <EventKitUI/EKDayOccurrenceViewDelegate-Protocol.h>
 #import <EventKitUI/EKUITintColorUpdateDelegate-Protocol.h>
 
-@class EKDayOccurrenceView, EKEvent, EKUIVisualEffectView, NSMutableArray, UIColor, UILabel, UIScrollView;
+@class EKDayOccurrenceView, EKEvent, EKUIVisualEffectView, NSMutableArray, NSMutableDictionary, UIColor, UILabel, UIScrollView;
 @protocol EKDayAllDayViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,11 +27,13 @@ __attribute__((visibility("hidden")))
     BOOL _usesSmallText;
     BOOL _showBirthdayCount;
     long long _birthdayCount;
+    long long _targetSizeClass;
     UIView *_dividerLineViewTop;
     UIView *_dividerLineViewBottom;
     EKUIVisualEffectView *_dividerLineSuperview;
     UIColor *_dividerLineVisualEffectColor;
     EKDayOccurrenceView *_birthdayCountOccurrenceView;
+    NSMutableDictionary *_temporaryViewCache;
     BOOL _showsBorderLines;
     BOOL _showsLabel;
     BOOL _hideOccurrenceBackground;
@@ -61,11 +63,14 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (double)_allDayAreaHeightForEventCount:(long long)arg1;
 - (double)_borderLineWidth;
+- (void)_clearTemporaryViews;
 - (void)_configureOccurrenceViewMarginAndPadding:(id)arg1;
 - (id)_findSelectedCopySubviewOfView:(id)arg1;
 - (double)_height;
+- (void)_saveTemporaryViews;
 - (id)_selectedCopyView;
 - (void)_setUpBirthdayCountViewIfNeeded;
+- (long long)_sizeClass;
 - (void)addViewToScroller:(id)arg1;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (BOOL)containsEvent:(id)arg1;
@@ -73,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToWindow;
 - (double)firstEventYOffset;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2;
 - (BOOL)isAllDayLabelHighlighted;
 - (void)layoutSubviews;
 - (double)nextAvailableOccurrenceViewYOrigin;

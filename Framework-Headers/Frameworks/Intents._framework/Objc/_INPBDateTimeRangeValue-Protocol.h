@@ -10,8 +10,10 @@
 
 @protocol _INPBDateTimeRangeValue <NSObject>
 
+@property (nonatomic) BOOL allDay;
 @property (nonatomic) long long endCalendar;
 @property (strong, nonatomic) _INPBDateTime *endDateTime;
+@property (nonatomic) BOOL hasAllDay;
 @property (nonatomic) BOOL hasEndCalendar;
 @property (readonly, nonatomic) BOOL hasEndDateTime;
 @property (readonly, nonatomic) BOOL hasRecurrence;

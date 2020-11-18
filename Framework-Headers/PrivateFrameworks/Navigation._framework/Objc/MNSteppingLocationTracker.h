@@ -6,23 +6,32 @@
 
 #import <Navigation/MNLocationTracker.h>
 
-@class GEORouteMatcher, MNTransitLocationCoordinator;
+#import <Navigation/MNArrivalUpdaterDelegate-Protocol.h>
+
+@class GEORouteMatcher, MNArrivalUpdater, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MNSteppingLocationTracker : MNLocationTracker
+@interface MNSteppingLocationTracker : MNLocationTracker <MNArrivalUpdaterDelegate>
 {
-    MNTransitLocationCoordinator *_transitLocationCoordinator;
     GEORouteMatcher *_routeMatcher;
+    MNArrivalUpdater *_arrivalUpdater;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_matchedLocationForLocation:(id)arg1;
+- (void)arrivalUpdaterDidArrive:(id)arg1;
 - (id)initWithNavigationSession:(id)arg1;
 - (id)matchedLocationForLocation:(id)arg1;
 - (void)resetForTracePlayerAtLocation:(id)arg1;
 - (void)startTracking;
 - (void)stopTracking;
 - (int)transportType;
+- (void)updateLocation:(id)arg1;
 
 @end
 

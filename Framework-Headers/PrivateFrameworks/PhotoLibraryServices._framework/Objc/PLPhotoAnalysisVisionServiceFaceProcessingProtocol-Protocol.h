@@ -12,7 +12,6 @@
 - (void)faceProcessingStatusForUserInterfaceWithContext:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)performFaceProcessingOnAssetWithLocalIdentifier:(NSString *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)personPromoterStatusWithContext:(NSDictionary *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)pingFaceWorkerWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)processPersonsWithContext:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)rebuildPersonsWithContext:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)reclusterFacesWithContext:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;

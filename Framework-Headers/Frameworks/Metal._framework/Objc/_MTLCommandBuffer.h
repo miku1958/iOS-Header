@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
 @class NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, _MTLCommandQueue;
 @protocol MTLCommandEncoder, MTLCommandQueue;
 
-@interface _MTLCommandBuffer : NSObject
+@interface _MTLCommandBuffer : _MTLObjectWithLabel
 {
     id<MTLCommandEncoder> _currentCommandEncoder;
     _MTLCommandQueue<MTLCommandQueue> *_queue;
@@ -34,7 +34,6 @@
     unsigned long long _completionHandlerExecutionTime;
     unsigned long long _status;
     NSError *_error;
-    NSString *_label;
     BOOL _skipRender;
     BOOL _profilingEnabled;
     BOOL _scheduledCallbacksDone;
@@ -69,7 +68,7 @@
 @property (readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property (readonly, nonatomic) double kernelEndTime;
 @property (readonly, nonatomic) double kernelStartTime;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (copy) NSString *label; // @dynamic label;
 @property (nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
 @property (nonatomic) unsigned long long numEncoders; // @synthesize numEncoders=_numEncoders;
 @property (nonatomic) unsigned long long numThisCommandBuffer; // @synthesize numThisCommandBuffer=_numThisCommandBuffer;
@@ -92,6 +91,7 @@
 - (BOOL)commitAndWaitUntilSubmitted;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)dealloc;
+- (void *)debugBufferContentsWithLength:(unsigned long long *)arg1;
 - (id)description;
 - (void)didCompleteWithStartTime:(unsigned long long)arg1 endTime:(unsigned long long)arg2 error:(id)arg3;
 - (void)didSchedule:(unsigned long long)arg1 error:(id)arg2;

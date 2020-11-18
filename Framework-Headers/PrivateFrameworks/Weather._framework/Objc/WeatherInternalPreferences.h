@@ -14,7 +14,9 @@
 }
 
 @property (readonly) BOOL isInternalInstall;
+@property (readonly) BOOL isV3Enabled;
 @property (strong) id<WeatherPreferencesPersistence> persistence; // @synthesize persistence=_persistence;
+@property (readonly) BOOL shouldShowUpdateTimestamp;
 
 + (id)sharedInternalPreferences;
 - (void).cxx_destruct;

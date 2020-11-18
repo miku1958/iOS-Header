@@ -15,8 +15,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL hf_isShortcutOwned;
+@property (readonly, nonatomic) BOOL hf_requiresConfirmationToRun;
 @property (readonly) Class superclass;
 
++ (id)hf_localizedStringForSignficantEvent:(id)arg1 offset:(id)arg2;
++ (id)hf_sanitizeTriggerName:(id)arg1 home:(id)arg2;
+- (id)hf_forceDisableReasons;
+- (BOOL)hf_shouldDisplayTrigger;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

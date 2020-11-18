@@ -15,7 +15,7 @@
 @property (nonatomic) BOOL allowsDetailScrubbing;
 @property (nonatomic) BOOL allowsWirelessPlayback;
 @property (nonatomic) BOOL alwaysAllowHidingControlsOverlay;
-@property (nonatomic) int artworkImageStyle;
+@property (nonatomic) long long artworkImageStyle;
 @property (nonatomic) BOOL attemptAutoPlayWhenControlsHidden;
 @property (nonatomic) BOOL autoPlayWhenLikelyToKeepUp;
 @property (readonly, nonatomic) UIView *backgroundView;

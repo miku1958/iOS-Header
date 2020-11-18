@@ -10,7 +10,7 @@
 #import <CoreDuet/_CDInteractionQuerying-Protocol.h>
 #import <CoreDuet/_CDInteractionRecording-Protocol.h>
 
-@class _CDInteractionStoreNotifier, _DKCoreDataStorage;
+@class _CDInteraction, _CDInteractionStoreNotifier, _DKCoreDataStorage;
 @protocol OS_dispatch_queue, _DKLocationHistorian;
 
 @interface _CDInteractionStore : NSObject <_CDInteractionRecording, _CDInteractionQuerying, _CDInteractionDeleting>
@@ -18,10 +18,13 @@
     _DKCoreDataStorage *_storage;
     NSObject<OS_dispatch_queue> *_workQueue;
     _CDInteractionStoreNotifier *_notifier;
+    NSObject<OS_dispatch_queue> *_pendingShareInteractionQueue;
+    _CDInteraction *_pendingShareSheetInteraction;
     id<_DKLocationHistorian> _locationHistorian;
 }
 
 @property (strong) id<_DKLocationHistorian> locationHistorian; // @synthesize locationHistorian=_locationHistorian;
+@property (strong, nonatomic) _CDInteraction *pendingShareSheetInteraction; // @synthesize pendingShareSheetInteraction=_pendingShareSheetInteraction;
 @property (readonly, nonatomic) _DKCoreDataStorage *storage; // @synthesize storage=_storage;
 
 + (id)defaultDatabaseDirectory;

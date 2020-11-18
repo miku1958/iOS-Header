@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) double initialAlpha; // @dynamic initialAlpha;
 
-+ (id)typeString;
 - (Class)handlerClass;
 - (int)transitionBehavior;
 

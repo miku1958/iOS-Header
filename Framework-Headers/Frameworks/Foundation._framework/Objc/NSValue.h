@@ -16,7 +16,6 @@
 @property (readonly) const char *objCType;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (void)initialize;
 + (BOOL)supportsSecureCoding;
 + (id)value:(const void *)arg1 withObjCType:(const char *)arg2;
 + (id)valueWithBytes:(const void *)arg1 objCType:(const char *)arg2;

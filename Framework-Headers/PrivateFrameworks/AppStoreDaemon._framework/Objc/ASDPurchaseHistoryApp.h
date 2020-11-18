@@ -15,17 +15,25 @@
     BOOL _familyShared;
     BOOL _firstParty;
     BOOL _hasMessagesExtension;
+    BOOL _hasP3;
     BOOL _hidden;
     BOOL _hiddenFromSpringboard;
     BOOL _is32BitOnly;
     BOOL _isPreorder;
     BOOL _supportsIPad;
     BOOL _supportsIPhone;
+    BOOL _supportsLayeredImage;
+    BOOL _watchAppDeliveredIniOSApp;
+    BOOL _watchAppRunsIndependently;
+    BOOL _watchOnly;
     unsigned int _purchaseToken;
     NSString *_bundleID;
+    NSString *_circularIconURLString;
     long long _contentRatingFlags;
     NSDate *_datePurchased;
     NSString *_developerName;
+    long long _genreID;
+    NSString *_genreName;
     NSString *_iconURLString;
     NSString *_longTitle;
     NSString *_ovalIconURLString;
@@ -35,16 +43,21 @@
     NSString *_redownloadParams;
     NSArray *_requiredCapabilities;
     long long _storeItemID;
+    NSString *_title;
     unsigned long long _lockerItemID;
 }
 
 @property (copy) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (copy) NSString *circularIconURLString; // @synthesize circularIconURLString=_circularIconURLString;
 @property long long contentRatingFlags; // @synthesize contentRatingFlags=_contentRatingFlags;
 @property (copy) NSDate *datePurchased; // @synthesize datePurchased=_datePurchased;
 @property (copy) NSString *developerName; // @synthesize developerName=_developerName;
 @property (getter=isFamilyShared) BOOL familyShared; // @synthesize familyShared=_familyShared;
 @property (getter=isFirstParty) BOOL firstParty; // @synthesize firstParty=_firstParty;
+@property long long genreID; // @synthesize genreID=_genreID;
+@property (copy) NSString *genreName; // @synthesize genreName=_genreName;
 @property BOOL hasMessagesExtension; // @synthesize hasMessagesExtension=_hasMessagesExtension;
+@property BOOL hasP3; // @synthesize hasP3=_hasP3;
 @property (getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (getter=isHiddenFromSpringboard) BOOL hiddenFromSpringboard; // @synthesize hiddenFromSpringboard=_hiddenFromSpringboard;
 @property (copy) NSString *iconURLString; // @synthesize iconURLString=_iconURLString;
@@ -62,6 +75,11 @@
 @property long long storeItemID; // @synthesize storeItemID=_storeItemID;
 @property BOOL supportsIPad; // @synthesize supportsIPad=_supportsIPad;
 @property BOOL supportsIPhone; // @synthesize supportsIPhone=_supportsIPhone;
+@property BOOL supportsLayeredImage; // @synthesize supportsLayeredImage=_supportsLayeredImage;
+@property (copy) NSString *title; // @synthesize title=_title;
+@property BOOL watchAppDeliveredIniOSApp; // @synthesize watchAppDeliveredIniOSApp=_watchAppDeliveredIniOSApp;
+@property BOOL watchAppRunsIndependently; // @synthesize watchAppRunsIndependently=_watchAppRunsIndependently;
+@property BOOL watchOnly; // @synthesize watchOnly=_watchOnly;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

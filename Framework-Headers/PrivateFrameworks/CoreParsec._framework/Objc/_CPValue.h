@@ -45,12 +45,12 @@
 @property (readonly, nonatomic) unsigned long long whichKind; // @synthesize whichKind=_whichKind;
 
 - (void).cxx_destruct;
+- (void)clearKind;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

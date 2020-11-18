@@ -12,29 +12,30 @@
 
 @interface GEOMapsTransitWidget : PBCodable <NSCopying>
 {
-    int _tappedItemIndex;
     NSMutableArray *_transitIncidentItems;
+    int _tappedItemIndex;
     int _transitMessageType;
     BOOL _everExpanded;
     BOOL _initiallyExpanded;
     struct {
-        unsigned int tappedItemIndex:1;
-        unsigned int transitMessageType:1;
-        unsigned int everExpanded:1;
-        unsigned int initiallyExpanded:1;
-    } _has;
+        unsigned int has_tappedItemIndex:1;
+        unsigned int has_transitMessageType:1;
+        unsigned int has_everExpanded:1;
+        unsigned int has_initiallyExpanded:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL everExpanded; // @synthesize everExpanded=_everExpanded;
+@property (nonatomic) BOOL everExpanded;
 @property (nonatomic) BOOL hasEverExpanded;
 @property (nonatomic) BOOL hasInitiallyExpanded;
 @property (nonatomic) BOOL hasTappedItemIndex;
 @property (nonatomic) BOOL hasTransitMessageType;
-@property (nonatomic) BOOL initiallyExpanded; // @synthesize initiallyExpanded=_initiallyExpanded;
-@property (nonatomic) int tappedItemIndex; // @synthesize tappedItemIndex=_tappedItemIndex;
-@property (strong, nonatomic) NSMutableArray *transitIncidentItems; // @synthesize transitIncidentItems=_transitIncidentItems;
-@property (nonatomic) int transitMessageType; // @synthesize transitMessageType=_transitMessageType;
+@property (nonatomic) BOOL initiallyExpanded;
+@property (nonatomic) int tappedItemIndex;
+@property (strong, nonatomic) NSMutableArray *transitIncidentItems;
+@property (nonatomic) int transitMessageType;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)transitIncidentItemType;
 - (void).cxx_destruct;
 - (int)StringAsTransitMessageType:(id)arg1;
@@ -47,6 +48,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transitIncidentItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)transitIncidentItemsCount;

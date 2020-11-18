@@ -25,7 +25,6 @@
     NSMutableArray *_characteristicDataBuffer;
     HKObserverSet *_fitnessMachineSessionObservers;
     HDFitnessMachineDataProducer *_fitnessMachineDataProducer;
-    NSDate *_machinePreferredUntilDate;
     HDHealthServiceManager *_serviceManager;
     HDFitnessMachineStateTimers *_fitnessMachineStateTimers;
     HDFitnessMachineAnalyticsCollector *_analyticsCollector;
@@ -38,7 +37,7 @@
 @property (readonly, nonatomic) HDFitnessMachineDataProducer *fitnessMachineDataProducer; // @synthesize fitnessMachineDataProducer=_fitnessMachineDataProducer;
 @property (strong, nonatomic) HDFitnessMachineStateTimers *fitnessMachineStateTimers; // @synthesize fitnessMachineStateTimers=_fitnessMachineStateTimers;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSDate *machinePreferredUntilDate; // @synthesize machinePreferredUntilDate=_machinePreferredUntilDate;
+@property (readonly, nonatomic) NSDate *machinePreferredUntilDate;
 @property (readonly, nonatomic) id<HDMetricsCollector> metricsCollector;
 @property (weak, nonatomic) HDHealthServiceManager *serviceManager; // @synthesize serviceManager=_serviceManager;
 @property (readonly) Class superclass;
@@ -81,6 +80,7 @@
 - (void)_queue_resetConnectionForcing:(BOOL)arg1;
 - (void)_queue_setConnectionState:(unsigned long long)arg1 error:(id)arg2;
 - (void)_queue_setDeviceInformation:(id)arg1;
+- (void)_queue_setMachinePreferredUntilDate:(id)arg1;
 - (void)_queue_setMachineState:(unsigned long long)arg1 date:(id)arg2;
 - (void)_queue_simulateDisconnect;
 - (void)_queue_tearDownAfterStopEvent;
@@ -95,6 +95,7 @@
 - (void)endFitnessMachineConnectionWithUUID:(id)arg1;
 - (void)endFitnessMachineSessionWithUUID:(id)arg1;
 - (void)finishSessionWithConfiguration:(id)arg1;
+- (unsigned long long)fitnessMachineTypeForSessionUUID:(id)arg1;
 - (void)hktest_setMachinePreferredUntilDate:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (void)markClientReadyWithConnectionUUID:(id)arg1;

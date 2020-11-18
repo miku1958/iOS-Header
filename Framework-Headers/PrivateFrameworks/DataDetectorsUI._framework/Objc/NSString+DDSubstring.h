@@ -7,7 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (DDSubstring)
-- (id)dd_leadingTextWithNumberOfCharacters:(long long)arg1 beforeRange:(struct _NSRange)arg2;
-- (id)dd_trailingTextWithNumberOfCharacters:(long long)arg1 afterRange:(struct _NSRange)arg2;
+- (id)dd_leadingTextWithNumberOfCharacters:(unsigned long long)arg1 beforeRange:(struct _NSRange)arg2;
+- (id)dd_trailingTextWithNumberOfCharacters:(unsigned long long)arg1 afterRange:(struct _NSRange)arg2;
 @end
 

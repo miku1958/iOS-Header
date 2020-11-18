@@ -40,7 +40,6 @@
 - (void).cxx_destruct;
 - (id)_submissionStringForValue:(id)arg1;
 - (id)displayFormatPaddingCharacters;
-- (id)displayFormatPaddingPrefix;
 - (id)displayString;
 - (unsigned long long)fieldType;
 - (BOOL)hasDisplayFormat;

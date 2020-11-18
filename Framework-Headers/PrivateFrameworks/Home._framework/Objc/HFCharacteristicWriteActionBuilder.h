@@ -25,6 +25,7 @@
 - (id)commitItem;
 - (id)copyForCreatingNewAction;
 - (id)createNewAction;
+- (BOOL)hasSameTargetAsAction:(id)arg1;
 - (id)initWithExistingObject:(id)arg1 inHome:(id)arg2;
 - (BOOL)requiresDeviceUnlock;
 - (BOOL)updateWithActionBuilder:(id)arg1;

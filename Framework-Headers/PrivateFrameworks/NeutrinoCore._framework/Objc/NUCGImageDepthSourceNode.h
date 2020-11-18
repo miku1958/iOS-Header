@@ -20,14 +20,14 @@
 @property (strong) NUCGImageSourceNode *sourceNode; // @synthesize sourceNode=_sourceNode;
 
 - (void).cxx_destruct;
-- (id)_evaluateDepthData:(out id *)arg1;
+- (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id *)arg2;
 - (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long *)arg2 error:(out id *)arg3;
-- (BOOL)canPropagateOriginalDepthData;
+- (BOOL)canPropagateOriginalAuxiliaryData;
 - (id)initWithSettings:(id)arg1;
 - (id)initWithSourceNode:(id)arg1 auxiliaryImageProperties:(id)arg2;
 - (id)pipelineOptionsForPipelineState:(id)arg1 error:(out id *)arg2;
-- (CDStruct_912cb5d2)pixelSize;
+- (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
 - (long long)sourceOrientation;
 
 @end

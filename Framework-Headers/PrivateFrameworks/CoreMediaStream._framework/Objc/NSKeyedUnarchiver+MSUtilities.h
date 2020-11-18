@@ -7,8 +7,8 @@
 #import <Foundation/NSKeyedUnarchiver.h>
 
 @interface NSKeyedUnarchiver (MSUtilities)
++ (id)MSSafeUnarchiveAllowedClasses;
 + (id)MSSafeUnarchiveObjectWithData:(id)arg1 outError:(id *)arg2;
 + (id)MSSafeUnarchiveObjectWithFile:(id)arg1 outError:(id *)arg2;
-+ (id)allowedClasses;
 @end
 

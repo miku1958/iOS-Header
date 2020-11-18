@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NotesShared/ICCache.h>
+#import <NotesShared/ICThumbnailDataCache.h>
 
-@interface ICAttachmentPreviewImageCache : ICCache
+@interface ICAttachmentPreviewImageCache : ICThumbnailDataCache
 {
 }
 

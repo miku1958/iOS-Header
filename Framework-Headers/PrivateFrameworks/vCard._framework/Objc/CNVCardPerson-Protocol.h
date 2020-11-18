@@ -17,6 +17,7 @@
 @property (readonly) NSArray *calendarURIs;
 @property (readonly) NSString *cardDAVUID;
 @property (readonly) NSString *department;
+@property (readonly) NSString *downtimeWhitelist;
 @property (readonly) NSArray *emailAddresses;
 @property (readonly) NSString *firstName;
 @property (readonly) NSDictionary *imageCropRects;

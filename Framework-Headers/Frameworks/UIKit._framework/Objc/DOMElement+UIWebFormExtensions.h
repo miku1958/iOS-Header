@@ -7,6 +7,13 @@
 #import <WebKitLegacy/DOMElement.h>
 
 @interface DOMElement (UIWebFormExtensions)
+- (BOOL)exceedsStructuralComplexity:(int)arg1;
 - (void)getTextWritingDirection:(long long *)arg1 override:(BOOL *)arg2;
+- (BOOL)hasCustomLineHeight;
+- (BOOL)inDocument;
+- (BOOL)isHidden;
+- (BOOL)selectable;
+- (id)tapHighlightColor;
+- (BOOL)touchCalloutEnabled;
 @end
 

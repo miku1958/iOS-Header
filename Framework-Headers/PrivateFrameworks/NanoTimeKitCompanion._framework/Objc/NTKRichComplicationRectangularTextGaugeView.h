@@ -6,23 +6,35 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationRectangularBaseView.h>
 
-@class NTKColoringLabel, NTKRichComplicationLineProgressView, UIImageView;
+@class NTKColoringLabel, NTKRichComplicationImageView, NTKRichComplicationLineProgressView;
 
 @interface NTKRichComplicationRectangularTextGaugeView : NTKRichComplicationRectangularBaseView
 {
-    UIImageView *_headerImageView;
+    NTKRichComplicationImageView *_headerImageView;
     NTKColoringLabel *_headerLabel;
     NTKColoringLabel *_line1Label;
     NTKRichComplicationLineProgressView *_progressView;
 }
 
+@property (readonly, nonatomic) NTKRichComplicationImageView *headerImageView; // @synthesize headerImageView=_headerImageView;
+@property (readonly, nonatomic) NTKColoringLabel *headerLabel; // @synthesize headerLabel=_headerLabel;
+@property (readonly, nonatomic) NTKColoringLabel *line1Label; // @synthesize line1Label=_line1Label;
+@property (readonly, nonatomic) NTKRichComplicationLineProgressView *progressView; // @synthesize progressView=_progressView;
+
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
++ (BOOL)isMeteredProgressView;
++ (long long)progressFillStyle;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_editingDidEnd;
+- (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (void)_handleTemplateUpdateWithReason:(long long)arg1 headerImageProvider:(id)arg2 headerTextProvider:(id)arg3 body1TextProvider:(id)arg4 gaugeProvider:(id)arg5;
 - (id)init;
 - (void)layoutSubviews;
+- (void)setPaused:(BOOL)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

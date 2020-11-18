@@ -46,7 +46,7 @@
 - (void)_beginMonitoringForNextCardWithBlock:(CDUnknownBlockType)arg1;
 - (void)_forwardProgressEvent:(unsigned long long)arg1 toCardViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)_forwardProgressEventToCardViewController:(unsigned long long)arg1;
-- (void)_logReferencedCommands;
+- (void)_insertCardViewController:(id)arg1;
 - (id)_metricsContextOfEventsForCard:(id)arg1;
 - (id)_metricsContextOfEventsForCardSection:(id)arg1 inCard:(id)arg2;
 - (void)_removeCardViewControllerFromParentViewController:(id)arg1;
@@ -84,6 +84,7 @@
 - (void)modalContainerViewControllerViewDidDisappear:(id)arg1;
 - (void)modalContainerViewControllerViewWillDisappear:(id)arg1;
 - (unsigned long long)navigationIndexOfCardViewController:(id)arg1;
+- (BOOL)performBeganEditingCommand:(id)arg1 forCardViewController:(id)arg2;
 - (BOOL)performNextCardCommand:(id)arg1 forCardViewController:(id)arg2;
 - (BOOL)performPunchoutCommand:(id)arg1 forCardViewController:(id)arg2;
 - (BOOL)performReferentialCommand:(id)arg1 forCardViewController:(id)arg2;
@@ -93,8 +94,10 @@
 - (void)setSnippet:(id)arg1;
 - (void)siriDidDeactivate;
 - (void)siriDidReceiveViewsWithDialogPhase:(id)arg1;
+- (void)siriDidScrollVisible:(BOOL)arg1;
 - (void)siriDidStartSpeakingWithIdentifier:(id)arg1;
 - (void)siriDidStopSpeakingWithIdentifier:(id)arg1 speechQueueIsEmpty:(BOOL)arg2;
+- (void)siriWillBeginScrolling;
 - (id)snippet;
 - (Class)transparentHeaderViewClass;
 - (BOOL)usePlatterStyle;

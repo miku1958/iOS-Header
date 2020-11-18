@@ -9,7 +9,7 @@
 #import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, _UIMirrorNinePatchView, _UIPopoverLayoutInfo, _UIPopoverView;
+@class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIView, UIViewController, UIVisualEffectView, _UIPopoverLayoutInfo, _UIPopoverView;
 @protocol UIPopoverPresentationControllerDelegate;
 
 @interface UIPopoverPresentationController : UIPresentationController <UIDimmingViewDelegate, UIGestureRecognizerDelegatePrivate>
@@ -17,7 +17,7 @@
     UIViewController *_contentViewController;
     _UIPopoverView *_popoverView;
     UIDimmingView *_dimmingView;
-    _UIMirrorNinePatchView *_shadowImageView;
+    UIVisualEffectView *_shadowView;
     UIView *_layoutConstraintView;
     struct CGRect _targetRectInEmbeddingView;
     UIBarButtonItem *_targetBarButtonItem;
@@ -33,6 +33,7 @@
     long long _popoverControllerStyle;
     BOOL _ignoresKeyboardNotifications;
     BOOL _canOverlapSourceViewRect;
+    BOOL _backgroundBlurDisabled;
     unsigned int draggingChildScrollViewCount;
     id _target;
     SEL _didEndSelector;
@@ -71,6 +72,9 @@
     BOOL __ignoreBarButtonItemSiblings;
     unsigned long long _permittedArrowDirections;
     unsigned long long _popoverArrowDirection;
+    UIView *_sourceOverlayView;
+    NSArray *_sourceOverlayViewConstraints;
+    UIView *_targetRectView;
     UIPopoverPresentationController *_retainedSelf;
     double __dimmingViewTopEdgeInset;
     struct UIEdgeInsets _popoverLayoutMargins;
@@ -107,9 +111,12 @@
 @property (nonatomic) BOOL showsOrientationMarker; // @synthesize showsOrientationMarker=_showsOrientationMarker;
 @property (nonatomic) BOOL showsPresentationArea; // @synthesize showsPresentationArea=_showsPresentationArea;
 @property (nonatomic) BOOL showsTargetRect; // @synthesize showsTargetRect=_showsTargetRect;
+@property (strong, nonatomic, getter=_sourceOverlayView, setter=_setSourceOverlayView:) UIView *sourceOverlayView; // @synthesize sourceOverlayView=_sourceOverlayView;
+@property (strong, nonatomic, getter=_sourceOverlayViewConstraints, setter=_setSourceOverlayViewConstraints:) NSArray *sourceOverlayViewConstraints; // @synthesize sourceOverlayViewConstraints=_sourceOverlayViewConstraints;
 @property (nonatomic) struct CGRect sourceRect; // @dynamic sourceRect;
 @property (strong, nonatomic) UIView *sourceView; // @dynamic sourceView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic, getter=_targetRectView, setter=_setTargetRectView:) UIView *targetRectView; // @synthesize targetRectView=_targetRectView;
 
 + (BOOL)_alwaysAllowPopoverPresentations;
 + (struct UIEdgeInsets)_defaultPopoverLayoutMarginsForPopoverControllerStyle:(long long)arg1 andContentViewController:(id)arg2;
@@ -118,9 +125,9 @@
 + (void)_setAlwaysAllowPopoverPresentations:(BOOL)arg1;
 + (BOOL)_showTargetRectPref;
 - (void).cxx_destruct;
-- (void)_adjustPopoverForNewContentSizeFromViewController:(id)arg1 allowShrink:(BOOL)arg2;
-- (BOOL)_alwaysAdaptToFullscreenForTraitCollection:(id)arg1;
+- (struct UIEdgeInsets)_additionalSafeAreaInsets;
 - (BOOL)_attemptsToAvoidKeyboard;
+- (BOOL)_backgroundBlurDisabled;
 - (id)_backgroundView;
 - (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (struct CGRect)_calculateContainingFrame;
@@ -135,8 +142,10 @@
 - (id)_dimmingView;
 - (void)_dismissPopoverAnimated:(BOOL)arg1 stateOnly:(BOOL)arg2 notifyDelegate:(BOOL)arg3;
 - (double)_dismissalAnimationDuration;
+- (struct UIEdgeInsets)_effectivePopoverLayoutMargins;
 - (BOOL)_embedsInView;
 - (id)_exceptionStringForNilSourceViewOrBarButtonItem;
+- (BOOL)_fallbackShouldDismiss;
 - (BOOL)_forcesPreferredAnimationControllers;
 - (void)_incrementSlideTransitionCount:(BOOL)arg1;
 - (id)_initialPresentationViewControllerForViewController:(id)arg1;
@@ -150,11 +159,8 @@
 - (id)_layoutInfoFromLayoutInfo:(id)arg1 forCurrentKeyboardStateAndHostingWindow:(id)arg2;
 - (BOOL)_manuallyHandlesContentViewControllerAppearanceCalls;
 - (void)_moveAwayFromTheKeyboard:(id)arg1;
-- (void)_newViewControllerWasPushed:(id)arg1;
-- (void)_newViewControllerWillBePushed:(id)arg1;
 - (id)_passthroughViews;
 - (void)_performHierarchyCheckOnViewController:(id)arg1;
-- (BOOL)_popoverBackgroundViewWantsDefaultContentAppearance;
 - (long long)_popoverControllerStyle;
 - (id)_popoverHostingWindow;
 - (BOOL)_popoverIsDismissingBecauseDimmingViewWasTapped;
@@ -166,10 +172,14 @@
 - (BOOL)_presentationPotentiallyUnderlapsStatusBar;
 - (int)_presentationState;
 - (id)_presentationView;
+- (void)_realSourceViewDidChangeFromView:(id)arg1 toView:(id)arg2;
 - (void)_resetSlideTransitionCount;
 - (void)_scrollViewDidEndDragging:(id)arg1;
 - (void)_scrollViewWillBeginDragging:(id)arg1;
 - (void)_sendDelegateWillRepositionToRect;
+- (void)_sendFallbackDidDismiss;
+- (void)_sendFallbackWillDismiss;
+- (void)_setBackgroundBlurDisabled:(BOOL)arg1;
 - (void)_setContentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_setContentViewController:(id)arg1 backgroundStyle:(long long)arg2 animated:(BOOL)arg3;
 - (void)_setGesturesEnabled:(BOOL)arg1;
@@ -178,16 +188,13 @@
 - (void)_setPresentationState:(int)arg1;
 - (BOOL)_shouldKeepCurrentFirstResponder;
 - (BOOL)_shouldOccludeDuringPresentation;
+- (BOOL)_shouldPopoverContentExtendOverArrowForViewController:(id)arg1 backgroundViewClass:(Class)arg2;
 - (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (unsigned long long)_slideTransitionCount;
-- (struct CGRect)_sourceRect;
 - (struct CGRect)_sourceRectInContainerView;
-- (id)_sourceView;
 - (void)_startWatchingForKeyboardNotificationsIfNecessary;
-- (void)_startWatchingForNavigationControllerNotifications:(id)arg1;
 - (void)_startWatchingForScrollViewNotifications;
 - (void)_stopWatchingForKeyboardNotifications;
-- (void)_stopWatchingForNavigationControllerNotifications:(id)arg1;
 - (void)_stopWatchingForNotifications;
 - (void)_stopWatchingForScrollViewNotifications;
 - (void)_transitionFromDidEnd;
@@ -196,8 +203,9 @@
 - (void)_transitionToDidEnd;
 - (void)_transitionToWillBegin;
 - (void)_updateShadowFrame;
+- (void)_updateSourceOverlayViewConstraints;
 - (id)arrowBackgroundColor;
-- (void)containerViewWillLayoutSubviews;
+- (void)containerViewDidLayoutSubviews;
 - (void)dealloc;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;
@@ -221,7 +229,7 @@
 - (void)setPopoverFrame:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)set_ignoreBarButtonItemSiblings:(BOOL)arg1;
 - (BOOL)shouldPresentInFullscreen;
-- (BOOL)shouldRemovePresentersView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

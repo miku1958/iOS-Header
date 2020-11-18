@@ -36,6 +36,8 @@ __attribute__((visibility("hidden")))
     UIView *_gridContainerView;
     NSMutableDictionary *_gridParentViews;
     double _cachedWidthForOffMainThreadWork;
+    long long _sizeClass;
+    BOOL _needsLayoutInWindow;
     BOOL _rightBorderInsetsOccurrences;
     BOOL _showsTimeLine;
     BOOL _showsTimeMarker;
@@ -87,10 +89,12 @@ __attribute__((visibility("hidden")))
 - (double)_dayWidth;
 - (id)_generateGridImage;
 - (void)_layoutHighlight;
+- (long long)_sizeClass;
 - (void)_updateTimeMarker;
 - (double)bottomPadding;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 backgroundColor:(id)arg2 opaque:(BOOL)arg3 numberOfDaysToDisplay:(unsigned long long)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2 backgroundColor:(id)arg3 opaque:(BOOL)arg4 numberOfDaysToDisplay:(unsigned long long)arg5;
 - (void)layoutSubviews;
 - (double)positionOfSecond:(long long)arg1;
 - (struct CGRect)rectForStartSeconds:(long long)arg1 endSeconds:(long long)arg2;

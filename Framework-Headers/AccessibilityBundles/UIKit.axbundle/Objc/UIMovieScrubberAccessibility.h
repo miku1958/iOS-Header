@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityClearChildren;
@@ -24,12 +25,12 @@
 - (double)_accessibilitySliderDeltaForFrame:(struct CGRect)arg1;
 - (void)_initSubviews;
 - (void)_setValue:(double)arg1 andSendAction:(BOOL)arg2;
-- (void)_sliderAnimationDidStop:(id)arg1 finished:(id)arg2 context:(void *)arg3;
-- (void)_trimAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)_sliderAnimationDidStop:(BOOL)arg1;
+- (void)_trimAnimationDidStop:(BOOL)arg1 glassView:(id)arg2;
 - (void)_updateThumbLocation;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;

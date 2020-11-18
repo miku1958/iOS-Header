@@ -6,12 +6,13 @@
 
 #import <MessageUI/UIDropInteractionDelegate-Protocol.h>
 
-@class UIDropInteraction;
+@class UIDragItem, UIDropInteraction;
 @protocol UIDropSession;
 
 @protocol UIDropInteractionDelegate_Private <UIDropInteractionDelegate>
 
 @optional
 - (long long)_dropInteraction:(UIDropInteraction *)arg1 dataOwnerForSession:(id<UIDropSession>)arg2;
+- (void)_dropInteraction:(UIDropInteraction *)arg1 delayedPreviewProviderForDroppingItem:(UIDragItem *)arg2 previewProvider:(void (^)(UITargetedDragPreview *))arg3;
 @end
 

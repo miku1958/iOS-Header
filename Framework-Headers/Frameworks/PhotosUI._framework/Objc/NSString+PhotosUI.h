@@ -7,7 +7,6 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (PhotosUI)
-- (BOOL)pu_endsWithFullStopOrEquivalentPunctuationMark;
 - (long long)pu_platformAgnosticHash;
 - (id)pu_stringByIndentingNewLines;
 - (id)pu_stringByRepeating:(long long)arg1;

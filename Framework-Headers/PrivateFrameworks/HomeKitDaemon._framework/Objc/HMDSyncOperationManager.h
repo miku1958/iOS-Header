@@ -27,6 +27,7 @@
     NSMutableArray *_cloudZoneFetchOperations;
     NSMutableDictionary *_cloudZoneFetchOperationsMap;
     NSMutableArray *_cloudCancelPauseOperations;
+    NSMutableArray *_cloudQueryDatabaseOperations;
     long long _pauseCloudPushLevel;
     HMFExponentialBackoffTimer *_cloudPushDelayTimer;
 }
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) HMDSyncOperationQueue *cloudFetchOperations; // @synthesize cloudFetchOperations=_cloudFetchOperations;
 @property (strong, nonatomic) HMFExponentialBackoffTimer *cloudPushDelayTimer; // @synthesize cloudPushDelayTimer=_cloudPushDelayTimer;
 @property (strong, nonatomic) HMDSyncOperationQueue *cloudPushOperations; // @synthesize cloudPushOperations=_cloudPushOperations;
+@property (strong, nonatomic) NSMutableArray *cloudQueryDatabaseOperations; // @synthesize cloudQueryDatabaseOperations=_cloudQueryDatabaseOperations;
 @property (strong, nonatomic) NSMutableArray *cloudVerifyAccountOperations; // @synthesize cloudVerifyAccountOperations=_cloudVerifyAccountOperations;
 @property (strong, nonatomic) NSMutableArray *cloudZoneFetchOperations; // @synthesize cloudZoneFetchOperations=_cloudZoneFetchOperations;
 @property (strong, nonatomic) NSMutableDictionary *cloudZoneFetchOperationsMap; // @synthesize cloudZoneFetchOperationsMap=_cloudZoneFetchOperationsMap;

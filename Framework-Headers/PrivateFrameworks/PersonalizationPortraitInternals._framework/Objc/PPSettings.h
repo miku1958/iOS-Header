@@ -12,17 +12,20 @@
 @interface PPSettings : NSObject
 {
     NSUserDefaults *_portraitDefaults;
-    NSUserDefaults *_spotlightDefaults;
+    NSUserDefaults *_canLearnFromAppDefaults;
     _PASLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_semaphore> *_initializationComplete;
-    PPKVOObserver *_spotlightKVOObserver;
-    PPKVOObserver *_portraitKVOObserver;
+    PPKVOObserver *_canLearnFromAppKVOObserver;
+    PPKVOObserver *_weightKVOObserver;
+    PPKVOObserver *_abGroupKVObserver;
+    PPKVOObserver *_queryPlanLoggingKVOObserver;
 }
 
 @property (nonatomic, getter=isAppConnectionsLocationsEnabled) BOOL appConnectionsLocationsEnabled;
 
 + (void)clearTestSettings;
++ (id)cloudSyncDisabledFirstPartyBundleIds;
 + (void)disableBundleIdentifier:(id)arg1;
 + (void)initialize;
 + (BOOL)isVoiceAssistantEnabled;
@@ -36,19 +39,34 @@
 - (void)_purgeRecordsForDisabledBundleIdsAsync;
 - (void)_refreshCloudKitDisabledBundleIds;
 - (void)_refreshDisabledBundleIds;
-- (void)_rewriteSyncStateToDisableBundleId:(id)arg1;
 - (void)_triggerDelayedBundleIdPurge;
 - (void)_triggerDelayedOperationWithCoalescingToken:(_Atomic int *)arg1 operation:(CDUnknownBlockType)arg2;
 - (void)_updateAppConnectionsSettings;
+- (void)_updateQueryPlanLogging;
+- (id)abGroupOverride;
+- (id)assetDefaultBundleOverridePathForAssetIdentifier:(id)arg1;
+- (double)assetMetadataRefreshIntervalSeconds;
 - (BOOL)bundleIdentifierIsEnabledForCloudKit:(id)arg1;
 - (BOOL)bundleIdentifierIsEnabledForDonation:(id)arg1;
+- (void)clearAssetMetadataRefreshIntervalSeconds;
 - (void)deregisterDisabledBundleIdentifierChangeHandlerWithToken:(int)arg1;
+- (void)deregisterQueryPlanLoggingChangeHandlerWithToken:(int)arg1;
+- (id)entitiesBackfilledTimestamp;
+- (id)entitiesMappingPreviousTrieSha256;
 - (id)init;
+- (BOOL)isAuthorizedToLogLocation;
+- (BOOL)queryPlanLoggingEnabled;
 - (void)refreshCloudKitDisabledBundleIdsAsync;
 - (void)registerCloudKitDisabledBundleIdRewriteHandler;
 - (void)registerDisabledBundleIdPurgeHandler;
 - (int)registerDisabledBundleIdentifierChangeHandler:(CDUnknownBlockType)arg1;
+- (int)registerQueryPlanLoggingChangeHandler:(CDUnknownBlockType)arg1;
 - (void)rewriteSyncStateForDisabledBundleIdsAsync;
+- (void)setAssetDefaultBundleOverridePath:(id)arg1 assetIdentifier:(id)arg2;
+- (void)setAssetMetadataRefreshIntervalSeconds:(double)arg1;
+- (void)setEntitiesBackfilledTimestamp:(id)arg1;
+- (void)setEntitiesMappingTrieSha256:(id)arg1;
+- (void)setQueryPlanLoggingEnabled:(BOOL)arg1;
 - (BOOL)showLocationsFoundInApps;
 - (void)triggerDelayedCloudSyncRewrite;
 - (id)userDefaults;

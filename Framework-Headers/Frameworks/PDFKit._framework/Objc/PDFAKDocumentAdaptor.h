@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <PDFKit/AKControllerDelegateProtocol-Protocol.h>
+#import <PDFKit/PKRulerHostingDelegate-Protocol.h>
 
 @class AKController, AKModelController, NSString, PDFAKDocumentAdaptorPrivate, PDFDocument, PDFView, UIView;
 @protocol PDFAKControllerDelegateProtocol;
 
 __attribute__((visibility("hidden")))
-@interface PDFAKDocumentAdaptor : NSObject <AKControllerDelegateProtocol>
+@interface PDFAKDocumentAdaptor : NSObject <AKControllerDelegateProtocol, PKRulerHostingDelegate>
 {
     PDFAKDocumentAdaptorPrivate *_private;
 }
@@ -28,6 +29,8 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) PDFView *pdfView;
 @property (readonly) Class superclass;
 
++ (BOOL)requirePasswordsUIEnabledForThisThread;
++ (void)setRequirePasswordsUIEnabledForThisThread:(BOOL)arg1;
 - (void).cxx_destruct;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
 - (void)_delayedModelBaseScaleFactorCalculation;
@@ -36,8 +39,6 @@ __attribute__((visibility("hidden")))
 - (void)_pdfViewDidLayout:(id)arg1;
 - (void)_scheduleDelayedModelBaseScaleFactorCalculation;
 - (void)_teardown;
-- (id)characterIndexesForQuadPoints:(id)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
-- (void)clearHighlightableSelectionForAnnotationController:(id)arg1;
 - (id)controller:(id)arg1 willSetToolbarItems:(id)arg2;
 - (void)controllerDidEnterToolMode:(id)arg1;
 - (void)controllerDidExitToolMode:(id)arg1;
@@ -54,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (void)editCheckpointReachedForAnnotationController:(id)arg1;
 - (void)editDetectedForAnnotationController:(id)arg1;
 - (BOOL)hasHighlightableSelectionForAnnotationController:(id)arg1;
-- (id)highlightableSelectionCharacterIndexesOnPageAtIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
 - (id)initWithPDFDocument:(id)arg1 andView:(id)arg2;
 - (void)installDrawingGestureRecognizer:(id)arg1 forPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (id)layerContainingQuickBackgroundForLoupeOnOverlayAtPageIndex:(unsigned long long)arg1 forAnnotationController:(id)arg2;
@@ -70,9 +70,10 @@ __attribute__((visibility("hidden")))
 - (id)popoverPresentingViewControllerForAnnotationController:(id)arg1;
 - (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;
 - (struct CGRect)positioningRectForCandidatePicker;
-- (id)quadPointsForCharacterIndexes:(id)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (void)rotateLeft:(id)arg1;
 - (void)rotateRight:(id)arg1;
+- (BOOL)rulerHostWantsSharedRuler;
+- (id)rulerHostingView;
 - (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (void)teardown;

@@ -6,27 +6,53 @@
 
 #import <objc/NSObject.h>
 
-@class GCExtendedGamepad, GCGamepad, GCMicroGamepad, GCMotion, NSArray, NSString;
+@class GCExtendedGamepad, GCGamepad, GCMicroGamepad, GCMotion, GCStereoAR, NSMutableArray, NSString;
 @protocol GCNamedProfile, OS_dispatch_queue;
 
 @interface GCController : NSObject
 {
+    NSString *_description;
+    BOOL _allHIDDevicesConnected;
+    BOOL _forwarded;
+    BOOL _snapshot;
+    BOOL _physicalDeviceUsesCompass;
+    BOOL _published;
+    unsigned int _service;
+    NSString *_vendorName;
+    NSString *_debugName;
+    CDUnknownBlockType _controllerPausedHandler;
+    NSObject<OS_dispatch_queue> *_handlerQueue;
+    long long _playerIndex;
+    NSString *_productCategory;
+    id<GCNamedProfile> _profile;
+    NSMutableArray *_hidServices;
+    NSString *_physicalDeviceUniqueID;
+    unsigned long long _deviceHash;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType __deprecated_controllerPausedHandler;
+@property (getter=areAllHIDDevicesConnected) BOOL allHIDDevicesConnected; // @synthesize allHIDDevicesConnected=_allHIDDevicesConnected;
 @property (readonly, nonatomic, getter=isAttachedToDevice) BOOL attachedToDevice;
-@property (copy, nonatomic) CDUnknownBlockType controllerPausedHandler;
+@property (copy, nonatomic) CDUnknownBlockType controllerPausedHandler; // @synthesize controllerPausedHandler=_controllerPausedHandler;
+@property (copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
+@property (nonatomic) unsigned long long deviceHash; // @synthesize deviceHash=_deviceHash;
 @property (readonly, strong, nonatomic) GCExtendedGamepad *extendedGamepad;
+@property (nonatomic, getter=isForwarded) BOOL forwarded; // @synthesize forwarded=_forwarded;
 @property (readonly, strong, nonatomic) GCGamepad *gamepad;
-@property (strong) NSObject<OS_dispatch_queue> *handlerQueue;
-@property (readonly, strong, nonatomic) NSArray *hidServices;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
+@property (strong, nonatomic) NSMutableArray *hidServices; // @synthesize hidServices=_hidServices;
 @property (readonly, strong, nonatomic) GCMicroGamepad *microGamepad;
 @property (readonly, strong, nonatomic) GCMotion *motion;
-@property (strong, nonatomic) NSString *physicalDeviceUniqueID;
-@property (nonatomic) BOOL physicalDeviceUsesCompass;
-@property (nonatomic) long long playerIndex;
-@property (strong, nonatomic) id<GCNamedProfile> profile;
-@property (readonly, nonatomic) unsigned int service;
-@property (readonly, copy, nonatomic) NSString *vendorName;
+@property (strong, nonatomic) NSString *physicalDeviceUniqueID; // @synthesize physicalDeviceUniqueID=_physicalDeviceUniqueID;
+@property (nonatomic) BOOL physicalDeviceUsesCompass; // @synthesize physicalDeviceUsesCompass=_physicalDeviceUsesCompass;
+@property (nonatomic) long long playerIndex; // @synthesize playerIndex=_playerIndex;
+@property (strong, nonatomic) NSString *productCategory; // @synthesize productCategory=_productCategory;
+@property (strong, nonatomic) id<GCNamedProfile> profile; // @synthesize profile=_profile;
+@property (getter=isPublished) BOOL published; // @synthesize published=_published;
+@property (nonatomic) unsigned int service; // @synthesize service=_service;
+@property (readonly, getter=isSnapshot) BOOL snapshot; // @synthesize snapshot=_snapshot;
+@property (readonly, strong, nonatomic) GCStereoAR *stereoAR;
+@property (copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 
 + (void)__daemon__addController:(id)arg1;
 + (void)__daemon__appDidEnterBackground;
@@ -41,16 +67,28 @@
 + (void)__open__;
 + (void)__setLogger__:(CDUnknownBlockType)arg1;
 + (void)_startWirelessControllerDiscoveryWithCompanions:(BOOL)arg1 btClassic:(BOOL)arg2 btle:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (id)controllerWithExtendedGamepad;
++ (id)controllerWithMicroGamepad;
++ (id)controllerWithStereoAR;
 + (id)controllers;
-+ (void)handleUIEvent:(id)arg1;
 + (void)startWirelessControllerDiscoveryWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)stopWirelessControllerDiscovery;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)_setSnapshot:(BOOL)arg1;
 - (void)addServiceRefs:(id)arg1;
+- (id)capture;
+- (void)clearServiceRef;
 - (void *)createInputBufferForDevice:(struct __IOHIDDevice *)arg1 withSize:(unsigned long long)arg2;
-- (unsigned long long)deviceHash;
+- (void)dealloc;
+- (id)description;
+- (BOOL)displayTrueSiriRemoteName;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasServiceRef:(struct __IOHIDServiceClient *)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithProfile:(id)arg1;
+- (id)initWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (BOOL)isEqualToController:(id)arg1;
-- (BOOL)isForwarded;
 - (void)removeServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (unsigned int)sampleRate;
 - (BOOL)supportsMotionLite;

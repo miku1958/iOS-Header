@@ -26,16 +26,12 @@
 - (void)_didEnterBackgroundNotification;
 - (BOOL)_save;
 - (void)_willTerminateNotification;
-- (id)attributesForIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithDiskCacheFilepath:(id)arg1;
 - (void)invalidateDiskCaches;
 - (void)invalidateMemoryCaches;
 - (BOOL)save;
-- (void)setAttributes:(id)arg1 forIdentifier:(id)arg2;
-- (void)setValue:(id)arg1 forKey:(id)arg2 andIdentifier:(id)arg3;
-- (id)valueForKey:(id)arg1 andIdentifier:(id)arg2;
 
 @end
 

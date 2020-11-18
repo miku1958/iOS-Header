@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
 #import <Metal/MTLPipelineLibrarySPI-Protocol.h>
 
@@ -12,13 +12,12 @@
 @protocol MTLDevice, MTLPipelineCache;
 
 __attribute__((visibility("hidden")))
-@interface _MTLPipelineLibrary : NSObject <MTLPipelineLibrarySPI>
+@interface _MTLPipelineLibrary : _MTLObjectWithLabel <MTLPipelineLibrarySPI>
 {
     struct PipelineLibraryData *_pipelineLibraryData;
-    BOOL _disableRunTimeCompilation;
-    NSString *_label;
     id<MTLDevice> _device;
     NSArray *_pipelineNames;
+    BOOL _disableRunTimeCompilation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property BOOL disableRunTimeCompilation; // @synthesize disableRunTimeCompilation=_disableRunTimeCompilation;
 @property (readonly, nonatomic) id<MTLPipelineCache> functionCache; // @dynamic functionCache;
 @property (readonly) unsigned long long hash;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (copy) NSString *label; // @dynamic label;
 @property (readonly, nonatomic) id<MTLPipelineCache> pipelineCache; // @dynamic pipelineCache;
 @property (readonly) NSArray *pipelineNames; // @synthesize pipelineNames=_pipelineNames;
 @property (readonly) Class superclass;

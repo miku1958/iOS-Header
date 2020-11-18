@@ -11,16 +11,16 @@
 #import <HealthDaemon/HKDataFlowLinkProcessor-Protocol.h>
 #import <HealthDaemon/HKGymKitDataSourceServerInterface-Protocol.h>
 
-@class HDWorkoutBasicDataSource, HKDataFlowLink, HKSource, HKWorkoutDataSourceConfiguration, NSObject, NSString, NSUUID;
-@protocol HDWorkoutDataAccumulator, OS_dispatch_queue;
+@class HDWorkoutBasicDataSource, HKDataFlowLink, HKWorkoutDataSourceConfiguration, NSSet, NSString, NSUUID;
+@protocol HDWorkoutDataAccumulator;
 
 @interface HDGymKitDataSource : HDStandardTaskServer <HKGymKitDataSourceServerInterface, HKDataFlowLinkProcessor, HDWorkoutDataSource, HDWorkoutDataDestination>
 {
     HKWorkoutDataSourceConfiguration *_dataSourceConfiguration;
     HDWorkoutBasicDataSource *_basicDataSource;
-    NSObject<OS_dispatch_queue> *_queue;
     HKDataFlowLink *_workoutDataFlowLink;
-    HKSource *_localDeviceSource;
+    NSSet *_machineSourceTypes;
+    NSSet *_localDevicePreferredTypes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,17 +35,16 @@
 + (Class)configurationClass;
 + (id)requiredEntitlements;
 + (id)taskIdentifier;
-+ (BOOL)validateConfiguration:(id)arg1 error:(out id *)arg2;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
-- (id)_localDevicePreferredSampleTypes;
-- (id)_queue_localDeviceSource;
-- (BOOL)_queue_shouldAddSample:(id)arg1;
+- (void)_setupTypes;
+- (BOOL)_shouldAddSample:(id)arg1;
 - (void)addMetadata:(id)arg1 dataSource:(id)arg2;
 - (void)addSamples:(id)arg1 dataSource:(id)arg2;
 - (void)addWorkoutEvents:(id)arg1 dataSource:(id)arg2;
 - (void)connectionInvalidated;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (id)quantityTypesToIncludeWhilePaused;
 - (id)remoteInterface;
 - (void)remote_setDataSourceConfiguration:(id)arg1;

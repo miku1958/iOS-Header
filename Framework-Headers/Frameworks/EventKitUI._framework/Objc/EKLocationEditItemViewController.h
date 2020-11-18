@@ -11,7 +11,7 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSString, UISearchBar, UITableView;
+@class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSMutableDictionary, NSString, UISearchBar, UITableView;
 
 @interface EKLocationEditItemViewController : EKEditItemViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, EKUILocationSearchModelDelegate>
 {
@@ -19,9 +19,11 @@
     UITableView *_tableView;
     EKUILocationSearchModel *_searchModel;
     EKCalendarItem *_calendarItem;
+    NSMutableDictionary *_cachedConferenceRooms;
     struct CGSize _preferredContentSize;
     BOOL _supportsStructuredLocations;
     BOOL _tableConstraintsInstalled;
+    BOOL _onlyAllowConferenceRooms;
     BOOL _needsSave;
     BOOL _onlyDisplayMapLocations;
     EKStructuredLocation *_structuredLocation;
@@ -33,6 +35,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL needsSave; // @synthesize needsSave=_needsSave;
+@property (nonatomic) BOOL onlyAllowConferenceRooms;
 @property (nonatomic) BOOL onlyDisplayMapLocations; // @synthesize onlyDisplayMapLocations=_onlyDisplayMapLocations;
 @property (strong, nonatomic) EKUIConferenceRoom *selectedConferenceRoom; // @synthesize selectedConferenceRoom=_selectedConferenceRoom;
 @property (strong, nonatomic) EKStructuredLocation *selectedLocation; // @synthesize selectedLocation=_selectedLocation;
@@ -41,8 +44,10 @@
 
 + (id)_sectionNameForSection:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (id)_cellForConferenceRoomRowInTableView:(id)arg1 indexPath:(id)arg2;
+- (id)_cellForConferenceRoom:(id)arg1 atIndexPath:(id)arg2;
+- (void)_setupConstraints;
 - (id)calendarItemForSearchModel:(id)arg1;
+- (id)conferenceRoomForRecent:(id)arg1;
 - (void)conferenceRoomSearchUpdated:(id)arg1;
 - (id)contactsImage;
 - (void)contactsSearchUpdated:(id)arg1;
@@ -50,7 +55,6 @@
 - (void)dealloc;
 - (void)eventsSearchUpdated:(id)arg1;
 - (void)frequentsSearchUpdated:(id)arg1;
-- (id)greyPinImage;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 styleProvider:(id)arg2 calendarItem:(id)arg3 eventStore:(id)arg4;
 - (id)itemAtIndexPath:(id)arg1;
@@ -59,13 +63,14 @@
 - (void)locationSearchModel:(id)arg1 selectedLocation:(id)arg2 withError:(id)arg3;
 - (void)mapSearchUpdated:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)pinImage;
 - (struct CGSize)preferredContentSize;
 - (BOOL)presentModally;
 - (void)recentsSearchUpdated:(id)arg1;
-- (id)redPinImage;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
+- (BOOL)shouldIncludeConferenceRoom:(id)arg1;
 - (BOOL)showingCurrentLocationRow;
 - (BOOL)showingTextRow;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
@@ -77,10 +82,10 @@
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 wantsHeaderForSection:(long long)arg2;
 - (id)title;
-- (void)updateViewConstraints;
 - (void)useAsString:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

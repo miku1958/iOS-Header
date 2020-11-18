@@ -8,18 +8,20 @@
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, _MRDeviceInfoMessageProtobuf, _MRNowPlayingPlayerPathProtobuf, _MROriginProtobuf;
+@class NSMutableArray, NSMutableDictionary, NSNumber, _MRDeviceInfoMessageProtobuf, _MRNowPlayingPlayerPathProtobuf, _MROriginProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClientRequests : NSObject <MRNowPlayingClientState>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     _MRDeviceInfoMessageProtobuf *_deviceInfo;
-    unsigned int _volumeCapabilities;
-    float _volume;
+    NSNumber *_volumeCapabilities;
+    NSNumber *_volume;
     NSMutableArray *_nowPlayingClients;
     NSMutableDictionary *_transactionCallbacks;
     NSMutableArray *_deviceInfoCompletions;
+    NSMutableArray *_volumeCompletions;
+    NSMutableArray *_volumeCapabilitiesCompletions;
     _MROriginProtobuf *_origin;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
 }
@@ -27,13 +29,15 @@
 @property (copy, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
 @property (readonly, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
 @property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
-@property (nonatomic) float volume;
-@property (nonatomic) unsigned int volumeCapabilities;
+@property (strong, nonatomic) NSNumber *volume;
+@property (strong, nonatomic) NSNumber *volumeCapabilities;
 
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)existingNowPlayingClientRequestsForPlayerPath:(id)arg1;
 - (void)handleDeviceInfoRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleVolumeCapabilitiesRequestWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleVolumeRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithOrigin:(id)arg1;
 - (id)nowPlayingClientRequestsForPlayerPath:(id)arg1;
 - (id)nowPlayingClients;

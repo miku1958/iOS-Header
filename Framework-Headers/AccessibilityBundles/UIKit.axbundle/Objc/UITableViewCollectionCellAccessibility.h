@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityAvoidsMockViewContainers;
+- (BOOL)_accessibilityHasOrderedChildren;
 
 @end
 

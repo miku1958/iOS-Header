@@ -9,24 +9,30 @@
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class TUHandle;
+@class NSString, TUHandle;
 
 @interface TUConversationParticipant : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _muted;
     BOOL _audioEnabled;
     BOOL _videoEnabled;
+    BOOL _momentsAvailable;
     unsigned long long _identifier;
     TUHandle *_handle;
     long long _streamToken;
     long long _audioPriority;
     long long _videoPriority;
+    NSString *_avcIdentifier;
+    NSString *_activeIDSDestination;
 }
 
+@property (copy, nonatomic) NSString *activeIDSDestination; // @synthesize activeIDSDestination=_activeIDSDestination;
 @property (nonatomic, getter=isAudioEnabled) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
 @property (nonatomic) long long audioPriority; // @synthesize audioPriority=_audioPriority;
+@property (copy, nonatomic) NSString *avcIdentifier; // @synthesize avcIdentifier=_avcIdentifier;
 @property (readonly, copy, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
 @property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property (nonatomic, getter=isMomentsAvailable) BOOL momentsAvailable; // @synthesize momentsAvailable=_momentsAvailable;
 @property (nonatomic, getter=isMuted) BOOL muted; // @synthesize muted=_muted;
 @property (nonatomic) long long streamToken; // @synthesize streamToken=_streamToken;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;

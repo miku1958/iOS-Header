@@ -15,12 +15,12 @@
     NSMutableArray *_queue_pendingTasks;
     NSMutableArray *_queue_pendingSubtasks;
     NSMutableArray *_queue_taskErrors;
-    int _canceled;
+    _Atomic BOOL _canceled;
+    _Atomic BOOL _rejectAddTask;
     BOOL _queue_started;
     BOOL _queue_finished;
     CDUnknownBlockType _queue_completion;
     NSObject<OS_dispatch_queue> *_default_task_queue;
-    BOOL _rejectAddTask;
     NSString *_groupDescription;
 }
 

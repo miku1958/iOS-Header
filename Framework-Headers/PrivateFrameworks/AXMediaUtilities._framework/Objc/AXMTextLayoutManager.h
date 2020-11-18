@@ -15,7 +15,6 @@
 - (id)_assembleLayoutSequences:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3;
 - (id)_axmVisionFeatureForFeature:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3;
 - (id)_textDocumentWithFeatures:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3 error:(id *)arg4;
-- (id)textDocumentWithFutharkFeatures:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3 error:(id *)arg4;
 - (id)textDocumentWithVisionObservations:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3 error:(id *)arg4;
 
 @end

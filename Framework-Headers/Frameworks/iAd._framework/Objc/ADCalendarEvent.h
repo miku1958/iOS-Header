@@ -23,7 +23,7 @@
 }
 
 @property (nonatomic) BOOL allDay; // @synthesize allDay=_allDay;
-@property (nonatomic) NSObject<OS_dispatch_queue> *calendarEventQueue; // @synthesize calendarEventQueue=_calendarEventQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *calendarEventQueue; // @synthesize calendarEventQueue=_calendarEventQueue;
 @property (strong, nonatomic) NSDate *end; // @synthesize end=_end;
 @property (copy, nonatomic) NSString *eventDescription; // @synthesize eventDescription=_eventDescription;
 @property (copy, nonatomic) NSString *location; // @synthesize location=_location;
@@ -32,10 +32,10 @@
 @property (copy, nonatomic) NSString *summary; // @synthesize summary=_summary;
 @property (copy, nonatomic) NSString *url; // @synthesize url=_url;
 
+- (void).cxx_destruct;
 - (id)EKEventInEventStore:(id)arg1;
 - (BOOL)_eventIsEqualToCalendarEvent:(id)arg1;
 - (id)_recurrenceRuleFromDictionary:(id)arg1;
-- (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
 - (void)retrieveEventInEventStore:(id)arg1 byIdentifier:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 

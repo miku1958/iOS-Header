@@ -12,7 +12,6 @@
 
 @interface MSEmailModel : NSObject <NSSecureCoding>
 {
-    BOOL _skipAddingSignature;
     int _type;
     NSString *_subject;
     NSString *_sender;
@@ -28,13 +27,12 @@
 @property (copy, nonatomic) NSArray *cc; // @synthesize cc=_cc;
 @property (strong, nonatomic) NSURL *reference; // @synthesize reference=_reference;
 @property (copy, nonatomic) NSString *sender; // @synthesize sender=_sender;
-@property (nonatomic) BOOL skipAddingSignature; // @synthesize skipAddingSignature=_skipAddingSignature;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (copy, nonatomic) NSArray *to; // @synthesize to=_to;
 @property (nonatomic) int type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

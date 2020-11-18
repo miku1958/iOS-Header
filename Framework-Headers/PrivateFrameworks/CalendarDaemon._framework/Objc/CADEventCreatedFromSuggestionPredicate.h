@@ -13,10 +13,12 @@
 @interface CADEventCreatedFromSuggestionPredicate : EKPredicate <EKDefaultPropertiesLoading>
 {
     NSString *_opaqueKey;
+    NSString *_extractionGroupIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *extractionGroupIdentifier; // @synthesize extractionGroupIdentifier=_extractionGroupIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *opaqueKey; // @synthesize opaqueKey=_opaqueKey;
 @property (readonly) Class superclass;
@@ -27,7 +29,9 @@
 - (id)defaultPropertiesToLoad;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithExtractionGroupIdentifier:(id)arg1;
 - (id)initWithOpaqueKey:(id)arg1;
+- (id)initWithOpaqueKey:(id)arg1 extractionGroupIdentifier:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)predicateFormat;
 - (BOOL)shouldLoadDefaultProperties;

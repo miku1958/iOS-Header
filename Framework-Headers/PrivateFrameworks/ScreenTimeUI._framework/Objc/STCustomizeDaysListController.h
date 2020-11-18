@@ -8,16 +8,16 @@
 
 #import <ScreenTimeUI/STUIDateTimePickerCellDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, PSSpecifier;
+@class NSDictionary, NSString, PSSpecifier;
 @protocol STCustomizeDaysListControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface STCustomizeDaysListController : PSListController <STUIDateTimePickerCellDelegate>
 {
     id<STCustomizeDaysListControllerDelegate> _delegate;
     NSDictionary *_timeByDay;
     PSSpecifier *_timePickerSpecifier;
     PSSpecifier *_selectedDaySpecifier;
-    NSArray *_weekdaySymbols;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,14 +28,15 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *timeByDay; // @synthesize timeByDay=_timeByDay;
 @property (strong, nonatomic) PSSpecifier *timePickerSpecifier; // @synthesize timePickerSpecifier=_timePickerSpecifier;
-@property (strong, nonatomic) NSArray *weekdaySymbols; // @synthesize weekdaySymbols=_weekdaySymbols;
 
 - (void).cxx_destruct;
+- (id)_localizedDayNames;
+- (id)_localizedDayOrder;
+- (void)_showOrHidePickerSpecifierForSpecifier:(id)arg1;
 - (id)budgetTime:(id)arg1;
 - (void)datePickerChanged:(id)arg1;
 - (id)datePickerForSpecifier:(id)arg1;
 - (id)init;
-- (void)showPickerSpecifierForSpecifier:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)viewWillDisappear:(BOOL)arg1;

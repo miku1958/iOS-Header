@@ -8,7 +8,7 @@
 
 #import <CoreDuetContext/_CDContextPersisting-Protocol.h>
 
-@class NSCountedSet, _CDSharedMemoryKeyValueStore;
+@class NSCountedSet, NSString, _CDSharedMemoryKeyValueStore;
 @protocol OS_dispatch_queue;
 
 @interface _CDSharedMemoryContextPersisting : NSObject <_CDContextPersisting>
@@ -16,11 +16,11 @@
     _CDSharedMemoryKeyValueStore *_store;
     NSObject<OS_dispatch_queue> *_queue;
     NSCountedSet *_keyPathRegistrationCount;
-    unsigned long long _localDeviceID;
+    NSString *_localDeviceID;
 }
 
 @property (strong, nonatomic) NSCountedSet *keyPathRegistrationCount; // @synthesize keyPathRegistrationCount=_keyPathRegistrationCount;
-@property (nonatomic) unsigned long long localDeviceID; // @synthesize localDeviceID=_localDeviceID;
+@property (strong, nonatomic) NSString *localDeviceID; // @synthesize localDeviceID=_localDeviceID;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) _CDSharedMemoryKeyValueStore *store; // @synthesize store=_store;
 

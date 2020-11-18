@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (void)_assignCurrentTables;
 - (id)_audioEntriesForTargetBitrate:(unsigned int)arg1;
 - (BOOL)_isAvailableStreamConfiguration:(id)arg1;
-- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
+- (id)_videoEntriesForTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2 remainingBitrate:(unsigned int *)arg3;
 - (void)addBandwidthAllocationTableEntry:(id)arg1 updateNow:(BOOL)arg2;
 - (id)audioRepairStreamIDsForStreamIDs;
 - (id)audioRepairStreamIDsforTargetBitrate:(unsigned int)arg1;
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)enableVideoStream:(BOOL)arg1 streamID:(unsigned short)arg2;
 - (id)init;
+- (id)videoMediaBitratesForTargetNetworkBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
 - (id)videoRepairStreamIDsForStreamIDs;
 - (id)videoRepairStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;
 - (id)videoStreamIDsforTargetBitrate:(unsigned int)arg1 ignorePausedOnDemandStreams:(BOOL)arg2;

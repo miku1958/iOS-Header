@@ -6,15 +6,21 @@
 
 #import <MessageUI/MFComposeBodyField-Protocol.h>
 
-@class MFAttachment, UIBarButtonItemGroup;
+@class MFAttachment, NSArray, UIBarButtonItemGroup;
 
 @protocol MFComposeBodyFieldInternal <MFComposeBodyField>
 
-@property (strong, nonatomic, setter=_setInputAssistantItemGroup:) UIBarButtonItemGroup *_inputAssistantItemGroup;
-@property (readonly, strong, nonatomic) UIBarButtonItemGroup *_mailComposeEditingInputAssistantGroup;
+@property (strong, nonatomic, setter=_setLeadingInputAssistantItemGroup:) UIBarButtonItemGroup *_leadingInputAssistantItemGroup;
+@property (readonly, nonatomic) UIBarButtonItemGroup *_mailComposeEditingLeadingInputAssistantGroup;
+@property (readonly, nonatomic) NSArray *_mailComposeEditingTrailingInputAssistantGroups;
+@property (strong, nonatomic, setter=_setTrailingInputAssistantItemGroups:) NSArray *_trailingInputAssistantItemGroups;
 
 - (void)_decreaseQuoteLevelKeyCommandInvoked:(id)arg1;
-- (void)_didTapInsertPhotoInputAssistantButton:(id)arg1;
+- (void)_didTapCameraButton:(id)arg1;
+- (void)_didTapImportDocumentButton:(id)arg1;
+- (void)_didTapInsertDrawingOrMarkupButton:(id)arg1;
+- (void)_didTapInsertPhotoButton:(id)arg1;
+- (void)_didTapScanDocumentButton:(id)arg1;
 - (void)_increaseQuoteLevelKeyCommandInvoked:(id)arg1;
 - (void)_pasteAsQuotationKeyCommandInvoked:(id)arg1;
 - (void)_removeInlineAttachment:(MFAttachment *)arg1;

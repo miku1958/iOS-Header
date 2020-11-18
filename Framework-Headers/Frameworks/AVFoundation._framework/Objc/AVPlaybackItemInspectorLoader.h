@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (void)cancelLoading;
 - (void)dealloc;
 - (CDStruct_1b6d18a9)duration;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithURL:(id)arg1 playbackItem:(struct OpaqueFigPlaybackItem *)arg2 trackIDs:(id)arg3 dynamicBehavior:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;

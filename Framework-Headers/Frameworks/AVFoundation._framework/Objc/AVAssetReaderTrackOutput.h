@@ -32,7 +32,6 @@
 - (struct opaqueCMSampleBuffer *)copyNextSampleBuffer;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithTrack:(id)arg1 outputSettings:(id)arg2;
 - (id)mediaType;

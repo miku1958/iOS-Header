@@ -9,5 +9,6 @@
 @interface NSURL (NSURLSession_Additions)
 - (BOOL)_isSafeDirectoryForDownloads:(int)arg1 withToken:(CDStruct_6ad76789)arg2;
 - (BOOL)_isSafeFileForBackgroundUpload:(int)arg1 withToken:(CDStruct_6ad76789)arg2;
+- (BOOL)_isSafeFileForBackgroundUploadForMe;
 @end
 

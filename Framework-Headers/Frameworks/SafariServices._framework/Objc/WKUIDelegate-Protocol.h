@@ -6,12 +6,17 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSArray, NSString, UIViewController, WKFrameInfo, WKNavigationAction, WKPreviewElementInfo, WKWebView, WKWebViewConfiguration, WKWindowFeatures;
+@class NSArray, NSString, UIViewController, WKContextMenuElementInfo, WKFrameInfo, WKNavigationAction, WKPreviewElementInfo, WKWebView, WKWebViewConfiguration, WKWindowFeatures;
+@protocol UIContextMenuInteractionCommitAnimating;
 
 @protocol WKUIDelegate <NSObject>
 
 @optional
 - (void)webView:(WKWebView *)arg1 commitPreviewingViewController:(UIViewController *)arg2;
+- (void)webView:(WKWebView *)arg1 contextMenuConfigurationForElement:(WKContextMenuElementInfo *)arg2 completionHandler:(void (^)(UIContextMenuConfiguration *))arg3;
+- (void)webView:(WKWebView *)arg1 contextMenuDidEndForElement:(WKContextMenuElementInfo *)arg2;
+- (void)webView:(WKWebView *)arg1 contextMenuForElement:(WKContextMenuElementInfo *)arg2 willCommitWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg3;
+- (void)webView:(WKWebView *)arg1 contextMenuWillPresentForElement:(WKContextMenuElementInfo *)arg2;
 - (WKWebView *)webView:(WKWebView *)arg1 createWebViewWithConfiguration:(WKWebViewConfiguration *)arg2 forNavigationAction:(WKNavigationAction *)arg3 windowFeatures:(WKWindowFeatures *)arg4;
 - (UIViewController *)webView:(WKWebView *)arg1 previewingViewControllerForElement:(WKPreviewElementInfo *)arg2 defaultActions:(NSArray *)arg3;
 - (void)webView:(WKWebView *)arg1 runJavaScriptAlertPanelWithMessage:(NSString *)arg2 initiatedByFrame:(WKFrameInfo *)arg3 completionHandler:(void (^)(void))arg4;

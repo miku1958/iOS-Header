@@ -15,11 +15,12 @@
 {
     RCMutableWaveform *_accumulatorWaveform;
     RCMutableWaveform *_liveRecordingMergingWaveform;
+    double _liveRecordingMergeTime;
     BOOL _hasSavedGeneratedWaveform;
     BOOL _hasStartedLoading;
+    RCWaveformGenerator *_waveformGenerator;
     double _durationPerWaveformSlice;
     NSObject<OS_dispatch_queue> *_queue;
-    RCWaveformGenerator *_waveformGenerator;
     NSURL *_generatedWaveformOutputURL;
     NSHashTable *_weakObservers;
 }
@@ -49,6 +50,7 @@
 - (void)_performOnObserversBlock:(CDUnknownBlockType)arg1;
 - (void)addObserver:(id)arg1;
 - (void)beginLoading;
+- (void)cancelLoading;
 - (void)dealloc;
 - (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithWaveformGenerator:(id)arg1 generatedWaveformOutputURL:(id)arg2;
@@ -59,6 +61,7 @@
 - (id)segmentsInCompositionByConvertingFromActiveLoadingFragment:(id)arg1;
 - (BOOL)setPaused:(BOOL)arg1;
 - (BOOL)shouldMergeLiveWaveform;
+- (void)startLoading;
 - (id)synchronouslyApproximateWaveformSegmentsByReadingCurrentFileAheadTimeRange:(CDStruct_73a5d3ca)arg1;
 - (void)updateAccumulatorWaveformSegmentsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)waitUntilFinished;
@@ -66,6 +69,7 @@
 - (void)waveformGeneratorDidFinishLoading:(id)arg1 error:(id)arg2;
 - (void)waveformGeneratorWillBeginLoading:(id)arg1;
 - (id)waveformSegmentsInTimeRange:(CDStruct_73a5d3ca)arg1;
+- (id)waveformSegmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1;
 
 @end
 

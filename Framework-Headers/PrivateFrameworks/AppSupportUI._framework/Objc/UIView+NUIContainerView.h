@@ -6,21 +6,53 @@
 
 #import <UIKit/UIView.h>
 
-@interface UIView (NUIContainerView)
+#import <AppSupportUI/NUIArrangementItem-Protocol.h>
+#import <AppSupportUI/_UIMultilineTextContentSizing-Protocol.h>
 
-@property (nonatomic, getter=isBaselineRelativeAlignmentRectInsets) BOOL baselineRelativeAlignmentRectInsets;
+@class NSString;
+
+@interface UIView (NUIContainerView) <NUIArrangementItem, _UIMultilineTextContentSizing>
+
 @property (nonatomic) struct UIEdgeInsets customAlignmentRectInsets;
 @property (nonatomic) double customBaselineOffsetFromBottom;
-@property (nonatomic) double customFirstBaselineOffsetFromContentTop;
 @property (nonatomic) double customFirstBaselineOffsetFromTop;
-@property (nonatomic) double customScreenScale;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL invalidatingIntrinsicContentSizeAlsoInvalidatesSuperview;
 @property (nonatomic) struct CGSize maximumLayoutSize;
 @property (nonatomic) struct CGSize minimumLayoutSize;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
+- (void)_didInvalidateIntrinsicContentSize;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
+- (BOOL)_isContainerView;
+- (CDStruct_c3b9c2ee)_nui_additionalInsetsForBaselines;
+- (long long)_nui_baselineViewType;
+- (BOOL)_nui_isImageView;
+- (struct CGSize)calculateLayoutSizeFittingSize:(struct CGSize)arg1;
 - (id)containerViewInfoCreateIfNeeded:(BOOL)arg1;
+- (struct nui_size_cache *)contentLayoutSizeCache;
+- (id)contentLayoutSizeCacheDescription;
+- (struct UIEdgeInsets)effectiveAlignmentRectInsets;
+- (double)effectiveBaselineOffsetFromBottom;
+- (double)effectiveBaselineOffsetFromContentBottom;
+- (double)effectiveFirstBaselineOffsetFromContentTop;
+- (double)effectiveFirstBaselineOffsetFromTop;
 - (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
+- (struct CGSize)effectiveMaximumLayoutContentSize;
+- (struct CGSize)effectiveMinimumLayoutContentSize;
+- (double)effectiveScreenScale;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
+- (void)nukeContentLayoutSizeCacheFromOrbit;
+- (void)setLayoutSize:(struct CGSize)arg1 withContentPriority:(float)arg2;
+- (void)setUntransformedFrame:(struct CGRect)arg1;
 - (BOOL)supportsAsynchronousMeasurement;
+- (double)systemSpacingToAdjecentSiblingView:(id)arg1 axis:(long long)arg2 baselineRelative:(BOOL)arg3 multiplier:(double)arg4;
+- (double)systemSpacingToSuperView:(id)arg1 edge:(unsigned long long)arg2 baselineRelative:(BOOL)arg3 multiplier:(double)arg4;
 @end
 

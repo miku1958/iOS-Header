@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/HDCloudSyncRecord.h>
 
-@class HDCloudSyncSequenceRecord, NSString, NSUUID;
+@class HDCloudSyncSequenceRecord, NSArray, NSString, NSUUID;
 
 @interface HDCloudSyncStoreRecord : HDCloudSyncRecord
 {
@@ -16,13 +16,22 @@
     NSString *_ownerIdentifier;
     NSString *_pendingOwner;
     NSUUID *_storeIdentifier;
+    HDCloudSyncSequenceRecord *_tombstoneSequenceRecord;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
-@property (readonly, nonatomic) NSString *ownerIdentifier; // @synthesize ownerIdentifier=_ownerIdentifier;
-@property (strong, nonatomic) NSString *pendingOwner; // @synthesize pendingOwner=_pendingOwner;
+@property (nonatomic) long long deviceMode;
+@property (copy, nonatomic) NSString *deviceName;
+@property (readonly, copy, nonatomic) NSArray *orderedSequenceRecords;
+@property (readonly, copy, nonatomic) NSString *ownerIdentifier; // @synthesize ownerIdentifier=_ownerIdentifier;
+@property (copy, nonatomic) NSString *pendingOwner; // @synthesize pendingOwner=_pendingOwner;
+@property (copy, nonatomic) NSString *productType;
+@property (nonatomic) long long requiredProtocolVersion;
 @property (readonly, nonatomic) HDCloudSyncSequenceRecord *sequenceRecord;
-@property (readonly, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
+@property (nonatomic) long long supportedProtocolVersion;
+@property (copy, nonatomic) NSString *systemBuildVersion;
+@property (readonly, nonatomic) HDCloudSyncSequenceRecord *tombstoneSequenceRecord; // @synthesize tombstoneSequenceRecord=_tombstoneSequenceRecord;
 
 + (BOOL)hasFutureSchema:(id)arg1;
 + (BOOL)isStoreRecord:(id)arg1;
@@ -32,10 +41,12 @@
 - (void).cxx_destruct;
 - (id)_indentedSequenceRecordDescription:(id)arg1;
 - (id)activeSequenceHeaderRecord;
-- (void)addNewSequenceHeaderRecordWithSyncAnchorMap:(id)arg1 includedIdentifiers:(id)arg2;
+- (id)addNewSequenceHeaderRecordWithSyncAnchorMap:(id)arg1 includedIdentifiers:(id)arg2;
+- (id)addNewTombstoneSequenceHeaderRecordWithIncludedIdentifiers:(id)arg1;
 - (void)addSequenceHeaderRecord:(id)arg1;
 - (id)clearCurrentSequenceHeaderRecord;
 - (id)clearOldSequenceHeaderRecord;
+- (id)clearTombstoneSequenceHeaderRecord;
 - (long long)compare:(id)arg1;
 - (id)currentSequenceHeaderRecord;
 - (id)description;
@@ -46,6 +57,7 @@
 - (id)initWithOwnerIdentifier:(id)arg1 storeIdentifier:(id)arg2 pendingOwner:(id)arg3 active:(BOOL)arg4 record:(id)arg5 schemaVersion:(long long)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (id)oldSequenceHeaderRecord;
+- (id)sequenceRecordWithRecordID:(id)arg1;
 
 @end
 

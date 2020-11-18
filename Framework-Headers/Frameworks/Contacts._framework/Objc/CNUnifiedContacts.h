@@ -15,13 +15,11 @@ __attribute__((visibility("hidden")))
 + (void)addLinkedIdentifier:(id)arg1 toLabeledValue:(id)arg2;
 + (void)addLinkedLabeledValue:(id)arg1 toLabeledValue:(id)arg2;
 + (BOOL)canUnifyLabel:(id)arg1 withLabel:(id)arg2 forProperty:(id)arg3;
-+ (BOOL)canUnifyLabeledValuePair:(id)arg1 withLabeledValuePair:(id)arg2 forProperty:(id)arg3;
 + (void)correlateIdentifiersOfUnifiedMap:(id)arg1 toIdentifiersOfMultiValueMap:(id)arg2 intoMap:(id)arg3 forProperty:(id)arg4;
 + (unsigned long long)countOfLabel:(id)arg1 value:(id)arg2 inMultiValue:(id)arg3 forProperty:(id)arg4;
 + (unsigned long long)countOfLabelIncludingEquivalents:(id)arg1 value:(id)arg2 inMultiValue:(id)arg3 forProperty:(id)arg4;
 + (unsigned long long)countOfLabelsUnifiableWithLabel:(id)arg1 valuesUnifiableWithValue:(id)arg2 inMultiValue:(id)arg3 forProperty:(id)arg4;
 + (BOOL)doesMultiValue:(id)arg1 needLabeledValue:(id)arg2 fromMultiValue:(id)arg3 forProperty:(id)arg4;
-+ (CDUnknownBlockType)equivalentLabeledValueFilterForLabeledValue:(id)arg1 property:(id)arg2;
 + (id)findFirstIdentifier:(id)arg1 inMultiValue:(id)arg2;
 + (id)firstNonNilValueForProperty:(id)arg1 inContacts:(id)arg2;
 + (id)identifierMapForUnifiedContact:(id)arg1 backingContacts:(id)arg2;

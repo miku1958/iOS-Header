@@ -21,5 +21,6 @@
 + (BOOL)hf_isRegion:(id)arg1 atHome:(id)arg2;
 + (unsigned long long)hf_locationEventTypeForRegion:(id)arg1;
 - (BOOL)hf_isRegionAtHome:(id)arg1;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

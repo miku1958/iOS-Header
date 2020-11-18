@@ -17,7 +17,7 @@
         BOOL hasResponseDictionaryDidChange;
         BOOL hasDocumentDidChange;
     } _dsrDelegateFlags;
-    NSDictionary *_respondeDictionary;
+    NSDictionary *_responseDictionary;
     IKAppDocument *_appDocument;
 }
 
@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy) NSDictionary *respondeDictionary; // @synthesize respondeDictionary=_respondeDictionary;
+@property (readonly, copy) NSDictionary *responseDictionary; // @synthesize responseDictionary=_responseDictionary;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

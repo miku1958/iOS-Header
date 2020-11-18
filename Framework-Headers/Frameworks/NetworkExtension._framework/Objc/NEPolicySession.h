@@ -54,6 +54,7 @@
 - (id)dumpKernelPolicies;
 - (int)dupSocket;
 - (id)init;
+- (id)initWithSessionName:(id)arg1;
 - (id)initWithSocket:(int)arg1;
 - (BOOL)lockSessionToCurrentProcess;
 - (id)openControlSource;

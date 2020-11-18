@@ -7,8 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <AVConference/NSCopying-Protocol.h>
+#import <AVConference/VCBasebandCodecNotifications-Protocol.h>
 
-@interface VCAudioRelayIO : NSObject <NSCopying>
+@class NSString;
+@protocol VCBasebandCodecNotifications;
+
+@interface VCAudioRelayIO : NSObject <NSCopying, VCBasebandCodecNotifications>
 {
     BOOL _usePacketThread;
     struct PacketThread_s *_packetThread;
@@ -23,11 +27,18 @@
     CDUnknownFunctionPointerType _speakerCallback;
     void *_speakerCallbackContext;
     struct opaqueVCAudioBufferList *_speakerBuffer;
+    CDUnknownFunctionPointerType _updateRemoteCodecInfoCallback;
+    void *_updateRemoteCodecInfoContext;
     float _micPowerRMS;
     float _speakerPowerRMS;
     CDUnknownBlockType _startCompletionHandler;
+    struct _VCRemoteCodecInfo _remoteCodecInfo;
+    id _relay;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRunning; // @synthesize isRunning=_isRunning;
 @property (readonly, nonatomic) struct opaqueVCAudioBufferList *micBuffer; // @synthesize micBuffer=_micBuffer;
 @property CDUnknownFunctionPointerType micCallback; // @synthesize micCallback=_micCallback;
@@ -36,6 +47,8 @@
 @property float micPowerRMS; // @synthesize micPowerRMS=_micPowerRMS;
 @property unsigned int micTimestamp; // @synthesize micTimestamp=_micTimestamp;
 @property (readonly) struct PacketThread_s *packetThread; // @synthesize packetThread=_packetThread;
+@property id<VCBasebandCodecNotifications> relay;
+@property (nonatomic) const struct _VCRemoteCodecInfo *remoteCodecInfo;
 @property (readonly, nonatomic) struct opaqueVCAudioBufferList *speakerBuffer; // @synthesize speakerBuffer=_speakerBuffer;
 @property CDUnknownFunctionPointerType speakerCallback; // @synthesize speakerCallback=_speakerCallback;
 @property void *speakerCallbackContext; // @synthesize speakerCallbackContext=_speakerCallbackContext;
@@ -43,6 +56,9 @@
 @property float speakerPowerRMS; // @synthesize speakerPowerRMS=_speakerPowerRMS;
 @property unsigned int speakerTimestamp; // @synthesize speakerTimestamp=_speakerTimestamp;
 @property (copy) CDUnknownBlockType startCompletionHandler; // @synthesize startCompletionHandler=_startCompletionHandler;
+@property (readonly) Class superclass;
+@property CDUnknownFunctionPointerType updateRemoteCodecInfoCallback; // @synthesize updateRemoteCodecInfoCallback=_updateRemoteCodecInfoCallback;
+@property void *updateRemoteCodecInfoContext; // @synthesize updateRemoteCodecInfoContext=_updateRemoteCodecInfoContext;
 @property BOOL usePacketThread; // @synthesize usePacketThread=_usePacketThread;
 
 - (void)closeRecordings;
@@ -52,6 +68,7 @@
 - (void)createRecordingsWithName:(id)arg1;
 - (void)dealloc;
 - (void)destroyPacketThread;
+- (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (BOOL)isEqualToRelayIO:(id)arg1;
 - (BOOL)isInitialized;
 - (void)printStreamFormats;

@@ -8,31 +8,37 @@
 
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class BSServiceConnectionEndpoint, NSDictionary, NSString, NSURL;
 
 @interface BBActionResponse : NSObject <NSSecureCoding>
 {
+    BOOL _didOpenApplication;
     long long _actionType;
     unsigned long long _actionActivationMode;
     long long _actionBehavior;
     NSString *_actionID;
+    NSURL *_actionLaunchURL;
     NSString *_bulletinRecordID;
     NSString *_bulletinPublisherID;
     NSDictionary *_bulletinContext;
     NSString *_bulletinButtonID;
     NSDictionary *_context;
     NSString *_originID;
+    BSServiceConnectionEndpoint *_endpoint;
 }
 
 @property (nonatomic) unsigned long long actionActivationMode; // @synthesize actionActivationMode=_actionActivationMode;
 @property (nonatomic) long long actionBehavior; // @synthesize actionBehavior=_actionBehavior;
 @property (copy, nonatomic) NSString *actionID; // @synthesize actionID=_actionID;
+@property (copy, nonatomic) NSURL *actionLaunchURL; // @synthesize actionLaunchURL=_actionLaunchURL;
 @property (nonatomic) long long actionType; // @synthesize actionType=_actionType;
 @property (copy, nonatomic) NSString *bulletinButtonID; // @synthesize bulletinButtonID=_bulletinButtonID;
 @property (copy, nonatomic) NSDictionary *bulletinContext; // @synthesize bulletinContext=_bulletinContext;
 @property (copy, nonatomic) NSString *bulletinPublisherID; // @synthesize bulletinPublisherID=_bulletinPublisherID;
 @property (copy, nonatomic) NSString *bulletinRecordID; // @synthesize bulletinRecordID=_bulletinRecordID;
 @property (copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
+@property (nonatomic) BOOL didOpenApplication; // @synthesize didOpenApplication=_didOpenApplication;
+@property (copy, nonatomic) BSServiceConnectionEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (copy, nonatomic) NSString *originID; // @synthesize originID=_originID;
 
 + (id)actionResponseForResponse:(id)arg1 bulletinRequest:(id)arg2;

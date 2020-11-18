@@ -8,16 +8,18 @@
 
 #import <iWorkImport/TSTCellIteratorData-Protocol.h>
 
-@class NSString, TSTCell;
+@class NSString, TSTCell, TSTCellFormulaSpec;
 
 __attribute__((visibility("hidden")))
 @interface TSTMutableCellIteratorData : NSObject <TSTCellIteratorData>
 {
     BOOL _cellIDIsValid;
     BOOL _cellIsValid;
+    BOOL _formulaSpecIsValid;
     BOOL _mergeRangeIsValid;
     struct TSUCellCoord _cellID;
     TSTCell *_cell;
+    TSTCellFormulaSpec *_formulaSpec;
     struct TSUCellRect _mergeRange;
 }
 
@@ -33,6 +35,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int cellValueType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) TSTCellFormulaSpec *formulaSpec; // @synthesize formulaSpec=_formulaSpec;
+@property (nonatomic) BOOL formulaSpecIsValid; // @synthesize formulaSpecIsValid=_formulaSpecIsValid;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct TSUCellRect mergeRange; // @synthesize mergeRange=_mergeRange;
 @property (nonatomic) BOOL mergeRangeIsValid; // @synthesize mergeRangeIsValid=_mergeRangeIsValid;

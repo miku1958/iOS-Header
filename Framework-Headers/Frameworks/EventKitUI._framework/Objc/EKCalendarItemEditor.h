@@ -10,7 +10,7 @@
 #import <EventKitUI/UIActionSheetDelegate-Protocol.h>
 #import <EventKitUI/UIAlertViewDelegate-Protocol.h>
 
-@class EKCalendarItem, EKCalendarItemEditItem, EKEventStore, EKUIRecurrenceAlertController, NSArray, NSMutableSet, NSString, UIBarButtonItem, UIResponder, _UIAccessDeniedView;
+@class EKCalendarItem, EKCalendarItemEditItem, EKChangeSet, EKEventStore, EKUIRecurrenceAlertController, NSArray, NSMutableSet, NSString, UIBarButtonItem, UIResponder, _UIAccessDeniedView;
 @protocol EKCalendarItemEditorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     EKUIRecurrenceAlertController *_recurrenceAlertController;
     EKCalendarItemEditItem *_currentEditItem;
     BOOL _giveTitleCellKeyboardFocus;
+    BOOL _needsFirstResponderSet;
     int _editItemVisibility;
     BOOL _isIgnoringCellHeightChange;
     BOOL _needsCellHeightChange;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
     UIResponder *_responderToRestoreOnAppearence;
     unsigned long long _visibleSectionToRestoreOnAppearence;
     _UIAccessDeniedView *_accessDeniedView;
+    EKChangeSet *_originalChangeSet;
 }
 
 @property (strong, nonatomic) _UIAccessDeniedView *accessDeniedView; // @synthesize accessDeniedView=_accessDeniedView;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double navBarLeftContentInset;
 @property (nonatomic) double navBarRightContentInset;
+@property (strong, nonatomic) EKChangeSet *originalChangeSet; // @synthesize originalChangeSet=_originalChangeSet;
 @property (strong, nonatomic) UIResponder *responderToRestoreOnAppearence; // @synthesize responderToRestoreOnAppearence=_responderToRestoreOnAppearence;
 @property (nonatomic) BOOL scrollToNotes; // @synthesize scrollToNotes=_scrollToNotes;
 @property (nonatomic) BOOL showsTimeZone; // @synthesize showsTimeZone=_showsTimeZone;
@@ -92,19 +95,20 @@ __attribute__((visibility("hidden")))
 - (void)_setShowingAccessDeniedView:(BOOL)arg1 showSettingsInstructions:(BOOL)arg2;
 - (void)_setUpKeyCommands;
 - (void)_setWantsToEnableDoneButton:(BOOL)arg1;
+- (void)_setupFirstResponder;
 - (void)_tableViewDidUpdateHeights;
 - (void)_tableViewWillUpdateHeights;
 - (void)_updateCurrentEditItemsFromVisibility:(int)arg1 toVisibility:(int)arg2 animated:(BOOL)arg3;
 - (void)_updateDoneButtonState;
 - (id)_viewForSheet;
+- (id)_viewHierarchy;
 - (void)applicationDidResume;
 - (BOOL)canBecomeFirstResponder;
 - (void)cancel:(id)arg1;
-- (void)cancelEditingWithDelegateNotification:(BOOL)arg1;
+- (void)cancelEditingWithDelegateNotification:(BOOL)arg1 forceCancel:(BOOL)arg2;
 - (id)cellWithReuseIdentifier:(id)arg1 forEditItem:(id)arg2;
 - (void)completeAndSave;
 - (void)completeWithAction:(long long)arg1 animated:(BOOL)arg2;
-- (void)customizeActionSheet:(id)arg1;
 - (void)dealloc;
 - (id)defaultAlertTitle;
 - (id)defaultAlertTitleForEditItem:(id)arg1;
@@ -126,6 +130,7 @@ __attribute__((visibility("hidden")))
 - (void)editItemTextChanged:(id)arg1;
 - (int)editItemVisibility;
 - (void)editItemVisibilityChanged:(id)arg1;
+- (void)editItemWantsFooterTitlesToReload:(id)arg1;
 - (void)editItemWantsInjectableViewControllerToBeShown:(id)arg1;
 - (unsigned long long)entityType;
 - (long long)firstTableRowForEditItem:(id)arg1;
@@ -161,6 +166,7 @@ __attribute__((visibility("hidden")))
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;

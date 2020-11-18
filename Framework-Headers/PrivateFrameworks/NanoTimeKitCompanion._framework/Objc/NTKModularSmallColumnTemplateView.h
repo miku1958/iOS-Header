@@ -20,7 +20,6 @@
 @property (readonly, nonatomic) CLKComplicationTemplateModularSmallColumnsText *complicationTemplate; // @dynamic complicationTemplate;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_bodyFontOfSize:(double)arg1;

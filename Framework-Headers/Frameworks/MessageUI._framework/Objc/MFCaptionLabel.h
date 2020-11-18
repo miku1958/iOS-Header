@@ -29,10 +29,12 @@
 
 + (id)attributedStringsCache;
 - (void).cxx_destruct;
+- (id)_chevronAttributedString;
+- (id)_chevronImage;
 - (id)_formattedAttributedString;
 - (void)_setNeedsLabelUpdate;
 - (id)_stringAtIndexForCombinedRecipientLists:(unsigned long long)arg1;
-- (void)dealloc;
+- (id)_whitespaceStringWithWidth:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setBounds:(struct CGRect)arg1;

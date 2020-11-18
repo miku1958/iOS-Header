@@ -8,32 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPDBusinessClaim : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_buttonLabel;
     NSString *_descriptionText;
     NSString *_titleText;
     BOOL _buttonEnabled;
     struct {
-        unsigned int buttonEnabled:1;
-    } _has;
+        unsigned int has_buttonEnabled:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_buttonLabel:1;
+        unsigned int read_descriptionText:1;
+        unsigned int read_titleText:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_buttonLabel:1;
+        unsigned int wrote_descriptionText:1;
+        unsigned int wrote_titleText:1;
+        unsigned int wrote_buttonEnabled:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL buttonEnabled; // @synthesize buttonEnabled=_buttonEnabled;
-@property (strong, nonatomic) NSString *buttonLabel; // @synthesize buttonLabel=_buttonLabel;
-@property (strong, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
+@property (nonatomic) BOOL buttonEnabled;
+@property (strong, nonatomic) NSString *buttonLabel;
+@property (strong, nonatomic) NSString *descriptionText;
 @property (nonatomic) BOOL hasButtonEnabled;
 @property (readonly, nonatomic) BOOL hasButtonLabel;
 @property (readonly, nonatomic) BOOL hasDescriptionText;
 @property (readonly, nonatomic) BOOL hasTitleText;
-@property (strong, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
+@property (strong, nonatomic) NSString *titleText;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)businessClaimForPlaceData:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readButtonLabel;
+- (void)_readDescriptionText;
+- (void)_readTitleText;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +57,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

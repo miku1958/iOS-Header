@@ -22,6 +22,7 @@
 - (id)_attributionBackgroundColor;
 - (id)_attributionFont;
 - (void)_configureAttributedString;
+- (id)_paragraphStyle;
 - (id)initWithWidgetAttributedString:(id)arg1;
 - (void)layoutSubviews;
 

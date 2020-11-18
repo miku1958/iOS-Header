@@ -22,12 +22,14 @@
     NSArray *_keysToFetch;
     NSMapTable *_identifiersToIndexes;
     NSArray *_filteredContacts;
+    CNContactFormatter *_contactFormatterImpl;
 }
 
 @property (strong, nonatomic) NSMutableArray *allContacts; // @synthesize allContacts=_allContacts;
 @property (nonatomic) BOOL autoUpdateContacts; // @synthesize autoUpdateContacts=_autoUpdateContacts;
 @property (readonly, nonatomic) BOOL canReload;
 @property (strong, nonatomic) CNContactFormatter *contactFormatter;
+@property (strong, nonatomic) CNContactFormatter *contactFormatterImpl; // @synthesize contactFormatterImpl=_contactFormatterImpl;
 @property (readonly, nonatomic) NSDictionary *contactMatchInfos;
 @property (readonly, nonatomic) NSArray *contacts;
 @property (readonly, copy) NSString *debugDescription;

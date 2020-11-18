@@ -7,6 +7,13 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (MCDictionaryUtilities)
+- (id)MSASAlbumResetSyncAlbumGUID;
+- (id)MSASEventIsDueToAlbumDeletionAlbumGUID;
+- (id)MSASEventIsDueToAssetCollectionDeletionAssetCollectionGUID;
+- (BOOL)MSASIsErrorRecovery;
+- (BOOL)MSASIsGlobalResetSync;
+- (BOOL)MSASIsLocalChange;
+- (BOOL)MSASIsNotInteresting;
 - (id)MSDeepCopy;
 - (id)MSDeepCopyWithZone:(struct _NSZone *)arg1;
 - (id)MSMutableDeepCopy;

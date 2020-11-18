@@ -9,7 +9,6 @@
 @class AKController;
 @protocol MUContentViewControllerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MUContentViewController : UIViewController
 {
     id<MUContentViewControllerDelegate> _delegate;

@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) CNContactStyle *_cnui_contactStyle;
 
 - (void)_cnui_applyContactStyle;
-- (void)_cnui_applyContactStyleStark;
+- (void)abSetLayoutDebuggingColor:(id)arg1;
+- (id)tintColorOverride;
 @end
 

@@ -6,35 +6,20 @@
 
 #import <VectorKit/NSObject-Protocol.h>
 
-@class GEOResourceManifestConfiguration, NSArray, NSDictionary, NSSet, NSString, VKAnchorWrapper, VKAnimation, VKCameraController, VKObjectBoundsContext, VKRasterOverlay, VKTransitLineMarker;
-@protocol VKInteractiveMapDelegate, VKNavigationCameraController, VKOverlay, VKRouteMatchedAnnotationPresentation;
+@class NSArray, NSString, VKCameraController, VKOverlay;
+@protocol VKInteractiveMapDelegate, VKNavigationCameraController;
 
 @protocol VKInteractiveMap <NSObject>
 
 @property (nonatomic) id<VKInteractiveMapDelegate> delegate;
-@property (readonly, nonatomic) VKAnchorWrapper *externalAnchors;
-@property (readonly, nonatomic, getter=isFullyDrawn) BOOL fullyDrawn;
-@property (nonatomic) long long mapType;
-@property (readonly, nonatomic) NSArray *rasterOverlays;
-@property (nonatomic) id<VKRouteMatchedAnnotationPresentation> routeLineSplitAnnotation;
-@property (nonatomic) BOOL showsBuildings;
-@property (nonatomic) BOOL showsVenues;
-@property (nonatomic) BOOL trafficEnabled;
-@property (nonatomic) BOOL trafficIncidentsEnabled;
+@property (readonly, nonatomic) NSArray *overlays;
 @property (readonly, nonatomic) NSArray *visibleTileSets;
 
-+ (BOOL)supportsMapType:(long long)arg1 scale:(int)arg2 manifestConfiguration:(GEOResourceManifestConfiguration *)arg3;
-- (void)_setStyleTransitionProgress:(double)arg1 targetStyle:(struct DisplayStyle)arg2 step:(long long)arg3;
-- (double)_styleTransitionProgress;
-- (void)addExternalAnchor:(VKAnchorWrapper *)arg1;
-- (void)addOverlay:(id<VKOverlay>)arg1;
-- (void)addPersistentOverlay:(id<VKOverlay>)arg1;
-- (void)addRasterOverlay:(VKRasterOverlay *)arg1;
++ (BOOL)supportsMapType:(int)arg1 scale:(int)arg2;
+- (void)addOverlay:(VKOverlay *)arg1;
 - (BOOL (^)(struct))annotationCoordinateTest;
 - (long long (^)(double, double, double, double))annotationRectTest;
 - (NSArray *)attributionsForCurrentRegion;
-- (void)beginStyleAnimationGroup;
-- (VKObjectBoundsContext *)boundsForSelectedTransitLines;
 - (NSString *)consoleString:(BOOL)arg1;
 - (struct CGPoint)convertCoordinateToCameraModelPoint:(CDStruct_c3b9c2ee)arg1;
 - (struct CGPoint)convertCoordinateToPoint:(CDStruct_c3b9c2ee)arg1;
@@ -42,39 +27,16 @@
 - (CDStruct_c3b9c2ee)convertPointToCoordinate:(struct CGPoint)arg1;
 - (CDStruct_c3b9c2ee)convertPointToMapPoint:(struct CGPoint)arg1;
 - (float)currentRoadSignOffset;
-- (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
-- (NSString *)debugLabelString:(BOOL)arg1;
-- (void)deselectTransitLineMarker;
 - (NSString *)detailedDescription;
-- (NSDictionary *)detailedDescriptionDictionaryRepresentation;
-- (void)endStyleAnimationGroup;
-- (void)finishStyleBlend;
-- (void)insertRasterOverlay:(VKRasterOverlay *)arg1 aboveOverlay:(VKRasterOverlay *)arg2;
-- (void)insertRasterOverlay:(VKRasterOverlay *)arg1 belowOverlay:(VKRasterOverlay *)arg2;
+- (void)insertOverlay:(VKOverlay *)arg1 aboveOverlay:(VKOverlay *)arg2;
+- (void)insertOverlay:(VKOverlay *)arg1 belowOverlay:(VKOverlay *)arg2;
 - (BOOL)isPointValidForGesturing:(struct CGPoint)arg1;
-- (BOOL)isShowingNoDataPlaceholders;
-- (struct LabelSettings *)labelSettings;
-- (NSArray *)overlays;
-- (NSSet *)persistentOverlays;
-- (void)removeExternalAnchor:(VKAnchorWrapper *)arg1;
-- (void)removeOverlay:(id<VKOverlay>)arg1;
-- (void)removePersistentOverlay:(id<VKOverlay>)arg1;
-- (void)removeRasterOverlay:(VKRasterOverlay *)arg1;
-- (void)requestStylesheetAnimation:(VKAnimation *)arg1 targetMapDisplayStyle:(struct DisplayStyle)arg2 setupHandler:(void (^)(void))arg3;
-- (void)selectTransitLineMarker:(VKTransitLineMarker *)arg1;
-- (NSArray *)selectedTransitLineIDs;
-- (void)setMapType:(long long)arg1 animated:(BOOL)arg2;
+- (void)removeOverlay:(VKOverlay *)arg1;
+- (void)requestStylesheetMapDisplayStyle:(struct DisplayStyle)arg1 animated:(BOOL)arg2;
+- (void)setMapType:(int)arg1 animated:(BOOL)arg2;
 - (void)setNavCameraIsDetached:(BOOL)arg1;
-- (void)setStylesheetMapDisplayStyle:(struct DisplayStyle)arg1;
 - (BOOL)shouldHideOffscreenSelectedAnnotation;
-- (struct DisplayStyle)sourceMapDisplayStyle;
-- (void)stylesheetAnimationDidEnd:(BOOL)arg1;
-- (void)stylesheetAnimationDidProgress:(float)arg1;
-- (void)stylesheetAnimationWillStartFromStyle:(struct DisplayStyle)arg1 toStyle:(struct DisplayStyle)arg2;
-- (BOOL)supportsMapDisplayStyle:(struct DisplayStyle)arg1;
-- (NSArray *)transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;
-- (NSArray *)transitLineMarkersInCurrentViewport;
 - (void)transitionToTracking:(BOOL)arg1 mapMode:(long long)arg2 startLocation:(CDStruct_c3b9c2ee)arg3 startCourse:(double)arg4 cameraController:(VKCameraController<VKNavigationCameraController> *)arg5 pounceCompletionHandler:(void (^)(BOOL))arg6;
 @end
 

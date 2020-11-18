@@ -33,6 +33,7 @@
 
 + (id)na_identity;
 - (void).cxx_destruct;
+- (id)_descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)childAtIndexPath:(id)arg1 withChildrenSortedByComparator:(CDUnknownBlockType)arg2;
 - (id)childrenSortedByComparator:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

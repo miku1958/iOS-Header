@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, VMUClassInfo, VMUClassInfoMap, VMUNonOverlappingRangeArray, VMUSwiftRuntimeInfo, VMUTaskMemoryScanner;
+@class NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, VMUClassInfo, VMUClassInfoMap, VMUNonOverlappingRangeArray, VMUSwiftRuntimeInfo, VMUTaskMemoryScanner;
 
 @interface VMUObjectIdentifier : NSObject
 {
     unsigned int _task;
     struct _CSTypeRef _symbolicator;
-    BOOL _targetUsesObjc2runtime;
     BOOL _needToValidateAddressRange;
     CDUnknownBlockType _memoryReader;
     VMUTaskMemoryScanner *_scanner;
@@ -25,6 +24,7 @@
     VMUClassInfoMap *_unrealizedClassInfos;
     VMUClassInfoMap *_cfTypeIDToClassInfo;
     NSMutableDictionary *_nonobjectClassInfosDict;
+    NSMutableArray *_objCClassStructureClassInfoIndexes;
     unsigned long long _coreFoundationCFTypeIsa;
     unsigned long long _foundationCFTypeIsa;
     unsigned long long _objCClassCount;
@@ -46,6 +46,8 @@
     unsigned long long _cfBooleanTrueAddress;
     unsigned long long _cfBooleanFalseAddress;
     unsigned int _osDispatchMachOffsetInOSXPCConnection;
+    unsigned long long _taggedPointerMask;
+    unsigned long long _taggedPointerObfuscator;
 }
 
 @property (readonly) BOOL hasSwiftContent;
@@ -53,8 +55,10 @@
 @property (readonly, nonatomic) CDUnknownBlockType memoryReader; // @synthesize memoryReader=_memoryReader;
 @property (readonly) BOOL needToValidateAddressRange; // @synthesize needToValidateAddressRange=_needToValidateAddressRange;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses; // @synthesize realizedClasses=_realizedIsaToClassInfo;
+@property (readonly, nonatomic) struct libSwiftRemoteMirrorWrapper *swiftMirror; // @synthesize swiftMirror=_swiftMirror;
 @property (readonly, nonatomic) VMUSwiftRuntimeInfo *swiftRuntimeInfoPreABI; // @synthesize swiftRuntimeInfoPreABI=_swiftRuntimeInfoPreABI;
 @property (readonly, nonatomic) VMUSwiftRuntimeInfo *swiftRuntimeInfoStableABI; // @synthesize swiftRuntimeInfoStableABI=_swiftRuntimeInfoStableABI;
+@property (readonly, nonatomic) unsigned long long taggedPointerMask; // @synthesize taggedPointerMask=_taggedPointerMask;
 
 - (void).cxx_destruct;
 - (unsigned long long)CFTypeCount;
@@ -67,7 +71,9 @@
 - (BOOL)_dlopenLibSwiftRemoteMirrorNearLibSwiftCoreWithSymbolicator:(struct _CSTypeRef)arg1 avoidSystem:(BOOL)arg2;
 - (BOOL)_dlopenLibSwiftRemoteMirrorWithSymbolicator:(struct _CSTypeRef)arg1;
 - (void)_faultClass:(unsigned long long)arg1 ofType:(unsigned int)arg2;
+- (void)_findObjCAndSwiftClassesFromClass:(unsigned long long)arg1 recursionDepth:(unsigned int)arg2;
 - (void)_findOffsetsInOSXPCConnection:(void *)arg1 length:(unsigned long long)arg2;
+- (void)_generateClassInfosForObjCClassStructurePointerTypes;
 - (BOOL)_isValidInstanceLength:(unsigned long long)arg1 expectedLength:(unsigned long long)arg2;
 - (void)_populateSwiftABIVariables;
 - (int)_populateSwiftReflectionInfo:(struct SwiftReflectionInteropContext *)arg1;
@@ -80,15 +86,20 @@
 - (id)classInfoForMemory:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)classInfoForNonobjectMemory:(void *)arg1 length:(unsigned long long)arg2;
 - (id)classInfoForObjectWithRange:(struct _VMURange)arg1;
+- (unsigned int)classInfoIndexForObjCClassStructurePointerType:(unsigned int)arg1;
+- (id)classNameForTaggedPointer:(void *)arg1;
 - (void)dealloc;
 - (void)enumerateAllClassInfosWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRealizedClassInfosWithBlock:(CDUnknownBlockType)arg1;
 - (void)findCFTypes;
-- (void)findObjCclasses;
+- (void)findObjCAndSwiftClasses;
 - (id)initWithTask:(unsigned int)arg1;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2;
 - (id)initWithTask:(unsigned int)arg1 symbolicator:(struct _CSTypeRef)arg2 scanner:(id)arg3;
 - (id)labelForCFBundle:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
+- (id)labelForClassDataRO:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
+- (id)labelForClassDataRW:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
+- (id)labelForClassStructure:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForItemCount:(long long)arg1;
 - (id)labelForMallocBlock:(struct _VMURange)arg1;
 - (id)labelForMallocBlock:(struct _VMURange)arg1 usingHandlerBlock:(CDUnknownBlockType)arg2;
@@ -121,16 +132,21 @@
 - (id)labelForOSDispatchQueue:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForOSLog:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForOSTransaction:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
+- (id)labelForOSXPCActivity:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForOSXPCConnection:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForOSXPCObject:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForObjectOfClass:(id)arg1 atOffset:(unsigned int)arg2 ofObject:(void *)arg3;
 - (id)labelForProtocol:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelForTaggedPointer:(void *)arg1;
+- (id)labelFor_NSActivityAssertion:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)labelFor__NSMallocBlock__:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (void)loadSwiftReflectionLibraries;
 - (id)noLabelForOSXPCObject:(void *)arg1 length:(unsigned long long)arg2 remoteAddress:(unsigned long long)arg3;
 - (id)objectLabelHandlerForRemoteIsa:(unsigned long long)arg1;
 - (id)osMajorMinorVersionString;
+- (void)setupIsaTranslator;
+- (struct _CSTypeRef)symbolForAddress:(unsigned long long)arg1;
+- (unsigned long long)translateIsaPointer:(unsigned long long)arg1;
 - (id)uniquifyStringLabel:(id)arg1 stringType:(int)arg2 printDetail:(BOOL)arg3;
 - (struct _VMURange)vmRegionRangeForAddress:(unsigned long long)arg1;
 

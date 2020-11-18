@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)sceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 - (double)spiceMaxDepthRatio;
 - (Class)stageClass;
+- (BOOL)supportsAxisLabelAngle;
 - (BOOL)supportsAxisLabelsOrientation;
 - (BOOL)supportsAxisLine;
 - (BOOL)supportsBackgroundFill;

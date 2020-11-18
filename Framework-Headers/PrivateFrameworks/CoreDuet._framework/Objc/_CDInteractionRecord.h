@@ -17,9 +17,11 @@
 @property (strong, nonatomic) NSString *bundleId; // @dynamic bundleId;
 @property (strong, nonatomic) NSString *contentURL; // @dynamic contentURL;
 @property (nonatomic) double creationDate; // @dynamic creationDate;
+@property (strong, nonatomic) NSString *derivedIntentIdentifier; // @dynamic derivedIntentIdentifier;
 @property (nonatomic) long long direction; // @dynamic direction;
 @property (strong, nonatomic) NSString *domainIdentifier; // @dynamic domainIdentifier;
 @property (nonatomic) double endDate; // @dynamic endDate;
+@property (strong, nonatomic) NSString *groupName; // @dynamic groupName;
 @property (nonatomic) BOOL isResponse; // @dynamic isResponse;
 @property (strong, nonatomic) NSSet *keywords; // @dynamic keywords;
 @property (strong, nonatomic) NSString *locationUUID; // @dynamic locationUUID;

@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolbox/AUPBServing-Protocol.h>
-#import <AudioToolbox/NSXPCListenerDelegate-Protocol.h>
+#import <AudioToolboxCore/AUPBServing-Protocol.h>
+#import <AudioToolboxCore/NSXPCListenerDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, NSXPCConnection, NSXPCListener;
 @protocol AUPBRegistrarHosting;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     unsigned int mAUHandleCntr;
     int mNotifyToken;
     BOOL mValidToken;
+    BOOL mConnectionAcknowledged;
 }
 
 @property (readonly, copy) NSString *debugDescription;

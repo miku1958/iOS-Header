@@ -15,6 +15,7 @@
 {
     NSDictionary *_downloadAssetDictionary;
     NSDictionary *_downloadMetadataDictionary;
+    NSDictionary *_storeMusicAPIDictionary;
     NSDate *_expirationDate;
     BOOL _hasOverrideChildStorePlatformDictionaries;
     NSNumber *_hasSubscriptionOffer;
@@ -81,6 +82,7 @@
 @property (readonly, copy, nonatomic) NSNumber *popularity;
 @property (readonly, nonatomic, getter=isPrivatePerson) BOOL privatePerson;
 @property (readonly, nonatomic) long long purchasedAdamID;
+@property (readonly, copy, nonatomic) NSString *radioStationProviderName;
 @property (readonly, nonatomic) long long radioStationTypeID;
 @property (readonly, copy, nonatomic) NSDate *releaseDate;
 @property (readonly, nonatomic) long long seasonNumber;
@@ -105,6 +107,7 @@
 + (id)storeServerCalendar;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_musicAPIDateFormatter;
 - (id)_storePlatformLastModifiedDateFormatter;
 - (id)_storePlatformReleaseDateFormatter;
 - (id)artworkRequestTokenForEditorialArtworkKind:(id)arg1;
@@ -124,6 +127,7 @@
 - (BOOL)hasMetadataForRequestReason:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDownloadAssetDictionary:(id)arg1;
+- (id)initWithStoreMusicAPIDictionary:(id)arg1;
 - (id)initWithStorePlatformDictionary:(id)arg1;
 - (id)initWithStorePlatformDictionary:(id)arg1 expirationDate:(id)arg2;
 - (id)initWithStorePlatformDictionary:(id)arg1 parentStoreItemMetadata:(id)arg2;

@@ -8,25 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryHighlightLine : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_line;
     NSMutableArray *_spans;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_line:1;
+        unsigned int read_spans:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_line:1;
+        unsigned int wrote_spans:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasLine;
-@property (strong, nonatomic) NSString *line; // @synthesize line=_line;
-@property (strong, nonatomic) NSMutableArray *spans; // @synthesize spans=_spans;
+@property (strong, nonatomic) NSString *line;
+@property (strong, nonatomic) NSMutableArray *spans;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)spanType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsSpan:(id)arg1;
+- (void)_readLine;
+- (void)_readSpans;
 - (void)addSpan:(id)arg1;
 - (void)clearSpans;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)spanAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spansCount;

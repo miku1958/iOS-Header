@@ -27,7 +27,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;

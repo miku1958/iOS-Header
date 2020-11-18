@@ -21,8 +21,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)cancel;
-- (void)dealloc;
 - (id)initWithSource:(id)arg1;
 - (id)source;
 

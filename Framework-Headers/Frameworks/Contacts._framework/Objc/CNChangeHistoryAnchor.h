@@ -9,11 +9,14 @@
 #import <Contacts/NSCopying-Protocol.h>
 #import <Contacts/NSSecureCoding-Protocol.h>
 
+@class NSData;
+
 @interface CNChangeHistoryAnchor : NSObject <NSCopying, NSSecureCoding>
 {
     long long _sequenceNumber;
 }
 
+@property (readonly, nonatomic) NSData *data;
 @property (readonly, nonatomic) long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 
 + (BOOL)supportsSecureCoding;
@@ -22,6 +25,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1 error:(id *)arg2;
 - (id)initWithSequenceNumber:(long long)arg1;
 
 @end

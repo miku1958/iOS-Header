@@ -10,6 +10,7 @@
 
 @interface HUPersonalRequestsEditorItemManager : HFItemManager
 {
+    BOOL _onlyShowDeviceSwitches;
     HUPersonalRequestsDevicesItemModule *_prDevicesModule;
     HFItem *_requireAuthenticationForSecureRequestsItem;
     HFItem *_neverRequireAuthenticationItem;
@@ -20,6 +21,7 @@
 @property (readonly, nonatomic) HMAssistantAccessControl *accessControl;
 @property (readonly, nonatomic) HMHome *homeForUser; // @synthesize homeForUser=_homeForUser;
 @property (readonly, nonatomic) HFItem *neverRequireAuthenticationItem; // @synthesize neverRequireAuthenticationItem=_neverRequireAuthenticationItem;
+@property (nonatomic) BOOL onlyShowDeviceSwitches; // @synthesize onlyShowDeviceSwitches=_onlyShowDeviceSwitches;
 @property (nonatomic) BOOL personalRequestsAuthenticationRequired;
 @property (strong, nonatomic) HUPersonalRequestsDevicesItemModule *prDevicesModule; // @synthesize prDevicesModule=_prDevicesModule;
 @property (readonly, nonatomic) HFItem *requireAuthenticationForSecureRequestsItem; // @synthesize requireAuthenticationForSecureRequestsItem=_requireAuthenticationForSecureRequestsItem;
@@ -35,7 +37,7 @@
 - (void)_registerForExternalUpdates;
 - (void)_unregisterForExternalUpdates;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
-- (id)initWithDelegate:(id)arg1 userItem:(id)arg2;
+- (id)initWithDelegate:(id)arg1 userItem:(id)arg2 onlyShowDeviceSwitches:(BOOL)arg3;
 
 @end
 

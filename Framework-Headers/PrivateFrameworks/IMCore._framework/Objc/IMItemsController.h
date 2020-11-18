@@ -35,10 +35,13 @@
 - (void)_removeItem:(id)arg1;
 - (void)_replaceItems:(id)arg1;
 - (void)_replaceStaleTypingMessage;
+- (void)_resortItems;
 - (void)_setSortID:(id)arg1;
+- (BOOL)_shouldPinUnsentMessagesToBottom;
 - (BOOL)_trimIfNeeded;
 - (id)_typingMessage;
 - (void)assignSortIDsToItems:(id)arg1;
+- (void)assignSortIDsToItems:(id)arg1 shouldRecalculateSortIDForAllMessages:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;
 

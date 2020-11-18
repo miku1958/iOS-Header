@@ -6,11 +6,17 @@
 
 #import <Metal/MTLSharedEventListener.h>
 
+@class NSObject;
+@protocol OS_dispatch_queue;
+
 __attribute__((visibility("hidden")))
 @interface MTLSharedEventListenerInternal : MTLSharedEventListener
 {
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
 }
 
+- (void)dealloc;
+- (id)dispatchQueue;
 - (id)init;
 - (id)initWithDispatchQueue:(id)arg1;
 

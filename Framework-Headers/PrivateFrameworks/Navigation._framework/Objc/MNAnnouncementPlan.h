@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MNGuidanceEventManager, NSArray;
+@class MNGuidanceEventManager, NSArray, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface MNAnnouncementPlan : NSObject
 {
-    NSArray *_plannedEvents;
+    NSMutableArray *_plannedEvents;
     MNGuidanceEventManager *_manager;
     NSArray *_events;
     double _distance;
@@ -21,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double distance; // @synthesize distance=_distance;
 @property (strong, nonatomic) NSArray *events; // @synthesize events=_events;
 @property (weak, nonatomic) MNGuidanceEventManager *manager; // @synthesize manager=_manager;
-@property (strong, nonatomic) NSArray *plannedEvents; // @synthesize plannedEvents=_plannedEvents;
+@property (strong, nonatomic) NSMutableArray *plannedEvents; // @synthesize plannedEvents=_plannedEvents;
 @property (nonatomic) double speed; // @synthesize speed=_speed;
 
 + (double)desiredTimeGapBetweenEvent:(id)arg1 andEvent:(id)arg2;

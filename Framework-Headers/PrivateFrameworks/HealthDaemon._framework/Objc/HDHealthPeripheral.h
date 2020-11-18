@@ -72,6 +72,7 @@
 - (void)peripheral:(id)arg1 didUpdateValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)peripheral:(id)arg1 didWriteValueForCharacteristic:(id)arg2 error:(id)arg3;
 - (void)service:(id)arg1 didReadProperty:(id)arg2 value:(id)arg3 error:(id)arg4;
+- (BOOL)updateCBPeripheral:(id)arg1;
 - (void)writeCharacteristic:(id)arg1 expectResponse:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

@@ -13,6 +13,7 @@
 {
     NSURL *_storeLocation;
     NSURL *_imageStoreLocation;
+    NSURL *_stickerImageStoreLocation;
     NSURL *_imageCacheStoreLocation;
     id<AVTUILogger> _logger;
     id<AVTBlockScheduler> _scheduler;
@@ -28,12 +29,15 @@
 @property (readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly, nonatomic) id<AVTBlockScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly, copy, nonatomic) CDUnknownBlockType serialQueueProvider; // @synthesize serialQueueProvider=_serialQueueProvider;
+@property (readonly, copy, nonatomic) NSURL *stickerImageStoreLocation;
 @property (readonly, copy, nonatomic) NSURL *storeLocation;
 
 + (id)defaultEnvironment;
 + (id)imageCacheStoreLocationWithError:(id *)arg1;
 + (id)imageStoreLocation;
++ (void)resetFlushCacheValuesIfNeeded;
 + (CDUnknownBlockType)serialQueueProvider;
++ (id)stickerImageStoreLocation;
 + (id)storeLocation;
 - (void).cxx_destruct;
 - (id)init;

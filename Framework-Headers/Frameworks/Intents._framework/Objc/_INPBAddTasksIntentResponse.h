@@ -14,11 +14,14 @@
 
 @interface _INPBAddTasksIntentResponse : PBCodable <_INPBAddTasksIntentResponse, NSSecureCoding, NSCopying>
 {
+    CDStruct_95bda58d _warnings;
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_addedTasks;
     _INPBTaskList *_modifiedTaskList;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *addedTasks; // @synthesize addedTasks=_addedTasks;
 @property (readonly, nonatomic) unsigned long long addedTasksCount;
 @property (readonly, copy) NSString *debugDescription;
@@ -27,16 +30,28 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBTaskList *modifiedTaskList; // @synthesize modifiedTaskList=_modifiedTaskList;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) int *warnings;
+@property (readonly, nonatomic) unsigned long long warningsCount;
 
 + (Class)addedTasksType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (int)StringAsWarnings:(id)arg1;
 - (void)addAddedTasks:(id)arg1;
+- (void)addWarnings:(int)arg1;
 - (id)addedTasksAtIndex:(unsigned long long)arg1;
 - (void)clearAddedTasks;
+- (void)clearWarnings;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setWarnings:(int *)arg1 count:(unsigned long long)arg2;
+- (id)warningsAsString:(int)arg1;
+- (int)warningsAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

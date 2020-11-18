@@ -30,7 +30,6 @@
 - (void)clear;
 - (void)dealloc;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
-- (void)finalize;
 - (void)handleNeedsLayoutNotification;
 - (id)init;
 - (id)initWithLayer:(id)arg1;

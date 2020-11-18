@@ -15,8 +15,8 @@
 
 @property (strong, nonatomic) MFLibraryMessage *libraryMessage; // @synthesize libraryMessage=_libraryMessage;
 
+- (void).cxx_destruct;
 - (id)copy;
-- (void)dealloc;
 - (id)headers;
 - (id)libraryContent;
 

@@ -61,7 +61,6 @@
 - (id)_cancelBarButtonItem;
 - (void)_clearAllIndexPathsForDeleteSelection;
 - (void)_configureTableView:(id)arg1;
-- (id)_defaultBackgroundColor;
 - (id)_deleteBarButtonItem;
 - (void)_deleteItemsAtSelectedIndexes:(id)arg1;
 - (id)_editBarButtonItem;

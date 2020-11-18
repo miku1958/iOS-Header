@@ -37,9 +37,9 @@
 - (void)_setIncludesAWDL:(BOOL)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (BOOL)getInputStream:(out id *)arg1 outputStream:(out id *)arg2;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCFNetService:(struct __CFNetService *)arg1;
 - (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3;
 - (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3 port:(int)arg4;

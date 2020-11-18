@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     VUIProductBannerLayout *_layout;
     _TVImageView *_logoImageView;
     VUILabel *_logoTextView;
+    VUILabel *_subTextView;
+    VUILabel *_episodeInfoView;
     _TVImageView *_coverArtImageView;
     NSArray *_buttonViews;
     VUIComingSoonBannerCardView *_comingSoonView;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VUIFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property (strong, nonatomic) VUILabel *disclaimerTextView; // @synthesize disclaimerTextView=_disclaimerTextView;
+@property (strong, nonatomic) VUILabel *episodeInfoView; // @synthesize episodeInfoView=_episodeInfoView;
 @property (strong, nonatomic) CAGradientLayer *gradientLayer; // @synthesize gradientLayer=_gradientLayer;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUIMediaTagsView *infoTagsView; // @synthesize infoTagsView=_infoTagsView;
@@ -55,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUILabel *logoTextView; // @synthesize logoTextView=_logoTextView;
 @property (nonatomic) BOOL prefersUberLayout; // @synthesize prefersUberLayout=_prefersUberLayout;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
+@property (strong, nonatomic) VUILabel *subTextView; // @synthesize subTextView=_subTextView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) VUILabel *tagsComputationLabel; // @synthesize tagsComputationLabel=_tagsComputationLabel;
 @property (strong, nonatomic) VUIMediaTagsView *tagsView; // @synthesize tagsView=_tagsView;
@@ -70,7 +74,6 @@ __attribute__((visibility("hidden")))
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

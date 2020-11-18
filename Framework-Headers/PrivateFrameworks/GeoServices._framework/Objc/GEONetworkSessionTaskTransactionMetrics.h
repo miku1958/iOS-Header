@@ -25,14 +25,14 @@
     int _resourceFetchType;
     BOOL _proxyConnection;
     BOOL _reusedConnection;
-    CDStruct_63f2c340 _has;
+    CDStruct_60b58840 _flags;
 }
 
-@property (nonatomic) double connectEnd; // @synthesize connectEnd=_connectEnd;
-@property (nonatomic) double connectStart; // @synthesize connectStart=_connectStart;
-@property (nonatomic) double domainLookupEnd; // @synthesize domainLookupEnd=_domainLookupEnd;
-@property (nonatomic) double domainLookupStart; // @synthesize domainLookupStart=_domainLookupStart;
-@property (nonatomic) double fetchStart; // @synthesize fetchStart=_fetchStart;
+@property (nonatomic) double connectEnd;
+@property (nonatomic) double connectStart;
+@property (nonatomic) double domainLookupEnd;
+@property (nonatomic) double domainLookupStart;
+@property (nonatomic) double fetchStart;
 @property (nonatomic) BOOL hasConnectEnd;
 @property (nonatomic) BOOL hasConnectStart;
 @property (nonatomic) BOOL hasDomainLookupEnd;
@@ -48,17 +48,18 @@
 @property (nonatomic) BOOL hasReusedConnection;
 @property (nonatomic) BOOL hasSecureConnectEnd;
 @property (nonatomic) BOOL hasSecureConnectStart;
-@property (nonatomic) int protocolName; // @synthesize protocolName=_protocolName;
-@property (nonatomic) BOOL proxyConnection; // @synthesize proxyConnection=_proxyConnection;
-@property (nonatomic) double requestEnd; // @synthesize requestEnd=_requestEnd;
-@property (nonatomic) double requestStart; // @synthesize requestStart=_requestStart;
-@property (nonatomic) int resourceFetchType; // @synthesize resourceFetchType=_resourceFetchType;
-@property (nonatomic) double responseEnd; // @synthesize responseEnd=_responseEnd;
-@property (nonatomic) double responseStart; // @synthesize responseStart=_responseStart;
-@property (nonatomic) BOOL reusedConnection; // @synthesize reusedConnection=_reusedConnection;
-@property (nonatomic) double secureConnectEnd; // @synthesize secureConnectEnd=_secureConnectEnd;
-@property (nonatomic) double secureConnectStart; // @synthesize secureConnectStart=_secureConnectStart;
+@property (nonatomic) int protocolName;
+@property (nonatomic) BOOL proxyConnection;
+@property (nonatomic) double requestEnd;
+@property (nonatomic) double requestStart;
+@property (nonatomic) int resourceFetchType;
+@property (nonatomic) double responseEnd;
+@property (nonatomic) double responseStart;
+@property (nonatomic) BOOL reusedConnection;
+@property (nonatomic) double secureConnectEnd;
+@property (nonatomic) double secureConnectStart;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsProtocolName:(id)arg1;
 - (int)StringAsResourceFetchType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -69,6 +70,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)protocolNameAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resourceFetchTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

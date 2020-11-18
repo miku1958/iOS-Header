@@ -19,9 +19,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _currentBuildIndex;
     KNOffscreenController *_offscreenController;
     KNPdfHyperlinkController *_hyperlinkController;
-    long long _printLayout;
+    unsigned long long _slidesPerPage;
+    unsigned long long _currentPage;
+    NSString *_printTitle;
+    double _pageMargin;
+    NSOrderedSet *_selectedSlideNodes;
+    id _printView;
     BOOL _printingBuilds;
     BOOL _printingBackgrounds;
+    BOOL _printingSlideBackgroundsWithAlpha;
     BOOL _printingBorders;
     BOOL _printingSlideNumbers;
     BOOL _printingDate;
@@ -29,12 +35,7 @@ __attribute__((visibility("hidden")))
     BOOL _printingSelectedSlides;
     BOOL _printingPageMargins;
     BOOL _printingDraftQuality;
-    unsigned long long _slidesPerPage;
-    unsigned long long _currentPage;
-    NSString *_printTitle;
-    double _pageMargin;
-    NSOrderedSet *_selectedSlideNodes;
-    id _printView;
+    long long _printLayout;
 }
 
 @property (readonly, nonatomic) id<TSDCanvasProxyDelegate> canvasProxyDelegate;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isPrintingPageMargins) BOOL printingPageMargins; // @synthesize printingPageMargins=_printingPageMargins;
 @property (nonatomic, getter=isPrintingSelectedSlides) BOOL printingSelectedSlides; // @synthesize printingSelectedSlides=_printingSelectedSlides;
 @property (nonatomic, getter=isPrintingSkippedSlides) BOOL printingSkippedSlides; // @synthesize printingSkippedSlides=_printingSkippedSlides;
+@property (nonatomic, getter=isPrintingSlideBackgroundsWithAlpha) BOOL printingSlideBackgroundsWithAlpha; // @synthesize printingSlideBackgroundsWithAlpha=_printingSlideBackgroundsWithAlpha;
 @property (nonatomic, getter=isPrintingSlideNumbers) BOOL printingSlideNumbers; // @synthesize printingSlideNumbers=_printingSlideNumbers;
 @property (readonly, nonatomic) unsigned long long rangeEnd;
 @property (readonly, nonatomic) unsigned long long rangeStart;
@@ -68,17 +70,17 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL usesViewForDrawing;
 
+- (void).cxx_destruct;
 - (void)addAnchorPointForSlide:(id)arg1 context:(struct CGContext *)arg2;
 - (struct CGRect)boundsRect;
 - (id)currentInfos;
-- (void)dealloc;
 - (id)documentRoot;
 - (void)drawBorderForRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (void)drawDateForRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
 - (BOOL)drawImageForSlideNode:(id)arg1 andEvent:(unsigned long long)arg2 slideSize:(struct CGSize)arg3 intoRect:(struct CGRect)arg4 context:(struct CGContext *)arg5 createPage:(BOOL)arg6;
 - (void)drawInView:(id)arg1 rect:(struct CGRect)arg2;
 - (void)drawNSStringDateForRect:(struct CGRect)arg1 context:(struct CGContext *)arg2;
-- (void)drawSlideNumberForNode:(id)arg1 index:(unsigned long long)arg2 forRect:(struct CGRect)arg3 context:(struct CGContext *)arg4 position:(long long)arg5;
+- (void)drawSlideNumberForNode:(id)arg1 buildIndex:(unsigned long long)arg2 forRect:(struct CGRect)arg3 context:(struct CGContext *)arg4 position:(long long)arg5;
 - (void)enableRenderAllContent;
 - (BOOL)exportToURL:(id)arg1 delegate:(id)arg2 error:(id *)arg3;
 - (BOOL)exportToURL:(id)arg1 pageNumber:(unsigned long long)arg2 delegate:(id)arg3 error:(id *)arg4;

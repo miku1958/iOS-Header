@@ -17,25 +17,27 @@ __attribute__((visibility("hidden")))
     unsigned int _remoteTotalPacketReceivedCount;
     BOOL _isFeedbackReceived;
     BOOL _didRegisterPacketReceivedHandler;
-    unsigned int _maxBurstyLossCache;
+    unsigned int _maxVideoBurstyLossCache;
+    unsigned int _maxAudioConsecutiveLossCache;
 }
 
-@property (nonatomic) unsigned int maxBurstyLossCache; // @synthesize maxBurstyLossCache=_maxBurstyLossCache;
+@property (nonatomic) unsigned int maxAudioConsecutiveLossCache; // @synthesize maxAudioConsecutiveLossCache=_maxAudioConsecutiveLossCache;
+@property (nonatomic) unsigned int maxVideoBurstyLossCache; // @synthesize maxVideoBurstyLossCache=_maxVideoBurstyLossCache;
 @property (nonatomic) unsigned int mode; // @synthesize mode=_mode;
 
-- (BOOL)detectOutOfOrderFeedbackMessage:(CDStruct_bcb9d60a)arg1;
+- (BOOL)detectOutOfOrderFeedbackMessage:(CDStruct_0ee80423)arg1;
 - (BOOL)getFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
 - (BOOL)getRateControlFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
-- (BOOL)getVCStatisticsFeedbackMessage:(CDStruct_48a7b5a5 *)arg1 time:(double)arg2;
+- (BOOL)getVCStatisticsFeedbackMessage:(CDStruct_b21f1e06 *)arg1 time:(double)arg2;
 - (id)initWithStatisticsCollector:(id)arg1;
 - (BOOL)processFeedbackMessage:(id)arg1 type:(unsigned int)arg2 metaData:(id)arg3 error:(id *)arg4;
-- (BOOL)processRateControlFeedbackMessage:(CDStruct_bcb9d60a)arg1 type:(unsigned int)arg2 error:(id *)arg3;
+- (BOOL)processRateControlFeedbackMessage:(CDStruct_0ee80423)arg1 type:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)processRateControlProbingMessage:(CDStruct_4c345eff)arg1 type:(unsigned int)arg2 error:(id *)arg3;
-- (void)setPacketReceivedStatistics:(CDStruct_4c5da9d9)arg1;
-- (CDStruct_bcb9d60a)translateAFRCFeedbackMessage:(struct tagAFRCFB)arg1;
-- (BOOL)translateMediaControlInfo:(void *)arg1 feedbackMessage:(CDStruct_bcb9d60a *)arg2;
-- (id)translateRateControlDataWithFeedbackMessage:(CDStruct_bcb9d60a)arg1;
-- (CDStruct_bcb9d60a)translateRateControlFeedbackMessageFromData:(id)arg1;
+- (void)setPacketReceivedStatistics:(CDStruct_cbf42801)arg1;
+- (CDStruct_0ee80423)translateAFRCFeedbackMessage:(struct tagAFRCFB)arg1;
+- (BOOL)translateMediaControlInfo:(void *)arg1 feedbackMessage:(CDStruct_0ee80423 *)arg2;
+- (id)translateRateControlDataWithFeedbackMessage:(CDStruct_0ee80423)arg1;
+- (CDStruct_0ee80423)translateRateControlFeedbackMessageFromData:(id)arg1;
 
 @end
 

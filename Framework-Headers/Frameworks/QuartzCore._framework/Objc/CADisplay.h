@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) CADisplayAttributes *externalDisplayAttributes;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) double heartbeatRate;
+@property (nonatomic) double latency;
 @property (readonly, nonatomic) int linkQuality;
 @property (readonly, nonatomic) long long minimumFrameDuration;
 @property (readonly, nonatomic) NSString *name;
@@ -60,6 +61,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)immutableCopy;
+- (void)overrideDisplayTimings:(id)arg1;
 - (id)preferredHDRModes;
 - (id)preferredModeWithCriteria:(id)arg1;
 - (BOOL)setDisplayProperties:(id)arg1;

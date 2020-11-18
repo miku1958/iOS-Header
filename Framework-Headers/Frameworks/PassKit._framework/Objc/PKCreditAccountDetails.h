@@ -58,6 +58,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)removeVirtualCard:(id)arg1;
+- (id)virtualCardWithIdentifier:(id)arg1;
 
 @end
 

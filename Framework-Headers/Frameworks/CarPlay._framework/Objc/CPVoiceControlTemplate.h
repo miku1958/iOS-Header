@@ -8,8 +8,7 @@
 
 #import <CarPlay/CPVoiceControlTemplateDelegate-Protocol.h>
 
-@class NSArray, NSString;
-@protocol CPVoiceTemplateProviding;
+@class NAFuture, NSArray, NSString;
 
 @interface CPVoiceControlTemplate : CPTemplate <CPVoiceControlTemplateDelegate>
 {
@@ -22,7 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) id<CPVoiceTemplateProviding> templateProvider; // @dynamic templateProvider;
+@property (strong, nonatomic) NAFuture *templateProviderFuture; // @dynamic templateProviderFuture;
 @property (readonly, copy, nonatomic) NSArray *voiceControlStates; // @synthesize voiceControlStates=_voiceControlStates;
 
 + (BOOL)supportsSecureCoding;

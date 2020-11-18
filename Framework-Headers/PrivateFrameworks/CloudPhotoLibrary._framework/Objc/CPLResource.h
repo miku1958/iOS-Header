@@ -39,6 +39,8 @@
 + (unsigned long long)maxPixelSizeForResourceType:(unsigned long long)arg1;
 + (id)normalizedResourcesFromResources:(id)arg1 resourcePerResourceType:(id *)arg2;
 + (unsigned long long)resourceTypeFromShortDecription:(id)arg1;
++ (BOOL)resourceTypeSupportsResourceExpunge:(unsigned long long)arg1;
++ (BOOL)resourceTypeTrackedForUpload:(unsigned long long)arg1;
 + (id)shortDescriptionForResourceType:(unsigned long long)arg1;
 + (BOOL)shouldIgnoreResourceTypeOnUpload:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
@@ -58,8 +60,6 @@
 - (id)initWithResourceIdentity:(id)arg1 itemScopedIdentifier:(id)arg2 resourceType:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isTrackedForUpload;
-- (BOOL)shouldApplyDataProtection;
-- (BOOL)shouldCopy;
 
 @end
 

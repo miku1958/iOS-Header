@@ -6,29 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapRegion, VKScreenCameraController;
-@protocol MDRenderTarget, VKImageCanvasDelegate;
+@class GEOMapRegion, VKCameraController;
+@protocol MDRenderTarget;
 
 __attribute__((visibility("hidden")))
 @interface VKImageCanvas : NSObject
 {
-    VKScreenCameraController *_cameraController;
+    struct _retain_ptr<VKCameraController *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+        CDUnknownFunctionPointerType *_vptr$_retain_ptr;
+        VKCameraController *_obj;
+        struct _retain_objc _retain;
+        struct _release_objc _release;
+    } _cameraController;
     shared_ptr_e963992e _taskContext;
-    long long _mapType;
+    int _mapType;
     struct DisplayStyle _mapDisplayStyle;
-    unsigned char _emphasis;
     id<MDRenderTarget> _displayTarget;
-    Renderer_3c643a9a *_mapRenderer;
+    struct Renderer {
+        CDUnknownFunctionPointerType *;
+        shared_ptr_e963992e;
+        struct unique_ptr<md::PassList, std::__1::default_delete<md::PassList>>;
+        struct unique_ptr<md::RenderTargetRegistry, std::__1::default_delete<md::RenderTargetRegistry>>;
+        struct vector<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>, std::__1::allocator<std::__1::unique_ptr<md::RenderLayer, std::__1::default_delete<md::RenderLayer>>>>;
+        struct linear_map<md::CommandBufferLocation, md::RenderLayer *, std::__1::equal_to<md::CommandBufferLocation>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>, std::__1::vector<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>, std::__1::allocator<std::__1::pair<md::CommandBufferLocation, md::RenderLayer *>>>>;
+        struct RunLoopController *;
+        struct MapEngine *;
+    } *_mapRenderer;
     struct LayoutContext *_layoutContext;
-    id<VKImageCanvasDelegate> _delegate;
     struct RunLoopController *_runLoopController;
+    struct VKEdgeInsets _edgeInsets;
 }
 
-@property (nonatomic) id<VKImageCanvasDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) unsigned char emphasis; // @synthesize emphasis=_emphasis;
+@property (nonatomic) struct VKEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (nonatomic) struct DisplayStyle mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
 @property (readonly, nonatomic) GEOMapRegion *mapRegion;
-@property (nonatomic) long long mapType; // @synthesize mapType=_mapType;
+@property (nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property (readonly, nonatomic) double pitch;
 @property (readonly, nonatomic) shared_ptr_e963992e taskContext;
 @property (readonly, nonatomic) double yaw;
@@ -43,10 +55,10 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveMemoryWarning:(BOOL)arg1;
 - (id)initWithMapEngine:(struct MapEngine *)arg1;
 - (void)loadScene;
-- (void)renderSceneWithEngine:(struct MapEngine *)arg1 completion:(function_30b369b8)arg2;
+- (void)renderSceneWithEngine:(struct MapEngine *)arg1 completion:(function_d3afe2e2)arg2;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3;
-- (void)update;
+- (void)updateWithTimestamp:(double)arg1;
 
 @end
 

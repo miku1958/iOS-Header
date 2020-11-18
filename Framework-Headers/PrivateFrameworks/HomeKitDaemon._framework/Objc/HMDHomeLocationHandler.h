@@ -18,6 +18,7 @@
     int _locationAuthorization;
     CLLocation *_location;
     NSTimeZone *_timeZone;
+    NSString *_isoCountryCode;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
     HMDHome *_home;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (strong, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) int locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property (readonly, nonatomic) HMDHomeLocationData *locationData;

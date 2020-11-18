@@ -32,7 +32,7 @@
 - (void)addPassesCardStackViewController:(id)arg1 didFinishAddingPasses:(id)arg2;
 - (void)evaluateBrightness;
 - (void)ingestPassesWithData:(id)arg1 fromPresentationSource:(unsigned long long)arg2;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)init;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
 - (void)resetBrightness;

@@ -13,6 +13,7 @@
 }
 
 @property (readonly) NSNumber *defaultValue;
+@property (readonly) NSNumber *identityValue;
 
 + (id)deserializeFromDictionary:(id)arg1 error:(out id *)arg2;
 - (BOOL)isValid:(out id *)arg1;

@@ -15,26 +15,29 @@
     NSNumber *_adamID;
     NSNumber *_externalVersion;
     NSString *_shortBundleVersion;
+    long long _platform;
 }
 
 @property (strong, nonatomic) NSNumber *adamID; // @synthesize adamID=_adamID;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (strong, nonatomic) NSNumber *externalVersion; // @synthesize externalVersion=_externalVersion;
+@property (nonatomic) long long platform; // @synthesize platform=_platform;
 @property (copy, nonatomic) NSString *shortBundleVersion; // @synthesize shortBundleVersion=_shortBundleVersion;
 
-+ (id)gameDescriptorWithBundleID:(id)arg1;
-+ (id)gameDescriptorWithBundleID:(id)arg1 adamID:(id)arg2;
-+ (id)gameDescriptorWithBundleID:(id)arg1 bundleVersion:(id)arg2 adamID:(id)arg3;
++ (long long)currentPlatform;
++ (id)currentPlatformServerString;
 + (id)gameDescriptorWithBundleID:(id)arg1 bundleVersion:(id)arg2 shortBundleVersion:(id)arg3 adamID:(id)arg4;
++ (long long)gamePlatformFromServerGameDescriptorString:(id)arg1;
++ (long long)gamePlatformFromServerPushString:(id)arg1;
++ (id)platformStringForServerRequest:(long long)arg1;
 + (id)secureCodedPropertyKeys;
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
-- (id)dictionaryForRequest;
+- (struct NSDictionary *)dictionaryForRequest;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithPushDictionary:(id)arg1;
-- (void)setDictionary:(id)arg1;
 
 @end
 

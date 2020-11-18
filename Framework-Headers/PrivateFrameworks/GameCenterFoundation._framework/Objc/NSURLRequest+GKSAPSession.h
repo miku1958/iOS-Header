@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic, getter=_gkSAPSession, setter=_gkSetSAPSession:) GKFairPlaySAPSession *_gkSAPSession;
 
+- (id)_gkDictionaryKey;
 @end
 

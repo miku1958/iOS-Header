@@ -14,6 +14,7 @@
     short _importedBy;
     short _videoFrameRate;
     NSArray *_resources;
+    NSArray *_expungeableResourceStates;
     NSDate *_creationDate;
     NSString *_itemType;
     NSDate *_importDate;
@@ -29,6 +30,7 @@
 
 @property (copy, nonatomic) NSString *codec; // @synthesize codec=_codec;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (copy, nonatomic) NSArray *expungeableResourceStates; // @synthesize expungeableResourceStates=_expungeableResourceStates;
 @property (copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (nonatomic) unsigned long long fullSizeJPEGSource; // @synthesize fullSizeJPEGSource=_fullSizeJPEGSource;
 @property (copy, nonatomic) NSDate *importDate; // @synthesize importDate=_importDate;
@@ -46,11 +48,13 @@
 
 - (void).cxx_destruct;
 - (void)_copyDerivatives:(unsigned long long *)arg1 count:(int)arg2 ifMatchingResourceType:(unsigned long long)arg3 fromRecord:(id)arg4 inResourcePerType:(id)arg5;
+- (BOOL)allowsToOnlyUploadNewResources;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (void)copyDerivativesFromRecordIfPossible:(id)arg1;
 - (unsigned long long)dataClassType;
 - (long long)dequeueOrder;
 - (id)init;
+- (BOOL)isMasterChange;
 - (BOOL)isResourceTypeAGeneratedDerivative:(unsigned long long)arg1;
 - (id)name;
 - (id)propertiesDescription;

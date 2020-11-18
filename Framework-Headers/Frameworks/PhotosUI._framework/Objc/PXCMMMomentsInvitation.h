@@ -25,7 +25,7 @@
     PHFetchResult *_participantsFetchResult;
 }
 
-@property (readonly, nonatomic) long long aggregateMediaType;
+@property (readonly, nonatomic) long long aggregateMediaType; // @dynamic aggregateMediaType;
 @property (readonly, nonatomic) PHAssetCollection *assetCollection; // @synthesize assetCollection=_assetCollection;
 @property (readonly, nonatomic) PXAssetCollectionActionManager *assetCollectionActionManager;
 @property (readonly, nonatomic) unsigned long long count;

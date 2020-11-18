@@ -7,10 +7,11 @@
 #import <UIKitCore/UIView.h>
 
 #import <UIKitCore/CAAnimationDelegate-Protocol.h>
+#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString;
+@class NSArray, NSAttributedString, NSString, UIAccessibilityHUDItem;
 
-@interface _UIExpandingGlyphsView : UIView <CAAnimationDelegate>
+@interface _UIExpandingGlyphsView : UIView <_UIStatusBarDisplayable, CAAnimationDelegate>
 {
     BOOL _expandsFromLeftToRight;
     BOOL _fadesOut;
@@ -22,18 +23,26 @@
     struct CGSize _intrinsicSize;
 }
 
+@property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (strong, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 @property (readonly, nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL expandsFromLeftToRight; // @synthesize expandsFromLeftToRight=_expandsFromLeftToRight;
 @property (nonatomic) BOOL fadesOut; // @synthesize fadesOut=_fadesOut;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *imageViews; // @synthesize imageViews=_imageViews;
 @property (nonatomic) struct CGSize intrinsicSize; // @synthesize intrinsicSize=_intrinsicSize;
+@property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (nonatomic) int remainingAnimationCount; // @synthesize remainingAnimationCount=_remainingAnimationCount;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL wantsCrossfade;
 
 - (void).cxx_destruct;
 - (void)animateCompletionBlock:(CDUnknownBlockType)arg1;

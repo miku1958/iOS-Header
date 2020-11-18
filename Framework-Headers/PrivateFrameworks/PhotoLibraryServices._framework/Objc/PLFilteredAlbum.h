@@ -11,7 +11,7 @@
 #import <PhotoLibraryServices/PLIndexMappingCache-Protocol.h>
 #import <PhotoLibraryServices/PLUserEditableAlbumProtocol-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSIndexSet, NSMutableIndexSet, NSMutableOrderedSet, NSNumber, NSOrderedSet, NSPredicate, NSString, NSURL, PLIndexMapper, PLManagedAsset, UIImage;
+@class NSArray, NSDate, NSDictionary, NSIndexSet, NSMutableIndexSet, NSMutableOrderedSet, NSNumber, NSOrderedSet, NSPredicate, NSString, NSURL, PLIndexMapper, PLManagedAsset, PLPhotoLibrary;
 @protocol NSObject><NSCopying, PLAlbumProtocol;
 
 @interface PLFilteredAlbum : NSObject <PLUserEditableAlbumProtocol, PLCloudSharedAlbumProtocol, PLIndexMapperDataSource, PLIndexMappingCache>
@@ -28,7 +28,7 @@
     NSArray *_filterParameters;
 }
 
-@property (nonatomic) NSMutableOrderedSet *_assets;
+@property (weak, nonatomic) NSMutableOrderedSet *_assets;
 @property (readonly, nonatomic) unsigned long long approximateCount;
 @property (readonly, strong, nonatomic) NSOrderedSet *assets;
 @property (readonly, nonatomic) unsigned long long assetsCount;
@@ -64,13 +64,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) NSDate *endDate;
 @property (nonatomic) int filter; // @synthesize filter;
-@property (readonly, strong, nonatomic) NSArray *filterParameters; // @synthesize filterParameters=_filterParameters;
+@property (readonly, nonatomic) NSArray *filterParameters; // @synthesize filterParameters=_filterParameters;
 @property (readonly, copy, nonatomic) NSIndexSet *filteredIndexes;
 @property (readonly, strong, nonatomic) NSURL *groupURL;
 @property (nonatomic) BOOL hasUnseenContentBoolValue;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *importSessionID;
-@property (readonly, strong, nonatomic) PLIndexMapper *indexMapper;
+@property (readonly, nonatomic) PLIndexMapper *indexMapper;
 @property (strong, nonatomic) NSOrderedSet *invitationRecords;
 @property (readonly, nonatomic) BOOL isCameraAlbum;
 @property (readonly, nonatomic) BOOL isCloudSharedAlbum;
@@ -98,13 +98,13 @@
 @property (readonly, copy, nonatomic) NSString *name;
 @property (nonatomic) int pendingItemsCount;
 @property (nonatomic) int pendingItemsType;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (readonly, nonatomic) unsigned long long photosCount;
-@property (readonly, strong, nonatomic) UIImage *posterImage;
+@property (readonly, strong, nonatomic) NSObject *posterImage;
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate;
 @property (strong, nonatomic) NSString *publicURL;
 @property (strong, nonatomic) PLManagedAsset *secondaryKeyAsset;
 @property (readonly, nonatomic) BOOL shouldDeleteWhenEmpty;
-@property (strong, nonatomic) NSDictionary *slideshowSettings;
 @property (readonly, copy, nonatomic) CDUnknownBlockType sortingComparator;
 @property (readonly, strong, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;
@@ -122,8 +122,9 @@
 + (struct NSObject *)filteredAlbum:(struct NSObject *)arg1 intersectFilter:(int)arg2;
 + (struct NSObject *)filteredAlbum:(struct NSObject *)arg1 predicate:(id)arg2;
 + (id)filteredIndexesInAlbum:(struct NSObject *)arg1 predicate:(id)arg2;
-+ (id)predicateForAlbumFilter:(int)arg1 parameters:(id)arg2;
++ (id)predicateForAlbumFilter:(int)arg1 parameters:(id)arg2 photoLibrary:(id)arg3;
 + (struct NSObject *)unfilteredAlbum:(struct NSObject *)arg1;
+- (void).cxx_destruct;
 - (id)_cloudSharedBackingAlbum;
 - (void)_commonInitWithBackingAlbum:(struct NSObject *)arg1 predicate:(id)arg2;
 - (id)_editableBackingAlbum;
@@ -137,13 +138,12 @@
 - (void)dealloc;
 - (Class)derivedChangeNotificationClass;
 - (id)filteredAssetsAtIndexes:(id)arg1;
-- (void)getFilteredAssets:(id *)arg1 range:(struct _NSRange)arg2;
 - (void)getUnseenStartMarkerIndex:(unsigned long long *)arg1 count:(unsigned long long *)arg2 showsProgress:(BOOL *)arg3;
 - (unsigned long long)indexInFilteredAssetsOfObject:(id)arg1;
 - (id)initWithBackingAlbum:(struct NSObject *)arg1 filter:(int)arg2 parameters:(id)arg3;
 - (id)initWithBackingAlbum:(struct NSObject *)arg1 predicate:(id)arg2;
 - (void)insertFilteredAssets:(id)arg1 atIndexes:(id)arg2;
-- (void)insertInternalUserEditableAssets:(id)arg1 atIndexes:(id)arg2 trimmedVideoPathInfo:(id)arg3 commentText:(id)arg4;
+- (void)insertInternalUserEditableAssets:(id)arg1 atIndexes:(id)arg2 customExportsInfo:(id)arg3 trimmedVideoPathInfo:(id)arg4 commentText:(id)arg5;
 - (void)insertObject:(id)arg1 inFilteredAssetsAtIndex:(unsigned long long)arg2;
 - (id)localizedSharedByLabelAllowsEmail:(BOOL)arg1;
 - (BOOL)mappedDataSourceChanged:(id)arg1 remoteNotificationData:(id)arg2;

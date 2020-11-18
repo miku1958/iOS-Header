@@ -11,15 +11,18 @@
 @protocol VKCameraController <NSObject>
 
 @property (readonly, nonatomic) double altitude;
+@property (readonly, nonatomic) struct AnimationRunner *animationRunner;
 @property (nonatomic) CDStruct_c3b9c2ee centerCoordinate;
 @property (nonatomic) double distanceFromCenterCoordinate;
 @property (nonatomic) double heading;
 @property (readonly, nonatomic) BOOL isFullyPitched;
 @property (readonly, nonatomic) BOOL isPitched;
 @property (readonly, nonatomic) BOOL isRotated;
+@property (readonly, nonatomic) struct MapDataAccess *mapDataAccess;
 @property (readonly, nonatomic) GEOMapRegion *mapRegion;
 @property (readonly, nonatomic) double maxPitch;
 @property (nonatomic) double pitch;
+@property (readonly, nonatomic) struct RunLoopController *runLoopController;
 
 - (BOOL)canZoomInForTileSize:(long long)arg1;
 - (BOOL)canZoomOutForTileSize:(long long)arg1;

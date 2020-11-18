@@ -6,50 +6,58 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUI/PHPhotoLibraryChangeObserver-Protocol.h>
-
-@class NSArray, NSString, PHFetchResult;
+@class NSArray;
 @protocol OS_dispatch_queue, PUSearchZeroKeywordChangeDelegate;
 
-__attribute__((visibility("hidden")))
-@interface PUSearchZeroKeywordDataSource : NSObject <PHPhotoLibraryChangeObserver>
+@interface PUSearchZeroKeywordDataSource : NSObject
 {
     BOOL _fetchInProgress;
     id<PUSearchZeroKeywordChangeDelegate> _delegate;
-    PHFetchResult *_peopleFetchResult;
     NSObject<OS_dispatch_queue> *_fetchQueue;
     NSArray *_sections;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUSearchZeroKeywordChangeDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL fetchInProgress; // @synthesize fetchInProgress=_fetchInProgress;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PHFetchResult *peopleFetchResult; // @synthesize peopleFetchResult=_peopleFetchResult;
 @property (copy, nonatomic) NSArray *sections; // @synthesize sections=_sections;
-@property (readonly) Class superclass;
 
++ (id)_dateViewModelForKeywordDictionary:(id)arg1;
++ (id)_fetchAssetCollectionsForIdentifiers:(id)arg1;
++ (void)_fetchAssetsForAssetViewModels:(id)arg1;
++ (id)_fetchAssetsWithLocalIdentifiers:(id)arg1;
++ (id)_fetchFinalMergeTargetPersonForPersonLocalIdentifier:(id)arg1;
++ (id)_fetchKeyAssetForSceneIdentifier:(int)arg1;
++ (id)_fetchKeyAssetOfAssetCollection:(id)arg1 withOptions:(id)arg2;
++ (void)_fetchKeyAssetsForAssetCollectionViewModels:(id)arg1;
++ (id)_fetchOptionsForPersonFetching;
++ (id)_holidayViewModelForKeywordDictionary:(id)arg1;
++ (id)_homeViewModelForKeywordDictionary:(id)arg1;
++ (id)_meaningViewModelForKeywordDictionary:(id)arg1;
++ (id)_personViewModelForKeywordDictionary:(id)arg1 person:(id)arg2;
++ (id)_personsByLocalIdentifiers:(id)arg1 allUniqueLocalIdentifiers:(id)arg2;
++ (id)_personsForLocalIdentifiers:(id)arg1;
++ (id)_placeViewModelForKeywordDictionary:(id)arg1;
++ (id)_sceneViewModelForKeywordDictionary:(id)arg1;
++ (id)_seasonViewModelForKeywordDictionary:(id)arg1;
++ (id)_sectionsForZeroKeywords:(id)arg1 personsByLocalIdentifier:(id)arg2;
++ (id)_socialGroupViewModelForKeywordDictionary:(id)arg1 peopleByKeyword:(id)arg2;
++ (id)_socialGroupsByKeywordwithPersonsByLocalIdentifier:(id)arg1 socialGroupZeroKeywords:(id)arg2;
++ (id)_uniquePersonLocalIdentifiersForZeroKeywords:(id)arg1;
++ (id)_zeroKeywordsFromDefaultKeywordStore;
 + (id)zeroKeywordLog;
 - (void).cxx_destruct;
-- (void)_fetchAssetsForAssetViewModels:(id)arg1;
-- (void)_fetchKeyAssetsForViewModels:(id)arg1;
-- (id)_personsForLocalIdentifiers:(id)arg1;
-- (void)_registerChangeObservers;
-- (id)_viewModelForKeywordDictionary:(id)arg1 ofType:(long long)arg2 peopleByKeyword:(id)arg3;
+- (BOOL)_shouldFetchItems;
 - (id)_zeroKeywordsFromDefaultKeywordStore;
-- (void)dealloc;
 - (id)debugDictionary;
+- (id)description;
 - (void)fetchItems;
 - (BOOL)hasZeroKeywords;
 - (long long)indexForPlaceKey:(id)arg1;
 - (id)init;
 - (unsigned long long)numberOfItemsInSection:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
-- (void)photoLibraryDidChange:(id)arg1;
 - (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
-- (id)predicateForPersonFetching;
 - (long long)sectionForSectionType:(long long)arg1;
 - (long long)sectionTypeForSection:(unsigned long long)arg1;
 - (id)tapToRadarAttachments;

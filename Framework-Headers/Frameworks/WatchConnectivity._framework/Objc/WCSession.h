@@ -20,6 +20,7 @@
     BOOL _reachable;
     BOOL _complicationEnabled;
     BOOL _watchAppInstalled;
+    BOOL _companionAppInstalled;
     BOOL _hasCompletedInitialActivation;
     BOOL _connectionWasInterrupted;
     BOOL _delegateSupportsAsyncActivate;
@@ -46,6 +47,7 @@
 @property (nonatomic) long long activationState; // @synthesize activationState=_activationState;
 @property (copy, nonatomic) NSDictionary *applicationContext; // @synthesize applicationContext=_applicationContext;
 @property (readonly) NSOperationQueue *backgroundWorkOperationQueue; // @synthesize backgroundWorkOperationQueue=_backgroundWorkOperationQueue;
+@property (nonatomic, getter=isCompanionAppInstalled) BOOL companionAppInstalled; // @synthesize companionAppInstalled=_companionAppInstalled;
 @property (nonatomic, getter=isComplicationEnabled) BOOL complicationEnabled; // @synthesize complicationEnabled=_complicationEnabled;
 @property (nonatomic) BOOL connectionWasInterrupted; // @synthesize connectionWasInterrupted=_connectionWasInterrupted;
 @property (strong) WCSessionUserInfoTransfer *currentComplicationUserInfoTransfer; // @synthesize currentComplicationUserInfoTransfer=_currentComplicationUserInfoTransfer;

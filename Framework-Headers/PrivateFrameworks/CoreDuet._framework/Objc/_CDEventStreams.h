@@ -16,9 +16,10 @@
 }
 
 @property (readonly, nonatomic) NSDictionary *allEventStreams; // @synthesize allEventStreams=_allEventStreams;
-@property (strong, nonatomic) NSDictionary *allKBEventStreams; // @synthesize allKBEventStreams=_allKBEventStreams;
+@property (readonly, nonatomic) NSDictionary *allKBEventStreams; // @synthesize allKBEventStreams=_allKBEventStreams;
 @property (nonatomic) BOOL allStreamsLoaded; // @synthesize allStreamsLoaded=_allStreamsLoaded;
 
++ (id)contentProviderPlistEventStreamsForPath:(id)arg1;
 + (id)ephemeralitySchedule;
 + (id)eventStreamForName:(id)arg1;
 + (id)eventStreamPropertiesForEventStream:(id)arg1;
@@ -32,6 +33,7 @@
 - (id)_eventStreamForName:(id)arg1 orKBName:(id)arg2;
 - (id)init;
 - (void)setAllEventStreams:(id)arg1;
+- (void)setAllKBEventStreams:(id)arg1;
 
 @end
 

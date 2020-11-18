@@ -10,6 +10,7 @@
 
 @protocol VSJSResponsePayload <JSExport>
 
+@property (copy, nonatomic) NSString *appBundleIdentifier;
 @property (copy, nonatomic) NSString *authN;
 @property (copy, nonatomic) NSString *authenticationScheme;
 @property (copy, nonatomic) NSArray *clearSubscriptions;

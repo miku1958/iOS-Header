@@ -27,6 +27,7 @@
 + (id)dropVerdict;
 + (id)filterDataVerdictWithFilterInbound:(BOOL)arg1 peekInboundBytes:(unsigned long long)arg2 filterOutbound:(BOOL)arg3 peekOutboundBytes:(unsigned long long)arg4;
 + (id)needRulesVerdict;
++ (id)pauseVerdict;
 + (id)remediateVerdictWithRemediationURLMapKey:(id)arg1 remediationButtonTextMapKey:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <MIME/ECMIMECharset-Protocol.h>
+#import <MIME/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface MFMimeCharset : NSObject
+@interface MFMimeCharset : NSObject <NSSecureCoding, ECMIMECharset>
 {
     unsigned int _encoding;
     NSString *_primaryLanguage;
@@ -18,21 +21,29 @@
     unsigned int _canBeUsedForOutgoingMessages:1;
 }
 
+@property (readonly, nonatomic) BOOL canBeUsedForOutgoingMessages;
+@property (readonly, nonatomic) unsigned int cfStringEncoding;
+@property (readonly, copy, nonatomic) NSString *charsetName;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *displayName;
+@property (readonly) unsigned long long encoding;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useBase64InHeaders;
+
 + (id)allMimeCharsets;
 + (id)allMimeCharsets:(BOOL)arg1;
 + (id)charsetForEncoding:(unsigned int)arg1;
 + (id)preferredMimeCharset;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_setPrimaryLanguage:(id)arg1;
-- (BOOL)canBeUsedForOutgoingMessages;
-- (id)charsetName;
 - (BOOL)coversLargeUnicodeSubset;
-- (void)dealloc;
-- (id)description;
-- (id)displayName;
-- (unsigned int)encoding;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithEncoding:(unsigned int)arg1;
 - (id)primaryLanguage;
-- (BOOL)useBase64InHeaders;
 
 @end
 

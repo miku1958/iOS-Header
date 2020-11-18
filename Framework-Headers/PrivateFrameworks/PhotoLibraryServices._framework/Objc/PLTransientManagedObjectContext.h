@@ -10,7 +10,6 @@
 {
 }
 
-+ (BOOL)_shouldRequestModelMigratorCreateDatabaseOnRebuildAndRetry;
 + (BOOL)canMergeRemoteChanges;
 
 @end

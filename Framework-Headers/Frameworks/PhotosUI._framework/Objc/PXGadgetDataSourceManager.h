@@ -9,8 +9,8 @@
 #import <PhotosUICore/PXGadgetDelegate-Protocol.h>
 #import <PhotosUICore/PXGadgetProviderDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSObject, NSString, PXGadgetDataSource;
-@protocol OS_dispatch_queue, OS_os_log, PXGadgetDelegate;
+@class NSArray, NSMutableArray, NSObject, NSString, PXGadgetDataSource, PXGadgetNavigationHelper;
+@protocol OS_dispatch_queue, OS_os_log, PXGadgetDelegate, PXGadgetTransition;
 
 @interface PXGadgetDataSourceManager : PXSectionedDataSourceManager <PXGadgetProviderDelegate, PXGadgetDelegate>
 {
@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) CDUnknownBlockType gadgetProviderSortComparator;
 @property (readonly, nonatomic) NSArray *gadgetProviders;
 @property (readonly, nonatomic) CDUnknownBlockType gadgetSortComparator;
+@property (readonly, nonatomic) id<PXGadgetTransition> gadgetTransition;
 @property (nonatomic) BOOL hasLoadedPriorities; // @synthesize hasLoadedPriorities=_hasLoadedPriorities;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL loadingInitialGadgets; // @synthesize loadingInitialGadgets=_loadingInitialGadgets;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) NSMutableArray *lookupQueue_loadedProviders; // @synthesize lookupQueue_loadedProviders=_lookupQueue_loadedProviders;
 @property (nonatomic) BOOL needsToLoadAllProviders; // @synthesize needsToLoadAllProviders=_needsToLoadAllProviders;
 @property (weak, nonatomic) id<PXGadgetDelegate> nextGadgetResponder; // @synthesize nextGadgetResponder=_nextGadgetResponder;
+@property (readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -56,17 +58,14 @@
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (BOOL)gadget:(id)arg1 transitionToViewController:(struct NSObject *)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct NSObject *)gadgetViewControllerHostingGadget:(id)arg1;
-- (id)gridPresentation;
 - (id)init;
 - (id)initWithQueueName:(id)arg1;
 - (void)invalidateGadgets;
 - (void)loadRemainingGadgetsIfNeeded;
 - (void)loadRemainingGadgetsIfNeededWithGenerateGadgetFinishedBlock:(CDUnknownBlockType)arg1;
 - (id)noContentGadget;
-- (id)oneUpPresentation;
 - (void)presentGadgetViewController:(struct NSObject *)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeCachedProviders;
-- (BOOL)scrollGadgetToVisible:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

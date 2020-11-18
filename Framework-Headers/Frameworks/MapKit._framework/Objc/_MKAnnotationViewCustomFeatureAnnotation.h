@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <MapKit/NSSecureCoding-Protocol.h>
 #import <MapKit/VKCustomFeatureAnnotation-Protocol.h>
 
 @class MKAnnotationView, NSString, VKCustomFeature;
 
 __attribute__((visibility("hidden")))
-@interface _MKAnnotationViewCustomFeatureAnnotation : NSObject <VKCustomFeatureAnnotation>
+@interface _MKAnnotationViewCustomFeatureAnnotation : NSObject <VKCustomFeatureAnnotation, NSSecureCoding>
 {
     VKCustomFeature *_customFeature;
     MKAnnotationView *_annotationView;
@@ -27,7 +28,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (void)setCustomFeature:(id)arg1;
 
 @end
 

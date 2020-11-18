@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 - (id)fullscreenBackgroundColor;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)pause;
-- (void)play;
+- (BOOL)pause;
+- (BOOL)play;
 - (id)player;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)setupPlayerWithMediaAsset:(id)arg1;

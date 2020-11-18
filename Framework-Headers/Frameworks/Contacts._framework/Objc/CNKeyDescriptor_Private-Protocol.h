@@ -10,10 +10,13 @@
 
 @protocol CNKeyDescriptor_Private <CNKeyDescriptor>
 - (void)_cn_executeGetterForRepresentedKeys:(id (^)(NSString *))arg1;
+- (CNContactKeyVector *)_cn_ignorableKeys;
 - (CNContactKeyVector *)_cn_optionalKeys;
 - (CNContactKeyVector *)_cn_requiredKeys;
 
 @optional
 - (NSString *)_cn_recursiveDescriptionWithPrefix:(NSString *)arg1;
+- (void)_cn_setUnauthorizedKeys:(CNContactKeyVector *)arg1;
+- (CNContactKeyVector *)_cn_unauthorizedKeys;
 @end
 

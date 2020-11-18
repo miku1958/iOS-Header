@@ -81,7 +81,6 @@
 - (void)canvasWillScroll;
 - (void)canvasWillZoom;
 - (struct CGRect)caretRectForPosition:(id)arg1;
-- (void)changeFirstResponderIfNecessary;
 - (id)characterRangeAtPoint:(struct CGPoint)arg1;
 - (id)characterRangeByExtendingPosition:(id)arg1 inDirection:(long long)arg2;
 - (void)clearEditorAndResignFirstResponder;

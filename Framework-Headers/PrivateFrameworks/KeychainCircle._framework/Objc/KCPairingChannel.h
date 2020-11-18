@@ -6,47 +6,72 @@
 
 #import <objc/NSObject.h>
 
-@class KCPairingChannelContext, NSXPCConnection;
+@class KCPairingChannelContext, NSString, NSXPCConnection, OTControl, OTJoiningConfiguration;
 
 @interface KCPairingChannel : NSObject
 {
     BOOL _needInitialSync;
-    BOOL _initator;
+    BOOL _initiator;
     BOOL _acceptorWillSendInitialSyncCredentials;
+    BOOL _testFailSOS;
+    BOOL _testFailOctagon;
+    BOOL _sessionSupportsSOS;
+    BOOL _sessionSupportsOctagon;
     unsigned int _counter;
     KCPairingChannelContext *_peerVersionContext;
     NSXPCConnection *_connection;
+    OTControl *_otControl;
+    NSString *_contextID;
+    CDUnknownBlockType _nextOctagonState;
     CDUnknownBlockType _nextState;
+    OTJoiningConfiguration *_joiningConfiguration;
 }
 
 @property BOOL acceptorWillSendInitialSyncCredentials; // @synthesize acceptorWillSendInitialSyncCredentials=_acceptorWillSendInitialSyncCredentials;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong) NSString *contextID; // @synthesize contextID=_contextID;
 @property unsigned int counter; // @synthesize counter=_counter;
-@property BOOL initator; // @synthesize initator=_initator;
+@property BOOL initiator; // @synthesize initiator=_initiator;
+@property (strong, nonatomic) OTJoiningConfiguration *joiningConfiguration; // @synthesize joiningConfiguration=_joiningConfiguration;
 @property (readonly) BOOL needInitialSync; // @synthesize needInitialSync=_needInitialSync;
+@property (copy) CDUnknownBlockType nextOctagonState; // @synthesize nextOctagonState=_nextOctagonState;
 @property (copy) CDUnknownBlockType nextState; // @synthesize nextState=_nextState;
+@property (strong) OTControl *otControl; // @synthesize otControl=_otControl;
 @property KCPairingChannelContext *peerVersionContext; // @synthesize peerVersionContext=_peerVersionContext;
+@property BOOL sessionSupportsOctagon; // @synthesize sessionSupportsOctagon=_sessionSupportsOctagon;
+@property BOOL sessionSupportsSOS; // @synthesize sessionSupportsSOS=_sessionSupportsSOS;
+@property (nonatomic) BOOL testFailOctagon; // @synthesize testFailOctagon=_testFailOctagon;
+@property (nonatomic) BOOL testFailSOS; // @synthesize testFailSOS=_testFailSOS;
 
 + (BOOL)isSupportedPlatform;
 + (id)pairingChannelAcceptor:(id)arg1;
 + (id)pairingChannelInitiator:(id)arg1;
 - (void).cxx_destruct;
+- (void)acceptorFirstOctagonPacket:(id)arg1 reply:(id)arg2 complete:(CDUnknownBlockType)arg3;
 - (void)acceptorFirstPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)acceptorSecondOctagonPacket:(id)arg1 reply:(id)arg2 complete:(CDUnknownBlockType)arg3;
 - (void)acceptorSecondPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)acceptorThirdPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)attemptSosUpgrade;
 - (id)compressData:(id)arg1;
 - (id)decompressData:(id)arg1;
 - (BOOL)ensureControlChannel;
 - (void)exchangePacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (id)exchangePacket:(id)arg1 complete:(BOOL *)arg2 error:(id *)arg3;
 - (id)initAsInitiator:(BOOL)arg1 version:(id)arg2;
-- (void)initatorCompleteSecondPacket:(CDUnknownBlockType)arg1;
-- (void)initatorFirstPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
-- (void)initatorFourthPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
-- (void)initatorSecondPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
-- (void)initatorThirdPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)initiatorCompleteSecondPacketOctagon:(id)arg1 application:(id)arg2 complete:(CDUnknownBlockType)arg3;
+- (void)initiatorCompleteSecondPacketWithSOS:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)initiatorFirstPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)initiatorFourthPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)initiatorSecondPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)initiatorThirdPacket:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)oneStepTooMany:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)setConfiguration:(id)arg1;
+- (void)setControlObject:(id)arg1;
 - (void)setNextStateError:(id)arg1 complete:(CDUnknownBlockType)arg2;
+- (void)setOctagonMessageFailForTesting:(BOOL)arg1;
+- (void)setSOSMessageFailForTesting:(BOOL)arg1;
+- (void)setSessionSupportsOctagonForTesting:(BOOL)arg1;
 - (void)setXPCConnectionObject:(id)arg1;
 - (void)validateStart:(CDUnknownBlockType)arg1;
 

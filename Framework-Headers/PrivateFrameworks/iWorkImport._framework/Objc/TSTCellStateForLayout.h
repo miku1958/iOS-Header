@@ -6,13 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class TSTCell, TSTLayoutContentCachedKey, TSWPColumn;
+#import <iWorkImport/NSCopying-Protocol.h>
+
+@class TSTCell, TSTLayoutContentCachedKey, TSWPColumn, TSWPParagraphStyle;
 
 __attribute__((visibility("hidden")))
-@interface TSTCellStateForLayout : NSObject
+@interface TSTCellStateForLayout : NSObject <NSCopying>
 {
     BOOL _cellPropsRowHeight;
     BOOL _cellWraps;
+    BOOL _needWPColumn;
+    BOOL _shouldFastPathMeasureFitWidth;
     BOOL _forDrawing;
     BOOL _inDynamicLayout;
     int _verticalAlignment;
@@ -21,6 +25,7 @@ __attribute__((visibility("hidden")))
     TSTCell *_cell;
     id _cellContents;
     double _maxWidthForChildren;
+    TSWPParagraphStyle *_textStyle;
     TSTLayoutContentCachedKey *_keyVal;
     TSWPColumn *_wpColumn;
     unsigned long long _pageNumber;
@@ -28,6 +33,7 @@ __attribute__((visibility("hidden")))
     struct TSUCellRect _layoutMergeRange;
     struct CGSize _minSize;
     struct CGSize _maxSize;
+    struct CGSize _sizeOfText;
     struct UIEdgeInsets _paddingInsets;
 }
 
@@ -45,13 +51,18 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double maxWidthForChildren; // @synthesize maxWidthForChildren=_maxWidthForChildren;
 @property (nonatomic) struct CGSize minSize; // @synthesize minSize=_minSize;
 @property (nonatomic) struct TSUCellCoord modelCellID; // @synthesize modelCellID=_modelCellID;
+@property (nonatomic) BOOL needWPColumn; // @synthesize needWPColumn=_needWPColumn;
 @property (nonatomic) struct UIEdgeInsets paddingInsets; // @synthesize paddingInsets=_paddingInsets;
 @property (nonatomic) unsigned long long pageCount; // @synthesize pageCount=_pageCount;
 @property (nonatomic) unsigned long long pageNumber; // @synthesize pageNumber=_pageNumber;
+@property (nonatomic) BOOL shouldFastPathMeasureFitWidth; // @synthesize shouldFastPathMeasureFitWidth=_shouldFastPathMeasureFitWidth;
+@property (nonatomic) struct CGSize sizeOfText; // @synthesize sizeOfText=_sizeOfText;
+@property (strong, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
 @property (nonatomic) int verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 @property (strong, nonatomic) TSWPColumn *wpColumn; // @synthesize wpColumn=_wpColumn;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 
 @end

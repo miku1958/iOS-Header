@@ -6,22 +6,24 @@
 
 #import <Vision/VNObservation.h>
 
-@class MLFeatureValue;
+@class MLFeatureValue, NSString;
 
 @interface VNCoreMLFeatureValueObservation : VNObservation
 {
     MLFeatureValue *_featureValue;
+    NSString *_featureName;
 }
 
+@property (readonly, copy, nonatomic) NSString *featureName; // @synthesize featureName=_featureName;
 @property (readonly, copy, nonatomic) MLFeatureValue *featureValue; // @synthesize featureValue=_featureValue;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithRequestRevision:(unsigned long long)arg1 featureValue:(id)arg2;
+- (id)initWithRequestRevision:(unsigned long long)arg1 featureName:(id)arg2 featureValue:(id)arg3;
 
 @end
 

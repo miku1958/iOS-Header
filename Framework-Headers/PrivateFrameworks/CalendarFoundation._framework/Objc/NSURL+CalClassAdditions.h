@@ -7,9 +7,16 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (CalClassAdditions)
-+ (id)URLWithAddressBookUID:(id)arg1;
++ (id)URLForMail:(id)arg1;
++ (id)URLForNoMail;
++ (id)URLForNoTel;
++ (id)URLForTel:(id)arg1;
++ (id)URLWithContactIdentifier:(id)arg1;
++ (id)_URLForAddress:(id)arg1 scheme:(id)arg2 noAddress:(id)arg3;
++ (BOOL)_isValidURI:(id)arg1;
 + (id)davCompatibleFilenameForFilename:(id)arg1;
 - (id)URLWithUsername:(id)arg1 withPassword:(id)arg2;
+- (BOOL)_hasDescription:(id)arg1;
 - (BOOL)cal_caseInsensitiveHasScheme:(id)arg1;
 - (id)cal_emailAddressString;
 - (BOOL)cal_hasSchemeMailto;
@@ -25,6 +32,8 @@
 - (id)initWithScheme:(id)arg1 host:(id)arg2 port:(int)arg3 path:(id)arg4;
 - (BOOL)isEqualToURL:(id)arg1;
 - (BOOL)isEqualToURLIgnoringScheme:(id)arg1;
+- (BOOL)isNoMail;
+- (BOOL)isNoTel;
 - (BOOL)isOnRemoteFileSystem;
 - (id)pathDecodedAndWithoutTrailingSlashRemoved;
 - (id)pathWithoutTrailingRemovingSlash;

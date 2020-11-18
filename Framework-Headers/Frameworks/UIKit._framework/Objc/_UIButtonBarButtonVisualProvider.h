@@ -8,11 +8,11 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class UIView;
+@class UIView, _UIButtonBarButton;
 
-__attribute__((visibility("hidden")))
 @interface _UIButtonBarButtonVisualProvider : NSObject <NSCopying>
 {
+    _UIButtonBarButton *_button;
 }
 
 @property (nonatomic) BOOL backButtonConstraintsActive;
@@ -32,8 +32,11 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (void)resetButtonHasHighlighted;
 - (BOOL)supportsBackButtons;
+- (void)updateButton:(id)arg1 appearance:(id)arg2;
 - (void)updateButton:(id)arg1 forEnabledState:(BOOL)arg2;
+- (void)updateButton:(id)arg1 forFocusedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forHighlightedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forSelectedState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 toUseButtonShapes:(BOOL)arg2;

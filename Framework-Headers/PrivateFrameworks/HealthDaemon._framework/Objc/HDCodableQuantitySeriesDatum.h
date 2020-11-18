@@ -10,17 +10,17 @@
 
 @interface HDCodableQuantitySeriesDatum : PBCodable <NSCopying>
 {
-    double _timestamp;
+    double _endDate;
+    double _startDate;
     double _value;
-    struct {
-        unsigned int timestamp:1;
-        unsigned int value:1;
-    } _has;
+    CDStruct_2d5b04fb _has;
 }
 
-@property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) double endDate; // @synthesize endDate=_endDate;
+@property (nonatomic) BOOL hasEndDate;
+@property (nonatomic) BOOL hasStartDate;
 @property (nonatomic) BOOL hasValue;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) double startDate; // @synthesize startDate=_startDate;
 @property (nonatomic) double value; // @synthesize value=_value;
 
 - (void)copyTo:(id)arg1;

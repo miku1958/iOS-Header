@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)sizeToFit;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

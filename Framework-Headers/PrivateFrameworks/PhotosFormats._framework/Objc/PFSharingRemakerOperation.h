@@ -10,19 +10,19 @@
 
 @interface PFSharingRemakerOperation : NSObject
 {
+    long long _inputType;
     NSURL *_imageOutputURL;
     NSURL *_videoOutputURL;
     NSString *__uuid;
-    long long __inputType;
     PFVideoSharingOperation *__videoOperation;
     PFPhotoSharingOperation *__imageOperation;
 }
 
 @property (strong, nonatomic, setter=_setImageOperation:) PFPhotoSharingOperation *_imageOperation; // @synthesize _imageOperation=__imageOperation;
-@property (nonatomic, setter=_setInputType:) long long _inputType; // @synthesize _inputType=__inputType;
 @property (copy, nonatomic, setter=_setUUID:) NSString *_uuid; // @synthesize _uuid=__uuid;
 @property (strong, nonatomic, setter=_setVideoOperation:) PFVideoSharingOperation *_videoOperation; // @synthesize _videoOperation=__videoOperation;
 @property (copy, nonatomic, setter=_setImageOutputURL:) NSURL *imageOutputURL; // @synthesize imageOutputURL=_imageOutputURL;
+@property (nonatomic, setter=_setInputType:) long long inputType; // @synthesize inputType=_inputType;
 @property (copy, nonatomic, setter=_setVideoOutputURL:) NSURL *videoOutputURL; // @synthesize videoOutputURL=_videoOutputURL;
 
 + (id)remakerOperationWithInputType:(long long)arg1 videoURL:(id)arg2 imageURL:(id)arg3 adjustmentData:(id)arg4;

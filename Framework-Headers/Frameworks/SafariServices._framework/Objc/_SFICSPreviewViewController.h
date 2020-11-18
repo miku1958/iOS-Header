@@ -32,7 +32,6 @@
 - (void)_ensureLeftBarButtonItemsIncludesDoneItem:(id)arg1;
 - (void)_presentActivityViewController:(id)arg1;
 - (void)_updateNavigationBarItems;
-- (void)dealloc;
 - (void)icsPreviewControllerWantsDismissal:(id)arg1;
 - (id)initWithFilePath:(id)arg1 sourceURL:(id)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;

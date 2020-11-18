@@ -6,20 +6,32 @@
 
 #import <Preferences/DevicePINController.h>
 
-@class NSObject;
+#import <ManagedConfigurationUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
+
+@class NSString;
+@protocol DevicePINControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MCPINEntryViewController : DevicePINController
+@interface MCPINEntryViewController : DevicePINController <UIAdaptivePresentationControllerDelegate>
 {
-    NSObject *_delegate;
+    id<DevicePINControllerDelegate> _delegate;
+    unsigned long long _style;
 }
 
-@property (weak, nonatomic) NSObject *delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<DevicePINControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_updateStyle;
 - (id)init;
+- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (id)stringsBundle;
 - (id)stringsTable;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

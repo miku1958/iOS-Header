@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)countryCode;
 - (long long)displayNameOrder;
+- (id)filteredGroupAndContainerIDs;
 - (id)init;
 - (id)initWithFoundationUserDefaults:(id)arg1;
 - (BOOL)isShortNameFormatEnabled;
 - (long long)newContactDisplayNameOrder;
 - (void)setDisplayNameOrder:(long long)arg1;
+- (void)setFilteredGroupAndContainerIDs:(id)arg1;
 - (void)setShortNameFormat:(long long)arg1;
 - (void)setShortNameFormatEnabled:(BOOL)arg1;
 - (void)setShortNameFormatPrefersNicknames:(BOOL)arg1;

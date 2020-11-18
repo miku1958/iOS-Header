@@ -6,31 +6,27 @@
 
 #import <Home/HFItemBuilder.h>
 
-@class HFConditionCollection, HFDurationEventBuilder, HFMutableSetDiff, HFTriggerAnonymousActionSetBuilder, HMTrigger, NSArray, NSString;
+@class HFConditionCollection, HFDurationEventBuilder, HFMutableSetDiff, HFTriggerActionSetsBuilder, HMTrigger, NSArray, NSString;
 @protocol HFTriggerBuilderContextProviding;
 
 @interface HFTriggerBuilder : HFItemBuilder
 {
     BOOL _enabled;
     NSString *_name;
-    HFTriggerAnonymousActionSetBuilder *_anonymousActionSetBuilder;
+    HFTriggerActionSetsBuilder *_triggerActionSets;
     id<HFTriggerBuilderContextProviding> _context;
     HFConditionCollection *_conditionCollection;
-    HFMutableSetDiff *_actionSetBuilders;
     HFMutableSetDiff *_endEventBuildersDiff;
 }
 
-@property (strong, nonatomic) HFMutableSetDiff *actionSetBuilders; // @synthesize actionSetBuilders=_actionSetBuilders;
-@property (readonly, nonatomic) NSArray *actionSets;
 @property (readonly, nonatomic, getter=areActionsAffectedByEndEvents) BOOL actionsAffectedByEndEvents;
-@property (strong, nonatomic) HFTriggerAnonymousActionSetBuilder *anonymousActionSetBuilder; // @synthesize anonymousActionSetBuilder=_anonymousActionSetBuilder;
 @property (strong, nonatomic) HFConditionCollection *conditionCollection; // @synthesize conditionCollection=_conditionCollection;
 @property (strong, nonatomic) id<HFTriggerBuilderContextProviding> context; // @synthesize context=_context;
 @property (readonly, nonatomic) HFDurationEventBuilder *designatedDurationEventBuilder;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) NSArray *endEventBuilders;
 @property (strong, nonatomic) HFMutableSetDiff *endEventBuildersDiff; // @synthesize endEventBuildersDiff=_endEventBuildersDiff;
-@property (readonly, nonatomic) BOOL hasActions;
+@property (readonly, nonatomic) BOOL isShortcutOwned;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL requiresConfirmationToRun;
 @property (readonly, nonatomic) BOOL requiresFMFDeviceToRun;
@@ -41,6 +37,7 @@
 @property (readonly, nonatomic) BOOL supportsConditions;
 @property (readonly, nonatomic) BOOL supportsEndEvents;
 @property (readonly, nonatomic) HMTrigger *trigger;
+@property (strong, nonatomic) HFTriggerActionSetsBuilder *triggerActionSets; // @synthesize triggerActionSets=_triggerActionSets;
 
 + (Class)homeKitRepresentationClass;
 + (id)triggerBuilderForTrigger:(id)arg1 inHome:(id)arg2 context:(id)arg3;
@@ -56,8 +53,6 @@
 - (id)_updateEnabledState;
 - (id)_updateEndEvents;
 - (id)_updateName;
-- (void)addAction:(id)arg1;
-- (void)addActionSet:(id)arg1;
 - (void)addEndEventBuilder:(id)arg1;
 - (id)commitCreateTrigger;
 - (id)commitEditTrigger;
@@ -69,17 +64,12 @@
 - (id)initWithHome:(id)arg1 context:(id)arg2;
 - (BOOL)markTriggerAsHomeAppCreated;
 - (id)naturalLanguageNameOfType:(unsigned long long)arg1;
-- (void)removeAction:(id)arg1;
-- (void)removeActionSet:(id)arg1;
-- (void)removeAllActionsAndActionSets;
 - (void)removeAllEndEventBuilders;
 - (void)removeEndEventBuilder:(id)arg1;
 - (id)replaceCurrentTriggerWithTrigger:(id)arg1;
 - (void)setEndEvent:(id)arg1;
 - (void)setMarkTriggerAsHomeAppCreated:(BOOL)arg1;
 - (void)setTrigger:(id)arg1;
-- (void)updateAction:(id)arg1;
-- (void)updateActionSet:(id)arg1;
 - (void)updateEndEventBuilder:(id)arg1;
 
 @end

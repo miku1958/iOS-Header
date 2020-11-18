@@ -24,6 +24,7 @@
 - (id)init;
 - (id)initWithContent:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithKeywords:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

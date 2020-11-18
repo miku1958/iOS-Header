@@ -19,22 +19,21 @@
 @property (nonatomic, getter=isLastFrame) BOOL lastFrame; // @synthesize lastFrame=_lastFrame;
 @property (nonatomic) unsigned long long trackingLevel; // @synthesize trackingLevel=_trackingLevel;
 
-+ (unsigned long long)_trackingLevelEnumFromTrackingLevelOption:(id)arg1;
++ (unsigned int)frameCVPixelBufferFormatForRequestRevision:(unsigned long long)arg1;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
++ (id)trackerTypeForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (id)_newTrackerOptionsForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (id)_resetTrackerIfNeeded:(id)arg1 trackerProvider:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)_trackingLevelOptionFromTrackingLevelEnum;
 - (BOOL)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (id)initWithDetectedObjectObservation:(id)arg1;
 - (id)initWithDetectedObjectObservation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
 - (id)newDefaultRequestInstance;
 - (id)sequencedRequestPreviousObservationsKey;
-- (id)trackerType;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 

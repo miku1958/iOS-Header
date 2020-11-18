@@ -46,8 +46,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) BOOL autoListRecognition;
 @property (readonly, nonatomic) BOOL autoListTermination;
+@property (readonly, nonatomic) BOOL canCopyData;
 @property (readonly, nonatomic) TSWPStorage *captionStorage;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDImageAdjustments *imageAdjustments; // @synthesize imageAdjustments=_imageAdjustments;
 @property (strong, nonatomic) TSPData *imageData; // @synthesize imageData=_imageData;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, nonatomic) unsigned long long itemIndex;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (readonly, nonatomic) struct CGSize naturalSize;
@@ -88,12 +90,15 @@ __attribute__((visibility("hidden")))
 - (void)didInitFromSOS;
 - (id)endCollectingChanges;
 - (id)initWithContext:(id)arg1 imageData:(id)arg2;
+- (id)initWithContext:(id)arg1 imageData:(id)arg2 thumbnailImageData:(id)arg3;
 - (BOOL)isSelectable;
 - (BOOL)isThemeContent;
 - (Class)layoutClass;
 - (void)loadFromMessage:(const struct GalleryItem *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)objectUUIDPath;
+- (BOOL)p_canCopy:(id)arg1;
+- (void)p_willModifyImageData;
 - (Class)repClass;
 - (void)saveToArchiver:(id)arg1;
 - (void)saveToMessage:(struct GalleryItem *)arg1 archiver:(id)arg2;

@@ -6,22 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <KeychainCircle/NSSecureCoding-Protocol.h>
+
 @class NSString;
 
-@interface KCPairingChannelContext : NSObject
+@interface KCPairingChannelContext : NSObject <NSSecureCoding>
 {
     NSString *_model;
     NSString *_modelVersion;
     NSString *_modelClass;
     NSString *_osVersion;
+    NSString *_uniqueDeviceID;
+    NSString *_uniqueClientID;
+    NSString *_intent;
 }
 
+@property (strong) NSString *intent; // @synthesize intent=_intent;
 @property (strong) NSString *model; // @synthesize model=_model;
 @property (strong) NSString *modelClass; // @synthesize modelClass=_modelClass;
 @property (strong) NSString *modelVersion; // @synthesize modelVersion=_modelVersion;
 @property (strong) NSString *osVersion; // @synthesize osVersion=_osVersion;
+@property (strong) NSString *uniqueClientID; // @synthesize uniqueClientID=_uniqueClientID;
+@property (strong) NSString *uniqueDeviceID; // @synthesize uniqueDeviceID=_uniqueDeviceID;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

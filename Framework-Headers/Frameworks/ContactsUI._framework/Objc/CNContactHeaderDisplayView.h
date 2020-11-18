@@ -8,30 +8,33 @@
 
 #import <ContactsUI/CNPickerControllerDelegate-Protocol.h>
 #import <ContactsUI/CNUIReusableView-Protocol.h>
+#import <ContactsUI/UINavigationControllerDelegate-Protocol.h>
 
-@class CNContactFormatter, CNContactGeminiView, CNGeminiPickerController, CNGeminiResult, NSDictionary, NSLayoutConstraint, NSString, UILabel, UIView;
+@class CNContactDowntimeView, CNContactFormatter, CNContactGeminiView, CNGeminiPickerController, CNGeminiResult, NSDictionary, NSLayoutConstraint, NSString, UILabel, UIView;
 
-@interface CNContactHeaderDisplayView : CNContactHeaderView <CNPickerControllerDelegate, CNUIReusableView>
+@interface CNContactHeaderDisplayView : CNContactHeaderView <CNPickerControllerDelegate, UINavigationControllerDelegate, CNUIReusableView>
 {
     NSDictionary *_taglineTextAttributes;
+    NSDictionary *_downtimeTextAttributes;
     NSDictionary *_geminiTextAttributes;
     BOOL _shouldShowGemini;
+    BOOL _isEmergencyContact;
     BOOL _allowsPickerActions;
     CNContactFormatter *_contactFormatter;
+    NSDictionary *_importantTextAttributes;
     NSString *_alternateName;
     NSString *_message;
-    double _minHeight;
-    double _maxHeight;
+    NSString *_importantMessage;
     UIView *_personHeaderView;
     UILabel *_taglineLabel;
-    double _lastViewWidth;
-    NSLayoutConstraint *_photoTopConstraint;
-    NSLayoutConstraint *_photoHeightConstraint;
+    UILabel *_importantLabel;
+    CNContactDowntimeView *_downtimeView;
+    double _minLabelsHeight;
+    double _maxLabelsHeight;
     NSLayoutConstraint *_avatarNameSpacingConstraint;
     CNContactGeminiView *_geminiView;
     CNGeminiResult *_geminiResult;
     CNGeminiPickerController *_geminiPicker;
-    struct CGSize _maxNameSize;
 }
 
 @property (nonatomic) BOOL allowsPickerActions; // @synthesize allowsPickerActions=_allowsPickerActions;
@@ -41,49 +44,56 @@
 @property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CNContactDowntimeView *downtimeView; // @synthesize downtimeView=_downtimeView;
 @property (strong, nonatomic) CNGeminiPickerController *geminiPicker; // @synthesize geminiPicker=_geminiPicker;
 @property (strong) CNGeminiResult *geminiResult; // @synthesize geminiResult=_geminiResult;
 @property (strong) CNContactGeminiView *geminiView; // @synthesize geminiView=_geminiView;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) double lastViewWidth; // @synthesize lastViewWidth=_lastViewWidth;
-@property (nonatomic) double maxHeight; // @synthesize maxHeight=_maxHeight;
-@property (nonatomic) struct CGSize maxNameSize; // @synthesize maxNameSize=_maxNameSize;
+@property (strong, nonatomic) UILabel *importantLabel; // @synthesize importantLabel=_importantLabel;
+@property (strong, nonatomic) NSString *importantMessage; // @synthesize importantMessage=_importantMessage;
+@property (copy, nonatomic) NSDictionary *importantTextAttributes; // @synthesize importantTextAttributes=_importantTextAttributes;
+@property (nonatomic) BOOL isEmergencyContact; // @synthesize isEmergencyContact=_isEmergencyContact;
+@property (nonatomic) double maxLabelsHeight; // @synthesize maxLabelsHeight=_maxLabelsHeight;
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
-@property (nonatomic) double minHeight; // @synthesize minHeight=_minHeight;
+@property (nonatomic) double minLabelsHeight; // @synthesize minLabelsHeight=_minLabelsHeight;
 @property (strong, nonatomic) UIView *personHeaderView; // @synthesize personHeaderView=_personHeaderView;
-@property (strong) NSLayoutConstraint *photoHeightConstraint; // @synthesize photoHeightConstraint=_photoHeightConstraint;
-@property (readonly, nonatomic) double photoLabelSpacing;
-@property (readonly, nonatomic) double photoMinTopMargin;
-@property (strong) NSLayoutConstraint *photoTopConstraint; // @synthesize photoTopConstraint=_photoTopConstraint;
 @property (nonatomic) BOOL shouldShowGemini; // @synthesize shouldShowGemini=_shouldShowGemini;
 @property (readonly) Class superclass;
 @property (strong) UILabel *taglineLabel; // @synthesize taglineLabel=_taglineLabel;
 @property (copy, nonatomic) NSDictionary *taglineTextAttributes;
 
-+ (id)contactHeaderViewWithContact:(id)arg1 allowsPhotoDrops:(BOOL)arg2 delegate:(id)arg3;
-+ (id)contactHeaderViewWithContact:(id)arg1 delegate:(id)arg2;
-+ (id)descriptorForRequiredKeysForContactFormatter:(id)arg1 includingAvatarViewDescriptors:(BOOL)arg2;
-+ (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3;
++ (id)contactHeaderViewWithContact:(id)arg1 allowsPhotoDrops:(BOOL)arg2 monogramOnly:(BOOL)arg3 delegate:(id)arg4;
++ (id)contactHeaderViewWithContact:(id)arg1 monogramOnly:(BOOL)arg2 delegate:(id)arg3;
++ (id)descriptorForRequiredKeysForContactFormatter:(id)arg1;
++ (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3 monogramOnly:(BOOL)arg4;
 - (void).cxx_destruct;
 - (id)_headerStringForContacts:(id)arg1;
+- (id)_importantString;
 - (id)_taglineStringForContacts:(id)arg1;
+- (void)_updateDowntimeView;
+- (void)_updateImportantLabel;
 - (void)_updatePhotoView;
 - (void)calculateLabelSizes;
 - (void)calculateLabelSizesIfNeeded;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
+- (void)createGeminiViewIfNeeded;
 - (id)descriptorForRequiredKeys;
 - (void)disablePhotoTapGesture;
+- (id)downtimeTextAttributes;
 - (id)geminiTextAttributes;
 - (void)handleGeminiViewTouch:(id)arg1;
 - (void)handleNameLabelLongPress:(id)arg1;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 delegate:(id)arg3;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(BOOL)arg4 delegate:(id)arg5;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogramOnly:(BOOL)arg3 delegate:(id)arg4;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowImageDrops:(BOOL)arg4 monogramOnly:(BOOL)arg5 delegate:(id)arg6;
 - (void)layoutSubviews;
+- (double)maxHeight;
 - (void)menuWillHide:(id)arg1;
+- (double)minHeight;
 - (void)picker:(id)arg1 didPickItem:(id)arg2;
 - (void)pickerDidCancel:(id)arg1;
 - (void)reloadDataPreservingChanges:(BOOL)arg1;
+- (void)setDowntimeTextAttributes:(id)arg1;
 - (void)setGeminiTextAttributes:(id)arg1;
 - (void)setNameTextAttributes:(id)arg1;
 - (void)tintColorDidChange;

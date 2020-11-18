@@ -12,9 +12,12 @@
 
 + (id)defaultPropertiesToLoad;
 + (id)eventWithRandomUUID;
++ (Class)meltedClass;
 + (id)relations;
 - (id)actions;
 - (long long)availability;
+- (id)birthdayContactIdentifier;
+- (id)birthdayContactName;
 - (id)birthdayID;
 - (BOOL)canForward;
 - (id)conferenceURL;
@@ -35,8 +38,12 @@
 - (long long)privacyLevel;
 - (id)proposedStartDate;
 - (BOOL)pushDirtyProperties:(id *)arg1;
+- (id)recurrenceSet;
 - (id)responseComment;
+- (void)setActions:(id)arg1;
 - (void)setAvailability:(long long)arg1;
+- (void)setBirthdayContactIdentifier:(id)arg1;
+- (void)setBirthdayContactName:(id)arg1;
 - (void)setBirthdayID:(id)arg1;
 - (void)setCanForward:(BOOL)arg1;
 - (void)setConferenceURL:(id)arg1;
@@ -52,6 +59,7 @@
 - (void)setOriginalStartDate:(id)arg1;
 - (void)setPrivacyLevel:(long long)arg1;
 - (void)setProposedStartDate:(id)arg1;
+- (void)setRecurrenceSet:(id)arg1;
 - (void)setResponseComment:(id)arg1;
 - (void)setStatus:(long long)arg1;
 - (void)setSuggestedEventInfo:(id)arg1;

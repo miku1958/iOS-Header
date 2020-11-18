@@ -6,14 +6,15 @@
 
 #import <Home/HFItem.h>
 
-#import <Home/HFCharacteristicWriteActionBuilderFactory-Protocol.h>
+#import <Home/HFActionBuilderFactory-Protocol.h>
+#import <Home/HFNamingComponentCreating-Protocol.h>
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMService, NSString;
+@class HMService, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
-@interface HFServiceItem : HFItem <HFServiceLikeItem, HFCharacteristicWriteActionBuilderFactory, HFServiceLikeBuilderCreating>
+@interface HFServiceItem : HFItem <HFServiceLikeItem, HFActionBuilderFactory, HFServiceLikeBuilderCreating, HFNamingComponentCreating>
 {
     id<HFCharacteristicValueSource> _valueSource;
     HMService *_service;
@@ -24,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
 @property (readonly, nonatomic) HMService *service; // @synthesize service=_service;
+@property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
@@ -36,12 +38,12 @@
 - (id)_allRepresentedServices;
 - (id)_augmentedStandardResultsForUpdateResponse:(id)arg1 controlItems:(id)arg2;
 - (id)_descriptionBuilder;
-- (unsigned long long)_effectiveLoadingStateForSuggestedLoadingState:(unsigned long long)arg1;
+- (id)_iconDescriptorWithFallBackIfNecessary:(id)arg1 withIconPrimaryState:(long long)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
 - (BOOL)actionsMayRequireDeviceUnlock;
 - (id)characteristicsToReadForCharacteristicTypes:(id)arg1 controlItems:(id)arg2;
-- (BOOL)containsActionableCharacteristics;
+- (BOOL)containsActions;
 - (id)controlDescriptionForCharacteristic:(id)arg1 withValue:(id)arg2;
 - (id)controlItemValueSourceForPrimaryService;
 - (id)controlItemValueSourceForServices:(id)arg1;
@@ -53,9 +55,9 @@
 - (id)incrementalStateIconDescriptorForPrimaryState:(long long)arg1 incrementalValue:(id)arg2;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 service:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 - (id)performStandardUpdateWithCharacteristicTypes:(id)arg1 options:(id)arg2;
 - (id)serviceLikeBuilderInHome:(id)arg1;
-- (id)services;
 - (id)servicesToReadForCharacteristicType:(id)arg1;
 
 @end

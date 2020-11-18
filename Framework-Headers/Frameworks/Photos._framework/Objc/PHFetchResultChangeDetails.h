@@ -40,6 +40,7 @@
 + (id)changeDetailsFromFetchResult:(id)arg1 toFetchResult:(id)arg2 changedObjects:(id)arg3;
 - (void).cxx_destruct;
 - (void)calculateDiffs;
+- (void)calculateDiffsAndAccumulateInsertedCount:(unsigned long long *)arg1 updatedCount:(unsigned long long *)arg2 deletedCount:(unsigned long long *)arg3;
 - (id)currentItems;
 - (void)dealloc;
 - (id)description;

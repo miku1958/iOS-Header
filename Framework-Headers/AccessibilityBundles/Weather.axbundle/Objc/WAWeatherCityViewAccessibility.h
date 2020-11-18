@@ -16,8 +16,10 @@
 - (id)_accessibilityBriefLabel;
 - (BOOL)_accessibilityIsInCardMode;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axSetPrecipitation:(double)arg1;
 - (id)accessibilityElements;
 - (void)setMode:(long long)arg1;
+- (void)setPrecipitation:(double)arg1;
 
 @end
 

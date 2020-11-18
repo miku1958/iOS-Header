@@ -88,9 +88,11 @@
 + (id)pingOperationWithUrl:(id)arg1;
 + (id)propertyListOperationWithURLBagKey:(id)arg1;
 - (void).cxx_destruct;
+- (id)_absintheHeaders;
 - (id)_account;
 - (void)_addStandardQueryParametersForURL:(id)arg1;
 - (BOOL)_authenticateWithContext:(id)arg1 error:(id *)arg2;
+- (id)_buyParams;
 - (BOOL)_canSendTokenToURL:(id)arg1;
 - (void)_continueTouchIDSession;
 - (id)_copyAuthenticationContext;
@@ -102,6 +104,7 @@
 - (id)_resolvedURLInBagContext:(id)arg1 bagTrusted:(BOOL *)arg2;
 - (void)_runURLOperation;
 - (void)_setStoreFrontIdentifier:(id)arg1 isTransient:(BOOL)arg2;
+- (BOOL)_shouldRetryForAbsintheWithResponse:(id)arg1;
 - (BOOL)_shouldRetryForTouchIDChallengeWithError:(id)arg1;
 - (id)_ssBag_copyGUIDPatternsFromBag:(id)arg1;
 - (id)_ssBag_copyGUIDSchemesFromBag:(id)arg1;
@@ -112,6 +115,7 @@
 - (BOOL)handleRedirectFromDataProvider:(id)arg1 error:(id *)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)init;
+- (id)logKey;
 - (id)newRequestWithURL:(id)arg1;
 - (void)run;
 - (void)sender:(id)arg1 didFallbackToPassword:(BOOL)arg2;

@@ -20,7 +20,7 @@
 - (void)_playerDidPauseForPlaybackPreventionNotification:(id)arg1;
 - (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1;
-- (void)prepareForPlayback;
+- (void)prepareForPlaybackWithUserIdentity:(id)arg1;
 
 @end
 

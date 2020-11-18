@@ -6,7 +6,7 @@
 
 #import <OnBoardingKit/OBFlow.h>
 
-@class NSArray, NSBundle, NSDictionary, NSString, UIImage;
+@class NSArray, NSBundle, NSDictionary, NSString, OBImage;
 
 @interface OBPrivacyFlow : OBFlow
 {
@@ -14,14 +14,14 @@
     NSString *_splashContentName;
     NSDictionary *_splashPlist;
     BOOL _buttonIconLoaded;
-    struct UIImage *_buttonIcon;
+    OBImage *_buttonIcon;
     NSString *_buttonTitle;
     NSString *_buttonCaption;
     NSString *_splashTitle;
     NSString *_splashShortTitle;
 }
 
-@property (readonly, nonatomic) UIImage *buttonIcon;
+@property (readonly, nonatomic) OBImage *buttonIcon;
 @property (readonly, nonatomic) unsigned long long contentVersion;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *localizedButtonCaption;
@@ -36,7 +36,7 @@
 + (id)_modelSpecificLocalizedStringKeyForKey:(id)arg1 preferredDeviceType:(unsigned long long)arg2;
 + (id)flowWithBundle:(id)arg1;
 - (void).cxx_destruct;
-- (struct UIImage *)_bundleImageNamed:(id)arg1;
+- (id)_bundleImageNamed:(id)arg1;
 - (BOOL)_conformsToRequirement:(id)arg1;
 - (BOOL)_conformsToRequirements:(id)arg1;
 - (id)_currentPlatform;
@@ -50,7 +50,7 @@
 - (id)localizedContentListForLanguage:(id)arg1 preferredDeviceType:(unsigned long long)arg2;
 - (id)localizedShortTitleForLanguage:(id)arg1 preferredDeviceType:(unsigned long long)arg2;
 - (id)localizedTitleForLanguage:(id)arg1 preferredDeviceType:(unsigned long long)arg2;
-- (void)setButtonIcon:(struct UIImage *)arg1;
+- (void)setButtonIcon:(id)arg1;
 
 @end
 

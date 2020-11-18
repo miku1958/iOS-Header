@@ -40,6 +40,7 @@
 - (id)init;
 - (void)readingFavorites:(CDUnknownBlockType)arg1;
 - (void)rematchingFavorites:(CDUnknownBlockType)arg1;
+- (void)reportFavoritesAccessedBeforeFirstUnlock;
 - (void)writingFavorites:(CDUnknownBlockType)arg1;
 
 @end

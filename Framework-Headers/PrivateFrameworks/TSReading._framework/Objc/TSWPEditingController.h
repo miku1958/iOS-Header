@@ -168,7 +168,6 @@
 - (unsigned long long)closestCharIndexToPoint:(struct CGPoint)arg1 isAtEndOfLine:(BOOL *)arg2;
 - (void)copy:(id)arg1;
 - (void)copyObject:(id)arg1;
-- (id)copyString;
 - (void)copyToPasteboard:(id)arg1;
 - (unsigned long long)countOfHyperlinksInUserSelection;
 - (id)currentFontColor;
@@ -232,7 +231,6 @@
 - (struct _NSRange)p_adjustVisualSelection:(id)arg1 withOtherSelection:(id)arg2;
 - (unsigned long long)p_adjustedCharIndexForWordTestingFromCharIndex:(unsigned long long)arg1 forDirection:(long long)arg2;
 - (struct CGRect)p_adjustedPopoverTargetRectForRange:(struct _NSRange)arg1;
-- (void)p_beginHorizontalRangedMagnificationForRep:(id)arg1 unscaledCanvasPoint:(struct CGPoint)arg2;
 - (void)p_beginKnobTrackingSelection:(id)arg1 forRep:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (void)p_beginMagnification:(id)arg1 forRep:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (void)p_beginOperationAndTakeControl;
@@ -288,7 +286,6 @@
 - (const struct TSWPLineFragment *)p_lineFragmentWithCaretInfo:(CDStruct_7549c2a6 *)arg1 forSelection:(id)arg2;
 - (unsigned long long)p_lineIndexForCharIndex:(unsigned long long)arg1 column:(id *)arg2 eol:(BOOL)arg3;
 - (int)p_moveFromCharIndex:(unsigned long long *)arg1 tokenizerRef:(struct __CFStringTokenizer **)arg2 tokenizerRange:(struct _NSRange *)arg3 direction:(long long)arg4 currentWordRange:(struct _NSRange)arg5 newWordRange:(struct _NSRange *)arg6 reasonToStop:(unsigned int)arg7;
-- (void)p_moveHorizontalRangedLoupeForRep:(id)arg1 unscaledCanvasPoint:(struct CGPoint)arg2;
 - (const struct TSWPLineFragment *)p_nearestLineFragmentWithSameVerticalPositionAs:(unsigned long long)arg1 xPos:(double)arg2 inColumn:(id)arg3;
 - (void)p_postSelectionContentsChangedNotification;
 - (void)p_postWillStyleTextNotification;
@@ -310,7 +307,6 @@
 - (void)p_setSelection:(id)arg1 withFlags:(unsigned long long)arg2 force:(BOOL)arg3;
 - (void)p_setSelectionFromPoint:(struct CGPoint)arg1 textSelectionGranularity:(unsigned long long)arg2 includeListLabels:(BOOL)arg3;
 - (void)p_setTappedSelection:(id)arg1;
-- (void)p_stopHorizontalRangedMagnification;
 - (void)p_suppressSelectionHighlight:(BOOL)arg1;
 - (void)p_switchToReplaceSelection;
 - (struct CGRect)p_targetRectForSelection:(id)arg1;
@@ -345,6 +341,7 @@
 - (BOOL)shouldShowEditMenu;
 - (BOOL)shouldShowSelectedTextAsFocused;
 - (struct _NSRange)smartDeletionSelection:(id)arg1 isVisual:(BOOL *)arg2;
+- (id)stringFromSelection;
 - (void)styleAction:(id)arg1;
 - (id)styleProvider;
 - (BOOL)swipeableParagraphIsSelected;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class _CFPasteboardCache, _CFPasteboardClientInstanceID;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface _CFPasteboardStore : NSObject
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     unsigned char _ownerHasPendingChanges;
     struct __CFDictionary *_clientInstancesByUUID;
     struct __CFSet *_clientInstancesWithCacheInfoForCurrentGeneration;
+    NSObject<OS_dispatch_source> *_expirationTimer;
 }
 
 + (void)_removePasteboardWithName:(struct __CFString *)arg1;
@@ -31,8 +32,10 @@ __attribute__((visibility("hidden")))
 + (struct __CFString *)dumpAllClients;
 + (id)pasteboardStoreWithName:(struct __CFString *)arg1 createIfNecessary:(BOOL)arg2;
 - (id)_initWithName:(const struct __CFString *)arg1;
+- (void)_onqueue_beginGenerationWithNewOwner:(const struct __CFUUID *)arg1;
 - (id)_onqueue_cacheForGeneration:(long long)arg1;
 - (void)_onqueue_clearGenerationSpecificData;
+- (void)_onqueue_handleExpirationTimer;
 - (void)_onqueue_handleNewEntries:(struct __CFArray *)arg1 forMessage:(id)arg2 shouldInvalidateClientMetadata:(BOOL *)arg3;
 - (void)_onqueue_invalidateCachesWithCurrentGeneration;
 - (void)_onqueue_invalidateCurrentGenerationCacheEntries:(const struct __CFArray *)arg1 inResponseToMessage:(id)arg2;
@@ -57,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)handleResolvePromises:(id)arg1;
 - (void)handleRestrictExtension:(id)arg1;
 - (void)handleSetDataFlags:(id)arg1;
+- (void)handleSetExpirationDate:(id)arg1;
 - (void)handleUniquePromiseFile:(id)arg1;
 - (void)performBarrier:(CDUnknownBlockType)arg1;
 - (id)reissueSandboxExtensionFromEntry:(id)arg1 toClient:(id)arg2 error:(int *)arg3;

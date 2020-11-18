@@ -38,8 +38,8 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
-- (void)storeItemURLForGamePlatform:(unsigned char)arg1 withContext:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (id)storeItemURLForURL:(id)arg1 gamePlatform:(unsigned char)arg2 extraQueryParams:(id)arg3;
+- (void)storeItemURLForGamePlatform:(long long)arg1 withContext:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (id)storeItemURLForURL:(id)arg1 gamePlatform:(long long)arg2 extraQueryParams:(id)arg3;
 
 @end
 

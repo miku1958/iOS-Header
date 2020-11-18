@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+@class NSString, NSUUID;
 
 @protocol ADStatusConditions_XPC
-- (void)clearStatusCondition:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)isStatusConditionRegistered:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
-- (void)setStatusCondition:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)clearStatusCondition:(NSUUID *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)isStatusConditionRegistered:(NSUUID *)arg1 bundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)setStatusCondition:(NSUUID *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end
 

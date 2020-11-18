@@ -6,25 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDateFormatter;
+@class NSArray, NSDateFormatter, NSString;
 
 @interface HKTableFormatter : NSObject
 {
     NSArray *_titles;
     NSArray *_columns;
     NSDateFormatter *_dateFormatter;
+    NSString *_title;
 }
 
 @property (readonly, nonatomic) long long rowCount;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)formatterForCodableCondensedWorkouts;
 - (void).cxx_destruct;
+- (void)_appendColumn:(id)arg1 width:(long long)arg2 padding:(id)arg3 row:(id)arg4;
+- (id)_columnWidths;
+- (void)_enumerateFormattedRowsWithColumnWidths:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_formattedTableHeaderForColumnWidths:(id)arg1;
+- (void)appendHeterogenousRow:(id)arg1;
 - (void)appendRow:(id)arg1;
 - (void)appendWorkout:(id)arg1;
+- (void)enumerateFormattedRows:(CDUnknownBlockType)arg1;
 - (id)formattedTable;
+- (id)formattedTableHeader;
 - (id)init;
 - (id)initWithColumnTitles:(id)arg1;
 - (id)stringFromDate:(id)arg1;
+- (id)stringFromDate:(id)arg1 fallback:(id)arg2;
 - (id)stringFromTimeInterval:(double)arg1;
 
 @end

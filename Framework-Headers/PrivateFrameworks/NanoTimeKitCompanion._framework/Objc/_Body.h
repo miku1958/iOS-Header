@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/_Geometry.h>
 
-@class NSArray, NSMutableArray;
+@class MISSING_TYPE, NSArray, NSMutableArray;
 
 @interface _Body : _Geometry
 {
@@ -23,17 +23,17 @@
     NSMutableArray *_shiftTexs14;
     NSMutableArray *_shiftTexs23;
     NSMutableArray *_shiftTexs13;
-    union _GLKVector2 _bone;
-    union _GLKVector2 _offset;
+    MISSING_TYPE *_bone;
+    MISSING_TYPE *_offset;
 }
 
 @property (nonatomic) BOOL animationDirection; // @synthesize animationDirection=_animationDirection;
 @property (nonatomic) BOOL animationFrame; // @synthesize animationFrame=_animationFrame;
-@property (nonatomic) union _GLKVector2 bone; // @synthesize bone=_bone;
+@property (nonatomic) MISSING_TYPE *bone; // @synthesize bone=_bone;
 @property (nonatomic) float curBodyX; // @synthesize curBodyX=_curBodyX;
 @property (nonatomic) BOOL frameDisplayTime60th; // @synthesize frameDisplayTime60th=_frameDisplayTime60th;
 @property (nonatomic) float height; // @synthesize height=_height;
-@property (nonatomic) union _GLKVector2 offset; // @synthesize offset=_offset;
+@property (nonatomic) MISSING_TYPE *offset; // @synthesize offset=_offset;
 @property (strong, nonatomic) NSMutableArray *shiftTexs12; // @synthesize shiftTexs12=_shiftTexs12;
 @property (strong, nonatomic) NSMutableArray *shiftTexs13; // @synthesize shiftTexs13=_shiftTexs13;
 @property (strong, nonatomic) NSMutableArray *shiftTexs14; // @synthesize shiftTexs14=_shiftTexs14;

@@ -21,8 +21,8 @@
 @property (nonatomic) struct UIEdgeInsets maskInsets; // @synthesize maskInsets=_maskInsets;
 @property (strong, nonatomic) UIImage *overlayImage; // @synthesize overlayImage=_overlayImage;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)drawInRect:(struct CGRect)arg1 withContext:(struct CGContext *)arg2 input:(id)arg3;
 - (double)scaleForInput:(id)arg1;
 - (struct CGSize)sizeForInput:(id)arg1;

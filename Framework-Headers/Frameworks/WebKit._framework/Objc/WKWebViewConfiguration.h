@@ -9,7 +9,8 @@
 #import <WebKit/NSCopying-Protocol.h>
 #import <WebKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebsiteDataStore, _WKApplicationManifest, _WKVisitedLinkStore, _WKWebsiteDataStore;
+@class NSArray, NSString, WKPreferences, WKProcessPool, WKUserContentController, WKWebView, WKWebViewContentProviderRegistry, WKWebpagePreferences, WKWebsiteDataStore, _WKApplicationManifest, _WKVisitedLinkStore, _WKWebsiteDataStore;
+@protocol _UIClickInteractionDriving;
 
 @interface WKWebViewConfiguration : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,10 +20,11 @@
     struct LazyInitialized<WTF::RetainPtr<WKUserContentController>> _userContentController;
     struct LazyInitialized<WTF::RetainPtr<_WKVisitedLinkStore>> _visitedLinkStore;
     struct LazyInitialized<WTF::RetainPtr<WKWebsiteDataStore>> _websiteDataStore;
+    struct LazyInitialized<WTF::RetainPtr<WKWebpagePreferences>> _defaultWebpagePreferences;
     struct WeakObjCPtr<WKWebView> _relatedWebView;
     struct WeakObjCPtr<WKWebView> _alternateWebViewForNavigationGestures;
     struct RetainPtr<NSString> _groupIdentifier;
-    struct LazyInitialized<WTF::RetainPtr<NSString>> _applicationNameForUserAgent;
+    struct Optional<WTF::RetainPtr<NSString>> _applicationNameForUserAgent;
     double _incrementalRenderingSuppressionTimeout;
     BOOL _respectsImageOrientation;
     BOOL _printsBackgrounds;
@@ -38,6 +40,7 @@
     BOOL _textInteractionGesturesEnabled;
     BOOL _longPressActionsEnabled;
     BOOL _systemPreviewEnabled;
+    BOOL _shouldDecidePolicyBeforeLoadingQuickLookPreview;
     BOOL _invisibleAutoplayNotPermitted;
     BOOL _mediaDataLoadsAutomatically;
     BOOL _attachmentElementEnabled;
@@ -54,6 +57,7 @@
     BOOL _shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
     BOOL _drawsBackground;
     BOOL _editableImagesEnabled;
+    BOOL _undoManagerAPIEnabled;
     struct RetainPtr<NSString> _mediaContentTypesRequiringHardwareSupport;
     struct RetainPtr<NSArray<NSString *>> _additionalSupportedImageTypes;
     BOOL _suppressesIncrementalRendering;
@@ -75,8 +79,11 @@
 @property (nonatomic, setter=_setAlwaysRunsAtForegroundPriority:) BOOL _alwaysRunsAtForegroundPriority;
 @property (nonatomic, setter=_setApplePayEnabled:) BOOL _applePayEnabled;
 @property (nonatomic, setter=_setApplicationManifest:) _WKApplicationManifest *_applicationManifest;
+@property (readonly, nonatomic) NSString *_applicationNameForDesktopUserAgent;
 @property (nonatomic, setter=_setAttachmentElementEnabled:) BOOL _attachmentElementEnabled;
 @property (nonatomic, setter=_setAttachmentFileWrapperClass:) Class _attachmentFileWrapperClass;
+@property (nonatomic, setter=_setCanShowWhileLocked:) BOOL _canShowWhileLocked;
+@property (nonatomic, setter=_setClickInteractionDriverForTesting:) id<_UIClickInteractionDriving> _clickInteractionDriverForTesting;
 @property (nonatomic, setter=_setColorFilterEnabled:) BOOL _colorFilterEnabled;
 @property (nonatomic, setter=_setContentProviderRegistry:) WKWebViewContentProviderRegistry *_contentProviderRegistry;
 @property (nonatomic, getter=_isControlledByAutomation, setter=_setControlledByAutomation:) BOOL _controlledByAutomation;
@@ -102,10 +109,12 @@
 @property (nonatomic, setter=_setRequiresUserActionForAudioPlayback:) BOOL _requiresUserActionForAudioPlayback;
 @property (nonatomic, setter=_setRequiresUserActionForVideoPlayback:) BOOL _requiresUserActionForVideoPlayback;
 @property (nonatomic, setter=_setRespectsImageOrientation:) BOOL _respectsImageOrientation;
+@property (nonatomic, setter=_setShouldDecidePolicyBeforeLoadingQuickLookPreview:) BOOL _shouldDecidePolicyBeforeLoadingQuickLookPreview;
 @property (nonatomic, setter=_setShouldDeferAsynchronousScriptsUntilAfterDocumentLoad:) BOOL _shouldDeferAsynchronousScriptsUntilAfterDocumentLoad;
 @property (nonatomic, setter=_setSystemPreviewEnabled:) BOOL _systemPreviewEnabled;
 @property (nonatomic, setter=_setTextInteractionGesturesEnabled:) BOOL _textInteractionGesturesEnabled;
 @property (nonatomic, setter=_setTreatsSHA1SignedCertificatesAsInsecure:) BOOL _treatsSHA1SignedCertificatesAsInsecure;
+@property (nonatomic, setter=_setUndoManagerAPIEnabled:) BOOL _undoManagerAPIEnabled;
 @property (strong, nonatomic, setter=_setVisitedLinkStore:) _WKVisitedLinkStore *_visitedLinkStore;
 @property (nonatomic, setter=_setWaitsForPaintAfterViewDidMoveToWindow:) BOOL _waitsForPaintAfterViewDidMoveToWindow;
 @property (strong, nonatomic, setter=_setWebsiteDataStore:) _WKWebsiteDataStore *_websiteDataStore;
@@ -114,6 +123,7 @@
 @property (nonatomic) BOOL allowsPictureInPictureMediaPlayback; // @synthesize allowsPictureInPictureMediaPlayback=_allowsPictureInPictureMediaPlayback;
 @property (copy, nonatomic) NSString *applicationNameForUserAgent;
 @property (nonatomic) unsigned long long dataDetectorTypes; // @synthesize dataDetectorTypes=_dataDetectorTypes;
+@property (copy, nonatomic) WKWebpagePreferences *defaultWebpagePreferences;
 @property (nonatomic) BOOL ignoresViewportScaleLimits; // @synthesize ignoresViewportScaleLimits=_ignoresViewportScaleLimits;
 @property (nonatomic) BOOL mediaPlaybackAllowsAirPlay;
 @property (nonatomic) BOOL mediaPlaybackRequiresUserAction;

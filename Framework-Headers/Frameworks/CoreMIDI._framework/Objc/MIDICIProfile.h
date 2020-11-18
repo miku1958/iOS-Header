@@ -28,7 +28,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 name:(id)arg2;
-- (BOOL)isEqualTo:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (const void *)rawData;
 
 @end

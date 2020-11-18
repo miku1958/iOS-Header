@@ -6,24 +6,24 @@
 
 #import <FrontBoard/FBProcess.h>
 
-@class FBExtensionInfo, NSString;
+@class FBSExtensionInfo;
 
 @interface FBExtensionProcess : FBProcess
 {
-    BOOL _XPCBundle;
+    FBSExtensionInfo *_extensionInfo;
     int _hostPID;
-    FBExtensionInfo *_extensionInfo;
-    NSString *_hostBundleID;
+    struct os_unfair_lock_s _hostProcessLock;
+    FBProcess *_lock_hostProcess;
 }
 
-@property (readonly, nonatomic, getter=isXPCBundle) BOOL XPCBundle; // @synthesize XPCBundle=_XPCBundle;
-@property (readonly, nonatomic) FBExtensionInfo *extensionInfo; // @synthesize extensionInfo=_extensionInfo;
-@property (readonly, copy, nonatomic) NSString *hostBundleID; // @synthesize hostBundleID=_hostBundleID;
+@property (readonly, nonatomic) FBSExtensionInfo *extensionInfo; // @synthesize extensionInfo=_extensionInfo;
 @property (readonly, nonatomic) int hostPID; // @synthesize hostPID=_hostPID;
-@property (readonly, weak, nonatomic) FBProcess *hostProcess; // @dynamic hostProcess;
+@property (readonly, nonatomic) FBProcess *hostProcess;
 
 - (void).cxx_destruct;
-- (id)initWithBundleID:(id)arg1 pid:(int)arg2 callOutQueue:(id)arg3;
+- (id)initWithHandle:(id)arg1 identity:(id)arg2 executionContext:(id)arg3;
+- (id)initWithHandle:(id)arg1 identity:(id)arg2 hostPID:(int)arg3;
+- (id)initWithHandle:(id)arg1 identity:(id)arg2 hostProcess:(id)arg3;
 - (BOOL)isExtensionProcess;
 - (id)succinctDescriptionBuilder;
 

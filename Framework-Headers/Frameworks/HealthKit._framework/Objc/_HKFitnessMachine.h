@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
 @class HKDevice, NSArray, NSString, NSUUID;
 
-@interface _HKFitnessMachine : NSObject <NSSecureCoding>
+@interface _HKFitnessMachine : NSObject <NSSecureCoding, NSCopying>
 {
     NSUUID *_identifier;
     unsigned long long _type;
@@ -33,6 +34,7 @@
 - (void)_setBrand:(id)arg1;
 - (void)_setDevice:(id)arg1;
 - (void)_setRequestedTypes:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

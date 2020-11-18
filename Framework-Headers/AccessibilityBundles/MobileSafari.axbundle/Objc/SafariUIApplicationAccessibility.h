@@ -15,9 +15,10 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityActiveURL;
 - (BOOL)_accessibilityAlternateActionForURL:(id)arg1;
-- (BOOL)_accessibilityCanDisplayMultipleControllers;
 - (BOOL)_accessibilityLoadURL:(id)arg1;
+- (id)_accessibilityMainBrowserController;
 - (id)_accessibilityRetrieveWebViewForSearchResults;
+- (BOOL)_accessibilityWebSearchResultsActive;
 - (BOOL)_accessibilityWebViewIsLoading;
 - (id)accessibilityLabel;
 

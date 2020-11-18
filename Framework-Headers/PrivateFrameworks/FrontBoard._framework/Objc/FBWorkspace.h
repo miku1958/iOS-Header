@@ -9,20 +9,22 @@
 #import <FrontBoard/FBSceneClientProvider-Protocol.h>
 #import <FrontBoard/FBWorkspaceServerDelegate-Protocol.h>
 
-@class BSAuditToken, BSZeroingWeakReference, FBProcess, FBSceneClientProviderInvalidationAction, FBWorkspaceServer, NSMapTable, NSMutableSet, NSString;
+@class BSAuditToken, FBProcess, FBSceneClientProviderInvalidationAction, FBWorkspaceServer, NSMapTable, NSMutableSet, NSString, RBSAssertion, RBSProcessIdentity, RBSTarget;
 @protocol FBWorkspaceDelegate, OS_dispatch_queue;
 
 @interface FBWorkspace : NSObject <FBWorkspaceServerDelegate, FBSceneClientProvider>
 {
-    BSZeroingWeakReference *_zeroingWeakDelegate;
-    BSZeroingWeakReference *_zeroingWeakProcess;
+    id<FBWorkspaceDelegate> _weak_delegate;
+    FBProcess *_weak_process;
+    RBSProcessIdentity *_processIdentity;
+    RBSTarget *_assertionTarget;
     FBWorkspaceServer *_server;
     NSMapTable *_hostToClientMap;
     NSMutableSet *_invalidatingScenes;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_callOutQueue;
     FBSceneClientProviderInvalidationAction *_invalidationAction;
-    BOOL _willInvalidate;
+    RBSAssertion *_subordinateProcessAssertion;
     BOOL _invalidated;
 }
 
@@ -35,27 +37,22 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_createSceneClientWithIdentifier:(id)arg1 specification:(id)arg2;
-- (void)_invalidateSceneClientWithIdentifier:(id)arg1;
+- (void)_acquireSubordinateProcessAssertionIfNecessary;
+- (void)_invalidateSubordinateProcessAssertionIfNecessary;
 - (id)_queue;
 - (void)_queue_enumerateScenes:(CDUnknownBlockType)arg1;
 - (void)_queue_fireInvalidationAction;
 - (void)_queue_invalidateAllScenes;
 - (void)_queue_sceneDidInvalidate:(id)arg1;
-- (void)_queue_willInvalidateAllScenes;
-- (Class)_sceneClassForSpecification:(id)arg1;
 - (id)_server;
-- (Class)_serverClass;
-- (void)beginTransaction;
 - (void)dealloc;
-- (void)endTransaction;
 - (id)initWithParentProcess:(id)arg1 queue:(id)arg2 callOutQueue:(id)arg3;
-- (id)registerHost:(id)arg1;
+- (id)injectionTargetForServer:(id)arg1;
+- (id)processForServer:(id)arg1;
+- (id)registerHost:(id)arg1 withInitialParameters:(id)arg2;
 - (void)registerInvalidationAction:(id)arg1;
 - (void)sendActions:(id)arg1;
-- (void)server:(id)arg1 handleConnectEvent:(id)arg2;
-- (void)server:(id)arg1 handleCreateSceneRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)server:(id)arg1 handleDestroySceneRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)server:(id)arg1 didReceiveSceneRequestWithOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)serverDidInvalidateConnection:(id)arg1;
 - (void)unregisterHost:(id)arg1;
 

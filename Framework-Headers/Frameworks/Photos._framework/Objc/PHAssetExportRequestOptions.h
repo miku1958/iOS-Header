@@ -6,19 +6,40 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface PHAssetExportRequestOptions : NSObject
 {
+    BOOL _includeAllAssetResources;
     BOOL _treatLivePhotoAsStill;
     BOOL _flattenSlomoVideos;
     BOOL _dontAllowRAW;
+    BOOL _shouldStripLocation;
+    BOOL _ensureSRGBCompatibleColorSpace;
+    BOOL _disableMetadataCorrections;
+    BOOL _forceDateTimeMetadataBaking;
+    BOOL _forceLocationMetadataBaking;
     long long _variant;
+    NSString *_videoExportPreset;
+    NSString *_videoExportFileType;
+    long long _locationComparisonStrategy;
 }
 
+@property (nonatomic) BOOL disableMetadataCorrections; // @synthesize disableMetadataCorrections=_disableMetadataCorrections;
 @property (nonatomic) BOOL dontAllowRAW; // @synthesize dontAllowRAW=_dontAllowRAW;
+@property (nonatomic) BOOL ensureSRGBCompatibleColorSpace; // @synthesize ensureSRGBCompatibleColorSpace=_ensureSRGBCompatibleColorSpace;
 @property (nonatomic) BOOL flattenSlomoVideos; // @synthesize flattenSlomoVideos=_flattenSlomoVideos;
+@property (nonatomic) BOOL forceDateTimeMetadataBaking; // @synthesize forceDateTimeMetadataBaking=_forceDateTimeMetadataBaking;
+@property (nonatomic) BOOL forceLocationMetadataBaking; // @synthesize forceLocationMetadataBaking=_forceLocationMetadataBaking;
+@property (nonatomic) BOOL includeAllAssetResources; // @synthesize includeAllAssetResources=_includeAllAssetResources;
+@property (nonatomic) long long locationComparisonStrategy; // @synthesize locationComparisonStrategy=_locationComparisonStrategy;
+@property (nonatomic) BOOL shouldStripLocation; // @synthesize shouldStripLocation=_shouldStripLocation;
 @property (nonatomic) BOOL treatLivePhotoAsStill; // @synthesize treatLivePhotoAsStill=_treatLivePhotoAsStill;
 @property (nonatomic) long long variant; // @synthesize variant=_variant;
+@property (copy, nonatomic) NSString *videoExportFileType; // @synthesize videoExportFileType=_videoExportFileType;
+@property (copy, nonatomic) NSString *videoExportPreset; // @synthesize videoExportPreset=_videoExportPreset;
 
+- (void).cxx_destruct;
 - (id)description;
 
 @end

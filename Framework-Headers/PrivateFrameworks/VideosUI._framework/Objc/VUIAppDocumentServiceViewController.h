@@ -16,6 +16,7 @@
 @interface VUIAppDocumentServiceViewController : _TVAppDocumentRequestController <IKUpdateServiceRequestDelegate, VUIAppDocumentUpdateEventMonitorObserving, UIPopoverPresentationControllerDelegate>
 {
     BOOL _deferDocumentUpdateEventProcessing;
+    BOOL _markDocumentDirtyForRefreshUpdate;
     NSString *_viewControllerIdentifier;
     IKAppContext *_appContext;
     NSString *_documentRef;
@@ -33,6 +34,7 @@
 @property (strong, nonatomic) id<VUIAppDocumentUpdateContext> documentUpdateContext; // @synthesize documentUpdateContext=_documentUpdateContext;
 @property (strong, nonatomic) NSMutableOrderedSet *documentUpdateViewElements; // @synthesize documentUpdateViewElements=_documentUpdateViewElements;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL markDocumentDirtyForRefreshUpdate; // @synthesize markDocumentDirtyForRefreshUpdate=_markDocumentDirtyForRefreshUpdate;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *viewControllerIdentifier; // @synthesize viewControllerIdentifier=_viewControllerIdentifier;
 
@@ -48,7 +50,7 @@
 - (void)_startDocumentUpdatesWithContext:(id)arg1;
 - (void)_unregisterDocumentUpdateEventDescriptors;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
-- (void)appDocumentUpdateEventMonitor:(id)arg1 didReceiveEvent:(id)arg2;
+- (void)appDocumentDidReceiveEvent:(id)arg1;
 - (void)dealloc;
 - (void)didCompleteDocumentCreationWithStatus:(long long)arg1 errorDictionary:(id)arg2;
 - (void)documentDidUpdate:(id)arg1;

@@ -17,9 +17,11 @@
 
 @property (weak, nonatomic) id<SSDittoHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
++ (BOOL)__shouldHostRemoteTextEffectsWindow;
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_serviceProxy;
 - (BOOL)becomeFirstResponder;
 - (void)dismiss;

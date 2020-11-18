@@ -12,10 +12,10 @@
 
 @interface MapsSuggestionsBlockFilter : MapsSuggestionsBaseFilter <MapsSuggestionsFilter>
 {
+    NSString *_name;
     CDUnknownBlockType _block;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,6 +26,7 @@
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
+- (id)initWithBlock:(CDUnknownBlockType)arg1 name:(struct NSString *)arg2;
 - (BOOL)shouldKeepEntry:(id)arg1;
 
 @end

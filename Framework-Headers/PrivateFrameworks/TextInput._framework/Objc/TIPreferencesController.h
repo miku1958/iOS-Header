@@ -16,7 +16,6 @@
     NSMutableDictionary *_configuredPreferences;
     NSMutableDictionary *_cachedMCRestrictedValue;
     NSTimer *_synchronizePreferencesTimer;
-    double _lastSynchronizePreferencesTime[5];
     BOOL isInternalInstall;
     BOOL _inhibitGlobalNotification;
     BOOL _ignoreNextSyncNotification;
@@ -25,6 +24,8 @@
 @property (nonatomic) BOOL automaticMinimizationEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long floatingKeyboardDockedEdge;
+@property (nonatomic) struct CGPoint floatingKeyboardPosition;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreNextSyncNotification; // @synthesize ignoreNextSyncNotification=_ignoreNextSyncNotification;
 @property (nonatomic) BOOL inhibitGlobalNotification; // @synthesize inhibitGlobalNotification=_inhibitGlobalNotification;
@@ -67,6 +68,7 @@
 - (void)synchronizePreferences;
 - (void)touchSynchronizePreferencesTimer;
 - (void)updateDidPerformFirstReachableKeyboardInteraction;
+- (void)updateEnableProKeyboard:(BOOL)arg1;
 - (void)updateEnabledDictationLanguages:(id)arg1;
 - (void)updateInputModes:(id)arg1;
 - (void)updateKeyboardHandBias:(id)arg1;

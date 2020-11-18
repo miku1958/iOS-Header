@@ -50,6 +50,7 @@
 - (void).cxx_destruct;
 - (void)_invokeCallbackWithSuccess:(BOOL)arg1;
 - (id)_remoteObjectProxy;
+- (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (void)_viewServiceTimerFired:(id)arg1;
 - (void)dealloc;
 - (void)dismissWithCompletion:(CDUnknownBlockType)arg1;

@@ -18,6 +18,7 @@
         unsigned int usesMeteredFare:1;
     } _has;
     BOOL _usesMeteredFare;
+    BOOL __encodeLegacyGloryData;
     NSArray *_availablePartySizeOptions;
     NSString *_availablePartySizeOptionsSelectionPrompt;
     NSString *_disclaimerMessage;
@@ -31,6 +32,7 @@
     _INPBUserActivity *_userActivityForBookingInApplication;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *availablePartySizeOptions; // @synthesize availablePartySizeOptions=_availablePartySizeOptions;
 @property (readonly, nonatomic) unsigned long long availablePartySizeOptionsCount;
 @property (copy, nonatomic) NSString *availablePartySizeOptionsSelectionPrompt; // @synthesize availablePartySizeOptionsSelectionPrompt=_availablePartySizeOptionsSelectionPrompt;
@@ -62,6 +64,7 @@
 
 + (Class)availablePartySizeOptionsType;
 + (Class)fareLineItemsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addAvailablePartySizeOptions:(id)arg1;
 - (void)addFareLineItems:(id)arg1;
@@ -70,7 +73,9 @@
 - (void)clearFareLineItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)fareLineItemsAtIndex:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

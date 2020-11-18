@@ -11,6 +11,7 @@
 }
 
 - (id)authorizePeerPaymentQuote:(id)arg1 forPaymentApplication:(id)arg2 withAuthenticationCredential:(id)arg3;
+- (id)authorizePeerPaymentQuote:(id)arg1 forPaymentApplication:(id)arg2 withAuthenticationCredential:(id)arg3 shouldReregister:(BOOL *)arg4;
 - (BOOL)deleteApplet;
 
 @end

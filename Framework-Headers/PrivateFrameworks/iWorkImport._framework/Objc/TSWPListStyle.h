@@ -74,10 +74,13 @@ __attribute__((visibility("hidden")))
 - (id)objectForProperty:(int)arg1 atIndex:(unsigned long long)arg2;
 - (id)overridePropertyMapWithValue:(id)arg1 forProperty:(int)arg2 atParagraphLevels:(id)arg3 withContext:(id)arg4;
 - (id)pOverrideArrayWithValue:(id)arg1 forProperty:(int)arg2 atParagraphLevels:(id)arg3 withContext:(id)arg4;
+- (id)p_characterFillByResolvingWithParagraphStyle:(id)arg1;
 - (id)parentStyleForFixingOrphanVariation;
+- (id)resolvedValueForProperty:(int)arg1 inStyles:(id)arg2;
 - (void)saveToArchive:(struct ListStyleArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (double)textIndentForLevel:(unsigned long long)arg1 fontSize:(double)arg2;
+- (BOOL)wantsCustomResolveLogicForProperty:(int)arg1 forStyles:(id)arg2;
 
 @end
 

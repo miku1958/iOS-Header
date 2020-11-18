@@ -26,11 +26,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_actionDescriptionForURL:(id)arg1 application:(id)arg2 shouldShowHostNameForSafariURL:(BOOL)arg3;
 - (id)_actionDescriptionWithoutTargetApplicationForURL:(id)arg1;
-- (BOOL)_isCodeFromQRScannerInCamera;
+- (BOOL)_isCodeFromQRScanner;
 - (void)_resolveTargetApplicationForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldBlockHandlingURL:(id)arg1;
 - (BOOL)_shouldOpenInAppForAppLink:(id)arg1;
 - (id)actionPickerItems;
+- (id)appLinks;
 - (id)debugDescriptionExtraInfoDictionary;
 - (id)defaultActionTargetApplicationBundleIdentifier;
 - (void)determineActionabilityWithCompletionHandler:(CDUnknownBlockType)arg1;

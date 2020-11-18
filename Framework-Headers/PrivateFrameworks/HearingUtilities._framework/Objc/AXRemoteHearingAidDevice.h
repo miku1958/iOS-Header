@@ -36,6 +36,7 @@
     short _leftMixedVolumeSteps;
     short _rightMixedVolumeSteps;
     int availableEars;
+    unsigned long long _deviceType;
     double _rightMicrophoneVolume;
     double _leftMicrophoneVolume;
     double _rightStreamVolume;
@@ -67,6 +68,7 @@
     AXHearingAidMode *_leftSelectedStreamingProgram;
     AXHearingAidMode *_rightSelectedStreamingProgram;
     NSString *_deviceUUID;
+    unsigned long long _requiredProperties;
     unsigned long long _loadedProperties;
     unsigned long long _pendingPropertyWrites;
     unsigned long long _leftAvailableProperties;
@@ -76,6 +78,7 @@
 @property (nonatomic) int availableEars; // @synthesize availableEars;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long deviceType; // @synthesize deviceType=_deviceType;
 @property (strong, nonatomic) NSString *deviceUUID; // @synthesize deviceUUID=_deviceUUID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isBluetoothPaired; // @synthesize isBluetoothPaired=_isBluetoothPaired;
@@ -108,6 +111,7 @@
 @property (strong, nonatomic) NSMutableArray *model; // @synthesize model=_model;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned long long pendingPropertyWrites; // @synthesize pendingPropertyWrites=_pendingPropertyWrites;
+@property (nonatomic) unsigned long long requiredProperties; // @synthesize requiredProperties=_requiredProperties;
 @property (nonatomic) unsigned long long rightAvailableProperties; // @synthesize rightAvailableProperties=_rightAvailableProperties;
 @property (nonatomic) BOOL rightBass; // @synthesize rightBass=_rightBass;
 @property (nonatomic) double rightBatteryLevel; // @synthesize rightBatteryLevel=_rightBatteryLevel;
@@ -141,6 +145,7 @@
 - (id)_valueForProperty:(unsigned long long)arg1;
 - (void)_writeAllProgramSelectionsToPeripheral;
 - (id)combinedPrograms;
+- (double)combinedVolumeForProperty:(unsigned long long)arg1;
 - (void)connect;
 - (BOOL)containsPeripheralWithUUID:(id)arg1;
 - (void)dealloc;

@@ -23,12 +23,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOLocationShifterPersistence *persistentCache;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_doNetworkRequestForLatLng:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 shouldCache:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_prunePersistentCache;
 - (void)dealloc;
+- (void)flushDiskCache;
 - (id)init;
 - (BOOL)isLocationShiftEnabled;
 - (BOOL)isLocationShiftRequiredForCoordinate:(CDStruct_c3b9c2ee)arg1;

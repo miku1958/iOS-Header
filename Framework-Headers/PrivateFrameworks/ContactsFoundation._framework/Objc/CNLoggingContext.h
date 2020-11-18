@@ -21,9 +21,9 @@
 @property (readonly, copy, nonatomic) NSString *subsystem; // @synthesize subsystem=_subsystem;
 
 + (id)loggingContextWithSubsystem:(id)arg1 category:(id)arg2;
+- (void).cxx_destruct;
 - (struct __asl_object_s *)aslClient;
 - (id)aslQueue;
-- (void)dealloc;
 - (id)initWithSubsystem:(id)arg1 category:(id)arg2;
 - (id)loggingName;
 - (void)setupASL;

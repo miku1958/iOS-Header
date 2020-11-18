@@ -8,7 +8,7 @@
 
 #import <CardServices/CRSCardRequesting-Protocol.h>
 
-@class NSObject, NSString;
+@class NSObject, NSSet, NSString;
 @protocol CRContent, OS_dispatch_queue;
 
 @interface CRSCardRequest : CRSRequest <CRSCardRequesting>
@@ -17,11 +17,13 @@
     BOOL _loadsBundleServices;
     id<CRContent> _content;
     unsigned long long _format;
+    NSSet *_excludedServiceIdentifiers;
 }
 
 @property (strong, nonatomic) id<CRContent> content; // @synthesize content=_content;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic, getter=_excludedServiceIdentifiers, setter=_setExcludedServiceIdentifiers:) NSSet *excludedServiceIdentifiers; // @synthesize excludedServiceIdentifiers=_excludedServiceIdentifiers;
 @property (nonatomic) unsigned long long format; // @synthesize format=_format;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL loadsBundleServices; // @synthesize loadsBundleServices=_loadsBundleServices;

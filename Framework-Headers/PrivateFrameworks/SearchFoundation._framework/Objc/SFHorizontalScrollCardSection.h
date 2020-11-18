@@ -14,7 +14,13 @@
 
 @interface SFHorizontalScrollCardSection : SFCardSection <SFHorizontalScrollCardSection, NSSecureCoding, NSCopying>
 {
-    CDStruct_5ff9a38c _has;
+    struct {
+        unsigned int canBeHidden:1;
+        unsigned int hasTopPadding:1;
+        unsigned int hasBottomPadding:1;
+        unsigned int separatorStyle:1;
+        unsigned int numberOfRows:1;
+    } _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -25,6 +31,7 @@
     NSString *_type;
     SFColor *_backgroundColor;
     NSArray *_cardSections;
+    unsigned long long _numberOfRows;
 }
 
 @property (strong, nonatomic) SFColor *backgroundColor;
@@ -41,6 +48,7 @@
 @property (nonatomic) BOOL hideDivider;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SFCard *nextCard;
+@property (nonatomic) unsigned long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
@@ -58,6 +66,7 @@
 - (BOOL)hasCanBeHidden;
 - (BOOL)hasHasBottomPadding;
 - (BOOL)hasHasTopPadding;
+- (BOOL)hasNumberOfRows;
 - (BOOL)hasSeparatorStyle;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;

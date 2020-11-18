@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol PMLTransformerProtocol
+#import <CoreSuggestionsInternals/PMLPlistAndChunksSerializableProtocol-Protocol.h>
+
+@protocol PMLTransformerProtocol <PMLPlistAndChunksSerializableProtocol>
 - (id)transform:(id)arg1;
 @end
 

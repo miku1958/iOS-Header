@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_selectButtonAction:(id)arg1 eventType:(id)arg2;
 - (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (id)largeContentTitle;
 - (void)upNextStateChangedToAdded;
 - (void)upNextStateChangedToRemoved;
 - (void)updateWithElement:(id)arg1;

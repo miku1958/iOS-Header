@@ -30,7 +30,7 @@
 - (id)_getAllVehicleEventsFromHistory;
 - (BOOL)_persistVehicleEventToHistory:(id)arg1;
 - (id)initWithQueue:(id)arg1 managedObjectContext:(id)arg2;
-- (void)purgeManager:(id)arg1 performPurgeOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @protocol NTKZeusComplicationDisplay <NSObject>
 
+@property (nonatomic) BOOL legibilityEnabled;
 @property (readonly, nonatomic) NTKZeusColorPalette *palette;
 @property (nonatomic) unsigned long long style;
 

@@ -9,6 +9,7 @@
 @interface NUImageTransformOrientation : NUImageTransform
 {
     CDStruct_d58201db _inputImageSize;
+    CDStruct_f261e59c _inputImageOrigin;
     long long _orientation;
 }
 
@@ -18,6 +19,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithOrientation:(long long)arg1 imageSize:(CDStruct_912cb5d2)arg2;
+- (id)initWithOrientation:(long long)arg1 imageSize:(CDStruct_912cb5d2)arg2 imageOrigin:(CDStruct_912cb5d2)arg3;
 - (id)inverseTransform;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToGeometryTransformOrientation:(id)arg1;

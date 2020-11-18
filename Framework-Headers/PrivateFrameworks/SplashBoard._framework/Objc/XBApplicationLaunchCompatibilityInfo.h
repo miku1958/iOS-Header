@@ -20,6 +20,7 @@
     NSString *_bundlePath;
     NSString *_sandboxPath;
     NSString *_bundleContainerPath;
+    NSString *_defaultGroupIdentifier;
 }
 
 @property (readonly, nonatomic) BOOL allowsSavingLaunchImages;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property (readonly, copy) NSString *debugDescription;
+@property (copy, nonatomic) NSString *defaultGroupIdentifier; // @synthesize defaultGroupIdentifier=_defaultGroupIdentifier;
 @property (readonly, copy, nonatomic) XBLaunchInterface *defaultLaunchInterface;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

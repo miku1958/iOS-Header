@@ -26,10 +26,8 @@
 @property (readonly, nonatomic, getter=isLargeFormatPhone) BOOL largeFormatPhone; // @synthesize largeFormatPhone=_largeFormatPhone;
 
 + (id)sharedInstance;
-- (void)_updateDeviceZoomed;
-- (void)_updateLargeFormatPhone;
 - (void)_updateProductTypeDerivedProperties;
-- (id)init;
+- (id)initWithLargeFormatPhone:(BOOL)arg1 gestaltModes:(id)arg2 screenSize:(struct CGSize)arg3;
 
 @end
 

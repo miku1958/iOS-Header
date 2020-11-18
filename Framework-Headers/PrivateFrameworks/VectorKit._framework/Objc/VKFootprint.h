@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (CDUnknownBlockType)annotationCoordinateTest;
 - (CDUnknownBlockType)annotationRectTest;
 - (void)computeFromCamera:(id)arg1;
-- (BOOL)containsGroundPoint:(Matrix_6e1d3589 *)arg1;
+- (BOOL)containsGroundPoint:(const Matrix_6e1d3589 *)arg1;
 - (BOOL)rejectsRect:(const Box_3d7e3c2c *)arg1;
 
 @end

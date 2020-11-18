@@ -7,6 +7,10 @@
 #import <CoreData/NSManagedObjectContext.h>
 
 @interface NSManagedObjectContext (RTExtensions)
+
+@property (nonatomic) long long mirroringQualityOfService;
+
+- (id)currentDevice;
 - (BOOL)deleteAllWithEntityName:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
 - (id)fetchAllWithEntityName:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 error:(id *)arg4;
 @end

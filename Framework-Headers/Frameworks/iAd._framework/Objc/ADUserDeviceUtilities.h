@@ -23,14 +23,13 @@
 + (id)iCloudAccount;
 + (id)iTunesAccountIdentifier;
 + (id)iTunesStoreAccount;
-+ (BOOL)isAppleAccountAvailable;
 + (BOOL)isManagedAppleId;
 + (BOOL)isiCloudAccountAvailable;
 + (BOOL)isiCloudManagedAppleId;
 + (BOOL)isiTunesAccountAvailable;
 + (BOOL)isiTunesManagedAppleId;
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)unregisterForiTunesAccountChanges;
 
 @end

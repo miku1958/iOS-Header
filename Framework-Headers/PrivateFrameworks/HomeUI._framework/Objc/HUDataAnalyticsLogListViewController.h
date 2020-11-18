@@ -6,12 +6,13 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
+#import <HomeUI/HUAccessorySettingsDetailsViewControllerProtocol-Protocol.h>
 #import <HomeUI/HUDataAnalyticsModuleControllerDelegate-Protocol.h>
 
 @class HUActivityLoadingView, HUDataAnalyticsModuleController, NSString;
 @protocol HFMediaProfileContainer;
 
-@interface HUDataAnalyticsLogListViewController : HUItemTableViewController <HUDataAnalyticsModuleControllerDelegate>
+@interface HUDataAnalyticsLogListViewController : HUItemTableViewController <HUAccessorySettingsDetailsViewControllerProtocol, HUDataAnalyticsModuleControllerDelegate>
 {
     id<HFMediaProfileContainer> _mediaProfileContainer;
     HUActivityLoadingView *_activityLoadingView;
@@ -21,9 +22,13 @@
 @property (readonly, nonatomic) HUActivityLoadingView *activityLoadingView; // @synthesize activityLoadingView=_activityLoadingView;
 @property (readonly, nonatomic) HUDataAnalyticsModuleController *analyticsModuleController; // @synthesize analyticsModuleController=_analyticsModuleController;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -33,6 +38,7 @@
 - (void)dataAnalyticsModuleController:(id)arg1 didSelectItem:(id)arg2;
 - (id)hu_preloadContent;
 - (id)init;
+- (id)initWithAccessoryGroupItem:(id)arg1;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithMediaProfileContainer:(id)arg1;
 - (id)itemModuleControllers;

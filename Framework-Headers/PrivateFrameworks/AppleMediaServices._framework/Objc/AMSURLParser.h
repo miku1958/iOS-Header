@@ -6,16 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@protocol AMSURLParserBagContract;
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
+#import <AppleMediaServices/AMSBagConsumer_Project-Protocol.h>
 
-@interface AMSURLParser : NSObject
+@class NSString;
+@protocol AMSBagProtocol;
+
+@interface AMSURLParser : NSObject <AMSBagConsumer_Project, AMSBagConsumer>
 {
-    id<AMSURLParserBagContract> _bagContract;
+    id<AMSBagProtocol> _bag;
 }
 
-@property (strong, nonatomic) id<AMSURLParserBagContract> bagContract; // @synthesize bagContract=_bagContract;
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 - (void).cxx_destruct;
+- (id)bagContract;
+- (id)initWithBag:(id)arg1;
 - (id)initWithBagContract:(id)arg1;
 - (id)isCommerceUIURL:(id)arg1;
 

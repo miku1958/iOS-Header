@@ -100,7 +100,6 @@
 - (void)publishStreamsProtocol:(id)arg1 didReceiveAuthenticationError:(id)arg2;
 - (void)reenqueueQuarantinedAssetCollections;
 - (void)stop;
-- (void)submitAssetCollectionsForPublication:(id)arg1;
 - (void)submitAssetCollectionsForPublication:(id)arg1 skipAssetCollections:(id)arg2;
 
 @end

@@ -11,11 +11,13 @@
 @interface DSIDRecord (Private)
 
 @property (strong, nonatomic) NSString *IDFA; // @dynamic IDFA;
+@property (nonatomic) BOOL accountAgeUnknown; // @dynamic accountAgeUnknown;
 @property (nonatomic) BOOL accountIsT13; // @dynamic accountIsT13;
 @property (nonatomic) BOOL accountIsU13; // @dynamic accountIsU13;
 @property (nonatomic) BOOL accountIsU18; // @dynamic accountIsU18;
 @property (strong, nonatomic) NSString *iAdIDBeforeReset; // @dynamic iAdIDBeforeReset;
 @property (strong, nonatomic) NSString *iCloudDSID; // @dynamic iCloudDSID;
+@property (nonatomic) BOOL isDPIDManatee; // @dynamic isDPIDManatee;
 @property (nonatomic) int lastSegmentServedTimestamp; // @dynamic lastSegmentServedTimestamp;
 @property (nonatomic) int lastSentSegmentDataTimestamp; // @dynamic lastSentSegmentDataTimestamp;
 @property (nonatomic) int limitAdTrackingTimestamp; // @dynamic limitAdTrackingTimestamp;

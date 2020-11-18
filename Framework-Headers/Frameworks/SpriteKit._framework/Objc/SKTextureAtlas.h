@@ -38,6 +38,7 @@
 - (id)_copyImageData;
 - (void)_prePopulateCache;
 - (void)commonInit;
+- (id)createSubTextureFromTexture:(id)arg1 andCUINamedImage:(id)arg2 andOrigin:(struct CGPoint)arg3;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

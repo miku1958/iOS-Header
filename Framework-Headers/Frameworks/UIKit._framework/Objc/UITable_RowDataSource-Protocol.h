@@ -33,7 +33,7 @@
 @property (readonly, nonatomic, getter=_tableFooterView) UIView *tableFooterView;
 @property (readonly, nonatomic, getter=_tableHeaderView) UIView *tableHeaderView;
 
-- (void)_applyContentSizeDeltaForEstimatedHeightAdjustments:(double)arg1;
+- (void)_applyContentSizeDeltaImmediately:(double)arg1;
 - (void)_coalesceContentSizeUpdateWithDelta:(double)arg1;
 - (double)_dataSourceHeightForFooterInSection:(long long)arg1;
 - (double)_dataSourceHeightForHeaderInSection:(long long)arg1;
@@ -49,7 +49,6 @@
 - (double)_maxTitleWidthForHeaderInSection:(long long)arg1;
 - (void)_setHeight:(double)arg1 forRowAtIndexPath:(NSIndexPath *)arg2 usingPresentationValues:(BOOL)arg3;
 - (BOOL)_shouldStripHeaderTopPaddingForSection:(long long)arg1;
-- (double)_swipeToDeleteOffsetForRow:(long long)arg1 inSection:(long long)arg2;
 - (long long)_titleAlignmentForFooterInSection:(long long)arg1;
 - (long long)_titleAlignmentForHeaderInSection:(long long)arg1;
 - (NSString *)_titleForFooterInSection:(long long)arg1;

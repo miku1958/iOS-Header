@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UISettings.h>
+#import <PrototypeTools/PTSettings.h>
 
 @class MTLumaDodgePillStyleSettings;
 
-@interface MTLumaDodgePillSettings : _UISettings
+@interface MTLumaDodgePillSettings : PTSettings
 {
     double _minWidth;
     double _maxWidth;
@@ -18,6 +18,8 @@
     double _brightLumaThreshold;
     double _darkLumaThreshold;
     double _initialLumaThreshold;
+    double _cornerRadius;
+    long long _cornerMask;
     MTLumaDodgePillStyleSettings *_noneSettings;
     MTLumaDodgePillStyleSettings *_thinSettings;
     MTLumaDodgePillStyleSettings *_graySettings;
@@ -28,6 +30,8 @@
 @property (strong, nonatomic) MTLumaDodgePillStyleSettings *blackSettings; // @synthesize blackSettings=_blackSettings;
 @property (nonatomic) double brightLumaThreshold; // @synthesize brightLumaThreshold=_brightLumaThreshold;
 @property (nonatomic) double colorAddWhiteness; // @synthesize colorAddWhiteness=_colorAddWhiteness;
+@property (nonatomic) long long cornerMask; // @synthesize cornerMask=_cornerMask;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (nonatomic) double darkLumaThreshold; // @synthesize darkLumaThreshold=_darkLumaThreshold;
 @property (nonatomic) double edgeSpacing; // @synthesize edgeSpacing=_edgeSpacing;
 @property (strong, nonatomic) MTLumaDodgePillStyleSettings *graySettings; // @synthesize graySettings=_graySettings;
@@ -43,7 +47,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)setDefaultValues;
-- (void)updateWithSettingsFromArchive:(id)arg1;
 
 @end
 

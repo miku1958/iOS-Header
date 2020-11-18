@@ -6,19 +6,29 @@
 
 #import <Preferences/PSRootController.h>
 
-@class NSMutableArray, NSMutableDictionary, UIColor;
+#import <SetupAssistantUI/UINavigationControllerDelegate-Protocol.h>
 
-@interface BFFNavigationController : PSRootController
+@class NSMutableArray, NSMutableDictionary, NSString, UIColor;
+
+@interface BFFNavigationController : PSRootController <UINavigationControllerDelegate>
 {
     NSMutableArray *_observers;
     NSMutableDictionary *_appearanceHandlers;
     long long _pendingShowOperation;
     UIColor *_backgroundColor;
     BOOL _animating;
+    BOOL _pushWithoutDeferringTransitionsWhileInBackground;
+    BOOL _inBackground;
 }
 
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 @property (strong, nonatomic) UIColor *backgroundColor;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isInBackground) BOOL inBackground; // @synthesize inBackground=_inBackground;
+@property (nonatomic) BOOL pushWithoutDeferringTransitionsWhileInBackground; // @synthesize pushWithoutDeferringTransitionsWhileInBackground=_pushWithoutDeferringTransitionsWhileInBackground;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowTextServices;
@@ -36,6 +46,7 @@
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)pushViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeDelegateObserver:(id)arg1;
+- (BOOL)respondsToSelector:(SEL)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setViewControllers:(id)arg1 animated:(BOOL)arg2;
 - (unsigned long long)supportedInterfaceOrientations;

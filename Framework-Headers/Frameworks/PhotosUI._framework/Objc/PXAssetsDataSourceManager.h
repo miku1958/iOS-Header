@@ -6,15 +6,30 @@
 
 #import <PhotosUICore/PXSectionedDataSourceManager.h>
 
-@class PXAssetsDataSource;
+#import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 
-@interface PXAssetsDataSourceManager : PXSectionedDataSourceManager
+@class NSString, PXAssetsDataSource;
+
+@interface PXAssetsDataSourceManager : PXSectionedDataSourceManager <PXMutableAssetsDataSourceManager>
 {
 }
 
+@property (nonatomic) long long backgroundFetchOriginSection;
 @property (readonly, nonatomic) PXAssetsDataSource *dataSource; // @dynamic dataSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
+- (BOOL)forceAccurateAllSectionsIfNeeded;
+- (BOOL)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
+- (BOOL)forceAccurateSectionsIfNeeded:(id)arg1;
+- (id)mutableChangeObject;
+- (id)pauseChangeDeliveryWithTimeout:(double)arg1;
 - (void)registerChangeObserver:(id)arg1 context:(void *)arg2;
+- (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
+- (void)setCurationEnabled:(BOOL)arg1 forAssetCollection:(id)arg2;
+- (void)startBackgroundFetchIfNeeded;
 - (void)unregisterChangeObserver:(id)arg1 context:(void *)arg2;
 
 @end

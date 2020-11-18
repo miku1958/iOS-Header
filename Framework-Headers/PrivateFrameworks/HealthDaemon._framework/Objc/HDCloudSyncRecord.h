@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) CKRecord *record; // @synthesize record=_record;
 
++ (BOOL)_validateOptionalValueInRecord:(id)arg1 forKey:(id)arg2 type:(Class)arg3 encrypted:(BOOL)arg4 error:(id *)arg5;
 + (id)_valueInRecord:(id)arg1 forKey:(id)arg2 type:(Class)arg3 encrypted:(BOOL)arg4 error:(id *)arg5;
 + (BOOL)hasFutureSchema:(id)arg1;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;

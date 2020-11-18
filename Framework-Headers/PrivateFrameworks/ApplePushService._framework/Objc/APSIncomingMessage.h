@@ -17,12 +17,13 @@
 @property (nonatomic, getter=wasFromStorage) BOOL fromStorage;
 @property (nonatomic, getter=wasLastMessageFromStorage) BOOL lastMessageFromStorage;
 @property (nonatomic) long long priority;
+@property (nonatomic) unsigned long long pushType;
 @property (copy, nonatomic) NSDate *timestamp;
 @property (copy, nonatomic) NSData *token;
 @property (nonatomic, getter=isTracingEnabled) BOOL tracingEnabled;
 @property (copy, nonatomic) NSData *tracingUUID;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

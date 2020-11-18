@@ -13,10 +13,11 @@
 @property (readonly, nonatomic) long long irisMode;
 
 - (NSString *)irisIdentifierForEV0:(BOOL)arg1;
+- (NSURL *)irisLocalSpatialOverCaptureVideoDestinationForEV0:(BOOL)arg1;
 - (NSURL *)irisLocalVideoDestinationURLForEV0:(BOOL)arg1;
 - (NSString *)irisStillImagePersistenceUUIDForEV0:(BOOL)arg1;
 - (NSString *)irisVideoPersistenceUUIDForEV0:(BOOL)arg1;
 - (BOOL)isEV0LocalVideoDestinationURL:(NSURL *)arg1;
-- (BOOL)shouldPersistToLivePhotoDirectory;
+- (BOOL)isLocalSpatialOverCaptureVideoDestinationURL:(NSURL *)arg1;
 @end
 

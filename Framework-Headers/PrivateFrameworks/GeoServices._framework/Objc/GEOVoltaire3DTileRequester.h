@@ -10,10 +10,7 @@
 {
 }
 
-+ (struct _GEOTileKey)patchTileKey:(const struct _GEOTileKey *)arg1;
-+ (Class)simpleRequesterClass;
 + (unsigned char)tileProviderIdentifier;
-+ (void)updateQueryItems:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 manifestConfiguration:(id)arg3;
 - (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
 
 @end

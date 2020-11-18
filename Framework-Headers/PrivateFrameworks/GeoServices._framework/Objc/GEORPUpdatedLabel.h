@@ -8,20 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSString;
+@class GEOLatLng, NSString, PBDataReader;
 
 @interface GEORPUpdatedLabel : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_center;
     NSString *_localizedText;
+    struct {
+        unsigned int read_center:1;
+        unsigned int read_localizedText:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_localizedText:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (strong, nonatomic) GEOLatLng *center;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (readonly, nonatomic) BOOL hasLocalizedText;
-@property (strong, nonatomic) NSString *localizedText; // @synthesize localizedText=_localizedText;
+@property (strong, nonatomic) NSString *localizedText;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readCenter;
+- (void)_readLocalizedText;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

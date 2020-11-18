@@ -13,15 +13,9 @@
 + (id)brailleDriverBundles;
 + (id)brailleDriverDeviceDetectionInfo;
 + (id)brailleTableBundleWithTableIdentifier:(id)arg1;
-+ (id)brailleTableIdentifiers;
-+ (long long)bundleIndexForBrailleDriverIdentifier:(id)arg1;
-+ (id)defaultBrailleTableForLanguageIdentifier:(id)arg1;
 + (BOOL)doesBrailleTableSupportContractions:(id)arg1;
 + (BOOL)doesBrailleTableSupportEightDot:(id)arg1;
 + (id)languageIdentifiersForBrailleTableIdentifier:(id)arg1;
-+ (id)nameForBrailleTableIdentifier:(id)arg1;
-+ (id)tableIdentifiersForLanguageIdentifier:(id)arg1;
-- (id)bundleSpecificTableIdentifierForTableIdentifier:(id)arg1;
 - (id)tableIdentifierForBundleSpecificTableIdentifier:(id)arg1;
 @end
 

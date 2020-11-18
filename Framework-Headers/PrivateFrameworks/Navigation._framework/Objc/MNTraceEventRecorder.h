@@ -8,7 +8,7 @@
 
 #import <Navigation/MNNavigationSessionObserver-Protocol.h>
 
-@class MNLocation, MNTraceRecorder, NSArray, NSMutableArray, NSString, NSUUID;
+@class GEOComposedRoute, MNLocation, MNTraceRecorder, NSArray, NSMutableArray, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface MNTraceEventRecorder : NSObject <MNNavigationSessionObserver>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     MNTraceRecorder *_traceRecorder;
     NSMutableArray *_eventHistory;
     NSMutableArray *_events;
+    GEOComposedRoute *_route;
     unsigned long long _lastTrackedStepIndex;
     MNLocation *_lastTrackedLocation;
     double _timeAtStartOfRoute;
@@ -39,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithTraceRecorder:(id)arg1;
 - (void)navigationSession:(id)arg1 didAnnounce:(id)arg2 stage:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didAnnounceArrival:(id)arg2;
-- (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3;
+- (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4;
 - (void)navigationSession:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3;
 - (void)navigationSession:(id)arg1 didUpdateMatchedLocation:(id)arg2;
 - (void)navigationSession:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(BOOL)arg8;

@@ -18,8 +18,8 @@
     CDUnknownBlockType _completionHandler;
     SFAuthenticationViewController *_authViewController;
     NSString *_callbackURLScheme;
-    BOOL _isSessionStarted;
-    BOOL _usingEphemeralSession;
+    BOOL _prefersEphemeralWebBrowserSession;
+    BOOL _sessionStarted;
     id<_SFAuthenticationSessionDelegate> __delegate;
 }
 
@@ -27,10 +27,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL prefersEphemeralWebBrowserSession; // @synthesize prefersEphemeralWebBrowserSession=_prefersEphemeralWebBrowserSession;
+@property (nonatomic, getter=isSessionStarted) BOOL sessionStarted; // @synthesize sessionStarted=_sessionStarted;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_startRequestingFromWebAuthenticationSession:(BOOL)arg1;
+- (BOOL)_startRequestingFromWebAuthenticationSession:(BOOL)arg1 inWindow:(id)arg2;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 callbackURLScheme:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -40,7 +42,7 @@
 - (void)safariViewController:(id)arg1 hostApplicationOpenURL:(id)arg2;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (BOOL)start;
-- (BOOL)startASWebAuthenticationSession;
+- (BOOL)startASWebAuthenticationSessionInWindow:(id)arg1;
 
 @end
 

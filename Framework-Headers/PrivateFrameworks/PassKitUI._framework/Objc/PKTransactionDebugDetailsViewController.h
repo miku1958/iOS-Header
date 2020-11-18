@@ -6,13 +6,13 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSDictionary, PKPaymentTransaction, UIBarButtonItem, UITableViewCell;
+@class NSDictionary, PKPaymentTransaction, UITableViewCell;
 
 @interface PKTransactionDebugDetailsViewController : UITableViewController
 {
     PKPaymentTransaction *_transaction;
     UITableViewCell *_mapsCell;
-    UIBarButtonItem *_shareButton;
+    BOOL _inBridge;
     NSDictionary *_transactionDetails;
     NSDictionary *_merchantDetails;
     NSDictionary *_mapsMerchantDetails;
@@ -25,7 +25,6 @@
 - (void).cxx_destruct;
 - (id)_cellWithPrimaryText:(id)arg1 infoText:(id)arg2;
 - (void)_didSelectMap;
-- (void)_handleShareButton:(id)arg1;
 - (id)_mapsBrandInfoCellForIndex:(long long)arg1;
 - (id)_mapsCell;
 - (id)_mapsMerchantInfoCellForIndex:(long long)arg1;
@@ -45,6 +44,7 @@
 - (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (BOOL)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (void)viewDidLoad;
 
 @end
 

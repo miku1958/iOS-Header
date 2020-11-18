@@ -18,6 +18,7 @@
     NSUserDefaults *_userDefaults;
 }
 
+@property (readonly, nonatomic) long long abTest2WeekZoneSize;
 @property (readonly, nonatomic) NSArray *anonymousMetadataPreference;
 @property (readonly, copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, nonatomic) NSNumber *cohortsLookbackInDays;
@@ -42,7 +43,6 @@
 @property (readonly, nonatomic) unsigned long long maximumCachedQueriesToSend;
 @property (readonly, nonatomic) unsigned long long maximumCachedResultsToSend;
 @property (readonly, nonatomic) NSDictionary *maximumCustomFeedbackSizes;
-@property (readonly, nonatomic) long long maximumNumberOfFeedbackFiles;
 @property (readonly, nonatomic) NSNumber *minSearchRenderTimeout;
 @property (readonly, nonatomic) NSNumber *minSuggestionRenderTimeout;
 @property (readonly, nonatomic) double minThresholdToSend;
@@ -50,8 +50,10 @@
 @property (readonly, nonatomic) unsigned long long minimumQueryLength;
 @property (readonly, nonatomic) NSNumber *otherRenderTimeout;
 @property (readonly, copy, nonatomic) NSString *parsecFeedbackFormat;
+@property (readonly, nonatomic) long long protocolVersion;
 @property (readonly, copy, nonatomic) NSDictionary *rawBag;
 @property (readonly, copy, nonatomic) NSArray *recentlyUsedAppIdentifierWhitelist;
+@property (readonly, copy, nonatomic) NSString *releaseTag;
 @property (readonly, copy, nonatomic) NSDictionary *resources;
 @property (readonly, nonatomic) double safariAll;
 @property (readonly, nonatomic) double safariDecay;
@@ -103,7 +105,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1;
 - (id)initWithData:(id)arg1 userAgent:(id)arg2;
+- (id)initWithData:(id)arg1 userAgent:(id)arg2 userDefaults:(id)arg3;
 - (id)initWithURL:(id)arg1 userAgent:(id)arg2;
+- (id)initWithURL:(id)arg1 userAgent:(id)arg2 userDefaults:(id)arg3;
 - (id)initWithURL:(id)arg1 userDefaults:(id)arg2;
 - (BOOL)isRefreshDisabled;
 - (unsigned long long)maximumSizeForFeedbackType:(id)arg1;

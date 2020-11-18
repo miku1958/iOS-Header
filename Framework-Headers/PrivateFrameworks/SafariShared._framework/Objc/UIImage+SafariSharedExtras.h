@@ -7,6 +7,10 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (SafariSharedExtras)
+
+@property (nonatomic, setter=safari_setTransparencyAnalysisResult:) long long safari_transparencyAnalysisResult;
+@property (readonly, nonatomic) BOOL safari_transparencyAnalysisResultIsNotOpaque;
+
 + (id)safari_imageWithSize:(struct CGSize)arg1 actions:(CDUnknownBlockType)arg2;
 @end
 

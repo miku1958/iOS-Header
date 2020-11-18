@@ -8,6 +8,7 @@
 
 @interface PKWrapperViewController : UIViewController
 {
+    long long _type;
     UIViewController *_wrappedViewController;
 }
 
@@ -22,8 +23,10 @@
 - (unsigned long long)edgesForExtendedLayout;
 - (BOOL)extendedLayoutIncludesOpaqueBars;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (id)initWithWrappedViewController:(id)arg1;
+- (id)initWithWrappedViewController:(id)arg1 type:(long long)arg2;
 - (void)loadView;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (long long)preferredUserInterfaceStyle;
 - (void)viewWillLayoutSubviews;
 
 @end

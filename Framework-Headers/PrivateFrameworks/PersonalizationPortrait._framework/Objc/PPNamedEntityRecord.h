@@ -10,7 +10,7 @@
 #import <PersonalizationPortrait/NSMutableCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSString, PPNamedEntity, PPSource;
+@class NSString, PPNamedEntity, PPNamedEntityMetadata, PPSource;
 
 @interface PPNamedEntityRecord : _PASZonedObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -22,6 +22,8 @@
     unsigned short _extractionAssetVersion;
     unsigned char _algorithm;
     unsigned char _changeType;
+    PPNamedEntityMetadata *_metadata;
+    BOOL _bucketizedSentimentScore;
 }
 
 @property (readonly, nonatomic) unsigned long long algorithm;
@@ -31,6 +33,8 @@
 @property (readonly, nonatomic) unsigned long long extractionAssetVersion;
 @property (readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
 @property (readonly, nonatomic) double initialScore;
+@property (readonly, nonatomic) PPNamedEntityMetadata *metadata;
+@property (readonly, nonatomic) double sentimentScore; // @dynamic sentimentScore;
 @property (readonly, nonatomic) PPSource *source; // @synthesize source=_source;
 
 + (id)describeAlgorithm:(unsigned long long)arg1;

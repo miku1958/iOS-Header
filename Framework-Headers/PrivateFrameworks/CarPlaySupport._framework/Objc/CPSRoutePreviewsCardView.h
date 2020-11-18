@@ -8,18 +8,16 @@
 
 #import <CarPlaySupport/CPSAlternateRouteSelecting-Protocol.h>
 
-@class CPSAlternateRoutesView, NSString, UIButton;
+@class CPSAlternateRoutesView, NSString;
 
 @interface CPSRoutePreviewsCardView : CPSTripPreviewsCardView <CPSAlternateRouteSelecting>
 {
     CPSAlternateRoutesView *_alternatesView;
-    UIButton *_goButton;
 }
 
 @property (readonly, nonatomic) CPSAlternateRoutesView *alternatesView; // @synthesize alternatesView=_alternatesView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) UIButton *goButton; // @synthesize goButton=_goButton;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

@@ -12,18 +12,18 @@
 
 @interface _MPSectionedIdentifierListProxyEntry : NSObject <MPSectionedIdentifierListEnumerationResult>
 {
-    long long _branchDepth;
     long long _entryType;
 }
 
-@property (readonly, nonatomic) long long branchDepth; // @synthesize branchDepth=_branchDepth;
+@property (readonly, nonatomic) long long branchDepth;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long entryType; // @synthesize entryType=_entryType;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)initWithType:(long long)arg1 branchDepth:(long long)arg2;
++ (id)endEntry;
++ (id)startEntry;
 - (id)itemResult;
 - (id)trackingEntryResult;
 

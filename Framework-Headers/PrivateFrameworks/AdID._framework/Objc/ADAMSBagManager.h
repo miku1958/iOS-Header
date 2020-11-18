@@ -6,10 +6,22 @@
 
 #import <AdCore/ADSingleton.h>
 
-@interface ADAMSBagManager : ADSingleton
+#import <AdID/AMSBagConsumer-Protocol.h>
+
+@class NSString;
+
+@interface ADAMSBagManager : ADSingleton <AMSBagConsumer>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 + (id)sharedInstance;
 - (BOOL)authenticateAccountThroughAMSOperation:(id)arg1;
 - (BOOL)retrieveIsSponsoredAdsEnabledValueForAdTrackingdFromAMSBag;

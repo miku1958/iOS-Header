@@ -9,6 +9,7 @@
 @class NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface GEODBReader : NSObject
 {
     BOOL _defunct;
@@ -34,7 +35,6 @@
 - (void)_editionUpdateBegin:(id)arg1;
 - (void)_editionUpdateEnd:(id)arg1;
 - (void)_openDB;
-- (void)dataForKey:(struct _GEOTileKey *)arg1 asyncHandler:(CDUnknownBlockType)arg2;
 - (id)dataForKey:(struct _GEOTileKey *)arg1 isCurrent:(BOOL *)arg2 eTag:(id *)arg3;
 - (void)dataForKeys:(struct GEOTileKeyList *)arg1 callbackQueue:(id)arg2 asyncHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;

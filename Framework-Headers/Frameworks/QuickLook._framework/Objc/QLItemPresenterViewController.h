@@ -9,7 +9,7 @@
 #import <QuickLook/QLDownloadingItemViewControllerDelegate-Protocol.h>
 #import <QuickLook/QLItemViewControllerPresentingDelegate-Protocol.h>
 
-@class NSString, QLDownloadingItemViewController, QLErrorItemViewController, QLItem, QLItemViewController, QLLoadingItemViewController, QLPreviewContext;
+@class DMFApplicationPolicyMonitor, DMFCategoryPolicyMonitor, NSString, QLDownloadingItemViewController, QLErrorItemViewController, QLItem, QLItemViewController, QLLoadingItemViewController, QLPreviewContext, QLScreenTimeItemViewController;
 
 __attribute__((visibility("hidden")))
 @interface QLItemPresenterViewController : QLItemAggregatedViewController <QLDownloadingItemViewControllerDelegate, QLItemViewControllerPresentingDelegate>
@@ -20,17 +20,21 @@ __attribute__((visibility("hidden")))
     BOOL _isReadyForDisplay;
     BOOL _shouldHandleLoadingView;
     CDUnknownBlockType _readyBlock;
+    BOOL _printing;
     QLItemViewController *_previewProvider;
     QLErrorItemViewController *_errorViewController;
     QLLoadingItemViewController *_loadingViewController;
     QLDownloadingItemViewController *_downloadingController;
-    CDUnknownBlockType _completionHandler;
+    QLScreenTimeItemViewController *_screenTimeController;
+    CDUnknownBlockType _loadingCompletionHandler;
     QLItem *_previewItem;
     id _contents;
     QLPreviewContext *_context;
+    NSString *_hostApplicationBundleIdentifier;
+    DMFApplicationPolicyMonitor *_screenTimeApplicationMonitor;
+    DMFCategoryPolicyMonitor *_screenTimeCategoryMonitor;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong) id contents; // @synthesize contents=_contents;
 @property (strong) QLPreviewContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -38,21 +42,43 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) QLDownloadingItemViewController *downloadingController; // @synthesize downloadingController=_downloadingController;
 @property (strong, nonatomic) QLErrorItemViewController *errorViewController; // @synthesize errorViewController=_errorViewController;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *hostApplicationBundleIdentifier; // @synthesize hostApplicationBundleIdentifier=_hostApplicationBundleIdentifier;
 @property (readonly) QLItemPresenterViewController *itemPresenterViewController;
+@property (copy, nonatomic) CDUnknownBlockType loadingCompletionHandler; // @synthesize loadingCompletionHandler=_loadingCompletionHandler;
 @property (strong, nonatomic) QLLoadingItemViewController *loadingViewController; // @synthesize loadingViewController=_loadingViewController;
 @property (strong, nonatomic) QLItem *previewItem; // @synthesize previewItem=_previewItem;
 @property (strong, nonatomic) QLItemViewController *previewProvider; // @synthesize previewProvider=_previewProvider;
+@property (nonatomic) BOOL printing; // @synthesize printing=_printing;
+@property (strong, nonatomic) DMFApplicationPolicyMonitor *screenTimeApplicationMonitor; // @synthesize screenTimeApplicationMonitor=_screenTimeApplicationMonitor;
+@property (strong, nonatomic) DMFCategoryPolicyMonitor *screenTimeCategoryMonitor; // @synthesize screenTimeCategoryMonitor=_screenTimeCategoryMonitor;
+@property (strong, nonatomic) QLScreenTimeItemViewController *screenTimeController; // @synthesize screenTimeController=_screenTimeController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancelAllDeferredApperanceUpdates;
+- (void)_didReceiveNewScreenTimeApplicationPolicies:(id)arg1 error:(id)arg2;
+- (void)_didReceiveNewScreenTimeCategoryPolicy:(id)arg1 error:(id)arg2;
+- (void)_didReceiveNewScreenTimePolity:(long long)arg1;
+- (void)_hideScreenTimeViewControllerIfNeeded;
+- (void)_performLoadingCompletionHandlerWithError:(id)arg1;
 - (void)_performReadyBlockIfNedded;
+- (BOOL)_processIsEntitledToCheckScreenTimePolicy;
+- (void)_queryScreenTimeCategoryPolicy;
+- (void)_queryScreenTimePolicyForBundleIdentifier:(id)arg1;
+- (void)_setupScreenTimeApplicationHandling;
+- (void)_setupScreenTimeCategoryHandling;
+- (void)_setupScreenTimeHandling;
+- (BOOL)_shouldApplyScreenTimeMoviePolicyForItem:(id)arg1;
 - (void)_showLoadingViewControllerDeferredIfNeeded;
 - (void)_showReadyToDisplayPreviewViewControllerDeferredIfNeeded:(id)arg1;
+- (void)_showScreenTimeViewController;
 - (void)_startLoadingPreviewWithContents:(id)arg1;
 - (id)additionalItemViewControllerDescription;
+- (BOOL)canAnimateFromDetailViewToFullScreenPreview;
 - (void)downloadingItemViewControllerDidFinishLoadingPreviewItem:(id)arg1 withContents:(id)arg2;
 - (id)init;
+- (id)initForPrinting:(BOOL)arg1;
+- (id)initWithHostApplicationBundleIdentifier:(id)arg1;
 - (BOOL)isLoaded;
 - (BOOL)isLoading;
 - (void)isReadyForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -63,8 +89,10 @@ __attribute__((visibility("hidden")))
 - (void)previewItemViewController:(id)arg1 didFailWithError:(id)arg2;
 - (void)previewWillAppear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
+- (id)screenTimePolicyBundleIdentifier;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)showErrorViewController;
+- (void)showPreviewProviderViewController;
 - (void)showPreviewViewController:(id)arg1;
 - (void)showPreviewViewController:(id)arg1 animatingWithCrossfade:(BOOL)arg2;
 - (void)showPreviewViewController:(id)arg1 animatingWithCrossfade:(BOOL)arg2 updatingIsReadyForDisplay:(BOOL)arg3;

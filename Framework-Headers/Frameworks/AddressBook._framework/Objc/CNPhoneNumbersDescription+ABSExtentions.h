@@ -11,5 +11,6 @@
 - (CDUnknownBlockType)CNLabeledValueFromABSMultiValueTranform;
 - (BOOL)absPropertyID:(int *)arg1;
 - (unsigned int)absPropertyType;
+- (BOOL)isABSLabeledValueValue:(id)arg1 equalToValue:(id)arg2;
 @end
 

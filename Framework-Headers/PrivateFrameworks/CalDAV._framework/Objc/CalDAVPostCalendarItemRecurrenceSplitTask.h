@@ -49,6 +49,7 @@
 - (id)description;
 - (id)httpMethod;
 - (id)initWithResourceURL:(id)arg1 recurrenceDate:(id)arg2 floating:(BOOL)arg3 allday:(BOOL)arg4;
+- (id)requestBody;
 - (id)updatedETag;
 - (id)updatedICSDocument;
 - (id)updatedScheduleTag;

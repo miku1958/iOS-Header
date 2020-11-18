@@ -19,6 +19,7 @@
     BOOL featureType;
 }
 
++ (id)addressMarkerStyleAttributes;
 + (id)airportStyleAttributes;
 + (id)calendarEventStyleAttributes;
 + (id)carRentalStyleAttributes;
@@ -34,6 +35,7 @@
 + (id)styleAttributesForPlace:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)ticketedEventStyleAttributes;
++ (id)transitStationStyleAttributes;
 + (id)workStyleAttributes;
 - (void).cxx_destruct;
 - (id)copyWithAirportStyleAttributes;
@@ -64,6 +66,7 @@
 - (BOOL)isLandmarkPOI;
 - (BOOL)isRailway;
 - (BOOL)isRamp;
+- (BOOL)isRoadPedestrianNavigable;
 - (BOOL)isSearchResult;
 - (BOOL)isSuperset:(id)arg1;
 - (BOOL)isTransit;
@@ -77,7 +80,9 @@
 - (void)replaceAttributes:(const CDStruct_1e94be47 *)arg1 count:(unsigned int)arg2;
 - (void)setExtAttributes:(const CDStruct_d008d4b8 *)arg1 count:(unsigned int)arg2;
 - (BOOL)shouldSuppress3DBuildingStrokes;
+- (int)sidewalkSide;
 - (void)sort;
+- (int)walkableSide;
 
 @end
 

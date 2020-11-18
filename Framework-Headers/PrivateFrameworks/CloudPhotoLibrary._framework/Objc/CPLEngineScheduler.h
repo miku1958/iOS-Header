@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 #import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
 
-@class CPLEngineLibrary, CPLPlatformObject, NSCountedSet, NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@class CPLEngineLibrary, CPLPlatformObject, CPLSyncSession, NSCountedSet, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineScheduler : NSObject <CPLAbstractObject, CPLEngineComponent>
@@ -17,12 +17,13 @@
     unsigned long long _requiredFirstState;
     unsigned long long _lastRequestGeneration;
     unsigned long long _currentRequestGeneration;
-    NSDate *_nextScheduledDate;
+    CPLSyncSession *_nextSession;
     double _intervalForRetry;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _currentSyncState;
     BOOL _needsToUpdateScopeList;
     BOOL _shouldNoteServerHasChanges;
+    CPLSyncSession *_currentSession;
     BOOL _opened;
     NSDate *_unavailabilityLimitDate;
     unsigned long long _foregroundCalls;
@@ -35,9 +36,11 @@
     unsigned long long _significantWorkCalls;
     unsigned long long _disablingMinglingCount;
     NSDate *_lastSyncSessionDateCausedByForeground;
+    NSDate *_deferDate;
     BOOL _protectAgainstFastRelaunch;
     BOOL _didWriteFirstSyncMarker;
     BOOL _delayedFirstSyncBecauseOfRapidLaunch;
+    BOOL _isOverridingForeground;
     CPLPlatformObject *_platformObject;
     CPLEngineLibrary *_engineLibrary;
     CDUnknownBlockType _requiredStateObserverBlock;
@@ -71,15 +74,16 @@
 - (void)_noteSyncSessionNeededFromState:(unsigned long long)arg1;
 - (id)_pathToFirstSynchronizationMarker;
 - (void)_reallyNoteServerHasChangesLocked;
-- (void)_reallyStartSyncSession;
+- (void)_reallyStartSyncSession:(id)arg1;
 - (void)_reallyUnscheduleSession;
 - (void)_resetFirstSynchronizationMarker;
 - (void)_scheduleNextSyncSession;
 - (void)_setRequiredFirstState:(unsigned long long)arg1;
-- (void)_startRequiredSyncSession;
-- (void)_startSyncSessionWithMinimalPhase:(unsigned long long)arg1;
+- (void)_startRequiredSyncSession:(id)arg1;
+- (void)_startSyncSession:(id)arg1 withMinimalPhase:(unsigned long long)arg2 rewind:(BOOL)arg3;
 - (BOOL)_syncSessionIsPossible;
 - (void)_unscheduleNextSyncSession;
+- (void)_updateOverridingForeground;
 - (void)_writeFirstSynchronizationMarker;
 - (void)blockEngineElement:(id)arg1;
 - (void)closeAndDeactivate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -88,6 +92,7 @@
 - (void)disableSynchronizationWithReason:(id)arg1;
 - (void)enableMingling;
 - (void)enableSynchronizationWithReason:(id)arg1;
+- (void)forceStartSyncSession:(id)arg1 withMinimalPhase:(unsigned long long)arg2;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
@@ -114,13 +119,13 @@
 - (void)noteStoreNeedsCleanup;
 - (void)noteStoreNeedsSetup;
 - (void)noteStoreNeedsToUpdateDisabledFeatures;
-- (void)noteSyncSessionFailedDuringPhase:(unsigned long long)arg1 withError:(id)arg2;
-- (void)noteSyncSessionStateWillBeAttempted:(unsigned long long)arg1;
-- (void)noteSyncSessionSucceeded;
+- (void)noteSyncSession:(id)arg1 failedDuringPhase:(unsigned long long)arg2 withError:(id)arg3;
+- (void)noteSyncSession:(id)arg1 stateWillBeAttempted:(unsigned long long)arg2;
+- (void)noteSyncSessionSucceeded:(id)arg1;
 - (void)noteTransportNeedsUpdate;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)resetBackoffInterval;
-- (void)startRequiredSyncSessionNow;
+- (void)startRequiredSyncSessionNow:(id)arg1;
 - (void)unblockEngineElement:(id)arg1;
 - (void)unblockEngineElementOnce:(id)arg1;
 - (void)waitForEngineElementToBeBlocked:(id)arg1;

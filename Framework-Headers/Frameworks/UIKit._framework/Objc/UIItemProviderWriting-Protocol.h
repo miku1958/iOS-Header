@@ -6,13 +6,12 @@
 
 #import <UIKitCore/NSItemProviderWriting-Protocol.h>
 
-@class NSArray, NSProgress, NSString, UIItemProvider;
+@class NSArray, NSProgress, NSString;
 
 @protocol UIItemProviderWriting <NSItemProviderWriting>
 - (NSProgress *)loadDataWithTypeIdentifier:(NSString *)arg1 forItemProviderCompletionHandler:(void (^)(NSData *, NSError *))arg2;
 
 @optional
 + (NSArray *)writableTypeIdentifiersForItemProvider;
-- (void)registerLoadHandlersToItemProvider:(UIItemProvider *)arg1;
 @end
 

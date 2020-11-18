@@ -39,6 +39,8 @@
     double _phoneAspectRatio;
     CALayer *_customImageLayer;
     struct UIColor *_secondaryColor;
+    struct UIColor *_primaryHighlightColor;
+    struct UIColor *_secondaryHighlightColor;
     unsigned int _userIntentEdge;
     long long _colorMode;
     UIColor *_primaryColor;
@@ -62,9 +64,13 @@
 @property (readonly, nonatomic) unsigned int userIntentEdge; // @synthesize userIntentEdge=_userIntentEdge;
 
 + (BOOL)automaticallyNotifiesObserversOfState;
++ (void)invokeSuccessFeedback;
 + (id)sharedStaticResources;
 - (void).cxx_destruct;
 - (void)_applyColorMode:(BOOL)arg1;
+- (void)_applyEffectiveHighlightColorsToLayersAnimated:(BOOL)arg1;
+- (void)_applyEffectivePrimaryColorToLayersAnimated:(BOOL)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_endPhoneWiggle;
 - (void)_executeAfterMinimumAnimationDurationForStateTransition:(CDUnknownBlockType)arg1;
 - (void)_executeAfterMinimumAnimationDurationForStateTransitionWithDelayRatio:(double)arg1 handler:(CDUnknownBlockType)arg2;

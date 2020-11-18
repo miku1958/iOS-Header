@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) QLItem *item; // @synthesize item=_item;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithData:(id)arg1 contentType:(id)arg2;
 - (id)provideDataForItem:(id)arg1;
 

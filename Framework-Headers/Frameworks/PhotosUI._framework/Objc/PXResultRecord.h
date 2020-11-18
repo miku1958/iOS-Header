@@ -23,6 +23,7 @@
 - (id)includedOids;
 - (id)inclusionPredicate;
 - (BOOL)isCurated;
+- (long long)keyAssetIndex;
 - (id)keyAssetsFetchResult;
 - (BOOL)reverseSortOrder;
 - (BOOL)wantsCuration;

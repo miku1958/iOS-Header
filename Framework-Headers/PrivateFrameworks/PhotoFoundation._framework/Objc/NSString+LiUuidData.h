@@ -13,6 +13,7 @@
 - (BOOL)isMercuryUuidString;
 - (BOOL)isSupportedUuidString;
 - (id)mercuryUuidString;
+- (id)uniqueString;
 - (id)uuidData;
 @end
 

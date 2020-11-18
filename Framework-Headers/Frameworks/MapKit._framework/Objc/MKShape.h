@@ -25,6 +25,8 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

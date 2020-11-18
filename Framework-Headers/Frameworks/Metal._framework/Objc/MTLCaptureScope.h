@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
 #import <Metal/MTLCaptureScope-Protocol.h>
 
 @class NSString;
 @protocol MTLCommandQueue, MTLDevice;
 
-@interface MTLCaptureScope : NSObject <MTLCaptureScope>
+@interface MTLCaptureScope : _MTLObjectWithLabel <MTLCaptureScope>
 {
-    NSString *_label;
     id<MTLDevice> _device;
     id<MTLCommandQueue> _commandQueue;
 }
@@ -23,7 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<MTLDevice> device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (copy) NSString *label; // @dynamic label;
 @property (readonly) Class superclass;
 
 - (void)beginScope;

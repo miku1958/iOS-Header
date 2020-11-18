@@ -11,9 +11,11 @@
 }
 
 - (BOOL)defaultSupportsLiveVideoRendering;
+- (id)deviceForDisplay:(id)arg1;
 - (id)displays;
 - (id)init;
 - (id)mainDevice;
+- (id)mainDisplay;
 
 @end
 

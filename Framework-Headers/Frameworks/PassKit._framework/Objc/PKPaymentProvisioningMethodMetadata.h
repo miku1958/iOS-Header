@@ -12,6 +12,7 @@
 {
     NSString *_productIdentifier;
     NSString *_currency;
+    unsigned long long _depositType;
     NSDecimalNumber *_depositAmount;
     NSDecimalNumber *_minLoadedBalance;
     NSDecimalNumber *_maxLoadedBalance;
@@ -24,6 +25,7 @@
 
 @property (readonly, copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
 @property (readonly, copy, nonatomic) NSDecimalNumber *depositAmount; // @synthesize depositAmount=_depositAmount;
+@property (readonly, nonatomic) unsigned long long depositType; // @synthesize depositType=_depositType;
 @property (readonly, nonatomic) PKPaymentDigitalIssuanceMetadata *digitalIssuanceMetadata; // @synthesize digitalIssuanceMetadata=_digitalIssuanceMetadata;
 @property (readonly, copy, nonatomic) NSDecimalNumber *maxLoadedBalance; // @synthesize maxLoadedBalance=_maxLoadedBalance;
 @property (readonly, copy, nonatomic) NSDecimalNumber *minLoadedBalance; // @synthesize minLoadedBalance=_minLoadedBalance;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowsActions;
     BOOL _shouldShowBadge;
     BOOL _shouldShowTransportButtons;
+    BOOL _needsUpdateTouchAreas;
     UIImageView *_standardStarView;
     UIColor *_actionsColor;
     UIView *_badgeView;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIColor *actionsColor; // @synthesize actionsColor=_actionsColor;
 @property (nonatomic) BOOL allowsActions; // @synthesize allowsActions=_allowsActions;
 @property (strong, nonatomic) UIView *badgeView; // @synthesize badgeView=_badgeView;
+@property (nonatomic) BOOL needsUpdateTouchAreas; // @synthesize needsUpdateTouchAreas=_needsUpdateTouchAreas;
 @property (nonatomic) BOOL shouldShowBadge; // @synthesize shouldShowBadge=_shouldShowBadge;
 @property (readonly, nonatomic) BOOL shouldShowStar;
 @property (nonatomic) BOOL shouldShowTransportButtons; // @synthesize shouldShowTransportButtons=_shouldShowTransportButtons;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
+- (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)prepareForReuse;
 - (id)rightMostView;

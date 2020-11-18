@@ -21,10 +21,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (struct _NSRange)calculateScanRangeForString:(id)arg1 changedRange:(struct _NSRange)arg2;
++ (BOOL)detectedDataInString:(id)arg1 scanRange:(struct _NSRange)arg2;
 + (id)detectorIdentifier;
 + (struct _NSRange)expandValidRange:(struct _NSRange)arg1 inString:(id)arg2;
 + (id)newArrayByScanningString:(id)arg1 scanRange:(struct _NSRange)arg2;
 + (id)newURLFromString:(id)arg1;
++ (id)p_newArrayByScanningString:(id)arg1 scanRange:(struct _NSRange)arg2 returnAllResults:(BOOL)arg3;
++ (id)p_rangesSplitByNewLineOfString:(id)arg1 scanRange:(struct _NSRange)arg2;
 + (id)scanString:(id)arg1 scanRange:(struct _NSRange)arg2;
 + (void)setInvalidURLSchemes:(id)arg1;
 

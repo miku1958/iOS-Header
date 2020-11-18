@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CoreParsec/NSObject-Protocol.h>
+
 @class NSData, NSDate, NSFileHandle, NSString, PARRequest, PARSessionConfiguration;
 
-@protocol PARDaemonXPC
+@protocol PARDaemonXPC <NSObject>
 - (void)addCompletion:(NSString *)arg1 forInput:(NSString *)arg2;
 - (void)bag:(PARSessionConfiguration *)arg1 reply:(void (^)(PARBag *, NSError *))arg2;
 - (void)clearEngagedCompletionsFromDate:(NSDate *)arg1 toDate:(NSDate *)arg2;
 - (void)configure:(PARSessionConfiguration *)arg1 reply:(void (^)(NSXPCListenerEndpoint *))arg2;
 - (void)fileHandleAndAttributesForResource:(NSString *)arg1 completion:(void (^)(NSFileHandle *, NSDictionary *, NSError *))arg2;
 - (void)fileHandleForWritingFeedbackType:(unsigned long long)arg1 reply:(void (^)(NSFileHandle *, NSError *))arg2;
+- (void)forceFetchBag:(PARSessionConfiguration *)arg1 reply:(void (^)(PARBag *, NSError *))arg2;
 - (void)getImageMap:(void (^)(NSDictionary *))arg1;
 - (void)listSessions:(void (^)(NSArray *))arg1;
 - (void)reportFeedbackPayloadData:(PARSessionConfiguration *)arg1 payloadData:(NSData *)arg2 queryId:(unsigned long long)arg3;

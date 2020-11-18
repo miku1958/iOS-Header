@@ -7,7 +7,29 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (FormatFlowedSupportInternal)
++ (id)mf_messageIDStringWithDomainHint:(id)arg1;
++ (id)mf_stringForMimeTypeFromFileName:(id)arg1;
++ (id)mf_stringFromMimeEnrichedString:(id)arg1 asHTML:(BOOL)arg2;
++ (id)mf_stringFromMimeRichTextString:(id)arg1 asHTML:(BOOL)arg2;
++ (id)mf_stringRepresentationForBytes:(long long)arg1;
++ (id)mf_stringWithAttachmentCharacter;
+- (id)mf_betterStringByResolvingSymlinksInPath;
+- (id)mf_canonicalizedAbsolutePath;
+- (BOOL)mf_containsSubstring:(id)arg1;
+- (BOOL)mf_containsSubstring:(id)arg1 options:(unsigned long long)arg2;
+- (id)mf_convertFromFlowedText:(unsigned int)arg1 visuallyEmpty:(BOOL *)arg2;
+- (id)mf_fileSystemString;
+- (BOOL)mf_isSubdirectoryOfPath:(id)arg1;
 - (unsigned long long)mf_lineBreakBeforeIndex:(unsigned long long)arg1 withinRange:(struct _NSRange)arg2;
+- (BOOL)mf_makeDirectoryWithMode:(int)arg1;
 - (unsigned long long)mf_nextWordFromIndex:(unsigned long long)arg1 forward:(BOOL)arg2;
+- (id)mf_prefixToString:(id)arg1;
+- (id)mf_stringByAbbreviatingSharedResourcesDirectoryWithTildeInPath;
+- (id)mf_stringByEscapingHTMLCodes;
+- (id)mf_stringByExpandingTildeWithSharedResourcesDirectoryInPath;
+- (id)mf_stringByReallyAbbreviatingSharedResourcesDirectoryWithTildeInPath;
+- (id)mf_stringByTrimmingWhitespaceAndNewlineCharacters;
+- (id)mf_stringWithNoExtraSpaces;
+- (id)mf_uniqueFilenameWithRespectToFilenames:(id)arg1;
 @end
 

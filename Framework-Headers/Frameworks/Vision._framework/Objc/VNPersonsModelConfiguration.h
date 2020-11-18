@@ -13,8 +13,10 @@
 {
     unsigned long long _maximumIdentities;
     unsigned long long _maximumFaceprintsPerIdentity;
+    unsigned long long _faceprintRequestRevision;
 }
 
+@property (nonatomic) unsigned long long faceprintRequestRevision; // @synthesize faceprintRequestRevision=_faceprintRequestRevision;
 @property (nonatomic) unsigned long long maximumFaceprintsPerIdentity; // @synthesize maximumFaceprintsPerIdentity=_maximumFaceprintsPerIdentity;
 @property (nonatomic) unsigned long long maximumIdentities; // @synthesize maximumIdentities=_maximumIdentities;
 
@@ -22,6 +24,7 @@
 + (unsigned long long)maximumAllowableIdentities;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (int)faceIDModelMaximumElementsPerID;
 - (unsigned long long)hash;

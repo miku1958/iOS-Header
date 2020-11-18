@@ -34,6 +34,7 @@
 + (void)setAutomaticCallCountdownEnabled:(BOOL)arg1;
 + (void)setLongPressTriggersEmergencySOS:(BOOL)arg1;
 + (void)setNewtonTriggersEmergencySOS:(BOOL)arg1;
++ (void)setNewtonTriggersEmergencySOSNumber:(id)arg1;
 + (void)setPlayAudioDuringCountdown:(BOOL)arg1;
 + (BOOL)shouldForceDisableAutoCallForClient:(id)arg1;
 + (BOOL)shouldPlayAudioDuringCountdown;

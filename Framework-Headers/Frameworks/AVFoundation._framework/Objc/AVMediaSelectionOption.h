@@ -8,7 +8,7 @@
 
 #import <AVFoundation/NSCopying-Protocol.h>
 
-@class AVAssetTrack, AVMediaSelectionOptionInternal, NSArray, NSLocale, NSString;
+@class AVMediaSelectionOptionInternal, NSArray, NSLocale, NSString;
 
 @interface AVMediaSelectionOption : NSObject <NSCopying>
 {
@@ -23,12 +23,12 @@
 @property (readonly, nonatomic) NSArray *mediaSubTypes;
 @property (readonly, nonatomic) NSString *mediaType;
 @property (readonly, nonatomic, getter=isPlayable) BOOL playable;
-@property (readonly, nonatomic) AVAssetTrack *track;
 @property (readonly, nonatomic) int trackID;
 @property (readonly, nonatomic) NSString *unicodeLanguageCode;
 @property (readonly, nonatomic) NSString *unicodeLanguageIdentifier;
 
 + (BOOL)_plistHasOptionIdentifier:(id)arg1;
++ (id)mediaSelectionNilOptionForGroup:(id)arg1;
 + (id)mediaSelectionOptionForAsset:(id)arg1 group:(id)arg2 dictionary:(id)arg3 hasUnderlyingTrack:(BOOL)arg4;
 - (id)_ancillaryDescription;
 - (id)_displayNameWithLocale:(id)arg1 fallingBackToMatchingUndeterminedAndMultilingual:(BOOL)arg2;
@@ -39,6 +39,7 @@
 - (BOOL)_isDesignatedDefault;
 - (BOOL)_isMainProgramContent;
 - (id)_preferredMetadataTitleAccordingToPreferredLanguages:(id)arg1 fallingBackToMatchingEmptyLocale:(BOOL)arg2;
+- (BOOL)_representsNilSelection;
 - (id)_taggedMediaCharacteristics;
 - (id)_title;
 - (id)_track;
@@ -64,6 +65,7 @@
 - (id)outOfBandIdentifier;
 - (id)outOfBandSource;
 - (id)propertyList;
+- (id)track;
 
 @end
 

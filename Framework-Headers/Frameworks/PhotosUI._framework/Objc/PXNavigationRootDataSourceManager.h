@@ -4,22 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXSectionedDataSourceManager.h>
+#import <PhotosUICore/PXDataSectionManager.h>
 
-@class PXNavigationListDataSource;
+@class PHPhotoLibrary;
 @protocol PXNavigationRoot;
 
-@interface PXNavigationRootDataSourceManager : PXSectionedDataSourceManager
+@interface PXNavigationRootDataSourceManager : PXDataSectionManager
 {
     id<PXNavigationRoot> _navigationRoot;
+    PHPhotoLibrary *_photoLibrary;
 }
 
-@property (readonly, nonatomic) PXNavigationListDataSource *dataSource; // @dynamic dataSource;
 @property (readonly, nonatomic) id<PXNavigationRoot> navigationRoot; // @synthesize navigationRoot=_navigationRoot;
+@property (readonly, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 
 - (void).cxx_destruct;
-- (id)createInitialDataSource;
-- (id)initWithNavigationRoot:(id)arg1;
+- (id)createDataSection;
+- (id)initWithChildDataSectionManagers:(id)arg1;
+- (id)initWithNavigationRoot:(id)arg1 photoLibrary:(id)arg2;
 
 @end
 

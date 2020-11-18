@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKUtilityComplicationFactoryDelegate-Protocol.h>
 
-@class NSString, NTKChronoButton, NTKChronoHandsView, NTKChronoPalette, NTKChronoScene, NTKStopwatchButton, NTKTimeIntervalLabel, NTKUtilityComplicationFactory, UIColor, UILabel, _LapLabel;
+@class CLKRelativeDateTextProvider, NSDate, NSString, NSTimer, NTKChronoButton, NTKChronoHandsView, NTKChronoPalette, NTKChronoScene, NTKColoringLabel, NTKStopwatchButton, NTKUtilityComplicationFactory, UIColor, UILabel, _LapLabel;
 
 @interface NTKChronoFaceView : NTKSpriteKitAnalogFaceView <NTKUtilityComplicationFactoryDelegate>
 {
@@ -19,11 +19,14 @@
     NTKChronoPalette *_palette;
     UIColor *_labelColor;
     UILabel *_totalLabel;
-    NTKTimeIntervalLabel *_totalTimeLabel;
-    NTKTimeIntervalLabel *_lapTimeLabel;
+    NTKColoringLabel *_totalTimeLabel;
+    NTKColoringLabel *_lapTimeLabel;
     _LapLabel *_lapLabel;
+    NSTimer *_resetLabelTimer;
     unsigned long long _currentMode;
-    double _lastStartTime;
+    CLKRelativeDateTextProvider *_totalTimeTextProvider;
+    CLKRelativeDateTextProvider *_lapTimeTextProvider;
+    NSDate *_stopwatchStartDate;
 }
 
 @property (readonly, nonatomic) NTKChronoScene *chronoScene;
@@ -39,6 +42,7 @@
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyDataMode;
+- (void)_applyFrozenLapTimeWithTimeInterval:(double)arg1;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyPaletteToTimeView:(id)arg1;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -46,15 +50,15 @@
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (double)_buttonAlphaForEditMode:(long long)arg1;
 - (BOOL)_canStartTimeScrubbing;
+- (double)_chronoLabelFontSize;
+- (unsigned long long)_chronoTimeUnits;
 - (void)_cleanupAfterZoom;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationAlphasForFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_considerUpdatingLabels;
 - (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (id)_dateAccentColorForEditMode:(long long)arg1;
 - (struct CGPoint)_dateComplicationCenterOffset;
 - (id)_dateComplicationFontForStyle:(unsigned long long)arg1;
@@ -67,6 +71,7 @@
 - (double)_handsAlphaForEditMode:(long long)arg1;
 - (BOOL)_handsAreInForegroundForEditMode:(long long)arg1;
 - (BOOL)_isComplicationSlotInsideDial:(id)arg1;
+- (BOOL)_isStopwatchUIVisible;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
@@ -76,6 +81,7 @@
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_lapResetButtonPressed;
 - (void)_layoutForegroundContainerView;
+- (void)_layoutStopwatchTimeViews;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
 - (void)_loadChronoModeViews;
 - (void)_loadLayoutRules;
@@ -86,14 +92,18 @@
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_pauseButtonPressed;
 - (void)_performWristRaiseAnimation;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_prepareWristRaiseAnimation;
 - (void)_reconsiderStopwatchUpdates;
 - (void)_reloadStopwatchState;
+- (void)_removeModeRelatedUIs;
+- (void)_resetLapLabelAfterSplit;
 - (void)_setDateComplicationAlpha:(double)arg1 animated:(BOOL)arg2;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (void)_showAppropriateModeAnimated:(BOOL)arg1;
 - (void)_showChronographModeAnimated:(BOOL)arg1;
+- (void)_showLapSplitIfNecessary;
 - (void)_showTimeModeAnimated:(BOOL)arg1;
 - (id)_slotForUtilitySlot:(long long)arg1;
 - (BOOL)_slotSupportsCurvedText:(id)arg1;
@@ -103,11 +113,16 @@
 - (void)_stopStopwatchUpdates;
 - (BOOL)_supportsUnadornedSnapshot;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
+- (void)_synchronizeChronoTimeLabelsWithStopwatch;
+- (void)_synchronizeStopwatchStartDate;
+- (id)_timeLabelWithFontSize:(double)arg1;
 - (void)_unloadSnapshotContentViews;
+- (void)_updateChronoTimeLabelsWithUnmodifiedDateForNow:(id)arg1;
 - (void)_updateComplicationFactoryWithDateComplicationView:(id)arg1;
 - (void)_updateDateComplicationPositionIfNecessary;
+- (void)_updateLapLabelLaps;
 - (void)_updateStopwatchButtons;
-- (void)_updateStopwatchLabels;
+- (void)_updateStopwatchTimeViewsMaxWidth;
 - (BOOL)_usesCustomZoom;
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (double)_verticalPaddingForStatusBar;
@@ -126,6 +141,7 @@
 - (BOOL)startStop;
 - (void)stateChanged;
 - (void)updateStartSessionButtonGlyph;
+- (void)updateStartSessionButtonGlyphWithCustomPalette:(id)arg1;
 - (id)utilityDateComplicationFontForDateStyle:(unsigned long long)arg1;
 
 @end

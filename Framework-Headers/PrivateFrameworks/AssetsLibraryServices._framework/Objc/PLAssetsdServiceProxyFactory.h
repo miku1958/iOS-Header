@@ -6,27 +6,35 @@
 
 #import <objc/NSObject.h>
 
+#import <AssetsLibraryServices/PLXPCAsyncProxyCreating-Protocol.h>
 #import <AssetsLibraryServices/PLXPCProxyCreating-Protocol.h>
 
 @class NSString;
 @protocol OS_dispatch_queue, PLXPCProxyCreating;
 
-@interface PLAssetsdServiceProxyFactory : NSObject <PLXPCProxyCreating>
+@interface PLAssetsdServiceProxyFactory : NSObject <PLXPCProxyCreating, PLXPCAsyncProxyCreating>
 {
-    SEL _proxyGetter;
-    NSObject<OS_dispatch_queue> *_queue;
+    SEL _proxyGetterSelector;
     id<PLXPCProxyCreating> _serviceProxy;
     id<PLXPCProxyCreating> _proxyCreating;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_inq_createServiceProxyWithCallStackSymbols:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)_inq_createServiceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)_logReplyError:(id)arg1 withCallStackSymbols:(id)arg2;
+- (id)_unboostingRemoteObjectProxy;
+- (void)addBarrierBlock:(CDUnknownBlockType)arg1;
 - (id)initWithQueue:(id)arg1 proxyCreating:(id)arg2 proxyGetter:(SEL)arg3;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)serviceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 

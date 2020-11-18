@@ -6,15 +6,16 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PUOneUpAssetTransitionContext, PUOneUpAssetTransitionInfo;
+@class PUAssetTransitionInfo, PUOneUpAssetTransitionContext;
 @protocol PUOneUpAssetTransition;
 
 @protocol PUOneUpAssetTransitionViewController <NSObject>
 
 @optional
-- (PUOneUpAssetTransitionInfo *)createAssetTransitionInfo;
+- (PUAssetTransitionInfo *)createAssetTransitionInfo;
 - (void)oneUpAssetTransition:(id<PUOneUpAssetTransition>)arg1 animateTransitionWithContext:(PUOneUpAssetTransitionContext *)arg2 duration:(double)arg3 completion:(void (^)(BOOL))arg4;
 - (void)oneUpAssetTransition:(id<PUOneUpAssetTransition>)arg1 requestTransitionContextWithCompletion:(void (^)(PUOneUpAssetTransitionContext *))arg2;
+- (void)oneUpAssetTransition:(id<PUOneUpAssetTransition>)arg1 requestTransitionContextWithCompletion:(void (^)(PUOneUpAssetTransitionContext *))arg2 options:(unsigned long long)arg3;
 - (struct CGRect)oneUpAssetTransitionAssetFinalFrame:(id<PUOneUpAssetTransition>)arg1;
 - (void)oneUpAssetTransitionDidEnd:(id<PUOneUpAssetTransition>)arg1;
 - (void)oneUpAssetTransitionWillBegin:(id<PUOneUpAssetTransition>)arg1;

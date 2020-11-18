@@ -13,7 +13,7 @@
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class CNContact, IDSURI, NSString, NSUUID;
+@class CKUserIdentityLookupInfo, CNContact, IDSURI, NSString, NSUUID;
 
 @interface HMDAccountHandle : HMFObject <HMFLogging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, HMDRemoteAddressable, NSCopying, NSSecureCoding>
 {
@@ -26,6 +26,7 @@
 }
 
 @property (readonly, copy) IDSURI *URI; // @synthesize URI=_URI;
+@property (readonly, copy) CKUserIdentityLookupInfo *cloudKitLookupInfo;
 @property (readonly, copy) CNContact *contact;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,10 +34,12 @@
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, getter=isLocal) BOOL local; // @synthesize local=_local;
 @property (getter=isLocallyTracked) BOOL locallyTracked; // @synthesize locallyTracked=_locallyTracked;
-@property (readonly, nonatomic) NSUUID *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
-@property (strong, nonatomic) NSUUID *modelParentIdentifier; // @synthesize modelParentIdentifier=_modelParentIdentifier;
+@property (readonly) Class modelClass;
+@property (readonly, copy, nonatomic) NSUUID *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
+@property (copy, nonatomic) NSUUID *modelParentIdentifier; // @synthesize modelParentIdentifier=_modelParentIdentifier;
 @property (readonly) Class superclass;
 @property (readonly) long long type;
+@property (readonly, copy) NSString *value;
 
 + (id)accountHandleForDestination:(id)arg1;
 + (id)logCategory;

@@ -14,7 +14,7 @@
     unsigned long long _type;
 }
 
-@property (strong) CHRecentCall *call; // @synthesize call=_call;
+@property (readonly, nonatomic) CHRecentCall *call; // @synthesize call=_call;
 @property unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;

@@ -8,6 +8,7 @@
 
 @interface NSArray (SCNAdditions)
 + (id)SCN_arrayWithSimdMatrix4:(CDStruct_14d5dc5e)arg1;
+- (id)SCNMutableDeepCopy;
 - (CDStruct_14d5dc5e)SCN_simdMatrix4Value;
 @end
 

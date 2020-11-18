@@ -6,45 +6,85 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <GeoServices/GEOComposedRouteTransitDisplayStrings-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSMutableArray;
+@class GEOFormattedString, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@protocol GEOServerFormattedString;
 
-@interface GEOTransitRouteDisplayStrings : PBCodable <NSCopying>
+@interface GEOTransitRouteDisplayStrings : PBCodable <GEOComposedRouteTransitDisplayStrings, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_advisorys;
     GEOFormattedString *_badge;
-    GEOFormattedString *_duration;
     GEOFormattedString *_durationList;
+    GEOFormattedString *_duration;
     GEOFormattedString *_planningDescription;
     GEOFormattedString *_travelDescription;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_advisorys:1;
+        unsigned int read_badge:1;
+        unsigned int read_durationList:1;
+        unsigned int read_duration:1;
+        unsigned int read_planningDescription:1;
+        unsigned int read_travelDescription:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_advisorys:1;
+        unsigned int wrote_badge:1;
+        unsigned int wrote_durationList:1;
+        unsigned int wrote_duration:1;
+        unsigned int wrote_planningDescription:1;
+        unsigned int wrote_travelDescription:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *advisorys; // @synthesize advisorys=_advisorys;
-@property (strong, nonatomic) GEOFormattedString *badge; // @synthesize badge=_badge;
-@property (strong, nonatomic) GEOFormattedString *duration; // @synthesize duration=_duration;
-@property (strong, nonatomic) GEOFormattedString *durationList; // @synthesize durationList=_durationList;
+@property (strong, nonatomic) NSMutableArray *advisorys;
+@property (strong, nonatomic) GEOFormattedString *badge;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) GEOFormattedString *duration;
+@property (strong, nonatomic) GEOFormattedString *durationList;
 @property (readonly, nonatomic) BOOL hasBadge;
 @property (readonly, nonatomic) BOOL hasDuration;
 @property (readonly, nonatomic) BOOL hasDurationList;
 @property (readonly, nonatomic) BOOL hasPlanningDescription;
 @property (readonly, nonatomic) BOOL hasTravelDescription;
-@property (strong, nonatomic) GEOFormattedString *planningDescription; // @synthesize planningDescription=_planningDescription;
-@property (strong, nonatomic) GEOFormattedString *travelDescription; // @synthesize travelDescription=_travelDescription;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<GEOServerFormattedString> pickingDurationFormatString;
+@property (strong, nonatomic) GEOFormattedString *planningDescription;
+@property (readonly, nonatomic) id<GEOServerFormattedString> planningDescriptionFormatString;
+@property (readonly, nonatomic) id<GEOServerFormattedString> previewDurationFormatString;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *transitAdvisories;
+@property (readonly, nonatomic) id<GEOServerFormattedString> transitDescriptionFormatString;
+@property (readonly, nonatomic) id<GEOServerFormattedString> transitRouteBadge;
+@property (strong, nonatomic) GEOFormattedString *travelDescription;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)advisoryType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAdvisory:(id)arg1;
+- (void)_readAdvisorys;
+- (void)_readBadge;
+- (void)_readDuration;
+- (void)_readDurationList;
+- (void)_readPlanningDescription;
+- (void)_readTravelDescription;
 - (void)addAdvisory:(id)arg1;
 - (id)advisoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)advisorysCount;
 - (void)clearAdvisorys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

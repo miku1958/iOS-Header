@@ -37,6 +37,8 @@
 - (void)invalidate;
 - (BOOL)isValidInRect:(CDStruct_996ac03c)arg1;
 - (BOOL)isValidInRegion:(id)arg1;
+- (void)provideBuffer:(CDUnknownBlockType)arg1;
+- (void)provideMutableBuffer:(CDUnknownBlockType)arg1;
 - (long long)readBufferInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)useAsCIImageWithOptions:(id)arg1 renderer:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (long long)useAsCIRenderDestinationWithRenderer:(id)arg1 block:(CDUnknownBlockType)arg2;

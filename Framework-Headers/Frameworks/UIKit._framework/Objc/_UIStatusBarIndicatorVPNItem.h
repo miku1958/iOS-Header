@@ -11,9 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (BOOL)flipsForRightToLeftLayoutDirection;
 - (id)imageNameForUpdate:(id)arg1;
 - (id)indicatorEntryKey;
-- (BOOL)isTemplateImage;
+- (id)systemImageNameForUpdate:(id)arg1;
 
 @end
 

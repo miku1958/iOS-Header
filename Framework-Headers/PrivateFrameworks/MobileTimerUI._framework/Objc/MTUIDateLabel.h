@@ -6,36 +6,37 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSDate, NSTimeZone, UIColor, UIFont, UILabel;
+@class NSDate, NSString, NSTimeZone, UIColor, UIFont, UILabel;
 
 @interface MTUIDateLabel : UIView
 {
     NSTimeZone *_timeZone;
-    BOOL _shouldAddLayoutConstraints;
     NSDate *_date;
     UILabel *_dateLabel;
+    NSString *_dateLabelText;
     UIColor *_textColor;
     UIFont *_font;
     UIFont *_timeDesignatorFont;
-    NSArray *_currentConstraints;
 }
 
-@property (strong, nonatomic) NSArray *currentConstraints; // @synthesize currentConstraints=_currentConstraints;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic) UILabel *dateLabel; // @synthesize dateLabel=_dateLabel;
+@property (copy, nonatomic) NSString *dateLabelText; // @synthesize dateLabelText=_dateLabelText;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
-@property (nonatomic) double lastBaselineFrameOriginY;
-@property (nonatomic) BOOL shouldAddLayoutConstraints; // @synthesize shouldAddLayoutConstraints=_shouldAddLayoutConstraints;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (strong, nonatomic) UIFont *timeDesignatorFont; // @synthesize timeDesignatorFont=_timeDesignatorFont;
 @property (strong, nonatomic) NSTimeZone *timeZone;
 
 - (void).cxx_destruct;
-- (void)_noteLayoutChange;
+- (id)_fontInfoForBaselineSpacing;
+- (BOOL)_hasFontInfoForVerticalBaselineSpacing;
 - (void)_updateDateString;
+- (void)_updateLabel;
+- (void)_updateTextString;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)updateConstraints;
-- (id)viewForBaselineLayout;
+- (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

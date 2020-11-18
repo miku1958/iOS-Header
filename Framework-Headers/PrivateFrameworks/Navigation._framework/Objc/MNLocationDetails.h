@@ -12,10 +12,11 @@
 
 @interface MNLocationDetails : PBCodable <NSCopying>
 {
-    double _course;
     double _courseAccuracy;
     double _distanceFromRoute;
     double _horizontalAccuracy;
+    double _roadMatchCourse;
+    double _routeMatchCourse;
     long long _shieldType;
     long long _speedLimitShieldType;
     double _timestamp;
@@ -28,7 +29,7 @@
     unsigned int _roadLineType;
     NSString *_roadName;
     MNRouteCoordinate *_routeCoordinate;
-    NSData *_routeDetailsID;
+    NSData *_routeIDData;
     NSString *_shieldText;
     unsigned int _speedLimit;
     unsigned int _stepIndex;
@@ -36,10 +37,11 @@
     BOOL _isTunnelProjection;
     BOOL _speedLimitIsMPH;
     struct {
-        unsigned int course:1;
         unsigned int courseAccuracy:1;
         unsigned int distanceFromRoute:1;
         unsigned int horizontalAccuracy:1;
+        unsigned int roadMatchCourse:1;
+        unsigned int routeMatchCourse:1;
         unsigned int shieldType:1;
         unsigned int speedLimitShieldType:1;
         unsigned int timestamp:1;
@@ -56,10 +58,8 @@
     } _has;
 }
 
-@property (nonatomic) double course; // @synthesize course=_course;
 @property (nonatomic) double courseAccuracy; // @synthesize courseAccuracy=_courseAccuracy;
 @property (nonatomic) double distanceFromRoute; // @synthesize distanceFromRoute=_distanceFromRoute;
-@property (nonatomic) BOOL hasCourse;
 @property (nonatomic) BOOL hasCourseAccuracy;
 @property (nonatomic) BOOL hasDistanceFromRoute;
 @property (nonatomic) BOOL hasHorizontalAccuracy;
@@ -71,9 +71,11 @@
 @property (nonatomic) BOOL hasRawReferenceFrame;
 @property (readonly, nonatomic) BOOL hasRoadCoordinate;
 @property (nonatomic) BOOL hasRoadLineType;
+@property (nonatomic) BOOL hasRoadMatchCourse;
 @property (readonly, nonatomic) BOOL hasRoadName;
 @property (readonly, nonatomic) BOOL hasRouteCoordinate;
-@property (readonly, nonatomic) BOOL hasRouteDetailsID;
+@property (readonly, nonatomic) BOOL hasRouteIDData;
+@property (nonatomic) BOOL hasRouteMatchCourse;
 @property (readonly, nonatomic) BOOL hasShieldText;
 @property (nonatomic) BOOL hasShieldType;
 @property (nonatomic) BOOL hasSpeedLimit;
@@ -91,9 +93,11 @@
 @property (nonatomic) int rawReferenceFrame; // @synthesize rawReferenceFrame=_rawReferenceFrame;
 @property (strong, nonatomic) GEOLatLng *roadCoordinate; // @synthesize roadCoordinate=_roadCoordinate;
 @property (nonatomic) unsigned int roadLineType; // @synthesize roadLineType=_roadLineType;
+@property (nonatomic) double roadMatchCourse; // @synthesize roadMatchCourse=_roadMatchCourse;
 @property (strong, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
 @property (strong, nonatomic) MNRouteCoordinate *routeCoordinate; // @synthesize routeCoordinate=_routeCoordinate;
-@property (strong, nonatomic) NSData *routeDetailsID; // @synthesize routeDetailsID=_routeDetailsID;
+@property (strong, nonatomic) NSData *routeIDData; // @synthesize routeIDData=_routeIDData;
+@property (nonatomic) double routeMatchCourse; // @synthesize routeMatchCourse=_routeMatchCourse;
 @property (strong, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property (nonatomic) long long shieldType; // @synthesize shieldType=_shieldType;
 @property (nonatomic) unsigned int speedLimit; // @synthesize speedLimit=_speedLimit;

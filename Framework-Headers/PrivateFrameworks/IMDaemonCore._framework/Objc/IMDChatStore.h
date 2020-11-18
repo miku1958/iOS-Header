@@ -28,6 +28,7 @@
 - (void)addMessageWithGUID:(id)arg1 toChat:(id)arg2 deferSpotlightIndexing:(BOOL)arg3;
 - (void)archiveChat:(id)arg1;
 - (id)chatsGUIDsForMessageWithGUID:(id)arg1;
+- (id)chatsGUIDsForMessageWithIdentifier:(long long)arg1;
 - (id)chatsWithHandle:(id)arg1 onService:(id)arg2;
 - (id)chatsWithRoomname:(id)arg1 onService:(id)arg2;
 - (void)dealloc;

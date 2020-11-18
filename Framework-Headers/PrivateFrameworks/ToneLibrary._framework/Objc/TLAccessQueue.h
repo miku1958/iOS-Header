@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)_performSynchronousBlockInSerialQueue:(CDUnknownBlockType)arg1;
+- (void)assertNotRunningInAccessQueue;
 - (id)initWithLabel:(id)arg1 appendUUIDToLabel:(BOOL)arg2;
 - (void)performAsynchronousBlock:(CDUnknownBlockType)arg1;
 - (void)performSynchronousBlock:(CDUnknownBlockType)arg1;

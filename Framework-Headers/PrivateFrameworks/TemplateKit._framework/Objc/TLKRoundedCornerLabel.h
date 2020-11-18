@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TemplateKit/TLKVibrantLabel.h>
+#import <TemplateKit/TLKLabel.h>
 
-@interface TLKRoundedCornerLabel : TLKVibrantLabel
+@class UIView;
+
+@interface TLKRoundedCornerLabel : TLKLabel
 {
     BOOL _large;
+    UIView *_borderView;
 }
 
+@property (strong, nonatomic) UIView *borderView; // @synthesize borderView=_borderView;
 @property (nonatomic) BOOL large; // @synthesize large=_large;
 
-- (id)init;
-- (struct CGSize)intrinsicContentSize;
-- (struct CGSize)makeLabelInsets:(struct CGSize)arg1;
-- (void)setStyle:(unsigned long long)arg1;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void).cxx_destruct;
+- (id)initWithProminence:(unsigned long long)arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
 
 @end
 

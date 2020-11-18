@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) unsigned long long allowedObjectTargetTypes;
 @property (readonly, nonatomic) BOOL allowsImplicitComponentOwnership;
+@property (readonly, nonatomic) BOOL canModify;
 @property (readonly, nonatomic) BOOL componentCanBeDropped;
 @property (readonly, nonatomic) BOOL componentRequiresCurrentVersion;
 @property (readonly, nonatomic) TSPObject *componentRootObject;

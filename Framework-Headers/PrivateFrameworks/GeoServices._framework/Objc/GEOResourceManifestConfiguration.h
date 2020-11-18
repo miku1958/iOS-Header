@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <GeoServices/NSSecureCoding-Protocol.h>
 
-@interface GEOResourceManifestConfiguration : NSObject
+@class NSArray, NSString;
+
+@interface GEOResourceManifestConfiguration : NSObject <NSSecureCoding>
 {
     unsigned int _tileGroupIdentifier;
     NSString *_os;
@@ -20,10 +22,9 @@
     NSString *_applicationVersion;
     NSString *_environment;
     NSString *_dataDirectory;
-    NSString *_disputedBorderCountryOverride;
-    NSString *_disputedBorderRegionOverride;
     int _defaultScale;
     BOOL _requiresLegacyFormat;
+    NSArray *_tileSetOverrides;
 }
 
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
@@ -32,8 +33,6 @@
 @property (copy, nonatomic) NSString *dataDirectory; // @synthesize dataDirectory=_dataDirectory;
 @property (readonly, nonatomic) int defaultScale; // @synthesize defaultScale=_defaultScale;
 @property (readonly, nonatomic) NSString *directorySuffix;
-@property (copy, nonatomic) NSString *disputedBorderCountryOverride; // @synthesize disputedBorderCountryOverride=_disputedBorderCountryOverride;
-@property (copy, nonatomic) NSString *disputedBorderRegionOverride; // @synthesize disputedBorderRegionOverride=_disputedBorderRegionOverride;
 @property (copy, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property (copy, nonatomic) NSString *hardwareIdentifier; // @synthesize hardwareIdentifier=_hardwareIdentifier;
 @property (copy, nonatomic) NSString *os; // @synthesize os=_os;
@@ -41,14 +40,17 @@
 @property (copy, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property (readonly, nonatomic) BOOL requiresLegacyFormat; // @synthesize requiresLegacyFormat=_requiresLegacyFormat;
 @property (nonatomic) unsigned int tileGroupIdentifier; // @synthesize tileGroupIdentifier=_tileGroupIdentifier;
+@property (copy, nonatomic) NSArray *tileSetOverrides;
 
 + (id)configurationWithPairedDevice:(id)arg1;
 + (id)defaultConfiguration;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)conciseDictionaryRepresentation;
+- (id)_directorySuffixParameters;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithConciseDictionaryRepresentation:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isDefaultConfiguration;
 - (BOOL)isEqual:(id)arg1;
 - (id)manifestDictionaryRepresentation;

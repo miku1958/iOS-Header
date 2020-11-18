@@ -8,27 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapItemStorage, GEOPlace;
+@class GEOMapItemStorage, GEOPlace, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOURLItem : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOMapItemStorage *_mapItemStorage;
     GEOPlace *_place;
     BOOL _currentLocation;
     struct {
-        unsigned int currentLocation:1;
-    } _has;
+        unsigned int has_currentLocation:1;
+        unsigned int read_mapItemStorage:1;
+        unsigned int read_place:1;
+        unsigned int wrote_mapItemStorage:1;
+        unsigned int wrote_place:1;
+        unsigned int wrote_currentLocation:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL currentLocation; // @synthesize currentLocation=_currentLocation;
+@property (nonatomic) BOOL currentLocation;
 @property (nonatomic) BOOL hasCurrentLocation;
 @property (readonly, nonatomic) BOOL hasMapItemStorage;
 @property (readonly, nonatomic) BOOL hasPlace;
-@property (strong, nonatomic) GEOMapItemStorage *mapItemStorage; // @synthesize mapItemStorage=_mapItemStorage;
-@property (strong, nonatomic) GEOPlace *place; // @synthesize place=_place;
+@property (strong, nonatomic) GEOMapItemStorage *mapItemStorage;
+@property (strong, nonatomic) GEOPlace *place;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readMapItemStorage;
+- (void)_readPlace;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (id)mapItem;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setMapItem:(id)arg1;
 - (void)writeTo:(id)arg1;

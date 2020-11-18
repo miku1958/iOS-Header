@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface AIASSession : NSObject <NSURLSessionDelegate>
 {
+    BOOL _invalidated;
     NSMutableDictionary *_taskMap;
     NSURLSession *_URLSession;
 }
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (readonly) Class superclass;
 @property (strong) NSMutableDictionary *taskMap; // @synthesize taskMap=_taskMap;
 
@@ -31,7 +33,8 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)getRequest:(id)arg1;
 - (id)init;
-- (id)requestWithURL:(id)arg1 data:(struct __CFDictionary *)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5;
+- (void)invalidateAndCancel;
+- (id)requestWithURL:(id)arg1 data:(struct __CFDictionary *)arg2 clientInfo:(id)arg3 proxiedClientInfo:(id)arg4 companionClientInfo:(id)arg5 appleITeamId:(id)arg6 appleIClientId:(id)arg7;
 
 @end
 

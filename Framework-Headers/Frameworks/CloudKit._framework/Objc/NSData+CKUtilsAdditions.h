@@ -6,14 +6,26 @@
 
 #import <Foundation/NSData.h>
 
-@interface NSData (CKUtilsAdditions)
+#import <CloudKit/CKRecordValue-Protocol.h>
+
+@class NSString;
+
+@interface NSData (CKUtilsAdditions) <CKRecordValue>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)CKDataFromBase64URLSafeString:(id)arg1;
 + (id)CKDataWithHexString:(id)arg1;
 + (id)CKDataWithHexString:(id)arg1 stringIsUppercase:(BOOL)arg2;
 - (id)CKBase64URLSafeString;
+- (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 - (id)CKHexString;
 - (id)CKLowercaseHexStringWithoutSpaces;
 - (id)CKSHA256;
 - (id)CKUppercaseHexStringWithoutSpaces;
+- (id)hashedDescription;
 @end
 

@@ -6,27 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <MessageUI/DASearchQueryConsumer-Protocol.h>
+@class CNAutocompleteStore, NSArray, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString;
 
-@class CNAutocompleteStore, NSArray, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSOrderedSet, NSString;
-@protocol OS_dispatch_queue;
-
-@interface MFContactsSearchManager : NSObject <DASearchQueryConsumer>
+@interface MFContactsSearchManager : NSObject
 {
-    struct __CFDictionary *_taskIDsBySearchQuery;
     NSMutableDictionary *_taskContextsByTaskID;
-    void *_addressBook;
     CNAutocompleteStore *_autocompleteStore;
     NSOperationQueue *_queue;
     unsigned int _genNumber;
-    NSOrderedSet *_properties;
     unsigned long long _searchTypes;
-    NSObject<OS_dispatch_queue> *_serverSearchQueue;
     NSArray *_explicitSearchAccountIDs;
     NSArray *_searchAccounts;
     int _contactSearchAccountChangedToken;
     BOOL _registeredForAddressBookChanges;
-    BOOL _useContactsAutocomplete;
     NSMutableArray *_corecipientSearchTaskIDs;
     NSString *_sendingAddress;
     BOOL _includeUpcomingEventMembers;
@@ -42,41 +34,26 @@
 @property (nonatomic) BOOL includeUpcomingEventMembers; // @synthesize includeUpcomingEventMembers=_includeUpcomingEventMembers;
 @property (copy, nonatomic) NSString *recentsBundleIdentifier; // @synthesize recentsBundleIdentifier=_recentsBundleIdentifier;
 @property (strong) NSArray *searchAccountIDs; // @synthesize searchAccountIDs=_explicitSearchAccountIDs;
-@property (readonly, nonatomic) NSArray *searchAccounts;
+@property (readonly, nonatomic) NSArray *searchAccounts; // @synthesize searchAccounts=_searchAccounts;
 @property (copy, nonatomic) NSString *sendingAccountIdentifier; // @synthesize sendingAccountIdentifier=_sendingAccountIdentifier;
 @property (copy, nonatomic) NSString *sendingAddress; // @synthesize sendingAddress=_sendingAddress;
 @property (nonatomic, getter=isSimulatedResultsEnabled) BOOL simulatedResultsEnabled; // @synthesize simulatedResultsEnabled=_simulatedResultsEnabled;
 
-- (void)_handleAddressBookChangeNotification;
+- (void).cxx_destruct;
 - (void)_handleContactsAutocompleteSearch:(id)arg1 returnedResults:(id)arg2 taskID:(id)arg3;
 - (void)_handleContactsAutocompleteSearchFinished:(id)arg1 taskID:(id)arg2;
-- (void)_handleCoreRecentsCorecipientSearchResults:(id)arg1 operation:(id)arg2 taskID:(id)arg3;
-- (void)_handleLocalSearchResults:(id)arg1 type:(unsigned long long)arg2 operation:(id)arg3 taskID:(id)arg4;
-- (void)_handleRecentsSearchFrequentResults:(id)arg1 infrequentResults:(id)arg2 operation:(id)arg3 taskID:(id)arg4;
-- (void)_handleSearchQueriesByAccountID:(id)arg1 operation:(id)arg2 taskID:(id)arg3;
-- (void)_handleSearchQuery:(id)arg1 finishedWithError:(id)arg2;
-- (void)_handleSearchQuery:(id)arg1 returnedResults:(id)arg2;
-- (void)_handleSearchQueryFinished:(id)arg1 context:(id)arg2;
 - (void)_handleTaskFinished:(id)arg1 context:(id)arg2;
-- (void)_initializeLegacyAddressBookIfNecessary;
-- (void)_invalidateSearchAccounts;
 - (id)_nextTaskID;
-- (void)_registerForAddressBookChanges;
-- (id)_serverSearchQueue;
 - (void)cancelTaskWithID:(id)arg1;
 - (void)dealloc;
 - (void)didSelectRecipient:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)init;
-- (id)initWithAddressBook:(void *)arg1 properties:(int *)arg2 propertyCount:(unsigned int)arg3;
-- (id)initWithAddressBook:(void *)arg1 properties:(int *)arg2 propertyCount:(unsigned int)arg3 recentsBundleIdentifier:(id)arg4;
 - (id)initWithAutocompleteSearchType:(unsigned long long)arg1;
+- (id)initWithAutocompleteStore:(id)arg1 searchType:(unsigned long long)arg2;
 - (void)removeRecipientResult:(id)arg1;
 - (id)searchForCorecipientsWithAutocompleteFetchContext:(id)arg1 consumer:(id)arg2;
-- (id)searchForCorecipientsWithRecipients:(id)arg1 consumer:(id)arg2;
 - (id)searchForText:(id)arg1 consumer:(id)arg2;
 - (id)searchForText:(id)arg1 withAutocompleteFetchContext:(id)arg2 consumer:(id)arg3;
-- (void)searchQuery:(id)arg1 finishedWithError:(id)arg2;
-- (void)searchQuery:(id)arg1 returnedResults:(id)arg2;
 - (void)setSearchTypes:(unsigned long long)arg1;
 
 @end

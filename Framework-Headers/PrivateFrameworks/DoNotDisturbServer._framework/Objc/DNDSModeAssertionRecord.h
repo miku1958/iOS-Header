@@ -6,60 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <DoNotDisturbServer/DNDSBackingStoreRecord-Protocol.h>
-#import <DoNotDisturbServer/DNDSSyncRecord-Protocol.h>
-#import <DoNotDisturbServer/NSCopying-Protocol.h>
-#import <DoNotDisturbServer/NSMutableCopying-Protocol.h>
+#import <DoNotDisturbServer/DNDSModeAssertionStoreRecordDictionaryEncoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class DNDSModeAssertionDetailsRecord, DNDSModeAssertionSourceRecord, NSNumber, NSString;
 
-@interface DNDSModeAssertionRecord : NSObject <NSCopying, NSMutableCopying, DNDSBackingStoreRecord, DNDSSyncRecord>
+@interface DNDSModeAssertionRecord : NSObject <DNDSModeAssertionStoreRecordDictionaryEncoding>
 {
-    NSString *_assertionUUID;
-    NSNumber *_assertionStartDateTimestamp;
-    NSString *_assertionClientIdentifier;
-    NSString *_assertionDetailsIdentifier;
-    NSString *_assertionDetailsModeIdentifier;
-    NSString *_assertionDetailsLifetimeType;
-    NSNumber *_assertionDetailsUserRequested;
-    NSNumber *_assertionDetailsSyncSuppressionOptions;
-    NSString *_assertionDetailsCalendarEventLifetimeEventUniqueIdentifier;
-    NSNumber *_assertionDetailsCalendarEventLifetimeOccurrenceDateTimestamp;
-    NSNumber *_assertionDetailsCalendarEventLifetimeOnlyDuringEvent;
-    NSNumber *_assertionDetailsDateIntervalLifetimeStartDateTimestamp;
-    NSNumber *_assertionDetailsDateIntervalLifetimeEndDateTimestamp;
+    NSString *_UUID;
+    NSNumber *_startDate;
+    DNDSModeAssertionDetailsRecord *_details;
+    DNDSModeAssertionSourceRecord *_source;
 }
 
-@property (readonly, copy, nonatomic) NSString *assertionClientIdentifier; // @synthesize assertionClientIdentifier=_assertionClientIdentifier;
-@property (readonly, copy, nonatomic) NSString *assertionDetailsCalendarEventLifetimeEventUniqueIdentifier; // @synthesize assertionDetailsCalendarEventLifetimeEventUniqueIdentifier=_assertionDetailsCalendarEventLifetimeEventUniqueIdentifier;
-@property (readonly, copy, nonatomic) NSNumber *assertionDetailsCalendarEventLifetimeOccurrenceDateTimestamp; // @synthesize assertionDetailsCalendarEventLifetimeOccurrenceDateTimestamp=_assertionDetailsCalendarEventLifetimeOccurrenceDateTimestamp;
-@property (readonly, copy, nonatomic) NSNumber *assertionDetailsCalendarEventLifetimeOnlyDuringEvent; // @synthesize assertionDetailsCalendarEventLifetimeOnlyDuringEvent=_assertionDetailsCalendarEventLifetimeOnlyDuringEvent;
-@property (readonly, copy, nonatomic) NSNumber *assertionDetailsDateIntervalLifetimeEndDateTimestamp; // @synthesize assertionDetailsDateIntervalLifetimeEndDateTimestamp=_assertionDetailsDateIntervalLifetimeEndDateTimestamp;
-@property (readonly, copy, nonatomic) NSNumber *assertionDetailsDateIntervalLifetimeStartDateTimestamp; // @synthesize assertionDetailsDateIntervalLifetimeStartDateTimestamp=_assertionDetailsDateIntervalLifetimeStartDateTimestamp;
-@property (readonly, copy, nonatomic) NSString *assertionDetailsIdentifier; // @synthesize assertionDetailsIdentifier=_assertionDetailsIdentifier;
-@property (readonly, copy, nonatomic) NSString *assertionDetailsLifetimeType; // @synthesize assertionDetailsLifetimeType=_assertionDetailsLifetimeType;
-@property (readonly, copy, nonatomic) NSString *assertionDetailsModeIdentifier; // @synthesize assertionDetailsModeIdentifier=_assertionDetailsModeIdentifier;
-@property (readonly, copy, nonatomic) NSNumber *assertionDetailsSyncSuppressionOptions; // @synthesize assertionDetailsSyncSuppressionOptions=_assertionDetailsSyncSuppressionOptions;
-@property (readonly, copy, nonatomic) NSNumber *assertionDetailsUserRequested; // @synthesize assertionDetailsUserRequested=_assertionDetailsUserRequested;
-@property (readonly, copy, nonatomic) NSNumber *assertionStartDateTimestamp; // @synthesize assertionStartDateTimestamp=_assertionStartDateTimestamp;
-@property (readonly, copy, nonatomic) NSString *assertionUUID; // @synthesize assertionUUID=_assertionUUID;
+@property (strong, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) DNDSModeAssertionDetailsRecord *details; // @synthesize details=_details;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) DNDSModeAssertionSourceRecord *source; // @synthesize source=_source;
+@property (strong, nonatomic) NSNumber *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 
-+ (id)migrateDictionaryRepresentation:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
++ (id)recordForAssertion:(id)arg1;
++ (id)recordForDictionary:(id)arg1 keys:(const CDStruct_0a6492a9 *)arg2;
 - (void).cxx_destruct;
-- (id)_initWithAssertionUUID:(id)arg1 assertionStartDateTimestamp:(id)arg2 assertionClientIdentifier:(id)arg3 assertionDetailsIdentifier:(id)arg4 assertionDetailsModeIdentifier:(id)arg5 assertionDetailsLifetimeType:(id)arg6 assertionDetailsUserRequested:(id)arg7 assertionDetailsSyncSuppressionOptions:(id)arg8 assertionDetailsCalendarEventLifetimeEventUniqueIdentifier:(id)arg9 assertionDetailsCalendarEventLifetimeOccurrenceDateTimestamp:(id)arg10 assertionDetailsCalendarEventLifetimeOnlyDuringEvent:(id)arg11 assertionDetailsDateIntervalLifetimeStartDateTimestamp:(id)arg12 assertionDetailsDateIntervalLifetimeEndDateTimestamp:(id)arg13;
-- (id)_initWithRecord:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dictionaryRepresentation;
-- (id)init;
-- (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithSyncDictionaryRepresentation:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)syncDictionaryRepresentation;
+- (id)dictionaryWithKeys:(const CDStruct_0a6492a9 *)arg1 options:(unsigned long long)arg2;
+- (id)object;
 
 @end
 

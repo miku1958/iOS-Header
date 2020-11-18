@@ -14,5 +14,6 @@
 - (BOOL)isCPLError;
 - (BOOL)isCPLErrorWithCode:(long long)arg1;
 - (BOOL)isCPLOperationCancelledError;
+- (BOOL)isCPLOperationDeferredError;
 @end
 

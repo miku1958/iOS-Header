@@ -24,12 +24,12 @@
 + (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2 client:(long long)arg3;
 + (void)deleteSearchableItemsWithEncodedIdentifiers:(id)arg1 bundleID:(id)arg2 client:(long long)arg3;
 + (void)deleteSearchableItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2 contentType:(id)arg3 client:(long long)arg4;
-+ (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2 client:(long long)arg3;
++ (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2 client:(long long)arg3 retainedData:(id)arg4;
 + (void)dispatchWithOptions:(long long)arg1 block:(CDUnknownBlockType)arg2;
 + (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2 client:(long long)arg3;
 + (BOOL)enabledForClient:(long long)arg1;
 + (BOOL)jobForDuet:(long long)arg1;
-+ (BOOL)jobForDuetExpertCenter:(long long)arg1;
++ (BOOL)jobForImages:(long long)arg1;
 + (BOOL)jobForSuggestions:(long long)arg1;
 + (BOOL)jobForTest:(long long)arg1;
 + (void)purgeSearchableItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2 client:(long long)arg3;

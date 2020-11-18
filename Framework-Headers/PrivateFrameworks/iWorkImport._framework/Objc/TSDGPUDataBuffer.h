@@ -68,9 +68,12 @@ __attribute__((visibility("hidden")))
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 device:(id)arg5;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 addTransparentBorder:(BOOL)arg6;
++ (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 addTransparentBorder:(BOOL)arg6 device:(id)arg7;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 device:(id)arg6;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 textureFlipped:(BOOL)arg3;
 + (id)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 textureFlipped:(BOOL)arg3 device:(id)arg4;
++ (void)p_addTransparentBorderInsetToTextureRect:(struct CGRect *)arg1 vertexRect:(struct CGRect *)arg2;
 - (CDStruct_6e3f967a)GLPoint2DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
 - (CDStruct_03942939)GLPoint3DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
 - (CDStruct_818bb265)GLPoint4DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -96,7 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithEncoder:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)initWithVertexAttributes:(id)arg1 meshSize:(struct CGSize)arg2 bufferCount:(unsigned long long)arg3;
 - (id)initWithVertexAttributes:(id)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 bufferCount:(unsigned long long)arg4;
-- (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
+- (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5 addTransparentBorder:(BOOL)arg6;
 - (BOOL)p_setAttributeUpdateData:(CDStruct_64113493 *)arg1 fromAttribute:(id)arg2;
 - (void)p_setupElementArrayBufferIfNecessary;
 - (void)p_setupGLElementArrayBufferIfNecessary;

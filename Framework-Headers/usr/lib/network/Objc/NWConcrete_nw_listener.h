@@ -10,7 +10,7 @@
 #import <network/nw_listener_inbox_delegate-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_array, OS_nw_connection, OS_nw_endpoint, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
+@protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_array, OS_nw_connection, OS_nw_dictionary, OS_nw_endpoint, OS_nw_error, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_listener : NSObject <nw_listener_inbox_delegate, OS_nw_listener>
@@ -25,9 +25,12 @@ __attribute__((visibility("hidden")))
     unsigned int client_qos_class;
     CDUnknownBlockType event_handler;
     CDUnknownBlockType new_connection_handler;
+    unsigned int new_connection_limit;
     int state;
+    NSObject<OS_nw_error> *last_error;
     NSObject<OS_nw_array> *inboxes;
     NSObject<OS_nw_array> *flow_registrations;
+    NSObject<OS_nw_dictionary> *advertise_flow_registrations;
     NSObject<OS_nw_path_evaluator> *evaluator;
     NSObject<OS_nw_path> *path;
     NSObject<OS_xpc_object> *inactive_agents;
@@ -39,6 +42,7 @@ __attribute__((visibility("hidden")))
     struct _DNSServiceRef_t *dnsref;
     NSObject<OS_nw_endpoint> *local_endpoint;
     unsigned int defer_socket;
+    NWConcrete_nw_listener *internally_retained_object;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -47,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)canHandleNewConnection:(id)arg1;
 - (void)dealloc;
 - (void)handleInbound:(id)arg1 addProtocolInbox:(BOOL)arg2;
 - (void)handleInboxCancelComplete:(id)arg1;

@@ -9,15 +9,18 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/_GEOCountryConfigurationServerProxyDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue, _GEOCountryConfigurationServerProxy;
+@class NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
+@protocol _GEOCountryConfigurationServerProxy;
 
 @interface GEOCountryConfiguration : NSObject <GEOResourceManifestTileGroupObserver, _GEOCountryConfigurationServerProxyDelegate>
 {
-    NSObject<OS_dispatch_queue> *_isolationQueue;
+    geo_isolater *_isolater;
     NSString *_countryCode;
     NSMutableArray *_updateCompletionHandlers;
     NSMutableDictionary *_supportedFeatures;
+    geo_isolater *_currentCountrySupportsNavigationIsolater;
+    BOOL _currentCountrySupportsNavigation;
+    BOOL _determinedCurrentCountrySupportsNavigation;
     double _urlAuthenticationTimeToLive;
     BOOL _hasURLAuthenticationTimeToLive;
     id<_GEOCountryConfigurationServerProxy> _serverProxy;
@@ -33,8 +36,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL shouldRequestLaneGuidance;
+@property (readonly, nonatomic) BOOL shouldUseGuidanceEventManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double urlAuthenticationTimeToLive;
+@property (readonly, nonatomic) BOOL zilchPointsSupported;
 
 + (void)disableServerConnection;
 + (void)setUseLocalProxy:(BOOL)arg1;
@@ -44,7 +50,6 @@
 - (id)_countryDefaultForKey:(id)arg1 inCountry:(id)arg2 sourcePtr:(long long *)arg3 decoder:(CDUnknownBlockType)arg4;
 - (id)_defaultForKey:(id)arg1 inCountry:(id)arg2 defaultValue:(id)arg3 sourcePtr:(long long *)arg4 decoder:(CDUnknownBlockType)arg5;
 - (void)_resetSupportedFeatures;
-- (void)_updateCountryConfiguration:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 - (BOOL)countryCode:(id)arg1 supportsFeature:(long long)arg2;
 - (BOOL)currentCountrySupportsFeature:(long long)arg1;
 - (void)dealloc;

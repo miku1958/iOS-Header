@@ -22,10 +22,12 @@
 - (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)_fallbackFocusItemForMovementRequest:(id)arg1 inFocusMap:(id)arg2;
 - (unsigned long long)_focusableBoundaries;
+- (id)_focusedItemForLinearSorting:(id)arg1 inMap:(id)arg2;
 - (BOOL)_isEnabledForFocusedRegion:(id)arg1;
 - (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
 - (long long)_preferredDistanceComparisonType;
 - (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
+- (BOOL)_shouldUseNextFocusedItemForLinearSorting;
 - (id)_visualRepresentationColor;
 - (long long)_visualRepresentationPatternType;
 - (void)_willParticipateAsDestinationRegionInFocusUpdate:(id)arg1;

@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXPhotosGlobalFooterViewModel.h>
+#import <PhotosUICore/PXFooterViewModel.h>
 
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 
-@class NSString, PXCMMAssetsProgressListener;
+@class NSString, PXMomentShareStatusPresentation;
 @protocol PXCMMFooterViewModelActionDelegate;
 
-@interface PXCMMFooterViewModel : PXPhotosGlobalFooterViewModel <PXChangeObserver>
+@interface PXCMMFooterViewModel : PXFooterViewModel <PXChangeObserver>
 {
-    PXCMMAssetsProgressListener *_assetsProgressListener;
+    PXMomentShareStatusPresentation *_momentShareStatusPresentation;
     id<PXCMMFooterViewModelActionDelegate> _actionDelegate;
 }
 
@@ -26,7 +26,7 @@
 - (void).cxx_destruct;
 - (void)_updateAllProperties;
 - (id)init;
-- (id)initWithProgressListener:(id)arg1;
+- (id)initWithMomentShareStatusPresentation:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 
 @end

@@ -6,23 +6,35 @@
 
 #import "__VKMapViewAccessibility_super.h"
 
-@interface VKMapViewAccessibility : __VKMapViewAccessibility_super
+#import "VKMapViewAccessibilityElementManagerDelegate-Protocol.h"
+
+@interface VKMapViewAccessibility : __VKMapViewAccessibility_super <VKMapViewAccessibilityElementManagerDelegate>
 {
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (long long)_accessibilityMapType;
+- (int)_accessibilityMapType;
+- (void)_accessibilityMapViewDidChangeRegionAnimated:(BOOL)arg1;
+- (void)_accessibilityMapViewDidChangeVisibleRegion;
 - (struct CGPoint)_accessibilityMapViewPointForZoomPoint:(struct CGPoint)arg1;
+- (void)_accessibilityMapsExplorationContinueWithVertexIndex:(unsigned long long)arg1;
+- (id)_accessibilityMapsExplorationCurrentIntersectionDescription;
+- (id)_accessibilityMapsExplorationCurrentRoadsWithAngles;
+- (id)_accessibilityMapsExplorationDecreaseVerbosity;
+- (void)_accessibilityMapsExplorationEnd;
+- (id)_accessibilityMapsExplorationIncreaseVerbosity;
+- (BOOL)_accessibilityMapsExplorationIsActive;
+- (BOOL)_accessibilityMapsExplorationIsPending;
+- (void)_accessibilityMapsExplorationRecordTouchpoint:(struct CGPoint)arg1;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_allowCustomActionHintSpeakOverride;
 - (CDStruct_aca18c62)_axBoundsOfElements;
-- (CDStruct_2c43369c)_axConvertScreenPointToCoordinate:(struct CGPoint)arg1;
-- (id)_axDirectionsManager;
-- (id)_axElementManager;
+- (id)_axCurrentLocationText;
 - (id)_axElements;
 - (BOOL)_axElementsInvalidForVisibleBounds;
 - (void)_axInitializeTimers;
@@ -31,21 +43,19 @@
 - (void)_axLoadAccessibility;
 - (id)_axMapLabelLayoutTimer;
 - (id)_axMapViewDelegate;
-- (void)_axMapViewDidChangeVisibleRegion;
 - (void)_axMapVisibleRegionDidChange;
+- (void)_axMapsAccessibilityPotentiallyEnabled;
 - (id)_axMapsDelegate;
 - (long long)_axOrientationOfElements;
+- (void)_axSetCurrentLocationText:(id)arg1;
 - (void)_axSetLastSummaryForVisibleBounds:(id)arg1;
 - (void)_axSetMapLabelLayoutTimer:(id)arg1;
 - (void)_axSetTrackingMode:(long long)arg1;
 - (BOOL)_axShouldSummarizeVisibleBounds;
+- (void)_axStartListeningForMapAccessibilityEnabled;
 - (void)_axStartListeningForMapVisibleRegionChanged;
 - (void)_axStartListeningForUpdateAccessibilityElementsComplete;
 - (void)_axStartListeningForUserTrackingModeChange;
-- (void)_axStartListeningForVoiceOverTouchEnabled;
-- (void)_axStopListeningForUpdateAccessibilityElementsComplete;
-- (void)_axStopListeningForUserTrackingModeChange;
-- (void)_axStopListeningForVoiceOverTouchEnabled;
 - (void)_axSummaryForVisibleBounds;
 - (id)_axTourGuideElement;
 - (id)_axTourGuideManager;
@@ -56,7 +66,6 @@
 - (void)_axUpdateElementsComplete:(id)arg1;
 - (id)_axUserLocationMarker;
 - (void)_axUserTrackingModeChange:(id)arg1;
-- (void)_axVoiceOverTouchEnabled;
 - (id)_axWindow;
 - (id)_retrieveAXElementManager;
 - (BOOL)accessibilityActivate;
@@ -64,48 +73,52 @@
 - (id)accessibilityCalloutAnnotationView;
 - (CDStruct_2c43369c)accessibilityCenter;
 - (void)accessibilityClearVisibleAXBoundsFrame;
+- (long long)accessibilityContainerType;
 - (struct CGPoint)accessibilityConvertCoordinateToWindow:(CDStruct_2c43369c)arg1;
+- (CDStruct_2c43369c)accessibilityConvertScreenPointToCoordinate:(struct CGPoint)arg1;
 - (void)accessibilityDecreaseTrackingDetail;
 - (float)accessibilityDistance:(struct CGPoint)arg1 forAngle:(float)arg2 toRoad:(id)arg3 withElement:(id)arg4;
 - (float)accessibilityDistanceToEndOfRoad:(struct CGPoint)arg1 forAngle:(float)arg2 withElement:(id)arg3;
+- (id)accessibilityElementManager;
 - (id)accessibilityElements;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (void)accessibilityIncreaseTrackingDetail;
+- (id)accessibilityIntersectorsForRoad:(id)arg1 withPoint:(struct CGPoint)arg2;
+- (BOOL)accessibilityIsInExplorationMode;
 - (BOOL)accessibilityIsInTourGuideMode;
 - (BOOL)accessibilityIsShowingCalloutAnnotationView;
 - (BOOL)accessibilityIsShowingRoutes;
 - (id)accessibilityLabel;
 - (id)accessibilityLayerHostingView;
+- (BOOL)accessibilityMapLoadingComplete;
 - (BOOL)accessibilityMapTypeShouldShowTransit;
 - (BOOL)accessibilityMapTypeSupportsAccessibility;
+- (BOOL)accessibilityOnlyShowRouteNodesDuringTransit;
 - (long long)accessibilityOrientation;
 - (BOOL)accessibilityPerformEscape;
 - (struct CGRect)accessibilityPositionFrameForElement:(CDStruct_aca18c62)arg1;
 - (float)accessibilityRealDistanceBetweenPoint:(struct CGPoint)arg1 screenPoint2:(struct CGPoint)arg2;
 - (BOOL)accessibilityScroll:(long long)arg1;
-- (BOOL)accessibilityTileLoadingComplete;
+- (void)accessibilitySetMapZoomLevel:(double)arg1 center:(CDStruct_2c43369c)arg2 yaw:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)accessibilityTourStatus;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityUpcomingRoadsForPoint:(struct CGPoint)arg1 forAngle:(float)arg2 withElement:(id)arg3;
 - (BOOL)accessibilityViewBoundsContainsPathPoint:(struct CGPoint)arg1;
 - (struct CGRect)accessibilityVisibleAXViewBounds;
 - (double)accessibilityYaw;
-- (void)accessibilityZoom:(BOOL)arg1 point:(struct CGPoint)arg2;
+- (void)accessibilityZoom:(double)arg1 point:(struct CGPoint)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)accessibilityZoom:(double)arg1 point:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (float)accessibilityZoomLevel;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
-- (void)dealloc;
-- (id)initShouldRasterize:(BOOL)arg1 inBackground:(BOOL)arg2 manifestConfiguration:(id)arg3 contentScale:(double)arg4;
+- (void)didUpdateSceneStatus:(unsigned char)arg1;
+- (void)explorationStateChanged:(long long)arg1;
+- (id)initShouldRasterize:(BOOL)arg1 inBackground:(BOOL)arg2 contentScale:(double)arg3;
 - (BOOL)isAccessibilityElement;
-- (void)map:(id)arg1 didChangeRegionAnimated:(BOOL)arg2;
-- (void)mapDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(BOOL)arg2;
-- (void)mapDidChangeVisibleRegion:(id)arg1;
-- (void)mapDidFailLoadingTiles:(id)arg1 withError:(id)arg2;
-- (void)mapDidFinishLoadingTiles:(id)arg1;
-- (void)mapDidStartLoadingTiles:(id)arg1;
 - (void)mapLabelsDidLayout:(id)arg1;
-- (void)setMapType:(long long)arg1;
+- (void)setCurrentLocationText:(id)arg1;
+- (void)setMapType:(int)arg1;
 
 @end
 

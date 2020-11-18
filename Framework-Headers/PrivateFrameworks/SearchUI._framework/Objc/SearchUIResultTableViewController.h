@@ -6,85 +6,85 @@
 
 #import <SearchUI/SearchUITableViewController.h>
 
-#import <SearchUI/SKStoreProductViewControllerDelegatePrivate-Protocol.h>
 #import <SearchUI/SearchUITableHeaderViewDelegate-Protocol.h>
 #import <SearchUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <SearchUI/_MKPlaceViewControllerFeedbackDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableOrderedSet, NSMutableSet, NSString;
+@class NSArray, NSMutableOrderedSet, NSMutableSet, NSString;
 
-@interface SearchUIResultTableViewController : SearchUITableViewController <SearchUITableHeaderViewDelegate, SKStoreProductViewControllerDelegatePrivate, _MKPlaceViewControllerFeedbackDelegate, UIGestureRecognizerDelegate>
+@interface SearchUIResultTableViewController : SearchUITableViewController <SearchUITableHeaderViewDelegate, UIGestureRecognizerDelegate>
 {
-    NSArray *_sections;
+    BOOL _shortenTopFloatingHeader;
+    NSString *_queryString;
     NSMutableSet *_expandedSections;
     NSMutableSet *_sectionsThatHaveBeenExpanded;
-    NSMutableArray *_potentiallyVisibleCells;
+    NSMutableOrderedSet *_potentiallyVisibleCells;
     NSMutableOrderedSet *_latestVisibleResultsAccountedForInFeedback;
     unsigned long long _lastVisibleResultsFeedbackEvent;
-    NSMutableArray *_potentiallyVisibleHeaders;
+    NSMutableOrderedSet *_potentiallyVisibleHeaders;
     NSArray *_latestVisibleHeadersAccountedForInFeedback;
     double _cachedHeaderHeight;
 }
 
-@property double cachedHeaderHeight; // @synthesize cachedHeaderHeight=_cachedHeaderHeight;
-@property (readonly) NSString *currentQueryString;
+@property (nonatomic) double cachedHeaderHeight; // @synthesize cachedHeaderHeight=_cachedHeaderHeight;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NSMutableSet *expandedSections; // @synthesize expandedSections=_expandedSections;
+@property (strong, nonatomic) NSMutableSet *expandedSections; // @synthesize expandedSections=_expandedSections;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double headerHeight;
-@property unsigned long long lastVisibleResultsFeedbackEvent; // @synthesize lastVisibleResultsFeedbackEvent=_lastVisibleResultsFeedbackEvent;
-@property (strong) NSArray *latestVisibleHeadersAccountedForInFeedback; // @synthesize latestVisibleHeadersAccountedForInFeedback=_latestVisibleHeadersAccountedForInFeedback;
-@property (strong) NSMutableOrderedSet *latestVisibleResultsAccountedForInFeedback; // @synthesize latestVisibleResultsAccountedForInFeedback=_latestVisibleResultsAccountedForInFeedback;
-@property (strong) NSMutableArray *potentiallyVisibleCells; // @synthesize potentiallyVisibleCells=_potentiallyVisibleCells;
-@property (strong) NSMutableArray *potentiallyVisibleHeaders; // @synthesize potentiallyVisibleHeaders=_potentiallyVisibleHeaders;
-@property (strong) NSArray *sections; // @synthesize sections=_sections;
-@property (strong) NSMutableSet *sectionsThatHaveBeenExpanded; // @synthesize sectionsThatHaveBeenExpanded=_sectionsThatHaveBeenExpanded;
+@property (nonatomic) unsigned long long lastVisibleResultsFeedbackEvent; // @synthesize lastVisibleResultsFeedbackEvent=_lastVisibleResultsFeedbackEvent;
+@property (strong, nonatomic) NSArray *latestVisibleHeadersAccountedForInFeedback; // @synthesize latestVisibleHeadersAccountedForInFeedback=_latestVisibleHeadersAccountedForInFeedback;
+@property (strong, nonatomic) NSMutableOrderedSet *latestVisibleResultsAccountedForInFeedback; // @synthesize latestVisibleResultsAccountedForInFeedback=_latestVisibleResultsAccountedForInFeedback;
+@property (strong, nonatomic) NSMutableOrderedSet *potentiallyVisibleCells; // @synthesize potentiallyVisibleCells=_potentiallyVisibleCells;
+@property (strong, nonatomic) NSMutableOrderedSet *potentiallyVisibleHeaders; // @synthesize potentiallyVisibleHeaders=_potentiallyVisibleHeaders;
+@property (strong, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
+@property (strong, nonatomic) NSMutableSet *sectionsThatHaveBeenExpanded; // @synthesize sectionsThatHaveBeenExpanded=_sectionsThatHaveBeenExpanded;
+@property (nonatomic) BOOL shortenTopFloatingHeader; // @synthesize shortenTopFloatingHeader=_shortenTopFloatingHeader;
 @property (readonly) Class superclass;
 
++ (void)fetchContactsIfNeededForTableModel:(id)arg1;
 - (void).cxx_destruct;
 - (id)cellForIndexPath:(id)arg1 reuseIfPossible:(BOOL)arg2;
 - (void)clearResultsFromSection:(id)arg1;
 - (BOOL)defaultApplicationExistsAndSupportsOpenInPlaceForFileURL:(id)arg1 performOpenIfSo:(BOOL)arg2;
 - (BOOL)defaultApplicationExistsAndSupportsOpenInPlaceForResult:(id)arg1;
-- (void)didEngageActionItem:(id)arg1 actionPerformed:(BOOL)arg2;
 - (void)didEngageResult:(id)arg1;
 - (BOOL)downloadDemotedAppIfNecessaryForBundleIdentifier:(id)arg1;
 - (void)expandCellsIfNeeded;
 - (id)fallbackPeekViewControllerForIndexPath:(id)arg1;
-- (void)fetchURLForFileResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)handleSelectionAtIndexPath:(id)arg1 wasPop:(BOOL)arg2;
 - (unsigned long long)handleSelectionOfResult:(id)arg1;
-- (unsigned long long)indexOfSection:(id)arg1;
 - (id)indexPathToSelectForKeyboardOnQuickReturn;
 - (id)init;
 - (void)modalViewControllerClosed;
 - (double)offScreenContentScrollDistance;
 - (void)performExpansion:(BOOL)arg1 withSectionIndex:(unsigned long long)arg2;
-- (void)placeViewController:(id)arg1 shouldLogFeedbackOfType:(int)arg2;
-- (void)productViewController:(id)arg1 didFinishWithResult:(long long)arg2;
+- (void)purgeAndResetTable;
 - (void)replaceResult:(id)arg1 withResult:(id)arg2;
+- (void)scrollSectionToTop:(unsigned long long)arg1 animate:(BOOL)arg2;
 - (void)scrollTableToTop;
 - (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)sectionIsClearable:(id)arg1;
 - (BOOL)sectionShouldBeExpanded:(id)arg1;
 - (void)sendVisibleFeedbackIfNecessary;
+- (void)setShouldUseInsetRoundedSections:(BOOL)arg1;
 - (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didEndDisplayingHeaderView:(id)arg2 forSection:(long long)arg3;
-- (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
-- (void)tableViewDidFinishReload:(id)arg1;
 - (void)toggleExpansionForSection:(id)arg1;
-- (void)updateDataModel;
+- (void)toggleShowMoreForSection:(unsigned long long)arg1;
 - (BOOL)updateMustAccountForLayout;
 - (void)updateWithResultSections:(id)arg1 scrollToTop:(BOOL)arg2;
 - (BOOL)view:(id)arg1 isVisibleInBounds:(struct CGRect)arg2;
 - (id)viewControllerForIndexPath:(id)arg1 isPeek:(BOOL)arg2;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

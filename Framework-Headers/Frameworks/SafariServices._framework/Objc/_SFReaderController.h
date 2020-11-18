@@ -63,12 +63,15 @@
 - (BOOL)_webView:(id)arg1 performDataInteractionOperationWithItemProviders:(id)arg2;
 - (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2 defaultActions:(id)arg3 elementInfo:(id)arg4;
 - (unsigned long long)_webView:(id)arg1 willUpdateDataInteractionOperationToOperation:(unsigned long long)arg2 forSession:(id)arg3;
+- (void)activateFont:(id)arg1;
 - (void)activateReader;
 - (BOOL)canDecreaseReaderTextSize;
 - (BOOL)canIncreaseReaderTextSize;
+- (void)checkReaderAvailability;
 - (void)clearAvailability;
 - (void)clearReaderWebView;
 - (void)clearUnusedReaderResourcesSoon;
+- (void)collectArticleContent;
 - (void)collectReaderContentForMailWithCompletion:(CDUnknownBlockType)arg1;
 - (void)collectReadingListInfoWithBookmarkID:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)configurationManager;
@@ -77,10 +80,12 @@
 - (void)deactivateReaderNow:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)decreaseReaderTextSize;
+- (void)didCollectArticleContent:(id)arg1;
 - (void)didCollectReaderContentForMail:(id)arg1;
 - (void)didCollectReadingListItemInfo:(id)arg1 bookmarkID:(id)arg2;
 - (void)didCreateReaderWebView:(id)arg1;
 - (void)didDetermineReaderAvailability:(BOOL)arg1 dueToSameDocumentNavigation:(BOOL)arg2;
+- (void)didDetermineReaderAvailabilityForDynamicCheck:(BOOL)arg1;
 - (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)didPrepareReaderContentForPrinting:(id)arg1;
 - (void)didSetReaderConfiguration:(id)arg1;
@@ -102,13 +107,13 @@
 - (void)setReaderFont:(id)arg1;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(BOOL)arg3;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(BOOL)arg3 scrollOffsetDictionary:(id)arg4;
+- (void)setReaderIsActive:(BOOL)arg1;
 - (void)setReaderLanguageTag:(id)arg1;
 - (void)setReaderTheme:(long long)arg1 forAppearance:(long long)arg2;
 - (void)setUpReaderWebViewIfNeededAndPerformBlock:(CDUnknownBlockType)arg1;
 - (BOOL)shouldCreateArticleFinder;
 - (void)stopLoadingNextPage;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
-- (void)willHideReader;
 
 @end
 

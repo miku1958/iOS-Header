@@ -33,6 +33,7 @@
 - (void)buttonLongPressed:(id)arg1;
 - (void)buttonTapped:(id)arg1;
 - (void)buttonUp:(id)arg1;
+- (void)buttonUpOutside:(id)arg1;
 - (void)highlightKeyAtIndex:(long long)arg1;
 - (long long)indexForHighlightedKey;
 

@@ -47,30 +47,20 @@
 - (void)_interrupted;
 - (void)_invalidate;
 - (void)_invalidated;
-- (void)_sessionClearText;
-- (void)_sessionCommitText;
-- (void)_sessionDeleteTextBackward;
 - (void)_sessionHandleEvent:(id)arg1;
-- (void)_sessionInsertText:(id)arg1;
 - (void)_sessionSendPayload:(struct NSDictionary *)arg1;
-- (void)_sessionSetText:(id)arg1;
 - (void)_sessionStart;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)clearText;
-- (void)commitText;
-- (void)deleteTextBackward;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)insertText:(id)arg1;
 - (void)invalidate;
 - (void)remoteInteractionSessionRemoteTextEvent:(id)arg1;
 - (void)remoteInteractionSessionTextSessionDidBegin:(id)arg1;
 - (void)remoteInteractionSessionTextSessionDidChange:(id)arg1;
 - (void)remoteInteractionSessionTextSessionDidEnd:(id)arg1;
 - (void)sendPayload:(struct NSDictionary *)arg1;
-- (void)setText:(id)arg1;
 
 @end
 

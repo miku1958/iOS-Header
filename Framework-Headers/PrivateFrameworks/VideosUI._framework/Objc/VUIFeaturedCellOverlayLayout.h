@@ -6,24 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class TVImageLayout, VUIButtonLayout, VUITextLayout;
+@class VUIAppleTVChannelLogoLayout, VUIButtonLayout, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIFeaturedCellOverlayLayout : NSObject
 {
     long long _overlayType;
-    TVImageLayout *_logoImageLayout;
+    VUIAppleTVChannelLogoLayout *_channelLogoLayout;
     VUITextLayout *_titleLayout;
     VUITextLayout *_subtitleLayout;
     VUITextLayout *_disclaimerLayout;
     VUIButtonLayout *_buttonLayout;
+    VUIButtonLayout *_textButtonLayout;
 }
 
 @property (strong, nonatomic) VUIButtonLayout *buttonLayout; // @synthesize buttonLayout=_buttonLayout;
+@property (strong, nonatomic) VUIAppleTVChannelLogoLayout *channelLogoLayout; // @synthesize channelLogoLayout=_channelLogoLayout;
 @property (strong, nonatomic) VUITextLayout *disclaimerLayout; // @synthesize disclaimerLayout=_disclaimerLayout;
-@property (strong, nonatomic) TVImageLayout *logoImageLayout; // @synthesize logoImageLayout=_logoImageLayout;
 @property (nonatomic) long long overlayType; // @synthesize overlayType=_overlayType;
 @property (strong, nonatomic) VUITextLayout *subtitleLayout; // @synthesize subtitleLayout=_subtitleLayout;
+@property (strong, nonatomic) VUIButtonLayout *textButtonLayout; // @synthesize textButtonLayout=_textButtonLayout;
 @property (strong, nonatomic) VUITextLayout *titleLayout; // @synthesize titleLayout=_titleLayout;
 
 + (id)layoutWithLayout:(id)arg1 overlayType:(long long)arg2 element:(id)arg3;

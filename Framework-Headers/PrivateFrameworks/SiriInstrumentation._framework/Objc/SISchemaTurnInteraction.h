@@ -6,26 +6,28 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaTurnInteraction-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
-@interface SISchemaTurnInteraction : PBCodable <NSCopying>
+@interface SISchemaTurnInteraction : PBCodable <SISchemaTurnInteraction, NSSecureCoding>
 {
     NSString *_interactionId;
 }
 
-@property (readonly, nonatomic) BOOL hasInteractionId;
-@property (strong, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

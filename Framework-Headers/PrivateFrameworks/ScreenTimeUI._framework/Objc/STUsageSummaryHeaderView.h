@@ -8,28 +8,19 @@
 
 #import <ScreenTimeUI/PSHeaderFooterView-Protocol.h>
 
-@class PSSpecifier, STSingleLineDetailTextHeaderView, UILabel, UISegmentedControl;
+@class UISegmentedControl;
 
+__attribute__((visibility("hidden")))
 @interface STUsageSummaryHeaderView : STTableViewHeaderFooterView <PSHeaderFooterView>
 {
     UISegmentedControl *_segmentedControl;
-    PSSpecifier *_specifier;
-    UILabel *_deviceNameLabel;
-    STSingleLineDetailTextHeaderView *_singleLineHeaderView;
 }
 
-@property (readonly, nonatomic) UILabel *deviceNameLabel; // @synthesize deviceNameLabel=_deviceNameLabel;
 @property (readonly, nonatomic) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
-@property (readonly, nonatomic) STSingleLineDetailTextHeaderView *singleLineHeaderView; // @synthesize singleLineHeaderView=_singleLineHeaderView;
-@property (weak, nonatomic) PSSpecifier *specifier; // @synthesize specifier=_specifier;
 
 - (void).cxx_destruct;
 - (id)initWithSpecifier:(id)arg1;
 - (double)preferredHeightForWidth:(double)arg1;
-- (void)reloadFromSpecifier;
-- (void)selectedSegmentIndexChanged:(id)arg1;
-- (void)startAnimatingSpinner;
-- (void)stopAnimatingSpinner;
 
 @end
 

@@ -31,7 +31,7 @@
 - (void)userDidEngageWithCompletionListItem:(id<WBSCompletionListItem>)arg1 withCardActionDictionary:(NSDictionary *)arg2;
 - (void)userDidSelectCompletionListItem:(id<WBSCompletionListItem>)arg1;
 - (void)userDidSelectCompletionListItem:(id<WBSCompletionListItem>)arg1 atPosition:(unsigned long long)arg2;
-- (void)userTypedGoToSearch:(NSString *)arg1 endpoint:(unsigned long long)arg2;
-- (void)userTypedURLDirectly:(NSString *)arg1;
+- (void)userTypedGoToSearch:(NSString *)arg1 endpoint:(unsigned long long)arg2 forQueryID:(unsigned long long)arg3;
+- (void)userTypedURLDirectlyForQuery:(WBSCompletionQuery *)arg1;
 @end
 

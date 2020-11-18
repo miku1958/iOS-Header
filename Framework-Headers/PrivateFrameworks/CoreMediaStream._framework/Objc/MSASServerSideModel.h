@@ -173,7 +173,6 @@
 - (int)dbQueueUnviewedAssetCollectionCountForAlbumWithGUID:(id)arg1;
 - (void)dbQueueUpdateAlbumCtag:(id)arg1;
 - (BOOL)dbQueueUpgradeFromDatabaseVersion:(int)arg1 currentVersion:(int)arg2;
-- (void)dealloc;
 - (void)deleteAlbumWithGUID:(id)arg1;
 - (void)deleteAlbumWithGUID:(id)arg1 info:(id)arg2;
 - (void)deleteAssetCollectionWithGUID:(id)arg1;

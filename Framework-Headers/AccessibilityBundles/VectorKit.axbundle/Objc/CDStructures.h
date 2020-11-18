@@ -4,7 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#pragma mark Blocks
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
 #pragma mark Named Structures
+
+struct AXVKFeaturePointIndices {
+    long long _field1;
+    long long _field2;
+};
 
 struct CGPoint {
     double x;
@@ -31,23 +40,6 @@ struct _NSRange {
 };
 
 #pragma mark Typedef'd Structures
-
-typedef struct {
-    id _field1;
-    char *_field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    unsigned long long _field6;
-    unsigned int _field7;
-    unsigned long long _field8;
-    BOOL _field9;
-    unsigned long long _field10;
-    float _field11;
-    unsigned long long _field12;
-    id _field13;
-    int _field14;
-} CDStruct_58d0ca89;
 
 typedef struct {
     unsigned char _field1;
@@ -81,7 +73,22 @@ typedef struct {
 } CDStruct_b2fbf00d;
 
 typedef struct {
-    CDStruct_58d0ca89 _field1;
+    struct {
+        id _field1;
+        char *_field2;
+        unsigned long long _field3;
+        unsigned long long _field4;
+        unsigned long long _field5;
+        unsigned long long _field6;
+        unsigned int _field7;
+        unsigned long long _field8;
+        BOOL _field9;
+        unsigned long long _field10;
+        float _field11;
+        unsigned long long _field12;
+        id _field13;
+        int _field14;
+    } _field1;
     unsigned long long _field2;
     unsigned long long _field3;
     int _field4;
@@ -113,11 +120,11 @@ typedef struct {
     BOOL _field16;
     unsigned char _field17;
     BOOL _field18;
-    unsigned char _field19;
+    unsigned short _field19;
     struct _NSRange _field20;
     BOOL _field21;
     unsigned int _field22;
-} CDStruct_c707fdd0;
+} CDStruct_123780e2;
 
 // Template types
 typedef struct Matrix<double, 3, 1> {

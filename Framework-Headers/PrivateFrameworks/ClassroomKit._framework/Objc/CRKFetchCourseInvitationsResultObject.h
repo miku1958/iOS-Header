@@ -6,13 +6,15 @@
 
 #import "CATTaskResultObject.h"
 
-@class NSArray;
+@class NSArray, NSSet;
 
 @interface CRKFetchCourseInvitationsResultObject : CATTaskResultObject
 {
     NSArray *_courseInvitations;
+    NSSet *_acceptedInvitationIdentifiers;
 }
 
+@property (copy, nonatomic) NSSet *acceptedInvitationIdentifiers; // @synthesize acceptedInvitationIdentifiers=_acceptedInvitationIdentifiers;
 @property (strong, nonatomic) NSArray *courseInvitations; // @synthesize courseInvitations=_courseInvitations;
 
 + (BOOL)supportsSecureCoding;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, _UIAppearanceCustomizableClassInfo;
+@class NSArray, NSMapTable, NSMutableArray, _UIAppearanceCustomizableClassInfo;
 
 __attribute__((visibility("hidden")))
 @interface _UIAppearance : NSObject
@@ -14,12 +14,10 @@ __attribute__((visibility("hidden")))
     NSArray *_containerList;
     NSMutableArray *_appearanceInvocations;
     NSMapTable *_invocationSources;
-    NSMutableDictionary *_resettableInvocations;
     _UIAppearanceCustomizableClassInfo *_customizableClassInfo;
 }
 
 @property (readonly, nonatomic) _UIAppearanceCustomizableClassInfo *_customizableClassInfo; // @synthesize _customizableClassInfo;
-@property (strong, nonatomic, setter=_setResettableInvocations:) NSMutableDictionary *_resettableInvocations; // @synthesize _resettableInvocations;
 
 + (void)_addWindow:(id)arg1 forSource:(id)arg2;
 + (id)_appearanceForClass:(Class)arg1 withContainerList:(id)arg2;
@@ -53,13 +51,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isRecordingInvocations;
 - (BOOL)_isValidAppearanceForCustomizableObject:(id)arg1;
 - (void)_removeInvocationsForSource:(id)arg1;
-- (id)_resettableInvocationsCreateIfNecessary;
 - (id)_traitCollection;
 - (void)dealloc;
 - (id)description;
 - (void)forwardInvocation:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (void)updateResettableSelectorsWithInvocation:(id)arg1 removeSelector:(BOOL)arg2;
 
 @end
 

@@ -4,19 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSUserActivity.h>
+#import <CoreServices/NSUserActivity.h>
 
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REUserActivityProperties-Protocol.h>
 
 @class NSString;
 
-@interface NSUserActivity (RELogging) <REIndentedDescription>
+@interface NSUserActivity (RELogging) <REUserActivityProperties>
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *activityType;
+@property (readonly, nonatomic) NSString *title;
 
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 @end
 

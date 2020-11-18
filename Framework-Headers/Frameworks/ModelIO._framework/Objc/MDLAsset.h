@@ -21,6 +21,7 @@
     double _startTime;
     double _endTime;
     MISSING_TYPE *_upAxis;
+    float _metersPerUnit;
     BOOL _isSceneKitBridged;
     NSMapTable *_components;
     NSURL *_temporaryFolderURL;
@@ -43,6 +44,7 @@
 @property (nonatomic) double endTime;
 @property (nonatomic) double frameInterval; // @synthesize frameInterval=_frameInterval;
 @property (strong, nonatomic) id<MDLObjectContainerComponent> masters; // @synthesize masters=_masters;
+@property (nonatomic) float metersPerUnit; // @synthesize metersPerUnit=_metersPerUnit;
 @property (strong, nonatomic) id<MDLAssetResolver> resolver; // @synthesize resolver=_resolver;
 @property (nonatomic) double startTime;
 @property (strong, nonatomic) NSUnitLength *unitLength; // @synthesize unitLength=_unitLength;
@@ -51,6 +53,9 @@
 
 + (BOOL)canExportFileExtension:(id)arg1;
 + (BOOL)canImportFileExtension:(id)arg1;
++ (void)convertToUSDZ:(id)arg1 writeToURL:(id)arg2;
++ (void)convertToUSDZWithURL:(id)arg1;
++ (BOOL)isValidUSDZResource:(id)arg1;
 + (id)placeLightProbesWithDensity:(float)arg1 heuristic:(long long)arg2 usingIrradianceDataSource:(id)arg3;
 - (void).cxx_destruct;
 - (void)_commonInit;

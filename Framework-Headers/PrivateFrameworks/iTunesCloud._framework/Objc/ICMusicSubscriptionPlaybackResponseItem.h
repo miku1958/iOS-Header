@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)fileAssetWithFlavorType:(long long)arg1;
 - (id)initWithItemResponseDictionary:(id)arg1 urlBag:(id)arg2;
 
 @end

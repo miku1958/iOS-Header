@@ -22,11 +22,11 @@
 
 @property (strong, nonatomic) HKAdjustableTapTargetButton *checkboxButton; // @synthesize checkboxButton=_checkboxButton;
 @property (nonatomic, getter=isChecked) BOOL checked;
-@property (strong, nonatomic) id<HKCDADocumentTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<HKCDADocumentTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL showsCheckbox; // @synthesize showsCheckbox=_showsCheckbox;
 
 - (void).cxx_destruct;
-- (id)_createDocumentCellLabelWithTag:(long long)arg1 fontSizePts:(double)arg2 whiteLevel:(double)arg3 flexibleHeight:(BOOL)arg4;
+- (id)_createDocumentCellLabelWithTag:(long long)arg1 fontSizePts:(double)arg2 flexibleHeight:(BOOL)arg3;
 - (void)_selectedCheckbox:(id)arg1;
 - (void)_setDocumentLabelWithTag:(long long)arg1 text:(id)arg2 view:(id)arg3;
 - (void)_setupCellStructure;

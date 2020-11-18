@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface CKDAppContainerTuple : NSObject <NSCopying>
 {
     BOOL _useZoneWidePCS;
-    BOOL _useMMCSEncryptionV2;
     BOOL _bypassPCSEncryption;
     BOOL _forceEnableReadOnlyManatee;
     BOOL _wantsSiloedContext;
@@ -22,17 +21,20 @@ __attribute__((visibility("hidden")))
     NSString *_sourceApplicationBundleID;
     CKContainerID *_containerID;
     NSString *_applicationContainerPath;
+    NSString *_personaID;
     NSString *_containerEncryptionServiceName;
+    unsigned long long _mmcsEncryptionSupport;
 }
 
-@property (strong, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
-@property (strong, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
+@property (readonly, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
+@property (readonly, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
 @property (nonatomic) BOOL bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
 @property (strong, nonatomic) NSString *containerEncryptionServiceName; // @synthesize containerEncryptionServiceName=_containerEncryptionServiceName;
-@property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
+@property (readonly, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (nonatomic) BOOL forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
-@property (strong, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
-@property (nonatomic) BOOL useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
+@property (nonatomic) unsigned long long mmcsEncryptionSupport; // @synthesize mmcsEncryptionSupport=_mmcsEncryptionSupport;
+@property (readonly, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
+@property (readonly, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property (nonatomic) BOOL useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;
 @property (nonatomic) BOOL wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 
@@ -41,11 +43,10 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithApplicationBundleID:(id)arg1 containerID:(id)arg2;
-- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 applicationContainerPath:(id)arg3 containerID:(id)arg4;
-- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 containerID:(id)arg3;
+- (id)initWithApplicationBundleID:(id)arg1 containerID:(id)arg2 personaID:(id)arg3;
+- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 applicationContainerPath:(id)arg3 containerID:(id)arg4 personaID:(id)arg5;
+- (id)initWithApplicationBundleID:(id)arg1 sourceApplicationBundleID:(id)arg2 containerID:(id)arg3 personaID:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)pushTokenBundleID;
 
 @end
 

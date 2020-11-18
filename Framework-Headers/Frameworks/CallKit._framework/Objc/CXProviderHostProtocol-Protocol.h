@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CallKit/NSObject-Protocol.h>
+#import <CallKit/CXAbstractProviderHostProtocol-Protocol.h>
 
-@class CXAction, CXCallFailureContext, CXCallUpdate, CXProviderConfiguration, CXTransaction, NSData, NSDate, NSString, NSUUID;
+@class CXCallFailureContext, CXCallUpdate, CXProviderConfiguration, CXTransaction, NSData, NSDate, NSString, NSUUID;
 
-@protocol CXProviderHostProtocol <NSObject>
-- (oneway void)actionCompleted:(CXAction *)arg1;
+@protocol CXProviderHostProtocol <CXAbstractProviderHostProtocol>
 - (oneway void)registerWithConfiguration:(CXProviderConfiguration *)arg1;
 - (oneway void)reportAudioFinishedForCallWithUUID:(NSUUID *)arg1;
 - (oneway void)reportCallWithUUID:(NSUUID *)arg1 changedFrequencyData:(NSData *)arg2 forDirection:(long long)arg3;

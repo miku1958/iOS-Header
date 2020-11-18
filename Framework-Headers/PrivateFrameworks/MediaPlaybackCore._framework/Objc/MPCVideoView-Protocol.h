@@ -13,7 +13,7 @@
 @property (readonly, nonatomic) AVPlayerLayer *playerLayer;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
-@property (strong, nonatomic) NSString *videoGravity;
+@property (copy, nonatomic) NSString *videoGravity;
 
 @end
 

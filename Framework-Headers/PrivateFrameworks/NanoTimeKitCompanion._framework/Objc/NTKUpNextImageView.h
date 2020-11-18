@@ -6,17 +6,21 @@
 
 #import <UIKit/UIView.h>
 
+#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKUpNextBaseCellContentsLayerProvider-Protocol.h>
 
 @class CALayer, CLKImageProvider, NSString, NTKUpNextBaseCell, UIColor, UIImage, UIImageView;
+@protocol CLKMonochromeFilterProvider;
 
-@interface NTKUpNextImageView : UIView <NTKUpNextBaseCellContentsLayerProvider>
+@interface NTKUpNextImageView : UIView <NTKUpNextBaseCellContentsLayerProvider, CLKMonochromeComplicationView>
 {
     UIImageView *_foregroundImageView;
     UIImageView *_backgroundImageView;
     CALayer *_foregroundAccentBackdrop;
     UIImageView *_foregroundAccentImageView;
+    UIImageView *_overrideImageView;
     NTKUpNextBaseCell *_parentCell;
+    id<CLKMonochromeFilterProvider> _filterProvider;
     UIColor *_fallbackTintColor;
     CLKImageProvider *_imageProvider;
     UIImage *_overrideImage;
@@ -27,9 +31,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIColor *fallbackTintColor; // @synthesize fallbackTintColor=_fallbackTintColor;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CLKImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
-@property (strong, nonatomic) UIImage *overrideImage; // @synthesize overrideImage=_overrideImage;
+@property (readonly, nonatomic) CLKImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
+@property (readonly, nonatomic) UIImage *overrideImage; // @synthesize overrideImage=_overrideImage;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -41,6 +46,11 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setContentMode:(long long)arg1;
+- (void)setFullColorImage:(id)arg1 tintableImageProvider:(id)arg2;
+- (void)setImageProvider:(id)arg1;
+- (void)setOverrideImage:(id)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

@@ -6,30 +6,29 @@
 
 #import <VoiceShortcuts/VCCompanionSyncSession.h>
 
-@class NSArray, NSMutableArray, NSObject;
-@protocol OS_dispatch_queue;
+@class NSDictionary, NSMutableArray;
+@protocol VCCompanionSyncOutgoingSessionDelegate;
 
 @interface VCCompanionSyncOutgoingSession : VCCompanionSyncSession
 {
-    NSObject<OS_dispatch_queue> *_changesIsolationQueue;
-    NSMutableArray *_mutablePendingChanges;
-    NSMutableArray *_mutableSentChanges;
+    NSMutableArray *_pendingChanges;
+    NSDictionary *_metadata;
+    NSMutableArray *_sentChanges;
+    NSMutableArray *_syncedChanges;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *changesIsolationQueue; // @synthesize changesIsolationQueue=_changesIsolationQueue;
-@property (readonly, nonatomic) NSMutableArray *mutablePendingChanges; // @synthesize mutablePendingChanges=_mutablePendingChanges;
-@property (readonly, nonatomic) NSMutableArray *mutableSentChanges; // @synthesize mutableSentChanges=_mutableSentChanges;
-@property (readonly, nonatomic) NSArray *pendingChanges;
-@property (readonly, nonatomic) NSArray *syncedChanges;
+@property (weak, nonatomic) id<VCCompanionSyncOutgoingSessionDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (readonly, nonatomic) NSMutableArray *pendingChanges; // @synthesize pendingChanges=_pendingChanges;
+@property (readonly, nonatomic) double progress;
+@property (readonly, nonatomic) NSMutableArray *sentChanges; // @synthesize sentChanges=_sentChanges;
+@property (readonly, nonatomic) NSMutableArray *syncedChanges; // @synthesize syncedChanges=_syncedChanges;
 
++ (long long)direction;
 - (void).cxx_destruct;
-- (id)initWithSYSession:(id)arg1 changeSetToSync:(id)arg2;
-- (void)markChangeAsSent:(id)arg1;
-- (id)nextPendingChange;
-- (long long)sessionType;
-- (void)syncSession:(id)arg1 applyChanges:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithSYSession:(id)arg1 service:(id)arg2 syncDataHandlers:(id)arg3 changeSet:(id)arg4 metadata:(id)arg5;
 - (long long)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
-- (BOOL)syncSession:(id)arg1 resetDataStoreWithError:(id *)arg2;
+- (void)syncSession:(id)arg1 successfullySynced:(id)arg2;
 
 @end
 

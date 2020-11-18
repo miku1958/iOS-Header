@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PXSharedAlbumInvitationViewDelegate-Protocol.h>
 
-@class NSString, PXFeedInvitationSectionInfo, PXSharedAlbumHeaderView, PXSharedAlbumInvitationView, UILabel, UIView;
+@class NSString, PXFeedInvitationSectionInfo, PXSharedAlbumHeaderView, PXSharedAlbumInvitationView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface PUFeedInvitationCell : PUFeedCell <PXSharedAlbumInvitationViewDelegate>
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     BOOL _showHeader;
     BOOL _showFooter;
     PXFeedInvitationSectionInfo *_invitationSectionInfo;
-    UIView *_separatorView;
     PXSharedAlbumHeaderView *_headerView;
     PXSharedAlbumInvitationView *_invitationView;
     UILabel *_dateLabel;
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PXSharedAlbumHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) PXFeedInvitationSectionInfo *invitationSectionInfo; // @synthesize invitationSectionInfo=_invitationSectionInfo;
 @property (strong, nonatomic) PXSharedAlbumInvitationView *invitationView; // @synthesize invitationView=_invitationView;
-@property (strong, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property (nonatomic) BOOL showFooter; // @synthesize showFooter=_showFooter;
 @property (nonatomic) BOOL showHeader; // @synthesize showHeader=_showHeader;
 @property (readonly) Class superclass;

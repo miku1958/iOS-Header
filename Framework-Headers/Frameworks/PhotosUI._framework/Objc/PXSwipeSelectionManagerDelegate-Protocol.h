@@ -6,14 +6,19 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXSwipeSelectionManager;
+@class PXIndexPathSet, PXSwipeSelectionManager;
 
 @protocol PXSwipeSelectionManagerDelegate <NSObject>
 - (struct PXSimpleIndexPath)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 itemIndexPathAtLocation:(struct CGPoint)arg2;
+- (BOOL)swipeSelectionManagerIsInMultiSelectMode:(PXSwipeSelectionManager *)arg1;
 
 @optional
+- (PXIndexPathSet *)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 indexPathSetFromIndexPath:(struct PXSimpleIndexPath)arg2 toIndexPath:(struct PXSimpleIndexPath)arg3;
 - (struct PXSimpleIndexPath)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 itemIndexPathClosestAboveLocation:(struct CGPoint)arg2;
 - (struct PXSimpleIndexPath)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 itemIndexPathClosestLeadingLocation:(struct CGPoint)arg2;
+- (BOOL)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 shouldAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg2;
+- (BOOL)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 shouldBeginSelectionAtLocation:(struct CGPoint)arg2;
 - (BOOL)swipeSelectionManager:(PXSwipeSelectionManager *)arg1 shouldSelectItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
+- (void)swipeSelectionManagerAutomaticallyTransitionToMultiSelectMode:(PXSwipeSelectionManager *)arg1;
 @end
 

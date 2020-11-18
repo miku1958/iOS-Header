@@ -14,20 +14,24 @@
 @interface PKService : NSObject <NSXPCListenerDelegate>
 {
     BOOL _shared;
+    BOOL _isSystemService;
+    PKServicePersonality *_solePersonality;
     id<PKServiceDelegate> _delegate;
     NSXPCListener *_serviceListener;
     NSMutableDictionary *_personalities;
-    PKServicePersonality *_solePersonality;
     NSObject<OS_dispatch_queue> *__sync;
     NSArray *_subsystems;
     NSObject<OS_dispatch_source> *_terminationTimer;
+    NSObject<OS_dispatch_source> *_firstHostRequestTimer;
 }
 
 @property (strong) NSObject<OS_dispatch_queue> *_sync; // @synthesize _sync=__sync;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong) id<PKServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong) NSObject<OS_dispatch_source> *firstHostRequestTimer; // @synthesize firstHostRequestTimer=_firstHostRequestTimer;
 @property (readonly) unsigned long long hash;
+@property BOOL isSystemService; // @synthesize isSystemService=_isSystemService;
 @property (strong) NSMutableDictionary *personalities; // @synthesize personalities=_personalities;
 @property (strong) NSXPCListener *serviceListener; // @synthesize serviceListener=_serviceListener;
 @property BOOL shared; // @synthesize shared=_shared;
@@ -42,13 +46,15 @@
 - (void).cxx_destruct;
 - (void)_prepareToRun;
 - (BOOL)_processDefaultSubsystemName:(id)arg1;
+- (void)beganUsingServicePersonality:(id)arg1;
 - (void)cancelTermination;
 - (void)checkEnvironment:(id)arg1;
+- (void)checkIn;
 - (id)configuredSubsystemList;
 - (id)connectionForPlugInNamed:(id)arg1;
 - (void)copyAppStoreReceipt:(CDUnknownBlockType)arg1;
 - (id)defaultsForPlugInNamed:(id)arg1;
-- (id)discoverSubsystemNamed:(id)arg1 logMissing:(BOOL)arg2;
+- (id)discoverSubsystemNamed:(id)arg1 options:(id)arg2 logMissing:(BOOL)arg3;
 - (void)discoverSubsystems;
 - (id)embeddedPrincipalForPlugInNamed:(id)arg1;
 - (id)hostPrincipalForPlugInNamed:(id)arg1;

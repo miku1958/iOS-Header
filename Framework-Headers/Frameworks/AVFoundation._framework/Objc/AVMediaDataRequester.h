@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 
 - (void)_requestMediaDataIfReady;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithMediaDataConsumer:(id)arg1 requestQueue:(id)arg2 requestBlock:(CDUnknownBlockType)arg3;
 - (void)invalidate;

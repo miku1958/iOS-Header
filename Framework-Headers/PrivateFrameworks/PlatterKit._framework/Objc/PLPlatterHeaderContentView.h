@@ -7,26 +7,24 @@
 #import <UIKit/UIView.h>
 
 #import <PlatterKit/BSUIDateLabelDelegate-Protocol.h>
-#import <PlatterKit/MTVibrantStylingProviderObserving-Protocol.h>
-#import <PlatterKit/MTVibrantStylingRequiring-Protocol.h>
+#import <PlatterKit/MTVisualStylingRequiring-Protocol.h>
 #import <PlatterKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class BSUIFontProvider, MTVibrantStylingProvider, NSArray, NSDate, NSString, NSTimeZone, PLPlatterHeaderContentViewLayoutManager, UIButton, UIFont, UIImageView, UILabel;
+@class BSUIFontProvider, MTVisualStylingProvider, NSArray, NSDate, NSString, NSTimeZone, PLPlatterHeaderContentViewLayoutManager, UIButton, UIFont, UILabel;
 @protocol BSUIDateLabel;
 
-@interface PLPlatterHeaderContentView : UIView <BSUIDateLabelDelegate, MTVibrantStylingProviderObserving, MTVibrantStylingRequiring, PLContentSizeCategoryAdjusting>
+@interface PLPlatterHeaderContentView : UIView <BSUIDateLabelDelegate, MTVisualStylingRequiring, PLContentSizeCategoryAdjusting>
 {
     UILabel<BSUIDateLabel> *_dateLabel;
     NSArray *_iconButtons;
-    UIImageView *_iconButtonShadow;
     UIButton *_utilityButton;
     PLPlatterHeaderContentViewLayoutManager *_layoutManager;
     BOOL _hasUpdatedContent;
+    MTVisualStylingProvider *_visualStylingProvider;
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _dateAllDay;
     BOOL _heedsHorizontalLayoutMargins;
     BOOL _usesLargeTextLayout;
-    MTVibrantStylingProvider *_vibrantStylingProvider;
     NSString *_preferredContentSizeCategory;
     NSDate *_date;
     NSTimeZone *_timeZone;
@@ -56,6 +54,7 @@
 @property (readonly, nonatomic, getter=_iconTrailingPadding) double iconTrailingPadding;
 @property (copy, nonatomic) NSArray *icons;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
+@property (readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (copy, nonatomic) NSString *title;
@@ -68,8 +67,9 @@
 @property (nonatomic, getter=_utilityButtonHorizontalLayoutReference, setter=_setUtilityButtonHorizontalLayoutReference:) double utilityButtonHorizontalLayoutReference;
 @property (nonatomic, getter=_utilityButtonHorizontalLayoutReference, setter=_setUtilityButtonHorizontalLayoutReference:) double utilityButtonHorizontalLayoutReference; // @synthesize utilityButtonHorizontalLayoutReference=_utilityButtonHorizontalLayoutReference;
 @property (strong, nonatomic) UIView *utilityView; // @synthesize utilityView=_utilityView;
-@property (strong, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider; // @synthesize vibrantStylingProvider=_vibrantStylingProvider;
 
++ (id)_titleLabelFontFromFontProvider:(id)arg1;
++ (double)contentBaselineToBoundsBottomWithWidth:(double)arg1 scale:(double)arg2;
 - (void).cxx_destruct;
 - (id)_attributedStringForTitle:(id)arg1;
 - (void)_configureDateLabel;
@@ -97,7 +97,7 @@
 - (void)_updateTextAttributesForTitleLabel:(id)arg1;
 - (id)_updateTitleAttributesForAttributedString:(id)arg1;
 - (void)_updateUtilityButtonFont;
-- (void)_updateUtilityButtonVibrantStyling;
+- (void)_updateUtilityButtonVisualStyling;
 - (id)_utilityButton;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (void)dateLabelDidChange:(id)arg1;
@@ -105,9 +105,11 @@
 - (id)init;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (void)setVisualStylingProvider:(id)arg1;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)vibrantStylingDidChangeForProvider:(id)arg1;
+- (id)visualStylingProvider;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end
 

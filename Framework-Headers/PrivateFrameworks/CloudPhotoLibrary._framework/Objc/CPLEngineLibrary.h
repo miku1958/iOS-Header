@@ -76,6 +76,7 @@
 - (void)_fillStatus:(id)arg1 forComponents:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fillStatusArray:(id)arg1 forComponents:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_openNextComponent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_performBlockOnLibrary:(CDUnknownBlockType)arg1;
 - (void)_performBlockWithLibrary:(BOOL)arg1 enumerateAttachedObjects:(CDUnknownBlockType)arg2;
 - (void)_reportQuarantineCountIfNecessaryWithLastReportDate:(id)arg1;
 - (void)_setCurrentClosingComponentName:(id)arg1;
@@ -101,13 +102,17 @@
 - (void)notifyAttachedObjectsUploadTask:(id)arg1 didProgress:(float)arg2;
 - (void)notifyAttachedObjectsUploadTaskDidStart:(id)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)reportLibraryCorrupted;
 - (void)reportQuarantineCountIfNecessary;
 - (void)reportRadar:(unsigned long long)arg1;
 - (void)reportUnsuccessfulSync;
 - (void)requestAttachedLibrary;
 - (void)setConnectedToNetwork:(BOOL)arg1;
-- (void)setHasCellularBudget:(BOOL)arg1 hasBatteryBudget:(BOOL)arg2 isBudgetValid:(BOOL)arg3;
+- (void)setHasCellularBudget:(BOOL)arg1 hasBatteryBudget:(BOOL)arg2 isConstrainedNetwork:(BOOL)arg3 isBudgetValid:(BOOL)arg4;
+- (void)setLowDiskSpace:(BOOL)arg1;
 - (void)startSyncSession;
 - (void)statusDidChange:(id)arg1;
 - (unsigned long long)totalAssetCountOnServer;

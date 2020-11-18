@@ -8,12 +8,13 @@
 
 #import <AssistantServices/AFExperimentForSiriVOXSounds-Protocol.h>
 #import <AssistantServices/AFExperimentForSiriVOXTapToSiriBehavior-Protocol.h>
+#import <AssistantServices/AFInvocationFeedbackExperiment-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface AFExperiment : NSObject <AFExperimentForSiriVOXSounds, AFExperimentForSiriVOXTapToSiriBehavior, NSCopying, NSSecureCoding>
+@interface AFExperiment : NSObject <AFExperimentForSiriVOXSounds, AFExperimentForSiriVOXTapToSiriBehavior, AFInvocationFeedbackExperiment, NSCopying, NSSecureCoding>
 {
     NSString *_configurationIdentifier;
     NSString *_configurationVersion;
@@ -26,16 +27,21 @@
 @property (readonly, copy, nonatomic) NSString *configurationVersion; // @synthesize configurationVersion=_configurationVersion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSString *deploymentGroupIdentifier; // @synthesize deploymentGroupIdentifier=_deploymentGroupIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *deploymentGroupProperties; // @synthesize deploymentGroupProperties=_deploymentGroupProperties;
 @property (readonly, nonatomic) long long deploymentReason; // @synthesize deploymentReason=_deploymentReason;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long featureGroups;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL playsSessionInactiveSoundForSiriVOXSounds;
 @property (readonly, nonatomic) BOOL playsSound;
 @property (readonly, nonatomic) BOOL playsTwoShotSoundForSiriVOXSounds;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
@@ -48,6 +54,11 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfigurationIdentifier:(id)arg1 configurationVersion:(id)arg2 deploymentGroupIdentifier:(id)arg3 deploymentGroupProperties:(id)arg4 deploymentReason:(long long)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isFeatureGroupFourEnabled;
+- (BOOL)isFeatureGroupOneEnabled;
+- (BOOL)isFeatureGroupThreeEnabled;
+- (BOOL)isFeatureGroupTwoEnabled;
+- (void)logExperimentExposureForInvocationFeedbacks;
 - (void)logExperimentExposureForSiriVOXSounds;
 - (void)logExperimentExposureForTapToSiriBehavior;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;

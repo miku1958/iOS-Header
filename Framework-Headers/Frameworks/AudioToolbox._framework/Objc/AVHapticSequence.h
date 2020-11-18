@@ -13,27 +13,41 @@
     AVHapticPlayer *_player;
     unsigned long long _seqID;
     double _lastStartTime;
+    unsigned long long _eventBehavior;
     BOOL _loopIsEnabled;
+    float _loopLength;
+    float _playbackRate;
+    double _duration;
     unsigned long long _channelCount;
     unsigned long long _activeChannel;
 }
 
 @property unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
 @property (readonly) unsigned long long channelCount; // @synthesize channelCount=_channelCount;
+@property (copy) CDUnknownBlockType completionHandler;
+@property double duration; // @synthesize duration=_duration;
+@property unsigned long long eventBehavior;
 @property double lastStartTime; // @synthesize lastStartTime=_lastStartTime;
 @property BOOL loopingEnabled;
+@property float playbackRate;
 @property (weak) AVHapticPlayer *player; // @synthesize player=_player;
 @property unsigned long long seqID; // @synthesize seqID=_seqID;
 
 - (void).cxx_destruct;
 - (BOOL)activateChannelByIndex:(unsigned long long)arg1 atTime:(double)arg2 error:(id *)arg3;
+- (BOOL)cancelAndReturnError:(id *)arg1;
 - (void)dealloc;
 - (unsigned long long)getChannelCount;
 - (id)init;
 - (id)initWithData:(id)arg1 player:(id)arg2 error:(id *)arg3;
 - (id)initWithDictionary:(id)arg1 player:(id)arg2 error:(id *)arg3;
+- (id)initWithEvents:(id)arg1 player:(id)arg2 error:(id *)arg3;
+- (BOOL)pauseAtTime:(double)arg1 error:(id *)arg2;
 - (BOOL)playAtTime:(double)arg1 offset:(double)arg2 error:(id *)arg3;
 - (BOOL)prepareToPlayAndReturnError:(id *)arg1;
+- (BOOL)resumeAtTime:(double)arg1 error:(id *)arg2;
+- (BOOL)seekToTime:(double)arg1 error:(id *)arg2;
+- (BOOL)setLoopLength:(float)arg1 error:(id *)arg2;
 - (BOOL)setLoopingEnabled:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setParameter:(unsigned long long)arg1 value:(float)arg2 channel:(unsigned long long)arg3 atTime:(double)arg4 error:(id *)arg5;
 - (BOOL)setVolume:(float)arg1 atTime:(double)arg2 error:(id *)arg3;

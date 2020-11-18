@@ -69,7 +69,11 @@
 - (void)extractedDocumentControllerDiscardMarkupModelDataForDocument:(id)arg1;
 - (id)extractedDocumentControllerMarkupModelDataForDocument:(id)arg1;
 - (id)extractedDocumentControllerTitle;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDelegate:(id)arg1 scannedDocument:(id)arg2;
+- (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRootViewController:(id)arg1;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
 - (id)scanDataDelegateWithIdentifier:(id)arg1;
 - (void)viewDidLoad;

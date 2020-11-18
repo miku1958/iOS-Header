@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityDidLoadAccessibilityInformation;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityPresentsAsPopup;
+- (BOOL)_accessibilityShouldPostScreenChangedOnPresentation;
 - (id)_accessibilitySpeakThisElementsAndStrings;
 - (id)_accessibilitySpeakThisView;
 - (id)_accessibilitySpeakThisViewController;

@@ -7,10 +7,7 @@
 #import <Foundation/NSDateComponentsFormatter.h>
 
 @interface NSDateComponentsFormatter (ScreenTimeAdditions)
-+ (id)st_sharedAbbreviatedHourAndMinuteDateFormatter;
 + (id)st_sharedAbbreviatedSecondsDateFormatter;
-+ (id)st_sharedFullDynamicDateFormatter;
-+ (id)st_sharedShortDayHourAndMinuteDateFormatter;
 + (id)st_sharedShortDynamicDateFormatter;
 @end
 

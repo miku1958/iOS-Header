@@ -16,23 +16,23 @@ __attribute__((visibility("hidden")))
 + (BOOL)requiresEventAccess;
 + (BOOL)requiresEventOrReminderAccess;
 + (BOOL)requiresReminderAccess;
-+ (id)sharedContactStore;
 - (void)CADDatabaseActOnSuggestedEvent:(id)arg1 action:(int)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseActOnSuggestedEvent:(id)arg1 action:(int)arg2 validator:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseCanModifySuggestedEventCalendar:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseGetBirthdayContactIdentifierForEvent:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)CADDatabaseGetAllEventsWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetCountOfNotifiableEvents:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetCountOfUnacknowledgedEvents:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseGetDefaultCalendarForNewEventsWithReply:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseGetDefaultCalendarForNewEventsInDelegateSource:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetDefaultLocalCalendarWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetEndDateOfEarliestExpiringNotifiableEventAfterDate:(id)arg1 timeZone:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADDatabaseGetEventWithEventIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetEventWithUniqueID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetNaturalLanguageSuggestedEventCalendarWithReply:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseGetSecurityScopedLocalURLWrapperForAttachment:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetSuggestedEventCalendarWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseInsertSuggestedEventCalendarWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseRemoveSuggestedEventCalendarWithReply:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseSetDefaultCalendarForNewEvents:(id)arg1;
+- (void)CADDatabaseSetDefaultCalendarForNewEvents:(id)arg1 delegateSource:(id)arg2;
 - (void)CADDatabaseSetShowsDeclinedEvents:(BOOL)arg1;
 - (void)CADDatabaseShouldWhitelistOrganizerEmailFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseShouldWhitelistOrganizerPhoneNumberFromJunkChecks:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -40,13 +40,13 @@ __attribute__((visibility("hidden")))
 - (void)CADOccurrenceCacheCancelSearchWithReplyID:(int)arg1;
 - (void)CADOccurrenceCacheDoEvents:(id)arg1 haveOccurrencesAfterDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADOccurrenceCacheGetOccurrenceCountsForCalendars:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)CADOccurrenceCacheGetOccurrenceDateOfEventWithRowID:(int)arg1 nearestDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)CADOccurrenceCacheGetOccurrenceDateOfEventWithRowID:(int)arg1 nearestDate:(id)arg2 prefersForwardSearch:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADOccurrenceCacheGetOccurrenceForCalendars:(id)arg1 onDay:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)CADOccurrenceCacheSearchLocationsWithTerm:(id)arg1 inCalendars:(id)arg2 responseToken:(int)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADOccurrenceCacheSearchWithTerm:(id)arg1 inCalendars:(id)arg2 responseToken:(int)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADOccurrencesExistInRangeForEvent:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 mustStartInInterval:(BOOL)arg4 timezone:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (BOOL)_CADDatabaseCanModifySuggestedEventCalendar;
-- (id)_getDefaultCalendarIDForNewEvents;
+- (id)_getDefaultCalendarIDForNewEventsInStoreWithID:(id)arg1;
 
 @end
 

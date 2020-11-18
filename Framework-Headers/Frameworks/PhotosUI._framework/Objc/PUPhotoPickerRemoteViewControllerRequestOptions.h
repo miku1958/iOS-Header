@@ -20,13 +20,17 @@
 @property (readonly, nonatomic) BOOL allowsMultipleSelection;
 @property (readonly, nonatomic) BOOL convertAutoloopsToGIF;
 @property (readonly, nonatomic) NSArray *mediaTypes;
+@property (readonly, nonatomic) long long modalPresentationStyle;
 @property (readonly, nonatomic) unsigned long long multipleSelectionLimit;
 @property (copy, nonatomic) NSDictionary *photoPickerProperties; // @synthesize photoPickerProperties=_photoPickerProperties;
 @property (readonly, nonatomic) struct CGSize preferredViewSize;
 @property (copy, nonatomic) NSString *requestedClassName; // @synthesize requestedClassName=_requestedClassName;
 @property (strong, nonatomic) NSUUID *requestedIdentifier; // @synthesize requestedIdentifier=_requestedIdentifier;
+@property (readonly, nonatomic) BOOL requiresPickingConfirmation;
 @property (readonly, nonatomic) unsigned long long savingOptions;
+@property (readonly, nonatomic) BOOL showsFileSizePicker;
 @property (readonly, nonatomic) BOOL showsPrompt;
+@property (readonly, nonatomic) long long sourceType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -44,7 +44,6 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)_addSupportedResolutionsFrom:(id)arg1 to:(id)arg2;
-- (id)_getOptionsForRequestToAccessory:(id)arg1 forResolution:(id)arg2;
 - (void)_getSupportedVideoResolutions:(id)arg1 streamingTierType:(unsigned long long)arg2;
 - (void)_handleImageResourceData:(id)arg1 error:(id)arg2 requestedResolution:(id)arg3 snapshotDataTrasaction:(id)arg4;
 - (void)_handleSupportedParameters:(id)arg1 sessionID:(id)arg2 streamingTierType:(unsigned long long)arg3;
@@ -52,6 +51,8 @@
 - (id)_resolutionToRequest:(unsigned long long)arg1;
 - (id)_saveSnapshotFile:(id)arg1;
 - (void)_sendSnapshotRequest:(id)arg1 streamingTierType:(unsigned long long)arg2;
+- (id)_snapshotRequestOptions:(unsigned long long)arg1 resolution:(id)arg2 accessory:(id)arg3;
+- (void)_updateSnapshotOptions:(id)arg1 withAccessory:(id)arg2 snapshotReason:(unsigned long long)arg3;
 - (id)initWithAccessory:(id)arg1 workQueue:(id)arg2 streamSnapshotHandler:(id)arg3 imageCacheDirectory:(id)arg4 logID:(id)arg5;
 - (id)logIdentifier;
 - (void)requestSnapshot:(id)arg1 streamingTierType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;

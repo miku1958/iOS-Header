@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)nonNilChunkIdentifierFromPossiblyNilChunk:(id)arg1;
 + (id)orderedBuildsFromUnorderedBuilds:(id)arg1;
 + (long long)sharedAnimationTypeForBuildChunks:(id)arg1;
++ (long long)sharedAnimationTypeForBuilds:(id)arg1;
 + (id)uniqueBuildsOrderedByChunks:(id)arg1;
 + (id)validIdentifierForChunkToInsertAfterFromPossiblyInvalidIdentifier:(id)arg1 build:(id)arg2;
 

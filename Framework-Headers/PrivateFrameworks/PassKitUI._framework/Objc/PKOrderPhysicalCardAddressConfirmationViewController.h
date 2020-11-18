@@ -41,6 +41,7 @@
 - (void)_showDisplayableError:(id)arg1;
 - (void)_showSpinner:(BOOL)arg1;
 - (void)_terminateFlow;
+- (void)dealloc;
 - (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;

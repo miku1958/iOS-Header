@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)paragraphStylesBetweenCharIndex:(unsigned long long)arg1 andCharIndex:(unsigned long long)arg2;
 - (BOOL)shouldCreateKnobs;
 - (BOOL)shouldShowKnobs;
-- (void)showTableOfContentsEditingCollaborationHUDAtPoint:(struct CGPoint)arg1;
 - (id)tocInfo;
 
 @end

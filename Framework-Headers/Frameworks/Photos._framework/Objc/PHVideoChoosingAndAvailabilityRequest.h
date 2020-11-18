@@ -25,15 +25,12 @@
 @property (nonatomic) BOOL wantsProgress; // @synthesize wantsProgress=_wantsProgress;
 
 - (void).cxx_destruct;
-- (id)_chooseVideoResourceWithManagedObjectContext:(id)arg1 canDownload:(BOOL *)arg2;
 - (void)_cplDownloadStatusNotification:(id)arg1;
+- (void)_loadAdjustmentInfoFromPath:(id)arg1 intoAdditionalInfo:(id)arg2;
 - (void)_resourceURLReceivedNotification:(id)arg1;
-- (short)_resourceVersionFromVideoRequestVersion:(long long)arg1 assetHasAdjustments:(BOOL)arg2;
-- (id)_videoChoosingResultsMatchingResourceVersion:(short)arg1 managedObjectContext:(id)arg2;
-- (unsigned int)_videoQualityLevelForRequest;
 - (void)cancel;
 - (id)initWithAssetObjectID:(id)arg1 size:(struct CGSize)arg2 behaviorSpec:(id)arg3;
-- (id)initWithPlistDictionary:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
 - (id)plistDictionary;
 - (void)runDaemonSide;
 

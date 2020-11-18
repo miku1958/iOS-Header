@@ -37,8 +37,9 @@
 - (struct __SecCertificate *)copyCertificateWithPersistentID:(id)arg1;
 - (id)description;
 - (id)earliestCertificateExpiryDate;
-- (id)initWithDictionary:(id)arg1 signerCerts:(id)arg2 allowEmptyPayload:(BOOL)arg3 outError:(id *)arg4;
+- (id)initWithDictionary:(id)arg1 options:(id)arg2 signerCerts:(id)arg3 allowEmptyPayload:(BOOL)arg4 outError:(id *)arg5;
 - (id)installationWarningsIncludeUnsignedProfileWarning:(BOOL)arg1;
+- (BOOL)isManagedByMDM;
 - (BOOL)isManagedByProfileService;
 - (id)localizedManagedPayloadSummaryByType;
 - (id)localizedPayloadSummaryByType;

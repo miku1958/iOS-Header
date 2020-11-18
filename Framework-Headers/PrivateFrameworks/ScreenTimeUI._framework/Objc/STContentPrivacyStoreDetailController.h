@@ -4,24 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Preferences/PSListController.h>
+#import <ScreenTimeUI/STPINListViewController.h>
 
-@class NSObject, STContentPrivacyListController;
-@protocol STContentPrivacyViewModelCoordinator;
+@class STContentPrivacyListController;
 
-@interface STContentPrivacyStoreDetailController : PSListController
+__attribute__((visibility("hidden")))
+@interface STContentPrivacyStoreDetailController : STPINListViewController
 {
-    NSObject<STContentPrivacyViewModelCoordinator> *_coordinator;
     STContentPrivacyListController *_contentPrivacyController;
 }
 
 @property (weak) STContentPrivacyListController *contentPrivacyController; // @synthesize contentPrivacyController=_contentPrivacyController;
-@property (strong, nonatomic) NSObject<STContentPrivacyViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 
 - (void).cxx_destruct;
+- (void)_isLoadedDidChange:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setCoordinator:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 

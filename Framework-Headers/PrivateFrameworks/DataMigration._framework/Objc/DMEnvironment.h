@@ -15,11 +15,14 @@
 
 + (BOOL)isBuildVersion:(id)arg1 equalToBuildVersion:(id)arg2;
 + (id)sharedInstance;
+- (void)blockUntilPreferencesFlush;
 - (id)buildVersion;
 - (void)clearContext;
 - (id)context;
+- (id)contextPath;
 - (id)continuousIntegrationMarkerPref;
 - (BOOL)implementMigrationPluginResults;
+- (BOOL)isDeviceUsingEphemeralStorage;
 - (id)lastBuildVersionPref;
 - (id)lastMigrationResultsPref;
 - (id)migrationPluginResultsPref;

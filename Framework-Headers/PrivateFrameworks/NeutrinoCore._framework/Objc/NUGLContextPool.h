@@ -21,6 +21,7 @@
 - (void)_returnContext:(id)arg1;
 - (id)init;
 - (id)newContext;
+- (id)newContextForDevice:(id)arg1;
 - (void)returnContext:(id)arg1;
 
 @end

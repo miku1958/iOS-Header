@@ -6,6 +6,12 @@
 
 @protocol GGLLayerDelegate
 - (void)didPresent;
-- (void)drawToTexture:(struct Texture *)arg1 withTimestamp:(double)arg2;
+- (void)didUpdateFrameTexture;
+- (void)drawToTexture:(struct Texture *)arg1 withRenderQueue:(struct RenderQueue *)arg2;
+- (BOOL)isDelayedRenderQueueConsumptionSupported;
+- (void)prepareTexture:(struct Texture *)arg1;
+- (struct RenderQueue *)renderQueueForTimestamp:(double)arg1;
+- (void)willPresent;
+- (void)willUpdateFrameTexture;
 @end
 

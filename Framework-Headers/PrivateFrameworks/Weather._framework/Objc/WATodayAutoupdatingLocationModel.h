@@ -44,7 +44,6 @@
 - (void)_persistStateWithModel:(id)arg1;
 - (BOOL)_reloadForecastData:(BOOL)arg1;
 - (void)_teardownLocationManager;
-- (void)_weatherPreferencesWereSynchronized:(id)arg1;
 - (void)_willDeliverForecastModel:(id)arg1;
 - (void)checkIfNeedsToUpdate;
 - (void)clearLocationUpdateState;
@@ -59,6 +58,7 @@
 - (void)syncLastUpdateTime;
 - (void)ubiquitousDefaultsDidChange:(id)arg1;
 - (BOOL)updateLocationTrackingStatus;
+- (void)weatherPreferencesWereSynchronized;
 
 @end
 

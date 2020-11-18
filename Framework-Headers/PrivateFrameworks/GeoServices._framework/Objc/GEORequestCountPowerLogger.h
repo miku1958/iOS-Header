@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, NSString;
+@class GEOXPCActivity, NSDate, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface GEORequestCountPowerLogger : NSObject
@@ -15,6 +15,7 @@
     NSString *_eventName;
     NSDate *_startDate;
     NSMutableDictionary *_clientInfo;
+    GEOXPCActivity *_activity;
 }
 
 + (void)cancelOldActivities;

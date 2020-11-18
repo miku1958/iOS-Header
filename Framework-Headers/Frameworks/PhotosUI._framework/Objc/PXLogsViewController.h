@@ -6,21 +6,44 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSDate, NSMutableAttributedString, NSString, OSLogEventStream;
+@class NSArray, NSDate, NSDateFormatter, NSMutableArray, NSMutableAttributedString, NSMutableDictionary, NSMutableIndexSet, OSLogEventStreamBase, UIActivityIndicatorView, UITextView;
 
 @interface PXLogsViewController : UIViewController
 {
-    NSString *_subsystem;
-    NSString *_category;
+    NSArray *_subsystemsAndCategories;
     NSDate *_startDate;
-    NSMutableAttributedString *_attributedString;
-    OSLogEventStream *_eventStream;
-    BOOL _done;
+    UITextView *_textView;
+    UIActivityIndicatorView *_spinnerView;
+    OSLogEventStreamBase *_eventStream;
+    NSMutableAttributedString *_fullAttributedString;
+    BOOL _hasScheduledTextViewUpdate;
+    NSMutableArray *_compactLogs;
+    NSMutableArray *_expandedLogs;
+    NSMutableIndexSet *_isExpanded;
+    NSMutableDictionary *_substitutionByObjectRepresentation;
+    NSMutableDictionary *_nextAvailableIndexByClassName;
+    NSDateFormatter *_dateFormatter;
 }
 
+@property (strong, nonatomic) NSDateFormatter *dateFormatter; // @synthesize dateFormatter=_dateFormatter;
+
 - (void).cxx_destruct;
+- (id)initLiveWithSubsystem:(id)arg1 category:(id)arg2;
+- (id)initLiveWithSubsystemsAndCategories:(id)arg1;
 - (id)initWithSubsystem:(id)arg1 category:(id)arg2 startDate:(id)arg3;
-- (void)loadView;
+- (id)initWithSubsystemsAndCategories:(id)arg1 startDate:(id)arg2;
+- (BOOL)isCollectionRepresentation:(id)arg1;
+- (void)logAttributedString:(id)arg1;
+- (void)prepareDiskStore;
+- (void)prepareLiveStore;
+- (void)removeSpinner;
+- (void)setupEventStream:(id)arg1;
+- (id)substitutionForCollectionRepresentation:(id)arg1 attributes:(id)arg2;
+- (id)substitutionForObjectRepresentation:(id)arg1;
+- (id)subsystemsAndCategoriesPredicateWithSubsystemsAndCategories:(id)arg1;
+- (void)tapped:(id)arg1;
+- (void)toggleModeForStringIndex:(unsigned long long)arg1;
+- (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

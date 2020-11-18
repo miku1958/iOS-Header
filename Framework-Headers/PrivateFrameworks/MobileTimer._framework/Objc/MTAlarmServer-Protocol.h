@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileTimer/NSObject-Protocol.h>
+#import <MobileTimer/MTXPCServer-Protocol.h>
 
 @class MTAlarm, NSString;
 
-@protocol MTAlarmServer <NSObject>
+@protocol MTAlarmServer <MTXPCServer>
 - (void)addAlarm:(MTAlarm *)arg1 withCompletion:(void (^)(NSError *))arg2;
-- (void)checkIn;
 - (void)dismissAlarmWithIdentifier:(NSString *)arg1 dismissAction:(unsigned long long)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)getAlarmsWithCompletion:(void (^)(NSArray *, MTAlarm *, MTAlarm *, NSError *))arg1;
 - (void)removeAlarm:(MTAlarm *)arg1 withCompletion:(void (^)(NSError *))arg2;

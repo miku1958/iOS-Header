@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGRect)_labelFrame;
 - (struct CGSize)_updateLabelTextColorAndFontReturningShadowOffset;
-- (struct CGSize)_updateLabelTextColorAndFontReturningShadowOffset_legacy;
 - (id)initWithNavBar:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGRect)promptBounds;

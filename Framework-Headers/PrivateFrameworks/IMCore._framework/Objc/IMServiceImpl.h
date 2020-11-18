@@ -87,6 +87,12 @@
 @property (readonly, nonatomic) BOOL supportsPresence; // @synthesize supportsPresence=_supportsPresence;
 @property (readonly, nonatomic) BOOL supportsRegistration; // @synthesize supportsRegistration=_supportsRegistration;
 
++ (BOOL)_iMessageEnabledForMultipleSubscriptionsForSenderLastAddressedHandle:(id)arg1 simID:(id)arg2 previousService:(id)arg3;
++ (BOOL)_isSIMIdIDSRegisteredSIM:(id)arg1;
++ (BOOL)_isiMessageEnabledIfLastAddressedHandleIsNotActiveAnymore:(id)arg1;
++ (id)_phoneNumberOnSubscriptionWithSIMID:(id)arg1;
++ (BOOL)_readMMSUserOverride;
++ (BOOL)_shouldCheckIfLastAddressedHandleIsInSubscriptionsAnymoreButiMessageIsEnabledForAlias:(id)arg1 previousService:(id)arg2;
 + (id)activeServices;
 + (id)allServices;
 + (id)allServicesNonBlocking;

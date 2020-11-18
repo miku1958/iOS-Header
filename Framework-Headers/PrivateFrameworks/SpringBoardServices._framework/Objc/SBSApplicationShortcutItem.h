@@ -19,6 +19,7 @@
     SBSApplicationShortcutIcon *_icon;
     unsigned long long _activationMode;
     NSString *_bundleIdentifierToLaunch;
+    NSString *_targetContentIdentifier;
     NSData *_userInfoData;
 }
 
@@ -31,6 +32,7 @@
 @property (copy, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (copy, nonatomic) NSDictionary *userInfo;
 @property (strong, nonatomic) NSData *userInfoData; // @synthesize userInfoData=_userInfoData;

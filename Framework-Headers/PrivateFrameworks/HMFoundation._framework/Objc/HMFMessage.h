@@ -8,10 +8,11 @@
 
 #import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSMutableCopying-Protocol.h>
+#import <HMFoundation/NSSecureCoding-Protocol.h>
 
 @class HMFActivity, HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
-@interface HMFMessage : HMFObject <NSCopying, NSMutableCopying>
+@interface HMFMessage : HMFObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     HMFMessageInternal *_internal;
 }
@@ -25,6 +26,7 @@
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long qualityOfService;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler;
+@property (readonly, nonatomic) double timeout;
 @property (readonly, weak, nonatomic) HMFMessageTransport *transport;
 @property (readonly, copy, nonatomic) NSDictionary *userInfo;
 
@@ -37,6 +39,8 @@
 + (id)messageWithName:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 + (id)messageWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
 + (id)shortDescription;
++ (id)supportedClasses;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__initWithInternalMessage:(id)arg1;
 - (id)arrayForKey:(id)arg1;
@@ -52,18 +56,22 @@
 - (id)description;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)dictionaryForKey:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)errorForKey:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithInternalMessage:(id)arg1;
 - (id)initWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3;
 - (id)initWithName:(id)arg1 identifier:(id)arg2 messagePayload:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 payload:(id)arg4;
 - (id)initWithName:(id)arg1 qualityOfService:(long long)arg2 destination:(id)arg3 userInfo:(id)arg4 headers:(id)arg5 payload:(id)arg6;
-- (id)locationForKey:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)nullForKey:(id)arg1;
 - (id)numberForKey:(id)arg1;
 - (id)predicateForKey:(id)arg1;
+- (BOOL)respondWithError:(id)arg1;
+- (BOOL)respondWithPayload:(id)arg1;
+- (BOOL)respondWithPayload:(id)arg1 error:(id)arg2;
 - (id)shortDescription;
 - (id)stringForKey:(id)arg1;
 - (id)timeZoneForKey:(id)arg1;

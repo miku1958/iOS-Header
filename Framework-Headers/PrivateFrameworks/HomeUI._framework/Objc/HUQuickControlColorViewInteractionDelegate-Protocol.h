@@ -6,13 +6,13 @@
 
 #import <HomeUI/HUQuickControlViewInteractionDelegate-Protocol.h>
 
-@class HFColorPalette, UIView;
+@class HFColorPalette, NSIndexPath, UIView;
 @protocol HUQuickControlAuxiliaryView, HUQuickControlInteractiveView;
 
 @protocol HUQuickControlColorViewInteractionDelegate <HUQuickControlViewInteractionDelegate>
-- (void)controlView:(id<HUQuickControlInteractiveView>)arg1 activeModeDidChange:(unsigned long long)arg2;
 - (void)controlView:(id<HUQuickControlInteractiveView>)arg1 colorPaletteDidChange:(HFColorPalette *)arg2;
 - (void)controlView:(id<HUQuickControlInteractiveView>)arg1 showAuxiliaryView:(UIView<HUQuickControlAuxiliaryView> *)arg2;
 - (void)hideAuxiliaryViewForControlView:(id<HUQuickControlInteractiveView>)arg1;
+- (void)presentFullColorViewForControlView:(id<HUQuickControlInteractiveView>)arg1 selectedColorIndexPath:(NSIndexPath *)arg2;
 @end
 

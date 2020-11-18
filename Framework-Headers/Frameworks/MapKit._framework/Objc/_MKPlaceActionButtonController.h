@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (void)buttonTextChanged;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)initWithTitle:(id)arg1 subTitle:(id)arg2 analyticsAction:(int)arg3 selectedBlock:(CDUnknownBlockType)arg4;
 - (id)initWithTitle:(id)arg1 subTitle:(id)arg2 selectedBlock:(CDUnknownBlockType)arg3;
 

@@ -9,6 +9,7 @@
 @interface NSMutableArray (FezAdditions)
 + (id)copyNonRetainingArray;
 + (id)nonRetainingArray;
+- (void)__imRandomizeArray;
 - (void)removeFirstObject;
 @end
 

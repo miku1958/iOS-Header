@@ -14,5 +14,9 @@
 
 @property (readonly, nonatomic) PXCMMInvitationsDataSource *dataSource; // @dynamic dataSource;
 
++ (id)currentDataSourceManager;
++ (id)emptyDataSourceManager;
++ (id)keyPathsAffectingCurrentDataSourceManager;
+
 @end
 

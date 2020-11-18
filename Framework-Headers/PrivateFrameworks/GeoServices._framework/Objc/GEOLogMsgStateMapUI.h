@@ -12,22 +12,27 @@
 
 @interface GEOLogMsgStateMapUI : PBCodable <NSCopying>
 {
+    GEOMultiTabsState *_multiTabsState;
     int _layoutInfo;
     int _layoutStyle;
-    GEOMultiTabsState *_multiTabsState;
+    BOOL _landscape;
     struct {
-        unsigned int layoutInfo:1;
-        unsigned int layoutStyle:1;
-    } _has;
+        unsigned int has_layoutInfo:1;
+        unsigned int has_layoutStyle:1;
+        unsigned int has_landscape:1;
+    } _flags;
 }
 
+@property (nonatomic) BOOL hasLandscape;
 @property (nonatomic) BOOL hasLayoutInfo;
 @property (nonatomic) BOOL hasLayoutStyle;
 @property (readonly, nonatomic) BOOL hasMultiTabsState;
-@property (nonatomic) int layoutInfo; // @synthesize layoutInfo=_layoutInfo;
-@property (nonatomic) int layoutStyle; // @synthesize layoutStyle=_layoutStyle;
-@property (strong, nonatomic) GEOMultiTabsState *multiTabsState; // @synthesize multiTabsState=_multiTabsState;
+@property (nonatomic) BOOL landscape;
+@property (nonatomic) int layoutInfo;
+@property (nonatomic) int layoutStyle;
+@property (strong, nonatomic) GEOMultiTabsState *multiTabsState;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsLayoutInfo:(id)arg1;
 - (int)StringAsLayoutStyle:(id)arg1;
@@ -40,6 +45,7 @@
 - (id)layoutInfoAsString:(int)arg1;
 - (id)layoutStyleAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

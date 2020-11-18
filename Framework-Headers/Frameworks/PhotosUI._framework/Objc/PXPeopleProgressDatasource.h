@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUICore/PXPeopleProgressDataSource-Protocol.h>
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
 @class NSString, PHFetchResult;
 @protocol OS_dispatch_queue;
 
-@interface PXPeopleProgressDatasource : NSObject <PXPhotoLibraryUIChangeObserver, PXPeopleProgressDataSource>
+@interface PXPeopleProgressDataSource : NSObject <PXPhotoLibraryUIChangeObserver>
 {
+    BOOL _isFaceProcessingComplete;
     BOOL _countCacheValid;
     BOOL _faceProcessingComplete;
     unsigned long long _cachedUnlockValue;
@@ -26,17 +26,23 @@
     NSObject<OS_dispatch_queue> *_userInteractiveQueue;
 }
 
-@property unsigned long long cachedUnlockValue; // @synthesize cachedUnlockValue=_cachedUnlockValue;
+@property (nonatomic) unsigned long long cachedUnlockValue; // @synthesize cachedUnlockValue=_cachedUnlockValue;
 @property (getter=isCountCacheValid) BOOL countCacheValid; // @synthesize countCacheValid=_countCacheValid;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFaceProcessingComplete) BOOL faceProcessingComplete; // @synthesize faceProcessingComplete=_faceProcessingComplete;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long homeMembersCount;
 @property (strong, nonatomic) PHFetchResult *homeResult; // @synthesize homeResult=_homeResult;
+@property (readonly, nonatomic) BOOL isFaceProcessingComplete; // @synthesize isFaceProcessingComplete=_isFaceProcessingComplete;
+@property (readonly, nonatomic) BOOL isPersonPromoterDone;
+@property (readonly, nonatomic) unsigned long long pendingAssetCount;
 @property (nonatomic) unsigned long long pendingCount; // @synthesize pendingCount=_pendingCount;
+@property (readonly, nonatomic) unsigned long long processedAssetCount;
 @property (nonatomic) unsigned long long processedCount; // @synthesize processedCount=_processedCount;
 @property (readonly) NSObject<OS_dispatch_queue> *scanningProgressQueue; // @synthesize scanningProgressQueue=_scanningProgressQueue;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long totalAssetCount;
 @property (nonatomic) unsigned long long totalCount; // @synthesize totalCount=_totalCount;
 @property (readonly) NSObject<OS_dispatch_queue> *userInteractiveQueue; // @synthesize userInteractiveQueue=_userInteractiveQueue;
 @property (strong, nonatomic) PHFetchResult *verifyResult; // @synthesize verifyResult=_verifyResult;
@@ -46,15 +52,10 @@
 - (double)_progressFromWorkerDictionary:(id)arg1;
 - (void)asyncPeopleScanningProgress:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (unsigned long long)homeMembersCount;
 - (id)init;
-- (BOOL)isPersonPromoterDone;
 - (void)loadQueryData;
-- (unsigned long long)pendingAssetCount;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
-- (unsigned long long)processedAssetCount;
 - (void)syncPeopleScanningProgress:(CDUnknownBlockType)arg1;
-- (unsigned long long)totalAssetCount;
 - (void)updateProgressIfNeededWithWorkBlock:(CDUnknownBlockType)arg1;
 
 @end

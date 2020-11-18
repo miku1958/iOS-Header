@@ -6,7 +6,7 @@
 
 #import <AppStoreDaemon/NSObject-Protocol.h>
 
-@class ASDCheckQueueRequestOptions, ASDClaimApplicationsRequestOptions, ASDManagedApplicationRequestOptions, ASDRepairApplicationRequestOptions;
+@class ASDCheckQueueRequestOptions, ASDClaimApplicationsRequestOptions, ASDManagedApplicationRequestOptions;
 
 @protocol ASDStoreQueueProtocol <NSObject>
 - (void)checkQueueWithOptions:(ASDCheckQueueRequestOptions *)arg1 completionBlock:(void (^)(BOOL, NSError *))arg2;
@@ -14,6 +14,5 @@
 - (void)getAutomaticDownloadQueueWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)getDownloadQueueWithCompletionBlock:(void (^)(NSArray *, NSError *))arg1;
 - (void)managedApplicationRequestWithOptions:(ASDManagedApplicationRequestOptions *)arg1 completionBlock:(void (^)(BOOL, NSDictionary *, long long, NSError *))arg2;
-- (void)repairApplicationWithOptions:(ASDRepairApplicationRequestOptions *)arg1 completionBlock:(void (^)(BOOL, NSArray *, NSError *))arg2;
 @end
 

@@ -17,6 +17,7 @@
 - (long long)_accessibilityInterfaceOrientationForScreenCoordinates;
 - (BOOL)_accessibilityUseWindowBoundsForOutOfBoundsChecking;
 - (BOOL)_accessibilityWindowVisible;
+- (BOOL)_axIsVisible;
 - (BOOL)accessibilityElementsHidden;
 
 @end

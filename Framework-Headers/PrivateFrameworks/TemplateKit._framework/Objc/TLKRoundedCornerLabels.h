@@ -8,14 +8,15 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface TLKRoundedCornerLabels : TLKStackView
 {
     NSMutableArray *_roundedLabels;
-    unsigned long long _style;
+    unsigned long long _prominence;
 }
 
+@property (nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 @property (strong, nonatomic) NSMutableArray *roundedLabels; // @synthesize roundedLabels=_roundedLabels;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
 - (id)init;

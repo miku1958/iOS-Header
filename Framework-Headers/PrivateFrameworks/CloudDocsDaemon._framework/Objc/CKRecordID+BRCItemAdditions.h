@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)brc_fetchShareIDWithSharedItem:(id)arg1;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 - (id)_itemIDWithLibraryRowID:(id)arg1 session:(id)arg2;
 - (id)brc_appLibraryDocumentsZoneName;
@@ -28,6 +29,12 @@
 - (id)brc_itemIDWithSession:(id)arg1;
 - (id)brc_itemIDWithSession:(id)arg1 error:(id *)arg2;
 - (BOOL)brc_itemType;
+- (id)brc_shareItemID;
+- (id)brc_shareZoneName;
+- (id)initShareIDWithItemID:(id)arg1 zoneID:(id)arg2;
+- (id)initShareIDWithRecordID:(id)arg1 serverZone:(id)arg2;
+- (id)initShareIDWithRecordID:(id)arg1 zoneID:(id)arg2 session:(id)arg3;
+- (id)initShareIDWithShareableItem:(id)arg1;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 @end
 

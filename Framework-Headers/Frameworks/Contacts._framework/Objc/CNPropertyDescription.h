@@ -56,6 +56,7 @@
 - (BOOL)isValidValue:(id)arg1 error:(id *)arg2;
 - (BOOL)isValue:(id)arg1 equalToEmptyEquivalentOrValue:(id)arg2;
 - (BOOL)isValue:(id)arg1 preferredToUnifiedValue:(id)arg2;
+- (void)resetGuardianManagedValueOnContact:(id)arg1;
 - (BOOL)setABValue:(void *)arg1 onABPerson:(void *)arg2 error:(struct __CFError **)arg3;
 - (BOOL)setCNValue:(id)arg1 onABPerson:(void *)arg2 withDependentPropertiesContext:(id)arg3 error:(id *)arg4;
 - (void)setCNValue:(id)arg1 onContact:(id)arg2;

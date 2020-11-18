@@ -6,21 +6,23 @@
 
 #import <PhotosUI/PUPhotosAlbumViewController.h>
 
-@class NSNumber;
+@class NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface PUSceneDebugGridViewController : PUPhotosAlbumViewController
 {
     NSNumber *_sceneIdentifier;
+    NSDictionary *_assetsHighestConfidence;
 }
 
+@property (copy, nonatomic) NSDictionary *assetsHighestConfidence; // @synthesize assetsHighestConfidence=_assetsHighestConfidence;
 @property (strong, nonatomic) NSNumber *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 
 + (CDUnknownBlockType)assetResourceLargestToSmallestComparator;
 - (void).cxx_destruct;
-- (id)_assetPathsForAssets:(id)arg1;
 - (id)_assetResourceForAsset:(id)arg1;
 - (id)_assetResourcesForAssets:(id)arg1;
+- (id)_cloneAsset:(id)arg1 toDirectory:(id)arg2;
 - (void)_fileRadarWithIncorrectAssets:(id)arg1;
 - (id)_globalHeaderTitle;
 - (BOOL)_isJunkSceneIdentifer:(id)arg1;
@@ -29,10 +31,13 @@ __attribute__((visibility("hidden")))
 - (id)_newEditActionItemsWithWideSpacing:(BOOL)arg1;
 - (void)_tappedFileRadarButton:(id)arg1;
 - (double)_thresholdForSceneIdentifer:(id)arg1;
+- (BOOL)_writeDiagnosticsToURL:(id)arg1 incorrectAssets:(id)arg2;
 - (BOOL)allowSlideshowButton;
+- (BOOL)assetConfidenceIsAboveThreshold:(id)arg1;
 - (id)assetResourceFromAcceptableAssetResources:(id)arg1;
+- (BOOL)assetShouldBeSurpassedInNormalUI:(id)arg1;
+- (void)configureDecorationsForCell:(id)arg1 withAsset:(id)arg2 assetCollection:(id)arg3 thumbnailIsPlaceholder:(BOOL)arg4 assetMayHaveChanged:(BOOL)arg5;
 - (void)configureGlobalHeaderView:(id)arg1;
-- (void)configureGridCell:(id)arg1 forItemAtIndexPath:(id)arg2;
 - (void)getEmptyPlaceholderViewTitle:(id *)arg1 message:(id *)arg2 buttonTitle:(id *)arg3 buttonAction:(CDUnknownBlockType *)arg4;
 - (double)globalHeaderHeight;
 - (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;

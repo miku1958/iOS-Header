@@ -14,12 +14,17 @@
     double _timeoutInterval;
     NSString *_clientIdentifier;
     NSString *_clientVersion;
+    NSString *_clientPlatformIdentifier;
+    unsigned long long _authenticationOptions;
 }
 
+@property (nonatomic) unsigned long long authenticationOptions; // @synthesize authenticationOptions=_authenticationOptions;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (copy, nonatomic) NSString *clientPlatformIdentifier; // @synthesize clientPlatformIdentifier=_clientPlatformIdentifier;
 @property (copy, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 
++ (BOOL)requiresNetwork;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

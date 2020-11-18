@@ -23,6 +23,7 @@
 @property unsigned long long sourceLayerRenderId;
 @property (copy) NSArray *sourcePoints;
 @property BOOL targetsSuperlayer;
+@property BOOL usesNormalizedCoordinates;
 
 + (id)defaultValueForKey:(id)arg1;
 - (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;

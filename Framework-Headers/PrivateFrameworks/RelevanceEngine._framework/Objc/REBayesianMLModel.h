@@ -6,18 +6,28 @@
 
 #import <RelevanceEngine/REMLModel.h>
 
-@interface REBayesianMLModel : REMLModel
+#import <RelevanceEngine/REBayesianMLModelProperties-Protocol.h>
+
+@class REExportedTable;
+
+@interface REBayesianMLModel : REMLModel <REBayesianMLModelProperties>
 {
     struct BayesianModel _model;
     unsigned long long _numberOfFeatures;
 }
+
+@property (readonly, nonatomic) REExportedTable *content;
 
 + (unsigned long long)featureBitWidth;
 + (unsigned long long)maxFeatureCount;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_clearModel;
+- (float)_getAveragePrediction;
+- (float)_getNormalizedEntropy;
 - (long long)_getNumberOfCoordinates;
+- (unsigned long long)_getTotalExampleCount;
+- (unsigned long long)_getTotalPositiveCount;
 - (void)_loadFeatureVector:(vector_cfeb9b06 *)arg1 fromFeatureMap:(id)arg2;
 - (BOOL)_loadModelFromURL:(id)arg1 error:(id *)arg2;
 - (unsigned long long)_maxFeatureCoordinates;
@@ -26,8 +36,7 @@
 - (BOOL)_saveModelToURL:(id)arg1 error:(id *)arg2;
 - (BOOL)_saveModelToURL:(id)arg1 includeDebugData:(BOOL)arg2 error:(id *)arg3;
 - (void)_trainWithFeatures:(id)arg1 positiveEvent:(id)arg2;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
-- (id)initWithFeatureSet:(id)arg1;
+- (id)initWithFeatureSet:(id)arg1 priorMean:(float)arg2 modelVarianceEpsilon:(float)arg3;
 - (void)logCoreAnalyticsMetrics;
 
 @end

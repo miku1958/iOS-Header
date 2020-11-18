@@ -12,31 +12,28 @@
 
 @interface GEOLogMessage : PBCodable <NSCopying>
 {
+    NSMutableArray *_logMsgEvents;
     unsigned int _groupRetryCount;
     int _logMessageType;
-    NSMutableArray *_logMsgEvents;
     struct {
-        unsigned int groupRetryCount:1;
-        unsigned int logMessageType:1;
-    } _has;
+        unsigned int has_groupRetryCount:1;
+        unsigned int has_logMessageType:1;
+    } _flags;
 }
 
 @property (nonatomic) unsigned int groupRetryCount;
 @property (nonatomic) BOOL hasGroupRetryCount;
 @property (nonatomic) BOOL hasLogMessageType;
-@property (nonatomic) int logMessageType; // @synthesize logMessageType=_logMessageType;
-@property (strong, nonatomic) NSMutableArray *logMsgEvents; // @synthesize logMsgEvents=_logMsgEvents;
+@property (nonatomic) int logMessageType;
+@property (strong, nonatomic) NSMutableArray *logMsgEvents;
 
 + (id)acceptedLogMsgEvents;
 + (id)acceptedLogMsgEventsForLogMessageType:(int)arg1;
-+ (BOOL)allowApplicationStatesForLogMsgEvent:(id)arg1;
-+ (id)allowedSessionTypes;
-+ (BOOL)disallowedStateWithStateType:(int)arg1 logMsgEvent:(id)arg2 logMessage:(id)arg3;
-+ (id)disallowedStatesForLogMsgEvent:(id)arg1 logMessage:(id)arg2;
++ (BOOL)isValid:(id)arg1;
 + (BOOL)logMessageType:(int)arg1 acceptsLogMsgEventType:(int)arg2;
 + (id)logMessagesForEvent:(id)arg1;
 + (Class)logMsgEventType;
-+ (BOOL)supportsCohortSessionForLogMsgEvent:(id)arg1;
++ (id)logMsgSettings;
 - (void).cxx_destruct;
 - (int)StringAsLogMessageType:(id)arg1;
 - (BOOL)acceptsLogMsgEvent:(id)arg1;
@@ -54,14 +51,11 @@
 - (unsigned int)groupSequenceNumber;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isFullCarPlayStateAllowed;
-- (BOOL)isFullExperimentsStateAllowed;
-- (BOOL)isNavigationSessionAllowed;
-- (BOOL)isStateAllowed:(id)arg1;
 - (id)logMessageTypeAsString:(int)arg1;
 - (id)logMsgEventAtIndex:(unsigned long long)arg1;
 - (unsigned long long)logMsgEventsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)removeUnsupportedStatesFromEvent;
 - (void)writeTo:(id)arg1;

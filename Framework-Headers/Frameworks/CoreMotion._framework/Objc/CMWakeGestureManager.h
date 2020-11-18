@@ -18,7 +18,10 @@
 + (BOOL)isWakeGestureAvailable;
 + (BOOL)isWakeGestureOverrideEnabled;
 + (id)sharedManager;
++ (id)stringForGestureState:(long long)arg1;
+- (void)forceDetected;
 - (void)logAssert;
+- (void)simulateGesture:(long long)arg1 after:(double)arg2;
 - (BOOL)simulateGestureWithDelay:(double)arg1 Duration:(double)arg2;
 - (void)startWakeGestureUpdates;
 - (void)stopWakeGestureUpdates;

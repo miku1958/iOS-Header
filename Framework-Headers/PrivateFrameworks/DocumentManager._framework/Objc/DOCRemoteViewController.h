@@ -13,27 +13,24 @@
 
 @interface DOCRemoteViewController : _UIRemoteViewController <DOCRemoteContextInterface>
 {
-    DOCAppearance *_lastAppearance;
     BOOL _isBrowserViewController;
     id<DOCRemoteViewControllerDelegate> _delegate;
     DOCRemoteContext *_hostContext;
     DOCConfiguration *_configuration;
+    DOCAppearance *_lastAppearance;
 }
 
 @property (strong) DOCConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (weak) id<DOCRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong) DOCRemoteContext *hostContext; // @synthesize hostContext=_hostContext;
 @property BOOL isBrowserViewController; // @synthesize isBrowserViewController=_isBrowserViewController;
+@property (strong) DOCAppearance *lastAppearance; // @synthesize lastAppearance=_lastAppearance;
 
-+ (id)instantiateRemoteBrowserViewControllerWithHostProxy:(id)arg1 configuration:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (struct _UIResilientRemoteViewContainerViewController *)instantiateRemoteDocumentBrowserViewControllerWithHostProxy:(id)arg1 configuration:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-+ (id)instantiateRemoteInfoViewControllerWithHostProxy:(id)arg1 configuration:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-+ (id)instantiateRemoteSourceViewControllerWithHostProxy:(id)arg1 configuration:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (struct _UIResilientRemoteViewContainerViewController *)instantiateRemoteTargetSelectionBrowserViewControllerWithHostProxy:(id)arg1 configuration:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-+ (struct _UIResilientRemoteViewContainerViewController *)instantiateTransparent:(BOOL)arg1 remoteViewControllerWithConfiguration:(id)arg2 errorHandler:(CDUnknownBlockType)arg3 hostProxy:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
++ (struct _UIResilientRemoteViewContainerViewController *)instantiateRemoteViewControllerWithConfiguration:(id)arg1 transparent:(BOOL)arg2 errorHandler:(CDUnknownBlockType)arg3 hostProxy:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 + (id)serviceExtension;
 - (void).cxx_destruct;
-- (void)fetchAllSourcesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateAppearance:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)updateAppearance:(id)arg1 shouldFlushCA:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)updateEditingTo:(BOOL)arg1 animated:(BOOL)arg2;

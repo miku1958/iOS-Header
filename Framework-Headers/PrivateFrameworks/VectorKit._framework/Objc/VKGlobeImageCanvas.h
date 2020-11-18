@@ -8,23 +8,20 @@
 
 #import <VectorKit/MDSnapshotMap-Protocol.h>
 
-@class NSString;
+@class NSString, VKCamera;
 
 __attribute__((visibility("hidden")))
 @interface VKGlobeImageCanvas : VKImageCanvas <MDSnapshotMap>
 {
     struct GlobeView *_globeView;
+    VKCamera *_camera;
     struct unique_ptr<md::GlobeAdapter, std::__1::default_delete<md::GlobeAdapter>> _globeAdapter;
-    struct shared_ptr<md::VKGlobeStylesheet> _globeStyleSheet;
-    BOOL _notifyFullyLoaded;
-    BOOL _notifyFullyDrawn;
+    struct LoadingStatusTracker *_loadingStatusTracker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL showsBuildings;
-@property (nonatomic) BOOL showsVenues;
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
@@ -35,14 +32,10 @@ __attribute__((visibility("hidden")))
 - (void)cancelTileRequests;
 - (void)dealloc;
 - (void)didLayout;
-- (void)globeDidBecomeFullyDrawn;
-- (void)globeWillBecomeFullyDrawn;
-- (id)initWithMapEngine:(struct MapEngine *)arg1 manifestConfiguration:(id)arg2;
-- (BOOL)isShowingNoDataPlaceholders;
-- (struct LabelSettings *)labelSettings;
+- (id)initWithMapEngine:(struct MapEngine *)arg1;
 - (void)setMapDisplayStyle:(struct DisplayStyle)arg1;
-- (void)setMapType:(long long)arg1;
-- (void)update;
+- (void)setMapType:(int)arg1;
+- (void)updateWithTimestamp:(double)arg1;
 
 @end
 

@@ -6,11 +6,9 @@
 
 #import <NetworkExtension/NEExtensionProviderProtocol-Protocol.h>
 
-@class NEFilterProviderConfiguration, NSString;
+@class NEFilterProviderConfiguration;
 
 @protocol NEFilterExtensionProviderProtocol <NEExtensionProviderProtocol>
-- (void)setExtensionIdentifier:(NSString *)arg1 deviceIdentifier:(NSString *)arg2;
 - (void)startFilterWithOptions:(NEFilterProviderConfiguration *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)updateConfiguration:(NEFilterProviderConfiguration *)arg1;
 @end
 

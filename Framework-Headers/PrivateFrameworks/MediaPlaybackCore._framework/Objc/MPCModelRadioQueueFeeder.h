@@ -6,33 +6,37 @@
 
 #import <MediaPlayer/MPQueueFeeder.h>
 
+#import <MediaPlaybackCore/MPAVItemObserver-Protocol.h>
+#import <MediaPlaybackCore/MPCQueueControllerDataSource-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
 
-@class ICStoreRequestContext, ICUserIdentity, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSOperationQueue, NSString, SSVPlayActivityController;
-@protocol MPAVItemQueueIdentifier;
+@class ICStoreRequestContext, ICUserIdentity, ICUserIdentityStore, MPAVItem, MPCModelRadioPersonalizationResponse, MPCModelRadioPlaybackQueue, MPCPlaybackRequestEnvironment, NSDictionary, NSObject, NSString, SSVPlayActivityController;
+@protocol MPMutableIdentifierListSection, OS_dispatch_queue;
 
-@interface MPCModelRadioQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining>
+@interface MPCModelRadioQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPAVItemObserver, MPCQueueControllerDataSource>
 {
+    id<MPMutableIdentifierListSection> _section;
+    MPCModelRadioPlaybackQueue *_playbackQueue;
+    NSObject<OS_dispatch_queue> *_diffQueue;
     unsigned long long _backgroundTaskIdentifier;
     unsigned long long _backgroundTasks;
     MPAVItem *_currentItem;
-    BOOL _hasLoadedAdditionalItemsForCurrentItem;
-    id<MPAVItemQueueIdentifier> _lastCleanPlayedIdentifier;
-    id<MPAVItemQueueIdentifier> _lastPlayedIdentifier;
+    BOOL _hasReachedTracklistEnd;
+    NSString *_lastCleanPlayedIdentifier;
+    NSString *_lastPlayedIdentifier;
     MPCModelRadioPersonalizationResponse *_lastResponse;
-    long long _loadingOperationDepth;
-    NSOperationQueue *_loadingOperationQueue;
     BOOL _mayHaveRestrictedContent;
-    ICUserIdentityStore *_observedIdentityStore;
-    SSVPlayActivityController *_playActivityController;
-    MPCModelRadioPlaybackQueue *_playbackQueue;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
-    ICUserIdentity *_proactiveCacheIdentity;
     long long _queueGeneration;
     NSString *_siriAssetInfo;
+    ICUserIdentityStore *_observedIdentityStore;
+    ICUserIdentity *_proactiveCacheIdentity;
     ICStoreRequestContext *_storeRequestContext;
+    SSVPlayActivityController *_playActivityController;
+    CDUnknownBlockType _finalTracklistLoadingCompletionHandler;
 }
 
+@property (readonly, nonatomic) BOOL containsLiveStream;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -40,8 +44,8 @@
 @property (readonly, copy, nonatomic) NSDictionary *rtcReportingSessionAdditionalUserInfo;
 @property (readonly) Class superclass;
 
++ (id)sharedQueue;
 - (void).cxx_destruct;
-- (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
 - (void)_beginBackgroundTaskAssertion;
 - (void)_beginObservingIdentityStoreForSignOut;
 - (id)_defaultGetTracksRequestWithContext:(id)arg1 radioStation:(id)arg2;
@@ -49,11 +53,9 @@
 - (void)_detectSignOutForIdentityStoreChangeNotification:(id)arg1;
 - (void)_endBackgroundTaskAssertion;
 - (void)_endObservingIdentityStoreForSignOut;
-- (void)_failAfterRequest:(id)arg1 withError:(id)arg2;
+- (id)_errorForRequest:(id)arg1 withError:(id)arg2;
 - (void)_handleGetTracksResponse:(id)arg1 getTracksError:(id)arg2 fromRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handlePersonalizationResponse:(id)arg1 personalizationError:(id)arg2 fromRequest:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (long long)_indexOfAVItem:(id)arg1;
-- (void)_loadAdditionalItemsIfNeeded;
 - (void)_loadTracksWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_observePersonalizationResponse:(id)arg1;
 - (void)_removeRestrictedTracks;
@@ -63,31 +65,23 @@
 - (void)_savePlaybackHistoryWithCurrentIndex:(long long)arg1;
 - (id)_startPlaybackRequestWithPlaybackContext:(id)arg1;
 - (void)_updateProactiveCaching;
-- (BOOL)allowsQueueResetWhenReachingEnd;
-- (BOOL)allowsUserVisibleUpcomingItems;
-- (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
-- (BOOL)canReorder;
 - (BOOL)canSkipItem:(id)arg1;
-- (BOOL)canSkipToPreviousItemForItem:(id)arg1;
-- (id)copyRawItemAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
-- (BOOL)hasValidItemAtIndex:(unsigned long long)arg1;
-- (id)identifierAtIndex:(unsigned long long)arg1;
-- (unsigned long long)indexOfItemWithIdentifier:(id)arg1;
+- (void)didSignificantlyChangeItem:(id)arg1;
+- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (unsigned long long)initialPlaybackQueueDepthForStartingIndex:(unsigned long long)arg1;
-- (BOOL)isPlaceholderItemForQueueIdentifier:(id)arg1;
-- (BOOL)isRadioQueueFeeder;
-- (Class)itemClass;
-- (unsigned long long)itemCount;
+- (long long)itemCount;
+- (void)itemDidBeginPlayback:(id)arg1;
+- (id)itemForItem:(id)arg1 inSection:(id)arg2;
+- (void)loadAdditionalItemsForSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)modelPlayEvent;
-- (void)player:(id)arg1 currentItemDidChangeToItem:(id)arg2;
-- (BOOL)playerPreparesItemsForPlaybackAsynchronously;
-- (BOOL)preventsHardQueueModificationsForItem:(id)arg1;
-- (long long)realRepeatType;
-- (long long)realShuffleType;
-- (void)reloadWithPlaybackContext:(id)arg1 requireFinalTracklist:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)userCanChangeShuffleAndRepeatType;
+- (id)placeholderItemForLoadingAdditionalItemsInSection:(id)arg1;
+- (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)section:(id)arg1 supportsShuffleType:(long long)arg2;
+- (BOOL)shouldRequestAdditionalItemsWhenReachingTailOfSection:(id)arg1;
+- (id)supplementalPlaybackContext;
+- (long long)supplementalPlaybackContextBehavior;
 
 @end
 

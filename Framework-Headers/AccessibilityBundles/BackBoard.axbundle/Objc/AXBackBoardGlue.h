@@ -47,7 +47,6 @@
 - (void)setDisableSystemGestureRecognitionInEvents:(BOOL)arg1;
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setSiriViewServicePid:(int)arg1;
-- (void)setVoiceOverItemChooserVisible:(BOOL)arg1;
 - (void)userEventOccurred;
 - (void)zoomListenerRegistered;
 

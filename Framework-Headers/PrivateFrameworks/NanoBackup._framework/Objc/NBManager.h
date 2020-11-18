@@ -32,8 +32,11 @@
 - (void)deleteBackup:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
+- (void)listBackupsOfType:(unsigned long long)arg1 timeout:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)listBackupsOfType:(unsigned long long)arg1 withSynchronousCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)listBackupsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)listBackupsWithSynchronousCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)listBackupsWithTimeout:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)restoreFromBackup:(id)arg1 forDevice:(id)arg2;
 - (void)restoreFromBackup:(id)arg1 forDevice:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)restoreFromDevice:(id)arg1 forDevice:(id)arg2;

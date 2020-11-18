@@ -7,9 +7,16 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (TSUAdditions)
++ (id)tsp_consolidateFeatureInfos:(id)arg1 andReturnReadVersion:(out unsigned long long *)arg2 writeVersion:(out unsigned long long *)arg3;
 + (id)tsu_intersectionOfSets:(id)arg1;
 + (BOOL)tsu_set:(id)arg1 isEqualToSet:(id)arg2;
 + (id)tsu_setWithSelectors:(SEL)arg1;
+- (id)tsp_initWithProtobufStringArray:(const RepeatedPtrField_fe7cf120 *)arg1;
+- (void)tsp_saveToProtobufStringArray:(RepeatedPtrField_fe7cf120 *)arg1;
+- (id)tsp_sortedArray;
+- (BOOL)tss_containsStyleOrVariationOfStyle:(id)arg1;
+- (BOOL)tss_hasVariations;
+- (BOOL)tsu_containsKindOfClass:(Class)arg1;
 - (BOOL)tsu_containsObjectIdenticalTo:(id)arg1;
 - (BOOL)tsu_isHomogeneousForClass:(Class)arg1;
 - (id)tsu_onlyObject;

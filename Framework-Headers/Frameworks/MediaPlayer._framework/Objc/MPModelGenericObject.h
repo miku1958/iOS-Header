@@ -43,6 +43,7 @@
 + (id)kindWithRelationshipKinds:(id)arg1;
 + (id)requiredStoreLibraryPersonalizationProperties;
 - (id)anyObject;
+- (id)artworkCatalog;
 - (id)flattenedGenericObject;
 - (id)humanDescription;
 - (id)identifiers;

@@ -8,15 +8,18 @@
 
 #import <HomeUI/HUAboutResidentDeviceFooterViewDelegate-Protocol.h>
 #import <HomeUI/HUAboutResidentDeviceViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUAccessorySettingsItemModuleControllerDelegate-Protocol.h>
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
+#import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HFUserItem, HUAboutResidentDeviceFooterView, HUEditUserItemManager, HUPendingAccessoriesGridViewController, NSString;
+@class HFUserItem, HUAboutResidentDeviceFooterView, HUAccessorySettingsItemModuleController, HUEditUserItemManager, HUPendingAccessoriesGridViewController, NSString;
 
-@interface HUEditUserViewController : HUUserTableViewController <HUAboutResidentDeviceFooterViewDelegate, HUAboutResidentDeviceViewControllerDelegate, HUSwitchCellDelegate>
+@interface HUEditUserViewController : HUUserTableViewController <HUAboutResidentDeviceFooterViewDelegate, HUAboutResidentDeviceViewControllerDelegate, HUSwitchCellDelegate, HUAccessorySettingsItemModuleControllerDelegate, UITextViewDelegate>
 {
     HFUserItem *_userItem;
     HUEditUserItemManager *_editUserItemManager;
     HUPendingAccessoriesGridViewController *_pendingAccessoriesViewController;
+    HUAccessorySettingsItemModuleController *_userSettingsItemModuleController;
     HUAboutResidentDeviceFooterView *_aboutResidentDeviceFooterView;
 }
 
@@ -28,6 +31,7 @@
 @property (readonly, nonatomic) HUPendingAccessoriesGridViewController *pendingAccessoriesViewController; // @synthesize pendingAccessoriesViewController=_pendingAccessoriesViewController;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) HFUserItem *userItem; // @synthesize userItem=_userItem;
+@property (strong, nonatomic) HUAccessorySettingsItemModuleController *userSettingsItemModuleController; // @synthesize userSettingsItemModuleController=_userSettingsItemModuleController;
 
 - (void).cxx_destruct;
 - (id)_lazyAboutResidentDeviceFooterView;
@@ -35,15 +39,27 @@
 - (void)aboutResidentDeviceViewControllerDidFinish:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
+- (void)doneButtonTapped:(id)arg1;
 - (id)initWithItem:(id)arg1 home:(id)arg2;
+- (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
+- (id)itemModuleControllers;
 - (void)learnMoreLinkTapped:(id)arg1;
+- (void)moduleController:(id)arg1 preflightCheckToAllowSwitchingForSettingItem:(id)arg2 changingToOn:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)moduleController:(id)arg1 presentGroup:(id)arg2;
+- (id)moduleController:(id)arg1 requestPresentViewController:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)moduleController:(id)arg1 settingUpdatedForItem:(id)arg2;
+- (BOOL)moduleController:(id)arg1 shouldDisableItem:(id)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(BOOL)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (id)userHandle;
+- (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 
 @end
 

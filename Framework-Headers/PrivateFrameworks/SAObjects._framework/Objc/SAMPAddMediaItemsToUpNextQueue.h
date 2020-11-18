@@ -15,6 +15,8 @@
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (copy, nonatomic) NSString *insertLocation;
 @property (strong, nonatomic) SAMPCollection *mediaCollection;
+@property (copy, nonatomic) NSString *musicAccountSharedUserId;
+@property (copy, nonatomic) NSString *speakerSharedUserId;
 
 + (id)addMediaItemsToUpNextQueue;
 + (id)addMediaItemsToUpNextQueueWithDictionary:(id)arg1 context:(id)arg2;

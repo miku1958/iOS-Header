@@ -6,17 +6,20 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedWaypoint, MNActiveRouteDetails, MNAudioOutputSetting, MNRoutePlanningDetails, MNSettings, MNTrafficIncidentAlertDetails, NSData;
+@class GEOComposedWaypoint, MNActiveRouteInfo, MNAudioOutputSetting, MNSettings, MNStartNavigationDetails, MNTrafficIncidentAlertDetails, NSArray, NSData, NSString, NSUUID;
 
 @protocol MNNavigationServiceProxy <NSObject>
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(MNTrafficIncidentAlertDetails *)arg2;
 - (void)changeSettings:(MNSettings *)arg1;
+- (void)checkinForNavigationService:(void (^)(char *))arg1;
 - (void)interfaceHashesWithHandler:(void (^)(unsigned long long, unsigned long long))arg1;
-- (void)prepareNavigationWithRouteDetails:(MNRoutePlanningDetails *)arg1;
+- (void)pauseRealtimeUpdatesForSubscriber:(NSUUID *)arg1;
+- (void)recordPedestrianTracePath:(NSString *)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(NSData *)arg1;
 - (void)repeatCurrentGuidanceWithReply:(void (^)(BOOL))arg1;
 - (void)repeatCurrentTrafficAlertWithReply:(void (^)(BOOL))arg1;
 - (void)resumeOriginalDestination;
+- (void)resumeRealtimeUpdatesForSubscriber:(NSUUID *)arg1;
 - (void)setCurrentAudioOutputSetting:(MNAudioOutputSetting *)arg1;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setFullGuidanceMode:(BOOL)arg1;
@@ -24,17 +27,20 @@
 - (void)setHFPPreference:(BOOL)arg1 forSetting:(MNAudioOutputSetting *)arg2;
 - (void)setHeadingOrientation:(int)arg1;
 - (void)setIsConnectedToCarplay:(BOOL)arg1;
+- (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
+- (void)setRoutesForPreview:(NSArray *)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)setTraceIsPlaying:(BOOL)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTracePosition:(double)arg1;
-- (void)startNavigationForRouteDetails:(MNRoutePlanningDetails *)arg1 handler:(void (^)(void))arg2;
+- (void)startNavigationWithDetails:(MNStartNavigationDetails *)arg1 activeBlock:(void (^)(void))arg2;
 - (void)startPredictingDestinationsWithHandler:(void (^)(void))arg1;
 - (void)stopCurrentGuidancePrompt;
 - (void)stopNavigation;
 - (void)stopPredictingDestinations;
-- (void)switchToRouteWithDetails:(MNActiveRouteDetails *)arg1;
+- (void)switchToRoute:(MNActiveRouteInfo *)arg1;
 - (void)updateDestination:(GEOComposedWaypoint *)arg1;
+- (void)updateGuidanceWithData:(NSData *)arg1 reply:(void (^)(BOOL))arg2;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(void (^)(BOOL))arg2;
 @end
 

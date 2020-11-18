@@ -11,14 +11,14 @@
 #import <HomeKitDaemon/HMDVideoStreamInterfaceDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class AVCRemoteVideoClient, HMDAudioStreamInterface, HMDCameraSessionID, HMDCameraStreamSnapshotHandler, HMDVideoStreamInterface, NSNumber, NSObject, NSString;
+@class AVCRemoteVideoClient, HMDAudioStreamInterface, HMDCameraStreamSessionID, HMDCameraStreamSnapshotHandler, HMDVideoStreamInterface, NSNumber, NSObject, NSString;
 @protocol HMDStreamingManagerDelegate, OS_dispatch_queue;
 
 @interface HMDStreamingManager : HMFObject <HMDVideoStreamInterfaceDelegate, HMDAudioStreamInterfaceDelegate, AVCRemoteVideoClientDelegate, HMFLogging>
 {
     HMDVideoStreamInterface *_videoStreamInterface;
     HMDAudioStreamInterface *_audioStreamInterface;
-    HMDCameraSessionID *_sessionID;
+    HMDCameraStreamSessionID *_sessionID;
     NSNumber *_slotIdentifier;
     AVCRemoteVideoClient *_avcRemoteVideo;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
+@property (strong, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
 @property (readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
 @property (readonly) Class superclass;

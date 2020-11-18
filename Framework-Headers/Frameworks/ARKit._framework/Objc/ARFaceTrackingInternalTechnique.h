@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ARKit/ARTechnique.h>
+#import <ARKit/ARImageBasedTechnique.h>
 
-@interface ARFaceTrackingInternalTechnique : ARTechnique
+@interface ARFaceTrackingInternalTechnique : ARImageBasedTechnique
 {
+    long long _maximumNumberOfTrackedFaces;
 }
+
+@property (readonly, nonatomic) long long maximumNumberOfTrackedFaces; // @synthesize maximumNumberOfTrackedFaces=_maximumNumberOfTrackedFaces;
 
 + (BOOL)isSupported;
 - (id)initWithOptions:(id)arg1;

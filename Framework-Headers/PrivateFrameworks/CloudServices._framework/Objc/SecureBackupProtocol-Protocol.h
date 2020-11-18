@@ -11,6 +11,7 @@
 @protocol SecureBackupProtocol <NSObject>
 - (void)backOffDateWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)backupWithInfo:(NSDictionary *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)beginHSA2PasscodeRequest:(SecureBackup *)arg1 desirePasscodeImmediately:(BOOL)arg2 uuid:(NSString *)arg3 reply:(void (^)(SecureBackupBeginPasscodeRequestResults *, NSError *))arg4;
 - (void)cachePassphraseWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)cachePassphraseWithRequestAsync:(SecureBackup *)arg1;
 - (void)cacheRecoveryKeyWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
@@ -19,7 +20,9 @@
 - (void)enableWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)getAccountInfoWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getCountrySMSCodesWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
-- (void)notificationOccurred:(NSString *)arg1;
+- (void)notificationInfoWithReply:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)prepareHSA2EscrowRecordContents:(SecureBackup *)arg1 usesComplexPassphrase:(BOOL)arg2 reply:(void (^)(NSError *))arg3;
+- (void)recoverRecordContentsWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)recoverWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setBackOffDateWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)startSMSChallengeWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;

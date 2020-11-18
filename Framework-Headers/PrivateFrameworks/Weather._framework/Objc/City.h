@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFGeocodeRequest, WFLocation, WFTemperature;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFAQIScaleCategory, WFGeocodeRequest, WFLocation, WFTemperature;
 
 @interface City : NSObject
 {
@@ -51,6 +51,7 @@
     unsigned long long _pressureRising;
     NSNumber *_airQualityIdx;
     NSNumber *_airQualityCategory;
+    WFAQIScaleCategory *_airQualityScaleCategory;
     WFLocation *_wfLocation;
     unsigned long long _lastUpdateStatus;
     long long _updateInterval;
@@ -64,6 +65,7 @@
 @property (strong, nonatomic) WFGeocodeRequest *activeGeocodeRequest; // @synthesize activeGeocodeRequest=_activeGeocodeRequest;
 @property (strong, nonatomic) NSNumber *airQualityCategory; // @synthesize airQualityCategory=_airQualityCategory;
 @property (strong, nonatomic) NSNumber *airQualityIdx; // @synthesize airQualityIdx=_airQualityIdx;
+@property (strong, nonatomic) WFAQIScaleCategory *airQualityScaleCategory; // @synthesize airQualityScaleCategory=_airQualityScaleCategory;
 @property (nonatomic) BOOL autoUpdate; // @synthesize autoUpdate=_autoUpdate;
 @property (strong, nonatomic) NSTimer *autoUpdateTimer; // @synthesize autoUpdateTimer=_autoUpdateTimer;
 @property (strong, nonatomic) NSHashTable *cityUpdateObservers; // @synthesize cityUpdateObservers=_cityUpdateObservers;

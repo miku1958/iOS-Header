@@ -8,13 +8,13 @@
 
 #import <GeoServices/GEOExperimentConfigurationObserver-Protocol.h>
 
-@class GEOLogContext, NSHashTable, NSLock, NSString;
+@class GEOLogContext, NSHashTable, NSString;
 
 @interface GEOLogger : NSObject <GEOExperimentConfigurationObserver>
 {
     GEOLogContext *_cachedLogContext;
     NSHashTable *_logContextDelegates;
-    NSLock *_logContextDelegatesLock;
+    struct os_unfair_lock_s _logContextDelegatesLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,6 +26,7 @@
 + (id)loggerQueue;
 + (id)sharedLogger;
 - (void).cxx_destruct;
+- (void)_asyncToLoggerQueue:(CDUnknownBlockType)arg1;
 - (id)_cachedStateOfType:(int)arg1;
 - (void)_captureLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2 withMergedContext:(id)arg3;
 - (void)_generateAndQueueLogMessagesForLogMsgEvent:(id)arg1 userSessionSnapshot:(id)arg2 currentContext:(id)arg3;

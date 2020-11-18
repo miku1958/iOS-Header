@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXReusableObject-Protocol.h>
 #import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@class NSString, PXImageRequester, PXImageUIView, PXImageViewSpec, UIView, UIVisualEffectView;
+@class NSString, PXImageRequester, PXImageUIView, PXImageViewSpec, UIView;
 
 @interface PXUIImageTile : NSObject <PXChangeObserver, PXUIViewBasicTile, PXReusableObject>
 {
@@ -20,16 +20,13 @@
         BOOL imageView;
         BOOL imageRequester;
         BOOL image;
-        BOOL blurEffectView;
     } _needsUpdateFlags;
     PXImageUIView *_imageView;
     unsigned long long _animationFlags;
-    BOOL _applyBlurEffect;
     PXImageRequester *_imageRequester;
     PXImageViewSpec *__spec;
     double __displayScale;
     long long __animationCount;
-    UIVisualEffectView *_blurEffectView;
     struct CGSize __contentSize;
     struct CGRect __contentsRect;
 }
@@ -39,8 +36,6 @@
 @property (nonatomic, setter=_setContentsRect:) struct CGRect _contentsRect; // @synthesize _contentsRect=__contentsRect;
 @property (nonatomic, setter=_setDisplayScale:) double _displayScale; // @synthesize _displayScale=__displayScale;
 @property (strong, nonatomic, setter=_setSpec:) PXImageViewSpec *_spec; // @synthesize _spec=__spec;
-@property (nonatomic) BOOL applyBlurEffect; // @synthesize applyBlurEffect=_applyBlurEffect;
-@property (readonly, nonatomic) UIVisualEffectView *blurEffectView; // @synthesize blurEffectView=_blurEffectView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -49,14 +44,12 @@
 @property (readonly, nonatomic) UIView *view;
 
 - (void).cxx_destruct;
-- (void)_invalidateBlurEffectView;
 - (void)_invalidateImage;
 - (void)_invalidateImageRequester;
 - (void)_invalidateImageView;
 - (BOOL)_needsUpdate;
 - (void)_performChanges:(CDUnknownBlockType)arg1;
 - (void)_setNeedsUpdate;
-- (void)_updateBlurEffectViewfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updateImageIfNeeded;
 - (void)_updateImageRequesterIfNeeded;

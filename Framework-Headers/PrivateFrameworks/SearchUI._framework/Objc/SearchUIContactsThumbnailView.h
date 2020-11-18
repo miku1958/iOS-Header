@@ -6,10 +6,16 @@
 
 #import <ContactsUI/CNAvatarView.h>
 
+@class SFContactImage;
+
 @interface SearchUIContactsThumbnailView : CNAvatarView
 {
+    SFContactImage *_contactImage;
 }
 
+@property (strong, nonatomic) SFContactImage *contactImage; // @synthesize contactImage=_contactImage;
+
+- (void).cxx_destruct;
 - (id)init;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 

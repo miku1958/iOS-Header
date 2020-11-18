@@ -15,12 +15,15 @@
 
 @property (readonly, nonatomic) NSDictionary *relationshipKinds; // @synthesize relationshipKinds=_relationshipKinds;
 
++ (id)identityKind;
 + (id)kindWithRelationshipKinds:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)humanDescription;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

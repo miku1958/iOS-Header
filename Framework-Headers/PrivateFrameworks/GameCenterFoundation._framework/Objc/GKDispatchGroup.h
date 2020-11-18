@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GKThreadsafeDictionary, NSError, NSString;
+@class GKActivity, GKThreadsafeDictionary, NSError, NSString;
 @protocol OS_dispatch_group;
 
 @interface GKDispatchGroup : NSObject
@@ -19,8 +19,10 @@
     int _sequence;
     BOOL _loggingEnabled;
     id _result;
+    GKActivity *_activity;
 }
 
+@property (strong) GKActivity *activity; // @synthesize activity=_activity;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (nonatomic, getter=isLoggingEnabled) BOOL loggingEnabled; // @synthesize loggingEnabled=_loggingEnabled;
 @property (strong) id result; // @synthesize result=_result;
@@ -32,7 +34,7 @@
 + (id)mainQueue;
 + (void)waitUntilDone:(CDUnknownBlockType)arg1;
 - (id)_values;
-- (void)_waitWithDispatchTimeout:(unsigned long long)arg1;
+- (long long)_waitWithDispatchTimeout:(unsigned long long)arg1;
 - (id)allValues;
 - (void)dealloc;
 - (id)description;
@@ -47,7 +49,7 @@
 - (void)perform:(CDUnknownBlockType)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)wait;
-- (void)waitWithTimeout:(double)arg1;
+- (long long)waitWithTimeout:(double)arg1;
 
 @end
 

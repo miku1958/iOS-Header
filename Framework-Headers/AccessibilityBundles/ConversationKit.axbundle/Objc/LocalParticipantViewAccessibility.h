@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityIsExpanded;
 - (id)_axConstraintsController;
 - (id)_axGetParticipantView;
+- (BOOL)_axIsShowingVideo;
 - (id)_axParticipantView;
 - (void)_axSetParticipantView:(id)arg1;
 - (BOOL)accessibilityActivate;

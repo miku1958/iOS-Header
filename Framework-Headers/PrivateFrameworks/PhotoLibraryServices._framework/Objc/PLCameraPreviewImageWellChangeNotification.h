@@ -14,12 +14,12 @@
     NSString *_uuid;
 }
 
-@property (readonly, strong, nonatomic) NSString *assetUUID;
-@property (readonly, strong, nonatomic) UIImage *image;
+@property (readonly, nonatomic) NSString *assetUUID;
+@property (readonly, nonatomic) UIImage *image;
 
 + (id)notification;
+- (void).cxx_destruct;
 - (id)_init;
-- (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)name;

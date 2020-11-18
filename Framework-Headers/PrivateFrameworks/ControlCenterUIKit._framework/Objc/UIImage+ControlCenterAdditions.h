@@ -8,6 +8,5 @@
 
 @interface UIImage (ControlCenterAdditions)
 - (id)ccuiAlphaOnlyImageForMaskImage;
-- (id)ccuiSuitableCacheKeyForBitmapData;
 @end
 

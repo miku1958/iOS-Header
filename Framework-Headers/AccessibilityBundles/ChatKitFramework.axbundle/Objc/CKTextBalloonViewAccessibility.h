@@ -22,6 +22,7 @@
 - (id)accessibilityCustomRotors;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (id)accessibilityUserInputLabels;
 - (void)invisibleInkEffectViewWasUncovered;
 
 @end

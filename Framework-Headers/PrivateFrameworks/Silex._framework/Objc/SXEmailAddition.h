@@ -15,7 +15,6 @@
 @property (readonly, nonatomic) NSString *subject; // @dynamic subject;
 @property (readonly, nonatomic) NSString *to; // @dynamic to;
 
-+ (id)typeString;
 - (id)action;
 
 @end

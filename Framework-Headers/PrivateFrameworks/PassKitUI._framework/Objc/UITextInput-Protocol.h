@@ -6,7 +6,7 @@
 
 #import <PassKitUI/UIKeyInput-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UITextPosition, UITextRange, UIView;
+@class NSArray, NSAttributedString, NSDictionary, NSString, UITextPlaceholder, UITextPosition, UITextRange, UIView;
 @protocol UITextInputDelegate, UITextInputTokenizer;
 
 @protocol UITextInput <UIKeyInput>
@@ -50,8 +50,12 @@
 - (void)endFloatingCursor;
 - (struct CGRect)frameForDictationResultPlaceholder:(id)arg1;
 - (void)insertDictationResult:(NSArray *)arg1;
+- (void)insertText:(NSString *)arg1 alternatives:(NSArray *)arg2 style:(long long)arg3;
+- (UITextPlaceholder *)insertTextPlaceholderWithSize:(struct CGSize)arg1;
 - (UITextPosition *)positionWithinRange:(UITextRange *)arg1 atCharacterOffset:(long long)arg2;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
+- (void)removeTextPlaceholder:(UITextPlaceholder *)arg1;
+- (void)setAttributedMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange)arg2;
 - (BOOL)shouldChangeTextInRange:(UITextRange *)arg1 replacementText:(NSString *)arg2;
 - (NSDictionary *)textStylingAtPosition:(UITextPosition *)arg1 inDirection:(long long)arg2;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;

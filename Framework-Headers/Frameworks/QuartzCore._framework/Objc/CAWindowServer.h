@@ -25,6 +25,7 @@
 + (id)serverIfRunning;
 + (id)serverWithOptions:(id)arg1;
 - (void)_detectDisplays;
+- (BOOL)_detectSimDisplays;
 - (id)_init;
 - (void)addDisplay:(id)arg1;
 - (unsigned int)clientPortOfContextId:(unsigned int)arg1;
@@ -40,7 +41,6 @@
 - (void)removeDisplay:(id)arg1;
 - (id)secureModeViolations;
 - (unsigned int)taskNamePortOfContextId:(unsigned int)arg1;
-- (unsigned int)taskPortOfContextId:(unsigned int)arg1;
 
 @end
 

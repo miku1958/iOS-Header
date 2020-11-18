@@ -6,7 +6,7 @@
 
 #import <EventKit/NSObject-Protocol.h>
 
-@class NSPredicate, NSString, NSURL;
+@class CNContact, NSPredicate, NSString, NSURL;
 
 @protocol EKIdentityProtocol <NSObject>
 - (NSURL *)URL;
@@ -18,5 +18,7 @@
 
 @optional
 - (NSPredicate *)contactPredicate;
+- (CNContact *)existingContact;
+- (CNContact *)newContact;
 @end
 

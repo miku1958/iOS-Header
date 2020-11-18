@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)_onQueue_doWorkIfNecessary;
+- (void)dealloc;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
 - (id)initWithQueue:(id)arg1 takeOutTransactions:(BOOL)arg2;

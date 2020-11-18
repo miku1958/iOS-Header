@@ -35,6 +35,7 @@
     struct CGSize _referenceSize;
     struct CGRect _contentFrame;
     long long _interfaceOrientation;
+    long long _userInterfaceStyle;
     long long _contentType;
     long long _fileFormat;
     double _imageScale;
@@ -53,6 +54,7 @@
     BOOL _keepImageAccessUntilExpiration;
     BOOL _keepImageAccessForPreHeat;
     BOOL _hasProtectedContent;
+    struct os_unfair_lock_s _loadImageLock;
     CDUnknownBlockType _imageGenerator;
     struct CGAffineTransform _imageTransform;
 }
@@ -106,10 +108,13 @@
 @property (copy, nonatomic) XBStatusBarSettings *statusBarSettings; // @synthesize statusBarSettings=_statusBarSettings;
 @property (readonly, nonatomic, getter=_store) id<XBSnapshotManifestStore> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
+@property (nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 
 + (id)_allSecureCodingClassesIncludingDefaultAndClientSpecified;
++ (struct CGImage *)_createCGImageWithPreferredOptions:(id)arg1 fromCGImage:(struct CGImage *)arg2;
 + (id)dataForImage:(id)arg1 withFormat:(long long)arg2;
++ (BOOL)isValidImageFileExtension:(id)arg1;
 + (id)normalizeSnapshotName:(id)arg1;
 + (id)secureCodableCustomExtendedDataClasses;
 + (void)setSecureCodableCustomExtendedDataClasses:(id)arg1;

@@ -18,6 +18,7 @@
 - (id)freeze;
 - (id)init;
 - (id)initWithKeyVector:(id)arg1;
+- (void)intersectKeyVector:(id)arg1;
 - (void)minusKeyVector:(id)arg1;
 - (void)subtractKey:(id)arg1;
 - (void)subtractKeys:(id)arg1;

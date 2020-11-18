@@ -10,19 +10,27 @@
 #import <Contacts/NSMutableCopying-Protocol.h>
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSString;
+@class NSData, NSDate, NSString;
 
 @interface CNGroup : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_identifier;
-    int _iOSLegacyIdentifier;
     NSString *_name;
+    int _iOSLegacyIdentifier;
     CNGroup *_snapshot;
     NSDate *_creationDate;
     NSDate *_modificationDate;
+    NSString *_externalIdentifier;
+    NSData *_externalRepresentation;
+    NSString *_externalModificationTag;
+    NSString *_externalUUID;
 }
 
 @property (readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier=_externalIdentifier;
+@property (readonly, copy, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag=_externalModificationTag;
+@property (readonly, copy, nonatomic) NSData *externalRepresentation; // @synthesize externalRepresentation=_externalRepresentation;
+@property (readonly, copy, nonatomic) NSString *externalUUID; // @synthesize externalUUID=_externalUUID;
 @property (readonly, nonatomic) int iOSLegacyIdentifier; // @synthesize iOSLegacyIdentifier=_iOSLegacyIdentifier;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;

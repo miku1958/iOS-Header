@@ -31,6 +31,7 @@
     unsigned long long _sortID;
     NSString *_destinationCallerID;
     NSDate *_clientSendTime;
+    NSString *_replyToGUID;
     NSString *_personCentric;
     long long _cloudKitSyncState;
     NSString *_cloudKitRecordID;
@@ -62,6 +63,7 @@
 @property (copy, nonatomic) NSString *parentChatID; // @synthesize parentChatID=_parentChatID;
 @property (strong, nonatomic) NSString *personCentric; // @synthesize personCentric=_personCentric;
 @property (strong, nonatomic) NSString *personCentricID;
+@property (copy, nonatomic) NSString *replyToGUID; // @synthesize replyToGUID=_replyToGUID;
 @property (strong, nonatomic) NSString *roomName; // @synthesize roomName=_roomName;
 @property (strong, nonatomic) NSString *sender;
 @property (strong, nonatomic) NSDictionary *senderInfo; // @synthesize senderInfo=_senderInfo;
@@ -102,6 +104,7 @@
 - (BOOL)isOlderThanItem:(id)arg1;
 - (BOOL)isSticker;
 - (id)pluginSessionGUID;
+- (BOOL)unsentIsFromMeItem;
 
 @end
 

@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     CIImage *inputImage;
     CIImage *inputDisparityImage;
     CIImage *inputMatteImage;
+    CIImage *inputHairImage;
     NSNumber *inputAperture;
     CIVector *inputLeftEyePositions;
     CIVector *inputRightEyePositions;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (strong) CIVector *inputChinPositions; // @synthesize inputChinPositions;
 @property (strong) CIImage *inputDisparityImage; // @synthesize inputDisparityImage;
 @property (strong, nonatomic) CIVector *inputFocusRect; // @synthesize inputFocusRect;
+@property (strong) CIImage *inputHairImage; // @synthesize inputHairImage;
 @property (strong) CIImage *inputImage; // @synthesize inputImage;
 @property (strong) CIVector *inputLeftEyePositions; // @synthesize inputLeftEyePositions;
 @property (strong, nonatomic) NSNumber *inputLumaNoiseScale; // @synthesize inputLumaNoiseScale;

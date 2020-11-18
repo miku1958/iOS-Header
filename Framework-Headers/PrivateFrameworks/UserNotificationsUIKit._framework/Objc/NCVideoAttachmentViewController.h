@@ -20,6 +20,7 @@
 @property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_mediaPlayPauseButtonTapped:(id)arg1;
 - (void)_mediaPlayPauseButtonUpdateSize;
 - (void)_pause;

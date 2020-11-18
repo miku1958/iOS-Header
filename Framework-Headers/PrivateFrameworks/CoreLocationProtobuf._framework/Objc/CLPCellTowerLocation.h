@@ -28,8 +28,10 @@
     int _rscp;
     int _rssi;
     int _serverHash;
+    NSString *_serviceProviderName;
     int _transmit;
-    CDStruct_3769fefd _has;
+    BOOL _isLimitedService;
+    CDStruct_648273eb _has;
 }
 
 @property (strong, nonatomic) NSString *appBundleId; // @synthesize appBundleId=_appBundleId;
@@ -39,13 +41,16 @@
 @property (readonly, nonatomic) BOOL hasAppBundleId;
 @property (nonatomic) BOOL hasArfcn;
 @property (nonatomic) BOOL hasEcn0;
+@property (nonatomic) BOOL hasIsLimitedService;
 @property (readonly, nonatomic) BOOL hasNeighborGroup;
 @property (readonly, nonatomic) BOOL hasOperatorName;
 @property (nonatomic) BOOL hasPsc;
 @property (nonatomic) BOOL hasRat;
 @property (nonatomic) BOOL hasRscp;
 @property (nonatomic) BOOL hasServerHash;
+@property (readonly, nonatomic) BOOL hasServiceProviderName;
 @property (nonatomic) BOOL hasTransmit;
+@property (nonatomic) BOOL isLimitedService; // @synthesize isLimitedService=_isLimitedService;
 @property (nonatomic) int lac; // @synthesize lac=_lac;
 @property (strong, nonatomic) CLPLocation *location; // @synthesize location=_location;
 @property (nonatomic) int mcc; // @synthesize mcc=_mcc;
@@ -58,6 +63,7 @@
 @property (nonatomic) int rscp; // @synthesize rscp=_rscp;
 @property (nonatomic) int rssi; // @synthesize rssi=_rssi;
 @property (nonatomic) int serverHash; // @synthesize serverHash=_serverHash;
+@property (strong, nonatomic) NSString *serviceProviderName; // @synthesize serviceProviderName=_serviceProviderName;
 @property (nonatomic) int transmit; // @synthesize transmit=_transmit;
 
 + (Class)neighborType;

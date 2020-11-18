@@ -41,6 +41,8 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDestination:(id)arg1;
+- (id)normalizedURIStrings;
+- (id)normalizedURIs;
 
 @end
 

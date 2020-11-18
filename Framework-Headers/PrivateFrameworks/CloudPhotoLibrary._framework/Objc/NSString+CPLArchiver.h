@@ -7,6 +7,8 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CPLArchiver)
+- (id)cplStringByAppendingPathExtension:(id)arg1 fallbackExtension:(id)arg2;
+- (id)cpl_redactedShareURL;
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
 @end

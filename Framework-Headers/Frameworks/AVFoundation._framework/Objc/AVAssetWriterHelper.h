@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class AVAssetWriterConfigurationState, AVMediaFileType, AVWeakReference, NSArray, NSError, NSURL;
+@protocol AVAssetWriterDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AVAssetWriterHelper : NSObject
@@ -17,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSArray *availableMediaTypes;
 @property (readonly, nonatomic) AVAssetWriterConfigurationState *configurationState; // @synthesize configurationState=_configurationState;
+@property (weak) id<AVAssetWriterDelegate> delegate;
 @property (copy, nonatomic) NSURL *directoryForTemporaryFiles;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic) NSArray *inputGroups;
@@ -49,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)endSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;
 - (void)finishWriting;
 - (void)finishWritingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)flush;
 - (id)init;
 - (id)initWithConfigurationState:(id)arg1;
 - (void)startSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;

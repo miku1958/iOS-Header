@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSString *accessoryImageName; // @dynamic accessoryImageName;
 @property (copy, nonatomic) NSArray *attachments; // @dynamic attachments;
 @property (copy, nonatomic) NSNumber *badge; // @dynamic badge;
 @property (copy, nonatomic) NSString *body; // @dynamic body;
@@ -31,6 +32,8 @@
 @property (nonatomic) BOOL shouldHideTime; // @dynamic shouldHideTime;
 @property (nonatomic) BOOL shouldIgnoreDoNotDisturb; // @dynamic shouldIgnoreDoNotDisturb;
 @property (nonatomic) BOOL shouldIgnoreDowntime; // @dynamic shouldIgnoreDowntime;
+@property (nonatomic) BOOL shouldPreemptPresentedNotification; // @dynamic shouldPreemptPresentedNotification;
+@property (nonatomic) BOOL shouldPreemptSTAR; // @dynamic shouldPreemptSTAR;
 @property (nonatomic) BOOL shouldPreventNotificationDismissalAfterDefaultAction; // @dynamic shouldPreventNotificationDismissalAfterDefaultAction;
 @property (nonatomic) BOOL shouldSuppressDefaultAction; // @dynamic shouldSuppressDefaultAction;
 @property (nonatomic) BOOL shouldSuppressScreenLightUp; // @dynamic shouldSuppressScreenLightUp;
@@ -40,6 +43,7 @@
 @property (copy, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property (copy, nonatomic) NSString *summaryArgument; // @dynamic summaryArgument;
 @property (nonatomic) unsigned long long summaryArgumentCount; // @dynamic summaryArgumentCount;
+@property (copy, nonatomic) NSString *targetContentIdentifier; // @dynamic targetContentIdentifier;
 @property (copy, nonatomic) NSString *threadIdentifier; // @dynamic threadIdentifier;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 @property (copy, nonatomic) NSSet *topicIdentifiers; // @dynamic topicIdentifiers;

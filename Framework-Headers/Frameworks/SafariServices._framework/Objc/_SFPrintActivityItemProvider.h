@@ -6,19 +6,33 @@
 
 #import <SafariServices/_SFActivityItemProvider.h>
 
-@class UIPrintPageRenderer, _SFPrintController;
+#import <SafariServices/UIActivityItemsSource-Protocol.h>
 
-@interface _SFPrintActivityItemProvider : _SFActivityItemProvider
+@class LPFileMetadata, NSItemProvider, NSString, UIPrintPageRenderer, _SFPrintController;
+
+@interface _SFPrintActivityItemProvider : _SFActivityItemProvider <UIActivityItemsSource>
 {
     UIPrintPageRenderer *_printPageRenderer;
+    NSItemProvider *_pdfItemProvider;
+    LPFileMetadata *_linkPreviewFileMetadata;
     BOOL _hasReservedPrintInteractionController;
+    BOOL _canVendPDFRepresentation;
     _SFPrintController *_printController;
 }
 
+@property (nonatomic) BOOL canVendPDFRepresentation; // @synthesize canVendPDFRepresentation=_canVendPDFRepresentation;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasReservedPrintInteractionController; // @synthesize hasReservedPrintInteractionController=_hasReservedPrintInteractionController;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSItemProvider *pdfItemProvider;
 @property (readonly, nonatomic) _SFPrintController *printController; // @synthesize printController=_printController;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)activityViewController:(id)arg1 itemsForActivityType:(id)arg2;
+- (id)activityViewControllerLinkPresentationMetadata:(id)arg1;
+- (id)activityViewControllerPlaceholderItems:(id)arg1;
 - (id)initWithPrintController:(id)arg1 webView:(id)arg2;
 - (id)item;
 

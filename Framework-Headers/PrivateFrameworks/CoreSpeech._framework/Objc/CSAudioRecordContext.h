@@ -6,26 +6,53 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+#import <CoreSpeech/NSCopying-Protocol.h>
 
-@interface CSAudioRecordContext : NSObject
+@class NSString;
+@protocol OS_xpc_object;
+
+@interface CSAudioRecordContext : NSObject <NSCopying>
 {
-    NSDictionary *_avvcContext;
-    unsigned long long _type;
+    BOOL _alwaysUseRemoteBuiltInMic;
+    long long _type;
     NSString *_deviceId;
 }
 
+@property (nonatomic) BOOL alwaysUseRemoteBuiltInMic; // @synthesize alwaysUseRemoteBuiltInMic=_alwaysUseRemoteBuiltInMic;
 @property (strong, nonatomic) NSString *deviceId; // @synthesize deviceId=_deviceId;
-@property (nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcObject;
 
++ (id)contextForBTLE;
 + (id)contextForBuiltInVoiceTrigger;
 + (id)contextForHearstVoiceTriggerWithDeviceId:(id)arg1;
++ (id)contextForJarvisWithDeviceId:(id)arg1;
++ (id)contextForOpportuneSpeakerListener;
++ (id)contextForServerInvoke;
++ (id)contextForVoiceTriggerTraining;
++ (id)defaultContext;
++ (id)recordTypeString:(long long)arg1;
 - (void).cxx_destruct;
-- (id)_createAVVCContextWithType:(unsigned long long)arg1 deviceId:(id)arg2;
-- (long long)avvcActivationMode:(unsigned long long)arg1;
+- (id)_createAVVCContextWithType:(long long)arg1 deviceId:(id)arg2;
+- (long long)avvcActivationMode:(long long)arg1;
 - (id)avvcContext;
+- (id)avvcContextSettings;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)initWithAVVCContext:(id)arg1;
-- (id)initWithRecordType:(unsigned long long)arg1 deviceId:(id)arg2;
+- (id)initWithRecordType:(long long)arg1 deviceId:(id)arg2;
+- (id)initWithXPCObject:(id)arg1;
+- (BOOL)isBuiltInVoiceTriggered;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isHearstDoubleTapTriggered;
+- (BOOL)isHearstVoiceTriggered;
+- (BOOL)isJarvisVoiceTriggered;
+- (BOOL)isRTSTriggered;
+- (BOOL)isServerInvoked;
+- (BOOL)isStarkTriggered;
+- (BOOL)isTriggeredFromHearst;
+- (BOOL)isVoiceTriggered;
+- (long long)recordTypeFromAVVCActivationMode:(long long)arg1;
 
 @end
 

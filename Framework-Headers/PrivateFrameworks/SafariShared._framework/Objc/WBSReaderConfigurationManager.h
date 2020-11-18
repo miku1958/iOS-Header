@@ -12,10 +12,12 @@
 {
     long long _textZoomIndex;
     long long _theme;
+    long long _darkModeTheme;
     NSMutableDictionary *_fontFamilyNameForLanguageTag;
     WBSReaderFontManager *_fontManager;
     BOOL _prefersLargerDefaultFontSize;
     BOOL _javaScriptEnabled;
+    BOOL _darkModeEnabled;
     BOOL _isOLEDDisplay;
 }
 
@@ -23,6 +25,7 @@
 @property (readonly, nonatomic) BOOL canMakeTextSmaller;
 @property (readonly, nonatomic) NSDictionary *configurationToSave;
 @property (readonly, nonatomic) NSDictionary *configurationToSendToWebPage;
+@property (nonatomic) BOOL darkModeEnabled; // @synthesize darkModeEnabled=_darkModeEnabled;
 @property (nonatomic) BOOL isOLEDDisplay; // @synthesize isOLEDDisplay=_isOLEDDisplay;
 @property (nonatomic) BOOL javaScriptEnabled; // @synthesize javaScriptEnabled=_javaScriptEnabled;
 @property (readonly, nonatomic) BOOL resettingTextSizeWouldHaveEffect;

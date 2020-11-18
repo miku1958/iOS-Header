@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCompoundPredicate, NSMutableDictionary, NSMutableSet, OSLogDevice, _OSLogStreamFilter;
+@class NSCompoundPredicate, NSMutableSet, OSLogDevice, _OSLogStreamFilter;
 @protocol OSActivityStreamDelegate, OSDeviceDelegate;
 
 @interface OSActivityStream : NSObject
@@ -25,12 +25,10 @@
     unsigned long long _eventFilter;
     NSCompoundPredicate *_predicate;
     OSLogDevice *_device;
-    NSMutableDictionary *_activityFilters;
 }
 
-@property (nonatomic) NSMutableDictionary *activityFilters; // @synthesize activityFilters=_activityFilters;
 @property (weak, nonatomic) id<OSActivityStreamDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) OSLogDevice *device; // @synthesize device=_device;
+@property (strong, nonatomic) OSLogDevice *device; // @synthesize device=_device;
 @property (weak, nonatomic) id<OSDeviceDelegate> deviceDelegate; // @synthesize deviceDelegate=_deviceDelegate;
 @property (nonatomic) unsigned long long eventFilter; // @synthesize eventFilter=_eventFilter;
 @property (nonatomic) unsigned long long events;
@@ -38,7 +36,6 @@
 @property (copy, nonatomic) NSCompoundPredicate *predicate; // @synthesize predicate=_predicate;
 
 - (void).cxx_destruct;
-- (void)addFilterForActivity:(id)arg1 andBinary:(id)arg2;
 - (void)addProcessID:(int)arg1;
 - (void)dealloc;
 - (BOOL)establishTrust:(id)arg1;

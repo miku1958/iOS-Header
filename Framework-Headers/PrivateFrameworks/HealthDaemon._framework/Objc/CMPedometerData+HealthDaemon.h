@@ -17,10 +17,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (long long)hd_compare:(id)arg1;
 - (id)hd_datestamp;
 - (id)hd_epochDatestamp;
 - (BOOL)hd_hasWorkout;
-- (long long)hd_recordID;
 - (id)hd_sourceID;
 - (id)hd_unitForType:(id)arg1;
 @end

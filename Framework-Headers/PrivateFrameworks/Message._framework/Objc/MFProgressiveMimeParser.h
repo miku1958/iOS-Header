@@ -28,6 +28,7 @@
     } _parserFlags;
 }
 
+- (void).cxx_destruct;
 - (void)_continueParsing;
 - (void)_continueParsingBody;
 - (void)_continueParsingHeaders;
@@ -38,7 +39,6 @@
 - (id)context;
 - (id)currentPart;
 - (id)data;
-- (void)dealloc;
 - (id)initWithBodyData:(id)arg1 topLevelHeaders:(id)arg2 headersToPreserve:(id)arg3;
 - (void)noteDataLengthChanged:(unsigned int)arg1;
 - (void)setContext:(id)arg1;

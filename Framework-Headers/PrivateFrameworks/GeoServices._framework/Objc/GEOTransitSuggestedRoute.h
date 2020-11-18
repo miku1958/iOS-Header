@@ -6,64 +6,121 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <GeoServices/GEOCompanionCompatibility-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitRoutingIncidentMessage, GEOTransitRouteDisplayStrings, NSData, NSMutableArray;
+@class GEOPBTransitRoutingIncidentMessage, GEOTransitEngineDebugData, GEOTransitRouteDisplayStrings, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-@interface GEOTransitSuggestedRoute : PBCodable <NSCopying>
+@interface GEOTransitSuggestedRoute : PBCodable <GEOCompanionCompatibility, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _routeBadges;
-    unsigned int _absEndTime;
-    unsigned int _absStartTime;
     GEOTransitRouteDisplayStrings *_displayStrings;
-    unsigned int _rank;
+    GEOTransitEngineDebugData *_engineDebugData;
     NSData *_routeHandle;
     NSMutableArray *_routePlanningArtworks;
     NSMutableArray *_sectionOptions;
     NSMutableArray *_sections;
     NSMutableArray *_steps;
     GEOPBTransitRoutingIncidentMessage *_transitIncidentMessage;
+    unsigned int _absEndTime;
+    unsigned int _absStartTime;
+    unsigned int _rank;
     unsigned int _travelTimeAggressiveEstimate;
     unsigned int _travelTimeConservativeEstimate;
+    BOOL _supportsRouteUpdates;
     struct {
-        unsigned int absEndTime:1;
-        unsigned int absStartTime:1;
-        unsigned int rank:1;
-        unsigned int travelTimeAggressiveEstimate:1;
-        unsigned int travelTimeConservativeEstimate:1;
-    } _has;
+        unsigned int has_absEndTime:1;
+        unsigned int has_absStartTime:1;
+        unsigned int has_rank:1;
+        unsigned int has_travelTimeAggressiveEstimate:1;
+        unsigned int has_travelTimeConservativeEstimate:1;
+        unsigned int has_supportsRouteUpdates:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_routeBadges:1;
+        unsigned int read_displayStrings:1;
+        unsigned int read_engineDebugData:1;
+        unsigned int read_routeHandle:1;
+        unsigned int read_routePlanningArtworks:1;
+        unsigned int read_sectionOptions:1;
+        unsigned int read_sections:1;
+        unsigned int read_steps:1;
+        unsigned int read_transitIncidentMessage:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_routeBadges:1;
+        unsigned int wrote_displayStrings:1;
+        unsigned int wrote_engineDebugData:1;
+        unsigned int wrote_routeHandle:1;
+        unsigned int wrote_routePlanningArtworks:1;
+        unsigned int wrote_sectionOptions:1;
+        unsigned int wrote_sections:1;
+        unsigned int wrote_steps:1;
+        unsigned int wrote_transitIncidentMessage:1;
+        unsigned int wrote_absEndTime:1;
+        unsigned int wrote_absStartTime:1;
+        unsigned int wrote_rank:1;
+        unsigned int wrote_travelTimeAggressiveEstimate:1;
+        unsigned int wrote_travelTimeConservativeEstimate:1;
+        unsigned int wrote_supportsRouteUpdates:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int absEndTime; // @synthesize absEndTime=_absEndTime;
-@property (nonatomic) unsigned int absStartTime; // @synthesize absStartTime=_absStartTime;
-@property (strong, nonatomic) GEOTransitRouteDisplayStrings *displayStrings; // @synthesize displayStrings=_displayStrings;
+@property (nonatomic) unsigned int absEndTime;
+@property (nonatomic) unsigned int absStartTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) GEOTransitRouteDisplayStrings *displayStrings;
+@property (strong, nonatomic) GEOTransitEngineDebugData *engineDebugData;
 @property (nonatomic) BOOL hasAbsEndTime;
 @property (nonatomic) BOOL hasAbsStartTime;
 @property (readonly, nonatomic) BOOL hasDisplayStrings;
+@property (readonly, nonatomic) BOOL hasEngineDebugData;
 @property (nonatomic) BOOL hasRank;
 @property (readonly, nonatomic) BOOL hasRouteHandle;
+@property (nonatomic) BOOL hasSupportsRouteUpdates;
 @property (readonly, nonatomic) BOOL hasTransitIncidentMessage;
 @property (nonatomic) BOOL hasTravelTimeAggressiveEstimate;
 @property (nonatomic) BOOL hasTravelTimeConservativeEstimate;
-@property (nonatomic) unsigned int rank; // @synthesize rank=_rank;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned int rank;
 @property (readonly, nonatomic) int *routeBadges;
 @property (readonly, nonatomic) unsigned long long routeBadgesCount;
-@property (strong, nonatomic) NSData *routeHandle; // @synthesize routeHandle=_routeHandle;
-@property (strong, nonatomic) NSMutableArray *routePlanningArtworks; // @synthesize routePlanningArtworks=_routePlanningArtworks;
-@property (strong, nonatomic) NSMutableArray *sectionOptions; // @synthesize sectionOptions=_sectionOptions;
-@property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
-@property (strong, nonatomic) NSMutableArray *steps; // @synthesize steps=_steps;
-@property (strong, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage; // @synthesize transitIncidentMessage=_transitIncidentMessage;
-@property (nonatomic) unsigned int travelTimeAggressiveEstimate; // @synthesize travelTimeAggressiveEstimate=_travelTimeAggressiveEstimate;
-@property (nonatomic) unsigned int travelTimeConservativeEstimate; // @synthesize travelTimeConservativeEstimate=_travelTimeConservativeEstimate;
+@property (strong, nonatomic) NSData *routeHandle;
+@property (strong, nonatomic) NSMutableArray *routePlanningArtworks;
+@property (strong, nonatomic) NSMutableArray *sectionOptions;
+@property (strong, nonatomic) NSMutableArray *sections;
+@property (strong, nonatomic) NSMutableArray *steps;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsRouteUpdates;
+@property (strong, nonatomic) GEOPBTransitRoutingIncidentMessage *transitIncidentMessage;
+@property (nonatomic) unsigned int travelTimeAggressiveEstimate;
+@property (nonatomic) unsigned int travelTimeConservativeEstimate;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (readonly, nonatomic, getter=isWalkingOnlyRoute) BOOL walkingOnlyRoute;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)routePlanningArtworkType;
 + (Class)sectionOptionType;
 + (Class)sectionType;
 + (Class)stepsType;
 - (void).cxx_destruct;
 - (int)StringAsRouteBadges:(id)arg1;
+- (void)_addNoFlagsRouteBadge:(int)arg1;
+- (void)_addNoFlagsRoutePlanningArtwork:(id)arg1;
+- (void)_addNoFlagsSection:(id)arg1;
+- (void)_addNoFlagsSectionOption:(id)arg1;
+- (void)_addNoFlagsSteps:(id)arg1;
+- (void)_readDisplayStrings;
+- (void)_readEngineDebugData;
+- (void)_readRouteBadges;
+- (void)_readRouteHandle;
+- (void)_readRoutePlanningArtworks;
+- (void)_readSectionOptions;
+- (void)_readSections;
+- (void)_readSteps;
+- (void)_readTransitIncidentMessage;
 - (void)addRouteBadge:(int)arg1;
 - (void)addRoutePlanningArtwork:(id)arg1;
 - (void)addSection:(id)arg1;
@@ -74,14 +131,15 @@
 - (void)clearSectionOptions;
 - (void)clearSections;
 - (void)clearSteps;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)instanceCompatibleWithProtocolVersion:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)routeBadgeAtIndex:(unsigned long long)arg1;
 - (id)routeBadgesAsString:(int)arg1;

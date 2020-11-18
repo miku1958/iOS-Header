@@ -41,7 +41,6 @@
 }
 
 @property (readonly) NSArray *animationKeys;
-@property (strong, nonatomic) id borderColor;
 @property (strong, nonatomic) id contents;
 @property (nonatomic) struct SCNMatrix4 contentsTransform;
 @property (readonly, copy) NSString *debugDescription;
@@ -61,6 +60,7 @@
 + (struct __C3DImage *)_copyC3DImageFromImageData:(id)arg1 typeID:(unsigned long long)arg2;
 + (id)_copyImageFromC3DImage:(struct __C3DImage *)arg1;
 + (id)captureDeviceOutputConsumer;
++ (id)captureDeviceOutputConsumerWithOptions:(id)arg1;
 + (struct __C3DImage *)copyC3DImageFromImage:(id)arg1;
 + (struct __C3DImage *)copyC3DImageFromImage:(id)arg1 textureOptions:(int)arg2;
 + (struct __C3DImage *)copyC3DImageFromImage:(id)arg1 textureOptions:(int)arg2 wasCached:(BOOL *)arg3;
@@ -72,6 +72,7 @@
 - (const void *)__CFObject;
 - (void)__allocateContentTransformIfNeeded;
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (id)__runtimeResolvedPath;
 - (id)_animationPathForKey:(id)arg1;
 - (void)_clearContents;
 - (void)_copyAnimationsFrom:(id)arg1;
@@ -94,8 +95,11 @@
 - (void)_syncObjCModel;
 - (int)_textureOptions;
 - (void)_updateC3DImageWithContents:(id)arg1;
+- (void)_updateMaterialAVPlayer:(id)arg1;
 - (void)_updateMaterialAttachment:(id)arg1;
 - (void)_updateMaterialBorderColor:(id)arg1;
+- (void)_updateMaterialCaptureDevice:(id)arg1;
+- (void)_updateMaterialCaptureDeviceOutputConsumerSource:(id)arg1;
 - (void)_updateMaterialColor:(id)arg1;
 - (void)_updateMaterialFilters;
 - (void)_updateMaterialImage:(id)arg1;
@@ -106,6 +110,7 @@
 - (void)_updateMaterialPropertyTransform:(union C3DMatrix4x4)arg1;
 - (void)_updateMaterialSKScene:(id)arg1;
 - (void)_updateMaterialSKTexture:(id)arg1;
+- (void)_updateMaterialTextureProvider:(id)arg1;
 - (void)_updateMaterialUIComponent:(id)arg1;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
@@ -114,8 +119,12 @@
 - (struct __C3DAnimationManager *)animationManager;
 - (id)animationPlayerForKey:(id)arg1;
 - (id)attachment;
+- (id)avPlayer;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
+- (id)borderColor;
 - (C3DColor4_0cad58d8)borderColor4;
+- (id)captureDevice;
+- (id)captureDeviceOutputConsumerSource;
 - (id)color;
 - (C3DColor4_0cad58d8)color4;
 - (struct __C3DEffectCommonProfile *)commonProfile;
@@ -159,6 +168,10 @@
 - (BOOL)sRGBTexture;
 - (struct __C3DScene *)sceneRef;
 - (void)setAttachment:(id)arg1;
+- (void)setAvPlayer:(id)arg1;
+- (void)setBorderColor:(id)arg1;
+- (void)setCaptureDevice:(id)arg1;
+- (void)setCaptureDeviceOutputConsumerSource:(id)arg1;
 - (void)setColor:(id)arg1;
 - (void)setContent:(id)arg1;
 - (void)setFloatValue:(id)arg1;
@@ -170,11 +183,13 @@
 - (void)setSkScene:(id)arg1;
 - (void)setSkTexture:(id)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
+- (void)setTextureProvider:(id)arg1;
 - (void)setUIView:(id)arg1;
 - (void)setUIWindow:(id)arg1;
 - (id)skScene;
 - (id)skTexture;
 - (id)slotName;
+- (id)textureProvider;
 - (struct __C3DTextureSampler *)textureSampler;
 - (void)unbindAnimatablePath:(id)arg1;
 - (void)unlinkCustomPropertyWithParent:(id)arg1;

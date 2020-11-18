@@ -22,6 +22,7 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType interItemSpacingProvider; // @synthesize interItemSpacingProvider=_interItemSpacingProvider;
 
 + (struct UIEdgeInsets)insetsToCenterFirstAndLastItemsGivenContainerSize:(struct CGSize)arg1 itemSize:(struct CGSize)arg2;
++ (double)minimumInterItemSpacingForVisibileBoundsSize:(struct CGSize)arg1 defaultCellSize:(struct CGSize)arg2 engagedCellSize:(struct CGSize)arg3;
 - (void).cxx_destruct;
 - (struct CGSize)cellSizeForEngagement:(double)arg1;
 - (struct CGPoint)centerForCenteringElementAtIndex:(long long)arg1 visibleBoundsSize:(struct CGSize)arg2 proposedOrigin:(struct CGPoint)arg3;

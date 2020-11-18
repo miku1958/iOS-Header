@@ -7,6 +7,8 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (PLAdditions)
+- (id)_pl_prettyDescription;
+- (id)_pl_prettyDescriptionWithIndent:(long long)arg1;
 - (id)pl_briefDescription;
 @end
 

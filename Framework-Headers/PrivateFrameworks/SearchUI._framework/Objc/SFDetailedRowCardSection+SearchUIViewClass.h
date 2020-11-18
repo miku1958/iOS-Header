@@ -7,6 +7,7 @@
 #import <SearchFoundation/SFDetailedRowCardSection.h>
 
 @interface SFDetailedRowCardSection (SearchUIViewClass)
+- (Class)_searchUIHorizontallyScrollingButtonControllerClass;
 - (Class)_searchUIViewClass;
 @end
 

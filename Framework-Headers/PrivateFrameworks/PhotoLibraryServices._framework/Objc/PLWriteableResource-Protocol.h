@@ -6,27 +6,24 @@
 
 #import <PhotoLibraryServices/PLResource-Protocol.h>
 
-@class NSString;
-@protocol PLCodecIdentity, PLColorSpaceIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
+@protocol PLCodecIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
 
 @protocol PLWriteableResource <PLResource>
 
 @property (strong, nonatomic) id<PLCodecIdentity> codecID;
-@property (strong, nonatomic) id<PLColorSpaceIdentity> colorSpaceID;
-@property (nonatomic) long long dataLength;
 @property (strong, nonatomic) id<PLResourceDataStore> dataStore;
 @property (strong, nonatomic) id<PLResourceDataStoreKey> dataStoreKey;
 @property (nonatomic) long long dataStoreSubtype;
-@property (strong, nonatomic) NSString *fingerprint;
 @property (nonatomic) unsigned int orientation;
 @property (nonatomic) int qualitySortValue;
 @property (nonatomic) unsigned int recipeID;
 @property (nonatomic) short remoteAvailability;
-@property (nonatomic) short resourceType;
+@property (nonatomic) unsigned int resourceType;
+@property (nonatomic) float scale;
 @property (strong, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
 @property (nonatomic) long long unorientedHeight;
 @property (nonatomic) long long unorientedWidth;
-@property (nonatomic) short version;
+@property (nonatomic) unsigned int version;
 
 @end
 

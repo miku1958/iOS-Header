@@ -6,20 +6,43 @@
 
 #import <SearchFoundation/SFImage.h>
 
-@class NSDate;
+#import <SearchFoundation/NSCopying-Protocol.h>
+#import <SearchFoundation/NSSecureCoding-Protocol.h>
+#import <SearchFoundation/SFCalendarImage-Protocol.h>
 
-@interface SFCalendarImage : SFImage
+@class NSData, NSDate, NSDictionary, NSString;
+
+@interface SFCalendarImage : SFImage <SFCalendarImage, NSSecureCoding, NSCopying>
 {
     NSDate *_date;
 }
 
-@property (strong) NSDate *date; // @synthesize date=_date;
+@property (copy, nonatomic) NSString *contentType;
+@property (nonatomic) double cornerRadius;
+@property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier;
+@property (copy) NSData *imageData;
+@property (nonatomic) BOOL isTemplate;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *keyColor;
+@property (nonatomic) double scale;
+@property (nonatomic) BOOL shouldCropToCircle;
+@property (nonatomic) struct CGSize size;
+@property (nonatomic) int source;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDate:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (id)allKeys;
 - (long long)currentSize;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithURL:(id)arg1;
 - (BOOL)isPlayableOffline;
 - (id)lastModifiedDateOfEntryForKey:(id)arg1;

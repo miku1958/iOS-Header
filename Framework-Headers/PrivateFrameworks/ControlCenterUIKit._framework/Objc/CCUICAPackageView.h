@@ -14,13 +14,14 @@
     CALayer *_packageLayer;
     CAPackage *_package;
     CCUICAPackageDescription *_packageDescription;
+    double _scale;
 }
 
 @property (strong, nonatomic) CAPackage *package; // @synthesize package=_package;
 @property (strong, nonatomic) CCUICAPackageDescription *packageDescription; // @synthesize packageDescription=_packageDescription;
+@property (nonatomic) double scale; // @synthesize scale=_scale;
 
 - (void).cxx_destruct;
-- (void)_setPackage:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setStateName:(id)arg1;

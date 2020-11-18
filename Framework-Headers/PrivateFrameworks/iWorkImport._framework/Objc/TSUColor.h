@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *hexString;
 @property (readonly, nonatomic) TSUColor *invertedColor;
+@property (readonly, nonatomic) BOOL isClear;
 @property (readonly, nonatomic) BOOL isNearlyWhite;
 @property (readonly, nonatomic) BOOL isOpaque;
 @property (readonly, nonatomic) double luminance;

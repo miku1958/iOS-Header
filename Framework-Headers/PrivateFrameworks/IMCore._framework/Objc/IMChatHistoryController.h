@@ -17,8 +17,6 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)databaseFull;
-- (void)databaseNoLongerFull;
 - (void)dealloc;
 - (id)init;
 - (void)loadMessageWithGUID:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;

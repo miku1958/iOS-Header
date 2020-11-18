@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 @class CMSkiData;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMSkiTrackerInternal : NSObject
 {
     struct CLConnectionClient *fLocationdConnection;
     NSObject<OS_dispatch_queue> *fInternalQueue;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     BOOL fStartedUpdates;
     CMSkiData *fMostRecentRecord;
     CDUnknownBlockType fHandler;
@@ -24,9 +23,7 @@
 - (void)_handleUpdates:(id)arg1;
 - (void)_queryUpdatesFromRecord:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_startUpdatesFromRecord:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_startWatchdogCheckins;
 - (void)_stopUpdates;
-- (void)_stopWatchdogCheckins;
 - (void)_teardown;
 - (void)dealloc;
 - (id)init;

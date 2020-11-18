@@ -37,28 +37,29 @@
 }
 
 @property (nonatomic) id<PLSlalomRegionEditorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) struct CGRect endHandleFrame;
 @property (nonatomic) double endValue; // @synthesize endValue=_endValue;
 @property (nonatomic) double maxValue; // @synthesize maxValue=_maxValue;
 @property (nonatomic) double minValue; // @synthesize minValue=_minValue;
 @property (nonatomic) unsigned long long regionEditorStyle; // @synthesize regionEditorStyle=_regionEditorStyle;
+@property (readonly, nonatomic) struct CGRect startHandleFrame;
 @property (nonatomic) double startValue; // @synthesize startValue=_startValue;
 @property (nonatomic) struct UIEdgeInsets trackInsets; // @synthesize trackInsets=_trackInsets;
 @property (nonatomic) double trimHandleWidth; // @synthesize trimHandleWidth=_trimHandleWidth;
 @property (nonatomic, getter=isZoomAnimating, setter=setZoomAnimating:) BOOL zoomAnimating; // @synthesize zoomAnimating=_zoomAnimating;
 @property (nonatomic) double zoomDelay; // @synthesize zoomDelay=_zoomDelay;
 
+- (void).cxx_destruct;
 - (void)_beginTrackingZoomWithTouch:(id)arg1;
 - (void)_cancelTrackingZoom;
 - (void)_cancelZoom;
 - (void)_cancelZoomTrackingIfNeccessaryWithTouch:(id)arg1;
 - (void)_drawCurveWithFlatEndsFromX:(double)arg1 fromY:(double)arg2 toX:(double)arg3 toY:(double)arg4;
-- (struct CGRect)_endHandleFrame;
 - (struct CGRect)_handleFrameForValue:(double)arg1 isStart:(BOOL)arg2;
 - (id)_handleImage;
 - (id)_handleTintColor;
 - (BOOL)_isTouch:(id)arg1 inHandleIsStart:(BOOL)arg2 outTouchOffset:(double *)arg3;
 - (BOOL)_isZoomed;
-- (struct CGRect)_startHandleFrame;
 - (void)_stopTrackingAndSendControlEvents:(unsigned long long)arg1;
 - (id)_tickColor;
 - (id)_trackColor;
@@ -78,7 +79,6 @@
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

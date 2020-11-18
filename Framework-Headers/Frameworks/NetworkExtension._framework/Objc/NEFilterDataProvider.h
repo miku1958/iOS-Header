@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)applySettings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)handleInboundDataCompleteForFlow:(id)arg1;
 - (id)handleInboundDataFromFlow:(id)arg1 readBytesStartOffset:(unsigned long long)arg2 readBytes:(id)arg3;
 - (id)handleNewFlow:(id)arg1;
@@ -26,6 +27,7 @@
 - (id)handleOutboundDataFromFlow:(id)arg1 readBytesStartOffset:(unsigned long long)arg2 readBytes:(id)arg3;
 - (id)handleRemediationForFlow:(id)arg1;
 - (void)handleRulesChanged;
+- (void)resumeFlow:(id)arg1 withVerdict:(id)arg2;
 
 @end
 

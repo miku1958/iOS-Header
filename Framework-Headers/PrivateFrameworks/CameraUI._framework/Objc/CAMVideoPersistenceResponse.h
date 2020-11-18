@@ -23,6 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo;
+@property (readonly, nonatomic) struct CGSize finalExpectedPixelSize;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property (readonly, nonatomic) NSString *irisStillImageUUID;
@@ -40,8 +41,7 @@
 @property (readonly, nonatomic) NSString *uuid;
 
 - (void).cxx_destruct;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 creationDate:(id)arg4 scubberImage:(id)arg5;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 creationDate:(id)arg4 scubberImage:(id)arg5 duration:(CDStruct_1b6d18a9)arg6 stillPersistenceUUID:(id)arg7 stillDisplayTime:(CDStruct_1b6d18a9)arg8;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 url:(id)arg3 creationDate:(id)arg4 scrubberImage:(id)arg5 finalExpectedPixelSize:(struct CGSize)arg6 duration:(CDStruct_1b6d18a9)arg7 stillPersistenceUUID:(id)arg8 stillDisplayTime:(CDStruct_1b6d18a9)arg9 coordinationInfo:(id)arg10;
 
 @end
 

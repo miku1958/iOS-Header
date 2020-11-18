@@ -20,6 +20,7 @@
     NSMutableArray *_participants;
     NSMutableArray *_potentialMatchs;
     int _publicAccess;
+    int _publisherModelType;
     CKDPProtectionInfo *_selfAddedPcs;
     CKDPShareIdentifier *_shareId;
     NSData *_shortTokenHash;
@@ -28,6 +29,7 @@
     BOOL _publisherModel;
     struct {
         unsigned int publicAccess:1;
+        unsigned int publisherModelType:1;
         unsigned int anonymousPublicAccess:1;
         unsigned int publisherModel:1;
     } _has;
@@ -43,6 +45,7 @@
 @property (readonly, nonatomic) BOOL hasOrigin;
 @property (nonatomic) BOOL hasPublicAccess;
 @property (nonatomic) BOOL hasPublisherModel;
+@property (nonatomic) BOOL hasPublisherModelType;
 @property (readonly, nonatomic) BOOL hasSelfAddedPcs;
 @property (readonly, nonatomic) BOOL hasShareId;
 @property (readonly, nonatomic) BOOL hasShortTokenHash;
@@ -54,6 +57,7 @@
 @property (strong, nonatomic) NSMutableArray *potentialMatchs; // @synthesize potentialMatchs=_potentialMatchs;
 @property (nonatomic) int publicAccess; // @synthesize publicAccess=_publicAccess;
 @property (nonatomic) BOOL publisherModel; // @synthesize publisherModel=_publisherModel;
+@property (nonatomic) int publisherModelType; // @synthesize publisherModelType=_publisherModelType;
 @property (strong, nonatomic) CKDPProtectionInfo *selfAddedPcs; // @synthesize selfAddedPcs=_selfAddedPcs;
 @property (strong, nonatomic) CKDPShareIdentifier *shareId; // @synthesize shareId=_shareId;
 @property (strong, nonatomic) NSData *shortTokenHash; // @synthesize shortTokenHash=_shortTokenHash;
@@ -64,6 +68,7 @@
 + (Class)potentialMatchType;
 - (void).cxx_destruct;
 - (int)StringAsPublicAccess:(id)arg1;
+- (int)StringAsPublisherModelType:(id)arg1;
 - (id)_publicAccessCKLogValue;
 - (void)addInvitedKeyToRemove:(id)arg1;
 - (void)addParticipant:(id)arg1;
@@ -85,6 +90,7 @@
 - (id)potentialMatchAtIndex:(unsigned long long)arg1;
 - (unsigned long long)potentialMatchsCount;
 - (id)publicAccessAsString:(int)arg1;
+- (id)publisherModelTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

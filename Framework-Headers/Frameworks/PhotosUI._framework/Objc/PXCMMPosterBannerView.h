@@ -14,27 +14,23 @@
     PXCapsuleButton *_actionButton;
     NSString *_actionButtonTitle;
     CDUnknownBlockType _actionButtonAction;
-    UILabel *_captionLabel;
     UILabel *_headlineLabel;
     UILabel *_subheadlineLabel;
     UIVisualEffectView *_visualEffectView;
     PXUpdater *_updater;
     BOOL _containsUnverifiedPersons;
     BOOL _loadingPeopleSuggestions;
-    NSString *_caption;
     NSString *_headline;
     NSString *_subheadline;
-    NSArray *_namesForHeadline;
+    NSArray *_localizedNamesForHeadline;
 }
 
-@property (copy, nonatomic) NSString *caption; // @synthesize caption=_caption;
 @property (nonatomic) BOOL containsUnverifiedPersons; // @synthesize containsUnverifiedPersons=_containsUnverifiedPersons;
 @property (copy, nonatomic) NSString *headline; // @synthesize headline=_headline;
 @property (nonatomic, getter=isLoadingPeopleSuggestions) BOOL loadingPeopleSuggestions; // @synthesize loadingPeopleSuggestions=_loadingPeopleSuggestions;
-@property (copy, nonatomic) NSArray *namesForHeadline; // @synthesize namesForHeadline=_namesForHeadline;
+@property (copy, nonatomic) NSArray *localizedNamesForHeadline; // @synthesize localizedNamesForHeadline=_localizedNamesForHeadline;
 @property (copy, nonatomic) NSString *subheadline; // @synthesize subheadline=_subheadline;
 
-+ (id)_captionLabelFont;
 + (id)_headlineLabelBoldFont;
 + (id)_headlineLabelFont;
 + (id)_subheadlineLabelFont;

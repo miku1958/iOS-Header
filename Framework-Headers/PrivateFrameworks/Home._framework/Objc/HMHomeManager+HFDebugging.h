@@ -15,8 +15,20 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL hf_hasDetectediCloudIssue;
 @property (readonly) Class superclass;
 
++ (id)hf_homeFutureForName:(id)arg1;
+- (BOOL)hf_hasSeenNewFeaturesView;
+- (BOOL)hf_hasSeenOnboardingWelcomeView;
+- (id)hf_homeForName:(id)arg1;
+- (id)hf_homeWithIdentifier:(id)arg1;
+- (id)hf_mutableOrderedHomesList;
+- (id)hf_orderedHomes;
+- (id)hf_orderedHomesList;
+- (id)hf_setHasSeenNewFeaturesView:(BOOL)arg1;
+- (id)hf_setHasSeenOnboardingWelcomeView:(BOOL)arg1;
+- (id)hf_setOrderedHomes:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

@@ -9,6 +9,7 @@
 @class AVObservationController, AVPlayerController, NSMapTable, NSTimer, UIViewPropertyAnimator;
 @protocol AVPlaybackControlsVisibilityControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface AVPlaybackControlsVisibilityController : NSObject
 {
     UIViewPropertyAnimator *_visibilityAnimator;
@@ -37,6 +38,7 @@
     id<AVPlaybackControlsVisibilityControllerDelegate> _delegate;
     BOOL _canHideItems;
     BOOL _showsItemsWhileWaitingToPlay;
+    BOOL _showsItemsWhenPaused;
     AVPlayerController *_playerController;
 }
 
@@ -49,6 +51,7 @@
 @property (strong, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property (nonatomic, getter=isPopoverPresented) BOOL popoverPresented; // @synthesize popoverPresented=_popoverPresented;
 @property (readonly, nonatomic) BOOL showsItemPreferingStatusBarVisible;
+@property (nonatomic) BOOL showsItemsWhenPaused; // @synthesize showsItemsWhenPaused=_showsItemsWhenPaused;
 @property (nonatomic) BOOL showsItemsWhileWaitingToPlay; // @synthesize showsItemsWhileWaitingToPlay=_showsItemsWhileWaitingToPlay;
 @property double volumeChangeHidePlaybackControlTimerInterval;
 
@@ -64,25 +67,27 @@
 - (void)_showItemsShownForVolumeChangeAndHideAfterDelay;
 - (void)_showRegularItems;
 - (void)_showRegularItemsAndHideAfterDelay;
-- (void)_showRegularItemsAndHideAfterDelayIfPlaying;
+- (void)_showRegularItemsAndHideAfterDelayIfPlaying:(BOOL)arg1;
 - (void)_startControllingVisibilityIfNeeded;
 - (void)_startTimerToHideItemsShownForVolumeChange;
 - (void)_startTimerToHideRegularItems;
 - (void)_startTimerToHideRegularItemsAfterDelay:(double)arg1 ifPlaying:(BOOL)arg2;
-- (void)_startTimerToHideRegularItemsIfPlaying;
 - (void)_stopInitiallyHidingItems;
 - (void)_stopInitiallyHidingItemsThatAreShownForVolumeChanges;
-- (void)_stopTimerToHideItemsShownForVolumeChangeIfPlaying;
-- (void)_stopTimerToHideRegularControlsIfPlaying;
+- (void)_stopTimerToHideItemsShownForVolumeChange;
+- (void)_stopTimerToHideRegularControls;
 - (void)_updateControlItemVisibilityIfNeeded;
 - (void)_updateVisibilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_userIsInteractingWithItems;
 - (void)activeAudioRouteOrSystemVolumeDidChange;
 - (void)beginHidingItemsForTransition;
+- (void)beginShowingItemsDueToIndirectUserInteraction;
 - (void)beginTrackingUserInteraction;
 - (void)dealloc;
+- (void)didMoveOffScreen;
 - (void)endHidingItemsForTransition;
 - (void)endHidingItemsForTransitionAndShowImmediately:(BOOL)arg1;
+- (void)endShowingItemsDueToIndirectUserInteraction;
 - (void)endTrackingUserInteraction;
 - (void)flashPlaybackControlsWithDuration:(double)arg1;
 - (id)init;
@@ -92,6 +97,7 @@
 - (void)stopControllingVisibilityOfItem:(id)arg1;
 - (void)stopHidingItemQuicklyWhenPlaybackBegins;
 - (void)toggleVisibility;
+- (long long)visibilityBehaviorOptionsOfItem:(id)arg1;
 
 @end
 

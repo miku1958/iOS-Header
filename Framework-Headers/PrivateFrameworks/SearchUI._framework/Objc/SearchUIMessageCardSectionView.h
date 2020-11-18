@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong) TLKMessageView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKMessageView *contentView; // @dynamic contentView;
 
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (unsigned long long *)messageServiceTypeForSearchUIMessageServiceType:(int)arg1;

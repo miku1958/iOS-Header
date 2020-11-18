@@ -7,6 +7,8 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (NAUIAdditions)
++ (id)recursiveDescription;
+- (id)_recursiveDescriptionWithInset:(id)arg1;
 - (void)naui_addChildViewWithViewController:(id)arg1;
 - (void)naui_addChildViewWithViewController:(id)arg1 toView:(id)arg2;
 - (void)naui_applicationDidEnterBackground;
@@ -17,5 +19,6 @@
 - (BOOL)naui_isHorizontalSizeClassRegularOrGreater;
 - (BOOL)naui_isVerticalSizeClassRegularOrGreater;
 - (void)naui_loadViewIfNecessary;
+- (id)recursiveDescription;
 @end
 

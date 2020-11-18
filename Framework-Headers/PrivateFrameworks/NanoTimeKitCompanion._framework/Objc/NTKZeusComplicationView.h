@@ -16,6 +16,7 @@
 {
     BOOL canUseCurvedText;
     BOOL _highlighted;
+    BOOL _legibilityEnabled;
     id<NTKComplicationDisplayObserver> displayObserver;
     unsigned long long _style;
     NTKZeusColorPalette *_palette;
@@ -29,6 +30,7 @@
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (nonatomic) BOOL legibilityEnabled; // @synthesize legibilityEnabled=_legibilityEnabled;
 @property (readonly, nonatomic) NTKZeusColorPalette *palette; // @synthesize palette=_palette;
 @property (nonatomic) BOOL shouldUseTemplateColors;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
@@ -36,6 +38,7 @@
 
 + (id)viewForComplicationType:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)_updateLegibility;
 - (void)applyPalette:(id)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (struct CGRect)contentFrame;

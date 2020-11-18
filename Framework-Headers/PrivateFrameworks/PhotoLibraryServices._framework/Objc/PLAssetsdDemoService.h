@@ -8,16 +8,23 @@
 
 #import <PhotoLibraryServices/PLAssetsdDemoServiceProtocol-Protocol.h>
 
-@class NSString;
+@class NSString, PLAssetsdConnectionAuthorization;
 
 @interface PLAssetsdDemoService : NSObject <PLAssetsdDemoServiceProtocol>
 {
+    PLAssetsdConnectionAuthorization *_connectionAuthorization;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (void)cleanupForStoreDemoMode;
+- (void)hasCompletedMomentAnalysisWithReply:(CDUnknownBlockType)arg1;
+- (void)hasCompletedRestorePostProcessingWithReply:(CDUnknownBlockType)arg1;
+- (id)initWithConnectionAuthorization:(id)arg1;
 
 @end
 

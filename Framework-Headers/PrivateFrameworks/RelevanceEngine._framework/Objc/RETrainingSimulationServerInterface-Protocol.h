@@ -6,7 +6,7 @@
 
 #import <RelevanceEngine/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @protocol RETrainingSimulationServerInterface <NSObject>
 - (void)availableRelevanceEngines:(void (^)(NSArray *, NSError *))arg1;
@@ -14,6 +14,7 @@
 - (void)fetchAllElementsInRelevanceEngine:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)gatherDiagnosticLogsForRelevanceEngine:(NSString *)arg1 completion:(void (^)(NSString *))arg2;
 - (void)relevanceEngine:(NSString *)arg1 createElementFromDescription:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)relevanceEngine:(NSString *)arg1 encodedObjectAtPath:(NSArray *)arg2 completion:(void (^)(NSString *))arg3;
 - (void)relevanceEngine:(NSString *)arg1 performCommand:(NSString *)arg2 withOptions:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)relevanceEngine:(NSString *)arg1 runActionOfElementWithDescription1:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end

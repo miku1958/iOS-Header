@@ -62,6 +62,7 @@
 @property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 - (void).cxx_destruct;
+- (struct PXSimpleIndexPath)_assetIndexPathAtLocation:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
 - (id)_assetsBySizeWithTileIdentifiers:(const struct PXTileIdentifier *)arg1 withGeometries:(const struct PXTileGeometry *)arg2 count:(unsigned long long)arg3;
 - (void)_getImageRequester:(id *)arg1 title:(id *)arg2 subtitle:(id *)arg3 forRelatedEntry:(id)arg4 mediaProvider:(id)arg5;
 - (void)_handleTapGestureRecognizer:(id)arg1;
@@ -80,11 +81,12 @@
 - (id)extendedTraitCollection;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (id)imageViewBasicTileForPreviewingAtPoint:(struct CGPoint)arg1;
 - (id)init;
 - (void)installGestureRecognizers;
 - (void)loadContentData;
 - (void)prepareForInteractiveTransition:(id)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2 outSourceRect:(out struct CGRect *)arg3;
+- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)regionOfInterestForContext:(id)arg1;
 - (void)reusableObjectPool:(id)arg1 didCreateReusableObject:(id)arg2;

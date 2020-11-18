@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateLastUpdatedLabel;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)updateConstraints;

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIImageView.h>
 
-@class CAShapeLayer, CNMonogrammer, NSObject, PHAssetCollection, PXViewLayoutHelper, UIGraphicsImageRenderer, UIImage;
+@class CAShapeLayer, CNMonogrammer, NSObject, PHAssetCollection, UIGraphicsImageRenderer, UIImage;
 @protocol OS_os_log;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     PHAssetCollection *_sharedAlbumCollection;
     CNMonogrammer *_monogrammer;
     UIGraphicsImageRenderer *_imageRenderer;
-    PXViewLayoutHelper *_layoutHelper;
     UIImage *_firstAvatar;
     UIImage *_secondAvatar;
     UIImage *_thirdAvatar;
@@ -27,7 +26,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) UIImage *firstAvatar; // @synthesize firstAvatar=_firstAvatar;
 @property (strong, nonatomic) UIGraphicsImageRenderer *imageRenderer; // @synthesize imageRenderer=_imageRenderer;
-@property (strong, nonatomic) PXViewLayoutHelper *layoutHelper; // @synthesize layoutHelper=_layoutHelper;
 @property (readonly) NSObject<OS_os_log> *log;
 @property (strong, nonatomic) CNMonogrammer *monogrammer; // @synthesize monogrammer=_monogrammer;
 @property (strong, nonatomic) CAShapeLayer *overlayLayer; // @synthesize overlayLayer=_overlayLayer;
@@ -52,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)prepareForReuse;
 - (void)setPersonPhoto:(id)arg1 atIndex:(long long)arg2 albumCollection:(id)arg3;
+- (void)setSharedAlbumCollection:(id)arg1 forceLayoutSubscriberAvatars:(BOOL)arg2;
 
 @end
 

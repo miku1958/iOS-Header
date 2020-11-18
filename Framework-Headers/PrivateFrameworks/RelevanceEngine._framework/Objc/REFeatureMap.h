@@ -8,45 +8,47 @@
 
 #import <RelevanceEngine/MLFeatureProvider-Protocol.h>
 #import <RelevanceEngine/NSCopying-Protocol.h>
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/_REFeatureMapLoggingProperties-Protocol.h>
 
-@class NSDictionary, NSSet, NSString;
+@class NSArray, NSDictionary, NSSet;
 
-@interface REFeatureMap : NSObject <MLFeatureProvider, REIndentedDescription, NSCopying>
+@interface REFeatureMap : NSObject <MLFeatureProvider, _REFeatureMapLoggingProperties, NSCopying>
 {
     unsigned long long _hash;
     unsigned long long *_values;
     NSDictionary *_indices;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSSet *allFeatures;
 @property (readonly, nonatomic) unsigned long long featureCount;
 @property (readonly, nonatomic) NSSet *featureNames;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *loggingValues;
 
 + (id)defaultFeatureName;
 - (void).cxx_destruct;
 - (unsigned long long)_count;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
 - (void)enumerateBoolFeaturesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateDoubleFeaturesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateEmptyFeaturesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateFeatureValuesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFeaturesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateInt64FeaturesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateInt64FeaturesUsingIndexedBlock:(CDUnknownBlockType)arg1 emptyFeatureBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStringFeaturesUsingBlock:(CDUnknownBlockType)arg1;
+- (id)featureValueForFeature:(id)arg1;
 - (id)featureValueForName:(id)arg1;
 - (BOOL)hasValueForFeature:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithFeatureMap:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)removeAllValues;
 - (void)removeValueForFeature:(id)arg1;
-- (void)setValue:(id)arg1 forFeature:(id)arg2;
-- (id)valueForFeature:(id)arg1;
+- (void)setFeatureValue:(id)arg1 forFeature:(id)arg2;
+- (void)setValue:(unsigned long long)arg1 forFeature:(id)arg2;
+- (unsigned long long)valueForFeature:(id)arg1;
 
 @end
 

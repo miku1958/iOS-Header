@@ -34,7 +34,6 @@
 - (BOOL)decodeDownloadData:(id)arg1 dataForkData:(id *)arg2 resourceForkData:(id *)arg3;
 - (id)fileAttributes;
 - (id)filenameWithOriginalFilename:(id)arg1;
-- (void)finalize;
 - (BOOL)finishDownloadDecoding;
 - (id)init;
 - (BOOL)isFinishedDecoding;

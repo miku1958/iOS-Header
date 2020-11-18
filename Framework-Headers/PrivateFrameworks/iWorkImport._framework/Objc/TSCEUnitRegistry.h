@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (int)binaryUnitPrefixForChars:(unsigned short)arg1:(unsigned short)arg2;
 + (int)canonicalUnitForDimension:(int)arg1;
-+ (double)convert:(double)arg1 fromUnit:(CDStruct_1ef3fb1f)arg2 toUnit:(CDStruct_1ef3fb1f)arg3;
++ (struct TSUDecimal)convert:(const struct TSUDecimal *)arg1 fromUnit:(CDStruct_1ef3fb1f)arg2 toUnit:(CDStruct_1ef3fb1f)arg3;
 + (id)currencyCodeForUnit:(int)arg1;
 + (int)dimensionForUnit:(int)arg1;
 + (void)initialize;

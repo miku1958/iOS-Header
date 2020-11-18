@@ -15,8 +15,8 @@
     BOOL _incomplete;
 }
 
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (id)initWithData:(id)arg1;
 - (id)initWithData:(id)arg1 partial:(BOOL)arg2 incomplete:(BOOL)arg3;
 

@@ -31,6 +31,7 @@
 - (id)proxy;
 - (id)recentUsers;
 - (void)saveClassConfiguration:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)updateGlobalDefaultsValue:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

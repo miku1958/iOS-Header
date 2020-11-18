@@ -12,13 +12,8 @@
 
 + (id)nebuladkeepalivepath;
 + (id)photoDCIMDirectory;
-+ (id)photoDataCPLDirectory;
 + (id)photoDataDirectory;
 + (id)photoDataMiscDirectory;
-+ (id)photoLibraryBasePath;
-+ (id)relocateLibraryIndicatorFilePath;
-+ (id)relocateLibraryPath;
-+ (BOOL)setPhotoLibraryBasePath:(id)arg1;
 + (id)takingPhotoIndicatorFilePath;
 + (id)takingVideoIndicatorFilePath;
 

@@ -20,6 +20,8 @@
 @property (readonly, nonatomic) NSString *_draggedLinkTitle;
 @property (readonly, nonatomic) NSURL *_draggedLinkURL;
 @property (nonatomic, setter=_setUnobscuredSafeAreaInsets:) struct WebEdgeInsets _unobscuredSafeAreaInsets;
+@property (nonatomic, setter=_setUseDarkAppearance:) BOOL _useDarkAppearance;
+@property (nonatomic, setter=_setUseElevatedUserInterfaceLevel:) BOOL _useElevatedUserInterfaceLevel;
 @property (nonatomic, setter=_setUseSystemAppearance:) BOOL _useSystemAppearance;
 @property (copy, nonatomic) NSString *applicationNameForUserAgent;
 @property (readonly, nonatomic) WebBackForwardList *backForwardList;
@@ -178,7 +180,7 @@
 - (unsigned long long)_deviceOrientation;
 - (id)_deviceOrientationProvider;
 - (void)_didCommitLoadForFrame:(id)arg1;
-- (void)_didConcludeEditDataInteraction;
+- (void)_didConcludeEditDrag;
 - (void)_didFinishScrollingOrZooming;
 - (void)_didScrollDocumentInFrameView:(id)arg1;
 - (void)_dispatchPendingLoadRequests;
@@ -188,7 +190,6 @@
 - (void)_documentScaleChanged;
 - (id)_downloadURL:(id)arg1;
 - (id)_editingDelegateForwarder;
-- (BOOL)_effectiveAppearanceIsDark;
 - (id)_elementAtWindowPoint:(struct CGPoint)arg1;
 - (void)_endedDataInteraction:(struct CGPoint)arg1 global:(struct CGPoint)arg2;
 - (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement *)arg1 mode:(unsigned int)arg2;
@@ -309,6 +310,8 @@
 - (void)_setResourceLoadSchedulerSuspended:(BOOL)arg1;
 - (void)_setUIKitDelegate:(id)arg1;
 - (void)_setUIWebViewUserAgentWithBuildVersion:(id)arg1;
+- (void)_setUseDarkAppearance:(BOOL)arg1 useElevatedUserInterfaceLevel:(BOOL)arg2;
+- (void)_setUseDarkAppearance:(BOOL)arg1 useInactiveAppearance:(BOOL)arg2;
 - (void)_setUseFastImageScalingMode:(BOOL)arg1;
 - (void)_setUseFixedLayout:(BOOL)arg1;
 - (void)_setVisibilityState:(int)arg1 isInitialState:(BOOL)arg2;
@@ -609,7 +612,6 @@
 - (id)userAgentForURL:(id)arg1;
 - (BOOL)usesPageCache;
 - (int)validationMessageTimerMagnification;
-- (void)viewDidChangeEffectiveAppearance;
 - (void)viewDidMoveToWindow;
 - (void)yank:(id)arg1;
 - (void)yankAndSelect:(id)arg1;

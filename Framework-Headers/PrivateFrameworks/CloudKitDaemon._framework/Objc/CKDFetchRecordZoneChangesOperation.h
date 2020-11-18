@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)_noteOperationFinishedBlockEnd;
 - (id)_optionsForZonesWithPendingChangesAfterRequest:(id)arg1;
 - (id)activityCreate;
+- (id)analyticsPayload;
 - (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (Class)operationResultClass;

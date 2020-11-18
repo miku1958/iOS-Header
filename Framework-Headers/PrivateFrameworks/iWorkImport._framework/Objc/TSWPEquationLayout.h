@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)canFlip;
 - (struct CGRect)computeAlignmentFrameInRoot:(BOOL)arg1;
 - (void)invalidateSize;
-- (BOOL)isDraggable;
 - (void)offsetGeometryBy:(struct CGPoint)arg1;
 - (void)preprocessChanges:(id)arg1 forChangeSource:(id)arg2;
 - (void)setParent:(id)arg1;

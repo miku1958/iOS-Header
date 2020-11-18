@@ -16,6 +16,7 @@
 {
     UIAlertController *_alertView;
     UIWindow *_alertWindow;
+    UIWindow *_btAlertWindow;
     UITableView *_tableView;
     NSMutableArray *_deviceList;
     NSString *_title;
@@ -48,6 +49,7 @@
 - (void)checkAttachTimeout;
 - (void)cleanupPairing;
 - (void)createAlertWindow;
+- (void)createBTAlertWindow;
 - (void)dealloc;
 - (void)deviceConnectionCompleteHandler:(id)arg1;
 - (void)deviceDiscoveryStoppedHandler:(id)arg1;
@@ -56,10 +58,13 @@
 - (void)deviceNameChangedHandler:(id)arg1;
 - (void)devicePairedHandler:(id)arg1;
 - (void)dismissAnimated:(BOOL)arg1;
+- (void)dismissPairingAlert:(id)arg1;
 - (id)initWithTitle:(id)arg1 service:(unsigned int)arg2 discoveryNameFilter:(id)arg3;
 - (void)powerChanged:(id)arg1;
 - (void)show;
+- (void)showAlert:(id)arg1;
 - (void)showInternal;
+- (void)showPairingAlert:(id)arg1;
 - (void)startScanning;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

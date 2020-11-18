@@ -25,6 +25,7 @@
     NSString *_title;
     NSURL *_url;
     NSUUID *_uuid;
+    NSString *_sceneID;
 }
 
 @property (readonly, nonatomic) NSString *URLString;
@@ -40,6 +41,7 @@
 @property (nonatomic) BOOL matchedLastSearch; // @synthesize matchedLastSearch=_matchedLastSearch;
 @property (nonatomic, getter=isPinned) BOOL pinned; // @synthesize pinned=_pinned;
 @property (copy, nonatomic) NSDictionary *readerScrollPositionDictionary; // @synthesize readerScrollPositionDictionary=_readerScrollPositionDictionary;
+@property (readonly, copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *titleForLastSearch; // @synthesize titleForLastSearch=_titleForLastSearch;
@@ -47,14 +49,14 @@
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
-+ (id)_dictionaryWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(BOOL)arg4 readerScrollPosition:(id)arg5 isPinned:(BOOL)arg6;
++ (id)_dictionaryWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(BOOL)arg4 readerScrollPosition:(id)arg5 isPinned:(BOOL)arg6 sceneID:(id)arg7;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)hasSameUUIDAndURLAsTab:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithDictionaryFromUserActivityUserInfo:(id)arg1;
-- (id)initWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(BOOL)arg4 readerScrollPosition:(id)arg5;
 - (id)initWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(BOOL)arg4 readerScrollPosition:(id)arg5 isPinned:(BOOL)arg6;
+- (id)initWithURL:(id)arg1 uuid:(id)arg2 title:(id)arg3 isShowingReader:(BOOL)arg4 readerScrollPosition:(id)arg5 sceneID:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

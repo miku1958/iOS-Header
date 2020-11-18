@@ -15,11 +15,13 @@
 @interface _INPBDistanceValue : PBCodable <_INPBDistanceValue, NSSecureCoding, NSCopying>
 {
     CDStruct_74078a21 _has;
+    BOOL __encodeLegacyGloryData;
     int _unit;
     double _magnitude;
     _INPBValueMetadata *_valueMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasMagnitude;
@@ -31,10 +33,13 @@
 @property (nonatomic) int unit; // @synthesize unit=_unit;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsUnit:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)unitAsString:(int)arg1;

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *processName;
 @property (readonly, nonatomic) NSProtocolChecker *protocolChecker;
 @property (nonatomic) id target;
+@property (readonly, nonatomic) BOOL wasInterrupted;
 @property (strong, nonatomic) NSArray *whitelistedClasses;
 
 + (id)_imLocalObjectQueue;

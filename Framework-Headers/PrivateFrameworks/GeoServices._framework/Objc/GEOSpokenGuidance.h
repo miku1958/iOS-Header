@@ -8,36 +8,53 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOSpokenGuidance : PBCodable <NSCopying>
 {
-    int _alignment;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_announcements;
+    NSMutableArray *_timeGaps;
+    int _alignment;
     unsigned int _endDesiredTime;
     unsigned int _exclusiveSetIdentifier;
     unsigned int _numChainedVariants;
     unsigned int _priority;
     unsigned int _repetitionInterval;
     unsigned int _startDesiredTime;
-    NSMutableArray *_timeGaps;
     BOOL _tapBeforeAnnouncement;
     struct {
-        unsigned int alignment:1;
-        unsigned int endDesiredTime:1;
-        unsigned int exclusiveSetIdentifier:1;
-        unsigned int numChainedVariants:1;
-        unsigned int priority:1;
-        unsigned int repetitionInterval:1;
-        unsigned int startDesiredTime:1;
-        unsigned int tapBeforeAnnouncement:1;
-    } _has;
+        unsigned int has_alignment:1;
+        unsigned int has_endDesiredTime:1;
+        unsigned int has_exclusiveSetIdentifier:1;
+        unsigned int has_numChainedVariants:1;
+        unsigned int has_priority:1;
+        unsigned int has_repetitionInterval:1;
+        unsigned int has_startDesiredTime:1;
+        unsigned int has_tapBeforeAnnouncement:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_announcements:1;
+        unsigned int read_timeGaps:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_announcements:1;
+        unsigned int wrote_timeGaps:1;
+        unsigned int wrote_alignment:1;
+        unsigned int wrote_endDesiredTime:1;
+        unsigned int wrote_exclusiveSetIdentifier:1;
+        unsigned int wrote_numChainedVariants:1;
+        unsigned int wrote_priority:1;
+        unsigned int wrote_repetitionInterval:1;
+        unsigned int wrote_startDesiredTime:1;
+        unsigned int wrote_tapBeforeAnnouncement:1;
+    } _flags;
 }
 
-@property (nonatomic) int alignment; // @synthesize alignment=_alignment;
-@property (strong, nonatomic) NSMutableArray *announcements; // @synthesize announcements=_announcements;
-@property (nonatomic) unsigned int endDesiredTime; // @synthesize endDesiredTime=_endDesiredTime;
-@property (nonatomic) unsigned int exclusiveSetIdentifier; // @synthesize exclusiveSetIdentifier=_exclusiveSetIdentifier;
+@property (nonatomic) int alignment;
+@property (strong, nonatomic) NSMutableArray *announcements;
+@property (nonatomic) unsigned int endDesiredTime;
+@property (nonatomic) unsigned int exclusiveSetIdentifier;
 @property (nonatomic) BOOL hasAlignment;
 @property (nonatomic) BOOL hasEndDesiredTime;
 @property (nonatomic) BOOL hasExclusiveSetIdentifier;
@@ -46,17 +63,23 @@
 @property (nonatomic) BOOL hasRepetitionInterval;
 @property (nonatomic) BOOL hasStartDesiredTime;
 @property (nonatomic) BOOL hasTapBeforeAnnouncement;
-@property (nonatomic) unsigned int numChainedVariants; // @synthesize numChainedVariants=_numChainedVariants;
-@property (nonatomic) unsigned int priority; // @synthesize priority=_priority;
-@property (nonatomic) unsigned int repetitionInterval; // @synthesize repetitionInterval=_repetitionInterval;
-@property (nonatomic) unsigned int startDesiredTime; // @synthesize startDesiredTime=_startDesiredTime;
-@property (nonatomic) BOOL tapBeforeAnnouncement; // @synthesize tapBeforeAnnouncement=_tapBeforeAnnouncement;
-@property (strong, nonatomic) NSMutableArray *timeGaps; // @synthesize timeGaps=_timeGaps;
+@property (nonatomic) unsigned int numChainedVariants;
+@property (nonatomic) unsigned int priority;
+@property (nonatomic) unsigned int repetitionInterval;
+@property (nonatomic) unsigned int startDesiredTime;
+@property (nonatomic) BOOL tapBeforeAnnouncement;
+@property (strong, nonatomic) NSMutableArray *timeGaps;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)announcementType;
++ (BOOL)isValid:(id)arg1;
 + (Class)timeGapType;
 - (void).cxx_destruct;
 - (int)StringAsAlignment:(id)arg1;
+- (void)_addNoFlagsAnnouncement:(id)arg1;
+- (void)_addNoFlagsTimeGap:(id)arg1;
+- (void)_readAnnouncements;
+- (void)_readTimeGaps;
 - (void)addAnnouncement:(id)arg1;
 - (void)addTimeGap:(id)arg1;
 - (id)alignmentAsString:(int)arg1;
@@ -64,6 +87,7 @@
 - (unsigned long long)announcementsCount;
 - (void)clearAnnouncements;
 - (void)clearTimeGaps;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -71,6 +95,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)timeGapAtIndex:(unsigned long long)arg1;
 - (unsigned long long)timeGapsCount;

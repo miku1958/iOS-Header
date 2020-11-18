@@ -13,7 +13,6 @@
 @property (nonatomic) unsigned long long presentationGesture; // @dynamic presentationGesture;
 @property (nonatomic) BOOL shouldEnableInternalModules; // @dynamic shouldEnableInternalModules;
 @property (nonatomic) BOOL shouldEnablePrototypeFeatures; // @dynamic shouldEnablePrototypeFeatures;
-@property (nonatomic) BOOL shouldEnableTigrisCarryUI;
 @property (nonatomic) unsigned long long userInvocationCount; // @dynamic userInvocationCount;
 
 + (id)standardDefaults;

@@ -20,7 +20,6 @@
 @property (getter=isAvailable) BOOL available;
 @property (strong) _DKSyncCloudKitKnowledgeStorage *common; // @synthesize common=_common;
 @property (strong) id<_DKSyncRemoteKnowledgeStorageFetchDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly) BOOL isAvailable;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -29,7 +28,7 @@
 - (void)fetchAdditionsHighWaterMarkWithPeer:(id)arg1 highPriority:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchDeletedEventIDsFromPeer:(id)arg1 sinceDate:(id)arg2 streamNames:(id)arg3 limit:(unsigned long long)arg4 highPriority:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)fetchDeletionsHighWaterMarkWithPeer:(id)arg1 highPriority:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchEventsFromPeer:(id)arg1 creationDateBetweenDate:(id)arg2 andDate:(id)arg3 streamNames:(id)arg4 limit:(unsigned long long)arg5 fetchOrder:(long long)arg6 highPriority:(BOOL)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)fetchEventsFromPeer:(id)arg1 windows:(id)arg2 streamNames:(id)arg3 limit:(unsigned long long)arg4 fetchOrder:(long long)arg5 highPriority:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)fetchSourceDeviceIDFromPeer:(id)arg1 highPriority:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)hasAdditionsFlagForPeer:(id)arg1;
 - (BOOL)hasDeletionsFlagForPeer:(id)arg1;

@@ -10,7 +10,6 @@
 
 @class CNContact, DDAction, NSString;
 
-__attribute__((visibility("hidden")))
 @interface BCSDataDetectionActionPickerItem : BCSActionPickerItem <DDDetectionControllerInteractionDelegate>
 {
     DDAction *_ddAction;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *icsString;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

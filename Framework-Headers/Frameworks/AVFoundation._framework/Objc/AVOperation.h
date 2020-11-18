@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didEnterTerminalState;
 - (BOOL)evaluateDependenciesAndMarkAsExecuting;
-- (void)finalize;
 - (id)init;
 - (BOOL)isExecuting;
 - (BOOL)isFinished;

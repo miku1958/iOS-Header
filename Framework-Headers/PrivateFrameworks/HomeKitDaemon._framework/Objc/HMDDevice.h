@@ -48,8 +48,9 @@
 @property (readonly, copy) NSUUID *idsIdentifier;
 @property (copy, setter=setIDSIdentifierHash:) NSUUID *idsIdentifierHash; // @synthesize idsIdentifierHash=_idsIdentifierHash;
 @property (getter=isLocallyTracked) BOOL locallyTracked; // @synthesize locallyTracked=_locallyTracked;
-@property (readonly, nonatomic) NSUUID *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
-@property (readonly, nonatomic) NSUUID *modelParentIdentifier;
+@property (readonly) Class modelClass;
+@property (readonly, copy, nonatomic) NSUUID *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *modelParentIdentifier;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly, copy) NSString *privateDescription;
 @property (copy) HMFProductInfo *productInfo; // @synthesize productInfo=_productInfo;

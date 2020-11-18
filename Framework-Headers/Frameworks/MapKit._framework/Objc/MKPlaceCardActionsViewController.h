@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)_makePlaceActionButton;
 - (void)_setUpSectionViews;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)init;
 - (void)placeCardActionSectionView:(id)arg1 buttonWithActionItemPressed:(id)arg2;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;

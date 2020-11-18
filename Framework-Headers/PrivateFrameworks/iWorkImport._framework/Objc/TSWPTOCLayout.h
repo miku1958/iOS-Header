@@ -30,8 +30,9 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (struct CGRect)boundsForStandardKnobs;
 - (unsigned long long)columnCount;
-- (id)commandToClampModelToLayoutSize;
+- (id)commandToClampModelToLayoutSizeWithAdditionalTransform:(struct CGAffineTransform)arg1;
 - (id)computeLayoutGeometry;
+- (BOOL)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (id)initWithInfo:(id)arg1;
 - (id)initWithInfo:(id)arg1 initialCharIndex:(unsigned long long)arg2 textIsVertical:(BOOL)arg3 maxSize:(struct CGSize)arg4;

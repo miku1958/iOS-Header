@@ -29,6 +29,7 @@
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (id)feedbackListener;
 - (void)presentViewController:(id)arg1;
+- (void)presentViewControllerForCard:(id)arg1 animate:(BOOL)arg2;
 - (BOOL)shouldHandleCardSectionEngagement:(id)arg1;
 - (void)willDismissViewController:(id)arg1;
 

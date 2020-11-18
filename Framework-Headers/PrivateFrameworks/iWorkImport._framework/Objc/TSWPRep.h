@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface TSWPRep : TSDContainerRep <CAAnimationDelegate>
 {
     CALayer *_textLayers[2];
-    CALayer *_caretLayer;
+    CAShapeLayer *_caretLayer;
     CAShapeLayer *_selectionLineLayers[2];
     CAShapeLayer *_selectionHighlightLayer;
     CAShapeLayer *_selectionParagraphBorderLayer;
@@ -44,18 +44,20 @@ __attribute__((visibility("hidden")))
     BOOL _tornDown;
     BOOL _searchHitsAreInvalid;
     BOOL _findIsShowing;
+    BOOL _dragAndDropCaretLayerIsForCaret;
     TSWPSearchReference *_primaryFindResultSearchReference;
     NSArray *_searchReferences;
-    CALayer *_floatingCaretLayer;
+    CAShapeLayer *_floatingCaretLayer;
     struct CGAffineTransform _transformToConvertNaturalToScaledRoot;
 }
 
 @property (readonly, nonatomic) NSArray *columns;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL dragAndDropCaretLayerIsForCaret; // @synthesize dragAndDropCaretLayerIsForCaret=_dragAndDropCaretLayerIsForCaret;
 @property (nonatomic) struct _NSRange dragRange; // @synthesize dragRange=_dragRange;
 @property (nonatomic) BOOL findIsShowing; // @synthesize findIsShowing=_findIsShowing;
-@property (strong, nonatomic) CALayer *floatingCaretLayer; // @synthesize floatingCaretLayer=_floatingCaretLayer;
+@property (strong, nonatomic) CAShapeLayer *floatingCaretLayer; // @synthesize floatingCaretLayer=_floatingCaretLayer;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isBeingEdited;
 @property (copy, nonatomic) TSWPSelection *lastSelection; // @synthesize lastSelection=_lastSelection;
@@ -83,7 +85,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)directlyManagesLayerContent;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)drawInContext:(struct CGContext *)arg1 limitSelection:(id)arg2 suppressInvisibles:(BOOL)arg3;
 - (void)drawInLayerContext:(struct CGContext *)arg1;
 - (void)drawRubyInContext:(struct CGContext *)arg1 rubyFieldStart:(unsigned long long)arg2 rubyGlyphRange:(struct _NSRange)arg3;
 - (unsigned int)fontTraitsForRange:(struct _NSRange)arg1 includingLabel:(BOOL)arg2;
@@ -98,14 +99,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPointInSelectedArea:(struct CGPoint)arg1;
 - (struct CGRect)labelRectForCharIndex:(unsigned long long)arg1;
 - (Class)layerClass;
-- (CDStruct_8299b2ea)lineMetricsAtCharIndex:(unsigned long long)arg1;
-- (CDStruct_8299b2ea)lineMetricsAtPoint:(struct CGPoint)arg1;
+- (CDStruct_1af65ba2)lineMetricsAtCharIndex:(unsigned long long)arg1;
+- (CDStruct_1af65ba2)lineMetricsAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)naturalBoundsRectForHyperlinkField:(id)arg1;
 - (const struct CGPath *)newPathForSelection:(id)arg1;
 - (BOOL)p_allowCaretForSelection:(id)arg1;
 - (struct CGRect)p_caretRectForSelection:(id)arg1;
 - (struct CGRect)p_closestCaretRectForPoint:(struct CGPoint)arg1 inSelection:(BOOL)arg2 allowPastBreak:(BOOL)arg3;
 - (struct CGRect)p_convertNaturalRectToRotated:(struct CGRect)arg1 repAngle:(double)arg2;
+- (void)p_drawInContext:(struct CGContext *)arg1 limitSelection:(id)arg2 suppressInvisibles:(BOOL)arg3;
 - (void)p_drawTextInLayer:(id)arg1 context:(struct CGContext *)arg2 limitSelection:(id)arg3 rubyGlyphRange:(struct _NSRange)arg4 renderMode:(int)arg5 suppressInvisibles:(BOOL)arg6;
 - (id)p_hyperlinkAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)p_paragraphModeRectangleForColumn:(id)arg1 selection:(id)arg2;
@@ -121,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)pinToNaturalBounds:(struct CGPoint)arg1 andLastLineFragment:(BOOL)arg2;
 - (struct _NSRange)range;
 - (struct CGRect)rectForSelection:(id)arg1 includeRuby:(BOOL)arg2 includePaginatedAttachments:(BOOL)arg3;
+- (void)recursivelyDrawInContext:(struct CGContext *)arg1 limitSelection:(id)arg2 suppressInvisibles:(BOOL)arg3;
 - (id)repForCharIndex:(unsigned long long)arg1 isStart:(BOOL)arg2;
 - (id)rubyFieldAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)selectionRect;

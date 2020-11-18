@@ -15,6 +15,7 @@
 @interface _INPBTaskList : PBCodable <_INPBTaskList, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBDateTime *_createdDateTime;
     _INPBDataString *_groupName;
     NSString *_identifier;
@@ -23,6 +24,7 @@
     _INPBDataString *_title;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDateTime *createdDateTime; // @synthesize createdDateTime=_createdDateTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -40,12 +42,15 @@
 @property (readonly, nonatomic) unsigned long long tasksCount;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
 
++ (BOOL)supportsSecureCoding;
 + (Class)tasksType;
 - (void).cxx_destruct;
 - (void)addTasks:(id)arg1;
 - (void)clearTasks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)tasksAtIndex:(unsigned long long)arg1;

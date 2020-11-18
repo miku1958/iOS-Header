@@ -71,6 +71,7 @@
     BOOL _iosSettingsNotificationsShowInHistoryEnabled;
     BOOL _iosSettingsNotificationsShowOnLockScreenEnabled;
     BOOL _iosSettingsNotificationsSoundEnabled;
+    BOOL _isDiagnosticsUsageEnabled;
     BOOL _isNewUser;
     BOOL _isPaidSubscriber;
     BOOL _isPaidSubscriberFromAppStore;
@@ -116,6 +117,7 @@
         unsigned int iosSettingsNotificationsShowInHistoryEnabled:1;
         unsigned int iosSettingsNotificationsShowOnLockScreenEnabled:1;
         unsigned int iosSettingsNotificationsSoundEnabled:1;
+        unsigned int isDiagnosticsUsageEnabled:1;
         unsigned int isNewUser:1;
         unsigned int isPaidSubscriber:1;
         unsigned int isPaidSubscriberFromAppStore:1;
@@ -182,6 +184,7 @@
 @property (nonatomic) BOOL hasIosSettingsNotificationsShowInHistoryEnabled;
 @property (nonatomic) BOOL hasIosSettingsNotificationsShowOnLockScreenEnabled;
 @property (nonatomic) BOOL hasIosSettingsNotificationsSoundEnabled;
+@property (nonatomic) BOOL hasIsDiagnosticsUsageEnabled;
 @property (nonatomic) BOOL hasIsNewUser;
 @property (nonatomic) BOOL hasIsPaidSubscriber;
 @property (nonatomic) BOOL hasIsPaidSubscriberFromAppStore;
@@ -234,6 +237,7 @@
 @property (nonatomic) BOOL iosSettingsNotificationsShowInHistoryEnabled; // @synthesize iosSettingsNotificationsShowInHistoryEnabled=_iosSettingsNotificationsShowInHistoryEnabled;
 @property (nonatomic) BOOL iosSettingsNotificationsShowOnLockScreenEnabled; // @synthesize iosSettingsNotificationsShowOnLockScreenEnabled=_iosSettingsNotificationsShowOnLockScreenEnabled;
 @property (nonatomic) BOOL iosSettingsNotificationsSoundEnabled; // @synthesize iosSettingsNotificationsSoundEnabled=_iosSettingsNotificationsSoundEnabled;
+@property (nonatomic) BOOL isDiagnosticsUsageEnabled; // @synthesize isDiagnosticsUsageEnabled=_isDiagnosticsUsageEnabled;
 @property (nonatomic) BOOL isNewUser; // @synthesize isNewUser=_isNewUser;
 @property (nonatomic) BOOL isPaidSubscriber; // @synthesize isPaidSubscriber=_isPaidSubscriber;
 @property (nonatomic) BOOL isPaidSubscriberFromAppStore; // @synthesize isPaidSubscriberFromAppStore=_isPaidSubscriberFromAppStore;

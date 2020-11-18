@@ -16,7 +16,6 @@
     long long _requestNumber;
     long long _copiedFromRequestNumber;
     long long _parentRequestNumber;
-    BOOL _shouldCoalesceUpdates;
     long long _sampleMode;
     NSArray *_pipelineFilters;
     id<NUDevice> _device;
@@ -28,8 +27,10 @@
     double _submitTime;
     CDUnknownBlockType _completionBlock;
     id _voucher;
+    CDStruct_1b6d18a9 _time;
 }
 
+@property (readonly, copy, nonatomic) NSString *additionalDebugInfo;
 @property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (copy, nonatomic) NUComposition *composition;
 @property (strong, nonatomic) id<NUDevice> device; // @synthesize device=_device;
@@ -40,8 +41,9 @@
 @property (strong, nonatomic) NURenderContext *renderContext; // @synthesize renderContext=_renderContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *responseQueue; // @synthesize responseQueue=_responseQueue;
 @property (nonatomic) long long sampleMode; // @synthesize sampleMode=_sampleMode;
-@property BOOL shouldCoalesceUpdates; // @synthesize shouldCoalesceUpdates=_shouldCoalesceUpdates;
+@property BOOL shouldCoalesceUpdates;
 @property double submitTime; // @synthesize submitTime=_submitTime;
+@property (nonatomic) CDStruct_1b6d18a9 time; // @synthesize time=_time;
 @property (strong) id voucher; // @synthesize voucher=_voucher;
 
 - (void).cxx_destruct;
@@ -50,9 +52,12 @@
 - (id)init;
 - (id)initWithComposition:(id)arg1;
 - (id)initWithRequest:(id)arg1;
+- (void)introspectPrepare:(CDUnknownBlockType)arg1;
 - (long long)mediaComponentType;
 - (id)newRenderJob;
 - (void)submitGeneric:(CDUnknownBlockType)arg1;
+- (void)submitGenericConfiguringRequest:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)submitGenericSynchronous:(out id *)arg1;
 - (void)takePropertiesFromRequest:(id)arg1;
 
 @end

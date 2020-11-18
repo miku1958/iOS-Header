@@ -9,7 +9,7 @@
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class CLLocation, NSData, NSDate, NSString;
 
 @interface PPLocationNamedEntities : NSObject <NSCopying, NSSecureCoding>
 {
@@ -23,11 +23,15 @@
     double _score;
     NSString *_documentId;
     NSData *_mapItem;
+    CLLocation *_location;
+    NSDate *_date;
 }
 
 @property (strong, nonatomic) NSString *city; // @synthesize city=_city;
 @property (strong, nonatomic) NSString *country; // @synthesize country=_country;
+@property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (strong, nonatomic) NSString *documentId; // @synthesize documentId=_documentId;
+@property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSString *locationName; // @synthesize locationName=_locationName;
 @property (strong, nonatomic) NSData *mapItem; // @synthesize mapItem=_mapItem;
 @property (strong, nonatomic) NSString *postalCode; // @synthesize postalCode=_postalCode;

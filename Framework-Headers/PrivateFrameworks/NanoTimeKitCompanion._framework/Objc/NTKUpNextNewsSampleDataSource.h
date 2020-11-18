@@ -10,7 +10,9 @@
 {
 }
 
++ (id)_newCircularTemplate;
 + (id)bundleIdentifier;
++ (id)sampleContent;
 - (void)getElementsInSection:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)supportedSections;
 

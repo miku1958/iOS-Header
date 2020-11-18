@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapServiceSearchTicket-Protocol.h>
 
-@class GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
+@class GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOReverseGeocodeRequestTicket : _GEOPlaceRequestTicket <GEOMapServiceSearchTicket>
@@ -19,8 +19,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *browseCategories;
 @property (nonatomic) unsigned long long cachePolicy;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
+@property (readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
+@property (readonly, nonatomic) CDStruct_d1a7ebee dataRequestKind;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, copy) NSString *description;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *resultSectionHeader;
 @property (readonly, nonatomic) NSArray *retainedSearchMetadata;
 @property (readonly, nonatomic) NSString *searchQuery;
+@property (readonly, nonatomic) NSArray *searchResultSections;
 @property (readonly, nonatomic) int searchResultType;
 @property (readonly, nonatomic) BOOL shouldEnableRedoSearch;
 @property (readonly, nonatomic) BOOL showDymSuggestionCloseButton;

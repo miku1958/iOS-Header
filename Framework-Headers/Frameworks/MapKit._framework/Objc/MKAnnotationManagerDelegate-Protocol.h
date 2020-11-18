@@ -15,6 +15,7 @@
 - (void)annotationManager:(MKAnnotationManager *)arg1 didRemoveAnnotationRepresentations:(NSArray *)arg2;
 - (void)annotationManager:(MKAnnotationManager *)arg1 didSelectAnnotationRepresentation:(id<MKAnnotationRepresentation>)arg2;
 - (id<MKAnnotationRepresentation>)annotationManager:(MKAnnotationManager *)arg1 representationForAnnotation:(id<MKAnnotation>)arg2;
+- (void)annotationManagerDidChangeVisibleAnnotationRepresentations:(MKAnnotationManager *)arg1;
 
 @optional
 - (BOOL)annotationManager:(MKAnnotationManager *)arg1 canSelectAnnotationRepresentation:(id<MKAnnotationRepresentation>)arg2;

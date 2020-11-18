@@ -8,13 +8,17 @@
 
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARReferenceImageManager, NSString, NSUUID;
+@class ARReferenceImageCachedError, NSString, NSUUID;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ARReferenceImage : NSObject <NSSecureCoding>
 {
+    NSObject<OS_dispatch_queue> *_verificationQueue;
+    NSObject<OS_dispatch_semaphore> *_verificationQueueSemaphore;
     NSString *_name;
+    NSString *_resourceGroupName;
     double _estimatedQuality;
-    ARReferenceImageManager *_referenceImageManager;
+    ARReferenceImageCachedError *_cachedVerificationError;
     struct __CVBuffer *_pixelBuffer;
     struct __CVBuffer *_alphaMask;
     NSUUID *_identifier;
@@ -22,15 +26,15 @@
 }
 
 @property (readonly, nonatomic) struct __CVBuffer *alphaMask; // @synthesize alphaMask=_alphaMask;
+@property (strong) ARReferenceImageCachedError *cachedVerificationError; // @synthesize cachedVerificationError=_cachedVerificationError;
 @property double estimatedQuality; // @synthesize estimatedQuality=_estimatedQuality;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) struct CGSize imageSize;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) struct CGSize physicalSize; // @synthesize physicalSize=_physicalSize;
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
-@property (strong) ARReferenceImageManager *referenceImageManager; // @synthesize referenceImageManager=_referenceImageManager;
+@property (readonly, nonatomic) NSString *resourceGroupName; // @synthesize resourceGroupName=_resourceGroupName;
 
-+ (id)referenceImageManager;
 + (id)referenceImagesInGroupNamed:(id)arg1 bundle:(id)arg2;
 + (id)referenceImagesInGroupNamed:(id)arg1 catalog:(id)arg2;
 + (id)referenceImagesInGroupNamed:(id)arg1 catalogName:(id)arg2 bundle:(id)arg3;
@@ -50,6 +54,8 @@
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3 addPadding:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (void)setResourceGroupName:(id)arg1;
+- (void)validateWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

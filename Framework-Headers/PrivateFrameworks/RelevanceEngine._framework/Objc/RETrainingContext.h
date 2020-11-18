@@ -29,7 +29,8 @@
 - (void)_configureForRelevanceEngine:(id)arg1;
 - (void)_didBecomeCurrent;
 - (void)_didResignCurrent;
-- (void)_trainWithElement:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3;
+- (void)_trainElement:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3;
+- (void)_trainElementWithIdentifier:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3;
 - (void)_willBecomeCurrent;
 - (void)_willResignCurrent;
 - (id)attributeForKey:(id)arg1;
@@ -40,6 +41,7 @@
 - (BOOL)performSimulationCommand:(id)arg1 withOptions:(id)arg2;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (void)trainWithElement:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3;
+- (void)trainWithUnmanagedElement:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3;
 
 @end
 

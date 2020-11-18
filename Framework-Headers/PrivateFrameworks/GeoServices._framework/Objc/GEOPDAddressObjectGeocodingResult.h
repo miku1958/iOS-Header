@@ -17,13 +17,15 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_disambiguationLabels;
 }
 
-@property (strong, nonatomic) NSMutableArray *disambiguationLabels; // @synthesize disambiguationLabels=_disambiguationLabels;
+@property (strong, nonatomic) NSMutableArray *disambiguationLabels;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)disambiguationLabelType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)clearDisambiguationLabels;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

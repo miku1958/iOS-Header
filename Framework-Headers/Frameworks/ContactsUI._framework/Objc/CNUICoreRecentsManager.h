@@ -33,6 +33,7 @@
 - (id)recentContactsMatchingContactProperties:(id)arg1;
 - (id)recentsContactsMatchingHandles:(id)arg1;
 - (void)removeRecents:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeRecentsWithIdentifiers:(id)arg1 domain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

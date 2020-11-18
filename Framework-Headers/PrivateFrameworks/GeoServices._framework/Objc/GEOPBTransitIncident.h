@@ -8,44 +8,72 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitArtwork, NSMutableArray, NSString, PBUnknownFields;
+@class GEOPBTransitArtwork, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPBTransitIncident : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _incidentMuid;
     NSMutableArray *_affectedEntitys;
-    unsigned int _creationDatetime;
-    unsigned int _endDatetime;
-    int _iconEnum;
-    unsigned int _incidentIndex;
+    unsigned long long _incidentMuid;
     GEOPBTransitArtwork *_incidentTypeArtwork;
     NSString *_longDescriptionString;
     NSString *_messageForAllBlocking;
     NSString *_messageForIncidentType;
     NSString *_messageString;
     NSString *_shortDescriptionString;
-    unsigned int _startDatetime;
     NSString *_titleString;
+    unsigned int _creationDatetime;
+    unsigned int _endDatetime;
+    int _iconEnum;
+    unsigned int _incidentIndex;
+    unsigned int _startDatetime;
     unsigned int _updatedDatetime;
     BOOL _blocking;
     struct {
-        unsigned int incidentMuid:1;
-        unsigned int creationDatetime:1;
-        unsigned int endDatetime:1;
-        unsigned int iconEnum:1;
-        unsigned int incidentIndex:1;
-        unsigned int startDatetime:1;
-        unsigned int updatedDatetime:1;
-        unsigned int blocking:1;
-    } _has;
+        unsigned int has_incidentMuid:1;
+        unsigned int has_creationDatetime:1;
+        unsigned int has_endDatetime:1;
+        unsigned int has_iconEnum:1;
+        unsigned int has_incidentIndex:1;
+        unsigned int has_startDatetime:1;
+        unsigned int has_updatedDatetime:1;
+        unsigned int has_blocking:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_affectedEntitys:1;
+        unsigned int read_incidentTypeArtwork:1;
+        unsigned int read_longDescriptionString:1;
+        unsigned int read_messageForAllBlocking:1;
+        unsigned int read_messageForIncidentType:1;
+        unsigned int read_messageString:1;
+        unsigned int read_shortDescriptionString:1;
+        unsigned int read_titleString:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_affectedEntitys:1;
+        unsigned int wrote_incidentMuid:1;
+        unsigned int wrote_incidentTypeArtwork:1;
+        unsigned int wrote_longDescriptionString:1;
+        unsigned int wrote_messageForAllBlocking:1;
+        unsigned int wrote_messageForIncidentType:1;
+        unsigned int wrote_messageString:1;
+        unsigned int wrote_shortDescriptionString:1;
+        unsigned int wrote_titleString:1;
+        unsigned int wrote_creationDatetime:1;
+        unsigned int wrote_endDatetime:1;
+        unsigned int wrote_iconEnum:1;
+        unsigned int wrote_incidentIndex:1;
+        unsigned int wrote_startDatetime:1;
+        unsigned int wrote_updatedDatetime:1;
+        unsigned int wrote_blocking:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *affectedEntitys; // @synthesize affectedEntitys=_affectedEntitys;
-@property (nonatomic) BOOL blocking; // @synthesize blocking=_blocking;
-@property (nonatomic) unsigned int creationDatetime; // @synthesize creationDatetime=_creationDatetime;
-@property (nonatomic) unsigned int endDatetime; // @synthesize endDatetime=_endDatetime;
+@property (strong, nonatomic) NSMutableArray *affectedEntitys;
+@property (nonatomic) BOOL blocking;
+@property (nonatomic) unsigned int creationDatetime;
+@property (nonatomic) unsigned int endDatetime;
 @property (nonatomic) BOOL hasBlocking;
 @property (nonatomic) BOOL hasCreationDatetime;
 @property (nonatomic) BOOL hasEndDatetime;
@@ -61,27 +89,38 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasStartDatetime;
 @property (readonly, nonatomic) BOOL hasTitleString;
 @property (nonatomic) BOOL hasUpdatedDatetime;
-@property (nonatomic) int iconEnum; // @synthesize iconEnum=_iconEnum;
-@property (nonatomic) unsigned int incidentIndex; // @synthesize incidentIndex=_incidentIndex;
-@property (nonatomic) unsigned long long incidentMuid; // @synthesize incidentMuid=_incidentMuid;
-@property (strong, nonatomic) GEOPBTransitArtwork *incidentTypeArtwork; // @synthesize incidentTypeArtwork=_incidentTypeArtwork;
-@property (strong, nonatomic) NSString *longDescriptionString; // @synthesize longDescriptionString=_longDescriptionString;
-@property (strong, nonatomic) NSString *messageForAllBlocking; // @synthesize messageForAllBlocking=_messageForAllBlocking;
-@property (strong, nonatomic) NSString *messageForIncidentType; // @synthesize messageForIncidentType=_messageForIncidentType;
-@property (strong, nonatomic) NSString *messageString; // @synthesize messageString=_messageString;
-@property (strong, nonatomic) NSString *shortDescriptionString; // @synthesize shortDescriptionString=_shortDescriptionString;
-@property (nonatomic) unsigned int startDatetime; // @synthesize startDatetime=_startDatetime;
-@property (strong, nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
+@property (nonatomic) int iconEnum;
+@property (nonatomic) unsigned int incidentIndex;
+@property (nonatomic) unsigned long long incidentMuid;
+@property (strong, nonatomic) GEOPBTransitArtwork *incidentTypeArtwork;
+@property (strong, nonatomic) NSString *longDescriptionString;
+@property (strong, nonatomic) NSString *messageForAllBlocking;
+@property (strong, nonatomic) NSString *messageForIncidentType;
+@property (strong, nonatomic) NSString *messageString;
+@property (strong, nonatomic) NSString *shortDescriptionString;
+@property (nonatomic) unsigned int startDatetime;
+@property (strong, nonatomic) NSString *titleString;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) unsigned int updatedDatetime; // @synthesize updatedDatetime=_updatedDatetime;
+@property (nonatomic) unsigned int updatedDatetime;
 
 + (Class)affectedEntityType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsIconEnum:(id)arg1;
+- (void)_addNoFlagsAffectedEntity:(id)arg1;
+- (void)_readAffectedEntitys;
+- (void)_readIncidentTypeArtwork;
+- (void)_readLongDescriptionString;
+- (void)_readMessageForAllBlocking;
+- (void)_readMessageForIncidentType;
+- (void)_readMessageString;
+- (void)_readShortDescriptionString;
+- (void)_readTitleString;
 - (void)addAffectedEntity:(id)arg1;
 - (id)affectedEntityAtIndex:(unsigned long long)arg1;
 - (unsigned long long)affectedEntitysCount;
 - (void)clearAffectedEntitys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -90,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (id)iconEnumAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

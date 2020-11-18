@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (strong, nonatomic) NSUUID *identifier; // @dynamic identifier;
 @property (strong, nonatomic) NSSet *interactions; // @dynamic interactions;
+@property (strong, nonatomic) NSString *photoLocalIdentifier; // @dynamic photoLocalIdentifier;
 @property (nonatomic) long long sizeInBytes; // @dynamic sizeInBytes;
 @property (strong, nonatomic) NSString *uti; // @dynamic uti;
 

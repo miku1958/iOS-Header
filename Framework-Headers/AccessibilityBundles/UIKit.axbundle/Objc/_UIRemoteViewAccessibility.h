@@ -23,6 +23,7 @@
 - (void)_accessibilitySetRemoteElementIfNecessary;
 - (void)_accessibilitySetRetainedValue:(id)arg1 forKey:(id)arg2;
 - (void)_accessibilityTransmitRemoteUUIDToPid:(int)arg1 machPort:(unsigned int)arg2 value:(id)arg3;
+- (void)_accessibilityUnregisterRemoteView;
 - (id)accessibilityElements;
 - (id)accessibilityIdentifier;
 - (void)dealloc;

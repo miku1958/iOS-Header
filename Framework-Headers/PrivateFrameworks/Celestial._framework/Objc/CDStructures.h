@@ -10,100 +10,14 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
-struct AVControllerPrivate {
-    id _field1;
-    id _field2;
-    id _field3;
-    id _field4;
-    id _field5;
-    Class _field6;
-    id _field7;
-    long long _field8;
-    long long _field9;
-    float _field10;
-    float _field11;
-    long long _field12;
-    BOOL _field13;
-    id _field14;
-    float _field15;
-    struct __CFString *_field16;
-    id _field17;
-    BOOL _field18;
-    BOOL _field19;
-    BOOL _field20;
-    id _field21;
-    struct OpaqueFigVisualContext *_field22;
-    id _field23;
-    struct __CFRunLoop *_field24;
-    unsigned long long _field25;
-    int _field26;
-    int _field27;
-    int _field28;
-    BOOL _field29;
-    BOOL _field30;
-    BOOL _field31;
-    BOOL _field32;
-    id _field33;
-    struct OpaqueFigPlayer *_field34;
-    id _field35;
-    id _field36;
-    id _field37;
-    BOOL _field38;
-    BOOL _field39;
-    id _field40;
-    id _field41;
-    BOOL _field42;
-    BOOL _field43;
-    BOOL _field44;
-    int _field45;
-    BOOL _field46;
-};
-
-struct AVFileValidatorPrivate {
-    id _field1;
-    id _field2;
-    struct FigOpaqueMediaValidator *_field3;
-    struct FigMediaValidatorDataLocation _field4;
-    struct OpaqueCMByteStream *_field5;
-    BOOL _field6;
-    BOOL _field7;
-    id _field8;
-};
-
-struct AVItemPrivate {
-    id _field1;
-    id _field2;
-    double _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    unsigned long long _field7;
-    BOOL _field8;
-    BOOL _field9;
-    id _field10;
-    long long _field11;
-    long long _field12;
-    long long _field13;
-    BOOL _field14;
-    id _field15;
-    id _field16;
-    BOOL _field17;
-    BOOL _field18;
-    id _field19;
-    id _field20;
-    struct OpaqueFigThread *_field21;
-    struct OpaqueCMByteStream *_field22;
-    int _field23;
-    id _field24;
-    id _field25;
-};
-
 struct AVSystemControllerPrivate {
     BOOL _field1;
     BOOL _field2;
     float _field3;
     id _field4;
-    struct OpaqueFigPlayer *_field5;
+    struct OpaqueFigSystemController *_field5;
+    id _field6;
+    id _field7;
 };
 
 struct CGPoint {
@@ -121,25 +35,7 @@ struct CGSize {
     double height;
 };
 
-struct FigMediaValidatorDataLocation {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-struct FigOpaqueMediaValidator;
-
-struct OpaqueCMByteStream;
-
-struct OpaqueFigPlayer;
-
-struct OpaqueFigThread;
-
-struct OpaqueFigVisualContext;
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
+struct OpaqueFigSystemController;
 
 #pragma mark Typedef'd Structures
 

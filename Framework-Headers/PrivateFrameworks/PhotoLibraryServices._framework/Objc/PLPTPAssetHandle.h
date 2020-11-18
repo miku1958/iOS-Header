@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectID;
+@class NSManagedObjectID, NSSet, NSString;
 
 @interface PLPTPAssetHandle : NSObject
 {
@@ -14,17 +14,23 @@
     long long _type;
     NSManagedObjectID *_assetID;
     NSManagedObjectID *_sidecarID;
+    NSSet *_siblingAssetHandleTypes;
 }
 
 @property (readonly, copy, nonatomic) NSManagedObjectID *assetID; // @synthesize assetID=_assetID;
+@property (readonly, nonatomic) NSString *auxiliaryResourceFilenameMarker;
 @property (readonly, nonatomic) BOOL requiresConversion; // @synthesize requiresConversion=_requiresConversion;
+@property (readonly, copy, nonatomic) NSSet *siblingAssetHandleTypes; // @synthesize siblingAssetHandleTypes=_siblingAssetHandleTypes;
 @property (readonly, copy, nonatomic) NSManagedObjectID *sidecarID; // @synthesize sidecarID=_sidecarID;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (id)assetHandleBySettingRequiresConversion;
+- (id)assetHandleBySettingSiblingAssetHandleTypes:(id)arg1;
 - (id)description;
+- (BOOL)hasSiblingAssetWithAssetHandleType:(long long)arg1;
 - (id)initWithType:(long long)arg1 assetID:(id)arg2 sidecarID:(id)arg3 requiresConversion:(BOOL)arg4;
+- (id)initWithType:(long long)arg1 assetID:(id)arg2 sidecarID:(id)arg3 requiresConversion:(BOOL)arg4 siblingAssetHandleTypes:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

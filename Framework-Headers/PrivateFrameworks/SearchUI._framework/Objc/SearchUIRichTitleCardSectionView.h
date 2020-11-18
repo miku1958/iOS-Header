@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong) TLKHeaderView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKHeaderView *contentView; // @dynamic contentView;
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;

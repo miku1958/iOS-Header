@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <WebKit/WKPaymentAuthorizationDelegate.h>
 
 #import <WebKit/PKPaymentAuthorizationViewControllerDelegate-Protocol.h>
 #import <WebKit/PKPaymentAuthorizationViewControllerPrivateDelegate-Protocol.h>
@@ -12,17 +12,8 @@
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKPaymentAuthorizationViewControllerDelegate : NSObject <PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationViewControllerPrivateDelegate>
+@interface WKPaymentAuthorizationViewControllerDelegate : WKPaymentAuthorizationDelegate <PKPaymentAuthorizationViewControllerDelegate, PKPaymentAuthorizationViewControllerPrivateDelegate>
 {
-    struct WebPaymentCoordinatorProxy *_webPaymentCoordinatorProxy;
-    RetainPtr_f649c0c3 _paymentSummaryItems;
-    RetainPtr_f649c0c3 _shippingMethods;
-    struct BlockPtr<void (PKPaymentMerchantSession *, NSError *)> _sessionBlock;
-    BOOL _didReachFinalState;
-    struct BlockPtr<void (PKPaymentAuthorizationResult *)> _paymentAuthorizedCompletion;
-    struct BlockPtr<void (PKPaymentRequestPaymentMethodUpdate *)> _didSelectPaymentMethodCompletion;
-    struct BlockPtr<void (PKPaymentRequestShippingMethodUpdate *)> _didSelectShippingMethodCompletion;
-    struct BlockPtr<void (PKPaymentRequestShippingContactUpdate *)> _didSelectShippingContactCompletion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,10 +21,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (id)initWithPaymentCoordinatorProxy:(struct WebPaymentCoordinatorProxy *)arg1;
-- (void)invalidate;
+- (void)_getPaymentServicesMerchantURL:(CDUnknownBlockType)arg1;
+- (id)initWithRequest:(id)arg1 presenter:(struct PaymentAuthorizationPresenter *)arg2;
 - (void)paymentAuthorizationViewController:(id)arg1 didAuthorizePayment:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationViewController:(id)arg1 didRequestMerchantSession:(CDUnknownBlockType)arg2;
 - (void)paymentAuthorizationViewController:(id)arg1 didSelectPaymentMethod:(id)arg2 handler:(CDUnknownBlockType)arg3;

@@ -31,9 +31,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
-+ (struct CGAffineTransform)p_textureLayoutTransformInRootForRep:(id)arg1 isMagicMove:(BOOL)arg2;
-+ (struct CGRect)p_textureRectForRep:(id)arg1 isMagicMove:(BOOL)arg2;
-+ (struct CGAffineTransform)p_textureRenderTransformRelativeToTextureRect:(struct CGRect)arg1 forRep:(id)arg2 isMagicMove:(BOOL)arg3;
++ (struct CGAffineTransform)p_textureLayoutTransformInRootForLayout:(id)arg1 isMagicMove:(BOOL)arg2;
++ (struct CGRect)p_textureRectForLayout:(id)arg1 viewScale:(double)arg2 isMagicMove:(BOOL)arg3;
++ (struct CGAffineTransform)p_textureRenderTransformRelativeToTextureRect:(struct CGRect)arg1 forLayout:(id)arg2 viewScale:(double)arg3 isMagicMove:(BOOL)arg4;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)didDisplayTextureWithDescription:(id)arg1 isAtEndOfBuild:(BOOL)arg2;

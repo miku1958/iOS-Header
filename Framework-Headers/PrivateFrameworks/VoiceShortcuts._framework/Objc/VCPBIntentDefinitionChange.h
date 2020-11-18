@@ -7,11 +7,10 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <VoiceShortcuts/NSCopying-Protocol.h>
-#import <VoiceShortcuts/VCLazyLoadedChange-Protocol.h>
 
 @class NSString, VCPBIntentDefinition;
 
-@interface VCPBIntentDefinitionChange : PBCodable <VCLazyLoadedChange, NSCopying>
+@interface VCPBIntentDefinitionChange : PBCodable <NSCopying>
 {
     NSString *_associatedBundleID;
     int _changeType;
@@ -20,22 +19,17 @@
 
 @property (strong, nonatomic) NSString *associatedBundleID; // @synthesize associatedBundleID=_associatedBundleID;
 @property (nonatomic) int changeType; // @synthesize changeType=_changeType;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentDefinition;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VCPBIntentDefinition *intentDefinition; // @synthesize intentDefinition=_intentDefinition;
-@property (readonly, nonatomic) int messageType;
-@property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSString *uniqueID;
 
 - (void).cxx_destruct;
 - (int)StringAsChangeType:(id)arg1;
-- (id)buildSYChange;
 - (id)changeTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

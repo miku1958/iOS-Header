@@ -15,8 +15,10 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_addLap:(double)arg1;
+- (void)_axSetLapButtonTraitsForMode:(unsigned long long)arg1;
 - (void)lapLapTimer;
 - (void)loadView;
+- (void)setMode:(unsigned long long)arg1;
 
 @end
 

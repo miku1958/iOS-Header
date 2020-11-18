@@ -10,7 +10,7 @@
 #import <PhotoLibrary/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotoLibrary/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSObject, NSString, PHAsset, PHCachingImageManager, PLExpandableImageView, PLImageScrollView, PLTileContainerView, PLVideoView, UIGestureRecognizer, UIImage, UIImageView, UIView;
+@class NSArray, NSNumber, NSObject, NSString, PHAsset, PHCachingImageManager, PLExpandableImageView, PLImageScrollView, PLTileContainerView, PLVideoView, UIGestureRecognizer, UIImage, UIImageView, UIView;
 @protocol OS_dispatch_source, PLPhotoTileViewControllerDelegate, PLTilePlaceholderView;
 
 @interface PLPhotoTileViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, PLPhotoTileCloudPlaceholderViewDelegate>
@@ -84,6 +84,8 @@
     BOOL _picked;
     BOOL _shouldHideProgressIndicator;
     BOOL _shouldSupressViewWillTransitionToSize;
+    int _inflightFullSizeImageRequestID;
+    NSNumber *_maxZoomScaleOverride;
     UIView *__customCenterOverlay;
     struct UIEdgeInsets _overlayInsets;
 }
@@ -95,6 +97,8 @@
 @property (nonatomic) BOOL force1XCroppedImage; // @synthesize force1XCroppedImage=_force1XCroppedImage;
 @property (nonatomic) BOOL forceNativeScreenScale; // @synthesize forceNativeScreenScale=_forceNativeScreenScale;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) int inflightFullSizeImageRequestID; // @synthesize inflightFullSizeImageRequestID=_inflightFullSizeImageRequestID;
+@property (strong, nonatomic) NSNumber *maxZoomScaleOverride; // @synthesize maxZoomScaleOverride=_maxZoomScaleOverride;
 @property (nonatomic) struct UIEdgeInsets overlayInsets; // @synthesize overlayInsets=_overlayInsets;
 @property (readonly, nonatomic) PHAsset *photo;
 @property (nonatomic) BOOL picked; // @synthesize picked=_picked;
@@ -125,6 +129,8 @@
 - (void)_handleSingleTap:(id)arg1;
 - (long long)_imageOrientation;
 - (void)_installSubview:(id)arg1;
+- (id)_newCGImageBackedUIImageFromImage:(id)arg1;
+- (id)_newImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 cropRect:(struct CGRect)arg3 fullSize:(struct CGSize)arg4;
 - (id)_newOriginalImageForPickerFromCachedData;
 - (void)_performDidEndZoomBlock;
 - (void)_performRotationUpdatesWithDuration:(double)arg1 size:(struct CGSize)arg2;
@@ -182,12 +188,12 @@
 - (void)loadView;
 - (double)minRotatedScale;
 - (double)minZoomScale;
-- (id)newCGImageBackedUIImage;
 - (id)newImageWithCropRect:(struct CGRect)arg1 minimalCropDimension:(double)arg2 croppedImageData:(id *)arg3 fullScreenImageData:(id *)arg4 fullScreenImage:(struct CGImage **)arg5 imageCropRect:(struct CGRect *)arg6 intersectCropWithFullRect:(BOOL)arg7;
 - (void)noteParentViewControllerDidDisappear;
 - (BOOL)photoShouldHaveAvalancheBadge;
 - (BOOL)photoShouldHaveHDRBadge;
 - (void)refreshTileWithFullScreenImage:(id)arg1 modelPhoto:(id)arg2;
+- (void)reloadZoomScale;
 - (void)resetZoom;
 - (void)retryDownload;
 - (id)scrollView;
@@ -231,6 +237,7 @@
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (id)viewForZoomingInScrollView:(id)arg1;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (double)zoomToFillScale;

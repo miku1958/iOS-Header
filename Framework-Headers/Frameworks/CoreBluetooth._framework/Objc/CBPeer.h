@@ -37,7 +37,12 @@
 - (void)handleLinkEncryptionChanged:(id)arg1;
 - (void)handleMTUChanged:(id)arg1;
 - (void)handleMsg:(int)arg1 args:(id)arg2;
+- (BOOL)hasTag:(id)arg1;
 - (id)initWithInfo:(id)arg1 manager:(id)arg2;
+- (void)sendInternalMsg:(int)arg1 args:(id)arg2;
+- (id)sendInternalSyncMsg:(int)arg1 args:(id)arg2;
+- (void)tag:(id)arg1;
+- (void)untag:(id)arg1;
 
 @end
 

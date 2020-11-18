@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didEnterTerminalState;
 - (void)didReceiveFigAssetWriterNotificationWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (void)finalize;
 - (id)init;
 - (id)initWithFigAssetWriter:(struct OpaqueFigAssetWriter *)arg1;
 - (BOOL)isAsynchronous;

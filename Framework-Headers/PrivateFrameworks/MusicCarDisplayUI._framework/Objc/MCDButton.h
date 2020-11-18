@@ -12,18 +12,18 @@
 {
     CALayer *_focusColorLayer;
     BOOL _showBezelInTouch;
-    BOOL _hideBezelInKnob;
+    BOOL _showHighlight;
 }
 
-@property (nonatomic) BOOL hideBezelInKnob; // @synthesize hideBezelInKnob=_hideBezelInKnob;
 @property (nonatomic, getter=isSelected) BOOL selected; // @dynamic selected;
 @property (nonatomic) BOOL showBezelInTouch; // @synthesize showBezelInTouch=_showBezelInTouch;
+@property (nonatomic) BOOL showHighlight; // @synthesize showHighlight=_showHighlight;
 
-+ (id)buttonWithType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_buttonBackGroundColorTouch;
 - (void)_updateButtonStyle;
 - (BOOL)canBecomeFocused;
+- (BOOL)canShowHighlight;
 - (id)colorForKnobContentSelected;
 - (id)colorForKnobFocusLayer;
 - (id)colorForKnobFocusLayerSelected;
@@ -32,6 +32,9 @@
 - (id)colorForTouchFocusLayer;
 - (id)colorForTouchFocusLayerSelected;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (double)focusLayerCornerRadius;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setHidden:(BOOL)arg1;
 - (BOOL)shouldUpdateButtonOpacityForKnobUnfocused;

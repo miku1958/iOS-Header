@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreDuet/_DKMonitor-Protocol.h>
+#import <CoreDuet/_DKMonitoring-Protocol.h>
 
 @class NSDate;
 
-@protocol _DKHistoricalMonitor <_DKMonitor>
+@protocol _DKHistoricalMonitor <_DKMonitoring>
 
 @property (copy, nonatomic) CDUnknownBlockType historicalHandler;
 @property (readonly, nonatomic) NSDate *lastUpdate;

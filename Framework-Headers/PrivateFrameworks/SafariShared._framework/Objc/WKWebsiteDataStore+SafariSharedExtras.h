@@ -9,5 +9,8 @@
 @interface WKWebsiteDataStore (SafariSharedExtras)
 + (id)safari_allDataTypes;
 + (void)safari_clearHSTSSuperCookies;
++ (id)safari_dataStoreWithConfiguration:(id)arg1;
++ (id)safari_defaultDataStoreDisallowingTLSFallback;
++ (id)safari_nonPersistentDataStore;
 @end
 

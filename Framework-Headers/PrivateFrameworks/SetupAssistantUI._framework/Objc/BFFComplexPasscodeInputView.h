@@ -22,6 +22,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_layout;
 - (id)initWithFrame:(struct CGRect)arg1 numericOnly:(BOOL)arg2;
 - (void)layoutSubviews;
 - (id)passcode;
@@ -29,6 +30,7 @@
 - (void)setPasscode:(id)arg1;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

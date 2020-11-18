@@ -19,8 +19,8 @@
 @property (strong, nonatomic) MFPlainTextDocument *plaintextAlternative; // @synthesize plaintextAlternative=_plaintextAlternative;
 @property (nonatomic) BOOL textPartsAreHTML; // @synthesize textPartsAreHTML=_textPartsAreHTML;
 
+- (void).cxx_destruct;
 - (id)copy;
-- (void)dealloc;
 - (id)richtextContent;
 
 @end

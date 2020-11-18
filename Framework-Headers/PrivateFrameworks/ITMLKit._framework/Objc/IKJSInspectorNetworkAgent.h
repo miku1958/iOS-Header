@@ -27,6 +27,7 @@
 - (void)disableWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)enableWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2;
 - (void)getResponseBodyWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 requestId:(id)arg3;
+- (void)getSerializedCertificateWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 requestId:(id)arg3;
 - (id)initWithInspectorController:(id)arg1;
 - (void)loadResourceWithErrorCallback:(CDUnknownBlockType)arg1 successCallback:(CDUnknownBlockType)arg2 frameId:(id)arg3 url:(id)arg4;
 - (id)registerLoaderWithIdentifier:(id)arg1;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXGadgetViewController.h>
+#import <PhotosUICore/PXGadgetUIViewController.h>
 
 #import <PhotosUI/PXNavigationRoot-Protocol.h>
 
-@class NSString, PUSearchHomeGadgetDataSourceManager, PXNavigationListDataSourceManager, UIBarButtonItem, UINavigationController;
+@class NSString, PUSearchHomeGadgetDataSourceManager, PXNavigationListDataSectionManager, UIBarButtonItem, UINavigationController;
 
-@interface PUSearchHomeViewController : PXGadgetViewController <PXNavigationRoot>
+@interface PUSearchHomeViewController : PXGadgetUIViewController <PXNavigationRoot>
 {
     UIBarButtonItem *_navigationDisplayModeButtonItem;
     PUSearchHomeGadgetDataSourceManager *_searchHomeDataSourceManager;
@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) UINavigationController *navigationController; // @dynamic navigationController;
 @property (strong, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem; // @synthesize navigationDisplayModeButtonItem=_navigationDisplayModeButtonItem;
 @property (readonly, nonatomic) NSString *navigationIdentifier;
-@property (readonly, nonatomic) PXNavigationListDataSourceManager *navigationListDataSourceManager;
+@property (readonly, nonatomic) PXNavigationListDataSectionManager *navigationListDataSourceManager;
 @property (readonly, nonatomic) NSString *navigationTitle;
 @property (strong, nonatomic) PUSearchHomeGadgetDataSourceManager *searchHomeDataSourceManager; // @synthesize searchHomeDataSourceManager=_searchHomeDataSourceManager;
 @property (readonly) Class superclass;
@@ -32,6 +32,7 @@
 - (void)_activateSearchField;
 - (void)_clearSearchField;
 - (void)_configureSearchNavigationBar;
+- (void)_notifyAnalyticsSearchAction:(unsigned long long)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (id)init;
 - (void)performRecentSearch:(id)arg1;
@@ -41,10 +42,11 @@
 - (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
 - (void)presentOneYearAgo;
 - (void)presentSiriSearchRequest:(id)arg1 resultCount:(unsigned long long)arg2;
-- (BOOL)pu_handleSecondTabTap;
+- (BOOL)pu_scrollToInitialPositionAnimated:(BOOL)arg1;
 - (id)px_gridPresentation;
+- (long long)scrollAnimationIdentifier;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)selectZeroKeyword:(id)arg1 fromSectionWithType:(long long)arg2;
+- (void)selectZeroKeyword:(id)arg1;
 - (BOOL)shouldPreventPlaceholder;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

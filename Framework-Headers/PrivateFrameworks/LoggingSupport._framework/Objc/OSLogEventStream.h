@@ -26,6 +26,7 @@
 @property (nonatomic) struct _os_timesync_db_s *tsdb; // @synthesize tsdb=_tsdb;
 
 - (void).cxx_destruct;
+- (void)_activateStreamFromTimeIntervalSinceLastBoot:(double)arg1;
 - (void)_activateStreamInRange:(struct os_timesync_range_s *)arg1;
 - (void)_foreachIndexFile:(CDUnknownBlockType)arg1;
 - (id)_initWithSource:(id)arg1 flags:(unsigned long long)arg2;

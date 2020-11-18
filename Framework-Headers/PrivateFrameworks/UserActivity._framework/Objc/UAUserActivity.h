@@ -17,6 +17,7 @@
     NSString *_title;
     NSURL *_webpageURL;
     NSURL *_referrerURL;
+    NSString *_targetContentIdentifier;
     SFCompanionAdvertiser *_advertiser;
     NSObject<OS_dispatch_group> *_advertiserCompletedGroup;
     SFCompanionAdvertiser *_resumerAdvertiser;
@@ -80,7 +81,7 @@
 @property BOOL createsNewUUIDIfSaved; // @synthesize createsNewUUIDIfSaved=_createsNewUUIDIfSaved;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong) NSError *decodeUserInfoError; // @synthesize decodeUserInfoError=_decodeUserInfoError;
-@property id<UAUserActivityDelegate> delegate; // @dynamic delegate;
+@property (weak) id<UAUserActivityDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property BOOL dirty; // @dynamic dirty;
 @property (strong) NSMutableSet *dirtyPayloadIdentifiers; // @synthesize dirtyPayloadIdentifiers=_dirtyPayloadIdentifiers;
@@ -118,6 +119,7 @@
 @property (readonly) unsigned long long suggestedActionType; // @synthesize suggestedActionType=_suggestedActionType;
 @property (readonly) Class superclass;
 @property BOOL supportsContinuationStreams; // @dynamic supportsContinuationStreams;
+@property (copy) NSString *targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property (copy) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property (copy) NSString *title; // @dynamic title;
 @property (copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;

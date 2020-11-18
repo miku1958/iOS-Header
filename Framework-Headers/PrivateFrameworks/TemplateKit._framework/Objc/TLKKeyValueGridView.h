@@ -8,18 +8,16 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface TLKKeyValueGridView : NUIContainerGridView
 {
     NSMutableArray *_keyLabels;
     NSMutableArray *_valueLabels;
-    unsigned long long _style;
 }
 
-@property (strong) NSMutableArray *keyLabels; // @synthesize keyLabels=_keyLabels;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
-@property (strong) NSMutableArray *valueLabels; // @synthesize valueLabels=_valueLabels;
+@property (strong, nonatomic) NSMutableArray *keyLabels; // @synthesize keyLabels=_keyLabels;
+@property (strong, nonatomic) NSMutableArray *valueLabels; // @synthesize valueLabels=_valueLabels;
 
-+ (void)setStylesOnLabels:(id)arg1 withStyle:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)init;
 - (void)updateWithTuples:(id)arg1 valueColumnIsTrailing:(BOOL)arg2 truncateKey:(BOOL)arg3;

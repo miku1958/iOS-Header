@@ -8,14 +8,16 @@
 
 #import <AvatarUI/AVTAvatarActionsModelDelegate-Protocol.h>
 #import <AvatarUI/AVTFaceTrackingManagerDelegate-Protocol.h>
+#import <AvatarUI/AVTUIControllerPresentationDelegate-Protocol.h>
 #import <AvatarUI/UINavigationControllerDelegate-Protocol.h>
 
-@class AVTAvatarActionButton, AVTAvatarActionsModel, AVTImageTransitioningContainerView, AVTUIEnvironment, AVTViewSession, AVTViewSessionProvider, NSString, UIImageView, UIStackView, UITapGestureRecognizer;
+@class AVTAvatarActionButton, AVTAvatarActionsModel, AVTAvatarEditorViewController, AVTImageTransitioningContainerView, AVTUIEnvironment, AVTViewSession, AVTViewSessionProvider, NSString, UIImageView, UIStackView, UITapGestureRecognizer;
 @protocol AVTAvatarActionsViewControllerDelegate, AVTAvatarActionsViewControllerLayout;
 
-@interface AVTAvatarActionsViewController : UIViewController <AVTAvatarActionsModelDelegate, UINavigationControllerDelegate, AVTFaceTrackingManagerDelegate>
+@interface AVTAvatarActionsViewController : UIViewController <AVTAvatarActionsModelDelegate, UINavigationControllerDelegate, AVTFaceTrackingManagerDelegate, AVTUIControllerPresentationDelegate>
 {
     BOOL _isAnimating;
+    BOOL _allowFacetracking;
     id<AVTAvatarActionsViewControllerDelegate> _delegate;
     id<AVTAvatarActionsViewControllerLayout> _currentLayout;
     UIStackView *_buttonsView;
@@ -30,9 +32,11 @@
     UIImageView *_transitionImageView;
     UITapGestureRecognizer *_tapGestureRecognizer;
     AVTUIEnvironment *_environment;
+    AVTAvatarEditorViewController *_editorViewController;
 }
 
 @property (strong, nonatomic) AVTAvatarActionsModel *actionsModel; // @synthesize actionsModel=_actionsModel;
+@property (nonatomic) BOOL allowFacetracking; // @synthesize allowFacetracking=_allowFacetracking;
 @property (strong, nonatomic) AVTImageTransitioningContainerView *avatarContainer; // @synthesize avatarContainer=_avatarContainer;
 @property (strong, nonatomic) AVTViewSession *avtViewSession; // @synthesize avtViewSession=_avtViewSession;
 @property (strong, nonatomic) UIStackView *buttonsView; // @synthesize buttonsView=_buttonsView;
@@ -43,6 +47,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) AVTAvatarActionButton *duplicateButton; // @synthesize duplicateButton=_duplicateButton;
 @property (strong, nonatomic) AVTAvatarActionButton *editButton; // @synthesize editButton=_editButton;
+@property (weak, nonatomic) AVTAvatarEditorViewController *editorViewController; // @synthesize editorViewController=_editorViewController;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isAnimating; // @synthesize isAnimating=_isAnimating;
@@ -68,6 +73,7 @@
 - (void)configureAVTViewSession:(id)arg1 withAvatarRecord:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)configureUserInfoLabel;
 - (void)contentSizeCategoryDidChange:(id)arg1;
+- (void)controllerPresentationWillObstructView:(id)arg1;
 - (void)createTransitionImageViewIfNeeded;
 - (double)deleteMoveInDelay;
 - (double)deleteMoveInDuration;
@@ -81,6 +87,7 @@
 - (void)layoutViewFromModel:(id)arg1;
 - (void)loadView;
 - (id)navigationController:(id)arg1 animationControllerForOperation:(long long)arg2 fromViewController:(id)arg3 toViewController:(id)arg4;
+- (void)performEdit;
 - (void)performTransitionAfterDeleteToRecord:(id)arg1 fromLeft:(BOOL)arg2 previousRecordImage:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)performTransitionAfterDuplicateToRecord:(id)arg1 previousRecordImage:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)prepareForAnimatedTransitionWithLayout:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -89,6 +96,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

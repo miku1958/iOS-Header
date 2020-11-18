@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ContactsUI/NSCoding-Protocol.h>
+#import <ContactsUICore/NSCoding-Protocol.h>
 
 @protocol NSSecureCoding <NSCoding>
 + (BOOL)supportsSecureCoding;

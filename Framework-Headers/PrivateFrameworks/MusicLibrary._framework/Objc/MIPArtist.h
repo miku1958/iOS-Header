@@ -15,13 +15,16 @@
     long long _persistentId;
     long long _storeId;
     NSString *_artworkId;
+    NSString *_cloudUniversalLibraryId;
     NSString *_name;
     NSString *_sortName;
     CDStruct_0ee5a09b _has;
 }
 
 @property (strong, nonatomic) NSString *artworkId; // @synthesize artworkId=_artworkId;
+@property (strong, nonatomic) NSString *cloudUniversalLibraryId; // @synthesize cloudUniversalLibraryId=_cloudUniversalLibraryId;
 @property (readonly, nonatomic) BOOL hasArtworkId;
+@property (readonly, nonatomic) BOOL hasCloudUniversalLibraryId;
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasPersistentId;
 @property (readonly, nonatomic) BOOL hasSortName;

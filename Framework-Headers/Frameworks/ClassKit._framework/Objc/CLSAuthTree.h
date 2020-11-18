@@ -21,6 +21,7 @@
 - (void)_addNode:(id)arg1 parentStatusID:(id)arg2;
 - (long long)authStatusAtIdentifierPath:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithOverridingStatus:(long long)arg1;
 - (id)initWithStatus:(long long)arg1 statusID:(id)arg2 identifier:(id)arg3;

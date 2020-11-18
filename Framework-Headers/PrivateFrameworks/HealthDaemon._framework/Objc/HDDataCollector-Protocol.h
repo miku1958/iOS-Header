@@ -6,18 +6,21 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDDataAggregator, HDDataCollectorConfiguration, HKDevice, HKSource, NSString;
+@class HDDataAggregator, HDDataCollectorConfiguration, HKSource, NSArray, NSDate, NSError, NSString;
 @protocol HDCollectedSensorDatum;
 
 @protocol HDDataCollector <NSObject>
 - (void)beginCollectionForDataAggregator:(HDDataAggregator *)arg1 lastPersistedSensorDatum:(id<HDCollectedSensorDatum>)arg2;
 - (void)dataAggregator:(HDDataAggregator *)arg1 wantsCollectionWithConfiguration:(HDDataCollectorConfiguration *)arg2;
-- (HKDevice *)deviceForDataAggregator:(HDDataAggregator *)arg1;
 - (NSString *)identifierForDataAggregator:(HDDataAggregator *)arg1;
 - (HKSource *)sourceForDataAggregator:(HDDataAggregator *)arg1;
 
 @optional
+- (BOOL)canResumeCollectionFromLastSensorDatum;
+- (void)dataAggregator:(HDDataAggregator *)arg1 didPersistDatums:(NSArray *)arg2 success:(BOOL)arg3 error:(NSError *)arg4;
+- (void)dataAggregator:(HDDataAggregator *)arg1 requestsCollectionThroughDate:(NSDate *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (double)preferredAggregationIntervalForAggregator:(HDDataAggregator *)arg1;
+- (void)registerWithAggregators;
 - (Class)sensorDatumClassForAggregator:(HDDataAggregator *)arg1;
 @end
 

@@ -39,6 +39,7 @@
 - (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5;
 - (void)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;
 - (void)noteShared;
+- (BOOL)remoteAssetsDownloadedForScreenScale:(double)arg1 suffix:(id)arg2;
 - (void)requestUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)resourceValueForKey:(id)arg1;
 - (void)revocationStatusWithCompletion:(CDUnknownBlockType)arg1;

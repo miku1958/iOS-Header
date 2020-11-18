@@ -12,12 +12,13 @@ __attribute__((visibility("hidden")))
 @interface GEOMapLayerDataServiceLayer : PBCodable <NSCopying>
 {
     unsigned int _identifier;
-    CDStruct_1dc6d826 _has;
+    CDStruct_7c00b98a _flags;
 }
 
 @property (nonatomic) BOOL hasIdentifier;
-@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned int identifier;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

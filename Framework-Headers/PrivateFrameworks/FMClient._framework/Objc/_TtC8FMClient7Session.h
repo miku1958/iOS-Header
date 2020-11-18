@@ -13,7 +13,7 @@
     MISSING_TYPE *clientBundleId;
     MISSING_TYPE *clientProcessName;
     MISSING_TYPE *_activeConnection;
-    MISSING_TYPE *serverProxy.storage;
+    MISSING_TYPE *$__lazy_storage_$_serverProxy;
     MISSING_TYPE *authenticationProvider;
 }
 

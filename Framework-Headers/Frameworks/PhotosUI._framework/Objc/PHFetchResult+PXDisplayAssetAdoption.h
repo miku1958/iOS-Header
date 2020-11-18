@@ -7,18 +7,25 @@
 #import <Photos/PHFetchResult.h>
 
 #import <PhotosUICore/PXDisplayAssetFetchResult-Protocol.h>
+#import <PhotosUICore/PXPeopleFetchResult-Protocol.h>
 
 @class NSString;
 @protocol PXDisplayAsset;
 
-@interface PHFetchResult (PXDisplayAssetAdoption) <PXDisplayAssetFetchResult>
+@interface PHFetchResult (PXDisplayAssetAdoption) <PXDisplayAssetFetchResult, PXPeopleFetchResult>
 
 @property (readonly, nonatomic) long long count;
+@property (readonly, nonatomic) long long count;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<PXDisplayAsset> firstObject;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
+- (id)thumbnailAssetAtIndex:(unsigned long long)arg1;
 @end
 

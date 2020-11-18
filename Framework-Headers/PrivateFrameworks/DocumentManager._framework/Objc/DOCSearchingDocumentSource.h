@@ -6,17 +6,18 @@
 
 #import <DocumentManager/DOCDocumentSource.h>
 
-@class FPProvider;
+@class FPProviderDomain;
 
 @interface DOCSearchingDocumentSource : DOCDocumentSource
 {
-    FPProvider *_provider;
+    FPProviderDomain *_providerDomain;
 }
 
 - (void).cxx_destruct;
 - (id)icon;
-- (id)initWithProvider:(id)arg1;
+- (id)initWithProviderDomain:(id)arg1;
 - (void)setIcon:(id)arg1;
+- (id)supportedSearchFilters;
 
 @end
 

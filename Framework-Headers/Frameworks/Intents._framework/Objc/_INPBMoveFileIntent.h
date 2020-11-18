@@ -19,6 +19,7 @@
         unsigned int destinationType:1;
         unsigned int sourceType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _destinationType;
     int _sourceType;
     _INPBString *_destinationName;
@@ -28,6 +29,7 @@
     _INPBString *_sourceName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
@@ -51,6 +53,7 @@
 
 + (Class)entityNameType;
 + (Class)propertiesType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsDestinationType:(id)arg1;
 - (int)StringAsEntityTypes:(id)arg1;
@@ -62,11 +65,14 @@
 - (void)clearEntityTypes;
 - (void)clearProperties;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)destinationTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityNameAtIndex:(unsigned long long)arg1;
 - (int)entityTypeAtIndex:(unsigned long long)arg1;
 - (id)entityTypesAsString:(int)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)propertiesAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;

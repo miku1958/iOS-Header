@@ -60,7 +60,9 @@
 - (void)generateFrames;
 - (id)initWithDataProvider:(struct CGDataProvider *)arg1 scale:(double)arg2 type:(long long)arg3 size:(struct CGSize)arg4;
 - (id)initWithImageSource:(struct CGImageSource *)arg1 scale:(double)arg2 type:(long long)arg3 size:(struct CGSize)arg4;
+- (void)resumePreloading;
 - (void)setPreloadType:(long long)arg1 currentFrameIndex:(unsigned long long)arg2;
+- (void)suspendPreloading;
 
 @end
 

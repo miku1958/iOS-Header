@@ -23,7 +23,7 @@
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth;
 @property (nonatomic) BOOL centersIcon; // @synthesize centersIcon=_centersIcon;
 @property (weak, nonatomic) id<HKSwitchTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) NSString *displayText; // @synthesize displayText=_displayText;
+@property (copy, nonatomic) NSString *displayText; // @synthesize displayText=_displayText;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) struct CGSize iconSize;
 @property (nonatomic, getter=isOn) BOOL on;

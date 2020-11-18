@@ -33,11 +33,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)actionRowSelected:(id)arg1;
 - (void)createActionViews;
 - (void)createActions;
 - (void)createConstraints;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (void)layoutButtons;
 - (void)loadView;

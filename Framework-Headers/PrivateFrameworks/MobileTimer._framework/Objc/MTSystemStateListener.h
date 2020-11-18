@@ -31,11 +31,12 @@
 - (BOOL)_checkIfRestoreDone;
 - (void)_handleF5Reset;
 - (void)_handleRestoreDone;
+- (BOOL)checkSystemReady;
 - (id)gatherDiagnostics;
-- (void)handleNotification:(id)arg1;
-- (id)handledLiveDarwinNotifications;
-- (BOOL)handlesNotification:(id)arg1;
+- (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
+- (id)liveDarwinNotifications;
 - (void)printDiagnostics;
 
 @end

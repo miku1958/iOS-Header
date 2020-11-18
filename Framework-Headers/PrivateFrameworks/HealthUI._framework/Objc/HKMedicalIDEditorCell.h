@@ -26,7 +26,7 @@
 @property (weak, nonatomic) id<HKMedicalIDEditorCellEditDelegate> editDelegate; // @synthesize editDelegate=_editDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKCaretOptionalTextField *inputTextField; // @synthesize inputTextField=_inputTextField;
-@property (strong, nonatomic) NSString *label;
+@property (copy, nonatomic) NSString *label;
 @property (strong, nonatomic) UILabel *labelLabel; // @synthesize labelLabel=_labelLabel;
 @property (nonatomic) double minimumLabelWidth; // @synthesize minimumLabelWidth=_minimumLabelWidth;
 @property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
@@ -39,6 +39,8 @@
 - (void)_localeDidChange:(id)arg1;
 - (void)beginEditing;
 - (void)commitEditing;
+- (void)dealloc;
+- (void)dismissInputView;
 - (id)formattedValue;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)setupStackView;

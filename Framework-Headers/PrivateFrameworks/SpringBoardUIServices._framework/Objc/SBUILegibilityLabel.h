@@ -59,6 +59,7 @@
 - (id)initWithSettings:(id)arg1 strength:(double)arg2;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 string:(id)arg3 font:(id)arg4;
 - (id)initWithSettings:(id)arg1 strength:(double)arg2 string:(id)arg3 font:(id)arg4 options:(long long)arg5;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;

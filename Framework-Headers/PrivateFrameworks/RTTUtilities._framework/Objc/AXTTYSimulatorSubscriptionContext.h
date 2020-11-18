@@ -6,10 +6,17 @@
 
 #import <CoreTelephony/CTXPCServiceSubscriptionContext.h>
 
+@class NSUUID;
+
 @interface AXTTYSimulatorSubscriptionContext : CTXPCServiceSubscriptionContext
 {
+    NSUUID *_testUuid;
 }
 
+@property (strong, nonatomic) NSUUID *testUuid; // @synthesize testUuid=_testUuid;
+
+- (void).cxx_destruct;
+- (id)init;
 - (id)uuid;
 
 @end

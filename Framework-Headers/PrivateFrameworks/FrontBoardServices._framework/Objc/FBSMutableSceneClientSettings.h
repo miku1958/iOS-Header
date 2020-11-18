@@ -6,16 +6,24 @@
 
 #import <FrontBoardServices/FBSSceneClientSettings.h>
 
-@class NSSet, NSString;
+#import <FrontBoardServices/BSDebugDescriptionProviding-Protocol.h>
+#import <FrontBoardServices/BSXPCSecureCoding-Protocol.h>
 
-@interface FBSMutableSceneClientSettings : FBSSceneClientSettings
+@class NSOrderedSet, NSSet, NSString;
+
+@interface FBSMutableSceneClientSettings : FBSSceneClientSettings <BSDebugDescriptionProviding, BSXPCSecureCoding>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic, setter=_setLayers:) NSOrderedSet *layers; // @dynamic layers;
 @property (copy, nonatomic) NSSet *occlusions; // @dynamic occlusions;
 @property (nonatomic) long long preferredInterfaceOrientation; // @dynamic preferredInterfaceOrientation;
 @property (nonatomic) double preferredLevel; // @dynamic preferredLevel;
 @property (copy, nonatomic) NSString *preferredSceneHostIdentifier; // @dynamic preferredSceneHostIdentifier;
+@property (readonly) Class superclass;
 
 + (BOOL)_isMutable;
 - (id)copyWithZone:(struct _NSZone *)arg1;

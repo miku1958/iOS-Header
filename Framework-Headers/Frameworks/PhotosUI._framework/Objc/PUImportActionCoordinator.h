@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumberFormatter, PUImportController, UIViewController;
+@class NSNumberFormatter, PXImportController, UIViewController;
 @protocol PUImportActionCoordinatorDelegate;
 
 @interface PUImportActionCoordinator : NSObject
@@ -16,12 +16,12 @@
     BOOL _ppt_alwaysPreferSelected;
     id<PUImportActionCoordinatorDelegate> _delegate;
     UIViewController *_viewController;
-    PUImportController *_importController;
+    PXImportController *_importController;
     NSNumberFormatter *_percentageNumberFormatter;
 }
 
 @property (weak, nonatomic) id<PUImportActionCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) PUImportController *importController; // @synthesize importController=_importController;
+@property (strong, nonatomic) PXImportController *importController; // @synthesize importController=_importController;
 @property (strong, nonatomic) NSNumberFormatter *percentageNumberFormatter; // @synthesize percentageNumberFormatter=_percentageNumberFormatter;
 @property (nonatomic) BOOL ppt_alwaysImportDuplicatesNoPrompt; // @synthesize ppt_alwaysImportDuplicatesNoPrompt=_ppt_alwaysImportDuplicatesNoPrompt;
 @property (nonatomic) BOOL ppt_alwaysPreferSelected; // @synthesize ppt_alwaysPreferSelected=_ppt_alwaysPreferSelected;

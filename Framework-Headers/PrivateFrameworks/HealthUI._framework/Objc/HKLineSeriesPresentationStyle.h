@@ -6,27 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class HKAxisLabelStyle, HKFillStyle, HKStrokeStyle, UIImage;
+@class HKAxisLabelStyle, HKFillStyle, HKLegendPointAnnotationStyle, HKLineSeriesPointMarkerStyle, HKStrokeStyle;
 
 @interface HKLineSeriesPresentationStyle : NSObject
 {
     BOOL _shouldApplyRollingAverage;
+    BOOL _shouldNegateAnnotationValue;
     int _waveForm;
     HKStrokeStyle *_strokeStyle;
     HKFillStyle *_fillStyle;
-    UIImage *_pointMarkerImage;
-    UIImage *_lineEndCap;
+    HKLineSeriesPointMarkerStyle *_pointMarkerStyle;
+    HKLineSeriesPointMarkerStyle *_endCapStyle;
     HKAxisLabelStyle *_annotationStyle;
+    HKLegendPointAnnotationStyle *_legendAnnotationStyle;
     HKAxisLabelStyle *_axisAnnotationStyle;
     double _sineWaveSmoothingFactor;
 }
 
 @property (strong, nonatomic) HKAxisLabelStyle *annotationStyle; // @synthesize annotationStyle=_annotationStyle;
 @property (strong, nonatomic) HKAxisLabelStyle *axisAnnotationStyle; // @synthesize axisAnnotationStyle=_axisAnnotationStyle;
+@property (strong, nonatomic) HKLineSeriesPointMarkerStyle *endCapStyle; // @synthesize endCapStyle=_endCapStyle;
 @property (strong, nonatomic) HKFillStyle *fillStyle; // @synthesize fillStyle=_fillStyle;
-@property (strong, nonatomic) UIImage *lineEndCap; // @synthesize lineEndCap=_lineEndCap;
-@property (strong, nonatomic) UIImage *pointMarkerImage; // @synthesize pointMarkerImage=_pointMarkerImage;
+@property (strong, nonatomic) HKLegendPointAnnotationStyle *legendAnnotationStyle; // @synthesize legendAnnotationStyle=_legendAnnotationStyle;
+@property (strong, nonatomic) HKLineSeriesPointMarkerStyle *pointMarkerStyle; // @synthesize pointMarkerStyle=_pointMarkerStyle;
 @property (nonatomic) BOOL shouldApplyRollingAverage; // @synthesize shouldApplyRollingAverage=_shouldApplyRollingAverage;
+@property (nonatomic) BOOL shouldNegateAnnotationValue; // @synthesize shouldNegateAnnotationValue=_shouldNegateAnnotationValue;
 @property (nonatomic) double sineWaveSmoothingFactor; // @synthesize sineWaveSmoothingFactor=_sineWaveSmoothingFactor;
 @property (strong, nonatomic) HKStrokeStyle *strokeStyle; // @synthesize strokeStyle=_strokeStyle;
 @property (nonatomic) int waveForm; // @synthesize waveForm=_waveForm;

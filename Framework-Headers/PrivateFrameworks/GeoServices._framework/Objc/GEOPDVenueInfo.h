@@ -8,40 +8,66 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDLocatedInsideInfo, GEOPDVenueItemList, NSMutableArray, PBUnknownFields;
+@class GEOPDLocatedInsideInfo, GEOPDVenueItemList, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDVenueInfo : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    int _featureType;
     NSMutableArray *_filterElements;
     GEOPDVenueItemList *_itemList;
     GEOPDLocatedInsideInfo *_locatedInside;
     NSMutableArray *_venueFeatureIds;
+    int _featureType;
+    int _goInsideLevel;
     struct {
-        unsigned int featureType:1;
-    } _has;
+        unsigned int has_featureType:1;
+        unsigned int has_goInsideLevel:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_filterElements:1;
+        unsigned int read_itemList:1;
+        unsigned int read_locatedInside:1;
+        unsigned int read_venueFeatureIds:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_filterElements:1;
+        unsigned int wrote_itemList:1;
+        unsigned int wrote_locatedInside:1;
+        unsigned int wrote_venueFeatureIds:1;
+        unsigned int wrote_featureType:1;
+        unsigned int wrote_goInsideLevel:1;
+    } _flags;
 }
 
-@property (nonatomic) int featureType; // @synthesize featureType=_featureType;
-@property (strong, nonatomic) NSMutableArray *filterElements; // @synthesize filterElements=_filterElements;
+@property (nonatomic) int featureType;
+@property (strong, nonatomic) NSMutableArray *filterElements;
+@property (nonatomic) int goInsideLevel;
 @property (nonatomic) BOOL hasFeatureType;
+@property (nonatomic) BOOL hasGoInsideLevel;
 @property (readonly, nonatomic) BOOL hasItemList;
 @property (readonly, nonatomic) BOOL hasLocatedInside;
-@property (strong, nonatomic) GEOPDVenueItemList *itemList; // @synthesize itemList=_itemList;
-@property (strong, nonatomic) GEOPDLocatedInsideInfo *locatedInside; // @synthesize locatedInside=_locatedInside;
+@property (strong, nonatomic) GEOPDVenueItemList *itemList;
+@property (strong, nonatomic) GEOPDLocatedInsideInfo *locatedInside;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *venueFeatureIds; // @synthesize venueFeatureIds=_venueFeatureIds;
+@property (strong, nonatomic) NSMutableArray *venueFeatureIds;
 
 + (Class)filterElementType;
++ (BOOL)isValid:(id)arg1;
 + (Class)venueFeatureIdType;
 + (id)venueInfoForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsFeatureType:(id)arg1;
+- (void)_addNoFlagsFilterElement:(id)arg1;
+- (void)_addNoFlagsVenueFeatureId:(id)arg1;
+- (void)_readFilterElements;
+- (void)_readItemList;
+- (void)_readLocatedInside;
+- (void)_readVenueFeatureIds;
 - (void)addFilterElement:(id)arg1;
 - (void)addVenueFeatureId:(id)arg1;
 - (void)clearFilterElements;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearVenueFeatureIds;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -53,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)venueFeatureIdAtIndex:(unsigned long long)arg1;
 - (unsigned long long)venueFeatureIdsCount;

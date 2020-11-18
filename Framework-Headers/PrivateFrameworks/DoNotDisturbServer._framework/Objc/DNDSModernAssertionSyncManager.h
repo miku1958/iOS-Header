@@ -7,19 +7,18 @@
 #import <objc/NSObject.h>
 
 #import <DoNotDisturbServer/DNDSAssertionSyncManager-Protocol.h>
-#import <DoNotDisturbServer/DNDSSyncServiceUpdateListener-Protocol.h>
+#import <DoNotDisturbServer/DNDSSyncServiceDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSHashTable, NSString;
+@class DNDSClientDetailsProvider, NSDate, NSString;
 @protocol DNDSAssertionSyncManagerDataSource, DNDSAssertionSyncManagerDelegate, DNDSSyncService, OS_dispatch_queue;
 
-@interface DNDSModernAssertionSyncManager : NSObject <DNDSSyncServiceUpdateListener, DNDSAssertionSyncManager>
+@interface DNDSModernAssertionSyncManager : NSObject <DNDSSyncServiceDelegate, DNDSAssertionSyncManager>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    NSHashTable *_observers;
     id<DNDSSyncService> _syncService;
-    NSDate *_invalidateAllModeAssertionsDate;
-    unsigned long long _invalidateAllModeAssertionsReason;
-    NSDictionary *_assertionsByUUID;
+    DNDSClientDetailsProvider *_clientDetailsProvider;
+    NSDate *_lastReceivedStoreDate;
+    NSDate *_lastSentStoreDate;
     id<DNDSAssertionSyncManagerDataSource> _dataSource;
     id<DNDSAssertionSyncManagerDelegate> _delegate;
 }
@@ -32,21 +31,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_queue_allModeAssertionsWithError:(id *)arg1;
-- (id)_queue_assertionWithUUID:(id)arg1 error:(id *)arg2;
-- (void)_queue_invalidateAllLocalModeAssertionsTakenBeforeDate:(id)arg1 forReason:(unsigned long long)arg2;
-- (void)_queue_invalidateAllRemoteModeAssertionsTakenBeforeDate:(id)arg1 forReason:(unsigned long long)arg2;
-- (void)_queue_receivedRemoteSyncRecord:(id)arg1 remoteDeviceIdentifier:(id)arg2;
-- (void)_queue_sendStateSnapshotToAllRemotes;
-- (void)addObserver:(id)arg1;
-- (id)allModeAssertionsWithError:(id *)arg1;
-- (id)assertionWithUUID:(id)arg1 error:(id *)arg2;
-- (id)init;
-- (void)invalidateAllModeAssertionsTakenBeforeDate:(id)arg1 forReason:(unsigned long long)arg2;
-- (void)removeObserver:(id)arg1;
+- (void)_queue_handleMessage:(id)arg1 withVersionNumber:(unsigned long long)arg2;
+- (void)_queue_sendStateSnapshotToPairedDevice:(id)arg1 force:(BOOL)arg2;
+- (id)initWithClientDetailsProvider:(id)arg1;
+- (id)initWithClientDetailsProvider:(id)arg1 syncService:(id)arg2;
 - (void)resume;
-- (void)syncService:(id)arg1 didReceiveRecord:(id)arg2 sourceIdentifier:(id)arg3;
-- (void)updateForReason:(unsigned long long)arg1;
+- (void)syncService:(id)arg1 didReceiveMessage:(id)arg2 withVersionNumber:(unsigned long long)arg3 fromDeviceIdentifier:(id)arg4;
+- (BOOL)syncService:(id)arg1 shouldAcceptIncomingMessage:(id)arg2 withVersionNumber:(unsigned long long)arg3 fromDeviceIdentifier:(id)arg4;
+- (void)updateForModeAssertionUpdateResult:(id)arg1;
 
 @end
 

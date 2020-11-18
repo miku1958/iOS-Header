@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AXRuntime/NSCopying-Protocol.h>
 #import <AXRuntime/UIElementProtocol-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
-@interface AXUIElement : NSObject <UIElementProtocol>
+@interface AXUIElement : NSObject <UIElementProtocol, NSCopying>
 {
     struct __AXUIElement *_axElement;
     long long _cachedRefCount;
@@ -54,6 +55,7 @@
 - (BOOL)boolWithAXAttribute:(long long)arg1;
 - (BOOL)canPerformAXAction:(int)arg1;
 - (struct CGColor *)colorWithAXAttribute:(long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)disableCache;
 - (void)enableCache:(BOOL)arg1;

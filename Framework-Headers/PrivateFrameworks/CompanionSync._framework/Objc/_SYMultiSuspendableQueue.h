@@ -15,6 +15,7 @@
     NSObject<OS_dispatch_queue> *_targetQueue;
     unsigned long long _stateHandle;
     _Atomic int _resumeCount;
+    NSString *_logDescriptor;
     NSMutableArray *_latestSuspendBacktraces;
     NSMutableArray *_latestResumeBacktraces;
 }

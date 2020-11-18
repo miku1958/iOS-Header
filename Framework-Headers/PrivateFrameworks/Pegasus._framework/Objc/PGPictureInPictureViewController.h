@@ -37,10 +37,18 @@
         unsigned int pictureInPictureViewControllerActionButtonTapped:1;
         unsigned int pictureInPictureViewControllerCancelButtonTapped:1;
     } _delegateRespondsTo;
+    id<PGPictureInPictureViewControllerContentContainer> _contentContainer;
+    struct {
+        unsigned int prepareStopAnimationWithCompletionHandler:1;
+        unsigned int acquireInterfaceOrientationLock:1;
+        unsigned int relinquishInterfaceOrientationLock:1;
+        unsigned int handleTapGesture:1;
+        unsigned int handleDoubleTapGesture:1;
+        unsigned int performRotateAnimationWithRotation:1;
+    } _contentContainerRespondsTo;
     struct CGSize _preferredContentSize;
     BOOL _canStartShowingChrome;
     PGPictureInPictureApplication *_application;
-    id<PGPictureInPictureViewControllerContentContainer> _contentContainer;
     CDUnknownBlockType _waitForUIFinalizationCompletionBlock;
     long long _controlsStyle;
 }
@@ -49,7 +57,7 @@
 @property (nonatomic) BOOL canStartShowingChrome; // @synthesize canStartShowingChrome=_canStartShowingChrome;
 @property (weak, nonatomic) id<PGPictureInPictureViewControllerContentContainer> contentContainer; // @synthesize contentContainer=_contentContainer;
 @property (readonly, nonatomic) UIView *contentContainerView;
-@property (readonly, nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
+@property (nonatomic) long long controlsStyle; // @synthesize controlsStyle=_controlsStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PGPictureInPictureViewControllerDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -92,6 +100,7 @@
 - (void)prepareStartAnimationWithInitialInterfaceOrientation:(long long)arg1 initialLayerFrame:(struct CGRect)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)prepareStopAnimationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)relinquishInterfaceOrientationLock;
+- (void)setControlsStyle:(long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (void)setStashState:(long long)arg1 animated:(BOOL)arg2;
 - (void)showChrome:(BOOL)arg1 animated:(BOOL)arg2;

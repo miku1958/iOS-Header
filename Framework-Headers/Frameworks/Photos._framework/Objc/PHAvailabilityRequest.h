@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectID, NSString, NSXPCConnection, PLAssetsdClientServiceSender;
+@class NSManagedObjectID, NSString, NSXPCConnection, PLPhotoLibrary;
 
 @interface PHAvailabilityRequest : NSObject
 {
     _Atomic BOOL _isCancelled;
+    PLPhotoLibrary *_photoLibrary;
     NSManagedObjectID *_assetObjectID;
     NSString *_taskIdentifier;
+    unsigned long long _signpostID;
     NSXPCConnection *_clientConnection;
-    PLAssetsdClientServiceSender *_clientSender;
 }
 
 @property (readonly, nonatomic) NSManagedObjectID *assetObjectID; // @synthesize assetObjectID=_assetObjectID;
 @property (strong, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
-@property (strong, nonatomic) PLAssetsdClientServiceSender *clientSender; // @synthesize clientSender=_clientSender;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
+@property (nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property (copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 
 - (void).cxx_destruct;
 - (void)cancel;
 - (id)description;
 - (id)initWithAssetObjectID:(id)arg1;
-- (id)initWithPlistDictionary:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
 - (BOOL)isCancelled;
 - (id)plistDictionary;
 - (void)runDaemonSide;

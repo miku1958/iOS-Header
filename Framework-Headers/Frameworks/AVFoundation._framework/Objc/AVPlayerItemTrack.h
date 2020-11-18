@@ -34,8 +34,8 @@
 - (void)dealloc;
 - (id)description;
 - (BOOL)disableColorMatching;
+- (id)effectiveLoudnessInfo;
 - (id)fallbackTrack;
-- (void)finalize;
 - (float)hapticVolume;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

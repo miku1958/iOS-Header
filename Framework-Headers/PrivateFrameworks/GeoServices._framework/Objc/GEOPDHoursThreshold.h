@@ -17,18 +17,20 @@ __attribute__((visibility("hidden")))
     unsigned int _closingSoonMessageThresholdSecond;
     unsigned int _openingSoonMessageThresholdSecond;
     struct {
-        unsigned int closingSoonMessageThresholdSecond:1;
-        unsigned int openingSoonMessageThresholdSecond:1;
-    } _has;
+        unsigned int has_closingSoonMessageThresholdSecond:1;
+        unsigned int has_openingSoonMessageThresholdSecond:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int closingSoonMessageThresholdSecond; // @synthesize closingSoonMessageThresholdSecond=_closingSoonMessageThresholdSecond;
+@property (nonatomic) unsigned int closingSoonMessageThresholdSecond;
 @property (nonatomic) BOOL hasClosingSoonMessageThresholdSecond;
 @property (nonatomic) BOOL hasOpeningSoonMessageThresholdSecond;
-@property (nonatomic) unsigned int openingSoonMessageThresholdSecond; // @synthesize openingSoonMessageThresholdSecond=_openingSoonMessageThresholdSecond;
+@property (nonatomic) unsigned int openingSoonMessageThresholdSecond;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

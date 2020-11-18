@@ -6,11 +6,11 @@
 
 #import <RelevanceEngine/RERule.h>
 
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
-@class NSString, REComparisonCondition, RECondition, REConditionEvaluator;
+@class REComparisonCondition, RECondition, REConditionEvaluator;
 
-@interface RERankingRule : RERule <REIndentedDescription>
+@interface RERankingRule : RERule <REAutomaticExportedInterface>
 {
     REConditionEvaluator *_leftConditionEvaluator;
     REConditionEvaluator *_rightConditionEvaluator;
@@ -23,19 +23,15 @@
 
 @property (readonly, nonatomic) REComparisonCondition *comparison; // @synthesize comparison=_comparison;
 @property (readonly, nonatomic) REConditionEvaluator *comparisonConditionEvaluator;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) RECondition *leftCondition; // @synthesize leftCondition=_leftCondition;
 @property (readonly, nonatomic) REConditionEvaluator *leftConditionEvaluator;
 @property (readonly, nonatomic) long long order; // @synthesize order=_order;
 @property (readonly, nonatomic) RECondition *rightCondition; // @synthesize rightCondition=_rightCondition;
 @property (readonly, nonatomic) REConditionEvaluator *rightConditionEvaluator;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (unsigned long long)hash;
 - (id)initWithLeftCondition:(id)arg1 rightCondition:(id)arg2 comparisonCondition:(id)arg3 order:(long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 

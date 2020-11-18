@@ -100,12 +100,6 @@ typedef struct {
 } CDStruct_826e8cf1;
 
 typedef struct {
-    double visibility;
-    double visibilityAnimationTarget;
-    unsigned int animationCounter;
-} CDStruct_6c46ada8;
-
-typedef struct {
     double target;
     double position;
     double velocity;
@@ -151,6 +145,15 @@ typedef struct {
     long long highlightEffect;
     long long disabledEffect;
 } CDStruct_e6a35582;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    struct CGSize _field3;
+    double _field4;
+    double _field5;
+    BOOL _field6;
+} CDStruct_19e39b3b;
 
 typedef struct {
     CDStruct_c3b9c2ee _field1;

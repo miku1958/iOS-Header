@@ -25,9 +25,9 @@
 @property (readonly) BOOL fetchSucceeded; // @synthesize fetchSucceeded=_fetchSucceeded;
 @property (strong, nonatomic) MFProgressFilterDataConsumer *progressFilter; // @synthesize progressFilter=_progressFilter;
 
+- (void).cxx_destruct;
 - (void)attachmentFetchCompletedWithStatus:(long long)arg1 forAttachmentNamed:(id)arg2 ofMessageWithServerID:(id)arg3 dataWasBase64:(BOOL)arg4 sentBytesCount:(unsigned long long)arg5 receivedBytesCount:(unsigned long long)arg6;
 - (void)consumeData:(id)arg1 ofContentType:(id)arg2 forAttachmentNamed:(id)arg3 ofMessageWithServerID:(id)arg4;
-- (void)dealloc;
 - (id)initWithActivityMonitor:(id)arg1;
 
 @end

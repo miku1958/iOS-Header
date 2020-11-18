@@ -6,13 +6,19 @@
 
 #import <UserNotificationsKit/NCNotificationRequest.h>
 
-@class BBBulletin, BBObserver, NSString;
+@class BBBulletin, BBObserver, NSArray, NSString;
 
 @interface NCNotificationRequest (Bulletin)
 
 @property (readonly, nonatomic) BBBulletin *bulletin;
 @property (readonly, nonatomic) NSString *contactIdentifier;
+@property (readonly, copy, nonatomic) NSArray *defaultEnvironmentActions;
+@property (readonly, nonatomic) BOOL hasAttachments;
+@property (readonly, nonatomic) BOOL hasOnlySingleMinimalTextInputAction;
+@property (readonly, nonatomic) BOOL hasOnlySingleTextInputAction;
+@property (readonly, copy, nonatomic) NSArray *minimalEnvironmentActions;
 @property (readonly, nonatomic) BBObserver *observer;
+@property (readonly, nonatomic) BOOL showsTextInputOnAppearance;
 
 + (id)_notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(BOOL)arg5 hasPlayLightsAndSirens:(BOOL)arg6;
 + (id)notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4;

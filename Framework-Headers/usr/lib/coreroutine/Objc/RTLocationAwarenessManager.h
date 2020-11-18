@@ -100,7 +100,6 @@
 - (id)init;
 - (id)initWithLocationManager:(id)arg1 config:(id)arg2 metricManager:(id)arg3 motionActivityManager:(id)arg4 authorizationManager:(id)arg5 wifiManager:(id)arg6 xpcActivityManager:(id)arg7;
 - (double)intervalForHeartbeatBucket:(id)arg1;
-- (void)logActiveRequestStatus;
 - (double)metricAge;
 - (double)nextFiringDelayWithHeartbeatInterval:(double)arg1 starvingDuration:(double)arg2;
 - (void)onHeartbeat;

@@ -6,19 +6,19 @@
 
 #import <GameCenterFoundation/NSObject-Protocol.h>
 
-@class GKLeaderboardScoreRequest, GKPlayerInternal, NSArray, NSDictionary, NSString;
+@class GKGameDescriptor, GKLeaderboardScoreRequest, GKPlayerInternal, NSArray, NSString;
 
 @protocol GKGameStatService <NSObject>
-- (oneway void)getAchievementDescriptionsForGameDescriptor:(NSDictionary *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
-- (oneway void)getAchievementsForGameDescriptor:(NSDictionary *)arg1 players:(NSArray *)arg2 handler:(void (^)(NSDictionary *, NSError *))arg3;
+- (oneway void)getAchievementDescriptionsForGameDescriptor:(GKGameDescriptor *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)getAchievementsForGameDescriptor:(GKGameDescriptor *)arg1 players:(NSArray *)arg2 handler:(void (^)(NSDictionary *, NSError *))arg3;
 - (oneway void)getDefaultLeaderboardIDWithHandler:(void (^)(NSString *, NSError *))arg1;
 - (oneway void)getLeaderboadForRequest:(GKLeaderboardScoreRequest *)arg1 handler:(void (^)(GKLeaderboardInternal *, NSError *))arg2;
-- (oneway void)getLeaderboardSetsForGameDescriptor:(NSDictionary *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
-- (oneway void)getLeaderboardsForGameDescriptor:(NSDictionary *)arg1 player:(GKPlayerInternal *)arg2 setIdentifier:(NSString *)arg3 handler:(void (^)(NSArray *, NSError *))arg4;
-- (oneway void)getPlayersForGameDescriptor:(NSDictionary *)arg1 achievementIdentifier:(NSString *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
-- (oneway void)getPlayersForGameDescriptor:(NSDictionary *)arg1 includeCompatibleMultiplayerGames:(BOOL)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
-- (oneway void)getPlayersForGameDescriptor:(NSDictionary *)arg1 leaderboardIdentifier:(NSString *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
-- (oneway void)getRecentMatchesForGameDescriptor:(NSDictionary *)arg1 otherPlayer:(GKPlayerInternal *)arg2 handler:(void (^)(NSArray *, NSString *, NSError *))arg3;
+- (oneway void)getLeaderboardSetsForGameDescriptor:(GKGameDescriptor *)arg1 handler:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)getLeaderboardsForGameDescriptor:(GKGameDescriptor *)arg1 player:(GKPlayerInternal *)arg2 setIdentifier:(NSString *)arg3 handler:(void (^)(NSArray *, NSError *))arg4;
+- (oneway void)getPlayersForGameDescriptor:(GKGameDescriptor *)arg1 achievementIdentifier:(NSString *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
+- (oneway void)getPlayersForGameDescriptor:(GKGameDescriptor *)arg1 includeCompatibleMultiplayerGames:(BOOL)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
+- (oneway void)getPlayersForGameDescriptor:(GKGameDescriptor *)arg1 leaderboardIdentifier:(NSString *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
+- (oneway void)getRecentMatchesForGameDescriptor:(GKGameDescriptor *)arg1 otherPlayer:(GKPlayerInternal *)arg2 handler:(void (^)(NSArray *, NSString *, NSError *))arg3;
 - (oneway void)getRecentPlayersWithHandler:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)resetAchievementsWithHandler:(void (^)(NSError *))arg1;
 - (oneway void)setDefaultLeaderboardID:(NSString *)arg1 handler:(void (^)(NSError *))arg2;

@@ -8,23 +8,23 @@
 
 #import <ContactsUICore/CNUIIDSAvailabilityProvider-Protocol.h>
 
-@class CNUIDSHandleAvailablityCache, NSArray, NSString;
+@class CNUIDSHandleAvailabilityCache, NSArray, NSString;
 @protocol CNScheduler, CNUIIDSIDQueryControllerWrapper;
 
 @interface CNUIIDSAvailabilityProvider : NSObject <CNUIIDSAvailabilityProvider>
 {
     id<CNUIIDSIDQueryControllerWrapper> _queryControllerWrapper;
-    CNUIDSHandleAvailablityCache *_faceTimeRequests;
-    CNUIDSHandleAvailablityCache *_iMessageRequests;
+    CNUIDSHandleAvailabilityCache *_faceTimeRequests;
+    CNUIDSHandleAvailabilityCache *_iMessageRequests;
     NSArray *_requestFutures;
     id<CNScheduler> _resourceLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) CNUIDSHandleAvailablityCache *faceTimeRequests; // @synthesize faceTimeRequests=_faceTimeRequests;
+@property (strong, nonatomic) CNUIDSHandleAvailabilityCache *faceTimeRequests; // @synthesize faceTimeRequests=_faceTimeRequests;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CNUIDSHandleAvailablityCache *iMessageRequests; // @synthesize iMessageRequests=_iMessageRequests;
+@property (strong, nonatomic) CNUIDSHandleAvailabilityCache *iMessageRequests; // @synthesize iMessageRequests=_iMessageRequests;
 @property (strong, nonatomic) id<CNUIIDSIDQueryControllerWrapper> queryControllerWrapper; // @synthesize queryControllerWrapper=_queryControllerWrapper;
 @property (strong, nonatomic) NSArray *requestFutures; // @synthesize requestFutures=_requestFutures;
 @property (strong, nonatomic) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;

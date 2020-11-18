@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKAccountFlowControllerDelegate-Protocol.h>
 
-@class CLLocationManager, NSString, PKAccountFlowController, UINotificationFeedbackGenerator, UIViewController;
+@class CLLocationManager, NSString, PKAccountFlowController, UINotificationFeedbackGenerator, UIView, UIViewController;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKAccountPassActivationResultViewController : PKExplanationViewController <PKAccountFlowControllerDelegate>
@@ -20,12 +20,15 @@
     UIViewController *_nextViewController;
     UINotificationFeedbackGenerator *_cardAddedFeedbackGenerator;
     CLLocationManager *_locationManager;
+    UIView *_topBackgroundView;
+    BOOL _didAddToAmp;
     BOOL _didMakeAccountPassDefault;
     BOOL _showingLoadingIndicator;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didAddToAmp; // @synthesize didAddToAmp=_didAddToAmp;
 @property (nonatomic) BOOL didMakeAccountPassDefault; // @synthesize didMakeAccountPassDefault=_didMakeAccountPassDefault;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL showingLoadingIndicator; // @synthesize showingLoadingIndicator=_showingLoadingIndicator;
@@ -36,9 +39,7 @@
 - (id)_localizedStringKeyForPerformedOperations;
 - (void)_presentDisplayableError:(id)arg1;
 - (void)_presentViewController:(id)arg1;
-- (void)_promptForPhysicalCardLocationAuthorization;
 - (id)_setupLaterBodyString;
-- (BOOL)_shouldPromptForPhysicalCardLocationAccess;
 - (void)_showActivationSpinner:(BOOL)arg1;
 - (void)_terminateSetupFlow;
 - (void)_updateForLoading;
@@ -52,6 +53,7 @@
 - (id)initWithAccountFlowController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3;
 - (void)loadView;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

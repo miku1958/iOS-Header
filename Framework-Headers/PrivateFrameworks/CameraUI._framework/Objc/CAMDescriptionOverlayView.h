@@ -6,49 +6,59 @@
 
 #import <UIKit/UIView.h>
 
-@class CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView, UIButton, UILabel, UIVisualEffectView;
+@class CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView, CAShapeLayer, UIButton, UILabel, UIVisualEffectView;
 @protocol CAMDescriptionOverlayViewDelegate;
 
 @interface CAMDescriptionOverlayView : UIView
 {
+    BOOL _blackoutFrameVisible;
     id<CAMDescriptionOverlayViewDelegate> _delegate;
     long long _orientation;
-    double _contentTopInset;
     UIVisualEffectView *__blurEffectView;
+    UIView *__blackoutView;
+    CAShapeLayer *__blackoutMask;
     CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView *__primaryVibrancyEffectView;
     UILabel *__titleLabel;
+    UILabel *__descriptionTitleLabel;
     UILabel *__descriptionLabel;
+    UILabel *__infoTitleLabel;
     UILabel *__infoLabel;
     UIButton *__acknowledgmentButton;
     double __descriptionFontSizeMultiplier;
     double __infoFontSizeMultiplier;
-    UIView *__topBlackoutView;
+    struct CGRect _viewportFrame;
 }
 
 @property (readonly, nonatomic) UIButton *_acknowledgmentButton; // @synthesize _acknowledgmentButton=__acknowledgmentButton;
+@property (readonly, nonatomic) CAShapeLayer *_blackoutMask; // @synthesize _blackoutMask=__blackoutMask;
+@property (readonly, nonatomic) UIView *_blackoutView; // @synthesize _blackoutView=__blackoutView;
 @property (readonly, nonatomic) UIVisualEffectView *_blurEffectView; // @synthesize _blurEffectView=__blurEffectView;
 @property (nonatomic, setter=_setDescriptionFontSizeMultiplier:) double _descriptionFontSizeMultiplier; // @synthesize _descriptionFontSizeMultiplier=__descriptionFontSizeMultiplier;
 @property (readonly, nonatomic) UILabel *_descriptionLabel; // @synthesize _descriptionLabel=__descriptionLabel;
+@property (readonly, nonatomic) UILabel *_descriptionTitleLabel; // @synthesize _descriptionTitleLabel=__descriptionTitleLabel;
 @property (nonatomic, setter=_setInfoFontSizeMultiplier:) double _infoFontSizeMultiplier; // @synthesize _infoFontSizeMultiplier=__infoFontSizeMultiplier;
 @property (readonly, nonatomic) UILabel *_infoLabel; // @synthesize _infoLabel=__infoLabel;
+@property (readonly, nonatomic) UILabel *_infoTitleLabel; // @synthesize _infoTitleLabel=__infoTitleLabel;
 @property (readonly, nonatomic) CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView *_primaryVibrancyEffectView; // @synthesize _primaryVibrancyEffectView=__primaryVibrancyEffectView;
 @property (readonly, nonatomic) UILabel *_titleLabel; // @synthesize _titleLabel=__titleLabel;
-@property (strong, nonatomic) UIView *_topBlackoutView; // @synthesize _topBlackoutView=__topBlackoutView;
 @property (nonatomic, getter=isAcknowledgmentButtonHighlighted) BOOL acknowledgmentButtonHighlighted;
-@property (nonatomic) double contentTopInset; // @synthesize contentTopInset=_contentTopInset;
+@property (nonatomic, getter=isBlackoutFrameVisible) BOOL blackoutFrameVisible; // @synthesize blackoutFrameVisible=_blackoutFrameVisible;
 @property (weak, nonatomic) id<CAMDescriptionOverlayViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
+@property (nonatomic) struct CGRect viewportFrame; // @synthesize viewportFrame=_viewportFrame;
 
 - (void).cxx_destruct;
 - (void)_handleAcknowledgmentButtonTapped:(id)arg1;
 - (BOOL)_isVisible;
+- (void)_layoutBlackoutMaskForFrame:(struct CGRect)arg1 inFrame:(struct CGRect)arg2;
 - (void)_updateFontsUsingNarrowWidth:(BOOL)arg1;
 - (void)_updateTextUsingNarrowWidth:(BOOL)arg1;
-- (void)_updateTopBlackoutViewForVisible:(BOOL)arg1;
 - (id)acknowledgmentTextUsingNarrowWidth:(BOOL)arg1;
 - (double)additionalSpacing;
 - (id)descriptionTextUsingNarrowWidth:(BOOL)arg1;
+- (id)descriptionTitleTextUsingNarrowWidth:(BOOL)arg1;
 - (id)infoTextUsingNarrowWidth:(BOOL)arg1;
+- (id)infoTitleTextUsingNarrowWidth:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (double)maxDescriptionTextWidthForNarrowWidth:(BOOL)arg1 isLandscape:(BOOL)arg2 usingFontSizeMultiplier:(double)arg3;

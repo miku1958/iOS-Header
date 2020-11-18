@@ -19,7 +19,7 @@
 @property (copy) NSString *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property double currentTime;
 @property (readonly) NSData *data;
-@property id<AVAudioPlayerDelegate> delegate;
+@property (weak) id<AVAudioPlayerDelegate> delegate;
 @property (readonly) double deviceCurrentTime;
 @property (readonly) double duration;
 @property BOOL enableRate;

@@ -32,17 +32,19 @@
 - (void)_setExecuting:(BOOL)arg1;
 - (void)_setFinished:(BOOL)arg1;
 - (void)_setRemoteCancellationHandler:(id)arg1;
-- (oneway void)cancel;
+- (void)cancel;
 - (void)completedWithResult:(id)arg1 error:(id)arg2;
 - (void)dealloc;
 - (id)description;
 - (BOOL)finishIfCancelled;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)init;
-- (oneway void)invalidate;
+- (void)invalidate;
 - (id)operationDescription;
 - (void)operationDidProgressWithInfo:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (oneway void)setCancellationHandler:(id)arg1;
+- (id)proxifiedDescription;
+- (void)resetRemoteOperation;
+- (void)setCancellationHandler:(id)arg1;
 - (void)start;
 
 @end

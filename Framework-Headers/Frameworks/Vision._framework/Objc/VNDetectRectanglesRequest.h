@@ -28,11 +28,10 @@
 @property (readonly) NSArray *supportedImageSizeSet;
 
 + (Class)configurationClass;
-- (id)_detectorOptions;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (long long)dependencyProcessingOrdinality;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (void)setSortedResults:(id)arg1;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;

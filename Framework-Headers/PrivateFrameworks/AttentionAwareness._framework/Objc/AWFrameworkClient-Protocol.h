@@ -7,12 +7,10 @@
 #import <AttentionAwareness/NSObject-Protocol.h>
 
 @class AWAttentionEvent;
-@protocol AWUnitTestSampler;
 
 @protocol AWFrameworkClient <NSObject>
+- (void)notify:(unsigned long long)arg1;
 - (void)notifyEvent:(AWAttentionEvent *)arg1;
 - (void)notifyPollEventType:(unsigned long long)arg1 event:(AWAttentionEvent *)arg2;
-- (id<AWUnitTestSampler>)unitTestSampler;
-- (void)useUnitTestSampling:(BOOL)arg1;
 @end
 

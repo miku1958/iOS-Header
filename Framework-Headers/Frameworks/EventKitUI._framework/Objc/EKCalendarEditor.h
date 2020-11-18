@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKCalendarEditItemDelegate-Protocol.h>
 
-@class EKCalendar, EKCalendarShareesEditItem, EKEventStore, EKSource, NSArray, NSString, UITableView;
+@class EKCalendar, EKCalendarColorEditItem, EKCalendarShareesEditItem, EKEventStore, EKSource, NSArray, NSString, UITableView;
 @protocol EKCalendarEditorDelegate, EKStyleProvider;
 
 @interface EKCalendarEditor : UIViewController <EKCalendarEditItemDelegate>
@@ -16,8 +16,9 @@
     UITableView *_tableView;
     NSArray *_editItems;
     EKCalendarShareesEditItem *_shareesEditItem;
-    EKSource *_source;
+    EKCalendarColorEditItem *_colorEditItem;
     unsigned long long _entityType;
+    EKSource *_limitedToSource;
     BOOL _isNewCalendar;
     EKEventStore *_eventStore;
     EKCalendar *_calendar;
@@ -47,8 +48,7 @@
 - (void)cancel:(id)arg1;
 - (void)dealloc;
 - (void)done:(id)arg1;
-- (id)initWithCalendar:(id)arg1 eventStore:(id)arg2 entityType:(unsigned long long)arg3;
-- (id)initWithSource:(id)arg1 eventStore:(id)arg2 entityType:(unsigned long long)arg3;
+- (id)initWithCalendar:(id)arg1 eventStore:(id)arg2 entityType:(unsigned long long)arg3 limitedToSource:(id)arg4;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)owningNavigationController;
@@ -65,6 +65,7 @@
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

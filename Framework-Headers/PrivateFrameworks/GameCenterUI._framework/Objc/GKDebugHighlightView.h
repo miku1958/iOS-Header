@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (nonatomic) BOOL isOval; // @synthesize isOval=_isOval;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)init;
 

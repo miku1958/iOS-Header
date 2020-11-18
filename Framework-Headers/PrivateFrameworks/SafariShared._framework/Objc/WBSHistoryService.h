@@ -29,7 +29,7 @@
 @property (readonly, nonatomic) WBSHistoryURLCompletionDataStore *urlCompletionDataStore; // @synthesize urlCompletionDataStore=_urlCompletionDataStore;
 
 - (void).cxx_destruct;
-- (BOOL)_connectionIsEntitledToUseService:(id)arg1;
+- (BOOL)_connectionIsEntitledToUseUserDatabase:(id)arg1;
 - (void)_resume;
 - (void)_shutdown;
 - (id)init;

@@ -7,21 +7,30 @@
 #import <objc/NSObject.h>
 
 #import <nfshared/NFTag-Protocol.h>
+#import <nfshared/NFTagA-Protocol.h>
+#import <nfshared/NFTagB-Protocol.h>
+#import <nfshared/NFTagF-Protocol.h>
 #import <nfshared/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSData, NSString;
+@protocol NFTagA, NFTagB, NFTagF;
 
-@interface NFTagInternal : NSObject <NSSecureCoding, NFTag>
+@interface NFTagInternal : NSObject <NSSecureCoding, NFTag, NFTagA, NFTagB, NFTagF>
 {
     unsigned int _type;
     unsigned int _technology;
     NSData *_tagID;
-    NSData *_IDm;
-    NSData *_PMm;
-    NSData *_SystemCode;
+    NSData *_idm;
+    NSData *_pmm;
     NSArray *_allSystemCodes;
-    NSData *_AppData;
-    NSData *_UID;
+    NSData *_appData;
+    NSData *_uid;
+    unsigned int _ndefAvailability;
+    unsigned long long _ndefMessageSize;
+    unsigned long long _ndefContainerSize;
+    NSData *_atqa;
+    NSData *_sak;
+    NSData *_historicalBytes;
 }
 
 @property (readonly, copy, nonatomic) NSData *AppData;
@@ -30,10 +39,23 @@
 @property (readonly, copy, nonatomic) NSData *SystemCode;
 @property (readonly, copy, nonatomic) NSData *UID;
 @property (readonly, copy, nonatomic) NSArray *allSystemCodes;
+@property (readonly, copy, nonatomic) NSData *applicationData;
+@property (readonly, nonatomic) BOOL applicationDataCoding;
+@property (readonly, copy, nonatomic) NSData *atqa;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSData *historicalBytes;
+@property (readonly, nonatomic) unsigned int ndefAvailability;
+@property (readonly, nonatomic) unsigned long long ndefContainerSize;
+@property (readonly, nonatomic) unsigned long long ndefMessageSize;
+@property (readonly, copy, nonatomic) NSData *pupi;
+@property (readonly, copy, nonatomic) NSData *sak;
+@property (readonly, copy, nonatomic) NSData *selectedAID;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<NFTagA> tagA;
+@property (readonly, nonatomic) id<NFTagB> tagB;
+@property (readonly, nonatomic) id<NFTagF> tagF;
 @property (readonly, copy, nonatomic) NSData *tagID;
 @property (readonly, nonatomic) unsigned int technology;
 @property (readonly, nonatomic) unsigned int type;
@@ -41,9 +63,16 @@
 + (BOOL)supportsSecureCoding;
 - (id)_getSystemCodeListString;
 - (void)_setAppData:(id)arg1;
+- (void)_setAtqa:(id)arg1;
+- (void)_setHistoricalBytes:(id)arg1;
 - (void)_setIDm:(id)arg1;
 - (void)_setIdentifier:(id)arg1;
+- (void)_setNDEFAvailability:(unsigned int)arg1;
+- (void)_setNDEFContainerSize:(unsigned long long)arg1;
+- (void)_setNDEFMessageSize:(unsigned long long)arg1;
 - (void)_setPMm:(id)arg1;
+- (void)_setSak:(id)arg1;
+- (void)_setSelectedAID:(id)arg1;
 - (void)_setSystemCode:(id)arg1;
 - (void)_setSystemCodes:(id)arg1;
 - (void)_setTechnology:(unsigned int)arg1;
@@ -52,8 +81,10 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithNFTag:(id)arg1;
 - (id)initWithNFTagForUIDOnly:(id)arg1;
+- (BOOL)isEqualToNFTag:(id)arg1;
 
 @end
 

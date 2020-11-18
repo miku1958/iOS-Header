@@ -6,19 +6,22 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationCornerTextCustomView.h>
 
-@class UIImageView;
+@class NTKRichComplicationImageView;
 
 @interface NTKRichComplicationCornerTextImageView : NTKRichComplicationCornerTextCustomView
 {
-    UIImageView *_imageView;
+    NTKRichComplicationImageView *_imageView;
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_editingDidEnd;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)_outerView;
+- (void)setPaused:(BOOL)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

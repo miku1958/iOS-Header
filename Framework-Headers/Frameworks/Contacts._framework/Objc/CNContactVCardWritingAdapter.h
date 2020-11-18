@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) NSString *department;
 @property (readonly, copy) NSString *description;
+@property (readonly) NSString *downtimeWhitelist;
 @property (readonly) NSArray *emailAddresses;
 @property (readonly) NSString *firstName;
 @property (readonly) unsigned long long hash;

@@ -13,6 +13,7 @@
 #import <NanoTimeKitCompanion/NTKCFaceDetailEditOptionSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailOtherSectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCFaceDetailPhotosSectionDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKCTableViewProviding-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceCollectionObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 #import <NanoTimeKitCompanion/UITableViewDataSource-Protocol.h>
@@ -21,7 +22,7 @@
 @class NSArray, NSMutableArray, NSString, NTKCFaceContainerView, NTKCFaceDetailDescriptionSectionController, NTKCFaceDetailKaleidoscopeContentSectionController, NTKCFaceDetailKaleidoscopeStyleSectionController, NTKCFaceDetailOtherSectionController, NTKCFaceDetailPhotosSectionController, NTKCompanionFaceViewController, NTKFace, NTKFaceCollection, UIActivityIndicatorView, UILabel, UITableView, UITableViewCell, UIView, _NTKCDetailActionButton, _NTKCDetailHeaderView;
 @protocol NTKCFaceDetailViewControllerDelegate;
 
-@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate>
+@interface NTKCFaceDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NTKFaceObserver, NTKFaceCollectionObserver, NTKCFaceDetailDescriptionSectionDelegate, NTKCFaceDetailEditOptionSectionDelegate, NTKCFaceDetailPhotosSectionDelegate, NTKCFaceDetailComplicationSectionDelegate, NTKCFaceDetailOtherSectionDelegate, NTKCFaceDetailActionSectionDelegate, NTKCFaceDetailDataSourcesSectionDelegate, NTKCTableViewProviding>
 {
     BOOL _shared;
     BOOL _inGallery;
@@ -33,7 +34,6 @@
     NSArray *_externalAssets;
     double _intrinsicHeaderHeight;
     _NTKCDetailHeaderView *_headerView;
-    NTKCFaceContainerView *_faceContainer;
     UILabel *_faceName;
     _NTKCDetailActionButton *_addButton;
     UIActivityIndicatorView *_addSpinner;
@@ -48,6 +48,7 @@
     NTKCFaceDetailOtherSectionController *_otherSection;
     CDUnknownBlockType _selectionFinishedHandler;
     UITableViewCell *_editOptionToMakeFullyVisible;
+    NTKCFaceContainerView *_faceContainer;
     struct CGSize _headerFaceSize;
 }
 
@@ -75,6 +76,7 @@
 @property (strong, nonatomic) NTKCFaceDetailKaleidoscopeContentSectionController *kaleidoscopeContentSection; // @synthesize kaleidoscopeContentSection=_kaleidoscopeContentSection;
 @property (strong, nonatomic) NTKCFaceDetailKaleidoscopeStyleSectionController *kaleidoscopeStyleSection; // @synthesize kaleidoscopeStyleSection=_kaleidoscopeStyleSection;
 @property (strong, nonatomic) NTKFaceCollection *library; // @synthesize library=_library;
+@property (readonly, nonatomic) UITableView *ntk_tableView;
 @property (strong, nonatomic) NTKCFaceDetailOtherSectionController *otherSection; // @synthesize otherSection=_otherSection;
 @property (strong, nonatomic) NTKCFaceDetailPhotosSectionController *photosSection; // @synthesize photosSection=_photosSection;
 @property (copy, nonatomic) CDUnknownBlockType selectionFinishedHandler; // @synthesize selectionFinishedHandler=_selectionFinishedHandler;
@@ -98,6 +100,7 @@
 - (void)_loadLibrary;
 - (id)_pruneComplicationsNotAvailableOnGizmo:(id)arg1;
 - (id)_pruneRemovedOrRestrictedComplications:(id)arg1;
+- (void)_reloadUpNextDataSourceSections;
 - (id)_sectionForEditOptionCollection:(id)arg1;
 - (void)_setComplication:(id)arg1 forSlot:(id)arg2;
 - (void)_setEditOption:(id)arg1 forMode:(long long)arg2;

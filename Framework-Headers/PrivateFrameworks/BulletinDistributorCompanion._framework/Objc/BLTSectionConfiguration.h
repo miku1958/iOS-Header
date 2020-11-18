@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (void)_waitForWatchKitAppListLoaded;
 - (id)initWithWatchKitAppList:(id)arg1;
+- (BOOL)override:(id)arg1 appliesToConfigurationForSectionID:(id)arg2;
 - (BOOL)shouldSectionIDSettingsAlwaysSync:(id)arg1;
 - (void)watchKitAppList:(id)arg1 added:(id)arg2 removed:(id)arg3;
 

@@ -32,7 +32,7 @@
 @property (strong, nonatomic, getter=_widgetVisbilityManager) WGWidgetVisibilityManager *widgetVisbilityManager; // @synthesize widgetVisbilityManager=_widgetVisbilityManager;
 
 + (id)_widgetExtensionsDiscoveryAttributes;
-+ (void)availableWidgetsWithCompletion:(CDUnknownBlockType)arg1;
++ (id)discoverAvailableWidgetsWithError:(id *)arg1;
 - (void).cxx_destruct;
 - (void)_beginContinuousPlugInDiscovery;
 - (void)_endContinuousPlugInDiscovery;

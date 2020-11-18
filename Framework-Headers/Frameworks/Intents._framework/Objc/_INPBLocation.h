@@ -15,9 +15,11 @@
 @interface _INPBLocation : PBCodable <_INPBLocation, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_values;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,12 +27,15 @@
 @property (copy, nonatomic) NSArray *values; // @synthesize values=_values;
 @property (readonly, nonatomic) unsigned long long valuesCount;
 
++ (BOOL)supportsSecureCoding;
 + (Class)valueType;
 - (void).cxx_destruct;
 - (void)addValue:(id)arg1;
 - (void)clearValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)valueAtIndex:(unsigned long long)arg1;

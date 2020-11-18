@@ -9,7 +9,7 @@
 #import <AnnotationKit/PKCanvasViewDelegate-Protocol.h>
 
 @class AKPageController, NSHashTable, NSString, PKCanvasView, PKInk, UIGestureRecognizer;
-@protocol AKInkOverlayViewDelegate;
+@protocol AKInkOverlayViewDelegate, PKRulerHostingDelegate;
 
 @interface AKInkOverlayView : UIView <PKCanvasViewDelegate>
 {
@@ -19,7 +19,9 @@
     id _drawingUndoTarget;
     PKCanvasView *_canvasView;
     id<AKInkOverlayViewDelegate> _delegate;
+    id<PKRulerHostingDelegate> _rulerHostingDelegate;
     struct CGSize _canvasSizeInPKDrawingSpace;
+    struct CGRect _previousPageRectInAKModel;
 }
 
 @property struct CGSize canvasSizeInPKDrawingSpace; // @synthesize canvasSizeInPKDrawingSpace=_canvasSizeInPKDrawingSpace;
@@ -33,19 +35,25 @@
 @property (copy) PKInk *ink;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
 @property (readonly, nonatomic) UIGestureRecognizer *pinchGestureRecognizer;
+@property (nonatomic) struct CGRect previousPageRectInAKModel; // @synthesize previousPageRectInAKModel=_previousPageRectInAKModel;
+@property (weak, nonatomic) id<PKRulerHostingDelegate> rulerHostingDelegate; // @synthesize rulerHostingDelegate=_rulerHostingDelegate;
 @property (readonly) Class superclass;
 
++ (struct CGRect)_convertRect:(struct CGRect)arg1 fromPageControllerModelSpace:(id)arg2 toDrawingInCanvasViewSpace:(id)arg3;
 + (id)newAKInkOverlayViewForCurrentPlatformWithPageController:(id)arg1 drawingUndoTarget:(id)arg2;
 + (id)newDrawingUndoTargetWithPageController:(id)arg1;
 - (void).cxx_destruct;
 - (void)_calculateFixedPixelSize:(struct CGSize *)arg1 drawingScale:(double *)arg2;
+- (void)_canvasView:(id)arg1 beganStroke:(id)arg2;
+- (void)_canvasView:(id)arg1 cancelledStroke:(id)arg2;
+- (void)_canvasView:(id)arg1 endedStroke:(id)arg2;
+- (BOOL)_canvasView:(id)arg1 shouldBeginDrawingWithTouch:(id)arg2;
 - (void)_updateCanvasViewInk;
 - (void)awakeFromNib;
-- (void)canvasView:(id)arg1 drawingDidChange:(id)arg2;
-- (BOOL)canvasView:(id)arg1 shouldBeginDrawingWithTouch:(id)arg2;
-- (void)canvasViewDidBeginNewStroke:(id)arg1;
-- (void)canvasViewDidCancelStroke:(id)arg1;
-- (void)canvasViewDidEndStroke:(id)arg1;
+- (BOOL)canvasNeedsUpdate;
+- (void)canvasViewDidBeginDrawing:(id)arg1;
+- (void)canvasViewDidEndDrawing:(id)arg1;
+- (void)canvasViewDrawingDidChange:(id)arg1;
 - (void)commonInit;
 - (void)commonPostInit;
 - (void)didMoveToSuperview;
@@ -55,6 +63,7 @@
 - (void)removeStrokesFromDrawing:(id)arg1;
 - (void)setupInkView;
 - (void)teardown;
+- (id)updatedDrawingForPageRectUpdate;
 - (void)willMoveToSuperview:(id)arg1;
 
 @end

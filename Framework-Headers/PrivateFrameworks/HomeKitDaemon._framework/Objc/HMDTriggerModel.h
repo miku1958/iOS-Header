@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong, nonatomic) NSNumber *active; // @dynamic active;
+@property (copy, nonatomic) NSNumber *active; // @dynamic active;
 @property (strong, nonatomic) NSArray *currentActionSets; // @dynamic currentActionSets;
 @property (copy, nonatomic) NSDate *mostRecentFireDate; // @dynamic mostRecentFireDate;
 @property (strong, nonatomic) NSString *name; // @dynamic name;

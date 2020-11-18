@@ -32,6 +32,7 @@
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<_SFDialogViewControllerPresenting> viewControllerPresenter; // @synthesize viewControllerPresenter=_viewControllerPresenter;
 
++ (void)applicationDidEnterBackground;
 - (void).cxx_destruct;
 - (CDStruct_fca5f1f5)_currentSlot;
 - (int)_currentWebProcessID;

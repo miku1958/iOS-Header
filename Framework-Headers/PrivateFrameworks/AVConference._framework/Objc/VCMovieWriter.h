@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
     double _visibleHeight;
     struct __CVPixelBufferPool *_bufferPool;
     struct OpaqueVTPixelTransferSession *_transferSession;
+    unsigned int _codec;
 }
 
 @property unsigned int endRTPTimeStamp; // @synthesize endRTPTimeStamp=_endRTPTimeStamp;
@@ -55,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)appendVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 cameraStatus:(unsigned char)arg2 mediaType:(unsigned char)arg3;
 - (void)dealloc;
 - (void)finishWritingWithHandler:(CDUnknownBlockType)arg1;
-- (id)initWithOutputURL:(id)arg1 transactionID:(id)arg2;
+- (id)initWithOutputURL:(id)arg1 transactionID:(id)arg2 videoCodec:(unsigned int)arg3;
 - (void)processSampleQueue:(struct opaqueCMBufferQueue *)arg1 input:(id)arg2 lastPresentationTime:(CDStruct_1b6d18a9 *)arg3;
 - (void)setEndRTPTimestampWithTimestamp:(unsigned int)arg1;
 - (void)setStillImageTime:(CDStruct_1b6d18a9)arg1;
@@ -64,8 +65,8 @@ __attribute__((visibility("hidden")))
 - (void)setupInput:(id)arg1 queue:(struct opaqueCMBufferQueue *)arg2 dispatchGroup:(id)arg3 lastPresentationTime:(CDStruct_1b6d18a9 *)arg4;
 - (void)setupInputs;
 - (void)setupWriterWithMode:(unsigned char)arg1;
-- (BOOL)shouldAppendSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 RTPtimeStamp:(unsigned int)arg2;
-- (BOOL)shouldFinishWritingSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 RTPtimeStamp:(unsigned int)arg2;
+- (BOOL)shouldAppendSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 RTPtimeStamp:(unsigned int)arg2 mediaType:(unsigned char)arg3;
+- (BOOL)shouldFinishWritingSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 RTPtimeStamp:(unsigned int)arg2 mediaType:(unsigned char)arg3;
 - (void)startWritingAtTime:(CDStruct_1b6d18a9)arg1;
 
 @end

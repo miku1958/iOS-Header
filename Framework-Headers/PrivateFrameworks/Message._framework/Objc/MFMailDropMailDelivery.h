@@ -6,32 +6,27 @@
 
 #import <Message/MFOutgoingMessageDelivery.h>
 
-@class MFMailDropMetadata, NSArray, NSObject;
-@protocol OS_dispatch_queue;
+@class MFMailDropMetadata, NSArray;
 
 @interface MFMailDropMailDelivery : MFOutgoingMessageDelivery
 {
     NSArray *_attachments;
     MFMailDropMetadata *_imageArchiveMetadata;
     long long _mailDropState;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (strong, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (strong, nonatomic) MFMailDropMetadata *imageArchiveMetadata; // @synthesize imageArchiveMetadata=_imageArchiveMetadata;
 @property (nonatomic) long long mailDropState; // @synthesize mailDropState=_mailDropState;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)_mailDropZone;
+- (void).cxx_destruct;
 - (id)_attachmentManager;
 - (long long)_processAttachments;
 - (void)_recordZoneIDInDatabase:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_saveRecordZoneID:(id)arg1 InDatabase:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_uploadAttachmentsViaCloudKit:(id)arg1 zone:(id)arg2 records:(id)arg3 zippedPhotos:(id)arg4 attachmentRecords:(id)arg5 images:(id)arg6;
 - (id)ckDatabase;
-- (void)dealloc;
 - (id)deliverSynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
-- (id)init;
 - (id)publishRecord:(id)arg1 database:(id)arg2 attachmentRecords:(id)arg3 images:(id)arg4 allowsCellularAccess:(BOOL)arg5;
 - (id)scaledImages:(id)arg1;
 - (BOOL)updateMessageWithAttachmentsSynchronously;

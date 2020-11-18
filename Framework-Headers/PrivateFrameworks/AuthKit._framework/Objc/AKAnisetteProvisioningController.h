@@ -31,6 +31,7 @@
 - (void)eraseWithCompletion:(CDUnknownBlockType)arg1;
 - (id)fetchAnisetteDataAndProvisionIfNecessary:(BOOL)arg1 error:(id *)arg2;
 - (void)fetchAnisetteDataAndProvisionIfNecessary:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)fetchAttestationForRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initForDevice:(id)arg1 provider:(id)arg2;
 - (id)initWithDaemonXPCEndpoint:(id)arg1;

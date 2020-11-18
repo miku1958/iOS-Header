@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_setupConnection;
 - (void)beginHistoryAccessSession:(CDUnknownBlockType)arg1;
 - (void)beginURLCompletionSession:(CDUnknownBlockType)arg1;
 - (void)dealloc;

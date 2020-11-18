@@ -16,13 +16,15 @@
     NSMutableArray *_serviceVersions;
 }
 
-@property (strong, nonatomic) NSMutableArray *serviceVersions; // @synthesize serviceVersions=_serviceVersions;
+@property (strong, nonatomic) NSMutableArray *serviceVersions;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)serviceVersionType;
 - (void).cxx_destruct;
 - (void)addServiceVersion:(id)arg1;
 - (void)clearServiceVersions;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +32,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)serviceVersionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serviceVersionsCount;

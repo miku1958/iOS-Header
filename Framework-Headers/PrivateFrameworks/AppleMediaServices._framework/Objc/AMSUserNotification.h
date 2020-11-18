@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, AMSUserNotificationAction, NSArray, NSMutableDictionary, NSString, NSURL;
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@interface AMSUserNotification : NSObject
+@class ACAccount, AMSUserNotificationAction, NSArray, NSDictionary, NSMutableDictionary, NSString, NSURL;
+
+@interface AMSUserNotification : NSObject <AMSBagConsumer>
 {
+    BOOL _explicitContent;
     ACAccount *_account;
     NSURL *_artworkUrl;
     NSURL *_videoUrl;
@@ -18,6 +21,8 @@
     NSString *_identifier;
     NSString *_informativeText;
     NSString *_logKey;
+    NSDictionary *_metricsEvent;
+    NSString *_centerBundleIdentifier;
     NSString *_subtitle;
     NSString *_title;
     NSMutableDictionary *_userInfo;
@@ -30,29 +35,49 @@
 @property (strong, nonatomic) NSURL *artworkUrl; // @synthesize artworkUrl=_artworkUrl;
 @property (strong, nonatomic) NSArray *buttonActions; // @synthesize buttonActions=_buttonActions;
 @property (strong, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
+@property (strong, nonatomic) NSString *centerBundleIdentifier; // @synthesize centerBundleIdentifier=_centerBundleIdentifier;
+@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) AMSUserNotificationAction *defaultAction; // @synthesize defaultAction=_defaultAction;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL explicitContent; // @synthesize explicitContent=_explicitContent;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSString *informativeText; // @synthesize informativeText=_informativeText;
 @property (nonatomic) long long intent; // @synthesize intent=_intent;
 @property (strong, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
+@property (strong, nonatomic) NSDictionary *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (strong, nonatomic) NSURL *videoUrl; // @synthesize videoUrl=_videoUrl;
 
-+ (BOOL)_canParseNotificationWithUserInfo:(id)arg1;
++ (id)_cachedImagePathForIdentifier:(id)arg1 assetURL:(id)arg2;
++ (BOOL)_canParseNotificationWithIdentifier:(id)arg1;
++ (id)_downloadAssetAtUrl:(id)arg1 withIdentifier:(id)arg2 logKey:(id)arg3 bag:(id)arg4;
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
++ (id)handleNotificationResponse:(id)arg1 bag:(id)arg2;
 + (id)handleNotificationResponse:(id)arg1 bagContract:(id)arg2;
++ (void)handleServiceExtensionNotificationRequest:(id)arg1 bag:(id)arg2 withContentHandler:(CDUnknownBlockType)arg3;
++ (id)notificationCenter:(id)arg1 didChangeSettings:(id)arg2 bag:(id)arg3;
++ (id)notificationCenter:(id)arg1 openSettingsForNotification:(id)arg2 bag:(id)arg3;
++ (id)notificationWithPayload:(id)arg1 andConfig:(id)arg2;
 + (BOOL)shouldHandleNotificationResponse:(id)arg1;
++ (BOOL)shouldHandleServiceExtensionNotificationRequest:(id)arg1;
 - (void).cxx_destruct;
-- (id)_compileStoredUserInfo;
-- (void)_populatePropertiesFromStoredUserInfo:(id)arg1;
+- (id)_generatePayload;
 - (void)addButtonAction:(id)arg1;
 - (id)createNSUserNotification;
 - (id)createUNNotificationActions;
 - (id)createUNNotificationContent;
+- (id)handleSelectedButton:(id)arg1 bag:(id)arg2;
 - (id)handleSelectedButton:(id)arg1 bagContract:(id)arg2;
 - (id)initWithNSUserNotification:(id)arg1;
+- (id)initWithPayload:(id)arg1 andConfig:(id)arg2;
 - (id)initWithTitle:(id)arg1;
 - (id)initWithTitle:(id)arg1 intent:(long long)arg2;
 - (id)initWithUNNotification:(id)arg1;

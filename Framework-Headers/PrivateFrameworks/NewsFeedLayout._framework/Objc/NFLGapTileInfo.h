@@ -25,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL pageable;
+@property (readonly, nonatomic, getter=isSelectable) BOOL selectable;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long tileInfoType;
 @property (readonly, nonatomic) NSArray *underlyingFeedElements; // @synthesize underlyingFeedElements=_underlyingFeedElements;

@@ -8,28 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, GEORPUpdatedLabel, NSMutableArray, NSString;
+@class GEOMapRegion, GEORPUpdatedLabel, NSMutableArray, NSString, PBDataReader;
 
 @interface GEORPDetails : PBCodable <NSCopying>
 {
-    int _directionsType;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOMapRegion *_displayRegion;
-    int _displayStyle;
     GEORPUpdatedLabel *_label;
     NSString *_localizedDescription;
     NSString *_localizedTitle;
-    int _mapType;
     NSMutableArray *_places;
+    int _directionsType;
+    int _displayStyle;
+    int _mapType;
     struct {
-        unsigned int directionsType:1;
-        unsigned int displayStyle:1;
-        unsigned int mapType:1;
-    } _has;
+        unsigned int has_directionsType:1;
+        unsigned int has_displayStyle:1;
+        unsigned int has_mapType:1;
+        unsigned int read_displayRegion:1;
+        unsigned int read_label:1;
+        unsigned int read_localizedDescription:1;
+        unsigned int read_localizedTitle:1;
+        unsigned int read_places:1;
+        unsigned int wrote_displayRegion:1;
+        unsigned int wrote_label:1;
+        unsigned int wrote_localizedDescription:1;
+        unsigned int wrote_localizedTitle:1;
+        unsigned int wrote_places:1;
+        unsigned int wrote_directionsType:1;
+        unsigned int wrote_displayStyle:1;
+        unsigned int wrote_mapType:1;
+    } _flags;
 }
 
-@property (nonatomic) int directionsType; // @synthesize directionsType=_directionsType;
-@property (strong, nonatomic) GEOMapRegion *displayRegion; // @synthesize displayRegion=_displayRegion;
-@property (nonatomic) int displayStyle; // @synthesize displayStyle=_displayStyle;
+@property (nonatomic) int directionsType;
+@property (strong, nonatomic) GEOMapRegion *displayRegion;
+@property (nonatomic) int displayStyle;
 @property (nonatomic) BOOL hasDirectionsType;
 @property (readonly, nonatomic) BOOL hasDisplayRegion;
 @property (nonatomic) BOOL hasDisplayStyle;
@@ -37,17 +52,24 @@
 @property (readonly, nonatomic) BOOL hasLocalizedDescription;
 @property (readonly, nonatomic) BOOL hasLocalizedTitle;
 @property (nonatomic) BOOL hasMapType;
-@property (strong, nonatomic) GEORPUpdatedLabel *label; // @synthesize label=_label;
-@property (strong, nonatomic) NSString *localizedDescription; // @synthesize localizedDescription=_localizedDescription;
-@property (strong, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
-@property (nonatomic) int mapType; // @synthesize mapType=_mapType;
-@property (strong, nonatomic) NSMutableArray *places; // @synthesize places=_places;
+@property (strong, nonatomic) GEORPUpdatedLabel *label;
+@property (strong, nonatomic) NSString *localizedDescription;
+@property (strong, nonatomic) NSString *localizedTitle;
+@property (nonatomic) int mapType;
+@property (strong, nonatomic) NSMutableArray *places;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)placeType;
 - (void).cxx_destruct;
 - (int)StringAsDirectionsType:(id)arg1;
 - (int)StringAsDisplayStyle:(id)arg1;
 - (int)StringAsMapType:(id)arg1;
+- (void)_addNoFlagsPlace:(id)arg1;
+- (void)_readDisplayRegion;
+- (void)_readLabel;
+- (void)_readLocalizedDescription;
+- (void)_readLocalizedTitle;
+- (void)_readPlaces;
 - (void)addPlace:(id)arg1;
 - (void)clearPlaces;
 - (void)copyTo:(id)arg1;
@@ -62,6 +84,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)placeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)placesCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

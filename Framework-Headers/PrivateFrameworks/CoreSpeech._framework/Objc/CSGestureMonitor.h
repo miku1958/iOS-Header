@@ -6,22 +6,19 @@
 
 #import <CoreSpeech/CSEventMonitor.h>
 
-@protocol CSGestureMonitorDelegate;
-
 @interface CSGestureMonitor : CSEventMonitor
 {
     unsigned long long _wakeGestureTimestamp;
     unsigned long long _dismissalTimestamp;
-    id<CSGestureMonitorDelegate> _delegate;
 }
 
-@property (weak, nonatomic) id<CSGestureMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) unsigned long long dismissalTimestamp; // @synthesize dismissalTimestamp=_dismissalTimestamp;
 @property (nonatomic) unsigned long long wakeGestureTimestamp; // @synthesize wakeGestureTimestamp=_wakeGestureTimestamp;
 
 + (id)sharedInstance;
-- (void).cxx_destruct;
-- (void)startObserving;
+- (void)_startMonitoringWithQueue:(id)arg1;
+- (void)_stopMonitoring;
+- (BOOL)isTriggerHandheld;
 
 @end
 

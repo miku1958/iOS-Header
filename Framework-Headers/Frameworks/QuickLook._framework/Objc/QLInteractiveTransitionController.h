@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL wantsInteractiveStart;
 
+- (void)_performForcedDismissal;
 - (void)completeTransition:(BOOL)arg1 withDuration:(double)arg2;
 - (void)startInteractiveTransition:(id)arg1;
 - (double)transitionDuration:(id)arg1;

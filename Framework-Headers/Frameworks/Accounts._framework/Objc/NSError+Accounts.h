@@ -7,6 +7,9 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (Accounts)
+
+@property (readonly, nonatomic, getter=ac_isUnrecoverableDatabaseError) BOOL ac_unrecoverableDatabaseError;
+
 - (id)_sanitizeObject:(id)arg1;
 - (id)ac_secureCodingError;
 @end

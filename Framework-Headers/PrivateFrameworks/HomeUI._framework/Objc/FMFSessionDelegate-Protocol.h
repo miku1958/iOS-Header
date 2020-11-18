@@ -6,7 +6,7 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class FMFDevice, FMFFriendshipRequest, FMFHandle, FMFLocation, NSArray, NSError, NSSet, NSString;
+@class FMFDevice, FMFFriendshipRequest, FMFHandle, FMFLocation, NSArray, NSDictionary, NSError, NSSet, NSString;
 
 @protocol FMFSessionDelegate <NSObject>
 
@@ -27,7 +27,9 @@
 - (void)didUpdateFences:(NSSet *)arg1;
 - (void)didUpdateHidingStatus:(BOOL)arg1;
 - (void)didUpdatePendingOffersForHandles:(NSSet *)arg1;
+- (void)didUpdatePreferences:(NSDictionary *)arg1;
 - (void)mappingPacketProcessingCompleted:(NSString *)arg1;
+- (void)networkReachabilityUpdated:(BOOL)arg1;
 - (void)sendMappingPacket:(NSString *)arg1 toHandle:(FMFHandle *)arg2;
 @end
 

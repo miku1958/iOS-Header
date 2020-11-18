@@ -8,7 +8,8 @@
 
 #import <ARKit/NSCopying-Protocol.h>
 
-@class ARImageSensorSettings, ARReplaySensor, ARVideoFormat, AVCaptureSession, NSArray, NSString;
+@class ARImageSensorSettings, ARParentImageSensorSettings, ARVideoFormat, NSArray, NSString;
+@protocol ARReplaySensorProtocol;
 
 @interface ARConfiguration : NSObject <NSCopying>
 {
@@ -18,26 +19,27 @@
     BOOL _allowCameraInMultipleForegroundAppLayout;
     BOOL _mirroredFrameOutput;
     long long _worldAlignment;
+    unsigned long long _frameSemantics;
     NSArray *_customSensors;
     unsigned long long _lightEstimation;
     unsigned long long _frameDebugOptions;
     long long _cameraPosition;
-    AVCaptureSession *_captureSession;
 }
 
 @property (nonatomic) BOOL allowCameraInMultipleForegroundAppLayout; // @synthesize allowCameraInMultipleForegroundAppLayout=_allowCameraInMultipleForegroundAppLayout;
 @property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @synthesize autoFocusEnabled=_autoFocusEnabled;
 @property (nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
-@property (strong, nonatomic) AVCaptureSession *captureSession; // @synthesize captureSession=_captureSession;
 @property (strong, nonatomic) NSArray *customSensors; // @synthesize customSensors=_customSensors;
 @property (readonly, nonatomic) NSString *deviceModel;
 @property (nonatomic) unsigned long long frameDebugOptions; // @synthesize frameDebugOptions=_frameDebugOptions;
+@property (nonatomic) unsigned long long frameSemantics; // @synthesize frameSemantics=_frameSemantics;
 @property (readonly, nonatomic) ARImageSensorSettings *imageSensorSettings;
 @property (nonatomic) unsigned long long lightEstimation; // @synthesize lightEstimation=_lightEstimation;
 @property (nonatomic, getter=isLightEstimationEnabled) BOOL lightEstimationEnabled;
 @property (nonatomic) BOOL mirroredFrameOutput; // @synthesize mirroredFrameOutput=_mirroredFrameOutput;
+@property (readonly, nonatomic) ARParentImageSensorSettings *parentImageSensorSettings;
 @property (nonatomic) BOOL providesAudioData; // @synthesize providesAudioData=_providesAudioData;
-@property (readonly, nonatomic) ARReplaySensor *replaySensor;
+@property (readonly, nonatomic) id<ARReplaySensorProtocol> replaySensor;
 @property (strong, nonatomic) ARVideoFormat *videoFormat; // @synthesize videoFormat=_videoFormat;
 @property (nonatomic) long long worldAlignment; // @synthesize worldAlignment=_worldAlignment;
 
@@ -46,6 +48,7 @@
 + (id)recordingConfigurationWithConfiguration:(id)arg1 recordingTechnique:(id *)arg2 fileURL:(id)arg3;
 + (id)replayConfigurationWithConfiguration:(id)arg1 replaySensor:(id)arg2 replayingResultDataClasses:(id)arg3;
 + (id)supportedVideoFormats;
++ (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
@@ -56,6 +59,7 @@
 - (id)initPrivate;
 - (BOOL)isEqual:(id)arg1;
 - (id)renderingTechnique;
+- (id)secondaryTechniques;
 - (id)techniques;
 
 @end

@@ -16,7 +16,6 @@
 }
 
 @property (nonatomic) double autoLockTimeout; // @synthesize autoLockTimeout=_autoLockTimeout;
-@property (nonatomic) BOOL disablesAttentionAwareness;
 @property (nonatomic) BOOL disablesWarn; // @synthesize disablesWarn=_disablesWarn;
 @property (nonatomic) BOOL usesLockScreenRules; // @synthesize usesLockScreenRules=_usesLockScreenRules;
 

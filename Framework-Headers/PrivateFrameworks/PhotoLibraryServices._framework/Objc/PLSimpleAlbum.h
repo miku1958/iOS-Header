@@ -41,9 +41,9 @@
 @property (readonly, strong, nonatomic) NSString *uuid;
 @property (readonly, nonatomic) unsigned long long videosCount;
 
+- (void).cxx_destruct;
 - (long long)_countOfAssetType:(short)arg1;
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)initWithTitle:(id)arg1 assets:(id)arg2;
 
 @end

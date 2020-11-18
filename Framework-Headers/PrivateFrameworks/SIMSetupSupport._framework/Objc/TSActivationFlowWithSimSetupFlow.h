@@ -7,35 +7,46 @@
 #import <SIMSetupSupport/TSSIMSetupFlow.h>
 
 #import <SIMSetupSupport/TSCellularPlanManagerCacheDelegate-Protocol.h>
+#import <SIMSetupSupport/TSEntitlementJSHandlerDelegate-Protocol.h>
 #import <SIMSetupSupport/TSSIMSetupFlowDelegate-Protocol.h>
 
 @class NSError, NSMutableArray, NSString, UIBarButtonItem, UIViewController;
 @protocol TSSetupFlowItem;
 
-@interface TSActivationFlowWithSimSetupFlow : TSSIMSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate>
+@interface TSActivationFlowWithSimSetupFlow : TSSIMSetupFlow <TSSIMSetupFlowDelegate, TSCellularPlanManagerCacheDelegate, TSEntitlementJSHandlerDelegate>
 {
     BOOL _requireSetup;
-    BOOL _isPreinstallingViewControllerActive;
     BOOL _confirmationCodeRequired;
+    BOOL _isTransferCapable;
     NSError *_planInstallError;
     NSMutableArray *_danglingPlanItems;
+    NSMutableArray *_transferItems;
     NSString *_name;
     unsigned long long _userConsentType;
     UIBarButtonItem *_cancelButton;
+    long long _signupConsentResponse;
     UIViewController<TSSetupFlowItem> *_currentViewController;
+    BOOL _isPreinstallingViewControllerActive;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property BOOL isPreinstallingViewControllerActive; // @synthesize isPreinstallingViewControllerActive=_isPreinstallingViewControllerActive;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_maybeShowPreinstallConsentOnViewController:(id)arg1;
+- (void)_requestPendingInstallItems;
+- (void)_requestTransferPlanList;
+- (void)accountCancelled;
+- (void)accountPendingRelease;
 - (void)dealloc;
+- (void)didPurchasePlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5;
+- (void)didTransferPlanSuccessfullyWithEid:(id)arg1 imei:(id)arg2 meid:(id)arg3 iccid:(id)arg4 alternateSDMP:(id)arg5 state:(id)arg6;
 - (id)firstViewController;
 - (void)firstViewController:(CDUnknownBlockType)arg1;
 - (id)initRequireSetup:(BOOL)arg1;
-- (BOOL)isPhoneFlow;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)planItemsUpdated:(id)arg1 planListError:(id)arg2;
 - (void)popViewController:(id)arg1;

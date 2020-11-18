@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class UIView;
+@class UIEvent, UIView;
 
 @protocol WKFormControl
 - (void)controlBeginEditing;
 - (void)controlEndEditing;
 - (UIView *)controlView;
+
+@optional
+- (BOOL)controlHandleKeyEvent:(UIEvent *)arg1;
 @end
 

@@ -10,12 +10,12 @@
 {
 }
 
-+ (void)initAddressBook;
++ (void)initAppleIDSSOAuthentication;
 + (void)initAssertionServices;
++ (void)initAuthKit;
 + (void)initCoreServices;
 + (void)initCoreText;
-+ (void)initDAEAS;
-+ (void)initDataAccess;
++ (void)initExchangeSyncExpress;
 + (void)initImageIO;
 + (void)initLoggingSupport;
 + (void)initSetupAssistant;

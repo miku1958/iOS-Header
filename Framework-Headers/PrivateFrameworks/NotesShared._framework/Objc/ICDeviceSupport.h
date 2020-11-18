@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)deviceIsIPad;
 + (BOOL)deviceSupportsFaceID;
 + (BOOL)deviceSupportsPencil;
 + (BOOL)deviceSupportsTouchID;

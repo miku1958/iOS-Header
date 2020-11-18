@@ -19,13 +19,17 @@
 @property (readonly, copy, nonatomic) INDateComponentsRange *dateTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) INSpeakableString *groupName;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL includeAllNoteContents;
 @property (readonly, nonatomic) long long itemType;
 @property (readonly, copy, nonatomic) CLPlacemark *location;
 @property (readonly, nonatomic) long long locationSearchType;
 @property (readonly, copy, nonatomic) NSString *notebookItemIdentifier;
 @property (readonly, nonatomic) long long status;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) long long taskPriority;
+@property (readonly, nonatomic) unsigned long long temporalEventTriggerTypes;
 @property (readonly, copy, nonatomic) INSpeakableString *title;
 
 - (id)_categoryVerb;
@@ -38,6 +42,7 @@
 - (id)domain;
 - (id)initWithTitle:(id)arg1 content:(id)arg2 itemType:(long long)arg3 status:(long long)arg4 location:(id)arg5 locationSearchType:(long long)arg6 dateTime:(id)arg7 dateSearchType:(long long)arg8;
 - (id)initWithTitle:(id)arg1 content:(id)arg2 itemType:(long long)arg3 status:(long long)arg4 location:(id)arg5 locationSearchType:(long long)arg6 dateTime:(id)arg7 dateSearchType:(long long)arg8 notebookItemIdentifier:(id)arg9;
+- (id)initWithTitle:(id)arg1 content:(id)arg2 itemType:(long long)arg3 status:(long long)arg4 location:(id)arg5 locationSearchType:(long long)arg6 dateTime:(id)arg7 dateSearchType:(long long)arg8 temporalEventTriggerTypes:(unsigned long long)arg9 taskPriority:(long long)arg10 notebookItemIdentifier:(id)arg11;
 - (id)parametersByName;
 - (void)setContent:(id)arg1;
 - (void)setDateSearchType:(long long)arg1;
@@ -49,6 +54,8 @@
 - (void)setNotebookItemIdentifier:(id)arg1;
 - (void)setParametersByName:(id)arg1;
 - (void)setStatus:(long long)arg1;
+- (void)setTaskPriority:(long long)arg1;
+- (void)setTemporalEventTriggerTypes:(unsigned long long)arg1;
 - (void)setTitle:(id)arg1;
 - (void)setVerb:(id)arg1;
 - (id)verb;

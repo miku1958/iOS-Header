@@ -20,6 +20,7 @@
     BOOL _endpointOnCurrentDevice;
     BOOL _hostedOnCurrentDevice;
     NSUUID *_UUID;
+    NSString *_providerIdentifier;
 }
 
 @property (readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
@@ -32,6 +33,7 @@
 @property (nonatomic, getter=isHostedOnCurrentDevice) BOOL hostedOnCurrentDevice; // @synthesize hostedOnCurrentDevice=_hostedOnCurrentDevice;
 @property (nonatomic, getter=isOnHold) BOOL onHold; // @synthesize onHold=_onHold;
 @property (nonatomic, getter=isOutgoing) BOOL outgoing; // @synthesize outgoing=_outgoing;
+@property (strong, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;

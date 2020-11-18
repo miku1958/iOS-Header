@@ -28,6 +28,7 @@
     BOOL _presented;
     BOOL _ignoresQuietMode;
     BOOL _suppressForKeynote;
+    unsigned long long _presentationState;
     UIImage *_headerImage;
     UIImage *_attachmentImage;
 }
@@ -35,6 +36,7 @@
 @property (strong, nonatomic, setter=_setAttachmentImage:) UIImage *_attachmentImage; // @synthesize _attachmentImage;
 @property (strong, nonatomic, setter=_setHeaderImage:) UIImage *_headerImage; // @synthesize _headerImage;
 @property (nonatomic, setter=_setIgnoresQuietMode:) BOOL _ignoresQuietMode; // @synthesize _ignoresQuietMode;
+@property (nonatomic, setter=_setPresentationState:) unsigned long long _presentationState; // @synthesize _presentationState;
 @property (nonatomic) BOOL allowInCar; // @synthesize allowInCar=_allowInCar;
 @property (nonatomic) BOOL allowInSetup; // @synthesize allowInSetup=_allowInSetup;
 @property (nonatomic) BOOL allowMessageInCar; // @synthesize allowMessageInCar=_allowMessageInCar;
@@ -88,10 +90,12 @@
 - (BOOL)dismissesOverlaysOnLockScreen;
 - (void)doCleanupAfterDeactivationAnimation;
 - (BOOL)forcesModalAlertAppearance;
+- (BOOL)hideOnClonedDisplay;
 - (id)init;
 - (id)lockLabel;
 - (void)performUnlockAction;
 - (void)playPresentationSound;
+- (void)presentationStateDidChangeFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 - (BOOL)reappearsAfterLock;
 - (BOOL)reappearsAfterUnlock;
 - (id)shortLockLabel;
@@ -102,6 +106,7 @@
 - (id)succinctDescriptionBuilder;
 - (BOOL)undimsScreen;
 - (BOOL)unlocksScreen;
+- (BOOL)wakeDisplay;
 - (void)willActivate;
 - (void)willDeactivateForReason:(int)arg1;
 - (void)willRelockForButtonPress:(BOOL)arg1;

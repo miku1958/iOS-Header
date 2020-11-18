@@ -6,26 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/TSPDocumentResourceFileURLProvider-Protocol.h>
+#import <iWorkImport/TSUResourceFileURLProvider-Protocol.h>
 #import <iWorkImport/TSUResourceRequest-Protocol.h>
+#import <iWorkImport/TSUResourceRequestObservable-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSProgress, NSSet, NSString, TSPDocumentResourceCache;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@class NSProgress, NSSet, NSString, TSPDocumentResourceCache, TSUObserverNotifier;
+@protocol OS_dispatch_queue, TSUResourceRequest;
 
 __attribute__((visibility("hidden")))
-@interface TSPDocumentResourceRequest : NSObject <TSPDocumentResourceFileURLProvider, TSUResourceRequest>
+@interface TSPDocumentResourceRequest : NSObject <TSUResourceFileURLProvider, TSUResourceRequest, TSUResourceRequestObservable>
 {
     TSPDocumentResourceCache *_documentResourceCache;
     NSSet *_documentResourceInfos;
-    NSProgress *_progress;
+    NSSet *_tags;
+    TSUObserverNotifier *_observerNotifier;
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSMutableDictionary *_accessQueue_documentResourceLocalURLs;
-    NSMutableDictionary *_accessQueue_documentResourceRemoteURLs;
-    NSObject<OS_dispatch_group> *_accessQueue_downloadGroup;
-    NSMutableArray *_accessQueue_deferredResourceAccessBlocks;
-    struct {
-        unsigned int isResourcesAvailable:1;
-    } _accessQueue_flags;
+    id<TSUResourceRequest> _accessQueue_backingResourceRequest;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,14 +33,18 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSSet *tags;
 
 - (void).cxx_destruct;
-- (void)accessQueue_conditionallyBeginAccessingResourcesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)addObserver:(id)arg1;
 - (void)conditionallyBeginAccessingResourcesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)fileURLForDocumentResourceInfo:(id)arg1;
+- (id)fileURLForResourceInfo:(id)arg1;
 - (id)init;
 - (id)initWithDocumentResourceInfos:(id)arg1 documentResourceCache:(id)arg2;
+- (id)initWithDocumentResourceInfos:(id)arg1 tags:(id)arg2 documentResourceCache:(id)arg3;
+- (id)newBackingResourceRequestForDocumentResourceInfos:(id)arg1 documentResourceCache:(id)arg2;
 - (void)performResourceAccessAsynchronouslyUsingQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)performResourceAccessUsingQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)remoteURLForDocumentResourceInfo:(id)arg1;
+- (void)removeObserver:(id)arg1;
+- (id)urlForResourceInfo:(id)arg1;
 
 @end
 

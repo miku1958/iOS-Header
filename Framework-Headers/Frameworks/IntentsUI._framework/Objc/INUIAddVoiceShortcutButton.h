@@ -6,10 +6,12 @@
 
 #import <UIKit/UIButton.h>
 
-@class CAFilter, INShortcut, INVoiceShortcut, NSLayoutConstraint, UIImageView, UILabel;
+#import <IntentsUI/UIDragInteractionDelegate-Protocol.h>
+
+@class CAFilter, INShortcut, INVoiceShortcut, NSLayoutConstraint, NSString, UIImageView, UILabel;
 @protocol INUIAddVoiceShortcutButtonDelegate;
 
-@interface INUIAddVoiceShortcutButton : UIButton
+@interface INUIAddVoiceShortcutButton : UIButton <UIDragInteractionDelegate>
 {
     unsigned long long _style;
     id<INUIAddVoiceShortcutButtonDelegate> _delegate;
@@ -24,24 +26,24 @@
     NSLayoutConstraint *_checkmarkHeightConstraint;
     NSLayoutConstraint *_addToSiriLeadingConstraint;
     NSLayoutConstraint *_addedToSiriLeadingConstraint;
-    NSLayoutConstraint *_addToSiriBottomConstraint;
-    NSLayoutConstraint *_addedToSiriBottomConstraint;
 }
 
-@property (strong, nonatomic) NSLayoutConstraint *addToSiriBottomConstraint; // @synthesize addToSiriBottomConstraint=_addToSiriBottomConstraint;
 @property (weak, nonatomic) UILabel *addToSiriLabel; // @synthesize addToSiriLabel=_addToSiriLabel;
 @property (strong, nonatomic) NSLayoutConstraint *addToSiriLeadingConstraint; // @synthesize addToSiriLeadingConstraint=_addToSiriLeadingConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *addedToSiriBottomConstraint; // @synthesize addedToSiriBottomConstraint=_addedToSiriBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *addedToSiriLeadingConstraint; // @synthesize addedToSiriLeadingConstraint=_addedToSiriLeadingConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *checkmarkHeightConstraint; // @synthesize checkmarkHeightConstraint=_checkmarkHeightConstraint;
 @property (weak, nonatomic) UIImageView *checkmarkImageView; // @synthesize checkmarkImageView=_checkmarkImageView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<INUIAddVoiceShortcutButtonDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CAFilter *highlightFilter; // @synthesize highlightFilter=_highlightFilter;
 @property (weak, nonatomic) UILabel *phraseLabel; // @synthesize phraseLabel=_phraseLabel;
 @property (strong, nonatomic) INShortcut *shortcut; // @synthesize shortcut=_shortcut;
 @property (weak, nonatomic) UIImageView *sphiriImageView; // @synthesize sphiriImageView=_sphiriImageView;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) INVoiceShortcut *voiceShortcut; // @synthesize voiceShortcut=_voiceShortcut;
 
 - (void).cxx_destruct;
@@ -50,23 +52,34 @@
 - (id)_addedToSiriText;
 - (id)_backgroundColorForStyle:(unsigned long long)arg1;
 - (void)_checkAndUpdateForShortcut;
+- (void)_configureWithStyle:(unsigned long long)arg1;
 - (void)_createHighlightFilterIfNecessary;
 - (void)_didTapButton;
+- (id)_dynamicBlackColor;
+- (id)_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;
+- (id)_dynamicWhiteColor;
 - (void)_handleVoiceShortcutUpdateNotification:(id)arg1;
 - (id)_phraseFont;
 - (id)_phraseText;
-- (id)_sphiriImageForHeight:(double)arg1;
-- (id)_sphiriImageNameForHeight:(double)arg1;
+- (BOOL)_shouldUseLargerFont;
+- (id)_sphiriImage;
 - (id)_strokeColorForStyle:(unsigned long long)arg1;
 - (double)_strokeWidthForStyle:(unsigned long long)arg1;
 - (id)_textColorForStyle:(unsigned long long)arg1;
+- (void)_updateColors;
 - (void)_updateContent;
 - (void)_updatePhraseVisibility;
+- (id)accessibilityLabel;
 - (void)dealloc;
+- (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithStyle:(unsigned long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)prepareForInterfaceBuilder;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)setStyle:(unsigned long long)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

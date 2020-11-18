@@ -24,7 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
+@property (copy, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 

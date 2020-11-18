@@ -15,6 +15,8 @@
     NSObject<OS_dispatch_queue> *_synchronizationQueue;
 }
 
+@property (strong) NSMutableDictionary *itemTypeCache; // @synthesize itemTypeCache=_itemTypeCache;
+
 + (id)_iWorkUTIs;
 + (id)sharedCache;
 - (void).cxx_destruct;
@@ -22,6 +24,7 @@
 - (BOOL)_contentTypeIsIWorkType:(id)arg1;
 - (unsigned long long)_itemTypeByUTIResolutionForContentType:(id)arg1;
 - (id)init;
+- (unsigned long long)itemTypeForContentType:(id)arg1;
 - (unsigned long long)itemTypeForItem:(id)arg1;
 - (BOOL)requestedBadgeType:(unsigned long long)arg1 isValidForContentType:(id)arg2;
 

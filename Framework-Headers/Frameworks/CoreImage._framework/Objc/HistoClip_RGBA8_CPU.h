@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
     NSNumber *inputMinDensity;
     NSNumber *inputMaxRelDensity;
     NSNumber *inputDensityRadius;
+    NSNumber *inputMinInterDispersion;
     NSNumber *inputMaxInterDispersion;
+    NSNumber *inputMinGobalLocalMeanDiff;
     CIVector *inputMinimum;
     CIVector *inputMaxArea;
     CIVector *inputMaxAreaRatio;
@@ -46,12 +48,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputDensityRadius; // @synthesize inputDensityRadius;
 @property (strong, nonatomic) CIImage *inputDetectionLeft; // @synthesize inputDetectionLeft;
 @property (strong, nonatomic) CIImage *inputDetectionRight; // @synthesize inputDetectionRight;
+@property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 @property (strong, nonatomic) NSNumber *inputInterPeakMinRepair; // @synthesize inputInterPeakMinRepair;
 @property (strong, nonatomic) CIVector *inputMaxArea; // @synthesize inputMaxArea;
 @property (strong, nonatomic) CIVector *inputMaxAreaRatio; // @synthesize inputMaxAreaRatio;
 @property (strong, nonatomic) NSNumber *inputMaxInterDispersion; // @synthesize inputMaxInterDispersion;
 @property (strong, nonatomic) NSNumber *inputMaxRelDensity; // @synthesize inputMaxRelDensity;
 @property (strong, nonatomic) NSNumber *inputMinDensity; // @synthesize inputMinDensity;
+@property (strong, nonatomic) NSNumber *inputMinGobalLocalMeanDiff; // @synthesize inputMinGobalLocalMeanDiff;
+@property (strong, nonatomic) NSNumber *inputMinInterDispersion; // @synthesize inputMinInterDispersion;
 @property (strong, nonatomic) CIVector *inputMinimum; // @synthesize inputMinimum;
 @property (strong, nonatomic) NSNumber *inputPercentRepair; // @synthesize inputPercentRepair;
 @property (strong, nonatomic) NSNumber *inputPercentSpecular; // @synthesize inputPercentSpecular;

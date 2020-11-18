@@ -9,12 +9,13 @@
 #import <HomeKitDaemon/HMDAccessoryDisassociation-Protocol.h>
 #import <HomeKitDaemon/HMDAccessoryMinimumUserPrivilegeCapable-Protocol.h>
 #import <HomeKitDaemon/HMDAccessoryUserManagement-Protocol.h>
+#import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMFExponentialBackoffTimer, HMFPairingIdentity, NSString;
 
-@interface HMDAirPlayAccessory : HMDMediaAccessory <HMDAccessoryMinimumUserPrivilegeCapable, HMFTimerDelegate, HMDAccessoryDisassociation, HMDAccessoryUserManagement, HMFLogging>
+@interface HMDAirPlayAccessory : HMDMediaAccessory <HMDAccessoryMinimumUserPrivilegeCapable, HMDDevicePreferenceDataSource, HMFTimerDelegate, HMDAccessoryDisassociation, HMDAccessoryUserManagement, HMFLogging>
 {
     HMFPairingIdentity *_pairingIdentity;
     NSString *_password;
@@ -39,7 +40,7 @@
 - (void)addUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)advertisement;
 - (id)backingStoreObjects:(long long)arg1;
-- (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
 - (void)disassociateUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)disassociateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -57,6 +58,7 @@
 - (void)setPairingIdentity:(id)arg1;
 - (void)setPassword:(id)arg1;
 - (void)setReachable:(BOOL)arg1;
+- (BOOL)supportsDeviceWithCapabilities:(id)arg1;
 - (BOOL)supportsMinimumUserPrivilege;
 - (void)timerDidFire:(id)arg1;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

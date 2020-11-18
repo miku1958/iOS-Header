@@ -6,53 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class EKCalendarVisibilityManager, EKEventStore, NSArray, PPContactScorer, PPEventCache, _PASNotificationToken;
-@protocol OS_dispatch_queue;
+#import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
 
-@interface PPLocalEventStore : NSObject
+@class PPEventCache, PPEventStorage, PPM2FeedbackPortraitRegistered, PPMFeedbackRegistered, _PASNotificationToken;
+
+@interface PPLocalEventStore : NSObject <PPFeedbackAccepting>
 {
-    EKEventStore *_store;
-    BOOL _accessGranted;
-    NSArray *_calendars;
     PPEventCache *_eventCache;
-    EKCalendarVisibilityManager *_calendarVisibilityManager;
-    NSObject<OS_dispatch_queue> *_eventLoadingQueue;
-    PPContactScorer *_contactScorer;
+    PPEventStorage *_storage;
     _PASNotificationToken *_assetUpdateNotificationToken;
+    PPMFeedbackRegistered *_feedbackTracker;
+    PPM2FeedbackPortraitRegistered *_feedbackTracker2;
 }
 
 + (id)defaultStore;
 - (void).cxx_destruct;
-- (BOOL)_ekChangeIsEvent:(id)arg1;
-- (id)_filterOutAllDayAndMultiDayEvents:(id)arg1;
-- (BOOL)_inObservedCalendars:(id)arg1;
-- (BOOL)_isAllDayOrMultiDay:(id)arg1;
-- (id)_loadCalendars;
-- (id)_makeEventCache;
-- (id)_predicateForRange:(struct _NSRange)arg1;
+- (void)_clearAndReloadAllCachesAndData;
 - (void)_preloadEvents;
 - (id)_recordForDeletedEKEventWithChangeIdentifier:(id)arg1;
 - (id)_recordForEKEvent:(id)arg1;
+- (id)_recordForEvent:(id)arg1;
 - (void)_registerForNotifications;
-- (id)_resolveEventFromEKChange:(id)arg1;
 - (double)_scoreForSecondsRelativeToNow:(double)arg1;
 - (void)_setupCalendarVisibilityManager;
-- (void)askForEKAccess;
-- (id)calendars;
 - (void)clearCaches;
 - (void)dealloc;
-- (id)eventHighlightForEKEvent:(id)arg1 usingScorer:(id)arg2 date:(id)arg3 rankingOptions:(int)arg4;
+- (id)eventHighlightForEvent:(id)arg1 usingScorer:(id)arg2 date:(id)arg3 rankingOptions:(int)arg4 loadedFromEventKit:(BOOL *)arg5;
 - (id)eventHighlightsFrom:(id)arg1 to:(id)arg2 options:(int)arg3;
 - (id)eventMetaDataFromDate:(id)arg1 toDate:(id)arg2;
 - (id)eventNameRecordsForClient:(id)arg1 error:(id *)arg2;
 - (id)eventWithExternalID:(id)arg1;
 - (id)eventsFromDate:(id)arg1 toDate:(id)arg2;
 - (id)eventsInRange:(struct _NSRange)arg1;
-- (id)getWeakStore;
 - (id)init;
 - (BOOL)iterEventNameRecordsForClient:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
-- (void)iterateEventsFrom:(id)arg1 to:(id)arg2 inChunks:(int)arg3 withBlock:(CDUnknownBlockType)arg4;
-- (void)refreshCacheWithChanges:(id)arg1;
+- (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)resolveEventNameRecordChanges:(id)arg1 client:(id)arg2 error:(id *)arg3;
 
 @end

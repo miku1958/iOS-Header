@@ -7,13 +7,13 @@
 #import <PhotosUICore/NSObject-Protocol.h>
 
 @class NSArray, NSString, PXGadgetSpec, UIViewController;
-@protocol PXGadgetDelegate;
+@protocol PXGadgetDelegate, UICoordinateSpace;
 
 @protocol PXGadget <NSObject>
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
@@ -39,13 +39,13 @@
 - (void)didDismissPreviewViewController:(UIViewController *)arg1 committing:(BOOL)arg2;
 - (void)gadgetControllerHasAppeared;
 - (void)gadgetControllerHasDisappeared;
-- (BOOL)hasLoadedContentData;
-- (void)loadContentData;
+- (void)prefetchDuringScrollingForWidth:(double)arg1;
 - (void)preloadResources;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2 outSourceRect:(out struct CGRect *)arg3;
+- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
+- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id<UICoordinateSpace>)arg2;
 - (NSString *)uniqueGadgetIdentifier;
-- (void)unloadContentData;
-- (void)userDidSelectAccessoryButton:(id)arg1;
+- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
 - (void)userDidSelectGadget;
 @end
 

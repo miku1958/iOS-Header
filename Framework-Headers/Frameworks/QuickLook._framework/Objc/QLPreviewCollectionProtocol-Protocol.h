@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, QLAppearance, QLTransitionContext, UIKeyCommand, UITraitCollection;
+@class NSString, QLAppearance, QLKeyCommand, QLTransitionContext, UITraitCollection;
 @protocol QLPreviewControllerStateProtocol, QLPreviewItemProvider, QLTransitionControllerProtocol;
 
 @protocol QLPreviewCollectionProtocol
@@ -13,15 +13,16 @@
 - (void)hostApplicationDidEnterBackground:(BOOL)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)invalidateService;
-- (void)keyCommandWasPerformed:(UIKeyCommand *)arg1;
+- (void)keyCommandWasPerformed:(QLKeyCommand *)arg1;
 - (void)keyCommandsWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(void (^)(void))arg1;
 - (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(void (^)(void))arg1;
+- (void)saveCurrentPreviewEditsSynchronously:(BOOL)arg1 withCompletionHandler:(void (^)(unsigned long long, QLPreviewItemEditedCopy *))arg2;
 - (void)setAppearance:(QLAppearance *)arg1 animated:(BOOL)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
+- (void)setIsContentManaged:(BOOL)arg1;
 - (void)setLoadingString:(NSString *)arg1;
-- (void)setSourceIsManaged:(BOOL)arg1;
 - (void)startTransitionWithSourceViewProvider:(QLTransitionContext *)arg1 transitionController:(id<QLTransitionControllerProtocol>)arg2 presenting:(BOOL)arg3 useInteractiveTransition:(BOOL)arg4 completionHandler:(void (^)(void))arg5;
 - (void)tearDownTransition:(BOOL)arg1;
 - (void)toolbarButtonPressedWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(void))arg2;

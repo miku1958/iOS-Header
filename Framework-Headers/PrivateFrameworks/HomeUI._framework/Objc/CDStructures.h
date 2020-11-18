@@ -58,6 +58,11 @@ struct CGVector {
     double _field2;
 };
 
+struct CLLocationCoordinate2D {
+    double latitude;
+    double longitude;
+};
+
 struct HFTransformItemProvider {
     Class _field1;
 };
@@ -92,14 +97,6 @@ struct _NSRange {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    unsigned long long numberOfItems;
-    unsigned long long numberOfRows;
-    unsigned long long maximumNumberOfColumns;
-    long long horizontalAlignment;
-    unsigned long long itemSize;
-} CDStruct_217e81bd;
-
-typedef struct {
     double minScrollPercentage;
     double maxScrollPercentage;
     double maxValue;
@@ -108,6 +105,17 @@ typedef struct {
 typedef struct {
     double _field1;
 } CDStruct_2418a849;
+
+typedef struct {
+    struct {
+        double x;
+        double y;
+    } origin;
+    struct {
+        double width;
+        double height;
+    } size;
+} CDStruct_02837cd9;
 
 // Ambiguous groups
 typedef struct {

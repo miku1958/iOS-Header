@@ -12,7 +12,7 @@
 #import <MobileTimer/MTTimerObserver-Protocol.h>
 
 @class MTScheduledList, NSString;
-@protocol MTNotificationCenter, MTSchedulingDelegate, MTTaskScheduler, MTTimerSchedulerDelegate, MTTimerStorage, NAScheduler;
+@protocol MTNotificationCenter, MTPersistence, MTSchedulingDelegate, MTTaskScheduler, MTTimerSchedulerDelegate, MTTimerStorage, NAScheduler;
 
 @interface MTTimerScheduler : NSObject <MTTimerObserver, MTScheduledListDelegate, MTAgentDiagnosticDelegate, MTAgentNotificationListener>
 {
@@ -24,10 +24,12 @@
     CDUnknownBlockType _currentDateProvider;
     id<MTSchedulingDelegate> _schedulingDelegate;
     id<MTTaskScheduler> _taskScheduler;
+    id<MTPersistence> _defaults;
 }
 
 @property (readonly, copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) id<MTPersistence> defaults; // @synthesize defaults=_defaults;
 @property (weak, nonatomic) id<MTTimerSchedulerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -54,11 +56,11 @@
 - (void)_queue_unscheduleTimers:(id)arg1;
 - (void)_queue_updatePersistentTimerForNextTimerWithCompletion:(CDUnknownBlockType)arg1;
 - (id)gatherDiagnostics;
-- (void)handleNotification:(id)arg1;
-- (BOOL)handlesNotification:(id)arg1;
+- (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2;
-- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3;
-- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 schedulingDelegate:(id)arg4 taskScheduler:(id)arg5 currentDateProvider:(CDUnknownBlockType)arg6;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 defaults:(id)arg4;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 defaults:(id)arg4 schedulingDelegate:(id)arg5 taskScheduler:(id)arg6 currentDateProvider:(CDUnknownBlockType)arg7;
 - (id)nextTimer;
 - (void)nextTimerDidChange:(id)arg1;
 - (id)nextTriggerDate;

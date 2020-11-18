@@ -4,26 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUActivity.h>
+#import <PhotosUICore/PXActivity.h>
 
-#import <PhotosUI/PUMomentShareActivity-Protocol.h>
+#import <PhotosUI/PXMomentShareActivity-Protocol.h>
 
-@class NSString, PUActivityItemSourceController;
+@class NSString;
+@protocol PXActivityItemSourceController;
 
 __attribute__((visibility("hidden")))
-@interface PUCopyLinkActivity : PUActivity <PUMomentShareActivity>
+@interface PUCopyLinkActivity : PXActivity <PXMomentShareActivity>
 {
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) PUActivityItemSourceController *itemSourceController;
+@property (weak, nonatomic) id<PXActivityItemSourceController> itemSourceController;
 @property (readonly) Class superclass;
 
 + (long long)activityCategory;
 + (BOOL)wantsMomentShareLinkForAssetCount:(long long)arg1;
-- (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

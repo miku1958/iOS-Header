@@ -8,29 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDABClientDatasetMetadata, NSMutableArray, PBUnknownFields;
+@class GEOPDABClientDatasetMetadata, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOABSecondPartyPlaceRequestClientMetaData : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_clientConfigs;
     GEOPDABClientDatasetMetadata *_clientDatasetMetadata;
     NSMutableArray *_serverAbAssignments;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_clientConfigs:1;
+        unsigned int read_clientDatasetMetadata:1;
+        unsigned int read_serverAbAssignments:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_clientConfigs:1;
+        unsigned int wrote_clientDatasetMetadata:1;
+        unsigned int wrote_serverAbAssignments:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *clientConfigs; // @synthesize clientConfigs=_clientConfigs;
-@property (strong, nonatomic) GEOPDABClientDatasetMetadata *clientDatasetMetadata; // @synthesize clientDatasetMetadata=_clientDatasetMetadata;
+@property (strong, nonatomic) NSMutableArray *clientConfigs;
+@property (strong, nonatomic) GEOPDABClientDatasetMetadata *clientDatasetMetadata;
 @property (readonly, nonatomic) BOOL hasClientDatasetMetadata;
-@property (strong, nonatomic) NSMutableArray *serverAbAssignments; // @synthesize serverAbAssignments=_serverAbAssignments;
+@property (strong, nonatomic) NSMutableArray *serverAbAssignments;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)clientConfigType;
++ (BOOL)isValid:(id)arg1;
 + (Class)serverAbAssignmentType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsClientConfig:(id)arg1;
+- (void)_addNoFlagsServerAbAssignment:(id)arg1;
+- (void)_readClientConfigs;
+- (void)_readClientDatasetMetadata;
+- (void)_readServerAbAssignments;
 - (void)addClientConfig:(id)arg1;
 - (void)addServerAbAssignment:(id)arg1;
 - (void)clearClientConfigs;
 - (void)clearServerAbAssignments;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (id)clientConfigAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clientConfigsCount;
 - (void)copyTo:(id)arg1;
@@ -40,6 +59,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)serverAbAssignmentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)serverAbAssignmentsCount;

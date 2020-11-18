@@ -13,5 +13,7 @@
 + (id)vc_voiceShortcutErrorWithCode:(long long)arg1 extraUserInfo:(id)arg2 reason:(id)arg3;
 + (id)vc_voiceShortcutErrorWithCode:(long long)arg1 reason:(id)arg2;
 + (id)vc_voiceShortcutErrorWithCode:(long long)arg1 underlyingError:(id)arg2;
+- (BOOL)vc_isFileAlreadyExists;
+- (BOOL)vc_isFileNotFound;
 @end
 

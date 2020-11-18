@@ -46,10 +46,6 @@ __attribute__((visibility("hidden")))
     FULabel *_labelDurationComplete;
     FULabel *_labelBaggageClaimTitle;
     FULabel *_labelBaggageClaimValue;
-    FUSeparator *_sep1;
-    FUSeparator *_sep2;
-    FUSeparator *_sep3;
-    FUSeparator *_sep4;
     FUSeparator *_sep5;
     NSLayoutConstraint *_leadingInset;
     NSLayoutConstraint *_trailingInset;
@@ -101,24 +97,23 @@ __attribute__((visibility("hidden")))
 @property (weak) FULabel *labelStatusTitle; // @synthesize labelStatusTitle=_labelStatusTitle;
 @property (strong, nonatomic) NSLayoutConstraint *leadingInset; // @synthesize leadingInset=_leadingInset;
 @property (readonly, nonatomic) FUFlightLeg *leg; // @synthesize leg=_leg;
-@property (weak) FUSeparator *sep1; // @synthesize sep1=_sep1;
-@property (weak) FUSeparator *sep2; // @synthesize sep2=_sep2;
-@property (weak) FUSeparator *sep3; // @synthesize sep3=_sep3;
-@property (weak) FUSeparator *sep4; // @synthesize sep4=_sep4;
 @property (weak) FUSeparator *sep5; // @synthesize sep5=_sep5;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (strong, nonatomic) NSLayoutConstraint *trailingInset; // @synthesize trailingInset=_trailingInset;
 
 + (id)flightViewForStyle:(unsigned long long)arg1 compact:(BOOL)arg2;
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)addDateTimeAttributesToString:(id)arg1 striked:(BOOL)arg2 alignment:(long long)arg3;
 - (void)awakeFromNib;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (void)flightButtonTapped:(id)arg1;
 - (id)formattedDurationForDuration:(double)arg1;
 - (void)setFlight:(id)arg1 legIndex:(unsigned long long)arg2 multiFlights:(BOOL)arg3 spotlightMode:(BOOL)arg4;
 - (void)setupLabelStylesWithStyle:(unsigned long long)arg1;
 - (double)standardTableCellContentInset;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateAirlineInformation;
 - (void)updateDateTimeForDeparture:(BOOL)arg1;
 - (void)updateDelayInfo;

@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 
 + (id)resultsWithException:(id)arg1;
++ (id)resultsWithExceptions:(id)arg1;
 - (void).cxx_destruct;
 - (void)addImportRecord:(id)arg1;
 - (void)addUnsupportedPath:(id)arg1;

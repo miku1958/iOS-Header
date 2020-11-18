@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) TPBodyInfo *bodyInfo; // @synthesize bodyInfo=_bodyInfo;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) TPDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, weak, nonatomic) id<TPPageLayoutInfoProvider> layoutInfoProvider; // @synthesize layoutInfoProvider=_layoutInfoProvider;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;

@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)convertNaturalRectToUnscaledCanvas:(struct CGRect)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)didAddChildRep:(id)arg1;
 - (void)didDisplayTextureWithDescription:(id)arg1 isAtEndOfBuild:(BOOL)arg2;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)dynamicOverrideDidChange;

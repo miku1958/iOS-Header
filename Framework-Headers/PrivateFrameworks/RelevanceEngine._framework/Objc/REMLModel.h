@@ -6,39 +6,64 @@
 
 #import <objc/NSObject.h>
 
-@class REConcurrentDictionary;
+#import <RelevanceEngine/REMLModelProperties-Protocol.h>
 
-@interface REMLModel : NSObject
+@class NSString, REConcurrentDictionary;
+@protocol RERelevanceEngineMetricsRecorder;
+
+@interface REMLModel : NSObject <REMLModelProperties>
 {
     REConcurrentDictionary *_predictionCache;
     BOOL _wantsPredictionCache;
+    BOOL _implementsDebugSaving;
     BOOL _allowsExploreExploit;
     float _exploreExploitModulator;
+    float _priorMean;
+    float _varianceEpsilon;
+    float _simulationExploreExploitModulator;
+    id<RERelevanceEngineMetricsRecorder> _metricsRecorder;
+    NSString *_metricsInteraction;
 }
 
 @property (nonatomic) BOOL allowsExploreExploit; // @synthesize allowsExploreExploit=_allowsExploreExploit;
+@property (readonly, nonatomic) float averagePrediction;
 @property (nonatomic) float exploreExploitModulator; // @synthesize exploreExploitModulator=_exploreExploitModulator;
+@property (readonly, nonatomic) unsigned long long featureBitWidth;
+@property (readonly, nonatomic) long long getNumberOfCoordinates;
+@property (readonly, nonatomic) unsigned long long maxFeatureCount;
+@property (strong, nonatomic) NSString *metricsInteraction; // @synthesize metricsInteraction=_metricsInteraction;
+@property (strong, nonatomic) id<RERelevanceEngineMetricsRecorder> metricsRecorder; // @synthesize metricsRecorder=_metricsRecorder;
+@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) float normalizedEntropy;
+@property (nonatomic) float priorMean; // @synthesize priorMean=_priorMean;
+@property (nonatomic) float simulationExploreExploitModulator; // @synthesize simulationExploreExploitModulator=_simulationExploreExploitModulator;
+@property (readonly, nonatomic) unsigned long long totalExampleCount;
+@property (readonly, nonatomic) unsigned long long totalPositiveCount;
+@property (nonatomic) float varianceEpsilon; // @synthesize varianceEpsilon=_varianceEpsilon;
 
 + (unsigned long long)featureBitWidth;
 + (unsigned long long)maxFeatureCount;
-+ (id)modelWithFeatureSet:(id)arg1;
++ (id)modelWithFeatureSet:(id)arg1 priorMean:(float)arg2 modelVarianceEpsilon:(float)arg3;
 - (void).cxx_destruct;
 - (void)_clearCache;
 - (void)_clearModel;
+- (float)_getAveragePrediction;
+- (float)_getNormalizedEntropy;
 - (long long)_getNumberOfCoordinates;
+- (unsigned long long)_getTotalExampleCount;
+- (unsigned long long)_getTotalPositiveCount;
 - (BOOL)_loadModelFromURL:(id)arg1 error:(id *)arg2;
 - (id)_predictWithFeatures:(id)arg1;
 - (BOOL)_saveDebugModelToURL:(id)arg1 error:(id *)arg2;
 - (BOOL)_saveModelToURL:(id)arg1 error:(id *)arg2;
 - (void)_trainWithFeatures:(id)arg1 positiveEvent:(id)arg2;
 - (void)clearModel;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
-- (long long)getNumberOfCoordinates;
 - (id)init;
-- (id)initWithFeatureSet:(id)arg1;
+- (id)initWithFeatureSet:(id)arg1 priorMean:(float)arg2 modelVarianceEpsilon:(float)arg3;
 - (BOOL)loadModelFromURL:(id)arg1 error:(id *)arg2;
 - (void)logCoreAnalyticsMetrics;
 - (id)predictWithFeatures:(id)arg1;
+- (id)predictionSetWithFeatures:(id)arg1;
 - (BOOL)requiresDirectory;
 - (BOOL)saveModelToURL:(id)arg1 error:(id *)arg2;
 - (void)setWantsPredictionCache:(BOOL)arg1;

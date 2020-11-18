@@ -22,11 +22,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *messageName;
 @property (readonly, nonatomic) NSDictionary *messagePayload;
 @property (strong, nonatomic) NSString *passwordToken; // @synthesize passwordToken=_passwordToken;
 @property (strong, nonatomic) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *username; // @synthesize username=_username;
+@property (readonly, copy, nonatomic) NSString *xpcMessageName;
 
 + (id)messageName;
 + (id)objWithDict:(id)arg1;
@@ -36,8 +38,6 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)messageName;
-- (id)xpcMessageName;
 
 @end
 

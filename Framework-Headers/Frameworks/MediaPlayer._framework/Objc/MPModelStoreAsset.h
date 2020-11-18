@@ -14,6 +14,7 @@
 
 @property (nonatomic) unsigned long long accountIdentifier; // @dynamic accountIdentifier;
 @property (nonatomic) long long endpointType; // @dynamic endpointType;
+@property (readonly, nonatomic) BOOL needsUserUpload; // @dynamic needsUserUpload;
 @property (copy, nonatomic) NSString *redownloadParameters; // @dynamic redownloadParameters;
 @property (nonatomic, getter=isRedownloadable) BOOL redownloadable; // @dynamic redownloadable;
 @property (nonatomic) BOOL shouldReportPlayEvents; // @dynamic shouldReportPlayEvents;
@@ -21,6 +22,7 @@
 
 + (id)__accountIdentifier_KEY;
 + (id)__endpointType_KEY;
++ (id)__needsUserUpload_KEY;
 + (id)__redownloadParameters_KEY;
 + (id)__redownloadable_KEY;
 + (id)__shouldReportPlayEvents_KEY;

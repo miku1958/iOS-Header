@@ -6,12 +6,12 @@
 
 #import <Photos/PHObject.h>
 
-@class NSDate, NSString;
+@class NSArray, NSDate, NSManagedObjectID, NSSortDescriptor, NSString;
 
 @interface PHCollection : PHObject
 {
     BOOL _customSortAscending;
-    int _customSortKey;
+    unsigned int _customSortKey;
     unsigned long long _estimatedPhotosCount;
     unsigned long long _estimatedVideosCount;
     NSDate *_creationDate;
@@ -22,13 +22,21 @@
 @property (readonly, nonatomic) BOOL canContainCollections;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) BOOL customSortAscending; // @synthesize customSortAscending=_customSortAscending;
-@property (readonly, nonatomic) int customSortKey; // @synthesize customSortKey=_customSortKey;
+@property (readonly, nonatomic) unsigned int customSortKey; // @synthesize customSortKey=_customSortKey;
+@property (readonly, copy, nonatomic) NSSortDescriptor *defaultSortDescriptor;
+@property (readonly, copy, nonatomic) NSArray *effectiveCustomSortDescriptors;
+@property (readonly, copy, nonatomic) NSString *effectiveCustomSortKey;
 @property (readonly, nonatomic) unsigned long long estimatedPhotosCount; // @synthesize estimatedPhotosCount=_estimatedPhotosCount;
 @property (readonly, nonatomic) unsigned long long estimatedVideosCount; // @synthesize estimatedVideosCount=_estimatedVideosCount;
 @property (readonly, nonatomic) BOOL hasLocalizedTitle;
 @property (readonly, nonatomic) BOOL hasLocationInfo;
+@property (readonly, nonatomic) BOOL isAlbumContentSort;
+@property (readonly, nonatomic) BOOL isAlbumContentTitleSort;
+@property (readonly, nonatomic) BOOL isUserSmartAlbum;
 @property (readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (readonly, nonatomic) NSManagedObjectID *parentFolderID;
+@property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
 
 + (id)entityKeyMap;
 + (id)fetchCollectionsInCollectionList:(id)arg1 options:(id)arg2;
@@ -41,11 +49,14 @@
 + (BOOL)managedObjectSupportsTrashedState;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
+- (id)_effectiveSortDescriptorsFromCustomSortKey:(id)arg1;
+- (unsigned long long)ancestryIndexOfCollectionList:(id)arg1 context:(id)arg2;
 - (BOOL)canPerformEditOperation:(long long)arg1;
 - (unsigned long long)collectionFixedOrderPriority;
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (id)objectReference;
 
 @end
 

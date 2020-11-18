@@ -6,12 +6,11 @@
 
 #import <Silex/SXJSONObject.h>
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
 #import <Silex/SXResource-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface SXResource : SXJSONObject <SXResource, SXClassFactoryProtocol>
+@interface SXResource : SXJSONObject <SXResource>
 {
 }
 
@@ -22,8 +21,6 @@
 @property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (readonly) Class superclass;
 
-+ (void)initializeObject;
-+ (id)typeString;
 - (id)URLWithValue:(id)arg1 withType:(int)arg2;
 
 @end

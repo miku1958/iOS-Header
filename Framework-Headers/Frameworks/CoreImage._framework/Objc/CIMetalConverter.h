@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (void)encodeToCommandBuffer:(id)arg1 sourceBuffer:(id)arg2 sourceRowBytes:(unsigned long long)arg3 destinationBuffer:(id)arg4 destinationRowBytes:(unsigned long long)arg5 destinationSize:(CDStruct_14f26992)arg6;
+- (void)encodeToCommandBuffer:(id)arg1 sourceBuffer:(id)arg2 sourceRowBytes:(unsigned long long)arg3 destinationBuffer:(id)arg4 destinationRowBytes:(unsigned long long)arg5 destinationSize:(CDStruct_da2e99ad)arg6;
 - (void)encodeToCommandBuffer:(id)arg1 sourceBuffer:(id)arg2 sourceRowBytes:(unsigned long long)arg3 destinationTexture:(id)arg4;
 - (id)initWithDevice:(id)arg1 kernelName:(id)arg2;
 

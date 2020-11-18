@@ -20,6 +20,9 @@
     int _type;
 }
 
+@property (copy, nonatomic) NSString *path; // @synthesize path=_path;
+
+- (void).cxx_destruct;
 - (id)URL;
 - (void)_isImage:(BOOL *)arg1 orPDFFile:(BOOL *)arg2;
 - (id)contentID;
@@ -48,7 +51,6 @@
 - (id)meetingStorePersistentID;
 - (id)messageID;
 - (id)mimeType;
-- (id)path;
 - (id)preferredFilename;
 - (id)regularFileContents;
 - (void)setContentID:(id)arg1;
@@ -62,7 +64,6 @@
 - (void)setMeetingStorePersistentID:(id)arg1;
 - (void)setMessageID:(id)arg1;
 - (void)setMimeType:(id)arg1;
-- (void)setPath:(id)arg1;
 - (void)setPreferredFilename:(id)arg1;
 - (void)setType:(unsigned int)arg1;
 - (void)setURL:(id)arg1;

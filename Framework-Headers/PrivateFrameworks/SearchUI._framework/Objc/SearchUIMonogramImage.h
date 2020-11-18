@@ -13,11 +13,13 @@
     NSString *_letters;
 }
 
-@property (strong) NSString *letters; // @synthesize letters=_letters;
+@property (strong, nonatomic) NSString *letters; // @synthesize letters=_letters;
 
 + (id)avatarImageRenderer;
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 - (id)initWithSFImage:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

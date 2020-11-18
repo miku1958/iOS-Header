@@ -7,6 +7,7 @@
 @class NSData, NSDictionary;
 
 @protocol PKVoIPXPCClient
+- (void)voipPayloadReceived:(NSDictionary *)arg1 mustPostCall:(BOOL)arg2 withCompletionHandler:(void (^)(void))arg3;
 - (void)voipPayloadReceived:(NSDictionary *)arg1 withCompletionHandler:(void (^)(void))arg2;
 - (void)voipRegistrationSucceededWithDeviceToken:(NSData *)arg1;
 

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _UIStatusBarDisplayItemPlacement *_namePlacement;
     _UIStatusBarDisplayItemPlacement *_callForwardingPlacement;
     _UIStatusBarDisplayItemPlacement *_badgePlacement;
+    _UIStatusBarDisplayItemPlacement *_rawPlacement;
     NSArray *_placementsAffectedByAirplaneMode;
 }
 
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *callForwardingPlacement; // @synthesize callForwardingPlacement=_callForwardingPlacement;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *namePlacement; // @synthesize namePlacement=_namePlacement;
 @property (strong, nonatomic) NSArray *placementsAffectedByAirplaneMode; // @synthesize placementsAffectedByAirplaneMode=_placementsAffectedByAirplaneMode;
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *rawPlacement; // @synthesize rawPlacement=_rawPlacement;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *signalStrengthPlacement; // @synthesize signalStrengthPlacement=_signalStrengthPlacement;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *typePlacement; // @synthesize typePlacement=_typePlacement;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *warningPlacement; // @synthesize warningPlacement=_warningPlacement;

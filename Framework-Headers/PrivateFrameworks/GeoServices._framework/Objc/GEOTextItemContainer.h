@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) NSArray *textItems; // @synthesize textItems=_textItems;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithDisplayConfig:(id)arg1 textItems:(id)arg2;
 - (id)initWithTextItemContainer:(id)arg1;
 

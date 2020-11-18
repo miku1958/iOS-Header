@@ -4,22 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHChangeRequest.h>
 
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class CLLocation, NSData, NSDate, NSIndexSet, NSManagedObjectID, NSMutableDictionary, NSSet, NSString, NSURL, PHAsset, PHChangeRequestHelper, PHContentEditingOutput, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
+@class CLLocation, NSData, NSDate, NSIndexSet, NSManagedObjectID, NSMutableDictionary, NSSet, NSString, NSURL, PHAsset, PHContentEditingOutput, PHObjectPlaceholder, PHRelationshipChangeRequestHelper;
 
-@interface PHAssetChangeRequest : NSObject <PHUpdateChangeRequest>
+@interface PHAssetChangeRequest : PHChangeRequest <PHUpdateChangeRequest>
 {
+    int _clientProcessIdentifier;
+    BOOL _clientEntitled;
     PHAsset *_originalAsset;
     NSURL *_editorBundleURL;
     CLLocation *_updatedLocation;
     NSString *_assetDescription;
-    PHChangeRequestHelper *_helper;
-    BOOL _clientEntitled;
+    NSString *_title;
+    CDStruct_1b6d18a9 _bestKeyFrameTime;
+    NSData *_bestKeyFrameJPEGData;
+    BOOL _didSetTitle;
     BOOL _didSetVisibilityState;
-    NSString *_clientName;
     BOOL _didSetSceneClassifications;
     NSSet *_sceneClassifications;
     short _sceneAnalysisVersion;
@@ -41,10 +44,11 @@
     NSMutableDictionary *_computedAttributeMutations;
     BOOL _didSetPackedPreferredCropRect;
     BOOL _didSetPackedAcceptableCropRect;
+    BOOL _didSetPackedBestPlaybackRect;
     long long _packedPreferredCropRect;
     long long _packedAcceptableCropRect;
-    BOOL _didSetBestVideoTimeRange;
-    BOOL _didSetBestKeyFrameTime;
+    long long _packedBestPlaybackRect;
+    BOOL _didUnsetBestKeyFrameTime;
     BOOL _didSetMediaAnalysisTimeStamp;
     BOOL _didSetMediaAnalysisVersion;
     BOOL _didSetBlurrinessScore;
@@ -53,12 +57,31 @@
     BOOL _didSetVideoScore;
     BOOL _didSetActivityScore;
     BOOL _didSetFaceCount;
+    BOOL _didSetAudioClassification;
     BOOL _didSetSceneprintData;
+    BOOL _didSetReverseLocationData;
+    BOOL _didSetReverseLocationDataIsValid;
+    BOOL _didSetShiftedLocation;
     BOOL _didSetOriginalResourceChoice;
+    BOOL _didRevertLocationToOriginal;
+    BOOL _didRemoveFromPhotoStream;
+    BOOL _didExpungeAllSpatialOverCaptureResources;
+    BOOL _didTrashAllSpatialOverCaptureResources;
+    BOOL _didUntrashAllSpatialOverCaptureResources;
+    BOOL _didExpungeTrashedSpatialOverCaptureResources;
+    BOOL _didSetReframeVariation;
+    BOOL _performReframe;
+    BOOL _didSetTimeZone;
+    NSString *_timeZoneName;
+    long long _timeZoneOffsetValue;
+    NSSet *_keywordTitles;
+    BOOL _didSetKeywordTitles;
+    PHRelationshipChangeRequestHelper *_keywordsHelper;
     BOOL _didChangeAdjustments;
     BOOL _duplicateAllowsPrivateMetadata;
+    BOOL _reverseLocationDataIsValid;
     unsigned short _photoIrisVisibilityState;
-    int _clientProcessID;
+    short _audioClassification;
     float _testScore;
     float _blurrinessScore;
     float _exposureScore;
@@ -74,27 +97,29 @@
     NSString *_pairingIdentifier;
     PHRelationshipChangeRequestHelper *_facesHelper;
     NSDate *_alternateImportImageDate;
+    unsigned long long _reframeVariation;
     NSDate *_mediaAnalysisTimeStamp;
     unsigned long long _mediaAnalysisVersion;
     unsigned long long _faceCount;
     NSData *_sceneprintData;
+    NSData *_reverseLocationData;
+    CLLocation *_shiftedLocation;
     CDStruct_1b6d18a9 _videoDuration;
     CDStruct_1b6d18a9 _imageDisplayTime;
-    CDStruct_1b6d18a9 _bestKeyFrameTime;
     CDStruct_e83c9415 _bestVideoTimeRange;
 }
 
 @property (nonatomic) float activityScore; // @synthesize activityScore=_activityScore;
 @property (strong, nonatomic) NSDate *alternateImportImageDate; // @synthesize alternateImportImageDate=_alternateImportImageDate;
 @property (strong, nonatomic) NSString *assetDescription;
+@property (nonatomic) short audioClassification; // @synthesize audioClassification=_audioClassification;
 @property (nonatomic) float autoplaySuggestionScore; // @synthesize autoplaySuggestionScore=_autoplaySuggestionScore;
-@property (nonatomic) CDStruct_1b6d18a9 bestKeyFrameTime; // @synthesize bestKeyFrameTime=_bestKeyFrameTime;
+@property (nonatomic) float behavioralScore;
 @property (nonatomic) CDStruct_e83c9415 bestVideoTimeRange; // @synthesize bestVideoTimeRange=_bestVideoTimeRange;
 @property (nonatomic) float blurrinessScore; // @synthesize blurrinessScore=_blurrinessScore;
 @property (readonly, copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
-@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
-@property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
-@property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
+@property (readonly, nonatomic) NSString *clientName;
 @property (strong, nonatomic) PHContentEditingOutput *contentEditingOutput; // @synthesize contentEditingOutput=_contentEditingOutput;
 @property (strong, nonatomic) NSDate *creationDate;
 @property (nonatomic) double curationScore;
@@ -111,12 +136,15 @@
 @property (nonatomic, getter=isFavorite) BOOL favorite;
 @property (nonatomic) float harmoniousColorScore;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
 @property (nonatomic, getter=isHidden) BOOL hidden;
+@property (nonatomic) double highlightPromotionScore;
+@property (nonatomic) double highlightVisibilityScore;
 @property (nonatomic) CDStruct_1b6d18a9 imageDisplayTime; // @synthesize imageDisplayTime=_imageDisplayTime;
 @property (nonatomic) float immersivenessScore;
+@property (nonatomic) float interactionScore;
 @property (nonatomic) float interestingSubjectScore;
 @property (nonatomic) float intrusiveObjectPresenceScore;
+@property (copy, nonatomic) NSSet *keywordTitles; // @synthesize keywordTitles=_keywordTitles;
 @property (nonatomic) float livelyColorScore;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) float lowLight;
@@ -140,13 +168,17 @@
 @property (nonatomic) float pleasantPostProcessingScore;
 @property (nonatomic) float pleasantReflectionsScore;
 @property (nonatomic) float pleasantSymmetryScore;
+@property (nonatomic) unsigned long long reframeVariation; // @synthesize reframeVariation=_reframeVariation;
+@property (strong, nonatomic) NSData *reverseLocationData; // @synthesize reverseLocationData=_reverseLocationData;
+@property (nonatomic) BOOL reverseLocationDataIsValid; // @synthesize reverseLocationDataIsValid=_reverseLocationDataIsValid;
 @property (strong, nonatomic) NSData *sceneprintData; // @synthesize sceneprintData=_sceneprintData;
 @property (nonatomic) float sharplyFocusedSubjectScore;
+@property (strong, nonatomic) CLLocation *shiftedLocation; // @synthesize shiftedLocation=_shiftedLocation;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSIndexSet *supportedEditOperations; // @synthesize supportedEditOperations=_supportedEditOperations;
 @property (nonatomic) float tastefullyBlurredScore;
 @property (nonatomic) float testScore; // @synthesize testScore=_testScore;
-@property (readonly, nonatomic) NSString *uuid;
+@property (strong, nonatomic) NSString *title;
 @property (nonatomic) CDStruct_1b6d18a9 videoDuration; // @synthesize videoDuration=_videoDuration;
 @property (nonatomic) float videoScore; // @synthesize videoScore=_videoScore;
 @property (strong, nonatomic) NSURL *videoURLForUpdate; // @synthesize videoURLForUpdate=_videoURLForUpdate;
@@ -155,6 +187,7 @@
 @property (nonatomic) float wellTimedShotScore;
 
 + (id)_allAssetEditOperations;
++ (void)_deleteAssets:(id)arg1 withOperation:(long long)arg2 topLevelSelector:(SEL)arg3;
 + (id)changeRequestForAsset:(id)arg1;
 + (id)changeRequestForAssetFromVideoFileURL:(id)arg1 imageAsset:(id)arg2 displayTime:(double)arg3;
 + (id)creationRequestForAssetFromImage:(id)arg1;
@@ -165,17 +198,21 @@
 + (void)expungeAssets:(id)arg1;
 + (void)undeleteAssets:(id)arg1;
 - (void).cxx_destruct;
-- (id)_mutableObjectIDsAndUUIDs;
-- (void)_prepareAssetIDsIfNeeded;
-- (void)_prepareWithFetchResult:(id)arg1;
+- (id)_existentKeywordObjectIDs;
+- (id)_mutableFaceObjectIDsAndUUIDs;
+- (id)_mutableKeywordObjectIDsAndUUIDs;
+- (void)_prepareFaceIDsIfNeeded;
+- (void)_prepareFacesHelperWithFetchResult:(id)arg1;
 - (void)_setOriginalAsset:(id)arg1;
 - (BOOL)_validateAndGenerateStillImageForLoopingLivePhotoWithContentEditingOutput:(id)arg1 error:(id *)arg2;
+- (BOOL)_validateAsyncContentEditingOutputPreviewRenderURLs:(id)arg1 error:(id *)arg2;
 - (BOOL)_validateImageURLForAssetMutation:(id)arg1 error:(id *)arg2;
 - (void)addFaces:(id)arg1;
-- (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
-- (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
-- (void)didMutate;
+- (void)addKeywords:(id)arg1;
+- (BOOL)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (void)encodeToXPCDict:(id)arg1;
+- (void)expungeAllSpatialOverCaptureResources;
+- (void)expungeTrashedSpatialOverCaptureResources;
 - (id)getMediaAnalysisAttributesForAsset:(id)arg1;
 - (void)hideNonPrimaryAssetsInAssetGroup;
 - (void)incrementPlayCount;
@@ -184,26 +221,35 @@
 - (id)init;
 - (id)initWithHelper:(id)arg1;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (BOOL)isHiding;
 - (BOOL)isRevertingContentToOriginal;
 - (void)markDidChangeAdjustments;
+- (void)performReframe;
 - (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeFaces:(id)arg1;
+- (void)removeFromMyPhotoStream;
+- (void)removeKeywords:(id)arg1;
 - (void)retryUpload;
 - (void)revealNonPrimaryAssetsInAssetGroup;
 - (void)revertAssetContentToOriginal;
+- (void)revertLocationToOriginal;
 - (void)setAcceptableCropRectWithNormalizedRect:(struct CGRect)arg1;
 - (void)setAdjustmentData:(id)arg1 withRenderedJPEGData:(id)arg2 orRenderedContentURL:(id)arg3 penultimateRenderedJPEGData:(id)arg4 isSubstandardRender:(BOOL)arg5 fullSizeRenderSize:(struct CGSize)arg6 renderedVideoComplementURL:(id)arg7 penultimateRenderedVideoComplementURL:(id)arg8;
 - (void)setAdjustmentData:(id)arg1 withRenderedJPEGData:(id)arg2 orRenderedContentURL:(id)arg3 penultimateRenderedJPEGData:(id)arg4 isSubstandardRender:(BOOL)arg5 fullSizeRenderSize:(struct CGSize)arg6 renderedVideoComplementURL:(id)arg7 penultimateRenderedVideoComplementURL:(id)arg8 optionalOriginalResourceChoice:(id)arg9;
 - (void)setAnalysisState:(int)arg1 lastIgnoredDate:(id)arg2 ignoreUntilDate:(id)arg3 forWorkerType:(short)arg4;
 - (void)setAnalysisState:(int)arg1 lastIgnoredDate:(id)arg2 ignoreUntilDate:(id)arg3 forWorkerType:(short)arg4 allowUnsafeSetProcessed:(BOOL)arg5;
+- (void)setBestKeyFrame:(struct CGImage *)arg1 time:(CDStruct_1b6d18a9)arg2;
+- (void)setBestPlaybackRectWithNormalizedRect:(struct CGRect)arg1;
 - (void)setPreferredCropRectWithNormalizedRect:(struct CGRect)arg1;
 - (void)setRectWithNormalizedRect:(struct CGRect)arg1 forPackedRect:(long long *)arg2 forSetFlag:(BOOL *)arg3;
 - (void)setSceneClassifications:(id)arg1 algorithmVersion:(long long)arg2 adjustmentVersion:(id)arg3;
 - (void)setSceneClassifications:(id)arg1 algorithmVersion:(long long)arg2 distanceIdentity:(id)arg3 adjustmentVersion:(id)arg4;
+- (void)setTimeZone:(id)arg1 withDate:(id)arg2;
 - (void)setVariationSuggestionStates:(unsigned long long)arg1 forVariationType:(unsigned long long)arg2;
+- (void)trashAllSpatialOverCaptureResources;
+- (void)untrashAllSpatialOverCaptureResources;
 - (BOOL)validateAdjustmentDataForAssetMutation:(id)arg1 error:(id *)arg2;
 - (BOOL)validateAssetDescription:(id)arg1 error:(id *)arg2;
 - (BOOL)validateContentEditingOutput:(id)arg1 error:(id *)arg2;

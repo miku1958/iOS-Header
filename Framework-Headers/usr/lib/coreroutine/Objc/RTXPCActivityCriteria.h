@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
+
 @interface RTXPCActivityCriteria : NSObject
 {
     BOOL _requireNetworkConnectivity;
@@ -17,8 +19,10 @@
     double _gracePeriod;
     unsigned long long _priority;
     unsigned long long _networkTransferDirection;
+    NSMutableDictionary *_additionalCriteria;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *additionalCriteria; // @synthesize additionalCriteria=_additionalCriteria;
 @property (readonly, nonatomic) BOOL allowBattery; // @synthesize allowBattery=_allowBattery;
 @property (readonly, nonatomic) double delay; // @synthesize delay=_delay;
 @property (readonly, nonatomic) double gracePeriod; // @synthesize gracePeriod=_gracePeriod;
@@ -31,9 +35,11 @@
 
 + (const char *)convertNetworkTransferDirection:(unsigned long long)arg1;
 + (const char *)convertPriority:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (id)initWithInterval:(double)arg1 gracePeriod:(double)arg2 priority:(unsigned long long)arg3 requireNetworkConnectivity:(BOOL)arg4 requireInexpensiveNetworkConnectivity:(BOOL)arg5 networkTransferDirection:(unsigned long long)arg6 allowBattery:(BOOL)arg7 powerNap:(BOOL)arg8;
+- (void)setCriteria:(id)arg1 forKey:(id)arg2;
 
 @end
 

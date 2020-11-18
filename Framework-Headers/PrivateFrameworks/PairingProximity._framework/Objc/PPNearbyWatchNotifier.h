@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <PairingProximity/PPDiscoveryManagerDelegate-Protocol.h>
-#import <PairingProximity/PPNearbyWatchBulletinProviderDelegate-Protocol.h>
 
 @class NSString, NSXPCConnection, PPDiscoveryManager;
 @protocol OS_dispatch_source;
 
-@interface PPNearbyWatchNotifier : NSObject <PPNearbyWatchBulletinProviderDelegate, PPDiscoveryManagerDelegate>
+@interface PPNearbyWatchNotifier : NSObject <PPDiscoveryManagerDelegate>
 {
     NSObject<OS_dispatch_source> *_timerSource;
     PPDiscoveryManager *_discoveryManager;
@@ -34,7 +33,6 @@
 + (BOOL)shouldScanForNearbyDevices;
 - (void).cxx_destruct;
 - (void)_cleanupDiscoveryDidFindDevice:(BOOL)arg1 error:(id)arg2;
-- (void)bulletinProviderDidClearBulletins:(id)arg1;
 - (void)cancelDiscovery;
 - (void)didDiscoverDeviceWithAdvertisingID:(id)arg1 signalStrength:(long long)arg2;
 - (void)didStopDiscovering;

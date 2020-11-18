@@ -7,13 +7,14 @@
 #import <UIKit/UIViewController.h>
 
 #import <MarkupUI/MUContentViewControllerDelegate-Protocol.h>
+#import <MarkupUI/PKRulerHostingDelegate-Protocol.h>
 #import <MarkupUI/UINavigationBarDelegate-Protocol.h>
 #import <MarkupUI/UIToolbarDelegate-Protocol.h>
 
 @class AKController, AKToolbarView, NSData, NSLayoutConstraint, NSString, NSUndoManager, PDFDocument, PDFView, UIBarButtonItem, UIColor, UIImage, UIImageView, UINavigationBar, UINavigationItem, UIScrollView, UIView;
 @protocol MUContentViewControllerProtocol, MarkupViewControllerDelegate;
 
-@interface MarkupViewController : UIViewController <MUContentViewControllerDelegate, UINavigationBarDelegate, UIToolbarDelegate>
+@interface MarkupViewController : UIViewController <MUContentViewControllerDelegate, UINavigationBarDelegate, UIToolbarDelegate, PKRulerHostingDelegate>
 {
     UIColor *_backgroundColor;
     UIColor *_toolbarItemTintColor;
@@ -66,6 +67,7 @@
     unsigned long long _inkStyle;
 }
 
+@property (readonly) struct CGSize adjustedSourceImageSize;
 @property (strong, nonatomic) NSUndoManager *akUndoManager; // @synthesize akUndoManager=_akUndoManager;
 @property (nonatomic) BOOL allEditingDisabled;
 @property (nonatomic) BOOL allowShakeToUndo; // @synthesize allowShakeToUndo=_allowShakeToUndo;
@@ -167,7 +169,9 @@
 - (BOOL)_useLegacyToolbar;
 - (BOOL)_writeToDataConsumer:(struct CGDataConsumer *)arg1 embedSourceImageAndEditModel:(BOOL)arg2 error:(id *)arg3;
 - (void)adjustContentInsetsForBars;
+- (void)annotationController:(id)arg1 detectedEditOfType:(unsigned long long)arg2;
 - (id)annotationControllerOfContentViewController:(id)arg1 willSetToolbarItems:(id)arg2;
+- (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancel:(id)arg1;
 - (BOOL)contentViewController:(id)arg1 shouldHandleURL:(id)arg2;
@@ -201,6 +205,8 @@
 - (long long)preferredStatusBarStyle;
 - (void)restoreToolModeForContentType;
 - (void)revert;
+- (BOOL)rulerHostWantsSharedRuler;
+- (id)rulerHostingView;
 - (void)setData:(id)arg1;
 - (void)setData:(id)arg1 withArchivedModelData:(id)arg2;
 - (void)setData:(id)arg1 withArchivedModelData:(id)arg2 placeholderImage:(id)arg3;
@@ -222,6 +228,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willBeginLoadingNewDocument;
 - (BOOL)writeToURL:(id)arg1 embeddingSourceImageAndEditModel:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)writeToURL:(id)arg1 error:(id *)arg2;

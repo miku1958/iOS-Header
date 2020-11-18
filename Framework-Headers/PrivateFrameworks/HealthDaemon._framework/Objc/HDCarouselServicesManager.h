@@ -26,7 +26,9 @@
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (void)assertionManager:(id)arg1 assertionTaken:(id)arg2;
 - (id)init;
+- (id)takeDisableAOTAssertionForOwnerIdentifier:(id)arg1;
 - (id)takeSessionAssertionForOwnerIdentifier:(id)arg1;
+- (id)takeSessionAssertionForOwnerIdentifier:(id)arg1 supportsAOT:(BOOL)arg2;
 
 @end
 

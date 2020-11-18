@@ -45,8 +45,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)performActionViewControllerDidCancel:(id)arg1;
 - (void)performActionViewControllerDidPerformAction:(id)arg1;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
+- (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -55,6 +54,7 @@
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

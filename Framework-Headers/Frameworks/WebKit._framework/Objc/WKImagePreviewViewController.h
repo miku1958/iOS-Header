@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithCGImage:(RetainPtr_c27edd19)arg1 defaultActions:(RetainPtr_f649c0c3)arg2 elementInfo:(RetainPtr_5a40b48a)arg3;
 - (void)loadView;
-- (id)previewActions;
+- (id)previewActionItems;
 - (void)viewDidLayoutSubviews;
 
 @end

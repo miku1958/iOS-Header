@@ -8,7 +8,7 @@
 
 #import <CommunicationsSetupUI/IMSystemMonitorListener-Protocol.h>
 
-@class IMAccount, IMServiceImpl, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimer;
+@class IDSPhoneSubscriptionSelector, IMAccount, IMServiceImpl, NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimer;
 @protocol OS_dispatch_queue;
 
 @interface CNFRegController : NSObject <IMSystemMonitorListener>
@@ -52,6 +52,7 @@
         unsigned int ignoringAccountChanges:1;
         unsigned int activatingAccounts:1;
     } _controllerFlags;
+    IDSPhoneSubscriptionSelector *_phoneSubscriptionSelector;
     NSDictionary *_cachedCallerIDMap;
 }
 
@@ -73,6 +74,7 @@
 @property (readonly, copy, nonatomic) NSArray *failedAccounts;
 @property (readonly, strong, nonatomic) IMServiceImpl *firstService; // @dynamic firstService;
 @property (readonly, copy, nonatomic) NSArray *phoneAccounts;
+@property (strong, nonatomic) IDSPhoneSubscriptionSelector *phoneSubscriptionSelector; // @synthesize phoneSubscriptionSelector=_phoneSubscriptionSelector;
 @property (copy, nonatomic) CDUnknownBlockType profileChangedBlock; // @synthesize profileChangedBlock=_profileChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType profileStatusChangedBlock; // @synthesize profileStatusChangedBlock=_profileStatusChangedBlock;
 @property (copy, nonatomic) CDUnknownBlockType resetBlock; // @synthesize resetBlock=_resetBlock;
@@ -80,6 +82,7 @@
 @property (nonatomic, getter=isServiceEnabled) BOOL serviceEnabled;
 @property (readonly, strong, nonatomic) NSSet *serviceNames; // @dynamic serviceNames;
 @property (readonly, nonatomic, getter=isServiceSupported) BOOL serviceSupported;
+@property (readonly, nonatomic) BOOL serviceSupportsDeviceAliasEnablement;
 @property (nonatomic) long long serviceType; // @synthesize serviceType=_serviceType;
 @property (copy, nonatomic) NSArray *services; // @synthesize services=_services;
 @property (readonly, strong, nonatomic) IMAccount *systemAccount;
@@ -126,6 +129,8 @@
 - (id)_logName;
 - (id)_logSpace;
 - (void)_nukeCallerIDCache;
+- (long long)_phoneSubscriptionSlotMatchingLabel:(id)arg1;
+- (long long)_phoneSubscriptionSlotMatchingPhoneNumber:(id)arg1;
 - (void)_postCallerIDChanged;
 - (id)_predicatesWithFilter:(long long)arg1;
 - (void)_purgeExcessAccounts;
@@ -155,6 +160,7 @@
 - (id)activeAccounts;
 - (BOOL)addAlias:(id)arg1;
 - (BOOL)addAlias:(id)arg1 toAccount:(id)arg2;
+- (void)addDeviceAlias:(id)arg1;
 - (id)aliasNamed:(id)arg1;
 - (void)aliasStatusChanged:(id)arg1;
 - (id)aliasSummaryString:(BOOL *)arg1;
@@ -175,7 +181,6 @@
 - (void)dealloc;
 - (BOOL)deviceCanTakeNetworkAction;
 - (void)deviceCapabilityChanged:(id)arg1;
-- (BOOL)deviceHasNetworkEnabled;
 - (BOOL)deviceHasSaneNetworkConnection;
 - (id)displayAccount;
 - (id)displayAlias;
@@ -204,6 +209,7 @@
 - (void)refreshSystemAccount;
 - (BOOL)removeAlias:(id)arg1 fromAccount:(id)arg2;
 - (void)removeAllHandlers;
+- (void)removeDeviceAlias:(id)arg1;
 - (void)resetNetworkFirstRunAlert;
 - (BOOL)setAliases:(id)arg1 onAccount:(id)arg2;
 - (void)setCellularDataEnabled:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -221,6 +227,7 @@
 - (void)stopRequiringWifi;
 - (void)systemApplicationDidEnterBackground;
 - (BOOL)unvalidateAlias:(id)arg1;
+- (id)usableDeviceAliases;
 - (id)useableAliasesForAccounts:(id)arg1;
 - (BOOL)validateAlias:(id)arg1;
 - (void)vettedAliasesChanged:(id)arg1;

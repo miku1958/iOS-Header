@@ -17,7 +17,9 @@
 + (unsigned long long)advancedStatusMergeCandidateLimit;
 + (unsigned long long)advancedStatusVerifiedPersonLimit;
 + (unsigned int)faceAlgorithmUmbrellaVersion;
++ (float)faceClusteringAgeThreshold;
 + (BOOL)faceClusteringDisabled;
++ (float)faceClusteringJunkThreshold;
 + (float)faceClusteringThreshold;
 + (BOOL)faceIDModelAlwaysRebuild;
 + (unsigned long long)faceIDModelRebuildPeriod;

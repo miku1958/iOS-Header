@@ -19,6 +19,7 @@
         unsigned int propertyName:1;
         unsigned int qualifier:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _entityType;
     int _propertyName;
     int _qualifier;
@@ -26,6 +27,7 @@
     _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
@@ -41,13 +43,16 @@
 @property (nonatomic) int qualifier; // @synthesize qualifier=_qualifier;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsEntityType:(id)arg1;
 - (int)StringAsPropertyName:(id)arg1;
 - (int)StringAsQualifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)entityTypeAsString:(int)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)propertyNameAsString:(int)arg1;
 - (id)qualifierAsString:(int)arg1;

@@ -37,6 +37,8 @@
 + (id)specificAccountWithDSID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_resolveDSIDForEncoding;
+- (void)_setResolvedDSID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

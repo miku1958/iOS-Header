@@ -12,11 +12,13 @@
 {
     NSMutableDictionary *_siblingsMap;
     NSHashTable *_allIMHandles;
+    NSMutableDictionary *_CNIDToHandlesMap;
     IMBusinessNameManager *_businessNameManager;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)CNIDToHandlesMap;
 - (id)_accountSiblingsForHandle:(id)arg1;
 - (void)_addressBookChanged;
 - (void)_buildSiblingsForIMHandle:(id)arg1;
@@ -27,11 +29,24 @@
 - (void)_emptySiblingCacheForIMHandleGUID:(id)arg1;
 - (id)_existingAccountSiblingsForHandle:(id)arg1;
 - (id)_existingChatSiblingsForHandle:(id)arg1;
+- (void)_handleAddContactChangeHistoryEvent:(id)arg1;
+- (void)_handleDeleteContactChangeHistoryEvent:(id)arg1;
+- (void)_handleDropEverythingChangeHistoryEvent;
+- (void)_handleUpdateContactChangeHistoryEvent:(id)arg1;
+- (void)addHandleToCNIDMap:(id)arg1 CNContact:(id)arg2;
 - (id)allIMHandles;
 - (id)businessNameForUID:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
+- (void)clearCNIDToHandlesMap;
 - (void)clearSiblingCacheForIMHandle:(id)arg1;
+- (id)getIDsForAllIMHandles;
+- (id)getIDsForFinalBatch;
+- (id)getIDsForInitialBatch;
+- (id)getIMHandlesForID:(id)arg1;
+- (id)handlesForCNIdentifier:(id)arg1;
 - (id)init;
+- (void)processContactChangeHistoryEventWithHandleIDs:(id)arg1 andCNContact:(id)arg2;
 - (void)registerIMHandle:(id)arg1;
+- (void)removeHandleFromCNIDMap:(id)arg1 withCNID:(id)arg2;
 - (id)siblingsForIMHandle:(id)arg1;
 - (void)unregisterIMHandle:(id)arg1;
 

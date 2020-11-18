@@ -10,5 +10,9 @@
 {
 }
 
+- (void)cleanupModelForDataMigrationForRestoreType:(long long)arg1;
+- (void)dataMigrationWillFinish;
+- (void)moveiPhotoLibraryMediaWithReply:(CDUnknownBlockType)arg1;
+
 @end
 

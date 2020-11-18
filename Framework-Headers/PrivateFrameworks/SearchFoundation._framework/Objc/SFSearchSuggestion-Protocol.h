@@ -23,6 +23,7 @@
 @property (copy, nonatomic) NSString *suggestion;
 @property (copy, nonatomic) NSString *topicIdentifier;
 @property (nonatomic) int type;
+@property (copy, nonatomic) NSString *utteranceText;
 
 @end
 

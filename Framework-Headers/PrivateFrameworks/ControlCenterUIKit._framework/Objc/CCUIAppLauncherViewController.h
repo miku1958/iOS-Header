@@ -19,10 +19,12 @@
 
 - (void).cxx_destruct;
 - (void)_activateApplicationForShortcutItem:(id)arg1;
-- (void)_addActionForShortcutItem:(id)arg1;
+- (BOOL)_canShowWhileLocked;
+- (id)_menuItemForShortcutItem:(id)arg1;
 - (void)_updateApplicationShortcutsActions;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;
-- (void)didBeginInteraction;
+- (void)buttonTouchDown:(id)arg1 forEvent:(id)arg2;
+- (id)leadingImageForMenuItem:(id)arg1;
 - (BOOL)shouldBeginTransitionToExpandedContentModule;
 - (void)viewDidLoad;
 

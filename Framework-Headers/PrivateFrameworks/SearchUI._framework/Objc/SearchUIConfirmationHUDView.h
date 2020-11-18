@@ -6,14 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class UILabel, UIVisualEffectView;
+@class SearchUICheckView, UILabel, UIVisualEffectView;
 
 @interface SearchUIConfirmationHUDView : UIView
 {
     UIVisualEffectView *_effectView;
+    SearchUICheckView *_checkView;
     UILabel *_textLabel;
 }
 
+@property (strong, nonatomic) SearchUICheckView *checkView; // @synthesize checkView=_checkView;
 @property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (strong, nonatomic) UILabel *textLabel; // @synthesize textLabel=_textLabel;
 

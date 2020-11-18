@@ -8,23 +8,39 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class NSData, NSMutableArray, PBDataReader;
 
 @interface GEOMapsServerMetadata : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_mapsSearchResults;
     NSMutableArray *_suggestionEntryMetadataDisplayeds;
     NSData *_suggestionEntryMetadataTappedOn;
+    struct {
+        unsigned int read_mapsSearchResults:1;
+        unsigned int read_suggestionEntryMetadataDisplayeds:1;
+        unsigned int read_suggestionEntryMetadataTappedOn:1;
+        unsigned int wrote_mapsSearchResults:1;
+        unsigned int wrote_suggestionEntryMetadataDisplayeds:1;
+        unsigned int wrote_suggestionEntryMetadataTappedOn:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadataTappedOn;
-@property (strong, nonatomic) NSMutableArray *mapsSearchResults; // @synthesize mapsSearchResults=_mapsSearchResults;
-@property (strong, nonatomic) NSMutableArray *suggestionEntryMetadataDisplayeds; // @synthesize suggestionEntryMetadataDisplayeds=_suggestionEntryMetadataDisplayeds;
-@property (strong, nonatomic) NSData *suggestionEntryMetadataTappedOn; // @synthesize suggestionEntryMetadataTappedOn=_suggestionEntryMetadataTappedOn;
+@property (strong, nonatomic) NSMutableArray *mapsSearchResults;
+@property (strong, nonatomic) NSMutableArray *suggestionEntryMetadataDisplayeds;
+@property (strong, nonatomic) NSData *suggestionEntryMetadataTappedOn;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)mapsSearchResultType;
 + (Class)suggestionEntryMetadataDisplayedType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsMapsSearchResult:(id)arg1;
+- (void)_addNoFlagsSuggestionEntryMetadataDisplayed:(id)arg1;
+- (void)_readMapsSearchResults;
+- (void)_readSuggestionEntryMetadataDisplayeds;
+- (void)_readSuggestionEntryMetadataTappedOn;
 - (void)addMapsSearchResult:(id)arg1;
 - (void)addSuggestionEntryMetadataDisplayed:(id)arg1;
 - (void)clearMapsSearchResults;
@@ -38,6 +54,7 @@
 - (id)mapsSearchResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)mapsSearchResultsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)suggestionEntryMetadataDisplayedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)suggestionEntryMetadataDisplayedsCount;

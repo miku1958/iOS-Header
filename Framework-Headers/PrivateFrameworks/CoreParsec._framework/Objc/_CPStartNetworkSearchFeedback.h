@@ -25,9 +25,11 @@
     unsigned long long _queryId;
     NSString *_url;
     NSDictionary *_headers;
+    NSData *_bodyData;
     unsigned long long _whichTrigger;
 }
 
+@property (copy, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -42,7 +44,6 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int lookupSelectionType; // @synthesize lookupSelectionType=_lookupSelectionType;
 @property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
@@ -56,6 +57,7 @@
 
 + (id)startSearchFeedbackWithUUID;
 - (void).cxx_destruct;
+- (void)clearTrigger;
 - (BOOL)getHeaders:(id *)arg1 forKey:(id)arg2;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;

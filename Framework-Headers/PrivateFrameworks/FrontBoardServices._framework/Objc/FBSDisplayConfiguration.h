@@ -35,6 +35,7 @@
     struct CGRect _bounds;
     struct CGPoint _renderingCenter;
     CADisplay *_caDisplay;
+    double _latency;
     struct CGSize _safeOverscanRatio;
 }
 
@@ -52,6 +53,7 @@
 @property (readonly, copy, nonatomic) NSString *hardwareIdentifier; // @synthesize hardwareIdentifier=_hardwareIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) FBSDisplayIdentity *identity; // @synthesize identity=_identity;
+@property (readonly, nonatomic) double latency; // @synthesize latency=_latency;
 @property (readonly, nonatomic, getter=isMainDisplay) BOOL mainDisplay;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) double nativeOrientation;
@@ -70,7 +72,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)CADisplay;
-- (id)_initWithIdentity:(id)arg1 hardwareIdentifier:(id)arg2 name:(id)arg3 deviceName:(id)arg4 seed:(unsigned int)arg5 comparable:(BOOL)arg6 tags:(long long)arg7 currentMode:(id)arg8 preferredMode:(id)arg9 otherModes:(id)arg10 cloningSupported:(BOOL)arg11 overscanned:(BOOL)arg12 overscanCompensation:(long long)arg13 safeOverscanRatio:(struct CGSize)arg14 pixelSize:(struct CGSize)arg15 bounds:(struct CGRect)arg16 renderingCenter:(struct CGPoint)arg17 validityCheck:(long long)arg18;
+- (id)_initWithIdentity:(id)arg1 hardwareIdentifier:(id)arg2 name:(id)arg3 deviceName:(id)arg4 seed:(unsigned int)arg5 comparable:(BOOL)arg6 tags:(long long)arg7 currentMode:(id)arg8 preferredMode:(id)arg9 otherModes:(id)arg10 cloningSupported:(BOOL)arg11 overscanned:(BOOL)arg12 overscanCompensation:(long long)arg13 safeOverscanRatio:(struct CGSize)arg14 pixelSize:(struct CGSize)arg15 bounds:(struct CGRect)arg16 renderingCenter:(struct CGPoint)arg17 latency:(double)arg18 validityCheck:(long long)arg19;
 - (id)_initWithImmutableDisplay:(id)arg1 originalDisplay:(id)arg2 assertIfInvalid:(BOOL)arg3;
 - (id)_nameForDisplayType;
 - (long long)_nativeRotation;
@@ -93,6 +95,7 @@
 - (BOOL)isConnected;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHiddenDisplay;
+- (BOOL)isMainRootDisplay;
 - (id)laterConfiguration:(id)arg1;
 - (struct CGPoint)nativeCenter;
 - (double)orientation;

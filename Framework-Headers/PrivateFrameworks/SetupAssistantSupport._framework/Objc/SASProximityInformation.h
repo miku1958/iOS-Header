@@ -24,6 +24,7 @@
     NSNumber *_connectedToWiFi;
     NSDictionary *_localePreferences;
     NSString *_timeZone;
+    NSData *_accessibilitySettings;
     NSString *_firstName;
     NSString *_deviceModel;
     NSString *_deviceClass;
@@ -31,6 +32,7 @@
     NSString *_backupUUID;
     NSDate *_dateOfLastBackup;
     NSData *_backupMetadata;
+    NSData *_locationServicesData;
     NSNumber *_findMyDeviceOptIn;
     NSNumber *_deviceAnalyticsOptIn;
     NSNumber *_appAnalyticsOptIn;
@@ -42,9 +44,11 @@
     NSNumber *_deviceToDeviceMigrationVersion;
     NSNumber *_storageAvailable;
     NSNumber *_storageCapacity;
-    NSNumber *_storageUsedByAppContainers;
+    NSNumber *_preventSoftwareUpdateDeviceMigration;
+    NSNumber *_hasTransferrableTelephonyPlan;
 }
 
+@property (strong) NSData *accessibilitySettings; // @synthesize accessibilitySettings=_accessibilitySettings;
 @property (strong) NSNumber *appAnalyticsOptIn; // @synthesize appAnalyticsOptIn=_appAnalyticsOptIn;
 @property (copy) NSString *appleID; // @synthesize appleID=_appleID;
 @property BOOL automaticTimeZoneEnabled; // @synthesize automaticTimeZoneEnabled=_automaticTimeZoneEnabled;
@@ -61,18 +65,20 @@
 @property (strong) NSNumber *deviceToDeviceMigrationVersion; // @synthesize deviceToDeviceMigrationVersion=_deviceToDeviceMigrationVersion;
 @property (strong) NSNumber *findMyDeviceOptIn; // @synthesize findMyDeviceOptIn=_findMyDeviceOptIn;
 @property (copy) NSString *firstName; // @synthesize firstName=_firstName;
+@property NSNumber *hasTransferrableTelephonyPlan; // @synthesize hasTransferrableTelephonyPlan=_hasTransferrableTelephonyPlan;
 @property (copy) NSArray *keyboards; // @synthesize keyboards=_keyboards;
 @property (copy) NSDictionary *localePreferences; // @synthesize localePreferences=_localePreferences;
+@property (strong) NSData *locationServicesData; // @synthesize locationServicesData=_locationServicesData;
 @property BOOL locationServicesOptIn; // @synthesize locationServicesOptIn=_locationServicesOptIn;
 @property (copy) NSArray *networkPasswords; // @synthesize networkPasswords=_networkPasswords;
 @property (copy) NSArray *networks; // @synthesize networks=_networks;
+@property (strong) NSNumber *preventSoftwareUpdateDeviceMigration; // @synthesize preventSoftwareUpdateDeviceMigration=_preventSoftwareUpdateDeviceMigration;
 @property (strong) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (getter=isRestoring) BOOL restoring; // @synthesize restoring=_restoring;
 @property (strong) NSNumber *siriOptIn; // @synthesize siriOptIn=_siriOptIn;
 @property (strong) NSData *siriVoiceProfileAvailabilityMetadata; // @synthesize siriVoiceProfileAvailabilityMetadata=_siriVoiceProfileAvailabilityMetadata;
 @property (strong) NSNumber *storageAvailable; // @synthesize storageAvailable=_storageAvailable;
 @property (strong) NSNumber *storageCapacity; // @synthesize storageCapacity=_storageCapacity;
-@property (strong) NSNumber *storageUsedByAppContainers; // @synthesize storageUsedByAppContainers=_storageUsedByAppContainers;
 @property (strong) NSNumber *supportsDeviceToDeviceMigration; // @synthesize supportsDeviceToDeviceMigration=_supportsDeviceToDeviceMigration;
 @property (copy) NSString *timeZone; // @synthesize timeZone=_timeZone;
 @property BOOL usesSameAccountForiTunes; // @synthesize usesSameAccountForiTunes=_usesSameAccountForiTunes;

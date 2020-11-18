@@ -4,30 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDMessageFilter.h>
+#import <HMFoundation/HMFMessageFilter.h>
 
-#import <HomeKitDaemon/HMFLogging-Protocol.h>
-
-@class HMDHome, NSString;
-
-@interface HMDRemoteMessageFilter : HMDMessageFilter <HMFLogging>
+@interface HMDRemoteMessageFilter : HMFMessageFilter
 {
-    HMDHome *_home;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property (readonly) Class superclass;
-
-+ (id)logCategory;
-+ (BOOL)shouldCheckMessage:(id)arg1;
-- (void).cxx_destruct;
-- (BOOL)_isTargetingHome:(id)arg1;
-- (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
-- (id)initWithName:(id)arg1 home:(id)arg2;
-- (id)logIdentifier;
++ (BOOL)canInitWithMessage:(id)arg1;
++ (id)policyClasses;
+- (BOOL)acceptWithPolicies:(id)arg1 error:(id *)arg2;
 
 @end
 

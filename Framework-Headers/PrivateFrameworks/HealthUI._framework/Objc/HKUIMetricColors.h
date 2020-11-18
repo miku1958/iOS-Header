@@ -6,40 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class HKGradient, UIColor;
+@class UIColor;
 
 @interface HKUIMetricColors : NSObject
 {
     UIColor *_keyColor;
-    HKGradient *_gradient;
     UIColor *_contextViewPrimaryTextColor;
     UIColor *_contextViewSecondaryTextColor;
     UIColor *_contextViewInfoButtonGlyphColor;
     UIColor *_contextViewInfoButtonBackgroundColor;
-    HKGradient *_contentViewChartGradient;
 }
 
-@property (strong, nonatomic) HKGradient *contentViewChartGradient; // @synthesize contentViewChartGradient=_contentViewChartGradient;
 @property (strong, nonatomic) UIColor *contextViewInfoButtonBackgroundColor; // @synthesize contextViewInfoButtonBackgroundColor=_contextViewInfoButtonBackgroundColor;
 @property (strong, nonatomic) UIColor *contextViewInfoButtonGlyphColor; // @synthesize contextViewInfoButtonGlyphColor=_contextViewInfoButtonGlyphColor;
 @property (strong, nonatomic) UIColor *contextViewPrimaryTextColor; // @synthesize contextViewPrimaryTextColor=_contextViewPrimaryTextColor;
 @property (strong, nonatomic) UIColor *contextViewSecondaryTextColor; // @synthesize contextViewSecondaryTextColor=_contextViewSecondaryTextColor;
-@property (strong, nonatomic) HKGradient *gradient; // @synthesize gradient=_gradient;
 @property (strong, nonatomic) UIColor *keyColor; // @synthesize keyColor=_keyColor;
 
 + (id)activityColors;
 + (id)allergiesClinicalColors;
 + (id)bodyMeasurementColors;
 + (id)conditionsClinicalColors;
-+ (id)defaultContextViewColors;
++ (id)defaultClinicalColors;
++ (id)defaultContextViewColorsUsingColor:(id)arg1;
++ (id)hearingHealthColors;
 + (id)immunizationsClinicalColors;
 + (id)labResultsClinicalColors;
 + (id)medicationsClinicalColors;
 + (id)metricColorsForHeartRateContext:(long long)arg1;
 + (id)mindfulnessColors;
++ (id)otherColors;
 + (id)proceduresClinicalColors;
 + (id)reproductiveHealthColors;
-+ (id)resultsColors;
++ (id)respiratoryColors;
 + (id)sleepColors;
 + (id)unknownCategoryClinicalColors;
 + (id)vitalsClinicalColors;

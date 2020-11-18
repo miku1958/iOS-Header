@@ -8,19 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOTransitPath : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_legs;
 }
 
-@property (strong, nonatomic) NSMutableArray *legs; // @synthesize legs=_legs;
+@property (strong, nonatomic) NSMutableArray *legs;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)legType;
 - (void).cxx_destruct;
 - (void)addLeg:(id)arg1;
 - (void)clearLegs;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +34,7 @@
 - (id)legAtIndex:(unsigned long long)arg1;
 - (unsigned long long)legsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -16,6 +16,7 @@
     NSString *_symbol;
 }
 
+@property (readonly) Class _effectiveUnitClass;
 @property (readonly, copy) NSString *symbol; // @synthesize symbol=_symbol;
 
 + (id)new;

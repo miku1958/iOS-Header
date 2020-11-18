@@ -13,20 +13,72 @@
 
 @interface UIViewController (GKAdditions) <GKContentRefresh, GKURLHandling>
 
+@property (strong, nonatomic, setter=_gkSetSourcePresentingViewController:) UIViewController *_gkSourcePresentingViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long gkFocusBubbleType;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_gkKeyWindowRootViewController;
+- (void)_gkAddMenuButtonTapGestureRecognizerWithTarget:(id)arg1 action:(SEL)arg2;
+- (void)_gkAddPositionConstraintsForOverlayBubble:(id)arg1 center:(struct CGPoint)arg2 movingFromView:(id)arg3 toView:(id)arg4;
+- (id)_gkAlertControllerForBarButtonItem:(id)arg1;
+- (id)_gkBorrowBubbleViewFromOverlayWithBubbleType:(long long)arg1 andMoveTo:(id)arg2;
+- (id)_gkBorrowBubbleViewFromOverlayWithBubbleType:(long long)arg1 expectedFrame:(struct CGRect)arg2 andMoveTo:(id)arg3;
+- (CDStruct_b207fc29)_gkBubbleFlowAdoptionInfo;
+- (BOOL)_gkCanBeRemovedFromParentWhenCovered;
+- (long long)_gkDesiredUserInterfaceIdiom;
+- (void)_gkDidTransitionModalPresentationForTraitCollection:(id)arg1;
 - (void)_gkDismissActivityViewControllerAnimated:(BOOL)arg1;
+- (void)_gkDismissViewController:(id)arg1 animated:(BOOL)arg2;
+- (id)_gkExtensionViewController;
 - (void)_gkForceNextContentUpdate;
 - (void)_gkHandleURLPathComponents:(id)arg1 query:(id)arg2;
+- (id)_gkInGameUIUnavailableAlertWithRestrictionMode:(long long)arg1 dismissHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_gkIsTransitioningFromTheLocalPlayerViewController;
+- (BOOL)_gkIsTransitioningToTheLocalPlayerViewController;
+- (CDStruct_b207fc29)_gkMakeBubbleFlowAdoptionInfo;
+- (void)_gkModifyTopConstraintToLayoutGuideForSubview:(id)arg1;
+- (id)_gkOriginatingViewController;
+- (id)_gkOriginatingViewControllerAutoDetermined;
+- (void)_gkPopViewControllerAnimated:(BOOL)arg1;
 - (void)_gkPresentActivityViewController:(id)arg1 fromView:(id)arg2;
 - (id)_gkPresentActivityViewControllerForActivityItems:(id)arg1 fromView:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (id)_gkPresentAlertForError:(id)arg1 title:(id)arg2 defaultMessage:(id)arg3;
+- (id)_gkPresentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3;
+- (id)_gkPresentAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 dismissHandler:(CDUnknownBlockType)arg4;
+- (void)_gkPresentChallengeVC:(id)arg1;
+- (id)_gkPresentConfirmationAlertWithTitle:(id)arg1 message:(id)arg2 buttonTitle:(id)arg3 block:(CDUnknownBlockType)arg4;
+- (void)_gkPresentSendDialogForChallenge:(id)arg1 selectPlayers:(id)arg2 defaultMessage:(id)arg3;
+- (void)_gkPresentSendDialogForChallenge:(id)arg1 selectPlayers:(id)arg2 defaultMessage:(id)arg3 complete:(CDUnknownBlockType)arg4;
+- (void)_gkPresentViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)_gkPresentViewController:(id)arg1 asPopoverFromView:(id)arg2 animated:(BOOL)arg3;
+- (void)_gkPushPresentedViewControllerForCompactSizeClass:(id)arg1;
+- (void)_gkPushViewController:(id)arg1 animated:(BOOL)arg2;
+- (void)_gkPushViewController:(id)arg1 replaceCurrent:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_gkRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
+- (void)_gkRemoveViewController:(id)arg1 animated:(BOOL)arg2;
+- (id)_gkRepresentedObject;
 - (void)_gkResetContents;
+- (void)_gkRestorePopoverWithViewControllers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_gkRestoreStatusBarStyle:(BOOL)arg1;
+- (id)_gkReturnBubbleViewToOverlayWithBubbleType:(long long)arg1;
+- (id)_gkReturnBubbleViewToOverlayWithBubbleType:(long long)arg1 expectedFrame:(struct CGRect)arg2;
+- (void)_gkSaveStatusBarStyle:(BOOL)arg1;
+- (void)_gkSaveStatusBarStyleAnimated:(BOOL)arg1 setToStyle:(long long)arg2;
 - (void)_gkSetContentsNeedUpdateWithHandler:(CDUnknownBlockType)arg1;
+- (void)_gkSetOriginatingViewController:(id)arg1;
+- (BOOL)_gkShouldPushViewControllerInsteadOfUsingPopoverOnCompactWidthPad;
 - (BOOL)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
+- (BOOL)_gkShouldUsePadUI;
+- (void)_gkShowViewController:(id)arg1;
 - (void)_gkUpdateContentsWithCompletionHandlerAndError:(CDUnknownBlockType)arg1;
+- (BOOL)_gkUsesBubbleFlowModalPresentation;
+- (BOOL)_gkUsesFormSheetForBubbleFlowModalPresentationOnPad;
+- (id)_gkViewControllersForRestoringPopover;
+- (BOOL)_gkWantsCustomRightBarButtonItemInViewService;
+- (BOOL)_gkWantsCustomRightBarButtonItemInViewService;
+- (void)_gkWillTransitionModalPresentationForTraitCollection:(id)arg1;
 @end
 

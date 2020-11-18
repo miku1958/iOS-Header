@@ -8,27 +8,39 @@
 
 #import <HomeUI/HUQuickControlControllableView-Protocol.h>
 
-@class HUQuickControlSliderValueOverlayView, HUQuickControlSliderViewProfile, NSLayoutConstraint, NSString;
+@class HUIconView, HUQuickControlSliderValueOverlayView, HUQuickControlSliderViewProfile, NSLayoutConstraint, NSString, UIImpactFeedbackGenerator;
 
 @interface HUQuickControlSliderView : UIView <HUQuickControlControllableView>
 {
     BOOL _showOffState;
     HUQuickControlSliderViewProfile *_profile;
+    unsigned long long _reachabilityState;
     double _sliderValue;
     double _secondarySliderValue;
     double _rawSliderValue;
     UIView *_backgroundView;
+    UIView *_borderView;
     HUQuickControlSliderValueOverlayView *_valueOverlayView;
     NSLayoutConstraint *_overlayTopConstraint;
+    HUIconView *_decorationIconView;
+    double _primaryNormalizedValue;
+    double _secondaryNormalizedValue;
+    UIImpactFeedbackGenerator *_feedbackGenerator;
 }
 
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) UIView *borderView; // @synthesize borderView=_borderView;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) HUIconView *decorationIconView; // @synthesize decorationIconView=_decorationIconView;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIImpactFeedbackGenerator *feedbackGenerator; // @synthesize feedbackGenerator=_feedbackGenerator;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSLayoutConstraint *overlayTopConstraint; // @synthesize overlayTopConstraint=_overlayTopConstraint;
+@property (nonatomic) double primaryNormalizedValue; // @synthesize primaryNormalizedValue=_primaryNormalizedValue;
 @property (copy, nonatomic) HUQuickControlSliderViewProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) double rawSliderValue; // @synthesize rawSliderValue=_rawSliderValue;
+@property (nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
+@property (nonatomic) double secondaryNormalizedValue; // @synthesize secondaryNormalizedValue=_secondaryNormalizedValue;
 @property (nonatomic) double secondarySliderValue; // @synthesize secondarySliderValue=_secondarySliderValue;
 @property (strong, nonatomic) id secondaryValue;
 @property (nonatomic) BOOL showOffState; // @synthesize showOffState=_showOffState;
@@ -39,8 +51,13 @@
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (void)_actuateTapticFeedbackIfAvailable;
+- (BOOL)_createDecorationIconViewIfNecessary;
 - (CDStruct_c3b9c2ee)_permittedValueRange;
+- (void)_prepareForTapticFeedbackIfAvailable;
+- (void)_updateDecorationIconDescriptorAnimated:(BOOL)arg1;
 - (void)_updateOffState;
+- (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 - (id)initWithProfile:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;

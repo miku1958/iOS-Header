@@ -11,25 +11,15 @@
 
 @interface _CDMutablePerfMetric : _CDPerfMetric
 {
-    struct XSPerfCollection *_stats;
     NSObject<OS_os_activity> *_os_activity;
     struct os_activity_scope_state_s _os_activity_scope_state;
     _DKEventStatsTimerCounter *_eventStatsTimerCounter;
 }
 
 - (void).cxx_destruct;
-- (double)averageElapsedTime;
-- (unsigned long long)count;
-- (void)dealloc;
 - (id)description;
-- (id)elapsedTimeHistogram;
-- (unsigned long long)errorCount;
+- (void)endTimingWithEvent:(struct _CDPerfEvent *)arg1 resultCount:(unsigned long long)arg2 incrementErrorCount:(BOOL)arg3;
 - (id)initWithName:(id)arg1 string:(id)arg2 family:(id)arg3;
-- (double)lastElapsedTime;
-- (unsigned long long)lastResultCount;
-- (id)lastUpdate;
-- (double)maximumElapsedTime;
-- (double)minimumElapsedTime;
 - (void)startTelemetryWithOSActivity:(id)arg1;
 
 @end

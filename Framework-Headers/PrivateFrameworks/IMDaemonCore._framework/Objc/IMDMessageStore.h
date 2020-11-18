@@ -20,13 +20,19 @@
 
 @property (strong) NSString *modificationStamp; // @synthesize modificationStamp=_modificationStamp;
 
-+ (void)_updateCacheForMessageGUID:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 updateLastMessage:(BOOL)arg4;
++ (void)_displayDatabaseFullAlert;
++ (void)_updateCacheForMessageGUID:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 updateLastMessage:(BOOL)arg4 calculateUnreadCount:(BOOL)arg5;
++ (void)databaseFull;
++ (void)databaseNoLongerFull;
 + (id)sharedInstance;
 - (void)__postDBUpdate;
+- (id)_chatRegistrySharedInstance;
 - (id)_chatsForMessageGUID:(id)arg1 enableVerboseLogging:(BOOL)arg2;
+- (id)_chatsForMessageIdentifier:(long long)arg1;
 - (id)_cleanUnformattedPhoneNumber:(id)arg1 countryCode:(id)arg2;
 - (struct _IMDHandleRecordStruct *)_copyHandle:(id)arg1 onService:(id)arg2;
 - (void)_deleteMessagesWithGUIDs:(id)arg1 chatIdentifiers:(id)arg2 style:(unsigned char)arg3 onServices:(id)arg4 batchNumber:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)_fileTransferCenter;
 - (BOOL)_hasMessagesWithGUIDs:(id)arg1;
 - (BOOL)_isUsingStingRay;
 - (BOOL)_itemClassShouldUpdateTransferForItem:(id)arg1;
@@ -38,6 +44,7 @@
 - (id)_messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4 onlyMessages:(BOOL)arg5;
 - (void)_performBlock:(CDUnknownBlockType)arg1 afterDelay:(double)arg2;
 - (void)_postDBUpdate;
+- (BOOL)_shouldUseBadgeUtilities;
 - (void)_storeAttachmentsForMessage:(id)arg1;
 - (void)_suppressDBUpdateTimerFired;
 - (id)_unreadMessagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
@@ -50,6 +57,7 @@
 - (id)chatForMessage:(id)arg1;
 - (id)chatForMessageGUID:(id)arg1;
 - (id)chatForMessageGUID:(id)arg1 enableVerboseLogging:(BOOL)arg2;
+- (id)chatForMessageIdentifier:(long long)arg1;
 - (id)chatsForMessage:(id)arg1;
 - (id)chatsForMessageGUID:(id)arg1;
 - (void)cleanseAttachments;
@@ -72,6 +80,7 @@
 - (long long)lastFailedMessageDate;
 - (id)lastMessageWithHandles:(id)arg1 onServices:(id)arg2;
 - (id)lastMessageWithRoomNames:(id)arg1 onServices:(id)arg2;
+- (long long)lastSyncedMessageRowID;
 - (void)loadConsumedSessionPayloadsForItems:(id)arg1;
 - (void)markAllMessagesAsNeedingCloudKitSync;
 - (void)markMessageAsCleanWithROWID:(long long)arg1;
@@ -92,6 +101,7 @@
 - (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3;
 - (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4;
 - (id)messagesWithHandlesBeforeAndAfterGUID:(id)arg1 handles:(id)arg2 onServices:(id)arg3 numberOfMessagesBefore:(unsigned long long)arg4 numberOfMessagesAfter:(unsigned long long)arg5;
+- (id)messagesWithReplyToGUID:(id)arg1;
 - (id)messagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3;
 - (id)messagesWithRoomNames:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4;
 - (void)performInitialHousekeeping;
@@ -101,10 +111,12 @@
 - (void)registerTransfersWithGUIDs:(id)arg1 forMessageGUID:(id)arg2;
 - (id)replaceMessageAcknowledgmentsWithNewMessageAcknowledgment:(id)arg1 associatedMessageGUID:(id)arg2 sender:(id)arg3;
 - (void)resolveUnformattedRepresentationsForHandles:(id)arg1 onService:(id)arg2 message:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)retractPostedNotificationsForMessageGUIDs:(id)arg1;
 - (void)setSuppressDatabaseUpdates:(BOOL)arg1;
 - (id)storeItem:(id)arg1 forceReplace:(BOOL)arg2;
 - (id)storeMessage:(id)arg1 forceReplace:(BOOL)arg2 modifyError:(BOOL)arg3 modifyFlags:(BOOL)arg4 flagMask:(unsigned long long)arg5;
-- (id)storeMessage:(id)arg1 forceReplace:(BOOL)arg2 modifyError:(BOOL)arg3 modifyFlags:(BOOL)arg4 flagMask:(unsigned long long)arg5 updateMessageCache:(BOOL)arg6;
+- (id)storeMessage:(id)arg1 forceReplace:(BOOL)arg2 modifyError:(BOOL)arg3 modifyFlags:(BOOL)arg4 flagMask:(unsigned long long)arg5 updateMessageCache:(BOOL)arg6 calculateUnreadCount:(BOOL)arg7;
+- (id)storeMessage:(id)arg1 forceReplace:(BOOL)arg2 modifyError:(BOOL)arg3 modifyFlags:(BOOL)arg4 flagMask:(unsigned long long)arg5 updateMessageCache:(BOOL)arg6 calculateUnreadCount:(BOOL)arg7 reindexMessage:(BOOL)arg8;
 - (long long)unreadMessagesCount;
 - (id)unreadMessagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;
 - (id)unreadMessagesWithRoomNames:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3 fallbackGUID:(id)arg4;

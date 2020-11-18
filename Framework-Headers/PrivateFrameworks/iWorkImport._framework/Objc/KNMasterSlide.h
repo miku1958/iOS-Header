@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)builds;
 - (id)childEnumerator;
 - (BOOL)containsProperty:(int)arg1;
+- (id)defaultTagForDrawable:(id)arg1;
 - (void)flushClassicStylesheetRecord;
 - (void)generateObjectPlaceholderIfNecessary;
 - (BOOL)hasBug16580905;
@@ -62,13 +63,13 @@ __attribute__((visibility("hidden")))
 - (void)insertBuildChunk:(id)arg1 afterChunk:(id)arg2 generateIdentifier:(BOOL)arg3;
 - (int)intValueForProperty:(int)arg1;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
+- (BOOL)isMaster;
 - (BOOL)isMasterSlide;
 - (BOOL)isObjectVisible;
 - (BOOL)isThemeContent;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)nonPlaceholderObjects;
 - (id)objectForProperty:(int)arg1;
-- (id)p_defaultTagForDrawable:(id)arg1;
 - (id)p_defaultThumbnailTextForPlaceholder:(id)arg1;
 - (id)packageLocator;
 - (id)referencedStyles;
@@ -77,9 +78,11 @@ __attribute__((visibility("hidden")))
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (BOOL)supportsBuilds;
-- (id)tagsforNewPlaceholderInfos:(id)arg1;
+- (id)tagsForNewPlaceholderInfos:(id)arg1;
 - (id)thumbnailTextForPlaceholder:(id)arg1;
+- (id)unusedPlaceholderTagBasedOnTag:(id)arg1;
 - (void)updatePlaceholderText;
+- (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasAddedToTheme:(id)arg1;
 - (void)willBeAddedToTheme:(id)arg1;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;

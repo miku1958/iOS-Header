@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSDateComponents *dateComponents;
 
-+ (double)heightForInterfaceOrientation:(long long)arg1;
++ (double)heightForInterfaceOrientation:(long long)arg1 windowSize:(struct CGSize)arg2 heightSizeClass:(long long)arg3;
 - (void).cxx_destruct;
 - (double)_gridOfDaysHeightAdjustment;
 - (double)_gridOfDaysYAdjustment;

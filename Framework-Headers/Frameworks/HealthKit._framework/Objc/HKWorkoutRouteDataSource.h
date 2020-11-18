@@ -34,6 +34,7 @@
 + (id)serverIdentifier;
 + (id)serverInterface;
 - (void).cxx_destruct;
+- (void)clientRemote_didUpdateAltitude:(id)arg1;
 - (void)clientRemote_didUpdateElevation:(id)arg1;
 - (void)clientRemote_didUpdateRoute:(id)arg1;
 - (void)connectionInterrupted;

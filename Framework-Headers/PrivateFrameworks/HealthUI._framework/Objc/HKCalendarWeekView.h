@@ -33,14 +33,14 @@
 @property (readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property (nonatomic) double dateDiameter; // @synthesize dateDiameter=_dateDiameter;
 @property (nonatomic) double dateTopMargin; // @synthesize dateTopMargin=_dateTopMargin;
-@property (readonly, nonatomic) NSArray *dayCells; // @synthesize dayCells=_dayCells;
+@property (readonly, copy, nonatomic) NSArray *dayCells; // @synthesize dayCells=_dayCells;
 @property (weak, nonatomic) id<HKCalendarWeekViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long firstDayOfMonthCellIndex; // @synthesize firstDayOfMonthCellIndex=_firstDayOfMonthCellIndex;
 @property (nonatomic) double leadingMargin; // @synthesize leadingMargin=_leadingMargin;
 @property (nonatomic) double monthTitleBottomMargin; // @synthesize monthTitleBottomMargin=_monthTitleBottomMargin;
 @property (nonatomic) double monthTitleTopMargin; // @synthesize monthTitleTopMargin=_monthTitleTopMargin;
 @property (strong, nonatomic) UIView<HKCalendarMonthTitleFormatting> *monthTitleView; // @synthesize monthTitleView=_monthTitleView;
-@property (strong, nonatomic) NSDate *monthWeekStart; // @synthesize monthWeekStart=_monthWeekStart;
+@property (copy, nonatomic) NSDate *monthWeekStart; // @synthesize monthWeekStart=_monthWeekStart;
 @property (strong, nonatomic) HKCalendarDayCell *pressedDayCell; // @synthesize pressedDayCell=_pressedDayCell;
 @property (nonatomic) long long pressedDayOfWeek; // @synthesize pressedDayOfWeek=_pressedDayOfWeek;
 

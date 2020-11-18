@@ -20,8 +20,11 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
+- (id)currentKeyboardState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)removeContextFromKeyboardState;
+- (void)replaceDocumentState:(id)arg1;
 - (id)shortDescription;
 
 @end

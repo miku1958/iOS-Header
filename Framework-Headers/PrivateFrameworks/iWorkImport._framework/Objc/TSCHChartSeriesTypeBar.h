@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsRoundedCorners;
 - (BOOL)supportsSetGap;
 - (BOOL)useInBarGapCalculations;
+- (id)userInterfaceName;
 - (id)userInterfaceNameForLabelPosition:(id)arg1;
 - (unsigned long long)valueDimensions;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NUJobQueue;
+@class NSMutableSet, NUJobQueue, NUScheduledQueue;
 @protocol OS_dispatch_queue;
 
 @interface NUScheduler : NSObject
@@ -15,17 +15,22 @@
     NUJobQueue *_prepareQueue;
     NUJobQueue *_renderQueue;
     NUJobQueue *_completeQueue;
+    NSMutableSet *_scheduledContextWakeups;
+    NUScheduledQueue *_rateLimiterQueue;
 }
 
 + (id)sharedScheduler;
 - (void).cxx_destruct;
-- (void)_cancelPreviousJobs:(id)arg1;
+- (BOOL)_coalesceJobs:(id)arg1;
 - (void)_enqueueDependentJobsForRenderJob:(id)arg1;
 - (void)_enqueueJobsForRequests:(id)arg1 withGroup:(id)arg2;
 - (void)_enqueueRenderJob:(id)arg1 toStage:(long long)arg2;
 - (void)_observeRenderJob:(id)arg1 withGroup:(id)arg2;
+- (BOOL)_prepareNewJob:(id)arg1 at:(unsigned long long)arg2;
 - (id)_queueForStage:(long long)arg1;
 - (void)_resumeRenderJob:(id)arg1;
+- (void)_scheduleRateLimitWakeupForContext:(id)arg1;
+- (void)_wakeupRateLimitJobForContext:(id)arg1;
 - (void)cancelJobsForRenderContext:(id)arg1;
 - (id)debugDescription;
 - (id)init;

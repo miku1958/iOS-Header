@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     NSArray *_activelyDownloadingAdamIds;
     NSArray *_activelyDownloadingMediaItems;
     NSMutableDictionary *_episodesDownloadingForShow;
+    NSMutableDictionary *_groupingByShowIdentifier;
 }
 
 @property (strong, nonatomic) VUIMediaEntitiesFetchController *activeDownloadingEntitiesFetchController; // @synthesize activeDownloadingEntitiesFetchController=_activeDownloadingEntitiesFetchController;
@@ -40,23 +41,34 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *downloadEntities; // @synthesize downloadEntities=_downloadEntities;
 @property (strong, nonatomic) VUIMediaEntitiesFetchController *downloadedEntitiesFetchController; // @synthesize downloadedEntitiesFetchController=_downloadedEntitiesFetchController;
 @property (strong, nonatomic) NSMutableDictionary *episodesDownloadingForShow; // @synthesize episodesDownloadingForShow=_episodesDownloadingForShow;
+@property (strong, nonatomic) NSMutableDictionary *groupingByShowIdentifier; // @synthesize groupingByShowIdentifier=_groupingByShowIdentifier;
 @property (nonatomic) BOOL hasFetchedAllDownloadEntities; // @synthesize hasFetchedAllDownloadEntities=_hasFetchedAllDownloadEntities;
 @property (nonatomic) BOOL hasFetchedAllDownloadedEntities; // @synthesize hasFetchedAllDownloadedEntities=_hasFetchedAllDownloadedEntities;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *localMediaItems; // @synthesize localMediaItems=_localMediaItems;
-@property (strong, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
+@property (readonly, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (nonatomic) BOOL performingRentalExpirationFetch; // @synthesize performingRentalExpirationFetch=_performingRentalExpirationFetch;
 @property (strong, nonatomic) SSDownloadManager *sDownloadManager; // @synthesize sDownloadManager=_sDownloadManager;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addNotificationObservers;
-- (void)_coalesceActivelyDownloadingEntities:(id)arg1;
+- (id)_coalesceActiveDownloadEntitiesAndDownloadedEntities;
+- (id)_createDownloadEntitiesFromLatestDownloads:(id)arg1;
+- (id)_createGroupingByShowIdentifierWithLatestMediaEntityGroups:(id)arg1;
+- (BOOL)_doesEpisodeSet:(id)arg1 containMediaEntity:(id)arg2;
 - (id)_getActivelyDownloadingAdamIDs;
+- (id)_getDownloadEntityInDownloadEntities:(id)arg1 containingMediaEntity:(id)arg2;
+- (void)_handleDownloadingStateDidChange;
 - (void)_loadActiveDownloads;
 - (void)_loadDownloadedEntities;
+- (void)_notifyDelegatesDownloadsFetchCompletedWithChanges:(BOOL)arg1;
 - (void)_removeNotifcationObservers;
 - (void)_rentalsDidExpire;
+- (void)_sortDownloadEntitiesByTitle;
+- (void)_updateDownloadEntity:(id *)arg1 withLatestMediaEntity:(id)arg2;
+- (id)_upsertDownloadEntities:(id)arg1 withEpisodesDownloadingForShow:(id)arg2;
+- (void)_upsertEpisodesDownloadingForShowWithMediaEntity:(id)arg1;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
 - (void)dealloc;

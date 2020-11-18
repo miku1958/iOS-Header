@@ -9,12 +9,12 @@
 #import <NeutrinoCore/NUBufferImage-Protocol.h>
 
 @class NSString, NUColorSpace, NUImageLayout, NUPixelFormat, NURegion;
-@protocol NUBuffer;
+@protocol NUBufferProvider;
 
 @interface NUBufferImageAdapter : NSObject <NUBufferImage>
 {
     NUImageLayout *_layout;
-    id<NUBuffer> _buffer;
+    id<NUBufferProvider> _bufferProvider;
     NURegion *_validRegion;
     NUColorSpace *_colorSpace;
 }
@@ -30,9 +30,11 @@
 @property (readonly, copy) NURegion *validRegion; // @synthesize validRegion=_validRegion;
 
 - (void).cxx_destruct;
+- (id)debugQuickLookObject;
 - (id)immutableImageCopy;
 - (id)init;
 - (id)initWithBuffer:(id)arg1 colorSpace:(id)arg2 validRegion:(id)arg3;
+- (id)initWithBufferProvider:(id)arg1 colorSpace:(id)arg2 validRegion:(id)arg3;
 - (id)mutableImageCopy;
 - (id)mutablePurgeableImageCopy;
 - (id)purgeableImageCopy;

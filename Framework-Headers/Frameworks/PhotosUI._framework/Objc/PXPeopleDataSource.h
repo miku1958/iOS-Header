@@ -24,7 +24,6 @@
     NSObject<OS_dispatch_queue> *_reloadQueue;
     PHFetchResult *_objects;
     CDUnknownBlockType _reloadBlock;
-    NSArray *_originalMembers;
 }
 
 @property (weak, nonatomic) id<PXPeopleDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -37,7 +36,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned long long numberOfMembers;
 @property (strong, nonatomic) PHFetchResult *objects; // @synthesize objects=_objects;
-@property (copy, nonatomic) NSArray *originalMembers; // @synthesize originalMembers=_originalMembers;
+@property (readonly, nonatomic) NSArray *persons;
 @property (copy, nonatomic) CDUnknownBlockType reloadBlock; // @synthesize reloadBlock=_reloadBlock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *reloadQueue; // @synthesize reloadQueue=_reloadQueue;
 @property (copy, nonatomic) CDUnknownBlockType sortComparator; // @synthesize sortComparator=_sortComparator;
@@ -52,13 +51,13 @@
 - (CDUnknownBlockType)defaultComparator;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)imageAtIndex:(unsigned long long)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
-- (unsigned long long)indexOfMember:(id)arg1;
 - (id)initWithName:(id)arg1 objects:(id)arg2;
 - (id)initWithName:(id)arg1 objectsReloadBlock:(CDUnknownBlockType)arg2;
 - (id)initWithName:(id)arg1 objectsReloadBlock:(CDUnknownBlockType)arg2 asynchronousLoad:(BOOL)arg3 callbackDelegate:(id)arg4;
 - (void)loadObjectsAndUpdateMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)localizedTitle;
 - (id)memberAtIndex:(unsigned long long)arg1;
+- (id)personAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoQuantityAtIndex:(unsigned long long)arg1;
 - (void)startListeningForChanges;
 - (void)stopListeningForChanges;

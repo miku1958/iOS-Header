@@ -7,17 +7,22 @@
 #import <HealthKit/HKHealthStore.h>
 
 @interface HKHealthStore (HKUIAdditions)
++ (BOOL)_assignMostRecentQuantity:(id *)arg1 dateInterval:(id *)arg2 forQuantitySample:(id)arg3;
++ (BOOL)_isHighFrequencyQuantityType:(id)arg1;
++ (id)_mostRecentStartDateSortDescriptorForQuantityType:(id)arg1;
++ (void)_processQuantitySample:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)_processStatisticsCollection:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)_queryForHighFrequencyMostRecentQuantityOfType:(id)arg1 sample:(id)arg2 healthStore:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)_queryForMostRecentSampleOfType:(id)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)localizationStringAdditionForWheelchairUser;
 + (id)localizationStringSuffixForWheelchairUser:(BOOL)arg1;
++ (id)queryForMostRecentQuantityOfType:(id)arg1 healthStore:(id)arg2 predicate:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (id)queryForMostRecentQuantityOfType:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)queryForMostRecentSampleOfType:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_populateDemographicsWrapper:(id)arg1 withFirstName:(id)arg2 lastName:(id)arg3 meContact:(id)arg4;
-- (id)_sortedSources:(id)arg1;
-- (id)hk_additionalSourcesForInstalledAppsWithBundleIdentifiers:(id)arg1;
-- (id)hk_appSourcesRequiringAuthorizationFromSources:(id)arg1;
+- (id)createMedicalIDData;
 - (void)hk_fetchExistingDemographicInformationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)hk_fetchSortedAppSourcesRequestingAuthorizationForTypes:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)hk_fetchSortedAppSourcesRequiringAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)hk_fetchExistingDemographicInformationWithOptions:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)hk_researchAppBundleIdentifiers;
-- (id)hk_sourcesForDevicesWithSources:(id)arg1;
 @end
 

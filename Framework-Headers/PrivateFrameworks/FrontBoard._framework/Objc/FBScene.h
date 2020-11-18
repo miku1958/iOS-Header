@@ -8,26 +8,30 @@
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSceneHost-Protocol.h>
-#import <FrontBoard/FBUISceneUpdater-Protocol.h>
 
-@class FBProcess, FBSDisplayConfiguration, FBSMutableSceneSettings, FBSSceneClientSettings, FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSSceneSpecification, FBSceneHostManager, FBSceneLayerManager, NSHashTable, NSString;
-@protocol BSInvalidatable, FBSceneClient, FBSceneClientProvider, FBSceneDelegate;
+@class FBProcess, FBSDisplayConfiguration, FBSMutableSceneSettings, FBSSceneClientSettings, FBSSceneDefinition, FBSSceneIdentityToken, FBSSceneParameters, FBSSceneSettings, FBSSceneSpecification, FBSceneHostManager, FBSceneLayerManager, FBSceneObserver, NSArray, NSHashTable, NSMutableOrderedSet, NSString;
+@protocol BSInvalidatable, FBSceneClient, FBSceneClientProvider, FBSceneDelegate, FBSceneManagerSceneDelegate;
 
-@interface FBScene : NSObject <BSDescriptionProviding, FBUISceneUpdater, FBSceneHost>
+@interface FBScene : NSObject <BSDescriptionProviding, FBSceneHost>
 {
     FBSceneLayerManager *_layerManager;
     FBSceneHostManager *_hostManager;
+    id<FBSceneManagerSceneDelegate> _sceneManagerSceneDelegate;
+    FBSceneObserver *_delegateProxy;
+    NSMutableOrderedSet *_observerProxies;
     BOOL _valid;
-    id<FBSceneDelegate> _delegate;
     id<FBSceneClient> _client;
     id<FBSceneClientProvider> _clientProvider;
     FBProcess *_clientProcess;
     NSString *_identifier;
     NSString *_workspaceIdentifier;
+    FBSSceneIdentityToken *_identityToken;
     FBSMutableSceneSettings *_mutableSettings;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
     FBSSceneDefinition *_definition;
+    long long _contentState;
+    BOOL _contentStateIsChanging;
     NSHashTable *_geometryObservers;
     unsigned long long _transactionID;
     BOOL _inTransaction;
@@ -41,17 +45,22 @@
 @property (readonly, nonatomic) FBProcess *clientProcess; // @synthesize clientProcess=_clientProcess;
 @property (readonly, nonatomic) id<FBSceneClientProvider> clientProvider; // @synthesize clientProvider=_clientProvider;
 @property (readonly, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
+@property (readonly, nonatomic) long long contentState; // @synthesize contentState=_contentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) FBSSceneDefinition *definition; // @synthesize definition=_definition;
-@property (weak, nonatomic) id<FBSceneDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBSceneDelegate> delegate;
+@property (readonly, nonatomic) FBSceneObserver *delegateProxy;
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) FBSDisplayConfiguration *display;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) FBSceneHostManager *hostManager; // @synthesize hostManager=_hostManager;
+@property (readonly, nonatomic) FBSceneHostManager *hostManager;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) FBSSceneIdentityToken *identityToken; // @synthesize identityToken=_identityToken;
 @property (readonly, nonatomic) FBSceneLayerManager *layerManager; // @synthesize layerManager=_layerManager;
 @property (strong, nonatomic) FBSMutableSceneSettings *mutableSettings; // @synthesize mutableSettings=_mutableSettings;
+@property (readonly, copy, nonatomic) NSArray *observerProxies;
 @property (readonly, copy, nonatomic) FBSSceneParameters *parameters;
+@property (weak, nonatomic) id<FBSceneManagerSceneDelegate> sceneManagerSceneDelegate; // @synthesize sceneManagerSceneDelegate=_sceneManagerSceneDelegate;
 @property (readonly, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property (readonly, copy, nonatomic) FBSSceneSpecification *specification;
 @property (readonly) Class superclass;
@@ -66,13 +75,11 @@
 - (void)_endTransaction:(unsigned long long)arg1;
 - (void)_invalidateWithTransitionContext:(id)arg1;
 - (void)_removeSceneGeometryObserver:(id)arg1;
-- (void)client:(id)arg1 attachLayer:(id)arg2;
-- (void)client:(id)arg1 detachLayer:(id)arg2;
+- (void)_setContentState:(long long)arg1;
+- (void)addObserver:(id)arg1;
 - (void)client:(id)arg1 didReceiveActions:(id)arg2;
 - (void)client:(id)arg1 didUpdateClientSettings:(id)arg2 withDiff:(id)arg3 transitionContext:(id)arg4;
-- (void)client:(id)arg1 updateLayer:(id)arg2;
 - (void)clientWillInvalidate:(id)arg1;
-- (id)contentView;
 - (id)createSnapshot;
 - (id)createSnapshotWithContext:(id)arg1;
 - (long long)currentInterfaceOrientation;
@@ -80,6 +87,7 @@
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithDefiniton:(id)arg1 initialParameters:(id)arg2 clientProvider:(id)arg3;
+- (void)removeObserver:(id)arg1;
 - (void)sendActions:(id)arg1;
 - (id)snapshotContext;
 - (id)succinctDescription;

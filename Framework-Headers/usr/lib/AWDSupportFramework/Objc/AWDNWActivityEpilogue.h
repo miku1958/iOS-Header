@@ -8,7 +8,7 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class AWDNWActivity;
+@class AWDNWActivity, AWDNWL2Report;
 
 @interface AWDNWActivityEpilogue : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     unsigned long long _timestamp;
     AWDNWActivity *_activity;
     int _completionReason;
+    AWDNWL2Report *_l2Report;
     struct {
         unsigned int durationMsecs:1;
         unsigned int fragmentsQuenched:1;
@@ -33,7 +34,9 @@
 @property (nonatomic) BOOL hasCompletionReason;
 @property (nonatomic) BOOL hasDurationMsecs;
 @property (nonatomic) BOOL hasFragmentsQuenched;
+@property (readonly, nonatomic) BOOL hasL2Report;
 @property (nonatomic) BOOL hasTimestamp;
+@property (strong, nonatomic) AWDNWL2Report *l2Report; // @synthesize l2Report=_l2Report;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 
 - (int)StringAsCompletionReason:(id)arg1;

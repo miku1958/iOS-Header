@@ -6,19 +6,15 @@
 
 #import <GeoServices/GEOBatchOpportunisticTileDownloader.h>
 
-@class GEORequestCounter, GEOResourceManifestManager, GEOTileDB, GEOTileKeyList, GEOTileKeyMap, NSString;
+@class GEOResourceManifestManager, GEOTileDB, GEOTileKeyList, GEOTileKeyMap;
 
 __attribute__((visibility("hidden")))
 @interface GEOStaleTileUpdater : GEOBatchOpportunisticTileDownloader
 {
-    NSString *_uniqueIdentifier;
     GEOTileDB *_diskCache;
     GEOResourceManifestManager *_manifestManager;
-    GEORequestCounter *_requestCounter;
     GEOTileKeyList *_keysRemaining;
     unsigned long long _numberOfTilesOriginallyConsidered;
-    unsigned long long _numberOfTilesAttempted;
-    struct GEOOnce_s _loggedStartRequestCounterAction;
     GEOTileKeyMap *_cacheMissType;
     unsigned long long _batchSize;
 }
@@ -31,7 +27,8 @@ __attribute__((visibility("hidden")))
 - (void)determineNextBatchWithQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)downloadDidFailForTile:(struct _GEOTileKey *)arg1 error:(id)arg2;
 - (void)downloadDidSucceedForTile:(struct _GEOTileKey *)arg1 downloadSize:(unsigned long long)arg2 httpStatus:(unsigned int)arg3;
-- (id)initWithDiskCache:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 manifestManager:(id)arg4 requestCounter:(id)arg5 tileRequesterCreationBlock:(CDUnknownBlockType)arg6;
+- (id)initWithDiskCache:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 manifestManager:(id)arg4 tileRequesterCreationBlock:(CDUnknownBlockType)arg5;
+- (unsigned long long)numberOfTilesConsidered;
 
 @end
 

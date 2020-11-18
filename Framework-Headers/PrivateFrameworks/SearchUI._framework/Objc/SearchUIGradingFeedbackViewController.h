@@ -20,11 +20,11 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak) id<SFFeedbackListener> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
+@property (weak, nonatomic) id<SFFeedbackListener> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property (readonly) unsigned long long hash;
-@property (strong) SFSearchResult *result; // @synthesize result=_result;
+@property (strong, nonatomic) SFSearchResult *result; // @synthesize result=_result;
 @property (readonly) Class superclass;
-@property (strong) UIViewController *viewControllerForPresenting; // @synthesize viewControllerForPresenting=_viewControllerForPresenting;
+@property (strong, nonatomic) UIViewController *viewControllerForPresenting; // @synthesize viewControllerForPresenting=_viewControllerForPresenting;
 
 - (void).cxx_destruct;
 - (void)addActionForGrade:(unsigned long long)arg1 title:(id)arg2;

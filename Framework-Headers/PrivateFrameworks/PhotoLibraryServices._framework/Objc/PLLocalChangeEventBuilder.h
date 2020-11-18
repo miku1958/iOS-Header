@@ -23,6 +23,7 @@
     NSMutableArray *_deletedOwnedMomentShareCloudGUIDs;
     NSMutableArray *_deletedSubscribedMomentShareCloudGUIDs;
     NSMutableArray *_deletedSuggestionCloudGUIDs;
+    NSMutableArray *_deletedInternalResourceUUIDToResourceTypeMappings;
     BOOL _coalescedEvent;
     BOOL _syncChange;
     CDUnknownBlockType _transactionFilter;

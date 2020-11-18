@@ -8,7 +8,7 @@
 
 #import <CoreUtils/NSSecureCoding-Protocol.h>
 
-@class NSError;
+@class NSError, NSString;
 
 @interface CURangingMeasurement : NSObject <NSSecureCoding>
 {
@@ -18,6 +18,7 @@
     NSError *_error;
     double _horizontalAngle;
     double _horizontalError;
+    NSString *_identifier;
     double _verticalAngle;
     double _verticalError;
     double _ptsScore;
@@ -30,6 +31,7 @@
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (nonatomic) double horizontalAngle; // @synthesize horizontalAngle=_horizontalAngle;
 @property (nonatomic) double horizontalError; // @synthesize horizontalError=_horizontalError;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) double ptsScore; // @synthesize ptsScore=_ptsScore;
 @property (nonatomic) unsigned long long timestampTicks; // @synthesize timestampTicks=_timestampTicks;
 @property (nonatomic) double verticalAngle; // @synthesize verticalAngle=_verticalAngle;

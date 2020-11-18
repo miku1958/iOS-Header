@@ -13,29 +13,29 @@
 {
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
-    HDDatabaseValueCache *_localSourceEntityCache;
+    HDDatabaseValueCache *_sourceEntityByBundleIdentifierCache;
     HDDatabaseValueCache *_clientSourceCache;
+    HDDatabaseValueCache *_localSourceForBundleIdentifierCache;
+    HDDatabaseValueCache *_localSourceForSourceID;
 }
 
-+ (id)_applicationNameForBundleIdentifier:(id)arg1;
 + (BOOL)_isLocalDeviceBundleIdentifier:(id)arg1;
-+ (BOOL)_isSpartanDeviceBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (void)_applicationsUninstalledNotification:(id)arg1;
+- (id)_bundleIDsWithoutLocalSourceForSourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)_clientSourcesWithPredicate:(id)arg1 error:(id *)arg2;
 - (id)_createCopyOfFirstSourceWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
-- (id)_createSourceEntityForBundleIdentifier:(id)arg1 name:(id)arg2 options:(unsigned long long)arg3 isCurrentDevice:(BOOL)arg4 productType:(id)arg5 error:(id *)arg6;
+- (id)_createSourceEntityForBundleIdentifier:(id)arg1 owningAppBundleIdentifier:(id)arg2 name:(id)arg3 options:(unsigned long long)arg4 isCurrentDevice:(BOOL)arg5 productType:(id)arg6 error:(id *)arg7;
 - (id)_createSourceEntityForLocalDeviceWithError:(id *)arg1;
 - (id)_createSourceEntityForSpartanDeviceWithError:(id *)arg1;
 - (BOOL)_createSourcesWithCodables:(id)arg1 provenance:(long long)arg2 sourceUUIDSToDelete:(id)arg3 deleteSamples:(BOOL)arg4 database:(id)arg5 error:(id *)arg6;
 - (void)_deleteSourceIfNoSampleFoundWithBundleIdentifier:(id)arg1;
 - (BOOL)_deleteSourcesWithUUIDs:(id)arg1 localSourceEntityCacheKey:(id)arg2 deleteSamples:(BOOL)arg3 database:(id)arg4 error:(id *)arg5;
 - (id)_fetchClientSourceForPersistentID:(id)arg1 error:(id *)arg2;
-- (id)_getNameForBundleIdentifier:(id)arg1 isCurrentDevice:(BOOL)arg2;
+- (id)_localSourcesForBundleIDs:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)_predicateForSourceBundleIdentifier:(id)arg1 localOnly:(BOOL)arg2;
 - (id)_sourceForBundleIdentifier:(id)arg1 createSourceBlock:(CDUnknownBlockType)arg2 modifySourceBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (id)_sourceFromEphemeralSource:(id)arg1 provenance:(long long)arg2 createOrUpdateIfNecessary:(BOOL)arg3 error:(id *)arg4;
-- (unsigned long long)_sourceOptionsForApplicationEntitlements:(id)arg1;
 - (id)_sourcePersistentIDsFromSourceEntities:(id)arg1;
 - (id)_sourceUUIDsForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (id)allSourcesForBundleIdentifier:(id)arg1 error:(id *)arg2;
@@ -49,8 +49,8 @@
 - (id)clientSourcesForSourceIDs:(id)arg1 error:(id *)arg2;
 - (id)createOrUpdateSourceForClient:(id)arg1 error:(id *)arg2;
 - (BOOL)createSourcesWithCodables:(id)arg1 provenance:(long long)arg2 error:(id *)arg3;
+- (void)dealloc;
 - (BOOL)deleteSourceWithBundleIdentifier:(id)arg1 error:(id *)arg2;
-- (id)healthAppSourceWithError:(id *)arg1;
 - (id)init;
 - (id)initWithProfile:(id)arg1;
 - (id)localDeviceSourceWithError:(id *)arg1;

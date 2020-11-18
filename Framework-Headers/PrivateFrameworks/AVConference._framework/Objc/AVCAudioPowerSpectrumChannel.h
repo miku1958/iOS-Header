@@ -18,7 +18,7 @@
 @property (readonly, nonatomic) NSArray *bins; // @synthesize bins=_bins;
 
 + (BOOL)supportsSecureCoding;
-- (void)applyChannelBins:(id)arg1;
+- (void)applyChannelBins:(struct _VCAudioPowerSpectrumEntry *)arg1 binCount:(unsigned int)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

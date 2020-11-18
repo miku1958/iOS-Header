@@ -6,41 +6,18 @@
 
 #import <SpringBoardFoundation/SBAbstractSpringBoardDefaultDomain.h>
 
-@class NSData, NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary;
 
 @interface SBWallpaperDefaults : SBAbstractSpringBoardDefaultDomain
 {
 }
 
 @property (strong, nonatomic) NSDate *dateIrisWallpaperLastPlayed; // @dynamic dateIrisWallpaperLastPlayed;
-@property (strong, nonatomic) NSData *homeScreenColorData; // @dynamic homeScreenColorData;
-@property (strong, nonatomic) NSString *homeScreenColorName; // @dynamic homeScreenColorName;
-@property (strong, nonatomic) NSString *homeScreenCropRectString; // @dynamic homeScreenCropRectString;
-@property (nonatomic) BOOL homeScreenMagnifyEnabled; // @dynamic homeScreenMagnifyEnabled;
-@property (nonatomic) double homeScreenParallaxFactor; // @dynamic homeScreenParallaxFactor;
-@property (nonatomic) BOOL homeScreenPortrait; // @dynamic homeScreenPortrait;
-@property (nonatomic) BOOL homeScreenSupportsCropping; // @dynamic homeScreenSupportsCropping;
-@property (strong, nonatomic) NSString *homeScreenWallpaperIdentifier; // @dynamic homeScreenWallpaperIdentifier;
-@property (strong, nonatomic) NSString *homeScreenWallpaperName; // @dynamic homeScreenWallpaperName;
-@property (strong, nonatomic) NSDictionary *homeScreenWallpaperOptions; // @dynamic homeScreenWallpaperOptions;
-@property (nonatomic) BOOL homeScreenWallpaperWasUserSet; // @dynamic homeScreenWallpaperWasUserSet;
-@property (nonatomic) double homeScreenZoomScale; // @dynamic homeScreenZoomScale;
+@property (nonatomic) BOOL enableWallpaperDimming; // @dynamic enableWallpaperDimming;
+@property (nonatomic) NSDictionary *homeScreenWallpapers; // @dynamic homeScreenWallpapers;
 @property (nonatomic) unsigned long long irisWallpaperPlayCount; // @dynamic irisWallpaperPlayCount;
 @property (readonly, nonatomic) BOOL legacyUsesUniqueHomeScreenWallpaper; // @dynamic legacyUsesUniqueHomeScreenWallpaper;
-@property (strong, nonatomic) NSData *lockScreenColorData; // @dynamic lockScreenColorData;
-@property (strong, nonatomic) NSString *lockScreenColorName; // @dynamic lockScreenColorName;
-@property (strong, nonatomic) NSString *lockScreenCropRectString; // @dynamic lockScreenCropRectString;
-@property (nonatomic) BOOL lockScreenHasVideo; // @dynamic lockScreenHasVideo;
-@property (nonatomic) BOOL lockScreenMagnifyEnabled; // @dynamic lockScreenMagnifyEnabled;
-@property (nonatomic) double lockScreenParallaxFactor; // @dynamic lockScreenParallaxFactor;
-@property (nonatomic) BOOL lockScreenPortrait; // @dynamic lockScreenPortrait;
-@property (nonatomic) double lockScreenStillTimeInVideo; // @dynamic lockScreenStillTimeInVideo;
-@property (nonatomic) BOOL lockScreenSupportsCropping; // @dynamic lockScreenSupportsCropping;
-@property (strong, nonatomic) NSString *lockScreenWallpaperIdentifier; // @dynamic lockScreenWallpaperIdentifier;
-@property (strong, nonatomic) NSString *lockScreenWallpaperName; // @dynamic lockScreenWallpaperName;
-@property (strong, nonatomic) NSDictionary *lockScreenWallpaperOptions; // @dynamic lockScreenWallpaperOptions;
-@property (nonatomic) BOOL lockScreenWallpaperWasUserSet; // @dynamic lockScreenWallpaperWasUserSet;
-@property (nonatomic) double lockScreenZoomScale; // @dynamic lockScreenZoomScale;
+@property (nonatomic) NSDictionary *lockScreenWallpapers; // @dynamic lockScreenWallpapers;
 
 - (void)_bindAndRegisterDefaults;
 - (void)clearLegacyDefaults;

@@ -10,7 +10,10 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (id)_axFocusedWindowSubviews;
++ (void)_axTriggerNextContextMenuInteractionInQueue:(id)arg1 forElement:(id)arg2 customAction:(id)arg3;
++ (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)__accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -21,20 +24,27 @@
 - (BOOL)_accessibilityAvoidsMockViewContainers;
 - (BOOL)_accessibilityBlocksInteraction;
 - (struct CGRect)_accessibilityBounds;
+- (id)_accessibilityCapturedImages;
+- (void)_accessibilityCapturedImagesWithDepth:(unsigned long long *)arg1 capturedImages:(id)arg2;
 - (id)_accessibilityCheckForAllowedModalView:(struct CGPoint)arg1 event:(id)arg2;
 - (id)_accessibilityChildVendingParent;
 - (id)_accessibilityCirclePathBasedOnBoundsWidth;
+- (id)_accessibilityContextMenuActionForElement:(id)arg1;
 - (BOOL)_accessibilityDidLoadAccessibilityInformation;
 - (void)_accessibilityFinalize;
 - (struct CGRect)_accessibilityFrameForView:(id)arg1;
+- (BOOL)_accessibilityHasButtonLikeGestureRecognizer;
 - (BOOL)_accessibilityHasDragDestinations;
 - (BOOL)_accessibilityHasDragSources;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityHitTestSubviews;
 - (long long)_accessibilityHorizontalSizeClass;
+- (id)_accessibilityImageData;
+- (BOOL)_accessibilityIsFKARunningForFocusItem;
 - (BOOL)_accessibilityIsIgnored;
+- (BOOL)_accessibilityIsInCollectionCell;
 - (BOOL)_accessibilityIsInTableCell;
-- (BOOL)_accessibilityIsScannerElement;
+- (BOOL)_accessibilityIsSiblingOfModalizingBlocker;
 - (BOOL)_accessibilityIsUserInteractionEnabled;
 - (BOOL)_accessibilityIsUserInteractionEnabledChain;
 - (double)_accessibilityMaxFuzzyHitTestDistance;
@@ -50,6 +60,7 @@
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;
 - (BOOL)_accessibilityShouldHitTestLayers;
 - (id)_accessibilitySortedElementsWithin;
+- (id)_accessibilitySubviewMatchingFKAView:(id)arg1;
 - (id)_accessibilitySupportGesturesAttributes;
 - (BOOL)_accessibilityUseAccessibilityFrameForHittest;
 - (id)_accessibilityUserTestingChildren;
@@ -58,12 +69,21 @@
 - (id)_accessibilityViewController;
 - (BOOL)_accessibilityViewIsActive;
 - (BOOL)_accessibilityViewIsBeingHitTested:(id)arg1;
+- (BOOL)_accessibilityViewIsProbablyDimmingView;
+- (BOOL)_allowsFocusToLeaveViaHeading:(unsigned long long)arg1;
+- (id)_axBackgroundViewForCornerRadius;
 - (BOOL)_axHasNoVisibleAxElements;
+- (BOOL)_axHasSingleFocusableSubview;
 - (void)_axPrintSubviews:(long long)arg1 string:(id)arg2;
 - (id)_axResponderChain;
+- (void)_axSetViewIsProbablyDimmingView:(id)arg1;
 - (id)_axSubviews;
 - (BOOL)_axViewIsOffScreen:(id)arg1;
+- (id)_axViewIsProbablyDimmingViewCachedValue;
 - (id)_axWindowSubviews;
+- (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
+- (BOOL)_isEligibleForFocusInteraction;
+- (void)_notifyReferenceViewSizeChange;
 - (void)_setAccessibilityDidLoadAccessibilityInformation:(BOOL)arg1;
 - (id)_superAccessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)accessibilityContainer;
@@ -72,9 +92,15 @@
 - (struct CGRect)accessibilityFrame;
 - (BOOL)accessibilityIsWindow;
 - (id)accessibilityPath;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)accessibilityViewIsModal;
+- (BOOL)canBecomeFocused;
+- (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (BOOL)isAccessibilityElement;
+- (void)setAlpha:(double)arg1;
+- (void)setBackgroundColor:(id)arg1;
+- (void)setHidden:(BOOL)arg1;
 - (void)setIsAccessibilityElement:(BOOL)arg1;
 - (void)willMoveToWindow:(id)arg1;
 

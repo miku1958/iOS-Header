@@ -17,7 +17,7 @@
     NSString *_identifier;
 }
 
-@property (readonly) CDUnknownBlockType fetchBlock; // @synthesize fetchBlock=_fetchBlock;
+@property (readonly, copy) CDUnknownBlockType fetchBlock; // @synthesize fetchBlock=_fetchBlock;
 @property (readonly) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) NSOrderedSet *objectIDs; // @synthesize objectIDs=_objectIDs;
 @property (readonly) NSArray *objects; // @synthesize objects=_objects;

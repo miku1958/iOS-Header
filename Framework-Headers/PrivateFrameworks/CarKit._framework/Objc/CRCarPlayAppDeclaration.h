@@ -13,16 +13,20 @@
     BOOL _systemApp;
     BOOL _requiresGeoSupport;
     BOOL _launchUsingSiri;
+    BOOL _launchNotificationsUsingSiri;
     BOOL _supportsPlayableContent;
     BOOL _supportsMessaging;
     BOOL _supportsCalling;
     BOOL _supportsMaps;
     NSString *_bundleIdentifier;
     NSSet *_autoMakerProtocols;
+    unsigned long long __applicationCategory;
 }
 
+@property (nonatomic) unsigned long long _applicationCategory; // @synthesize _applicationCategory=__applicationCategory;
 @property (strong, nonatomic) NSSet *autoMakerProtocols; // @synthesize autoMakerProtocols=_autoMakerProtocols;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (nonatomic) BOOL launchNotificationsUsingSiri; // @synthesize launchNotificationsUsingSiri=_launchNotificationsUsingSiri;
 @property (nonatomic) BOOL launchUsingSiri; // @synthesize launchUsingSiri=_launchUsingSiri;
 @property (nonatomic) BOOL requiresGeoSupport; // @synthesize requiresGeoSupport=_requiresGeoSupport;
 @property (nonatomic) BOOL supportsCalling; // @synthesize supportsCalling=_supportsCalling;

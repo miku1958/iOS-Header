@@ -33,12 +33,16 @@
         unsigned int showEnableSwitch:1;
         unsigned int refreshingCallerIdValues:1;
     } _settingsFlags;
+    BOOL _showDeviceAliases;
+    BOOL _hideAppleIDLogin;
     BOOL _showReceiveRelayCalls;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideAppleIDLogin; // @synthesize hideAppleIDLogin=_hideAppleIDLogin;
+@property (nonatomic) BOOL showDeviceAliases; // @synthesize showDeviceAliases=_showDeviceAliases;
 @property (nonatomic) BOOL showEnableSwitch;
 @property (readonly, nonatomic) BOOL showReceiveRelayCalls; // @synthesize showReceiveRelayCalls=_showReceiveRelayCalls;
 @property (readonly) Class superclass;
@@ -80,6 +84,7 @@
 - (void)_showAuthKitSignInIfNecessary;
 - (void)_showLocaleChooserWithAccount:(id)arg1;
 - (void)_showPrivacySheet:(id)arg1;
+- (void)_showRemoveAlertForAlias:(id)arg1 specifier:(id)arg2;
 - (void)_showSignInController;
 - (void)_showViewAccountControllerForAccount:(id)arg1;
 - (id)_specifierIdentifierForAccount:(id)arg1;
@@ -107,6 +112,7 @@
 - (id)createSpecifierForCallerIdAlias:(id)arg1;
 - (id)customTitle;
 - (void)dealloc;
+- (void)doneButtonTapped:(id)arg1;
 - (void)firstRunController:(id)arg1 finishedWithState:(unsigned long long)arg2;
 - (void)firstRunControllerDidFinish:(id)arg1 finished:(BOOL)arg2;
 - (void)formSheetViewDidDisappear;
@@ -154,6 +160,7 @@
 - (BOOL)shouldShowReceiveRelayCalls;
 - (BOOL)shouldShowReceiveThumperCalls;
 - (BOOL)shouldShowReplyWithMessage;
+- (BOOL)shouldShowSiriSpecifiers;
 - (BOOL)showAccounts:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)showAliases:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)showAllSettings:(BOOL)arg1 animated:(BOOL)arg2;
@@ -177,6 +184,7 @@
 - (void)viewAccountControllerDidFinish:(id)arg1 withAppleId:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

@@ -10,12 +10,17 @@ __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_address_endpoint : NWConcrete_nw_endpoint
 {
     struct sockaddr_storage address;
+    struct ether_addr ethernet_address;
+    char *hostname;
+    unsigned int calculated_hostname:1;
 }
 
 - (id)copyDictionary;
 - (id)copyEndpoint;
 - (char *)createDescription:(BOOL)arg1;
+- (void)dealloc;
 - (unsigned long long)getHash;
+- (const char *)hostname;
 - (id)initWithAddress:(const struct sockaddr *)arg1 overridePort:(const char *)arg2;
 - (BOOL)isEqualToEndpoint:(id)arg1 matchInterface:(BOOL)arg2 matchParent:(BOOL)arg3;
 - (unsigned short)port;

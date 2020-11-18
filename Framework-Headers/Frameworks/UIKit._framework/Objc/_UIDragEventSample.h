@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _isApplicationEnter;
     BOOL _isApplicationWithin;
     BOOL _isApplicationExit;
+    BOOL _isPolicyDriven;
     BOOL _isDragEnd;
     BOOL _hasBeenDelivered;
     unsigned int _windowServerHitTestContextID;
@@ -27,16 +28,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isApplicationExit; // @synthesize isApplicationExit=_isApplicationExit;
 @property (readonly, nonatomic) BOOL isApplicationWithin; // @synthesize isApplicationWithin=_isApplicationWithin;
 @property (readonly, nonatomic) BOOL isDragEnd; // @synthesize isDragEnd=_isDragEnd;
+@property (readonly, nonatomic) BOOL isPolicyDriven; // @synthesize isPolicyDriven=_isPolicyDriven;
 @property (readonly, nonatomic) struct CGPoint locationInWindow; // @synthesize locationInWindow=_locationInWindow;
 @property (readonly, nonatomic) struct CGPoint sceneLocation; // @synthesize sceneLocation=_sceneLocation;
 @property (readonly, nonatomic) UIWindow *window; // @synthesize window=_window;
 @property (readonly, nonatomic) unsigned int windowServerHitTestContextID; // @synthesize windowServerHitTestContextID=_windowServerHitTestContextID;
 
-+ (id)interpolatedSampleFromSample:(id)arg1;
 + (id)sampleFromHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void).cxx_destruct;
 - (id)description;
-- (id)hitTestWithEvent:(id)arg1 constrainToWindowServerHitTestContext:(BOOL)arg2;
+- (id)hitTestWithEvent:(id)arg1;
 
 @end
 

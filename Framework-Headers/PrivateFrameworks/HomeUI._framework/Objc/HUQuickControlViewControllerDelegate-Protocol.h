@@ -6,9 +6,13 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HUQuickControlViewController;
+@class HFItem, HUQuickControlViewController;
+@protocol NSCopying;
 
 @protocol HUQuickControlViewControllerDelegate <NSObject>
+
+@property (readonly, nonatomic) HFItem<NSCopying> *item;
+
 - (void)quickControlViewControllerDidUpdateStatusOverrides:(HUQuickControlViewController *)arg1;
 @end
 

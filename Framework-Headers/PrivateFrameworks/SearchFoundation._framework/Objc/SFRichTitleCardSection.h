@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFRichTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFImage, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFRichTitleCardSection : SFTitleCardSection <SFRichTitleCardSection, NSSecureCoding, NSCopying>
 {
@@ -64,6 +64,7 @@
     SFActionItem *_playAction;
     NSArray *_offers;
     NSString *_footnote;
+    SFRichText *_richSubtitle;
 }
 
 @property (copy, nonatomic) NSNumber *auxiliaryAlignment; // @synthesize auxiliaryAlignment=_auxiliaryAlignment;
@@ -104,6 +105,7 @@
 @property (strong, nonatomic) SFImage *reviewGlyph; // @synthesize reviewGlyph=_reviewGlyph;
 @property (nonatomic) BOOL reviewNewLine; // @synthesize reviewNewLine=_reviewNewLine;
 @property (copy, nonatomic) NSString *reviewText; // @synthesize reviewText=_reviewText;
+@property (strong, nonatomic) SFRichText *richSubtitle; // @synthesize richSubtitle=_richSubtitle;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;

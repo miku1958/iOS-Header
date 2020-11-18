@@ -17,29 +17,29 @@
     BOOL _deviceLocked;
     HKQuantity *_activeEnergyTotal;
     HKQuantity *_activeEnergyGoal;
-    double _briskMinutesTotal;
-    double _briskMinutesGoal;
-    long long _standHoursTotal;
-    long long _standHoursGoal;
-    NSArray *_moveChartData;
-    NSArray *_exerciseChartData;
-    NSArray *_standChartData;
+    double _appleExerciseTimeTotal;
+    double _appleExerciseTimeGoal;
+    long long _appleStandHoursTotal;
+    long long _appleStandHoursGoal;
+    NSArray *_activeEnergyChartData;
+    NSArray *_appleExerciseTimeChartData;
+    NSArray *_appleStandHourChartData;
 }
 
+@property (strong, nonatomic) NSArray *activeEnergyChartData; // @synthesize activeEnergyChartData=_activeEnergyChartData;
 @property (strong, nonatomic) HKQuantity *activeEnergyGoal; // @synthesize activeEnergyGoal=_activeEnergyGoal;
 @property (strong, nonatomic) HKQuantity *activeEnergyTotal; // @synthesize activeEnergyTotal=_activeEnergyTotal;
-@property (nonatomic) double briskMinutesGoal; // @synthesize briskMinutesGoal=_briskMinutesGoal;
-@property (nonatomic) double briskMinutesTotal; // @synthesize briskMinutesTotal=_briskMinutesTotal;
+@property (strong, nonatomic) NSArray *appleExerciseTimeChartData; // @synthesize appleExerciseTimeChartData=_appleExerciseTimeChartData;
+@property (nonatomic) double appleExerciseTimeGoal; // @synthesize appleExerciseTimeGoal=_appleExerciseTimeGoal;
+@property (nonatomic) double appleExerciseTimeTotal; // @synthesize appleExerciseTimeTotal=_appleExerciseTimeTotal;
+@property (strong, nonatomic) NSArray *appleStandHourChartData; // @synthesize appleStandHourChartData=_appleStandHourChartData;
+@property (nonatomic) long long appleStandHoursGoal; // @synthesize appleStandHoursGoal=_appleStandHoursGoal;
+@property (nonatomic) long long appleStandHoursTotal; // @synthesize appleStandHoursTotal=_appleStandHoursTotal;
 @property (nonatomic) BOOL databaseLoading; // @synthesize databaseLoading=_databaseLoading;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL deviceLocked; // @synthesize deviceLocked=_deviceLocked;
-@property (strong, nonatomic) NSArray *exerciseChartData; // @synthesize exerciseChartData=_exerciseChartData;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSArray *moveChartData; // @synthesize moveChartData=_moveChartData;
-@property (strong, nonatomic) NSArray *standChartData; // @synthesize standChartData=_standChartData;
-@property (nonatomic) long long standHoursGoal; // @synthesize standHoursGoal=_standHoursGoal;
-@property (nonatomic) long long standHoursTotal; // @synthesize standHoursTotal=_standHoursTotal;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL userHasDoneActivitySetup;
 
@@ -54,13 +54,13 @@
 + (id)largeUtility:(id)arg1;
 + (id)lockedEntryModel;
 - (void).cxx_destruct;
-- (double)activeEnergyGoalCompletionPercentage;
+- (double)activeEnergyCompletionPercentage;
+- (double)appleExerciseTimeCompletionPercentage;
+- (double)appleStandHourCompletionPercentage;
 - (long long)availabilityState;
-- (double)briskMinuteGoalCompletionPercentage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)date;
 - (void)setDate:(id)arg1;
-- (double)standHourGoalCompletionPercentage;
 - (id)templateForComplicationFamily:(long long)arg1;
 
 @end

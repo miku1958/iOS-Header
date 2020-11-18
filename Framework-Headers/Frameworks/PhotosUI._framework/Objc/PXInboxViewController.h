@@ -37,10 +37,10 @@
     struct CGRect _visibleContentRect;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType; // @synthesize accessoryButtonType=_accessoryButtonType;
 @property (strong, nonatomic) PXInboxTableViewCellLayoutCoordinator *cellLayoutCoordinator; // @synthesize cellLayoutCoordinator=_cellLayoutCoordinator;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (nonatomic) double currentRowHeight; // @synthesize currentRowHeight=_currentRowHeight;
 @property (strong, nonatomic) PXInboxAggregateDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (nonatomic) struct _NSRange dataSourceIndexRange; // @synthesize dataSourceIndexRange=_dataSourceIndexRange;

@@ -11,18 +11,18 @@
 @interface MKStarRatingView : UIView
 {
     double _rating;
-    long long _numLevels;
+    unsigned long long _numLevels;
     double _padding;
     BOOL _highlighted;
+    NSMutableArray *_ratingViews;
+    long long _numReviews;
+    long long _starStyle;
     UIImage *_fullStarImage;
     UIImage *_halfStarImage;
     UIImage *_emptyStarImage;
     UIImage *_fullStarHighlightedImage;
     UIImage *_halfStarHighlightedImage;
     UIImage *_emptyStarHighlightedImage;
-    NSMutableArray *_ratingViews;
-    long long _numReviews;
-    long long _starStyle;
 }
 
 @property (strong, nonatomic) UIImage *emptyStarHighlightedImage; // @synthesize emptyStarHighlightedImage=_emptyStarHighlightedImage;
@@ -32,12 +32,17 @@
 @property (strong, nonatomic) UIImage *halfStarHighlightedImage; // @synthesize halfStarHighlightedImage=_halfStarHighlightedImage;
 @property (strong, nonatomic) UIImage *halfStarImage; // @synthesize halfStarImage=_halfStarImage;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
-@property (nonatomic) long long numberOfRatingLevels; // @synthesize numberOfRatingLevels=_numLevels;
+@property (nonatomic) unsigned long long numberOfRatingLevels; // @synthesize numberOfRatingLevels=_numLevels;
 @property (nonatomic) double rating; // @synthesize rating=_rating;
 @property (nonatomic) long long starStyle; // @synthesize starStyle=_starStyle;
 
-+ (id)ratingAsAttributedString:(double)arg1 baseFont:(id)arg2 style:(long long)arg3;
++ (id)colorForRating:(double)arg1;
++ (id)emptyStarTextAttachmentWithFont:(id)arg1;
++ (id)fullStarTextAttachmentWithFont:(id)arg1;
++ (id)halfStarTextAttachmentWithFont:(id)arg1;
 + (id)ratingAsAttributedString:(double)arg1 baseFont:(id)arg2 style:(long long)arg3 theme:(id)arg4;
++ (id)ratingShortAsAttributedString:(double)arg1 baseFont:(id)arg2 theme:(id)arg3;
++ (id)textAttachmentimageNamed:(id)arg1 font:(id)arg2;
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (void)_layoutStarViewsCreatingIfNeeded:(BOOL)arg1;

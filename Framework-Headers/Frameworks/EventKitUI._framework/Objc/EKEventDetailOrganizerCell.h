@@ -17,7 +17,10 @@ __attribute__((visibility("hidden")))
     UILabel *_organizerLabel;
     UILabel *_titleView;
     id<EKIdentityProtocol> _organizerOverride;
+    BOOL _hideDisclosureIndicator;
 }
+
+@property (nonatomic) BOOL hideDisclosureIndicator; // @synthesize hideDisclosureIndicator=_hideDisclosureIndicator;
 
 + (id)_organizerFont;
 + (id)_titleFont;
@@ -25,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)_organizerLabel;
 - (id)_organizerView;
 - (id)_titleView;
+- (void)_updateDisclosureIndicator;
 - (id)initWithEvent:(id)arg1 editable:(BOOL)arg2 organizerOverride:(id)arg3;
 - (BOOL)shouldDisplayForEvent;
 - (BOOL)update;

@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_observationsCacheKeyForRequest:(id)arg1;
-- (void)cacheObservationsForRequest:(id)arg1;
+- (BOOL)cacheObservationsForRequest:(id)arg1;
 - (id)cachedObservationsForRequest:(id)arg1;
 - (id)imageBufferAndReturnError:(id *)arg1;
 - (id)initWithRequestPerformer:(id)arg1 imageBuffer:(id)arg2 forensics:(id)arg3 observationsCache:(id)arg4;

@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong, nonatomic) NSNumber *automaticSoftwareUpdateEnabled; // @dynamic automaticSoftwareUpdateEnabled;
+@property (copy, nonatomic) NSNumber *automaticSoftwareUpdateEnabled; // @dynamic automaticSoftwareUpdateEnabled;
 
 + (id)defaultModelForHome:(id)arg1;
 + (id)modelIDForHome:(id)arg1;

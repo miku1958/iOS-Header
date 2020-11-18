@@ -15,8 +15,8 @@
     NSObject<OS_dispatch_queue> *_activeAssetDataRequestQueue;
     NSObject<OS_dispatch_semaphore> *_concurrentAssetDataRequestSemaphore;
     BOOL _isReadonlyVolume;
-    NSArray *_urls;
     NSString *_prefix;
+    NSArray *_urls;
     NSMutableDictionary *_pathsByFileBaseName;
     NSArray *_baseNames;
     NSObject<OS_dispatch_queue> *_pathsByFileBaseNameAccess;
@@ -26,20 +26,28 @@
 @property (nonatomic) BOOL isReadonlyVolume; // @synthesize isReadonlyVolume=_isReadonlyVolume;
 @property (strong, nonatomic) NSMutableDictionary *pathsByFileBaseName; // @synthesize pathsByFileBaseName=_pathsByFileBaseName;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *pathsByFileBaseNameAccess; // @synthesize pathsByFileBaseNameAccess=_pathsByFileBaseNameAccess;
-@property (strong, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
 @property (strong, nonatomic) NSArray *urls; // @synthesize urls=_urls;
 
 + (BOOL)treatAsReadonlyVolume:(id)arg1;
 - (void).cxx_destruct;
+- (id)assetsByProcessingItem:(id)arg1;
 - (void)beginWork;
+- (BOOL)canReference;
 - (void)dealloc;
 - (void)dispatchAssetDataRequestAsync:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)endWork;
+- (unsigned long long)hash;
 - (id)initWithUrls:(id)arg1;
 - (BOOL)isAvailable;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToImportUrlSource:(id)arg1;
 - (id)name;
-- (id)processItem:(id)arg1 applyingBlock:(CDUnknownBlockType)arg2;
+- (id)path;
+- (id)prefix;
 - (id)productKind;
+- (id)rootUrlOfUrls:(id)arg1;
+- (void)setPrefix:(id)arg1;
+- (id)volumePath;
 
 @end
 

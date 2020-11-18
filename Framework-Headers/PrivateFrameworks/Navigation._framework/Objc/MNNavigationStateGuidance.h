@@ -6,42 +6,47 @@
 
 #import <Navigation/MNNavigationState.h>
 
-@class MNNavigationSessionManager, MNRoutePlanningDetails;
+@class MNNavigationSessionManager, MNStartNavigationDetails;
 
-__attribute__((visibility("hidden")))
 @interface MNNavigationStateGuidance : MNNavigationState
 {
-    MNRoutePlanningDetails *_routePlanningDetails;
     MNNavigationSessionManager *_navigationSessionManager;
+    MNStartNavigationDetails *_startDetails;
 }
 
-+ (id)guidanceStateForRoutePlanningDetails:(id)arg1 stateManager:(id)arg2 navigationSessionManager:(id)arg3;
++ (id)guidanceStateForStartDetails:(id)arg1 stateManager:(id)arg2 navigationSessionManager:(id)arg3;
 - (void).cxx_destruct;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
 - (id)currentDestination;
 - (unsigned long long)desiredLocationProviderType;
-- (unsigned long long)desiredResourcePolicy;
 - (void)enterState;
-- (id)initWithStateManager:(id)arg1 navigationSessionManager:(id)arg2 routePlanningDetails:(id)arg3;
+- (id)initWithStateManager:(id)arg1 navigationSessionManager:(id)arg2 startDetails:(id)arg3;
 - (void)leaveState;
+- (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
+- (void)preEnterState;
+- (void)recordPedestrianTracePath:(id)arg1;
 - (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(id)arg1;
 - (void)repeatCurrentGuidanceWithReply:(CDUnknownBlockType)arg1;
 - (void)repeatCurrentTrafficAlertWithReply:(CDUnknownBlockType)arg1;
 - (BOOL)requiresHighMemoryThreshold;
 - (void)resumeOriginalDestination;
+- (void)resumeRealtimeUpdatesForSubscriber:(id)arg1;
 - (void)setCurrentAudioOutputSetting:(id)arg1;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setHFPPreference:(BOOL)arg1 forSetting:(id)arg2;
 - (void)setIsConnectedToCarplay:(BOOL)arg1;
+- (void)setJunctionViewImageWidth:(double)arg1 height:(double)arg2;
 - (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
 - (void)setTraceIsPlaying:(BOOL)arg1;
 - (void)setTracePlaybackSpeed:(double)arg1;
 - (void)setTracePosition:(double)arg1;
+- (BOOL)shouldClearStoredRoutes;
 - (void)stopCurrentGuidancePrompt;
 - (void)stopNavigation;
-- (void)switchToRouteWithDetails:(id)arg1;
+- (void)switchToRoute:(id)arg1;
 - (id)traceManager;
 - (void)updateDestination:(id)arg1;
+- (void)updateGuidanceWithData:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 
 @end

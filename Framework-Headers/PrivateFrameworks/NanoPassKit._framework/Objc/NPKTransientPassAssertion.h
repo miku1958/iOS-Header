@@ -11,10 +11,12 @@
 @interface NPKTransientPassAssertion : NSObject
 {
     BOOL _requestServiceMode;
+    BOOL _disableCardSelection;
     NSXPCConnection *_xpcConnection;
     NSString *_uniqueID;
 }
 
+@property (nonatomic) BOOL disableCardSelection; // @synthesize disableCardSelection=_disableCardSelection;
 @property (nonatomic) BOOL requestServiceMode; // @synthesize requestServiceMode=_requestServiceMode;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;

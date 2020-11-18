@@ -10,6 +10,8 @@
 
 @property (nonatomic, setter=rc_setScreenUpdatesDisabled:) BOOL rc_screenUpdatesDisabled;
 
++ (id)recursiveDescription;
+- (id)_recursiveDescriptionWithInset:(id)arg1;
 - (void)rc_addChildViewWithViewController:(id)arg1;
 - (void)rc_addChildViewWithViewController:(id)arg1 toView:(id)arg2;
 - (void)rc_applicationDidEnterBackground;
@@ -25,5 +27,6 @@
 - (void)rc_runAutomatedDebuggingTestsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)rc_screenUpdatesDisabledDidChange;
 - (BOOL)rc_shouldAutoDisableUpdatesWhenInBackground;
+- (id)recursiveDescription;
 @end
 

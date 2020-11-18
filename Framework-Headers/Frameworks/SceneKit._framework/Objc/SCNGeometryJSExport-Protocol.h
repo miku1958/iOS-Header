@@ -6,7 +6,7 @@
 
 #import <SceneKit/JSExport-Protocol.h>
 
-@class CAAnimation, MDLMesh, NSArray, NSString, SCNGeometryElement, SCNGeometrySource, SCNMaterial;
+@class CAAnimation, MDLMesh, NSArray, NSString, SCNGeometryElement, SCNGeometrySource, SCNGeometryTessellator, SCNMaterial;
 
 @protocol SCNGeometryJSExport <JSExport>
 
@@ -20,7 +20,9 @@
 @property (copy, nonatomic) NSArray *levelsOfDetail;
 @property (copy, nonatomic) NSArray *materials;
 @property (copy, nonatomic) NSString *name;
+@property (nonatomic) long long smoothingMode;
 @property (nonatomic) unsigned long long subdivisionLevel;
+@property (strong, nonatomic) SCNGeometryTessellator *tessellator;
 
 + (id)geometry;
 + (id)geometryWithMDLMesh:(MDLMesh *)arg1;

@@ -35,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (void)addUrls:(id)arg1;
+- (void)clearBundleid;
 - (void)clearUrls;
 - (id)dictionaryRepresentation;
 - (id)feedbackJSON;

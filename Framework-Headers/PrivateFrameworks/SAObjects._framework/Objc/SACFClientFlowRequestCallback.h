@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAAceSerializable-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSNumber, NSString, SASVSystemDialogActOutput;
 
 @interface SACFClientFlowRequestCallback : AceObject <SAAceSerializable>
 {
@@ -29,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *nlInput;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SASVSystemDialogActOutput *systemDialogActOutput;
 @property (copy, nonatomic) NSArray *weightedPromptAbortValues;
 @property (copy, nonatomic) NSArray *weightedPromptResponseTargets;
 @property (copy, nonatomic) NSNumber *weightedPromptStrict;

@@ -15,18 +15,20 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_responses;
     int _statusCode;
-    CDStruct_bcb1eac0 _has;
+    CDStruct_ade9d5f7 _flags;
 }
 
 @property (nonatomic) BOOL hasStatusCode;
-@property (strong, nonatomic) NSMutableArray *responses; // @synthesize responses=_responses;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (strong, nonatomic) NSMutableArray *responses;
+@property (nonatomic) int statusCode;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)responseType;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)addResponse:(id)arg1;
 - (void)clearResponses;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)responseAtIndex:(unsigned long long)arg1;
 - (unsigned long long)responsesCount;

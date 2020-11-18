@@ -9,7 +9,7 @@
 #import <ContactsAutocomplete/CNCancelable-Protocol.h>
 
 @class CNAutocompleteDelegateWrapper, CNAutocompleteFetchRequest, CNAutocompleteUserSession, CNCancelationToken, NSString;
-@protocol CNAutocompleteProbeProvider, CNAutocompleteSearchProvider, CNCancelable, CNScheduler;
+@protocol CNAutocompleteProbeProvider, CNAutocompleteSearchProvider, CNAutocompleteSourceInclusionPolicy, CNCancelable, CNScheduler;
 
 @interface CNAutocompleteQuery : NSObject <CNCancelable>
 {
@@ -21,6 +21,7 @@
     id<CNAutocompleteProbeProvider> _probeProvider;
     CNAutocompleteUserSession *_userSession;
     id<CNCancelable> _delegateToken;
+    id<CNAutocompleteSourceInclusionPolicy> _sourceInclusionPolicy;
 }
 
 @property (strong) CNCancelationToken *cancelationToken; // @synthesize cancelationToken=_cancelationToken;
@@ -33,6 +34,7 @@
 @property (copy) CNAutocompleteFetchRequest *request; // @synthesize request=_request;
 @property (strong) id<CNScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (strong) id<CNAutocompleteSearchProvider> searchProvider; // @synthesize searchProvider=_searchProvider;
+@property (strong) id<CNAutocompleteSourceInclusionPolicy> sourceInclusionPolicy; // @synthesize sourceInclusionPolicy=_sourceInclusionPolicy;
 @property (readonly) Class superclass;
 @property (strong) CNAutocompleteUserSession *userSession; // @synthesize userSession=_userSession;
 
@@ -44,13 +46,14 @@
 + (id)queryWithRequest:(id)arg1 searchProvider:(id)arg2 delegate:(id)arg3 probeProvider:(id)arg4 scheduler:(id)arg5 userSession:(id)arg6 delegateToken:(id)arg7;
 + (BOOL)searchTypeSupportsSuppressionOfAlreadyChosenAddresses:(unsigned long long)arg1;
 + (BOOL)shouldPerformQueryForRequest:(id)arg1;
++ (BOOL)shouldSortResultsForPolicy:(id)arg1;
 + (BOOL)shouldSuppressAddressesAlreadyChosenForRequest:(id)arg1;
 - (void).cxx_destruct;
 - (void)cancel;
 - (id)execute;
 - (id)executeWithContext:(id)arg1;
 - (id)initWithRequest:(id)arg1 searchProvider:(id)arg2 delegate:(id)arg3 probeProvider:(id)arg4 scheduler:(id)arg5 userSession:(id)arg6 delegateToken:(id)arg7;
-- (id)makeDelegateWrapperWithDelegate:(id)arg1 forRequest:(id)arg2 userSession:(id)arg3;
+- (id)makeDelegateWrapperWithDelegate:(id)arg1 forRequest:(id)arg2 sourceInclusionPolicy:(id)arg3 userSession:(id)arg4;
 - (void)searchOperationEncounteredError:(id)arg1;
 - (void)searchOperationReportedResults:(id)arg1;
 - (void)searchOperationsHaveBegunNetworkActivity;

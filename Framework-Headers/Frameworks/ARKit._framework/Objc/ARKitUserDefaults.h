@@ -14,6 +14,7 @@
 + (id)defaultValues;
 + (float)floatForKey:(id)arg1;
 + (long long)integerForKey:(id)arg1;
++ (id)keysWhitelistedForProcessEnvironmentOverride;
 + (id)numberForKey:(id)arg1;
 + (id)objectForKey:(id)arg1;
 + (void)removeAllKeys;

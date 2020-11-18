@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSMutableURLRequest.h>
+#import <CFNetwork/NSMutableURLRequest.h>
 
 @interface NSMutableURLRequest (AuthKit)
 + (id)ak_anisetteHeadersWithCompanionData:(id)arg1;
@@ -19,6 +19,7 @@
 - (void)ak_addAbsintheHeaderWithValue:(id)arg1;
 - (void)ak_addAcceptedSLAHeaderWithVersion:(unsigned long long)arg1;
 - (void)ak_addAnisetteHeaders;
+- (void)ak_addAppProvidedContext:(id)arg1;
 - (void)ak_addAppleIDHeaderWithValue:(id)arg1;
 - (void)ak_addAppleIDUserModeHeaderWithValue:(unsigned long long)arg1;
 - (void)ak_addAuthorizationHeaderWithHeartbeatToken:(id)arg1 forAltDSID:(id)arg2;
@@ -33,6 +34,7 @@
 - (void)ak_addContextHeaderForServiceType:(long long)arg1;
 - (void)ak_addContinutationKeyHeader:(id)arg1;
 - (void)ak_addCountryHeader;
+- (void)ak_addDeviceConfigurationModeHeader;
 - (void)ak_addDeviceMLBHeader;
 - (void)ak_addDeviceModel;
 - (void)ak_addDeviceROMHeader;
@@ -52,7 +54,13 @@
 - (void)ak_addPhoneNumberCertificateHeaderWithValue:(id)arg1;
 - (void)ak_addPhoneNumberHeader;
 - (void)ak_addProxiedAnisetteHeaders:(id)arg1;
+- (void)ak_addProxiedAttestationHeaders:(id)arg1;
+- (void)ak_addProxiedAuthorizationHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addProxiedClientInfoHeader:(id)arg1;
+- (void)ak_addProxiedDeviceCountryHeader:(id)arg1;
+- (void)ak_addProxiedDeviceICSCIntentHeader;
+- (void)ak_addProxiedDevicePRKRequestHeader;
+- (void)ak_addProxiedDeviceSerialNumberHeader:(id)arg1;
 - (void)ak_addProxiedDeviceUDIDHeader:(id)arg1;
 - (void)ak_addProxyApp:(id)arg1;
 - (void)ak_addRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;

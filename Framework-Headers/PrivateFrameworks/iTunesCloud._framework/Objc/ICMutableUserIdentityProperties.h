@@ -6,21 +6,26 @@
 
 #import <iTunesCloud/ICUserIdentityProperties.h>
 
-@class ICDelegateToken, NSDate, NSNumber, NSString;
+@class ICDelegateToken, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface ICMutableUserIdentityProperties : ICUserIdentityProperties
 {
 }
 
 @property (copy, nonatomic) NSNumber *DSID; // @dynamic DSID;
+@property (nonatomic, getter=isActive) BOOL active; // @dynamic active;
+@property (nonatomic, getter=isActiveLocker) BOOL activeLocker; // @dynamic activeLocker;
 @property (copy, nonatomic) NSDate *ageVerificationExpirationDate; // @dynamic ageVerificationExpirationDate;
 @property (copy, nonatomic) NSString *alternateDSID; // @dynamic alternateDSID;
 @property (copy, nonatomic) NSString *carrierBundleDeviceIdentifier; // @dynamic carrierBundleDeviceIdentifier;
+@property (copy, nonatomic) NSDictionary *cloudLibraryStateReason; // @dynamic cloudLibraryStateReason;
 @property (copy, nonatomic) ICDelegateToken *delegateToken; // @dynamic delegateToken;
 @property (nonatomic, getter=isDelegated) BOOL delegated; // @dynamic delegated;
 @property (copy, nonatomic) NSString *firstName; // @dynamic firstName;
 @property (copy, nonatomic) NSString *lastName; // @dynamic lastName;
 @property (nonatomic, getter=isManagedAppleID) BOOL managedAppleID; // @dynamic managedAppleID;
+@property (copy, nonatomic) NSNumber *mergeToCloudLibraryPreference; // @dynamic mergeToCloudLibraryPreference;
+@property (copy, nonatomic) NSNumber *privateListeningEnabled; // @dynamic privateListeningEnabled;
 @property (nonatomic, getter=isSandboxed) BOOL sandboxed; // @dynamic sandboxed;
 @property (copy, nonatomic) NSString *storefrontIdentifier; // @dynamic storefrontIdentifier;
 @property (nonatomic, getter=isSubscriptionStatusEnabled) BOOL subscriptionStatusEnabled; // @dynamic subscriptionStatusEnabled;
@@ -28,7 +33,9 @@
 
 - (void)replaceValuesWithValuesFromProperties:(id)arg1;
 - (void)setCloudBackupEnabled:(BOOL)arg1;
+- (void)setHomeUserIdentifiers:(id)arg1;
 - (void)setICloudPersonID:(id)arg1;
+- (void)setPrivateListeningEnabledForHomeUsers:(id)arg1;
 
 @end
 

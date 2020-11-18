@@ -8,6 +8,7 @@
 
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface QLGracePeriodTimer : NSObject
 {
     CDUnknownBlockType _action;
@@ -15,6 +16,8 @@
     double _delay;
     NSObject<OS_dispatch_source> *_timer;
 }
+
+@property (copy) CDUnknownBlockType action; // @synthesize action=_action;
 
 - (void).cxx_destruct;
 - (void)_createTimer;

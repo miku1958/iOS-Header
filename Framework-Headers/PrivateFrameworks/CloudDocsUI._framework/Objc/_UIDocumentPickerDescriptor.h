@@ -37,14 +37,14 @@ __attribute__((visibility("hidden")))
 + (id)filteredPickersForPickers:(id)arg1 filter:(unsigned long long)arg2;
 + (CDStruct_6ad76789)hostAuditToken;
 + (id)hostBundleID;
++ (BOOL)isContentManaged;
 + (BOOL)isInAddToiCloudDrive;
 + (id)manageablePickersForMode:(unsigned long long)arg1 documentTypes:(id)arg2;
 + (id)pickerOrder;
 + (void)setHostAuditToken:(CDStruct_6ad76789)arg1;
 + (void)setHostBundleID:(id)arg1;
++ (void)setIsContentManaged:(BOOL)arg1;
 + (void)setOrderFromPickers:(id)arg1;
-+ (void)setSourceIsManaged:(BOOL)arg1;
-+ (BOOL)sourceIsManaged;
 - (void).cxx_destruct;
 - (id)_extensionValueOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)_ownBundle;

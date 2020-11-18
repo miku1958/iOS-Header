@@ -6,30 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class VKIconManager, VKShieldManager;
+@class VKIconManager;
 
 @interface MKTransitArtworkManager : NSObject
 {
     VKIconManager *_iconManager;
-    VKShieldManager *_shieldManager;
 }
 
 @property (readonly, nonatomic) VKIconManager *iconManager; // @synthesize iconManager=_iconManager;
-@property (readonly, nonatomic) VKShieldManager *shieldManager; // @synthesize shieldManager=_shieldManager;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_createImageWithBlockInAutoreleasePoolIfNeeded:(CDUnknownBlockType)arg1;
 - (id)_imageFroMVKImage:(id)arg1;
-- (id)_imageWithDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 withWidthPaddingMultiple:(double)arg5 fullBleedColor:(id *)arg6;
+- (id)_imageWithDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 nightMode:(BOOL)arg5 withWidthPaddingMultiple:(double)arg6 fullBleedColor:(id *)arg7;
 - (BOOL)_isMemoryConstrained;
-- (id)_vkImageWithShieldDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 widthPaddingMultiple:(double)arg5;
-- (id)initWithShieldManager:(id)arg1 iconManager:(id)arg2;
+- (id)_vkImageWithShieldDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 nightMode:(BOOL)arg5 widthPaddingMultiple:(double)arg6;
+- (id)initWithIconManager:(id)arg1;
 - (void)purge;
-- (id)transitArtworkImageWithDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4;
-- (id)transitArtworkImageWithDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 withWidthPaddingMultiple:(double)arg5;
-- (id)transitArtworkImageWithDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 withWidthPaddingMultiple:(double)arg5 fullBleedColor:(id *)arg6;
-- (id)transitArtworkImageWithShieldDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4;
+- (id)transitArtworkImageWithDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 nightMode:(BOOL)arg5;
+- (id)transitArtworkImageWithDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 nightMode:(BOOL)arg5 withWidthPaddingMultiple:(double)arg6;
+- (id)transitArtworkImageWithDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 nightMode:(BOOL)arg5 withWidthPaddingMultiple:(double)arg6 fullBleedColor:(id *)arg7;
+- (id)transitArtworkImageWithShieldDataSource:(id)arg1 size:(long long)arg2 featureType:(unsigned long long)arg3 scale:(double)arg4 nightMode:(BOOL)arg5;
 
 @end
 

@@ -14,23 +14,25 @@ __attribute__((visibility("hidden")))
 @interface GEOPDEventCategory : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    int _eventLookupCategory;
     NSMutableArray *_localizedCategorys;
+    int _eventLookupCategory;
     struct {
-        unsigned int eventLookupCategory:1;
-    } _has;
+        unsigned int has_eventLookupCategory:1;
+    } _flags;
 }
 
-@property (nonatomic) int eventLookupCategory; // @synthesize eventLookupCategory=_eventLookupCategory;
+@property (nonatomic) int eventLookupCategory;
 @property (nonatomic) BOOL hasEventLookupCategory;
-@property (strong, nonatomic) NSMutableArray *localizedCategorys; // @synthesize localizedCategorys=_localizedCategorys;
+@property (strong, nonatomic) NSMutableArray *localizedCategorys;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)localizedCategoryType;
 - (void).cxx_destruct;
 - (int)StringAsEventLookupCategory:(id)arg1;
 - (void)addLocalizedCategory:(id)arg1;
 - (void)clearLocalizedCategorys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedCategoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedCategorysCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

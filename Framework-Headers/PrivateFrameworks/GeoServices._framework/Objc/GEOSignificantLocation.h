@@ -8,34 +8,47 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSString;
+@class GEOLocation, NSString, PBDataReader;
 
 @interface GEOSignificantLocation : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     double _confidence;
     NSString *_identifier;
     GEOLocation *_location;
     unsigned int _locationIndex;
     unsigned int _numberOfVisitsBucket;
     struct {
-        unsigned int confidence:1;
-        unsigned int locationIndex:1;
-        unsigned int numberOfVisitsBucket:1;
-    } _has;
+        unsigned int has_confidence:1;
+        unsigned int has_locationIndex:1;
+        unsigned int has_numberOfVisitsBucket:1;
+        unsigned int read_identifier:1;
+        unsigned int read_location:1;
+        unsigned int wrote_confidence:1;
+        unsigned int wrote_identifier:1;
+        unsigned int wrote_location:1;
+        unsigned int wrote_locationIndex:1;
+        unsigned int wrote_numberOfVisitsBucket:1;
+    } _flags;
 }
 
-@property (nonatomic) double confidence; // @synthesize confidence=_confidence;
+@property (nonatomic) double confidence;
 @property (nonatomic) BOOL hasConfidence;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasLocationIndex;
 @property (nonatomic) BOOL hasNumberOfVisitsBucket;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
-@property (nonatomic) unsigned int locationIndex; // @synthesize locationIndex=_locationIndex;
-@property (nonatomic) unsigned int numberOfVisitsBucket; // @synthesize numberOfVisitsBucket=_numberOfVisitsBucket;
+@property (strong, nonatomic) NSString *identifier;
+@property (strong, nonatomic) GEOLocation *location;
+@property (nonatomic) unsigned int locationIndex;
+@property (nonatomic) unsigned int numberOfVisitsBucket;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readIdentifier;
+- (void)_readLocation;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +56,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

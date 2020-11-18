@@ -12,16 +12,21 @@ __attribute__((visibility("hidden")))
     BOOL _observingNotification;
     BOOL _didCheckForPreferredContentSizeCategoryOverride;
     BOOL _applicationOverridesPreferredContentSizeCategory;
+    UIContentSizeCategoryPreference *_overridePreferences;
 }
 
+@property (strong, nonatomic) UIContentSizeCategoryPreference *overridePreferences; // @synthesize overridePreferences=_overridePreferences;
+
+- (void).cxx_destruct;
 - (void)_beginObservingPreferredContentSizeChangedNotification;
 - (void)_endObservingPreferredContentSizeChangedNotification;
 - (void)_postContentSizeCategoryDidChangeNotification;
 - (void)_readAndObservePreferences;
-- (void)_updateContentSizeCategory:(id)arg1 postingNotification:(BOOL)arg2;
-- (void)_updateContentSizeCategoryFromUserDefaultsPostingNotification:(BOOL)arg1;
+- (void)_updateContentSizeCategoriesFromUserDefaultsPostingNotification:(BOOL)arg1;
+- (void)_updateContentSizeCategory:(id)arg1 carPlay:(id)arg2 postingNotification:(BOOL)arg3;
 - (void)checkForChanges;
 - (void)dealloc;
+- (id)description;
 - (id)initAsSystem;
 - (void)setPreferredContentSizeCategory:(id)arg1;
 

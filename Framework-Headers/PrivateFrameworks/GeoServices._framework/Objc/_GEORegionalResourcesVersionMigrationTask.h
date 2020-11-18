@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOActiveTileGroupMigrationTask-Protocol.h>
 
-@class GEORegionalResourcesVersionMigrator, GEOReportedProgress, GEOResourceManifestConfiguration, GEOResources, GEOTileGroup, NSProgress, NSSet, NSString;
+@class GEOActiveTileGroupMigrationTaskOptions, GEORegionalResourcesVersionMigrator, GEOReportedProgress, GEOResourceManifestConfiguration, GEOResources, GEOTileGroup, NSProgress, NSSet, NSString;
 @protocol NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_callbackQueue;
     GEOReportedProgress *_progress;
     id<NSObject> _transaction;
+    GEOActiveTileGroupMigrationTaskOptions *_options;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) long long estimatedWeight;
+@property (readonly, nonatomic) long long estimatedWeight;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) GEOActiveTileGroupMigrationTaskOptions *options; // @synthesize options=_options;
 @property (readonly) NSProgress *progress;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<NSObject> transaction; // @synthesize transaction=_transaction;

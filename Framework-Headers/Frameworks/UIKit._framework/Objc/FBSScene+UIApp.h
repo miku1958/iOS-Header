@@ -7,6 +7,7 @@
 #import <FrontBoardServices/FBSScene.h>
 
 @interface FBSScene (UIApp)
+- (BOOL)isPersistable;
 - (BOOL)uiCanReceiveDeviceOrientationEvents;
 - (id)uiClientSettings;
 - (id)uiSettings;

@@ -9,12 +9,13 @@
 #import <UIKitCore/_UIStatusBarActionable-Protocol.h>
 #import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
 
-@class NSString, UIView, _UIStatusBarAction, _UIStatusBarDisplayItemPlacement, _UIStatusBarIdentifier, _UIStatusBarItem, _UIStatusBarRegion;
+@class NSString, UIView, _UIStatusBarAction, _UIStatusBarDisplayItemPlacement, _UIStatusBarIdentifier, _UIStatusBarItem, _UIStatusBarRegion, _UIStatusBarStyleAttributes;
 @protocol UILayoutItem, _UIStatusBarDisplayable;
 
 @interface _UIStatusBarDisplayItem : NSObject <_UIStatusBarPrioritized, _UIStatusBarActionable>
 {
     BOOL _enabled;
+    BOOL _background;
     BOOL _floating;
     BOOL _needsAddingToLayout;
     UIView<_UIStatusBarDisplayable> *_view;
@@ -25,6 +26,7 @@
     double _alpha;
     double _viewAlpha;
     double _baselineOffset;
+    _UIStatusBarStyleAttributes *_overriddenStyleAttributes;
     long long _overriddenVerticalAlignment;
     _UIStatusBarRegion *_region;
     UIView *_containerView;
@@ -39,6 +41,7 @@
 @property (strong, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
 @property (nonatomic) struct UIEdgeInsets actionInsets; // @synthesize actionInsets=_actionInsets;
 @property (nonatomic) double alpha; // @synthesize alpha=_alpha;
+@property (nonatomic, getter=isBackground) BOOL background; // @synthesize background=_background;
 @property (nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property (weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, copy) NSString *debugDescription;
@@ -52,6 +55,7 @@
 @property (readonly, weak, nonatomic) _UIStatusBarItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) id<UILayoutItem> layoutItem; // @synthesize layoutItem=_layoutItem;
 @property (nonatomic) BOOL needsAddingToLayout; // @synthesize needsAddingToLayout=_needsAddingToLayout;
+@property (strong, nonatomic) _UIStatusBarStyleAttributes *overriddenStyleAttributes; // @synthesize overriddenStyleAttributes=_overriddenStyleAttributes;
 @property (nonatomic) long long overriddenVerticalAlignment; // @synthesize overriddenVerticalAlignment=_overriddenVerticalAlignment;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *placement; // @synthesize placement=_placement;
 @property (readonly, nonatomic) long long priority;

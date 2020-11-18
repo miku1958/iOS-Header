@@ -6,25 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <FrontBoard/BSXPCConnectionListenerHandler-Protocol.h>
+#import <FrontBoard/BSServiceConnectionListenerDelegate-Protocol.h>
 
-@class NSString;
-@protocol OS_dispatch_queue;
+@class BSServiceConnectionEndpoint, BSServiceConnectionListener, NSString;
 
-@interface FBWorkspaceConnectionListener : NSObject <BSXPCConnectionListenerHandler>
+@interface FBWorkspaceConnectionListener : NSObject <BSServiceConnectionListenerDelegate>
 {
-    NSObject<OS_dispatch_queue> *_connectionDispatcherQueue;
+    BSServiceConnectionListener *_listener;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) BSServiceConnectionEndpoint *endpoint;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_sharedDomain;
++ (id)sharedDomainIdentifier;
++ (BOOL)sharedDomainUsesDefaultShellEndpoint;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)handleIncomingConnection:(id)arg1 forService:(id)arg2;
+- (id)_initWithDomain:(id)arg1;
+- (void)dealloc;
 - (id)init;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
 
 @end
 

@@ -26,6 +26,7 @@
 - (void)_setupConstraints;
 - (void)_setupUIWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(BOOL)arg3;
 - (id)initWithSample:(id)arg1 dateCache:(id)arg2 onboarding:(BOOL)arg3;
+- (void)prepareForReuse;
 
 @end
 

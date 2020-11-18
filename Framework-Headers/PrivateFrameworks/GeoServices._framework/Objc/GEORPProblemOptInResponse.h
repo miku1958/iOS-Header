@@ -12,12 +12,13 @@ __attribute__((visibility("hidden")))
 @interface GEORPProblemOptInResponse : PBCodable <NSCopying>
 {
     int _statusCode;
-    CDStruct_bcb1eac0 _has;
+    CDStruct_ade9d5f7 _flags;
 }
 
 @property (nonatomic) BOOL hasStatusCode;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (nonatomic) int statusCode;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

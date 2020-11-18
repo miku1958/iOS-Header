@@ -34,7 +34,6 @@
     BOOL _supportsCellularData;
     BOOL _simBecameNotReady;
     long long _simInserted;
-    BOOL _wantsForcedCellularQueries;
     long long _isPNRSupportedCachedValue;
     BOOL _faceTimeBlocked;
     BOOL _iMessageBlocked;
@@ -117,12 +116,10 @@
 @property (readonly, nonatomic) NSDictionary *telephonyCapabilities;
 @property (readonly, nonatomic) NSString *userAgentString;
 @property (readonly, nonatomic) BOOL wantsBreakBeforeMake;
-@property (readonly, nonatomic) BOOL wantsForcedCellularQueries; // @synthesize wantsForcedCellularQueries=_wantsForcedCellularQueries;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)_enoughPowerToSupportEffects;
-- (id)_forceWWANQueriesCarrierBundleValue;
 - (void)_handleCarrierSettingsChanged;
 - (void)_handlePotentialPhoneNumberRegistrationStateChanged;
 - (void)_handleSIMStatusChangedToStatus:(id)arg1;
@@ -144,7 +141,6 @@
 - (void)_updateCTNetworkDictionary:(id)arg1 key:(id)arg2 withTelephonyNetworkValue:(id)arg3 telephonyError:(id)arg4;
 - (void)_updateCapabilities;
 - (void)_updateManagedConfigurationSettings;
-- (BOOL)_wantsForcedCellularQueries;
 - (void)carrierBundleChange:(id)arg1;
 - (int)cpuFamily;
 - (void)dealloc;

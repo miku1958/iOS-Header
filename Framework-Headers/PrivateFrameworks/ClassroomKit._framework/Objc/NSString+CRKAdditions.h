@@ -12,5 +12,6 @@
 - (id)crk_sha1Hash;
 - (id)crk_stringByRemovingPrefix:(id)arg1;
 - (id)crk_stringByRemovingSuffix:(id)arg1;
+- (id)crk_substringAfterString:(id)arg1;
 @end
 

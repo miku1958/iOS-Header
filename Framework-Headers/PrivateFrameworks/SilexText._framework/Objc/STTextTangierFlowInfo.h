@@ -33,6 +33,7 @@
 @property (weak, nonatomic) id<TSDRepDirectLayerHosting> directLayerHost; // @synthesize directLayerHost=_directLayerHost;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText; // @synthesize floatingAboveText;
 @property (copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry;
+@property (readonly, nonatomic) BOOL hasSpeakableContent;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @synthesize inlineWithText;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;

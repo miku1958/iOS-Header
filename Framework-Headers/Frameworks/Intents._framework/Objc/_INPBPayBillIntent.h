@@ -17,6 +17,7 @@
     struct {
         unsigned int billType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _billType;
     _INPBBillPayeeValue *_billPayee;
     _INPBDateTimeRange *_dueDate;
@@ -27,6 +28,7 @@
     _INPBDateTimeRange *_transactionScheduledDate;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBBillPayeeValue *billPayee; // @synthesize billPayee=_billPayee;
 @property (nonatomic) int billType; // @synthesize billType=_billType;
 @property (readonly, copy) NSString *debugDescription;
@@ -48,11 +50,14 @@
 @property (strong, nonatomic) _INPBString *transactionNote; // @synthesize transactionNote=_transactionNote;
 @property (strong, nonatomic) _INPBDateTimeRange *transactionScheduledDate; // @synthesize transactionScheduledDate=_transactionScheduledDate;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsBillType:(id)arg1;
 - (id)billTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

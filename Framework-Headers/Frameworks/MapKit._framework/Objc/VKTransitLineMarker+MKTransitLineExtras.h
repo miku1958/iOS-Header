@@ -11,13 +11,13 @@
 #import <MapKit/MKTransitLineMarker-Protocol.h>
 
 @class NSString;
-@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource;
+@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
 @interface VKTransitLineMarker (MKTransitLineExtras) <MKTransitLineMarker, GEOTransitShieldDataSource, GEOTransitArtworkDataSource>
 
 @property (readonly, nonatomic) NSString *accessibilityText;
-@property (readonly, nonatomic) long long artworkSourceType;
-@property (readonly, nonatomic) long long artworkUseType;
+@property (readonly, nonatomic) int artworkSourceType;
+@property (readonly, nonatomic) int artworkUseType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasRoutingIncidentBadge;
@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) NSString *shieldText;
 @property (readonly, nonatomic) long long shieldType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<GEOTransitTextDataSource> textDataSource;
 
 - (id)artwork;
 - (id)mapItemIdentifier;

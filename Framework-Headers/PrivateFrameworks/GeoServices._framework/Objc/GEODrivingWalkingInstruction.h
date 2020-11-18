@@ -8,33 +8,58 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSMutableArray;
+@class GEOFormattedString, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEODrivingWalkingInstruction : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_continueCommands;
     GEOFormattedString *_distance;
     NSMutableArray *_mergeCommands;
     NSMutableArray *_normalCommands;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_continueCommands:1;
+        unsigned int read_distance:1;
+        unsigned int read_mergeCommands:1;
+        unsigned int read_normalCommands:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_continueCommands:1;
+        unsigned int wrote_distance:1;
+        unsigned int wrote_mergeCommands:1;
+        unsigned int wrote_normalCommands:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *continueCommands; // @synthesize continueCommands=_continueCommands;
-@property (strong, nonatomic) GEOFormattedString *distance; // @synthesize distance=_distance;
+@property (strong, nonatomic) NSMutableArray *continueCommands;
+@property (strong, nonatomic) GEOFormattedString *distance;
 @property (readonly, nonatomic) BOOL hasDistance;
-@property (strong, nonatomic) NSMutableArray *mergeCommands; // @synthesize mergeCommands=_mergeCommands;
-@property (strong, nonatomic) NSMutableArray *normalCommands; // @synthesize normalCommands=_normalCommands;
+@property (strong, nonatomic) NSMutableArray *mergeCommands;
+@property (strong, nonatomic) NSMutableArray *normalCommands;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)continueCommandType;
++ (BOOL)isValid:(id)arg1;
 + (Class)mergeCommandType;
 + (Class)normalCommandType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsContinueCommand:(id)arg1;
+- (void)_addNoFlagsMergeCommand:(id)arg1;
+- (void)_addNoFlagsNormalCommand:(id)arg1;
+- (void)_readContinueCommands;
+- (void)_readDistance;
+- (void)_readMergeCommands;
+- (void)_readNormalCommands;
 - (void)addContinueCommand:(id)arg1;
 - (void)addMergeCommand:(id)arg1;
 - (void)addNormalCommand:(id)arg1;
 - (void)clearContinueCommands;
 - (void)clearMergeCommands;
 - (void)clearNormalCommands;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (id)continueCommandAtIndex:(unsigned long long)arg1;
 - (unsigned long long)continueCommandsCount;
 - (void)copyTo:(id)arg1;
@@ -48,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)normalCommandAtIndex:(unsigned long long)arg1;
 - (unsigned long long)normalCommandsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

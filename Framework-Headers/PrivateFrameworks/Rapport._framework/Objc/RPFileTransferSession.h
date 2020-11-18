@@ -61,6 +61,7 @@
     unsigned long long _metricUncompressibleChunks;
     unsigned int _metricDisconnects;
     unsigned long long _metricRetries;
+    unsigned long long _metricLastFileCompletionTicks;
     unsigned long long _metricFileSizeBuckets[8];
     unsigned int _metricLinkTypeCountAWDL;
     unsigned int _metricLinkTypeCountOther;

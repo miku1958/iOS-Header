@@ -18,11 +18,14 @@
 + (void)clearTestSettings;
 + (void)disableBundleIdentifier:(id)arg1;
 + (void)initialize;
++ (BOOL)isSupportedSearchableItemBundleIdentifier:(id)arg1;
++ (void)migrateForTests;
 + (id)sharedInstance;
 + (BOOL)shouldAdmitContentFromBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (void)_clearTestSettings;
 - (void)_disableBundleIdentifier:(id)arg1;
+- (void)_migrateIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_refreshDisabledBundleIds;
 - (BOOL)_shouldAdmitContentFromBundleIdentifier:(id)arg1;
 - (id)init;

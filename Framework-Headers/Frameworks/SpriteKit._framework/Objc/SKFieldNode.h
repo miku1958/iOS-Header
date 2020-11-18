@@ -11,24 +11,24 @@
 @interface SKFieldNode : SKNode
 {
     PKPhysicsField *_field;
-    SKRegion *_region;
-    float _smoothness;
-    float _animationSpeed;
-    SKTexture *_texture;
     BOOL _exclusive;
+    float _animationSpeed;
+    float _smoothness;
+    SKTexture *_texture;
+    SKRegion *_region;
 }
 
-@property (nonatomic) float animationSpeed;
+@property (nonatomic) float animationSpeed; // @synthesize animationSpeed=_animationSpeed;
 @property (nonatomic) unsigned int categoryBitMask;
 @property (nonatomic) MISSING_TYPE *direction;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (nonatomic, getter=isExclusive) BOOL exclusive; // @synthesize exclusive=_exclusive;
 @property (nonatomic) float falloff;
 @property (nonatomic) float minimumRadius;
-@property (strong, nonatomic) SKRegion *region;
-@property (nonatomic) float smoothness;
+@property (strong, nonatomic) SKRegion *region; // @synthesize region=_region;
+@property (nonatomic) float smoothness; // @synthesize smoothness=_smoothness;
 @property (nonatomic) float strength;
-@property (strong, nonatomic) SKTexture *texture;
+@property (strong, nonatomic) SKTexture *texture; // @synthesize texture=_texture;
 
 + (id)customFieldWithEvaluationBlock:(CDUnknownBlockType)arg1;
 + (id)dragField;

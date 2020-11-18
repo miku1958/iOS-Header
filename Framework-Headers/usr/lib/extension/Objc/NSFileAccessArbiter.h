@@ -23,6 +23,8 @@
     NSMutableDictionary *_subarbitrationClaimsByID;
     NSMutableDictionary *_reactorsByID;
     NSMutableDictionary *_reactorTransactionsByID;
+    NSMutableDictionary *_kernelMaterializationClaimCancellers;
+    NSMutableDictionary *_kernelMaterializationClaimTransactions;
     NSFileAccessNode *_rootNode;
     NSXPCConnection *_superarbitrationServer;
     NSObject<OS_dispatch_source> *_debugSignalSource;
@@ -34,16 +36,15 @@
 @property (readonly) NSXPCConnection *superarbitrationConnection;
 @property (readonly) Class superclass;
 
-+ (void)_gainedBirdProvider:(id)arg1;
-+ (void)_lostBirdProvider:(id)arg1;
-+ (void)_wakeUpBirdWithUID:(unsigned int)arg1 urls:(id)arg2 queue:(id)arg3 thenContinue:(CDUnknownBlockType)arg4;
-+ (void)ensureProvidersIfNecessaryForClaim:(id)arg1 atLocation:(id)arg2 queue:(id)arg3 thenContinue:(CDUnknownBlockType)arg4;
++ (void)_wakeUpFileProviderWithUID:(unsigned int)arg1 urls:(id)arg2 queue:(id)arg3 thenContinue:(CDUnknownBlockType)arg4;
++ (void)ensureProvidersIfNecessaryForClaim:(id)arg1 user:(unsigned int)arg2 atLocations:(id)arg3 queue:(id)arg4 thenContinue:(CDUnknownBlockType)arg5;
 - (BOOL)_addPresenter:(id)arg1 ofItemAtURL:(id)arg2 watchingFile:(BOOL)arg3 withLastEventID:(id)arg4;
 - (BOOL)_addProvider:(id)arg1 ofItemsAtURL:(id)arg2;
 - (void)_enumerateSubarbitersUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_grantAccessClaim:(id)arg1;
 - (void)_grantSubarbitrationClaim:(id)arg1 withServer:(id)arg2;
 - (void)_handleCanceledClient:(id)arg1;
+- (BOOL)_materializeProviderlessDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (void)_registerForDebugInfoRequests;
 - (void)_removeReactorForID:(id)arg1;
 - (void)_revokeAccessClaimForID:(id)arg1 fromLocal:(BOOL)arg2;
@@ -53,6 +54,7 @@
 - (void)addPresenter:(id)arg1 withID:(id)arg2 fileURL:(id)arg3 lastPresentedItemEventIdentifier:(id)arg4 ubiquityAttributes:(id)arg5 options:(unsigned long long)arg6 responses:(unsigned long long)arg7;
 - (void)addProvider:(id)arg1 withID:(id)arg2 uniqueID:(id)arg3 forProvidedItemsURL:(id)arg4 options:(unsigned long long)arg5 withServer:(id)arg6 reply:(CDUnknownBlockType)arg7;
 - (oneway void)cancelAccessClaimForID:(id)arg1;
+- (void)cancelMaterializationWithRequestID:(id)arg1;
 - (void)dealloc;
 - (void)getDebugInformationIncludingEverything:(BOOL)arg1 withString:(id)arg2 fromPid:(int)arg3 thenContinue:(CDUnknownBlockType)arg4;
 - (void)getItemHasPresentersAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -60,6 +62,7 @@
 - (void)grantSubarbitrationClaim:(id)arg1 withServer:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithQueue:(id)arg1 isSubarbiter:(BOOL)arg2 listener:(id)arg3;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)makeProviderMaterializeFileAtURL:(id)arg1 kernelOperation:(unsigned int)arg2 withRequestID:(id)arg3 fromProcess:(int)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)performBarrierWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (oneway void)prepareToArbitrateForURLs:(id)arg1;
 - (void)provideDebugInfoWithLocalInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

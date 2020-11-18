@@ -16,6 +16,7 @@
 + (id)resourceListWithTextureDescriptors:(id)arg1;
 - (void)appendBuffer:(unsigned long long)arg1;
 - (void)appendTexture:(id)arg1;
+- (void)appendTexture:(id)arg1 format:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)init;

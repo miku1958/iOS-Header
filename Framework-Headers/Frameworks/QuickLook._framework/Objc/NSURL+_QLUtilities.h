@@ -6,7 +6,24 @@
 
 #import <Foundation/NSURL.h>
 
-@interface NSURL (_QLUtilities)
+#import <QuickLook/QLPreviewItem-Protocol.h>
+
+@class NSString;
+
+@interface NSURL (_QLUtilities) <QLPreviewItem>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *previewItemTitle;
+@property (readonly, nonatomic) NSURL *previewItemURL;
+@property (readonly) Class superclass;
+
++ (id)_QLCreateTemporaryDirectory:(id *)arg1;
++ (id)_QLCreateTemporaryDirectoryForOriginalFileAtURL:(id)arg1 error:(id *)arg2;
++ (id)_QLTemporaryFileURLWithContentType:(id)arg1 uuid:(id)arg2;
++ (void)_QLTemporaryFileURLWithContentType:(id)arg1 uuid:(id)arg2 forOriginalFileAtURL:(id)arg3 temporaryFileURL:(id *)arg4 temporaryDirectoryURL:(id *)arg5;
+- (BOOL)_QLIsHiddenFile;
 - (BOOL)_QLIsPackageURL;
 - (BOOL)_QLNeedsCoordination;
 - (BOOL)_QLNeedsDownload;

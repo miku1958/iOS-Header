@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithRootViewController:(id)arg1;
 - (id)popToRootViewControllerAnimated:(BOOL)arg1;
 - (id)popToViewController:(id)arg1 animated:(BOOL)arg2;
-- (id)popViewControllerAnimated:(BOOL)arg1;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 
 @end

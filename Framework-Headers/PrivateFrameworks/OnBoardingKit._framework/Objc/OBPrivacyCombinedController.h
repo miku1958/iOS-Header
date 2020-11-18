@@ -4,23 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <OnBoardingKit/OBTableWelcomeController.h>
 
 @class NSString;
 
-@interface OBPrivacyCombinedController : UIViewController
+@interface OBPrivacyCombinedController : OBTableWelcomeController
 {
-    BOOL _darkMode;
     BOOL _allowsOpeningSafari;
     BOOL _presentedFromPrivacyPane;
     NSString *_displayLanguage;
 }
 
 @property BOOL allowsOpeningSafari; // @synthesize allowsOpeningSafari=_allowsOpeningSafari;
-@property (nonatomic, getter=isDarkMode) BOOL darkMode; // @synthesize darkMode=_darkMode;
 @property (strong) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property BOOL presentedFromPrivacyPane; // @synthesize presentedFromPrivacyPane=_presentedFromPrivacyPane;
 
++ (id)new;
 + (void)presentPrivacyCombinedControllerOverController:(id)arg1 dismissHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)init;

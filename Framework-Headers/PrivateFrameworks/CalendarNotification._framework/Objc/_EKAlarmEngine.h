@@ -44,6 +44,8 @@
 + (id)_publisherBulletinIDForReminder:(id)arg1;
 + (id)_publisherBulletinIDForTask:(void *)arg1;
 + (id)_publisherBulletinIDForTaskUniqueIdentifier:(id)arg1;
++ (void)logUnexpectedRemindersCall:(const char *)arg1;
++ (BOOL)remindersNotificationsEnabled;
 + (id)requestedDarwinNotifications;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -59,6 +61,7 @@
 - (id)_eventStore;
 - (BOOL)_haveAlarmsChanged:(id)arg1;
 - (id)_insertSideAlarmObjectForVehicleTriggerAlarm:(id)arg1 forReminder:(id)arg2 withDelay:(double)arg3 eventStore:(id)arg4 context:(id)arg5;
+- (void)_installTimerWithFireDate:(id)arg1;
 - (BOOL)_isAlarmAcknowledgedWithAcknowledgedDate:(id)arg1 fireDate:(id)arg2;
 - (BOOL)_isDataProtected;
 - (void)_killSyncTimer;
@@ -92,7 +95,7 @@
 - (void)_updateWithForceForAlarmTable:(BOOL)arg1 forFences:(BOOL)arg2;
 - (void)_vehicleTriggerFired:(BOOL)arg1;
 - (void)dealloc;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
+- (void)didRegisterForAlarms;
 - (void)handleDarwinNotification:(id)arg1;
 - (id)init;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
@@ -100,6 +103,7 @@
 - (void)locationManager:(id)arg1 didExitRegion:(id)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 monitoringDidFailForRegion:(id)arg2 withError:(id)arg3;
+- (void)receivedAlarmNamed:(id)arg1;
 - (void)start;
 
 @end

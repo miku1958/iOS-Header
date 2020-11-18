@@ -60,8 +60,6 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)setHeaderViewTitle:(id)arg1 subtitle:(id)arg2;
 - (void)showActivitySpinnerWithTitle:(id)arg1 subtitle:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

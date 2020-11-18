@@ -11,6 +11,7 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (BOOL)_isSerializableAccessibilityElement;
 + (id)imageAtPath:(id)arg1;
 + (id)imageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)imageWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
@@ -26,7 +27,9 @@
 - (id)_flatImageWithColor:(id)arg1;
 - (id)_flatImageWithWhite:(double)arg1 alpha:(double)arg2;
 - (id)_imageScaledToProportion:(double)arg1 interpolationQuality:(int)arg2;
+- (id)_imageTintedWithColor:(id)arg1 flatten:(BOOL)arg2 renderingMode:(long long)arg3 withUpdatedCGImage:(BOOL)arg4;
 - (id)accessibilityIdentifier;
+- (id)accessibilityLabel;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)imageFlippedForRightToLeftLayoutDirection;
@@ -35,6 +38,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1 cache:(BOOL)arg2;
+- (id)resizableImageWithCapInsets:(struct UIEdgeInsets)arg1 resizingMode:(long long)arg2;
 
 @end
 

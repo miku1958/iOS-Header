@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithPKStroke:(id)arg1 pencilAnnotationDrawingScale:(double)arg2;
 - (id)internalPencilKitStroke;
+- (struct CGPoint)locationAtIndex:(unsigned long long)arg1;
 - (void)setLocation:(struct CGPoint)arg1 atIndex:(unsigned long long)arg2;
 - (void)transformWithTransform:(struct CGAffineTransform)arg1;
 

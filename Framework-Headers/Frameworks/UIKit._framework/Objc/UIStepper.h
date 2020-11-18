@@ -6,17 +6,17 @@
 
 #import <UIKitCore/UIControl.h>
 
-@class NSMutableDictionary, NSTimer, UIButton, UIColor, UIImageView;
+#import <UIKitCore/UIStepperControl-Protocol.h>
 
-@interface UIStepper : UIControl
+@class NSMutableDictionary, UIView;
+@protocol UIStepperVisualElement;
+
+@interface UIStepper : UIControl <UIStepperControl>
 {
-    BOOL _isRtoL;
-    UIImageView *_middleView;
-    UIButton *_plusButton;
-    UIButton *_minusButton;
-    NSTimer *_repeatTimer;
-    long long _repeatCount;
     NSMutableDictionary *_dividerImages;
+    NSMutableDictionary *_incrementImages;
+    NSMutableDictionary *_decrementImages;
+    NSMutableDictionary *_backgroundImages;
     BOOL _continuous;
     BOOL _autorepeat;
     BOOL _wraps;
@@ -24,6 +24,7 @@
     double _minimumValue;
     double _maximumValue;
     double _stepValue;
+    UIView<UIStepperVisualElement> *_visualElement;
 }
 
 @property (nonatomic) BOOL autorepeat; // @synthesize autorepeat=_autorepeat;
@@ -31,10 +32,13 @@
 @property (nonatomic) double maximumValue; // @synthesize maximumValue=_maximumValue;
 @property (nonatomic) double minimumValue; // @synthesize minimumValue=_minimumValue;
 @property (nonatomic) double stepValue; // @synthesize stepValue=_stepValue;
-@property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (nonatomic) double value; // @synthesize value=_value;
+@property (strong, nonatomic) UIView<UIStepperVisualElement> *visualElement; // @synthesize visualElement=_visualElement;
 @property (nonatomic) BOOL wraps; // @synthesize wraps=_wraps;
 
++ (Class)_fallbackVisualElementClass;
++ (Class)visualElementClassForTraitCollection:(id)arg1;
++ (id)visualElementForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
 - (void)_commonStepperInit;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
@@ -43,17 +47,9 @@
 - (void)_emitValueChanged;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_populateArchivedSubviews:(id)arg1;
-- (void)_setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_setDecrementImage:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_setDividerImage:(id)arg1 forLeftSegmentState:(unsigned long long)arg2 rightSegmentState:(unsigned long long)arg3;
-- (void)_setIncrementImage:(id)arg1 forState:(unsigned long long)arg2;
-- (void)_startTimer;
-- (void)_stopTimer;
-- (void)_updateButtonEnabled;
-- (void)_updateCount:(id)arg1;
-- (void)_updateDividerImageForButtonState;
-- (void)_updateHighlightingAtPoint:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)_updateImages;
+- (void)_refreshVisualElement;
+- (void)_refreshVisualElementForTraitCollection:(id)arg1 populatingAPIProperties:(BOOL)arg2;
+- (struct UIEdgeInsets)alignmentRectInsets;
 - (id)backgroundImageForState:(unsigned long long)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
@@ -67,13 +63,18 @@
 - (id)incrementImageForState:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
 - (void)setBackgroundImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setDecrementImage:(id)arg1 forState:(unsigned long long)arg2;
 - (void)setDividerImage:(id)arg1 forLeftSegmentState:(unsigned long long)arg2 rightSegmentState:(unsigned long long)arg3;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setIncrementImage:(id)arg1 forState:(unsigned long long)arg2;
+- (void)setTintColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)visualElementDidSetValue:(id)arg1;
+- (void)visualElementSendValueChangedEvent:(id)arg1;
 
 @end
 

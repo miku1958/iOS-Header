@@ -17,25 +17,33 @@
     NSMutableDictionary *_customModelDictionaries;
     NSMutableDictionary *_classifierCaches;
     NSMutableDictionary *_sequenceCaches;
+    NSMutableDictionary *_customGazetteers;
+    NSMutableDictionary *_customGazetteerDictionaries;
 }
 
 @property (readonly, copy, nonatomic) NSString *dominantLanguage;
 @property (strong, nonatomic) NSString *string;
 @property (readonly, copy, nonatomic) NSArray *tagSchemes;
 
++ (id)availableTagSchemesForLanguage:(id)arg1;
 + (id)availableTagSchemesForUnit:(long long)arg1 language:(id)arg2;
++ (void)registerForAssetNotifications;
++ (void)requestAssetsForLanguage:(id)arg1 tagScheme:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)_customGazetteerAtIndex:(unsigned long long)arg1 unit:(long long)arg2 gazetteerDictionary:(id)arg3;
 - (id)_customModelAtIndex:(unsigned long long)arg1 unit:(long long)arg2 modelDictionary:(id)arg3;
 - (id)_customTagAtIndex:(unsigned long long)arg1 fromTagDictionary:(id)arg2;
-- (id)_customTagAtIndex:(unsigned long long)arg1 unit:(long long)arg2 scheme:(id)arg3 modelDictionary:(id)arg4;
-- (id)_customTagDictionaryForSentence:(id)arg1 model:(id)arg2;
+- (id)_customTagAtIndex:(unsigned long long)arg1 unit:(long long)arg2 scheme:(id)arg3 options:(unsigned long long)arg4 modelDictionary:(id)arg5 gazetteerDictionary:(id)arg6;
+- (id)_customTagDictionaryForSentence:(id)arg1 options:(unsigned long long)arg2 model:(id)arg3 gazetteer:(id)arg4;
 - (id)_tagSchemeForScheme:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)enumerateTagsInRange:(struct _NSRange)arg1 unit:(long long)arg2 scheme:(id)arg3 options:(unsigned long long)arg4 usingBlock:(CDUnknownBlockType)arg5;
+- (id)gazetteersForTagScheme:(id)arg1;
 - (id)initWithTagSchemes:(id)arg1;
 - (id)modelsForTagScheme:(id)arg1;
 - (struct _NSRange)sentenceRangeForRange:(struct _NSRange)arg1;
+- (void)setGazetteers:(id)arg1 forTagScheme:(id)arg2;
 - (void)setLanguage:(id)arg1 range:(struct _NSRange)arg2;
 - (void)setModels:(id)arg1 forTagScheme:(id)arg2;
 - (void)setOrthography:(id)arg1 range:(struct _NSRange)arg2;

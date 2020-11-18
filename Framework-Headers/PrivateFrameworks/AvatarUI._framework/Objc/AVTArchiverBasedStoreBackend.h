@@ -41,8 +41,9 @@
 - (void).cxx_destruct;
 - (id)allAvatars;
 - (unsigned long long)avatarCountWithError:(id *)arg1;
+- (id)avatarsExcludingIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)avatarsForFetchRequest:(id)arg1 error:(id *)arg2;
-- (id)avatarsWithIdentifier:(id)arg1 error:(id *)arg2;
+- (id)avatarsWithIdentifiers:(id)arg1 error:(id *)arg2;
 - (BOOL)canCreateAvatarWithError:(id *)arg1;
 - (BOOL)deleteAvatarWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)duplicateAvatarRecord:(id)arg1 error:(id *)arg2;

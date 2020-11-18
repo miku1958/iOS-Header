@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreData/NSManagedObject.h>
+#import <PhotoLibraryServices/PLManagedObject.h>
 
 #import <PhotoLibraryServices/PLCodecIdentity-Protocol.h>
 
-@class NSSet, NSString;
+@class NSString;
 
-@interface PLCodec : NSManagedObject <PLCodecIdentity>
+@interface PLCodec : PLManagedObject <PLCodecIdentity>
 {
 }
 
@@ -18,15 +18,14 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *fourCharCodeName; // @dynamic fourCharCodeName;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSSet *resources; // @dynamic resources;
+@property (readonly, nonatomic, getter=isPlayable) BOOL playable; // @dynamic playable;
 @property (readonly) Class superclass;
 
-+ (id)_stringFrom4CharCode:(unsigned int)arg1;
 + (id)codecFromFourCharCodeName:(id)arg1 createIfMissing:(BOOL)arg2 context:(id)arg3;
 + (id)commonCodec_H264_inContext:(id)arg1;
 + (id)commonCodec_HEVC_inContext:(id)arg1;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
+- (unsigned int)_typeCodeFromString:(id)arg1;
 - (BOOL)supportsCloudUpload;
 
 @end

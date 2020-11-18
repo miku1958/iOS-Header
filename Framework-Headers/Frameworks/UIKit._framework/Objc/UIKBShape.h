@@ -16,14 +16,14 @@
     UIKBGeometry *m_geometry;
     struct CGRect m_frame;
     struct CGRect m_paddedFrame;
-    int m_concaveCorner;
+    unsigned long long m_concaveCorner;
     struct CGSize m_concaveCornerOffset;
     unsigned long long m_uid;
     BOOL m_scaled;
     UIKBShape *m_originalShape;
 }
 
-@property (nonatomic) int concaveCorner; // @synthesize concaveCorner=m_concaveCorner;
+@property (nonatomic) unsigned long long concaveCorner; // @synthesize concaveCorner=m_concaveCorner;
 @property (nonatomic) struct CGSize concaveCornerOffset; // @synthesize concaveCornerOffset=m_concaveCornerOffset;
 @property (nonatomic) struct CGRect frame; // @synthesize frame=m_frame;
 @property (strong, nonatomic) UIKBGeometry *geometry; // @synthesize geometry=m_geometry;
@@ -48,7 +48,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithGeometry:(id)arg1 frame:(struct CGRect)arg2 paddedFrame:(struct CGRect)arg3;
-- (id)initWithGeometry:(id)arg1 frame:(struct CGRect)arg2 paddedFrame:(struct CGRect)arg3 concaveCorner:(int)arg4 concaveCornerOffset:(struct CGSize)arg5;
+- (id)initWithGeometry:(id)arg1 frame:(struct CGRect)arg2 paddedFrame:(struct CGRect)arg3 concaveCorner:(unsigned long long)arg4 concaveCornerOffset:(struct CGSize)arg5;
 - (BOOL)isEmpty;
 - (BOOL)isEqual:(id)arg1;
 - (void)makeLikeOther:(id)arg1;

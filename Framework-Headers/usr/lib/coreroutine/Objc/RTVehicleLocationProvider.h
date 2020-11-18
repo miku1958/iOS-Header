@@ -77,7 +77,6 @@
 - (void)_clearAllVehicleEvents;
 - (void)_clearBulletinNotifications;
 - (BOOL)_deleteLastVehicleEvent;
-- (void)_fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)_finalizeLastVehicleEventIfAppropriate;
 - (void)_finalizeLocationEstimate;
 - (id)_getLastVehicleEvents;
@@ -122,7 +121,6 @@
 - (void)fetchAutomaticVehicleEventDetectionSupportedWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchFMCEnabledWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchLastVehicleEventsWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchNextPredictedLocationsOfInterestFromLocation:(id)arg1 startDate:(id)arg2 timeInterval:(double)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithLocationManager:(id)arg1 motionActivityManager:(id)arg2 mapsSupportManager:(id)arg3 metricManager:(id)arg4 managedObjectContext:(id)arg5 persistenceManager:(id)arg6 vehicleLocationHistoryController:(id)arg7 learnedLocationManager:(id)arg8 managedConfiguration:(id)arg9 defaultsManager:(id)arg10 keychainManager:(id)arg11;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
@@ -132,8 +130,8 @@
 - (void)onLocationNotification:(id)arg1;
 - (void)onVehicleConnectedNotification:(id)arg1;
 - (void)onVehicleExitNotification:(id)arg1;
+- (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)persistLastVehicleEvent;
-- (void)purgeManager:(id)arg1 performPurgeOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestLocations;
 - (void)restoreLastVehicleEvent;
 - (void)updateVehicleEventWithIdentifier:(id)arg1 location:(id)arg2;

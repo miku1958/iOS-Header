@@ -13,7 +13,7 @@
 #import <PassKitUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSCalendar, NSDate, NSDateFormatter, NSString, PKAccount, PKAccountService, PKAccountServiceAccountResolutionController, PKDashboardTitleHeaderView, PKPaymentPass, PKSpendingSummary, PKSpendingSummaryFooterView, PKSpendingSummaryLayout, PKSpendingSummaryPresenter, PKTransactionGroupItemPresenter, UIGestureRecognizer;
+@class NSArray, NSCalendar, NSDate, NSDateFormatter, NSString, PKAccount, PKAccountService, PKAccountServiceAccountResolutionController, PKDashboardFooterTextView, PKDashboardTitleHeaderView, PKPaymentPass, PKSpendingSummary, PKSpendingSummaryFooterView, PKSpendingSummaryLayout, PKSpendingSummaryPresenter, PKTransactionGroupItemPresenter, UIGestureRecognizer;
 @protocol PKSpendingSingleSummaryViewControllerDelegate;
 
 @interface PKSpendingSingleSummaryViewController : UICollectionViewController <PKPaymentDataProviderDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, PKSpendingSummaryFooterViewDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKSpendingSummaryResponder>
@@ -41,7 +41,8 @@
     NSDateFormatter *_formatterShortMonthNoYear;
     PKTransactionGroupItemPresenter *_transactionGroupPresenter;
     PKSpendingSummaryPresenter *_summaryPresenter;
-    PKDashboardTitleHeaderView *_sampleView;
+    PKDashboardTitleHeaderView *_sampleHeaderView;
+    PKDashboardFooterTextView *_sampleFooterView;
     PKAccountServiceAccountResolutionController *_resolutionController;
     PKSpendingSummaryLayout *_layout;
     BOOL _isLowEndDevice;
@@ -70,14 +71,16 @@
 - (unsigned long long)_aggregateCellAtIndex:(unsigned long long)arg1;
 - (void)_applyMaskToCell:(id)arg1 firstInSection:(BOOL)arg2 lastInSection:(BOOL)arg3;
 - (void)_configureFooter;
+- (void)_configureFooterView:(id)arg1 inSection:(unsigned long long)arg2;
 - (void)_configureHeaderView:(id)arg1 inSection:(unsigned long long)arg2;
+- (BOOL)_hasFooterForSection:(unsigned long long)arg1;
 - (BOOL)_hasHeaderForSection:(unsigned long long)arg1;
-- (void)accountServiceAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)buttonTappedInFooterView:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

@@ -6,7 +6,7 @@
 
 #import <Accounts/ACAccount.h>
 
-@class NSDate, NSNumber, NSString;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString;
 
 @interface ACAccount (ICAccountAdditions)
 
@@ -14,10 +14,17 @@
 @property (nonatomic, getter=ic_isActiveLockerAccount, setter=ic_setActiveLockerAccount:) BOOL ic_activeLockerAccount;
 @property (copy, nonatomic, setter=ic_setAgeVerificationExpirationDate:) NSDate *ic_ageVerificationExpirationDate;
 @property (copy, nonatomic, setter=ic_setAltDSID:) NSString *ic_altDSID;
+@property (copy, nonatomic, setter=ic_setAutomaticDownloadKinds:) NSSet *ic_automaticDownloadKinds;
 @property (readonly, nonatomic, getter=ic_isCloudBackupEnabled) BOOL ic_cloudBackupEnabled;
+@property (copy, nonatomic, setter=ic_setCloudLibraryStateReason:) NSDictionary *ic_cloudLibraryStateReason;
 @property (copy, nonatomic, setter=ic_setFirstName:) NSString *ic_firstName;
+@property (readonly, copy, nonatomic) NSArray *ic_homeUserIdentifiers;
 @property (copy, nonatomic, setter=ic_setLastName:) NSString *ic_lastName;
+@property (readonly, nonatomic, getter=ic_isLocalAccount) BOOL ic_localAccount;
 @property (nonatomic, getter=ic_isManagedAppleID, setter=ic_setManagedAppleID:) BOOL ic_managedAppleID;
+@property (copy, nonatomic, setter=ic_setMergeWithCloudLibraryPreference:) NSNumber *ic_mergeWithCloudLibraryPreference;
+@property (copy, nonatomic, setter=ic_setPrivateListeningEnabled:) NSNumber *ic_privateListeningEnabled;
+@property (readonly, copy, nonatomic) NSDictionary *ic_privateListeningEnabledForHomeUsers;
 @property (nonatomic, getter=ic_isSandboxed, setter=ic_setSandboxed:) BOOL ic_sandboxed;
 @property (copy, nonatomic, setter=ic_setStorefront:) NSString *ic_storefront;
 @property (nonatomic, getter=ic_isSubscriptionStatusEnabled, setter=ic_setSubscriptionStatusEnabled:) BOOL ic_subscriptionStatusEnabled;

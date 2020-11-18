@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)_textFieldStartEditing:(id)arg1;
 - (void)_textValueChanged:(id)arg1;
 - (double)defaultTextFieldFontSizeForCell:(id)arg1;
-- (id)defaultTextLabelFontForCell:(id)arg1;
 - (id)detailTextLabelForCell:(id)arg1;
 - (id)editableTextFieldForCell:(id)arg1;
 - (struct CGSize)intrinsicContentSizeForCell:(id)arg1 rowWidth:(double)arg2;

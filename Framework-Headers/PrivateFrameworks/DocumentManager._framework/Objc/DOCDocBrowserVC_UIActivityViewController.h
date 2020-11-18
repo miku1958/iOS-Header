@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIActivityViewController.h>
+#import <ShareSheet/UIActivityViewController.h>
 
 @class UIBarButtonItem;
 @protocol DOCServicePopoverTrackerProtocol;

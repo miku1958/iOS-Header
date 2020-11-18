@@ -27,6 +27,8 @@
     UIColor *_darkHighlightOrSelectedColor;
     UIColor *_seeMoreTextColor;
     UIColor *_darkSeeMoreTextColor;
+    NSString *_compositingFilter;
+    NSString *_darkCompositingFilter;
     long long _textTransform;
     long long _alignment;
     unsigned long long _numberOfLines;
@@ -43,7 +45,9 @@
 @property (nonatomic) BOOL alwaysFocusable; // @synthesize alwaysFocusable=_alwaysFocusable;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (strong, nonatomic) NSString *compositingFilter; // @synthesize compositingFilter=_compositingFilter;
 @property (strong, nonatomic) UIColor *darkColor; // @synthesize darkColor=_darkColor;
+@property (strong, nonatomic) NSString *darkCompositingFilter; // @synthesize darkCompositingFilter=_darkCompositingFilter;
 @property (strong, nonatomic) UIColor *darkHighlightOrSelectedColor; // @synthesize darkHighlightOrSelectedColor=_darkHighlightOrSelectedColor;
 @property (strong, nonatomic) UIColor *darkSeeMoreTextColor; // @synthesize darkSeeMoreTextColor=_darkSeeMoreTextColor;
 @property (strong, nonatomic) NSString *fontFamily; // @synthesize fontFamily=_fontFamily;

@@ -39,11 +39,16 @@
 - (void)handleKeyboardState:(id)arg1;
 - (id)init;
 - (void)lastAcceptedCandidateCorrected;
+- (void)logDiscoverabilityEvent:(int)arg1 userInfo:(id)arg2;
 - (void)performHitTestForTouchEvent:(id)arg1 keyboardState:(id)arg2 continuation:(CDUnknownBlockType)arg3;
+- (void)performHitTestForTouchEvents:(id)arg1 keyboardState:(id)arg2 continuation:(CDUnknownBlockType)arg3;
 - (void)setOriginalInput:(id)arg1;
 - (void)skipHitTestForTouchEvent:(id)arg1 keyboardState:(id)arg2;
+- (void)skipHitTestForTouchEvents:(id)arg1 keyboardState:(id)arg2;
+- (void)smartSelectionForTextInDocument:(id)arg1 inRange:(struct _NSRange)arg2 language:(id)arg3 tokenizedRanges:(id)arg4 options:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)textAccepted:(id)arg1;
+- (void)textAccepted:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAnalyticsForRejectedSuggestion:(id)arg1 keyboardState:(id)arg2;
 - (void)writeTypologyLogWithCompletionHandler:(CDUnknownBlockType)arg1;
 

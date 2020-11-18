@@ -32,6 +32,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSockAddr:(const struct sockaddr *)arg1;
 - (BOOL)isEqualToWrapper:(id)arg1;
+- (void)updateLocalPort:(unsigned short)arg1;
 
 @end
 

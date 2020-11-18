@@ -31,6 +31,7 @@
 - (BOOL)decodeBool;
 - (unsigned char)decodeByte;
 - (id)decodeCandidate;
+- (double)decodeDouble;
 - (id)decodePointerValueArray;
 - (unsigned short)decodeShort;
 - (id)decodeString;
@@ -39,6 +40,7 @@
 - (unsigned long long)decodeUInt64;
 - (void)encodeBool:(BOOL)arg1;
 - (void)encodeByte:(unsigned char)arg1;
+- (void)encodeDouble:(double)arg1;
 - (void)encodePointerValueArray:(id)arg1;
 - (void)encodeShort:(unsigned short)arg1;
 - (void)encodeString:(id)arg1;

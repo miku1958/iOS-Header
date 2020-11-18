@@ -6,27 +6,20 @@
 
 #import <Foundation/NSDictionary.h>
 
-@class NSDate, NSMutableDictionary;
+@class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface NSFileAttributes : NSDictionary
 {
     NSMutableDictionary *dict;
     struct stat statInfo;
-    struct {
-        BOOL extensionHidden;
-        NSDate *creationDate;
-        struct _fields {
-            unsigned int extensionHidden:1;
-            unsigned int creationDate:1;
-            unsigned int reserved:30;
-        } validFields;
-    } catInfo;
+    CDStruct_1b190c06 catInfo;
     NSDictionary *extendedAttrs;
 }
 
 + (id)_attributesAtPath:(id)arg1 partialReturn:(BOOL)arg2 filterResourceFork:(BOOL)arg3 error:(id *)arg4;
 + (id)_attributesAtURL:(id)arg1 partialReturn:(BOOL)arg2 filterResourceFork:(BOOL)arg3 error:(id *)arg4;
++ (BOOL)_populateCatInfo:(CDStruct_1b190c06 *)arg1 forURL:(id)arg2 statInfo:(struct stat *)arg3 error:(id *)arg4;
 + (id)attributesAtPath:(id)arg1 traverseLink:(BOOL)arg2;
 + (id)attributesWithStat:(struct stat *)arg1;
 - (unsigned long long)count;

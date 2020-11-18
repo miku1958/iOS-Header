@@ -16,6 +16,7 @@
 - (void)addAttributesWeakly:(id)arg1 range:(struct _NSRange)arg2;
 - (void)appendAttributedString:(id)arg1;
 - (void)beginEditing;
+- (Class)classForCoder;
 - (void)deleteCharactersInRange:(struct _NSRange)arg1;
 - (void)endEditing;
 - (void)insertAttributedString:(id)arg1 atIndex:(unsigned long long)arg2;

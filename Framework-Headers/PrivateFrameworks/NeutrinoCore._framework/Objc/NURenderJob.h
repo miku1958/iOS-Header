@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioMix, AVComposition, AVVideoComposition, CIImage, NSArray, NSError, NUComposition, NUGeometrySpaceMap, NUImageGeometry, NUObservatory, NUPriority, NURenderJobStatistics, NURenderNode, NURenderPipeline, NURenderRequest;
+@class AVAudioMix, AVComposition, AVVideoComposition, CIImage, NSArray, NSError, NSString, NUComposition, NUGeometrySpaceMap, NUImageGeometry, NUObservatory, NUPriority, NURenderJobStatistics, NURenderNode, NURenderPipeline, NURenderRequest;
 @protocol NUDevice, NUExtentPolicy, NURenderStatistics, NURenderer, NUScalePolicy, OS_dispatch_group, OS_dispatch_queue;
 
 @interface NURenderJob : NSObject
@@ -17,6 +17,9 @@
     NSError *_error;
     BOOL _isAborted;
     BOOL _failed;
+    BOOL _replySynchronous;
+    BOOL _didRespond;
+    NSString *_memoizationCacheKey;
     BOOL _isExecuting;
     BOOL _isCanceled;
     BOOL _isFinished;
@@ -41,6 +44,7 @@
     CDStruct_1e2b2e48 _renderScale;
 }
 
+@property (readonly, copy, nonatomic) NSString *additionalDebugInfo;
 @property (strong, nonatomic) NUComposition *composition; // @synthesize composition=_composition;
 @property (readonly) long long currentStage; // @synthesize currentStage=_currentStage;
 @property (strong) NSArray *dependentJobs; // @synthesize dependentJobs=_dependentJobs;
@@ -83,16 +87,24 @@
 @property (readonly, nonatomic) BOOL wantsRenderScaleClampedToNativeScale;
 @property (readonly, nonatomic) BOOL wantsRenderStage;
 
++ (void)flushCache;
++ (void)initialize;
 - (void).cxx_destruct;
-- (CDStruct_3d581f42)_atomicCancel;
+- (CDStruct_2a4d9400)_atomicCancel;
 - (void)_cancel;
-- (void)_cancelCoalescedJob;
+- (BOOL)_cancelCoalescedJob;
+- (BOOL)_checkForMemoizedResult;
 - (void)_didPrepare;
+- (void)_emitSignpostEventType:(unsigned char)arg1 forStage:(long long)arg2 duration:(double)arg3;
 - (void)_finish;
+- (id)_memoizationCacheKey;
+- (void)_memoizeResult:(id)arg1;
 - (long long)_nextStageForStage:(long long)arg1;
 - (void)_notifyCanceled:(long long)arg1;
 - (void)_notifyStageTransition:(long long)arg1;
+- (void)_pause;
 - (void)_reply:(id)arg1;
+- (void)_resume;
 - (void)_run:(long long)arg1;
 - (void)_setCurrentStage:(long long)arg1;
 - (BOOL)_shouldCancelCoalescedJob;
@@ -103,8 +115,9 @@
 - (void)abortStage:(long long)arg1;
 - (void)addCancelObserver:(id)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)addStageObserver:(id)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (id)cacheKey;
 - (void)cancel;
-- (void)cancelCoalescedJob;
+- (BOOL)cancelCoalescedJob;
 - (void)cleanUp;
 - (BOOL)complete:(out id *)arg1;
 - (id)description;
@@ -118,6 +131,7 @@
 - (id)init;
 - (id)initWithRequest:(id)arg1;
 - (id)newRenderPipelineStateForEvaluationMode:(long long)arg1;
+- (void)pause;
 - (id)pipelineForComposition:(id)arg1 error:(out id *)arg2;
 - (BOOL)prepare:(out id *)arg1;
 - (id)prepareNodeWithPipelineState:(id)arg1 error:(out id *)arg2;
@@ -131,8 +145,11 @@
 - (long long)resolvedSampleMode:(long long)arg1;
 - (void)respond;
 - (id)result;
+- (void)resume;
 - (void)run:(long long)arg1;
 - (BOOL)runStage:(long long)arg1 error:(out id *)arg2;
+- (void)runSynchronous;
+- (void)runToPrepareSynchronous;
 - (id)validateComposition:(out id *)arg1;
 - (long long)willRun;
 

@@ -25,6 +25,7 @@
 @property (copy, nonatomic) NSString *momentShareUUID; // @synthesize momentShareUUID=_momentShareUUID;
 @property (copy, nonatomic) NSString *suggestedCMMUUID; // @synthesize suggestedCMMUUID=_suggestedCMMUUID;
 
++ (id)newUserActivityDaemonJob;
 + (void)userDidChangeStatusForMomentShare:(id)arg1;
 + (void)userDidChangeStatusForSuggestedCMM:(id)arg1;
 + (void)userDidDeleteSharedAlbum:(id)arg1;
@@ -36,10 +37,11 @@
 + (void)userDidNavigateIntoSharedAlbum:(id)arg1;
 + (void)userDidReadCommentOnSharedAsset:(id)arg1;
 + (void)userDidViewCloudFeedContent:(long long)arg1;
+- (void).cxx_destruct;
 - (long long)daemonOperation;
-- (void)dealloc;
 - (void)encodeToXPCObject:(id)arg1;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
+- (id)initWithAssetsdClient:(id)arg1;
 - (void)run;
 - (void)runDaemonSide;
 

@@ -10,7 +10,7 @@
 {
 }
 
-+ (BOOL)allowCallForDestinationID:(id)arg1 providerIdentifier:(id)arg2 isFromBlockList:(BOOL *)arg3;
++ (id)allowCallForDestinationID:(id)arg1 providerIdentifier:(id)arg2;
 + (void)allowCallForDestinationID:(id)arg1 providerIdentifier:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

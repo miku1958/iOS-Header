@@ -6,9 +6,10 @@
 
 #import <FileProviderUI/NSObject-Protocol.h>
 
-@class FPUIActionRemoteContext, NSError;
+@class FPUIActionRemoteContext, NSDictionary, NSError;
 
 @protocol FPUIActionRemoteContextDelegate <NSObject>
-- (void)remoteActionContextDidFinishAction:(FPUIActionRemoteContext *)arg1 error:(NSError *)arg2;
+- (void)remoteActionContext:(FPUIActionRemoteContext *)arg1 didEncounterError:(NSError *)arg2 completionHandler:(void (^)(void))arg3;
+- (void)remoteActionContextDidFinishAction:(FPUIActionRemoteContext *)arg1 userInfo:(NSDictionary *)arg2 error:(NSError *)arg3;
 @end
 

@@ -34,6 +34,7 @@
 - (void)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(BOOL)arg2;
 - (void)_axZoomToCenterWithScale:(struct CGPoint)arg1 scale:(double)arg2;
 - (void)_showTextStyleOptions:(id)arg1;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;

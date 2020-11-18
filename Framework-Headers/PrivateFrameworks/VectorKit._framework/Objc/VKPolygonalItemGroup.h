@@ -53,11 +53,11 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)canAcceptPolygon:(CDStruct_64195c06 *)arg1;
+- (BOOL)canAcceptPolygon:(CDStruct_a190bee8 *)arg1;
 - (void)clearRouteAttributes;
-- (const MultiRange_4bdc93a8 *)commitRangesToFillRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3 featureIdPredicate:(function_d674753c)arg4;
+- (const MultiRange_4bdc93a8 *)commitRangesToFillRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3 featureIdPredicate:(function_5fd0b804)arg4;
 - (const MultiRange_4bdc93a8 *)commitRangesToHorizontalVenueWallStrokeRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3;
-- (const MultiRange_4bdc93a8 *)commitRangesToStrokeRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3 featureIdPredicate:(function_d674753c)arg4;
+- (const MultiRange_4bdc93a8 *)commitRangesToStrokeRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3 featureIdPredicate:(function_5fd0b804)arg4;
 - (const MultiRange_4bdc93a8 *)commitRangesToVenueWallEndCapRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3;
 - (const MultiRange_4bdc93a8 *)commitRangesToVenueWallRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3;
 - (const MultiRange_4bdc93a8 *)commitRangesToVerticalVenueWallStrokeRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3;

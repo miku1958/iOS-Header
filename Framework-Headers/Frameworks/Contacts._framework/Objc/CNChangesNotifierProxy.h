@@ -9,7 +9,7 @@
 #import <Contacts/CNChangeNotificationReceiver-Protocol.h>
 
 @class CNCoalescingTimer, NSCountedSet, NSMapTable, NSMutableDictionary, NSString;
-@protocol CNSchedulerProvider, OS_dispatch_queue;
+@protocol CNContactsLoggerProvider, CNSchedulerProvider, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CNChangesNotifierProxy : NSObject <CNChangeNotificationReceiver>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_removalBlocks;
     NSMapTable *_notifyingBlocks;
     id<CNSchedulerProvider> _schedulerProvider;
+    id<CNContactsLoggerProvider> _loggerProvider;
     NSMutableDictionary *_notificationForwardingMapping;
     NSCountedSet *_supressedNotificationNames;
     NSMutableDictionary *_notificationsToBeSentOnceAllowed;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double externalNotificationCoalescingDelay; // @synthesize externalNotificationCoalescingDelay=_externalNotificationCoalescingDelay;
 @property (nonatomic) BOOL forwardsSelfGeneratedDistributedSaveNotifications; // @synthesize forwardsSelfGeneratedDistributedSaveNotifications;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<CNContactsLoggerProvider> loggerProvider; // @synthesize loggerProvider=_loggerProvider;
 @property (readonly, nonatomic) NSMutableDictionary *notificationForwardingMapping; // @synthesize notificationForwardingMapping=_notificationForwardingMapping;
 @property (strong, nonatomic) NSMutableDictionary *notificationsToBeSentOnceAllowed; // @synthesize notificationsToBeSentOnceAllowed=_notificationsToBeSentOnceAllowed;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *notifierQueue; // @synthesize notifierQueue=_notifierQueue;
@@ -48,7 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)addNotificationPoster:(CDUnknownBlockType)arg1 forNotificationName:(id)arg2;
 - (void)coalesceNotificationName:(id)arg1;
 - (void)forwardNotificationName:(id)arg1 asNotificationName:(id)arg2;
-- (id)initWithSchedulerProvider:(id)arg1;
+- (id)initWithSchedulerProvider:(id)arg1 loggerProvider:(id)arg2;
 - (void)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 isFromExternalProcess:(BOOL)arg4;
 - (CDUnknownBlockType)postNotificationName:(id)arg1 fromSender:(id)arg2 saveIdentifier:(id)arg3 userInfo:(id)arg4 shouldForwardExternally:(BOOL)arg5 calledFromNotifierQueue:(BOOL)arg6 isFromExternalProcess:(BOOL)arg7;
 - (void)receiveExternalNotificationName:(id)arg1;

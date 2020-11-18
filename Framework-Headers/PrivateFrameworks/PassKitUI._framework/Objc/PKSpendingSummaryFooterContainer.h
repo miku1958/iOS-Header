@@ -11,6 +11,7 @@
 
 @interface PKSpendingSummaryFooterContainer : UIView
 {
+    long long _backdropStyle;
     _UIBackdropView *_backdropView;
     UIView *_topSeparatorView;
     UIView<PKSpendingSummaryFooter> *_currentFooter;
@@ -21,8 +22,10 @@
 @property (strong, nonatomic) UIView<PKSpendingSummaryFooter> *nextFooter; // @synthesize nextFooter=_nextFooter;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (long long)preferredBackdropStyle;
 - (void)setTransitionProgress:(double)arg1;
 
 @end

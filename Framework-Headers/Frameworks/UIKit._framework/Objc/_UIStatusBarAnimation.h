@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
 
 @class NSMutableArray, NSSet, NSString, _UIStatusBarIdentifier;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarAnimation : NSObject <NSCopying>
+@interface _UIStatusBarAnimation : NSObject <NSCopying, _UIStatusBarPrioritized>
 {
     BOOL _delaysAnimatingItems;
     BOOL _delaysDependentItems;
     BOOL _enabled;
+    long long _priority;
     _UIStatusBarIdentifier *_displayItemIdentifier;
     NSString *_identifier;
     NSString *_exclusivityGroupIdentifier;
@@ -23,7 +25,6 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _prepareBlock;
     NSSet *_delayedItemIdentifiers;
     NSSet *_delayedDisplayItemPlacements;
-    long long _priority;
     NSMutableArray *_subAnimations;
     _UIStatusBarAnimation *_parentAnimation;
     CDUnknownBlockType _animationBlock;

@@ -17,7 +17,7 @@
     CDUnknownBlockType _emptyStringEvaluator;
 }
 
-@property (readonly, nonatomic) CDUnknownBlockType emptyStringEvaluator; // @synthesize emptyStringEvaluator=_emptyStringEvaluator;
+@property (readonly, copy, nonatomic) CDUnknownBlockType emptyStringEvaluator; // @synthesize emptyStringEvaluator=_emptyStringEvaluator;
 @property (readonly, nonatomic) _HKCFGNonTerminal *rootNonTerminal; // @synthesize rootNonTerminal=_rootNonTerminal;
 
 + (id)grammarWithRootNonTerminal:(id)arg1;

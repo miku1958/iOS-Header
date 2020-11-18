@@ -18,7 +18,7 @@
 }
 
 @property (readonly, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) id<PXPerson> person; // @synthesize person=_person;
 @property (readonly, nonatomic) unsigned long long selectionType; // @synthesize selectionType=_selectionType;

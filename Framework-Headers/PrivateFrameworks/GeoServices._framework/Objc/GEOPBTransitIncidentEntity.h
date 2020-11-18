@@ -18,14 +18,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _affectedMuid;
     GEOPBTransitIncidentEntityFilter *_filter;
     struct {
-        unsigned int affectedMuid:1;
-    } _has;
+        unsigned int has_affectedMuid:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned long long affectedMuid; // @synthesize affectedMuid=_affectedMuid;
+@property (nonatomic) unsigned long long affectedMuid;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) GEOPBTransitIncidentEntityFilter *filter; // @synthesize filter=_filter;
+@property (strong, nonatomic) GEOPBTransitIncidentEntityFilter *filter;
 @property (nonatomic) BOOL hasAffectedMuid;
 @property (readonly, nonatomic) BOOL hasFilter;
 @property (readonly, nonatomic) BOOL hasNextStopIDs;
@@ -35,12 +35,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

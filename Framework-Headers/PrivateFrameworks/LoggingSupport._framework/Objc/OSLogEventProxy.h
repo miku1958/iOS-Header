@@ -65,7 +65,6 @@
                 BOOL has_context_data;
             } log_message;
             struct {
-                char *action;
                 BOOL persisted;
             } useraction;
             struct {
@@ -163,6 +162,7 @@
 - (void)_setThreadCrumb;
 - (void)_setTimesyncDatabase:(struct _os_timesync_db_s *)arg1;
 - (void)_setUUIDDBFileDescriptor:(int)arg1;
+- (BOOL)_shouldIncludeSensitive;
 - (oneway void)_unmake;
 - (id)description;
 - (id)formatArguments;

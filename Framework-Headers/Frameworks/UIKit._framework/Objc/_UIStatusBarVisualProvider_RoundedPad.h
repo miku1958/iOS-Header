@@ -15,6 +15,10 @@ __attribute__((visibility("hidden")))
 + (double)cornerRadius;
 + (struct NSDirectionalEdgeInsets)edgeInsets;
 + (double)height;
++ (id)pillFont;
++ (struct CGSize)pillSize;
++ (id)pillSmallFont;
++ (struct CGSize)smallPillSize;
 
 @end
 

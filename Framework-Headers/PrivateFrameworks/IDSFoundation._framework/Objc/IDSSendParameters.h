@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) BOOL disableAliasValidation;
 @property (nonatomic) BOOL disallowRefresh;
+@property (strong, nonatomic) NSNumber *dropMessageIndicatorCommand;
 @property (strong, nonatomic) NSArray *duetIdentifiersOverride;
 @property (nonatomic) BOOL encryptPayload;
 @property (nonatomic) BOOL enforceRemoteTimeouts;
@@ -65,6 +66,7 @@
 @property (strong, nonatomic) NSString *metricReportIdentifier;
 @property (nonatomic) BOOL nonCloudWaking;
 @property (nonatomic) BOOL nonWaking;
+@property (strong, nonatomic) NSNumber *originalTimestamp;
 @property (strong, nonatomic) NSString *originalfromID;
 @property (strong, nonatomic) NSString *peerResponseIdentifier;
 @property (nonatomic) long long priority;
@@ -76,12 +78,14 @@
 @property (nonatomic) BOOL requireLocalWiFi;
 @property (strong, nonatomic) NSDictionary *resourceMetadata;
 @property (strong, nonatomic) NSString *resourcePath;
+@property (nonatomic) BOOL sessionForceInternetInvitation;
 @property (strong, nonatomic) NSString *sessionID;
 @property (strong, nonatomic) NSString *subService;
 @property (strong, nonatomic) NSString *subServiceAccountUUID;
 @property (nonatomic) double timeout;
 @property (nonatomic) BOOL useDictAsTopLevel;
 @property (nonatomic) BOOL wantsAppAck;
+@property (nonatomic) BOOL wantsCertifiedDelivery;
 @property (nonatomic) BOOL wantsDeliveryStatus;
 @property (nonatomic) BOOL wantsProgress;
 @property (nonatomic) BOOL wantsResponse;

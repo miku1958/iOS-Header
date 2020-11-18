@@ -37,6 +37,7 @@
     BOOL _prefersExclusiveAccessToCellularNetwork;
     BOOL _remoteUplinkMuted;
     BOOL _shouldSuppressInCallUI;
+    BOOL _mutuallyExclusiveCall;
     BOOL _wantsStagingArea;
     int _callStatus;
     int _ttyType;
@@ -45,6 +46,7 @@
     float _remoteMeterLevel;
     NSString *_callUUID;
     TUHandle *_handle;
+    NSString *_isoCountryCode;
     TUCallProvider *_backingProvider;
     TUCallProvider *_displayProvider;
     NSString *_callerNameFromNetwork;
@@ -102,6 +104,7 @@
 @property (nonatomic) long long inputAudioPowerSpectrumToken; // @synthesize inputAudioPowerSpectrumToken=_inputAudioPowerSpectrumToken;
 @property (nonatomic) BOOL isSendingAudio; // @synthesize isSendingAudio=_isSendingAudio;
 @property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
+@property (copy, nonatomic) NSString *isoCountryCode; // @synthesize isoCountryCode=_isoCountryCode;
 @property (strong, nonatomic) NSData *localFrequency; // @synthesize localFrequency=_localFrequency;
 @property (nonatomic) float localMeterLevel; // @synthesize localMeterLevel=_localMeterLevel;
 @property (copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
@@ -109,6 +112,7 @@
 @property (strong, nonatomic) id<TURemoteVideoClient> localVideo; // @synthesize localVideo=_localVideo;
 @property (strong, nonatomic) NSMutableDictionary *localVideoModeToLayer; // @synthesize localVideoModeToLayer=_localVideoModeToLayer;
 @property (nonatomic, getter=isMediaStalled) BOOL mediaStalled; // @synthesize mediaStalled=_mediaStalled;
+@property (nonatomic, getter=isMutuallyExclusiveCall) BOOL mutuallyExclusiveCall; // @synthesize mutuallyExclusiveCall=_mutuallyExclusiveCall;
 @property (nonatomic) BOOL needsManualInCallSounds; // @synthesize needsManualInCallSounds=_needsManualInCallSounds;
 @property (nonatomic, getter=isOutgoing) BOOL outgoing; // @synthesize outgoing=_outgoing;
 @property (nonatomic) long long outputAudioPowerSpectrumToken; // @synthesize outputAudioPowerSpectrumToken=_outputAudioPowerSpectrumToken;

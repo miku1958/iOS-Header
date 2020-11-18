@@ -31,7 +31,7 @@
 @property (readonly, nonatomic) unsigned long long bytesExpected; // @synthesize bytesExpected=_draftExpectedSize;
 @property (readonly, nonatomic) unsigned long long bytesReceived; // @synthesize bytesReceived=_draftBytesReceived;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<MFComposeActivityHandoffOperationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MFComposeActivityHandoffOperationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSData *draftData; // @synthesize draftData=_draftData;
 @property (readonly) unsigned long long hash;
@@ -40,8 +40,8 @@
 
 + (id)receivingOperationWithInputStream:(id)arg1 outputStream:(id)arg2;
 + (id)sendingOperationWithDraftData:(id)arg1 inputStream:(id)arg2 outputStream:(id)arg3;
+- (void).cxx_destruct;
 - (void)_checkInHandoffStream:(id)arg1;
-- (void)_commonContinuationStreamTeardownWithStream:(id *)arg1;
 - (void)_commonHandoffStreamInitializationWithStream:(id)arg1;
 - (void)_complete;
 - (void)_didFinishTransferringHandoffPayload;

@@ -10,6 +10,7 @@
 - (id)_primaryiCloudAccount;
 - (id)aida_AppleIDAuthenticationAccountType;
 - (id)aida_AppleIDAuthenticationAccounts;
+- (id)aida_accountForAltDSID:(id)arg1;
 - (id)aida_accountForPrimaryiCloudAccount;
 - (id)aida_accountForiCloudAccount:(id)arg1;
 - (id)aida_iCloudAccountMatchingAppleIDAuthAccount:(id)arg1;

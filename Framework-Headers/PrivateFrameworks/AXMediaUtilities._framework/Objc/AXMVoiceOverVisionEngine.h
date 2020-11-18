@@ -6,7 +6,7 @@
 
 #import <AXMediaUtilities/AXMVisionEngine.h>
 
-@class AXMFaceDetectorNode, AXMImageNode, AXMSceneDetectorNode, AXMScreenCaptureNode, AXMTextDetectorNode, AXMTraitDetectorNode;
+@class AXMCaptionDetectorNode, AXMFaceDetectorNode, AXMIconClassDetectorNode, AXMImageNode, AXMProminentObjectsDetectorNode, AXMSceneDetectorNode, AXMScreenCaptureNode, AXMTextDetectorNode, AXMTraitDetectorNode;
 
 @interface AXMVoiceOverVisionEngine : AXMVisionEngine
 {
@@ -16,11 +16,17 @@
     AXMSceneDetectorNode *_sceneDetector;
     AXMFaceDetectorNode *_faceDetector;
     AXMTraitDetectorNode *_traitDetector;
+    AXMProminentObjectsDetectorNode *_prominentObjectsDetector;
+    AXMCaptionDetectorNode *_captionDetector;
+    AXMIconClassDetectorNode *_iconClassDetector;
 }
 
+@property (weak, nonatomic) AXMCaptionDetectorNode *captionDetector; // @synthesize captionDetector=_captionDetector;
 @property (weak, nonatomic) AXMScreenCaptureNode *captureNode; // @synthesize captureNode=_captureNode;
 @property (weak, nonatomic) AXMFaceDetectorNode *faceDetector; // @synthesize faceDetector=_faceDetector;
+@property (weak, nonatomic) AXMIconClassDetectorNode *iconClassDetector; // @synthesize iconClassDetector=_iconClassDetector;
 @property (weak, nonatomic) AXMImageNode *imageNode; // @synthesize imageNode=_imageNode;
+@property (weak, nonatomic) AXMProminentObjectsDetectorNode *prominentObjectsDetector; // @synthesize prominentObjectsDetector=_prominentObjectsDetector;
 @property (weak, nonatomic) AXMSceneDetectorNode *sceneDetector; // @synthesize sceneDetector=_sceneDetector;
 @property (weak, nonatomic) AXMTextDetectorNode *textDetector; // @synthesize textDetector=_textDetector;
 @property (weak, nonatomic) AXMTraitDetectorNode *traitDetector; // @synthesize traitDetector=_traitDetector;
@@ -28,7 +34,6 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1;
-- (void)setVisionRecognitionOptions:(unsigned long long)arg1;
 
 @end
 

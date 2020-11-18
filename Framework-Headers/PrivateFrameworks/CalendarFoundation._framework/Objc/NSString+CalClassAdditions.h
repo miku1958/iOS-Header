@@ -15,6 +15,7 @@
 - (id)CalUncommentedAddress;
 - (id)_phoneNumberDetector;
 - (id)appendSlashIfNeeded;
+- (void)cal_enumerateCharactersUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)containsCaseAndDiacriticInsensitive:(id)arg1;
 - (BOOL)containsCaseInsensitive:(id)arg1;
 - (id)directionalityIsolatedString;
@@ -47,6 +48,7 @@
 - (id)stringAddingTel;
 - (id)stringByDecodingSlashes;
 - (id)stringByEncodingSlashes;
+- (id)stringByExpandingTildeToNonSandboxHome;
 - (id)stringByRemovingCharactersInSet:(id)arg1;
 - (id)stringByRemovingLastPathComponent;
 - (id)stringByRemovingPrefixCaseInsensitive:(id)arg1;

@@ -16,6 +16,7 @@
 - (BOOL)_accessibilityElementShouldBeInvalid;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityLabel;
+- (BOOL)canBecomeFocused;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

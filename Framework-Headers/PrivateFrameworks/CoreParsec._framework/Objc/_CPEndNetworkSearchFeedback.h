@@ -39,7 +39,6 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *parsecStatus; // @synthesize parsecStatus=_parsecStatus;
 @property (copy, nonatomic) NSString *partialClientIp; // @synthesize partialClientIp=_partialClientIp;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (nonatomic) long long responseSize; // @synthesize responseSize=_responseSize;
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 @property (readonly) Class superclass;

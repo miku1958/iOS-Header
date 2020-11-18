@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     id<TSADownloadDelegate> _downloadDelegate;
 }
 
-@property (readonly, nonatomic) NSArray *applicationTemplateVariants;
 @property (weak, nonatomic) TSADocumentRoot *documentRoot; // @synthesize documentRoot=mDocumentRoot;
 @property (readonly, nonatomic) Class documentRootClass;
 @property (strong, nonatomic) id<TSADownloadDelegate> downloadDelegate; // @synthesize downloadDelegate=_downloadDelegate;
@@ -41,14 +40,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)appTextDefaults;
 - (id)appTextDefaultsKey;
-- (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (void)clearICloudDocumentPreferences;
 - (void)clearIWorkAuthorColorIndex;
 - (void)clearIWorkAuthorName;
 - (void)clearIWorkAuthorPrivateID;
 - (unsigned long long)collaboratorColorIndexForKvsDocumentKey:(id)arg1;
 - (id)collaboratorNameForDocumentInfo:(id)arg1 firstName:(id *)arg2 lastName:(id *)arg3;
-- (void)dealloc;
 - (id)documentPreferenceKeyPrefix;
 - (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 - (id)existingNestedDocumentPathForPath:(id)arg1;
@@ -64,8 +62,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isICloudDocumentPreference:(id)arg1 validForKey:(id)arg2;
 - (BOOL)isReadableDocumentType:(id)arg1;
 - (BOOL)isValidIWorkAuthorColorIndex:(unsigned long long)arg1;
-- (BOOL)openURL:(id)arg1;
-- (BOOL)openURL:(id)arg1 withDocumentRoot:(id)arg2;
+- (BOOL)openURL:(id)arg1 displayAlertOnError:(BOOL)arg2;
 - (void)persistenceError:(id)arg1;
 - (void)registerDefaults;
 - (void)registerICloudPreferences;
@@ -78,7 +75,6 @@ __attribute__((visibility("hidden")))
 - (void)setIWorkAuthorPrivateID:(id)arg1;
 - (void)ubiquitousKeyValueStoreDidChange:(id)arg1;
 - (id)validICloudPreferencesForPreferences:(id)arg1 invalidKeys:(id *)arg2;
-- (void)wakeUpDownloadManager;
 
 @end
 

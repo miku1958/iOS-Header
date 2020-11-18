@@ -11,7 +11,7 @@
 #import <GameCenterFoundation/NSSecureCoding-Protocol.h>
 
 @class GKEventEmitter, GKInvite, NSInvocation, NSString, UIAlertView;
-@protocol GKLocalPlayerListener;
+@protocol GKLocalPlayerListenerPrivate;
 
 @interface GKLocalPlayer : GKPlayer <NSCoding, NSSecureCoding, GKSavedGameListener>
 {
@@ -21,13 +21,14 @@
     BOOL _enteringForeground;
     BOOL _newToGameCenter;
     BOOL _showingInGameUI;
+    BOOL _shouldPreserveOnboardingUI;
     GKInvite *_acceptedInvite;
     CDUnknownBlockType _validateAccountCompletionHandler;
     UIAlertView *_loginAlertView;
     UIAlertView *_currentAlert;
     NSInvocation *_currentFriendRequestInvocation;
     long long _environment;
-    GKEventEmitter<GKLocalPlayerListener> *_eventEmitter;
+    GKEventEmitter<GKLocalPlayerListenerPrivate> *_eventEmitter;
     double _authStartTimeStamp;
     unsigned long long _authenticationType;
 }
@@ -41,15 +42,16 @@
 @property (nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (readonly, nonatomic, getter=isAuthenticating) BOOL authenticating; // @dynamic authenticating;
 @property (nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
-@property (readonly, nonatomic) BOOL canChangePhoto; // @dynamic canChangePhoto;
+@property (readonly, nonatomic, getter=isAvatarEditingRestricted) BOOL avatarEditingRestricted;
 @property (nonatomic) UIAlertView *currentAlert; // @synthesize currentAlert=_currentAlert;
 @property (strong, nonatomic) NSInvocation *currentFriendRequestInvocation; // @synthesize currentFriendRequestInvocation=_currentFriendRequestInvocation;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, getter=isDefaultNickname) BOOL defaultNickname; // @dynamic defaultNickname;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didAuthenticate; // @synthesize didAuthenticate=_didAuthenticate;
 @property (nonatomic) BOOL enteringForeground; // @synthesize enteringForeground=_enteringForeground;
 @property (readonly, nonatomic) long long environment; // @synthesize environment=_environment;
-@property (strong, nonatomic) GKEventEmitter<GKLocalPlayerListener> *eventEmitter; // @synthesize eventEmitter=_eventEmitter;
+@property (strong, nonatomic) GKEventEmitter<GKLocalPlayerListenerPrivate> *eventEmitter; // @synthesize eventEmitter=_eventEmitter;
 @property (readonly, nonatomic) NSString *facebookUserID; // @dynamic facebookUserID;
 @property (readonly, nonatomic, getter=isFindable) BOOL findable; // @dynamic findable;
 @property (strong, nonatomic) NSString *firstName; // @dynamic firstName;
@@ -58,8 +60,10 @@
 @property (nonatomic) BOOL insideAuthenticatorInvocation;
 @property (strong, nonatomic) NSString *lastName; // @dynamic lastName;
 @property (strong, nonatomic) UIAlertView *loginAlertView; // @synthesize loginAlertView=_loginAlertView;
+@property (readonly, nonatomic, getter=isMultiplayerGamingRestricted) BOOL multiplayerGamingRestricted;
 @property (nonatomic, getter=isNewToGameCenter) BOOL newToGameCenter; // @synthesize newToGameCenter=_newToGameCenter;
 @property (nonatomic, getter=isPurpleBuddyAccount) BOOL purpleBuddyAccount; // @dynamic purpleBuddyAccount;
+@property (nonatomic) BOOL shouldPreserveOnboardingUI; // @synthesize shouldPreserveOnboardingUI=_shouldPreserveOnboardingUI;
 @property (nonatomic, getter=isShowingInGameUI) BOOL showingInGameUI; // @synthesize showingInGameUI=_showingInGameUI;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isUnderage) BOOL underage; // @dynamic underage;
@@ -73,6 +77,7 @@
 + (void)authenticatedLocalPlayersDidChange:(id)arg1 complete:(CDUnknownBlockType)arg2;
 + (id)authenticatedLocalPlayersFiltered:(long long)arg1;
 + (id)authenticatedLocalPlayersWithStatus:(unsigned long long)arg1;
++ (id)local;
 + (id)localPlayer;
 + (id)localPlayerAccessQueue;
 + (id)localPlayerForCredential:(id)arg1;
@@ -81,23 +86,29 @@
 + (void)performSync:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)_loadFriendPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_startAuthenticationForExistingPrimaryPlayer;
+- (void)acceptFriendRequestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)authenticateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)callAuthHandlerWithError:(id)arg1;
+- (void)cancelFriendRequestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)cancelGameInvite:(id)arg1;
+- (void)createFriendRequestWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)deleteSavedGamesWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)displayNameWithOptions:(unsigned char)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fetchCustomTournamentInvite;
 - (void)fetchMultiplayerGameInvite;
 - (void)fetchSavedGamesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)fetchTurnBasedEvent;
 - (id)friends;
 - (void)generateIdentityVerificationSignatureWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getPlayerIDFromFriendCode:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)hasEmailAddress:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)inviteeAcceptedGameInviteWithNotification:(id)arg1;
 - (void)inviteeDeclinedGameInviteWithNotification:(id)arg1;
+- (void)loadChallengableFriendsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadDefaultLeaderboardCategoryIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadDefaultLeaderboardIdentifierWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadFriendPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -111,11 +122,13 @@
 - (void)reportAuthenticationErrorNoInternetConnection;
 - (void)reportAuthenticationFailedForPlayer;
 - (void)reportAuthenticationLoginCanceled;
+- (void)reportAuthenticationPlayerAuthenticated;
+- (void)reportAuthenticationStartForPlayer;
 - (void)resolveConflictingSavedGames:(id)arg1 withData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)saveGameData:(id)arg1 withName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)scopedIDsArePersistent;
 - (void)setDefaultLeaderboardCategoryID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDefaultLeaderboardIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)setLoginStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setStatus:(id)arg1;
 - (void)setStatus:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setupForCloudSavedGames;
@@ -125,6 +138,7 @@
 - (void)unregisterAllListeners;
 - (void)unregisterListener:(id)arg1;
 - (void)updateFromLocalPlayer:(id)arg1;
+- (void)updateLoginStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

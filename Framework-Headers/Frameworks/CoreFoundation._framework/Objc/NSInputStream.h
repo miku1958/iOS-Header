@@ -8,6 +8,7 @@
 
 @interface NSInputStream : NSStream
 {
+    unsigned char _reserved[128];
 }
 
 @property (readonly) BOOL hasBytesAvailable; // @dynamic hasBytesAvailable;

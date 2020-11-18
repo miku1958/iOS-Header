@@ -21,11 +21,15 @@
 }
 
 @property (strong) AKAnisetteData *anisetteData; // @synthesize anisetteData=_anisetteData;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) NSString *dsid; // @synthesize dsid=_dsid;
+@property (readonly) unsigned long long hash;
 @property long long request; // @synthesize request=_request;
 @property BOOL shouldProvision; // @synthesize shouldProvision=_shouldProvision;
 @property (strong) NSData *sim; // @synthesize sim=_sim;
 @property BOOL success; // @synthesize success=_success;
+@property (readonly) Class superclass;
 
 + (id)actionFromDictionary:(id)arg1;
 + (unsigned long long)actionID;

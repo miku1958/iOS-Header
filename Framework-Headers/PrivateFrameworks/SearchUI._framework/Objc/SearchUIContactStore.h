@@ -7,16 +7,20 @@
 #import <objc/NSObject.h>
 
 @class CNContactStore, NSCache;
+@protocol OS_dispatch_queue;
 
 @interface SearchUIContactStore : NSObject
 {
     CNContactStore *_contactStore;
     NSCache *_contactCache;
+    NSObject<OS_dispatch_queue> *_contactFetchingQueue;
 }
 
-@property (strong) NSCache *contactCache; // @synthesize contactCache=_contactCache;
-@property (strong) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (strong, nonatomic) NSCache *contactCache; // @synthesize contactCache=_contactCache;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *contactFetchingQueue; // @synthesize contactFetchingQueue=_contactFetchingQueue;
+@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 
++ (id)contactDescriptorKeys;
 + (id)contactForPhoneNumber:(id)arg1 email:(id)arg2;
 + (id)placeholderContact;
 + (id)sharedStore;

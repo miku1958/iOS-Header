@@ -15,7 +15,7 @@
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSDate *endDate;
 @property (readonly, nonatomic) NSString *fullDescription;
-@property (readonly, nonatomic) long long iconType;
+@property (readonly, nonatomic) int iconType;
 @property (readonly, nonatomic) NSDate *lastUpdated;
 @property (readonly, nonatomic) NSString *messageForNonRoutable;
 @property (readonly, nonatomic) NSString *messageForRoutePlanning;

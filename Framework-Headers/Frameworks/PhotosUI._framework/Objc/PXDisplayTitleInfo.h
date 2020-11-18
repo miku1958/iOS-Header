@@ -12,6 +12,7 @@
 
 @interface PXDisplayTitleInfo : PXObservable <PXPhotoLibraryUIChangeObserver>
 {
+    BOOL _useVerboseSmartDescription;
     NSString *_title;
     NSString *_subtitle;
     NSString *_fontName;
@@ -26,12 +27,13 @@
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (nonatomic) BOOL useVerboseSmartDescription; // @synthesize useVerboseSmartDescription=_useVerboseSmartDescription;
 
-+ (id)displayTitleInfoForDetailsOfAssetCollection:(id)arg1 withTitleCategory:(long long)arg2 defaultTitle:(id)arg3 defaultTitleCategory:(long long)arg4 titleKey:(id)arg5 titleCategoryKey:(id)arg6 subtitleKey:(id)arg7 simulatedLoadingDelay:(double)arg8 preferredAttributesPromise:(CDUnknownBlockType)arg9;
++ (id)displayTitleInfoForDetailsOfAssetCollection:(id)arg1 withTitleCategory:(long long)arg2 defaultTitle:(id)arg3 defaultTitleCategory:(long long)arg4 titleKey:(id)arg5 titleCategoryKey:(id)arg6 defaultSubtitle:(id)arg7 subtitleKey:(id)arg8 simulatedLoadingDelay:(double)arg9 preferredAttributesPromise:(CDUnknownBlockType)arg10;
 - (void).cxx_destruct;
 - (void)_updatePropertiesFromAssetCollection;
 - (id)init;
-- (id)initWithAssetCollection:(id)arg1;
+- (id)initWithAssetCollection:(id)arg1 useVerboseSmartDescription:(BOOL)arg2;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 fontName:(id)arg3;
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;

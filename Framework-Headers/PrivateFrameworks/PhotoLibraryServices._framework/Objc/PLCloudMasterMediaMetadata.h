@@ -6,14 +6,19 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
-@class NSData, PLCloudMaster;
+@class NSData, PLAdditionalAssetAttributes, PLCloudMaster;
 
 @interface PLCloudMasterMediaMetadata : PLManagedObject
 {
 }
 
+@property (strong, nonatomic) PLAdditionalAssetAttributes *additionalAssetAttributes; // @dynamic additionalAssetAttributes;
 @property (strong, nonatomic) PLCloudMaster *cloudMaster; // @dynamic cloudMaster;
 @property (strong, nonatomic) NSData *data; // @dynamic data;
+
++ (id)entityName;
+- (void)_addPayloadIfValidForAsset:(id)arg1 changedKeys:(id)arg2 toPayloads:(id)arg3 modelProperties:(id)arg4;
+- (id)payloadsForChangedKeys:(id)arg1;
 
 @end
 

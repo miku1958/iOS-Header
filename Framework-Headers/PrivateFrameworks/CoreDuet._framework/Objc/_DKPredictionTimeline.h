@@ -9,17 +9,21 @@
 #import <CoreDuet/NSCopying-Protocol.h>
 #import <CoreDuet/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate;
+@class NSArray, NSDate, _DKHistogram;
 
 @interface _DKPredictionTimeline : NSObject <NSCopying, NSSecureCoding>
 {
     NSDate *_startDate;
     NSArray *_transitionDates;
+    _DKHistogram *_startHistogram;
+    _DKHistogram *_endHistogram;
     NSArray *_values;
 }
 
 @property (readonly, nonatomic) NSDate *endDate;
+@property (strong, nonatomic) _DKHistogram *endHistogram; // @synthesize endHistogram=_endHistogram;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (strong, nonatomic) _DKHistogram *startHistogram; // @synthesize startHistogram=_startHistogram;
 @property (strong, nonatomic) NSArray *transitionDates; // @synthesize transitionDates=_transitionDates;
 @property (strong, nonatomic) NSArray *values; // @synthesize values=_values;
 

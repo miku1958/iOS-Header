@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)g_genericToSpecificPropertyMap3DDonut;
 - (id)genericToSpecificPropertyMap;
 - (BOOL)supportsCalloutLines;
+- (id)userInterfaceName;
 - (id)valueAxisForSeries:(id)arg1;
 
 @end

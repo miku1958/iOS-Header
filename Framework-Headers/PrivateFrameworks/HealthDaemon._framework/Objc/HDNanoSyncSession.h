@@ -6,11 +6,12 @@
 
 #import <HealthDaemon/HDSyncSession.h>
 
-@class HDNanoSyncStore;
+@class HDNanoSyncStore, HDSyncPredicate;
 
 @interface HDNanoSyncSession : HDSyncSession
 {
     unsigned long long _options;
+    HDSyncPredicate *_syncPredicate;
     CDUnknownBlockType _completion;
     unsigned long long _messageCount;
 }
@@ -23,13 +24,15 @@
 @property (readonly, nonatomic, getter=isRequestedByRemote) BOOL requestedByRemote;
 
 - (void).cxx_destruct;
+- (id)_intervalForSecondsSinceDaysAgo:(unsigned long long)arg1;
+- (id)_syncPredicate;
 - (id)changeSetWithChanges:(id)arg1 statusCode:(int)arg2 error:(id)arg3;
 - (void)incrementMessageCount;
 - (id)initWithSyncStore:(id)arg1 options:(unsigned long long)arg2 reason:(id)arg3 delegate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)invokeCompletionWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
-- (id)predicateForSyncEntityClass:(Class)arg1;
+- (id)syncPredicate;
 
 @end
 

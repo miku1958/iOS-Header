@@ -13,10 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)accessibilityElements;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)isAccessibilityElement;
+- (void)layoutSubviews;
 - (void)setState:(unsigned long long)arg1 animate:(BOOL)arg2;
-- (void)setTimerToneName:(id)arg1;
 
 @end
 

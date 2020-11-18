@@ -18,8 +18,11 @@ __attribute__((visibility("hidden")))
 + (id)makeUniqueDirectoryWithBaseDirectory:(id)arg1 filename:(id)arg2;
 + (Class)managedTemporaryDirectoryClass;
 + (id)sharedManager;
++ (BOOL)shouldExcludeFromBackup;
 - (void).cxx_destruct;
 - (void)_clearDirectories:(id)arg1;
+- (void)_clearDirectoriesAsynchronously:(id)arg1;
+- (void)_excludeFromBackupAsynchronously;
 - (id)_readDirectories;
 - (id)init;
 - (id)newDirectoryWithFilename:(id)arg1;

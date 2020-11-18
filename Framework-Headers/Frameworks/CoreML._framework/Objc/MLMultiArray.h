@@ -26,13 +26,13 @@
 @property (readonly, nonatomic) NSArray *shape; // @synthesize shape=_shape;
 @property (readonly, nonatomic) NSArray *strides; // @synthesize strides=_strides;
 
-+ (id)arrayFromIndexVector:(const vector_eb9481f9 *)arg1;
++ (id)arrayFromIndexVector:(const vector_06e666a8 *)arg1;
 + (int)cppStorageOrder:(long long)arg1;
 + (id)doubleMatrixWithValues:(id)arg1 error:(id *)arg2;
 + (id)doubleMultiArrayWithCopyOfMultiArray:(id)arg1;
 + (id)doubleMultiArrayWithShape:(id)arg1 valueArray:(id)arg2 error:(id *)arg3;
 + (id)doubleVectorWithValues:(id)arg1;
-+ (vector_eb9481f9)indexVectorFromArray:(id)arg1;
++ (vector_06e666a8)indexVectorFromArray:(id)arg1;
 + (struct __CVBuffer *)pixelBufferBGRA8FromMultiArrayCHW:(id)arg1 channelOrderIsBGR:(BOOL)arg2 error:(id *)arg3;
 + (struct __CVBuffer *)pixelBufferGray8FromMultiArrayHW:(id)arg1 error:(id *)arg2;
 + (id)stringForDataType:(long long)arg1;
@@ -55,13 +55,13 @@
 - (id)objectAtIndexedSubscript:(long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (unsigned long long)offsetForKeyedSubscript:(id)arg1;
-- (id)sequeeze;
-- (id)sequeezeDimensions:(id)arg1 error:(id *)arg2;
 - (void)setNumber:(id)arg1 atOffset:(unsigned long long)arg2;
 - (void)setObject:(id)arg1 atIndexedSubscript:(long long)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (BOOL)setRangeWithRawData:(id)arg1 destIndex:(unsigned long long)arg2 error:(id *)arg3;
 - (id)sliceAtOrigin:(id)arg1 shape:(id)arg2 squeeze:(BOOL)arg3 error:(id *)arg4;
+- (id)squeeze;
+- (id)squeezeDimensions:(id)arg1 error:(id *)arg2;
 - (BOOL)vectorizeIntoMultiArray:(id)arg1 storageOrder:(long long)arg2 error:(id *)arg3;
 
 @end

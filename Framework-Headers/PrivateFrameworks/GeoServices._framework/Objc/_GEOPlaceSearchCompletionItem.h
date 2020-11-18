@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOCompletionItemPrivate-Protocol.h>
 
-@class GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, NSArray, NSData, NSString;
+@class GEODirectionIntent, GEOMapItemIdentifier, GEOMapServiceTraits, GEOPDAutocompleteEntry, GEOResolvedItem, GEORetainedSearchMetadata, GEOSearchCategory, GEOServerResultScoreMetadata, NSArray, NSData, NSString;
 @protocol GEOMapItem;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     GEOSearchCategory *_category;
 }
 
+@property (readonly, nonatomic) long long autocompleteCellType;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolved;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -32,16 +33,20 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *displayLines; // @synthesize displayLines=_displayLines;
 @property (readonly, nonatomic) GEOPDAutocompleteEntry *entry; // @synthesize entry=_entry;
 @property (readonly, nonatomic) NSData *entryMetadata;
+@property (readonly, nonatomic) long long entryTapBehavior;
 @property (readonly, nonatomic) id<GEOMapItem> geoMapItem;
 @property (readonly, nonatomic) BOOL hasDisambiguationRadiusMeters;
+@property (readonly, nonatomic) BOOL hasQueryAcceleratorAffordanceEnabled;
 @property (readonly, nonatomic) BOOL hasSortPriority;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSData *metadata;
 @property (readonly, nonatomic, getter=_placeDataAutocompleteEntry) GEOPDAutocompleteEntry *placeDataAutocompleteEntry;
 @property (readonly, nonatomic) int placeType;
+@property (readonly, nonatomic) NSString *queryAcceleratorCompletionString;
 @property (readonly, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata;
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory;
+@property (readonly, nonatomic) GEOServerResultScoreMetadata *serverResultScoreMetadata;
 @property (readonly, nonatomic) long long sortPriority;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;

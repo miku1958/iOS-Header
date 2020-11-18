@@ -16,6 +16,7 @@
     NSString *_manufacturer;
     NSString *_model;
     NSString *_name;
+    NSString *_productData;
 }
 
 @property (strong, nonatomic) NSString *firmwareVersion; // @synthesize firmwareVersion=_firmwareVersion;
@@ -23,9 +24,11 @@
 @property (readonly, nonatomic) BOOL hasManufacturer;
 @property (readonly, nonatomic) BOOL hasModel;
 @property (readonly, nonatomic) BOOL hasName;
+@property (readonly, nonatomic) BOOL hasProductData;
 @property (strong, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (strong, nonatomic) NSString *model; // @synthesize model=_model;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) NSString *productData; // @synthesize productData=_productData;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

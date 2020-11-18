@@ -10,5 +10,6 @@
 
 @protocol _INUIExtensionContextHosting <NSObject>
 - (void)requestHandlingOfIntent:(INIntent *)arg1;
+- (void)willBeginEditing;
 @end
 

@@ -13,11 +13,12 @@
 
 @interface HUPersonalRequestsDevicesItemModule : HFItemModule <HULocationDeviceManagerObserver>
 {
+    BOOL _onlyShowDeviceSwitches;
     NSSet *_itemProviders;
     id<HFMediaProfileContainer> _sourceMediaProfileContainer;
     HMHome *_home;
     HFUserItem *_sourceItem;
-    HFItemProvider *_devicesItemProvider;
+    HFItemProvider *_personalRequestsDevicesProvider;
     HFItem *_footerItem;
     HFItem *_personalRequestsToggleItem;
     HULocationDeviceManager *_locationDeviceManager;
@@ -27,14 +28,14 @@
 @property (readonly, nonatomic) NAFuture *activeLocationDeviceFuture;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) HFItemProvider *devicesItemProvider; // @synthesize devicesItemProvider=_devicesItemProvider;
 @property (readonly, nonatomic) HFItem *footerItem; // @synthesize footerItem=_footerItem;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSSet *itemProviders; // @synthesize itemProviders=_itemProviders;
 @property (readonly, nonatomic) HULocationDeviceManager *locationDeviceManager; // @synthesize locationDeviceManager=_locationDeviceManager;
-@property (nonatomic, getter=isPersonalRequestsEnabled) BOOL personalRequestsEnabled;
-@property (copy, nonatomic) NSArray *personalRequestsHomePods;
+@property (nonatomic) BOOL onlyShowDeviceSwitches; // @synthesize onlyShowDeviceSwitches=_onlyShowDeviceSwitches;
+@property (copy, nonatomic) NSArray *personalRequestsDevices;
+@property (strong, nonatomic) HFItemProvider *personalRequestsDevicesProvider; // @synthesize personalRequestsDevicesProvider=_personalRequestsDevicesProvider;
 @property (readonly, nonatomic) HFItem *personalRequestsToggleItem; // @synthesize personalRequestsToggleItem=_personalRequestsToggleItem;
 @property (readonly, nonatomic) HFUserItem *sourceItem; // @synthesize sourceItem=_sourceItem;
 @property (strong, nonatomic) id<HFMediaProfileContainer> sourceMediaProfileContainer; // @synthesize sourceMediaProfileContainer=_sourceMediaProfileContainer;
@@ -45,13 +46,14 @@
 - (void)_createItemProviders;
 - (BOOL)_showPersonalRequestsItems;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
-- (id)initWithItemUpdater:(id)arg1 userItem:(id)arg2 home:(id)arg3;
+- (id)initWithItemUpdater:(id)arg1 userItem:(id)arg2 home:(id)arg3 onlyShowDeviceSwitches:(BOOL)arg4;
 - (BOOL)isItemPersonalRequestsDevice:(id)arg1;
 - (BOOL)isItemPersonalRequestsFooter:(id)arg1;
 - (BOOL)isItemPersonalRequestsToggle:(id)arg1;
 - (void)locationDeviceManager:(id)arg1 didUpdateActiveLocationDevice:(id)arg2;
 - (void)registerForExternalUpdates;
 - (void)toggleAllPersonalRequestsDevices;
+- (void)turnOnAllPersonalRequestsDevices;
 - (void)unregisterForExternalUpdates;
 - (id)updateLocationDeviceToThisDevice;
 

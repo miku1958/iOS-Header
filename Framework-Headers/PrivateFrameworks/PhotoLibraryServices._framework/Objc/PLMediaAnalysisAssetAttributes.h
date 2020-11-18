@@ -14,6 +14,7 @@
 
 @property (nonatomic) float activityScore; // @dynamic activityScore;
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
+@property (nonatomic) short audioClassification; // @dynamic audioClassification;
 @property (nonatomic) float autoplaySuggestionScore; // @dynamic autoplaySuggestionScore;
 @property (nonatomic) int bestKeyFrameTimeScale; // @dynamic bestKeyFrameTimeScale;
 @property (nonatomic) long long bestKeyFrameValue; // @dynamic bestKeyFrameValue;
@@ -26,14 +27,16 @@
 @property (nonatomic) unsigned long long faceCount; // @dynamic faceCount;
 @property (strong, nonatomic) NSDate *mediaAnalysisTimeStamp; // @dynamic mediaAnalysisTimeStamp;
 @property (nonatomic) unsigned long long mediaAnalysisVersion; // @dynamic mediaAnalysisVersion;
+@property (nonatomic) long long packedBestPlaybackRect; // @dynamic packedBestPlaybackRect;
 @property (nonatomic) float videoScore; // @dynamic videoScore;
 
 + (id)entityName;
 + (id)fetchRequest;
-- (CDStruct_1b6d18a9)bestKeyFrameTime;
-- (CDStruct_5c5366e1)bestVideoTimeRange;
-- (void)setBestKeyFrameTime:(CDStruct_1b6d18a9)arg1;
-- (void)setBestVideoTimeRange:(CDStruct_5c5366e1)arg1;
+- (CDStruct_198678f7)bestKeyFrameTime;
+- (CDStruct_3c1748cc)bestVideoTimeRange;
+- (void)setBestKeyFrameTime:(CDStruct_198678f7)arg1;
+- (void)setBestVideoTimeRange:(CDStruct_3c1748cc)arg1;
+- (void)willSave;
 
 @end
 

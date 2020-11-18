@@ -16,6 +16,7 @@
     BOOL _aggregateByIdentifier;
     BOOL _requireOutgoingInteraction;
     BOOL _useTitleToContrainKeywords;
+    BOOL _inferActiveInteractions;
     unsigned long long _maxNumberOfPeopleSuggested;
     NSSet *_constrainMechanisms;
     NSSet *_constrainBundleIds;
@@ -38,6 +39,7 @@
 @property (strong) NSSet *constrainPersonIdType; // @synthesize constrainPersonIdType=_constrainPersonIdType;
 @property (strong) NSSet *constrainPersonIds; // @synthesize constrainPersonIds=_constrainPersonIds;
 @property (strong) NSSet *ignoreContactIdentifiers; // @synthesize ignoreContactIdentifiers=_ignoreContactIdentifiers;
+@property BOOL inferActiveInteractions; // @synthesize inferActiveInteractions=_inferActiveInteractions;
 @property unsigned long long maxNumberOfPeopleSuggested; // @synthesize maxNumberOfPeopleSuggested=_maxNumberOfPeopleSuggested;
 @property BOOL requireOutgoingInteraction; // @synthesize requireOutgoingInteraction=_requireOutgoingInteraction;
 @property BOOL useFuture; // @synthesize useFuture=_useFuture;
@@ -46,6 +48,7 @@
 + (id)defaultSettings;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)init;
 
 @end

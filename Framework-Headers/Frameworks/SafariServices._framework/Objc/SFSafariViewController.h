@@ -18,6 +18,7 @@
     SFBrowserRemoteViewController *_remoteViewController;
     _UIAsyncInvocation *_cancelViewServiceRequest;
     BOOL _hasBeenDisplayedAtLeastOnce;
+    BOOL _remoteViewControllerHasBeenAdded;
     NSArray *_previewActions;
     _WKActivatedElementInfo *_activatedElementInfo;
     NSArray *_customActivities;

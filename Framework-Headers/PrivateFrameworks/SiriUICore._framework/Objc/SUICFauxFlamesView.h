@@ -21,6 +21,7 @@
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithStyle:(long long)arg1 screenSize:(long long)arg2;
 - (BOOL)isAnimating;
+- (void)prewarm;
 - (void)setHidden:(BOOL)arg1;
 - (void)start:(BOOL)arg1;
 - (void)stop:(BOOL)arg1;

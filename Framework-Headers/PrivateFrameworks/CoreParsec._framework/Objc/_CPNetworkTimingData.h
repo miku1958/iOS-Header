@@ -89,7 +89,6 @@
 - (id)initWithTelemetryDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

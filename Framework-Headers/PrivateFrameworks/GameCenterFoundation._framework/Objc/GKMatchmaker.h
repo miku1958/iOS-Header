@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GKDiscovery, GKMatch, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
+@class GKDiscovery, GKDispatchGroup, GKMatch, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
 @protocol OS_dispatch_queue;
 
 @interface GKMatchmaker : NSObject
@@ -14,6 +14,7 @@
     BOOL _nearbyAdvertising;
     BOOL _wasNearbyBrowsing;
     BOOL _nearbyBrowsing;
+    BOOL _generatingCompatiblityHashes;
     int _matching;
     CDUnknownBlockType _inviteHandler;
     GKMatch *_match;
@@ -28,11 +29,18 @@
     NSDate *_nearbyQueryLastCheckDate;
     GKDiscovery *_nearbyDiscovery;
     double _nearbyQueryAllowance;
-    NSSet *_nearbyCompatibileHashes;
+    NSSet *_nearbyCompatibleVersionHashes;
+    NSSet *_nearbyCompatibleShortVersionHashes;
+    GKDispatchGroup *_compatibilityHashGroup;
     NSMutableDictionary *_nearbyInvites;
     NSMutableArray *_shareInvitees;
+    NSMutableArray *_acceptedInviteesTokens;
 }
 
+@property (strong, nonatomic) NSMutableArray *acceptedInviteesTokens; // @synthesize acceptedInviteesTokens=_acceptedInviteesTokens;
+@property (readonly, nonatomic) BOOL allInviteesDidRespond;
+@property (strong, nonatomic) GKDispatchGroup *compatibilityHashGroup; // @synthesize compatibilityHashGroup=_compatibilityHashGroup;
+@property (nonatomic) BOOL generatingCompatiblityHashes; // @synthesize generatingCompatiblityHashes=_generatingCompatiblityHashes;
 @property (readonly, nonatomic) BOOL hasInviteListener;
 @property (copy, nonatomic) CDUnknownBlockType inviteHandler; // @synthesize inviteHandler=_inviteHandler;
 @property (copy, nonatomic) CDUnknownBlockType inviteeResponseHandler; // @synthesize inviteeResponseHandler=_inviteeResponseHandler;
@@ -43,7 +51,8 @@
 @property int matching; // @synthesize matching=_matching;
 @property (nonatomic) BOOL nearbyAdvertising; // @synthesize nearbyAdvertising=_nearbyAdvertising;
 @property (nonatomic) BOOL nearbyBrowsing; // @synthesize nearbyBrowsing=_nearbyBrowsing;
-@property (strong, nonatomic) NSSet *nearbyCompatibileHashes; // @synthesize nearbyCompatibileHashes=_nearbyCompatibileHashes;
+@property (strong, nonatomic) NSSet *nearbyCompatibleShortVersionHashes; // @synthesize nearbyCompatibleShortVersionHashes=_nearbyCompatibleShortVersionHashes;
+@property (strong, nonatomic) NSSet *nearbyCompatibleVersionHashes; // @synthesize nearbyCompatibleVersionHashes=_nearbyCompatibleVersionHashes;
 @property (strong, nonatomic) GKDiscovery *nearbyDiscovery; // @synthesize nearbyDiscovery=_nearbyDiscovery;
 @property (strong, nonatomic) NSMutableDictionary *nearbyInvites; // @synthesize nearbyInvites=_nearbyInvites;
 @property (copy, nonatomic) CDUnknownBlockType nearbyPlayerHandler; // @synthesize nearbyPlayerHandler=_nearbyPlayerHandler;
@@ -72,13 +81,15 @@
 - (void)cancelPendingInviteToPlayer:(id)arg1;
 - (void)cancelPendingInvitesAndMarkInviteComplete:(BOOL)arg1;
 - (void)cancelSentNearbyInvites;
-- (BOOL)compatibilityMatrix:(id)arg1 includesAppWithBundleID:(id)arg2 version:(id)arg3;
+- (id)compatibilityHashQueue;
 - (long long)currentEnvironment;
 - (void)dealloc;
 - (void)declineNearbyInviteFromDevice:(id)arg1 reason:(long long)arg2;
+- (id)declineReasonString:(long long)arg1;
 - (void)declineReceivedNearbyInvites;
 - (void)determineIfShouldRespondToNearbyPlayer:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)doneMatchmaking;
+- (void)establishNearbyFriendRelationships:(id)arg1 fromDevice:(id)arg2;
 - (void)findMatchForRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)findPlayersForHostedMatchRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)findPlayersForHostedRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -86,20 +97,21 @@
 - (void)finishMatchmakingForMatch:(id)arg1;
 - (void)finishedAuthenticating;
 - (void)foundNearbyDeviceID:(id)arg1 discoveryInfo:(id)arg2;
-- (void)generateHashedCompatibiltySet;
+- (void)generateHashedCompatibiltySetWithHandler:(CDUnknownBlockType)arg1;
+- (void)getHashedCompatibilitySetsWithHandler:(CDUnknownBlockType)arg1;
 - (void)handleNearbyInvite:(id)arg1 fromDevice:(id)arg2;
 - (void)handleNearbyInviteResponse:(id)arg1 fromDevice:(id)arg2;
 - (void)handleNearbyProfileQuery:(id)arg1 fromDevice:(id)arg2;
 - (void)handleNearbyProfileResponse:(id)arg1 fromDevice:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (id)hashForBundleID:(id)arg1 version:(id)arg2;
-- (id)hashForCurrentGame;
+- (id)hashForBundleID:(id)arg1 version:(id)arg2 platform:(long long)arg3;
+- (id)hashForCurrentGameUsingBundleVersion;
+- (id)hashForCurrentGameUsingShortBundleVersionAndPlatform;
 - (id)init;
-- (void)inviteAnyNearbyPlayersWithRequest:(id)arg1;
+- (void)inviteAnyNearbyPlayersWithRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)invitePlayersWithRequest:(id)arg1 serverHosted:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)invitePlayersWithRequest:(id)arg1 serverHosted:(BOOL)arg2 onlineConnectionData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)inviteeAcceptedNotification:(id)arg1;
 - (void)inviteeDeclinedNotification:(id)arg1;
-- (void)loadCompatabilityMatrixAsDictionaryWithHandler:(CDUnknownBlockType)arg1;
 - (void)loadConnectivitySettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadPhotoDataDictionaryWithHandler:(CDUnknownBlockType)arg1;
 - (void)loadURLForMatch:(id)arg1 matchRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -124,6 +136,7 @@
 - (void)queryActivityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)queryPlayerGroupActivity:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)receivedData:(id)arg1 fromNearbyDeviceID:(id)arg2;
+- (void)reduceRecipientsForMatchRequest:(id)arg1 toPlayersWithPlayerIDs:(id)arg2;
 - (void)registeredListentersChanged;
 - (BOOL)removeInvitee:(id)arg1;
 - (void)removeNearbyInviteFromPlayer:(id)arg1;

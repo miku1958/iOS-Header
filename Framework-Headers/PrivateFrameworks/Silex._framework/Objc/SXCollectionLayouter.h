@@ -33,7 +33,7 @@
 - (void).cxx_destruct;
 - (id)childColumnLayoutForRowLayout:(id)arg1 display:(id)arg2 collectionContainerBlueprint:(id)arg3 childContainerComponentBlueprint:(id)arg4 documentColumnLayout:(id)arg5 unitConverter:(id)arg6;
 - (id)initWithContainerComponent:(id)arg1 layouterFactory:(id)arg2 columnCalculator:(id)arg3 unitConverterFactory:(id)arg4;
-- (void)layoutBlueprint:(id)arg1 columnLayout:(id)arg2 shouldContinue:(BOOL *)arg3;
+- (void)layoutBlueprint:(id)arg1 columnLayout:(id)arg2 description:(id)arg3 shouldContinue:(BOOL *)arg4;
 
 @end
 

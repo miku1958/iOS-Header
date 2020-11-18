@@ -32,13 +32,15 @@
 - (id)createCallRecord;
 - (void)dealloc;
 - (void)deleteAll;
+- (long long)deleteManagedCalls:(id)arg1;
+- (long long)deleteManagedCallsWithPredicate:(id)arg1;
 - (void)deleteObjectWithUniqueId:(id)arg1;
 - (void)deleteObjectsWithUniqueIds:(id)arg1;
-- (id)deleteWithPredicate:(id)arg1;
 - (id)fetchAll;
 - (id)fetchAllNoLimit;
 - (id)fetchAllObjectsWithUniqueId:(id)arg1;
-- (id)fetchManagedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3;
+- (unsigned long long)fetchManagedCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchManagedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)fetchObjectWithUniqueId:(id)arg1;
 - (id)fetchObjectsWithPredicate:(id)arg1;
 - (id)fetchObjectsWithUniqueIds:(id)arg1;
@@ -67,6 +69,7 @@
 - (id)timerOutgoing;
 - (void)unRegisterForNotifications;
 - (void)updateCallDBProperties;
+- (id)updateManagedCallsWithPredicate:(id)arg1 propertiesToUpdate:(id)arg2;
 
 @end
 

@@ -8,20 +8,20 @@
 
 #import <AVConference/VCRedundancyControlAlgorithm-Protocol.h>
 
-@class NSMutableDictionary, NSNumber, NSString;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface VCRedundancyControlAlgorithmAudioMultiWay : NSObject <VCRedundancyControlAlgorithm>
 {
     unsigned int _redundancyPercentage;
     double _redundancyInterval;
-    NSMutableDictionary *_statistics;
-    unsigned int _reasonCode;
-    NSNumber *_currentSSRC;
-    BOOL _isPacketLossSignificant;
-    unsigned int _percentageOfLossyRemoteParticipants;
-    unsigned int _worstPacketLossPercentage;
-    unsigned int _averagePacketLossOverLossyParticipants;
+    unsigned int _packetLossPercentageIncreaseThresholds[3];
+    unsigned int _packetLossPercentageDecreaseThresholds[3];
+    BOOL _isPacketLossIncreasing;
+    unsigned int _packetLossPercentage;
+    unsigned int _packetLossPercentageThreshold;
+    unsigned int _burstLossPacketCount;
+    BOOL _isUplinkRecentlyCongested;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,12 +32,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)computeRedundancyInfo;
-- (void)dealloc;
 - (id)init;
-- (BOOL)isPacketLossSignificantWithStatistics:(id)arg1;
-- (BOOL)shouldApplyRedundancy;
-- (unsigned int)updateRedundancyPercentage;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_48a7b5a5)arg1;
+- (unsigned int)updateRedundancyPercentageWithPLRThresholds:(unsigned int *)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
 
 @end
 

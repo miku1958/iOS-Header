@@ -8,22 +8,22 @@
 
 #import <Silex/SXDocumentStyle-Protocol.h>
 
-@class NSString, SXFill, SXJSONLinearGradient, UIColor;
+@class NSString, SXJSONArray, SXJSONLinearGradient, UIColor;
 
 @interface SXDocumentStyle : SXJSONObject <SXDocumentStyle>
 {
 }
 
 @property (readonly, nonatomic) UIColor *backgroundColor; // @dynamic backgroundColor;
+@property (readonly, nonatomic) SXJSONArray *conditional; // @dynamic conditional;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) SXFill *fill; // @dynamic fill;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIColor *topBackgroundColor; // @dynamic topBackgroundColor;
 @property (readonly, nonatomic) SXJSONLinearGradient *topBackgroundGradient; // @dynamic topBackgroundGradient;
 
-- (id)fillWithValue:(id)arg1 withType:(int)arg2;
++ (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
 
 @end
 

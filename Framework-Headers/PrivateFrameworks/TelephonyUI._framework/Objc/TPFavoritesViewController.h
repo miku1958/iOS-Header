@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-@class CNAvatarViewControllerSettings, CNContactFormatter, NSArray, NSIndexSet, TPFavoritesController, UIView;
+@class CNContactFormatter, NSArray, NSIndexSet, TPFavoritesController, UIView;
 
 @interface TPFavoritesViewController : UICollectionViewController
 {
@@ -14,12 +14,10 @@
     TPFavoritesController *_favoritesController;
     UIView *_contentUnavailableView;
     NSArray *_favoritesEntries;
-    CNAvatarViewControllerSettings *_avatarViewControllerSettings;
     CNContactFormatter *_contactFormatter;
     NSIndexSet *_sections;
 }
 
-@property (strong, nonatomic) CNAvatarViewControllerSettings *avatarViewControllerSettings; // @synthesize avatarViewControllerSettings=_avatarViewControllerSettings;
 @property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property (nonatomic) BOOL contentUnavailable; // @synthesize contentUnavailable=_contentUnavailable;
 @property (strong, nonatomic) UIView *contentUnavailableView; // @synthesize contentUnavailableView=_contentUnavailableView;
@@ -27,7 +25,11 @@
 @property (copy, nonatomic) NSArray *favoritesEntries; // @synthesize favoritesEntries=_favoritesEntries;
 @property (strong, nonatomic) NSIndexSet *sections; // @synthesize sections=_sections;
 
++ (id)avatarViewControllerSettings;
 - (void).cxx_destruct;
+- (struct CGSize)accessibleCellSizeFor:(id)arg1 layout:(id)arg2;
+- (id)cellHeightToFitWidgetContainedCollectionView:(id)arg1 layout:(id)arg2;
+- (struct CGSize)cellSizeFor:(id)arg1 layout:(id)arg2;
 - (BOOL)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
@@ -48,9 +50,11 @@
 - (void)postCNContactsClientDidDisplayFavoritesNotification;
 - (void)refreshView;
 - (void)refreshViewAnimated:(BOOL)arg1;
+- (void)relayoutCollectionView;
 - (void)setContentUnavailable:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFavoritesController:(id)arg1;
 - (void)setFavoritesEntries:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)useAccessibileLayout;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

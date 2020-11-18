@@ -42,6 +42,7 @@
 - (void)setSimulatedCellRegistrationStatus:(BOOL)arg1;
 - (void)setSimulatedWifiPower:(BOOL)arg1;
 - (void)setWifiScanResults:(id)arg1;
+- (void)simulateBeaconWithProximityUUID:(id)arg1 major:(long long)arg2 minor:(long long)arg3 eventType:(unsigned char)arg4;
 - (void)simulateFenceWithBundleID:(id)arg1 andFenceID:(id)arg2 eventType:(unsigned char)arg3 atLocation:(id)arg4;
 - (void)simulateSignificantLocationChange:(id)arg1;
 - (void)simulateVisit:(id)arg1;

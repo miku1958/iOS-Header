@@ -40,6 +40,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)renderFrameReachedTargetSize;
 - (void)transitionToSize:(struct CGSize)arg1 duration:(double)arg2 animationCurve:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)transitionToSize:(struct CGSize)arg1 offset:(struct CGPoint)arg2 duration:(double)arg3 animationCurve:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)willMoveToWindow:(id)arg1;

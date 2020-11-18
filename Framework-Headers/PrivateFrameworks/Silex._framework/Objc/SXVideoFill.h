@@ -16,7 +16,6 @@
 @property (readonly, nonatomic) NSString *resourceIdentifier; // @dynamic resourceIdentifier;
 @property (readonly, nonatomic) NSString *stillImageIdentifier; // @dynamic stillImageIdentifier;
 
-+ (id)typeString;
 - (BOOL)loopWithValue:(id)arg1 withType:(int)arg2;
 
 @end

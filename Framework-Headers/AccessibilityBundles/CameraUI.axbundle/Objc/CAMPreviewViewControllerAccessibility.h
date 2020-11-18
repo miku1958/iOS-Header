@@ -13,9 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axUpdateForCaptureDevice;
+- (void)_setGraphConfiguration:(id)arg1;
 - (void)_setUserLockedFocusAndExposure:(BOOL)arg1 shouldAnimate:(BOOL)arg2;
 - (void)captureControllerWillResetFocusAndExposure:(id)arg1;
-- (void)didChangeToMode:(long long)arg1 device:(long long)arg2 animated:(BOOL)arg3;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

@@ -8,48 +8,78 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDVenueIdentifier, GEOPDViewportInfo, PBUnknownFields;
+@class GEOPDVenueIdentifier, GEOPDViewportInfo, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchBrowseCategorySuggestionParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _engineTypes;
     double _requestLocalTimestamp;
-    int _minimumNumberOfCategories;
-    int _suggestionType;
     GEOPDVenueIdentifier *_venueFilter;
     GEOPDViewportInfo *_viewportInfo;
+    int _minimumNumberOfCategories;
+    int _suggestionType;
     BOOL _isCarplayRequest;
+    BOOL _isFlatCategoryListRequest;
+    BOOL _isFromNoQueryState;
     struct {
-        unsigned int requestLocalTimestamp:1;
-        unsigned int minimumNumberOfCategories:1;
-        unsigned int suggestionType:1;
-        unsigned int isCarplayRequest:1;
-    } _has;
+        unsigned int has_requestLocalTimestamp:1;
+        unsigned int has_minimumNumberOfCategories:1;
+        unsigned int has_suggestionType:1;
+        unsigned int has_isCarplayRequest:1;
+        unsigned int has_isFlatCategoryListRequest:1;
+        unsigned int has_isFromNoQueryState:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_engineTypes:1;
+        unsigned int read_venueFilter:1;
+        unsigned int read_viewportInfo:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_engineTypes:1;
+        unsigned int wrote_requestLocalTimestamp:1;
+        unsigned int wrote_venueFilter:1;
+        unsigned int wrote_viewportInfo:1;
+        unsigned int wrote_minimumNumberOfCategories:1;
+        unsigned int wrote_suggestionType:1;
+        unsigned int wrote_isCarplayRequest:1;
+        unsigned int wrote_isFlatCategoryListRequest:1;
+        unsigned int wrote_isFromNoQueryState:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *engineTypes;
 @property (readonly, nonatomic) unsigned long long engineTypesCount;
 @property (nonatomic) BOOL hasIsCarplayRequest;
+@property (nonatomic) BOOL hasIsFlatCategoryListRequest;
+@property (nonatomic) BOOL hasIsFromNoQueryState;
 @property (nonatomic) BOOL hasMinimumNumberOfCategories;
 @property (nonatomic) BOOL hasRequestLocalTimestamp;
 @property (nonatomic) BOOL hasSuggestionType;
 @property (readonly, nonatomic) BOOL hasVenueFilter;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
-@property (nonatomic) BOOL isCarplayRequest; // @synthesize isCarplayRequest=_isCarplayRequest;
-@property (nonatomic) int minimumNumberOfCategories; // @synthesize minimumNumberOfCategories=_minimumNumberOfCategories;
-@property (nonatomic) double requestLocalTimestamp; // @synthesize requestLocalTimestamp=_requestLocalTimestamp;
-@property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
+@property (nonatomic) BOOL isCarplayRequest;
+@property (nonatomic) BOOL isFlatCategoryListRequest;
+@property (nonatomic) BOOL isFromNoQueryState;
+@property (nonatomic) int minimumNumberOfCategories;
+@property (nonatomic) double requestLocalTimestamp;
+@property (nonatomic) int suggestionType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDVenueIdentifier *venueFilter; // @synthesize venueFilter=_venueFilter;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
+@property (strong, nonatomic) GEOPDVenueIdentifier *venueFilter;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsEngineTypes:(id)arg1;
 - (int)StringAsSuggestionType:(id)arg1;
+- (void)_addNoFlagsEngineType:(int)arg1;
+- (void)_readEngineTypes;
+- (void)_readVenueFilter;
+- (void)_readViewportInfo;
 - (void)addEngineType:(int)arg1;
 - (void)clearEngineTypes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -60,6 +90,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setEngineTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (id)suggestionTypeAsString:(int)arg1;

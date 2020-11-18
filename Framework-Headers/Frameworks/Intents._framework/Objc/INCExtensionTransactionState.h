@@ -16,8 +16,8 @@
     NSSet *_userActivities;
 }
 
-@property (readonly, copy, nonatomic) INIntent *intent; // @synthesize intent=_intent;
-@property (readonly, copy, nonatomic) INIntentResponse *intentResponse; // @synthesize intentResponse=_intentResponse;
+@property (readonly, nonatomic) INIntent *intent; // @synthesize intent=_intent;
+@property (readonly, nonatomic) INIntentResponse *intentResponse; // @synthesize intentResponse=_intentResponse;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSSet *userActivities; // @synthesize userActivities=_userActivities;
 

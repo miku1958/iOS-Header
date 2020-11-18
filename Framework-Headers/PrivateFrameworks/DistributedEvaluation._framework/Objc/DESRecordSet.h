@@ -14,16 +14,19 @@
     NSDictionary *_nativeRecords;
     NSDictionary *_nativeRecordInfo;
     NSArray *_coreDuetEvents;
+    NSDictionary *_predicate;
 }
 
 @property (readonly, copy, nonatomic) NSArray *coreDuetEvents; // @synthesize coreDuetEvents=_coreDuetEvents;
 @property (readonly, nonatomic) unsigned long long count;
 @property (readonly, copy, nonatomic) NSDictionary *nativeRecordInfo; // @synthesize nativeRecordInfo=_nativeRecordInfo;
 @property (readonly, copy, nonatomic) NSDictionary *nativeRecords; // @synthesize nativeRecords=_nativeRecords;
+@property (readonly, nonatomic) NSDictionary *predicate; // @synthesize predicate=_predicate;
 
 + (void)initialize;
 - (void).cxx_destruct;
-- (id)_initWithNativeRecords:(id)arg1 nativeRecordInfo:(id)arg2 coreDuetEvents:(id)arg3 dataFetcher:(CDUnknownBlockType)arg4;
+- (id)_anyNativeRecordUUID;
+- (id)_initWithNativeRecords:(id)arg1 nativeRecordInfo:(id)arg2 coreDuetEvents:(id)arg3 predicate:(id)arg4 dataFetcher:(CDUnknownBlockType)arg5;
 - (id)filteredRecordSetWithJSONPredicate:(id)arg1;
 - (id)nativeRecordDataForRecordUUID:(id)arg1 error:(id *)arg2;
 - (id)nativeRecordInfoForRecordUUID:(id)arg1;

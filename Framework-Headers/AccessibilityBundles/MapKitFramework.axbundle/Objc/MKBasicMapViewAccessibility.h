@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)accessibilityCustomActions;
 - (id)accessibilityCustomRotors;
 - (id)accessibilityElements;
 - (id)initWithFrame:(struct CGRect)arg1 andGlobe:(BOOL)arg2 shouldRasterize:(BOOL)arg3;

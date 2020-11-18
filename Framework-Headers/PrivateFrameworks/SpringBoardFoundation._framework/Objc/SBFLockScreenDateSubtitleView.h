@@ -25,7 +25,7 @@
 @property (strong, nonatomic) NSString *string;
 
 + (id)labelFont;
-+ (CDStruct_d2b197d1)labelFontMetrics;
++ (CDStruct_91d2e2b9)labelFontMetrics;
 + (double)scaledFontSize:(double)arg1 withMaximumFontSizeCategory:(id)arg2;
 - (void).cxx_destruct;
 - (void)_updateForCurrentSizeCategory;

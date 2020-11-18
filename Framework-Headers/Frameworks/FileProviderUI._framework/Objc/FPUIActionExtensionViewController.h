@@ -23,11 +23,13 @@
 - (void)_browserUserInterfaceStyleDidChange;
 - (void)_configureWithDomainIdentifier:(id)arg1;
 - (BOOL)_extensionImplementsSelector:(SEL)arg1;
+- (void)_prepareAuthenticationUsingServerURL:(id)arg1;
 - (void)_prepareAuthenticationUsingURL:(id)arg1;
 - (void)_prepareForActionWithIdentifier:(id)arg1 items:(id)arg2;
 - (void)_prepareForError:(id)arg1;
 - (void)_prepareForServerCreation;
 - (void)_setBrowserUserInterfaceStyle:(unsigned long long)arg1;
+- (void)prepareAuthenticationUsingServerURL:(id)arg1;
 - (void)prepareAuthenticationUsingURL:(id)arg1;
 - (void)prepareForActionWithIdentifier:(id)arg1 itemIdentifiers:(id)arg2;
 - (void)prepareForAuthentication;

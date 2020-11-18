@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)applyToABPerson:(void *)arg1 abmultivalue:(void *)arg2 propertyDescription:(id)arg3 error:(id *)arg4;
+- (BOOL)applyToABPerson:(void *)arg1 abmultivalue:(void *)arg2 propertyDescription:(id)arg3 logger:(id)arg4 error:(id *)arg5;
 - (void)applyToMutableMultiValue:(id)arg1 withIdentifierMap:(id)arg2;
 
 @end

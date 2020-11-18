@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct GEOFlyoverRegion *regions;
 @property (readonly, nonatomic) unsigned long long regionsCount;
 
++ (BOOL)isValid:(id)arg1;
 - (void)addRegion:(struct GEOFlyoverRegion)arg1;
 - (void)clearRegions;
 - (void)copyTo:(id)arg1;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (struct GEOFlyoverRegion)regionAtIndex:(unsigned long long)arg1;
 - (void)setRegions:(struct GEOFlyoverRegion *)arg1 count:(unsigned long long)arg2;

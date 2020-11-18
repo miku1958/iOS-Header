@@ -24,6 +24,8 @@
 + (id)entitlementsWithSecTask:(struct __SecTask *)arg1 overrides:(id)arg2 error:(id *)arg3;
 + (BOOL)isDashboardAppProcess;
 + (BOOL)isInternalProcess;
++ (BOOL)isPrivateSearchEnabledProcess;
++ (BOOL)isSearchEnabledProcess;
 - (void).cxx_destruct;
 - (BOOL)boolValueForEntitlement:(id)arg1 error:(id *)arg2;
 - (BOOL)hasEntitlement:(id)arg1;
@@ -32,8 +34,10 @@
 - (BOOL)isDashboardAPIEnabled;
 - (BOOL)isInDevelopmentEnvironment;
 - (BOOL)isInternal;
+- (BOOL)isPrivateSearchAPIEnabled;
 - (BOOL)isPublicClassKitAPIEnabled;
 - (BOOL)isRegisterDashboardEnabled;
+- (BOOL)isSearchAPIEnabled;
 - (id)stringValueForEntitlement:(id)arg1 error:(id *)arg2;
 
 @end

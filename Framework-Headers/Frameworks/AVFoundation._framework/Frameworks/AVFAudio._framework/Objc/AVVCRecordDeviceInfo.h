@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) NSString *remoteProductIdentifier; // @synthesize remoteProductIdentifier=_remoteProductIdentifier;
 
 - (void)dealloc;
-- (id)initWithVoiceController:(id)arg1;
+- (id)initWithRecordingEngine:(struct AVVCRecordingEngine *)arg1;
 
 @end
 

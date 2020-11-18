@@ -11,7 +11,11 @@
 @property (readonly, nonatomic) BOOL tsu_isSingleContiguousRange;
 
 + (id)tsu_indexSetWithIndices:(unsigned long long *)arg1 count:(unsigned long long)arg2;
+- (id)tsp_initWithMessage:(const struct IndexSet *)arg1;
+- (void)tsp_saveToMessage:(struct IndexSet *)arg1;
 - (struct _NSRange)tsu_boundingRange;
+- (void)tsu_enumerateRangesConcurrentlyUsingBeginBlock:(CDUnknownBlockType)arg1 concurrentBlock:(CDUnknownBlockType)arg2 finalBlock:(CDUnknownBlockType)arg3;
+- (void)tsu_enumerateUniquePermutationsUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)tsu_firstCommonIndexWithIndexes:(id)arg1;
 - (unsigned long long)tsu_indexAtPosition:(unsigned long long)arg1;
 - (id)tsu_indexSetByAddingIndex:(unsigned long long)arg1;
@@ -21,6 +25,7 @@
 - (id)tsu_indexSetByInsertingIndexes:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)tsu_indexSetByIntersectingWithIndexes:(id)arg1;
 - (id)tsu_indexSetByIntersectingWithRange:(struct _NSRange)arg1;
+- (id)tsu_indexSetChunkIndex:(unsigned long long)arg1 ofChunkCount:(unsigned long long)arg2;
 - (id)tsu_initWithIndices:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (BOOL)tsu_intersectsIndexesInIndexSet:(id)arg1;
 - (struct _NSRange)tsu_leadingRangeInRange:(struct _NSRange)arg1;

@@ -13,13 +13,13 @@
     NSArray *_plAssets;
 }
 
-@property (strong, nonatomic) NSArray *plAssets; // @synthesize plAssets=_plAssets;
+@property (readonly, nonatomic) NSArray *plAssets; // @synthesize plAssets=_plAssets;
 
 - (void).cxx_destruct;
 - (id)_fetchPhotoAssets:(long long)arg1;
 - (id)assetForItemAtIndex:(long long)arg1;
 - (id)countsByAssetDisplayType;
-- (id)init;
+- (id)initWithPhotoLibrary:(id)arg1;
 - (long long)sectionType;
 - (long long)typeForItemAtIndex:(long long)arg1;
 

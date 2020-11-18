@@ -13,7 +13,7 @@
 #import <PassKitUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PassKitUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSObject, NSString, PKContinuousButton, PKDiscoveryArticleAnimatedTransitioningHandler, PKDiscoveryArticleLayout, PKDiscoveryCardView, UIActivityIndicatorView, UICollectionView, UILabel, UIPanGestureRecognizer, UIScreenEdgePanGestureRecognizer;
+@class NSMutableDictionary, NSObject, NSString, PKDiscoveryArticleAnimatedTransitioningHandler, PKDiscoveryArticleLayout, PKDiscoveryCardView, PKDiscoveryDismissButton, UIActivityIndicatorView, UICollectionView, UILabel, UIPanGestureRecognizer, UIScreenEdgePanGestureRecognizer;
 @protocol OS_dispatch_queue;
 
 @interface PKDiscoveryArticleViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate, PKDiscoveryCardViewDelegate, PKPaymentSetupDelegate>
@@ -21,7 +21,7 @@
     PKDiscoveryArticleAnimatedTransitioningHandler *_transitioningHandler;
     PKDiscoveryArticleLayout *_articleLayout;
     struct UIEdgeInsets _contentInsets;
-    PKContinuousButton *_dismissButton;
+    PKDiscoveryDismissButton *_dismissButton;
     BOOL _isDownloading;
     UIActivityIndicatorView *_activityIndicator;
     UILabel *_downloadingLabel;
@@ -57,6 +57,7 @@
 - (void).cxx_destruct;
 - (void)_configureCallToActionShelfView:(id)arg1 forCallToActionShelf:(id)arg2 atIndexPath:(id)arg3;
 - (void)_configureInlineMediaShelfView:(id)arg1 forInlineMediaShelf:(id)arg2 atIndexPath:(id)arg3;
+- (long long)_dismissButtonStyleForCard;
 - (void)_dismissButtonTapped;
 - (void)_handlePanGesture:(id)arg1;
 - (BOOL)_hasCardInGalleryView;
@@ -65,6 +66,7 @@
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
 - (id)_shelfForIndexPath:(id)arg1;
 - (void)_systemTextSizeChanged;
+- (void)_updateDismissButtonIfNecessary;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;

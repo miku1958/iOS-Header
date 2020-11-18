@@ -18,7 +18,6 @@
 @property (readonly, nonatomic, getter=isPrerendered) BOOL prerendered;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithDictionary:(id)arg1;
 
 @end

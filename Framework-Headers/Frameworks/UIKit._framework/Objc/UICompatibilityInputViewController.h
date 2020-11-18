@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     UIKeyboardInputMode *_incomingExtensionInputMode;
     double _incomingExtensionInputModeTime;
     double _lastSuspendedTime;
+    double _currentResumeTime;
     BOOL _shouldRegenerateSizingConstraints;
     BOOL _shouldSuppressRemoteInputController;
     BOOL _tearingDownInputController;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 + (id)deferredInputModeControllerWithKeyboard:(id)arg1;
 + (id)inputSnapshotViewForInputMode:(id)arg1 orientation:(long long)arg2;
 + (id)inputViewControllerWithView:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (id)_compatView;
 - (id)_compatibilityController;
 - (id)_initAsDeferredController;
@@ -73,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)tearDownInputController;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willBeginTranslation;
 - (void)willResume:(id)arg1;

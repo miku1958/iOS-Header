@@ -64,9 +64,10 @@ __attribute__((visibility("hidden")))
 - (void)_loadAnimatedImage;
 - (void)_loadAutoloopVideo;
 - (void)_loadLivePhoto;
+- (id)cancelButtonTitle;
 - (id)chooseButtonTitle;
 - (void)cropOverlayWasOKed:(id)arg1;
-- (void)didUpdateNavigationBarAppearance;
+- (id)customBackgroundColor;
 - (BOOL)disableVideoTrimMessage;
 - (BOOL)doNotTranscode;
 - (id)exportPreset;
@@ -83,10 +84,10 @@ __attribute__((visibility("hidden")))
 - (id)irisPlayerViewViewHostingGestureRecognizers:(id)arg1;
 - (BOOL)isDisplayedInPhotoPicker;
 - (void)loadView;
+- (id)maxZoomScaleOverride;
 - (void)performPhotoPickerSelection;
 - (void)setIrisPlayer:(id)arg1;
 - (void)setPhotoPickerMediaTypes:(id)arg1;
-- (void)setupNavigationItem;
 - (BOOL)uiipc_useTelephonyUI;
 - (id)videoMaximumDuration;
 - (void)videoPlayerView:(id)arg1 isReadyForDisplayDidChange:(BOOL)arg2;

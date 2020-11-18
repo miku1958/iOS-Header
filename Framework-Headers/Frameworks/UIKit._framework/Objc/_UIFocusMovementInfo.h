@@ -13,12 +13,14 @@
 
 @interface _UIFocusMovementInfo : NSObject <NSCopying, BSXPCCoding>
 {
+    BOOL _shouldLoadScrollableContainer;
     BOOL _isInitialMovement;
     BOOL _isVelocityBased;
     _UIFocusMovementInfo *_primaryMovementInfo;
     _UIFocusMovementInfo *_secondaryMovementInfo;
     unsigned long long _heading;
     unsigned long long _secondaryHeading;
+    unsigned long long _linearHeading;
     struct CGVector _velocity;
 }
 
@@ -28,18 +30,23 @@
 @property (nonatomic, setter=_setHeading:) unsigned long long heading; // @synthesize heading=_heading;
 @property (nonatomic, getter=_isInitialMovement, setter=_setIsInitialMovement:) BOOL isInitialMovement; // @synthesize isInitialMovement=_isInitialMovement;
 @property (nonatomic, getter=_isVelocityBased, setter=_setIsVelocityBased:) BOOL isVelocityBased; // @synthesize isVelocityBased=_isVelocityBased;
+@property (nonatomic, getter=_linearHeading, setter=_setLinearHeading:) unsigned long long linearHeading; // @synthesize linearHeading=_linearHeading;
 @property (readonly, nonatomic) _UIFocusMovementInfo *primaryMovementInfo; // @synthesize primaryMovementInfo=_primaryMovementInfo;
 @property (nonatomic, getter=_secondaryHeading, setter=_setSecondaryHeading:) unsigned long long secondaryHeading; // @synthesize secondaryHeading=_secondaryHeading;
 @property (readonly, nonatomic) _UIFocusMovementInfo *secondaryMovementInfo; // @synthesize secondaryMovementInfo=_secondaryMovementInfo;
+@property (nonatomic, getter=_shouldLoadScrollableContainer, setter=_setShouldLoadScrollableContainer:) BOOL shouldLoadScrollableContainer; // @synthesize shouldLoadScrollableContainer=_shouldLoadScrollableContainer;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=_velocity, setter=_setVelocity:) struct CGVector velocity; // @synthesize velocity=_velocity;
 
 + (id)_movementWithHeading:(unsigned long long)arg1 isInitial:(BOOL)arg2;
++ (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 isInitial:(BOOL)arg3;
++ (id)_movementWithHeading:(unsigned long long)arg1 linearHeading:(unsigned long long)arg2 shouldLoadScrollableContainer:(BOOL)arg3 isInitial:(BOOL)arg4;
 + (id)_movementWithHeading:(unsigned long long)arg1 secondaryHeading:(unsigned long long)arg2 velocity:(struct CGVector)arg3 isInitial:(BOOL)arg4;
 + (id)_movementWithHeading:(unsigned long long)arg1 velocity:(struct CGVector)arg2 isInitial:(BOOL)arg3;
 + (id)_movementWithVelocity:(struct CGVector)arg1 isInitial:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_isLinearMovement;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

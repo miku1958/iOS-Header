@@ -8,37 +8,39 @@
 
 #import <NeutrinoCore/NUImageProperties-Protocol.h>
 
-@class NSDictionary, NSString;
-@protocol NUDepthProperties, NUPortraitEffectsMatteProperties, NURAWImageProperties;
+@class NSDictionary, NSString, NSURL;
+@protocol NURAWImageProperties;
 
 @interface _NUImageProperties : NSObject <NUImageProperties>
 {
+    BOOL _isFusedOvercapture;
+    NSURL *_url;
     NSDictionary *_metadata;
     struct CGColorSpace *_colorSpace;
     long long _orientation;
     NSString *_fileUTI;
     long long _alphaInfo;
     long long _componentInfo;
-    id<NUDepthProperties> _depthProperties;
-    id<NUPortraitEffectsMatteProperties> _portraitEffectsMatteProperties;
+    NSDictionary *_auxiliaryImagesProperties;
     id<NURAWImageProperties> _rawProperties;
     CDStruct_d58201db _size;
 }
 
 @property long long alphaInfo; // @synthesize alphaInfo=_alphaInfo;
+@property (strong) NSDictionary *auxiliaryImagesProperties; // @synthesize auxiliaryImagesProperties=_auxiliaryImagesProperties;
 @property struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property long long componentInfo; // @synthesize componentInfo=_componentInfo;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong) id<NUDepthProperties> depthProperties; // @synthesize depthProperties=_depthProperties;
 @property (readonly, copy) NSString *description;
 @property (strong) NSString *fileUTI; // @synthesize fileUTI=_fileUTI;
 @property (readonly) unsigned long long hash;
+@property BOOL isFusedOvercapture; // @synthesize isFusedOvercapture=_isFusedOvercapture;
 @property (strong) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property long long orientation; // @synthesize orientation=_orientation;
-@property (strong) id<NUPortraitEffectsMatteProperties> portraitEffectsMatteProperties; // @synthesize portraitEffectsMatteProperties=_portraitEffectsMatteProperties;
 @property (strong) id<NURAWImageProperties> rawProperties; // @synthesize rawProperties=_rawProperties;
 @property CDStruct_912cb5d2 size; // @synthesize size=_size;
 @property (readonly) Class superclass;
+@property (strong) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
 

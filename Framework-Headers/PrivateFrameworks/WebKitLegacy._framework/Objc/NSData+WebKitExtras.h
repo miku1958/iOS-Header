@@ -7,7 +7,11 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (WebKitExtras)
+- (BOOL)_web_isCaseInsensitiveEqualToCString:(const char *)arg1;
+- (long long)_web_locationAfterFirstBlankLine;
+- (BOOL)_web_startsWithBlankLine;
 - (id)_webkit_guessedMIMEType;
 - (id)_webkit_guessedMIMETypeForXML;
+- (id)_webkit_parseRFC822HeaderFields;
 @end
 

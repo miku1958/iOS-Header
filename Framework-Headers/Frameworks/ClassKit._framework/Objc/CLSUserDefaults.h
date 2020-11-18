@@ -14,6 +14,8 @@
 + (double)_doubleValueForKey:(id)arg1 defaultValue:(double)arg2;
 + (float)_floatValueForKey:(id)arg1 defaultValue:(float)arg2;
 + (int)_intValueForKey:(id)arg1 defaultValue:(int)arg2;
++ (BOOL)automatchClientPersona;
++ (BOOL)disableASMRosters;
 + (BOOL)isInternalOSVariant;
 + (BOOL)persistProgressData;
 

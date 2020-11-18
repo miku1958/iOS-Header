@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct MTLRenderPipelineDescriptorPrivate _private;
 }
 
+@property (nonatomic) BOOL forceSoftwareVertexFetch;
 @property (nonatomic) unsigned long long postVertexDumpBufferIndex;
 
 - (const struct MTLRenderPipelineDescriptorPrivate *)_descriptorPrivate;
@@ -50,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (id)label;
 - (unsigned long long)logicOperation;
 - (unsigned long long)maxTessellationFactor;
+- (unsigned long long)maxVertexAmplificationCount;
+- (id)newSerializedFragmentDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (id)newSerializedVertexDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)openGLModeEnabled;
@@ -79,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)setLogicOperation:(unsigned long long)arg1;
 - (void)setLogicOperationEnabled:(BOOL)arg1;
 - (void)setMaxTessellationFactor:(unsigned long long)arg1;
+- (void)setMaxVertexAmplificationCount:(unsigned long long)arg1;
 - (void)setOpenGLModeEnabled:(BOOL)arg1;
 - (void)setPipelineLibrary:(id)arg1;
 - (void)setPointCoordLowerLeft:(BOOL)arg1;
@@ -100,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)setTessellationOutputWindingOrder:(unsigned long long)arg1;
 - (void)setTessellationPartitionMode:(unsigned long long)arg1;
 - (void)setTwoSideEnabled:(BOOL)arg1;
+- (void)setVertexAmplificationMode:(unsigned long long)arg1;
 - (void)setVertexDepthCompareClampMask:(unsigned int)arg1;
 - (void)setVertexDescriptor:(id)arg1;
 - (void)setVertexEnabled:(BOOL)arg1;
@@ -112,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)tessellationOutputWindingOrder;
 - (unsigned long long)tessellationPartitionMode;
 - (void)validateWithDevice:(id)arg1;
+- (unsigned long long)vertexAmplificationMode;
 - (id)vertexBuffers;
 - (unsigned int)vertexDepthCompareClampMask;
 - (id)vertexDescriptor;

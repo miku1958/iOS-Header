@@ -6,7 +6,12 @@
 
 #import <UIKit/UIImage.h>
 
+@class NSURL;
+
 @interface UIImage (MPUtilities)
+
+@property (readonly, nonatomic) NSURL *artworkCatalogBackingFileURL;
+
 - (id)imageWithEtchedBorderOfColor:(id)arg1 radius:(double)arg2;
 - (id)imageWithShadow:(id)arg1;
 - (id)initWithContentsOfExactFilePath:(id)arg1;

@@ -16,7 +16,5 @@
 @property (readonly, nonatomic) NSString *campaignIdentifier; // @dynamic campaignIdentifier;
 @property (readonly, nonatomic) NSString *productIdentifier; // @dynamic productIdentifier;
 
-+ (id)typeString;
-
 @end
 

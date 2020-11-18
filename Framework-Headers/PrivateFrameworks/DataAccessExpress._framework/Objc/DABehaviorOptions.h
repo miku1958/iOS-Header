@@ -47,6 +47,8 @@
 + (void)removeDAManagedDefaults:(id)arg1;
 + (BOOL)sendMeCardEverywhere;
 + (BOOL)setDAManagedDefaults:(id)arg1;
++ (BOOL)useContactsFramerwork;
++ (BOOL)useContactsFramework;
 + (BOOL)useThunderhillBetaServers;
 + (id)whitelistedEASProtocols;
 + (BOOL)writeOutBrokenCancelationRequests;

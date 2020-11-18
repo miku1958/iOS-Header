@@ -47,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)_finish;
 - (void)_resource:(struct PlatformMediaResource *)arg1 loadFinishedWithError:(id)arg2;
 - (void)_restart;
-- (void)_setDefersLoading:(BOOL)arg1;
 - (id)_timingData;
 - (void)cancel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,8 +56,8 @@ __attribute__((visibility("hidden")))
 - (void)resource:(struct PlatformMediaResource *)arg1 accessControlCheckFailedWithError:(const struct ResourceError *)arg2;
 - (void)resource:(struct PlatformMediaResource *)arg1 loadFailedWithError:(const struct ResourceError *)arg2;
 - (void)resource:(struct PlatformMediaResource *)arg1 receivedData:(const char *)arg2 length:(int)arg3;
-- (void)resource:(struct PlatformMediaResource *)arg1 receivedRedirect:(const struct ResourceResponse *)arg2 request:(struct ResourceRequest *)arg3 completionHandler:(CompletionHandler_1797e72a *)arg4;
-- (void)resource:(struct PlatformMediaResource *)arg1 receivedResponse:(const struct ResourceResponse *)arg2;
+- (void)resource:(struct PlatformMediaResource *)arg1 receivedRedirect:(const struct ResourceResponse *)arg2 request:(struct ResourceRequest *)arg3 completionHandler:(CompletionHandler_7162061b *)arg4;
+- (void)resource:(struct PlatformMediaResource *)arg1 receivedResponse:(const struct ResourceResponse *)arg2 completionHandler:(CompletionHandler_071c3afe *)arg3;
 - (void)resource:(struct PlatformMediaResource *)arg1 sentBytes:(unsigned long long)arg2 totalBytesToBeSent:(unsigned long long)arg3;
 - (BOOL)resource:(struct PlatformMediaResource *)arg1 shouldCacheResponse:(const struct ResourceResponse *)arg2;
 - (void)resourceFinished:(struct PlatformMediaResource *)arg1;

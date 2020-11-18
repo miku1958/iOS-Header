@@ -5,11 +5,11 @@
 //
 
 @class NSObject, NSString;
-@protocol NSCoding;
+@protocol NSSecureCoding;
 
 @protocol _DKSimpleKeyValueStore
 - (NSObject *)objectForKey:(NSString *)arg1;
 - (void)removeObjectForKey:(NSString *)arg1;
-- (void)setObject:(NSObject<NSCoding> *)arg1 forKey:(NSString *)arg2;
+- (void)setObject:(NSObject<NSSecureCoding> *)arg1 forKey:(NSString *)arg2;
 @end
 

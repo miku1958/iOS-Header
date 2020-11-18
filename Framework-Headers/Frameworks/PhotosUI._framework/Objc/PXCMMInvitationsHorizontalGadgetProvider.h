@@ -12,11 +12,13 @@
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
 @class NSDate, NSString, PXCMMInvitationsDataSourceManager;
+@protocol PXCMMWorkflowPresenting;
 
 @interface PXCMMInvitationsHorizontalGadgetProvider : PXGadgetProvider <PXSettingsKeyObserver, PXChangeObserver, PXSectionedDataSourceManagerObserver, PXForYouRankable>
 {
     PXCMMInvitationsDataSourceManager *_dataSourceManager;
     BOOL _didGenerateGadgets;
+    id<PXCMMWorkflowPresenting> _workflowPresenter;
     NSDate *_cachedPriorityDate;
 }
 
@@ -29,6 +31,7 @@
 @property (readonly, nonatomic) NSDate *priorityDate;
 @property (readonly, nonatomic) long long priorityType;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<PXCMMWorkflowPresenting> workflowPresenter; // @synthesize workflowPresenter=_workflowPresenter;
 
 - (void).cxx_destruct;
 - (void)_configureDataSourceManager;
@@ -36,6 +39,7 @@
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
+- (id)initWithWorkflowPresenter:(id)arg1;
 - (void)loadDataForGadgets;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)resetPriorityDate;

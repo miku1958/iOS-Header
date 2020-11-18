@@ -21,10 +21,11 @@
 
 @property (strong, nonatomic) NSString *correlationIdentifier;
 @property (nonatomic) unsigned long long identifier;
+@property (nonatomic) unsigned long long sendRTT;
 @property (strong, nonatomic) NSString *topic;
 @property (strong, nonatomic) NSDictionary *userInfo;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)guid;

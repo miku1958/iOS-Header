@@ -8,7 +8,7 @@
 
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBAssertion, NSArray, NSDictionary, NSString;
+@class BBAssertion, BSServiceConnectionEndpoint, NSArray, NSDictionary, NSString, NSURL;
 
 @interface BBResponse : NSObject <NSSecureCoding>
 {
@@ -18,24 +18,30 @@
     BOOL _sent;
     NSString *_replyText;
     BOOL _activated;
+    BOOL _didOpenApplication;
     NSArray *_lifeAssertions;
     long long _actionType;
     NSString *_buttonID;
     NSString *_actionID;
+    NSURL *_actionLaunchURL;
     NSString *_originID;
     unsigned long long _actionActivationMode;
     long long _actionBehavior;
+    BSServiceConnectionEndpoint *_endpoint;
     NSDictionary *_context;
 }
 
 @property (nonatomic) unsigned long long actionActivationMode; // @synthesize actionActivationMode=_actionActivationMode;
 @property (nonatomic) long long actionBehavior; // @synthesize actionBehavior=_actionBehavior;
 @property (copy, nonatomic) NSString *actionID; // @synthesize actionID=_actionID;
+@property (copy, nonatomic) NSURL *actionLaunchURL; // @synthesize actionLaunchURL=_actionLaunchURL;
 @property (nonatomic) long long actionType; // @synthesize actionType=_actionType;
 @property (nonatomic) BOOL activated; // @synthesize activated=_activated;
 @property (copy, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
 @property (copy, nonatomic) NSString *buttonID; // @synthesize buttonID=_buttonID;
 @property (copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
+@property (nonatomic) BOOL didOpenApplication; // @synthesize didOpenApplication=_didOpenApplication;
+@property (copy, nonatomic) BSServiceConnectionEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (copy, nonatomic) NSArray *lifeAssertions; // @synthesize lifeAssertions=_lifeAssertions;
 @property (copy, nonatomic) NSString *originID; // @synthesize originID=_originID;
 @property (copy, nonatomic) NSString *replyText; // @synthesize replyText=_replyText;

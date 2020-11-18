@@ -13,5 +13,10 @@
 - (void)_stopAssistingDocumentView:(id)arg1;
 - (BOOL)_supportsAutoFill;
 - (id)_textFormElement;
+- (BOOL)isEditing;
+- (BOOL)isTextControl;
+- (BOOL)nodeCanBecomeFirstResponder;
+- (void)setSelectionWithPoint:(struct CGPoint)arg1;
+- (id)textInputTraits;
 @end
 

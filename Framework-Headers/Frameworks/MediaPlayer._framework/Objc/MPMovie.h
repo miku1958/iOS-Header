@@ -10,7 +10,6 @@
 
 @interface MPMovie : NSObject
 {
-    MPAVItem *_item;
     NSURL *_url;
     long long _movieSourceType;
     double _startPlaybackTime;
@@ -20,11 +19,13 @@
     double _lastKnownDuration;
     struct CGSize _lastKnownNaturalSize;
     long long _lastKnownType;
+    MPAVItem *_item;
 }
 
 @property (readonly, nonatomic) AVAsset *asset;
 @property (readonly, nonatomic) double duration;
 @property (nonatomic) double endPlaybackTime;
+@property (readonly, nonatomic) MPAVItem *item; // @synthesize item=_item;
 @property (readonly, nonatomic) unsigned long long movieMediaTypes;
 @property (nonatomic) long long movieSourceType;
 @property (readonly, nonatomic) struct CGSize naturalSize;
@@ -37,7 +38,6 @@
 + (id)movieWithPlayerItem:(id)arg1 error:(id *)arg2;
 + (id)movieWithURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
-- (id)_MPArrayQueueItem;
 - (void)_determineMediaType;
 - (void)_durationAvailableNotification:(id)arg1;
 - (id)_initWithAsset:(id)arg1 error:(id *)arg2;

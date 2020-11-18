@@ -9,14 +9,14 @@
 #import <Navigation/MNLocationProvider-Protocol.h>
 #import <Navigation/MNLocationProviderDelegate-Protocol.h>
 
-@class MNCoreLocationProvider, MNLeechedLocationProvider, NSBundle, NSString;
+@class MNCoreLocationProvider, NSBundle, NSString;
 @protocol MNLocationProviderDelegate;
 
 @interface MNHybridLocationProvider : NSObject <MNLocationProviderDelegate, MNLocationProvider>
 {
     unsigned long long _mode;
+    double _desiredAccuracy;
     MNCoreLocationProvider *_coreLocationProvider;
-    MNLeechedLocationProvider *_leechedLocationProvider;
     unsigned long long _activeServices;
     BOOL _shouldNotifyDelegate;
     id<MNLocationProviderDelegate> _delegate;
@@ -42,17 +42,18 @@
 @property (nonatomic) unsigned long long mode;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeScale;
+@property (readonly, nonatomic) unsigned long long traceVersion;
 @property (readonly, nonatomic) BOOL usesCLMapCorrection;
 
 - (void).cxx_destruct;
-- (id)_activeLocationProvider;
-- (id)_inactiveLocationProvider;
 - (BOOL)_isSubscribedToService:(unsigned long long)arg1;
+- (void)_sharedInit;
 - (void)_subscribeToService:(unsigned long long)arg1;
 - (void)_unsubscribeFromService:(unsigned long long)arg1;
 - (id)coreLocationProvider;
 - (id)init;
-- (id)initWithMode:(unsigned long long)arg1;
+- (id)initWithEffectiveBundle:(id)arg1;
+- (id)initWithEffectiveBundleIdentifier:(id)arg1;
 - (id)leechedLocationProvider;
 - (void)locationProvider:(id)arg1 didReceiveError:(id)arg2;
 - (void)locationProvider:(id)arg1 didUpdateHeading:(id)arg2;

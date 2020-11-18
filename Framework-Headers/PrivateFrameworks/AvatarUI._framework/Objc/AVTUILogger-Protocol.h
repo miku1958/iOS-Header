@@ -6,13 +6,14 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSError, NSString;
 
 @protocol AVTUILogger <NSObject>
 - (void)checkingAccountInfo:(void (^)(void (^)(void)))arg1;
 - (void)checkingIn:(void (^)(void (^)(void)))arg1;
 - (void)copyingStorageAside:(void (^)(void (^)(void)))arg1;
 - (void)deletingRecords:(void (^)(void (^)(void)))arg1;
+- (void)deletingStickerRecentsForRemoteChanges:(void (^)(void (^)(void)))arg1;
 - (void)duplicatingRecords:(void (^)(void (^)(void)))arg1;
 - (void)exportingRecords:(void (^)(void (^)(void)))arg1;
 - (void)fetchingRecords:(void (^)(void (^)(void)))arg1;
@@ -60,6 +61,7 @@
 - (void)logDeduplicateRecordWithIdentifier:(NSString *)arg1 toNewRecordWithIdentifier:(NSString *)arg2;
 - (void)logDeletingImagesWithIdentifierPrefix:(NSString *)arg1;
 - (void)logDeletingRecordWithIdentifier:(NSString *)arg1;
+- (void)logDeletingStickerRecents;
 - (void)logDidFinishEditingWithError:(NSString *)arg1;
 - (void)logDidFinishEditingWithSuccess;
 - (void)logDidResetZoneWithSuccess:(BOOL)arg1 error:(NSString *)arg2;
@@ -77,6 +79,7 @@
 - (void)logErrorDeletingThumbnailsForIdentifier:(NSString *)arg1 error:(NSString *)arg2;
 - (void)logErrorDuplicatingThumbnailsForIdentifier:(NSString *)arg1 error:(NSString *)arg2;
 - (void)logErrorFetchingChangeHistory:(NSString *)arg1;
+- (void)logErrorFetchingRecentStickers:(NSString *)arg1;
 - (void)logErrorFetchingRecords:(NSString *)arg1;
 - (void)logErrorGettingAccountInfo:(NSString *)arg1;
 - (void)logErrorGettingAvatarsDaemonClientProxy:(NSString *)arg1;
@@ -90,6 +93,7 @@
 - (void)logErrorReadingCurrentHistoryToken:(NSString *)arg1;
 - (void)logErrorRemovingStoreFolder:(NSString *)arg1;
 - (void)logErrorSavingChangeToken:(NSString *)arg1 location:(NSString *)arg2;
+- (void)logErrorSavingRecentSticker:(NSString *)arg1;
 - (void)logErrorSettingUpStore:(NSString *)arg1;
 - (void)logErrorSettingUserDirSuffix;
 - (void)logErrorStartingServer:(NSString *)arg1;
@@ -99,6 +103,7 @@
 - (void)logErrorUpdatingVersion:(NSString *)arg1;
 - (void)logErrorWhileMigratingBackend:(NSString *)arg1;
 - (void)logExportRequestResult:(BOOL)arg1 error:(NSString *)arg2;
+- (void)logFetchedOrphanedRecentSticker:(NSString *)arg1;
 - (void)logFetchedRecords:(unsigned long long)arg1 criteria:(long long)arg2;
 - (void)logFileSystemError:(NSString *)arg1;
 - (void)logFoundExistingRecordDuringMigration;
@@ -126,9 +131,11 @@
 - (void)logNoProxyToAvatarsDaemon;
 - (void)logNotImportingOnLaunchWithRemainingTime:(double)arg1;
 - (void)logNotificationDoesntContainChangeHistoryToken;
+- (void)logPaddleViewVideoPlayerFailed:(NSError *)arg1;
 - (void)logParsingMetadataDefinitions;
 - (void)logParsingMetadataDefinitionsError:(NSString *)arg1;
 - (void)logPerformTransition:(NSString *)arg1;
+- (void)logPerformedRecentStickersMigration:(BOOL)arg1;
 - (void)logPostingChangeNotificationForIdentifiers:(NSArray *)arg1;
 - (void)logPreLoadingNeededForIndex:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (void)logPreLoadingPreset:(NSString *)arg1 task:(NSString *)arg2;
@@ -138,12 +145,15 @@
 - (void)logReadingBackendAtPath:(NSString *)arg1;
 - (void)logReadingError:(NSString *)arg1;
 - (void)logReceivedRemoteChange:(NSString *)arg1;
-- (void)logRecordNotFoundInPuppetStore:(NSString *)arg1;
-- (void)logRecordNotFoundInRecordStore:(NSString *)arg1;
+- (void)logRecordsNotFoundInAnyStore:(NSString *)arg1;
+- (void)logRecordsNotFoundInPuppetStore:(NSString *)arg1;
+- (void)logRecordsNotFoundInRecordStore:(NSString *)arg1;
 - (void)logRenderingConfiguration:(NSString *)arg1;
 - (void)logRenderingModelColor:(NSString *)arg1;
 - (void)logRenderingModelPreset:(NSString *)arg1;
 - (void)logRenderingRecord:(NSString *)arg1 size:(struct CGSize)arg2;
+- (void)logRenderingStickerEnd:(NSString *)arg1;
+- (void)logRenderingStickerStart:(NSString *)arg1;
 - (void)logRequestingPreLoadingTask:(NSString *)arg1 forIndex:(unsigned long long)arg2 section:(unsigned long long)arg3;
 - (void)logRequestingThumbnailForIndex:(unsigned long long)arg1 section:(NSString *)arg2;
 - (void)logResetSyncReason:(unsigned long long)arg1;
@@ -164,6 +174,7 @@
 - (void)logStartTransition:(NSString *)arg1 state:(long long)arg2;
 - (void)logStartingPreLoadingTask:(NSString *)arg1;
 - (void)logStartingServer;
+- (void)logStickerGeneratorPoolDidntHaveAvailableGenerator:(long long)arg1 maxCount:(long long)arg2;
 - (void)logSyncEnabled;
 - (void)logTearingDownCoreDataStack:(NSString *)arg1;
 - (void)logThrottlingAVTView;
@@ -182,9 +193,11 @@
 - (void)logUsageTrackingBigDifferencesClusterCount:(unsigned long long)arg1;
 - (void)logUsageTrackingRecordCount:(unsigned long long)arg1;
 - (void)logUsageTrackingSmallDifferencesClusterCount:(unsigned long long)arg1;
+- (void)logUserRequestedBackupXPCActivityFinished;
 - (void)logWillResetZone;
 - (void)migratingPersistedContent:(void (^)(void (^)(void)))arg1;
 - (void)performingMigrationXPCActivity:(void (^)(void (^)(void)))arg1;
+- (void)performingUserRequestedBackupActivity:(void (^)(void (^)(void)))arg1;
 - (void)postingAvatarStoreChangeNotification:(void (^)(void (^)(void)))arg1;
 - (void)processingDidResetSyncNotification:(void (^)(void (^)(void)))arg1;
 - (void)processingRemoteChangeNotification:(void (^)(void (^)(void)))arg1;

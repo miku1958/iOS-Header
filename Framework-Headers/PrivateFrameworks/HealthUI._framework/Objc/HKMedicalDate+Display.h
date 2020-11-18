@@ -11,6 +11,5 @@
 - (id)displayString;
 - (id)displayStringWithPreferredForm:(long long)arg1 includeTimeZone:(BOOL)arg2;
 - (id)displayStringWithTimeZone;
-- (id)viewControllerTitleDisplayStringWithDateCache:(id)arg1;
 @end
 

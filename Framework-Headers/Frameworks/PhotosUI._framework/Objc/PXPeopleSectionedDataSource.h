@@ -20,15 +20,19 @@
     NSHashTable *_changeObservers;
 }
 
+@property (readonly, copy, nonatomic) NSArray *allPersons;
 @property (strong, nonatomic) NSHashTable *changeObservers; // @synthesize changeObservers=_changeObservers;
 @property (readonly, copy, nonatomic) NSArray *dataSources; // @synthesize dataSources=_dataSources;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
+@property (readonly, nonatomic) unsigned long long numberOfDisclosedSections;
+@property (readonly, nonatomic) unsigned long long numberOfSections;
 @property (strong, nonatomic) id pauseToken; // @synthesize pauseToken=_pauseToken;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *reloadQueue; // @synthesize reloadQueue=_reloadQueue;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) unsigned long long totalPersonCount;
 
 - (void).cxx_destruct;
 - (id)_dataSourceForFetchType:(unsigned long long)arg1;
@@ -39,32 +43,27 @@
 - (long long)_sectionForFetchType:(unsigned long long)arg1;
 - (void)addChangeObserver:(id)arg1;
 - (void)addVisiblePerson:(id)arg1;
-- (id)allMembers;
 - (BOOL)canReorderMembersInSection:(long long)arg1;
 - (void)cancelImageLoadingForItem:(id)arg1;
-- (void)changeMembersAtIndexPaths:(id)arg1 toPersonType:(long long)arg2 changeDetailsBlock:(CDUnknownBlockType)arg3;
+- (void)changePersonsAtIndexPaths:(id)arg1 toPersonType:(long long)arg2;
 - (void)dealloc;
+- (id)faceTileAtIndexPath:(id)arg1;
 - (unsigned long long)fetchTypeForSection:(long long)arg1;
 - (void)imageAtIndexPath:(id)arg1 targetSize:(struct CGSize)arg2 withCompletionBlock:(CDUnknownBlockType)arg3 fastDisplayBlock:(CDUnknownBlockType)arg4;
-- (id)indexPathForInsertingMember:(id)arg1 intoSection:(long long)arg2;
-- (id)indexPathOfMember:(id)arg1;
+- (id)indexPathOfPerson:(id)arg1;
 - (id)initWithSections:(id)arg1;
-- (BOOL)isSectionDisclosed:(long long)arg1;
 - (void)loadAndStartListeningToLibraryNotifications;
 - (id)localizedDisclosedTitleForSection:(long long)arg1;
 - (id)localizedTitleForSection:(long long)arg1;
 - (id)memberAtIndexPath:(id)arg1;
-- (id)membersAtIndexPaths:(id)arg1;
-- (void)moveMemberAtIndexPath:(id)arg1 toIndexPath:(id)arg2 shouldUpdateImmediately:(BOOL)arg3;
-- (unsigned long long)numberOfDisclosedSections;
-- (unsigned long long)numberOfMembersInSection:(long long)arg1;
-- (unsigned long long)numberOfMembersWithContactName;
-- (unsigned long long)numberOfMembersWithStringName;
-- (unsigned long long)numberOfSections;
+- (void)movePersonAtIndexPath:(id)arg1 toIndexPath:(id)arg2 shouldUpdateImmediately:(BOOL)arg3;
+- (unsigned long long)numberOfPersonsInSection:(long long)arg1;
+- (unsigned long long)numberOfPersonsWithContactName;
+- (unsigned long long)numberOfPersonsWithStringName;
 - (void)pauseListeningForChangesWithTimeout:(double)arg1;
-- (id)peopleAtIndexPaths:(id)arg1;
 - (id)personAtIndexPath:(id)arg1;
-- (long long)personTypeForMemberAtIndexPath:(id)arg1;
+- (id)personsAtIndexPaths:(id)arg1;
+- (id)personsForType:(long long)arg1;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1 withPreparedInfo:(id)arg2;
 - (unsigned long long)photoQuantityAtIndexPath:(id)arg1;
 - (id)prepareForPhotoLibraryChange:(id)arg1;
@@ -72,11 +71,9 @@
 - (void)removeChangeObserver:(id)arg1;
 - (void)removeVisiblePerson:(id)arg1;
 - (void)resumeListeningForChanges;
-- (void)setSection:(long long)arg1 disclosed:(BOOL)arg2;
 - (void)startListeningToLibraryNotifications;
 - (void)stopListeningToLibraryNotifications;
 - (id)titleAtIndexPath:(id)arg1;
-- (unsigned long long)totalMemberCount;
 
 @end
 

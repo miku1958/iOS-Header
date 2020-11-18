@@ -45,7 +45,7 @@
 @property (copy, nonatomic) NSString *uuid; // @synthesize uuid;
 @property (strong, nonatomic) NSURL *videoComplementURL; // @synthesize videoComplementURL;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initFromSerializedData:(id)arg1;
 - (void)processFacesWithBlock:(CDUnknownBlockType)arg1;

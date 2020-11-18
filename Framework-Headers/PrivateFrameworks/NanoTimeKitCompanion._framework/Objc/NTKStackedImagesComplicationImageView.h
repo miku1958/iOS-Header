@@ -6,12 +6,14 @@
 
 #import <UIKit/UIView.h>
 
+#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationImageView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKLegibilityView-Protocol.h>
 
 @class CLKDevice, CLKImageProvider, NSString, NTKColoringImageView, UIColor, UIImage, UIImageView;
+@protocol CLKMonochromeFilterProvider;
 
-@interface NTKStackedImagesComplicationImageView : UIView <NTKComplicationImageView, NTKLegibilityView>
+@interface NTKStackedImagesComplicationImageView : UIView <NTKComplicationImageView, NTKLegibilityView, CLKMonochromeComplicationView>
 {
     CLKDevice *_device;
     NTKColoringImageView *_foregroundImageView;
@@ -27,6 +29,7 @@
     UIColor *_shadowColor;
     double _imageScaleFactor;
     CLKImageProvider *_imageProvider;
+    id<CLKMonochromeFilterProvider> _filterProvider;
     UIColor *_color;
     UIColor *_overrideColor;
     double _multicolorAlpha;
@@ -37,6 +40,7 @@
 @property (readonly, nonatomic) UIColor *contentColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CLKImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
@@ -54,6 +58,7 @@
 - (BOOL)_hasMultipartImages;
 - (BOOL)_hasShadowViews;
 - (void)_loadImageViewsIfNecessary;
+- (BOOL)_shouldIgnoreTwoPieceImage;
 - (void)_updateAlpha;
 - (void)_updateColors;
 - (void)_updateImageSubviewsMaxSize;
@@ -64,6 +69,8 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

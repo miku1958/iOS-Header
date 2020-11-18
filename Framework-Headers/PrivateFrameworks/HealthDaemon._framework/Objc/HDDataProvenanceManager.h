@@ -18,7 +18,7 @@
     NSNumber *_propertyLock_localSourceID;
     NSNumber *_propertyLock_localDeviceID;
     NSNumber *_propertyLock_deviceNoneID;
-    int _defaultsLoaded;
+    _Atomic BOOL _defaultsLoaded;
     HDDatabaseValueCache *_persistentIDsByProvenanceKey;
     HDDatabaseValueCache *_originProvenanceByPersistentID;
     NSString *_localSystemBuild;
@@ -48,7 +48,7 @@
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
 - (id)localDataProvenanceForSourceEntity:(id)arg1 version:(id)arg2 deviceEntity:(id)arg3;
-- (id)originProvenanceForPersistentID:(long long)arg1 database:(id)arg2 error:(id *)arg3;
+- (id)originProvenanceForPersistentID:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)provenanceEntityForProvenance:(id)arg1 database:(id)arg2 error:(id *)arg3;
 - (id)provenanceEntityForProvenance:(id)arg1 error:(id *)arg2;
 - (void)setDeviceNoneID:(id)arg1;

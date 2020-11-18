@@ -6,9 +6,11 @@
 
 #import <IDSFoundation/IDSSocketPairMessage.h>
 
-@class NSDate, NSDictionary, NSString;
+#import <IDSFoundation/IDSSocketPairMessage-Protocol.h>
 
-@interface IDSSocketPairResourceTransferSender : IDSSocketPairMessage
+@class NSData, NSDate, NSDictionary, NSString;
+
+@interface IDSSocketPairResourceTransferSender : IDSSocketPairMessage <IDSSocketPairMessage>
 {
     NSString *_resourcePath;
     NSDictionary *_metadata;
@@ -31,15 +33,20 @@
     NSDate *_expiryDate;
 }
 
+@property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) BOOL expectsPeerResponse;
+@property (strong, nonatomic) NSDate *expiryDate;
 @property (readonly, nonatomic) BOOL isDone; // @synthesize isDone=_done;
 @property (nonatomic) unsigned int maxChunkSize; // @synthesize maxChunkSize=_maxChunkSize;
 @property (readonly, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
 @property (nonatomic) unsigned long long nextByte; // @synthesize nextByte=_nextByte;
+@property (readonly, nonatomic) NSString *peerResponseIdentifier;
 @property (nonatomic) BOOL resumeResourceTransfers; // @synthesize resumeResourceTransfers=_resumeResourceTransfers;
 @property (readonly, nonatomic) BOOL sentFirstMessage; // @synthesize sentFirstMessage=_sentFirstMessage;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
 @property (readonly, nonatomic) unsigned long long totalBytes; // @synthesize totalBytes=_totalBytes;
+@property (readonly, nonatomic) BOOL wantsAppAck;
 
 - (void).cxx_destruct;
 - (void)closeFileAndMarkDone;

@@ -46,6 +46,7 @@
 
 + (int)getOpenGLFramebuffer:(id)arg1;
 + (id)rendererWithContext:(id)arg1 options:(id)arg2;
++ (id)rendererWithDevice:(id)arg1 options:(id)arg2;
 + (void)restoreDefaultOpenGLState:(id)arg1 frameBuffer:(int)arg2;
 + (void)setPrefersOpenGL:(BOOL)arg1;
 - (void).cxx_destruct;
@@ -74,8 +75,11 @@
 - (struct CGSize)pixelSize;
 - (void)render:(BOOL)arg1;
 - (void)renderToFramebuffer:(int)arg1 shouldClear:(BOOL)arg2;
+- (void)renderToTexture:(id)arg1 commandQueue:(id)arg2;
 - (void)renderTransition:(id)arg1 toFramebuffer:(int)arg2 withInputTexture:(unsigned int)arg3 outputTexture:(unsigned int)arg4 inputTextureSize:(struct CGSize)arg5 outputTextureSize:(struct CGSize)arg6 time:(float)arg7;
 - (void)renderTransition:(id)arg1 withInputTexture:(unsigned int)arg2 outputTexture:(unsigned int)arg3 inputTextureSize:(struct CGSize)arg4 outputTextureSize:(struct CGSize)arg5 time:(float)arg6;
+- (void)renderTransition:(id)arg1 withInputTexture:(id)arg2 outputTexture:(id)arg3 time:(float)arg4 encoder:(id)arg5 pass:(id)arg6 commandQueue:(id)arg7;
+- (void)renderWithEncoder:(id)arg1 pass:(id)arg2 commandQueue:(id)arg3;
 - (void)setShowsQuadCount:(BOOL)arg1;
 - (void)setShowsSpriteBounds:(BOOL)arg1;
 - (void)set_shouldCenterStats:(BOOL)arg1;

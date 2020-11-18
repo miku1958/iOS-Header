@@ -44,6 +44,9 @@
 
 - (void).cxx_destruct;
 - (BOOL)_prepareWithError:(id *)arg1;
+- (BOOL)_recordObjectID:(id)arg1 withSimpleDeleteValidators:(id)arg2;
+- (id)_simpleDeleteValidatorsWithManagedObjectContext:(id)arg1;
+- (BOOL)_validateSimpleDeletionsWithValidators:(id)arg1 requestsByObjectID:(id)arg2 error:(id *)arg3;
 - (id)initWithInsertRequests:(id)arg1 updateRequests:(id)arg2 deleteRequests:(id)arg3 context:(id)arg4 photoLibrary:(id)arg5;
 - (BOOL)validateWithError:(id *)arg1;
 

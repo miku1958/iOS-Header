@@ -21,7 +21,6 @@
 @property (readonly, nonatomic) NSString *passcode;
 @property (nonatomic) long long passcodeLockViewState;
 @property (nonatomic) BOOL playsKeypadSounds;
-@property (nonatomic) BOOL proudLockShowsBiometricStates;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn;
 @property (nonatomic) BOOL showsCancelButton;
 @property (nonatomic) BOOL showsEmergencyCallButton;

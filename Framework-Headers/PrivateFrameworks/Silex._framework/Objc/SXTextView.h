@@ -52,11 +52,11 @@
 
 - (void).cxx_destruct;
 - (void)_updateOverlayTransform;
+- (long long)accessibilityContainerType;
 - (id)accessibilityCustomRotorMembershipForRep:(id)arg1;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityRepIsSelectable:(id)arg1;
-- (unsigned long long)accessibilityTraits;
 - (void)directLayerHostRemoveIfMatchingContainerLayer:(id)arg1 forRep:(id)arg2;
 - (void)directLayerHostUpdateOverlayLayers:(id)arg1 forRep:(id)arg2;
 - (void)directLayerHostUpdateWithContainerLayer:(id)arg1 forRep:(id)arg2;

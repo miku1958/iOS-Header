@@ -18,6 +18,7 @@
     double _min;
     double _mostRecent;
     double _mostRecentDate;
+    double _mostRecentDuration;
     double _valueInCanonicalUnit;
     double _valueInOriginalUnit;
     NSString *_originalUnitString;
@@ -31,6 +32,7 @@
         unsigned int min:1;
         unsigned int mostRecent:1;
         unsigned int mostRecentDate:1;
+        unsigned int mostRecentDuration:1;
         unsigned int valueInCanonicalUnit:1;
         unsigned int valueInOriginalUnit:1;
         unsigned int final:1;
@@ -50,6 +52,7 @@
 @property (nonatomic) BOOL hasMin;
 @property (nonatomic) BOOL hasMostRecent;
 @property (nonatomic) BOOL hasMostRecentDate;
+@property (nonatomic) BOOL hasMostRecentDuration;
 @property (readonly, nonatomic) BOOL hasOriginalUnitString;
 @property (readonly, nonatomic) BOOL hasSample;
 @property (nonatomic) BOOL hasValueInCanonicalUnit;
@@ -59,6 +62,7 @@
 @property (nonatomic) double min; // @synthesize min=_min;
 @property (nonatomic) double mostRecent; // @synthesize mostRecent=_mostRecent;
 @property (nonatomic) double mostRecentDate; // @synthesize mostRecentDate=_mostRecentDate;
+@property (nonatomic) double mostRecentDuration; // @synthesize mostRecentDuration=_mostRecentDuration;
 @property (strong, nonatomic) NSString *originalUnitString; // @synthesize originalUnitString=_originalUnitString;
 @property (strong, nonatomic) NSMutableArray *quantitySeriesDatas; // @synthesize quantitySeriesDatas=_quantitySeriesDatas;
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;

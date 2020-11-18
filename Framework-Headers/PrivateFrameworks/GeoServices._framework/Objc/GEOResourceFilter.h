@@ -8,13 +8,23 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class PBDataReader, PBUnknownFields;
 
 @interface GEOResourceFilter : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _scales;
     CDStruct_95bda58d _scenarios;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_scales:1;
+        unsigned int read_scenarios:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_scales:1;
+        unsigned int wrote_scenarios:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *scales;
@@ -23,13 +33,19 @@
 @property (readonly, nonatomic) unsigned long long scenariosCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsScales:(id)arg1;
 - (int)StringAsScenarios:(id)arg1;
+- (void)_addNoFlagsScale:(int)arg1;
+- (void)_addNoFlagsScenario:(int)arg1;
+- (void)_readScales;
+- (void)_readScenarios;
 - (void)addScale:(int)arg1;
 - (void)addScenario:(int)arg1;
 - (void)clearScales;
 - (void)clearScenarios;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -38,6 +54,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)scaleAtIndex:(unsigned long long)arg1;
 - (id)scalesAsString:(int)arg1;

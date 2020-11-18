@@ -38,7 +38,6 @@
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (id)valuesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)valuesCount;
 - (void)writeTo:(id)arg1;

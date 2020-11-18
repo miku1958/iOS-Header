@@ -6,15 +6,23 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class UIView;
+@class UIGestureRecognizer, UIView;
 @protocol UICoordinateSpace, _UIClickInteractionDriverDelegate;
 
 @protocol _UIClickInteractionDriving <NSObject>
 
 @property (nonatomic) double allowableMovement;
+@property (nonatomic) BOOL cancelsTouchesInView;
+@property (readonly, nonatomic) BOOL clicksUpAutomaticallyAfterTimeout;
 @property (weak, nonatomic) id<_UIClickInteractionDriverDelegate> delegate;
+@property (readonly, nonatomic) BOOL isCurrentlyAcceleratedByForce;
+@property (readonly, nonatomic) double maximumEffectProgress;
+@property (readonly, nonatomic) UIGestureRecognizer *primaryGestureRecognizer;
+@property (readonly, nonatomic) double touchDuration;
 @property (weak, nonatomic) UIView *view;
 
++ (BOOL)prefersCancelsTouchesInView;
++ (BOOL)requiresForceCapability;
 - (void)cancelInteraction;
 - (struct CGPoint)locationInCoordinateSpace:(id<UICoordinateSpace>)arg1;
 @end

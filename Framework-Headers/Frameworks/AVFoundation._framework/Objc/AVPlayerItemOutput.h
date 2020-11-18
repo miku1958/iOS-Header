@@ -22,7 +22,6 @@
 - (void)_setTimebase:(struct OpaqueCMTimebase *)arg1;
 - (id)_weakReference;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (CDStruct_1b6d18a9)itemTimeForHostTime:(double)arg1;
 - (CDStruct_1b6d18a9)itemTimeForMachAbsoluteTime:(long long)arg1;

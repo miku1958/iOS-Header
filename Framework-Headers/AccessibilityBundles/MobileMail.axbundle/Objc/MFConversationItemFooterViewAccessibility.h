@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityConversationViewControllerForCell:(id)arg1;
+- (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityParentCell;
 - (void)_accessibilityPerformLeadingAction;

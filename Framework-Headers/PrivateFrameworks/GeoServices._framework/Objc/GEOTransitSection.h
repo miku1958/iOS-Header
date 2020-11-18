@@ -8,39 +8,67 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOTransitSection : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _actionSheetArtworkIndexs;
     CDStruct_9f2792e4 _routeDetailsArtworkIndexs;
     CDStruct_9f2792e4 _stepIndexs;
     NSString *_actionSheetName;
-    int _nextOptionsIndex;
     NSMutableArray *_ticketingSegments;
+    int _nextOptionsIndex;
     BOOL _disableAlightNotifications;
     struct {
-        unsigned int nextOptionsIndex:1;
-        unsigned int disableAlightNotifications:1;
-    } _has;
+        unsigned int has_nextOptionsIndex:1;
+        unsigned int has_disableAlightNotifications:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_actionSheetArtworkIndexs:1;
+        unsigned int read_routeDetailsArtworkIndexs:1;
+        unsigned int read_stepIndexs:1;
+        unsigned int read_actionSheetName:1;
+        unsigned int read_ticketingSegments:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_actionSheetArtworkIndexs:1;
+        unsigned int wrote_routeDetailsArtworkIndexs:1;
+        unsigned int wrote_stepIndexs:1;
+        unsigned int wrote_actionSheetName:1;
+        unsigned int wrote_ticketingSegments:1;
+        unsigned int wrote_nextOptionsIndex:1;
+        unsigned int wrote_disableAlightNotifications:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) unsigned int *actionSheetArtworkIndexs;
 @property (readonly, nonatomic) unsigned long long actionSheetArtworkIndexsCount;
-@property (strong, nonatomic) NSString *actionSheetName; // @synthesize actionSheetName=_actionSheetName;
-@property (nonatomic) BOOL disableAlightNotifications; // @synthesize disableAlightNotifications=_disableAlightNotifications;
+@property (strong, nonatomic) NSString *actionSheetName;
+@property (nonatomic) BOOL disableAlightNotifications;
 @property (readonly, nonatomic) BOOL hasActionSheetName;
 @property (nonatomic) BOOL hasDisableAlightNotifications;
 @property (nonatomic) BOOL hasNextOptionsIndex;
-@property (nonatomic) int nextOptionsIndex; // @synthesize nextOptionsIndex=_nextOptionsIndex;
+@property (nonatomic) int nextOptionsIndex;
 @property (readonly, nonatomic) unsigned int *routeDetailsArtworkIndexs;
 @property (readonly, nonatomic) unsigned long long routeDetailsArtworkIndexsCount;
 @property (readonly, nonatomic) unsigned int *stepIndexs;
 @property (readonly, nonatomic) unsigned long long stepIndexsCount;
-@property (strong, nonatomic) NSMutableArray *ticketingSegments; // @synthesize ticketingSegments=_ticketingSegments;
+@property (strong, nonatomic) NSMutableArray *ticketingSegments;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)ticketingSegmentType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsActionSheetArtworkIndex:(unsigned int)arg1;
+- (void)_addNoFlagsRouteDetailsArtworkIndex:(unsigned int)arg1;
+- (void)_addNoFlagsStepIndex:(unsigned int)arg1;
+- (void)_addNoFlagsTicketingSegment:(id)arg1;
+- (void)_readActionSheetArtworkIndexs;
+- (void)_readActionSheetName;
+- (void)_readRouteDetailsArtworkIndexs;
+- (void)_readStepIndexs;
+- (void)_readTicketingSegments;
 - (unsigned int)actionSheetArtworkIndexAtIndex:(unsigned long long)arg1;
 - (void)addActionSheetArtworkIndex:(unsigned int)arg1;
 - (void)addRouteDetailsArtworkIndex:(unsigned int)arg1;
@@ -50,6 +78,7 @@
 - (void)clearRouteDetailsArtworkIndexs;
 - (void)clearStepIndexs;
 - (void)clearTicketingSegments;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -58,6 +87,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)routeDetailsArtworkIndexAtIndex:(unsigned long long)arg1;
 - (void)setActionSheetArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;

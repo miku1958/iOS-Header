@@ -7,37 +7,39 @@
 #import <objc/NSObject.h>
 
 #import <DoNotDisturb/NSCopying-Protocol.h>
+#import <DoNotDisturb/NSMutableCopying-Protocol.h>
 #import <DoNotDisturb/NSSecureCoding-Protocol.h>
 
-@class DNDModeAssertionLifetime, NSString;
+@class DNDModeAssertionLifetime, NSDate, NSString;
 
-@interface DNDModeAssertionDetails : NSObject <NSCopying, NSSecureCoding>
+@interface DNDModeAssertionDetails : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
-    BOOL _userRequested;
     NSString *_identifier;
     NSString *_modeIdentifier;
     DNDModeAssertionLifetime *_lifetime;
-    unsigned long long _syncSuppressionOptions;
+    NSDate *_userVisibleEndDate;
 }
 
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) DNDModeAssertionLifetime *lifetime; // @synthesize lifetime=_lifetime;
 @property (readonly, copy, nonatomic) NSString *modeIdentifier; // @synthesize modeIdentifier=_modeIdentifier;
-@property (readonly, nonatomic) unsigned long long syncSuppressionOptions; // @synthesize syncSuppressionOptions=_syncSuppressionOptions;
-@property (readonly, nonatomic, getter=isUserRequested) BOOL userRequested; // @synthesize userRequested=_userRequested;
+@property (readonly, nonatomic, getter=isUserRequested) BOOL userRequested; // @dynamic userRequested;
+@property (readonly, copy, nonatomic) NSDate *userVisibleEndDate; // @synthesize userVisibleEndDate=_userVisibleEndDate;
 
-+ (id)_lifetimeClasses;
 + (id)detailsWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 lifetime:(id)arg3;
 + (BOOL)supportsSecureCoding;
 + (id)userRequestedAssertionDetailsWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 lifetime:(id)arg3;
 - (void).cxx_destruct;
+- (id)_initWithDetails:(id)arg1;
+- (id)_initWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 lifetime:(id)arg3 userVisibleEndDate:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 modeIdentifier:(id)arg2 lifetime:(id)arg3 userRequested:(BOOL)arg4 syncSuppressionOptions:(unsigned long long)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

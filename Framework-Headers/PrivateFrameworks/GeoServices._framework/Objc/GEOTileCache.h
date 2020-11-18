@@ -15,8 +15,8 @@
     NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
 }
 
-@property (readonly) unsigned long long currentCost;
-@property (readonly) unsigned long long currentCount;
+@property (readonly, nonatomic) unsigned long long currentCost;
+@property (readonly, nonatomic) unsigned long long currentCount;
 @property unsigned long long maxCapacity;
 @property unsigned long long maxCost;
 
@@ -35,7 +35,6 @@
 - (void)removeTileForKey:(const struct _GEOTileKey *)arg1;
 - (void)removeTilesMatchingPredicate:(CDUnknownBlockType)arg1;
 - (void)removeTilesWithKeys:(id)arg1;
-- (void)setNullForKey:(const struct _GEOTileKey *)arg1;
 - (void)setTile:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 cost:(unsigned long long)arg3;
 - (id)tileForKey:(const struct _GEOTileKey *)arg1;
 

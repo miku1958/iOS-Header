@@ -13,10 +13,11 @@
     NSMutableDictionary *_previousCharacterColors;
 }
 
++ (id)_complicationSlotDescriptors;
 + (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
 + (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
++ (id)_orderedComplicationSlots;
 - (void).cxx_destruct;
-- (id)_complicationSlotDescriptors;
 - (long long)_customEditModeForUniqueConfiguration;
 - (id)_customEditModes;
 - (id)_defaultName;
@@ -28,7 +29,6 @@
 - (unsigned long long)_numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
-- (id)_orderedComplicationSlots;
 - (unsigned long long)_selectedCharacter;
 
 @end

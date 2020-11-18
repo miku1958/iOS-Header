@@ -6,7 +6,20 @@
 
 #import <HomeKit/HMCharacteristicThresholdRangeEvent.h>
 
-@interface HMCharacteristicThresholdRangeEvent (HFDebugging)
+#import <Home/HFCharacteristicLikeEvent-Protocol.h>
+
+@class HMCharacteristic, NSString;
+
+@interface HMCharacteristicThresholdRangeEvent (HFDebugging) <HFCharacteristicLikeEvent>
+
+@property (readonly, nonatomic) HMCharacteristic *characteristic;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id hf_representativeTriggerValue;
+@property (readonly) Class superclass;
+
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (BOOL)hf_wouldFireForValue:(id)arg1;
 @end
 

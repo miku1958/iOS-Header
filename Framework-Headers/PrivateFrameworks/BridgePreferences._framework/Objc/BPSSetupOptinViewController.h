@@ -7,11 +7,10 @@
 #import <BridgePreferences/BPSSetupPageViewController.h>
 
 #import <BridgePreferences/BPSBuddyController-Protocol.h>
-#import <BridgePreferences/PBAutomationDocumentation-Protocol.h>
 
-@class BPSWatchView, NSMutableDictionary, NSString, UIButton, UILabel, UIScrollView;
+@class BPSWatchView, NSString, UIButton, UILabel, UIScrollView;
 
-@interface BPSSetupOptinViewController : BPSSetupPageViewController <PBAutomationDocumentation, BPSBuddyController>
+@interface BPSSetupOptinViewController : BPSSetupPageViewController <BPSBuddyController>
 {
     unsigned long long _style;
     BPSWatchView *_watchView;
@@ -22,11 +21,9 @@
     UIButton *_alternateChoiceButton;
     UIButton *_learnMoreButton;
     UIButton *_okayButton;
-    NSMutableDictionary *_automationBlocks;
 }
 
 @property (strong, nonatomic) UIButton *alternateChoiceButton; // @synthesize alternateChoiceButton=_alternateChoiceButton;
-@property (strong, nonatomic) NSMutableDictionary *automationBlocks; // @synthesize automationBlocks=_automationBlocks;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UILabel *detailTextLabel; // @synthesize detailTextLabel=_detailTextLabel;
@@ -68,7 +65,6 @@
 - (void)suggestedButtonPressed:(id)arg1;
 - (id)suggestedButtonTitle;
 - (double)suggestedChoicePillDetailTextLabelVerticalOffset;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (BOOL)wantsAlternateChoicePillButton;

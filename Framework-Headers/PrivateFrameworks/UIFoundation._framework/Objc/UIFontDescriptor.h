@@ -52,6 +52,7 @@
 - (id)fontDescriptorWithMatrix:(struct CGAffineTransform)arg1;
 - (id)fontDescriptorWithSize:(double)arg1;
 - (id)fontDescriptorWithSymbolicTraits:(unsigned int)arg1;
+- (id)fontDescriptorWithSymbolicTraits:(unsigned int)arg1 mask:(unsigned int)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFontAttributes:(id)arg1;

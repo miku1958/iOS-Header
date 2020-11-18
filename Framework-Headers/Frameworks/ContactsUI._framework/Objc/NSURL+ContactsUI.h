@@ -36,5 +36,6 @@
 + (id)_cnui_ttyURLWithHandle:(id)arg1 contact:(id)arg2 channelIdentifier:(id)arg3;
 + (id)_cnui_walletPayURLFutureWithHandle:(id)arg1;
 + (id)_cnui_walletPayURLWithHandle:(id)arg1;
++ (id)log;
 @end
 

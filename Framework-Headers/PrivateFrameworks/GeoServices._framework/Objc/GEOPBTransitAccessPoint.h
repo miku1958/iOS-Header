@@ -8,45 +8,70 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSMutableArray, NSString, PBUnknownFields;
+@class GEOLatLng, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPBTransitAccessPoint : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _muid;
-    unsigned int _accessPointIndex;
     NSString *_entranceNameDisplayString;
     NSMutableArray *_entranceZoomNames;
     NSString *_exitNameDisplayString;
     NSMutableArray *_exitZoomNames;
     GEOLatLng *_location;
+    unsigned long long _muid;
+    unsigned int _accessPointIndex;
     unsigned int _stationIndex;
     struct {
-        unsigned int muid:1;
-        unsigned int accessPointIndex:1;
-        unsigned int stationIndex:1;
-    } _has;
+        unsigned int has_muid:1;
+        unsigned int has_accessPointIndex:1;
+        unsigned int has_stationIndex:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_entranceNameDisplayString:1;
+        unsigned int read_entranceZoomNames:1;
+        unsigned int read_exitNameDisplayString:1;
+        unsigned int read_exitZoomNames:1;
+        unsigned int read_location:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_entranceNameDisplayString:1;
+        unsigned int wrote_entranceZoomNames:1;
+        unsigned int wrote_exitNameDisplayString:1;
+        unsigned int wrote_exitZoomNames:1;
+        unsigned int wrote_location:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_accessPointIndex:1;
+        unsigned int wrote_stationIndex:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int accessPointIndex; // @synthesize accessPointIndex=_accessPointIndex;
-@property (strong, nonatomic) NSString *entranceNameDisplayString; // @synthesize entranceNameDisplayString=_entranceNameDisplayString;
-@property (strong, nonatomic) NSMutableArray *entranceZoomNames; // @synthesize entranceZoomNames=_entranceZoomNames;
-@property (strong, nonatomic) NSString *exitNameDisplayString; // @synthesize exitNameDisplayString=_exitNameDisplayString;
-@property (strong, nonatomic) NSMutableArray *exitZoomNames; // @synthesize exitZoomNames=_exitZoomNames;
+@property (nonatomic) unsigned int accessPointIndex;
+@property (strong, nonatomic) NSString *entranceNameDisplayString;
+@property (strong, nonatomic) NSMutableArray *entranceZoomNames;
+@property (strong, nonatomic) NSString *exitNameDisplayString;
+@property (strong, nonatomic) NSMutableArray *exitZoomNames;
 @property (nonatomic) BOOL hasAccessPointIndex;
 @property (readonly, nonatomic) BOOL hasEntranceNameDisplayString;
 @property (readonly, nonatomic) BOOL hasExitNameDisplayString;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic) BOOL hasStationIndex;
-@property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (nonatomic) unsigned int stationIndex; // @synthesize stationIndex=_stationIndex;
+@property (strong, nonatomic) GEOLatLng *location;
+@property (nonatomic) unsigned long long muid;
+@property (nonatomic) unsigned int stationIndex;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)entranceZoomNameType;
 + (Class)exitZoomNameType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsEntranceZoomName:(id)arg1;
+- (void)_addNoFlagsExitZoomName:(id)arg1;
+- (void)_readEntranceNameDisplayString;
+- (void)_readEntranceZoomNames;
+- (void)_readExitNameDisplayString;
+- (void)_readExitZoomNames;
+- (void)_readLocation;
 - (void)addEntranceZoomName:(id)arg1;
 - (void)addExitZoomName:(id)arg1;
 - (id)bestEntranceName;
@@ -55,6 +80,7 @@
 - (id)bestExitNameWithLocale:(out id *)arg1;
 - (void)clearEntranceZoomNames;
 - (void)clearExitZoomNames;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -67,6 +93,7 @@
 - (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

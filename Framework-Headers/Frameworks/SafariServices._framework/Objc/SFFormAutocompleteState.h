@@ -32,11 +32,12 @@ __attribute__((visibility("hidden")))
     WBSMultiRoundAutoFillManager *_multiRoundAutoFillManager;
     NSString *_prefixForSuggestions;
     WBSFormControlMetadata *_textFieldMetadata;
-    NSArray *_credentialMatches;
+    NSArray *_cachedCredentialMatches;
+    NSArray *_cachedRelatedCredentialMatches;
+    CDUnknownBlockType _credentialMatchesCompletionHandler;
     BOOL _fetchingLoginCredentialSuggestions;
     BOOL _invalidated;
     BOOL _hasDeterminedIfURLIsAllowedByWhiteList;
-    NSArray *_relatedCredentialMatches;
     BOOL _URLIsAllowedByWhiteList;
     CDUnknownBlockType _displayOtherContactsCompletionHandler;
     CDUnknownBlockType _customAutoFillContactCompletionHandler;
@@ -67,10 +68,12 @@ __attribute__((visibility("hidden")))
 - (void)_autoFillSingleCreditCardData:(long long)arg1;
 - (void)_autoFillWithSet:(id)arg1;
 - (id)_bestTextFieldMetadataForMetadata:(id)arg1;
+- (id)_cachedPotentialCredentialMatches;
 - (BOOL)_canAutoFillCreditCardData;
 - (void)_captureCreditCardDataWithCameraAndFill;
 - (id)_correctedFormMetadata:(id)arg1;
 - (id)_displayTextForCreditCardNumber:(id)arg1;
+- (void)_fetchPotentialCredentialMatchesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fillASPasswordCredential:(id)arg1 needsAuthentication:(BOOL)arg2 setAutoFilled:(BOOL)arg3 submitForm:(BOOL)arg4;
 - (void)_fillCredential:(id)arg1 setAutoFilled:(BOOL)arg2 setAsDefaultCredential:(BOOL)arg3 focusFieldAfterFilling:(BOOL)arg4 submitForm:(BOOL)arg5;
 - (void)_fillCredentialAfterAuthenticationIfNeeded:(id)arg1 setAsDefaultCredential:(BOOL)arg2 submitForm:(BOOL)arg3;
@@ -79,20 +82,19 @@ __attribute__((visibility("hidden")))
 - (void)_fillPasswordCredentialIdentity:(id)arg1 submitForm:(BOOL)arg2;
 - (void)_fillSingleCreditCardDataValue:(id)arg1 creditCardDataType:(long long)arg2;
 - (void)_gatherAndShowAddressBookAutoFillSuggestions;
+- (void)_gatherAndShowAddressBookAutoFillSuggestionsWithCorrections;
 - (void)_gatherFormValuesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_generateAndSuggestPasswordWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getLoginFormUser:(id *)arg1 password:(id *)arg2 userIsAutoFilled:(BOOL *)arg3 passwordIsAutoFilled:(BOOL *)arg4;
+- (void)_getMatchingKeychainCredentialsIncludingCredentialsWithEmptyUsernames:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_getShouldOfferForgetPassword:(BOOL *)arg1 savePassword:(BOOL *)arg2;
 - (BOOL)_hasMatchWithUser:(id)arg1 password:(id)arg2;
-- (BOOL)_hasPotentialLoginCredentialsForLoginForm;
-- (id)_matchingKeychainCredentialsIncludingCredentialsWithEmptyUsernames:(BOOL)arg1;
 - (void)_offerToAutoFillContact;
 - (void)_offerToAutoFillFromPotentialCredentialMatches;
 - (void)_offerToForgetSavedPassword:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)_passwordGenerationAssistanceAction;
 - (BOOL)_passwordGenerationAssistanceAutoFillButtonEnabled;
 - (void)_performAutoFill;
-- (id)_potentialCredentialMatches;
 - (void)_presentCredentialListForExtension:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_presentViewController:(id)arg1 presentingViewController:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setShowingKeyboardInputView:(BOOL)arg1;
@@ -101,7 +103,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldAllowExternalPasswordAutoFillOnURL:(id)arg1;
 - (BOOL)_shouldAllowGeneratedPassword;
 - (BOOL)_shouldOfferCreditCardDataAfterUserHasFilledCreditCardData:(id)arg1;
-- (BOOL)_shouldShowPasswordsListOption;
+- (BOOL)_shouldShowPasswordOptions;
 - (BOOL)_shouldUsePasswordGenerationAssistanceForTextField;
 - (void)_showCreditCardDataSuggestionsAfterUserHasFilledCreditCardData;
 - (void)_showOtherContactOptions;
@@ -132,6 +134,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)dismissCustomAutoFill;
 - (id)externalCredentialIdentities;
+- (void)getTextSuggestionForStreamlinedAutoFillWithCredentialIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(id)arg1 form:(id)arg2 textField:(id)arg3 inputSession:(id)arg4 autoFillController:(id)arg5;
 - (void)invalidate;
 - (void)passwordCredentialAuthenticationViewController:(id)arg1 didFinishWithCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -139,7 +142,6 @@ __attribute__((visibility("hidden")))
 - (void)presentUIForPasswordCredentialAuthenticationViewController:(id)arg1;
 - (void)showAllPasswordsButtonTapped;
 - (void)textDidChangeInFrame:(id)arg1 form:(id)arg2 textField:(id)arg3;
-- (id)textSuggestionForStreamlinedAutoFillWithCredentialIdentity:(id)arg1;
 - (void)updateCachedFormMetadataAfterFilling:(id)arg1;
 - (void)updateSuggestions;
 

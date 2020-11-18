@@ -47,7 +47,10 @@
 @property (copy, nonatomic) NSArray *icons;
 @property (strong, nonatomic) NSArray *interfaceActions;
 @property (readonly, nonatomic) UITapGestureRecognizer *lookViewTapGestureRecognizer;
-@property (nonatomic) unsigned long long messageNumberOfLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryTextLines;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
 @property (copy, nonatomic) NSString *primarySubtitleText;
 @property (copy, nonatomic) NSString *primaryText;
@@ -69,9 +72,10 @@
 - (struct CGSize)_contentViewSize;
 - (void)_layoutCustomContentView;
 - (void)_layoutCustomContentViewInRelationToContentView;
-- (void)_layoutMainContentView;
 - (void)_layoutNotificationContentView;
 - (BOOL)_lookViewTapGestureRecognizerShouldReceiveTouch:(id)arg1;
+- (struct CGRect)_mainContentViewFrame;
+- (void)_updateTopMargin;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

@@ -6,39 +6,42 @@
 
 #import <VideoSubscriberAccountUI/VSCuratedViewModel.h>
 
-@class NSString, NSURL, VSCredentialEntryField, VSExpressionEvaluator;
+@class NSArray, NSString, NSURL, VSCredentialEntryPicker, VSExpressionEvaluator;
+@protocol VSCredentialEntryViewModelDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VSCredentialEntryViewModel : VSCuratedViewModel
 {
-    VSCredentialEntryField *_usernameField;
-    VSCredentialEntryField *_passwordField;
+    NSArray *_credentialEntryFields;
+    VSCredentialEntryPicker *_picker;
     NSURL *_linkURL;
     NSString *_linkTitle;
+    NSArray *_buttons;
     NSString *_recentsTitle;
     NSString *_recentsMessage;
     NSString *_additionalMessage;
+    id<VSCredentialEntryViewModelDelegate> _delegate;
     VSExpressionEvaluator *_buttonExpressionEvaluator;
-    NSString *_originalUsername;
-    NSString *_originalPassword;
 }
 
 @property (copy, nonatomic) NSString *additionalMessage; // @synthesize additionalMessage=_additionalMessage;
 @property (strong, nonatomic) VSExpressionEvaluator *buttonExpressionEvaluator; // @synthesize buttonExpressionEvaluator=_buttonExpressionEvaluator;
+@property (copy, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
+@property (strong, nonatomic) NSArray *credentialEntryFields; // @synthesize credentialEntryFields=_credentialEntryFields;
+@property (weak, nonatomic) id<VSCredentialEntryViewModelDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSString *linkTitle; // @synthesize linkTitle=_linkTitle;
 @property (copy, nonatomic) NSURL *linkURL; // @synthesize linkURL=_linkURL;
-@property (copy, nonatomic) NSString *originalPassword; // @synthesize originalPassword=_originalPassword;
-@property (copy, nonatomic) NSString *originalUsername; // @synthesize originalUsername=_originalUsername;
-@property (strong, nonatomic) VSCredentialEntryField *passwordField; // @synthesize passwordField=_passwordField;
+@property (strong, nonatomic) VSCredentialEntryPicker *picker; // @synthesize picker=_picker;
 @property (copy, nonatomic) NSString *recentsMessage; // @synthesize recentsMessage=_recentsMessage;
 @property (copy, nonatomic) NSString *recentsTitle; // @synthesize recentsTitle=_recentsTitle;
-@property (strong, nonatomic) VSCredentialEntryField *usernameField; // @synthesize usernameField=_usernameField;
 
 - (void).cxx_destruct;
 - (void)_bindField:(id)arg1;
 - (void)_unbindField:(id)arg1;
+- (void)buttonTappedAtIndex:(unsigned long long)arg1;
 - (void)configureWithRequest:(id)arg1;
-- (id)init;
+- (void)pickerDidSelectRow:(unsigned long long)arg1;
+- (void)validateCredentialEntryFields;
 
 @end
 

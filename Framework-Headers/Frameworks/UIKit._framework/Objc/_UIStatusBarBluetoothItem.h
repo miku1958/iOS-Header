@@ -19,9 +19,10 @@ __attribute__((visibility("hidden")))
 + (id)batteryDisplayIdentifier;
 - (void).cxx_destruct;
 - (id)_batteryFillColorForEntry:(id)arg1 usingTintColor:(id)arg2;
+- (void)_create_batteryImageView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
-- (id)imageNameForUpdate:(id)arg1;
 - (id)indicatorEntryKey;
+- (id)systemImageNameForUpdate:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

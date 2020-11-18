@@ -8,37 +8,54 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOMapItemAddressBookAttributes : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_addressIdentifier;
-    int _addressType;
     NSString *_name;
     NSString *_spokenName;
+    int _addressType;
     BOOL _isMe;
     struct {
-        unsigned int addressType:1;
-        unsigned int isMe:1;
-    } _has;
+        unsigned int has_addressType:1;
+        unsigned int has_isMe:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_addressIdentifier:1;
+        unsigned int read_name:1;
+        unsigned int read_spokenName:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_addressIdentifier:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_spokenName:1;
+        unsigned int wrote_addressType:1;
+        unsigned int wrote_isMe:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *addressIdentifier; // @synthesize addressIdentifier=_addressIdentifier;
-@property (nonatomic) int addressType; // @synthesize addressType=_addressType;
+@property (strong, nonatomic) NSString *addressIdentifier;
+@property (nonatomic) int addressType;
 @property (readonly, nonatomic) BOOL hasAddressIdentifier;
 @property (nonatomic) BOOL hasAddressType;
 @property (nonatomic) BOOL hasIsMe;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasSpokenName;
-@property (nonatomic) BOOL isMe; // @synthesize isMe=_isMe;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *spokenName; // @synthesize spokenName=_spokenName;
+@property (nonatomic) BOOL isMe;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *spokenName;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsAddressType:(id)arg1;
+- (void)_readAddressIdentifier;
+- (void)_readName;
+- (void)_readSpokenName;
 - (id)addressTypeAsString:(int)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -46,6 +63,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

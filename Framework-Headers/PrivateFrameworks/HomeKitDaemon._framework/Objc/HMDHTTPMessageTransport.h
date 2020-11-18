@@ -11,10 +11,12 @@
 #import <HomeKitDaemon/HMFNetServiceBrowserDelegate-Protocol.h>
 
 @class HMDHTTPDevice, HMDHTTPServerMessageTransport, HMFNetServiceBrowser, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDHTTPMessageTransport : HMDRemoteMessageTransport <HMDHTTPClientMessageTransportDelegate, HMDHTTPServerMessageTransportDelegate, HMFNetServiceBrowserDelegate>
 {
+    id<HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableSet *_residentDevices;
     NSMutableSet *_transientDevices;
     NSMutableDictionary *_txtRecord;
@@ -22,25 +24,23 @@
     BOOL _serverEnabled;
     HMDHTTPDevice *_currentDevice;
     HMDHTTPServerMessageTransport *_serverTransport;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFNetServiceBrowser *_clientBrowser;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *TXTRecord;
 @property (readonly, nonatomic) HMFNetServiceBrowser *clientBrowser; // @synthesize clientBrowser=_clientBrowser;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, nonatomic) NSArray *clientTransports;
 @property (readonly, nonatomic) HMDHTTPDevice *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (getter=isServerEnabled) BOOL serverEnabled; // @synthesize serverEnabled=_serverEnabled;
 @property (readonly, nonatomic) HMDHTTPServerMessageTransport *serverTransport; // @synthesize serverTransport=_serverTransport;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
++ (id)protocolVersion;
++ (BOOL)protocolVersionSupportsExtendedMessages:(id)arg1;
 + (unsigned long long)restriction;
 + (id)shortDescription;
 + (BOOL)shouldHostMessageServer;
@@ -62,6 +62,7 @@
 - (id)deviceForHTTPDevice:(id)arg1;
 - (void)handleServerEnabled:(BOOL)arg1;
 - (id)initWithAccountRegistry:(id)arg1;
+- (id)initWithAccountRegistry:(id)arg1 clientBrowser:(id)arg2;
 - (BOOL)isDeviceConnected:(id)arg1;
 - (id)logIdentifier;
 - (void)netServiceBrowser:(id)arg1 didAddService:(id)arg2;

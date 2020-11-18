@@ -8,15 +8,20 @@
 
 @interface CARScreenViewArea : NSObject
 {
+    BOOL _displaysTransitionControl;
     struct CGRect _visibleFrame;
     struct CGRect _safeFrame;
 }
 
+@property (readonly, nonatomic) BOOL displaysTransitionControl; // @synthesize displaysTransitionControl=_displaysTransitionControl;
 @property (readonly, nonatomic) struct CGRect safeFrame; // @synthesize safeFrame=_safeFrame;
 @property (readonly, nonatomic) struct CGRect visibleFrame; // @synthesize visibleFrame=_visibleFrame;
 
 - (id)description;
 - (id)initWithPropertySupplier:(CDUnknownBlockType)arg1;
+- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 additionalInsets:(struct NSEdgeInsets)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToViewArea:(id)arg1;
 
 @end
 

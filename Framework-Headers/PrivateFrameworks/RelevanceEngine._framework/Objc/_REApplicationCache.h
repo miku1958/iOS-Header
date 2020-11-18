@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)_accessRemoteApplicationsMapWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_applicationsDidChange:(id)arg1;
+- (id)_init;
 - (BOOL)_queue_applicationIsRemoved:(id)arg1;
 - (BOOL)_queue_applicationIsRestricted:(id)arg1;
 - (void)_queue_loadApplicationTypes;
@@ -43,7 +44,6 @@
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)clearNanoRegistryApplications;
 - (void)dealloc;
-- (id)init;
 - (id)localApplicationForRemoteApplication:(struct NSString *)arg1;
 - (id)remoteApplicationForLocalApplication:(struct NSString *)arg1;
 - (unsigned long long)typeForApplication:(id)arg1;

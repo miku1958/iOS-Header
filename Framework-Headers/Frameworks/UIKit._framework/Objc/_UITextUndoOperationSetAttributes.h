@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/NSUndoTextOperation.h>
+#import <UIKitCore/_UIUndoTextOperation.h>
 
 @class _NSAttributeRun;
 
 __attribute__((visibility("hidden")))
-@interface _UITextUndoOperationSetAttributes : NSUndoTextOperation
+@interface _UITextUndoOperationSetAttributes : _UIUndoTextOperation
 {
     _NSAttributeRun *_attributes;
 }

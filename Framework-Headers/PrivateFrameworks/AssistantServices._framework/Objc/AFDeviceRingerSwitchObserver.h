@@ -16,6 +16,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     AFNotifyObserver *_notifyObserver;
     NSHashTable *_listeners;
+    BOOL _isActive;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -6,18 +6,37 @@
 
 #import <HelpKit/HLPRemoteDataController.h>
 
-@class HLPHelpBookController, NSDictionary;
+@class CSPrivateSearchableIndex, CSSearchQuery, HLPHelpBookController, NSArray, NSDictionary, NSMutableArray;
 
 @interface HLPHelpSearchIndexController : HLPRemoteDataController
 {
+    CSSearchQuery *_spotlightSearchQuery;
+    BOOL _useCSSearch;
     HLPHelpBookController *_helpBookController;
     NSDictionary *_searchIndex;
+    CSPrivateSearchableIndex *_privateSearchableIndex;
+    NSMutableArray *_spotlightSearchScores;
 }
 
 @property (strong, nonatomic) HLPHelpBookController *helpBookController; // @synthesize helpBookController=_helpBookController;
+@property (strong, nonatomic) CSPrivateSearchableIndex *privateSearchableIndex; // @synthesize privateSearchableIndex=_privateSearchableIndex;
 @property (strong, nonatomic) NSDictionary *searchIndex; // @synthesize searchIndex=_searchIndex;
+@property (readonly, nonatomic) NSArray *spotlightSearchResults; // @dynamic spotlightSearchResults;
+@property (strong, nonatomic) NSMutableArray *spotlightSearchScores; // @synthesize spotlightSearchScores=_spotlightSearchScores;
+@property (nonatomic) BOOL useCSSearch; // @synthesize useCSSearch=_useCSSearch;
 
++ (id)_stopwordsForLanguage:(id)arg1;
 - (void).cxx_destruct;
+- (void)CSSearchForSearchText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_csQueryStringForSearchTerm:(id)arg1;
+- (id)_fetchAttributesForCSSearchQuery;
+- (void)_hpdResultsFromCSSearchableItems:(id)arg1 rankingQueries:(id)arg2;
+- (id)_rankingQueriesForSearchTerm:(id)arg1;
+- (double)_relevanceScore:(double)arg1 forRankingQueries:(id)arg2;
+- (id)_strippedSearchTermFromSearchTerm:(id)arg1;
+- (id)_tokenizeSearchTerm:(id)arg1;
+- (void)cancelSpotlightSearch;
+- (void)dealloc;
 - (void)fetchDataWithDataType:(long long)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getAllIdentifiersFromTree:(id)arg1 withMaxDepth:(int)arg2;
 - (id)mergeDictionary:(id)arg1 withDictionary:(id)arg2;

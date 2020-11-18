@@ -21,8 +21,14 @@
 
 - (void).cxx_destruct;
 - (id)_initWithNBestList:(const vector_2c247c42 *)arg1 useHatText:(BOOL)arg2;
+- (id)_initWithTokenPhraseChoiceList:(const pair_a60b4d2a *)arg1;
 - (id)_initWithTokenSausage:(id)arg1 interpretationIndices:(id)arg2;
+- (pair_a60b4d2a)_tokenPhraseChoiceList;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)granularizedRecognition;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 - (id)nBest;
 - (id)oneBest;
 

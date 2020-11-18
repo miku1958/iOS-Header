@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (struct __CVPixelBufferPool *)pixelBufferPool;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (long long)status;
+- (void)stopRequestingMediaData;
 
 @end
 

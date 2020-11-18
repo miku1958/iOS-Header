@@ -10,6 +10,14 @@
 
 @property (readonly) struct AKQuadrilateral quadrilateralValue;
 
++ (id)akValueWithPoint:(struct CGPoint)arg1;
++ (id)akValueWithRect:(struct CGRect)arg1;
++ (id)akValueWithSize:(struct CGSize)arg1;
++ (id)valueWithCGRect:(struct CGRect)arg1;
 + (id)valueWithQuadrilateral:(struct AKQuadrilateral)arg1;
+- (struct CGRect)CGRectValue;
+- (struct CGPoint)akPointValue;
+- (struct CGRect)akRectValue;
+- (struct CGSize)akSizeValue;
 @end
 

@@ -12,19 +12,28 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)availableData;
+- (BOOL)closeAndReturnError:(out id *)arg1;
 - (void)closeFile;
 - (int)fileDescriptor;
+- (BOOL)getOffset:(out unsigned long long *)arg1 error:(out id *)arg2;
 - (unsigned long long)offsetInFile;
 - (id)readDataOfLength:(unsigned long long)arg1;
 - (id)readDataToEndOfFile;
+- (id)readDataToEndOfFileAndReturnError:(out id *)arg1;
+- (id)readDataUpToLength:(unsigned long long)arg1 error:(out id *)arg2;
 - (CDUnknownBlockType)readabilityHandler;
 - (unsigned long long)seekToEndOfFile;
+- (BOOL)seekToEndReturningOffset:(out unsigned long long *)arg1 error:(out id *)arg2;
 - (void)seekToFileOffset:(unsigned long long)arg1;
+- (BOOL)seekToOffset:(unsigned long long)arg1 error:(out id *)arg2;
 - (void)setReadabilityHandler:(CDUnknownBlockType)arg1;
 - (void)setWriteabilityHandler:(CDUnknownBlockType)arg1;
+- (BOOL)synchronizeAndReturnError:(out id *)arg1;
 - (void)synchronizeFile;
+- (BOOL)truncateAtOffset:(unsigned long long)arg1 error:(out id *)arg2;
 - (void)truncateFileAtOffset:(unsigned long long)arg1;
 - (void)writeData:(id)arg1;
+- (BOOL)writeData:(id)arg1 error:(out id *)arg2;
 - (CDUnknownBlockType)writeabilityHandler;
 
 @end

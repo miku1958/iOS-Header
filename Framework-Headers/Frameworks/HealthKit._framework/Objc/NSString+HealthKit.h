@@ -8,11 +8,8 @@
 
 @interface NSString (HealthKit)
 + (id)hk_randomStringOfLength:(long long)arg1;
-- (id)hk_MD2Hash;
-- (id)hk_MD4Hash;
 - (id)hk_MD5Hash;
 - (id)hk_MD5HashAsUUID;
-- (id)hk_SHA1Hash;
 - (id)hk_SHA224Hash;
 - (id)hk_SHA256Hash;
 - (id)hk_SHA384Hash;

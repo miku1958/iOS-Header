@@ -21,6 +21,7 @@
 @property (readonly) long long type;
 
 + (id)_profileWithUUID:(id)arg1 type:(long long)arg2;
++ (BOOL)isValidSecondaryProfileType:(long long)arg1;
 + (id)primaryProfile;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

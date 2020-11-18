@@ -12,6 +12,7 @@
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
+@protocol MTLTexture;
 
 @interface SCNCamera : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
 {
@@ -60,6 +61,7 @@
     float _bloomIntensity;
     float _bloomThreshold;
     int _bloomIteration;
+    float _bloomIterationSpread;
     float _bloomBlurRadius;
     float _motionBlurIntensity;
     float _vignettingPower;
@@ -68,6 +70,11 @@
     float _colorFringeIntensity;
     float _saturation;
     float _contrast;
+    float _grainIntensity;
+    float _grainScale;
+    BOOL _grainIsColored;
+    float _whiteBalanceTemperature;
+    float _whiteBalanceTint;
     struct {
         float intensity;
         float radius;
@@ -77,15 +84,18 @@
         long long sampleCount;
         long long downSample;
     } _screenSpaceAmbientOcclusion;
+    id<MTLTexture> _grainTexture;
+    float _grainSlice;
 }
 
 @property (readonly) NSArray *animationKeys;
-@property (nonatomic) double aperture;
 @property (nonatomic) long long apertureBladeCount;
 @property (nonatomic) BOOL automaticallyAdjustsZRange;
 @property (nonatomic) double averageGray;
 @property (nonatomic) double bloomBlurRadius;
 @property (nonatomic) double bloomIntensity;
+@property (nonatomic) long long bloomIterationCount;
+@property (nonatomic) double bloomIterationSpread;
 @property (nonatomic) double bloomThreshold;
 @property (nonatomic) unsigned long long categoryBitMask;
 @property (nonatomic) double colorFringeIntensity;
@@ -99,12 +109,12 @@
 @property (nonatomic) double exposureOffset;
 @property (nonatomic) double fStop;
 @property (nonatomic) double fieldOfView;
-@property (nonatomic) double focalBlurRadius;
 @property (nonatomic) long long focalBlurSampleCount;
-@property (nonatomic) double focalDistance;
 @property (nonatomic) double focalLength;
-@property (nonatomic) double focalSize;
 @property (nonatomic) double focusDistance;
+@property (nonatomic) double grainIntensity;
+@property (nonatomic) BOOL grainIsColored;
+@property (nonatomic) double grainScale;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double maximumExposure;
 @property (nonatomic) double minimumExposure;
@@ -128,9 +138,9 @@
 @property (nonatomic) BOOL wantsDepthOfField;
 @property (nonatomic) BOOL wantsExposureAdaptation;
 @property (nonatomic) BOOL wantsHDR;
+@property (nonatomic) double whiteBalanceTemperature;
+@property (nonatomic) double whiteBalanceTint;
 @property (nonatomic) double whitePoint;
-@property (nonatomic) double xFov;
-@property (nonatomic) double yFov;
 @property (nonatomic) double zFar;
 @property (nonatomic) double zNear;
 
@@ -160,6 +170,7 @@
 - (id)animationForKey:(id)arg1;
 - (struct __C3DAnimationManager *)animationManager;
 - (id)animationPlayerForKey:(id)arg1;
+- (double)aperture;
 - (double)aspectRatio;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (long long)bloomIteration;
@@ -178,6 +189,11 @@
 - (long long)exposureAdaptationMode;
 - (long long)fieldOfViewOrientation;
 - (long long)fillMode;
+- (double)focalBlurRadius;
+- (double)focalDistance;
+- (double)focalSize;
+- (double)grainSlice;
+- (id)grainTexture;
 - (BOOL)hasCustomProjectionTransform;
 - (id)identifier;
 - (id)init;
@@ -200,6 +216,7 @@
 - (struct __C3DScene *)sceneRef;
 - (long long)screenSpaceAmbientOcclusionDownSample;
 - (long long)screenSpaceAmbientOcclusionSampleCount;
+- (void)setAperture:(double)arg1;
 - (void)setAspectRatio:(double)arg1;
 - (void)setBloomIteration:(long long)arg1;
 - (void)setDofIntensity:(float)arg1;
@@ -209,15 +226,24 @@
 - (void)setExposureAdaptationMode:(long long)arg1;
 - (void)setFieldOfViewOrientation:(long long)arg1;
 - (void)setFillMode:(long long)arg1;
+- (void)setFocalBlurRadius:(double)arg1;
+- (void)setFocalDistance:(double)arg1;
+- (void)setFocalSize:(double)arg1;
+- (void)setGrainSlice:(double)arg1;
+- (void)setGrainTexture:(id)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setScreenSpaceAmbientOcclusionDownSample:(long long)arg1;
 - (void)setScreenSpaceAmbientOcclusionSampleCount:(long long)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
+- (void)setXFov:(double)arg1;
 - (void)setXMag:(double)arg1;
+- (void)setYFov:(double)arg1;
 - (void)setYMag:(double)arg1;
 - (void)unbindAnimatablePath:(id)arg1;
 - (BOOL)useLegacyFov;
+- (double)xFov;
 - (double)xMag;
+- (double)yFov;
 - (double)yMag;
 
 @end

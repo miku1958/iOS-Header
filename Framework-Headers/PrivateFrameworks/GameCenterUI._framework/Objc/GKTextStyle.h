@@ -13,13 +13,13 @@
     double _UIKitFontLeading;
     BOOL _needsParagraphStyle;
     BOOL _overrideUIKitFontSize;
+    UIColor *_color;
+    long long _textAlignment;
+    long long _lineBreakMode;
     GKColorPalette *_palette;
     NSString *_fontName;
     NSString *_UIKitFontTextStyleName;
     double _fontSize;
-    UIColor *_color;
-    long long _textAlignment;
-    long long _lineBreakMode;
     double _minimumLineHeight;
     double _m34;
     double _zPosition;
@@ -48,6 +48,7 @@
 + (double)standardFontSize;
 + (double)standardLeadingForFontTextStyle:(id)arg1;
 + (id)textStyle;
+- (void).cxx_destruct;
 - (id)achievementLeaderboardPointsText;
 - (id)achievementLeaderboardRank;
 - (id)achievementValueText;
@@ -82,7 +83,6 @@
 - (id)composeMessage;
 - (id)copy;
 - (id)copyWithBaseClass:(Class)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)detailSecondaryHeaderText;
 - (id)emphasized;

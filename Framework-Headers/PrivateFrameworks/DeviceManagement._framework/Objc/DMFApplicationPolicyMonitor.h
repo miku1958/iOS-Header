@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSUUID;
+@class DMFPolicyRegistration, NSArray, NSUUID;
 
 @interface DMFApplicationPolicyMonitor : NSObject
 {
     NSArray *_policyTypes;
-    NSUUID *_policyMonitorIdentifier;
+    DMFPolicyRegistration *_registration;
+    NSUUID *_identifier;
 }
 
 @property (readonly, getter=isEnabled) BOOL enabled;
-@property (readonly, nonatomic) NSUUID *policyMonitorIdentifier; // @synthesize policyMonitorIdentifier=_policyMonitorIdentifier;
+@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
+@property (readonly, nonatomic) DMFPolicyRegistration *registration; // @synthesize registration=_registration;
 
++ (void)createPolicyMonitorWithPolicyChangeHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_fetchCategoriesIfNeededForBundleIdentifiers:(id)arg1 response:(CDUnknownBlockType)arg2;
-- (BOOL)askPermissionForBundleIdentifier:(id)arg1 error:(id *)arg2;
+- (id)_initWithPolicyChangeHandler:(CDUnknownBlockType)arg1 addingRegistration:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithPolicyChangeHandler:(CDUnknownBlockType)arg1;
 - (void)requestPoliciesForBundleIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

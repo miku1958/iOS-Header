@@ -21,10 +21,12 @@
     } _has;
     BOOL _confirm;
     BOOL _success;
+    BOOL __encodeLegacyGloryData;
     int _shareMode;
     NSArray *_recipients;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL confirm; // @synthesize confirm=_confirm;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -39,12 +41,15 @@
 @property (readonly) Class superclass;
 
 + (Class)recipientsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsShareMode:(id)arg1;
 - (void)addRecipients:(id)arg1;
 - (void)clearRecipients;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)recipientsAtIndex:(unsigned long long)arg1;

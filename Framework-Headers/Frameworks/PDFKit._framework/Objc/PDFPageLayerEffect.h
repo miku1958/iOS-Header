@@ -18,23 +18,20 @@ __attribute__((visibility("hidden")))
 + (id)createPDFAnnotationLayerEffectForAnnotation:(id)arg1 withLayer:(id)arg2;
 + (id)createPDFCoachmarkLayerEffectsWithFrame:(struct CGRect)arg1 withLayer:(id)arg2;
 + (id)createPDFMarkupLayerEffectsForAnnotation:(id)arg1 withLayer:(id)arg2;
-+ (id)createPDFSelectionLayerEffectsForSelection:(id)arg1 withLayer:(id)arg2;
++ (id)createPDFNoteLayerEffectForAnnotation:(id)arg1 withLayer:(id)arg2;
++ (id)createPDFSelectionLayerEffectsForSelections:(id)arg1 withLayer:(id)arg2;
 - (void).cxx_destruct;
 - (id)UUID;
+- (void)addSelection:(id)arg1;
 - (id)annotation;
-- (void)clearLollipopMagnifier;
-- (void)clearTextSelectionHandles;
-- (void)clearTextSelectionMagnifier;
-- (void)enableTextSelectionHandles;
 - (id)initWithPDFPageLayer:(id)arg1;
 - (struct CGRect)pageFrame;
-- (id)selection;
-- (void)setLollipopMagnifierPagePoint:(struct CGPoint)arg1;
+- (id)pdfResult;
 - (void)setPageFrame:(struct CGRect)arg1;
-- (void)setSelection:(id)arg1;
-- (void)setTextSelectionMagnifierPagePoint:(struct CGPoint)arg1;
+- (void)setSelections:(id)arg1;
 - (BOOL)shouldRotateContent;
 - (void)update;
+- (void)updateColor:(unsigned long long)arg1;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSSet;
+@class NSData, NSDictionary, NSSet;
 
 @interface CUICommonAssetStorage : NSObject
 {
@@ -17,11 +17,10 @@
     void *_colordb;
     void *_fontdb;
     void *_fontsizedb;
-    void *_zcglyphdb;
-    void *_zcbezeldb;
     void *_facetKeysdb;
     void *_bitmapKeydb;
     void *_appearancedb;
+    void *_localizationdb;
     NSData *_globals;
     unsigned int _swap:1;
     unsigned int _isMemoryMapped:1;
@@ -31,23 +30,23 @@
     id _renditionInfoCache[20];
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _renditionInfoCacheLock;
+    NSDictionary *_appearances;
 }
 
 @property (nonatomic) void *appearancedb; // @synthesize appearancedb=_appearancedb;
+@property (readonly, nonatomic) NSDictionary *appearances; // @synthesize appearances=_appearances;
 @property (nonatomic) void *bitmapKeydb; // @synthesize bitmapKeydb=_bitmapKeydb;
 @property (nonatomic) void *colordb; // @synthesize colordb=_colordb;
 @property (nonatomic) struct _carextendedMetadata *extendedMetadata; // @synthesize extendedMetadata=_extendedMetadata;
 @property (nonatomic) void *facetKeysdb; // @synthesize facetKeysdb=_facetKeysdb;
 @property (nonatomic) void *fontdb; // @synthesize fontdb=_fontdb;
 @property (nonatomic) void *fontsizedb; // @synthesize fontsizedb=_fontsizedb;
-@property (nonatomic) NSData *globals; // @synthesize globals=_globals;
+@property (strong, nonatomic) NSData *globals; // @synthesize globals=_globals;
 @property (nonatomic) struct _carheader *header; // @synthesize header=_header;
 @property (nonatomic) void *imagedb; // @synthesize imagedb=_imagedb;
 @property (nonatomic) struct _renditionkeyfmt *keyfmt; // @synthesize keyfmt=_keyfmt;
-@property (nonatomic) void *zcbezeldb; // @synthesize zcbezeldb=_zcbezeldb;
-@property (nonatomic) void *zcglyphdb; // @synthesize zcglyphdb=_zcglyphdb;
+@property (nonatomic) void *localizationdb; // @synthesize localizationdb=_localizationdb;
 
-+ (void)initialize;
 + (BOOL)isValidAssetStorageWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 + (BOOL)isValidAssetStorageWithURL:(id)arg1;
 - (void)_addBitmapIndexForNameIdentifier:(unsigned short)arg1 attribute:(int)arg2 withValue:(unsigned short)arg3 toDictionary:(id)arg4;
@@ -58,17 +57,15 @@
 - (const struct FontValue *)_fontValueForFontType:(id)arg1;
 - (void)_initDefaultHeaderVersion:(double)arg1 versionString:(const char *)arg2;
 - (void)_loadExtendedMetadata;
+- (id)_readAppearances;
 - (long long)_storagefileTimestamp;
 - (void)_swapHeader;
 - (void)_swapKeyFormat;
 - (void)_swapRenditionKeyArray:(unsigned short *)arg1;
 - (struct _renditionkeytoken)_swapRenditionKeyToken:(struct _renditionkeytoken)arg1;
-- (void)_swapZeroCodeInformation:(CDStruct_c0454aff *)arg1;
-- (id)_zeroCodeListFromTree:(const void *)arg1;
 - (id)allAssetKeys;
 - (id)allRenditionNames;
 - (unsigned short)appearanceIdentifierForName:(id)arg1;
-- (id)appearances;
 - (BOOL)assetExistsForKey:(id)arg1;
 - (BOOL)assetExistsForKeyData:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)assetForKey:(id)arg1;
@@ -97,10 +94,13 @@
 - (const struct _renditionkeyfmt *)keyFormat;
 - (id)keyFormatData;
 - (int)keySemantics;
+- (unsigned short)localizationIdentifierForName:(id)arg1;
+- (id)localizations;
 - (struct os_unfair_lock_s *)lock;
 - (const char *)mainVersionString;
 - (long long)maximumRenditionKeyTokenCount;
 - (id)nameForAppearanceIdentifier:(unsigned short)arg1;
+- (id)nameForLocalizationIdentifier:(unsigned short)arg1;
 - (id)path;
 - (unsigned int)renditionCount;
 - (struct os_unfair_lock_s *)renditionInfoCacheLock;
@@ -114,14 +114,11 @@
 - (unsigned int)storageVersion;
 - (BOOL)swapped;
 - (id)thinningArguments;
-- (void)updateTimestamp;
 - (BOOL)usesCUISystemThemeRenditionKey;
 - (id)uuid;
 - (int)validateBitmapInfo;
 - (int)validatekeyformat;
 - (const char *)versionString;
-- (id)zeroCodeBezelList;
-- (id)zeroCodeGlyphList;
 
 @end
 

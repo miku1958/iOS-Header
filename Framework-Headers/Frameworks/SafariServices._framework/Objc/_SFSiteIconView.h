@@ -4,27 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKit/UIView.h>
 
-@class UIImage, UILabel, WebBookmark;
+@class UIColor, UIImage, UIImageView, UILabel, WebBookmark, _SFHairlineBorderView;
+@protocol _SFSiteIconViewUpdateObserver;
 
-@interface _SFSiteIconView : UIImageView
+@interface _SFSiteIconView : UIView
 {
-    UIImageView *_glyphView;
+    UIImageView *_imageView;
+    UIView *_backgroundView;
     UILabel *_monogramLabel;
     long long _state;
     id _touchIconRequestToken;
+    UIColor *_preferredBackgroundColor;
+    UIImageView *_shadowView;
+    _SFHairlineBorderView *_borderView;
+    BOOL _modernImageIsTransparent;
+    BOOL _shouldUseModernStyling;
+    BOOL _shouldShowDropShadow;
     WebBookmark *_bookmark;
     UIImage *_leadingImage;
+    id<_SFSiteIconViewUpdateObserver> _updateObserver;
 }
 
 @property (strong, nonatomic) WebBookmark *bookmark; // @synthesize bookmark=_bookmark;
+@property (readonly, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIImage *leadingImage; // @synthesize leadingImage=_leadingImage;
+@property (nonatomic) BOOL shouldShowDropShadow; // @synthesize shouldShowDropShadow=_shouldShowDropShadow;
+@property (nonatomic) BOOL shouldUseModernStyling; // @synthesize shouldUseModernStyling=_shouldUseModernStyling;
+@property (weak, nonatomic) id<_SFSiteIconViewUpdateObserver> updateObserver; // @synthesize updateObserver=_updateObserver;
 
 - (void).cxx_destruct;
 - (void)_cancelTouchIconRequest;
-- (void)_clearGlyph;
+- (void)_displayDefaultFolderIcon;
+- (id)_effectiveBackgroundColor;
+- (struct CGRect)_imageFrame;
 - (long long)_inferredIconSize;
+- (double)_monogramFontSize;
 - (void)_setGlyph:(id)arg1 withBackgroundColor:(id)arg2;
 - (void)_setImage:(id)arg1 withBackgroundColor:(id)arg2;
 - (void)_setMonogramWithString:(id)arg1 backgroundColor:(id)arg2;

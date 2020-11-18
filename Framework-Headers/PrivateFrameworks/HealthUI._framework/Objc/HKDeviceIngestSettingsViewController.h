@@ -14,7 +14,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)initWithHealthStore:(id)arg1 displayTypeController:(id)arg2 device:(id)arg3;
+- (id)initWithHealthStore:(id)arg1 displayTypeController:(id)arg2 device:(id)arg3 useInsetStyling:(BOOL)arg4;
 - (void)viewDidLoad;
 
 @end

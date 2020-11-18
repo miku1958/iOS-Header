@@ -6,7 +6,7 @@
 
 #import <ScreenTimeUI/NSObject-Protocol.h>
 
-@class NSObject, NSString, STRootViewModel, STUser;
+@class NSNumber, NSObject, NSString, STRootViewModel, STUIUser;
 @protocol STContentPrivacyViewModelCoordinator, STTimeAllowancesViewModelCoordinator, STUsageDetailsViewModelCoordinator;
 
 @protocol STRootViewModelCoordinator <NSObject>
@@ -19,7 +19,7 @@
 @property (readonly) NSObject<STUsageDetailsViewModelCoordinator> *usageDetailsCoordinator;
 @property (readonly, nonatomic) STRootViewModel *viewModel;
 
-- (id)coordinatorForChild:(STUser *)arg1;
+- (id)coordinatorForChild:(STUIUser *)arg1 deviceIdentifier:(NSString *)arg2 usageReportType:(NSNumber *)arg3;
 - (void)enableScreenTimeWithPIN:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setPIN:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setScreenTimeEnabled:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;

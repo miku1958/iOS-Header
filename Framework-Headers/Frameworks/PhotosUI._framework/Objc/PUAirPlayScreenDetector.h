@@ -21,16 +21,10 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<PUAirPlayScreenReceiver> receiver; // @synthesize receiver=_receiver;
 
 - (void).cxx_destruct;
-- (void)_appEnteredBackground:(id)arg1;
-- (void)_appEnteringForeground:(id)arg1;
 - (void)_detectedNewScreen:(id)arg1;
 - (void)_lostScreen:(id)arg1;
 - (void)_scanForAvailableScreensIfNeeded;
-- (void)_setUpApplicationNotifications;
 - (void)_setUpScreenNotifications;
-- (void)_tearDownApplicationNotifications;
-- (void)_tearDownScreenNotifications;
-- (void)dealloc;
 - (id)init;
 - (BOOL)shouldIgnoreScreen:(id)arg1;
 

@@ -18,11 +18,13 @@
     long long _reason;
     long long _vioTrackingState;
     double _lastMajorRelocalizationTimestamp;
+    double _originTimestamp;
 }
 
 @property (nonatomic) double lastMajorRelocalizationTimestamp; // @synthesize lastMajorRelocalizationTimestamp=_lastMajorRelocalizationTimestamp;
 @property (nonatomic) BOOL majorRelocalization; // @synthesize majorRelocalization=_majorRelocalization;
 @property (nonatomic) BOOL minorRelocalization; // @synthesize minorRelocalization=_minorRelocalization;
+@property (nonatomic) double originTimestamp; // @synthesize originTimestamp=_originTimestamp;
 @property (nonatomic) BOOL poseGraphUpdated; // @synthesize poseGraphUpdated=_poseGraphUpdated;
 @property (nonatomic) long long reason; // @synthesize reason=_reason;
 @property (nonatomic) long long state; // @synthesize state=_state;

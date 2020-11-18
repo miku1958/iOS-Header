@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)fadeAnimationDidStop:(id)arg1 finished:(id)arg2 context:(id)arg3;
+- (void)removeFromSuperview;
 
 @end
 

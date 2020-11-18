@@ -20,7 +20,6 @@
     BOOL _excludeInAvailableVoiceList;
     BOOL _canBeDownloaded;
     BOOL _isCombinedFootprint;
-    BOOL _useVoiceBooster;
     NSString *_name;
     NSString *_language;
     NSString *_identifier;
@@ -42,12 +41,9 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *nonCombinedVoiceId; // @synthesize nonCombinedVoiceId=_nonCombinedVoiceId;
 @property (strong, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
-@property (nonatomic) BOOL useVoiceBooster; // @synthesize useVoiceBooster=_useVoiceBooster;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_initializeVoiceBooster;
-- (void)_routeChange:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -30,13 +30,13 @@
 + (id)saveItem:(void *)arg1 withLabel:(id)arg2 group:(id)arg3;
 + (id)saveItem:(void *)arg1 withLabel:(id)arg2 group:(id)arg3 useSystemKeychain:(BOOL)arg4;
 + (BOOL)setData:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 access:(void *)arg6 group:(id)arg7 outError:(id *)arg8;
-+ (BOOL)setData:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 access:(void *)arg6 group:(id)arg7 useSystemKeychain:(BOOL)arg8 outError:(id *)arg9;
++ (BOOL)setData:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 access:(void *)arg6 group:(id)arg7 useSystemKeychain:(BOOL)arg8 sysBound:(BOOL)arg9 outError:(id *)arg10;
 + (BOOL)setData:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 access:(void *)arg6 outError:(id *)arg7;
 + (BOOL)setData:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 access:(void *)arg6 useSystemKeychain:(BOOL)arg7 outError:(id *)arg8;
 + (BOOL)setData:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 outError:(id *)arg6;
 + (BOOL)setData:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 useSystemKeychain:(BOOL)arg6 outError:(id *)arg7;
 + (BOOL)setString:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 access:(void *)arg6 group:(id)arg7 outError:(id *)arg8;
-+ (BOOL)setString:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 access:(void *)arg6 group:(id)arg7 useSystemKeychain:(BOOL)arg8 outError:(id *)arg9;
++ (BOOL)setString:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 access:(void *)arg6 group:(id)arg7 useSystemKeychain:(BOOL)arg8 sysBound:(BOOL)arg9 outError:(id *)arg10;
 + (BOOL)setString:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 group:(id)arg6 outError:(id *)arg7;
 + (BOOL)setString:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 group:(id)arg6 useSystemKeychain:(BOOL)arg7 outError:(id *)arg8;
 + (BOOL)setString:(id)arg1 forService:(id)arg2 account:(id)arg3 label:(id)arg4 description:(id)arg5 outError:(id *)arg6;

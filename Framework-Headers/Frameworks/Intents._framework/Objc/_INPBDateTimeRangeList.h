@@ -15,10 +15,12 @@
 @interface _INPBDateTimeRangeList : PBCodable <_INPBDateTimeRangeList, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBCondition *_condition;
     NSArray *_dateRanges;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
 @property (copy, nonatomic) NSArray *dateRanges; // @synthesize dateRanges=_dateRanges;
 @property (readonly, nonatomic) unsigned long long dateRangesCount;
@@ -29,12 +31,15 @@
 @property (readonly) Class superclass;
 
 + (Class)dateRangeType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addDateRange:(id)arg1;
 - (void)clearDateRanges;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dateRangeAtIndex:(unsigned long long)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

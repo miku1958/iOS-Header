@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSString, NUCacheNodeRegistry, NUGLContext, NUGLContextPool, NUJSContextPool, NUPlatform, NUPurgeableStoragePool, NURenderNodeCache, NURenderPipelineRegistry, NUScheduler, NUSchemaRegistry;
-@protocol NUStorageFactory;
+@protocol NUSlowMotionVideoFactory, NUStorageFactory;
 
 @interface NUFactory : NSObject
 {
@@ -25,6 +25,7 @@
     NUPlatform *_platform;
     NUJSContextPool *_sharedJavaScriptContextPool;
     NUCacheNodeRegistry *_cacheNodeRegistry;
+    id<NUSlowMotionVideoFactory> _slomoFactory;
 }
 
 @property (strong, nonatomic) id<NUStorageFactory> bufferFactory; // @synthesize bufferFactory=_bufferFactory;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) NUJSContextPool *sharedJavaScriptContextPool; // @synthesize sharedJavaScriptContextPool=_sharedJavaScriptContextPool;
 @property (strong, nonatomic) NUGLContext *sharedOpenGLContext; // @synthesize sharedOpenGLContext=_sharedOpenGLContext;
 @property (strong, nonatomic) NUGLContextPool *sharedOpenGLContextPool; // @synthesize sharedOpenGLContextPool=_sharedOpenGLContextPool;
+@property (strong, nonatomic) id<NUSlowMotionVideoFactory> slomoFactory; // @synthesize slomoFactory=_slomoFactory;
 @property (strong, nonatomic) id<NUStorageFactory> surfaceFactory; // @synthesize surfaceFactory=_surfaceFactory;
 @property (strong, nonatomic) NUPurgeableStoragePool *surfaceStoragePool; // @synthesize surfaceStoragePool=_surfaceStoragePool;
 

@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithPredicate:(id)arg1 collection:(id)arg2;
 - (BOOL)isKeptCatalog:(struct catalog_s *)arg1;
 - (void)processComparisonPredicate:(id)arg1;
-- (void)processLeftExpression:(id *)arg1 andRightExpression:(id *)arg2;
+- (void)processLeftExpression:(id)arg1 andRightExpression:(id)arg2;
 - (void)readDSCUUIDs;
 - (void)readDSOUUIDs;
 - (void)visitPredicate:(id)arg1;

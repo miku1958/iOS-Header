@@ -8,7 +8,7 @@
 
 #import <ARKit/ARResultDataContext-Protocol.h>
 
-@class ARImageData, ARWorldMap, NSMutableArray, NSString;
+@class ARDeviceOrientationData, ARImageData, ARLocationData, ARWorldMap, NSMutableArray, NSMutableSet, NSString;
 
 @interface ARFrameContext : NSObject <ARResultDataContext>
 {
@@ -21,19 +21,25 @@
     BOOL _sessionTransformShouldResumeCameraPosition;
     BOOL _shouldRemoveExistingAnchors;
     ARImageData *_imageData;
+    ARDeviceOrientationData *_orientationData;
+    ARLocationData *_locationData;
     long long _worldAlignment;
     ARWorldMap *_worldMap;
     unsigned long long _frameDebugOptions;
+    NSMutableSet *_collaborationData;
     CDStruct_14d5dc5e _relocalizationDeltaTransform;
     CDStruct_14d5dc5e _sessionTransform;
 }
 
+@property (strong, nonatomic) NSMutableSet *collaborationData; // @synthesize collaborationData=_collaborationData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didRelocalize; // @synthesize didRelocalize=_didRelocalize;
 @property (nonatomic) unsigned long long frameDebugOptions; // @synthesize frameDebugOptions=_frameDebugOptions;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) ARImageData *imageData; // @synthesize imageData=_imageData;
+@property (strong, nonatomic) ARLocationData *locationData; // @synthesize locationData=_locationData;
+@property (strong, nonatomic) ARDeviceOrientationData *orientationData; // @synthesize orientationData=_orientationData;
 @property (nonatomic) CDStruct_14d5dc5e relocalizationDeltaTransform; // @synthesize relocalizationDeltaTransform=_relocalizationDeltaTransform;
 @property (nonatomic) CDStruct_14d5dc5e sessionTransform; // @synthesize sessionTransform=_sessionTransform;
 @property (readonly, nonatomic) BOOL sessionTransformReset; // @synthesize sessionTransformReset=_sessionTransformReset;
@@ -51,6 +57,7 @@
 - (id)anchorsToRemove;
 - (long long)cameraPosition;
 - (void)clearAddedAnchors;
+- (id)init;
 - (void)removeAnchor:(id)arg1;
 - (void)resetSessionTransform;
 - (id)resultDataOfClass:(Class)arg1;

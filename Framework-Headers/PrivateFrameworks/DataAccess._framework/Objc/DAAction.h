@@ -10,6 +10,7 @@
 
 @interface DAAction : NSObject <NSSecureCoding>
 {
+    BOOL _ignoresGuardianRestrictions;
     int _changeId;
     unsigned long long _itemChangeType;
     id _serverId;
@@ -23,29 +24,22 @@
 @property (strong, nonatomic, setter=_setChangedItem:) id changedItem; // @synthesize changedItem=_changedItem;
 @property (strong, nonatomic) id forwardedAttendeeUUIDs; // @synthesize forwardedAttendeeUUIDs=_forwardedAttendeeUUIDs;
 @property (strong, nonatomic) id forwardedAttendees; // @synthesize forwardedAttendees=_forwardedAttendees;
+@property (nonatomic) BOOL ignoresGuardianRestrictions; // @synthesize ignoresGuardianRestrictions=_ignoresGuardianRestrictions;
 @property (strong, nonatomic) id instanceId; // @synthesize instanceId=_instanceId;
 @property (nonatomic) unsigned long long itemChangeType; // @synthesize itemChangeType=_itemChangeType;
 @property (strong, nonatomic) id serverId; // @synthesize serverId=_serverId;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (struct ASContact *)contact;
-- (id)deletedContactID;
-- (id)deletedEventID;
-- (id)deletedNoteID;
-- (id)deletedToDoID;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (struct ASEvent *)event;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithItemChangeType:(unsigned long long)arg1 changedItem:(id)arg2 serverId:(id)arg3;
 - (id)initWithItemChangeType:(unsigned long long)arg1 changedItem:(id)arg2 serverId:(id)arg3 instanceId:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)message;
-- (struct ASNote *)note;
 - (id)stringForItemChangeType:(unsigned long long)arg1;
-- (struct ASToDo *)toDo;
 
 @end
 

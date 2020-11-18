@@ -8,21 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlaceRequest, NSString;
+@class GEOPDPlaceRequest, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOPlaceDataCacheFeedback : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_bundleIdentifier;
     GEOPDPlaceRequest *_request;
+    struct {
+        unsigned int read_bundleIdentifier:1;
+        unsigned int read_request:1;
+        unsigned int wrote_bundleIdentifier:1;
+        unsigned int wrote_request:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (strong, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) BOOL hasBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasRequest;
-@property (strong, nonatomic) GEOPDPlaceRequest *request; // @synthesize request=_request;
+@property (strong, nonatomic) GEOPDPlaceRequest *request;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readBundleIdentifier;
+- (void)_readRequest;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

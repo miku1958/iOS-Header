@@ -10,20 +10,20 @@
 
 @interface PRSRankingCosineComponents : NSObject
 {
-    NSArray *_TermFrequencies;
-    NSArray *_TermFrequenciesWeighted;
-    NSArray *_InverseDocFrequencies;
-    NSArray *_TermInverseDoc;
-    NSArray *_TermInverseDocWeighted;
+    NSArray *_termFrequencies;
+    NSArray *_termFrequenciesWeighted;
+    NSArray *_inverseDocFrequencies;
+    NSArray *_termInverseDoc;
+    NSArray *_termInverseDocWeighted;
     unsigned long long _fieldLength;
 }
 
-@property (strong, nonatomic) NSArray *InverseDocFrequencies; // @synthesize InverseDocFrequencies=_InverseDocFrequencies;
-@property (strong, nonatomic) NSArray *TermFrequencies; // @synthesize TermFrequencies=_TermFrequencies;
-@property (strong, nonatomic) NSArray *TermFrequenciesWeighted; // @synthesize TermFrequenciesWeighted=_TermFrequenciesWeighted;
-@property (strong, nonatomic) NSArray *TermInverseDoc; // @synthesize TermInverseDoc=_TermInverseDoc;
-@property (strong, nonatomic) NSArray *TermInverseDocWeighted; // @synthesize TermInverseDocWeighted=_TermInverseDocWeighted;
 @property (nonatomic) unsigned long long fieldLength; // @synthesize fieldLength=_fieldLength;
+@property (strong, nonatomic) NSArray *inverseDocFrequencies; // @synthesize inverseDocFrequencies=_inverseDocFrequencies;
+@property (strong, nonatomic) NSArray *termFrequencies; // @synthesize termFrequencies=_termFrequencies;
+@property (strong, nonatomic) NSArray *termFrequenciesWeighted; // @synthesize termFrequenciesWeighted=_termFrequenciesWeighted;
+@property (strong, nonatomic) NSArray *termInverseDoc; // @synthesize termInverseDoc=_termInverseDoc;
+@property (strong, nonatomic) NSArray *termInverseDocWeighted; // @synthesize termInverseDocWeighted=_termInverseDocWeighted;
 
 - (void).cxx_destruct;
 

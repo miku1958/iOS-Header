@@ -8,16 +8,19 @@
 
 #import <UIKitCore/UIApplicationSceneClientSettings-Protocol.h>
 
-@class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSString;
+@class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSData, NSDictionary, NSString;
 
 @interface UIMutableApplicationSceneClientSettings : FBSMutableSceneClientSettings <UIApplicationSceneClientSettings>
 {
     BOOL _statusBarForegroundTransparent;
+    long long _sceneActivationBias;
 }
 
+@property (strong, nonatomic) NSData *activationConditionsData;
 @property (strong, nonatomic) NSArray *audioCategoriesDisablingVolumeHUD;
 @property (nonatomic) long long backgroundStyle;
 @property (nonatomic) double brightnessLevel;
+@property (copy, nonatomic) NSString *canvasTitle;
 @property (nonatomic) long long compatibilityMode;
 @property (nonatomic) double controlCenterAmbiguousActivationMargin;
 @property (nonatomic) long long controlCenterRevealMode;
@@ -41,10 +44,14 @@
 @property (nonatomic) unsigned long long proximityDetectionModes;
 @property (nonatomic, getter=isReachabilitySupported) BOOL reachabilitySupported;
 @property (copy, nonatomic) FBSDisplayMode *requestedDisplayMode;
+@property (nonatomic) long long sceneActivationBias; // @synthesize sceneActivationBias=_sceneActivationBias;
 @property (nonatomic) unsigned long long screenEdgesDeferringSystemGestures;
+@property (nonatomic) double statusBarAlpha;
 @property (nonatomic) unsigned int statusBarContextID;
 @property (nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent; // @synthesize statusBarForegroundTransparent=_statusBarForegroundTransparent;
 @property (nonatomic) BOOL statusBarHidden;
+@property (nonatomic) long long statusBarModernStyle;
+@property (copy, nonatomic) NSDictionary *statusBarPartStyles;
 @property (nonatomic) long long statusBarStyle;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long supportedInterfaceOrientations;
@@ -56,6 +63,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isUISubclass;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
+- (BOOL)settings:(id)arg1 appendDescriptionToBuilder:(id)arg2 forFlag:(long long)arg3 object:(id)arg4 ofSetting:(unsigned long long)arg5;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;
 
 @end

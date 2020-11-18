@@ -14,39 +14,32 @@
 {
     BOOL _spiClient;
     NSString *_sessionID;
-    NSString *_accessoryName;
     NSString *_descriptionString;
     NSString *_cameraSessionAppID;
-    NSString *_cameraProactiveSessionID;
     HMDDevice *_remoteDevice;
     NSMutableDictionary *_milestones;
     NSString *_deviceSectionName;
     NSMutableDictionary *_deviceMilestones;
 }
 
-@property (readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
-@property (readonly, nonatomic) NSString *cameraProactiveSessionID; // @synthesize cameraProactiveSessionID=_cameraProactiveSessionID;
-@property (readonly, nonatomic) NSString *cameraSessionAppID; // @synthesize cameraSessionAppID=_cameraSessionAppID;
-@property (readonly, nonatomic) NSString *descriptionString; // @synthesize descriptionString=_descriptionString;
-@property (readonly, nonatomic) NSMutableDictionary *deviceMilestones; // @synthesize deviceMilestones=_deviceMilestones;
-@property (readonly, nonatomic) NSString *deviceSectionName; // @synthesize deviceSectionName=_deviceSectionName;
-@property (readonly, nonatomic) NSMutableDictionary *milestones; // @synthesize milestones=_milestones;
-@property (readonly, nonatomic) HMDDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
-@property (readonly, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
-@property (readonly, nonatomic, getter=isSPIClient) BOOL spiClient; // @synthesize spiClient=_spiClient;
+@property (readonly) NSString *cameraSessionAppID; // @synthesize cameraSessionAppID=_cameraSessionAppID;
+@property (readonly) NSString *descriptionString; // @synthesize descriptionString=_descriptionString;
+@property (readonly) NSMutableDictionary *deviceMilestones; // @synthesize deviceMilestones=_deviceMilestones;
+@property (readonly) NSString *deviceSectionName; // @synthesize deviceSectionName=_deviceSectionName;
+@property (readonly) NSMutableDictionary *milestones; // @synthesize milestones=_milestones;
+@property (readonly) HMDDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
+@property (readonly) NSString *sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly, getter=isSPIClient) BOOL spiClient; // @synthesize spiClient=_spiClient;
 
++ (id)applicationIdentiferForMessage:(id)arg1;
 + (id)millisecondsSince1970;
 - (void).cxx_destruct;
-- (id)_createDescriptionString;
-- (id)_extractSessionAppID:(id)arg1;
 - (void)_prepareDeviceMilestones;
 - (void)addParameterFor:(id)arg1 value:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithAccessory:(id)arg1 service:(id)arg2 sessionID:(id)arg3 message:(id)arg4;
-- (id)initWithAccessory:(id)arg1 sessionID:(id)arg2 message:(id)arg3;
-- (id)initWithAccessoryName:(id)arg1 sessionID:(id)arg2 cameraSessionAppID:(id)arg3 cameraProactiveSessionID:(id)arg4 remoteDevice:(id)arg5 spiClient:(BOOL)arg6;
+- (id)initWithSessionID:(id)arg1 remoteDevice:(id)arg2 cameraSessionAppID:(id)arg3 descriptionString:(id)arg4 spiClient:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (void)markMilestoneFor:(id)arg1;
 - (void)markMilestoneForPath:(id)arg1;

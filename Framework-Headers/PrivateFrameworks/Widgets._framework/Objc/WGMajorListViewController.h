@@ -6,30 +6,56 @@
 
 #import <Widgets/WGWidgetListViewController.h>
 
+#import <Widgets/WGWidgetIconAnimationExtraViewsProviding-Protocol.h>
 #import <Widgets/WGWidgetListFooterViewDelegate-Protocol.h>
 
-@class NSString, WGCollapsingView, WGWidgetListFooterView;
+@class NSArray, NSString, UIView, UIViewController, WGWidgetListFooterView, WGWidgetListHeaderView;
+@protocol WGMajorListViewControllerDelegate;
 
-@interface WGMajorListViewController : WGWidgetListViewController <WGWidgetListFooterViewDelegate>
+@interface WGMajorListViewController : WGWidgetListViewController <WGWidgetListFooterViewDelegate, WGWidgetIconAnimationExtraViewsProviding>
 {
-    WGCollapsingView *_collapsingView;
+    BOOL _footerVisible;
+    BOOL _headerVisible;
+    UIView *_containerView;
     WGWidgetListFooterView *_footerView;
+    UIViewController *_headerContentViewController;
+    WGWidgetListHeaderView *_headerView;
 }
 
+@property (nonatomic, getter=_isFooterVisible, setter=_setFooterVisible:) BOOL _footerVisible; // @synthesize _footerVisible;
+@property (weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<WGMajorListViewControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSArray *extraViews;
+@property (readonly, nonatomic) UIView *extraViewsContainer;
 @property (readonly, nonatomic) WGWidgetListFooterView *footerView; // @synthesize footerView=_footerView;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIViewController *headerContentViewController; // @synthesize headerContentViewController=_headerContentViewController;
+@property (readonly, nonatomic) WGWidgetListHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (nonatomic, getter=isHeaderVisible) BOOL headerVisible; // @synthesize headerVisible=_headerVisible;
+@property (readonly, nonatomic) BOOL shouldAnimateLastTwoViewsAsOne;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_configureStackView;
 - (id)_group;
-- (id)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
+- (void)_insertHeaderView;
+- (unsigned long long)_insertionIndexofListItem:(id)arg1 intoWidgetViews:(id)arg2 withOrderedIdentifiers:(id)arg3;
+- (void)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
+- (void)_updateEditButtonVisibilityAnimated:(BOOL)arg1;
 - (void)_updateFooterViewShouldBlurContent;
-- (void)orderOfVisibleWidgetsDidChange:(id)arg1;
+- (void)_updateFooterVisibility;
+- (void)_updateHeaderVisibility;
 - (void)presentEditView:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)setEditingIcons:(BOOL)arg1;
 - (void)setShouldBlurContent:(BOOL)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeHiddenInGroup:(id)arg3;
 - (void)widgetDiscoveryController:(id)arg1 widgetWithIdentifier:(id)arg2 shouldBecomeVisibleInGroup:(id)arg3;

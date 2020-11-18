@@ -12,19 +12,26 @@
 
 @interface PLManagedAssetID : NSObject <PLAssetID>
 {
+    unsigned char _bundleScope;
     NSString *_uuid;
-    NSString *_cloudIdentifier;
+    NSString *_filename;
+    NSString *_directory;
+    NSString *_libraryID;
 }
 
-@property (copy, nonatomic) NSString *cloudIdentifier; // @synthesize cloudIdentifier=_cloudIdentifier;
+@property (nonatomic) unsigned char bundleScope; // @synthesize bundleScope=_bundleScope;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *directory; // @synthesize directory=_directory;
+@property (copy, nonatomic) NSString *filename; // @synthesize filename=_filename;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *libraryID; // @synthesize libraryID=_libraryID;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
 - (id)initWithManagedAsset:(id)arg1;
+- (id)initWithUUID:(id)arg1 filename:(id)arg2 directory:(id)arg3 libraryID:(id)arg4 bundleScope:(unsigned char)arg5;
 
 @end
 

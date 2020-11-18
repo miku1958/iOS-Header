@@ -18,6 +18,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
 - (BOOL)isAccessibilityElement;
 
 @end

@@ -15,7 +15,6 @@
     double _aspectRatio;
     double _maximumHeightRelativeToScreenHeight;
     double _maximumAbsoluteHeight;
-    double _movieLessTVHeight;
     double _fakeMiroViewAspectRatio;
     double _fakeMiroViewLoadingDuration;
 }
@@ -27,7 +26,6 @@
 @property (nonatomic) BOOL forceMiroCompelling; // @synthesize forceMiroCompelling=_forceMiroCompelling;
 @property (nonatomic) double maximumAbsoluteHeight; // @synthesize maximumAbsoluteHeight=_maximumAbsoluteHeight;
 @property (nonatomic) double maximumHeightRelativeToScreenHeight; // @synthesize maximumHeightRelativeToScreenHeight=_maximumHeightRelativeToScreenHeight;
-@property (nonatomic) double movieLessTVHeight; // @synthesize movieLessTVHeight=_movieLessTVHeight;
 @property (nonatomic) BOOL showAlways; // @synthesize showAlways=_showAlways;
 @property (nonatomic) BOOL showSlideshow; // @synthesize showSlideshow=_showSlideshow;
 

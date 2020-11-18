@@ -33,7 +33,7 @@
 - (void)_sendByEmailAction:(id)arg1;
 - (void)_setupWithDictionary:(id)arg1;
 - (void)_switchLogsAction:(id)arg1;
-- (id)initWithMemory:(id)arg1;
+- (id)initWithMemory:(id)arg1 memoryInfo:(id)arg2;
 - (void)mailComposeController:(id)arg1 didFinishWithResult:(long long)arg2 error:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

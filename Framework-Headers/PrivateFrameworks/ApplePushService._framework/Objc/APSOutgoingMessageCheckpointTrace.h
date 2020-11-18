@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) CUTCheckpointRange *sendToDaemon; // @synthesize sendToDaemon=_sendToDaemon;
 @property (readonly, nonatomic) CUTCheckpointRange *waitForACK; // @synthesize waitForACK=_waitForACK;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 name:(id)arg3 uniqueIdentifier:(id)arg4;
 - (id)initWithUniqueIdentifier:(id)arg1;
 

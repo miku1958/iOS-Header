@@ -23,7 +23,11 @@
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) SCNPhysicsWorld *physicsWorld;
 @property (readonly, nonatomic) SCNNode *rootNode;
+@property (nonatomic) double screenSpaceReflectionMaximumDistance;
+@property (nonatomic) long long screenSpaceReflectionSampleCount;
+@property (nonatomic) double screenSpaceReflectionStride;
 @property (nonatomic) double startTime;
+@property (nonatomic) BOOL wantsScreenSpaceReflection;
 
 + (id)scene;
 + (id)sceneNamed:(NSString *)arg1;

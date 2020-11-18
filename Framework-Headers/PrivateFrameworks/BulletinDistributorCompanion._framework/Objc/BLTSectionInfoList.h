@@ -9,7 +9,7 @@
 #import <BulletinDistributorCompanion/BLTSectionInfoListProviderDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol BLTSectionInfoListDelegate, BLTSectionInfoListProvider;
+@protocol BLTSectionInfoListBBProvider, BLTSectionInfoListDelegate, BLTSectionInfoListOverrideProvider;
 
 @interface BLTSectionInfoList : NSObject <BLTSectionInfoListProviderDelegate>
 {
@@ -20,8 +20,8 @@
     BOOL _loading;
     BOOL _loaded;
     id<BLTSectionInfoListDelegate> _delegate;
-    id<BLTSectionInfoListProvider> _overrideProvider;
-    id<BLTSectionInfoListProvider> _sectionInfoProvider;
+    id<BLTSectionInfoListOverrideProvider> _overrideProvider;
+    id<BLTSectionInfoListBBProvider> _sectionInfoProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,16 +29,22 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=hasLoaded) BOOL loaded; // @synthesize loaded=_loaded;
-@property (strong, nonatomic) id<BLTSectionInfoListProvider> overrideProvider; // @synthesize overrideProvider=_overrideProvider;
-@property (strong, nonatomic) id<BLTSectionInfoListProvider> sectionInfoProvider; // @synthesize sectionInfoProvider=_sectionInfoProvider;
+@property (strong, nonatomic) id<BLTSectionInfoListOverrideProvider> overrideProvider; // @synthesize overrideProvider=_overrideProvider;
+@property (strong, nonatomic) id<BLTSectionInfoListBBProvider> sectionInfoProvider; // @synthesize sectionInfoProvider=_sectionInfoProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_migrateFromExternalDeviceSwitchToOverrides:(id)arg1;
+- (id)_lock_sectionInfoFromListItem:(id)arg1 sectionID:(id)arg2 displayName:(id *)arg3;
+- (void)_migrateFromExternalDeviceSwitchToOverrides:(id)arg1 sectionID:(id)arg2;
+- (id)_overriddenSectionInfoForSectionID:(id)arg1 originalSectionInfo:(id *)arg2 displayName:(id *)arg3;
+- (id)_sectionInfoFromSectionID:(id)arg1 displayName:(id *)arg2;
+- (void)_updateListItem:(id)arg1 overrides:(id)arg2 sectionID:(id)arg3;
 - (id)bbSectionInfoForSectionID:(id)arg1;
 - (void)dealloc;
 - (id)effectiveSectionInfoForSectionID:(id)arg1;
+- (BOOL)hasCustomSettingsSetForSectionID:(id)arg1;
 - (id)init;
+- (void)mapSection:(id)arg1 map:(id)arg2;
 - (id)originalSettings;
 - (id)overriddenSectionInfoForSectionID:(id)arg1;
 - (id)overriddenSettings;
@@ -49,9 +55,10 @@
 - (id)sectionIDs;
 - (id)sectionOverrideOnlyForSectionID:(id)arg1;
 - (id)sectionOverridesOnly;
+- (id)settingsDescriptionForSectionIDs:(id)arg1;
 - (id)universalSectionIDForSectionID:(id)arg1;
 - (void)updateOverrides:(id)arg1 forSectionID:(id)arg2;
-- (void)updateSectionInfo:(id)arg1 withUniversalSectionID:(id)arg2 displayName:(id)arg3;
+- (void)updateSectionInfoForSectionIDs:(id)arg1;
 
 @end
 

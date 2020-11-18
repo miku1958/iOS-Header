@@ -16,16 +16,18 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     int _resolvedItemType;
     struct {
-        unsigned int resolvedItemType:1;
-    } _has;
+        unsigned int has_resolvedItemType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasResolvedItemType;
-@property (nonatomic) int resolvedItemType; // @synthesize resolvedItemType=_resolvedItemType;
+@property (nonatomic) int resolvedItemType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsResolvedItemType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resolvedItemTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

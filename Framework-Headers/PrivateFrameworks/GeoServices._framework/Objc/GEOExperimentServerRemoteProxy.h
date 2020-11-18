@@ -8,14 +8,14 @@
 
 #import <GeoServices/GEOExperimentServerProxy-Protocol.h>
 
-@class GEOABAssignmentResponse, NSLock, NSString;
+@class GEOABAssignmentResponse, NSString;
 @protocol GEOExperimentServerProxyDelegate;
 
 @interface GEOExperimentServerRemoteProxy : NSObject <GEOExperimentServerProxy>
 {
     id<GEOExperimentServerProxyDelegate> _delegate;
     GEOABAssignmentResponse *_experimentsInfo;
-    NSLock *_experimentsInfoLock;
+    struct os_unfair_lock_s _experimentsInfoLock;
     int _experimentsChangedToken;
 }
 
@@ -32,6 +32,7 @@
 - (void)_debug_setBucketIdDictionaryRepresentation:(id)arg1;
 - (void)_debug_setQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)abAssignUUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)abAssignUUIDWithSyncCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)forceUpdate;
 - (id)initWithDelegate:(id)arg1;

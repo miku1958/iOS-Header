@@ -18,9 +18,9 @@
 @property (readonly) Class superclass;
 
 - (double)hd_activeNatalies;
+- (long long)hd_compare:(id)arg1;
 - (id)hd_datestamp;
 - (id)hd_epochDatestamp;
-- (long long)hd_recordID;
 - (id)hd_sourceID;
 - (id)hd_unitForType:(id)arg1;
 @end

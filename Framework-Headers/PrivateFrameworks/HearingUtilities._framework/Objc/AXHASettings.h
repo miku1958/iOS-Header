@@ -18,6 +18,7 @@
 
 @property (nonatomic) BOOL allowHearingAidControlOnLockScreen;
 @property (nonatomic) long long callAudioRoute;
+@property (nonatomic) long long complicationPreferredDisplayMode;
 @property (nonatomic) BOOL exportsLiveListenToFile;
 @property (nonatomic) BOOL independentHearingAidSettings;
 @property (nonatomic) long long mediaAudioRoute;
@@ -34,6 +35,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_handlePreferenceChanged:(id)arg1;
+- (void)_initializeICloudSetup;
 - (id)_notificationForPreferenceKey:(id)arg1;
 - (id)_preferenceKeyForSelector:(SEL)arg1;
 - (void)_registerForNotification:(id)arg1;
@@ -45,6 +47,7 @@
 - (id)convertPersistentRepresentation:(id)arg1 fromVersion:(float)arg2 toVersion:(float)arg3;
 - (void)dealloc;
 - (id)deviceIDForPairingInformation:(id)arg1;
+- (struct __CFString *)domainNameForPreferenceKey:(id)arg1;
 - (void)iCloudAccountDidChange:(id)arg1;
 - (void)icloudHearingSettingsDidChange:(id)arg1;
 - (id)init;
@@ -55,6 +58,7 @@
 - (void)registerUpdateBlock:(CDUnknownBlockType)arg1 forRetrieveSelector:(SEL)arg2 withListener:(id)arg3;
 - (void)removeDeviceIDFromCloudBlacklist:(id)arg1;
 - (void)setLocalHearingAidsFromiCloud:(id)arg1;
+- (BOOL)shouldPushLocalAidsToiCloud;
 - (BOOL)shouldUseiCloud;
 
 @end

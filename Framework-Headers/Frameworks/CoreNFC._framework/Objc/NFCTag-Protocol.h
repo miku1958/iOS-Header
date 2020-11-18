@@ -8,7 +8,7 @@
 #import <CoreNFC/NSObject-Protocol.h>
 #import <CoreNFC/NSSecureCoding-Protocol.h>
 
-@protocol NFCReaderSession;
+@protocol NFCFeliCaTag, NFCISO15693Tag, NFCISO7816Tag, NFCMiFareTag, NFCReaderSession;
 
 @protocol NFCTag <NSObject, NSSecureCoding, NSCopying>
 
@@ -16,5 +16,9 @@
 @property (readonly, weak, nonatomic) id<NFCReaderSession> session;
 @property (readonly, nonatomic) unsigned long long type;
 
+- (id<NFCFeliCaTag>)asNFCFeliCaTag;
+- (id<NFCISO15693Tag>)asNFCISO15693Tag;
+- (id<NFCISO7816Tag>)asNFCISO7816Tag;
+- (id<NFCMiFareTag>)asNFCMiFareTag;
 @end
 

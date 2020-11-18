@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIKBCacheableView-Protocol.h>
 
-@class NSMutableDictionary, NSString, NSTimer, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBRenderingContext, UIKBTree, UIKeyboardEmojiKeyDisplayController;
+@class NSMutableDictionary, NSString, NSTimer, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBRenderingContext, UIKBTree, UIKeyboardEmojiKeyDisplayController, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKBKeyplaneView : UIKBSplitImageView <UIKBCacheableView>
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     UIKBSplitImageView *_keyBorders;
     UIKBSplitImageView *_keyBackgrounds;
     UIKBSplitImageView *_keyCaps;
+    UIView *_keyplaneMaskView;
 }
 
 @property (readonly, nonatomic) long long cacheDeferPriority;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL keepNonPersistent;
 @property (strong, nonatomic) UIKBKeyViewAnimator *keyViewAnimator; // @synthesize keyViewAnimator=_keyViewAnimator;
 @property (strong, nonatomic) UIKBTree *keyplane; // @synthesize keyplane=_keyplane;
+@property (readonly, nonatomic) UIView *keyplaneMaskView; // @synthesize keyplaneMaskView=_keyplaneMaskView;
 @property (strong, nonatomic) UIKBRenderConfig *renderConfig; // @synthesize renderConfig=_renderConfig;
 @property (strong, nonatomic) UIKBRenderingContext *renderingContext; // @synthesize renderingContext=_renderingContext;
 @property (readonly) Class superclass;
@@ -59,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)_generateRenderingContextIfNeeded;
 - (BOOL)_shouldAllowKey:(id)arg1;
 - (BOOL)_shouldInheritScreenScaleAsContentScaleFactor;
+- (void)_updateKeyplaneMaskView;
 - (void)activateKeys;
 - (id)activeKeyViews;
 - (void)addKeyToDelayedDeactivationSet:(id)arg1;
@@ -66,8 +69,8 @@ __attribute__((visibility("hidden")))
 - (id)cacheIdentifierForKey:(id)arg1 withState:(int)arg2;
 - (id)cacheKeysForRenderFlags:(id)arg1;
 - (void)cancelDelayedDeactivation;
-- (id)containingViewForKey:(id)arg1 withState:(int)arg2;
-- (int)cornerMaskForKey:(id)arg1 recursive:(BOOL)arg2;
+- (id)containingViewForKey:(id)arg1 withState:(int)arg2 wantsActiveOut:(BOOL *)arg3;
+- (unsigned long long)cornerMaskForKey:(id)arg1 recursive:(BOOL)arg2;
 - (void)deactivateAdaptiveKey:(id)arg1;
 - (void)deactivateKey:(id)arg1 previousState:(int)arg2;
 - (void)deactivateKeys;
@@ -75,11 +78,14 @@ __attribute__((visibility("hidden")))
 - (void)dimKeys:(id)arg1;
 - (void)displayLayer:(id)arg1;
 - (void)drawContentsOfRenderers:(id)arg1;
+- (void)hideKeyCaps:(BOOL)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2;
 - (BOOL)isPasscodeStyle;
+- (void)layoutSubviews;
 - (void)performDelayedDeactivation:(id)arg1;
 - (void)prepareForDisplay;
+- (void)purgeActiveKeyViews;
 - (void)purgeFactory;
 - (void)purgeKeyViews;
 - (void)purgeLayerContents;
@@ -92,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAnimateInKeyView:(id)arg1;
 - (BOOL)shouldAnimateOutKeyView:(id)arg1;
 - (int)stateForKey:(id)arg1;
+- (void)updateFrameForKey:(id)arg1;
 - (BOOL)useDefaultKeyplaneCacheTokenForRenderFlags:(long long)arg1;
 - (BOOL)validForKeyplane:(id)arg1 withVisualStyle:(int)arg2;
 - (id)viewForKey:(id)arg1;

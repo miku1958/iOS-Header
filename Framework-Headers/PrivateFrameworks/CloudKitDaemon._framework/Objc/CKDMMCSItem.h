@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL _finished;
     BOOL _temporary;
     BOOL _shouldReadRawEncryptedData;
+    BOOL _shouldReadAssetContentUsingClientProxy;
     BOOL _isAlreadyRegistered;
     BOOL _isReaderReadFrom;
     BOOL _isRereferencedAssetUpload;
@@ -108,6 +109,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *referenceSignature; // @synthesize referenceSignature=_referenceSignature;
 @property (strong, nonatomic) NSString *requestor; // @synthesize requestor=_requestor;
 @property (strong, nonatomic) NSMutableArray *sectionItems; // @synthesize sectionItems=_sectionItems;
+@property (nonatomic) BOOL shouldReadAssetContentUsingClientProxy; // @synthesize shouldReadAssetContentUsingClientProxy=_shouldReadAssetContentUsingClientProxy;
 @property (nonatomic) BOOL shouldReadRawEncryptedData; // @synthesize shouldReadRawEncryptedData=_shouldReadRawEncryptedData;
 @property (strong, nonatomic) NSData *signature; // @synthesize signature=_signature;
 @property (nonatomic, getter=isTemporary) BOOL temporary; // @synthesize temporary=_temporary;
@@ -133,6 +135,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithPackage:(id)arg1;
 - (id)openWithError:(id *)arg1;
 - (id)openWithProxy:(id)arg1 error:(id *)arg2;
+- (id)readBytesOfInMemoryAssetContentWithProxy:(id)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 error:(id *)arg4;
 - (void)setupForGetChunkKeysWithAsset:(id)arg1;
 
 @end

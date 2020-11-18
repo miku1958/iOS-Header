@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (struct CGRect)_accessibilityMediaAnalysisFrame;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (void)_axClear;
 - (id)_axHandwritingDescriptionForDataSource:(id)arg1;
 - (BOOL)_axIsAttachedHandwritingPlugin;
@@ -20,6 +22,7 @@
 - (BOOL)_axIsHandwriting;
 - (BOOL)_axIsURL;
 - (BOOL)accessibilityActivate;
+- (long long)accessibilityContainerType;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;

@@ -27,7 +27,6 @@
 + (id)classificationForComponentWithType:(id)arg1;
 + (id)classificationForComponentWithType:(id)arg1 role:(id)arg2;
 + (void)initialize;
-+ (void)initializeClassifications;
 + (void)registerClassification;
 + (int)role;
 + (id)roleString;

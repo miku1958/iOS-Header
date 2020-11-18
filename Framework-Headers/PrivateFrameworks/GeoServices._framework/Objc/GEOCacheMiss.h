@@ -12,34 +12,35 @@
 
 @interface GEOCacheMiss : PBCodable <NSCopying>
 {
+    NSMutableArray *_errors;
     unsigned int _bytes;
     unsigned int _count;
-    NSMutableArray *_errors;
     unsigned int _httpStatus;
     int _missType;
     int _requestorType;
     struct {
-        unsigned int bytes:1;
-        unsigned int count:1;
-        unsigned int httpStatus:1;
-        unsigned int missType:1;
-        unsigned int requestorType:1;
-    } _has;
+        unsigned int has_bytes:1;
+        unsigned int has_count:1;
+        unsigned int has_httpStatus:1;
+        unsigned int has_missType:1;
+        unsigned int has_requestorType:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int bytes; // @synthesize bytes=_bytes;
-@property (nonatomic) unsigned int count; // @synthesize count=_count;
-@property (strong, nonatomic) NSMutableArray *errors; // @synthesize errors=_errors;
+@property (nonatomic) unsigned int bytes;
+@property (nonatomic) unsigned int count;
+@property (strong, nonatomic) NSMutableArray *errors;
 @property (nonatomic) BOOL hasBytes;
 @property (nonatomic) BOOL hasCount;
 @property (nonatomic) BOOL hasHttpStatus;
 @property (nonatomic) BOOL hasMissType;
 @property (nonatomic) BOOL hasRequestorType;
-@property (nonatomic) unsigned int httpStatus; // @synthesize httpStatus=_httpStatus;
-@property (nonatomic) int missType; // @synthesize missType=_missType;
-@property (nonatomic) int requestorType; // @synthesize requestorType=_requestorType;
+@property (nonatomic) unsigned int httpStatus;
+@property (nonatomic) int missType;
+@property (nonatomic) int requestorType;
 
 + (Class)errorsType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsMissType:(id)arg1;
 - (int)StringAsRequestorType:(id)arg1;
@@ -55,6 +56,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)missTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestorTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

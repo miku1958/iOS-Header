@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)footnoteLayoutRangeForPageCharRange:(struct _NSRange)arg1;
 - (void)inflateFootnotesInRange:(struct _NSRange)arg1 intoFootnoteContainer:(id)arg2;
 - (id)initWithDocumentRoot:(id)arg1;
-- (struct _NSRange)layoutFootnotesFromIndex:(unsigned long long)arg1 intoFootnoteContainer:(id)arg2 maxBlockHeight:(double)arg3 pageCharRange:(struct _NSRange)arg4 sectionCharRange:(struct _NSRange)arg5 isLastSection:(BOOL)arg6 sectionHint:(id)arg7 pageHintIndex:(unsigned long long)arg8;
+- (struct _NSRange)layOutFootnotesFromIndex:(unsigned long long)arg1 intoFootnoteContainer:(id)arg2 maxBlockHeight:(double)arg3 pageCharRange:(struct _NSRange)arg4 sectionCharRange:(struct _NSRange)arg5 isLastSection:(BOOL)arg6 sectionHint:(id)arg7 pageHintIndex:(unsigned long long)arg8;
 - (id)p_footnoteReferenceStoragesInFootnoteIndexRange:(struct _NSRange)arg1;
 - (unsigned long long)p_layoutFootnotesInRange:(struct _NSRange)arg1 intoFootnoteContainer:(id)arg2 maxBlockHeight:(double)arg3 measure:(BOOL)arg4 inflating:(BOOL)arg5;
 - (id)p_layoutForFootnoteReferenceStorage:(id)arg1;

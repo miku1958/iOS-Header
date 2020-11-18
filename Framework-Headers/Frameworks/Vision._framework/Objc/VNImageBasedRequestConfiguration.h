@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)initWithRequestClass:(Class)arg1;
 
 @end

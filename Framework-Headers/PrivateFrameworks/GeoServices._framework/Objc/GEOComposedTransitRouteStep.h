@@ -6,8 +6,8 @@
 
 #import <GeoServices/GEOComposedRouteStep.h>
 
-@class GEOInstructionSet, GEOPBTransitHall, GEOPBTransitStop, GEOTransitStep, NSArray, NSString;
-@protocol GEOTransitArtworkDataSource, GEOTransitRoutingIncidentMessage;
+@class GEOPBTransitHall, GEOPBTransitStop, GEOTransitScheduleInfo, GEOTransitStep, NSArray, NSString;
+@protocol GEOTransitArtworkDataSource, GEOTransitRoutingIncidentMessage, GEOTransitVehicleEntries;
 
 @interface GEOComposedTransitRouteStep : GEOComposedRouteStep
 {
@@ -30,7 +30,6 @@
 @property (readonly, nonatomic) GEOPBTransitStop *destinationStop; // @synthesize destinationStop=_destinationStop;
 @property (readonly, nonatomic) NSString *destinationStopIntermediateListName;
 @property (readonly, nonatomic) unsigned long long destinationTransitEntityMuid;
-@property (readonly, nonatomic) GEOInstructionSet *instructions;
 @property (readonly, nonatomic) int maneuver; // @synthesize maneuver=_maneuver;
 @property (readonly, nonatomic) GEOComposedTransitRouteStep *nextTransitStep;
 @property (readonly, nonatomic) GEOPBTransitHall *originHall; // @synthesize originHall=_originHall;
@@ -39,9 +38,12 @@
 @property (readonly, nonatomic) unsigned long long originTransitEntityMuid;
 @property (readonly, nonatomic) GEOComposedTransitRouteStep *previousTransitStep;
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> routeDetailsIncidentMessage; // @synthesize routeDetailsIncidentMessage=_routeDetailsIncidentMessage;
+@property (readonly, nonatomic) GEOTransitScheduleInfo *scheduleInfo;
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> steppingIncidentMessage; // @synthesize steppingIncidentMessage=_steppingIncidentMessage;
 @property (readonly, nonatomic) GEOTransitStep *transitStep; // @synthesize transitStep=_transitStep;
+@property (readonly, nonatomic) id<GEOTransitVehicleEntries> vehicleEntries;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_intermediateListNameForStop:(id)arg1;
 - (id)_largestEntityAtStop:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
@@ -51,10 +53,13 @@
 - (id)description;
 - (unsigned int)distance;
 - (unsigned int)duration;
-- (CDStruct_c3b9c2ee)endGeoCoordinate;
+- (void)encodeWithCoder:(id)arg1;
+- (CDStruct_39925896)endGeoCoordinate;
 - (id)endingStop;
 - (BOOL)hasDuration;
-- (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 step:(id)arg3 stepIndex:(unsigned long long)arg4 duration:(unsigned int)arg5 pointRange:(struct _NSRange)arg6;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 routeLegType:(long long)arg3 step:(id)arg4 stepIndex:(unsigned long long)arg5 duration:(unsigned int)arg6 pointRange:(struct _NSRange)arg7;
+- (id)instructions;
 - (BOOL)isArrivalStep;
 - (id)nextAlightingStep;
 - (id)nextBoardingStep;
@@ -64,7 +69,7 @@
 - (id)previousStop;
 - (id)routeDetailsPrimaryArtwork;
 - (id)routeDetailsSecondaryArtwork;
-- (CDStruct_c3b9c2ee)startGeoCoordinate;
+- (CDStruct_39925896)startGeoCoordinate;
 - (unsigned int)startTime;
 - (id)startingStop;
 - (id)steppingArtwork;

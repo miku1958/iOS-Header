@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (void)_addExtension:(id)arg1;
 - (id)_categoriesForExtension:(id)arg1;
-- (id)_customSectionIdentifierForExtension:(id)arg1;
+- (id)_customSectionIdentifiersForExtension:(id)arg1;
 - (id)_extensionMatchingSection:(id)arg1 category:(id)arg2;
 - (void)_removeAllExtensions;
 - (struct NSMutableDictionary *)_sectionDictForSection:(id)arg1;

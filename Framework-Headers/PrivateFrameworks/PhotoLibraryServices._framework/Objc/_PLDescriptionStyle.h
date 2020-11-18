@@ -26,7 +26,7 @@
 @property (readonly, copy) NSString *suffix; // @synthesize suffix=_suffix;
 
 + (id)styleForEnum:(long long)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionForObject:(id)arg1 withIndent:(long long)arg2;
 - (id)initWithIntialFieldSeparator:(id)arg1 fieldSeparator:(id)arg2 nameValueSeparator:(id)arg3 suffix:(id)arg4 extraIndent:(long long)arg5 prettyPrint:(BOOL)arg6;
 

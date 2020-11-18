@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, UILabel, UIView, _UINavigationBarLargeTitleView, _UINavigationControllerRefreshControlHost;
+@class NSMutableDictionary, UILabel, UIView, _UINavigationBarLargeTitleView;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarLargeTitleViewLayout : NSObject
@@ -14,17 +14,15 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_titleHeightCache;
     NSMutableDictionary *_restingHeightCache;
     double _cachedRestingHeight;
-    BOOL _supportsTwoLines;
     BOOL _alignAccessoryViewToTitleBaseline;
+    BOOL _providesExtraSpaceForExcessiveLineHeights;
     _UINavigationBarLargeTitleView *_contentView;
     long long _titleType;
     UILabel *_titleLabel;
+    unsigned long long _twoLineMode;
     double _titleRestingHeight;
     UIView *_accessoryView;
     unsigned long long _accessoryViewHorizontalAlignment;
-    _UINavigationControllerRefreshControlHost *_refreshControlHost;
-    double _restingHeightOfRefreshControl;
-    UIView *_refreshHostContainerView;
     struct NSDirectionalEdgeInsets _layoutMargins;
 }
 
@@ -33,13 +31,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL alignAccessoryViewToTitleBaseline; // @synthesize alignAccessoryViewToTitleBaseline=_alignAccessoryViewToTitleBaseline;
 @property (readonly, nonatomic) _UINavigationBarLargeTitleView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) struct NSDirectionalEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
-@property (readonly, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost; // @synthesize refreshControlHost=_refreshControlHost;
-@property (strong, nonatomic) UIView *refreshHostContainerView; // @synthesize refreshHostContainerView=_refreshHostContainerView;
-@property (nonatomic) double restingHeightOfRefreshControl; // @synthesize restingHeightOfRefreshControl=_restingHeightOfRefreshControl;
-@property (nonatomic) BOOL supportsTwoLines; // @synthesize supportsTwoLines=_supportsTwoLines;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (nonatomic) BOOL providesExtraSpaceForExcessiveLineHeights; // @synthesize providesExtraSpaceForExcessiveLineHeights=_providesExtraSpaceForExcessiveLineHeights;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (readonly, nonatomic) double titleRestingHeight; // @synthesize titleRestingHeight=_titleRestingHeight;
 @property (nonatomic) long long titleType; // @synthesize titleType=_titleType;
+@property (nonatomic) unsigned long long twoLineMode; // @synthesize twoLineMode=_twoLineMode;
 
 - (void).cxx_destruct;
 - (struct CGSize)_cachedTitleHeightSizeAndUpdateRestingSizeForWidth:(double)arg1;
@@ -48,13 +44,12 @@ __attribute__((visibility("hidden")))
 - (void)_enforceLayoutOrdering;
 - (void)_invalidateTitleHeightCache;
 - (double)_textHeightForSize:(struct CGSize)arg1 titleType:(long long)arg2;
-- (double)_unobstructedHeightOfRefreshControlWithFrame:(struct CGRect)arg1;
 - (void)cleanupAfterLayoutTransitionCompleted;
-- (void)configureRefreshControlUsingHost:(id)arg1;
+- (id)description;
 - (id)initWithContentView:(id)arg1;
-- (void)invalidate;
 - (void)layoutViews;
 - (void)layoutViewsWithOffset:(struct UIOffset)arg1 useRestingTitleHeight:(BOOL)arg2;
+- (void)removeContent;
 - (void)setContentAlpha:(double)arg1;
 - (void)setContentHidden:(BOOL)arg1;
 - (struct CGSize)sizeFittingSize:(struct CGSize)arg1 titleType:(long long)arg2;

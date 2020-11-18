@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (long long)indexOfPreviewItem:(id)arg1;
 - (id)init;
-- (id)initWithContentsOfURL:(id)arg1;
+- (id)initWithItemsOfDirectoryAtURL:(id)arg1;
 - (id)initWithPreviewItems:(id)arg1;
 - (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 - (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;

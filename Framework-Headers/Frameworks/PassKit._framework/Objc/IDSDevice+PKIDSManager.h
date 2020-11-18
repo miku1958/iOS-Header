@@ -9,5 +9,6 @@
 @interface IDSDevice (PKIDSManager)
 - (id)pk_idsDestination;
 - (BOOL)pk_isApplePayCapable;
+- (BOOL)pk_isValidHandoffDevice;
 @end
 

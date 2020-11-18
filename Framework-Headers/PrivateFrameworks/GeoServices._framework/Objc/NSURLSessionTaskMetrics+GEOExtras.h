@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CFNetwork/NSURLSessionTaskMetrics.h>
+#import <Foundation/NSURLSessionTaskMetrics.h>
 
 @interface NSURLSessionTaskMetrics (GEOExtras)
 - (id)_geo_clientMetrics;

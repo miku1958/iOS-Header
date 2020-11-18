@@ -24,6 +24,7 @@
 - (id)initWithTimeRange:(CDStruct_e83c9415)arg1 rate:(float)arg2;
 - (id)internalRepresentation;
 - (BOOL)isEqualToOperation:(id)arg1;
+- (BOOL)isMigratable;
 - (id)settingsDictionary;
 
 @end

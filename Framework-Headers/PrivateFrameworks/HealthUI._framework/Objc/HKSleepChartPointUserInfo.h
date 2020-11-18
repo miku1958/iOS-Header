@@ -19,7 +19,7 @@
     HKSleepDay *_sleepDay;
 }
 
-@property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

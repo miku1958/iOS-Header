@@ -6,20 +6,18 @@
 
 #import <TextInputCore/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSSet, NSString, TIKeyboardSecureCandidateRenderTraits, TIKeyboardSecureCandidateRenderer;
+@class NSArray, NSSet, NSString, TIKeyboardSecureCandidateRenderTraits, TIKeyboardSecureCandidateRenderer;
 
 @protocol TIProactiveQuickTypeManaging <NSObject>
 - (NSArray *)generateAndRenderProactiveSuggestionsWithInput:(NSString *)arg1 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg2 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg3 textContentType:(NSString *)arg4;
 - (void)generateAndRenderProactiveSuggestionsWithInput:(NSString *)arg1 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg2 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg3 textContentType:(NSString *)arg4 async:(BOOL)arg5 completion:(void (^)(NSArray *))arg6;
 - (NSArray *)generateAndRenderProactiveSuggestionsWithTriggers:(NSArray *)arg1 withAdditionalPredictions:(NSArray *)arg2 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg3 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg4 withInput:(NSString *)arg5 withRecipient:(NSString *)arg6 withApplication:(NSString *)arg7 withLocale:(NSString *)arg8 withTextContentType:(NSString *)arg9 withAvailableApps:(NSSet *)arg10 logBlock:(void (^)(NSString *))arg11;
 - (void)generateAndRenderProactiveSuggestionsWithTriggers:(NSArray *)arg1 withAdditionalPredictions:(NSArray *)arg2 withSecureCandidateRenderer:(TIKeyboardSecureCandidateRenderer *)arg3 withRenderTraits:(TIKeyboardSecureCandidateRenderTraits *)arg4 withInput:(NSString *)arg5 withRecipient:(NSString *)arg6 withApplication:(NSString *)arg7 withLocale:(NSString *)arg8 withTextContentType:(NSString *)arg9 withAvailableApps:(NSSet *)arg10 logBlock:(void (^)(NSString *))arg11 async:(BOOL)arg12 completion:(void (^)(NSArray *))arg13;
-- (NSDictionary *)getCachedRecipientInfoForEmailOrPhone:(NSString *)arg1;
 - (NSArray *)getMeCardEmailAddresses;
 - (BOOL)isAutoCompleteEnabled;
 - (BOOL)isAutoPopupEnabled;
 - (BOOL)isEnabled;
 - (void)reset;
-- (void)setCachedRecipientInfo:(NSDictionary *)arg1 forEmailOrPhone:(NSString *)arg2;
 - (void)suggestionAccepted:(NSString *)arg1 fieldType:(NSString *)arg2;
 - (void)suggestionNotAccepted:(NSArray *)arg1;
 - (void)userActionWithNoNewTriggers:(NSString *)arg1 fieldType:(NSString *)arg2;

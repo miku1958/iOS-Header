@@ -10,7 +10,7 @@
 #import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class CMPedometer, CMPedometerData, HDActivityCacheDataSource, HDProfile, HDSourceEntity, HKActivityCache, HKHeartRateSummary, HKQuantitySample, HKQuantityType, NSCalendar, NSDate, NSDateInterval, NSHashTable, NSSet, NSString, NSTimeZone, _HKDelayedOperation;
+@class CMPedometer, CMPedometerData, HDActivityCacheDataSource, HDProfile, HDSourceEntity, HKActivityCache, HKHeartRateSummary, HKQuantityType, NSCalendar, NSDate, NSDateInterval, NSHashTable, NSMutableDictionary, NSSet, NSString, NSTimeZone, _HKDelayedOperation;
 @protocol OS_dispatch_queue;
 
 @interface HDActivityCacheManager : NSObject <HDHealthDaemonReadyObserver, HDDataObserver, HDDatabaseProtectedDataObserver>
@@ -33,10 +33,10 @@
     HDSourceEntity *_localDeviceSourceEntity;
     HDActivityCacheDataSource *_dataSource;
     HKQuantityType *_calorieGoalType;
+    HKQuantityType *_exerciseGoalType;
+    HKQuantityType *_standGoalType;
     NSSet *_allQuantityTypes;
-    HKQuantitySample *_todayGoal;
-    HKQuantitySample *_yesterdayGoal;
-    BOOL _shouldSendCacheUpdateNotification;
+    NSMutableDictionary *_goalsByIndex;
     _HKDelayedOperation *_updateCachesOperation;
     _HKDelayedOperation *_rebuildCachesOperation;
     NSHashTable *_observers;
@@ -62,16 +62,19 @@
 - (void).cxx_destruct;
 - (void)_calculateCacheIndicesWithTodayIndex:(long long *)arg1 yesterdayIndex:(long long *)arg2 tomorrowIndex:(long long *)arg3 todayStart:(id)arg4 yesterdayStart:(id)arg5 tomorrowStart:(id)arg6 calendar:(id)arg7;
 - (void)_didReceiveSignificantTimeChangeNotification;
-- (id)_mostRecentGoalBeforeDate:(id)arg1 error:(id *)arg2;
+- (id)_mostRecentSampleWithType:(id)arg1 beforeDate:(id)arg2 error:(id *)arg3;
 - (void)_queue_alertObservers:(id)arg1 heartRateSummaryChanged:(id)arg2;
 - (void)_queue_alertObserversTodayActivityCacheChanged:(id)arg1;
 - (void)_queue_alertObserversYesterdayActivityCacheChanged:(id)arg1;
+- (BOOL)_queue_allGoalsLoaded;
+- (BOOL)_queue_calorieGoalSet;
 - (id)_queue_currentDate;
 - (id)_queue_currentTimeZone;
 - (void)_queue_deleteActivityCaches:(id)arg1;
-- (BOOL)_queue_goalsSet;
+- (BOOL)_queue_exerciseGoalSet;
 - (id)_queue_gregorianCalendar;
 - (void)_queue_primeCacheIndices;
+- (void)_queue_primeDailyGoalWithType:(id)arg1;
 - (void)_queue_primeDailyGoals;
 - (void)_queue_primeDataSource;
 - (void)_queue_primeExistingActivityCaches;
@@ -82,21 +85,21 @@
 - (void)_queue_rebuildCachesIfNeededForTimeChange;
 - (void)_queue_registerForSignificantTimeChangeNotification;
 - (void)_queue_resetCacheIndices;
-- (void)_queue_resetDailyGoals;
+- (void)_queue_resetDailyGoalWithType:(id)arg1;
 - (void)_queue_resetDataSource;
 - (void)_queue_resetEverything;
 - (void)_queue_resetExistingActivityCaches;
-- (id)_queue_saveCacheWithDateInterval:(id)arg1 calorieGoal:(id)arg2 cacheIndex:(long long)arg3 previousCache:(id)arg4 statisticsBuilder:(id)arg5 wheelchairUse:(long long)arg6 generateStats:(BOOL)arg7;
+- (id)_queue_saveCacheWithDateInterval:(id)arg1 calorieGoal:(id)arg2 exerciseGoal:(id)arg3 standGoal:(id)arg4 cacheIndex:(long long)arg5 previousCache:(id)arg6 statisticsBuilder:(id)arg7 wheelchairUse:(long long)arg8 generateStats:(BOOL)arg9;
 - (void)_queue_saveCaches;
 - (BOOL)_queue_saveTodayCache;
 - (BOOL)_queue_saveYesterdayCache;
+- (BOOL)_queue_standGoalSet;
 - (void)_queue_streamSamplesAdded;
 - (void)_queue_updateCaches;
-- (void)_queue_updateDailyGoalsWithGoalSample:(id)arg1;
-- (void)_queue_updateDailyGoalsWithSamples:(id)arg1;
+- (BOOL)_queue_updateDailyGoalsWithSamples:(id)arg1;
 - (void)_queue_updateDateIntervalsWithExistingActivityCaches;
+- (BOOL)_queue_updateGoalWithSample:(id)arg1;
 - (void)_queue_updateHeartRateSummaries;
-- (void)_queue_updateWheelchairUse;
 - (void)_userCharacteristicsDidChangeNotification:(id)arg1;
 - (void)accessStatisticsBuilderWithCacheIndex:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)addActivityCacheObserver:(id)arg1;

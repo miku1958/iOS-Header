@@ -8,7 +8,7 @@
 
 #import <SAObjects/SAClientBoundCommand-Protocol.h>
 
-@class NSArray, NSString, SAStartRequest;
+@class NSArray, NSString, SAStartLocalRequest, SAStartRequest;
 
 @interface SAStartUIRequest : SABaseClientBoundCommand <SAClientBoundCommand>
 {
@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
+@property (strong, nonatomic) SAStartLocalRequest *startLocalRequest;
 @property (strong, nonatomic) SAStartRequest *startRequest;
 @property (readonly) Class superclass;
 

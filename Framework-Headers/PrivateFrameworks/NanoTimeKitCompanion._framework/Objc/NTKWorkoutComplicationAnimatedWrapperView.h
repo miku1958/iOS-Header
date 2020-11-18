@@ -30,7 +30,7 @@
 @property (nonatomic) BOOL usesLegibility; // @synthesize usesLegibility=_usesLegibility;
 
 - (void).cxx_destruct;
-- (void)_applyAnimationForPauseState:(BOOL)arg1;
+- (void)_applyAnimationForPauseState:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_updateState;
 - (void)_updateTint;
 - (id)initWithAnimationImages:(id)arg1;

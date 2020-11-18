@@ -14,19 +14,20 @@
     BOOL _isMerchantIncorrect;
     BOOL _isOtherIssue;
     struct {
-        unsigned int isCategoryIncorrect:1;
-        unsigned int isMerchantIncorrect:1;
-        unsigned int isOtherIssue:1;
-    } _has;
+        unsigned int has_isCategoryIncorrect:1;
+        unsigned int has_isMerchantIncorrect:1;
+        unsigned int has_isOtherIssue:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsCategoryIncorrect;
 @property (nonatomic) BOOL hasIsMerchantIncorrect;
 @property (nonatomic) BOOL hasIsOtherIssue;
-@property (nonatomic) BOOL isCategoryIncorrect; // @synthesize isCategoryIncorrect=_isCategoryIncorrect;
-@property (nonatomic) BOOL isMerchantIncorrect; // @synthesize isMerchantIncorrect=_isMerchantIncorrect;
-@property (nonatomic) BOOL isOtherIssue; // @synthesize isOtherIssue=_isOtherIssue;
+@property (nonatomic) BOOL isCategoryIncorrect;
+@property (nonatomic) BOOL isMerchantIncorrect;
+@property (nonatomic) BOOL isOtherIssue;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +35,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -8,17 +8,17 @@
 
 #import <DoNotDisturb/DNDRemoteServiceConnectionEventListener-Protocol.h>
 
-@class NSHashTable, NSMutableSet, NSString;
+@class DNDModeAssertion, NSHashTable, NSString;
 @protocol OS_dispatch_queue;
 
 @interface DNDModeAssertionService : NSObject <DNDRemoteServiceConnectionEventListener>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
     NSString *_clientIdentifier;
     NSHashTable *_assertionUpdateListeners;
-    NSMutableSet *_activeAssertions;
-    BOOL _registeredForUpdates;
+    struct atomic_flag _registeredForUpdates;
+    DNDModeAssertion *_activeAssertion;
+    struct os_unfair_lock_s _activeAssertionLock;
 }
 
 @property (readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
@@ -30,19 +30,20 @@
 + (void)initialize;
 + (id)serviceForClientIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (void)_handleLostXPCConnectionWithRetry:(BOOL)arg1;
-- (void)_handleModeAssertionInvalidation:(id)arg1;
+- (void)_handleChangeActiveModeAssertion:(id)arg1 invalidation:(id)arg2;
+- (void)_handleXPCInterruption;
 - (id)_initWithClientIdentifier:(id)arg1;
-- (void)_invalidateAllAssertionsWithReason:(unsigned long long)arg1;
-- (BOOL)_queue_registerForAssertionUpdatesIfRequired;
+- (void)_registerForAssertionUpdatesIfRequiredWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)activeModeAssertionWithError:(id *)arg1;
 - (BOOL)addAssertionUpdateListener:(id)arg1 error:(id *)arg2;
 - (void)addAssertionUpdateListener:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)didReceiveConnectionInterruptedEventForRemoteService:(id)arg1;
 - (void)didReceiveConnectionInvalidatedEventForRemoteService:(id)arg1;
 - (id)invalidateActiveModeAssertionWithError:(id *)arg1;
+- (id)invalidateActiveModeAssertionWithInvalidationDetails:(id)arg1 reasonOverride:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)invalidateAllActiveModeAssertionsWithError:(id *)arg1;
-- (void)remoteService:(id)arg1 didReceiveModeAssertionInvalidation:(id)arg2;
+- (id)latestModeAssertionInvalidationWithError:(id *)arg1;
+- (void)remoteService:(id)arg1 didChangeActiveModeAssertion:(id)arg2 invalidation:(id)arg3;
 - (void)removeAssertionUpdateListener:(id)arg1;
 - (BOOL)removeAssertionUpdateListener:(id)arg1 error:(id *)arg2;
 - (id)takeModeAssertionWithDetails:(id)arg1 error:(id *)arg2;

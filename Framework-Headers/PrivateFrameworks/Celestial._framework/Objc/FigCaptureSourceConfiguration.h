@@ -20,6 +20,8 @@
     FigCaptureSourceVideoFormat *_requiredFormat;
     float _requiredMaxFrameRate;
     float _requiredMinFrameRate;
+    float _maxFrameRateClientOverride;
+    float _maxGainClientOverride;
     BOOL _hasSetVideoZoomFactorOnCaptureSource;
     float _videoZoomFactor;
     float _videoZoomRampAcceleration;
@@ -33,12 +35,13 @@
     BOOL _depthDataDeliveryEnabled;
     FigCaptureSourceDepthDataFormat *_depthDataFormat;
     float _depthDataMaxFrameRate;
-    BOOL _builtInMicrophoneStereoAudioCaptureEnabled;
     BOOL _lowLightVideoCaptureEnabled;
+    BOOL _spatialOverCaptureEnabled;
+    BOOL _nonDestructiveCropEnabled;
+    BOOL _geometricDistortionCorrectionEnabled;
 }
 
 @property (nonatomic) BOOL applyMaxExposureDurationFrameworkOverrideWhenAvailable; // @synthesize applyMaxExposureDurationFrameworkOverrideWhenAvailable=_applyMaxExposureDurationFrameworkOverrideWhenAvailable;
-@property (nonatomic) BOOL builtInMicrophoneStereoAudioCaptureEnabled; // @synthesize builtInMicrophoneStereoAudioCaptureEnabled=_builtInMicrophoneStereoAudioCaptureEnabled;
 @property (nonatomic) int colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
@@ -46,27 +49,34 @@
 @property (nonatomic) float depthDataMaxFrameRate; // @synthesize depthDataMaxFrameRate=_depthDataMaxFrameRate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *faceDetectionConfiguration; // @synthesize faceDetectionConfiguration=_faceDetectionConfiguration;
+@property (nonatomic) BOOL geometricDistortionCorrectionEnabled; // @synthesize geometricDistortionCorrectionEnabled=_geometricDistortionCorrectionEnabled;
 @property (nonatomic) BOOL hasSetVideoZoomFactorOnCaptureSource; // @synthesize hasSetVideoZoomFactorOnCaptureSource=_hasSetVideoZoomFactorOnCaptureSource;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlightRecoveryEnabled; // @synthesize highlightRecoveryEnabled=_highlightRecoveryEnabled;
 @property (nonatomic) int imageControlMode; // @synthesize imageControlMode=_imageControlMode;
 @property (nonatomic) BOOL lowLightVideoCaptureEnabled; // @synthesize lowLightVideoCaptureEnabled=_lowLightVideoCaptureEnabled;
 @property (nonatomic) CDStruct_1b6d18a9 maxExposureDurationClientOverride; // @synthesize maxExposureDurationClientOverride=_maxExposureDurationClientOverride;
+@property (nonatomic) float maxFrameRateClientOverride; // @synthesize maxFrameRateClientOverride=_maxFrameRateClientOverride;
+@property (nonatomic) float maxGainClientOverride; // @synthesize maxGainClientOverride=_maxGainClientOverride;
+@property (nonatomic) BOOL nonDestructiveCropEnabled; // @synthesize nonDestructiveCropEnabled=_nonDestructiveCropEnabled;
 @property (strong, nonatomic) FigCaptureSourceVideoFormat *requiredFormat; // @synthesize requiredFormat=_requiredFormat;
 @property (nonatomic) float requiredMaxFrameRate; // @synthesize requiredMaxFrameRate=_requiredMaxFrameRate;
 @property (nonatomic) float requiredMinFrameRate; // @synthesize requiredMinFrameRate=_requiredMinFrameRate;
 @property (nonatomic) BOOL sensorHDREnabled; // @synthesize sensorHDREnabled=_sensorHDREnabled;
 @property (readonly, nonatomic) struct OpaqueFigCaptureSource *source;
+@property (readonly, nonatomic) int sourceDeviceType;
 @property (copy, nonatomic) NSString *sourceID; // @synthesize sourceID=_sourceID;
 @property (readonly, nonatomic) int sourcePosition;
 @property (readonly, nonatomic) int sourceType;
+@property (nonatomic) BOOL spatialOverCaptureEnabled; // @synthesize spatialOverCaptureEnabled=_spatialOverCaptureEnabled;
 @property (readonly) Class superclass;
 @property (nonatomic) float videoZoomFactor; // @synthesize videoZoomFactor=_videoZoomFactor;
 @property (nonatomic) float videoZoomRampAcceleration; // @synthesize videoZoomRampAcceleration=_videoZoomRampAcceleration;
 
 + (int)sourceTypeForString:(id)arg1;
++ (id)stringForSourceDeviceType:(int)arg1;
++ (id)stringForSourcePosition:(int)arg1;
 + (id)stringForSourceType:(int)arg1;
-- (int)_deviceType;
 - (BOOL)_isCameraSource;
 - (BOOL)_isMicSource;
 - (id)_sourceAttributes;

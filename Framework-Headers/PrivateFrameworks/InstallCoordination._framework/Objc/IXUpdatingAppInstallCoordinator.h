@@ -7,40 +7,29 @@
 #import <InstallCoordination/IXAppInstallCoordinator.h>
 
 #import <InstallCoordination/IXCoordinatorWithAppAssetPromise-Protocol.h>
-#import <InstallCoordination/IXCoordinatorWithAutoEnablingExtensionTypes-Protocol.h>
+#import <InstallCoordination/IXCoordinatorWithDeviceSecurityPromise-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithImportance-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithInitialODRAssetPromises-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithInstallOptions-Protocol.h>
-#import <InstallCoordination/IXUserInitiatedCoordinator-Protocol.h>
 
 @class NSString;
 
-@interface IXUpdatingAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithAppAssetPromise, IXCoordinatorWithInstallOptions, IXCoordinatorWithAutoEnablingExtensionTypes, IXCoordinatorWithInitialODRAssetPromises, IXUserInitiatedCoordinator, IXCoordinatorWithImportance>
+@interface IXUpdatingAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithAppAssetPromise, IXCoordinatorWithInstallOptions, IXCoordinatorWithInitialODRAssetPromises, IXCoordinatorWithDeviceSecurityPromise, IXCoordinatorWithImportance>
 {
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAppAssetPromise;
-@property (readonly, nonatomic) BOOL hasAutoEnabledExtensionTypes;
 @property (readonly, nonatomic) BOOL hasInitialODRAssetPromises;
 @property (readonly, nonatomic) BOOL hasInstallOptions;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, getter=isUserInitiated) BOOL userInitiated;
 
 + (id)coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 createIfNotExisting:(BOOL)arg3 created:(BOOL *)arg4 error:(id *)arg5;
 + (void)enumerateCoordinatorsUsingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)enumerateCoordinatorsWithError:(id *)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (BOOL)appAssetPromiseHasBegunFulfillment:(BOOL *)arg1 error:(id *)arg2;
-- (unsigned long long)appAssetPromiseResponsibleClientWithError:(id *)arg1;
-- (id)appAssetPromiseWithError:(id *)arg1;
-- (id)initialODRAssetPromisesWithError:(id *)arg1;
-- (BOOL)setAppAssetPromise:(id)arg1 error:(id *)arg2;
-- (BOOL)setAppAssetPromiseResponsibleClient:(unsigned long long)arg1 error:(id *)arg2;
-- (BOOL)setAutoEnabledExtensionTypes:(id)arg1 error:(id *)arg2;
-- (BOOL)setInitialODRAssetPromises:(id)arg1 error:(id *)arg2;
-- (BOOL)setInstallOptions:(id)arg1 error:(id *)arg2;
++ (id)existingCoordinatorForAppWithBundleID:(id)arg1 error:(id *)arg2;
 - (id)validInstallTypes;
 
 @end

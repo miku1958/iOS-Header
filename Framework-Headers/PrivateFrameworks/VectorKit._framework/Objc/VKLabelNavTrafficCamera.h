@@ -4,68 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <VectorKit/VKLabelNavTrafficFeature.h>
 
-#import <VectorKit/VKLabelNavFeature-Protocol.h>
-
-@class NSString, VKLabelNavRoadLabel, VKTrafficCameraFeature;
+@class VKTrafficCameraFeature;
 
 __attribute__((visibility("hidden")))
-@interface VKLabelNavTrafficCamera : NSObject <VKLabelNavFeature>
+@interface VKLabelNavTrafficCamera : VKLabelNavTrafficFeature
 {
-    VKLabelNavRoadLabel *_roadLabel;
-    BOOL _isAwayFromRoute;
-    BOOL _isOnRoute;
-    struct PolylineCoordinate _routeOffset;
-    Mercator2_57ec32b6 _displayMercatorPoint;
-    Mercator2_57ec32b6 _previousMercatorPoint;
-    Mercator2_57ec32b6 _nextMercatorPoint;
     VKTrafficCameraFeature *_trafficCamera;
-    unsigned char _labelNavMode;
-    struct shared_ptr<md::LabelStyle> _labelStyle;
-    BOOL _isPicked;
-    BOOL _shouldRestyleFeature;
-    unsigned char _tailDirection;
-    unsigned char _iconState;
 }
 
-@property (readonly, nonatomic) unsigned char currentIconState; // @synthesize currentIconState=_iconState;
-@property (nonatomic) Mercator2_57ec32b6 displayMercatorPoint; // @synthesize displayMercatorPoint=_displayMercatorPoint;
-@property (readonly, nonatomic) unsigned char expectedIconState;
-@property (readonly, nonatomic) Mercator2_57ec32b6 featureMercatorPoint;
-@property (readonly, nonatomic) long long intraRoadPriority;
-@property (readonly, nonatomic) BOOL isAwayFromRoute; // @synthesize isAwayFromRoute=_isAwayFromRoute;
-@property (readonly, nonatomic) BOOL isEtaFeature;
-@property (readonly, nonatomic) BOOL isGuidanceStepStart;
-@property (readonly, nonatomic) BOOL isInGuidance;
-@property (readonly, nonatomic) BOOL isOnRoute; // @synthesize isOnRoute=_isOnRoute;
-@property (nonatomic) BOOL isPicked; // @synthesize isPicked=_isPicked;
-@property (readonly, nonatomic) BOOL isRamp;
-@property (readonly, nonatomic) BOOL isStartOfRoadName;
-@property (readonly, nonatomic) BOOL isTrafficCameraFeature;
-@property (readonly, nonatomic) VKLabelNavRoadLabel *label; // @synthesize label=_roadLabel;
-@property (readonly, nonatomic) unsigned char labelNavMode; // @synthesize labelNavMode=_labelNavMode;
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) long long navState;
-@property (readonly, nonatomic) Mercator2_57ec32b6 nextMercatorPoint; // @synthesize nextMercatorPoint=_nextMercatorPoint;
-@property (readonly, nonatomic) Mercator2_57ec32b6 previousMercatorPoint; // @synthesize previousMercatorPoint=_previousMercatorPoint;
-@property (readonly, nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
-@property (readonly, nonatomic) NSString *shieldDisplayGroup;
-@property (nonatomic) BOOL shouldRestyleFeature; // @synthesize shouldRestyleFeature=_shouldRestyleFeature;
-@property (nonatomic) unsigned char tailDirection; // @synthesize tailDirection=_tailDirection;
-@property (readonly, nonatomic) unsigned char tailOrientation;
 @property (readonly, nonatomic) VKTrafficCameraFeature *trafficCamera; // @synthesize trafficCamera=_trafficCamera;
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
-- (void)_clearLabel;
+- (shared_ptr_ed5e0db7)createIcon:(struct NavContext *)arg1;
 - (void)dealloc;
-- (BOOL)hasLabelWithArtwork;
 - (id)initWithTrafficCamera:(id)arg1 previousMercatorPoint:(const Mercator2_57ec32b6 *)arg2 nextMercatorPoint:(const Mercator2_57ec32b6 *)arg3;
-- (BOOL)isCallout;
-- (BOOL)isPOI;
-- (void)layoutWithNavContext:(struct NavContext *)arg1;
-- (void)recreateRoadSignWithNavContext:(struct NavContext *)arg1;
 - (void)swapExternalFeature:(id)arg1;
 
 @end

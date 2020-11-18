@@ -34,7 +34,6 @@
 - (id<PVFetchResultProtocol>)pv_fetchPersonsInMoment:(id<PVMomentProtocol>)arg1;
 - (id<PVFetchResultProtocol>)pv_fetchPersonsWithLocalIdentifiers:(NSArray *)arg1;
 - (id<PVFetchResultProtocol>)pv_fetchPersonsWithType:(unsigned long long)arg1;
-- (BOOL)pv_isLibraryBeingSynchronized;
 - (NSDate *)pv_lastAssetDate;
 - (unsigned long long)pv_numberOfFacesWithFaceprints;
 - (BOOL)pv_performChangesAndWait:(void (^)(void))arg1 error:(id *)arg2;

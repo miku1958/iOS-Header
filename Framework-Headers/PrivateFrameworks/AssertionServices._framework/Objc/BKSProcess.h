@@ -6,15 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <AssertionServices/BKSProcessClientDelegate-Protocol.h>
 #import <AssertionServices/BSDescriptionProviding-Protocol.h>
 
-@class BKSLaunchdJobSpecification, BKSProcessClient, BKSProcessExitContext, BSProcessHandle, NSString;
-@protocol BKSProcessDelegate, OS_dispatch_queue;
+@class BKSLaunchdJobSpecification, BKSProcessAssertion, BKSProcessExitContext, BSProcessHandle, NSString, RBSAssertion, RBSProcessHandle, RBSProcessIdentity, RBSProcessMonitor;
+@protocol BKSProcessDelegate;
 
-@interface BKSProcess : NSObject <BKSProcessClientDelegate, BSDescriptionProviding>
+@interface BKSProcess : NSObject <BSDescriptionProviding>
 {
+    struct os_unfair_lock_s _lock;
     BOOL _bootstrapped;
+    RBSProcessIdentity *_identity;
+    RBSProcessHandle *_processHandle;
+    BKSLaunchdJobSpecification *_jobSpec;
+    RBSAssertion *_assertion;
+    RBSProcessMonitor *_monitor;
+    BKSProcessExitContext *_lastExitContext;
+    BKSProcessAssertion *_mediaAssertion;
+    BKSProcessAssertion *_audioAssertion;
+    BKSProcessAssertion *_accessoryAssertion;
+    RBSAssertion *_visibilityAssertion;
     BOOL _workspaceLocked;
     BOOL _connectedToExternalAccessories;
     BOOL _nowPlayingWithAudio;
@@ -22,33 +32,19 @@
     id<BKSProcessDelegate> _delegate;
     long long _visibility;
     long long _taskState;
-    BSProcessHandle *_handle;
-    BKSProcessExitContext *_lastExitContext;
-    NSString *_bundleID;
-    NSString *_jobLabel;
-    BKSProcessClient *_client;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_callOutQueue;
-    BKSLaunchdJobSpecification *_jobSpec;
     long long _terminationReason;
+    BSProcessHandle *_handle;
 }
 
 @property (readonly, nonatomic) double backgroundTimeRemaining;
-@property (nonatomic) BOOL bootstrapped; // @synthesize bootstrapped=_bootstrapped;
-@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callOutQueue; // @synthesize callOutQueue=_callOutQueue;
-@property (strong, nonatomic) BKSProcessClient *client; // @synthesize client=_client;
 @property (nonatomic) BOOL connectedToExternalAccessories; // @synthesize connectedToExternalAccessories=_connectedToExternalAccessories;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<BKSProcessDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) BSProcessHandle *handle; // @synthesize handle=_handle;
+@property (readonly, nonatomic) BSProcessHandle *handle; // @synthesize handle=_handle;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *jobLabel; // @synthesize jobLabel=_jobLabel;
-@property (strong, nonatomic) BKSLaunchdJobSpecification *jobSpec; // @synthesize jobSpec=_jobSpec;
-@property (strong, nonatomic) BKSProcessExitContext *lastExitContext; // @synthesize lastExitContext=_lastExitContext;
+@property (readonly, nonatomic) BKSProcessExitContext *lastExitContext;
 @property (nonatomic) BOOL nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL recordingAudio; // @synthesize recordingAudio=_recordingAudio;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long taskState; // @synthesize taskState=_taskState;
@@ -61,21 +57,18 @@
 + (id)currentProcess;
 - (void).cxx_destruct;
 - (BOOL)_bootstrapWithError:(out id *)arg1;
-- (void)_sendMessageType:(int)arg1 withMessage:(CDUnknownBlockType)arg2;
-- (void)_sendMessageType:(int)arg1 withMessage:(CDUnknownBlockType)arg2 withReplyHandler:(CDUnknownBlockType)arg3 waitForReply:(BOOL)arg4;
+- (void)_lock_configureMonitor;
+- (void)_lock_updateVisibility;
+- (void)bootstrapCurrentProcess;
 - (BOOL)bootstrapWithProcessHandle:(id)arg1 error:(out id *)arg2;
 - (BOOL)bootstrapWithSpecification:(id)arg1 error:(out id *)arg2;
-- (void)client:(id)arg1 processDidChangeDebuggingState:(BOOL)arg2;
-- (void)client:(id)arg1 processDidChangeTaskState:(long long)arg2;
-- (void)client:(id)arg1 processDidExitWithContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithPID:(int)arg1 bundlePath:(id)arg2 visibility:(long long)arg3 workspaceLocked:(BOOL)arg4 queue:(id)arg5;
+- (id)initWithProcessIdentity:(id)arg1;
 - (void)invalidate;
-- (void)processAssertionExpirationImminentForClient:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

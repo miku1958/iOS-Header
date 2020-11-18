@@ -18,6 +18,7 @@
 @property (readonly) Class superclass;
 
 - (void)addNotesObject:(id)arg1;
+- (BOOL)isDeletedOrInTrash;
 - (id)newNoteInContext:(struct NoteContext *)arg1;
 - (id)parentFolder;
 - (id)title;

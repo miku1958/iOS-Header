@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
     UILayoutGuide *_leftMetricGuide;
     UILayoutGuide *_rightMetricGuide;
     unsigned long long _columnCount;
+    BOOL _isStandAlone;
     NSArray *_items;
     NSMutableArray *_labelConstraints;
 }
 
+@property (nonatomic) BOOL isStandAlone; // @synthesize isStandAlone=_isStandAlone;
 @property (strong, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) NSMutableArray *labelConstraints; // @synthesize labelConstraints=_labelConstraints;
 

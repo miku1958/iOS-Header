@@ -18,7 +18,7 @@
 - (void)_createWindowAndRootViewControllerIfNeeded;
 - (void)_destroyWindowAndRootViewControllerIfPossible;
 - (void)setPictureInPictureWindowHidden:(BOOL)arg1 withReason:(id)arg2;
-- (BOOL)shouldStartPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1;
+- (BOOL)shouldStartPictureInPictureForApplicationWithProcessIdentifierEnteringBackground:(int)arg1 scenePersistenceIdentifier:(id)arg2;
 
 @end
 

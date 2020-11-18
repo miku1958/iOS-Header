@@ -20,6 +20,8 @@
     BOOL _confirmed;
     BOOL _reachable;
     BOOL _lowBattery;
+    BOOL _supportsMediaActions;
+    BOOL _supportsShortcutActions;
     HMDDevice *_device;
     NSUUID *_identifier;
     long long _batteryState;
@@ -43,8 +45,10 @@
 @property (weak, nonatomic) HMDResidentDeviceManager *residentDeviceManager; // @synthesize residentDeviceManager=_residentDeviceManager;
 @property (readonly, nonatomic) unsigned long long status;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsMediaActions; // @synthesize supportsMediaActions=_supportsMediaActions;
 @property (readonly, nonatomic) BOOL supportsMediaSystem;
 @property (readonly, nonatomic) BOOL supportsSharedEventTriggerActivation;
+@property (readonly, nonatomic) BOOL supportsShortcutActions; // @synthesize supportsShortcutActions=_supportsShortcutActions;
 
 + (id)batteryStateAsString:(long long)arg1;
 + (id)logCategory;
@@ -71,6 +75,8 @@
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)runtimeState;
 - (id)shortDescription;
+- (BOOL)supportsResidentMediaActions;
+- (BOOL)supportsResidentShortcutActions;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 

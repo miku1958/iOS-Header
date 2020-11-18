@@ -6,8 +6,9 @@
 
 #import <MapKit/MKCalloutView.h>
 
-@class MKSmallCalloutView, UIMotionEffectGroup, _MKCalloutContentView, _MKCalloutLayer;
+@class MKSmallCalloutView, UIMotionEffectGroup, UIView, UIVisualEffectView, _MKCalloutLayer, _MKStandardCalloutMaskView;
 
+__attribute__((visibility("hidden")))
 @interface MKStandardCalloutView : MKCalloutView
 {
     struct {
@@ -26,15 +27,21 @@
         unsigned int isObserving:1;
         unsigned int reserved:26;
     } _flags;
-    _MKCalloutLayer *_contentStrokeLayer;
-    _MKCalloutContentView *_contentView;
-    MKSmallCalloutView *_calloutView;
+    BOOL _animatingMapToShow;
+    BOOL _dismissed;
+    _MKStandardCalloutMaskView *_maskView;
     _MKCalloutLayer *_maskLayer;
+    _MKCalloutLayer *_contentStrokeLayer;
+    UIView *_contentView;
+    MKSmallCalloutView *_calloutView;
+    UIVisualEffectView *_backdropView;
     UIMotionEffectGroup *_motionEffect;
 }
 
 + (double)defaultHeight;
++ (Class)layerClass;
 - (void).cxx_destruct;
+- (void)_adaptToUserInterfaceStyle;
 - (void)_addAccessoryTargetForView:(id)arg1;
 - (void)_calculateActualAnchorPoint:(struct CGPoint *)arg1 frame:(struct CGRect *)arg2 forDesiredAnchorPoint:(struct CGPoint)arg3 boundaryRect:(struct CGRect)arg4;
 - (void)_calloutAccessoryControlTapped:(id)arg1;
@@ -59,6 +66,7 @@
 - (void)didMoveToWindow;
 - (void)dismissAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)forceAnchorPosition:(long long)arg1;
+- (BOOL)hasPendingVisibility;
 - (id)initWithAnnotationView:(id)arg1;
 - (BOOL)isLeftAnchored;
 - (void)motionEffectDidUpdate:(id)arg1;
@@ -74,6 +82,7 @@
 - (void)setTitle:(id)arg1;
 - (void)showAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)subtitle;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

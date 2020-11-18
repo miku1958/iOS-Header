@@ -28,7 +28,6 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithPresentation:(id)arg1 element:(id)arg2;
-- (BOOL)showsUpInRange:(id)arg1;
 
 @end
 

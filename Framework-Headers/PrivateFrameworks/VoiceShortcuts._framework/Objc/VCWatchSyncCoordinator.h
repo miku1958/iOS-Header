@@ -9,52 +9,47 @@
 #import <VoiceShortcuts/PSYSyncCoordinatorDelegate-Protocol.h>
 #import <VoiceShortcuts/VCCompanionSyncServiceDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, PSYServiceSyncSession, PSYSyncCoordinator;
-@protocol OS_dispatch_queue;
+@class NSMutableSet, NSString, PSYSyncCoordinator, VCCompanionSyncService, VCDaemonXPCEventHandler;
+@protocol OS_dispatch_queue, VCSyncDataEndpoint;
 
 @interface VCWatchSyncCoordinator : NSObject <PSYSyncCoordinatorDelegate, VCCompanionSyncServiceDelegate>
 {
-    int _pairedDeviceDidChangeNotificationToken;
-    PSYSyncCoordinator *_psySyncCoordinator;
-    PSYServiceSyncSession *_psySyncSession;
-    NSArray *_syncDataHandlers;
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    NSMutableDictionary *_syncServiceByPairingID;
-    NSMutableDictionary *_pairedDeviceByPairingID;
+    PSYSyncCoordinator *_pairedSyncCoordinator;
+    NSMutableSet *_startedSessions;
+    id<VCSyncDataEndpoint> _syncDataEndpoint;
+    VCDaemonXPCEventHandler *_eventHandler;
+    NSObject<OS_dispatch_queue> *_queue;
+    VCCompanionSyncService *_service;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) VCDaemonXPCEventHandler *eventHandler; // @synthesize eventHandler=_eventHandler;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSMutableDictionary *pairedDeviceByPairingID; // @synthesize pairedDeviceByPairingID=_pairedDeviceByPairingID;
-@property (readonly, nonatomic) PSYSyncCoordinator *psySyncCoordinator; // @synthesize psySyncCoordinator=_psySyncCoordinator;
-@property (strong, nonatomic) PSYServiceSyncSession *psySyncSession; // @synthesize psySyncSession=_psySyncSession;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (readonly, nonatomic) PSYSyncCoordinator *pairedSyncCoordinator; // @synthesize pairedSyncCoordinator=_pairedSyncCoordinator;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) VCCompanionSyncService *service; // @synthesize service=_service;
+@property (readonly, nonatomic) NSMutableSet *startedSessions; // @synthesize startedSessions=_startedSessions;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSArray *syncDataHandlers; // @synthesize syncDataHandlers=_syncDataHandlers;
-@property (readonly, nonatomic) NSMutableDictionary *syncServiceByPairingID; // @synthesize syncServiceByPairingID=_syncServiceByPairingID;
+@property (readonly, nonatomic) id<VCSyncDataEndpoint> syncDataEndpoint; // @synthesize syncDataEndpoint=_syncDataEndpoint;
 
-+ (void)initialize;
 - (void).cxx_destruct;
-- (void)actuallyStartSyncServiceForActivePairedDevice:(id)arg1;
-- (void)companionSyncServiceDidFinishSyncSession:(id)arg1;
+- (void)companionSyncService:(id)arg1 didFinishSyncSession:(id)arg2 withError:(id)arg3;
+- (void)companionSyncService:(id)arg1 didRejectSessionWithError:(id)arg2;
+- (void)companionSyncService:(id)arg1 outgoingSyncSession:(id)arg2 didUpdateProgress:(double)arg3;
+- (void)companionSyncService:(id)arg1 outgoingSyncSessionDidFinishSendingChanges:(id)arg2;
+- (long long)companionSyncService:(id)arg1 typeForSession:(id)arg2;
+- (BOOL)companionSyncServiceShouldStartSession:(id)arg1;
 - (void)dealloc;
-- (void)handleDidBecomeActiveNotification:(id)arg1;
-- (void)handleDidBecomeInactiveNotification:(id)arg1;
-- (void)handleDidPairNotification:(id)arg1;
+- (void)handleDeviceDidChangeVersionNotification;
 - (void)handleDidUnpairNotification:(id)arg1;
-- (id)initWithSyncDataHandlers:(id)arg1;
-- (BOOL)isRunningOnWatch;
-- (void)notifyPairedSyncThatSyncFinished;
-- (BOOL)shouldSyncWithActivePairedDevice:(id)arg1;
-- (void)start;
-- (void)startSyncToActivePairedDeviceIfAvailable;
-- (void)stopCompanionSyncServiceForPairingID:(id)arg1;
-- (void)subscribeToNanoRegistryNotifications;
+- (id)initWithSyncDataEndpoint:(id)arg1 eventHandler:(id)arg2;
+- (void)requestSyncIfUnrestricted;
+- (void)startObservingWatchChangeNotifications;
+- (void)stopObservingWatchChangeNotifications;
 - (void)syncCoordinator:(id)arg1 beginSyncSession:(id)arg2;
 - (void)syncCoordinator:(id)arg1 didInvalidateSyncSession:(id)arg2;
 - (void)syncCoordinatorDidChangeSyncRestriction:(id)arg1;
-- (void)unsubscribeFromNanoRegistryNotifications;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPVolumeDisplaying-Protocol.h>
 
-@class MPAVController, MPAVEndpointRoute, MPAVOutputDeviceRoute, MPAVRoute, MPVolumeController, NSString, NSTimer, UIImage, UIImageView, UILabel, UILayoutGuide, UIView;
+@class MPAVController, MPAVEndpointRoute, MPAVOutputDeviceRoute, MPAVRoute, MPVolumeController, NSString, NSTimer, UIImage, UIImageView, UILabel, UILayoutGuide, UIView, UIWindowScene;
 
 @interface MPVolumeSlider : UISlider <MPVolumeControllerDelegate, MPVolumeDisplaying>
 {
@@ -62,6 +62,7 @@
 @property (readonly, copy, nonatomic) NSString *volumeControlLabel;
 @property (strong, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 @property (strong, nonatomic) UIImage *volumeWarningTrackImage; // @synthesize volumeWarningTrackImage=_volumeWarningTrackImage;
+@property (readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
@@ -69,6 +70,7 @@
 - (void)_beginBlinkingWarningView;
 - (void)_blinkWarningView;
 - (void)_commitVolumeChange;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_endBlinkingWarningView;
 - (void)_endTracking;
 - (void)_layoutForAvailableRoutes;

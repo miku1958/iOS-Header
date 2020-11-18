@@ -19,12 +19,11 @@
 #import <PhotosUICore/PXScrollViewControllerObserver-Protocol.h>
 #import <PhotosUICore/PXSwipeSelectionManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXTileSource-Protocol.h>
-#import <PhotosUICore/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicTileAnimator, PXCMMAssetsProgressListener, PXCMMBannerTileController, PXCMMFooterViewModel, PXCMMProgressBannerView, PXCMMSendBackBannerView, PXCMMSendBackSuggestionSource, PXCMMSpec, PXCMMSpecManager, PXContextualNotification, PXLayoutGenerator, PXOneUpPresentation, PXPhotosGlobalFooterView, PXSectionedLayoutEngine, PXSwipeSelectionManager, PXTilingController, PXUIAssetsScene, PXUIScrollViewController, PXUITapGestureRecognizer, PXUpdater, UILongPressGestureRecognizer;
-@protocol PXCMMAssetsViewControllerDelegate, UIViewControllerPreviewing;
+@class NSArray, NSMutableSet, NSSet, NSString, PXAssetReference, PXBasicTileAnimator, PXCMMBannerTileController, PXCMMFooterViewModel, PXCMMProgressBannerView, PXCMMSendBackBannerView, PXCMMSendBackSuggestionSource, PXCMMSpec, PXCMMSpecManager, PXContextualNotification, PXLayoutGenerator, PXMomentShareStatusPresentation, PXOneUpPresentation, PXPhotosGlobalFooterView, PXSectionedLayoutEngine, PXSwipeSelectionManager, PXTilingController, PXUIAssetsScene, PXUIScrollViewController, PXUITapGestureRecognizer, PXUpdater, UILongPressGestureRecognizer;
+@protocol PXCMMAssetsViewControllerDelegate;
 
-@interface PXCMMAssetsViewController : PXCMMComponentViewController <PXAssetsSceneDelegate, PXTileSource, PXCMMEngineDrivenLayoutDelegate, PXSwipeSelectionManagerDelegate, PXChangeObserver, PXOneUpPresentationDelegate, PXCMMBannerTileControllerDelegate, PXScrollViewControllerObserver, PXPhotosGlobalFooterViewDelegate, PXCMMFooterViewModelActionDelegate, UIViewControllerPreviewingDelegate, PXContextualNotificationDelegate, PXActionPerformerDelegate, PXCMMProgressBannerViewLayoutDelegate>
+@interface PXCMMAssetsViewController : PXCMMComponentViewController <PXAssetsSceneDelegate, PXTileSource, PXCMMEngineDrivenLayoutDelegate, PXSwipeSelectionManagerDelegate, PXChangeObserver, PXOneUpPresentationDelegate, PXCMMBannerTileControllerDelegate, PXScrollViewControllerObserver, PXPhotosGlobalFooterViewDelegate, PXCMMFooterViewModelActionDelegate, PXContextualNotificationDelegate, PXActionPerformerDelegate, PXCMMProgressBannerViewLayoutDelegate>
 {
     PXUpdater *_updater;
     PXLayoutGenerator *_layoutGenerator;
@@ -40,16 +39,15 @@
     PXSwipeSelectionManager *_swipeSelectionManager;
     PXUITapGestureRecognizer *_layoutTransitionGesture;
     UILongPressGestureRecognizer *_longPressGesture;
-    id<UIViewControllerPreviewing> _previewingContext;
     PXAssetReference *_navigatedAssetReference;
     PXCMMSpecManager *_specManager;
     PXCMMSpec *_spec;
-    PXCMMAssetsProgressListener *_assetsProgressListenerForFooter;
+    PXMomentShareStatusPresentation *_momentShareStatusPresentationForFooter;
     PXCMMFooterViewModel *_statusFooterViewModel;
     PXPhotosGlobalFooterView *_measuringStatusFooterView;
     PXCMMBannerTileController *_measuringBannerTile;
     PXCMMSendBackBannerView *_measuringSendBackBannerView;
-    PXCMMAssetsProgressListener *_assetsProgressListenerForPoster;
+    PXMomentShareStatusPresentation *_momentShareStatusPresentationForPoster;
     NSMutableSet *_inUseTiles;
     struct CGSize _knownReferenceSize;
     BOOL _needsToPerformInitialSelection;
@@ -123,14 +121,13 @@
 - (void)_invokeSendBackAction;
 - (BOOL)_isAssetAlreadyImportedAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (BOOL)_isAssetAlreadyImportedAtIndexPath:(struct PXSimpleIndexPath)arg1 withEngineDrivenLayout:(id)arg2;
-- (BOOL)_isLocationWithinCurrentLayoutBounds:(struct CGPoint)arg1;
 - (BOOL)_isSendBackBannerViewContentsAtAllVisible;
 - (BOOL)_isSendBackBannerViewContentsFullyVisible;
+- (struct CGSize)_maximumThumbnailSize;
 - (void)_performInitialSelectionIfNeeded;
 - (void)_performTilingChangeWithoutAnimationTransition:(CDUnknownBlockType)arg1;
 - (void)_preferredContentSizeChanged:(id)arg1;
 - (double)_progressBannerViewLayoutHeight;
-- (id)_regionOfInterestForAssetReference:(id)arg1;
 - (void)_scheduleLayout;
 - (void)_selectAllAssets;
 - (void)_selectCuratedAssets;
@@ -166,7 +163,6 @@
 - (void)contextualNotificationDidDisappear:(id)arg1;
 - (void)contextualNotificationWasDiscarded:(id)arg1;
 - (void)contextualNotificationWasTapped:(id)arg1;
-- (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (void)didPerformDeletionActionForFooterViewModel:(id)arg1;
 - (void)didTapActionButtonInBannerTileController:(id)arg1;
 - (double)engineDrivenLayout:(id)arg1 aspectRatioForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
@@ -191,15 +187,14 @@
 - (void)photosGlobalFooterView:(id)arg1 presentViewController:(id)arg2;
 - (id)preferredContainerViewForContextualNotification:(id)arg1;
 - (void)presentSendBackNotification;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2 outSourceRect:(out struct CGRect *)arg3;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)progressBannerViewLayoutHeightDidChange:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (struct PXSimpleIndexPath)swipeSelectionManager:(id)arg1 itemIndexPathAtLocation:(struct CGPoint)arg2;
 - (struct PXSimpleIndexPath)swipeSelectionManager:(id)arg1 itemIndexPathClosestAboveLocation:(struct CGPoint)arg2;
 - (struct PXSimpleIndexPath)swipeSelectionManager:(id)arg1 itemIndexPathClosestLeadingLocation:(struct CGPoint)arg2;
 - (BOOL)swipeSelectionManager:(id)arg1 shouldSelectItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
+- (void)swipeSelectionManagerAutomaticallyTransitionToMultiSelectMode:(id)arg1;
+- (BOOL)swipeSelectionManagerIsInMultiSelectMode:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

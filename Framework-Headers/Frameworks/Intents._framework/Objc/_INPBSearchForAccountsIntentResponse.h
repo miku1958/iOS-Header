@@ -15,9 +15,11 @@
 @interface _INPBSearchForAccountsIntentResponse : PBCodable <_INPBSearchForAccountsIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_accounts;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *accounts; // @synthesize accounts=_accounts;
 @property (readonly, nonatomic) unsigned long long accountsCount;
 @property (readonly, copy) NSString *debugDescription;
@@ -26,12 +28,15 @@
 @property (readonly) Class superclass;
 
 + (Class)accountsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)accountsAtIndex:(unsigned long long)arg1;
 - (void)addAccounts:(id)arg1;
 - (void)clearAccounts;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

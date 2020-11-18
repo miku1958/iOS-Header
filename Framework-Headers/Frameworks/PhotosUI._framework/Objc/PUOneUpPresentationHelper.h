@@ -14,7 +14,7 @@
 #import <PhotosUI/PUTilingViewTileUseDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSSet, NSString, PUBrowsingSession, PUCameraPreviewTransitionDelegate, PUChangeDirectionValueFilter, PUOneUpViewController, PUPinchedTileTracker, PUTilingView, PXPhotosDataSource, UITapGestureRecognizer, UIViewController;
+@class NSSet, NSString, PUBrowsingSession, PUChangeDirectionValueFilter, PUOneUpViewController, PUPinchedTileTracker, PUTilingView, PXPhotosDataSource, UITapGestureRecognizer, UIViewController;
 @protocol PUOneUpPresentationHelperAssetDisplayDelegate, PUOneUpPresentationHelperDelegate;
 
 @interface PUOneUpPresentationHelper : NSObject <PUPhotosPreviewPresentationControllerDelegate, UIGestureRecognizerDelegate, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewTileUseDelegate, PUPinchedTileTrackerDelegate, PUTilingViewControllerTransitionEndPoint>
@@ -70,13 +70,11 @@
     UITapGestureRecognizer *__tapGestureRecognizer;
     PUPinchedTileTracker *__pinchedTileTracker;
     PUChangeDirectionValueFilter *__panDirectionValueFilter;
-    PUCameraPreviewTransitionDelegate *__cameraPreviewTransitionDelegate;
     long long __presentationOrigin;
 }
 
 @property (strong, nonatomic, setter=_setAssetReferencesDisplayedInTilingView:) NSSet *_assetReferencesDisplayedInTilingView; // @synthesize _assetReferencesDisplayedInTilingView=__assetReferencesDisplayedInTilingView;
 @property (readonly, copy, nonatomic) CDUnknownBlockType _browsingSessionCreationBlock; // @synthesize _browsingSessionCreationBlock=__browsingSessionCreationBlock;
-@property (strong, nonatomic, setter=_setCameraPreviewTransitionDelegate:) PUCameraPreviewTransitionDelegate *_cameraPreviewTransitionDelegate; // @synthesize _cameraPreviewTransitionDelegate=__cameraPreviewTransitionDelegate;
 @property (weak, nonatomic, setter=_setDisappearingTilingView:) PUTilingView *_disappearingTilingView; // @synthesize _disappearingTilingView=__disappearingTilingView;
 @property (nonatomic, setter=_setEndingPresentation:) BOOL _isEndingPresentation; // @synthesize _isEndingPresentation=__isEndingPresentation;
 @property (nonatomic, setter=_setIsPerformingNonAnimatedPush:) BOOL _isPerformingNonAnimatedPush; // @synthesize _isPerformingNonAnimatedPush=__isPerformingNonAnimatedPush;
@@ -108,7 +106,7 @@
 @property (copy, nonatomic) CDUnknownBlockType unlockDeviceStatus; // @synthesize unlockDeviceStatus=_unlockDeviceStatus;
 
 - (void).cxx_destruct;
-- (void)_cleanUpAfterTilingViewTransitionAnimated:(BOOL)arg1;
+- (void)_cleanUpAfterTilingViewTransitionAnimated:(BOOL)arg1 transitionAborted:(BOOL)arg2;
 - (void)_cleanupOneUpViewControllerForDismissalIfNeeded;
 - (void)_configureNavigationController:(id)arg1;
 - (id)_createOneUpViewControllerWithBrowsingSession:(id)arg1 options:(unsigned long long)arg2;
@@ -126,7 +124,6 @@
 - (BOOL)_prepareDismissalForced:(BOOL)arg1;
 - (void)_presentOneUpViewController:(id)arg1 animated:(BOOL)arg2 interactiveMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_presentationEndDidTimeOut:(long long)arg1;
-- (id)_scrollViewForPreviewing;
 - (BOOL)_shouldAutoplayOnNavigation;
 - (struct CGAffineTransform)_tilingViewTransitionTransform;
 - (id)_transitionHostingView;
@@ -134,7 +131,6 @@
 - (void)_updateLayout;
 - (void)_updateLayout:(id)arg1;
 - (void)_updatePresentationInfoIfNeeded;
-- (void)_updatePreviewingScrubber;
 - (void)_updateTapGestureRecognizer;
 - (void)beginUsingBlackTheme;
 - (id)browsingSessionCreateIfNeeded:(BOOL)arg1;

@@ -13,6 +13,7 @@
     AVMutableCompositionTrackInternal *_mutablePriv;
 }
 
+@property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (copy, nonatomic) NSString *extendedLanguageTag;
 @property (copy, nonatomic) NSString *languageCode;
 @property (nonatomic) int naturalTimeScale;
@@ -34,6 +35,7 @@
 - (BOOL)insertTimeRanges:(id)arg1 ofTracks:(id)arg2 atTime:(CDStruct_1b6d18a9)arg3 error:(id *)arg4;
 - (void)removeTimeRange:(CDStruct_e83c9415)arg1;
 - (void)removeTrackAssociationToTrack:(id)arg1 type:(id)arg2;
+- (void)replaceFormatDescription:(struct opaqueCMFormatDescription *)arg1 withFormatDescription:(struct opaqueCMFormatDescription *)arg2;
 - (void)scaleTimeRange:(CDStruct_e83c9415)arg1 toDuration:(CDStruct_1b6d18a9)arg2;
 - (void)setAlternateGroupID:(long long)arg1;
 - (void)setMetadata:(id)arg1;

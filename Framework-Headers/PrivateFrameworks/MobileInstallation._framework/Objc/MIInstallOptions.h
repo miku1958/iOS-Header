@@ -9,13 +9,14 @@
 #import <MobileInstallation/NSCopying-Protocol.h>
 #import <MobileInstallation/NSSecureCoding-Protocol.h>
 
-@class MIStoreMetadata, NSData, NSDictionary;
+@class MIStoreMetadata, NSArray, NSData, NSDictionary;
 
 @interface MIInstallOptions : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _developerInstall;
     BOOL _systemAppInstall;
     BOOL _userInitiated;
+    BOOL _waitForDeletion;
     BOOL _skipWatchAppInstall;
     BOOL _skipBlacklist;
     BOOL _installForMigrator;
@@ -27,9 +28,12 @@
     NSData *_sinfData;
     NSData *_iTunesArtworkData;
     NSData *_geoJSONData;
+    NSArray *_provisioningProfiles;
+    unsigned long long _autoInstallOverride;
 }
 
 @property (nonatomic) BOOL allowLocalProvisioned; // @synthesize allowLocalProvisioned=_allowLocalProvisioned;
+@property (nonatomic) unsigned long long autoInstallOverride; // @synthesize autoInstallOverride=_autoInstallOverride;
 @property (nonatomic, getter=isDeveloperInstall) BOOL developerInstall; // @synthesize developerInstall=_developerInstall;
 @property (copy, nonatomic) NSData *geoJSONData; // @synthesize geoJSONData=_geoJSONData;
 @property (copy, nonatomic) NSData *iTunesArtworkData; // @synthesize iTunesArtworkData=_iTunesArtworkData;
@@ -39,11 +43,13 @@
 @property (readonly, copy, nonatomic) NSDictionary *legacyOptionsDictionary;
 @property (nonatomic) unsigned long long lsInstallType; // @synthesize lsInstallType=_lsInstallType;
 @property (nonatomic) BOOL performAPFSClone; // @synthesize performAPFSClone=_performAPFSClone;
+@property (copy, nonatomic) NSArray *provisioningProfiles; // @synthesize provisioningProfiles=_provisioningProfiles;
 @property (copy, nonatomic) NSData *sinfData; // @synthesize sinfData=_sinfData;
 @property (nonatomic) BOOL skipBlacklist; // @synthesize skipBlacklist=_skipBlacklist;
 @property (nonatomic) BOOL skipWatchAppInstall; // @synthesize skipWatchAppInstall=_skipWatchAppInstall;
 @property (nonatomic, getter=isSystemAppInstall) BOOL systemAppInstall; // @synthesize systemAppInstall=_systemAppInstall;
 @property (nonatomic, getter=isUserInitiated) BOOL userInitiated; // @synthesize userInitiated=_userInitiated;
+@property (nonatomic) BOOL waitForDeletion; // @synthesize waitForDeletion=_waitForDeletion;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

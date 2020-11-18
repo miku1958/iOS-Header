@@ -22,11 +22,11 @@
 - (id)_duetDonationsStreams;
 - (id)_duetQueryForDonatedActionsAfterDate:(id)arg1 onStreams:(id)arg2 withPredicate:(id)arg3;
 - (void)_executeQuery:(id)arg1 responseQueue:(id)arg2 synchronouslyWithBatching:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_init;
 - (id)_queryForDonatedActionsAfterDate:(id)arg1 streams:(id)arg2;
 - (id)_queryForUnfilteredDonationsForStream:(id)arg1;
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)executeQuerySynchronouslyWithBatching:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)init;
 - (id)queryForAllDonatedActions;
 - (id)queryForAllRelevantShortcuts;
 - (id)queryForDeletedActionsAfterDate:(id)arg1;

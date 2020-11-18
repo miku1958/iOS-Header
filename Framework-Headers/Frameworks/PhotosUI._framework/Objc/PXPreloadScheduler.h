@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (void)_displayLinkTick:(id)arg1;
 - (void)_runLoopWillStartWaiting;
+- (BOOL)_shouldExecutePendingBlock;
 - (void)_updateIsActive;
 - (void)dealloc;
 - (id)init;

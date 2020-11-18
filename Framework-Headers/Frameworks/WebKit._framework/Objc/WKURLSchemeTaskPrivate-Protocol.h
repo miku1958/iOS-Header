@@ -9,6 +9,9 @@
 @class NSURLRequest, NSURLResponse;
 
 @protocol WKURLSchemeTaskPrivate <WKURLSchemeTask>
+
+@property (readonly, nonatomic) BOOL _requestOnlyIfCached;
+
 - (void)_didPerformRedirection:(NSURLResponse *)arg1 newRequest:(NSURLRequest *)arg2;
 @end
 

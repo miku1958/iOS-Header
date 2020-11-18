@@ -8,11 +8,11 @@
 
 #import <PhotoLibrary/SBFLegibilitySettingsProviderDelegate-Protocol.h>
 
-@class NSArray, NSString, PLWallpaperNavigationItem, SBSUIWallpaperPreviewViewController;
+@class NSArray, NSString, SBSUIWallpaperPreviewViewController, UINavigationItem;
 
 @interface PLWallpaperImageViewController : PLUIEditImageViewController <SBFLegibilitySettingsProviderDelegate>
 {
-    PLWallpaperNavigationItem *_navItem;
+    UINavigationItem *_navItem;
     int _wallpaperMode;
     NSArray *_navigationToolbarItems;
     BOOL _saveWallpaperData;
@@ -55,7 +55,7 @@
 - (void)cropOverlayWasOKed:(id)arg1;
 - (void)dealloc;
 - (long long)desiredStatusBarAnimation;
-- (int)imageFormat;
+- (unsigned short)imageFormat;
 - (id)init;
 - (id)initWithUIImage:(id)arg1;
 - (id)initWithWallpaperVariant:(long long)arg1;

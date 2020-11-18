@@ -26,11 +26,14 @@
 + (id)duplicateKeyForCuratedContactWithExternalId:(int)arg1;
 + (id)duplicateKeyForCuratedEventWithExternalID:(id)arg1;
 + (id)duplicateKeyForEmailWithSource:(id)arg1 messageId:(id)arg2;
++ (id)duplicateKeyForInteraction:(id)arg1 fromBundleIdentifier:(id)arg2;
++ (id)duplicateKeyForInteractionIdentifier:(id)arg1 fromBundleIdentifier:(id)arg2;
 + (id)duplicateKeyForInteractionWithBundleId:(id)arg1 personHandle:(id)arg2;
 + (id)duplicateKeyForMessage:(id)arg1 fromSource:(id)arg2;
 + (id)duplicateKeyForNaturalLanguageEventWithStartDate:(id)arg1 endDate:(id)arg2 title:(id)arg3 participants:(id)arg4 parentKey:(id)arg5;
 + (id)duplicateKeyForPseudoContactWithIdentity:(id)arg1 parentKey:(id)arg2;
 + (id)duplicateKeyForPseudoEventWithGroupId:(id)arg1 parentKey:(id)arg2;
++ (id)duplicateKeyForPseudoReminderWithGroupId:(id)arg1 parentKey:(id)arg2;
 + (id)duplicateKeyForSchemaOrg;
 + (id)duplicateKeyForSearchableItem:(id)arg1;
 + (id)duplicateKeyForTextMessageWithSource:(id)arg1 uniqueIdentifier:(id)arg2;
@@ -56,6 +59,7 @@
 - (id)messageKey;
 - (id)pseudoContactKey;
 - (id)pseudoEventKey;
+- (id)pseudoReminderKey;
 - (id)serialize;
 - (id)textMessageKey;
 - (id)unrecognizedContactKey;

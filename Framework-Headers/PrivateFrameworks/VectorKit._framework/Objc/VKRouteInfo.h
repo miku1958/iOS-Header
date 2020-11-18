@@ -12,9 +12,11 @@
 {
     GEOComposedRoute *_route;
     VKRouteEtaDescription *_etaDescription;
+    BOOL _hasFocus;
 }
 
 @property (strong, nonatomic) VKRouteEtaDescription *etaDescription; // @synthesize etaDescription=_etaDescription;
+@property (nonatomic) BOOL hasFocus; // @synthesize hasFocus=_hasFocus;
 @property (readonly, nonatomic) BOOL hasRouteEta;
 @property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 

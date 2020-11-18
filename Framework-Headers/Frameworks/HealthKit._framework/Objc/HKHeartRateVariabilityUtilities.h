@@ -14,7 +14,7 @@
 + (id)_sequenceType;
 + (void)deleteHRVSample:(id)arg1 healthStore:(id)arg2 predicate:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 + (void)deleteHRVSamplesFromStartDate:(id)arg1 endDate:(id)arg2 predicate:(id)arg3 options:(unsigned long long)arg4 healthStore:(id)arg5 completion:(CDUnknownBlockType)arg6;
-+ (id)instantaneousBPMsForHeartbeatSequence:(id)arg1;
++ (id)instantaneousBPMsForHeartbeatSeriesSample:(id)arg1;
 + (void)queryForParentSequenceOfHRV:(id)arg1 healthStore:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

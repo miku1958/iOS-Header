@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct SlideArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setInfosUsingObjectPlaceholderGeometry:(id)arg1;
+- (void)setMaster:(id)arg1 resetMasterBackgroundObjects:(BOOL)arg2;
 - (void)setToMaster:(id)arg1;
 - (void)updateSlideSpecificHyperlinkMapForStorage:(id)arg1 oldHyperlink:(id)arg2 newHyperlink:(id)arg3;
 - (void)updateSlideSpecificLinkMapForInfo:(id)arg1 newHyperlink:(id)arg2;

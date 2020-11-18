@@ -8,56 +8,54 @@
 
 #import <RelevanceEngine/NSCopying-Protocol.h>
 #import <RelevanceEngine/NSMutableCopying-Protocol.h>
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSURL, REDataSourceLoader, REFeatureSet, RELocationManager;
+@class NSArray, NSMutableDictionary, NSString, NSURL, REDataSourceLoader, REFeatureSet, RELocationManager, RERelevanceProviderManagerLoader;
+@protocol OS_dispatch_queue, RERelevanceEngineMetricsRecorder;
 
-@interface RERelevanceEngineConfiguration : NSObject <REIndentedDescription, NSCopying, NSMutableCopying>
+@interface RERelevanceEngineConfiguration : NSObject <REAutomaticExportedInterface, NSCopying, NSMutableCopying>
 {
-    NSURL *_modelFileURL;
-    NSURL *_baseModelFileURL;
-    BOOL _allowsUpdatingModelFile;
-    REDataSourceLoader *_dataSourceLoader;
-    unsigned long long _trainingBehavior;
-    unsigned long long _modelStorageBehavior;
-    RELocationManager *_locationManager;
-    NSMutableArray *_sectionDescriptions;
-    NSMutableArray *_interactionDescriptions;
-    REFeatureSet *_featureSet;
-    BOOL _wantsImmutableContent;
-    NSString *_preferenceDomain;
-    BOOL _allowsRemoteTraining;
-    BOOL _wantsBackup;
-    BOOL _ignoreDeviceLockState;
+    NSMutableDictionary *_values;
 }
 
+@property (readonly, nonatomic) BOOL allowsDiagnosticExtension;
 @property (readonly, nonatomic) BOOL allowsRemoteTraining;
 @property (readonly, nonatomic) BOOL allowsUpdatingModelFile;
 @property (readonly, copy, nonatomic) NSURL *baseModelFileURL;
 @property (readonly, copy, nonatomic) REDataSourceLoader *dataSourceLoader;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *engineQueue;
 @property (readonly, nonatomic) BOOL ignoreDeviceLockState;
+@property (readonly, nonatomic) BOOL ignoresInstalledApplications;
 @property (readonly, copy, nonatomic) NSArray *interactionDescriptors;
 @property (readonly, nonatomic) RELocationManager *locationManager;
+@property (readonly, nonatomic) id<RERelevanceEngineMetricsRecorder> metricsRecorder;
 @property (readonly, copy, nonatomic) NSURL *modelFileURL;
 @property (readonly, nonatomic) unsigned long long modelStorageBehavior;
+@property (readonly, nonatomic) unsigned long long modelVersion;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observerQueue;
 @property (readonly, nonatomic) NSString *preferenceDomain;
 @property (readonly, copy, nonatomic) REFeatureSet *primaryFeatures;
+@property (readonly, copy, nonatomic) RERelevanceProviderManagerLoader *relevanceProviderManagerLoader;
 @property (readonly, copy, nonatomic) NSArray *sectionDescriptors;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long trainingBehavior;
 @property (readonly, nonatomic) BOOL wantsBackup;
 @property (readonly, nonatomic) BOOL wantsImmutableContent;
 
++ (id)_defaultModelFileURL;
 + (id)defaultConfiguration;
++ (id)defaultUpNextConfiguration;
++ (id)sampleUpNextConfiguration;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)descriptionWithIndent:(unsigned long long)arg1;
-- (id)initWithModelFileURL:(id)arg1 baseModelFileURL:(id)arg2 allowsUpdatingModelFile:(BOOL)arg3 dataSourceLoader:(id)arg4 trainingBehavior:(unsigned long long)arg5 modelStorageBehavior:(unsigned long long)arg6 sectionDescriptions:(id)arg7 locationManager:(id)arg8 featureSet:(id)arg9 wantsImmutableContent:(BOOL)arg10 preferenceDomain:(id)arg11 interactionDescriptions:(id)arg12 allowsRemoteTraining:(BOOL)arg13 wantsBackup:(BOOL)arg14 ignoreDeviceLockState:(BOOL)arg15;
+- (unsigned long long)hash;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (void)setValue:(id)arg1 forKey:(id)arg2 ofClass:(Class)arg3;
+- (id)valueForKey:(id)arg1 ofClass:(Class)arg2 defaultValue:(id)arg3;
 
 @end
 

@@ -33,7 +33,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)addDelegateOperation:(Function_89d21b48 *)arg1;
+- (void)addDelegateOperation:(Function_15535652 *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataTaskWithRequest:(id)arg1;
 - (id)dataTaskWithURL:(id)arg1;

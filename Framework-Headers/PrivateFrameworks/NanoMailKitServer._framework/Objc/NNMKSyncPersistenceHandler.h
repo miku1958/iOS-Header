@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)_createDefaultMailbox:(id)arg1;
+- (id)addAccountAuthenticationStatusRequest:(double)arg1;
 - (id)addMessageContent:(id)arg1 forMessage:(id)arg2 mailbox:(id)arg3 isProtectedData:(BOOL)arg4;
 - (id)addMessages:(id)arg1 containsNewMessages:(BOOL)arg2 mailbox:(id)arg3;
 - (id)addMessagesToResend:(id)arg1 mailbox:(id)arg2 isProtectedData:(BOOL)arg3;

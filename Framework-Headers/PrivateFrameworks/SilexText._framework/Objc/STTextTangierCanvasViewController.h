@@ -6,22 +6,17 @@
 
 #import <TSReading/TSWPiOSCanvasViewController.h>
 
-@class NSArray;
-
 @interface STTextTangierCanvasViewController : TSWPiOSCanvasViewController
 {
-    NSArray *_installedGestureRecognizers;
 }
 
-@property (readonly, nonatomic) NSArray *installedGestureRecognizers; // @synthesize installedGestureRecognizers=_installedGestureRecognizers;
-
-- (void).cxx_destruct;
 - (id)actionForHyperlink:(id)arg1 inRep:(id)arg2 gesture:(id)arg3;
-- (id)backgroundColorForMagnifier;
+- (BOOL)canBecomeFirstResponder;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dealloc;
 - (BOOL)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)setUpGestureDependenciesWithScrollView:(id)arg1;
-- (void)setUpGestureRecognizers;
+- (void)loadView;
+- (void)selectAll:(id)arg1;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 

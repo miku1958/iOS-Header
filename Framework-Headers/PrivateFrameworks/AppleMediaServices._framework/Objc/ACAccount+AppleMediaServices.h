@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSHashable-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface ACAccount (AppleMediaServices) <AMSHashable>
 
@@ -20,12 +20,17 @@
 @property (readonly, nonatomic) NSString *ams_creditsString;
 @property (readonly, nonatomic, getter=ams_isDemoAccount) BOOL ams_demoAccount;
 @property (readonly, nonatomic) NSString *ams_firstName;
+@property (nonatomic, setter=ams_setFreePasswordPromptSetting:) unsigned long long ams_freePasswordPromptSetting;
 @property (readonly, nonatomic) NSString *ams_fullName;
 @property (readonly, nonatomic, getter=ams_isiCloudAccount) BOOL ams_iCloudAccount;
 @property (readonly, nonatomic, getter=ams_isiTunesAccount) BOOL ams_iTunesAccount;
 @property (readonly, nonatomic) NSString *ams_lastName;
 @property (readonly, nonatomic, getter=ams_isLocalAccount) BOOL ams_localAccount;
 @property (readonly, nonatomic, getter=ams_isManagedAppleID) BOOL ams_managedAppleID;
+@property (nonatomic, setter=ams_setMergedPrivacyAcknowledgement:) BOOL ams_mergedPrivacyAcknowledgement;
+@property (nonatomic, setter=ams_setPaidPasswordPromptSetting:) unsigned long long ams_paidPasswordPromptSetting;
+@property (readonly, nonatomic) NSDictionary *ams_privacyAcknowledgement;
+@property (readonly, nonatomic, getter=ams_isPrivateListeningEnabled) BOOL ams_privateListeningEnabled;
 @property (readonly, nonatomic, getter=ams_isSandboxAccount) BOOL ams_sandboxAccount;
 @property (readonly, nonatomic) unsigned long long ams_securityLevel;
 @property (readonly, nonatomic) NSString *ams_storefront;
@@ -36,48 +41,80 @@
 @property (readonly) Class superclass;
 
 + (id)_defaultValueForAccountFlag:(id)arg1;
++ (id)_getSetCookiesForResponse:(id)arg1;
++ (id)_getSetGlobalCookiesForResponse:(id)arg1;
 + (BOOL)_isAccountFlagValue:(id)arg1 validForAccountFlag:(id)arg2;
 + (BOOL)_isAccountFlagWritable:(id)arg1;
-- (id)_accountPropertyForKey:(id)arg1 dataProtectionClass:(unsigned long long)arg2 expectedClass:(Class)arg3 error:(id *)arg4;
+- (id)_accountPropertyForKey:(id)arg1 dataProtectionClass:(unsigned long long)arg2 expectedClasses:(id)arg3 error:(id *)arg4;
 - (id)_accountPropertyForKey:(id)arg1 expectedClass:(Class)arg2;
 - (id)_cookiesMatchingProperties:(id)arg1;
 - (id)_createCookieStorage;
+- (id)_hashedActiveState;
+- (id)_hashedIdentifiers;
+- (id)_hashedMultiUserIdentifiers;
+- (id)_hashedStorefront;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 dataProtectionClass:(unsigned long long)arg3 expectedClass:(Class)arg4;
 - (void)_setAccountProperty:(id)arg1 forKey:(id)arg2 expectedClass:(Class)arg3;
-- (void)_setCookies:(id)arg1;
+- (BOOL)_setCookies:(id)arg1;
 - (id)ams_accountFlagValueForAccountFlag:(id)arg1;
 - (id)ams_accountFlags;
-- (void)ams_addCookies:(id)arg1;
+- (BOOL)ams_addCookies:(id)arg1;
+- (BOOL)ams_addCookiesForResponse:(id)arg1;
+- (BOOL)ams_addCookiesForResult:(id)arg1;
+- (BOOL)ams_addGlobalCookiesForResponse:(id)arg1;
+- (BOOL)ams_addGlobalCookiesForResult:(id)arg1;
+- (void)ams_addHomeUserIdentifier:(id)arg1;
+- (long long)ams_biometricsState;
 - (id)ams_cookiesForURL:(id)arg1;
+- (id)ams_delta:(id)arg1;
 - (BOOL)ams_didAgreeToTerms;
 - (BOOL)ams_encryptAccountFlags;
+- (id)ams_homeID;
+- (id)ams_homeIdentifier;
+- (id)ams_homeUserID;
+- (id)ams_homeUserIdentifiers;
+- (BOOL)ams_isActiveForMediaType:(id)arg1;
 - (BOOL)ams_isDuplicate:(id)arg1;
 - (BOOL)ams_isInGoodStanding;
+- (BOOL)ams_isPrivateListeningEnabledForHomeUserIdentifier:(id)arg1;
 - (BOOL)ams_isValidPayment;
 - (BOOL)ams_isiCloudFamily;
+- (id)ams_lastAuthenticationServerResponse;
+- (long long)ams_mergePrivacyAcknowledgement:(id)arg1;
 - (id)ams_password;
 - (BOOL)ams_postAccountFlagsWithBagContract:(id)arg1;
 - (id)ams_rawPassword;
 - (void)ams_removeAllCookies;
 - (void)ams_removeCookies:(id)arg1;
 - (void)ams_removeCookiesMatchingProperties:(id)arg1;
+- (void)ams_removeHomeUserIdentifier:(id)arg1;
 - (BOOL)ams_requiresAuthKitUpdate;
 - (id)ams_secureToken;
 - (void)ams_setAccountFlagValue:(id)arg1 forAccountFlag:(id)arg2;
 - (void)ams_setAccountFlags:(id)arg1;
+- (void)ams_setActive:(BOOL)arg1 forMediaType:(id)arg2;
 - (void)ams_setAgreedToTerms:(BOOL)arg1;
 - (void)ams_setAltDSID:(id)arg1;
+- (void)ams_setBiometricsState:(long long)arg1;
 - (void)ams_setCreditsString:(id)arg1;
 - (void)ams_setDSID:(id)arg1;
 - (void)ams_setFirstName:(id)arg1;
+- (void)ams_setHomeID:(id)arg1;
+- (void)ams_setHomeIdentifier:(id)arg1;
+- (void)ams_setHomeUserID:(id)arg1;
 - (void)ams_setInGoodStanding:(BOOL)arg1;
 - (void)ams_setLastName:(id)arg1;
+- (void)ams_setManagedAppleID:(BOOL)arg1;
 - (void)ams_setPassword:(id)arg1;
+- (void)ams_setPrivateListeningEnabled:(BOOL)arg1 forHomeUserIdentifier:(id)arg2;
 - (void)ams_setRawPassword:(id)arg1;
+- (void)ams_setServerResponse:(id)arg1;
 - (void)ams_setStorefront:(id)arg1;
+- (void)ams_setStorefront:(id)arg1 forMediaType:(id)arg2;
 - (void)ams_setValidPayment:(BOOL)arg1;
 - (void)ams_setValue:(BOOL)arg1 forAccountFlag:(id)arg2;
 - (void)ams_setiCloudFamily:(BOOL)arg1;
+- (id)ams_storefrontForMediaType:(id)arg1;
 - (BOOL)ams_valueForAccountFlag:(id)arg1;
 @end
 

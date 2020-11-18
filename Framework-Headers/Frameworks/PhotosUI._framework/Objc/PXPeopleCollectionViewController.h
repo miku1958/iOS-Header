@@ -9,20 +9,17 @@
 #import <PhotosUICore/PXPeopleCollectionViewCellDelegate-Protocol.h>
 #import <PhotosUICore/PXPeopleDragAndDropCollectionViewDelegate-Protocol.h>
 #import <PhotosUICore/PXPeopleDragAndDropCollectionViewDelegateLayout-Protocol.h>
-#import <PhotosUICore/PXPeoplePreviewActionViewControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXPeopleSectionedDataSourceChangeObserver-Protocol.h>
 #import <PhotosUICore/PXPeopleSwipeSelectionManagerDelegate-Protocol.h>
-#import <PhotosUICore/PXPeopleZoomOverlayTransitionEndPoint-Protocol.h>
 #import <PhotosUICore/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <PhotosUICore/UIViewControllerPreviewingDelegate-Protocol.h>
 #import <PhotosUICore/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSIndexPath, NSMutableDictionary, NSString, PXPeopleDragAndDropCollectionViewLayout, PXPeopleMeViewController, PXPeopleProgressFooterView, PXPeopleProgressManager, PXPeopleSectionedDataSource, PXPeopleSwipeSelectionManager, UIBarButtonItem, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol UIViewControllerAnimatedTransitioning;
 
-@interface PXPeopleCollectionViewController : UICollectionViewController <UIViewControllerTransitioningDelegate, PXPeopleZoomOverlayTransitionEndPoint, PXPeopleDragAndDropCollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, UIViewControllerPreviewingDelegate, PXPeopleSectionedDataSourceChangeObserver, PXPeoplePreviewActionViewControllerDelegate, PXPeopleDragAndDropCollectionViewDelegateLayout, PXPeopleCollectionViewCellDelegate, PXPeopleSwipeSelectionManagerDelegate>
+@interface PXPeopleCollectionViewController : UICollectionViewController <PXPeopleDragAndDropCollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UIPopoverPresentationControllerDelegate, UIViewControllerTransitioningDelegate, PXPeopleSectionedDataSourceChangeObserver, PXPeopleDragAndDropCollectionViewDelegateLayout, PXPeopleCollectionViewCellDelegate, PXPeopleSwipeSelectionManagerDelegate>
 {
     BOOL _ignoreChangeUpdates;
     BOOL _needToCheckProgress;
@@ -62,15 +59,12 @@
 @property (readonly, nonatomic) PXPeopleSectionedDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) UIBarButtonItem *debugMenuItem; // @synthesize debugMenuItem=_debugMenuItem;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PXPeopleDragAndDropCollectionViewLayout *dragAndDropCollectionViewLayout;
 @property (strong, nonatomic) UILongPressGestureRecognizer *dragRecognizer; // @synthesize dragRecognizer=_dragRecognizer;
 @property (strong, nonatomic) UIBarButtonItem *favoriteToolbarItem; // @synthesize favoriteToolbarItem=_favoriteToolbarItem;
-@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property BOOL ignoreChangeUpdates; // @synthesize ignoreChangeUpdates=_ignoreChangeUpdates;
@@ -100,7 +94,6 @@
 @property (strong, nonatomic) UITapGestureRecognizer *statusDebugRecognizer; // @synthesize statusDebugRecognizer=_statusDebugRecognizer;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) PXPeopleSwipeSelectionManager *swipeSelectionManager; // @synthesize swipeSelectionManager=_swipeSelectionManager;
 @property (strong, nonatomic) NSIndexPath *targetIndexPath; // @synthesize targetIndexPath=_targetIndexPath;
 @property (strong) id<UIViewControllerAnimatedTransitioning> transitionAnimator; // @synthesize transitionAnimator=_transitionAnimator;
@@ -109,7 +102,7 @@
 - (void).cxx_destruct;
 - (void)_animateCellAtIndexPathToDefaultState:(id)arg1;
 - (void)_applyChangeDetailsArrayOnCollectionView:(id)arg1;
-- (id)_bestTargetIndexGivenMergeIndexes:(id)arg1;
+- (id)_bestTargetIndexPathGivenMergeIndexPaths:(id)arg1;
 - (double)_bottomInsetForSection:(unsigned long long)arg1;
 - (id)_changeMemberAtIndex:(id)arg1 toPersonType:(long long)arg2;
 - (void)_changeSelectedIndexesToPersonType:(long long)arg1;
@@ -127,7 +120,6 @@
 - (struct CGSize)_itemSizeForItemAtIndexPath:(id)arg1;
 - (id)_originalTargetIndexPathFromDragIndexPath:(id)arg1 targetIndexPath:(id)arg2;
 - (void)_performMerge:(BOOL)arg1 targetPerson:(id)arg2 dragPerson:(id)arg3;
-- (id)_personItemAtIndexPath:(id)arg1;
 - (void)_presentAllPeopleViewControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_progressChanged:(id)arg1;
 - (void)_resetHomeIfNeeded;
@@ -142,9 +134,6 @@
 - (void)_updateToolbarItemsForIndexPaths:(id)arg1;
 - (void)_updateVisibleCellsForSelectionMode:(unsigned long long)arg1;
 - (long long)_verticalSizeClass;
-- (id)_visibleIndexPathForTransitionContextObject:(id)arg1;
-- (id)animationControllerForDismissedController:(id)arg1;
-- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (BOOL)collectionView:(id)arg1 canMoveItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didBeginMergeWithDragIndexPath:(id)arg2 targetIndexPath:(id)arg3;
@@ -177,25 +166,19 @@
 - (id)initialSelectedIndexPathsForSwipeSelectionManager:(id)arg1;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (void)peopleCollectionViewCellDidToggleFavoriteState:(id)arg1;
-- (void)peoplePreviewActionViewController:(id)arg1 wantsToChangePerson:(id)arg2 toType:(long long)arg3;
 - (void)peopleSectionedDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
-- (void)peopleSectionedDataSourceMembersChanged:(id)arg1;
+- (void)peopleSectionedDataSourceMembersChangedNonIncrementally:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (id)ppt_bestPersonForBootstrap;
 - (void)ppt_changeIndexPaths:(id)arg1 toType:(long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)ppt_indexPathOfPersonWithMostAssets;
 - (id)ppt_indexPathsForPeopleThatCanChangeToType:(long long)arg1;
 - (BOOL)ppt_namePerson:(id)arg1;
-- (long long)ppt_numCells;
+- (long long)ppt_numOfCellsLoadingImages;
 - (id)ppt_randomPerson;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)selectionModeTitle;
-- (BOOL)shouldPerformZoomingTransitionWithAnimator:(id)arg1;
 - (void)showDetailsForMemberAtIndexPath:(id)arg1;
-- (id)snapshotRectsInScreenCoordinatesWithAnimator:(id)arg1;
-- (id)snapshotViewsForZoomingTransitionWithAnimator:(id)arg1;
 - (void)statusDebugRecognizerTapped:(id)arg1;
 - (void)swipeSelectionManager:(id)arg1 didSelectIndexPaths:(id)arg2;
 - (id)swipeSelectionManager:(id)arg1 indexPathSetFromIndexPath:(id)arg2 toIndexPath:(id)arg3;
@@ -207,9 +190,6 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)zoomOverlayTransitionDidBeginAnimationWithAnimator:(id)arg1;
-- (void)zoomOverlayTransitionDidEndAnimationWithAnimator:(id)arg1;
-- (void)zoomOverlayTransitionWillEndAnimationWithAnimator:(id)arg1;
 
 @end
 

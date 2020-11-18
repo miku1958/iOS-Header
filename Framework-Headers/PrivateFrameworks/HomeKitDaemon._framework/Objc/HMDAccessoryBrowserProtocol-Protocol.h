@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HAPAccessoryServer, HAPAccessoryServerBrowserRelay, HMDMediaBrowser, HMDUnassociatedAccessory, HMDUnpairedHAPAccessory, HMFMessageTransport, HMSetupAccessoryDescription, NSArray, NSDictionary, NSError, NSObject, NSSet, NSString, NSUUID;
+@class HAPAccessoryServer, HAPAccessoryServerBrowserRelay, HMDMediaBrowser, HMDUnassociatedAccessory, HMDUnpairedHAPAccessory, HMDUnpairedHAPAccessoryConfiguration, HMFMessageTransport, HMSetupAccessoryDescription, NSArray, NSData, NSDictionary, NSError, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDAccessoryBrowserDelegate, HMDAccessoryBrowserHapProtocol, OS_dispatch_queue;
 
 @protocol HMDAccessoryBrowserProtocol
@@ -22,7 +22,7 @@
 - (void)cancelPairingWithAccessory:(HMDUnpairedHAPAccessory *)arg1 error:(NSError *)arg2;
 - (void)cancelPairingWithAccessoryDescription:(HMSetupAccessoryDescription *)arg1 error:(NSError *)arg2;
 - (void)deregisterPairedAccessory:(NSString *)arg1;
-- (void)didReceiveUserConsentResponseForSetupAccessoryDescription:(HMSetupAccessoryDescription *)arg1 consent:(BOOL)arg2;
+- (void)didReceiveUserConsentResponseForSetupAccessoryDetail:(HMSetupAccessoryDescription *)arg1 consent:(BOOL)arg2;
 - (void)discoverAccessories:(HAPAccessoryServer *)arg1;
 - (void)discoverAccessoryServer:(NSString *)arg1 linkType:(long long)arg2 errorHandler:(void (^)(NSError *))arg3;
 - (NSSet *)discoveredAccessoryServers;
@@ -34,15 +34,16 @@
 - (void)handleStartDiscoveringAssociatedMediaAccessories:(BOOL)arg1 forTransport:(HMFMessageTransport *)arg2 completionHandler:(void (^)(NSError *, NSDictionary *))arg3;
 - (BOOL)hasClientRequestedMediaAccessoryControl:(HMFMessageTransport *)arg1;
 - (BOOL)isBrowsingAllowed;
-- (void)pairAccessory:(HMDUnpairedHAPAccessory *)arg1 homeName:(NSString *)arg2 setupCode:(NSString *)arg3 setupCodeProvider:(void (^)(HMDUnpairedHAPAccessory *, NSString *, void (^)(NSString *, NSError *)))arg4 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, unsigned long long, NSError *))arg5;
-- (void)pairAccessoryWithDescription:(HMSetupAccessoryDescription *)arg1 homeName:(NSString *)arg2 needsUserConfirmation:(BOOL)arg3 progressHandler:(void (^)(NSUUID *, NSString *, NSString *, HMAccessoryCategory *, long long, unsigned long long))arg4 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, unsigned long long, NSError *))arg5;
+- (void)pairAccessory:(HMDUnpairedHAPAccessory *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, NSError *))arg3;
+- (void)pairAccessoryWithDescription:(HMSetupAccessoryDescription *)arg1 configuration:(HMDUnpairedHAPAccessoryConfiguration *)arg2 progressHandler:(void (^)(long long, HMDAddAccessoryProgressState *))arg3 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, NSError *))arg4;
 - (void)probeReachabilityForBTLEAccessoryServersWithIdentifiers:(NSArray *)arg1 onQueue:(NSObject<OS_dispatch_queue> *)arg2 withCompletion:(void (^)(NSString *, BOOL))arg3;
 - (void)registerPairedAccessory:(NSString *)arg1 btleTransport:(BOOL)arg2 airPlay:(BOOL)arg3;
-- (void)registerProgressHandler:(void (^)(NSUUID *, NSString *, NSString *, HMAccessoryCategory *, long long, unsigned long long))arg1 unpairedAccessoryUUID:(NSUUID *)arg2;
+- (void)registerProgressHandler:(void (^)(long long, HMDAddAccessoryProgressState *))arg1 unpairedAccessoryUUID:(NSUUID *)arg2;
 - (void)removeDelegate:(id<HMDAccessoryBrowserDelegate>)arg1;
+- (void)removePairingInformationForAccessoryServer:(HAPAccessoryServer *)arg1;
 - (void)removeUnassociatedAccessory:(HMDUnassociatedAccessory *)arg1;
 - (void)removeUnassociatedAccessoryWithIdentifier:(NSString *)arg1;
-- (void)reprovisionAccessoryWithIdentifier:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)reprovisionAccessoryWithIdentifier:(NSString *)arg1 wiFiPSK:(NSData *)arg2 countryCode:(NSString *)arg3 withCompletion:(void (^)(NSError *))arg4;
 - (void)resetConfiguration;
 - (void)resurrectAccessoryServer:(HAPAccessoryServer *)arg1;
 - (void)setQOS:(long long)arg1;
@@ -51,7 +52,9 @@
 - (void)startDiscoveringPairedAccessories;
 - (void)stopDiscoveringAccessories;
 - (void)stopTrackingBTLEAccessoriesWithIdentifiers:(NSArray *)arg1;
+- (void)tearDownSessionForAccesoryServer:(HAPAccessoryServer *)arg1 completion:(void (^)(void))arg2;
 - (void)tombstoneAccessoryServer:(HAPAccessoryServer *)arg1;
 - (HMDUnpairedHAPAccessory *)unpairedAccessoryWithUUID:(NSUUID *)arg1;
+- (HMDUnpairedHAPAccessory *)unpairedHAPAccessoryWithAccessoryDescription:(HMSetupAccessoryDescription *)arg1;
 @end
 

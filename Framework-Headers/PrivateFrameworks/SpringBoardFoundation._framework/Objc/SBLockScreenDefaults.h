@@ -10,6 +10,7 @@
 {
 }
 
+@property (nonatomic) BOOL allowLocketGesture; // @dynamic allowLocketGesture;
 @property (nonatomic) BOOL forceWakeToMaps; // @dynamic forceWakeToMaps;
 @property (nonatomic) BOOL limitFeaturesForRemoteLock; // @dynamic limitFeaturesForRemoteLock;
 @property (nonatomic) double nowPlayingTimeout; // @dynamic nowPlayingTimeout;

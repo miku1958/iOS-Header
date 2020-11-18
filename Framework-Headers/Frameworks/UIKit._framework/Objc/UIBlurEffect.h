@@ -13,12 +13,18 @@
     _UIBlurEffectImpl *_impl;
 }
 
+@property (readonly, nonatomic) BOOL _canProvideCoreMaterialVibrancyEffect;
 @property (readonly, nonatomic) BOOL _canProvideVibrancyEffect;
 @property (readonly, nonatomic) BOOL _invertAutomaticStyle;
 @property (readonly, nonatomic) long long _style;
 @property (readonly, nonatomic) UIColor *_tintColor;
 
-+ (void)_addBlurToEffectNode:(id)arg1 blurRadius:(double)arg2 scale:(double)arg3 options:(id)arg4;
++ (void)_addBlurToEffectDescriptor:(id)arg1 blurRadius:(double)arg2 scale:(double)arg3 environment:(id)arg4;
++ (id)_coreUIImplementationForStyle:(long long)arg1;
++ (id)_effectForLightMaterial:(id)arg1 darkMaterial:(id)arg2 bundle:(id)arg3;
++ (id)_effectWithBlurRadius:(double)arg1 scale:(double)arg2;
++ (id)_effectWithInfiniteRadius;
++ (id)_effectWithInfiniteRadiusScale:(double)arg1;
 + (id)_effectWithStyle:(long long)arg1 invertAutomaticStyle:(BOOL)arg2;
 + (id)_effectWithStyle:(long long)arg1 tintColor:(id)arg2 invertAutomaticStyle:(BOOL)arg3;
 + (id)_effectWithTintColor:(id)arg1;
@@ -30,16 +36,17 @@
 - (id)_initWithImplementation:(id)arg1;
 - (BOOL)_isATVStyle;
 - (BOOL)_isAutomaticStyle;
-- (BOOL)_needsUpdateForOption:(id)arg1;
-- (BOOL)_needsUpdateForTransitionFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
-- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
+- (BOOL)_needsUpdateForTransitionFromEnvironment:(id)arg1 toEnvironment:(id)arg2 usage:(long long)arg3;
+- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)effectForUserInterfaceStyle:(long long)arg1;
 - (id)effectSettings;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

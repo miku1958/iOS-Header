@@ -25,18 +25,13 @@
 - (void)logAlarmDismissAction:(unsigned long long)arg1;
 - (void)logAlarmSnoozeAction:(unsigned long long)arg1;
 - (void)logAlarmUpdated:(BOOL)arg1;
-- (void)logSyncingDisabled;
-- (void)logSyncingEnabled;
+- (void)logSyncCompleted;
+- (void)logSyncFailedWithError:(id)arg1;
 - (void)logTimerAdded;
 - (void)logTimerDeleted;
 - (void)logTimerDismissed;
 - (void)logTimerRepeated;
 - (void)logTimerUpdated;
-- (void)service:(id)arg1 didBeginSyncOperation:(id)arg2;
-- (void)service:(id)arg1 didCompleteSyncOperation:(id)arg2;
-- (void)service:(id)arg1 didFailSyncOperation:(id)arg2 withError:(id)arg3;
-- (void)service:(id)arg1 didRequestSyncOperation:(id)arg2;
-- (void)service:(id)arg1 didScheduleRetryOfSyncOperation:(id)arg2 forError:(id)arg3;
 
 @end
 

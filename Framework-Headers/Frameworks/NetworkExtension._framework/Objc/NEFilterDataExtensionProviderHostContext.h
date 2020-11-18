@@ -10,14 +10,11 @@
 #import <NetworkExtension/NEFilterDataExtensionProviderProtocol-Protocol.h>
 
 @class NSString;
-@protocol NEFilterDataExtensionProviderHostDelegate;
 
 @interface NEFilterDataExtensionProviderHostContext : NEFilterExtensionProviderHostContext <NEFilterDataExtensionProviderProtocol, NEFilterDataExtensionProviderHostProtocol>
 {
-    id<NEFilterDataExtensionProviderHostDelegate> _data_delegate;
 }
 
-@property (weak) id<NEFilterDataExtensionProviderHostDelegate> data_delegate; // @synthesize data_delegate=_data_delegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,7 +22,7 @@
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
-- (void).cxx_destruct;
+- (void)applySettings:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchCurrentRulesForFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchProviderConnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getSourceAppInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -36,7 +33,6 @@
 - (void)report:(id)arg1;
 - (void)sendBrowserContentFilterServerRequest;
 - (void)sendSocketContentFilterRequest;
-- (void)startedWithError:(id)arg1;
 
 @end
 

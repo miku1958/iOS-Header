@@ -7,34 +7,27 @@
 #import <objc/NSObject.h>
 
 #import <AuthKit/NSCopying-Protocol.h>
-#import <AuthKit/NSObjectROCKDeserializable-Protocol.h>
-#import <AuthKit/NSObjectROCKSerializable-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface AKAnisetteData : NSObject <NSCopying, NSObjectROCKDeserializable, NSObjectROCKSerializable, NSSecureCoding>
+@interface AKAnisetteData : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_machineID;
     NSString *_oneTimePassword;
     unsigned long long _routingInfo;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *machineID; // @synthesize machineID=_machineID;
 @property (copy, nonatomic) NSString *oneTimePassword; // @synthesize oneTimePassword=_oneTimePassword;
 @property (nonatomic) unsigned long long routingInfo; // @synthesize routingInfo=_routingInfo;
-@property (readonly) Class superclass;
 
-+ (id)rockDecodeWithXPCObject:(id)arg1 sessionManager:(id)arg2 error:(id *)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)rockEncodeWithSessionManager:(id)arg1 error:(id *)arg2;
 
 @end
 

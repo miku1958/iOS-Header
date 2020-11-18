@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class TSPData, TSUFlushingManager;
+@class TSPData, TSPObjectContext, TSUFlushingManager, TSUWeakReference;
 
 __attribute__((visibility("hidden")))
 @interface TSDImageProvider : NSObject
 {
     int mLoadState;
     TSPData *mImageData;
+    TSUWeakReference *mObjectContextReference;
     _Atomic int mRetainCount;
     _Atomic int mOwnerCount;
     TSUFlushingManager *mFlushingManager;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isError;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) struct CGSize naturalSize;
+@property (readonly, weak, nonatomic) TSPObjectContext *objectContext;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void)addInterest;

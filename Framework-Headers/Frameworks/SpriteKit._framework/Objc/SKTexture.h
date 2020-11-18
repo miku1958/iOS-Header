@@ -89,6 +89,7 @@
 + (id)textureWithImageNamed:(id)arg1;
 + (id)textureWithImageNamed:(id)arg1 rect:(struct CGRect)arg2;
 + (id)textureWithImagePath:(id)arg1;
++ (id)textureWithMetalTexture:(id)arg1;
 + (id)textureWithRect:(struct CGRect)arg1 inTexture:(id)arg2;
 - (void).cxx_destruct;
 - (struct CGImage *)CGImage;
@@ -122,6 +123,7 @@
 - (void)loadImageDataFromCGImage:(struct CGImage *)arg1 pointsSize:(struct CGSize)arg2;
 - (BOOL)loadImageDataFromPVRData:(id)arg1;
 - (BOOL)loadImageDataFromPVRGZData:(id)arg1;
+- (id)metalTexture;
 - (void)preloadWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setIsData:(BOOL)arg1;
 - (void)setTextureDimension:(const struct CGSize *)arg1 withPixelSize:(const struct CGSize *)arg2;

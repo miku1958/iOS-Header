@@ -8,6 +8,7 @@
 
 @protocol PFFile
 
+@property (readonly) NSString *UTI;
 @property (readonly) NSDate *fileCreationDate;
 @property (readonly) NSString *fileExtension;
 @property (readonly) NSDate *fileModificationDate;
@@ -16,7 +17,6 @@
 @property (readonly) BOOL isDirectory;
 @property (readonly) NSString *path;
 @property (readonly) NSURL *url;
-@property (readonly) NSString *uti;
 
 @end
 

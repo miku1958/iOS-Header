@@ -10,6 +10,7 @@
 
 @interface NSData (BRCSignatureAdditions)
 
+@property (readonly, nonatomic) unsigned int br_qtnFlags;
 @property (readonly, nonatomic) NSString *brc_hexadecimalString;
 @property (readonly, nonatomic) NSData *brc_signature;
 @property (readonly, nonatomic) BOOL brc_signatureIsPackage;
@@ -17,5 +18,6 @@
 @property (readonly, nonatomic) BOOL brc_signatureIsValid;
 
 + (id)brc_pendingPlaceholderForPackage:(BOOL)arg1;
+- (id)brc_SHA256WithSalt:(id)arg1;
 @end
 

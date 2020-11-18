@@ -10,11 +10,8 @@
 @class PMLMutableDenseVector, PMLSparseMatrix, PMLSparseVector;
 
 @protocol PMLNoiseStrategy <NSObject, PMLPlistAndChunksSerializableProtocol>
-
-@property int maxIterations;
-
 - (void)addNoiseToSparseMatrix:(PMLSparseMatrix *)arg1;
 - (void)addNoiseToSparseVector:(PMLSparseVector *)arg1;
-- (float)scaleAndAddNoiseToDenseVector:(PMLMutableDenseVector *)arg1 usingNorm:(BOOL)arg2;
+- (BOOL)scaleAndAddNoiseToDenseVector:(PMLMutableDenseVector *)arg1 usingNorm:(BOOL)arg2 scaleFactor:(float *)arg3;
 @end
 

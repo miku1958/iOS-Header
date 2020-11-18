@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) NSString *presetKind;
 
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
++ (id)highContrastBackgroundColorForPreset:(id)arg1;
 + (id)p_defaultPresetColors:(int)arg1;
 + (id)presetKinds;
 - (BOOL)isThemeEquivalent:(id)arg1;

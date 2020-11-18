@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEODirectionServiceTicket-Protocol.h>
 
-@class GEOComposedRoute, GEODirectionsRequest, NSArray, NSDictionary, NSNumber, NSString;
+@class GEOComposedRoute, GEODirectionsRequest, GEODirectionsRequester, NSArray, NSDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEODirectionsRequestTicket : NSObject <GEODirectionServiceTicket>
@@ -22,12 +22,14 @@ __attribute__((visibility("hidden")))
     BOOL _active;
     BOOL _canceled;
     NSDictionary *_userInfo;
+    GEODirectionsRequester *_directionsRequester;
 }
 
 @property (readonly, nonatomic) BOOL active; // @synthesize active=_active;
 @property (readonly, nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) GEODirectionsRequester *directionsRequester; // @synthesize directionsRequester=_directionsRequester;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isDoom; // @synthesize isDoom=_isDoom;
 @property (nonatomic) BOOL isReroute; // @synthesize isReroute=_isReroute;
@@ -40,7 +42,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)cancel;
-- (id)initWithRequest:(id)arg1;
+- (id)initWithRequest:(id)arg1 directionsRequester:(id)arg2;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 auditToken:(id)arg2 networkActivity:(CDUnknownBlockType)arg3;
 
 @end

@@ -9,45 +9,66 @@
 #import <CoreDuetContext/_CDContextInternal-Protocol.h>
 #import <CoreDuetContext/_CDUserContext-Protocol.h>
 
-@class NSMutableDictionary, NSNumber, _CDInMemoryContext;
+@class NSMutableArray, NSMutableDictionary, NSString, _CDInMemoryContext;
 @protocol OS_dispatch_queue;
 
 @interface _CDInMemoryUserContext : NSObject <_CDUserContext, _CDContextInternal>
 {
     NSObject<OS_dispatch_queue> *_syncQueue;
     NSMutableDictionary *_contexts;
+    NSMutableArray *_pendingAllDeviceRegistrations;
     _CDInMemoryContext *_userContext;
-    NSNumber *_localDeviceID;
+    NSString *_localDeviceID;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *contexts; // @synthesize contexts=_contexts;
-@property (strong, nonatomic) NSNumber *localDeviceID; // @synthesize localDeviceID=_localDeviceID;
+@property (strong, nonatomic) NSString *localDeviceID; // @synthesize localDeviceID=_localDeviceID;
+@property (strong, nonatomic) NSMutableArray *pendingAllDeviceRegistrations; // @synthesize pendingAllDeviceRegistrations=_pendingAllDeviceRegistrations;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
 @property (strong, nonatomic) _CDInMemoryContext *userContext; // @synthesize userContext=_userContext;
 
-+ (id)sharedUserContext;
 + (id)userContext;
 - (void).cxx_destruct;
+- (void)activateDevices:(id)arg1 remoteUserContextProxySourceDeviceUUID:(id)arg2;
 - (BOOL)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3;
 - (id)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3 valueDidChange:(BOOL *)arg4;
 - (BOOL)addObjects:(id)arg1 toArrayAtKeyPath:(id)arg2;
+- (id)allDeviceIDs;
+- (id)allDevices;
+- (id)contextForDeviceWithDeviceID:(id)arg1;
 - (id)contextForKeyPath:(id)arg1;
+- (void)deactivateDevices:(id)arg1 remoteUserContextProxySourceDeviceUUID:(id)arg2;
 - (void)deregisterCallback:(id)arg1;
 - (id)description;
+- (id)deviceWithDeviceID:(id)arg1 fromDevices:(id)arg2;
 - (BOOL)evaluatePredicate:(id)arg1;
 - (BOOL)hasKnowledgeOfContextualKeyPath:(id)arg1;
+- (BOOL)hasMultiDeviceRegistrations;
 - (id)init;
 - (id)lastModifiedDateForContextualKeyPath:(id)arg1;
 - (id)localContext;
+- (id)namedDeviceIDsFromPredicate:(id)arg1;
 - (id)objectForContextualKeyPath:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)propertiesForContextualKeyPath:(id)arg1;
 - (void)registerCallback:(id)arg1;
+- (id)remoteDeviceIDs;
 - (BOOL)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2;
 - (void)setContextValue:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)setObject:(id)arg1 returningMetadataForContextualKeyPath:(id)arg2;
+- (id)unsafe_contextForDeviceWithDeviceID:(id)arg1;
+- (BOOL)unsafe_hasMultiDeviceRegistrations;
+- (id)unsafe_multiDeviceRegistrations;
+- (id)unsafe_multiDeviceRegistrationsByDeviceID;
+- (id)unsafe_remoteDeviceIDs;
+- (id)unsafe_remoteDeviceIDsForRemoteUserContextProxySourceDeviceUUID:(id)arg1;
+- (id)unsafe_remoteDevices;
+- (id)unsafe_remoteDevicesByDeviceIDForRemoteUserContextProxySourceDeviceUUID:(id)arg1;
+- (id)unsafe_remoteDevicesForRemoteUserContextProxySourceDeviceUUID:(id)arg1;
+- (id)unsafe_remoteUserContextProxySourceDeviceUUIDs;
+- (struct NSDictionary *)valuesForKeyPaths:(id)arg1;
 - (id)valuesForKeyPaths:(id)arg1 inContextsMatchingPredicate:(id)arg2;
 
 @end

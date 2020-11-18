@@ -11,6 +11,7 @@
 #import <SceneKit/SCNAnimatable-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSString, SCNOrderedDictionary;
+@protocol MTLLibrary;
 
 @interface SCNTechnique : NSObject <SCNAnimatable, NSCopying, NSSecureCoding>
 {
@@ -19,6 +20,7 @@
     NSMutableDictionary *_valueForSymbol;
     SCNOrderedDictionary *_animations;
     NSMutableDictionary *_bindings;
+    id<MTLLibrary> _library;
     NSArray *_passes;
 }
 
@@ -27,6 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) NSDictionary *dictionaryRepresentation;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<MTLLibrary> library;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;

@@ -17,13 +17,16 @@ __attribute__((visibility("hidden")))
     NSString *_segueClassName;
     UIViewController *_viewController;
     NSString *_destinationViewControllerIdentifier;
+    SEL _prepareForChildViewControllerSelector;
     BOOL _performOnViewLoad;
     BOOL _animates;
 }
 
 @property (nonatomic) BOOL animates; // @synthesize animates=_animates;
+@property (strong, nonatomic) NSString *customPrepareForChildViewControllerSelectorName;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL performOnViewLoad; // @synthesize performOnViewLoad=_performOnViewLoad;
+@property (readonly, nonatomic) SEL prepareForChildViewControllerSelector;
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;

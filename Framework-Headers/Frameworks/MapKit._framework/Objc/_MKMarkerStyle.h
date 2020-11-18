@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property (readonly, nonatomic) double strokeWidth; // @synthesize strokeWidth=_strokeWidth;
 
-+ (id)markerStyleForTraitCollection:(id)arg1 state:(long long)arg2 styleAttributes:(id)arg3;
++ (id)markerStyleForTraitCollection:(id)arg1 state:(long long)arg2 styleAttributes:(id)arg3 coordinate:(struct CLLocationCoordinate2D)arg4;
 - (void).cxx_destruct;
 
 @end

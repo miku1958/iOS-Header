@@ -17,7 +17,9 @@
     BOOL _userInteractionActive;
     id<HUQuickControlColorPickerViewInteractionDelegate> _interactionDelegate;
     HUQuickControlColorViewProfile *_profile;
+    unsigned long long _reachabilityState;
     unsigned long long _colorPickerMode;
+    double _magnifierLength;
     unsigned long long _mirroringAxisBias;
     HUColorWheelView *_colorWheelView;
     HUQuickControlMagnifierView *_magnifierView;
@@ -43,10 +45,12 @@
 @property (strong, nonatomic) UILongPressGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<HUQuickControlColorPickerViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
+@property (nonatomic) double magnifierLength; // @synthesize magnifierLength=_magnifierLength;
 @property (nonatomic) struct CGPoint magnifierLocation;
 @property (strong, nonatomic) HUQuickControlMagnifierView *magnifierView; // @synthesize magnifierView=_magnifierView;
 @property (nonatomic) unsigned long long mirroringAxisBias; // @synthesize mirroringAxisBias=_mirroringAxisBias;
 @property (copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
+@property (nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property (strong, nonatomic) id secondaryValue;
 @property (nonatomic) CDStruct_d2b197d1 selectedColor; // @synthesize selectedColor=_selectedColor;
 @property (nonatomic) CDStruct_c3b9c2ee selectedColorCoordinate; // @synthesize selectedColorCoordinate=_selectedColorCoordinate;
@@ -59,13 +63,14 @@
 - (void).cxx_destruct;
 - (void)_applyMirroringAxisBiasToColorWheelSpaceIfNecessary;
 - (id)_colorWheelSpaceForMode:(unsigned long long)arg1;
-- (void)_configureInitialConstraints;
 - (void)_handleGesture:(id)arg1;
 - (void)_setColorPickerMode:(unsigned long long)arg1 notifyDelegate:(BOOL)arg2;
 - (void)_updateDerivedSelectedColorCoordinate;
 - (void)_updateMagnifierPosition;
 - (void)_updateMagnifierTransformForTouchLocation:(struct CGPoint)arg1;
+- (void)_updateMagnifierView;
 - (void)_updateMirroringAxisBiasIfNecessary;
+- (void)_updateUIForReachabilityState:(unsigned long long)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithProfile:(id)arg1;

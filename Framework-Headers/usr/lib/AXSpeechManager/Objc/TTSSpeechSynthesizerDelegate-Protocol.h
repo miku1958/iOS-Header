@@ -6,7 +6,7 @@
 
 #import <AXSpeechManager/NSObject-Protocol.h>
 
-@class NSError, NSString, TTSSpeechRequest, TTSSpeechSynthesizer;
+@class NSError, NSString, NSURL, TTSSpeechRequest, TTSSpeechSynthesizer;
 
 @protocol TTSSpeechSynthesizerDelegate <NSObject>
 
@@ -16,6 +16,7 @@
 - (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 didFinishSpeakingRequest:(TTSSpeechRequest *)arg2 successfully:(BOOL)arg3 withError:(NSError *)arg4;
 - (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 didPauseSpeakingRequest:(TTSSpeechRequest *)arg2;
 - (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 didStartSpeakingRequest:(TTSSpeechRequest *)arg2;
+- (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 didSynthesizeSilentlyToURL:(NSURL *)arg2 forRequest:(TTSSpeechRequest *)arg3;
 - (void)speechSynthesizer:(TTSSpeechSynthesizer *)arg1 willSpeakRangeOfSpeechString:(struct _NSRange)arg2 forRequest:(TTSSpeechRequest *)arg3;
 @end
 

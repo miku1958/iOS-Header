@@ -71,6 +71,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)augmentWithCredentialsFromContext:(id)arg1;
+- (id)cliqueConfiguration;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)desiresAllRecords;
 - (void)encodeWithCoder:(id)arg1;

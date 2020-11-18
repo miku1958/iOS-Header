@@ -9,6 +9,7 @@
 @interface UIImage (PKUIUtilities)
 + (id)imageWithPKImage:(id)arg1;
 + (id)pkui_imageWithColor:(id)arg1;
++ (id)pkui_imageWithColor:(id)arg1 scale:(double)arg2;
 - (struct CGSize)alignmentSize;
 - (id)pkui_imageOverlaidWithColor:(id)arg1;
 - (id)pkui_imageWithAlpha:(double)arg1;

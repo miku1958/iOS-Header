@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameController/_GCControllerButtonInput.h>
+#import <GameController/GCControllerButtonInput.h>
 
 @protocol _GCACHomeButtonDelegate;
 
-@interface _GCACHomeButton : _GCControllerButtonInput
+@interface _GCACHomeButton : GCControllerButtonInput
 {
     id<_GCACHomeButtonDelegate> _delegate;
     BOOL needsReset;

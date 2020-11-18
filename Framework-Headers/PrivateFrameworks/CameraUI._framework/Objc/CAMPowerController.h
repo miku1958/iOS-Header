@@ -11,15 +11,14 @@
 
 @interface CAMPowerController : NSObject
 {
+    _Atomic int _assertionIdentifierGenerator;
     BOOL __isBackgrounded;
-    int __assertionIdentifierGenerator;
     int __powerPressureNotificationToken;
     NSMutableDictionary *__assertionsByIdentifier;
     NSObject<OS_dispatch_queue> *__powerControllerQueue;
     unsigned long long __backgroundTaskIdentifier;
 }
 
-@property (readonly, nonatomic) int _assertionIdentifierGenerator; // @synthesize _assertionIdentifierGenerator=__assertionIdentifierGenerator;
 @property (readonly, nonatomic) NSMutableDictionary *_assertionsByIdentifier; // @synthesize _assertionsByIdentifier=__assertionsByIdentifier;
 @property (readonly, nonatomic) unsigned long long _backgroundTaskIdentifier; // @synthesize _backgroundTaskIdentifier=__backgroundTaskIdentifier;
 @property (nonatomic, getter=_isBackgrounded, setter=_setBackgrounded:) BOOL _isBackgrounded; // @synthesize _isBackgrounded=__isBackgrounded;

@@ -6,26 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class CARScreenViewArea, NSArray, NSString, NSURL;
 
 @interface CARScreenInfo : NSObject
 {
+    BOOL _limitedUI;
+    BOOL _nightMode;
     BOOL _supportsHighFidelityTouch;
     NSString *_identifier;
+    unsigned long long _screenType;
+    unsigned long long _limitedUIElements;
     unsigned long long _maxFramesPerSecond;
     NSArray *_viewAreas;
+    CARScreenViewArea *_currentViewArea;
+    CARScreenViewArea *_adjacentViewArea;
+    unsigned long long _currentViewAreaTransitionControlType;
+    NSURL *_initialURL;
     unsigned long long _systemAvailableInteractionModels;
     unsigned long long _systemPrimaryInteractionModel;
     struct CGSize _physicalSize;
     struct CGSize _pixelSize;
 }
 
+@property (strong, nonatomic) CARScreenViewArea *adjacentViewArea; // @synthesize adjacentViewArea=_adjacentViewArea;
 @property (readonly, nonatomic) unsigned long long availableInteractionModels;
+@property (strong, nonatomic) CARScreenViewArea *currentViewArea; // @synthesize currentViewArea=_currentViewArea;
+@property (nonatomic) unsigned long long currentViewAreaTransitionControlType; // @synthesize currentViewAreaTransitionControlType=_currentViewAreaTransitionControlType;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSURL *initialURL; // @synthesize initialURL=_initialURL;
+@property (readonly, nonatomic, getter=isLimitedUI) BOOL limitedUI; // @synthesize limitedUI=_limitedUI;
+@property (readonly, nonatomic) unsigned long long limitedUIElements; // @synthesize limitedUIElements=_limitedUIElements;
 @property (readonly, nonatomic) unsigned long long maxFramesPerSecond; // @synthesize maxFramesPerSecond=_maxFramesPerSecond;
+@property (readonly, nonatomic, getter=isNightMode) BOOL nightMode; // @synthesize nightMode=_nightMode;
 @property (readonly, nonatomic) struct CGSize physicalSize; // @synthesize physicalSize=_physicalSize;
 @property (readonly, nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
 @property (readonly, nonatomic) unsigned long long primaryInteractionModel;
+@property (readonly, nonatomic) unsigned long long screenType; // @synthesize screenType=_screenType;
 @property (readonly, nonatomic) BOOL supportsHighFidelityTouch; // @synthesize supportsHighFidelityTouch=_supportsHighFidelityTouch;
 @property (nonatomic) unsigned long long systemAvailableInteractionModels; // @synthesize systemAvailableInteractionModels=_systemAvailableInteractionModels;
 @property (nonatomic) unsigned long long systemPrimaryInteractionModel; // @synthesize systemPrimaryInteractionModel=_systemPrimaryInteractionModel;
@@ -37,7 +53,10 @@
 - (id)description;
 - (id)descriptionForAvailableInteractionModels;
 - (id)descriptionForPrimaryInteractionModel;
-- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1;
+- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 screenType:(unsigned long long)arg2;
+- (id)initWithPropertySupplier:(CDUnknownBlockType)arg1 screenType:(unsigned long long)arg2 additionalInsets:(struct NSEdgeInsets)arg3;
+- (void)limitedUIChanged:(BOOL)arg1;
+- (void)nightModeChanged:(BOOL)arg1;
 
 @end
 

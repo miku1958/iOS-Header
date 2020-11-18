@@ -6,28 +6,33 @@
 
 #import <UIKit/UINavigationController.h>
 
-#import <AppleAccountUI/AAUISignInViewControllerDelegate-Protocol.h>
+#import <AppleAccountUI/AAUISignInViewControllerInternalDelegate-Protocol.h>
 
 @class NSDictionary, NSString;
 @protocol AAUISignInControllerDelegate, AIDAServiceOwnerProtocol;
 
-@interface AAUISignInController : UINavigationController <AAUISignInViewControllerDelegate>
+@interface AAUISignInController : UINavigationController <AAUISignInViewControllerInternalDelegate>
 {
     NSDictionary *_authenticationResults;
     id<AIDAServiceOwnerProtocol> _serviceOwnersManager;
+    long long _currentStyle;
+    BOOL _canEditUsername;
     BOOL __shouldForceOperation;
+    NSString *_username;
     NSString *_serviceType;
 }
 
 @property (strong, nonatomic, setter=_setAuthenticationResults:) NSDictionary *_authenticationResults;
 @property (strong, nonatomic, setter=_setServiceOwnersManager:) id<AIDAServiceOwnerProtocol> _serviceOwnersManager;
 @property (nonatomic, setter=_setShouldForceOperation:) BOOL _shouldForceOperation; // @synthesize _shouldForceOperation=__shouldForceOperation;
+@property (nonatomic) BOOL canEditUsername; // @synthesize canEditUsername=_canEditUsername;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<AAUISignInControllerDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<AAUISignInControllerDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 - (void).cxx_destruct;
 - (BOOL)_allowsAccountCreationForService:(id)arg1;
@@ -49,6 +54,7 @@
 - (id)_signInViewController;
 - (id)_spinnerMessageForService:(id)arg1;
 - (id)_spinnerViewController;
+- (void)_updateStyleIfNeeded;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)prepareInViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -57,6 +63,8 @@
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
+- (void)willAuthenticateWithContext:(id)arg1;
 
 @end
 

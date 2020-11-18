@@ -28,16 +28,24 @@
 
 + (id)sharedMenuController;
 - (void).cxx_destruct;
+- (void)_hideMenuAnimated:(BOOL)arg1;
 - (BOOL)_menuHidden;
+- (void)_removeWindowWillRotateObserver;
 - (void)_setTargetRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3;
+- (void)_showMenuAnimated:(BOOL)arg1;
+- (struct CGRect)_targetRect;
+- (id)_targetView;
 - (BOOL)_updateAnimated:(BOOL)arg1 checkVisible:(BOOL)arg2;
 - (void)_windowWillRotate:(id)arg1;
 - (void)calloutBar:(id)arg1 didFinishAnimation:(id)arg2;
 - (void)calloutBar:(id)arg1 willStartAnimation:(id)arg2;
 - (void)dealloc;
+- (void)hideMenu;
+- (void)hideMenuFromView:(id)arg1;
 - (id)init;
 - (void)setMenuVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setTargetRect:(struct CGRect)arg1 inView:(id)arg2;
+- (void)showMenuFromView:(id)arg1 rect:(struct CGRect)arg2;
 - (void)update;
 
 @end

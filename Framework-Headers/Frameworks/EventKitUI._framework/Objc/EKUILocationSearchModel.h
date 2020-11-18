@@ -35,7 +35,9 @@
     NSMutableArray *_frequentsSearchResults;
     NSMutableArray *_eventsSearchResults;
     NSMutableArray *_contactsSearchResults;
+    unsigned long long _supportedSearchTypes;
     NSArray *_mapCompletionSearchResults;
+    NSArray *_textualSearchResults;
     id<EKUILocationSearchModelDelegate> _delegate;
 }
 
@@ -52,15 +54,20 @@
 @property (readonly, nonatomic) NSArray *mapCompletionSearchResults; // @synthesize mapCompletionSearchResults=_mapCompletionSearchResults;
 @property (readonly, nonatomic) NSArray *recentsSearchResults; // @synthesize recentsSearchResults=_recentsSearchResults;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long supportedSearchTypes; // @synthesize supportedSearchTypes=_supportedSearchTypes;
+@property (readonly, nonatomic) NSArray *textualSearchResults; // @synthesize textualSearchResults=_textualSearchResults;
 
 - (void).cxx_destruct;
 - (void)_addDiscoveredConferenceRooms:(id)arg1;
 - (void)_handleAvailabilityResults:(id)arg1 forOperation:(id)arg2;
 - (void)_processDirectorySearchResultSet:(id)arg1 forOperation:(id)arg2;
 - (void)_updateContactsSearchWithResults:(id)arg1 forToken:(id)arg2;
+- (void)addConferenceRoomToRecents:(id)arg1 fromSource:(id)arg2;
 - (void)addLocationToRecents:(id)arg1 addressString:(id)arg2;
+- (id)availabilityRequestForConferenceRooms:(id)arg1 duringEvent:(id)arg2 resultsBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)beginSearchForTerm:(id)arg1;
 - (void)cancelSearch;
+- (void)completerDidFail:(id)arg1 error:(id)arg2;
 - (void)completerDidUpdateResults:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;
 - (void)dedupeResults;
@@ -78,7 +85,9 @@
 - (void)selectCurrentLocation;
 - (void)selectLocation:(id)arg1;
 - (void)selectMapSearchCompletion:(id)arg1;
+- (id)splitEventLocations:(id)arg1;
 - (void)stopUpdatingLocation;
+- (void)updateConferenceRoomAvailability:(id)arg1 duringEvent:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)updateContacts:(id)arg1;
 - (void)updateEventLocations:(id)arg1;
 - (void)updateRecents:(id)arg1;

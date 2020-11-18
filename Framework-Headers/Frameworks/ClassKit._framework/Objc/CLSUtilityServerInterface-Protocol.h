@@ -12,6 +12,7 @@
 - (oneway void)remote_addAuthorizationStatus:(unsigned long long)arg1 forContextAtPath:(NSArray *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (oneway void)remote_authorizationStatusForContextAtPath:(NSArray *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (oneway void)remote_databasePathWithCompletion:(void (^)(id, NSError *))arg1;
+- (oneway void)remote_featureIsEnabled:(int)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)remote_getDevModeWithCompletion:(void (^)(int, NSError *))arg1;
 - (oneway void)remote_recreateDatabaseWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (oneway void)remote_recreateDevelopmentDatabaseWithCompletion:(void (^)(BOOL, NSError *))arg1;

@@ -6,11 +6,11 @@
 
 #import <RelevanceEngine/RERule.h>
 
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
-@class NSString, RECondition, REConditionEvaluator;
+@class RECondition, REConditionEvaluator;
 
-@interface REFilteringRule : RERule <REIndentedDescription>
+@interface REFilteringRule : RERule <REAutomaticExportedInterface>
 {
     REConditionEvaluator *_conditionEvaluator;
     RECondition *_condition;
@@ -19,15 +19,11 @@
 
 @property (readonly, nonatomic) RECondition *condition; // @synthesize condition=_condition;
 @property (readonly, nonatomic) REConditionEvaluator *conditionEvaluator;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (unsigned long long)hash;
 - (id)initWithCondition:(id)arg1;
 - (id)initWithCondition:(id)arg1 type:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;

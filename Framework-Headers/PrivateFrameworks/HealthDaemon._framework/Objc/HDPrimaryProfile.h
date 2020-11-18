@@ -6,13 +6,12 @@
 
 #import <HealthDaemon/HDProfile.h>
 
-@class HDAWDSubmissionManager, HDAppSubscriptionManager, HDCloudSyncManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDServiceConnectionManager, HDWorkoutManager;
+@class HDAWDSubmissionManager, HDAppSubscriptionManager, HDCurrentActivitySummaryHelper, HDDataCollectionManager, HDDemoDataManager, HDFitnessMachineManager, HDHealthServiceManager, HDNanoSyncManager, HDNotificationManager, HDOntologyLifecycleManager, HDServiceConnectionManager, HDWorkoutManager;
 
 @interface HDPrimaryProfile : HDProfile
 {
     HDAppSubscriptionManager *_appSubscriptionManager;
     HDAWDSubmissionManager *_awdSubmissionManager;
-    HDCloudSyncManager *_cloudSyncManager;
     HDCurrentActivitySummaryHelper *_currentActivitySummaryHelper;
     HDDataCollectionManager *_dataCollectionManager;
     HDFitnessMachineManager *_fitnessMachineManager;
@@ -21,26 +20,27 @@
     HDHealthServiceManager *_serviceManager;
     HDServiceConnectionManager *_serviceConnectionManager;
     HDWorkoutManager *_workoutManager;
+    HDDemoDataManager *_demoDataManager;
+    HDOntologyLifecycleManager *_ontologyLifecycleManager;
 }
 
 - (void).cxx_destruct;
 - (void)_applyPPTUpdates;
 - (id)_newAWDSubmissionManager;
 - (id)_newAppSubscriptionManager;
-- (id)_newCloudSyncManager;
 - (id)_newNanoSyncManager;
 - (id)_newNotificationManager;
 - (id)_newWorkoutManager;
 - (id)activityCacheManager;
 - (id)appSubscriptionManager;
 - (id)awdSubmissionManager;
-- (id)cloudSyncManager;
 - (id)currentActivitySummaryHelper;
 - (id)dataCollectionManager;
 - (id)fitnessMachineManager;
 - (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3;
 - (id)nanoSyncManager;
 - (id)notificationManager;
+- (id)ontologyLifecycleManager;
 - (id)serviceConnectionManager;
 - (id)serviceManager;
 - (void)terminationCleanup;

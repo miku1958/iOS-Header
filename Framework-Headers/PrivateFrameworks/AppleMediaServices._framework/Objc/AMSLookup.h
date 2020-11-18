@@ -6,14 +6,16 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-@class AMSProcessInfo, NSString;
-@protocol AMSLookupBagContract;
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@interface AMSLookup : AMSTask
+@class AMSProcessInfo, NSString;
+@protocol AMSBagProtocol;
+
+@interface AMSLookup : AMSTask <AMSBagConsumer>
 {
+    id<AMSBagProtocol> _bag;
     NSString *_caller;
     AMSProcessInfo *_clientInfo;
-    id<AMSLookupBagContract> _contract;
     NSString *_imageProfile;
     NSString *_keyProfile;
     NSString *_platform;
@@ -22,22 +24,33 @@
     NSString *_language;
 }
 
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) NSString *caller; // @synthesize caller=_caller;
 @property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
-@property (strong, nonatomic) id<AMSLookupBagContract> contract; // @synthesize contract=_contract;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *imageProfile; // @synthesize imageProfile=_imageProfile;
 @property (strong, nonatomic) NSString *keyProfile; // @synthesize keyProfile=_keyProfile;
 @property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (strong, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (nonatomic) long long signatureType; // @synthesize signatureType=_signatureType;
+@property (readonly) Class superclass;
 @property (nonatomic) long long version; // @synthesize version=_version;
 
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 - (void).cxx_destruct;
 - (void)_addJSSignatureToRequest:(id)arg1;
 - (id)_compileQueryParametersWithBundleIds:(id)arg1 itemIds:(id)arg2;
+- (id)contract;
+- (id)initWithBag:(id)arg1 caller:(id)arg2 keyProfile:(id)arg3;
 - (id)initWithBagContract:(id)arg1;
 - (id)initWithBagContract:(id)arg1 caller:(id)arg2 keyProfile:(id)arg3;
 - (id)performLookupWithBundleIdentifiers:(id)arg1 itemIdentifiers:(id)arg2;
+- (void)setContract:(id)arg1;
 
 @end
 

@@ -8,20 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEOLogMsgStateMapLaunch : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_launchUri;
     NSString *_sourceAppId;
+    struct {
+        unsigned int read_launchUri:1;
+        unsigned int read_sourceAppId:1;
+        unsigned int wrote_launchUri:1;
+        unsigned int wrote_sourceAppId:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasLaunchUri;
 @property (readonly, nonatomic) BOOL hasSourceAppId;
-@property (strong, nonatomic) NSString *launchUri; // @synthesize launchUri=_launchUri;
-@property (strong, nonatomic) NSString *sourceAppId; // @synthesize sourceAppId=_sourceAppId;
+@property (strong, nonatomic) NSString *launchUri;
+@property (strong, nonatomic) NSString *sourceAppId;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readLaunchUri;
+- (void)_readSourceAppId;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

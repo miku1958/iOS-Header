@@ -61,6 +61,7 @@
 + (double)_footerTextSpacingForValue:(double)arg1;
 + (id)buddyStackedButtonViewWithTitles:(id)arg1 footerText:(id)arg2 boldFooterText:(id)arg3 delegate:(id)arg4;
 + (id)buddyStackedButtonViewWithTitles:(id)arg1 footerText:(id)arg2 boldFooterText:(id)arg3 footerTextAlignment:(long long)arg4 delegate:(id)arg5;
++ (double)topPadding;
 - (void).cxx_destruct;
 - (void)_assignConstraintsForButtons;
 - (id)_attributedFooterText;

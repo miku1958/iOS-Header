@@ -7,16 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <CoreSuggestionsInternals/APSConnectionDelegate-Protocol.h>
-#import <CoreSuggestionsInternals/SGJournalCalendarObserver-Protocol.h>
 
-@class APSConnection, CKContainer, CKDatabase, NSError, NSMutableArray, NSOperation, NSOperationQueue, NSString, SGFuture, _SGDCloudKitSyncPersistedState;
+@class APSConnection, CKContainer, CKDatabase, NSError, NSMutableArray, NSOperation, NSOperationQueue, NSString, SGFuture, _PASKVOHandler, _SGDCloudKitSyncPersistedState;
 @protocol OS_dispatch_queue;
 
-@interface SGDCloudKitSync : NSObject <APSConnectionDelegate, SGJournalCalendarObserver>
+@interface SGDCloudKitSync : NSObject <APSConnectionDelegate>
 {
+    _PASKVOHandler *_kvoHandler;
     CKDatabase *_database;
     CDUnknownBlockType _callback;
     CDUnknownBlockType _deleteAllSyncedItemsCallback;
+    BOOL _readyForNewEntities;
     APSConnection *_apsConnection;
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_opQueue;
@@ -45,6 +46,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_sharedInstanceConfigurationQueue;
++ (id)apsEnvironmentStringForContainer:(id)arg1;
++ (void)setSharedInstanceConfigurationBlock:(CDUnknownBlockType)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_addDependency:(id)arg1 toTrain:(id)arg2;
@@ -57,9 +61,7 @@
 - (id)addDeleteAndRecreateZoneOperation;
 - (id)addDeleteZoneAttemptOperationWithRetries:(unsigned long long)arg1;
 - (id)addDeleteZoneOperation;
-- (void)addEntity:(id)arg1;
-- (void)addEvent:(id)arg1;
-- (void)addEvents:(id)arg1;
+- (void)addEntity:(id)arg1 withParentEntity:(id)arg2;
 - (id)addFetchNewEntitiesAttemptOperationWithRetries:(unsigned long long)arg1;
 - (id)addFetchNewEntitiesOperation;
 - (id)addManateeSanityCheckOperation;
@@ -69,15 +71,9 @@
 - (id)addProcureSaltOperation;
 - (id)addWriteOperationForRecordGetter:(CDUnknownBlockType)arg1 deleteGetter:(CDUnknownBlockType)arg2 withRetries:(unsigned long long)arg3;
 - (id)addWriteOperationForRecordGetter:(CDUnknownBlockType)arg1 deleteGetter:(CDUnknownBlockType)arg2 withRetries:(unsigned long long)arg3 isFirstTry:(BOOL)arg4;
-- (id)apsEnvironmentStringForContainer:(id)arg1;
-- (void)calendarDeleted;
-- (void)cancelEvent:(id)arg1;
-- (void)cancelEvents:(id)arg1;
 - (id)ckErrorForRecordId:(id)arg1 inError:(id)arg2;
 - (id)ckErrorForRecordZoneId:(id)arg1 inError:(id)arg2;
 - (void)clearErrors;
-- (void)confirmEventFromOtherDevice:(id)arg1;
-- (void)confirmEventFromThisDevice:(id)arg1;
 - (void)connection:(id)arg1 didChangeConnectedStatus:(BOOL)arg2;
 - (void)connection:(id)arg1 didFailToSendOutgoingMessage:(id)arg2 error:(id)arg3;
 - (void)connection:(id)arg1 didReceiveIncomingMessage:(id)arg2;
@@ -94,18 +90,16 @@
 - (void)failSalt;
 - (id)getUnderlyingError:(id)arg1;
 - (id)init;
-- (void)invokeNewEntitiesCallbackWithEntity:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)orphanEvent:(id)arg1;
+- (id)invokeNewEntitiesCallbackWithEntity:(id)arg1;
 - (BOOL)pauseIfNeededAndReturnRetryEligibilityForError:(id)arg1;
+- (id)privacySalt;
 - (void)processStateChanges;
 - (id)recordZoneId;
-- (void)rejectEventFromOtherDevice:(id)arg1;
-- (void)rejectEventFromThisDevice:(id)arg1;
 - (void)resume;
 - (void)setDatabase:(id)arg1;
 - (void)setDeleteAllSyncedItemsCallback:(CDUnknownBlockType)arg1;
 - (void)setNewEntitiesCallback:(CDUnknownBlockType)arg1;
+- (void)setReadyForNewEntities:(BOOL)arg1;
 - (BOOL)shouldRecreateZoneForRecordError:(id)arg1 operationError:(id)arg2;
 - (id)shouldRemoveEventsFromEventKit;
 - (void)suspend;

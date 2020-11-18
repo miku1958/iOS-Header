@@ -31,15 +31,15 @@
 
 + (id)extensionCompletionQueue;
 - (void).cxx_destruct;
-- (void)_completeOrCancelTransaction:(BOOL)arg1;
+- (void)_completeOrCancelTransaction:(BOOL)arg1 withIntentIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_connectExtensionWithRemoteViewControllerNeeded:(BOOL)arg1 Handler:(CDUnknownBlockType)arg2;
 - (id)_errorForIntent:(id)arg1;
 - (id)_errorForIntentResponse:(id)arg1 withExpectResponseClass:(Class)arg2;
 - (id)_errorForIntentVendorContext:(id)arg1;
 - (id)_handleOrConfirmIntent:(id)arg1 expectResponseClass:(Class)arg2 isHandle:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)cancel;
-- (void)cancelTransactionDueToTimeout;
-- (void)completeTransaction;
+- (void)cancelTransactionDueToTimeoutWithIntentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)completeTransactionWithIntentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)confirmIntent:(id)arg1 expectResponseClass:(Class)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)connectExtensionWithHandler:(CDUnknownBlockType)arg1;
 - (void)connectExtensionWithRemoteViewControllerNeeded:(BOOL)arg1 Handler:(CDUnknownBlockType)arg2;

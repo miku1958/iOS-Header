@@ -6,7 +6,6 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <CardKit/CRKCardSectionViewControllerDataSource-Protocol.h>
 #import <CardKit/CRKCardSectionViewControllerDelegate-Protocol.h>
 #import <CardKit/CRKCardSectionViewProviderDelegate-Protocol.h>
 #import <CardKit/CRKCardViewControlling-Protocol.h>
@@ -14,14 +13,14 @@
 @class CRKComposedStackView, NSMapTable, NSMutableArray, NSString;
 @protocol CRCard, CRKCardSectionViewSourcing, CRKCardViewControllerDelegate;
 
-@interface CRKCardViewController : UIViewController <CRKCardSectionViewControllerDelegate, CRKCardSectionViewProviderDelegate, CRKCardSectionViewControllerDataSource, CRKCardViewControlling>
+@interface CRKCardViewController : UIViewController <CRKCardSectionViewControllerDelegate, CRKCardSectionViewProviderDelegate, CRKCardViewControlling>
 {
     NSMutableArray *_cardSectionViewControllers;
     NSMapTable *_cardSectionsToCardSectionViewControllersMapTable;
     NSMapTable *_handledParametersForInteraction;
     NSMutableArray *_pendingDismissalCommands;
     BOOL _loaded;
-    id<CRKCardSectionViewSourcing> _builtInCardSectionViewProviderManager;
+    id<CRKCardSectionViewSourcing> _builtInCardSectionViewSource;
     NSMutableArray *_loadingCardSections;
     BOOL _indicatingActivity;
     BOOL _loadBundles;
@@ -50,6 +49,7 @@
 - (void).cxx_destruct;
 - (void)_addCardSectionViewControllersAsChildViewControllers:(id)arg1;
 - (BOOL)_askDelegateToPerformReferentialCommand:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancelTouchesIfNecessary;
 - (id)_cardSectionViewControllerForCardSection:(id)arg1;
 - (void)_configureCardSectionViewController:(id)arg1 forCardSection:(id)arg2;
@@ -72,7 +72,6 @@
 - (struct CGSize)boundingSizeForCardSectionViewController:(id)arg1;
 - (void)cardEventDidOccur:(unsigned long long)arg1 withIdentifier:(id)arg2 userInfo:(id)arg3;
 - (void)cardSectionViewController:(id)arg1 didSelectPreferredPunchoutIndex:(long long)arg2;
-- (id)cardSectionViewController:(id)arg1 interactionWithIdentifier:(id)arg2;
 - (void)cardSectionViewController:(id)arg1 requestsHandlingOfIntent:(id)arg2;
 - (void)cardSectionViewControllerBoundsDidChange:(id)arg1;
 - (void)cardSectionViewControllerDidFinishLoading:(id)arg1;

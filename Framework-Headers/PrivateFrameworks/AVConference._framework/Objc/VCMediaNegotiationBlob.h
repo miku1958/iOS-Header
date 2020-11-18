@@ -8,7 +8,7 @@
 
 #import <AVConference/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, VCMediaNegotiationBlobAudioSettings, VCMediaNegotiationBlobCaptionsSettings, VCMediaNegotiationBlobMomentsSettings, VCMediaNegotiationBlobVideoSettings;
+@class NSMutableArray, NSString, VCMediaNegotiationBlobAudioSettings, VCMediaNegotiationBlobCaptionsSettings, VCMediaNegotiationBlobMomentsSettings, VCMediaNegotiationBlobVideoSettings, VCMediaNegotiationFaceTimeSettings;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationBlob : PBCodable <NSCopying>
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     unsigned int _basebandCodecSampleRate;
     unsigned int _blobVersion;
     VCMediaNegotiationBlobCaptionsSettings *_captionsSettings;
+    VCMediaNegotiationFaceTimeSettings *_faceTimeSettings;
+    unsigned int _mediaControlInfoVersion;
     VCMediaNegotiationBlobMomentsSettings *_momentsSettings;
     NSMutableArray *_multiwayAudioStreams;
     NSMutableArray *_multiwayVideoStreams;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int ntpTime:1;
         unsigned int basebandCodecSampleRate:1;
         unsigned int blobVersion:1;
+        unsigned int mediaControlInfoVersion:1;
         unsigned int allowDynamicMaxBitrate:1;
         unsigned int allowsContentsChangeWithAspectPreservation:1;
     } _has;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int basebandCodecSampleRate; // @synthesize basebandCodecSampleRate=_basebandCodecSampleRate;
 @property (nonatomic) unsigned int blobVersion; // @synthesize blobVersion=_blobVersion;
 @property (strong, nonatomic) VCMediaNegotiationBlobCaptionsSettings *captionsSettings; // @synthesize captionsSettings=_captionsSettings;
+@property (strong, nonatomic) VCMediaNegotiationFaceTimeSettings *faceTimeSettings; // @synthesize faceTimeSettings=_faceTimeSettings;
 @property (nonatomic) BOOL hasAllowDynamicMaxBitrate;
 @property (nonatomic) BOOL hasAllowsContentsChangeWithAspectPreservation;
 @property (readonly, nonatomic) BOOL hasAudioSettings;
@@ -52,11 +56,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasBasebandCodecSampleRate;
 @property (nonatomic) BOOL hasBlobVersion;
 @property (readonly, nonatomic) BOOL hasCaptionsSettings;
+@property (readonly, nonatomic) BOOL hasFaceTimeSettings;
+@property (nonatomic) BOOL hasMediaControlInfoVersion;
 @property (readonly, nonatomic) BOOL hasMomentsSettings;
 @property (nonatomic) BOOL hasNtpTime;
 @property (readonly, nonatomic) BOOL hasScreenSettings;
 @property (readonly, nonatomic) BOOL hasUserAgent;
 @property (readonly, nonatomic) BOOL hasVideoSettings;
+@property (nonatomic) unsigned int mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
 @property (strong, nonatomic) VCMediaNegotiationBlobMomentsSettings *momentsSettings; // @synthesize momentsSettings=_momentsSettings;
 @property (strong, nonatomic) NSMutableArray *multiwayAudioStreams; // @synthesize multiwayAudioStreams=_multiwayAudioStreams;
 @property (strong, nonatomic) NSMutableArray *multiwayVideoStreams; // @synthesize multiwayVideoStreams=_multiwayVideoStreams;

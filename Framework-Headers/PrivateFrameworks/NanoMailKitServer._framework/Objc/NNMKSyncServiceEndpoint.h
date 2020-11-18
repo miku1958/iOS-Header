@@ -36,9 +36,9 @@
 - (id)initWithIDSServiceName:(id)arg1 queue:(id)arg2;
 - (void)readProtobufData:(id)arg1 type:(unsigned long long)arg2;
 - (void)resetRepeatPreventionHistory;
-- (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 repeatPreventionId:(id)arg4 shortTimeout:(BOOL)arg5 allowCloudDelivery:(BOOL)arg6;
-- (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 shortTimeout:(BOOL)arg4 allowCloudDelivery:(BOOL)arg5;
+- (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 repeatPreventionId:(id)arg4 timeoutCategory:(unsigned long long)arg5 allowCloudDelivery:(BOOL)arg6;
 - (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 timeout:(double)arg4 allowCloudDelivery:(BOOL)arg5;
+- (id)sendProtobufData:(id)arg1 type:(unsigned long long)arg2 priority:(unsigned long long)arg3 timeoutCategory:(unsigned long long)arg4 allowCloudDelivery:(BOOL)arg5;
 - (void)spaceBecameAvailable;
 - (void)successfullySentProtobufWithIDSIdentifier:(id)arg1;
 - (void)syncServiceTransport:(id)arg1 didFailSendingProtobufWithIdentifier:(id)arg2 errorCode:(long long)arg3;

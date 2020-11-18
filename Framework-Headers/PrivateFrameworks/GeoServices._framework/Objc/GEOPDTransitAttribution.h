@@ -17,14 +17,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_providerNames;
 }
 
-@property (strong, nonatomic) NSMutableArray *providerNames; // @synthesize providerNames=_providerNames;
+@property (strong, nonatomic) NSMutableArray *providerNames;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)providerNameType;
 + (id)transitAttributionForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (void)addProviderName:(id)arg1;
 - (void)clearProviderNames;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)providerNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)providerNamesCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) ACAccount *account;
 @property (readonly, nonatomic) NSNumber *accountIdentifier;
 @property (readonly, nonatomic) NSString *actionType;
+@property (readonly, nonatomic) long long alertType;
 @property (readonly, nonatomic) NSDictionary *aps;
 @property (readonly, nonatomic) NSString *clientIdentifier;
 @property (readonly, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;

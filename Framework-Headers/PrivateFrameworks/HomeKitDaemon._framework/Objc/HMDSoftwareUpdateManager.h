@@ -8,13 +8,12 @@
 
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDAppleMediaAccessory, HMDHomeManager, NSHashTable, NSObject, NSString, NSUUID;
+@class HMDAppleMediaAccessory, NSHashTable, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDSoftwareUpdateManager : HMFObject <HMFMessageReceiver>
 {
     HMDAppleMediaAccessory *_accessory;
-    HMDHomeManager *_homeManager;
     NSUUID *_identifier;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSHashTable *_activeClients;
@@ -26,7 +25,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, weak) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
@@ -37,11 +35,10 @@
 - (void)_handleStart:(id)arg1;
 - (void)_handleStop:(id)arg1;
 - (void)_handleUpdateAvailableUpdate:(id)arg1;
-- (BOOL)_shouldAcceptMessage:(id)arg1;
 - (void)fetchAvailableUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithHomeManager:(id)arg1;
 - (id)messageDestination;
+- (id)messageDispatcher;
 - (void)registerForMessages;
 - (void)startUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateAvailableUpdate:(id)arg1;

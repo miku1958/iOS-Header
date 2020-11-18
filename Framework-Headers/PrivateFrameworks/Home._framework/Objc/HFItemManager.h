@@ -7,12 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFAccessoryObserver-Protocol.h>
+#import <Home/HFAudioControlObserver-Protocol.h>
 #import <Home/HFCameraObserver-Protocol.h>
+#import <Home/HFHomeKitSettingsObserver-Protocol.h>
 #import <Home/HFHomeManagerObserver-Protocol.h>
 #import <Home/HFHomeObserver-Protocol.h>
 #import <Home/HFItemUpdating-Protocol.h>
 #import <Home/HFMediaObjectObserver-Protocol.h>
 #import <Home/HFMediaSessionObserver-Protocol.h>
+#import <Home/HFNetworkConfigurationObserver-Protocol.h>
+#import <Home/HFNetworkRouterObserver-Protocol.h>
 #import <Home/HFResidentDeviceObserver-Protocol.h>
 #import <Home/HFSoftwareUpdateControllerObserver-Protocol.h>
 #import <Home/HFSoftwareUpdateObserver-Protocol.h>
@@ -26,7 +30,7 @@
 @class HFItem, HFItemManagerBatchedDelegateAdapter, HMHome, NAFuture, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol HFCharacteristicReadPolicy, HFItemManagerDelegate;
 
-@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTelevisionObserver, HFSymptomFixSessionObserver, HFTemperatureUnitObserver, HFItemUpdating>
+@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFAudioControlObserver, HFNetworkConfigurationObserver, HFNetworkRouterObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTelevisionObserver, HFHomeKitSettingsObserver, HFSymptomFixSessionObserver, HFTemperatureUnitObserver, HFItemUpdating>
 {
     BOOL _hasRequestedFirstUpdate;
     id<HFItemManagerDelegate> _delegate;
@@ -34,6 +38,7 @@
     HMHome *_home;
     NSArray *_itemProviders;
     NSArray *_itemModules;
+    NSArray *_sections;
     NSString *_identifier;
     id<HFCharacteristicReadPolicy> _readPolicy;
     unsigned long long _overallLoadingState;
@@ -41,7 +46,6 @@
     NSSet *_subclassItemProviderSet;
     NSSet *_moduleItemProviderSet;
     HMHome *_lastUpdatedHome;
-    NSArray *_sections;
     NSMapTable *_childItemsByParentItem;
     NSMutableDictionary *_suppressedCharacteristicUpdatesByReason;
     NSMutableSet *_disableUpdateReasons;
@@ -98,6 +102,7 @@
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_cameraForCameraControl:(id)arg1;
 - (id)_cameraForCameraStream:(id)arg1;
+- (id)_cameraForUserSettings:(id)arg1;
 - (CDUnknownBlockType)_comparatorForSectionIdentifier:(id)arg1;
 - (id)_debug_itemDescriptions;
 - (id)_debug_itemManagerDescription;
@@ -119,8 +124,8 @@
 - (id)_itemsToHideInSet:(id)arg1;
 - (id)_itemsToUpdateForAccessorySettingChange:(id)arg1;
 - (id)_itemsToUpdateForAccessorySettingChanges:(id)arg1;
-- (id)_itemsToUpdateForAccessorySettingsChange:(id)arg1;
 - (id)_itemsToUpdateForAllowAccessWhileLockedSettingChange;
+- (id)_itemsToUpdateForHomeKitSettingsChange:(id)arg1;
 - (id)_itemsToUpdateForIncomingInvitation:(id)arg1;
 - (id)_itemsToUpdateForMediaObjectChange:(id)arg1;
 - (id)_itemsToUpdateForMediaProfileContainer:(id)arg1;
@@ -134,6 +139,8 @@
 - (id)_itemsToUpdateForModifiedCharacteristics:(id)arg1 includeSuppressedCharacteristics:(BOOL)arg2;
 - (id)_itemsToUpdateForModifiedEvents:(id)arg1;
 - (id)_itemsToUpdateForModifiedMetadataForHomes:(id)arg1;
+- (id)_itemsToUpdateForModifiedNetworkConfigurationProfiles:(id)arg1;
+- (id)_itemsToUpdateForModifiedNetworkRouterProfiles:(id)arg1;
 - (id)_itemsToUpdateForModifiedResidentDevices:(id)arg1;
 - (id)_itemsToUpdateForModifiedRooms:(id)arg1;
 - (id)_itemsToUpdateForModifiedServiceGroups:(id)arg1;
@@ -174,6 +181,7 @@
 - (BOOL)_shouldPerformFastInitialUpdates;
 - (id)_sortedItems:(id)arg1 forSectionIdentifier:(id)arg2;
 - (id)_titleForSectionWithIdentifier:(id)arg1;
+- (id)_transformedUpdateOutcomeForItem:(id)arg1 proposedOutcome:(id)arg2;
 - (void)_unregisterForExternalUpdates;
 - (void)_updateExternalUpdatesEnabled:(BOOL)arg1 reloadItems:(BOOL)arg2;
 - (void)_updateLoadingStateAndNotifyDelegateForItems:(id)arg1 canFinishTransaction:(BOOL)arg2;
@@ -210,11 +218,12 @@
 - (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)accessoryDidUpdateName:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
+- (void)accessoryDidUpdateReachableTransports:(id)arg1;
 - (void)accessoryDidUpdateServices:(id)arg1;
 - (void)accessoryDidUpdateTargetControlSupport:(id)arg1;
-- (void)accessorySettings:(id)arg1 didWriteValueForSettings:(id)arg2 failedSettings:(id)arg3;
-- (void)accessorySettings:(id)arg1 willWriteValueForSettings:(id)arg2;
 - (id)attributedFooterTitleForSection:(unsigned long long)arg1;
+- (void)audioControl:(id)arg1 didUpdateMuted:(BOOL)arg2;
+- (void)audioControl:(id)arg1 didUpdateVolume:(float)arg2;
 - (void)beginSuppressingUpdatesForCharacteristics:(id)arg1 withReason:(id)arg2;
 - (void)cameraSnapshotControl:(id)arg1 didTakeSnapshot:(id)arg2 error:(id)arg3;
 - (void)cameraSnapshotControlDidUpdateMostRecentSnapshot:(id)arg1;
@@ -223,6 +232,7 @@
 - (void)cameraStreamControlDidStartStream:(id)arg1;
 - (void)cameraStreamControlDidUpdateManagerState:(id)arg1;
 - (void)cameraStreamControlDidUpdateStreamState:(id)arg1;
+- (void)cameraUserSettingsDidUpdate:(id)arg1;
 - (id)childItemsForItem:(id)arg1;
 - (id)childItemsForItem:(id)arg1 ofClass:(Class)arg2;
 - (id)childItemsForItem:(id)arg1 ofClass:(Class)arg2 conformingToProtocol:(id)arg3;
@@ -287,6 +297,8 @@
 - (void)home:(id)arg1 willWriteValuesForCharacteristics:(id)arg2;
 - (void)homeDidUpdateApplicationData:(id)arg1;
 - (void)homeDidUpdateName:(id)arg1;
+- (void)homeDidUpdateNetworkRouterSupport:(id)arg1;
+- (void)homeDidUpdateProtectionMode:(id)arg1;
 - (void)homeKitDispatcher:(id)arg1 manager:(id)arg2 didChangeHome:(id)arg3;
 - (void)homeManager:(id)arg1 didAddHome:(id)arg2;
 - (void)homeManager:(id)arg1 didRemoveHome:(id)arg2;
@@ -314,7 +326,16 @@
 - (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (unsigned long long)numberOfSections;
 - (id)performItemUpdateRequest:(id)arg1;
+- (void)profileDidUpdateAccessViolation:(id)arg1;
+- (void)profileDidUpdateAllowedHosts:(id)arg1;
 - (void)profileDidUpdateMediaSourceDisplayOrder:(id)arg1;
+- (void)profileDidUpdateNetworkProtectionMode:(id)arg1;
+- (void)profileDidUpdateNetworkStatus:(id)arg1;
+- (void)profileDidUpdateSatellites:(id)arg1;
+- (void)profileDidUpdateWiFiCredentialType:(id)arg1;
+- (void)profileDidUpdateWiFiReconfigurationSupport:(id)arg1;
+- (void)profilesDidUpdateAllowedHosts:(id)arg1;
+- (void)profilesDidUpdateNetworkProtectionMode:(id)arg1;
 - (void)recalculateVisibilityAndSortAllItems;
 - (id)reloadAndUpdateAllItemsFromSenderSelector:(SEL)arg1;
 - (id)reloadAndUpdateItemsForProviders:(id)arg1 senderSelector:(SEL)arg2;
@@ -324,6 +345,8 @@
 - (void)residentDevice:(id)arg1 didUpdateName:(id)arg2;
 - (void)residentDevice:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (unsigned long long)sectionIndexForDisplayedSectionIdentifier:(id)arg1;
+- (void)settings:(id)arg1 didWriteValueForSettings:(id)arg2 failedSettings:(id)arg3;
+- (void)settings:(id)arg1 willWriteValueForSettings:(id)arg2;
 - (void)settingsDidUpdate:(id)arg1;
 - (void)settingsInvalidatedForNotificationCenter:(id)arg1;
 - (void)softwareUpdate:(id)arg1 didUpdateDocumentation:(id)arg2;
@@ -336,6 +359,7 @@
 - (id)titleForSection:(unsigned long long)arg1;
 - (id)updateResultsForItems:(id)arg1 senderSelector:(SEL)arg2;
 - (void)user:(id)arg1 didUpdateAssistantAccessControl:(id)arg2 forHome:(id)arg3;
+- (void)user:(id)arg1 didUpdateMediaContentProfileAccessControl:(id)arg2 forHome:(id)arg3;
 
 @end
 

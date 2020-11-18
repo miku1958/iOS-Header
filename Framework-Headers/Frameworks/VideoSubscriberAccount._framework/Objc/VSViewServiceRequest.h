@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) VSAccountMetadataRequest *accountMetadataRequest; // @synthesize accountMetadataRequest=_accountMetadataRequest;
+@property (readonly, copy, nonatomic) NSString *accountProviderAuthenticationToken;
 @property (readonly, nonatomic) BOOL allowsAuthenticationUI;
 @property (nonatomic) BOOL allowsPrivacyUI; // @synthesize allowsPrivacyUI=_allowsPrivacyUI;
 @property (nonatomic) BOOL canVetoAuthentication; // @synthesize canVetoAuthentication=_canVetoAuthentication;
 @property (readonly, copy, nonatomic) NSArray *featuredIdentityProviderIdentifiers;
 @property (readonly, copy, nonatomic) NSString *localizedVideoTitle;
+@property (readonly, nonatomic, getter=isPreAuthRequest) BOOL preAuthRequest;
 @property (strong, nonatomic) NSString *requestingAppAdamID; // @synthesize requestingAppAdamID=_requestingAppAdamID;
 @property (strong, nonatomic) VSOptional *requestingAppDisplayName; // @synthesize requestingAppDisplayName=_requestingAppDisplayName;
 @property (nonatomic) BOOL requiresPrivacyUI; // @synthesize requiresPrivacyUI=_requiresPrivacyUI;

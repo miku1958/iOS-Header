@@ -28,6 +28,7 @@
     int _playbackQueueInsertionPosition;
     int _playbackQueueOffset;
     float _playbackRate;
+    NSData *_playbackSession;
     NSString *_radioStationHash;
     float _rating;
     NSString *_remoteControlInterface;
@@ -40,6 +41,8 @@
     NSString *_sourceID;
     NSString *_stationURL;
     NSData *_systemAppPlaybackQueueData;
+    BOOL _beginSeek;
+    BOOL _endSeek;
     BOOL _externalPlayerCommand;
     BOOL _negative;
     BOOL _requestDefermentToPlaybackQueuePosition;
@@ -59,6 +62,8 @@
         unsigned int sendOptions:1;
         unsigned int shuffleMode:1;
         unsigned int skipInterval:1;
+        unsigned int beginSeek:1;
+        unsigned int endSeek:1;
         unsigned int externalPlayerCommand:1;
         unsigned int negative:1;
         unsigned int requestDefermentToPlaybackQueuePosition:1;
@@ -67,15 +72,19 @@
     } _has;
 }
 
+@property (nonatomic) BOOL beginSeek; // @synthesize beginSeek=_beginSeek;
 @property (strong, nonatomic) NSString *commandID; // @synthesize commandID=_commandID;
 @property (strong, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
 @property (strong, nonatomic) NSString *contextID; // @synthesize contextID=_contextID;
 @property (strong, nonatomic) NSString *destinationAppDisplayID; // @synthesize destinationAppDisplayID=_destinationAppDisplayID;
+@property (nonatomic) BOOL endSeek; // @synthesize endSeek=_endSeek;
 @property (nonatomic) BOOL externalPlayerCommand; // @synthesize externalPlayerCommand=_externalPlayerCommand;
+@property (nonatomic) BOOL hasBeginSeek;
 @property (readonly, nonatomic) BOOL hasCommandID;
 @property (readonly, nonatomic) BOOL hasContentItemID;
 @property (readonly, nonatomic) BOOL hasContextID;
 @property (readonly, nonatomic) BOOL hasDestinationAppDisplayID;
+@property (nonatomic) BOOL hasEndSeek;
 @property (nonatomic) BOOL hasExternalPlayerCommand;
 @property (readonly, nonatomic) BOOL hasInsertAfterContentItemID;
 @property (readonly, nonatomic) BOOL hasLanguageOption;
@@ -88,6 +97,7 @@
 @property (nonatomic) BOOL hasPlaybackQueueInsertionPosition;
 @property (nonatomic) BOOL hasPlaybackQueueOffset;
 @property (nonatomic) BOOL hasPlaybackRate;
+@property (readonly, nonatomic) BOOL hasPlaybackSession;
 @property (readonly, nonatomic) BOOL hasRadioStationHash;
 @property (nonatomic) BOOL hasRadioStationID;
 @property (nonatomic) BOOL hasRating;
@@ -116,6 +126,7 @@
 @property (nonatomic) int playbackQueueInsertionPosition; // @synthesize playbackQueueInsertionPosition=_playbackQueueInsertionPosition;
 @property (nonatomic) int playbackQueueOffset; // @synthesize playbackQueueOffset=_playbackQueueOffset;
 @property (nonatomic) float playbackRate; // @synthesize playbackRate=_playbackRate;
+@property (strong, nonatomic) NSData *playbackSession; // @synthesize playbackSession=_playbackSession;
 @property (strong, nonatomic) NSString *radioStationHash; // @synthesize radioStationHash=_radioStationHash;
 @property (nonatomic) long long radioStationID; // @synthesize radioStationID=_radioStationID;
 @property (nonatomic) float rating; // @synthesize rating=_rating;

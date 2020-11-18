@@ -66,6 +66,7 @@
 - (id)contentSizeCategoryForCaption:(id)arg1;
 - (void)createMediaViewEventForGalleryItem:(id)arg1;
 - (id)createViewForViewIndex:(unsigned long long)arg1;
+- (void)discardContents;
 - (void)finishMediaViewEvent;
 - (void)forceImageViewFullscreen:(id)arg1;
 - (id)fullScreenCanvasController:(id)arg1 canvasViewControllerForShowable:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

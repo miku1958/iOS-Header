@@ -18,6 +18,7 @@
 @property (copy, nonatomic) NSString *footerText; // @synthesize footerText=_footerText;
 @property (nonatomic) double horizontalInset;
 
++ (id)defaultBackgroundColor;
 + (double)defaultHorizontalInset;
 - (void).cxx_destruct;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;

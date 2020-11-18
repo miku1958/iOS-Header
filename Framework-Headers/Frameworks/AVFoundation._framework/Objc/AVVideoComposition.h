@@ -49,7 +49,6 @@
 - (id)builtInCompositorName;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)instructionForFigInstruction:(void *)arg1;
 - (BOOL)isValidForAsset:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 validationDelegate:(id)arg3;

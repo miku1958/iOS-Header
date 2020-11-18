@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface CKDDeviceManager : NSObject
 {
-    NSString *_deviceIdentifier;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_deviceIDs;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *deviceIDs; // @synthesize deviceIDs=_deviceIDs;
-@property (readonly, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)sharedManager;
@@ -27,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)_saveDeviceIdentifier:(id)arg1 forContext:(id)arg2;
 - (id)_savedDeviceIdentifierForContext:(id)arg1;
 - (id)_serviceForContext:(id)arg1;
-- (void)fetchDeviceIdentifierForContext:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (id)deviceIdentifierForContext:(id)arg1;
 - (id)init;
 
 @end

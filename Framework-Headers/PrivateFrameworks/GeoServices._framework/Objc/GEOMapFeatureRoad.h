@@ -10,7 +10,7 @@
 
 @interface GEOMapFeatureRoad : GEOMapFeatureLine
 {
-    CDStruct_a2ef2718 *_feature;
+    CDStruct_c8b5ad3f *_feature;
     unsigned long long _roadID;
     GEOMapFeatureJunction *_junctionA;
     GEOMapFeatureJunction *_junctionB;
@@ -19,35 +19,45 @@
 }
 
 @property (readonly, nonatomic) GEOMapFeatureJunction *endJunction;
-@property (readonly, nonatomic) CDStruct_a2ef2718 *feature;
+@property (readonly, nonatomic) CDStruct_c8b5ad3f *feature;
+@property (readonly, nonatomic) unsigned long long featureIndex;
 @property (readonly, nonatomic) int formOfWay;
 @property (readonly, nonatomic) NSString *internalRoadName;
 @property (readonly, nonatomic) BOOL isBridge;
 @property (readonly, nonatomic) BOOL isDrivable;
 @property (readonly, nonatomic) BOOL isFlipped;
 @property (readonly, nonatomic) BOOL isRail;
+@property (readonly, nonatomic) BOOL isRoadPedestrianNavigable;
 @property (readonly, nonatomic) BOOL isTunnel;
 @property (readonly, nonatomic) BOOL isWalkable;
+@property (readonly, nonatomic) long long laneCount;
 @property (readonly, nonatomic) int rampType;
 @property (readonly, nonatomic) int roadClass;
 @property (readonly, nonatomic) unsigned long long roadID;
 @property (readonly, nonatomic) double roadWidth;
+@property (readonly, nonatomic) int sidewalkSide;
 @property (readonly, nonatomic) unsigned long long speedLimit;
 @property (readonly, nonatomic) BOOL speedLimitIsMPH;
 @property (readonly, nonatomic) GEOMapFeatureJunction *startJunction;
 @property (readonly, nonatomic) struct _GEOTileKey tileKey;
 @property (readonly, nonatomic) int travelDirection;
+@property (readonly, nonatomic) int walkableSide;
 
-+ (double)estimatedWidthForRoad:(CDStruct_a2ef2718 *)arg1;
++ (double)estimatedWidthForRoad:(CDStruct_c8b5ad3f *)arg1;
 - (void).cxx_destruct;
+- (id)_attributes;
 - (id)_containingTile;
+- (int)_flippedSidewalkSideFor:(int)arg1;
+- (int)_flippedWalkableSideFor:(int)arg1;
 - (id)_junctionA;
 - (id)_junctionB;
 - (CDStruct_6e3f967a *)_tilePointsForSection:(unsigned long long)arg1 withCount:(out unsigned long long *)arg2;
 - (void)dealloc;
+- (id)debugDescription;
 - (void)flip;
-- (id)initWithFeature:(CDStruct_a2ef2718 *)arg1;
+- (id)initWithFeature:(CDStruct_c8b5ad3f *)arg1;
 - (id)localizedRoadName:(out id *)arg1;
+- (void)updateForDesiredRoadDirectionality:(unsigned long long)arg1 isOutboundRoad:(BOOL)arg2;
 
 @end
 

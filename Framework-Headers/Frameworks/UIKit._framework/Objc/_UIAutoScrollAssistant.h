@@ -14,12 +14,13 @@ __attribute__((visibility("hidden")))
 {
     BOOL _started;
     UIScrollView *_scrollView;
-    double _repeatInterval;
+    long long _mode;
     unsigned long long _allowedDirections;
     CADisplayLink *_displayLink;
     double _lastTimestamp;
     id<_UIAutoScrollBehavior> _behavior;
     struct CGPoint _point;
+    struct CGPoint _referenceContentOffsetForPoint;
     struct UIEdgeInsets _touchInsets;
 }
 
@@ -28,18 +29,21 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<_UIAutoScrollBehavior> behavior; // @synthesize behavior=_behavior;
 @property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 @property (nonatomic) double lastTimestamp; // @synthesize lastTimestamp=_lastTimestamp;
-@property (nonatomic) struct CGPoint point; // @synthesize point=_point;
-@property (nonatomic) double repeatInterval; // @synthesize repeatInterval=_repeatInterval;
+@property (nonatomic) long long mode; // @synthesize mode=_mode;
+@property (readonly, nonatomic) struct CGPoint point; // @synthesize point=_point;
+@property (nonatomic) struct CGPoint referenceContentOffsetForPoint; // @synthesize referenceContentOffsetForPoint=_referenceContentOffsetForPoint;
 @property (readonly, weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) BOOL started; // @synthesize started=_started;
 @property (nonatomic) struct UIEdgeInsets touchInsets; // @synthesize touchInsets=_touchInsets;
 
 - (void).cxx_destruct;
+- (void)_adjustPointToCurrentContentOffset;
 - (void)_handleAutoScrollerWithContentOffset:(struct CGPoint)arg1 direction:(unsigned long long)arg2;
-- (double)_interval;
+- (BOOL)_scrollContinuous;
 - (void)autoScrollFromPoint:(struct CGPoint)arg1;
 - (void)displayLinkFired:(id)arg1;
 - (id)initWithScrollView:(id)arg1;
+- (void)setPoint:(struct CGPoint)arg1 forContentOffset:(struct CGPoint)arg2;
 - (void)stop;
 
 @end

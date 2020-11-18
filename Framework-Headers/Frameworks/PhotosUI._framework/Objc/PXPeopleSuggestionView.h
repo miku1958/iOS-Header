@@ -46,7 +46,6 @@
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setSuggestion:(id)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)viewScaleDidChange;
 

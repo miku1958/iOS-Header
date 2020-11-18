@@ -20,8 +20,6 @@
 + (id)_textForMRCResults:(id)arg1 devicePosition:(long long)arg2;
 + (BOOL)shouldDisplayInstructionForMRCResults:(id)arg1 devicePosition:(long long)arg2;
 - (void).cxx_destruct;
-- (double)_backgroundAlpha;
-- (struct UIEdgeInsets)_textInsets;
 - (void)_updateTextWithPriorMRCResults:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

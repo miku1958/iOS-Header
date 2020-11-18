@@ -6,10 +6,15 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface _EARFormatter : NSObject
 {
     struct unique_ptr<SpeechITN, std::__1::default_delete<SpeechITN>> _itn;
+    NSString *_language;
 }
+
+@property (copy, nonatomic) NSString *language; // @synthesize language=_language;
 
 + (vector_2f7ba0dc)convertStringsToQuasarTokens:(id)arg1;
 + (void)initialize;
@@ -27,6 +32,7 @@
 - (id)initWithGeneralVoc:(id)arg1 withLexiconEnh:(id)arg2 withItnEnh:(id)arg3;
 - (id)initWithLanguage:(id)arg1 withSdapiConfig:(id)arg2 quasarConfig:(id)arg3;
 - (id)initWithQuasarConfig:(id)arg1;
+- (id)initWithQuasarConfig:(id)arg1 language:(id)arg2;
 
 @end
 

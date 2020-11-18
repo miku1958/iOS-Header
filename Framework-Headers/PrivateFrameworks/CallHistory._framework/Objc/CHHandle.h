@@ -23,6 +23,9 @@
 @property (readonly, copy, nonatomic) NSString *value; // @synthesize value=_value;
 
 + (long long)handleTypeForValue:(id)arg1;
++ (id)normalizedEmailAddressHandleForValue:(id)arg1;
++ (id)normalizedGenericHandleForValue:(id)arg1;
++ (id)normalizedPhoneNumberHandleForValue:(id)arg1 isoCountryCode:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

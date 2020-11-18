@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned long long fallback_usage_cap;
     unsigned long long fallback_cap_interval;
+    unsigned long long fallback_timeout_nanos;
     NWConcrete_nw_endpoint_handler *primary_child;
     NWConcrete_nw_endpoint_handler *fallback_child;
     int result;
@@ -24,15 +25,19 @@ __attribute__((visibility("hidden")))
     void *fallback_timer;
     void *post_transport_timer;
     void *usage_cap_timer;
+    unsigned long long fallback_timer_start;
     unsigned int fallback_disposition;
+    unsigned int received_primary_cancelled_error:1;
     unsigned int weak_fallback:1;
     unsigned int no_fallback_timer:1;
+    unsigned int fallback_is_forced:1;
     unsigned int fallback_based_on_interface_type:1;
     unsigned int started_fallback:1;
     unsigned int primary_child_in_progress:1;
     unsigned int fallback_child_in_progress:1;
     unsigned int primary_child_indefinite_failed:1;
     unsigned int fallback_child_indefinite_failed:1;
+    unsigned int fallback_is_cellular:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

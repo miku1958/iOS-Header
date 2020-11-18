@@ -6,17 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@protocol DNDSPairedDeviceStateMonitorDelegate;
+#import <DoNotDisturbServer/DNDSSysdiagnoseDataProvider-Protocol.h>
 
-@interface DNDSPairedDeviceStateMonitor : NSObject
+@class DNDSPairedDevice, NSString;
+@protocol DNDSPairedDeviceStateMonitorDelegate, OS_dispatch_queue;
+
+@interface DNDSPairedDeviceStateMonitor : NSObject <DNDSSysdiagnoseDataProvider>
 {
+    NSObject<OS_dispatch_queue> *_queue;
+    int _pairedDeviceDidChangeNotificationToken;
+    DNDSPairedDevice *_pairedDevice;
     id<DNDSPairedDeviceStateMonitorDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<DNDSPairedDeviceStateMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy) DNDSPairedDevice *pairedDevice; // @synthesize pairedDevice=_pairedDevice;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
 
 - (void).cxx_destruct;
-- (id)pairedDeviceWithError:(id *)arg1;
+- (void)_beginMonitoringForChanges;
+- (void)_endMonitoringForChanges;
+- (id)_getCurrentPairedDevice;
+- (void)_pairedDeviceStateChanged:(id)arg1;
+- (void)_queue_updatePairedState;
+- (void)dealloc;
+- (id)init;
+- (void)resume;
+- (id)sysdiagnoseDataForDate:(id)arg1;
 
 @end
 

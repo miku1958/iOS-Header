@@ -24,9 +24,9 @@
     PXSharedAlbumInvitationView *_invitationView;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -55,9 +55,7 @@
 - (void)_updateInvitationView;
 - (struct NSObject *)contentViewController;
 - (void)dealloc;
-- (BOOL)hasLoadedContentData;
 - (id)init;
-- (void)loadContentData;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)sharedAlbumInvitationView:(id)arg1 didAccept:(BOOL)arg2;
 - (void)sharedAlbumInvitationView:(id)arg1 presentViewController:(id)arg2;

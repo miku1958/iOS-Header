@@ -6,19 +6,19 @@
 
 #import <VideosUI/VUIButton.h>
 
-@class NSString, VUICircleProgressIndicator;
+@class NSString, VUICircularProgress;
 
 __attribute__((visibility("hidden")))
 @interface VUITransactionButton : VUIButton
 {
     BOOL _waitingForTransactionToStart;
     BOOL _monitorTransaction;
-    VUICircleProgressIndicator *_progressIndicator;
+    VUICircularProgress *_progressIndicator;
     NSString *_textContentTitleBackup;
 }
 
 @property (nonatomic) BOOL monitorTransaction; // @synthesize monitorTransaction=_monitorTransaction;
-@property (strong, nonatomic) VUICircleProgressIndicator *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
+@property (strong, nonatomic) VUICircularProgress *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
 @property (copy, nonatomic) NSString *textContentTitleBackup; // @synthesize textContentTitleBackup=_textContentTitleBackup;
 @property (nonatomic, getter=isWaitingForTransactionToStart) BOOL waitingForTransactionToStart; // @synthesize waitingForTransactionToStart=_waitingForTransactionToStart;
 

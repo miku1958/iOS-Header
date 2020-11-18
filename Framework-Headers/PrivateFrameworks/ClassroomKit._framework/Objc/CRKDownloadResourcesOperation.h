@@ -36,6 +36,7 @@
 - (void)cancelIfNeeded;
 - (void)finalizeDownloadedItem:(id)arg1 forRequestURL:(id)arg2;
 - (id)initWithResources:(id)arg1 clientIdentity:(id)arg2 trustedAnchorCertificates:(id)arg3;
+- (id)initWithResources:(id)arg1 clientIdentity:(id)arg2 trustedCertificates:(id)arg3;
 - (BOOL)isAsynchronous;
 - (void)main;
 - (id)moveURLToNonEphemeralLocation:(id)arg1 withFileName:(id)arg2 error:(id *)arg3;

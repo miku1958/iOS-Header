@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class HOVelocitySample;
+@class HUVelocitySample;
 
 @interface HUVelocitySampler : NSObject
 {
-    HOVelocitySample *_currentSample;
-    HOVelocitySample *_previousSample;
+    HUVelocitySample *_currentSample;
+    HUVelocitySample *_previousSample;
 }
 
-@property (strong, nonatomic) HOVelocitySample *currentSample; // @synthesize currentSample=_currentSample;
-@property (strong, nonatomic) HOVelocitySample *previousSample; // @synthesize previousSample=_previousSample;
+@property (strong, nonatomic) HUVelocitySample *currentSample; // @synthesize currentSample=_currentSample;
+@property (strong, nonatomic) HUVelocitySample *previousSample; // @synthesize previousSample=_previousSample;
 @property (readonly, nonatomic) struct CGVector velocity;
 
 - (void).cxx_destruct;

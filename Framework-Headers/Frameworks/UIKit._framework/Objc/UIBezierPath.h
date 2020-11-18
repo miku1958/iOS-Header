@@ -39,10 +39,10 @@
 + (id)_bezierPathWithArcRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
 + (id)_bezierPathWithPillRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
 + (id)_bezierPathWithRoundedRect:(struct CGRect)arg1 byRoundingCorners:(unsigned long long)arg2 cornerRadius:(double)arg3;
-+ (id)_continuousRoundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadii:(id)arg3 segments:(int)arg4 smoothPillShapes:(BOOL)arg5;
-+ (id)_continuousRoundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadius:(struct CGSize)arg3 segments:(int)arg4;
-+ (id)_roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadius:(double)arg3 segments:(int)arg4;
-+ (id)_roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 cornerRadius:(double)arg3 segments:(int)arg4 legacyCorners:(BOOL)arg5;
++ (id)_continuousRoundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(unsigned long long)arg2 cornerRadii:(id)arg3 segments:(int)arg4 smoothPillShapes:(BOOL)arg5;
++ (id)_continuousRoundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(unsigned long long)arg2 cornerRadius:(struct CGSize)arg3 segments:(int)arg4;
++ (id)_roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(unsigned long long)arg2 cornerRadius:(double)arg3 segments:(int)arg4;
++ (id)_roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(unsigned long long)arg2 cornerRadius:(double)arg3 segments:(int)arg4 legacyCorners:(BOOL)arg5;
 + (id)bezierPath;
 + (id)bezierPathWithArcCenter:(struct CGPoint)arg1 radius:(double)arg2 startAngle:(double)arg3 endAngle:(double)arg4 clockwise:(BOOL)arg5;
 + (id)bezierPathWithCGPath:(struct CGPath *)arg1;
@@ -50,8 +50,8 @@
 + (id)bezierPathWithRect:(struct CGRect)arg1;
 + (id)bezierPathWithRoundedRect:(struct CGRect)arg1 byRoundingCorners:(unsigned long long)arg2 cornerRadii:(struct CGSize)arg3;
 + (id)bezierPathWithRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
-+ (id)roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 withCornerRadii:(id)arg3;
-+ (id)roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(int)arg2 withCornerRadius:(double)arg3;
++ (id)roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(unsigned long long)arg2 withCornerRadii:(id)arg3;
++ (id)roundedRectBezierPath:(struct CGRect)arg1 withRoundedCorners:(unsigned long long)arg2 withCornerRadius:(double)arg3;
 + (id)roundedRectBezierPath:(struct CGRect)arg1 withRoundedEdges:(unsigned long long)arg2;
 + (id)roundedRectBezierPath:(struct CGRect)arg1 withTopCornerRadius:(double)arg2 withBottomCornerRadius:(double)arg3;
 + (id)shadowBezierPath:(struct CGRect)arg1 withRoundedEdges:(unsigned long long)arg2;

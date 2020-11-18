@@ -16,6 +16,7 @@
     int _responseType;
     CDUnknownBlockType _participantTapped;
     CDUnknownBlockType _participantRemoved;
+    CDUnknownBlockType _participantSetRole;
     NSMutableArray *_participants;
     EKEvent *_event;
     NSString *_cachedCellReuseIdentifier;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType participantRemoved; // @synthesize participantRemoved=_participantRemoved;
+@property (copy, nonatomic) CDUnknownBlockType participantSetRole; // @synthesize participantSetRole=_participantSetRole;
 @property (copy, nonatomic) CDUnknownBlockType participantTapped; // @synthesize participantTapped=_participantTapped;
 @property (strong, nonatomic) NSMutableArray *participants; // @synthesize participants=_participants;
 @property (nonatomic) int responseType; // @synthesize responseType=_responseType;
@@ -39,6 +41,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_isValidRow:(long long)arg1;
+- (id)actionsForRow:(id)arg1;
 - (BOOL)canEditRow:(id)arg1;
 - (BOOL)canSelectRow:(id)arg1;
 - (void)cancelOutstandingOperations;

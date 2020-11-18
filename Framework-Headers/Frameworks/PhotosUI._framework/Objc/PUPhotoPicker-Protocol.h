@@ -6,19 +6,18 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, PUPhotoPickerAppearance, UIViewController;
+@class NSArray, NSData, NSDictionary, UIViewController;
 
 @protocol PUPhotoPicker <NSObject>
 
-@property (nonatomic) long long actionType;
-@property (strong, nonatomic) NSString *actionTypeDescription;
 @property (readonly, nonatomic) BOOL allowsMultipleSelection;
 @property (readonly, nonatomic) BOOL convertAutoloopsToGIF;
 @property (readonly, nonatomic) NSArray *mediaTypes;
 @property (readonly, nonatomic) unsigned long long multipleSelectionLimit;
 @property (readonly, nonatomic) NSDictionary *properties;
+@property (readonly, nonatomic) BOOL requiresPickingConfirmation;
 @property (readonly, nonatomic) unsigned long long savingOptions;
-@property (nonatomic) long long secondaryActionType;
+@property (readonly, nonatomic) BOOL showsFileSizePicker;
 @property (readonly, nonatomic) BOOL showsPrompt;
 
 - (void)cancelPhotoPicker;
@@ -26,7 +25,6 @@
 - (void)didDisplayPhotoPickerSourceType:(long long)arg1;
 - (void)didSelectMediaWithInfoDictionary:(NSDictionary *)arg1 allowedHandler:(void (^)(BOOL))arg2;
 - (void)didSelectMultipleMediaItemsWithInfoDictionaries:(NSArray *)arg1;
-- (void)performAppearanceUpdateUsing:(PUPhotoPickerAppearance *)arg1;
 - (void)performPhotosSelection;
 - (void)performTraitCollectionUpdateUsingData:(NSData *)arg1 completion:(void (^)(NSNumber *))arg2;
 - (void)presentViewController:(UIViewController *)arg1;

@@ -12,7 +12,7 @@
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
-@class CNMutablePostalAddress, CNPostalAddress, CNPostalAddressEditorTableView, NSArray, NSDictionary, NSMutableDictionary, NSString, UIColor;
+@class CNMutablePostalAddress, CNPostalAddress, CNPostalAddressEditorTableView, CNPostalAddressFormattingSpecification, NSArray, NSDictionary, NSMutableDictionary, NSString, UIColor;
 @protocol CNPresenterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -22,28 +22,27 @@ __attribute__((visibility("hidden")))
     NSDictionary *_valueTextAttributes;
     id<CNPresenterDelegate> _delegate;
     CNPostalAddressEditorTableView *_tableView;
-    NSDictionary *_addressFormats;
     NSArray *_cellsLayout;
+    CNPostalAddressFormattingSpecification *_formatSpecification;
     NSMutableDictionary *_textFields;
 }
 
 @property (copy, nonatomic) NSString *ab_text;
 @property (copy, nonatomic) NSDictionary *ab_textAttributes;
 @property (copy, nonatomic) CNPostalAddress *address;
-@property (copy, nonatomic) NSDictionary *addressFormats; // @synthesize addressFormats=_addressFormats;
 @property (copy, nonatomic) NSArray *cellsLayout; // @synthesize cellsLayout=_cellsLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNPresenterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CNPostalAddressFormattingSpecification *formatSpecification; // @synthesize formatSpecification=_formatSpecification;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long lineCount;
 @property (copy, nonatomic) UIColor *separatorColor;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CNPostalAddressEditorTableView *tableView; // @synthesize tableView=_tableView;
-@property (copy, nonatomic) NSMutableDictionary *textFields; // @synthesize textFields=_textFields;
+@property (readonly, nonatomic) NSMutableDictionary *textFields; // @synthesize textFields=_textFields;
 
 - (void).cxx_destruct;
-- (id)_addressPlaceholderForKey:(id)arg1;
 - (id)_addressValueForKey:(id)arg1;
 - (id)_cellsLayoutForCountryCode:(id)arg1;
 - (id)_countryCode;
@@ -58,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isFirstResponder;
+- (id)keyboardSettingsForAddress:(id)arg1 component:(id)arg2;
 - (void)keyboardWillShow:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;

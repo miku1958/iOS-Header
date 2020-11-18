@@ -15,7 +15,7 @@
 #import <SafariServices/_SFWebViewDelegate-Protocol.h>
 #import <SafariServices/_WKInputDelegate-Protocol.h>
 
-@class NSString, WBSOneTimeCodeMonitor, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialogController, _SFFormAutoFillController;
+@class NSString, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialogController, _SFFormAutoFillController;
 @protocol SFWebViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,11 +25,11 @@ __attribute__((visibility("hidden")))
     BOOL _didFirstLayout;
     BOOL _didFinishDocumentLoad;
     BOOL _shouldSuppressDialogsThatBlockWebProcess;
-    WBSOneTimeCodeMonitor *_oneTimeCodeMonitor;
     NSString *_domainWhereUserDeclinedAutomaticStrongPassword;
     BOOL _loading;
     BOOL _didFirstVisuallyNonEmptyLayout;
     BOOL _hasFocusedInputFieldOnCurrentPage;
+    BOOL _hasFormControlInteraction;
     id<SFWebViewControllerDelegate> _delegate;
     WKWebViewConfiguration *_webViewConfiguration;
     _SFDialogController *_dialogController;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _SFDialogController *dialogController; // @synthesize dialogController=_dialogController;
 @property (readonly, nonatomic) BOOL didFirstVisuallyNonEmptyLayout; // @synthesize didFirstVisuallyNonEmptyLayout=_didFirstVisuallyNonEmptyLayout;
 @property (readonly, nonatomic) BOOL hasFocusedInputFieldOnCurrentPage; // @synthesize hasFocusedInputFieldOnCurrentPage=_hasFocusedInputFieldOnCurrentPage;
+@property (readonly, nonatomic) BOOL hasFormControlInteraction; // @synthesize hasFormControlInteraction=_hasFormControlInteraction;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
 @property (readonly) Class superclass;
@@ -52,22 +53,25 @@ __attribute__((visibility("hidden")))
 - (id)_actionsForElement:(id)arg1 defaultActions:(id)arg2 isPreviewing:(BOOL)arg3;
 - (int)_analyticsClient;
 - (void)_automaticPasswordInputViewNotification:(id)arg1;
-- (void)_beginOneTimeCodeMonitoringIfNecessary;
 - (id)_presentingViewControllerForWebView:(id)arg1;
 - (void)_userDeclinedAutomaticStrongPasswordForCurrentDomain;
 - (void)_webView:(id)arg1 accessoryViewCustomButtonTappedInFormInputSession:(id)arg2;
 - (id)_webView:(id)arg1 actionsForElement:(id)arg2 defaultActions:(id)arg3;
+- (void)_webView:(id)arg1 checkUserMediaPermissionForURL:(id)arg2 mainFrameURL:(id)arg3 frameIdentifier:(unsigned long long)arg4 decisionHandler:(CDUnknownBlockType)arg5;
 - (void)_webView:(id)arg1 commitPreviewedViewController:(id)arg2;
 - (void)_webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (long long)_webView:(id)arg1 dataOwnerForDragSession:(id)arg2;
 - (long long)_webView:(id)arg1 dataOwnerForDropSession:(id)arg2;
 - (long long)_webView:(id)arg1 decidePolicyForFocusedElement:(id)arg2;
-- (void)_webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 userInfo:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
+- (void)_webView:(id)arg1 decidePolicyForSOAuthorizationLoadWithCurrentPolicy:(long long)arg2 forExtension:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_webView:(id)arg1 didChangeSafeAreaShouldAffectObscuredInsets:(BOOL)arg2;
+- (void)_webView:(id)arg1 didFinishLoadForQuickLookDocumentInMainFrame:(id)arg2;
 - (void)_webView:(id)arg1 didResignInputElementStrongPasswordAppearanceWithUserInfo:(id)arg2;
 - (void)_webView:(id)arg1 didStartInputSession:(id)arg2;
+- (void)_webView:(id)arg1 didStartLoadForQuickLookDocumentInMainFrameWithFileName:(id)arg2 uti:(id)arg3;
 - (BOOL)_webView:(id)arg1 focusRequiresStrongPasswordAssistance:(id)arg2;
 - (void)_webView:(id)arg1 insertTextSuggestion:(id)arg2 inInputSession:(id)arg3;
+- (void)_webView:(id)arg1 mediaCaptureStateDidChange:(unsigned long long)arg2;
 - (void)_webView:(id)arg1 navigation:(id)arg2 didSameDocumentNavigation:(long long)arg3;
 - (void)_webView:(id)arg1 navigationDidFinishDocumentLoad:(id)arg2;
 - (id)_webView:(id)arg1 previewViewControllerForURL:(id)arg2 defaultActions:(id)arg3 elementInfo:(id)arg4;
@@ -75,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)_webView:(id)arg1 requestGeolocationAuthorizationForURL:(id)arg2 frame:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
 - (void)_webView:(id)arg1 requestStorageAccessPanelForDomain:(id)arg2 underCurrentDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_webView:(id)arg1 requestUserMediaAuthorizationForDevices:(unsigned long long)arg2 url:(id)arg3 mainFrameURL:(id)arg4 decisionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_webView:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
 - (void)_webView:(id)arg1 willPerformClientRedirectToURL:(id)arg2 delay:(double)arg3;
 - (void)_webView:(id)arg1 willStartInputSession:(id)arg2;
@@ -93,7 +98,6 @@ __attribute__((visibility("hidden")))
 - (void)formAutoFillControllerDidFocusSensitiveFormField:(id)arg1;
 - (BOOL)formAutoFillControllerDidUserDeclineAutomaticStrongPasswordForCurrentDomain:(id)arg1;
 - (void)formAutoFillControllerGetAuthenticationForAutoFill:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)formAutoFillControllerOneTimeCodeMonitor:(id)arg1;
 - (BOOL)formAutoFillControllerShouldDisableStreamlinedLogin:(id)arg1;
 - (BOOL)formAutoFillControllerShouldShowIconsInPasswordPicker:(id)arg1;
 - (id)formAutoFillControllerURLForFormAutoFill:(id)arg1;
@@ -103,9 +107,12 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)presentDialog:(id)arg1 sender:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)sfWebView:(id)arg1 didStartDownload:(id)arg2;
 - (void)sfWebViewDidBecomeFirstResponder:(id)arg1;
 - (void)sfWebViewDidChangeSafeAreaInsets:(id)arg1;
 - (void)sfWebViewDidEndFormControlInteraction:(id)arg1;
+- (void)sfWebViewDidStartFormControlInteraction:(id)arg1;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 preferences:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
 - (void)webView:(id)arg1 decidePolicyForNavigationResponse:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;

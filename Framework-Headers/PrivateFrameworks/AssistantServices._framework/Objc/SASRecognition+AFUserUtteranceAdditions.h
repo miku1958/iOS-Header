@@ -8,6 +8,9 @@
 
 @interface SASRecognition (AFUserUtteranceAdditions)
 - (id)af_bestTextInterpretationWithRefId:(id)arg1 sessionId:(id)arg2;
+- (id)af_correctionContextWithRefId:(id)arg1 sessionId:(id)arg2;
+- (id)af_speechPhrases;
+- (id)af_speechUtterances;
 - (id)af_userUtteranceValueWithRefId:(id)arg1 sessionId:(id)arg2;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSLayoutItem-Protocol.h>
 
-@class NSISEngine, NSISVariable, NSLayoutConstraint, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMutableArray, NSObservation;
+@class NSISEngine, NSISVariable, NSLayoutConstraint, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMutableArray, NSObservation, NSString;
 
 @protocol _UILayoutItem <NSLayoutItem>
 
@@ -36,6 +36,7 @@
 - (void)_uili_stashLayoutVariableObservation:(NSObservation *)arg1 forVariable:(NSISVariable *)arg2;
 - (NSISVariable *)nsli_boundsHeightVariable;
 - (NSISVariable *)nsli_boundsWidthVariable;
+- (BOOL)nsli_defaultResolvedValue:(double *)arg1 forSymbolicConstant:(NSString *)arg2 inConstraint:(NSLayoutConstraint *)arg3 error:(id *)arg4;
 - (NSISVariable *)nsli_heightVariable;
 - (NSISVariable *)nsli_minXVariable;
 - (NSISVariable *)nsli_minYVariable;

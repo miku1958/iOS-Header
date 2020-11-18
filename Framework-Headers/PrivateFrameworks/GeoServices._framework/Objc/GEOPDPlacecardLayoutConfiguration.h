@@ -17,14 +17,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_entries;
 }
 
-@property (strong, nonatomic) NSMutableArray *entries; // @synthesize entries=_entries;
+@property (strong, nonatomic) NSMutableArray *entries;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)entriesType;
++ (BOOL)isValid:(id)arg1;
 + (id)placecardLayoutConfigurationPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (void)addEntries:(id)arg1;
 - (void)clearEntries;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

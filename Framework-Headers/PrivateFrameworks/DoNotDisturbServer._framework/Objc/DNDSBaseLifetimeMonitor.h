@@ -30,14 +30,14 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *sysdiagnoseDataIdentifier; // @dynamic sysdiagnoseDataIdentifier;
 
-+ (BOOL)willMonitorLifetime:(id)arg1;
++ (Class)lifetimeClass;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)refreshMonitorForDate:(id)arg1;
 - (void)refreshMonitorFromQueueForDate:(id)arg1;
 - (id)sysdiagnoseDataForDate:(id)arg1;
-- (id)updateForModeAssertionDetails:(id)arg1 date:(id)arg2;
+- (id)updateForModeAssertions:(id)arg1 date:(id)arg2;
 
 @end
 

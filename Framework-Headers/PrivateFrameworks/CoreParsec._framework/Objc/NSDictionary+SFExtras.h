@@ -7,6 +7,16 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (SFExtras)
+- (id)parsec_URLForKey:(id)arg1;
+- (id)parsec_UUIDForKey:(id)arg1;
+- (id)parsec_arrayForKey:(id)arg1;
+- (BOOL)parsec_boolForKey:(id)arg1;
+- (id)parsec_dataForKey:(id)arg1;
+- (id)parsec_dateForKey:(id)arg1;
+- (id)parsec_dictionaryByMappingKeysUsingBlock:(CDUnknownBlockType)arg1;
+- (id)parsec_dictionaryForKey:(id)arg1;
+- (id)parsec_numberForKey:(id)arg1;
+- (id)parsec_stringForKey:(id)arg1;
 - (id)sf_asActionItem:(id)arg1;
 - (id)sf_asAirport;
 - (id)sf_asAppLink:(id)arg1;
@@ -36,6 +46,7 @@
 - (id)sf_asSearchResult:(id)arg1 factory:(id)arg2;
 - (id)sf_asSocialMediaPostCardSection:(id)arg1;
 - (id)sf_asStockChartCardSection:(id)arg1;
+- (id)sf_asSuggestion:(id)arg1;
 - (id)sf_asSuggestionCardSection:(id)arg1;
 - (id)sf_asTableAlignmentSchema;
 - (id)sf_asTableRowCardSection:(id)arg1;

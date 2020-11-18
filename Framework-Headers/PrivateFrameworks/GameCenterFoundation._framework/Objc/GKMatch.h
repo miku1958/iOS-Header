@@ -140,6 +140,8 @@
 - (void)session:(id)arg1 peer:(id)arg2 didChangeState:(int)arg3;
 - (void)session:(id)arg1 updateRelay:(id)arg2 forPeer:(id)arg3;
 - (BOOL)shouldStartRelay:(id)arg1;
+- (id)stringForGKPeerConnectionState:(int)arg1;
+- (id)stringForGKPlayerConnectionState:(long long)arg1;
 - (void)updateRelayConnectionForPlayer:(id)arg1;
 - (void)updateRelayInfo:(id)arg1 forPlayer:(id)arg2;
 - (void)updateRelayInfoFromCallback:(id)arg1 forPlayer:(id)arg2;

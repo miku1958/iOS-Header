@@ -6,17 +6,23 @@
 
 #import <PhotosUICore/PXGadgetDataSourceManager.h>
 
-@class PUSearchZeroKeywordGadgetProvider;
+#import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
+
+@class NSString, PUSearchZeroKeywordGadgetProvider;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager
+@interface PUSearchHomeGadgetDataSourceManager : PXGadgetDataSourceManager <PXSettingsKeyObserver>
 {
     PUSearchZeroKeywordGadgetProvider *_zeroKeywordGadgetProvider;
     long long _filteringState;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long filteringState; // @synthesize filteringState=_filteringState;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isExpectedToLoadNonEmptyDataSourceSoon;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) PUSearchZeroKeywordGadgetProvider *zeroKeywordGadgetProvider; // @synthesize zeroKeywordGadgetProvider=_zeroKeywordGadgetProvider;
 
 - (void).cxx_destruct;
@@ -25,8 +31,10 @@ __attribute__((visibility("hidden")))
 - (id)filteredUndisplayedGadgets:(id)arg1;
 - (id)gadgetProviders;
 - (CDUnknownBlockType)gadgetSortComparator;
+- (id)init;
 - (void)ppt_prepareZeroKeywordRequest:(CDUnknownBlockType)arg1;
 - (void)refreshData;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 
 @end
 

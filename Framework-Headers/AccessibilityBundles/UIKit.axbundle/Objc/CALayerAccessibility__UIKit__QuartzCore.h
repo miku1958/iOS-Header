@@ -11,6 +11,7 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (struct CGRect)_accessibilityBounds;
@@ -18,6 +19,7 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (void)dealloc;
+- (void)setBounds:(struct CGRect)arg1;
 
 @end
 

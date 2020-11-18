@@ -23,13 +23,14 @@
 @property (nonatomic) BOOL showsThumb; // @synthesize showsThumb=_showsThumb;
 
 + (double)_spacingAdjustmentFontSize;
-+ (id)timeMarkerFont;
++ (id)timeMarkerFontForSizeClass:(long long)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)_lineFrame;
 - (void)_updateTimeLabelColor;
 - (void)_updateTimeWithForce:(BOOL)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2;
 - (void)invalidateFonts;
 - (void)updateTime;
 

@@ -13,8 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (void)_axFollowLink;
 - (id)_axITunesPlayButton;
+- (id)_axMediaViews;
+- (id)_axMuteAction;
 - (BOOL)_axPlayPause:(id)arg1;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;

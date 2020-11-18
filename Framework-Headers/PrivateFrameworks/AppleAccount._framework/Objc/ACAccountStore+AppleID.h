@@ -7,6 +7,30 @@
 #import <Accounts/ACAccountStore.h>
 
 @interface ACAccountStore (AppleID)
+- (void)_performUpdateRequestWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)aa_accountsEnabledForDataclass:(id)arg1;
+- (id)aa_accountsForAccountClass:(id)arg1;
+- (id)aa_appleAccountType;
+- (id)aa_appleAccountWithAltDSID:(id)arg1;
+- (id)aa_appleAccountWithPersonID:(id)arg1;
+- (id)aa_appleAccountWithUsername:(id)arg1;
+- (id)aa_appleAccounts;
+- (void)aa_appleAccountsWithCompletion:(CDUnknownBlockType)arg1;
+- (id)aa_appleAccountsWithError:(id *)arg1;
+- (id)aa_authKitAccountForAltDSID:(id)arg1;
+- (id)aa_dataSeparatedAccounts;
+- (id)aa_grandSlamAccountForAltDSID:(id)arg1;
+- (id)aa_grandSlamAccountForiCloudAccount:(id)arg1;
+- (BOOL)aa_isUsingiCloud;
+- (id)aa_primaryAppleAccount;
+- (void)aa_primaryAppleAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (id)aa_primaryAppleAccountWithPreloadedDataclasses;
+- (id)aa_recommendedAppleIDForAccountSignInWithTypeIdentifier:(id)arg1;
+- (void)aa_registerAppleAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)aa_registerAppleAccountWithHSA:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)aa_registerAppleAccountWithHSA:(id)arg1 usingCookieHeaders:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)aa_updatePropertiesForAppleAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)aa_updatePropertiesForAppleAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)accountWithAppleID:(id)arg1;
 - (id)accountsWithAccountType:(id)arg1 appleID:(id)arg2;
 @end

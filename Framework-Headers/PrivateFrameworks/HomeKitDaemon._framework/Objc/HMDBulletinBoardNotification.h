@@ -47,7 +47,7 @@
 - (void).cxx_destruct;
 - (void)_handleBulletinBoardNotificationCommitRequest:(id)arg1;
 - (void)_registerNotificationHandlers;
-- (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
+- (void)configureBulletinNotification;
 - (void)configureMsgDispatcher:(id)arg1;
 - (void)dealloc;
 - (id)dumpState;

@@ -10,7 +10,7 @@
 #import <EventKitUI/EKDayOccurrenceViewDelegate-Protocol.h>
 #import <EventKitUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class EKCalendarDate, EKDayGridView, EKDayViewContentGeometryDelegate, EKEvent, NSCalendar, NSMutableArray, NSString, NSTimeZone, UIColor;
+@class EKCalendarDate, EKDayGridView, EKDayViewContentGeometryDelegate, EKEvent, NSCalendar, NSMutableArray, NSString, NSTimeZone, UIColor, UITraitCollection;
 @protocol EKDayViewContentDelegate;
 
 @interface EKDayViewContent : UIView <CUIKSingleDayTimelineLayoutScreenUtils, EKDayOccurrenceViewDelegate, UIGestureRecognizerDelegate>
@@ -22,7 +22,6 @@
     NSMutableArray *_lastLayoutWidthForDay;
     BOOL _loadingOccurrences;
     BOOL _putSelectionOnTop;
-    BOOL _hasCustomOccurrenceMargin;
     BOOL _hasCustomOccurrencePadding;
     EKEvent *_selectedEvent;
     NSMutableArray *_dayStarts;
@@ -36,24 +35,29 @@
     EKDayViewContentGeometryDelegate *_geometryDelegate;
     NSMutableArray *_reusableViews;
     BOOL _dataLoaded;
+    long long _sizeClass;
+    BOOL _shouldLayoutInReverse;
+    BOOL _shouldAnimateLayout;
+    NSMutableArray *_temporaryViewCacheByDay;
+    long long _saveTemporaryViewsEntryCount;
     BOOL _offscreenOccurrencePinningEnabled;
     BOOL _allowsOccurrenceSelection;
     BOOL _eventsFillGrid;
     BOOL _usesSmallText;
     BOOL _darkensWeekends;
     BOOL _reduceLayoutProcessingForAnimation;
-    int _occurrenceBackgroundStyle;
     EKCalendarDate *_startDate;
     EKCalendarDate *_endDate;
     NSCalendar *_calendar;
+    UITraitCollection *_stagedTraitCollection;
     id<EKDayViewContentDelegate> _delegate;
     double _fixedDayWidth;
     UIColor *_occurrenceTitleColor;
     UIColor *_occurrenceTimeColor;
     UIColor *_occurrenceLocationColor;
     UIColor *_occurrenceTextBackgroundColor;
+    long long _occurrenceBackgroundStyle;
     EKEvent *_dimmedOccurrence;
-    struct UIEdgeInsets _occurrenceMargin;
     struct UIEdgeInsets _occurrencePadding;
 }
 
@@ -69,9 +73,8 @@
 @property (readonly, nonatomic) double firstEventSecond;
 @property (nonatomic) double fixedDayWidth; // @synthesize fixedDayWidth=_fixedDayWidth;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) int occurrenceBackgroundStyle; // @synthesize occurrenceBackgroundStyle=_occurrenceBackgroundStyle;
+@property (nonatomic) long long occurrenceBackgroundStyle; // @synthesize occurrenceBackgroundStyle=_occurrenceBackgroundStyle;
 @property (strong, nonatomic) UIColor *occurrenceLocationColor; // @synthesize occurrenceLocationColor=_occurrenceLocationColor;
-@property (nonatomic) struct UIEdgeInsets occurrenceMargin; // @synthesize occurrenceMargin=_occurrenceMargin;
 @property (nonatomic) struct UIEdgeInsets occurrencePadding; // @synthesize occurrencePadding=_occurrencePadding;
 @property (strong, nonatomic) UIColor *occurrenceTextBackgroundColor; // @synthesize occurrenceTextBackgroundColor=_occurrenceTextBackgroundColor;
 @property (strong, nonatomic) UIColor *occurrenceTimeColor; // @synthesize occurrenceTimeColor=_occurrenceTimeColor;
@@ -80,6 +83,7 @@
 @property (nonatomic) BOOL reduceLayoutProcessingForAnimation; // @synthesize reduceLayoutProcessingForAnimation=_reduceLayoutProcessingForAnimation;
 @property (strong, nonatomic, setter=selectEvent:) EKEvent *selectedEvent;
 @property (nonatomic) BOOL showsLeftBorder;
+@property (strong, nonatomic) UITraitCollection *stagedTraitCollection; // @synthesize stagedTraitCollection=_stagedTraitCollection;
 @property (copy, nonatomic) EKCalendarDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSTimeZone *timeZone;
@@ -92,18 +96,21 @@
 - (void)_adjustViewsForPinning;
 - (void)_computeDayStartsAndEnds;
 - (void)_configureOccurrenceViewMarginAndPadding:(id)arg1;
+- (unsigned long long)_dayIndexForAllIndex:(unsigned long long)arg1;
 - (struct _NSRange)_dayRangeForEvent:(id)arg1 useProposedTime:(BOOL)arg2;
 - (struct _NSRange)_dayRangeForEventWithStartDate:(id)arg1 endDate:(id)arg2;
 - (double)_dayWidth;
 - (BOOL)_doOffscreenOccurrences;
 - (BOOL)_getBottomPinRegion:(double *)arg1 dayIndex:(unsigned long long *)arg2 forPoint:(struct CGPoint)arg3;
 - (void)_layoutDay:(unsigned long long)arg1 isLoadingAsync:(BOOL)arg2;
+- (BOOL)_layoutDayIfNeeded:(long long)arg1 isLoadingAsync:(BOOL)arg2;
 - (void)_layoutDaysIfVisible;
 - (void)_tapRecognized:(id)arg1;
 - (id)allVisibleItems;
 - (void)applyContentItem:(id)arg1 toView:(id)arg2;
-- (void)applyLoadedOccurrenceBatchStartingAtIndex:(long long)arg1 batchSize:(long long)arg2 fromArray:(id)arg3 animated:(BOOL)arg4 reverse:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)applyLoadedOccurrenceBatchStartingAtIndex:(long long)arg1 batchSize:(long long)arg2 fromArray:(id)arg3 withStartDate:(id)arg4 animated:(BOOL)arg5 reverse:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)applyLoadedOccurrencesWithBatching:(BOOL)arg1 animated:(BOOL)arg2 reverse:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)clearTemporaryViews;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
 - (double)dateForPoint:(struct CGPoint)arg1;
 - (void)dayOccurrenceViewSelected:(id)arg1 atPoint:(struct CGPoint)arg2 wasTapped:(BOOL)arg3;
@@ -112,21 +119,22 @@
 - (BOOL)eventsIntersectRect:(struct CGRect)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)grid;
-- (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2 backgroundColor:(id)arg3 opaque:(BOOL)arg4 numberOfDaysToDisplay:(unsigned long long)arg5;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2 orientation:(long long)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 sizeClass:(long long)arg2 orientation:(long long)arg3 backgroundColor:(id)arg4 opaque:(BOOL)arg5 numberOfDaysToDisplay:(unsigned long long)arg6;
 - (struct UIEdgeInsets)insetsForInterfaceLayout:(struct UIEdgeInsets)arg1;
 - (id)itemsForPreloadByDay;
 - (id)lastDisplayedSecond;
 - (void)layoutSubviews;
-- (void)loadAndLayoutOccurrences:(id)arg1;
+- (void)loadAndLayoutOccurrences:(id)arg1 reverse:(BOOL)arg2;
 - (void)loadOccurrences:(id)arg1;
 - (void)movePreloadedItemsToVisible;
 - (id)occurrenceViewForEvent:(id)arg1;
 - (id)occurrenceViewForEvent:(id)arg1 onDate:(double)arg2;
 - (id)occurrenceViews;
 - (struct CGPoint)pointForDate:(double)arg1;
-- (void)prepareForReuse;
+- (void)prepareForReuseIsReload:(BOOL)arg1;
 - (void)rectBecameVisible:(struct CGRect)arg1;
+- (void)saveTemporaryViews;
 - (void)setHoursToPadTop:(double)arg1;
 - (void)setNeedsLayout;
 - (void)setOccurrences:(id)arg1;
@@ -134,6 +142,7 @@
 - (void)setStartDateWithDateComponents:(id)arg1;
 - (void)setViewsDimmed:(BOOL)arg1 forEvent:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)visibleItemsByDay;
 
 @end

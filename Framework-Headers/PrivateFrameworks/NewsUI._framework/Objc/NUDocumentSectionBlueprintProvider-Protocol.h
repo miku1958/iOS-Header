@@ -9,6 +9,7 @@
 @class FCObservable;
 
 @protocol NUDocumentSectionBlueprintProvider <NSObject>
+- (FCObservable *)observableContentOverlayBlueprintData;
 - (FCObservable *)observableFooterBlueprint;
 - (FCObservable *)observableHeaderBlueprint;
 @end

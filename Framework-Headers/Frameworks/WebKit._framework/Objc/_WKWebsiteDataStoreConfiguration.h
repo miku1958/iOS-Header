@@ -23,15 +23,20 @@
 @property (copy, nonatomic, setter=_setServiceWorkerRegistrationDirectory:) NSURL *_serviceWorkerRegistrationDirectory;
 @property (copy, nonatomic, setter=_setWebSQLDatabaseDirectory:) NSURL *_webSQLDatabaseDirectory;
 @property (copy, nonatomic, setter=_setWebStorageDirectory:) NSURL *_webStorageDirectory;
+@property (nonatomic) BOOL allLoadsBlockedByDeviceManagementRestrictionsForTesting;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL deviceManagementRestrictionsEnabled;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic, setter=setHTTPProxy:) NSURL *httpProxy;
 @property (copy, nonatomic, setter=setHTTPSProxy:) NSURL *httpsProxy;
+@property (readonly, nonatomic, getter=isPersistent) BOOL persistent;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
 
+- (id)init;
+- (id)initNonPersistentConfiguration;
 
 @end
 

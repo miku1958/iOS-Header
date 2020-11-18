@@ -17,16 +17,18 @@
 
 @property (strong, nonatomic) PLManagedAlbum *album; // @synthesize album=_album;
 @property (copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
-@property (readonly, strong, nonatomic) PLManagedObjectContext *managedObjectContext;
+@property (readonly, nonatomic) NSPersistentStoreCoordinator *coordinator;
+@property (readonly, nonatomic) PLManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 
 + (void)replaceAssets:(id)arg1 withCameraRollCopiesInAlbum:(id)arg2;
+- (void).cxx_destruct;
 - (id)_cameraRollAssetDerivedFromAsset:(id)arg1;
 - (long long)daemonOperation;
 - (void)dealloc;
 - (void)encodeToXPCObject:(id)arg1;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
+- (id)initWithPhotoLibrary:(id)arg1;
 - (void)run;
 - (void)runDaemonSide;
 

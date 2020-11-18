@@ -19,6 +19,7 @@
 - (id)initWithContentView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

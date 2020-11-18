@@ -8,23 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDCategoryInformation, GEOPDCategoryLookupParameters, PBUnknownFields;
+@class GEOPDCategoryInformation, GEOPDCategoryLookupParameters, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategoryLookupResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDCategoryInformation *_categoryInfo;
     GEOPDCategoryLookupParameters *_categoryLookupParam;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_categoryInfo:1;
+        unsigned int read_categoryLookupParam:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_categoryInfo:1;
+        unsigned int wrote_categoryLookupParam:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDCategoryInformation *categoryInfo; // @synthesize categoryInfo=_categoryInfo;
-@property (strong, nonatomic) GEOPDCategoryLookupParameters *categoryLookupParam; // @synthesize categoryLookupParam=_categoryLookupParam;
+@property (strong, nonatomic) GEOPDCategoryInformation *categoryInfo;
+@property (strong, nonatomic) GEOPDCategoryLookupParameters *categoryLookupParam;
 @property (readonly, nonatomic) BOOL hasCategoryInfo;
 @property (readonly, nonatomic) BOOL hasCategoryLookupParam;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readCategoryInfo;
+- (void)_readCategoryLookupParam;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

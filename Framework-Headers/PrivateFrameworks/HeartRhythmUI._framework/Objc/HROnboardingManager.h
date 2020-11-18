@@ -48,7 +48,7 @@
 - (void).cxx_destruct;
 - (void)_advancingToOnboardingPageNumber:(long long)arg1;
 - (void)_didStepBackward;
-- (void)_wrappingUpOnboarding;
+- (void)_wrapUpOnboardingWithAtrialFibrillationDetectionEnabled:(BOOL)arg1;
 - (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3;
 - (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 delegate:(id)arg4;
 - (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2 onboardingIntent:(long long)arg3 delegate:(id)arg4 firstTimeOnboarding:(BOOL)arg5;

@@ -13,7 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
+- (id)init;
 - (void)moreButtonPressed;
 - (BOOL)shouldGroupAccessibilityChildren;
 - (void)updateHeaderButtonVisibility;

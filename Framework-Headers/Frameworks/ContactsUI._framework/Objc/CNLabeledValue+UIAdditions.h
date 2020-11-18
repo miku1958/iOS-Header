@@ -11,13 +11,22 @@
 @interface CNLabeledValue (UIAdditions)
 
 @property (readonly, nonatomic) NSString *localizedLabel;
+@property (readonly, nonatomic) NSString *localizedLabel;
 
 + (void *)addressBook;
++ (void *)addressBook;
++ (id)allCustomLabels;
 + (id)allCustomLabels;
 + (id)allLabels;
++ (id)allLabels;
++ (id)builtinLabelsForProperty:(id)arg1;
 + (id)builtinLabelsForProperty:(id)arg1;
 + (id)defaultLabels;
++ (id)defaultLabels;
++ (void)deleteCustomLabel:(id)arg1;
 + (void)deleteCustomLabel:(id)arg1;
 + (id)localizedDisplayStringForLabel:(id)arg1 propertyName:(id)arg2;
++ (id)localizedDisplayStringForLabel:(id)arg1 propertyName:(id)arg2;
+- (Class)contactViewControllerCellClassForPropertyType:(id)arg1;
 @end
 

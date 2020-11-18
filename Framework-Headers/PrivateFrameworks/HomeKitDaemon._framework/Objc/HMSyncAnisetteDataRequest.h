@@ -18,9 +18,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *messageName;
 @property (readonly, nonatomic) NSDictionary *messagePayload;
 @property (copy, nonatomic) NSData *simData; // @synthesize simData=_simData;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *xpcMessageName;
 
 + (id)messageName;
 + (id)objWithDict:(id)arg1;
@@ -30,8 +32,6 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)messageName;
-- (id)xpcMessageName;
 
 @end
 

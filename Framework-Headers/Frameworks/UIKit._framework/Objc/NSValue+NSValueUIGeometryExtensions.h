@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) struct CGSize CGSizeValue;
 @property (readonly, nonatomic) struct CGVector CGVectorValue;
 @property (readonly, nonatomic) struct UIEdgeInsets UIEdgeInsetsValue;
+@property (readonly) CDStruct_19cde01f UIKBHandwritingPointValue;
 @property (readonly, nonatomic) struct UIOffset UIOffsetValue;
 @property (readonly, nonatomic) struct NSDirectionalEdgeInsets directionalEdgeInsetsValue;
 
@@ -25,6 +26,7 @@
 + (id)valueWithDirectionalEdgeInsets:(struct NSDirectionalEdgeInsets)arg1;
 + (id)valueWithNSDirectionalEdgeInsets:(struct NSDirectionalEdgeInsets)arg1;
 + (id)valueWithUIEdgeInsets:(struct UIEdgeInsets)arg1;
++ (id)valueWithUIKBHandwritingPoint:(struct)arg1;
 + (id)valueWithUIOffset:(struct UIOffset)arg1;
 @end
 

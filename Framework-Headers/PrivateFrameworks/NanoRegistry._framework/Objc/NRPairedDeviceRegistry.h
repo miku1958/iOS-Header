@@ -19,16 +19,18 @@
     NSObject<OS_dispatch_queue> *_legacyDevicesQueue;
     NSObject<OS_dispatch_queue> *_legacyDevicesQueueFirst;
     unsigned long long _lastStatus;
-    NSMutableArray *_waitingToPairBlocks;
+    NSMutableArray *_waitingForRegistryUpdateBlocks;
+    unsigned long long _callCount;
 }
 
+@property (nonatomic) unsigned long long callCount; // @synthesize callCount=_callCount;
 @property (nonatomic) unsigned short lastCompatibilityState; // @synthesize lastCompatibilityState=_lastCompatibilityState;
 @property (nonatomic) unsigned long long lastStatus; // @synthesize lastStatus=_lastStatus;
 @property (strong, nonatomic) NSMutableDictionary *legacyDevices; // @synthesize legacyDevices=_legacyDevices;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *legacyDevicesQueue; // @synthesize legacyDevicesQueue=_legacyDevicesQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *legacyDevicesQueueFirst; // @synthesize legacyDevicesQueueFirst=_legacyDevicesQueueFirst;
 @property (readonly, nonatomic) unsigned long long status;
-@property (strong, nonatomic) NSMutableArray *waitingToPairBlocks; // @synthesize waitingToPairBlocks=_waitingToPairBlocks;
+@property (strong, nonatomic) NSMutableArray *waitingForRegistryUpdateBlocks; // @synthesize waitingForRegistryUpdateBlocks=_waitingForRegistryUpdateBlocks;
 
 + (CDUnknownBlockType)activeDeviceSelectorBlock;
 + (CDUnknownBlockType)activePairedDeviceSelectorBlock;
@@ -42,7 +44,7 @@
 - (void)_fireCompatibilityStateChangedNotificationWithCollection:(id)arg1;
 - (void)_fireCompatibilityStateStatusNotificationsWithCollection:(id)arg1;
 - (void)_fireStatusChangedNotificationWithCollection:(id)arg1;
-- (void)_fireWaitingToPairBlocks;
+- (void)_fireWaitingForUpdateBlocksWithCollection:(id)arg1;
 - (void)_getActiveDeviceAssertionsWithInlineBlock:(CDUnknownBlockType)arg1;
 - (id)_getChangeHistory;
 - (id)_getClientInfo;
@@ -53,6 +55,7 @@
 - (void)_getSwitchEventsFromIndex:(unsigned int)arg1 toIndex:(unsigned int)arg2 inlineCallback:(CDUnknownBlockType)arg3;
 - (void)_invalidateActiveDeviceAssertionWithIdentifier:(id)arg1;
 - (id)_legacyDevicesWithCollection:(id)arg1 secureProperties:(id)arg2;
+- (id)_mostlyPairedDevices;
 - (void)_pingActiveGizmoWithPriority:(long long)arg1 withMessageSize:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)_postNotification:(id)arg1 forDeviceID:(id)arg2 withUserInfo:(id)arg3;
 - (void)_submitAlbertPairingReport;
@@ -91,21 +94,28 @@
 - (void)getSwitchEventsFromIndex:(unsigned int)arg1 inlineCallback:(CDUnknownBlockType)arg2;
 - (void)gizmoOOBAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
 - (void)gizmoPasscodeAdvertiseAndPairWithName:(id)arg1 operationHasBegun:(CDUnknownBlockType)arg2;
+- (BOOL)hasCompletedInitialSyncForPairingID:(id)arg1;
 - (id)init;
 - (id)initWithBoost:(BOOL)arg1;
 - (id)initWithBoost:(BOOL)arg1 disconnected:(BOOL)arg2;
+- (BOOL)isAssertionActive:(id)arg1;
 - (BOOL)isKeychainEnabled;
 - (BOOL)isPaired;
+- (void)isPhoneReadyToMigrateDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)isWatchSetupPushActive;
 - (void)keepPhoneUnlockedInternalTestSPI:(CDUnknownBlockType)arg1;
 - (id)lastMigrationRequestPhoneName;
 - (unsigned long long)lastSyncSwitchIndex;
+- (void)logCallFrequency;
 - (long long)maxPairedDeviceCount;
 - (long long)maxPairingCompatibilityVersion;
 - (id)migrationConsentRequestData;
 - (unsigned long long)migrationCountForPairingID:(id)arg1;
 - (long long)minPairingCompatibilityVersion;
 - (long long)minQuickSwitchCompatibilityVersion;
+- (id)nonActiveDeviceForBTDeviceID:(id)arg1;
+- (id)nonActiveDeviceForBluetoothID:(id)arg1;
+- (id)nonActiveDeviceForIDSDevice:(id)arg1;
 - (void)notifyActivationCompleted:(id)arg1 withSuccess:(BOOL)arg2;
 - (void)notifyPairingShouldContinue;
 - (void)notifyPasscode:(id)arg1 forDevice:(id)arg2;
@@ -140,6 +150,7 @@
 - (void)unpairWithDevice:(id)arg1 withOptions:(id)arg2 operationHasBegun:(CDUnknownBlockType)arg3;
 - (void)unpairWithSimulator:(id)arg1 withQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)userIsCheckingForUpdate;
+- (id)waitForActiveDevice;
 - (id)waitForActivePairedDevice;
 - (void)waitForPairingStorePathPairingID:(CDUnknownBlockType)arg1;
 - (void)waitForWatchPairingExtendedMetadataForAdvertisedName:(id)arg1 completion:(CDUnknownBlockType)arg2;

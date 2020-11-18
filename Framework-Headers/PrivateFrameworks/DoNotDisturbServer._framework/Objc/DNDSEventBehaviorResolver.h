@@ -33,12 +33,12 @@
 - (BOOL)_queue_eventSourceIsContact:(id)arg1 inGroupWithIdentifier:(id)arg2;
 - (BOOL)_queue_eventSourceIsEmergencyContact:(id)arg1;
 - (BOOL)_queue_eventSourceIsFavorite:(id)arg1;
-- (BOOL)_queue_eventSourceIsRepeat:(id)arg1 clientIdentifier:(id)arg2 date:(id)arg3;
-- (id)_queue_resolveBehaviorForEventDetails:(id)arg1 clientIdentifier:(id)arg2 date:(id)arg3 error:(id *)arg4;
-- (unsigned long long)_queue_resolveOutcomeForEventSource:(id)arg1 clientIdentifier:(id)arg2 date:(id)arg3 reason:(out unsigned long long *)arg4;
+- (BOOL)_queue_eventSourceIsRepeat:(id)arg1 clientDetails:(id)arg2 date:(id)arg3;
+- (id)_queue_resolveBehaviorForEventDetails:(id)arg1 clientDetails:(id)arg2 date:(id)arg3 error:(id *)arg4;
+- (unsigned long long)_queue_resolveOutcomeForEventSource:(id)arg1 clientDetails:(id)arg2 date:(id)arg3 reason:(out unsigned long long *)arg4;
 - (void)dealloc;
 - (id)initWithModeRepository:(id)arg1 contactStore:(id)arg2;
-- (id)resolveBehaviorForEventDetails:(id)arg1 clientIdentifier:(id)arg2 date:(id)arg3 error:(id *)arg4;
+- (id)resolveBehaviorForEventDetails:(id)arg1 clientDetails:(id)arg2 date:(id)arg3 error:(id *)arg4;
 - (id)sysdiagnoseDataForDate:(id)arg1;
 
 @end

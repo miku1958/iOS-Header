@@ -6,9 +6,20 @@
 
 #import "__SBFluidSwitcherViewControllerAccessibility_super.h"
 
-@interface SBFluidSwitcherViewControllerAccessibility : __SBFluidSwitcherViewControllerAccessibility_super
+#import "SBAppSwticherAppAccessibilityElementDelegate-Protocol.h"
+
+@class NSString;
+
+@interface SBFluidSwitcherViewControllerAccessibility : __SBFluidSwitcherViewControllerAccessibility_super <SBAppSwticherAppAccessibilityElementDelegate>
 {
 }
+
+@property (readonly, nonatomic) BOOL _axIsVisible;
+@property (nonatomic, getter=_axSwitcherType, setter=_setAXSwitcherType:) unsigned long long _axSwitcherType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
@@ -23,22 +34,31 @@
 - (id)_axAppLayouts;
 - (id)_axContentView;
 - (void)_axCreateAppElements;
+- (void)_axCreateAppElementsForLayouts:(id)arg1 visibleItemContainers:(id)arg2;
+- (void)_axCreateInitialAppElements;
 - (unsigned long long)_axCurrentAppLayoutIndex;
+- (void)_axDidQuitApp:(id)arg1;
 - (long long)_axEnvironmentMode;
 - (BOOL)_axHasMultirowLayout;
 - (id)_axIdentifierOfAppInLayoutState:(id)arg1;
+- (BOOL)_axIsFloatingSwitcherVisible;
 - (BOOL)_axIsInSwitcher;
+- (BOOL)_axIsInlineSwitcherVisible;
+- (BOOL)_axIsMainSwitcherVisible;
 - (unsigned long long)_axNumberOfPages;
 - (unsigned long long)_axPageForIndex:(unsigned long long)arg1;
 - (BOOL)_axPerformScrollToIndex:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_axScrollStatusForIndex:(unsigned long long)arg1;
 - (void)_axScrollToAppLayout:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_axSortedElementArray:(id)arg1;
 - (id)_axVisibleAppLayouts;
 - (BOOL)_removeVisibleItemContainerForAppLayout:(id)arg1;
 - (void)_setupContentAndTransientViews;
+- (void)_updatePlusButtonPresence;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScroll:(long long)arg1;
-- (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)appElementIsAccessibilityElement:(id)arg1;
+- (void)performTransitionWithContext:(id)arg1 animated:(BOOL)arg2 alongsideAnimationController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

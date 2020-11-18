@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKAccountServicePerformActionViewController.h>
+#import <UIKit/UIViewController.h>
 
 #import <PassKitUI/PKAccountBillPaymentAmountDescriptionViewDelegate-Protocol.h>
 #import <PassKitUI/PKAccountBillPaymentControllerDelegate-Protocol.h>
@@ -12,12 +12,16 @@
 #import <PassKitUI/PKBillPaymentRingViewDataSource-Protocol.h>
 #import <PassKitUI/PKBillPaymentRingViewDelegate-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
+#import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSDateFormatter, NSDecimalNumber, NSDictionary, NSMutableDictionary, NSNumberFormatter, NSString, PKAccountBillPaymentAmountDescriptionView, PKAccountBillPaymentController, PKAddBankAccountInformationViewController, PKBillPaymentRingView, PKBillPaymentSuggestedAmountController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, UIButton, UILabel, UIScrollView, UITapGestureRecognizer, _UIBackdropView;
+@class CLInUseAssertion, NSDateFormatter, NSDecimalNumber, NSDictionary, NSMutableDictionary, NSNumberFormatter, NSString, PKAccount, PKAccountBillPaymentAmountDescriptionView, PKAccountBillPaymentController, PKAddBankAccountInformationViewController, PKBillPaymentRingView, PKBillPaymentSuggestedAmountController, PKBillPaymentSuggestedAmountList, PKCompoundInterestCalculator, PKContinuousButton, PKPaymentPass, UIButton, UILabel, UIScrollView, UITapGestureRecognizer, _PKUIKVisibilityBackdropView;
+@protocol PKAccountBillPaymentObserver;
 
-@interface PKAccountBillPaymentViewController : PKAccountServicePerformActionViewController <PKBillPaymentRingViewDelegate, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKBillPaymentRingViewDataSource, PKAccountBillPaymentAmountDescriptionViewDelegate, UIScrollViewDelegate>
+@interface PKAccountBillPaymentViewController : UIViewController <_PKUIKVisibilityBackdropViewDelegate, PKBillPaymentRingViewDelegate, PKAccountBillPaymentControllerDelegate, PKAddBankAccountInformationViewControllerDelegate, PKBillPaymentRingViewDataSource, PKAccountBillPaymentAmountDescriptionViewDelegate, UIScrollViewDelegate>
 {
-    CLInUseAssertion *_CLInUse;
+    PKAccount *_account;
+    PKPaymentPass *_pass;
+    unsigned long long _interstitialState;
     unsigned long long _screenType;
     PKAccountBillPaymentController *_billPaymentCoordinator;
     PKBillPaymentSuggestedAmountController *_suggestedAmountController;
@@ -31,62 +35,84 @@
     NSDictionary *_smallRingInterestDateAttributes;
     BOOL _hasAnimatedRing;
     BOOL _performingAction;
-    BOOL _showingKeyboard;
-    BOOL _hasAnimatedKeyboard;
+    BOOL _buttonsArePayButtons;
     BOOL _shouldEnablePayLaterButton;
     BOOL _viewIsEnabled;
     BOOL _payButtonsEnabled;
-    double _keyboardHeight;
-    double _backdropWeight;
-    double _navBarAlpha;
-    long long _backdropStyle;
+    BOOL _usesAccessibilityLayout;
+    BOOL _usesLargestAccessibilityLayout;
+    BOOL _showKeyboard;
+    BOOL _keyboardVisible;
+    struct CGRect _keyboardFrame;
+    struct CGRect _lastKeyboardFrame;
+    BOOL _inLayoutSubviews;
     PKAccountBillPaymentAmountDescriptionView *_amountDescriptionView;
     PKBillPaymentRingView *_ringView;
-    UILabel *_makePaymentLabel;
-    UILabel *_paymentDueLabel;
+    UILabel *_titleLabel;
+    UILabel *_subtitleLabel;
     UIButton *_showKeyboardButton;
-    PKContinuousButton *_payNowButton;
-    PKContinuousButton *_payLaterButton;
+    PKContinuousButton *_primaryButton;
+    PKContinuousButton *_secondaryButton;
     UILabel *_smallRingInterestLabel;
-    _UIBackdropView *_backdropView;
+    _PKUIKVisibilityBackdropView *_backdropView;
     UIScrollView *_scrollView;
     UITapGestureRecognizer *_ringViewTapRecognizer;
     PKAddBankAccountInformationViewController *_addBankAccountViewController;
+    CLInUseAssertion *_CLInUse;
+    unsigned char _visibility;
+    id<PKAccountBillPaymentObserver> _observer;
 }
 
+@property (readonly, nonatomic) PKAccount *account; // @synthesize account=_account;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<PKAccountBillPaymentObserver> observer; // @synthesize observer=_observer;
+@property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (readonly) Class superclass;
 
++ (void)_billPaymentViewControllerForAccount:(id)arg1 paymentPass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
++ (id)alertControllerForDisplayableError:(id)arg1;
++ (id)backgroundColor;
++ (void)billPaymentViewControllerForAccount:(id)arg1 paymentPass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
++ (BOOL)canPayBillForAccount:(id)arg1 displayableError:(id *)arg2;
++ (struct UIEdgeInsets)contentMargins;
++ (id)displayableErrorForAccount:(id)arg1 reason:(unsigned long long)arg2;
++ (double)ringTopMargin;
++ (struct CGSize)smallRingSizeWithAccessibilityLayout:(BOOL)arg1;
++ (double)smallRingTopMargin;
 - (void).cxx_destruct;
+- (void)_accountDidChange:(id)arg1;
 - (id)_addBankAccountInformationViewController;
-- (double)_buttonPadding;
-- (void)_calculateBlur;
 - (void)_cancelButtonTapped:(id)arg1;
-- (void)_changeRingStateToSmall:(BOOL)arg1;
 - (void)_dismissViewControllerWithSuccess:(BOOL)arg1;
 - (id)_interestForAmount:(id)arg1;
+- (BOOL)_interestLabelIsOutsideSmallRing;
 - (id)_interestPostDate;
 - (id)_interestStringForAmount:(id)arg1;
-- (BOOL)_isSmallPhone;
+- (void)_interstitialButtonTapped:(id)arg1;
+- (void)_layoutFooterWithState:(CDStruct_19e39b3b)arg1;
+- (struct CGSize)_layoutScrollViewWithContentWidth:(double)arg1;
 - (void)_payLaterButtonTapped:(id)arg1;
 - (void)_payNowButtonTapped:(id)arg1;
 - (id)_paymentAmount;
 - (void)_performBillPaymentWithAmount:(id)arg1 billPaymentSuggestedAmountDataEvent:(id)arg2;
 - (void)_presentAddBankAccount;
 - (void)_presentAlertControllerForError:(id)arg1;
+- (void)_setAccount:(id)arg1;
 - (void)_setEnabled:(BOOL)arg1;
 - (void)_setPayButtonsEnabled:(BOOL)arg1;
+- (void)_setShowKeyboard:(BOOL)arg1;
+- (void)_setupAmountDescriptionViewForInterstitial;
 - (void)_showKeyboardButtonTapped:(id)arg1;
-- (void)_showNavigationBarTitle:(BOOL)arg1;
 - (void)_showOrHideKeypad;
-- (void)_showOrHideViews;
-- (BOOL)_showTitleLabels;
-- (double)_sideMargin;
 - (void)_tappedSmallRingView:(id)arg1;
+- (id)_title;
+- (void)_updateForShowKeyboardAnimated:(BOOL)arg1;
 - (void)_updateInterestString;
-- (void)_updateNavigationBar;
+- (void)_updateLayoutForKeyboardAction:(CDUnknownBlockType)arg1;
+- (void)_updateNavigationTitle;
+- (void)_updateSubtitle;
 - (void)accountBillPaymentController:(id)arg1 hasChangedState:(unsigned long long)arg2 error:(id)arg3 updatedAccount:(id)arg4;
 - (void)addBankAccountInformationViewController:(id)arg1 didAddFundingSource:(id)arg2;
 - (void)addBankAccountInformationViewControllerDidFinish:(id)arg1;
@@ -99,17 +125,24 @@
 - (id)billPaymentRingView:(id)arg1 topCurvedTextForSuggestedAmount:(id)arg2;
 - (id)billPaymentRingViewZeroInterestText:(id)arg1;
 - (void)dealloc;
-- (id)initWithBillPaymentSuggestedAmountController:(id)arg1 paymentPass:(id)arg2;
+- (id)disabledBottomCurvedTextForBillPaymentRingView:(id)arg1;
+- (id)disabledTopCurvedTextForBillPaymentRingView:(id)arg1;
+- (id)initWithAccount:(id)arg1 paymentPass:(id)arg2 suggestedAmountController:(id)arg3 interstitalState:(unsigned long long)arg4;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithSuggestedAmountController:(id)arg1 paymentPass:(id)arg2;
+- (void)keyboardWillChange:(id)arg1;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
 - (void)loadView;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)setAccount:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end
 

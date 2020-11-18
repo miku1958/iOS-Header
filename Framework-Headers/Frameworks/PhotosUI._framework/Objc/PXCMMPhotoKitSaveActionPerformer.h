@@ -6,11 +6,18 @@
 
 #import <PhotosUICore/PXCMMActionPerformer.h>
 
-@interface PXCMMPhotoKitSaveActionPerformer : PXCMMActionPerformer
+#import <PhotosUICore/PXCMMPhotoKitActionPerformer-Protocol.h>
+
+@class PXCMMPhotoKitSession;
+
+@interface PXCMMPhotoKitSaveActionPerformer : PXCMMActionPerformer <PXCMMPhotoKitActionPerformer>
 {
 }
 
+@property (readonly, nonatomic) PXCMMPhotoKitSession *session;
+
 + (id)sharedSavingWorkerQueue;
+- (void)_completeSavingForAssets:(id)arg1 count:(long long)arg2;
 - (id)createActionProgress;
 - (BOOL)isCancellable;
 - (void)performUserInteractionTask;

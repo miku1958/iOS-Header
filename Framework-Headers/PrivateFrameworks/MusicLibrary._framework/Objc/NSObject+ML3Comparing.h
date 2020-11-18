@@ -7,6 +7,8 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (ML3Comparing)
+- (void)ml_bindToSQLiteStatement:(struct sqlite3_stmt *)arg1 atPosition:(int)arg2;
 - (BOOL)ml_matchesValue:(id)arg1 usingComparison:(int)arg2;
+- (id)ml_stringValueForSQL;
 @end
 

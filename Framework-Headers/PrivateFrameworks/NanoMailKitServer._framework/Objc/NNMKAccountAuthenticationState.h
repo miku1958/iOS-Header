@@ -12,10 +12,14 @@
 {
     NSString *_accountId;
     unsigned long long _state;
+    NSString *_displayName;
+    NSString *_subsectionId;
 }
 
 @property (copy, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
+@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
+@property (strong, nonatomic) NSString *subsectionId; // @synthesize subsectionId=_subsectionId;
 
 - (void).cxx_destruct;
 

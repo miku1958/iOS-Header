@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) AVAudioSession *targetAudioSession;
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)_addFigEndpointPickerNotifications;
 - (int)_configureFigEndpointPickerWithFeature:(unsigned long long)arg1;

@@ -9,60 +9,44 @@
 #import <DocumentManager/NSCopying-Protocol.h>
 #import <DocumentManager/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, UIColor;
+@class NSString, UIColor;
 
 @interface DOCAppearance : NSObject <NSSecureCoding, NSCopying>
 {
+    NSString *_collectionCreateButtonTitle;
     BOOL _showsCreateButton;
+    BOOL _shouldShowFileExtensions;
     BOOL _forceClearBackground;
     BOOL _alwaysEnableScrollInSourceView;
-    BOOL _isInfoInPopoverMode;
     double _compactHorizontalTableStackSpacing;
     double _regularHorizontalTableStackSpacing;
     double _fullHorizontalTableStackSpacing;
     UIColor *_largeTitleColor;
+    UIColor *_backgroundTintColor;
     unsigned long long _browserUserInterfaceStyle;
     double _createButtonAspectRatio;
-    NSString *_collectionCreateButtonTitle;
 }
 
-@property (readonly) long long activityIndicatorViewStyle;
 @property BOOL alwaysEnableScrollInSourceView; // @synthesize alwaysEnableScrollInSourceView=_alwaysEnableScrollInSourceView;
 @property (readonly) UIColor *backgroundColor;
-@property (readonly) NSArray *backgroundGradientColors;
+@property (strong, nonatomic) UIColor *backgroundTintColor; // @synthesize backgroundTintColor=_backgroundTintColor;
 @property (nonatomic) unsigned long long browserUserInterfaceStyle; // @synthesize browserUserInterfaceStyle=_browserUserInterfaceStyle;
-@property (strong) NSString *collectionCreateButtonTitle; // @synthesize collectionCreateButtonTitle=_collectionCreateButtonTitle;
-@property double compactHorizontalTableStackSpacing; // @synthesize compactHorizontalTableStackSpacing=_compactHorizontalTableStackSpacing;
-@property (readonly) UIColor *createBackgroundColor;
-@property double createButtonAspectRatio; // @synthesize createButtonAspectRatio=_createButtonAspectRatio;
-@property (readonly) UIColor *dimmingViewColor;
-@property BOOL forceClearBackground; // @synthesize forceClearBackground=_forceClearBackground;
-@property double fullHorizontalTableStackSpacing; // @synthesize fullHorizontalTableStackSpacing=_fullHorizontalTableStackSpacing;
-@property BOOL isInfoInPopoverMode; // @synthesize isInfoInPopoverMode=_isInfoInPopoverMode;
+@property (strong, nonatomic) NSString *collectionCreateButtonTitle;
+@property (nonatomic) double compactHorizontalTableStackSpacing; // @synthesize compactHorizontalTableStackSpacing=_compactHorizontalTableStackSpacing;
+@property (nonatomic) double createButtonAspectRatio; // @synthesize createButtonAspectRatio=_createButtonAspectRatio;
+@property (nonatomic) BOOL forceClearBackground; // @synthesize forceClearBackground=_forceClearBackground;
+@property (nonatomic) double fullHorizontalTableStackSpacing; // @synthesize fullHorizontalTableStackSpacing=_fullHorizontalTableStackSpacing;
 @property (strong, nonatomic) UIColor *largeTitleColor; // @synthesize largeTitleColor=_largeTitleColor;
-@property (readonly) long long preferredBarStyle;
-@property (readonly) long long preferredStatusBarStyle;
-@property (readonly) UIColor *primaryTextColor;
-@property (readonly) UIColor *progressViewInactiveStrokeColor;
-@property double regularHorizontalTableStackSpacing; // @synthesize regularHorizontalTableStackSpacing=_regularHorizontalTableStackSpacing;
-@property (readonly) UIColor *searchBarTextColor;
-@property (readonly) BOOL searchBarWantsDarkBackdropStyleOnly;
-@property (readonly) UIColor *secondaryTextColor;
-@property (readonly) UIColor *selectedBackgroundColor;
-@property (readonly) UIColor *separatorColor;
-@property BOOL showsCreateButton; // @synthesize showsCreateButton=_showsCreateButton;
+@property (nonatomic) double regularHorizontalTableStackSpacing; // @synthesize regularHorizontalTableStackSpacing=_regularHorizontalTableStackSpacing;
+@property (nonatomic) BOOL shouldShowFileExtensions; // @synthesize shouldShowFileExtensions=_shouldShowFileExtensions;
+@property (nonatomic) BOOL showsCreateButton; // @synthesize showsCreateButton=_showsCreateButton;
 
 + (id)documentsPickerAppearance;
 + (id)recentsPopoverAppearance;
 + (id)recentsWidgetAppearance;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)applyAppearanceOnNavigationBar:(id)arg1;
-- (void)applyAppearanceOnPalette:(id)arg1;
-- (void)applyAppearanceOnTabBar:(id)arg1;
-- (void)applyAppearanceOnToolbar:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)darkModeDefaultTintColor;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

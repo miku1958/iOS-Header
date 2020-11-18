@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) long long decimals; // @dynamic decimals;
 
-+ (id)typeString;
 - (long long)decimalsWithValue:(id)arg1 withType:(int)arg2;
 
 @end

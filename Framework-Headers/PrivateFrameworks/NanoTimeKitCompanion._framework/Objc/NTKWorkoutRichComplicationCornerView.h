@@ -17,6 +17,8 @@
 - (void)_applyPausedUpdate;
 - (id)_circularView;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

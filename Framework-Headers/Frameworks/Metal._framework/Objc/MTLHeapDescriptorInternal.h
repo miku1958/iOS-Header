@@ -12,18 +12,29 @@ __attribute__((visibility("hidden")))
     struct MTLHeapDescriptorPrivate *_private;
 }
 
+@property (nonatomic) BOOL sparsePageAccessCountersEnabled;
+@property (nonatomic) unsigned long long sparsePageSize;
+
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)cpuCacheMode;
 - (void)dealloc;
+- (id)description;
 - (const struct MTLHeapDescriptorPrivate *)descriptorPrivate;
+- (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)hash;
+- (unsigned long long)hazardTrackingMode;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (unsigned long long)resourceOptions;
 - (void)setCpuCacheMode:(unsigned long long)arg1;
+- (void)setHazardTrackingMode:(unsigned long long)arg1;
+- (void)setResourceOptions:(unsigned long long)arg1;
 - (void)setSize:(unsigned long long)arg1;
 - (void)setStorageMode:(unsigned long long)arg1;
+- (void)setType:(long long)arg1;
 - (unsigned long long)size;
 - (unsigned long long)storageMode;
+- (long long)type;
 - (BOOL)validateWithDevice:(id)arg1;
 
 @end

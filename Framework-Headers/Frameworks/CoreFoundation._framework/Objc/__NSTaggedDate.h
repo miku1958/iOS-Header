@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)__new:(double)arg1;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void)dealloc;

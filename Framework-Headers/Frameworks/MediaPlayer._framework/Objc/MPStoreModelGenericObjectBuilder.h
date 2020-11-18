@@ -20,11 +20,9 @@
     MPStoreModelTVSeasonBuilder *_tvSeasonBuilder;
     MPStoreModelTVShowBuilder *_tvShowBuilder;
     BOOL _shouldUsePlaylistEntry;
-    BOOL _shouldUseUniqueContentItemIDs;
 }
 
 @property (nonatomic) BOOL shouldUsePlaylistEntry; // @synthesize shouldUsePlaylistEntry=_shouldUsePlaylistEntry;
-@property (nonatomic) BOOL shouldUseUniqueContentItemIDs; // @synthesize shouldUseUniqueContentItemIDs=_shouldUseUniqueContentItemIDs;
 
 - (void).cxx_destruct;
 - (id)_modelObjectWithUniqueContentItemIDForModelObject:(id)arg1;

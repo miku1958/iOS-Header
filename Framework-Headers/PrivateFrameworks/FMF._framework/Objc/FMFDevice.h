@@ -15,6 +15,7 @@
 {
     BOOL _isActiveDevice;
     BOOL _isThisDevice;
+    BOOL _isCompanionDevice;
     BOOL _isAutoMeCapable;
     NSString *_deviceId;
     NSString *_deviceName;
@@ -26,9 +27,10 @@
 @property (copy, nonatomic) NSString *idsDeviceId; // @synthesize idsDeviceId=_idsDeviceId;
 @property (nonatomic) BOOL isActiveDevice; // @synthesize isActiveDevice=_isActiveDevice;
 @property (nonatomic) BOOL isAutoMeCapable; // @synthesize isAutoMeCapable=_isAutoMeCapable;
+@property (nonatomic) BOOL isCompanionDevice; // @synthesize isCompanionDevice=_isCompanionDevice;
 @property (nonatomic) BOOL isThisDevice; // @synthesize isThisDevice=_isThisDevice;
 
-+ (id)deviceWithId:(id)arg1 name:(id)arg2 idsDeviceId:(id)arg3 isActive:(BOOL)arg4 isThisDevice:(BOOL)arg5 isAutoMeCapable:(BOOL)arg6;
++ (id)deviceWithId:(id)arg1 name:(id)arg2 idsDeviceId:(id)arg3 isActive:(BOOL)arg4 isThisDevice:(BOOL)arg5 isCompanionDevice:(BOOL)arg6 isAutoMeCapable:(BOOL)arg7;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

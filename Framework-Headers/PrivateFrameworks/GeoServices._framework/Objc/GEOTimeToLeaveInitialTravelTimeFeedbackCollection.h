@@ -12,12 +12,13 @@ __attribute__((visibility("hidden")))
 @interface GEOTimeToLeaveInitialTravelTimeFeedbackCollection : PBCodable <NSCopying>
 {
     int _travelTime;
-    CDStruct_36597415 _has;
+    CDStruct_b5054928 _flags;
 }
 
 @property (nonatomic) BOOL hasTravelTime;
-@property (nonatomic) int travelTime; // @synthesize travelTime=_travelTime;
+@property (nonatomic) int travelTime;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsTravelTime:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)travelTimeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

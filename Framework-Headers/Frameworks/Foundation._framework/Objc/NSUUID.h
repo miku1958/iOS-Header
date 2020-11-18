@@ -21,6 +21,7 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)supportsSecureCoding;
 - (struct __CFString *)_cfUUIDString;
+- (Class)classForCoder;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getUUIDBytes:(unsigned char [16])arg1;

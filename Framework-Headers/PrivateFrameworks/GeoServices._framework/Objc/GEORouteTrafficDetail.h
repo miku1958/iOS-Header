@@ -8,30 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORouteTrafficDetail : PBCodable <NSCopying>
 {
-    int _routeTrafficCondition;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSString *_spokenRouteName;
     NSString *_unabbreviatedRouteName;
     NSString *_writtenRouteName;
+    int _routeTrafficCondition;
     struct {
-        unsigned int routeTrafficCondition:1;
-    } _has;
+        unsigned int has_routeTrafficCondition:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_spokenRouteName:1;
+        unsigned int read_unabbreviatedRouteName:1;
+        unsigned int read_writtenRouteName:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_spokenRouteName:1;
+        unsigned int wrote_unabbreviatedRouteName:1;
+        unsigned int wrote_writtenRouteName:1;
+        unsigned int wrote_routeTrafficCondition:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasRouteTrafficCondition;
 @property (readonly, nonatomic) BOOL hasSpokenRouteName;
 @property (readonly, nonatomic) BOOL hasUnabbreviatedRouteName;
 @property (readonly, nonatomic) BOOL hasWrittenRouteName;
-@property (nonatomic) int routeTrafficCondition; // @synthesize routeTrafficCondition=_routeTrafficCondition;
-@property (strong, nonatomic) NSString *spokenRouteName; // @synthesize spokenRouteName=_spokenRouteName;
-@property (strong, nonatomic) NSString *unabbreviatedRouteName; // @synthesize unabbreviatedRouteName=_unabbreviatedRouteName;
-@property (strong, nonatomic) NSString *writtenRouteName; // @synthesize writtenRouteName=_writtenRouteName;
+@property (nonatomic) int routeTrafficCondition;
+@property (strong, nonatomic) NSString *spokenRouteName;
+@property (strong, nonatomic) NSString *unabbreviatedRouteName;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) NSString *writtenRouteName;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsRouteTrafficCondition:(id)arg1;
+- (void)_readSpokenRouteName;
+- (void)_readUnabbreviatedRouteName;
+- (void)_readWrittenRouteName;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +57,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)routeTrafficConditionAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

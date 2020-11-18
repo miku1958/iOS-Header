@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_autoDismiss;
+- (long long)_preferredModalPresentationStyle;
 - (void)didReceiveMemoryWarning;
 - (BOOL)documentCameraController:(id)arg1 canAddImages:(unsigned long long)arg2;
 - (void)documentCameraController:(id)arg1 didFinishWithDocInfoCollection:(id)arg2 imageCache:(id)arg3 warnUser:(BOOL)arg4;

@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)documentRoot;
 - (id)initWithDocumentRoot:(id)arg1 canvas:(id)arg2;
-- (BOOL)isExportingFixedLayoutEPUB;
+- (BOOL)textLayoutMustIncludeAdornments;
 - (struct CGRect)visibleScaledBoundsForClippingRepsOnCanvas:(id)arg1;
 - (BOOL)wantsEditingLayoutsForOffscreenInfos;
 

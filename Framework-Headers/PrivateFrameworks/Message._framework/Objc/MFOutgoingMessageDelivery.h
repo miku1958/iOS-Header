@@ -6,25 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class DeliveryAccount, MFAttachmentCompositionContext, MFMailDelivery, MFMessage, MFMutableMessageHeaders, MFPlainTextDocument, MailAccount, NSArray, NSDictionary, NSString;
+@class DeliveryAccount, ECHTMLStringAndMIMECharset, MFAttachmentCompositionContext, MFMailDelivery, MFMailMessage, MFMutableMessageHeaders, MFPlainTextDocument, MailAccount, NSArray, NSDictionary;
 @protocol MFDeliveryDelegate;
 
 @interface MFOutgoingMessageDelivery : NSObject
 {
-    MFMessage *_message;
+    MFMailMessage *_message;
     MFMutableMessageHeaders *_headers;
     NSArray *_mixedContent;
     BOOL _textPartsAreHTML;
-    NSString *_htmlBody;
+    ECHTMLStringAndMIMECharset *_htmlBody;
     MFPlainTextDocument *_plainTextAlternative;
     NSArray *_otherHTMLAndAttachments;
-    NSArray *_charsets;
-    id<MFDeliveryDelegate> _delegate;
     MailAccount *_archiveAccount;
     DeliveryAccount *_deliveryAccount;
     NSDictionary *_compositionSpecification;
     MFMailDelivery *_currentDeliveryObject;
     BOOL _isUserRequested;
+    id<MFDeliveryDelegate> _delegate;
     MFAttachmentCompositionContext *_attachmentContext;
     unsigned long long _conversationFlags;
     long long _originalConversationId;
@@ -33,28 +32,28 @@
 @property (strong, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property (strong, nonatomic) NSDictionary *compositionSpecification; // @synthesize compositionSpecification=_compositionSpecification;
 @property (nonatomic) unsigned long long conversationFlags; // @synthesize conversationFlags=_conversationFlags;
+@property (weak, nonatomic) id<MFDeliveryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL isUserRequested; // @synthesize isUserRequested=_isUserRequested;
 @property (nonatomic) long long originalConversationId; // @synthesize originalConversationId=_originalConversationId;
 
-+ (id)newWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4 charsets:(id)arg5;
++ (id)newWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4;
 + (id)newWithHeaders:(id)arg1 mixedContent:(id)arg2 textPartsAreHTML:(BOOL)arg3;
 + (id)newWithMessage:(id)arg1;
+- (void).cxx_destruct;
 - (id)_currentDeliveryObject;
 - (id)_deliverSynchronouslyWithCurrentSettings:(BOOL)arg1;
 - (id)_deliveryAccountForInitializers;
 - (id)account;
-- (void)dealloc;
 - (id)deliverSynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)deliveryStatus;
 - (id)init;
-- (id)initWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4 charsets:(id)arg5;
+- (id)initWithHeaders:(id)arg1 HTML:(id)arg2 plainTextAlternative:(id)arg3 other:(id)arg4;
 - (id)initWithHeaders:(id)arg1 mixedContent:(id)arg2 textPartsAreHTML:(BOOL)arg3;
 - (id)initWithMessage:(id)arg1;
 - (id)message;
 - (id)originalHeaders;
 - (void)setAccount:(id)arg1;
 - (void)setArchiveAccount:(id)arg1;
-- (void)setDelegate:(id)arg1;
 
 @end
 

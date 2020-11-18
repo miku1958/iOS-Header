@@ -18,8 +18,8 @@
 - (void)_accessibilityUpdateStopwatchLabels;
 - (void)_lapResetButtonPressed;
 - (void)_pauseButtonPressed;
+- (void)_showAppropriateModeAnimated:(BOOL)arg1;
 - (void)_startSessionButtonPressed;
-- (void)_updateStopwatchLabels;
 - (BOOL)accessibilityPerformMagicTap;
 - (BOOL)isAccessibilityElement;
 

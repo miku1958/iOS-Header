@@ -16,8 +16,8 @@
 @property (weak, nonatomic) id<ICPaperStyleUIActivityDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
+- (id)_systemImageName;
 - (long long)activityCategory;
-- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

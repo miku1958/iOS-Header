@@ -261,7 +261,6 @@
 - (id)objectAtLocationPriorToMappedCharIndex:(unsigned long long)arg1 forAttributeKind:(unsigned int)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (void)pApplyOverrideObjectAfterReplacingCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2 overrideObject:(id)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
 - (void)pApplyOverrideObjectAfterReplacingCharactersInSelection:(id)arg1 withString:(id)arg2 overrideObject:(id)arg3 undoTransaction:(struct TSWPStorageTransaction *)arg4;
-- (void)pCreateHyperlinksFromAttributedString:(id)arg1;
 - (id)pDefaultSectionForContext:(id)arg1;
 - (id)pDrawableInfoFromImporter:(id)arg1 error:(id *)arg2;
 - (id)pExportAttributes:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2 stickyFont:(id *)arg3 scale:(double)arg4;

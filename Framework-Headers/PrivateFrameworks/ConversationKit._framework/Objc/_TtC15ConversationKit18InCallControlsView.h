@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit18InCallControlsView : UIView
 {
     MISSING_TYPE *effectsButton;

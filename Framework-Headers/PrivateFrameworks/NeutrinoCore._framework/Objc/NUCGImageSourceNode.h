@@ -6,7 +6,7 @@
 
 #import <NeutrinoCore/NUSourceNode.h>
 
-@class NSArray, NSDictionary, NSObject, NSString, NSURL;
+@class NSDictionary, NSObject, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface NUCGImageSourceNode : NUSourceNode
@@ -15,53 +15,52 @@
     BOOL _loaded;
     NSURL *_URL;
     NSString *_UTI;
-    struct CGImageSource *_imageSource;
-    NSDictionary *_imageProperties;
+    struct CGImageSource *_cgImageSource;
+    NSDictionary *_cgImageProperties;
     long long _orientation;
     struct CGColorSpace *_colorSpace;
     long long _alphaInfo;
     long long _componentInfo;
-    NSArray *_depthImagesProperties;
+    NSDictionary *_auxiliaryImagesProperties;
     CDStruct_d58201db _size;
 }
 
 @property (readonly) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly) NSString *UTI; // @synthesize UTI=_UTI;
 @property long long alphaInfo; // @synthesize alphaInfo=_alphaInfo;
+@property (strong) NSDictionary *auxiliaryImagesProperties; // @synthesize auxiliaryImagesProperties=_auxiliaryImagesProperties;
+@property (strong, nonatomic) NSDictionary *cgImageProperties; // @synthesize cgImageProperties=_cgImageProperties;
+@property (strong, nonatomic) struct CGImageSource *cgImageSource; // @synthesize cgImageSource=_cgImageSource;
 @property (strong, nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property long long componentInfo; // @synthesize componentInfo=_componentInfo;
-@property (strong) NSArray *depthImagesProperties; // @synthesize depthImagesProperties=_depthImagesProperties;
-@property (strong, nonatomic) NSDictionary *imageProperties; // @synthesize imageProperties=_imageProperties;
-@property (strong, nonatomic) struct CGImageSource *imageSource; // @synthesize imageSource=_imageSource;
 @property BOOL loaded; // @synthesize loaded=_loaded;
 @property long long orientation; // @synthesize orientation=_orientation;
 @property CDStruct_912cb5d2 size; // @synthesize size=_size;
 
++ (BOOL)isFusedOvercaptureFromCGImageProperties:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addDefaultFinalizedSourceOptions:(id)arg1;
-- (id)_evaluateImage:(out id *)arg1;
-- (id)_evaluateImageGeometry:(out id *)arg1;
-- (id)_evaluateImageProperties:(out id *)arg1;
+- (id)_evaluateImageGeometryWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long *)arg2 error:(out id *)arg3;
 - (id)_evaluateRawImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_finalizeSourceOptions:(id)arg1 subsampleFactor:(long long)arg2;
 - (void)_init;
 - (BOOL)_load:(out id *)arg1;
-- (BOOL)_setDepthInformationFromProperties:(id)arg1 error:(out id *)arg2;
+- (BOOL)_setAuxiliaryImagePropertiesFromCGProperties:(id)arg1 error:(out id *)arg2;
 - (BOOL)_setGeometryFromProperties:(id)arg1 error:(out id *)arg2;
-- (id)auxiliaryImagePropertiesForDepthType:(long long)arg1;
+- (id)auxiliaryImagePropertiesForAuxImageType:(long long)arg1;
 - (void)dealloc;
+- (id)debugQuickLookObject;
 - (id)initWithImageSource:(struct CGImageSource *)arg1 identifier:(id)arg2;
 - (id)initWithSettings:(id)arg1;
-- (id)initWithURL:(id)arg1 UTI:(id)arg2;
+- (id)initWithURL:(id)arg1 UTI:(id)arg2 identifier:(id)arg3;
 - (id)initWithURL:(id)arg1 UTI:(id)arg2 settings:(id)arg3;
 - (BOOL)load:(out id *)arg1;
 - (long long)normalizeSubsampleFactor:(long long)arg1;
-- (CDStruct_912cb5d2)pixelSize;
+- (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
 - (id)preparedNodeWithSourceContainer:(id)arg1 pipelineState:(id)arg2 pipelineSettings:(id)arg3 sourceSettings:(id)arg4 error:(out id *)arg5;
-- (id)resolvedDepthNodeForPipelineState:(id)arg1 error:(out id *)arg2;
-- (id)resolvedMatteNodeForPipelineState:(id)arg1 error:(out id *)arg2;
+- (id)resolvedAuxiliaryImageNodeForPipelineState:(id)arg1 error:(out id *)arg2;
 - (id)resolvedNodeWithCachedInputs:(struct NSDictionary *)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 - (BOOL)shouldCacheNodeForPipelineState:(id)arg1;
 - (long long)sourceOrientation;

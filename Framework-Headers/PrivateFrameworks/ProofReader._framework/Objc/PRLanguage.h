@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface PRLanguage : NSObject
 {
     NSString *_identifier;
@@ -23,23 +24,32 @@
 + (id)dataBundle;
 + (unsigned int)encodingForOrthographyIndex:(unsigned long long)arg1;
 + (id)fallbackLocalizationForLanguage:(id)arg1;
-+ (void)getCodesForLanguage:(id)arg1 languageCode:(char *)arg2 languageDialect:(char *)arg3 languageMode:(char *)arg4;
++ (void)getCodesForLanguage:(id)arg1 languageCode:(char *)arg2 languageDialect:(char *)arg3 languageMode:(char *)arg4 orthographyIndex:(unsigned long long *)arg5 encoding:(unsigned int *)arg6;
 + (id)languageWithIdentifier:(id)arg1;
 + (id)localizationForLanguage:(id)arg1;
 + (id)localizationsForLanguage:(id)arg1;
++ (unsigned long long)orthographyIndexForForOtherLanguage:(id)arg1;
 + (unsigned long long)orthographyIndexForLanguageCode:(unsigned char)arg1;
-- (unsigned char)accents;
+- (const char *)accents;
 - (void)dealloc;
 - (unsigned int)encoding;
 - (id)fallbackLocalization;
 - (id)identifier;
 - (id)initWithIdentifier:(id)arg1;
+- (BOOL)isArabic;
+- (BOOL)isBulgarian;
+- (BOOL)isCzech;
 - (BOOL)isDanish;
 - (BOOL)isDutch;
 - (BOOL)isEnglish;
 - (BOOL)isFinnish;
 - (BOOL)isFrench;
 - (BOOL)isGerman;
+- (BOOL)isGreek;
+- (BOOL)isHebrew;
+- (BOOL)isHindi;
+- (BOOL)isHungarian;
+- (BOOL)isIndonesian;
 - (BOOL)isItalian;
 - (BOOL)isKorean;
 - (BOOL)isNorwegian;
@@ -48,14 +58,17 @@
 - (BOOL)isRussian;
 - (BOOL)isSpanish;
 - (BOOL)isSwedish;
+- (BOOL)isThai;
 - (BOOL)isTurkish;
+- (BOOL)isUkrainian;
+- (BOOL)isVietnamese;
 - (unsigned char)languageCode;
 - (unsigned char)languageDialect;
 - (unsigned char)languageMode;
 - (id)localization;
-- (unsigned char)oneLetterWords;
+- (const char *)oneLetterWords;
 - (unsigned long long)orthographyIndex;
-- (unsigned char)twoLetterWords;
+- (const char *)twoLetterWords;
 
 @end
 

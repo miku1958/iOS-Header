@@ -11,6 +11,7 @@
 }
 
 + (id)schedulerFor12_1MigrationActivity;
++ (id)schedulerForUserRequestedBackupActivity;
 
 @end
 

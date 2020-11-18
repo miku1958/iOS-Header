@@ -9,30 +9,34 @@
 #import <GeoServices/GEOSurchargeOption-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, PBUnknownFields;
 @protocol GEOSurchargeType;
 
 __attribute__((visibility("hidden")))
 @interface GEORequestOptions : PBCodable <GEOSurchargeOption, NSCopying>
 {
-    int _optionUsed;
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_requestOptions;
+    int _optionUsed;
     struct {
-        unsigned int optionUsed:1;
-    } _has;
+        unsigned int has_optionUsed:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasOptionUsed;
-@property (nonatomic) int optionUsed; // @synthesize optionUsed=_optionUsed;
-@property (strong, nonatomic) NSMutableArray *requestOptions; // @synthesize requestOptions=_requestOptions;
+@property (nonatomic) int optionUsed;
+@property (strong, nonatomic) NSMutableArray *requestOptions;
 @property (readonly, nonatomic) id<GEOSurchargeType> selectedSurchargeType;
 @property (readonly, nonatomic) unsigned long long selectedSurchargeTypeIndex;
 @property (readonly, nonatomic) NSArray *surchargeTypes;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)requestOptionType;
 - (void).cxx_destruct;
 - (void)addRequestOption:(id)arg1;
 - (void)clearRequestOptions;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestOptionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)requestOptionsCount;

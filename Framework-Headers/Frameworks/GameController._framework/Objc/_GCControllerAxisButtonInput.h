@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameController/_GCControllerButtonInput.h>
+#import <GameController/GCControllerButtonInput.h>
 
-@class _GCControllerAxisInput;
+@class GCControllerAxisInput;
 
-@interface _GCControllerAxisButtonInput : _GCControllerButtonInput
+@interface _GCControllerAxisButtonInput : GCControllerButtonInput
 {
-    _GCControllerAxisInput *_axis;
     BOOL _positive;
+    GCControllerAxisInput *_axis;
 }
 
-@property (weak, nonatomic) _GCControllerAxisInput *axis; // @synthesize axis=_axis;
+@property (weak, nonatomic) GCControllerAxisInput *axis; // @synthesize axis=_axis;
 @property (readonly, nonatomic, getter=isPositive) BOOL positive; // @synthesize positive=_positive;
 
 - (void).cxx_destruct;
@@ -26,8 +26,6 @@
 - (id)description;
 - (id)initWithAxis:(id)arg1 positive:(BOOL)arg2;
 - (BOOL)isAnalog;
-- (BOOL)setHIDValue:(struct __IOHIDValue *)arg1;
-- (BOOL)setHIDValue:(struct __IOHIDValue *)arg1 queue:(id)arg2;
 - (float)value;
 
 @end

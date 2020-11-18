@@ -16,9 +16,10 @@
 
 @property (readonly, nonatomic) RECondition *condition; // @synthesize condition=_condition;
 @property (readonly, nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property (readonly, nonatomic) BOOL needsPredictionSet;
 
 - (void).cxx_destruct;
-- (BOOL)acceptsFeatureMap:(id)arg1;
+- (BOOL)acceptsFeatureMap:(id)arg1 predictionSet:(id)arg2 explanation:(id *)arg3;
 - (BOOL)compareFeatureMap:(id)arg1 toFeatureMap:(id)arg2;
 - (id)initWithCondition:(id)arg1;
 

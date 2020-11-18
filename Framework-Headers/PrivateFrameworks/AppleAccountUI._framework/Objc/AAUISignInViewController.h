@@ -29,13 +29,16 @@
     BOOL _shouldAnticipatePiggybacking;
     BOOL _allowsAccountCreation;
     BOOL _showServiceIcons;
+    BOOL _canEditUsername;
     long long _akServiceType;
     id<AAUISignInViewControllerDelegate> _delegate;
+    NSString *_username;
 }
 
 @property (nonatomic, setter=_setAkServiceType:) long long _akServiceType; // @synthesize _akServiceType;
 @property (nonatomic, setter=_setShouldAnticipatePiggybacking:) BOOL _shouldAnticipatePiggybacking; // @synthesize _shouldAnticipatePiggybacking;
 @property (nonatomic) BOOL allowsAccountCreation; // @synthesize allowsAccountCreation=_allowsAccountCreation;
+@property (nonatomic) BOOL canEditUsername; // @synthesize canEditUsername=_canEditUsername;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AAUISignInViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -44,6 +47,7 @@
 @property (nonatomic) BOOL showServiceIcons; // @synthesize showServiceIcons=_showServiceIcons;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *titleLabel;
+@property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 @property (strong, nonatomic) AAUIBuddyView *view; // @dynamic view;
 
 + (void)phoneNumberSupportedWithCompletion:(CDUnknownBlockType)arg1;
@@ -80,6 +84,7 @@
 - (void)_setEnabled:(BOOL)arg1;
 - (void)_setPasswordFieldHidden:(BOOL)arg1;
 - (void)_setUsernameCellWaiting:(BOOL)arg1;
+- (BOOL)_showOnlyPassword;
 - (id)_stringForFooter;
 - (id)_tableFooterView;
 - (id)_tableHeaderView;

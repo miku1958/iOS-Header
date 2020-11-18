@@ -7,6 +7,14 @@
 #import <Foundation/NSMutableDictionary.h>
 
 @interface NSMutableDictionary (TSUAdditions)
+- (void)tsp_addObject:(id)arg1 toArrayWithDeepCopyOptionKey:(id)arg2;
+- (void)tsp_addObject:(id)arg1 toArrayWithSerializationOptionKey:(id)arg2;
+- (void)tsp_delayArchivingObjectDuringDeepCopy:(id)arg1;
+- (void)tsp_delayArchivingObjectDuringSerialization:(id)arg1;
+- (void)tsp_setDeepCopyObjectProxy:(id)arg1 forReferencedObject:(id)arg2;
+- (void)tsp_setSerializationObjectProxy:(id)arg1 forReferencedObject:(id)arg2;
+- (void)tsp_skipArchivingObjectDuringDeepCopy:(id)arg1;
+- (void)tsp_skipArchivingObjectDuringSerialization:(id)arg1;
 - (id)tsu_objectForKey:(id)arg1 withDefaultOfClass:(Class)arg2;
 - (id)tsu_objectForKey:(id)arg1 withDefaultUsingBlock:(CDUnknownBlockType)arg2;
 - (void)tsu_setNonNilObject:(id)arg1 forKey:(id)arg2;

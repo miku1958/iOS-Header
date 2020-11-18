@@ -6,22 +6,23 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class UIActivityIndicatorView, UILabel;
+@class NSString, UIActivityIndicatorView, UILabel;
 
 @interface PKDashboardButtonCollectionViewCell : PKDashboardCollectionViewCell
 {
     UIActivityIndicatorView *_activityIndicator;
+    UILabel *_titleLabel;
     BOOL _showActivity;
     BOOL _enabled;
-    UILabel *_titleLabel;
 }
 
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL showActivity; // @synthesize showActivity=_showActivity;
-@property (copy, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
+- (void)_updateTextColor;
 - (void)createSubviews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

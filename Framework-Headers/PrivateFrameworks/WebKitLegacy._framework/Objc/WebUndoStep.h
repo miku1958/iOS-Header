@@ -13,11 +13,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)initialize;
-+ (id)stepWithUndoStep:(struct UndoStep *)arg1;
++ (id)stepWithUndoStep:(Ref_d1ef333b *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithUndoStep:(struct UndoStep *)arg1;
+- (id)initWithUndoStep:(Ref_d1ef333b *)arg1;
 - (struct UndoStep *)step;
 
 @end

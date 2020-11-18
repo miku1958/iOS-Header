@@ -6,24 +6,27 @@
 
 #import <TemplateKit/TLKView.h>
 
-@class TLKMultilineText, TLKVibrantLabel, UIActivityIndicatorView;
+@class TLKLabel, TLKMultilineText, UIActivityIndicatorView;
 
 @interface TLKActivityIndicatorView : TLKView
 {
     TLKMultilineText *_subtitle;
     UIActivityIndicatorView *_activityIndicator;
-    TLKVibrantLabel *_subtitleLabel;
+    TLKLabel *_subtitleLabel;
 }
 
-@property (strong) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (strong, nonatomic) TLKMultilineText *subtitle; // @synthesize subtitle=_subtitle;
-@property (strong) TLKVibrantLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (strong, nonatomic) TLKLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 
 - (void).cxx_destruct;
-- (id)init;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didMoveToWindow;
 - (void)observedPropertiesChanged;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)setupContentView;
 - (id)subtitleLabelText;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (BOOL)usesDefaultInsets;
 
 @end
 

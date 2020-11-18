@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarLayoutManager : NSObject
 {
     int _region;
-    UIStatusBarItemView *_itemViews[47];
+    UIStatusBarItemView *_itemViews[48];
     BOOL _persistentAnimationsEnabled;
     BOOL _usesVerticalLayout;
     UIStatusBarForegroundView *_foregroundView;

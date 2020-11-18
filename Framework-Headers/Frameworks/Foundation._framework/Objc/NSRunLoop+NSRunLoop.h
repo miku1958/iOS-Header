@@ -21,6 +21,8 @@
 - (void)addPort:(id)arg1 forMode:(id)arg2;
 - (void)addTimer:(id)arg1 forMode:(id)arg2;
 - (id)allModes;
+- (void)cancelPerformSelector:(SEL)arg1 target:(id)arg2 argument:(id)arg3;
+- (void)cancelPerformSelectorsWithTarget:(id)arg1;
 - (BOOL)containsPort:(id)arg1 forMode:(id)arg2;
 - (BOOL)containsTimer:(id)arg1 forMode:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,6 +34,7 @@
 - (id)limitDateForMode:(id)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performInModes:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)performSelector:(SEL)arg1 target:(id)arg2 argument:(id)arg3 order:(unsigned long long)arg4 modes:(id)arg5;
 - (id)portsForMode:(id)arg1;
 - (void)removePort:(id)arg1 forMode:(id)arg2;
 - (void)removeTimer:(id)arg1 forMode:(id)arg2;

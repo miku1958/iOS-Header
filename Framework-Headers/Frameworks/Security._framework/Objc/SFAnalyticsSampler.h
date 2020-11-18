@@ -22,6 +22,7 @@
 }
 
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) BOOL oncePerReport; // @synthesize oncePerReport=_oncePerReport;
 @property (nonatomic) double samplingInterval; // @synthesize samplingInterval=_samplingInterval;
 
 - (void).cxx_destruct;

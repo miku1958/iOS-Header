@@ -24,17 +24,17 @@
 + (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
+- (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyVideoPlayerTransform;
 - (id)_complicationsCompanionForegroundColor;
 - (void)_customizeVideoPlayerOnSetup;
-- (id)_editOptionThatHidesAllComplications;
 - (void)_handleEitherScreenWake;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (id)_swatchImageForMetallicColor:(unsigned long long)arg1 andDialShape:(unsigned long long)arg2;
 - (void)_updateDialSize;
+- (BOOL)_wantsConstantSpeedZoom;
 - (id)imageForEditOption:(id)arg1;
 - (void)reloadDataSources;
-- (void)setOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)setupDataSources;
 
 @end

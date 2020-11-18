@@ -22,6 +22,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUIDString:(id)arg1 deviceOrCloseRequestDictionary:(id)arg2;
 

@@ -12,11 +12,13 @@
 {
     BOOL _completeDataPromise;
     BOOL _createsPlaceholders;
+    BOOL _createAsMobileBackup;
     BOOL _restoreApplicationData;
     NSArray *_items;
 }
 
 @property (nonatomic) BOOL completeDataPromise; // @synthesize completeDataPromise=_completeDataPromise;
+@property (nonatomic) BOOL createAsMobileBackup; // @synthesize createAsMobileBackup=_createAsMobileBackup;
 @property (nonatomic) BOOL createsPlaceholders; // @synthesize createsPlaceholders=_createsPlaceholders;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (nonatomic) BOOL restoreApplicationData; // @synthesize restoreApplicationData=_restoreApplicationData;

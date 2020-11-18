@@ -65,9 +65,10 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithMultiwayConfig:(id)arg1 isSubStream:(BOOL)arg2;
+- (id)initWithStreamConfig:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)newMultiwayVideoStream;
 - (void)printWithLogFile:(void *)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

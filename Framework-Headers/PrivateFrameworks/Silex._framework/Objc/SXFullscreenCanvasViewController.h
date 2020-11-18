@@ -6,21 +6,25 @@
 
 #import <UIKit/UIViewController.h>
 
+@protocol SXFullscreenCanvasViewControllerDelegate;
+
 @interface SXFullscreenCanvasViewController : UIViewController
 {
     BOOL _isTransitioning;
     long long _statusBarStyle;
-    CDUnknownBlockType _onTransition;
+    id<SXFullscreenCanvasViewControllerDelegate> _delegate;
 }
 
+@property (weak, nonatomic) id<SXFullscreenCanvasViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL isTransitioning; // @synthesize isTransitioning=_isTransitioning;
-@property (copy, nonatomic) CDUnknownBlockType onTransition; // @synthesize onTransition=_onTransition;
 @property (nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
 
 - (void).cxx_destruct;
+- (void)dismiss;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
 - (BOOL)prefersStatusBarHidden;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

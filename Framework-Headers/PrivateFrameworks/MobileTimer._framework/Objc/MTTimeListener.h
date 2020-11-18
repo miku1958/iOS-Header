@@ -8,28 +8,30 @@
 
 #import <MobileTimer/MTAgentNotificationListener-Protocol.h>
 
-@class NSHashTable, NSString;
+@class MTObserverStore, NSString;
 @protocol NAScheduler, OS_dispatch_queue;
 
 @interface MTTimeListener : NSObject <MTAgentNotificationListener>
 {
     id<NAScheduler> _serializer;
     NSObject<OS_dispatch_queue> *_queue;
-    NSHashTable *_observers;
+    MTObserverStore *_observers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) MTObserverStore *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)handleNotification:(id)arg1;
-- (BOOL)handlesNotification:(id)arg1;
+- (double)assertionTimeOutForNotification:(id)arg1 ofType:(long long)arg2;
+- (void)handleNotification:(id)arg1 ofType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)handlesNotification:(id)arg1 ofType:(long long)arg2;
 - (id)init;
+- (id)initWithCallbackScheduler:(id)arg1;
 - (void)registerObserver:(id)arg1;
 
 @end

@@ -6,17 +6,97 @@
 
 #import <HomeKit/HMService.h>
 
+#import <Home/HFFavoritable-Protocol.h>
+#import <Home/HFHomeContainedObject-Protocol.h>
+#import <Home/HFHomeStatusVisible-Protocol.h>
+#import <Home/HFReorderableHomeKitObject-Protocol.h>
+#import <Home/HFRoomContextProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
-@class NSString;
+@class HFServiceNameComponents, HFUserNotificationServiceSettings, HMCharacteristic, HMHome, HMRoom, NSDate, NSString, NSUUID;
 
-@interface HMService (HFDebugging) <HFStateDumpBuildable>
+@interface HMService (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeStatusVisible, HFHomeContainedObject, HFRoomContextProviding, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
+@property (readonly, copy, nonatomic) NSString *hf_displayName;
+@property (readonly, nonatomic) unsigned long long hf_fallbackProgrammableSwitchIndex;
+@property (readonly, nonatomic) BOOL hf_hasSetFavorite;
+@property (readonly, nonatomic) BOOL hf_hasSetVisibleInHomeStatus;
+@property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
+@property (readonly, nonatomic) BOOL hf_isVisibleInHomeStatus;
+@property (readonly, nonatomic) HMCharacteristic *hf_labelIndexCharacteristic;
+@property (readonly, nonatomic) HMCharacteristic *hf_labelNamespaceCharacteristic;
+@property (readonly, weak, nonatomic) HMRoom *hf_parentRoom;
+@property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
+@property (readonly, nonatomic) BOOL hf_supportsHomeStatus;
+@property (readonly, copy, nonatomic) HFUserNotificationServiceSettings *hf_userNotificationSettings;
+@property (readonly, weak, nonatomic) HMHome *home;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
++ (id)_hf_allowedChildServicesTypeMap;
++ (id)hf_allRequiredCharacteristicTypesForStandardServices;
++ (id)hf_defaultServiceSubtypeForServiceType:(id)arg1;
++ (id)hf_descriptionForServiceSubtype:(id)arg1;
++ (id)hf_programmableSwitchServiceTypes;
++ (id)hf_requiredCharacteristicTypesForDisplayMetadataWithServiceType:(id)arg1;
++ (id)hf_roomsForServices:(id)arg1;
++ (id)hf_sensorCharacteristicTypeForServiceType:(id)arg1;
++ (CDUnknownBlockType)hf_serviceComparator;
++ (id)hf_standardServiceTypes;
++ (id)hf_standardServices;
+- (id)_hf_firstLinkedServiceOfType:(id)arg1;
+- (BOOL)_hf_isDirectlyOrIndirectlyLinkedToService:(id)arg1;
+- (BOOL)hf_canGroupWithService:(id)arg1;
+- (id)hf_characteristicOfType:(id)arg1;
+- (id)hf_childServices;
+- (id)hf_childServicesOfType:(id)arg1;
+- (id)hf_effectiveServiceSubtype;
+- (id)hf_effectiveServiceType;
+- (id)hf_iconDescriptor;
+- (BOOL)hf_isInGroup;
+- (BOOL)hf_isLegacyService;
+- (BOOL)hf_isTelevision;
+- (BOOL)hf_isValidObject;
+- (BOOL)hf_isVisible;
+- (id)hf_parentService;
+- (id)hf_requiredCharacteristicTypesForDisplayMetadata;
+- (id)hf_serviceDescriptor;
+- (id)hf_shiftedIconDescriptor;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (BOOL)hf_supportsGroups;
+- (id)hf_updateDateAdded:(id)arg1;
+- (id)hf_updateIconDescriptor:(id)arg1;
+- (id)hf_updateIsFavorite:(BOOL)arg1;
+- (id)hf_updateIsVisibleInHomeStatus:(BOOL)arg1;
+- (id)hf_updateUserNotificationSettings:(id)arg1;
 @end
 

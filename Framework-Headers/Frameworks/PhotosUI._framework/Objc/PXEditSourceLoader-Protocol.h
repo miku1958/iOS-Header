@@ -6,17 +6,20 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSError, NSNumber, NSProgress, NSString, PLEditSource, PLPhotoEditModel;
+@class NSError, NSNumber, NSProgress, NSString, PICompositionController, PLEditSource;
 
 @protocol PXEditSourceLoader <NSObject>
 
+@property (readonly, nonatomic) PLEditSource *activeEditSource;
 @property (readonly, nonatomic) long long baseVersion;
+@property (readonly, copy, nonatomic) PICompositionController *compositionController;
 @property (readonly, copy, nonatomic) NSString *contentIdentifier;
-@property (readonly, copy, nonatomic) PLPhotoEditModel *editModel;
 @property (readonly, nonatomic) PLEditSource *editSource;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, copy, nonatomic) NSString *livePhotoPairingIdentifier;
 @property (readonly, nonatomic) NSNumber *loadDuration;
+@property (readonly, copy, nonatomic) PICompositionController *originalCompositionController;
+@property (readonly, nonatomic) PLEditSource *overcaptureEditSource;
 @property (readonly, nonatomic) NSProgress *progress;
 
 - (void)beginLoading;

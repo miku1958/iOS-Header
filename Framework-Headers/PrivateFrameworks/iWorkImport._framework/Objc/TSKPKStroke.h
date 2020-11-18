@@ -8,18 +8,21 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class PKInk, PKStroke;
+@class NSArray, PKInk, PKStroke;
 
 __attribute__((visibility("hidden")))
 @interface TSKPKStroke : NSObject <NSCopying>
 {
+    unsigned long long _hash;
     double _pencilAnnotationDrawingScale;
     PKStroke *_internalPencilKitStroke;
+    NSArray *_locations;
 }
 
 @property (readonly, nonatomic) struct CGRect incorrectUnscaledFastFrame;
 @property (readonly, nonatomic) PKInk *ink;
 @property (strong, nonatomic) PKStroke *internalPencilKitStroke; // @synthesize internalPencilKitStroke=_internalPencilKitStroke;
+@property (strong, nonatomic) NSArray *locations; // @synthesize locations=_locations;
 @property (readonly, nonatomic) double pencilAnnotationDrawingScale; // @synthesize pencilAnnotationDrawingScale=_pencilAnnotationDrawingScale;
 @property (readonly, nonatomic) PKStroke *pencilKitStroke;
 @property (readonly, nonatomic) unsigned long long pointsCount;
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)p_copyOfPKStroke:(id)arg1;
 + (struct CGPoint)p_locationAtIndex:(unsigned long long)arg1 ofStroke:(id)arg2;
 + (unsigned long long)p_pointsCountOfStroke:(id)arg1;
++ (id)strokesForPKStrokes:(id)arg1 withPencilAnnotationDrawingScale:(double)arg2;
 + (id)substrokeOfStroke:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -36,13 +40,18 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)initWithPKStroke:(id)arg1 pencilAnnotationDrawingScale:(double)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isUnderlineStrokeWithVerticalTextLayout:(BOOL)arg1;
 - (struct CGPoint)locationAtIndex:(unsigned long long)arg1;
-- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (struct CGRect)p_incorrectPencilKitFastFrame;
 - (id)strokeByTransformingStrokeWithTransform:(struct CGAffineTransform)arg1;
+- (struct CGRect)strokePointsFrame;
 - (id)subStrokeFromStartIndex:(unsigned long long)arg1 toEndIndex:(unsigned long long)arg2 adjustingStart:(BOOL)arg3 andAdjustingEnd:(BOOL)arg4 toEdgesOfRect:(struct CGRect)arg5;
 - (id)substrokeWithRange:(struct _NSRange)arg1;
 - (double)timestampAtIndex:(unsigned long long)arg1;
+- (double)timestampForFirstPointInStroke;
+- (double)timestampForLastPointInStroke;
+- (struct CGPoint)unscaledLocationAtIndex:(unsigned long long)arg1;
+- (struct CGRect)unscaledStrokePointsFrame;
 
 @end
 

@@ -13,6 +13,7 @@
     JSVirtualMachine *m_virtualMachine;
     struct OpaqueJSContext *m_context;
     struct Strong<JSC::JSObject> m_exception;
+    struct WeakObjCPtr<id<JSModuleLoaderDelegate>> m_moduleLoaderDelegate;
     CDUnknownBlockType _exceptionHandler;
 }
 
@@ -39,15 +40,19 @@
 - (void)beginCallbackWithData:(struct CallbackData *)arg1 calleeValue:(struct OpaqueJSValue *)arg2 thisValue:(struct OpaqueJSValue *)arg3 argumentCount:(unsigned long long)arg4 arguments:(const struct OpaqueJSValue **)arg5;
 - (BOOL)boolFromNotifyException:(struct OpaqueJSValue *)arg1;
 - (void)dealloc;
+- (id)dependencyIdentifiersForModuleJSScript:(id)arg1;
 - (void)endCallbackWithData:(struct CallbackData *)arg1;
 - (void)ensureWrapperMap;
+- (id)evaluateJSScript:(id)arg1;
 - (id)evaluateScript:(id)arg1;
 - (id)evaluateScript:(id)arg1 withSourceURL:(id)arg2;
 - (id)init;
 - (id)initWithGlobalContextRef:(struct OpaqueJSContext *)arg1;
 - (id)initWithVirtualMachine:(id)arg1;
+- (id)moduleLoaderDelegate;
 - (void)notifyException:(struct OpaqueJSValue *)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (void)setModuleLoaderDelegate:(id)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)valueFromNotifyException:(struct OpaqueJSValue *)arg1;
 - (id)wrapperForJSObject:(struct OpaqueJSValue *)arg1;

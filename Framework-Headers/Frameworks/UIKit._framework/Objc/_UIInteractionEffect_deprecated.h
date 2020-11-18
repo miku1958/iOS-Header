@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _updateBlock;
 }
 
+@property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double forceFactor; // @synthesize forceFactor=_forceFactor;
@@ -42,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (void)_stopAnimations;
 - (void)_updateAnimatorIfNeeded;
 - (void)_updateFromTransformer:(id)arg1;
-- (struct CGRect)bounds;
 - (id)init;
 
 @end

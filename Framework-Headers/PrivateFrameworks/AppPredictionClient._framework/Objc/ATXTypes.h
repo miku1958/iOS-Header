@@ -23,6 +23,7 @@
 + (id)stringForConsumerSubtype:(unsigned char)arg1;
 + (id)stringForConsumerType:(unsigned long long)arg1;
 + (id)stringForEngagementType:(unsigned long long)arg1;
++ (id)uiTypeForConsumerSubType:(unsigned char)arg1;
 + (id)validConsumerSubTypeList;
 + (id)validConsumerSubTypes;
 + (id)validConsumerTypeList;

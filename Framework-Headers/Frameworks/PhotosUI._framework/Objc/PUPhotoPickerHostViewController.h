@@ -6,62 +6,34 @@
 
 #import <UIKit/_UIRemoteViewController.h>
 
-#import <PhotosUI/PUPhotoPickerActionHandler-Protocol.h>
 #import <PhotosUI/PUPhotoPickerHostExtensionProvider-Protocol.h>
 #import <PhotosUI/PUPhotoPickerTestSupportHandler-Protocol.h>
 
-@class NSExtensionContext, NSString, PUPhotoPickerAppearance;
+@class NSExtensionContext, NSString;
 @protocol PUPhotoPickerHostService, PUPhotoPickerHostViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUPhotoPickerHostViewController : _UIRemoteViewController <PUPhotoPickerHostExtensionProvider, PUPhotoPickerActionHandler, PUPhotoPickerTestSupportHandler>
+@interface PUPhotoPickerHostViewController : _UIRemoteViewController <PUPhotoPickerHostExtensionProvider, PUPhotoPickerTestSupportHandler>
 {
     BOOL __invalidated;
-    BOOL _didUpdateAppearance;
     NSExtensionContext *_hostExtensionContext;
-    long long _actionType;
-    NSString *_actionTypeDescription;
-    long long _secondaryActionType;
     id<PUPhotoPickerHostViewControllerDelegate> _delegate;
-    PUPhotoPickerAppearance *_photoPickerAppearance;
-    PUPhotoPickerAppearance *_previousPhotoPickerAppearance;
 }
 
 @property (nonatomic, getter=_isInvalidated) BOOL _invalidated; // @synthesize _invalidated=__invalidated;
-@property (nonatomic) long long actionType; // @synthesize actionType=_actionType;
-@property (strong, nonatomic) NSString *actionTypeDescription; // @synthesize actionTypeDescription=_actionTypeDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPhotoPickerHostViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didUpdateAppearance; // @synthesize didUpdateAppearance=_didUpdateAppearance;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSExtensionContext *hostExtensionContext; // @synthesize hostExtensionContext=_hostExtensionContext;
 @property (readonly, nonatomic) id<PUPhotoPickerHostService> hostProxy;
-@property (strong, nonatomic) PUPhotoPickerAppearance *photoPickerAppearance; // @synthesize photoPickerAppearance=_photoPickerAppearance;
-@property (strong, nonatomic) PUPhotoPickerAppearance *previousPhotoPickerAppearance; // @synthesize previousPhotoPickerAppearance=_previousPhotoPickerAppearance;
-@property (nonatomic) long long secondaryActionType; // @synthesize secondaryActionType=_secondaryActionType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_barButtonItemForActionType:(long long)arg1;
 - (id)_hostContext;
-- (void)_invalidateIfNeeded;
-- (void)_setLeftBarButtonItemForActionType:(long long)arg1;
-- (void)_setRightBarButtonItemForActionType:(long long)arg1;
-- (void)didMoveToParentViewController:(id)arg1;
 - (void)invalidate;
-- (void)performApperanceUpdateUsing:(id)arg1;
 - (void)performPhotoPickerPreviewOfFirstAsset;
 - (void)performTraitCollectionUpdateWithCompletion:(CDUnknownBlockType)arg1;
-- (long long)preferredStatusBarStyle;
-- (long long)preferredStatusBarUpdateAnimation;
-- (BOOL)prefersStatusBarHidden;
-- (void)promptDidChange:(id)arg1;
-- (void)tapBack:(id)arg1;
-- (void)tapCancel:(id)arg1;
-- (void)tapDone:(id)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

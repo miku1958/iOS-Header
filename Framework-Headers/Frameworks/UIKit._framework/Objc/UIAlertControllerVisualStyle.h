@@ -28,10 +28,11 @@ __attribute__((visibility("hidden")))
 - (id)_detailMessageFont;
 - (id)_keyCommandInputForCancelAction;
 - (double)_marginAboveDetailMessageFirstBaseline;
+- (double)_marginAroundActionGroup;
 - (void)_reloadInterfaceActionVisualStyle;
 - (double)_scaledMarginAboveDetailMessageFirstBaseline;
 - (double)_scaledMarginAboveMessageLabelFirstBaseline;
-- (double)_scaledMarginAboveTitleLabelFirstBaselineInAlertControllerView:(id)arg1;
+- (double)_scaledMarginAboveTitleLabelFirstBaselineInAlertControllerView:(id)arg1 titleText:(id)arg2;
 - (double)_scaledMarginBelowLastLabelLastBaseline;
 - (double)_scaledMarginBelowMessageLabelLastBaseline;
 - (double)_scaledMarginBelowTitleLabelLastBaseline;
@@ -79,7 +80,7 @@ __attribute__((visibility("hidden")))
 - (id)regularActionFont;
 - (BOOL)shouldOccludeDuringPresentation;
 - (BOOL)shouldPreserveRespondersAcrossWindows;
-- (id)textFieldContainingViewWithTextField:(id)arg1;
+- (id)textFieldContainingViewWithTextField:(id)arg1 position:(long long)arg2;
 - (struct UIEdgeInsets)textFieldContentInset;
 - (double)textFieldHorizontalMargin;
 - (id)tintColorForAlertController:(id)arg1;
@@ -87,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (id)titleLabelFont;
 - (double)transitionDurationForPresentation:(BOOL)arg1 ofAlertController:(id)arg2;
 - (BOOL)transitionOfType:(long long)arg1 shouldBeInteractiveForAlertController:(id)arg2;
+- (id)vibrancyEffectForTitleAndMessageLabel;
 
 @end
 

@@ -9,33 +9,32 @@
 #import <iAd/ADPlayerDelegate-Protocol.h>
 #import <iAd/ADPrerollViewDelegate-Protocol.h>
 
-@class ADPlayer, ADPrerollView, AVPlayerViewController, MPMoviePlayerController, NSString;
+@class ADPlayer, ADPrerollView, MPMoviePlayerController, NSString;
 
 @interface ADPrerollController : NSObject <ADPrerollViewDelegate, ADPlayerDelegate>
 {
-    AVPlayerViewController *_avPlayerViewController;
-    MPMoviePlayerController *_moviePlayerController;
     BOOL _setupInProgress;
     BOOL _isObservingThirdPartyAVPlayer;
     unsigned long long _type;
+    MPMoviePlayerController *_moviePlayerController;
     ADPrerollView *_view;
     ADPlayer *_adPlayer;
     CDUnknownBlockType _completionHandler;
 }
 
 @property (strong, nonatomic) ADPlayer *adPlayer; // @synthesize adPlayer=_adPlayer;
-@property (weak, nonatomic) AVPlayerViewController *avPlayerViewController;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isObservingThirdPartyAVPlayer; // @synthesize isObservingThirdPartyAVPlayer=_isObservingThirdPartyAVPlayer;
-@property (weak, nonatomic) MPMoviePlayerController *moviePlayerController;
+@property (weak, nonatomic) MPMoviePlayerController *moviePlayerController; // @synthesize moviePlayerController=_moviePlayerController;
 @property (nonatomic) BOOL setupInProgress; // @synthesize setupInProgress=_setupInProgress;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) ADPrerollView *view; // @synthesize view=_view;
 
+- (void).cxx_destruct;
 - (void)_addAccessibilityIdentifier:(id)arg1;
 - (id)_advertisementView;
 - (void)_appWillResignActive;
@@ -55,7 +54,6 @@
 - (void)dealloc;
 - (void)doneButtonPressed;
 - (id)init;
-- (id)initWithAVPlayerViewController:(id)arg1;
 - (id)initWithMoviePlayerController:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseButtonPressed;

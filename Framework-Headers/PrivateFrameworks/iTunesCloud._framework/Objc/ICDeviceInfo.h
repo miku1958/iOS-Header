@@ -25,10 +25,16 @@
     NSString *_deviceGUID;
     NSString *_name;
     NSString *_pairedDeviceGUID;
+    NSString *_pairedDeviceMediaGUID;
     NSString *_serialNumber;
     struct CGSize _mainScreenSize;
     NSNumber *_hasCellularDataCapabilityNumber;
     NSNumber *_hasTelephonyCapabilityNumber;
+    NSNumber *_hasWiFiCapabilityValue;
+    NSNumber *_hasWAPICapabilityValue;
+    NSNumber *_has720pCapabilityValue;
+    NSNumber *_has1080pCapabilityValue;
+    NSNumber *_screenClassValue;
     NSNumber *_isInternalBuildNumber;
     NSString *_systemReleaseType;
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -42,8 +48,12 @@
 @property (readonly, copy, nonatomic) NSString *deviceModel;
 @property (readonly, nonatomic) unsigned int fairPlayDeviceType;
 @property (readonly, copy, nonatomic) NSString *hardwarePlatform;
+@property (readonly, nonatomic) BOOL has1080pCapability;
+@property (readonly, nonatomic) BOOL has720pCapability;
 @property (readonly, nonatomic) BOOL hasCellularDataCapability;
 @property (readonly, nonatomic) BOOL hasTelephonyCapability;
+@property (readonly, nonatomic) BOOL hasWAPICapability;
+@property (readonly, nonatomic) BOOL hasWiFiCapability;
 @property (readonly, nonatomic, getter=isInternalBuild) BOOL internalBuild;
 @property (readonly, nonatomic) BOOL isAppleTV;
 @property (readonly, nonatomic) BOOL isAudioAccessory;
@@ -54,15 +64,18 @@
 @property (readonly, nonatomic) struct CGSize mainScreenSize;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *pairedDeviceGUID;
+@property (readonly, copy, nonatomic) NSString *pairedDeviceMediaGUID;
 @property (readonly, copy, nonatomic) NSString *productPlatform;
 @property (readonly, copy, nonatomic) NSString *productVersion;
 @property (readonly, copy, nonatomic) NSString *rawDeviceModel;
+@property (readonly, nonatomic) int screenClass;
 @property (readonly, copy, nonatomic) NSString *serialNumber;
 @property (readonly, copy, nonatomic) NSString *systemReleaseType;
 
 + (id)currentDeviceInfo;
 + (id)defaultInfo;
 - (void).cxx_destruct;
+- (id)_activePairedDevice;
 - (int)_gestaltDeviceClass;
 - (id)_init;
 - (void)dealloc;

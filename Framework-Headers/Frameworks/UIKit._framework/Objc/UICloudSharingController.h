@@ -7,12 +7,13 @@
 #import <UIKitCore/UIViewController.h>
 
 #import <UIKitCore/UIActionSheetPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 #import <UIKitCore/_UISharingPublicController-Protocol.h>
 
-@class CKContainer, CKShare, NSDictionary, NSObject, NSString, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
+@class CKContainer, CKContainerSetupInfo, CKShare, NSDictionary, NSObject, NSString, _UIRemoteViewController, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
 @protocol OS_dispatch_semaphore, UICloudSharingControllerDelegate, _UICloudSharingControllerDelegate_Internal;
 
-@interface UICloudSharingController : UIViewController <_UISharingPublicController, UIActionSheetPresentationControllerDelegate>
+@interface UICloudSharingController : UIViewController <_UISharingPublicController, UIActionSheetPresentationControllerDelegate, _UIRemoteViewControllerContaining>
 {
     BOOL _isDelayingPresentation;
     NSObject<OS_dispatch_semaphore> *_viewServiceValidSema;
@@ -25,6 +26,7 @@
     _UIResilientRemoteViewContainerViewController *_childViewController;
     _UIShareInvitationRemoteViewController *_remoteViewController;
     CKContainer *_container;
+    CKContainerSetupInfo *_containerSetupInfo;
     NSDictionary *_participantDetails;
     CDUnknownBlockType _preparationHandler;
     UIViewController *_originalPresentingViewController;
@@ -34,9 +36,11 @@
     id<_UICloudSharingControllerDelegate_Internal> _internalDelegate;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic) unsigned long long availablePermissions; // @synthesize availablePermissions=_availablePermissions;
 @property (strong, nonatomic, getter=_childViewController, setter=_setChildViewController:) _UIResilientRemoteViewContainerViewController *childViewController; // @synthesize childViewController=_childViewController;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
+@property (strong, nonatomic) CKContainerSetupInfo *containerSetupInfo; // @synthesize containerSetupInfo=_containerSetupInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UICloudSharingControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

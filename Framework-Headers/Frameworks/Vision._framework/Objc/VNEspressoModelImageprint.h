@@ -10,13 +10,15 @@
 #import <Vision/NSSecureCoding-Protocol.h>
 #import <Vision/VNRequestRevisionProviding-Protocol.h>
 #import <Vision/VNSerializing-Protocol.h>
+#import <Vision/VNSerializingInternal-Protocol.h>
 
 @class NSData, NSDictionary, NSString;
 
-@interface VNEspressoModelImageprint : NSObject <NSSecureCoding, NSCopying, VNSerializing, VNRequestRevisionProviding>
+@interface VNEspressoModelImageprint : NSObject <VNSerializingInternal, NSSecureCoding, NSCopying, VNSerializing, VNRequestRevisionProviding>
 {
     NSDictionary *_labelsAndConfidence;
     unsigned long long _requestRevision;
+    unsigned long long _elementType;
     NSData *_descriptorData;
     unsigned long long _elementCount;
     unsigned long long _lengthInBytes;
@@ -29,26 +31,29 @@
 @property (strong) NSData *descriptorData; // @synthesize descriptorData=_descriptorData;
 @property long long distanceMode; // @synthesize distanceMode=_distanceMode;
 @property unsigned long long elementCount; // @synthesize elementCount=_elementCount;
+@property (readonly) unsigned long long elementType;
 @property (copy) NSDictionary *labelsAndConfidence; // @synthesize labelsAndConfidence=_labelsAndConfidence;
 @property unsigned long long lengthInBytes; // @synthesize lengthInBytes=_lengthInBytes;
 @property (readonly, nonatomic) unsigned long long requestRevision;
+@property (readonly, nonatomic) unsigned long long serializedLength;
 @property (copy) NSString *version; // @synthesize version=_version;
 
 + (unsigned long long)confidenceTypeForRevision:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_initWithClassKeyMappedCoder:(id)arg1;
 - (id)computeDistance:(id)arg1 withDistanceFunction:(unsigned long long)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 lengthInBytes:(unsigned long long)arg3 labelsAndConfidence:(id)arg4 requestRevision:(unsigned long long)arg5;
+- (id)initWithCoder:(id)arg1 forCodingVersion:(unsigned int)arg2;
+- (id)initWithData:(const void *)arg1 elementCount:(unsigned long long)arg2 elementType:(unsigned long long)arg3 lengthInBytes:(unsigned long long)arg4 labelsAndConfidence:(id)arg5 requestRevision:(unsigned long long)arg6;
 - (id)initWithState:(id)arg1 error:(id *)arg2;
 - (id)initWithState:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)serializeStateAndReturnError:(id *)arg1;
 - (unsigned long long)serializeStateIntoData:(id)arg1 startingAtByteOffset:(unsigned long long)arg2 error:(id *)arg3;
-- (unsigned long long)serializedLength;
 
 @end
 

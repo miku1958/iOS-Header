@@ -8,37 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class NSData, NSMutableArray, PBDataReader;
 
 @interface GEOTrafficRerouteFeedback : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    NSData *_oldRouteID;
+    NSMutableArray *_oldRouteIncidents;
+    NSData *_reroutedRouteID;
+    NSData *_responseId;
     int _actionType;
     int _alertType;
     unsigned int _oldRouteHistoricTravelTime;
-    NSData *_oldRouteID;
-    NSMutableArray *_oldRouteIncidents;
     unsigned int _oldRouteTravelTime;
     int _rerouteType;
     unsigned int _reroutedRouteHistoricTravelTime;
-    NSData *_reroutedRouteID;
     unsigned int _reroutedRouteTravelTime;
-    NSData *_responseId;
     BOOL _backgrounded;
     struct {
-        unsigned int actionType:1;
-        unsigned int alertType:1;
-        unsigned int oldRouteHistoricTravelTime:1;
-        unsigned int oldRouteTravelTime:1;
-        unsigned int rerouteType:1;
-        unsigned int reroutedRouteHistoricTravelTime:1;
-        unsigned int reroutedRouteTravelTime:1;
-        unsigned int backgrounded:1;
-    } _has;
+        unsigned int has_actionType:1;
+        unsigned int has_alertType:1;
+        unsigned int has_oldRouteHistoricTravelTime:1;
+        unsigned int has_oldRouteTravelTime:1;
+        unsigned int has_rerouteType:1;
+        unsigned int has_reroutedRouteHistoricTravelTime:1;
+        unsigned int has_reroutedRouteTravelTime:1;
+        unsigned int has_backgrounded:1;
+        unsigned int read_oldRouteID:1;
+        unsigned int read_oldRouteIncidents:1;
+        unsigned int read_reroutedRouteID:1;
+        unsigned int read_responseId:1;
+        unsigned int wrote_oldRouteID:1;
+        unsigned int wrote_oldRouteIncidents:1;
+        unsigned int wrote_reroutedRouteID:1;
+        unsigned int wrote_responseId:1;
+        unsigned int wrote_actionType:1;
+        unsigned int wrote_alertType:1;
+        unsigned int wrote_oldRouteHistoricTravelTime:1;
+        unsigned int wrote_oldRouteTravelTime:1;
+        unsigned int wrote_rerouteType:1;
+        unsigned int wrote_reroutedRouteHistoricTravelTime:1;
+        unsigned int wrote_reroutedRouteTravelTime:1;
+        unsigned int wrote_backgrounded:1;
+    } _flags;
 }
 
-@property (nonatomic) int actionType; // @synthesize actionType=_actionType;
-@property (nonatomic) int alertType; // @synthesize alertType=_alertType;
-@property (nonatomic) BOOL backgrounded; // @synthesize backgrounded=_backgrounded;
+@property (nonatomic) int actionType;
+@property (nonatomic) int alertType;
+@property (nonatomic) BOOL backgrounded;
 @property (nonatomic) BOOL hasActionType;
 @property (nonatomic) BOOL hasAlertType;
 @property (nonatomic) BOOL hasBackgrounded;
@@ -50,21 +68,27 @@
 @property (readonly, nonatomic) BOOL hasReroutedRouteID;
 @property (nonatomic) BOOL hasReroutedRouteTravelTime;
 @property (readonly, nonatomic) BOOL hasResponseId;
-@property (nonatomic) unsigned int oldRouteHistoricTravelTime; // @synthesize oldRouteHistoricTravelTime=_oldRouteHistoricTravelTime;
-@property (strong, nonatomic) NSData *oldRouteID; // @synthesize oldRouteID=_oldRouteID;
-@property (strong, nonatomic) NSMutableArray *oldRouteIncidents; // @synthesize oldRouteIncidents=_oldRouteIncidents;
-@property (nonatomic) unsigned int oldRouteTravelTime; // @synthesize oldRouteTravelTime=_oldRouteTravelTime;
-@property (nonatomic) int rerouteType; // @synthesize rerouteType=_rerouteType;
-@property (nonatomic) unsigned int reroutedRouteHistoricTravelTime; // @synthesize reroutedRouteHistoricTravelTime=_reroutedRouteHistoricTravelTime;
-@property (strong, nonatomic) NSData *reroutedRouteID; // @synthesize reroutedRouteID=_reroutedRouteID;
-@property (nonatomic) unsigned int reroutedRouteTravelTime; // @synthesize reroutedRouteTravelTime=_reroutedRouteTravelTime;
-@property (strong, nonatomic) NSData *responseId; // @synthesize responseId=_responseId;
+@property (nonatomic) unsigned int oldRouteHistoricTravelTime;
+@property (strong, nonatomic) NSData *oldRouteID;
+@property (strong, nonatomic) NSMutableArray *oldRouteIncidents;
+@property (nonatomic) unsigned int oldRouteTravelTime;
+@property (nonatomic) int rerouteType;
+@property (nonatomic) unsigned int reroutedRouteHistoricTravelTime;
+@property (strong, nonatomic) NSData *reroutedRouteID;
+@property (nonatomic) unsigned int reroutedRouteTravelTime;
+@property (strong, nonatomic) NSData *responseId;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)oldRouteIncidentsType;
 - (void).cxx_destruct;
 - (int)StringAsActionType:(id)arg1;
 - (int)StringAsAlertType:(id)arg1;
 - (int)StringAsRerouteType:(id)arg1;
+- (void)_addNoFlagsOldRouteIncidents:(id)arg1;
+- (void)_readOldRouteID;
+- (void)_readOldRouteIncidents;
+- (void)_readReroutedRouteID;
+- (void)_readResponseId;
 - (id)actionTypeAsString:(int)arg1;
 - (void)addOldRouteIncidents:(id)arg1;
 - (id)alertTypeAsString:(int)arg1;
@@ -78,6 +102,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)oldRouteIncidentsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)oldRouteIncidentsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)rerouteTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

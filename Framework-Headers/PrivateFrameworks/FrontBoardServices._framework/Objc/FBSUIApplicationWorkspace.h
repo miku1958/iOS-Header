@@ -6,26 +6,16 @@
 
 #import <FrontBoardServices/FBSWorkspace.h>
 
-#import <FrontBoardServices/FBSUIApplicationWorkspaceClientDelegate-Protocol.h>
-
-@class NSString;
 @protocol FBSUIApplicationWorkspaceDelegate;
 
-@interface FBSUIApplicationWorkspace : FBSWorkspace <FBSUIApplicationWorkspaceClientDelegate>
+@interface FBSUIApplicationWorkspace : FBSWorkspace
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<FBSUIApplicationWorkspaceDelegate> delegate; // @dynamic delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) id<FBSUIApplicationWorkspaceDelegate> delegate;
 
-- (Class)_clientClass;
-- (void)client:(id)arg1 handleExit:(id)arg2;
-- (void)client:(id)arg1 handleLaunch:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)clientHandleAssertionExpirationImminent:(id)arg1;
-- (BOOL)isUIApplicationWorkspace;
+- (id)initWithSerialQueue:(id)arg1;
+- (void)setDelegate:(id)arg1;
 
 @end
 

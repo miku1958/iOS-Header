@@ -5,6 +5,17 @@
 	// setter
 	// modify coroutine
  }
+ protocol CloudKitCodeProtobuf._ProtoNameProviding // 1 requirements
+ {
+	// class getter
+ }
+ protocol CloudKitCodeProtobuf.AnyMessageExtension // 4 requirements
+ {
+	// getter
+	// getter
+	// getter
+	// method
+ }
  protocol CloudKitCodeProtobuf.Visitor // 56 requirements
  {
 	// method
@@ -63,6 +74,10 @@
 	// method
 	// method
 	// method
+ }
+ protocol CloudKitCodeProtobuf.SelectiveVisitor // 1 requirements
+ {
+	// class base protocol
  }
  protocol CloudKitCodeProtobuf.Decoder // 59 requirements
  {
@@ -126,91 +141,6 @@
 	// method
 	// method
  }
- protocol CloudKitCodeProtobuf.ProtobufAPIVersion_2 // 0 requirements
- {
- }
- protocol CloudKitCodeProtobuf.ProtobufAPIVersionCheck // 2 requirements
- {
-	// class associated conformance access function
-	// class associated type access function
- }
- protocol CloudKitCodeProtobuf.Message // 11 requirements
- {
-	// class base protocol
-	// class init
-	// class getter
-	// getter
-	// getter
-	// setter
-	// modify coroutine
-	// method
-	// method
-	// getter
-	// method
- }
- protocol CloudKitCodeProtobuf._MessageImplementationBase // 3 requirements
- {
-	// class base protocol
-	// class base protocol
-	// method
- }
- protocol CloudKitCodeProtobuf.SelectiveVisitor // 1 requirements
- {
-	// class base protocol
- }
- protocol CloudKitCodeProtobuf.AnyMessageExtension // 4 requirements
- {
-	// getter
-	// getter
-	// getter
-	// method
- }
- protocol CloudKitCodeProtobuf.AnyExtensionField // 7 requirements
- {
-	// class base protocol
-	// getter
-	// getter
-	// method
-	// method
-	// method
-	// getter
- }
- protocol CloudKitCodeProtobuf.ExtensionField // 8 requirements
- {
-	// class base protocol
-	// class base protocol
-	// class associated type access function
-	// getter
-	// setter
-	// modify coroutine
-	// class init
-	// class init
- }
- protocol CloudKitCodeProtobuf._CustomJSONCodable // 3 requirements
- {
-	// method
-	// method
-	// class method
- }
- protocol CloudKitCodeProtobuf.ProtobufWrapper // 7 requirements
- {
-	// class associated conformance access function
-	// class associated type access function
-	// getter
-	// setter
-	// modify coroutine
-	// class init
-	// class init
- }
- protocol CloudKitCodeProtobuf.ExtensionMap // 2 requirements
- {
-	// getter
-	// method
- }
- protocol CloudKitCodeProtobuf._ProtoNameProviding // 1 requirements
- {
-	// class getter
- }
  protocol CloudKitCodeProtobuf.FieldType // 8 requirements
  {
 	// class associated conformance access function
@@ -230,6 +160,60 @@
  {
 	// class base protocol
  }
+ protocol CloudKitCodeProtobuf.AnyExtensionField // 7 requirements
+ {
+	// class base protocol
+	// method
+	// getter
+	// method
+	// method
+	// method
+	// getter
+ }
+ protocol CloudKitCodeProtobuf.ExtensionField // 8 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// class associated type access function
+	// getter
+	// setter
+	// modify coroutine
+	// class init
+	// class init
+ }
+ protocol CloudKitCodeProtobuf.Message // 11 requirements
+ {
+	// class base protocol
+	// class init
+	// class getter
+	// getter
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+ }
+ protocol CloudKitCodeProtobuf._MessageImplementationBase // 3 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// method
+ }
+ protocol CloudKitCodeProtobuf.ExtensionMap // 2 requirements
+ {
+	// getter
+	// method
+ }
+ protocol CloudKitCodeProtobuf.ProtobufAPIVersion_2 // 0 requirements
+ {
+ }
+ protocol CloudKitCodeProtobuf.ProtobufAPIVersionCheck // 2 requirements
+ {
+	// class associated conformance access function
+	// class associated type access function
+ }
  protocol CloudKitCodeProtobuf.Enum // 5 requirements
  {
 	// class base protocol
@@ -238,26 +222,175 @@
 	// class init
 	// getter
  }
+ protocol CloudKitCodeProtobuf._CustomJSONCodable // 3 requirements
+ {
+	// method
+	// method
+	// class method
+ }
+ protocol CloudKitCodeProtobuf.ProtobufWrapper // 7 requirements
+ {
+	// class associated conformance access function
+	// class associated type access function
+	// getter
+	// setter
+	// modify coroutine
+	// class init
+	// class init
+ }
 
- enum CloudKitCodeProtobuf.JSONEncodingError {
+ struct CloudKitCodeProtobuf.Google_Protobuf_Empty {
+
+	// Properties
+	var unknownFields : UnknownStorage // +0x0
+ }
+
+ struct CloudKitCodeProtobuf.JSONScanner {
+
+	// Properties
+	let source : UnsafeBufferPointer<UInt8> // +0x0
+	var index : Int // +0x10
+	var numberFormatter : DoubleFormatter // +0x18
+	var recursionLimit : Int // +0x20
+	var recursionBudget : Int // +0x28
+	var ignoreUnknownFields : Bool // +0x30
+ }
+
+ struct CloudKitCodeProtobuf.BinaryDecoder {
+
+	// Properties
+	var p : UnsafePointer<UInt8> // +0x0
+	var available : Int // +0x8
+	var fieldStartP : UnsafePointer<UInt8> // +0x10
+	var fieldEndP : UnsafePointer<UInt8>? // +0x18
+	var consumed : Bool // +0x20
+	var fieldWireFormat : WireFormat // +0x21
+	var fieldNumber : Int // +0x28
+	var extensions : ExtensionMap? // +0x30
+	var groupFieldNumber : Int? // +0x58
+	var options : BinaryDecodingOptions // +0x68
+	var recursionBudget : Int // +0x78
+	var unknownData : Data? // +0x80
+	var unknownOverride : Data? // +0x90
+ }
+
+ struct CloudKitCodeProtobuf.TextFormatEncoder {
+
+	// Properties
+	var data : [UInt8] // +0x0
+	var indentString : [UInt8] // +0x8
+ }
+
+ class CloudKitCodeProtobuf.AnyMessageStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var _typeURL : String // +0x10 (0x10)
+	var state : InternalState // +0x20 (0x29)
+
+	// Swift methods
+	0x1a7e0  func <stripped> // getter 
+	0x1acb0  func <stripped> // method 
+	0x1ad90  func <stripped> // method 
+	0x1b260  func <stripped> // method 
+ }
+
+ enum CloudKitCodeProtobuf.InternalState {
+
+	// Properties
+	case binary : Data
+	case message : Message
+	case contentJSON : (Data, JSONDecodingOptions)
+ }
+
+ class CloudKitCodeProtobuf.MessageExtension {
+ struct CloudKitCodeProtobuf.JSONEncodingOptions {
+
+	// Properties
+	var alwaysPrintEnumsAsInts : Bool // +0x0
+ }
+
+ struct CloudKitCodeProtobuf.UnknownStorage {
+
+	// Properties
+	var data : Data // +0x0
+ }
+
+ struct CloudKitCodeProtobuf.Google_Protobuf_Any {
+
+	// Properties
+	var unknownFields : UnknownStorage // +0x0
+	var _storage : AnyMessageStorage // +0x10
+ }
+
+ class CloudKitCodeProtobuf.DoubleFormatter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var doubleFormatString : UnsafeMutableRawBufferPointer // +0x10 (0x10)
+	var work : UnsafeMutableRawBufferPointer // +0x20 (0x10)
+
+	// Swift methods
+	0x22960  func <stripped> // method 
+ }
+
+ struct CloudKitCodeProtobuf.Google_Protobuf_SourceContext {
+
+	// Properties
+	var fileName : String // +0x0
+	var unknownFields : UnknownStorage // +0x10
+ }
+
+ enum CloudKitCodeProtobuf.AnyUnpackError {
+
+	// Properties
+	case typeMismatch  
+	case malformedWellKnownTypeJSON  
+	case malformedAnyField  
+ }
+
+ enum CloudKitCodeProtobuf.BinaryEncodingError {
 
 	// Properties
 	case anyTranscodeFailure  
-	case timestampRange  
-	case durationRange  
-	case fieldMaskConversion  
-	case missingFieldNames  
-	case missingValue  
+	case missingRequiredFields  
  }
 
- struct CloudKitCodeProtobuf.TextFormatDecoder {
+ enum CloudKitCodeProtobuf.TextFormatDecodingError {
 
 	// Properties
-	var scanner : TextFormatScanner // +0x0
-	var fieldCount : Int // +0x40
-	var terminator : UInt8? // +0x48
-	var fieldNameMap : _NameMap? // +0x50
-	var messageType : Message.Type? // +0x70
+	case malformedText  
+	case malformedNumber  
+	case trailingGarbage  
+	case truncated  
+	case invalidUTF8  
+	case schemaMismatch  
+	case missingFieldNames  
+	case unknownField  
+	case unrecognizedEnumValue  
+	case conflictingOneOf  
+	case internalExtensionError  
+ }
+
+ enum CloudKitCodeProtobuf.WireFormat {
+
+	// Properties
+	case varint  
+	case fixed64  
+	case lengthDelimited  
+	case startGroup  
+	case endGroup  
+	case fixed32  
+ }
+
+ struct CloudKitCodeProtobuf.BinaryEncodingVisitor {
+
+	// Properties
+	var encoder : BinaryEncoder // +0x0
+ }
+
+ struct CloudKitCodeProtobuf.BinaryEncodingMessageSetVisitor {
+
+	// Properties
+	var encoder : BinaryEncoder // +0x0
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_Api {
@@ -302,61 +435,27 @@
 	// Swift methods
  }
 
- struct CloudKitCodeProtobuf.ExtensionFieldValueSet {
+ enum CloudKitCodeProtobuf.BinaryDelimited { }
+
+ enum CloudKitCodeProtobuf.Error {
 
 	// Properties
-	var values : [Int : AnyExtensionField] // +0x0
+	case unknownStreamError  
+	case truncated  
  }
 
- struct CloudKitCodeProtobuf._ProtobufMap { }
-
- struct CloudKitCodeProtobuf._ProtobufMessageMap { }
-
- struct CloudKitCodeProtobuf._ProtobufEnumMap { }
-
- struct CloudKitCodeProtobuf.JSONEncoder {
+ struct CloudKitCodeProtobuf.JSONMapEncodingVisitor {
 
 	// Properties
-	var data : [UInt8] // +0x0
-	var separator : UInt8? // +0x8
-	let doubleFormatter : DoubleFormatter // +0x10
- }
-
- struct CloudKitCodeProtobuf.BinaryEncodingVisitor {
-
-	// Properties
-	var encoder : BinaryEncoder // +0x0
- }
-
- struct CloudKitCodeProtobuf.BinaryEncodingMessageSetVisitor {
-
-	// Properties
-	var encoder : BinaryEncoder // +0x0
- }
-
- struct CloudKitCodeProtobuf.Google_Protobuf_Duration {
-
-	// Properties
-	var seconds : Int64 // +0x0
-	var nanos : Int32 // +0x8
-	var unknownFields : UnknownStorage // +0x10
- }
-
- struct CloudKitCodeProtobuf.HashVisitor {
-
-	// Properties
-	var hashValue : Int // +0x0
- }
-
- struct CloudKitCodeProtobuf.JSONDecodingOptions {
-
-	// Properties
-	var messageDepthLimit : Int // +0x0
+	var separator : StaticString? // +0x0
+	var encoder : JSONEncoder // +0x18
+	let options : JSONEncodingOptions // +0x30
  }
 
  enum CloudKitCodeProtobuf.JSONDecodingError {
 
 	// Properties
+	case unknownField : String
 	case failure  
 	case malformedNumber  
 	case numberRange  
@@ -379,71 +478,51 @@
 	case messageDepthLimit  
  }
 
- enum CloudKitCodeProtobuf.BinaryEncodingError {
+ enum CloudKitCodeProtobuf.Google_Protobuf_NullValue {
 
 	// Properties
-	case anyTranscodeFailure  
-	case missingRequiredFields  
+	case UNRECOGNIZED : Int
+	case nullValue  
  }
 
- class CloudKitCodeProtobuf.InternPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ struct CloudKitCodeProtobuf.Google_Protobuf_Struct {
 
 	// Properties
-	var interned : [UnsafeBufferPointer<UInt8>] // +0x10 (0x8)
-
-	// Swift methods
+	var fields : Google_Protobuf_Value // +0x0
+	var unknownFields : UnknownStorage // +0x8
  }
 
- struct CloudKitCodeProtobuf._NameMap {
-
-	// Properties
-	var internPool : InternPool // +0x0
-	var numberToNameMap : Names // +0x8
-	var protoToNumberMap : Name // +0x10
-	var jsonToNumberMap : Name // +0x18
- }
-
- enum CloudKitCodeProtobuf.NameDescription {
-
-	// Properties
-	case same : (proto: StaticString)
-	case standard : (proto: StaticString)
-	case unique : (proto: StaticString, json: StaticString)
-	case aliased : (proto: StaticString, aliases: [StaticString])
- }
-
- struct CloudKitCodeProtobuf.Names {
-
-	// Properties
-	var json : Name // +0x0
-	var proto : Name // +0x28
- }
-
- struct CloudKitCodeProtobuf.Name {
-
-	// Properties
-	var utf8Buffer : UnsafeBufferPointer<UInt8> // +0x0
-	var nameString : NameString // +0x10
- }
-
- enum CloudKitCodeProtobuf.NameString {
-
-	// Properties
-	case string : String
-	case staticString : StaticString
- }
-
- struct CloudKitCodeProtobuf.Google_Protobuf_Empty {
+ struct CloudKitCodeProtobuf.Google_Protobuf_Value {
 
 	// Properties
 	var unknownFields : UnknownStorage // +0x0
+	var _storage : _StorageClass // +0x10
  }
 
- struct CloudKitCodeProtobuf.BinaryDecodingOptions {
+ enum CloudKitCodeProtobuf.OneOf_Kind {
 
 	// Properties
-	var messageDepthLimit : Int // +0x0
-	var discardUnknownFields : Bool // +0x8
+	case nullValue : Google_Protobuf_NullValue
+	case numberValue : Double
+	case stringValue : String
+	case boolValue : Bool
+	case structValue : Google_Protobuf_Struct
+	case listValue : Google_Protobuf_ListValue
+ }
+
+ struct CloudKitCodeProtobuf.Google_Protobuf_ListValue {
+
+	// Properties
+	var values : Google_Protobuf_Value // +0x0
+	var unknownFields : UnknownStorage // +0x8
+ }
+
+ class CloudKitCodeProtobuf._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var _kind : OneOf_Kind // +0x10 (0x18)
+
+	// Swift methods
  }
 
  struct CloudKitCodeProtobuf.TextFormatEncodingVisitor {
@@ -453,6 +532,12 @@
 	var nameMap : _NameMap? // +0x10
 	var nameResolver : [Int : StaticString] // +0x30
 	var extensions : ExtensionFieldValueSet? // +0x38
+ }
+
+ struct CloudKitCodeProtobuf.ExtensionFieldValueSet {
+
+	// Properties
+	var values : [Int : AnyExtensionField] // +0x0
  }
 
  struct CloudKitCodeProtobuf.Google_Protobuf_DoubleValue {
@@ -518,34 +603,18 @@
 	var unknownFields : UnknownStorage // +0x10
  }
 
- enum CloudKitCodeProtobuf.WireFormat {
+ struct CloudKitCodeProtobuf.Google_Protobuf_Duration {
 
 	// Properties
-	case varint  
-	case fixed64  
-	case lengthDelimited  
-	case startGroup  
-	case endGroup  
-	case fixed32  
- }
-
- struct CloudKitCodeProtobuf.JSONDecoder {
-
-	// Properties
-	var scanner : JSONScanner // +0x0
-	var options : JSONDecodingOptions // +0x30
-	var fieldCount : Int // +0x38
-	var isMapKey : Bool // +0x40
-	var fieldNameMap : _NameMap? // +0x48
- }
-
- struct CloudKitCodeProtobuf.Version { }
-
- struct CloudKitCodeProtobuf.Google_Protobuf_SourceContext {
-
-	// Properties
-	var fileName : String // +0x0
+	var seconds : Int64 // +0x0
+	var nanos : Int32 // +0x8
 	var unknownFields : UnknownStorage // +0x10
+ }
+
+ struct CloudKitCodeProtobuf.BinaryEncoder {
+
+	// Properties
+	var pointer : UnsafeMutablePointer<UInt8> // +0x0
  }
 
  struct CloudKitCodeProtobuf.JSONEncodingVisitor {
@@ -553,61 +622,84 @@
 	// Properties
 	var encoder : JSONEncoder // +0x0
 	var nameMap : _NameMap // +0x18
+	let options : JSONEncodingOptions // +0x38
  }
 
- enum CloudKitCodeProtobuf.Google_Protobuf_NullValue {
+ struct CloudKitCodeProtobuf.ProtobufFloat: FieldType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufDouble: FieldType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufInt32: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufInt64: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufUInt32: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufUInt64: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufSInt32: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufSInt64: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufFixed32: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufFixed64: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufSFixed32: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufSFixed64: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufBool: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufString: FieldType,  MapKeyType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.ProtobufBytes: FieldType,  MapValueType { }
+
+ struct CloudKitCodeProtobuf.BinaryEncodingSizeVisitor {
 
 	// Properties
-	case UNRECOGNIZED : Int
-	case nullValue  
+	var serializedSize : Int // +0x0
  }
 
- struct CloudKitCodeProtobuf.Google_Protobuf_Struct {
+ struct CloudKitCodeProtobuf.BinaryEncodingMessageSetSizeVisitor {
 
 	// Properties
-	var fields : Google_Protobuf_Value // +0x0
-	var unknownFields : UnknownStorage // +0x8
+	var serializedSize : Int // +0x0
  }
 
- struct CloudKitCodeProtobuf.Google_Protobuf_Value {
+ struct CloudKitCodeProtobuf.Google_Protobuf_Timestamp {
 
 	// Properties
-	var unknownFields : UnknownStorage // +0x0
-	var _storage : _StorageClass // +0x10
+	var seconds : Int64 // +0x0
+	var nanos : Int32 // +0x8
+	var unknownFields : UnknownStorage // +0x10
  }
 
- enum CloudKitCodeProtobuf.OneOf_Kind {
+ struct CloudKitCodeProtobuf.TextFormatDecoder {
 
 	// Properties
-	case nullValue : Google_Protobuf_NullValue
-	case numberValue : Double
-	case stringValue : String
-	case boolValue : Bool
-	case structValue : Google_Protobuf_Struct
-	case listValue : Google_Protobuf_ListValue
+	var scanner : TextFormatScanner // +0x0
+	var fieldCount : Int // +0x40
+	var terminator : UInt8? // +0x48
+	var fieldNameMap : _NameMap? // +0x50
+	var messageType : Message.Type? // +0x70
  }
 
- struct CloudKitCodeProtobuf.Google_Protobuf_ListValue {
-
-	// Properties
-	var values : Google_Protobuf_Value // +0x0
-	var unknownFields : UnknownStorage // +0x8
- }
-
- class CloudKitCodeProtobuf._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var _kind : OneOf_Kind // +0x10 (0x18)
-
-	// Swift methods
- }
-
- class CloudKitCodeProtobuf.MessageExtension {
- struct CloudKitCodeProtobuf.TextFormatEncoder {
+ struct CloudKitCodeProtobuf.JSONEncoder {
 
 	// Properties
 	var data : [UInt8] // +0x0
-	var indentString : [UInt8] // +0x8
+	var separator : UInt8? // +0x8
+	let doubleFormatter : DoubleFormatter // +0x10
+ }
+
+ struct CloudKitCodeProtobuf.TextFormatScanner {
+
+	// Properties
+	var extensions : ExtensionMap? // +0x0
+	var p : UnsafePointer<UInt8> // +0x28
+	var end : UnsafePointer<UInt8> // +0x30
+	var doubleFormatter : DoubleFormatter // +0x38
  }
 
  struct CloudKitCodeProtobuf.OptionalExtensionField: ExtensionField,  AnyExtensionField {
@@ -680,12 +772,77 @@
 	var protobufExtension : AnyMessageExtension
  }
 
- enum CloudKitCodeProtobuf.AnyUnpackError {
+ class CloudKitCodeProtobuf.InternPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	case typeMismatch  
-	case malformedWellKnownTypeJSON  
-	case malformedAnyField  
+	var interned : [UnsafeBufferPointer<UInt8>] // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ struct CloudKitCodeProtobuf._NameMap {
+
+	// Properties
+	var internPool : InternPool // +0x0
+	var numberToNameMap : Names // +0x8
+	var protoToNumberMap : Name // +0x10
+	var jsonToNumberMap : Name // +0x18
+ }
+
+ enum CloudKitCodeProtobuf.NameDescription {
+
+	// Properties
+	case same : (proto: StaticString)
+	case standard : (proto: StaticString)
+	case unique : (proto: StaticString, json: StaticString)
+	case aliased : (proto: StaticString, aliases: [StaticString])
+ }
+
+ struct CloudKitCodeProtobuf.Name {
+
+	// Properties
+	var utf8Buffer : UnsafeBufferPointer<UInt8> // +0x0
+	var nameString : NameString // +0x10
+ }
+
+ struct CloudKitCodeProtobuf.Names {
+
+	// Properties
+	var json : _NameMap.Name? // +0x0
+	var proto : _NameMap.Name // +0x28
+ }
+
+ enum CloudKitCodeProtobuf.NameString {
+
+	// Properties
+	case string : String
+	case staticString : StaticString
+ }
+
+ struct CloudKitCodeProtobuf.Google_Protobuf_FieldMask {
+
+	// Properties
+	var paths : [String] // +0x0
+	var unknownFields : UnknownStorage // +0x8
+ }
+
+ struct CloudKitCodeProtobuf.Version { }
+
+ struct CloudKitCodeProtobuf.HashVisitor {
+
+	// Properties
+	var hasher : Hasher // +0x0
+ }
+
+ enum CloudKitCodeProtobuf.JSONEncodingError {
+
+	// Properties
+	case anyTranscodeFailure  
+	case timestampRange  
+	case durationRange  
+	case fieldMaskConversion  
+	case missingFieldNames  
+	case missingValue  
  }
 
  enum CloudKitCodeProtobuf.BinaryDecodingError {
@@ -698,6 +855,27 @@
 	case missingRequiredFields  
 	case internalExtensionError  
 	case messageDepthLimit  
+ }
+
+ enum CloudKitCodeProtobuf.Internal { }
+
+ struct CloudKitCodeProtobuf._ProtobufMap { }
+
+ struct CloudKitCodeProtobuf._ProtobufMessageMap { }
+
+ struct CloudKitCodeProtobuf._ProtobufEnumMap { }
+
+ struct CloudKitCodeProtobuf.SimpleExtensionMap {
+
+	// Properties
+	var fields : [Int : [AnyMessageExtension]] // +0x0
+ }
+
+ struct CloudKitCodeProtobuf.JSONDecodingOptions {
+
+	// Properties
+	var messageDepthLimit : Int // +0x0
+	var ignoreUnknownFields : Bool // +0x8
  }
 
  enum CloudKitCodeProtobuf.Google_Protobuf_Syntax {
@@ -823,186 +1001,19 @@
 	// Swift methods
  }
 
- struct CloudKitCodeProtobuf.Google_Protobuf_Timestamp {
+ struct CloudKitCodeProtobuf.BinaryDecodingOptions {
 
 	// Properties
-	var seconds : Int64 // +0x0
-	var nanos : Int32 // +0x8
-	var unknownFields : UnknownStorage // +0x10
+	var messageDepthLimit : Int // +0x0
+	var discardUnknownFields : Bool // +0x8
  }
 
- enum CloudKitCodeProtobuf.Internal { }
-
- struct CloudKitCodeProtobuf.TextFormatScanner {
+ struct CloudKitCodeProtobuf.JSONDecoder {
 
 	// Properties
-	var extensions : ExtensionMap? // +0x0
-	var p : UnsafePointer<UInt8> // +0x28
-	var end : UnsafePointer<UInt8> // +0x30
-	var doubleFormatter : DoubleFormatter // +0x38
- }
-
- struct CloudKitCodeProtobuf.Google_Protobuf_FieldMask {
-
-	// Properties
-	var paths : [String] // +0x0
-	var unknownFields : UnknownStorage // +0x8
- }
-
- struct CloudKitCodeProtobuf.UnknownStorage {
-
-	// Properties
-	var data : Data // +0x0
- }
-
- struct CloudKitCodeProtobuf.JSONMapEncodingVisitor {
-
-	// Properties
-	var separator : StaticString? // +0x0
-	var encoder : JSONEncoder // +0x18
- }
-
- struct CloudKitCodeProtobuf.BinaryEncoder {
-
-	// Properties
-	var pointer : UnsafeMutablePointer<UInt8> // +0x0
- }
-
- class CloudKitCodeProtobuf.AnyMessageStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var _typeURL : String // +0x10 (0x10)
-	var state : InternalState // +0x20 (0x29)
-
-	// Swift methods
-	0x938d0  func <stripped> // getter 
-	0x93bf0  func <stripped> // method 
-	0x93cd0  func <stripped> // method 
-	0x94140  func <stripped> // method 
- }
-
- enum CloudKitCodeProtobuf.InternalState {
-
-	// Properties
-	case binary : Data
-	case message : Message
-	case contentJSON : (Data, JSONDecodingOptions)
- }
-
- class CloudKitCodeProtobuf.DoubleFormatter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var doubleFormatString : UnsafeMutableRawBufferPointer // +0x10 (0x10)
-	var work : UnsafeMutableRawBufferPointer // +0x20 (0x10)
-
-	// Swift methods
-	0x96eb0  func <stripped> // method 
- }
-
- struct CloudKitCodeProtobuf.SimpleExtensionMap {
-
-	// Properties
-	var fields : [Int : [AnyMessageExtension]] // +0x0
- }
-
- enum CloudKitCodeProtobuf.BinaryDelimited { }
-
- enum CloudKitCodeProtobuf.Error {
-
-	// Properties
-	case unknownStreamError  
-	case truncated  
- }
-
- struct CloudKitCodeProtobuf.BinaryDecoder {
-
-	// Properties
-	var p : UnsafePointer<UInt8> // +0x0
-	var available : Int // +0x8
-	var fieldStartP : UnsafePointer<UInt8> // +0x10
-	var fieldEndP : UnsafePointer<UInt8>? // +0x18
-	var consumed : Bool // +0x20
-	var fieldWireFormat : WireFormat // +0x21
-	var fieldNumber : Int // +0x28
-	var extensions : ExtensionMap? // +0x30
-	var groupFieldNumber : Int? // +0x58
-	var options : BinaryDecodingOptions // +0x68
-	var recursionBudget : Int // +0x78
-	var unknownData : Data? // +0x80
-	var unknownOverride : Data? // +0x90
- }
-
- struct CloudKitCodeProtobuf.Google_Protobuf_Any {
-
-	// Properties
-	var unknownFields : UnknownStorage // +0x0
-	var _storage : AnyMessageStorage // +0x10
- }
-
- struct CloudKitCodeProtobuf.JSONScanner {
-
-	// Properties
-	let source : UnsafeBufferPointer<UInt8> // +0x0
-	var index : Int // +0x10
-	var numberFormatter : DoubleFormatter // +0x18
-	var recursionLimit : Int // +0x20
-	var recursionBudget : Int // +0x28
- }
-
- enum CloudKitCodeProtobuf.TextFormatDecodingError {
-
-	// Properties
-	case malformedText  
-	case malformedNumber  
-	case trailingGarbage  
-	case truncated  
-	case invalidUTF8  
-	case schemaMismatch  
-	case missingFieldNames  
-	case unknownField  
-	case unrecognizedEnumValue  
-	case conflictingOneOf  
-	case internalExtensionError  
- }
-
- struct CloudKitCodeProtobuf.ProtobufFloat: FieldType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufDouble: FieldType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufInt32: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufInt64: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufUInt32: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufUInt64: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufSInt32: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufSInt64: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufFixed32: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufFixed64: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufSFixed32: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufSFixed64: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufBool: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufString: FieldType,  MapKeyType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.ProtobufBytes: FieldType,  MapValueType { }
-
- struct CloudKitCodeProtobuf.BinaryEncodingSizeVisitor {
-
-	// Properties
-	var serializedSize : Int // +0x0
- }
-
- struct CloudKitCodeProtobuf.BinaryEncodingMessageSetSizeVisitor {
-
-	// Properties
-	var serializedSize : Int // +0x0
+	var scanner : JSONScanner // +0x0
+	var options : JSONDecodingOptions // +0x38
+	var fieldCount : Int // +0x48
+	var isMapKey : Bool // +0x50
+	var fieldNameMap : _NameMap? // +0x58
  }

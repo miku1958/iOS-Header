@@ -42,6 +42,7 @@
     PKPeerPaymentAccount *_peerPaymentAccount;
     BOOL _shouldAcquireLockButtonObserver;
     id<BSInvalidatable> _lockButtonObserver;
+    BOOL _invalidated;
     BOOL _dismissAfterPaymentSetup;
     BOOL _isPerformingPaymentSetup;
     PKPaymentAuthorizationRemoteAlertViewControllerExportedObject *_exportedObject;
@@ -66,6 +67,7 @@
 - (id)_configuredPaymentSetupNavigationController;
 - (void)_dismiss;
 - (void)_handlePaymentRequestPresentationResultType:(long long)arg1 relevantUniqueID:(id)arg2 firstAttempt:(BOOL)arg3;
+- (void)_invalidate;
 - (void)_invalidateLockButtonObserver;
 - (BOOL)_peerPaymentIdentityVerificationRequired;
 - (int)_preferredStatusBarVisibility;
@@ -73,7 +75,6 @@
 - (void)_presentAddCardAlert;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 actionTitle:(id)arg3 actionHandler:(CDUnknownBlockType)arg4;
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2 cancelTitle:(id)arg3 actionTitle:(id)arg4 actionHandler:(CDUnknownBlockType)arg5;
-- (void)_presentAmpEnrollmentAuthorization;
 - (void)_presentInvalidAlert;
 - (void)_presentLostModeAlertWithRelevantUniqueID:(id)arg1;
 - (void)_presentPassNotSupportedAlertWithRelevantUniqueID:(id)arg1;
@@ -88,7 +89,6 @@
 - (BOOL)_shouldBlockHardwareCancels;
 - (BOOL)_shouldRemoveViewFromHierarchyOnDisappear;
 - (void)_updatePearlViews;
-- (void)_willAppearInRemoteViewController;
 - (void)authorizationDidAuthorizeApplePayTrustSignature:(id)arg1;
 - (void)authorizationDidAuthorizeDisbursement:(id)arg1;
 - (void)authorizationDidAuthorizePayment:(id)arg1;
@@ -109,12 +109,12 @@
 - (void)consumeDoublePressUpForButtonKind:(long long)arg1;
 - (void)consumeSinglePressUpForButtonKind:(long long)arg1;
 - (void)dealloc;
+- (void)didInvalidateForRemoteAlert;
 - (void)dismissWithRemoteOrigination:(BOOL)arg1;
-- (void)handleHomeButtonPressed;
+- (void)handleButtonActions:(id)arg1;
 - (id)init;
 - (void)paymentSetupDidFinish:(id)arg1;
 - (void)sendAuthorizationDidPresentIfNecessary;
-- (void)setUserInfo:(id)arg1;
 - (BOOL)shouldAutorotate;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (unsigned long long)supportedInterfaceOrientations;

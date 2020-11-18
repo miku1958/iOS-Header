@@ -8,25 +8,45 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOTransitTicketingSegment : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSMutableArray *_paths;
     NSString *_segmentName;
     NSString *_ticketingUrl;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_paths:1;
+        unsigned int read_segmentName:1;
+        unsigned int read_ticketingUrl:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_paths:1;
+        unsigned int wrote_segmentName:1;
+        unsigned int wrote_ticketingUrl:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasSegmentName;
 @property (readonly, nonatomic) BOOL hasTicketingUrl;
-@property (strong, nonatomic) NSMutableArray *paths; // @synthesize paths=_paths;
-@property (strong, nonatomic) NSString *segmentName; // @synthesize segmentName=_segmentName;
-@property (strong, nonatomic) NSString *ticketingUrl; // @synthesize ticketingUrl=_ticketingUrl;
+@property (strong, nonatomic) NSMutableArray *paths;
+@property (strong, nonatomic) NSString *segmentName;
+@property (strong, nonatomic) NSString *ticketingUrl;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)pathType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsPath:(id)arg1;
+- (void)_readPaths;
+- (void)_readSegmentName;
+- (void)_readTicketingUrl;
 - (void)addPath:(id)arg1;
 - (void)clearPaths;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +56,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)pathAtIndex:(unsigned long long)arg1;
 - (unsigned long long)pathsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

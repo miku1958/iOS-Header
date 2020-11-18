@@ -21,6 +21,7 @@
 @property (readonly) NEFlowMetaData *metaData; // @synthesize metaData=_metaData;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
++ (id)copyRemoteEndpointFromFlow:(struct _NEFlow *)arg1;
 + (struct __CFError *)copyVPNFlowErrorFromFlowError:(id)arg1;
 + (id)flowErrorForVPNFlowError:(long long)arg1;
 - (void).cxx_destruct;
@@ -28,6 +29,7 @@
 - (void)closeReadWithError:(id)arg1;
 - (void)closeWriteWithError:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (unsigned long long)hash;
 - (id)initWithNEFlow:(struct _NEFlow *)arg1 queue:(id)arg2;
 - (void)openWithLocalEndpoint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

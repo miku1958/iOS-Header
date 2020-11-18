@@ -84,6 +84,7 @@
 @property (readonly, nonatomic) id<CKRecordKeyValueSetting> encryptedValuesByKey;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (readonly, nonatomic) NSString *fullToken;
+@property (readonly, nonatomic) BOOL hasChainPCS;
 @property (readonly, nonatomic) BOOL hasEncryptedData;
 @property (readonly, nonatomic) BOOL hasModifiedEncryptedData;
 @property (readonly, nonatomic) BOOL hasModifiedPropertiesRequiringEncryption;
@@ -141,6 +142,10 @@
 + (id)decryptFullToken:(id)arg1 shortSharingTokenData:(id)arg2;
 + (id)encryptFullToken:(id)arg1 shortSharingTokenData:(id)arg2;
 + (id)fullTokenFromBaseToken:(id)arg1 privateToken:(id)arg2;
++ (id)keyForAppendingToListField:(id)arg1;
++ (id)keyForFetchingItems:(unsigned long long)arg1 atEndOfListField:(id)arg2;
++ (id)keyForInsertingIntoListField:(id)arg1 atIndex:(long long)arg2;
++ (id)keyForListField:(id)arg1 withIndexRange:(struct _NSRange)arg2;
 + (id)recordWithDuplicatedPackagesOfRecord:(id)arg1 error:(id *)arg2;
 + (id)shareURLWithShortToken:(id)arg1 shareTitle:(id)arg2 shareType:(id)arg3 containerID:(id)arg4 displayedHostname:(id)arg5;
 + (BOOL)supportsSecureCoding;
@@ -158,6 +163,7 @@
 - (id)allKeys;
 - (id)allTokens;
 - (id)allValues;
+- (BOOL)canHostServerURLInfo;
 - (id)changedKeys;
 - (void)claimPackagesWithSuccessBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithOriginalValues;

@@ -19,10 +19,11 @@ __attribute__((visibility("hidden")))
 + (id)_getConsentedChannels;
 + (id)_getDeniedChannels;
 + (BOOL)_isReminderDue:(id)arg1 reminderInterval:(double)arg2;
-+ (id)addUniqueVPPAChannels:(id)arg1 channels:(id)arg2;
++ (id)addUniqueChannels:(id)arg1 channels:(id)arg2;
 + (BOOL)channelAlreadyExists:(id)arg1 channelID:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_getEligibleBulkChannels;
 - (id)_getVPPABulkChannels:(long long)arg1;
 - (BOOL)_isChannelVPPAPromptEligible:(id)arg1;
 - (BOOL)_isVPPAPromptDueForConfig:(id)arg1;

@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <UIKitCore/UIResponder.h>
 
 #import <UIKitCore/UIAccessibilityIdentification-Protocol.h>
+#import <UIKitCore/UIFocusItem-Protocol.h>
+#import <UIKitCore/UIFocusItemContainer-Protocol.h>
+#import <UIKitCore/_UIFocusEnvironmentPrivate-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString, UIView;
+@protocol UICoordinateSpace, UIFocusEnvironment, UIFocusItemContainer;
 
-@interface UIAccessibilityElement : NSObject <UIAccessibilityIdentification>
+@interface UIAccessibilityElement : UIResponder <UIFocusItem, UIFocusItemContainer, _UIFocusEnvironmentPrivate, UIAccessibilityIdentification>
 {
+    BOOL _areChildrenFocused;
     struct CGRect _accessibilityFrameInContainerSpace;
 }
 
-@property (nonatomic) id accessibilityContainer; // @dynamic accessibilityContainer;
+@property (weak, nonatomic) id accessibilityContainer; // @dynamic accessibilityContainer;
 @property (nonatomic) struct CGRect accessibilityFrame;
 @property (nonatomic) struct CGRect accessibilityFrameInContainerSpace; // @synthesize accessibilityFrameInContainerSpace=_accessibilityFrameInContainerSpace;
 @property (strong, nonatomic) NSString *accessibilityHint;
@@ -23,13 +28,34 @@
 @property (strong, nonatomic) NSString *accessibilityLabel;
 @property (nonatomic) unsigned long long accessibilityTraits;
 @property (strong, nonatomic) NSString *accessibilityValue;
+@property (nonatomic) BOOL areChildrenFocused;
+@property (readonly, nonatomic) BOOL canBecomeFocused;
+@property (readonly, nonatomic) id<UICoordinateSpace> coordinateSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
+@property (readonly, nonatomic) struct CGRect frame;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isAccessibilityElement;
+@property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
+@property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
+@property (readonly, weak, nonatomic) UIView *preferredFocusedView;
 @property (readonly) Class superclass;
 
+- (void)_destroyFocusLayer;
+- (id)_firstViewAncestor;
+- (void)_updateFocusLayerFrame;
+- (void)dealloc;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)focusItemsInRect:(struct CGRect)arg1;
 - (id)initWithAccessibilityContainer:(id)arg1;
+- (id)nextResponder;
+- (void)setNeedsFocusUpdate;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (void)updateFocusIfNeeded;
 
 @end
 

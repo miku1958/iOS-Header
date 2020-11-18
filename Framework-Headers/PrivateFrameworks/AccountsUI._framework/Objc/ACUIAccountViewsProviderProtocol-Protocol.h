@@ -17,5 +17,6 @@
 
 @optional
 - (Class)controllerClassForCreatingAccountWithType:(NSString *)arg1;
+- (BOOL)setDelegate:(id)arg1 forSignInController:(id)arg2;
 @end
 

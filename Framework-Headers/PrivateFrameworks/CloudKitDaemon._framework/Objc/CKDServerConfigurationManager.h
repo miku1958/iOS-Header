@@ -49,13 +49,13 @@ __attribute__((visibility("hidden")))
 - (void)_fetchContainerSpecificInfoForOperation:(id)arg1 requireUserIDs:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchGlobalConfigForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_reallyDropAllConfigurations;
-- (id)_uniqueStringForContainerAndAccount:(id)arg1;
+- (id)_uniqueStringForContext:(id)arg1 account:(id)arg2;
 - (void)_watchForSwitchPrefFileChanges;
 - (void)_writeOutiCloudHostnames:(id)arg1;
 - (void)configurationForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)containerInfoForOperation:(id)arg1 requireUserIDs:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (void)expireConfigurationForContext:(id)arg1;
+- (void)expireConfigurationForContextInfoProvider:(id)arg1 accountInfoProvider:(id)arg2;
 - (void)expireGlobalConfiguration;
 - (id)init;
 - (void)systemAvailabilityChanged:(unsigned long long)arg1;

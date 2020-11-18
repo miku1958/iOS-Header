@@ -42,7 +42,7 @@
 @property (nonatomic) long long redirectSourceDatabaseID; // @synthesize redirectSourceDatabaseID=_redirectSourceDatabaseID;
 @property (nonatomic) unsigned long long score; // @synthesize score=_score;
 @property (readonly, nonatomic, getter=isSynthesized) BOOL synthesized; // @synthesize synthesized=_synthesized;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) double visitTime; // @synthesize visitTime=_visitTime;
 
 + (unsigned long long)scoreForWeightedVisitCount:(float)arg1;

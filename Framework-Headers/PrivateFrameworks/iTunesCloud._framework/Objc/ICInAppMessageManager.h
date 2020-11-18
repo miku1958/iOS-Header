@@ -59,7 +59,9 @@
 - (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (void)flushEventsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAllMetadataForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getGlobalPropertyForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getMetadataForMessageIdentifier:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getPropertyForKey:(id)arg1 bundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithMessageStore:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)messageEntriesForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -69,6 +71,8 @@
 - (void)reportEventForMessageIdentifier:(id)arg1 withParams:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)reportEventForMessageIdentifier:(id)arg1 withParams:(id)arg2 flushImmediately:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)resetMessagesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setGlobalProperty:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setProperty:(id)arg1 forKey:(id)arg2 bundleIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)startSystemService;
 - (void)stopSystemService;
 - (void)syncMessagesWithCompletion:(CDUnknownBlockType)arg1;

@@ -43,6 +43,7 @@
 - (void)_stopIdleTimer;
 - (void)_willStartSendingEvents:(id)arg1;
 - (oneway void)beginEventsGrouping;
+- (oneway void)boostQueuedEvents:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (oneway void)endEventsGrouping;
 - (oneway void)flushStagedEventsWithReply:(CDUnknownBlockType)arg1;

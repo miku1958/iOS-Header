@@ -9,7 +9,7 @@
 #import <ClassKit/CLSQuery-Protocol.h>
 #import <ClassKit/NSLocking-Protocol.h>
 
-@class NSDate, NSMutableArray, NSString;
+@class CLSSearchSpecification, NSDate, NSMutableArray, NSString;
 
 @interface CLSQuery : CLSDataObserver <NSLocking, CLSQuery>
 {
@@ -19,6 +19,7 @@
     BOOL _shouldAddResultsToDataStore;
     BOOL _shouldFaultResults;
     long long _fetchLimit;
+    CLSSearchSpecification *_searchSpec;
     CDUnknownBlockType _completion;
     NSDate *_startDate;
     unsigned long long _state;
@@ -30,6 +31,7 @@
 @property (getter=isExecuting) BOOL executing; // @synthesize executing=_executing;
 @property (nonatomic) long long fetchLimit; // @synthesize fetchLimit=_fetchLimit;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) CLSSearchSpecification *searchSpec; // @synthesize searchSpec=_searchSpec;
 @property (nonatomic) BOOL shouldAddResultsToDataStore; // @synthesize shouldAddResultsToDataStore=_shouldAddResultsToDataStore;
 @property (nonatomic) BOOL shouldFaultResults; // @synthesize shouldFaultResults=_shouldFaultResults;
 @property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
@@ -38,6 +40,7 @@
 
 + (id)queryWithObjectType:(Class)arg1 predicate:(id)arg2;
 + (id)queryWithObjectType:(Class)arg1 predicate:(id)arg2 error:(id *)arg3;
++ (id)queryWithSearchSpecification:(id)arg1;
 - (void).cxx_destruct;
 - (void)_faultResultsAndComplete;
 - (void)_notifyOfCompletionWithError:(id)arg1;
@@ -46,6 +49,7 @@
 - (oneway void)clientRemote_finishWithState:(unsigned long long)arg1 error:(id)arg2;
 - (oneway void)clientRemote_invalidate;
 - (id)initWithObjectType:(Class)arg1 predicate:(id)arg2 sortDescriptors:(id)arg3 error:(id *)arg4;
+- (id)initWithSearchSpecification:(id)arg1 error:(id *)arg2;
 - (void)lock;
 - (void)reset;
 - (void)unlock;

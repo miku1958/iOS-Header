@@ -17,15 +17,17 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_categoryLookupParameters;
 }
 
-@property (strong, nonatomic) NSMutableArray *categoryLookupParameters; // @synthesize categoryLookupParameters=_categoryLookupParameters;
+@property (strong, nonatomic) NSMutableArray *categoryLookupParameters;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)categoryLookupParameterType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addCategoryLookupParameter:(id)arg1;
 - (id)categoryLookupParameterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categoryLookupParametersCount;
 - (void)clearCategoryLookupParameters;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

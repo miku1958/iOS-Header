@@ -16,22 +16,25 @@
     SFImage *_sfImage;
 }
 
-@property BOOL needsTinting; // @synthesize needsTinting=_needsTinting;
-@property (strong) SFImage *sfImage; // @synthesize sfImage=_sfImage;
-@property (strong) UIImage *uiImage; // @synthesize uiImage=_uiImage;
-@property BOOL useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
+@property (nonatomic) BOOL needsTinting; // @synthesize needsTinting=_needsTinting;
+@property (strong, nonatomic) SFImage *sfImage; // @synthesize sfImage=_sfImage;
+@property (strong, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
+@property (nonatomic) BOOL useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
 
-+ (id)cachedImageFromSFImage:(id)arg1;
-+ (id)imageFromData:(id)arg1;
++ (id)imageForSuggestionCardSectionType:(int)arg1;
 + (id)imageWithSFImage:(id)arg1;
-+ (id)templatifiedImage:(id)arg1;
++ (id)imageWithSFImage:(id)arg1 variantForAppIcon:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (double)cornerRadius;
+- (unsigned long long)hash;
+- (id)imageData;
 - (id)initWithImage:(id)arg1;
 - (id)initWithSFImage:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isTemplate;
 - (id)loadImage;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (double)scale;
 - (BOOL)shouldCropToCircle;
 - (struct CGSize)size;
 

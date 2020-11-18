@@ -9,13 +9,15 @@
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSSecureCoding-Protocol.h>
 
-@class AVAsset, AVVideoComposition, NSString, NSURL, PHAsset, PHImageManager, PHSandboxExtensionWrapper, UIImage;
+@class AVAsset, AVVideoComposition, NSString, NSURL, PHAsset, PHImageManager, PHSandboxExtensionWrapper;
 
 @interface PHLivePhoto : NSObject <NSCopying, NSSecureCoding>
 {
+    PHAsset *_asset;
+    struct NSObject *_plImage;
     float _audioVolume;
     NSString *_uniqueIdentifier;
-    UIImage *_image;
+    NSString *_assetUUID;
     AVAsset *_videoAsset;
     unsigned long long _options;
     AVVideoComposition *_videoComposition;
@@ -26,18 +28,17 @@
     PHSandboxExtensionWrapper *_videoURLSandboxExtensionWrapper;
     long long _contentMode;
     PHImageManager *_imageManager;
-    PHAsset *_asset;
     struct CGSize _size;
     struct CGSize _targetSize;
     CDStruct_1b6d18a9 _photoTime;
 }
 
-@property (weak, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) PHAsset *asset;
 @property (readonly, copy, nonatomic) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
+@property (readonly, copy, nonatomic) NSString *assetUUID; // @synthesize assetUUID=_assetUUID;
 @property (nonatomic) float audioVolume; // @synthesize audioVolume=_audioVolume;
 @property (readonly, nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
-@property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (readonly, nonatomic) CDUnknownBlockType imageFileLoader;
+@property (readonly, copy, nonatomic) CDUnknownBlockType imageFileLoader;
 @property (weak, nonatomic) PHImageManager *imageManager; // @synthesize imageManager=_imageManager;
 @property (readonly, nonatomic) NSString *imageTypeIdentifier;
 @property (readonly, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
@@ -50,7 +51,7 @@
 @property (readonly) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, nonatomic) AVAsset *videoAsset; // @synthesize videoAsset=_videoAsset;
 @property (readonly, copy, nonatomic) AVVideoComposition *videoComposition; // @synthesize videoComposition=_videoComposition;
-@property (readonly, nonatomic) CDUnknownBlockType videoFileLoader;
+@property (readonly, copy, nonatomic) CDUnknownBlockType videoFileLoader;
 @property (readonly, nonatomic) NSString *videoTypeIdentifier;
 @property (readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property (readonly, nonatomic) PHSandboxExtensionWrapper *videoURLSandboxExtensionWrapper; // @synthesize videoURLSandboxExtensionWrapper=_videoURLSandboxExtensionWrapper;
@@ -63,24 +64,28 @@
 + (void)cancelLivePhotoRequestWithRequestID:(int)arg1;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
 + (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 error:(id *)arg4;
-+ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 isLooping:(BOOL)arg4 error:(id *)arg5;
++ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipValidation:(BOOL)arg4 error:(id *)arg5;
++ (id)livePhotoWithResourceFileURLs:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 skipValidation:(BOOL)arg4 isLooping:(BOOL)arg5 error:(id *)arg6;
 + (id)loopingLivePhotoWithResourceFileURLs:(id)arg1 error:(id *)arg2;
 + (int)requestLivePhotoWithResourceFileURLs:(id)arg1 placeholderImage:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 resultHandler:(CDUnknownBlockType)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_asset;
 - (void)_ensureConstituentData;
 - (id)_imageManager;
+- (id)_initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5 assetUUID:(id)arg6 options:(unsigned long long)arg7 videoComposition:(id)arg8;
 - (id)_initWithImageURL:(id)arg1 videoURL:(id)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4;
 - (void)_loadConstituentURLsWithNetworkAccessAllowed:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_synchronouslyLoadImageURL:(id *)arg1 videoURL:(id *)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasPhotoColorAdjustments;
+- (id)image;
+- (id)initWithBundleAtURL:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithImage:(id)arg1 videoAsset:(id)arg2 photoTime:(CDStruct_1b6d18a9)arg3 assetLocalIdentifier:(id)arg4;
-- (id)initWithImage:(id)arg1 videoAsset:(id)arg2 photoTime:(CDStruct_1b6d18a9)arg3 assetLocalIdentifier:(id)arg4 options:(unsigned long long)arg5;
-- (id)initWithImage:(id)arg1 videoAsset:(id)arg2 photoTime:(CDStruct_1b6d18a9)arg3 assetLocalIdentifier:(id)arg4 options:(unsigned long long)arg5 videoComposition:(id)arg6;
+- (id)initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5;
+- (id)initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5 options:(unsigned long long)arg6;
+- (id)initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 asset:(id)arg5 options:(unsigned long long)arg6 videoComposition:(id)arg7;
+- (id)initWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 videoAsset:(id)arg3 photoTime:(CDStruct_1b6d18a9)arg4 assetUUID:(id)arg5 options:(unsigned long long)arg6 videoComposition:(id)arg7;
 - (void)saveToPhotoLibraryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)videoComplement;
 

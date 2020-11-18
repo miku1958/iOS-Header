@@ -17,11 +17,11 @@
 }
 
 @property (readonly, nonatomic) const void *bytes; // @dynamic bytes;
+@property (readonly, nonatomic) unsigned long long bytesLength; // @dynamic bytesLength;
 @property (readonly, nonatomic) unsigned long long bytesPerPixel; // @dynamic bytesPerPixel;
 @property (nonatomic) unsigned char filter; // @dynamic filter;
 @property (readonly, nonatomic) unsigned char format; // @dynamic format;
 @property (readonly, nonatomic) unsigned long long height; // @dynamic height;
-@property (readonly, nonatomic) unsigned long long length; // @dynamic length;
 @property (readonly, nonatomic) unsigned long long mipCount;
 @property (readonly, nonatomic) BOOL mipmaps;
 @property (readonly, nonatomic) unsigned long long planeLength; // @dynamic planeLength;

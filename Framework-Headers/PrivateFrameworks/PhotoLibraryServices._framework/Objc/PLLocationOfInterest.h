@@ -6,23 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation;
+@class NSMutableArray, NSUUID, PLLocationOfInterestLocation;
 
 @interface PLLocationOfInterest : NSObject
 {
+    NSUUID *_identifier;
     long long _type;
-    CLLocation *_location;
-    double _radius;
+    double _typeRadius;
+    PLLocationOfInterestLocation *_routineLocation;
+    PLLocationOfInterestLocation *_mapItemLocation;
+    NSMutableArray *_visits;
 }
 
-@property (readonly, nonatomic) CLLocation *location; // @synthesize location=_location;
-@property (readonly, nonatomic) double radius; // @synthesize radius=_radius;
+@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) PLLocationOfInterestLocation *mapItemLocation; // @synthesize mapItemLocation=_mapItemLocation;
+@property (readonly, nonatomic) PLLocationOfInterestLocation *routineLocation; // @synthesize routineLocation=_routineLocation;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) double typeRadius; // @synthesize typeRadius=_typeRadius;
+@property (strong, nonatomic) NSMutableArray *visits; // @synthesize visits=_visits;
 
-+ (id)locationOfInterestWithType:(long long)arg1 location:(id)arg2 radius:(double)arg3;
 - (void).cxx_destruct;
-- (id)_descriptionType;
+- (void)addVisit:(id)arg1;
+- (double)centerDistanceFromLocation:(id)arg1;
 - (id)description;
+- (double)distanceFromLocation:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithIdentifier:(id)arg1 locationOfInterestType:(long long)arg2 typeRadius:(double)arg3 routineLocation:(id)arg4 mapItemLocation:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (void)removeVisit:(id)arg1;
 
 @end
 

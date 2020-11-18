@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) BOOL success; // @synthesize success=_success;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)handleResponse:(id)arg1 error:(id)arg2;
 
 @end

@@ -70,6 +70,7 @@
 - (BOOL)hasConnection;
 - (id)initWithDeviceType:(int)arg1;
 - (BOOL)isConnected;
+- (BOOL)isFakeDevice;
 - (BOOL)isLeftConnected;
 - (BOOL)isPersistent;
 - (BOOL)isRightConnected;

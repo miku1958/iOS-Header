@@ -17,7 +17,7 @@
 @property (nonatomic) CDStruct_73a5d3ca timeRangeInComposition; // @dynamic timeRangeInComposition;
 @property (nonatomic) CDStruct_73a5d3ca timeRangeInContentToUse; // @dynamic timeRangeInContentToUse;
 
-- (void)intersectWithTimeRange:(CDStruct_73a5d3ca)arg1;
+- (BOOL)intersectWithTimeRange:(CDStruct_73a5d3ca)arg1;
 
 @end
 

@@ -35,7 +35,7 @@
 + (id)actionWithLabel:(id)arg1 url:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_loadActionURL;
+- (BOOL)_loadActionURL;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

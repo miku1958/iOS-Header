@@ -10,35 +10,22 @@
 
 @interface SFDeviceAssetQuery : NSObject
 {
-    BOOL _forEngagement;
     BOOL _legacyFormats;
     struct LogCategory *_ucat;
     NSString *_assetType;
     unsigned long long _version;
     NSString *_productType;
     NSString *_mappedProductType;
-    NSString *_marketingProductNumber;
-    NSString *_mappedMarketingProductNumber;
-    NSString *_enclosureMaterial;
     NSString *_color;
-    NSString *_colorHousing;
-    NSString *_colorCoverGlass;
     NSDictionary *_additionalQueryParameters;
 }
 
 @property (readonly, nonatomic) NSDictionary *additionalQueryParameters; // @synthesize additionalQueryParameters=_additionalQueryParameters;
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property (readonly, nonatomic) NSString *color; // @synthesize color=_color;
-@property (readonly, nonatomic) NSString *colorCoverGlass; // @synthesize colorCoverGlass=_colorCoverGlass;
-@property (readonly, nonatomic) NSString *colorHousing; // @synthesize colorHousing=_colorHousing;
-@property (readonly, nonatomic) NSString *effectiveMarketingProductNumber;
 @property (readonly, nonatomic) NSString *effectiveProductType;
-@property (readonly, nonatomic) NSString *enclosureMaterial; // @synthesize enclosureMaterial=_enclosureMaterial;
-@property (readonly, nonatomic) BOOL forEngagement; // @synthesize forEngagement=_forEngagement;
 @property (readonly, nonatomic) BOOL legacyFormats; // @synthesize legacyFormats=_legacyFormats;
-@property (strong, nonatomic) NSString *mappedMarketingProductNumber; // @synthesize mappedMarketingProductNumber=_mappedMarketingProductNumber;
 @property (strong, nonatomic) NSString *mappedProductType; // @synthesize mappedProductType=_mappedProductType;
-@property (readonly, nonatomic) NSString *marketingProductNumber; // @synthesize marketingProductNumber=_marketingProductNumber;
 @property (readonly, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (readonly, nonatomic) NSString *stringIdentifier;
 @property (readonly, nonatomic) struct LogCategory *ucat; // @synthesize ucat=_ucat;
@@ -51,14 +38,10 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithAssetType:(id)arg1 productType:(id)arg2;
-- (id)initWithBluetoothProductIdentifier:(unsigned long long)arg1 color:(unsigned long long)arg2 engagement:(BOOL)arg3;
+- (id)initWithBluetoothProductIdentifier:(unsigned long long)arg1 color:(unsigned long long)arg2;
 - (id)initWithHomePodColor:(unsigned long long)arg1;
-- (id)initWithPhoneCaseProductType:(id)arg1 color:(id)arg2;
-- (id)initWithPhoneProductType:(id)arg1 colorHousing:(id)arg2 colorCoverGlass:(id)arg3;
 - (id)initWithProductType:(id)arg1 additionalQueryParameters:(id)arg2;
-- (id)initWithWatchProductType:(id)arg1 marketingProductNumber:(id)arg2 enclosureMaterial:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (id)loggingMarketingProductNumber;
 - (id)loggingProductType;
 
 @end

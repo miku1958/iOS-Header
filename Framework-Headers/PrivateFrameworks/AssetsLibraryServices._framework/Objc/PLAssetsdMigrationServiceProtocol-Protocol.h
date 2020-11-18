@@ -7,5 +7,8 @@
 #import <AssetsLibraryServices/NSObject-Protocol.h>
 
 @protocol PLAssetsdMigrationServiceProtocol <NSObject>
+- (void)cleanupModelForDataMigrationForRestoreType:(long long)arg1 reply:(void (^)(void))arg2;
+- (void)dataMigrationWillFinishWithReply:(void (^)(void))arg1;
+- (void)moveiPhotoLibraryMediaWithReply:(void (^)(BOOL, NSError *))arg1;
 @end
 

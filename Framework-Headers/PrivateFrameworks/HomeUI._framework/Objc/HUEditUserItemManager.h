@@ -8,49 +8,64 @@
 
 #import <HomeUI/HUUserItemManager-Protocol.h>
 
-@class HFItem, HFUserItem, HMHome, HMUser, NSString;
+@class HFItem, HFUserItem, HMHome, HMUser, HUAccessorySettingsItemModule, NSArray, NSString;
 
 @interface HUEditUserItemManager : HFItemManager <HUUserItemManager>
 {
     HFItem *_localAccessItem;
-    HFItem *_allowRemoteAccessItem;
-    HFItem *_allowRemoteAccessFooterItem;
+    HFItem *_remoteAccessItem;
     HFItem *_allowEditingItem;
-    HFItem *_allowEditingFooterItem;
+    HFItem *_camerasItem;
     HFItem *_pendingAccessoriesItem;
     HFItem *_personalRequestsItem;
+    HFItem *_personalRequestsFooterItem;
+    HFItem *_tvViewingProfilesItem;
+    HUAccessorySettingsItemModule *_userSettingsItemModule;
     HMHome *_homeForUser;
     HFItem *_removeItem;
+    NSArray *_sectionOrderArrayWhenViewingSelf;
+    NSArray *_sectionOrderArrayWhenViewingOther;
 }
 
-@property (strong, nonatomic) HFItem *allowEditingFooterItem; // @synthesize allowEditingFooterItem=_allowEditingFooterItem;
 @property (strong, nonatomic) HFItem *allowEditingItem; // @synthesize allowEditingItem=_allowEditingItem;
-@property (strong, nonatomic) HFItem *allowRemoteAccessFooterItem; // @synthesize allowRemoteAccessFooterItem=_allowRemoteAccessFooterItem;
-@property (strong, nonatomic) HFItem *allowRemoteAccessItem; // @synthesize allowRemoteAccessItem=_allowRemoteAccessItem;
+@property (strong, nonatomic) HFItem *camerasItem; // @synthesize camerasItem=_camerasItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *homeForUser; // @synthesize homeForUser=_homeForUser;
 @property (strong, nonatomic) HFItem *localAccessItem; // @synthesize localAccessItem=_localAccessItem;
 @property (strong, nonatomic) HFItem *pendingAccessoriesItem; // @synthesize pendingAccessoriesItem=_pendingAccessoriesItem;
+@property (readonly, nonatomic) HFItem *personalRequestsFooterItem; // @synthesize personalRequestsFooterItem=_personalRequestsFooterItem;
 @property (strong, nonatomic) HFItem *personalRequestsItem; // @synthesize personalRequestsItem=_personalRequestsItem;
+@property (strong, nonatomic) HFItem *remoteAccessItem; // @synthesize remoteAccessItem=_remoteAccessItem;
 @property (strong, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
+@property (strong, nonatomic) NSArray *sectionOrderArrayWhenViewingOther; // @synthesize sectionOrderArrayWhenViewingOther=_sectionOrderArrayWhenViewingOther;
+@property (strong, nonatomic) NSArray *sectionOrderArrayWhenViewingSelf; // @synthesize sectionOrderArrayWhenViewingSelf=_sectionOrderArrayWhenViewingSelf;
 @property (strong, nonatomic) HFUserItem *sourceItem; // @dynamic sourceItem;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) HMUser *user;
+@property (strong, nonatomic) HFItem *tvViewingProfilesItem; // @synthesize tvViewingProfilesItem=_tvViewingProfilesItem;
+@property (readonly, nonatomic) HMUser *userBeingEdited;
+@property (strong, nonatomic) HUAccessorySettingsItemModule *userSettingsItemModule; // @synthesize userSettingsItemModule=_userSettingsItemModule;
 
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
-- (BOOL)_hasHomePod;
+- (BOOL)_canModifyUserBeingEditedPermissions;
 - (BOOL)_hasPendingAccessories;
+- (BOOL)_hasPersonalRequestsDevice;
 - (BOOL)_hasResidentDevice;
+- (BOOL)_hasSupportedCameraWithRecording;
+- (BOOL)_hasTVViewingProfilesDevice;
 - (id)_homeFuture;
-- (BOOL)_isCurrentUser;
 - (BOOL)_isEditingAllowedForUser:(id)arg1;
-- (id)_isPersonalRequestsEnabledForUser;
+- (BOOL)_isPersonalRequestsEnabledForUser;
 - (BOOL)_isRemoteAccessAllowedForUser:(id)arg1;
+- (BOOL)_isTVViewingProfilesEnabledForUser;
+- (BOOL)_isUserAdmin:(id)arg1;
+- (BOOL)_isUserBeingEditedTheDeviceUser;
 - (BOOL)_isUserOwner:(id)arg1;
+- (BOOL)_isVoiceIDEnabled:(id)arg1;
+- (id)_itemsToHideInSet:(id)arg1;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithHome:(id)arg1 userItem:(id)arg2 delegate:(id)arg3;
 - (id)reuseIdentifierForFooterViewInSection:(unsigned long long)arg1;

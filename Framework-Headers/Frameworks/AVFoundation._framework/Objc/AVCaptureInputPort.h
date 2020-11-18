@@ -18,9 +18,12 @@
 @property (readonly, nonatomic) const struct opaqueCMFormatDescription *formatDescription;
 @property (readonly, nonatomic) AVCaptureInput *input;
 @property (readonly, nonatomic) NSString *mediaType;
+@property (readonly, nonatomic) long long sourceDevicePosition;
+@property (readonly, nonatomic) NSString *sourceDeviceType;
 
 + (BOOL)automaticallyNotifiesObserversOfClock;
-+ (id)portWithInput:(id)arg1 mediaType:(id)arg2 formatDescription:(struct opaqueCMFormatDescription *)arg3 enabled:(BOOL)arg4;
++ (id)portWithInput:(id)arg1 mediaType:(id)arg2 formatDescription:(struct opaqueCMFormatDescription *)arg3 enabled:(BOOL)arg4 sourceDeviceType:(id)arg5 sourceDevicePosition:(long long)arg6;
+- (id)_initWithInput:(id)arg1 mediaType:(id)arg2 formatDescription:(struct opaqueCMFormatDescription *)arg3 enabled:(BOOL)arg4 sourceDeviceType:(id)arg5 sourceDevicePosition:(long long)arg6;
 - (void)_setClock:(struct OpaqueCMClock *)arg1;
 - (void)_setFormatDescription:(struct opaqueCMFormatDescription *)arg1;
 - (void)bumpChangeSeed;
@@ -28,9 +31,9 @@
 - (void)dealloc;
 - (id)description;
 - (id)figCaptureSourceConfigurationForSessionPreset:(id)arg1;
-- (id)initWithInput:(id)arg1 mediaType:(id)arg2 formatDescription:(struct opaqueCMFormatDescription *)arg3 enabled:(BOOL)arg4;
 - (void)setOwner:(id)arg1;
 - (id)sourceID;
+- (BOOL)sourcesFromConstituentDevice;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

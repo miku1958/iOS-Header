@@ -8,7 +8,7 @@
 
 #import <CoreLocationProtobuf/NSCopying-Protocol.h>
 
-@class CLPMotionActivity, CLPSatelliteReport, NSMutableArray;
+@class CLPMotionActivity, CLPPipelineDiagnosticReport, CLPSatelliteReport, NSMutableArray;
 
 @interface CLPLocation : PBCodable <NSCopying>
 {
@@ -30,6 +30,7 @@
     CLPMotionActivity *_motionActivity;
     int _motionActivityConfidence;
     int _motionActivityType;
+    CLPPipelineDiagnosticReport *_pipelineDiagnosticReport;
     int _provider;
     CLPMotionActivity *_rawMotionActivity;
     CLPSatelliteReport *_satReport;
@@ -84,6 +85,7 @@
 @property (nonatomic) BOOL hasMotionActivityType;
 @property (nonatomic) BOOL hasMotionVehicleConnected;
 @property (nonatomic) BOOL hasMotionVehicleConnectedStateChanged;
+@property (readonly, nonatomic) BOOL hasPipelineDiagnosticReport;
 @property (nonatomic) BOOL hasProvider;
 @property (readonly, nonatomic) BOOL hasRawMotionActivity;
 @property (readonly, nonatomic) BOOL hasSatReport;
@@ -103,6 +105,7 @@
 @property (nonatomic) int motionActivityType; // @synthesize motionActivityType=_motionActivityType;
 @property (nonatomic) BOOL motionVehicleConnected; // @synthesize motionVehicleConnected=_motionVehicleConnected;
 @property (nonatomic) BOOL motionVehicleConnectedStateChanged; // @synthesize motionVehicleConnectedStateChanged=_motionVehicleConnectedStateChanged;
+@property (strong, nonatomic) CLPPipelineDiagnosticReport *pipelineDiagnosticReport; // @synthesize pipelineDiagnosticReport=_pipelineDiagnosticReport;
 @property (nonatomic) int provider; // @synthesize provider=_provider;
 @property (strong, nonatomic) CLPMotionActivity *rawMotionActivity; // @synthesize rawMotionActivity=_rawMotionActivity;
 @property (strong, nonatomic) CLPSatelliteReport *satReport; // @synthesize satReport=_satReport;

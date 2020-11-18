@@ -22,6 +22,7 @@
 
 + (void)enumerateManagersUsingBlock:(CDUnknownBlockType)arg1;
 + (id)managerForWindow:(id)arg1 createIfNeeded:(BOOL)arg2;
+- (void).cxx_destruct;
 - (id)_init;
 - (void)addPassthroughViewProvider:(id)arg1;
 - (id)allPassThroughViews;

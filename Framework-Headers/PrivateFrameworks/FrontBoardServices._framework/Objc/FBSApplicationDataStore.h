@@ -21,6 +21,7 @@
 + (void)_doWithClassClient:(CDUnknownBlockType)arg1;
 + (void)_setClassClient:(id)arg1;
 + (id)applicationsWithAvailableStores;
++ (BOOL)isServerProcess;
 + (void)setPrefetchedKeys:(id)arg1;
 + (id)storeForApplication:(id)arg1;
 + (void)synchronize;

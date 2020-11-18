@@ -8,6 +8,8 @@
 
 @interface NSString (CFAdditions)
 - (id)SHA256;
+- (id)_cf_camelCase;
+- (id)_cf_fixCase:(BOOL)arg1;
 - (BOOL)containsString:(id)arg1;
 - (BOOL)containsString:(id)arg1 ignoringCase:(BOOL)arg2;
 - (long long)messageAttributeEnum;

@@ -10,7 +10,7 @@
 #import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationTextInputViewDelegate-Protocol.h>
 
-@class NCNotificationAction, NCNotificationRequest, NCNotificationTextInputView, NSString;
+@class NCNotificationRequest, NCNotificationTextInputView, NSString;
 @protocol NCNotificationCustomContent, NCNotificationCustomContentDelegate;
 
 @interface NCNotificationContentContainerViewController : UIViewController <NCNotificationCustomContentDelegate, NCNotificationTextInputViewDelegate, NCNotificationCustomContent>
@@ -29,11 +29,11 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCNotificationTextInputView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
 @property (readonly, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
-@property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_loadContentViewControllerForNotificationRequest:(id)arg1;
 - (void)_removeInputAccessoryView:(id)arg1;
 - (void)_setupContentViewController:(id)arg1;
@@ -44,7 +44,6 @@
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (id)cancelTouches;
-- (void)customContent:(id)arg1 didLoadAudioAccessoryView:(id)arg2;
 - (void)customContent:(id)arg1 didUpdateUserNotificationActions:(id)arg2;
 - (void)customContent:(id)arg1 forwardAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4;
 - (void)customContent:(id)arg1 requestPermissionToExecuteAction:(id)arg2 forNotification:(id)arg3 withUserInfo:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -56,12 +55,11 @@
 - (BOOL)defaultContentHidden;
 - (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithNotificationRequest:(id)arg1;
-- (void)loadAudioAccessoryView;
 - (void)notificationTextInputView:(id)arg1 didConfirmText:(id)arg2 forAction:(id)arg3;
 - (BOOL)overridesDefaultTitle;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
-- (void)playAudioMessage;
+- (void)playMedia;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)preserveInputViews;
 - (BOOL)restoreInputViews;

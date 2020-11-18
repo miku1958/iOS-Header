@@ -16,11 +16,13 @@
 
 @property (readonly, nonatomic) BOOL conformsToImage;
 @property (readonly, nonatomic) BOOL conformsToMovie;
+@property (readonly, nonatomic) BOOL conformsToRawImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, nonatomic, getter=isPrimaryFormat) BOOL primaryFormat; // @dynamic primaryFormat;
+@property (readonly, nonatomic) BOOL isPlayableVideo;
+@property (readonly, nonatomic, getter=isPrimaryImageFormat) BOOL primaryImageFormat;
 @property (readonly) Class superclass;
 
 

@@ -22,8 +22,8 @@
     NSArray *_extensionInputItems;
 }
 
-@property (strong, nonatomic) NSError *_error; // @synthesize _error;
-@property (strong, nonatomic) NSExtension *_extension; // @synthesize _extension;
+@property (strong, nonatomic, setter=_setError:) NSError *_error; // @synthesize _error;
+@property (strong, nonatomic, setter=_setExtension:) NSExtension *_extension; // @synthesize _extension;
 @property (strong, nonatomic) NSArray *extensionInputItems; // @synthesize extensionInputItems=_extensionInputItems;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL requiresTCC; // @synthesize requiresTCC=_requiresTCC;

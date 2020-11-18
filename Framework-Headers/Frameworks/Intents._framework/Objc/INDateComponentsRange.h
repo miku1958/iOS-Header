@@ -10,7 +10,7 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INRecurrenceRule, NSDate, NSDateComponents, NSDateInterval, NSString;
+@class INRecurrenceRule, NSDate, NSDateComponents, NSDateInterval, NSNumber, NSString;
 
 @interface INDateComponentsRange : NSObject <INDateComponentsRangeExport, NSCopying, NSSecureCoding>
 {
@@ -18,8 +18,10 @@
     NSDateComponents *_endDateComponents;
     INRecurrenceRule *_recurrenceRule;
     NSString *_userInput;
+    NSNumber *_allDay;
 }
 
+@property (readonly, copy, nonatomic) NSNumber *allDay; // @synthesize allDay=_allDay;
 @property (readonly, copy, nonatomic) NSDateInterval *dateInterval;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,7 +38,7 @@
 - (void).cxx_destruct;
 - (id)EKRecurrenceRule;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)_userInput;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
@@ -48,7 +50,7 @@
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 onCalendar:(id)arg3 inTimeZone:(id)arg4;
 - (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 - (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2 recurrenceRule:(id)arg3;
-- (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2 recurrenceRule:(id)arg3 userInput:(id)arg4;
+- (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2 recurrenceRule:(id)arg3 userInput:(id)arg4 allDay:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

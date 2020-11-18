@@ -107,6 +107,7 @@
 - (void)_beginRemoteViewControllerAppearanceTransitionIfNecessary:(BOOL)arg1 semaphore:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_beginSequenceWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2 updateHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_canInsertRemoteView:(id *)arg1;
+- (BOOL)_canShowWhileLocked;
 - (id)_cancelTouches;
 - (void)_captureLayerTree:(CDUnknownBlockType)arg1;
 - (void)_captureSnapshotAndBeginDisappearanceTransitionForSequence:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -133,6 +134,8 @@
 - (void)_invalidateSnapshotWithForce:(BOOL)arg1 removingSnapshotFilesForActiveDisplayMode:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_invalidateVisibleFrame;
 - (BOOL)_isActiveSequence:(id)arg1;
+- (struct UIEdgeInsets)_layoutMargins;
+- (void)_layoutMarginsDidChange;
 - (void)_loadSnapshotViewFromDiskIfNecessary:(CDUnknownBlockType)arg1;
 - (BOOL)_managingContainerIsVisible;
 - (struct UIEdgeInsets)_marginInsets;
@@ -145,6 +148,7 @@
 - (void)_registerUpdateRequestCompletionHandler:(CDUnknownBlockType)arg1 forSequence:(id)arg2;
 - (void)_removeAllSnapshotFilesDueToIssue:(BOOL)arg1;
 - (void)_removeAllSnapshotFilesForActiveDisplayMode;
+- (void)_removeAllSnapshotFilesInActiveDisplayModeForAllButActiveUserInterfaceStyle;
 - (void)_removeAllSnapshotFilesInActiveDisplayModeForContentSizeCategory:(id)arg1;
 - (void)_removeAllSnapshotFilesMatchingPredicate:(id)arg1 dueToIssue:(BOOL)arg2;
 - (void)_removeItemAsynchronouslyAtURL:(id)arg1;

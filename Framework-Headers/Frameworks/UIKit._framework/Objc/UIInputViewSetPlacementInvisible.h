@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)setDirty;
 - (BOOL)showsInputViews;
 - (BOOL)showsKeyboard;
+- (struct CGAffineTransform)transform;
 - (id)verticalConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 - (id)widthConstraintForInputViewSet:(id)arg1 hostView:(id)arg2 containerView:(id)arg3;
 

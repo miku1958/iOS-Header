@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MapsSupport/MSPReplicaEdit.h>
+#import <MapsSupport/MSPReplicaEditRemoveTombstone.h>
 
 @class NSDate;
 
-@interface MSPHistoryReplicaEditUpdateModificationDate : MSPReplicaEdit
+@interface MSPHistoryReplicaEditUpdateModificationDate : MSPReplicaEditRemoveTombstone
 {
     NSDate *_modificationDate;
 }

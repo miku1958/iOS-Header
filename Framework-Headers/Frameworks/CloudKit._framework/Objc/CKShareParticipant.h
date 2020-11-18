@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKRecordID, CKUserIdentity, NSData, NSString;
+@class CKDeviceToDeviceShareInvitationToken, CKRecordID, CKUserIdentity, NSData, NSString;
 
 @interface CKShareParticipant : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,10 +17,12 @@
     BOOL _isOrgAdminUser;
     BOOL _createdInProcess;
     BOOL _acceptedInProcess;
+    BOOL _wantsNewInvitationToken;
     CKUserIdentity *_userIdentity;
     long long _role;
     long long _acceptanceStatus;
     long long _permission;
+    long long _mutableInvitationTokenStatus;
     NSString *_participantID;
     CKRecordID *_shareRecordID;
     NSString *_inviterID;
@@ -28,26 +30,33 @@
     long long _originalAcceptanceStatus;
     long long _originalPermission;
     NSData *_protectionInfo;
+    NSData *_protectionInfoPublicKey;
     NSData *_encryptedPersonalInfo;
+    CKDeviceToDeviceShareInvitationToken *_invitationToken;
 }
 
 @property (nonatomic) long long acceptanceStatus; // @synthesize acceptanceStatus=_acceptanceStatus;
 @property (nonatomic) BOOL acceptedInProcess; // @synthesize acceptedInProcess=_acceptedInProcess;
 @property (nonatomic) BOOL createdInProcess; // @synthesize createdInProcess=_createdInProcess;
 @property (strong, nonatomic) NSData *encryptedPersonalInfo; // @synthesize encryptedPersonalInfo=_encryptedPersonalInfo;
+@property (strong, nonatomic) CKDeviceToDeviceShareInvitationToken *invitationToken; // @synthesize invitationToken=_invitationToken;
+@property (readonly, nonatomic) long long invitationTokenStatus;
 @property (strong, nonatomic) NSString *inviterID; // @synthesize inviterID=_inviterID;
 @property (nonatomic) BOOL isCurrentUser; // @synthesize isCurrentUser=_isCurrentUser;
 @property (nonatomic) BOOL isOrgAdminUser; // @synthesize isOrgAdminUser=_isOrgAdminUser;
+@property (nonatomic) long long mutableInvitationTokenStatus; // @synthesize mutableInvitationTokenStatus=_mutableInvitationTokenStatus;
 @property (nonatomic) long long originalAcceptanceStatus; // @synthesize originalAcceptanceStatus=_originalAcceptanceStatus;
 @property (nonatomic) long long originalParticipantRole; // @synthesize originalParticipantRole=_originalParticipantRole;
 @property (nonatomic) long long originalPermission; // @synthesize originalPermission=_originalPermission;
 @property (strong, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
 @property (nonatomic) long long permission; // @synthesize permission=_permission;
 @property (strong, nonatomic) NSData *protectionInfo; // @synthesize protectionInfo=_protectionInfo;
+@property (strong, nonatomic) NSData *protectionInfoPublicKey; // @synthesize protectionInfoPublicKey=_protectionInfoPublicKey;
 @property (nonatomic) long long role; // @synthesize role=_role;
 @property (strong, nonatomic) CKRecordID *shareRecordID; // @synthesize shareRecordID=_shareRecordID;
 @property (nonatomic) long long type;
 @property (strong, nonatomic) CKUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property (nonatomic) BOOL wantsNewInvitationToken; // @synthesize wantsNewInvitationToken=_wantsNewInvitationToken;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

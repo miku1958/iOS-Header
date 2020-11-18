@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <BulletinDistributorCompanion/BLTSectionInfoListProvider-Protocol.h>
+#import <BulletinDistributorCompanion/BLTSectionInfoListOverrideProvider-Protocol.h>
 #import <BulletinDistributorCompanion/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class BLTSectionConfiguration, NSDate, NSString;
+@class BLTSectionConfiguration, NPSDomainAccessor, NSDate, NSString;
 @protocol BLTSectionInfoListProviderDelegate;
 
-@interface BLTSectionInfoListBridgeProvider : NSObject <LSApplicationWorkspaceObserverProtocol, BLTSectionInfoListProvider>
+@interface BLTSectionInfoListBridgeProvider : NSObject <LSApplicationWorkspaceObserverProtocol, BLTSectionInfoListOverrideProvider>
 {
     struct _opaque_pthread_mutex_t _lock;
     NSDate *_lastKnownBridgeSettingsChangeDate;
+    NPSDomainAccessor *_npsDomainAccessor;
     id<BLTSectionInfoListProviderDelegate> _delegate;
     BLTSectionConfiguration *_sectionConfiguration;
 }
@@ -28,12 +29,17 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_companionSetupNotificationSettingsDictionaryForSectionInfo:(id)arg1 sectionID:(id)arg2;
 - (id)_loadOverridesChangedSince:(id)arg1;
 - (void)_reloadUpdatedOverrides;
 - (void)_reloadUpdatedOverridesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)enableCustomSettingsForWatchSectionID:(id)arg1;
 - (id)initWithSectionConfiguration:(id)arg1;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)removeSectionWithSectionID:(id)arg1;
+- (void)setCustomSettingsWithSectionInfo:(id)arg1;
+- (void)setCustomSettingsWithSectionInfo:(id)arg1 watchSectionID:(id)arg2;
 - (void)setNotificationsLevel:(int)arg1 sectionID:(id)arg2 forceCustom:(BOOL)arg3;
 
 @end

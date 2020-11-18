@@ -30,6 +30,7 @@
 - (id)emailAddresses;
 - (id)facebookUserID;
 - (id)iCloudUserID;
+- (BOOL)isDefaultNickname;
 - (BOOL)isFindable;
 - (BOOL)isFriend;
 - (BOOL)isLocalPlayer;
@@ -41,6 +42,7 @@
 - (unsigned short)numberOfRequests;
 - (unsigned short)numberOfTurns;
 - (void)setAccountName:(id)arg1;
+- (void)setDefaultNickname:(BOOL)arg1;
 - (void)setEmailAddresses:(id)arg1;
 - (void)setFacebookUserID:(id)arg1;
 - (void)setFindable:(BOOL)arg1;

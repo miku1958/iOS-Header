@@ -6,13 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class MFEmailSet, MFMailMessage, MFSparseMutable64IndexSet, NSArray, NSMutableDictionary, NSString;
+@class ECSubject, EFMutableInt64Set, MFEmailSet, MFMailMessage, NSArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MFMessageReferenceContext : NSObject
 {
-    unsigned int _libraryID;
-    int _mailboxID;
     NSString *_sender;
     NSArray *_senderList;
     NSString *_to;
@@ -22,10 +20,12 @@ __attribute__((visibility("hidden")))
     NSString *_bcc;
     NSArray *_bccList;
     MFMailMessage *_message;
+    long long _libraryID;
     long long _messageIDHash;
-    NSString *_subject;
-    MFSparseMutable64IndexSet *_references;
+    ECSubject *_subject;
+    EFMutableInt64Set *_references;
     NSMutableDictionary *_messageIDsBySubject;
+    long long _mailboxID;
     long long _conversationIDHash;
     unsigned long long *_conversationFlagsRef;
     double _dateSentInterval;
@@ -38,22 +38,20 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long *conversationFlagsRef; // @synthesize conversationFlagsRef=_conversationFlagsRef;
 @property (nonatomic) long long conversationIDHash; // @synthesize conversationIDHash=_conversationIDHash;
 @property (nonatomic) double dateSentInterval; // @synthesize dateSentInterval=_dateSentInterval;
-@property (nonatomic) unsigned int libraryID; // @synthesize libraryID=_libraryID;
-@property (nonatomic) int mailboxID; // @synthesize mailboxID=_mailboxID;
+@property (nonatomic) long long libraryID; // @synthesize libraryID=_libraryID;
+@property (nonatomic) long long mailboxID; // @synthesize mailboxID=_mailboxID;
 @property (strong, nonatomic) MFMailMessage *message; // @synthesize message=_message;
 @property (nonatomic) long long messageIDHash; // @synthesize messageIDHash=_messageIDHash;
 @property (strong, nonatomic) NSMutableDictionary *messageIDsBySubject; // @synthesize messageIDsBySubject=_messageIDsBySubject;
 @property (readonly, nonatomic) MFEmailSet *participants;
-@property (strong, nonatomic) MFSparseMutable64IndexSet *references; // @synthesize references=_references;
+@property (strong, nonatomic) EFMutableInt64Set *references; // @synthesize references=_references;
 @property (copy, nonatomic) NSString *sender; // @synthesize sender=_sender;
 @property (copy, nonatomic) NSArray *senderList; // @synthesize senderList=_senderList;
-@property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
-@property (readonly, nonatomic) unsigned long long subjectPrefixLength;
-@property (readonly, nonatomic) NSString *subjectWithoutPrefix;
+@property (copy, nonatomic) ECSubject *subject; // @synthesize subject=_subject;
 @property (copy, nonatomic) NSString *to; // @synthesize to=_to;
 @property (copy, nonatomic) NSArray *toList; // @synthesize toList=_toList;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

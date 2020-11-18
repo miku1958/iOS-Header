@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) BOOL canAdjustImage;
 @property (readonly, nonatomic) BOOL canBeMasked;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double descentForInlineLayout;
 @property (readonly, copy) NSString *description;
@@ -54,10 +54,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) TSDImageAdjustments *imageAdjustments; // @synthesize imageAdjustments=mImageAdjustments;
 @property (strong, nonatomic) TSPData *imageData; // @synthesize imageData=mImageData;
+@property (readonly, nonatomic) TSPData *imageDataForExport;
 @property (readonly, nonatomic) TSDMediaStyle *imageStyle;
 @property (readonly, nonatomic) NSSet *infosToObserveForAttachedInfo;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
 @property (strong, nonatomic) TSUBezierPath *instantAlphaPath;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (strong, nonatomic) TSDMaskInfo *maskInfo; // @synthesize maskInfo=mMaskInfo;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) struct CGSize naturalSize;
@@ -80,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)acceptVisitor:(id)arg1;
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
 - (BOOL)canAspectRatioLockBeChangedByUser;
+- (BOOL)canCopyData;
 - (BOOL)canResetMediaSize;
 - (struct CGPoint)centerForReplacingWithNewMedia;
 - (struct CGAffineTransform)computeFullTransform;
@@ -112,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (id)objectForProperty:(int)arg1;
 - (struct CGSize)originalSize;
 - (BOOL)p_aspectRatioUnlockedResizeWouldCauseSkew;
+- (BOOL)p_canCopy:(id)arg1;
 - (void)p_upgradeImageGeometry;
 - (void)p_upgradeImageThumbnail;
 - (id)presetKind;

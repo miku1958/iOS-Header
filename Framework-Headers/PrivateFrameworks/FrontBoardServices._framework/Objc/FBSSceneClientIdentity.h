@@ -9,28 +9,31 @@
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, RBSProcessIdentity;
 
 @interface FBSSceneClientIdentity : NSObject <NSCopying, BSDescriptionProviding>
 {
     BOOL _local;
-    NSString *_bundleIdentifier;
+    RBSProcessIdentity *_processIdentity;
 }
 
-@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isLocal) BOOL local; // @synthesize local=_local;
+@property (readonly, copy, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
 @property (readonly) Class superclass;
 
 + (id)identityForBundleID:(id)arg1;
++ (id)identityForProcessIdentity:(id)arg1;
 + (id)localIdentity;
 - (void).cxx_destruct;
+- (id)_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)initWithBundleID:(id)arg1;
+- (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

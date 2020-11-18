@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)error;
 - (void)finishWriting;
 - (void)finishWritingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)flush;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)initWithConfigurationState:(id)arg1 terminalError:(id)arg2;
 - (void)setFinishWritingDelegate:(id)arg1;

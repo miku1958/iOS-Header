@@ -10,5 +10,12 @@
 {
 }
 
+- (BOOL)dumpCloudPhotosStatusIncludingDaemon:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)dumpPhotoAnalysisStatusWithOutputFilePath:(id *)arg1 error:(id *)arg2;
+- (BOOL)getPhotosXPCEndpoint:(id *)arg1 error:(id *)arg2;
+- (BOOL)incompleteRestoreProcesses:(id *)arg1 error:(id *)arg2;
+- (void)setPhotosXPCEndpoint:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setSharedMemoryForDeferredLogging:(id)arg1;
+
 @end
 

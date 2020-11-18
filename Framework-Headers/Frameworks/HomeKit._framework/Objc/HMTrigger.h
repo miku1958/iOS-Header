@@ -30,6 +30,8 @@
 
 @property (readonly, copy, nonatomic) NSArray *actionSets;
 @property (readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property (readonly, weak, nonatomic) HMUser *creator;
+@property (readonly, nonatomic) HMDevice *creatorDevice;
 @property (strong, nonatomic) HMMutableArray *currentActionSets; // @synthesize currentActionSets=_currentActionSets;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -50,7 +52,7 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_addActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_addActionSetWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_addActionSetOfType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_enable:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleTriggerActivatedNotification:(id)arg1;
 - (void)_handleTriggerFired:(id)arg1;
@@ -66,10 +68,9 @@
 - (void)_updateActionSet:(id)arg1 add:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)addActionSetOfType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addActionSetWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)compatibleWithApp;
-- (id)creator;
-- (id)creatorDevice;
 - (void)dealloc;
 - (void)enable:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;

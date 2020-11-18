@@ -8,46 +8,83 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPriceDescription, GEOPDRating, NSMutableArray, NSString, PBUnknownFields;
+@class GEOPDPriceDescription, GEOPDRating, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDResultSnippet : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_category;
+    NSMutableArray *_childItems;
     NSMutableArray *_childPlaces;
-    unsigned int _distanceDisplayThreshold;
     NSString *_locationString;
     NSString *_name;
     GEOPDPriceDescription *_priceDescription;
     GEOPDRating *_priceRange;
+    unsigned int _distanceDisplayThreshold;
     struct {
-        unsigned int distanceDisplayThreshold:1;
-    } _has;
+        unsigned int has_distanceDisplayThreshold:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_category:1;
+        unsigned int read_childItems:1;
+        unsigned int read_childPlaces:1;
+        unsigned int read_locationString:1;
+        unsigned int read_name:1;
+        unsigned int read_priceDescription:1;
+        unsigned int read_priceRange:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_category:1;
+        unsigned int wrote_childItems:1;
+        unsigned int wrote_childPlaces:1;
+        unsigned int wrote_locationString:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_priceDescription:1;
+        unsigned int wrote_priceRange:1;
+        unsigned int wrote_distanceDisplayThreshold:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *category; // @synthesize category=_category;
-@property (strong, nonatomic) NSMutableArray *childPlaces; // @synthesize childPlaces=_childPlaces;
-@property (nonatomic) unsigned int distanceDisplayThreshold; // @synthesize distanceDisplayThreshold=_distanceDisplayThreshold;
+@property (strong, nonatomic) NSString *category;
+@property (strong, nonatomic) NSMutableArray *childItems;
+@property (strong, nonatomic) NSMutableArray *childPlaces;
+@property (nonatomic) unsigned int distanceDisplayThreshold;
 @property (readonly, nonatomic) BOOL hasCategory;
 @property (nonatomic) BOOL hasDistanceDisplayThreshold;
 @property (readonly, nonatomic) BOOL hasLocationString;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasPriceDescription;
 @property (readonly, nonatomic) BOOL hasPriceRange;
-@property (strong, nonatomic) NSString *locationString; // @synthesize locationString=_locationString;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) GEOPDPriceDescription *priceDescription; // @synthesize priceDescription=_priceDescription;
-@property (strong, nonatomic) GEOPDRating *priceRange; // @synthesize priceRange=_priceRange;
+@property (strong, nonatomic) NSString *locationString;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) GEOPDPriceDescription *priceDescription;
+@property (strong, nonatomic) GEOPDRating *priceRange;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)childItemType;
 + (Class)childPlaceType;
++ (BOOL)isValid:(id)arg1;
 + (id)resultSnippetForPlaceData:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsChildItem:(id)arg1;
+- (void)_addNoFlagsChildPlace:(id)arg1;
+- (void)_readCategory;
+- (void)_readChildItems;
+- (void)_readChildPlaces;
+- (void)_readLocationString;
+- (void)_readName;
+- (void)_readPriceDescription;
+- (void)_readPriceRange;
+- (void)addChildItem:(id)arg1;
 - (void)addChildPlace:(id)arg1;
+- (id)childItemAtIndex:(unsigned long long)arg1;
+- (unsigned long long)childItemsCount;
 - (id)childPlaceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)childPlacesCount;
+- (void)clearChildItems;
 - (void)clearChildPlaces;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -55,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

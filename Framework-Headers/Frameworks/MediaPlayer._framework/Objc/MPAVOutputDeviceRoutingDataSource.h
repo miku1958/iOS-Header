@@ -23,10 +23,12 @@
     BOOL _supportsRoutePrediction;
     MPMRAVOutputContextWrapper *_applicationOutputContext;
     MPAVEndpointRoute *_endpointRoute;
+    NSString *_initiator;
 }
 
 @property (strong, nonatomic) MPMRAVOutputContextWrapper *applicationOutputContext; // @synthesize applicationOutputContext=_applicationOutputContext;
 @property (strong, nonatomic) MPAVEndpointRoute *endpointRoute; // @synthesize endpointRoute=_endpointRoute;
+@property (strong, nonatomic) NSString *initiator; // @synthesize initiator=_initiator;
 @property (copy, nonatomic) NSString *routingContextUID;
 @property (nonatomic) BOOL supportsMultipleSelection; // @synthesize supportsMultipleSelection=_supportsMultipleSelection;
 @property (nonatomic) BOOL supportsRoutePrediction; // @synthesize supportsRoutePrediction=_supportsRoutePrediction;

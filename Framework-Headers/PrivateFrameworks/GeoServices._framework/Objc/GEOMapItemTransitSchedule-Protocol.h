@@ -13,6 +13,9 @@
 
 @property (readonly, nonatomic) NSArray *departureSequences;
 @property (readonly, nonatomic) NSDate *lastFullScheduleValidDate;
+@property (readonly, nonatomic) NSString *subtitle;
+@property (readonly, nonatomic) double timeToLive;
+@property (readonly, nonatomic) NSString *title;
 
 - (NSArray *)allSequencesForSystem:(id<GEOTransitSystem>)arg1 direction:(NSString *)arg2;
 - (NSArray *)departureSequencesForSystem:(id<GEOTransitSystem>)arg1 excludingIncidentEntities:(NSSet *)arg2 direction:(NSString *)arg3 validForDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg4;
@@ -20,7 +23,6 @@
 - (NSOrderedSet *)headSignsForLine:(id<GEOTransitLine>)arg1;
 - (NSArray *)inactiveLinesForSystem:(id<GEOTransitSystem>)arg1 relativeToDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg2 excludingIncidentEntities:(NSSet *)arg3;
 - (unsigned long long)numAdditionalDeparturesForSequence:(id<GEOTransitDepartureSequence>)arg1;
-- (NSArray *)sequencesForSystem:(id<GEOTransitSystem>)arg1 excludingIncidentEntities:(NSSet *)arg2 direction:(NSString *)arg3 validForDateFromBlock:(NSDate * (^)(id<GEOTransitDepartureSequence>))arg4;
 - (NSDate *)serviceResumesDateForLine:(id<GEOTransitLine>)arg1 excludingIncidentEntities:(NSSet *)arg2 afterDate:(NSDate *)arg3 blocked:(out BOOL *)arg4;
 @end
 

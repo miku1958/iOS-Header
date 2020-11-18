@@ -7,12 +7,14 @@
 #import <AppleIDSSOAuthentication/AIDAServiceContext.h>
 
 @class NSDictionary, UIViewController;
+@protocol CDPStateUIProvider;
 
 @interface AIDAMutableServiceContext : AIDAServiceContext
 {
 }
 
 @property (copy, nonatomic) NSDictionary *authenticationResults; // @dynamic authenticationResults;
+@property (weak, nonatomic) id<CDPStateUIProvider> cdpUiProvider; // @dynamic cdpUiProvider;
 @property (nonatomic) BOOL shouldForceOperation; // @dynamic shouldForceOperation;
 @property (strong, nonatomic) UIViewController *viewController; // @dynamic viewController;
 

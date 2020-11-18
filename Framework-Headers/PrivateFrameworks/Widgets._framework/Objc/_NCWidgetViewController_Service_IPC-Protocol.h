@@ -10,6 +10,7 @@
 - (void)__openTransactionForAppearanceCallWithState:(int)arg1 withIdentifier:(NSUUID *)arg2;
 - (void)__performUpdateWithReplyHandler:(void (^)(unsigned long long, BOOL))arg1;
 - (void)__requestEncodedLayerTreeToURL:(NSURL *)arg1 withCodingImageFormat:(NSString *)arg2 withReplyHandler:(void (^)(NSError *))arg3;
+- (void)__updateLayoutMargins:(NSString *)arg1;
 - (void)__updateVisibilityState:(long long)arg1;
 - (void)__updateVisibleFrame:(struct CGRect)arg1 withReplyHandler:(void (^)(BOOL))arg2;
 

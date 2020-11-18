@@ -10,8 +10,13 @@
 
 @protocol SOSControlProtocol <NSObject>
 - (void)assertStashedAccountCredential:(void (^)(BOOL, NSError *))arg1;
+- (void)circleHash:(void (^)(NSString *, NSError *))arg1;
 - (void)circleJoiningBlob:(NSData *)arg1 complete:(void (^)(NSData *, NSError *))arg2;
 - (void)getWatchdogParameters:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)ghostBust:(unsigned int)arg1 complete:(void (^)(BOOL, NSError *))arg2;
+- (void)ghostBustInfo:(void (^)(NSData *, NSError *))arg1;
+- (void)ghostBustPeriodic:(unsigned int)arg1 complete:(void (^)(BOOL, NSError *))arg2;
+- (void)ghostBustTriggerTimed:(unsigned int)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)importInitialSyncCredentials:(NSArray *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)initialSyncCredentials:(unsigned int)arg1 complete:(void (^)(NSArray *, NSError *))arg2;
 - (void)joinCircleWithBlob:(NSData *)arg1 version:(int)arg2 complete:(void (^)(BOOL, NSError *))arg3;

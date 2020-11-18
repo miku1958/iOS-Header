@@ -11,7 +11,7 @@
 #import <UIKitCore/UISwipeActionHost-Protocol.h>
 #import <UIKitCore/UITable_Internal-Protocol.h>
 
-@class NSIndexPath, NSMutableArray, NSSet, NSString, UIColor, UIScrollView, UISwipeActionController, UISwipeActionDeleteScanlineView, UITableViewRowData, UITraitCollection, UIView, UIVisualEffect;
+@class NSIndexPath, NSMutableArray, NSMutableSet, NSSet, NSString, UIColor, UIScrollView, UISwipeActionController, UITableViewRowData, UIView, UIVisualEffect;
 @protocol UICollectionViewDataSourceTableLayout, UICollectionViewDelegateTableLayout, UITableConstants;
 
 @interface UICollectionViewTableLayout : UICollectionViewLayout <UIGestureRecognizerDelegate, UICollectionViewTableAttributes, UITable_Internal, UISwipeActionHost>
@@ -20,12 +20,19 @@
     UIColor *_separatorColor;
     UIColor *_darkenedSeparatorColor;
     struct UIEdgeInsets _sectionContentInset;
+    struct UIEdgeInsets _previousLayoutMargins;
+    NSMutableArray *_indexPathCache;
+    NSMutableSet *_preferredAttributesCache;
+    NSMutableSet *_headerPreferredAttributesCache;
+    NSMutableSet *_footerPreferredAttributesCache;
+    double _memoizedScale;
     BOOL _usesVariableMargins;
     BOOL _overlapsSectionHeaderViews;
     BOOL _showingIndex;
     BOOL _cellLayoutMarginsFollowReadableWidth;
     BOOL _insetsContentViewsToSafeArea;
     BOOL _separatorInsetIsRelativeToCellEdges;
+    BOOL _showsAdditionalSeparators;
     double _rowHeight;
     double _sectionHeaderHeight;
     double _sectionFooterHeight;
@@ -46,14 +53,12 @@
     NSMutableArray *_insertIndexPaths;
     UISwipeActionController *_swipeActionController;
     NSIndexPath *_deletedIndexPath;
-    double _swipedItemHeight;
-    UISwipeActionDeleteScanlineView *_deleteScanLineView;
     struct CGRect _indexFrame;
     struct UIEdgeInsets _separatorInset;
 }
 
 @property (readonly, nonatomic, getter=_contentInset) struct UIEdgeInsets _contentInset;
-@property (readonly, nonatomic, getter=_accessoryBaseColor) UIColor *accessoryBaseColor; // @synthesize accessoryBaseColor=_accessoryBaseColor;
+@property (readonly, nonatomic, getter=_accessoryBaseColor) UIColor *accessoryBaseColor;
 @property (readonly, nonatomic) BOOL allowsMultipleSelection;
 @property (readonly, nonatomic) BOOL allowsMultipleSelectionDuringEditing;
 @property (copy, nonatomic) UIColor *backgroundColor;
@@ -61,6 +66,7 @@
 @property (readonly, nonatomic, getter=_bottomPadding) double bottomPadding; // @synthesize bottomPadding=_bottomPadding;
 @property (readonly, nonatomic) BOOL canBeEdited;
 @property (nonatomic) BOOL cellLayoutMarginsFollowReadableWidth; // @synthesize cellLayoutMarginsFollowReadableWidth=_cellLayoutMarginsFollowReadableWidth;
+@property (readonly, nonatomic, getter=_cellSafeAreaInsets) struct UIEdgeInsets cellSafeAreaInsets;
 @property (strong, nonatomic, getter=_constants) id<UITableConstants> constants; // @synthesize constants=_constants;
 @property (readonly, nonatomic, getter=_dataSourceActual) id<UICollectionViewDataSourceTableLayout> dataSourceActual;
 @property (readonly, copy) NSString *debugDescription;
@@ -69,13 +75,12 @@
 @property (readonly, nonatomic, getter=_delegateActual) id<UICollectionViewDelegateTableLayout> delegateActual;
 @property (readonly, nonatomic, getter=_delegateProxy) id<UICollectionViewDelegateTableLayout> delegateProxy;
 @property (strong, nonatomic) NSMutableArray *deleteIndexPaths; // @synthesize deleteIndexPaths=_deleteIndexPaths;
-@property (strong, nonatomic) UISwipeActionDeleteScanlineView *deleteScanLineView; // @synthesize deleteScanLineView=_deleteScanLineView;
 @property (strong, nonatomic) NSIndexPath *deletedIndexPath; // @synthesize deletedIndexPath=_deletedIndexPath;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEditing) BOOL editing;
-@property (readonly, nonatomic) double estimatedRowHeight; // @synthesize estimatedRowHeight=_estimatedRowHeight;
-@property (readonly, nonatomic) double estimatedSectionFooterHeight; // @synthesize estimatedSectionFooterHeight=_estimatedSectionFooterHeight;
-@property (readonly, nonatomic) double estimatedSectionHeaderHeight; // @synthesize estimatedSectionHeaderHeight=_estimatedSectionHeaderHeight;
+@property (nonatomic) double estimatedRowHeight; // @synthesize estimatedRowHeight=_estimatedRowHeight;
+@property (nonatomic) double estimatedSectionFooterHeight; // @synthesize estimatedSectionFooterHeight=_estimatedSectionFooterHeight;
+@property (nonatomic) double estimatedSectionHeaderHeight; // @synthesize estimatedSectionHeaderHeight=_estimatedSectionHeaderHeight;
 @property (readonly, nonatomic, getter=_estimatesHeights) BOOL estimatesHeights;
 @property (readonly, nonatomic, getter=_estimatesRowHeights) BOOL estimatesRowHeights;
 @property (readonly, nonatomic, getter=_estimatesSectionFooterHeights) BOOL estimatesSectionFooterHeights;
@@ -90,7 +95,7 @@
 @property (strong, nonatomic) NSMutableArray *insertIndexPaths; // @synthesize insertIndexPaths=_insertIndexPaths;
 @property (nonatomic) BOOL insetsContentViewsToSafeArea; // @synthesize insetsContentViewsToSafeArea=_insetsContentViewsToSafeArea;
 @property (readonly, nonatomic, getter=_isTableHeaderAutohiding) BOOL isTableHeaderAutohiding;
-@property (readonly, nonatomic) UIColor *multiselectCheckmarkColor; // @synthesize multiselectCheckmarkColor=_multiselectCheckmarkColor;
+@property (readonly, nonatomic, getter=_multiselectCheckmarkColor) UIColor *multiselectCheckmarkColor;
 @property (readonly, nonatomic, getter=_numberOfSections) long long numberOfSections;
 @property (readonly, nonatomic) BOOL overlapsSectionHeaderViews; // @synthesize overlapsSectionHeaderViews=_overlapsSectionHeaderViews;
 @property (readonly, nonatomic, getter=_providesRowHeights) BOOL providesRowHeights;
@@ -100,7 +105,6 @@
 @property (nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property (readonly, nonatomic, getter=_rowSpacing) double rowSpacing; // @synthesize rowSpacing=_rowSpacing;
 @property (readonly, nonatomic, getter=_scrollView) UIScrollView *scrollView;
-@property (readonly, nonatomic, getter=_sectionBorderWidth) double sectionBorderWidth;
 @property (readonly, nonatomic, getter=_sectionContentInset) struct UIEdgeInsets sectionContentInset;
 @property (readonly, nonatomic, getter=_sectionContentInsetFollowsLayoutMargins) BOOL sectionContentInsetFollowsLayoutMargins;
 @property (readonly, nonatomic, getter=_sectionCornerRadius) double sectionCornerRadius;
@@ -114,25 +118,25 @@
 @property (readonly, nonatomic, getter=_shouldUseNewHeaderFooterBehavior) BOOL shouldUseNewHeaderFooterBehavior;
 @property (readonly, nonatomic, getter=_shouldUseSearchBarHeaderBehavior) BOOL shouldUseSearchBarHeaderBehavior;
 @property (readonly, nonatomic, getter=_isShowingIndex) BOOL showingIndex; // @synthesize showingIndex=_showingIndex;
+@property (nonatomic, getter=_showsAdditionalSeparators, setter=_setShowsAdditionalSeparators:) BOOL showsAdditionalSeparators; // @synthesize showsAdditionalSeparators=_showsAdditionalSeparators;
 @property (readonly, nonatomic, getter=_sidePadding) double sidePadding;
-@property (readonly, nonatomic, getter=_style) long long style;
 @property (readonly) Class superclass;
 @property (strong, nonatomic, getter=_swipeActionController, setter=_setSwipeActionController:) UISwipeActionController *swipeActionController; // @synthesize swipeActionController=_swipeActionController;
-@property (nonatomic) double swipedItemHeight; // @synthesize swipedItemHeight=_swipedItemHeight;
 @property (readonly, nonatomic, getter=_tableContentInset) struct UIEdgeInsets tableContentInset;
 @property (readonly, nonatomic, getter=_tableFooterView) UIView *tableFooterView;
 @property (readonly, nonatomic, getter=_tableHeaderView) UIView *tableHeaderView;
+@property (readonly, nonatomic, getter=_tableStyle) long long tableStyle;
 @property (readonly, nonatomic, getter=_topPadding) double topPadding; // @synthesize topPadding=_topPadding;
-@property (readonly, nonatomic) UITraitCollection *traitCollection;
 @property (readonly, nonatomic) BOOL usesVariableMargins; // @synthesize usesVariableMargins=_usesVariableMargins;
 
 + (Class)invalidationContextClass;
 + (Class)layoutAttributesClass;
 - (void).cxx_destruct;
 - (long long)_accessoryTypeForCell:(id)arg1 forRowAtIndexPath:(id)arg2;
-- (void)_applyContentSizeDeltaForEstimatedHeightAdjustments:(double)arg1;
+- (void)_applyContentSizeDeltaImmediately:(double)arg1;
 - (BOOL)_canReorderRowAtIndexPath:(id)arg1;
 - (void)_cellAccessoryButtonTappedAtIndexPath:(id)arg1;
+- (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (void)_coalesceContentSizeUpdateWithDelta:(double)arg1;
 - (struct CGPoint)_contentOffsetFromProposedContentOffset:(struct CGPoint)arg1 forScrollingToItemAtIndexPath:(id)arg2 atScrollPosition:(unsigned long long)arg3;
 - (void)_darkenedColorsChanged:(id)arg1;
@@ -145,14 +149,19 @@
 - (double)_estimatedHeightForFooterInSection:(long long)arg1;
 - (double)_estimatedHeightForHeaderInSection:(long long)arg1;
 - (double)_estimatedHeightForRowAtIndexPath:(id)arg1;
+- (BOOL)_estimatesSizes;
 - (struct CGRect)_extraSeparatorFrameForIndexPath:(id)arg1 offset:(double)arg2;
 - (id)_floatingElementKinds;
-- (struct CGRect)_frameForSectionElementKind:(id)arg1 atSection:(long long)arg2 visibleRect:(struct CGRect)arg3 floating:(BOOL *)arg4;
+- (struct CGRect)_frameForSectionElementKind:(id)arg1 atSection:(long long)arg2 visibleRect:(struct CGRect)arg3 floating:(BOOL *)arg4 canGuess:(BOOL)arg5;
 - (BOOL)_hasHeaderFooterBelowRowAtIndexPath:(id)arg1;
 - (double)_heightForFooterInSection:(long long)arg1;
+- (double)_heightForFooterInSection:(long long)arg1 useRowData:(BOOL)arg2;
 - (double)_heightForHeaderInSection:(long long)arg1;
+- (double)_heightForHeaderInSection:(long long)arg1 useRowData:(BOOL)arg2;
 - (double)_heightForRowAtIndexPath:(id)arg1;
 - (long long)_indentationLevelForRowAtIndexPath:(id)arg1;
+- (id)_indexPathsBelowIndexPath:(id)arg1;
+- (void)_invalidateIndexPathsBelowIndexPath:(id)arg1 withInvalidationContext:(id)arg2;
 - (id)_invalidationContextForUpdatedLayoutMargins:(struct UIEdgeInsets)arg1;
 - (id)_layoutAttributesForCellWithIndexPath:(id)arg1;
 - (id)_layoutAttributesForSectionElementKind:(id)arg1 atSection:(long long)arg2;
@@ -160,6 +169,7 @@
 - (id)_layoutAttributesForViewElementKind:(id)arg1;
 - (double)_maxTitleWidthForFooterInSection:(long long)arg1;
 - (double)_maxTitleWidthForHeaderInSection:(long long)arg1;
+- (BOOL)_needsRecomputeOfPreferredAttributesForVisibleEstimatedItemsDuringUpdate;
 - (long long)_numberOfRowsInSection:(long long)arg1;
 - (struct UIEdgeInsets)_preferredLayoutMargins;
 - (struct _NSRange)_sectionRangeForBounds:(struct CGRect)arg1;
@@ -173,6 +183,7 @@
 - (BOOL)_shouldDisplayExtraSeparatorsAtOffset:(double *)arg1;
 - (BOOL)_shouldDrawSeparatorAtTop:(BOOL)arg1 ofSection:(long long)arg2;
 - (BOOL)_shouldDrawThickSeparators;
+- (BOOL)_shouldDrawTopSeparatorDueToMergedBarForSectionAtIndex:(long long)arg1;
 - (BOOL)_shouldHaveFooterViewForSection:(long long)arg1;
 - (BOOL)_shouldHaveGlobalViewForElementOfKind:(id)arg1;
 - (BOOL)_shouldHaveHeaderViewForSection:(long long)arg1;
@@ -180,12 +191,10 @@
 - (BOOL)_shouldIndentWhileEditingForRowAtIndexPath:(id)arg1;
 - (BOOL)_shouldStripHeaderTopPaddingForSection:(long long)arg1;
 - (void)_swipeToDeleteCell:(id)arg1;
-- (double)_swipeToDeleteOffsetForRow:(long long)arg1 inSection:(long long)arg2;
 - (long long)_titleAlignmentForFooterInSection:(long long)arg1;
 - (long long)_titleAlignmentForHeaderInSection:(long long)arg1;
 - (id)_titleForFooterInSection:(long long)arg1;
 - (id)_titleForHeaderInSection:(long long)arg1;
-- (BOOL)_usesModernSwipeActions;
 - (id)_viewForFooterInSection:(long long)arg1;
 - (id)_viewForHeaderInSection:(long long)arg1;
 - (struct CGRect)_visibleRect;
@@ -200,28 +209,32 @@
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
 - (id)invalidationContextForInteractivelyMovingItems:(id)arg1 withTargetPosition:(struct CGPoint)arg2 previousIndexPaths:(id)arg3 previousPosition:(struct CGPoint)arg4;
+- (id)invalidationContextForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (id)itemContainerViewForSwipeActionController:(id)arg1;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (long long)layoutDirectionForSwipeActionController:(id)arg1;
 - (void)prepareForCollectionViewUpdates:(id)arg1;
 - (void)prepareForTransitionFromLayout:(id)arg1;
 - (void)prepareForTransitionToLayout:(id)arg1;
 - (void)prepareLayout;
 - (void)resetSwipedRowWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (BOOL)shouldInvalidateLayoutForPreferredLayoutAttributes:(id)arg1 withOriginalAttributes:(id)arg2;
 - (void)swipeActionController:(id)arg1 animateView:(id)arg2 actionsView:(id)arg3 forDestructiveAction:(id)arg4 atIndexPath:(id)arg5 withSwipeInfo:(CDStruct_9b6dff2a)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)swipeActionController:(id)arg1 didEndSwipeForItemAtIndexPath:(id)arg2;
+- (void)swipeActionController:(id)arg1 didPerformAction:(id)arg2 canceled:(BOOL)arg3 atIndexPath:(id)arg4;
 - (id)swipeActionController:(id)arg1 indexPathForTouchLocation:(struct CGPoint)arg2;
 - (id)swipeActionController:(id)arg1 leadingSwipeConfigurationForItemAtIndexPath:(id)arg2;
 - (BOOL)swipeActionController:(id)arg1 mayBeginSwipeForItemAtIndexPath:(id)arg2;
 - (id)swipeActionController:(id)arg1 trailingSwipeConfigurationForItemAtIndexPath:(id)arg2;
 - (id)swipeActionController:(id)arg1 viewForItemAtIndexPath:(id)arg2;
 - (void)swipeActionController:(id)arg1 willBeginSwipeForItemAtIndexPath:(id)arg2;
+- (void)swipeActionController:(id)arg1 willPerformAction:(id)arg2 atIndexPath:(id)arg3;
 - (id)swipeActionForDeletingRowAtIndexPath:(id)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -8,17 +8,17 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, GEOPDAdamAppIdentifier, GEOPDMerchantInformation, GEOPDWarsawMerchantIdentifier, NSString, PBUnknownFields;
+@class GEOLocation, GEOPDAdamAppIdentifier, GEOPDMerchantInformation, GEOPDWarsawMerchantIdentifier, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDMerchantLookupParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    long long _industryCode;
-    double _transactionLocationAge;
-    double _transactionTimestamp;
     GEOPDAdamAppIdentifier *_appIdentifier;
     NSString *_industryCategory;
+    long long _industryCode;
     NSString *_merchantCode;
     GEOPDMerchantInformation *_merchantInformation;
     NSString *_paymentNetwork;
@@ -26,23 +26,55 @@ __attribute__((visibility("hidden")))
     NSString *_terminalId;
     NSString *_transactionCurrencyCode;
     NSString *_transactionId;
+    double _transactionLocationAge;
     GEOLocation *_transactionLocation;
+    double _transactionTimestamp;
+    GEOPDWarsawMerchantIdentifier *_warsawMerchantIdentifier;
     int _transactionStatus;
     int _transactionType;
-    GEOPDWarsawMerchantIdentifier *_warsawMerchantIdentifier;
     BOOL _enableBrandMuidFallback;
     struct {
-        unsigned int industryCode:1;
-        unsigned int transactionLocationAge:1;
-        unsigned int transactionTimestamp:1;
-        unsigned int transactionStatus:1;
-        unsigned int transactionType:1;
-        unsigned int enableBrandMuidFallback:1;
-    } _has;
+        unsigned int has_industryCode:1;
+        unsigned int has_transactionLocationAge:1;
+        unsigned int has_transactionTimestamp:1;
+        unsigned int has_transactionStatus:1;
+        unsigned int has_transactionType:1;
+        unsigned int has_enableBrandMuidFallback:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_appIdentifier:1;
+        unsigned int read_industryCategory:1;
+        unsigned int read_merchantCode:1;
+        unsigned int read_merchantInformation:1;
+        unsigned int read_paymentNetwork:1;
+        unsigned int read_rawMerchantCode:1;
+        unsigned int read_terminalId:1;
+        unsigned int read_transactionCurrencyCode:1;
+        unsigned int read_transactionId:1;
+        unsigned int read_transactionLocation:1;
+        unsigned int read_warsawMerchantIdentifier:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_appIdentifier:1;
+        unsigned int wrote_industryCategory:1;
+        unsigned int wrote_industryCode:1;
+        unsigned int wrote_merchantCode:1;
+        unsigned int wrote_merchantInformation:1;
+        unsigned int wrote_paymentNetwork:1;
+        unsigned int wrote_rawMerchantCode:1;
+        unsigned int wrote_terminalId:1;
+        unsigned int wrote_transactionCurrencyCode:1;
+        unsigned int wrote_transactionId:1;
+        unsigned int wrote_transactionLocationAge:1;
+        unsigned int wrote_transactionLocation:1;
+        unsigned int wrote_transactionTimestamp:1;
+        unsigned int wrote_warsawMerchantIdentifier:1;
+        unsigned int wrote_transactionStatus:1;
+        unsigned int wrote_transactionType:1;
+        unsigned int wrote_enableBrandMuidFallback:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDAdamAppIdentifier *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
-@property (nonatomic) BOOL enableBrandMuidFallback; // @synthesize enableBrandMuidFallback=_enableBrandMuidFallback;
+@property (strong, nonatomic) GEOPDAdamAppIdentifier *appIdentifier;
+@property (nonatomic) BOOL enableBrandMuidFallback;
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (nonatomic) BOOL hasEnableBrandMuidFallback;
 @property (readonly, nonatomic) BOOL hasIndustryCategory;
@@ -60,26 +92,40 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasTransactionTimestamp;
 @property (nonatomic) BOOL hasTransactionType;
 @property (readonly, nonatomic) BOOL hasWarsawMerchantIdentifier;
-@property (strong, nonatomic) NSString *industryCategory; // @synthesize industryCategory=_industryCategory;
-@property (nonatomic) long long industryCode; // @synthesize industryCode=_industryCode;
-@property (strong, nonatomic) NSString *merchantCode; // @synthesize merchantCode=_merchantCode;
-@property (strong, nonatomic) GEOPDMerchantInformation *merchantInformation; // @synthesize merchantInformation=_merchantInformation;
-@property (strong, nonatomic) NSString *paymentNetwork; // @synthesize paymentNetwork=_paymentNetwork;
-@property (strong, nonatomic) NSString *rawMerchantCode; // @synthesize rawMerchantCode=_rawMerchantCode;
-@property (strong, nonatomic) NSString *terminalId; // @synthesize terminalId=_terminalId;
-@property (strong, nonatomic) NSString *transactionCurrencyCode; // @synthesize transactionCurrencyCode=_transactionCurrencyCode;
-@property (strong, nonatomic) NSString *transactionId; // @synthesize transactionId=_transactionId;
-@property (strong, nonatomic) GEOLocation *transactionLocation; // @synthesize transactionLocation=_transactionLocation;
-@property (nonatomic) double transactionLocationAge; // @synthesize transactionLocationAge=_transactionLocationAge;
-@property (nonatomic) int transactionStatus; // @synthesize transactionStatus=_transactionStatus;
-@property (nonatomic) double transactionTimestamp; // @synthesize transactionTimestamp=_transactionTimestamp;
-@property (nonatomic) int transactionType; // @synthesize transactionType=_transactionType;
+@property (strong, nonatomic) NSString *industryCategory;
+@property (nonatomic) long long industryCode;
+@property (strong, nonatomic) NSString *merchantCode;
+@property (strong, nonatomic) GEOPDMerchantInformation *merchantInformation;
+@property (strong, nonatomic) NSString *paymentNetwork;
+@property (strong, nonatomic) NSString *rawMerchantCode;
+@property (strong, nonatomic) NSString *terminalId;
+@property (strong, nonatomic) NSString *transactionCurrencyCode;
+@property (strong, nonatomic) NSString *transactionId;
+@property (strong, nonatomic) GEOLocation *transactionLocation;
+@property (nonatomic) double transactionLocationAge;
+@property (nonatomic) int transactionStatus;
+@property (nonatomic) double transactionTimestamp;
+@property (nonatomic) int transactionType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDWarsawMerchantIdentifier *warsawMerchantIdentifier; // @synthesize warsawMerchantIdentifier=_warsawMerchantIdentifier;
+@property (strong, nonatomic) GEOPDWarsawMerchantIdentifier *warsawMerchantIdentifier;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransactionStatus:(id)arg1;
 - (int)StringAsTransactionType:(id)arg1;
+- (void)_readAppIdentifier;
+- (void)_readIndustryCategory;
+- (void)_readMerchantCode;
+- (void)_readMerchantInformation;
+- (void)_readPaymentNetwork;
+- (void)_readRawMerchantCode;
+- (void)_readTerminalId;
+- (void)_readTransactionCurrencyCode;
+- (void)_readTransactionId;
+- (void)_readTransactionLocation;
+- (void)_readWarsawMerchantIdentifier;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -87,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transactionStatusAsString:(int)arg1;
 - (id)transactionTypeAsString:(int)arg1;

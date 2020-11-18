@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)handwritingPointToRect:(struct)arg1;
 - (void)redrawStrokesInRect:(struct CGRect)arg1;
 - (void)updateInkColor;
+- (struct)viewPointFromDataPoint:(struct)arg1;
 
 @end
 

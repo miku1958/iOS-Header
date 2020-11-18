@@ -25,6 +25,7 @@
 + (id)exportPresetForAsset:(id)arg1 preferredPreset:(id)arg2;
 + (int)preferredTimeScale;
 + (id)sharedConfiguration;
++ (id)slowMotionSourceAssetPropertyKeys;
 + (id)timeRangeMapperForSourceDuration:(double)arg1 slowMotionRate:(float)arg2 slowMotionTimeRange:(CDStruct_e83c9415)arg3 forExport:(BOOL)arg4;
 
 @end

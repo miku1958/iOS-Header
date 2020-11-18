@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/MPVolumeControllerDataSource-Protocol.h>
 
-@class NSString;
+@class AVSystemController, NSString;
 @protocol MPVolumeControllerDataSourceDelegate;
 
 @interface MPVolumeControllerSystemDataSource : NSObject <MPVolumeControllerDataSource>
@@ -16,6 +16,7 @@
     BOOL _debugVolumeWarning;
     BOOL _volumeInitialized;
     BOOL _volumeControlCapabilitiesInitialized;
+    AVSystemController *_avSystemController;
     BOOL _volumeControlAvailable;
     BOOL _muted;
     BOOL _volumeWarningEnabled;
@@ -45,8 +46,10 @@
 - (void).cxx_destruct;
 - (void)_EUVolumeLimitDidChange:(id)arg1;
 - (void)_EUVolumeLimitEnforcedDidChange:(id)arg1;
+- (id)_mediaPlaybackVolumeAudioCategory;
 - (void)_mediaServerDiedNotification:(id)arg1;
 - (void)_reloadEUVolumeLimits;
+- (id)_reloadQueue;
 - (void)_routeDidChangeNotification:(id)arg1;
 - (void)_setup;
 - (void)_systemMuteDidChange:(id)arg1;

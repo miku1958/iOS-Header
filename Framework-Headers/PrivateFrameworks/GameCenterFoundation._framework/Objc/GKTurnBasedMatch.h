@@ -44,9 +44,11 @@
 @property (readonly, strong, nonatomic) NSString *matchID; // @dynamic matchID;
 @property (copy, nonatomic) NSString *message;
 @property (readonly, strong, nonatomic) NSArray *participants; // @synthesize participants=_participants;
+@property (readonly, nonatomic) long long platform; // @dynamic platform;
 @property (readonly, nonatomic) GKTurnBasedParticipant *playingWithParticipantOrFirstKnownPlayer;
 @property (readonly, nonatomic) GKTurnBasedParticipant *previousParticipant;
 @property (readonly, nonatomic) GKTurnBasedParticipant *previousParticipantOrFirstKnownPlayer;
+@property (strong, nonatomic) NSString *shortBundleVersion; // @dynamic shortBundleVersion;
 @property (readonly, nonatomic) GKPlayer *showcasePlayer;
 @property (nonatomic) unsigned int state; // @synthesize state=_state;
 @property (readonly, nonatomic) long long status; // @dynamic status;

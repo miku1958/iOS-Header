@@ -20,6 +20,7 @@
 @interface PKPaymentSetupPurchaseViewController : UIViewController <PKPaymentSetupPurchaseAmountViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentSetupViewControllerDelegate, RemoteUIControllerDelegate, PKPaymentSetupDelegate, PKViewControllerPreflightable>
 {
     BOOL _snapshotNeedsCorners;
+    unsigned char _visibility;
     BOOL _fieldsVerified;
     BOOL _acceptedTerms;
     PKPaymentSetupProduct *_product;
@@ -87,8 +88,10 @@
 - (void)transferBalanceFromExistingCard;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

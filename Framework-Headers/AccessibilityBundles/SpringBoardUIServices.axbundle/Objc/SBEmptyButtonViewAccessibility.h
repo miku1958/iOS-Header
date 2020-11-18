@@ -12,7 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsScannerElement;
+- (BOOL)accessibilityRespondsToUserInteraction;
 
 @end
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ClassKit/CLSClientCancalable-Protocol.h>
+#import <ClassKit/CLSClientCancelable-Protocol.h>
 
-@protocol CLSClientRemoteObject <CLSClientCancalable>
+@protocol CLSClientRemoteObject <CLSClientCancelable>
 - (oneway void)clientRemote_deliverObject:(id)arg1;
 @end
 

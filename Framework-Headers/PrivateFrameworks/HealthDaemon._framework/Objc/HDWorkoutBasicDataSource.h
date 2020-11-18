@@ -11,12 +11,12 @@
 #import <HealthDaemon/HDWorkoutDataSource-Protocol.h>
 #import <HealthDaemon/HKDataFlowLinkProcessor-Protocol.h>
 
-@class HDClientDataCollectionObservationStateMonitor, HDDataCollectionAssertion, HDProfile, HDXPCClient, HKDataFlowLink, HKWorkoutConfiguration, NSLock, NSSet, NSString, NSUUID;
+@class HDClientDataCollectionObservationStateMonitor, HDDataCollectionAssertion, HDHealthStoreClient, HDProfile, HKDataFlowLink, HKWorkoutConfiguration, NSLock, NSSet, NSString, NSUUID;
 
 @interface HDWorkoutBasicDataSource : NSObject <HDDataObserver, HKDataFlowLinkProcessor, HDClientDataCollectionObservationStateMonitorDelegate, HDWorkoutDataSource>
 {
     HDProfile *_profile;
-    HDXPCClient *_client;
+    HDHealthStoreClient *_client;
     NSLock *_lock;
     HKDataFlowLink *_workoutDataFlowLink;
     NSUUID *_workoutDataProcessorUUID;
@@ -44,7 +44,7 @@
 - (void)_stopObservingSampleTypes:(id)arg1;
 - (void)dataCollectionObservationStateDidChangeForClient:(id)arg1;
 - (void)dealloc;
-- (id)initWithProfile:(id)arg1 workoutConfiguration:(id)arg2 client:(id)arg3;
+- (id)initWithConfiguration:(id)arg1 client:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesJournaled:(id)arg1 type:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;

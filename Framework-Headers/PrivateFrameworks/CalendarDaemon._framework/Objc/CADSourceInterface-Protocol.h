@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CADObjectID;
+@class CADObjectID, CalGrantedDelegate, NSArray, NSDate;
 
 @protocol CADSourceInterface
 - (void)CADCountCalendarItemsOfType:(int)arg1 inSource:(CADObjectID *)arg2 reply:(void (^)(int, unsigned long long))arg3;
+- (void)CADDatabaseGetLocalBirthdaySource:(void (^)(int, CADObjectID *))arg1;
 - (void)CADDatabaseGetLocalSource:(void (^)(int, CADObjectID *))arg1;
-- (void)CADDatabaseGetSources:(void (^)(int, NSArray *))arg1;
-- (void)CADSourceGetConstraints:(CADObjectID *)arg1 reply:(void (^)(int, int, int, unsigned long long))arg2;
+- (void)CADDatabaseGetSourcesWithFaultedProperties:(NSArray *)arg1 reply:(void (^)(int, NSArray *, NSArray *))arg2;
+- (void)CADRemoveCalendarItemsOlderThanDate:(NSDate *)arg1 ofType:(int)arg2 inSource:(CADObjectID *)arg3 reply:(void (^)(int))arg4;
+- (void)CADSourceGetConstraints:(CADObjectID *)arg1 reply:(void (^)(int, NSData *))arg2;
+- (void)CADSourceGetGrantedDelegatesList:(CADObjectID *)arg1 reply:(void (^)(int, NSArray *))arg2;
 - (void)CADSourceGetManagedConfigurationAccountAccess:(CADObjectID *)arg1 reply:(void (^)(int, int))arg2;
+- (void)CADSourceGetNotificationCollection:(CADObjectID *)arg1 reply:(void (^)(int, CADObjectID *))arg2;
 - (void)CADSourceRefresh:(CADObjectID *)arg1 isUserRequested:(BOOL)arg2 reply:(void (^)(int, BOOL))arg3;
+- (void)CADSourceUpdateGrantedDelegatePermission:(CalGrantedDelegate *)arg1 sourceID:(CADObjectID *)arg2 reply:(void (^)(int))arg3;
 @end
 

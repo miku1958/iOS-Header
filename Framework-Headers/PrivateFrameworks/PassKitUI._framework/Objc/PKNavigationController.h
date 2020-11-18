@@ -12,11 +12,8 @@
 
 @interface PKNavigationController : UINavigationController <UINavigationControllerDelegate>
 {
-    UIColor *_barBackgroundColor;
-    long long _shadowStyle;
     BOOL _hasExplicitlyDefinedSupportedInterfaceOrientations;
     unsigned long long _explicitlyDefinedSupportedInterfaceOrientations;
-    double _navigationBarOpacity;
     UIView *_backgroundView;
     UIImageView *_wallpaperView;
     UIVisualEffectView *_blurView;
@@ -30,13 +27,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_applyShadowStyleForViewController:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_updateBarAppearanceForViewController:(id)arg1;
 - (void)_updateWithWallpaperImage:(id)arg1;
-- (id)childViewControllerForStatusBarStyle;
 - (void)dealloc;
-- (id)initWithBarBackgroundColor:(id)arg1 barShadowStyle:(long long)arg2;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithRootViewController:(id)arg1;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)setNeedsNavigationBarUpdate;

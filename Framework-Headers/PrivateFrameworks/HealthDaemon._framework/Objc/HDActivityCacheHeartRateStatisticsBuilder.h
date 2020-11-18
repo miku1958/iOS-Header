@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKHeartRateSummary, HKHeartRateSummaryStatistics, HKQuantity, NSDateInterval, NSMutableArray, NSMutableDictionary;
+@class HKHeartRateSummary, HKHeartRateSummaryStatistics, HKQuantity, NSDateComponents, NSDateInterval, NSMutableArray, NSMutableDictionary;
 
 @interface HDActivityCacheHeartRateStatisticsBuilder : NSObject
 {
@@ -24,13 +24,14 @@
     NSMutableDictionary *_recoveryReadingsByWorkoutUUID;
     NSMutableDictionary *_breatheSessionReadingsBySessionUUID;
     NSMutableDictionary *_breatheSessionDateIntervalBySessionUUID;
+    NSDateComponents *_dateOfBirthComponents;
 }
 
 @property (readonly, nonatomic) HKHeartRateSummary *heartRateSummary;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_addBeatsPerMinute:(double)arg1 time:(double)arg2 toSessionStatistics:(id)arg3;
+- (void)_addBeatsPerSecond:(double)arg1 time:(double)arg2 toSessionStatistics:(id)arg3;
 - (void)_addHeartRateSamples:(const vector_8ece868d *)arg1 toStatistics:(id)arg2;
 - (void)_addHeartRateSamplesToAllStatistics:(const vector_8ece868d *)arg1;
 - (void)_addHeartRateStatisticsForNewWorkouts:(const vector_89c96404 *)arg1;
@@ -48,6 +49,7 @@
 - (id)heartRateDateInterval;
 - (id)initWithDateInterval:(id)arg1 activityCacheIndex:(long long)arg2;
 - (id)restingHeartRate;
+- (void)setDateOfBirthComponents:(id)arg1;
 - (id)walkingAverageHeartRate;
 
 @end

@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class BKSProcessAssertion;
+@class BKSProcessAssertion, EFProcessTransaction;
 @protocol OS_dispatch_source;
 
 @interface MFTaskAssertion : NSObject
 {
+    EFProcessTransaction *_transaction;
     BKSProcessAssertion *_assertion;
     NSObject<OS_dispatch_source> *_timer;
 }
 
++ (id)log;
+- (void).cxx_destruct;
 - (void)cancelTimer;
 - (void)dealloc;
 - (id)initWithName:(id)arg1;

@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUActivity.h>
+#import <PhotosUICore/PXActivity.h>
 
 #import <PhotosUI/PUPhotoStreamComposeServiceDelegate-Protocol.h>
 #import <PhotosUI/PUVideoTrimQueueControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, PUActivityItemSourceController, PUPhotoStreamComposeServiceViewController, PUVideoTrimQueueController, UIViewController;
-@protocol PLUserEditableAlbumProtocol, PUAlbumStreamActivityDelegate;
+@class NSObject, NSString, PUPhotoStreamComposeServiceViewController, PUVideoTrimQueueController, UIViewController;
+@protocol PLUserEditableAlbumProtocol, PUAlbumStreamActivityDelegate, PXActivityItemSourceController;
 
 __attribute__((visibility("hidden")))
-@interface PUAlbumStreamActivity : PUActivity <PUPhotoStreamComposeServiceDelegate, PUVideoTrimQueueControllerDelegate>
+@interface PUAlbumStreamActivity : PXActivity <PUPhotoStreamComposeServiceDelegate, PUVideoTrimQueueControllerDelegate>
 {
     PUPhotoStreamComposeServiceViewController *_streamComposeVc;
     double _startTime;
@@ -23,14 +23,14 @@ __attribute__((visibility("hidden")))
     PUVideoTrimQueueController *_trimController;
     BOOL _isPresentedFromActivityViewController;
     BOOL _destinationAlbumWasCreated;
-    PUActivityItemSourceController *_itemSourceController;
+    id<PXActivityItemSourceController> _itemSourceController;
     NSObject<PLUserEditableAlbumProtocol> *_destinationStreamingAlbum;
     UIViewController *_referenceViewController;
-    id<PUAlbumStreamActivityDelegate> _delegate;
+    id<PUAlbumStreamActivityDelegate> _albumStreamDelegate;
 }
 
+@property (weak, nonatomic) id<PUAlbumStreamActivityDelegate> albumStreamDelegate; // @synthesize albumStreamDelegate=_albumStreamDelegate;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PUAlbumStreamActivityDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property BOOL destinationAlbumWasCreated; // @synthesize destinationAlbumWasCreated=_destinationAlbumWasCreated;
 @property (strong, nonatomic) NSObject<PLUserEditableAlbumProtocol> *destinationStreamingAlbum; // @synthesize destinationStreamingAlbum=_destinationStreamingAlbum;
@@ -39,18 +39,21 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIViewController *referenceViewController; // @synthesize referenceViewController=_referenceViewController;
 @property (readonly) Class superclass;
 
++ (void)_recordRecentInvitationRecipient:(id)arg1 displayName:(id)arg2 date:(id)arg3;
 + (long long)activityCategory;
++ (id)customExportsOutputDirectoryForAsset:(id)arg1;
++ (id)customExportsOutputDirectoryParent;
 - (void).cxx_destruct;
 - (id)_activityBundleImageConfiguration;
-- (id)_activitySettingsBundleImageConfiguration;
 - (void)_createStreamsPickerContainerWithExisting:(BOOL)arg1;
 - (void)_handleDismissWithSuccess:(BOOL)arg1;
 - (void)_performPresentationOnViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_prepareToPost:(id)arg1 albumName:(id)arg2 recipients:(id)arg3 comments:(id)arg4;
 - (BOOL)_presentActivityOnViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_publishAssets:(id)arg1 withSharingInfos:(id)arg2 andTrimmedVideoPathInfo:(id)arg3 toAlbum:(id)arg4 orCreateWithName:(id)arg5 comment:(id)arg6 invitationRecipients:(id)arg7 wantsPublicWebsite:(BOOL)arg8 completion:(CDUnknownBlockType)arg9;
+- (void)_publishAssets:(id)arg1 withSharingInfos:(id)arg2 customExportsInfo:(id)arg3 andTrimmedVideoPathInfo:(id)arg4 toAlbum:(id)arg5 orCreateWithName:(id)arg6 comment:(id)arg7 invitationRecipients:(id)arg8 wantsPublicWebsite:(BOOL)arg9 completion:(CDUnknownBlockType)arg10;
 - (id)_selectedVideo;
 - (BOOL)_sharedAlbumAllowsAdding:(struct NSObject *)arg1;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;

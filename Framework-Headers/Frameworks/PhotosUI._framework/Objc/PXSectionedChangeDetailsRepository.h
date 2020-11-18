@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)addChangeDetails:(id)arg1;
 - (id)changeDetailsFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
+- (id)coalescedChangeDetailsFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithChangeHistoryLimit:(long long)arg1;
 

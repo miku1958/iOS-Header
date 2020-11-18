@@ -6,39 +6,49 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/EMAccount-Protocol.h>
-#import <Message/MFPubliclyDescribable-Protocol.h>
+#import <Message/ECAuthenticatableAccount-Protocol.h>
+#import <Message/EDAccount-Protocol.h>
+#import <Message/EFPubliclyDescribable-Protocol.h>
 
-@class ACAccount, NSDictionary, NSMutableDictionary, NSString;
+@class ACAccount, ECAccount, ECAuthenticationScheme, NSArray, NSDictionary, NSMutableDictionary, NSString;
 
-@interface MFAccount : NSObject <EMAccount, MFPubliclyDescribable>
+@interface MFAccount : NSObject <EDAccount, ECAuthenticatableAccount, EFPubliclyDescribable>
 {
     ACAccount *_persistentAccount;
     struct os_unfair_lock_s _persistentAccountLock;
     NSMutableDictionary *_unsavedAccountProperties;
+    NSArray *emailAddressStrings;
+    ECAccount *_baseAccount;
     NSString *_sourceApplicationBundleIdentifier;
 }
 
 @property (readonly) ACAccount *accountForRenewingCredentials;
+@property (readonly, nonatomic) ECAccount *baseAccount; // @synthesize baseAccount=_baseAccount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *displayName;
+@property (strong, nonatomic) NSString *domain;
+@property (readonly, copy, nonatomic) NSString *ef_publicDescription;
+@property (readonly, copy, nonatomic) NSArray *emailAddressStrings; // @synthesize emailAddressStrings;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *hostname;
 @property (readonly, copy) NSString *identifier;
 @property (readonly, nonatomic, getter=isManaged) BOOL managed;
 @property (readonly) NSString *managedTag;
-@property (readonly, copy, nonatomic) NSString *mf_publicDescription;
+@property (readonly, strong, nonatomic) NSString *oauth2Token;
 @property (readonly) ACAccount *parentAccount;
 @property (readonly) NSString *parentAccountIdentifier;
 @property (copy, nonatomic) NSString *password;
 @property (readonly) ACAccount *persistentAccount;
+@property (strong, nonatomic) ECAuthenticationScheme *preferredAuthScheme;
 @property (readonly) NSDictionary *properties;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *statisticsKind;
 @property (readonly) Class superclass;
 @property (readonly) NSString *syncStoreIdentifier;
+@property (readonly, copy, nonatomic) ACAccount *systemAccount;
 @property (readonly) NSString *type;
-@property (readonly) NSString *uniqueId;
+@property (readonly) NSString *uniqueID;
 @property (strong) NSString *username;
 
 + (id)_accountClass;
@@ -65,11 +75,13 @@
 + (id)newAccountWithDictionary:(id)arg1;
 + (id)predefinedValueForKey:(id)arg1;
 + (id)propertiesWhichRequireValidation;
++ (id)releaseAllConnectionsScheduler;
 + (id)saslProfileName;
 + (void)setShouldHealAccounts:(BOOL)arg1;
 + (BOOL)shouldHealAccounts;
 + (id)supportedDataclasses;
 + (BOOL)usesSSL;
+- (void).cxx_destruct;
 - (BOOL)_boolForAccountInfoKey:(id)arg1 defaultValue:(BOOL)arg2;
 - (BOOL)_connectAndAuthenticate:(id)arg1;
 - (id)_credential;
@@ -100,14 +112,10 @@
 - (id)copyDiagnosticInformation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)credentialAccessibility;
-- (id)credentialItemForKey:(id)arg1;
-- (id)credentialItemForKey:(id)arg1 error:(id *)arg2;
 - (id)customDescriptionForError:(id)arg1 authScheme:(id)arg2 defaultDescription:(id)arg3;
-- (void)dealloc;
 - (id)defaultConnectionSettings;
 - (unsigned int)defaultPortNumber;
 - (unsigned int)defaultSecurePortNumber;
-- (id)domain;
 - (BOOL)enableAccount;
 - (id)enabledDataclasses;
 - (BOOL)fetchTokensIfNecessary:(id *)arg1;
@@ -125,10 +133,8 @@
 - (id)missingPasswordErrorWithTitle:(id)arg1;
 - (id)nameForMailboxUid:(id)arg1;
 - (id)networkAccountIdentifier;
-- (id)oauth2Token;
 - (void)persistentAccountDidChange:(id)arg1 previousAccount:(id)arg2;
 - (unsigned int)portNumber;
-- (id)preferredAuthScheme;
 - (BOOL)promptUserForPasswordWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)promptUserForWebLoginWithURL:(id)arg1 shouldConfirm:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)releaseAllConnections;
@@ -146,13 +152,10 @@
 - (void)setAccountProperty:(id)arg1 forKey:(id)arg2;
 - (void)setActive:(BOOL)arg1;
 - (void)setClientCertificates:(id)arg1;
-- (void)setCredentialItem:(id)arg1 forKey:(id)arg2;
-- (BOOL)setCredentialItem:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
-- (void)setDomain:(id)arg1;
-- (BOOL)setOAuth2Token:(id)arg1 refreshToken:(id)arg2 error:(id *)arg3;
+- (void)setMissingPasswordError;
+- (void)setOAuth2Token:(id)arg1 refreshToken:(id)arg2;
 - (void)setPersistentAccount:(id)arg1;
 - (void)setPortNumber:(unsigned int)arg1;
-- (void)setPreferredAuthScheme:(id)arg1;
 - (void)setTryDirectSSL:(BOOL)arg1;
 - (void)setUsesSSL:(BOOL)arg1;
 - (void)setValueInAccountProperties:(id)arg1 forKey:(id)arg2;
@@ -160,7 +163,6 @@
 - (BOOL)shouldEnableAfterError:(id)arg1;
 - (BOOL)shouldFetchACEDBInfoForError:(id)arg1;
 - (BOOL)supportsMailDrop;
-- (id)systemAccount;
 - (BOOL)usesSSL;
 - (id)valueInAccountPropertiesForKey:(id)arg1;
 

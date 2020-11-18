@@ -15,9 +15,9 @@
     MISSING_TYPE *hostName;
 }
 
-@property (nonatomic, readonly) NSString *authToken; // @synthesize authToken;
-@property (nonatomic, readonly) NSString *hostName; // @synthesize hostName;
-@property (nonatomic, readonly) NSString *personId; // @synthesize personId;
+@property (nonatomic, readonly) NSString *authToken;
+@property (nonatomic, readonly) NSString *hostName;
+@property (nonatomic, readonly) NSString *personId;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

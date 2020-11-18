@@ -21,9 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)defaultAlwaysAllowBundleIDs;
 - (id)init;
-- (id)initWithActivation:(id)arg1;
 - (id)initWithBlueprint:(id)arg1;
 
 @end

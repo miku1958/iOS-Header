@@ -17,6 +17,11 @@
 - (BOOL)_accessibilityScrollAcrossPageBoundaries;
 - (id)_accessibilitySortedElementsWithin;
 - (long long)_axCompareView:(id)arg1 toView:(id)arg2;
+- (id)_axPXGScrollViewElements;
+- (void)_axSetPXGScrollViewElements:(id)arg1;
+- (void)_setAXPXGScrollViewElements:(id)arg1;
+- (id)accessibilityElements;
+- (id)ax_filterObjects:(id)arg1;
 - (BOOL)isAccessibilityOpaqueElementProvider;
 
 @end

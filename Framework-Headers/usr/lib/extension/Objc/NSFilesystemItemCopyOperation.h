@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldProceedAfterErrno:(int)arg1 copyingItemAtPath:(const char *)arg2 toPath:(const char *)arg3;
 - (BOOL)_validatePaths:(id *)arg1;
 - (void)dealloc;
-- (void)initWithSourcePath:(id)arg1 destinationPath:(id)arg2 options:(unsigned long long)arg3;
+- (id)initWithSourcePath:(id)arg1 destinationPath:(id)arg2 options:(unsigned long long)arg3;
 - (BOOL)shouldCopyItemAtPath:(id)arg1 toPath:(id)arg2;
 - (BOOL)shouldProceedAfterError:(id)arg1 copyingItemAtPath:(id)arg2 toPath:(id)arg3;
 

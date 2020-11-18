@@ -10,7 +10,9 @@
 @protocol GEOMapItem;
 
 @protocol MSPHistoryEntryPlaceDisplay <MSPHistoryEntry>
-- (id<GEOMapItem>)geoMapItem;
-- (NSUUID *)supersededSearchStorageIdentifier;
+
+@property (readonly, nonatomic) id<GEOMapItem> geoMapItem;
+@property (readonly, copy, nonatomic) NSUUID *supersededSearchStorageIdentifier;
+
 @end
 

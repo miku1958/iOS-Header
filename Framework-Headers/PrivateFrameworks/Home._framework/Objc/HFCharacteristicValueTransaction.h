@@ -16,7 +16,9 @@
     NSMutableSet *_characteristicsToRead;
     NSMutableSet *_writeCharacteristicRequests;
     NSMutableSet *_actionSetsToExecute;
+    NSMutableSet *_actionsToExecute;
     NSDictionary *_actionSetErrorsKeyedByUUID;
+    NSError *_actionsError;
     NSError *_overallReadError;
     NSError *_overallWriteError;
     NSMutableDictionary *_readFuturesKeyedByCharacteristicIdentifier;
@@ -29,6 +31,8 @@
 
 @property (strong, nonatomic) NSDictionary *actionSetErrorsKeyedByUUID; // @synthesize actionSetErrorsKeyedByUUID=_actionSetErrorsKeyedByUUID;
 @property (strong, nonatomic) NSMutableSet *actionSetsToExecute; // @synthesize actionSetsToExecute=_actionSetsToExecute;
+@property (strong, nonatomic) NSError *actionsError; // @synthesize actionsError=_actionsError;
+@property (strong, nonatomic) NSMutableSet *actionsToExecute; // @synthesize actionsToExecute=_actionsToExecute;
 @property (strong, nonatomic) NSMutableSet *characteristicsToRead; // @synthesize characteristicsToRead=_characteristicsToRead;
 @property (strong, nonatomic) NSMutableArray *clientReasonsStack; // @synthesize clientReasonsStack=_clientReasonsStack;
 @property (strong, nonatomic) NAFuture *commitFuture; // @synthesize commitFuture=_commitFuture;

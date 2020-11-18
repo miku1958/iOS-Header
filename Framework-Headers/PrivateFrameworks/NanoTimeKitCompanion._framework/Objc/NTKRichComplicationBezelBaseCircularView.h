@@ -6,9 +6,11 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationBezelView.h>
 
+#import <NanoTimeKitCompanion/NTKRichComplicationCircularBezelView-Protocol.h>
+
 @class NTKCurvedColoringLabel, NTKRichComplicationView;
 
-@interface NTKRichComplicationBezelBaseCircularView : NTKRichComplicationBezelView
+@interface NTKRichComplicationBezelBaseCircularView : NTKRichComplicationBezelView <NTKRichComplicationCircularBezelView>
 {
     NTKRichComplicationView *_circularView;
     double _circularViewRotationInDegree;
@@ -21,13 +23,14 @@
     long long _fromTheme;
     long long _toTheme;
     double _themeFraction;
+    BOOL _inMonochromeMode;
     double _bezelLabelCircularRadius;
 }
 
 @property (nonatomic) double bezelLabelCircularRadius; // @synthesize bezelLabelCircularRadius=_bezelLabelCircularRadius;
 @property (readonly, nonatomic) NTKRichComplicationView *circularView; // @synthesize circularView=_circularView;
 
-+ (void)startDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 bezelTextUpdateHandler:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
++ (void)updateCustomDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 animationType:(unsigned long long)arg4 animationDuration:(double)arg5 animationFraction:(float)arg6 bezelTextUpdateHandler:(CDUnknownBlockType)arg7;
 - (void).cxx_destruct;
 - (void)_applyPausedUpdate;
 - (id)_bezelTextProviderFromTemplate:(id)arg1;
@@ -35,21 +38,25 @@
 - (Class)_circularViewClassFromFromTemplate:(id)arg1;
 - (void)_createBezelLabel;
 - (void)_editingDidEnd;
+- (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)_layoutBezelLabel;
 - (void)_layoutCircularView;
 - (void)_setEditingTransitionFraction:(double)arg1 direction:(long long)arg2 position:(long long)arg3 type:(long long)arg4;
 - (void)_setWhistlerAnalogEditingTransitonFraction:(double)arg1 direction:(long long)arg2 position:(long long)arg3;
-- (void)_startNewDataAnimationWithDuration:(double)arg1 finalAlpha:(double)arg2 finalBezelLabelScale:(double)arg3 finalCircularViewScale:(double)arg4 isEarlierView:(BOOL)arg5 isForward:(BOOL)arg6 animationApplierBlock:(CDUnknownBlockType)arg7 completionBlock:(CDUnknownBlockType)arg8;
 - (void)_transitThemeFromTheme:(long long)arg1 toTheme:(long long)arg2 fraction:(double)arg3;
 - (void)_transitToHighlightState:(BOOL)arg1 fraction:(double)arg2;
-- (void)_updateBackgroundColor:(id)arg1;
+- (void)_updateNewDataAnimationFinalAlpha:(double)arg1 finalBezelLabelScale:(double)arg2 finalCircularViewScale:(double)arg3 animationApplierBlock:(CDUnknownBlockType)arg4 animationFraction:(float)arg5;
 - (struct CGPoint)circularViewCenter;
 - (id)description;
 - (id)init;
 - (void)layoutSubviews;
-- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
-- (void)setPlatterTextColor:(id)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
+- (void)setBezelTextColor:(id)arg1;
+- (void)setForegroundColor:(id)arg1;
+- (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

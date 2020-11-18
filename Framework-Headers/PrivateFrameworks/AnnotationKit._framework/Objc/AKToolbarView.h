@@ -10,31 +10,27 @@
 #import <AnnotationKit/AKSignatureCreationControllerDelegate-Protocol.h>
 #import <AnnotationKit/AKSignaturesViewControllerDelegate-Protocol.h>
 #import <AnnotationKit/AKToolsListViewControllerDelegate-Protocol.h>
-#import <AnnotationKit/PKInlineColorPickerDelegate-Protocol.h>
-#import <AnnotationKit/PKInlineInkPickerDelegate-Protocol.h>
+#import <AnnotationKit/PKPaletteViewAnnotationDelegate-Protocol.h>
+#import <AnnotationKit/PKPaletteViewPrivateDelegate-Protocol.h>
 #import <AnnotationKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AKAttributePickerViewController, AKController, AKSignatureCreationViewController_iOS, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKToolbarBackgroundView, AKToolsListViewController, NSLayoutConstraint, NSString, PKInlineColorPicker, PKInlineInkPicker, UIAlertController, UIBarButtonItem, UIToolbar;
+@class AKAttributePickerViewController, AKController, AKSignatureCreationViewController_iOS, AKSignaturesViewController_iOS, AKTextAttributesViewController, AKToolbarBackgroundView, AKToolsListViewController, NSLayoutConstraint, NSString, PKPaletteHostView, PKPaletteView, PKToolPicker, UIAlertController, UIBarButtonItem, UIButton, UIToolbar;
+@protocol AKToolbarViewOpacityEditingDelegate;
 
-@interface AKToolbarView : UIView <PKInlineInkPickerDelegate, PKInlineColorPickerDelegate, AKToolsListViewControllerDelegate, AKAttributePickerViewControllerDelegate, AKSignaturesViewControllerDelegate, AKSignatureCreationControllerDelegate, UIPopoverPresentationControllerDelegate>
+@interface AKToolbarView : UIView <AKToolsListViewControllerDelegate, AKAttributePickerViewControllerDelegate, AKSignaturesViewControllerDelegate, AKSignatureCreationControllerDelegate, UIPopoverPresentationControllerDelegate, PKPaletteViewAnnotationDelegate, PKPaletteViewPrivateDelegate>
 {
     UIToolbar *_toolbar;
-    PKInlineInkPicker *_pencilTools;
-    PKInlineColorPicker *_compactColorPicker;
     AKToolbarBackgroundView *_backgroundView;
+    PKPaletteHostView *_paletteHostView;
+    PKPaletteView *_paletteView;
     UIBarButtonItem *_undoButton;
     UIBarButtonItem *_redoButton;
     UIBarButtonItem *_shareButton;
     UIBarButtonItem *_shapesPickerButton;
-    UIBarButtonItem *_attributesPickerButton;
-    UIBarButtonItem *_currentColorButton;
+    UIBarButtonItem *_attributesPickerBarButton;
     UIBarButtonItem *_undoRedoFixedSpace;
     UIBarButtonItem *_attributesAddShapeFixedSpace;
     NSLayoutConstraint *_toolbarBottomConstraint;
-    NSLayoutConstraint *_pencilToolsBottomConstraint;
-    NSLayoutConstraint *_pencilToolsWidthConstraint;
-    NSLayoutConstraint *_colorPickerBottomConstraint;
-    NSLayoutConstraint *_colorPickerWidthConstraint;
     NSLayoutConstraint *_heightConstraint;
     UIAlertController *_signaturesAlertController;
     UIAlertController *_undoAlertController;
@@ -44,15 +40,21 @@
     AKToolsListViewController *_toolsListViewController;
     AKAttributePickerViewController *_attributePickerViewController;
     BOOL _showAttributePicker;
-    BOOL _expandCompactColorPicker;
     BOOL _shouldUseCachedSafeAreaInsets;
     struct UIEdgeInsets _cachedSafeAreaInsets;
+    UIButton *_attributesPickerButton;
+    NSLayoutConstraint *_attributesPickerButtonWidthConstraint;
+    NSLayoutConstraint *_attributesPickerButtonHeigthConstraint;
+    PKToolPicker *_toolPicker;
+    BOOL _supportsOpacityEditing;
     BOOL _undoRedoButtonsHidden;
     BOOL _alwaysShowUndoButton;
     BOOL _shareButtonHidden;
     BOOL _translucent;
     BOOL _contentsHidden;
+    BOOL _wantsClearBackgroundColorInCompactSize;
     AKController *_annotationController;
+    id<AKToolbarViewOpacityEditingDelegate> _opacityEditingDelegate;
 }
 
 @property (nonatomic) BOOL alwaysShowUndoButton; // @synthesize alwaysShowUndoButton=_alwaysShowUndoButton;
@@ -61,12 +63,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<AKToolbarViewOpacityEditingDelegate> opacityEditingDelegate; // @synthesize opacityEditingDelegate=_opacityEditingDelegate;
 @property (nonatomic) SEL shareButtonAction;
 @property (nonatomic, getter=isShareButtonHidden) BOOL shareButtonHidden; // @synthesize shareButtonHidden=_shareButtonHidden;
 @property (nonatomic) id shareButtonTarget;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsOpacityEditing;
 @property (nonatomic, getter=isTranslucent) BOOL translucent; // @synthesize translucent=_translucent;
 @property (nonatomic) BOOL undoRedoButtonsHidden; // @synthesize undoRedoButtonsHidden=_undoRedoButtonsHidden;
+@property (readonly, nonatomic) BOOL useNewFullscreenPalette;
+@property (nonatomic) BOOL wantsClearBackgroundColorInCompactSize; // @synthesize wantsClearBackgroundColorInCompactSize=_wantsClearBackgroundColorInCompactSize;
 
 + (id)redoButtonImage;
 + (id)redoButtonImageWithStyle:(unsigned long long)arg1;
@@ -76,42 +82,62 @@
 - (void)_annotationSelectionNotification:(id)arg1;
 - (void)_cleanupAfterUndoAlert;
 - (void)_dismissCurrentlyPresentedPopoverAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_inkPicker:(id)arg1 didPickColor:(id)arg2;
+- (void)_forceToolPickerVisible:(BOOL)arg1;
+- (void)_installAttributesPickerButtonInPaletteContextEditingViewIfNeeded;
 - (void)_presentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_redo:(id)arg1;
 - (struct UIEdgeInsets)_safeAreaInsetsWithCachingIfNeeded;
 - (void)_saveCachedSafeAreaInsets;
 - (void)_setPopoverPresentationSource:(id)arg1 fromSender:(id)arg2;
+- (void)_setPopoverPresentationSource:(id)arg1 fromSender:(id)arg2 sourceRect:(struct CGRect)arg3;
+- (BOOL)_setToolPickerVisible:(BOOL)arg1 forResponder:(id)arg2;
+- (void)_setupPaletteViewIfNecessary;
 - (void)_shouldUseCachedSafeAreaInsets:(BOOL)arg1;
 - (void)_showColorPicker:(id)arg1;
 - (void)_showMarkupToolsPopover:(id)arg1;
 - (void)_showShapeAttributes:(id)arg1;
 - (void)_showShapeAttributesPopover:(id)arg1;
 - (void)_showShapesPicker:(id)arg1;
-- (void)_showSignaturesPopover:(id)arg1;
+- (void)_showSignaturesPopover:(id)arg1 fromSourceView:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (void)_showTextAttributes:(id)arg1;
 - (void)_showTextStylePopover:(id)arg1;
 - (void)_showUndoAlertPopover:(id)arg1;
+- (void)_textEffectsWindowIsHosted:(id)arg1;
 - (void)_undo:(id)arg1;
 - (void)_undoAll:(id)arg1;
 - (void)_undoLongPress:(id)arg1;
 - (void)_undoManagerNotification:(id)arg1;
+- (void)_updateAttributeControllerInk:(id)arg1;
+- (void)_updateAttributesPickerButtonWithCurrentSelection:(id)arg1;
+- (void)_updatePalette;
+- (void)_updateTraitCollectionForViewController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)attributePicker:(id)arg1 didSelectToolWithTag:(long long)arg2 attributeTag:(long long)arg3;
-- (void)colorPickerDidSelectColor:(id)arg1 colorChanged:(BOOL)arg2;
 - (id)createUndoViewController;
 - (void)dealloc;
+- (void)didDismissPopover;
+- (void)didMoveToWindow;
+- (void)dismissPalettePopoverWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissPresentedPopovers;
+- (void)endOpacityEditing;
+- (struct CGRect)frameObscuredInView:(id)arg1;
+- (void)hideModernToolbarView;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)inkPicker;
-- (void)inlineInkPicker:(id)arg1 didSelectColor:(id)arg2;
-- (void)inlineInkPicker:(id)arg1 didSelectTool:(id)arg2;
-- (BOOL)inlineInkPickerShouldChangeToolColorForSelectedColor:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isPresentingPopover;
 - (BOOL)isPresentingPopovers;
 - (unsigned long long)layoutForSize:(struct CGSize)arg1;
 - (void)layoutSubviews;
+- (BOOL)paletteView:(id)arg1 shouldSetSelectedToolColor:(id)arg2;
+- (void)paletteViewDidChangePosition:(id)arg1;
+- (void)paletteViewDidSelectOpacityOption:(id)arg1;
+- (void)paletteViewDidSelectPlusButton:(id)arg1;
+- (void)paletteViewDidToggleRuler:(id)arg1;
+- (id)paletteViewSelectedAnnotationColor:(id)arg1;
+- (void)paletteViewSelectedToolInkDidChange:(id)arg1;
+- (id)paletteViewUndoManager:(id)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(id)arg1;
@@ -120,11 +146,15 @@
 - (void)resetToLastDrawingTool;
 - (void)revalidateItems;
 - (id)selectedAnnotations;
+- (void)setAlpha:(double)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBackgroundImage:(id)arg1 forToolbarPosition:(long long)arg2 barMetrics:(long long)arg3;
 - (void)setContentsHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setHidden:(BOOL)arg1;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setShadowImage:(id)arg1 forToolbarPosition:(long long)arg2;
+- (BOOL)setToolPickerVisible:(BOOL)arg1 forFirstResponder:(id)arg2;
+- (BOOL)shouldHide;
 - (BOOL)shouldUseCompactHeight;
 - (BOOL)shouldUseCompactWidth;
 - (void)signatureCreationControllerDidCreateSignature:(id)arg1;
@@ -133,11 +163,12 @@
 - (void)signaturesViewControllerDidCancel:(id)arg1;
 - (void)signaturesViewControllerDidSelectSignature:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (long long)tagForPKPaletteAnnotationType:(long long)arg1;
 - (void)toolsList:(id)arg1 didSelectToolWithTag:(long long)arg2;
+- (void)toolsListDidSelectOpacityItem:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)upateAttributesPickerButtonWithCurrentSelection:(id)arg1;
-- (id)viewControllerForPopoverPresentationFromColorPicker:(id)arg1;
-- (id)viewControllerForPopoverPresentationFromInlineInkPicker:(id)arg1;
+- (void)updateConstraints;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

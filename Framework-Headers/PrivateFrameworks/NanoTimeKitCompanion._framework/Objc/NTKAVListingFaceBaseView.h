@@ -40,17 +40,18 @@
 - (void)_applyDataMode;
 - (void)_applyFrozen;
 - (void)_applySlow;
-- (void)_backlightWillTurnOff;
+- (void)_cancelAllTasks;
 - (void)_cancelDelayedPlayback;
 - (void)_cancelPauseLockout;
 - (BOOL)_changeCurrentListing;
 - (void)_cleanupAfterOrb:(BOOL)arg1;
-- (void)_complicationFlickerWorkgroundAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
+- (id)_complicationFlickerWorkgroundAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
 - (id)_curtainView;
 - (BOOL)_curtainViewVisible;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_fadeFromCurtainViewWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fadeToCurtainViewWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleFaceStyleDidChange;
 - (void)_handleOrdinaryScreenWake;
 - (void)_handleScreenWake;
 - (void)_handleWristRaiseScreenWake;
@@ -84,6 +85,7 @@
 - (void)dealloc;
 - (void)faultInFaceContentSkippedDuringSwiping;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+- (void)setNormalComplicationDisplayWrapper:(id)arg1 forSlot:(id)arg2;
 
 @end
 

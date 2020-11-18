@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (id)currentAssetStore;
 - (void)focusOnGeotaggablesAnimated:(BOOL)arg1;
+- (void)focusOnMapRect:(CDStruct_02837cd9)arg1 animated:(BOOL)arg2;
 - (void)focusOnProvidedAssetsAnimated:(BOOL)arg1;
 - (void)focusOnProvidedAssetsImmediately;
 - (id)initWithGeotaggableInfoDelegate:(id)arg1 andMapViewController:(id)arg2;

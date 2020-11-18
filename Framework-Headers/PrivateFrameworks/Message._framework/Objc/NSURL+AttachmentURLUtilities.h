@@ -12,6 +12,6 @@
 - (BOOL)mf_isValidAttachmentURL;
 - (id)mf_lastPartNumber;
 - (id)mf_partNumbers;
-- (unsigned int)mf_rowID;
+- (long long)mf_rowID;
 @end
 

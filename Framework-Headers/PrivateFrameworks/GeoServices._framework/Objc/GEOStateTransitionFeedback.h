@@ -14,19 +14,20 @@
     int _oldValue;
     int _stateType;
     struct {
-        unsigned int newValue:1;
-        unsigned int oldValue:1;
-        unsigned int stateType:1;
-    } _has;
+        unsigned int has_newValue:1;
+        unsigned int has_oldValue:1;
+        unsigned int has_stateType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasNewValue;
 @property (nonatomic) BOOL hasOldValue;
 @property (nonatomic) BOOL hasStateType;
-@property (nonatomic) int newValue; // @synthesize newValue=_newValue;
-@property (nonatomic) int oldValue; // @synthesize oldValue=_oldValue;
-@property (nonatomic) int stateType; // @synthesize stateType=_stateType;
+@property (nonatomic) int newValue;
+@property (nonatomic) int oldValue;
+@property (nonatomic) int stateType;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsNewValue:(id)arg1;
 - (int)StringAsOldValue:(id)arg1;
 - (int)StringAsStateType:(id)arg1;
@@ -39,6 +40,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)newValueAsString:(int)arg1;
 - (id)oldValueAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)stateTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

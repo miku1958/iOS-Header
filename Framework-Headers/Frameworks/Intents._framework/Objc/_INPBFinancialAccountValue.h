@@ -17,6 +17,7 @@
     struct {
         unsigned int accountType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _accountType;
     _INPBDataString *_accountNickname;
     NSString *_accountNumber;
@@ -26,6 +27,7 @@
     _INPBValueMetadata *_valueMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDataString *accountNickname; // @synthesize accountNickname=_accountNickname;
 @property (copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
 @property (nonatomic) int accountType; // @synthesize accountType=_accountType;
@@ -45,11 +47,14 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsAccountType:(id)arg1;
 - (id)accountTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

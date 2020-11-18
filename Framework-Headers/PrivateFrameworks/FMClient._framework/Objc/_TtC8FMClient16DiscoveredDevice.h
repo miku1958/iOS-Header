@@ -16,8 +16,8 @@
 
 @property (nonatomic, readonly) NSString *debugDescription;
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) NSString *deviceName; // @synthesize deviceName;
-@property (nonatomic, readonly) NSString *discoveryId; // @synthesize discoveryId;
+@property (nonatomic, readonly) NSString *deviceName;
+@property (nonatomic, readonly) NSString *discoveryId;
 @property (nonatomic, readonly) long long hash;
 
 + (BOOL)supportsSecureCoding;

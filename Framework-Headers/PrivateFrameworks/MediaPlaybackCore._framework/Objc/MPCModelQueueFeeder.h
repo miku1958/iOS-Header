@@ -6,119 +6,76 @@
 
 #import <MediaPlayer/MPQueueFeeder.h>
 
-#import <MediaPlaybackCore/MPCQueueBehaviorManaging-Protocol.h>
+#import <MediaPlaybackCore/MPCQueueControllerDataSource-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionContaining-Protocol.h>
-#import <MediaPlaybackCore/MPShuffleControllerDataSource-Protocol.h>
+#import <MediaPlaybackCore/MPRequestResponseControllerDelegate-Protocol.h>
 
-@class ICUserIdentity, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelRequest, MPModelResponse, MPPlaceholderAVItem, MPPlaybackPlaceholderMediaItem, MPShuffleController, NSDictionary, NSHashTable, NSObject, NSOperationQueue, NSString;
-@protocol OS_dispatch_queue;
+@class ICUserIdentity, MPCModelGenericAVItemUserIdentityPropertySet, MPCPlaybackRequestEnvironment, MPIdentifierSet, MPModelGenericObject, MPModelRequest, MPModelResponse, MPRequestResponseController, NSDictionary, NSHashTable, NSLock, NSObject, NSString;
+@protocol MPMutableIdentifierListSection, OS_dispatch_queue;
 
-@interface MPCModelQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPShuffleControllerDataSource, MPCQueueBehaviorManaging>
+@interface MPCModelQueueFeeder : MPQueueFeeder <MPRTCReportingItemSessionContaining, MPRequestResponseControllerDelegate, MPCQueueControllerDataSource>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_diffQueue;
+    NSLock *_diffLock;
     NSHashTable *_activeModelGenericAVItems;
     NSDictionary *_assetStoreFronts;
     unsigned long long _backgroundTaskIdentifier;
     unsigned long long _backgroundTasks;
-    long long _currentRevisionID;
     NSDictionary *_endTimeModifications;
     CDUnknownBlockType _finalTracklistLoadingCompletionHandler;
     BOOL _hasFoundStartItem;
-    BOOL _hasLoadedFinalResponse;
-    BOOL _hasShuffledInitialResult;
-    long long _preferredStartIndexFromPlaybackContext;
-    NSObject<OS_dispatch_queue> *_itemListChangeDetectionQueue;
-    NSOperationQueue *_operationQueue;
-    MPPlaceholderAVItem *_placeholderAVItem;
-    MPPlaybackPlaceholderMediaItem *_placeholderMediaItem;
+    MPRequestResponseController *_requestController;
     MPModelRequest *_request;
-    BOOL _requireFinalTracklist;
     MPModelResponse *_response;
     NSString *_rtcReportingPlayQueueSourceIdentifier;
-    MPShuffleController *_shuffleController;
-    NSString *_siriAssetInfo;
     BOOL _isSiriInitiated;
-    MPIdentifierSet *_startItemIdentifiers;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     ICUserIdentity *_proactiveCacheIdentity;
-    struct map<unsigned long, MPIdentifierSet *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, MPIdentifierSet *>>> _retrievedIndexToIdentifiers;
+    MPIdentifierSet *_startItemIdentifiers;
     NSDictionary *_startTimeModifications;
+    id<MPMutableIdentifierListSection> _section;
+    MPCModelGenericAVItemUserIdentityPropertySet *_identityPropertySet;
+    BOOL _isForRepresentativeMetadataOnly;
+    MPModelGenericObject *_fallbackSectionRepresentation;
 }
 
-@property (readonly, nonatomic) BOOL allowsUserVisibleUpcomingItems;
-@property (readonly, nonatomic) BOOL canSeek;
-@property (readonly, nonatomic) BOOL canSkipToPreviousItem;
+@property (readonly, nonatomic) BOOL containsLiveStream;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) MPModelGenericObject *fallbackSectionRepresentation; // @synthesize fallbackSectionRepresentation=_fallbackSectionRepresentation;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) long long playbackMode;
 @property (readonly, copy, nonatomic) NSString *rtcReportingPlayQueueSourceIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *rtcReportingSessionAdditionalUserInfo;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
 + (id)requiredPropertiesForStaticMediaClips;
-+ (BOOL)supportsSecureCoding;
-+ (BOOL)supportsStateRestoration;
-- (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
 - (void)_beginBackgroundTaskAssertion;
-- (long long)_currentPreferredStartIndexWithFinalResponse:(BOOL)arg1;
+- (id)_currentPreferredStartIdentifierWithFinalResponse:(BOOL)arg1;
 - (void)_endBackgroundTaskAssertion;
 - (id)_equivalencySourceAdamIDForIdentifierSet:(id)arg1;
-- (id)_genericObjectForModelObject:(id)arg1;
-- (BOOL)_handleFinalResponseWithPreferredStartIndex:(unsigned long long)arg1;
-- (BOOL)_hasPlaceholderItemAtIndex:(unsigned long long)arg1;
-- (id)_identifierSetAtIndex:(unsigned long long)arg1;
-- (unsigned long long)_indexOfItemWithIdentifier:(id)arg1 shouldIgnoreShuffle:(BOOL)arg2;
-- (id)_modelObjectAtIndex:(unsigned long long)arg1;
-- (id)_newModelRequest;
-- (void)_playbackUserDefaultsMusicRepeatTypeDidChangeNotification:(id)arg1;
-- (void)_playbackUserDefaultsMusicShuffleTypeDidChangeNotification:(id)arg1;
-- (void)_registerNotificationsForResponse:(id)arg1;
-- (void)_reloadForInitialRequest;
-- (void)_reloadModelRequestForInvalidation;
-- (void)_reloadModelRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_responseDidInvalidateNotification:(id)arg1;
-- (id)_resultsForShuffleController;
 - (BOOL)_shouldRecordReturnedItemIDs;
-- (unsigned long long)_songShuffledIndexForIndex:(unsigned long long)arg1;
-- (void)_unregisterNotificationsForResponse:(id)arg1;
 - (void)_updateProactiveCaching;
 - (void)applyVolumeNormalizationForItem:(id)arg1;
-- (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
-- (id)copyRawItemAtIndex:(unsigned long long)arg1;
+- (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
+- (BOOL)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
-- (BOOL)hasValidItemAtIndex:(unsigned long long)arg1;
-- (id)identifierAtIndex:(unsigned long long)arg1;
-- (unsigned long long)indexOfItemWithIdentifier:(id)arg1;
-- (unsigned long long)indexOfMediaItem:(id)arg1;
+- (void)didFinishLoadingRequestForController:(id)arg1;
+- (id)firstItemIntersectingIdentifierSet:(id)arg1;
+- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
-- (unsigned long long)initialPlaybackQueueDepthForStartingIndex:(unsigned long long)arg1;
-- (BOOL)isPlaceholderItemForQueueIdentifier:(id)arg1;
-- (Class)itemClass;
-- (unsigned long long)itemCount;
-- (unsigned long long)itemCountForShuffleController:(id)arg1;
-- (long long)itemTypeForIndex:(unsigned long long)arg1;
-- (id)mediaItemAtIndex:(unsigned long long)arg1;
-- (id)mediaItemForIdentifier:(id)arg1;
+- (id)itemForItem:(id)arg1 inSection:(id)arg2;
+- (void)loadPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)modelPlayEvent;
-- (id)playbackInfoForIdentifier:(id)arg1;
-- (BOOL)playerPreparesItemsForPlaybackAsynchronously;
-- (id)query;
-- (long long)realRepeatType;
-- (long long)realShuffleType;
-- (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)reloadWithPlaybackContext:(id)arg1 requireFinalTracklist:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)restoreState:(CDUnknownBlockType)arg1;
-- (BOOL)shouldReuseQueueFeederForPlaybackContext:(id)arg1;
-- (unsigned long long)shuffleController:(id)arg1 countOfItemIdentifier:(id)arg2 withMaximumCount:(unsigned long long)arg3;
-- (id)shuffleController:(id)arg1 identifierForItemAtIndex:(unsigned long long)arg2;
-- (void)shuffleItemsWithAnchor:(unsigned long long *)arg1;
-- (BOOL)supportsAddToQueue;
+- (id)playbackInfoForItem:(id)arg1;
+- (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)section:(id)arg1 shouldShuffleExcludeItem:(id)arg2;
+- (BOOL)section:(id)arg1 supportsShuffleType:(long long)arg2;
+- (id)supplementalPlaybackContext;
+- (long long)supplementalPlaybackContextBehavior;
+- (id)uniqueIdentifier;
+- (void)willBeginLoadingRequestForController:(id)arg1;
 
 @end
 

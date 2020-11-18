@@ -7,7 +7,9 @@
 #import <Foundation/NSCoder.h>
 
 @interface NSCoder (AKPlatformImage_Extensions)
+- (id)akDecodeColorForKey:(id)arg1;
 - (id)akDecodeImageForKey:(id)arg1;
+- (void)akEncodeColor:(id)arg1 forKey:(id)arg2;
 - (void)akEncodeImage:(id)arg1 forKey:(id)arg2;
 @end
 

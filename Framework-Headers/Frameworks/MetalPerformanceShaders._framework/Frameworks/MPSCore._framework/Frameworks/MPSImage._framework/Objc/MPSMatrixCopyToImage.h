@@ -20,6 +20,7 @@
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (id)debugDescription;
+- (void)encodeBatchToCommandBuffer:(id)arg1 encoder:(id)arg2 sourceMatrix:(id)arg3 destinationImages:(struct NSArray *)arg4;
 - (void)encodeBatchToCommandBuffer:(id)arg1 sourceMatrix:(id)arg2 destinationImages:(struct NSArray *)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceMatrix:(id)arg2 destinationImage:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;

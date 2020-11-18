@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 - (void)_finishRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
 - (double)_maxMatchDistance:(double)arg1 routeIndex:(unsigned int)arg2 previousMatchGood:(BOOL)arg3;
 - (double)_modifiedHorizontalAccuracy:(double)arg1 routeIndex:(unsigned int)arg2;
+- (BOOL)_supportsSnapping;
+- (id)initWithRoute:(id)arg1;
 
 @end
 

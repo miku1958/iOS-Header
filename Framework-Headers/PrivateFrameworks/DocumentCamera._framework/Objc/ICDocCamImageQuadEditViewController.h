@@ -21,6 +21,7 @@
     BOOL _shouldAdjustForApectFitIfNecessary;
     BOOL _invisibleButtonContainer;
     BOOL _didPressSave;
+    BOOL _didCallCompletion;
     UIScrollView *_scrollView;
     ICDocCamImageQuadEditImageView *_imageView;
     ICDocCamImageQuadEditImageView *_backgroundImageView;
@@ -52,6 +53,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didAdjustQuad; // @synthesize didAdjustQuad=_didAdjustQuad;
+@property (nonatomic) BOOL didCallCompletion; // @synthesize didCallCompletion=_didCallCompletion;
 @property (nonatomic) BOOL didPressSave; // @synthesize didPressSave=_didPressSave;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
@@ -79,6 +81,7 @@
 - (void).cxx_destruct;
 - (id)adjustedQuad;
 - (void)applicationWillResignActive:(id)arg1;
+- (void)callCompletionHandler:(BOOL)arg1 withImage:(id)arg2 quad:(id)arg3 preparingForDismissal:(BOOL)arg4;
 - (void)cancelButtonPressed:(id)arg1;
 - (void)centerAndScaleImageInScrollView;
 - (void)contentSizeCategoryDidChange:(id)arg1;

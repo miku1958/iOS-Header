@@ -4,26 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXGadgetViewController.h>
+#import <PhotosUICore/PXGadgetUIViewController.h>
 
-#import <PhotosUICore/PXGadgetNavigating-Protocol.h>
 #import <PhotosUICore/PXNavigableForYouViewController-Protocol.h>
 #import <PhotosUICore/PXNavigableSharedAlbumActivityFeedHostViewController-Protocol.h>
 #import <PhotosUICore/PXNavigationRoot-Protocol.h>
 #import <PhotosUICore/PXSettingsKeyObserver-Protocol.h>
 
-@class NSString, PXForYouBadgeManager, PXForYouGadgetPriorityManager, PXNavigationListDataSourceManager, UIBarButtonItem, UINavigationController;
+@class NSString, PXForYouBadgeManager, PXForYouGadgetPriorityManager, PXNavigationListDataSectionManager, UIBarButtonItem, UINavigationController;
 
-@interface PXForYouGadgetViewController : PXGadgetViewController <PXGadgetNavigating, PXSettingsKeyObserver, PXNavigationRoot, PXNavigableForYouViewController, PXNavigableSharedAlbumActivityFeedHostViewController>
+@interface PXForYouGadgetViewController : PXGadgetUIViewController <PXSettingsKeyObserver, PXNavigationRoot, PXNavigableForYouViewController, PXNavigableSharedAlbumActivityFeedHostViewController>
 {
     BOOL _needsRefresh;
     UIBarButtonItem *_navigationDisplayModeButtonItem;
     PXForYouBadgeManager *_badgeManager;
     PXForYouGadgetPriorityManager *_priorityManager;
-    long long _anchorPosition;
 }
 
-@property (nonatomic) long long anchorPosition; // @synthesize anchorPosition=_anchorPosition;
 @property (strong, nonatomic) PXForYouBadgeManager *badgeManager; // @synthesize badgeManager=_badgeManager;
 @property (readonly, nonatomic) NSString *currentDateText;
 @property (readonly, copy) NSString *debugDescription;
@@ -32,7 +29,7 @@
 @property (readonly, nonatomic) UINavigationController *navigationController; // @dynamic navigationController;
 @property (strong, nonatomic) UIBarButtonItem *navigationDisplayModeButtonItem; // @synthesize navigationDisplayModeButtonItem=_navigationDisplayModeButtonItem;
 @property (readonly, nonatomic) NSString *navigationIdentifier;
-@property (readonly, nonatomic) PXNavigationListDataSourceManager *navigationListDataSourceManager;
+@property (readonly, nonatomic) PXNavigationListDataSectionManager *navigationListDataSourceManager;
 @property (readonly, nonatomic) NSString *navigationTitle;
 @property (nonatomic) BOOL needsRefresh; // @synthesize needsRefresh=_needsRefresh;
 @property (strong, nonatomic) PXForYouGadgetPriorityManager *priorityManager; // @synthesize priorityManager=_priorityManager;
@@ -44,26 +41,21 @@
 - (void)_calendarDayChanged;
 - (void)_lastSeenBadgeDateChanged;
 - (id)_suggestionDumpURL;
+- (void)configureSectionHeader:(id)arg1;
 - (void)gadget:(id)arg1 didChange:(unsigned long long)arg2;
 - (id)initWithBadgeManager:(id)arg1;
 - (id)navigateToDetailsForMemoryWithLocalIdentifier:(id)arg1;
-- (void)navigateToGadgetForCMMInvitationWithIdentifier:(id)arg1;
-- (void)navigateToGadgetForCMMSuggestions;
-- (void)navigateToInvitationCMMWithUUID:(id)arg1 animated:(BOOL)arg2;
-- (void)navigateToRevealTheMostRecentMemoryAnimated:(BOOL)arg1;
 - (void)navigateToSharedAlbumActivityFeedAnimated:(BOOL)arg1 configuration:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)navigateToSharedAlbumInviteWithUUID:(id)arg1 animated:(BOOL)arg2;
-- (void)navigateToSharedAlbumInvitesAnimated:(BOOL)arg1;
 - (id)navigateToShowAllMemoriesFeedAnimated:(BOOL)arg1;
-- (void)navigateToSuggestedCMMWithUUID:(id)arg1 animated:(BOOL)arg2;
 - (void)ppt_navigateToFirstInvitationCMM:(BOOL)arg1 withCompleteHandler:(CDUnknownBlockType)arg2;
+- (void)ppt_navigateToFirstSuggestedCMMAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)ppt_navigateToFirstSuggestedCMMComposeRecipientViewAfterOneSecondWithCompleteHandler:(CDUnknownBlockType)arg1;
-- (void)ppt_navigateToFirstSuggestedCMMWithCompleteHandler:(CDUnknownBlockType)arg1;
-- (void)presentWelcomeCloudPhotosViewController;
 - (void)reloadContent;
 - (void)rootGadgetControllerDidDisappear;
 - (void)rootGadgetControllerWillAppear;
+- (long long)scrollAnimationIdentifier;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

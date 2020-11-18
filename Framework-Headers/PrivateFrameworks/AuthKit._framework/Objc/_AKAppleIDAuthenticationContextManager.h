@@ -37,6 +37,7 @@
 - (id)initWithAuthenticationController:(id)arg1;
 - (void)legacyAnisetteDataForContext:(id)arg1 DSID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)presentBasicLoginUIForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)presentBiometricOrPasscodeValidationForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentKeepUsingUIForContext:(id)arg1 appleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentLoginAlertForContext:(id)arg1 withError:(id)arg2 title:(id)arg3 message:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)presentNativeRecoveryUIForContext:(id)arg1 recoveryContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -45,7 +46,6 @@
 - (void)presentServerProvidedUIForContext:(id)arg1 withConfiguration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)provisionAnisetteForContext:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)registerContext:(id)arg1;
-- (void)registerSurrogateForContext:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)shouldContinueWithAuthenticationResults:(id)arg1 error:(id)arg2 forContextID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)syncAnisetteForContext:(id)arg1 withSIMData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)unregisterContext:(id)arg1;

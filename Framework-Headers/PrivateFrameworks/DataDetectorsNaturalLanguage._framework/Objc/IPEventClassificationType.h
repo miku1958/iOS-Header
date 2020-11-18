@@ -91,6 +91,7 @@
 + (id)eventTypeForMoviesAndLanguageID:(id)arg1;
 + (id)eventTypeForSportAndLanguageID:(id)arg1;
 + (id)fallbackEventTitleForMessageUnits:(id)arg1 subject:(id)arg2 checkForDateInSubject:(BOOL)arg3;
++ (id)humanReadableClusterType:(unsigned long long)arg1;
 + (id)morePreciseEventClassificationTypeBetweenType:(id)arg1 and:(id)arg2;
 + (id)taxonomyForLanguageID:(id)arg1 clusterIdentifier:(id)arg2;
 + (id)taxonomyForLanguageID:(id)arg1 clusterType:(unsigned long long)arg2;

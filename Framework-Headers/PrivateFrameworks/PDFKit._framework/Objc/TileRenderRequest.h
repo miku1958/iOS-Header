@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     struct CGRect tileFrame;
     double zoomFactor;
     struct CGAffineTransform matrix;
-    BOOL shouldAntiAlias;
 }
 
 - (void).cxx_destruct;

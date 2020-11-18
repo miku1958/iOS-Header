@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     NSString *_previousIdentifier;
     unsigned int _tableNameCounter;
     NSArray *_children;
+    BOOL _hasBackgroundAlpha;
     NSMutableDictionary *_slideSpecificHyperlinkMap;
     BOOL _hasExplicitBuilds;
     BOOL _hasExplicitBuildsIsUpToDate;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long depth;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSSet *digestsForDatasThatNeedDownloadForThumbnail; // @synthesize digestsForDatasThatNeedDownloadForThumbnail=_digestsForDatasThatNeedDownloadForThumbnail;
+@property (readonly, nonatomic) BOOL hasBackgroundAlpha; // @synthesize hasBackgroundAlpha=_hasBackgroundAlpha;
 @property (nonatomic) BOOL hasBodyInOutlineView; // @synthesize hasBodyInOutlineView=_hasBodyInOutlineView;
 @property (readonly, nonatomic) BOOL hasBuildEvents;
 @property (readonly, nonatomic) BOOL hasChildren;
@@ -63,7 +65,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) KNSlideNode *nextSkippingCollapsed;
 @property (readonly, nonatomic) KNSlideNode *nextSkippingHidden;
 @property (readonly, nonatomic) KNSlideNode *previous;
-@property (strong, nonatomic) NSString *previousIdentifier; // @synthesize previousIdentifier=_previousIdentifier;
+@property (copy, nonatomic) NSString *previousIdentifier;
 @property (readonly, nonatomic) KNSlideNode *previousSkippingCollapsed;
 @property (readonly, nonatomic) KNSlideNode *previousSkippingHidden;
 @property (strong, nonatomic) KNAbstractSlide *slide;
@@ -103,6 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned int)nextUntitledResolverIndex;
 - (unsigned long long)numberOfLinksToSlideNodeInStorage:(id)arg1 forSlideNodeUUIDString:(id)arg2;
+- (id)objectUUIDPath;
 - (void)p_addHyperlinkForObjectReferencedByMapping:(id)arg1 toSlideNode:(id)arg2;
 - (void)p_addOldModelDescendantsToSlideTree:(id)arg1 atDepth:(unsigned long long)arg2;
 - (unsigned long long)p_buildEventCount;
@@ -134,6 +137,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (id)slideAndReturnError:(id *)arg1;
 - (void)uniquifyTableNamesForUpgradeOrImport;
+- (void)updateHasBackgroundAlpha;
 - (void)upgradeSlideSpecificHyperlinksForSlideNodes:(id)arg1;
 - (void)upgradeSlideSpecificStorageHyperlinksForStorage:(id)arg1 withSlideNodes:(id)arg2;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

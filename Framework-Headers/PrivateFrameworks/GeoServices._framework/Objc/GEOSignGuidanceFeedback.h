@@ -13,16 +13,17 @@
     int _signDetailIndex;
     int _signTitleIndex;
     struct {
-        unsigned int signDetailIndex:1;
-        unsigned int signTitleIndex:1;
-    } _has;
+        unsigned int has_signDetailIndex:1;
+        unsigned int has_signTitleIndex:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasSignDetailIndex;
 @property (nonatomic) BOOL hasSignTitleIndex;
-@property (nonatomic) int signDetailIndex; // @synthesize signDetailIndex=_signDetailIndex;
-@property (nonatomic) int signTitleIndex; // @synthesize signTitleIndex=_signTitleIndex;
+@property (nonatomic) int signDetailIndex;
+@property (nonatomic) int signTitleIndex;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +31,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

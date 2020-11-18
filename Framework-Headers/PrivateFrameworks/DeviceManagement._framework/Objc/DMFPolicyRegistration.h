@@ -28,7 +28,6 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 policyTypes:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 policyTypes:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (BOOL)isEqual:(id)arg1;
 

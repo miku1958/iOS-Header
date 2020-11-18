@@ -20,7 +20,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1;
+- (id)initWithMediaRemotePlaybackQueue:(struct _MRSystemAppPlaybackQueue *)arg1 options:(id)arg2;
 - (BOOL)verifyWithError:(id *)arg1;
 
 @end

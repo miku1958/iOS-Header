@@ -27,6 +27,9 @@
 - (id)saveURL;
 - (BOOL)shouldCropImage;
 - (BOOL)showThumbnailInNoteList;
+- (struct CGSize)sizeByCroppingSize:(struct CGSize)arg1;
+- (BOOL)supportsImageClassification;
+- (BOOL)supportsOCR;
 - (BOOL)supportsQuickLook;
 - (void)updateAttachmentSize;
 - (void)updateFileBasedAttributes;

@@ -7,12 +7,13 @@
 #import <FrontBoard/FBTransaction.h>
 
 #import <FrontBoard/FBSceneManagerObserver-Protocol.h>
+#import <FrontBoard/FBSceneObserver-Protocol.h>
 #import <FrontBoard/FBSynchronizedTransaction-Protocol.h>
 
 @class FBSSceneDefinition, FBSSceneParameters, FBSSceneSettings, FBSSceneSpecification, FBSSceneTransitionContext, FBScene, FBSceneManager, FBWaitForSceneDestructionTransaction, NSString;
 @protocol FBSynchronizedTransactionDelegate;
 
-@interface FBUpdateSceneTransaction : FBTransaction <FBSceneManagerObserver, FBSynchronizedTransaction>
+@interface FBUpdateSceneTransaction : FBTransaction <FBSceneManagerObserver, FBSceneObserver, FBSynchronizedTransaction>
 {
     FBSceneManager *_sceneManager;
     NSString *_sceneID;
@@ -59,18 +60,18 @@
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)initWithSceneDefinition:(id)arg1 parameters:(id)arg2 transitionContext:(id)arg3;
-- (id)initWithSceneIdentifier:(id)arg1 process:(id)arg2 display:(id)arg3 newSettings:(id)arg4 transitionContext:(id)arg5 clientProviderProvider:(CDUnknownBlockType)arg6 initialClientSettingsProvider:(CDUnknownBlockType)arg7;
 - (id)initWithSceneIdentifier:(id)arg1 process:(id)arg2 parameters:(id)arg3 transitionContext:(id)arg4;
 - (id)initWithSceneToUpdate:(id)arg1 newSettings:(id)arg2 transitionContext:(id)arg3;
 - (BOOL)isReadyForSynchronizedCommit;
 - (void)performSynchronizedCommit;
 - (void)removeObserver:(id)arg1;
-- (void)sceneManager:(id)arg1 didCommitUpdateForScene:(id)arg2 transactionID:(unsigned long long)arg3 success:(BOOL)arg4;
-- (void)sceneManager:(id)arg1 didCreateScene:(id)arg2 withClient:(id)arg3;
+- (void)scene:(id)arg1 didApplyUpdateWithContext:(id)arg2;
+- (void)scene:(id)arg1 didCompleteUpdateWithContext:(id)arg2 error:(id)arg3;
+- (void)scene:(id)arg1 didPrepareUpdateWithContext:(id)arg2;
+- (void)sceneDidInvalidate:(id)arg1;
+- (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
-- (void)sceneManager:(id)arg1 willCommitUpdateForScene:(id)arg2 transactionID:(unsigned long long)arg3;
 - (void)sceneManager:(id)arg1 willDestroyScene:(id)arg2;
-- (void)sceneManager:(id)arg1 willUpdateScene:(id)arg2 withSettings:(id)arg3 transitionContext:(id)arg4;
 
 @end
 

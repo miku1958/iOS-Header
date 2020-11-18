@@ -19,8 +19,8 @@
 @property (strong, nonatomic) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 @property (nonatomic) long long orderValue; // @synthesize orderValue=_orderValue;
 
+- (void).cxx_destruct;
 - (id)childManagedObject;
-- (void)dealloc;
 - (id)description;
 - (id)secondaryOrderSortKey;
 

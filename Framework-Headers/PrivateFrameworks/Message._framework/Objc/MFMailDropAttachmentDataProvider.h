@@ -6,13 +6,14 @@
 
 #import <Message/MFAttachmentLibraryDataProvider.h>
 
+#import <Message/EFLoggable-Protocol.h>
 #import <Message/NSURLSessionDownloadDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
-@interface MFMailDropAttachmentDataProvider : MFAttachmentLibraryDataProvider <NSURLSessionDownloadDelegate>
+@interface MFMailDropAttachmentDataProvider : MFAttachmentLibraryDataProvider <EFLoggable, NSURLSessionDownloadDelegate>
 {
-    NSMutableDictionary *_attachments;
+    NSMutableDictionary *_requests;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)log;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didResumeAtOffset:(long long)arg3 expectedTotalBytes:(long long)arg4;

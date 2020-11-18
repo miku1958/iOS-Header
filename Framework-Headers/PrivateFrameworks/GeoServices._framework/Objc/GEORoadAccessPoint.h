@@ -13,34 +13,41 @@
 @interface GEORoadAccessPoint : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    int _drivingDirection;
     GEOLatLng *_location;
+    int _drivingDirection;
     unsigned int _significance;
+    int _transitDirection;
     int _walkingDirection;
     BOOL _isApproximate;
     struct {
-        unsigned int drivingDirection:1;
-        unsigned int significance:1;
-        unsigned int walkingDirection:1;
-        unsigned int isApproximate:1;
-    } _has;
+        unsigned int has_drivingDirection:1;
+        unsigned int has_significance:1;
+        unsigned int has_transitDirection:1;
+        unsigned int has_walkingDirection:1;
+        unsigned int has_isApproximate:1;
+    } _flags;
 }
 
-@property (nonatomic) int drivingDirection; // @synthesize drivingDirection=_drivingDirection;
+@property (nonatomic) int drivingDirection;
 @property (nonatomic) BOOL hasDrivingDirection;
 @property (nonatomic) BOOL hasIsApproximate;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasSignificance;
+@property (nonatomic) BOOL hasTransitDirection;
 @property (nonatomic) BOOL hasWalkingDirection;
-@property (nonatomic) BOOL isApproximate; // @synthesize isApproximate=_isApproximate;
-@property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
-@property (nonatomic) unsigned int significance; // @synthesize significance=_significance;
+@property (nonatomic) BOOL isApproximate;
+@property (strong, nonatomic) GEOLatLng *location;
+@property (nonatomic) unsigned int significance;
+@property (nonatomic) int transitDirection;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) int walkingDirection; // @synthesize walkingDirection=_walkingDirection;
+@property (nonatomic) int walkingDirection;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsDrivingDirection:(id)arg1;
+- (int)StringAsTransitDirection:(id)arg1;
 - (int)StringAsWalkingDirection:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -49,7 +56,9 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)transitDirectionAsString:(int)arg1;
 - (id)walkingDirectionAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

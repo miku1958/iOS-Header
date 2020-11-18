@@ -26,6 +26,7 @@
 + (id)dataVerdictWithPassBytes:(unsigned long long)arg1 peekBytes:(unsigned long long)arg2;
 + (id)dropVerdict;
 + (id)needRulesVerdict;
++ (id)pauseVerdict;
 + (id)remediateVerdictWithRemediationURLMapKey:(id)arg1 remediationButtonTextMapKey:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

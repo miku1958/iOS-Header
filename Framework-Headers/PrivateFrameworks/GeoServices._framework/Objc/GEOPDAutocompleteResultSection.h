@@ -8,37 +8,68 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteResultSection : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_entries;
     NSString *_name;
+    int _numVisibleResults;
     int _suggestionType;
     int _type;
+    BOOL _enforceServerResultsOrder;
+    BOOL _shouldInterleaveClientResults;
     struct {
-        unsigned int suggestionType:1;
-        unsigned int type:1;
-    } _has;
+        unsigned int has_numVisibleResults:1;
+        unsigned int has_suggestionType:1;
+        unsigned int has_type:1;
+        unsigned int has_enforceServerResultsOrder:1;
+        unsigned int has_shouldInterleaveClientResults:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_entries:1;
+        unsigned int read_name:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_entries:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_numVisibleResults:1;
+        unsigned int wrote_suggestionType:1;
+        unsigned int wrote_type:1;
+        unsigned int wrote_enforceServerResultsOrder:1;
+        unsigned int wrote_shouldInterleaveClientResults:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *entries; // @synthesize entries=_entries;
+@property (nonatomic) BOOL enforceServerResultsOrder;
+@property (strong, nonatomic) NSMutableArray *entries;
+@property (nonatomic) BOOL hasEnforceServerResultsOrder;
 @property (readonly, nonatomic) BOOL hasName;
+@property (nonatomic) BOOL hasNumVisibleResults;
+@property (nonatomic) BOOL hasShouldInterleaveClientResults;
 @property (nonatomic) BOOL hasSuggestionType;
 @property (nonatomic) BOOL hasType;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) int suggestionType; // @synthesize suggestionType=_suggestionType;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (strong, nonatomic) NSString *name;
+@property (nonatomic) int numVisibleResults;
+@property (nonatomic) BOOL shouldInterleaveClientResults;
+@property (nonatomic) int suggestionType;
+@property (nonatomic) int type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)entriesType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSuggestionType:(id)arg1;
 - (int)StringAsType:(id)arg1;
+- (void)_addNoFlagsEntries:(id)arg1;
+- (void)_readEntries;
+- (void)_readName;
 - (void)addEntries:(id)arg1;
 - (void)clearEntries;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)suggestionTypeAsString:(int)arg1;
 - (id)typeAsString:(int)arg1;

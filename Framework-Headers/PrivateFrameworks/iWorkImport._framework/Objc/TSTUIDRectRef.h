@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     TSCECalculationEngine *_calcEngine;
     UUIDRect_d701734b _uidRange;
     TSCECellTractRef *_lastKnownViewTractRef;
+    BOOL _needsUidRectUpgrade;
     unsigned char _basePreserveFlags;
     UUIDData_5fbc143e _tableUID;
     RefTypeHolder_8c6da553 _chromeRangeRef;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) BOOL isViewRectangle;
+@property (nonatomic) BOOL needsUidRectUpgrade; // @synthesize needsUidRectUpgrade=_needsUidRectUpgrade;
 @property (readonly, nonatomic) BOOL spansAllColumns;
 @property (readonly, nonatomic) BOOL spansAllRows;
 @property (readonly, nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;

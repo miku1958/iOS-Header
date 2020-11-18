@@ -6,7 +6,6 @@
 
 #import <EventKit/EKPersistentObject.h>
 
-__attribute__((visibility("hidden")))
 @interface EKPersistentCalendarItem : EKPersistentObject
 {
 }
@@ -38,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)externalData;
 - (id)externalID;
 - (id)externalModificationTag;
+- (id)externalScheduleID;
 - (BOOL)hasAttendees;
 - (BOOL)hasNotes;
 - (BOOL)hasRecurrenceRules;
@@ -78,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)setExternalData:(id)arg1;
 - (void)setExternalID:(id)arg1;
 - (void)setExternalModificationTag:(id)arg1;
+- (void)setExternalScheduleID:(id)arg1;
 - (void)setHasAttendees:(BOOL)arg1;
 - (void)setHasNotes:(BOOL)arg1;
 - (void)setHasRecurrenceRules:(BOOL)arg1;

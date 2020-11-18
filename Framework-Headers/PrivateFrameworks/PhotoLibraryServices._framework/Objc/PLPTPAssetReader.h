@@ -12,6 +12,7 @@
 {
     NSString *_path;
     id _userInfo;
+    BOOL _shouldDeleteTemporaryFileOnDeallocation;
 }
 
 @property (readonly, copy, nonatomic) NSString *path; // @synthesize path=_path;
@@ -19,8 +20,10 @@
 
 - (void).cxx_destruct;
 - (id)dataSourcePathForDataRange:(struct _NSRange)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (id)description;
 - (id)initWithPath:(id)arg1;
+- (id)initWithTemporaryFileDeletedOnDeallocPath:(id)arg1;
 
 @end
 

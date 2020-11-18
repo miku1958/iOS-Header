@@ -35,7 +35,7 @@
 - (void)_updateHairlineInsets;
 - (void)_updateViewsAnimated:(BOOL)arg1;
 - (unsigned long long)indexOfRowAt:(struct CGPoint)arg1;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;

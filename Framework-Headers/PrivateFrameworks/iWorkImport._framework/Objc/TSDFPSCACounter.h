@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL shouldRunTimer; // @synthesize shouldRunTimer=_shouldRunTimer;
 
+- (void).cxx_destruct;
 - (id)init;
 - (void)p_updateFrameCount;
 - (void)reset;

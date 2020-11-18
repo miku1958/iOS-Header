@@ -28,13 +28,14 @@
 - (void).cxx_destruct;
 - (id)_initWithBookmark:(id)arg1 childBookmarks:(id)arg2 inCollection:(id)arg3 addingBookmark:(BOOL)arg4 toFavorites:(BOOL)arg5;
 - (id)_lastSelectedFolder;
-- (void)addBookmarkWithTitle:(id)arg1 address:(id)arg2 parentBookmark:(id)arg3;
+- (id)addBookmarkWithTitle:(id)arg1 address:(id)arg2 parentBookmark:(id)arg3;
 - (void)bookmarkInfoViewController:(id)arg1 didFinishWithResult:(BOOL)arg2;
 - (BOOL)bookmarkInfoViewControllerCanSaveBookmarkChanges:(id)arg1;
 - (BOOL)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (id)initForAddingToFavoritesInCollection:(id)arg1;
 - (id)initWithBookmark:(id)arg1 inCollection:(id)arg2;
 - (id)initWithCollection:(id)arg1;
+- (id)initWithFolderOfBookmarks:(id)arg1 inCollection:(id)arg2;
 - (BOOL)prepareForPresentationForAddingBookmark:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 

@@ -20,10 +20,10 @@
 
 + (void)setShouldRequestServerLatencyInfo:(BOOL)arg1;
 - (void).cxx_destruct;
-- (void)addedRoutesToRouteSet:(id)arg1;
-- (void)fetchDirectionsForTicket:(id)arg1 routeSet:(id)arg2 networkActivity:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)didReceiveRoutes:(id)arg1 traffic:(id)arg2;
+- (void)fetchDirectionsForTicket:(id)arg1 networkActivity:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handleError:(id)arg1 directionsError:(id)arg2 forTicket:(id)arg3;
-- (void)handleResponse:(id)arg1 routeSet:(id)arg2 forTicket:(id)arg3;
+- (void)handleResponse:(id)arg1 forTicket:(id)arg2;
 - (id)refineErrorFromServerError:(id)arg1 directionsError:(id)arg2;
 
 @end

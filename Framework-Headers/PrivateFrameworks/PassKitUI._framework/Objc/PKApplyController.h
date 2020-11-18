@@ -50,6 +50,7 @@
 - (void)_acquireAssertion;
 - (void)_deviceMetadataFields:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_displayableErrorForError:(id)arg1 showDetailedErrorFlow:(BOOL)arg2;
+- (id)_fieldsViewControllerForPage:(id)arg1;
 - (void)_handleApplyResponse:(id)arg1 originalFeatureApplication:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleResponseError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_invalidateAssertion;

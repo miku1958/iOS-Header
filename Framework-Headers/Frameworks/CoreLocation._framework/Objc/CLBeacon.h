@@ -9,19 +9,21 @@
 #import <CoreLocation/NSCopying-Protocol.h>
 #import <CoreLocation/NSSecureCoding-Protocol.h>
 
-@class CLBeaconInternal, NSNumber, NSUUID;
+@class CLBeaconInternal, NSDate, NSNumber, NSUUID;
 
 @interface CLBeacon : NSObject <NSCopying, NSSecureCoding>
 {
     CLBeaconInternal *_internal;
 }
 
+@property (readonly, copy, nonatomic) NSUUID *UUID;
 @property (readonly, nonatomic) double accuracy;
 @property (readonly, copy, nonatomic) NSNumber *major;
 @property (readonly, copy, nonatomic) NSNumber *minor;
 @property (readonly, nonatomic) long long proximity;
 @property (readonly, copy, nonatomic) NSUUID *proximityUUID;
 @property (readonly, nonatomic) long long rssi;
+@property (readonly, copy, nonatomic) NSDate *timestamp;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -30,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProximityUUID:(id)arg1 major:(id)arg2 minor:(id)arg3 proximity:(long long)arg4 accuracy:(double)arg5 rssi:(long long)arg6;
+- (id)initWithUUID:(id)arg1 major:(id)arg2 minor:(id)arg3 proximity:(long long)arg4 accuracy:(double)arg5 rssi:(long long)arg6 timestamp:(double)arg7;
 
 @end
 

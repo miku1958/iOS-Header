@@ -10,10 +10,12 @@
 
 @property (nonatomic) float obstruction;
 @property (nonatomic) float occlusion;
+@property (nonatomic) long long pointSourceInHeadMode;
 @property (nonatomic) struct AVAudio3DPoint position;
 @property (nonatomic) float rate;
 @property (nonatomic) long long renderingAlgorithm;
 @property (nonatomic) float reverbBlend;
+@property (nonatomic) long long sourceMode;
 
 @end
 

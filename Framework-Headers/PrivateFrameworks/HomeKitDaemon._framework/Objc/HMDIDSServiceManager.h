@@ -11,17 +11,17 @@
 
 @interface HMDIDSServiceManager : HMFObject
 {
+    IDSService *_service;
     IDSService *_proxyService;
     IDSService *_streamService;
-    IDSService *_service;
     NSObject<OS_dispatch_queue> *_workQueue;
     _HMDIDSProxyLinkPreferenceAssertion *_proxyLinkPreferenceAssertion;
 }
 
 @property (weak) _HMDIDSProxyLinkPreferenceAssertion *proxyLinkPreferenceAssertion; // @synthesize proxyLinkPreferenceAssertion=_proxyLinkPreferenceAssertion;
-@property (readonly, nonatomic) IDSService *proxyService; // @synthesize proxyService=_proxyService;
-@property (readonly, nonatomic) IDSService *service; // @synthesize service=_service;
-@property (readonly, nonatomic) IDSService *streamService; // @synthesize streamService=_streamService;
+@property (readonly) IDSService *proxyService; // @synthesize proxyService=_proxyService;
+@property (readonly) IDSService *service; // @synthesize service=_service;
+@property (readonly) IDSService *streamService; // @synthesize streamService=_streamService;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)sharedManager;

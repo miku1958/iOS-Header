@@ -17,8 +17,11 @@
 + (void)setCurrentNoteListSortTypeByTag:(long long)arg1;
 + (id)sortDescriptorsForCurrentType;
 + (id)sortDescriptorsForCurrentTypeIncludingPinnedNotes:(BOOL)arg1;
++ (id)sortDescriptorsForCurrentTypeIncludingPinnedNotes:(BOOL)arg1 folderNoteSortType:(id)arg2;
 + (id)sortDescriptorsForPinnedNotes;
 + (id)sortDescriptorsForType:(long long)arg1;
++ (id)sortDescriptorsForType:(long long)arg1 ascending:(BOOL)arg2;
++ (long long)sortTypeForFolderNoteOrder:(unsigned long long)arg1;
 + (long long)sortTypeForTag:(long long)arg1;
 + (long long)tagForSortType:(long long)arg1;
 

@@ -19,6 +19,6 @@
 @property (readonly, nonatomic) NSArray *waypoints;
 
 - (void)cancel;
-- (void)submitWithHandler:(void (^)(GEODirectionsResponse *, NSError *, id<GEODirectionsError>))arg1 auditToken:(GEOApplicationAuditToken *)arg2 networkActivity:(void (^)(BOOL))arg3;
+- (void)submitWithHandler:(void (^)(GEODirectionsResponse *, NSError *, GEODirectionsError *))arg1 auditToken:(GEOApplicationAuditToken *)arg2 networkActivity:(void (^)(BOOL))arg3;
 @end
 

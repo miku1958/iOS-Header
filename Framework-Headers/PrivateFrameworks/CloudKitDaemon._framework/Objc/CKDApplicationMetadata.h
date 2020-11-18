@@ -26,23 +26,32 @@ __attribute__((visibility("hidden")))
     BOOL _allowsParticipantPII;
     BOOL _displaysSystemAcceptPrompt;
     BOOL _canUseNonLegacyShareURL;
+    BOOL _allowUnverifiedAccount;
+    BOOL _canSetExplicitCodeOperationURL;
     NSString *_apsEnvironmentString;
     long long _isApplication;
     NSString *_entitlementSpecifiedPCSServiceName;
     NSString *_applicationIdentifier;
     NSString *_clientPrefix;
+    NSString *_pushBundleID;
+    NSString *_associatedApplicationBundleID;
+    NSString *_applicationContainerPath;
 }
 
 @property (nonatomic) BOOL allowCustomAccounts; // @synthesize allowCustomAccounts=_allowCustomAccounts;
+@property (nonatomic) BOOL allowUnverifiedAccount; // @synthesize allowUnverifiedAccount=_allowUnverifiedAccount;
 @property (nonatomic) BOOL allowsParticipantPII; // @synthesize allowsParticipantPII=_allowsParticipantPII;
 @property (nonatomic) BOOL allowsPowerNapScheduling; // @synthesize allowsPowerNapScheduling=_allowsPowerNapScheduling;
+@property (strong, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
 @property (strong, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (strong, nonatomic) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
+@property (strong, nonatomic) NSString *associatedApplicationBundleID; // @synthesize associatedApplicationBundleID=_associatedApplicationBundleID;
 @property (nonatomic) BOOL canAccessProtectionData; // @synthesize canAccessProtectionData=_canAccessProtectionData;
 @property (nonatomic) BOOL canAccessZoneProtectionData; // @synthesize canAccessZoneProtectionData=_canAccessZoneProtectionData;
 @property (nonatomic) BOOL canMasquerade; // @synthesize canMasquerade=_canMasquerade;
 @property (nonatomic) BOOL canSetDeviceIdentifier; // @synthesize canSetDeviceIdentifier=_canSetDeviceIdentifier;
 @property (nonatomic) BOOL canSetEnvironment; // @synthesize canSetEnvironment=_canSetEnvironment;
+@property (nonatomic) BOOL canSetExplicitCodeOperationURL; // @synthesize canSetExplicitCodeOperationURL=_canSetExplicitCodeOperationURL;
 @property (nonatomic) BOOL canUseNonLegacyShareURL; // @synthesize canUseNonLegacyShareURL=_canUseNonLegacyShareURL;
 @property (strong, nonatomic) NSString *clientPrefix; // @synthesize clientPrefix=_clientPrefix;
 @property (nonatomic) BOOL displaysSystemAcceptPrompt; // @synthesize displaysSystemAcceptPrompt=_displaysSystemAcceptPrompt;
@@ -53,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long isApplication; // @synthesize isApplication=_isApplication;
 @property (nonatomic) BOOL isCKSystemService; // @synthesize isCKSystemService=_isCKSystemService;
 @property (nonatomic) BOOL isOOPUI; // @synthesize isOOPUI=_isOOPUI;
+@property (strong, nonatomic) NSString *pushBundleID; // @synthesize pushBundleID=_pushBundleID;
 
 - (void).cxx_destruct;
 - (id)init;

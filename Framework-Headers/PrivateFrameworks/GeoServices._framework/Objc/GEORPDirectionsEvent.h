@@ -8,33 +8,51 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSData, NSString;
+@class GEOLatLng, NSData, NSString, PBDataReader;
 
 @interface GEORPDirectionsEvent : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     long long _errorCode;
     NSString *_errorDomain;
     GEOLatLng *_occurrenceLatLng;
-    unsigned int _occurrenceResponseIndex;
     NSData *_occurrenceRouteId;
-    unsigned int _occurrenceStepIndex;
-    unsigned int _switchedToResponseIndex;
     NSData *_switchedToRouteId;
     NSString *_synthesizedStepInstructions;
+    unsigned int _occurrenceResponseIndex;
+    unsigned int _occurrenceStepIndex;
+    unsigned int _switchedToResponseIndex;
     int _synthesizedStepManeuverType;
     int _type;
     struct {
-        unsigned int errorCode:1;
-        unsigned int occurrenceResponseIndex:1;
-        unsigned int occurrenceStepIndex:1;
-        unsigned int switchedToResponseIndex:1;
-        unsigned int synthesizedStepManeuverType:1;
-        unsigned int type:1;
-    } _has;
+        unsigned int has_errorCode:1;
+        unsigned int has_occurrenceResponseIndex:1;
+        unsigned int has_occurrenceStepIndex:1;
+        unsigned int has_switchedToResponseIndex:1;
+        unsigned int has_synthesizedStepManeuverType:1;
+        unsigned int has_type:1;
+        unsigned int read_errorDomain:1;
+        unsigned int read_occurrenceLatLng:1;
+        unsigned int read_occurrenceRouteId:1;
+        unsigned int read_switchedToRouteId:1;
+        unsigned int read_synthesizedStepInstructions:1;
+        unsigned int wrote_errorCode:1;
+        unsigned int wrote_errorDomain:1;
+        unsigned int wrote_occurrenceLatLng:1;
+        unsigned int wrote_occurrenceRouteId:1;
+        unsigned int wrote_switchedToRouteId:1;
+        unsigned int wrote_synthesizedStepInstructions:1;
+        unsigned int wrote_occurrenceResponseIndex:1;
+        unsigned int wrote_occurrenceStepIndex:1;
+        unsigned int wrote_switchedToResponseIndex:1;
+        unsigned int wrote_synthesizedStepManeuverType:1;
+        unsigned int wrote_type:1;
+    } _flags;
 }
 
-@property (nonatomic) long long errorCode; // @synthesize errorCode=_errorCode;
-@property (strong, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
+@property (nonatomic) long long errorCode;
+@property (strong, nonatomic) NSString *errorDomain;
 @property (nonatomic) BOOL hasErrorCode;
 @property (readonly, nonatomic) BOOL hasErrorDomain;
 @property (readonly, nonatomic) BOOL hasOccurrenceLatLng;
@@ -46,19 +64,25 @@
 @property (readonly, nonatomic) BOOL hasSynthesizedStepInstructions;
 @property (nonatomic) BOOL hasSynthesizedStepManeuverType;
 @property (nonatomic) BOOL hasType;
-@property (strong, nonatomic) GEOLatLng *occurrenceLatLng; // @synthesize occurrenceLatLng=_occurrenceLatLng;
-@property (nonatomic) unsigned int occurrenceResponseIndex; // @synthesize occurrenceResponseIndex=_occurrenceResponseIndex;
-@property (strong, nonatomic) NSData *occurrenceRouteId; // @synthesize occurrenceRouteId=_occurrenceRouteId;
-@property (nonatomic) unsigned int occurrenceStepIndex; // @synthesize occurrenceStepIndex=_occurrenceStepIndex;
-@property (nonatomic) unsigned int switchedToResponseIndex; // @synthesize switchedToResponseIndex=_switchedToResponseIndex;
-@property (strong, nonatomic) NSData *switchedToRouteId; // @synthesize switchedToRouteId=_switchedToRouteId;
-@property (strong, nonatomic) NSString *synthesizedStepInstructions; // @synthesize synthesizedStepInstructions=_synthesizedStepInstructions;
-@property (nonatomic) int synthesizedStepManeuverType; // @synthesize synthesizedStepManeuverType=_synthesizedStepManeuverType;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (strong, nonatomic) GEOLatLng *occurrenceLatLng;
+@property (nonatomic) unsigned int occurrenceResponseIndex;
+@property (strong, nonatomic) NSData *occurrenceRouteId;
+@property (nonatomic) unsigned int occurrenceStepIndex;
+@property (nonatomic) unsigned int switchedToResponseIndex;
+@property (strong, nonatomic) NSData *switchedToRouteId;
+@property (strong, nonatomic) NSString *synthesizedStepInstructions;
+@property (nonatomic) int synthesizedStepManeuverType;
+@property (nonatomic) int type;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSynthesizedStepManeuverType:(id)arg1;
 - (int)StringAsType:(id)arg1;
+- (void)_readErrorDomain;
+- (void)_readOccurrenceLatLng;
+- (void)_readOccurrenceRouteId;
+- (void)_readSwitchedToRouteId;
+- (void)_readSynthesizedStepInstructions;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -66,6 +90,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)synthesizedStepManeuverTypeAsString:(int)arg1;
 - (id)typeAsString:(int)arg1;

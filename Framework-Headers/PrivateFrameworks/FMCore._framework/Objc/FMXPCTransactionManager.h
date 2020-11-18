@@ -7,17 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSCountedSet, NSString;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_transaction;
 
 @interface FMXPCTransactionManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_txn_ops_queue;
     NSCountedSet *_activeTransactions;
     NSString *_keepAliveActivityIdentifier;
+    NSObject<OS_os_transaction> *_masterTransaction;
 }
 
 @property (strong, nonatomic) NSCountedSet *activeTransactions; // @synthesize activeTransactions=_activeTransactions;
 @property (strong, nonatomic) NSString *keepAliveActivityIdentifier; // @synthesize keepAliveActivityIdentifier=_keepAliveActivityIdentifier;
+@property (strong, nonatomic) NSObject<OS_os_transaction> *masterTransaction; // @synthesize masterTransaction=_masterTransaction;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *txn_ops_queue; // @synthesize txn_ops_queue=_txn_ops_queue;
 
 + (id)sharedInstance;

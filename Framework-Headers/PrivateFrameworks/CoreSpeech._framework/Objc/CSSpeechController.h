@@ -6,24 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreSpeech/CSAudioAlertProvidingDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioConverterDelegate-Protocol.h>
-#import <CoreSpeech/CSAudioRouteChangeMonitorDelegate-Protocol.h>
+#import <CoreSpeech/CSAudioSessionControllerDelegate-Protocol.h>
+#import <CoreSpeech/CSAudioSessionProvidingDelegate-Protocol.h>
+#import <CoreSpeech/CSAudioStreamProvidingDelegate-Protocol.h>
+#import <CoreSpeech/CSContinuousVoiceTriggerDelegate-Protocol.h>
+#import <CoreSpeech/CSSmartSiriVolumeControllerDelegate-Protocol.h>
 #import <CoreSpeech/CSSpIdSpeakerRecognizerDelegate-Protocol.h>
 #import <CoreSpeech/CSSpeechManagerDelegate-Protocol.h>
-#import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
+#import <CoreSpeech/CSXPCClientDelegate-Protocol.h>
 
-@class CSAudioConverter, CSAudioSampleRateConverter, CSAudioZeroCounter, CSEndpointerProxy, CSPlainAudioFileWriter, CSSpIdImplicitTraining, CSSpeakerIdRecognizerFactory, CSSpeechEndHostTimeEstimator, CSSpeechManager, NSDictionary, NSString;
-@protocol CSEndpointAnalyzer, CSSpIdSpeakerRecognizer, CSSpeechControllerDelegate, OS_dispatch_group, OS_dispatch_queue;
+@class CSAudioConverter, CSAudioPowerMeter, CSAudioRecordContext, CSAudioSampleRateConverter, CSAudioStream, CSAudioZeroCounter, CSEndpointerProxy, CSLanguageDetector, CSPlainAudioFileWriter, CSSelectiveChannelAudioFileWriter, CSSmartSiriVolumeController, CSSpIdImplicitTraining, CSSpeakerIdRecognizerFactory, CSSpeechEndHostTimeEstimator, CSUserVoiceProfileStore, CSXPCClient, NSDictionary, NSString, NSUUID;
+@protocol CSAudioAlertProviding, CSAudioMeterProviding, CSAudioMetricProviding, CSAudioSessionProviding, CSAudioStreamProviding, CSEndpointAnalyzer, CSLanguageDetectorDelegate, CSSpIdSpeakerRecognizer, CSSpeakerIdentificationDelegate, CSSpeechControllerDelegate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface CSSpeechController : NSObject <CSAudioConverterDelegate, CSSpIdSpeakerRecognizerDelegate, CSAudioRouteChangeMonitorDelegate, CSVoiceTriggerDelegate, CSSpeechManagerDelegate>
+@interface CSSpeechController : NSObject <CSAudioConverterDelegate, CSSpIdSpeakerRecognizerDelegate, CSSmartSiriVolumeControllerDelegate, CSAudioSessionProvidingDelegate, CSAudioStreamProvidingDelegate, CSAudioAlertProvidingDelegate, CSAudioSessionControllerDelegate, CSXPCClientDelegate, CSSpeechManagerDelegate, CSContinuousVoiceTriggerDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_contextResetQueue;
     CSAudioConverter *_opusAudioConverter;
     CSAudioConverter *_narrowBandOpusConverter;
     CSAudioConverter *_audioConverter;
     CSAudioSampleRateConverter *_downsampler;
     NSDictionary *_requestedRecordSettings;
     NSDictionary *_lastVoiceTriggerInfo;
+    NSDictionary *_lastRTSTriggerInfo;
     CSAudioZeroCounter *_continuousZeroCounter;
     NSObject<OS_dispatch_queue> *_audibleFeedbackQueue;
     NSObject<OS_dispatch_group> *_twoShotAudibleFeedbackDecisionGroup;
@@ -38,22 +45,48 @@
     BOOL _isRemoteVADAvailableStream;
     BOOL _myriadPreventingTwoShotFeedback;
     BOOL _needsPostGain;
+    BOOL _shouldUseLanguageDetectorForCurrentRequest;
+    float _cachedAvgPower;
+    float _cachedPeakPower;
     id<CSSpeechControllerDelegate> _delegate;
+    id<CSSpeakerIdentificationDelegate> _speakerIdDelegate;
+    id<CSLanguageDetectorDelegate> _languageDetectorDelegate;
     CSEndpointerProxy *_endpointerProxy;
-    CSSpeechManager *_speechManager;
-    NSDictionary *_avvcContext;
+    CSAudioRecordContext *_audioRecordContext;
+    CSAudioStream *_audioStream;
+    id<CSAudioStreamProviding> _streamProvider;
+    id<CSAudioSessionProviding> _sessionProvider;
+    id<CSAudioAlertProviding> _alertProvider;
+    id<CSAudioMeterProviding> _audioMeterProvider;
+    id<CSAudioMetricProviding> _audioMetricProvider;
     CSPlainAudioFileWriter *_audioFileWriter;
+    CSSelectiveChannelAudioFileWriter *_serverLoggingWriter;
+    CSSmartSiriVolumeController *_volumeController;
     CSSpeakerIdRecognizerFactory *_spIdFactory;
     id<CSSpIdSpeakerRecognizer> _spIdRecognizer;
     CSSpIdImplicitTraining *_voiceTriggerImplicitTraining;
     NSDictionary *_spIdUserScores;
+    CSUserVoiceProfileStore *_voiceProfileStore;
     unsigned long long _activeChannel;
     CSSpeechEndHostTimeEstimator *_speechEndHostTimeEstimator;
+    CSLanguageDetector *_languageDetector;
+    NSUUID *_pendingAudioSessionActivationToken;
+    CDUnknownBlockType _pendingAudioSessionActivationCompletion;
+    double _audioSessionActivationDelay;
+    CSXPCClient *_xpcClient;
+    CSAudioPowerMeter *_powerMeter;
 }
 
 @property (nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
+@property (strong, nonatomic) id<CSAudioAlertProviding> alertProvider; // @synthesize alertProvider=_alertProvider;
 @property (strong, nonatomic) CSPlainAudioFileWriter *audioFileWriter; // @synthesize audioFileWriter=_audioFileWriter;
-@property (strong, nonatomic) NSDictionary *avvcContext; // @synthesize avvcContext=_avvcContext;
+@property (strong, nonatomic) id<CSAudioMeterProviding> audioMeterProvider; // @synthesize audioMeterProvider=_audioMeterProvider;
+@property (strong, nonatomic) id<CSAudioMetricProviding> audioMetricProvider; // @synthesize audioMetricProvider=_audioMetricProvider;
+@property (strong, nonatomic) CSAudioRecordContext *audioRecordContext; // @synthesize audioRecordContext=_audioRecordContext;
+@property (nonatomic) double audioSessionActivationDelay; // @synthesize audioSessionActivationDelay=_audioSessionActivationDelay;
+@property (strong, nonatomic) CSAudioStream *audioStream; // @synthesize audioStream=_audioStream;
+@property (nonatomic) float cachedAvgPower; // @synthesize cachedAvgPower=_cachedAvgPower;
+@property (nonatomic) float cachedPeakPower; // @synthesize cachedPeakPower=_cachedPeakPower;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CSSpeechControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -69,68 +102,106 @@
 @property (nonatomic) BOOL isRemoteVADAvailableStream; // @synthesize isRemoteVADAvailableStream=_isRemoteVADAvailableStream;
 @property (nonatomic) BOOL isSoundPlaying; // @synthesize isSoundPlaying=_isSoundPlaying;
 @property (nonatomic) BOOL isTimerPlaying; // @synthesize isTimerPlaying=_isTimerPlaying;
+@property (strong, nonatomic) CSLanguageDetector *languageDetector; // @synthesize languageDetector=_languageDetector;
+@property (weak, nonatomic) id<CSLanguageDetectorDelegate> languageDetectorDelegate; // @synthesize languageDetectorDelegate=_languageDetectorDelegate;
 @property (nonatomic) BOOL myriadPreventingTwoShotFeedback; // @synthesize myriadPreventingTwoShotFeedback=_myriadPreventingTwoShotFeedback;
 @property (nonatomic) BOOL needsPostGain; // @synthesize needsPostGain=_needsPostGain;
+@property (copy, nonatomic) CDUnknownBlockType pendingAudioSessionActivationCompletion; // @synthesize pendingAudioSessionActivationCompletion=_pendingAudioSessionActivationCompletion;
+@property (strong, nonatomic) NSUUID *pendingAudioSessionActivationToken; // @synthesize pendingAudioSessionActivationToken=_pendingAudioSessionActivationToken;
+@property (strong, nonatomic) CSAudioPowerMeter *powerMeter; // @synthesize powerMeter=_powerMeter;
+@property (strong, nonatomic) CSSelectiveChannelAudioFileWriter *serverLoggingWriter; // @synthesize serverLoggingWriter=_serverLoggingWriter;
+@property (strong, nonatomic) id<CSAudioSessionProviding> sessionProvider; // @synthesize sessionProvider=_sessionProvider;
+@property (nonatomic) BOOL shouldUseLanguageDetectorForCurrentRequest; // @synthesize shouldUseLanguageDetectorForCurrentRequest=_shouldUseLanguageDetectorForCurrentRequest;
 @property (strong, nonatomic) CSSpeakerIdRecognizerFactory *spIdFactory; // @synthesize spIdFactory=_spIdFactory;
 @property (strong, nonatomic) id<CSSpIdSpeakerRecognizer> spIdRecognizer; // @synthesize spIdRecognizer=_spIdRecognizer;
 @property (strong, nonatomic) NSDictionary *spIdUserScores; // @synthesize spIdUserScores=_spIdUserScores;
+@property (weak, nonatomic) id<CSSpeakerIdentificationDelegate> speakerIdDelegate; // @synthesize speakerIdDelegate=_speakerIdDelegate;
 @property (strong, nonatomic) CSSpeechEndHostTimeEstimator *speechEndHostTimeEstimator; // @synthesize speechEndHostTimeEstimator=_speechEndHostTimeEstimator;
-@property (weak, nonatomic) CSSpeechManager *speechManager; // @synthesize speechManager=_speechManager;
+@property (strong, nonatomic) id<CSAudioStreamProviding> streamProvider; // @synthesize streamProvider=_streamProvider;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL twoShotNotificationEnabled; // @synthesize twoShotNotificationEnabled=_twoShotNotificationEnabled;
+@property (strong, nonatomic) CSUserVoiceProfileStore *voiceProfileStore; // @synthesize voiceProfileStore=_voiceProfileStore;
 @property (strong, nonatomic) CSSpIdImplicitTraining *voiceTriggerImplicitTraining; // @synthesize voiceTriggerImplicitTraining=_voiceTriggerImplicitTraining;
+@property (strong, nonatomic) CSSmartSiriVolumeController *volumeController; // @synthesize volumeController=_volumeController;
+@property (strong, nonatomic) CSXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 
 + (BOOL)isSmartSiriVolumeAvailable;
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)CSAlarmMonitor:(id)arg1 didReceiveAlarmChanged:(long long)arg2;
-- (void)CSAudioRouteChangeMonitor:(id)arg1 didReceiveAudioRouteChangeEvent:(long long)arg2;
 - (void)CSMediaPlayingMonitor:(id)arg1 didReceiveMediaPlayingChanged:(long long)arg2;
 - (void)CSTimerMonitor:(id)arg1 didReceiveTimerChanged:(long long)arg2;
+- (void)CSXPCClient:(id)arg1 didDisconnect:(BOOL)arg2;
+- (BOOL)_activateAudioSession:(id *)arg1;
+- (BOOL)_activateAudioSessionWithDelay:(double)arg1 error:(id *)arg2;
 - (BOOL)_canPlayPhaticDuringMediaPlayback;
+- (void)_cancelPendingAudioSessionActivateForReason:(id)arg1;
 - (id)_contextToString:(id)arg1;
+- (void)_createAudioPowerMeterIfNeeded;
+- (BOOL)_createAudioProviderFromXPCWithContext:(id)arg1;
+- (void)_createLanguageDetectorIfNeeded;
 - (long long)_currentAudioRecorderSampleRate;
-- (void)_deviceAudioLogging;
-- (id)_getRecordSettings;
+- (void)_deviceAudioLoggingWithFileWriter:(id)arg1;
+- (void)_didStopForReason:(long long)arg1;
+- (BOOL)_fetchAudioProviderWithContext:(id)arg1;
+- (BOOL)_fetchLastTriggerInfo;
 - (id)_getSpeechIdentifier;
 - (void)_initializeAlarmState;
 - (void)_initializeMediaPlayingState;
 - (void)_initializeTimerState;
-- (BOOL)_isAutoPrompted;
-- (BOOL)_isHearstDoubleTap;
-- (BOOL)_isHearstVoiceTriggered;
-- (BOOL)_isJarvisButtonPress;
-- (BOOL)_isJarvisVoiceTriggered;
-- (BOOL)_isSpeakerIdTrainingTriggered;
-- (BOOL)_isVoiceTriggered;
+- (BOOL)_isDelayedDuckingSupportedContext;
+- (id)_languageDetectorOptionFromSettings:(id)arg1;
+- (void)_performPendingAudioSessionActivateForReason:(id)arg1;
 - (unsigned long long)_phaticPlaybackReason;
+- (void)_scheduleActivateAudioSessionWithDelay:(double)arg1 forReason:(id)arg2 validator:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (float)_scheduledPhaticDelay;
 - (void)_setSoundPlayingState;
-- (BOOL)_setupAudioConverter:(BOOL)arg1;
+- (BOOL)_setupAudioConverter:(BOOL)arg1 isNarrowBand:(BOOL)arg2;
 - (void)_setupDownsamplerIfNeeded;
 - (void)_setupSpeakerId;
-- (BOOL)_shouldEstimateSpeechEndHosttime;
+- (BOOL)_shouldFetchRaiseToSpeakInfo;
+- (BOOL)_shouldFetchVoiceTriggerInfo;
+- (BOOL)_shouldResetContextAtPrepare;
 - (BOOL)_shouldSchedulePhaticAtStartRecording;
 - (BOOL)_shouldSetStartSampleCount;
+- (BOOL)_shouldSetStartSampleCountForRTS;
+- (BOOL)_shouldUseLanguageDetector:(id)arg1;
+- (void)_startPhaticDecision;
+- (void)_teardownAudioProviderIfNeeded;
 - (unsigned long long)alertStartTime;
+- (void)audioAlertProvidingDidFinishAlertPlayback:(id)arg1 ofType:(long long)arg2 error:(id)arg3;
 - (void)audioConverterDidConvertPackets:(id)arg1 packets:(id)arg2 durationInSec:(float)arg3 timestamp:(unsigned long long)arg4;
+- (void)audioSessionController:(id)arg1 didReceiveAudioSessionMediaServicesWereResetNotificationWithUserInfo:(id)arg2;
+- (void)audioSessionProvider:(id)arg1 didChangeContext:(BOOL)arg2;
+- (void)audioSessionProvider:(id)arg1 didSetAudioSessionActive:(BOOL)arg2;
+- (void)audioSessionProvider:(id)arg1 providerInvalidated:(BOOL)arg2;
+- (void)audioSessionProvider:(id)arg1 willSetAudioSessionActive:(BOOL)arg2;
+- (void)audioSessionProviderBeginInterruption:(id)arg1;
+- (void)audioSessionProviderBeginInterruption:(id)arg1 withContext:(id)arg2;
+- (void)audioSessionProviderEndInterruption:(id)arg1;
+- (void)audioStreamProvider:(id)arg1 audioBufferAvailable:(id)arg2;
+- (void)audioStreamProvider:(id)arg1 audioChunkForTVAvailable:(id)arg2;
+- (void)audioStreamProvider:(id)arg1 didHardwareConfigurationChange:(long long)arg2;
+- (void)audioStreamProvider:(id)arg1 didStopStreamUnexpectly:(long long)arg2;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (float)averagePowerForOutputReference;
 - (void)beginWaitingForMyriad;
+- (void)cancelCurrentLanguageDetectorRequest;
 - (void)endWaitingForMyriadWithDecision:(unsigned long long)arg1;
 - (id)endpointerModelVersion;
 - (struct AudioStreamBasicDescription)getLPCMAudioStreamBasicDescription;
 - (double)getRecordBufferDuration;
 - (float)getSmartSiriVolume;
-- (id)initWithManager:(id)arg1;
+- (id)init;
 - (BOOL)initializeRecordSessionWithContext:(id)arg1;
+- (BOOL)isBuiltInVoiceTriggered;
 - (BOOL)isHearstVoiceTriggered;
 - (BOOL)isJarvisVoiceTriggered;
 - (BOOL)isRTSTriggered;
 - (BOOL)isRecording;
 - (BOOL)isSmartSiriVolumeAvailable;
-- (BOOL)isVoiceTriggered;
 - (void)keywordDetectorDidDetectKeyword;
+- (void)languageDetectorSetMostRecentRecognitionLanguage:(id)arg1;
 - (double)lastEndOfVoiceActivityTime;
 - (id)metrics;
 - (unsigned long long)outputReferenceChannel;
@@ -138,6 +209,7 @@
 - (float)peakPowerForOutputReference;
 - (BOOL)playAlertSoundForType:(long long)arg1;
 - (BOOL)playRecordStartingAlertAndResetEndpointer;
+- (id)playbackRoute;
 - (void)preheat;
 - (BOOL)prepareRecordWithSettings:(id)arg1 error:(id *)arg2;
 - (void)prewarmAudioSession;
@@ -157,30 +229,18 @@
 - (BOOL)setRecordBufferDuration:(double)arg1;
 - (void)setSynchronousCallbackEnabled:(BOOL)arg1;
 - (void)shouldAcceptEagerResultForDuration:(double)arg1 resultsCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)smartSiriVolumeControllerDetectedSystemVolumeChange:(id)arg1 withVolume:(float)arg2 forReason:(unsigned long long)arg3;
 - (void)speakerRecognizer:(id)arg1 hasSpeakerIdInfo:(id)arg2;
 - (void)speakerRecognizerFinishedProcessing:(id)arg1 withFinalSpeakerIdInfo:(id)arg2;
-- (void)speechManager:(id)arg1 didSetAudioSessionActive:(BOOL)arg2;
-- (void)speechManager:(id)arg1 willSetAudioSessionActive:(BOOL)arg2;
-- (void)speechManagerBeginRecordInterruption:(id)arg1;
-- (void)speechManagerBeginRecordInterruption:(id)arg1 withContext:(id)arg2;
-- (void)speechManagerDetectedSystemVolumeChange:(id)arg1 withVolume:(float)arg2 forReason:(unsigned long long)arg3;
-- (void)speechManagerDidFinishAlertPlayback:(id)arg1 ofType:(long long)arg2 error:(id)arg3;
-- (void)speechManagerDidStartForwarding:(id)arg1 successfully:(BOOL)arg2 error:(id)arg3;
-- (void)speechManagerDidStopForwarding:(id)arg1 forReason:(long long)arg2;
-- (void)speechManagerEndRecordInterruption:(id)arg1;
-- (void)speechManagerLPCMRecordBufferAvailable:(id)arg1 chunk:(id)arg2;
-- (void)speechManagerRecordBufferAvailable:(id)arg1 buffer:(id)arg2;
-- (void)speechManagerRecordHardwareConfigurationDidChange:(id)arg1 toConfiguration:(long long)arg2;
-- (id)speechManagerRecordingContext;
 - (void)startController;
 - (BOOL)startRecording:(id *)arg1;
 - (BOOL)startRecordingWithSettings:(id)arg1 error:(id *)arg2;
+- (void)stopEndpointer;
 - (void)stopRecording;
 - (void)updateEndpointerDelayedTrigger:(BOOL)arg1;
 - (void)updateEndpointerThreshold:(float)arg1;
 - (void)updateMeters;
 - (void)voiceTriggerDidDetectKeyword:(id)arg1 deviceId:(id)arg2;
-- (void)voiceTriggerDidDetectTwoShotAtTime:(double)arg1;
 - (id)voiceTriggerInfo;
 
 @end

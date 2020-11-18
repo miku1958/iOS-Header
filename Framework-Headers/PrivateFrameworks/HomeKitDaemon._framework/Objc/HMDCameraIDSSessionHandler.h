@@ -10,13 +10,13 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDCameraSessionID, IDSService, IDSSession, NSObject, NSString;
+@class HMDCameraStreamSessionID, IDSService, IDSSession, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDCameraIDSSessionHandler : HMFObject <HMFLogging, IDSServiceDelegate, HMDCameraRemoteStreamProtocol>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMDCameraSessionID *_sessionID;
+    HMDCameraStreamSessionID *_sessionID;
     IDSService *_idsStreamService;
     IDSSession *_idsSession;
 }
@@ -26,7 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) IDSSession *idsSession; // @synthesize idsSession=_idsSession;
 @property (readonly, nonatomic) IDSService *idsStreamService; // @synthesize idsStreamService=_idsStreamService;
-@property (readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 

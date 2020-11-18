@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) SXDropCapStyle *dropCapStyle;
 @property (readonly, nonatomic) long long exactLineHeight;
 @property (readonly, nonatomic) long long firstLineIndent;
+@property (readonly, nonatomic) BOOL fontScaling;
 @property (readonly, nonatomic) BOOL hangingPunctuation;
 @property (readonly, nonatomic) long long hyphenation;
 @property (readonly, nonatomic) long long lineHeight;

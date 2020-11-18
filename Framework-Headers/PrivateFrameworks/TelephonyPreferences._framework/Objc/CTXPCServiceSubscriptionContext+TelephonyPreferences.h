@@ -6,13 +6,20 @@
 
 #import <CoreTelephony/CTXPCServiceSubscriptionContext.h>
 
-@class NSString;
+#import <TelephonyPreferences/TPSTelephonySubscription-Protocol.h>
 
-@interface CTXPCServiceSubscriptionContext (TelephonyPreferences)
+@class NSString, NSUUID;
 
+@interface CTXPCServiceSubscriptionContext (TelephonyPreferences) <TPSTelephonySubscription>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *tps_isoCountryCode;
 @property (readonly, copy, nonatomic) NSString *tps_localizedLabel;
 @property (readonly, copy, nonatomic) NSString *tps_localizedPhoneNumber;
+@property (readonly, nonatomic) NSUUID *uuid;
 
 + (id)telephonyClient;
 @end

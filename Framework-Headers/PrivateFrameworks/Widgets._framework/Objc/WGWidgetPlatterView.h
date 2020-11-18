@@ -4,47 +4,87 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PlatterKit/PLTitledPlatterView.h>
+#import <UIKit/UIView.h>
 
-@class NSString, UIButton, UIView, WGWidgetHostingViewController, WGWidgetListItemViewController;
+#import <Widgets/MTMaterialGrouping-Protocol.h>
+#import <Widgets/MTVisualStylingRequiring-Protocol.h>
+#import <Widgets/PLContentSizeCategoryAdjusting-Protocol.h>
+#import <Widgets/PLContentSizeManaging-Protocol.h>
 
-@interface WGWidgetPlatterView : PLTitledPlatterView
+@class MTMaterialView, NSArray, NSString, UIButton, WGPlatterHeaderContentView, WGWidgetHostingViewController, WGWidgetListItemViewController;
+
+@interface WGWidgetPlatterView : UIView <PLContentSizeManaging, PLContentSizeCategoryAdjusting, MTMaterialGrouping, MTVisualStylingRequiring>
 {
-    UIView *_compatibilityDarkeningView;
-    NSString *_longerTitle;
+    MTMaterialView *_backgroundView;
+    MTMaterialView *_headerBackgroundView;
+    WGPlatterHeaderContentView *_headerContentView;
+    double _cornerRadius;
+    BOOL _adjustsFontForContentSizeCategory;
+    BOOL _backgroundHidden;
     BOOL _showingMoreContent;
+    NSString *_materialGroupNameBase;
     WGWidgetHostingViewController *_widgetHost;
     WGWidgetListItemViewController *_listItem;
+    UIView *_contentView;
+    unsigned long long _clippingEdge;
+    double _overrideHeightForLayingOutContentView;
+    double _topMarginForLayout;
     long long _buttonMode;
 }
 
 @property (readonly, nonatomic) UIButton *addWidgetButton;
 @property (nonatomic, getter=isAddWidgetButtonVisible) BOOL addWidgetButtonVisible;
+@property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
+@property (nonatomic, getter=isBackgroundHidden) BOOL backgroundHidden; // @synthesize backgroundHidden=_backgroundHidden;
 @property (nonatomic) long long buttonMode; // @synthesize buttonMode=_buttonMode;
+@property (nonatomic) unsigned long long clippingEdge; // @synthesize clippingEdge=_clippingEdge;
+@property (strong, nonatomic, setter=_setContentView:) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) WGWidgetListItemViewController *listItem; // @synthesize listItem=_listItem;
+@property (copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
+@property (nonatomic) double overrideHeightForLayingOutContentView; // @synthesize overrideHeightForLayingOutContentView=_overrideHeightForLayingOutContentView;
+@property (copy, nonatomic) NSString *preferredContentSizeCategory;
+@property (readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 @property (readonly, nonatomic) UIButton *showMoreButton;
 @property (nonatomic, getter=isShowMoreButtonVisible) BOOL showMoreButtonVisible;
 @property (nonatomic, getter=isShowingMoreContent) BOOL showingMoreContent; // @synthesize showingMoreContent=_showingMoreContent;
+@property (readonly) Class superclass;
+@property (nonatomic) double topMarginForLayout; // @synthesize topMarginForLayout=_topMarginForLayout;
 @property (weak, nonatomic) WGWidgetHostingViewController *widgetHost; // @synthesize widgetHost=_widgetHost;
 
++ (double)contentBaselineToBoundsBottomWithWidth:(double)arg1;
 - (void).cxx_destruct;
-- (void)_configureHeaderContentView;
+- (void)_configureBackgroundMaterialViewIfNecessary;
+- (void)_configureHeaderViewsIfNecessary;
+- (struct CGSize)_contentSize;
+- (double)_continuousCornerRadius;
 - (void)_handleAddWidget:(id)arg1;
 - (void)_handleIconButton:(id)arg1;
+- (struct CGRect)_headerFrameForBounds:(struct CGRect)arg1;
 - (BOOL)_isUtilityButtonVisible;
+- (void)_layoutContentView;
+- (void)_layoutHeaderViews;
+- (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setUtilityButtonVisible:(BOOL)arg1;
 - (void)_toggleShowMore:(id)arg1;
-- (void)_updateCompatibilityDarkeningViewIfNecessary;
+- (void)_updateHeaderContentViewVisualStyling;
+- (void)_updateShowMoreButtonImage;
 - (void)_updateUtilityButtonForMode:(long long)arg1;
 - (void)_updateUtilityButtonForMoreContentState:(BOOL)arg1;
-- (void)_willRemoveCustomContent:(id)arg1;
+- (BOOL)adjustForContentSizeCategoryChange;
+- (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
 - (void)iconDidInvalidate:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 andCornerRadius:(double)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (void)setBackgroundBlurred:(BOOL)arg1;
+- (struct CGSize)minimumSizeThatFits:(struct CGSize)arg1;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
+- (id)visualStylingProviderForCategory:(long long)arg1;
+- (void)willRemoveSubview:(id)arg1;
 
 @end
 

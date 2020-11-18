@@ -6,89 +6,93 @@
 
 #import <UIKit/UIView.h>
 
-#import <MaterialKit/MTMaterialSettingsObserving-Protocol.h>
+#import <MaterialKit/MTVisualStylingProviding-Protocol.h>
+#import <MaterialKit/NSCopying-Protocol.h>
 
-@class MTMaterialSettingsInterpolator, MTVibrantStylingProvider, NSString, UIViewFloatAnimatableProperty, _MTBackdropView;
-@protocol MTMaterialSettings><MTMaterialSettingsObservable;
+@class NSBundle, NSDictionary, NSHashTable, NSMutableDictionary, NSString, UIViewFloatAnimatableProperty;
 
-@interface MTMaterialView : UIView <MTMaterialSettingsObserving>
+@interface MTMaterialView : UIView <NSCopying, MTVisualStylingProviding>
 {
-    MTMaterialSettingsInterpolator *_settingsInterpolator;
-    _MTBackdropView *_backdropView;
-    UIView *_reducedTransparencyBackdropReplacementView;
-    UIView *_baseOverlayView;
-    UIView *_primaryOverlayView;
-    UIView *_secondaryOverlayView;
-    BOOL _cornerRadiusIsContinuous;
-    BOOL _isConfiguredAsOverlay;
-    BOOL _highlighted;
-    BOOL _shouldCrossfadeIfNecessary;
-    BOOL _forceCrossfadeIfNecessary;
     BOOL _useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
-    NSString *_groupName;
-    CDUnknownBlockType _backdropScaleAdjustment;
+    BOOL _recipeDynamic;
+    NSMutableDictionary *_cmVisualStyleCategoriesToProviders;
+    NSDictionary *_recipeNamesByTraitCollection;
+    NSBundle *_recipeBundle;
+    NSHashTable *_observers;
+    UIView *_highlightView;
+    BOOL _needsLayoutOnMoveToWindow;
+    BOOL _highlighted;
+    NSString *_groupNameBase;
+    long long _recipe;
+    long long _configuration;
     UIViewFloatAnimatableProperty *_backdropFloatAnimatableProperty;
 }
 
-@property (nonatomic) BOOL allowsInPlaceFiltering;
-@property (strong, nonatomic) UIViewFloatAnimatableProperty *backdropFloatAnimatableProperty; // @synthesize backdropFloatAnimatableProperty=_backdropFloatAnimatableProperty;
+@property (strong, nonatomic, getter=_backdropFloatAnimatableProperty) UIViewFloatAnimatableProperty *backdropFloatAnimatableProperty; // @synthesize backdropFloatAnimatableProperty=_backdropFloatAnimatableProperty;
 @property (copy, nonatomic) CDUnknownBlockType backdropScaleAdjustment;
-@property (copy, nonatomic) CDUnknownBlockType backdropScaleAdjustment; // @synthesize backdropScaleAdjustment=_backdropScaleAdjustment;
+@property (nonatomic, getter=isBlurEnabled) BOOL blurEnabled;
+@property (nonatomic, getter=isCaptureOnly) BOOL captureOnly;
+@property (nonatomic) long long configuration; // @synthesize configuration=_configuration;
+@property (nonatomic, getter=isContentReplacedWithSnapshot) BOOL contentReplacedWithSnapshot;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL forceCrossfadeIfNecessary;
-@property (nonatomic) BOOL forceCrossfadeIfNecessary; // @synthesize forceCrossfadeIfNecessary=_forceCrossfadeIfNecessary;
-@property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property (copy, nonatomic) NSString *groupName;
+@property (copy, nonatomic) NSString *groupNameBase; // @synthesize groupNameBase=_groupNameBase;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
-@property (readonly, nonatomic) id<MTMaterialSettings><MTMaterialSettingsObservable> materialSettings;
+@property (nonatomic) BOOL ignoresScreenClip;
+@property (nonatomic) long long recipe; // @synthesize recipe=_recipe;
+@property (nonatomic, getter=isRecipeDynamic) BOOL recipeDynamic;
+@property (copy, nonatomic) NSString *recipeName;
 @property (nonatomic) BOOL shouldCrossfadeIfNecessary;
-@property (nonatomic) BOOL shouldCrossfadeIfNecessary; // @synthesize shouldCrossfadeIfNecessary=_shouldCrossfadeIfNecessary;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
-@property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustment; // @synthesize useBuiltInAlphaTransformerAndBackdropScaleAdjustment=_useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
 @property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustmentIfNecessary;
-@property (readonly, weak, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider;
 @property (nonatomic) double weighting;
+@property (nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
 
-+ (void)_validateRecipe:(long long *)arg1 andOptions:(unsigned long long *)arg2;
-+ (double)highlightAlpha;
++ (id)_recipeNameForTraitCollection:(id)arg1 withRecipeNamesByTraitCollection:(id)arg2;
 + (void)initialize;
-+ (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
-+ (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3;
-+ (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
-+ (id)materialViewWithSettings:(id)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
++ (Class)layerClass;
++ (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2;
++ (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3;
++ (id)materialViewWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
++ (id)materialViewWithRecipeNamed:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
++ (id)materialViewWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
++ (id)newDefaultHighlightAnimator;
 - (void).cxx_destruct;
-- (BOOL)_adjustScaleOfBackdropView:(id)arg1 ifNecessaryWithSettingsInterpolator:(id)arg2;
-- (id)_backdropLayer;
-- (void)_configureBackdropView:(id)arg1 withSettingsInterpolator:(id)arg2;
-- (void)_configureBackdropViewIfNecessaryWithSettingsInterpolator:(id)arg1;
-- (void)_configureBaseOverlayViewIfNecessaryWithSettingsInterpolator:(id)arg1;
-- (void)_configureIfNecessaryWithSettingsInterpolator:(id)arg1;
-- (void)_configureOverlayView:(id *)arg1 forOverlayOption:(unsigned long long)arg2 withSettingsInterpolator:(id)arg3 colorBlock:(CDUnknownBlockType)arg4;
-- (id)_configureOverlayView:(id *)arg1 ofClass:(Class)arg2 withSettingsInterpolator:(id)arg3 color:(id)arg4;
-- (void)_configurePrimaryOverlayViewIfNecessaryWithSettingsInterpolator:(id)arg1;
-- (void)_configureSecondaryOverlayViewIfNecessaryWithSettingsInterpolator:(id)arg1;
-- (double)_continuousCornerRadius;
-- (BOOL)_isCrossfadeNecessary;
-- (id)_observableSettings;
+- (void)_addObserver:(id)arg1;
+- (id)_groupNameWithBase:(id)arg1;
+- (id)_initWithCoreMaterialRecipe:(id)arg1 fromBundle:(id)arg2 coreMaterialConfiguration:(id)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
+- (id)_initWithRecipe:(long long)arg1 configuration:(long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
+- (id)_initWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2 configuration:(long long)arg3 initialWeighting:(double)arg4 scaleAdjustment:(CDUnknownBlockType)arg5;
+- (void)_invalidateAlphaTransformer;
+- (id)_materialLayer;
+- (void)_notifyObserversWithBlock:(CDUnknownBlockType)arg1;
+- (id)_recipeNameForCurrentTraitCollection;
 - (void)_reduceMotionStatusDidChange;
 - (void)_reduceTransparencyStatusDidChange;
-- (void)_reevaluateShouldReduceCaptureBitDepth:(BOOL)arg1;
-- (void)_setContinuousCornerRadius:(double)arg1;
-- (void)_setCornerRadius:(double)arg1;
-- (void)_setupOrInvalidateTransformer;
-- (BOOL)_supportsVariableWeighting;
-- (double)cornerRadius;
+- (void)_removeObserver:(id)arg1;
+- (void)_setRecipeName:(id)arg1 withWeighting:(double)arg2;
+- (void)_setupAlphaTransformer;
+- (void)_setupOrInvalidateAlphaTransformer;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)_updateGroupNameIfNecessary;
+- (void)_updateRecipeNameIfNeeded;
+- (BOOL)addCompletionForCurrentAnimation:(CDUnknownBlockType)arg1 forMaterialLayer:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithSettings:(id)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
+- (void)didMoveToWindow;
+- (id)init;
+- (BOOL)isManagingCustomOpacityTransitionForMaterialLayer:(id)arg1;
+- (BOOL)isManagingOpacityForMaterialLayer:(id)arg1;
+- (void)layoutSubviews;
+- (BOOL)managesWeightingForMaterialLayer:(id)arg1;
+- (id)newShadowView;
+- (id)newShadowViewWithCaptureOnlyMaterialView:(BOOL)arg1;
 - (void)prune;
-- (void)setFinalRecipe:(long long)arg1 options:(unsigned long long)arg2;
-- (void)setFinalSettings:(id)arg1 options:(unsigned long long)arg2;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
-- (void)transitionToRecipe:(long long)arg1 options:(unsigned long long)arg2 weighting:(double)arg3;
-- (void)transitionToSettings:(id)arg1 options:(unsigned long long)arg2 weighting:(double)arg3;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end
 

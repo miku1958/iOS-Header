@@ -8,14 +8,14 @@
 
 #import <HealthDaemon/HDAssertionObserver-Protocol.h>
 
-@class HDAssertionManager, NSString;
+@class HDAssertionManager, HDPowerAssertion, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HDHeartRateRecoveryManager : NSObject <HDAssertionObserver>
 {
     NSObject<OS_dispatch_queue> *_queue;
     HDAssertionManager *_assertionManager;
-    void *_powerAssertion;
+    HDPowerAssertion *_powerAssertion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +27,7 @@
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (void)assertionManager:(id)arg1 assertionTaken:(id)arg2;
 - (id)createAndTakeAssertionForOwnerIdentifier:(id)arg1 sessionStateController:(id)arg2;
+- (void)dealloc;
 - (id)init;
 
 @end

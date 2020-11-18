@@ -38,6 +38,7 @@
 - (long long)chartStyleForTimeScope:(long long)arg1;
 - (id)initWithDefaultChartStyle:(long long)arg1;
 - (id)intervalComponentsForTimeScope:(long long)arg1;
+- (BOOL)lineChartExtendFirstValueForTimeScope:(long long)arg1;
 - (BOOL)lineChartExtendLastValueForTimeScope:(long long)arg1;
 - (BOOL)lineChartFlatLastValueForTimeScope:(long long)arg1;
 - (BOOL)lineChartUsesPointMarkerImageForTimeScope:(long long)arg1;
@@ -47,6 +48,7 @@
 - (void)setChartPointRadius:(double)arg1 forTimeScope:(long long)arg2;
 - (void)setChartStyle:(long long)arg1 forTimeScope:(long long)arg2;
 - (void)setIntervalComponents:(id)arg1 forTimeScope:(long long)arg2;
+- (void)setLineChartExtendFirstValue:(BOOL)arg1 forTimeScope:(long long)arg2;
 - (void)setLineChartExtendLastValue:(BOOL)arg1 forTimeScope:(long long)arg2;
 - (void)setLineChartFlatLastValue:(BOOL)arg1 forTimeScope:(long long)arg2;
 - (void)setLineChartUsesPointMarkerImage:(BOOL)arg1 forTimeScope:(long long)arg2;

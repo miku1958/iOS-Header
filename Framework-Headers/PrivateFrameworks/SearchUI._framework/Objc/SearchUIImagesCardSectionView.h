@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong) TLKImagesView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKImagesView *contentView; // @dynamic contentView;
 
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (id)setupContentView;

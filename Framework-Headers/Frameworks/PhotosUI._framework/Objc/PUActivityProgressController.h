@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) CDUnknownBlockType cancellationHandler; // @synthesize cancellationHandler=_cancellationHandler;
+@property (readonly, nonatomic) BOOL isCancelled;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 

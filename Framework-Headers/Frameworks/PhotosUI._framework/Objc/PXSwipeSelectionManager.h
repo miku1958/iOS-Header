@@ -8,11 +8,12 @@
 
 #import <PhotosUICore/PXAutoScrollerDelegate-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
+#import <PhotosUICore/UIMultiSelectInteractionDelegate-Protocol.h>
 
-@class NSString, PXIndexPathSet, PXSectionedSelectionManager, PXUIAutoScroller, UIGestureRecognizer, UIScrollView;
+@class NSString, PXIndexPathSet, PXSectionedSelectionManager, PXUIAutoScroller, UIMultiSelectInteraction, UIScrollView;
 @protocol PXSwipeSelectionManagerDelegate;
 
-@interface PXSwipeSelectionManager : NSObject <PXAutoScrollerDelegate, PXSectionedDataSourceManagerObserver>
+@interface PXSwipeSelectionManager : NSObject <PXAutoScrollerDelegate, PXSectionedDataSourceManagerObserver, UIMultiSelectInteractionDelegate>
 {
     CDStruct_0794f076 _needsUpdateFlags;
     struct {
@@ -20,12 +21,16 @@
         BOOL respondsToItemIndexPathClosestLeadingLocation;
         BOOL respondsToItemIndexPathClosestAboveLocation;
         BOOL respondsToShouldSelectItemAtIndexPath;
+        BOOL respondsToShouldBeginSelectionAtLocation;
+        BOOL respondsToShouldAutomaticallyTransitionToMultiSelectModeAtPoint;
+        BOOL respondsToAutomaticallyTransitionToMultiSelectMode;
+        BOOL respondsToIndexPathSetFromIndexPathToIndexPath;
     } _delegateFlags;
     id<PXSwipeSelectionManagerDelegate> _delegate;
     unsigned long long _state;
     UIScrollView *_scrollView;
     PXSectionedSelectionManager *_selectionManager;
-    UIGestureRecognizer *_swipeGestureRecognizer;
+    UIMultiSelectInteraction *_multiSelectInteraction;
     unsigned long long __currentDataSourceIdentifier;
     PXIndexPathSet *__selectedIndexPathsBeforeSwipe;
     id __pausingChangesToken;
@@ -44,30 +49,39 @@
 @property (weak, nonatomic) id<PXSwipeSelectionManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIMultiSelectInteraction *multiSelectInteraction; // @synthesize multiSelectInteraction=_multiSelectInteraction;
 @property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property (nonatomic, setter=_setState:) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) UIGestureRecognizer *swipeGestureRecognizer; // @synthesize swipeGestureRecognizer=_swipeGestureRecognizer;
 
 - (void).cxx_destruct;
 - (void)_beginSelectionFromIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)_endSelection;
-- (void)_handleSwipeSelectionGesture:(id)arg1;
 - (void)_invalidateSelectedIndexPaths;
 - (BOOL)_isSelecting;
 - (struct PXSimpleIndexPath)_itemIndexPathAtLocation:(struct CGPoint)arg1;
 - (struct PXSimpleIndexPath)_itemIndexPathClosestAboveLocation:(struct CGPoint)arg1;
 - (struct PXSimpleIndexPath)_itemIndexPathClosestLeadingLocation:(struct CGPoint)arg1;
+- (BOOL)_shouldBeginMultiSelectAtLocation:(struct CGPoint)arg1;
 - (void)_updateSelectedIndexPaths;
 - (void)_updateSelectionWithHitIndexPath:(struct PXSimpleIndexPath)arg1 leadingClosestIndexPath:(struct PXSimpleIndexPath)arg2 aboveClosestIndexPath:(struct PXSimpleIndexPath)arg3;
 - (void)_updateWithDataSource:(id)arg1 changeHistory:(id)arg2;
-- (void)autoScroller:(id)arg1 didAutoscrollWithTimestamp:(double)arg2;
-- (void)dealloc;
+- (void)automaticallyTransitionToMultiSelectModeKeepingCurrentSelection:(BOOL)arg1;
+- (void)didEndMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (id)init;
 - (id)initWithSelectionManager:(id)arg1 scrollView:(id)arg2;
+- (BOOL)interaction:(id)arg1 shouldAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg2;
+- (BOOL)interaction:(id)arg1 shouldAutomaticallyTransitionToMultiSelectModeAtPoint:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
+- (BOOL)isInMultiSelectMode;
+- (void)multiSelectInteraction:(id)arg1 appendSelectionAtPoint:(struct CGPoint)arg2;
+- (void)multiSelectInteraction:(id)arg1 toggleSelectionStateUpToPoint:(struct CGPoint)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
+- (BOOL)shouldAllowSelectionExtensionAtPoint:(struct CGPoint)arg1;
+- (BOOL)shouldBeginMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2 withVelocity:(struct CGPoint)arg3;
+- (BOOL)supportsMultiSelectInteraction:(id)arg1;
+- (void)willBeginMultiSelectInteraction:(id)arg1 atPoint:(struct CGPoint)arg2;
 
 @end
 

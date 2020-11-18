@@ -9,7 +9,7 @@
 #import <AvatarUI/AVTAvatarStoreInternal-Protocol.h>
 
 @class NSString;
-@protocol AVTAvatarStoreDelegate, AVTAvatarStoreInternal, OS_dispatch_queue;
+@protocol AVTAvatarStoreDelegate, AVTAvatarStoreInternal, AVTStickerBackendDelegate, OS_dispatch_queue;
 
 @interface AVTObservableAvatarStore : NSObject <AVTAvatarStoreInternal>
 {
@@ -23,6 +23,7 @@
 @property (weak, nonatomic) id<AVTAvatarStoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<AVTStickerBackendDelegate> stickerBackendDelegate;
 @property (readonly, nonatomic) id<AVTAvatarStoreInternal> store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 
@@ -34,9 +35,13 @@
 - (BOOL)canCreateAvatarWithError:(id *)arg1;
 - (void)deleteAvatar:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteAvatarWithIdentifier:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)deleteRecentStickersForChangeTracker:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)deleteRecentStickersWithAvatarIdentifier:(id)arg1 stickerIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)didUseStickerWithAvatarIdentifier:(id)arg1 stickerIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)duplicateAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)fetchAvatarsForFetchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithStore:(id)arg1 callbackQueue:(id)arg2;
+- (id)recentStickersForFetchRequest:(id)arg1 error:(id *)arg2;
 - (void)saveAvatar:(id)arg1 completionBlock:(CDUnknownBlockType)arg2 thumbnailGenerationCompletionBlock:(CDUnknownBlockType)arg3;
 
 @end

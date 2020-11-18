@@ -29,6 +29,7 @@
 - (id)printingMailingFrame;
 - (void)reloadArticle;
 - (void)setConfiguration:(id)arg1;
+- (void)setReaderIsActive:(BOOL)arg1;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;
 - (void)willDestroyBrowserContextController:(id)arg1;
 

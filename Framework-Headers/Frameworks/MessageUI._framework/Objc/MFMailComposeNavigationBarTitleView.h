@@ -18,14 +18,18 @@
 @property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *title;
 
+- (void).cxx_destruct;
 - (struct UIEdgeInsets)_contentInsetsWithExclusionRects:(id)arg1 wantsUniformHorizontalInsets:(BOOL)arg2;
-- (long long)_preferredAlignment;
+- (BOOL)_needsToLayoutTitleLabel;
 - (double)_subtitleFontSizeWhenMini:(BOOL)arg1;
 - (id)_subtitleTextColor;
 - (double)_titleFontSizeWhenMini:(BOOL)arg1;
 - (double)_topPaddingForTitleWhenMini:(BOOL)arg1;
+- (void)_updateHeightForCurrentTraits;
+- (void)_updateTrailingBarButtonItemsAlpha;
 - (double)_verticalOffsetForSubtitleWhenMini:(BOOL)arg1;
 - (void)contentDidChange;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;

@@ -4,13 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NewsUI/NSObject-Protocol.h>
+#import <NewsUI/NFBundleAssembly-Protocol.h>
 
-@class NSArray;
-
-@protocol NFFrameworkAssembly <NSObject>
-
-@property (readonly, copy, nonatomic) NSArray *assemblies;
-
+@protocol NFFrameworkAssembly <NFBundleAssembly>
 @end
 

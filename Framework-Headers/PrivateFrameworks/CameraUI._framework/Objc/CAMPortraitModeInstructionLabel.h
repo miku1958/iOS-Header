@@ -23,8 +23,6 @@
 
 + (id)_textForShallowDepthOfFieldStatus:(long long)arg1 numberOfPeopleFound:(unsigned long long)arg2 flashMode:(long long)arg3 devicePosition:(long long)arg4 lightingType:(long long)arg5;
 + (BOOL)shouldDisplayInstructionForShallowDepthOfFieldStatus:(long long)arg1;
-- (double)_backgroundAlpha;
-- (struct UIEdgeInsets)_textInsets;
 - (void)_updateTextWithPriorStatus:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

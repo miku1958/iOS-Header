@@ -18,11 +18,13 @@
         unsigned int name:1;
         unsigned int qualifier:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _name;
     int _qualifier;
     _INPBFilePropertyValue *_value;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasName;
@@ -34,11 +36,14 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBFilePropertyValue *value; // @synthesize value=_value;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsName:(id)arg1;
 - (int)StringAsQualifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)nameAsString:(int)arg1;
 - (id)qualifierAsString:(int)arg1;

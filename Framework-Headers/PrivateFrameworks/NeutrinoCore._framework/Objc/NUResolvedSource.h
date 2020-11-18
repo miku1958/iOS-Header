@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)sourceDefinition:(out id *)arg1;
 
 @end

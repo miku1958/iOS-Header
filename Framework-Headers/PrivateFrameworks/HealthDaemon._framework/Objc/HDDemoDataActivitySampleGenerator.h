@@ -62,11 +62,11 @@
 - (void)_generateEllipticalWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
 - (void)_generateHIITWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
 - (void)_generateHikingWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
-- (void)_generateRunningWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
+- (void)_generateRunningWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2 workoutState:(id)arg3;
 - (void)_generateSwimmingSegmentDataWithStartDate:(id)arg1 segmentTime:(double)arg2 segmentDistance:(double)arg3 numLaps:(long long)arg4 strokeStyle:(long long)arg5 objectCollection:(id)arg6 demoPerson:(id)arg7;
 - (void)_generateSwimmingWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
 - (void)_generateWalkingWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
-- (void)_generateWorkoutDataWithHeartRates:(id)arg1 recoveryHeartRates:(id)arg2 objectCollection:(id)arg3 demoPerson:(id)arg4;
+- (void)_generateWorkoutDataWithHeartRates:(id)arg1 recoveryHeartRates:(id)arg2 objectCollection:(id)arg3 demoPerson:(id)arg4 workoutState:(id)arg5;
 - (void)_generateYogaWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
 - (BOOL)_isDemoPersonCoolingDown:(id)arg1 atTime:(double)arg2;
 - (BOOL)_isDemoPersonInWorkoutRecovery:(id)arg1 atTime:(double)arg2;
@@ -81,6 +81,7 @@
 - (id)exerciseMinutesForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)fallsForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)flightsClimbedForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (void)generateFirstRunSampleForDemoPerson:(id)arg1 firstDate:(id)arg2 objectCollection:(id)arg3;
 - (void)generateSamplesForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3 objectCollection:(id)arg4;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

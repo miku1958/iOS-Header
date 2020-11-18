@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface CNKMostActiveParticipantViewController : UIViewController
 {
     MISSING_TYPE *participants;

@@ -9,12 +9,14 @@
 @interface PXImageModulationSettings : PXSettings
 {
     BOOL _enabled;
+    BOOL _forceCurrentScreenSupportsHDR;
     long long _filterType;
     long long _HDRConsideration;
     double _HDRModulationIntensity;
     double _SDRModulationIntensity;
     double _videoComplementModulationIntensity;
     long long _EDRHeadroomRequestScheme;
+    long long _EDRHeadroomUsageScheme;
     double _manualEDRHeadroomRequestStops;
     double _EDRHeadroomRequestHDRThreshold;
     double _EDRHeadroomRequestSustainDuration;
@@ -26,12 +28,14 @@
 @property (nonatomic) double EDRHeadroomRequestHDRThreshold; // @synthesize EDRHeadroomRequestHDRThreshold=_EDRHeadroomRequestHDRThreshold;
 @property (nonatomic) long long EDRHeadroomRequestScheme; // @synthesize EDRHeadroomRequestScheme=_EDRHeadroomRequestScheme;
 @property (nonatomic) double EDRHeadroomRequestSustainDuration; // @synthesize EDRHeadroomRequestSustainDuration=_EDRHeadroomRequestSustainDuration;
+@property (nonatomic) long long EDRHeadroomUsageScheme; // @synthesize EDRHeadroomUsageScheme=_EDRHeadroomUsageScheme;
 @property (nonatomic) long long HDRConsideration; // @synthesize HDRConsideration=_HDRConsideration;
 @property (nonatomic) double HDRModulationIntensity; // @synthesize HDRModulationIntensity=_HDRModulationIntensity;
 @property (nonatomic) double SDRModulationIntensity; // @synthesize SDRModulationIntensity=_SDRModulationIntensity;
 @property (nonatomic) double deviceMaximumEDRHeadroomStops; // @synthesize deviceMaximumEDRHeadroomStops=_deviceMaximumEDRHeadroomStops;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) long long filterType; // @synthesize filterType=_filterType;
+@property (nonatomic) BOOL forceCurrentScreenSupportsHDR; // @synthesize forceCurrentScreenSupportsHDR=_forceCurrentScreenSupportsHDR;
 @property (nonatomic) double highEDRRequestedHeadroomStops; // @synthesize highEDRRequestedHeadroomStops=_highEDRRequestedHeadroomStops;
 @property (nonatomic) double lowEDRRequestedHeadroomStops; // @synthesize lowEDRRequestedHeadroomStops=_lowEDRRequestedHeadroomStops;
 @property (nonatomic) double manualEDRHeadroomRequestStops; // @synthesize manualEDRHeadroomRequestStops=_manualEDRHeadroomRequestStops;

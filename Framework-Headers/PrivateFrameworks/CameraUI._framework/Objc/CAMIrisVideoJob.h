@@ -29,6 +29,7 @@
     CDStruct_1b6d18a9 _stillImageDisplayTime;
 }
 
+@property (readonly, nonatomic, getter=isCTMVideo) BOOL CTMVideo;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (readonly, nonatomic) NSError *captureError; // @synthesize captureError=_captureError;

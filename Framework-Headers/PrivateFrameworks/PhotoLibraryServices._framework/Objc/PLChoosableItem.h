@@ -22,8 +22,8 @@
 @property (readonly, nonatomic) long long width; // @synthesize width=_width;
 
 + (id)choosableItemsFromCloudResources:(id)arg1;
+- (void).cxx_destruct;
 - (long long)compareUsingWidth:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithCloudResource:(id)arg1;

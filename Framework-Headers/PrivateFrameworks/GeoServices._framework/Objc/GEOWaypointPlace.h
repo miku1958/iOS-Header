@@ -8,24 +8,45 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSMutableArray, PBUnknownFields;
+@class GEOLatLng, GEOMapRegion, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOWaypointPlace : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOLatLng *_center;
+    GEOMapRegion *_mapRegion;
     NSMutableArray *_roadAccessPoints;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_center:1;
+        unsigned int read_mapRegion:1;
+        unsigned int read_roadAccessPoints:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_mapRegion:1;
+        unsigned int wrote_roadAccessPoints:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (strong, nonatomic) GEOLatLng *center;
 @property (readonly, nonatomic) BOOL hasCenter;
-@property (strong, nonatomic) NSMutableArray *roadAccessPoints; // @synthesize roadAccessPoints=_roadAccessPoints;
+@property (readonly, nonatomic) BOOL hasMapRegion;
+@property (strong, nonatomic) GEOMapRegion *mapRegion;
+@property (strong, nonatomic) NSMutableArray *roadAccessPoints;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)roadAccessPointType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsRoadAccessPoint:(id)arg1;
+- (void)_readCenter;
+- (void)_readMapRegion;
+- (void)_readRoadAccessPoints;
 - (void)addRoadAccessPoint:(id)arg1;
 - (void)clearRoadAccessPoints;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +54,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)roadAccessPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)roadAccessPointsCount;

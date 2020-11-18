@@ -14,14 +14,16 @@
 @interface FBSServiceFacility : NSObject <BSDescriptionProviding, BSInvalidatable>
 {
     NSString *_identifier;
-    NSMutableSet *_clients;
     FBSSerialQueue *_queue;
     NSSet *_prerequisiteMilestones;
+    NSMutableSet *_clients;
+    NSSet *_clients_immutable;
+    struct os_unfair_lock_s _clients_immutable_lock;
     BOOL _invalidated;
 }
 
 @property (readonly, nonatomic) NSSet *_prerequisiteMilestones;
-@property (readonly, nonatomic) NSSet *clients; // @synthesize clients=_clients;
+@property (readonly, nonatomic) NSSet *clients;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -30,9 +32,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_clientDidConnect:(id)arg1 withMessage:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_clientDidDisconnect:(id)arg1;
-- (void)_handleMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
@@ -42,6 +41,9 @@
 - (void)noteClientDidConnect:(id)arg1 withMessage:(id)arg2;
 - (void)noteClientDidDisconnect:(id)arg1;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
+- (BOOL)queue_clientDidConnect:(id)arg1 withMessage:(id)arg2;
+- (void)queue_clientDidDisconnect:(id)arg1;
+- (void)queue_handleMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
 - (void)sendMessage:(id)arg1 withType:(long long)arg2 toClients:(id)arg3;
 - (BOOL)shouldAllowClientConnection:(id)arg1 withMessage:(id)arg2;
 - (id)succinctDescription;

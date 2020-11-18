@@ -21,7 +21,6 @@
     NSHashTable *_delegates;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_asynchronousImageQueue;
-    BOOL _shouldSendRemovingPassesOfTypeDidFinish;
     id<PKPassLibraryDelegate> _delegate;
 }
 
@@ -32,6 +31,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)contactlessInterfaceCanBePresentedFromSource:(long long)arg1;
++ (BOOL)contactlessInterfaceCanBePresentedFromSource:(long long)arg1 deviceUILocked:(BOOL)arg2;
 + (void)endAutomaticPassPresentationSuppressionWithRequestToken:(unsigned long long)arg1;
 + (BOOL)isPassLibraryAvailable;
 + (BOOL)isPaymentPassActivationAvailable;
@@ -163,12 +163,9 @@
 - (void)removePass:(id)arg1;
 - (void)removePassWithUniqueID:(id)arg1 diagnosticReason:(id)arg2;
 - (void)removePasses:(id)arg1;
-- (void)removePassesOfType:(unsigned long long)arg1;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(id)arg2;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removePassesWithUniqueIDs:(id)arg1 diagnosticReason:(id)arg2;
-- (void)removingPassesOfType:(unsigned long long)arg1 didFinishWithSuccess:(BOOL)arg2;
-- (void)removingPassesOfType:(unsigned long long)arg1 didUpdateWithProgress:(double)arg2;
 - (BOOL)replacePassWithPass:(id)arg1;
 - (void)requestPersonalizationOfPassWithUniqueIdentifier:(id)arg1 contact:(id)arg2 personalizationToken:(id)arg3 requiredPersonalizationFields:(unsigned long long)arg4 personalizationSource:(unsigned long long)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)requestUpdateOfObjectWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -187,6 +184,7 @@
 - (void)spotlightReindexAllPassesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)spotlightReindexPassesWithUniqueIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)supportedTransitPartnersForDigitalIssuance:(CDUnknownBlockType)arg1;
+- (BOOL)supportsDisbursements;
 - (void)transitMessageDidDisplay:(id)arg1;
 - (void)transitMessageForRouteInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateSettings:(unsigned long long)arg1 forObjectWithUniqueID:(id)arg2;

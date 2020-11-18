@@ -6,10 +6,11 @@
 
 #import <NewsFoundation/NSObject-Protocol.h>
 
-@class NFCallbackScope, NSString, Protocol;
+@class NFCallbackScope, NFKey, NSString, Protocol;
 
 @protocol NFCallbackRegistration <NSObject>
 - (void)whenResolvingClass:(Class)arg1 scope:(NFCallbackScope *)arg2 callbackBlock:(void (^)(id, id<NFResolver>))arg3;
+- (void)whenResolvingKey:(NFKey *)arg1 scope:(NFCallbackScope *)arg2 callbackBlock:(void (^)(id, id<NFResolver>))arg3;
 - (void)whenResolvingProtocol:(Protocol *)arg1 scope:(NFCallbackScope *)arg2 callbackBlock:(void (^)(id, id<NFResolver>))arg3;
 - (void)whenUnsafeResolvingWithKey:(NSString *)arg1 scope:(NFCallbackScope *)arg2 callbackBlock:(void (^)(id, id<NFResolver>))arg3;
 @end

@@ -23,10 +23,10 @@
 
 - (void).cxx_destruct;
 - (id)_accessibilityParentForFindingScrollParent;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (void)dealloc;
 - (id)initWithAccessibilityContainer:(id)arg1;
 - (BOOL)isAccessibilityElement;

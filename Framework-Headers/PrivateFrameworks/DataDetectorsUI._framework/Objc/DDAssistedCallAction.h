@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)isAvailable;
+- (id)icon;
 
 @end
 

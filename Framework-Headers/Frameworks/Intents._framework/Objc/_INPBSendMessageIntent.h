@@ -14,7 +14,13 @@
 
 @interface _INPBSendMessageIntent : PBCodable <_INPBSendMessageIntent, NSSecureCoding, NSCopying>
 {
-    struct _has;
+    struct {
+        unsigned int effect:1;
+        unsigned int messageType:1;
+    } _has;
+    BOOL __encodeLegacyGloryData;
+    int _effect;
+    int _messageType;
     NSArray *_attachments;
     _INPBString *_content;
     NSString *_conversationIdentifier;
@@ -26,22 +32,27 @@
     _INPBDataString *_speakableGroupName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (readonly, nonatomic) unsigned long long attachmentsCount;
 @property (strong, nonatomic) _INPBString *content; // @synthesize content=_content;
 @property (copy, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) int effect; // @synthesize effect=_effect;
 @property (strong, nonatomic) _INPBString *groupName; // @synthesize groupName=_groupName;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (readonly, nonatomic) BOOL hasConversationIdentifier;
+@property (nonatomic) BOOL hasEffect;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (nonatomic) BOOL hasMessageType;
 @property (readonly, nonatomic) BOOL hasSender;
 @property (readonly, nonatomic) BOOL hasServiceName;
 @property (readonly, nonatomic) BOOL hasSpeakableGroupName;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
+@property (nonatomic) int messageType; // @synthesize messageType=_messageType;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (readonly, nonatomic) unsigned long long recipientsCount;
 @property (strong, nonatomic) _INPBContact *sender; // @synthesize sender=_sender;
@@ -49,17 +60,24 @@
 @property (strong, nonatomic) _INPBDataString *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
 @property (readonly) Class superclass;
 
-+ (Class)attachmentType;
++ (Class)attachmentsType;
 + (Class)recipientType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)addAttachment:(id)arg1;
+- (int)StringAsEffect:(id)arg1;
+- (int)StringAsMessageType:(id)arg1;
+- (void)addAttachments:(id)arg1;
 - (void)addRecipient:(id)arg1;
-- (id)attachmentAtIndex:(unsigned long long)arg1;
+- (id)attachmentsAtIndex:(unsigned long long)arg1;
 - (void)clearAttachments;
 - (void)clearRecipients;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (id)effectAsString:(int)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)messageTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)recipientAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;

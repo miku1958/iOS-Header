@@ -14,19 +14,20 @@
     int _type;
     unsigned int _value;
     struct {
-        unsigned int maxValue:1;
-        unsigned int type:1;
-        unsigned int value:1;
-    } _has;
+        unsigned int has_maxValue:1;
+        unsigned int has_type:1;
+        unsigned int has_value:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMaxValue;
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) BOOL hasValue;
-@property (nonatomic) unsigned int maxValue; // @synthesize maxValue=_maxValue;
-@property (nonatomic) int type; // @synthesize type=_type;
-@property (nonatomic) unsigned int value; // @synthesize value=_value;
+@property (nonatomic) unsigned int maxValue;
+@property (nonatomic) int type;
+@property (nonatomic) unsigned int value;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -35,6 +36,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

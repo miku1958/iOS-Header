@@ -11,7 +11,7 @@
 
 @protocol PXCMMPersonSuggestion <NSObject, NSCopying>
 
-@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *localizedName;
 
 - (BOOL)matchesRecipientInRecipients:(NSArray *)arg1;
 @end

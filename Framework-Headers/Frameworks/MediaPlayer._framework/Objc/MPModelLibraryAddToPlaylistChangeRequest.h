@@ -14,11 +14,13 @@
 {
     MPModelPlaylist *_playlist;
     MPModelObject *_representativeModelObject;
+    MPModelObject *_referralObject;
     MPSectionedCollection *_songResults;
     CDUnknownBlockType _storeImportAllowedHandler;
 }
 
 @property (strong, nonatomic) MPModelPlaylist *playlist; // @synthesize playlist=_playlist;
+@property (strong, nonatomic) MPModelObject *referralObject; // @synthesize referralObject=_referralObject;
 @property (strong, nonatomic) MPModelObject *representativeModelObject; // @synthesize representativeModelObject=_representativeModelObject;
 @property (strong, nonatomic) MPSectionedCollection *songResults; // @synthesize songResults=_songResults;
 @property (copy, nonatomic) CDUnknownBlockType storeImportAllowedHandler; // @synthesize storeImportAllowedHandler=_storeImportAllowedHandler;

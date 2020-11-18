@@ -43,6 +43,7 @@
 - (BOOL)becomeFirstResponder;
 - (void)dealloc;
 - (void)didEndFormControlInteraction;
+- (void)didStartFormControlInteraction;
 - (void)dismissDialogView:(id)arg1 withAdditionalAnimations:(CDUnknownBlockType)arg2 forDialogController:(id)arg3;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2;

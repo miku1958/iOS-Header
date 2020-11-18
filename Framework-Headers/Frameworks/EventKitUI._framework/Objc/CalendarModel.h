@@ -8,22 +8,29 @@
 
 #import <EventKitUI/CalendarEventLoaderDelegate-Protocol.h>
 
-@class CalendarEventLoader, EKCalendarDate, EKEvent, EKEventStore, NSArray, NSCalendar, NSLock, NSSet, NSString, _EKNotificationMonitor;
+@class CalendarEventLoader, CalendarModelSceneState, EKCalendarDate, EKEvent, EKEventStore, EKSource, NSArray, NSCalendar, NSLock, NSMutableDictionary, NSSet, NSString, _EKNotificationMonitor;
 @protocol OccurrenceCacheDataSourceProtocol;
 
 @interface CalendarModel : NSObject <CalendarEventLoaderDelegate>
 {
+    BOOL _modelLocked;
+    BOOL _notificationMonitorSetUp;
     EKEventStore *_eventStore;
     CalendarEventLoader *_eventLoader;
     NSLock *_filterLock;
     NSArray *_visibleCalendars;
     long long _readWriteCalendarCount;
+    NSArray *_delegateSources;
     long long _invitationBearingStoresExist;
     _EKNotificationMonitor *_notificationMonitor;
     id<OccurrenceCacheDataSourceProtocol> _occurrenceCacheDataSource;
     id<OccurrenceCacheDataSourceProtocol> _occurrenceCacheFilteredDataSource;
     long long _cachedFakeTodayIndex;
-    long long _displayableAccountErrorsCount;
+    NSMutableDictionary *_displayableAccountErrorCounts;
+    long long _initialAccountSyncCount;
+    BOOL _suspendSelectedDateChanges;
+    EKCalendarDate *_suspendedSelectedDate;
+    CalendarModelSceneState *_persistedSceneState;
     BOOL _autoStartNotificationMonitor;
     NSSet *_selectedCalendars;
     NSString *_searchString;
@@ -31,28 +38,46 @@
     EKCalendarDate *_selectedDate;
     unsigned long long _firstVisibleSecond;
     EKEvent *_selectedOccurrence;
+    EKSource *_sourceForSelectedIdentity;
+    NSArray *_sortedEnabledDelegates;
+    NSString *_sceneIdentifier;
 }
 
+@property (readonly, nonatomic) long long accountsInInitialSyncCount;
 @property (nonatomic) BOOL allowEventLocationPrediction;
 @property (nonatomic) BOOL autoStartNotificationMonitor; // @synthesize autoStartNotificationMonitor=_autoStartNotificationMonitor;
 @property (copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
-@property (readonly, nonatomic) long long displayableAccountErrorsCount;
+@property (readonly, nonatomic) BOOL containsDelegateSources;
+@property (readonly, nonatomic) BOOL currentlyLocked;
 @property (readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
 @property (nonatomic) unsigned long long firstVisibleSecond; // @synthesize firstVisibleSecond=_firstVisibleSecond;
 @property (readonly, nonatomic) long long readWriteCalendarCount;
+@property (copy, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 @property (strong, nonatomic) NSSet *selectedCalendars; // @synthesize selectedCalendars=_selectedCalendars;
 @property (copy, nonatomic) EKCalendarDate *selectedDate; // @synthesize selectedDate=_selectedDate;
 @property (readonly, nonatomic) EKCalendarDate *selectedDay;
 @property (strong, nonatomic) EKEvent *selectedOccurrence; // @synthesize selectedOccurrence=_selectedOccurrence;
+@property (nonatomic) BOOL showDayAsList;
+@property (nonatomic) BOOL showMonthAsDivided;
+@property (strong, nonatomic) NSArray *sortedEnabledDelegates; // @synthesize sortedEnabledDelegates=_sortedEnabledDelegates;
+@property (readonly, strong, nonatomic) EKSource *sourceForSelectedIdentity; // @synthesize sourceForSelectedIdentity=_sourceForSelectedIdentity;
 @property (readonly, nonatomic) long long visibleCalendarCount;
 
 + (id)calendarModelWithDataPath:(id)arg1;
++ (id)calendarModelWithEventStore:(id)arg1;
++ (unsigned long long)errorForSource:(id)arg1;
++ (id)sortedEnabledDelegateSourcesFromStore:(id)arg1;
++ (void)temporarilyIgnoreInvalidCredentialsErrorForSource:(id)arg1;
 - (void).cxx_destruct;
+- (id)_calendarsForCurrentIdentityFromCalendars:(id)arg1 lock:(BOOL)arg2;
+- (void)_checkSources;
 - (void)_createOccurrenceCacheDataSources;
 - (id)_dataSourceUsingFilter:(BOOL)arg1;
+- (BOOL)_eventBelongsToCurrentIdentity:(id)arg1;
 - (void)_eventStoreChanged:(id)arg1;
 - (void)_finishedFirstLoad;
+- (void)_ignoredErrorsChanged;
 - (void)_invalidateCachedOccurrences;
 - (void)_invalidateOccurrenceCacheDataSources;
 - (void)_localeChanged:(id)arg1;
@@ -60,9 +85,12 @@
 - (id)_notificationMonitor;
 - (void)_notificationsExpired:(id)arg1;
 - (void)_occurrenceCacheChanged;
+- (void)_performCommonInitialization;
 - (void)_processReloadForCacheOnly:(BOOL)arg1 includingCalendars:(BOOL)arg2 checkCalendarsValid:(BOOL)arg3 checkSources:(BOOL)arg4;
 - (void)_recreateOccurrenceCacheDataSources;
 - (void)_reloadIfTodayDetermined;
+- (void)_sceneEnteredBackground:(id)arg1;
+- (void)_sceneEnteredForeground:(id)arg1;
 - (void)_searchResultsAvailable:(id)arg1;
 - (void)_significantTimeChange:(id)arg1;
 - (void)_systemWake;
@@ -71,25 +99,32 @@
 - (void)_tzSupportTodayRolledOver;
 - (void)addOccurrenceAwaitingDeletion:(id)arg1;
 - (void)addOccurrenceAwaitingRefresh:(id)arg1;
+- (id)allEventNotificationReferences;
+- (unsigned long long)allEventNotificationsCount;
 - (long long)cachedFakeTodayIndex;
 - (id)cachedOccurrenceAtIndexPath:(id)arg1;
 - (id)cachedOccurrenceAtIndexPath:(id)arg1 usingFilter:(BOOL)arg2;
 - (BOOL)cachedOccurrencesAreBeingGenerated;
 - (BOOL)cachedOccurrencesAreLoaded;
 - (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3 wasEmptyLoad:(BOOL)arg4;
+- (id)calendarsForCurrentIdentityFromCalendars:(id)arg1;
 - (id)closestOccurrenceToTomorrowForEventUID:(int)arg1;
-- (long long)countSourcesWithErrors;
+- (long long)countAccountsInInitialSync;
+- (BOOL)countSourcesWithErrors;
 - (id)dateForCachedOccurrencesInSection:(long long)arg1;
 - (id)dateForCachedOccurrencesInSection:(long long)arg1 usingFilter:(BOOL)arg2;
 - (void)dealloc;
 - (id)defaultCalendarForNewEvents;
+- (long long)displayableAccountErrorsForSource:(id)arg1;
 - (void)ensureCalendarVisibleWithId:(id)arg1;
-- (id)eventNotificationReferences;
-- (unsigned long long)eventNotificationsCount;
+- (id)eventNotificationReferencesForCurrentIdentity;
+- (id)eventNotificationReferencesForIdentity:(id)arg1;
+- (unsigned long long)eventNotificationsForCurrentIdentityCount;
 - (void)fetchCachedDaysInBackgroundStartingFromSection:(long long)arg1;
 - (void)fetchCachedDaysInBackgroundStartingFromSection:(long long)arg1 usingFilter:(BOOL)arg2;
 - (id)init;
 - (id)initWithDataPath:(id)arg1;
+- (id)initWithEventStore:(id)arg1;
 - (BOOL)invitationBearingStoresExistForEvents;
 - (BOOL)isCalendarVisibleWithID:(id)arg1;
 - (long long)numberOfCachedOccurrencesInSection:(long long)arg1;
@@ -99,6 +134,7 @@
 - (id)occurrencesForDay:(id)arg1 waitForLoad:(BOOL)arg2;
 - (id)occurrencesForStartDate:(id)arg1 endDate:(id)arg2 preSorted:(BOOL)arg3 waitForLoad:(BOOL)arg4;
 - (id)occurrencesForStartDay:(id)arg1 endDay:(id)arg2 preSorted:(BOOL)arg3 waitForLoad:(BOOL)arg4;
+- (id)persistedSceneState;
 - (void)prepareForAppSuspend;
 - (id)refreshAccountListIfNeeded:(BOOL)arg1;
 - (id)refreshCalendarDataIfNeeded:(BOOL)arg1;
@@ -115,10 +151,14 @@
 - (void)setDesiredPaddingDays:(unsigned int)arg1;
 - (void)setMaxCachedDays:(unsigned int)arg1;
 - (void)setPreferredReloadStartDate:(id)arg1 endDate:(id)arg2;
+- (void)setSelectedCalendarsAndRequestPreferenceSave:(id)arg1;
+- (void)setSelectedDateChangesDelayedUntilAfterTransition:(BOOL)arg1;
+- (void)setSourceForSelectedIdentity:(id)arg1;
 - (void)simulateFirstLoadFinished;
 - (void)startNotificationMonitor;
 - (void)updateAfterAppResume;
 - (void)updateSelectedDateTimeZone;
+- (void)updateSourceForSelectedIdentity:(id)arg1 selectedCalendars:(id)arg2;
 
 @end
 

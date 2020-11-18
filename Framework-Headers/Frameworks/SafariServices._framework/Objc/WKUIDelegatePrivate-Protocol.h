@@ -6,8 +6,8 @@
 
 #import <SafariServices/WKUIDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, UIDragItem, UIDropProposal, UIImage, UIScrollView, UITargetedDragPreview, UIViewController, WKFrameInfo, WKNavigationAction, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, WKWindowFeatures, _WKActivatedElementInfo, _WKAttachment, _WKFrameHandle;
-@protocol NSSecureCoding, UIDragSession, UIDropSession;
+@class NSArray, NSDictionary, NSString, NSURL, UIDragItem, UIDropProposal, UIGestureRecognizer, UIImage, UIScrollView, UITargetedDragPreview, UIViewController, WKContextMenuElementInfo, WKFrameInfo, WKNavigationAction, WKSecurityOrigin, WKWebView, WKWebViewConfiguration, WKWindowFeatures, _WKActivatedElementInfo, _WKAttachment, _WKFrameHandle;
+@protocol NSSecureCoding, UIContextMenuInteractionCommitAnimating, UIDragSession, UIDropSession;
 
 @protocol WKUIDelegatePrivate <WKUIDelegate>
 
@@ -24,6 +24,10 @@
 - (void)_webView:(WKWebView *)arg1 checkUserMediaPermissionForURL:(NSURL *)arg2 mainFrameURL:(NSURL *)arg3 frameIdentifier:(unsigned long long)arg4 decisionHandler:(void (^)(NSString *, BOOL))arg5;
 - (void)_webView:(WKWebView *)arg1 commitPreviewedImageWithURL:(NSURL *)arg2;
 - (void)_webView:(WKWebView *)arg1 commitPreviewedViewController:(UIViewController *)arg2;
+- (void)_webView:(WKWebView *)arg1 contextMenuConfigurationForElement:(WKContextMenuElementInfo *)arg2 completionHandler:(void (^)(UIContextMenuConfiguration *))arg3;
+- (void)_webView:(WKWebView *)arg1 contextMenuDidEndForElement:(WKContextMenuElementInfo *)arg2;
+- (void)_webView:(WKWebView *)arg1 contextMenuForElement:(WKContextMenuElementInfo *)arg2 willCommitWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg3;
+- (void)_webView:(WKWebView *)arg1 contextMenuWillPresentForElement:(WKContextMenuElementInfo *)arg2;
 - (void)_webView:(WKWebView *)arg1 createWebViewWithConfiguration:(WKWebViewConfiguration *)arg2 forNavigationAction:(WKNavigationAction *)arg3 windowFeatures:(WKWindowFeatures *)arg4 completionHandler:(void (^)(WKWebView *))arg5;
 - (void)_webView:(WKWebView *)arg1 dataInteraction:(id)arg2 session:(id)arg3 didEndWithOperation:(unsigned long long)arg4;
 - (void)_webView:(WKWebView *)arg1 dataInteraction:(id)arg2 sessionWillBegin:(id)arg3;
@@ -47,9 +51,11 @@
 - (unsigned long long)_webView:(WKWebView *)arg1 dragDestinationActionMaskForDraggingInfo:(id)arg2;
 - (void)_webView:(WKWebView *)arg1 editorStateDidChange:(NSDictionary *)arg2;
 - (struct UIEdgeInsets)_webView:(WKWebView *)arg1 finalObscuredInsetsForScrollView:(UIScrollView *)arg2 withVelocity:(struct CGPoint)arg3 targetContentOffset:(inout struct CGPoint *)arg4;
+- (BOOL)_webView:(WKWebView *)arg1 gestureRecognizerCouldPinch:(UIGestureRecognizer *)arg2;
 - (void)_webView:(WKWebView *)arg1 getAlternateURLFromImage:(UIImage *)arg2 completionHandler:(void (^)(NSURL *, NSDictionary *))arg3;
 - (void)_webView:(WKWebView *)arg1 hasVideoInPictureInPictureDidChange:(BOOL)arg2;
 - (void)_webView:(WKWebView *)arg1 imageOrMediaDocumentSizeChanged:(struct CGSize)arg2;
+- (void)_webView:(WKWebView *)arg1 includeSensitiveMediaDeviceDetails:(void (^)(BOOL))arg2;
 - (unsigned long long)_webView:(WKWebView *)arg1 indexIntoAttachmentListForElement:(_WKActivatedElementInfo *)arg2;
 - (void)_webView:(WKWebView *)arg1 mediaCaptureStateDidChange:(unsigned long long)arg2;
 - (BOOL)_webView:(WKWebView *)arg1 performDataInteractionOperationWithItemProviders:(NSArray *)arg2;
@@ -62,9 +68,11 @@
 - (void)_webView:(WKWebView *)arg1 printFrame:(_WKFrameHandle *)arg2;
 - (void)_webView:(WKWebView *)arg1 requestGeolocationAuthorizationForURL:(NSURL *)arg2 frame:(WKFrameInfo *)arg3 decisionHandler:(void (^)(BOOL))arg4;
 - (void)_webView:(WKWebView *)arg1 requestGeolocationPermissionForFrame:(WKFrameInfo *)arg2 decisionHandler:(void (^)(BOOL))arg3;
+- (void)_webView:(WKWebView *)arg1 requestMediaCaptureAuthorization:(unsigned long long)arg2 decisionHandler:(void (^)(BOOL))arg3;
 - (void)_webView:(WKWebView *)arg1 requestStorageAccessPanelForDomain:(NSString *)arg2 underCurrentDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL))arg4;
 - (void)_webView:(WKWebView *)arg1 requestUserMediaAuthorizationForDevices:(unsigned long long)arg2 url:(NSURL *)arg3 mainFrameURL:(NSURL *)arg4 decisionHandler:(void (^)(BOOL))arg5;
 - (void)_webView:(WKWebView *)arg1 runBeforeUnloadConfirmPanelWithMessage:(NSString *)arg2 initiatedByFrame:(WKFrameInfo *)arg3 completionHandler:(void (^)(BOOL))arg4;
+- (void)_webView:(WKWebView *)arg1 shouldAllowDeviceOrientationAndMotionAccessRequestedByFrame:(WKFrameInfo *)arg2 decisionHandler:(void (^)(BOOL))arg3;
 - (BOOL)_webView:(WKWebView *)arg1 shouldIncludeAppLinkActionsForElement:(_WKActivatedElementInfo *)arg2;
 - (BOOL)_webView:(WKWebView *)arg1 shouldRequestGeolocationAuthorizationForURL:(NSURL *)arg2 isMainFrame:(BOOL)arg3 mainFrameURL:(NSURL *)arg4;
 - (BOOL)_webView:(WKWebView *)arg1 showCustomSheetForElement:(_WKActivatedElementInfo *)arg2;
@@ -74,7 +82,6 @@
 - (unsigned long long)_webView:(WKWebView *)arg1 willUpdateDataInteractionOperationToOperation:(unsigned long long)arg2 forSession:(id)arg3;
 - (UIDropProposal *)_webView:(WKWebView *)arg1 willUpdateDropProposalToProposal:(UIDropProposal *)arg2 forSession:(id<UIDropSession>)arg3;
 - (void)_webViewClose:(WKWebView *)arg1;
-- (void)_webViewDidClickGoBackFromSafeBrowsingWarning:(WKWebView *)arg1;
 - (void)_webViewDidEnterFullscreen:(WKWebView *)arg1;
 - (void)_webViewDidExitFullscreen:(WKWebView *)arg1;
 - (void)_webViewDidLosePointerLock:(WKWebView *)arg1;

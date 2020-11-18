@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleAccountChanged:(id)arg1;
+- (void)_updateBalanceLabelFontSize;
 - (void)_updateBalanceWithAccount:(id)arg1;
 - (void)createHeaderContentViews;
 - (void)dealloc;
@@ -22,6 +23,7 @@
 - (void)setShowsLiveBalance:(BOOL)arg1;
 - (BOOL)showsShare;
 - (id)templateForLayoutMode:(long long)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

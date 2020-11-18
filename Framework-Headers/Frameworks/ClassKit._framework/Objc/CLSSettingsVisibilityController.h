@@ -7,10 +7,13 @@
 #import <objc/NSObject.h>
 
 @class CLSCurrentUser;
+@protocol OS_dispatch_queue;
 
 @interface CLSSettingsVisibilityController : NSObject
 {
     CLSCurrentUser *_currentUser;
+    BOOL _needToUpdateCurrentUser;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (id)shared;
@@ -18,8 +21,6 @@
 - (id)currentUser;
 - (void)currentUserChanged;
 - (void)dealloc;
-- (BOOL)hasCapableAccount;
-- (BOOL)hasSupportedRole;
 - (id)init;
 - (BOOL)settingsUIVisible;
 

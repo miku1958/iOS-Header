@@ -17,7 +17,7 @@
 
 + (void *)_loadMiroFrameworkIfNeeded;
 + (void)initialize;
-+ (void)preloadMiroFrameworkInBackground;
++ (void)preloadMiroFrameworkIfNeeded;
 - (void).cxx_destruct;
 - (Class)_miroMovieClass;
 - (BOOL)canPlayMovie;

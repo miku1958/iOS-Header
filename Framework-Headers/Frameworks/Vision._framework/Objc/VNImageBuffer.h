@@ -25,15 +25,20 @@
 @property (readonly) unsigned long long width;
 
 + (int)_helpReadOrientationFromOptionsDictionary:(id)arg1;
++ (struct CGRect)computeCenterCropRectFromCropRect:(struct CGRect)arg1 inImageSize:(struct CGSize)arg2 calculatedScaleX:(double *)arg3 calculatedScaleY:(double *)arg4;
 + (struct CGColorSpace *)copyColorspaceForFormat:(unsigned int)arg1 bitmapInfo:(unsigned int *)arg2;
-+ (struct __CFDictionary *)pixelBufferAttributes;
++ (const struct __CFDictionary *)ioSurfaceBackedPixelBufferAttributes;
 - (void).cxx_destruct;
 - (id)_baseCIImage;
 - (struct __CVBuffer *)_baseCVPixelBuffer;
+- (struct CGRect)_calculateTargetRectFromCropRect:(struct CGRect)arg1;
 - (BOOL)_cropCIImage:(id)arg1 outBuffer:(struct __CVBuffer **)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect)arg6 performCrop:(BOOL)arg7 options:(id)arg8 error:(id *)arg9;
 - (BOOL)_cropCVPixelBuffer:(struct __CVBuffer *)arg1 outBuffer:(struct __CVBuffer **)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect)arg6 performCrop:(BOOL)arg7 options:(id)arg8 error:(id *)arg9;
 - (BOOL)_cropImageSourceManager:(id)arg1 outBuffer:(struct __CVBuffer **)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4 format:(unsigned int)arg5 cropRect:(struct CGRect)arg6 performCrop:(BOOL)arg7 options:(id)arg8 error:(id *)arg9;
+- (void)_dumpIntermediateImage:(struct __CVBuffer *)arg1 withOptions:(id)arg2;
+- (BOOL)_isRectOutOfBounds:(struct CGRect)arg1;
 - (id)_optionsWithOverridingOptions:(id)arg1;
+- (struct __CVBuffer *)_retrieveBufferFromCacheIfFoundWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3;
 - (BOOL)_useCoreImageForFormat:(unsigned int)arg1;
 - (id)augmentedBuffersWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 options:(id)arg4 augmentationOptions:(id)arg5 error:(id *)arg6;
 - (id)augmentedCroppedBuffersWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 format:(unsigned int)arg3 cropRect:(struct CGRect)arg4 options:(id)arg5 augmentationOptions:(id)arg6 error:(id *)arg7;

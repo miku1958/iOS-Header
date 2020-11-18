@@ -11,14 +11,17 @@ __attribute__((visibility("hidden")))
 {
     struct __DDScanner *_scanner;
     int _type;
+    BOOL _hasBasicType;
+    long long _jobIdentifier;
 }
 
-- (id)ddResultsWithOptions:(long long)arg1;
+@property (nonatomic) long long jobIdentifier; // @synthesize jobIdentifier=_jobIdentifier;
+
+- (void)cancel;
 - (void)dealloc;
-- (id)initWithType:(int)arg1;
-- (void)reset;
-- (id)resultsWithOptions:(long long)arg1;
-- (long long)scanString:(id)arg1;
+- (BOOL)hasBasicType;
+- (id)initWithType:(int)arg1 enableParsec:(BOOL)arg2;
+- (id)scanString:(id)arg1 range:(CDStruct_912cb5d2)arg2 query:(struct __DDScanQuery *)arg3 configuration:(id)arg4;
 - (int)type;
 
 @end

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPAirPlayAccessoryBrowserDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDWACScanner-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class CUWiFiScanner, NSString;
 @protocol HMDWACScannerDelegate, OS_dispatch_queue;
 
-@interface HMDWACScanner : NSObject <HMFLogging, HMDWACScanner>
+@interface HMDWACScanner : NSObject <HMFLogging, HAPAirPlayAccessoryBrowserDelegate, HMDWACScanner>
 {
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CUWiFiScanner *_wifiScanner;
@@ -34,7 +35,11 @@
 - (void)resume;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)start;
+- (void)startDiscoveringAirPlayAccessoriesWithBrowser:(id)arg1;
 - (void)stop;
+- (void)wacBrowser:(id)arg1 didFindAirPlayDevice:(id)arg2;
+- (void)wacBrowser:(id)arg1 didRemoveAirPlayDevice:(id)arg2;
+- (void)wacBrowser:(id)arg1 didUpdateAirPlayDevice:(id)arg2;
 
 @end
 

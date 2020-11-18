@@ -11,7 +11,6 @@
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (BOOL)usesMediumLayout;
 
 @end

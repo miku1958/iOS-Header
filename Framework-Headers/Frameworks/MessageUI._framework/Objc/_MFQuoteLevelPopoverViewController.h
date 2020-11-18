@@ -23,9 +23,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_optionsStrings;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
-- (void)dealloc;
 - (id)initWithStyle:(long long)arg1;
 - (struct CGSize)preferredContentSize;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

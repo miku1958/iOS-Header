@@ -24,6 +24,7 @@
 @property (copy, nonatomic) CDUnknownBlockType writerBlock; // @synthesize writerBlock=_writerBlock;
 
 + (id)archive;
+- (void).cxx_destruct;
 - (int)_archiveDirectoryName:(id)arg1 withArchive:(struct archive *)arg2 error:(id *)arg3;
 - (id)_compressContents:(id)arg1 error:(id *)arg2;
 - (int)_compressContents:(id)arg1 fileName:(id)arg2 withArchive:(struct archive *)arg3 error:(id *)arg4;

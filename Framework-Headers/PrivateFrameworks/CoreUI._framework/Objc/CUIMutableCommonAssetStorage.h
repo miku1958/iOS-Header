@@ -19,12 +19,13 @@
 
 - (void)_allocateExtendedMetadata;
 - (BOOL)_saveBitmapInfo;
-- (void)_setZeroCodeInfo:(CDStruct_c0454aff)arg1 forKey:(const void *)arg2 withLength:(unsigned long long)arg3 inTree:(const void *)arg4;
 - (BOOL)_writeOutKeyFormatWithWorkaround;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
 - (void)removeAssetForKey:(id)arg1;
 - (void)removeAssetForKey:(const void *)arg1 withLength:(unsigned long long)arg2;
+- (BOOL)removeAssetName:(id)arg1;
+- (BOOL)removeAssetNameKey:(const void *)arg1 withLength:(unsigned long long)arg2;
 - (void)setAppearanceIdentifier:(unsigned short)arg1 forName:(id)arg2;
 - (BOOL)setAsset:(id)arg1 forKey:(id)arg2;
 - (BOOL)setAsset:(id)arg1 forKey:(const void *)arg2 withLength:(unsigned long long)arg3;
@@ -41,6 +42,7 @@
 - (void)setFontSize:(float)arg1 forFontSizeSelector:(id)arg2;
 - (void)setKeyFormatData:(id)arg1;
 - (void)setKeySemantics:(int)arg1;
+- (void)setLocalizationIdentifier:(unsigned short)arg1 forName:(id)arg2;
 - (void)setRenditionCount:(unsigned int)arg1;
 - (void)setRenditionKey:(const struct _renditionkeytoken *)arg1 hotSpot:(struct CGPoint)arg2 forName:(const char *)arg3;
 - (void)setSchemaVersion:(unsigned int)arg1;
@@ -48,8 +50,6 @@
 - (void)setThinningArguments:(id)arg1;
 - (void)setUuid:(id)arg1;
 - (void)setVersionString:(const char *)arg1;
-- (void)setZeroCodeBezelInformation:(CDStruct_c0454aff)arg1 forKey:(const void *)arg2 withLength:(unsigned long long)arg3;
-- (void)setZeroCodeGlyphInformation:(CDStruct_c0454aff)arg1 forKey:(const void *)arg2 withLength:(unsigned long long)arg3;
 - (void)updateBitmapInfo;
 - (BOOL)writeToDisk;
 - (BOOL)writeToDiskAndCompact:(BOOL)arg1;

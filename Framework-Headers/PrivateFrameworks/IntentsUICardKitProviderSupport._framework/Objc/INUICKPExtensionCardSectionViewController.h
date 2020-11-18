@@ -13,6 +13,7 @@
 
 @interface INUICKPExtensionCardSectionViewController : INUICKPSynchronousRemoteViewController <CRKCardSectionViewControlling>
 {
+    id _touchDeliveryPolicyAssertion;
     id<CRKCardSectionViewControllingDelegate> _cardSectionViewControllingDelegate;
 }
 
@@ -24,7 +25,9 @@
 
 - (void).cxx_destruct;
 - (void)cardEventDidOccur:(unsigned long long)arg1 withIdentifier:(id)arg2 userInfo:(id)arg3;
+- (void)desiresInteractivity:(CDUnknownBlockType)arg1;
 - (void)remoteViewController:(id)arg1 requestsHandlingOfIntent:(id)arg2;
+- (void)remoteViewControllerWillBeginEditing:(id)arg1;
 
 @end
 

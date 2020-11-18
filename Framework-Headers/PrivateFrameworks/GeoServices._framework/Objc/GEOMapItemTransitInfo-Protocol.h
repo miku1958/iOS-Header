@@ -6,11 +6,12 @@
 
 #import <GeoServices/GEOMapItemTransitSchedule-Protocol.h>
 
-@class NSArray, NSString;
+@class GEOComposedRoute, NSArray, NSString;
 @protocol GEOTransitSystem;
 
 @protocol GEOMapItemTransitInfo <GEOMapItemTransitSchedule>
 
+@property (readonly, nonatomic) GEOComposedRoute *composedRoute;
 @property (readonly, nonatomic) NSArray *connections;
 @property (readonly, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) BOOL hasTransitIncidentComponent;
@@ -21,6 +22,7 @@
 @property (readonly, nonatomic) unsigned long long linesCount;
 @property (readonly, nonatomic) NSArray *systems;
 @property (readonly, nonatomic) unsigned long long systemsCount;
+@property (readonly, nonatomic) NSArray *transitTripStops;
 
 - (NSArray *)linesForSystem:(id<GEOTransitSystem>)arg1;
 @end

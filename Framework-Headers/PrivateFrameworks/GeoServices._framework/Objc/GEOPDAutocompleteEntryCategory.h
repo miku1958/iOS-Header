@@ -8,29 +8,49 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocalizedString, GEOPDVenueIdentifier, GEOStyleAttributes, NSData, PBUnknownFields;
+@class GEOLocalizedString, GEOPDVenueIdentifier, GEOStyleAttributes, NSData, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryCategory : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOLocalizedString *_displayName;
     GEOStyleAttributes *_styleAttributes;
     NSData *_suggestionEntryMetadata;
     GEOPDVenueIdentifier *_venueIdentifier;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_displayName:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int read_suggestionEntryMetadata:1;
+        unsigned int read_venueIdentifier:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_displayName:1;
+        unsigned int wrote_styleAttributes:1;
+        unsigned int wrote_suggestionEntryMetadata:1;
+        unsigned int wrote_venueIdentifier:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOLocalizedString *displayName; // @synthesize displayName=_displayName;
+@property (strong, nonatomic) GEOLocalizedString *displayName;
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
 @property (readonly, nonatomic) BOOL hasVenueIdentifier;
-@property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
-@property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
+@property (strong, nonatomic) NSData *suggestionEntryMetadata;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDVenueIdentifier *venueIdentifier; // @synthesize venueIdentifier=_venueIdentifier;
+@property (strong, nonatomic) GEOPDVenueIdentifier *venueIdentifier;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDisplayName;
+- (void)_readStyleAttributes;
+- (void)_readSuggestionEntryMetadata;
+- (void)_readVenueIdentifier;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

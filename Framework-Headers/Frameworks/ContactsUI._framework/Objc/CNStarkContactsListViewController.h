@@ -9,37 +9,46 @@
 #import <ContactsUI/CNContactContentViewControllerDelegate-Protocol.h>
 #import <ContactsUI/CNContactListViewControllerDelegate-Protocol.h>
 
-@class AVExternalDevice, CNStarkNoContentBannerView, NSString;
+@class AVExternalDevice, CNContactListTableView, CNStarkNoContentBannerView, NSArray, NSString, UITableViewHeaderFooterView;
 
 @interface CNStarkContactsListViewController : CNContactListViewController <CNContactListViewControllerDelegate, CNContactContentViewControllerDelegate>
 {
     BOOL _limitedUI;
+    NSArray *_displayedContactProperties;
+    CNContactListTableView *_contactListTableView;
     CNStarkNoContentBannerView *_overlayView;
+    UITableViewHeaderFooterView *_siriHeaderView;
     AVExternalDevice *_externalDevice;
 }
 
+@property (strong, nonatomic) CNContactListTableView *contactListTableView; // @synthesize contactListTableView=_contactListTableView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSArray *displayedContactProperties; // @synthesize displayedContactProperties=_displayedContactProperties;
 @property (strong, nonatomic) AVExternalDevice *externalDevice; // @synthesize externalDevice=_externalDevice;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL limitedUI; // @synthesize limitedUI=_limitedUI;
 @property (strong, nonatomic) CNStarkNoContentBannerView *overlayView; // @synthesize overlayView=_overlayView;
+@property (strong, nonatomic) UITableViewHeaderFooterView *siriHeaderView; // @synthesize siriHeaderView=_siriHeaderView;
 @property (readonly) Class superclass;
 
++ (id)makeContactsDisplayedProperties;
 - (void).cxx_destruct;
-- (BOOL)contactListViewController:(id)arg1 canSelectContact:(id)arg2;
+- (id)contactListStyleApplier;
 - (void)contactListViewController:(id)arg1 didSelectContact:(id)arg2;
-- (BOOL)contactViewController:(id)arg1 shouldPerformDefaultActionForContact:(id)arg2 propertyKey:(id)arg3 propertyIdentifier:(id)arg4;
 - (id)createTableView;
 - (void)dealloc;
+- (void)handleSiriHeaderViewTap:(id)arg1;
 - (id)init;
 - (id)initWithDataSource:(id)arg1 searchable:(BOOL)arg2 environment:(id)arg3 shouldUseLargeTitle:(BOOL)arg4;
 - (id)initWithStyle:(long long)arg1;
 - (void)limitedUINotification:(id)arg1;
 - (void)postMessageOverlayIfNecessary;
+- (void)refreshTableViewHeaderWithSize:(struct CGSize)arg1;
+- (void)showContactListTableView;
+- (void)showOverlayView;
 - (void)updateLimitedUI;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

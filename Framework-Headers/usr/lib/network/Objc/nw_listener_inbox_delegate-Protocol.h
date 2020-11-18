@@ -8,6 +8,7 @@
 @protocol OS_nw_connection, OS_nw_error;
 
 @protocol nw_listener_inbox_delegate
+- (BOOL)canHandleNewConnection:(nw_listener_inbox *)arg1;
 - (void)handleInbound:(NSObject<OS_nw_connection> *)arg1 addProtocolInbox:(BOOL)arg2;
 - (void)handleInboxCancelComplete:(nw_listener_inbox *)arg1;
 - (void)handleInboxFailed:(nw_listener_inbox *)arg1 error:(NSObject<OS_nw_error> *)arg2;

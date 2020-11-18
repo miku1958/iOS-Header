@@ -36,9 +36,11 @@
 - (id)_keychainAuthTokenForUsername:(id)arg1 service:(id)arg2;
 - (id)_keychainPasswordForUsername:(id)arg1 service:(id)arg2;
 - (id)_profileIDForUsername:(id)arg1 inStore:(id)arg2;
+- (void)_renewCredentialsIfPossibleForAccount:(id)arg1 username:(id)arg2 inServiceIdentifier:(id)arg3 originalInServiceIdentifier:(id)arg4 serviceName:(id)arg5 failIfNotSilent:(BOOL)arg6 renewHandler:(CDUnknownBlockType)arg7 shortCircuitCompletionBlock:(CDUnknownBlockType)arg8;
 - (void)_setKeychainAuthToken:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
 - (void)_setKeychainPassword:(id)arg1 forUsername:(id)arg2 service:(id)arg3;
 - (BOOL)_shouldForceSilentOnlyAuthForUsername:(id)arg1 serviceIdentifier:(id)arg2;
+- (void)_updateStatus:(id)arg1 onAccount:(id)arg2;
 - (BOOL)_usernameHasCorrespondingIdMSAccount:(id)arg1;
 - (id)acAccountWithProfileID:(id)arg1 username:(id)arg2 accountStore:(id)arg3;
 - (double)authTokenGracePeriod;
@@ -56,6 +58,7 @@
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 failIfNotSilent:(BOOL)arg6 outRequestID:(id *)arg7 completionBlock:(CDUnknownBlockType)arg8;
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 outRequestID:(id *)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)requestPasswordForUsername:(id)arg1 service:(id)arg2 badPassword:(BOOL)arg3 showForgotPassword:(BOOL)arg4 shouldRememberPassword:(BOOL)arg5 outRequestID:(id *)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (void)setAccountStatus:(id)arg1 forProfileID:(id)arg2 username:(id)arg3 service:(id)arg4;
 - (void)setAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 authToken:(id)arg4 selfHandle:(id)arg5 accountStatus:(id)arg6 outRequestID:(id *)arg7 completionBlock:(CDUnknownBlockType)arg8;
 - (void)setAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 authToken:(id)arg4 selfHandle:(id)arg5 outRequestID:(id *)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)setHandlesForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 handles:(id)arg4;

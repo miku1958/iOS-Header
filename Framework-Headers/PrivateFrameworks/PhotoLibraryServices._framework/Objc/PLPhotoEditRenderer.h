@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NUBufferRenderClient, NUComposition, NUImageExportClient, NUImagePropertiesClient, NUPriority, NURenderContext, NUVideoExportClient, NUVideoPropertiesClient, PLEditSource, PLPhotoEditModel;
+@class NSDictionary, NUBufferRenderClient, NUComposition, NUPriority, NURenderContext, PICompositionController, PLEditSource;
 
 @interface PLPhotoEditRenderer : NSObject
 {
@@ -18,24 +18,21 @@
     NSDictionary *_smartColorStatisticsInCachedAdjustments;
     NSDictionary *__smartBWAdjustments;
     double _smartBWLevelInCachedAdjustments;
-    NSDictionary *_smartBWStatisticsInCachedAdjustments;
-    NUBufferRenderClient *_renderClient;
-    NUImagePropertiesClient *_propertiesClient;
-    NUImageExportClient *_imageExportClient;
-    NUVideoExportClient *_videoExportClient;
-    NUVideoPropertiesClient *_videoPropertiesClient;
-    NURenderContext *_videoRenderContext;
+    PICompositionController *_compositionController;
     NUPriority *_priority;
+    NUBufferRenderClient *_renderClient;
+    NURenderContext *_videoRenderContext;
     NURenderContext *_geometryContext;
     NURenderContext *_smartToneAutoCalculatorContext;
     PLEditSource *_editSource;
-    PLPhotoEditModel *_photoEditModel;
+    PLEditSource *_overcaptureEditSource;
     long long _smartFiltersCubeSize;
 }
 
 @property (readonly, strong, nonatomic) NUComposition *composition;
+@property (strong, nonatomic) PICompositionController *compositionController; // @synthesize compositionController=_compositionController;
 @property (readonly, strong, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
-@property (strong, nonatomic) PLPhotoEditModel *photoEditModel; // @synthesize photoEditModel=_photoEditModel;
+@property (strong, nonatomic) PLEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property (readonly, nonatomic) double smartBWBaseGrain;
 @property (readonly, nonatomic) double smartBWBaseHue;
 @property (readonly, nonatomic) double smartBWBaseNeutralGamma;
@@ -43,7 +40,7 @@
 @property (readonly, nonatomic) double smartBWBaseTone;
 @property (readonly, nonatomic) double smartColorBaseCast;
 @property (readonly, nonatomic) double smartColorBaseContrast;
-@property (readonly, nonatomic) double smartColorBaseVibrancy;
+@property (readonly, nonatomic) double smartColorBaseSaturation;
 @property (nonatomic) long long smartFiltersCubeSize; // @synthesize smartFiltersCubeSize=_smartFiltersCubeSize;
 @property (readonly, nonatomic) double smartToneBaseBlackPoint;
 @property (readonly, nonatomic) double smartToneBaseBrightness;
@@ -53,32 +50,33 @@
 @property (readonly, nonatomic) double smartToneBaseLocalLight;
 @property (readonly, nonatomic) double smartToneBaseShadows;
 
-+ (id)_editedImagePropertiesFromOriginalImageProperties:(id)arg1 preserveRegions:(BOOL)arg2;
-+ (id)compositionWithModel:(id)arg1 source:(id)arg2;
++ (id)compositionWithController:(id)arg1 source:(id)arg2;
++ (id)compositionWithController:(id)arg1 source:(id)arg2 overcaptureSource:(id)arg3;
++ (void)configureNeutrinoCacheDirectoryIfNeeded;
 + (BOOL)currentDeviceShouldAllowLocalLight;
-+ (void)initialize;
-+ (BOOL)isSupportedAutoLoopRecipe:(id)arg1;
 + (id)newImageDataFromCGImage:(struct CGImage *)arg1 withCompressionQuality:(double)arg2 metadataSourceImageURL:(id)arg3 preserveRegionsInMetadata:(BOOL)arg4;
-+ (void)updatePhotoEditModel:(id)arg1 fromPortraitMetadata:(id)arg2;
-+ (id)whiteBalanceEnumMap;
-+ (id)whiteBalanceIntToString:(unsigned long long)arg1;
-+ (unsigned long long)whiteBalanceStringToInt:(id)arg1;
++ (void)updateComposition:(id)arg1 fromPortraitMetadata:(id)arg2;
++ (void)updateCompositionController:(id)arg1 fromPortraitMetadata:(id)arg2;
 - (void).cxx_destruct;
-- (void)_exportLivePhotoVideoToURL:(id)arg1 preset:(id)arg2 composition:(id)arg3 metadata:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_generateJPEGImageDataForComposition:(id)arg1 withCompressionQuality:(double)arg2 livePhotoPairingIdentifier:(id)arg3 properties:(id)arg4 depthData:(id)arg5 matte:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)_smartBWAdjustments;
-- (double)_smartBWBaseValueForKey:(id)arg1 defaultValue:(double)arg2;
+- (double)_smartBWLevelWithAttributeKey:(id)arg1 settingKey:(id)arg2;
 - (id)_smartColorAdjustments;
+- (double)_smartColorLevelWithAttributeKey:(id)arg1 settingKey:(id)arg2;
 - (id)_smartToneAdjustments;
-- (void)applySourceChangesToModel:(id)arg1 source:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (double)_smartToneLevelWithAttributeKey:(id)arg1 settingKey:(id)arg2;
+- (void)applySourceChangesToCompositionController:(id)arg1 source:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)calculateLongExposureFusionParametersWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)exportVideoToURL:(id)arg1 preset:(id)arg2 livePhotoPairingIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)exportVideoToURL:(id)arg1 preset:(id)arg2 livePhotoPairingIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)generateJPEGImageDataWithCompressionQuality:(double)arg1 livePhotoPairingIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getGeometryForComposition:(id)arg1;
-- (id)initWithEditSource:(id)arg1;
-- (id)initWithEditSource:(id)arg1 renderPriority:(long long)arg2;
+- (id)initWithEditSource:(id)arg1 overcaptureEditSource:(id)arg2;
+- (id)initWithEditSource:(id)arg1 overcaptureEditSource:(id)arg2 renderPriority:(long long)arg3;
+- (id)newExporter;
+- (id)newImageExporterOptions;
+- (id)newVideoExporterOptions;
 - (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 renderMode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)renderImageWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 renderMode:(long long)arg3 renderTime:(CDStruct_198678f7)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)renderVideoWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

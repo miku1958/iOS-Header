@@ -17,23 +17,21 @@
 @property (strong, nonatomic) NSString *cloudGUID; // @dynamic cloudGUID;
 @property (strong, nonatomic) NSNumber *invitationState; // @dynamic invitationState;
 @property (strong, nonatomic) NSNumber *invitationStateLocal; // @dynamic invitationStateLocal;
-@property (nonatomic) NSNumber *inviteeEmailKey; // @dynamic inviteeEmailKey;
-@property (readonly, nonatomic) NSArray *inviteeEmails;
+@property (strong, nonatomic) NSNumber *inviteeEmailKey; // @dynamic inviteeEmailKey;
+@property (readonly, weak, nonatomic) NSArray *inviteeEmails;
 @property (strong, nonatomic) NSString *inviteeFirstName; // @dynamic inviteeFirstName;
 @property (strong, nonatomic) NSString *inviteeFullName; // @dynamic inviteeFullName;
-@property (nonatomic) NSString *inviteeHashedPersonID; // @dynamic inviteeHashedPersonID;
+@property (strong, nonatomic) NSString *inviteeHashedPersonID; // @dynamic inviteeHashedPersonID;
 @property (strong, nonatomic) NSString *inviteeLastName; // @dynamic inviteeLastName;
-@property (readonly, nonatomic) NSArray *inviteePhones;
+@property (readonly, weak, nonatomic) NSArray *inviteePhones;
 @property (strong, nonatomic) NSDate *inviteeSubscriptionDate; // @dynamic inviteeSubscriptionDate;
 @property (nonatomic) BOOL isMine; // @dynamic isMine;
 
 + (id)cloudSharedAlbumInvitationRecordWithGUID:(id)arg1 inLibrary:(id)arg2;
 + (id)cloudSharedAlbumInvitationRecordsWithAlbumGUID:(id)arg1 inLibrary:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertNewInvitationRecordIntoAlbum:(id)arg1 withFirstName:(id)arg2 lastName:(id)arg3 fullName:(id)arg4 emails:(id)arg5 phones:(id)arg6 inLibrary:(id)arg7;
 - (void)awakeFromInsert;
-- (void)dealloc;
 - (void)delete;
 - (id)init;
 - (id)invitationStateDescription;

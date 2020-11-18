@@ -25,7 +25,7 @@
 
 @property (strong, nonatomic) UIFont *boldFont; // @synthesize boldFont=_boldFont;
 @property (readonly, nonatomic) CALayer *circle; // @synthesize circle=_circle;
-@property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property (nonatomic) double dayDiameter; // @synthesize dayDiameter=_dayDiameter;
 @property (readonly, nonatomic) CALayer *dayLabel; // @synthesize dayLabel=_dayLabel;

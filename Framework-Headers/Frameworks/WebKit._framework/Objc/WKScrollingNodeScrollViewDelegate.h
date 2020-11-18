@@ -23,11 +23,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=_isInUserInteraction) BOOL inUserInteraction; // @synthesize inUserInteraction=_inUserInteraction;
 @property (readonly) Class superclass;
 
+- (id)_actingParentScrollViewForScrollView:(id)arg1;
+- (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
+- (void)cancelPointersForGestureRecognizer:(id)arg1;
 - (id)initWithScrollingTreeNodeDelegate:(struct ScrollingTreeScrollingNodeDelegateIOS *)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
+- (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 
 @end

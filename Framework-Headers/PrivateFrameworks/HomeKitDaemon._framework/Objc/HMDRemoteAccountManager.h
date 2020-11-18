@@ -57,6 +57,7 @@
 - (void)processAccountModel:(id)arg1 message:(id)arg2;
 - (void)processAccountModelRemove:(id)arg1 message:(id)arg2;
 - (void)removeAccount:(id)arg1;
+- (void)reset;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5 context:(id)arg6;
 - (BOOL)shouldAccount:(id)arg1 pushbackModel:(id)arg2 actions:(id)arg3;
 - (BOOL)shouldCacheAccount:(id)arg1;

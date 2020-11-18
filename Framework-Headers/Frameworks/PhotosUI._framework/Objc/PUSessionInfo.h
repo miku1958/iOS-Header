@@ -16,6 +16,8 @@
     NSPointerArray *_observers;
     BOOL _selectingAssets;
     BOOL _selectingTargetAlbum;
+    BOOL _enforcesSelectionLimitByDelesectingOtherAssets;
+    BOOL _showsFileSizePicker;
     long long _status;
     PUPhotoSelectionManager *_photoSelectionManager;
     PHAssetCollection *_sourceAlbum;
@@ -31,6 +33,7 @@
 @property (copy, nonatomic) CDUnknownBlockType bannerGenerator; // @synthesize bannerGenerator=_bannerGenerator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL enforcesSelectionLimitByDelesectingOtherAssets; // @synthesize enforcesSelectionLimitByDelesectingOtherAssets=_enforcesSelectionLimitByDelesectingOtherAssets;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *localizedPrompt; // @synthesize localizedPrompt=_localizedPrompt;
 @property (strong, nonatomic) PUPhotoSelectionManager *photoSelectionManager; // @synthesize photoSelectionManager=_photoSelectionManager;
@@ -38,6 +41,7 @@
 @property (readonly, nonatomic, getter=isSelectingAssets) BOOL selectingAssets; // @synthesize selectingAssets=_selectingAssets;
 @property (readonly, nonatomic, getter=isSelectingTargetAlbum) BOOL selectingTargetAlbum; // @synthesize selectingTargetAlbum=_selectingTargetAlbum;
 @property (nonatomic) unsigned long long selectionLimit; // @synthesize selectionLimit=_selectionLimit;
+@property (nonatomic) BOOL showsFileSizePicker; // @synthesize showsFileSizePicker=_showsFileSizePicker;
 @property (strong, nonatomic) PHAssetCollection *sourceAlbum; // @synthesize sourceAlbum=_sourceAlbum;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;

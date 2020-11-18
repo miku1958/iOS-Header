@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GKMatchRequestInternal, NSArray, NSString;
+@class GKMatchRequestInternal, GKTournament, NSArray, NSString;
 
 @interface GKMatchRequest : NSObject
 {
@@ -26,6 +26,8 @@
 @property (strong) NSArray *playersToInvite; // @dynamic playersToInvite;
 @property (copy) CDUnknownBlockType recipientResponseHandler; // @synthesize recipientResponseHandler=_recipientResponseHandler;
 @property (strong) NSArray *recipients; // @dynamic recipients;
+@property BOOL restrictToAutomatch; // @dynamic restrictToAutomatch;
+@property (strong) GKTournament *tournamentForInvitePool;
 
 + (id)instanceMethodSignatureForSelector:(SEL)arg1;
 + (BOOL)instancesRespondToSelector:(SEL)arg1;
@@ -40,7 +42,9 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithInternalRepresentation:(id)arg1;
+- (BOOL)isConfiguredForAutomatchOnly;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isIncorrectlyInvitingPlayers;
 - (BOOL)isRecipientCountValid;
 - (BOOL)isTurnBasedValid;
 - (BOOL)isValidForHosted:(BOOL)arg1;

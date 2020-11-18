@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)fontAttributesForFontDescriptions:(id)arg1;
-- (id)fontNameForAttributes:(id)arg1;
+- (id)fontNameForAttributes:(id)arg1 size:(long long)arg2;
 - (id)initWithFontIndex:(id)arg1;
 - (long long)weightByApplyingWeightLabels:(id)arg1 toWeight:(long long)arg2;
 

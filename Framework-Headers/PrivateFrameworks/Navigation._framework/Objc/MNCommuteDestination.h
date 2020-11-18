@@ -9,7 +9,7 @@
 #import <Navigation/NSCopying-Protocol.h>
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEOETARoute, GEOETATrafficUpdateResponse, GEORouteSet, MNCommuteDestinationSuggestion, MNLocation, MNObserverHashTable, NSDictionary, NSString;
+@class GEOComposedRoute, GEOComposedRouteTraffic, GEOComposedWaypoint, GEODirectionsRequest, GEOETARoute, GEOETATrafficUpdateResponse, MNCommuteDestinationSuggestion, MNLocation, MNObserverHashTable, NSDictionary, NSString;
 
 @interface MNCommuteDestination : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,7 +18,7 @@
     BOOL _rerouting;
     MNCommuteDestinationSuggestion *_suggestion;
     GEOComposedRoute *_route;
-    GEORouteSet *_routeSet;
+    GEOComposedRouteTraffic *_traffic;
     GEODirectionsRequest *_directionsRequest;
     MNLocation *_lastMatchedLocation;
     GEOETARoute *_etaRoute;
@@ -42,16 +42,16 @@
 @property (strong, nonatomic) MNLocation *lastMatchedLocation; // @synthesize lastMatchedLocation=_lastMatchedLocation;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (strong, nonatomic) GEOComposedRoute *nonRecommendedRoute;
-@property (strong) MNObserverHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) MNObserverHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic) double remainingDistance; // @synthesize remainingDistance=_remainingDistance;
 @property (nonatomic) double remainingTime; // @synthesize remainingTime=_remainingTime;
 @property (nonatomic) BOOL rerouting; // @synthesize rerouting=_rerouting;
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
-@property (strong, nonatomic) GEORouteSet *routeSet; // @synthesize routeSet=_routeSet;
 @property (nonatomic) long long score; // @synthesize score=_score;
 @property (copy, nonatomic) NSDictionary *scores; // @synthesize scores=_scores;
 @property (readonly, nonatomic) NSString *shortDescription;
 @property (strong, nonatomic) MNCommuteDestinationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
+@property (strong, nonatomic) GEOComposedRouteTraffic *traffic; // @synthesize traffic=_traffic;
 @property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
 @property (readonly, nonatomic) GEOComposedWaypoint *waypoint;
 

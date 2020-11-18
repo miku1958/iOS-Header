@@ -11,12 +11,12 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (BOOL)_isConstrainedByScreenJail;
 - (BOOL)_isFullscreen;
 - (BOOL)_isTextEffectsWindowHosting;
 - (BOOL)_isTextEffectsWindowNotificationOwner;
 - (BOOL)_isWindowServerHostingManaged;
 - (long long)_orientationForRootTransform;
+- (long long)_orientationForSceneTransform;
 - (long long)_orientationForViewTransform;
 - (void)_sceneBoundsDidChange;
 - (BOOL)_usesWindowServerHitTesting;

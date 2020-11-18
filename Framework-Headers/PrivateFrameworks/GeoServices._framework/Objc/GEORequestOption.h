@@ -9,36 +9,40 @@
 #import <GeoServices/GEOSurchargeType-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSString;
+@class GEOFormattedString, NSString, PBUnknownFields;
 @protocol GEOServerFormattedString;
 
-__attribute__((visibility("hidden")))
 @interface GEORequestOption : PBCodable <GEOSurchargeType, NSCopying>
 {
-    int _enumValue;
+    PBUnknownFields *_unknownFields;
     GEOFormattedString *_name;
+    int _enumValue;
     struct {
-        unsigned int enumValue:1;
-    } _has;
+        unsigned int has_enumValue:1;
+    } _flags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) int enumValue; // @synthesize enumValue=_enumValue;
+@property (nonatomic) int enumValue;
 @property (readonly, nonatomic) id<GEOServerFormattedString> formattedName;
 @property (nonatomic) BOOL hasEnumValue;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) GEOFormattedString *name; // @synthesize name=_name;
+@property (strong, nonatomic) GEOFormattedString *name;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (readonly, nonatomic) int value;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

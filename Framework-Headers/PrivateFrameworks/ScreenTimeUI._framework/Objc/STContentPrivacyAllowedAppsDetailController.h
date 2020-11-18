@@ -9,6 +9,7 @@
 @class NSObject;
 @protocol STContentPrivacyViewModelCoordinator;
 
+__attribute__((visibility("hidden")))
 @interface STContentPrivacyAllowedAppsDetailController : PSListController
 {
     NSObject<STContentPrivacyViewModelCoordinator> *_coordinator;
@@ -20,7 +21,7 @@
 - (void)_addBlacklistAppSpecifier:(id)arg1 bundleID:(id)arg2;
 - (void)_addBooleanAppSpecifier:(id)arg1 configuration:(id)arg2 key:(id)arg3 bundleID:(id)arg4;
 - (void)dealloc;
-- (id)defaultSwitchSpecifierWithConfiguration:(id)arg1 key:(id)arg2 label:(id)arg3 icon:(id)arg4;
+- (id)defaultSwitchSpecifierWithConfiguration:(id)arg1 key:(id)arg2 fallbackLabel:(id)arg3 icon:(id)arg4;
 - (id)getItemSpecifierValue:(id)arg1;
 - (id)init;
 - (id)nameForInstalledSystemApp:(id)arg1;

@@ -30,8 +30,8 @@
 + (void)_saveLocationIntoDefaultsWithLocation:(id)arg1;
 - (void).cxx_destruct;
 - (void)_handleInvalidation;
+- (id)_init;
 - (void)addObserver:(id)arg1;
-- (id)init;
 - (void)removeObserver:(id)arg1;
 - (void)setConnection:(id)arg1;
 - (void)updateLocation:(id)arg1;

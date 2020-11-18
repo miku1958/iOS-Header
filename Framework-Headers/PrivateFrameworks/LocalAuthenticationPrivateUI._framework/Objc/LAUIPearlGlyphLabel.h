@@ -39,6 +39,7 @@
     struct CGSize _maximumSize;
 }
 
+@property (nonatomic) BOOL inApplicationContext; // @dynamic inApplicationContext;
 @property (readonly, nonatomic) struct CGSize maximumSize; // @synthesize maximumSize=_maximumSize;
 @property (readonly, nonatomic, getter=isShimmerEnabled) BOOL shimmerEnabled; // @synthesize shimmerEnabled=_shimmerEnabled;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
@@ -62,6 +63,7 @@
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithStyle:(long long)arg1;
+- (void)invalidate;
 - (void)layoutIfNeededAnimated:(BOOL)arg1;
 - (void)layoutSubviews;
 - (void)reduceMotionDidChange:(id)arg1;

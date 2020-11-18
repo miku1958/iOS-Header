@@ -22,6 +22,7 @@
 + (Class)classForMimePart;
 + (Class)headersClass;
 + (void)setDefaultMessageHeadersClass:(Class)arg1;
+- (void).cxx_destruct;
 - (id)_bodyForMessage:(id)arg1 fetchIfNotAvailable:(BOOL)arg2 updateFlags:(BOOL)arg3;
 - (id)_cachedBodyDataContainerForMessage:(id)arg1 valueIfNotPresent:(id)arg2;
 - (id)_cachedBodyDataForMessage:(id)arg1 valueIfNotPresent:(id)arg2;
@@ -44,7 +45,6 @@
 - (id)dataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 isComplete:(BOOL *)arg3 downloadIfNecessary:(BOOL)arg4 didDownload:(BOOL *)arg5;
 - (BOOL)dataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 isComplete:(BOOL *)arg3 withConsumer:(id)arg4 downloadIfNecessary:(BOOL)arg5 didDownload:(BOOL *)arg6;
 - (BOOL)dataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 withConsumer:(id)arg3 downloadIfNecessary:(BOOL)arg4;
-- (void)dealloc;
 - (id)decryptedTopLevelPartForPart:(id)arg1;
 - (id)defaultAlternativeForPart:(id)arg1;
 - (void)deleteBodyDataForMessage:(id)arg1;

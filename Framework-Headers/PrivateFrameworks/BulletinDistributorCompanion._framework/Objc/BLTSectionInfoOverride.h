@@ -12,10 +12,14 @@
 {
     NSNumber *_grouping;
     NSNumber *_level;
+    NSNumber *_sound;
+    NSNumber *_criticalAlert;
 }
 
+@property (strong, nonatomic) NSNumber *criticalAlert; // @synthesize criticalAlert=_criticalAlert;
 @property (strong, nonatomic) NSNumber *grouping; // @synthesize grouping=_grouping;
 @property (strong, nonatomic) NSNumber *level; // @synthesize level=_level;
+@property (strong, nonatomic) NSNumber *sound; // @synthesize sound=_sound;
 
 - (void).cxx_destruct;
 - (id)initWithOverrides:(id)arg1;

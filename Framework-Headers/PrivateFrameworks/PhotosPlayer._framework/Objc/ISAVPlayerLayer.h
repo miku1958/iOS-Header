@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)deferredDealloc;
 - (id)init;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setPlayer:(id)arg1;

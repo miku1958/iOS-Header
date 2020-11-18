@@ -6,13 +6,14 @@
 
 #import <UIKit/UIButton.h>
 
-@class CAFilter, CAShapeLayer, UIActivityIndicatorView, UIColor, _UIBackdropView;
+@class CAFilter, CAShapeLayer, NSMutableSet, UIActivityIndicatorView, UIColor, UIImage, _UIBackdropView;
 
 @interface PKContinuousButton : UIButton
 {
     CDStruct_e6a35582 _configuration;
-    UIColor *_tintColor;
-    BOOL _titleColorShouldBeTintColor;
+    UIImage *_image;
+    NSMutableSet *_disabledImageStates;
+    UIColor *_overrideTitleColor;
     CAFilter *_highlightFilter;
     UIColor *_normalInputColor;
     UIColor *_highlightInputColor;
@@ -28,23 +29,25 @@
     BOOL _enabled;
     struct CGSize _boundsSize;
     UIActivityIndicatorView *_activityIndicatorView;
-    long long _activityIndicatorViewStyle;
+    UIColor *_activityIndicatorColor;
+    BOOL _showSpinner;
     BOOL _blurDisabled;
-    struct UIEdgeInsets _touchMargins;
 }
 
 @property (nonatomic) BOOL blurDisabled; // @synthesize blurDisabled=_blurDisabled;
-@property (nonatomic) struct UIEdgeInsets touchMargins; // @synthesize touchMargins=_touchMargins;
+@property (nonatomic) BOOL showSpinner; // @synthesize showSpinner=_showSpinner;
 
 + (id)_filterInputColorForEffect:(long long)arg1;
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (void)_accessibilitySettingsDidChange:(id)arg1;
 - (void)_createHighlightFilterIfNecessary;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)_updateBackdropSettings;
+- (void)_updateColor;
 - (void)_updateFilter;
-- (void)_updateTintColorWithColor:(id)arg1;
+- (void)_updateTitleColor;
 - (void)dealloc;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -54,13 +57,13 @@
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
-- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)setImageEnabled:(BOOL)arg1 forState:(unsigned long long)arg2;
 - (void)setSelected:(BOOL)arg1;
-- (void)showSpinner:(BOOL)arg1;
 - (void)tintColorDidChange;
-- (void)updateSpinnerViewStyleWithStyle:(long long)arg1;
+- (void)updateActivityIndicatorColorWithColor:(id)arg1;
+- (void)updateImageView;
 - (void)updateTitleColorWithColor:(id)arg1;
 - (void)updateWithImage:(id)arg1;
 

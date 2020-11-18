@@ -8,11 +8,27 @@
 
 @interface NSString (WebKitExtras)
 + (id)_webkit_localCacheDirectoryWithBundleIdentifier:(id)arg1;
+- (id)_web_bestURLForUserTypedString;
+- (id)_web_capitalizeRFC822HeaderFieldName;
+- (id)_web_decodeHostName;
+- (id)_web_encodeHostName;
+- (BOOL)_web_isUserVisibleURL;
+- (id)_web_possibleURLPrefixesForUserTypedString;
+- (id)_web_possibleURLsForForUserTypedString:(BOOL)arg1;
+- (id)_web_possibleURLsForUserTypedString;
 - (id)_web_stringByAbbreviatingWithTildeInPath;
+- (id)_webkit_decodeHostName;
+- (id)_webkit_encodeHostName;
 - (id)_webkit_filenameByFixingIllegalCharacters;
 - (BOOL)_webkit_hasCaseInsensitivePrefix:(id)arg1;
 - (BOOL)_webkit_hasCaseInsensitiveSuffix:(id)arg1;
 - (BOOL)_webkit_isCaseInsensitiveEqualToString:(id)arg1;
+- (BOOL)_webkit_isFileURL;
+- (BOOL)_webkit_isJavaScriptURL;
+- (BOOL)_webkit_looksLikeAbsoluteURL;
+- (struct _NSRange)_webkit_rangeOfURLScheme;
+- (id)_webkit_scriptIfJavaScriptURL;
+- (id)_webkit_stringByReplacingValidPercentEscapes;
 - (id)_webkit_stringByTrimmingWhitespace;
 @end
 

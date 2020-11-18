@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class PUImportItemViewModel, UIImage, UIView;
+@class PXImportItemViewModel, UIImage, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PUImportOneUpTransitionItem : NSObject
 {
     UIImage *_snapshotImage;
-    PUImportItemViewModel *_importItem;
+    PXImportItemViewModel *_importItem;
     double _initialContentAlpha;
     UIView *_transitionView;
     double _targetContentAlpha;
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _targetFrame;
 }
 
-@property (readonly, nonatomic) PUImportItemViewModel *importItem; // @synthesize importItem=_importItem;
+@property (readonly, nonatomic) PXImportItemViewModel *importItem; // @synthesize importItem=_importItem;
 @property (readonly, nonatomic) struct PXSimpleIndexPath indexPath; // @synthesize indexPath=_indexPath;
 @property (nonatomic) double initialContentAlpha; // @synthesize initialContentAlpha=_initialContentAlpha;
 @property (nonatomic) struct CGRect initialFrame; // @synthesize initialFrame=_initialFrame;

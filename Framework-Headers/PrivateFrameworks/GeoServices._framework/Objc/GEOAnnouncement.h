@@ -8,38 +8,60 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, GEOPDFlyover, NSString;
+@class GEOMapRegion, GEOPDFlyover, NSString, PBDataReader;
 
 @interface GEOAnnouncement : PBCodable <NSCopying>
 {
-    unsigned int _announcementID;
-    int _announcementType;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_buttonOneAppURI;
     NSString *_buttonOneMessage;
     NSString *_buttonTwoAppURI;
     NSString *_buttonTwoMessage;
-    unsigned int _displayDestinations;
     GEOPDFlyover *_flyoverInfo;
     GEOMapRegion *_mapRegion;
-    int _releasePhase;
     NSString *_title;
     NSString *_userMessage;
+    unsigned int _announcementID;
+    int _announcementType;
+    unsigned int _displayDestinations;
+    int _releasePhase;
     struct {
-        unsigned int announcementID:1;
-        unsigned int announcementType:1;
-        unsigned int displayDestinations:1;
-        unsigned int releasePhase:1;
-    } _has;
+        unsigned int has_announcementID:1;
+        unsigned int has_announcementType:1;
+        unsigned int has_displayDestinations:1;
+        unsigned int has_releasePhase:1;
+        unsigned int read_buttonOneAppURI:1;
+        unsigned int read_buttonOneMessage:1;
+        unsigned int read_buttonTwoAppURI:1;
+        unsigned int read_buttonTwoMessage:1;
+        unsigned int read_flyoverInfo:1;
+        unsigned int read_mapRegion:1;
+        unsigned int read_title:1;
+        unsigned int read_userMessage:1;
+        unsigned int wrote_buttonOneAppURI:1;
+        unsigned int wrote_buttonOneMessage:1;
+        unsigned int wrote_buttonTwoAppURI:1;
+        unsigned int wrote_buttonTwoMessage:1;
+        unsigned int wrote_flyoverInfo:1;
+        unsigned int wrote_mapRegion:1;
+        unsigned int wrote_title:1;
+        unsigned int wrote_userMessage:1;
+        unsigned int wrote_announcementID:1;
+        unsigned int wrote_announcementType:1;
+        unsigned int wrote_displayDestinations:1;
+        unsigned int wrote_releasePhase:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int announcementID; // @synthesize announcementID=_announcementID;
-@property (nonatomic) int announcementType; // @synthesize announcementType=_announcementType;
-@property (strong, nonatomic) NSString *buttonOneAppURI; // @synthesize buttonOneAppURI=_buttonOneAppURI;
-@property (strong, nonatomic) NSString *buttonOneMessage; // @synthesize buttonOneMessage=_buttonOneMessage;
-@property (strong, nonatomic) NSString *buttonTwoAppURI; // @synthesize buttonTwoAppURI=_buttonTwoAppURI;
-@property (strong, nonatomic) NSString *buttonTwoMessage; // @synthesize buttonTwoMessage=_buttonTwoMessage;
-@property (nonatomic) unsigned int displayDestinations; // @synthesize displayDestinations=_displayDestinations;
-@property (strong, nonatomic) GEOPDFlyover *flyoverInfo; // @synthesize flyoverInfo=_flyoverInfo;
+@property (nonatomic) unsigned int announcementID;
+@property (nonatomic) int announcementType;
+@property (strong, nonatomic) NSString *buttonOneAppURI;
+@property (strong, nonatomic) NSString *buttonOneMessage;
+@property (strong, nonatomic) NSString *buttonTwoAppURI;
+@property (strong, nonatomic) NSString *buttonTwoMessage;
+@property (nonatomic) unsigned int displayDestinations;
+@property (strong, nonatomic) GEOPDFlyover *flyoverInfo;
 @property (nonatomic) BOOL hasAnnouncementID;
 @property (nonatomic) BOOL hasAnnouncementType;
 @property (readonly, nonatomic) BOOL hasButtonOneAppURI;
@@ -52,14 +74,23 @@
 @property (nonatomic) BOOL hasReleasePhase;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasUserMessage;
-@property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
-@property (nonatomic) int releasePhase; // @synthesize releasePhase=_releasePhase;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-@property (strong, nonatomic) NSString *userMessage; // @synthesize userMessage=_userMessage;
+@property (strong, nonatomic) GEOMapRegion *mapRegion;
+@property (nonatomic) int releasePhase;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *userMessage;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsAnnouncementType:(id)arg1;
 - (int)StringAsReleasePhase:(id)arg1;
+- (void)_readButtonOneAppURI;
+- (void)_readButtonOneMessage;
+- (void)_readButtonTwoAppURI;
+- (void)_readButtonTwoMessage;
+- (void)_readFlyoverInfo;
+- (void)_readMapRegion;
+- (void)_readTitle;
+- (void)_readUserMessage;
 - (id)announcementTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -68,6 +99,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)releasePhaseAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

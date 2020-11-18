@@ -12,12 +12,16 @@
 {
     double _timeInterval;
     double _value;
+    float _duration;
     struct {
         unsigned int timeInterval:1;
         unsigned int value:1;
+        unsigned int duration:1;
     } _has;
 }
 
+@property (nonatomic) float duration; // @synthesize duration=_duration;
+@property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasTimeInterval;
 @property (nonatomic) BOOL hasValue;
 @property (nonatomic) double timeInterval; // @synthesize timeInterval=_timeInterval;

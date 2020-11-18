@@ -25,12 +25,14 @@
     VSIdentityProviderRequestManager *_requestManager;
     UIBarButtonItem *_signInButtonItem;
     UIBarButtonItem *_cancelButtonItem;
+    UIViewController *_currentlyPresentedIdentityProviderAlert;
 }
 
 @property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (nonatomic) BOOL canIssuePrivacyVouchers; // @synthesize canIssuePrivacyVouchers=_canIssuePrivacyVouchers;
 @property (strong, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
+@property (strong, nonatomic) UIViewController *currentlyPresentedIdentityProviderAlert; // @synthesize currentlyPresentedIdentityProviderAlert=_currentlyPresentedIdentityProviderAlert;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSIdentityProviderViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -58,10 +60,12 @@
 - (void)_stopObservingViewModel:(id)arg1;
 - (void)_stopValidationAndShowButtons:(BOOL)arg1;
 - (void)authenticationViewControllerDidCancel:(id)arg1;
+- (BOOL)currentAuthenticationViewControllerSupportsPreAuth;
 - (void)dealloc;
 - (void)enqueueRequest:(id)arg1;
 - (void)identityProviderRequestManager:(id)arg1 didAuthenticateAccount:(id)arg2 forRequest:(id)arg3;
 - (void)identityProviderRequestManager:(id)arg1 finishedRequest:(id)arg2 withResult:(id)arg3;
+- (BOOL)identityProviderRequestManager:(id)arg1 requestsAlert:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentityProvider:(id)arg1;

@@ -6,11 +6,46 @@
 
 #import <NeutrinoCore/NUAutoCalculator.h>
 
-@interface PICropAutoCalculator : NUAutoCalculator
+#import <PhotoImaging/NUTimeBased-Protocol.h>
+#import <PhotoImaging/PIFaceObservingAutoCalculator-Protocol.h>
+
+@class NSNumber, NSString, PIFaceObservationCache;
+
+@interface PICropAutoCalculator : NUAutoCalculator <NUTimeBased, PIFaceObservingAutoCalculator>
 {
+    BOOL _shouldPerformAutoCrop;
+    BOOL _shouldPerformAutoStraighten;
+    BOOL _shouldUseAutoStraightenVerticalDetector;
+    BOOL _debugFilesEnabled;
+    PIFaceObservationCache *_faceObservationCache;
+    NSNumber *_autoStraightenVerticalAngleThreshold;
+    NSNumber *_autoStraightenDominantAngleDiffThreshold;
+    double _maxAutoStraighten;
+    double _minAutoStraighten;
+    NSString *_debugFilesPrefix;
 }
 
-- (void)calculate:(CDUnknownBlockType)arg1;
+@property (copy) NSNumber *autoStraightenDominantAngleDiffThreshold; // @synthesize autoStraightenDominantAngleDiffThreshold=_autoStraightenDominantAngleDiffThreshold;
+@property (copy) NSNumber *autoStraightenVerticalAngleThreshold; // @synthesize autoStraightenVerticalAngleThreshold=_autoStraightenVerticalAngleThreshold;
+@property (readonly, copy) NSString *debugDescription;
+@property BOOL debugFilesEnabled; // @synthesize debugFilesEnabled=_debugFilesEnabled;
+@property (copy) NSString *debugFilesPrefix; // @synthesize debugFilesPrefix=_debugFilesPrefix;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PIFaceObservationCache *faceObservationCache; // @synthesize faceObservationCache=_faceObservationCache;
+@property (readonly) unsigned long long hash;
+@property double maxAutoStraighten; // @synthesize maxAutoStraighten=_maxAutoStraighten;
+@property double minAutoStraighten; // @synthesize minAutoStraighten=_minAutoStraighten;
+@property BOOL shouldPerformAutoCrop; // @synthesize shouldPerformAutoCrop=_shouldPerformAutoCrop;
+@property BOOL shouldPerformAutoStraighten; // @synthesize shouldPerformAutoStraighten=_shouldPerformAutoStraighten;
+@property BOOL shouldUseAutoStraightenVerticalDetector; // @synthesize shouldUseAutoStraightenVerticalDetector=_shouldUseAutoStraightenVerticalDetector;
+@property (readonly) Class superclass;
+@property (nonatomic) CDStruct_1b6d18a9 time;
+
+- (void).cxx_destruct;
+- (id)imageProperties:(out id *)arg1;
+- (id)initWithComposition:(id)arg1;
+- (void)submit:(CDUnknownBlockType)arg1;
+- (BOOL)undoExifOrientation:(CDStruct_996ac03c *)arg1 error:(out id *)arg2;
 
 @end
 

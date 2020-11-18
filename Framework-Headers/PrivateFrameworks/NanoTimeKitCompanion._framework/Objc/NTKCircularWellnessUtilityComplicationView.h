@@ -16,12 +16,11 @@
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (void)_applyForegroundAlpha;
 - (void)_layoutContentView;
 - (id)_ringColor;
-- (void)_setLayoutEmptyRingsNoDot;
+- (void)_setLayoutEmptyRings;
 - (void)_updateForTemplateChange;
 - (void)_updateRingColors;
 - (void)applyFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;

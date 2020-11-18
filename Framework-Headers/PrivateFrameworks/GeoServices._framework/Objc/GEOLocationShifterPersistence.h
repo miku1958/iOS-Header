@@ -16,13 +16,16 @@
 
 + (id)sharedPersister;
 - (void).cxx_destruct;
-- (void)_findResponseForCoordinate:(CDStruct_c3b9c2ee)arg1 usingStatement:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_findResponseForCoordinate:(CDStruct_c3b9c2ee)arg1 usingFunction:(CDUnknownFunctionPointerType)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_setup:(id)arg1;
 - (void)findExactResponseForCoordinate:(CDStruct_c3b9c2ee)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)findResponseForCoordinate:(CDStruct_c3b9c2ee)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getAllEntries:(id)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (id)init;
 - (id)initWithDBFilePath:(id)arg1;
 - (void)pruneEntriesOlderThan:(id)arg1 maximumEntriesToKeep:(int)arg2;
 - (void)removeAllEntries;
+- (void)removeAllEntriesSync;
 - (void)storeResponse:(id)arg1;
 - (void)tearDown;
 

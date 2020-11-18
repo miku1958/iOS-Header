@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <GeoServices/GEONavigationServerObserverXPCInterface-Protocol.h>
+#import <GeoServices/GEONavigationServerListenerXPCInterface-Protocol.h>
 
 @class NSString, NSXPCConnection;
 @protocol GEONavigationListenerDelegate, OS_dispatch_queue;
 
-@interface GEONavigationListener : NSObject <GEONavigationServerObserverXPCInterface>
+@interface GEONavigationListener : NSObject <GEONavigationServerListenerXPCInterface>
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_queue;
     int _navigationStartedToken;
     int _navigationStoppedToken;
+    int _navigationRoutePreviewToken;
     id<GEONavigationListenerDelegate> _delegate;
     CDUnknownBlockType _routeSummaryUpdatedHandler;
     CDUnknownBlockType _transitSummaryUpdatedHandler;
@@ -29,6 +30,8 @@
     CDUnknownBlockType _positionFromDestinationUpdatedHandler;
     CDUnknownBlockType _trafficIncidentAlertDetailsDataUpdatedHandler;
     CDUnknownBlockType _navigationVoiceVolumeUpdatedHandler;
+    unsigned long long _navigationState;
+    int _transportType;
     NSString *_currentRoadName;
 }
 
@@ -39,6 +42,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType guidanceStateUpdatedHandler; // @synthesize guidanceStateUpdatedHandler=_guidanceStateUpdatedHandler;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long navigationState; // @synthesize navigationState=_navigationState;
 @property (copy, nonatomic) CDUnknownBlockType navigationVoiceVolumeUpdatedHandler; // @synthesize navigationVoiceVolumeUpdatedHandler=_navigationVoiceVolumeUpdatedHandler;
 @property (copy, nonatomic) CDUnknownBlockType positionFromDestinationUpdatedHandler; // @synthesize positionFromDestinationUpdatedHandler=_positionFromDestinationUpdatedHandler;
 @property (copy, nonatomic) CDUnknownBlockType positionFromManeuverUpdatedHandler; // @synthesize positionFromManeuverUpdatedHandler=_positionFromManeuverUpdatedHandler;
@@ -53,6 +57,7 @@
 - (void).cxx_destruct;
 - (void)_close;
 - (void)_connectToDaemonIfNeeded;
+- (unsigned long long)_listenerStateForSessionState:(unsigned long long)arg1;
 - (void)_notifyWithActiveRouteDetailsData:(id)arg1;
 - (void)_notifyWithGuidanceState:(id)arg1;
 - (void)_notifyWithNavigationVoiceVolume:(int)arg1;
@@ -68,7 +73,9 @@
 - (void)_open;
 - (void)currentRoadNameUpdated:(id)arg1;
 - (void)dealloc;
+- (id)init;
 - (id)initWithQueue:(id)arg1;
+- (void)navigationStateChanged:(unsigned long long)arg1 transportType:(int)arg2;
 - (void)navigationUpdatedWithVoiceVolumeData:(id)arg1;
 - (void)requestActiveRouteDetailsData;
 - (void)requestGuidanceState;

@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) NSString *editingStringValue;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
+@property (readonly, weak, nonatomic) NSArray *extendedLabels;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly, weak, nonatomic) CNCardPropertyGroup *group; // @synthesize group=_group;
 @property (strong, nonatomic) CNLabeledValue *labeledValue; // @synthesize labeledValue=_labeledValue;
@@ -50,14 +51,17 @@
 @property (strong, nonatomic) CNLabeledValue *originalLabeledValue; // @synthesize originalLabeledValue=_originalLabeledValue;
 @property (readonly, nonatomic) NSString *placeholderString;
 @property (nonatomic) unsigned long long policyFlags; // @synthesize policyFlags=_policyFlags;
+@property (readonly, weak, nonatomic) NSArray *promotedExtendedLabels;
 @property (strong, nonatomic) NSString *property; // @synthesize property=_property;
 @property (readonly, nonatomic, getter=isReadonly) BOOL readonly;
+@property (readonly, weak, nonatomic) NSArray *standardLabels;
 @property (readonly, nonatomic, getter=isSuggested) BOOL suggested;
-@property (readonly, weak, nonatomic) NSArray *supportedLabels;
+@property (readonly, nonatomic) BOOL supportsLabel;
 
 + (Class)classForProperty:(id)arg1;
 + (void)deleteCoreRecentsEntriesMatchingProperty:(id)arg1 recentsManager:(id)arg2;
 + (id)emptyValueForLabel:(id)arg1;
++ (id)initialValueForLabel:(id)arg1 group:(id)arg2;
 + (id)newPropertyGroupItemForProperty:(id)arg1;
 + (id)propertyGroupItemWithLabel:(id)arg1 group:(id)arg2 contact:(id)arg3;
 + (id)propertyGroupItemWithLabel:(id)arg1 group:(id)arg2 contact:(id)arg3 environment:(id)arg4;

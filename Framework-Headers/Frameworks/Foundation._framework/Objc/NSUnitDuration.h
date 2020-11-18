@@ -15,7 +15,11 @@
 + (id)_measurementWithNaturalScale:(id)arg1 system:(unsigned long long)arg2;
 + (id)baseUnit;
 + (id)hours;
++ (id)microseconds;
++ (id)milliseconds;
 + (id)minutes;
++ (id)nanoseconds;
++ (id)picoseconds;
 + (id)seconds;
 
 @end

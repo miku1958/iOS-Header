@@ -17,6 +17,7 @@
 - (long long)_accessibilityExpandedStatus;
 - (BOOL)_accessibilityIgnoreInternalLabels;
 - (id)_accessibilityRoleDescription;
+- (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

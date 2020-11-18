@@ -35,6 +35,7 @@
 - (id)createCloudRecordWithObjectID:(id)arg1 recordName:(id)arg2;
 - (id)createCloudZoneChangeTemporaryCache:(BOOL)arg1;
 - (BOOL)doesProcessChangeEvenIfDecryptionFails;
+- (void)dropCachedRecords;
 - (id)homeDataModelWithPushDataPush:(id)arg1;
 - (id)homeDataV3ModelWithPushDataPush:(id)arg1;
 - (id)metadataModelWithPushDataPush:(id)arg1;

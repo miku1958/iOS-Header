@@ -8,38 +8,54 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSMutableArray, NSString;
+@class GEOLocation, NSMutableArray, NSString, PBDataReader;
 
 @interface GEOAddressCorrectionInitResponse : PBCodable <NSCopying>
 {
-    NSMutableArray *_address;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_addressID;
     GEOLocation *_addressLocation;
+    NSMutableArray *_address;
     unsigned int _numberOfVisitsBucketSize;
     int _statusCode;
     struct {
-        unsigned int numberOfVisitsBucketSize:1;
-        unsigned int statusCode:1;
-    } _has;
+        unsigned int has_numberOfVisitsBucketSize:1;
+        unsigned int has_statusCode:1;
+        unsigned int read_addressID:1;
+        unsigned int read_addressLocation:1;
+        unsigned int read_address:1;
+        unsigned int wrote_addressID:1;
+        unsigned int wrote_addressLocation:1;
+        unsigned int wrote_address:1;
+        unsigned int wrote_numberOfVisitsBucketSize:1;
+        unsigned int wrote_statusCode:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *address; // @synthesize address=_address;
-@property (strong, nonatomic) NSString *addressID; // @synthesize addressID=_addressID;
-@property (strong, nonatomic) GEOLocation *addressLocation; // @synthesize addressLocation=_addressLocation;
+@property (strong, nonatomic) NSMutableArray *address;
+@property (strong, nonatomic) NSString *addressID;
+@property (strong, nonatomic) GEOLocation *addressLocation;
 @property (readonly, nonatomic) BOOL hasAddressID;
 @property (readonly, nonatomic) BOOL hasAddressLocation;
 @property (nonatomic) BOOL hasNumberOfVisitsBucketSize;
 @property (nonatomic) BOOL hasStatusCode;
-@property (nonatomic) unsigned int numberOfVisitsBucketSize; // @synthesize numberOfVisitsBucketSize=_numberOfVisitsBucketSize;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (nonatomic) unsigned int numberOfVisitsBucketSize;
+@property (nonatomic) int statusCode;
 
 + (Class)addressType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
+- (void)_addNoFlagsAddress:(id)arg1;
+- (void)_readAddress;
+- (void)_readAddressID;
+- (void)_readAddressLocation;
 - (void)addAddress:(id)arg1;
 - (id)addressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)addressCount;
 - (void)clearAddress;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -47,6 +63,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

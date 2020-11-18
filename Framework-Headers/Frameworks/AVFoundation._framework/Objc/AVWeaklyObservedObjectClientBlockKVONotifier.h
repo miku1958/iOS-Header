@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)callbackDidFireWithChangeDictionary:(id)arg1;
 - (void)cancelCallbacks;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithCallbackContextRegistry:(id)arg1 observer:(id)arg2 object:(id)arg3 keyPath:(id)arg4 options:(unsigned long long)arg5 block:(CDUnknownBlockType)arg6;
 - (void)start;
 

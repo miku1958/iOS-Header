@@ -21,7 +21,6 @@
     UIView *_roundedView;
     EKDayView *_dayView;
     NSDate *_date;
-    EKEvent *_event;
     NSDate *_originalEventStartDate;
     NSDate *_originalEventEndDate;
     BOOL _hasOverriddenEventDates;
@@ -29,16 +28,19 @@
     NSDate *_overriddenEventEndDate;
     long long _overriddenParticipantStatus;
     BOOL _hasOverriddenStatus;
+    BOOL _requireScrollPositionCorrection;
     BOOL _hidesAllDayEvents;
     BOOL _respectsSelectedCalendarsFilter;
     unsigned long long _style;
     UIViewController *_hostingViewController;
+    EKEvent *_event;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<EKEditItemViewControllerDelegate> editDelegate;
 @property (nonatomic) BOOL editItemShouldBeAskedForInjectableViewController;
+@property (strong, nonatomic) EKEvent *event; // @synthesize event=_event;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesAllDayEvents; // @synthesize hidesAllDayEvents=_hidesAllDayEvents;
 @property (weak, nonatomic) UIViewController *hostingViewController; // @synthesize hostingViewController=_hostingViewController;
@@ -54,6 +56,7 @@
 - (id)_dateForFirstHourMarker;
 - (double)_dayViewHeight;
 - (struct _NSRange)_displayedHoursRange;
+- (BOOL)_eventOccursOnThisDay:(id)arg1;
 - (id)_eventsForStartDate:(id)arg1 endDate:(id)arg2;
 - (id)_hourMaskForEvents:(id)arg1;
 - (void)_scrollDayViewToCorrectOffsetAnimated:(BOOL)arg1;
@@ -67,10 +70,11 @@
 - (void)loadView;
 - (struct CGSize)preferredContentSize;
 - (void)reload;
+- (void)reloadWithNewDate:(id)arg1 overriddenEventStartDate:(id)arg2 overriddenEventEndDate:(id)arg3;
 - (void)renderPressHighlight:(BOOL)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)toggleExpandedState;
-- (double)topInset;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

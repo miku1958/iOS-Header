@@ -6,17 +6,19 @@
 
 #import <DeviceManagement/DMFAppRequest.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface DMFMDMv1StartManagingAppRequest : DMFAppRequest
 {
     NSString *_originator;
     unsigned long long _managementOptions;
     NSString *_VPNUUIDString;
+    NSArray *_associatedDomains;
     NSDictionary *_configuration;
 }
 
 @property (copy, nonatomic) NSString *VPNUUIDString; // @synthesize VPNUUIDString=_VPNUUIDString;
+@property (copy, nonatomic) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
 @property (copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property (nonatomic) unsigned long long managementOptions; // @synthesize managementOptions=_managementOptions;
 @property (copy, nonatomic) NSString *originator; // @synthesize originator=_originator;

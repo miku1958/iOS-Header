@@ -6,24 +6,42 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, _INPBDataString, _INPBIntentMetadata, _INPBSpatialEventTrigger, _INPBTaskList, _INPBTemporalEventTrigger;
+@class NSArray, NSString, _INPBContact, _INPBContactEventTrigger, _INPBDataString, _INPBIntent, _INPBIntentMetadata, _INPBSpatialEventTrigger, _INPBTaskList, _INPBTemporalEventTrigger;
 
 @protocol _INPBAddTasksIntent <NSObject>
 
+@property (strong, nonatomic) _INPBContactEventTrigger *contactEventTrigger;
+@property (readonly, nonatomic) BOOL hasContactEventTrigger;
+@property (readonly, nonatomic) BOOL hasIntent;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (nonatomic) BOOL hasPriority;
 @property (readonly, nonatomic) BOOL hasSpatialEventTrigger;
 @property (readonly, nonatomic) BOOL hasTargetTaskList;
+@property (nonatomic) BOOL hasTaskReference;
 @property (readonly, nonatomic) BOOL hasTemporalEventTrigger;
+@property (strong, nonatomic) _INPBIntent *intent;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
+@property (nonatomic) int priority;
 @property (strong, nonatomic) _INPBSpatialEventTrigger *spatialEventTrigger;
 @property (strong, nonatomic) _INPBTaskList *targetTaskList;
+@property (copy, nonatomic) NSArray *targetTaskListMembers;
+@property (readonly, nonatomic) unsigned long long targetTaskListMembersCount;
+@property (nonatomic) int taskReference;
 @property (copy, nonatomic) NSArray *taskTitles;
 @property (readonly, nonatomic) unsigned long long taskTitlesCount;
 @property (strong, nonatomic) _INPBTemporalEventTrigger *temporalEventTrigger;
 
++ (Class)targetTaskListMembersType;
 + (Class)taskTitlesType;
+- (int)StringAsPriority:(NSString *)arg1;
+- (int)StringAsTaskReference:(NSString *)arg1;
+- (void)addTargetTaskListMembers:(_INPBContact *)arg1;
 - (void)addTaskTitles:(_INPBDataString *)arg1;
+- (void)clearTargetTaskListMembers;
 - (void)clearTaskTitles;
+- (NSString *)priorityAsString:(int)arg1;
+- (_INPBContact *)targetTaskListMembersAtIndex:(unsigned long long)arg1;
+- (NSString *)taskReferenceAsString:(int)arg1;
 - (_INPBDataString *)taskTitlesAtIndex:(unsigned long long)arg1;
 @end
 

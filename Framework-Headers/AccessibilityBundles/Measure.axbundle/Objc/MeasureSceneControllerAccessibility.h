@@ -33,8 +33,8 @@
 - (void)continueMeasurement;
 - (void)didUpdateSnapPointWithScreenPoint:(id)arg1 worldPoint:(id)arg2;
 - (void)removeLastLine;
-- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)restartMeasurementSession;
+- (void)session:(id)arg1 didUpdateFrame:(id)arg2;
 
 @end
 

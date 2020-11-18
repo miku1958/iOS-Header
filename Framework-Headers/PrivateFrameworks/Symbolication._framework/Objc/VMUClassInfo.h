@@ -50,6 +50,7 @@
 @property (readonly) BOOL isMetaClass;
 @property (readonly) BOOL isRealized;
 @property (readonly) BOOL isRootClass;
+@property (readonly, nonatomic) unsigned int ivarCount; // @synthesize ivarCount=_ivarCount;
 @property (readonly, nonatomic) unsigned int pointerSize; // @synthesize pointerSize=_remotePointerSize;
 @property (readonly) unsigned long long remoteIsa; // @synthesize remoteIsa=_remoteIsa;
 @property (readonly, nonatomic) NSString *shortIvarDescription;
@@ -61,7 +62,7 @@
 + (id)classInfoWithClassName:(id)arg1 binaryPath:(id)arg2 type:(unsigned int)arg3;
 + (id)descriptionForTypeEncoding:(const char *)arg1 ivarName:(const char *)arg2;
 + (void)initialize;
-+ (unsigned long long)sizeofClassStructure:(BOOL)arg1;
++ (unsigned long long)sizeofClassStructure;
 - (void).cxx_destruct;
 - (void)_addFields:(id)arg1;
 - (void)_addVariantAction:(CDUnknownBlockType)arg1 withEvaluator:(CDUnknownBlockType)arg2;
@@ -69,6 +70,7 @@
 - (id)_copyWithInstanceSize:(unsigned int)arg1 superclassOffset:(unsigned int)arg2 asVariant:(BOOL)arg3 mutable:(BOOL)arg4;
 - (void)_demangleClassName;
 - (void)_freeLocalIvarList;
+- (void)_identifyObjCClassStructureBlocksForIsa:(unsigned long long)arg1 isMetaclass:(BOOL)arg2 withScanner:(id)arg3 addressIdentifierBlock:(CDUnknownBlockType)arg4;
 - (id)_initWithClass:(unsigned long long)arg1 realizedOnly:(BOOL)arg2 infoMap:(id)arg3 symbolicator:(struct _CSTypeRef)arg4 type:(unsigned int)arg5 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg6 memoryReader:(CDUnknownBlockType)arg7;
 - (void)_logDescriptionWithSuperclasses:(BOOL)arg1 indentation:(int)arg2 toLogger:(CDUnknownBlockType)arg3;
 - (void)_parseIvarsAndLayouts;
@@ -99,6 +101,7 @@
 - (id)fieldAtOrBeforeOffset:(unsigned int)arg1;
 - (id)firstFieldWithName:(id)arg1;
 - (unsigned long long)hash;
+- (void)identifyObjCClassStructureBlocksWithScanner:(id)arg1 addressIdentifierBlock:(CDUnknownBlockType)arg2;
 - (id)initSwiftClassWithName:(id)arg1 classInfoType:(unsigned int)arg2 size:(unsigned long long)arg3;
 - (id)initWithClass:(unsigned long long)arg1 infoMap:(id)arg2 symbolicator:(struct _CSTypeRef)arg3 type:(unsigned int)arg4 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg5 memoryReader:(CDUnknownBlockType)arg6;
 - (id)initWithClassName:(id)arg1 binaryPath:(id)arg2 type:(unsigned int)arg3;

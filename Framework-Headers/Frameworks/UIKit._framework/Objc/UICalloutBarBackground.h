@@ -6,16 +6,15 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UIVisualEffectView;
+@class UIImageView, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface UICalloutBarBackground : UIView
 {
     double m_dividerOffsets[24];
-    BOOL m_isDisplayingVertically;
-    UIVisualEffectView *_separatorView;
     UIVisualEffectView *_blurView;
-    UIVisualEffectView *_tintView;
+    UIImageView *_selectionTintView;
+    UIImageView *_separatorView;
     struct CGRect _highlightRect;
 }
 
@@ -25,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)layoutSubviews;
 - (void)setDividerOffsets:(double *)arg1;
-- (void)setHighlighted:(BOOL)arg1 forFrame:(struct CGRect)arg2 isDisplayingVertically:(BOOL)arg3;
+- (void)setHighlighted:(BOOL)arg1 forFrame:(struct CGRect)arg2;
 
 @end
 

@@ -16,7 +16,6 @@
     UIView *_contentView;
     UIView *_backgroundView;
     UIView *_selectedBackgroundView;
-    _UIFloatingContentView *_focusedFloatingContentView;
     UILongPressGestureRecognizer *_menuGesture;
     id _selectionSegueTemplate;
     id _highlightingSupport;
@@ -33,6 +32,7 @@
     BOOL _highlighted;
     BOOL _isLayoutEngineSuspended;
     BOOL _dragging;
+    _UIFloatingContentView *_focusedFloatingContentView;
     long long _focusStyle;
 }
 
@@ -40,10 +40,12 @@
 @property (nonatomic, getter=_isLayoutEngineSuspended, setter=_setLayoutEngineSuspended:) BOOL _layoutEngineSuspended; // @synthesize _layoutEngineSuspended=_isLayoutEngineSuspended;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, nonatomic, getter=_contentViewInset) struct UIEdgeInsets contentViewInset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDragging) BOOL dragging; // @synthesize dragging=_dragging;
 @property (nonatomic, getter=_focusStyle, setter=_setFocusStyle:) long long focusStyle; // @synthesize focusStyle=_focusStyle;
+@property (readonly, nonatomic, getter=_focusedFloatingContentView) _UIFloatingContentView *focusedFloatingContentView; // @synthesize focusedFloatingContentView=_focusedFloatingContentView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
@@ -54,10 +56,8 @@
 + (Class)_contentViewClass;
 - (void).cxx_destruct;
 - (BOOL)_canFocusProgrammatically;
-- (struct CGRect)_contentViewFrame;
+- (void)_configureFocusedFloatingContentView:(id)arg1;
 - (BOOL)_descendantsShouldHighlight;
-- (void)_descendent:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
-- (void)_descendent:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)_encodableSubviews;
 - (void)_ensureFocusedFloatingContentView;
@@ -66,7 +66,8 @@
 - (void)_handleMenuGesture:(id)arg1;
 - (BOOL)_highlightDescendantsWhenSelected;
 - (BOOL)_isUsingOldStyleMultiselection;
-- (void)_menuDismissed:(id)arg1;
+- (void)_monitoredView:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
+- (void)_monitoredView:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_performAction:(SEL)arg1 sender:(id)arg2;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (id)_selectionSegueTemplate;

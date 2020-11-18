@@ -8,12 +8,11 @@
 
 #import <UIKitCore/UITextFieldDelegate-Protocol.h>
 
-@class NSObject, NSString, UIDocumentPasswordField, UIImageView, UILabel, UITextField;
+@class NSObject, NSString, UIDocumentPasswordField, UILabel, UITextField;
 @protocol UIDocumentPasswordViewDelegate;
 
 @interface UIDocumentPasswordView : UIView <UITextFieldDelegate>
 {
-    UIImageView *_iconView;
     UIDocumentPasswordField *_passwordTextField;
     UILabel *_label;
     NSObject<UIDocumentPasswordViewDelegate> *passwordDelegate;
@@ -27,7 +26,6 @@
 @property (readonly) Class superclass;
 
 - (BOOL)_canDrawContent;
-- (struct CGRect)_iconRectForContainerRect:(struct CGRect)arg1;
 - (id)_labelFont;
 - (double)_labelHorizontalOffset;
 - (id)_labelTextColor;

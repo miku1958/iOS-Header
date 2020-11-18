@@ -22,14 +22,15 @@
 @property (readonly, copy) NSString *name;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)accountOwnerWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 name:(id)arg9 birthDate:(id)arg10;
-+ (id)accountOwnerWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 name:(id)arg10 birthDate:(id)arg11;
++ (id)_newAccountOwnerWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 name:(id)arg11 birthDate:(id)arg12 config:(CDUnknownBlockType)arg13;
++ (id)accountOwnerWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 name:(id)arg10 birthDate:(id)arg11;
++ (id)accountOwnerWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 name:(id)arg11 birthDate:(id)arg12;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_setBirthDate:(id)arg1;
 - (void)_setName:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

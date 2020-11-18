@@ -29,12 +29,13 @@
 + (id)renderedLikenessesForProviders:(id)arg1 scope:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithLikenessResolver:(id)arg1 schedulerProvider:(id)arg2;
-- (id)likenessProvidersForContacts:(id)arg1;
+- (id)likenessProvidersForContacts:(id)arg1 likenessResolverOptions:(id)arg2 workScheduler:(id)arg3;
 - (id)loadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
+- (id)renderedBasicMonogramForString:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
 - (id)renderedBasicMonogramFromString:(id)arg1 scope:(id)arg2;
-- (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2;
+- (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2 workScheduler:(id)arg3;
 - (id)renderedLikenessesForLikenessProviders:(id)arg1 scope:(id)arg2;
-- (id)renderedLoadingPlaceholderForContactCount:(unsigned long long)arg1 scope:(id)arg2;
+- (id)renderedLoadingPlaceholderForContactCount:(unsigned long long)arg1 provider:(id)arg2 scope:(id)arg3;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <CarPlaySupport/CPSAlternateRouteSelecting-Protocol.h>
 #import <CarPlaySupport/CPSPageControlling-Protocol.h>
 
-@class CPSHairlineBorderedView, CPSPagingControlView, CPSRouteOverviewView, NSLayoutConstraint, NSMutableDictionary, NSString;
+@class CPSHairlineBorderedView, CPSPagingControlView, CPSRouteOverviewView, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton;
 
 @interface CPSPagingTripPreviewsCardView : CPSTripPreviewsCardView <CPSAlternateRouteSelecting, CPSPageControlling>
 {
@@ -20,6 +20,7 @@
     CPSHairlineBorderedView *_borderedAlternatesView;
     CPSHairlineBorderedView *_borderedGoButton;
     CPSHairlineBorderedView *_borderedMoreRoutesButton;
+    UIButton *_moreRoutesButton;
     NSLayoutConstraint *_contentTopConstraint;
     NSLayoutConstraint *_contentBottomConstraint;
     NSLayoutConstraint *_alternateRoutesHeightConstraint;
@@ -36,6 +37,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableDictionary *estimatesForTripIdentifiers; // @synthesize estimatesForTripIdentifiers=_estimatesForTripIdentifiers;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIButton *moreRoutesButton; // @synthesize moreRoutesButton=_moreRoutesButton;
 @property (readonly, nonatomic) CPSRouteOverviewView *overviewView; // @synthesize overviewView=_overviewView;
 @property (readonly, nonatomic) CPSPagingControlView *pageControl; // @synthesize pageControl=_pageControl;
 @property (nonatomic) BOOL showMoreRoutes; // @synthesize showMoreRoutes=_showMoreRoutes;
@@ -46,6 +48,7 @@
 - (id)_linearFocusItems;
 - (void)_setOverviewCollapsed:(BOOL)arg1;
 - (void)_toggleMoreRoutesButtonPressed:(id)arg1;
+- (void)_updateButtonColors;
 - (void)alternateRoutesView:(id)arg1 didSelectRouteChoice:(id)arg2;
 - (id)initWithTripDelegate:(id)arg1 trips:(id)arg2 textConfiguration:(id)arg3;
 - (void)pagingControlView:(id)arg1 didSelectPageIndex:(unsigned long long)arg2;

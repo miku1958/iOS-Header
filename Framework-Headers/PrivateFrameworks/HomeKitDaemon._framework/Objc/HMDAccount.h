@@ -38,8 +38,9 @@
 @property (readonly, copy) HMDAccountIdentifier *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy) NSArray *identities;
 @property (weak) id<HMDAccountManager> manager; // @synthesize manager=_manager;
-@property (readonly, nonatomic) NSUUID *modelIdentifier;
-@property (readonly, nonatomic) NSUUID *modelParentIdentifier;
+@property (readonly) Class modelClass;
+@property (readonly, copy, nonatomic) NSUUID *modelIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *modelParentIdentifier;
 @property (readonly, copy) NSString *name;
 @property (readonly, copy) HMDAccountHandle *primaryHandle;
 @property (readonly) BOOL shouldCache;

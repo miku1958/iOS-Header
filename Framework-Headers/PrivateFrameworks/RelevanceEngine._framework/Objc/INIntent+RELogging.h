@@ -6,17 +6,20 @@
 
 #import <Intents/INIntent.h>
 
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REIntentProperties-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
-@interface INIntent (RELogging) <REIndentedDescription>
+@interface INIntent (RELogging) <REIntentProperties>
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *_categoryVerb;
+@property (readonly, nonatomic) NSString *_className;
+@property (readonly, nonatomic) NSString *_nanoLaunchId;
+@property (readonly, nonatomic) BOOL _supportsBackgroundExecution;
+@property (readonly, nonatomic) NSDictionary *_validParameterCombinations;
+@property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) NSString *launchId;
+@property (readonly, nonatomic) NSString *typeName;
 
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 @end
 

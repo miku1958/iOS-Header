@@ -10,6 +10,8 @@
 
 @protocol _INPBContactHandle <NSObject>
 
+@property (nonatomic) int emergencyType;
+@property (nonatomic) BOOL hasEmergencyType;
 @property (readonly, nonatomic) BOOL hasLabel;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasValue;
@@ -17,7 +19,9 @@
 @property (nonatomic) int type;
 @property (copy, nonatomic) NSString *value;
 
+- (int)StringAsEmergencyType:(NSString *)arg1;
 - (int)StringAsType:(NSString *)arg1;
+- (NSString *)emergencyTypeAsString:(int)arg1;
 - (NSString *)typeAsString:(int)arg1;
 @end
 

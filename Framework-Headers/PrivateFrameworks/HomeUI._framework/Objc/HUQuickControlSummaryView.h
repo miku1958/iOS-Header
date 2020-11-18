@@ -12,13 +12,13 @@
 @interface HUQuickControlSummaryView : UIView
 {
     HUIconView *_iconView;
+    UILabel *_primaryStatusLabel;
+    UILabel *_secondaryStatusLabel;
     id<HFStringGenerator> _primaryStatusText;
     id<HFStringGenerator> _secondaryStatusText;
     unsigned long long _contentAlignment;
     long long _sizeSubclass;
     unsigned long long _iconSize;
-    UILabel *_primaryStatusLabel;
-    UILabel *_secondaryStatusLabel;
     NSArray *_contentConstraints;
     UILayoutGuide *_lastBaselineLayoutGuide;
 }
@@ -37,15 +37,16 @@
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (double)_iconHeight;
+- (double)_iconWidth;
 - (void)_invalidateContentAndConstraints;
 - (id)_primaryFont;
 - (id)_primaryFontTextStyle;
 - (id)_secondaryFont;
-- (id)_secondaryFontTextStyle;
-- (double)_secondaryStatusLineHeight;
 - (id)_statusParagraphStyleWithLineHeight:(double)arg1;
 - (void)_updatePrimaryStatusContent;
 - (void)_updateSecondaryStatusContent;
+- (void)contentSizeCategoryDidChangeNotification;
+- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)lastBaselineAnchor;
 - (void)traitCollectionDidChange:(id)arg1;

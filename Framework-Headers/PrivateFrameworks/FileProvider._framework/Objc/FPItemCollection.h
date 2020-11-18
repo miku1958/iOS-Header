@@ -6,127 +6,119 @@
 
 #import <objc/NSObject.h>
 
+#import <FileProvider/FPCollectionDataSourceDelegate-Protocol.h>
 #import <FileProvider/FPReachabilityObserver-Protocol.h>
-#import <FileProvider/FPXEnumeratorObserver-Protocol.h>
 
-@class FPItemID, FPItemManager, FPPacer, NSArray, NSData, NSFileProviderEnumerationProperties, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, _FPItemList;
-@protocol FPItemCollectionDelegate, FPXEnumerator, OS_dispatch_queue;
+@class FPAppRegistry, FPPacer, NSArray, NSMutableDictionary, NSMutableSet, NSPredicate, NSString, _FPItemList;
+@protocol FPCollectionDataSource, FPItemCollectionIndexPathBasedDelegate, FPItemCollectionItemIDBasedDelegate, FPItemCollectionMinimalDelegate, OS_dispatch_queue;
 
-@interface FPItemCollection : NSObject <FPXEnumeratorObserver, FPReachabilityObserver>
+@interface FPItemCollection : NSObject <FPReachabilityObserver, FPCollectionDataSourceDelegate>
 {
-    unsigned long long _observationID;
-    FPItemID *_itemID;
-    NSFileProviderEnumerationProperties *_enumerationProperties;
+    NSArray *_sortDescriptors;
+    id<FPCollectionDataSource> _dataSource;
     _FPItemList *_currentItems;
     NSObject<OS_dispatch_queue> *_workingQueue;
     NSObject<OS_dispatch_queue> *_itemAccessQueue;
     NSMutableDictionary *_updatedItemsByIdentifiers;
     NSMutableSet *_deletedItemsIdentifiers;
-    NSArray *_updateSortDescriptors;
-    FPItemManager *_itemManager;
-    id<FPXEnumerator> _enumerator;
-    NSArray *_fileTypes;
-    NSString *_providerIdentifier;
-    BOOL _isRecursiveFolderEnumeration;
-    BOOL _started;
-    BOOL _restartAfterForeground;
+    NSMutableSet *_formerItemsIdentifiers;
     BOOL _shouldResort;
     BOOL _regathering;
-    BOOL _enumeratingExtensionResults;
-    BOOL _shouldUpdate;
     BOOL _shouldRetryOnceAfterCrash;
-    unsigned long long _numGatheredItems;
-    NSData *_nextPageToken;
-    NSData *_changeToken;
-    CDUnknownBlockType _extensionKeepAliveBlock;
     NSPredicate *_itemFilteringPredicate;
+    FPAppRegistry *_appRegistry;
+    id<FPItemCollectionItemIDBasedDelegate> _itemIDBasedDelegate;
+    id<FPItemCollectionIndexPathBasedDelegate> _indexPathBasedDelegate;
     BOOL _gathering;
     BOOL _immutable;
     BOOL _hasMoreUpdates;
+    BOOL _showHiddenFiles;
     BOOL _observing;
-    id<FPItemCollectionDelegate> _delegate;
-    NSArray *_sortDescriptors;
-    NSString *_identifier;
-    NSString *_domainIdentifier;
+    id<FPItemCollectionMinimalDelegate> _delegate;
+    NSPredicate *_additionalItemFilteringPredicate;
     NSObject<OS_dispatch_queue> *_updateQueue;
     FPPacer *_updatePacer;
 }
 
+@property (strong, nonatomic) NSPredicate *additionalItemFilteringPredicate; // @synthesize additionalItemFilteringPredicate=_additionalItemFilteringPredicate;
+@property (readonly, nonatomic) id<FPCollectionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<FPItemCollectionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FPItemCollectionMinimalDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
+@property (readonly) NSString *domainIdentifier;
 @property (nonatomic, getter=isGathering) BOOL gathering; // @synthesize gathering=_gathering;
 @property (readonly, nonatomic) BOOL hasMoreUpdates; // @synthesize hasMoreUpdates=_hasMoreUpdates;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic, getter=isImmutable) BOOL immutable; // @synthesize immutable=_immutable;
 @property (strong, nonatomic) NSPredicate *itemFilteringPredicate;
 @property (readonly, nonatomic) NSArray *items;
 @property (nonatomic) BOOL observing; // @synthesize observing=_observing;
-@property (readonly, copy, nonatomic) NSString *providerIdentifier;
+@property (readonly) NSString *providerIdentifier;
+@property (nonatomic) BOOL showHiddenFiles; // @synthesize showHiddenFiles=_showHiddenFiles;
 @property (readonly, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) FPPacer *updatePacer; // @synthesize updatePacer=_updatePacer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *updateQueue; // @synthesize updateQueue=_updateQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workingQueue; // @synthesize workingQueue=_workingQueue;
 
-+ (BOOL)_item:(id)arg1 isCollectionRootForObservedItemID:(id)arg2;
++ (id)_bouncedItem:(id)arg1 withinItems:(id)arg2;
 + (id)activeCollections;
 + (void)addActiveCollection:(id)arg1;
-+ (void)applicationDidEnterBackground:(id)arg1;
-+ (void)applicationWillEnterForeground:(id)arg1;
-+ (id)collectionWithIdentifier:(id)arg1 domainIdentifier:(id)arg2 providerIdentifier:(id)arg3 sortDescriptors:(id)arg4;
 + (void)consumeUpdates:(id)arg1 deletes:(id)arg2;
 + (void)initialize;
 + (BOOL)isEnumerationSuspended;
-+ (BOOL)item:(id)arg1 isValidForObservedItemID:(id)arg2;
 + (void)removeActiveCollection:(id)arg1;
-+ (void)replacePlaceholders:(id)arg1 withActualItems:(id)arg2;
++ (void)replacePlaceholders:(id)arg1 withActualItems:(id)arg2 deletedIDs:(id)arg3;
 + (void)resumeVendorEnumeration;
 + (void)suspendVendorEnumeration;
 - (void).cxx_destruct;
-- (BOOL)__isObservingID:(unsigned long long)arg1;
-- (void)_assignHierarchyPathToChildrenOf:(id)arg1 withPath:(id)arg2 hierarchy:(id)arg3;
-- (void)_didEncounterError:(id)arg1;
+- (BOOL)__isUsingDataSource:(id)arg1;
 - (void)_didEncounterError:(id)arg1 forObservationID:(unsigned long long)arg2;
 - (void)_flushPendingUpdates;
-- (void)_gatherInitialItems;
-- (void)_gatherMoreItemsAfterPage:(id)arg1 section:(unsigned long long)arg2;
 - (unsigned long long)_indexOfItem:(id)arg1;
 - (unsigned long long)_indexOfItemID:(id)arg1;
-- (id)_initialPageFromSortDescriptors:(id)arg1;
-- (BOOL)_isObservingID:(unsigned long long)arg1;
+- (BOOL)_isUsingDataSource:(id)arg1;
 - (id)_itemsMutableCopy;
 - (long long)_numberOfItems;
 - (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
 - (void)_receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 forceFlush:(BOOL)arg3;
-- (void)_recomputeHierarchyOfItemList:(id)arg1;
+- (id)_reorderWithPlaceholdersLast:(id)arg1;
+- (void)_replaceContentsWithVendorItems:(id)arg1;
 - (void)_restartObservation;
+- (void)_setObserving:(BOOL)arg1;
 - (id)_t_items;
-- (void)_updateItems;
-- (void)_updateItemsWithUpdatesCount:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (void)_updateObservedItem:(id)arg1;
+- (id)computeIndexPathsBasedDiffsWithOldItems:(id)arg1 futureItems:(id)arg2;
+- (id)computeItemIDBasedDiffs;
+- (id)createDataSourceWithSortDescriptors:(id)arg1;
+- (void)dataSource:(id)arg1 receivedUpdatedItems:(id)arg2 deletedItems:(id)arg3 hasMoreChanges:(BOOL)arg4;
+- (void)dataSource:(id)arg1 replaceContentsWithItems:(id)arg2 hasMoreChanges:(BOOL)arg3;
+- (void)dataSource:(id)arg1 wasInvalidatedWithError:(id)arg2;
 - (void)dealloc;
-- (void)didUpdateItem:(id)arg1;
-- (void)enumerationResultsDidChange;
-- (BOOL)hasMoreItems;
 - (id)indexPathFromIndex:(long long)arg1;
 - (id)indexPathsFromIndexSet:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 domainIdentifier:(id)arg2 providerIdentifier:(id)arg3 sortDescriptors:(id)arg4 fileTypes:(id)arg5 itemManager:(id)arg6;
-- (CDUnknownBlockType)isItemMatchingQueryBlock;
+- (id)init;
+- (id)initWithPacing:(BOOL)arg1;
+- (BOOL)isCollectionValidForItem:(id)arg1;
+- (BOOL)isHiddenItem:(id)arg1;
 - (BOOL)isRegatheringAfterSignal;
+- (BOOL)isRootItem:(id)arg1;
 - (id)itemAtIndexPath:(id)arg1;
 - (long long)numberOfItems;
 - (void)reachabilityMonitor:(id)arg1 didChangeReachabilityStatusTo:(BOOL)arg2;
 - (void)receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2;
+- (void)receivedBatchWithUpdatedItems:(id)arg1 deletedItemsIdentifiers:(id)arg2 hasMoreChanges:(BOOL)arg3;
 - (void)reorderItemsWithSortDescriptors:(id)arg1;
-- (void)replaceContentsWithVendorItems:(id)arg1;
-- (void)replacePlaceholders:(id)arg1 withActualItems:(id)arg2;
-- (void)setIsItemMatchingQueryBlock:(CDUnknownBlockType)arg1;
+- (void)replacePlaceholders:(id)arg1 withActualItems:(id)arg2 deletedIDs:(id)arg3;
+- (void)resumeUpdates;
+- (id)scopedSearchQuery;
+- (void)sendIndexPathBasedDiffs:(id)arg1;
+- (void)sendItemIDBasedDiffs:(id)arg1;
 - (void)startObserving;
 - (void)startObservingWithEnumerationProperties:(id)arg1;
 - (void)stopObserving;
+- (void)suspendUpdates;
+- (void)updateRootItem:(id)arg1;
 
 @end
 

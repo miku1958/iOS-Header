@@ -31,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration;
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo;
+@property (readonly, nonatomic) struct CGSize finalExpectedPixelSize;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 irisStillDisplayTime;
 @property (readonly, nonatomic) NSString *irisStillImageUUID;

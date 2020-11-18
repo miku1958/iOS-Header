@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <NeutrinoCore/NUSpaceMapping-Protocol.h>
+#import <NeutrinoCore/NUTaggedSpaceMapping-Protocol.h>
 
-@protocol NUSpaceMapping;
+@protocol NUTaggedSpaceMapping;
 
-@interface NUImageGeometry : NSObject <NUSpaceMapping>
+@interface NUImageGeometry : NSObject <NUTaggedSpaceMapping>
 {
     long long _orientation;
-    id<NUSpaceMapping> _spaceMap;
+    id<NUTaggedSpaceMapping> _spaceMap;
     CDStruct_1e2b2e48 _renderScale;
     CDStruct_996ac03c _extent;
 }
@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) struct CGRect scaledExtent;
 @property (readonly, nonatomic) CDStruct_912cb5d2 scaledSize;
 @property (readonly, nonatomic) CDStruct_912cb5d2 size;
-@property (readonly, nonatomic) id<NUSpaceMapping> spaceMap; // @synthesize spaceMap=_spaceMap;
+@property (readonly, nonatomic) id<NUTaggedSpaceMapping> spaceMap; // @synthesize spaceMap=_spaceMap;
 
 - (void).cxx_destruct;
 - (id)description;

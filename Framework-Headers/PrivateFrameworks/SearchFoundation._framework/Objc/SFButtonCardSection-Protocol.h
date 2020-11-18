@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFRichText;
+@class NSArray, NSData, NSDictionary, NSString, SFColor, SFImage, SFRichText;
 
 @protocol SFButtonCardSection <SFCardSection>
 
@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
 @property (nonatomic) int separatorStyle;
+@property (strong, nonatomic) SFImage *thumbnail;
 @property (strong, nonatomic) SFRichText *title;
 @property (copy, nonatomic) NSString *type;
 

@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) long long destinationType;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long preferredCallProvider;
+@property (nonatomic) long long recordTypeForRedialing;
 @property (readonly) Class superclass;
 @property (nonatomic, setter=setTTYType:) long long ttyType;
 @property (readonly, nonatomic) BOOL useSpeaker;

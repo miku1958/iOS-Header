@@ -6,31 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable, NSString, NWPathEvaluator;
+@class NSHashTable, NSString, NWPathEvaluator;
 @protocol OS_dispatch_queue;
 
 @interface ICEnvironmentMonitor : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
-    NSMapTable *_observers;
+    NSHashTable *_observers;
     struct __CTServerConnection *_telephonyServerConnectionRef;
     NWPathEvaluator *_networkPathEvaluator;
+    int _thermalNotificationToken;
     BOOL _isCharging;
     BOOL _isRemoteServerLikelyReachable;
     BOOL _isWiFiActive;
     BOOL _currentNetworkLinkHighQuality;
     BOOL _wifiAssociated;
+    BOOL _networkConstrained;
+    BOOL _ethernetWired;
     NSString *_telephonyOperatorName;
     NSString *_telephonyRegistrationStatus;
     NSString *_telephonyStatusIndicator;
+    double _currentBatteryLevel;
     long long _networkType;
     long long _lastKnownNetworkType;
+    unsigned long long _currentThermalLevel;
 }
 
 @property (readonly, nonatomic, getter=isCharging) BOOL charging; // @synthesize charging=_isCharging;
+@property (readonly, nonatomic) double currentBatteryLevel; // @synthesize currentBatteryLevel=_currentBatteryLevel;
 @property (readonly, nonatomic, getter=isCurrentNetworkLinkHighQuality) BOOL currentNetworkLinkHighQuality; // @synthesize currentNetworkLinkHighQuality=_currentNetworkLinkHighQuality;
+@property (readonly, nonatomic) unsigned long long currentThermalLevel; // @synthesize currentThermalLevel=_currentThermalLevel;
+@property (readonly, nonatomic, getter=isEthernetWired) BOOL ethernetWired; // @synthesize ethernetWired=_ethernetWired;
 @property (readonly, nonatomic) long long lastKnownNetworkType; // @synthesize lastKnownNetworkType=_lastKnownNetworkType;
+@property (readonly, nonatomic, getter=isNetworkConstrained) BOOL networkConstrained; // @synthesize networkConstrained=_networkConstrained;
 @property (readonly, nonatomic) long long networkType; // @synthesize networkType=_networkType;
 @property (readonly, nonatomic, getter=isRemoteServerLikelyReachable) BOOL remoteServerLikelyReachable; // @synthesize remoteServerLikelyReachable=_isRemoteServerLikelyReachable;
 @property (readonly, copy, nonatomic) NSString *telephonyOperatorName; // @synthesize telephonyOperatorName=_telephonyOperatorName;
@@ -44,9 +53,13 @@
 - (long long)_currentNetworkType;
 - (void)_handleApplicationDidEnterForegroundNotification:(id)arg1;
 - (void)_handleCTServerConnectionNotification:(id)arg1 userInfo:(id)arg2;
+- (BOOL)_networkConstrained;
 - (long long)_networkTypeFromTelephonyStatusIndicator:(id)arg1;
+- (long long)_networkTypeFromWatchCarousel;
+- (void)_onQueue_loadInitialThermalLevel;
 - (void)_onQueue_updateNetworkReachabilityAndNotifyObservers:(BOOL)arg1;
 - (void)_onQueue_updateTelephonyStateAndNotifyObservers:(BOOL)arg1;
+- (void)_onQueue_updateThermalLevelWithToken:(int)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;

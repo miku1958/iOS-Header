@@ -31,10 +31,10 @@
 @property (strong, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)close;
 - (id)handwritingDebugWindow;
 - (void)refresh;
-- (void)tapToRadar:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)visualizationManagerDidUpdateRecognitionStatus:(id)arg1;

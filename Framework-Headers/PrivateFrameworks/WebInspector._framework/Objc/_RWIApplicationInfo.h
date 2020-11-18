@@ -14,20 +14,20 @@ __attribute__((visibility("hidden")))
     int _hostApplicationPID;
     BOOL _proxy;
     BOOL _hasRemoteDebugSession;
-    BOOL _allowsRemoteAutomation;
     BOOL _hasUpdatedFromListing;
     int _pid;
     NSString *_bundleId;
     NSString *_name;
     _RWIRelayConnectionToApplication *_connection;
     NSString *_debuggerConnectionIdentifier;
-    unsigned long long _applicationState;
+    unsigned long long _debuggerAvailability;
+    long long _automationAvailability;
 }
 
-@property (readonly, nonatomic) BOOL allowsRemoteAutomation; // @synthesize allowsRemoteAutomation=_allowsRemoteAutomation;
-@property (readonly, nonatomic) unsigned long long applicationState; // @synthesize applicationState=_applicationState;
+@property (readonly, nonatomic) long long automationAvailability; // @synthesize automationAvailability=_automationAvailability;
 @property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (nonatomic) _RWIRelayConnectionToApplication *connection; // @synthesize connection=_connection;
+@property (nonatomic) unsigned long long debuggerAvailability; // @synthesize debuggerAvailability=_debuggerAvailability;
 @property (copy, nonatomic) NSString *debuggerConnectionIdentifier; // @synthesize debuggerConnectionIdentifier=_debuggerConnectionIdentifier;
 @property (readonly, nonatomic) BOOL hasRemoteDebugSession; // @synthesize hasRemoteDebugSession=_hasRemoteDebugSession;
 @property (readonly, nonatomic) BOOL hasUpdatedFromListing; // @synthesize hasUpdatedFromListing=_hasUpdatedFromListing;
@@ -39,9 +39,8 @@ __attribute__((visibility("hidden")))
 + (id)identifierForPID:(int)arg1;
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
-- (id)initWithPID:(int)arg1 bundleId:(id)arg2 name:(id)arg3 isProxy:(BOOL)arg4 connection:(id)arg5 applicationState:(unsigned long long)arg6;
+- (id)initWithPID:(int)arg1 bundleId:(id)arg2 name:(id)arg3 isProxy:(BOOL)arg4 connection:(id)arg5 debuggerAvailability:(unsigned long long)arg6;
 - (void)setHostApplicationPID:(int)arg1;
-- (BOOL)updateApplicationState:(unsigned long long)arg1;
 - (BOOL)updateFromListing:(id)arg1;
 
 @end

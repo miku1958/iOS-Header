@@ -6,23 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <AssistantServices/AFClientLiteClientCommandHandling-Protocol.h>
-
-@protocol OS_dispatch_queue;
-
-@interface AFClientLite : NSObject <AFClientLiteClientCommandHandling>
+@interface AFClientLite : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    CDUnknownBlockType _commandHandler;
 }
 
-- (void).cxx_destruct;
 - (void)_handleCommand:(id)arg1 afterCurrentRequest:(BOOL)arg2 isOneWay:(BOOL)arg3 commandHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)handleCommand:(id)arg1 afterCurrentRequest:(BOOL)arg2 commandHandler:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handleCommand:(id)arg1 commandHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (oneway void)handleCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleOneWayCommand:(id)arg1 commandHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)init;
 
 @end
 

@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_onProcessingQueue_startDownloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_onProcessingQueue_updateStateAndNotifyDelegate:(BOOL)arg1;
 - (void)cancelAndRemoveDownload;
+- (void)dealloc;
 - (id)init;
 - (id)initWithMediaItemCollection:(id)arg1 mediaEntityIdentifier:(id)arg2 serialProcessingDispatchQueue:(id)arg3;
 - (void)invalidate;

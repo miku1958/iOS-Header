@@ -6,11 +6,12 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSError, NSString, NSURL, NSURLRequest, NSURLResponse, WKWebProcessPlugInBrowserContextController, WKWebProcessPlugInFrame, WKWebProcessPlugInScriptWorld;
+@class NSError, NSURLRequest, NSURLResponse, WKWebProcessPlugInBrowserContextController, WKWebProcessPlugInFrame, WKWebProcessPlugInScriptWorld;
 
 @protocol WKWebProcessPlugInLoadDelegate <NSObject>
 
 @optional
+- (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didClearWindowObjectForFrame:(WKWebProcessPlugInFrame *)arg2 inScriptWorld:(WKWebProcessPlugInScriptWorld *)arg3;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didCommitLoadForFrame:(WKWebProcessPlugInFrame *)arg2;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didFailLoadWithErrorForFrame:(WKWebProcessPlugInFrame *)arg2 error:(NSError *)arg3;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 didFailProvisionalLoadWithErrorForFrame:(WKWebProcessPlugInFrame *)arg2 error:(NSError *)arg3;
@@ -27,7 +28,6 @@
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 didFinishLoadForResource:(unsigned long long)arg3;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 didInitiateLoadForResource:(unsigned long long)arg3 request:(NSURLRequest *)arg4;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 didInitiateLoadForResource:(unsigned long long)arg3 request:(NSURLRequest *)arg4 pageIsProvisionallyLoading:(BOOL)arg5;
-- (NSString *)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 userAgentForURL:(NSURL *)arg3;
 - (NSURLRequest *)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 willSendRequest:(NSURLRequest *)arg3 redirectResponse:(NSURLResponse *)arg4;
 - (NSURLRequest *)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 frame:(WKWebProcessPlugInFrame *)arg2 willSendRequestForResource:(unsigned long long)arg3 request:(NSURLRequest *)arg4 redirectResponse:(NSURLResponse *)arg5;
 - (void)webProcessPlugInBrowserContextController:(WKWebProcessPlugInBrowserContextController *)arg1 globalObjectIsAvailableForFrame:(WKWebProcessPlugInFrame *)arg2 inScriptWorld:(WKWebProcessPlugInScriptWorld *)arg3;

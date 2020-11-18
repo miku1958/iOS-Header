@@ -49,7 +49,7 @@
 - (void)didCompleteHomeUpdateSession:(id)arg1 withError:(id)arg2;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleHomeDataFetchedNotification:(id)arg1;
+- (void)handleHomeCloudZoneReadyNotification:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)logIdentifier;

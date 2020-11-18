@@ -39,6 +39,8 @@
 - (id)description;
 - (void)determineCompatibleFileTypesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)directoryForTemporaryFiles;
+- (void)estimateMaximumDurationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)estimateOutputFileLengthWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)estimatedOutputFileLength;
 - (void)exportAsynchronouslyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)fileLengthLimit;

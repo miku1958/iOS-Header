@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolbox/NSFastEnumeration-Protocol.h>
+#import <AudioToolboxCore/NSFastEnumeration-Protocol.h>
 
 @class AUAudioUnit, NSMutableArray;
 

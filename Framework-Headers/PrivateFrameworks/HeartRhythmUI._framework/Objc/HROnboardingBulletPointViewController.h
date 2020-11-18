@@ -8,7 +8,7 @@
 
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
-@class HRStackedButtonView, NSArray, NSLayoutConstraint, NSString, UILabel, UIStackView, UIView;
+@class HRStackedButtonView, NSArray, NSHashTable, NSLayoutConstraint, NSString, UILabel, UIStackView, UIView;
 
 @interface HROnboardingBulletPointViewController : HROnboardingBaseViewController <HRStackedButtonViewDelegate>
 {
@@ -18,10 +18,12 @@
     HRStackedButtonView *_stackedButtonView;
     UIView *_lastBulletPointView;
     NSLayoutConstraint *_contentViewBottomConstraint;
+    NSHashTable *_bulletPointBodyLabels;
 }
 
 @property (strong, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property (readonly, nonatomic) NSString *bodyString;
+@property (strong, nonatomic) NSHashTable *bulletPointBodyLabels; // @synthesize bulletPointBodyLabels=_bulletPointBodyLabels;
 @property (readonly, nonatomic) NSArray *bulletPoints;
 @property (strong, nonatomic) UIStackView *bulletPointsView; // @synthesize bulletPointsView=_bulletPointsView;
 @property (readonly, nonatomic) NSString *buttonTitleString;
@@ -34,19 +36,19 @@
 - (void).cxx_destruct;
 - (void)_adjustButtonFooterViewLocationForViewContentHeight;
 - (id)_bodyFont;
-- (id)_bodyFontTextStyle;
-- (double)_bodyTextLastBaselineToCannotDoHeaderFirstBaseline;
-- (id)_boldBodyFont;
+- (id)_boldSubheadlineFont;
 - (struct CGSize)_bulletImageSize;
 - (double)_cannotDoHeaderLastBaselineToCannotDoBodyFirstBaseline;
 - (void)_setUpButtonFooterView;
 - (void)_setupBulletPointViews;
-- (double)_titleLastBaselineToBodyFirstBaseline;
+- (id)_subheadlineFont;
 - (void)setUpConstraints;
 - (void)setUpUI;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;
+- (void)updateUserInterfaceForStyle:(long long)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

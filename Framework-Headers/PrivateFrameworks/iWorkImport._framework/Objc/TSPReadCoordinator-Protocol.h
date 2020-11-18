@@ -11,10 +11,14 @@
 
 @protocol TSPReadCoordinator <NSObject>
 
+@property (readonly, nonatomic) long long archiveValidationMode;
 @property (readonly, nonatomic) BOOL isReadingFromDocument;
 
 - (BOOL)endReading;
 - (void)readComponent:(TSPComponent *)arg1 completionQueue:(NSObject<OS_dispatch_queue> *)arg2 completion:(void (^)(BOOL, TSPObject *, NSMapTable *, NSError *))arg3;
 - (void)readRootObjectWithCompletionQueue:(NSObject<OS_dispatch_queue> *)arg1 completion:(void (^)(BOOL, TSPObject *, NSMapTable *, NSError *))arg2;
+
+@optional
+- (void)validateArchiveWithCompletion:(void (^)(NSError *))arg1;
 @end
 

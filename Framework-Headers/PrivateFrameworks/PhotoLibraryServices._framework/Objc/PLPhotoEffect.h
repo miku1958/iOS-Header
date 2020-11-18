@@ -15,7 +15,7 @@
     NSString *_filterIdentifier;
     NSString *_displayName;
     NSString *_CIFilterName;
-    long long _lightingType;
+    long long _lightingVersion;
 }
 
 @property (readonly, copy, nonatomic) NSString *CIFilterName; // @synthesize CIFilterName=_CIFilterName;
@@ -24,23 +24,20 @@
 @property (readonly, nonatomic) BOOL isLegacy; // @synthesize isLegacy=_isLegacy;
 @property (readonly, nonatomic) BOOL isPortrait; // @synthesize isPortrait=_isPortrait;
 @property (readonly, nonatomic) long long latestVersion;
-@property (readonly, nonatomic) long long lightingType; // @synthesize lightingType=_lightingType;
+@property (readonly, nonatomic) long long lightingVersion; // @synthesize lightingVersion=_lightingVersion;
 
 + (id)_effectWithIdentifier:(id)arg1 CIFilterName:(id)arg2 displayName:(id)arg3;
-+ (id)_effectWithIdentifier:(id)arg1 CIFilterName:(id)arg2 displayName:(id)arg3 type:(long long)arg4;
-+ (id)_effectWithIdentifier:(id)arg1 CIFilterName:(id)arg2 displayName:(id)arg3 type:(long long)arg4 isLegacy:(BOOL)arg5;
++ (unsigned long long)_indexOfEffectWithIdentifier:(id)arg1;
 + (id)_legacyEffectWithIdentifier:(id)arg1 CIFilterName:(id)arg2;
++ (id)_lightingEffectWithIdentifier:(id)arg1 CIFilterName:(id)arg2 lightingVersion:(long long)arg3;
 + (id)allEffects;
 + (id)allSupportedEffects;
 + (id)effectWithCIFilterName:(id)arg1;
 + (id)effectWithIdentifier:(id)arg1;
-+ (id)effectWithType:(long long)arg1;
-+ (unsigned long long)indexOfEffectWithIdentifier:(id)arg1;
-+ (unsigned long long)indexOfEffectWithLightingType:(long long)arg1;
 + (BOOL)isEffectNoneForIdentifier:(id)arg1;
 + (BOOL)isEffectWithIdentifier:(id)arg1 equalToEffectWithIdentifier:(id)arg2;
 + (id)standardSupportedEffects;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)newEffectFilter;
 

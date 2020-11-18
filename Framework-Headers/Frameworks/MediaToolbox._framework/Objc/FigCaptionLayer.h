@@ -22,7 +22,6 @@
 
 - (void)dealloc;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
-- (void)finalize;
 - (id)init;
 - (void)layoutSublayers;
 - (void)processCaptionCommand:(unsigned int)arg1 data:(id)arg2;

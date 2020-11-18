@@ -13,11 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOverridesInvalidFrames;
 - (BOOL)_accessibilityUseAccessibilityFrameForHittest;
 - (struct CGRect)accessibilityFrame;
-- (void)updateTitleLabel;
 
 @end
 

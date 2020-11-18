@@ -14,35 +14,35 @@ __attribute__((visibility("hidden")))
     unsigned char _storageVersion;
     BOOL _lastSavedInBNC;
     unsigned short _maxColumn;
-    unsigned short _numCells;
     unsigned int _maxRow;
     unsigned int _numRows;
+    unsigned long long _numCells;
     NSMutableArray *_rowInfos;
 }
 
 @property (nonatomic) BOOL lastSavedInBNC; // @synthesize lastSavedInBNC=_lastSavedInBNC;
 @property (nonatomic) unsigned short maxColumn; // @synthesize maxColumn=_maxColumn;
 @property (nonatomic) unsigned int maxRow; // @synthesize maxRow=_maxRow;
-@property (nonatomic) unsigned short numCells; // @synthesize numCells=_numCells;
+@property (nonatomic) unsigned long long numCells; // @synthesize numCells=_numCells;
 @property (nonatomic) unsigned int numRows; // @synthesize numRows=_numRows;
 @property (readonly, nonatomic) NSIndexSet *populatedRows;
 @property (strong, nonatomic) NSMutableArray *rowInfos; // @synthesize rowInfos=_rowInfos;
 
 - (void).cxx_destruct;
 - (id)_addRowInfoAtTileRowIndex:(unsigned int)arg1;
-- (void)_insertRowInfo:(id)arg1 atTileRowIndex:(unsigned int)arg2;
-- (unsigned long long)_insertionIndexForTileRowIndex:(unsigned int)arg1;
-- (void)_recalculateCellCount;
-- (void)_recalculateMaxColumn;
-- (void)_recalculateMaxRow;
-- (void)_recalculateMaxRowAndColumn;
-- (void)_removeRowInfo:(id)arg1;
+- (unsigned long long)_arrayIndexForTileRowIndex:(unsigned int)arg1;
+- (void)_calculateMetadataForLoad;
+- (void)_insertRowInfo:(id)arg1 atArrayIndex:(unsigned long long)arg2 tileRowIndex:(unsigned int)arg3;
+- (void)_recalculateMaxColumnForDelete;
+- (void)_removeRowInfo:(id)arg1 indexHint:(unsigned long long)arg2;
 - (void)_removeRowsAtTileRowIndex:(unsigned int)arg1 numberOfRows:(unsigned int)arg2 shiftingContent:(BOOL)arg3;
 - (struct TSTCellStorage *)cellStorageRefAtColumnIndex:(unsigned short)arg1 tileRowIndex:(unsigned int)arg2;
 - (void)clearRowsAtTileRowIndex:(unsigned int)arg1 numberOfRows:(unsigned int)arg2;
 - (id)description;
+- (void)didApplyConcurrentCellMap:(id)arg1;
 - (void)enumerateRowsWithBlock:(CDUnknownBlockType)arg1;
 - (id)findOrAddRowInfoAtTileRowIndex:(unsigned int)arg1;
+- (void)incrementCellCountByAmount:(long long)arg1;
 - (id)initWithContext:(id)arg1;
 - (id)initWithRows:(id)arg1 context:(id)arg2;
 - (int)insertColumnsAtColumnIndex:(unsigned short)arg1 numberOfColumns:(unsigned int)arg2;
@@ -57,13 +57,14 @@ __attribute__((visibility("hidden")))
 - (id)rowInfoAtOrAfterTileRowIndex:(unsigned int)arg1 outTileRowIndex:(out unsigned int *)arg2;
 - (id)rowInfoForTileRowIndex:(unsigned int)arg1;
 - (void)saveToArchiver:(id)arg1;
-- (void)setCell:(id)arg1 atColumnIndex:(unsigned short)arg2 tileRowIndex:(unsigned int)arg3 formatKeys:(CDStruct_c8ca99d5 *)arg4;
+- (long long)setCell:(id)arg1 atColumnIndex:(unsigned short)arg2 tileRowIndex:(unsigned int)arg3 formatKeys:(CDStruct_c8ca99d5 *)arg4;
 - (id)shiftUpAndYankBy:(unsigned int)arg1;
 - (void)shiftUpAtTileRowIndex:(unsigned int)arg1 count:(unsigned int)arg2;
-- (void)spliceRowInfo:(id)arg1 atTileRowIndex:(unsigned int)arg2 overwrite:(BOOL)arg3;
+- (void)spliceRowInfo:(id)arg1 atTileRowIndex:(unsigned int)arg2 overwrite:(BOOL)arg3 indexHint:(unsigned long long)arg4;
 - (void)spliceRows:(id)arg1 atTileRowIndex:(unsigned int)arg2;
+- (void)swapRowAtTileRowIndex:(unsigned int)arg1 withRowAtTileRowIndex:(unsigned int)arg2;
 - (void)willModify;
-- (id)yankRowInfoAtTileRowIndex:(unsigned int)arg1;
+- (id)yankRowInfoAtTileRowIndex:(unsigned int)arg1 outIndexHint:(unsigned long long *)arg2;
 - (id)yankRowsAtTileRowIndex:(unsigned int)arg1;
 - (id)yankRowsAtTileRowIndex:(unsigned int)arg1 count:(unsigned int)arg2;
 

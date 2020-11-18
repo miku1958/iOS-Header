@@ -9,6 +9,7 @@
 @class NSArray;
 @protocol _HMTelevisionProfileDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _HMTelevisionProfile : _HMAccessoryProfile
 {
     BOOL _mediaSourceDisplayOrderModifiable;

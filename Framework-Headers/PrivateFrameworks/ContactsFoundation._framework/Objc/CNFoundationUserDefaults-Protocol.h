@@ -6,10 +6,11 @@
 
 #import <ContactsFoundation/NSObject-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol CNFoundationUserDefaults <NSObject>
 
+@property (nonatomic) NSDictionary *filteredAccountsAndContainers;
 @property unsigned long long nameOrder;
 @property BOOL preferNickname;
 @property unsigned long long shortNameFormat;

@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKRecord, CKRecordID, CKShare, CKShareParticipant, CKUserIdentity, NSArray, NSData, NSString;
+@class CKDeviceToDeviceShareInvitationToken, CKRecord, CKRecordID, CKRecordZone, CKShare, CKShareParticipant, CKUserIdentity, NSArray, NSData, NSString;
 
 @interface CKShareMetadata : NSObject <NSCopying, NSSecureCoding>
 {
@@ -26,11 +26,13 @@
     NSData *_protectedFullToken;
     NSData *_publicToken;
     NSData *_privateToken;
+    CKRecordZone *_sharedZone;
     CKShareParticipant *_callingParticipant;
     NSArray *_outOfNetworkMatches;
-    NSArray *_sharedItemHierarchy;
+    NSArray *_sharedItemHierarchyIDs;
     NSString *_rootRecordType;
     NSData *_encryptedData;
+    CKDeviceToDeviceShareInvitationToken *_invitationToken;
 }
 
 @property (nonatomic) BOOL acceptedInProcess; // @synthesize acceptedInProcess=_acceptedInProcess;
@@ -39,6 +41,7 @@
 @property (copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property (strong, nonatomic) NSData *encryptedData; // @synthesize encryptedData=_encryptedData;
 @property (nonatomic) long long environment; // @synthesize environment=_environment;
+@property (copy, nonatomic) CKDeviceToDeviceShareInvitationToken *invitationToken; // @synthesize invitationToken=_invitationToken;
 @property (strong, nonatomic) NSArray *outOfNetworkMatches; // @synthesize outOfNetworkMatches=_outOfNetworkMatches;
 @property (strong, nonatomic) CKUserIdentity *ownerIdentity; // @synthesize ownerIdentity=_ownerIdentity;
 @property (nonatomic) long long participantPermission; // @synthesize participantPermission=_participantPermission;
@@ -52,7 +55,8 @@
 @property (copy, nonatomic) CKRecordID *rootRecordID; // @synthesize rootRecordID=_rootRecordID;
 @property (strong, nonatomic) NSString *rootRecordType; // @synthesize rootRecordType=_rootRecordType;
 @property (strong, nonatomic) CKShare *share; // @synthesize share=_share;
-@property (copy, nonatomic) NSArray *sharedItemHierarchy; // @synthesize sharedItemHierarchy=_sharedItemHierarchy;
+@property (copy, nonatomic) NSArray *sharedItemHierarchyIDs; // @synthesize sharedItemHierarchyIDs=_sharedItemHierarchyIDs;
+@property (strong, nonatomic) CKRecordZone *sharedZone; // @synthesize sharedZone=_sharedZone;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

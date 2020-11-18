@@ -8,10 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPDetails, GEORPNotification, GEORPResolution, NSString;
+@class GEORPDetails, GEORPNotification, GEORPResolution, NSString, PBDataReader;
 
 @interface GEORPProblemStatus : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     double _creationDate;
     GEORPDetails *_details;
     GEORPNotification *_notification;
@@ -19,26 +21,41 @@
     GEORPResolution *_problemResolution;
     int _problemState;
     struct {
-        unsigned int creationDate:1;
-        unsigned int problemState:1;
-    } _has;
+        unsigned int has_creationDate:1;
+        unsigned int has_problemState:1;
+        unsigned int read_details:1;
+        unsigned int read_notification:1;
+        unsigned int read_problemId:1;
+        unsigned int read_problemResolution:1;
+        unsigned int wrote_creationDate:1;
+        unsigned int wrote_details:1;
+        unsigned int wrote_notification:1;
+        unsigned int wrote_problemId:1;
+        unsigned int wrote_problemResolution:1;
+        unsigned int wrote_problemState:1;
+    } _flags;
 }
 
-@property (nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
-@property (strong, nonatomic) GEORPDetails *details; // @synthesize details=_details;
+@property (nonatomic) double creationDate;
+@property (strong, nonatomic) GEORPDetails *details;
 @property (nonatomic) BOOL hasCreationDate;
 @property (readonly, nonatomic) BOOL hasDetails;
 @property (readonly, nonatomic) BOOL hasNotification;
 @property (readonly, nonatomic) BOOL hasProblemId;
 @property (readonly, nonatomic) BOOL hasProblemResolution;
 @property (nonatomic) BOOL hasProblemState;
-@property (strong, nonatomic) GEORPNotification *notification; // @synthesize notification=_notification;
-@property (strong, nonatomic) NSString *problemId; // @synthesize problemId=_problemId;
-@property (strong, nonatomic) GEORPResolution *problemResolution; // @synthesize problemResolution=_problemResolution;
-@property (nonatomic) int problemState; // @synthesize problemState=_problemState;
+@property (strong, nonatomic) GEORPNotification *notification;
+@property (strong, nonatomic) NSString *problemId;
+@property (strong, nonatomic) GEORPResolution *problemResolution;
+@property (nonatomic) int problemState;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsProblemState:(id)arg1;
+- (void)_readDetails;
+- (void)_readNotification;
+- (void)_readProblemId;
+- (void)_readProblemResolution;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -47,6 +64,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)problemStateAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -12,11 +12,16 @@
 {
     NSNumber *_minimumValue;
     NSNumber *_maximumValue;
+    NSNumber *_ui_minimumValue;
+    NSNumber *_ui_maximumValue;
 }
 
 @property (readonly) NSNumber *defaultValue;
+@property (readonly) NSNumber *identityValue;
 @property (readonly) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
 @property (readonly) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
+@property (readonly) NSNumber *ui_maximumValue; // @synthesize ui_maximumValue=_ui_maximumValue;
+@property (readonly) NSNumber *ui_minimumValue; // @synthesize ui_minimumValue=_ui_minimumValue;
 
 + (id)deserializeFromDictionary:(id)arg1 error:(out id *)arg2;
 - (void).cxx_destruct;
@@ -24,6 +29,7 @@
 - (id)init;
 - (id)initWithAttributes:(id)arg1;
 - (id)initWithMinimum:(id)arg1 maximum:(id)arg2 attributes:(id)arg3;
+- (id)initWithMinimum:(id)arg1 maximum:(id)arg2 uiMinimum:(id)arg3 uiMaximum:(id)arg4 attributes:(id)arg5;
 - (BOOL)isValid:(out id *)arg1;
 - (BOOL)serializeIntoDictionary:(id)arg1 error:(out id *)arg2;
 - (BOOL)validate:(id)arg1 error:(out id *)arg2;

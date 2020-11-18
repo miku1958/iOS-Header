@@ -8,36 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDAutocompleteEntry, GEOPDPlace, NSString;
+@class GEOLatLng, GEOPDAutocompleteEntry, GEOPDPlace, NSString, PBDataReader;
 
 @interface GEORPUserSearchInput : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOPDAutocompleteEntry *_autocompleteEntry;
     GEOLatLng *_coordinate;
-    int _origin;
     GEOPDPlace *_place;
     NSString *_searchString;
     NSString *_singleLineAddressString;
+    int _origin;
     struct {
-        unsigned int origin:1;
-    } _has;
+        unsigned int has_origin:1;
+        unsigned int read_autocompleteEntry:1;
+        unsigned int read_coordinate:1;
+        unsigned int read_place:1;
+        unsigned int read_searchString:1;
+        unsigned int read_singleLineAddressString:1;
+        unsigned int wrote_autocompleteEntry:1;
+        unsigned int wrote_coordinate:1;
+        unsigned int wrote_place:1;
+        unsigned int wrote_searchString:1;
+        unsigned int wrote_singleLineAddressString:1;
+        unsigned int wrote_origin:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDAutocompleteEntry *autocompleteEntry; // @synthesize autocompleteEntry=_autocompleteEntry;
-@property (strong, nonatomic) GEOLatLng *coordinate; // @synthesize coordinate=_coordinate;
+@property (strong, nonatomic) GEOPDAutocompleteEntry *autocompleteEntry;
+@property (strong, nonatomic) GEOLatLng *coordinate;
 @property (readonly, nonatomic) BOOL hasAutocompleteEntry;
 @property (readonly, nonatomic) BOOL hasCoordinate;
 @property (nonatomic) BOOL hasOrigin;
 @property (readonly, nonatomic) BOOL hasPlace;
 @property (readonly, nonatomic) BOOL hasSearchString;
 @property (readonly, nonatomic) BOOL hasSingleLineAddressString;
-@property (nonatomic) int origin; // @synthesize origin=_origin;
-@property (strong, nonatomic) GEOPDPlace *place; // @synthesize place=_place;
-@property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-@property (strong, nonatomic) NSString *singleLineAddressString; // @synthesize singleLineAddressString=_singleLineAddressString;
+@property (nonatomic) int origin;
+@property (strong, nonatomic) GEOPDPlace *place;
+@property (strong, nonatomic) NSString *searchString;
+@property (strong, nonatomic) NSString *singleLineAddressString;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsOrigin:(id)arg1;
+- (void)_readAutocompleteEntry;
+- (void)_readCoordinate;
+- (void)_readPlace;
+- (void)_readSearchString;
+- (void)_readSingleLineAddressString;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -46,6 +65,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)originAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

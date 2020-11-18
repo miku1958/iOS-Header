@@ -6,7 +6,19 @@
 
 #import <CoreLocation/CLLocation.h>
 
-@interface CLLocation (CKPropertiesDescription)
+#import <CloudKit/CKRecordValue-Protocol.h>
+
+@class NSString;
+
+@interface CLLocation (CKPropertiesDescription) <CKRecordValue>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)CKDPLocationCoordinateFromCLLocation:(id)arg1;
++ (id)CKLocationFromPLocationCoordinate:(id)arg1;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
 @end
 

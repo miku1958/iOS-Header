@@ -39,6 +39,7 @@
 + (id)decodeFromRecord:(id)arg1;
 + (BOOL)parseRecordUsingScanner:(struct _NFDataScanner *)arg1 header:(char *)arg2 type:(id *)arg3 identifier:(id *)arg4 payload:(id *)arg5;
 + (id)recordsFromBytes:(const void *)arg1 length:(unsigned int)arg2;
++ (id)recordsWithTNF:(unsigned char)arg1 type:(id)arg2 identifier:(id)arg3 payload:(id)arg4 chunkSize:(unsigned long long)arg5 outError:(unsigned int *)arg6;
 + (BOOL)supportsSecureCoding;
 - (BOOL)_idLengthPresent;
 - (void)_setIdLengthPresent:(BOOL)arg1;

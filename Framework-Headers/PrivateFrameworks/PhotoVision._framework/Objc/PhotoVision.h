@@ -41,7 +41,7 @@
 + (id)supportedSceneAlgorithmUmbrellaVersions;
 - (void).cxx_destruct;
 - (id)analyzeImage:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
-- (BOOL)buildPersonsWithCanceler:(id)arg1 keyFaceUpdateBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (BOOL)buildPersonsWithCanceler:(id)arg1 keyFaceUpdateBlock:(CDUnknownBlockType)arg2 extendTimeoutBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void)cancelAllSuggestionRequests;
 - (void)cancelFaceClustering;
 - (void)cancelSuggestionRequest:(id)arg1;

@@ -7,6 +7,8 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (NUCSS)
++ (id)nu_defaultSystemTintColor;
++ (id)nu_defaultTitleTextColor;
 - (id)nu_colorToCSSRGBA;
 @end
 

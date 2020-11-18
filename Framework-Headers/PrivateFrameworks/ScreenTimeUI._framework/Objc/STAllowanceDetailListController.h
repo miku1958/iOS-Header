@@ -6,14 +6,14 @@
 
 #import <Preferences/PSListController.h>
 
-#import <ScreenTimeUI/STAllowanceSetupListControllerDelegate-Protocol.h>
 #import <ScreenTimeUI/STCustomizeDaysListControllerDelegate-Protocol.h>
 #import <ScreenTimeUI/STUIDateTimePickerCellDelegate-Protocol.h>
 
 @class NSArray, NSObject, NSString, PSSpecifier, STAllowance, UIColor;
 @protocol STAllowanceDetailListControllerDelegate, STRootViewModelCoordinator;
 
-@interface STAllowanceDetailListController : PSListController <STUIDateTimePickerCellDelegate, STCustomizeDaysListControllerDelegate, STAllowanceSetupListControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface STAllowanceDetailListController : PSListController <STCustomizeDaysListControllerDelegate, STUIDateTimePickerCellDelegate>
 {
     BOOL _isSetupController;
     BOOL _useBackButton;
@@ -54,10 +54,11 @@
 - (void).cxx_destruct;
 - (id)_allowanceEnabled:(id)arg1;
 - (id)_askForMoreTime:(id)arg1;
+- (id)_categoryDetailText:(id)arg1;
+- (void)_editListButtonPressed:(id)arg1;
 - (void)_setAllowanceEnabled:(id)arg1 specifier:(id)arg2;
 - (void)_setAskForMoreTime:(id)arg1 specifier:(id)arg2;
-- (void)allowanceSetupListController:(id)arg1 didSelectAllowanceIdentifiers:(id)arg2;
-- (void)allowanceSetupListControllerDidCancel:(id)arg1;
+- (void)_showOrHidePickerSpecifierForSpecifier:(id)arg1 highlight:(BOOL)arg2;
 - (id)atEndOfLimitFooterText;
 - (id)budgetTime;
 - (BOOL)canBeShownFromSuspendedState;
@@ -68,7 +69,6 @@
 - (void)datePickerChanged:(id)arg1;
 - (id)datePickerForSpecifier:(id)arg1;
 - (void)deleteAllowance:(id)arg1;
-- (void)editApps:(id)arg1;
 - (BOOL)hasSetBudgetTime;
 - (BOOL)hasSetBudgetTimeOrCustomSchedule;
 - (id)initWithCoordinator:(id)arg1;
@@ -77,7 +77,6 @@
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (void)showCustomizeDaysController:(id)arg1;
 - (void)showOrHideCustomizeDaysSpecifier;
-- (void)showPickerSpecifierForSpecifier:(id)arg1 highlight:(BOOL)arg2;
 - (id)specifiers;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

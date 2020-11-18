@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLCloudSharedAlbumProtocol-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableOrderedSet, NSNumber, NSOrderedSet, NSString, NSURL, PLManagedAsset, UIImage;
+@class NSArray, NSDate, NSDictionary, NSMutableOrderedSet, NSNumber, NSObject, NSOrderedSet, NSString, NSURL, PLManagedAsset, PLPhotoLibrary;
 
 @interface PLCloudSharedAlbum : PLManagedAlbum <PLCloudSharedAlbumProtocol>
 {
@@ -83,12 +83,12 @@
 @property (readonly, copy, nonatomic) NSString *name;
 @property (nonatomic) int pendingItemsCount;
 @property (nonatomic) int pendingItemsType;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (readonly, nonatomic) unsigned long long photosCount;
-@property (readonly, strong, nonatomic) UIImage *posterImage;
+@property (readonly, strong, nonatomic) NSObject *posterImage;
 @property (strong, nonatomic) NSString *publicURL; // @dynamic publicURL;
 @property (strong, nonatomic) PLManagedAsset *secondaryKeyAsset;
 @property (readonly, nonatomic) BOOL shouldDeleteWhenEmpty;
-@property (strong, nonatomic) NSDictionary *slideshowSettings;
 @property (readonly, copy, nonatomic) CDUnknownBlockType sortingComparator;
 @property (readonly, strong, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;
@@ -100,28 +100,24 @@
 @property (readonly, nonatomic) unsigned long long videosCount;
 
 + (id)allCloudSharedAlbumsInLibrary:(id)arg1;
-+ (id)cloudOwnerDisplayNameWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 includingEmail:(BOOL)arg5 allowsEmail:(BOOL)arg6;
++ (id)cloudOwnerDisplayNameWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 includingEmail:(BOOL)arg5 allowsEmail:(BOOL)arg6 emailAddressManager:(id)arg7;
 + (id)cloudSharedAlbumWithGUID:(id)arg1 inLibrary:(id)arg2;
 + (id)cloudSharedAlbumWithObjectID:(id)arg1 managedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)lightweightReimportDirectoryNameWithGUID:(id)arg1 cloudPersonID:(id)arg2;
-+ (id)localizedSharedByLabelWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 isOwned:(BOOL)arg5 allowsEmail:(BOOL)arg6;
++ (id)localizedSharedByLabelWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 isOwned:(BOOL)arg5 allowsEmail:(BOOL)arg6 emailAddressManager:(id)arg7;
 - (id)_expectedKeyAssets:(id)arg1;
-- (id)activityViewController:(id)arg1 itemsForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 thumbnailForActivityType:(id)arg2;
-- (id)activityViewControllerPlaceholderItems:(id)arg1;
-- (id)activityViewControllerSubject:(id)arg1;
 - (id)albumDirectoryPath;
 - (void)awakeFromInsert;
 - (id)cloudOwnerDisplayNameIncludingEmail:(BOOL)arg1 allowsEmail:(BOOL)arg2;
 - (void)delete;
 - (void)deleteFromDatabaseOnly;
+- (id)emailAddressManager;
 - (void)getUnseenStartMarkerIndex:(unsigned long long *)arg1 count:(unsigned long long *)arg2 showsProgress:(BOOL *)arg3;
 - (id)localizedSharedByLabelAllowsEmail:(BOOL)arg1;
 - (void)persistRecoveryMetadata;
 - (void)prepareForDeletion;
-- (void)publishBatchOfOriginalAssets:(id)arg1 withBatchCommentText:(id)arg2 assetsSharingInfos:(id)arg3 andTrimmedVideoPathInfo:(id)arg4 isNewAlbum:(BOOL)arg5;
+- (void)publishBatchOfOriginalAssetUUIDs:(id)arg1 withBatchCommentText:(id)arg2 assetsSharingInfos:(id)arg3 customExportsInfo:(id)arg4 andTrimmedVideoPathInfo:(id)arg5 isNewAlbum:(BOOL)arg6;
 - (void)updateCloudLastContributionDateWithDate:(id)arg1;
 - (void)updateCloudLastInterestingChangeDateWithDate:(id)arg1;
 - (void)userDeleteSubscriberRecord:(id)arg1;

@@ -4,12 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WeatherFoundation/WFForecastDataParser.h>
+#import <objc/NSObject.h>
+
+#import <WeatherFoundation/WFForecastDataParser-Protocol.h>
+
+@class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WFWeatherUndergroundParser : WFForecastDataParser
+@interface WFWeatherUndergroundParser : NSObject <WFForecastDataParser>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)componentsForCurrentForecast;
 + (id)componentsForDailyForecasts;
@@ -19,7 +28,8 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)expectedHourlyForecastCount;
 - (id)dateComponentsFromUTCDict:(id)arg1 toUnitGranularity:(unsigned long long)arg2;
 - (void)logParsingErrorAtKeyPath:(id)arg1 error:(id *)arg2;
-- (id)parseForecastData:(id)arg1 date:(id)arg2 error:(id *)arg3;
+- (id)parseForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6;
+- (id)parseForecastData:(id)arg1 types:(unsigned long long)arg2 location:(id)arg3 locale:(id)arg4 date:(id)arg5 error:(id *)arg6 rules:(id)arg7;
 - (id)parseHistoricalForecast:(id)arg1 date:(id)arg2 error:(id *)arg3;
 - (id)sanitizedNumberForKeyPath:(id)arg1 dict:(id)arg2;
 - (id)sanitizedTemperatureForCelsiusKeyPath:(id)arg1 fahrenheitKeyPath:(id)arg2 dict:(id)arg3;

@@ -27,7 +27,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (copy, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;

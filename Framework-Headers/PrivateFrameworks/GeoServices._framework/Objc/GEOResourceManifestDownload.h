@@ -8,21 +8,35 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEODownloadMetadata, GEOResources, PBUnknownFields;
+@class GEODownloadMetadata, GEOResources, PBDataReader, PBUnknownFields;
 
 @interface GEOResourceManifestDownload : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEODownloadMetadata *_metadata;
     GEOResources *_resources;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_metadata:1;
+        unsigned int read_resources:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_metadata:1;
+        unsigned int wrote_resources:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasResources;
-@property (strong, nonatomic) GEODownloadMetadata *metadata; // @synthesize metadata=_metadata;
-@property (strong, nonatomic) GEOResources *resources; // @synthesize resources=_resources;
+@property (strong, nonatomic) GEODownloadMetadata *metadata;
+@property (strong, nonatomic) GEOResources *resources;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readMetadata;
+- (void)_readResources;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -31,6 +45,7 @@
 - (id)initWithResourceManifestData:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

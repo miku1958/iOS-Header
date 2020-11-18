@@ -7,11 +7,14 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray;
+@class INDateComponentsRange, INHomeUserTask, NSArray;
 
 @protocol INControlHomeIntentExport <NSObject, JSExport>
 
 @property (copy, nonatomic) NSArray *contents;
+@property (copy, nonatomic) NSArray *filters;
+@property (copy, nonatomic) INDateComponentsRange *time;
+@property (copy, nonatomic) INHomeUserTask *userTask;
 
 - (id)init;
 @end

@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL inheritBuffers; // @dynamic inheritBuffers;
 @property (nonatomic) BOOL inheritPipelineState; // @dynamic inheritPipelineState;
 @property (nonatomic) unsigned long long maxFragmentBufferBindCount; // @dynamic maxFragmentBufferBindCount;
+@property (nonatomic) unsigned long long maxKernelBufferBindCount; // @dynamic maxKernelBufferBindCount;
 @property (nonatomic) unsigned long long maxVertexBufferBindCount; // @dynamic maxVertexBufferBindCount;
 
 + (id)alloc;

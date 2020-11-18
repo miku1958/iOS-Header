@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType zonePurgedBlock; // @synthesize zonePurgedBlock=_zonePurgedBlock;
 
 - (void).cxx_destruct;
+- (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
 - (id)initWithPreviousServerChangeTokenData:(id)arg1;
 - (int)operationType;

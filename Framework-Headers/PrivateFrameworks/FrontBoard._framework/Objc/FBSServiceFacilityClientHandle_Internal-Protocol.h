@@ -6,12 +6,11 @@
 
 #import <FrontBoard/FBSServiceFacilityClientHandle-Protocol.h>
 
-@class NSObject;
-@protocol OS_xpc_object;
+@protocol BSXPCServiceConnectionMessaging;
 
 @protocol FBSServiceFacilityClientHandle_Internal <FBSServiceFacilityClientHandle>
 
-@property (readonly, nonatomic) NSObject<OS_xpc_object> *connection;
+@property (readonly, nonatomic) id<BSXPCServiceConnectionMessaging> clientHandle_messageBuilder;
 
 @end
 

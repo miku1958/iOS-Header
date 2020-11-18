@@ -7,13 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
+#import <Intents/INCodableAttributeRelationComparing-Protocol.h>
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/INKeyImageProducing-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INImage, NSString;
 
-@interface INPaymentMethod : NSObject <INCacheableContainer, INKeyImageProducing, NSCopying, NSSecureCoding>
+@interface INPaymentMethod : NSObject <INCodableAttributeRelationComparing, INCacheableContainer, INKeyImageProducing, INJSONSerializable, NSCopying, NSSecureCoding>
 {
     long long _type;
     NSString *_name;
@@ -24,17 +26,26 @@
 @property (readonly) INImage *_keyImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) INImage *icon; // @synthesize icon=_icon;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) INImage *icon; // @synthesize icon=_icon;
 @property (readonly, copy, nonatomic) NSString *identificationHint; // @synthesize identificationHint=_identificationHint;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (id)applePayPaymentMethod;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -42,8 +53,10 @@
 - (id)_dictionaryRepresentation;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
+- (BOOL)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)_intents_localizedCopyForLanguage:(id)arg1;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

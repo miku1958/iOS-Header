@@ -8,18 +8,20 @@
 
 #import <Photos/PHRecyclableObject-Protocol.h>
 
-@class NSError, NSMutableArray, NSString;
+@class NSDictionary, NSError, NSMutableArray, NSString;
 
 @interface PHImageCacheEntry : NSObject <PHRecyclableObject>
 {
     NSError *_error;
     struct CGImage *_imageRef;
+    NSDictionary *_additionalInfo;
     struct os_unfair_lock_s _lock;
     BOOL _isCancelled;
     NSMutableArray *_handlersWaitingOnResult;
     int _imageRequestIDForPopulatingCache;
 }
 
+@property (readonly, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo=_additionalInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,9 +34,10 @@
 - (void)cancel;
 - (struct CGImage *)createImageRef;
 - (void)dealloc;
+- (BOOL)hasImageRef;
 - (id)init;
 - (BOOL)isCancelled;
-- (void)populateWithImageRef:(struct CGImage *)arg1 error:(id)arg2 unlockBeforeNotfiyingWaiters:(struct os_unfair_lock_s *)arg3;
+- (void)populateWithImageRef:(struct CGImage *)arg1 additionalInfo:(id)arg2 error:(id)arg3 executeBeforeNotifyingWaitersBlock:(CDUnknownBlockType)arg4;
 - (void)prepareForReuse;
 
 @end

@@ -25,6 +25,7 @@
     NSLayoutConstraint *_averageHeartRateLabelWidthConstraint;
     NSLayoutConstraint *_symptomsLabelFirstBaselineConstraint;
     NSLayoutConstraint *_graphTopConstraint;
+    NSLayoutConstraint *_heartImageViewHeightConstraint;
     NSArray *_regularConstraints;
     NSArray *_largeTextConstraints;
 }
@@ -41,6 +42,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKRoundedHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) UIImageView *heartImageView; // @synthesize heartImageView=_heartImageView;
+@property (strong, nonatomic) NSLayoutConstraint *heartImageViewHeightConstraint; // @synthesize heartImageViewHeightConstraint=_heartImageViewHeightConstraint;
 @property (strong, nonatomic) NSArray *largeTextConstraints; // @synthesize largeTextConstraints=_largeTextConstraints;
 @property (nonatomic, getter=isOnboarding) BOOL onboarding; // @synthesize onboarding=_onboarding;
 @property (strong, nonatomic) NSArray *regularConstraints; // @synthesize regularConstraints=_regularConstraints;
@@ -63,6 +65,8 @@
 - (void).cxx_destruct;
 - (id)_cardBackgroundColor;
 - (id)_cardHeaderColor;
+- (id)_chevronColor;
+- (id)_graphBackgroundColor;
 - (BOOL)_isLayingOutForAccessibility;
 - (void)_setUpGraph;
 - (void)_setupConstraints;

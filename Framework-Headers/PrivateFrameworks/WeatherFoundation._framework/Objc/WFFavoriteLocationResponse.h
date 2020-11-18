@@ -13,7 +13,7 @@
     NSArray *_favoriteLocations;
 }
 
-@property (readonly) NSArray *favoriteLocations; // @synthesize favoriteLocations=_favoriteLocations;
+@property (readonly, nonatomic) NSArray *favoriteLocations; // @synthesize favoriteLocations=_favoriteLocations;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

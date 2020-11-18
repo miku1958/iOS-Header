@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)migrateStyles;
 - (id)objectForProperty:(int)arg1;
-- (void)rebuildChildInfosAndPlaceholders;
+- (void)rebuildChildInfosAndPlaceholdersFromMaster:(id)arg1;
 - (void)saveToArchive:(struct PrototypeForUndoMasterChangeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 

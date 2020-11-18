@@ -12,8 +12,8 @@
 
 @interface ASDPurchaseResponseItem : NSObject <NSSecureCoding>
 {
-    BOOL _cancelsPurchaseBatch;
     BOOL _success;
+    BOOL _cancelsPurchaseBatch;
     NSError *_error;
     ASDPurchase *_purchase;
     NSArray *_results;
@@ -40,6 +40,7 @@
 - (void)_setError:(id)arg1;
 - (void)_setPurchase:(id)arg1;
 - (void)_setResponseMetrics:(id)arg1;
+- (void)_setSuccess:(BOOL)arg1;
 - (void)_setTransactionIDs:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

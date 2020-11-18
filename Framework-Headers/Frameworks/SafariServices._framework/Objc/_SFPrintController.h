@@ -38,9 +38,11 @@
 @property (readonly, nonatomic) UIPrintInfo *printInfo;
 @property (readonly, nonatomic) WBUPrintPageRenderer *printRenderer;
 @property (weak, nonatomic) _SFReaderController *readerController; // @synthesize readerController=_readerController;
+@property (readonly, nonatomic) NSString *suggestedPDFFileName;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
++ (BOOL)isDisplayingPrintUI;
 - (void).cxx_destruct;
 - (id)_dequeuePrintItem;
 - (void)_didFinishPrintingCurrentItemWithResult:(long long)arg1 fromPrintInteractionControllerCompletion:(BOOL)arg2;
@@ -51,6 +53,7 @@
 - (void)_shouldPrintWhileLoadingForUsage:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearQueue;
 - (void)dealloc;
+- (void)getPDFDataForUsage:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleNextPrintRequest;
 - (id)init;
 - (void)preparePrintInteractionControllerForUsage:(long long)arg1 completion:(CDUnknownBlockType)arg2;

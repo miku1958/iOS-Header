@@ -6,7 +6,18 @@
 
 #import <HomeKit/HMAccessoryNumberSetting.h>
 
-@interface HMAccessoryNumberSetting (HFDebugging)
+#import <Home/HFStateDumpBuildable-Protocol.h>
+
+@class NSString;
+
+@interface HMAccessoryNumberSetting (HFDebugging) <HFStateDumpBuildable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (BOOL)hf_isBooleanSetting;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

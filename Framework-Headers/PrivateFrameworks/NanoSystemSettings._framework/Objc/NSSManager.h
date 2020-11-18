@@ -25,12 +25,17 @@
 + (void)displayAlertWithTitle:(id)arg1 body:(id)arg2 icon:(id)arg3;
 + (void)initialize;
 - (void).cxx_destruct;
+- (void)cancelFileTransfersInProgress;
 - (id)connection;
 - (void)dealloc;
+- (void)deleteDiagnosticLogFile:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)enableAirplaneMode:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)fileTransferInProgress:(id)arg1;
 - (void)getAboutInfo:(CDUnknownBlockType)arg1;
 - (void)getAccountsInfo:(CDUnknownBlockType)arg1;
 - (void)getAccountsInfoForAccountType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getDiagnosticLogFileFromGizmo:(id)arg1 withResults:(CDUnknownBlockType)arg2;
+- (void)getDiagnosticLogsInfo:(CDUnknownBlockType)arg1;
 - (void)getLegalDocuments:(CDUnknownBlockType)arg1;
 - (void)getLocalesInfo:(CDUnknownBlockType)arg1;
 - (void)getProfileWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

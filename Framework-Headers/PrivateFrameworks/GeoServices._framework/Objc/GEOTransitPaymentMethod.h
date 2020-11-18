@@ -8,17 +8,21 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOTransitPaymentMethod : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     NSString *_identifier;
 }
 
 @property (readonly, nonatomic) BOOL hasIdentifier;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -26,6 +30,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

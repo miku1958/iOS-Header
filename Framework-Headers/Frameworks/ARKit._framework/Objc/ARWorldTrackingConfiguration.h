@@ -6,13 +6,19 @@
 
 #import <ARKit/ARConfiguration.h>
 
-@class ARWorldMap, NSSet, NSString;
+@class ARImageSensorSettings, ARWorldMap, NSSet, NSString;
 
 @interface ARWorldTrackingConfiguration : ARConfiguration
 {
+    BOOL _wantsHDREnvironmentTextures;
+    BOOL _automaticImageScaleEstimationEnabled;
+    BOOL _collaborationEnabled;
+    BOOL _userFaceTrackingEnabled;
     BOOL _relocalizationEnabled;
     BOOL _mlModelEnabled;
     BOOL _deliverRawSceneUnderstandingResults;
+    BOOL _skeletonDetectionEnabled;
+    BOOL _shouldUseSuperWideIfAvailable;
     long long _environmentTexturing;
     unsigned long long _planeDetection;
     ARWorldMap *_initialWorldMap;
@@ -24,29 +30,48 @@
 }
 
 @property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @dynamic autoFocusEnabled;
+@property (nonatomic) BOOL automaticImageScaleEstimationEnabled; // @synthesize automaticImageScaleEstimationEnabled=_automaticImageScaleEstimationEnabled;
+@property (nonatomic, getter=isCollaborationEnabled) BOOL collaborationEnabled; // @synthesize collaborationEnabled=_collaborationEnabled;
 @property (nonatomic) BOOL deliverRawSceneUnderstandingResults; // @synthesize deliverRawSceneUnderstandingResults=_deliverRawSceneUnderstandingResults;
 @property (copy, nonatomic) NSSet *detectionImages; // @synthesize detectionImages=_detectionImages;
 @property (copy, nonatomic) NSSet *detectionObjects; // @synthesize detectionObjects=_detectionObjects;
 @property (nonatomic) long long environmentTexturing; // @synthesize environmentTexturing=_environmentTexturing;
+@property (readonly, nonatomic) ARImageSensorSettings *imageSensorSettingsForSuperWide;
 @property (strong, nonatomic) ARWorldMap *initialWorldMap; // @synthesize initialWorldMap=_initialWorldMap;
 @property (nonatomic) long long maximumNumberOfTrackedImages; // @synthesize maximumNumberOfTrackedImages=_maximumNumberOfTrackedImages;
 @property (nonatomic) double minVergenceAngle; // @synthesize minVergenceAngle=_minVergenceAngle;
 @property (nonatomic, getter=isMLModelEnabled) BOOL mlModelEnabled; // @synthesize mlModelEnabled=_mlModelEnabled;
 @property (nonatomic) unsigned long long planeDetection; // @synthesize planeDetection=_planeDetection;
 @property (nonatomic) BOOL relocalizationEnabled; // @synthesize relocalizationEnabled=_relocalizationEnabled;
+@property (nonatomic) BOOL shouldUseSuperWideIfAvailable; // @synthesize shouldUseSuperWideIfAvailable=_shouldUseSuperWideIfAvailable;
+@property (nonatomic, getter=isSkeletonDetectionEnabled) BOOL skeletonDetectionEnabled; // @synthesize skeletonDetectionEnabled=_skeletonDetectionEnabled;
 @property (copy, nonatomic) NSString *slamConfiguration; // @synthesize slamConfiguration=_slamConfiguration;
+@property (nonatomic, getter=userFaceTrackingEnabled) BOOL userFaceTrackingEnabled; // @synthesize userFaceTrackingEnabled=_userFaceTrackingEnabled;
+@property (nonatomic) BOOL wantsHDREnvironmentTextures; // @synthesize wantsHDREnvironmentTextures=_wantsHDREnvironmentTextures;
 
 + (BOOL)isSupported;
 + (id)new;
 + (id)supportedVideoFormats;
++ (id)supportedVideoFormatsForSuperWide;
++ (id)supportedVideoFormatsForUserFaceTracking;
++ (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
++ (BOOL)supportsFrontCameraFaceAnchors;
++ (BOOL)supportsUserFaceTracking;
 - (void).cxx_destruct;
 - (id)_trackingOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
 - (id)description;
 - (id)imageSensorSettings;
+- (id)imageSensorSettingsForUserFaceTracking;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (id)parentImageSensorSettings;
+- (id)secondaryTechniques;
+- (void)setFrontCameraFaceAnchorsEnabled:(BOOL)arg1;
+- (BOOL)shouldEnableVisionDataForImageSensorSettings:(id)arg1;
+- (BOOL)shouldUseSuperWide;
+- (id)visionDataParametersForWorldTrackingOptions:(id)arg1;
 
 @end
 

@@ -23,12 +23,12 @@
     NSDictionary *_keyValuePairs;
 }
 
-@property (strong, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
+@property (copy, nonatomic) NSData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, nonatomic) struct __SecCertificate *certificate; // @synthesize certificate=_certificate;
 @property (readonly, copy, nonatomic) NSString *channel; // @synthesize channel=_channel;
 @property (nonatomic) BOOL disableCompression; // @synthesize disableCompression=_disableCompression;
 @property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (strong, nonatomic) NSDictionary *keyValuePairs; // @synthesize keyValuePairs=_keyValuePairs;
+@property (copy, nonatomic) NSDictionary *keyValuePairs; // @synthesize keyValuePairs=_keyValuePairs;
 @property (copy, nonatomic) NSString *payloadIdentifier; // @synthesize payloadIdentifier=_payloadIdentifier;
 @property (copy, nonatomic) NSString *payloadType; // @synthesize payloadType=_payloadType;
 @property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;

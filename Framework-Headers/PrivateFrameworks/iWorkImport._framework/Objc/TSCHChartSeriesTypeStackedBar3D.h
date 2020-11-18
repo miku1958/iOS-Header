@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)g_genericToSpecificPropertyMap3DStackedBar;
 - (id)genericToSpecificPropertyMap;
 - (BOOL)supportsRoundedCorners;
+- (id)userInterfaceName;
 
 @end
 

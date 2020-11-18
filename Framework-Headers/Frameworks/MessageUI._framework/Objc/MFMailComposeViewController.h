@@ -6,9 +6,12 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <MessageUI/_UIRemoteViewControllerContaining-Protocol.h>
+
+@class NSString, _UIRemoteViewController;
 @protocol MFMailComposeViewControllerDelegate;
 
-@interface MFMailComposeViewController : UINavigationController
+@interface MFMailComposeViewController : UINavigationController <_UIRemoteViewControllerContaining>
 {
     id _internal;
     CDUnknownBlockType _setupAnimationBlock;
@@ -16,19 +19,31 @@
     long long _savedStatusBarStyle;
 }
 
-@property (nonatomic) id<MFMailComposeViewControllerDelegate> mailComposeDelegate;
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<MFMailComposeViewControllerDelegate> mailComposeDelegate;
+@property (readonly) Class superclass;
 
 + (BOOL)canSendMail;
 + (BOOL)canSendMailSourceAccountManagement:(int)arg1;
 + (BOOL)hasAutosavedMessageWithIdentifier:(id)arg1;
 + (BOOL)isMailDropConfigured;
++ (id)log;
 + (unsigned long long)maximumAttachmentSize;
 + (void)removeAutosavedMessageWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
 - (id)UTITypes;
 - (void)__viewControllerWillBePresented:(BOOL)arg1;
 - (id)_addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
+- (void)_addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 forContentVariation:(id)arg4;
 - (id)_addAttachmentWithFileURL:(id)arg1 mimeType:(id)arg2;
+- (id)_addContentVariationWithName:(id)arg1;
+- (id)_impl;
 - (id)_internalViewController;
+- (void)_setDefaultContentVariation:(id)arg1;
+- (void)_setMessageBody:(id)arg1 isHTML:(BOOL)arg2 forContentVariation:(id)arg3;
 - (id)_validEmailAddressesFromArray:(id)arg1;
 - (void)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (void)addSetupAnimationBlock:(CDUnknownBlockType)arg1;
@@ -38,12 +53,12 @@
 - (id)contentText;
 - (id)contentURLs;
 - (void)currentAttachmentLimitWithHandler:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)finalizeCompositionValues;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 sourceAccountManagement:(int)arg2;
 - (id)photoIDs;
+- (long long)preferredStatusBarStyle;
 - (void)recoverAutosavedMessageWithIdentifier:(id)arg1;
 - (void)requestFramesForAttachmentsWithIdentifiers:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)setAutorotationDelegate:(id)arg1;
@@ -58,12 +73,13 @@
 - (void)setMessageBody:(id)arg1 isHTML:(BOOL)arg2;
 - (void)setPhotoIDs:(id)arg1;
 - (void)setPreferredSendingEmailAddress:(id)arg1;
+- (void)setShareSheetSessionID:(id)arg1;
 - (void)setSourceAccountManagement:(int)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setToRecipients:(id)arg1;
 - (void)setUTITypes:(id)arg1;
+- (id)shareSheetSessionID;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

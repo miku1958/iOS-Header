@@ -38,6 +38,8 @@
 
 + (void)_endTopLevelGroupings;
 + (void)_setEndsTopLevelGroupingsAfterRunLoopIterations:(BOOL)arg1;
+- (void)__redoCommonDoSingle:(BOOL)arg1;
+- (void)__redoSingle;
 - (void)_cancelAutomaticTopLevelGroupEnding;
 - (void)_commitUndoGrouping;
 - (void)_delayAutomaticTermination:(double)arg1;

@@ -15,10 +15,9 @@
 
 @property (readonly, nonatomic) id<PLResourceIdentity> resourceIdentity; // @synthesize resourceIdentity=_resourceIdentity;
 
-+ (id)_convertResourceIdentityToPlistDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithAssetObjectID:(id)arg1 resourceIdentity:(id)arg2;
-- (id)initWithPlistDictionary:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1 photoLibrary:(id)arg2;
 - (id)plistDictionary;
 
 @end

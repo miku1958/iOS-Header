@@ -17,6 +17,7 @@
     NSDateComponents *_intervalComponents;
     NSMutableArray *_results;
     BOOL _hasReceivedInitialResults;
+    BOOL _requireQuantityType;
     CDUnknownBlockType _initialResultsHandler;
     CDUnknownBlockType _statisticsUpdateHandler;
     NSNumber *_lastAnchor;
@@ -47,6 +48,7 @@
 - (void)client_deliverStatisticsBatch:(id)arg1 resetStatistics:(BOOL)arg2 isFinal:(BOOL)arg3 anchor:(id)arg4 query:(id)arg5;
 - (void)client_deliverUpdatedStatistics:(id)arg1 anchor:(id)arg2 query:(id)arg3;
 - (id)initWithQuantityType:(id)arg1 quantitySamplePredicate:(id)arg2 options:(unsigned long long)arg3 anchorDate:(id)arg4 intervalComponents:(id)arg5;
+- (id)initWithSampleType:(id)arg1 samplePredicate:(id)arg2 options:(unsigned long long)arg3 anchorDate:(id)arg4 intervalComponents:(id)arg5;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;

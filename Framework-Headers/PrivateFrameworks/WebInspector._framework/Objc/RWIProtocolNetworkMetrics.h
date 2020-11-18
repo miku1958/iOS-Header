@@ -6,7 +6,7 @@
 
 #import <WebInspector/RWIProtocolJSONObject.h>
 
-@class NSString, RWIProtocolNetworkHeaders;
+@class NSString, RWIProtocolNetworkHeaders, RWIProtocolSecurityConnection;
 
 @interface RWIProtocolNetworkMetrics : RWIProtocolJSONObject
 {
@@ -22,6 +22,7 @@
 @property (nonatomic) double responseBodyBytesReceived;
 @property (nonatomic) double responseBodyDecodedSize;
 @property (nonatomic) double responseHeaderBytesReceived;
+@property (strong, nonatomic) RWIProtocolSecurityConnection *securityConnection;
 
 
 @end

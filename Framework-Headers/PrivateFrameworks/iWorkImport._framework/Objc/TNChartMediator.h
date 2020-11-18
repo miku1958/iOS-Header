@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (vector_5a16d233)expandSingleRangeForLabels:(const struct TSCERangeRef *)arg1 formulaType:(unsigned long long)arg2;
 - (vector_5a16d233)expandSingleRangeForProposedCategoryLabels:(const struct TSCERangeRef *)arg1;
 - (unsigned long long)formulaIndexForSeriesDimension:(id)arg1;
+- (id)formulaOwner;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (id)formulaStorageFromCatTable:(id)arg1 selection:(id)arg2 direction:(int)arg3;
 - (id)formulaStorageFromTable:(id)arg1 selection:(id)arg2 direction:(int)arg3;
@@ -102,7 +103,7 @@ __attribute__((visibility("hidden")))
 - (id)labelFormulasForType:(unsigned long long)arg1;
 - (unsigned long long)labelIndexForSeriesNameSeriesIndex:(unsigned long long)arg1;
 - (id)linkedResolver;
-- (void)localizeFormulaLiteralsWithBundle:(id)arg1;
+- (void)localizeFormulaLiteralsWithLocale:(id)arg1;
 - (id)nonDefaultDataFormatterForSeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
 - (id)objectToArchiveInDependencyTracker;
 - (unsigned short)ownerKind;

@@ -73,6 +73,7 @@
 - (id)adjustedRangeForFittedRange:(id)arg1 chartRange:(struct HKRange)arg2;
 - (long long)axisAnnotationCount;
 - (void)clearAnnotations;
+- (void)clearCache;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)dateZoomForZoomScale:(double)arg1;
 - (void)drawBaselineForModelRange:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 renderView:(id)arg5;

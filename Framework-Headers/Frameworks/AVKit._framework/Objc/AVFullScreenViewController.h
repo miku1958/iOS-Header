@@ -9,27 +9,39 @@
 @class UIView;
 @protocol AVFullScreenViewControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface AVFullScreenViewController : UIViewController
 {
     id<AVFullScreenViewControllerDelegate> _delegate;
+    AVFullScreenViewController *_associatedFullScreenViewController;
+    AVFullScreenViewController *_sourceFullScreenViewController;
     UIView *_contentView;
 }
 
+@property (weak, nonatomic) AVFullScreenViewController *associatedFullScreenViewController; // @synthesize associatedFullScreenViewController=_associatedFullScreenViewController;
 @property (weak, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (weak, nonatomic) id<AVFullScreenViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) AVFullScreenViewController *sourceFullScreenViewController; // @synthesize sourceFullScreenViewController=_sourceFullScreenViewController;
 
 - (void).cxx_destruct;
+- (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (BOOL)_requiresCustomPresentationController;
+- (void)attachContentView;
+- (BOOL)avkit_isEffectivelyFullScreen;
 - (BOOL)canBecomeFirstResponder;
 - (id)keyCommands;
+- (void)loadView;
 - (BOOL)modalPresentationCapturesStatusBarAppearance;
+- (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredWhitePointAdaptivityStyle;
 - (BOOL)prefersHomeIndicatorAutoHidden;
 - (BOOL)prefersStatusBarHidden;
+- (BOOL)shouldAutorotate;
+- (unsigned long long)supportedInterfaceOrientations;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
-- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillMoveToWindow:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

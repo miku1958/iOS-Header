@@ -48,6 +48,7 @@
 - (void)textViewDidChange:(id)arg1;
 - (void)updateLayout;
 - (void)updateUtterance:(id)arg1;
+- (void)updateUtterance:(id)arg1 postNotifications:(BOOL)arg2;
 
 @end
 

@@ -20,6 +20,7 @@
 
 @optional
 - (BOOL)shouldContinuePresentingFormAfterFeedback;
+- (void)userDidFinish:(BOOL)arg1;
 - (BOOL)wantsCustomFeedbackSection;
 - (BOOL)wantsPositiveFeedbackSection;
 @end

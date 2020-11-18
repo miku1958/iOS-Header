@@ -4,32 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXAssetUIImageViewTile.h>
+#import <objc/NSObject.h>
 
-@class AVPlayerItem, ISWrappedAVAudioSession, ISWrappedAVPlayer, PXVideoPlayerView;
+#import <PhotosUICore/PXAssetTile-Protocol.h>
+#import <PhotosUICore/PXAutoplayTile-Protocol.h>
+#import <PhotosUICore/PXChangeObserver-Protocol.h>
+#import <PhotosUICore/PXReusableObject-Protocol.h>
+#import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@interface PXAssetLoopUIViewTile : PXAssetUIImageViewTile
+@class NSString, PXImageRequester, PXVideoSession, PXVideoSessionUIView, UIView, _PXAssetLoopUIView;
+
+@interface PXAssetLoopUIViewTile : NSObject <PXChangeObserver, PXReusableObject, PXAssetTile, PXUIViewBasicTile, PXAutoplayTile>
 {
     unsigned long long _requestCount;
-    long long _loopingVideoRequestID;
-    PXVideoPlayerView *_loopingVideoView;
-    ISWrappedAVPlayer *_loopingVideoPlayer;
-    AVPlayerItem *__loopingPlayerItem;
-    ISWrappedAVAudioSession *__audioSession;
+    _PXAssetLoopUIView *_view;
+    PXVideoSession *_videoSession;
+    PXVideoSessionUIView *_videoView;
+    PXImageRequester *_imageRequester;
+    double _cornerRadius;
+    long long _desiredPlayState;
+    struct CGSize _contentSize;
+    struct CGRect _desiredContentsRect;
+    CDStruct_e83c9415 _bestPlaybackTimeRange;
 }
 
-@property (strong, nonatomic, setter=_setAudioSession:) ISWrappedAVAudioSession *_audioSession; // @synthesize _audioSession=__audioSession;
-@property (strong, nonatomic, setter=_setLoopingPlayerItem:) AVPlayerItem *_loopingPlayerItem; // @synthesize _loopingPlayerItem=__loopingPlayerItem;
+@property (nonatomic) CDStruct_e83c9415 bestPlaybackTimeRange; // @synthesize bestPlaybackTimeRange=_bestPlaybackTimeRange;
+@property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) struct CGRect desiredContentsRect; // @synthesize desiredContentsRect=_desiredContentsRect;
+@property (nonatomic) long long desiredPlayState; // @synthesize desiredPlayState=_desiredPlayState;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PXImageRequester *imageRequester; // @synthesize imageRequester=_imageRequester;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) PXVideoSession *videoSession; // @synthesize videoSession=_videoSession;
+@property (readonly, nonatomic) UIView *view;
 
 - (void).cxx_destruct;
-- (void)_handlePlayerItemResult:(id)arg1 info:(id)arg2 expectedRequestCount:(unsigned long long)arg3;
-- (void)_requestLoopingVideoIfNeeded;
-- (void)_updateLoopingVideoView;
+- (void)_reloadVideoSessionIfNecessary;
+- (void)_updateImageRequester;
+- (void)_updateLayer;
+- (void)_updateVideoSession;
 - (void)becomeReusable;
-- (void)imageDidChange;
+- (void)dealloc;
+- (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;
+- (id)init;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForReuse;
-- (void)setImageRequester:(id)arg1;
-- (id)view;
 
 @end
 

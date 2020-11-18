@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ABBufferQuery, CNManagedConfiguration, NSMutableData;
+@class ABBufferQuery, CNManagedConfiguration, NSMutableData, NSMutableDictionary;
 
 @interface ABBufferQueryCursor : NSObject
 {
@@ -25,6 +25,7 @@
     int _contactPreferredForImageColumn;
     int _personLinkColumn;
     NSMutableData *_mutableData;
+    NSMutableDictionary *_matchInfo;
     struct sqlite3_blob *_incompleteBlob;
     unsigned long long _blobBytesWritten;
     unsigned long long _blobLength;
@@ -49,6 +50,7 @@
 @property (nonatomic) BOOL hasFoundAnyImageDataForCurrentContact; // @synthesize hasFoundAnyImageDataForCurrentContact=_hasFoundAnyImageDataForCurrentContact;
 @property (nonatomic) struct sqlite3_blob *incompleteBlob; // @synthesize incompleteBlob=_incompleteBlob;
 @property (strong, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
+@property (strong, nonatomic) NSMutableDictionary *matchInfo; // @synthesize matchInfo=_matchInfo;
 @property (nonatomic) unsigned long long maxBufferSize; // @synthesize maxBufferSize=_maxBufferSize;
 @property (nonatomic) unsigned long long maxContactsPerBatch; // @synthesize maxContactsPerBatch=_maxContactsPerBatch;
 @property (nonatomic) int multivalueEntryKeyColumn; // @synthesize multivalueEntryKeyColumn=_multivalueEntryKeyColumn;
@@ -66,7 +68,6 @@
 - (void)dealloc;
 - (void)fetchNextBatchWithReply:(CDUnknownBlockType)arg1;
 - (id)initWithAddressBook:(void *)arg1 predicate:(id)arg2 propertyIdentifierSet:(struct __CFSet *)arg3 includeLinkedContacts:(BOOL)arg4 sortOrder:(unsigned int)arg5 suggestedContactsPerBatch:(unsigned long long)arg6 managedConfiguration:(id)arg7;
-- (id)initWithAddressBook:(void *)arg1 query:(id)arg2 queryBinder:(CDUnknownBlockType)arg3 propertyIdentifierSet:(struct __CFSet *)arg4 includeLinkedContacts:(BOOL)arg5 sortOrder:(unsigned int)arg6 suggestedContactsPerBatch:(unsigned long long)arg7 managedConfiguration:(id)arg8;
 - (id)initWithQuery:(id)arg1 batchSize:(unsigned long long)arg2 managedConfiguration:(id)arg3;
 
 @end

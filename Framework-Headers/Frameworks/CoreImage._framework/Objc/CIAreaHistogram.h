@@ -6,7 +6,7 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class CIContext, CIImage, CIVector, NSNumber;
+@class CIImage, CIVector, NSNumber;
 
 __attribute__((visibility("hidden")))
 @interface CIAreaHistogram : CIFilter
@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     CIVector *inputExtent;
     NSNumber *inputScale;
     NSNumber *inputCount;
-    CIContext *_context;
 }
 
 @property (strong, nonatomic) NSNumber *inputCount; // @synthesize inputCount;
@@ -26,7 +25,6 @@ __attribute__((visibility("hidden")))
 + (id)customAttributes;
 - (BOOL)_inputsAreOK;
 - (struct IRect)_netExtent;
-- (void)dealloc;
 - (id)outputData;
 - (id)outputImage;
 - (id)outputImageNonMPS;

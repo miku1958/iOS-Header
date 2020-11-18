@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoardServices/BSDescriptionProviding-Protocol.h>
+
 @class NSString, SBSStatusBarStyleOverridesAssertionData;
 
-@interface SBSStatusBarStyleOverridesAssertion : NSObject
+@interface SBSStatusBarStyleOverridesAssertion : NSObject <BSDescriptionProviding>
 {
     SBSStatusBarStyleOverridesAssertionData *_assertionData;
     CDUnknownBlockType _invalidationHandler;
 }
 
 @property (strong, nonatomic) SBSStatusBarStyleOverridesAssertionData *assertionData; // @synthesize assertionData=_assertionData;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isExclusive) BOOL exclusive;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (readonly, nonatomic) int pid;
 @property (readonly, nonatomic) BOOL showsWhenForeground;
 @property (readonly, nonatomic) int statusBarStyleOverrides;
 @property (copy, nonatomic) NSString *statusString;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
 
 + (id)assertionWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(BOOL)arg3 showsWhenForeground:(BOOL)arg4;
@@ -29,9 +35,13 @@
 - (void)acquireWithHandler:(CDUnknownBlockType)arg1 invalidationHandler:(CDUnknownBlockType)arg2;
 - (void)acquireWithHandler:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (void)dealloc;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithStatusBarStyleOverrides:(int)arg1 forPID:(int)arg2 exclusive:(BOOL)arg3 showsWhenForeground:(BOOL)arg4;
 - (id)initWithStatusBarStyleOverridesAssertionData:(id)arg1;
 - (void)invalidate;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

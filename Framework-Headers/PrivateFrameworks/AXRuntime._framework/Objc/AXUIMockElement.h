@@ -16,11 +16,13 @@
     NSMutableDictionary *_performActionLog;
     BOOL _usesCarriageReturnAsLinesSeparator;
     NSMutableDictionary *_attributes;
+    CDUnknownBlockType _handleActionBlock;
     CDUnknownBlockType _cacheUpdatedCallback;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *attributes; // @synthesize attributes=_attributes;
 @property (copy, nonatomic) CDUnknownBlockType cacheUpdatedCallback; // @synthesize cacheUpdatedCallback=_cacheUpdatedCallback;
+@property (copy, nonatomic) CDUnknownBlockType handleActionBlock; // @synthesize handleActionBlock=_handleActionBlock;
 @property (nonatomic) BOOL usesCarriageReturnAsLinesSeparator; // @synthesize usesCarriageReturnAsLinesSeparator=_usesCarriageReturnAsLinesSeparator;
 
 + (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
@@ -56,6 +58,7 @@
 - (struct CGPath *)pathWithAXAttribute:(long long)arg1;
 - (BOOL)performAXAction:(int)arg1;
 - (BOOL)performAXAction:(int)arg1 withValue:(id)arg2;
+- (BOOL)performAXAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (id)performBlockWhileLoggingPerformedActions:(CDUnknownBlockType)arg1;
 - (int)pid;
 - (struct CGPoint)pointForLineNumber:(unsigned long long)arg1;

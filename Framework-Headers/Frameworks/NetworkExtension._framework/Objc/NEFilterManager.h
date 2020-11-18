@@ -20,6 +20,7 @@
 @property (strong) NEConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly) NEConfigurationManager *configurationManager; // @synthesize configurationManager=_configurationManager;
 @property (getter=isEnabled) BOOL enabled;
+@property long long grade;
 @property BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (copy) NSString *localizedDescription;
 @property (strong) NEFilterProviderConfiguration *providerConfiguration;

@@ -28,23 +28,23 @@
     struct CGSize _cachedGridSize;
 }
 
-@property (strong) NSArray *alignments; // @synthesize alignments=_alignments;
-@property struct CGSize cachedFittingSize; // @synthesize cachedFittingSize=_cachedFittingSize;
-@property struct CGSize cachedGridSize; // @synthesize cachedGridSize=_cachedGridSize;
+@property (strong, nonatomic) NSArray *alignments; // @synthesize alignments=_alignments;
+@property (nonatomic) struct CGSize cachedFittingSize; // @synthesize cachedFittingSize=_cachedFittingSize;
+@property (nonatomic) struct CGSize cachedGridSize; // @synthesize cachedGridSize=_cachedGridSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NUIGridArrangement *gridArrangement; // @synthesize gridArrangement=_gridArrangement;
+@property (strong, nonatomic) NUIGridArrangement *gridArrangement; // @synthesize gridArrangement=_gridArrangement;
 @property (readonly) unsigned long long hash;
-@property long long indexForFirstTrailingColumn; // @synthesize indexForFirstTrailingColumn=_indexForFirstTrailingColumn;
-@property (strong) NSMapTable *itemToRowMapping; // @synthesize itemToRowMapping=_itemToRowMapping;
-@property (strong) NSDictionary *itemsForIndex; // @synthesize itemsForIndex=_itemsForIndex;
-@property (strong) NSArray *itemsForRows; // @synthesize itemsForRows=_itemsForRows;
-@property (strong) NSArray *spacings; // @synthesize spacings=_spacings;
+@property (nonatomic) long long indexForFirstTrailingColumn; // @synthesize indexForFirstTrailingColumn=_indexForFirstTrailingColumn;
+@property (strong, nonatomic) NSMapTable *itemToRowMapping; // @synthesize itemToRowMapping=_itemToRowMapping;
+@property (strong, nonatomic) NSDictionary *itemsForIndex; // @synthesize itemsForIndex=_itemsForIndex;
+@property (strong, nonatomic) NSArray *itemsForRows; // @synthesize itemsForRows=_itemsForRows;
+@property (strong, nonatomic) NSArray *spacings; // @synthesize spacings=_spacings;
 @property (readonly) Class superclass;
-@property BOOL tableContainsRowHeaders; // @synthesize tableContainsRowHeaders=_tableContainsRowHeaders;
-@property long long totalEqualColumns; // @synthesize totalEqualColumns=_totalEqualColumns;
-@property (strong) NSArray *verticalRowAlignments; // @synthesize verticalRowAlignments=_verticalRowAlignments;
-@property double widthOfEqualFillColumns; // @synthesize widthOfEqualFillColumns=_widthOfEqualFillColumns;
+@property (nonatomic) BOOL tableContainsRowHeaders; // @synthesize tableContainsRowHeaders=_tableContainsRowHeaders;
+@property (nonatomic) long long totalEqualColumns; // @synthesize totalEqualColumns=_totalEqualColumns;
+@property (strong, nonatomic) NSArray *verticalRowAlignments; // @synthesize verticalRowAlignments=_verticalRowAlignments;
+@property (nonatomic) double widthOfEqualFillColumns; // @synthesize widthOfEqualFillColumns=_widthOfEqualFillColumns;
 
 + (id)arrayOfItemsForSection:(id)arg1;
 + (id)computeTruncationForAlignments:(id)arg1 indexForFirstTrailingColumn:(unsigned long long)arg2 totalEqualColumns:(unsigned long long)arg3;
@@ -56,6 +56,7 @@
 - (id)addItemsToDictionary:(id)arg1 forSection:(id)arg2 row:(unsigned long long)arg3 truncationPriorities:(id)arg4;
 - (BOOL)allEqualColumns;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
+- (long long)effectiveUserInterfaceLayoutDirection;
 - (id)gridArrangement:(id)arg1 itemAtIndex:(long long)arg2 columns:(struct _NSRange *)arg3 rows:(struct _NSRange *)arg4 horizontalAlignment:(long long *)arg5 verticalAlignment:(long long *)arg6;
 - (double)gridArrangement:(id)arg1 widthOfColumnAtIndex:(long long)arg2 spacingAfter:(double *)arg3;
 - (BOOL)hasManyTrailingColumns;
@@ -66,7 +67,6 @@
 - (void)placeViewsForSize:(struct CGSize)arg1 forRow:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (struct CGSize)sizeForFittingSize:(struct CGSize)arg1 forRow:(id)arg2;
 - (id)spacingsForAlignments:(id)arg1 firstValidDataRow:(id)arg2;
-- (BOOL)supportsAsynchronousMeasurement;
 - (double)trailingSectionSpacingBasedOnTotalViewsInSection:(long long)arg1;
 
 @end

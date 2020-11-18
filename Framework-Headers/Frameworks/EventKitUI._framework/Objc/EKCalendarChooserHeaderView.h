@@ -6,25 +6,38 @@
 
 #import <UIKit/UITableViewHeaderFooterView.h>
 
-@class EKGroupInfoButton, UILabel, UIStackView;
+@class EKCalendarChooser, EKGroupInfo, EKGroupInfoButton, NSArray, UIActivityIndicatorView, UILabel;
 
 @interface EKCalendarChooserHeaderView : UITableViewHeaderFooterView
 {
-    UIStackView *_stackView;
+    UIActivityIndicatorView *_spinner;
+    NSArray *_primaryLabelWithShowAllButtonLargeConstraints;
+    NSArray *_primaryLabelWithoutShowAllButtonLargeConstraints;
+    NSArray *_commonLargeConstraints;
+    NSArray *_primaryLabelWithShowAllButtonNormalConstraints;
+    NSArray *_primaryLabelWithoutShowAllButtonNormalConstraints;
+    NSArray *_commonNormalConstraints;
+    NSArray *_commonConstraints;
     UILabel *_primaryLabel;
     EKGroupInfoButton *_showAllButton;
+    EKCalendarChooser *_chooser;
+    EKGroupInfo *_group;
 }
 
-@property (strong) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
-@property (strong) EKGroupInfoButton *showAllButton; // @synthesize showAllButton=_showAllButton;
+@property (weak, nonatomic) EKCalendarChooser *chooser; // @synthesize chooser=_chooser;
+@property (strong, nonatomic) EKGroupInfo *group; // @synthesize group=_group;
+@property (strong, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
+@property (strong, nonatomic) EKGroupInfoButton *showAllButton; // @synthesize showAllButton=_showAllButton;
+@property (nonatomic) BOOL showAllButtonHidden;
 
 - (void).cxx_destruct;
+- (void)_activateConstraints;
 - (void)_contentSizeCategoryChanged:(id)arg1;
-- (void)_updateStackViewAxis;
-- (double)contentHeight;
+- (void)_createConstraints;
+- (void)_eventStoreChanged;
+- (void)_groupShowAllButtonTapped:(id)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
-- (void)setChooser:(id)arg1;
-- (void)setGroup:(id)arg1;
+- (void)updateSpinner;
 
 @end
 

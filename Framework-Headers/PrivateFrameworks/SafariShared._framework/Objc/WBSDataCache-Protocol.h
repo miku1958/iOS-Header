@@ -6,7 +6,7 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSString;
+@class NSArray, NSData, NSSet, NSString;
 @protocol WBSDataCacheDelegate;
 
 @protocol WBSDataCache <NSObject>
@@ -17,6 +17,7 @@
 - (long long)entryStateForKeyString:(NSString *)arg1;
 - (void)getEntryURLForKeyString:(NSString *)arg1 completionHandler:(void (^)(NSURL *))arg2;
 - (void)removeEntriesForKeyStrings:(NSArray *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)removeEntriesForKeyStringsNotIncludedIn:(NSSet *)arg1 completionHandler:(void (^)(void))arg2;
 - (NSData *)requestEntryForKeyString:(NSString *)arg1;
 - (void)reset;
 - (void)savePendingChangesBeforeTearDown;

@@ -25,6 +25,7 @@
 - (id)_connection;
 - (id)_managedStoreService;
 - (id)_managedStoreServiceWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_synchronousManagedStoreServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)dataForKey:(id)arg1 inKnowledgeStoreWithName:(id)arg2;
 - (void)dealloc;
 - (id)domainObjectForKey:(id)arg1;

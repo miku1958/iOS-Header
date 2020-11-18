@@ -10,6 +10,7 @@
 
 @interface IMMessageAttributionChatItem : IMMessageStatusChatItem
 {
+    BOOL _showsLearnMoreLink;
     NSDictionary *_attributionInfo;
     long long _attributionType;
 }
@@ -17,9 +18,10 @@
 @property (readonly, copy, nonatomic) NSDictionary *attributionInfo; // @synthesize attributionInfo=_attributionInfo;
 @property (readonly, nonatomic) long long attributionType; // @synthesize attributionType=_attributionType;
 @property (readonly, copy, nonatomic) NSString *bundleID;
+@property (readonly, nonatomic) BOOL showsLearnMoreLink; // @synthesize showsLearnMoreLink=_showsLearnMoreLink;
 
 - (void).cxx_destruct;
-- (id)_initWithItem:(id)arg1 attributionInfo:(id)arg2 attributionType:(long long)arg3;
+- (id)_initWithItem:(id)arg1 attributionInfo:(id)arg2 attributionType:(long long)arg3 showsLearnMoreLink:(BOOL)arg4;
 
 @end
 

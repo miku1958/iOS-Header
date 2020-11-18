@@ -6,7 +6,7 @@
 
 #import <AVFoundation/NSObject-Protocol.h>
 
-@class AVAsynchronousVideoCompositionRequest, AVVideoCompositionRenderContext, NSDictionary;
+@class AVAsynchronousVideoCompositionRequest, AVVideoCompositionRenderContext, AVVideoCompositionRenderHint, NSDictionary;
 
 @protocol AVVideoCompositing <NSObject>
 
@@ -18,6 +18,8 @@
 - (void)startVideoCompositionRequest:(AVAsynchronousVideoCompositionRequest *)arg1;
 
 @optional
+- (void)anticipateRenderingUsingHint:(AVVideoCompositionRenderHint *)arg1;
 - (void)cancelAllPendingVideoCompositionRequests;
+- (void)prerollForRenderingUsingHint:(AVVideoCompositionRenderHint *)arg1;
 @end
 

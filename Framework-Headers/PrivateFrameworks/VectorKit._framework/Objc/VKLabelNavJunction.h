@@ -8,12 +8,12 @@
 
 #import <VectorKit/VKLabelNavFeature-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, VKLabelNavRoad, VKLabelNavRoadLabel, VKLabelTile;
+@class NSArray, NSMutableArray, NSString, VKLabelNavRoad, VKLabelNavRoadLabel;
 
 __attribute__((visibility("hidden")))
 @interface VKLabelNavJunction : NSObject <VKLabelNavFeature>
 {
-    VKLabelTile *_tile;
+    shared_ptr_702c344d _tile;
     Matrix_8746f91e _tileCoordinate;
     CDStruct_3b01f0aa *_geoJunction;
     struct PolylineCoordinate _routeOffset;
@@ -32,21 +32,26 @@ __attribute__((visibility("hidden")))
     struct {
         CDStruct_58d0ca89 _field1;
         CDStruct_b2fbf00d _field2;
-        CDStruct_b2fbf00d _field3;
-        unsigned long long _field4;
+        float _field3;
+        CDStruct_b2fbf00d _field4;
         unsigned long long _field5;
         unsigned long long _field6;
         unsigned long long _field7;
-        short _field8;
-        unsigned char _field9;
-        CDStruct_183601bc *_field10;
-        float _field11;
+        unsigned long long _field8;
+        short _field9;
+        short _field10;
+        unsigned char _field11;
         float _field12;
-        unsigned int _field13;
-        unsigned char _field14;
-        BOOL _field15;
-        BOOL _field16;
-        BOOL _field17;
+        float _field13;
+        unsigned int _field14;
+        unsigned int _field15;
+        unsigned char _field16;
+        unsigned char _field17;
+        BOOL _field18;
+        BOOL _field19;
+        BOOL _field20;
+        BOOL _field21;
+        BOOL _field22;
     } *_labelFeature;
     NSString *_name;
     VKLabelNavRoadLabel *_junctionSign;
@@ -100,11 +105,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
 @property (nonatomic) Matrix_8746f91e sharedRouteDirection; // @synthesize sharedRouteDirection=_sharedRouteDirection;
 @property (readonly, nonatomic) NSString *shieldDisplayGroup;
-@property (readonly, nonatomic) VKLabelTile *tile; // @synthesize tile=_tile;
+@property (readonly, nonatomic) const shared_ptr_702c344d *tile; // @synthesize tile=_tile;
 @property (readonly, nonatomic) Matrix_8746f91e tileCoordinate; // @synthesize tileCoordinate=_tileCoordinate;
 @property (readonly, nonatomic) double worldUnitsPerMeter; // @synthesize worldUnitsPerMeter=_worldUnitsPerMeter;
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (Matrix_6e1d3589)_anchorCoordinateForSignOrientation:(unsigned char)arg1;
 - (unsigned char)_signOrientationWithDrivingSide:(BOOL)arg1;
 - (void)_updateWithNavContext:(struct NavContext *)arg1;
@@ -116,8 +122,8 @@ __attribute__((visibility("hidden")))
 - (void)evaluateCrossStreets;
 - (void)evaluateCrossStreetsUsingRouteJunction:(id)arg1;
 - (void)findRoads;
-- (id)initWithGEOJunction:(CDStruct_3b01f0aa *)arg1 routeOffset:(struct PolylineCoordinate)arg2 tile:(id)arg3;
-- (id)initWithRoadEdge:(const CDStruct_91f75a7f *)arg1 atA:(BOOL)arg2 routeOffset:(struct PolylineCoordinate)arg3 tile:(id)arg4;
+- (id)initWithGEOJunction:(CDStruct_3b01f0aa *)arg1 routeOffset:(struct PolylineCoordinate)arg2 tile:(const shared_ptr_702c344d *)arg3;
+- (id)initWithRoadEdge:(const CDStruct_91f75a7f *)arg1 atA:(BOOL)arg2 routeOffset:(struct PolylineCoordinate)arg3 tile:(const shared_ptr_702c344d *)arg4;
 - (void)layoutWithNavContext:(struct NavContext *)arg1;
 - (BOOL)matchesLocationForJunction:(id)arg1;
 - (void)prepareStyleVarsWithContext:(struct NavContext *)arg1;

@@ -6,54 +6,71 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoTimeKitCompanion/ACXDeviceConnectionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 #import <NanoTimeKitCompanion/NTKCompanionAppDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKSystemAppStateCache-Protocol.h>
 
-@class NRDevice, NSArray, NSHashTable, NSMutableArray, NSString;
+@class CLKDevice, NSArray, NSHashTable, NSMutableArray, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface NTKCompanionAppLibrary : NSObject <NTKCompanionAppDelegate, LSApplicationWorkspaceObserverProtocol>
+@interface NTKCompanionAppLibrary : NSObject <NTKCompanionAppDelegate, LSApplicationWorkspaceObserverProtocol, ACXDeviceConnectionDelegate, NTKSystemAppStateCache>
 {
+    NSArray *_allApps;
     NSArray *_firstPartyApps;
-    NSMutableArray *_allApps;
-    NSMutableArray *_thirdPartyApps;
+    NSArray *_watchSystemApps;
+    NSSet *_installedSystemApplicationIdentifiers;
+    NSArray *_thirdPartyApps;
     NSHashTable *_changeObservers;
     NSObject<OS_dispatch_queue> *_internalQueue;
     NSObject<OS_dispatch_queue> *_updateProcessingQueue;
     NSObject<OS_dispatch_queue> *_observerCallbackQueue;
-    NRDevice *_device;
+    struct os_unfair_lock_s *_prewarmLock;
+    NSMutableArray *_prewarmCallbacks;
+    CLKDevice *_device;
 }
 
-@property (strong, nonatomic) NSMutableArray *allApps; // @synthesize allApps=_allApps;
+@property (strong, nonatomic) NSArray *allApps; // @synthesize allApps=_allApps;
 @property (strong, nonatomic) NSHashTable *changeObservers; // @synthesize changeObservers=_changeObservers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;
+@property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) NSArray *firstPartyApps; // @synthesize firstPartyApps=_firstPartyApps;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSSet *installedSystemApplicationIdentifiers; // @synthesize installedSystemApplicationIdentifiers=_installedSystemApplicationIdentifiers;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *observerCallbackQueue; // @synthesize observerCallbackQueue=_observerCallbackQueue;
+@property (strong, nonatomic) NSMutableArray *prewarmCallbacks; // @synthesize prewarmCallbacks=_prewarmCallbacks;
+@property (readonly, nonatomic) struct os_unfair_lock_s *prewarmLock; // @synthesize prewarmLock=_prewarmLock;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMutableArray *thirdPartyApps; // @synthesize thirdPartyApps=_thirdPartyApps;
+@property (strong, nonatomic) NSArray *thirdPartyApps; // @synthesize thirdPartyApps=_thirdPartyApps;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *updateProcessingQueue; // @synthesize updateProcessingQueue=_updateProcessingQueue;
+@property (strong, nonatomic) NSArray *watchSystemApps; // @synthesize watchSystemApps=_watchSystemApps;
 
 + (id)sharedAppLibrary;
 - (void).cxx_destruct;
 - (void)_activeDeviceChanged;
 - (void)_load;
 - (void)_loadApps;
-- (void)_loadThirdPartyApps;
+- (void)_loadWatchApps;
 - (void)_notifyAppAdded:(id)arg1;
 - (void)_notifyAppIconUpdated:(id)arg1;
 - (void)_notifyAppRemoved:(id)arg1;
 - (void)_notifyAppUpdated:(id)arg1;
 - (void)_queue_loadApps;
 - (void)addObserver:(id)arg1;
+- (void)applicationDatabaseResyncedForDeviceWithPairingID:(id)arg1;
 - (void)applicationStateDidChange:(id)arg1;
+- (void)applicationsInstalled:(id)arg1 onDeviceWithPairingID:(id)arg2;
+- (void)applicationsUninstalled:(id)arg1 onDeviceWithPairingID:(id)arg2;
+- (void)applicationsUpdated:(id)arg1 onDeviceWithPairingID:(id)arg2;
 - (void)companionAppUpdatedIcon:(id)arg1;
 - (void)companionAppWasUpdated:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isRemovedSystemApp:(id)arg1;
+- (BOOL)isRestrictedSystemApp:(id)arg1;
+- (void)prewarmCompanionDaemonWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 
 @end

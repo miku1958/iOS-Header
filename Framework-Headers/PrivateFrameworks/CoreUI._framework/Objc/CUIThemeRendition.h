@@ -10,7 +10,7 @@
 
 @interface CUIThemeRendition : NSObject
 {
-    struct _renditionkeytoken _stackKey[18];
+    struct _renditionkeytoken _stackKey[22];
     struct _renditionkeytoken *_key;
     long long _type;
     unsigned int _subtype;
@@ -23,7 +23,6 @@
     unsigned long long _colorSpaceID;
     NSString *_name;
     NSData *_srcData;
-    long long _validLookGradation;
     double _opacity;
     NSString *_utiType;
     struct CGImage *_uncroppedImage;
@@ -34,7 +33,7 @@
 @property (nonatomic) long long artworkStatus; // @synthesize artworkStatus=_artworkStatus;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
 @property (nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
-@property (nonatomic) NSString *internalName; // @synthesize internalName=_name;
+@property (strong, nonatomic) NSString *internalName;
 @property (nonatomic) unsigned int internalScale; // @synthesize internalScale=_scale;
 @property (nonatomic) long long internalTemplateRenderingMode; // @synthesize internalTemplateRenderingMode=_templateRenderingMode;
 @property (nonatomic) double opacity; // @synthesize opacity=_opacity;
@@ -43,7 +42,6 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)displayNameForRenditionType:(long long)arg1;
-+ (id)filteredCSIDataFromBaseCSIData:(id)arg1;
 + (Class)renditionClassForRenditionType:(long long)arg1 andPixelFormat:(unsigned int)arg2;
 - (struct CGRect)_destinationFrame;
 - (id)_initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
@@ -54,13 +52,15 @@
 - (void)_initializeRenditionKey:(const struct _renditionkeytoken *)arg1;
 - (void)_initializeTypeIdentifiersWithLayout:(unsigned short)arg1;
 - (void)_setStructuredThemeStore:(id)arg1;
+- (id)_sourceRendition;
 - (struct CGRect)alphaCroppedRect;
 - (id)assetPackIdentifier;
 - (int)bitmapEncoding;
+- (struct CGColor *)cgColor;
 - (unsigned long long)colorSpaceID;
 - (id)contentNames;
 - (struct CGImage *)createImageFromPDFRenditionWithScale:(double)arg1;
-- (const struct _csicolor *)csiColor;
+- (const struct _csitextstyle *)csiTextStyle;
 - (id)data;
 - (void)dealloc;
 - (id)description;
@@ -80,7 +80,6 @@
 - (BOOL)isScaled;
 - (BOOL)isTiled;
 - (BOOL)isTintable;
-- (BOOL)isValidForLookGradation:(long long)arg1;
 - (BOOL)isVectorBased;
 - (const struct _renditionkeytoken *)key;
 - (id)layerReferences;
@@ -88,6 +87,9 @@
 - (id)maskForSliceIndex:(long long)arg1;
 - (id)metrics;
 - (id)mipLevels;
+- (id)modelAsset;
+- (id)modelMesh;
+- (id)modelSubmesh;
 - (id)name;
 - (int)objectVersion;
 - (BOOL)optOutOfThinning;
@@ -105,6 +107,7 @@
 - (id)sliceInformation;
 - (unsigned long long)sourceRowbytes;
 - (BOOL)substituteWithSystemColor;
+- (struct CGSVGDocument *)svgDocument;
 - (id)systemColorName;
 - (long long)templateRenderingMode;
 - (id)textureImages;
@@ -114,6 +117,11 @@
 - (struct CGSize)unslicedSize;
 - (id)utiType;
 - (unsigned short)valueForTokenIdentifier:(unsigned short)arg1;
+- (CDStruct_3c058996)vectorGlyphAlignmentRectInsets;
+- (id)vectorGlyphAvailableSizes;
+- (double)vectorGlyphBaseline;
+- (double)vectorGlyphCapLine;
+- (double)vectorGlyphReferencePointSize;
 
 @end
 

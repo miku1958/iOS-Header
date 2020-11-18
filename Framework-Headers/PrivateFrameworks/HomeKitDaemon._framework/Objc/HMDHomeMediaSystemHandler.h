@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HMDDevicePreferenceDataSource-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
@@ -13,7 +14,7 @@
 @class HMDHome, HMFMessageDispatcher, NSMutableArray, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomeMediaSystemHandler : NSObject <NSSecureCoding, HMFLogging, HMDHomeMessageReceiver>
+@interface HMDHomeMediaSystemHandler : NSObject <HMDDevicePreferenceDataSource, NSSecureCoding, HMFLogging, HMDHomeMessageReceiver>
 {
     NSMutableArray *_mediaSystems;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -33,7 +34,6 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
-+ (id)checkToHandleMessage:(id)arg1 home:(id)arg2;
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 + (id)preProcessMediaSystemMessage:(id)arg1 home:(id)arg2;
@@ -57,6 +57,7 @@
 - (id)initWithHome:(id)arg1;
 - (id)logIdentifier;
 - (id)messageDestination;
+- (BOOL)supportsDeviceWithCapabilities:(id)arg1;
 
 @end
 

@@ -43,12 +43,14 @@
 - (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecordType:(id)arg1 predicate:(id)arg2 options:(unsigned long long)arg3;
 - (id)initWithRecordType:(id)arg1 predicate:(id)arg2 subscriptionID:(id)arg3 options:(unsigned long long)arg4;
 - (id)initWithZoneID:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithZoneID:(id)arg1 subscriptionID:(id)arg2 options:(unsigned long long)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

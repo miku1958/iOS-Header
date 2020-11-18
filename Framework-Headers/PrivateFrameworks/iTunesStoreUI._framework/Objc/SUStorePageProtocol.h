@@ -39,12 +39,12 @@
 @property (nonatomic) BOOL shouldExcludeFromNavigationHistory; // @synthesize shouldExcludeFromNavigationHistory=_shouldExcludeFromNavigationHistory;
 @property (nonatomic) BOOL shouldReplaceRootViewController; // @synthesize shouldReplaceRootViewController=_shouldReplaceRootViewController;
 
+- (void).cxx_destruct;
 - (id)_initCommon;
 - (id)_newNavigationButtonsFromArray:(id)arg1;
 - (id)_newNavigationHistoryItemsFromArray:(id)arg1;
 - (id)_newNavigationMenusFromArray:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)navigationButtonForLocation:(id)arg1;
 - (id)navigationMenuForLocation:(long long)arg1;

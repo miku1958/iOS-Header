@@ -48,6 +48,7 @@
 - (void)_assertValueClass:(Class)arg1;
 - (void)_assertValueType;
 - (id)_initWithValueType:(long long)arg1 value:(id)arg2;
+- (id)_unitStringForCodedValueCollection:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

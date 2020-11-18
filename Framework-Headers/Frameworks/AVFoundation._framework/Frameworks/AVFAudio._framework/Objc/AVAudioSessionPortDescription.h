@@ -28,7 +28,7 @@
 - (id)description;
 - (unsigned long long)endpointType;
 - (unsigned long long)hash;
-- (id)initWithPortType:(id)arg1;
+- (id)initWithPortType:(id)arg1 owningSession:(id)arg2;
 - (id)initWithRawPortDescription:(id)arg1 owningSession:(id)arg2;
 - (id)initWithSession:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

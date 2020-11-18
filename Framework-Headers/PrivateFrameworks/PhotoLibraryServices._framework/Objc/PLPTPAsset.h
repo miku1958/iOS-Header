@@ -40,6 +40,7 @@
     BOOL _highFrameRateVideo;
     BOOL _timeLapseVideo;
     NSString *_relatedUUID;
+    NSString *_spatialOverCaptureGroupIdentifier;
     long long _conversionGroup;
 }
 
@@ -68,6 +69,7 @@
 @property (readonly, copy, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
 @property (readonly, copy, nonatomic) NSString *originatingAssetID; // @synthesize originatingAssetID=_originatingAssetID;
 @property (readonly, copy, nonatomic) NSString *relatedUUID; // @synthesize relatedUUID=_relatedUUID;
+@property (readonly, copy, nonatomic) NSString *spatialOverCaptureGroupIdentifier; // @synthesize spatialOverCaptureGroupIdentifier=_spatialOverCaptureGroupIdentifier;
 @property (readonly, copy, nonatomic) NSNumber *thumbCompressedSize; // @synthesize thumbCompressedSize=_thumbCompressedSize;
 @property (readonly, copy, nonatomic) NSNumber *thumbOffset; // @synthesize thumbOffset=_thumbOffset;
 @property (readonly, nonatomic) struct CGSize thumbPixSize; // @synthesize thumbPixSize=_thumbPixSize;

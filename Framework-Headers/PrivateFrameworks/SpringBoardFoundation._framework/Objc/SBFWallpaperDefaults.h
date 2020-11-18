@@ -6,51 +6,75 @@
 
 #import <objc/NSObject.h>
 
-@class SBWallpaperDefaults;
+@class NSMutableDictionary, SBWallpaperDefaults;
 
 @interface SBFWallpaperDefaults : NSObject
 {
     SBWallpaperDefaults *_defaultsStore;
+    NSMutableDictionary *_lockScreenDefaultsStoreWrapper;
+    NSMutableDictionary *_homeScreenDefaultsStoreWrapper;
 }
 
 @property (readonly, nonatomic) SBWallpaperDefaults *defaultsStore; // @synthesize defaultsStore=_defaultsStore;
+@property (readonly, nonatomic) NSMutableDictionary *homeScreenDefaultsStoreWrapper; // @synthesize homeScreenDefaultsStoreWrapper=_homeScreenDefaultsStoreWrapper;
+@property (readonly, nonatomic) NSMutableDictionary *lockScreenDefaultsStoreWrapper; // @synthesize lockScreenDefaultsStoreWrapper=_lockScreenDefaultsStoreWrapper;
 
 + (id)defaults;
 - (void).cxx_destruct;
-- (struct CGRect)cropRectForVariant:(long long)arg1;
+- (id)_defaultsWrapperForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
+- (id)_keyForWallpaperMode:(long long)arg1;
+- (void)_setDefaultsWithDictionary:(id)arg1 variant:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)_updateDefaultsForVariant:(long long)arg1 wallpaperMode:(long long)arg2 updater:(CDUnknownBlockType)arg3;
+- (struct CGRect)cropRectForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (id)description;
 - (BOOL)hasVideo;
 - (BOOL)hasVideoForVariant:(long long)arg1;
+- (id)imageHashForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (id)init;
 - (id)initWithDefaultsStore:(id)arg1;
-- (BOOL)isPortraitForVariant:(long long)arg1;
-- (BOOL)magnifyEnabledForVariant:(long long)arg1;
-- (id)nameForVariant:(long long)arg1;
-- (double)parallaxFactorForVariant:(long long)arg1;
+- (BOOL)isPortraitForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
+- (BOOL)magnifyEnabledForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
+- (id)nameForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
+- (double)parallaxFactorForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
+- (id)proceduralIdentifierForVariant:(long long)arg1;
+- (id)proceduralOptionsForVariant:(long long)arg1;
+- (BOOL)proceduralUserSetForVariant:(long long)arg1;
 - (void)resetCroppingDefaults;
 - (void)resetDefaults;
 - (void)resetHasVideoDefaults;
+- (void)resetImageHashDefaults;
 - (void)resetMagnifyDefaults;
 - (void)resetNameDefaults;
 - (void)resetParallaxFactorDefaults;
 - (void)resetPortraitDefaults;
 - (void)resetStillTimeInVideoDefaults;
 - (void)resetZoomScaleDefaults;
-- (void)setCropRect:(struct CGRect)arg1 forLocations:(long long)arg2;
+- (void)setColorData:(id)arg1 forLocations:(long long)arg2;
+- (void)setColorName:(id)arg1 forLocations:(long long)arg2;
+- (void)setCropRect:(struct CGRect)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setGradientData:(id)arg1 forLocations:(long long)arg2;
 - (void)setHasVideo:(BOOL)arg1;
-- (void)setMagnifyEnabled:(BOOL)arg1 forLocations:(long long)arg2;
-- (void)setName:(id)arg1 forLocations:(long long)arg2;
-- (void)setParallaxFactor:(double)arg1 forLocations:(long long)arg2;
-- (void)setPortrait:(BOOL)arg1 forLocations:(long long)arg2;
+- (void)setImageHash:(id)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setMagnifyEnabled:(BOOL)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setName:(id)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setParallaxFactor:(double)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setPortrait:(BOOL)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setProceduralIdentifier:(id)arg1 forLocations:(long long)arg2;
+- (void)setProceduralOptions:(id)arg1 forLocations:(long long)arg2;
+- (void)setProceduralUserSet:(BOOL)arg1 forLocations:(long long)arg2;
 - (void)setStillTimeInVideo:(double)arg1;
-- (void)setSupportsCropping:(BOOL)arg1 forLocations:(long long)arg2;
-- (void)setWallpaperOptions:(id)arg1 forLocations:(long long)arg2;
-- (void)setZoomScale:(double)arg1 forLocations:(long long)arg2;
+- (void)setSupportsCropping:(BOOL)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setWallpaperOptions:(id)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
+- (void)setZoomScale:(double)arg1 forLocations:(long long)arg2 wallpaperMode:(long long)arg3;
 - (double)stillTimeInVideo;
 - (double)stillTimeInVideoForVariant:(long long)arg1;
-- (BOOL)supportsCroppingForVariant:(long long)arg1;
-- (id)wallpaperOptionsForVariant:(long long)arg1;
-- (double)zoomScaleForVariant:(long long)arg1;
+- (BOOL)supportsCroppingForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
+- (void)updateDefaultsForLocations:(long long)arg1 updater:(CDUnknownBlockType)arg2;
+- (id)wallpaperColorDataForVariant:(long long)arg1;
+- (id)wallpaperColorNameForVariant:(long long)arg1;
+- (id)wallpaperGradientDataForVariant:(long long)arg1;
+- (id)wallpaperOptionsForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
+- (double)zoomScaleForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 
 @end
 

@@ -16,8 +16,6 @@
     FBSceneLayerManager *_layerManager;
     FBScene *_scene;
     NSString *_identifier;
-    long long _contentState;
-    BOOL _contentStateIsChanging;
     UIColor *_defaultBackgroundColorWhileHosting;
     UIColor *_defaultBackgroundColorWhileNotHosting;
     unsigned long long _defaultHostedLayerTypes;
@@ -39,7 +37,6 @@
     struct CGAffineTransform _defaultHostViewTransform;
 }
 
-@property (readonly, nonatomic) long long contentState; // @synthesize contentState=_contentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) UIColor *defaultBackgroundColorWhileHosting;
 @property (copy, nonatomic) UIColor *defaultBackgroundColorWhileNotHosting;
@@ -63,7 +60,6 @@
 - (id)_hostViewForRequester:(id)arg1;
 - (id)_hostViewForRequester:(id)arg1 enableAndOrderFront:(BOOL)arg2;
 - (id)_overrideRequesterIfNecessary:(id)arg1;
-- (void)_setContentState:(long long)arg1;
 - (id)_snapshotContextForFrame:(struct CGRect)arg1 excludedContextIDs:(id)arg2 opaque:(BOOL)arg3 outTransform:(struct CGAffineTransform *)arg4;
 - (id)_snapshotContextForFrame:(struct CGRect)arg1 excludedLayers:(id)arg2 opaque:(BOOL)arg3;
 - (void)_updateActiveHostRequester;
@@ -87,12 +83,9 @@
 - (void)setContextId:(unsigned int)arg1 hidden:(BOOL)arg2 forRequester:(id)arg3;
 - (void)setLayer:(id)arg1 alpha:(double)arg2 forRequester:(id)arg3;
 - (void)setLayer:(id)arg1 hidden:(BOOL)arg2 forRequester:(id)arg3;
-- (struct CGImage *)snapshotCGImageRefForFrame:(struct CGRect)arg1 excludingContexts:(id)arg2 opaque:(BOOL)arg3 outTransform:(struct CGAffineTransform *)arg4;
 - (id)snapshotContextForRequester:(id)arg1;
-- (id)snapshotUIImageForFrame:(struct CGRect)arg1 excludingContexts:(id)arg2 opaque:(BOOL)arg3 outTransform:(struct CGAffineTransform *)arg4;
 - (id)snapshotViewForSnapshot:(id)arg1;
 - (id)snapshotViewWithContext:(id)arg1;
-- (id)snapshotViewWithFrame:(struct CGRect)arg1 excludingContexts:(id)arg2 opaque:(BOOL)arg3;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

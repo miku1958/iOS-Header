@@ -6,55 +6,52 @@
 
 #import <CFNetwork/NSURLSession.h>
 
-@class NSDictionary, NSMutableDictionary, NSMutableSet, NSObject, NSOperationQueue, NSString, NSURLSessionConfiguration;
-@protocol NSURLSessionDelegate, OS_dispatch_queue;
+#import <CFNetwork/__NSURLSessionTaskGroupForConfiguration-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface __NSCFURLSession : NSURLSession
+@class ConnectionContextManager, NSDictionary, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSURLSessionConfiguration, NSUUID, __CFN_SessionMetrics;
+@protocol OS_dispatch_queue;
+
+@interface __NSCFURLSession : NSURLSession <__NSURLSessionTaskGroupForConfiguration>
 {
-    NSOperationQueue *_delegateQueue;
-    id<NSURLSessionDelegate> _delegate;
-    NSString *_sessionDescription;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSURLSessionConfiguration *_local_immutable_configuration;
-    BOOL _invalid;
-    BOOL _isSharedSession;
-    NSString *_uuid;
-    CDUnknownBlockType _connBlock;
-    NSDictionary *_atsState;
+    NSUUID *_uuid_ivar;
+    NSString *_tlsSessionCachePrefix;
+    ConnectionContextManager *_nwContextManager;
+    shared_ptr_9ad247fa _nwContext;
     NSMutableDictionary *_altSvc;
     NSMutableSet *_h2BlacklistedHosts;
     NSMutableDictionary *_coalescing;
+    __CFN_SessionMetrics *_metrics;
 }
 
+@property (readonly, weak) NSURLSessionConfiguration *_groupConfiguration; // @dynamic _groupConfiguration;
+@property (readonly, weak) NSURLSession *_groupSession; // @dynamic _groupSession;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSDictionary *delegateOptions;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)_altSvc;
-- (id)_atsState;
 - (id)_coalescing;
-- (CDUnknownBlockType)_connBlock;
 - (id)_h2BlacklistedHosts;
-- (BOOL)_isSharedSession;
-- (id)_local_immutable_configuration;
+- (id)_metrics;
+- (shared_ptr_9ad247fa)_nwContext;
+- (id)_tlsSessionCachePrefix;
+- (void)_useTLSSessionCacheFromSession:(id)arg1;
 - (id)_uuid;
 - (void)dealloc;
-- (id)delegate;
-- (id)delegateQueue;
+- (id)defaultTaskGroup;
 - (id)initWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (BOOL)invalid;
-- (id)sessionDescription;
-- (void)setDelegate:(id)arg1;
-- (void)setDelegateQueue:(id)arg1;
-- (void)setInvalid:(BOOL)arg1;
-- (void)setSessionDescription:(id)arg1;
 - (void)set_altSvc:(id)arg1;
-- (void)set_atsState:(id)arg1;
 - (void)set_coalescing:(id)arg1;
-- (void)set_connBlock:(CDUnknownBlockType)arg1;
 - (void)set_h2BlacklistedHosts:(id)arg1;
-- (void)set_isSharedSession:(BOOL)arg1;
-- (void)set_local_immutable_configuration:(id)arg1;
-- (void)set_uuid:(id)arg1;
+- (void)set_metrics:(id)arg1;
+- (void)set_tlsSessionCachePrefix:(id)arg1;
+- (id)taskGroupWithConfiguration:(id)arg1;
 - (id)workQueue;
 
 @end

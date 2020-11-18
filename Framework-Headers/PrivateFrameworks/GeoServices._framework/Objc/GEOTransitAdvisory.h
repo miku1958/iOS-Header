@@ -8,17 +8,21 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString;
+@class GEOFormattedString, PBUnknownFields;
 
 @interface GEOTransitAdvisory : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     GEOFormattedString *_text;
 }
 
 @property (readonly, nonatomic) BOOL hasText;
-@property (strong, nonatomic) GEOFormattedString *text; // @synthesize text=_text;
+@property (strong, nonatomic) GEOFormattedString *text;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -26,6 +30,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

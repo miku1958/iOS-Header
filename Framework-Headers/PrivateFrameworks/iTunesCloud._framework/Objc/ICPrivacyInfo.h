@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForBooks;
 @property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForMedia;
 @property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForMusic;
+@property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForPodcasts;
 @property (readonly, nonatomic) BOOL privacyAcknowledgementRequiredForVideos;
 
 + (id)sharedPrivacyInfo;
@@ -26,6 +27,7 @@
 - (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
 - (BOOL)_privacyAcknowledgementRequiredForIdentifier:(id)arg1;
 - (id)init;
+- (BOOL)privacyAcknowledgementRequiredForSystemApplicationType:(long long)arg1;
 
 @end
 

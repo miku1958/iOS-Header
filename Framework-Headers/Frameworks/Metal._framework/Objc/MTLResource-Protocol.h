@@ -14,8 +14,11 @@
 @property (readonly) unsigned long long allocatedSize;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly) id<MTLDevice> device;
+@property (readonly) unsigned long long hazardTrackingMode;
 @property (readonly) id<MTLHeap> heap;
+@property (readonly) unsigned long long heapOffset;
 @property (copy) NSString *label;
+@property (readonly) unsigned long long resourceOptions;
 @property (readonly) unsigned long long storageMode;
 
 - (BOOL)isAliasable;

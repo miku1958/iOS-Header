@@ -11,9 +11,11 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDCharacteristicMetadata, HMDHAPAccessory, HMDService, NSData, NSDate, NSDictionary, NSMutableSet, NSNumber, NSSet, NSString, NSUUID;
+@protocol HMFLocking;
 
 @interface HMDCharacteristic : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState>
 {
+    id<HMFLocking> _lock;
     BOOL _broadcastNotificationEnabled;
     BOOL _notificationRegisteredWithRemoteGateway;
     NSSet *_hapCharacteristicTuples;
@@ -60,6 +62,7 @@
 @property (readonly, copy, nonatomic) NSString *type;
 @property (readonly, copy, nonatomic) id value;
 
++ (CDUnknownBlockType)sortComparatorForCharacteristicDictionary;
 + (BOOL)supportsSecureCoding;
 + (BOOL)value:(id)arg1 differentThan:(id)arg2;
 - (void).cxx_destruct;
@@ -71,6 +74,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)getCharacteristicDictionary;
 - (id)hapCharacteristicTupleWithIdentifier:(id)arg1 linkType:(long long)arg2;
+- (id)init;
 - (id)initWithCharacteristic:(id)arg1 service:(id)arg2 accessory:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isClientNotificationEnabled;

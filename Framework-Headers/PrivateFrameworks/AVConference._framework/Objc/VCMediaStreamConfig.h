@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     long long _direction;
     VCNetworkAddress *_localAddress;
     NSString *_cName;
+    unsigned int _localSSRC;
     VCNetworkAddress *_remoteAddress;
     unsigned int _remoteSSRC;
     unsigned long long _recommendedMTU;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
     long long _SRTCPCipherSuite;
     BOOL _rtcpTimeOutEnabled;
     double _rtcpTimeOutInterval;
+    BOOL _rtcpReceiveCallbackEnabled;
     unsigned short _rtcpRemotePort;
     BOOL _rateAdaptationEnabled;
     VCMediaStreamMultiwayConfig *_multiwayConfig;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double decryptionTimeOutInterval; // @synthesize decryptionTimeOutInterval=_decryptionTimeOutInterval;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (strong, nonatomic) VCNetworkAddress *localAddress; // @synthesize localAddress=_localAddress;
+@property (nonatomic) unsigned int localSSRC; // @synthesize localSSRC=_localSSRC;
 @property (strong, nonatomic) VCMediaStreamMultiwayConfig *multiwayConfig; // @synthesize multiwayConfig=_multiwayConfig;
 @property (readonly, nonatomic) long long primaryTxCodecType;
 @property (nonatomic, getter=isRateAdaptationEnabled) BOOL rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
@@ -53,6 +56,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VCNetworkAddress *remoteAddress; // @synthesize remoteAddress=_remoteAddress;
 @property (nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
 @property (nonatomic, getter=isRTCPEnabled) BOOL rtcpEnabled; // @synthesize rtcpEnabled=_rtcpEnabled;
+@property (nonatomic, getter=isRTCPReceiveCallbackEnabled) BOOL rtcpReceiveCallbackEnabled; // @synthesize rtcpReceiveCallbackEnabled=_rtcpReceiveCallbackEnabled;
 @property (nonatomic) unsigned short rtcpRemotePort; // @synthesize rtcpRemotePort=_rtcpRemotePort;
 @property (nonatomic) double rtcpSendInterval; // @synthesize rtcpSendInterval=_rtcpSendInterval;
 @property (nonatomic, getter=isRTCPTimeOutEnabled) BOOL rtcpTimeOutEnabled; // @synthesize rtcpTimeOutEnabled=_rtcpTimeOutEnabled;

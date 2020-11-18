@@ -17,8 +17,10 @@
     BOOL _accountIsT13;
     BOOL _accountIsU13;
     BOOL _accountIsU18;
+    BOOL _accountAgeUnknown;
     BOOL _isActiveRecord;
     BOOL _isRestrictedByEU_GDPR;
+    BOOL _isDPIDManatee;
     BOOL _isPlaceholderAccount;
     BOOL _accountLimitAdTrackingEnabled;
     BOOL _lastSentLimitAdTrackingStatus;
@@ -42,6 +44,7 @@
 @property (strong) NSMutableDictionary *ADIDRecords; // @synthesize ADIDRecords=_ADIDRecords;
 @property (strong, nonatomic) NSString *DSID; // @synthesize DSID=_DSID;
 @property (strong, nonatomic) NSString *IDFA; // @synthesize IDFA=_IDFA;
+@property (nonatomic) BOOL accountAgeUnknown; // @synthesize accountAgeUnknown=_accountAgeUnknown;
 @property (nonatomic) BOOL accountIsT13; // @synthesize accountIsT13=_accountIsT13;
 @property (nonatomic) BOOL accountIsU13; // @synthesize accountIsU13=_accountIsU13;
 @property (nonatomic) BOOL accountIsU18; // @synthesize accountIsU18=_accountIsU18;
@@ -50,6 +53,7 @@
 @property (strong, nonatomic) NSString *iAdIDBeforeReset; // @synthesize iAdIDBeforeReset=_iAdIDBeforeReset;
 @property (strong, nonatomic) NSString *iCloudDSID; // @synthesize iCloudDSID=_iCloudDSID;
 @property (readonly, nonatomic) BOOL isActiveRecord; // @synthesize isActiveRecord=_isActiveRecord;
+@property (nonatomic) BOOL isDPIDManatee; // @synthesize isDPIDManatee=_isDPIDManatee;
 @property (nonatomic) BOOL isPlaceholderAccount; // @synthesize isPlaceholderAccount=_isPlaceholderAccount;
 @property (readonly, nonatomic) BOOL isRestrictedByApple;
 @property (readonly, nonatomic) BOOL isRestrictedByEU_GDPR; // @synthesize isRestrictedByEU_GDPR=_isRestrictedByEU_GDPR;

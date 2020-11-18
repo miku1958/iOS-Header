@@ -17,7 +17,7 @@
 }
 
 @property (readonly, nonatomic) CAContext *context; // @synthesize context=_context;
-@property (readonly, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
 @property (strong, nonatomic) NSMutableDictionary *secureCandidateCache; // @synthesize secureCandidateCache=_secureCandidateCache;
 
 + (id)allRenderers;
@@ -41,6 +41,7 @@
 - (id)localizedStringForKey:(id)arg1;
 - (unsigned int)slotIDForSendCurrentLocationWithRenderTraits:(id)arg1;
 - (id)slotIDsFromSecureCandidates:(id)arg1 withRenderTraits:(id)arg2;
+- (id)updateCachedCandidate:(id)arg1 withCandidateString:(id)arg2;
 
 @end
 

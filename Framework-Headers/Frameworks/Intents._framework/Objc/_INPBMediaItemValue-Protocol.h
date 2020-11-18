@@ -6,22 +6,36 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBImageValue, _INPBValueMetadata;
+@class NSArray, NSString, _INPBImageValue, _INPBScoredValue, _INPBValueMetadata;
 
 @protocol _INPBMediaItemValue <NSObject>
 
+@property (copy, nonatomic) NSString *artist;
 @property (strong, nonatomic) _INPBImageValue *artwork;
+@property (readonly, nonatomic) BOOL hasArtist;
 @property (readonly, nonatomic) BOOL hasArtwork;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (copy, nonatomic) NSString *identifier;
+@property (copy, nonatomic) NSArray *namedEntities;
+@property (readonly, nonatomic) unsigned long long namedEntitiesCount;
 @property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSArray *topics;
+@property (readonly, nonatomic) unsigned long long topicsCount;
 @property (nonatomic) int type;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata;
 
++ (Class)namedEntitiesType;
++ (Class)topicsType;
 - (int)StringAsType:(NSString *)arg1;
+- (void)addNamedEntities:(_INPBScoredValue *)arg1;
+- (void)addTopics:(_INPBScoredValue *)arg1;
+- (void)clearNamedEntities;
+- (void)clearTopics;
+- (_INPBScoredValue *)namedEntitiesAtIndex:(unsigned long long)arg1;
+- (_INPBScoredValue *)topicsAtIndex:(unsigned long long)arg1;
 - (NSString *)typeAsString:(int)arg1;
 @end
 

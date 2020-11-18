@@ -8,23 +8,24 @@
 
 #import <Navigation/MNCommuteDestinationObserver-Protocol.h>
 #import <Navigation/MNCommuteDestinationUpdaterDelegate-Protocol.h>
+#import <Navigation/MNLocationManagerObserver-Protocol.h>
+#import <Navigation/MNSuggestionsManagerObserver-Protocol.h>
 
 @class MNCommuteDestinationUpdater, MNLocation, MNLocationHistory, MNNavigationTraceManager, MNObserverHashTable, MNSuggestionsManager, NSArray, NSMutableDictionary, NSString, NSTimer;
 @protocol MNCommuteSessionObserver;
 
-@interface MNCommuteSession : NSObject <MNCommuteDestinationUpdaterDelegate, MNCommuteDestinationObserver>
+@interface MNCommuteSession : NSObject <MNCommuteDestinationUpdaterDelegate, MNCommuteDestinationObserver, MNLocationManagerObserver, MNSuggestionsManagerObserver>
 {
     MNObserverHashTable<MNCommuteSessionObserver> *_observers;
+    MNSuggestionsManager *_suggestionsManager;
     NSMutableDictionary *_suggestions;
     NSArray *_rankedDestinations;
     id _rankedDestinationsSync;
     NSTimer *_etaUpdateTimer;
     MNNavigationTraceManager *_traceManager;
     unsigned long long _currentSuggestionID;
-    BOOL _isMapsActive;
     MNLocation *_lastLocation;
     MNLocationHistory *_locationHistory;
-    MNSuggestionsManager *_suggestionsManager;
     unsigned long long _commuteSessionState;
     MNCommuteDestinationUpdater *_comparisonDestinationStartTime;
     unsigned long long _requestedCommuteSessionState;
@@ -35,11 +36,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isMapsActive;
 @property (readonly, nonatomic) NSArray *rankedDestinations;
 @property (nonatomic) unsigned long long requestedCommuteSessionState; // @synthesize requestedCommuteSessionState=_requestedCommuteSessionState;
 @property (readonly) NSString *suggestionsDescription;
-@property (weak, nonatomic) MNSuggestionsManager *suggestionsManager; // @synthesize suggestionsManager=_suggestionsManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MNNavigationTraceManager *traceManager; // @synthesize traceManager=_traceManager;
 
@@ -55,13 +54,22 @@
 - (void)destinationUpdaterDidArrive:(id)arg1;
 - (id)init;
 - (id)initWithTraceName:(id)arg1 isTraceRecording:(BOOL)arg2;
+- (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
+- (void)locationManager:(id)arg1 didUpdateVehicleSpeed:(double)arg2 timestamp:(id)arg3;
+- (void)locationManagerDidPauseLocationUpdates:(id)arg1;
+- (void)locationManagerDidReset:(id)arg1;
+- (void)locationManagerDidResumeLocationUpdates:(id)arg1;
+- (void)locationManagerFailedToUpdateLocation:(id)arg1 withError:(id)arg2;
+- (BOOL)locationManagerShouldPauseLocationUpdates:(id)arg1;
+- (void)locationManagerUpdatedLocation:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (void)start;
 - (void)startETAUpdatesWithInterval:(double)arg1;
 - (void)stop;
 - (void)stopETAUpdates;
+- (void)suggestionsManager:(id)arg1 didAddSuggestion:(id)arg2;
 - (void)updateComparisonStartDate;
 - (void)updateLocation:(id)arg1;
-- (void)updateMapsActive:(BOOL)arg1;
 
 @end
 

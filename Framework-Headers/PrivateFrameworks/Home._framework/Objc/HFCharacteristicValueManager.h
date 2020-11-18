@@ -43,7 +43,6 @@
 @property (readonly, nonatomic) id<HFCharacteristicOperationContextProviding> contextProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSSet *executingActionSets;
 @property (readonly, nonatomic) NAFuture *firstReadCompleteFuture; // @synthesize firstReadCompleteFuture=_firstReadCompleteFuture;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NACancelationToken *inFlightReadCancelationToken; // @synthesize inFlightReadCancelationToken=_inFlightReadCancelationToken;
@@ -63,8 +62,9 @@
 - (void)_beginReadsCompleteTrackingForCharacteristics:(id)arg1 withLogger:(id)arg2;
 - (void)_endReadsCompleteTrackingForCharacteristic:(id)arg1 withLogger:(id)arg2 didRead:(BOOL)arg3;
 - (id)_openTransactionCompletionFuture;
-- (id)_transactionLock_characteristicsWithPendingWritesInTransacton:(id)arg1 includeDirectWrites:(BOOL)arg2 includeActionSets:(BOOL)arg3;
+- (id)_transactionLock_characteristicsWithPendingWritesInTransacton:(id)arg1 includeDirectWrites:(BOOL)arg2 includeActionSets:(BOOL)arg3 includeActions:(BOOL)arg4;
 - (void)_transactionLock_executeActionSetTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_transactionLock_executeActionsTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_transactionLock_executeReadTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_transactionLock_executeWriteTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)beginTransactionWithReason:(id)arg1;
@@ -77,6 +77,7 @@
 - (void)commitTransactionWithReason:(id)arg1;
 - (id)executeActionSet:(id)arg1;
 - (void)executeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)executeActions:(id)arg1;
 - (BOOL)hasCachedReadErrorForAccessory:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)initWithValueReader:(id)arg1 valueWriter:(id)arg2;
 - (void)invalidateAllCachedErrors;

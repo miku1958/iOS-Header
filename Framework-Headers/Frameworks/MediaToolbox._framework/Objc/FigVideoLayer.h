@@ -8,6 +8,7 @@
 
 @class FigVideoLayerInternal;
 
+__attribute__((visibility("hidden")))
 @interface FigVideoLayer : FigBaseCALayer
 {
     FigVideoLayerInternal *_videoLayer;
@@ -17,7 +18,6 @@
 - (void)_sendVideoLayerIsBeingServicedNotification;
 - (id)actionForKey:(id)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithLayer:(id)arg1;
 - (BOOL)isVideoLayerBeingServiced;

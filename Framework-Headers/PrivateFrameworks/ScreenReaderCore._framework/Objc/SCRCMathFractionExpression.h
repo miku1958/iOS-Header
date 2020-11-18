@@ -22,8 +22,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_dollarCodeDescriptionAsBinomialCoefficient:(BOOL)arg1 orMixedNumberFraction:(BOOL)arg2 withNumberOfOuterRadicals:(unsigned long long)arg3 treePosition:(id)arg4;
-- (id)_speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2 asBinomialCoefficient:(BOOL)arg3;
-- (id)_speakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3 asBinomialCoefficient:(BOOL)arg4;
+- (id)_speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2 asBinomialCoefficient:(BOOL)arg3;
+- (id)_speakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3 asBinomialCoefficient:(BOOL)arg4;
 - (id)description;
 - (id)dollarCodeDescriptionAsBinomialCoefficientWithTreePosition:(id)arg1 numberOfOuterRadicals:(unsigned long long)arg2;
 - (id)dollarCodeDescriptionAsMixedNumberFractionWithTreePosition:(id)arg1;
@@ -34,10 +34,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isUnlinedFraction;
 - (id)latexMathModeDescription;
 - (id)mathMLString;
-- (id)speakableDescriptionAsBinomialCoefficientWithSpeakingStyle:(int)arg1;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
-- (id)speakableSegmentsAsBinomialCoefficientWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
-- (id)speakableSegmentsWithSpeakingStyle:(int)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
+- (id)speakableDescriptionAsBinomialCoefficientWithSpeakingStyle:(long long)arg1;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2;
+- (id)speakableSegmentsAsBinomialCoefficientWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
+- (id)speakableSegmentsWithSpeakingStyle:(long long)arg1 upToDepth:(unsigned long long)arg2 treePosition:(id)arg3;
 - (id)subExpressions;
 
 @end

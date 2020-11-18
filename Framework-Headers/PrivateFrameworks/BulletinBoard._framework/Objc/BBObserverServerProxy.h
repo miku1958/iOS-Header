@@ -59,6 +59,7 @@
 - (void)setObserverFeed:(unsigned long long)arg1 asLightsAndSirensGateway:(id)arg2 priority:(unsigned long long)arg3;
 - (void)setObserverFeed:(unsigned long long)arg1 attachToLightsAndSirensGateway:(id)arg2;
 - (void)updateBulletin:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)updateGlobalSettings:(id)arg1;
 - (void)updateSectionInfo:(id)arg1;
 - (void)updateSectionParameters:(id)arg1 forSectionID:(id)arg2;
 

@@ -7,18 +7,18 @@
 #import <objc/NSObject.h>
 
 @class UIView;
-@protocol UIItemProviderWriting;
+@protocol NSItemProviderWriting;
 
 @interface _MKPlaceCardDraggableContent : NSObject
 {
     BOOL _header;
     int _analyticsTarget;
     UIView *_view;
-    id<UIItemProviderWriting> _draggableContent;
+    id<NSItemProviderWriting> _draggableContent;
 }
 
 @property (nonatomic) int analyticsTarget; // @synthesize analyticsTarget=_analyticsTarget;
-@property (strong, nonatomic) id<UIItemProviderWriting> draggableContent; // @synthesize draggableContent=_draggableContent;
+@property (strong, nonatomic) id<NSItemProviderWriting> draggableContent; // @synthesize draggableContent=_draggableContent;
 @property (nonatomic, getter=isHeader) BOOL header; // @synthesize header=_header;
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 

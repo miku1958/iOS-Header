@@ -14,6 +14,7 @@
 @property (copy, nonatomic) NSArray *addedTasks;
 @property (readonly, nonatomic) long long code;
 @property (copy, nonatomic) INTaskList *modifiedTaskList;
+@property (nonatomic) unsigned long long warnings;
 
 @end
 

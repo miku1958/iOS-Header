@@ -23,7 +23,7 @@
 - (id)_queue_scheduleForBundleIdentifier:(id)arg1;
 - (void)_queue_setSchedule:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)allBundleIdentifiers;
-- (id)initWithDirectory:(id)arg1;
+- (id)initWithDirectory:(id)arg1 librarian:(id)arg2;
 - (void)notificationSourcesDidUninstall:(id)arg1;
 - (void)performMigration;
 - (void)removeScheduleForBundleIdentifier:(id)arg1;

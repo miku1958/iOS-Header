@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayer/MPModelRequest.h>
+#import <MediaPlayer/MPModelLibraryRequest.h>
 
-@class MPMediaLibrary, NSArray, NSString;
+@class NSArray, NSString;
 
-@interface MPModelLibrarySearchRequest : MPModelRequest
+@interface MPModelLibrarySearchRequest : MPModelLibraryRequest
 {
     NSArray *_scopes;
     long long _maximumResultsPerScope;
-    MPMediaLibrary *_mediaLibrary;
     NSString *_searchString;
 }
 
 @property (nonatomic) long long maximumResultsPerScope; // @synthesize maximumResultsPerScope=_maximumResultsPerScope;
-@property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (copy, nonatomic) NSArray *scopes; // @synthesize scopes=_scopes;
 @property (copy, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 

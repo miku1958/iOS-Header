@@ -14,22 +14,24 @@ __attribute__((visibility("hidden")))
 @interface GEOPDPhotoContent : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    unsigned int _height;
     NSString *_url;
+    unsigned int _height;
     unsigned int _width;
-    CDStruct_db93fd0f _has;
+    CDStruct_a1cdbaa7 _flags;
 }
 
 @property (nonatomic) BOOL hasHeight;
 @property (readonly, nonatomic) BOOL hasUrl;
 @property (nonatomic) BOOL hasWidth;
-@property (nonatomic) unsigned int height; // @synthesize height=_height;
+@property (nonatomic) unsigned int height;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
-@property (nonatomic) unsigned int width; // @synthesize width=_width;
+@property (strong, nonatomic) NSString *url;
+@property (nonatomic) unsigned int width;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_area;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

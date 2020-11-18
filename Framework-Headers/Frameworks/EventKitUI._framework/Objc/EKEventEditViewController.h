@@ -6,10 +6,12 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <EventKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
+
 @class EKEvent, EKEventEditor, EKEventStore, NSString, UIColor;
 @protocol EKEventEditViewDelegate;
 
-@interface EKEventEditViewController : UINavigationController
+@interface EKEventEditViewController : UINavigationController <UIAdaptivePresentationControllerDelegate>
 {
     EKEventStore *_store;
     EKEvent *_event;
@@ -23,6 +25,9 @@
 }
 
 @property (nonatomic) BOOL canHideDoneAndCancelButtons;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL displayingRootView;
 @property (weak, nonatomic) id<EKEventEditViewDelegate> editViewDelegate; // @synthesize editViewDelegate=_editViewDelegate;
 @property (strong, nonatomic) EKEventEditor *editor; // @synthesize editor=_editor;
 @property (strong, nonatomic) UIColor *editorBackgroundColor;
@@ -30,35 +35,45 @@
 @property (nonatomic) double editorNavBarRightContentInset;
 @property (strong, nonatomic) EKEvent *event;
 @property (strong, nonatomic) EKEventStore *eventStore;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL scrollToNotes;
 @property (nonatomic) BOOL showAttachments;
 @property (strong, nonatomic) EKEventEditViewController *strongSelf; // @synthesize strongSelf=_strongSelf;
 @property (strong, nonatomic) NSString *suggestionKey; // @synthesize suggestionKey=_suggestionKey;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL timeImplicitlySet;
 @property (nonatomic) int transitionForModalViewPresentation; // @synthesize transitionForModalViewPresentation=_transitionForModalViewPresentation;
 
 + (id)eventEditViewControllerWithEvent:(id)arg1 eventStore:(id)arg2 editViewDelegate:(id)arg3;
 + (void)setDefaultDatesForEvent:(id)arg1;
 - (void).cxx_destruct;
+- (id)_confirmDismissAlertExplanationText;
 - (id)_eventEditorForTestingOnly;
+- (id)_leftBarButtonItem;
 - (void)_storeChanged:(id)arg1;
 - (void)cancelEditing;
+- (void)cancelEditingWithDelegateNotification:(BOOL)arg1 forceCancel:(BOOL)arg2;
 - (void)completeAndSave;
+- (id)confirmDismissAlertController;
 - (void)dealloc;
 - (void)editor:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)editor:(id)arg1 prepareCalendarItemForEdit:(id)arg2;
+- (BOOL)editor:(id)arg1 shouldCompleteWithAction:(long long)arg2;
 - (void)focusAndSelectStartDate;
 - (void)focusAndSelectTitle;
 - (void)focusTitle;
 - (void)handleTapOutside;
 - (BOOL)hasUnsavedChanges;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (BOOL)isModalInPresentation;
 - (struct CGSize)preferredContentSize;
+- (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (void)refreshStartAndEndDates;
 - (BOOL)saveWithSpan:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (BOOL)willPresentDialogOnSave;
 

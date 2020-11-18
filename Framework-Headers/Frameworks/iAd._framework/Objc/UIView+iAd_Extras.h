@@ -12,6 +12,7 @@
 - (BOOL)_iAd_isVisible:(CDUnknownBlockType)arg1;
 - (BOOL)_iAd_isVisibleFast;
 - (BOOL)_iAd_isVisiblePercentageThreshold:(long long)arg1;
+- (void)_iAd_removeConstraintsReferencingView:(id)arg1 constrainedView:(id)arg2;
 - (struct CGRect)_iAd_screenFrame;
 - (float)_iAd_visiblePercentage;
 @end

@@ -6,14 +6,28 @@
 
 #import <objc/NSObject.h>
 
+@class NSMutableDictionary;
+
 __attribute__((visibility("hidden")))
 @interface VCHardwareSettings : NSObject
 {
+    BOOL _supportVCPEncoderInitialized;
+    BOOL _supportVCPEncoder;
+    NSMutableDictionary *_hardwareUsageModeSettings;
+    BOOL _vcpSupportsHEVCEncoder;
 }
 
+@property (readonly, nonatomic) BOOL vcpSupportsHEVCEncoder; // @synthesize vcpSupportsHEVCEncoder=_vcpSupportsHEVCEncoder;
+
++ (long long)deviceClass;
+- (void)dealloc;
+- (id)featureListStringForH264:(int)arg1;
+- (id)featureListStringForHEVC:(int)arg1;
 - (id)init;
 - (unsigned int)maxNetworkBitrateMultiwayAudioOnWifi:(BOOL)arg1;
 - (unsigned int)maxNetworkBitrateMultiwayVideoOnWifi:(BOOL)arg1;
+- (BOOL)storeHardwareSettingsForAllOperatingModes;
+- (unsigned int)tilesPerVideoFrame:(int)arg1;
 
 @end
 

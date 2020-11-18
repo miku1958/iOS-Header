@@ -6,35 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class AMSLRUCache, NSString;
+@class AMSMappedBundleInfo, AMSProcessInfo, NSString;
 
-__attribute__((visibility("hidden")))
 @interface AMSUserAgent : NSObject
 {
-    AMSLRUCache *_cache;
+    AMSMappedBundleInfo *_bundleInfo;
+    AMSProcessInfo *_processInfo;
 }
 
-@property (readonly, copy, nonatomic) NSString *clientName;
-@property (readonly, copy, nonatomic) NSString *clientVersion;
+@property (readonly, nonatomic) AMSMappedBundleInfo *bundleInfo; // @synthesize bundleInfo=_bundleInfo;
+@property (strong, nonatomic) NSString *clientName;
+@property (strong, nonatomic) NSString *clientVersion;
+@property (readonly, nonatomic) AMSProcessInfo *processInfo; // @synthesize processInfo=_processInfo;
 
-+ (id)shared;
++ (id)_sharedCache;
++ (void)cacheUserAgent:(id)arg1 forBundleIdentifier:(id)arg2;
++ (id)cachedUserAgentForBundleIdentifier:(id)arg1;
++ (id)userAgentForProcessInfo:(id)arg1;
 - (void).cxx_destruct;
+- (id)_compileAndShouldCache:(BOOL *)arg1;
 - (id)_iOSComponentBuildVersion;
-- (id)_iOSComponentClientInfoWithBundleID:(id)arg1;
+- (id)_iOSComponentClientInfo;
 - (id)_iOSComponentDeviceModel;
-- (id)_iOSComponentFairPlayDeviceType;
 - (id)_iOSComponentHardwarePlatform;
-- (id)_iOSComponentParentheticalWithFairPlayDeviceType:(id)arg1;
 - (id)_iOSComponentProductVersion;
-- (BOOL)_iOSFairPlayDeviceType:(unsigned int *)arg1 error:(id *)arg2;
+- (id)_sharedComponentFairPlayDeviceType;
 - (id)_sharedComponentFrameworkVersion;
-- (void)cacheUserAgent:(id)arg1 forBundleIdentifier:(id)arg2;
-- (id)cachedUserAgentForBundleIdentifier:(id)arg1;
-- (id)clientNameForBundleIdentifier:(id)arg1;
-- (id)clientVersionForBundleIdentifier:(id)arg1;
-- (id)init;
-- (id)userAgentForBundleIdentifier:(id)arg1 additionalComponents:(id)arg2;
-- (id)userAgentForBundleIdentifier:(id)arg1 additionalComponents:(id)arg2 addAccountMediaTypeComponent:(BOOL)arg3;
+- (id)_sharedComponentParentheticalWithFairPlayDeviceType:(id)arg1;
+- (id)compile;
+- (id)initWithProcessInfo:(id)arg1;
 
 @end
 

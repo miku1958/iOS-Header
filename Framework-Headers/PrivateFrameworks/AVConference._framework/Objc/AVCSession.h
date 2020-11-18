@@ -60,7 +60,9 @@
 - (void)dealloc;
 - (void)deregisterFromNotifications;
 - (void)endParticipantConfiguration;
+- (id)initPrivateWithTransportToken:(id)arg1 configuration:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
 - (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 queue:(id)arg4;
+- (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 queue:(id)arg5;
 - (id)newNSErrorWithErrorDictionary:(id)arg1;
 - (void)participant:(id)arg1 audioEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)participant:(id)arg1 audioPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
@@ -73,6 +75,7 @@
 - (void)setupNotificationQueue:(id)arg1;
 - (void)start;
 - (void)stop;
+- (void)stopWithError:(id)arg1;
 - (void)updateConfiguration:(id)arg1;
 - (BOOL)validateParticipantToAdd:(id)arg1;
 - (BOOL)validateParticipantToRemove:(id)arg1;

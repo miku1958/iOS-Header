@@ -22,6 +22,7 @@
 @property (copy, nonatomic) NSString *fakeURLString; // @synthesize fakeURLString=_fakeURLString;
 
 - (void).cxx_destruct;
+- (id)URL;
 - (id)URLString;
 - (id)fullPath;
 - (id)initWithAccount:(id)arg1 URLString:(id)arg2 fullPath:(id)arg3;

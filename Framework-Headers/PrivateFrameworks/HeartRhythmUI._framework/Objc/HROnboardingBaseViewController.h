@@ -33,6 +33,7 @@
 - (void).cxx_destruct;
 - (void)_adjustScrollViewForFooterView;
 - (id)_buttonForButtonType:(long long)arg1;
+- (id)_cancelButton;
 - (id)_closeButton;
 - (id)_onboardingAtrialFibrillationDetectionCancelButton;
 - (id)_onboardingElectrocardiogramCancelButton;
@@ -41,6 +42,7 @@
 - (id)_titleFontTextStyle;
 - (double)_titleTopToFirstBaselineLeading;
 - (void)closeButtonTapped:(id)arg1;
+- (double)contentTop;
 - (id)initForOnboarding:(BOOL)arg1;
 - (void)onboardingAtrialFibrillationDetectionCancelButtonTapped:(id)arg1;
 - (void)onboardingElectrocardiogramCancelButtonTapped:(id)arg1;
@@ -53,6 +55,9 @@
 - (void)skipButtonTapped:(id)arg1;
 - (id)titleFont;
 - (double)titleTopToFirstBaseline;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateUserInterfaceForStyle:(long long)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

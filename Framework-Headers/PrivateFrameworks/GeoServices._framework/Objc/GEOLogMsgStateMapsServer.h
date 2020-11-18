@@ -16,8 +16,9 @@
 }
 
 @property (readonly, nonatomic) BOOL hasServerMetadata;
-@property (strong, nonatomic) GEOMapsServerMetadata *serverMetadata; // @synthesize serverMetadata=_serverMetadata;
+@property (strong, nonatomic) GEOMapsServerMetadata *serverMetadata;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -26,6 +27,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

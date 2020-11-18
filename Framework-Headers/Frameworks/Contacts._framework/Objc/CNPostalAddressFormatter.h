@@ -13,10 +13,12 @@
 
 @property (nonatomic) long long style; // @synthesize style=_style;
 
++ (id)_postalToFormatMap;
 + (id)addressValueForFormatKey:(id)arg1 postalAddress:(id)arg2;
 + (id)attributedStringFromPostalAddress:(id)arg1 style:(long long)arg2 withDefaultAttributes:(id)arg3;
 + (id)fieldArrangementWithString:(id)arg1;
 + (id)fieldLabelMapWithPlist:(id)arg1;
++ (id)formatPropertyKeyForPostalAddressPropertyKey:(id)arg1;
 + (id)getCountryCodeFromPostalAddress:(id)arg1;
 + (id)localizedCountryNameForISOCountryCode:(id)arg1;
 + (id)localizedStringForPostalAddressString:(id)arg1;

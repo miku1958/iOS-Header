@@ -9,29 +9,46 @@
 #import <GeoServices/GEOTransitNamedItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOStyleAttributes, NSMutableArray, NSString, PBUnknownFields;
+@class GEOLatLng, GEOStyleAttributes, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPBTransitStop : PBCodable <GEOTransitNamedItem, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _muid;
-    unsigned int _hallIndex;
     GEOLatLng *_latLng;
+    unsigned long long _muid;
     NSString *_nameDisplayString;
-    unsigned int _stopIndex;
     GEOStyleAttributes *_styleAttributes;
     NSString *_timezone;
     NSMutableArray *_zoomNames;
+    unsigned int _hallIndex;
+    unsigned int _stopIndex;
     struct {
-        unsigned int muid:1;
-        unsigned int hallIndex:1;
-        unsigned int stopIndex:1;
-    } _has;
+        unsigned int has_muid:1;
+        unsigned int has_hallIndex:1;
+        unsigned int has_stopIndex:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_latLng:1;
+        unsigned int read_nameDisplayString:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int read_timezone:1;
+        unsigned int read_zoomNames:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_latLng:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_nameDisplayString:1;
+        unsigned int wrote_styleAttributes:1;
+        unsigned int wrote_timezone:1;
+        unsigned int wrote_zoomNames:1;
+        unsigned int wrote_hallIndex:1;
+        unsigned int wrote_stopIndex:1;
+    } _flags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned int hallIndex; // @synthesize hallIndex=_hallIndex;
+@property (nonatomic) unsigned int hallIndex;
 @property (nonatomic) BOOL hasHallIndex;
 @property (readonly, nonatomic) BOOL hasLatLng;
 @property (nonatomic) BOOL hasMuid;
@@ -41,22 +58,30 @@
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (readonly, nonatomic) BOOL hasTimezone;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) GEOLatLng *latLng; // @synthesize latLng=_latLng;
+@property (strong, nonatomic) GEOLatLng *latLng;
 @property (nonatomic) unsigned long long muid;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (strong, nonatomic) NSString *nameDisplayString; // @synthesize nameDisplayString=_nameDisplayString;
-@property (nonatomic) unsigned int stopIndex; // @synthesize stopIndex=_stopIndex;
-@property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
+@property (nonatomic) unsigned long long muid;
+@property (strong, nonatomic) NSString *nameDisplayString;
+@property (nonatomic) unsigned int stopIndex;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *timezone; // @synthesize timezone=_timezone;
+@property (strong, nonatomic) NSString *timezone;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *zoomNames; // @synthesize zoomNames=_zoomNames;
+@property (strong, nonatomic) NSMutableArray *zoomNames;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)zoomNameType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsZoomName:(id)arg1;
+- (void)_readLatLng;
+- (void)_readNameDisplayString;
+- (void)_readStyleAttributes;
+- (void)_readTimezone;
+- (void)_readZoomNames;
 - (void)addZoomName:(id)arg1;
 - (id)bestName;
 - (id)bestNameWithLocale:(out id *)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearZoomNames;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -64,6 +89,7 @@
 - (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (id)zoomNameAtIndex:(unsigned long long)arg1;

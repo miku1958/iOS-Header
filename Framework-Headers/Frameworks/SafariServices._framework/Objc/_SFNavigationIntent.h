@@ -6,40 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSURL, WBSCloudTab, WebBookmark;
+@class NSArray, NSDictionary, NSString, NSURL, NSUUID, WBSCloudTab, WebBookmark, _SFTabStateData, _WKActivatedElementInfo;
 
 @interface _SFNavigationIntent : NSObject
 {
-    long long _preferredTabOrder;
     id _value;
-    BOOL _opensInNewTab;
+    BOOL _isUnifiedFieldNavigation;
+    BOOL _shouldRelateToSourceTab;
     unsigned long long _type;
+    long long _policy;
+    NSUUID *_sourceTabUUID;
+    NSUUID *_sourceWindowUUID;
+    _WKActivatedElementInfo *_sourceElementInfo;
 }
 
 @property (readonly, copy, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) WebBookmark *bookmark;
+@property (readonly, nonatomic) BOOL canUseExistingBlankTab;
 @property (readonly, nonatomic) WBSCloudTab *cloudTab;
+@property (readonly, copy, nonatomic) NSDictionary *externalOptions;
+@property (nonatomic) BOOL isUnifiedFieldNavigation; // @synthesize isUnifiedFieldNavigation=_isUnifiedFieldNavigation;
 @property (readonly, copy, nonatomic) NSArray *navigationIntents;
-@property (nonatomic) BOOL opensInNewTab; // @synthesize opensInNewTab=_opensInNewTab;
+@property (readonly, nonatomic) BOOL opensInNewTab;
+@property (readonly, nonatomic) BOOL opensInNewWindow;
+@property (nonatomic) long long policy; // @synthesize policy=_policy;
 @property (readonly, copy, nonatomic) NSString *privacyPreservingDescription;
+@property (readonly, nonatomic) _SFTabStateData *recentlyClosedTabStateData;
 @property (readonly, nonatomic) BOOL shouldOrderToForeground;
+@property (nonatomic) BOOL shouldRelateToSourceTab; // @synthesize shouldRelateToSourceTab=_shouldRelateToSourceTab;
+@property (strong, nonatomic) _WKActivatedElementInfo *sourceElementInfo; // @synthesize sourceElementInfo=_sourceElementInfo;
+@property (strong, nonatomic) NSUUID *sourceTabUUID; // @synthesize sourceTabUUID=_sourceTabUUID;
+@property (strong, nonatomic) NSUUID *sourceWindowUUID; // @synthesize sourceWindowUUID=_sourceWindowUUID;
 @property (readonly, copy, nonatomic) NSString *text;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
-+ (id)_navigationIntentForMKMapItem:(id)arg1;
-+ (id)_navigationIntentWithItems:(id)arg1;
-+ (BOOL)canCreateNavigationIntentForDropSession:(id)arg1;
-+ (void)navigationIntentForDropSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (void)navigationIntentForItemProviders:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (id)navigationIntentWithBookmark:(id)arg1;
-+ (id)navigationIntentWithCloudTab:(id)arg1;
-+ (id)navigationIntentWithHistoryURL:(id)arg1;
-+ (id)navigationIntentWithMultipleIntents:(id)arg1;
-+ (id)navigationIntentWithText:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithType:(unsigned long long)arg1 value:(id)arg2;
+- (id)_initWithType:(unsigned long long)arg1 value:(id)arg2 policy:(long long)arg3;
 - (id)description;
-- (void)setPreferredTabOrder:(long long)arg1;
 
 @end
 

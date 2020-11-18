@@ -11,11 +11,10 @@
 }
 
 + (id)authorizationStatusAsString:(int)arg1;
++ (id)cadRouteHypothesisForEKTravelEngineHypothesis:(id)arg1;
 + (BOOL)date:(id)arg1 representsApproachingDepartureDateForHypothesis:(id)arg2;
 + (BOOL)date:(id)arg1 representsImmediateDepartureForHypothesis:(id)arg2;
 + (BOOL)date:(id)arg1 representsLatenessForHypothesis:(id)arg2;
-+ (id)effectiveTravelAdvisoryTravelTimeDateForHypothesis:(id)arg1;
-+ (double)effectiveTravelAdvisoryTravelTimeForHypothesis:(id)arg1;
 + (id)formattedLocationCoordinates:(id)arg1;
 + (long long)geoRouteHypothesisTravelStateForString:(id)arg1;
 + (id)geoTrafficDensityAsString:(unsigned long long)arg1;

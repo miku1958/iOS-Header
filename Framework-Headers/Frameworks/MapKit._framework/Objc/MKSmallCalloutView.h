@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     BOOL _shouldPositionTitleForMapsTransitionMovingSideways;
     _MKSmallCalloutPassthroughButton *_maskedContainerView;
     UIView *_unmaskedContainerView;
-    CDStruct_80aa614a _mapDisplayStyle;
     BOOL _needsPreferredContentSizeUpdate;
     NSLayoutConstraint *_minWidthConstraint;
     NSLayoutConstraint *_maxWidthConstraint;
@@ -42,7 +41,6 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_leftViewCenterContentMarginConstraint;
     UILayoutGuide *_leftViewTopSpacer;
     UILayoutGuide *_leftViewLeftSpacer;
-    NSLayoutConstraint *_rightViewMinCalloutWidthConstraint;
     NSLayoutConstraint *_rightViewHorizontalPositionConstraint;
     NSLayoutConstraint *_rightViewTopSpacerBottomConstraint;
     NSLayoutConstraint *_rightViewCenterContentMarginConstraint;
@@ -59,7 +57,6 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *calloutTitle;
 @property (strong, nonatomic) UIView *detailView;
 @property (strong, nonatomic) UIView *leftView;
-@property (nonatomic) CDStruct_80aa614a mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
 @property (nonatomic) double maximumWidth;
 @property (nonatomic) double minimumWidth;
 @property (nonatomic) BOOL parallaxEnabled; // @synthesize parallaxEnabled=_parallaxEnabled;
@@ -71,7 +68,6 @@ __attribute__((visibility("hidden")))
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (id)_maskedContainerView;
 - (void)_setNeedsUpdatePreferredContentSize;
-- (void)_updateAccessoryViewStyles;
 - (void)_updatePreferredContentSize;
 - (void)_updatePreferredContentSizeIfNeeded;
 - (void)beginMapsTransitionMovingSideways;

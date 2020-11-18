@@ -12,5 +12,7 @@
 
 @optional
 - (void)performOnApplicationWillEnterForeground:(void (^)(void))arg1;
+- (void)performOnApplicationWindowDidBecomeBackground:(void (^)(void))arg1;
+- (void)performOnApplicationWindowDidBecomeForeground:(void (^)(void))arg1;
 @end
 

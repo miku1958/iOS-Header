@@ -29,6 +29,7 @@
 + (id)pendingExpiredSessionReportsWithAppIdentifier:(id)arg1 storageDirectoryAtURL:(id)arg2;
 + (void)removePendingExpiredSessionReports:(id)arg1 withAppIdentifier:(id)arg2 storageDirectoryAtURL:(id)arg3;
 - (id)_contentKeyRequestForCryptorUUID:(id)arg1 cryptorKeyRequestID:(unsigned long long)arg2;
+- (id)_extractCryptKeyIdentifiersFromInitializationData:(id)arg1;
 - (const struct OpaqueFigContentKeySession *)_figContentKeySession;
 - (void)_handleKeyResponseError:(id)arg1 forCryptorUUID:(id)arg2 andCryptorKeyRequestID:(unsigned long long)arg3;
 - (void)_handleKeyResponseSuccessfullyProcessedForCryptorUUID:(id)arg1 andCryptorKeyRequestID:(unsigned long long)arg2;
@@ -37,8 +38,10 @@
 - (void)_handleUpdateToPersistentKey:(id)arg1 forKeyIdentifier:(id)arg2;
 - (id)_internalQueue;
 - (void)_invokeDelegateCallbackWithBlock:(CDUnknownBlockType)arg1 synchronouslyWhenDelegateQueueIsNULL:(BOOL)arg2;
+- (void)_processContentKeyRequestWithIdentifier:(id)arg1 initializationData:(id)arg2 options:(id)arg3;
 - (void)_removeContentKeyRequestForCryptorUUID:(id)arg1 cryptorKeyRequestID:(unsigned long long)arg2;
 - (void)_sendFinishLoadingForPreloadedKeyRequest:(struct __CFDictionary *)arg1 withRequestID:(unsigned long long)arg2 fromHandler:(struct OpaqueFigCustomURLHandler *)arg3;
+- (BOOL)_setAuthorizationToken:(id)arg1 forIdentifier:(id)arg2 error:(id *)arg3;
 - (void)_setContentKeyRequest:(id)arg1 forCryptorUUID:(id)arg2 cryptorKeyRequestID:(unsigned long long)arg3;
 - (id)_weakReference;
 - (void)_willDeallocOrFinalize;
@@ -51,8 +54,9 @@
 - (const struct OpaqueFigCPECryptor *)createDecryptorIfNecessaryForIdentifier:(id)arg1 initializationData:(id)arg2 formatDescription:(struct opaqueCMFormatDescription *)arg3 hlsMethod:(id)arg4 error:(id *)arg5;
 - (void)createProtectorSessionIdentifierIfNecessary;
 - (void)dealloc;
+- (id)description;
 - (void)expire;
-- (void)finalize;
+- (void)failProcessingContentKeyRequestWithIdentifier:(id)arg1 initializationData:(id)arg2 error:(id)arg3;
 - (BOOL)hasProtector;
 - (id)init;
 - (id)initWithKeySystem:(id)arg1 storageDirectoryAtURL:(id)arg2;
@@ -63,7 +67,6 @@
 - (void)issueContentKeyRequest:(id)arg1 forKeyRenewal:(BOOL)arg2;
 - (id)issueContentKeyRequestForInitializationData:(id)arg1;
 - (void)issueContentKeyRequestWithCustomURLHandler:(struct OpaqueFigCustomURLHandler *)arg1 identifier:(id)arg2 requestInfo:(struct __CFDictionary *)arg3 requestID:(unsigned long long)arg4 providesPersistableKey:(BOOL)arg5;
-- (void)issueContentKeyRequestWithCustomURLProviderContext:(id)arg1 identifier:(id)arg2 initializationData:(id)arg3 providesPersistableKey:(BOOL)arg4;
 - (void)issueContentKeyRequestWithPreloadingRequestOptions:(id)arg1 identifier:(id)arg2 initializationData:(id)arg3 providesPersistableKey:(BOOL)arg4;
 - (void)makeSecureTokenForExpirationDateOfPersistableContentKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)processContentKeyRequestWithIdentifier:(id)arg1 initializationData:(id)arg2 options:(id)arg3;

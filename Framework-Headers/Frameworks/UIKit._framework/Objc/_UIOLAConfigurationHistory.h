@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasEstablishedOrderingValues; // @synthesize hasEstablishedOrderingValues=_hasEstablishedOrderingValues;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInOrderedArrangementUpdateSection) BOOL inOrderedArrangementUpdateSection; // @synthesize inOrderedArrangementUpdateSection=_inOrderedArrangementUpdateSection;
+@property (readonly, nonatomic) NSSet *invalidBaselineConstraints;
 @property (nonatomic) BOOL layoutFillsCanvas;
 @property (nonatomic) BOOL layoutUsesCanvasMarginsWhenFilling;
 @property (nonatomic) double proportionalFillDenominator; // @synthesize proportionalFillDenominator=_proportionalFillDenominator;

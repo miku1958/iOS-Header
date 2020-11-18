@@ -12,7 +12,7 @@
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 
 @class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, UIScrollView, UIView;
-@protocol NUAnalyticsReporting, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
+@protocol NUAnalyticsReporting, NUArticleContentSizeManager, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
 
 @interface NUArticleHostViewController : UIViewController <NULoadingDelegate, SXAnalyticsReporting, NUPageable, NUBarCompressible>
 {
@@ -28,12 +28,16 @@
     NFMultiDelegate *_multiLoadingDelegate;
     id<NUErrorMessageFactory> _errorMessageFactory;
     id<NUAnalyticsReporting> _analyticsReporting;
+    id<NUArticleContentSizeManager> _contentSizeManager;
 }
 
 @property (readonly, nonatomic) id<NUAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
 @property (readonly, nonatomic) id<NUArticleViewControllerFactory> articleViewControllerFactory; // @synthesize articleViewControllerFactory=_articleViewControllerFactory;
 @property (readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
+@property (nonatomic) long long contentScale;
+@property (strong, nonatomic) NSString *contentSizeCategory;
+@property (readonly, nonatomic) id<NUArticleContentSizeManager> contentSizeManager; // @synthesize contentSizeManager=_contentSizeManager;
 @property (strong, nonatomic) UIViewController *contentTypeViewController; // @synthesize contentTypeViewController=_contentTypeViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -50,13 +54,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4;
-- (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4 analyticsReporting:(id)arg5;
-- (id)initWithArticle:(id)arg1 issue:(id)arg2 articleViewControllerFactory:(id)arg3 settings:(id)arg4 errorMessageFactory:(id)arg5 analyticsReporting:(id)arg6;
+- (id)initWithArticle:(id)arg1 articleViewControllerFactory:(id)arg2 settings:(id)arg3 errorMessageFactory:(id)arg4 contentSizeManager:(id)arg5;
+- (id)initWithArticle:(id)arg1 issue:(id)arg2 articleViewControllerFactory:(id)arg3 settings:(id)arg4 errorMessageFactory:(id)arg5 analyticsReporting:(id)arg6 contentSizeManager:(id)arg7;
 - (void)loadArticleAndEmbedArticleViewController;
 - (void)loadingDidFinishWithError:(id)arg1;
 - (void)loadingDidStart;
 - (void)loadingDidUpdateProgress:(double)arg1;
+- (id)loadingTextForArticle:(id)arg1;
 - (void)loadingWillStart;
 - (void)reportEvent:(id)arg1;
 - (void)viewDidLayoutSubviews;

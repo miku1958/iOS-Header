@@ -28,7 +28,6 @@
     VMURangeToStringMap *_regionSymbolNameRanges;
     BOOL _gotObjcClassStructureRanges;
     BOOL _showRawClassNames;
-    BOOL _javaScriptCoreUsingPoisoning;
     NSDictionary *_pthreadOffsets;
     VMUNodeToStringMap *_nodeLabels;
     void *_userMarked;
@@ -46,7 +45,6 @@
 @property (readonly, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL is64bit;
-@property (nonatomic) BOOL javaScriptCoreUsingPoisoning; // @synthesize javaScriptCoreUsingPoisoning=_javaScriptCoreUsingPoisoning;
 @property (readonly, nonatomic) unsigned int nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
 @property (nonatomic) unsigned long long physicalFootprint; // @synthesize physicalFootprint=_physicalFootprint;
@@ -79,15 +77,17 @@
 - (unsigned int)enumerateReferencesFromDataRegion:(id)arg1 atGlobalSymbol:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (unsigned int)enumerateRegionsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasLabelsForNodes;
-- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3;
+- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4;
 - (id)initWithPid:(int)arg1 nodes:(struct _VMUBlockNode *)arg2 nodeCount:(unsigned int)arg3 zoneNames:(id)arg4 classInfoMap:(id)arg5 regions:(id)arg6 pthreadOffsets:(id)arg7 userMarked:(void *)arg8;
 - (id)labelForNode:(unsigned int)arg1;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
-- (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2 showLeakedVMregions:(BOOL)arg3;
+- (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2 options:(unsigned int)arg3;
 - (id)nodeDescription:(unsigned int)arg1;
 - (id)nodeDescription:(unsigned int)arg1 withDestinationNode:(unsigned int)arg2 referenceInfo:(CDStruct_8b65991f)arg3;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2 showLabel:(BOOL)arg3;
+- (BOOL)nodeDetailIsAutoreleasePoolContentPage:(CDStruct_599faf0f)arg1;
+- (BOOL)nodeIsAutoreleasePoolContentPage:(unsigned int)arg1;
 - (id)nodeOffsetDescription:(CDStruct_8b65991f)arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3;
 - (unsigned int)nodeReferencedFromDataRegion:(id)arg1 byGlobalSymbol:(id)arg2;
 - (struct _VMURange)rangeForSymbolName:(id)arg1 inRegion:(id)arg2;

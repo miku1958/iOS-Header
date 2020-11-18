@@ -8,33 +8,47 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOStyleAttributes, NSString, PBUnknownFields;
+@class GEOStyleAttributes, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPBTransitBrand : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     unsigned long long _muid;
-    unsigned int _brandIndex;
     NSString *_nameDisplayString;
     GEOStyleAttributes *_styleAttributes;
+    unsigned int _brandIndex;
     struct {
-        unsigned int muid:1;
-        unsigned int brandIndex:1;
-    } _has;
+        unsigned int has_muid:1;
+        unsigned int has_brandIndex:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_nameDisplayString:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_nameDisplayString:1;
+        unsigned int wrote_styleAttributes:1;
+        unsigned int wrote_brandIndex:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int brandIndex; // @synthesize brandIndex=_brandIndex;
+@property (nonatomic) unsigned int brandIndex;
 @property (nonatomic) BOOL hasBrandIndex;
 @property (nonatomic) BOOL hasMuid;
 @property (readonly, nonatomic) BOOL hasNameDisplayString;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (strong, nonatomic) NSString *nameDisplayString; // @synthesize nameDisplayString=_nameDisplayString;
-@property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
+@property (nonatomic) unsigned long long muid;
+@property (strong, nonatomic) NSString *nameDisplayString;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readNameDisplayString;
+- (void)_readStyleAttributes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

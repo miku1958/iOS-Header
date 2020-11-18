@@ -42,13 +42,13 @@
 - (void)_receivedStateChangeProcessed:(id)arg1 changeAccepted:(BOOL)arg2;
 - (void)_requestAddPassData:(id)arg1 forSyncStateItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_requestRemovePassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_requestUpdatePassData:(id)arg1 forSyncStateItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_requestUpdatePassData:(id)arg1 forSyncStateItem:(id)arg2 baseManifestHashForPartialUpdate:(id)arg3 remoteAssetsForPartialUpdate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_sendNextStateChange;
 - (void)_sendProposedReconciledState:(id)arg1;
 - (void)_sendReconciledStateAcceptedWithHash:(id)arg1;
 - (void)_sendReconciledStateUnrecognizedWithHash:(id)arg1 currentPassSyncState:(id)arg2;
 - (void)_sendStateChange:(id)arg1;
-- (void)_sendStateChangeProcessedWithUUID:(id)arg1 changeAccepted:(BOOL)arg2;
+- (void)_sendStateChangeProcessedWithUUID:(id)arg1 changeAccepted:(BOOL)arg2 fullPassRequired:(BOOL)arg3;
 - (void)_shouldProcessAddOrUpdateChangeOfType:(unsigned long long)arg1 changeSyncStateItem:(id)arg2 librarySyncStateItem:(id)arg3 reconciledSyncStateItem:(id)arg4 candidateChange:(id)arg5 shouldApplyToPassLibrary:(BOOL *)arg6 shouldApplyToReconciledState:(BOOL *)arg7;
 - (void)_unexpectedEventOccurred;
 - (void)encodeWithCoder:(id)arg1;
@@ -56,7 +56,7 @@
 - (void)handleReconciledStateAcceptedWithHash:(id)arg1;
 - (void)handleReconciledStateUnrecognizedWithHash:(id)arg1 passSyncState:(id)arg2;
 - (void)handleStateChange:(id)arg1;
-- (void)handleStateChangeProcessedWithUUID:(id)arg1 changeAccepted:(BOOL)arg2;
+- (void)handleStateChangeProcessedWithUUID:(id)arg1 changeAccepted:(BOOL)arg2 fullPassRequired:(BOOL)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRole:(unsigned long long)arg1;
 - (void)syncIfNecessary;

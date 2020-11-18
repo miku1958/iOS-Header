@@ -32,11 +32,15 @@
 + (BOOL)isProblemReportingEnabled;
 - (void).cxx_destruct;
 - (void)_handleUpdateForSpecifierID:(id)arg1 value:(id)arg2 error:(id)arg3;
+- (id)automatedFeedbackEnabled:(id)arg1;
+- (void)automatedFeedbackLinkTapped;
+- (id)automatedFeedbackSpecifiers;
 - (void)checkDiagnosticsSessionAvailability;
 - (void)dismissAboutSheet:(id)arg1;
 - (id)iCloudSpecifiers;
 - (void)launchDiagnosticsSession:(id)arg1;
 - (id)problemReportingEnabled:(id)arg1;
+- (void)setAutomatedFeedbackEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setBoolValue:(BOOL)arg1 forIdMSConfigKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setProblemReportingEnabled:(BOOL)arg1;
 - (void)setProblemReportingEnabled:(id)arg1 forSpecifier:(id)arg2;

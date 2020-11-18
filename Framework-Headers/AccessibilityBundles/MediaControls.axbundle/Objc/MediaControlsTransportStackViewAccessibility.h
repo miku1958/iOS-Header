@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityDescriptionForCommandRequest:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_updateButtonImage:(id)arg1 button:(id)arg2;
+- (void)_updateButtonVisualStyling:(id)arg1;
 - (id)accessibilityElements;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setResponse:(id)arg1;

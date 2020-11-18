@@ -7,7 +7,16 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (CNPeopleCardTransition)
+
+@property (readonly, nonatomic) BOOL ab_isDirectlyInPopover;
+@property (readonly, nonatomic) BOOL ab_isInPopover;
+@property (readonly, nonatomic) BOOL ab_isInSheet;
+@property (readonly, nonatomic) BOOL ab_shouldShowNavBarButtons;
+@property (readonly, nonatomic) BOOL ab_shouldUseTransparentBackgroundInPopovers;
+
+- (BOOL)_ab_isInPopoverRecursive:(BOOL)arg1;
 - (id)_cardViewControllerTransitioning;
+- (void)cnui_addChildViewController:(id)arg1;
 - (void)set_cardViewControllerTransitioning:(id)arg1;
 @end
 

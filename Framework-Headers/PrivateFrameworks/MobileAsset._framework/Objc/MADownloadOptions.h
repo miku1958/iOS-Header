@@ -15,6 +15,9 @@
     BOOL _allowsCellularAccess;
     BOOL _canUseLocalCacheServer;
     BOOL _discretionary;
+    BOOL _allowsExpensiveAccess;
+    BOOL _requiresPowerPluggedIn;
+    BOOL _prefersInfraWiFi;
     long long _timeoutIntervalForResource;
     NSMutableDictionary *_additionalServerParams;
     NSString *_sessionId;
@@ -22,8 +25,11 @@
 
 @property (strong, nonatomic) NSMutableDictionary *additionalServerParams; // @synthesize additionalServerParams=_additionalServerParams;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
+@property (nonatomic) BOOL allowsExpensiveAccess; // @synthesize allowsExpensiveAccess=_allowsExpensiveAccess;
 @property (nonatomic) BOOL canUseLocalCacheServer; // @synthesize canUseLocalCacheServer=_canUseLocalCacheServer;
 @property (nonatomic) BOOL discretionary; // @synthesize discretionary=_discretionary;
+@property (nonatomic) BOOL prefersInfraWiFi; // @synthesize prefersInfraWiFi=_prefersInfraWiFi;
+@property (nonatomic) BOOL requiresPowerPluggedIn; // @synthesize requiresPowerPluggedIn=_requiresPowerPluggedIn;
 @property (strong, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
 @property (nonatomic) long long timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 

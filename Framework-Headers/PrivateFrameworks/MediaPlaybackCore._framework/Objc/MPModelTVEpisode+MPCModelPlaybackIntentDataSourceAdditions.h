@@ -7,6 +7,11 @@
 #import <MediaPlayer/MPModelTVEpisode.h>
 
 @interface MPModelTVEpisode (MPCModelPlaybackIntentDataSourceAdditions)
++ (id)mqf_requiredPlaybackProperties;
+- (id)MPC_modelObjectWithStoreFrontLocalEquivalentModelObject:(id)arg1;
 - (id)mpc_protoItemRepresentation;
+- (void)mqf_configurePlaybackItemMetadata:(id)arg1;
+- (id)mqf_newPlaybackItemMetadata;
+- (id)mqf_playbackItemMetadataModelObject;
 @end
 

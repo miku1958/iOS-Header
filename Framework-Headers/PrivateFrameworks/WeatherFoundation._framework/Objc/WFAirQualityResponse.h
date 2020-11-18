@@ -17,7 +17,7 @@
     NSData *_rawAPIData;
 }
 
-@property (strong) WFAirQualityConditions *airQualityConditions; // @synthesize airQualityConditions=_airQualityConditions;
+@property (strong, nonatomic) WFAirQualityConditions *airQualityConditions; // @synthesize airQualityConditions=_airQualityConditions;
 @property (strong, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
 @property (nonatomic) BOOL responseWasFromCache; // @synthesize responseWasFromCache=_responseWasFromCache;
 

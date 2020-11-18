@@ -4,23 +4,66 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <DocumentManagerUICore/DOCBaseThumbnail.h>
+#import <objc/NSObject.h>
 
-@class FPItem;
+#import <DocumentManagerUICore/DOCThumbnail-Protocol.h>
+#import <DocumentManagerUICore/DOCThumbnailListener-Protocol.h>
 
-@interface DOCItemThumbnail : DOCBaseThumbnail
+@class DOCThumbnailDescriptor, DOCThumbnailGenerator, DOCThumbnailRequest, FPItem, NSHashTable, NSMutableArray, NSString, UIImage;
+@protocol DOCThumbnail;
+
+@interface DOCItemThumbnail : NSObject <DOCThumbnailListener, DOCThumbnail>
 {
-    double _minimumSize;
+    NSMutableArray *_generationCompletionHandlers;
+    BOOL _representativeIcon;
+    BOOL _needsUpdate;
     FPItem *_item;
+    id<DOCThumbnail> _fallback;
+    DOCThumbnailGenerator *_generator;
+    DOCThumbnailDescriptor *_descriptor;
+    NSHashTable *_listeners;
+    DOCThumbnailRequest *_currentRequest;
+    UIImage *_thumbnailImage;
 }
 
+@property (readonly, nonatomic) DOCThumbnailRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) DOCThumbnailDescriptor *descriptor; // @synthesize descriptor=_descriptor;
+@property (strong, nonatomic) id<DOCThumbnail> fallback; // @synthesize fallback=_fallback;
+@property (readonly, weak, nonatomic) DOCThumbnailGenerator *generator; // @synthesize generator=_generator;
+@property (readonly) BOOL hasFinishedTryingToFetchCorrectThumbnail;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isInteractive) BOOL interactive;
+@property (readonly, nonatomic) BOOL isRepresentativeIcon;
 @property (readonly, nonatomic) FPItem *item; // @synthesize item=_item;
-@property (readonly, nonatomic) double minimumSize; // @synthesize minimumSize=_minimumSize;
+@property (readonly, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
+@property (readonly, nonatomic, getter=isLoading) BOOL loading;
+@property (readonly, nonatomic) double minimumSize;
+@property (readonly, nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
+@property (nonatomic) BOOL representativeIcon; // @synthesize representativeIcon=_representativeIcon;
+@property (readonly, nonatomic) double scale;
+@property (readonly, nonatomic) struct CGSize size;
+@property (readonly, nonatomic) unsigned long long style;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) UIImage *thumbnail;
+@property (readonly, nonatomic) UIImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 
 - (void).cxx_destruct;
-- (id)createOperationWithSize:(struct CGSize)arg1 scale:(double)arg2 style:(unsigned long long)arg3 isInteractive:(BOOL)arg4;
-- (id)initWithCache:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 fallback:(id)arg6 style:(unsigned long long)arg7 isInteractive:(BOOL)arg8;
-- (id)thumbnail;
+- (void)_callGenerationCompletionHandlers;
+- (void)_cancelCurrentRequest;
+- (void)_fetchThumbnailWithOptions:(unsigned long long)arg1;
+- (void)_notifyListeners;
+- (void)addListener:(id)arg1;
+- (void)fetchWithOptions:(unsigned long long)arg1;
+- (id)initWithGenerator:(id)arg1 item:(id)arg2 descriptor:(id)arg3 fallback:(id)arg4;
+- (BOOL)registerGenerationCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)removeListener:(id)arg1;
+- (void)scheduleUpdateIfNeeded;
+- (void)setNeedsUpdate;
+- (void)thumbnailLoaded:(id)arg1;
+- (void)thumbnailOperationDidLoadThumbnail:(id)arg1 representativeIcon:(BOOL)arg2;
+- (void)thumbnailOperationFailedToLoadThumbnail;
 - (void)updateItemTo:(id)arg1;
 
 @end

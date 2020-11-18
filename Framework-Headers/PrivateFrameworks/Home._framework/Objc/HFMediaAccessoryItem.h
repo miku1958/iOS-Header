@@ -6,29 +6,40 @@
 
 #import <Home/HFItem.h>
 
+#import <Home/HFActionBuilderFactory-Protocol.h>
 #import <Home/HFMediaAccessoryLikeItem-Protocol.h>
 
 @class NSSet, NSString;
-@protocol HFCharacteristicValueSource, HFHomeKitObject, HFMediaProfileContainer;
+@protocol HFCharacteristicValueSource, HFHomeKitObject, HFHomeKitSettingsVendor, HFMediaProfileContainer, HFMediaValueSource;
 
-@interface HFMediaAccessoryItem : HFItem <HFMediaAccessoryLikeItem>
+@interface HFMediaAccessoryItem : HFItem <HFMediaAccessoryLikeItem, HFActionBuilderFactory>
 {
+    BOOL _inServiceAction;
     id<HFHomeKitObject> _homeKitObject;
-    id<HFMediaProfileContainer> _mediaProfileContainer;
+    id<HFHomeKitSettingsVendor> _homeKitSettingsVendor;
     id<HFCharacteristicValueSource> _valueSource;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
+    long long _mediaAccessoryItemType;
 }
 
 @property (readonly, nonatomic) NSSet *accessoriesSupportingSoftwareUpdate;
+@property (readonly, nonatomic) BOOL allowsAppleMusicAccount;
 @property (readonly, nonatomic) NSSet *availableSoftwareUpdates;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject; // @synthesize homeKitObject=_homeKitObject;
+@property (readonly, nonatomic) id<HFHomeKitSettingsVendor> homeKitSettingsVendor; // @synthesize homeKitSettingsVendor=_homeKitSettingsVendor;
+@property (nonatomic) BOOL inServiceAction; // @synthesize inServiceAction=_inServiceAction;
 @property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
 @property (readonly, nonatomic) BOOL isItemGroup;
+@property (readonly, nonatomic) long long mediaAccessoryItemType; // @synthesize mediaAccessoryItemType=_mediaAccessoryItemType;
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
+@property (readonly, nonatomic) id<HFMediaValueSource> mediaValueSource;
 @property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
+@property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsMediaAction;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource; // @synthesize valueSource=_valueSource;
 
 - (void).cxx_destruct;
@@ -41,9 +52,12 @@
 - (BOOL)_isInstallingSoftwareUpdate;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)accessories;
+- (BOOL)actionsMayRequireDeviceUnlock;
+- (BOOL)containsActions;
 - (id)copyWithValueSource:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createControlItems;
+- (id)currentStateActionBuildersForHome:(id)arg1;
 - (id)iconDescriptor;
 - (id)init;
 - (id)initWithValueSource:(id)arg1 homeKitObject:(id)arg2;
@@ -54,13 +68,14 @@
 - (BOOL)isHomePod;
 - (BOOL)isHomePodAndIsInMediaSystem;
 - (BOOL)isHomePodMediaSystem;
+- (BOOL)isSingleHomePod;
 - (BOOL)isSiriDisabled;
 - (BOOL)isSpeaker;
+- (id)namingComponentForHomeKitObject;
 - (id)performStandardUpdateWithOptions:(id)arg1;
 - (id)room;
 - (id)serviceLikeBuilderInHome:(id)arg1;
 - (id)serviceNameComponents;
-- (id)services;
 - (id)settings;
 - (BOOL)supportsAlarmQuickControls;
 - (BOOL)supportsMediaQuickControls;

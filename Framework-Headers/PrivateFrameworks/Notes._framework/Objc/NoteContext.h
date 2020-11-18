@@ -8,7 +8,7 @@
 
 #import <Notes/ICLegacyContext-Protocol.h>
 
-@class AccountUtilities, CPExclusiveLock, NSManagedObjectContext, NSMutableDictionary, NSNumber, NoteAccountObject, NoteStoreObject;
+@class AccountUtilities, CPExclusiveLock, ICManagedObjectContextUpdater, NSManagedObjectContext, NSMutableDictionary, NSNumber, NoteAccountObject, NoteStoreObject;
 
 @interface NoteContext : NSObject <ICLegacyContext>
 {
@@ -28,11 +28,13 @@
     NSMutableDictionary *_notePropertyObjectsRealized;
     BOOL _isMainContext;
     BOOL _usePrivateQueue;
+    ICManagedObjectContextUpdater *_mocUpdater;
 }
 
 @property (strong, nonatomic) AccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
 @property (nonatomic) BOOL isMainContext; // @synthesize isMainContext=_isMainContext;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) ICManagedObjectContextUpdater *mocUpdater; // @synthesize mocUpdater=_mocUpdater;
 @property (nonatomic) BOOL usePrivateQueue; // @synthesize usePrivateQueue=_usePrivateQueue;
 
 + (id)allVisibleNotesMatchingPredicate:(id)arg1 context:(id)arg2;
@@ -42,6 +44,7 @@
 + (BOOL)databaseIsCorrupt:(id)arg1;
 + (id)defaultNotesSortDescriptors;
 + (id)fileProtectionOption;
++ (id)fileURLProtectionOption;
 + (id)generateGUID;
 + (id)managedObjectModel;
 + (id)newFetchRequestForNotes;
@@ -153,6 +156,7 @@
 - (id)storeForObjectID:(id)arg1;
 - (void)tearDownCoreDataStack;
 - (void)trackChanges:(id)arg1;
+- (void)updateForRecentChanges;
 - (id)visibleNoteForObjectID:(id)arg1;
 - (id)visibleNotesForIntegerIds:(id)arg1;
 - (id)visibleNotesPredicate;

@@ -8,7 +8,7 @@
 
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKNotificationID, NSArray, NSNumber, NSString;
+@class CKNotificationID, CKRecordID, NSArray, NSNumber, NSString;
 
 @interface CKNotification : NSObject <NSSecureCoding>
 {
@@ -31,6 +31,7 @@
     NSString *_soundName;
     NSString *_subscriptionID;
     NSString *_category;
+    CKRecordID *_subscriptionOwnerUserRecordID;
 }
 
 @property (copy, nonatomic) NSString *alertActionLocalizationKey; // @synthesize alertActionLocalizationKey=_alertActionLocalizationKey;
@@ -46,6 +47,7 @@
 @property (nonatomic) long long notificationType; // @synthesize notificationType=_notificationType;
 @property (copy, nonatomic) NSString *soundName; // @synthesize soundName=_soundName;
 @property (copy, nonatomic) NSString *subscriptionID; // @synthesize subscriptionID=_subscriptionID;
+@property (copy, nonatomic) CKRecordID *subscriptionOwnerUserRecordID; // @synthesize subscriptionOwnerUserRecordID=_subscriptionOwnerUserRecordID;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (copy, nonatomic) NSArray *subtitleLocalizationArgs; // @synthesize subtitleLocalizationArgs=_subtitleLocalizationArgs;
 @property (copy, nonatomic) NSString *subtitleLocalizationKey; // @synthesize subtitleLocalizationKey=_subtitleLocalizationKey;

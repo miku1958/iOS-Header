@@ -6,23 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <RelevanceEngine/RELoggable-Protocol.h>
+#import <RelevanceEngine/REContentRankerProperties-Protocol.h>
 
 @class NSString;
 
-@interface REContentRanker : NSObject <RELoggable>
+@interface REContentRanker : NSObject <REContentRankerProperties>
 {
     struct REContentFeatureExtractor _extractor;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *negativeContent;
+@property (readonly, nonatomic) NSString *positiveContent;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)load:(id)arg1 error:(id *)arg2;
 - (long long)negativeMapSize;

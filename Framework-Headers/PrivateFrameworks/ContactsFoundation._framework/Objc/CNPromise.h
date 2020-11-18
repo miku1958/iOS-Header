@@ -21,15 +21,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (CDUnknownBlockType)boolErrorCompletionHandlerAdapter;
 - (CDUnknownBlockType)completionHandlerAdapter;
 - (CDUnknownBlockType)completionHandlerAdapterWithDefaultValue:(id)arg1;
-- (void)dealloc;
 - (CDUnknownBlockType)errorOnlyCompletionHandlerAdapter;
 - (BOOL)finishWithError:(id)arg1;
 - (BOOL)finishWithResult:(id)arg1;
 - (BOOL)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)init;
+- (id)initWithSchedulerProvider:(id)arg1;
 
 @end
 

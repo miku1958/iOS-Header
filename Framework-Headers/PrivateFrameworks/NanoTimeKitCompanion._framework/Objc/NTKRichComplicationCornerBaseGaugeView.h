@@ -15,9 +15,13 @@
     NTKCurvedColoringLabel *_rightLabel;
 }
 
++ (BOOL)isMeteredProgressView;
++ (long long)progressFillStyle;
 - (void).cxx_destruct;
 - (void)_calculateLabel:(id)arg1 center:(struct CGPoint *)arg2 widthInRadius:(double *)arg3;
 - (double)_calculateProgressWidthWithLeftLabelWidth:(double)arg1 rightLabelWidth:(double)arg2;
+- (void)_editingDidEnd;
+- (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (double)_layoutLabel:(id)arg1 withLabelCenter:(struct CGPoint)arg2 labelWidthInRadius:(double)arg3 leftInRadius:(double)arg4;
 - (double)_layoutProgressViewWithBeginAngle:(double)arg1 widthInRadius:(double)arg2 bottomPadding:(double)arg3;
 - (void)_layoutSubviewsWithoutAnimation;
@@ -29,6 +33,8 @@
 - (id)progressView;
 - (id)rightLabel;
 - (void)setPosition:(long long)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

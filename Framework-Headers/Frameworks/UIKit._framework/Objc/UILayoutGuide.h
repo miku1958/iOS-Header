@@ -143,6 +143,7 @@
 - (id)nsli_contentWidthVariable;
 - (struct CGSize)nsli_convertSizeFromEngineSpace:(struct CGSize)arg1;
 - (struct CGSize)nsli_convertSizeToEngineSpace:(struct CGSize)arg1;
+- (BOOL)nsli_defaultResolvedValue:(double *)arg1 forSymbolicConstant:(id)arg2 inConstraint:(id)arg3 error:(id *)arg4;
 - (id)nsli_description;
 - (BOOL)nsli_descriptionIncludesPointer;
 - (struct CGSize)nsli_engineToUserScalingCoefficients;

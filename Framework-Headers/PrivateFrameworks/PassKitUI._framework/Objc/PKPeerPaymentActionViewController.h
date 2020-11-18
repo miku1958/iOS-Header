@@ -8,12 +8,11 @@
 
 #import <PassKitUI/PKPeerPaymentActionControllerDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSString, PKPassSnapshotter, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentAccountFeatureDescriptor, PKPeerPaymentActionController, PKPeerPaymentWebService, UIImageView;
+@class NSDecimalNumber, NSString, PKPaymentPass, PKPeerPaymentAccount, PKPeerPaymentAccountFeatureDescriptor, PKPeerPaymentActionController, PKPeerPaymentWebService;
 @protocol PKPeerPaymentActionViewControllerDelegate;
 
 @interface PKPeerPaymentActionViewController : UIViewController <PKPeerPaymentActionControllerDelegate>
 {
-    PKPassSnapshotter *_snapshotter;
     BOOL _viewHasAppeared;
     BOOL _dismissingViewController;
     BOOL _showCancelButton;
@@ -29,7 +28,6 @@
     NSDecimalNumber *_maxBalance;
     NSDecimalNumber *_minLoadAmount;
     NSDecimalNumber *_maxLoadAmount;
-    UIImageView *_passView;
 }
 
 @property (strong, nonatomic) PKPeerPaymentAccount *account; // @synthesize account=_account;
@@ -48,7 +46,6 @@
 @property (copy, nonatomic) NSDecimalNumber *minBalance; // @synthesize minBalance=_minBalance;
 @property (copy, nonatomic) NSDecimalNumber *minLoadAmount; // @synthesize minLoadAmount=_minLoadAmount;
 @property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
-@property (strong, nonatomic) UIImageView *passView; // @synthesize passView=_passView;
 @property (nonatomic) BOOL showCancelButton; // @synthesize showCancelButton=_showCancelButton;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
@@ -69,12 +66,10 @@
 - (void)peerPaymentActionController:(id)arg1 requestPresentViewController:(id)arg2;
 - (void)peerPaymentActionController:(id)arg1 requestPresentViewController:(id)arg2 withTransition:(int)arg3;
 - (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
-- (void)shakePassView;
 - (void)updateAccountValues;
 - (void)updateFirstResponder;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 - (void)willDismissViewController;
 
 @end

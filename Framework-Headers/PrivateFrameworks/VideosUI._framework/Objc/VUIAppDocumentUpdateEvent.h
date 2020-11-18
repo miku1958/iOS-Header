@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 + (id)accountChanged;
 + (id)appDidBecomeActive;
++ (id)appRefresh;
 + (id)clearPlayHistory;
 + (id)entitlements;
 + (id)favorites;

@@ -27,15 +27,17 @@
     struct CGRect _frame;
     struct UIEdgeInsets _contentInsets;
     struct UIEdgeInsets _layoutMargins;
+    struct UIEdgeInsets _borderInsets;
     struct CGRect _absoluteFrame;
     struct CGRect _componentViewFrame;
     struct CGRect _contentViewFrame;
     struct CGRect _contentFrame;
-    struct CGRect _backgroundFrame;
+    struct CGRect _backgroundViewFrame;
 }
 
 @property (nonatomic) struct CGRect absoluteFrame; // @synthesize absoluteFrame=_absoluteFrame;
-@property (nonatomic) struct CGRect backgroundFrame; // @synthesize backgroundFrame=_backgroundFrame;
+@property (nonatomic) struct CGRect backgroundViewFrame; // @synthesize backgroundViewFrame=_backgroundViewFrame;
+@property (nonatomic) struct UIEdgeInsets borderInsets; // @synthesize borderInsets=_borderInsets;
 @property (nonatomic) struct _NSRange columnRange; // @synthesize columnRange=_columnRange;
 @property (readonly, nonatomic) id<SXComponent> component; // @synthesize component=_component;
 @property (readonly, nonatomic) id<SXComponentLayout> componentLayout; // @synthesize componentLayout=_componentLayout;

@@ -12,8 +12,18 @@
 @property (readonly, nonatomic) BOOL px_hidesTabBarForRegularHorizontalSizeClass;
 @property (readonly, nonatomic, getter=px_isTabBarHidden) BOOL px_tabBarHidden;
 
+- (void)_px_prepareNavigationFromViewController:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_switchToBarBarItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)canRouteToDestination:(id)arg1;
+- (void)navigateToDestination:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)nextExistingParticipantOnRouteToDestination:(id)arg1;
+- (void)ppt_runTabSwitchingTestWithName:(id)arg1 options:(id)arg2 delegate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (double)px_HDRFocus;
 - (BOOL)px_canPerformAddToTabAnimationForTab:(unsigned long long)arg1;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGRect)px_frameForTabItem:(unsigned long long)arg1 inCoordinateSpace:(id)arg2;
+- (double)px_imageModulationIntensity;
+- (BOOL)px_isImageModulationEnabled;
 - (id)px_navigateToMemoryWithLocalIdentifier:(id)arg1;
 - (void)px_performAddToTabAnimation:(unsigned long long)arg1 withSnapshotView:(id)arg2;
 @end

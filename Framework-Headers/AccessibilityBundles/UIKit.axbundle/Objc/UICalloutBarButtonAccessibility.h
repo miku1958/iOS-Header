@@ -15,6 +15,8 @@
 + (id)buttonWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3 inView:(id)arg4;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityTextViewTextOperationResponder;
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;

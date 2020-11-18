@@ -6,24 +6,30 @@
 
 #import <SearchUI/SearchUICardSectionView.h>
 
-@class NUIContainerStackView, SearchUIImageView, TLKEmojiableVibrantLabel;
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@interface SearchUISuggestionCardSectionView : SearchUICardSectionView
+@class NSString, NUIContainerStackView, SearchUIImageView, TLKLabel;
+
+@interface SearchUISuggestionCardSectionView : SearchUICardSectionView <NUIContainerViewDelegate>
 {
     SearchUIImageView *_iconView;
-    TLKEmojiableVibrantLabel *_suggestionLabel;
+    TLKLabel *_suggestionLabel;
 }
 
-@property (strong) NUIContainerStackView *contentView; // @dynamic contentView;
-@property (strong) SearchUIImageView *iconView; // @synthesize iconView=_iconView;
-@property (strong) TLKEmojiableVibrantLabel *suggestionLabel; // @synthesize suggestionLabel=_suggestionLabel;
+@property (strong, nonatomic) NUIContainerStackView *contentView; // @dynamic contentView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SearchUIImageView *iconView; // @synthesize iconView=_iconView;
+@property (strong, nonatomic) TLKLabel *suggestionLabel; // @synthesize suggestionLabel=_suggestionLabel;
+@property (readonly) Class superclass;
 
-+ (id)_imageForSuggestion:(id)arg1 withStyle:(unsigned long long)arg2;
-+ (id)suggestedContactIconWithStyle:(unsigned long long)arg1;
-+ (id)suggestedQueryIconWithStyle:(unsigned long long)arg1;
++ (void)initialize;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void).cxx_destruct;
 - (id)setupContentView;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (void)updateMargins;
 - (void)updateWithRowModel:(id)arg1;
 
 @end

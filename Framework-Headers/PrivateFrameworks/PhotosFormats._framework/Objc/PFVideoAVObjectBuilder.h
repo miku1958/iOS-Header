@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)_getOrCreateTimeRangeMapperForExport:(BOOL)arg1;
+- (void)_synchronouslyLoadSlowMotionPropertiesFromAsset:(id)arg1;
 - (CDStruct_1b6d18a9)convertToOriginalTimeFromScaledTime:(CDStruct_1b6d18a9)arg1 forExport:(BOOL)arg2;
 - (CDStruct_1b6d18a9)convertToScaledTimeFromOriginalTime:(CDStruct_1b6d18a9)arg1 forExport:(BOOL)arg2;
 - (id)description;
@@ -36,6 +37,9 @@
 - (id)initWithVideoAsset:(id)arg1 videoAdjustments:(id)arg2;
 - (void)requestAVAssetForExport:(BOOL)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (void)requestAVAssetWithResultHandler:(CDUnknownBlockType)arg1;
+- (void)requestAsynchronousAVAssetWithResultHandler:(CDUnknownBlockType)arg1;
+- (void)requestAsynchronousExportSessionWithExportPreset:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (void)requestAsynchronousPlayerItemWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)requestExportSessionWithExportPreset:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)requestPlayerItemWithResultHandler:(CDUnknownBlockType)arg1;
 - (CDStruct_e83c9415)slowMotionRampInRangeForExport:(BOOL)arg1;

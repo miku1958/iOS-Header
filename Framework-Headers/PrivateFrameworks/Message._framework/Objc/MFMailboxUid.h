@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/ECMailbox-Protocol.h>
-#import <Message/MFMailboxPredictionMailbox-Protocol.h>
-#import <Message/MFPubliclyDescribable-Protocol.h>
+#import <Message/EDIndexableMailbox-Protocol.h>
+#import <Message/EFPubliclyDescribable-Protocol.h>
 #import <Message/NSCopying-Protocol.h>
 
-@class MFInvocationQueue, MFMessageCriterion, MFWeakReferenceHolder, MailAccount, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString;
+@class EMObjectID, MFInvocationQueue, MFMessageCriterion, MFWeakReferenceHolder, MailAccount, NSArray, NSMutableArray, NSMutableDictionary, NSNumber, NSString, NSURL;
 
-@interface MFMailboxUid : NSObject <MFMailboxPredictionMailbox, ECMailbox, NSCopying, MFPubliclyDescribable>
+@interface MFMailboxUid : NSObject <NSCopying, EFPubliclyDescribable, EDIndexableMailbox>
 {
     NSString *uniqueId;
-    unsigned int _mailboxID;
-    MFWeakReferenceHolder *_account;
+    long long _mailboxID;
+    MailAccount *_account;
     NSString *_pathComponent;
     unsigned int _attributes;
     MFWeakReferenceHolder *_parent;
@@ -32,23 +31,23 @@
     NSMutableDictionary *_userInfo;
 }
 
+@property (readonly, nonatomic) NSURL *URL;
+@property (readonly, copy, nonatomic) NSString *URLString;
 @property (readonly, nonatomic) MFInvocationQueue *attachmentDownloadQueue;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property (strong, nonatomic) NSArray *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *mf_publicDescription;
 @property (readonly, copy, nonatomic) NSString *name;
+@property (readonly, nonatomic) EMObjectID *objectID;
 @property (readonly, copy, nonatomic) NSString *persistentID;
 @property (readonly, nonatomic) unsigned long long suggestionsLostMessageSearchResultCount;
 @property (readonly, nonatomic) double suggestionsLostMessageSearchTimestamp;
 @property (readonly) Class superclass;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
 
++ (id)defaultScheduler;
 + (id)fileURLForMailboxURL:(id)arg1;
 + (BOOL)isDraftsMailboxType:(int)arg1;
 + (BOOL)isOutgoingMailboxType:(int)arg1;
@@ -56,10 +55,9 @@
 + (BOOL)isStandardizedMailboxUidType:(int)arg1;
 + (id)specialNameForType:(int)arg1;
 + (BOOL)typeIsValidTransferDestination:(int)arg1;
-- (id)URL;
-- (id)URLString;
+- (void).cxx_destruct;
 - (id)URLStringNonNil;
-- (id)URLStringWithAccount:(id)arg1;
+- (id)URLWithAccount:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithName:(id)arg1 attributes:(unsigned int)arg2 forAccount:(id)arg3;
 - (id)_loadUserInfo;
@@ -81,7 +79,6 @@
 - (long long)compareWithMailboxUid:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)criterion;
-- (void)dealloc;
 - (id)depthFirstEnumerator;
 - (id)descendantWithExtraAttribute:(id)arg1;
 - (id)dictionaryRepresentation;
@@ -108,7 +105,8 @@
 - (BOOL)isStore;
 - (BOOL)isValid;
 - (BOOL)isVisible;
-- (unsigned int)mailboxID;
+- (long long)mailboxID;
+- (int)mailboxType;
 - (BOOL)mergeWithUserInfo:(id)arg1;
 - (id)mutableCopyOfChildren;
 - (id)mutableDictionaryRepresentation;
@@ -128,10 +126,10 @@
 - (void)setAttributes:(unsigned int)arg1;
 - (BOOL)setChildren:(id)arg1;
 - (void)setCriterion:(id)arg1;
+- (void)setMailboxType:(int)arg1;
 - (void)setName:(id)arg1;
 - (void)setParent:(id)arg1;
 - (void)setRepresentedAccount:(id)arg1;
-- (void)setType:(int)arg1;
 - (void)setUserInfoBool:(BOOL)arg1 forKey:(id)arg2;
 - (void)setUserInfoObject:(id)arg1 forKey:(id)arg2;
 - (void)setUserInfoWithDictionary:(id)arg1;
@@ -140,7 +138,6 @@
 - (void)sortChildren;
 - (long long)statusCountDelta;
 - (id)store;
-- (id)tildeAbbreviatedPath;
 - (id)topMailbox;
 - (id)uniqueId;
 - (unsigned long long)unreadCount;

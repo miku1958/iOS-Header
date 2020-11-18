@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class MCDPlayModeButton, MCDRepeatButton, NSArray;
+@class MCDPlayModeButton, MCDRepeatButton, NSArray, UILayoutGuide;
 
 @interface MCDPlayModeControlView : UIView
 {
@@ -17,23 +17,27 @@
     MCDPlayModeButton *_addToLibraryButton;
     MCDPlayModeButton *_playbackRateButton;
     NSArray *_activeButtonLayoutConstraints;
+    UILayoutGuide *_leadingGuide;
+    UILayoutGuide *_trailingGuide;
 }
 
 @property (strong, nonatomic) NSArray *activeButtonLayoutConstraints; // @synthesize activeButtonLayoutConstraints=_activeButtonLayoutConstraints;
 @property (readonly, nonatomic) MCDPlayModeButton *addToLibraryButton; // @synthesize addToLibraryButton=_addToLibraryButton;
 @property (nonatomic) BOOL fuseSubscriberLayout; // @synthesize fuseSubscriberLayout=_fuseSubscriberLayout;
+@property (strong, nonatomic) UILayoutGuide *leadingGuide; // @synthesize leadingGuide=_leadingGuide;
 @property (readonly, nonatomic) MCDPlayModeButton *moreButton; // @synthesize moreButton=_moreButton;
 @property (readonly, nonatomic) MCDPlayModeButton *playbackRateButton; // @synthesize playbackRateButton=_playbackRateButton;
 @property (readonly, nonatomic) MCDRepeatButton *repeatButton; // @synthesize repeatButton=_repeatButton;
 @property (readonly, nonatomic) MCDPlayModeButton *shuffleButton; // @synthesize shuffleButton=_shuffleButton;
+@property (strong, nonatomic) UILayoutGuide *trailingGuide; // @synthesize trailingGuide=_trailingGuide;
 
 - (void).cxx_destruct;
-- (void)_addConstraints;
 - (void)_updateButtonLayouts;
 - (void)addSizeConstraintsForButton:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)setupConstraints;
 
 @end
 

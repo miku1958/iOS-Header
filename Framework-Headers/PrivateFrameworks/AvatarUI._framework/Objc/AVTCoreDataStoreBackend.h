@@ -35,7 +35,7 @@
 @property (readonly) Class superclass;
 
 + (id)cdFetchRequestForAvatarFetchRequest:(id)arg1 recordTransformer:(id)arg2;
-+ (id)cdFetchRequestWithPredicate:(id)arg1;
++ (id)cdFetchRequestWithPredicate:(id)arg1 fetchLimit:(long long)arg2;
 + (BOOL)fetchRequestCriteriaSupported:(long long)arg1;
 - (void).cxx_destruct;
 - (id)avatarsForFetchRequest:(id)arg1 error:(id *)arg2;

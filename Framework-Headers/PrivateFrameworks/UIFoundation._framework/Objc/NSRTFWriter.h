@@ -31,12 +31,16 @@
         unsigned int _forceColorWrite:1;
         unsigned int _activeFontFeatures:1;
         unsigned int _preserveNaturalAlignment:1;
-        unsigned int _reserved:29;
+        unsigned int _textScalingNeedsConvert:1;
+        unsigned int _wroteCocoaVersion:1;
+        unsigned int _reserved:27;
     } _rwFlags;
     double _rightMargin;
     NSDictionary *_docAttrs;
     void *_layoutSections;
     NSMapTable *_attachmentData;
+    long long _textScalingConversionSource;
+    long long _textScalingConversionTarget;
 }
 
 + (id)RTFDataForDate:(id)arg1;
@@ -51,7 +55,10 @@
 - (id)_plainFontNameForFont:(id)arg1;
 - (void)_setPreserveNaturalAlignment:(BOOL)arg1;
 - (void)_setRTFDFileWrapper:(id)arg1;
+- (void)_setTextScalingConversionSource:(long long)arg1;
+- (void)_setTextScalingConversionTarget:(long long)arg1;
 - (void)_writeCharacters:(id)arg1 range:(struct _NSRange)arg2;
+- (void)_writeTextScalingAndRenderingHint;
 - (void)_writeVersionsAndEncodings;
 - (void)collectResources;
 - (void)dealloc;

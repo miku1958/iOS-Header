@@ -8,38 +8,58 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOAddress, GEOLatLng, NSString, PBUnknownFields;
+@class GEOAddress, GEOLatLng, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOMapItemCorrectedLocationAttributes : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    double _lastUpdateDate;
-    GEOAddress *_correctedAddress;
     NSString *_correctedAddressSecondaryStreetLine;
+    GEOAddress *_correctedAddress;
     GEOLatLng *_correctedCoordinate;
     NSString *_customLabel;
+    double _lastUpdateDate;
     BOOL _hasSubmittedRAP;
     struct {
-        unsigned int lastUpdateDate:1;
-        unsigned int hasSubmittedRAP:1;
-    } _has;
+        unsigned int has_lastUpdateDate:1;
+        unsigned int has_hasSubmittedRAP:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_correctedAddressSecondaryStreetLine:1;
+        unsigned int read_correctedAddress:1;
+        unsigned int read_correctedCoordinate:1;
+        unsigned int read_customLabel:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_correctedAddressSecondaryStreetLine:1;
+        unsigned int wrote_correctedAddress:1;
+        unsigned int wrote_correctedCoordinate:1;
+        unsigned int wrote_customLabel:1;
+        unsigned int wrote_lastUpdateDate:1;
+        unsigned int wrote_hasSubmittedRAP:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOAddress *correctedAddress; // @synthesize correctedAddress=_correctedAddress;
-@property (strong, nonatomic) NSString *correctedAddressSecondaryStreetLine; // @synthesize correctedAddressSecondaryStreetLine=_correctedAddressSecondaryStreetLine;
-@property (strong, nonatomic) GEOLatLng *correctedCoordinate; // @synthesize correctedCoordinate=_correctedCoordinate;
-@property (strong, nonatomic) NSString *customLabel; // @synthesize customLabel=_customLabel;
+@property (strong, nonatomic) GEOAddress *correctedAddress;
+@property (strong, nonatomic) NSString *correctedAddressSecondaryStreetLine;
+@property (strong, nonatomic) GEOLatLng *correctedCoordinate;
+@property (strong, nonatomic) NSString *customLabel;
 @property (readonly, nonatomic) BOOL hasCorrectedAddress;
 @property (readonly, nonatomic) BOOL hasCorrectedAddressSecondaryStreetLine;
 @property (readonly, nonatomic) BOOL hasCorrectedCoordinate;
 @property (readonly, nonatomic) BOOL hasCustomLabel;
 @property (nonatomic) BOOL hasHasSubmittedRAP;
 @property (nonatomic) BOOL hasLastUpdateDate;
-@property (nonatomic) BOOL hasSubmittedRAP; // @synthesize hasSubmittedRAP=_hasSubmittedRAP;
-@property (nonatomic) double lastUpdateDate; // @synthesize lastUpdateDate=_lastUpdateDate;
+@property (nonatomic) BOOL hasSubmittedRAP;
+@property (nonatomic) double lastUpdateDate;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readCorrectedAddress;
+- (void)_readCorrectedAddressSecondaryStreetLine;
+- (void)_readCorrectedCoordinate;
+- (void)_readCustomLabel;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -47,6 +67,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

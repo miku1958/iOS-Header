@@ -17,20 +17,22 @@ __attribute__((visibility("hidden")))
     int _intentType;
     int _structureType;
     struct {
-        unsigned int intentType:1;
-        unsigned int structureType:1;
-    } _has;
+        unsigned int has_intentType:1;
+        unsigned int has_structureType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIntentType;
 @property (nonatomic) BOOL hasStructureType;
-@property (nonatomic) int intentType; // @synthesize intentType=_intentType;
-@property (nonatomic) int structureType; // @synthesize structureType=_structureType;
+@property (nonatomic) int intentType;
+@property (nonatomic) int structureType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsIntentType:(id)arg1;
 - (int)StringAsStructureType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)intentTypeAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)structureTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

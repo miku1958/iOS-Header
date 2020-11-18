@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Photos/PHAssetResource.h>
+#import <objc/NSObject.h>
 
 #import <Photos/PHCPLAssetResource-Protocol.h>
 
-@class NSData, PHAssetResourceCreationOptions;
+@class NSData, NSString, NSURL, PHAssetResourceCreationOptions;
 
-@interface PHExternalAssetResource : PHAssetResource <PHCPLAssetResource>
+@interface PHExternalAssetResource : NSObject <PHCPLAssetResource>
 {
     BOOL _duplicateAllowsReadAccess;
     BOOL _isLibraryAssetResource;
@@ -18,23 +18,30 @@
     PHAssetResourceCreationOptions *_creationOptions;
     unsigned long long _cplResourceType;
     NSData *_data;
+    NSURL *_fileURL;
+    long long _pixelWidth;
+    long long _pixelHeight;
 }
 
 @property (readonly, nonatomic) unsigned long long cplResourceType; // @synthesize cplResourceType=_cplResourceType;
 @property (copy, nonatomic) PHAssetResourceCreationOptions *creationOptions; // @synthesize creationOptions=_creationOptions;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (nonatomic, setter=_setDuplicateAllowsReadAccess:) BOOL duplicateAllowsReadAccess; // @synthesize duplicateAllowsReadAccess=_duplicateAllowsReadAccess;
+@property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
 @property (readonly, nonatomic) BOOL isLibraryAssetResource; // @synthesize isLibraryAssetResource=_isLibraryAssetResource;
+@property (readonly, nonatomic) NSString *originalFilename;
+@property (nonatomic) long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
+@property (nonatomic) long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
+@property (readonly, nonatomic) long long type; // @synthesize type=_resourceType;
+@property (readonly, nonatomic) NSString *uniformTypeIdentifier;
 
 + (id)assetResourceForDuplicatingAssetResource:(id)arg1 asData:(BOOL)arg2 error:(id *)arg3;
 + (unsigned long long)probableCPLResourceTypeFromAssetResourceType:(long long)arg1;
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithPropertyListRepresentation:(id)arg1;
 - (id)initWithResourceType:(long long)arg1;
-- (id)originalFilename;
 - (id)propertyListRepresentation;
-- (long long)type;
-- (id)uniformTypeIdentifier;
 
 @end
 

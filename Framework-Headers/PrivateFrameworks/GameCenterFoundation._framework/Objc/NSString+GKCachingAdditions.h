@@ -7,6 +7,25 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (GKCachingAdditions)
++ (id)_gkUUIDString;
++ (id)stringForParanthenticalPercentileRankingWithRank:(float)arg1 totalScores:(float)arg2;
++ (id)stringForPercentileRankingWithRank:(float)arg1 totalScores:(float)arg2;
++ (id)stringForPercentileWithRank:(float)arg1 totalScores:(float)arg2 asPercentile:(BOOL)arg3 isTop:(BOOL *)arg4;
++ (id)stringForRankAndPercentileWithRank:(float)arg1 totalScores:(float)arg2;
++ (id)stringForScoreAndPercentileWithRank:(float)arg1 totalScores:(float)arg2 formattedScore:(id)arg3;
+- (id)_gkArrayByTokenizingString;
+- (BOOL)_gkIsMixedDirection;
+- (BOOL)_gkIsNaturallyRTL;
+- (id)_gkLocaleSensitiveUppercaseString;
+- (id)_gkMD5HashData;
+- (id)_gkMD5HashString;
+- (id)_gkSHA1HashData;
+- (id)_gkSHA1HashString;
+- (id)_gkSHA256Hash;
+- (BOOL)_gkSearchMatchesItem:(id)arg1 withSearchTerms:(id)arg2;
+- (id)_gkStringByUnescapingFromURLQuery;
+- (id)_gkTruncationSymbolWithFormat:(id)arg1;
 - (id)cacheKeyRepresentation;
+- (void)processUTF16CharactersForBidi:(CDUnknownBlockType)arg1;
 @end
 

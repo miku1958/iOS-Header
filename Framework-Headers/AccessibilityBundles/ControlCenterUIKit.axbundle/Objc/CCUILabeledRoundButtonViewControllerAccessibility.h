@@ -19,6 +19,7 @@
 - (BOOL)_accessibilityControlCenterButtonIsToggle;
 - (id)_accessibilityControlCenterButtonLabel;
 - (id)_accessibilityControlCenterButtonPath;
+- (BOOL)_accessibilityControlCenterButtonWillExpand;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

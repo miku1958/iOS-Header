@@ -8,18 +8,20 @@
 
 #import <HearingUtilities/HCHeardControllerProtocol-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
+@protocol OS_xpc_object;
 
 @interface AXHeardController : NSObject <HCHeardControllerProtocol>
 {
-    NSMutableArray *_clients;
-    NSMutableDictionary *_handlers;
+    NSObject<OS_xpc_object> *_service;
+    NSArray *_clients;
+    NSDictionary *_handlers;
 }
 
-@property (strong, nonatomic) NSMutableArray *clients; // @synthesize clients=_clients;
+@property (strong, nonatomic) NSArray *clients; // @synthesize clients=_clients;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableDictionary *handlers; // @synthesize handlers=_handlers;
+@property (strong, nonatomic) NSDictionary *handlers; // @synthesize handlers=_handlers;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

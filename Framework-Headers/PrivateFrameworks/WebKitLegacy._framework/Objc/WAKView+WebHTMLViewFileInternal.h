@@ -7,6 +7,11 @@
 #import <WebCore/WAKView.h>
 
 @interface WAKView (WebHTMLViewFileInternal)
+- (id)_frame;
+- (id)_webView;
 - (void)_web_addDescendentWebHTMLViewsToArray:(id)arg1;
+- (BOOL)_web_firstResponderIsSelfOrDescendantView;
+- (id)_web_parentWebFrameView;
+- (id)_web_superviewOfClass:(Class)arg1;
 @end
 

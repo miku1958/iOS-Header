@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL showsCancel; // @synthesize showsCancel=_showsCancel;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)initWithDelegate:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

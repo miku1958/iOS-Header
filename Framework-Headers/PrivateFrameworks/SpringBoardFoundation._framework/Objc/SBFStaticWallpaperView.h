@@ -6,54 +6,52 @@
 
 #import <SpringBoardFoundation/SBFWallpaperView.h>
 
-@class NSString, SBFColorBoxes, UIImage;
+@class NSData, NSString, SBFColorBoxes, UIImage;
 
 @interface SBFStaticWallpaperView : SBFWallpaperView
 {
-    UIImage *_image;
-    UIImage *_displayedImage;
     double _overallContrast;
     SBFColorBoxes *_colorBoxes;
-    NSString *_cacheGroup;
+    BOOL _needsWallpaperDimmingTreatment;
+    UIImage *_displayedImage;
     UIImage *_sampleImage;
+    NSData *_displayedImageHashData;
+    NSString *_displayedImageHashString;
 }
 
 @property (strong, nonatomic) SBFColorBoxes *colorBoxes;
 @property (strong, nonatomic, getter=_displayedImage, setter=_setDisplayedImage:) UIImage *displayedImage; // @synthesize displayedImage=_displayedImage;
+@property (copy, nonatomic) NSData *displayedImageHashData; // @synthesize displayedImageHashData=_displayedImageHashData;
+@property (copy, nonatomic) NSString *displayedImageHashString; // @synthesize displayedImageHashString=_displayedImageHashString;
 @property (strong, nonatomic, getter=_sampleImage, setter=_setSampleImage:) UIImage *sampleImage; // @synthesize sampleImage=_sampleImage;
 
 + (BOOL)_allowsParallax;
 + (BOOL)_allowsRasterization;
 + (BOOL)_canCacheImages;
 + (BOOL)_canDownscaleSampleImage;
-+ (id)imageByScalingImage:(id)arg1 withScaleFactor:(double)arg2 needsLuminanceTreatment:(BOOL)arg3;
-+ (id)luminanceTreatmentFilters;
 - (void).cxx_destruct;
 - (id)_averageColorInContentViewRect:(struct CGRect)arg1 smudgeRadius:(double)arg2;
 - (id)_computeAverageColor;
 - (double)_contrastInContentViewRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (id)_createColorBoxes;
 - (void)_displayImage:(id)arg1;
-- (void)_generateImageForImage:(id)arg1 options:(unsigned long long)arg2 downsampleFactor:(double)arg3 generationHandler:(CDUnknownBlockType)arg4;
+- (void)_generateImageForImage:(id)arg1 cacheKey:(id)arg2 options:(unsigned long long)arg3 downsampleFactor:(double)arg4 needsDimmingTreatment:(BOOL)arg5 generationHandler:(CDUnknownBlockType)arg6;
 - (struct CGSize)_imageSize;
-- (void)_resetColorBoxes;
 - (void)_setUpStaticImageContentView:(id)arg1;
 - (void)_setupContentViewWithOptions:(unsigned long long)arg1;
-- (void)_setupWallpaperImage:(id)arg1 options:(unsigned long long)arg2;
+- (void)_setupWallpaperImageFromConfiguration:(id)arg1 options:(unsigned long long)arg2;
+- (void)_updateColorBoxesWithKey:(id)arg1 image:(id)arg2;
 - (id)_wallpaperImageForAnalysis;
 - (float)_zoomScale;
-- (id)cacheGroup;
+- (id)cacheUniqueIdentifier;
 - (double)contrast;
 - (double)contrastInRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (double)cropZoomScale;
 - (BOOL)hasContentOutsideVisibleBounds;
 - (BOOL)imageRequiresLuminanceTreatment;
-- (id)initWithFrame:(struct CGRect)arg1 variant:(long long)arg2 wallpaperSettingsProvider:(id)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 cacheGroup:(id)arg3 variant:(long long)arg4 options:(unsigned long long)arg5 wallpaperSettingsProvider:(id)arg6;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3 wallpaperSettingsProvider:(id)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2 variant:(long long)arg3 cacheGroup:(id)arg4 delegate:(id)arg5 options:(unsigned long long)arg6;
 - (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
 - (void)preheatImageData;
-- (void)setContentView:(id)arg1;
 - (void)setContentsRect:(struct CGRect)arg1;
 - (void)setCropRect:(struct CGRect)arg1 zoomScale:(double)arg2;
 - (id)snapshotImage;

@@ -13,7 +13,6 @@
 + (void)blockUntilFirstUnlock;
 + (id)currentOsBuild;
 + (BOOL)isClassCLocked;
-+ (BOOL)isConstrainedDevice;
 + (BOOL)isDeviceFormattedForProtection;
 + (BOOL)isUnlocked;
 + (int)lockState;

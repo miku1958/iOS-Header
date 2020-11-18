@@ -8,7 +8,7 @@
 
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class CNChangeHistoryAnchor, CNGroup, NSString;
+@class CNChangeHistoryAnchor, CNGroup, NSNumber, NSString;
 
 @interface CNChangeHistoryGroupChange : NSObject <NSSecureCoding>
 {
@@ -16,10 +16,14 @@
     long long _changeType;
     CNGroup *_group;
     CNChangeHistoryAnchor *_changeAnchor;
+    NSNumber *_changeID;
+    NSString *_externalID;
 }
 
 @property (strong, nonatomic) CNChangeHistoryAnchor *changeAnchor; // @synthesize changeAnchor=_changeAnchor;
+@property (strong, nonatomic) NSNumber *changeID; // @synthesize changeID=_changeID;
 @property (nonatomic) long long changeType; // @synthesize changeType=_changeType;
+@property (strong, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
 @property (strong, nonatomic) CNGroup *group; // @synthesize group=_group;
 @property (readonly, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
 
@@ -28,7 +32,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 changeType:(long long)arg2 changeAnchor:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 changeType:(long long)arg2 changeAnchor:(id)arg3 changeID:(id)arg4 externalID:(id)arg5;
 
 @end
 

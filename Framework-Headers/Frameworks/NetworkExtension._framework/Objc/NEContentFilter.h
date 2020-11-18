@@ -17,9 +17,11 @@
 {
     BOOL _enabled;
     NEFilterProviderConfiguration *_provider;
+    long long _grade;
 }
 
 @property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (nonatomic) long long grade; // @synthesize grade=_grade;
 @property (copy) NEFilterProviderConfiguration *provider; // @synthesize provider=_provider;
 
 + (BOOL)supportsSecureCoding;
@@ -28,6 +30,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

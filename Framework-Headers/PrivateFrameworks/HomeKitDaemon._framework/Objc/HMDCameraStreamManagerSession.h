@@ -6,13 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDCameraSessionID, HMFMessage, HMFTimer, NSNumber, NSString;
+@class HMDCameraStreamSessionID, HMFMessage, HMFTimer, NSNumber, NSString;
 @protocol HMDCameraStreamControlManagerProtocol;
 
 @interface HMDCameraStreamManagerSession : HMFObject
 {
     id<HMDCameraStreamControlManagerProtocol> _streamControlManager;
-    HMDCameraSessionID *_sessionID;
+    HMDCameraStreamSessionID *_sessionID;
     NSString *_destinationID;
     HMFTimer *_streamSetupTimer;
     NSString *_streamShowingAppIdentifier;
@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) HMFMessage *currentMessage; // @synthesize currentMessage=_currentMessage;
 @property (readonly, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
-@property (readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
 @property (readonly, nonatomic) id<HMDCameraStreamControlManagerProtocol> streamControlManager; // @synthesize streamControlManager=_streamControlManager;
 @property (readonly, nonatomic) HMFTimer *streamSetupTimer; // @synthesize streamSetupTimer=_streamSetupTimer;

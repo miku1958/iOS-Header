@@ -13,6 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_axFloatingSwitcherIsVisible;
+- (id)_axFloatingSwitcherViewController;
+- (BOOL)_axIsMainSwitcherVisible;
+- (void)_axSetUpSwitcherViewControllers;
+- (void)_axSetUpWrapperViews;
+- (void)_loadContentViewControllerIfNecessary;
 - (void)switcherContentController:(id)arg1 deletedAppLayout:(id)arg2 forReason:(long long)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 

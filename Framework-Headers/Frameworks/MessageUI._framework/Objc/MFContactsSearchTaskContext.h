@@ -23,11 +23,8 @@
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (id)contextWithConsumer:(id)arg1 text:(id)arg2 operations:(id)arg3 searchQueries:(id)arg4;
-- (BOOL)consumerRespondsToAutocompleteCallbacks;
-- (BOOL)consumerRespondsToCorecipientCallbacks;
-- (BOOL)consumerRespondsToNetworkingMethods;
-- (BOOL)consumerRespondsToOldSortingCallbacks;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (BOOL)consumerRespondsToCallbacks;
 - (BOOL)done;
 
 @end

@@ -19,11 +19,13 @@
         unsigned int enable:1;
     } _has;
     BOOL _enable;
+    BOOL __encodeLegacyGloryData;
     int _defroster;
     _INPBDataString *_carName;
     _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) int defroster; // @synthesize defroster=_defroster;
@@ -37,11 +39,14 @@
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsDefroster:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)defrosterAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

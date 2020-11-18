@@ -8,25 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapItemAddressBookAttributes, GEOMapItemCorrectedLocationAttributes, GEOMapItemRoutineAttributes, PBUnknownFields;
+@class GEOMapItemAddressBookAttributes, GEOMapItemCorrectedLocationAttributes, GEOMapItemRoutineAttributes, PBDataReader, PBUnknownFields;
 
 @interface GEOMapItemClientAttributes : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapItemAddressBookAttributes *_addressBookAttributes;
     GEOMapItemCorrectedLocationAttributes *_correctedLocationAttributes;
     GEOMapItemRoutineAttributes *_routineAttributes;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_addressBookAttributes:1;
+        unsigned int read_correctedLocationAttributes:1;
+        unsigned int read_routineAttributes:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_addressBookAttributes:1;
+        unsigned int wrote_correctedLocationAttributes:1;
+        unsigned int wrote_routineAttributes:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOMapItemAddressBookAttributes *addressBookAttributes; // @synthesize addressBookAttributes=_addressBookAttributes;
-@property (strong, nonatomic) GEOMapItemCorrectedLocationAttributes *correctedLocationAttributes; // @synthesize correctedLocationAttributes=_correctedLocationAttributes;
+@property (strong, nonatomic) GEOMapItemAddressBookAttributes *addressBookAttributes;
+@property (strong, nonatomic) GEOMapItemCorrectedLocationAttributes *correctedLocationAttributes;
 @property (readonly, nonatomic) BOOL hasAddressBookAttributes;
 @property (readonly, nonatomic) BOOL hasCorrectedLocationAttributes;
 @property (readonly, nonatomic) BOOL hasRoutineAttributes;
-@property (strong, nonatomic) GEOMapItemRoutineAttributes *routineAttributes; // @synthesize routineAttributes=_routineAttributes;
+@property (strong, nonatomic) GEOMapItemRoutineAttributes *routineAttributes;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readAddressBookAttributes;
+- (void)_readCorrectedLocationAttributes;
+- (void)_readRoutineAttributes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +51,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

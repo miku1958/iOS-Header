@@ -32,7 +32,7 @@
 
 + (Class)configurationClass;
 + (id)requiredEntitlements;
-+ (BOOL)validateConfiguration:(id)arg1 error:(out id *)arg2;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)_queue_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_discardIfAuthorizedWithCompletion:(CDUnknownBlockType)arg1;
@@ -44,7 +44,7 @@
 - (void)createSeriesSampleIfNeeded:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)discardSeriesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)exportedInterface;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (BOOL)queue_canInsertDataWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)queue_freezeBuilderWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queue_recoverBuilder;

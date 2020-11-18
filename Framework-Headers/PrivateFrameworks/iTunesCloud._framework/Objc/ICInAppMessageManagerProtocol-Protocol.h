@@ -15,13 +15,17 @@
 - (void)downloadResourcesForMessageWithIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)flushEventsWithCompletion:(void (^)(NSError *))arg1;
 - (void)getAllMetadataForBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getGlobalPropertyForKey:(NSString *)arg1 completion:(void (^)(id, NSError *))arg2;
 - (void)getMetadataForMessageIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(ICInAppMessageMetadataEntry *, NSError *))arg3;
+- (void)getPropertyForKey:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(id, NSError *))arg3;
 - (void)messageEntriesForBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)removeAllMessageEntriesForBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)removeMessageEntryWithIdentifier:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeMetadataForMessageIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)reportEventForMessageIdentifier:(NSString *)arg1 withParams:(NSDictionary *)arg2 flushImmediately:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
 - (void)resetMessagesWithCompletion:(void (^)(NSError *))arg1;
+- (void)setGlobalProperty:(id)arg1 forKey:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setProperty:(id)arg1 forKey:(NSString *)arg2 bundleIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)syncMessagesWithCompletion:(void (^)(NSError *))arg1;
 - (void)updateMessageEntry:(ICInAppMessageEntry *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateMetadata:(ICInAppMessageMetadataEntry *)arg1 messageIdentifier:(NSString *)arg2 bundleIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;

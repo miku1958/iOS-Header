@@ -15,6 +15,7 @@
 
 - (id)__autorotationSanityCheckObjectFromSource:(id)arg1 selector:(SEL)arg2;
 - (long long)_preferredInterfaceOrientationGivenCurrentOrientation:(long long)arg1;
+- (id)_topMostWindow;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)shouldAutorotate;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;

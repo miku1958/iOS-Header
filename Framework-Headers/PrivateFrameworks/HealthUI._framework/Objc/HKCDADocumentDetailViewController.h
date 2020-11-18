@@ -26,7 +26,6 @@
 @property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 
 - (void).cxx_destruct;
-- (void)_navigationBarDividingLine:(BOOL)arg1;
 - (void)_replaceLastArrangedViewWith:(id)arg1;
 - (void)changeReportDisplayed:(id)arg1;
 - (id)initWithReportData:(id)arg1;

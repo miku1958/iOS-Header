@@ -48,7 +48,9 @@
 - (void)performStateWork:(CDUnknownBlockType)arg1;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2;
 - (id)resourceForItem:(id)arg1 scope:(id)arg2 cacheMissHandler:(CDUnknownBlockType)arg3;
+- (id)resourceURLForItem:(id)arg1 scope:(id)arg2;
 - (BOOL)saveImage:(id)arg1 forItem:(id)arg2 scope:(id)arg3 error:(id *)arg4;
+- (BOOL)saveImage:(id)arg1 withImageData:(id)arg2 forItem:(id)arg3 scope:(id)arg4 error:(id *)arg5;
 
 @end
 

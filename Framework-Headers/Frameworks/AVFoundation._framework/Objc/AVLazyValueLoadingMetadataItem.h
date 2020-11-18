@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)_waitForLoadingOfValueDependentKey:(id)arg1;
 - (id)dataType;
 - (void)dealloc;
-- (void)finalize;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)statusOfValueForKey:(id)arg1 error:(id *)arg2;
 - (id)value;

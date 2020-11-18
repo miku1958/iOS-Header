@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 + (id)diffContact:(id)arg1 to:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
-- (BOOL)applyToABPerson:(void *)arg1 error:(id *)arg2;
+- (BOOL)applyToABPerson:(void *)arg1 logger:(id)arg2 error:(id *)arg3;
 - (void)applyToMutableContact:(id)arg1 withIdentifierMap:(id)arg2;
 - (void)applyToMutableContacts:(id)arg1 withIdentifierMap:(id)arg2;
 - (id)contactByApplyingUpdatesToContact:(id)arg1;

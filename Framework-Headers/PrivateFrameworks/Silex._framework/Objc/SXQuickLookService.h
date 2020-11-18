@@ -8,18 +8,18 @@
 
 #import <Silex/SXQuickLookService-Protocol.h>
 
-@class NSOperationQueue, NSString;
+@class NSString, QLThumbnailGenerator;
 
 @interface SXQuickLookService : NSObject <SXQuickLookService>
 {
-    NSOperationQueue *_thumbnailQueue;
+    QLThumbnailGenerator *_generator;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) QLThumbnailGenerator *generator; // @synthesize generator=_generator;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSOperationQueue *thumbnailQueue; // @synthesize thumbnailQueue=_thumbnailQueue;
 
 - (void).cxx_destruct;
 - (void)fetchThumbnailForFile:(id)arg1 size:(struct CGSize)arg2 onCompletion:(CDUnknownBlockType)arg3 onError:(CDUnknownBlockType)arg4;

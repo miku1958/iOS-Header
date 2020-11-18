@@ -11,7 +11,6 @@
 }
 
 + (id)systemAppPersistenteCache;
-+ (id)wallpaperCache;
 - (id)imageForKey:(id)arg1 cacheOptions:(unsigned long long)arg2 generateImageWithBlockIfNecessary:(CDUnknownBlockType)arg3;
 - (id)imageForKey:(id)arg1 generateImageWithBlockIfNecessary:(CDUnknownBlockType)arg2;
 - (id)imageForKey:(id)arg1 options:(int)arg2;

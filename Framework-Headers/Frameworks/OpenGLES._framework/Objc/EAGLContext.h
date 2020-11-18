@@ -22,6 +22,7 @@
 + (id)currentContext;
 + (BOOL)setCurrentContext:(id)arg1;
 - (struct EAGLMacroContext *)GetMacroContextPrivate;
+- (BOOL)attachImage:(unsigned long long)arg1 toCoreSurface:(struct __IOSurface *)arg2 invertedRender:(BOOL)arg3;
 - (id)commonInitWithAPI:(unsigned long long)arg1 properties:(id)arg2;
 - (void)dealloc;
 - (struct EAGLMacroContext *)getMacroContextPrivate;
@@ -37,6 +38,8 @@
 - (BOOL)renderbufferStorage:(unsigned long long)arg1 fromDrawable:(id)arg2;
 - (BOOL)setBlockFence:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
 - (unsigned long long)setParameter:(unsigned int)arg1 to:(int *)arg2;
+- (BOOL)texImageIOSurface:(struct __IOSurface *)arg1 target:(unsigned long long)arg2 internalFormat:(unsigned long long)arg3 width:(unsigned int)arg4 height:(unsigned int)arg5 format:(unsigned long long)arg6 type:(unsigned long long)arg7 plane:(unsigned int)arg8;
+- (BOOL)texImageIOSurface:(struct __IOSurface *)arg1 target:(unsigned long long)arg2 internalFormat:(unsigned long long)arg3 width:(unsigned int)arg4 height:(unsigned int)arg5 format:(unsigned long long)arg6 type:(unsigned long long)arg7 plane:(unsigned int)arg8 invert:(BOOL)arg9;
 
 @end
 

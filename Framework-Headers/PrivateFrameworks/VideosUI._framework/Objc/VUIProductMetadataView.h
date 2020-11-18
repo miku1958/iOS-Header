@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, VUIProductInfoAiringView, VUIProductMetadataLayout, VUISeparatorView;
+@class IKViewElement, NSArray, VUIProductInfoAiringView, VUIProductMetadataLayout, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUIProductMetadataView : UIView
@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
     UIView *_defaultFocusView;
     VUIProductInfoAiringView *_airingView;
     VUISeparatorView *_separatorView;
+    IKViewElement *_viewElement;
 }
 
 @property (strong, nonatomic) VUIProductInfoAiringView *airingView; // @synthesize airingView=_airingView;
 @property (strong, nonatomic) UIView *defaultFocusView; // @synthesize defaultFocusView=_defaultFocusView;
 @property (strong, nonatomic) NSArray *sectionViews; // @synthesize sectionViews=_sectionViews;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
+@property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 @property (strong, nonatomic) VUIProductMetadataLayout *viewLayout; // @synthesize viewLayout=_viewLayout;
 
 + (id)configureViewWithElement:(id)arg1 existingView:(id)arg2;

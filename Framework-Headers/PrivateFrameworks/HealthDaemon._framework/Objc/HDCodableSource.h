@@ -16,6 +16,7 @@
     long long _options;
     NSString *_bundleIdentifier;
     NSString *_name;
+    NSString *_owningAppBundleIdentifier;
     NSString *_productType;
     NSData *_uuid;
     BOOL _deleted;
@@ -33,11 +34,13 @@
 @property (nonatomic) BOOL hasModificationDate;
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasOptions;
+@property (readonly, nonatomic) BOOL hasOwningAppBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasProductType;
 @property (readonly, nonatomic) BOOL hasUuid;
 @property (nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long options; // @synthesize options=_options;
+@property (strong, nonatomic) NSString *owningAppBundleIdentifier; // @synthesize owningAppBundleIdentifier=_owningAppBundleIdentifier;
 @property (strong, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (strong, nonatomic) NSData *uuid; // @synthesize uuid=_uuid;
 

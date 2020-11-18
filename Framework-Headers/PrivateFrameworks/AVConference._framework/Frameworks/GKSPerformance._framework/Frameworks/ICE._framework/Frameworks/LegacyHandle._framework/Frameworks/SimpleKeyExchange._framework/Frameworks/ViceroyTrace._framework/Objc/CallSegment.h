@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, VCHistogram, VCVideoFECStatsHolder;
+@class NSMutableDictionary, NSString, VCHistogram;
 @protocol VCAdaptiveLearningDelegate;
 
 @interface CallSegment : NSObject
@@ -40,6 +40,7 @@
     int _adjustedDuration;
     double _totalVideoStallTime;
     double _totalMediaStallTime;
+    double _maxMediaStallTime;
     unsigned int _mediaStallCount;
     double _maxVideoStallInterval;
     double _totalAudioStallTime;
@@ -70,6 +71,8 @@
     unsigned long long _audioSentPacketCount;
     unsigned long long _videoFlushPacketCount;
     unsigned long long _videoSentPacketCount;
+    unsigned int _audioRecvPacketCount;
+    unsigned int _videoRecvPacketCount;
     unsigned int _callMode;
     unsigned int _callDeviceRole;
     unsigned int _callTransportType;
@@ -84,19 +87,37 @@
     unsigned int _videoFrameImcompleteNextTSCounter;
     unsigned int _videoFrameTotalIncompleteCounter;
     unsigned int _decodedVideoFrameEnqueueCounter;
+    unsigned int _videoFrameReceivedCounter;
+    unsigned int _videoFrameExpectedCounter;
     unsigned int _encodedVideoFrameCounter;
     unsigned int _captureVideoFrameCounter;
     NSString *_relayServer;
     int _relayType;
     NSString *_accessToken;
-    VCVideoFECStatsHolder *_videoFECStatsLevel1;
-    VCVideoFECStatsHolder *_videoFECStatsLevel2;
-    VCVideoFECStatsHolder *_videoFECStatsLevel3;
+    unsigned int _totalCellDupTxDataBytes;
+    unsigned int _totalCellDupRxDataBytes;
+    unsigned int _totalUsedCellBudgetTxDataBytes;
+    unsigned int _totalUsedCellBudgetRxDataBytes;
+    unsigned char _duplicationType;
+    unsigned int _negotiatedSwitches;
+    unsigned int _remoteSwitches;
+    BOOL _remoteFaceTimeSwitchesAvailable;
+    unsigned long long _totalCellTxDataBytes;
+    unsigned long long _totalCellRxDataBytes;
+    unsigned long long _totalWifiTxDataBytes;
+    unsigned long long _totalWifiRxDataBytes;
+    double _duplicationMaxNoRemotePacketTime;
+    double _duplicationMaxRemoteNoRemotePacketTime;
+    NSString *_duplicationConnectionConfig;
+    NSString *_duplicationConnectionFamily;
+    NSMutableDictionary *_fecStatsDict;
     int _interval;
     int _frequency;
     NSString *_segmentName;
     NSString *_previousSegmentName;
     id<VCAdaptiveLearningDelegate> _delegate;
+    unsigned int _videoFrameNonFECTotalCounter;
+    unsigned int _videoFrameNonFECCompleteCounter;
 }
 
 @property unsigned int BBQueueTooLargeCount; // @synthesize BBQueueTooLargeCount=_BBQueueTooLargeCount;
@@ -118,6 +139,7 @@
 @property int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
 @property (readonly) VCHistogram *audioErasures; // @synthesize audioErasures=_audioErasures;
 @property unsigned long long audioFlushPacketCount; // @synthesize audioFlushPacketCount=_audioFlushPacketCount;
+@property unsigned int audioRecvPacketCount; // @synthesize audioRecvPacketCount=_audioRecvPacketCount;
 @property unsigned long long audioSentPacketCount; // @synthesize audioSentPacketCount=_audioSentPacketCount;
 @property double averageAudioErasuresRate; // @synthesize averageAudioErasuresRate=_averageAudioErasuresRate;
 @property double averageBWE; // @synthesize averageBWE=_averageBWE;
@@ -136,13 +158,17 @@
 @property (readonly) unsigned int callTransportType; // @synthesize callTransportType=_callTransportType;
 @property unsigned int captureVideoFrameCounter; // @synthesize captureVideoFrameCounter=_captureVideoFrameCounter;
 @property unsigned int decodedVideoFrameEnqueueCounter; // @synthesize decodedVideoFrameEnqueueCounter=_decodedVideoFrameEnqueueCounter;
+@property double duplicationMaxNoRemotePacketTime; // @synthesize duplicationMaxNoRemotePacketTime=_duplicationMaxNoRemotePacketTime;
+@property double duplicationMaxRemoteNoRemotePacketTime; // @synthesize duplicationMaxRemoteNoRemotePacketTime=_duplicationMaxRemoteNoRemotePacketTime;
 @property int duration; // @synthesize duration=_duration;
 @property unsigned int encodedVideoFrameCounter; // @synthesize encodedVideoFrameCounter=_encodedVideoFrameCounter;
 @property unsigned int errorCode; // @synthesize errorCode=_errorCode;
+@property (readonly) NSMutableDictionary *fecStatsDict; // @synthesize fecStatsDict=_fecStatsDict;
 @property (readonly) VCHistogram *framerate; // @synthesize framerate=_framerate;
 @property (readonly) VCHistogram *latency; // @synthesize latency=_latency;
 @property double maxAudioStallInterval; // @synthesize maxAudioStallInterval=_maxAudioStallInterval;
 @property unsigned int maxBWE; // @synthesize maxBWE=_maxBWE;
+@property double maxMediaStallTime; // @synthesize maxMediaStallTime=_maxMediaStallTime;
 @property double maxNoRemotePacketsInterval; // @synthesize maxNoRemotePacketsInterval=_maxNoRemotePacketsInterval;
 @property double maxVideoStallInterval; // @synthesize maxVideoStallInterval=_maxVideoStallInterval;
 @property (readonly) VCHistogram *mediaStall; // @synthesize mediaStall=_mediaStall;
@@ -158,31 +184,44 @@
 @property double speechErasureTotalTime; // @synthesize speechErasureTotalTime=_speechErasureTotalTime;
 @property (readonly) VCHistogram *speechErasures; // @synthesize speechErasures=_speechErasures;
 @property double totalAudioStallTime; // @synthesize totalAudioStallTime=_totalAudioStallTime;
+@property unsigned int totalCellDupRxDataBytes; // @synthesize totalCellDupRxDataBytes=_totalCellDupRxDataBytes;
+@property unsigned int totalCellDupTxDataBytes; // @synthesize totalCellDupTxDataBytes=_totalCellDupTxDataBytes;
+@property unsigned long long totalCellRxDataBytes; // @synthesize totalCellRxDataBytes=_totalCellRxDataBytes;
+@property unsigned long long totalCellTxDataBytes; // @synthesize totalCellTxDataBytes=_totalCellTxDataBytes;
 @property unsigned int totalFIRCounter; // @synthesize totalFIRCounter=_totalFIRCounter;
 @property unsigned int totalFIRDemandCounter; // @synthesize totalFIRDemandCounter=_totalFIRDemandCounter;
 @property double totalMediaStallTime; // @synthesize totalMediaStallTime=_totalMediaStallTime;
 @property double totalNoRemotePacketsTime; // @synthesize totalNoRemotePacketsTime=_totalNoRemotePacketsTime;
+@property unsigned int totalUsedCellBudgetRxDataBytes; // @synthesize totalUsedCellBudgetRxDataBytes=_totalUsedCellBudgetRxDataBytes;
+@property unsigned int totalUsedCellBudgetTxDataBytes; // @synthesize totalUsedCellBudgetTxDataBytes=_totalUsedCellBudgetTxDataBytes;
 @property unsigned int totalVideoPacketsExpected; // @synthesize totalVideoPacketsExpected=_totalVideoPacketsExpected;
 @property double totalVideoStallTime; // @synthesize totalVideoStallTime=_totalVideoStallTime;
+@property unsigned long long totalWifiRxDataBytes; // @synthesize totalWifiRxDataBytes=_totalWifiRxDataBytes;
+@property unsigned long long totalWifiTxDataBytes; // @synthesize totalWifiTxDataBytes=_totalWifiTxDataBytes;
 @property (readonly) VCHistogram *videoEncodingBitrate; // @synthesize videoEncodingBitrate=_videoEncodingBitrate;
-@property (strong) VCVideoFECStatsHolder *videoFECStatsLevel1; // @synthesize videoFECStatsLevel1=_videoFECStatsLevel1;
-@property (strong) VCVideoFECStatsHolder *videoFECStatsLevel2; // @synthesize videoFECStatsLevel2=_videoFECStatsLevel2;
-@property (strong) VCVideoFECStatsHolder *videoFECStatsLevel3; // @synthesize videoFECStatsLevel3=_videoFECStatsLevel3;
 @property unsigned long long videoFlushPacketCount; // @synthesize videoFlushPacketCount=_videoFlushPacketCount;
 @property unsigned int videoFrameDecodedButSkippedCounter; // @synthesize videoFrameDecodedButSkippedCounter=_videoFrameDecodedButSkippedCounter;
+@property unsigned int videoFrameExpectedCounter; // @synthesize videoFrameExpectedCounter=_videoFrameExpectedCounter;
 @property unsigned int videoFrameImcompleteNextTSCounter; // @synthesize videoFrameImcompleteNextTSCounter=_videoFrameImcompleteNextTSCounter;
+@property unsigned int videoFrameNonFECCompleteCounter; // @synthesize videoFrameNonFECCompleteCounter=_videoFrameNonFECCompleteCounter;
+@property unsigned int videoFrameNonFECTotalCounter; // @synthesize videoFrameNonFECTotalCounter=_videoFrameNonFECTotalCounter;
+@property unsigned int videoFrameReceivedCounter; // @synthesize videoFrameReceivedCounter=_videoFrameReceivedCounter;
 @property unsigned int videoFrameTotalIncompleteCounter; // @synthesize videoFrameTotalIncompleteCounter=_videoFrameTotalIncompleteCounter;
 @property (readonly) VCHistogram *videoJitter; // @synthesize videoJitter=_videoJitter;
 @property (readonly) VCHistogram *videoQualityScore; // @synthesize videoQualityScore=_videoQualityScore;
+@property unsigned int videoRecvPacketCount; // @synthesize videoRecvPacketCount=_videoRecvPacketCount;
 @property (readonly) VCHistogram *videoResolution; // @synthesize videoResolution=_videoResolution;
 @property unsigned long long videoSentPacketCount; // @synthesize videoSentPacketCount=_videoSentPacketCount;
 @property (readonly) VCHistogram *videoStall; // @synthesize videoStall=_videoStall;
 
++ (id)newSegmentNameWithComponents:(id)arg1 remoteInterface:(id)arg2 connectionType:(id)arg3 duplicationIndicator:(id)arg4;
 - (unsigned int)RTPeriod;
+- (void)changeDuplicationWithType:(unsigned short)arg1 payload:(id)arg2;
 - (void)dealloc;
 - (id)initWithDictionary:(id)arg1;
-- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 mode:(unsigned short)arg3 deviceRole:(unsigned short)arg4 transportType:(unsigned short)arg5 relayServer:(id)arg6 relayType:(unsigned short)arg7 accessToken:(id)arg8 delegate:(id)arg9;
+- (id)initWithSegmentName:(id)arg1 previousSegmentName:(id)arg2 mode:(unsigned short)arg3 deviceRole:(unsigned short)arg4 transportType:(unsigned short)arg5 relayServer:(id)arg6 relayType:(unsigned short)arg7 accessToken:(id)arg8 duplicationType:(unsigned char)arg9 switchConfig:(id)arg10 delegate:(id)arg11;
 - (void)merge:(id)arg1;
+- (id)segmentFECReport;
 - (id)segmentQRReport;
 - (id)segmentReport;
 

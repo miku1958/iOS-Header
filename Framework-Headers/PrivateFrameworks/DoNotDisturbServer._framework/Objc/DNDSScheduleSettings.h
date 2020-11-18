@@ -15,6 +15,7 @@
 
 @property (readonly, copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 
++ (id)defaultScheduleSettings;
 + (id)settingsForRecord:(id)arg1;
 + (id)settingsWithClientSettings:(id)arg1 creationDate:(id)arg2;
 + (BOOL)supportsSecureCoding;

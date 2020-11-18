@@ -6,11 +6,12 @@
 
 #import <PhotosUICore/PXCMMSession.h>
 
-@class PHAsset, PHMomentShare, PHSuggestion, PXCMMPhotoKitImportStatusManager, PXPhotoKitAssetsDataSourceManager;
+@class PHAsset, PHMomentShare, PHSuggestion, PXCMMPhotoKitImportStatusManager, PXPhotoKitAssetsDataSourceManager, PXPhotoKitMomentShareStatus;
 
 @interface PXCMMPhotoKitSession : PXCMMSession
 {
     PXCMMPhotoKitImportStatusManager *_cmmImportStatusManager;
+    PXPhotoKitMomentShareStatus *_momentShareStatus;
     PHMomentShare *_momentShare;
     PHSuggestion *_suggestion;
     PHMomentShare *_originatingMomentShare;
@@ -24,12 +25,12 @@
 @property (readonly, nonatomic) PHSuggestion *suggestion; // @synthesize suggestion=_suggestion;
 
 - (void).cxx_destruct;
-- (id)assetsProgressListenerWithPresentationStyle:(long long)arg1;
 - (id)description;
 - (id)diagnosticDictionary;
 - (id)importStatusManager;
 - (id)initWithContext:(id)arg1;
 - (id)initWithPhotoKitContext:(id)arg1;
+- (id)momentShareStatusPresentationWithPresentationStyle:(long long)arg1;
 - (id)notificationSuppressionContexts;
 
 @end

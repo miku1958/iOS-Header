@@ -13,6 +13,9 @@
 {
     BOOL _areItemsBound;
     struct {
+        BOOL hasMasterPrototypes;
+        BOOL hasProxiedItemElements;
+        BOOL hasMasterPrototypeForItemAtIndex;
         BOOL hasResetImplicitUpdates;
         BOOL hasProxyElementForLoadedChildElement;
         BOOL hasCanProxyUnloadedChildElement;
@@ -29,6 +32,7 @@
 @property (copy, nonatomic) NSDictionary *indexTitles; // @synthesize indexTitles=_indexTitles;
 @property (readonly, nonatomic, getter=areItemsBound) BOOL itemsBound;
 @property (readonly, nonatomic) IKChangeSet *itemsChangeSet;
+@property (readonly, nonatomic) NSArray *masterPrototypes;
 @property (readonly, nonatomic) NSArray *prototypes;
 @property (readonly, copy, nonatomic) NSArray *proxiedItemElements;
 
@@ -48,6 +52,7 @@
 - (id)initWithDOMElement:(id)arg1 parent:(id)arg2 elementFactory:(id)arg3;
 - (id)lastItemElement;
 - (void)loadIndex:(long long)arg1;
+- (id)masterPrototypeForItemAtIndex:(unsigned long long)arg1;
 - (long long)numberOfItems;
 - (id)prototypeForItemAtIndex:(long long)arg1;
 - (id)proxyElementForLoadedChildElement:(id)arg1;

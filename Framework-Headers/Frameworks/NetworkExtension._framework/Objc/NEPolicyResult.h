@@ -33,11 +33,13 @@
 @property (copy) NSUUID *serviceUUID; // @synthesize serviceUUID=_serviceUUID;
 @property unsigned int skipOrder; // @synthesize skipOrder=_skipOrder;
 
++ (id)allowUnentitled;
 + (id)divertSocketToControlUnit:(unsigned int)arg1;
 + (id)drop;
 + (id)filterWithControlUnit:(unsigned int)arg1;
 + (id)netAgentUUID:(id)arg1;
 + (id)pass;
++ (id)prohibitFilters;
 + (id)routeRules:(id)arg1;
 + (id)scopeSocketToInterfaceName:(id)arg1;
 + (id)scopeToDirectInterface;

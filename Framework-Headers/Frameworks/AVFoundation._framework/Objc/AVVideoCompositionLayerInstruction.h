@@ -32,7 +32,6 @@
 - (void)dealloc;
 - (id)dictionaryRepresentationWithTimeRange:(CDStruct_e83c9415)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)finalize;
 - (BOOL)getCropRectangleRampForTime:(CDStruct_1b6d18a9)arg1 startCropRectangle:(struct CGRect *)arg2 endCropRectangle:(struct CGRect *)arg3 timeRange:(CDStruct_e83c9415 *)arg4;
 - (BOOL)getOpacityRampForTime:(CDStruct_1b6d18a9)arg1 startOpacity:(float *)arg2 endOpacity:(float *)arg3 timeRange:(CDStruct_e83c9415 *)arg4;
 - (BOOL)getTransformRampForTime:(CDStruct_1b6d18a9)arg1 startTransform:(struct CGAffineTransform *)arg2 endTransform:(struct CGAffineTransform *)arg3 timeRange:(CDStruct_e83c9415 *)arg4;

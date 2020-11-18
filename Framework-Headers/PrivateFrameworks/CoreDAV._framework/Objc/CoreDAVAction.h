@@ -11,11 +11,13 @@
     int _action;
     id _context;
     id _changeContext;
+    BOOL _ignoresGuardianRestrictions;
 }
 
 @property (readonly, nonatomic) int action; // @synthesize action=_action;
 @property (strong, nonatomic) id changeContext; // @synthesize changeContext=_changeContext;
 @property (readonly, nonatomic) id context; // @synthesize context=_context;
+@property (nonatomic) BOOL ignoresGuardianRestrictions; // @synthesize ignoresGuardianRestrictions=_ignoresGuardianRestrictions;
 
 - (void).cxx_destruct;
 - (id)description;

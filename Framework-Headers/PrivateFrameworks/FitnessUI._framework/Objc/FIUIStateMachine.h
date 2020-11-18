@@ -19,6 +19,7 @@
     NSMutableArray *_pendingEvents;
     NSString *_queueKey;
     NSMutableArray *_transitionalEvents;
+    NSMutableSet *_parentStates;
     NSString *_label;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _diagnosticHandler;
@@ -36,6 +37,7 @@
 - (void)_queue_handleEvents;
 - (void)_queue_processEvent:(long long)arg1;
 - (void)_queue_setInitialStateIfNeeded:(id)arg1;
+- (void)addChildStates:(id)arg1 toState:(id)arg2 withEntryState:(id)arg3;
 - (void)addState:(id)arg1;
 - (void)addStates:(id)arg1;
 - (void)dealloc;

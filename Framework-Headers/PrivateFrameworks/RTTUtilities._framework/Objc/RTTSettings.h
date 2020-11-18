@@ -11,6 +11,7 @@
 @interface RTTSettings : NSObject
 {
     NSLock *_synchronizeDomainsLock;
+    NSMutableDictionary *_serverCachedSettings;
     NSMutableSet *_registeredNotifications;
     NSMutableSet *_synchronizePreferences;
     NSMutableDictionary *_updateBlocks;
@@ -48,6 +49,8 @@
 - (void)_synchronizeIfNecessary:(id)arg1;
 - (BOOL)boolValueForKey:(id)arg1 andContext:(id)arg2 withDefaultValue:(BOOL)arg3;
 - (BOOL)boolValueForKey:(id)arg1 withDefaultValue:(BOOL)arg2;
+- (void)clearAllServerSettingsCache;
+- (void)clearServerSettingsCacheForKey:(id)arg1;
 - (id)currentLocale;
 - (void)dealloc;
 - (BOOL)incomingCallsTTYForContext:(id)arg1;
@@ -73,6 +76,7 @@
 - (void)updateGizmoValueIfNeeded:(id)arg1 forPreferenceKey:(id)arg2;
 - (id)uuidFromContext:(id)arg1;
 - (id)valueForPreferenceKey:(id)arg1;
+- (id)valueForPreferenceKey:(id)arg1 andContext:(id)arg2;
 
 @end
 

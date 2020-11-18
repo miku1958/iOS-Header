@@ -8,34 +8,53 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlace, PBUnknownFields;
+@class GEOPDMapsIdentifier, GEOPDPlace, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteEntryBusiness : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _distance;
+    GEOPDMapsIdentifier *_mapsId;
     unsigned long long _muid;
     GEOPDPlace *_place;
     int _resultProviderId;
     struct {
-        unsigned int distance:1;
-        unsigned int muid:1;
-        unsigned int resultProviderId:1;
-    } _has;
+        unsigned int has_distance:1;
+        unsigned int has_muid:1;
+        unsigned int has_resultProviderId:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_mapsId:1;
+        unsigned int read_place:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_distance:1;
+        unsigned int wrote_mapsId:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_place:1;
+        unsigned int wrote_resultProviderId:1;
+    } _flags;
 }
 
-@property (nonatomic) double distance; // @synthesize distance=_distance;
+@property (nonatomic) double distance;
 @property (nonatomic) BOOL hasDistance;
+@property (readonly, nonatomic) BOOL hasMapsId;
 @property (nonatomic) BOOL hasMuid;
 @property (readonly, nonatomic) BOOL hasPlace;
 @property (nonatomic) BOOL hasResultProviderId;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (strong, nonatomic) GEOPDPlace *place; // @synthesize place=_place;
-@property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
+@property (strong, nonatomic) GEOPDMapsIdentifier *mapsId;
+@property (nonatomic) unsigned long long muid;
+@property (strong, nonatomic) GEOPDPlace *place;
+@property (nonatomic) int resultProviderId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readMapsId;
+- (void)_readPlace;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

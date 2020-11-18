@@ -8,7 +8,7 @@
 
 #import <TextInput/NSCopying-Protocol.h>
 
-@class NSDate, NSDictionary, NSString, NSUUID, TIRollingLog;
+@class NSDate, NSDictionary, NSMutableSet, NSString, NSUUID, TIKeyboardState, TIRollingLog;
 
 @interface TITypologyLog : NSObject <NSCopying>
 {
@@ -18,14 +18,20 @@
     NSString *_buildVersion;
     NSString *_clientIdentifier;
     NSDictionary *_config;
+    NSUUID *_lastRecordUUID;
     TIRollingLog *_records;
     TIRollingLog *_traceLog;
+    NSMutableSet *_loggedRecordClasses;
+    TIKeyboardState *_lastKeyboardState;
 }
 
 @property (readonly, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) NSDictionary *config; // @synthesize config=_config;
 @property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (strong, nonatomic) TIKeyboardState *lastKeyboardState; // @synthesize lastKeyboardState=_lastKeyboardState;
+@property (copy, nonatomic) NSUUID *lastRecordUUID; // @synthesize lastRecordUUID=_lastRecordUUID;
+@property (strong, nonatomic) NSMutableSet *loggedRecordClasses; // @synthesize loggedRecordClasses=_loggedRecordClasses;
 @property (readonly, nonatomic) TIRollingLog *records; // @synthesize records=_records;
 @property (readonly, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property (readonly, nonatomic) TIRollingLog *traceLog; // @synthesize traceLog=_traceLog;
@@ -41,6 +47,7 @@
 - (id)initWithTypologyLog:(id)arg1;
 - (void)logRecord:(id)arg1;
 - (void)logToHumanReadableTrace:(id)arg1;
+- (BOOL)loggedRecordOfClass:(Class)arg1;
 - (id)propertyList;
 - (id)recordSummary;
 - (id)textSummary;

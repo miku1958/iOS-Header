@@ -7,6 +7,7 @@
 #import <Foundation/NSMutableDictionary.h>
 
 @interface NSMutableDictionary (CKUtilsAdditions)
+- (void)CKAddPropertySafelyForKey:(id)arg1 value:(id)arg2;
 - (void)CKSynchronizedRemoveObjectForKey:(id)arg1;
 - (BOOL)CKSynchronizedSetIfAbsentObject:(id)arg1 forKey:(id)arg2;
 @end

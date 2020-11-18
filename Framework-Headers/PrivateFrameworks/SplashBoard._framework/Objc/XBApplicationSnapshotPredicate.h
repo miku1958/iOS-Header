@@ -30,11 +30,13 @@
 @property (nonatomic) unsigned long long statusBarState;
 @property (nonatomic) unsigned long long statusBarStateMask;
 @property (readonly) Class superclass;
+@property (nonatomic) long long userInterfaceStyle;
 
 + (id)predicate;
 - (void).cxx_destruct;
 - (id)_clientObjectForKey:(unsigned long long)arg1;
 - (BOOL)_hasClientObjectForKey:(unsigned long long)arg1;
+- (void)_removeClientObjectForKey:(unsigned long long)arg1;
 - (void)_setClientObject:(id)arg1 forKey:(unsigned long long)arg2;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

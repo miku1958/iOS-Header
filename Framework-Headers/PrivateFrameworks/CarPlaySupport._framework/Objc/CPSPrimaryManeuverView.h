@@ -40,6 +40,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)setCurrentTravelEstimates:(id)arg1;
 - (void)setManeuverViewSize:(unsigned long long)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

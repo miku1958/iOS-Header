@@ -6,11 +6,7 @@
 
 #import <UIKitCore/_UIForceLevelClassifier.h>
 
-#import <UIKitCore/UIDebuggingInformationObserver-Protocol.h>
-
-@class NSString;
-
-@interface _UILinearForceLevelClassifier : _UIForceLevelClassifier <UIDebuggingInformationObserver>
+@interface _UILinearForceLevelClassifier : _UIForceLevelClassifier
 {
     double _smoothedForce;
     BOOL _anyForceObservations;
@@ -26,15 +22,11 @@
 }
 
 @property (readonly, nonatomic) double currentImpulse;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) double impulseSmoothingFactor; // @synthesize impulseSmoothingFactor=_impulseSmoothingFactor;
 @property (nonatomic) double revealThreshold; // @synthesize revealThreshold=_revealThreshold;
 @property (nonatomic) double smoothingFactor; // @synthesize smoothingFactor=_smoothingFactor;
 @property (nonatomic) double standardThreshold; // @synthesize standardThreshold=_standardThreshold;
 @property (nonatomic) double strongThreshold; // @synthesize strongThreshold=_strongThreshold;
-@property (readonly) Class superclass;
 
 - (double)_calculateProgressOfTouchForceValue:(double)arg1 toForceLevel:(long long)arg2 minimumRequiredForceLevel:(long long)arg3;
 - (long long)_forceLevelForTouchForceValue:(double)arg1;

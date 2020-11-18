@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
 @property (readonly, nonatomic) NSArray *incidents;
 @property (strong, nonatomic) NSMutableArray *incidents; // @synthesize incidents=_incidents;
+@property (readonly, nonatomic) BOOL isBus;
 @property (readonly, nonatomic) BOOL isIncidentsTTLExpired;
 @property (readonly, nonatomic) NSArray *labelItems;
 @property (strong, nonatomic) MSPTransitStorageLine *line; // @synthesize line=_line;

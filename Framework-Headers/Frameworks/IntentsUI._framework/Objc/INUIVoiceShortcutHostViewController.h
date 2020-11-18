@@ -9,20 +9,18 @@
 #import <IntentsUI/INUIVoiceShortcutRemoteHostingInterface-Protocol.h>
 
 @class NSString;
-@protocol INUIVoiceShortcutRemoteViewControllerAddDelegate, INUIVoiceShortcutRemoteViewControllerEditDelegate;
+@protocol INUIVoiceShortcutRemoteViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface INUIVoiceShortcutHostViewController : _UIRemoteViewController <INUIVoiceShortcutRemoteHostingInterface>
 {
-    id<INUIVoiceShortcutRemoteViewControllerAddDelegate> _addDelegate;
-    id<INUIVoiceShortcutRemoteViewControllerEditDelegate> _editDelegate;
+    id<INUIVoiceShortcutRemoteViewControllerDelegate> _delegate;
     long long _mode;
 }
 
-@property (weak, nonatomic) id<INUIVoiceShortcutRemoteViewControllerAddDelegate> addDelegate; // @synthesize addDelegate=_addDelegate;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<INUIVoiceShortcutRemoteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<INUIVoiceShortcutRemoteViewControllerEditDelegate> editDelegate; // @synthesize editDelegate=_editDelegate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly) Class superclass;
@@ -35,11 +33,10 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
-- (void)remoteViewControllerAddDidCancel;
-- (void)remoteViewControllerDidAddVoiceShortcut:(id)arg1 error:(id)arg2;
+- (void)remoteViewControllerDidCancel;
+- (void)remoteViewControllerDidCreateVoiceShortcut:(id)arg1 error:(id)arg2;
 - (void)remoteViewControllerDidDeleteVoiceShortcutWithIdentifier:(id)arg1;
-- (void)remoteViewControllerDidEditVoiceShortcut:(id)arg1 error:(id)arg2;
-- (void)remoteViewControllerEditDidCancel;
+- (void)remoteViewControllerDidUpdateVoiceShortcut:(id)arg1 error:(id)arg2;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 
 @end

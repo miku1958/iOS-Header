@@ -16,6 +16,10 @@ __attribute__((visibility("hidden")))
     WKScrollViewDelegateForwarder *_delegateForwarder;
     BOOL _contentInsetAdjustmentBehaviorWasExternallyOverridden;
     double _keyboardBottomInsetAdjustment;
+    BOOL _scrollEnabledByClient;
+    BOOL _scrollEnabledInternal;
+    BOOL _zoomEnabledByClient;
+    BOOL _zoomEnabledInternal;
     WKWebView<UIScrollViewDelegate> *_internalDelegate;
 }
 
@@ -30,14 +34,20 @@ __attribute__((visibility("hidden")))
 - (double)_rubberBandOffsetForOffset:(double)arg1 maxOffset:(double)arg2 minOffset:(double)arg3 range:(double)arg4 outside:(BOOL *)arg5;
 - (void)_setContentInsetAdjustmentBehaviorInternal:(long long)arg1;
 - (void)_setContentSizePreservingContentOffsetDuringRubberband:(struct CGSize)arg1;
+- (void)_setScrollEnabledInternal:(BOOL)arg1;
+- (void)_setZoomEnabledInternal:(BOOL)arg1;
 - (struct UIEdgeInsets)_systemContentInset;
 - (void)_updateDelegate;
+- (void)_updateScrollability;
+- (void)_updateZoomability;
 - (void)dealloc;
 - (id)delegate;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setContentInset:(struct UIEdgeInsets)arg1;
 - (void)setContentInsetAdjustmentBehavior:(long long)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setScrollEnabled:(BOOL)arg1;
+- (void)setZoomEnabled:(BOOL)arg1;
 
 @end
 

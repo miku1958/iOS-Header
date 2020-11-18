@@ -23,6 +23,7 @@
 @property (readonly, copy) HKQuantityType *quantityType;
 
 + (BOOL)_isConcreteObjectClass;
++ (id)_quantitySamplesEnforcingDurationWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
 + (id)_unfrozenQuantitySampleWithQuantityType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 device:(id)arg4;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
@@ -34,7 +35,7 @@
 - (void)_setFreezing;
 - (void)_setQuantity:(id)arg1;
 - (BOOL)_shouldNotifyOnInsert;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_valueDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

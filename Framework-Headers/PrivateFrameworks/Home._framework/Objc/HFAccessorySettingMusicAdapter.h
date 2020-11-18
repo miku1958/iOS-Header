@@ -19,10 +19,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)configureSection:(id)arg1 forEntity:(id)arg2;
-- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(CDUnknownBlockType)arg4;
-- (id)initWithMediaProfileContainer:(id)arg1 keyPaths:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
-- (id)initWithMediaProfileContainer:(id)arg1 mode:(unsigned long long)arg2;
++ (BOOL)areAllAccessoriesLoggedIntoSameAccount:(id)arg1;
++ (BOOL)areAllAccessoriesLoggedOut:(id)arg1;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 keyPaths:(id)arg2 mode:(unsigned long long)arg3 updateHandler:(CDUnknownBlockType)arg4;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 keyPaths:(id)arg2 updateHandler:(CDUnknownBlockType)arg3;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 mode:(unsigned long long)arg2;
 - (BOOL)shouldShowSettingsEntity:(id)arg1;
 
 @end

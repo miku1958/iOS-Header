@@ -11,6 +11,7 @@
 - (unsigned long long)autosizeFlagsForTextLayout:(TSWPLayout *)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(TSWPLayout *)arg1 textSize:(struct CGSize)arg2;
 - (id<NSFastEnumeration>)dependentsOfTextLayout:(TSWPLayout *)arg1;
+- (BOOL)descendersCannotClip;
 - (void)invalidateForAutosizingTextLayout:(TSWPLayout *)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(TSWPLayout *)arg1;
 - (Class)repClassForTextLayout:(TSWPLayout *)arg1;

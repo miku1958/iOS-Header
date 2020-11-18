@@ -13,7 +13,6 @@
 @interface PHSuggestion (PXDisplaySuggestionAdoption) <PXDisplaySuggestion>
 
 @property (readonly, nonatomic) NSDictionary *actionProperties;
-@property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *endDate;
@@ -26,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) unsigned short type;
 
++ (id)px_keyAssetFilteringPredicate;
 - (id)fetchKeyAssets;
 @end
 

@@ -8,36 +8,38 @@
 
 #import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 
-@class NSDictionary, NSURL, PHAAssetResourceDataLoader, PHAExecutive, PHAGraphManager, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
+@class NSMutableDictionary, NSURL, PHAAssetResourceDataLoader, PHAExecutive, PHAGraphManager, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
 
 @interface PHAManager : NSObject <PHAServiceOperationHandling>
 {
     PHAMonitoring *_monitoring;
     PHAExecutive *_executive;
     PHAAssetResourceDataLoader *_dataLoader;
+    unsigned long long _processedAssetCount;
     PHAGraphManager *_graphManager;
     NSURL *_libraryURL;
     PHPhotoLibrary *_photoLibrary;
     PHAJobCoordinator *_jobCoordinator;
-    NSDictionary *_photoAnalysisWorkersByType;
+    NSMutableDictionary *_photoAnalysisWorkersByType;
 }
 
 @property (readonly) PHAExecutive *executive; // @synthesize executive=_executive;
 @property (readonly) PHAGraphManager *graphManager; // @synthesize graphManager=_graphManager;
 @property (readonly) PHAJobCoordinator *jobCoordinator; // @synthesize jobCoordinator=_jobCoordinator;
 @property (strong) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
-@property (strong) NSDictionary *photoAnalysisWorkersByType; // @synthesize photoAnalysisWorkersByType=_photoAnalysisWorkersByType;
+@property (strong) NSMutableDictionary *photoAnalysisWorkersByType; // @synthesize photoAnalysisWorkersByType=_photoAnalysisWorkersByType;
 @property (strong) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, getter=isQuiescent) BOOL quiescent;
 
 + (id)allWorkerClasses;
 + (void)enumerateWorkerClassesUsingBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (id)autoloopServiceWorker;
 - (void)backgroundActivityDidBegin;
 - (void)checkForQuiescence;
 - (id)description;
+- (void)disableTurboMode;
 - (void)dumpAnalysisStatusWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)enableTurboMode;
 - (void)enumerateWorkersUsingBlock:(CDUnknownBlockType)arg1;
 - (id)faceClassificationServiceWorker;
 - (id)faceProcessingServiceWorker;
@@ -48,17 +50,18 @@
 - (id)init;
 - (id)initWithPhotoLibraryURL:(id)arg1 executive:(id)arg2;
 - (BOOL)isInitialSyncActive;
-- (BOOL)isTurboMode;
 - (id)monitoring;
 - (BOOL)photosIsConnected;
+- (void)reportTurboEnabledWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestLocalizedSceneAncestryInformationWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (id)sceneClassificationServiceWorker;
-- (void)setTurboMode;
 - (void)shutdown;
+- (void)startTurboProcessing;
 - (id)statusAsDictionary;
+- (void)stopAllBackgroundActivities;
 - (void)stopBackgroundActivity;
-- (id)taxonomyServiceWorker;
 - (void)triggerBackgroundActivity;
+- (void)turboConstraintsWereRemoved;
+- (BOOL)turboIsEnabled;
 
 @end
 

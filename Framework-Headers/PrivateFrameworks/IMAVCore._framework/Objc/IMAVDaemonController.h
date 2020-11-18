@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) IMAVDaemonListener *listener;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (BOOL)__isLocalObjectValidOnQueue:(id)arg1;
 - (BOOL)__isRemoteObjectValidOnQueue:(id)arg1;
 - (void)_cleanUpConnection;

@@ -15,8 +15,9 @@
 
 @property (strong, nonatomic) NSMutableDictionary *loadingGroups; // @synthesize loadingGroups=_loadingGroups;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)imageNeedsRefresh:(id)arg1;
+- (void)loadAndCacheImageFromGamedForURLString:(id)arg1 cacheSubdirectory:(id)arg2 reference:(id)arg3 queue:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)loadImageForURLString:(id)arg1 loader:(CDUnknownBlockType)arg2 reference:(id)arg3 queue:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)loadImageForURLString:(id)arg1 reference:(id)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol CKDZoneGatekeeperWaiter, OS_os_activity;
 
 __attribute__((visibility("hidden")))
@@ -14,18 +14,22 @@ __attribute__((visibility("hidden")))
 {
     id<CKDZoneGatekeeperWaiter> _waiter;
     NSArray *_zoneIDs;
-    CDUnknownBlockType _completionHandler;
     NSObject<OS_os_activity> *_activity;
+    CDUnknownBlockType _completionHandler;
+    NSString *_personaID;
 }
 
-@property (strong, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
-@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (strong, nonatomic) id<CKDZoneGatekeeperWaiter> waiter; // @synthesize waiter=_waiter;
-@property (strong, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
+@property (readonly, nonatomic) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
+@property (readonly, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
+@property (readonly, nonatomic) id<CKDZoneGatekeeperWaiter> waiter; // @synthesize waiter=_waiter;
+@property (readonly, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (id)description;
+- (id)initWithWaiter:(id)arg1 zoneIDs:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 activity:(id)arg4;
+- (void)invokeCompletionHandler:(BOOL)arg1;
 
 @end
 

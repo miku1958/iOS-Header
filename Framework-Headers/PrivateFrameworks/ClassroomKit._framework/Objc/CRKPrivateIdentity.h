@@ -30,12 +30,13 @@
 @property (strong, nonatomic) NSData *stagedIdentityPersistentId; // @synthesize stagedIdentityPersistentId=_stagedIdentityPersistentId;
 @property (readonly) Class superclass;
 
++ (id)addIdentityToKeychainFromCertificateData:(id)arg1 privateKeyData:(id)arg2;
 + (id)commonNameWithPrefix:(id)arg1;
-+ (id)createIdentityWithCommonName:(id)arg1;
 + (id)freshPrivateIdentityWithCommonNamePrefix:(id)arg1;
 + (id)instanceWithParentObject:(id)arg1 keyValue:(id)arg2;
 + (id)instanceWithRecord:(id)arg1;
 + (id)keychainGroup;
++ (id)makeIdentityWithCommonName:(id)arg1;
 + (id)recordType;
 + (id)skeletonInstance;
 + (BOOL)supportsSecureCoding;

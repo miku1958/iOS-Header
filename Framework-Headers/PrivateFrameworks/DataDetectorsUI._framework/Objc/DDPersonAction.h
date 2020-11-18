@@ -4,35 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <DataDetectorsUI/DDPreviewAction.h>
+#import <DataDetectorsUI/DDRemoteAction.h>
 
-#import <DataDetectorsUI/CNAvatarCardControllerDelegate-Protocol.h>
-
-@class CNAvatarCardController, CNContactStore, NSString, UIViewController;
+@class CNContact;
 
 __attribute__((visibility("hidden")))
-@interface DDPersonAction : DDPreviewAction <CNAvatarCardControllerDelegate>
+@interface DDPersonAction : DDRemoteAction
 {
-    CNContactStore *_store;
-    CNAvatarCardController *_avatar;
-    UIViewController *_presentingViewController;
+    CNContact *_contact;
+    BOOL _contactExists;
 }
 
-@property (strong) CNAvatarCardController *avatar; // @synthesize avatar=_avatar;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (weak) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property (strong) CNContactStore *store; // @synthesize store=_store;
-@property (readonly) Class superclass;
-
 + (BOOL)handlesUrl:(id)arg1 result:(struct __DDResult *)arg2;
++ (id)supportedSchemes;
++ (id)viewControllerProviderClass;
 - (void).cxx_destruct;
-- (id)createViewController;
+- (id)_appendActionsForPhoneNumbers:(id)arg1 emailAddresses:(id)arg2 class:(Class)arg3 filter:(id)arg4 scheme:(id)arg5;
+- (id)_businessItemForNumber:(id)arg1 messageable:(BOOL *)arg2;
+- (id)_menuActionsForBusinessWithNumber:(id)arg1;
+- (id)_menuActionsForPersonWithNumber:(id)arg1 email:(id)arg2;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
-- (id)mainValueFromURLString:(id)arg1 schemes:(id)arg2;
-- (id)presentingViewControllerForAvatarCardController:(id)arg1;
-- (BOOL)requiresEmbeddingNavigationController;
+- (id)menuActions;
+- (BOOL)prefersActionMenuStyle;
+- (struct CGSize)suggestedContentSize;
 
 @end
 

@@ -11,6 +11,8 @@
 @protocol CAMSuggestionDelegate <NSObject>
 - (void)captureController:(CUCaptureController *)arg1 didOutputFlashActive:(BOOL)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputHDRSuggestion:(BOOL)arg2;
+- (void)captureController:(CUCaptureController *)arg1 didOutputLowLightModeDurationMapping:(CDStruct_c3b9c2ee)arg2;
+- (void)captureController:(CUCaptureController *)arg1 didOutputLowLightStatus:(long long)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputTorchActive:(BOOL)arg2;
 @end
 

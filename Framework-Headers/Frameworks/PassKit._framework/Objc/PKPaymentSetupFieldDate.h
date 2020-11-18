@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKPaymentSetupFieldText.h>
 
-@class NSDate, NSDateFormatter, NSString;
+@class NSCalendar, NSDate, NSDateFormatter, NSLocale, NSString;
 
 @interface PKPaymentSetupFieldDate : PKPaymentSetupFieldText
 {
@@ -15,11 +15,15 @@
     BOOL _showsMonth;
     BOOL _showsYear;
     NSString *_submissionFormat;
+    NSCalendar *_calendar;
+    NSLocale *_locale;
     NSDate *_defaultDate;
 }
 
+@property (strong, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (copy, nonatomic) NSDate *currentValue; // @dynamic currentValue;
 @property (copy, nonatomic) NSDate *defaultDate; // @synthesize defaultDate=_defaultDate;
+@property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (nonatomic) BOOL showsDay; // @synthesize showsDay=_showsDay;
 @property (nonatomic) BOOL showsMonth; // @synthesize showsMonth=_showsMonth;
 @property (nonatomic) BOOL showsYear; // @synthesize showsYear=_showsYear;
@@ -28,7 +32,6 @@
 - (void).cxx_destruct;
 - (void)_commonUpdate;
 - (id)_defaultValueAsDateForCurrentLocale;
-- (id)_locale;
 - (id)_submissionStringForValue:(id)arg1;
 - (id)displayString;
 - (unsigned long long)fieldType;

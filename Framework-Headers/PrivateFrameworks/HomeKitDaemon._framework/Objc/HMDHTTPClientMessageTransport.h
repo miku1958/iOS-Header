@@ -7,20 +7,21 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFHTTPClientDelegate-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFNetServiceDelegate-Protocol.h>
 
-@class HMDHTTPDevice, HMFHTTPClient, HMFNetService, NSObject, NSString, NSUUID;
-@protocol HMDHTTPClientMessageTransportDelegate, OS_dispatch_queue;
+@class HMDHTTPDevice, HMFHTTPClient, HMFNetService, NSString, NSUUID;
+@protocol HMDHTTPClientMessageTransportDelegate, HMFLocking;
 
-@interface HMDHTTPClientMessageTransport : HMFObject <HMFHTTPClientDelegate, HMFNetServiceDelegate>
+@interface HMDHTTPClientMessageTransport : HMFObject <HMFHTTPClientDelegate, HMFLogging, HMFNetServiceDelegate>
 {
+    id<HMFLocking> _lock;
     BOOL _running;
     NSUUID *_sessionIdentifier;
     id<HMDHTTPClientMessageTransportDelegate> _delegate;
     NSUUID *_identifier;
     HMFNetService *_netService;
     HMDHTTPDevice *_remoteDevice;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFHTTPClient *_client;
 }
 
@@ -31,7 +32,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) HMFNetService *netService; // @synthesize netService=_netService;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic, getter=isReachable) BOOL reachable;
 @property (readonly, nonatomic) HMDHTTPDevice *remoteDevice; // @synthesize remoteDevice=_remoteDevice;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
@@ -46,14 +46,15 @@
 - (void)_stopWithError:(id)arg1;
 - (void)client:(id)arg1 didRequestPingWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)clientDidBecomeUnreachable:(id)arg1;
+- (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 netService:(id)arg2;
 - (id)logIdentifier;
 - (void)netService:(id)arg1 didUpdateTXTRecord:(id)arg2;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)sendMessage:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)sendPingWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)setSessionIdentifier:(id)arg1;
 - (id)shortDescription;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stop;

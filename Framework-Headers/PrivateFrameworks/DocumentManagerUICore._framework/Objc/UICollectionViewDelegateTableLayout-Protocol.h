@@ -17,6 +17,9 @@
 - (void)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 commitEditingStyle:(long long)arg3 forRowAtIndexPath:(NSIndexPath *)arg4;
 - (void)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 didEndEditingRowAtIndexPath:(NSIndexPath *)arg3;
 - (long long)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 editingStyleForRowAtIndexPath:(NSIndexPath *)arg3;
+- (double)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 estimatedHeightForFooterInSection:(long long)arg3;
+- (double)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 estimatedHeightForHeaderInSection:(long long)arg3;
+- (double)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 estimatedHeightForRowAtIndexPath:(NSIndexPath *)arg3;
 - (double)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 heightForFooterInSection:(long long)arg3;
 - (double)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 heightForHeaderInSection:(long long)arg3;
 - (double)collectionView:(UICollectionView *)arg1 tableLayout:(UICollectionViewTableLayout *)arg2 heightForRowAtIndexPath:(NSIndexPath *)arg3;

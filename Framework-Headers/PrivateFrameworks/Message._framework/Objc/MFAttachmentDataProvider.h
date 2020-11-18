@@ -17,11 +17,11 @@
 
 + (id)dataProviderWithPath:(id)arg1;
 + (id)dataProviderWithURL:(id)arg1;
+- (void).cxx_destruct;
 - (id)_fileAttributes:(id)arg1;
 - (BOOL)_isFileURL;
 - (id)_path;
 - (id)data;
-- (void)dealloc;
 - (id)errorWithMessage:(id)arg1 code:(long long)arg2;
 - (BOOL)exists;
 - (id)initWithURL:(id)arg1;

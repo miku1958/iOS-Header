@@ -8,7 +8,7 @@
 
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, _DUIPreview;
+@class _DUIImageComponent, _DUIPreview;
 
 @interface _DUIVisibleDroppedItem : NSObject <NSSecureCoding>
 {
@@ -16,7 +16,7 @@
     BOOL _flipped;
     BOOL _precisionMode;
     unsigned long long _itemIndex;
-    NSArray *_imageComponents;
+    _DUIImageComponent *_imageComponent;
     _DUIPreview *_preview;
     double _rotation;
     struct CGPoint _center;
@@ -27,8 +27,7 @@
 @property (nonatomic) struct CGPoint center; // @synthesize center=_center;
 @property (nonatomic) BOOL constrainSize; // @synthesize constrainSize=_constrainSize;
 @property (nonatomic) BOOL flipped; // @synthesize flipped=_flipped;
-@property (strong, nonatomic) NSArray *imageComponents; // @synthesize imageComponents=_imageComponents;
-@property (readonly, nonatomic) struct CGRect imageFrame;
+@property (strong, nonatomic) _DUIImageComponent *imageComponent; // @synthesize imageComponent=_imageComponent;
 @property (nonatomic) unsigned long long itemIndex; // @synthesize itemIndex=_itemIndex;
 @property (nonatomic) BOOL precisionMode; // @synthesize precisionMode=_precisionMode;
 @property (copy, nonatomic) _DUIPreview *preview; // @synthesize preview=_preview;
@@ -38,6 +37,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)createSnapshotView;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

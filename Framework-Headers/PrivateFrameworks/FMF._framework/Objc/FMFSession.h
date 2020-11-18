@@ -92,6 +92,7 @@
 - (oneway void)didUpdateHideFromFollowersStatus:(BOOL)arg1;
 - (oneway void)didUpdateLocations:(id)arg1;
 - (oneway void)didUpdatePendingOffersForHandles:(id)arg1;
+- (oneway void)didUpdatePreferences:(id)arg1;
 - (void)dispatchOnDelegateQueue:(CDUnknownBlockType)arg1;
 - (void)dumpStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encryptPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -101,6 +102,7 @@
 - (void)favoritesForMaxCount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fencesForHandles:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceRefresh;
+- (void)getAccountEmailAddress:(CDUnknownBlockType)arg1;
 - (id)getActiveLocationSharingDevice;
 - (void)getActiveLocationSharingDevice:(CDUnknownBlockType)arg1;
 - (id)getAllDevices;
@@ -124,6 +126,7 @@
 - (void)getPendingMappingPacketsForHandle:(id)arg1 groupId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getPrettyNameForHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getRecordIdForHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getThisDeviceAndCompanion:(CDUnknownBlockType)arg1;
 - (void)handleAndLocationForPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleIncomingAirDropURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)hasModelInitialized;
@@ -136,6 +139,7 @@
 - (void)invalidate;
 - (void)invalidateWithError:(id)arg1;
 - (BOOL)is5XXError:(id)arg1;
+- (void)isAllowFriendRequestsEnabled:(CDUnknownBlockType)arg1;
 - (void)isIn5XXGracePeriodWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)isMyLocationEnabled;
 - (void)isMyLocationEnabled:(CDUnknownBlockType)arg1;
@@ -156,11 +160,13 @@
 - (void)sendFriendshipInviteToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendFriendshipOfferToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendFriendshipOfferToHandles:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)sendIDSMessage:(id)arg1 toIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendIDSPacket:(id)arg1 toHandle:(id)arg2;
 - (oneway void)sendMappingPacket:(id)arg1 toHandle:(id)arg2;
 - (id)serverProxy;
 - (void)sessionHandleReport:(CDUnknownBlockType)arg1;
 - (void)setActiveDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setAllowFriendRequestsEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setExpiredInitTimestamp;
 - (void)setHideMyLocationEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)setLocations:(id)arg1;
@@ -169,6 +175,7 @@
 - (void)showShareMyLocationiCloudSettingsOffAlert;
 - (void)stopSharingMyLocationWithHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)stopSharingMyLocationWithHandles:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)triggerWithUUID:(id)arg1 forFenceWithID:(id)arg2 withStatus:(id)arg3 forDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)verifyRestrictionsAndShowDialogIfRequired;
 
 @end

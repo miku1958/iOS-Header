@@ -8,8 +8,8 @@
 
 #import <CarPlay/CPSearchClientTemplateDelegate-Protocol.h>
 
-@class NSArray, NSString;
-@protocol CPSearchTemplateDelegate, CPSearchTemplateProviding;
+@class NAFuture, NSArray, NSString;
+@protocol CPSearchTemplateDelegate;
 
 @interface CPSearchTemplate : CPTemplate <CPSearchClientTemplateDelegate>
 {
@@ -23,7 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *listItems; // @synthesize listItems=_listItems;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) id<CPSearchTemplateProviding> templateProvider; // @dynamic templateProvider;
+@property (strong, nonatomic) NAFuture *templateProviderFuture; // @dynamic templateProviderFuture;
 
 - (void).cxx_destruct;
 - (id)leadingNavigationBarButtons;

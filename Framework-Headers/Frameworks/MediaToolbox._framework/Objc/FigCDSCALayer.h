@@ -6,6 +6,7 @@
 
 #import <MediaToolbox/FigBaseCALayer.h>
 
+__attribute__((visibility("hidden")))
 @interface FigCDSCALayer : FigBaseCALayer
 {
     struct OpaqueFigCDSCALayerInternal *layerInternal;
@@ -15,7 +16,6 @@
 - (void)clear:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)finalize;
 - (id)init;
 - (void)layoutSublayers;
 - (void)setCallbacks:(id)arg1 userEvent:(CDUnknownFunctionPointerType)arg2 viewportChanged:(CDUnknownFunctionPointerType)arg3 drawInContext:(CDUnknownFunctionPointerType)arg4;

@@ -11,37 +11,47 @@
 @interface RTPersistenceStore : NSObject
 {
     NSPersistentStoreDescription *_storeDescription;
+    BOOL _mirroringDelegateIntialized;
     RTPersistenceMigrator *_migrator;
     NSMutableDictionary *_userInfo;
     NSCloudKitMirroringDelegate *_mirroringDelegate;
     NSCloudKitMirroringDelegateOptions *_mirroringDelegateOptions;
     unsigned long long _state;
+    long long _mirroringDelegateState;
 }
 
 @property (readonly) NSURL *URL;
 @property (strong, nonatomic) RTPersistenceMigrator *migrator; // @synthesize migrator=_migrator;
 @property (strong, nonatomic) NSCloudKitMirroringDelegate *mirroringDelegate; // @synthesize mirroringDelegate=_mirroringDelegate;
 @property (strong, nonatomic) NSCloudKitMirroringDelegateOptions *mirroringDelegateOptions; // @synthesize mirroringDelegateOptions=_mirroringDelegateOptions;
+@property (nonatomic) long long mirroringDelegateState; // @synthesize mirroringDelegateState=_mirroringDelegateState;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) NSPersistentStoreDescription *storeDescription; // @synthesize storeDescription=_storeDescription;
 @property (readonly) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
++ (id)storeBaseName:(id)arg1;
 - (void).cxx_destruct;
 - (id)_normalizeError:(id)arg1 storeDescription:(id)arg2;
 - (id)_validateKeys:(id)arg1;
 - (BOOL)addToCoordinator:(id)arg1 lightweightMigration:(BOOL)arg2 vacuum:(BOOL)arg3 allowMirroring:(BOOL)arg4 error:(id *)arg5;
 - (id)cachedModelWithError:(id *)arg1;
+- (void)dealloc;
 - (BOOL)destroyWithCoordinator:(id)arg1 error:(id *)arg2;
 - (BOOL)error:(id *)arg1 code:(unsigned long long)arg2;
 - (BOOL)error:(id *)arg1 inError:(id)arg2;
 - (id)init;
 - (id)initWithStoreDescription:(id)arg1;
+- (void)onMirroringDelegateInitialization:(id)arg1;
 - (BOOL)openWithCoordinator:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (BOOL)performVacuumWithCoordinator:(id)arg1 error:(id *)arg2;
+- (BOOL)rekeyWithCoordinator:(id)arg1 keyData:(id)arg2 error:(id *)arg3;
 - (BOOL)removeFromCoordinator:(id)arg1 error:(id *)arg2;
 - (BOOL)removeStoreAtURL:(id)arg1 error:(id *)arg2;
 - (id)retrieveMetadataWithCoordinator:(id)arg1 error:(id *)arg2;
+- (id)storeBaseName;
 - (id)storeName;
+- (id)storeURLsMatchingStoreName;
+- (id)storeURLsMatchingStoreNameAtURL:(id)arg1;
 - (BOOL)updateMetadata:(id)arg1 coordinator:(id)arg2 error:(id *)arg3;
 
 @end

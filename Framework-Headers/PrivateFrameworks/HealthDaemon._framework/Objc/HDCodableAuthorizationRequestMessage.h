@@ -27,7 +27,9 @@
 @property (readonly, nonatomic) long long *typesToWrites;
 @property (readonly, nonatomic) unsigned long long typesToWritesCount;
 
++ (id)codableAuthorizationRequestWithRecord:(id)arg1;
 - (void).cxx_destruct;
+- (id)_objectTypeForCode:(long long)arg1;
 - (void)addTypesToRead:(long long)arg1;
 - (void)addTypesToWrite:(long long)arg1;
 - (void)clearTypesToReads;
@@ -35,6 +37,8 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)decodedReadTypes;
+- (id)decodedWriteTypes;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

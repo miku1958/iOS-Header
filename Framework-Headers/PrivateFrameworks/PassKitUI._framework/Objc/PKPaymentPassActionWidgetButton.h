@@ -20,9 +20,11 @@
 + (double)glyphImageHeight;
 + (double)widgetHeightWithAccessibilityLayout:(BOOL)arg1;
 - (void).cxx_destruct;
+- (void)_applyStyles;
 - (id)initWithWidgetViewStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

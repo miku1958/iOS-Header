@@ -6,21 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class FBScene, FBSceneSnapshotContext, UIImage, XBDisplaySnapshot;
+@class FBScene, FBSceneSnapshotContext, IOSurface, _FBSSnapshot;
 
 @interface FBSceneSnapshot : NSObject
 {
     FBScene *_scene;
     FBSceneSnapshotContext *_context;
-    XBDisplaySnapshot *_snapshot;
+    _FBSSnapshot *_snapshot;
 }
 
 @property (readonly, nonatomic) struct CGImage *CGImage;
-@property (readonly, nonatomic) void *IOSurface;
-@property (readonly, nonatomic) UIImage *UIImage;
-@property (readonly, nonatomic) FBSceneSnapshotContext *context; // @synthesize context=_context;
-@property (readonly, nonatomic, getter=isDataLoaded) BOOL dataLoaded;
-@property (readonly, nonatomic) void *fallbackIOSurface;
+@property (readonly, nonatomic) IOSurface *IOSurface;
+@property (readonly, copy, nonatomic) FBSceneSnapshotContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) IOSurface *fallbackIOSurface;
+@property (readonly, nonatomic) BOOL hasProtectedContent;
 
 - (void).cxx_destruct;
 - (struct CGAffineTransform)_baseTransformForSnapshotContext:(id)arg1 rootContext:(id)arg2;

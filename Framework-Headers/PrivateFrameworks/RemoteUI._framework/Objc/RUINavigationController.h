@@ -6,13 +6,17 @@
 
 #import <UIKit/UINavigationController.h>
 
+@class RUIStyle;
+
 @interface RUINavigationController : UINavigationController
 {
     unsigned long long _ruiSupportedInterfaceOrientations;
+    RUIStyle *_style;
     CDUnknownBlockType _menuDismissalHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType menuDismissalHandler; // @synthesize menuDismissalHandler=_menuDismissalHandler;
+@property (strong, nonatomic) RUIStyle *style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
 - (void)_menuButtonPressed:(id)arg1;
@@ -20,6 +24,7 @@
 - (void)loadView;
 - (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 
 @end

@@ -21,6 +21,7 @@
     BOOL _btPeripheralManagerNeeded;
     struct {
         CDUnknownFunctionPointerType accessoryEvent;
+        CDUnknownFunctionPointerType accessorySetupCommand;
     } _btAccessoryCallbacks;
     BOOL _btAccessoryEventsNeeded;
     BOOL _btAccessoryEventsRegistered;

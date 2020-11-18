@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class AWDServerConnection;
+#import <MailSupport/EFLoggable-Protocol.h>
 
-@interface MSDiagnosticManager : NSObject
+@class AWDServerConnection, NSString;
+
+@interface MSDiagnosticManager : NSObject <EFLoggable>
 {
     AWDServerConnection *_awdServerConnection;
 }
 
 @property (readonly, nonatomic) AWDServerConnection *awdServerConnection; // @synthesize awdServerConnection=_awdServerConnection;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)log;
 - (void).cxx_destruct;
@@ -22,7 +28,7 @@
 - (void)submitFetchMetricsReport:(id)arg1;
 - (void)submitMessageLoadingReport:(id)arg1;
 - (void)submitSearchSessionWithSearchEngagement:(id)arg1 numberOfMessagesLeftToIndex:(unsigned long long)arg2 percentOfMessagesIndexed:(unsigned long long)arg3 emailProvider:(int)arg4;
-- (void)submitWithIdentifier:(unsigned int)arg1 metricGenerator:(CDUnknownBlockType)arg2;
+- (BOOL)submitWithIdentifier:(unsigned int)arg1 metricGenerator:(CDUnknownBlockType)arg2;
 
 @end
 

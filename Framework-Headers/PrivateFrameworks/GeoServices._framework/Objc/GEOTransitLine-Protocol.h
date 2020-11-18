@@ -17,6 +17,7 @@
 @property (readonly, nonatomic) BOOL departuresAreVehicleSpecific;
 @property (readonly, nonatomic) BOOL hasLineColorString;
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
+@property (readonly, nonatomic) BOOL isBus;
 @property (readonly, nonatomic) NSString *lineColorString;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> modeArtwork;
 @property (readonly, nonatomic) unsigned long long muid;

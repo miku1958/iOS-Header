@@ -6,15 +6,15 @@
 
 #import <NanoTimeKitCompanion/NTKTimelineComplicationController.h>
 
-#import <NanoTimeKitCompanion/NTKComplicationDataSourceDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/CLKCComplicationDataSourceDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKComplicationTimelineDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
 
-@class CLKComplicationTemplate, NSDate, NSMutableSet, NSString, NTKComplicationDataSource, NTKComplicationTimeline, NTKTimelineDataOperation;
+@class CLKCComplicationDataSource, CLKComplicationTemplate, NSDate, NSMutableSet, NSString, NTKComplicationTimeline, NTKTimelineDataOperation;
 
-@interface NTKLocalTimelineComplicationController : NTKTimelineComplicationController <NTKComplicationDataSourceDelegate, NTKComplicationTimelineDelegate, NTKTimeTravel>
+@interface NTKLocalTimelineComplicationController : NTKTimelineComplicationController <CLKCComplicationDataSourceDelegate, NTKComplicationTimelineDelegate, NTKTimeTravel>
 {
-    NTKComplicationDataSource *_dataSource;
+    CLKCComplicationDataSource *_dataSource;
     NSDate *_timeTravelDate;
     BOOL _supportsTimeTravelForward;
     BOOL _supportsTimeTravelBackward;
@@ -28,8 +28,8 @@
     NSMutableSet *_suspendedRightBoundaryDates;
     NSMutableSet *_delayedBlocks;
     CLKComplicationTemplate *_switcherTemplate;
-    CLKComplicationTemplate *_lockedTemplate;
     BOOL _hasBeenLive;
+    long long _dataSourceState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -38,6 +38,7 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
++ (Class)complicationDataSourceClassForComplication:(id)arg1 family:(long long)arg2 device:(id)arg3;
 - (void).cxx_destruct;
 - (void)_activate;
 - (void)_applyAnimationMode;
@@ -48,10 +49,10 @@
 - (void)_completeExtendRightOperationWithBoundaryDate:(id)arg1 entries:(id)arg2;
 - (void)_completeSetupOperationWithDirections:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3 currentEntry:(id)arg4;
 - (id)_currentEntry;
-- (id)_currentTemplate;
 - (void)_deactivate;
 - (void)_extendTimelineIfNecessaryAndPossible;
 - (void)_queueAnimationForNextUpdate:(unsigned long long)arg1;
+- (void)_requestDataSourceToUpdateToState:(long long)arg1;
 - (void)_resetTimelineForCachingChange;
 - (void)_startExtendLeftOperationFromDate:(id)arg1;
 - (void)_startExtendOperationIfNecessaryForWindow:(id)arg1 withDate:(id)arg2 minBuffer:(double)arg3;
@@ -63,15 +64,19 @@
 - (void)_updateDimStateForCurrentTimeline;
 - (void)_updateIsComplicationActive:(BOOL)arg1;
 - (void)_updateTimeTravelBoundaries;
+- (id)activeDisplayTemplate;
 - (void)addDisplayWrapper:(id)arg1;
+- (id)alwaysOnTemplate;
 - (void)appendEntries:(id)arg1;
 - (id)complicationApplicationIdentifier;
-- (void)didTouchDown;
-- (void)didTouchUpInside;
+- (void)didTouchDownInView:(id)arg1;
+- (void)didTouchUpInsideView:(id)arg1;
+- (void)entriesDidChangeInTimeline:(id)arg1;
 - (BOOL)hasTapAction;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void)invalidateEntries;
 - (void)invalidateSwitcherTemplate;
+- (id)lockedTemplate;
 - (double)minimumIntervalBetweenTimelineEntries;
 - (void)nowEntryDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)performTapAction;

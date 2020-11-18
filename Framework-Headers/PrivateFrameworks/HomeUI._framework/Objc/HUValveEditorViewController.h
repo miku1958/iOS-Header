@@ -6,22 +6,25 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
-@class HUValveEditorItemManager;
+@class HUNameItemModuleController, HUValveEditorItemManager, NSMutableSet;
 
 @interface HUValveEditorViewController : HUItemTableViewController
 {
     HUValveEditorItemManager *_valveEditorItemManager;
+    HUNameItemModuleController *_nameModuleController;
+    NSMutableSet *_moduleControllers;
 }
 
+@property (strong, nonatomic) NSMutableSet *moduleControllers; // @synthesize moduleControllers=_moduleControllers;
+@property (strong, nonatomic) HUNameItemModuleController *nameModuleController; // @synthesize nameModuleController=_nameModuleController;
 @property (strong, nonatomic) HUValveEditorItemManager *valveEditorItemManager; // @synthesize valveEditorItemManager=_valveEditorItemManager;
 
 - (void).cxx_destruct;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
-- (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithSourceItem:(id)arg1 editorMode:(unsigned long long)arg2;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
-- (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
+- (id)itemModuleControllers;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (BOOL)shouldManageTextFieldForItem:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

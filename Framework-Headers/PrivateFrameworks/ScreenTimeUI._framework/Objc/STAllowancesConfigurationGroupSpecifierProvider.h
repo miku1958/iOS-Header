@@ -11,16 +11,19 @@
 
 @class NSString, PSSpecifier;
 
-@interface STAllowancesConfigurationGroupSpecifierProvider : STRootGroupSpecifierProvider <STDeviceBedtimeListControllerDelegate, STAlwaysAllowListControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface STAllowancesConfigurationGroupSpecifierProvider : STRootGroupSpecifierProvider <STAlwaysAllowListControllerDelegate, STDeviceBedtimeListControllerDelegate>
 {
     PSSpecifier *_deviceBedtimeSpecifier;
     PSSpecifier *_appLimitsSpecifier;
     PSSpecifier *_alwaysAllowedSpecifier;
+    PSSpecifier *_communicationLimitsSpecifier;
     PSSpecifier *_contentPrivacySpecifier;
 }
 
 @property (strong, nonatomic) PSSpecifier *alwaysAllowedSpecifier; // @synthesize alwaysAllowedSpecifier=_alwaysAllowedSpecifier;
 @property (strong, nonatomic) PSSpecifier *appLimitsSpecifier; // @synthesize appLimitsSpecifier=_appLimitsSpecifier;
+@property (strong, nonatomic) PSSpecifier *communicationLimitsSpecifier; // @synthesize communicationLimitsSpecifier=_communicationLimitsSpecifier;
 @property (strong, nonatomic) PSSpecifier *contentPrivacySpecifier; // @synthesize contentPrivacySpecifier=_contentPrivacySpecifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,8 +32,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_communicationLimitsDetailText;
+- (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_deviceBedtimeDidChange:(id)arg1;
+- (void)_isRemoteUserDidChangeFrom:(BOOL)arg1 to:(BOOL)arg2;
+- (void)_resetCommunicationLimitsDetailText;
+- (void)_showCommunicationLimitsViewController:(id)arg1;
 - (id)_subtitleTextForDeviceBedtime:(id)arg1;
+- (void)_userTypeDidChange:(unsigned long long)arg1;
 - (void)alwaysAllowListController:(id)arg1 didFinishEditingAlwaysAllowList:(id)arg2;
 - (id)alwaysAllowedDetailText;
 - (id)appLimitsDetailText;

@@ -8,40 +8,65 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSMutableArray;
+@class GEOFormattedString, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOTrafficBannerText : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOFormattedString *_bannerLargeText;
     GEOFormattedString *_bannerSmallText;
+    NSMutableArray *_localizedIncidentBanners;
+    NSMutableArray *_localizedIncidentSpokenTexts;
+    NSMutableArray *_localizedIncidentSubBanners;
+    GEOFormattedString *_spokenPrompt;
     int _bannerStyle;
     unsigned int _hideAtDistance;
     unsigned int _incidentDistance;
     unsigned int _incidentIndex;
-    NSMutableArray *_localizedIncidentBanners;
-    NSMutableArray *_localizedIncidentSpokenTexts;
-    NSMutableArray *_localizedIncidentSubBanners;
     int _previousBannerChange;
     unsigned int _secondsSaved;
     unsigned int _showAtDistance;
-    GEOFormattedString *_spokenPrompt;
     BOOL _disableFasterRerouteByDefault;
     struct {
-        unsigned int bannerStyle:1;
-        unsigned int hideAtDistance:1;
-        unsigned int incidentDistance:1;
-        unsigned int incidentIndex:1;
-        unsigned int previousBannerChange:1;
-        unsigned int secondsSaved:1;
-        unsigned int showAtDistance:1;
-        unsigned int disableFasterRerouteByDefault:1;
-    } _has;
+        unsigned int has_bannerStyle:1;
+        unsigned int has_hideAtDistance:1;
+        unsigned int has_incidentDistance:1;
+        unsigned int has_incidentIndex:1;
+        unsigned int has_previousBannerChange:1;
+        unsigned int has_secondsSaved:1;
+        unsigned int has_showAtDistance:1;
+        unsigned int has_disableFasterRerouteByDefault:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_bannerLargeText:1;
+        unsigned int read_bannerSmallText:1;
+        unsigned int read_localizedIncidentBanners:1;
+        unsigned int read_localizedIncidentSpokenTexts:1;
+        unsigned int read_localizedIncidentSubBanners:1;
+        unsigned int read_spokenPrompt:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_bannerLargeText:1;
+        unsigned int wrote_bannerSmallText:1;
+        unsigned int wrote_localizedIncidentBanners:1;
+        unsigned int wrote_localizedIncidentSpokenTexts:1;
+        unsigned int wrote_localizedIncidentSubBanners:1;
+        unsigned int wrote_spokenPrompt:1;
+        unsigned int wrote_bannerStyle:1;
+        unsigned int wrote_hideAtDistance:1;
+        unsigned int wrote_incidentDistance:1;
+        unsigned int wrote_incidentIndex:1;
+        unsigned int wrote_previousBannerChange:1;
+        unsigned int wrote_secondsSaved:1;
+        unsigned int wrote_showAtDistance:1;
+        unsigned int wrote_disableFasterRerouteByDefault:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOFormattedString *bannerLargeText; // @synthesize bannerLargeText=_bannerLargeText;
-@property (strong, nonatomic) GEOFormattedString *bannerSmallText; // @synthesize bannerSmallText=_bannerSmallText;
-@property (nonatomic) int bannerStyle; // @synthesize bannerStyle=_bannerStyle;
-@property (nonatomic) BOOL disableFasterRerouteByDefault; // @synthesize disableFasterRerouteByDefault=_disableFasterRerouteByDefault;
+@property (strong, nonatomic) GEOFormattedString *bannerLargeText;
+@property (strong, nonatomic) GEOFormattedString *bannerSmallText;
+@property (nonatomic) int bannerStyle;
+@property (nonatomic) BOOL disableFasterRerouteByDefault;
 @property (readonly, nonatomic) BOOL hasBannerLargeText;
 @property (readonly, nonatomic) BOOL hasBannerSmallText;
 @property (nonatomic) BOOL hasBannerStyle;
@@ -53,23 +78,34 @@
 @property (nonatomic) BOOL hasSecondsSaved;
 @property (nonatomic) BOOL hasShowAtDistance;
 @property (readonly, nonatomic) BOOL hasSpokenPrompt;
-@property (nonatomic) unsigned int hideAtDistance; // @synthesize hideAtDistance=_hideAtDistance;
-@property (nonatomic) unsigned int incidentDistance; // @synthesize incidentDistance=_incidentDistance;
-@property (nonatomic) unsigned int incidentIndex; // @synthesize incidentIndex=_incidentIndex;
-@property (strong, nonatomic) NSMutableArray *localizedIncidentBanners; // @synthesize localizedIncidentBanners=_localizedIncidentBanners;
-@property (strong, nonatomic) NSMutableArray *localizedIncidentSpokenTexts; // @synthesize localizedIncidentSpokenTexts=_localizedIncidentSpokenTexts;
-@property (strong, nonatomic) NSMutableArray *localizedIncidentSubBanners; // @synthesize localizedIncidentSubBanners=_localizedIncidentSubBanners;
-@property (nonatomic) int previousBannerChange; // @synthesize previousBannerChange=_previousBannerChange;
-@property (nonatomic) unsigned int secondsSaved; // @synthesize secondsSaved=_secondsSaved;
-@property (nonatomic) unsigned int showAtDistance; // @synthesize showAtDistance=_showAtDistance;
-@property (strong, nonatomic) GEOFormattedString *spokenPrompt; // @synthesize spokenPrompt=_spokenPrompt;
+@property (nonatomic) unsigned int hideAtDistance;
+@property (nonatomic) unsigned int incidentDistance;
+@property (nonatomic) unsigned int incidentIndex;
+@property (strong, nonatomic) NSMutableArray *localizedIncidentBanners;
+@property (strong, nonatomic) NSMutableArray *localizedIncidentSpokenTexts;
+@property (strong, nonatomic) NSMutableArray *localizedIncidentSubBanners;
+@property (nonatomic) int previousBannerChange;
+@property (nonatomic) unsigned int secondsSaved;
+@property (nonatomic) unsigned int showAtDistance;
+@property (strong, nonatomic) GEOFormattedString *spokenPrompt;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)localizedIncidentBannerType;
 + (Class)localizedIncidentSpokenTextType;
 + (Class)localizedIncidentSubBannerType;
 - (void).cxx_destruct;
 - (int)StringAsBannerStyle:(id)arg1;
 - (int)StringAsPreviousBannerChange:(id)arg1;
+- (void)_addNoFlagsLocalizedIncidentBanner:(id)arg1;
+- (void)_addNoFlagsLocalizedIncidentSpokenText:(id)arg1;
+- (void)_addNoFlagsLocalizedIncidentSubBanner:(id)arg1;
+- (void)_readBannerLargeText;
+- (void)_readBannerSmallText;
+- (void)_readLocalizedIncidentBanners;
+- (void)_readLocalizedIncidentSpokenTexts;
+- (void)_readLocalizedIncidentSubBanners;
+- (void)_readSpokenPrompt;
 - (void)addLocalizedIncidentBanner:(id)arg1;
 - (void)addLocalizedIncidentSpokenText:(id)arg1;
 - (void)addLocalizedIncidentSubBanner:(id)arg1;
@@ -77,6 +113,7 @@
 - (void)clearLocalizedIncidentBanners;
 - (void)clearLocalizedIncidentSpokenTexts;
 - (void)clearLocalizedIncidentSubBanners;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -91,6 +128,7 @@
 - (unsigned long long)localizedIncidentSubBannersCount;
 - (void)mergeFrom:(id)arg1;
 - (id)previousBannerChangeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

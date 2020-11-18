@@ -6,34 +6,30 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaTextToSpeechBegin-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
-@interface SISchemaTextToSpeechBegin : PBCodable <NSCopying>
+@interface SISchemaTextToSpeechBegin : PBCodable <SISchemaTextToSpeechBegin, NSSecureCoding>
 {
-    NSString *_aceID;
     int _audioOutputRoute;
-    struct {
-        unsigned int audioOutputRoute:1;
-    } _has;
+    NSString *_aceID;
 }
 
-@property (strong, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
+@property (copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
 @property (nonatomic) int audioOutputRoute; // @synthesize audioOutputRoute=_audioOutputRoute;
-@property (readonly, nonatomic) BOOL hasAceID;
-@property (nonatomic) BOOL hasAudioOutputRoute;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (int)StringAsAudioOutputRoute:(id)arg1;
-- (id)audioOutputRouteAsString:(int)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

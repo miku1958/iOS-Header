@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) UILabel *titleLabel;
 @property (nonatomic) BOOL useCompactTopInset; // @synthesize useCompactTopInset=_useCompactTopInset;
 
++ (id)defaultBackgroundColor;
 + (double)defaultHorizontalInset;
 - (void).cxx_destruct;
 - (void)_buttonPressed:(id)arg1;

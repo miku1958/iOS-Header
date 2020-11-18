@@ -6,10 +6,13 @@
 
 #import <QuickLook/QLMediaItemBaseViewController.h>
 
-@class NSLayoutConstraint, NSMutableDictionary, NSTimer, UILabel, UIScrollView, UIView;
+#import <QuickLook/QLMediaScrubberGestureDelegate-Protocol.h>
+#import <QuickLook/UIGestureRecognizerDelegate-Protocol.h>
+
+@class NSLayoutConstraint, NSMutableDictionary, NSNumber, NSString, NSTimer, QLMediaScrubberGesture, UILabel, UIScrollView, UITapGestureRecognizer, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLMediaItemViewController : QLMediaItemBaseViewController
+@interface QLMediaItemViewController : QLMediaItemBaseViewController <QLMediaScrubberGestureDelegate, UIGestureRecognizerDelegate>
 {
     NSMutableDictionary *_playingInfo;
     UIView *_timeLabelBackground;
@@ -19,7 +22,18 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_timeLabelConstraintY;
     NSTimer *_playbackTimeHiddenTimer;
     long long _playbackTimeFormat;
+    BOOL _wasPlayingBeforeStartScrubbing;
+    NSNumber *_isSeeking;
+    QLMediaScrubberGesture *_scrubGesture;
+    UITapGestureRecognizer *_tapToPlayGesture;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) QLMediaScrubberGesture *scrubGesture; // @synthesize scrubGesture=_scrubGesture;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) UITapGestureRecognizer *tapToPlayGesture; // @synthesize tapToPlayGesture=_tapToPlayGesture;
 
 - (void).cxx_destruct;
 - (id)_playingInfoWithPlaybackDuration:(double)arg1 elapsedTime:(double)arg2;
@@ -27,11 +41,14 @@ __attribute__((visibility("hidden")))
 - (void)_unregisterForCommandCenterHandlers;
 - (void)_updateCommandCenterPlayingInfoWithCurrentPlaybackTimeInformation;
 - (void)dealloc;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
 - (void)hideTimeLabel;
 - (void)hideTimeLabelAfterDelay;
 - (void)hideTimeLabelAnimated:(BOOL)arg1;
 - (void)hostApplicationDidEnterBackground:(id)arg1;
 - (id)labelTextWithFormat:(long long)arg1 elapsedInterval:(double)arg2 remainingInterval:(double)arg3;
+- (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observePlayingTime:(CDStruct_198678f7)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)previewBecameFullScreen:(BOOL)arg1 animated:(BOOL)arg2;
@@ -39,16 +56,23 @@ __attribute__((visibility("hidden")))
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewIsAppearingWithProgress:(double)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
+- (id)registeredKeyCommands;
 - (void)removeTimeLabel;
+- (void)scrubber:(id)arg1 didChangeValue:(float)arg2;
+- (void)scrubberDidEndScrubbing:(id)arg1;
+- (void)scrubberDidStartScrubbing:(id)arg1;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setTimeLabelNeedsUpdate;
 - (void)setUpTimeLabelIfNeeded;
 - (void)showTimeLabel;
 - (void)showTimeLabelIfNeeded;
 - (id)stringFromTimeInterval:(double)arg1;
+- (void)tapToPlayGestureChanged:(id)arg1;
 - (id)timeLabelScrollView;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
-- (void)userScrubbedInControlCenter:(id)arg1;
+- (long long)userScrubbedInControlCenter:(id)arg1;
+- (long long)userTappedPauseInControlCenter:(id)arg1;
+- (long long)userTappedPlayInControlCenter:(id)arg1;
 
 @end
 

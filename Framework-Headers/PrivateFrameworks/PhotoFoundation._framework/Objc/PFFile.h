@@ -20,6 +20,7 @@
     NSString *_cachedPath;
 }
 
+@property (readonly) NSString *UTI;
 @property (readonly) NSDate *fileCreationDate;
 @property (readonly) NSString *fileExtension;
 @property (readonly) NSDate *fileModificationDate;
@@ -29,7 +30,6 @@
 @property (readonly) NSString *path;
 @property (readonly, nonatomic) unsigned long long pathHash; // @synthesize pathHash=_pathHash;
 @property (readonly) NSURL *url; // @synthesize url=_url;
-@property (readonly) NSString *uti;
 
 + (id)assetType:(id)arg1;
 + (BOOL)createEmptyFileAtURL:(id)arg1;

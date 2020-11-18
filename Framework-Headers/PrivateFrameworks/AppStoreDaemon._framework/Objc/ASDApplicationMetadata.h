@@ -22,6 +22,7 @@
     NSString *_bundleVersion;
     NSString *_cohort;
     NSString *_deviceVendorID;
+    NSNumber *_downloaderID;
     NSNumber *_externalVersionIdentifier;
     NSNumber *_installOrder;
     NSNumber *_itemID;
@@ -40,6 +41,7 @@
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (copy, nonatomic) NSString *cohort; // @synthesize cohort=_cohort;
 @property (copy, nonatomic) NSString *deviceVendorID; // @synthesize deviceVendorID=_deviceVendorID;
+@property (copy, nonatomic) NSNumber *downloaderID; // @synthesize downloaderID=_downloaderID;
 @property (copy, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;
 @property (copy, nonatomic) NSNumber *installOrder; // @synthesize installOrder=_installOrder;
 @property (nonatomic) BOOL isBeta; // @synthesize isBeta=_isBeta;

@@ -13,5 +13,6 @@
 + (BOOL)hk_isUSLocale;
 + (void)hk_setTestLocale:(id)arg1;
 + (id)hk_testableAutoupdatingCurrentLocale;
+- (BOOL)hk_isEquivalent:(id)arg1;
 @end
 

@@ -8,32 +8,49 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDBatchSpatialLookupResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_spatialEventLookupResults;
     NSMutableArray *_spatialPlaceLookupResults;
     int _statusCode;
-    CDStruct_bcb1eac0 _has;
+    struct {
+        unsigned int has_statusCode:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_spatialEventLookupResults:1;
+        unsigned int read_spatialPlaceLookupResults:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_spatialEventLookupResults:1;
+        unsigned int wrote_spatialPlaceLookupResults:1;
+        unsigned int wrote_statusCode:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasStatusCode;
-@property (strong, nonatomic) NSMutableArray *spatialEventLookupResults; // @synthesize spatialEventLookupResults=_spatialEventLookupResults;
-@property (strong, nonatomic) NSMutableArray *spatialPlaceLookupResults; // @synthesize spatialPlaceLookupResults=_spatialPlaceLookupResults;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (strong, nonatomic) NSMutableArray *spatialEventLookupResults;
+@property (strong, nonatomic) NSMutableArray *spatialPlaceLookupResults;
+@property (nonatomic) int statusCode;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)spatialEventLookupResultType;
 + (Class)spatialPlaceLookupResultType;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
+- (void)_addNoFlagsSpatialEventLookupResult:(id)arg1;
+- (void)_addNoFlagsSpatialPlaceLookupResult:(id)arg1;
+- (void)_readSpatialEventLookupResults;
+- (void)_readSpatialPlaceLookupResults;
 - (void)addSpatialEventLookupResult:(id)arg1;
 - (void)addSpatialPlaceLookupResult:(id)arg1;
 - (void)clearSpatialEventLookupResults;
 - (void)clearSpatialPlaceLookupResults;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)spatialEventLookupResultAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spatialEventLookupResultsCount;

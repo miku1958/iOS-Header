@@ -15,10 +15,12 @@
 @interface _INPBGenericIntentResponse : PBCodable <_INPBGenericIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBIntentMetadata *_metadata;
     NSArray *_properties;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasMetadata;
@@ -29,11 +31,14 @@
 @property (readonly) Class superclass;
 
 + (Class)propertiesType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addProperties:(id)arg1;
 - (void)clearProperties;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)propertiesAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;

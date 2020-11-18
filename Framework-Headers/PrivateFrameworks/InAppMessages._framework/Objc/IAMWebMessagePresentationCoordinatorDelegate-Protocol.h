@@ -9,7 +9,6 @@
 @class IAMWebMessagePresentationCoordinator, NSDictionary, UIViewController;
 
 @protocol IAMWebMessagePresentationCoordinatorDelegate <NSObject>
-- (void)presentViewController:(UIViewController *)arg1 forPresentationCoordinator:(IAMWebMessagePresentationCoordinator *)arg2 completion:(void (^)(void))arg3;
 - (UIViewController *)viewControllerForModalPresentationUsingCoordinator:(IAMWebMessagePresentationCoordinator *)arg1;
 - (void)webMessagePresentationCoordinatorWebMessageDidFail:(IAMWebMessagePresentationCoordinator *)arg1;
 - (void)webMessagePresentationCoordinatorWebMessageDidFinishPresentation:(IAMWebMessagePresentationCoordinator *)arg1;

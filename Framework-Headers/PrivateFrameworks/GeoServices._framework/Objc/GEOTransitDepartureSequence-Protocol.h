@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSSet *nextStopIDs;
 @property (readonly, nonatomic) NSArray *operatingHours;
 
+- (NSArray *)departures;
 - (NSArray *)departuresValidForDate:(NSDate *)arg1;
 - (id<GEOTransitDeparture>)firstDepartureAfterDate:(NSDate *)arg1;
 - (id<GEOTransitDepartureFrequency>)firstDepartureFrequencyOnOrAfterDate:(NSDate *)arg1;
@@ -32,5 +33,6 @@
 - (BOOL)isValidForDate:(NSDate *)arg1 inTimeZone:(NSTimeZone *)arg2;
 - (unsigned long long)numberOfDeparturesAfterDate:(NSDate *)arg1;
 - (NSArray *)operatingHoursForDate:(NSDate *)arg1 inTimeZone:(NSTimeZone *)arg2;
+- (unsigned long long)stopId;
 @end
 

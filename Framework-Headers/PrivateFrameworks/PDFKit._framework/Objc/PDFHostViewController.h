@@ -21,17 +21,18 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)backgroundColor;
 + (void)createHostView:(CDUnknownBlockType)arg1 forExtensionIdentifier:(id)arg2;
 + (id)exportedInterface;
 + (id)loadExtension:(id)arg1;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
-- (struct CGRect)_boundsInDocument;
+- (void)_appendPasswordUI;
 - (struct CGSize)_documentViewSize;
 - (void)_endPDFViewRotationAnimated:(BOOL)arg1 withUpdate:(BOOL)arg2;
 - (void)_gestureInit;
-- (BOOL)_hasDraggableSelectionAtLocation:(struct CGPoint)arg1;
 - (double)_hostScrollViewZoomScale;
+- (struct CGRect)_insetBoundsInDocument;
 - (BOOL)_isTouchingLollipopAtLocationOfFirstTouch:(struct CGPoint)arg1;
 - (struct UIEdgeInsets)_pdfViewInsets;
 - (struct UIEdgeInsets)_pdfViewSafeAreaInsets;
@@ -40,7 +41,6 @@
 - (void)_setMinimumZoomScale:(double)arg1;
 - (void)_setupExtensionInterruptionBlock;
 - (unsigned long long)_typeForGestureRecognizer:(id)arg1;
-- (void)appendPasswordUI;
 - (void)beginPDFViewRotation;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancelFindString;
@@ -73,16 +73,17 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (long long)pageCount;
 - (id)pageNumberIndicator;
+- (void)recievedSnapshotViewRect:(id)arg1;
 - (void)selectAll:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDocumentData:(id)arg1 withScrollView:(id)arg2;
 - (void)setHasSelection:(BOOL)arg1;
-- (void)setSelectionRects:(id)arg1;
 - (void)setTextSelectionPoints:(struct CGPoint)arg1 right:(struct CGPoint)arg2;
-- (void)setTextSelectionState:(int)arg1;
 - (void)setup;
 - (void)setupDocumentViewSize:(struct CGSize)arg1;
+- (void)showSelectionRect:(struct CGRect)arg1;
 - (void)showTextSelectionMenu:(BOOL)arg1 selectionRect:(struct CGRect)arg2;
+- (void)snapshotViewRect:(struct CGRect)arg1 snapshotWidth:(id)arg2 afterScreenUpdates:(BOOL)arg3 withResult:(CDUnknownBlockType)arg4;
 - (void)updateAutoScaleFactor;
 - (void)updateCurrentPageIndex:(long long)arg1;
 - (void)updateDocumentIsLocked:(BOOL)arg1;

@@ -13,6 +13,7 @@
 @property (readonly, copy, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSDictionary *airPlayProperties;
 @property (readonly, nonatomic) BOOL automaticallyAllowsConnectionsFromPeersInHomeGroup;
+@property (readonly, nonatomic) NSArray *availableBluetoothListeningModes;
 @property (readonly, nonatomic) NSNumber *batteryLevel;
 @property (readonly, nonatomic) BOOL canAccessAppleMusic;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets;
@@ -26,6 +27,7 @@
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property (readonly, copy, nonatomic) NSArray *connectedPairedDevices;
+@property (copy, nonatomic) NSString *currentBluetoothListeningMode;
 @property (readonly, nonatomic) unsigned long long deviceFeatures;
 @property (readonly, nonatomic) long long deviceSubType;
 @property (readonly, nonatomic) long long deviceType;
@@ -35,6 +37,7 @@
 @property (readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property (readonly, nonatomic, getter=isInUseByPairedDevice) BOOL inUseByPairedDevice;
 @property (readonly, nonatomic) BOOL isGroupLeader;
+@property (readonly, nonatomic) NSNumber *isInEar;
 @property (readonly, nonatomic) BOOL isLogicalDeviceLeader;
 @property (readonly, nonatomic) NSNumber *leftBatteryLevel;
 @property (readonly, nonatomic) NSString *logicalDeviceID;
@@ -48,10 +51,12 @@
 @property (readonly, nonatomic) BOOL requiresAuthorization;
 @property (readonly, nonatomic) NSNumber *rightBatteryLevel;
 @property (readonly, nonatomic) NSString *serialNumber;
+@property (readonly, nonatomic) BOOL supportsBluetoothSharing;
 @property (readonly, nonatomic) BOOL supportsBufferedAirPlay;
+@property (readonly, nonatomic) NSNumber *supportsDataOverACLProtocol;
 @property (readonly) float volume;
 
-- (void)configureUsingBlock:(void (^)(id<AVOutputDeviceConfigurationModification>))arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(int, id<AVOutputDeviceConfigurationRetrieval>, NSString *, NSError *))arg3;
+- (void)configureUsingBlock:(void (^)(id<AVOutputDeviceConfigurationModification>))arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(long long, id<AVOutputDeviceConfigurationRetrieval>, NSString *, NSError *))arg3;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;
 @end

@@ -7,6 +7,9 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (PKUIUtilities)
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
+- (void)pk_setAttributedTextRespectingTextAndBackgroundColors:(id)arg1;
 - (struct CGSize)pkui_sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)pkui_sizeThatFits:(struct CGSize)arg1 forceWordWrap:(BOOL)arg2;
 @end

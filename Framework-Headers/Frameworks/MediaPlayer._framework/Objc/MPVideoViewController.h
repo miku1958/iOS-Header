@@ -29,7 +29,7 @@
     UIActivityIndicatorView *_loadingIndicator;
     MPTVOutWindow *_tvOutWindow;
     unsigned long long _backgroundTaskId;
-    int _artworkImageStyle;
+    long long _artworkImageStyle;
     UIImage *_posterImage;
     unsigned int _canAnimateControlsOverlay:1;
     unsigned int _canShowControlsOverlay:1;
@@ -52,7 +52,7 @@
 @property (nonatomic) BOOL allowsTVOutInBackground;
 @property (nonatomic) BOOL allowsWirelessPlayback;
 @property (nonatomic) BOOL alwaysAllowHidingControlsOverlay;
-@property (nonatomic) int artworkImageStyle; // @synthesize artworkImageStyle=_artworkImageStyle;
+@property (nonatomic) long long artworkImageStyle; // @synthesize artworkImageStyle=_artworkImageStyle;
 @property (readonly, nonatomic) UIView *artworkImageView;
 @property (nonatomic) BOOL attemptAutoPlayWhenControlsHidden;
 @property (nonatomic) BOOL autoPlayWhenLikelyToKeepUp;
@@ -136,7 +136,7 @@
 - (void)crossedTimeMakerWithEvent:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)disabledPartsForProposedParts:(unsigned long long)arg1;
-- (int)displayArtworkImageStyle;
+- (long long)displayArtworkImageStyle;
 - (void)displayVideoView;
 - (void)displayVideoViewOnScreen;
 - (void)displayVideoViewOnTV;

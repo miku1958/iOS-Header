@@ -10,9 +10,11 @@
 {
 }
 
+- (BOOL)_canLogoutToLoginSession;
 - (id)init;
 - (void)logoutToLoginSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)logoutToLoginUserWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)logoutToLoginWindowWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

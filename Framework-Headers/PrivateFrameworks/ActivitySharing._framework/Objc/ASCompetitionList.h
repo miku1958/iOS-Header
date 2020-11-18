@@ -33,7 +33,6 @@
 + (id)competitionListFromCodableDatabaseCompetitionList:(id)arg1 codableCompetitions:(id)arg2 withType:(long long)arg3;
 + (id)competitionListWithCodableCompetitionList:(id)arg1;
 + (id)competitionListWithRecord:(id)arg1;
-+ (id)competitionListsFromCodableCompetitionLists:(id)arg1 codableCompetitions:(id)arg2;
 - (void).cxx_destruct;
 - (id)codableDatabaseCompetitionListEntryForOwner:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

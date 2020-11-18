@@ -13,10 +13,10 @@
 @interface MFMessageDetails : NSObject <MFBaseMessage>
 {
     MFMessageLibrary *library;
-    unsigned int libraryID;
+    long long libraryID;
     unsigned long long messageFlags;
     unsigned int uid;
-    unsigned int mailboxID;
+    long long mailboxID;
     long long conversationHash;
     long long messageIDHash;
     unsigned int dateReceived;
@@ -34,10 +34,10 @@
 @property (readonly, nonatomic) BOOL flagged;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
-@property (readonly, nonatomic) unsigned int libraryID; // @synthesize libraryID;
+@property (readonly, nonatomic) long long libraryID; // @synthesize libraryID;
 @property (readonly, nonatomic, getter=isLibraryMessage) BOOL libraryMessage;
 @property (readonly, weak, nonatomic) MFMailboxUid *mailbox;
-@property (readonly, nonatomic) unsigned int mailboxID; // @synthesize mailboxID;
+@property (readonly, nonatomic) long long mailboxID; // @synthesize mailboxID;
 @property (readonly, nonatomic) unsigned long long messageFlags; // @synthesize messageFlags;
 @property (readonly, nonatomic) long long messageIDHash; // @synthesize messageIDHash;
 @property (readonly, nonatomic) BOOL read;
@@ -45,8 +45,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int uid; // @synthesize uid;
 
+- (void).cxx_destruct;
 - (id)copyMessageInfo;
-- (void)dealloc;
 - (BOOL)isEqual:(id)arg1;
 - (id)messageID;
 - (id)remoteID;

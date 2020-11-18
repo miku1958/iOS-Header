@@ -6,41 +6,61 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURLSessionConfiguration;
+@class NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURLSessionConfiguration, NSUUID, __CFN_SessionMetrics;
 @protocol NSURLSessionDelegate, OS_dispatch_queue;
 
 @interface NSURLSession : NSObject
 {
+    NSDictionary *_atsState_ivar;
+    NSURLSessionConfiguration *_local_immutable_configuration_ivar;
+    NSString *_sessionDescription_ivar;
+    NSOperationQueue *_delegateQueue_ivar;
+    id<NSURLSessionDelegate> _delegate_ivar;
+    BOOL _isSharedSession_ivar;
+    BOOL _invalid_ivar;
 }
 
 @property (strong) NSMutableDictionary *_altSvc; // @dynamic _altSvc;
-@property (copy) NSDictionary *_atsState; // @dynamic _atsState;
 @property (strong) NSMutableDictionary *_coalescing; // @dynamic _coalescing;
-@property (copy) CDUnknownBlockType _connBlock; // @dynamic _connBlock;
 @property (strong) NSMutableSet *_h2BlacklistedHosts; // @dynamic _h2BlacklistedHosts;
-@property BOOL _isSharedSession; // @dynamic _isSharedSession;
-@property (copy) NSURLSessionConfiguration *_local_immutable_configuration; // @dynamic _local_immutable_configuration;
-@property (copy) NSString *_uuid; // @dynamic _uuid;
+@property (readonly) BOOL _isProxySession; // @dynamic _isProxySession;
+@property BOOL _isSharedSession; // @synthesize _isSharedSession=_isSharedSession_ivar;
+@property (readonly, weak) NSURLSessionConfiguration *_local_immutable_configuration; // @dynamic _local_immutable_configuration;
+@property (strong) __CFN_SessionMetrics *_metrics; // @dynamic _metrics;
+@property (copy) NSString *_tlsSessionCachePrefix; // @dynamic _tlsSessionCachePrefix;
+@property (readonly, weak) NSUUID *_uuid; // @dynamic _uuid;
 @property (readonly, copy) NSURLSessionConfiguration *configuration; // @dynamic configuration;
-@property (strong) id<NSURLSessionDelegate> delegate; // @dynamic delegate;
-@property (strong) NSOperationQueue *delegateQueue; // @dynamic delegateQueue;
-@property BOOL invalid; // @dynamic invalid;
-@property (copy) NSString *sessionDescription; // @dynamic sessionDescription;
-@property (readonly, strong) NSObject<OS_dispatch_queue> *workQueue; // @dynamic workQueue;
+@property (readonly, strong) id<NSURLSessionDelegate> delegate; // @synthesize delegate=_delegate_ivar;
+@property (readonly, strong) NSOperationQueue *delegateQueue; // @synthesize delegateQueue=_delegateQueue_ivar;
+@property (readonly) BOOL invalid; // @dynamic invalid;
+@property (readonly) BOOL isBackgroundSession; // @dynamic isBackgroundSession;
+@property (readonly) unsigned long long nextSeed; // @dynamic nextSeed;
+@property (copy) NSString *sessionDescription; // @synthesize sessionDescription=_sessionDescription_ivar;
+@property (readonly, weak) NSObject<OS_dispatch_queue> *workQueue; // @dynamic workQueue;
 
++ (BOOL)_backgroundServiceAvailable;
++ (void)_disableAppSSO;
 + (id)_errorFromError:(id)arg1 forTask:(id)arg2;
 + (void)_getActiveSessionIdentifiersWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)_obliterateAllBackgroundSessionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)_releaseProcessAssertionForSessionIdentifier:(id)arg1;
 + (void)_sendPendingCallbacksForSessionIdentifier:(id)arg1;
++ (void)_setEventDelegate:(id)arg1 queue:(id)arg2;
++ (void)_setHTTPRewriter:(id)arg1;
 + (id)_sharedSessionForConnection;
++ (void)_strictTrustEvaluate:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)new;
 + (id)sessionWithConfiguration:(id)arg1;
 + (id)sessionWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 + (id)sharedSession;
 - (id)_AVAssetDownloadTaskWithURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3;
 - (struct __CFDictionary *)_copyATSState;
-- (id)_copyConfiguration;
+- (id)_dataTaskWithTaskForClass:(id)arg1;
 - (id)_downloadTaskWithRequest:(id)arg1 downloadFilePath:(id)arg2;
+- (id)_downloadTaskWithTaskForClass:(id)arg1;
+- (shared_ptr_9ad247fa)_nwContext;
+- (id)_update_local_configuration:(CDUnknownBlockType)arg1;
+- (id)_uploadTaskWithTaskForClass:(id)arg1;
 - (void)_useTLSSessionCacheFromSession:(id)arg1;
 - (void)addDelegateBlock:(CDUnknownBlockType)arg1;
 - (id)aggregateAssetDownloadTaskWithURLAsset:(id)arg1 mediaSelections:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5;
@@ -90,14 +110,17 @@
 - (BOOL)can_delegate_task_willPerformHTTPRedirection;
 - (BOOL)can_delegate_task_willSendRequestForEstablishedConnection;
 - (BOOL)can_delegate_willRetryBackgroundDataTask;
+- (BOOL)can_delegate_willUseEffectiveConfiguration;
 - (BOOL)can_delegate_writeClosedForStreamTask;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataTaskWithHTTPGetRequest:(id)arg1;
 - (id)dataTaskWithHTTPGetRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)dataTaskWithRequest:(id)arg1;
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)dataTaskWithRequest:(id)arg1 uniqueIdentifier:(id)arg2;
 - (id)dataTaskWithURL:(id)arg1;
 - (id)dataTaskWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)delegate_AVAggregateAssetDownloadTask:(id)arg1 didCompleteForMediaSelection:(id)arg2;
 - (void)delegate_AVAggregateAssetDownloadTask:(id)arg1 didLoadTimeRange:(CDStruct_3c1748cc)arg2 totalTimeRangesLoaded:(id)arg3 timeRangeExpectedToLoad:(CDStruct_3c1748cc)arg4 forMediaSelection:(id)arg5;
 - (void)delegate_AVAggregateAssetDownloadTask:(id)arg1 willDownloadToURL:(id)arg2;
@@ -138,6 +161,7 @@
 - (void)delegate_task:(id)arg1 needNewBodyStream:(CDUnknownBlockType)arg2;
 - (void)delegate_task:(id)arg1 willBeginDelayedRequest:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)delegate_task:(id)arg1 willPerformHTTPRedirection:(id)arg2 newRequest:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)delegate_task:(id)arg1 willUseEffectiveConfiguration:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)delegate_taskIsWaitingForConnectivity:(id)arg1;
 - (void)delegate_task_isWaitingForConnection:(id)arg1;
 - (void)delegate_willRetryBackgroundDataTask:(id)arg1 withError:(id)arg2;
@@ -153,9 +177,8 @@
 - (void)flushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getAllTasksWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getTasksWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
+- (id)init;
 - (void)invalidateAndCancel;
-- (BOOL)isBackgroundSession;
 - (void)remote_externalAuthenticator_task:(id)arg1 getAuthHeadersForResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)streamTaskWithHostName:(id)arg1 port:(long long)arg2;
@@ -165,6 +188,9 @@
 - (id)uploadTaskWithRequest:(id)arg1 fromFile:(id)arg2;
 - (id)uploadTaskWithRequest:(id)arg1 fromFile:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)uploadTaskWithStreamedRequest:(id)arg1;
+- (id)webSocketTaskWithRequest:(id)arg1;
+- (id)webSocketTaskWithURL:(id)arg1;
+- (id)webSocketTaskWithURL:(id)arg1 protocols:(id)arg2;
 
 @end
 

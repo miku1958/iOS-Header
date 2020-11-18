@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class BSAnimationSettings;
 @protocol _UIBasicAnimationFactory;
 
 @interface UIStatusBarAnimationParameters : NSObject
@@ -18,6 +19,7 @@
 }
 
 @property (strong, nonatomic) id<_UIBasicAnimationFactory> animationFactory; // @synthesize animationFactory=_animationFactory;
+@property (readonly, nonatomic) BSAnimationSettings *bsAnimationSettings;
 @property (nonatomic) long long curve; // @synthesize curve=_curve;
 @property (nonatomic) double delay; // @synthesize delay=_delay;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
@@ -26,6 +28,7 @@
 + (void)animateWithParameters:(id)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)animateWithParameters:(id)arg1 fromCurrentState:(BOOL)arg2 animations:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)animateWithParameters:(id)arg1 fromCurrentState:(BOOL)arg2 frameInterval:(double)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
++ (id)fencingAnimation;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithDefaultParameters;

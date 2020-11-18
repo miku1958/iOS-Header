@@ -7,14 +7,16 @@
 #import <PhotoLibraryServices/PLManagedObject.h>
 
 #import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
+#import <PhotoLibraryServices/PLFileSystemMetadataPersistence-Protocol.h>
 #import <PhotoLibraryServices/PLSyncablePerson-Protocol.h>
 
 @class NSDictionary, NSSet, NSString, PLDetectedFace, PLDetectedFaceGroup;
 
-@interface PLPerson : PLManagedObject <PLSyncablePerson, PLCloudDeletable>
+@interface PLPerson : PLManagedObject <PLSyncablePerson, PLCloudDeletable, PLFileSystemMetadataPersistence>
 {
 }
 
+@property (nonatomic) unsigned short ageType; // @dynamic ageType;
 @property (strong, nonatomic) PLDetectedFaceGroup *associatedFaceGroup; // @dynamic associatedFaceGroup;
 @property (nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
 @property (readonly) long long cloudDeletionType;
@@ -36,6 +38,7 @@
 @property (strong, nonatomic) NSSet *faceCrops; // @dynamic faceCrops;
 @property (strong, nonatomic) NSString *fullName;
 @property (strong, nonatomic) NSString *fullName; // @dynamic fullName;
+@property (nonatomic) unsigned short genderType; // @dynamic genderType;
 @property (readonly, nonatomic) BOOL graphVerified;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -54,6 +57,7 @@
 @property (strong, nonatomic) NSString *personUUID;
 @property (strong, nonatomic) NSString *personUUID; // @dynamic personUUID;
 @property (strong, nonatomic) NSString *personUri; // @dynamic personUri;
+@property (nonatomic) short questionType; // @dynamic questionType;
 @property (strong, nonatomic) NSSet *rejectedFaces; // @dynamic rejectedFaces;
 @property (strong, nonatomic) NSSet *rejectedFacesNeedingFaceCrops; // @dynamic rejectedFacesNeedingFaceCrops;
 @property (readonly) Class superclass;
@@ -67,22 +71,22 @@
 + (id)_predicateForSupportedVerifiedTypesForUpload;
 + (id)_stringFromContact:(id)arg1 preferGivenName:(BOOL)arg2;
 + (id)allPersonsInManagedObjectContext:(id)arg1;
-+ (void)batchFetchAssociatedPersonByFaceGroupUUIDWithFaceGroupUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)batchFetchAssociatedPersonByFaceGroupUUIDWithFaceGroupUUIDs:(id)arg1 predicate:(id)arg2 library:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)batchFetchPersonUUIDsByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 inManagedObjectContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
-+ (void)batchFetchPersonsByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)batchFetchPersonsByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 library:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)cloudUUIDKeyForDeletion;
 + (void)createAssociatedPersonForFaceGroup:(id)arg1;
 + (void)createAssociatedPersonForFaceGroup:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)displayNameFromContact:(id)arg1;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (void)enumerateAssetUUIDsForSearchIndexingWithPersonUUID:(id)arg1 managedObjectContext:(id)arg2 assetUUIDHandler:(CDUnknownBlockType)arg3;
-+ (id)fetchFinalMergeTargetPersonForPersonWithUUID:(id)arg1 context:(id)arg2;
-+ (id)fetchPersonCountByAssetUUIDForAssetUUIDs:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
++ (id)fetchFinalMergeTargetPersonForPersonWithUUID:(id)arg1 context:(id)arg2 predicate:(id)arg3;
++ (id)fetchPersonCountByAssetUUIDForAssetUUIDs:(id)arg1 predicate:(id)arg2 library:(id)arg3 error:(id *)arg4;
 + (id)fullNameFromContact:(id)arg1;
 + (id)insertIntoManagedObjectContext:(id)arg1 withPersonUUID:(id)arg2 fullName:(id)arg3 verifiedType:(int)arg4;
 + (id)insertIntoPhotoLibrary:(id)arg1 withPersonUUID:(id)arg2 fullName:(id)arg3 verifiedType:(int)arg4;
++ (id)listOfPropertiesToResetAgeAndGender;
 + (id)listOfSyncedProperties;
 + (BOOL)person:(id)arg1 isBetterMergeTargetThanPerson:(id)arg2;
 + (id)personWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
@@ -94,7 +98,7 @@
 + (id)predicateForPersistence;
 + (id)predicateForPersonsNeedingFaceCropGenerationForFaceObjectID:(id)arg1;
 + (id)predicateForVisibleKeyFace;
-+ (BOOL)resetAllWithError:(id *)arg1;
++ (BOOL)resetAllInLibrary:(id)arg1 error:(id *)arg2;
 + (void)resetCloudStateInPhotoLibrary:(id)arg1 hardReset:(BOOL)arg2;
 - (void)_basicMergePersons:(id)arg1;
 - (id)_nameRelatedMetadataKeys;
@@ -116,7 +120,10 @@
 - (id)mutableMergeCandidates;
 - (id)mutableRejectedFaces;
 - (id)mutableRejectedFacesNeedingFaceCrops;
-- (void)persistMetadataToFileSystem;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (id)payloadIDForTombstone:(id)arg1;
+- (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (id)pickKeyFaceOptimalStateForContactDedupeWithPersons:(id)arg1;
 - (id)pickOptimalStateForUserInitiatedMergeWithPersons:(id)arg1 nominalTarget:(id)arg2;
 - (void)prepareForDeletion;
@@ -127,6 +134,7 @@
 - (void)refreshInvalidMergeCandidates;
 - (void)refreshRejectedFaces;
 - (void)rejectFaceIfPossible:(id)arg1 shouldCreateFaceCrop:(BOOL)arg2;
+- (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (void)resetAllFacesToDefault;
 - (id)reverseOrderedMergeTargetPersons;
 - (void)setCPLSyncedMergeTarget:(id)arg1;
@@ -135,6 +143,7 @@
 - (BOOL)shouldIndexForSearch;
 - (BOOL)supportsCloudUpload;
 - (id)syncDescription;
+- (BOOL)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (void)willSave;
 
 @end

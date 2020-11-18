@@ -10,6 +10,7 @@
 {
 }
 
++ (Class)meltedClass;
 + (id)relations;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)date;

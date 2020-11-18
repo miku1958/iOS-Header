@@ -10,16 +10,22 @@
 
 @interface PXPeopleFaceTileImageManagerRequest : NSObject
 {
+    BOOL _synchronous;
     PHPerson *_person;
     PHFace *_face;
     PHAsset *_asset;
+    long long _deliveryMode;
 }
 
 @property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
-@property (readonly, nonatomic) PHFace *face; // @synthesize face=_face;
+@property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
+@property (strong, nonatomic) PHFace *face; // @synthesize face=_face;
 @property (readonly, nonatomic) PHPerson *person; // @synthesize person=_person;
+@property (nonatomic) BOOL synchronous; // @synthesize synchronous=_synchronous;
 
 - (void).cxx_destruct;
+- (id)description;
+- (id)initWithFaceTile:(id)arg1;
 - (id)initWithPerson:(id)arg1;
 - (id)initWithPerson:(id)arg1 face:(id)arg2 asset:(id)arg3;
 

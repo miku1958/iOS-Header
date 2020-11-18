@@ -31,6 +31,7 @@
 - (void)_applyLocalTextOperations:(id)arg1 toDocumentState:(id)arg2;
 - (void)_createTextOperationsIfNecessary;
 - (void)addSessionDelegate:(id)arg1;
+- (void)applyLocalTextOperations:(id)arg1 toDocumentState:(id)arg2;
 - (void)enumerateSessionDelegatesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)flushOperations;
 - (void)removeSessionDelegate:(id)arg1;

@@ -6,6 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
+__attribute__((visibility("hidden")))
 @interface AVTableViewCell : UITableViewCell
 {
     id _representedObject;

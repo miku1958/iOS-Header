@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContactIdentifier:(id)arg1;
 - (BOOL)isPeopleSearch;
+- (BOOL)isScopedAppSearch;
 - (id)queryString;
 - (id)tokenText;
 

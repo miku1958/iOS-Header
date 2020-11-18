@@ -20,7 +20,7 @@
 @property (strong, nonatomic) AVTAvatarColorVariationStore *variationStore; // @synthesize variationStore=_variationStore;
 
 + (id)buildAllColors;
-+ (void)createColorsForPaletteCategory:(long long)arg1 inCache:(id)arg2;
++ (void)createColorsForPaletteCategory:(long long)arg1 inCache:(id)arg2 withDerivedPaletteCategories:(id)arg3;
 - (void).cxx_destruct;
 - (id)colorForSettingKind:(CDStruct_597dd055)arg1 identifier:(id)arg2;
 - (id)colorsForSettingKind:(CDStruct_597dd055)arg1;

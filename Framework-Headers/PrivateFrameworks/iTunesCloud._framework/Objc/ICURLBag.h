@@ -36,7 +36,9 @@
 - (BOOL)hasValueForBagKey:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (long long)int64ValueForBagKey:(id)arg1;
+- (id)mescalConfigurationForRequest:(id)arg1;
 - (id)mescalConfigurationForRequestURL:(id)arg1;
+- (id)mescalConfigurationForResponse:(id)arg1;
 - (id)mescalConfigurationForResponseURL:(id)arg1;
 - (BOOL)shouldAppendDeviceGUIDForURL:(id)arg1;
 - (BOOL)shouldAppendMachineDataHeadersForURL:(id)arg1;

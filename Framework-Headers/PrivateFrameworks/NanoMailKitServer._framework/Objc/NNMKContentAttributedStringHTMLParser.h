@@ -6,7 +6,7 @@
 
 #import <NanoMailKitServer/NNMKHTMLParser.h>
 
-@class NSLock, NSMutableAttributedString, NSMutableDictionary;
+@class NSDataDetector, NSLock, NSMutableAttributedString, NSMutableDictionary;
 
 @interface NNMKContentAttributedStringHTMLParser : NNMKHTMLParser
 {
@@ -16,8 +16,10 @@
     double _maxImageWidth;
     BOOL *_partiallyParsed;
     NSMutableDictionary *_imageAtachmentsDataByContentId;
+    NSDataDetector *_dataDetector;
 }
 
+@property (strong, nonatomic) NSDataDetector *dataDetector; // @synthesize dataDetector=_dataDetector;
 @property (strong, nonatomic) NSMutableDictionary *imageAtachmentsDataByContentId; // @synthesize imageAtachmentsDataByContentId=_imageAtachmentsDataByContentId;
 @property (strong, nonatomic) NSLock *lock; // @synthesize lock=_lock;
 @property (nonatomic) double maxImageWidth; // @synthesize maxImageWidth=_maxImageWidth;
@@ -40,6 +42,7 @@
 - (BOOL)isElementBlacklisted:(id)arg1 attributeQueryBlock:(CDUnknownBlockType)arg2;
 - (BOOL)isElementIgnorable:(id)arg1;
 - (BOOL)isErrorTypeBlacklisted:(char *)arg1;
+- (BOOL)isWebLink:(id)arg1;
 - (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(BOOL *)arg5 imageAttachmentsLoaded:(id *)arg6 urlsForValidation:(id)arg7;
 - (id)parseHTMLBody:(id)arg1 encoding:(unsigned long long)arg2 maxLength:(unsigned long long)arg3 maxImageWidth:(double)arg4 partiallyParsed:(BOOL *)arg5 imageAttachmentsLoaded:(id *)arg6 urlsFound:(id *)arg7;
 

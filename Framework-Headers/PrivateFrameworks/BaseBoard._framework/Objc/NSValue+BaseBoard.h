@@ -6,7 +6,17 @@
 
 #import <Foundation/NSValue.h>
 
-@interface NSValue (BaseBoard)
+#import <BaseBoard/BSXPCSecureCoding-Protocol.h>
+
+@class NSString;
+
+@interface NSValue (BaseBoard) <BSXPCSecureCoding>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)bs_valueWithCGAffineTransform:(struct CGAffineTransform)arg1;
 + (id)bs_valueWithCGPoint:(struct CGPoint)arg1;
 + (id)bs_valueWithCGRect:(struct CGRect)arg1;
@@ -16,5 +26,8 @@
 - (struct CGRect)bs_CGRectValue;
 - (struct CGSize)bs_CGSizeValue;
 - (BOOL)bs_getValue:(out void *)arg1 ofSize:(unsigned long long)arg2;
+- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)initWithBSXPCCoder:(id)arg1;
+- (BOOL)supportsBSXPCSecureCoding;
 @end
 

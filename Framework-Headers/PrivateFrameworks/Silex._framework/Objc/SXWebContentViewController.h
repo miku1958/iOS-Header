@@ -28,6 +28,7 @@
     SXWebContentLoader *_loader;
 }
 
+@property (nonatomic) BOOL allowsRemoteInspection;
 @property (readonly, nonatomic) id<SXWebContentContentRuleManager> contentRuleManager; // @synthesize contentRuleManager=_contentRuleManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

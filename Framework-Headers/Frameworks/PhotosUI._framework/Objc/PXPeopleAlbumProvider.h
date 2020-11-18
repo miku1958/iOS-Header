@@ -47,19 +47,19 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_appWillEnterForeground;
-- (void)_asyncAddImagesToCacheWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_asyncAddImagesToCacheWithPersons:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleRequestResult:(id)arg1 forRequestID:(_Atomic int)arg2 person:(id)arg3 atIndex:(long long)arg4 error:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_invalidateCache;
-- (id)_members;
 - (void)_prepareIfNeeded;
 - (void)_reCacheImagesCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldShowInterstitialProgress;
 - (void)_updateCachedCountIfNeeded;
+- (id)_visiblePersons;
 - (void)dealloc;
 - (void)imageCacheDidChanged:(id)arg1;
 - (id)init;
 - (void)peopleSectionedDataSource:(id)arg1 didApplyIncrementalChanges:(id)arg2;
-- (void)peopleSectionedDataSourceMembersChanged:(id)arg1;
+- (void)peopleSectionedDataSourceMembersChangedNonIncrementally:(id)arg1;
 - (id)peopleViewController;
 - (void)requestAlbumImagesWithSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
 

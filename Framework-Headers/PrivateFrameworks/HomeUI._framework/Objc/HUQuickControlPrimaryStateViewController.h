@@ -17,9 +17,11 @@
 
 + (Class)controlItemClass;
 + (id)controlItemPredicate;
+- (BOOL)_isCharacteristicTypeRotationDirection;
 - (id)controlToViewValueTransformer;
 - (id)createInteractionCoordinator;
 - (id)createViewProfile;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

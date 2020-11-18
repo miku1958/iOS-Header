@@ -6,7 +6,25 @@
 
 #import <Foundation/NSMeasurement.h>
 
-@interface NSMeasurement (Readable)
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+#import <Intents/INCodableAttributeRelationComparing-Protocol.h>
+#import <Intents/INJSONSerializable-Protocol.h>
+
+@class NSString;
+
+@interface NSMeasurement (Readable) <INCodableAttributeRelationComparing, INJSONSerializable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+- (BOOL)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 @end
 

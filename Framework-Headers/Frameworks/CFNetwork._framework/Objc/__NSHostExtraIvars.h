@@ -9,7 +9,6 @@
 @class NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface __NSHostExtraIvars : NSObject
 {
     NSString *thingToResolve;
@@ -29,7 +28,6 @@ __attribute__((visibility("hidden")))
 
 - (void)cleanup;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 
 @end

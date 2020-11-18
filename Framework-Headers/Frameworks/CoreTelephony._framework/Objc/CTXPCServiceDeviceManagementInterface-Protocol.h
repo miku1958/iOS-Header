@@ -11,6 +11,7 @@
 - (void)getConfiguredApns:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getUIConfiguredApns:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)listPersonalWallets:(void (^)(NSArray *, NSError *))arg1;
+- (void)renamePersonalWallet:(NSString *)arg1 to:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)resetUIConfiguredApns:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setUIConfiguredApns:(CTXPCServiceSubscriptionContext *)arg1 apns:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
 @end

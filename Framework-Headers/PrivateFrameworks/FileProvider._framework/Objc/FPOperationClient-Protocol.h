@@ -10,8 +10,10 @@
 @protocol FPCancellable;
 
 @protocol FPOperationClient <FPCancellable>
-- (NSString *)description;
+- (NSString *)proxifiedDescription;
+- (void)setCancellationHandler:(id<FPCancellable>)arg1;
+
+@optional
 - (void)operationDidProgressWithInfo:(NSDictionary *)arg1 error:(NSError *)arg2 completionHandler:(void (^)(void))arg3;
-- (oneway void)setCancellationHandler:(id<FPCancellable>)arg1;
 @end
 

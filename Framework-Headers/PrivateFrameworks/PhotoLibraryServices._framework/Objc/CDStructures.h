@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSMutableArray, NSMutableSet;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -45,61 +43,35 @@ struct NSObject {
     Class _field1;
 };
 
-struct PLImageTableEntryFooter_s {
-    struct {
-        unsigned char _field1;
-        unsigned char _field2;
-        unsigned char _field3;
-        unsigned char _field4;
-        unsigned char _field5;
-        unsigned char _field6;
-        unsigned char _field7;
-        unsigned char _field8;
-        unsigned char _field9;
-        unsigned char _field10;
-        unsigned char _field11;
-        unsigned char _field12;
-        unsigned char _field13;
-        unsigned char _field14;
-        unsigned char _field15;
-        unsigned char _field16;
-    } _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    int _field4;
-};
-
-struct PLPrimaryDataStoreKeyStrategy_FilePath_KeyStruct {
+struct PLPrimaryDataStoreKeyStrategy_FilePath_KeyStruct_V1 {
     unsigned int strategy:8;
+    unsigned int version:2;
     unsigned int relation:3;
 };
 
-struct PLPrimaryDataStore_CPLKeyStrategy_KeyStruct {
+struct PLPrimaryDataStore_ReferenceFileStrategy_KeyStruct_V1 {
     unsigned int strategy:8;
-    unsigned int isMutation:1;
-    unsigned int isMasterThumb:1;
-    unsigned int cplType:5;
-    unsigned int fileType:2;
+    unsigned int version:2;
+    unsigned int resourceType:5;
 };
 
-struct PLPrimaryDataStore_DCIMCaptureStrategy_KeyStruct {
+struct PLPrimaryDataStore_UniformFileStrategy_KeyStruct_V1 {
     unsigned int strategy:8;
-    unsigned int directoryNumber:10;
-    unsigned int fileNumber:14;
-    unsigned int fileType:7;
-    unsigned int isMasterThumb:1;
+    unsigned int version:2;
+    unsigned int resourceVersion:2;
+    unsigned int resourceType:5;
+    unsigned int recipeClass:4;
+    unsigned int recipeVariationID:15;
+    unsigned int isDerivative:1;
+    unsigned int extensionCasing:2;
+    unsigned int fileType:8;
 };
 
-struct PLSharedStreamsDataStoreKeyStruct {
-    unsigned int resourceType:8;
-    char albumCloudGUID[37];
-    char cloudPersonID[11];
-    char filename[13];
-};
-
-struct PLThumbnailDataStoreKeyStruct {
+struct PLThumbnailDataStoreKeyStruct_V1 {
+    unsigned int version:2;
     unsigned int type:3;
-    unsigned int index:29;
+    unsigned int isCurated:1;
+    unsigned int index:27;
 };
 
 struct _NSRange {
@@ -107,27 +79,24 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct changeList_s {
-    NSMutableSet *inserted;
-    NSMutableSet *updated;
-    NSMutableSet *deleted;
+struct fsid {
+    int val[2];
 };
 
-struct contentChanges_s {
-    NSMutableArray *container;
-    NSMutableArray *updatedContent;
-};
-
-struct flock {
-    long long _field1;
-    long long _field2;
-    int _field3;
-    short _field4;
-    short _field5;
+struct option {
+    char *_field1;
+    int _field2;
+    int *_field3;
+    int _field4;
 };
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
+};
+
+struct os_unfair_recursive_lock_s {
+    struct os_unfair_lock_s ourl_lock;
+    unsigned int ourl_count;
 };
 
 struct tokenOutput_t {
@@ -152,15 +121,8 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-} CDStruct_39925896;
-
-typedef struct {
-    double _field1;
-    double _field2;
-} CDStruct_c3b9c2ee;
+    unsigned int val[8];
+} CDStruct_4c969caf;
 
 typedef struct {
     int _field1;
@@ -168,11 +130,11 @@ typedef struct {
 } CDStruct_1ef3fb1f;
 
 typedef struct {
-    long long value;
-    int timescale;
-    unsigned int flags;
-    long long epoch;
-} CDStruct_1b6d18a9;
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
 
 typedef struct {
     long long location;
@@ -182,9 +144,18 @@ typedef struct {
 typedef struct CDStruct_183601bc;
 
 typedef struct {
-    CDStruct_1b6d18a9 _field1;
-    CDStruct_1b6d18a9 _field2;
-} CDStruct_5c5366e1;
+    struct __CFString *_field1;
+    long long _field2;
+    struct tokenOutput_t *_field3;
+    unsigned short *_field4;
+    unsigned short *_field5;
+    long long _field6;
+} CDStruct_d5c410e0;
+
+typedef struct {
+    CDStruct_198678f7 _field1;
+    CDStruct_198678f7 _field2;
+} CDStruct_3c1748cc;
 
 typedef struct {
     int _field1;

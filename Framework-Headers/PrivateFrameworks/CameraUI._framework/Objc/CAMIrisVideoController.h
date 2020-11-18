@@ -36,6 +36,7 @@
 - (id)initWithNebulaDaemonProxyManager:(id)arg1 delegate:(id)arg2;
 - (BOOL)isWaitingOnNebuladForRequest:(id)arg1;
 - (void)nebulaDaemonDidCompleteLocalVideoPersistenceWithResult:(id)arg1;
+- (BOOL)shouldHandleLivePhotoRenderingForRequest:(id)arg1;
 - (void)stillImageRequest:(id)arg1 didCompleteVideoCaptureWithResult:(id)arg2;
 - (void)stillImageRequestDidCompleteCapture:(id)arg1 error:(id)arg2;
 

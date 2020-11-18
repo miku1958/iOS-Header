@@ -47,7 +47,9 @@
 - (id)initWithDevice:(struct BTDeviceImpl *)arg1 address:(id)arg2;
 - (BOOL)isAccessory;
 - (BOOL)isAppleAudioDevice;
+- (BOOL)isProController;
 - (BOOL)isServiceSupported:(unsigned int)arg1;
+- (BOOL)isTemporaryPaired;
 - (unsigned int)listeningMode;
 - (BOOL)magicPaired;
 - (BOOL)magicPairedDeviceNameUpdated;

@@ -26,6 +26,7 @@
 + (id)messageWithDER:(id)arg1 error:(id *)arg2;
 + (id)messageWithType:(int)arg1 data:(id)arg2 error:(id *)arg3;
 + (id)messageWithType:(int)arg1 data:(id)arg2 payload:(id)arg3 error:(id *)arg4;
++ (id)messageWithType:(int)arg1 data:(id)arg2 secondData:(id)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
 - (BOOL)inflatePartsOfEncoding:(id *)arg1;
 - (id)initWithDER:(id)arg1 error:(id *)arg2;

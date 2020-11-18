@@ -39,6 +39,7 @@
 @property (readonly) NSArray *vertexAttributes; // @synthesize vertexAttributes=_vertexAttributes;
 @property (readonly) unsigned long long vertexCount; // @synthesize vertexCount=_vertexCount;
 
+- (void).cxx_destruct;
 - (CDStruct_6e3f967a)GLPoint2DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
 - (CDStruct_03942939)GLPoint3DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
 - (CDStruct_f2e236b6)GLPoint4DForAttribute:(id)arg1 atIndex:(unsigned long long)arg2;
@@ -57,7 +58,7 @@
 - (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4;
 - (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
 - (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 textureFlipped:(BOOL)arg3;
-- (BOOL)p_setAttributeUpdateData:(CDStruct_c6084d62 *)arg1 fromAttribute:(id)arg2;
+- (BOOL)p_setAttributeUpdateData:(CDStruct_64113493 *)arg1 fromAttribute:(id)arg2;
 - (void)p_setupGLElementArrayBufferIfNecessary;
 - (void)setCGFloat:(double)arg1 forAttribute:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setDataForAttribute:(id)arg1 atIndex:(unsigned long long)arg2 fromAttribute:(id)arg3 dataBuffer:(id)arg4 index:(unsigned long long)arg5;

@@ -11,17 +11,21 @@
 
 @interface ACAccountStore : NSObject
 {
-    NSString *_clientBundleID;
     NSObject<OS_dispatch_queue> *_replyQueue;
     id _daemonAccountStoreDidChangeObserver;
     NSMutableDictionary *_accountCache;
     ACRemoteAccountStoreSession *_remoteAccountStoreSession;
+    ACRemoteAccountStoreSession *_longLivedRemoteAccountStoreSession;
+    NSString *_effectiveBundleID;
 }
 
 @property (readonly, weak, nonatomic) NSArray *accounts;
-@property (readonly) NSString *effectiveBundleID; // @synthesize effectiveBundleID=_clientBundleID;
-@property (strong, nonatomic) ACRemoteAccountStoreSession *remoteAccountStoreSession; // @synthesize remoteAccountStoreSession=_remoteAccountStoreSession;
+@property (readonly) NSString *effectiveBundleID; // @synthesize effectiveBundleID=_effectiveBundleID;
+@property (readonly, nonatomic) ACRemoteAccountStoreSession *longLivedRemoteAccountStoreSession; // @synthesize longLivedRemoteAccountStoreSession=_longLivedRemoteAccountStoreSession;
+@property (readonly, nonatomic) ACRemoteAccountStoreSession *remoteAccountStoreSession; // @synthesize remoteAccountStoreSession=_remoteAccountStoreSession;
 
++ (id)_defaultStore;
++ (void)_setDefaultStore:(id)arg1;
 + (int)accountsWithAccountTypeIdentifierExist:(id)arg1;
 + (BOOL)canSaveAccountsOfAccountTypeIdentifier:(id)arg1;
 + (long long)countOfAccountsWithAccountTypeIdentifier:(id)arg1;
@@ -131,6 +135,7 @@
 - (void)saveCredentialItem:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)saveVerifiedAccount:(id)arg1 error:(id *)arg2;
 - (void)saveVerifiedAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 error:(id *)arg4;
 - (void)setNotificationsEnabled:(BOOL)arg1;
 - (void)setPermissionGranted:(BOOL)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3;

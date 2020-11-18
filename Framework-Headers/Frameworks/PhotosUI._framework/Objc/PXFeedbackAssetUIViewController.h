@@ -10,11 +10,13 @@
 #import <PhotosUICore/PXFeedbackFormDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, PHAsset, PXAutoloopVideoProcessTask, PXFeedbackLikeItOrNotComboUIViewController, UINavigationController;
+@protocol PXFeedbackAssetUIViewControllerDelegate;
 
 @interface PXFeedbackAssetUIViewController : UIViewController <PXFeedbackFormDelegate, PXAutoloopVideoTaskDelegate>
 {
     BOOL _userLikedIt;
     PHAsset *_asset;
+    id<PXFeedbackAssetUIViewControllerDelegate> _delegate;
     NSDictionary *_positiveFeedback;
     NSDictionary *_negativeFeedback;
     UINavigationController *_navigationController;
@@ -27,6 +29,7 @@
 @property (strong, nonatomic) NSArray *autoLoopFrameworkDiagnosticFileURLs; // @synthesize autoLoopFrameworkDiagnosticFileURLs=_autoLoopFrameworkDiagnosticFileURLs;
 @property (strong, nonatomic) PXAutoloopVideoProcessTask *autoLoopFrameworkDiagnosticsCurrentTask; // @synthesize autoLoopFrameworkDiagnosticsCurrentTask=_autoLoopFrameworkDiagnosticsCurrentTask;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, weak, nonatomic) id<PXFeedbackAssetUIViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PXFeedbackLikeItOrNotComboUIViewController *feedbackController; // @synthesize feedbackController=_feedbackController;
 @property (readonly) unsigned long long hash;
@@ -41,11 +44,12 @@
 - (void)_startAutoLoopVideoTaskForDiagnosticsWithAsset:(id)arg1;
 - (void)autoloopVideoTaskStatusDidChange:(id)arg1;
 - (void)continueFiling;
-- (id)initWithAsset:(id)arg1;
+- (id)initWithAsset:(id)arg1 delegate:(id)arg2;
 - (id)longTitleText;
 - (id)negativeFeedbackKeys;
 - (id)positiveFeedbackKeys;
 - (BOOL)shouldDisplaySecondaryFeedbackButtons;
+- (void)userDidFinish:(BOOL)arg1;
 - (void)userIndicatedDislike;
 - (void)userIndicatedLike;
 - (void)userSentPositiveFeedback:(id)arg1 negativeFeedback:(id)arg2 customFeedback:(id)arg3;

@@ -6,11 +6,11 @@
 
 #import <Message/MFMailMessageStore.h>
 
-@class MFMessageCriterion, MFMessageLibrary, NSDate;
+@class MFMailMessageLibrary, MFMessageCriterion, NSDate;
 
 @interface MFLibraryStore : MFMailMessageStore
 {
-    MFMessageLibrary *_library;
+    MFMailMessageLibrary *_library;
     NSDate *_earliestReceivedDate;
     MFMessageCriterion *_criterion;
     unsigned long long _serverMessageCount;
@@ -26,6 +26,7 @@
 + (BOOL)storeAtPathIsWritable:(id)arg1;
 + (id)storeWithCriterion:(id)arg1;
 + (id)storeWithMailbox:(id)arg1;
+- (void).cxx_destruct;
 - (id)URLString;
 - (void)_addInvocationToQueue:(id)arg1;
 - (id)_cachedBodyDataContainerForMessage:(id)arg1 valueIfNotPresent:(id)arg2;
@@ -50,7 +51,6 @@
 - (void)addCountsForMessages:(id)arg1 shouldUpdateUnreadCount:(BOOL)arg2;
 - (unsigned long long)allNonDeletedCountIncludingServerSearch:(BOOL)arg1 andThreadSearch:(BOOL)arg2;
 - (BOOL)allowsAppend;
-- (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2 newMessageIDs:(id)arg3 newMessages:(id)arg4 flagsToSet:(id)arg5;
 - (id)bodyDataForMessage:(id)arg1 isComplete:(BOOL *)arg2 isPartial:(BOOL *)arg3 downloadIfNecessary:(BOOL)arg4;
 - (BOOL)bodyFetchRequiresNetworkActivity;
 - (BOOL)canCompact;
@@ -60,19 +60,17 @@
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
 - (id)copyOfAllMessages;
-- (id)copyOfAllMessagesForBodyLoadingFromRowID:(unsigned int)arg1 limit:(unsigned int)arg2;
+- (id)copyOfAllMessagesForBodyLoadingFromRowID:(long long)arg1 limit:(unsigned int)arg2;
 - (id)copyOfAllMessagesWithOptions:(unsigned int)arg1;
 - (id)copyOfMessageInfos;
 - (id)copyOfMessageInfosForConversationsContainingMessagesMatchingCriterion:(id)arg1;
 - (id)copyOfMessageInfosMatchingCriterion:(id)arg1;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1 options:(unsigned int)arg2 generation:(unsigned long long *)arg3;
-- (struct __CFDictionary *)copySendersByLibraryIDForConversation:(long long)arg1 limit:(long long)arg2;
 - (id)criterion;
 - (id)dataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 isComplete:(BOOL *)arg3 downloadIfNecessary:(BOOL)arg4 didDownload:(BOOL *)arg5;
 - (BOOL)dataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 isComplete:(BOOL *)arg3 withConsumer:(id)arg4 downloadIfNecessary:(BOOL)arg5 didDownload:(BOOL *)arg6;
 - (id)dataPathForMessage:(id)arg1 part:(id)arg2;
-- (id)dateOfNewestNonSearchResultMessage;
 - (id)dateOfOldestNonIndexedNonSearchResultMessage;
 - (void)dealloc;
 - (void)deleteBodyDataForMessage:(id)arg1;
@@ -100,7 +98,7 @@
 - (id)library;
 - (id)mailbox;
 - (id)messageForMessageID:(id)arg1 options:(unsigned int)arg2;
-- (id)messageWithLibraryID:(unsigned int)arg1 options:(unsigned int)arg2;
+- (id)messageWithLibraryID:(long long)arg1 options:(unsigned int)arg2;
 - (void)messagesWereAdded:(id)arg1 earliestReceivedDate:(id)arg2;
 - (id)mutableCopyOfAllMessages;
 - (id)newObjectCache;
@@ -110,6 +108,7 @@
 - (void)openSynchronously;
 - (void)purgeMessages:(id)arg1;
 - (void)purgeMessagesBeyondLimit:(unsigned long long)arg1 keepingMessage:(id)arg2;
+- (id)sendersByLibraryIDForConversation:(long long)arg1 limit:(long long)arg2;
 - (id)serverSearchResults;
 - (unsigned long long)serverUnreadOnlyOnServerCount;
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;

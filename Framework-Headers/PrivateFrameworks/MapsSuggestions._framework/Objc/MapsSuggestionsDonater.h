@@ -32,6 +32,7 @@
 - (void)_unscheduleCloseConnection;
 - (void)dealloc;
 - (BOOL)donateETA:(id)arg1 entry:(id)arg2;
+- (BOOL)donateSignalPack:(id)arg1;
 - (id)init;
 
 @end

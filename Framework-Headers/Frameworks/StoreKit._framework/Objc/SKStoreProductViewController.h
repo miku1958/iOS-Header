@@ -55,10 +55,12 @@
 
 + (id)_defaultIXStoreSheetDictionary;
 + (void)_validateURL:(id)arg1 withSheetInfo:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
++ (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)getCanLoadURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)getCanLoadURL:(id)arg1 withURLBag:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)_addRemoteView;
+- (void)_configureForFullScreenPresentationOrThrowException;
 - (void)_didFinish;
 - (void)_didFinishWithResult:(long long)arg1;
 - (void)_fireLoadBlockBeforeFinishing;
@@ -82,7 +84,11 @@
 - (void)loadProductWithRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadProductWithURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadView;
+- (long long)modalPresentationStyle;
+- (long long)modalTransitionStyle;
 - (long long)preferredStatusBarStyle;
+- (void)setParentViewController:(id)arg1;
+- (void)setPresentationStyleIfNeeded;
 - (void)sk_didBecomeOffScreen:(id)arg1;
 - (void)sk_didBecomeOnScreen:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;

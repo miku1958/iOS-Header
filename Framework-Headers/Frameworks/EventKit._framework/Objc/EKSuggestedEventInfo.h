@@ -14,6 +14,7 @@
 
 @property (nonatomic) unsigned long long changedFields;
 @property (nonatomic) BOOL changesAcknowledged;
+@property (copy, nonatomic) NSString *extractionGroupIdentifier;
 @property (copy, nonatomic) NSString *opaqueKey;
 @property (nonatomic) double timestamp;
 @property (copy, nonatomic) NSString *uniqueKey;
@@ -22,7 +23,9 @@
 - (id)copy;
 - (id)description;
 - (id)initWithEventStore:(id)arg1 opaqueKey:(id)arg2 uniqueKey:(id)arg3;
+- (id)initWithEventStore:(id)arg1 opaqueKey:(id)arg2 uniqueKey:(id)arg3 extractionGroupIdentifier:(id)arg4;
 - (id)initWithOpaqueKey:(id)arg1 uniqueKey:(id)arg2;
+- (id)initWithOpaqueKey:(id)arg1 uniqueKey:(id)arg2 extractionGroupIdentifier:(id)arg3;
 - (id)relatedEvent;
 - (id)semanticIdentifier;
 - (void)setTimestampAsDate:(id)arg1;

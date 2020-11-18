@@ -24,7 +24,7 @@
 - (void)contactMatchesWithFullTextSearch:(NSString *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;
 - (void)contactMatchesWithMessagingPrefix:(NSString *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(SGXPCResponse1 *))arg3;
 - (void)emailAddressIsSignificant:(NSString *)arg1 withCompletion:(void (^)(SGXPCResponse1 *))arg2;
-- (void)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 withCompletion:(void (^)(SGXPCResponse1 *))arg4;
+- (void)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 onlySignificant:(BOOL)arg4 withCompletion:(void (^)(SGXPCResponse1 *))arg5;
 - (void)namesForDetailCacheSnapshotsWithCompletion:(void (^)(SGXPCResponse3 *))arg1;
 - (void)originFromRecordId:(SGRecordId *)arg1 completion:(void (^)(SGXPCResponse1 *))arg2;
 @end

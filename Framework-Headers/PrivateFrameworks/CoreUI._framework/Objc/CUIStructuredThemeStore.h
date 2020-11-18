@@ -9,14 +9,14 @@
 #import <CoreUI/CUIStructuredThemeStorage-Protocol.h>
 #import <CoreUI/CUIStructuredThemeStorage2-Protocol.h>
 
-@class CUICommonAssetStorage, NSCache, NSLock, NSMutableDictionary, NSString;
+@class CUICommonAssetStorage, NSCache, NSMutableDictionary, NSString;
 
 @interface CUIStructuredThemeStore : NSObject <CUIStructuredThemeStorage, CUIStructuredThemeStorage2>
 {
     NSMutableDictionary *_cache;
     CUICommonAssetStorage *_store;
-    NSLock *_cacheLock;
-    NSLock *_storeLock;
+    struct os_unfair_lock_s _cacheLock;
+    struct os_unfair_lock_s _storeLock;
     unsigned long long _themeIndex;
     NSString *_bundleID;
     NSCache *_namedRenditionKeyCache;
@@ -52,6 +52,7 @@
 - (id)copyLookupKeySignatureForKey:(const struct _renditionkeytoken *)arg1;
 - (void)dealloc;
 - (id)debugDescriptionForKeyList:(const struct _renditionkeytoken *)arg1;
+- (id)defaultAppearanceName;
 - (unsigned int)distilledInCoreUIVersion;
 - (unsigned int)documentFormatVersion;
 - (double)fontSizeForFontSizeType:(id)arg1;
@@ -64,10 +65,12 @@
 - (id)initWithURL:(id)arg1;
 - (const struct _renditionkeyfmt *)keyFormat;
 - (id)keySignatureForKey:(const struct _renditionkeytoken *)arg1;
+- (unsigned short)localizationIdentifierForName:(id)arg1;
+- (id)localizations;
 - (id)lookupAssetForKey:(struct _renditionkeytoken *)arg1;
 - (long long)maximumRenditionKeyTokenCount;
 - (id)nameForAppearanceIdentifier:(unsigned short)arg1;
-- (id)prefilteredAssetDataForKey:(struct _renditionkeytoken *)arg1;
+- (id)renditionInfoForIdentifier:(unsigned short)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1 cursorHotSpot:(struct CGPoint *)arg2;
 - (const struct _renditionkeyfmt *)renditionKeyFormat;
@@ -77,7 +80,6 @@
 - (id)store;
 - (id)themeStore;
 - (BOOL)usesCUISystemThemeRenditionKey;
-- (id)zeroCodeGlyphList;
 
 @end
 

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class GEOPDModule;
+@class GEOModuleOptions, GEOPDModule;
 
 @interface GEOModule : NSObject
 {
     GEOPDModule *_module;
 }
 
+@property (readonly, nonatomic) GEOModuleOptions *options;
 @property (readonly, nonatomic) int type;
 
 - (void).cxx_destruct;

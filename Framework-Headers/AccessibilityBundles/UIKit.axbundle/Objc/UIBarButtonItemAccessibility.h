@@ -11,12 +11,16 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityAddIdForView:(id)arg1;
 - (id)_accessibilityIdentifierForImage:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_axBarButtonImagePath;
 - (void)_axRememberTargetter:(id)arg1;
+- (void)_setAXBarButtonImagePath:(id)arg1;
+- (void)_setAccessibilityIsNotFirstElement:(BOOL)arg1;
 - (void)_updateAccessibilityLabelForImage:(id)arg1;
 - (id)accessibilityLabel;
 - (id)accessibilityLocalizationBundleID;

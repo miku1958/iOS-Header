@@ -19,17 +19,20 @@
 - (id)_accessibilityAXAttributedHint;
 - (id)_accessibilityAXAttributedLabel;
 - (id)_accessibilityAXAttributedValue;
+- (unsigned long long)_accessibilityAutomationType;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (void)_accessibilityCopy;
 - (void)_accessibilityCut;
 - (void)_accessibilityDelete;
+- (BOOL)_accessibilityHandlesTabKey;
 - (id)_accessibilityHandwritingAttributes;
 - (BOOL)_accessibilityHasTextOperations;
-- (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
-- (BOOL)_accessibilityIsScannerElement;
+- (void)_accessibilityInsertText:(id)arg1;
+- (BOOL)_accessibilityInsertTextWithAlternatives:(id)arg1;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityOverridesInstructionsHint;
 - (void)_accessibilityPaste;
+- (void)_accessibilityRedo;
 - (void)_accessibilityReplace;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
 - (BOOL)_accessibilityReplaceTextInRange:(struct _NSRange)arg1 withString:(id)arg2;
@@ -43,6 +46,7 @@
 - (id)_accessibilitySpeakThisString;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (void)_accessibilityUndo;
 - (id)_accessibilityUserTestingParent;
 - (BOOL)_accessibilityViewIsVisible;
 - (struct CGPoint)accessibilityActivationPoint;
@@ -53,11 +57,13 @@
 - (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityPerformMagicTap;
 - (id)accessibilityPlaceholderValue;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 

@@ -15,5 +15,6 @@
 - (id)addObserver:(void (^)(NSArray *))arg1;
 - (void)getPhraseShortcutPairs:(void (^)(NSArray *))arg1;
 - (void)removeObserver:(id)arg1;
+- (void)startServer;
 @end
 

@@ -13,7 +13,9 @@
 {
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
+    struct __CFUserNotification *_cfNotif;
     NSXPCConnection *_xpcCnx;
+    struct __CFRunLoopSource *_runLoopSrc;
     BOOL _asBanner;
     BOOL _textInput;
     BOOL _hasDefaultButton;
@@ -21,6 +23,7 @@
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _responseHandler;
     CDUnknownBlockType _textResponseHandler;
+    CDUnknownBlockType _dictionaryResponseHandler;
     NSDictionary *_additionalInfo;
     NSURL *_iconURL;
     NSString *_message;
@@ -37,6 +40,7 @@
 @property (strong, nonatomic) NSString *alternateButtonTitle; // @synthesize alternateButtonTitle=_alternateButtonTitle;
 @property (nonatomic) BOOL asBanner; // @synthesize asBanner=_asBanner;
 @property (strong, nonatomic) NSString *defaultButtonTitle; // @synthesize defaultButtonTitle=_defaultButtonTitle;
+@property (copy, nonatomic) CDUnknownBlockType dictionaryResponseHandler; // @synthesize dictionaryResponseHandler=_dictionaryResponseHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property (nonatomic) BOOL hasDefaultButton; // @synthesize hasDefaultButton=_hasDefaultButton;
@@ -53,13 +57,17 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_defaultDictionary;
 - (void)_ensureXPCStarted;
+- (void)_handleResponseForNotification:(struct __CFUserNotification *)arg1 flags:(unsigned long long)arg2;
 - (void)_interrupted;
 - (void)_invalidate;
 - (void)_invalidated;
+- (id)_mergedDict;
 - (void)_postNotification:(struct __CFUserNotification *)arg1;
 - (void)_present;
 - (void)_presentBanner;
+- (void)_updateNotification;
 - (struct __CFUserNotification *)createNotification;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
@@ -67,6 +75,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
 - (void)present;
+- (void)userNotificationDictionaryResponse:(id)arg1;
 - (void)userNotificationError:(id)arg1;
 - (void)userNotificationResponse:(int)arg1;
 - (void)userNotificationTextResponse:(id)arg1;

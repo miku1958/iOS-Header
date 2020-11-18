@@ -17,14 +17,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_restaurantLinks;
 }
 
-@property (strong, nonatomic) NSMutableArray *restaurantLinks; // @synthesize restaurantLinks=_restaurantLinks;
+@property (strong, nonatomic) NSMutableArray *restaurantLinks;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (id)reservationLinkForPlaceData:(id)arg1;
 + (Class)restaurantLinkType;
 - (void).cxx_destruct;
 - (void)addRestaurantLink:(id)arg1;
 - (void)clearRestaurantLinks;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)restaurantLinkAtIndex:(unsigned long long)arg1;
 - (unsigned long long)restaurantLinksCount;

@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKit/UIView.h>
 
+#import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
 #import <UserNotificationsUIKit/NCLegibilitySettingsAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationListCoalescingControlsHandler-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationListCoalescingControlsViewDelegate-Protocol.h>
@@ -14,30 +15,26 @@
 @class NCNotificationListCoalescingControlsView, NCNotificationListHeaderTitleView, NSString, _UILegibilitySettings;
 @protocol NCNotificationListCoalescingControlsHandlerDelegate;
 
-@interface NCNotificationListCoalescingHeaderCell : UICollectionViewCell <NCNotificationListCoalescingControlsViewDelegate, NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting, NCNotificationListCoalescingControlsHandler>
+@interface NCNotificationListCoalescingHeaderCell : UIView <NCNotificationListCoalescingControlsViewDelegate, NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting, NCNotificationListCoalescingControlsHandler, MTMaterialGrouping>
 {
     BOOL _adjustsFontForContentSizeCategory;
-    NSString *_coalescingIdentifier;
-    unsigned long long _groupingSection;
     id<NCNotificationListCoalescingControlsHandlerDelegate> _handlerDelegate;
+    NSString *_materialGroupNameBase;
     NSString *_title;
-    NSString *_backgroundGroupName;
     NCNotificationListCoalescingControlsView *_coalescingControlsView;
     NCNotificationListHeaderTitleView *_headerTitleView;
     _UILegibilitySettings *_legibilitySettings;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-@property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
 @property (strong, nonatomic) NCNotificationListCoalescingControlsView *coalescingControlsView; // @synthesize coalescingControlsView=_coalescingControlsView;
-@property (copy, nonatomic) NSString *coalescingIdentifier; // @synthesize coalescingIdentifier=_coalescingIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned long long groupingSection; // @synthesize groupingSection=_groupingSection;
 @property (weak, nonatomic) id<NCNotificationListCoalescingControlsHandlerDelegate> handlerDelegate; // @synthesize handlerDelegate=_handlerDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCNotificationListHeaderTitleView *headerTitleView; // @synthesize headerTitleView=_headerTitleView;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -64,10 +61,8 @@
 - (void)notificationListCoalescingControlsViewRequestsClear:(id)arg1;
 - (void)notificationListCoalescingControlsViewRequestsClearAll:(id)arg1;
 - (void)notificationListCoalescingControlsViewRequestsRestack:(id)arg1;
-- (void)prepareForReuse;
 - (void)resetClearButtonStateAnimated:(BOOL)arg1;
 - (BOOL)shouldReceiveTouchAtPointInWindowSpace:(struct CGPoint)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

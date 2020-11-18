@@ -83,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)_searcherStateChanged:(long long)arg1;
 - (id)_sectionForIndex:(unsigned long long)arg1;
 - (void)_sendMessageToParticipants:(id)arg1;
+- (void)_smoothRefreshIfNeededForSections:(id)arg1;
 - (id)_viewControllerForPresentingViewControllers;
 - (void)dealloc;
 - (void)editItemViewController:(id)arg1 didCompleteWithAction:(int)arg2;
@@ -90,11 +91,13 @@ __attribute__((visibility("hidden")))
 - (id)initWithEvent:(id)arg1 fromDetail:(BOOL)arg2;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)prepareToReloadAttendeesSections;
 - (unsigned long long)supportedInterfaceOrientations;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 editActionsForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;

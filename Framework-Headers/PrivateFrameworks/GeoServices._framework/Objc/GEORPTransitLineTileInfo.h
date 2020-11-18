@@ -8,26 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEORPTransitLineTileInfo : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     unsigned long long _transitLineMuid;
     NSString *_transitLineName;
     NSString *_transitSystemName;
     struct {
-        unsigned int transitLineMuid:1;
-    } _has;
+        unsigned int has_transitLineMuid:1;
+        unsigned int read_transitLineName:1;
+        unsigned int read_transitSystemName:1;
+        unsigned int wrote_transitLineMuid:1;
+        unsigned int wrote_transitLineName:1;
+        unsigned int wrote_transitSystemName:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasTransitLineMuid;
 @property (readonly, nonatomic) BOOL hasTransitLineName;
 @property (readonly, nonatomic) BOOL hasTransitSystemName;
-@property (nonatomic) unsigned long long transitLineMuid; // @synthesize transitLineMuid=_transitLineMuid;
-@property (strong, nonatomic) NSString *transitLineName; // @synthesize transitLineName=_transitLineName;
-@property (strong, nonatomic) NSString *transitSystemName; // @synthesize transitSystemName=_transitSystemName;
+@property (nonatomic) unsigned long long transitLineMuid;
+@property (strong, nonatomic) NSString *transitLineName;
+@property (strong, nonatomic) NSString *transitSystemName;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readTransitLineName;
+- (void)_readTransitSystemName;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

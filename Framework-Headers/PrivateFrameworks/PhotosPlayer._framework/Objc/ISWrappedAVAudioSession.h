@@ -10,19 +10,27 @@
 
 @interface ISWrappedAVAudioSession : NSObject
 {
+    BOOL _didBeginObservingOutputVolume;
+    CDUnknownBlockType _outputVolumeChangeHandler;
     AVAudioSession *_audioSession;
 }
 
 @property (readonly, nonatomic) AVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
 @property (readonly, nonatomic) NSString *category;
+@property (readonly, nonatomic) float outputVolume;
+@property (copy, nonatomic) CDUnknownBlockType outputVolumeChangeHandler; // @synthesize outputVolumeChangeHandler=_outputVolumeChangeHandler;
 
 + (id)auxiliarySession;
 + (id)sharedAmbientInstance;
 + (void)sharedAmbientInstanceWithLoadHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (void)_beginObservingOutputVolumeIfNeeded;
+- (void)_endObservingOutputVolumeIfNeeded;
 - (id)_init;
 - (void)dealloc;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (BOOL)setCategory:(id)arg1 error:(id *)arg2;
+- (BOOL)setCategory:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 
 @end
 

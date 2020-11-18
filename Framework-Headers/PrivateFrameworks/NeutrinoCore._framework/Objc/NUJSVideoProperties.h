@@ -15,8 +15,11 @@
 }
 
 @property (readonly) struct CGRect cleanAperture;
+@property (readonly) struct CGRect originalCleanAperture;
+@property (readonly) struct CGSize originalSize;
 @property (readonly) id<NUVideoProperties> videoProperties;
 
+- (BOOL)containsMetadata:(id)arg1;
 - (id)initWithRepresentedObject:(id)arg1 context:(id)arg2;
 - (id)initWithVideoProperties:(id)arg1 context:(id)arg2;
 

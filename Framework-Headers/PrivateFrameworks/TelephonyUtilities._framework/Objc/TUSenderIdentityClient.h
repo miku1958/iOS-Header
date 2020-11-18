@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
+- (BOOL)inEmergencyMode;
 - (id)init;
 - (BOOL)isEmergencyNumberForDigits:(id)arg1 senderIdentityUUID:(id)arg2;
 - (BOOL)isEmergencyNumberForDigits:(id)arg1 senderIdentityUUID:(id)arg2 error:(id *)arg3;

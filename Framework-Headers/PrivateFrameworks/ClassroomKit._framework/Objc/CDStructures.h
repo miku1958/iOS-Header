@@ -30,6 +30,15 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+struct __SecKey {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
+};
+
 struct _ftsent {
     struct _ftsent *_field1;
     struct _ftsent *_field2;

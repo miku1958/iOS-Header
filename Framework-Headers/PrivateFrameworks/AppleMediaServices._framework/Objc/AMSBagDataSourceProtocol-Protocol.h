@@ -13,7 +13,6 @@
 @property (copy, nonatomic) CDUnknownBlockType dataSourceChangedHandler;
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded;
-@property (readonly, nonatomic) NSString *logKey;
 @property (readonly, copy, nonatomic) NSString *profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion;
 

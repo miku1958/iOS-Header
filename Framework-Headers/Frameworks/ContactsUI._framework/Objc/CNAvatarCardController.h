@@ -8,12 +8,13 @@
 
 #import <ContactsUI/CNAvatarCardControllerOrbTransitionDelegate-Protocol.h>
 #import <ContactsUI/CNAvatarCardViewControllerDelegate-Protocol.h>
-#import <ContactsUI/UIPreviewInteractionDelegatePrivate-Protocol.h>
+#import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <ContactsUI/_UIClickPresentationInteractionDelegate-Protocol.h>
 
-@class CNAvatarCardViewController, CNAvatarView, CNContact, CNContactOrbHeaderView, NSArray, NSString, UIAlertController, UIGestureRecognizer, UIPreviewInteraction, UITapGestureRecognizer, UIView, UIViewController;
+@class CNAvatarCardViewController, CNAvatarView, CNContact, CNContactOrbHeaderView, NSArray, NSString, UIAlertController, UIGestureRecognizer, UITapGestureRecognizer, UIView, UIViewController, UIVisualEffectView, _UIClickPresentationInteraction;
 @protocol CNAvatarCardControllerDelegate;
 
-@interface CNAvatarCardController : NSObject <UIPreviewInteractionDelegatePrivate, CNAvatarCardViewControllerDelegate, CNAvatarCardControllerOrbTransitionDelegate>
+@interface CNAvatarCardController : NSObject <_UIClickPresentationInteractionDelegate, CNAvatarCardViewControllerDelegate, CNAvatarCardControllerOrbTransitionDelegate, UIGestureRecognizerDelegate>
 {
     BOOL _visible;
     BOOL _actionsNeedRefresh;
@@ -25,10 +26,11 @@
     UIView *_highlightView;
     UIAlertController *_alertController;
     CNAvatarCardViewController *_cardViewController;
-    UIPreviewInteraction *_previewInteraction;
+    _UIClickPresentationInteraction *_clickPresentationInteraction;
     long long _presentationResult;
     NSArray *_cardControllerConstraints;
     UITapGestureRecognizer *_tapGestureRecognizer;
+    UIVisualEffectView *_backgroundVisualEffectView;
     CNAvatarView *_avatarView;
     CNContactOrbHeaderView *_headerView;
     UIGestureRecognizer *_rolloverGestureRecognizer;
@@ -39,9 +41,11 @@
 @property (nonatomic) BOOL actionsNeedRefresh; // @synthesize actionsNeedRefresh=_actionsNeedRefresh;
 @property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
 @property (weak, nonatomic) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
+@property (strong, nonatomic) UIVisualEffectView *backgroundVisualEffectView; // @synthesize backgroundVisualEffectView=_backgroundVisualEffectView;
 @property (nonatomic) BOOL bypassActionValidation; // @synthesize bypassActionValidation=_bypassActionValidation;
 @property (strong, nonatomic) NSArray *cardControllerConstraints; // @synthesize cardControllerConstraints=_cardControllerConstraints;
 @property (strong, nonatomic) CNAvatarCardViewController *cardViewController; // @synthesize cardViewController=_cardViewController;
+@property (strong, nonatomic) _UIClickPresentationInteraction *clickPresentationInteraction; // @synthesize clickPresentationInteraction=_clickPresentationInteraction;
 @property (strong, nonatomic) CNContact *contact;
 @property (strong, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (readonly, copy) NSString *debugDescription;
@@ -54,7 +58,6 @@
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) long long presentationResult; // @synthesize presentationResult=_presentationResult;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
-@property (strong, nonatomic) UIPreviewInteraction *previewInteraction; // @synthesize previewInteraction=_previewInteraction;
 @property (strong, nonatomic) UIGestureRecognizer *rolloverGestureRecognizer; // @synthesize rolloverGestureRecognizer=_rolloverGestureRecognizer;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property (strong, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
@@ -62,33 +65,38 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (readonly, nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
-+ (BOOL)avatarCardEnabled;
++ (BOOL)avatarCardEnabledForTraitCollection:(id)arg1;
 + (id)descriptorForRequiredKeys;
 + (id)descriptorForRequiredKeysIncludingAvatarViewDescriptors:(BOOL)arg1;
-+ (BOOL)showsWithTapAndHold;
++ (id)previewHeaderViewControllerForContacts:(id)arg1;
 - (void).cxx_destruct;
-- (id)_previewInteraction:(id)arg1 viewControllerPresentationForPresentingViewController:(id)arg2;
-- (id)_previewInteractionHighlighterForPreviewTransition:(id)arg1;
-- (BOOL)_previewInteractionShouldFinishTransitionToPreview:(id)arg1;
 - (void)_setupAlertController;
 - (void)_setupCardViewControllerWithContacts:(id)arg1;
 - (void)_setupForCardControllerPresentation;
-- (void)_updateCard;
 - (void)_updateHeaderViewFrame;
 - (id)cardViewController:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;
 - (void)cardViewControllerDidDismiss:(id)arg1;
 - (void)cardViewControllerWillDismiss:(id)arg1;
+- (id)clickPresentationInteraction:(id)arg1 presentationForPresentingViewController:(id)arg2;
+- (id)clickPresentationInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
+- (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(BOOL)arg2;
+- (BOOL)clickPresentationInteractionShouldBegin:(id)arg1;
+- (BOOL)clickPresentationInteractionShouldPresent:(id)arg1;
 - (void)configurePreviewInteraction;
 - (void)dismissAnimated:(BOOL)arg1;
 - (void)dismissAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
+- (BOOL)hasActions;
 - (void)orbTransitionDidEndTransition:(id)arg1;
 - (void)orbTransitionDidPrepareTransition:(id)arg1 withContainerView:(id)arg2;
+- (void)prepareForDisplay;
+- (void)prepareWithContacts:(id)arg1 store:(id)arg2;
+- (void)prepareWithContacts:(id)arg1 storeProvider:(CDUnknownBlockType)arg2;
 - (id)preparedViewControllerForPresentationWithGestureRecognizer:(id)arg1;
 - (void)presentAnimated:(BOOL)arg1;
 - (void)presentAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)previewInteraction:(id)arg1 didUpdatePreviewTransition:(double)arg2 ended:(BOOL)arg3;
-- (void)previewInteractionDidCancel:(id)arg1;
-- (BOOL)previewInteractionShouldBegin:(id)arg1;
+- (BOOL)readyForContactsMatching:(id)arg1;
+- (id)refetchContactsMatching:(id)arg1 storeProvider:(CDUnknownBlockType)arg2;
 - (void)showContact;
 - (void)showContact:(id)arg1;
 

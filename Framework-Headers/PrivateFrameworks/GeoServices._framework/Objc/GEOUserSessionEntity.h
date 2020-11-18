@@ -18,16 +18,16 @@
     double _sessionRelativeTimestamp;
 }
 
-@property (readonly) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
-@property double sessionCreationTime; // @synthesize sessionCreationTime=_sessionCreationTime;
+@property (readonly, nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
+@property (nonatomic) double sessionCreationTime; // @synthesize sessionCreationTime=_sessionCreationTime;
 @property (readonly, nonatomic) NSString *sessionEntityString;
-@property (readonly) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly, nonatomic) struct GEOSessionID sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly, nonatomic) NSNumber *sessionIDHigh;
 @property (readonly, nonatomic) NSString *sessionIDHighString;
 @property (readonly, nonatomic) NSNumber *sessionIDLow;
 @property (readonly, nonatomic) NSString *sessionIDLowString;
 @property (readonly, nonatomic) NSString *sessionIDString;
-@property (readonly) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
+@property (readonly, nonatomic) double sessionRelativeTimestamp; // @synthesize sessionRelativeTimestamp=_sessionRelativeTimestamp;
 @property (readonly, nonatomic) NSString *sessionUUIDString;
 
 - (BOOL)_isValidSessionIDHighOrLowString:(id)arg1;

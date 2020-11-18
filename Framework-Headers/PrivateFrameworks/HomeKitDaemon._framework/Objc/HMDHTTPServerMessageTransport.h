@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) HMFHTTPServer *server; // @synthesize server=_server;
 @property (readonly) Class superclass;
 
++ (id)maximumSupportedProtocolVersion;
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (void)__registerPingHandler;

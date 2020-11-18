@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UISettings.h>
+#import <PrototypeTools/PTSettings.h>
 
-@interface MTLumaDodgePillStyleSettings : _UISettings
+@interface MTLumaDodgePillStyleSettings : PTSettings
 {
     double _colorAddOpacity;
     double _lumaMapPlusColorOpacity;

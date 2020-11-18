@@ -6,17 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, UIImage;
+@class CURangingMeasurement, NSDate, NSNumber, NSPersonNameComponents, NSSet, NSString, NSUUID;
 
 @interface SFAirDropNode : NSObject
 {
     struct __SFOperation *_sender;
+    NSPersonNameComponents *_nameComponents;
+    BOOL _disabled;
     BOOL _me;
     BOOL _unknown;
     BOOL _monogram;
     BOOL _classroom;
     BOOL _classroomGroup;
     BOOL _classroomCourse;
+    BOOL _suggestion;
+    BOOL _rapport;
     BOOL _supportsCredentials;
     BOOL _supportsFMF;
     BOOL _supportsPasses;
@@ -25,42 +29,60 @@
     id _node;
     NSString *_contactIdentifier;
     NSString *_realName;
-    UIImage *_displayIcon;
+    struct CGImage *_displayIcon;
     NSString *_displayName;
     NSString *_secondaryName;
     NSString *_model;
+    NSString *_transportBundleID;
+    NSSet *_handles;
+    NSUUID *_nodeIdentifier;
+    CURangingMeasurement *_rangingMeasurement;
+    NSNumber *_suggestionIndex;
+    long long _selectionReason;
 }
 
 @property (getter=isClassroom) BOOL classroom; // @synthesize classroom=_classroom;
 @property (getter=isClassroomCourse) BOOL classroomCourse; // @synthesize classroomCourse=_classroomCourse;
 @property (getter=isclassroomGroup) BOOL classroomGroup; // @synthesize classroomGroup=_classroomGroup;
 @property (strong) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) NSDate *discoveryDate; // @synthesize discoveryDate=_discoveryDate;
-@property (strong) UIImage *displayIcon; // @synthesize displayIcon=_displayIcon;
+@property (strong) struct CGImage *displayIcon; // @synthesize displayIcon=_displayIcon;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong) NSSet *handles; // @synthesize handles=_handles;
 @property (readonly, getter=isKnown) BOOL known;
 @property (getter=isMe) BOOL me; // @synthesize me=_me;
 @property (strong) NSString *model; // @synthesize model=_model;
 @property (getter=isMonogram) BOOL monogram; // @synthesize monogram=_monogram;
 @property (strong) id node; // @synthesize node=_node;
+@property (strong) NSUUID *nodeIdentifier; // @synthesize nodeIdentifier=_nodeIdentifier;
+@property (strong, nonatomic) CURangingMeasurement *rangingMeasurement; // @synthesize rangingMeasurement=_rangingMeasurement;
+@property (getter=isRapport) BOOL rapport; // @synthesize rapport=_rapport;
 @property (strong) NSString *realName; // @synthesize realName=_realName;
 @property (strong) NSString *secondaryName; // @synthesize secondaryName=_secondaryName;
+@property long long selectionReason; // @synthesize selectionReason=_selectionReason;
+@property (getter=isSuggestion) BOOL suggestion; // @synthesize suggestion=_suggestion;
+@property (strong) NSNumber *suggestionIndex; // @synthesize suggestionIndex=_suggestionIndex;
 @property (readonly) BOOL supportsCredentials; // @synthesize supportsCredentials=_supportsCredentials;
 @property (readonly) BOOL supportsFMF; // @synthesize supportsFMF=_supportsFMF;
 @property (readonly) BOOL supportsMixedTypes; // @synthesize supportsMixedTypes=_supportsMixedTypes;
 @property (readonly) BOOL supportsPasses; // @synthesize supportsPasses=_supportsPasses;
+@property (strong) NSString *transportBundleID; // @synthesize transportBundleID=_transportBundleID;
 @property (getter=isUnknown) BOOL unknown; // @synthesize unknown=_unknown;
 
 + (id)nodeWithSFNode:(struct __SFNode *)arg1;
 - (void).cxx_destruct;
+- (void)appendDiscoveryInfoToDisplayName:(id)arg1;
 - (void)cancelSend;
+- (void)dealloc;
 - (id)description;
+- (id)displayNameForLocale:(id)arg1;
 - (void)handleOperationCallback:(struct __SFOperation *)arg1 event:(long long)arg2 withResults:(id)arg3;
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
-- (void)simulateFakeTransferWithSessionID:(id)arg1;
-- (void)startSendForBundleID:(id)arg1 sessionID:(id)arg2 items:(id)arg3 description:(id)arg4 previewImage:(id)arg5;
+- (void)startSendForBundleID:(id)arg1 sessionID:(id)arg2 items:(id)arg3 description:(id)arg4 previewImage:(struct CGImage *)arg5;
+- (void)updateDisplayName;
 - (void)updateWithSFNode:(struct __SFNode *)arg1;
 
 @end

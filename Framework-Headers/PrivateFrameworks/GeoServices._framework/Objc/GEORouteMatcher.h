@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute;
+@class GEOComposedRoute, GEORouteRoadMatcher;
 
 @interface GEORouteMatcher : NSObject
 {
     GEOComposedRoute *_route;
     BOOL _useStrictInitialOnRouteCriteria;
+    GEORouteRoadMatcher *_routeRoadMatcher;
     BOOL _shouldSnapRouteMatchToRoute;
 }
 
@@ -25,9 +26,12 @@
 - (void)_forEachSegmentNearLocation:(id)arg1 previousRouteMatch:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (double)_scoreModifierForStep:(id)arg1 previousStep:(id)arg2;
 - (BOOL)_shouldConsiderCourseForLocation:(id)arg1;
+- (void)_snapRouteMatchToRoad:(id)arg1;
 - (void)_startRouteMatch;
 - (id)_startStepForPreviousRouteMatch:(id)arg1;
 - (id)_stepForPointIndex:(unsigned int)arg1 previousStep:(id)arg2;
+- (BOOL)_supportsSnapping;
+- (void)dealloc;
 - (double)distanceToRouteFrom:(CDStruct_c3b9c2ee)arg1;
 - (double)distanceToRouteFrom:(CDStruct_c3b9c2ee)arg1 startDistance:(double)arg2 endDistance:(double)arg3;
 - (id)initWithRoute:(id)arg1;

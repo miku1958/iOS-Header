@@ -34,7 +34,6 @@
 - (void)cancelReading;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithAsset:(id)arg1 error:(id *)arg2;
 - (BOOL)startReading;

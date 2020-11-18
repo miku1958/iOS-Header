@@ -8,7 +8,6 @@
 
 @interface NSMutableArray (MKLocatableAdditions)
 - (void)_mapkit_insertObject:(id)arg1 sortedUsingSelector:(SEL)arg2;
-- (void)_mapkit_makeObjectsPerformSelector:(SEL)arg1;
 - (id)_mapkit_popLastObject;
 - (void)_mapkit_sortUsingDistanceFromCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (void)_mapkit_sortUsingDistanceFromCoordinate:(struct CLLocationCoordinate2D)arg1 ascending:(BOOL)arg2;

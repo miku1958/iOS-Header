@@ -8,27 +8,38 @@
 
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class CNChangeHistoryAnchor, CNContact, NSString;
+@class CNChangeHistoryAnchor, CNContact, NSArray, NSNumber, NSString;
 
 @interface CNChangeHistoryContactChange : NSObject <NSSecureCoding>
 {
     NSString *_contactIdentifier;
     long long _changeType;
     CNContact *_contact;
+    NSArray *_linkedContactIdentifiers;
     CNChangeHistoryAnchor *_changeAnchor;
+    NSNumber *_changeID;
+    NSString *_externalID;
+    NSNumber *_imagesChanged;
 }
 
 @property (strong, nonatomic) CNChangeHistoryAnchor *changeAnchor; // @synthesize changeAnchor=_changeAnchor;
+@property (strong, nonatomic) NSNumber *changeID; // @synthesize changeID=_changeID;
 @property (nonatomic) long long changeType; // @synthesize changeType=_changeType;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (strong, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
+@property (strong, nonatomic) NSNumber *imagesChanged; // @synthesize imagesChanged=_imagesChanged;
+@property (copy, nonatomic) NSArray *linkedContactIdentifiers; // @synthesize linkedContactIdentifiers=_linkedContactIdentifiers;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 changeType:(long long)arg2 changeAnchor:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 changeType:(long long)arg2 changeAnchor:(id)arg3 changeID:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 changeType:(long long)arg2 changeAnchor:(id)arg3 changeID:(id)arg4 externalID:(id)arg5 imagesChanged:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

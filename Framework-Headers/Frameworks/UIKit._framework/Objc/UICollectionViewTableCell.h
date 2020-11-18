@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UITable_UITableViewCellDelegate-Protocol.h>
 
-@class NSArray, NSString, UICollectionViewLayout, UICollectionViewTableLayout, UICollectionViewTableLayoutAttributes, UIColor, UIImageView, UILabel, UIScrollView, UIShadowView, UITableViewCell, UITableViewCollectionCell, UIView;
+@class NSMutableSet, NSString, UICollectionViewLayout, UICollectionViewTableLayout, UICollectionViewTableLayoutAttributes, UIColor, UIImageView, UILabel, UIScrollView, UIShadowView, UITableViewCell, UITableViewCollectionCell, UIView;
 
 @interface UICollectionViewTableCell : UICollectionViewCell <UITable_UITableViewCellDelegate>
 {
@@ -17,15 +17,16 @@
     UIShadowView *_borderShadowBottomView;
     UIView *_selectedBackgroundViewToRestoreWhenInteractiveMoveEnds;
     long long _accessoryType;
+    NSMutableSet *_trackedAnimators;
     BOOL _editing;
     double _reorderingCenterX;
-    double _offsetForRevealingDeleteConfirmationButton;
     BOOL _interactiveMoveEffectsVisible;
     BOOL _borderShadowVisible;
     BOOL _transitioningLayouts;
     UITableViewCell *_swipeToDeleteCell;
     UITableViewCollectionCell *_tableViewCell;
     UICollectionViewLayout *_currentLayout;
+    double _offsetForRevealingDeleteConfirmationButton;
 }
 
 @property (readonly, nonatomic, getter=_accessoryBaseColor) UIColor *accessoryBaseColor;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic, getter=_bottomPadding) double bottomPadding;
 @property (readonly, nonatomic) BOOL canBeEdited;
 @property (readonly, nonatomic) BOOL cellLayoutMarginsFollowReadableWidth;
+@property (readonly, nonatomic, getter=_cellSafeAreaInsets) struct UIEdgeInsets cellSafeAreaInsets;
 @property (weak, nonatomic) UICollectionViewLayout *currentLayout; // @synthesize currentLayout=_currentLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -60,7 +62,7 @@
 @property (readonly, nonatomic, getter=_indexFrame) struct CGRect indexFrame;
 @property (nonatomic) BOOL interactiveMoveEffectsVisible; // @synthesize interactiveMoveEffectsVisible=_interactiveMoveEffectsVisible;
 @property (strong, nonatomic) UIView *multipleSelectionBackgroundView;
-@property (readonly, nonatomic) UIColor *multiselectCheckmarkColor;
+@property (readonly, nonatomic, getter=_multiselectCheckmarkColor) UIColor *multiselectCheckmarkColor;
 @property (readonly, nonatomic, getter=_numberOfSections) long long numberOfSections;
 @property (nonatomic, getter=_offsetForRevealingDeleteConfirmationButton, setter=_setOffsetForRevealingDeleteConfirmationButton:) double offsetForRevealingDeleteConfirmationButton; // @synthesize offsetForRevealingDeleteConfirmationButton=_offsetForRevealingDeleteConfirmationButton;
 @property (readonly, nonatomic) BOOL overlapsSectionHeaderViews;
@@ -70,7 +72,6 @@
 @property (readonly, nonatomic) double rowHeight;
 @property (readonly, nonatomic, getter=_rowSpacing) double rowSpacing;
 @property (readonly, nonatomic, getter=_scrollView) UIScrollView *scrollView;
-@property (readonly, nonatomic, getter=_sectionBorderWidth) double sectionBorderWidth;
 @property (readonly, nonatomic, getter=_sectionContentInset) struct UIEdgeInsets sectionContentInset;
 @property (readonly, nonatomic, getter=_sectionContentInsetFollowsLayoutMargins) BOOL sectionContentInsetFollowsLayoutMargins;
 @property (readonly, nonatomic, getter=_sectionCornerRadius) double sectionCornerRadius;
@@ -83,27 +84,23 @@
 @property (readonly, nonatomic) BOOL showingDeleteConfirmation;
 @property (readonly, nonatomic, getter=_isShowingIndex) BOOL showingIndex;
 @property (nonatomic) BOOL showsReorderControl;
-@property (readonly, nonatomic, getter=_style) long long style;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=_swipeActionButtons) NSArray *swipeActionButtons;
 @property (strong, nonatomic, getter=_swipeToDeleteCell, setter=_setSwipeToDeleteCell:) UITableViewCell *swipeToDeleteCell; // @synthesize swipeToDeleteCell=_swipeToDeleteCell;
 @property (readonly, nonatomic) UIView *swipeableView;
 @property (readonly, nonatomic, getter=_tableAttributes) UICollectionViewTableLayoutAttributes *tableAttributes;
 @property (readonly, nonatomic, getter=_tableLayout) UICollectionViewTableLayout *tableLayout;
+@property (readonly, nonatomic, getter=_tableStyle) long long tableStyle;
 @property (strong, nonatomic) UITableViewCollectionCell *tableViewCell; // @synthesize tableViewCell=_tableViewCell;
 @property (readonly, nonatomic) UILabel *textLabel;
 @property (readonly, nonatomic, getter=_topPadding) double topPadding;
 @property (nonatomic) BOOL transitioningLayouts; // @synthesize transitioningLayouts=_transitioningLayouts;
-@property (readonly, nonatomic, getter=_usesModernSwipeActions) BOOL usesModernSwipeActions;
 @property (readonly, nonatomic) BOOL usesVariableMargins;
 @property (readonly, nonatomic, getter=_wasEditing) BOOL wasEditing;
 
 - (void).cxx_destruct;
 - (void)_accessoryButtonAction:(id)arg1;
-- (void)_actionButton:(id)arg1 pushedInCell:(id)arg2;
 - (void)_animateDeletionOfRowAtIndexPath:(id)arg1;
 - (void)_animateDeletionOfRowWithCell:(id)arg1;
-- (void)_animateSwipeCancelation;
 - (BOOL)_beginReorderingForCell:(id)arg1 touch:(id)arg2;
 - (struct CGRect)_calloutTargetRectForCell:(id)arg1;
 - (BOOL)_canFocusCell:(id)arg1;
@@ -113,20 +110,13 @@
 - (void)_cellDidHideSelectedBackground:(id)arg1;
 - (void)_cellDidShowSelectedBackground:(id)arg1;
 - (void)_commonSetupTableCell;
-- (void)_configureDeleteConfirmationDecelerationRate:(double)arg1;
-- (struct CGRect)_contentViewFrame;
-- (double)_deleteConfirmationHorizontalOffset;
-- (double)_deleteConfirmationHorizontalVelocity;
+- (struct UIEdgeInsets)_contentViewInset;
 - (void)_didInsertRowForTableCell:(id)arg1;
 - (void)_draggingReorderingCell:(id)arg1 yDelta:(double)arg2 touch:(id)arg3;
 - (void)_endReorderingForCell:(id)arg1 wasCancelled:(BOOL)arg2 animated:(BOOL)arg3;
-- (void)_endSwipeToDeleteGesture:(BOOL)arg1;
-- (void)_endSwipeToDeleteRowDidDelete:(BOOL)arg1;
-- (void)_finishedRemovingRemovalButtonForTableCell:(id)arg1;
 - (void)_highlightCell:(id)arg1 animated:(BOOL)arg2 scrollPosition:(long long)arg3 highlight:(BOOL)arg4;
 - (void)_highlightDidEndForCell:(id)arg1 withInteraction:(id)arg2;
 - (void)_insertInteractiveMoveShadowViews;
-- (void)_installSwipeToDeleteGobbler;
 - (BOOL)_isCellReorderable:(id)arg1;
 - (BOOL)_isInteractiveMoveShadowInstalled;
 - (BOOL)_isReorderControlActiveForCell:(id)arg1;
@@ -136,19 +126,16 @@
 - (void)_performAction:(SEL)arg1 forCell:(id)arg2 sender:(id)arg3;
 - (void)_prepareHighlightForCell:(id)arg1 withInteraction:(id)arg2;
 - (void)_removeInteractiveMoveShadowViews;
-- (void)_removeWasCanceledForCell:(id)arg1;
 - (id)_reorderingCell;
-- (void)_revealDeleteConfirmationButtonWithWidth:(double)arg1;
 - (double)_selectionAnimationDuration;
-- (void)_setSwipeToDeleteCell:(id)arg1 installGobbler:(BOOL)arg2;
 - (void)_setupForEditing:(BOOL)arg1 atIndexPath:(id)arg2 multiselect:(BOOL)arg3 editingStyle:(long long)arg4 shouldIndentWhileEditing:(BOOL)arg5 showsReorderControl:(BOOL)arg6 accessoryType:(long long)arg7 updateSeparators:(BOOL)arg8;
 - (BOOL)_shouldDrawThickSeparators;
 - (BOOL)_shouldHaveFooterViewForSection:(long long)arg1;
 - (BOOL)_shouldHaveHeaderViewForSection:(long long)arg1;
 - (BOOL)_shouldShowMenuForCell:(id)arg1;
-- (void)_swipeAccessoryButtonPushedInCell:(id)arg1;
 - (void)_swipeToDeleteCell:(id)arg1;
 - (id)_titleForDeleteConfirmationButton:(id)arg1;
+- (void)_trackAnimator:(id)arg1;
 - (void)_updateCell:(id)arg1 withValue:(id)arg2;
 - (void)_updateCollectionViewInteractiveMovementTargetPositionForTouch:(id)arg1;
 - (void)_updateEditing;
@@ -156,6 +143,7 @@
 - (void)_userSelectCell:(id)arg1;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)awakeFromNib;
+- (id)backgroundColor;
 - (id)backgroundView;
 - (void)didTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (void)didTransitionToState:(unsigned long long)arg1;
@@ -165,8 +153,10 @@
 - (BOOL)isHighlighted;
 - (BOOL)isSelected;
 - (void)layoutSubviews;
+- (id)preferredLayoutAttributesFittingAttributes:(id)arg1;
 - (void)prepareForReuse;
 - (id)selectedBackgroundView;
+- (void)setBackgroundColor:(id)arg1;
 - (void)setBackgroundView:(id)arg1;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFocusStyle:(long long)arg1;

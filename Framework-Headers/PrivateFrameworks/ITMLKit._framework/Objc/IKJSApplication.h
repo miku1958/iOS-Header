@@ -29,6 +29,7 @@
 - (void)launchAppWithOptions:(id)arg1;
 - (void)openURLWithOptions:(id)arg1;
 - (void)reload:(id)arg1:(id)arg2;
+- (BOOL)requestDocumentWithContext:(id)arg1 response:(id)arg2;
 - (void)resumeAppWithOptions:(id)arg1;
 - (void)suspendAppWithOptions:(id)arg1;
 - (void)traitCollectionChanged:(id)arg1;

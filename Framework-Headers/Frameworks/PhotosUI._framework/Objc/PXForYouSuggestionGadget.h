@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
 #import <PhotosUICore/PXGadget-Protocol.h>
 
 @class NSString, PXForYouSuggestionGadgetContentView, PXGadgetSpec, PXRegionOfInterest, PXUIMediaProvider, UIImage;
 @protocol PXDisplayAsset, PXDisplaySuggestion, PXForYouSuggestionGadgetDelegate;
 
-@interface PXForYouSuggestionGadget : NSObject <PXGadget>
+@interface PXForYouSuggestionGadget : NSObject <PXDiagnosticsEnvironment, PXGadget>
 {
     BOOL _contentHidden;
     BOOL _blursDegradedContent;
@@ -30,11 +31,11 @@
     struct CGRect _visibleContentRect;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
 @property (nonatomic) BOOL blursDegradedContent; // @synthesize blursDegradedContent=_blursDegradedContent;
 @property (nonatomic) struct CGSize cachedHeightForWidth; // @synthesize cachedHeightForWidth=_cachedHeightForWidth;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (nonatomic, getter=isContentHidden) BOOL contentHidden; // @synthesize contentHidden=_contentHidden;
 @property (strong, nonatomic) PXForYouSuggestionGadgetContentView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) BOOL contentViewVisible; // @synthesize contentViewVisible=_contentViewVisible;
@@ -86,8 +87,10 @@
 - (void)gadgetControllerHasAppeared;
 - (id)init;
 - (id)initWithSuggestion:(id)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2 outSourceRect:(out struct CGRect *)arg3;
+- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)uniqueGadgetIdentifier;
 
 @end

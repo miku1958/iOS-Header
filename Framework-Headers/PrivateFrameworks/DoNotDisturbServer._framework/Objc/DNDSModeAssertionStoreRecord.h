@@ -6,39 +6,30 @@
 
 #import <objc/NSObject.h>
 
-#import <DoNotDisturbServer/DNDSBackingStoreRecord-Protocol.h>
-#import <DoNotDisturbServer/DNDSSyncRecord-Protocol.h>
-#import <DoNotDisturbServer/NSCopying-Protocol.h>
-#import <DoNotDisturbServer/NSMutableCopying-Protocol.h>
+#import <DoNotDisturbServer/DNDSModeAssertionStoreRecordDictionaryEncoding-Protocol.h>
 
-@class NSArray, NSNumber, NSString;
+@class NSArray, NSString;
 
-@interface DNDSModeAssertionStoreRecord : NSObject <NSCopying, NSMutableCopying, DNDSBackingStoreRecord, DNDSSyncRecord>
+@interface DNDSModeAssertionStoreRecord : NSObject <DNDSModeAssertionStoreRecordDictionaryEncoding>
 {
-    NSNumber *_storeLastCompleteInvalidationTimestamp;
-    NSArray *_storeAssertionRecords;
+    NSArray *_assertions;
+    NSArray *_invalidations;
+    NSArray *_invalidationRequests;
 }
 
+@property (strong, nonatomic) NSArray *assertions; // @synthesize assertions=_assertions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSArray *storeAssertionRecords; // @synthesize storeAssertionRecords=_storeAssertionRecords;
-@property (readonly, copy, nonatomic) NSNumber *storeLastCompleteInvalidationTimestamp; // @synthesize storeLastCompleteInvalidationTimestamp=_storeLastCompleteInvalidationTimestamp;
+@property (strong, nonatomic) NSArray *invalidationRequests; // @synthesize invalidationRequests=_invalidationRequests;
+@property (strong, nonatomic) NSArray *invalidations; // @synthesize invalidations=_invalidations;
 @property (readonly) Class superclass;
 
-+ (id)backingStoreWithFileURL:(id)arg1;
-+ (id)migrateDictionaryRepresentations:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
++ (id)recordForAssertionStore:(id)arg1;
++ (id)recordForDictionary:(id)arg1 keys:(const CDStruct_0a6492a9 *)arg2;
 - (void).cxx_destruct;
-- (id)_initWithRecord:(id)arg1;
-- (id)_initWithStoreLastCompleteInvalidationTimestamp:(id)arg1 storeAssertionRecords:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dictionaryRepresentation;
-- (id)init;
-- (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithSyncDictionaryRepresentation:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)syncDictionaryRepresentation;
+- (id)dictionaryWithKeys:(const CDStruct_0a6492a9 *)arg1 options:(unsigned long long)arg2;
+- (id)object;
 
 @end
 

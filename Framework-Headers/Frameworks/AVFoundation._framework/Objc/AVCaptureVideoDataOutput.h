@@ -17,10 +17,13 @@
 }
 
 @property (nonatomic) BOOL alwaysDiscardsLateVideoFrames;
+@property (nonatomic) BOOL automaticallyConfiguresOutputBufferDimensions;
 @property (readonly, nonatomic) NSArray *availableVideoCVPixelFormatTypes;
 @property (readonly, nonatomic) NSArray *availableVideoCodecTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id delegateOverride;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
+@property (nonatomic) BOOL deliversPreviewSizedOutputBuffers;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) CDStruct_1b6d18a9 minFrameDuration;
@@ -32,13 +35,16 @@
 + (void)initialize;
 + (id)new;
 - (void)_setMinFrameDuration:(CDStruct_1b6d18a9)arg1;
+- (void)_updateAvailableVideoCVPixelFormatTypesForConnection:(id)arg1;
+- (void)_updateDeliversPreviewSizedOutputBuffersForConnection:(id)arg1 sessionPreset:(id)arg2;
 - (id)addConnection:(id)arg1 error:(id *)arg2;
 - (BOOL)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
 - (BOOL)appliesOrientationWithPhysicalRotationForConnection:(id)arg1;
 - (id)availableVideoCodecTypesForAssetWriterWithOutputFileType:(id)arg1;
-- (BOOL)canAddConnectionForMediaType:(id)arg1;
+- (BOOL)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
+- (id)fullyPopulatedVideoSettingsForSettingsDictionary:(id)arg1 connection:(id)arg2;
 - (BOOL)hasRequiredOutputFormatForConnection:(id)arg1;
 - (id)init;
 - (BOOL)isVideoSettingsDimensionsOverrideEnabled;
@@ -54,8 +60,8 @@
 - (void)setVideoSettingsDimensionsOverrideEnabled:(BOOL)arg1;
 - (id)supportedAssetWriterOutputFileTypes;
 - (id)supportedVideoSettingsKeys;
-- (BOOL)usesPreviewSizedBuffers;
-- (id)vettedVideoSettingsForSettingsDictionary:(id)arg1;
+- (BOOL)updateVideoSettingsForConnection:(id)arg1;
+- (id)vettedVideoSettingsForSettingsDictionary:(id)arg1 connection:(id)arg2;
 
 @end
 

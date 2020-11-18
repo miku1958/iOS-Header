@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CNAvatarView, CNContact, NSAttributedString, NSMutableArray, UILabel;
+@class CNAvatarView, CNContact, NSArray, NSAttributedString, NSMutableArray, NSString, UILabel;
 
 @interface HUContactView : UIView
 {
@@ -14,16 +14,24 @@
     CNContact *_contact;
     long long _contactNameFormatStyle;
     unsigned long long _numberOfLinesForMessage;
+    NSArray *_accounts;
+    NSString *_contactNameFontTextStyle;
     CNAvatarView *_avatarView;
     NSMutableArray *_constraints;
     UILabel *_nameLabel;
     UILabel *_messageLabel;
+    UILabel *_appleIDAccountLabel;
+    UILabel *_appleMusicAccountLabel;
 }
 
+@property (strong, nonatomic) NSArray *accounts; // @synthesize accounts=_accounts;
+@property (strong, nonatomic) UILabel *appleIDAccountLabel; // @synthesize appleIDAccountLabel=_appleIDAccountLabel;
+@property (strong, nonatomic) UILabel *appleMusicAccountLabel; // @synthesize appleMusicAccountLabel=_appleMusicAccountLabel;
 @property (nonatomic) double avatarDiameter; // @synthesize avatarDiameter=_avatarDiameter;
 @property (strong, nonatomic) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property (strong, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
+@property (strong, nonatomic) NSString *contactNameFontTextStyle; // @synthesize contactNameFontTextStyle=_contactNameFontTextStyle;
 @property (nonatomic) long long contactNameFormatStyle; // @synthesize contactNameFormatStyle=_contactNameFormatStyle;
 @property (strong, nonatomic) NSAttributedString *message;
 @property (strong, nonatomic) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
@@ -31,8 +39,10 @@
 @property (nonatomic) unsigned long long numberOfLinesForMessage; // @synthesize numberOfLinesForMessage=_numberOfLinesForMessage;
 
 - (void).cxx_destruct;
+- (BOOL)_isPhoneNumberOnlyAccount;
 - (void)_setupViews;
 - (void)_updateConstraints;
+- (void)_updateNameLabelFont;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

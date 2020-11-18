@@ -48,7 +48,6 @@
 - (id)pv_fetchPersonsInMoment:(id)arg1;
 - (id)pv_fetchPersonsWithLocalIdentifiers:(id)arg1;
 - (id)pv_fetchPersonsWithType:(unsigned long long)arg1;
-- (BOOL)pv_isLibraryBeingSynchronized;
 - (id)pv_lastAssetDate;
 - (unsigned long long)pv_numberOfFacesWithFaceprints;
 - (BOOL)pv_performChangesAndWait:(CDUnknownBlockType)arg1 error:(id *)arg2;

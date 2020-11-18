@@ -8,46 +8,74 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOTFTrafficSnapshot : PBCodable <NSCopying>
 {
-    unsigned long long _feedPublishTime;
-    long long _feedUpdateTime;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_compactSpeeds;
     NSString *_feedId;
+    unsigned long long _feedPublishTime;
+    long long _feedUpdateTime;
     NSMutableArray *_incidents;
     NSMutableArray *_regions;
     NSString *_snapshotId;
     NSMutableArray *_speeds;
     unsigned int _trafficVersion;
     struct {
-        unsigned int feedPublishTime:1;
-        unsigned int feedUpdateTime:1;
-        unsigned int trafficVersion:1;
-    } _has;
+        unsigned int has_feedPublishTime:1;
+        unsigned int has_feedUpdateTime:1;
+        unsigned int has_trafficVersion:1;
+        unsigned int read_compactSpeeds:1;
+        unsigned int read_feedId:1;
+        unsigned int read_incidents:1;
+        unsigned int read_regions:1;
+        unsigned int read_snapshotId:1;
+        unsigned int read_speeds:1;
+        unsigned int wrote_compactSpeeds:1;
+        unsigned int wrote_feedId:1;
+        unsigned int wrote_feedPublishTime:1;
+        unsigned int wrote_feedUpdateTime:1;
+        unsigned int wrote_incidents:1;
+        unsigned int wrote_regions:1;
+        unsigned int wrote_snapshotId:1;
+        unsigned int wrote_speeds:1;
+        unsigned int wrote_trafficVersion:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *compactSpeeds; // @synthesize compactSpeeds=_compactSpeeds;
-@property (strong, nonatomic) NSString *feedId; // @synthesize feedId=_feedId;
-@property (nonatomic) unsigned long long feedPublishTime; // @synthesize feedPublishTime=_feedPublishTime;
-@property (nonatomic) long long feedUpdateTime; // @synthesize feedUpdateTime=_feedUpdateTime;
+@property (strong, nonatomic) NSMutableArray *compactSpeeds;
+@property (strong, nonatomic) NSString *feedId;
+@property (nonatomic) unsigned long long feedPublishTime;
+@property (nonatomic) long long feedUpdateTime;
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (nonatomic) BOOL hasFeedPublishTime;
 @property (nonatomic) BOOL hasFeedUpdateTime;
 @property (readonly, nonatomic) BOOL hasSnapshotId;
 @property (nonatomic) BOOL hasTrafficVersion;
-@property (strong, nonatomic) NSMutableArray *incidents; // @synthesize incidents=_incidents;
-@property (strong, nonatomic) NSMutableArray *regions; // @synthesize regions=_regions;
-@property (strong, nonatomic) NSString *snapshotId; // @synthesize snapshotId=_snapshotId;
-@property (strong, nonatomic) NSMutableArray *speeds; // @synthesize speeds=_speeds;
-@property (nonatomic) unsigned int trafficVersion; // @synthesize trafficVersion=_trafficVersion;
+@property (strong, nonatomic) NSMutableArray *incidents;
+@property (strong, nonatomic) NSMutableArray *regions;
+@property (strong, nonatomic) NSString *snapshotId;
+@property (strong, nonatomic) NSMutableArray *speeds;
+@property (nonatomic) unsigned int trafficVersion;
 
 + (Class)compactSpeedsType;
 + (Class)incidentsType;
++ (BOOL)isValid:(id)arg1;
 + (Class)regionType;
 + (Class)speedsType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsCompactSpeeds:(id)arg1;
+- (void)_addNoFlagsIncidents:(id)arg1;
+- (void)_addNoFlagsRegion:(id)arg1;
+- (void)_addNoFlagsSpeeds:(id)arg1;
+- (void)_readCompactSpeeds;
+- (void)_readFeedId;
+- (void)_readIncidents;
+- (void)_readRegions;
+- (void)_readSnapshotId;
+- (void)_readSpeeds;
 - (void)addCompactSpeeds:(id)arg1;
 - (void)addIncidents:(id)arg1;
 - (void)addRegion:(id)arg1;
@@ -67,6 +95,7 @@
 - (unsigned long long)incidentsCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)regionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)regionsCount;

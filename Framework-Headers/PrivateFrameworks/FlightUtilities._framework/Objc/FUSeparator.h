@@ -4,17 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <TemplateKit/TLKProminenceView.h>
 
 __attribute__((visibility("hidden")))
-@interface FUSeparator : UIView
+@interface FUSeparator : TLKProminenceView
 {
 }
 
 - (id)initWithCoder:(id)arg1;
 - (double)onePixelSize;
-- (void)setColor:(id)arg1;
-- (void)setStyleProvider:(id)arg1;
 - (void)updateConstraints;
 
 @end

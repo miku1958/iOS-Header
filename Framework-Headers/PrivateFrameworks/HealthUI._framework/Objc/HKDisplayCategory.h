@@ -6,40 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class HKFillStyle, HKGradient, NSString, UIColor, UIImage;
+@class HKFillStyle, NSString, UIColor, UIImage;
 
 @interface HKDisplayCategory : NSObject
 {
-    HKGradient *_gradient;
-    UIColor *_topColor;
-    UIColor *_bottomColor;
-    UIColor *_keyColor;
+    CDUnknownBlockType _keyColor;
     long long _categoryID;
     NSString *_categoryName;
     NSString *_displayName;
+    NSString *_largeListIconName;
     NSString *_listIconName;
-    UIImage *_listIcon;
-    UIImage *_healthDataIcon;
-    UIImage *_shareIcon;
+    NSString *_healthDataIconName;
+    NSString *_shareIconName;
 }
 
 @property (readonly, nonatomic) long long categoryID; // @synthesize categoryID=_categoryID;
 @property (readonly, nonatomic) NSString *categoryName; // @synthesize categoryName=_categoryName;
+@property (readonly, nonatomic) UIColor *color;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) HKFillStyle *fillStyle;
-@property (readonly, nonatomic) HKGradient *gradient; // @synthesize gradient=_gradient;
-@property (readonly, nonatomic) UIImage *healthDataIcon; // @synthesize healthDataIcon=_healthDataIcon;
+@property (readonly, nonatomic) UIImage *healthDataIcon;
+@property (readonly, nonatomic) NSString *healthDataIconName; // @synthesize healthDataIconName=_healthDataIconName;
 @property (readonly, nonatomic) BOOL isMeCategory;
 @property (readonly, nonatomic) BOOL isTopLevelCategory;
-@property (readonly, nonatomic) UIImage *listIcon; // @synthesize listIcon=_listIcon;
+@property (readonly, nonatomic) UIImage *largeListIcon;
+@property (readonly, nonatomic) NSString *largeListIconName; // @synthesize largeListIconName=_largeListIconName;
+@property (readonly, nonatomic) UIImage *listIcon;
 @property (readonly, nonatomic) NSString *listIconName; // @synthesize listIconName=_listIconName;
-@property (readonly, nonatomic) UIColor *seriesColor;
-@property (readonly, nonatomic) UIImage *shareIcon; // @synthesize shareIcon=_shareIcon;
+@property (readonly, nonatomic) UIImage *shareIcon;
+@property (readonly, nonatomic) NSString *shareIconName; // @synthesize shareIconName=_shareIconName;
 
 + (id)topLevelCategoryIdentifiers;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

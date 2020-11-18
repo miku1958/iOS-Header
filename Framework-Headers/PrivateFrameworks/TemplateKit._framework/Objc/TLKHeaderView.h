@@ -6,60 +6,60 @@
 
 #import <TemplateKit/TLKView.h>
 
-#import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
+@class NSString, TLKImage, TLKImageView, TLKLabel, TLKMultilineText, TLKRichText, TLKRoundedCornerLabel, TLKStackView;
 
-@class NSString, TLKImage, TLKImageView, TLKMultilineText, TLKRoundedCornerLabel, TLKStackView, TLKVibrantLabel, UILabel;
-
-@interface TLKHeaderView : TLKView <NUIContainerStackViewDelegate>
+@interface TLKHeaderView : TLKView
 {
     TLKImage *_image;
     TLKMultilineText *_title;
-    TLKMultilineText *_subtitle;
+    TLKRichText *_subtitle;
+    TLKMultilineText *_footnote;
     TLKMultilineText *_trailingText;
     TLKImage *_subtitleImage;
     NSString *_roundedBorderText;
     long long _axis;
     TLKImageView *_imageView;
-    UILabel *_titleLabel;
-    UILabel *_trailingTextLabel;
-    TLKVibrantLabel *_subtitleLabel;
+    TLKLabel *_titleLabel;
+    TLKLabel *_trailingTextLabel;
+    TLKLabel *_subtitleLabel;
+    TLKLabel *_footnoteLabel;
     TLKImageView *_subtitleImageView;
     TLKStackView *_subtitleStackView;
-    TLKStackView *_outerStackView;
     TLKStackView *_innerStackView;
     TLKRoundedCornerLabel *_roundedCornerLabel;
 }
 
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) TLKStackView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKMultilineText *footnote; // @synthesize footnote=_footnote;
+@property (strong, nonatomic) TLKLabel *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
 @property (strong, nonatomic) TLKImage *image; // @synthesize image=_image;
-@property (strong) TLKImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong) TLKStackView *innerStackView; // @synthesize innerStackView=_innerStackView;
-@property (strong) TLKStackView *outerStackView; // @synthesize outerStackView=_outerStackView;
+@property (strong, nonatomic) TLKImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) TLKStackView *innerStackView; // @synthesize innerStackView=_innerStackView;
 @property (strong, nonatomic) NSString *roundedBorderText; // @synthesize roundedBorderText=_roundedBorderText;
-@property (strong) TLKRoundedCornerLabel *roundedCornerLabel; // @synthesize roundedCornerLabel=_roundedCornerLabel;
-@property (strong, nonatomic) TLKMultilineText *subtitle; // @synthesize subtitle=_subtitle;
+@property (strong, nonatomic) TLKRoundedCornerLabel *roundedCornerLabel; // @synthesize roundedCornerLabel=_roundedCornerLabel;
+@property (strong, nonatomic) TLKRichText *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) TLKImage *subtitleImage; // @synthesize subtitleImage=_subtitleImage;
-@property (strong) TLKImageView *subtitleImageView; // @synthesize subtitleImageView=_subtitleImageView;
-@property (strong) TLKVibrantLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property (strong) TLKStackView *subtitleStackView; // @synthesize subtitleStackView=_subtitleStackView;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) TLKImageView *subtitleImageView; // @synthesize subtitleImageView=_subtitleImageView;
+@property (strong, nonatomic) TLKLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (strong, nonatomic) TLKStackView *subtitleStackView; // @synthesize subtitleStackView=_subtitleStackView;
 @property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
-@property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) TLKMultilineText *trailingText; // @synthesize trailingText=_trailingText;
-@property (strong) UILabel *trailingTextLabel; // @synthesize trailingTextLabel=_trailingTextLabel;
+@property (strong, nonatomic) TLKLabel *trailingTextLabel; // @synthesize trailingTextLabel=_trailingTextLabel;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didMoveToWindow;
+- (id)footnoteLabelText;
 - (id)hasImage;
-- (id)init;
 - (void)observedPropertiesChanged;
 - (id)roundedCornerLabelText;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)setupContentView;
 - (id)subtitleLabelText;
 - (id)titleLabelFont;
 - (id)titleLabelText;
+- (void)tlk_updateForAppearance:(id)arg1;
 
 @end
 

@@ -15,6 +15,9 @@
     BOOL _atomic;
     BOOL _shouldOnlySaveAssetContent;
     BOOL _shouldReportRecordsInFlight;
+    BOOL _originatingFromDaemon;
+    BOOL _markAsParticipantNeedsNewInvitationToken;
+    BOOL _shouldSkipPCSRetryBehavior;
     NSArray *_recordsToSave;
     NSArray *_recordIDsToDelete;
     NSData *_clientChangeTokenData;
@@ -22,11 +25,17 @@
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
     NSDictionary *_pluginFieldsForRecordDeletesByID;
+    NSDictionary *_assetUUIDToExpectedProperties;
+    NSDictionary *_packageUUIDToExpectedProperties;
 }
 
+@property (copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property (nonatomic) BOOL atomic; // @synthesize atomic=_atomic;
 @property (strong, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
+@property (nonatomic) BOOL markAsParticipantNeedsNewInvitationToken; // @synthesize markAsParticipantNeedsNewInvitationToken=_markAsParticipantNeedsNewInvitationToken;
+@property (nonatomic) BOOL originatingFromDaemon; // @synthesize originatingFromDaemon=_originatingFromDaemon;
+@property (copy, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
 @property (copy, nonatomic) NSDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
 @property (strong, nonatomic) NSArray *recordIDsToDelete; // @synthesize recordIDsToDelete=_recordIDsToDelete;
 @property (copy, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
@@ -34,6 +43,7 @@
 @property (nonatomic) long long savePolicy; // @synthesize savePolicy=_savePolicy;
 @property (nonatomic) BOOL shouldOnlySaveAssetContent; // @synthesize shouldOnlySaveAssetContent=_shouldOnlySaveAssetContent;
 @property (nonatomic) BOOL shouldReportRecordsInFlight; // @synthesize shouldReportRecordsInFlight=_shouldReportRecordsInFlight;
+@property (nonatomic) BOOL shouldSkipPCSRetryBehavior; // @synthesize shouldSkipPCSRetryBehavior=_shouldSkipPCSRetryBehavior;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

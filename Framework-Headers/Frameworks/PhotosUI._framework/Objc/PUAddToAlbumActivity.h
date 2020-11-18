@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUActivity.h>
+#import <PhotosUICore/PXActivity.h>
 
 @class PUAlbumPickerViewController;
 
 __attribute__((visibility("hidden")))
-@interface PUAddToAlbumActivity : PUActivity
+@interface PUAddToAlbumActivity : PXActivity
 {
     PUAlbumPickerViewController *_albumPickerViewController;
 }
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (long long)activityCategory;
 - (void).cxx_destruct;
 - (id)_activityBundleImageConfiguration;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;

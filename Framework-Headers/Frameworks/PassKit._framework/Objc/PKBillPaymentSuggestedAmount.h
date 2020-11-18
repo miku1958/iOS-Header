@@ -14,6 +14,7 @@
     NSString *_message;
     unsigned long long _category;
     NSDecimalNumber *_amount;
+    long long _priority;
     long long _merchantCategory;
 }
 
@@ -21,6 +22,7 @@
 @property (nonatomic) unsigned long long category; // @synthesize category=_category;
 @property (nonatomic) long long merchantCategory; // @synthesize merchantCategory=_merchantCategory;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
+@property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;

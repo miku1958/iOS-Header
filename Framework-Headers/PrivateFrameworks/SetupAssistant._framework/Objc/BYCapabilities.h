@@ -26,6 +26,7 @@
 - (BOOL)mgHasMesa;
 - (BOOL)mgHasSecureElement;
 - (BOOL)mgHasSiriCapability;
+- (BOOL)supportsApplePay;
 - (BOOL)supportsPearl;
 
 @end

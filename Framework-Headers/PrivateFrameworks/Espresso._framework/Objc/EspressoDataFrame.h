@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary;
+@class NSArray, NSMutableDictionary, NSString;
 
 @interface EspressoDataFrame : NSObject
 {
     NSMutableDictionary *_inputAttachments;
     NSMutableDictionary *_outputAttachments;
     NSMutableDictionary *_groundTruthAttachments;
+    NSString *_function_name;
 }
 
+@property (strong) NSString *function_name; // @synthesize function_name=_function_name;
 @property (readonly) NSArray *groundTruthAttachmentNames;
 @property (strong) NSMutableDictionary *groundTruthAttachments; // @synthesize groundTruthAttachments=_groundTruthAttachments;
 @property (readonly) NSArray *inputAttachmentNames;
@@ -23,6 +25,7 @@
 @property (strong) NSMutableDictionary *outputAttachments; // @synthesize outputAttachments=_outputAttachments;
 
 - (void).cxx_destruct;
+- (id)getFunctionName;
 - (id)getGroundTruthAttachment:(id)arg1;
 - (id)getInputAttachment:(id)arg1;
 - (id)getOutputAttachment:(id)arg1;

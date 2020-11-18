@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class NSArray, NSNumber, NSString, TVFocusableTextView, TVImageProxy, UIImage, VUIContentRating, VUILabel, VUIMediaTagsView, VUIRentalExpirationLabel, VUIRoundButton, VUISeparatorView, _TVImageView;
+@class NSArray, NSNumber, NSString, TVFocusableTextView, TVImageProxy, UIImage, VUILabel, VUIMediaTagsView, VUIRentalExpirationLabel, VUIRoundButton, VUISeparatorView, _TVImageView;
 @protocol VUILibraryProductLockupViewLayout, VUIProductLockupViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     UIView *_downloadView;
     NSString *_subtitle;
     NSString *_contentDescription;
-    VUIContentRating *_contentRating;
     NSString *_genre;
     NSNumber *_duration;
     NSNumber *_releaseYear;
@@ -46,7 +45,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUISeparatorView *bottomSeparatorView; // @synthesize bottomSeparatorView=_bottomSeparatorView;
 @property (copy, nonatomic) NSString *contentDescription; // @synthesize contentDescription=_contentDescription;
 @property (nonatomic) BOOL contentDescriptionExpanded; // @synthesize contentDescriptionExpanded=_contentDescriptionExpanded;
-@property (copy, nonatomic) VUIContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property (strong, nonatomic) UIImage *contentRatingImage; // @synthesize contentRatingImage=_contentRatingImage;
 @property (readonly, nonatomic) TVImageProxy *coverArtImageProxy; // @synthesize coverArtImageProxy=_coverArtImageProxy;
 @property (strong, nonatomic) _TVImageView *coverArtImageView; // @synthesize coverArtImageView=_coverArtImageView;

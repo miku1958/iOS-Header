@@ -19,9 +19,10 @@
 - (void).cxx_destruct;
 - (void)_createAndStartMDMXPCConnection;
 - (int)accessRights;
-- (BOOL)authenticateWithCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 topic:(id)arg3 useDevelopmentAPNS:(BOOL)arg4 signMessage:(BOOL)arg5 outError:(id *)arg6;
-- (BOOL)checkOutCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 topic:(id)arg3 signMessage:(BOOL)arg4 outError:(id *)arg5;
+- (BOOL)authenticateWithCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 topic:(id)arg3 useDevelopmentAPNS:(BOOL)arg4 signMessage:(BOOL)arg5 isUserEnrollment:(BOOL)arg6 enrollmentID:(id)arg7 outError:(id *)arg8;
+- (BOOL)checkOutCheckInURL:(id)arg1 identity:(struct __SecIdentity *)arg2 topic:(id)arg3 signMessage:(BOOL)arg4 isUserEnrollment:(BOOL)arg5 enrollmentID:(id)arg6 outError:(id *)arg7;
 - (void)dealloc;
+- (id)deviceEnrollmentAuthenticationDict;
 - (void)getAssertionDescriptionsWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)isActivationLockAllowedWhileSupervised;
 - (BOOL)isManagedByMDM;
@@ -35,6 +36,7 @@
 - (void)simulatePush;
 - (void)simulatePushIfNetworkTetheredWithCompletion:(CDUnknownBlockType)arg1;
 - (void)uprootMDM;
+- (id)userEnrollmentAuthenticationDictWithEnrollmentID:(id)arg1;
 
 @end
 

@@ -23,7 +23,7 @@
 - (void).cxx_destruct;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
 - (id)initWithQueue:(id)arg1;
-- (void)matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)startDiscoveringAccessoryServers;
 - (void)stopDiscoveringAccessoryServers;

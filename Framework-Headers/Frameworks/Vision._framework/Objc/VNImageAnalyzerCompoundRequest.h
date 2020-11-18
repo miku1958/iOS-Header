@@ -4,22 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Vision/VNUniqueObservationClassCompoundRequest.h>
+#import <Vision/VNCompoundRequest.h>
+
+@class VNImageAnalyzerCompoundRequestGroupingConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface VNImageAnalyzerCompoundRequest : VNUniqueObservationClassCompoundRequest
+@interface VNImageAnalyzerCompoundRequest : VNCompoundRequest
 {
+    VNImageAnalyzerCompoundRequestGroupingConfiguration *_groupingConfiguration;
 }
 
 + (void)_addCompoundRequestsToArray:(id)arg1 forModel:(unsigned long long)arg2 withGroupingConfigurations:(id)arg3;
-+ (id)compoundRequestsForOriginalRequests:(id)arg1;
++ (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 + (Class)configurationClass;
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (void).cxx_destruct;
 - (id)_configuredDetectorForRequestRevision:(unsigned long long)arg1 appliedConfigurationOptions:(id *)arg2 error:(id *)arg3;
 - (BOOL)allowsCachingOfResults;
 - (id)initWithDetectorType:(id)arg1 groupingConfiguration:(id)arg2;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
-- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (CDUnknownBlockType)resultsSortingComparator;
+- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

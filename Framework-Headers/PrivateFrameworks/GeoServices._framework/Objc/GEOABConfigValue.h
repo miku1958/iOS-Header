@@ -19,23 +19,25 @@ __attribute__((visibility("hidden")))
     NSString *_stringValue;
     BOOL _boolValue;
     struct {
-        unsigned int doubleValue:1;
-        unsigned int intValue:1;
-        unsigned int boolValue:1;
-    } _has;
+        unsigned int has_doubleValue:1;
+        unsigned int has_intValue:1;
+        unsigned int has_boolValue:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL boolValue; // @synthesize boolValue=_boolValue;
-@property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
+@property (nonatomic) BOOL boolValue;
+@property (nonatomic) double doubleValue;
 @property (nonatomic) BOOL hasBoolValue;
 @property (nonatomic) BOOL hasDoubleValue;
 @property (nonatomic) BOOL hasIntValue;
 @property (readonly, nonatomic) BOOL hasStringValue;
-@property (nonatomic) long long intValue; // @synthesize intValue=_intValue;
-@property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
+@property (nonatomic) long long intValue;
+@property (strong, nonatomic) NSString *stringValue;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

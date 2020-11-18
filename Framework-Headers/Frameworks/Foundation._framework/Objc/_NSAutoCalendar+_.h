@@ -9,7 +9,7 @@
 @interface _NSAutoCalendar (_)
 + (BOOL)supportsSecureCoding;
 - (id)_init;
-- (void)_update:(id)arg1;
+- (void)_update;
 - (id)calendarIdentifier;
 - (Class)classForCoder;
 - (id)components:(unsigned long long)arg1 fromDate:(id)arg2;

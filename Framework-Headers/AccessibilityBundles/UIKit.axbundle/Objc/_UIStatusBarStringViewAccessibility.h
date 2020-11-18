@@ -10,6 +10,7 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilitySupportsActivateAction;
@@ -17,6 +18,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (BOOL)canBecomeFocused;
 
 @end
 

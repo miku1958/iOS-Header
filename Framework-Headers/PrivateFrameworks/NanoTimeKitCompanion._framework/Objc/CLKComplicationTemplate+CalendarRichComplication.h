@@ -6,10 +6,11 @@
 
 #import <ClockKit/CLKComplicationTemplate.h>
 
-@class CLKTextProvider, NSArray;
+@class CLKTextProvider, NSArray, NSDate;
 
 @interface CLKComplicationTemplate (CalendarRichComplication)
 
+@property (strong, nonatomic) NSDate *cal_dateOverride;
 @property (strong, nonatomic) NSArray *cal_eventColors;
 @property (strong, nonatomic) CLKTextProvider *cal_firstText;
 @property (nonatomic) BOOL cal_hasConflicts;

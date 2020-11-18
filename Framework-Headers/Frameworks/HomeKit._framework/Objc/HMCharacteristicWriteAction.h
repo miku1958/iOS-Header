@@ -26,7 +26,6 @@
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)_actionWithInfo:(id)arg1 home:(id)arg2;
-+ (id)_lookupActionWithInfo:(id)arg1 inArray:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 actionSet:(id)arg2;
@@ -34,9 +33,20 @@
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_serializeForAdd;
 - (void)_updateTargetValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)allowedTargetValueClasses;
+- (id)commonInitWith:(id)arg1 targetValue:(id)arg2;
+- (id)encodeAsProtoBuf;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCharacteristic:(id)arg1 targetValue:(id)arg2;
+- (id)initWithCharacteristic:(id)arg1 targetValue:(id)arg2 uuid:(id)arg3;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtoBuf:(id)arg1 home:(id)arg2;
+- (id)initWithUUID:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isKindOfAllowedTargetValueClass:(id)arg1;
+- (BOOL)isValid;
+- (BOOL)requiresDeviceUnlock;
+- (unsigned long long)type;
 - (void)updateTargetValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

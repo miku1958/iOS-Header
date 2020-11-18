@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessory, HMDCameraSessionID, HMDCameraStreamMetrics, HMDCameraStreamSnapshotHandler, HMDService, NSNumber, NSObject, NSString;
+@class HMDAccessory, HMDCameraStreamMetrics, HMDCameraStreamSessionID, HMDCameraStreamSnapshotHandler, HMDService, NSNumber, NSObject, NSString;
 @protocol HMDCameraStreamControlManagerDelegate, OS_dispatch_queue;
 
 @interface HMDCameraStreamControlManager : HMFObject <HMFLogging>
@@ -19,7 +19,7 @@
     HMDService *_streamManagementService;
     NSNumber *_slotIdentifier;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMDCameraSessionID *_sessionID;
+    HMDCameraStreamSessionID *_sessionID;
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
     HMDCameraStreamMetrics *_streamMetrics;
 }
@@ -30,7 +30,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMDCameraSessionID *sessionID; // @synthesize sessionID=_sessionID;
+@property (readonly, nonatomic) HMDCameraStreamSessionID *sessionID; // @synthesize sessionID=_sessionID;
 @property (strong, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
 @property (readonly, nonatomic) HMDService *streamManagementService; // @synthesize streamManagementService=_streamManagementService;
 @property (readonly, nonatomic) HMDCameraStreamMetrics *streamMetrics; // @synthesize streamMetrics=_streamMetrics;

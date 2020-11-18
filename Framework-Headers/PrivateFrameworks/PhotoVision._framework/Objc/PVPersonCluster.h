@@ -31,6 +31,7 @@
     NSDate *_firstSeenDate;
 }
 
+@property (readonly, nonatomic) NSString *anonymizedName;
 @property (strong, nonatomic) NSMutableSet *backingAssetIdentifiers; // @synthesize backingAssetIdentifiers=_backingAssetIdentifiers;
 @property (strong, nonatomic) NSMutableSet *backingFaceIdentifiers; // @synthesize backingFaceIdentifiers=_backingFaceIdentifiers;
 @property (strong, nonatomic) NSMutableDictionary *backingFaceIdentifiersByMomentIdentifiers; // @synthesize backingFaceIdentifiersByMomentIdentifiers=_backingFaceIdentifiersByMomentIdentifiers;
@@ -51,7 +52,6 @@
 @property (readonly, nonatomic) NSString *localIdentifier;
 @property (nonatomic) long long manualOrder;
 @property (strong, nonatomic) NSMutableSet *mergedPersonIdentifiers; // @synthesize mergedPersonIdentifiers=_mergedPersonIdentifiers;
-@property (readonly, nonatomic) NSString *name;
 @property (weak, nonatomic) id<PVPhotoLibraryProtocol> photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (nonatomic) BOOL quarantined; // @synthesize quarantined=_quarantined;
 @property (strong, nonatomic) NSMutableDictionary *representativeFaceByFaceIdentifiers; // @synthesize representativeFaceByFaceIdentifiers=_representativeFaceByFaceIdentifiers;

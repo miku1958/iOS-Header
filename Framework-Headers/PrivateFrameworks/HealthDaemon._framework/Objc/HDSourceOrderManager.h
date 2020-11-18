@@ -16,16 +16,18 @@
 
 + (id)_defaultOrderingWithSources:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)_addOrderedSource:(id)arg1 objectType:(id)arg2 transactionCache:(id)arg3 database:(id)arg4 error:(id *)arg5;
+- (BOOL)_addOrderedSource:(id)arg1 objectType:(id)arg2 transactionCache:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (id)_defaultSourceCacheItemWithTransactionCache:(id)arg1 database:(id)arg2 error:(id *)arg3;
-- (BOOL)_insertCodableObjectTypeSourceOrder:(id)arg1 transactionCache:(id)arg2 database:(id)arg3 error:(id *)arg4;
-- (id)_mergedOrderedSourcesForExistingOrder:(id)arg1 codableSourceOrder:(id)arg2 incomingSources:(id)arg3;
+- (id)_fetchSourceCacheItemForObjectType:(id)arg1 transactionCache:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
+- (BOOL)_insertCodableObjectTypeSourceOrder:(id)arg1 transactionCache:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
+- (id)_mergedSourceOrderForExistingOrder:(id)arg1 incomingOrder:(id)arg2;
 - (id)_orderedSourceIDsForOrderedSources:(id)arg1 sourcesByID:(id)arg2 objectType:(id)arg3 transactionCache:(id)arg4 database:(id)arg5 error:(id *)arg6;
 - (id)_sourceCacheItemForObjectType:(id)arg1 error:(id *)arg2;
-- (id)_sourceCacheItemForObjectType:(id)arg1 transactionCache:(id)arg2 database:(id)arg3 error:(id *)arg4;
-- (id)_sourceCacheItemFromOrderedIDs:(id)arg1 userOrdered:(BOOL)arg2 transactionCache:(id)arg3 database:(id)arg4 error:(id *)arg5;
-- (id)_sourcesForCodableSourceOrder:(id)arg1 database:(id)arg2 error:(id *)arg3;
-- (BOOL)_updateOrderedSources:(id)arg1 objectType:(id)arg2 userOrdered:(BOOL)arg3 error:(id *)arg4;
+- (id)_sourceCacheItemForObjectType:(id)arg1 transactionCache:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
+- (id)_sourceOrderForCodableSourceOrder:(id)arg1 transactionCache:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
+- (BOOL)_updateOrderedSourceIDsForWrappedSource:(struct _HDWrappedSource *)arg1 transactionCache:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
+- (BOOL)_updateSourceOrder:(id)arg1 type:(id)arg2 error:(id *)arg3;
+- (BOOL)_updateSourceOrder:(id)arg1 type:(id)arg2 transactionCache:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (BOOL)addOrderedSource:(id)arg1 objectTypes:(id)arg2 error:(id *)arg3;
 - (BOOL)createSourceOrdersWithCodables:(id)arg1 error:(id *)arg2;
 - (id)initWithProfile:(id)arg1;

@@ -15,16 +15,18 @@
     PBUnknownFields *_unknownFields;
     unsigned int _height;
     unsigned int _width;
-    CDStruct_db93fd0f _has;
+    CDStruct_a1cdbaa7 _flags;
 }
 
 @property (nonatomic) BOOL hasHeight;
 @property (nonatomic) BOOL hasWidth;
-@property (nonatomic) unsigned int height; // @synthesize height=_height;
+@property (nonatomic) unsigned int height;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) unsigned int width; // @synthesize width=_width;
+@property (nonatomic) unsigned int width;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +34,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

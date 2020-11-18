@@ -11,6 +11,7 @@
 }
 
 + (id)sharedInstance;
+- (void)didAttemptEscrowPreRecord;
 - (void)didChangeLocalSecret;
 - (void)didLockAccount;
 - (void)didRemoveLocalSecret;

@@ -9,16 +9,16 @@
 #import <CarPlay/CPControl-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID, UIImage;
+@class CPImageSet, NSArray, NSString, NSUUID, UIImage;
 @protocol CPControlDelegate;
 
 @interface CPGridButton : NSObject <CPControl, NSSecureCoding>
 {
     BOOL _enabled;
     NSUUID *_identifier;
-    UIImage *_image;
     NSArray *_titleVariants;
     CDUnknownBlockType _handler;
+    CPImageSet *_imageSet;
     id<CPControlDelegate> _delegate;
 }
 
@@ -29,7 +29,8 @@
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) UIImage *image;
+@property (strong, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *titleVariants; // @synthesize titleVariants=_titleVariants;
 

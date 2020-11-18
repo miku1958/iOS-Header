@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
     BOOL _enabled;
 }
 
-- (void)alreadylocked_updateObservingRemoteChanges;
+- (int)alreadylocked_updateObservingRemoteChanges;
 - (id)createSynchronizeMessage;
 - (void)dealloc;
 - (BOOL)enabled;
 - (void)fullCloudSynchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithDomain:(struct __CFString *)arg1 user:(struct __CFString *)arg2 byHost:(BOOL)arg3 containerPath:(struct __CFString *)arg4 containingPreferences:(id)arg5;
-- (void)mergeIntoDictionary:(struct __CFDictionary *)arg1 sourceDictionary:(struct __CFDictionary *)arg2;
+- (void)mergeIntoDictionary:(struct __CFDictionary *)arg1 sourceDictionary:(struct __CFDictionary *)arg2 cloudKeyEvaluator:(CDUnknownBlockType)arg3;
 - (void)setConfigurationPath:(struct __CFString *)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setStoreName:(struct __CFString *)arg1;

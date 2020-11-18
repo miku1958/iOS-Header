@@ -52,9 +52,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long eventIndex; // @synthesize eventIndex=_eventIndex;
 @property (readonly, nonatomic) double eventStartTime; // @synthesize eventStartTime=_eventStartTime;
 @property (copy, nonatomic) NSDictionary *finalAttributes; // @synthesize finalAttributes=_finalAttributes;
+@property (readonly, nonatomic) double finalRotation;
 @property (readonly, nonatomic) double finalScale;
 @property (readonly, nonatomic) BOOL hasPreviousActionRotate;
 @property (readonly, nonatomic) BOOL hasPreviousActionScale;
+@property (readonly, nonatomic) double initialRotation;
 @property (readonly, nonatomic) double initialScale;
 @property (readonly, nonatomic) BOOL isActionBuild;
 @property (readonly, nonatomic) BOOL isActionMotionPath;

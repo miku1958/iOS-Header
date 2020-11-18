@@ -35,6 +35,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedDetailText;
 - (id)localizedKeylineLabelText;
+- (id)localizedRichDetailText;
+- (id)localizedRichKeylineLabelText;
 - (BOOL)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
 
 @end

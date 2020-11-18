@@ -11,9 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface CNPickerItemCell : UITableViewCell
 {
+    BOOL _placeholder;
     UITextField *_textField;
 }
 
+@property (nonatomic, getter=isPlaceholder) BOOL placeholder; // @synthesize placeholder=_placeholder;
 @property (strong, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 
 - (void).cxx_destruct;
@@ -21,6 +23,8 @@ __attribute__((visibility("hidden")))
 - (void)endEditing;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
+- (void)setTextFieldHidden:(BOOL)arg1;
 
 @end
 

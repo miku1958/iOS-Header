@@ -48,7 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)_goToAnnotationAnimated:(BOOL)arg1 duration:(double)arg2 isInitial:(BOOL)arg3;
 - (void)_rotateToHeadingAnimated:(BOOL)arg1 duration:(double)arg2;
 - (void)dealloc;
-- (id)init;
+- (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 - (BOOL)isAnimating;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pauseAnimation;

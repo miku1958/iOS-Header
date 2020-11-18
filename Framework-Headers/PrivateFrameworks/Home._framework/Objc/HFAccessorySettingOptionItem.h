@@ -6,21 +6,23 @@
 
 #import <Home/HFAccessorySettingItem.h>
 
-@class HMAccessorySelectionSettingItem;
+@class HMAccessorySelectionSettingItem, NSDictionary;
 
 @interface HFAccessorySettingOptionItem : HFAccessorySettingItem
 {
     HMAccessorySelectionSettingItem *_optionItem;
+    NSDictionary *_usageOptions;
 }
 
 @property (strong, nonatomic) HMAccessorySelectionSettingItem *optionItem; // @synthesize optionItem=_optionItem;
+@property (strong, nonatomic) NSDictionary *usageOptions; // @synthesize usageOptions=_usageOptions;
 
 - (void).cxx_destruct;
 - (void)_decorateOutcomeWithDependencies:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)homeKitObject;
-- (id)initWithMediaProfileContainer:(id)arg1 setting:(id)arg2 optionItem:(id)arg3;
+- (id)initWithHomeKitSettingsVendor:(id)arg1 usageOptions:(id)arg2 setting:(id)arg3 optionItem:(id)arg4;
 - (id)settingKeyPath;
 - (id)toggleSelection;
 - (id)value;

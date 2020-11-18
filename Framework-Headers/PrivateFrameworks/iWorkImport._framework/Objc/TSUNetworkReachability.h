@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)p_startNotifier;
 - (void)p_stopNotifier;
 - (void)p_updateCachedStatus:(long long)arg1;
+- (void)reachabilityStatusWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)statusFromFlags:(unsigned int)arg1;
 - (void)updateCachedStatus:(long long)arg1;
 

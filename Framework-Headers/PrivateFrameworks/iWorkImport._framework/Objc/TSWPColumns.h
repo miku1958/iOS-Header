@@ -34,7 +34,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithArchive:(const struct ColumnsArchive *)arg1 unarchiver:(id)arg2;
 - (id)initWithColumnCount:(unsigned long long)arg1;
 - (id)initWithColumnCount:(unsigned long long)arg1 equalWidth:(BOOL)arg2 widthArray:(double *)arg3 gapArray:(double *)arg4;
+- (id)initWithColumnCount:(unsigned long long)arg1 equalWidth:(BOOL)arg2 widthArray:(double *)arg3 gapArray:(double *)arg4 assert:(BOOL)arg5;
 - (id)initWithEqualColumnCount:(unsigned long long)arg1 gapFraction:(double)arg2;
+- (id)initWithEqualColumnCount:(unsigned long long)arg1 gapFraction:(double)arg2 assert:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)p_description;
 - (double)p_equalGapForEqualWidth:(double)arg1;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)p_setEqualWidth:(double)arg1 equalGap:(double)arg2;
 - (void)p_setGap:(double)arg1 forColumnIndex:(unsigned long long)arg2 bodyWidth:(double)arg3;
 - (void)p_setWidth:(double)arg1 forColumnIndex:(unsigned long long)arg2 bodyWidth:(double)arg3;
+- (BOOL)p_validate:(BOOL)arg1;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 outWidth:(double *)arg3 outGap:(double *)arg4;
 - (void)saveToArchive:(struct ColumnsArchive *)arg1 archiver:(id)arg2;
 - (void)setEqualWidth:(BOOL)arg1;

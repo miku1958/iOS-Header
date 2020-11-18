@@ -9,20 +9,25 @@
 #import <Photos/NSProgressReporting-Protocol.h>
 
 @class NSDictionary, NSProgress, NSString, NSURL, PHAsset;
+@protocol PHAssetExportRequestDelegate;
 
 @interface PHAssetExportRequest : NSObject <NSProgressReporting>
 {
     NSURL *_outputDirectory;
     PHAsset *_asset;
     NSProgress *_progress;
+    unsigned long long _state;
+    id<PHAssetExportRequestDelegate> _delegate;
     NSDictionary *_variants;
 }
 
 @property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PHAssetExportRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
+@property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDictionary *variants; // @synthesize variants=_variants;
 
@@ -35,6 +40,8 @@
 - (id)initWithAsset:(id)arg1 variants:(id)arg2;
 - (id)outputDirectory;
 - (void)performCompletionWithFileURLs:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)preflightExportWithOptions:(id)arg1 isDownloadingRequired:(BOOL *)arg2 isProcessingRequired:(BOOL *)arg3 fileURLs:(id *)arg4 info:(id *)arg5;
+- (void)setState:(unsigned long long)arg1;
 
 @end
 

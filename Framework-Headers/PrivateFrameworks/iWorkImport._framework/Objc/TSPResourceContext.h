@@ -30,9 +30,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)accessQueue_addResourceRequest:(id)arg1;
 - (void)addResourceRequests:(id)arg1;
+- (void)conditionallyBeginAccessingResourcesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithDocumentResourceCache:(id)arg1 documentResourceRegistry:(id)arg2 sageDocumentResourceLegacyRegistry:(id)arg3 tangierDocumentResourceLegacyRegistry:(id)arg4;
 - (id)newDataStorageForDocumentResourceInfo:(id)arg1 createResourceRequestIfNeeded:(BOOL)arg2 error:(id *)arg3;
+- (id)performResourceAccessUsingQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)removeResourceRequests:(id)arg1;
 
 @end

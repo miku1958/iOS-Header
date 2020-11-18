@@ -19,8 +19,8 @@
     PKContinuousButton *_phoneButton;
     PKContinuousButton *_messageButton;
     struct UIEdgeInsets _lastContentInset;
+    double _headerHeight;
     PKNavigationController *_pkNavigationController;
-    double _headerOffset;
     double _merchantHeaderAnimationProgress;
     PKAnimatedNavigationBarTitleView *_titleView;
     UIImageView *_titleIconImageView;
@@ -43,7 +43,6 @@
 - (void)_handleInfoButtonTapped:(id)arg1;
 - (void)_handleMessageButtonTapped:(id)arg1;
 - (void)_handlePhoneButtonTapped:(id)arg1;
-- (double)_scrollProgressInHeaderForScrollView:(id)arg1;
 - (void)_showContactDetailsViewController;
 - (void)_showMapsDetailsViewController;
 - (void)_updateNavigationBarIconForNavigationBarAppeared:(BOOL)arg1;
@@ -54,8 +53,6 @@
 - (id)initWithFetcher:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 featuredTransaction:(id)arg4 selectedTransactions:(id)arg5 transactionHistory:(id)arg6;
 - (id)initWithTransactionGroup:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 transactionHistory:(id)arg4;
 - (id)pkui_navigationBarItemTintColor;
-- (id)pkui_navigationBarTintColor;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
 - (long long)preferredStatusBarStyle;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)viewDidLayoutSubviews;

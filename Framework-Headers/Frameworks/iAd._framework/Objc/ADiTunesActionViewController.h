@@ -8,28 +8,31 @@
 
 #import <iAd/SKStoreProductViewControllerDelegate-Protocol.h>
 
-@class NSString, SKStoreProductViewController;
+@class ADHomeButtonHandler, NSString, SKStoreProductViewController;
 
 @interface ADiTunesActionViewController : ADActionViewController <SKStoreProductViewControllerDelegate>
 {
     int _defaultResult;
     SKStoreProductViewController *_storeProductViewController;
+    ADHomeButtonHandler *_homeButtonHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) int defaultResult; // @synthesize defaultResult=_defaultResult;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) ADHomeButtonHandler *homeButtonHandler; // @synthesize homeButtonHandler=_homeButtonHandler;
 @property (strong, nonatomic) SKStoreProductViewController *storeProductViewController; // @synthesize storeProductViewController=_storeProductViewController;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)clientApplicationDidEnterBackground;
-- (void)dealloc;
 - (void)didSetAdSpace;
 - (void)dismiss;
 - (void)productViewController:(id)arg1 didFinishWithResult:(long long)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

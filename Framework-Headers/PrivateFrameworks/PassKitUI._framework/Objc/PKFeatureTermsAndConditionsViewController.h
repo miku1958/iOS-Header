@@ -47,6 +47,7 @@
 - (void)_pk_dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_showTermsSpinner:(BOOL)arg1 objectModel:(id)arg2;
 - (void)dismissViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (id)displayTitle;
 - (void)htmlTermsDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithSetupDelegate:(id)arg1 context:(long long)arg2;
 - (void)initalTermsDataWithCompletion:(CDUnknownBlockType)arg1;

@@ -4,35 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ProtocolBuffer/PBRequest.h>
+#import <ProtocolBuffer/PBCodable.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng;
+@class GEOLatLng, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOSpatialLookupRequest : PBRequest <NSCopying>
+@interface GEOSpatialLookupRequest : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _categorys;
     GEOLatLng *_center;
     int _maxResults;
     int _radius;
     struct {
-        unsigned int maxResults:1;
-        unsigned int radius:1;
-    } _has;
+        unsigned int has_maxResults:1;
+        unsigned int has_radius:1;
+        unsigned int read_categorys:1;
+        unsigned int read_center:1;
+        unsigned int wrote_categorys:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_maxResults:1;
+        unsigned int wrote_radius:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *categorys;
 @property (readonly, nonatomic) unsigned long long categorysCount;
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (strong, nonatomic) GEOLatLng *center;
 @property (nonatomic) BOOL hasMaxResults;
 @property (nonatomic) BOOL hasRadius;
-@property (nonatomic) int maxResults; // @synthesize maxResults=_maxResults;
-@property (nonatomic) int radius; // @synthesize radius=_radius;
+@property (nonatomic) int maxResults;
+@property (nonatomic) int radius;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCategorys:(id)arg1;
+- (void)_addNoFlagsCategory:(int)arg1;
+- (void)_readCategorys;
+- (void)_readCenter;
 - (void)addCategory:(int)arg1;
 - (int)categoryAtIndex:(unsigned long long)arg1;
 - (id)categorysAsString:(int)arg1;
@@ -45,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setCategorys:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

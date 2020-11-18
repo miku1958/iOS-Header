@@ -8,28 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, GEOStyleAttributes, NSString, PBUnknownFields;
+@class GEOMapRegion, GEOStyleAttributes, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOURLExtraStorage : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapRegion *_mapRegion;
     NSString *_phoneNumber;
     GEOStyleAttributes *_styleAttributes;
     NSString *_url;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_mapRegion:1;
+        unsigned int read_phoneNumber:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int read_url:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_mapRegion:1;
+        unsigned int wrote_phoneNumber:1;
+        unsigned int wrote_styleAttributes:1;
+        unsigned int wrote_url:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasMapRegion;
 @property (readonly, nonatomic) BOOL hasPhoneNumber;
 @property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (readonly, nonatomic) BOOL hasUrl;
-@property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
-@property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
-@property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
+@property (strong, nonatomic) GEOMapRegion *mapRegion;
+@property (strong, nonatomic) NSString *phoneNumber;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
+@property (strong, nonatomic) NSString *url;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readMapRegion;
+- (void)_readPhoneNumber;
+- (void)_readStyleAttributes;
+- (void)_readUrl;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +57,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

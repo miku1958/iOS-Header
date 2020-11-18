@@ -41,10 +41,10 @@
 + (BOOL)isAnyDestinationAvailableInDestinations:(id)arg1 usingCache:(id)arg2;
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)beginQueryWithDestinations:(id)arg1;
 - (void)cancelQueries;
 - (void)dealloc;
-- (void)idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
 - (id)init;
 - (id)initWithQueryController:(id)arg1;
 - (BOOL)isFaceTimeAudioAvailableForAnyDestinationInDestinations:(id)arg1;

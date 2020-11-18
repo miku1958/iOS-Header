@@ -23,6 +23,9 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (nonatomic) float weight; // @synthesize weight=_weight;
 
++ (id)_momentLocalIdentifierByAssetLocalIdentifiersForAssets:(id)arg1;
++ (id)_textFeaturesByMomentLocalIdentifierForMomentLocalIdentifiers:(id)arg1 inPhotoLibrary:(id)arg2;
++ (id)fetchTextFeaturesByAssetLocalIdentifierForAssets:(id)arg1;
 + (id)stringForOrigin:(unsigned long long)arg1;
 + (id)stringForType:(long long)arg1;
 + (BOOL)supportsSecureCoding;

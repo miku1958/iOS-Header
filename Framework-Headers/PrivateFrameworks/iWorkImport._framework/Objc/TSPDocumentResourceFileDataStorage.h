@@ -9,12 +9,12 @@
 #import <iWorkImport/TSPDocumentResourceDataStorageInfo-Protocol.h>
 
 @class NSString, TSPDocumentResourceInfo;
-@protocol TSPDocumentResourceFileURLProvider><TSUResourceRequest, TSUResourceRequest;
+@protocol TSUResourceFileURLProvider><TSUResourceRequest, TSUResourceRequest;
 
 __attribute__((visibility("hidden")))
 @interface TSPDocumentResourceFileDataStorage : TSPFileDataStorage <TSPDocumentResourceDataStorageInfo>
 {
-    id<TSPDocumentResourceFileURLProvider><TSUResourceRequest> _resourceRequest;
+    id<TSUResourceFileURLProvider><TSUResourceRequest> _resourceRequest;
     TSPDocumentResourceInfo *_documentResourceInfo;
 }
 
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)length;
 - (BOOL)needsDownload;
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
+- (struct CGSize)pixelSize;
 
 @end
 

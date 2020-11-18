@@ -17,13 +17,13 @@
     unsigned int _metricItemRetryCount;
     int _metricItemType;
     struct {
-        unsigned int metricItemSize:1;
-        unsigned int metricItemCount:1;
-        unsigned int metricItemIdHash:1;
-        unsigned int metricItemQueueTime:1;
-        unsigned int metricItemRetryCount:1;
-        unsigned int metricItemType:1;
-    } _has;
+        unsigned int has_metricItemSize:1;
+        unsigned int has_metricItemCount:1;
+        unsigned int has_metricItemIdHash:1;
+        unsigned int has_metricItemQueueTime:1;
+        unsigned int has_metricItemRetryCount:1;
+        unsigned int has_metricItemType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMetricItemCount;
@@ -32,13 +32,14 @@
 @property (nonatomic) BOOL hasMetricItemRetryCount;
 @property (nonatomic) BOOL hasMetricItemSize;
 @property (nonatomic) BOOL hasMetricItemType;
-@property (nonatomic) unsigned int metricItemCount; // @synthesize metricItemCount=_metricItemCount;
-@property (nonatomic) unsigned int metricItemIdHash; // @synthesize metricItemIdHash=_metricItemIdHash;
-@property (nonatomic) unsigned int metricItemQueueTime; // @synthesize metricItemQueueTime=_metricItemQueueTime;
-@property (nonatomic) unsigned int metricItemRetryCount; // @synthesize metricItemRetryCount=_metricItemRetryCount;
-@property (nonatomic) unsigned long long metricItemSize; // @synthesize metricItemSize=_metricItemSize;
-@property (nonatomic) int metricItemType; // @synthesize metricItemType=_metricItemType;
+@property (nonatomic) unsigned int metricItemCount;
+@property (nonatomic) unsigned int metricItemIdHash;
+@property (nonatomic) unsigned int metricItemQueueTime;
+@property (nonatomic) unsigned int metricItemRetryCount;
+@property (nonatomic) unsigned long long metricItemSize;
+@property (nonatomic) int metricItemType;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsMetricItemType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -48,6 +49,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)metricItemTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -20,6 +20,7 @@
 + (Class)meltedClass;
 - (EKChangeSet *)changeSet;
 - (EKObject *)existingMeltedObject;
+- (Class)frozenClass;
 - (EKPersistentObject_556b3b22 *)frozenObject;
 - (id)initWithObject:(id<EKProtocolObject>)arg1;
 - (BOOL)isCompletelyEqual:(id<EKFrozenMeltedPair>)arg1;

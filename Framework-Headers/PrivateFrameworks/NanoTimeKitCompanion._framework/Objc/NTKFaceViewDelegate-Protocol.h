@@ -6,21 +6,24 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSString, NTKComplication, NTKFaceView, UIViewController;
+@class NSArray, NSDate, NSString, NTKComplication, NTKEditOption, NTKFaceView, UIViewController;
 
 @protocol NTKFaceViewDelegate <NSObject>
 - (BOOL)faceView:(NTKFaceView *)arg1 wantsToDismissPresentedViewControllerAnimated:(BOOL)arg2;
+- (NSArray *)faceViewAllVisibleComplicationsForCurrentConfiguration;
 - (NSString *)faceViewComplicationAppIdentifierForSlot:(NSString *)arg1;
 - (NTKComplication *)faceViewComplicationForSlot:(NSString *)arg1;
 - (BOOL)faceViewComplicationIsEmptyForSlot:(NSString *)arg1;
 - (NSArray *)faceViewComplicationSlots;
-- (void)faceViewDidChangeVerticalPaddingForStatusBar;
+- (NSArray *)faceViewComplicationSlotsHiddenByEditOption:(NTKEditOption *)arg1;
+- (void)faceViewDidChangePaddingForStatusBar;
 - (void)faceViewDidChangeWantsStatusBarIconShadow;
 - (void)faceViewDidHideOrShowComplicationSlot;
-- (void)faceViewDidLayoutSubviews;
 - (void)faceViewDidReloadSnapshotContentViews;
 - (void)faceViewDidScrubToDate:(NSDate *)arg1 forced:(BOOL)arg2;
+- (NTKEditOption *)faceViewEditOptionThatHidesAllComplications;
 - (void)faceViewRequestedLaunchFromRect:(struct CGRect)arg1;
+- (BOOL)faceViewShouldIgnoreSnapshotImages;
 - (void)faceViewUpdatedResourceDirectory:(NSString *)arg1 wantsToTransferOwnership:(BOOL)arg2;
 - (void)faceViewWantsComplicationKeylineFramesReloaded;
 - (void)faceViewWantsCustomKeylineFramesReloadedForEditMode:(long long)arg1;

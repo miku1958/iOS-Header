@@ -14,16 +14,17 @@ __attribute__((visibility("hidden")))
     unsigned int _deltaMinutesInFuture;
     unsigned int _speed;
     struct {
-        unsigned int deltaMinutesInFuture:1;
-        unsigned int speed:1;
-    } _has;
+        unsigned int has_deltaMinutesInFuture:1;
+        unsigned int has_speed:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int deltaMinutesInFuture; // @synthesize deltaMinutesInFuture=_deltaMinutesInFuture;
+@property (nonatomic) unsigned int deltaMinutesInFuture;
 @property (nonatomic) BOOL hasDeltaMinutesInFuture;
 @property (nonatomic) BOOL hasSpeed;
-@property (nonatomic) unsigned int speed; // @synthesize speed=_speed;
+@property (nonatomic) unsigned int speed;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

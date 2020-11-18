@@ -6,16 +6,18 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, PHFetchResult, PXPhotosDetailsViewModel;
+@class NSDictionary, NSString, PHFetchResult, PXPhotosDataSource, PXPhotosDetailsViewModel;
 
 @protocol PXMutablePhotosDetailsContext <NSObject>
 
 @property (strong, nonatomic) PHFetchResult *assetCollections;
 @property (copy, nonatomic) NSDictionary *assetsByCollection;
+@property (nonatomic) BOOL hasLocation;
 @property (strong, nonatomic) PHFetchResult *keyAssetsFetchResult;
 @property (copy, nonatomic) NSString *localizedSubtitle;
 @property (copy, nonatomic) NSString *localizedTitle;
 @property (strong, nonatomic) PHFetchResult *people;
+@property (strong, nonatomic) PXPhotosDataSource *photosDataSource;
 @property (nonatomic) BOOL shouldShowMovieHeader;
 @property (copy, nonatomic) NSString *titleFontName;
 @property (strong, nonatomic) PXPhotosDetailsViewModel *viewModel;

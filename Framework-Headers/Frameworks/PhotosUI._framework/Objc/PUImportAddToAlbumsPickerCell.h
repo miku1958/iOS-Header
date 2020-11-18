@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIImage *thumbail; // @synthesize thumbail=_thumbail;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
-+ (id)backgroundGrayColor;
 - (void).cxx_destruct;
 - (void)_configureCell;
 - (void)didAddSubview:(id)arg1;

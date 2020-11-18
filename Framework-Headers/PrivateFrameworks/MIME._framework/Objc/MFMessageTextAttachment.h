@@ -16,9 +16,9 @@
 @property (strong, nonatomic) MFMessageFileWrapper *fileWrapper;
 
 + (unsigned long long)precedenceLevel;
+- (void).cxx_destruct;
 - (unsigned int)approximateSize;
 - (id)cachedValueForKey:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)download;
 - (id)fileWrapperForcingDownload:(BOOL)arg1;

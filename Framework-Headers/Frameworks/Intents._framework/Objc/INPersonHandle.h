@@ -17,10 +17,12 @@
     NSString *_value;
     long long _type;
     NSString *_label;
+    long long _emergencyType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long emergencyType; // @synthesize emergencyType=_emergencyType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly) Class superclass;
@@ -36,6 +38,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithValue:(id)arg1 type:(long long)arg2;
 - (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3;
+- (id)initWithValue:(id)arg1 type:(long long)arg2 label:(id)arg3 emergencyType:(long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

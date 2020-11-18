@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize selectionBadgeSize;
 
 - (BOOL)embedsActivityViewForBounds:(struct CGRect)arg1 horizontalSizeClass:(long long)arg2 verticalSizeClass:(long long)arg3;
+- (double)interItemSpacingForWidth:(double)arg1;
 - (BOOL)maximizeImageHeightForBounds:(struct CGRect)arg1;
 
 @end

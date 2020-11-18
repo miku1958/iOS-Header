@@ -22,6 +22,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)acceptsDataObject:(id)arg1;
+- (BOOL)acceptsDataObjectWithStartTimestamp:(double)arg1 endTimestamp:(double)arg2 valueInCanonicalUnit:(double)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMapTable, NSMutableArray, NSMutableSet, NSString, SPCoreSpotlightIndexer;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction;
 
 @interface SPConcreteCoreSpotlightIndexer : NSObject
 {
@@ -31,10 +31,12 @@
     NSObject<OS_dispatch_source> *_indexIdleTimer;
     double _idleStartTime;
     NSMutableArray *_outstandingMaintenance;
+    NSObject<OS_os_transaction> *_dirtyTransaction;
 }
 
 @property (readonly, nonatomic) NSMapTable *checkedInClients; // @synthesize checkedInClients=_checkedInClients;
 @property (strong, nonatomic) NSString *dataclass; // @synthesize dataclass=_dataclass;
+@property (strong, nonatomic) NSObject<OS_os_transaction> *dirtyTransaction; // @synthesize dirtyTransaction=_dirtyTransaction;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *firstUnlockQueue; // @synthesize firstUnlockQueue=_firstUnlockQueue;
 @property (readonly, nonatomic) double idleStartTime; // @synthesize idleStartTime=_idleStartTime;
 @property (nonatomic) struct __SI *index; // @synthesize index=_index;
@@ -50,8 +52,8 @@
 - (void).cxx_destruct;
 - (void)_addNewClientWithBundleID:(id)arg1;
 - (void)_backgroundDeleteItems:(id)arg1 bundleID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_cancelIdleTimer;
-- (void)_deleteSearchableItemsMatchingQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_cancelIdleTimer;
+- (void)_deleteSearchableItemsMatchingQuery:(id)arg1 forBundleIds:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_expireCorruptIndexFilesWithPath:(id)arg1 keepLatest:(BOOL)arg2;
 - (void)_fetchAccumulatedStorageSizeForBundleId:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_indexMaintenanceActivityName;
@@ -60,7 +62,7 @@
 - (void)_saveCorruptIndexWithPath:(id)arg1;
 - (void)_scheduleStringsCleanupForBundleID:(id)arg1;
 - (void)_setClientState:(id)arg1 clientStateName:(id)arg2 forBundleID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (BOOL)_startInternalQueryWithIndex:(struct __SI *)arg1 query:(id)arg2 fetchAttributes:(id)arg3 resultsHandler:(CDUnknownBlockType)arg4;
+- (BOOL)_startInternalQueryWithIndex:(struct __SI *)arg1 query:(id)arg2 fetchAttributes:(id)arg3 forBundleIds:(id)arg4 resultsHandler:(CDUnknownBlockType)arg5;
 - (id)_startQueryWithQueryTask:(id)arg1 eventHandler:(CDUnknownBlockType)arg2 resultsHandler:(CDUnknownBlockType)arg3;
 - (void)addClients:(id)arg1;
 - (void)addCompletedBundleIDs:(id)arg1 forIndexerTask:(id)arg2;
@@ -83,6 +85,7 @@
 - (void)deleteItemsForQuery:(id)arg1 bundleID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteSearchableItemsSinceDate:(id)arg1 forBundleID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 forBundleID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)deleteSearchableItemsWithPersonaIds:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dirty;
 - (void)dumpAllRankingDiagnosticInformationForQuery:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)ensureOpenIndexFiles;
@@ -91,10 +94,11 @@
 - (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)fetchLastClientStateForBundleID:(id)arg1 clientStateName:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)finishReindexAll;
+- (void)fixupPathTimeouts;
 - (id)getPropertyForKey:(id)arg1;
 - (void)indexFinishedDrainingJournal;
 - (void)indexFinishedDrainingJournal:(id)arg1;
-- (void)indexFromBundle:(id)arg1 options:(long long)arg2 items:(id)arg3 itemsText:(id)arg4 clientState:(id)arg5 clientStateName:(id)arg6 deletes:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
+- (void)indexFromBundle:(id)arg1 personaID:(id)arg2 options:(long long)arg3 items:(id)arg4 itemsText:(id)arg5 clientState:(id)arg6 clientStateName:(id)arg7 deletes:(id)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 clientStateName:(id)arg4 forBundleID:(id)arg5 options:(long long)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)indexSearchableItems:(id)arg1 deleteSearchableItemsWithIdentifiers:(id)arg2 clientState:(id)arg3 forBundleID:(id)arg4 options:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)initWithQueue:(id)arg1 protectionClass:(id)arg2 cancelPtr:(int *)arg3;

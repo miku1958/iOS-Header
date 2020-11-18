@@ -7,16 +7,17 @@
 #import <objc/NSObject.h>
 
 @class BSUIMappedImageCache, NSArray;
-@protocol HFProcessedWallpaperSource;
+@protocol HFProcessedWallpaperSource, HMFLocking;
 
 @interface HFWallpaperImageCache : NSObject
 {
+    id<HMFLocking> _lock;
     id<HFProcessedWallpaperSource> _processedWallpaperSource;
     BSUIMappedImageCache *_imageCache;
 }
 
 @property (strong, nonatomic) BSUIMappedImageCache *imageCache; // @synthesize imageCache=_imageCache;
-@property (strong, nonatomic) id<HFProcessedWallpaperSource> processedWallpaperSource; // @synthesize processedWallpaperSource=_processedWallpaperSource;
+@property (strong) id<HFProcessedWallpaperSource> processedWallpaperSource; // @synthesize processedWallpaperSource=_processedWallpaperSource;
 @property (readonly, nonatomic) NSArray *supportedProcessedVariants;
 
 - (void).cxx_destruct;

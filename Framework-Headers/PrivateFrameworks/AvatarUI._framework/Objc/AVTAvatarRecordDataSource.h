@@ -53,10 +53,12 @@
 - (void)dealloc;
 - (void)enumerateObserversRespondingToSelector:(SEL)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (unsigned long long)indexOfRecordPassingTest:(CDUnknownBlockType)arg1;
+- (id)indexSetForEditableRecords;
 - (id)indexesOfRecordsPassingTest:(CDUnknownBlockType)arg1;
 - (id)initWithRecordStore:(id)arg1 fetchRequest:(id)arg2;
 - (id)initWithRecordStore:(id)arg1 fetchRequest:(id)arg2 callbackQueue:(id)arg3 environment:(id)arg4;
 - (id)initWithRecordStore:(id)arg1 fetchRequest:(id)arg2 callbackQueue:(id)arg3 logger:(id)arg4 notificationCenter:(id)arg5;
+- (id)initWithRecordStore:(id)arg1 fetchRequest:(id)arg2 environment:(id)arg3;
 - (id)internalRecordStore;
 - (unsigned long long)numberOfRecords;
 - (void)performObserversWork:(CDUnknownBlockType)arg1;

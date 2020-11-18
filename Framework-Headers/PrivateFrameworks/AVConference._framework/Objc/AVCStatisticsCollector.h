@@ -18,11 +18,16 @@ __attribute__((visibility("hidden")))
     VCRateControlOWRDEstimator *_owrdEstimator;
     VCStatisticsHistory *_history;
     VCStatisticsCollectorQueue *_queue;
+    int _forceQueueWaitTimeMs;
     unsigned int _radioAccessTechnology;
     unsigned int _mode;
+    BOOL _useExternalThread;
     unsigned int _sharedEstimatedBandwidth;
     unsigned int _sharedEstimatedBandwidthUncapped;
     unsigned int _sharedRemoteEstimatedBandwidth;
+    unsigned int _maxLocalBurstyLoss;
+    unsigned int _packetReceivedAudio;
+    unsigned int _packetReceivedVideo;
     unsigned int _estimatedBandwidthCap;
     unsigned int _expectedBitrate;
     struct _opaque_pthread_rwlock_t _statisticsCollectionLock;
@@ -36,26 +41,32 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int sharedEstimatedBandwidthUncapped; // @synthesize sharedEstimatedBandwidthUncapped=_sharedEstimatedBandwidthUncapped;
 @property (readonly, nonatomic) unsigned int sharedRemoteEstimatedBandwidth; // @synthesize sharedRemoteEstimatedBandwidth=_sharedRemoteEstimatedBandwidth;
 
-- (void)addActualBitrateInfo:(CDStruct_48a7b5a5 *)arg1;
-- (void)addEntriesFromStatistics:(CDStruct_48a7b5a5)arg1;
-- (void)addPacketLossInfo:(CDStruct_48a7b5a5 *)arg1;
-- (void)addStatisticsHistory:(CDStruct_48a7b5a5)arg1;
-- (void)computeBWEstimation:(CDStruct_48a7b5a5 *)arg1;
-- (void)computeOWRDEstimation:(CDStruct_48a7b5a5 *)arg1;
-- (void)computeOtherStatistics:(CDStruct_48a7b5a5 *)arg1;
+- (void)addAFRCActualBitrate:(CDStruct_b21f1e06 *)arg1;
+- (void)addActualBitrateInfo:(CDStruct_b21f1e06 *)arg1;
+- (void)addEntriesFromStatistics:(CDStruct_b21f1e06)arg1;
+- (void)addMostBurstyLossInfo:(CDStruct_b21f1e06 *)arg1;
+- (void)addPacketLossInfo:(CDStruct_b21f1e06 *)arg1;
+- (void)addRoundTripTimeInfo:(CDStruct_b21f1e06 *)arg1;
+- (void)addStatisticsHistory:(CDStruct_b21f1e06 *)arg1;
+- (void)computeBWEstimation:(CDStruct_b21f1e06 *)arg1;
+- (void)computeOWRDEstimation:(CDStruct_b21f1e06 *)arg1;
+- (void)computeOtherStatistics:(CDStruct_b21f1e06 *)arg1;
 - (void)dealloc;
+- (void)drainAndProcessVCStatistics:(CDStruct_b21f1e06)arg1;
 - (id)getStatistics:(id)arg1;
-- (CDStruct_48a7b5a5)getVCStatisticsWithType:(int)arg1 time:(double)arg2;
+- (CDStruct_b21f1e06)getVCStatisticsWithType:(int)arg1 time:(double)arg2;
 - (id)init;
-- (id)initForSimulation:(BOOL)arg1;
-- (void)processVCStatistics:(CDStruct_48a7b5a5)arg1;
-- (void)recordRemoteEstimatedBandwidthForLargeFrameInfo:(CDStruct_48a7b5a5 *)arg1;
+- (id)initForSimulation:(BOOL)arg1 useExternalThread:(BOOL)arg2;
+- (void)processVCStatisticsInternal:(CDStruct_b21f1e06)arg1;
+- (void)recordRemoteEstimatedBandwidthForLargeFrameInfo:(CDStruct_b21f1e06 *)arg1;
 - (void)registerStatisticsChangeHandlerWithType:(int)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)setStatistics:(id)arg1;
-- (void)setVCStatistics:(CDStruct_48a7b5a5)arg1;
+- (void)setVCStatistics:(CDStruct_b21f1e06)arg1;
 - (void)start;
 - (void)stop;
 - (void)updateLocalEstimatedBandwidth;
+- (void)updateMaxLocalBurstyLoss:(unsigned int)arg1;
+- (void)updatePacketReceivedCount:(CDStruct_b21f1e06 *)arg1;
 
 @end
 

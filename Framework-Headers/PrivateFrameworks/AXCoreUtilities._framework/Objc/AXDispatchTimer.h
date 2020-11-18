@@ -35,6 +35,7 @@
 @property (nonatomic) BOOL useWallTime; // @synthesize useWallTime=_useWallTime;
 
 - (void).cxx_destruct;
+- (void)_afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2 cancelBlock:(CDUnknownBlockType)arg3;
 - (void)_reallyCancel;
 - (void)afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2;
 - (void)afterDelay:(double)arg1 processBlock:(CDUnknownBlockType)arg2 cancelBlock:(CDUnknownBlockType)arg3;

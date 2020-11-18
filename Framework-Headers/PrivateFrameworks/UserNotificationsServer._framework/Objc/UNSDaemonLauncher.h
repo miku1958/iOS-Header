@@ -27,6 +27,8 @@
 - (id)_queue_ensureConnectionForBundleIdentifier:(id)arg1;
 - (void)_queue_interruptedConnectionForBundleIdentifier:(id)arg1;
 - (void)_queue_invalidatedConnectionForBundleIdentifier:(id)arg1;
+- (void)didChangeSettings:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)didOpenApplicationForResponse:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)didReceiveNotificationResponse:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 

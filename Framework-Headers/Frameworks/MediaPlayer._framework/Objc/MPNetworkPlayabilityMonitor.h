@@ -14,8 +14,8 @@
 @interface MPNetworkPlayabilityMonitor : NSObject <ICEnvironmentMonitorObserver>
 {
     long long _effectiveNetworkTypeForCloudPlayback;
-    double _lastAverageBitrate;
     long long _networkType;
+    double _lastAverageBitrate;
     NSObject<OS_dispatch_queue> *_queue;
 }
 

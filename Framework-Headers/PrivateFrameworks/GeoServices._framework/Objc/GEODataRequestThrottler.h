@@ -6,26 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
-@protocol OS_dispatch_queue;
+#import <GeoServices/GEOConfigChangeListenerDelegate-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface GEODataRequestThrottler : NSObject
+@class NSDictionary, NSMutableDictionary, NSString, geo_isolater;
+@protocol OS_dispatch_source;
+
+@interface GEODataRequestThrottler : NSObject <GEOConfigChangeListenerDelegate>
 {
-    NSObject<OS_dispatch_queue> *_isolation;
+    geo_isolater *_isolation;
+    NSDictionary *_defaultThrottlePolicy;
+    NSDictionary *_globalThrottlePolicy;
+    BOOL _throttlePoliciesCached;
     NSMutableDictionary *_throttlers;
+    NSObject<OS_dispatch_source> *_updateStateTimer;
+    int _defaultChangedNotification;
+    id _networkChangedNotification;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedThrottler;
 - (void).cxx_destruct;
 - (id)_init;
-- (BOOL)allowRequestForKey:(struct GEOThrottleKey)arg1;
-- (BOOL)allowRequestForPlaceRequestType:(int)arg1;
-- (BOOL)allowRequestForRequestKind:(int)arg1;
-- (id)description;
+- (void)_pruneThrottlers;
+- (void)_reset;
+- (void)_updateSavedState:(id)arg1;
+- (void)_withThrottlersForKey:(struct GEOThrottleKey)arg1 auditToken:(id)arg2 do:(CDUnknownBlockType)arg3;
+- (BOOL)allowRequest:(CDStruct_d1a7ebee)arg1 forClient:(id)arg2 throttlerToken:(id *)arg3 error:(id *)arg4;
+- (void)dealloc;
+- (void)getInfoForRequest:(CDStruct_d1a7ebee)arg1 client:(id)arg2 timeUntilNextReset:(double *)arg3 availableRequestCount:(unsigned int *)arg4;
 - (id)init;
-- (BOOL)isCloseToThrottlingForKey:(struct GEOThrottleKey)arg1;
-- (void)withThrottlerForKey:(struct GEOThrottleKey)arg1 do:(CDUnknownBlockType)arg2;
+- (void)pruneThrottlers;
+- (void)reset;
+- (id)throttlerForKeyPath:(id)arg1;
+- (void)valueChangedForGEOConfigKey:(CDStruct_065526f1)arg1;
 
 @end
 

@@ -22,6 +22,7 @@
 @property (strong, nonatomic) PHFetchOptions *fetchOptions; // @synthesize fetchOptions=_fetchOptions;
 @property (strong, nonatomic) PHFetchResult *outputFetchResult; // @synthesize outputFetchResult=_outputFetchResult;
 
++ (id)fetchOperationWithCollection:(id)arg1 delegate:(id)arg2;
 - (void).cxx_destruct;
 - (void)handleBegin;
 - (void)handleFinish;

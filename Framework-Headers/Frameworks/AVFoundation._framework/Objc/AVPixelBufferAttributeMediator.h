@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)mediatedPixelBufferAttributes;
 - (void)removeRequestedPixelBufferAttributesAttributesForKey:(id)arg1;

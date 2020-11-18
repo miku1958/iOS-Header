@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_pickableGroups;
     UITableView *_tableView;
+    NSArray *_prohibitedPropertyKeys;
     id<CNContactGroupPickerDelegate> _groupPickerDelegate;
 }
 
@@ -24,10 +25,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<CNContactGroupPickerDelegate> groupPickerDelegate; // @synthesize groupPickerDelegate=_groupPickerDelegate;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property (readonly) Class superclass;
 
-+ (id)pickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2;
++ (id)pickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2 prohibitedPropertyKeys:(id)arg3;
 + (BOOL)propertiesLeftToPickWithPickedGroups:(id)arg1 policy:(id)arg2;
++ (BOOL)propertiesLeftToPickWithPickedGroups:(id)arg1 policy:(id)arg2 prohibitedPropertyKeys:(id)arg3;
 + (id)propertySections;
 - (void).cxx_destruct;
 - (id)_loadPickableGroupsWithPickedGroups:(id)arg1 policy:(id)arg2;

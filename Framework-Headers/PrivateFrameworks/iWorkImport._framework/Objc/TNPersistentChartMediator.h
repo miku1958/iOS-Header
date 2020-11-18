@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)formulaOwner;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)nsFormulaOwnerUID;

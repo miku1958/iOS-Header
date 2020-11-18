@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)p_createDynamicCopies;
 - (void)p_destroyDynamicCopies;
 - (void)processChangedProperty:(int)arg1;
+- (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (BOOL)supportsRotation;
 
 @end

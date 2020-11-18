@@ -30,6 +30,7 @@
     double _sourceNameImageScale;
     NSURL *_compactSourceNameImageRemoteURL;
     NSURL *_thumbnailRemoteURL;
+    NSString *_thumbnailIdentifier;
     unsigned long long _thumbnailSizePreset;
     NSURL *_webURL;
     NSURL *_NewsURL;
@@ -79,6 +80,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsSavingForLater; // @synthesize supportsSavingForLater=_supportsSavingForLater;
 @property (nonatomic) struct CGRect thumbnailFocalFrame; // @synthesize thumbnailFocalFrame=_thumbnailFocalFrame;
+@property (copy, nonatomic) NSString *thumbnailIdentifier; // @synthesize thumbnailIdentifier=_thumbnailIdentifier;
 @property (copy, nonatomic) NSURL *thumbnailRemoteURL; // @synthesize thumbnailRemoteURL=_thumbnailRemoteURL;
 @property (nonatomic) unsigned long long thumbnailSizePreset; // @synthesize thumbnailSizePreset=_thumbnailSizePreset;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;

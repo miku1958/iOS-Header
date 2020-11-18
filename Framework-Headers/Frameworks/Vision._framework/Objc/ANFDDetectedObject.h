@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Vision/VNEspressoFaceDetectedObject.h>
+#import <Vision/VNEspressoDetectedObject.h>
 
 __attribute__((visibility("hidden")))
-@interface ANFDDetectedObject : VNEspressoFaceDetectedObject
+@interface ANFDDetectedObject : VNEspressoDetectedObject
 {
     float _rotationAngle;
     float _yawAngle;
+    int _labelKey;
 }
 
+@property int labelKey; // @synthesize labelKey=_labelKey;
 @property float rotationAngle; // @synthesize rotationAngle=_rotationAngle;
 @property float yawAngle; // @synthesize yawAngle=_yawAngle;
 
+- (id)initWithObjectType:(long long)arg1 boundingBox:(struct CGRect)arg2 confidence:(float)arg3 rotationAngle:(float)arg4 yawAngle:(float)arg5 labelKey:(int)arg6;
 
 @end
 

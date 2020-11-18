@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSString, UILabel;
+@class NSString, UIColor, UILabel;
 
 @interface PKStackedLabelCell : UITableViewCell
 {
@@ -15,13 +15,18 @@
     BOOL _isRTL;
     NSString *_titleText;
     NSString *_detailText;
+    UIColor *_titleTextColor;
+    UIColor *_detailTextColor;
 }
 
 @property (copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
+@property (strong, nonatomic) UIColor *detailTextColor; // @synthesize detailTextColor=_detailTextColor;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
+@property (strong, nonatomic) UIColor *titleTextColor; // @synthesize titleTextColor=_titleTextColor;
 
 - (void).cxx_destruct;
 - (void)_applyLabelStyles;
+- (struct UIEdgeInsets)_effectiveLayoutMargins;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;

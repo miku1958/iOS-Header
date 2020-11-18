@@ -6,19 +6,28 @@
 
 #import <MapKit/MKPlaceSectionRowView.h>
 
-@class MKPlaceHoursView;
+#import <MapKit/MKPlaceHoursViewDelegate-Protocol.h>
+
+@class MKPlaceHoursView, NSLayoutConstraint, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceHoursDayRow : MKPlaceSectionRowView
+@interface MKPlaceHoursDayRow : MKPlaceSectionRowView <MKPlaceHoursViewDelegate>
 {
     MKPlaceHoursView *_hoursView;
+    NSLayoutConstraint *_topAnchorToTopLabelBaseline;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MKPlaceHoursView *hoursView; // @synthesize hoursView=_hoursView;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) NSLayoutConstraint *topAnchorToTopLabelBaseline; // @synthesize topAnchorToTopLabelBaseline=_topAnchorToTopLabelBaseline;
 
 - (void).cxx_destruct;
 - (void)_setUpConstraints;
 - (void)_setUpViewsForPlaceHoursDayRow;
+- (void)hoursViewDidUpdate:(id)arg1;
 - (id)initWithBusinessHours:(id)arg1 frame:(struct CGRect)arg2;
 
 @end

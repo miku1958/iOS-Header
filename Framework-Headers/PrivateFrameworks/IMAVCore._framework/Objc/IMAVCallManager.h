@@ -24,12 +24,13 @@
     unsigned int _globalCallState;
 }
 
-@property (readonly, strong, nonatomic) NSArray *_FTCalls;
+@property (readonly, nonatomic) NSArray *_FTCalls;
 @property (readonly, nonatomic) unsigned int callState;
-@property (readonly, strong, nonatomic) NSArray *calls;
+@property (readonly, nonatomic) NSArray *calls;
 @property (readonly, nonatomic) BOOL hasActiveCall;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_activeAudioCall;
 - (id)_activeFaceTimeCall;
 - (void)_addACChatProxy:(id)arg1;
@@ -56,7 +57,6 @@
 - (void)_updateAVCallState;
 - (void)_updateAVChatProxyWithInfo:(id)arg1;
 - (void)_updateOverallChatState;
-- (void)dealloc;
 - (id)init;
 
 @end

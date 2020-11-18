@@ -52,7 +52,6 @@
 - (void)_updatePaused;
 - (id)_viewForEditOption:(id)arg1;
 - (void)dealloc;
-- (void)didAddSubview:(id)arg1;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (double)keylineStyleForComplicationSlot:(id)arg1;
 - (void)videoPlayerViewDidBeginPlaying:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class NSData, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
@@ -20,16 +20,19 @@ __attribute__((visibility("hidden")))
     BOOL _isPersistent;
     NSObject<OS_dispatch_source> *_timeoutTimer;
     NSObject<OS_dispatch_queue> *_timeoutTimerQueue;
+    struct OpaqueFigCFWeakReferenceHolder *_timeoutTimerContext;
+    NSString *_lastCalledApiName;
     BOOL _timeoutTimerStarted;
 }
 
 @property (strong, nonatomic) NSObject<OS_xpc_object> *connection;
 @property (strong, nonatomic) id context; // @synthesize context;
+@property (strong, nonatomic) NSString *lastCalledApiName; // @synthesize lastCalledApiName=_lastCalledApiName;
 @property (getter=isPersistent) BOOL persistent;
 @property int pid;
 @property (strong, nonatomic) NSData *tokenData; // @synthesize tokenData;
 
-+ (void)selfTerminateDueToTimeout:(int)arg1;
++ (void)selfTerminateDueToTimeout:(id)arg1;
 - (void)createTimeoutTimer;
 - (void)dealloc;
 - (id)description;

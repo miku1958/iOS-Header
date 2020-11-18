@@ -6,25 +6,19 @@
 
 #import <MapsSuggestions/MapsSuggestionsBaseSource.h>
 
+#import <MapsSuggestions/MapsSuggestionsPreloadableSource-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
 
-@class GEOLocationShifter, MapsSuggestionsLimitedDictionary, MapsSuggestionsNetworkRequester, NSArray, NSObject, NSString, RTRoutineManager;
+@class MapsSuggestionsRoutine, NSObject, NSString;
 @protocol MapsSuggestionsSourceDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface MapsSuggestionsRoutineSource : MapsSuggestionsBaseSource <MapsSuggestionsSource>
+@interface MapsSuggestionsRoutineSource : MapsSuggestionsBaseSource <MapsSuggestionsSource, MapsSuggestionsPreloadableSource>
 {
-    RTRoutineManager *_routineManager;
+    MapsSuggestionsRoutine *_routine;
     struct NSArray *_previouslyAddedEntries;
-    NSArray *_homeAddresses;
-    NSArray *_workAddresses;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _running;
     NSObject<OS_dispatch_source> *_updateTimer;
-    BOOL _areFrequentLocationsAvailable;
-    GEOLocationShifter *_locationShifter;
-    MapsSuggestionsNetworkRequester *_requester;
-    MapsSuggestionsLimitedDictionary *_mapItemCache;
-    MapsSuggestionsLimitedDictionary *_mapItemCacheOrigin;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -37,20 +31,8 @@
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
-- (BOOL)_addCalendarFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (BOOL)_addFieldsToSuggestionsEntry:(id)arg1 fromRTMapItem:(id)arg2;
-- (void)_addLabelForEntry:(id)arg1;
-- (BOOL)_addParkedCarFieldsToSuggestionsEntry:(id)arg1 vehicleEvent:(id)arg2;
-- (BOOL)_addRecentsFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (BOOL)_addResumeRouteFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (int)_convertTransportType:(long long)arg1;
-- (long long)_convertType:(long long)arg1 source:(id)arg2 typeSource:(long long)arg3;
 - (void)_requestTouristInfoFromRoutineIfNeededForLocation:(id)arg1;
-- (void)_resolveMapItemsAndAddEntries:(struct NSArray *)arg1;
-- (void)_setFrequentLocationsAreAvailable:(BOOL)arg1;
 - (void)_startMonitoringVehicleEvents;
-- (id)_suggestionEntryForPredictedLOI:(id)arg1;
-- (void)_treatPLOIs:(id)arg1 stepName:(id)arg2;
 - (void)_updateSuggestionEntries;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)dealloc;
@@ -58,6 +40,7 @@
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
+- (BOOL)suggestionsEntriesAtLocation:(id)arg1 period:(struct NSDateInterval *)arg2 handler:(CDUnknownBlockType)arg3;
 - (double)updateSuggestionEntries;
 
 @end

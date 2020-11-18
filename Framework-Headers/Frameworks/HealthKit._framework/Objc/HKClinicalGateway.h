@@ -35,7 +35,6 @@
 @property (readonly, copy, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSURL *informationURL; // @synthesize informationURL=_informationURL;
-@property (readonly, nonatomic, getter=hasMultipleLocations) BOOL multiple;
 @property (readonly, copy, nonatomic) NSURL *passwordResetURL; // @synthesize passwordResetURL=_passwordResetURL;
 @property (readonly, copy, nonatomic) NSURL *patientPortalURL; // @synthesize patientPortalURL=_patientPortalURL;
 @property (readonly, copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;

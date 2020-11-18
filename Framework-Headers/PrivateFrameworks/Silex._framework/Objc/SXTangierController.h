@@ -94,7 +94,6 @@
 - (void)didTransitionToPresented;
 - (void)endSelection;
 - (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4 componentController:(id)arg5 componentInteractionManager:(id)arg6;
-- (BOOL)interactiveCanvasController:(id)arg1 configureHardPressGesture:(id)arg2;
 - (id)interactiveCanvasController:(id)arg1 delegateConformingToProtocol:(id)arg2 forRep:(id)arg3;
 - (id)interactiveCanvasController:(id)arg1 dragItemForSmartField:(id)arg2 interaction:(id)arg3 session:(id)arg4;
 - (struct CGRect)interactiveCanvasController:(id)arg1 expandVisibleBoundsForClippingReps:(struct CGRect)arg2;
@@ -114,19 +113,16 @@
 - (struct CGPoint)pointForCharacterAtIndex:(unsigned long long)arg1 inComponentWithIndetifier:(id)arg2;
 - (id)scrollPositionForVisibleRectWithComponentRect:(struct CGRect)arg1;
 - (void)setUnscaledCanvasRect:(struct CGRect)arg1;
-- (id)stringForLookupItemForInteractiveCanvasController:(id)arg1;
 - (void)teardown;
 - (id)topLevelLayersForInteractiveCanvasController:(id)arg1;
 - (id)topLevelRepsForInteractiveCanvasController:(id)arg1;
 - (void)updateCanvasSize:(struct CGSize)arg1 forComponentViews:(id)arg2;
-- (void)updateHUD;
 - (void)updateInfosWithBlock:(CDUnknownBlockType)arg1;
 - (void)updatePresentationState;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 - (struct CGRect)visibleBounds;
 - (id)visibleBoundsClipViewForInteractiveCanvasController:(id)arg1;
 - (void)willTransitionToPresented;
-- (void)willTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

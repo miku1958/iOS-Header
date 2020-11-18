@@ -6,18 +6,20 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOStep, MNGuidanceEventFeedback, MNGuidanceLaneInfo, MNGuidanceSignInfo, NSArray, NSString, NSUUID;
+@class GEOStep, MNGuidanceEventFeedback, MNGuidanceJunctionViewInfo, MNGuidanceLaneInfo, MNGuidanceSignInfo, NSArray, NSString, NSUUID;
 @protocol MNGuidanceManager;
 
 @protocol MNGuidanceManagerDelegate <NSObject>
-- (void)guidanceManager:(id<MNGuidanceManager>)arg1 announce:(NSString *)arg2 shortPromptType:(unsigned long long)arg3 stage:(unsigned long long)arg4 hasSecondaryManeuver:(BOOL)arg5 completionBlock:(void (^)(int))arg6;
+- (void)guidanceManager:(id<MNGuidanceManager>)arg1 announce:(NSString *)arg2 shortPromptType:(unsigned long long)arg3 ignorePromptStyle:(BOOL)arg4 stage:(unsigned long long)arg5 hasSecondaryManeuver:(BOOL)arg6 completionBlock:(void (^)(int))arg7;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 didArriveWithAnnouncement:(NSString *)arg2;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 didStartWithAnnouncement:(NSString *)arg2;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 displayManeuverAlertForAnnouncementStage:(unsigned long long)arg2;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 displayPrimaryStep:(GEOStep *)arg2 instructions:(NSArray *)arg3 shieldType:(int)arg4 shieldText:(NSString *)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(BOOL)arg8;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 displaySecondaryStep:(GEOStep *)arg2 instructions:(NSArray *)arg3 shieldType:(int)arg4 shieldText:(NSString *)arg5 drivingSide:(int)arg6;
+- (void)guidanceManager:(id<MNGuidanceManager>)arg1 hideJunctionViewForId:(NSUUID *)arg2;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 hideLaneDirectionsForId:(NSUUID *)arg2;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 newGuidanceEventFeedback:(MNGuidanceEventFeedback *)arg2;
+- (void)guidanceManager:(id<MNGuidanceManager>)arg1 showJunctionView:(MNGuidanceJunctionViewInfo *)arg2;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 showLaneDirections:(MNGuidanceLaneInfo *)arg2;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 triggerHaptics:(int)arg2;
 - (void)guidanceManager:(id<MNGuidanceManager>)arg1 updateSignsWithInfo:(MNGuidanceSignInfo *)arg2;

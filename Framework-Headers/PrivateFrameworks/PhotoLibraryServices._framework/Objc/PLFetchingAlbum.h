@@ -6,34 +6,50 @@
 
 #import <PhotoLibraryServices/_PLFetchingAlbum.h>
 
+#import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
+#import <PhotoLibraryServices/PLFileSystemAlbumMetadataPersistence-Protocol.h>
+
 @class NSArray, NSData, NSFetchRequest, NSOrderedSet, NSPredicate, NSString;
 
-@interface PLFetchingAlbum : _PLFetchingAlbum
+@interface PLFetchingAlbum : _PLFetchingAlbum <PLCloudDeletable, PLFileSystemAlbumMetadataPersistence>
 {
     unsigned long long _countForDisplay;
     unsigned long long _photosCount;
     unsigned long long _videosCount;
     int _emptyState;
     NSArray *_cachedKeyAssets;
+    BOOL _needsPersistenceUpdate;
     NSPredicate *_ALAssetsGroupFilterPredicate;
     unsigned long long _batchSize;
 }
 
 @property (strong, nonatomic) NSPredicate *ALAssetsGroupFilterPredicate; // @synthesize ALAssetsGroupFilterPredicate=_ALAssetsGroupFilterPredicate;
 @property (nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
+@property (nonatomic) short cloudDeleteState;
+@property (readonly) long long cloudDeletionType;
+@property (readonly, copy) NSString *cloudUUIDForDeletion;
 @property (strong, nonatomic) NSData *customQueryParameters; // @dynamic customQueryParameters;
 @property (strong, nonatomic) NSString *customQueryType; // @dynamic customQueryType;
-@property (readonly, strong, nonatomic) NSPredicate *extraFilterPredicate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSPredicate *extraFilterPredicate;
 @property (strong, nonatomic) NSFetchRequest *fetchRequest;
 @property (strong, nonatomic) NSOrderedSet *fetchedAssets; // @dynamic fetchedAssets;
 @property (readonly, nonatomic) BOOL hasAssetsCache;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
+@property (readonly) Class superclass;
 
 + (id)_panoramasAlbumPredicate;
++ (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)cloudUUIDKeyForDeletion;
 + (BOOL)contextShouldIgnoreChangesForALAssetsGroupFilterPredicate;
 + (BOOL)contextShouldIgnoreChangesForFetchRequest;
 + (BOOL)contextShouldIgnoreChangesForFetchedAssets;
 + (id)predicateForAlbumKind:(int)arg1;
 + (id)sortDescriptorsForAlbumKind:(int)arg1;
++ (id)validKindsForPersistence;
+- (void).cxx_destruct;
 - (id)_cachedKeyAssets;
 - (unsigned long long)_fetchedCountForAssetsOfKind:(short)arg1;
 - (id)_performFetchWithRequest:(id)arg1;
@@ -45,15 +61,20 @@
 - (BOOL)canPerformEditOperation:(unsigned long long)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countForAssetsOfKind:(short)arg1;
-- (void)dealloc;
+- (void)didSave;
 - (void)didTurnIntoFault;
 - (id)fastPointerAccessSetForAssets:(id)arg1;
 - (id)filteredIndexesForPredicate:(id)arg1;
 - (BOOL)isEmpty;
+- (BOOL)isValidForPersistence;
 - (id)keyAsset;
 - (BOOL)mayHaveAssetsInCommon:(id)arg1;
 - (id)mutableAssets;
+- (id)payloadForChangedKeys:(id)arg1;
+- (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
+- (void)prepareForDeletion;
 - (id)primitiveAssets;
+- (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (id)secondaryKeyAsset;
 - (void)setAssets:(id)arg1;
 - (void)setKeyAsset:(id)arg1;
@@ -62,6 +83,8 @@
 - (void)setupFetchRequest;
 - (id)tertiaryKeyAsset;
 - (void)updateSnapshotAndClearCaches:(id)arg1;
+- (BOOL)validForPersistenceChangedForChangedKeys:(id)arg1;
+- (void)willSave;
 
 @end
 

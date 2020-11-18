@@ -44,9 +44,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double viewControllerTopPadding; // @synthesize viewControllerTopPadding=_viewControllerTopPadding;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)captureUserAction:(int)arg1;
 - (id)infoCardChildPossibleActions;
-- (void)infoCardThemeChanged:(id)arg1;
+- (id)infoCardChildUnactionableUIElements;
+- (void)infoCardThemeChanged;
 - (id)initWithChildViewController:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (id)initWithPictureItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;
 - (id)initWithTextItemContainer:(id)arg1 title:(id)arg2 attribution:(id)arg3;

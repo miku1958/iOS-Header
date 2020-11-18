@@ -12,15 +12,16 @@
 {
     CALayer *_strokeLayer;
     SXSolidBorderView *_borderView;
-    struct CGRect _strokeRect;
 }
 
 @property (strong, nonatomic) SXSolidBorderView *borderView; // @synthesize borderView=_borderView;
 @property (strong, nonatomic) CALayer *strokeLayer; // @synthesize strokeLayer=_strokeLayer;
-@property (nonatomic) struct CGRect strokeRect; // @synthesize strokeRect=_strokeRect;
 
 - (void).cxx_destruct;
+- (void)discardContents;
+- (void)loadComponent:(id)arg1;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)renderContents;
 - (BOOL)userInteractable;
 
 @end

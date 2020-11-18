@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPMediaPlayback-Protocol.h>
 #import <MediaPlayer/MPMovieViewDelegate-Protocol.h>
 
-@class MPAVController, MPInlineVideoController, MPMovieAccessLog, MPMovieErrorLog, MPMoviePlayerController, MPMovieView, MPNowPlayingObserver, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIWindow;
+@class MPAVController, MPInlineVideoController, MPMovieAccessLog, MPMovieErrorLog, MPMoviePlayerController, MPMovieView, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIWindow;
 @protocol MPMoviePlayerControllerDelegate;
 
 @interface MPMoviePlayerControllerNew : NSObject <MPMovieViewDelegate, MPMediaPlayback>
@@ -25,7 +25,6 @@
     BOOL _moviesNeedReload;
     long long _movieSourceType;
     MPMovieView *_movieView;
-    MPNowPlayingObserver *_nowPlayingObserver;
     NSError *_playbackError;
     MPAVController *_player;
     NSMutableArray *_queuedThumbnailRequests;
@@ -58,7 +57,6 @@
     BOOL _didResignActive;
     BOOL _canShowControlsOverlayBeforeResignedActive;
     double _timeWhenResignedActive;
-    unsigned long long _movieIndexWhenResignedActive;
     MPMovieAccessLog *_cachedAccessLog;
     MPMovieErrorLog *_cachedErrorLog;
 }
@@ -110,7 +108,6 @@
 - (void)_movieTypeAvailableNotification:(id)arg1;
 - (id)_movies;
 - (id)_navigationBar;
-- (id)_nowPlayingMovie;
 - (void)_pausePlaybackForSuspension;
 - (double)_playableEndTime;
 - (double)_playableStartTime;
@@ -138,7 +135,6 @@
 - (void)_setMovieTitle:(id)arg1;
 - (void)_setMovies:(id)arg1;
 - (void)_setNavigationBarHidden:(BOOL)arg1;
-- (void)_setNowPlayingMovie:(id)arg1;
 - (void)_setShouldEnforceHDCP:(BOOL)arg1;
 - (void)_setUseApplicationAudioSession:(BOOL)arg1;
 - (void)_setUseHostedWindowWhenFullscreen:(BOOL)arg1;
@@ -202,7 +198,7 @@
 - (void)setFullscreen:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setInitialPlaybackTime:(double)arg1;
 - (void)setInlinePlaybackUsesTVOut:(BOOL)arg1;
-- (void)setMovieControlMode:(int)arg1;
+- (void)setMovieControlMode:(long long)arg1;
 - (void)setMovieSourceType:(long long)arg1;
 - (void)setPlayerItem:(id)arg1;
 - (void)setRepeatMode:(long long)arg1;

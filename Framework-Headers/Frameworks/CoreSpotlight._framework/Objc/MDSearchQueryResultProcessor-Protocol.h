@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSData, NSError, NSString;
+@class NSData, NSError, NSString;
 
 @protocol MDSearchQueryResultProcessor
 - (void)didFinishWithError:(NSError *)arg1;
-- (void)didResolveFriendlyAttributeNames:(NSArray *)arg1;
 - (void)didReturnResults:(long long)arg1 resultsData:(NSData *)arg2 oidData:(NSData *)arg3 protectionClass:(NSString *)arg4 completionHandler:(void (^)(void))arg5;
 @end
 

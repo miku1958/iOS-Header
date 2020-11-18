@@ -27,13 +27,15 @@
 @property (copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
 @property (weak, nonatomic) EKParticipant *participant; // @synthesize participant=_participant;
 
-+ (id)contactStore;
 + (id)participantForSortingWithEKParticipant:(id)arg1;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
+- (long long)compareByContactNames:(id)arg1;
+- (long long)compareByEmailThenByContactName:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)displayName;
+- (BOOL)participantIsOptional:(id)arg1;
 
 @end
 

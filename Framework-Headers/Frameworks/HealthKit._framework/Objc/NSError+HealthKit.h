@@ -7,6 +7,16 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (HealthKit)
++ (id)_hk_OAuth2_defaultDescriptionForErrorCode:(long long)arg1;
++ (id)_hk_OAuth2_error:(long long)arg1 userInfo:(id)arg2 underlyingError:(id)arg3;
++ (id)_hk_OAuth2_errorForBadRequestStatusWithResponse:(id)arg1 data:(id)arg2;
++ (id)_hk_OAuth2_errorForUnauthorizedStatusWithRequest:(id)arg1 response:(id)arg2;
++ (id)_hk_OAuth2_errorFromResponseData:(id)arg1 defaultError:(id)arg2 parseError:(out id *)arg3;
++ (id)_hk_OAuth2_rawErrorForRequest:(id)arg1 response:(id)arg2 data:(id)arg3;
++ (id)hk_OAuth2_error:(long long)arg1;
++ (id)hk_OAuth2_error:(long long)arg1 underlyingError:(id)arg2;
++ (id)hk_OAuth2_errorForRequest:(id)arg1 response:(id)arg2 data:(id)arg3;
++ (id)hk_OAuth2_errorFromErrorValue:(id)arg1;
 + (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3;
 + (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 description:(id)arg3 underlyingError:(id)arg4;
 + (BOOL)hk_assignError:(id *)arg1 code:(long long)arg2 format:(id)arg3;
@@ -14,8 +24,14 @@
 + (id)hk_error:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
 + (id)hk_error:(long long)arg1 format:(id)arg2;
 + (id)hk_featureUnavailableForProfileError;
++ (id)hk_healthDataUnavailableError;
 + (id)hk_invalidProfileError;
 + (id)hk_protectedDataInaccessibilityError;
+- (id)_hk_OAuth2_errorByAddingItemsToUserInfo:(id)arg1;
+- (BOOL)hk_OAuth2_isAccessDeniedError;
+- (BOOL)hk_OAuth2_isBearerAuthenticationError;
+- (BOOL)hk_OAuth2_isOAuth2Error;
+- (BOOL)hk_OAuth2_isOAuth2ErrorWithCode:(long long)arg1;
 - (id)hk_errorByAddingEntriesToUserInfo:(id)arg1;
 - (BOOL)hk_isAuthorizationDeniedError;
 - (BOOL)hk_isAuthorizationNotDeterminedError;
@@ -32,6 +48,7 @@
 - (BOOL)hk_isTimeoutError;
 - (BOOL)hk_isUserCanceledError;
 - (BOOL)hk_isXPCConnectionError;
+- (BOOL)hk_isXPCConnectionInterruptedError;
 - (id)hk_sanitizedError;
 - (id)hk_underlyingErrorWithDomain:(id)arg1;
 @end

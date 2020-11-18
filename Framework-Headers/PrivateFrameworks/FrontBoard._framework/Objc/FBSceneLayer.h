@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
+#import <FrontBoard/NSCopying-Protocol.h>
 
 @class NSString;
 
-@interface FBSceneLayer : NSObject <BSDescriptionProviding>
+@interface FBSceneLayer : NSObject <BSDescriptionProviding, NSCopying>
 {
     long long _type;
     double _level;
@@ -33,6 +34,7 @@
 
 + (id)layerWithFBSSceneLayer:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;

@@ -17,6 +17,7 @@
 - (void)stopPinchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopPitchingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopRotatingWithFocusPoint:(struct CGPoint)arg1;
+- (BOOL)tapAtPoint:(struct CGPoint)arg1;
 - (void)transferGestureState:(id<VKGesturingCameraController>)arg1;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;
 - (void)updatePinchWithFocusPoint:(struct CGPoint)arg1 oldFactor:(double)arg2 newFactor:(double)arg3;
@@ -25,6 +26,7 @@
 - (void)zoom:(double)arg1 withFocusPoint:(struct CGPoint)arg2 completionHandler:(void (^)(void))arg3;
 
 @optional
+- (void)willStopPanningAtPoint:(struct CGPoint)arg1 withVelocity:(struct CGPoint)arg2;
 - (void)zoomToLevel:(double)arg1 withFocusPoint:(struct CGPoint)arg2;
 @end
 

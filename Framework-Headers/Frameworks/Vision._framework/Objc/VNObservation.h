@@ -29,6 +29,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRequestRevision:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;

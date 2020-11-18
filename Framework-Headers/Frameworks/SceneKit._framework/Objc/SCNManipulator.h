@@ -75,6 +75,7 @@
     NSOrderedSet *_cloneSet;
     BOOL _cloning;
     unsigned long long _features;
+    BOOL _alternateMode;
 }
 
 @property (readonly) SCNAuthoringEnvironment *authoringEnvironment;
@@ -90,6 +91,7 @@
 
 - (BOOL)_applyWithEvent:(CDStruct_8affffdd)arg1;
 - (void)_deleteOriginalData;
+- (unsigned long long)_effectiveFeatures;
 - (void)_prepareSnapToAlignData:(unsigned short)arg1 minOffset:maxOffset: /* Error: Ran out of types for this method. */;
 - (void)_saveOriginalData;
 - (void)_setAuthoringEnvironment:(id)arg1;
@@ -114,6 +116,7 @@
 - (void)prepareSnapToAlignDataIfNeeded;
 - (void)removeClonesFromScene;
 - (id)scene;
+- (void)setAlternateMode:(BOOL)arg1;
 - (id)setupClones;
 - (void)setupNode;
 - (id)snapGuideIndexesOnAxis:(unsigned long long)arg1;

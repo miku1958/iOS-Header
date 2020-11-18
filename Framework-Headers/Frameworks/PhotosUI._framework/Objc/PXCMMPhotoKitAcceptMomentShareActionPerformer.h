@@ -6,9 +6,15 @@
 
 #import <PhotosUICore/PXCMMActionPerformer.h>
 
-@interface PXCMMPhotoKitAcceptMomentShareActionPerformer : PXCMMActionPerformer
+#import <PhotosUICore/PXCMMPhotoKitActionPerformer-Protocol.h>
+
+@class PXCMMPhotoKitSession;
+
+@interface PXCMMPhotoKitAcceptMomentShareActionPerformer : PXCMMActionPerformer <PXCMMPhotoKitActionPerformer>
 {
 }
+
+@property (readonly, nonatomic) PXCMMPhotoKitSession *session;
 
 - (BOOL)canPerformActionWithSession:(id)arg1;
 - (void)performBackgroundTask;

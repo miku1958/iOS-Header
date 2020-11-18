@@ -4,15 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TelephonyUtilities/TURouteControllerXPCServer-Protocol.h>
+#import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSDictionary;
-@protocol TURouteControllerClient;
+@class NSDictionary, NSString, TURouteController;
 
-@protocol TURouteControllerActions <TURouteControllerXPCServer>
-
-@property (strong, nonatomic) id<TURouteControllerClient> routeControllerClient;
-@property (readonly, nonatomic) NSDictionary *routesByUniqueIdentifier;
-
+@protocol TURouteControllerActions <NSObject>
+- (void)pickRouteWithUniqueIdentifier:(NSString *)arg1 forRouteController:(TURouteController *)arg2;
+- (NSDictionary *)routesByUniqueIdentifierForRouteController:(TURouteController *)arg1;
 @end
 

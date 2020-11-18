@@ -24,7 +24,6 @@
 - (struct __CFNetServiceBrowser *)_internalNetServiceBrowser;
 - (void)_setIncludesAWDL:(BOOL)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)removeFromRunLoop:(id)arg1 forMode:(id)arg2;
 - (void)scheduleInRunLoop:(id)arg1 forMode:(id)arg2;

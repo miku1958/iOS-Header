@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class AVTUIEnvironment, NSArray, NSMutableDictionary;
+@class AVTAvatarAttributeEditorState, AVTUIEnvironment, NSArray, NSMutableDictionary;
 @protocol AVTTaskScheduler;
 
 @interface AVTAvatarAttributeEditorDataSource : NSObject
 {
     unsigned long long _currentCategoryIndex;
+    AVTAvatarAttributeEditorState *_editorState;
     NSArray *_categories;
     NSMutableDictionary *_sectionControllers;
     AVTUIEnvironment *_environment;
@@ -20,6 +21,7 @@
 
 @property (strong, nonatomic) NSArray *categories; // @synthesize categories=_categories;
 @property (nonatomic) unsigned long long currentCategoryIndex; // @synthesize currentCategoryIndex=_currentCategoryIndex;
+@property (readonly, nonatomic) AVTAvatarAttributeEditorState *editorState; // @synthesize editorState=_editorState;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly, nonatomic) id<AVTTaskScheduler> renderingScheduler; // @synthesize renderingScheduler=_renderingScheduler;
 @property (strong, nonatomic) NSMutableDictionary *sectionControllers; // @synthesize sectionControllers=_sectionControllers;
@@ -32,13 +34,17 @@
 - (void)discardControllersForNonCurrentCategory;
 - (long long)indexForSection:(id)arg1 inCategoryAtIndex:(long long)arg2;
 - (id)indexesForSectionsExcludingSectionsWithIdentifiers:(id)arg1 inCategoryAtIndex:(long long)arg2;
-- (id)initWithCategories:(id)arg1 currentCategoryIdentifier:(id)arg2 renderingScheduler:(id)arg3 environment:(id)arg4;
+- (id)indexesForSectionsPresentIn:(id)arg1 butNotIn:(id)arg2;
+- (id)initWithCategories:(id)arg1 currentCategoryIdentifier:(id)arg2 renderingScheduler:(id)arg3 editorState:(id)arg4 environment:(id)arg5;
 - (id)namesForCategories;
 - (long long)numberOfCategories;
 - (long long)numberOfSectionsForCategoryAtIndex:(long long)arg1;
 - (void)reloadWithCategories:(id)arg1 currentCategoryIndex:(unsigned long long)arg2;
+- (id)sectionControllerForSection:(id)arg1;
 - (id)sectionControllerForSectionIndex:(long long)arg1 inCategoryAtIndex:(long long)arg2;
 - (id)sectionForIndex:(long long)arg1 inCategoryAtIndex:(long long)arg2;
+- (BOOL)shouldDisplaySectionForCategory:(long long)arg1;
+- (BOOL)shouldDisplaySectionWithDisplayCondition:(id)arg1 inCategoryAtIndex:(unsigned long long)arg2;
 
 @end
 

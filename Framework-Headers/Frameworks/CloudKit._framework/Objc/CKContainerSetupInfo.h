@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKAccountOverrideInfo, CKContainerID, NSDictionary, NSString;
 
-@interface CKContainerSetupInfo : NSObject <NSSecureCoding>
+@interface CKContainerSetupInfo : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _captureResponseHTTPHeaders;
     BOOL _wantsSiloedContext;
     BOOL _useZoneWidePCS;
     BOOL _holdAllOperations;
     BOOL _returnPCSMetadata;
-    BOOL _useMMCSEncryptionV2;
     BOOL _bypassPCSEncryption;
     BOOL _forceEnableReadOnlyManatee;
     BOOL _masqueradeAsThirdPartyApp;
@@ -26,7 +26,9 @@
     NSString *_sourceApplicationBundleIdentifier;
     CKAccountOverrideInfo *_accountInfoOverride;
     NSDictionary *_fakeEntitlements;
+    unsigned long long _mmcsEncryptionSupport;
     NSString *_containerEncryptionServiceName;
+    NSString *_personaIdentifier;
 }
 
 @property (strong, nonatomic) CKAccountOverrideInfo *accountInfoOverride; // @synthesize accountInfoOverride=_accountInfoOverride;
@@ -39,14 +41,16 @@
 @property (nonatomic) BOOL forceEnableReadOnlyManatee; // @synthesize forceEnableReadOnlyManatee=_forceEnableReadOnlyManatee;
 @property (nonatomic) BOOL holdAllOperations; // @synthesize holdAllOperations=_holdAllOperations;
 @property (nonatomic) BOOL masqueradeAsThirdPartyApp; // @synthesize masqueradeAsThirdPartyApp=_masqueradeAsThirdPartyApp;
+@property (nonatomic) unsigned long long mmcsEncryptionSupport; // @synthesize mmcsEncryptionSupport=_mmcsEncryptionSupport;
+@property (strong, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
 @property (nonatomic) BOOL returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
-@property (nonatomic) BOOL useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
 @property (nonatomic) BOOL useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;
 @property (nonatomic) BOOL wantsSiloedContext; // @synthesize wantsSiloedContext=_wantsSiloedContext;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

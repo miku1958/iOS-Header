@@ -53,7 +53,6 @@
 - (void)dealloc;
 - (id)externalDeviceHIDWithUUID:(id)arg1;
 - (struct OpaqueFigEndpoint *)figEndpoint;
-- (void)finalize;
 - (id)init;
 - (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
 - (void)requestCarUI;

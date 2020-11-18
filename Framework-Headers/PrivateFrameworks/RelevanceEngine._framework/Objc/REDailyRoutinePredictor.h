@@ -33,6 +33,7 @@
 
 - (void).cxx_destruct;
 - (id)_eveningRoutineIntervalForEvening:(id)arg1;
+- (id)_init;
 - (id)_morningRoutineIntervalForMorning:(id)arg1;
 - (void)_queue_didBeginEveningRoutine;
 - (void)_queue_didBeginMorningRoutine;
@@ -43,7 +44,6 @@
 - (void)_setOverrideRoutineType:(unsigned long long)arg1;
 - (void)_updateCurrentRoutine;
 - (void)dealloc;
-- (id)init;
 - (void)periodOfDayPredictorDidUpdateCurrentPeriodOfDay:(id)arg1;
 - (void)periodOfDayPredictorDidUpdatePredictedIntervals:(id)arg1;
 - (id)routineIntervalForNextRoutine:(unsigned long long)arg1;

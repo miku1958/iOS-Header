@@ -15,8 +15,8 @@
     NSLayoutConstraint *_constraintWidth;
 }
 
-@property (nonatomic) NSLayoutConstraint *constraintHeight; // @synthesize constraintHeight=_constraintHeight;
-@property (nonatomic) NSLayoutConstraint *constraintWidth; // @synthesize constraintWidth=_constraintWidth;
+@property (strong, nonatomic) NSLayoutConstraint *constraintHeight; // @synthesize constraintHeight=_constraintHeight;
+@property (strong, nonatomic) NSLayoutConstraint *constraintWidth; // @synthesize constraintWidth=_constraintWidth;
 @property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 
 + (id)bundleForLocalizedString;
@@ -24,6 +24,7 @@
 + (id)dimensionsForVideoMarker;
 + (id)localizedAdMarkerText;
 + (id)localizedLearnMoreText;
+- (void).cxx_destruct;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (void)dealloc;

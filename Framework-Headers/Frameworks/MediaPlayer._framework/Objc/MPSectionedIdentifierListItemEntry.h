@@ -12,40 +12,52 @@
 
 @interface MPSectionedIdentifierListItemEntry : MPSectionedIdentifierListEntry <MPSectionedIdentifierListEnumerationItem>
 {
+    BOOL _hasClones;
+    BOOL _dataSourceCloned;
     BOOL _dataSourceMoved;
     BOOL _userRemoved;
     BOOL _userMoved;
+    BOOL _userCloned;
     NSString *_itemIdentifier;
     MPSectionedIdentifierListItemEntry *_rootEntry;
     NSMutableArray *_clonedEntries;
 }
 
 @property (readonly, nonatomic) long long branchDepth;
-@property (readonly, nonatomic) NSMutableArray *clonedEntries; // @synthesize clonedEntries=_clonedEntries;
+@property (strong, nonatomic) NSMutableArray *clonedEntries; // @synthesize clonedEntries=_clonedEntries;
+@property (readonly, nonatomic, getter=isDataSourceCloned) BOOL dataSourceCloned; // @synthesize dataSourceCloned=_dataSourceCloned;
 @property (readonly, nonatomic, getter=isDataSourceMoved) BOOL dataSourceMoved; // @synthesize dataSourceMoved=_dataSourceMoved;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long entryType;
+@property (readonly, nonatomic) BOOL hasClones; // @synthesize hasClones=_hasClones;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (readonly, nonatomic) MPSectionedIdentifierListItemEntry *latestDataSourceClone;
 @property (readonly, nonatomic) MPSectionedIdentifierListItemEntry *latestUserClone;
 @property (readonly, nonatomic, getter=isRemoved) BOOL removed;
 @property (weak, nonatomic) MPSectionedIdentifierListItemEntry *rootEntry; // @synthesize rootEntry=_rootEntry;
 @property (readonly, nonatomic) NSString *sectionIdentifier;
-@property (readonly, nonatomic) CDStruct_7fd8f4e3 state;
+@property (readonly, nonatomic) CDStruct_d4f770cf state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isUserCloned) BOOL userCloned; // @synthesize userCloned=_userCloned;
 @property (readonly, nonatomic, getter=isUserMoved) BOOL userMoved; // @synthesize userMoved=_userMoved;
 @property (readonly, nonatomic, getter=isUserRemoved) BOOL userRemoved; // @synthesize userRemoved=_userRemoved;
 
 + (id)itemEntryWithSectionIdentifier:(id)arg1 itemIdentifier:(id)arg2;
 + (id)itemEntryWithSectionIdentifier:(id)arg1 itemIdentifier:(id)arg2 generationPrefix:(id)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (long long)_generationNumber;
-- (id)initWithPositionKey:(id)arg1 sectionIdentifier:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isDataSourceRemoved;
 - (id)newClonedEntry;
+- (void)prepareForDealloc;
+- (void)setDataSourceCloned;
 - (void)setDataSourceMoved;
 - (void)setDataSourceRemoved;
+- (void)setUserCloned;
 - (void)setUserMoved;
 - (void)setUserRemoved;
 

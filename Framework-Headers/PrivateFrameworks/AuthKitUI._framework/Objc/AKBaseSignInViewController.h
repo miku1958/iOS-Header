@@ -25,6 +25,7 @@
 @property (nonatomic) BOOL usesDarkMode; // @synthesize usesDarkMode=_usesDarkMode;
 
 - (void).cxx_destruct;
+- (void)_authenticateWithContext:(id)arg1;
 - (void)_beginAuthenticationIfPossibleWithOption:(unsigned long long)arg1 withUsername:(id)arg2 password:(id)arg3;
 - (BOOL)_canBeginAuthenticationWithOption:(unsigned long long)arg1;
 - (void)_hidebusyWorkUI;

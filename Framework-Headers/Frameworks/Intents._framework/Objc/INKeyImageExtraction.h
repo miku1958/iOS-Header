@@ -9,18 +9,21 @@
 #import <Intents/INImageStoring-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INImage, NSString;
+@class INImage, NSDictionary, NSMutableDictionary, NSString;
 
 @interface INKeyImageExtraction : NSObject <INImageStoring, NSSecureCoding>
 {
-    INImage *_keyImage;
+    NSMutableDictionary *_keyImagesByType;
+    long long _imageTypeToStore;
     NSString *_proxyIdentifier;
 }
 
+@property (nonatomic, setter=_setImageTypeToStore:) long long _imageTypeToStore; // @synthesize _imageTypeToStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) INImage *keyImage; // @synthesize keyImage=_keyImage;
+@property (copy, nonatomic) INImage *keyImage;
+@property (copy, nonatomic) NSDictionary *keyImagesByType; // @synthesize keyImagesByType=_keyImagesByType;
 @property (copy, nonatomic) NSString *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
 @property (readonly, nonatomic) NSString *serviceIdentifier;
 @property (readonly, nonatomic) unsigned long long servicePriority;

@@ -14,24 +14,23 @@ __attribute__((visibility("hidden")))
 @interface UISectionRowData : NSObject <NSCopying>
 {
     BOOL _valid;
-    double _headerHeight;
-    double _maxHeaderTitleWidth;
-    double _footerHeight;
-    double _maxFooterTitleWidth;
+    unsigned long long _numRows;
+    double _sectionOffset;
+    BOOL _sectionOffsetValid;
+    long long _sectionRowOffset;
+    double _sectionHeight;
     double _headerOffset;
     double _footerOffset;
-    unsigned long long _numRows;
+    long long _headerAlignment;
+    long long _footerAlignment;
+    double _maxHeaderTitleWidth;
+    double _maxFooterTitleWidth;
+    UITableViewRowData *_rowData;
+    double _headerHeight;
+    double _footerHeight;
     unsigned long long _arrayLength;
     float *_rowHeights;
     double *_rowOffsets;
-    BOOL _estimatesHeights;
-    double _sectionHeight;
-    long long _headerAlignment;
-    long long _footerAlignment;
-    UITableViewRowData *_rowData;
-    BOOL _sectionOffsetValid;
-    double _sectionOffset;
-    long long _sectionRowOffset;
 }
 
 - (double)_defaultSectionFooterHeightForSection:(long long)arg1 tableView:(id)arg2 tableViewRowData:(id)arg3;
@@ -41,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (long long)_rowForPoint:(struct CGPoint)arg1 beginningWithRow:(long long)arg2 numberOfRows:(long long)arg3 extraHitSpaceBetweenRows:(double)arg4;
 - (long long)_rowForPoint:(struct CGPoint)arg1 extraHitSpaceBetweenRows:(double)arg2;
 - (void)addOffset:(double)arg1 fromRow:(long long)arg2;
+- (void)allocateArraysWithCapacity:(unsigned long long)arg1 forSection:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (double)defaultSectionFooterHeight;
@@ -58,6 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)refreshWithSection:(long long)arg1 tableView:(id)arg2 tableViewRowData:(id)arg3;
 - (int)sectionLocationForReorderedRow:(long long)arg1;
 - (int)sectionLocationForRow:(long long)arg1;
+- (void)setHeight:(double)arg1 forFooterInSection:(long long)arg2;
+- (void)setHeight:(double)arg1 forHeaderInSection:(long long)arg2;
 - (void)setHeight:(double)arg1 forRow:(long long)arg2 inSection:(long long)arg3;
 - (void)updateSectionHeightWithDelta:(double)arg1 section:(long long)arg2 updateFooterOffset:(BOOL)arg3;
 

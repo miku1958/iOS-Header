@@ -48,7 +48,6 @@
 - (id)_escapeOfferForSingleApprovalWithMask:(unsigned long long)arg1;
 - (id)_escapeOffersForgotAllWithMask:(unsigned long long)arg1 presenter:(id)arg2 devices:(id)arg3;
 - (id)_localDeviceClass;
-- (id)_newestDeviceFromDevices:(id)arg1;
 - (void)_presentRemoteApprovalViewControllerWithEscapeOfferMask:(unsigned long long)arg1;
 - (void)_presentRemoteSecretControllerWithNewestDevice:(id)arg1;
 - (void)_presentRootController:(id)arg1 completion:(CDUnknownBlockType)arg2;

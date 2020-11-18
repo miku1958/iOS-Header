@@ -8,25 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOABDebugPanelExperimentBranch, NSMutableArray, PBUnknownFields;
+@class GEOABDebugPanelExperimentBranch, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOABClientDebugPanelExperimentBranch : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_configKeyValues;
     GEOABDebugPanelExperimentBranch *_debugExperimentBranch;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_configKeyValues:1;
+        unsigned int read_debugExperimentBranch:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_configKeyValues:1;
+        unsigned int wrote_debugExperimentBranch:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *configKeyValues; // @synthesize configKeyValues=_configKeyValues;
-@property (strong, nonatomic) GEOABDebugPanelExperimentBranch *debugExperimentBranch; // @synthesize debugExperimentBranch=_debugExperimentBranch;
+@property (strong, nonatomic) NSMutableArray *configKeyValues;
+@property (strong, nonatomic) GEOABDebugPanelExperimentBranch *debugExperimentBranch;
 @property (readonly, nonatomic) BOOL hasDebugExperimentBranch;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)configKeyValueType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsConfigKeyValue:(id)arg1;
+- (void)_readConfigKeyValues;
+- (void)_readDebugExperimentBranch;
 - (void)addConfigKeyValue:(id)arg1;
 - (void)clearConfigKeyValues;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (id)configKeyValueAtIndex:(unsigned long long)arg1;
 - (unsigned long long)configKeyValuesCount;
 - (void)copyTo:(id)arg1;
@@ -36,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

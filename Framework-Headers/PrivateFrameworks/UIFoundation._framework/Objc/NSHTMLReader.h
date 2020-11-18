@@ -61,6 +61,8 @@
     } _flags;
 }
 
++ (BOOL)_usesLibXML2ForOptions:(id)arg1;
++ (BOOL)allowsAttributedStringAgentForOptions:(id)arg1;
 + (id)defaultParagraphStyle;
 + (void)initialize;
 - (Class)_DOMHTMLTableCellElementClass;

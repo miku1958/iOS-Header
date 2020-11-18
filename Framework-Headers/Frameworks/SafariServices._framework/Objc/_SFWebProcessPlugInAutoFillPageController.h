@@ -9,8 +9,7 @@
 #import <SafariServices/SFFormAutoFiller-Protocol.h>
 #import <SafariServices/SFInjectedJavaScriptWebProcessController-Protocol.h>
 
-@class NSString, NSTimer, WKWebProcessPlugInScriptWorld, _SFFormMetadataController, _WKRemoteObjectInterface;
-@protocol _SFAutomaticBugCaptureObserver;
+@class NSString, WKWebProcessPlugInScriptWorld, _SFFormMetadataController, _WKRemoteObjectInterface;
 
 __attribute__((visibility("hidden")))
 @interface _SFWebProcessPlugInAutoFillPageController : _SFWebProcessPlugInPageController <SFFormAutoFiller, SFInjectedJavaScriptWebProcessController>
@@ -18,23 +17,16 @@ __attribute__((visibility("hidden")))
     _WKRemoteObjectInterface *_activityControllerInterface;
     _WKRemoteObjectInterface *_autoFillerInterface;
     WKWebProcessPlugInScriptWorld *_isolatedWorld;
-    id<_SFAutomaticBugCaptureObserver> _automaticBugCaptureObserver;
-    NSTimer *_deferredLoadingWatchdogTimer;
     _SFFormMetadataController *_formMetadataController;
-    unsigned long long _loadDeferringReasons;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _SFFormMetadataController *formMetadataController; // @synthesize formMetadataController=_formMetadataController;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned long long loadDeferringReasons; // @synthesize loadDeferringReasons=_loadDeferringReasons;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_automaticBugCaptureObserver;
-- (void)_invalidateDeferredLoadingWatchdogTimer;
-- (void)addLoadDeferringReasons:(unsigned long long)arg1;
 - (void)annotateForm:(long long)arg1 inFrame:(id)arg2 withValues:(id)arg3;
 - (void)autoFillForm:(long long)arg1 inFrame:(id)arg2 withGeneratedPassword:(id)arg3;
 - (void)autoFillFormAsynchronouslyInFrame:(id)arg1 withValues:(id)arg2 setAutoFilled:(BOOL)arg3 focusFieldAfterFilling:(BOOL)arg4 fieldToFocus:(id)arg5;
@@ -52,8 +44,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithPlugIn:(id)arg1 contextController:(id)arg2;
 - (void)removeAutomaticPasswordElementsInFrame:(id)arg1 focusedPasswordControlUniqueID:(id)arg2 passwordControlUniqueIDs:(id)arg3;
 - (void)removeAutomaticPasswordVisualTreatmentInFrame:(id)arg1 passwordControlUniqueIDs:(id)arg2;
-- (void)removeLoadDeferringReasons:(unsigned long long)arg1;
-- (void)resumeLoadingAfterSavingFormData;
 - (void)runJavaScriptForActivity:(id)arg1 withScript:(id)arg2 object:(id)arg3 invokeMethod:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)setFormControls:(id)arg1 areAutoFilled:(BOOL)arg2 andClearField:(id)arg3 inFrame:(id)arg4;
 - (void)substitutePasswordElementsWithAutomaticPasswordElementsInFrame:(id)arg1 formID:(long long)arg2 focusedPasswordControlUniqueID:(id)arg3 passwordControlUniqueIDs:(id)arg4 automaticPassword:(id)arg5 blurAfterSubstitution:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;

@@ -43,7 +43,7 @@
 @property (readonly, nonatomic) BOOL shouldPlaceDeleteInCenterToolbarPosition;
 @property (readonly, nonatomic) BOOL shouldPlaceSelectAllButtonInRightNavigationBar;
 @property (readonly, nonatomic) long long sizeSubclass; // @synthesize sizeSubclass=_sizeSubclass;
-@property (readonly, nonatomic) int thumbnailImageFormat;
+@property (readonly, nonatomic) unsigned short thumbnailImageFormat;
 @property (readonly, nonatomic) BOOL usesStackPopTransition; // @synthesize usesStackPopTransition=_usesStackPopTransition;
 @property (readonly, nonatomic) BOOL wantsBackButtonTitleForPhotoBrowser;
 @property (readonly, nonatomic) BOOL wantsCustomNavigationTransition;

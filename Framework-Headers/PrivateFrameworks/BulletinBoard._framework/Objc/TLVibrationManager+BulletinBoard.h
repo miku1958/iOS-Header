@@ -7,7 +7,7 @@
 #import <ToneLibrary/TLVibrationManager.h>
 
 @interface TLVibrationManager (BulletinBoard)
-- (BOOL)_bb_isVibrationEnabledForAlertType:(long long)arg1 topic:(id)arg2;
+- (BOOL)bb_isVibrationEnabledForAlertType:(long long)arg1 topic:(id)arg2;
 - (BOOL)bb_isVibrationEnabledForSectionInfo:(id)arg1;
 @end
 

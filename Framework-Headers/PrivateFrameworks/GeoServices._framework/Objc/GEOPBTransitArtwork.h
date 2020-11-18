@@ -9,33 +9,48 @@
 #import <GeoServices/GEOTransitArtworkDataSource-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitIcon, GEOPBTransitShield, NSString, PBUnknownFields;
-@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource;
+@class GEOPBTransitIcon, GEOPBTransitShield, NSString, PBDataReader, PBUnknownFields;
+@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
 @interface GEOPBTransitArtwork : PBCodable <GEOTransitArtworkDataSource, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_accessibilityString;
+    GEOPBTransitShield *_iconFallbackShield;
+    GEOPBTransitIcon *_icon;
+    GEOPBTransitShield *_shield;
     int _artworkType;
     int _artworkUse;
     int _badge;
-    GEOPBTransitIcon *_icon;
-    GEOPBTransitShield *_iconFallbackShield;
-    GEOPBTransitShield *_shield;
     struct {
-        unsigned int artworkType:1;
-        unsigned int artworkUse:1;
-        unsigned int badge:1;
-    } _has;
+        unsigned int has_artworkType:1;
+        unsigned int has_artworkUse:1;
+        unsigned int has_badge:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_accessibilityString:1;
+        unsigned int read_iconFallbackShield:1;
+        unsigned int read_icon:1;
+        unsigned int read_shield:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_accessibilityString:1;
+        unsigned int wrote_iconFallbackShield:1;
+        unsigned int wrote_icon:1;
+        unsigned int wrote_shield:1;
+        unsigned int wrote_artworkType:1;
+        unsigned int wrote_artworkUse:1;
+        unsigned int wrote_badge:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *accessibilityString; // @synthesize accessibilityString=_accessibilityString;
+@property (strong, nonatomic) NSString *accessibilityString;
 @property (readonly, nonatomic) NSString *accessibilityText;
-@property (readonly, nonatomic) long long artworkSourceType;
-@property (nonatomic) int artworkType; // @synthesize artworkType=_artworkType;
-@property (nonatomic) int artworkUse; // @synthesize artworkUse=_artworkUse;
-@property (readonly, nonatomic) long long artworkUseType;
-@property (nonatomic) int badge; // @synthesize badge=_badge;
+@property (readonly, nonatomic) int artworkSourceType;
+@property (nonatomic) int artworkType;
+@property (nonatomic) int artworkUse;
+@property (readonly, nonatomic) int artworkUseType;
+@property (nonatomic) int badge;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAccessibilityString;
@@ -47,27 +62,35 @@
 @property (readonly, nonatomic) BOOL hasRoutingIncidentBadge;
 @property (readonly, nonatomic) BOOL hasShield;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) GEOPBTransitIcon *icon; // @synthesize icon=_icon;
+@property (strong, nonatomic) GEOPBTransitIcon *icon;
 @property (readonly, nonatomic) id<GEOTransitIconDataSource> iconDataSource;
-@property (strong, nonatomic) GEOPBTransitShield *iconFallbackShield; // @synthesize iconFallbackShield=_iconFallbackShield;
+@property (strong, nonatomic) GEOPBTransitShield *iconFallbackShield;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> iconFallbackShieldDataSource;
-@property (strong, nonatomic) GEOPBTransitShield *shield; // @synthesize shield=_shield;
+@property (strong, nonatomic) GEOPBTransitShield *shield;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> shieldDataSource;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<GEOTransitTextDataSource> textDataSource;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsArtworkType:(id)arg1;
 - (int)StringAsArtworkUse:(id)arg1;
 - (int)StringAsBadge:(id)arg1;
+- (void)_readAccessibilityString;
+- (void)_readIcon;
+- (void)_readIconFallbackShield;
+- (void)_readShield;
 - (id)artworkTypeAsString:(int)arg1;
 - (id)artworkUseAsString:(int)arg1;
 - (id)badgeAsString:(int)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

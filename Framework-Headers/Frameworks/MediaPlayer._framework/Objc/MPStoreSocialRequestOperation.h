@@ -6,13 +6,13 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class NSObject, SSVLoadURLOperation;
+@class ICStoreURLRequest, NSObject;
 @protocol MPStoreSocialRequestOperationDataSource, OS_dispatch_queue;
 
 @interface MPStoreSocialRequestOperation : MPAsyncOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    SSVLoadURLOperation *_URLOperation;
+    ICStoreURLRequest *_request;
     id<MPStoreSocialRequestOperationDataSource> _dataSource;
     CDUnknownBlockType _responseHandler;
 }
@@ -24,7 +24,7 @@
 + (id)_stringRepresentationForHTTPMethod:(long long)arg1;
 + (id)_urlStringForKey:(id)arg1 inBag:(id)arg2;
 - (void).cxx_destruct;
-- (id)_storeURLRequestPropertiesUsingBag:(id)arg1;
+- (id)_requestURLFromBagDictionary:(id)arg1;
 - (void)cancel;
 - (void)execute;
 - (id)initWithDataSource:(id)arg1;

@@ -19,6 +19,7 @@
 @property (nonatomic, getter=isPlaying) BOOL playing;
 @property (strong, nonatomic) SCNNode *pointOfView;
 @property (strong, nonatomic) SCNScene *scene;
+@property (nonatomic) BOOL temporalAntialiasingEnabled;
 
 + (id)rendererWithContext:(void *)arg1 options:(NSDictionary *)arg2;
 + (id)rendererWithDevice:(id<MTLDevice>)arg1 options:(NSDictionary *)arg2;

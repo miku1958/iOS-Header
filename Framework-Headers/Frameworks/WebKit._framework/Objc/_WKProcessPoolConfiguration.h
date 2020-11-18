@@ -30,7 +30,9 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long diskCacheSizeOverride;
 @property (nonatomic) BOOL diskCacheSpeculativeValidationEnabled;
+@property (nonatomic) unsigned long long downloadMonitorSpeedMultiplierForTesting;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic, setter=setHSTSStorageDirectory:) NSURL *hstsStorageDirectory;
 @property (nonatomic) BOOL ignoreSynchronousMessagingTimeoutsForTesting;
 @property (copy, nonatomic) NSURL *injectedBundleURL;
 @property (nonatomic) unsigned long long maximumProcessCount;
@@ -45,6 +47,7 @@
 @property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressesConnectionTerminationOnSystemChange;
+@property (nonatomic) BOOL usesSingleWebProcess;
 @property (nonatomic) BOOL usesWebProcessCache;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

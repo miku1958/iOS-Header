@@ -30,7 +30,6 @@
 + (id)_rawValuesForKeys:(id)arg1 domain:(id)arg2 category:(long long)arg3 database:(id)arg4 error:(id *)arg5;
 + (id)_rawValuesForKeys:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (BOOL)_readRawValuesInCategory:(long long)arg1 predicate:(id)arg2 database:(id)arg3 error:(id *)arg4 usingBlock:(CDUnknownBlockType)arg5;
-+ (id)_safeDomainWithDomain:(id)arg1;
 + (BOOL)_setRawKeysAndValues:(id)arg1 domain:(id)arg2 category:(long long)arg3 database:(id)arg4 error:(id *)arg5;
 + (BOOL)_setRawKeysAndValues:(id)arg1 domain:(id)arg2 category:(long long)arg3 profile:(id)arg4 error:(id *)arg5;
 + (long long)_shouldUpdateWithPolicy:(long long)arg1 key:(id)arg2 domain:(id)arg3 category:(long long)arg4 modificationDate:(double)arg5 database:(id)arg6 error:(id *)arg7;

@@ -10,9 +10,16 @@ __attribute__((visibility("hidden")))
 @interface VCMediaNegotiatorMomentsResults : NSObject
 {
     int _capabilities;
+    int _imageType;
+    int _videoCodec;
+    int _multiwayCapabilities;
 }
 
+@property (readonly, nonatomic) unsigned int avcMomentsCapabilities;
 @property (nonatomic) int capabilities; // @synthesize capabilities=_capabilities;
+@property (nonatomic) int imageType; // @synthesize imageType=_imageType;
+@property (nonatomic) int mulitwayCapabilities; // @synthesize mulitwayCapabilities=_multiwayCapabilities;
+@property (nonatomic) int videoCodec; // @synthesize videoCodec=_videoCodec;
 
 
 @end

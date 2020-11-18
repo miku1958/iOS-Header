@@ -22,6 +22,7 @@
 @property (copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (strong, nonatomic) _SFPBRichText *suggestionText;
+@property (nonatomic) int suggestionType;
 @property (copy, nonatomic) NSString *type;
 
 - (void)addPunchoutOptions:(_SFPBPunchout *)arg1;

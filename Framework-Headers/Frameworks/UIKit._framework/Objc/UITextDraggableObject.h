@@ -6,23 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class UITextRange;
-@protocol NSItemProviderWriting;
+@class NSItemProvider, UITextRange;
 
 @interface UITextDraggableObject : NSObject
 {
-    id<NSItemProviderWriting> _object;
+    NSItemProvider *_itemProvider;
     UITextRange *_range;
     CDUnknownBlockType _targetedPreviewProvider;
     CDUnknownBlockType _previewProvider;
 }
 
-@property (strong, nonatomic) id<NSItemProviderWriting> object; // @synthesize object=_object;
+@property (strong, nonatomic) NSItemProvider *itemProvider; // @synthesize itemProvider=_itemProvider;
 @property (copy, nonatomic) CDUnknownBlockType previewProvider; // @synthesize previewProvider=_previewProvider;
 @property (strong, nonatomic) UITextRange *range; // @synthesize range=_range;
 @property (copy, nonatomic) CDUnknownBlockType targetedPreviewProvider; // @synthesize targetedPreviewProvider=_targetedPreviewProvider;
 
-+ (id)draggableObject:(id)arg1 fromRange:(id)arg2;
++ (id)draggableObjectWithItemProvider:(id)arg1 fromRange:(id)arg2;
 - (void).cxx_destruct;
 
 @end

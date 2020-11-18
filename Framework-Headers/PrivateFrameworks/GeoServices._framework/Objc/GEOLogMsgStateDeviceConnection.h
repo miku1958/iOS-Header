@@ -8,32 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEOLogMsgStateDeviceConnection : PBCodable <NSCopying>
 {
-    int _cellularDataState;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_deviceCarrierName;
     NSString *_deviceCountryCode;
+    int _cellularDataState;
     int _deviceNetworkConnectivity;
     struct {
-        unsigned int cellularDataState:1;
-        unsigned int deviceNetworkConnectivity:1;
-    } _has;
+        unsigned int has_cellularDataState:1;
+        unsigned int has_deviceNetworkConnectivity:1;
+        unsigned int read_deviceCarrierName:1;
+        unsigned int read_deviceCountryCode:1;
+        unsigned int wrote_deviceCarrierName:1;
+        unsigned int wrote_deviceCountryCode:1;
+        unsigned int wrote_cellularDataState:1;
+        unsigned int wrote_deviceNetworkConnectivity:1;
+    } _flags;
 }
 
-@property (nonatomic) int cellularDataState; // @synthesize cellularDataState=_cellularDataState;
-@property (strong, nonatomic) NSString *deviceCarrierName; // @synthesize deviceCarrierName=_deviceCarrierName;
-@property (strong, nonatomic) NSString *deviceCountryCode; // @synthesize deviceCountryCode=_deviceCountryCode;
-@property (nonatomic) int deviceNetworkConnectivity; // @synthesize deviceNetworkConnectivity=_deviceNetworkConnectivity;
+@property (nonatomic) int cellularDataState;
+@property (strong, nonatomic) NSString *deviceCarrierName;
+@property (strong, nonatomic) NSString *deviceCountryCode;
+@property (nonatomic) int deviceNetworkConnectivity;
 @property (nonatomic) BOOL hasCellularDataState;
 @property (readonly, nonatomic) BOOL hasDeviceCarrierName;
 @property (readonly, nonatomic) BOOL hasDeviceCountryCode;
 @property (nonatomic) BOOL hasDeviceNetworkConnectivity;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCellularDataState:(id)arg1;
 - (int)StringAsDeviceNetworkConnectivity:(id)arg1;
+- (void)_readDeviceCarrierName;
+- (void)_readDeviceCountryCode;
 - (id)cellularDataStateAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -43,6 +54,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

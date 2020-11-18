@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (double)skinnyKeyThreshold;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (double)symbolFrameInset;
+- (double)variantAnnotationTextFontSize;
+- (struct CGPoint)variantAnnotationTextOffset;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;
 
 @end

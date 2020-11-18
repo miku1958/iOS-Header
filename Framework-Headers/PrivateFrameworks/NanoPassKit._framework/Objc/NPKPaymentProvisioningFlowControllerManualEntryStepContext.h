@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithRequestContext:(id)arg1;
 
 @end
 

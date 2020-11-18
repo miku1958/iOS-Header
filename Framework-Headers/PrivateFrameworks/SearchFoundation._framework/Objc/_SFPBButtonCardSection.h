@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBButtonCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBColor, _SFPBRichText;
+@class NSArray, NSData, NSString, _SFPBColor, _SFPBImage, _SFPBRichText;
 
 @interface _SFPBButtonCardSection : PBCodable <_SFPBButtonCardSection, NSSecureCoding>
 {
@@ -23,6 +23,7 @@
     NSString *_type;
     _SFPBColor *_backgroundColor;
     _SFPBRichText *_title;
+    _SFPBImage *_thumbnail;
 }
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -38,6 +39,7 @@
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) _SFPBImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (strong, nonatomic) _SFPBRichText *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 

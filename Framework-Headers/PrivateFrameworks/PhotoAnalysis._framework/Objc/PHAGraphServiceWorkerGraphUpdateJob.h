@@ -8,7 +8,7 @@
 
 #import <PhotoAnalysis/PHAGraphRegistration-Protocol.h>
 
-@class NSDate, NSObject, NSString, PHAGraphManager;
+@class NSConditionLock, NSDate, NSObject, NSString, PHAGraphManager;
 @protocol OS_os_transaction;
 
 @interface PHAGraphServiceWorkerGraphUpdateJob : PHAWorkerJob <PHAGraphRegistration>
@@ -16,16 +16,20 @@
     BOOL _finished;
     BOOL _isChangeProcessingJob;
     float _completionScore;
+    long long _originalExecutionContext;
     CDUnknownBlockType _updateBlock;
     CDUnknownBlockType _completionBlock;
     NSString *_label;
     NSDate *_creationDate;
     NSObject<OS_os_transaction> *_transaction;
     PHAGraphManager *_graphManager;
+    id _pgManager;
+    NSConditionLock *_completionWaitLock;
 }
 
 @property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (nonatomic) float completionScore; // @synthesize completionScore=_completionScore;
+@property (strong) NSConditionLock *completionWaitLock; // @synthesize completionWaitLock=_completionWaitLock;
 @property (strong) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,22 +37,35 @@
 @property (strong, nonatomic) PHAGraphManager *graphManager; // @synthesize graphManager=_graphManager;
 @property (readonly) unsigned long long hash;
 @property BOOL isChangeProcessingJob; // @synthesize isChangeProcessingJob=_isChangeProcessingJob;
+@property (readonly, nonatomic) BOOL isRebuildJob;
 @property (copy) NSString *label; // @synthesize label=_label;
+@property (nonatomic) long long originalExecutionContext; // @synthesize originalExecutionContext=_originalExecutionContext;
+@property (strong) id pgManager; // @synthesize pgManager=_pgManager;
 @property (readonly) Class superclass;
 @property (strong) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 @property (copy) CDUnknownBlockType updateBlock; // @synthesize updateBlock=_updateBlock;
 
 + (id)graphUpdateJobWithLibrary:(id)arg1 scenario:(unsigned long long)arg2 label:(id)arg3 updateBlock:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
+- (void)_makeWorkerAvailable;
+- (void)_resetGraphManager;
+- (void)_restoreGraphUpdateManagerExecutionContext;
+- (void)_transitionWorkerStateToWorking;
+- (void)additionalWorkAfterUpdate;
+- (long long)executionContext;
+- (BOOL)graphIsReady;
 - (void)graphUpdateDidStop;
 - (void)graphUpdateIsConsistent;
 - (void)graphUpdateMadeProgress:(double)arg1;
 - (id)initWithWorkerType:(short)arg1 scenario:(unsigned long long)arg2 label:(id)arg3 library:(id)arg4;
 - (void)markAsFinishedWithCompletionScore:(float)arg1;
+- (void)markJobFinishWorkForCancellation;
 - (void)onGraphUpdateComplete;
+- (void)prepareProcessingForWorker:(id)arg1;
 - (BOOL)startProcessingOnWorker:(id)arg1 withError:(id *)arg2;
 - (BOOL)stopProcessingOnWorker:(id)arg1 withError:(id *)arg2;
 - (void)updateCompletionScore:(float)arg1;
+- (void)waitUntilFinished;
 - (BOOL)wantsGraphUpdateNotifications;
 - (BOOL)wantsLiveGraphUpdates;
 

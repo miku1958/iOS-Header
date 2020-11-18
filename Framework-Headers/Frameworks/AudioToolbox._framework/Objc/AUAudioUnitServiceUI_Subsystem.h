@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolbox/PKModularService-Protocol.h>
+#import <AudioToolboxCore/PKModularService-Protocol.h>
 
 @class NSString;
 

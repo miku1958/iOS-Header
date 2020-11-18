@@ -6,14 +6,17 @@
 
 #import <Notes/ICIndexItemsOperation.h>
 
+@class NSData;
+
 @interface ICReindexAllItemsOperation : ICIndexItemsOperation
 {
+    NSData *_clientStateData;
 }
 
+@property (readonly) NSData *clientStateData; // @synthesize clientStateData=_clientStateData;
+
+- (void).cxx_destruct;
 - (void)main;
-- (id)objectIDsToIndexFromDataSource:(id)arg1;
-- (id)searchableItemIdentifiersToDeleteFromDataSource:(id)arg1;
-- (BOOL)shouldDeleteAllItemsBeforeIndexing;
 
 @end
 

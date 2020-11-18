@@ -20,14 +20,13 @@
 }
 
 - (void).cxx_destruct;
-- (id)_queue_addClientForNotificationSourceDescription:(id)arg1;
+- (id)_queue_addClientForBundleIdentifier:(id)arg1;
 - (void)_queue_addPendingNotificationRecords:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)_queue_applicationStateDidRestore;
 - (void)_queue_applicationsDidAuthorizeNotificationSettings:(id)arg1;
 - (void)_queue_applicationsDidDenyNotificationSettings:(id)arg1;
 - (id)_queue_clientForBundleIdentifier:(id)arg1;
 - (void)_queue_localeDidChange;
-- (void)_queue_notificationSourcesDidInstall:(id)arg1;
 - (void)_queue_notificationSourcesDidUninstall:(id)arg1;
 - (id)_queue_pendingNotificationRecordsForBundleIdentifier:(id)arg1;
 - (void)_queue_removeAllPendingNotificationRecordsForBundleIdentifier:(id)arg1;
@@ -43,7 +42,6 @@
 - (void)applicationsDidDenyNotificationSettings:(id)arg1;
 - (id)initWithNotificationRepository:(id)arg1 pendingNotificationRepository:(id)arg2 notificationScheduleRepository:(id)arg3 locationMonitor:(id)arg4;
 - (void)localeDidChange;
-- (void)notificationSourcesDidInstall:(id)arg1;
 - (void)notificationSourcesDidUninstall:(id)arg1;
 - (id)pendingNotificationRecordsForBundleIdentifier:(id)arg1;
 - (void)removeAllPendingNotificationRecordsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

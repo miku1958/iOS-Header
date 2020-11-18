@@ -12,13 +12,12 @@
 {
 }
 
-@property (strong) TLKGridRowView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKGridRowView *contentView; // @dynamic contentView;
 
 + (struct UIEdgeInsets)defaultLayoutMargins;
 + (BOOL)hasOnlyImages:(id)arg1;
 + (BOOL)isAHeader:(id)arg1;
 + (double)largestImageSizeForSection:(id)arg1;
-+ (int)separatorStyleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (id)setupContentView;
 - (void)updateWithRowModel:(id)arg1;

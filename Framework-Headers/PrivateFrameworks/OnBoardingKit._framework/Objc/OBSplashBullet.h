@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIImage;
+@class NSString, OBImage;
 
 @interface OBSplashBullet : NSObject
 {
     NSString *_text;
-    struct UIImage *_icon;
+    OBImage *_icon;
 }
 
-@property (strong) UIImage *icon; // @synthesize icon=_icon;
+@property (strong) OBImage *icon; // @synthesize icon=_icon;
 @property (copy) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;

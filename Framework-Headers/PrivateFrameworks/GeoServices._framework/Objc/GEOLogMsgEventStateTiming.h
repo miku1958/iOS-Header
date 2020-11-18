@@ -15,14 +15,15 @@
     double _durationInOldState;
     NSMutableArray *_stateTransitionFeedbacks;
     struct {
-        unsigned int durationInOldState:1;
-    } _has;
+        unsigned int has_durationInOldState:1;
+    } _flags;
 }
 
-@property (nonatomic) double durationInOldState; // @synthesize durationInOldState=_durationInOldState;
+@property (nonatomic) double durationInOldState;
 @property (nonatomic) BOOL hasDurationInOldState;
-@property (strong, nonatomic) NSMutableArray *stateTransitionFeedbacks; // @synthesize stateTransitionFeedbacks=_stateTransitionFeedbacks;
+@property (strong, nonatomic) NSMutableArray *stateTransitionFeedbacks;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)stateTransitionFeedbackType;
 - (void).cxx_destruct;
 - (void)addStateTransitionFeedback:(id)arg1;
@@ -34,6 +35,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)stateTransitionFeedbackAtIndex:(unsigned long long)arg1;
 - (unsigned long long)stateTransitionFeedbacksCount;

@@ -10,11 +10,11 @@
 #import <iWorkImport/TSWPLayoutOwner-Protocol.h>
 #import <iWorkImport/TSWPLayoutTarget-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString, TSDCanvas, TSPObject, TSUBezierPath, TSWPLayoutManager, TSWPStorage;
+@class NSMutableArray, NSMutableSet, NSObject, NSString, TSDCanvas, TSPObject, TSUBezierPath, TSWPLayoutManager, TSWPStorage;
 @protocol TSDHint, TSWPFootnoteHeightMeasurer, TSWPFootnoteMarkProvider, TSWPLayoutParent, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 __attribute__((visibility("hidden")))
-@interface TSWPLayout : TSDLayout <TSDWrapInvalidationParent, TSWPLayoutTarget, TSWPLayoutOwner>
+@interface TSWPLayout : TSDLayout <TSWPLayoutTarget, TSWPLayoutOwner, TSDWrapInvalidationParent>
 {
     TSWPLayoutManager *_layoutManager;
     NSMutableArray *_columns;
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     TSWPStorage *_storage;
     unsigned long long _lastLayoutMgrChangeCount;
     TSDLayout<TSWPLayoutParent> *_wpLayoutParent;
+    NSMutableSet *_markedHiddenInlineDrawableLayouts;
     BOOL _useBlackTextColor;
 }
 
@@ -77,13 +78,17 @@ __attribute__((visibility("hidden")))
 - (void)beginResizeWrapInvalidationCluster;
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (BOOL)caresAboutStorageChanges;
+- (BOOL)childLayoutIsCurrentlyHiddenWhileManipulating:(id)arg1;
+- (void)clearHiddenInlineDrawableLayoutMarks;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 - (id)computeLayoutGeometry;
 - (id)containedPencilAnnotations;
 - (BOOL)containsStartOfPencilAnnotation:(id)arg1;
+- (BOOL)containsStartOfRange:(struct _NSRange)arg1;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
 - (id)dependentLayouts;
+- (BOOL)descendersCannotClip;
 - (void)didLayoutChangingDirtyRanges;
 - (void)didLayoutWithLayoutManager:(id)arg1;
 - (void)endResizeWrapInvalidationCluster;
@@ -105,15 +110,18 @@ __attribute__((visibility("hidden")))
 - (BOOL)isLayoutOffscreen;
 - (void)layoutManager:(id)arg1 didClearDirtyRangeWithDelta:(long long)arg2 afterCharIndex:(unsigned long long)arg3;
 - (void)layoutManagerNeedsLayout:(id)arg1;
+- (void)markHiddenInlineDrawableLayout:(id)arg1;
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
 - (void)p_clearOutLayoutManager;
 - (id)p_firstAncestorRespondingToSelector:(SEL)arg1;
 - (void)p_invalidateTextLayout;
+- (struct CGSize)p_maximumFrameSizeForChild:(id)arg1;
 - (BOOL)p_parentAutosizes;
 - (struct CGRect)p_protectedRectWithinLayoutForSelectionRect:(struct CGRect)arg1;
 - (struct CGRect)p_rectForSelectionPath:(id)arg1 useParagraphModeRects:(BOOL)arg2;
 - (struct CGRect)p_rectInRootForSelectionPath:(id)arg1 useParagraphModeRects:(BOOL)arg2 forZoom:(BOOL)arg3;
 - (id)p_wpLayoutParent;
+- (id)pageAnchorDetailsForPencilAnnotationAtSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (void)parentDidChange;
 - (void)parentWillChangeTo:(id)arg1;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
@@ -129,8 +137,9 @@ __attribute__((visibility("hidden")))
 - (id)styleProvider;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
 - (id)textColorOverride;
+- (double)textScaleForChild:(id)arg1;
 - (id)textWrapper;
-- (id)unscaledAnchorRectsForPencilAnnotationSelectionPath:(id)arg1 attachedType:(long long)arg2;
+- (id)unscaledContentRectsToAvoidPencilAnnotationOverlap;
 - (void)validate;
 - (void)validateTextLayoutForcibly;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;

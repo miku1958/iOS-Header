@@ -44,6 +44,7 @@
     CDUnknownBlockType _initialSyncPrepCompletion;
     CDUnknownBlockType _languageLocaleCompletion;
     CDUnknownBlockType _prepareWatchForForcedSUCompletion;
+    CDUnknownBlockType _buysOnWatchCredentialsIngestedCompletion;
     NSMutableDictionary *_reportMapping;
 }
 
@@ -56,6 +57,7 @@
 @property (strong, nonatomic) NSDictionary *allHeaders; // @synthesize allHeaders=_allHeaders;
 @property (nonatomic) BOOL allowAnyHTTPSCertificate; // @synthesize allowAnyHTTPSCertificate=_allowAnyHTTPSCertificate;
 @property (nonatomic) BOOL awaitingCustomResponse; // @synthesize awaitingCustomResponse=_awaitingCustomResponse;
+@property (copy, nonatomic) CDUnknownBlockType buysOnWatchCredentialsIngestedCompletion; // @synthesize buysOnWatchCredentialsIngestedCompletion=_buysOnWatchCredentialsIngestedCompletion;
 @property (nonatomic) BOOL connectionFailed; // @synthesize connectionFailed=_connectionFailed;
 @property (copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (readonly, copy) NSString *debugDescription;
@@ -100,6 +102,7 @@
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2;
 - (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)connectionDidFinishLoading:(id)arg1;
+- (id)currentWiFiNetworkName;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (void)enableSiriForGizmo:(id)arg1;
 - (void)endSetupTransaction;
@@ -110,6 +113,7 @@
 - (void)gizmoBecameAvailableWantsConfirmation:(id)arg1;
 - (void)gizmoDidBeginActivating:(id)arg1;
 - (void)gizmoDidBeginUnlockPairing:(id)arg1;
+- (void)gizmoDidEndPasscodeChange:(id)arg1;
 - (void)gizmoDidEndPasscodeCreation:(id)arg1;
 - (void)gizmoDidEndUnlockPairing:(id)arg1;
 - (void)gizmoDidFinishActivating:(id)arg1;
@@ -129,6 +133,7 @@
 - (void)queryGizmoForShowWarrantySentinelAndRestoreDeviceName:(id)arg1;
 - (void)refreshTimeoutTimer;
 - (id)reporterForConnection:(id)arg1;
+- (void)sendBuysOnWatchUsername:(id)arg1 andPassword:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)sendDemoWatchWirelessCredentials;
 - (void)sendGizmoPasscodeRestrictions;
 - (void)sendProxyActivationRequest:(id)arg1;
@@ -150,7 +155,9 @@
 - (void)tellGizmoToShowLockedOnAnimationTimeToFlash:(double)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (void)tellGizmoToUpdateSyncProgressTo:(double)arg1 withState:(long long)arg2;
 - (void)tellWatchLanguagesAndLocaleWithCompletion:(CDUnknownBlockType)arg1;
+- (void)tellWatchToChangeDeviceNameFor:(id)arg1;
 - (void)tellWatchToPrepareForForcedSUWithCompletion:(CDUnknownBlockType)arg1;
+- (void)tellWatchToSetSiriEnabled:(BOOL)arg1;
 - (void)transportBecameReachable;
 - (void)transportBecameUnreachable;
 - (id)viewControllerForAlertPresentation;

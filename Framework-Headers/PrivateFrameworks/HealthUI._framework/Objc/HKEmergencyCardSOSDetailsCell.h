@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_updateTextColor;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)setupConstraints;

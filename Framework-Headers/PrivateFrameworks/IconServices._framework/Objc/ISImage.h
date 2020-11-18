@@ -6,27 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID;
+@class NSData, NSUUID;
 
-__attribute__((visibility("hidden")))
 @interface ISImage : NSObject
 {
-    struct CGImage *_CGImage;
-    NSUUID *_uuid;
-    struct CGSize _size;
-    double _scale;
-    BOOL _placeholder;
+    NSData *_bitmapData;
 }
 
-@property (readonly) struct CGImage *CGImage; // @synthesize CGImage=_CGImage;
-@property (readonly) BOOL placeholder; // @synthesize placeholder=_placeholder;
-@property (readonly) double scale; // @synthesize scale=_scale;
-@property (readonly) struct CGSize size; // @synthesize size=_size;
-@property (strong) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (readonly) struct CGImage *CGImage; // @dynamic CGImage;
+@property (readonly) NSData *bitmapData; // @synthesize bitmapData=_bitmapData;
+@property (readonly) struct CGImage *cgImage; // @dynamic cgImage;
+@property struct CGSize minimumSize; // @dynamic minimumSize;
+@property (readonly) struct CGSize pixelSize;
+@property (readonly) BOOL placeholder; // @dynamic placeholder;
+@property (readonly) double scale; // @dynamic scale;
+@property (readonly) struct CGSize size; // @dynamic size;
+@property (strong) NSUUID *uuid; // @dynamic uuid;
 
++ (id)allocWithZone:(struct _NSZone *)arg1;
++ (struct CGColorSpace *)srgbColorSpace;
 - (void).cxx_destruct;
-- (void)dealloc;
+- (id)_init;
+- (id)debugDescription;
+- (id)digest;
+- (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2;
+- (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 minimumSize:(struct CGSize)arg3 placeholder:(BOOL)arg4;
+- (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 placeholder:(BOOL)arg3;
+- (id)initWithContentsOfURL:(id)arg1 scale:(double)arg2;
 - (id)initWithData:(id)arg1 scale:(double)arg2;
+- (BOOL)writeToURL:(id)arg1;
 
 @end
 

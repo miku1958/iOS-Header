@@ -13,6 +13,8 @@
 {
     MISSING_TYPE *groupName;
     MISSING_TYPE *representedLegacyCallIdentifier;
+    MISSING_TYPE *controlsButtonRowCount;
+    MISSING_TYPE *tableViewSeparator;
     MISSING_TYPE *participantsTableViewController;
     MISSING_TYPE *localParticipant;
     MISSING_TYPE *viewContent;
@@ -40,6 +42,7 @@
 @property (nonatomic) BOOL videoIsEnabled; // @synthesize videoIsEnabled;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)accessibilityCameraButton;
 - (id)accessibilityCameraLabel;
 - (id)accessibilityDisableVideoButton;
@@ -58,9 +61,11 @@
 - (void)didTapJoinLeaveButton:(id)arg1;
 - (void)didTapMuteButton:(id)arg1;
 - (void)didTapToggleCameraButton:(id)arg1;
+- (void)embedEffectsBrowserViewController:(id)arg1;
 - (id)initWithActiveCall:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)loadView;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAudioRouteButtonFor:(id)arg1;
 - (void)updateControlsVisibilityForExpandedState:(BOOL)arg1;
@@ -68,6 +73,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)willMoveToParentViewController:(id)arg1;
 
 @end
 

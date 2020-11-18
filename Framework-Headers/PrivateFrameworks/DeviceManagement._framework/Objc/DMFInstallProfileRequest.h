@@ -14,9 +14,11 @@
     unsigned long long _type;
     NSString *_managingProfileIdentifier;
     NSData *_profileData;
+    NSString *_personaID;
 }
 
 @property (copy, nonatomic) NSString *managingProfileIdentifier; // @synthesize managingProfileIdentifier=_managingProfileIdentifier;
+@property (copy, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
 @property (copy, nonatomic) NSData *profileData; // @synthesize profileData=_profileData;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;

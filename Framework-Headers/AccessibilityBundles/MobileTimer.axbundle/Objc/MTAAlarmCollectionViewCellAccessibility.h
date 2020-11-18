@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityUserTestingChildren;
 - (BOOL)_axDeleteAlarm;
 - (BOOL)_axIsEditing;
 - (struct CGPoint)accessibilityActivationPoint;

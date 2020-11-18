@@ -6,14 +6,18 @@
 
 #import <Foundation/NSURL.h>
 
+@class NSString;
+
 @interface NSURL (SafariSharedExtras)
 
+@property (readonly, nonatomic) NSURL *safari_canonicalURLForStartPage;
 @property (readonly, nonatomic) BOOL safari_isBlobURL;
 @property (readonly, nonatomic) BOOL safari_isEligibleToShowNotSecureWarning;
 @property (readonly, nonatomic) BOOL safari_isLocalOrPrivateNetworkURL;
 @property (readonly, nonatomic) BOOL safari_isSafariResourceURL;
 @property (readonly, nonatomic) BOOL safari_isTopLevelURL;
 @property (readonly, nonatomic) BOOL safari_isURLTooLongToDisplay;
+@property (readonly, copy, nonatomic) NSString *safari_simplifiedURLStringForDeduping;
 
 + (id)safari_URLWithDataAsString:(id)arg1;
 + (id)safari_URLWithDataAsString:(id)arg1 relativeToURL:(id)arg2;
@@ -34,6 +38,7 @@
 - (BOOL)safari_isDataURL;
 - (BOOL)safari_isHTTPFamilyURL;
 - (BOOL)safari_isHTTPURL;
+- (BOOL)safari_isMailtoURL;
 - (BOOL)safari_isWellKnownChangePasswordURL;
 - (id)safari_originalDataAsString;
 - (id)safari_path;

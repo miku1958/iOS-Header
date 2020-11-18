@@ -14,8 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axAnnotateView;
-- (void)loadView;
+- (void)_axAnnotateImageViews;
+- (id)_axPhotoViews;
+- (void)_createImageViews;
 
 @end
 

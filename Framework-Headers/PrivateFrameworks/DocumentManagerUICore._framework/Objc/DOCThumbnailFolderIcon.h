@@ -10,31 +10,50 @@
 
 @interface DOCThumbnailFolderIcon : NSObject
 {
+    double _bottomInset;
+    double _sharedBadgeBottomInset;
+    struct CGSize _badgeSize;
+    struct CGSize _sharedBadgeSize;
     NSString *_documentsBadgeName;
     NSString *_desktopBadgeName;
+    NSString *_sharedBadgeName;
+    NSString *_downloadsBadgeName;
+    NSString *_genericSharepointBadgeName;
     UIImage *_documentsBadge;
     UIImage *_desktopBadge;
-    UIImage *_image;
+    UIImage *_sharedBadge;
+    UIImage *_downloadsBadge;
+    UIImage *_genericSharepointBadge;
+    UIImage *_plainFolderImage;
     NSString *_imageName;
-    double _dimension;
-    double _bottomInset;
-    struct CGSize _badgeSize;
+    double _imageDimension;
 }
 
-@property (readonly, nonatomic) struct CGSize badgeSize; // @synthesize badgeSize=_badgeSize;
-@property (readonly, nonatomic) double bottomInset; // @synthesize bottomInset=_bottomInset;
+@property (readonly, nonatomic) struct CGSize badgeSize;
+@property (readonly, nonatomic) double bottomInset;
 @property (readonly, nonatomic) UIImage *desktopBadge; // @synthesize desktopBadge=_desktopBadge;
-@property (readonly, nonatomic) double dimension; // @synthesize dimension=_dimension;
 @property (readonly, nonatomic) UIImage *documentsBadge; // @synthesize documentsBadge=_documentsBadge;
-@property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) UIImage *downloadsBadge; // @synthesize downloadsBadge=_downloadsBadge;
+@property (readonly, nonatomic) UIImage *genericSharepointBadge; // @synthesize genericSharepointBadge=_genericSharepointBadge;
+@property (readonly, nonatomic) double imageDimension; // @synthesize imageDimension=_imageDimension;
 @property (readonly, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
+@property (readonly, nonatomic) UIImage *plainFolderImage; // @synthesize plainFolderImage=_plainFolderImage;
+@property (readonly, nonatomic) UIImage *sharedBadge; // @synthesize sharedBadge=_sharedBadge;
 
-+ (id)darkFolderIcons;
-+ (id)folderIconForSize:(struct CGSize)arg1 scale:(double)arg2 style:(unsigned long long)arg3;
-+ (id)lightFolderIcons;
++ (id)_folderIconForSize:(struct CGSize)arg1 scale:(double)arg2;
++ (id)_folderIconsForImageNamePattern:(id)arg1 documentsBadgeNamePattern:(id)arg2 desktopBadgeNamePattern:(id)arg3 sharedBadgeNamePattern:(id)arg4 downloadsBadgeNamePattern:(id)arg5 genericSharepointBadgeNamePattern:(id)arg6;
++ (id)folderIconForDescriptor:(id)arg1;
++ (id)folderIcons;
++ (id)imageWithStyle:(unsigned long long)arg1 assetImage:(id)arg2;
 - (void).cxx_destruct;
+- (id)_badgedFolderIconForBadge:(id)arg1 badgeSize:(struct CGSize)arg2 bottomInset:(double)arg3 style:(unsigned long long)arg4;
 - (id)badgeForFolderType:(unsigned long long)arg1;
-- (id)initWithImageName:(id)arg1 documentsBadgeName:(id)arg2 dekstopBadgeName:(id)arg3 badgeDimension:(double)arg4 badgeBottomInset:(double)arg5;
+- (struct CGSize)badgeSizeForFolderType:(unsigned long long)arg1;
+- (id)badgedFolderIconForBadge:(id)arg1 style:(unsigned long long)arg2;
+- (id)badgedFolderIconForFolderType:(unsigned long long)arg1 style:(unsigned long long)arg2;
+- (double)bottomInsetForFolderType:(unsigned long long)arg1;
+- (id)image;
+- (id)initWithImageName:(id)arg1 documentsBadgeName:(id)arg2 dekstopBadgeName:(id)arg3 sharedBadgeName:(id)arg4 downloadsBadgeName:(id)arg5 genericSharepointBadgeName:(id)arg6 imageDimension:(double)arg7 badgeDimension:(double)arg8 badgeBottomInset:(double)arg9 sharedBadgeDimension:(double)arg10 sharedBadgeBottomInset:(double)arg11;
 - (void)resolveImage;
 
 @end

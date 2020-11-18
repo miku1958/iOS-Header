@@ -8,7 +8,7 @@
 
 #import <UIFoundation/NSTextApplicationFrameworkContextClient-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSGraphicsContext, NSString;
+@class CUICatalog, CUIStyleEffectConfiguration, NSString, __NSImmutableTextStorage;
 
 @interface NSLineFragmentRenderingContext : NSObject <NSTextApplicationFrameworkContextClient>
 {
@@ -34,7 +34,7 @@
     long long _resolvedAlignment;
     CUICatalog *_catalog;
     CUIStyleEffectConfiguration *_styleEffects;
-    NSGraphicsContext *_graphicsContext;
+    __NSImmutableTextStorage *_textStorage;
 }
 
 @property long long applicationFrameworkContext;
@@ -42,7 +42,6 @@
 @property (strong, nonatomic) CUIStyleEffectConfiguration *cuiStyleEffects; // @synthesize cuiStyleEffects=_styleEffects;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSGraphicsContext *graphicsContext; // @synthesize graphicsContext=_graphicsContext;
 @property (readonly) unsigned long long hash;
 @property long long resolvedBaseWritingDirection; // @synthesize resolvedBaseWritingDirection=_resolvedDirection;
 @property long long resolvedTextAlignment; // @synthesize resolvedTextAlignment=_resolvedAlignment;
@@ -59,7 +58,7 @@
 - (void)finalize;
 - (void)getMaximumAscender:(double *)arg1 minimumDescender:(double *)arg2;
 - (struct CGRect)imageBounds;
-- (id)initWithRuns:(struct __CFArray *)arg1 glyphOrigin:(double)arg2 lineFragmentWidth:(double)arg3 elasticWidth:(double)arg4 usesScreenFonts:(BOOL)arg5 isRTL:(BOOL)arg6;
+- (id)initWithTextStorage:(id)arg1 runs:(struct __CFArray *)arg2 glyphOrigin:(double)arg3 lineFragmentWidth:(double)arg4 elasticWidth:(double)arg5 usesScreenFonts:(BOOL)arg6 isRTL:(BOOL)arg7;
 - (BOOL)isRTL;
 - (double)lineFragmentWidth;
 - (oneway void)release;

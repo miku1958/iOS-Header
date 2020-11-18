@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     unsigned int _totalFECFrameCount;
     unsigned int _completeFECFrameCount;
     unsigned int _failedFECFrameCount;
+    unsigned int _unfixableFECFrameCount;
 }
 
 @property unsigned int completeFECFrameCount; // @synthesize completeFECFrameCount=_completeFECFrameCount;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long totalFECDataByteCount; // @synthesize totalFECDataByteCount=_totalFECDataByteCount;
 @property unsigned int totalFECFrameCount; // @synthesize totalFECFrameCount=_totalFECFrameCount;
 @property unsigned long long totalFECParityByteCount; // @synthesize totalFECParityByteCount=_totalFECParityByteCount;
+@property unsigned int unfixableFECFrameCount; // @synthesize unfixableFECFrameCount=_unfixableFECFrameCount;
 
 - (void)merge:(id)arg1;
 

@@ -7,34 +7,39 @@
 #import <objc/NSObject.h>
 
 @class MTXPCConnectionInfo, NSDate, NSXPCConnection;
-@protocol NAScheduler;
+@protocol MTScheduler, NAScheduler;
 
 @interface MTXPCConnectionProvider : NSObject
 {
+    NSXPCConnection *_connection;
     MTXPCConnectionInfo *_info;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _reconnectHandler;
-    id<NAScheduler> _serializer;
-    NSXPCConnection *_connection;
+    id<MTScheduler> _serializer;
+    id<NAScheduler> _callbackScheduler;
     NSDate *_lastLifecycleNotification;
 }
 
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) id<NAScheduler> callbackScheduler; // @synthesize callbackScheduler=_callbackScheduler;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property (strong, nonatomic) MTXPCConnectionInfo *info; // @synthesize info=_info;
 @property (strong, nonatomic) NSDate *lastLifecycleNotification; // @synthesize lastLifecycleNotification=_lastLifecycleNotification;
 @property (copy, nonatomic) CDUnknownBlockType reconnectHandler; // @synthesize reconnectHandler=_reconnectHandler;
-@property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
+@property (strong, nonatomic) id<MTScheduler> serializer; // @synthesize serializer=_serializer;
 
 + (id)providerWithConnectionInfo:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 + (id)providerWithConnectionInfo:(id)arg1 reconnectHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (id)_asyncRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_connectionRebuildingIfNecessary;
 - (void)_didInterruptConnection;
 - (void)_didInvalidateConnection;
-- (void)_didTerminateConnection;
-- (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_remoteObjectProxyWithXPCConnectionProvider:(CDUnknownBlockType)arg1 remoteObjectProxyProvider:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (id)_retryConnection;
 - (void)_retryConnectionWithRecover:(BOOL)arg1;
+- (id)_syncRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)connection;
+- (id)connectionFuture;
 - (void)dealloc;
 - (id)description;
 - (void)didReceiveLifecycleNotification;
@@ -42,6 +47,7 @@
 - (void)invalidate;
 - (void)performRemoteBlock:(CDUnknownBlockType)arg1;
 - (void)performRemoteBlock:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
+- (void)performRemoteBlock:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2 isSynchronous:(BOOL)arg3;
 
 @end
 

@@ -9,16 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface UITextMagnifierCaret : UITextMagnifier
 {
-    BOOL _isAnimating;
-    long long _delayedAnimationType;
     double _yOffset;
     struct CGPoint _offset;
 }
 
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
-@property (nonatomic) double yOffset; // @synthesize yOffset=_yOffset;
 
 + (id)activeCaretMagnifier;
++ (Class)renderClass;
 + (id)sharedCaretMagnifier;
 - (struct CGPoint)animationPoint;
 - (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
@@ -27,15 +25,10 @@ __attribute__((visibility("hidden")))
 - (double)offsetFromMagnificationPoint;
 - (void)remove;
 - (void)setAnimationPoint:(struct CGPoint)arg1;
-- (void)setAutoscrollDirections:(int)arg1;
-- (void)setMagnificationPoint:(struct CGPoint)arg1;
-- (void)stopMagnifying:(BOOL)arg1;
 - (BOOL)terminalPointPlacedCarefully;
 - (void)updateFrameAndOffset;
 - (void)zoomDownAnimation;
-- (void)zoomDownAnimationDidStop:(id)arg1 finished:(id)arg2;
 - (void)zoomUpAnimation;
-- (void)zoomUpAnimationDidStop:(id)arg1 finished:(id)arg2;
 
 @end
 

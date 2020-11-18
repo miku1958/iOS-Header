@@ -8,11 +8,15 @@
 
 @interface UIFont (AvatarUI)
 + (id)avt_appropriateContentSizeCategoryForCategory:(id)arg1 minCategory:(id)arg2 maxCategory:(id)arg3;
++ (id)avt_attributeTitleButtonFont;
 + (id)avt_attributeTitleFont;
 + (id)avt_avatarActionButtonTitleFont;
 + (id)avt_funCamItemTitleFont;
 + (id)avt_groupDialBoldLabelFont;
 + (id)avt_groupDialLabelFont;
++ (id)avt_keyboardRecentsSplashContinueButtonFont;
++ (id)avt_keyboardRecentsSplashSubtitleFont;
++ (id)avt_keyboardRecentsSplashTitleFont;
 + (id)avt_splashContinueButtonFont;
 + (id)avt_splashSubTitleFont;
 + (id)avt_splashTitleFont;

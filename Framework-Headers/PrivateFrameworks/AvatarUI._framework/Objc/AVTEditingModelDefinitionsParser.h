@@ -26,7 +26,7 @@
 + (id)errorWithDescription:(id)arg1 underlyingError:(id)arg2;
 - (void).cxx_destruct;
 - (id)coreModelCategoryFromCategoryDictionary:(id)arg1;
-- (id)coreModelColorPaletteForColorPickerDictionary:(id)arg1 settingDestination:(long long)arg2 subPalette:(id)arg3;
+- (id)coreModelColorPaletteForColorPickerDictionary:(id)arg1 settingDestination:(long long)arg2 inCategory:(long long)arg3;
 - (id)coreModelColorsForColorDefinitions:(id)arg1 paletteSettingKind:(CDStruct_597dd055)arg2;
 - (id)coreModelColorsForPaletteSettingKind:(CDStruct_597dd055)arg1;
 - (id)coreModelGroupFromGroupDictionary:(id)arg1;
@@ -39,7 +39,8 @@
 - (id)initWithPlistData:(id)arg1 logger:(id)arg2;
 - (id)parseCoreModelFromDefinitions:(id)arg1;
 - (void)parseWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)validateForCategoryWithEnumValue:(id)arg1 presetPickers:(id)arg2 colorPicker:(id)arg3 colorPaletteCategory:(id)arg4 subColorPicker:(id)arg5 subColorPaletteCategory:(id)arg6;
+- (BOOL)validateForCategoryWithEnumValue:(id)arg1 presetPickers:(id)arg2 colorPickers:(id)arg3;
+- (BOOL)validateForColorPicker:(id)arg1 colorPaletteCategory:(id)arg2 error:(id *)arg3;
 
 @end
 

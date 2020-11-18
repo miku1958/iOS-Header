@@ -21,10 +21,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long componentTypesCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsComponentTypes:(id)arg1;
 - (void)addComponentType:(int)arg1;
 - (void)clearComponentTypes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (int)componentTypeAtIndex:(unsigned long long)arg1;
 - (id)componentTypesAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setComponentTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

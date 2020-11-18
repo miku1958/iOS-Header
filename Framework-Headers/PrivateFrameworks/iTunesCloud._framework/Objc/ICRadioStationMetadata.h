@@ -16,12 +16,15 @@
 @property (readonly, nonatomic) BOOL allowsItemLiking;
 @property (readonly, nonatomic) BOOL allowsSharing;
 @property (readonly, copy, nonatomic) ICStoreArtworkInfo *artworkInfo;
+@property (readonly, copy, nonatomic) NSString *attributionLabel;
 @property (readonly, copy, nonatomic) NSString *coreSeedName;
 @property (readonly, copy, nonatomic) NSString *descriptionText;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *stationHash;
 @property (readonly, nonatomic) long long stationID;
 @property (readonly, copy, nonatomic) NSString *stationStringID;
+@property (readonly, nonatomic) long long subtype;
+@property (readonly, nonatomic) long long type;
 
 - (void).cxx_destruct;
 - (id)initWithResponseDictionary:(id)arg1;

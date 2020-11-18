@@ -6,7 +6,7 @@
 
 #import <MapKit/MKPlaceSectionItemView.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UIImage, _MKRightImageButton, _MKUILabel;
+@class MKVibrantLabel, NSArray, NSLayoutConstraint, NSString, UIImage, _MKRightImageButton;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceSectionHeaderView : MKPlaceSectionItemView
@@ -16,14 +16,12 @@ __attribute__((visibility("hidden")))
     NSLayoutConstraint *_baselineToBaselineConstraint;
     NSLayoutConstraint *_iconHeightConstraint;
     NSLayoutConstraint *_iconWidthConstraint;
-    NSLayoutConstraint *_seeMoreBaselineConstraint;
-    NSLayoutConstraint *_seeMoreCenterYConstraint;
     BOOL _contentChanged;
     double _width;
     BOOL _showSeeMoreButton;
     NSString *_seeMoreButtonText;
     NSString *_providerName;
-    _MKUILabel *_sectionHeaderLabel;
+    MKVibrantLabel *_sectionHeaderLabel;
     _MKRightImageButton *_seeMoreButton;
     NSArray *_seeMoreButtonConstraints;
     NSArray *_constraints;
@@ -37,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImage *icon;
 @property (nonatomic) struct CGSize iconDisplaySize; // @synthesize iconDisplaySize=_iconDisplaySize;
 @property (strong, nonatomic) NSString *providerName; // @synthesize providerName=_providerName;
-@property (strong, nonatomic) _MKUILabel *sectionHeaderLabel; // @synthesize sectionHeaderLabel=_sectionHeaderLabel;
+@property (strong, nonatomic) MKVibrantLabel *sectionHeaderLabel; // @synthesize sectionHeaderLabel=_sectionHeaderLabel;
 @property (strong, nonatomic) _MKRightImageButton *seeMoreButton; // @synthesize seeMoreButton=_seeMoreButton;
 @property (strong, nonatomic) NSArray *seeMoreButtonConstraints; // @synthesize seeMoreButtonConstraints=_seeMoreButtonConstraints;
 @property (strong, nonatomic) NSString *seeMoreButtonText; // @synthesize seeMoreButtonText=_seeMoreButtonText;
@@ -46,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
+- (void)_updateConstraints;
 - (void)contentSizeDidChange;
 - (void)createConstraints;
 - (id)initWithFrame:(struct CGRect)arg1;

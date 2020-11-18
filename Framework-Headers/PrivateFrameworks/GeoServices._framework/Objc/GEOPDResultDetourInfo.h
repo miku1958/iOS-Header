@@ -18,24 +18,26 @@
     unsigned int _distanceToPlace;
     unsigned int _timeToPlace;
     struct {
-        unsigned int detourDistance:1;
-        unsigned int detourTime:1;
-        unsigned int distanceToPlace:1;
-        unsigned int timeToPlace:1;
-    } _has;
+        unsigned int has_detourDistance:1;
+        unsigned int has_detourTime:1;
+        unsigned int has_distanceToPlace:1;
+        unsigned int has_timeToPlace:1;
+    } _flags;
 }
 
-@property (nonatomic) int detourDistance; // @synthesize detourDistance=_detourDistance;
-@property (nonatomic) int detourTime; // @synthesize detourTime=_detourTime;
-@property (nonatomic) unsigned int distanceToPlace; // @synthesize distanceToPlace=_distanceToPlace;
+@property (nonatomic) int detourDistance;
+@property (nonatomic) int detourTime;
+@property (nonatomic) unsigned int distanceToPlace;
 @property (nonatomic) BOOL hasDetourDistance;
 @property (nonatomic) BOOL hasDetourTime;
 @property (nonatomic) BOOL hasDistanceToPlace;
 @property (nonatomic) BOOL hasTimeToPlace;
-@property (nonatomic) unsigned int timeToPlace; // @synthesize timeToPlace=_timeToPlace;
+@property (nonatomic) unsigned int timeToPlace;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

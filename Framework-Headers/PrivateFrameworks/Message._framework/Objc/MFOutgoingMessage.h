@@ -14,7 +14,7 @@
     MFMutableMessageHeaders *_messageHeaders;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)headers;
 - (id)headersIfAvailable;
 - (id)messageBody;

@@ -42,6 +42,7 @@
 - (id)createIdleState;
 - (id)createLoadingState;
 - (id)createPresentingState;
+- (void)discardContents;
 - (void)handleTap;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 fileProvider:(id)arg5 quickLookModule:(id)arg6;
 - (void)layout;
@@ -49,6 +50,7 @@
 - (void)layoutLoadingIndicator;
 - (void)layoutWebView;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)renderContents;
 
 @end
 

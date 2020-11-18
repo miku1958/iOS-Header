@@ -25,7 +25,6 @@
 - (void)focusFormForStreamlinedLogin:(long long)arg1 inFrame:(SFFormAutoFillFrameHandle *)arg2;
 - (void)removeAutomaticPasswordElementsInFrame:(SFFormAutoFillFrameHandle *)arg1 focusedPasswordControlUniqueID:(NSString *)arg2 passwordControlUniqueIDs:(NSArray *)arg3;
 - (void)removeAutomaticPasswordVisualTreatmentInFrame:(SFFormAutoFillFrameHandle *)arg1 passwordControlUniqueIDs:(NSArray *)arg2;
-- (void)resumeLoadingAfterSavingFormData;
 - (void)setFormControls:(NSArray *)arg1 areAutoFilled:(BOOL)arg2 andClearField:(NSString *)arg3 inFrame:(SFFormAutoFillFrameHandle *)arg4;
 - (void)substitutePasswordElementsWithAutomaticPasswordElementsInFrame:(SFFormAutoFillFrameHandle *)arg1 formID:(long long)arg2 focusedPasswordControlUniqueID:(NSString *)arg3 passwordControlUniqueIDs:(NSArray *)arg4 automaticPassword:(NSString *)arg5 blurAfterSubstitution:(BOOL)arg6 completionHandler:(void (^)(NSArray *))arg7;
 @end

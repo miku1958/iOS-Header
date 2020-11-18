@@ -10,7 +10,7 @@
 #import <Navigation/CLLocationManagerVehicleDelegate-Protocol.h>
 #import <Navigation/MNLocationProvider-Protocol.h>
 
-@class CLLocationManager, NSBundle, NSLock, NSString;
+@class CLLocationManager, NSBundle, NSLock, NSRunLoop, NSString;
 @protocol MNLocationProviderDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
     NSBundle *_effectiveBundle;
     NSString *_effectiveBundleIdentifier;
     CDUnknownBlockType _authorizationRequestBlock;
+    NSRunLoop *_debug_initRunLoop;
+    NSRunLoop *_debug_deinitRunLoop;
     BOOL _updatingLocations;
 }
 
@@ -50,15 +52,19 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL matchInfoEnabled;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeScale;
-@property BOOL updatingLocations; // @synthesize updatingLocations=_updatingLocations;
+@property (readonly, nonatomic) unsigned long long traceVersion;
+@property (nonatomic) BOOL updatingLocations; // @synthesize updatingLocations=_updatingLocations;
 @property (readonly, nonatomic) BOOL usesCLMapCorrection;
 
 - (void).cxx_destruct;
 - (void)_createCLLocationManager;
 - (void)_resetForNewEffectiveBundle;
+- (void)_sharedInit;
 - (void)_updateAuthorizationStatus;
 - (void)dealloc;
 - (id)init;
+- (id)initWithEffectiveBundle:(id)arg1;
+- (id)initWithEffectiveBundleIdentifier:(id)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateHeading:(id)arg2;

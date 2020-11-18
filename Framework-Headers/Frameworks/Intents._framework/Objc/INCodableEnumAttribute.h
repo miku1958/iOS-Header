@@ -8,29 +8,32 @@
 
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class INCodableEnum, NSDictionary, NSString;
 
 @interface INCodableEnumAttribute : INCodableAttribute <NSSecureCoding>
 {
     NSDictionary *_valuesByIndex;
-    NSString *_enumName;
-    NSArray *_enumValues;
-    long long _type;
+    INCodableEnum *_codableEnum;
+    NSString *_enumNamespace;
 }
 
-@property (copy, nonatomic) NSString *enumName; // @synthesize enumName=_enumName;
-@property (copy, nonatomic) NSArray *enumValues; // @synthesize enumValues=_enumValues;
-@property (nonatomic) long long type; // @synthesize type=_type;
+@property (strong, nonatomic) INCodableEnum *codableEnum; // @synthesize codableEnum=_codableEnum;
+@property (copy, nonatomic) NSString *enumNamespace; // @synthesize enumNamespace=_enumNamespace;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_dictionaryRepresentation;
+- (Class)_relationshipValueTransformerClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (Class)resolutionResultClass;
+- (void)updateWithDictionary:(id)arg1;
 - (id)valueForIndex:(unsigned long long)arg1;
+- (long long)valueType;
+- (id)valueWithName:(id)arg1;
 
 @end
 

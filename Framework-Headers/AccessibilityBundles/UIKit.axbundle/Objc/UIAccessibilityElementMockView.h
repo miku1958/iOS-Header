@@ -21,19 +21,22 @@
 @property (strong, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
+- (id)_accessibilityAbsoluteValue;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilityCanPerformEscapeAction;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
-- (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsScannerGroup;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (id)_accessibilityLineNumberAndColumnForPoint:(struct CGPoint)arg1;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (struct CGPoint)_accessibilityMaxScrubberPosition;
+- (double)_accessibilityMaxValue;
 - (struct CGPoint)_accessibilityMinScrubberPosition;
+- (double)_accessibilityMinValue;
 - (long long)_accessibilityPageCount;
 - (long long)_accessibilityPageIndex;
+- (unsigned long long)_accessibilityPositionInDirection:(long long)arg1 offset:(unsigned long long)arg2 forPosition:(unsigned long long)arg3;
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
 - (id)_accessibilityScannerGroupElements;
 - (unsigned long long)_accessibilityScannerGroupTraits;
@@ -67,6 +70,7 @@
 - (id)accessibilityLanguage;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityPerformMagicTap;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (unsigned long long)accessibilityTraits;

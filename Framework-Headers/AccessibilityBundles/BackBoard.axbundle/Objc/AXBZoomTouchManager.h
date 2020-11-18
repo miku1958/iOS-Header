@@ -12,7 +12,6 @@
 
 + (Class)getZoomBundlePrincipalClassForcingLoad:(BOOL)arg1;
 + (void)initializeZoomMonitor;
-+ (void)toggleMagnifier;
 - (void)setZoomTouchEnabled:(BOOL)arg1;
 - (void)updateSettings;
 

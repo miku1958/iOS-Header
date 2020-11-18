@@ -10,6 +10,7 @@
 
 @class CNContactStore, NSString;
 
+__attribute__((visibility("hidden")))
 @interface CHPhoneBookIOSManager : NSObject <CHPhoneBookManagerProtocol>
 {
     CNContactStore *_fContactsStore;
@@ -23,8 +24,10 @@
 
 + (id)get;
 - (void).cxx_destruct;
+- (void)fetchAndCacheContactIdentifiersForCalls:(id)arg1;
 - (id)fetchCNContact:(id)arg1 countryCode:(id)arg2 isEmail:(BOOL)arg3;
 - (id)fetchCNContactsMatchingPredicate:(id)arg1 keysToKetch:(id)arg2 error:(id *)arg3;
+- (id)fetchContactIdentifiersForHandles:(id)arg1 error:(id *)arg2;
 - (id)fetchFullCNContactForContactIdentifier:(id)arg1 isEmail:(BOOL)arg2;
 - (id)getLocalizedCallerIdLabelForContact:(id)arg1 forCallerId:(id)arg2 withCallerIdIsEmail:(BOOL)arg3;
 - (id)getPersonsNameForContact:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, PLSpatialOverCaptureInformation;
 
 @protocol PLPTPTransferableAdditionalAssetAttributes <NSObject>
 
@@ -17,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSString *exifTimestampString;
 @property (readonly, copy, nonatomic) NSString *originatingAssetIdentifier;
 @property (readonly, nonatomic) long long ptpTrashedState;
+@property (readonly, strong, nonatomic) PLSpatialOverCaptureInformation *spatialOverCaptureInformation;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <MapsSupport/GEOTransitLine-Protocol.h>
 #import <MapsSupport/NSCopying-Protocol.h>
 
-@class GEOMapItemIdentifier, MSPTransitStorageArtwork, MSPTransitStorageSystem, NSArray, NSString, PBUnknownFields;
+@class GEOLatLng, GEOMapItemIdentifier, MSPTransitStorageArtwork, MSPTransitStorageSystem, NSArray, NSString, PBUnknownFields;
 @protocol GEOTransitArtworkDataSource, GEOTransitSystem;
 
 @interface MSPTransitStorageLine : PBCodable <GEOTransitLine, NSCopying>
@@ -19,6 +19,7 @@
     MSPTransitStorageArtwork *_alternateArtwork;
     MSPTransitStorageArtwork *_artwork;
     NSString *_lineColorString;
+    GEOLatLng *_locationHint;
     MSPTransitStorageArtwork *_modeArtwork;
     NSString *_name;
     MSPTransitStorageSystem *_system;
@@ -37,14 +38,17 @@
 @property (readonly, nonatomic) BOOL hasArtwork;
 @property (readonly, nonatomic) BOOL hasLineColorString;
 @property (readonly, nonatomic) BOOL hasLineColorString;
+@property (readonly, nonatomic) BOOL hasLocationHint;
 @property (readonly, nonatomic) BOOL hasModeArtwork;
 @property (nonatomic) BOOL hasMuid;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasSystem;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) GEOMapItemIdentifier *identifier;
+@property (readonly, nonatomic) BOOL isBus;
 @property (readonly, nonatomic) NSString *lineColorString;
 @property (strong, nonatomic) NSString *lineColorString; // @synthesize lineColorString=_lineColorString;
+@property (strong, nonatomic) GEOLatLng *locationHint; // @synthesize locationHint=_locationHint;
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> modeArtwork;
 @property (strong, nonatomic) MSPTransitStorageArtwork *modeArtwork; // @synthesize modeArtwork=_modeArtwork;
 @property (readonly, nonatomic) unsigned long long muid;

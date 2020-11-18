@@ -9,19 +9,17 @@
 #import <DocumentCamera/BKSAccelerometerDelegate-Protocol.h>
 #import <DocumentCamera/DCDocumentCameraPublicViewController-Protocol.h>
 
-@class BKSAccelerometer, DCDocumentCameraRemoteViewController, DCDocumentCameraViewServiceSession, NSString, _UIResilientRemoteViewContainerViewController;
+@class BKSAccelerometer, DCDocumentCameraRemoteViewController, DCDocumentCameraViewServiceSession, NSString;
 @protocol DCDocumentCameraViewServiceViewController;
 
 __attribute__((visibility("hidden")))
 @interface DCDocumentCameraViewController_ViewService : DCDocumentCameraViewController <BKSAccelerometerDelegate, DCDocumentCameraPublicViewController>
 {
-    _UIResilientRemoteViewContainerViewController *_childViewController;
     DCDocumentCameraViewServiceSession *_viewServiceSession;
     BKSAccelerometer *_accelerometer;
 }
 
 @property (strong, nonatomic) BKSAccelerometer *accelerometer; // @synthesize accelerometer=_accelerometer;
-@property (strong, nonatomic, setter=setChildViewController:) _UIResilientRemoteViewContainerViewController *childViewController; // @synthesize childViewController=_childViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -33,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)accelerometer:(id)arg1 didAccelerateWithTimeStamp:(double)arg2 x:(float)arg3 y:(float)arg4 z:(float)arg5 eventType:(int)arg6;
 - (void)accelerometer:(id)arg1 didChangeDeviceOrientation:(int)arg2;
+- (id)castedChildViewController;
 - (void)dealloc;
 - (void)didCancel;
 - (void)didFinishWithDocumentInfoCollection:(id)arg1;

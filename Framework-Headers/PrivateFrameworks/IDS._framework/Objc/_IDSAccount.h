@@ -28,16 +28,18 @@
 
 @property (nonatomic, setter=_setIsEnabled:) BOOL _isEnabled;
 @property (strong, nonatomic) NSDictionary *accountInfo;
+@property (readonly, weak, nonatomic) NSArray *accountRegisteredURIs;
 @property (readonly, nonatomic) int accountType;
 @property (readonly, nonatomic) NSSet *activeAliases;
 @property (readonly, nonatomic) NSArray *aliasStrings;
 @property (readonly, nonatomic) NSArray *aliases;
+@property (readonly, nonatomic) NSArray *aliasesToRegister;
 @property (readonly, nonatomic) BOOL canSend;
 @property (readonly, weak, nonatomic) NSDate *dateRegistered;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *devices;
-@property (readonly, nonatomic) NSString *displayName;
+@property (strong, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) NSArray *handles;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive;
@@ -51,18 +53,23 @@
 @property (readonly, nonatomic) NSString *primaryServiceName;
 @property (readonly, weak, nonatomic) NSString *profileID;
 @property (readonly, nonatomic) NSDictionary *profileInfo;
+@property (readonly, nonatomic) int profileValidationErrorReason;
+@property (readonly, nonatomic) long long profileValidationStatus;
 @property (readonly, weak, nonatomic) NSData *pushToken;
 @property (readonly, nonatomic) NSString *pushTopic;
-@property (readonly, weak, nonatomic) NSString *regionBasePhoneNumber;
-@property (readonly, weak, nonatomic) NSString *regionID;
+@property (strong, nonatomic) NSString *regionBasePhoneNumber;
+@property (strong, nonatomic) NSString *regionID;
 @property (readonly, weak, nonatomic) NSDictionary *regionServerContext;
 @property (readonly, weak, nonatomic) NSArray *registeredURIs;
+@property (readonly, nonatomic) NSDictionary *registrationAlertInfo;
 @property (readonly, weak, nonatomic) NSData *registrationCertificate;
+@property (readonly, nonatomic) int registrationError;
 @property (readonly, nonatomic) int registrationStatus;
 @property (readonly, nonatomic) NSString *serviceName;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *suppressedDevices;
 @property (readonly, nonatomic) NSString *uniqueID;
+@property (readonly, nonatomic) NSString *userUniqueIdentifier;
 @property (readonly, nonatomic) NSArray *vettedAliases;
 
 - (void).cxx_destruct;

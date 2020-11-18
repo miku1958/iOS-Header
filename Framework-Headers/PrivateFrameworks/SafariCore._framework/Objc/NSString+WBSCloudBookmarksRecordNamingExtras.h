@@ -8,7 +8,45 @@
 
 @interface NSString (WBSCloudBookmarksRecordNamingExtras)
 
+@property (readonly, copy, nonatomic) NSString *safari_domainFromHost;
+@property (readonly, copy, nonatomic) NSString *safari_highLevelDomainFromHost;
 @property (readonly, nonatomic) BOOL safari_isSpecialFolderRecordName;
+@property (readonly, nonatomic) BOOL safari_looksLikeEmailAddress;
+@property (readonly, nonatomic) BOOL safari_looksLikeIPAddress;
+@property (readonly, copy, nonatomic) NSString *safari_stringByNormalizingVersionString;
+@property (readonly, copy, nonatomic) NSString *safari_stringByReplacingHomoglyphForSpaceWithSpace;
+@property (readonly, copy, nonatomic) NSString *safari_suggestedFilenameFromTitleString;
+@property (readonly, copy, nonatomic) NSString *safari_userVisibleSafariBundleVersionFromFullVersion;
 
++ (void)safari_reverseEnumerateComponents:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
++ (id)safari_stringAsHexWithBuffer:(const char *)arg1 length:(unsigned long long)arg2;
++ (id)safari_stringAsHexWithData:(id)arg1;
+- (BOOL)safari_anyComponentSeparatedByString:(id)arg1 hasLocalizedCaseInsensitivePrefix:(id)arg2;
+- (id)safari_base64DecodedData;
+- (BOOL)safari_containsAllCharactersInString:(id)arg1;
+- (BOOL)safari_containsInteriorWhitespace;
+- (BOOL)safari_containsPeriodOrHomoglyphForPeriod;
+- (unsigned long long)safari_countOfString:(id)arg1;
+- (id)safari_filenameByFixingIllegalCharacters;
+- (BOOL)safari_hasCaseInsensitivePrefix:(id)arg1;
+- (BOOL)safari_hasCaseInsensitiveSuffix:(id)arg1;
+- (BOOL)safari_hasLocalizedCaseInsensitivePrefix:(id)arg1;
+- (BOOL)safari_hasPrefix:(id)arg1;
+- (BOOL)safari_isCaseAndDiacriticInsensitiveEqualToString:(id)arg1;
+- (BOOL)safari_isCaseInsensitiveEqualToString:(id)arg1;
+- (BOOL)safari_isVersionStringBetweenVersionString:(id)arg1 andVersionString:(id)arg2;
+- (BOOL)safari_isVersionStringGreaterThanVersionString:(id)arg1;
+- (long long)safari_localizedCompareSortingEmptyStringAndNumericPrefixToEnd:(id)arg1;
+- (id)safari_setOfAllSubstringsWithMinimumLength:(unsigned long long)arg1;
+- (id)safari_simplifiedSiteNameForCredentialLookup;
+- (id)safari_simplifiedUserVisibleURLString;
+- (id)safari_simplifiedUserVisibleURLStringWithSimplifications:(unsigned long long)arg1 forDisplayOnly:(BOOL)arg2 simplifiedStringOffset:(unsigned long long *)arg3;
+- (id)safari_stringByRedactingBookmarkDAVServerID;
+- (id)safari_stringByRemovingCharactersInSet:(id)arg1;
+- (id)safari_stringByRemovingWwwDotPrefix;
+- (id)safari_stringByRepeatingWithCount:(unsigned long long)arg1 joinedByString:(id)arg2;
+- (id)safari_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
+- (id)safari_stringByTrimmingWhitespace;
+- (id)safari_topLevelDomainUsingCFFromComponents:(id)arg1;
 @end
 

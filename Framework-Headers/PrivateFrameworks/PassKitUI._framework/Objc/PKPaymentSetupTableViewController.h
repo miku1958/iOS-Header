@@ -8,10 +8,11 @@
 
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
+#import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, PKPaymentSetupDockView, UILabel, UITableView, UITableViewController, UIView, _UIBackdropView;
+@class NSIndexPath, NSString, PKPaymentSetupDockView, UILabel, UITableView, UITableViewController, UIView, _PKUIKVisibilityBackdropView;
 
-@interface PKPaymentSetupTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface PKPaymentSetupTableViewController : UIViewController <_PKUIKVisibilityBackdropViewDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     UITableView *_tableView;
     UILabel *_footerLabel;
@@ -19,10 +20,8 @@
     UIView *_containerView;
     long long _style;
     PKPaymentSetupDockView *_dockView;
-    _UIBackdropView *_backdropView;
-    long long _backdropStyle;
+    _PKUIKVisibilityBackdropView *_backdropView;
     double _backdropWeight;
-    BOOL _updatingBackdropSettings;
     BOOL _clearsSelectionOnViewWillAppear;
     long long _context;
     NSIndexPath *_selectedIndexPath;
@@ -40,7 +39,6 @@
 @property (readonly, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
-- (void)_accessibilitySettingsDidChange:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)edgesForExtendedLayout;
 - (BOOL)extendedLayoutIncludesOpaqueBars;
@@ -56,6 +54,7 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end
 

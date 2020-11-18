@@ -12,6 +12,7 @@
 
 @interface HUTableViewController : UITableViewController <HUResizableCellDelegate>
 {
+    BOOL _sectionContentInsetFollowsLayoutMargins;
     BOOL _viewLayingOut;
     NSHashTable *_childViewControllersAtViewWillAppearTime;
     NSHashTable *_childViewControllersAtViewWillDisappearTime;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *installedChildViewControllersKeyedByCell; // @synthesize installedChildViewControllersKeyedByCell=_installedChildViewControllersKeyedByCell;
+@property (nonatomic) BOOL sectionContentInsetFollowsLayoutMargins; // @synthesize sectionContentInsetFollowsLayoutMargins=_sectionContentInsetFollowsLayoutMargins;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isViewLayingOut) BOOL viewLayingOut; // @synthesize viewLayingOut=_viewLayingOut;
 

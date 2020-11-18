@@ -6,7 +6,7 @@
 
 #import <FMF/NSObject-Protocol.h>
 
-@class FMFDevice, FMFFriendshipRequest, FMFHandle, NSArray, NSError, NSSet, NSString;
+@class FMFDevice, FMFFriendshipRequest, FMFHandle, NSArray, NSDictionary, NSError, NSSet, NSString;
 
 @protocol FMFXPCClientProtocol <NSObject>
 - (oneway void)abDidChange;
@@ -26,6 +26,7 @@
 - (oneway void)didUpdateHideFromFollowersStatus:(BOOL)arg1;
 - (oneway void)didUpdateLocations:(NSSet *)arg1;
 - (oneway void)didUpdatePendingOffersForHandles:(NSSet *)arg1;
+- (oneway void)didUpdatePreferences:(NSDictionary *)arg1;
 - (oneway void)failedToGetLocationForHandle:(FMFHandle *)arg1 error:(NSError *)arg2;
 - (oneway void)sendMappingPacket:(NSString *)arg1 toHandle:(FMFHandle *)arg2;
 - (oneway void)setLocations:(NSSet *)arg1;

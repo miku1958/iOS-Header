@@ -20,9 +20,12 @@
 + (id)filterWithSubfilters:(id)arg1 compoundType:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_compoundFilterAcceptsObjectWithEvaluation:(CDUnknownBlockType)arg1;
 - (id)_copyWithZone:(struct _NSZone *)arg1 subfilters:(id)arg2;
 - (id)_subfilters;
+- (BOOL)acceptsActivitySummary:(id)arg1;
 - (BOOL)acceptsDataObject:(id)arg1;
+- (BOOL)acceptsDataObjectWithStartTimestamp:(double)arg1 endTimestamp:(double)arg2 valueInCanonicalUnit:(double)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

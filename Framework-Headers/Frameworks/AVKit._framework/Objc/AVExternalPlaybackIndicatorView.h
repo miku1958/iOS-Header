@@ -8,6 +8,7 @@
 
 @class UIImageView, UILabel, UIStackView;
 
+__attribute__((visibility("hidden")))
 @interface AVExternalPlaybackIndicatorView : UIView
 {
     UIImageView *_imageView;

@@ -24,9 +24,11 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithExternalID:(id)arg1 batchID:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

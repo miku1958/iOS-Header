@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _gender;
 }
 
-@property unsigned long long gender; // @synthesize gender=_gender;
+@property (nonatomic) unsigned long long gender; // @synthesize gender=_gender;
 @property (copy, nonatomic) NSNumber *number; // @synthesize number=_number;
 
 + (id)sentenceContext;

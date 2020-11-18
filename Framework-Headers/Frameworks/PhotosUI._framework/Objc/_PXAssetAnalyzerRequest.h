@@ -27,9 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleFinishWithSuccess:(BOOL)arg1;
-- (void)dealloc;
 - (id)initWithAsset:(id)arg1 workerType:(long long)arg2;
-- (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
 - (void)runWithResultHandler:(CDUnknownBlockType)arg1;
 
 @end

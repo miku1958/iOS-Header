@@ -13,7 +13,7 @@
 @interface AceObject : NSObject <AceObject>
 {
     NSNumber *_deserializationDuration;
-    BOOL _mutatingCommand;
+    NSNumber *_mutatingCommand;
     NSString *_aceId;
     NSString *_refId;
     NSNumber *_usefulnessScore;
@@ -26,7 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableDictionary *dict; // @synthesize dict=_dict;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL mutatingCommand; // @synthesize mutatingCommand=_mutatingCommand;
+@property (nonatomic) BOOL mutatingCommand;
 @property (readonly, nonatomic) NSData *plistData; // @synthesize plistData=_plistData;
 @property (copy, nonatomic) NSString *refId; // @synthesize refId=_refId;
 @property (readonly) Class superclass;
@@ -52,8 +52,8 @@
 - (void)_deserializeFromPlistData;
 - (id)_dict;
 - (id)_initWithMutableDictionary:(id)arg1;
-- (id)_initWithPlistData:(id)arg1 aceId:(id)arg2 refId:(id)arg3;
 - (id)_initWithPlistData:(id)arg1 aceId:(id)arg2 refId:(id)arg3 usefulnessScore:(id)arg4 mutatingCommand:(id)arg5;
+- (BOOL)_isDeserialized;
 - (id)_serializedData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

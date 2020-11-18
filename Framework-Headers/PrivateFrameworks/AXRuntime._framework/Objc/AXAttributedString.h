@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSString.h>
+#import <Foundation/NSMutableString.h>
 
 #import <AXRuntime/NSCopying-Protocol.h>
 
-@interface AXAttributedString : NSString <NSCopying>
+@interface AXAttributedString : NSMutableString <NSCopying>
 {
     struct __CFAttributedString *_string;
 }
@@ -48,6 +48,7 @@
 - (BOOL)isAXAttributedString;
 - (unsigned long long)length;
 - (id)lowercaseString;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)removeAttributes:(id)arg1;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)replaceString:(struct __CFString *)arg1;
@@ -59,6 +60,7 @@
 - (id)stringByReplacingOccurrencesOfString:(id)arg1 withString:(id)arg2 options:(unsigned long long)arg3 range:(struct _NSRange)arg4;
 - (id)stringByTrimmingCharactersInSet:(id)arg1;
 - (id)substringFromIndex:(unsigned long long)arg1;
+- (id)substringWithRange:(struct _NSRange)arg1;
 - (id)uppercaseString;
 
 @end

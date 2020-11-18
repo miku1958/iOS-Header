@@ -28,12 +28,15 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 fromPDFPageViewController:(id)arg2;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 toPDFPageViewController:(id)arg2;
+- (void)_documentChanged;
+- (void)_documentWasUnlocked;
+- (void)_loadDocument;
 - (id)_pageViewController:(id)arg1 nextViewController:(int)arg2 forViewController:(id)arg3;
 - (id)_pageViewControllerCreate:(int)arg1;
+- (void)_setupDocument;
 - (void)_updateCurrentPageViewController:(id)arg1;
 - (double)autoScaleFactor;
 - (id)backgroundImageForPage:(id)arg1 withQuality:(int *)arg2;
-- (void)clearTextSelectionHandles;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromPage:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toPage:(id)arg2;
 - (id)currentPage;
@@ -41,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (void)didInsertPage:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)didRemovePage:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)document;
-- (void)enableTextSelectionHandles;
 - (id)findPageViewControllerForPageIndex:(long long)arg1;
 - (void)forceUpdateActivePageIndex:(unsigned long long)arg1 withMaxDuration:(double)arg2;
 - (void)goToPage:(id)arg1 direction:(long long)arg2 animated:(BOOL)arg3;

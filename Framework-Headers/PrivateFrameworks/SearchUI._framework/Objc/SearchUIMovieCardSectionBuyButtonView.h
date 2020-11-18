@@ -4,28 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUIWidthLimitedStackView.h>
+#import <TemplateKit/TLKStackView.h>
 
-@class SFPunchout, SKUIItemOfferButton, SearchUIMovieCardSectionView, SearchUIVibrantLabel;
+@class SFPunchout, SearchUILabel, SearchUIMovieCardSectionView, SearchUIOfferButtonView;
 
-@interface SearchUIMovieCardSectionBuyButtonView : SearchUIWidthLimitedStackView
+@interface SearchUIMovieCardSectionBuyButtonView : TLKStackView
 {
-    SearchUIVibrantLabel *_subtitleLabel;
-    SKUIItemOfferButton *_button;
+    SearchUILabel *_subtitleLabel;
+    SearchUIOfferButtonView *_button;
     SFPunchout *_punchout;
     SearchUIMovieCardSectionView *_cardSectionView;
 }
 
-@property (strong) SKUIItemOfferButton *button; // @synthesize button=_button;
-@property (weak) SearchUIMovieCardSectionView *cardSectionView; // @synthesize cardSectionView=_cardSectionView;
-@property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
-@property (strong) SearchUIVibrantLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
+@property (strong, nonatomic) SearchUIOfferButtonView *button; // @synthesize button=_button;
+@property (weak, nonatomic) SearchUIMovieCardSectionView *cardSectionView; // @synthesize cardSectionView=_cardSectionView;
+@property (strong, nonatomic) SFPunchout *punchout; // @synthesize punchout=_punchout;
+@property (strong, nonatomic) SearchUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 
 - (void).cxx_destruct;
 - (void)buttonPressed;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 punchout:(id)arg3 cardSectionView:(id)arg4;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 
 @end
 

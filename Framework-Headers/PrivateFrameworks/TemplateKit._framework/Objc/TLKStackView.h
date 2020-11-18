@@ -13,7 +13,7 @@
 }
 
 @property (nonatomic) BOOL flipsToVerticalAxisForAccessibilityContentSizes; // @synthesize flipsToVerticalAxisForAccessibilityContentSizes=_flipsToVerticalAxisForAccessibilityContentSizes;
-@property BOOL isForcedToBeVertical; // @synthesize isForcedToBeVertical=_isForcedToBeVertical;
+@property (nonatomic) BOOL isForcedToBeVertical; // @synthesize isForcedToBeVertical=_isForcedToBeVertical;
 
 - (void)addArrangedSubview:(id)arg1;
 - (void)setAlignment:(long long)arg1;

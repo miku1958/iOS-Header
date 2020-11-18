@@ -8,16 +8,18 @@
 
 #import <MessageUI/MFMailComposeRemoteViewControllerDelegate-Protocol.h>
 #import <MessageUI/MFMailCompositionAdditionalDonating-Protocol.h>
+#import <MessageUI/MFMailCompositionShareSheetRecipients-Protocol.h>
 
 @class MFMailComposePlaceholderViewController, MFMailComposeRemoteViewController, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, _UIAsyncInvocation;
 @protocol MFMailComposeViewControllerDelegate;
 
-@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionAdditionalDonating>
+@interface MFMailComposeInternalViewController : UIViewController <MFMailComposeRemoteViewControllerDelegate, MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
 {
-    id<MFMailComposeViewControllerDelegate> _mailComposeDelegate;
     MFMailComposePlaceholderViewController *_placeholderViewController;
     MFMailComposeRemoteViewController *_serviceViewController;
     _UIAsyncInvocation *_cancellationInvocation;
+    unsigned long long _defaultContentVariationIndex;
+    NSMutableArray *_contentVariations;
     NSMutableDictionary *_compositionValues;
     NSMutableArray *_attachments;
     NSString *_placeholderSubject;
@@ -32,22 +34,22 @@
     unsigned int _didAppear:1;
     unsigned int _didFinish:1;
     unsigned int _delegateRespondsToBodyFinishedLoadingWithResult:1;
-    id _autorotationDelegate;
+    id<MFMailComposeViewControllerDelegate> _mailComposeDelegate;
 }
 
 @property (copy, nonatomic) NSArray *UTITypes;
-@property (nonatomic) id autorotationDelegate; // @synthesize autorotationDelegate=_autorotationDelegate;
 @property (copy, nonatomic) NSArray *cloudPhotoIDs;
 @property (copy, nonatomic) NSArray *contentText;
 @property (copy, nonatomic) NSArray *contentURLs;
-@property (nonatomic) id<MFMailComposeViewControllerDelegate> mailComposeDelegate; // @synthesize mailComposeDelegate=_mailComposeDelegate;
+@property (weak, nonatomic) id<MFMailComposeViewControllerDelegate> mailComposeDelegate; // @synthesize mailComposeDelegate=_mailComposeDelegate;
 @property (copy, nonatomic) NSArray *photoIDs;
+@property (copy, nonatomic) NSString *shareSheetSessionID;
 
+- (void).cxx_destruct;
 - (void)_beginDelayingCompositionPresenation;
 - (void)_cancelComposition:(id)arg1;
 - (void)_cancelRemoteServiceViewControllerRequest;
 - (void)_configureRemoteViewContoller;
-- (double)_delayedPresentationTimeout;
 - (void)_didEndDelayingCompositionPresentation;
 - (void)_endDelayingCompositionPresentation;
 - (void)_finishServiceViewControllerRequestWithSuccess:(BOOL)arg1;
@@ -60,6 +62,7 @@
 - (void)_setPlaceHolderSubject:(id)arg1;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentFileURL:(id)arg1 mimeType:(id)arg2;
+- (id)addContentVariationWithName:(id)arg1;
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
 - (void)autosaveWithHandler:(CDUnknownBlockType)arg1;
 - (void)compositionFinishedWithResult:(long long)arg1 error:(id)arg2;
@@ -70,6 +73,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (id)placeholderForFileName:(id)arg1 fileSize:(long long)arg2 mimeType:(id)arg3 contentID:(id)arg4 proxy:(id)arg5;
+- (id)remoteViewController;
 - (void)requestFramesForAttachmentsWithIdentifiers:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (id)securityScopeForURL:(id)arg1 proxy:(id)arg2;
 - (void)setAutosaveIdentifier:(id)arg1;
@@ -77,6 +81,7 @@
 - (void)setCaretPosition:(unsigned long long)arg1;
 - (void)setCcRecipients:(id)arg1;
 - (void)setContentVisible:(BOOL)arg1;
+- (void)setDefaultContentVariation:(id)arg1;
 - (void)setMessageBody:(id)arg1 isHTML:(BOOL)arg2;
 - (void)setPreferredSendingEmailAddress:(id)arg1;
 - (void)setShowKeyboardImmediately:(BOOL)arg1;

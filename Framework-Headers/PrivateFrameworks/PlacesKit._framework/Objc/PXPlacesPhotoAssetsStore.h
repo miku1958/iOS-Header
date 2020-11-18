@@ -8,7 +8,7 @@
 
 #import <PlacesKit/PHPhotoLibraryChangeObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PXPlacesStore;
+@class NSArray, NSMutableArray, NSString, PHPhotoLibrary, PXPlacesStore;
 @protocol OS_dispatch_queue, PXPlacesGeotaggedItemDataSource;
 
 @interface PXPlacesPhotoAssetsStore : NSObject <PHPhotoLibraryChangeObserver>
@@ -16,6 +16,7 @@
     BOOL _didInitiateLoad;
     BOOL _didCompleteLoad;
     NSArray *_fetchResults;
+    PHPhotoLibrary *_photoLibrary;
     PXPlacesStore *_store;
     NSMutableArray *_completions;
     NSObject<OS_dispatch_queue> *_serialQueue;
@@ -29,6 +30,7 @@
 @property (nonatomic) BOOL didInitiateLoad; // @synthesize didInitiateLoad=_didInitiateLoad;
 @property (strong, nonatomic) NSArray *fetchResults; // @synthesize fetchResults=_fetchResults;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (strong, nonatomic) PXPlacesStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;

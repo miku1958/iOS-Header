@@ -15,7 +15,7 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType imageHandler; // @synthesize imageHandler=_imageHandler;
-@property (strong) GEOPhotoInfo *info; // @synthesize info=_info;
+@property (strong, nonatomic) GEOPhotoInfo *info; // @synthesize info=_info;
 
 + (id)requestWithMapItem:(id)arg1 info:(id)arg2;
 - (void).cxx_destruct;

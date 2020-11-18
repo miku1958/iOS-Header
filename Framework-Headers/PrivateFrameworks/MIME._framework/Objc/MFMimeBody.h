@@ -32,10 +32,10 @@
 
 + (id)copyNewMimeBoundary;
 + (id)versionString;
+- (void).cxx_destruct;
 - (id)attachmentURLs;
 - (id)attachments;
 - (id)contentToOffset:(unsigned long long)arg1 resultOffset:(unsigned long long *)arg2 asHTML:(BOOL)arg3 isComplete:(BOOL *)arg4;
-- (void)dealloc;
 - (id)init;
 - (BOOL)isHTML;
 - (BOOL)isRich;

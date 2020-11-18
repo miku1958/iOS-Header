@@ -19,6 +19,7 @@
 @property (strong, nonatomic) ADHomeButtonHandler *homeButtonHandler; // @synthesize homeButtonHandler=_homeButtonHandler;
 @property (strong, nonatomic) id notificationObserver; // @synthesize notificationObserver=_notificationObserver;
 
+- (void).cxx_destruct;
 - (void)cancelAndDismiss;
 - (void)dealloc;
 - (void)viewDidAppear:(BOOL)arg1;

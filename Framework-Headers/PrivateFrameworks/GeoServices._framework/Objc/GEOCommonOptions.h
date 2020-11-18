@@ -8,33 +8,44 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOCommonOptions : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     BOOL _excludeGuidance;
+    BOOL _includeSnapScoreMetadataDebug;
     BOOL _includeSummaryForPredictedDestination;
     BOOL _includeTravelTimeAggressive;
     BOOL _includeTravelTimeConservative;
     BOOL _includeTravelTimeEstimate;
     struct {
-        unsigned int excludeGuidance:1;
-        unsigned int includeSummaryForPredictedDestination:1;
-        unsigned int includeTravelTimeAggressive:1;
-        unsigned int includeTravelTimeConservative:1;
-        unsigned int includeTravelTimeEstimate:1;
-    } _has;
+        unsigned int has_excludeGuidance:1;
+        unsigned int has_includeSnapScoreMetadataDebug:1;
+        unsigned int has_includeSummaryForPredictedDestination:1;
+        unsigned int has_includeTravelTimeAggressive:1;
+        unsigned int has_includeTravelTimeConservative:1;
+        unsigned int has_includeTravelTimeEstimate:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL excludeGuidance; // @synthesize excludeGuidance=_excludeGuidance;
+@property (nonatomic) BOOL excludeGuidance;
 @property (nonatomic) BOOL hasExcludeGuidance;
+@property (nonatomic) BOOL hasIncludeSnapScoreMetadataDebug;
 @property (nonatomic) BOOL hasIncludeSummaryForPredictedDestination;
 @property (nonatomic) BOOL hasIncludeTravelTimeAggressive;
 @property (nonatomic) BOOL hasIncludeTravelTimeConservative;
 @property (nonatomic) BOOL hasIncludeTravelTimeEstimate;
-@property (nonatomic) BOOL includeSummaryForPredictedDestination; // @synthesize includeSummaryForPredictedDestination=_includeSummaryForPredictedDestination;
-@property (nonatomic) BOOL includeTravelTimeAggressive; // @synthesize includeTravelTimeAggressive=_includeTravelTimeAggressive;
-@property (nonatomic) BOOL includeTravelTimeConservative; // @synthesize includeTravelTimeConservative=_includeTravelTimeConservative;
-@property (nonatomic) BOOL includeTravelTimeEstimate; // @synthesize includeTravelTimeEstimate=_includeTravelTimeEstimate;
+@property (nonatomic) BOOL includeSnapScoreMetadataDebug;
+@property (nonatomic) BOOL includeSummaryForPredictedDestination;
+@property (nonatomic) BOOL includeTravelTimeAggressive;
+@property (nonatomic) BOOL includeTravelTimeConservative;
+@property (nonatomic) BOOL includeTravelTimeEstimate;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
+- (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +53,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

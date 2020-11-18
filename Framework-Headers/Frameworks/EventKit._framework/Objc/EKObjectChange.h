@@ -21,14 +21,21 @@
 @property (readonly, nonatomic) EKObjectID *changedObjectID; // @synthesize changedObjectID=_changedObjectID;
 @property (readonly, nonatomic) long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 
++ (id)CADObjectChangeIDsFromEKObjectChanges:(id)arg1;
++ (CDUnknownBlockType)_filterObjectChangesNotConformingToOwnerIDProvidingProtocol:(CDUnknownBlockType)arg1;
 + (void)callClientResultsHandler:(CDUnknownBlockType)arg1 changesTruncated:(BOOL)arg2 latestToken:(long long)arg3 changes:(id)arg4;
-+ (void)fetchChangesToObjectsOfEntityType:(int)arg1 inCalendar:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
-+ (void)fetchChangesToObjectsOfEntityType:(int)arg1 inSource:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
-+ (void)fetchChangesToObjectsOfEntityType:(int)arg1 inStore:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
++ (int)entityType;
++ (void)fetchChangesToObjectsOfTypes:(id)arg1 inCalendar:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
++ (void)fetchChangesToObjectsOfTypes:(id)arg1 inSource:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
++ (void)fetchChangesToObjectsOfTypes:(id)arg1 inStore:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
++ (void)fetchChangesToOwnerIDProvidingObjectsOfTypes:(id)arg1 inCalendar:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
++ (void)fetchChangesToOwnerIDProvidingObjectsOfTypes:(id)arg1 inSource:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
++ (void)fetchChangesToOwnerIDProvidingObjectsOfTypes:(id)arg1 inStore:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 + (void)fetchObjectChangesInCalendar:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (void)fetchObjectChangesInSource:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (void)fetchObjectChangesInStore:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 + (id)objectChangeWithProperties:(id)arg1;
++ (long long)objectType;
 + (CDUnknownBlockType)processFetchResults:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)hash;

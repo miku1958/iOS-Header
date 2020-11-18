@@ -61,11 +61,13 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)addAttachmentsFromFilePaths:(id)arg1;
 - (void)addAttachmentsFromFileTransferGUIDs:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1 additionalAllowedClasses:(id)arg2;
 - (id)initWithMessage:(id)arg1;
 - (id)initWithMessageItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

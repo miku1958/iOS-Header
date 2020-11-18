@@ -10,12 +10,15 @@
 #import <HealthDaemon/HDQueryServerDelegate-Protocol.h>
 #import <HealthDaemon/HDTaskServerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface HDQueryControlServer : HDSubserver <HDQueryServerDelegate, HDTaskServerDelegate, HDQueryControlServerInterface>
 {
     NSMutableDictionary *_queryServersByUUID;
     NSMutableDictionary *_queryServerEndpointsByUUID;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,21 +27,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_clientSourceIdentifierWithError:(id *)arg1;
-- (BOOL)_queue_hasActiveQueries;
-- (void)_startQueryServer:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)_hasActiveQueries;
+- (BOOL)_lock_hasActiveQueries;
+- (void)_startQueryServer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addObserver:(id)arg1 forTaskServerUUID:(id)arg2;
-- (unsigned int)clientSDKVersionForQueryServer:(id)arg1;
-- (id)initWithParentServer:(id)arg1;
+- (id)initWithParentServer:(id)arg1 connectionQueue:(id)arg2;
 - (void)invalidate;
 - (void)queryServer:(id)arg1 requestsAuthorizationForSamples:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queryServer:(id)arg1 shouldStartWithCompletion:(CDUnknownBlockType)arg2;
-- (BOOL)queryServerClientHasActiveWorkout:(id)arg1;
-- (BOOL)queryServerClientIsInBackground:(id)arg1;
 - (void)queryServerDidFinish:(id)arg1;
-- (BOOL)queryServerShouldObserveInBackground:(id)arg1;
-- (id)readAuthorizationStatusForQueryServer:(id)arg1 type:(id)arg2 error:(id *)arg3;
-- (void)remote_createQueryServerForIdentifier:(id)arg1 queryUUID:(id)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)remote_createQueryServerEndpointForIdentifier:(id)arg1 queryUUID:(id)arg2 configuration:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeObserver:(id)arg1 forTaskServerUUID:(id)arg2;
 - (void)removeTaskServerObserver:(id)arg1;
 - (void)taskServerDidFailToInitializeForUUID:(id)arg1;

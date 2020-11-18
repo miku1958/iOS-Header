@@ -8,30 +8,34 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBUnknownFields;
 
 @interface GEOTransitSurcharge : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
+    NSMutableArray *_surchargeUnits;
     unsigned int _numberOfLegs;
     int _paymentType;
-    NSMutableArray *_surchargeUnits;
     struct {
-        unsigned int numberOfLegs:1;
-        unsigned int paymentType:1;
-    } _has;
+        unsigned int has_numberOfLegs:1;
+        unsigned int has_paymentType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasNumberOfLegs;
 @property (nonatomic) BOOL hasPaymentType;
-@property (nonatomic) unsigned int numberOfLegs; // @synthesize numberOfLegs=_numberOfLegs;
-@property (nonatomic) int paymentType; // @synthesize paymentType=_paymentType;
-@property (strong, nonatomic) NSMutableArray *surchargeUnits; // @synthesize surchargeUnits=_surchargeUnits;
+@property (nonatomic) unsigned int numberOfLegs;
+@property (nonatomic) int paymentType;
+@property (strong, nonatomic) NSMutableArray *surchargeUnits;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)surchargeUnitType;
 - (void).cxx_destruct;
 - (int)StringAsPaymentType:(id)arg1;
 - (void)addSurchargeUnit:(id)arg1;
 - (void)clearSurchargeUnits;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +44,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)paymentTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)surchargeUnitAtIndex:(unsigned long long)arg1;
 - (unsigned long long)surchargeUnitsCount;

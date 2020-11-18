@@ -18,6 +18,7 @@
     PKContinuousButton *_leadingButton;
     PKContinuousButton *_trailingButton;
     BOOL _isTemplateLayout;
+    long long _backdropStyle;
     PKPaymentTransaction *_transaction;
     PKPaymentPass *_paymentPass;
     id<PKPaymentDataProvider> _paymentDataProvider;
@@ -29,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (void)_callIssuer;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_enableButtons:(BOOL)arg1;
 - (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (void)_leadingButtonTapped:(id)arg1;
@@ -39,6 +41,7 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithPaymentPass:(id)arg1 paymentDataProvider:(id)arg2;
 - (void)layoutSubviews;
+- (long long)preferredBackdropStyle;
 - (void)setTransaction:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

@@ -10,13 +10,13 @@
 #import <MapsSuggestions/MapsSuggestionsSourceDelegate-Protocol.h>
 
 @class MapsSuggestionsSuppressor, NSMutableDictionary, NSObject, NSString;
-@protocol MapsSuggestionsSourceDelegate, OS_dispatch_queue, OS_dispatch_source;
+@protocol MapsSuggestionsSourceDelegate, OS_dispatch_source;
 
 @interface MapsSuggestionsCompositeSource : MapsSuggestionsBaseSource <MapsSuggestionsSource, MapsSuggestionsSourceDelegate>
 {
     struct NSMutableSet *_sources;
     NSMutableDictionary *_nextUpdateTimes;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct Queue _queue;
     NSObject<OS_dispatch_source> *_updateTimer;
     MapsSuggestionsSuppressor *_suppressor;
     BOOL _running;
@@ -32,32 +32,36 @@
 
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
+- (id).cxx_construct;
 - (void).cxx_destruct;
-- (double)_hideTimeForEntry:(id)arg1;
 - (void)_initUpdateTimerIfNecessary;
 - (void)_scheduleNextUpdateChildSourcesWithin:(double)arg1;
 - (BOOL)_shouldUpdateSource:(id)arg1;
-- (double)_snoozeTimeForEntry:(id)arg1;
 - (void)_startUpdateChildSources;
 - (void)_stopUpdateChildSources;
-- (BOOL)_suppressEntry:(id)arg1 withTime:(double)arg2;
-- (double)_suppressionTimeForEntry:(id)arg1 behavior:(long long)arg2;
+- (double)_suppressionTimeForEntry:(id)arg1 snoozeOnly:(BOOL)arg2;
 - (double)_updateChildSource:(id)arg1;
 - (void)_updateChildSourcesForType:(long long)arg1;
 - (void)_updateChildSourcesForceAll:(BOOL)arg1;
 - (BOOL)addChildSource:(id)arg1;
-- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2 deleteMissing:(BOOL)arg3;
+- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
 - (BOOL)attachSource:(id)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
-- (id)currentBestLocation;
+- (struct NSSet *)children;
 - (void)dealloc;
-- (unsigned long long)deleteEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
 - (BOOL)detachSource:(id)arg1;
+- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
+- (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
+- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)removeChildSource:(id)arg1;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
+- (id)test_dateUntilSuppressedEntry:(id)arg1;
+- (void)test_resetSuppressions;
+- (double)test_suppressionDurationForBehavior:(long long)arg1 type:(long long)arg2;
+- (void)test_sync;
 - (double)updateSuggestionEntries;
 - (double)updateSuggestionEntriesOfType:(long long)arg1;
 

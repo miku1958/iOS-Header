@@ -6,19 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, SBUIAction, SBUIActionViewLabel, UIImageView;
+@class MTVisualStylingProvider, NSArray, SBUIAction, SBUIActionViewLabel, UIImageView;
 
 @interface SBUIActionView : UIView
 {
     BOOL _interfaceOrientationIsPortrait;
     UIImageView *_imageView;
-    UIImageView *_legibilityTreatedImageView;
     UIView *_textContainer;
     SBUIActionViewLabel *_titleLabel;
-    SBUIActionViewLabel *_legibilityTreatedTitleLabel;
     SBUIActionViewLabel *_subtitleLabel;
-    SBUIActionViewLabel *_legibilityTreatedSubtitleLabel;
+    UIView *_highlightView;
     NSArray *_imageViewLayoutConstraints;
+    MTVisualStylingProvider *_visualStylingProviderStroke;
+    MTVisualStylingProvider *_visualStylingProviderFill;
     BOOL _highlighted;
     SBUIAction *_action;
     long long _imagePosition;
@@ -27,18 +27,20 @@
 @property (readonly, nonatomic) SBUIAction *action; // @synthesize action=_action;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) long long imagePosition; // @synthesize imagePosition=_imagePosition;
+@property (readonly, nonatomic) double leadingContentMargin;
+@property (readonly, nonatomic) double trailingContentMargin;
 
 - (void).cxx_destruct;
-- (void)_constrainView:(id)arg1 toView:(id)arg2;
-- (id)_createLegibilityTreatedLabelForLabel:(id)arg1;
+- (void)_invalidateVisualStyling;
 - (void)_setupSubviews;
 - (void)_updateImageViewLayoutConstraints;
-- (void)didMoveToSuperview;
+- (void)_updateVisualStylingIfNecessary;
 - (id)initWithAction:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (BOOL)needsLegibilityCompensation;
+- (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1 withFeedbackRetargetBehavior:(id)arg2;
+- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

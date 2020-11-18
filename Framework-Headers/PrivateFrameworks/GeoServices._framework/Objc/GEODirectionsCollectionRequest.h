@@ -16,8 +16,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_requestElements;
 }
 
-@property (strong, nonatomic) NSMutableArray *requestElements; // @synthesize requestElements=_requestElements;
+@property (strong, nonatomic) NSMutableArray *requestElements;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)requestElementsType;
 - (void).cxx_destruct;
 - (void)addRequestElements:(id)arg1;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestElementsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)requestElementsCount;

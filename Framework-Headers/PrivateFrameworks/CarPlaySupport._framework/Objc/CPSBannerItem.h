@@ -7,7 +7,7 @@
 #import <SpringBoardUI/SBUIBannerItem.h>
 
 @class CPImageSet, NSArray, NSString, NSUUID;
-@protocol CPBannerDelegate;
+@protocol CPSBannerItemDelegate;
 
 @interface CPSBannerItem : SBUIBannerItem
 {
@@ -17,12 +17,12 @@
     NSArray *_detailTextVariants;
     NSArray *_attributedDetailTextVariants;
     CPImageSet *_imageSet;
-    id<CPBannerDelegate> _delegate;
+    id<CPSBannerItemDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) NSArray *attributedDetailTextVariants; // @synthesize attributedDetailTextVariants=_attributedDetailTextVariants;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (weak, nonatomic) id<CPBannerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CPSBannerItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSArray *detailTextVariants; // @synthesize detailTextVariants=_detailTextVariants;
 @property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;

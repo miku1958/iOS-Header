@@ -16,37 +16,51 @@
     NSMutableDictionary *_getAttributeConnections;
     NSObject<OS_dispatch_source> *_getAttributeConnectionsIdleCleanupTimer;
     unsigned int _user;
+    NSXPCConnection<FPDDaemon> *_connection;
 }
 
-@property (readonly, nonatomic) NSXPCConnection<FPDDaemon> *connection;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
-@property (strong, nonatomic) NSXPCConnection<FPDDaemon> *connectionQueueConnection; // @synthesize connectionQueueConnection=_connectionQueueConnection;
+@property (readonly, nonatomic) NSXPCConnection<FPDDaemon> *connection; // @synthesize connection=_connection;
 @property (nonatomic) unsigned int user; // @synthesize user=_user;
 
 + (id)connectionForUser:(unsigned int)arg1;
 + (id)newXPCConnection;
 + (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 + (id)sharedConnection;
++ (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (void)_test_callFileProviderManagerAPIs:(CDUnknownBlockType)arg1;
+- (void)_test_retrieveItemWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)backUpUserURL:(id)arg1 outputUserURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)bookmarkableStringFromDocumentURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)bookmarkableStringFromDocumentURL:(id)arg1 error:(id *)arg2;
+- (void)createItemBasedOnTemplate:(id)arg1 fields:(unsigned long long)arg2 urlWrapper:(id)arg3 options:(unsigned long long)arg4 bounceOnCollision:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)documentURLFromBookmarkableString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)documentURLFromBookmarkableString:(id)arg1 error:(id *)arg2;
-- (void)dumpStateTo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)evictItemAtURL:(id)arg1 evenIfEnumeratingFP:(BOOL)arg2 andClearACLForConsumer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)dumpStateTo:(id)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)evictItemAtURL:(id)arg1 evenIfEnumeratingFP:(BOOL)arg2 andClearACLForConsumer:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)evictItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)extendBookmarkForFileURL:(id)arg1 toConsumerID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)extendSandboxAndCreatePlaceholderForFileURL:(id)arg1 fromProviderID:(id)arg2 toConsumerID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)extendSandboxForFileURL:(id)arg1 fromProviderID:(id)arg2 toConsumerID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)fetchRemoteFileProviderWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)fetchRemoteServiceEndpointCreatingProviderWithIdentifier:(id)arg1 itemURL:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)fetchSupportedServicesForDocumentAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchDomainServicerForProviderDomainID:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)forceIngestionForItemID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)forceIngestionForItemIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getURLForContainerWithItemID:(id)arg1 inDataScopeDomainWithIdentifier:(id)arg2 documentsScopeDomainIdentifier:(id)arg3 documentsFolderItemIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)initWithUser:(unsigned int)arg1;
+- (id)listOfMonitoredAppsWithError:(id *)arg1;
+- (void)makeTopologicallySortedItemsOnDisk:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)makeTopologicallySortedItemsOnDisk:(id)arg1 error:(id *)arg2;
+- (void)pinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)providerDomainsCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)providersCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)restoreUserURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startProvidingItemAtURL:(id)arg1 fromProviderID:(id)arg2 forConsumerID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)unobserveWithToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)unpinItemWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateLastUsedDateForFileURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)valuesForAttributes:(id)arg1 forItemAtURL:(id)arg2 error:(id *)arg3;
 - (void)wakeUpForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

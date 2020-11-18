@@ -49,6 +49,7 @@
 - (id)_operateConversionForOutputUnit:(id)arg1;
 - (BOOL)_parseInputQuery;
 - (void)_performUnitPluralization;
+- (id)_safe_subStringOf:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)_standardizeInputAndOutputUnits;
 - (id)_unitInfoForNormalizedName:(id)arg1;
 - (void)_updateInputValueFromMatch:(id)arg1;

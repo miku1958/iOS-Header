@@ -19,8 +19,9 @@
 @property (readonly, nonatomic) NSArray *discounts;
 @property (readonly, nonatomic) NSArray *downloadContentLengths;
 @property (readonly, nonatomic) NSString *downloadContentVersion;
-@property (readonly, nonatomic, getter=isDownloadable) BOOL downloadable;
+@property (readonly, nonatomic) BOOL downloadable;
 @property (readonly, nonatomic) SKProductDiscount *introductoryPrice;
+@property (readonly, nonatomic) BOOL isDownloadable;
 @property (readonly, nonatomic) NSString *localizedDescription;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) NSDecimalNumber *price;
@@ -46,7 +47,6 @@
 - (void)_setSubscriptionGroupIdentifier:(id)arg1;
 - (void)_setSubscriptionPeriod:(id)arg1;
 - (id)copyXPCEncoding;
-- (BOOL)downloadable;
 - (id)init;
 - (id)initMinusLocaleWithDictionary:(id)arg1;
 - (id)initMinusLocaleWithXPCEncoding:(id)arg1;

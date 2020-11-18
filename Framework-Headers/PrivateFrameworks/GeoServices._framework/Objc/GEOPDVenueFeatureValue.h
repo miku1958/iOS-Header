@@ -8,26 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDFeatureBuilding, GEOPDFeaturePOI, GEOPDFeatureVenue, PBUnknownFields;
+@class GEOPDFeatureBuilding, GEOPDFeaturePOI, GEOPDFeatureVenue, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDVenueFeatureValue : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDFeatureBuilding *_featureBuilding;
     GEOPDFeaturePOI *_featurePoi;
     GEOPDFeatureVenue *_featureVenue;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_featureBuilding:1;
+        unsigned int read_featurePoi:1;
+        unsigned int read_featureVenue:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_featureBuilding:1;
+        unsigned int wrote_featurePoi:1;
+        unsigned int wrote_featureVenue:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDFeatureBuilding *featureBuilding; // @synthesize featureBuilding=_featureBuilding;
-@property (strong, nonatomic) GEOPDFeaturePOI *featurePoi; // @synthesize featurePoi=_featurePoi;
-@property (strong, nonatomic) GEOPDFeatureVenue *featureVenue; // @synthesize featureVenue=_featureVenue;
+@property (strong, nonatomic) GEOPDFeatureBuilding *featureBuilding;
+@property (strong, nonatomic) GEOPDFeaturePOI *featurePoi;
+@property (strong, nonatomic) GEOPDFeatureVenue *featureVenue;
 @property (readonly, nonatomic) BOOL hasFeatureBuilding;
 @property (readonly, nonatomic) BOOL hasFeaturePoi;
 @property (readonly, nonatomic) BOOL hasFeatureVenue;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readFeatureBuilding;
+- (void)_readFeaturePoi;
+- (void)_readFeatureVenue;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

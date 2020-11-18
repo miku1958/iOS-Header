@@ -26,14 +26,16 @@
 @property (strong, nonatomic) NSMutableDictionary *existingUUIDsByUppercasePath; // @synthesize existingUUIDsByUppercasePath=_existingUUIDsByUppercasePath;
 @property (nonatomic) unsigned long long thumbnailBatchFetchSize; // @synthesize thumbnailBatchFetchSize=_thumbnailBatchFetchSize;
 
-- (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2;
+- (void).cxx_destruct;
+- (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2 isPlaceholder:(BOOL)arg3;
+- (id)_assetAdjustmentsIfExistsForAsset:(id)arg1;
 - (BOOL)_setupAdjustmentsFromAdjustmentFileForAsset:(id)arg1;
-- (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2;
-- (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2 unknownType:(BOOL)arg3;
-- (BOOL)_setupPhotoAssetAsPhotoIrisIfNeeded:(id)arg1;
+- (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2 isPlaceholder:(BOOL)arg3 hasVideoComplementResource:(BOOL)arg4;
+- (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2 unknownType:(BOOL)arg3 isPlaceholder:(BOOL)arg4 hasVideoComplementResource:(BOOL)arg5;
+- (BOOL)_setupPhotoAssetAsPhotoIrisIfNeeded:(id)arg1 hasVideoComplementResource:(BOOL)arg2;
 - (BOOL)_setupUnknownAsset:(id)arg1 withURL:(id)arg2;
 - (BOOL)_setupVideoAsset:(id)arg1 withURL:(id)arg2;
-- (id)addAssetWithURLs:(id)arg1 forceInsert:(BOOL)arg2 forceUpdate:(BOOL)arg3 fixAddedDate:(BOOL)arg4;
+- (id)addAssetWithURLs:(id)arg1 assetPayload:(id)arg2 forceInsert:(BOOL)arg3 forceUpdate:(BOOL)arg4 fixAddedDate:(BOOL)arg5;
 - (void)addAvailableThumbnailIndex:(unsigned long long)arg1;
 - (id)assetURLisInDatabase:(id)arg1;
 - (void)dealloc;

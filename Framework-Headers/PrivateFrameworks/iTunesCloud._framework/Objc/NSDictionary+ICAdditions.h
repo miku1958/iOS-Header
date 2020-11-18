@@ -9,6 +9,7 @@
 @interface NSDictionary (ICAdditions)
 - (id)ic_arrayValueForKey:(id)arg1;
 - (BOOL)ic_boolValueForKey:(id)arg1;
+- (id)ic_dataValueForKey:(id)arg1;
 - (id)ic_dictionaryValueForKey:(id)arg1;
 - (long long)ic_int64ValueForKey:(id)arg1;
 - (int)ic_intValueForKey:(id)arg1;

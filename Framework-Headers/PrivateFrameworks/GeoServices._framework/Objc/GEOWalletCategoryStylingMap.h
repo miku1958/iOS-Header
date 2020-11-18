@@ -15,8 +15,9 @@
     NSMutableArray *_mappings;
 }
 
-@property (strong, nonatomic) NSMutableArray *mappings; // @synthesize mappings=_mappings;
+@property (strong, nonatomic) NSMutableArray *mappings;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)mappingsType;
 - (void).cxx_destruct;
 - (void)addMappings:(id)arg1;
@@ -30,6 +31,7 @@
 - (id)mappingsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)mappingsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

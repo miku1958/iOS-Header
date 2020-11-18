@@ -9,18 +9,23 @@
 #import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSDictionary, NSString, WKHTTPCookieStore;
+@class NSDictionary, NSString, NSURL, WKHTTPCookieStore;
+@protocol _WKWebsiteDataStoreDelegate;
 
 @interface WKWebsiteDataStore : NSObject <WKObject, NSSecureCoding>
 {
     struct ObjectStorage<API::WebsiteDataStore> _websiteDataStore;
+    struct RetainPtr<id<_WKWebsiteDataStoreDelegate>> _delegate;
 }
 
 @property (nonatomic, setter=_setAllowsCellularAccess:) BOOL _allowsCellularAccess;
+@property (nonatomic, setter=_setAllowsTLSFallback:) BOOL _allowsTLSFallback;
 @property (readonly) struct Object *_apiObject;
 @property (nonatomic, setter=_setBoundInterfaceIdentifier:) NSString *_boundInterfaceIdentifier;
 @property (nonatomic, setter=_setCacheStorageDirectory:) NSString *_cacheStorageDirectory;
-@property (nonatomic, setter=_setCacheStoragePerOriginQuota:) unsigned long long _cacheStoragePerOriginQuota;
+@property (weak, nonatomic) id<_WKWebsiteDataStoreDelegate> _delegate;
+@property (readonly, nonatomic) NSURL *_indexedDBDatabaseDirectory;
+@property (nonatomic, setter=_setPerOriginStorageQuota:) unsigned long long _perOriginStorageQuota;
 @property (nonatomic, setter=_setProxyConfiguration:) NSDictionary *_proxyConfiguration;
 @property (nonatomic, setter=_setResourceLoadStatisticsDebugMode:) BOOL _resourceLoadStatisticsDebugMode;
 @property (nonatomic, setter=_setResourceLoadStatisticsEnabled:) BOOL _resourceLoadStatisticsEnabled;
@@ -42,11 +47,18 @@
 + (id)defaultDataStore;
 + (id)nonPersistentDataStore;
 + (BOOL)supportsSecureCoding;
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)_clearPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_getAllStorageAccessEntriesFor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_getIsPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_hasRegisteredServiceWorker;
 - (id)_initWithConfiguration:(id)arg1;
+- (void)_processStatisticsAndDataRecords:(CDUnknownBlockType)arg1;
 - (void)_resourceLoadStatisticsSetShouldSubmitTelemetry:(BOOL)arg1;
+- (void)_scheduleCookieBlockingUpdate:(CDUnknownBlockType)arg1;
+- (void)_setPrevalentDomain:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setResourceLoadStatisticsTestingCallback:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

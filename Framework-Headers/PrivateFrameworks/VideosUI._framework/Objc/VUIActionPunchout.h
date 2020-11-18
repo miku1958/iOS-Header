@@ -6,7 +6,7 @@
 
 #import <VideosUI/VUIAction.h>
 
-@class NSString, NSURL, VUIContentMetadata, WLKChannelDetails;
+@class IKAppContext, NSString, NSURL, VUIContentMetadata, WLKChannelDetails;
 
 __attribute__((visibility("hidden")))
 @interface VUIActionPunchout : VUIAction
@@ -20,8 +20,10 @@ __attribute__((visibility("hidden")))
     NSString *_referenceID;
     NSString *_canonicalID;
     NSString *_contentTitle;
+    IKAppContext *_appContext;
 }
 
+@property (strong, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
 @property (strong, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
 @property (strong, nonatomic) WLKChannelDetails *channelDetails; // @synthesize channelDetails=_channelDetails;
 @property (strong, nonatomic) VUIContentMetadata *contentMetadata; // @synthesize contentMetadata=_contentMetadata;
@@ -37,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_openAirplayPicker:(CDUnknownBlockType)arg1;
 - (void)_openPunchoutURL:(CDUnknownBlockType)arg1;
 - (void)_startAppInstallFlow:(CDUnknownBlockType)arg1;
-- (id)initWithContextData:(id)arg1;
+- (id)initWithContextData:(id)arg1 appContext:(id)arg2;
 - (BOOL)isAccountRequired;
 - (void)performWithTargetResponder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

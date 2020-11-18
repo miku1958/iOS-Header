@@ -8,26 +8,40 @@
 
 #import <ScreenshotServices/BSXPCCoding-Protocol.h>
 #import <ScreenshotServices/NSCopying-Protocol.h>
-#import <ScreenshotServices/NSSecureCoding-Protocol.h>
+#import <ScreenshotServices/SSLoggable-Protocol.h>
 
-@class NSString;
+@class NSString, SSHarvestedApplicationDocument, SSHarvestedApplicationMetadata;
 
-@interface SSEnvironmentElement : NSObject <NSSecureCoding, NSCopying, BSXPCCoding>
+@interface SSEnvironmentElement : NSObject <NSCopying, BSXPCCoding, SSLoggable>
 {
     struct CGRect _rect;
+    NSString *_bundleIdentifier;
+    NSString *_elementIdentifier;
+    NSString *_identifier;
+    BOOL _hasKeyboardFocus;
+    SSHarvestedApplicationMetadata *_metadata;
+    SSHarvestedApplicationDocument *_document;
 }
 
+@property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) SSHarvestedApplicationDocument *document; // @synthesize document=_document;
+@property (readonly, nonatomic) NSString *elementIdentifier;
+@property (readonly, nonatomic) BOOL hasKeyboardFocus;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) NSString *loggableDescription;
+@property (strong, nonatomic) SSHarvestedApplicationMetadata *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) struct CGRect rect;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsMetadataCapture;
 
-+ (BOOL)supportsSecureCoding;
++ (id)_metadataIdentifierBlacklist;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithDisplayLayoutElement:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 

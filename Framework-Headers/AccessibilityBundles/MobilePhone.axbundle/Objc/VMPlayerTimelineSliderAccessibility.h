@@ -15,6 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityCommitPositionChange;
 - (id)accessibilityLabel;
+- (id)accessibilityValue;
+- (BOOL)isAccessibilityElement;
 
 @end
 

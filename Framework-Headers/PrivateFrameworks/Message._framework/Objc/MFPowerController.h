@@ -8,8 +8,8 @@
 
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 
-@class MFObservable, NSCountedSet, NSString;
-@protocol MFCancelable, OS_dispatch_queue;
+@class EFObservable, NSCountedSet, NSString;
+@protocol EFCancelable, OS_dispatch_queue;
 
 @interface MFPowerController : NSObject <MFDiagnosticsGenerator>
 {
@@ -19,25 +19,26 @@
     int _powerToken;
     int _batteryNotificationToken;
     NSCountedSet *_identifiers;
-    id<MFCancelable> _appStateCancelable;
+    id<EFCancelable> _appStateCancelable;
     BOOL _isForeground;
     float _batteryLevel;
 }
 
 @property (readonly, nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
-@property (readonly, nonatomic) MFObservable *batteryLevelObservable;
+@property (readonly, nonatomic) EFObservable *batteryLevelObservable;
 @property (readonly, getter=isBatterySaverModeEnabled) BOOL batterySaverModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, getter=isHoldingAssertion) BOOL holdingAssertion;
-@property (readonly, nonatomic) MFObservable *lowPowerModeObservable;
+@property (readonly, nonatomic) EFObservable *lowPowerModeObservable;
 @property (readonly, getter=isPluggedIn) BOOL pluggedIn;
-@property (readonly, nonatomic) MFObservable *pluggedInObservable;
+@property (readonly, nonatomic) EFObservable *pluggedInObservable;
 @property (readonly) Class superclass;
 
 + (void)powerlog:(id)arg1 eventData:(id)arg2;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_applicationForegroundStateChanged:(BOOL)arg1;
 - (void)_applicationForegroundStateChanged_nts:(BOOL)arg1;
 - (double)_assertionTimeout;

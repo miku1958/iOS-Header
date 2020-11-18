@@ -6,41 +6,28 @@
 
 #import <TemplateKit/TLKImageView.h>
 
-#import <SearchUI/CNAvatarViewDelegate-Protocol.h>
+@class SFImage, SearchUIButton, UIView;
 
-@class CNAvatarView, NSString, SFImage, SearchUIButton, UIView;
-
-@interface SearchUIImageView : TLKImageView <CNAvatarViewDelegate>
+@interface SearchUIImageView : TLKImageView
 {
     SFImage *_currentImage;
     SearchUIButton *_overlayPlayButton;
-    unsigned long long _searchUIStyle;
-    CNAvatarView *_avatarView;
     UIView *_tintView;
 }
 
-@property (strong) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
-@property (strong) SFImage *currentImage; // @synthesize currentImage=_currentImage;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong) SearchUIButton *overlayPlayButton; // @synthesize overlayPlayButton=_overlayPlayButton;
-@property unsigned long long searchUIStyle; // @synthesize searchUIStyle=_searchUIStyle;
-@property (readonly) Class superclass;
-@property (strong) UIView *tintView; // @synthesize tintView=_tintView;
+@property (strong, nonatomic) SFImage *currentImage; // @synthesize currentImage=_currentImage;
+@property (strong, nonatomic) SearchUIButton *overlayPlayButton; // @synthesize overlayPlayButton=_overlayPlayButton;
+@property (strong, nonatomic) UIView *tintView; // @synthesize tintView=_tintView;
 
-+ (id)imageViewWithImage:(id)arg1 style:(unsigned long long)arg2;
++ (id)imageViewWithImage:(id)arg1;
 + (id)thumbnailForResult:(id)arg1;
 - (void).cxx_destruct;
 - (void)appIconDidChange:(id)arg1;
 - (id)init;
-- (id)initWithStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
-- (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)updateWithImage:(id)arg1;
 - (void)updateWithImage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateWithImage:(id)arg1 needsOverlayButton:(BOOL)arg2 preventImageScaling:(BOOL)arg3 useMinimumWidthIfPossible:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

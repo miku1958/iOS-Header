@@ -26,10 +26,10 @@
 - (void).cxx_destruct;
 - (id)_alertViewController;
 - (void)_dismiss;
-- (void)_willAppearInRemoteViewController;
-- (void)handleHomeButtonPressed;
+- (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleButtonActions:(id)arg1;
 - (id)pk_navigationController;
-- (void)setUserInfo:(id)arg1;
+- (long long)preferredStatusBarStyle;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;

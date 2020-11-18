@@ -66,6 +66,7 @@
 
 - (void).cxx_destruct;
 - (void)_requestInitialStateIfNecessaryAndSendNotifications:(BOOL)arg1;
+- (id)asynchronousServerConnectionWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)changePassword:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)countOfVoicemailsPassingTest:(CDUnknownBlockType)arg1;
 - (id)dataForVoicemailWithIdentifier:(unsigned long long)arg1;
@@ -81,6 +82,12 @@
 - (id)markVoicemailsAsRead:(id)arg1;
 - (double)maximumGreetingDurationForAccountUUID:(id)arg1;
 - (long long)maximumPasscodeLengthForAccountUUID:(id)arg1;
+- (void)messageCountForMailboxType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (long long)messageCountForMailboxType:(long long)arg1 error:(id *)arg2;
+- (void)messageCountForMailboxType:(long long)arg1 read:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (long long)messageCountForMailboxType:(long long)arg1 read:(BOOL)arg2 error:(id *)arg3;
+- (id)messagesForMailboxType:(long long)arg1 limit:(long long)arg2 offset:(long long)arg3 error:(id *)arg4;
+- (id)messagesForMailboxType:(long long)arg1 read:(BOOL)arg2 limit:(long long)arg3 offset:(long long)arg4 error:(id *)arg5;
 - (long long)minimumPasscodeLengthForAccountUUID:(id)arg1;
 - (void)obliterate;
 - (void)performAtomicAccessorBlock:(CDUnknownBlockType)arg1;
@@ -92,7 +99,6 @@
 - (void)requestInitialStateIfNecessaryAndSendNotifications:(BOOL)arg1;
 - (void)retrieveDataForVoicemail:(id)arg1;
 - (void)saveGreeting:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (id)serverConnectionWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)setGreeting:(id)arg1 forAccountUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPasscode:(id)arg1 forAccountUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)synchronize;
@@ -100,7 +106,7 @@
 - (id)trashVoicemail:(id)arg1;
 - (id)trashVoicemails:(id)arg1;
 - (id)uniqueIdentifierForVoiceMail:(id)arg1;
-- (oneway void)updateAccounts:(id)arg1;
+- (void)updateAccounts:(id)arg1;
 - (id)voicemailWithIdentifier:(unsigned long long)arg1;
 - (id)voicemailsPassingTest:(CDUnknownBlockType)arg1;
 - (void)voicemailsUpdated:(id)arg1;

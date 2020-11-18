@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSHashTable, NSMutableArray, RCExtAudioFilePipe;
+@class AVAudioFile, NSError, NSHashTable, NSMutableArray;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface RCWaveformGenerator : NSObject
@@ -19,7 +19,7 @@
     NSHashTable *_weakObservers;
     NSMutableArray *_internalFinishedLoadingBlockUUIDs;
     NSMutableArray *_internalFinishedLoadingBlocks;
-    RCExtAudioFilePipe *_activeExtAudioFile;
+    AVAudioFile *_activeAudioFile;
     struct PowerMeter _samplePowerMeter;
     BOOL _isSampleRateKnown;
     vector_7584168e _powerLevelBuffer;
@@ -47,12 +47,12 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_appendAveragePowerLevel:(float)arg1;
-- (void)_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inExtAudioFile:(id)arg2 sourceFormat:(struct AudioStreamBasicDescription *)arg3 outputFormat:(struct AudioStreamBasicDescription *)arg4;
+- (void)_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inAudioFile:(id)arg2;
 - (BOOL)_appendAveragePowerLevelsByDigestingWaveformSegments:(id)arg1;
 - (void)_appendPowerMeterValuesFromAudioPCMBuffer:(id)arg1;
 - (BOOL)_appendPowerMeterValuesFromDataInAudioFile:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)_appendPowerMeterValuesFromSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)_onQueue_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inExtAudioFile:(id)arg2 sourceFormat:(struct AudioStreamBasicDescription *)arg3 outputFormat:(struct AudioStreamBasicDescription *)arg4;
+- (void)_onQueue_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inAudioFile:(id)arg2;
 - (void)_onQueue_appendPowerMeterValuesFromRawAudioData:(void *)arg1 frameCount:(long long)arg2 format:(const struct AudioStreamBasicDescription *)arg3 isPredigest:(BOOL)arg4;
 - (void)_onQueue_appendSegment:(id)arg1;
 - (void)_onQueue_digestAveragePowerLevel:(float)arg1;

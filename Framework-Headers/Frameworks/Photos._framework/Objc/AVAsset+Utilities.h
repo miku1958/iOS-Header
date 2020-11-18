@@ -10,7 +10,6 @@
 
 @interface AVAsset (Utilities)
 
-@property (readonly, nonatomic) BOOL isDecodableMovie;
 @property (readonly) NSString *localizedDisplayName;
 @property (readonly) AVAssetTrack *mainAudioTrack;
 @property (readonly) AVAssetTrack *mainVideoTrack;

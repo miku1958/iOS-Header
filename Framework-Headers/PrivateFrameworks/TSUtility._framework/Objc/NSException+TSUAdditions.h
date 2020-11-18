@@ -7,7 +7,9 @@
 #import <Foundation/NSException.h>
 
 @interface NSException (TSUAdditions)
++ (void)errnoRaise:(id)arg1 format:(id)arg2;
 + (void)tsu_raiseWithError:(id)arg1;
+- (int)localErrno;
 - (id)tsu_error;
 @end
 

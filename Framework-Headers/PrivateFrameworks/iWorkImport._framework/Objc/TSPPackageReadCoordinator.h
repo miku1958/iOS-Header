@@ -9,7 +9,7 @@
 #import <iWorkImport/TSPPersistedObjectUUIDMapDelegate-Protocol.h>
 #import <iWorkImport/TSPReadCoordinator-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSMutableSet, NSObject, NSSet, NSString, NSURL, NSUUID, TSPDocumentRevision, TSPFinalizeHandlerQueue, TSPObject, TSPObjectContainer, TSPObjectContext, TSPPackage, TSPPackageMetadata, TSPPersistedObjectUUIDMap;
+@class NSArray, NSMapTable, NSMutableSet, NSObject, NSSet, NSString, NSURL, NSUUID, TSPDocumentRevision, TSPFinalizeHandlerQueue, TSPObject, TSPObjectContainer, TSPObjectContext, TSPPackage, TSPPackageMetadata, TSPPersistedObjectUUIDMap;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -35,12 +35,13 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_readCompletionQueue;
     NSObject<OS_dispatch_queue> *_componentQueue;
     unordered_map_38045d47 _readIdentifiers;
-    NSMutableArray *_componentsToUpgrade;
+    NSArray *_componentsToUpgrade;
     NSObject<OS_dispatch_queue> *_objectQueue;
     NSMapTable *_objects;
     unordered_map_38045d47 _readExternalObjects;
     BOOL _losesDataOnWrite;
     BOOL _didRequireUpgrade;
+    long long _archiveValidationMode;
     NSSet *_featureIdentifiers;
     NSSet *_unsupportedFeatureIdentifiers;
     TSPDocumentRevision *_documentRevision;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
     TSPObject *_metadataObject;
 }
 
+@property (readonly, nonatomic) long long archiveValidationMode; // @synthesize archiveValidationMode=_archiveValidationMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didRequireUpgrade; // @synthesize didRequireUpgrade=_didRequireUpgrade;
@@ -79,11 +81,13 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)fileFormatVersionFromMetadataMessage:(const struct PackageMetadata *)arg1;
 - (BOOL)hasDocumentVersionUUID;
 - (id)init;
-- (id)initWithContext:(id)arg1 package:(id)arg2 packageURLOrNil:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(BOOL)arg5 skipDocumentUpgrade:(BOOL)arg6;
+- (id)initWithContext:(id)arg1 package:(id)arg2 packageURL:(id)arg3 finalizeHandlerQueue:(id)arg4 areExternalDataReferencesAllowed:(BOOL)arg5 skipDocumentUpgrade:(BOOL)arg6 archiveValidationMode:(long long)arg7;
 - (long long)metadataObjectIdentifier;
 - (id)newObjectUUIDForObjectIdentifier:(long long)arg1;
+- (id)p_allComponentsInPackage;
 - (void)p_readComponent:(id)arg1 additionalComponents:(id)arg2 requireUpgrade:(BOOL)arg3 completionQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)p_readComponent:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)p_validateComponent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned char)packageIdentifier;
 - (void)persistedObjectUUIDMap:(id)arg1 foundDuplicateUUID:(id)arg2 firstObjectLocation:(struct ObjectLocation)arg3 secondObjectLocation:(struct ObjectLocation)arg4;
 - (id)persistedObjectUUIDMap:(id)arg1 needsDescriptionForComponentIdentifier:(long long)arg2 objectIdentifier:(long long)arg3;
@@ -108,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (long long)sourceType;
 - (id)unarchivedObjectForIdentifier:(long long)arg1 isReadFinished:(BOOL)arg2;
 - (void)updateObjectContextForSuccessfulRead;
+- (void)validateArchiveWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

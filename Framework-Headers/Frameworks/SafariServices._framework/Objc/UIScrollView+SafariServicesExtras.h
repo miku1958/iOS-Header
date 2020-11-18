@@ -17,6 +17,5 @@
 + (BOOL)_sf_baseVerticalScrollIndicatorInsetsExtendFullHeight:(struct UIEdgeInsets)arg1;
 + (BOOL)_sf_supportsPerAxisIndicatorInsets;
 - (void)_sf_setContentInsetAdjustments:(struct UIEdgeInsets)arg1;
-- (void)_sf_setContentInsetIgnoringAutoContentOffsetAdjustment:(struct UIEdgeInsets)arg1;
 @end
 

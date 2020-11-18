@@ -19,6 +19,7 @@
 }
 
 + (void)initialize;
++ (BOOL)isEasyToRecognizeWord:(id)arg1 forLocale:(id)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addPersonalizationData:(id)arg1;

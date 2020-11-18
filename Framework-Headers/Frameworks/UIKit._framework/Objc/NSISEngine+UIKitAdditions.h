@@ -7,6 +7,10 @@
 #import <Foundation/NSISEngine.h>
 
 @interface NSISEngine (UIKitAdditions)
+- (BOOL)_UIKitEngineTrackingOn;
+- (void)_UIKitPerformPendingChangeNotifications;
+- (unsigned long long)_UIKitRowCount;
+- (void)_setUIKitEngineTrackingOn:(BOOL)arg1;
 - (id)debugQuickLookObject;
 @end
 

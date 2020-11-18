@@ -28,12 +28,14 @@
 
 @property (strong, nonatomic) NSError *cachedStreamError; // @synthesize cachedStreamError=_cachedStreamError;
 @property (readonly, weak, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
+@property (readonly, nonatomic, getter=isContinuousStreamingEnabled) BOOL continuousStreamingEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HFExecutionEnvironment *executionEnvironment; // @synthesize executionEnvironment=_executionEnvironment;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRegisteredForEvents; // @synthesize isRegisteredForEvents=_isRegisteredForEvents;
 @property (strong, nonatomic) id<NACancelable> nextSnapshotEvent; // @synthesize nextSnapshotEvent=_nextSnapshotEvent;
+@property (readonly, nonatomic, getter=arePeriodicSnapshotsEnabled) BOOL periodicSnapshotsEnabled;
 @property (nonatomic) unsigned long long snapshotErrorCount; // @synthesize snapshotErrorCount=_snapshotErrorCount;
 @property (strong, nonatomic) NSDate *snapshotErrorDate; // @synthesize snapshotErrorDate=_snapshotErrorDate;
 @property (readonly, nonatomic) NSMapTable *snapshotRequesters; // @synthesize snapshotRequesters=_snapshotRequesters;

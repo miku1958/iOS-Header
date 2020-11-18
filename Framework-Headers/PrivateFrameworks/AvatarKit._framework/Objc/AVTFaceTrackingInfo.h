@@ -10,7 +10,7 @@
 
 @interface AVTFaceTrackingInfo : NSObject
 {
-    CDStruct_40c3f62d *_trackingData;
+    CDStruct_32896d86 *_trackingData;
     BOOL _deleteWhenDone;
     BOOL _hasFaceTrackingData;
     ARFrame *_arFrame;
@@ -21,10 +21,10 @@
 @property (readonly, nonatomic) BOOL hasFaceTrackingData; // @synthesize hasFaceTrackingData=_hasFaceTrackingData;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
-+ (id)trackingInfoWrappingTrackingData:(CDStruct_40c3f62d *)arg1;
++ (id)trackingInfoWrappingTrackingData:(CDStruct_32896d86 *)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (CDStruct_40c3f62d *)trackingData;
+- (CDStruct_32896d86 *)trackingData;
 
 @end
 

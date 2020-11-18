@@ -6,26 +6,27 @@
 
 #import <objc/NSObject.h>
 
+@protocol OS_dispatch_queue, OS_nw_path, OS_nw_path_monitor;
+
 @interface NFReachability : NSObject
 {
-    BOOL _alwaysReturnLocalWiFiStatus;
-    struct __SCNetworkReachability *_reachabilityRef;
+    long long _currentReachabilityStatus;
+    NSObject<OS_dispatch_queue> *_observationQueue;
+    NSObject<OS_nw_path_monitor> *_networkPathMonitor;
+    NSObject<OS_nw_path> *_currentNetworkPath;
 }
 
-@property (nonatomic) BOOL alwaysReturnLocalWiFiStatus; // @synthesize alwaysReturnLocalWiFiStatus=_alwaysReturnLocalWiFiStatus;
-@property (nonatomic) struct __SCNetworkReachability *reachabilityRef; // @synthesize reachabilityRef=_reachabilityRef;
+@property (strong, nonatomic) NSObject<OS_nw_path> *currentNetworkPath; // @synthesize currentNetworkPath=_currentNetworkPath;
+@property long long currentReachabilityStatus; // @synthesize currentReachabilityStatus=_currentReachabilityStatus;
+@property (strong, nonatomic) NSObject<OS_nw_path_monitor> *networkPathMonitor; // @synthesize networkPathMonitor=_networkPathMonitor;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *observationQueue; // @synthesize observationQueue=_observationQueue;
 
-+ (id)reachabilityForInternetConnection;
-+ (id)reachabilityForLocalWiFi;
-+ (id)reachabilityWithAddress:(const struct sockaddr_in *)arg1;
-+ (id)reachabilityWithHostName:(id)arg1;
-- (BOOL)connectionRequired;
-- (long long)currentReachabilityStatus;
++ (id)sharedInstance;
+- (void).cxx_destruct;
+- (long long)_statusFromNetworkPath:(id)arg1;
+- (void)_updateCurrentNetworkPath:(id)arg1;
 - (void)dealloc;
-- (long long)localWiFiStatusForFlags:(unsigned int)arg1;
-- (long long)networkStatusForFlags:(unsigned int)arg1;
-- (BOOL)startNotifier;
-- (void)stopNotifier;
+- (id)init;
 
 @end
 

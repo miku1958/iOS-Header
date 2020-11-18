@@ -8,27 +8,35 @@
 
 @interface NSString (NSEmailAddressString)
 + (id)mf_formattedAddressWithName:(id)arg1 email:(id)arg2 useQuotes:(BOOL)arg3;
-+ (id)mf_nameExtensions;
-+ (id)mf_partialSurnames;
-- (void)__mf_firstName:(id *)arg1 middleName:(id *)arg2 lastName:(id *)arg3 extension:(id *)arg4;
++ (id)mf_stringWithData:(id)arg1 encoding:(unsigned long long)arg2;
+- (id)_mf_bestMimeCharset:(id)arg1;
+- (id)mf_MD5Digest;
 - (id)mf_addressComment;
 - (id)mf_addressCommentPersonNameComponents;
 - (id)mf_addressDomain;
-- (BOOL)mf_appearsToBeAnInitial;
+- (id)mf_bestMimeCharset;
+- (id)mf_bestMimeCharsetForMessageDeliveryUsingSubtype:(id)arg1;
+- (id)mf_bestMimeCharsetUsingHint:(unsigned int)arg1;
+- (long long)mf_caseInsensitiveCompareExcludingXDash:(id)arg1;
 - (id)mf_copyAddressComment;
 - (id)mf_copyDisplayEmailAddress;
+- (id)mf_copyDisplayString;
+- (id)mf_copyDisplayStringInRange:(struct _NSRange)arg1;
 - (id)mf_copyIDNADecodedEmailAddress;
 - (id)mf_copyIDNAEncodedEmailAddress;
 - (id)mf_copyUncommentedAddress;
+- (id)mf_dataUsingEncoding:(unsigned long long)arg1;
+- (id)mf_dataUsingEncoding:(unsigned long long)arg1 allowLossyConversion:(BOOL)arg2;
+- (id)mf_decodeMimeHeaderValueWithCharsetHint:(id)arg1;
+- (id)mf_decodeMimeHeaderValueWithEncodingHint:(unsigned int)arg1;
 - (id)mf_emailAddressesWithEquivalentDomains;
+- (id)mf_encodedHeaderDataWithEncodingHint:(unsigned int)arg1;
 - (BOOL)mf_hasSameNamesAs:(id)arg1;
 - (BOOL)mf_isEqualToAddress:(id)arg1;
 - (BOOL)mf_isLegalCommentedEmailAddress;
 - (BOOL)mf_isLegalEmailAddress;
 - (id)mf_personNameComponents;
 - (struct _NSRange)mf_rangeOfAddressDomain;
-- (id)mf_stringByRemovingParentheticals;
-- (id)mf_trimCommasSpacesQuotes;
 - (id)mf_uncommentedAddress;
 - (id)mf_uncommentedAddressRespectingGroups;
 @end

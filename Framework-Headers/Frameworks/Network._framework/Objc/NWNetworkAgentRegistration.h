@@ -34,12 +34,15 @@
 + (BOOL)useNetworkAgent:(id)arg1 returnUseCount:(unsigned long long *)arg2;
 - (void).cxx_destruct;
 - (BOOL)addNetworkAgentToInterfaceNamed:(id)arg1;
+- (BOOL)assignDiscoveredEndpoints:(id)arg1 toClient:(id)arg2;
 - (BOOL)assignNexusData:(id)arg1 toClient:(id)arg2;
+- (BOOL)assignResolvedEndpoints:(id)arg1 toClient:(id)arg2;
 - (BOOL)createReadSourceWithRegistrationSocket:(int)arg1;
 - (void)dealloc;
 - (int)dupRegistrationFileDescriptor;
 - (void)handleMessageFromAgent;
 - (id)initWithNetworkAgentClass:(Class)arg1;
+- (id)initWithNetworkAgentClass:(Class)arg1 queue:(id)arg2;
 - (BOOL)registerNetworkAgent:(id)arg1;
 - (BOOL)registerNetworkAgent:(id)arg1 withFileDescriptor:(int)arg2;
 - (BOOL)removeNetworkAgentFromInterfaceNamed:(id)arg1;

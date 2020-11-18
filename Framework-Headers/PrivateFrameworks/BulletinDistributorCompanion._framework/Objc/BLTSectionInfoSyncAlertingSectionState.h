@@ -20,6 +20,7 @@
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end
 

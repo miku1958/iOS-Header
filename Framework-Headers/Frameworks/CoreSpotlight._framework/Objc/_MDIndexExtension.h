@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSExtension, NSSet, NSString;
+@class NSDictionary, NSExtension, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _MDIndexExtension : NSObject
@@ -27,6 +27,7 @@
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
 @property (strong, nonatomic) NSString *extensionID; // @synthesize extensionID=_extensionID;
 @property (copy) NSSet *identifiers; // @synthesize identifiers=_identifiers;
+@property (readonly) NSDictionary *infoDictionary;
 @property (readonly) BOOL isEnabled;
 @property (readonly) BOOL isInternal;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

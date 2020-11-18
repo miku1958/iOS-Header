@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)callProvider;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
+- (id)localizedName;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOLocation, GEOMapRegion, GEORouteAttributes, GEORouteMatch, NSDate, NSLock, NSMutableArray;
+@class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOLocation, GEOMapRegion, GEORouteAttributes, GEORouteMatch, NSDate, NSMutableArray;
 @protocol GEORouteHypothesizerUpdaterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldThrottleReroutes;
     NSDate *_lastRerouteDate;
     unsigned long long _numThrottledReroutes;
-    NSLock *_requestLock;
+    struct os_unfair_lock_s _requestLock;
     BOOL _isNavd;
 }
 
@@ -61,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSource:(id)arg1 destination:(id)arg2 routeAttributes:(id)arg3;
 - (id)routeMatchForLocation:(id)arg1;
-- (void)startUpdatingFromLocation:(id)arg1 existingRoute:(id)arg2 usualRouteData:(id)arg3;
+- (void)startUpdatingFromLocation:(id)arg1 usualRouteData:(id)arg2;
 - (void)updateForLocation:(id)arg1;
 
 @end

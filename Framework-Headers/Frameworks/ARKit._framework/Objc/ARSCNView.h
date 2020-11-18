@@ -7,15 +7,18 @@
 #import <SceneKit/SCNView.h>
 
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
+#import <ARKit/ARPresentationDelegate-Protocol.h>
+#import <ARKit/ARSessionProviding-Protocol.h>
 #import <ARKit/_SCNSceneRendererDelegate-Protocol.h>
 
-@class ARPointCloud, ARSession, CIWarpKernel, MISSING_TYPE, NSMutableArray, NSMutableDictionary, NSObject, NSString, SCNNode, SCNScene, UIView;
+@class ARFrame, ARPointCloud, ARPresentation, ARPresentationFrame, ARSCNCompositor, ARSession, ARSinglePassRenderer, CIWarpKernel, MISSING_TYPE, NSMutableArray, NSMutableDictionary, NSObject, NSString, SCNNode, SCNScene, UIView;
 @protocol ARSCNViewDelegate, OS_dispatch_semaphore, SCNCaptureDeviceOutputConsumer;
 
-@interface ARSCNView : SCNView <ARInternalSessionObserver, _SCNSceneRendererDelegate>
+@interface ARSCNView : SCNView <ARInternalSessionObserver, _SCNSceneRendererDelegate, ARPresentationDelegate, ARSessionProviding>
 {
     ARSession *_session;
     double _lastFrameTimestamp;
+    double _lastFrameInterval;
     id<SCNCaptureDeviceOutputConsumer> _captureDeviceOutputConsumer;
     SCNNode *_lightNode;
     SCNNode *_cameraNode;
@@ -40,11 +43,26 @@
     unsigned long long _warpKernelLensType;
     NSMutableArray *_environmentProbeNodes;
     NSMutableArray *_environmentProbeNodesToRemove;
+    BOOL _lastRendersMotionBlur;
     BOOL _renderThreadFixed;
+    BOOL _attemptRenderSynchronisationARFrame;
+    ARSCNCompositor *_compositor;
+    struct os_unfair_lock_s _occlusionLock;
+    ARPresentation *_presentation;
+    ARPresentationFrame *_currentPresentationFrame;
+    ARSinglePassRenderer *_arSinglePassRenderer;
+    CDStruct_14d5dc5e _currentReferenceTransform;
+    BOOL _runningWithSegmentation;
+    BOOL _automaticallyOccludesVirtualContent;
     BOOL _automaticallyUpdatesLighting;
+    BOOL _rendersCameraGrain;
+    BOOL _rendersMotionBlur;
     BOOL _providesOcclusionGeometry;
+    BOOL _segmentationUseEstimatedDepthData;
     BOOL _shouldRestrictFrameRate;
     BOOL _drawsCameraImage;
+    unsigned long long _occlusionExcludedBitMask;
+    long long _compositorAlgorithm;
     long long _targetFramesPerSecond;
     long long _developerPreferredFramesPerSecond;
     long long _frameToRemoveRotationSnapshotOn;
@@ -52,7 +70,10 @@
 }
 
 @property (nonatomic) long long actualPreferredFramesPerSecond;
+@property (nonatomic) BOOL automaticallyOccludesVirtualContent; // @synthesize automaticallyOccludesVirtualContent=_automaticallyOccludesVirtualContent;
 @property (nonatomic) BOOL automaticallyUpdatesLighting; // @synthesize automaticallyUpdatesLighting=_automaticallyUpdatesLighting;
+@property (nonatomic) long long compositorAlgorithm; // @synthesize compositorAlgorithm=_compositorAlgorithm;
+@property (readonly, nonatomic) ARFrame *currentRenderFrame;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ARSCNViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
@@ -60,9 +81,14 @@
 @property BOOL drawsCameraImage; // @synthesize drawsCameraImage=_drawsCameraImage;
 @property long long frameToRemoveRotationSnapshotOn; // @synthesize frameToRemoveRotationSnapshotOn=_frameToRemoveRotationSnapshotOn;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long occlusionExcludedBitMask; // @synthesize occlusionExcludedBitMask=_occlusionExcludedBitMask;
 @property (nonatomic) BOOL providesOcclusionGeometry; // @synthesize providesOcclusionGeometry=_providesOcclusionGeometry;
+@property (nonatomic) BOOL rendersCameraGrain; // @synthesize rendersCameraGrain=_rendersCameraGrain;
+@property (nonatomic) BOOL rendersMotionBlur; // @synthesize rendersMotionBlur=_rendersMotionBlur;
 @property long long rotationSnapshotState; // @synthesize rotationSnapshotState=_rotationSnapshotState;
+@property (nonatomic) BOOL runningWithSegmentation; // @synthesize runningWithSegmentation=_runningWithSegmentation;
 @property (strong, nonatomic) SCNScene *scene; // @dynamic scene;
+@property (nonatomic) BOOL segmentationUseEstimatedDepthData; // @synthesize segmentationUseEstimatedDepthData=_segmentationUseEstimatedDepthData;
 @property (strong, nonatomic) ARSession *session;
 @property BOOL shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
 @property (readonly) Class superclass;
@@ -73,6 +99,7 @@
 - (void)_addOcclusionGeometryForAnchor:(id)arg1;
 - (id)_anchorForNode:(id)arg1 inFrame:(id)arg2;
 - (void)_commonInit;
+- (void)_drawAtTime:(double)arg1;
 - (void)_forceUpdateCamera;
 - (id)_hitTest:(struct CGPoint)arg1 frame:(id)arg2 types:(unsigned long long)arg3;
 - (void)_loadWarpKernalForLensType:(unsigned long long)arg1;
@@ -86,13 +113,17 @@
 - (void)_updateFramesPerSecondWithTarget:(long long)arg1 shouldRestrictFrameRate:(BOOL)arg2;
 - (void)_updateLighting:(id)arg1;
 - (void)_updateNode:(id)arg1 forAnchor:(id)arg2 frame:(id)arg3;
+- (void)_updateOcclusionCompositor;
 - (void)_updatePreferredFramesPerSecond;
 - (void)_updateProbesWithFrame:(id)arg1;
 - (struct __CVBuffer *)_warpPixelBuffer:(struct __CVBuffer *)arg1 withCamera:(id)arg2;
 - (id)anchorForNode:(id)arg1;
+- (BOOL)automaticallyOccludesUsingSegmentation;
 - (void)cleanupLingeringRotationState;
+- (id)compositor;
 - (unsigned long long)debugOptions;
 - (void)didMoveToWindow;
+- (BOOL)drawsCameraImageAndNilPresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -102,6 +133,9 @@
 - (id)nodeForAnchor:(id)arg1;
 - (id)occlusionGeometryNodeForAnchor:(id)arg1;
 - (long long)preferredFramesPerSecond;
+- (void)presentationIsReadyForNextRender:(id)arg1;
+- (id)raycastQueryFromPoint:(struct CGPoint)arg1 allowingTarget:(long long)arg2 alignment:(long long)arg3;
+- (id)sceneRenderer;
 - (void)session:(id)arg1 cameraDidChangeTrackingState:(id)arg2;
 - (void)session:(id)arg1 didAddAnchors:(id)arg2;
 - (void)session:(id)arg1 didChangeState:(unsigned long long)arg2;
@@ -114,9 +148,11 @@
 - (void)sessionInterruptionEnded:(id)arg1;
 - (void)sessionShouldAttemptRelocalization:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sessionWasInterrupted:(id)arg1;
+- (void)setAutomaticallyOccludesUsingSegmentation:(BOOL)arg1;
 - (void)setDebugOptions:(unsigned long long)arg1;
 - (void)setPointOfView:(id)arg1;
 - (void)setPreferredFramesPerSecond:(long long)arg1;
+- (void)setupCompositor;
 - (MISSING_TYPE *)unprojectPoint:(struct CGPoint)arg1 ontoPlaneWithTransform:(CDStruct_14d5dc5e)arg2;
 - (void)windowDidRotateNotification:(id)arg1;
 - (void)windowWillAnimateRotateNotification:(id)arg1;

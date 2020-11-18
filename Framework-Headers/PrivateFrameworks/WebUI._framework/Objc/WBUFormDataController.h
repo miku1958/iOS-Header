@@ -37,12 +37,14 @@
 + (id)localizedLowercaseContactProperty:(id)arg1;
 + (id)valueStringForMatch:(id)arg1;
 - (void).cxx_destruct;
+- (id)_addressBookMatchesForFamilyNameForContact:(id)arg1;
 - (id)_addressBookMatchesForFullNameForContact:(id)arg1;
+- (id)_addressBookMatchesForGivenNameForContact:(id)arg1;
+- (id)_addressBookMatchesForMiddleNameForContact:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (id)_autoFillCorrectionManager;
 - (id)_credentialForLoginForm:(id)arg1 inFrame:(id)arg2 completingPartialUser:(BOOL)arg3 matches:(id *)arg4 potentialMatches:(id *)arg5;
 - (id)_credentialMatchesEligibleForUpdateForURL:(id)arg1 username:(id)arg2 oldPassword:(id)arg3;
-- (id)_displayDataWithTextField:(id)arg1 displayedInQuickType:(BOOL)arg2 prefix:(id)arg3;
 - (void)_processCorrectionsForFormWithDomain:(id)arg1 formMetadata:(id)arg2 uniqueIDsOfControlsThatWereAutoFilled:(id)arg3;
 - (id)_relatedCredentialMatchesToUpdateForUser:(id)arg1 protectionSpace:(id)arg2 oldCredential:(id *)arg3 matchesForCurrentHost:(id *)arg4 matchesForAssociatedDomains:(id *)arg5;
 - (id)_relatedCredentialMatchesToUpdateForUser:(id)arg1 protectionSpace:(id)arg2 oldCredential:(id *)arg3 matchesForCurrentHost:(id *)arg4 matchesForAssociatedDomains:(id *)arg5 haveExistingCredentialWithSameUsernameAndDifferentPassword:(BOOL *)arg6;
@@ -54,6 +56,7 @@
 - (void)_showCreditCardPromptForWebView:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_showPasswordPromptForWebView:(id)arg1 formType:(unsigned long long)arg2 username:(id)arg3 host:(id)arg4 hasCredentialForCurrentHost:(BOOL)arg5 existingCredentialMatchesForCurrentHost:(id)arg6 otherSubdomainCredentialMatches:(id)arg7 haveExistingCredentialWithSameUsernameAndDifferentPassword:(BOOL)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (BOOL)_updateCredentialsWithGeneratedPasswordForForm:(id)arg1 inWebView:(id)arg2 frame:(id)arg3;
+- (void)_warnAboutWeakPasswordIfNecessaryWithWebView:(id)arg1 credential:(id)arg2 protectionSpace:(id)arg3;
 - (BOOL)_webView:(id)arg1 formSubmission:(BOOL)arg2 willSubmitNewAccountOrChangePasswordFormWithMetadata:(id)arg3 fromFrame:(id)arg4 submissionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_webView:(id)arg1 saveCredentialsForURL:(id)arg2 formSubmission:(BOOL)arg3 formWithMetadata:(id)arg4 fromFrame:(id)arg5 username:(id)arg6 password:(id)arg7 submissionHandler:(CDUnknownBlockType)arg8;
 - (BOOL)_webView:(id)arg1 saveUsernameAndPasswordForURL:(id)arg2 fromForm:(id)arg3 inFrame:(id)arg4 username:(id)arg5 password:(id)arg6 isGeneratedPassword:(BOOL)arg7 confirmOverwritingCurrentPassword:(BOOL)arg8 submissionHandler:(CDUnknownBlockType)arg9;
@@ -75,7 +78,7 @@
 - (id)formAutoFillCorrectionManagerForFormFieldClassificationCorrector:(id)arg1;
 - (id)formFieldClassificationCorrector:(id)arg1 bestAddressBookLabelForControlValue:(id)arg2;
 - (BOOL)formFieldClassificationCorrector:(id)arg1 hasAddressBookDataForAddressBookLabel:(id)arg2;
-- (void)gatherAutoFillDisplayDataWithTextField:(id)arg1 displayedInQuickType:(BOOL)arg2 prefix:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)gatherAutoFillDisplayDataWithTextField:(id)arg1 displayedInQuickType:(BOOL)arg2 prefix:(id)arg3 contact:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)gatherValuesForForm:(id)arg1 inFrame:(id)arg2 multiRoundAutoFillManager:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)initWithAggressiveKeychainCaching:(BOOL)arg1;
 - (BOOL)mayFillCreditCardDataInFrame:(id)arg1;

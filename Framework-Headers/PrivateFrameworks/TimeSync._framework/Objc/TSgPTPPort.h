@@ -32,6 +32,9 @@
 + (id)diagnosticInfoForService:(unsigned int)arg1;
 + (id)gPTPPortWithService:(unsigned int)arg1;
 - (BOOL)_commonInitWithService:(unsigned int)arg1;
+- (struct IONotificationPort *)_notificationPort;
+- (id)_notificationQueue;
+- (id)_portForNotification;
 - (unsigned short)_portNumber;
 - (int)_portRole;
 - (void)dealloc;

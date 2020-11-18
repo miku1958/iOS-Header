@@ -8,13 +8,14 @@
 
 #import <IDS/IDSDaemonProtocol-Protocol.h>
 
-@class IDSDaemonListener, IMLocalObject, IMRemoteObject, NSMutableDictionary, NSMutableSet, NSProtocolChecker, NSSet, NSString;
+@class IDSDaemonControllerForwarder, IDSDaemonListener, IMLocalObject, IMRemoteObject, NSMutableDictionary, NSMutableSet, NSProtocolChecker, NSSet, NSString;
 @protocol IDSDaemonProtocol, OS_dispatch_group, OS_dispatch_queue;
 
 @interface IDSDaemonController : NSObject <IDSDaemonProtocol>
 {
     id _delegate;
     IMRemoteObject<IDSDaemonProtocol> *_remoteObject;
+    IDSDaemonControllerForwarder *_forwarder;
     IMLocalObject *_localObject;
     IDSDaemonListener *_daemonListener;
     NSProtocolChecker *_protocol;
@@ -52,6 +53,7 @@
 @property (readonly, nonatomic) BOOL isConnecting;
 @property (readonly, nonatomic) IDSDaemonListener *listener; // @synthesize listener=_daemonListener;
 @property (readonly, nonatomic) NSString *listenerID; // @synthesize listenerID=_listenerID;
+@property (strong, nonatomic) IMRemoteObject<IDSDaemonProtocol> *remoteObject; // @synthesize remoteObject=_remoteObject;
 @property (readonly) Class superclass;
 
 + (BOOL)_applicationWillTerminate;
@@ -78,7 +80,7 @@
 - (void)_setServices:(id)arg1 commands:(id)arg2 capabilities:(unsigned int)arg3;
 - (BOOL)addListenerID:(id)arg1 services:(id)arg2;
 - (BOOL)addListenerID:(id)arg1 services:(id)arg2 commands:(id)arg3;
-- (void)addedDelegateForService:(id)arg1;
+- (void)addedDelegateForService:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)blockUntilConnected;
 - (unsigned int)capabilities;
 - (unsigned int)capabilitiesForListenerID:(id)arg1;
@@ -89,14 +91,14 @@
 - (BOOL)connectToDaemonWithLaunch:(BOOL)arg1 services:(id)arg2 commands:(id)arg3 capabilities:(unsigned int)arg4;
 - (void)dealloc;
 - (void)disconnectFromDaemon;
-- (void)forwardInvocation:(id)arg1;
+- (id)forwarderWithCompletion:(CDUnknownBlockType)arg1;
+- (id)forwardingTargetForSelector:(SEL)arg1;
 - (BOOL)hasListenerForID:(id)arg1;
 - (id)init;
 - (BOOL)isConnected;
 - (id)localObject;
 - (void)localObjectDiedNotification:(id)arg1;
 - (BOOL)localObjectExists;
-- (id)methodSignatureForSelector:(SEL)arg1;
 - (void)remoteObjectDiedNotification:(id)arg1;
 - (BOOL)remoteObjectExists;
 - (void)removeListenerID:(id)arg1;

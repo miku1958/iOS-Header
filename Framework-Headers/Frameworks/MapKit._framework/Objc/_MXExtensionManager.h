@@ -47,7 +47,6 @@
 + (id)lookupPolicyForRestaurantQueueingExtensions;
 + (id)lookupPolicyForRestaurantReservationExtensionWithContainingAppIdentifier:(id)arg1;
 + (id)lookupPolicyForRestaurantReservationExtensions;
-+ (id)lookupPolicyForRideSharingExtensions;
 + (id)managerWithExtensionLookupPolicy:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
 + (id)managerWithLookupPolicy:(id)arg1 delegate:(id)arg2;
 + (id)restaurantQueueingIntentClassNames;

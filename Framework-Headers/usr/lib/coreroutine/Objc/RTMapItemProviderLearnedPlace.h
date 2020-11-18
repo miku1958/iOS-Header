@@ -8,27 +8,29 @@
 
 #import <coreroutine/RTMapItemProvider-Protocol.h>
 
-@class NSString, RTDefaultsManager, RTLearnedLocationStore;
+@class NSString, RTLearnedLocationStore, RTMapItemProviderLearnedPlaceParameters;
 
 @interface RTMapItemProviderLearnedPlace : RTMapItemProviderBase <RTMapItemProvider>
 {
     RTLearnedLocationStore *_learnedLocationStore;
-    RTDefaultsManager *_defaultsManager;
-    unsigned long long _removeSourceMask;
+    RTMapItemProviderLearnedPlaceParameters *_parameters;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) RTDefaultsManager *defaultsManager; // @synthesize defaultsManager=_defaultsManager;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
-@property (nonatomic) unsigned long long removeSourceMask; // @synthesize removeSourceMask=_removeSourceMask;
+@property (readonly, copy, nonatomic) RTMapItemProviderLearnedPlaceParameters *parameters; // @synthesize parameters=_parameters;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (unsigned long long)coalescedMapItemSourceForPlace:(id)arg1;
+- (double)confidenceForPlaceType:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2 learnedLocationStore:(id)arg3;
-- (id)mapItemsWithinDistance:(double)arg1 location:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
+- (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2 learnedLocationStore:(id)arg3 parameters:(id)arg4;
+- (id)learnedPlaceForInferredMapItem:(id)arg1 error:(id *)arg2;
+- (id)mapItemsWithOptions:(id)arg1 error:(id *)arg2;
 
 @end
 

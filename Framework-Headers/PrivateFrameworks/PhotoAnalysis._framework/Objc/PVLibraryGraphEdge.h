@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/MAEdge.h>
+#import <KnowledgeGraphKit/MAEdge.h>
 
 @interface PVLibraryGraphEdge : MAEdge
 {

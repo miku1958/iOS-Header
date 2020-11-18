@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface PPConnectionsParameters : NSObject
 {
+    NSString *_abGroupIdentifier;
     NSDictionary *_assets;
     NSObject<OS_dispatch_queue> *_queue;
 }
@@ -28,6 +29,8 @@
 - (id)donationWhitelistWebsites;
 - (double)doubleValueForKey:(id)arg1 default:(long long)arg2;
 - (long long)expirySeconds;
+- (double)foundInAppsSourceExpirySeconds;
+- (double)foundInAppsSourceLookBackSeconds;
 - (id)init;
 - (long long)integerValueForKey:(id)arg1 default:(long long)arg2;
 - (double)linguisticTriggerExpirySeconds;

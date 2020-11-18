@@ -48,14 +48,13 @@
 - (void)_showAddressEditorWithContact:(id)arg1;
 - (void)addressEditorViewController:(id)arg1 selectedContact:(id)arg2;
 - (void)addressEditorViewControllerDidCancel:(id)arg1;
-- (void)cancel;
 - (void)contactsSearchUpdated:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
 - (void)loadView;
 - (void)mapSearchUpdated:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (struct CGSize)preferredContentSize;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
+- (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)selectedAddress:(id)arg1 withError:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -66,6 +65,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

@@ -23,11 +23,17 @@
     CNAutocompleteFetchRequest *_fetchRequest;
 }
 
+@property (readonly, nonatomic) CNCancelationToken *cancelationToken; // @synthesize cancelationToken=_cancelationToken;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) id<CNAutocompleteFetchDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CNAutocompleteFetchRequest *fetchRequest; // @synthesize fetchRequest=_fetchRequest;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long openNetworkActivityCalls; // @synthesize openNetworkActivityCalls=_openNetworkActivityCalls;
+@property (readonly, nonatomic) CNAutocompleteQueryResponsePreparer *responsePreparer; // @synthesize responsePreparer=_responsePreparer;
+@property (readonly, nonatomic) id<CNScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) CNAutocompleteUserSession *userSession; // @synthesize userSession=_userSession;
 
 + (id)responseScheduler;
 - (void).cxx_destruct;

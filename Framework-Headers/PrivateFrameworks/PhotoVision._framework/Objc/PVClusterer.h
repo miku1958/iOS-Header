@@ -55,13 +55,14 @@
 @property (readonly, nonatomic, getter=isReady) BOOL ready;
 @property (readonly) Class superclass;
 
++ (void)initialize;
 + (BOOL)removeClusteringStateCacheWithContext:(id)arg1 cacheDirectoryUrl:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)_cancelClusteringAndRestoreClusterCache:(BOOL)arg1;
 - (id)_faceObservationsFromFaceCSNs:(id)arg1;
-- (id)_faceObservationsFromFaceIdStrs:(id)arg1 assignClusterSeqNumberIfNeeded:(BOOL)arg2 updatedFaces:(id)arg3 excludeClustered:(BOOL)arg4;
+- (id)_faceObservationsFromFaceIdStrs:(id)arg1 assignClusterSeqNumberIfNeeded:(BOOL)arg2 updatedFaces:(id)arg3 excludeClustered:(BOOL)arg4 groupingIdentifiers:(id)arg5;
 - (id)_faceObservationsFromFaces:(id)arg1 assignClusterSeqNumberIfNeeded:(BOOL)arg2 updatedFaces:(id)arg3;
-- (BOOL)_performAndPersistClustersByAddingFaceObs:(id)arg1 removingFaceObs:(id)arg2 updateFaces:(id)arg3 canceler:(id)arg4 error:(id *)arg5;
+- (BOOL)_performAndPersistClustersByAddingFaceObs:(id)arg1 groupingIdentifiers:(id)arg2 removingFaceObs:(id)arg3 updateFaces:(id)arg4 canceler:(id)arg5 error:(id *)arg6;
 - (id)_persistenceDelegate;
 - (void)_processingQueueDetermineNextClusterTriggeringAccumulatedChangesCountIfNecessary;
 - (BOOL)_processingQueueGetFaceClusterSequenceNumbersInClusterCache:(id *)arg1 lastClusterSequenceNumber:(unsigned long long *)arg2 error:(id *)arg3;

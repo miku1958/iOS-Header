@@ -11,6 +11,7 @@
 }
 
 + (id)mainBundleID;
++ (id)processName;
 
 @end
 

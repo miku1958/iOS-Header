@@ -9,7 +9,7 @@
 #import <iCloudQuotaUI/UIScrollViewDelegate-Protocol.h>
 #import <iCloudQuotaUI/UITextViewDelegate-Protocol.h>
 
-@class ICQLink, NSArray, NSString, UIActivityIndicatorView, UIButton, UIColor, UIFont, UIImageView, UILabel, UILayoutGuide, UIScrollView, UIView, _ICQTextView, _ICQUpgradeOfferPageSpecification, _UIBackdropView;
+@class ICQLink, NSArray, NSString, UIActivityIndicatorView, UIButton, UIColor, UIFont, UIImageView, UILabel, UILayoutGuide, UIScrollView, UIView, UIVisualEffectView, _ICQTextView, _ICQUpgradeOfferPageSpecification;
 @protocol ICQPageDelegate;
 
 @interface ICQUpgradeOfferView : ICQPageView <UITextViewDelegate, UIScrollViewDelegate>
@@ -34,8 +34,7 @@
     UIView *_headerView;
     UIView *_footerView;
     UIView *_trayView;
-    _UIBackdropView *_lightTrayBackdrop;
-    _UIBackdropView *_ultraLightTrayBackdrop;
+    UIVisualEffectView *_blurBackdrop;
     UILayoutGuide *_scrollVisibleLayoutGuide;
     UILayoutGuide *_aboveSpinnerLayoutGuide;
     UILayoutGuide *_belowSpinnerLayoutGuide;
@@ -45,6 +44,7 @@
 @property (readonly, nonatomic) UILayoutGuide *aboveSpinnerLayoutGuide; // @synthesize aboveSpinnerLayoutGuide=_aboveSpinnerLayoutGuide;
 @property (strong, nonatomic) NSArray *activeConstraints; // @synthesize activeConstraints=_activeConstraints;
 @property (readonly, nonatomic) UILayoutGuide *belowSpinnerLayoutGuide; // @synthesize belowSpinnerLayoutGuide=_belowSpinnerLayoutGuide;
+@property (readonly, nonatomic) UIVisualEffectView *blurBackdrop; // @synthesize blurBackdrop=_blurBackdrop;
 @property (strong, nonatomic) UIButton *bottomButton; // @synthesize bottomButton=_bottomButton;
 @property (readonly, nonatomic) ICQLink *bottomLink; // @synthesize bottomLink=_bottomLink;
 @property (copy, nonatomic) UIColor *buttonTintColor; // @synthesize buttonTintColor=_buttonTintColor;
@@ -59,7 +59,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) UIImageView *iconView; // @synthesize iconView=_iconView;
-@property (readonly, nonatomic) _UIBackdropView *lightTrayBackdrop; // @synthesize lightTrayBackdrop=_lightTrayBackdrop;
 @property (readonly, nonatomic) UIFont *linkButtonFont;
 @property (readonly, nonatomic) UIFont *messageFont;
 @property (strong, nonatomic) _ICQTextView *messageView; // @synthesize messageView=_messageView;
@@ -75,7 +74,6 @@
 @property (readonly, nonatomic) UIFont *titleFont;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (readonly, nonatomic) UIView *trayView; // @synthesize trayView=_trayView;
-@property (readonly, nonatomic) _UIBackdropView *ultraLightTrayBackdrop; // @synthesize ultraLightTrayBackdrop=_ultraLightTrayBackdrop;
 @property (nonatomic) long long upgradeMode; // @synthesize upgradeMode=_upgradeMode;
 @property (strong, nonatomic) _ICQUpgradeOfferPageSpecification *upgradeOfferPageSpecification;
 
@@ -105,6 +103,7 @@
 - (void)layoutSubviews;
 - (id)messageAttributes;
 - (id)messageParagraphStyle;
+- (id)messageTextColor;
 - (void)purchase2ButtonTapped:(id)arg1;
 - (void)purchaseButtonTapped:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;

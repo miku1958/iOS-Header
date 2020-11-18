@@ -10,16 +10,18 @@
 
 @interface HKBloodPressureSeriesPresentationStyle : NSObject
 {
-    UIColor *_arrowColor;
-    UIColor *_fillColor;
-    double _arrowStrokeWidth;
-    struct CGSize _arrowSize;
+    double _width;
+    UIColor *_systolicSymbolColor;
+    UIColor *_systolicFillColor;
+    UIColor *_diastolicSymbolColor;
+    UIColor *_diastolicFillColor;
 }
 
-@property (strong, nonatomic) UIColor *arrowColor; // @synthesize arrowColor=_arrowColor;
-@property (nonatomic) struct CGSize arrowSize; // @synthesize arrowSize=_arrowSize;
-@property (nonatomic) double arrowStrokeWidth; // @synthesize arrowStrokeWidth=_arrowStrokeWidth;
-@property (strong, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;
+@property (strong, nonatomic) UIColor *diastolicFillColor; // @synthesize diastolicFillColor=_diastolicFillColor;
+@property (strong, nonatomic) UIColor *diastolicSymbolColor; // @synthesize diastolicSymbolColor=_diastolicSymbolColor;
+@property (strong, nonatomic) UIColor *systolicFillColor; // @synthesize systolicFillColor=_systolicFillColor;
+@property (strong, nonatomic) UIColor *systolicSymbolColor; // @synthesize systolicSymbolColor=_systolicSymbolColor;
+@property (nonatomic) double width; // @synthesize width=_width;
 
 - (void).cxx_destruct;
 

@@ -25,8 +25,8 @@
 @property (readonly) Class superclass;
 
 + (id)handlerWithCompletion:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (void)consumeSinglePressUpForButtonKind:(long long)arg1;
-- (void)dealloc;
 - (id)initWithCompletion:(CDUnknownBlockType)arg1;
 - (void)startConsumingHardwarePresses:(CDUnknownBlockType)arg1;
 - (void)stopConsumingHardwarePresses;

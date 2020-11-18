@@ -6,27 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class HKActiveWatchFeatureAvailabilityDataSource, HKHealthStore, HKKeyValueDomain, HKMobileCountryCodeManager, HKObserverSet, NPSManager, NSDate, NSNumber, NSUserDefaults;
+@class HKActiveWatchFeatureAvailabilityDataSource, HKHealthStore, HKKeyValueDomain, HKMobileCountryCodeManager, HKObserverSet, HKWatchAppAvailability, NSDate, NSMutableSet, NSNumber, NSUserDefaults;
 
 @interface HKHeartRhythmAvailability : NSObject
 {
     struct os_unfair_lock_s _cacheLock;
+    struct os_unfair_lock_s _onboardingKeysReadLock;
     NSNumber *_isAtrialFibrillationDetectionDisabledCache;
     NSNumber *_isElectrocardiogramDisabledCache;
     int _onboardingStateDidChangeNotificationToken;
     int _featureAvailabilityConditionsDidUpdateNotificationToken;
+    int _userCharacteristicsDidChangeNotificationToken;
     HKHealthStore *_healthStore;
     HKKeyValueDomain *_keyValueDomain;
     NSUserDefaults *_heartRhythmUserDefaults;
-    NPSManager *_syncManager;
     HKObserverSet *_heartRhythmAvailabilityObservers;
     HKActiveWatchFeatureAvailabilityDataSource *_availabilityDataSource;
+    NSMutableSet *_onboardingKeysReadSet;
     HKMobileCountryCodeManager *_mobileCountryCodeManager;
+    HKWatchAppAvailability *_ecgAppAvailability;
 }
 
 @property (readonly, nonatomic, getter=isAtrialFibrillationDetectionDisabled) BOOL atrialFibrillationDetectionDisabled;
 @property (readonly, nonatomic, getter=isAtrialFibrillationDetectionOnboardingCompleted) BOOL atrialFibrillationDetectionOnboardingCompleted;
 @property (strong, nonatomic) HKActiveWatchFeatureAvailabilityDataSource *availabilityDataSource; // @synthesize availabilityDataSource=_availabilityDataSource;
+@property (strong, nonatomic) HKWatchAppAvailability *ecgAppAvailability; // @synthesize ecgAppAvailability=_ecgAppAvailability;
 @property (readonly, nonatomic) NSDate *electrocardiogramFirstOnboardingCompletedDate;
 @property (nonatomic, getter=isElectrocardiogramFirstRecordingCompleted) BOOL electrocardiogramFirstRecordingCompleted;
 @property (readonly, nonatomic, getter=isElectrocardiogramOnboardingCompleted) BOOL electrocardiogramOnboardingCompleted;
@@ -37,16 +41,19 @@
 @property (strong, nonatomic) NSUserDefaults *heartRhythmUserDefaults; // @synthesize heartRhythmUserDefaults=_heartRhythmUserDefaults;
 @property (strong, nonatomic) HKKeyValueDomain *keyValueDomain; // @synthesize keyValueDomain=_keyValueDomain;
 @property (strong, nonatomic) HKMobileCountryCodeManager *mobileCountryCodeManager; // @synthesize mobileCountryCodeManager=_mobileCountryCodeManager;
+@property (strong, nonatomic) NSMutableSet *onboardingKeysReadSet; // @synthesize onboardingKeysReadSet=_onboardingKeysReadSet;
 @property (nonatomic) int onboardingStateDidChangeNotificationToken; // @synthesize onboardingStateDidChangeNotificationToken=_onboardingStateDidChangeNotificationToken;
-@property (strong, nonatomic) NPSManager *syncManager; // @synthesize syncManager=_syncManager;
+@property (nonatomic) int userCharacteristicsDidChangeNotificationToken; // @synthesize userCharacteristicsDidChangeNotificationToken=_userCharacteristicsDidChangeNotificationToken;
 
 + (unsigned long long)_atrialFibrillationDetectionSupportedStateForDeviceRegion:(id)arg1;
++ (unsigned long long)_electrocardiogramSupportedStateForDeviceRegion:(id)arg1;
 + (BOOL)_isAtrialFibrillationDetectionDisabledWithDataSource:(id)arg1;
-+ (BOOL)_isAtrialFibrillationDetectionStateSupportedOrNeedsGeolocationOnWatch:(id)arg1;
 + (BOOL)_isAtrialFibrillationDetectionSupportedOnPhone:(id)arg1;
 + (BOOL)_isDeviceRunningSeed:(id)arg1;
 + (BOOL)_isElectrocardiogramDisabledWithDataSource:(id)arg1;
 + (BOOL)_isElectrocardiogramSupportedOnPhone:(id)arg1;
++ (BOOL)_isElectrocardiogramSupportedOnPhone:(id)arg1 geolocatedCountryCode:(id)arg2;
++ (BOOL)_isElectrocardiogramSupportedOniOSDevice:(id)arg1 geolocatedCountryCode:(id)arg2;
 + (BOOL)_isRunningSeed;
 + (id)activePairedDevice;
 + (BOOL)atrialFibrillationDetectionSupportedForDevice:(id)arg1;
@@ -54,36 +61,42 @@
 + (unsigned long long)atrialFibrillationDetectionSupportedStateForActiveWatch;
 + (unsigned long long)atrialFibrillationDetectionSupportedStateForWatch:(id)arg1;
 + (long long)currentAtrialFibrillationDetectionOnboardingVersion;
++ (id)currentDeviceRegionCode;
 + (long long)currentElectrocardiogramOnboardingVersion;
++ (id)electrocardiogramAppBundleID;
 + (BOOL)electrocardiogramSupportedForDevice:(id)arg1;
 + (unsigned long long)electrocardiogramSupportedState;
 + (unsigned long long)electrocardiogramSupportedStateForActiveWatch;
 + (unsigned long long)electrocardiogramSupportedStateForWatch:(id)arg1;
 + (id)featureAvailabilityUserDefaults;
++ (void)installElectrocardiogramAppOnActiveWatch:(CDUnknownBlockType)arg1;
 + (BOOL)isAtrialFibrillationDetectionDisabledForOnboardingCountryCode:(id)arg1;
 + (BOOL)isAtrialFibrillationDetectionSettingEnabled;
 + (BOOL)isAtrialFibrillationDetectionStateSupportedOrNeedsGeolocationOnActiveWatch;
 + (BOOL)isAtrialFibrillationDetectionStateSupportedOrNeedsGeolocationOnAllWatches;
 + (BOOL)isAtrialFibrillationDetectionStateSupportedOrNeedsGeolocationOnAnyWatch;
++ (BOOL)isAtrialFibrillationDetectionStateSupportedOrNeedsGeolocationOnWatch:(id)arg1;
 + (BOOL)isAtrialFibrillationDetectionSupportedOnPairedPhone;
 + (BOOL)isDeviceSeries3OrOlder:(id)arg1;
++ (BOOL)isDeviceSeries4:(id)arg1;
++ (BOOL)isElectrocardiogramAppDeletableForActiveWatch;
 + (BOOL)isElectrocardiogramSupportedOnActiveWatch;
 + (BOOL)isElectrocardiogramSupportedOnAllWatches;
 + (BOOL)isElectrocardiogramSupportedOnAnyWatch;
 + (BOOL)isElectrocardiogramSupportedOnPairedPhone;
++ (BOOL)isElectrocardiogramSupportedOnPairedPhoneWithGeolocatedCountryCode:(id)arg1;
 + (BOOL)isElectrocardiogramSupportedOnWatch:(id)arg1;
 + (BOOL)isHeartRateEnabledInPrivacy;
 + (id)pairedDevices;
-+ (BOOL)shouldAdvertiseAtrialFibrillationDetectionForActiveWatch;
-+ (BOOL)shouldAdvertiseAtrialFibrillationDetectionForWatch:(id)arg1;
-+ (BOOL)shouldAdvertiseElectrocardiogramForActiveWatch;
-+ (BOOL)shouldAdvertiseElectrocardiogramForWatch:(id)arg1;
 + (BOOL)shouldInstallWatchApp;
 - (void).cxx_destruct;
 - (id)_electrocardiogramFirstOnboardingCompletedDate;
 - (void)_featureAvailabilityConditionsDidUpdate;
 - (BOOL)_isOnboardingCompletedForKey:(id)arg1 version:(long long)arg2;
 - (void)_localeDidChange;
+- (BOOL)_meetsMinimumAgeRequirementForAtrialFibrillationDetectionWithCurrentDate:(id)arg1;
+- (BOOL)_meetsMinimumAgeRequirementForElectrocardiogramWithCurrentDate:(id)arg1;
+- (BOOL)_meetsMinimumAgeRequirementWithMinimumRequiredAge:(long long)arg1 currentDate:(id)arg2;
 - (void)_pairedOrActiveDevicesDidChange:(id)arg1;
 - (void)_registerForNotifications;
 - (void)_resetIsAtrialFibrillationDetectionDisabledCacheWithLock:(BOOL)arg1;
@@ -97,6 +110,7 @@
 - (void)addHeartRhythmAvailabilityObserver:(id)arg1;
 - (id)atrialFibrillationDetectionOnboardingCountryCode;
 - (void)dealloc;
+- (void)electrocardiogramAppInstallStateOnActiveWatch:(CDUnknownBlockType)arg1;
 - (id)electrocardiogramOnboardingCountryCode;
 - (id)initWithHealthStore:(id)arg1;
 - (void)isAtrialFibrillationDetectionOnboardingAvailableInCurrentLocation:(CDUnknownBlockType)arg1;
@@ -105,6 +119,8 @@
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocation:(CDUnknownBlockType)arg1;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocationForActiveWatch:(CDUnknownBlockType)arg1;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocationForWatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)isHeartAgeGatingEnabledOnActiveWatchWithCurrentDate:(id)arg1;
+- (BOOL)isHeartAgeGatingEnabledOnWatch:(id)arg1 currentDate:(id)arg2;
 - (void)notifyHeartRhythmAvailabilityDidUpdate;
 - (void)removeHeartRhythmAvailabilityObserver:(id)arg1;
 - (void)resetAtrialFibrillationDetectionOnboarding;
@@ -113,6 +129,10 @@
 - (void)setElectrocardiogramFirstOnboardingCompletedDate:(id)arg1;
 - (void)setElectrocardiogramOnboardingCompleted;
 - (void)setElectrocardiogramOnboardingCompletedForCountryCode:(id)arg1;
+- (BOOL)shouldAdvertiseAtrialFibrillationDetectionForActiveWatch;
+- (BOOL)shouldAdvertiseAtrialFibrillationDetectionForWatch:(id)arg1;
+- (BOOL)shouldAdvertiseElectrocardiogramForActiveWatch;
+- (BOOL)shouldAdvertiseElectrocardiogramForWatch:(id)arg1;
 
 @end
 

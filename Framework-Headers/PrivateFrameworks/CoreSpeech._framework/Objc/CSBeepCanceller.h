@@ -27,6 +27,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)cancelBeepFromSamples:(id)arg1 timestamp:(unsigned long long)arg2;
+- (void)flush;
 - (id)init;
 - (void)reset;
 - (void)willBeep;

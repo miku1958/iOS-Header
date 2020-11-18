@@ -9,7 +9,7 @@
 #import <CompanionSync/IDSServiceDelegate-Protocol.h>
 
 @class IDSMessageContext, IDSService, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSObject, NSString, NSURL, SYDevice, SYStartSyncSession, _SYInputStreamer, _SYOutputStreamer;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
 @interface SYFileTransferSyncEngine : SYSyncEngine <IDSServiceDelegate>
@@ -26,15 +26,21 @@ __attribute__((visibility("hidden")))
     _SYOutputStreamer *_responseStream;
     BOOL _responsesCanceled;
     IDSService *_idsService;
-    NSObject<OS_dispatch_queue> *_idsQueue;
     SYDevice *_activeDevice;
     SYDevice *_sessionDevice;
     SYDevice *_responseDevice;
+    struct os_unfair_lock_s _idsQueueLock;
+    NSObject<OS_dispatch_queue> *_idsQueue;
+    BOOL _idsQueueIsSuspended;
+    BOOL _idsQueueResumedLock;
     NSMutableIndexSet *_messageRows;
     NSMutableIndexSet *_responseMessageRows;
     NSMutableArray *_deferredIncomingSessions;
     NSMutableSet *_singleMessageUUIDs;
+    struct os_unfair_lock_s _messageMapLock;
     NSMutableDictionary *_messageIDsToSessionIDs;
+    NSObject<OS_os_transaction> *_closureTransaction;
+    NSObject<OS_os_transaction> *_responseSessionTransaction;
     NSDictionary *_customIDSOptions;
 }
 
@@ -62,8 +68,10 @@ __attribute__((visibility("hidden")))
 - (void)_readNextProtobuf:(CDUnknownBlockType)arg1;
 - (void)_reallyHandleSessionRestart:(id)arg1 priority:(long long)arg2 options:(id)arg3 userContext:(id)arg4 callback:(CDUnknownBlockType)arg5;
 - (void)_recordLastSeqNo:(id)arg1;
+- (void)_resumeIdsQueue;
 - (BOOL)_sessionDeviceCanUseSingleMessages;
 - (BOOL)_shouldTreatAsSessionEnd:(id)arg1;
+- (void)_suspendIdsQueue;
 - (id)_wrapIncomingMessage:(id)arg1 ofType:(unsigned short)arg2 identifier:(id)arg3;
 - (id)_wrapIncomingResponse:(id)arg1 ofType:(unsigned short)arg2 identifier:(id)arg3;
 - (id)_wrapMessage:(id)arg1 ofType:(unsigned short)arg2 userInfo:(id)arg3;
@@ -73,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)buffersHandshake;
 - (BOOL)buffersSessions;
 - (id)cancelMessagesReturningFailures:(id)arg1;
+- (void)dealloc;
 - (void)endFileTransferForStream:(id)arg1 atURL:(id)arg2 target:(id)arg3 wasCancelled:(BOOL)arg4 messageRows:(id)arg5;
 - (void)endResponseSession;
 - (void)endSession;
@@ -87,6 +96,7 @@ __attribute__((visibility("hidden")))
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 hasBeenDeliveredWithContext:(id)arg4;
 - (void)service:(id)arg1 account:(id)arg2 incomingData:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingResourceAtURL:(id)arg3 metadata:(id)arg4 fromID:(id)arg5 context:(id)arg6;
+- (void)service:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 didSwitchActivePairedDevice:(id)arg2 acknowledgementBlock:(CDUnknownBlockType)arg3;
 - (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (id)stateForLogging;

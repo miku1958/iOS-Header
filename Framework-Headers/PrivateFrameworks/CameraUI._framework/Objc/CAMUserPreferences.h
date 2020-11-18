@@ -14,12 +14,15 @@
     BOOL _shouldShowGridView;
     BOOL _QRBannersEnabledInSettings;
     BOOL _forceEnableQRBanners;
-    BOOL _didAcknowledgeQRCodeDescription;
     BOOL _shouldCaptureHDREV0;
     BOOL _shouldUseModernHDRBehavior;
     BOOL _didAcknowledgePortraitModeDescription;
     BOOL _autoLowLightVideoEnabled;
     BOOL _shouldForceMonoAudioRecording;
+    BOOL _photoOverCaptureEnabled;
+    BOOL _videoOverCaptureEnabled;
+    BOOL _autoAdjustmentsEnabled;
+    BOOL _didAcknowledgeCTMDescription;
     BOOL _preserveEffectFilter;
     BOOL _preserveCaptureMode;
     BOOL _preserveLivePhoto;
@@ -48,12 +51,13 @@
 @property (readonly, nonatomic) BOOL _preferHEVCWhenAvailable; // @synthesize _preferHEVCWhenAvailable=__preferHEVCWhenAvailable;
 @property (readonly, nonatomic) double _resetTimeoutOverride; // @synthesize _resetTimeoutOverride=__resetTimeoutOverride;
 @property (strong, nonatomic, getter=_underlyingUserDefaults, setter=_setUnderlyingUserDefaults:) NSUserDefaults *_underlyingUserDefaults; // @synthesize _underlyingUserDefaults=__underlyingUserDefaults;
+@property (readonly, nonatomic, getter=isAutoAdjustmentsEnabled) BOOL autoAdjustmentsEnabled; // @synthesize autoAdjustmentsEnabled=_autoAdjustmentsEnabled;
 @property (readonly, nonatomic, getter=isAutoLowLightVideoEnabled) BOOL autoLowLightVideoEnabled; // @synthesize autoLowLightVideoEnabled=_autoLowLightVideoEnabled;
 @property (readonly, nonatomic) BOOL burstFollowsEncoderSettings; // @synthesize burstFollowsEncoderSettings=_burstFollowsEncoderSettings;
 @property (strong, nonatomic) CAMCaptureConfiguration *captureConfiguration; // @synthesize captureConfiguration=_captureConfiguration;
 @property (strong, nonatomic) CAMConflictingControlConfiguration *conflictingControlConfiguration; // @synthesize conflictingControlConfiguration=_conflictingControlConfiguration;
+@property (nonatomic) BOOL didAcknowledgeCTMDescription; // @synthesize didAcknowledgeCTMDescription=_didAcknowledgeCTMDescription;
 @property (nonatomic) BOOL didAcknowledgePortraitModeDescription; // @synthesize didAcknowledgePortraitModeDescription=_didAcknowledgePortraitModeDescription;
-@property (nonatomic) BOOL didAcknowledgeQRCodeDescription; // @synthesize didAcknowledgeQRCodeDescription=_didAcknowledgeQRCodeDescription;
 @property (nonatomic, setter=_setDidResetTorchMode:) BOOL didResetTorchMode; // @synthesize didResetTorchMode=_didResetTorchMode;
 @property (nonatomic) BOOL forceEnableQRBanners; // @synthesize forceEnableQRBanners=_forceEnableQRBanners;
 @property (readonly, nonatomic, getter=isLockAsShutterEnabled) BOOL lockAsShutterEnabled; // @synthesize lockAsShutterEnabled=_lockAsShutterEnabled;
@@ -61,6 +65,7 @@
 @property (readonly, nonatomic) long long overriddenFrontCaptureInterval; // @synthesize overriddenFrontCaptureInterval=_overriddenFrontCaptureInterval;
 @property (readonly, nonatomic) long long photoEncodingBehavior;
 @property (nonatomic) long long photoModeLastCapturedEffectFilterType; // @synthesize photoModeLastCapturedEffectFilterType=_photoModeLastCapturedEffectFilterType;
+@property (readonly, nonatomic, getter=isPhotoOverCaptureEnabled) BOOL photoOverCaptureEnabled; // @synthesize photoOverCaptureEnabled=_photoOverCaptureEnabled;
 @property (nonatomic) long long portraitModeLastCapturedEffectFilterType; // @synthesize portraitModeLastCapturedEffectFilterType=_portraitModeLastCapturedEffectFilterType;
 @property (readonly, nonatomic) long long preferredMinimumFreeBytes; // @synthesize preferredMinimumFreeBytes=_preferredMinimumFreeBytes;
 @property (readonly, nonatomic) BOOL preserveCaptureMode; // @synthesize preserveCaptureMode=_preserveCaptureMode;
@@ -78,6 +83,7 @@
 @property (readonly, nonatomic) long long slomoConfiguration; // @synthesize slomoConfiguration=_slomoConfiguration;
 @property (nonatomic) long long squareModeLastCapturedEffectFilterType; // @synthesize squareModeLastCapturedEffectFilterType=_squareModeLastCapturedEffectFilterType;
 @property (readonly, nonatomic) long long videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
+@property (readonly, nonatomic, getter=isVideoOverCaptureEnabled) BOOL videoOverCaptureEnabled; // @synthesize videoOverCaptureEnabled=_videoOverCaptureEnabled;
 
 + (id)_defaultCaptureConfiguration;
 + (BOOL)_fallBackToCameraDefaultsForBundleIdentifier:(id)arg1;
@@ -88,9 +94,11 @@
 - (long long)_sanitizeEffectFilterType:(long long)arg1 forMode:(long long)arg2;
 - (long long)_sanitizeLightingType:(long long)arg1 forMode:(long long)arg2;
 - (id)filterTypesForMode:(long long)arg1;
+- (BOOL)isOverCaptureEnabledForCTMCaptureType:(long long)arg1;
 - (long long)ppt_readPortraitLightingType;
 - (BOOL)readPreferencesWithOverrides:(id)arg1 emulationMode:(long long)arg2 callActive:(BOOL)arg3;
 - (BOOL)shouldResetCaptureConfiguration;
+- (void)updateResetTimeoutDate;
 - (long long)videoEncodingBehaviorForConfiguration:(long long)arg1;
 - (void)writePreferences;
 

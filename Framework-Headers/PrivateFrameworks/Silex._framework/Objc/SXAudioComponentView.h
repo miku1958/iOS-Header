@@ -21,9 +21,11 @@
     SXAudioComponentOverlayView *_overlayView;
     AVPlayerViewController *_playerViewController;
     SXAVPlayer *_player;
+    CDUnknownBlockType _cancelHandler;
 }
 
 @property (nonatomic) BOOL audioHasPlayed; // @synthesize audioHasPlayed=_audioHasPlayed;
+@property (copy, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -38,10 +40,11 @@
 - (void).cxx_destruct;
 - (BOOL)allowHierarchyRemoval;
 - (unsigned long long)analyticsMediaType;
+- (void)discardContents;
 - (void)hidePlaybackControls;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 resourceDataSource:(id)arg7 host:(id)arg8;
+- (void)layoutViews;
 - (void)loadAudio;
-- (void)loadComponent:(id)arg1;
 - (void)loadImage;
 - (void)pauseMediaPlayback;
 - (void)playButtonTapped:(id)arg1;

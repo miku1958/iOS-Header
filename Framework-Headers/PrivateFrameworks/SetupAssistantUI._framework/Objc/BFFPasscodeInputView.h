@@ -32,6 +32,8 @@
 - (void)disable;
 - (void)footerButtonPressed;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (BOOL)isFirstResponder;
 - (void)layoutSubviews;
 - (id)passcode;
 - (id)passcodeDisplayView;

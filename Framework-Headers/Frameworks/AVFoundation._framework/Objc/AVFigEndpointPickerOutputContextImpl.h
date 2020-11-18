@@ -36,22 +36,21 @@ __attribute__((visibility("hidden")))
 @property (weak) AVOutputContext *parentOutputContext; // @synthesize parentOutputContext=_parentContext;
 @property (readonly) BOOL providesControlForAllVolumeFeatures;
 @property (readonly) Class superclass;
+@property (readonly) BOOL supportsMultipleBluetoothOutputDevices;
 @property (readonly) BOOL supportsMultipleOutputDevices;
 @property (readonly) float volume;
 
 + (id)auxiliaryOutputContext;
 + (struct OpaqueFigEndpointPicker *)copySystemVideoPicker;
 + (id)iTunesAudioContext;
-+ (void)initialize;
 + (BOOL)outputContextExistsWithRemoteOutputDevice;
 + (id)outputContextImplForControllingOutputDeviceGroupWithID:(id)arg1 options:(id)arg2;
-+ (id)outputContextImplForID:(id)arg1;
++ (id)outputContextImplForID:(id)arg1 type:(id)arg2;
 + (id)platformDependentScreenOrVideoContext;
 + (void)resetOutputDeviceForAllOutputContexts;
 + (id)sharedAudioPresentationOutputContext;
 + (id)sharedSystemAudioContext;
 + (id)sharedSystemScreenContext;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addFigEndpointPickerNotifications;
 - (int)_configureFigEndpointPickerWithFeature:(unsigned long long)arg1 options:(id)arg2;
@@ -59,10 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)_removeFigEndpointPickerNotifications;
 - (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (void)encodeWithCoder:(id)arg1;
 - (id)endpointPickerUUID;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithContextUUID:(id)arg1;
 - (id)initWithFeature:(unsigned long long)arg1 options:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
@@ -70,7 +67,7 @@ __attribute__((visibility("hidden")))
 - (id)openCommunicationChannelWithOptions:(id)arg1 error:(id *)arg2;
 - (void)outputContextDidChangeApplicationProcessID:(id)arg1;
 - (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)removeOutputDevice:(id)arg1;
+- (void)removeOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setOutputDevices:(id)arg1;
 - (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

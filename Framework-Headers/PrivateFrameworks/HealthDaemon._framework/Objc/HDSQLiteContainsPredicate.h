@@ -28,7 +28,7 @@
 + (id)doesNotContainPredicateWithProperty:(id)arg1 values:(id)arg2;
 - (void).cxx_destruct;
 - (id)SQLForEntityClass:(Class)arg1;
-- (void)bindToStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
+- (void)bindToStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(int *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (BOOL)isCompatibleWithPredicate:(id)arg1;

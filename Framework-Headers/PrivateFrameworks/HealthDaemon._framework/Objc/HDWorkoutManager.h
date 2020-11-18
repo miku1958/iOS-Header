@@ -6,17 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
 #import <HealthDaemon/HDDevicePowerObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
-#import <HealthDaemon/HDForegroundClientProcessObserver-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDWorkoutDataAccumulatorObserver-Protocol.h>
 #import <HealthDaemon/HDWorkoutSessionObserver-Protocol.h>
 
-@class HDAlertSuppressor, HDAssertion, HDLocationManager, HDProfile, HDWatchAppStateMonitor, HDWorkoutLocationSmoother, HDWorkoutSessionServer, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
+@class HDAlertSuppressor, HDAssertion, HDLocationManager, HDProfile, HDWatchAppStateMonitor, HDWorkoutLocationSmoother, HDWorkoutSessionServer, HKObserverSet, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDWorkoutManager : NSObject <HDDatabaseProtectedDataObserver, HDDevicePowerObserver, HDDiagnosticObject, HDForegroundClientProcessObserver, HDHealthDaemonReadyObserver, HDWorkoutSessionObserver>
+@interface HDWorkoutManager : NSObject <HDDevicePowerObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver, HDWorkoutDataAccumulatorObserver, HDWorkoutSessionObserver>
 {
     HDWorkoutSessionServer *_currentWorkout;
     HDAssertion *_currentWorkoutAssertion;
@@ -24,13 +23,13 @@
     NSMutableDictionary *_sessionServers;
     NSMutableDictionary *_sessionCreationHandlers;
     NSHashTable *_observerTable;
-    BOOL _needToCheckForLocationSeriesOnUnlock;
-    BOOL _isFirstLaunchAndNotYetSmoothed;
+    HKObserverSet *_sessionObservers;
     HDLocationManager *_locationManager;
     HDWatchAppStateMonitor *_appStateMonitor;
     BOOL _hasPerformedPostLaunchSessionRecovery;
     NSMutableArray *_postLaunchRecoveryBlocks;
     NSObject<OS_dispatch_queue> *_postLaunchRecoveryCallbackQueue;
+    HKObserverSet *_currentWorkoutObservers;
     HDProfile *_profile;
     HDAlertSuppressor *_alertSuppressor;
     NSObject<OS_dispatch_queue> *_queue;
@@ -50,66 +49,64 @@
 
 - (void).cxx_destruct;
 - (id)_activeSessionIdentifiers;
-- (void)_associationsSyncedForWorkout:(id)arg1;
 - (void)_finishAllDetachedWorkoutBuilders;
-- (void)_finishAllWorkoutsExcludingSessions:(id)arg1;
+- (void)_finishAllWorkoutsWithExclusionHandler:(CDUnknownBlockType)arg1;
 - (void)_notifyForPostLaunchSessionRecovery;
 - (void)_postWorkoutUpdatedNotification;
 - (void)_queue_beginTransitionToWorkoutSession:(id)arg1;
 - (unsigned long long)_queue_currentWorkoutActivityType;
 - (long long)_queue_currentWorkoutLocationType;
-- (id)_queue_locationSmoother;
 - (void)_queue_logWorkoutStateToPowerLog;
 - (void)_queue_sessionFinished:(id)arg1;
 - (id)_queue_sessionServerForRecoveryForClient:(id)arg1;
 - (void)_queue_setCurrentWorkout:(id)arg1;
-- (void)_queue_smoothAllUnsmoothedLocationSeries;
 - (void)_queue_startWatchAppWithWorkoutConfiguration:(id)arg1 client:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_updateFakingDataInSimulator;
 - (void)_receivedStartWorkoutAppRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_recoverActiveWorkoutSessionServersIfNeeded;
+- (void)_recoverActiveWorkoutSessionServersIfNeeded;
 - (void)_recoverCurrentWorkoutSessionAfterLaunch;
 - (void)_scheduleFinishAllDetachedWorkoutBuilders;
 - (void)_scheduleFinishForDetachedWorkoutBuilders;
 - (void)_sendStartWorkoutAppResponse:(CDUnknownBlockType)arg1 error:(id)arg2;
-- (void)_setupLocationObserversIfNeeded;
 - (void)_startWatchAppWithWorkoutConfiguration:(id)arg1 client:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_workoutSessionNotCurrentError:(id)arg1;
 - (void)addWorkoutEventObserver:(id)arg1;
+- (void)addWorkoutSessionObserver:(id)arg1 queue:(id)arg2;
 - (unsigned long long)currentWorkoutActivityType;
 - (id)currentWorkoutClient;
 - (long long)currentWorkoutLocationType;
 - (void)daemonReady:(id)arg1;
-- (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (void)devicePowerMonitor:(id)arg1 primaryPowerSourceIsCharging:(BOOL)arg2;
 - (id)diagnosticDescription;
 - (void)endHeartRateRecovery;
 - (BOOL)finishAllWorkoutsForClient:(id)arg1 error:(id *)arg2;
-- (void)foregroundClientProcessesDidChange:(id)arg1 previouslyForegroundBundleIdentifiers:(id)arg2;
 - (void)generatePauseOrResumeRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getCurrentWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)hasAnyActiveWorkouts;
 - (void)hk_fakeLapEventWithDate:(id)arg1 strokeStyle:(long long)arg2;
 - (void)hk_fakeStopEventWithDate:(id)arg1;
 - (id)initWithProfile:(id)arg1;
-- (BOOL)isPowerSavingEnabledForCurrentActivity;
 - (BOOL)isPowerSavingSupportedForCurrentActivity;
 - (void)pauseActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performWhenPostLaunchSessionRecoveryHasCompleted:(CDUnknownBlockType)arg1;
 - (void)receivedStartWorkoutAppRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)recoverWorkoutSessionForClient:(id)arg1 server:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)recoveredWorkoutSessionServerWithIdentifier:(id)arg1 error:(id *)arg2;
+- (void)registerCurrentWorkoutObserver:(id)arg1;
 - (void)removeWorkoutEventObserver:(id)arg1;
+- (void)removeWorkoutSessionObserver:(id)arg1;
 - (void)sessionServerFromSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)sessionServerWithConfiguration:(id)arg1 sessionUUID:(id)arg2 taskServer:(id)arg3 error:(id *)arg4;
 - (void)startWatchAppWithWorkoutConfiguration:(id)arg1 client:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)unitTest_currentWorkoutSession;
 - (void)unitTest_finishAllDetachedWorkoutBuilders;
 - (void)unitTest_smoothRoute:(id)arg1 withSmoother:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)unregisterCurrentWorkoutObserver:(id)arg1;
 - (void)workoutSession:(id)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3 date:(id)arg4;
 - (void)workoutSession:(id)arg1 didFailWithError:(id)arg2;
 - (void)workoutSession:(id)arg1 didGenerateEvent:(id)arg2;
+- (void)workoutSession:(id)arg1 didUpdateDataAccumulator:(id)arg2;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @class AVWeakReferencingDelegateStorage, NSArray, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVCaptureFileOutputDelegateWrapper : NSObject
 {
     BOOL _recording;

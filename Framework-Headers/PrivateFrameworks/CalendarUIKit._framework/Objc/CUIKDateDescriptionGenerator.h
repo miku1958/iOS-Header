@@ -6,10 +6,12 @@
 
 #import <CalendarUIKit/CUIKDescriptionGenerator.h>
 
-@class NSDateFormatter, NSMutableDictionary;
+@class NSDateFormatter, NSMutableDictionary, NSObject;
+@protocol OS_dispatch_queue;
 
 @interface CUIKDateDescriptionGenerator : CUIKDescriptionGenerator
 {
+    NSObject<OS_dispatch_queue> *_serialFormatterEditQueue;
     NSDateFormatter *_dayFormatter;
     NSDateFormatter *_abbrevDayFormatter;
     NSDateFormatter *_timeFormatter;
@@ -28,20 +30,22 @@
 - (void).cxx_destruct;
 - (id)_customFormatter;
 - (id)_dateFormatterWithLongFormat:(id)arg1;
-- (id)_dateStringForDate:(id)arg1 allDay:(BOOL)arg2 shortFormat:(BOOL)arg3 lowercase:(BOOL)arg4;
+- (id)_dateStringForDate:(id)arg1 relativeToReferenceDate:(id)arg2 allDay:(BOOL)arg3 shortFormat:(BOOL)arg4 lowercase:(BOOL)arg5;
+- (void)_initializeFormatters;
 - (void)_invalidateFormatters;
-- (id)_stringForDate:(id)arg1 withLongFormatString:(id)arg2 useAbbreviatedFormats:(BOOL)arg3 lowerCase:(BOOL)arg4;
+- (id)_stringForDate:(id)arg1 relativeToReferenceDate:(id)arg2 withLongFormatString:(id)arg3 useAbbreviatedFormats:(BOOL)arg4 lowerCase:(BOOL)arg5;
 - (id)_timeStringForDate:(id)arg1;
 - (id)abbreviatedDayFormatter;
 - (id)dateStringForDate:(id)arg1 allDay:(BOOL)arg2 shortFormat:(BOOL)arg3;
 - (id)dateStringForDate:(id)arg1 allDay:(BOOL)arg2 standalone:(BOOL)arg3 shortFormat:(BOOL)arg4;
+- (id)dateStringForDate:(id)arg1 relativeToReferenceDate:(id)arg2 allDay:(BOOL)arg3 standalone:(BOOL)arg4 shortFormat:(BOOL)arg5;
 - (id)dayFormatter;
 - (id)dayOfWeekFormatter;
-- (void)dealloc;
 - (id)formatterForLongFormat:(id)arg1;
 - (id)fullStyleDateFormatter;
 - (id)init;
 - (id)standardTimeFormatter;
+- (id)stringForDate:(id)arg1 withLongFormatString:(id)arg2 useAbbreviatedFormats:(BOOL)arg3 lowerCase:(BOOL)arg4;
 - (id)timeFormatter;
 - (id)timeStringForDate:(id)arg1 inTimeZone:(id)arg2;
 

@@ -12,12 +12,20 @@
 
 @property (nonatomic, setter=_accessibilitySetIsAccessibleViaTableViewCell:) BOOL _accessibilityIsAccessibleViaTableViewCell;
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)_accessibilityKeyCommands;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (void)_axToggleSwitch;
+- (void)_fkaSwitchOff;
+- (void)_fkaSwitchOn;
+- (id)_viewToAddFocusLayer;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;

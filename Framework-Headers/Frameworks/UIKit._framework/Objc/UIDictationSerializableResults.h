@@ -15,10 +15,13 @@ __attribute__((visibility("hidden")))
 @interface UIDictationSerializableResults : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _fromKeyboard;
+    BOOL _showMultilingualAlternatives;
+    BOOL _lowConfidenceAboutLanguageDetection;
     BOOL _useServerCapitalization;
     BOOL _addTrailingSpace;
     BOOL _allowsAlternatives;
     NSArray *_phrases;
+    NSArray *_multilingualAlternatives;
     const struct __CFString *_transform;
     NSIndexPath *_indexPathOfInterpretations;
 }
@@ -27,7 +30,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL allowsAlternatives; // @synthesize allowsAlternatives=_allowsAlternatives;
 @property (nonatomic) BOOL fromKeyboard; // @synthesize fromKeyboard=_fromKeyboard;
 @property (strong, nonatomic) NSIndexPath *indexPathOfInterpretations; // @synthesize indexPathOfInterpretations=_indexPathOfInterpretations;
+@property (nonatomic) BOOL lowConfidenceAboutLanguageDetection; // @synthesize lowConfidenceAboutLanguageDetection=_lowConfidenceAboutLanguageDetection;
+@property (copy, nonatomic) NSArray *multilingualAlternatives; // @synthesize multilingualAlternatives=_multilingualAlternatives;
 @property (copy, nonatomic) NSArray *phrases; // @synthesize phrases=_phrases;
+@property (nonatomic) BOOL showMultilingualAlternatives; // @synthesize showMultilingualAlternatives=_showMultilingualAlternatives;
 @property (nonatomic) const struct __CFString *transform; // @synthesize transform=_transform;
 @property (nonatomic) BOOL useServerCapitalization; // @synthesize useServerCapitalization=_useServerCapitalization;
 
@@ -36,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (id)bestResults;
 - (id)bestText;
 - (id)bestTextArray;
+- (id)bestTextArrayForAlternatives:(id)arg1;
+- (id)bestTextForMultilingualAlternatives;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -44,10 +52,15 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithArrayOfArrayOfStrings:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDetectedPhrases:(id)arg1 multilingualAlternatives:(id)arg2;
 - (id)initWithPhrases:(id)arg1;
+- (id)multilingualResultsByLanguageCode;
+- (id)secondBestText;
+- (id)secondBestTextArray;
 - (id)singleLineResult;
 - (id)text;
 - (id)textArray;
+- (id)textArrayForAlternatives:(id)arg1;
 
 @end
 

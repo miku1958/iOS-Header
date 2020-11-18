@@ -43,10 +43,10 @@
 - (id)_mostRecentSampleOfType:(id)arg1 error:(id *)arg2;
 - (void)_queue_alertObserversDidUpdateUserProfile;
 - (void)_queue_updateQuantityCharacteristics;
+- (void)_queue_updateQuantityCharacteristicsAndUserProfile;
 - (void)_queue_updateQuantityCharacteristicsAndUserProfileIfNeeded;
 - (void)_queue_updateUserProfile;
 - (BOOL)_setUserCharacteristic:(id)arg1 forType:(id)arg2 shouldInsertSample:(BOOL)arg3 updateProfileAndSync:(BOOL)arg4 error:(id *)arg5;
-- (void)_updateQuantityCharacteristicsAndUserProfile;
 - (id)_userCharacteristicForType:(id)arg1 entity:(id *)arg2 error:(id *)arg3;
 - (void)_userCharacteristicsDidChangeShouldUpdateUserProfile:(BOOL)arg1 shouldSync:(BOOL)arg2;
 - (void)addProfileObserver:(id)arg1;
@@ -55,6 +55,7 @@
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
+- (id)modificationDateForCharacteristicWithType:(id)arg1 error:(id *)arg2;
 - (void)removeProfileObserver:(id)arg1;
 - (double)restingCaloriesFromTotalCalories:(double)arg1 timeInterval:(double)arg2 authorizedToRead:(BOOL)arg3;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;

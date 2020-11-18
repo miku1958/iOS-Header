@@ -20,7 +20,7 @@
 @property (readonly) Class superclass;
 
 + (id)serverInterface;
-+ (void)setClassesForSelectorsReplyingWithCandidatesInInterface:(id)arg1;
++ (void)setArrayClassesForSelectorsInInterface:(id)arg1;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 granularity:(int)arg2 keyboardState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)candidateRejected:(id)arg1;
@@ -34,11 +34,16 @@
 - (void)handleKeyboardInput:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)keyboardConfiguration;
 - (void)lastAcceptedCandidateCorrected;
+- (void)logDiscoverabilityEvent:(int)arg1 userInfo:(id)arg2;
 - (void)performHitTestForTouchEvent:(id)arg1 keyboardState:(id)arg2 continuation:(CDUnknownBlockType)arg3;
+- (void)performHitTestForTouchEvents:(id)arg1 keyboardState:(id)arg2 continuation:(CDUnknownBlockType)arg3;
 - (void)setOriginalInput:(id)arg1;
 - (void)skipHitTestForTouchEvent:(id)arg1 keyboardState:(id)arg2;
+- (void)skipHitTestForTouchEvents:(id)arg1 keyboardState:(id)arg2;
+- (void)smartSelectionForTextInDocument:(id)arg1 inRange:(struct _NSRange)arg2 language:(id)arg3 tokenizedRanges:(id)arg4 options:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)textAccepted:(id)arg1;
+- (void)textAccepted:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)writeTypologyLogWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

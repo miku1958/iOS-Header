@@ -6,9 +6,42 @@
 
 #import <NotesShared/ICAttachment.h>
 
-@interface ICAttachment (PDFGalleryVersion)
+#import <NotesUI/DCScanDataDelegate-Protocol.h>
 
+@class ICDocCamImageQuad, ICNotePasteboardData, NSString, UIImage;
+
+@interface ICAttachment (PDFGalleryVersion) <DCScanDataDelegate>
+
+@property (copy, nonatomic) ICDocCamImageQuad *croppingQuad;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long docCamPDFVersion;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIImage *image;
+@property (readonly, nonatomic) BOOL isUnsupportedOnCurrentPlatform;
+@property (readonly, nonatomic) NSString *modificationDateForSpeaking;
+@property (readonly, nonatomic) NSString *movieDurationForSpeaking;
+@property (readonly, nonatomic) ICNotePasteboardData *pasteboardData;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) UIImage *unprocessedDocumentImage;
 
++ (struct NSCache *)imageCache;
++ (id)imageLoadingOperationQueue;
++ (id)thumbnailOperationQueue;
+- (id)activityItems;
+- (id)attributedString;
+- (struct UIImage *)cachedImage;
+- (id)dataForTypeIdentifier:(id)arg1;
+- (id)deviceInfosWithoutPreviewImagesFromDeviceInfos:(id)arg1;
+- (BOOL)fetchThumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceInfo:(id)arg3 cache:(id)arg4 cacheKey:(id)arg5 processingBlock:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7 fallbackBlock:(CDUnknownBlockType)arg8 aboutToLoadHandler:(CDUnknownBlockType)arg9;
+- (id)fileURLForTypeIdentifier:(id)arg1;
+- (CDUnknownBlockType)loadImage:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)loadImage:(CDUnknownBlockType)arg1 aboutToLoadHandler:(CDUnknownBlockType)arg2 forceFullSizeImage:(BOOL)arg3;
+- (void)notifyDocCamFrameworkAttachmentWasDeleted;
+- (void)setCachedImage:(struct UIImage *)arg1;
+- (BOOL)thumbnailImage:(struct UIImage **)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 appearanceType:(unsigned long long)arg4 requireAppearance:(BOOL)arg5 imageScaling:(unsigned long long *)arg6 showAsFileIcon:(BOOL *)arg7 isMovie:(BOOL *)arg8 movieDuration:(CDStruct_1b6d18a9 *)arg9;
+- (BOOL)thumbnailImage:(struct UIImage **)arg1 minSize:(struct CGSize)arg2 scale:(double)arg3 imageScaling:(unsigned long long *)arg4 showAsFileIcon:(BOOL *)arg5 isMovie:(BOOL *)arg6 movieDuration:(CDStruct_1b6d18a9 *)arg7;
+- (id)updateAttachmentPreviewImageWithImage:(struct UIImage *)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 scaleWhenDrawing:(BOOL)arg4 metadata:(id)arg5 sendNotification:(BOOL)arg6;
+- (id)updateAttachmentPreviewImageWithImage:(struct UIImage *)arg1 scale:(double)arg2 scaleWhenDrawing:(BOOL)arg3 metadata:(id)arg4 sendNotification:(BOOL)arg5;
 @end
 

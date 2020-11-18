@@ -10,7 +10,7 @@
 #import <CoreDuet/SpotlightReceiver-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, _DKPrivacyPolicyEnforcer, _DKRateLimitPolicyEnforcer;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, _CDInteractionRecording><_CDInteractionDeleting, _DKKnowledgeSaving><_DKKnowledgeEventStreamDeleting;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, _CDInteractionRecording><_CDInteractionDeleting, _DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeEventStreamDeleting;
 
 @interface _CDSpotlightItemRecorder : NSObject <SpotlightReceiver, CSSearchableIndexObserver>
 {
@@ -21,7 +21,7 @@
     NSObject<OS_os_transaction> *_pendingOperationsTransaction;
     NSObject<OS_dispatch_queue> *_activityRateLimiterQueue;
     NSMutableDictionary *_activityPerBundleRateLimit;
-    id<_DKKnowledgeSaving><_DKKnowledgeEventStreamDeleting> _knowledgeStore;
+    id<_DKKnowledgeQuerying><_DKKnowledgeSaving><_DKKnowledgeEventStreamDeleting> _knowledgeStore;
     _DKRateLimitPolicyEnforcer *_rateLimitEnforcer;
     _DKPrivacyPolicyEnforcer *_privacyEnforcer;
     id<_CDInteractionRecording><_CDInteractionDeleting> _recorder;
@@ -37,8 +37,8 @@
 + (void)recordAggdReceiverAction:(long long)arg1 bundleID:(id)arg2 count:(unsigned long long)arg3;
 + (id)spotlightItemRecorder;
 + (id)spotlightItemRecorderWithInteractionRecorder:(id)arg1;
-+ (id)spotlightItemRecorderWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2;
-+ (id)spotlightItemRecorderWithKnowledgeSaving:(id)arg1;
++ (id)spotlightItemRecorderWithInteractionRecorder:(id)arg1 knowledgeStore:(id)arg2;
++ (id)spotlightItemRecorderWithKnowledgeStore:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addOrUpdateCoreDuetInteractions:(id)arg1 bundleID:(id)arg2;
 - (void)_deleteKnowledgeEventsMatchingPredicate:(id)arg1;
@@ -70,8 +70,8 @@
 - (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)donateRelevantShortcuts:(id)arg1 bundleID:(id)arg2;
 - (id)initWithInteractionRecorder:(id)arg1;
-- (id)initWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2;
-- (id)initWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2 rateLimitEnforcer:(id)arg3;
+- (id)initWithInteractionRecorder:(id)arg1 knowledgeStore:(id)arg2;
+- (id)initWithInteractionRecorder:(id)arg1 knowledgeStore:(id)arg2 rateLimitEnforcer:(id)arg3;
 - (void)registerSpotlightRecorderWithServiceName:(id)arg1;
 - (void)runOperation:(id)arg1;
 - (void)saveRateLimitedEvents:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

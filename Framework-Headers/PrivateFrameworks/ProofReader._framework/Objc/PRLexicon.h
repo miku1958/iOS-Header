@@ -8,25 +8,27 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface PRLexicon : NSObject
 {
     NSString *_localization;
     NSString *_unigramsPath;
-    NSString *_converterPath;
     const void *_lexicon;
-    void *_converter;
 }
 
-+ (id)lexiconWithLocalization:(id)arg1 unigramsPath:(id)arg2 converterPath:(id)arg3;
-- (void *)converter;
++ (id)lexiconWithLexicon:(const void *)arg1;
++ (id)lexiconWithLocalization:(id)arg1 unigramsPath:(id)arg2;
 - (id)createCursor;
 - (void)dealloc;
 - (id)description;
+- (void)enumerateCompletionEntriesForPrefix:(id)arg1 maxCompletions:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateCompletionsForPrefix:(id)arg1 maxCompletions:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateCorrectionEntriesForWord:(id)arg1 maxCorrections:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateEntriesForString:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)getProbabilityForString:(id)arg1 probability:(double *)arg2;
 - (BOOL)getProbabilityForTokenID:(unsigned int)arg1 probability:(double *)arg2;
-- (id)initWithLocalization:(id)arg1 unigramsPath:(id)arg2 converterPath:(id)arg3;
+- (id)initWithLexicon:(const void *)arg1;
+- (id)initWithLocalization:(id)arg1 unigramsPath:(id)arg2;
 - (struct _LXLexicon *)lexicon;
 - (id)stringForTokenID:(unsigned int)arg1;
 - (unsigned int)tokenIDForString:(id)arg1;

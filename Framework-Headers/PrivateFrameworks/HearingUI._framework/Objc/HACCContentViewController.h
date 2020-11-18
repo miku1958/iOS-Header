@@ -8,61 +8,48 @@
 
 #import <HearingUI/CCUIContentModuleContentViewController-Protocol.h>
 #import <HearingUI/UIGestureRecognizerDelegate-Protocol.h>
-#import <HearingUI/UIPreviewInteractionDelegate-Protocol.h>
 
-@class MTMaterialView, NSString, UIPreviewInteraction, UITapGestureRecognizer, UIView;
+@class CCUIContentModuleDetailTransitioningDelegate, NSString, UITapGestureRecognizer, UIView, UIViewPropertyAnimator;
 @protocol CCUIContentModuleContentViewController, HACCContentModule;
 
-@interface HACCContentViewController : UIViewController <UIGestureRecognizerDelegate, UIPreviewInteractionDelegate, CCUIContentModuleContentViewController>
+@interface HACCContentViewController : UIViewController <UIGestureRecognizerDelegate, CCUIContentModuleContentViewController>
 {
     unsigned long long _controlType;
     UIView<HACCContentModule> *_contentView;
-    UIView *_expandedView;
-    UIView *_materialView;
-    BOOL _expanded;
-    MTMaterialView *_backgroundView;
-    UITapGestureRecognizer *_tapRecognizer;
-    UIPreviewInteraction *_previewInteraction;
+    CCUIContentModuleDetailTransitioningDelegate *_detailTransitioningDelegate;
     UIViewController<CCUIContentModuleContentViewController> *_expandedViewController;
+    UITapGestureRecognizer *_tapRecognizer;
     struct CGRect _collapsedFrame;
 }
 
-@property (strong, nonatomic) MTMaterialView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic) struct CGRect collapsedFrame; // @synthesize collapsedFrame=_collapsedFrame;
+@property (readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIViewController<CCUIContentModuleContentViewController> *expandedViewController; // @synthesize expandedViewController=_expandedViewController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double preferredExpandedContentHeight;
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
-@property (strong, nonatomic) UIPreviewInteraction *previewInteraction; // @synthesize previewInteraction=_previewInteraction;
+@property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 
 - (void).cxx_destruct;
 - (void)_handleTapGestureRecognizer:(id)arg1;
-- (id)_previewInteractionHighlighterForPreviewTransition:(id)arg1;
-- (BOOL)_previewInteractionShouldAutomaticallyTransitionToPreviewAfterDelay:(id)arg1;
+- (void)_updateMenuItemsForViewController:(id)arg1;
+- (void)_updatePresentedMenuViewControllerIfNecessary;
 - (struct CGSize)collapsedContentSize;
 - (struct CGSize)collapsedContentUnitSize;
 - (unsigned long long)controlTypeForModule:(unsigned long long)arg1;
-- (struct CGSize)expandedContentSize;
-- (struct CGSize)expandedContentUnitSize;
-- (id)expandedViewControllerForProgramModule:(unsigned long long)arg1;
 - (id)initWithContentModule:(unsigned long long)arg1 andDelegate:(id)arg2;
 - (long long)layoutRequirement;
-- (void)maskCornersForTop:(BOOL)arg1 bottom:(BOOL)arg2;
-- (void)previewInteraction:(id)arg1 didUpdatePreviewTransition:(double)arg2 ended:(BOOL)arg3;
-- (void)previewInteractionDidCancel:(id)arg1;
-- (BOOL)previewInteractionShouldBegin:(id)arg1;
+- (id)menuModuleViewControllerForProgramModule:(unsigned long long)arg1;
 - (BOOL)supportsExpanding;
-- (id)transitionToExpanded:(BOOL)arg1;
 - (void)updateValue;
 - (void)updateViewConstraints;
 - (id)value;
 - (id)viewControllerForExpandedView;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

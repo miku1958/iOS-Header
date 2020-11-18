@@ -33,6 +33,7 @@
 
 - (void).cxx_destruct;
 - (void)_attributeStyleChanged:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_lineAttributesChanged:(id)arg1;
 - (void)_updatePreferredContentSize;
 - (id)initWithController:(id)arg1 selectedAnnotations:(id)arg2;

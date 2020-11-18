@@ -11,12 +11,14 @@
 }
 
 + (id)_assetsInTrash;
++ (id)_assetsWithSpatialOvercaptureResources;
 + (id)_defaultVideoAssetFetchOptionsWithSortOrder:(BOOL)arg1 fetchLimit:(unsigned long long)arg2 minimumFileSize:(unsigned long long)arg3;
 + (id)_deleteableVideoAssets;
 + (id)_sizeForLibraryKind:(unsigned long long)arg1;
 + (void)enableCPLWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)enableOptimizedMode:(BOOL)arg1;
 + (void)expungeRecentlyDeletedItemsWithCompletionBlock:(CDUnknownBlockType)arg1;
++ (void)expungeTrashedSpatialOverCaptureResourcesWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (id)fetchVideoAssetsBySizeWithSortOrder:(BOOL)arg1;
 + (BOOL)isCPLEnabled;
 + (BOOL)isCPLInInitialUploadingState;
@@ -27,6 +29,7 @@
 + (BOOL)shouldHideCPL;
 + (id)significantItems;
 + (id)sizeForRecentlyDeletedItems;
++ (id)sizeForTrashedSpatialOvercaptureResources;
 + (id)stringWithSizeUnitForValue:(id)arg1;
 + (unsigned long long)totalReclaimableSizeFromPurgingVideoClips;
 

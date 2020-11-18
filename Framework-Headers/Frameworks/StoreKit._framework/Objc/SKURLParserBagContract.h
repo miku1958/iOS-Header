@@ -10,6 +10,7 @@
 
 @class AMSBagValue, NSString, SSURLBag;
 
+__attribute__((visibility("hidden")))
 @interface SKURLParserBagContract : NSObject <AMSURLParserBagContract>
 {
     SSURLBag *_bag;

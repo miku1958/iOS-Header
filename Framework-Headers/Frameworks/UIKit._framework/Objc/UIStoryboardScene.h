@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController;
-
 __attribute__((visibility("hidden")))
 @interface UIStoryboardScene : NSObject
 {
-    UIViewController *sceneViewController;
+    id sceneViewController;
 }
 
-@property (strong, nonatomic) UIViewController *sceneViewController; // @synthesize sceneViewController;
+@property (strong, nonatomic) id sceneViewController; // @synthesize sceneViewController;
 
 - (void)dealloc;
 

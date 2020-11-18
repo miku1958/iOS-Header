@@ -10,7 +10,6 @@
 {
 }
 
-- (void)calculate:(CDUnknownBlockType)arg1;
 - (void)submit:(CDUnknownBlockType)arg1;
 
 @end

@@ -11,9 +11,14 @@
 @interface AVAsset (PhotosUI)
 
 @property (readonly, nonatomic) NSValue *pu_cachedDuration;
+@property (readonly, nonatomic) BOOL pu_supportsVitality;
 
 - (void)_pu_setCachedDuration:(id)arg1;
 - (CDStruct_1b6d18a9)pu_duration;
 - (void)pu_loadDurationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (CDStruct_8e0628e6)pu_perspectiveTransformForMetadata:(id)arg1;
+- (id)pu_stillAssetTransformMetadata;
+- (id)pu_stillImageTransformAssetTrack;
+- (id)pu_vitalityVideoComposition;
 @end
 

@@ -14,14 +14,14 @@
 
 @interface _INPBVoiceCommandStepInfo : PBCodable <_INPBVoiceCommandStepInfo, NSSecureCoding, NSCopying>
 {
-    struct {
-        unsigned int category:1;
-    } _has;
+    CDStruct_74e42c4c _has;
+    BOOL __encodeLegacyGloryData;
     int _category;
     NSString *_applicationIdentifier;
     NSString *_name;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (nonatomic) int category; // @synthesize category=_category;
 @property (readonly, copy) NSString *debugDescription;
@@ -33,11 +33,14 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsCategory:(id)arg1;
 - (id)categoryAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

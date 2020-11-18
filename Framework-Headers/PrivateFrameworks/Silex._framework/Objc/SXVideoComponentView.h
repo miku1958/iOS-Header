@@ -78,6 +78,7 @@
 - (void)registerForViewportDynamicBoundsChanges;
 - (void)renderContents;
 - (void)setupVideoPlayerViewController:(id)arg1;
+- (void)showPosterFrame;
 - (struct CGRect)transitionContentFrame;
 - (id)transitionContentView;
 - (void)unloadVideoPlayerIfShowingAd;

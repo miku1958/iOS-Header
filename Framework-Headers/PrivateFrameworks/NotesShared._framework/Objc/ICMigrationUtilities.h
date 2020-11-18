@@ -12,9 +12,9 @@
 
 + (void)deleteMigratedHTMLAccountIfNecessaryForModernAccount:(id)arg1;
 + (void)deleteMigratedHTMLAccounts;
-+ (void)fetchAndSetMigrationStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (void)fetchMigrationStateAndUserRecordWithCompletionHandler:(CDUnknownBlockType)arg1;
-+ (void)fetchMigrationStateWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)fetchAndSetMigrationStateForAccountID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (void)fetchMigrationStateAndUserRecordForAccountID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (void)fetchMigrationStateForAccountID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)saveDidChooseToMigrate:(BOOL)arg1 didFinishMigration:(BOOL)arg2 didMigrateOnMac:(BOOL)arg3 toACAccount:(id)arg4 inStore:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (void)updateAllLegacyAccountMigrationStates;
 + (void)updateLegacyAccountMigrationStateForModernAccount:(id)arg1;

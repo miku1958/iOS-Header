@@ -8,8 +8,8 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, GEOComposedWaypoint, MapsSuggestionsNetworkRequester, NSLock, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class CLLocation, GEOAutomobileOptions, GEOComposedWaypoint, MNRouteUpdateFreshness, MNTimeballService, MapsSuggestionsETARequirements, MapsSuggestionsNetworkRequester, NSLock, NSMutableDictionary, NSString;
+@protocol MapsSuggestionsPredictor, OS_dispatch_queue;
 
 @interface MapsSuggestionsETARequester : NSObject <MapsSuggestionsObject>
 {
@@ -18,6 +18,11 @@
     GEOComposedWaypoint *_currentLocationWaypoint;
     NSMutableDictionary *_waypoints;
     NSLock *_waypointsLock;
+    id<MapsSuggestionsPredictor> _transportModePredictor;
+    int _forcedTransportMode;
+    MapsSuggestionsETARequirements *_etaRequirements;
+    MNTimeballService *_timeballService;
+    MNRouteUpdateFreshness *_updateFreshness;
     int _mapType;
     MapsSuggestionsNetworkRequester *_requester;
     GEOAutomobileOptions *_automobileOptions;
@@ -36,11 +41,14 @@
 - (BOOL)ETAsFromLocation:(id)arg1 toEntries:(struct NSArray *)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_determineTransportTypeFromOrigin:(id)arg1 toEntry:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_keepExistingWaypointsForEntries:(struct NSArray *)arg1;
+- (BOOL)_old_requestETAsToEntries:(struct NSArray *)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_requestETAsToEntries:(struct NSArray *)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_requestWaypointForCurrentLocation:(id)arg1;
 - (BOOL)_requestWaypointsForEntries:(struct NSArray *)arg1;
+- (BOOL)_timeball_requestETAsToEntries:(struct NSArray *)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_transportTypesForDestinationEntries:(id)arg1;
-- (id)initWithNetworkRequester:(id)arg1;
+- (void)forceTransportType:(int)arg1;
+- (id)initWithNetworkRequester:(id)arg1 transportModePredictor:(id)arg2 requirements:(id)arg3;
 
 @end
 

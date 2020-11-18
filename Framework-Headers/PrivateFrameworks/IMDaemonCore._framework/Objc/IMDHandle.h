@@ -14,8 +14,10 @@
     NSString *_unformattedID;
     NSString *_countryCode;
     NSString *_personCentricID;
+    NSString *_CNContactID;
 }
 
+@property (copy, nonatomic) NSString *CNContactID; // @synthesize CNContactID=_CNContactID;
 @property (strong, nonatomic) NSString *ID; // @synthesize ID=_id;
 @property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly, strong, nonatomic) NSDictionary *handleInfo;

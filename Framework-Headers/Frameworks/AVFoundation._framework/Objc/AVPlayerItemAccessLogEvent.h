@@ -48,7 +48,6 @@
 - (double)currentObservedBitrate;
 - (void)dealloc;
 - (long long)entryReasonCode;
-- (void)finalize;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 - (id)serviceIdentifier;

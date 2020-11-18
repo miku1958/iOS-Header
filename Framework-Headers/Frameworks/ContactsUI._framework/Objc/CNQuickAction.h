@@ -51,7 +51,6 @@
 + (BOOL)reallyPerform;
 - (void).cxx_destruct;
 - (void)cancel;
-- (id)coloredImage;
 - (id)defaultTitleForContext:(long long)arg1;
 - (id)description;
 - (unsigned long long)hash;

@@ -15,9 +15,9 @@
 - (BOOL)_accessibilityAllowsSiblingsWhenOvergrown;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)accessibilityActivate;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
-- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 
 @end

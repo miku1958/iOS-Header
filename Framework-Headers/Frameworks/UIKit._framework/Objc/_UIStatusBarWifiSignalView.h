@@ -17,6 +17,7 @@
 @property (strong, nonatomic) _UIStatusBarCycleAnimation *cycleAnimation; // @synthesize cycleAnimation=_cycleAnimation;
 @property (nonatomic) BOOL needsCycleAnimationUpdate; // @synthesize needsCycleAnimationUpdate=_needsCycleAnimationUpdate;
 
++ (id)_barImageWithSize:(struct CGSize)arg1 forScale:(double)arg2 distance:(double)arg3 angle:(double)arg4 centerPoint:(struct CGPoint)arg5 cornerRadius:(double)arg6 thickness:(double)arg7;
 + (double)_barThicknessAtIndex:(unsigned long long)arg1 iconSize:(long long)arg2;
 + (double)_interspaceForIconSize:(long long)arg1;
 + (struct CGSize)_intrinsicContentSizeForNumberOfBars:(long long)arg1 iconSize:(long long)arg2;

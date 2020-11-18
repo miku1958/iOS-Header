@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)fontFaceWithAttributes:(id)arg1 size:(long long)arg2;
 - (id)initWithFamilyName:(id)arg1 faces:(id)arg2;
 
 @end

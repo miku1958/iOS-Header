@@ -8,35 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOLogMsgStateSuggestions : PBCodable <NSCopying>
 {
-    int _acSequenceNumber;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_displayedResults;
-    int _searchFieldType;
     NSString *_searchString;
+    int _acSequenceNumber;
+    int _searchFieldType;
     int _selectedIndex;
     struct {
-        unsigned int acSequenceNumber:1;
-        unsigned int searchFieldType:1;
-        unsigned int selectedIndex:1;
-    } _has;
+        unsigned int has_acSequenceNumber:1;
+        unsigned int has_searchFieldType:1;
+        unsigned int has_selectedIndex:1;
+        unsigned int read_displayedResults:1;
+        unsigned int read_searchString:1;
+        unsigned int wrote_displayedResults:1;
+        unsigned int wrote_searchString:1;
+        unsigned int wrote_acSequenceNumber:1;
+        unsigned int wrote_searchFieldType:1;
+        unsigned int wrote_selectedIndex:1;
+    } _flags;
 }
 
-@property (nonatomic) int acSequenceNumber; // @synthesize acSequenceNumber=_acSequenceNumber;
-@property (strong, nonatomic) NSMutableArray *displayedResults; // @synthesize displayedResults=_displayedResults;
+@property (nonatomic) int acSequenceNumber;
+@property (strong, nonatomic) NSMutableArray *displayedResults;
 @property (nonatomic) BOOL hasAcSequenceNumber;
 @property (nonatomic) BOOL hasSearchFieldType;
 @property (readonly, nonatomic) BOOL hasSearchString;
 @property (nonatomic) BOOL hasSelectedIndex;
-@property (nonatomic) int searchFieldType; // @synthesize searchFieldType=_searchFieldType;
-@property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
-@property (nonatomic) int selectedIndex; // @synthesize selectedIndex=_selectedIndex;
+@property (nonatomic) int searchFieldType;
+@property (strong, nonatomic) NSString *searchString;
+@property (nonatomic) int selectedIndex;
 
 + (Class)displayedResultType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSearchFieldType:(id)arg1;
+- (void)_addNoFlagsDisplayedResult:(id)arg1;
+- (void)_readDisplayedResults;
+- (void)_readSearchString;
 - (void)addDisplayedResult:(id)arg1;
 - (void)clearDisplayedResults;
 - (void)copyTo:(id)arg1;
@@ -48,6 +61,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)searchFieldTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

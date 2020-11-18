@@ -8,7 +8,7 @@
 
 #import <Home/HFMediaProfileContainer-Protocol.h>
 
-@class HFAccessorySettingAdapterManager, HFMediaProfileContainerSettingsValueManager, HFServiceNameComponents, HMAccessory, HMAccessorySettings, HMHome, HMMediaSession, HMRoom, HMSymptomsHandler, NSDate, NSSet, NSString, NSUUID;
+@class HFHomeKitSettingsAdapterManager, HFHomeKitSettingsValueManager, HFServiceNameComponents, HMAccessory, HMAccessorySettings, HMHome, HMMediaSession, HMRoom, HMSymptomsHandler, NSDate, NSSet, NSString, NSUUID;
 @protocol HFHomeKitObject, HFMediaValueSource, HMMediaObjectDelegate;
 
 @interface HMMediaProfile (HFMediaAccessoryProfileAdditions) <HFMediaProfileContainer>
@@ -17,13 +17,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMMediaObjectDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasValidSettings;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMAccessory *hf_backingAccessory;
+@property (readonly, copy, nonatomic) NSString *hf_categoryLocalizedDescription;
 @property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
-@property (readonly, nonatomic) NSString *hf_defaultName;
-@property (readonly, nonatomic) NSSet *hf_dependentHomeKitObjects;
+@property (readonly, nonatomic) NSSet *hf_dependentHomeKitObjectsForDownstreamItems;
+@property (readonly, copy, nonatomic) NSSet *hf_deviceIdentifiers;
 @property (readonly, copy, nonatomic) NSString *hf_displayName;
-@property (readonly, nonatomic) NSString *hf_editingName;
 @property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
 @property (readonly, nonatomic) HMHome *hf_home;
@@ -32,12 +33,13 @@
 @property (readonly, nonatomic) BOOL hf_isCurrentAccessory;
 @property (readonly, nonatomic) BOOL hf_isFavorite;
 @property (readonly, nonatomic) BOOL hf_isReachable;
+@property (readonly, copy, nonatomic) NSString *hf_mediaRouteIdentifier;
 @property (readonly, nonatomic) id<HFMediaValueSource> hf_mediaValueSource;
 @property (readonly, weak, nonatomic) HMRoom *hf_parentRoom;
 @property (readonly, nonatomic) NSString *hf_prettyDescription;
 @property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
-@property (readonly, nonatomic) HFAccessorySettingAdapterManager *hf_settingsAdapterManager;
-@property (readonly, nonatomic) HFMediaProfileContainerSettingsValueManager *hf_settingsValueManager;
+@property (readonly, nonatomic) HFHomeKitSettingsAdapterManager *hf_settingsAdapterManager;
+@property (readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;
 @property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
 @property (readonly, nonatomic) BOOL hf_supportsMediaSystem;

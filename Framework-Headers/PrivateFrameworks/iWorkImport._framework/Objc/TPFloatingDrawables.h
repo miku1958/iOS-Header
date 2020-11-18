@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 
-@class NSMapTable, NSMutableDictionary, NSSet, TPDocumentRoot;
+@class NSArray, NSIndexSet, NSMapTable, NSMutableDictionary, NSSet, NSString, TPDocumentRoot;
 
 __attribute__((visibility("hidden")))
 @interface TPFloatingDrawables : TSPObject <TSKDocumentObject>
@@ -21,9 +21,15 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSSet *allDrawables;
 @property (readonly, nonatomic) unsigned long long countOfAllDrawables;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) TPDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
 @property (readonly, nonatomic) BOOL hasAnyDrawables;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long maximumPageIndex;
+@property (readonly, nonatomic) NSIndexSet *pageIndexesOfPagesContainingDrawables;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *swift_allDrawables;
 
 - (void).cxx_destruct;
 - (void)addDrawable:(id)arg1 toPageIndex:(unsigned long long)arg2 insertContext:(id)arg3;
@@ -44,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)removeDrawables:(id)arg1;
 - (void)removeTagForDrawable:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
+- (id)swift_drawablesOnPageIndex:(unsigned long long)arg1;
 - (id)tagForDrawable:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

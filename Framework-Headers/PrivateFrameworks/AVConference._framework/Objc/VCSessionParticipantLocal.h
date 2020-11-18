@@ -6,13 +6,14 @@
 
 #import <AVConference/VCSessionParticipant.h>
 
+#import <AVConference/VCMomentTransportDelegate-Protocol.h>
 #import <AVConference/VCSessionUplinkVideoStreamControllerDelegate-Protocol.h>
 #import <AVConference/VCVideoCaptureClient-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, VCSessionUplinkBandwidthAllocator, VCSessionUplinkVideoStreamController, VCVideoRule;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, VCAudioPowerSpectrumSource, VCMoments, VCSessionUplinkBandwidthAllocator, VCSessionUplinkVideoStreamController, VCVideoRule;
 
 __attribute__((visibility("hidden")))
-@interface VCSessionParticipantLocal : VCSessionParticipant <VCVideoCaptureClient, VCSessionUplinkVideoStreamControllerDelegate>
+@interface VCSessionParticipantLocal : VCSessionParticipant <VCVideoCaptureClient, VCSessionUplinkVideoStreamControllerDelegate, VCMomentTransportDelegate>
 {
     VCSessionUplinkBandwidthAllocator *_uplinkBandwidthAllocator;
     NSMutableDictionary *_activeUplinkAudioStreams;
@@ -58,6 +59,8 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_videoPayloadTypes;
     unsigned int _currentUplinkTotalBitrateVideo;
     unsigned int _currentUplinkTotalBitrateAudio;
+    VCMoments *_moments;
+    VCAudioPowerSpectrumSource *_powerSpectrumSource;
 }
 
 @property (readonly, nonatomic) NSSet *audioPayloadTypes; // @synthesize audioPayloadTypes=_audioPayloadTypes;
@@ -70,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL encryptionInfoReceived; // @synthesize encryptionInfoReceived=_encryptionInfoReceived;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct tagVCMediaQueue *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
+@property (readonly, nonatomic) VCMoments *moments; // @synthesize moments=_moments;
 @property (copy, nonatomic) NSArray *peerSubscribedStreams; // @synthesize peerSubscribedStreams=_peerSubscribedStreams;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int uplinkBitrateCapCell; // @synthesize uplinkBitrateCapCell=_uplinkBitrateCapCell;
@@ -77,15 +81,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSSet *videoPayloadTypes; // @synthesize videoPayloadTypes=_videoPayloadTypes;
 
 - (void)addCallInfoBlobToParticipantInfo:(id)arg1;
+- (BOOL)applyCachedMediaStreams:(id)arg1 toMultiwayConfig:(id)arg2;
 - (void)applyVideoEnabledSetting:(BOOL)arg1;
 - (id)audioRuleCollectionWithAudioStreamConfig:(id)arg1;
 - (void)avConferencePreviewError:(id)arg1;
 - (unsigned int)calculateUplinkTotalBitrateForMediaStreams:(id)arg1;
 - (BOOL)checkSubscribedStreamsConsistency:(id)arg1;
 - (id)clientCaptureRule;
-- (void)collectAudioChannelMetrics:(CDStruct_1c8e0384 *)arg1;
-- (void)collectVideoChannelMetrics:(CDStruct_1c8e0384 *)arg1;
-- (BOOL)computeMediaBlob;
+- (void)collectAudioChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (void)collectVideoChannelMetrics:(CDStruct_3ab08b48 *)arg1;
+- (BOOL)configureAudioIOWithDeviceRole:(int)arg1;
 - (BOOL)containsStreamWithIDSStreamID:(unsigned short)arg1;
 - (BOOL)containsStreamWithSSRC:(unsigned int)arg1;
 - (void)controller:(id)arg1 didChangeActiveVideoStreams:(id)arg2;
@@ -105,11 +110,15 @@ __attribute__((visibility("hidden")))
 - (unsigned short)generateStreamID;
 - (id)getAudioDumpName;
 - (void)handleActiveConnectionChange:(id)arg1;
-- (id)initWithIDSDestination:(id)arg1 delegate:(id)arg2 processId:(int)arg3 sessionUUID:(id)arg4;
+- (id)initWithIDSDestination:(id)arg1 negotiationData:(id)arg2 delegate:(id)arg3 processId:(int)arg4 sessionUUID:(id)arg5;
+- (BOOL)initializeMediaNegotiator;
 - (void)initializeUplinkVideoStreamController;
 - (BOOL)isHighPriorityAudioWithPower:(float)arg1 voiceActive:(BOOL)arg2;
-- (id)multiwayAudioStreamConfigs;
+- (void)moments:(id)arg1 shouldProcessRequest:(id)arg2 recipientID:(id)arg3;
+- (id)multiwayAudioStreamNegotiatorConfigForStreamConfig:(id)arg1;
 - (id)multiwayVideoStreamConfigs;
+- (id)multiwayVideoStreamNegotiatorConfigForStreamConfig:(id)arg1 isSubstream:(BOOL)arg2;
+- (id)newMediaNegotiatorAudioConfiguration;
 - (BOOL)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
 - (void)processAudioRedundancyChangeEvent;
 - (void)processAudioStreamUpdateEvent;
@@ -124,12 +133,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)setupAudioStreamWithConfiguration:(id)arg1;
 - (BOOL)setupAudioStreamWithConfiguration:(id)arg1 idsDestination:(id)arg2;
 - (BOOL)setupAudioStreamsWithConfigProvider:(id)arg1;
+- (BOOL)setupAudioStreamsWithConfigProvider:(id)arg1 mediaNegotiatorConfig:(id)arg2;
 - (void)setupEncodingModeWithVideoStreamConfig:(id)arg1;
 - (id)setupStreamRTP:(id)arg1;
 - (void)setupVideoStreamConfig:(id)arg1 initialConfiguration:(id)arg2;
 - (BOOL)setupVideoStreamWithConfiguration:(id)arg1;
 - (BOOL)setupVideoStreamWithConfiguration:(id)arg1 idsDestination:(id)arg2;
 - (BOOL)setupVideoStreamsWithConfigProvider:(id)arg1;
+- (BOOL)setupVideoStreamsWithConfigProvider:(id)arg1 mediaNegotiatorConfig:(id)arg2;
 - (void)sourceFrameRateDidChange:(unsigned int)arg1;
 - (void)start;
 - (void)startVoiceActivityDetection;
@@ -143,6 +154,8 @@ __attribute__((visibility("hidden")))
 - (void)updateActiveVideoStreamWithTargetBitrate:(unsigned int)arg1;
 - (void)updateActiveVoiceOnly;
 - (void)updateAudioPriorityWithSampleBuffer:(struct opaqueVCAudioBufferList *)arg1;
+- (void)updateMediaSettingsWithConfig:(id)arg1;
+- (void)updateMomentsCapabillities:(unsigned int)arg1 imageType:(int)arg2 videoCodec:(int)arg3;
 - (void)updatePayloadTypesWithConfigProvider:(id)arg1;
 - (void)updateStreamIDsWithActiveVideoStreams:(id)arg1;
 - (void)updateSupportedAudioRules:(id)arg1;

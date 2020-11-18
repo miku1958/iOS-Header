@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Contacts/CNFetchRequest.h>
 
 #import <Contacts/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSPredicate;
 
-@interface CNContactFetchRequest : NSObject <NSSecureCoding>
+@interface CNContactFetchRequest : CNFetchRequest <NSSecureCoding>
 {
     BOOL _rankSort;
     BOOL _mutableObjects;
@@ -18,6 +18,7 @@
     BOOL _disallowsEncodedFetch;
     BOOL _onlyMainStore;
     BOOL _allowsBatching;
+    BOOL _shouldFailIfAccountNotYetSynced;
     NSPredicate *_predicate;
     NSArray *_keysToFetch;
     long long _sortOrder;
@@ -32,12 +33,14 @@
 @property (nonatomic) BOOL onlyMainStore; // @synthesize onlyMainStore=_onlyMainStore;
 @property (copy, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (nonatomic) BOOL rankSort; // @synthesize rankSort=_rankSort;
+@property (nonatomic) BOOL shouldFailIfAccountNotYetSynced; // @synthesize shouldFailIfAccountNotYetSynced=_shouldFailIfAccountNotYetSynced;
 @property (nonatomic) long long sortOrder; // @synthesize sortOrder=_sortOrder;
 @property (nonatomic) BOOL unifyResults; // @synthesize unifyResults=_unifyResults;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)effectiveKeysToFetch;
 - (id)effectivePredicate;
 - (void)encodeWithCoder:(id)arg1;

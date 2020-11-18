@@ -12,5 +12,6 @@
 
 @property (readonly, nonatomic) NSDictionary *messagePayload;
 
+- (id)description;
 @end
 

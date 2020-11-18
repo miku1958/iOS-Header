@@ -4,26 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/NSCopying-Protocol.h>
-#import <PhotosUICore/NSObject-Protocol.h>
+#import <PhotosUICore/PXDisplayThumbnailAsset-Protocol.h>
 
 @class NSDate, NSString;
 @protocol PXAssetdestinationAssetCopyProperties, PXDisplayAsset;
 
-@protocol PXDisplayAsset <NSObject, NSCopying>
+@protocol PXDisplayAsset <PXDisplayThumbnailAsset>
 
 @property (readonly, nonatomic) double aspectRatio;
+@property (readonly, nonatomic) unsigned long long burstSelectionTypes;
 @property (readonly, nonatomic) NSDate *creationDate;
+@property (readonly, nonatomic) Class defaultImageProviderClass;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSDate *importDate;
+@property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;
+@property (readonly, nonatomic) NSDate *localCreationDate;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;
 @property (readonly, nonatomic) long long mediaType;
+@property (readonly, nonatomic) unsigned long long pixelHeight;
+@property (readonly, nonatomic) unsigned long long pixelWidth;
 @property (readonly, nonatomic) long long playbackStyle;
 @property (readonly, nonatomic) long long playbackVariation;
 @property (readonly, nonatomic) BOOL representsBurst;
+@property (readonly, nonatomic) unsigned long long thumbnailVersion;
+@property (readonly, nonatomic) NSString *uuid;
 
 - (long long)isContentEqualTo:(id<PXDisplayAsset>)arg1;
 
@@ -31,5 +39,6 @@
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (id<PXAssetdestinationAssetCopyProperties>)destinationAssetCopyProperties;
+- (NSString *)localizedDetailedGeoDescriptionForRTL:(BOOL)arg1;
 @end
 

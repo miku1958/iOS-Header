@@ -7,31 +7,38 @@
 #import <UIKit/UIMailActivity.h>
 
 #import <PhotosUI/MFMailComposeViewControllerDelegate-Protocol.h>
-#import <PhotosUI/PUMomentShareActivity-Protocol.h>
+#import <PhotosUI/PLVideoRemakerDelegate-Protocol.h>
+#import <PhotosUI/PXMomentShareSuggestionHandlingActivity-Protocol.h>
 
-@class MFMailComposeViewController, NSString, PLManagedAsset, PLProgressView, PLUIEditVideoViewController, PUActivityItemSource, PUActivityItemSourceController, UIViewController;
+@class MFMailComposeViewController, NSString, PHAsset, PLProgressView, PLUIEditVideoViewController, PLVideoRemaker, UIViewController;
+@protocol PXActivityItemSourceController;
 
 __attribute__((visibility("hidden")))
-@interface PUMailActivity : UIMailActivity <MFMailComposeViewControllerDelegate, PUMomentShareActivity>
+@interface PUMailActivity : UIMailActivity <MFMailComposeViewControllerDelegate, PLVideoRemakerDelegate, PXMomentShareSuggestionHandlingActivity>
 {
     UIViewController *_referenceViewController;
-    PLManagedAsset *_currentVideo;
-    PUActivityItemSource *_currentVideoItemSource;
+    PHAsset *_videoAssetBeingTrimmed;
     MFMailComposeViewController *_mailComposeController;
     PLUIEditVideoViewController *_editVideoViewController;
     PLProgressView *_remakerProgressView;
+    PLVideoRemaker *_videoRemaker;
+    CDUnknownBlockType _remakerCompletionHandler;
     id _strongSelf;
     BOOL _isSharingSingleVideo;
     BOOL _didCheckMailDropAvailable;
     BOOL _isMailDropAvailable;
-    PUActivityItemSourceController *_itemSourceController;
+    BOOL __remakerWasCancelled;
+    id<PXActivityItemSourceController> _itemSourceController;
+    NSString *_transcodedVideoFilePath;
 }
 
+@property (nonatomic, setter=_setRemakerWasCancelled:) BOOL _remakerWasCancelled; // @synthesize _remakerWasCancelled=__remakerWasCancelled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) PUActivityItemSourceController *itemSourceController; // @synthesize itemSourceController=_itemSourceController;
+@property (weak, nonatomic) id<PXActivityItemSourceController> itemSourceController; // @synthesize itemSourceController=_itemSourceController;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *transcodedVideoFilePath; // @synthesize transcodedVideoFilePath=_transcodedVideoFilePath;
 
 + (id)_expirationStringForMomentShare:(id)arg1;
 + (id)_momentShareLinkActivityItemsForURL:(id)arg1 momentShare:(id)arg2;
@@ -39,22 +46,25 @@ __attribute__((visibility("hidden")))
 + (id)_momentShareLinkSubjectForMomentShare:(id)arg1;
 + (id)_momentShareLinkTitleForMomentShare:(id)arg1;
 + (BOOL)allowedToModifyEmailAccounts;
++ (BOOL)canPerformActivityAsIndividualItemsInSourceController:(id)arg1;
++ (BOOL)canPerformActivityWithTotalCount:(unsigned long long)arg1 assetMediaTypeCount:(struct PXAssetMediaTypeCount)arg2;
++ (BOOL)isMailDropEnabled;
 + (void)openEmailAccountPrefs;
-+ (BOOL)wantsMomentShareLinkForAssetCount:(long long)arg1;
 - (void).cxx_destruct;
 - (BOOL)_canPerformForIndividualAssetsWithActivityItems:(id)arg1;
 - (BOOL)_canPerformWithLink;
+- (void)_cleanupRemaker;
 - (void)_composeMailForVideo:(id)arg1 trimmedFilePath:(id)arg2;
 - (BOOL)_isMailDropEnabled;
 - (BOOL)_momentShareLinkDidFail;
 - (void)_prepareWithMomentShareLink:(id)arg1;
 - (BOOL)_presentActivityOnViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_pu_cleanup;
-- (void)_remakeAndSendVideoWithTrimStartTime:(double)arg1 endTime:(double)arg2;
-- (void)_sendViaEmail;
+- (void)_remakeAndSendVideoAsset:(id)arg1 withTrimStartTime:(double)arg2 endTime:(double)arg3;
+- (void)_removeTempVideoRemakerFile;
 - (void)_showTrimViewControllerForVideo:(id)arg1 maximumTrimDuration:(double)arg2 trimButtonTitle:(id)arg3;
-- (BOOL)_showTrimViewControllerIfNeededForVideo:(id)arg1 usingMode:(int)arg2;
-- (void)_transcodeVideo:(id)arg1 usingMode:(int)arg2;
+- (BOOL)_showTrimViewControllerIfNeededForVideoAsset:(id)arg1;
+- (void)_transcodeAndSendVideo:(id)arg1;
 - (void)activityDidFinish:(BOOL)arg1;
 - (id)activityViewController;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
@@ -66,6 +76,9 @@ __attribute__((visibility("hidden")))
 - (id)mailComposeViewController;
 - (void)performActivity;
 - (void)prepareWithActivityItems:(id)arg1;
+- (void)remakeVideoAsset:(id)arg1 withTrimStartTime:(double)arg2 endTime:(double)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)videoRemakerDidBeginRemaking:(id)arg1;
+- (void)videoRemakerDidEndRemaking:(id)arg1 temporaryPath:(id)arg2;
 
 @end
 

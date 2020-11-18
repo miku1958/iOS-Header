@@ -4,30 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <UIKitCore/UIPreviewParameters.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-
-@class UIBezierPath, UIColor;
-
-@interface UIDragPreviewParameters : NSObject <NSCopying>
+@interface UIDragPreviewParameters : UIPreviewParameters
 {
-    BOOL _textMode;
-    UIBezierPath *_visiblePath;
-    UIColor *_backgroundColor;
 }
-
-@property (copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-@property (readonly, nonatomic, getter=_textMode) BOOL textMode; // @synthesize textMode=_textMode;
-@property (copy, nonatomic) UIBezierPath *visiblePath; // @synthesize visiblePath=_visiblePath;
-
-- (void).cxx_destruct;
-- (id)_initWithTextMode:(BOOL)arg1 visiblePath:(id)arg2 backgroundColor:(id)arg3;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (unsigned long long)hash;
-- (id)init;
-- (id)initWithTextLineRects:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

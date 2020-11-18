@@ -20,11 +20,12 @@
 + (id)imageForAttachment:(id)arg1;
 + (struct CGRect)imageRectForAttachment:(id)arg1;
 + (id)pngDataForAttachment:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)image;
 - (struct CGRect)imageRect;
 - (id)initWithAttachment:(id)arg1;
+- (id)pngData;
 
 @end
 

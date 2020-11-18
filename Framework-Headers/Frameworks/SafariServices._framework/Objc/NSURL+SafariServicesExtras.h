@@ -6,14 +6,13 @@
 
 #import <Foundation/NSURL.h>
 
-@class LSAppLink, NSString;
+@class NSString;
 
 @interface NSURL (SafariServicesExtras)
 
 @property (readonly, nonatomic) NSString *_sf_highLevelDomainFromHostFallingBackToHostOrAbsoluteString;
 @property (readonly, nonatomic) NSString *_sf_topLevelDomain;
 @property (readonly, nonatomic) NSString *sf_absoluteStringWithoutFragment;
-@property (readonly, nonatomic) LSAppLink *sf_appLink;
 @property (readonly, nonatomic) BOOL sf_isFacetimeURL;
 @property (readonly, nonatomic) BOOL sf_isOfflineReadingListURL;
 @property (readonly, nonatomic) BOOL sf_isTestWebArchiveURL;
@@ -21,5 +20,6 @@
 
 + (BOOL)_sf_canCreateURLsFromDropSession:(id)arg1;
 + (void)_sf_urlsFromDragItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_sf_accessingSecurityScopedResource:(CDUnknownBlockType)arg1;
 @end
 

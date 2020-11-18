@@ -6,11 +6,13 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
+#import <NanoTimeKitCompanion/CLKMonochromeComplicationView-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, CLKDevice, NSHashTable, NSString, REContent, UIImage, UIImageView, UIView;
+@class CALayer, CLKDevice, NSHashTable, NSString, REContent, UIColor, UIImage, UIImageView, UIView;
+@protocol CLKMonochromeFilterProvider;
 
-@interface NTKUpNextBaseCell : UICollectionViewCell <UIGestureRecognizerDelegate>
+@interface NTKUpNextBaseCell : UICollectionViewCell <UIGestureRecognizerDelegate, CLKMonochromeComplicationView>
 {
     struct CGSize _shadowSize;
     UIImageView *_shadowView;
@@ -21,10 +23,12 @@
     REContent *_content;
     NSHashTable *_layerProviders;
     BOOL _paused;
+    id<CLKMonochromeFilterProvider> _filterProvider;
     CLKDevice *_device;
     UIImage *_contentImage;
     UIImage *_overrideContentImage;
     NSString *_representedElementIdentifier;
+    UIColor *_imageColor;
 }
 
 @property (readonly, nonatomic) REContent *content; // @synthesize content=_content;
@@ -32,7 +36,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIColor *imageColor; // @synthesize imageColor=_imageColor;
 @property (readonly, nonatomic) CALayer *imageLayer; // @synthesize imageLayer=_imageLayer;
 @property (strong, nonatomic) UIImage *overrideContentImage; // @synthesize overrideContentImage=_overrideContentImage;
 @property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
@@ -42,6 +48,7 @@
 + (void)clearLabel:(id)arg1;
 + (double)cornerRadiusForDevice:(id)arg1;
 + (struct CGSize)suggestedBodyImageSizeForDevice:(id)arg1;
++ (Class)suggestedCellClassForContent:(id)arg1;
 + (struct CGSize)suggestedHeaderImageSizeForDevice:(id)arg1;
 - (void).cxx_destruct;
 - (void)_updateColorOverlay;
@@ -57,6 +64,8 @@
 - (void)setContentImage:(id)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (id)transitionContextInView:(id)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

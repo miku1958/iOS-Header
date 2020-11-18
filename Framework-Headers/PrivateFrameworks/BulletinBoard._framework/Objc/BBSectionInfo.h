@@ -26,9 +26,7 @@
     BBSectionInfo *_parentSection;
     NSString *_factorySectionID;
     NSArray *_dataProviderIDs;
-    NSArray *_filters;
     BOOL _suppressFromSettings;
-    BOOL _displaysCriticalBulletins;
     BOOL _hideWeeApp;
     NSString *_appName;
     long long _subsectionPriority;
@@ -47,10 +45,8 @@
 @property (nonatomic) long long criticalAlertSetting;
 @property (copy, nonatomic) NSArray *dataProviderIDs; // @synthesize dataProviderIDs=_dataProviderIDs;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (nonatomic) BOOL displaysCriticalBulletins; // @synthesize displaysCriticalBulletins=_displaysCriticalBulletins;
 @property (nonatomic) BOOL enabled;
 @property (copy, nonatomic) NSString *factorySectionID; // @synthesize factorySectionID=_factorySectionID;
-@property (copy, nonatomic) NSArray *filters; // @synthesize filters=_filters;
 @property (readonly, nonatomic) BOOL hasEnabledSettings;
 @property (nonatomic) BOOL hideWeeApp; // @synthesize hideWeeApp=_hideWeeApp;
 @property (copy, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
@@ -70,6 +66,7 @@
 @property (nonatomic) long long sectionType; // @synthesize sectionType=_sectionType;
 @property (nonatomic) BOOL showsCustomSettingsLink;
 @property (nonatomic) BOOL showsOnExternalDevices;
+@property (nonatomic) long long spokenNotificationSetting;
 @property (copy, nonatomic) NSString *subsectionID; // @synthesize subsectionID=_subsectionID;
 @property (nonatomic) long long subsectionPriority; // @synthesize subsectionPriority=_subsectionPriority;
 @property (copy, nonatomic) NSArray *subsections; // @synthesize subsections=_subsections;
@@ -97,8 +94,8 @@
 - (void)deliverQuietly:(BOOL)arg1;
 - (id)description;
 - (long long)disabledSettingForSetting:(long long)arg1;
-- (id)effectiveSectionInfoWithDefaultContentPreviewSetting:(long long)arg1;
-- (id)effectiveSectionInfoWithFactoryInfo:(id)arg1 defaultContentPreviewSetting:(long long)arg2;
+- (id)effectiveSectionInfoWithDefaultContentPreviewSetting:(long long)arg1 globalSpokenNotificationSetting:(long long)arg2;
+- (id)effectiveSectionInfoWithFactoryInfo:(id)arg1 defaultContentPreviewSetting:(long long)arg2 globalSpokenNotificationSetting:(long long)arg3;
 - (long long)emergencySetting;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -116,7 +113,6 @@
 - (BOOL)showsInLockScreen;
 - (BOOL)showsInNotificationCenter;
 - (BOOL)showsMessagePreview;
-- (void)updateWithDefaultFilters:(id)arg1;
 - (void)updateWithDefaultSectionInfo:(id)arg1;
 
 @end

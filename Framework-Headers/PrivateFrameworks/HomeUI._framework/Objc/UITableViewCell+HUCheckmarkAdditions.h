@@ -6,8 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
+@class NSNumber;
+
 @interface UITableViewCell (HUCheckmarkAdditions)
+
+@property (copy, nonatomic, setter=hu_setForcedSeparatorStyle:) NSNumber *hu_forcedSeparatorStyle;
+
 + (id)_hu_emptyCheckmarkPlaceholderImage;
 - (void)hu_configureCheckmarkForImageView:(id)arg1 checked:(BOOL)arg2;
+- (void)removeMargins;
+- (void)turnOffRounding;
 @end
 

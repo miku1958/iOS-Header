@@ -7,6 +7,16 @@
 #import <UIKit/UINavigationController.h>
 
 @interface UINavigationController (PUNavigationTransition_Internal)
+- (void)_pu_setCurrentNavigationTransition:(id)arg1;
+- (id)pu_currentInteractiveTransition;
+- (id)pu_currentNavigationTransition;
+- (void)pu_navigationTransitionDidEnd:(id)arg1;
+- (void)pu_navigationTransitionWillEnd:(id)arg1;
+- (void)pu_navigationTransitionWillStart:(id)arg1;
+- (void)pu_popToViewController:(id)arg1 animated:(BOOL)arg2 interactive:(BOOL)arg3;
+- (BOOL)pu_popToViewControllerIfAllowed:(id)arg1 animated:(BOOL)arg2 forced:(BOOL)arg3;
+- (void)pu_popViewControllerAnimated:(BOOL)arg1 interactive:(BOOL)arg2;
+- (void)pu_pushViewController:(id)arg1 withTransition:(id)arg2 animated:(BOOL)arg3 isInteractive:(BOOL)arg4;
 - (double)px_imageModulationIntensityWithProposedValue:(double)arg1;
 @end
 

@@ -17,7 +17,7 @@
     NSCondition *_conditionLock;
 }
 
-@property (readonly) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property (readonly, copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (readonly) NSCondition *conditionLock; // @synthesize conditionLock=_conditionLock;
 @property (strong) NSArray *errors; // @synthesize errors=_errors;
 @property (readonly) NSString *label; // @synthesize label=_label;

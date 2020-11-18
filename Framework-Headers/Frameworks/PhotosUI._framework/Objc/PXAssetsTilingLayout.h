@@ -17,6 +17,7 @@
     PXIndexPathSet *_draggingIndexPaths;
     unsigned long long _selectionBadgeOptions;
     unsigned long long _badgeOptions;
+    unsigned long long _animatedOverlayBehavior;
     PXSelectionBadgeTileUserData *__selectedUserData;
     PXSelectionBadgeTileUserData *__unselectedUserData;
     PXBasicTileUserData *__highlightedDimmingUserData;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) PXSelectionBadgeTileUserData *_selectedUserData; // @synthesize _selectedUserData=__selectedUserData;
 @property (readonly, nonatomic) PXSelectionBadgeTileUserData *_unselectedUserData; // @synthesize _unselectedUserData=__unselectedUserData;
 @property (strong, nonatomic) NSIndexSet *additionalAccessoryTileKinds; // @synthesize additionalAccessoryTileKinds=_additionalAccessoryTileKinds;
+@property (nonatomic) unsigned long long animatedOverlayBehavior; // @synthesize animatedOverlayBehavior=_animatedOverlayBehavior;
 @property (nonatomic) unsigned long long badgeOptions; // @synthesize badgeOptions=_badgeOptions;
 @property (readonly, nonatomic) PXAssetsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) PXIndexPathSet *draggingIndexPaths; // @synthesize draggingIndexPaths=_draggingIndexPaths;
@@ -44,10 +46,15 @@
 @property (nonatomic) unsigned long long selectionBadgeOptions; // @synthesize selectionBadgeOptions=_selectionBadgeOptions;
 
 - (void).cxx_destruct;
+- (BOOL)_getAnimatedImageOverlayTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forContentTileGeometry:(const struct PXTileGeometry *)arg5 indexPath:(struct PXSimpleIndexPath)arg6;
 - (BOOL)_getDimmingTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forContentTileGeometry:(const struct PXTileGeometry *)arg5 indexPath:(struct PXSimpleIndexPath)arg6;
+- (BOOL)_getLivePhotoOverlayTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forContentTileGeometry:(const struct PXTileGeometry *)arg5 indexPath:(struct PXSimpleIndexPath)arg6;
+- (BOOL)_getLoopingVideoOverlayTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forContentTileGeometry:(const struct PXTileGeometry *)arg5 indexPath:(struct PXSimpleIndexPath)arg6;
 - (BOOL)_getOverlayBadgeTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forContentTileGeometry:(const struct PXTileGeometry *)arg5 indexPath:(struct PXSimpleIndexPath)arg6;
 - (BOOL)_getPlayButtonTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forContentTileGeometry:(const struct PXTileGeometry *)arg5 indexPath:(struct PXSimpleIndexPath)arg6;
 - (BOOL)_getSelectionBadgeTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forContentTileGeometry:(const struct PXTileGeometry *)arg5 indexPath:(struct PXSimpleIndexPath)arg6;
+- (BOOL)_getVideoOverlayTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forContentTileGeometry:(const struct PXTileGeometry *)arg5 indexPath:(struct PXSimpleIndexPath)arg6;
+- (void)_invalidateAllAnimatedOverlayTiles;
 - (void)_invalidateAllSelectionTiles;
 - (struct CGSize)_preferredSelectionBadgeSize;
 - (void)adjustGeometry:(struct PXTileGeometry *)arg1 forContentTileWithIndexPath:(struct PXSimpleIndexPath)arg2;

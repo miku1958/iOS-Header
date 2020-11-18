@@ -8,20 +8,26 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class CKDPCodeFunctionInvokeRequestAttestationRequest, CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata, NSData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDPCodeFunctionInvokeRequest : PBRequest <NSCopying>
 {
+    CKDPCodeFunctionInvokeRequestAttestationRequest *_attestationRequest;
     NSString *_functionName;
+    CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata *_protectedCloudComputeMetadata;
     NSData *_serializedParameters;
     NSString *_serviceName;
 }
 
+@property (strong, nonatomic) CKDPCodeFunctionInvokeRequestAttestationRequest *attestationRequest; // @synthesize attestationRequest=_attestationRequest;
 @property (strong, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
+@property (readonly, nonatomic) BOOL hasAttestationRequest;
 @property (readonly, nonatomic) BOOL hasFunctionName;
+@property (readonly, nonatomic) BOOL hasProtectedCloudComputeMetadata;
 @property (readonly, nonatomic) BOOL hasSerializedParameters;
 @property (readonly, nonatomic) BOOL hasServiceName;
+@property (strong, nonatomic) CKDPCodeFunctionInvokeRequestProtectedCloudComputeMetadata *protectedCloudComputeMetadata; // @synthesize protectedCloudComputeMetadata=_protectedCloudComputeMetadata;
 @property (strong, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
 @property (strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 

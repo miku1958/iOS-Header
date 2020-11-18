@@ -6,24 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSFileHandle, NSLock, NSString;
+@class NSFileHandle, NSLock, NSProgress, NSString;
+@protocol HDDatabaseJournalDelegate;
 
 @interface HDDatabaseJournal : NSObject
 {
+    struct os_unfair_lock_s _progressLock;
     long long _type;
+    id<HDDatabaseJournalDelegate> _delegate;
     NSString *_path;
     NSLock *_journalLock;
     NSFileHandle *_fileHandle;
+    NSProgress *_parentProgress;
 }
 
+@property (weak, nonatomic) id<HDDatabaseJournalDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSFileHandle *fileHandle; // @synthesize fileHandle=_fileHandle;
 @property (strong, nonatomic) NSLock *journalLock; // @synthesize journalLock=_journalLock;
+@property (strong, nonatomic) NSProgress *parentProgress; // @synthesize parentProgress=_parentProgress;
 @property (copy, nonatomic) NSString *path; // @synthesize path=_path;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
 - (BOOL)_appendData:(id)arg1 error:(id *)arg2;
 - (void)_executeAtomically:(CDUnknownBlockType)arg1;
+- (id)_journalFiles;
 - (id)_loadJournalEntry:(id)arg1;
 - (BOOL)_loadJournalFromMapping:(void *)arg1 size:(unsigned long long)arg2 headerLength:(unsigned long long)arg3 journalEntries:(id *)arg4 error:(id *)arg5;
 - (BOOL)_loadJournalWithFileHandle:(id)arg1 journalEntries:(id *)arg2 error:(id *)arg3;
@@ -45,9 +52,11 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithType:(long long)arg1 path:(id)arg2;
+- (unsigned long long)journalFileCount;
 - (void)lock;
 - (BOOL)mergeWithProfile:(id)arg1;
-- (BOOL)performMergeTransactionWithProfile:(id)arg1 transactionContext:(id)arg2 options:(unsigned long long)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
+- (BOOL)performMergeTransactionWithProfile:(id)arg1 transactionContext:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
+- (id)progressForJournalMerge;
 - (void)unlock;
 
 @end

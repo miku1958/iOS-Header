@@ -8,12 +8,13 @@
 
 #import <CoreDAV/CoreDAVDeleteTaskDelegate-Protocol.h>
 #import <CoreDAV/CoreDAVGetTaskDelegate-Protocol.h>
+#import <CoreDAV/CoreDAVPropPatchTaskDelegate-Protocol.h>
 #import <CoreDAV/CoreDAVPutTaskDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSURL;
 @protocol CoreDAVLocalDBInfoProvider;
 
-@interface CoreDAVContainerSyncTaskGroup : CoreDAVTaskGroup <CoreDAVDeleteTaskDelegate, CoreDAVPutTaskDelegate, CoreDAVGetTaskDelegate>
+@interface CoreDAVContainerSyncTaskGroup : CoreDAVTaskGroup <CoreDAVDeleteTaskDelegate, CoreDAVPutTaskDelegate, CoreDAVGetTaskDelegate, CoreDAVPropPatchTaskDelegate>
 {
     int _phase;
     NSURL *_folderURL;
@@ -94,6 +95,7 @@
 - (id)initWithFolderURL:(id)arg1 previousCTag:(id)arg2 previousSyncToken:(id)arg3 actions:(id)arg4 syncItemOrder:(BOOL)arg5 context:(id)arg6 accountInfoProvider:(id)arg7 taskManager:(id)arg8;
 - (BOOL)isWhitelistedError:(id)arg1;
 - (void)propFindTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
+- (void)propPatchTask:(id)arg1 parsedResponses:(id)arg2 error:(id)arg3;
 - (void)putTask:(id)arg1 completedWithNewETag:(id)arg2 error:(id)arg3;
 - (void)receivedPropertiesToValues:(id)arg1 forURL:(id)arg2;
 - (BOOL)shouldDownloadResource:(id)arg1 localETag:(id)arg2 serverETag:(id)arg3;

@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     struct MTLPixelFormatInfo _pixelFormatInfo;
     unsigned long long _bytesPerRow;
     NSData *_imageData;
+    BOOL _expandRGBToRGBA;
 }
 
 - (void)dealloc;

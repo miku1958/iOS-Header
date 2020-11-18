@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <AXRuntime/NSCopying-Protocol.h>
 #import <AXRuntime/NSObject-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSNumber, NSObject, NSString;
 @protocol UIElementProtocol;
 
-@protocol UIElementProtocol <NSObject>
+@protocol UIElementProtocol <NSObject, NSCopying>
 
 @property (readonly, copy, nonatomic) NSMutableDictionary *cachedAttributes;
 

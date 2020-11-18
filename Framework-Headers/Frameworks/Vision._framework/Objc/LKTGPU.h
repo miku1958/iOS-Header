@@ -71,20 +71,18 @@ __attribute__((visibility("hidden")))
 - (int)_computeOpticalFlow;
 - (BOOL)_createImagePyramidWithCommandBuffer:(id)arg1 in_pixelbuf:(struct __CVBuffer *)arg2 I_idx:(int)arg3 error:(id *)arg4;
 - (int)_doNLRegularizationWithCommandBuffer:(id)arg1 in_uv_tex:(id)arg2 join_tex:(id)arg3 w_tex:(id)arg4 out_uv_tex:(id)arg5;
-- (int)_doSolverWithCommandBuffer:(id)arg1 scale:(int)arg2 scale_factor:(id)arg3 in_uv_tex:(id)arg4 out_uv_tex:(id)arg5 out_w_tex: /* Error: Ran out of types for this method. */;
+- (int)_doSolverWithCommandBuffer:(id)arg1 scale:(int)arg2 scale_xy_inv:(id)arg3 coeff:(id)arg4 in_uv_tex:(id)arg5 out_uv_tex:out_w_tex: /* Error: Ran out of types for this method. */;
 - (int)_downscale2XWithCommandBuffer:(id)arg1 in_u32_alias_tex:(id)arg2 out_u32_alias_tex:(id)arg3;
 - (BOOL)_initMemory:(int)arg1 height:(int)arg2 nscales:(int)arg3 error:(id *)arg4;
-- (void)_setDefaultParameters;
 - (BOOL)_setupBufferAndReturnError:(id *)arg1;
 - (void)_setupPipelines;
 - (int)_zeroFlowWithCommandBuffer:(id)arg1 uv_tex:(id)arg2;
 - (void)dealloc;
-- (int)estimateFlowFromReference:(struct __CVBuffer *)arg1 target:(struct __CVBuffer *)arg2;
-- (int)estimateFlowStream:(struct __CVBuffer *)arg1;
+- (int)estimateFlowFromReference:(struct __CVBuffer *)arg1 target:(struct __CVBuffer *)arg2 error:(id *)arg3;
+- (int)estimateFlowStream:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (id)initWithMetalContext:(id)arg1 width:(int)arg2 height:(int)arg3 nscales:(int)arg4 error:(id *)arg5;
 - (void)reset;
 - (BOOL)setOutputUV:(struct __CVBuffer *)arg1 error:(id *)arg2;
-- (void)setPreset:(long long)arg1;
 - (void)waitUntilCompleted;
 
 @end

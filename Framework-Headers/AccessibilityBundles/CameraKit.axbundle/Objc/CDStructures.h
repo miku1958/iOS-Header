@@ -4,20 +4,3 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Named Structures
-
-struct CGPoint {
-    double x;
-    double y;
-};
-
-struct CGRect {
-    struct CGPoint origin;
-    struct CGSize size;
-};
-
-struct CGSize {
-    double width;
-    double height;
-};
-

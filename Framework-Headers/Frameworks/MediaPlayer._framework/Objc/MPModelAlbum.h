@@ -18,6 +18,7 @@
 @property (nonatomic, getter=isCompilation) BOOL compilation; // @dynamic compilation;
 @property (copy, nonatomic) NSString *copyrightText; // @dynamic copyrightText;
 @property (nonatomic) long long discCount; // @dynamic discCount;
+@property (readonly, copy, nonatomic) NSDate *downloadedDate; // @dynamic downloadedDate;
 @property (copy, nonatomic) NSString *editorNotes; // @dynamic editorNotes;
 @property (strong, nonatomic) MPModelGenre *genre; // @dynamic genre;
 @property (nonatomic) BOOL hasCleanContent; // @dynamic hasCleanContent;
@@ -45,6 +46,7 @@
 + (id)__compilation_KEY;
 + (id)__copyrightText_KEY;
 + (id)__discCount_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__editorNotes_KEY;
 + (id)__genre_KEY;
 + (id)__hasCleanContent_KEY;

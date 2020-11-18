@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isValidForDate:(id)arg1 inTimeZone:(id)arg2;
 - (unsigned long long)numberOfDeparturesAfterDate:(id)arg1;
 - (id)operatingHoursForDate:(id)arg1 inTimeZone:(id)arg2;
+- (unsigned long long)stopId;
 
 @end
 

@@ -51,6 +51,7 @@
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 
++ (id)preferredFontWithSize:(double)arg1;
 - (BOOL)_isRTL;
 - (double)_rippleDurationForEndInsertion:(BOOL)arg1;
 - (double)alphaForFrame:(struct CGRect)arg1;
@@ -76,6 +77,7 @@
 - (unsigned long long)calculateHardAlignmentAtIndex:(unsigned long long)arg1 fromGlyphsInRange:(struct _NSRange)arg2 toGlyphsInRange:(struct _NSRange)arg3;
 - (BOOL)canFitText:(id)arg1;
 - (double)changeInWidthDueToAlignmentHunkAtIndex:(unsigned long long)arg1;
+- (void)contentSizeDidChange:(id)arg1;
 - (void)copyStateFromGlyph:(id)arg1 toGlyph:(id)arg2;
 - (double)currentMediaTime;
 - (void)dealloc;

@@ -8,13 +8,16 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, GEOPDRelatedSearchSuggestion, GEOPDSearchClientBehavior, NSMutableArray, PBUnknownFields;
+@class GEOMapRegion, GEOPDCategorySearchResultSection, GEOPDRelatedSearchSuggestion, GEOPDSearchClientBehavior, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategorySearchResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_browseCategorys;
+    GEOPDCategorySearchResultSection *_categorySearchResultSection;
     GEOPDRelatedSearchSuggestion *_defaultRelatedSearchSuggestion;
     GEOMapRegion *_displayMapRegion;
     NSMutableArray *_relatedSearchSuggestions;
@@ -23,30 +26,61 @@ __attribute__((visibility("hidden")))
     BOOL _enablePartialClientization;
     BOOL _isChainResultSet;
     struct {
-        unsigned int enablePartialClientization:1;
-        unsigned int isChainResultSet:1;
-    } _has;
+        unsigned int has_enablePartialClientization:1;
+        unsigned int has_isChainResultSet:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_browseCategorys:1;
+        unsigned int read_categorySearchResultSection:1;
+        unsigned int read_defaultRelatedSearchSuggestion:1;
+        unsigned int read_displayMapRegion:1;
+        unsigned int read_relatedSearchSuggestions:1;
+        unsigned int read_resultDetourInfos:1;
+        unsigned int read_searchClientBehavior:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_browseCategorys:1;
+        unsigned int wrote_categorySearchResultSection:1;
+        unsigned int wrote_defaultRelatedSearchSuggestion:1;
+        unsigned int wrote_displayMapRegion:1;
+        unsigned int wrote_relatedSearchSuggestions:1;
+        unsigned int wrote_resultDetourInfos:1;
+        unsigned int wrote_searchClientBehavior:1;
+        unsigned int wrote_enablePartialClientization:1;
+        unsigned int wrote_isChainResultSet:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *browseCategorys; // @synthesize browseCategorys=_browseCategorys;
-@property (strong, nonatomic) GEOPDRelatedSearchSuggestion *defaultRelatedSearchSuggestion; // @synthesize defaultRelatedSearchSuggestion=_defaultRelatedSearchSuggestion;
-@property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
-@property (nonatomic) BOOL enablePartialClientization; // @synthesize enablePartialClientization=_enablePartialClientization;
+@property (strong, nonatomic) NSMutableArray *browseCategorys;
+@property (strong, nonatomic) GEOPDCategorySearchResultSection *categorySearchResultSection;
+@property (strong, nonatomic) GEOPDRelatedSearchSuggestion *defaultRelatedSearchSuggestion;
+@property (strong, nonatomic) GEOMapRegion *displayMapRegion;
+@property (nonatomic) BOOL enablePartialClientization;
+@property (readonly, nonatomic) BOOL hasCategorySearchResultSection;
 @property (readonly, nonatomic) BOOL hasDefaultRelatedSearchSuggestion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
 @property (nonatomic) BOOL hasEnablePartialClientization;
 @property (nonatomic) BOOL hasIsChainResultSet;
 @property (readonly, nonatomic) BOOL hasSearchClientBehavior;
-@property (nonatomic) BOOL isChainResultSet; // @synthesize isChainResultSet=_isChainResultSet;
-@property (strong, nonatomic) NSMutableArray *relatedSearchSuggestions; // @synthesize relatedSearchSuggestions=_relatedSearchSuggestions;
-@property (strong, nonatomic) NSMutableArray *resultDetourInfos; // @synthesize resultDetourInfos=_resultDetourInfos;
-@property (strong, nonatomic) GEOPDSearchClientBehavior *searchClientBehavior; // @synthesize searchClientBehavior=_searchClientBehavior;
+@property (nonatomic) BOOL isChainResultSet;
+@property (strong, nonatomic) NSMutableArray *relatedSearchSuggestions;
+@property (strong, nonatomic) NSMutableArray *resultDetourInfos;
+@property (strong, nonatomic) GEOPDSearchClientBehavior *searchClientBehavior;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)browseCategoryType;
++ (BOOL)isValid:(id)arg1;
 + (Class)relatedSearchSuggestionType;
 + (Class)resultDetourInfoType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsBrowseCategory:(id)arg1;
+- (void)_addNoFlagsRelatedSearchSuggestion:(id)arg1;
+- (void)_addNoFlagsResultDetourInfo:(id)arg1;
+- (void)_readBrowseCategorys;
+- (void)_readCategorySearchResultSection;
+- (void)_readDefaultRelatedSearchSuggestion;
+- (void)_readDisplayMapRegion;
+- (void)_readRelatedSearchSuggestions;
+- (void)_readResultDetourInfos;
+- (void)_readSearchClientBehavior;
 - (void)addBrowseCategory:(id)arg1;
 - (void)addRelatedSearchSuggestion:(id)arg1;
 - (void)addResultDetourInfo:(id)arg1;
@@ -55,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (void)clearBrowseCategorys;
 - (void)clearRelatedSearchSuggestions;
 - (void)clearResultDetourInfos;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -62,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)relatedSearchSuggestionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)relatedSearchSuggestionsCount;

@@ -9,7 +9,7 @@
 #import <HeartRhythmUI/HRLinkTextViewDelegate-Protocol.h>
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
 
-@class HKAnchoredObjectQuery, HKElectrocardiogram, HKElectrocardiogramCardView, HRLinkTextView, HRStackedButtonView, NSLayoutConstraint, NSLayoutYAxisAnchor, UIActivityIndicatorView, UIImageView, UILabel, UITapGestureRecognizer;
+@class HKAnchoredObjectQuery, HKElectrocardiogram, HKElectrocardiogramCardView, HRStackedButtonView, NSLayoutConstraint, NSLayoutYAxisAnchor, UIActivityIndicatorView, UILabel, UITapGestureRecognizer;
 
 @interface HROnboardingElectrocardiogramSetupCompleteViewController : HROnboardingBaseViewController <HRLinkTextViewDelegate, HRStackedButtonViewDelegate>
 {
@@ -22,16 +22,12 @@
     UILabel *_classificationLabel;
     HKElectrocardiogramCardView *_electrocardiogramCardView;
     UILabel *_bodyLabel;
-    UIImageView *_appleWatchImageView;
-    HRLinkTextView *_atrialFibrillationLearnMoreLinkTextView;
     HRStackedButtonView *_stackedButtonView;
     NSLayoutConstraint *_contentViewBottomConstraint;
     NSLayoutYAxisAnchor *_viewBottomAnchor;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
-@property (strong, nonatomic) UIImageView *appleWatchImageView; // @synthesize appleWatchImageView=_appleWatchImageView;
-@property (strong, nonatomic) HRLinkTextView *atrialFibrillationLearnMoreLinkTextView; // @synthesize atrialFibrillationLearnMoreLinkTextView=_atrialFibrillationLearnMoreLinkTextView;
 @property (strong, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property (strong, nonatomic) UILabel *classificationLabel; // @synthesize classificationLabel=_classificationLabel;
 @property (strong, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
@@ -47,9 +43,6 @@
 - (void).cxx_destruct;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
-- (double)_bodyLastBaselineToAtrialFibrillationLearnMoreFirstBaseline;
-- (id)_bodyTextForSetupCompleteState:(long long)arg1;
-- (double)_cardBottomToBodyFirstBaseline;
 - (id)_classificationAttributedTextForElectrocardiogram:(id)arg1;
 - (double)_classificationTextDistance;
 - (void)_electrocardiogramCardViewTapped:(id)arg1;
@@ -58,9 +51,9 @@
 - (void)_setUpConstraints;
 - (void)_setUpElectrocardiogramQuery;
 - (void)_setUpUI;
-- (BOOL)_shouldShowAtrialFibrillationLearnMore;
+- (void)_setupBodyLabelForSetupCompleteState:(long long)arg1;
 - (void)_stopElectrocardiogramQuery;
-- (double)_titleLastBaselineToClassificationFirstBaseline;
+- (id)_subheadlineFont;
 - (void)_updateUIForElectrocardiogram:(id)arg1;
 - (id)initForOnboarding:(BOOL)arg1;
 - (void)linkTextView:(id)arg1 didTapOnLinkInRange:(struct _NSRange)arg2;

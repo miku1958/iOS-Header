@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, NSUUID, PBCodable;
+@class NSArray, NSString, NSUUID, NWL2Report, PBCodable;
 
 @interface NWConnectionStatistics : NSObject
 {
@@ -15,11 +15,13 @@
     NSString *_sourceIdentifier;
     NSUUID *_externallyVisibleConnectionUUID;
     NSArray *_externallyVisibleActivityUUIDs;
+    NWL2Report *_layer2Report;
     PBCodable *_awdReport;
+    NSArray *_activities;
     struct netcore_stats_tcp_report _report;
 }
 
-@property (readonly, nonatomic) NSArray *activities;
+@property (strong, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property (nonatomic) unsigned int awdMetricID; // @synthesize awdMetricID=_awdMetricID;
 @property (strong, nonatomic) PBCodable *awdReport; // @synthesize awdReport=_awdReport;
 @property (readonly, nonatomic) unsigned long long bytesDuplicate;
@@ -46,6 +48,7 @@
 @property (readonly, nonatomic) BOOL kernelReportingConnectionStalled;
 @property (readonly, nonatomic) BOOL kernelReportingReadStalled;
 @property (readonly, nonatomic) BOOL kernelReportingWriteStalled;
+@property (strong, nonatomic) NWL2Report *layer2Report; // @synthesize layer2Report=_layer2Report;
 @property (readonly, nonatomic) unsigned long long packetsDuplicate;
 @property (readonly, nonatomic) unsigned long long packetsIn;
 @property (readonly, nonatomic) unsigned long long packetsOOO;

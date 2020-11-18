@@ -12,7 +12,7 @@
 #import <SceneKit/SCNBoundingVolume-Protocol.h>
 #import <SceneKit/SCNShadable-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SCNGeometryElement, SCNGeometrySource, SCNMaterial, SCNOrderedDictionary, SCNProgram, SCNShadableHelper;
+@class MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SCNGeometryElement, SCNGeometrySource, SCNGeometryTessellator, SCNMaterial, SCNOrderedDictionary, SCNProgram, SCNShadableHelper;
 
 @interface SCNGeometry : NSObject <SCNAnimatable, SCNBoundingVolume, SCNShadable, NSCopying, NSSecureCoding>
 {
@@ -34,6 +34,7 @@
     struct SCNVector3 *_fixedBoundingBoxExtrema;
     NSString *_name;
     NSMutableDictionary *_valuesForUndefinedKeys;
+    SCNGeometryTessellator *_tessellator;
 }
 
 @property (readonly) NSArray *animationKeys;
@@ -53,6 +54,7 @@
 @property (copy, nonatomic) NSDictionary *shaderModifiers;
 @property (nonatomic) unsigned long long subdivisionLevel;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SCNGeometryTessellator *tessellator;
 @property (nonatomic) BOOL wantsAdaptiveSubdivision;
 
 + (id)boxWithWidth:(double)arg1 height:(double)arg2 length:(double)arg3 cornerRadius:(double)arg4 options:(id)arg5;

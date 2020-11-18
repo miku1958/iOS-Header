@@ -33,8 +33,10 @@
 + (BOOL)skipNetworkForKeysWhenPreloading:(id)arg1;
 + (unsigned char)tileProviderIdentifier;
 - (void).cxx_destruct;
+- (id)activeTileSetForKey:(const struct _GEOTileKey *)arg1;
 - (void)cancel;
 - (void)cancelKey:(const struct _GEOTileKey *)arg1;
+- (id)init;
 - (id)initWithTileRequest:(id)arg1 delegateQueue:(id)arg2 delegate:(id)arg3;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;
 - (void)start;

@@ -20,6 +20,7 @@
 + (id)identityFromStoredIdentity:(id)arg1;
 + (void)setMMCImplementationForPlatform:(id)arg1;
 + (id)storageNameForFingerPrint:(id)arg1 fileUTI:(id)arg2 bucket:(id *)arg3;
++ (id)zeroByteFileFingerPrint;
 - (id)identityForStorage;
 
 @end

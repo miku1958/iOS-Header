@@ -20,10 +20,12 @@ __attribute__((visibility("hidden")))
 - (id)computeLayoutGeometry;
 - (double)descentForInlineLayout;
 - (double)inlineCenteredAlignmentHorizontalOffset;
+- (void)invalidateTextScalePercent;
 - (id)layoutGeometryFromInfo;
 - (double)p_fontSizeThatMatchesXHeightForFontName:(id)arg1 fontSize:(double)arg2;
+- (id)p_layoutTarget;
 - (BOOL)wantsRoundedInlinePosition;
-- (void)willLayoutInlineWithMaximumSize:(struct CGSize)arg1;
+- (void)willLayoutInlineWithMaximumSize:(struct CGSize)arg1 textScale:(double)arg2;
 
 @end
 

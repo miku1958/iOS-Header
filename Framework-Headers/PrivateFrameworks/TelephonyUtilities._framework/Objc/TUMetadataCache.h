@@ -14,22 +14,24 @@
 @interface TUMetadataCache : NSObject <TUMetadataCacheDataProviderDelegate>
 {
     NSArray *_providers;
-    NSObject<OS_dispatch_queue> *_concurrentQueue;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSArray *providers; // @synthesize providers=_providers;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
++ (id)classIdentifier;
 - (void).cxx_destruct;
 - (void)_updateCacheWithDestinationIDs:(id)arg1 onlyEmptyProviders:(BOOL)arg2;
 - (void)dataProvider:(id)arg1 requestedRefreshWithDestinationIDs:(id)arg2;
 - (id)init;
 - (id)initWithDataProviders:(id)arg1;
+- (id)initWithQueue:(id)arg1 dataProviders:(id)arg2;
 - (id)metadataForDestinationID:(id)arg1;
 - (void)updateCacheForEmptyDataProvidersWithDestinationIDs:(id)arg1;
 - (void)updateCacheWithDestinationIDs:(id)arg1;

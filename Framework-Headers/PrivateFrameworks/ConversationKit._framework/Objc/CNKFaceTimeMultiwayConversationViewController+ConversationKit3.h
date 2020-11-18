@@ -6,8 +6,12 @@
 
 #import <ConversationKit/CNKFaceTimeMultiwayConversationViewController.h>
 
+@class UIViewController;
+
 @interface CNKFaceTimeMultiwayConversationViewController (ConversationKit3)
-- (id)childViewControllerForHomeIndicatorAutoHidden;
-- (BOOL)prefersHomeIndicatorAutoHidden;
+
+@property (nonatomic, readonly) UIViewController *childViewControllerForHomeIndicatorAutoHidden;
+@property (nonatomic, readonly) BOOL prefersHomeIndicatorAutoHidden;
+
 @end
 

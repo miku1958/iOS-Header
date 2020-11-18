@@ -12,36 +12,53 @@
 
 @interface HKKeyValueDomain : NSObject <_HKXPCExportable>
 {
-    HKHealthStore *_healthStore;
     NSUUID *_identifier;
     HKTaskServerProxyProvider *_proxyProvider;
     long long _category;
     NSString *_domainName;
+    HKHealthStore *_healthStore;
 }
 
+@property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly) Class superclass;
 
 + (id)clientInterface;
++ (id)healthAppDefaultsDomainWithHealthStore:(id)arg1;
 + (id)serverInterface;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
+- (id)_dataFromPropertyListValue:(id)arg1 error:(id *)arg2;
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
+- (id)_propertyListValueFromData:(id)arg1 error:(id *)arg2;
 - (void)allValuesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connectionInvalidated;
 - (void)dateForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)dateForKey:(id)arg1 error:(id *)arg2;
 - (id)exportedInterface;
 - (id)initWithCategory:(long long)arg1 domainName:(id)arg2 healthStore:(id)arg3;
 - (void)invalidate;
 - (void)numberForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)numberForKey:(id)arg1 error:(id *)arg2;
+- (void)propertyListValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)propertyListValueForKey:(id)arg1 error:(id *)arg2;
 - (id)remoteInterface;
 - (void)removeValuesForKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDate:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)setDate:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)setNumber:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (void)setPropertyListValue:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)setPropertyListValue:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (void)setString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)setString:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setValuesWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stringForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)stringForKey:(id)arg1 error:(id *)arg2;
 
 @end
 

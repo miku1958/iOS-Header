@@ -10,39 +10,36 @@
 #import <AppSupportUI/_UIMultilineTextContentSizing-Protocol.h>
 
 @class NSString;
-@protocol NUIContainerBoxViewDelegate;
 
 @interface NUIContainerBoxView : NUIContainerView <_NUIBoxArrangementContainer, _UIMultilineTextContentSizing>
 {
-    struct _NUIBoxArrangement _visibleArrangement;
-    struct {
-        unsigned int delegateHorizontal:1;
-        unsigned int delegateVertical:1;
-    } _boxFlags;
-    long long _horizontalAlignment;
-    long long _verticalAlignment;
+    struct _NUIBoxArrangement _arrangement;
+    CDStruct_e0b918f9 _boxFlags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<NUIContainerBoxViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
+@property (nonatomic) long long horizontalAlignment;
 @property (readonly) Class superclass;
-@property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
+@property (nonatomic) long long verticalAlignment;
 
++ (id)containerBoxViewWithArrangedSubviews:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (long long)_effectiveHorizontalAlignmentForArrangedSubview:(id)arg1;
-- (long long)_effectiveVerticalAlignmentForArrangedSubview:(id)arg1;
+- (long long)_effectiveAlignmentForArrangedSubview:(id)arg1 inAxis:(long long)arg2;
 - (id)arrangedDescription;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
+- (id)calculateViewForFirstBaselineLayout;
+- (id)calculateViewForLastBaselineLayout;
 - (void)dealloc;
+- (id)debugDictionary;
 - (id)initWithArrangedSubviews:(id)arg1;
-- (BOOL)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(BOOL)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
+- (BOOL)needsBaselineDebugBoundingBoxesForArrangedSubview:(id)arg1;
 - (void)populateBoxArrangementCells:(vector_eb457d57 *)arg1;
-- (void)setBaselineRelativeArrangement:(BOOL)arg1;
+- (BOOL)setNeedsInvalidation:(long long)arg1;
 
 @end
 

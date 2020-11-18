@@ -15,10 +15,11 @@
 - (void)fetchDataPlanMetrics:(void (^)(CTCarrierSpaceDataPlanMetrics *, NSError *))arg1;
 - (void)fetchPlansInfo:(BOOL)arg1 completion:(void (^)(CTCarrierSpacePlansInfo *, NSError *))arg2;
 - (void)fetchUsageInfo:(BOOL)arg1 completion:(void (^)(CTCarrierSpaceUsageInfo *, NSError *))arg2;
+- (void)getAuthenticationContext:(void (^)(CTCarrierSpaceAuthenticationContext *, NSError *))arg1;
 - (void)getCapabilities:(void (^)(CTCarrierSpaceCapabilities *, NSError *))arg1;
 - (void)getUserConsentFlowInfo:(void (^)(CTCarrierSpaceUserConsentFlowInfo *, NSError *))arg1;
 - (void)ping:(void (^)(NSError *))arg1;
-- (void)purchasePlan:(CTCarrierSpacePlanGroupOptionInfo *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)purchasePlan:(CTCarrierSpacePlanGroupOptionInfo *)arg1 authInfo:(CTCarrierSpaceAuthInfo *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)refreshAllInfo:(void (^)(NSError *))arg1;
 - (void)refreshAppsInfo:(void (^)(NSError *))arg1;
 - (void)refreshPlansInfo:(void (^)(NSError *))arg1;

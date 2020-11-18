@@ -20,6 +20,7 @@
     id<NSObject> _facetimeObserver;
     id<NSObject> _foregroundObserver;
     id<NSObject> _preferencesObserver;
+    BOOL _supportsOnDeviceRecognition;
     NSLocale *_locale;
     id<SFSpeechRecognizerDelegate> _delegate;
     long long _defaultTaskHint;
@@ -36,6 +37,7 @@
 @property (readonly, copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSOperationQueue *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsOnDeviceRecognition; // @synthesize supportsOnDeviceRecognition=_supportsOnDeviceRecognition;
 
 + (void)_fetchSupportedForcedOfflineLocalesWithCompletion:(CDUnknownBlockType)arg1;
 + (long long)authorizationStatus;

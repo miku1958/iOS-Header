@@ -10,6 +10,34 @@
 	var acc : (_:)
  }
 
+ struct CloudKitCode.RemoteMeasurement {
+
+	// Properties
+	let data : Data // +0x0
+ }
+
+ struct CloudKitCode.Ckcode_ProtectedEnvelope {
+
+	// Properties
+	var unknownFields : UnknownStorage
+	var _storage : _StorageClass
+ }
+
+ enum CloudKitCode.OneOf_Contents {
+
+	// Properties
+	case encrypted : Data
+	case value : Google_Protobuf_Any
+ }
+
+ class CloudKitCode._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var _contents : OneOf_Contents
+
+	// Swift methods
+ }
+
  class CloudKitCode.CodeConnection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -19,14 +47,14 @@
 	let local : Bool // +0x30 (0x1)
 
 	// Swift methods
-	0x42f0  func CodeConnection.invoke<A, B>(function:request:completion:) // method 
+	0x99c0  func <stripped> // method 
  }
 
  struct CloudKitCode.Ckcode_RecordTransport {
 
 	// Properties
-	var contents : OneOf_Contents // +0x0
-	var unknownFields : UnknownStorage // +0x10
+	var contents : OneOf_Contents
+	var unknownFields : UnknownStorage
  }
 
  enum CloudKitCode.OneOf_Contents {
@@ -37,6 +65,14 @@
  }
 
  class CloudKitCode.CodeOperation {
+ enum CloudKitCode.DestinationServer {
+
+	// Properties
+	case url : URL
+	case default  
+	case local  
+ }
+
  struct CloudKitCode.AssetInfo {
 
 	// Properties
@@ -70,12 +106,6 @@
 	// Properties
 	var output : A
 	var next : ()
- }
-
- struct __C_Synthesized.CKError {
-
-	// Properties
-	let _nsError : NSError
  }
 
  struct __C_Synthesized.CKError {

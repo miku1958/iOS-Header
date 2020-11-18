@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLPTPTransferableAdditionalAssetAttributes-Protocol.h>
 
-@class CLLocation, NSData, NSDate, NSNumber, NSSet, NSString, PLAssetDescription, PLManagedAsset, PLSceneprint, PLUnmanagedAdjustment;
+@class CLLocation, NSData, NSDate, NSManagedObject, NSNumber, NSSet, NSString, PLAssetDescription, PLManagedAsset, PLSceneprint, PLSpatialOverCaptureInformation, PLUnmanagedAdjustment;
 
 @interface PLAdditionalAssetAttributes : PLManagedObject <PLPTPTransferableAdditionalAssetAttributes>
 {
@@ -25,13 +25,9 @@
 @property (nonatomic) int cloudAvalanchePickType; // @dynamic cloudAvalanchePickType;
 @property (nonatomic) long long cloudGroupingState; // @dynamic cloudGroupingState;
 @property (nonatomic) short cloudKindSubtype; // @dynamic cloudKindSubtype;
-@property (nonatomic) long long cloudRecoveryState; // @dynamic cloudRecoveryState;
+@property (nonatomic) unsigned long long cloudRecoveryState; // @dynamic cloudRecoveryState;
 @property (nonatomic) short cloudStateRecoveryAttemptsCount; // @dynamic cloudStateRecoveryAttemptsCount;
 @property (strong, nonatomic) NSString *creatorBundleID; // @dynamic creatorBundleID;
-@property (strong, nonatomic) NSString *customCollectionName; // @dynamic customCollectionName;
-@property (strong, nonatomic) NSString *customCollectionUUID; // @dynamic customCollectionUUID;
-@property (strong, nonatomic) NSString *customMomentName; // @dynamic customMomentName;
-@property (strong, nonatomic) NSString *customMomentUUID; // @dynamic customMomentUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) short destinationAssetCopyState; // @dynamic destinationAssetCopyState;
@@ -47,15 +43,18 @@
 @property (strong, nonatomic) NSNumber *embeddedThumbnailWidth; // @dynamic embeddedThumbnailWidth;
 @property (readonly, strong, nonatomic) NSString *exifTimestampString;
 @property (strong, nonatomic) NSString *exifTimestampString; // @dynamic exifTimestampString;
-@property (strong, nonatomic) NSNumber *externalUsageIntent; // @dynamic externalUsageIntent;
 @property (strong, nonatomic) NSData *faceRegions; // @dynamic faceRegions;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) short importedBy; // @dynamic importedBy;
+@property (strong, nonatomic) NSNumber *inferredTimeZoneOffset; // @dynamic inferredTimeZoneOffset;
 @property (strong, nonatomic) NSSet *keywords; // @dynamic keywords;
 @property (strong, nonatomic) NSDate *lastUploadAttemptDate; // @dynamic lastUploadAttemptDate;
 @property (strong, nonatomic) NSNumber *locationHash; // @dynamic locationHash;
 @property (strong, nonatomic) NSString *longDescription;
 @property (copy, nonatomic) NSString *masterFingerPrint; // @dynamic masterFingerPrint;
+@property (strong, nonatomic) NSManagedObject *mediaMetadata; // @dynamic mediaMetadata;
+@property (strong, nonatomic) NSData *mediaMetadataData;
+@property (strong, nonatomic) NSString *mediaMetadataType; // @dynamic mediaMetadataType;
 @property (strong, nonatomic) NSString *montage; // @dynamic montage;
 @property (strong, nonatomic) id originalAssetsUUID; // @dynamic originalAssetsUUID;
 @property (strong, nonatomic) NSString *originalFilename; // @dynamic originalFilename;
@@ -71,6 +70,7 @@
 @property (nonatomic) long long pendingShareCount; // @dynamic pendingShareCount;
 @property (nonatomic) long long pendingViewCount; // @dynamic pendingViewCount;
 @property (strong, nonatomic) NSSet *personReferences; // @dynamic personReferences;
+@property (strong, nonatomic) NSString *photoStreamTagId; // @dynamic photoStreamTagId;
 @property (strong, nonatomic) NSData *placeAnnotationData; // @dynamic placeAnnotationData;
 @property (nonatomic) long long playCount; // @dynamic playCount;
 @property (readonly, nonatomic) long long ptpTrashedState;
@@ -88,6 +88,11 @@
 @property (strong, nonatomic) CLLocation *shiftedLocation;
 @property (strong, nonatomic) NSData *shiftedLocationData; // @dynamic shiftedLocationData;
 @property (nonatomic) BOOL shiftedLocationIsValid; // @dynamic shiftedLocationIsValid;
+@property (copy, nonatomic) NSString *snowdayIdentifier; // @dynamic snowdayIdentifier;
+@property (copy, nonatomic) NSString *snowdaySnowplowIdentifier; // @dynamic snowdaySnowplowIdentifier;
+@property (copy, nonatomic) NSString *snowplowGroupUUID; // @dynamic snowplowGroupUUID;
+@property (readonly, strong, nonatomic) PLSpatialOverCaptureInformation *spatialOverCaptureInformation;
+@property (readonly) PLSpatialOverCaptureInformation *spatialOverCaptureInformation;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *timeZoneName; // @dynamic timeZoneName;
 @property (strong, nonatomic) NSNumber *timeZoneOffset; // @dynamic timeZoneOffset;
@@ -102,18 +107,19 @@
 
 + (id)descriptionForDestinationAssetCopyState:(short)arg1;
 + (id)entityName;
-+ (void)fromExtraDurationData:(id)arg1 getStillDisplayTime:(CDStruct_1b6d18a9 *)arg2 videoDuration:(CDStruct_1b6d18a9 *)arg3;
++ (void)fromExtraDurationData:(id)arg1 getStillDisplayTime:(CDStruct_198678f7 *)arg2 videoDuration:(CDStruct_198678f7 *)arg3;
 + (id)listOfSyncedProperties;
-+ (id)newExtraDurationDataFromStillDisplayTime:(CDStruct_1b6d18a9)arg1 videoDuration:(CDStruct_1b6d18a9)arg2;
-- (void)dealloc;
-- (BOOL)hasCloudRecoveryStateFlagSet:(long long)arg1;
++ (id)newExtraDurationDataFromStillDisplayTime:(CDStruct_198678f7)arg1 videoDuration:(CDStruct_198678f7)arg2;
+- (void).cxx_destruct;
+- (BOOL)hasCloudRecoveryStateFlagSet:(unsigned long long)arg1;
 - (BOOL)hasConsistentCloudState;
 - (BOOL)isSyncableChange;
 - (BOOL)isUserInterfaceChange;
-- (BOOL)migrateReverseLocationDataFromKeyedArchiverFormat;
-- (void)removeCloudRecoveryStateFlag:(long long)arg1;
+- (id)payloadForChangedKeys:(id)arg1;
+- (id)payloadID;
+- (void)removeCloudRecoveryStateFlag:(unsigned long long)arg1;
 - (void)resetCloudRecoveryState;
-- (void)setCloudRecoveryStateFlag:(long long)arg1;
+- (void)setCloudRecoveryStateFlag:(unsigned long long)arg1;
 - (void)setSceneprintWithData:(id)arg1;
 - (BOOL)supportsCloudUpload;
 - (void)truncatedOriginalCheckChangedValues:(id)arg1;

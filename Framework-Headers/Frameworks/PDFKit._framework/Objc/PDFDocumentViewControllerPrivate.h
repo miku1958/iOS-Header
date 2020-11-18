@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, PDFDocument, PDFPageBackgroundManager, PDFPageViewController, PDFRenderingProperties, PDFView, UIScrollView;
+@class NSHashTable, PDFPageBackgroundManager, PDFPageViewController, PDFRenderingProperties, PDFView, UIScrollView;
 
 __attribute__((visibility("hidden")))
 @interface PDFDocumentViewControllerPrivate : NSObject
 {
     PDFView *pdfView;
-    PDFDocument *document;
     PDFRenderingProperties *renderingProperties;
     PDFPageViewController *activePageView;
     PDFPageBackgroundManager *pageBackgroundManager;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
     double maxScale;
     BOOL displaysRTL;
     UIScrollView *scrollView;
-    BOOL showTextSelectionHandles;
 }
 
 - (void).cxx_destruct;

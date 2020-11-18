@@ -13,29 +13,29 @@
 }
 
 + (BOOL)_isNilDatabase:(id)arg1 error:(id *)arg2;
-+ (id)_syncQueryDescriptorWithPredicate:(id)arg1 orderingProperties:(id)arg2 orderingDirections:(id)arg3 limit:(unsigned long long)arg4 anchorProperty:(id)arg5;
-+ (id)_syncQueryWithDatabase:(id)arg1 predicate:(id)arg2 orderingProperties:(id)arg3 orderingDirections:(id)arg4 limit:(unsigned long long)arg5 anchorProperty:(id)arg6;
-+ (unsigned long long)_transactionOptionsForWriting:(BOOL)arg1;
++ (id)_syncQueryDescriptorWithPredicate:(id)arg1 orderingTerms:(id)arg2 limit:(unsigned long long)arg3 anchorProperty:(id)arg4;
++ (id)_syncQueryWithDatabase:(id)arg1 predicate:(id)arg2 orderingTerms:(id)arg3 limit:(unsigned long long)arg4 anchorProperty:(id)arg5;
++ (id)_transactionContextForWriting:(BOOL)arg1 baseContext:(id)arg2;
 + (id)anyWithPredicate:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (id)columnNamesForTimeOffset;
 + (long long)countOfObjectsWithPredicate:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
-+ (id)createTableSQL;
 + (id)databaseName;
 + (id)defaultForeignKey;
 + (BOOL)deleteEntitiesWithPredicate:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (BOOL)enumerateEntitiesForSyncWithProperties:(id)arg1 predicate:(id)arg2 session:(id)arg3 syncAnchorRange:(struct HDSyncAnchorRange)arg4 limit:(unsigned long long)arg5 lastSyncAnchor:(long long *)arg6 healthDatabase:(id)arg7 error:(id *)arg8 block:(CDUnknownBlockType)arg9;
-+ (BOOL)enumerateEntitiesForSyncWithProperties:(id)arg1 predicate:(id)arg2 syncEntityClass:(Class)arg3 session:(id)arg4 syncAnchorRange:(struct HDSyncAnchorRange)arg5 orderingProperties:(id)arg6 orderingDirections:(id)arg7 limit:(unsigned long long)arg8 lastSyncAnchor:(long long *)arg9 healthDatabase:(id)arg10 error:(id *)arg11 block:(CDUnknownBlockType)arg12;
++ (BOOL)enumerateEntitiesForSyncWithProperties:(id)arg1 predicate:(id)arg2 syncEntityClass:(Class)arg3 session:(id)arg4 syncAnchorRange:(struct HDSyncAnchorRange)arg5 orderingTerms:(id)arg6 limit:(unsigned long long)arg7 lastSyncAnchor:(long long *)arg8 healthDatabase:(id)arg9 error:(id *)arg10 block:(CDUnknownBlockType)arg11;
 + (BOOL)enumerateProperties:(id)arg1 withPredicate:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4 enumerationHandler:(CDUnknownBlockType)arg5;
 + (id)insertOrReplaceEntity:(BOOL)arg1 healthDatabase:(id)arg2 properties:(id)arg3 error:(id *)arg4 bindingHandler:(CDUnknownBlockType)arg5;
 + (id)maxRowIDForPredicate:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (long long)nextSyncAnchorWithStartAnchor:(long long)arg1 predicate:(id)arg2 session:(id)arg3 healthDatabase:(id)arg4 error:(id *)arg5;
-+ (long long)nextSyncAnchorWithStartAnchor:(long long)arg1 predicate:(id)arg2 syncEntityClass:(Class)arg3 session:(id)arg4 orderingProperties:(id)arg5 orderingDirections:(id)arg6 limit:(unsigned long long)arg7 healthDatabase:(id)arg8 error:(id *)arg9;
-+ (BOOL)performHighPriorityReadTransactionWithHealthDatabase:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
-+ (BOOL)performHighPriorityReadTransactionWithHealthDatabase:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (long long)nextSyncAnchorWithStartAnchor:(long long)arg1 predicate:(id)arg2 syncEntityClass:(Class)arg3 session:(id)arg4 orderingTerms:(id)arg5 limit:(unsigned long long)arg6 healthDatabase:(id)arg7 error:(id *)arg8;
 + (BOOL)performPostJournalMergeCleanupWithTransaction:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (BOOL)performReadTransactionWithHealthDatabase:(id)arg1 context:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
 + (BOOL)performReadTransactionWithHealthDatabase:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 + (BOOL)performReadTransactionWithHealthDatabase:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (BOOL)performWriteTransactionWithHealthDatabase:(id)arg1 context:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
++ (BOOL)performWriteTransactionWithHealthDatabase:(id)arg1 context:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4 inaccessibilityHandler:(CDUnknownBlockType)arg5;
 + (BOOL)performWriteTransactionWithHealthDatabase:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 + (BOOL)performWriteTransactionWithHealthDatabase:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3 inaccessibilityHandler:(CDUnknownBlockType)arg4;
 + (BOOL)performWriteTransactionWithHealthDatabase:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -46,7 +46,6 @@
 + (id)propertyValueForAnyWithProperty:(id)arg1 predicate:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;
 + (id)protectedDatabaseName;
 + (long long)protectionClass;
-+ (id)uniquedColumns;
 + (BOOL)updateProperties:(id)arg1 predicate:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4 bindingHandler:(CDUnknownBlockType)arg5;
 + (id)updateSQLForTimeOffsetWithBindingCount:(unsigned long long *)arg1;
 - (id)dateForProperty:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
@@ -57,7 +56,7 @@
 - (BOOL)setForeignKeyEntity:(id)arg1 forProperty:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 - (BOOL)setNumber:(id)arg1 forProperty:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 - (BOOL)setString:(id)arg1 forProperty:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
-- (id)stringForProperty:(id)arg1 healthDatabase:(id)arg2 error:(out id *)arg3;
+- (id)stringForProperty:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 - (id)stringForProperty:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (BOOL)updateProperties:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3 bindingHandler:(CDUnknownBlockType)arg4;
 - (id)valueForProperty:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;

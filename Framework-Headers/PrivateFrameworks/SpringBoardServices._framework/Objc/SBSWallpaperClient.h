@@ -13,7 +13,10 @@
 - (void)fetchThumbnailForVariant:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCalloutQueue:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 calloutQueue:(id)arg2;
-- (BOOL)setWallpaperWithVideo:(id)arg1 cropRect:(struct CGRect)arg2;
+- (void)restoreDefaultWallpaperWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)setWallpaperColorName:(id)arg1 forVariants:(unsigned long long)arg2;
+- (BOOL)setWallpaperGradient:(id)arg1 forVariants:(unsigned long long)arg2;
+- (BOOL)setWallpaperWithVideoWithWallpaperMode:(id)arg1 cropRect:(struct CGRect)arg2 wallpaperMode:(unsigned char)arg3;
 
 @end
 

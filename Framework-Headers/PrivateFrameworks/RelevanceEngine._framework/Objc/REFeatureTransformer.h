@@ -6,10 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <RelevanceEngine/NSCopying-Protocol.h>
 
-@interface REFeatureTransformer : NSObject
+@class NSString, REPriorityQueue, REUpNextTimer;
+@protocol REFeatureTransformerInvalidationDelegate;
+
+@interface REFeatureTransformer : NSObject <NSCopying>
 {
+    REPriorityQueue *_scheduledUpdates;
+    REUpNextTimer *_updateTimer;
+    id<REFeatureTransformerInvalidationDelegate> _invalidationDelegate;
     NSString *_name;
 }
 
@@ -18,15 +24,35 @@
 + (id)binaryTransformerWithThreshold:(id)arg1;
 + (id)bucketTransformerWithBitWidth:(unsigned long long)arg1;
 + (id)bucketTransformerWithCount:(unsigned long long)arg1 minValue:(id)arg2 maxValue:(id)arg3;
++ (id)changedTransform;
++ (id)changedTransformWithImpulseDuration:(double)arg1;
 + (id)customCategoricalTransformerWithName:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (id)customCategoricalTransformerWithName:(id)arg1 featureCount:(unsigned long long)arg2 transformation:(CDUnknownBlockType)arg3;
 + (id)customTransformerWithName:(id)arg1 outputType:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 + (id)customTransformerWithName:(id)arg1 outputType:(unsigned long long)arg2 featureCount:(unsigned long long)arg3 transformation:(CDUnknownBlockType)arg4;
++ (id)featureTransformerClasses;
++ (id)functionName;
 + (id)hashTransform;
 + (id)logTransformerWithBase:(id)arg1;
++ (id)maskAndShiftTransformWithStartIndex:(unsigned long long)arg1 endIndex:(unsigned long long)arg2;
 + (id)maskTransformWithWidth:(unsigned long long)arg1;
++ (id)recentTransformerWithCount:(unsigned long long)arg1;
 + (id)roundTransformer;
++ (BOOL)supportsInvalidation;
++ (BOOL)supportsPersistence;
 - (void).cxx_destruct;
+- (void)_invalidate;
+- (id)_invalidationQueue;
+- (void)_invalidationQueue_scheduleInvalidation:(id)arg1;
+- (void)_performAndScheduleTimer;
+- (void)configureWithInvocation:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)init;
+- (void)invalidateWithContext:(id)arg1;
+- (id)invalidationDelegate;
+- (BOOL)readFromURL:(id)arg1 error:(id *)arg2;
+- (void)setInvalidationDelegate:(id)arg1;
+- (BOOL)writeToURL:(id)arg1 error:(id *)arg2;
 
 @end
 

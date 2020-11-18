@@ -22,17 +22,20 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CNDonationStore *donationStore; // @synthesize donationStore=_donationStore;
 @property (readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *legacyTetheredSyncComputerAnchor;
+@property (strong, nonatomic) NSString *legacyTetheredSyncDeviceAnchor;
 @property (readonly) Class superclass;
 
 + (id)log;
 + (id)mapperIdentifier;
 - (void).cxx_destruct;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (id)authorizedKeysForContactKeys:(id)arg1 error:(id *)arg2;
 - (id)contactObservableForFetchRequest:(id)arg1;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)defaultContainerIdentifier;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
-- (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 error:(id *)arg3;
+- (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 authorizationContext:(id)arg3 error:(id *)arg4;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)initWithContactsEnvironment:(id)arg1 managedConfiguration:(id)arg2;
 - (id)initWithDonationStore:(id)arg1 environment:(id)arg2;

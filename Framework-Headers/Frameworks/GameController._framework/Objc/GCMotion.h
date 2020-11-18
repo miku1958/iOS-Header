@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CMMotionManager, GCController;
+@class GCController;
 
 @interface GCMotion : NSObject
 {
     CDStruct_31142d93 _gravity;
-    CDStruct_31142d93 _prevGravity;
     CDStruct_31142d93 _userAcceleration;
     struct GCQuaternion _attitude;
     struct GCQuaternion _prevAttitude;
@@ -20,15 +19,9 @@
     CDStruct_31142d93 _rotationRate;
     float _tip;
     float _tilt;
-    CMMotionManager *_motionMgr;
-    BOOL _linkedOnOrAfterCompassFeature;
     BOOL _motionLite;
     BOOL _compassEnabled;
     CDUnknownBlockType _valueChangedHandler;
-    CDUnknownBlockType _internalValueChangedHandler;
-    BOOL _emulatedMotionEnabled;
-    BOOL _motionUpdatedEnabled;
-    BOOL _paused;
     GCController *_controller;
 }
 
@@ -54,9 +47,12 @@
 - (float)_tilt;
 - (float)_tip;
 - (id)initWithController:(id)arg1;
-- (CDUnknownBlockType)internalValueChangedHandler;
 - (BOOL)isEmulatedMicroGamepad;
-- (void)setInternalValueChangedHandler:(CDUnknownBlockType)arg1;
+- (void)setAttitude:(struct GCQuaternion)arg1;
+- (void)setGravity:(CDStruct_39925896)arg1;
+- (void)setRotationRate:(CDStruct_39925896)arg1;
+- (void)setStateFromMotion:(id)arg1;
+- (void)setUserAcceleration:(CDStruct_39925896)arg1;
 
 @end
 

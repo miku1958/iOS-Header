@@ -24,6 +24,7 @@
     BOOL _dirty;
     BOOL _payloadAvailable;
     BOOL _payloadRequested;
+    BOOL _isActive;
     NSUUID *_uuid;
     unsigned long long _type;
     NSString *_title;
@@ -32,6 +33,7 @@
     NSString *_teamIdentifier;
     NSURL *_webpageURL;
     NSURL *_referrerURL;
+    NSString *_targetContentIdentifier;
     NSDictionary *_options;
     NSError *_encodedUserInfoError;
     NSSet *_requiredUserInfoKeys;
@@ -44,6 +46,7 @@
     NSString *_persistentIdentifier;
     NSError *_error;
     SFPeerDevice *_peerDevice;
+    NSString *_peerDeviceType;
     NSString *_bundleIdentifier;
     _LSUserActivityWasContinuedInfo *_wasContinuedInfo;
 }
@@ -64,6 +67,7 @@
 @property (copy) NSDictionary *encodingOptions; // @synthesize encodingOptions=_encodingOptions;
 @property (copy) NSError *error; // @synthesize error=_error;
 @property (copy) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property BOOL isActive; // @synthesize isActive=_isActive;
 @property (copy) NSSet *keywords; // @synthesize keywords=_keywords;
 @property (copy) NSDate *lastInterestingTime; // @synthesize lastInterestingTime=_lastInterestingTime;
 @property (copy) NSDictionary *options; // @synthesize options=_options;
@@ -71,9 +75,11 @@
 @property (getter=isPayloadRequested) BOOL payloadRequested; // @synthesize payloadRequested=_payloadRequested;
 @property (copy) NSDictionary *payloads;
 @property (strong) SFPeerDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property (copy) NSString *peerDeviceType; // @synthesize peerDeviceType=_peerDeviceType;
 @property (copy) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
 @property (copy) NSURL *referrerURL; // @synthesize referrerURL=_referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
+@property (copy) NSString *targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property (copy) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;
 @property (copy) NSString *title; // @synthesize title=_title;
 @property unsigned long long type; // @synthesize type=_type;
@@ -88,10 +94,10 @@
 - (void)_createUserActivityStrings:(id)arg1 secondaryString:(id)arg2 optionalData:(id)arg3;
 - (id)archiveUserActivityInfo;
 - (void)clearPayload;
-- (id)copyUserActivityInfoWithUUID:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fetchAllNearbyAppSuggestions:(CDUnknownBlockType)arg1;
 - (id)initWithArchivedUserActivityInfo:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 type:(unsigned long long)arg2 options:(id)arg3;

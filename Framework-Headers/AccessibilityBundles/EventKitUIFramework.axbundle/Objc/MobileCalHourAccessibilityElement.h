@@ -24,6 +24,7 @@
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityLabel;
+- (id)accessibilityUserInputLabels;
 - (BOOL)isAccessibilityElement;
 
 @end

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (AccessibilityAccessors)
++ (void)_accessibilityCalDetailStringForEvent:(id)arg1 inLine1:(id *)arg2 inLine2:(id *)arg3 inLine3:(id *)arg4 inLine4:(id *)arg5;
 + (void)_accessibilityCalGetHourDesignatorsForAM:(id *)arg1 andPM:(id *)arg2;
 + (BOOL)_accessibilityCalHourDesignatorsAreBeforeHour;
 + (BOOL)_accessibilityCalShow24Hours;

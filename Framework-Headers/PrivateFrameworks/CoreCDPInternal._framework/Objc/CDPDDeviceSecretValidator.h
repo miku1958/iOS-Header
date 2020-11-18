@@ -40,7 +40,7 @@
 - (id)_failedSingleICSCs;
 - (void)_handleDelegateValidationError:(id)arg1;
 - (id)_handleMultiCSCRecoveryFailureForDevice:(id)arg1 recoveryError:(id)arg2 secret:(id)arg3;
-- (void)_handleMultiCSCRecoveryResults:(id)arg1 type:(unsigned long long)arg2 secret:(id)arg3 device:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_handleMultiCSCRecoveryResults:(id)arg1 clique:(id)arg2 type:(unsigned long long)arg3 secret:(id)arg4 device:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_handleRecoveryFailureForFinalDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_isFailedSecret:(id)arg1 forDevice:(id)arg2;
 - (BOOL)_isInvalidICSCError:(id)arg1;

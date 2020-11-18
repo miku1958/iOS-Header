@@ -15,7 +15,9 @@
     BOOL _locationOptInEnabled;
     BOOL _diagnosticsOptInEnabled;
     BOOL _hasResolvedActiveWatchFaceFilePath;
+    NSURL *_activeWatchFaceFileURL;
     NSUUID *_uuid;
+    unsigned long long _backupType;
     NSString *_name;
     NSString *_productType;
     NSString *_productName;
@@ -35,11 +37,11 @@
     NSString *_watchFaceColor;
     NSDate *_lastModificationDate;
     NSNumber *_sizeInBytes;
-    NSURL *_activeWatchFaceFileURL;
 }
 
 @property (strong, nonatomic) NSURL *activeWatchFaceFileURL; // @synthesize activeWatchFaceFileURL=_activeWatchFaceFileURL;
 @property (strong, nonatomic) NSNumber *backingColor; // @synthesize backingColor=_backingColor;
+@property (nonatomic) unsigned long long backupType; // @synthesize backupType=_backupType;
 @property (strong, nonatomic) NSNumber *bcmWindowMaterial; // @synthesize bcmWindowMaterial=_bcmWindowMaterial;
 @property (strong, nonatomic) NSNumber *bottomEnclosureMaterial; // @synthesize bottomEnclosureMaterial=_bottomEnclosureMaterial;
 @property (strong, nonatomic) NSNumber *coverGlassColor; // @synthesize coverGlassColor=_coverGlassColor;

@@ -6,13 +6,17 @@
 
 #import <Intents/INIntentResponse.h>
 
+@class MTIntentAlarm;
+
 @interface MTCreateAlarmIntentResponse : INIntentResponse
 {
     long long _code;
 }
 
+@property (copy, nonatomic) MTIntentAlarm *alarm; // @dynamic alarm;
 @property (nonatomic) long long code; // @synthesize code=_code;
 
++ (id)successIntentResponseWithAlarm:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 
 @end

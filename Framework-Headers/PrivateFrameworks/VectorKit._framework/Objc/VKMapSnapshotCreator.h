@@ -7,36 +7,43 @@
 #import <objc/NSObject.h>
 
 #import <VectorKit/MapEngineDelegate-Protocol.h>
-#import <VectorKit/VKImageCanvasDelegate-Protocol.h>
+#import <VectorKit/VKNotificationObserverDelegate-Protocol.h>
 
-@class GEOResourceManifestConfiguration, NSLocale, NSString, VKGlobeImageCanvas, VKMapImageCanvas, VKMemoryObserver;
+@class GEOPOICategoryFilter, NSString, VKGlobeImageCanvas, VKMapImageCanvas, VKNotificationObserver, VKRouteContext;
+@protocol VKRouteOverlay;
 
-@interface VKMapSnapshotCreator : NSObject <VKImageCanvasDelegate, MapEngineDelegate>
+@interface VKMapSnapshotCreator : NSObject <MapEngineDelegate, VKNotificationObserverDelegate>
 {
     VKMapImageCanvas *_mapCanvas;
     VKGlobeImageCanvas *_globeCanvas;
-    long long _mapType;
+    int _mapType;
     CDStruct_80aa614a _mapDisplayStyle;
+    GEOPOICategoryFilter *_pointsOfInterestFilter;
+    struct VKEdgeInsets _edgeInsets;
     BOOL _didBecomeFullyDrawn;
     BOOL _hasFailedTiles;
     CDUnknownBlockType _completion;
-    GEOResourceManifestConfiguration *_manifestConfiguration;
-    NSLocale *_locale;
     struct unique_ptr<md::MapEngine, std::__1::default_delete<md::MapEngine>> _mapEngine;
     shared_ptr_e963992e _taskContext;
-    unsigned char _emphasis;
     BOOL _didSoftDealloc;
-    VKMemoryObserver *_memoryObserver;
+    VKNotificationObserver *_notificationObserver;
+    unsigned long long _signpostId;
+    id<VKRouteOverlay> _routeOverlay;
+    VKRouteContext *_routeContext;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned char emphasis; // @synthesize emphasis=_emphasis;
+@property (nonatomic) struct VKEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+@property (nonatomic) unsigned char emphasis;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long labelScaleFactor;
 @property (nonatomic) BOOL localizeLabels;
 @property (nonatomic) CDStruct_80aa614a mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
-@property (nonatomic) long long mapType;
+@property (nonatomic) int mapType;
+@property (strong, nonatomic) GEOPOICategoryFilter *pointsOfInterestFilter; // @synthesize pointsOfInterestFilter=_pointsOfInterestFilter;
+@property (strong, nonatomic) VKRouteContext *routeContext; // @synthesize routeContext=_routeContext;
+@property (strong, nonatomic) id<VKRouteOverlay> routeOverlay; // @synthesize routeOverlay=_routeOverlay;
 @property (nonatomic) BOOL showsBuildings;
 @property (nonatomic) BOOL showsPointLabels;
 @property (nonatomic) BOOL showsPointsOfInterest;
@@ -47,28 +54,32 @@
 + (BOOL)supportsSharingThumbnails;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (struct LabelSettings *)_labelSettings;
 - (void)_transferSettingsFrom:(id)arg1 to:(id)arg2;
 - (id)activeCanvas;
 - (void)addCustomFeatureDataSource:(id)arg1;
 - (void)cancel;
 - (void)cancelFlushingTileDecodes:(BOOL)arg1;
 - (void)dealloc;
+- (void)didFinishLoadingData;
+- (void)didFinishLoadingDataWithError:(id)arg1;
 - (void)didPresent;
-- (void)didReceiveMemoryWarning:(id)arg1;
-- (void)imageCanvasDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(BOOL)arg2;
-- (void)imageCanvasWillBecomeFullyDrawn:(id)arg1;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 homeQueue:(id)arg3;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 homeQueue:(id)arg3 manifestConfiguration:(id)arg4 locale:(id)arg5;
-- (BOOL)isRoadClassDisabled:(int)arg1;
+- (void)didReceiveMemoryWarning;
+- (void)didStartLoadingData;
+- (void)didUpdateSceneStatus:(unsigned char)arg1;
+- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 homeQueue:(id)arg3 signpostId:(unsigned long long)arg4;
+- (void)labelManagerDidLayout;
+- (void)labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)lookAtX:(unsigned long long)arg1 y:(unsigned long long)arg2 z:(unsigned long long)arg3;
 - (void)nearestVenueDidChange:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
 - (void)removeCustomFeatureDataSource:(id)arg1;
-- (void)renderRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renderSnapshot:(CDUnknownBlockType)arg1;
+- (void)selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3;
 - (void)softDealloc;
 - (BOOL)wantsTimerTick;
+- (void)willBecomeFullyDrawn;
 - (void)willLayoutWithTimestamp:(double)arg1;
 
 @end

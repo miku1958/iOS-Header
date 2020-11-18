@@ -45,6 +45,7 @@
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property (nonatomic) BOOL configured; // @synthesize configured=_configured;
 @property (readonly, nonatomic) UIControl *control;
+@property (readonly, nonatomic) NSString *copyText;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (strong, nonatomic) NSDate *dateMax; // @synthesize dateMax=_dateMax;
@@ -59,6 +60,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;
 @property (readonly, nonatomic) BOOL indentWhileEditing;
+@property (readonly, nonatomic) BOOL isCopyable;
 @property (weak, nonatomic) RUIPage *linkedPage; // @synthesize linkedPage=_linkedPage;
 @property (strong, nonatomic) UIView *pickerView; // @synthesize pickerView=_pickerView;
 @property (nonatomic) BOOL rowInvalid; // @synthesize rowInvalid=_rowInvalid;

@@ -28,10 +28,11 @@
 
 - (void).cxx_destruct;
 - (long long)categoryAtIndex:(long long)arg1;
+- (unsigned long long)groupCount;
 - (id)initWithGroupResult:(id)arg1;
 - (BOOL)isContentStringTextSearchableAtIndex:(long long)arg1;
+- (BOOL)isImplicitlyTokenized;
 - (BOOL)isMatchedByIdentifierAtIndex:(long long)arg1;
-- (unsigned long long)matchCount;
 - (id)matchRangesAtIndex:(long long)arg1;
 - (id)tokensAtIndex:(long long)arg1;
 

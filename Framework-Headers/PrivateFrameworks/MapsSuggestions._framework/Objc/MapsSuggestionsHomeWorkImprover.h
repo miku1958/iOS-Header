@@ -21,7 +21,6 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 + (BOOL)isEnabled;
-- (void)_moveTitlesIfNecessaryInSuggestion:(id)arg1;
 - (BOOL)improveEntry:(id)arg1;
 
 @end

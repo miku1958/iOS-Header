@@ -11,10 +11,10 @@
 @interface IMCTXPCServiceSubscriptionInfo : NSObject
 {
     CTXPCServiceSubscriptionInfo *_subscriptionInfo;
-    NSArray *_allPhoneNumbers;
+    NSArray *_phoneNumbersOfActiveSubscriptions;
 }
 
-@property (strong, nonatomic) NSArray *allPhoneNumbers; // @synthesize allPhoneNumbers=_allPhoneNumbers;
+@property (strong, nonatomic) NSArray *phoneNumbersOfActiveSubscriptions; // @synthesize phoneNumbersOfActiveSubscriptions=_phoneNumbersOfActiveSubscriptions;
 @property (strong, nonatomic) CTXPCServiceSubscriptionInfo *subscriptionInfo; // @synthesize subscriptionInfo=_subscriptionInfo;
 
 - (void).cxx_destruct;
@@ -27,7 +27,6 @@
 - (BOOL)__im_onlyHasActiveSlots;
 - (id)__im_phoneNumberForSlotID:(long long)arg1;
 - (id)__im_phoneNumberForSlotIDOrDefault:(long long)arg1;
-- (id)__im_phoneNumbersForAllSubscriptions;
 - (id)__im_preferredSubscriptionContext;
 - (id)__im_subscriptionContextForForSimID:(id)arg1;
 - (id)__im_subscriptionContextForForSimID:(id)arg1 phoneNumber:(id)arg2;
@@ -40,8 +39,6 @@
 - (id)__im_subscriptionsWithMMSSupport;
 - (id)__im_switchSubscriptionContextFromPhoneNumber:(id)arg1 simID:(id)arg2;
 - (id)__im_switchSubscriptionContextFromSubscriptionContext:(id)arg1;
-- (void)_generatePhoneNumbersCache;
-- (void)_invalidatePhoneNumbersCache;
 - (id)_senderIdentityManager;
 - (id)allSubscriptions;
 - (id)description;

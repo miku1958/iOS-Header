@@ -10,7 +10,10 @@
 
 @interface HDJournalableOperation : HDJournalEntry <NSSecureCoding>
 {
+    BOOL _didJournal;
 }
+
+@property (readonly, nonatomic) BOOL didJournal; // @synthesize didJournal=_didJournal;
 
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;

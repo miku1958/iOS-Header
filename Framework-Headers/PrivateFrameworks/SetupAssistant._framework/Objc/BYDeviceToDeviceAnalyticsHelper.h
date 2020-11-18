@@ -10,7 +10,7 @@
 {
 }
 
-- (void)postFailureError:(id)arg1;
+- (void)postFailureError:(id)arg1 connectionType:(unsigned long long)arg2 sourceDeviceModel:(id)arg3 sourceDeviceProductVersion:(id)arg4 targetDeviceModel:(id)arg5 targetDeviceProductVersion:(id)arg6;
 - (void)postSuccessInfo:(id)arg1;
 - (id)successInfoWithTransferSize:(unsigned long long)arg1 transferDuration:(double)arg2 restoreDuration:(double)arg3 connectionType:(unsigned long long)arg4 sourceDeviceModel:(id)arg5 sourceDeviceProductVersion:(id)arg6 targetDeviceModel:(id)arg7 targetDeviceProductVersion:(id)arg8;
 

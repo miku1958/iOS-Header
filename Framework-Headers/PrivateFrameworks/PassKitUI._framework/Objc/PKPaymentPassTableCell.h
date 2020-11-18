@@ -6,19 +6,20 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class CALayer, PKPassFaceViewRendererState, PKPassView, PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UILabel, UIView;
+@class CALayer, PKPassFaceViewRendererState, PKPassView, PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UIImageView, UILabel;
 @protocol PKPaymentPassTableCellDelegate;
 
 @interface PKPaymentPassTableCell : PSTableCell
 {
     PKPaymentApplication *_paymentApplication;
     long long _settingsContext;
-    UIView *_cardSnapshotView;
+    unsigned int _snapshotCounter;
+    UIActivityIndicatorView *_snapshotSpinner;
+    PKPassView *_passView;
+    UIImageView *_cardSnapshotView;
     CALayer *_cardSnapshotMask;
-    BOOL _snapshotLoaded;
     UIActivityIndicatorView *_spinner;
     BOOL _showState;
-    PKPassView *_passView;
     BOOL _showSubTitle;
     BOOL _showAddButton;
     PKPaymentPass *_pass;
@@ -29,9 +30,9 @@
 }
 
 @property (readonly, nonatomic) UIControl *actionButton; // @synthesize actionButton=_actionButton;
-@property (nonatomic) id<PKPaymentPassTableCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentPassTableCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) UILabel *mainLabel; // @synthesize mainLabel=_mainLabel;
-@property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (readonly, strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (readonly, nonatomic) PKPassFaceViewRendererState *rendererState;
 @property (nonatomic) BOOL showAddButton; // @synthesize showAddButton=_showAddButton;
 @property (nonatomic) BOOL showSubTitle; // @synthesize showSubTitle=_showSubTitle;
@@ -51,6 +52,7 @@
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;
+- (void)setPass:(id)arg1 passView:(id)arg2;
 - (void)setSpecifier:(id)arg1;
 - (void)showActivitySpinner:(BOOL)arg1;
 - (void)tintColorDidChange;

@@ -7,6 +7,10 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (AXExtensions)
+- (id)_axDictionaryKeyReplacementRepresentation;
+- (id)_axReconstitutedRepresentationForDictionaryKeyReplacement;
+- (id)_axRecursivelyPropertyListCoercedRepresentationWithError:(id *)arg1;
+- (id)_axRecursivelyReconstitutedRepresentationFromPropertyListWithError:(id *)arg1;
 - (struct _NSRange)_axUnit:(unsigned long long)arg1 fromPosition:(long long)arg2 inDirection:(unsigned long long)arg3;
 - (struct _NSRange)_ax_rangeOfNextUnitWithStartPosition:(long long)arg1 direction:(unsigned long long)arg2 withCharacterSet:(id)arg3;
 - (id)axAttributedStringWithAttributes:(id)arg1;

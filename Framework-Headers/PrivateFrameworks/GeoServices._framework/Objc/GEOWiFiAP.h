@@ -12,23 +12,29 @@
 
 @interface GEOWiFiAP : PBCodable <NSCopying>
 {
-    unsigned int _channel;
-    int _rssi;
     NSString *_uniqueID;
+    unsigned int _channel;
+    int _origin;
+    int _rssi;
     struct {
-        unsigned int channel:1;
-        unsigned int rssi:1;
-    } _has;
+        unsigned int has_channel:1;
+        unsigned int has_origin:1;
+        unsigned int has_rssi:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int channel; // @synthesize channel=_channel;
+@property (nonatomic) unsigned int channel;
 @property (nonatomic) BOOL hasChannel;
+@property (nonatomic) BOOL hasOrigin;
 @property (nonatomic) BOOL hasRssi;
 @property (readonly, nonatomic) BOOL hasUniqueID;
-@property (nonatomic) int rssi; // @synthesize rssi=_rssi;
-@property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
+@property (nonatomic) int origin;
+@property (nonatomic) int rssi;
+@property (strong, nonatomic) NSString *uniqueID;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsOrigin:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +42,8 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)originAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

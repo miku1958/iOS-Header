@@ -6,7 +6,7 @@
 
 #import <CoreSuggestions/_SGSuggestionsServiceBaseProtocol-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString, NSURL;
+@class NSArray, NSData, NSDate, NSString, NSURL, _PASDomainSelection;
 
 @protocol SGSuggestionsServiceInternalProtocol <_SGSuggestionsServiceBaseProtocol>
 - (void)addInteractions:(NSArray *)arg1 bundleId:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
@@ -20,7 +20,7 @@
 - (void)deleteInteractionsWithBundleId:(NSString *)arg1 groupIdentifiers:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteInteractionsWithBundleId:(NSString *)arg1 identifiers:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 domainIdentifiers:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 domainIdentifiers:(_PASDomainSelection *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(NSString *)arg1 uniqueIdentifiers:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)drainQueueCompletelyWithCompletion:(void (^)(NSError *))arg1;
 - (void)emailAddressIsSignificant:(NSString *)arg1 withCompletion:(void (^)(NSNumber *, NSError *))arg2;

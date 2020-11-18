@@ -22,17 +22,17 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)_notifyObserversOfChangeFromValuesForKeys:(id)arg1 toValuesForKeys:(id)arg2;
-- (void)addPreferencesObserver:(id)arg1;
-- (void)alreadylocked_addPreferencesObserver:(id)arg1;
+- (int)alreadylocked_addPreferencesObserver:(id)arg1;
 - (void)alreadylocked_clearCache;
 - (struct __CFDictionary *)alreadylocked_copyDictionary;
 - (struct __CFArray *)alreadylocked_copyKeyList;
 - (void *)alreadylocked_copyValueForKey:(struct __CFString *)arg1;
+- (id)alreadylocked_createObserverUpdateMessageWithOperation:(int)arg1 forRole:(int *)arg2;
 - (long long)alreadylocked_generationCount;
-- (void)alreadylocked_removePreferencesObserver:(id)arg1;
+- (int)alreadylocked_removePreferencesObserver:(id)arg1;
 - (BOOL)alreadylocked_requestNewData;
 - (void)alreadylocked_setPrecopiedValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
-- (void)alreadylocked_updateObservingRemoteChanges;
+- (int)alreadylocked_updateObservingRemoteChanges;
 - (struct __CFString *)container;
 - (struct __CFDictionary *)copyDictionary;
 - (struct __CFArray *)copyKeyList;
@@ -42,29 +42,32 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (struct __CFString *)domainIdentifier;
+- (BOOL)enabled;
 - (void)forEachObserver:(CDUnknownBlockType)arg1;
 - (void)fullCloudSynchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)generationCount;
-- (void)handleRemoteChangeNotificationForDomainIdentifier:(struct __CFString *)arg1;
 - (void)handleReply:(id)arg1 toRequestNewDataMessage:(id)arg2 onConnection:(id)arg3 retryCount:(int)arg4 error:(BOOL *)arg5;
 - (id)initWithContainingPreferences:(id)arg1;
 - (BOOL)isByHost;
+- (BOOL)isDirectModeEnabled;
 - (BOOL)isVolatile;
 - (void)lock;
 - (BOOL)managed;
-- (void)mergeIntoDictionary:(struct __CFDictionary *)arg1 sourceDictionary:(struct __CFDictionary *)arg2;
+- (void)mergeIntoDictionary:(struct __CFDictionary *)arg1 sourceDictionary:(struct __CFDictionary *)arg2 cloudKeyEvaluator:(CDUnknownBlockType)arg3;
 - (void)removeAllValues_from:(id)arg1;
-- (void)removePreferencesObserver:(id)arg1;
 - (void)replaceAllValuesWithValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
 - (void)setAccessRestricted:(BOOL)arg1;
+- (void)setBackupDisabled:(BOOL)arg1;
 - (void)setConfigurationPath:(struct __CFString *)arg1;
 - (void)setDaemonCacheEnabled:(BOOL)arg1;
+- (void)setEnabled:(BOOL)arg1;
 - (void)setFileProtectionClass:(int)arg1;
 - (void)setStoreName:(struct __CFString *)arg1;
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2 from:(id)arg3;
 - (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 copyValues:(BOOL)arg4 from:(id)arg5;
 - (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 copyValues:(BOOL)arg4 removeValuesForKeys:(const struct __CFString **)arg5 count:(long long)arg6 from:(id)arg7;
 - (BOOL)synchronize;
+- (void)transitionIntoDirectModeIfNeededWithRetryBlock:(CDUnknownBlockType)arg1;
 - (void)unlock;
 - (struct __CFString *)userIdentifier;
 

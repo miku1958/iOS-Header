@@ -15,8 +15,10 @@
 {
     NSArray *_staticApplicationShortcutItems;
     NSArray *_dynamicApplicationShortcutItems;
+    NSArray *_composedApplicationShortcutItems;
 }
 
+@property (readonly, nonatomic) NSArray *composedApplicationShortcutItems; // @synthesize composedApplicationShortcutItems=_composedApplicationShortcutItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *dynamicApplicationShortcutItems; // @synthesize dynamicApplicationShortcutItems=_dynamicApplicationShortcutItems;
@@ -28,7 +30,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
-- (id)initWithStaticApplicationShortcutItems:(id)arg1 dynamicApplicationShortcutItems:(id)arg2;
+- (id)initWithStaticApplicationShortcutItems:(id)arg1 dynamicApplicationShortcutItems:(id)arg2 composedApplicationShortcutItems:(id)arg3;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

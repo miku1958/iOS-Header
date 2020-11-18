@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, WBSHistoryItem, WBSHistorySession;
+@class NSArray, NSDate, WBSHistoryItem, WBSHistorySession;
 
 @protocol WBSHistorySessions
 
@@ -15,5 +15,6 @@
 - (WBSHistoryItem *)itemLastVisitedInSession:(WBSHistorySession *)arg1 atIndex:(unsigned long long)arg2;
 - (NSArray *)itemsLastVisitedInSession:(WBSHistorySession *)arg1;
 - (unsigned long long)numberOfItemsVisitedInSession:(WBSHistorySession *)arg1;
+- (void)orderedItemsNewerThanDate:(NSDate *)arg1 maxCount:(unsigned long long)arg2 completionHandler:(void (^)(NSArray *))arg3;
 @end
 

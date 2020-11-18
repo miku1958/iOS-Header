@@ -6,7 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@interface PHVideoRequestBehaviorSpec : NSObject
+#import <Photos/PLVideoChoosingOptions-Protocol.h>
+
+@class NSString;
+
+@interface PHVideoRequestBehaviorSpec : NSObject <PLVideoChoosingOptions>
 {
     BOOL _networkAccessAllowed;
     BOOL _streamingAllowed;
@@ -15,19 +19,27 @@
     BOOL _restrictToPlayableOnCurrentDevice;
     long long _deliveryMode;
     long long _version;
+    long long _streamingVideoIntent;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long deliveryMode; // @synthesize deliveryMode=_deliveryMode;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isMediumHighQualityAllowed) BOOL mediumHighQualityAllowed; // @synthesize mediumHighQualityAllowed=_mediumHighQualityAllowed;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (nonatomic) BOOL restrictToPlayableOnCurrentDevice; // @synthesize restrictToPlayableOnCurrentDevice=_restrictToPlayableOnCurrentDevice;
 @property (nonatomic, getter=isStreamingAllowed) BOOL streamingAllowed; // @synthesize streamingAllowed=_streamingAllowed;
+@property (nonatomic) long long streamingVideoIntent; // @synthesize streamingVideoIntent=_streamingVideoIntent;
+@property (readonly) Class superclass;
 @property (nonatomic) long long version; // @synthesize version=_version;
 @property (nonatomic, getter=isVideoComplementAllowed) BOOL videoComplementAllowed; // @synthesize videoComplementAllowed=_videoComplementAllowed;
 
 - (id)initWithPlistDictionary:(id)arg1;
 - (id)plistDictionary;
 - (id)shortDescription;
+- (long long)videoDeliveryMode;
+- (long long)videoVersion;
 
 @end
 

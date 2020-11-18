@@ -17,7 +17,6 @@
 
 @property (readonly, nonatomic) NSString *deviceName;
 
-+ (id)allOutputContextImplClasses;
 + (id)auxiliaryOutputContext;
 + (Class)defaultOutputContextImplClass;
 + (id)iTunesAudioContext;
@@ -36,12 +35,13 @@
 - (void)addOutputDevice:(id)arg1;
 - (void)addOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (int)applicationProcessID;
-- (id)associatedAudioDeviceID;
 - (BOOL)canSetVolume;
 - (id)communicationChannelDelegate;
 - (id)contextID;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)getApplicationProcessID:(int *)arg1;
 - (unsigned long long)hash;
 - (id)impl;
 - (id)init;
@@ -69,6 +69,7 @@
 - (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)providesControlForAllVolumeFeatures;
 - (void)removeOutputDevice:(id)arg1;
+- (void)removeOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setApplicationProcessID:(int)arg1;
 - (void)setCommunicationChannelDelegate:(id)arg1;
 - (BOOL)setOutputDevice:(id)arg1 forFeatures:(unsigned long long)arg2;
@@ -77,6 +78,7 @@
 - (void)setOutputDevices:(id)arg1;
 - (void)setOutputDevices:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setVolume:(float)arg1;
+- (BOOL)supportsMultipleBluetoothOutputDevices;
 - (BOOL)supportsMultipleOutputDevices;
 - (float)volume;
 

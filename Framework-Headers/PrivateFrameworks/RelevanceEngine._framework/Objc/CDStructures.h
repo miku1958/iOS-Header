@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Blocks
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -19,6 +21,7 @@ struct BayesianModel {
     double m_dSumPredictions;
     double m_dLogScore;
     double m_dNormalizedLogScore;
+    double m_dEpsilon;
     int m_nModelVersion;
     unsigned long long m_nCalibrationCurveTrue[10];
     unsigned long long m_nCalibrationCurveCount[10];
@@ -66,6 +69,8 @@ struct REFancyShrinkingDictionary {
     unsigned long long m_maxSize;
     unsigned long long m_shrinkSize;
     int m_nVersion;
+    BOOL m_trimTop;
+    BOOL m_shinksOnTotalCount;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, unsigned short>, void *>*> {
@@ -79,6 +84,10 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsign
 struct _opaque_pthread_rwlock_t {
     long long __sig;
     char __opaque[192];
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, unsigned short>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, unsigned short>, void *>*>*>>> {
@@ -139,6 +148,14 @@ struct vector<unsigned long long, std::__1::allocator<unsigned long long>> {
     struct __compressed_pair<unsigned long long *, std::__1::allocator<unsigned long long>> {
         unsigned long long *_field1;
     } _field3;
+};
+
+struct vector<unsigned long, std::__1::allocator<unsigned long>> {
+    unsigned long long *__begin_;
+    unsigned long long *__end_;
+    struct __compressed_pair<unsigned long *, std::__1::allocator<unsigned long>> {
+        unsigned long long *__value_;
+    } __end_cap_;
 };
 
 #pragma mark Typedef'd Structures

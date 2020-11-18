@@ -15,13 +15,11 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accessibilityContaineeLayout;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_accessibilityUpdateCardGrabberValueAndSpeak:(BOOL)arg1;
-- (BOOL)_axCollapseCard:(id)arg1;
-- (BOOL)_axExpandCard:(id)arg1;
-- (void)_axUpdateInfoAfterCardChange;
+- (BOOL)_axCollapseCard;
+- (BOOL)_axExpandCard;
+- (long long)accessibilityContainerType;
+- (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityViewIsModal;
-- (void)didMoveToWindow;
-- (id)initAllowingBlurred:(BOOL)arg1;
 - (void)layoutSubviews;
 - (BOOL)shouldGroupAccessibilityChildren;
 

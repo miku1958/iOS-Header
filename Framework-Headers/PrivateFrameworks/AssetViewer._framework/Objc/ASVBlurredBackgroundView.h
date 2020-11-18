@@ -28,9 +28,11 @@
 + (id)highlightedEffectsForStudioStyle;
 + (id)normalEffectsForARDarkStyle;
 + (id)normalEffectsForARStyle;
++ (id)normalEffectsForDarkModeStyle;
 + (id)normalEffectsForStudioStyle;
 + (id)selectedEffects;
 + (id)selectedEffectsForARDarkStyle;
++ (id)selectedEffectsForDarkModeStyle;
 - (id)initWithFrame:(struct CGRect)arg1 backgroundStyle:(long long)arg2 controlStyle:(long long)arg3;
 - (void)updateBackgroundEffects;
 

@@ -6,27 +6,29 @@
 
 #import <Navigation/MNNavigationState.h>
 
-@class MNNavigationSessionManager, MNRoutePlanningDetails;
+@class MNNavigationSessionManager, NSArray;
 
-__attribute__((visibility("hidden")))
 @interface MNNavigationStatePrepareGuidance : MNNavigationState
 {
-    MNRoutePlanningDetails *_routePlanningDetails;
+    NSArray *_previewRoutes;
+    unsigned long long _selectedRouteIndex;
     MNNavigationSessionManager *_navigationSessionManager;
 }
 
 - (void).cxx_destruct;
 - (unsigned long long)desiredLocationProviderType;
-- (unsigned long long)desiredResourcePolicy;
 - (void)enterState;
-- (id)initWithStateManager:(id)arg1 routePlanningDetails:(id)arg2;
+- (id)initWithStateManager:(id)arg1 previewRoutes:(id)arg2 selectedRouteIndex:(unsigned long long)arg3;
 - (void)leaveState;
-- (void)prepareNavigationWithRouteDetails:(id)arg1;
+- (void)pauseRealtimeUpdatesForSubscriber:(id)arg1;
 - (BOOL)requiresHighMemoryThreshold;
-- (void)startNavigationForRouteDetails:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)resumeRealtimeUpdatesForSubscriber:(id)arg1;
+- (void)setRoutesForPreview:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
+- (BOOL)shouldClearStoredRoutes;
+- (void)startNavigationWithDetails:(id)arg1 activeBlock:(CDUnknownBlockType)arg2;
 - (void)stopNavigation;
 - (id)traceManager;
-- (long long)type;
+- (unsigned long long)type;
 
 @end
 

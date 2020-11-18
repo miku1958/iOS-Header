@@ -25,8 +25,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
+- (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
 - (void)dealloc;
-- (void)idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
 - (id)init;
 - (void)performBatchQueryForAddresses:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 

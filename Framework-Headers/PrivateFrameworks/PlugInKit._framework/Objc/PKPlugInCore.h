@@ -10,13 +10,14 @@
 
 @interface PKPlugInCore : NSObject
 {
-    BOOL _onSystemVolume;
-    NSDictionary *_plugInDictionary;
     NSString *_identifier;
     NSString *_originalIdentifier;
     NSURL *_url;
     NSURL *_containingUrl;
+    NSString *_containingBundleIdentifier;
+    BOOL _onSystemVolume;
     NSDictionary *_bundleInfoDictionary;
+    NSDictionary *_plugInDictionary;
     NSDictionary *_entitlements;
     unsigned long long _hubProtocolVersion;
     NSString *_localizedName;
@@ -29,15 +30,18 @@
     NSData *_cdhash;
     NSString *_requirement;
     NSURL *_dataContainerURL;
+    NSUUID *_discoveryInstanceUUID;
 }
 
 @property (strong) NSDictionary *annotations; // @synthesize annotations=_annotations;
 @property (readonly) NSDictionary *attributes;
 @property (strong) NSDictionary *bundleInfoDictionary; // @synthesize bundleInfoDictionary=_bundleInfoDictionary;
 @property (strong) NSData *cdhash; // @synthesize cdhash=_cdhash;
+@property (copy) NSString *containingBundleIdentifier; // @synthesize containingBundleIdentifier=_containingBundleIdentifier;
 @property (readonly) NSString *containingPath;
-@property (strong) NSURL *containingUrl; // @synthesize containingUrl=_containingUrl;
+@property (copy) NSURL *containingUrl; // @synthesize containingUrl=_containingUrl;
 @property (readonly, nonatomic) NSURL *dataContainerURL; // @synthesize dataContainerURL=_dataContainerURL;
+@property (readonly) NSUUID *discoveryInstanceUUID; // @synthesize discoveryInstanceUUID=_discoveryInstanceUUID;
 @property (strong) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property unsigned long long hubProtocolVersion; // @synthesize hubProtocolVersion=_hubProtocolVersion;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
@@ -48,9 +52,9 @@
 @property (readonly) BOOL isMultiplexed;
 @property long long lastModified; // @synthesize lastModified=_lastModified;
 @property (strong) NSString *localizedContainingName; // @synthesize localizedContainingName=_localizedContainingName;
-@property (strong) NSDictionary *localizedFileProviderActionNames; // @synthesize localizedFileProviderActionNames=_localizedFileProviderActionNames;
-@property (strong) NSString *localizedName; // @synthesize localizedName=_localizedName;
-@property (strong) NSString *localizedShortName; // @synthesize localizedShortName=_localizedShortName;
+@property (readonly) NSDictionary *localizedFileProviderActionNames; // @synthesize localizedFileProviderActionNames=_localizedFileProviderActionNames;
+@property (readonly) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (readonly) NSString *localizedShortName; // @synthesize localizedShortName=_localizedShortName;
 @property (readonly) BOOL oldStyle;
 @property BOOL onSystemVolume; // @synthesize onSystemVolume=_onSystemVolume;
 @property (strong) NSString *originalIdentifier; // @synthesize originalIdentifier=_originalIdentifier;
@@ -67,9 +71,12 @@
 
 + (id)readSDKDictionary:(id)arg1;
 - (void).cxx_destruct;
+- (void)_loadLocalizedNames;
+- (id)_localizedFileProviderActionNamesForPKDict:(id)arg1 fromBundle:(id)arg2;
 - (id)attribute:(id)arg1;
 - (id)augmentInterface:(id)arg1;
 - (void)canonicalize;
+- (id)description;
 - (id)diagnose;
 - (id)embeddedCodePath;
 - (id)embeddedProtocolSpec;
@@ -78,20 +85,22 @@
 - (id)infoKey:(id)arg1;
 - (id)init;
 - (id)initWithForm:(id)arg1;
-- (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 info:(id)arg4 uuid:(id)arg5;
+- (id)initWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(struct NSMutableDictionary *)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (void)localizedInfoDictionaryForKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)mergeDictionary:(id)arg1 into:(id)arg2;
+- (id)mergeSDKDictionary:(id)arg1 intoExtensionDictionary:(id)arg2;
 - (id)mergeSharedResources:(id)arg1 into:(id)arg2;
 - (id)normalizeInfoDictionary:(id)arg1;
 - (id)pluginKey:(id)arg1;
-- (void)resolveSDK;
-- (BOOL)sdkOverridesKey:(id)arg1;
+- (id)resolveSDKWithInfoPlist:(id)arg1 extensionPointCache:(struct NSMutableDictionary *)arg2;
+- (id)sdkDictionaryWithInfoPlist:(id)arg1 extensionPointCache:(struct NSMutableDictionary *)arg2;
+- (struct NSSet *)sdkOnlyKeyPaths;
 - (void)setAnnotation:(id)arg1 value:(id)arg2;
 - (BOOL)setDictionaries:(id)arg1;
 - (BOOL)setupWithForm:(id)arg1;
-- (BOOL)setupWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 info:(id)arg4 uuid:(id)arg5;
+- (BOOL)setupWithName:(id)arg1 url:(id)arg2 bundleInfo:(id)arg3 uuid:(id)arg4 discoveryInstanceUUID:(id)arg5 extensionPointCache:(struct NSMutableDictionary *)arg6;
 - (void)updateFromForm:(id)arg1;
+- (BOOL)useBundle:(id)arg1 error:(id *)arg2;
 
 @end
 

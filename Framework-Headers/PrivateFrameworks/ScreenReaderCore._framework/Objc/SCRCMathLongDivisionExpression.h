@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2;
 
 @end
 

@@ -6,20 +6,46 @@
 
 #import <CloudKit/CKRecord.h>
 
+#import <CloudDocsDaemon/PQLBindable-Protocol.h>
 #import <CloudDocsDaemon/PQLValuable-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
-@interface CKRecord (BRCSerializationAdditions) <PQLValuable>
+@interface CKRecord (BRCSerializationAdditions) <PQLValuable, PQLBindable>
 
+@property (readonly, nonatomic) NSData *brc_containerMetadataPropertiesData;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
++ (id)brc_containerMetadataRecordWithContainer:(id)arg1;
++ (id)brc_containerMetadataZoneID;
++ (id)brc_fakeRecordWithErrorMarkerFor20716676;
++ (id)brc_zoneHealthZoneID;
++ (id)desiredKeysWithMask:(unsigned short)arg1;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
++ (id)rootAppLibraryRecordForAppLibraryID:(id)arg1 zoneID:(id)arg2;
++ (id)rootDirectoryRecordForZoneID:(id)arg1;
 - (void)_deserializeRootSharingOptions:(unsigned long long *)arg1;
 - (BOOL)_deserializeValue:(id *)arg1 forKey:(id)arg2 encrypted:(BOOL)arg3 expectClass:(Class)arg4 allowNil:(BOOL)arg5 errorDescription:(id *)arg6;
+- (id)brc_containerMetadataIconNames;
+- (id)brc_containerMetadataIconPaths;
+- (BOOL)brc_currentUserOwnsLastEditorDevice;
+- (id)brc_documentName;
+- (BOOL)brc_isInterestingRecordForSyncDown;
+- (BOOL)brc_isfakeRecordWithErrorMarkerFor20716676;
+- (id)brc_lastEditorDeviceName;
+- (id)brc_oplockMergeEtag;
+- (BOOL)brc_safeToGetURL;
+- (id)brc_sharedDocumentDisplayName;
+- (id)brc_sharedDocumentExtension;
+- (id)brc_updateDroppedReason;
+- (void)brc_updateWithLogicalName:(id)arg1 isFolder:(BOOL)arg2;
 - (BOOL)deserializeAliasInfo:(id *)arg1 serverZone:(id)arg2 error:(id *)arg3;
 - (BOOL)deserializeFilename:(id *)arg1 basename:(id *)arg2 bounceno:(id *)arg3 extension:(id *)arg4 userInfo:(id)arg5 error:(id *)arg6;
 - (void)deserializeFolderSharingOptions:(unsigned long long *)arg1;
@@ -27,6 +53,8 @@
 - (BOOL)deserializeSymlinkTarget:(id *)arg1 error:(id *)arg2;
 - (BOOL)deserializeVersion:(id *)arg1 fakeStatInfo:(id *)arg2 clientZone:(id)arg3 error:(id *)arg4;
 - (BOOL)deserializeiWorkSharingOptions:(unsigned long long *)arg1 error:(id *)arg2;
+- (BOOL)isFolderShare;
+- (void)sanitizeShortTokenFields;
 - (void)serializeFilename:(id)arg1 forCreation:(BOOL)arg2;
 - (void)serializeFilename:(id)arg1 forCreation:(BOOL)arg2 setExtension:(BOOL)arg3;
 - (void)serializeFilename:(id)arg1 forCreation:(BOOL)arg2 setExtension:(BOOL)arg3 inSharedAlias:(BOOL)arg4;
@@ -34,6 +62,7 @@
 - (void)serializeStatInfo:(id)arg1 diffs:(unsigned long long)arg2 stageID:(id)arg3 deadInServerTruth:(BOOL)arg4 pcsChaining:(BOOL)arg5;
 - (void)serializeSystemFields:(id)arg1;
 - (void)serializeVersion:(id)arg1 diffs:(unsigned long long)arg2 deadInServerTruth:(BOOL)arg3;
+- (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 @end
 

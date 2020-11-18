@@ -18,6 +18,7 @@
 - (void)_reloadTiles;
 - (id)_reviewModeFooter;
 - (void)setCurrentMode:(int)arg1 animated:(BOOL)arg2;
+- (void)toggleCamera:(id)arg1;
 
 @end
 

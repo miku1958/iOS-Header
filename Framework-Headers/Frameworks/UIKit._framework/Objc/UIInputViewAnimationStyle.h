@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     double duration;
     unsigned long long extraOptions;
     BOOL interactivelyCancelled;
+    BOOL _isLegacy;
     BOOL force;
 }
 
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)endPlacementForInputViewSet:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)launchAnimation:(CDUnknownBlockType)arg1 afterStarted:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3 forHost:(id)arg4 fromCurrentPosition:(BOOL)arg5;
+- (id)legacyAnimationCopy;
 - (id)startPlacementForInputViewSet:(id)arg1 currentPlacement:(id)arg2;
 
 @end

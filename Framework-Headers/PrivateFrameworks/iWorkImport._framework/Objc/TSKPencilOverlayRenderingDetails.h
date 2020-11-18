@@ -12,7 +12,6 @@
 __attribute__((visibility("hidden")))
 @interface TSKPencilOverlayRenderingDetails : NSObject
 {
-    BOOL _isSplit;
     id<TSKPencilAnnotationStorage> _pencilAnnotationStorage;
     TSUImage *_scaledImage;
     TSPData *_dataToInvalidateFromAfterDownload;
@@ -24,21 +23,23 @@ __attribute__((visibility("hidden")))
     struct CGRect _unscaledImageFrame;
 }
 
-@property (readonly, nonatomic) TSPData *dataToInvalidateFromAfterDownload; // @synthesize dataToInvalidateFromAfterDownload=_dataToInvalidateFromAfterDownload;
-@property (nonatomic) BOOL isSplit; // @synthesize isSplit=_isSplit;
+@property (strong, nonatomic) TSPData *dataToInvalidateFromAfterDownload; // @synthesize dataToInvalidateFromAfterDownload=_dataToInvalidateFromAfterDownload;
 @property (nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property (strong, nonatomic) id<TSKPencilAnnotationStorage> pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
-@property (readonly, nonatomic) TSUImage *scaledImage; // @synthesize scaledImage=_scaledImage;
+@property (strong, nonatomic) TSUImage *scaledImage; // @synthesize scaledImage=_scaledImage;
 @property (strong, nonatomic) TSKPKDrawing *subDrawing; // @synthesize subDrawing=_subDrawing;
 @property (strong, nonatomic) TSUBezierPath *transformedPath; // @synthesize transformedPath=_transformedPath;
 @property (nonatomic) struct CGRect unscaledImageClipRect; // @synthesize unscaledImageClipRect=_unscaledImageClipRect;
 @property (nonatomic) struct CGRect unscaledImageFrame; // @synthesize unscaledImageFrame=_unscaledImageFrame;
 @property (strong, nonatomic) TSKPencilOverlayAnchorSelectionRectangle *unscaledSelectionRectangle; // @synthesize unscaledSelectionRectangle=_unscaledSelectionRectangle;
 
++ (struct CGColor *)fillColorForPenColor:(id)arg1;
++ (id)p_baseColorForPenColor:(id)arg1;
++ (struct CGColor *)strokeColorForPenColor:(id)arg1 attachedType:(long long)arg2;
 - (void).cxx_destruct;
 - (BOOL)containsPointForHitTesting:(struct CGPoint)arg1;
 - (id)description;
-- (id)initWithPencilAnnotation:(id)arg1 scaledImage:(id)arg2 dataToInvalidateFromAfterDownload:(id)arg3;
+- (id)initWithPencilAnnotation:(id)arg1;
 
 @end
 

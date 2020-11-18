@@ -26,8 +26,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL resizableViewsDisabled; // @synthesize resizableViewsDisabled=_resizableViewsDisabled;
 @property (readonly) Class superclass;
 
-+ (id)inlineMapWithMapItem:(id)arg1;
++ (id)inlineMapWithMapItem:(id)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_handleTapOnMap;
 - (void)_updateMap;
 - (void)fetchPoisForBrand;

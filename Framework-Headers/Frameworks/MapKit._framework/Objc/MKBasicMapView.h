@@ -19,13 +19,17 @@ __attribute__((visibility("hidden")))
     double _trafficStartTime;
     BOOL _changingViewSize;
     BOOL _inactive;
+    BOOL _hasRenderedSomething;
+    BOOL _inBackground;
 }
 
 @property (readonly, nonatomic, getter=isChangingViewSize) BOOL changingViewSize; // @synthesize changingViewSize=_changingViewSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct UIEdgeInsets edgeInsets;
+@property (nonatomic) BOOL hasRenderedSomething; // @synthesize hasRenderedSomething=_hasRenderedSomething;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isInBackground) BOOL inBackground; // @synthesize inBackground=_inBackground;
 @property (nonatomic) BOOL inactive; // @synthesize inactive=_inactive;
 @property (nonatomic) double mapModeStartTime; // @synthesize mapModeStartTime=_mapModeStartTime;
 @property (readonly, nonatomic) VKMapView *mapView; // @synthesize mapView=_mapView;
@@ -35,9 +39,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_animateCanvasForBounds:(struct CGRect)arg1;
-- (void)_enterBackground:(id)arg1;
-- (void)_enterForeground:(id)arg1;
 - (void)_finishedSnapshot:(id)arg1;
+- (void)_registerSceneNotifications;
+- (void)_unregisterSceneNotifications;
+- (void)_updateBackgroundState;
 - (void)_updateForCurrentScreen;
 - (void)_updateMapViewHidden;
 - (void)_updateStatsForTimeSpentInCurrentMapTypeIsShowingFlyover:(BOOL)arg1 ignoreIfViewInWindow:(BOOL)arg2;
@@ -57,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setHidden:(BOOL)arg1;
 - (void)updateStatsForEnablingTraffic:(BOOL)arg1;
-- (void)updateStatsForSwitchingToMapType:(long long)arg1;
+- (void)updateStatsForSwitchingToMapType:(int)arg1;
 - (void)updateStatsForTimeSpentInCurrentMapTypeIsShowingFlyover:(BOOL)arg1;
 - (void)updateStatsForTrafficEnabledTime;
 - (void)willMoveToWindow:(id)arg1;

@@ -7,7 +7,7 @@
 #import <AccessibilityPlatformTranslation/AXPTranslator.h>
 
 @class AXUIElement, NSMutableDictionary, NSObject;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@protocol OS_dispatch_queue;
 
 @interface AXPTranslator_iOS : AXPTranslator
 {
@@ -15,7 +15,7 @@
     NSMutableDictionary *_backTranslationCache;
     NSObject<OS_dispatch_queue> *_cacheQueue;
     struct __IOHIDEventSystemClient *_ioSystemPostBackClient;
-    NSObject<OS_dispatch_semaphore> *_appAXReadySemaphore;
+    BOOL _axAppReadyFlag;
     BOOL _accessibilityEnabled;
     struct __AXObserver *_axEventObserver;
     AXUIElement *_systemAppElement;
@@ -28,7 +28,9 @@
 
 + (id)_iosParameterFromPlatformParameter:(id)arg1;
 + (id)sharedInstance;
++ (id)translationObjectFromUIKitObject:(id)arg1;
 - (void).cxx_destruct;
+- (id)_axArrayWithPossiblyNilArrays:(unsigned long long)arg1;
 - (void)_initializeAccessibility;
 - (void)_postEvent:(id)arg1;
 - (id)_postProcessAttributeRequest:(id)arg1 iosAttribute:(long long)arg2 axpAttribute:(unsigned long long)arg3 result:(id)arg4;
@@ -38,13 +40,12 @@
 - (id)_processAttributeSpecialCases:(unsigned long long)arg1 uiElement:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processAttributeSpecialCases:(unsigned long long)arg1 uiElement:(id)arg2 parameter:(id)arg3 error:(unsigned long long *)arg4;
 - (id)_processAttributedLabelAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processAttributedStringForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processBoundsForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processChildrenAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCustomActionsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCustomRotorData:(id)arg1;
-- (BOOL)_processDecrementAction:(id)arg1;
 - (id)_processDirectAttributeRequest:(id)arg1 iosAttribute:(long long)arg2 axpAttribute:(unsigned long long)arg3 parameter:(id)arg4 error:(unsigned long long *)arg5;
-- (BOOL)_processEscapeAction:(id)arg1;
-- (BOOL)_processIncrementAction:(id)arg1;
 - (id)_processIsEnabledAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processIsSelectedAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processMoveFocusToOpaqueElementAttributeRequest:(id)arg1 parameter:(id)arg2 direction:(long long)arg3 error:(unsigned long long *)arg4;
@@ -52,12 +53,8 @@
 - (id)_processOutgoingCustomRotorSearchResult:(id)arg1;
 - (id)_processParameterizedAttributeRequest:(id)arg1 attribute:(long long)arg2 parameter:(id)arg3 error:(unsigned long long *)arg4;
 - (BOOL)_processPerformAction:(int)arg1 value:(id)arg2;
-- (BOOL)_processPerformCustomAction:(id)arg1;
-- (BOOL)_processPressAction:(id)arg1;
 - (id)_processRawElementDataRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processRoleAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
-- (BOOL)_processScrollToVisibleAction:(id)arg1;
-- (BOOL)_processShowContextMenuAction:(id)arg1;
 - (id)_processStartsMediaSessionAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processStringForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processSubroleAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
@@ -66,6 +63,7 @@
 - (void)_signalAppAXReady;
 - (BOOL)accessibilityEnabled;
 - (long long)attributeFromRequest:(unsigned long long)arg1;
+- (CDUnknownBlockType)attributedStringConversionBlock;
 - (id)axElementFromTranslatorRequest:(id)arg1;
 - (id)backTranslationCache;
 - (const struct __AXUIElement *)createPlatformElementFromTranslationObject:(id)arg1;
@@ -82,6 +80,7 @@
 - (id)processMultipleAttributeRequest:(id)arg1;
 - (void)processPlatformNotification:(unsigned long long)arg1 data:(id)arg2 associatedObject:(id)arg3;
 - (id)processSetAttribute:(id)arg1;
+- (id)processSupportedActions:(id)arg1;
 - (void)setAccessibilityEnabled:(BOOL)arg1;
 - (void)simulatePressAtPoint:(struct CGPoint)arg1 withContextId:(unsigned int)arg2 withDelay:(float)arg3 withForce:(double)arg4;
 - (id)translationCache;

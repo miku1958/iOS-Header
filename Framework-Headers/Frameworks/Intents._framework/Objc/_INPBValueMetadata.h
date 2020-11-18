@@ -10,7 +10,7 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBValueMetadata-Protocol.h>
 
-@class NSString;
+@class NSString, _INPBConfidenceScore;
 
 @interface _INPBValueMetadata : PBCodable <_INPBValueMetadata, NSSecureCoding, NSCopying>
 {
@@ -19,18 +19,23 @@
         unsigned int confirmed:1;
     } _has;
     BOOL _confirmed;
+    BOOL __encodeLegacyGloryData;
     NSString *_canonicalValue;
+    _INPBConfidenceScore *_confidenceScore;
     NSString *_input;
     NSString *_source;
     NSString *_sourceAppBundleIdentifier;
     NSString *_uuid;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *canonicalValue; // @synthesize canonicalValue=_canonicalValue;
+@property (strong, nonatomic) _INPBConfidenceScore *confidenceScore; // @synthesize confidenceScore=_confidenceScore;
 @property (nonatomic) BOOL confirmed; // @synthesize confirmed=_confirmed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCanonicalValue;
+@property (readonly, nonatomic) BOOL hasConfidenceScore;
 @property (nonatomic) BOOL hasConfirmed;
 @property (readonly, nonatomic) BOOL hasInput;
 @property (readonly, nonatomic) BOOL hasSource;
@@ -45,12 +50,16 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsRequiredEntitlements:(id)arg1;
 - (void)addRequiredEntitlement:(int)arg1;
 - (void)clearRequiredEntitlements;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)requiredEntitlementAtIndex:(unsigned long long)arg1;

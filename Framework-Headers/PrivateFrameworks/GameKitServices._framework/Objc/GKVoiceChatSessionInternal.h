@@ -99,7 +99,7 @@
 - (void)sendMutedPeers;
 - (void)session:(id)arg1 didReceiveAudioPacket:(id)arg2 fromPeerID:(id)arg3;
 - (void)session:(id)arg1 didReceiveOOBAudioPacket:(id)arg2 fromPeerID:(id)arg3;
-- (void)session:(id)arg1 peer:(id)arg2 didChangeState:(int)arg3;
+- (void)session:(id)arg1 peer:(id)arg2 didChangeState:(unsigned int)arg3;
 - (void)setMute:(BOOL)arg1 forPeer:(id)arg2;
 - (void)startSession;
 - (void)startSessionInternal;

@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     struct CGRect lastLayerFrameInRootView;
     NSDate *lastZoomChange;
     BOOL zoomChangeScheduled;
+    double zoomGenerationDelay;
     unsigned long long visibilityDelegateIndex;
     BOOL tileLayerHidden;
     NSMutableArray *tiles;

@@ -8,42 +8,58 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDVenueLabel, PBUnknownFields;
+@class GEOPDVenueLabel, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDVenueContainer : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_62a50c50 _buildingIds;
+    GEOPDVenueLabel *_label;
     unsigned long long _muid;
     unsigned long long _venueId;
     int _browseType;
-    GEOPDVenueLabel *_label;
     struct {
-        unsigned int muid:1;
-        unsigned int venueId:1;
-        unsigned int browseType:1;
-    } _has;
+        unsigned int has_muid:1;
+        unsigned int has_venueId:1;
+        unsigned int has_browseType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_buildingIds:1;
+        unsigned int read_label:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_buildingIds:1;
+        unsigned int wrote_label:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_venueId:1;
+        unsigned int wrote_browseType:1;
+    } _flags;
 }
 
-@property (nonatomic) int browseType; // @synthesize browseType=_browseType;
+@property (nonatomic) int browseType;
 @property (readonly, nonatomic) unsigned long long *buildingIds;
 @property (readonly, nonatomic) unsigned long long buildingIdsCount;
 @property (nonatomic) BOOL hasBrowseType;
 @property (readonly, nonatomic) BOOL hasLabel;
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic) BOOL hasVenueId;
-@property (strong, nonatomic) GEOPDVenueLabel *label; // @synthesize label=_label;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
+@property (strong, nonatomic) GEOPDVenueLabel *label;
+@property (nonatomic) unsigned long long muid;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) unsigned long long venueId; // @synthesize venueId=_venueId;
+@property (nonatomic) unsigned long long venueId;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsBrowseType:(id)arg1;
+- (void)_addNoFlagsBuildingId:(unsigned long long)arg1;
+- (void)_readBuildingIds;
+- (void)_readLabel;
 - (void)addBuildingId:(unsigned long long)arg1;
 - (id)browseTypeAsString:(int)arg1;
 - (unsigned long long)buildingIdAtIndex:(unsigned long long)arg1;
 - (void)clearBuildingIds;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -52,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setBuildingIds:(unsigned long long *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

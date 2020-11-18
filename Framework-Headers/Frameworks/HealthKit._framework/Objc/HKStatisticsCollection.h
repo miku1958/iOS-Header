@@ -31,8 +31,11 @@
 - (BOOL)_insertStatistics:(id)arg1;
 - (id)_maxSumQuantityStatistics;
 - (id)_minSumQuantityStatistics;
+- (id)_mostRecentQuantityDateInterval;
+- (id)_mostRecentQuantityStatistics;
 - (void)_resetStatistics:(id)arg1;
 - (id)_statisticsForIndex:(long long)arg1;
+- (id)_statisticsForLastIndex;
 - (id)_statisticsPeriodAndIndex:(long long *)arg1 forDate:(id)arg2;
 - (id)_timePeriodForDate:(id)arg1;
 - (void)_timePeriodForStatisticsAtIndex:(long long)arg1 startDate:(id *)arg2 endDate:(id *)arg3;

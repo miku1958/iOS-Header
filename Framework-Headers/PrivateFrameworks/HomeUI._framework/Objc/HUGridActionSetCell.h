@@ -8,19 +8,19 @@
 
 #import <HomeUI/HUAccessoryViewCellProtocol-Protocol.h>
 
-@class HFItem, HUGridSceneCellLayoutOptions, HUIconView, HUPieProgressView, NAFuture, NSArray, NSString, UIView, _HUGridActionSetTitleAndDescriptionView;
+@class HFItem, HUGridActionSetTitleAndDescriptionView, HUGridSceneCellLayoutOptions, HUIconView, HUPieProgressView, NAFuture, NSArray, NSString, UIView;
 
 @interface HUGridActionSetCell : HUGridCell <HUAccessoryViewCellProtocol>
 {
     HFItem *_item;
     NAFuture *_executeActionSetFuture;
     UIView *_accessoryView;
+    HUGridActionSetTitleAndDescriptionView *_titleAndDescriptionView;
+    HUGridSceneCellLayoutOptions *_sceneCellLayoutOptions;
     HUIconView *_iconView;
-    _HUGridActionSetTitleAndDescriptionView *_titleAndDescriptionView;
     HUPieProgressView *_progressView;
     NSArray *_actionSetCellConstraints;
     NAFuture *_internalExecuteActionSetFuture;
-    HUGridSceneCellLayoutOptions *_sceneCellLayoutOptions;
 }
 
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) HUPieProgressView *progressView; // @synthesize progressView=_progressView;
 @property (weak, nonatomic) HUGridSceneCellLayoutOptions *sceneCellLayoutOptions; // @synthesize sceneCellLayoutOptions=_sceneCellLayoutOptions;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) _HUGridActionSetTitleAndDescriptionView *titleAndDescriptionView; // @synthesize titleAndDescriptionView=_titleAndDescriptionView;
+@property (strong, nonatomic) HUGridActionSetTitleAndDescriptionView *titleAndDescriptionView; // @synthesize titleAndDescriptionView=_titleAndDescriptionView;
 
 + (Class)layoutOptionsClass;
 + (BOOL)requiresConstraintBasedLayout;

@@ -17,6 +17,7 @@
     int _totalUsagesInCollectionPeriod;
     int _configuredLookbackTimeInDays;
     int _activeDaysInCollectionPeriod;
+    int _totalEngagements;
     long long _collectionStartTimestamp;
     long long _collectionEndTimestamp;
     _CPDeviceContext *_context;
@@ -33,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;
+@property (nonatomic) int totalEngagements; // @synthesize totalEngagements=_totalEngagements;
 @property (nonatomic) int totalUsagesInCollectionPeriod; // @synthesize totalUsagesInCollectionPeriod=_totalUsagesInCollectionPeriod;
 
 - (void).cxx_destruct;
@@ -41,7 +43,6 @@
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

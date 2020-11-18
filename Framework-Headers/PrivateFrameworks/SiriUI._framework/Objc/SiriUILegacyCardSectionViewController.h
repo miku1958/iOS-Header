@@ -27,8 +27,8 @@
 
 + (id)cardSectionClasses;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_createReusableViewIfNeededWithClass:(Class)arg1;
-- (id)_initWithCardSection:(id)arg1 dataSource:(id)arg2;
 - (id)_interaction;
 - (void)_loadCardSectionView;
 - (BOOL)_shouldAttemptToConnectToRemoteViewController;
@@ -40,6 +40,7 @@
 - (id)persistentDataStoreForSiriViewController:(id)arg1;
 - (id)persistentStoreForSiriViewController:(id)arg1;
 - (void)removeSiriViewController:(id)arg1;
+- (void)setDelegate:(id)arg1;
 - (unsigned long long)siriDeviceLockStateForSnippetViewController:(id)arg1;
 - (id)siriEnabledAppListForSiriViewController:(id)arg1;
 - (void)siriSnippetViewController:(id)arg1 didDismissViewController:(id)arg2;
@@ -49,6 +50,7 @@
 - (void)siriSnippetViewController:(id)arg1 pushSirilandSnippets:(id)arg2;
 - (void)siriSnippetViewController:(id)arg1 requestPasscodeUnlockWithCompletion:(CDUnknownBlockType)arg2;
 - (void)siriSnippetViewController:(id)arg1 setStatusBarHidden:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)siriSnippetViewController:(id)arg1 setStatusBarHidden:(BOOL)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)siriSnippetViewController:(id)arg1 setStatusViewHidden:(BOOL)arg2;
 - (void)siriSnippetViewController:(id)arg1 shouldPresentPicker:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)siriSnippetViewController:(id)arg1 willDismissViewController:(id)arg2;
@@ -84,6 +86,7 @@
 - (BOOL)siriViewControllerShouldPreventUserInteraction:(id)arg1;
 - (struct CGSize)siriViewControllerVisibleContentArea:(id)arg1;
 - (void)siriViewControllerWillBeginEditing:(id)arg1;
+- (double)statusBarHeightForSiriViewController:(id)arg1;
 - (id)updatedUserUtteranceForSiriViewController:(id)arg1;
 - (void)viewDidLayoutSubviews;
 

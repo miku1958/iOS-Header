@@ -15,6 +15,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)hexStringFromBytes:(const char *)arg1 length:(unsigned long long)arg2;
++ (id)hexStringFromData:(id)arg1;
+- (id)_af_stringByRemovingPrefixWithLength:(unsigned long long)arg1;
+- (id)_af_stringByRemovingSuffix:(id)arg1;
+- (BOOL)_afpreferences_isLanguageCodePrefix;
+- (id)_afpreferences_languageCodePrefix;
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 @end
 

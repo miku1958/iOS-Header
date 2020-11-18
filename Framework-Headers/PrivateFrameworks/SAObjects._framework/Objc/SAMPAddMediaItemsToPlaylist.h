@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSString *influencedUserSharedUserId;
 @property (copy, nonatomic) NSString *insertLocation;
 @property (copy, nonatomic) NSArray *mediaItems;
 @property (strong, nonatomic) SAMPPlaylist *playlist;

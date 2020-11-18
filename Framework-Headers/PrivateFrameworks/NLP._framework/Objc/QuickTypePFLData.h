@@ -8,15 +8,13 @@
 
 @interface QuickTypePFLData : NSObject
 {
-    struct unique_ptr<TrainingData, std::__1::default_delete<TrainingData>> _data;
     unsigned long long _maxSequenceLength;
 }
 
 @property (readonly, nonatomic) unsigned long long maxSequenceLength; // @synthesize maxSequenceLength=_maxSequenceLength;
 @property (readonly, nonatomic) unsigned long long numTrainingSamples;
+@property (readonly, nonatomic) unsigned long long numTrainingTokens;
 
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)enumerateDataInBatches:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)initWithMaxSequenceLength:(unsigned long long)arg1;
 - (BOOL)loadFromFile:(id)arg1 error:(id *)arg2;

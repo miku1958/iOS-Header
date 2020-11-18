@@ -8,7 +8,7 @@
 
 #import <VideosUI/NSCopying-Protocol.h>
 
-@class NSDate, NSDictionary, NSNumber, NSString, NSURL, VUIContentRating, VUIMediaItemCredits, VUIPlistMediaDatabaseSeason;
+@class NSDate, NSDictionary, NSNumber, NSString, NSURL, VUIMediaItemCredits, VUIPlistMediaDatabaseSeason, _TVContentRating;
 
 @interface VUIPlistMediaDatabaseItem : VUIPlistMediaDatabaseEntity <NSCopying>
 {
@@ -17,7 +17,7 @@
     NSNumber *_duration;
     NSDate *_releaseDate;
     NSURL *_previewFrameURL;
-    VUIContentRating *_contentRating;
+    _TVContentRating *_contentRating;
     NSNumber *_colorCapability;
     NSNumber *_HLSColorCapability;
     NSNumber *_episodeNumber;
@@ -31,7 +31,7 @@
 
 @property (copy, nonatomic) NSNumber *HLSColorCapability; // @synthesize HLSColorCapability=_HLSColorCapability;
 @property (copy, nonatomic) NSNumber *colorCapability; // @synthesize colorCapability=_colorCapability;
-@property (copy, nonatomic) VUIContentRating *contentRating; // @synthesize contentRating=_contentRating;
+@property (copy, nonatomic) _TVContentRating *contentRating; // @synthesize contentRating=_contentRating;
 @property (copy, nonatomic) VUIMediaItemCredits *credits; // @synthesize credits=_credits;
 @property (copy, nonatomic) NSString *downloadState; // @synthesize downloadState=_downloadState;
 @property (copy, nonatomic) NSNumber *duration; // @synthesize duration=_duration;

@@ -38,6 +38,11 @@ struct SBFDashBoardPadPageInsets {
     struct SBFDashBoardOrientationLeadingInsets _field3;
 };
 
+struct SBNormalizedTransitionInterval {
+    double start;
+    double duration;
+};
+
 struct UIEdgeInsets {
     double _field1;
     double _field2;
@@ -45,11 +50,20 @@ struct UIEdgeInsets {
     double _field4;
 };
 
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+
 struct __va_list_tag {
     unsigned int _field1;
     unsigned int _field2;
     void *_field3;
     void *_field4;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures
@@ -63,10 +77,29 @@ typedef struct {
 
 typedef struct {
     double _field1;
+    BOOL _field2;
+} CDStruct_fd1107da;
+
+typedef struct {
+    double _field1;
     double _field2;
-    double _field3;
-    double _field4;
-} CDStruct_d2b197d1;
+    BOOL _field3;
+    BOOL _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+} CDStruct_aa45ca86;
+
+typedef struct {
+    double x;
+    double y;
+    double z;
+    double w;
+} CDStruct_91d2e2b9;
 
 typedef struct {
     long long _field1;
@@ -76,6 +109,17 @@ typedef struct {
     double _field5;
     double _field6;
     double _field7;
-    BOOL _field8;
-} CDStruct_83077358;
+    long long _field8;
+} CDStruct_d8f0d129;
+
+typedef struct {
+    long long _field1;
+    struct CGPoint _field2;
+    struct CGPoint _field3;
+} CDStruct_3b09cf25;
+
+typedef struct {
+    CDStruct_fd1107da _field1;
+    CDStruct_fd1107da _field2;
+} CDStruct_1cce69bb;
 

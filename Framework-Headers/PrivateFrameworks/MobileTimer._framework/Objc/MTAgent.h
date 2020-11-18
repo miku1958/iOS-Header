@@ -9,36 +9,35 @@
 #import <MobileTimer/MTAgentDiagnosticDelegate-Protocol.h>
 #import <MobileTimer/MTSystemStateDelegate-Protocol.h>
 
-@class MTAgentDiagnosticListener, MTAgentNotificationManager, MTAlarmIntentDonor, MTAlarmScheduler, MTAlarmServer, MTAlarmSnapshot, MTAlarmStorage, MTBedtimeDNDMonitor, MTBedtimeSnapshot, MTLanguageChangeListener, MTPairedDeviceListener, MTSleepMetrics, MTSleepMonitor, MTSyncCommandListener, MTSystemStateListener, MTTimeListener, MTTimerIntentDonor, MTTimerScheduler, MTTimerServer, MTTimerSnapshot, MTTimerStorage, NSDate, NSString;
-@protocol MTNotificationCenter, MTNotificationResponseDelegate;
+@class MTAgentDiagnosticListener, MTAgentNotificationManager, MTAlarmIntentDonor, MTAlarmScheduler, MTAlarmServer, MTAlarmSnapshot, MTAlarmStorage, MTBedtimeDNDMonitor, MTBedtimeSessionManager, MTBedtimeSessionTracker, MTCoreDuetMonitor, MTLanguageChangeListener, MTSleepCoordinator, MTSystemStateListener, MTTimeListener, MTTimerIntentDonor, MTTimerScheduler, MTTimerServer, MTTimerSnapshot, MTTimerStorage, NSDate, NSString;
+@protocol MTNotificationCenter, NAScheduler;
 
 @interface MTAgent : NSObject <MTAgentDiagnosticDelegate, MTSystemStateDelegate>
 {
+    BOOL _systemReady;
     NSDate *_launchDate;
-    long long _mode;
+    id<NAScheduler> _serializer;
     MTAgentNotificationManager *_notificationManager;
     MTSystemStateListener *_systemStateListener;
     MTLanguageChangeListener *_languageChangeListener;
-    MTPairedDeviceListener *_pairedDeviceListener;
-    MTSyncCommandListener *_syncCommandListener;
     MTAgentDiagnosticListener *_diagnostics;
     MTTimeListener *_timeListener;
     MTAlarmServer *_alarmServer;
     MTAlarmScheduler *_alarmScheduler;
     MTAlarmSnapshot *_alarmSnapshot;
-    MTBedtimeSnapshot *_bedtimeSnapshot;
     MTAlarmStorage *_alarmStorage;
-    MTAlarmIntentDonor *_alarmIntentDonor;
-    MTSleepMonitor *_sleepMonitor;
-    MTSleepMetrics *_sleepMetrics;
-    MTBedtimeDNDMonitor *_bedtimeDNDMonitor;
     MTTimerServer *_timerServer;
     MTTimerScheduler *_timerScheduler;
     MTTimerSnapshot *_timerSnapshot;
     MTTimerStorage *_timerStorage;
-    MTTimerIntentDonor *_timerIntentDonor;
     id<MTNotificationCenter> _notificationCenter;
-    id<MTNotificationResponseDelegate> _notificationResponseDelegate;
+    MTAlarmIntentDonor *_alarmIntentDonor;
+    MTTimerIntentDonor *_timerIntentDonor;
+    MTCoreDuetMonitor *_coreDuetMonitor;
+    MTSleepCoordinator *_sleepCoordinator;
+    MTBedtimeDNDMonitor *_bedtimeDNDMonitor;
+    MTBedtimeSessionManager *_bedtimeSessionManager;
+    MTBedtimeSessionTracker *_bedtimeSessionTracker;
 }
 
 @property (strong, nonatomic) MTAlarmIntentDonor *alarmIntentDonor; // @synthesize alarmIntentDonor=_alarmIntentDonor;
@@ -47,22 +46,21 @@
 @property (strong, nonatomic) MTAlarmSnapshot *alarmSnapshot; // @synthesize alarmSnapshot=_alarmSnapshot;
 @property (strong, nonatomic) MTAlarmStorage *alarmStorage; // @synthesize alarmStorage=_alarmStorage;
 @property (strong, nonatomic) MTBedtimeDNDMonitor *bedtimeDNDMonitor; // @synthesize bedtimeDNDMonitor=_bedtimeDNDMonitor;
-@property (strong, nonatomic) MTBedtimeSnapshot *bedtimeSnapshot; // @synthesize bedtimeSnapshot=_bedtimeSnapshot;
+@property (strong, nonatomic) MTBedtimeSessionManager *bedtimeSessionManager; // @synthesize bedtimeSessionManager=_bedtimeSessionManager;
+@property (strong, nonatomic) MTBedtimeSessionTracker *bedtimeSessionTracker; // @synthesize bedtimeSessionTracker=_bedtimeSessionTracker;
+@property (strong, nonatomic) MTCoreDuetMonitor *coreDuetMonitor; // @synthesize coreDuetMonitor=_coreDuetMonitor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MTAgentDiagnosticListener *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MTLanguageChangeListener *languageChangeListener; // @synthesize languageChangeListener=_languageChangeListener;
 @property (strong, nonatomic) NSDate *launchDate; // @synthesize launchDate=_launchDate;
-@property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) id<MTNotificationCenter> notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (strong, nonatomic) MTAgentNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
-@property (strong, nonatomic) id<MTNotificationResponseDelegate> notificationResponseDelegate; // @synthesize notificationResponseDelegate=_notificationResponseDelegate;
-@property (strong, nonatomic) MTPairedDeviceListener *pairedDeviceListener; // @synthesize pairedDeviceListener=_pairedDeviceListener;
-@property (strong, nonatomic) MTSleepMetrics *sleepMetrics; // @synthesize sleepMetrics=_sleepMetrics;
-@property (strong, nonatomic) MTSleepMonitor *sleepMonitor; // @synthesize sleepMonitor=_sleepMonitor;
+@property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
+@property (strong, nonatomic) MTSleepCoordinator *sleepCoordinator; // @synthesize sleepCoordinator=_sleepCoordinator;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) MTSyncCommandListener *syncCommandListener; // @synthesize syncCommandListener=_syncCommandListener;
+@property (nonatomic) BOOL systemReady; // @synthesize systemReady=_systemReady;
 @property (strong, nonatomic) MTSystemStateListener *systemStateListener; // @synthesize systemStateListener=_systemStateListener;
 @property (strong, nonatomic) MTTimeListener *timeListener; // @synthesize timeListener=_timeListener;
 @property (strong, nonatomic) MTTimerIntentDonor *timerIntentDonor; // @synthesize timerIntentDonor=_timerIntentDonor;
@@ -76,12 +74,12 @@
 - (id)_diagnosticProviders;
 - (void)_setupAlarms;
 - (void)_setupInitialListeners;
+- (void)_setupNotificationCenter;
 - (void)_setupSecondaryListeners;
-- (void)_setupSync;
-- (void)_setupSyncMonitor;
 - (void)_setupTimers;
 - (id)gatherDiagnostics;
 - (void)handleF5Reset;
+- (void)handleMigrationFinish;
 - (id)init;
 - (void)printDiagnostics;
 - (void)restoreDidFinish;

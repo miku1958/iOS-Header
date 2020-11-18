@@ -13,19 +13,25 @@
 #import <Widgets/WGWidgetHostingViewControllerDelegate-Protocol.h>
 #import <Widgets/WGWidgetListItemViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString, UIScrollView, UIStackView, WGWidgetDiscoveryController;
+@class MTMaterialView, NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, UIControl, UIScrollView, UIStackView, WGWidgetDiscoveryController;
 @protocol WGWidgetListViewControllerDelegate, WGWidgetListViewControllerDelegatePrivate;
 
 @interface WGWidgetListViewController : UIViewController <WGWidgetDebugging, UIScrollViewDelegate, WGWidgetDiscoveryObserving, WGWidgetHostingViewControllerDelegate, WGWidgetListItemViewControllerDelegate, WGWidgetExtensionVisibilityProviding>
 {
     WGWidgetDiscoveryController *_discoveryController;
+    MTMaterialView *_captureOnlyMaterialView;
+    NSMutableDictionary *_userInterfaceStylesToCaptureOnlyMaterialViews;
+    UIScrollView *_scrollView;
     UIStackView *_stackView;
     NSMutableDictionary *_cancelTouchesAssertionsByWidgetID;
     NSMutableDictionary *_widgetIDsToItemVCs;
     struct CGSize _maxVisibleContentSize;
     BOOL _shouldBlurContent;
+    BOOL _editingIcons;
     id<WGWidgetListViewControllerDelegate> _delegate;
+    UIControl *_editButton;
     NSArray *_previouslyVisibleWidgetIDs;
+    NSLayoutConstraint *_stackViewBottomConstraint;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -34,54 +40,71 @@
 @property (weak, nonatomic) id<WGWidgetListViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIControl *editButton; // @synthesize editButton=_editButton;
+@property (nonatomic, getter=isEditingIcons) BOOL editingIcons; // @synthesize editingIcons=_editingIcons;
 @property (readonly, nonatomic, getter=_group) NSString *group;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_previouslyVisibleWidgetIDs, setter=_setPreviouslyVisibleWidgetIDs:) NSArray *previouslyVisibleWidgetIDs; // @synthesize previouslyVisibleWidgetIDs=_previouslyVisibleWidgetIDs;
 @property (nonatomic) BOOL shouldBlurContent; // @synthesize shouldBlurContent=_shouldBlurContent;
+@property (readonly, nonatomic) NSLayoutConstraint *stackViewBottomConstraint; // @synthesize stackViewBottomConstraint=_stackViewBottomConstraint;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long widgetCount;
 @property (readonly, nonatomic) UIScrollView *widgetListView;
 
 - (void).cxx_destruct;
+- (void)_adjustContentOffsetToInsideContent:(BOOL)arg1;
 - (CDUnknownBlockType)_beginInsertion:(BOOL)arg1 ofListItem:(id)arg2 withOrderedIdentifiers:(id)arg3 removingViewIfPossible:(BOOL)arg4;
-- (void)_cancelTouchesForHitWidgetIfNecessary;
+- (void)_cancelTouchesForHitWidgetIfNecessaryAndDisableTouchesOnAllWidgets;
 - (void)_cancelTouchesForWidget:(id)arg1;
+- (void)_configureAlternateCaptureOnlyMaterialViewWithUserInterfaceStyle:(long long)arg1;
+- (void)_configureCaptureOnlyMaterialView;
+- (void)_configureScrollView;
 - (void)_configureStackView;
+- (void)_didUpdateStackViewArrangedSubviews;
 - (CDUnknownBlockType)_insert:(BOOL)arg1 listItem:(id)arg2 withOrderedIdentifiers:(id)arg3 animated:(BOOL)arg4;
 - (unsigned long long)_insertionIndexofListItem:(id)arg1 intoWidgetViews:(id)arg2 withOrderedIdentifiers:(id)arg3;
+- (void)_invalidateAllAlternateCaptureOnlyMaterialViews;
 - (void)_invalidateAllCancelTouchesAssertions;
+- (void)_invalidateAlternateCaptureOnlyMaterialViewWithUserInterfaceStyle:(long long)arg1;
 - (void)_invokeBlock:(CDUnknownBlockType)arg1 withPlatterViewsPassingTest:(CDUnknownBlockType)arg2;
+- (void)_invokeBlockWithAllPlatterViews:(CDUnknownBlockType)arg1;
 - (void)_invokeBlockWithPlatterViewsVisibleInBounds:(CDUnknownBlockType)arg1;
 - (void)_invokeBlockWithPlatterViewsVisibleInRect:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_listItemViewControllerForWidgetWithIdentifier:(id)arg1 creatingIfNecessary:(BOOL)arg2;
 - (struct CGSize)_maxVisibleContentSize;
+- (id)_newCaptureOnlyMaterialView;
 - (id)_platterViewAtLocation:(struct CGPoint)arg1;
 - (id)_platterViewForWidgetWithIdentifier:(id)arg1 creatingIfNecessary:(BOOL)arg2;
+- (void)_presentEditViewController;
+- (void)_pruneAlternateCaptureOnlyMaterialViews;
 - (void)_repopulateStackView;
-- (id)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
+- (void)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
+- (void)_scrollViewDidStop;
 - (id)_scrollViewIfLoaded;
 - (id)_scrollViewLoadingIfNecessary:(BOOL)arg1;
 - (void)_updateBackgroundViewForPlatter:(id)arg1;
 - (void)_updateWidgetViewStateWithPreviouslyVisibleWidgetIdentifiers:(id)arg1;
 - (struct CGRect)_visibleContentFrameForBounds:(struct CGRect)arg1 withContentOccludingInsets:(struct UIEdgeInsets)arg2;
 - (id)_widgetIdentifiersForPlatterViewsVisibleInBounds;
+- (id)_wrapperViewForWidgetPlatterView:(id)arg1;
 - (void)brokenViewDidAppearForWidget:(id)arg1;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithWidgetDiscoveryController:(id)arg1;
 - (BOOL)isWidgetExtensionVisible:(id)arg1;
-- (void)loadView;
+- (struct UIEdgeInsets)layoutMarginForWidget:(id)arg1;
 - (void)makeVisibleWidgetWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)managingContainerIsVisibleForWidget:(id)arg1;
 - (struct UIEdgeInsets)marginInsetsForWidget:(id)arg1;
 - (struct CGSize)maxSizeForWidget:(id)arg1 forDisplayMode:(long long)arg2;
-- (void)orderOfVisibleWidgetsDidChange:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
+- (void)registerWidgetForRefreshEvents:(id)arg1;
 - (void)remoteViewControllerDidDisconnectForWidget:(id)arg1;
 - (void)remoteViewControllerViewDidAppearForWidget:(id)arg1;
 - (void)remoteViewControllerViewDidHideForWidget:(id)arg1;
+- (void)resizeWidgetWrapperView:(id)arg1 toSize:(struct CGSize)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
@@ -93,6 +116,8 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)unregisterWidgetForRefreshEvents:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
@@ -102,6 +127,8 @@
 - (struct CGRect)visibleFrameForWidget:(id)arg1;
 - (id)visibleWidgetIdentifiers;
 - (void)widget:(id)arg1 didChangeLargestSupportedDisplayMode:(long long)arg2;
+- (void)widgetDiscoveryController:(id)arg1 orderDidChangeForWidgetIdentifiers:(id)arg2;
+- (void)widgetDiscoveryControllerSignificantWidgetsChange:(id)arg1;
 - (id)widgetListItemViewController:(id)arg1 widgetHostWithIdentifier:(id)arg2;
 
 @end

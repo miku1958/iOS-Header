@@ -6,19 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class TSgPTPPort;
+#import <TimeSync/TSgPTPNetworkPortClient-Protocol.h>
+
+@class NSString, TSgPTPPort;
 @protocol OS_dispatch_queue;
 
-@interface TSPortInterface : NSObject
+@interface TSPortInterface : NSObject <TSgPTPNetworkPortClient>
 {
     NSObject<OS_dispatch_queue> *_notificationsQueue;
+    CDUnknownFunctionPointerType _macLookupTimeoutCallback;
+    void *_macLookupTimeoutRefcon;
     TSgPTPPort *_port;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TSgPTPPort *port; // @synthesize port=_port;
+@property (readonly) Class superclass;
 
 - (void)dealloc;
+- (void)didTimeoutOnMACLookupForPort:(id)arg1;
 - (id)initWithgPTPPort:(id)arg1 onClockIdentifier:(unsigned long long)arg2;
+- (void)setMACLookupTimeoutCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 
 @end
 

@@ -10,6 +10,19 @@
 
 @property (readonly) unsigned int tsu_qualityOfServiceClass;
 
++ (id)tsp_currentReadCompletionInfo;
++ (BOOL)tsp_hasReadFileAccess;
++ (BOOL)tsp_isArchiverThread;
++ (BOOL)tsp_isPerformingLegacyDocumentReferenceResolution;
++ (BOOL)tsp_isRunningFinalizeHandlersForLegacyDocument;
++ (BOOL)tsp_isRunningFinalizeHandlersForUpgrade;
++ (BOOL)tsp_isUnarchiverThread;
++ (id)tsp_newUnarchiverQueueWithName:(const char *)arg1;
++ (void)tsp_performSynchronousArchiverOperationUsingBlock:(CDUnknownBlockType)arg1;
++ (void)tsp_performSynchronousLegacyDocumentReferenceResolutionUsingBlock:(CDUnknownBlockType)arg1;
++ (void)tsp_performSynchronousOperationWithReadFileAccessUsingBlock:(CDUnknownBlockType)arg1;
++ (void)tsp_performSynchronousOperationWithThreadDictionaryObject:(id)arg1 forKey:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
++ (void)tsp_runFinalizeHandlersForReadCompletionInfo:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)tsu_currentThreadName;
 @end
 

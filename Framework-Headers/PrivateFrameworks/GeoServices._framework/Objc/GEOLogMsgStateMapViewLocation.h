@@ -13,22 +13,23 @@
 __attribute__((visibility("hidden")))
 @interface GEOLogMsgStateMapViewLocation : PBCodable <NSCopying>
 {
-    int _locationBucket;
     GEOTouristInfo *_touristInfo;
+    int _locationBucket;
     BOOL _isCurrentLocationInViewport;
     struct {
-        unsigned int locationBucket:1;
-        unsigned int isCurrentLocationInViewport:1;
-    } _has;
+        unsigned int has_locationBucket:1;
+        unsigned int has_isCurrentLocationInViewport:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsCurrentLocationInViewport;
 @property (nonatomic) BOOL hasLocationBucket;
 @property (readonly, nonatomic) BOOL hasTouristInfo;
-@property (nonatomic) BOOL isCurrentLocationInViewport; // @synthesize isCurrentLocationInViewport=_isCurrentLocationInViewport;
-@property (nonatomic) int locationBucket; // @synthesize locationBucket=_locationBucket;
-@property (strong, nonatomic) GEOTouristInfo *touristInfo; // @synthesize touristInfo=_touristInfo;
+@property (nonatomic) BOOL isCurrentLocationInViewport;
+@property (nonatomic) int locationBucket;
+@property (strong, nonatomic) GEOTouristInfo *touristInfo;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsLocationBucket:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -39,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (id)locationBucketAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

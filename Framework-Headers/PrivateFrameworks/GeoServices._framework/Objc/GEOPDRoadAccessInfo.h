@@ -17,14 +17,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_roadAccessPoints;
 }
 
-@property (strong, nonatomic) NSMutableArray *roadAccessPoints; // @synthesize roadAccessPoints=_roadAccessPoints;
+@property (strong, nonatomic) NSMutableArray *roadAccessPoints;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (id)roadAccessInfoForPlaceData:(id)arg1;
 + (Class)roadAccessPointType;
 - (void).cxx_destruct;
 - (void)addRoadAccessPoint:(id)arg1;
 - (void)clearRoadAccessPoints;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)roadAccessPointAtIndex:(unsigned long long)arg1;
 - (unsigned long long)roadAccessPointsCount;

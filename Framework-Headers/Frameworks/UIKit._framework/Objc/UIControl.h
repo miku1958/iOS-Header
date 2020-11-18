@@ -25,7 +25,7 @@
         unsigned int allowActionsToQueue:1;
         unsigned int pendingUnhighlight:1;
         unsigned int selected:1;
-        unsigned int verticalAlignment:2;
+        unsigned int verticalAlignment:3;
         unsigned int horizontalAlignment:3;
         unsigned int wasLastHighlightSuccessful:1;
         unsigned int touchHasHighlighted:1;
@@ -88,6 +88,7 @@
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)dealloc;
+- (long long)effectiveContentVerticalAlignment;
 - (void)encodeWithCoder:(id)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)hasOneOrMoreTargets;

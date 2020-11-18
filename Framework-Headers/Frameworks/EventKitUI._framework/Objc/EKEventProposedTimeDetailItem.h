@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     NSMutableDictionary *_cellForAttendee;
     NSArray *_attendeesWithProposedTimes;
+    BOOL _visibilityChanged;
 }
 
 - (void).cxx_destruct;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
+- (BOOL)detailItemVisibilityChanged;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (BOOL)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfSubitems;

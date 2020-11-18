@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (int)getMomentsCapabilities;
+- (id)getMomentsImageTypes;
+- (id)getMomentsVideoCodecs;
 - (id)initWithHardwareSettings:(id)arg1;
 
 @end

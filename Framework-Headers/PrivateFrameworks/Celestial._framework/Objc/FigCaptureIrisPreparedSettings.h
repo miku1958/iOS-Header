@@ -9,7 +9,7 @@
 #import <Celestial/FigXPCCoding-Protocol.h>
 #import <Celestial/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface FigCaptureIrisPreparedSettings : NSObject <FigXPCCoding, NSCopying>
 {
@@ -19,21 +19,23 @@
     unsigned int _outputWidth;
     unsigned int _outputHeight;
     unsigned int _bracketedImageCount;
-    int _SISMode;
+    int _qualityPrioritization;
     int _HDRMode;
-    BOOL _bravoDualImageDeliveryEnabled;
+    int _digitalFlashMode;
+    NSArray *_bravoConstituentImageDeliveryDeviceTypes;
 }
 
 @property (nonatomic) int HDRMode; // @synthesize HDRMode=_HDRMode;
-@property (nonatomic) int SISMode; // @synthesize SISMode=_SISMode;
 @property (nonatomic) unsigned int bracketedImageCount; // @synthesize bracketedImageCount=_bracketedImageCount;
-@property (nonatomic) BOOL bravoDualImageDeliveryEnabled; // @synthesize bravoDualImageDeliveryEnabled=_bravoDualImageDeliveryEnabled;
+@property (copy, nonatomic) NSArray *bravoConstituentImageDeliveryDeviceTypes; // @synthesize bravoConstituentImageDeliveryDeviceTypes=_bravoConstituentImageDeliveryDeviceTypes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) int digitalFlashMode; // @synthesize digitalFlashMode=_digitalFlashMode;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int outputHeight; // @synthesize outputHeight=_outputHeight;
 @property (nonatomic) unsigned int outputWidth; // @synthesize outputWidth=_outputWidth;
 @property (nonatomic) unsigned int processedOutputFormat; // @synthesize processedOutputFormat=_processedOutputFormat;
+@property (nonatomic) int qualityPrioritization; // @synthesize qualityPrioritization=_qualityPrioritization;
 @property (nonatomic) unsigned int rawOutputFormat; // @synthesize rawOutputFormat=_rawOutputFormat;
 @property (nonatomic) long long settingsID; // @synthesize settingsID=_settingsID;
 @property (readonly) Class superclass;

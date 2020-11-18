@@ -15,10 +15,15 @@
     unsigned long long _status;
     unsigned long long _width;
     unsigned long long _height;
+    double _boundTime;
+    unsigned long long _memoryCost;
 }
 
+@property (nonatomic) double boundTime; // @synthesize boundTime=_boundTime;
 @property (readonly, nonatomic) unsigned long long height; // @synthesize height=_height;
 @property (readonly, nonatomic) long long instanceCount;
+@property (readonly) BOOL isPurgable;
+@property (nonatomic) unsigned long long memoryCost; // @synthesize memoryCost=_memoryCost;
 @property (nonatomic) unsigned long long status; // @synthesize status=_status;
 @property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) unsigned long long width; // @synthesize width=_width;

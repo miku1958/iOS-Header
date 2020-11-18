@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithAction:(unsigned long long)arg1 entityId:(id)arg2 caller:(id)arg3;
+- (void)processResponse;
 
 @end
 

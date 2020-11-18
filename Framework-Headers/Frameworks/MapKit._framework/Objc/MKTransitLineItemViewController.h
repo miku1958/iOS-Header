@@ -73,9 +73,11 @@
 - (int)mapTypeForETAProvider:(id)arg1;
 - (void)nearestStationViewControllerDidSelectStation:(id)arg1;
 - (void)placeActionManager:(id)arg1 didSelectShareFromView:(id)arg2;
+- (void)placeCardActionControllerDidSelectAddToCollection:(id)arg1;
 - (void)placeCardActionControllerDidSelectAddToFavorites:(id)arg1;
 - (void)placeCardActionControllerDidSelectRemoveFromFavorites:(id)arg1;
-- (void)placeCardActionControllerDidSelectReportAProblem:(id)arg1;
+- (void)placeCardActionControllerDidSelectReportAProblem:(id)arg1 fromView:(id)arg2;
+- (void)placeCardActionControllerDidSelectReportAProblemAddNewPlace:(id)arg1;
 - (void)placeCardEncyclopedicControllerDidSelectShowArticle:(id)arg1;
 - (double)placeCardHeaderViewControllerTrailingConstantForTitle:(id)arg1;
 - (void)placeHeaderButtonsViewController:(id)arg1 didSelectPrimaryType:(unsigned long long)arg2 withView:(id)arg3;
@@ -83,11 +85,13 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)setContentVisibility:(long long)arg1;
 - (void)setLoading:(BOOL)arg1;
 - (void)setTransitLineItem:(id)arg1;
 - (void)setTransitLineItem:(id)arg1 loading:(BOOL)arg2;
 - (double)stackingViewController:(id)arg1 heightForSeparatorBetweenUpperViewController:(id)arg2 andLowerViewController:(id)arg3;
 - (void)transitLineIncidentsViewController:(id)arg1 didSelectDetailsForIncidents:(id)arg2;
+- (void)updateMaskAlpha:(double)arg1 onHeight:(double)arg2 withOffset:(double)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

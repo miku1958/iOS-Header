@@ -8,6 +8,7 @@
 
 @class NSArray, SKUINavigationBarViewElement;
 
+__attribute__((visibility("hidden")))
 @interface SKUIExploreTemplateElement : SKUIViewElement
 {
     BOOL _usesSplits;

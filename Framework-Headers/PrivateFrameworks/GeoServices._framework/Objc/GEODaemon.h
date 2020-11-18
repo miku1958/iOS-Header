@@ -14,6 +14,7 @@
     NSMutableSet *_servers;
     NSMutableSet *_peers;
     NSObject<OS_dispatch_source> *_sigInfoSrc;
+    NSObject<OS_dispatch_source> *_sigTermSrc;
     NSObject<OS_xpc_object> *_listener;
 }
 
@@ -33,6 +34,8 @@
 - (id)initWithPort:(const char *)arg1;
 - (void)peerDidConnect:(id)arg1;
 - (void)peerDidDisconnect:(id)arg1;
+- (void)start;
+- (void)startServerClassIfNecessary:(Class)arg1;
 
 @end
 

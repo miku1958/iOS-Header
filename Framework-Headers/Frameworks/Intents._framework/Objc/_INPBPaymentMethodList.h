@@ -15,10 +15,12 @@
 @interface _INPBPaymentMethodList : PBCodable <_INPBPaymentMethodList, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBCondition *_condition;
     NSArray *_paymentMethods;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,11 +31,14 @@
 @property (readonly) Class superclass;
 
 + (Class)paymentMethodsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addPaymentMethods:(id)arg1;
 - (void)clearPaymentMethods;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)paymentMethodsAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;

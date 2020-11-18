@@ -8,7 +8,7 @@
 
 #import <Search/NSCopying-Protocol.h>
 
-@class NSArray, NSDate, NSString;
+@class MISSING_TYPE, NSArray, NSDate, NSString;
 
 @interface SPCoreSpotlightResult : SFSearchResult_Compatibility <NSCopying>
 {
@@ -18,29 +18,29 @@
     NSString *_itemIdentifier;
     NSDate *_interestingDate;
     NSString *_domainIdentifier;
-    long long _incomingCount;
-    long long _outgoingCount;
+    long long *_incomingCount;
+    long long *_outgoingCount;
     NSString *_relatedBundleID;
     NSString *_mailConversationIdentifier;
     NSArray *_launchDates;
     NSDate *_contentCreationDate;
     NSString *_bundleID;
-    struct ranking_index_score_t _buddyScore;
+    MISSING_TYPE *_buddyScore;
 }
 
-@property struct ranking_index_score_t buddyScore; // @synthesize buddyScore=_buddyScore;
+@property MISSING_TYPE *buddyScore; // @synthesize buddyScore=_buddyScore;
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong) NSArray *compatibilityDescriptions;
 @property BOOL completed; // @synthesize completed=_completed;
 @property (strong, nonatomic) NSDate *contentCreationDate; // @synthesize contentCreationDate=_contentCreationDate;
 @property (strong) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (nonatomic) BOOL hasAssociatedUserActivity; // @synthesize hasAssociatedUserActivity=_hasAssociatedUserActivity;
-@property long long incomingCount; // @synthesize incomingCount=_incomingCount;
+@property long long *incomingCount; // @synthesize incomingCount=_incomingCount;
 @property (strong) NSDate *interestingDate; // @synthesize interestingDate=_interestingDate;
 @property (strong) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 @property (strong, nonatomic) NSArray *launchDates; // @synthesize launchDates=_launchDates;
 @property (strong) NSString *mailConversationIdentifier; // @synthesize mailConversationIdentifier=_mailConversationIdentifier;
-@property long long outgoingCount; // @synthesize outgoingCount=_outgoingCount;
+@property long long *outgoingCount; // @synthesize outgoingCount=_outgoingCount;
 @property (strong) NSString *relatedBundleID; // @synthesize relatedBundleID=_relatedBundleID;
 @property (strong) NSString *relatedUniqueIdentifier; // @synthesize relatedUniqueIdentifier=_relatedUniqueIdentifier;
 @property int title_maxlines;

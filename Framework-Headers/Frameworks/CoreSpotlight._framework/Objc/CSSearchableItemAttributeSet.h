@@ -52,6 +52,7 @@
 @property (strong) NSNumber *favoriteRank;
 @property (strong) NSNumber *fileIdentifier;
 @property (copy) NSString *fileItemID;
+@property (copy) NSString *fileProviderDomainIdentifier;
 @property (copy) NSString *fileProviderDomaindentifier;
 @property (copy) NSString *fileProviderID;
 @property (copy) NSArray *fileProviderUserInfoKeys;
@@ -60,6 +61,7 @@
 @property (readonly, nonatomic) BOOL hasCodedCustomAttributes; // @synthesize hasCodedCustomAttributes=_hasCodedCustomAttributes;
 @property (copy) NSData *intentData;
 @property (strong) NSNumber *isPlaceholder;
+@property (strong) NSNumber *isZombie;
 @property (copy) NSDate *lastApplicationLaunchedDate;
 @property (copy) NSString *lastEditorIdentifier;
 @property (copy) NSString *lastEditorName;
@@ -83,6 +85,7 @@
 @property (strong) NSNumber *parentFileIdentifier;
 @property (copy) NSString *parentFileItemID;
 @property (strong, getter=isPartiallyDownloaded) NSNumber *partiallyDownloaded;
+@property (strong, nonatomic, getter=isPinned) NSNumber *pinned;
 @property (copy) NSString *protectionClass;
 @property (copy) NSString *punchoutLabel;
 @property (readonly) NSArray *queryResultMatchedFields;
@@ -178,6 +181,7 @@
 - (id)authors;
 - (id)bitsPerSample;
 - (id)bundleIdentifier;
+- (id)calendarDelegateIdentifier;
 - (id)calendarHolidayIdentifier;
 - (id)cameraOwner;
 - (id)city;
@@ -251,6 +255,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDecoder:(id)arg1 obj:(CDStruct_b7fac349)arg2;
 - (id)initWithItemContentType:(id)arg1;
+- (id)initWithMutableDictionary:(id)arg1;
 - (id)initWithSerializedAttributes:(id)arg1;
 - (id)instantMessageAddresses;
 - (id)instructions;
@@ -367,6 +372,7 @@
 - (void)setAuthors:(id)arg1;
 - (void)setBitsPerSample:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
+- (void)setCalendarDelegateIdentifier:(id)arg1;
 - (void)setCalendarHolidayIdentifier:(id)arg1;
 - (void)setCameraOwner:(id)arg1;
 - (void)setCity:(id)arg1;
@@ -448,6 +454,7 @@
 - (void)setInformation:(id)arg1;
 - (void)setInstantMessageAddresses:(id)arg1;
 - (void)setInstructions:(id)arg1;
+- (void)setIsPinned:(id)arg1;
 - (void)setKeySignature:(id)arg1;
 - (void)setKeywords:(id)arg1;
 - (void)setKind:(id)arg1;
@@ -528,6 +535,7 @@
 - (void)setTimeSignature:(id)arg1;
 - (void)setTimestamp:(id)arg1;
 - (void)setTitle:(id)arg1;
+- (void)setTopic:(id)arg1;
 - (void)setTotalBitRate:(id)arg1;
 - (void)setURL:(id)arg1;
 - (void)setUserCreated:(id)arg1;
@@ -556,6 +564,7 @@
 - (id)timeSignature;
 - (id)timestamp;
 - (id)title;
+- (id)topic;
 - (id)totalBitRate;
 - (id)userCreatedDate;
 - (id)userCreatedUserHandle;

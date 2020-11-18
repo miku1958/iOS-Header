@@ -30,6 +30,7 @@
 - (void)activate;
 - (id)init;
 - (void)invalidate;
+- (void)preheat;
 - (void)prepare;
 - (void)remoteAlertHandle:(id)arg1 didInvalidateWithError:(id)arg2;
 - (void)remoteAlertHandleDidActivate:(id)arg1;

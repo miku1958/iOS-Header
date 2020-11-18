@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, GEODirectionsResponse, GEORouteSet, MKMapItem, NSArray, NSString, NSURL;
+@class GEOComposedRoute, GEODirectionsResponse, MKMapItem, NSArray, NSString, NSURL;
 
 @interface MKDirectionsResponse : NSObject
 {
@@ -14,7 +14,6 @@
     MKMapItem *_source;
     MKMapItem *_destination;
     NSArray *_routes;
-    GEORouteSet *_routeSet;
     GEOComposedRoute *_geoComposedRoute;
 }
 
@@ -24,13 +23,11 @@
 @property (readonly, nonatomic) double _typicalTrafficRatio;
 @property (readonly, nonatomic) MKMapItem *destination; // @synthesize destination=_destination;
 @property (readonly, strong, nonatomic) GEOComposedRoute *geoComposedRoute; // @synthesize geoComposedRoute=_geoComposedRoute;
-@property (readonly, strong, nonatomic) GEORouteSet *routeSet; // @synthesize routeSet=_routeSet;
 @property (readonly, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (readonly, nonatomic) MKMapItem *source; // @synthesize source=_source;
 
 + (id)_responseWithGEODirectionsRouteResponse:(id)arg1 routeRequest:(id)arg2 request:(id)arg3 origin:(id)arg4 destination:(id)arg5 error:(id *)arg6;
 - (void).cxx_destruct;
-- (void)_completeRoutesFromRouteSet;
 - (id)_initWithGEORouteResponse:(id)arg1 routeRequest:(id)arg2 request:(id)arg3 origin:(id)arg4 destination:(id)arg5;
 - (id)_route;
 

@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (void)_bringViewsToFront;
 - (id)_lollipopAnnotationColor;
+- (id)_lollipopExtensionColor;
 - (double)_lollipopExtensionLength;
 - (double)_lollipopExtensionWidth;
 - (id)_lollipopFieldColor;
@@ -43,7 +44,7 @@
 - (void)_setHidden:(BOOL)arg1;
 - (id)_stickLocationsFromPointContexts:(id)arg1;
 - (id)firstLollipopDate;
-- (id)initWithAnnotationDataSource:(id)arg1 parentView:(id)arg2 showSeparators:(BOOL)arg3 delegate:(id)arg4;
+- (id)initWithAnnotationDataSource:(id)arg1 parentView:(id)arg2 delegate:(id)arg3;
 - (BOOL)isVisible;
 - (void)setInvisibleAnimated:(BOOL)arg1;
 - (void)setVisibleWithRect:(struct CGRect)arg1 pointContexts:(id)arg2 animated:(BOOL)arg3;

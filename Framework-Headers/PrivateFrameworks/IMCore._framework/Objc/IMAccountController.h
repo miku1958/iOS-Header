@@ -42,7 +42,6 @@
 - (BOOL)_deactivateAccounts:(id)arg1;
 - (void)_disableCache;
 - (void)_enableCache;
-- (id)_operationalPhoneAccountForService:(id)arg1;
 - (void)_rebuildOperationalAccountsCache:(BOOL)arg1;
 - (BOOL)accountActive:(id)arg1;
 - (id)accountAtIndex:(int)arg1;
@@ -88,6 +87,7 @@
 - (void)dealloc;
 - (BOOL)deleteAccount:(id)arg1;
 - (BOOL)deleteAccount:(id)arg1 locally:(BOOL)arg2;
+- (id)iMessageAccountForLastAddressedHandle:(id)arg1 simID:(id)arg2;
 - (id)init;
 - (id)jabberAccount;
 - (id)mostLoggedInAccount;

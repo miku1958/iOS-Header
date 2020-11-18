@@ -21,6 +21,7 @@
 - (void)_removeObserver:(id)arg1;
 - (void)_removeObserver:(id)arg1 forKey:(long long)arg2;
 - (void)addObserver:(id)arg1 forKey:(long long)arg2 queue:(id)arg3 block:(CDUnknownBlockType)arg4;
+- (id)addObserverForKey:(long long)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)notifyAllObserversForKey:(long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;

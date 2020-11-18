@@ -8,23 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEOLogMsgStateDeviceLocale : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_deviceInputLocale;
     NSString *_deviceOutputLocale;
     NSString *_deviceSettingsLocale;
+    struct {
+        unsigned int read_deviceInputLocale:1;
+        unsigned int read_deviceOutputLocale:1;
+        unsigned int read_deviceSettingsLocale:1;
+        unsigned int wrote_deviceInputLocale:1;
+        unsigned int wrote_deviceOutputLocale:1;
+        unsigned int wrote_deviceSettingsLocale:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *deviceInputLocale; // @synthesize deviceInputLocale=_deviceInputLocale;
-@property (strong, nonatomic) NSString *deviceOutputLocale; // @synthesize deviceOutputLocale=_deviceOutputLocale;
-@property (strong, nonatomic) NSString *deviceSettingsLocale; // @synthesize deviceSettingsLocale=_deviceSettingsLocale;
+@property (strong, nonatomic) NSString *deviceInputLocale;
+@property (strong, nonatomic) NSString *deviceOutputLocale;
+@property (strong, nonatomic) NSString *deviceSettingsLocale;
 @property (readonly, nonatomic) BOOL hasDeviceInputLocale;
 @property (readonly, nonatomic) BOOL hasDeviceOutputLocale;
 @property (readonly, nonatomic) BOOL hasDeviceSettingsLocale;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDeviceInputLocale;
+- (void)_readDeviceOutputLocale;
+- (void)_readDeviceSettingsLocale;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +46,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

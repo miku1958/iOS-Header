@@ -29,7 +29,6 @@
 - (NSSet *)infosToHideForCanvas:(TSDCanvas *)arg1;
 - (BOOL)isCanvasDrawingIntoPDF:(TSDCanvas *)arg1;
 - (BOOL)isCanvasInteractive;
-- (BOOL)isExportingFixedLayoutEPUB;
 - (BOOL)isPrintingCanvas;
 - (BOOL)isRenderingForKPF;
 - (BOOL)shouldShowInstructionalText;
@@ -38,6 +37,7 @@
 - (BOOL)spellCheckingSupported;
 - (BOOL)spellCheckingSuppressed;
 - (BOOL)supportsAdaptiveLayout;
+- (BOOL)textLayoutMustIncludeAdornments;
 - (void)updateLayerTreeForInteractiveCanvas:(TSDCanvas *)arg1;
 - (struct CGRect)visibleScaledBoundsForClippingRepsOnCanvas:(TSDCanvas *)arg1;
 - (BOOL)wantsEditingLayoutsForOffscreenInfos;

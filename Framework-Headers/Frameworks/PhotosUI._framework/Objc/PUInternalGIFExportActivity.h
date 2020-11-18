@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUActivity.h>
+#import <PhotosUICore/PXActivity.h>
 
 __attribute__((visibility("hidden")))
-@interface PUInternalGIFExportActivity : PUActivity
+@interface PUInternalGIFExportActivity : PXActivity
 {
 }
 
 + (long long)activityCategory;
 - (id)_asset;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

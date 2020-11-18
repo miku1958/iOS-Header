@@ -6,11 +6,12 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class NSData, NSString, UIImage;
+@class NSData, NSString, NSURL, UIImage;
 
 @protocol AVTImageEncoder <NSObject>
 - (NSData *)dataFromImage:(UIImage *)arg1;
 - (NSString *)fileExtension;
 - (UIImage *)imageFromData:(NSData *)arg1 error:(id *)arg2;
+- (UIImage *)imageFromURL:(NSURL *)arg1 error:(id *)arg2;
 @end
 

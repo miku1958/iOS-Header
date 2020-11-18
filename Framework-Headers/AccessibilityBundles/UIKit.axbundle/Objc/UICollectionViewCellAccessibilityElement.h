@@ -30,10 +30,10 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityIsAwayAlertElement;
 - (BOOL)_accessibilityIsOutsideParentBounds;
-- (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsScannerGroup;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (void)_accessibilityPaste;
+- (void)_accessibilityRedo;
 - (long long)_accessibilityScannerActivateBehavior;
 - (void)_accessibilitySelect;
 - (void)_accessibilitySelectAll;
@@ -46,6 +46,7 @@
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (void)_accessibilityUndo;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)_accessibilityUserTestingIsCancelButton;
 - (BOOL)_accessibilityUserTestingIsDefaultButton;
@@ -66,6 +67,7 @@
 - (void)accessibilityIncrement;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScrollToVisibleWithChild:(id)arg1;
 - (unsigned long long)accessibilityTraits;

@@ -8,25 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOWalkingOptions : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _avoidedModes;
     double _preferredSpeed;
     struct {
-        unsigned int preferredSpeed:1;
-    } _has;
+        unsigned int has_preferredSpeed:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *avoidedModes;
 @property (readonly, nonatomic) unsigned long long avoidedModesCount;
 @property (nonatomic) BOOL hasPreferredSpeed;
-@property (nonatomic) double preferredSpeed; // @synthesize preferredSpeed=_preferredSpeed;
+@property (nonatomic) double preferredSpeed;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
+- (void).cxx_destruct;
 - (int)StringAsAvoidedModes:(id)arg1;
 - (void)addAvoidedMode:(int)arg1;
 - (int)avoidedModeAtIndex:(unsigned long long)arg1;
 - (id)avoidedModesAsString:(int)arg1;
 - (void)clearAvoidedModes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -35,6 +42,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAvoidedModes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)innerLabel;
 - (void)layoutSubviews;

@@ -26,6 +26,7 @@
         long long __sig;
         char __opaque[56];
     } _poolLockMutex;
+    BOOL _closed;
     BOOL _locked;
     NSString *_databasePath;
     id<ML3DatabaseConnectionPoolDelegate> _delegate;
@@ -34,6 +35,7 @@
     unsigned long long _connectionsJournalingMode;
 }
 
+@property (nonatomic, getter=isClosed) BOOL closed; // @synthesize closed=_closed;
 @property (nonatomic) unsigned long long connectionsJournalingMode; // @synthesize connectionsJournalingMode=_connectionsJournalingMode;
 @property (nonatomic) int connectionsProfilingLevel;
 @property (readonly, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
@@ -59,6 +61,7 @@
 - (id)initWithDatabasePath:(id)arg1 maxReaders:(unsigned long long)arg2;
 - (id)initWithDatabasePath:(id)arg1 maxReaders:(unsigned long long)arg2 maxWriters:(unsigned long long)arg3;
 - (void)lock;
+- (void)lockAndCloseAllConnectionsForTermination;
 - (id)readerConnection;
 - (void)unlock;
 - (id)writerConnection;

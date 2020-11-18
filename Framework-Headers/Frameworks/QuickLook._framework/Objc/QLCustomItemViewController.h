@@ -32,8 +32,10 @@
 - (void).cxx_destruct;
 - (void)didDismissActivityViewController;
 - (void)dismissPreviewController;
+- (void)forwardMessageToHost:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getFrameWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)presentActivityViewControllerFromView:(id)arg1;
+- (void)presentActivityViewControllerFromView:(id)arg1 withURL:(id)arg2;
 - (void)presentationModeDidChange:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setFullScreen:(BOOL)arg1;

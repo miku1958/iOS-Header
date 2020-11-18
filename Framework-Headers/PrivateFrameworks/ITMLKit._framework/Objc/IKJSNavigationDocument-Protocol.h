@@ -6,10 +6,11 @@
 
 #import <ITMLKit/JSExport-Protocol.h>
 
-@class IKDOMDocument, NSArray, NSDictionary;
+@class IKDOMDocument, NSArray, NSDictionary, NSString;
 
 @protocol IKJSNavigationDocument <JSExport>
 
+@property (readonly) NSString *OPTION_RETAIN_CONTEXT;
 @property (readonly, strong, nonatomic) NSArray *documents;
 
 - (void)clear;

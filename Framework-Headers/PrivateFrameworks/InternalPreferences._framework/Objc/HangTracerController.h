@@ -10,21 +10,17 @@
 
 @class NSString, PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface HangTracerController : PSListController <UITextFieldDelegate>
 {
-    BOOL _enabled;
-    float _runloopDuration;
-    float _launchDuration;
-    int _logLevel;
-    PSSpecifier *_textSpec;
-    PSSpecifier *_runloopDurationSlider;
-    PSSpecifier *_runloopDurationLabel;
-    PSSpecifier *_launchDurationText;
-    PSSpecifier *_launchDurationSlider;
-    PSSpecifier *_launchDurationLabel;
-    PSSpecifier *_logLevelText;
-    PSSpecifier *_logLevelSlider;
-    PSSpecifier *_logLevelLabel;
+    float _hudThresholdMS;
+    PSSpecifier *_hangtracerExplanation;
+    PSSpecifier *_emptyGap;
+    PSSpecifier *_hudTitle;
+    PSSpecifier *_enabledHUD;
+    PSSpecifier *_hudThresholdText;
+    PSSpecifier *_hudThresholdSlider;
+    PSSpecifier *_hudThresholdLabel;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,31 +29,18 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)durationText:(id)arg1;
-- (id)getLogLevel:(id)arg1;
 - (void)handleSliderChangedEvent:(id)arg1;
 - (void)handleSliderTouchUpEvent:(id)arg1;
+- (id)hudThreshold:(id)arg1;
+- (id)hudThresholdText:(id)arg1;
 - (id)init;
-- (id)isEnabledAppActivationLogging:(id)arg1;
-- (id)isEnabledExcResourceHUD:(id)arg1;
 - (id)isEnabledHUD:(id)arg1;
-- (id)isEnabledTakeStackshots:(id)arg1;
-- (id)launchDuration:(id)arg1;
-- (id)launchDurationText:(id)arg1;
-- (id)logLevelText:(id)arg1;
-- (id)runloopDuration:(id)arg1;
-- (void)setAppActivationLoggingEnabled:(id)arg1 specifier:(id)arg2;
-- (void)setExcResourceHUD:(id)arg1 specifier:(id)arg2;
 - (void)setHUDEnabled:(id)arg1 specifier:(id)arg2;
-- (void)setLaunchDuration:(id)arg1 specifier:(id)arg2;
-- (void)setLogLevel:(id)arg1 specifier:(id)arg2;
-- (void)setRunloopDuration:(id)arg1 specifier:(id)arg2;
-- (void)setTakeStackshots:(id)arg1 specifier:(id)arg2;
-- (void)setTracingEnabled:(id)arg1 specifier:(id)arg2;
+- (void)setHUDThreshold:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (BOOL)textFieldShouldReturn:(id)arg1;
-- (id)tracingEnabled:(id)arg1;
+- (void)updateHUDThreshold:(float)arg1;
 
 @end
 

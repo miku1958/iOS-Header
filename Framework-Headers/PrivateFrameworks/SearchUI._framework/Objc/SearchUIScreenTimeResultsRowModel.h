@@ -4,43 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <SearchUI/SearchUIRowModel.h>
 
-#import <SearchUI/SearchUIRowModel-Protocol.h>
+@class NSString;
 
-@class NSArray, NSString;
-
-@interface SearchUIScreenTimeResultsRowModel : NSObject <SearchUIRowModel>
+@interface SearchUIScreenTimeResultsRowModel : SearchUIRowModel
 {
-    NSArray *_results;
     NSString *_title;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong) NSArray *results; // @synthesize results=_results;
-@property (readonly) Class superclass;
-@property (strong) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (id)cardSection;
-- (id)dragAppBundleID;
-- (id)dragSubtitle;
-- (id)dragText;
-- (id)dragTitle;
-- (id)dragURL;
-- (id)identifyingResult;
+- (Class)cellViewClass;
 - (id)initWithSection:(id)arg1;
-- (BOOL)isDraggable;
-- (BOOL)isSuggestion;
 - (BOOL)isTappable;
-- (double)leadingSeparatorImageInset;
-- (id)nextCard;
-- (id)punchouts;
-- (id)reuseIdentifier;
-- (int)separatorStyle;
-- (Class)viewClass;
 
 @end
 

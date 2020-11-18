@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) double vibrationRecorderProgressToolbarVerticalOffset;
 @property (readonly, nonatomic) double vibrationRecorderProgressViewAccessibilityAdditionalHeight;
 @property (readonly, nonatomic) double vibrationRecorderProgressViewDotHorizontalInset;
+@property (readonly, nonatomic) UIColor *vibrationRecorderProgressViewDotTintColor;
 @property (readonly, nonatomic) double vibrationRecorderProgressViewHeight;
 @property (readonly, nonatomic) double vibrationRecorderProgressViewHorizontalOffsetFromEdge;
 @property (readonly, nonatomic) UIImage *vibrationRecorderProgressViewResizableDotImage;

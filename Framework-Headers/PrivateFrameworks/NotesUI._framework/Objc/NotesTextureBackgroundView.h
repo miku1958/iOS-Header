@@ -6,32 +6,29 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NotesTextureView;
+@class NotesTextureView;
 
 @interface NotesTextureBackgroundView : UIView
 {
+    double _textureHeight;
+    double _scrollOffset;
     BOOL _scrollsTexture;
     NotesTextureView *_textureView;
-    NSLayoutConstraint *_textureYConstraint;
-    NSLayoutConstraint *_textureHeightConstraint;
 }
 
 @property BOOL scrollsTexture; // @synthesize scrollsTexture=_scrollsTexture;
-@property (strong, nonatomic) NSLayoutConstraint *textureHeightConstraint; // @synthesize textureHeightConstraint=_textureHeightConstraint;
 @property (readonly, nonatomic) NotesTextureView *textureView; // @synthesize textureView=_textureView;
-@property (strong, nonatomic) NSLayoutConstraint *textureYConstraint; // @synthesize textureYConstraint=_textureYConstraint;
 
-+ (id)colorWithPaperTexturePatternImage;
-+ (id)textureImage;
 - (void).cxx_destruct;
+- (void)_setOverrideUserInterfaceStyle:(long long)arg1;
 - (void)commonInitWithScrollingTextures:(BOOL)arg1 hasAlpha:(BOOL)arg2;
 - (double)heightByCoveringHeight:(double)arg1 withImage:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 scrollingTextures:(BOOL)arg2 hasAlpha:(BOOL)arg3;
-- (void)setBounds:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (void)setContentOffset:(struct CGPoint)arg1;
-- (void)setFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -16,7 +16,7 @@
 {
     BOOL _userEnabled;
     BOOL _needsRelogin;
-    struct NSUUID *_identifier;
+    NSUUID *_identifier;
     long long _state;
     NSDate *_lastFetchDate;
     NSDate *_lastFullFetchDate;
@@ -27,12 +27,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) HKClinicalGateway *gateway; // @synthesize gateway=_gateway;
-@property (readonly, nonatomic) BOOL hasErrorState;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
 @property (readonly, copy, nonatomic) NSDate *lastFullFetchDate; // @synthesize lastFullFetchDate=_lastFullFetchDate;
-@property (readonly, nonatomic, getter=hasMultipleLocations) BOOL multiple;
 @property (readonly, nonatomic) BOOL needsRelogin; // @synthesize needsRelogin=_needsRelogin;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, copy, nonatomic) NSString *subtitle;
@@ -46,7 +44,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(struct NSUUID *)arg1 state:(long long)arg2 userEnabled:(BOOL)arg3 needsRelogin:(BOOL)arg4 lastFetchDate:(id)arg5 lastFullFetchDate:(id)arg6 gateway:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 state:(long long)arg2 userEnabled:(BOOL)arg3 needsRelogin:(BOOL)arg4 lastFetchDate:(id)arg5 lastFullFetchDate:(id)arg6 gateway:(id)arg7;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -14,8 +14,8 @@
     double _stallDistance;
     double _maxDimension;
     double _thumbRegion;
-    int _orientation;
-    int _directions[7];
+    long long _orientation;
+    long long _directions[7];
     struct {
         double horizontal;
         double vertical;
@@ -40,8 +40,8 @@
     double _potentialTrackingStartTimestamp;
     BOOL _requireUp;
     BOOL _thumbRejectionEnabled;
-    int _state;
-    int _direction;
+    long long _state;
+    long long _direction;
     double _directionalSlope;
     struct SCRCFingerState _finger[2];
     unsigned long long _absoluteFingerCount;
@@ -56,6 +56,7 @@
     id<SCRCGestureFactoryCallback> _gutterUpDelegate;
     id<SCRCGestureFactoryCallback> _splitTapDelegate;
     id<SCRCGestureFactoryCallback> _canSplitTapDelegate;
+    id<SCRCGestureFactoryCallback> _didBeginSplitGestureDelegate;
     SCRCTargetSelectorTimer *_trackingTimer;
     struct {
         BOOL isFingerCurrentlyDown;
@@ -80,13 +81,14 @@
         BOOL tapDead;
         BOOL timedOut;
         BOOL active;
+        BOOL didNotify;
         unsigned long long fingerIdentifier;
         double fingerDownTime;
         struct CGPoint startTapLocation;
         struct CGPoint lastTapLocation;
         struct CGPoint primaryFingerLocation;
         double tapDistance;
-        int state;
+        long long state;
     } _split;
 }
 
@@ -102,14 +104,15 @@
 - (BOOL)_handleSplitTap;
 - (void)_handleTap;
 - (void)_processUpAndPost:(BOOL)arg1;
+- (void)_resetSplit;
 - (void)_up;
 - (void)_updateMultiTapFrame;
 - (void)_updateStartWithPoint:(struct CGPoint)arg1 time:(double)arg2;
 - (void)_updateTapState;
 - (unsigned long long)absoluteFingerCount;
-- (CDStruct_ddbe7a84)captureCurrentState;
+- (CDStruct_fc320275)captureCurrentState;
 - (void)dealloc;
-- (int)direction;
+- (long long)direction;
 - (double)directionalSlope;
 - (double)distance;
 - (struct CGPoint)endLocation;
@@ -118,19 +121,19 @@
 - (double)firstFingerAzimuth;
 - (double)firstFingerPressure;
 - (double)flickSpeed;
-- (int)gestureState;
+- (long long)gestureState;
 - (id)gestureStateString;
-- (CDStruct_ddbe7a84)handleGestureEvent:(id)arg1;
+- (CDStruct_fc320275)handleGestureEvent:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1 delegate:(id)arg2;
 - (id)initWithSize:(struct CGSize)arg1 delegate:(id)arg2 threadKey:(id)arg3;
 - (struct CGRect)mainFrame;
 - (struct CGRect)multiTapFrame;
-- (int)orientation;
+- (long long)orientation;
 - (struct CGPoint)rawAverageLocation;
 - (struct CGPoint)rawLocation;
 - (void)reset;
 - (void)setFlickSpeed:(double)arg1;
-- (void)setOrientation:(int)arg1;
+- (void)setOrientation:(long long)arg1;
 - (void)setTapSpeed:(double)arg1;
 - (void)setTapSpeedTimeThreshold:(double)arg1 forRegion:(struct CGRect)arg2 fingerCount:(long long)arg3;
 - (struct CGPoint)startLocation;

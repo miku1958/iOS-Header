@@ -24,6 +24,8 @@
     long long _duration;
     CLLocation *_location;
     NSArray *_keywords;
+    NSString *_mediaMetaDataType;
+    NSData *_mediaMetaData;
     NSString *_timeZoneName;
     NSNumber *_timeZoneOffset;
     NSString *_momentIdentifier;
@@ -77,6 +79,8 @@
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (copy, nonatomic) NSString *masterIdentifier; // @synthesize masterIdentifier=_masterIdentifier;
 @property (copy, nonatomic) NSString *mediaGroupIdentifier; // @synthesize mediaGroupIdentifier=_mediaGroupIdentifier;
+@property (strong, nonatomic) NSData *mediaMetaData; // @synthesize mediaMetaData=_mediaMetaData;
+@property (copy, nonatomic) NSString *mediaMetaDataType; // @synthesize mediaMetaDataType=_mediaMetaDataType;
 @property (copy, nonatomic) NSString *momentIdentifier; // @synthesize momentIdentifier=_momentIdentifier;
 @property (copy, nonatomic) NSString *momentName; // @synthesize momentName=_momentName;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -111,6 +115,7 @@
 - (unsigned long long)fullChangeTypeForFullRecord;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isAssetChange;
 - (id)masterScopedIdentifier;
 - (id)propertiesDescription;
 - (id)propertiesForChangeType:(unsigned long long)arg1;

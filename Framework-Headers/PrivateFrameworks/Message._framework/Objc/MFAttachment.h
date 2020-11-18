@@ -6,16 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/MFCancelable-Protocol.h>
-
-@class MFAttachmentManager, MFAttachmentPlaceholder, MFMailDropMetadata, MFMimePart, NSProgress, NSString, NSURL;
+@class MFAttachmentManager, MFAttachmentPlaceholder, MFMailDropMetadata, MFMimePart, NSString, NSURL;
 @protocol MFDataConsumer;
 
-@interface MFAttachment : NSObject <MFCancelable>
+@interface MFAttachment : NSObject
 {
     MFAttachmentManager *_attachmentManager;
     MFAttachmentPlaceholder *_placeholder;
-    NSProgress *_downloadProgress;
     BOOL _isAutoArchive;
     BOOL _wantsCompletionBlockOffMainThread;
     NSURL *_url;
@@ -23,46 +20,48 @@
     NSString *_disposition;
     CDUnknownBlockType _fetchCompletionBlock;
     id<MFDataConsumer> _customConsumer;
-    long long _lastProgressBytes;
-    double _lastProgressTime;
+    struct CGSize _imageDimensions;
 }
 
-@property (nonatomic) MFAttachmentManager *attachmentManager; // @synthesize attachmentManager=_attachmentManager;
 @property (copy) NSString *contentID;
 @property (strong, nonatomic) id<MFDataConsumer> customConsumer; // @synthesize customConsumer=_customConsumer;
-@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long decodedFileSize;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *disposition; // @synthesize disposition=_disposition;
-@property (strong, nonatomic) NSProgress *downloadProgress; // @synthesize downloadProgress=_downloadProgress;
 @property (nonatomic) unsigned long long encodedFileSize;
+@property (strong, nonatomic) NSString *eventID;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionBlock; // @synthesize fetchCompletionBlock=_fetchCompletionBlock;
 @property (copy, nonatomic) NSString *fileName; // @dynamic fileName;
 @property (readonly) NSString *fileUTType;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *icsRepresentation;
+@property (nonatomic) struct CGSize imageDimensions; // @synthesize imageDimensions=_imageDimensions;
 @property (readonly) NSString *inferredMimeType;
 @property (readonly) BOOL isAutoArchive; // @synthesize isAutoArchive=_isAutoArchive;
+@property (readonly, nonatomic) BOOL isCalendarFile;
 @property (readonly) BOOL isContainedInCompose;
 @property (readonly) BOOL isContainedInRFC822;
 @property (readonly) BOOL isDataAvailableLocally;
+@property (readonly, nonatomic) BOOL isImageFile;
+@property (readonly, nonatomic) BOOL isMediaFile;
 @property BOOL isPlaceholder; // @dynamic isPlaceholder;
-@property (nonatomic) long long lastProgressBytes; // @synthesize lastProgressBytes=_lastProgressBytes;
-@property (nonatomic) double lastProgressTime; // @synthesize lastProgressTime=_lastProgressTime;
+@property (readonly, nonatomic) BOOL isRFC822;
+@property (readonly, nonatomic) BOOL isVideoFile;
 @property (strong, nonatomic) MFMailDropMetadata *mailDropMetadata; // @dynamic mailDropMetadata;
+@property (strong, nonatomic) NSString *meetingStorePersistentID;
 @property (copy, nonatomic) NSString *mimeType; // @dynamic mimeType;
 @property (strong, nonatomic) MFMimePart *part; // @synthesize part=_part;
 @property (readonly) NSString *path; // @dynamic path;
 @property (strong, nonatomic) MFAttachmentPlaceholder *placeholder; // @synthesize placeholder=_placeholder;
 @property (copy, nonatomic) NSString *remoteImageFileName;
 @property (readonly) BOOL shouldAutoDownload;
-@property (readonly) Class superclass;
-@property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
+@property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (nonatomic) BOOL wantsCompletionBlockOffMainThread; // @synthesize wantsCompletionBlockOffMainThread=_wantsCompletionBlockOffMainThread;
 
++ (BOOL)isSinglePagePDF:(id)arg1;
+- (void).cxx_destruct;
 - (id)_dataProvider;
 - (id)_fileUTTypeForFileName:(id)arg1;
+- (BOOL)_isSinglePagePDFFileFetchLocalData:(BOOL)arg1;
 - (id)attachmentContentTypeForFileName:(id)arg1;
-- (void)cancel;
 - (BOOL)conformsToType:(id)arg1;
 - (BOOL)contentTypeConformsToEvent;
 - (BOOL)contentTypeConformsToEventICS;
@@ -72,9 +71,9 @@
 - (BOOL)contentTypeConformsToPassbook;
 - (BOOL)contentTypeConformsToProvisionment;
 - (BOOL)contentTypeConformsToVCard;
-- (void)dealloc;
 - (id)decodeFilterWithDataConsumer:(id)arg1;
-- (void)fetchData;
+- (id)description;
+- (id)fetchData;
 - (id)fetchDataSynchronously:(id *)arg1;
 - (id)fetchDataSynchronously:(id *)arg1 stripPrivateMetadata:(BOOL)arg2;
 - (id)fetchDataToURL:(id *)arg1;
@@ -84,24 +83,27 @@
 - (id)fileAttributes;
 - (id)fileNameByStrippingZipIfNeeded:(BOOL)arg1;
 - (id)fileURL;
+- (id)fileWrapperUsingFetchedLocalData;
 - (id)filterData:(id)arg1;
 - (id)filterICSData:(id)arg1;
 - (id)filterVCSData:(id)arg1;
+- (BOOL)hasCalendarMetadata;
+- (unsigned long long)hash;
 - (id)initWithURL:(id)arg1 attachmentManager:(id)arg2;
 - (BOOL)isAvailable;
 - (BOOL)isCached;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isImageFile;
 - (BOOL)isMailDrop;
 - (BOOL)isMailDropPhotoArchive;
+- (BOOL)isPDFFile;
+- (BOOL)isSinglePagePDFFile;
 - (id)metadataValueForKey:(id)arg1;
+- (id)newDownloadProgress;
 - (id)readFromDisk;
-- (void)resetProgress;
 - (void)setMetadataValue:(id)arg1 forKey:(id)arg2;
 - (unsigned long long)sizeOnDisk;
 - (id)textEncodingGuessWithData:(id)arg1;
 - (id)textEncodingNameForData:(id)arg1 mimeType:(id)arg2;
-- (void)updateProgressWithCurrentBytes:(long long)arg1;
 - (void)writeToDiskWithData:(id)arg1;
 
 @end

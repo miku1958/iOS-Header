@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isAvailable;
 - (id)dialRequest;
+- (id)icon;
 - (id)localizedName;
 - (id)notificationTitle;
 

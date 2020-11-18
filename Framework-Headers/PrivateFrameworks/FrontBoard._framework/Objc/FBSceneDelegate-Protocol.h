@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/NSObject-Protocol.h>
+#import <FrontBoard/FBSceneObserver-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneClientSettingsDiff, FBSSceneSettings, FBSSceneTransitionContext, FBScene, NSSet;
+@class FBScene, NSSet;
 
-@protocol FBSceneDelegate <NSObject>
+@protocol FBSceneDelegate <FBSceneObserver>
 - (void)scene:(FBScene *)arg1 didReceiveActions:(NSSet *)arg2;
-- (void)scene:(FBScene *)arg1 didUpdateClientSettingsWithDiff:(FBSSceneClientSettingsDiff *)arg2 oldClientSettings:(FBSSceneClientSettings *)arg3 transitionContext:(FBSSceneTransitionContext *)arg4;
-- (void)scene:(FBScene *)arg1 handleUpdateToSettings:(FBSSceneSettings *)arg2 withTransitionContext:(FBSSceneTransitionContext *)arg3 completion:(void (^)(BOOL))arg4;
 @end
 

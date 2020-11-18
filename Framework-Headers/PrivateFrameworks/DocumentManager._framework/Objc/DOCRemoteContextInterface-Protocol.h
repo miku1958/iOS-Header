@@ -5,8 +5,7 @@
 //
 
 #import <DocumentManager/DOCRemoteAppearanceInterface-Protocol.h>
-#import <DocumentManager/DOCRemoteSourceManagementInterface-Protocol.h>
 
-@protocol DOCRemoteContextInterface <DOCRemoteSourceManagementInterface, DOCRemoteAppearanceInterface>
+@protocol DOCRemoteContextInterface <DOCRemoteAppearanceInterface>
 @end
 

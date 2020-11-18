@@ -23,6 +23,7 @@
     BOOL _dislikesSaveSentMbox;
 }
 
+- (void).cxx_destruct;
 - (BOOL)_connectUsingAccount:(id)arg1;
 - (id)_dataForCommand:(const char *)arg1 length:(unsigned long long)arg2 argument:(id)arg3 trailer:(const char *)arg4;
 - (int)_doHandshakeUsingAccount:(id)arg1;
@@ -44,7 +45,6 @@
 - (id)dataForDataCmd;
 - (id)dataForMailFrom:(id)arg1;
 - (id)dataForRcptTo:(id)arg1;
-- (void)dealloc;
 - (id)domainName;
 - (id)init;
 - (id)lastResponse;

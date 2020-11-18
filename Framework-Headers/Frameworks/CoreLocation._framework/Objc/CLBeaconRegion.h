@@ -6,12 +6,14 @@
 
 #import <CoreLocation/CLRegion.h>
 
-@class NSNumber, NSUUID;
+@class CLBeaconIdentityConstraint, NSNumber, NSUUID;
 
 @interface CLBeaconRegion : CLRegion
 {
 }
 
+@property (readonly, copy, nonatomic) NSUUID *UUID;
+@property (readonly, copy, nonatomic) CLBeaconIdentityConstraint *beaconIdentityConstraint;
 @property (readonly, copy, nonatomic) NSNumber *major;
 @property (readonly, copy, nonatomic) NSNumber *minor;
 @property (nonatomic) BOOL notifyEntryStateOnDisplay;
@@ -23,11 +25,15 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithBeaconIdentityConstraint:(id)arg1 identifier:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithProximityUUID:(id)arg1 identifier:(id)arg2;
 - (id)initWithProximityUUID:(id)arg1 major:(unsigned short)arg2 identifier:(id)arg3;
 - (id)initWithProximityUUID:(id)arg1 major:(unsigned short)arg2 minor:(unsigned short)arg3 identifier:(id)arg4;
+- (id)initWithUUID:(id)arg1 identifier:(id)arg2;
+- (id)initWithUUID:(id)arg1 major:(unsigned short)arg2 identifier:(id)arg3;
+- (id)initWithUUID:(id)arg1 major:(unsigned short)arg2 minor:(unsigned short)arg3 identifier:(id)arg4;
 - (id)peripheralDataWithMeasuredPower:(id)arg1;
 - (void)setGutsWithProximityUUID:(id)arg1 major:(id)arg2 minor:(id)arg3 notifyOnDisplay:(BOOL)arg4;
 

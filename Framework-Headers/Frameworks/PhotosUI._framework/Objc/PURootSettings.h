@@ -6,12 +6,13 @@
 
 #import <PhotosUICore/PXSettings.h>
 
-@class PUAirPlaySettings, PUAlbumListSettings, PUFeedSettings, PUImportSettings, PUIrisSettings, PUMedusaSettings, PUMemoriesSettings, PUMomentsSettings, PUOneUpSettings, PUPerformanceDiagnosticsSettings, PUPhotoEditProtoSettings, PUPhotosGridSettings, PUSceneSettings, PUSearchSettings, PUSlideshowSettings, PUTabbedLibrarySettings, PUTilingViewSettings, PUWelcomeSettings, PUWorkaroundSettings;
+@class NSString, PUAirPlaySettings, PUAlbumListSettings, PUAudioClassificationSettings, PUCompositeVideoSettings, PUCurationSettings, PUFeedSettings, PUIrisSettings, PUMedusaSettings, PUMemoriesSettings, PUMomentsSettings, PUOneUpSettings, PUPerformanceDiagnosticsSettings, PUPhotoEditProtoSettings, PUPhotosGridSettings, PUSceneSettings, PUSlideshowSettings, PUTabbedLibrarySettings, PUTilingViewSettings, PUWelcomeSettings, PUWorkaroundSettings, PXImportSettings, PXSharingSettings, UIImage;
 
 @interface PURootSettings : PXSettings
 {
     BOOL _enforceDisableIrisUI;
     BOOL _allowIrisUI;
+    PUCompositeVideoSettings *_compositeVideoSettings;
     PUTabbedLibrarySettings *_tabbedLibrarySettings;
     PUPhotosGridSettings *_photosGridSettings;
     PUPhotoEditProtoSettings *_photoEditingSettings;
@@ -28,18 +29,27 @@
     PUWelcomeSettings *_welcomeSettings;
     PUWorkaroundSettings *_workaroundSettings;
     PUSceneSettings *_sceneSettings;
-    PUSearchSettings *_searchSettings;
+    PUAudioClassificationSettings *_audioClassificationSettings;
+    PXSharingSettings *_sharingSettings;
+    PUCurationSettings *_curation;
     PUIrisSettings *_irisSettings;
     Class _orbInterfaceThemeClass;
     PUPerformanceDiagnosticsSettings *_performanceDiagnosticsSettings;
-    PUImportSettings *_importSettings;
+    PXImportSettings *_importSettings;
+    NSString *__internal_libraryStateBriefDescription;
+    UIImage *__internal_libraryStateImage;
 }
 
+@property (strong, nonatomic) NSString *_internal_libraryStateBriefDescription; // @synthesize _internal_libraryStateBriefDescription=__internal_libraryStateBriefDescription;
+@property (strong, nonatomic) UIImage *_internal_libraryStateImage; // @synthesize _internal_libraryStateImage=__internal_libraryStateImage;
 @property (strong, nonatomic) PUAirPlaySettings *airPlaySettings; // @synthesize airPlaySettings=_airPlaySettings;
 @property (strong, nonatomic) PUAlbumListSettings *albumListSettings; // @synthesize albumListSettings=_albumListSettings;
 @property (nonatomic) BOOL allowIrisUI; // @synthesize allowIrisUI=_allowIrisUI;
+@property (strong, nonatomic) PUAudioClassificationSettings *audioClassificationSettings; // @synthesize audioClassificationSettings=_audioClassificationSettings;
+@property (strong, nonatomic) PUCompositeVideoSettings *compositeVideoSettings; // @synthesize compositeVideoSettings=_compositeVideoSettings;
+@property (strong, nonatomic) PUCurationSettings *curation; // @synthesize curation=_curation;
 @property (strong, nonatomic) PUFeedSettings *feedSettings; // @synthesize feedSettings=_feedSettings;
-@property (strong, nonatomic) PUImportSettings *importSettings; // @synthesize importSettings=_importSettings;
+@property (strong, nonatomic) PXImportSettings *importSettings; // @synthesize importSettings=_importSettings;
 @property (strong, nonatomic) Class interfaceThemeClass; // @synthesize interfaceThemeClass=_interfaceThemeClass;
 @property (strong, nonatomic) PUIrisSettings *irisSettings; // @synthesize irisSettings=_irisSettings;
 @property (strong, nonatomic) PUMedusaSettings *medusaSettings; // @synthesize medusaSettings=_medusaSettings;
@@ -51,18 +61,21 @@
 @property (strong, nonatomic) PUPhotoEditProtoSettings *photoEditingSettings; // @synthesize photoEditingSettings=_photoEditingSettings;
 @property (strong, nonatomic) PUPhotosGridSettings *photosGridSettings; // @synthesize photosGridSettings=_photosGridSettings;
 @property (strong, nonatomic) PUSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
-@property (strong, nonatomic) PUSearchSettings *searchSettings; // @synthesize searchSettings=_searchSettings;
+@property (strong, nonatomic) PXSharingSettings *sharingSettings; // @synthesize sharingSettings=_sharingSettings;
 @property (strong, nonatomic) PUSlideshowSettings *slideshowSettings; // @synthesize slideshowSettings=_slideshowSettings;
 @property (strong, nonatomic) PUTabbedLibrarySettings *tabbedLibrarySettings; // @synthesize tabbedLibrarySettings=_tabbedLibrarySettings;
 @property (strong, nonatomic) PUTilingViewSettings *tilingViewSettings; // @synthesize tilingViewSettings=_tilingViewSettings;
 @property (strong, nonatomic) PUWelcomeSettings *welcomeSettings; // @synthesize welcomeSettings=_welcomeSettings;
 @property (strong, nonatomic) PUWorkaroundSettings *workaroundSettings; // @synthesize workaroundSettings=_workaroundSettings;
 
++ (id)_audioClassificationSettings;
 + (id)_debugRowsForViewControllerStack:(id)arg1;
 + (void)_deleteAllDiagnosticFiles;
 + (id)_memoriesRelatedSettings;
 + (id)_photoKitSettings;
 + (id)_photosUICoreSettings;
++ (void)_presentTapToRadar;
++ (id)_saveScreenshot:(id)arg1;
 + (void)_setCurrentAsset:(id)arg1;
 + (void)_setDebugRows:(id)arg1;
 + (id)currentAsset;
@@ -71,6 +84,7 @@
 + (void)presentSettingsController;
 + (id)settingsControllerModule;
 + (void)setupStatusBarDoubleTapOnInternalDevices;
++ (void)setupStatusBarInternalSettingsGestureOnInternalDevices;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)applyArchiveValue:(id)arg1 forKey:(id)arg2;

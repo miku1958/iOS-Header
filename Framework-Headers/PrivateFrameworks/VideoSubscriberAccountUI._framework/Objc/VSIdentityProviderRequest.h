@@ -16,10 +16,12 @@
     VSAccount *_account;
     VSPersistentStorage *_storage;
     VSOptional *_accountMetadataRequest;
+    NSString *_accountProviderAuthenticationToken;
 }
 
 @property (strong, nonatomic) VSAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) VSOptional *accountMetadataRequest; // @synthesize accountMetadataRequest=_accountMetadataRequest;
+@property (copy, nonatomic) NSString *accountProviderAuthenticationToken; // @synthesize accountProviderAuthenticationToken=_accountProviderAuthenticationToken;
 @property (readonly, nonatomic) BOOL allowsUI;
 @property (readonly, nonatomic) BOOL forceAuthentication;
 @property (copy, nonatomic) NSString *requestingAppAdamID; // @synthesize requestingAppAdamID=_requestingAppAdamID;
@@ -28,7 +30,8 @@
 @property (strong, nonatomic) VSPersistentStorage *storage; // @synthesize storage=_storage;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)accountMetadataRequestWithAccount:(id)arg1 storage:(id)arg2 accountMetadataRequest:(id)arg3 requestingAppDisplayName:(id)arg4 requestingAppAdamID:(id)arg5;
++ (id)STBOptOutRequestWithStorage:(id)arg1;
++ (id)accountMetadataRequestWithAccount:(id)arg1 storage:(id)arg2 accountMetadataRequest:(id)arg3 requestingAppDisplayName:(id)arg4 requestingAppAdamID:(id)arg5 accountProviderAuthenticationToken:(id)arg6;
 + (id)deleteAccountRequestWithAccount:(id)arg1 storage:(id)arg2;
 + (id)makeAccountRequestWithStorage:(id)arg1;
 + (id)silentMakeAccountRequestWithStorage:(id)arg1;

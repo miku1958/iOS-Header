@@ -18,8 +18,8 @@
 
 @property (nonatomic) BOOL attachRawAPIData; // @synthesize attachRawAPIData=_attachRawAPIData;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
-@property (copy, nonatomic) WFLocation *location; // @synthesize location=_location;
+@property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+@property (strong, nonatomic) WFLocation *location; // @synthesize location=_location;
 
 + (id)airQualityRequestForLocation:(id)arg1 locale:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;

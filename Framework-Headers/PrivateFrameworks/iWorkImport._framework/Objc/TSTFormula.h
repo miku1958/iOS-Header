@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _empty;
 }
 
-@property (nonatomic) TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
+@property (weak, nonatomic) TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (strong, nonatomic) TSTExpressionNode *expressionTree; // @synthesize expressionTree=_expressionTree;
 @property (nonatomic) BOOL fixupFormulas; // @synthesize fixupFormulas=_fixupFormulas;

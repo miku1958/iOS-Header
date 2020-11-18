@@ -10,35 +10,43 @@
 
 @interface SearchUITableModel : NSObject
 {
+    unsigned long long _queryId;
     NSArray *_tableRowModel;
     NSArray *_sections;
 }
 
-@property (strong) NSArray *sections; // @synthesize sections=_sections;
-@property (strong) NSArray *tableRowModel; // @synthesize tableRowModel=_tableRowModel;
+@property (readonly) unsigned long long queryId; // @synthesize queryId=_queryId;
+@property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property (strong, nonatomic) NSArray *tableRowModel; // @synthesize tableRowModel=_tableRowModel;
 
 + (id)asyncRowManagersForCardSections:(id)arg1;
++ (id)combinedRowModelsForRowModels:(id)arg1 result:(id)arg2;
 + (id)gridLayoutsForCardSections:(id)arg1;
++ (BOOL)resultHasHorizontallyScrollingCardSections:(id)arg1;
 + (id)resultsForMultiResultRowInSection:(id)arg1 startingAtIndex:(unsigned long long)arg2;
-+ (id)rowModelsForCardSections:(id)arg1 result:(id)arg2;
++ (id)rowModelForCardSection:(id)arg1 result:(id)arg2;
++ (id)rowModelsForCardSections:(id)arg1 result:(id)arg2 isInline:(BOOL)arg3 queryId:(unsigned long long)arg4;
 + (id)rowModelsForResult:(id)arg1;
-+ (id)tableModelWithCardSections:(id)arg1;
++ (id)tableModelWithCardSections:(id)arg1 isInline:(BOOL)arg2 queryId:(unsigned long long)arg3;
 + (id)tableModelWithResult:(id)arg1;
-+ (id)tableModelWithSections:(id)arg1 expandedSections:(id)arg2;
++ (id)tableModelWithResults:(id)arg1;
++ (id)tableModelWithSections:(id)arg1 expandedSections:(id)arg2 queryId:(unsigned long long)arg3;
 - (void).cxx_destruct;
 - (id)cardSectionForIndexPath:(id)arg1;
 - (id)description;
+- (unsigned long long)indexOfSection:(id)arg1;
 - (BOOL)indexPathExists:(id)arg1;
 - (id)indexPathForResult:(id)arg1;
+- (id)initWithQueryId:(unsigned long long)arg1;
 - (long long)numberOfRowsForSection:(long long)arg1;
 - (unsigned long long)numberOfSections;
 - (void)replaceResult:(id)arg1 withResult:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)resultForIndexPath:(id)arg1;
 - (id)rowModelForIndexPath:(id)arg1;
-- (struct _NSRange)rowRangeForSelectingForIndexPath:(id)arg1;
-- (id)sectionForIndexPath:(id)arg1;
+- (id)sectionForIndex:(unsigned long long)arg1;
 - (BOOL)shouldDisplayChevronForIndexPath:(id)arg1;
 - (BOOL)shouldLeaveSpaceForChevronForIndexPath:(id)arg1;
+- (id)updatedTableModelWithExpandedSections:(id)arg1;
 
 @end
 

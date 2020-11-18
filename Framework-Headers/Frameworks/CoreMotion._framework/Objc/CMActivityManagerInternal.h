@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface CMActivityManagerInternal : NSObject
 {
     struct CLConnectionClient *fLocationdConnection;
     CDUnknownBlockType fActivityHandler;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     NSObject<OS_dispatch_queue> *fPrivateQueue;
     BOOL fSubscribedToMotionState;
     NSObject<OS_dispatch_semaphore> *fSidebandOverrideSemaphore;
@@ -23,6 +22,7 @@
     NSObject<OS_dispatch_queue> *fMotionStateSimQueue;
     BOOL fMotionStateSimWaiting;
     long long fMotionStateSimResult;
+    long long fMotionStateYouthSimResult;
 }
 
 - (void)connect;
@@ -31,10 +31,9 @@
 - (id)init;
 - (void)overrideOscarSideband:(BOOL)arg1 withState:(long long)arg2;
 - (void)simulateMotionState:(BOOL)arg1 withState:(long long)arg2;
+- (void)simulateMotionStateYouthWithState:(long long)arg1;
 - (void)startActivityUpdatesWithHandlerPrivate:(CDUnknownBlockType)arg1;
-- (void)startWatchdogCheckinsPrivate;
 - (void)stopActivityUpdatesPrivate;
-- (void)stopWatchdogCheckinsPrivate;
 
 @end
 

@@ -15,6 +15,7 @@
 
 @property (nonatomic) BOOL automaticallyConfiguresApplicationAudioSession;
 @property (nonatomic) BOOL automaticallyConfiguresCaptureDeviceForWideColor;
+@property (readonly, nonatomic) NSArray *connections;
 @property (readonly, nonatomic) NSArray *inputs;
 @property (readonly, nonatomic, getter=isInterrupted) BOOL interrupted;
 @property (readonly, nonatomic) struct OpaqueCMClock *masterClock;
@@ -91,8 +92,12 @@
 - (void)commitConfiguration;
 - (void)dealloc;
 - (id)description;
+- (void)handleVideoInputDevice:(id)arg1 activeDepthDataFormatChanged:(id)arg2;
+- (void)handleVideoInputDevice:(id)arg1 activeFormatChanged:(id)arg2;
+- (void)informSessionMembersOfChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (id)init;
 - (BOOL)isBeingConfigured;
+- (BOOL)isOverCost:(id *)arg1;
 - (BOOL)notifiesOnMainThread;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeConnection:(id)arg1;

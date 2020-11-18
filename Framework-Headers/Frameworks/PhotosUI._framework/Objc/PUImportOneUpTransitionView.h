@@ -8,13 +8,13 @@
 
 #import <PhotosUI/PUImportOneUpCellDisplayDelegate-Protocol.h>
 
-@class NSArray, PUImportMediaProvider, PUImportOneUpCellBadgeView, UIImage;
+@class NSArray, PUImportOneUpCellBadgeView, PXImportMediaProvider, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface PUImportOneUpTransitionView : PUImportOneUpCell <PUImportOneUpCellDisplayDelegate>
 {
     UIImage *_startingImage;
-    PUImportMediaProvider *_mediaProvider;
+    PXImportMediaProvider *_mediaProvider;
     PUImportOneUpCellBadgeView *_badgeView;
     NSArray *_badgeViewOffsetConstraints;
     double _initialPhotoViewAlpha;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *badgeViewOffsetConstraints; // @synthesize badgeViewOffsetConstraints=_badgeViewOffsetConstraints;
 @property (nonatomic) struct CGRect initialFrame; // @synthesize initialFrame=_initialFrame;
 @property (nonatomic) double initialPhotoViewAlpha; // @synthesize initialPhotoViewAlpha=_initialPhotoViewAlpha;
-@property (strong, nonatomic) PUImportMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (strong, nonatomic) PXImportMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (strong, nonatomic) UIImage *startingImage; // @synthesize startingImage=_startingImage;
 @property (nonatomic) struct CGRect targetFrame; // @synthesize targetFrame=_targetFrame;
 @property (nonatomic) double targetPhotoViewAlpha; // @synthesize targetPhotoViewAlpha=_targetPhotoViewAlpha;

@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (id)availableMetadataFormats;
 - (id)commonMetadata;
 - (void)dealloc;
-- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithAssetWriterInput:(id)arg1;
 - (id)initWithAssetWriterInput:(id)arg1 displaysNonForcedSubtitles:(BOOL)arg2;

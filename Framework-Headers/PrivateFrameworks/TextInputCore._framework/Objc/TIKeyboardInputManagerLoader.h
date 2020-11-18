@@ -29,7 +29,10 @@
 - (BOOL)hasActiveInputManagers;
 - (id)init;
 - (id)inputManagerForInputMode:(id)arg1 withKeyboardState:(id)arg2 class:(Class)arg3;
+- (BOOL)isActiveInputManager:(id)arg1;
+- (void)jettisonAllActiveInputManagers;
 - (void)reduceCacheToSize:(unsigned long long)arg1;
+- (void)registerMaintenanceActivity;
 - (id)resourceInputModes;
 - (void)startSyncHelper;
 

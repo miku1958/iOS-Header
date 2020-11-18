@@ -29,6 +29,7 @@
 + (id)inputRecordingSampleRateConverterAlgorithm;
 + (float)inputRecordingSampleRateNarrowBand;
 + (float)remoteVADDuration;
++ (unsigned long long)serverLoggingChannelBitset;
 + (unsigned short)zeroFilterApproxAbsSpeechThreshold;
 + (unsigned long long)zeroFilterWindowSizeInMs;
 

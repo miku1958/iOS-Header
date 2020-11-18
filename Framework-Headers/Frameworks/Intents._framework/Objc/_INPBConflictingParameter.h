@@ -15,10 +15,12 @@
 @interface _INPBConflictingParameter : PBCodable <_INPBConflictingParameter, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_alternateItems;
     NSString *_keyPath;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *alternateItems; // @synthesize alternateItems=_alternateItems;
 @property (readonly, nonatomic) unsigned long long alternateItemsCount;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,12 +31,15 @@
 @property (readonly) Class superclass;
 
 + (Class)alternateItemsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addAlternateItems:(id)arg1;
 - (id)alternateItemsAtIndex:(unsigned long long)arg1;
 - (void)clearAlternateItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

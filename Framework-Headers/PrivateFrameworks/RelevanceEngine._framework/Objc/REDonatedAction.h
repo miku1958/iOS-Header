@@ -22,6 +22,9 @@
     REIdentifier *_donationIdentifier;
     id<REDonatedActionIdentifierProviding> _actionTypeIdentifier;
     id<REDonatedActionIdentifierProviding> _simplifiedActionTypeIdentifier;
+    struct NSString *_eventLevelIdentifier;
+    struct NSString *_appLevelIdentifier;
+    unsigned long long _filteredShortcutType;
     unsigned long long _relevanceProvidersHash;
     NSArray *_relevanceProviders;
     NSString *_intentTypeName;
@@ -31,9 +34,12 @@
 
 @property (readonly, nonatomic) id<REDonatedActionIdentifierProviding> actionTypeIdentifier; // @synthesize actionTypeIdentifier=_actionTypeIdentifier;
 @property (readonly, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
+@property (readonly, nonatomic) NSString *appLevelIdentifier; // @synthesize appLevelIdentifier=_appLevelIdentifier;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) REIdentifier *donationIdentifier; // @synthesize donationIdentifier=_donationIdentifier;
+@property (readonly, nonatomic) NSString *eventLevelIdentifier; // @synthesize eventLevelIdentifier=_eventLevelIdentifier;
+@property (readonly, nonatomic) unsigned long long filteredShortcutType; // @synthesize filteredShortcutType=_filteredShortcutType;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *intentTypeName; // @synthesize intentTypeName=_intentTypeName;
 @property (readonly, nonatomic) NSString *localBundleIdentifier;
@@ -56,6 +62,9 @@
 - (id)_initRelevantShortcutWithEvent:(id)arg1 filtered:(BOOL)arg2;
 - (id)_initUserActivityWithEvent:(id)arg1 filtered:(BOOL)arg2;
 - (void)_loadDuetEvent:(CDUnknownBlockType)arg1;
+- (void)_loadShortcutIdentifiersFromIntent:(id)arg1;
+- (void)_loadShortcutIdentifiersFromUserActivity:(id)arg1;
+- (id)_shortcutFilter;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

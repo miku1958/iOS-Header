@@ -6,32 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <AssertionServices/BSXPCCoding-Protocol.h>
 #import <AssertionServices/NSCopying-Protocol.h>
 
 @class NSString;
 
-@interface BKSTerminationContext : NSObject <BSXPCCoding, NSCopying>
+@interface BKSTerminationContext : NSObject <NSCopying>
 {
     long long _exceptionCode;
     unsigned long long _reportType;
     NSString *_explanation;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) long long exceptionCode; // @synthesize exceptionCode=_exceptionCode;
 @property (copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long reportType; // @synthesize reportType=_reportType;
-@property (readonly) Class superclass;
 
 + (id)context;
 + (id)terminationAssertionContext;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTerminationContext:(id)arg1;
 

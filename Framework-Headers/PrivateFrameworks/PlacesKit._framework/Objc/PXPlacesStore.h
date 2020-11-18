@@ -14,7 +14,7 @@
 @interface PXPlacesStore : NSObject <PXPlacesGeotaggedItemDataSource>
 {
     struct _PXQuadTreeStoreNode *_rootNode;
-    int _updateCount;
+    _Atomic int _updateCount;
     struct _opaque_pthread_rwlock_t {
         long long __sig;
         char __opaque[192];
@@ -42,6 +42,8 @@
 @property CDStruct_02837cd9 rect; // @synthesize rect=_rect;
 @property (readonly) Class superclass;
 
++ (id)traceStoreLog;
++ (id)traceStoreQueryLog;
 - (void)_commitChanges;
 - (id)_findItemsInMapRect:(CDStruct_02837cd9)arg1;
 - (void)addItem:(id)arg1;

@@ -12,22 +12,22 @@ __attribute__((visibility("hidden")))
 @interface IKDOMItemsBindingStrategy : IKDOMBindingStrategy
 {
     NSIndexSet *_autoHighlightedIndexes;
-    NSDictionary *_usedAppPrototypesByType;
+    NSDictionary *_usedAppPrototypesByIdentifier;
     IKChangeSet *_itemsChangeSet;
 }
 
 @property (copy, nonatomic) NSIndexSet *autoHighlightedIndexes; // @synthesize autoHighlightedIndexes=_autoHighlightedIndexes;
 @property (strong, nonatomic) IKChangeSet *itemsChangeSet; // @synthesize itemsChangeSet=_itemsChangeSet;
-@property (strong, nonatomic) NSDictionary *usedAppPrototypesByType; // @synthesize usedAppPrototypesByType=_usedAppPrototypesByType;
+@property (strong, nonatomic) NSDictionary *usedAppPrototypesByIdentifier; // @synthesize usedAppPrototypesByIdentifier=_usedAppPrototypesByIdentifier;
 
 - (void).cxx_destruct;
-- (id)_appDataItemFromDataItem:(id)arg1 prototype:(id)arg2 autoHighlighted:(BOOL *)arg3;
+- (id)_appDataItemFromDataItem:(id)arg1 binding:(id)arg2 prototypeIdentifier:(id)arg3 autoHighlighted:(BOOL *)arg4;
 - (void)_reevaluateVisibleIndexRange;
 - (void)_updateChildDOMElements;
 - (void)didResolveKeys:(id)arg1;
 - (id)initWithDOMBindingController:(id)arg1;
 - (struct _NSRange)visibleItemsRange;
-- (void)willUpdateWithItems:(id)arg1 indexTitles:(id)arg2 usedPrototypesByType:(id)arg3 changeSet:(id)arg4;
+- (void)willUpdateWithItems:(id)arg1 indexTitles:(id)arg2 usedPrototypesByIdentifier:(id)arg3 changeSet:(id)arg4;
 
 @end
 

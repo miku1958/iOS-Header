@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSTWPSelection.h>
+#import <iWorkImport/TSWPSelection.h>
 
 __attribute__((visibility("hidden")))
-@interface TSTWPFormulaSelection : TSTWPSelection
+@interface TSTWPFormulaSelection : TSWPSelection
 {
     unsigned long long mActiveTokenCharIndex;
 }

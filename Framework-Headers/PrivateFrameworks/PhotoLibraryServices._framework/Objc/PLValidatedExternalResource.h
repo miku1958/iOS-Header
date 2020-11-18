@@ -7,89 +7,61 @@
 #import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/NSCopying-Protocol.h>
-#import <PhotoLibraryServices/PLWriteableResource-Protocol.h>
+#import <PhotoLibraryServices/PLResourceIdentity-Protocol.h>
 
-@class NSData, NSString, NSURL;
-@protocol PLAssetID, PLCodecIdentity, PLColorSpaceIdentity, PLResourceDataStore, PLResourceDataStoreKey, PLUniformTypeIdentifierIdentity;
+@class NSDate, NSNumber, NSString, NSURL;
+@protocol PLCodecIdentity, PLUniformTypeIdentifierIdentity;
 
-@interface PLValidatedExternalResource : NSObject <PLWriteableResource, NSCopying>
+@interface PLValidatedExternalResource : NSObject <PLResourceIdentity, NSCopying>
 {
-    short _version;
-    short _resourceType;
-    short _localAvailability;
-    short _localAvailabilityTarget;
-    short _remoteAvailability;
-    short _remoteAvailabilityTarget;
+    short _trashedState;
+    unsigned int _version;
+    unsigned int _resourceType;
     unsigned int _recipeID;
     unsigned int _orientation;
     int _qualitySortValue;
-    id<PLAssetID> _assetID;
-    id<PLResourceDataStore> _dataStore;
-    long long _dataStoreSubtype;
-    id<PLResourceDataStoreKey> _dataStoreKey;
     long long _unorientedWidth;
     long long _unorientedHeight;
     id<PLCodecIdentity> _codecID;
-    id<PLColorSpaceIdentity> _colorSpaceID;
     id<PLUniformTypeIdentifierIdentity> _uniformTypeIdentifierID;
-    NSString *_fingerprint;
     long long _dataLength;
-    NSData *_data;
+    NSNumber *_sidecarIndex;
     NSURL *_fileURL;
-    unsigned long long _cplType;
+    NSDate *_trashedDate;
+    long long _ptpTrashedState;
 }
 
-@property (readonly, copy, nonatomic) id<PLAssetID> assetID; // @synthesize assetID=_assetID;
-@property (readonly, nonatomic) id<PLCodecIdentity> codecID;
-@property (readonly, nonatomic) id<PLColorSpaceIdentity> colorSpaceID;
-@property (nonatomic) unsigned long long cplType; // @synthesize cplType=_cplType;
-@property (copy, nonatomic) NSData *data; // @synthesize data=_data;
+@property (strong, nonatomic) id<PLCodecIdentity> codecID; // @synthesize codecID=_codecID;
 @property (nonatomic) long long dataLength; // @synthesize dataLength=_dataLength;
-@property (readonly, nonatomic) id<PLResourceDataStore> dataStore;
-@property (readonly, nonatomic) id<PLResourceDataStoreKey> dataStoreKey;
-@property (readonly, nonatomic) long long dataStoreSubtype;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property (strong, nonatomic) NSString *fingerprint; // @synthesize fingerprint=_fingerprint;
+@property (readonly, nonatomic) BOOL hasRecipe;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) short localAvailability; // @synthesize localAvailability=_localAvailability;
-@property (readonly, nonatomic) short localAvailabilityTarget; // @synthesize localAvailabilityTarget=_localAvailabilityTarget;
-@property (readonly, nonatomic) unsigned int orientation;
-@property (readonly, nonatomic) long long orientedHeight; // @dynamic orientedHeight;
-@property (readonly, nonatomic) long long orientedWidth; // @dynamic orientedWidth;
-@property (readonly, nonatomic) int qualitySortValue;
-@property (readonly, nonatomic) unsigned int recipeID;
-@property (readonly, nonatomic) short remoteAvailability;
-@property (readonly, nonatomic) short remoteAvailabilityTarget; // @synthesize remoteAvailabilityTarget=_remoteAvailabilityTarget;
-@property (readonly, nonatomic) short resourceType;
+@property (readonly, nonatomic) BOOL isDerivative;
+@property (nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
+@property (nonatomic) long long ptpTrashedState; // @synthesize ptpTrashedState=_ptpTrashedState;
+@property (nonatomic) int qualitySortValue; // @synthesize qualitySortValue=_qualitySortValue;
+@property (nonatomic) unsigned int recipeID; // @synthesize recipeID=_recipeID;
+@property (nonatomic) unsigned int resourceType; // @synthesize resourceType=_resourceType;
+@property (strong, nonatomic) NSNumber *sidecarIndex; // @synthesize sidecarIndex=_sidecarIndex;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID;
-@property (readonly, nonatomic) long long unorientedHeight;
-@property (readonly, nonatomic) long long unorientedWidth;
-@property (readonly, nonatomic) short version;
+@property (strong, nonatomic) NSDate *trashedDate; // @synthesize trashedDate=_trashedDate;
+@property (nonatomic) short trashedState; // @synthesize trashedState=_trashedState;
+@property (strong, nonatomic) id<PLUniformTypeIdentifierIdentity> uniformTypeIdentifierID; // @synthesize uniformTypeIdentifierID=_uniformTypeIdentifierID;
+@property (nonatomic) long long unorientedHeight; // @synthesize unorientedHeight=_unorientedHeight;
+@property (nonatomic) long long unorientedWidth; // @synthesize unorientedWidth=_unorientedWidth;
+@property (nonatomic) unsigned int version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)cplTypeWithAssetID:(id)arg1;
 - (id)init;
 - (BOOL)isDefaultOrientation;
-- (BOOL)isDerivative;
-- (BOOL)isPrimaryUTI;
-- (void)setCodecID:(id)arg1;
-- (void)setColorSpaceID:(id)arg1;
-- (void)setDataStore:(id)arg1;
-- (void)setDataStoreKey:(id)arg1;
-- (void)setDataStoreSubtype:(long long)arg1;
-- (void)setOrientation:(unsigned int)arg1;
-- (void)setQualitySortValue:(int)arg1;
-- (void)setQualitySortValueBasedOnAssetWidth:(long long)arg1 height:(long long)arg2 isNativeColorSpace:(BOOL)arg3;
-- (void)setRecipeID:(unsigned int)arg1;
-- (void)setRemoteAvailability:(short)arg1;
-- (void)setResourceType:(short)arg1;
-- (void)setUniformTypeIdentifierID:(id)arg1;
-- (void)setUnorientedHeight:(long long)arg1;
-- (void)setUnorientedWidth:(long long)arg1;
-- (void)setVersion:(short)arg1;
+- (BOOL)isEqualToValidatedExternalResource:(id)arg1;
+- (BOOL)isPlayableVideo;
+- (void)setQualitySortValueBasedOnAssetWidth:(long long)arg1 height:(long long)arg2 isNativeColorSpace:(BOOL)arg3 isLosslessEncoding:(BOOL)arg4 isCuratedPreview:(BOOL)arg5;
+- (void)setTrashedStateFromURL;
 
 @end
 

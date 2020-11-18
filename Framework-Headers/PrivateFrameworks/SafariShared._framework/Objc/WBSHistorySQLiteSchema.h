@@ -27,6 +27,8 @@
 - (int)_migrateToSchemaVersion_11;
 - (int)_migrateToSchemaVersion_12;
 - (int)_migrateToSchemaVersion_13;
+- (int)_migrateToSchemaVersion_14;
+- (int)_migrateToSchemaVersion_15;
 - (int)_migrateToSchemaVersion_2;
 - (int)_migrateToSchemaVersion_3;
 - (int)_migrateToSchemaVersion_4;

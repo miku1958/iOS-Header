@@ -30,6 +30,7 @@
 - (id)flatMap:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithName:(id)arg1;
+- (id)map:(CDUnknownBlockType)arg1;
 - (id)recover:(CDUnknownBlockType)arg1;
 - (id)run;
 - (id)run:(id *)arg1;

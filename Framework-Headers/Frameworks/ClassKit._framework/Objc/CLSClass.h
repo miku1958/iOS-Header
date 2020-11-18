@@ -6,21 +6,55 @@
 
 #import <ClassKit/CLSObject.h>
 
-@class NSString;
+#import <ClassKit/CLSContactsSearchable-Protocol.h>
+#import <ClassKit/CLSRelationable-Protocol.h>
 
-@interface CLSClass : CLSObject
+@class NSArray, NSPersonNameComponents, NSString;
+
+@interface CLSClass : CLSObject <CLSRelationable, CLSContactsSearchable>
 {
+    BOOL _isEditable;
     NSString *_className;
+    long long _source;
+    NSString *_iconID;
+    NSString *_locationID;
+    long long _originatingSource;
+    NSString *_customClassName;
+    NSString *_tempObjectID;
+    NSString *_searchText;
 }
 
+@property (readonly, nonatomic) NSArray *classMembers;
 @property (copy, nonatomic) NSString *className; // @synthesize className=_className;
+@property (copy, nonatomic) NSString *customClassName; // @synthesize customClassName=_customClassName;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *displayName;
+@property (readonly, nonatomic) NSString *emailAddress;
+@property (readonly, nonatomic) NSString *groupIdentifier;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *iconID; // @synthesize iconID=_iconID;
+@property BOOL isEditable; // @synthesize isEditable=_isEditable;
+@property (copy, nonatomic) NSString *locationID; // @synthesize locationID=_locationID;
+@property (readonly, nonatomic) NSPersonNameComponents *nameComponents;
+@property (nonatomic) long long originatingSource; // @synthesize originatingSource=_originatingSource;
+@property (copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
+@property (nonatomic) long long source; // @synthesize source=_source;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *tempObjectID; // @synthesize tempObjectID=_tempObjectID;
 
++ (id)relations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_init;
+- (void)addPerson:(id)arg1 withRole:(unsigned long long)arg2;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLocation:(id)arg1 customName:(id)arg2;
+- (void)removePerson:(id)arg1 withRole:(unsigned long long)arg2;
+- (void)setDisplayName:(id)arg1;
+- (BOOL)validateObject:(id *)arg1;
 
 @end
 

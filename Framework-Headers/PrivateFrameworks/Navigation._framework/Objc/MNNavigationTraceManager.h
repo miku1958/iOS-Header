@@ -13,7 +13,6 @@
 @class MNTraceEventRecorder, MNTracePlayer, MNTraceRecorder, NSBundle, NSString;
 @protocol GEOMotionContextProviderDelegate, MNLocationProviderDelegate, MNNavigationTraceManagerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface MNNavigationTraceManager : NSObject <MNTracePlayerObserver, MNLocationProvider, GEOMotionContextProvider>
 {
     MNTracePlayer *_tracePlayer;
@@ -43,24 +42,35 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isLocationServicesPreferencesDialogEnabled) BOOL locationServicesPreferencesDialogEnabled;
 @property (nonatomic) BOOL matchInfoEnabled;
 @property (weak, nonatomic) id<GEOMotionContextProviderDelegate> motionDelegate; // @synthesize motionDelegate=_motionContextProviderDelegate;
+@property (nonatomic) int navigationType; // @synthesize navigationType=_navigationType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double timeScale;
 @property (readonly, nonatomic) MNTraceEventRecorder *traceEventRecorder; // @synthesize traceEventRecorder=_traceEventRecorder;
 @property (weak, nonatomic) id<MNNavigationTraceManagerDelegate> traceManagerDelegate; // @synthesize traceManagerDelegate=_traceManagerDelegate;
 @property (readonly, nonatomic) MNTracePlayer *tracePlayer; // @synthesize tracePlayer=_tracePlayer;
 @property (readonly, nonatomic) MNTraceRecorder *traceRecorder; // @synthesize traceRecorder=_traceRecorder;
+@property (readonly, nonatomic) unsigned long long traceVersion;
 @property (readonly, nonatomic) BOOL usesCLMapCorrection;
 
 - (void).cxx_destruct;
+- (id)_defaultTraceExtension;
+- (id)_defaultTraceNameForDestination:(id)arg1;
 - (BOOL)_isNavigating;
+- (void)_recordEnvironmentInfo:(id)arg1;
+- (void)_recordStylesheet:(id)arg1;
 - (unsigned long long)_startIndexForNavigation;
+- (id)_tracePathForTraceName:(id)arg1;
+- (id)_validFilenameForTraceName:(id)arg1;
 - (void)close;
 - (void)dealloc;
-- (void)openWithRoutePlanningDetails:(id)arg1;
+- (void)openForPlaybackWithTracePath:(id)arg1;
+- (void)openForRecordingWithTraceRecordingData:(id)arg1 traceNameOverride:(id)arg2;
+- (void)openForSimulationWithRoute:(id)arg1 traceRecordingData:(id)arg2 traceNameOverride:(id)arg3;
 - (void)requestWhenInUseAuthorization;
 - (void)requestWhenInUseAuthorizationWithPrompt;
 - (void)resetForActiveTileGroupChanged;
 - (void)startMotionUpdates;
+- (void)startSimulationWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 routeIndex:(unsigned int)arg5 traceNameOverride:(id)arg6;
 - (void)startUpdatingHeading;
 - (void)startUpdatingLocation;
 - (void)startUpdatingVehicleHeading;

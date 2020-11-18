@@ -16,10 +16,12 @@
     BOOL _shouldIgnoreImage;
     NSURL *_artworkURL;
     NSArray *_lookupItemArtworks;
+    NSArray *_artworkInfoEntries;
     NSString *_cropStyle;
     NSString *_sourceEditorialArtworkKind;
 }
 
+@property (copy, nonatomic) NSArray *artworkInfoEntries; // @synthesize artworkInfoEntries=_artworkInfoEntries;
 @property (copy, nonatomic) NSURL *artworkURL; // @synthesize artworkURL=_artworkURL;
 @property (copy, nonatomic) NSString *cropStyle; // @synthesize cropStyle=_cropStyle;
 @property (readonly, copy) NSString *debugDescription;

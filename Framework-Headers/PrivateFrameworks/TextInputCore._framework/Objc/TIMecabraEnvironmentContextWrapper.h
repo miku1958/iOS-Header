@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSDate, NSMutableArray, NSString;
 
 @interface TIMecabraEnvironmentContextWrapper : NSObject
 {
@@ -20,6 +20,7 @@
     struct __MecabraContext *_mecabraContext;
     NSMutableArray *_temporaryCandidates;
     NSMutableArray *_environmentCandidates;
+    NSDate *_lastAnalyzeInputDate;
 }
 
 @property (copy, nonatomic) NSString *appContext; // @synthesize appContext=_appContext;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) NSArray *environmentCandidateStrings;
 @property (strong, nonatomic) NSMutableArray *environmentCandidates; // @synthesize environmentCandidates=_environmentCandidates;
 @property (readonly, nonatomic) NSArray *inlineCandidates;
+@property (strong, nonatomic) NSDate *lastAnalyzeInputDate; // @synthesize lastAnalyzeInputDate=_lastAnalyzeInputDate;
 @property (nonatomic) struct __MecabraContext *mecabraContext; // @synthesize mecabraContext=_mecabraContext;
 @property (readonly, nonatomic) struct __Mecabra *mecabraEngine; // @synthesize mecabraEngine=_mecabraEngine;
 @property (nonatomic) int shuangpinType; // @synthesize shuangpinType=_shuangpinType;
@@ -43,10 +45,14 @@
 - (void)addContextCandidate:(void *)arg1 accept:(BOOL)arg2;
 - (void)addContextStringCandidate:(void *)arg1;
 - (void)addEnvironmentCandidate:(void *)arg1 atIndex:(unsigned long long)arg2;
+- (BOOL)analyzeInput:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)analyzeString:(id)arg1 options:(unsigned long long)arg2;
 - (void)clearAll;
 - (void)clearContext;
+- (void)clearInline;
+- (void)commitPredictionCandidate:(void *)arg1;
 - (void)completelyCommitInlineCandidate:(void *)arg1;
+- (id)contextString:(id)arg1 forRightContext:(BOOL)arg2;
 - (void *)createMecabraCandidateFromString:(id)arg1;
 - (void)dealloc;
 - (void)declareEndOfSentence;
@@ -57,6 +63,7 @@
 - (void)revertInlineCandidate;
 - (void)revertLearningForCandidate:(void *)arg1;
 - (void)setGeometryModel:(void *)arg1 modelData:(struct __CFArray *)arg2;
+- (void)setKeyboardLayout:(id)arg1;
 - (void)syncEnvironmentAndContextCandidates;
 
 @end

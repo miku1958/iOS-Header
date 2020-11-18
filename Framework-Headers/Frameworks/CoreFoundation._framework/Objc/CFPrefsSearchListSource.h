@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     CFPrefsPlistSource *_standardSetTarget;
     CFPrefsCloudSource *_cloudSetTarget;
     BOOL initialized;
-    _Atomic BOOL _isRebuildingCache;
 }
 
 + (void)preloadDomainsForIdentifiers:(const struct __CFString **)arg1 containers:(const struct __CFString **)arg2 cloudConfigurationURLs:(const struct __CFURL **)arg3 count:(long long)arg4 containingPreferences:(id)arg5;
@@ -49,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (struct __CFString *)copyCloudConfigurationWithURL:(struct __CFURL *)arg1 outConfigFileSource:(id *)arg2 outStoreName:(const struct __CFString **)arg3;
 - (struct __CFString *)copyOSLogDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createMultiMessageWithContainedMessages:(id)arg1;
 - (id)createRequestNewContentMessageForDaemon:(int)arg1;
 - (void)dealloc;
 - (void)deferredNotifyCausedByLoadingOfChangesFromDictionary:(struct __CFDictionary *)arg1 toDictionary:(struct __CFDictionary *)arg2;
@@ -58,9 +58,10 @@ __attribute__((visibility("hidden")))
 - (void)freeze;
 - (void)fullCloudSynchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)generationCount;
-- (void)handleRemoteChangeNotificationForDomainIdentifier:(struct __CFString *)arg1;
+- (void)handleChangeNotificationForDomainIdentifier:(struct __CFString *)arg1 isRemote:(BOOL)arg2;
 - (void)handleReply:(id)arg1 toRequestNewDataMessage:(id)arg2 onConnection:(id)arg3 retryCount:(int)arg4 error:(BOOL *)arg5;
 - (id)initWithIdentifier:(struct __CFString *)arg1 containingPreferences:(id)arg2;
+- (BOOL)isDirectModeEnabled;
 - (void)lock;
 - (void)removePreferencesObserver:(id)arg1;
 - (void)removeSource:(id)arg1;
@@ -68,6 +69,8 @@ __attribute__((visibility("hidden")))
 - (void)setCloudEnabled:(BOOL)arg1 forKey:(struct __CFString *)arg2;
 - (void)setCloudEnabled:(BOOL)arg1 forKeyPrefix:(struct __CFString *)arg2;
 - (BOOL)synchronize;
+- (void)synchronouslySendDaemonMessage:(id)arg1 andAgentMessage:(id)arg2 andDirectMessage:(id)arg3 replyHandler:(CDUnknownBlockType)arg4;
+- (void)transitionIntoDirectModeIfNeededWithRetryBlock:(CDUnknownBlockType)arg1;
 - (void)unlock;
 
 @end

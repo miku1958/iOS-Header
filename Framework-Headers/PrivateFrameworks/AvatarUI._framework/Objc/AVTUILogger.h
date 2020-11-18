@@ -31,6 +31,7 @@
 - (void)checkingIn:(CDUnknownBlockType)arg1;
 - (void)copyingStorageAside:(CDUnknownBlockType)arg1;
 - (void)deletingRecords:(CDUnknownBlockType)arg1;
+- (void)deletingStickerRecentsForRemoteChanges:(CDUnknownBlockType)arg1;
 - (void)duplicatingRecords:(CDUnknownBlockType)arg1;
 - (void)exportingRecords:(CDUnknownBlockType)arg1;
 - (void)fetchingRecords:(CDUnknownBlockType)arg1;
@@ -79,6 +80,7 @@
 - (void)logDeduplicateRecordWithIdentifier:(id)arg1 toNewRecordWithIdentifier:(id)arg2;
 - (void)logDeletingImagesWithIdentifierPrefix:(id)arg1;
 - (void)logDeletingRecordWithIdentifier:(id)arg1;
+- (void)logDeletingStickerRecents;
 - (void)logDidFinishEditingWithError:(id)arg1;
 - (void)logDidFinishEditingWithSuccess;
 - (void)logDidResetZoneWithSuccess:(BOOL)arg1 error:(id)arg2;
@@ -96,6 +98,7 @@
 - (void)logErrorDeletingThumbnailsForIdentifier:(id)arg1 error:(id)arg2;
 - (void)logErrorDuplicatingThumbnailsForIdentifier:(id)arg1 error:(id)arg2;
 - (void)logErrorFetchingChangeHistory:(id)arg1;
+- (void)logErrorFetchingRecentStickers:(id)arg1;
 - (void)logErrorFetchingRecords:(id)arg1;
 - (void)logErrorGettingAccountInfo:(id)arg1;
 - (void)logErrorGettingAvatarsDaemonClientProxy:(id)arg1;
@@ -109,6 +112,7 @@
 - (void)logErrorReadingCurrentHistoryToken:(id)arg1;
 - (void)logErrorRemovingStoreFolder:(id)arg1;
 - (void)logErrorSavingChangeToken:(id)arg1 location:(id)arg2;
+- (void)logErrorSavingRecentSticker:(id)arg1;
 - (void)logErrorSettingUpStore:(id)arg1;
 - (void)logErrorSettingUserDirSuffix;
 - (void)logErrorStartingServer:(id)arg1;
@@ -118,6 +122,7 @@
 - (void)logErrorUpdatingVersion:(id)arg1;
 - (void)logErrorWhileMigratingBackend:(id)arg1;
 - (void)logExportRequestResult:(BOOL)arg1 error:(id)arg2;
+- (void)logFetchedOrphanedRecentSticker:(id)arg1;
 - (void)logFetchedRecords:(unsigned long long)arg1 criteria:(long long)arg2;
 - (void)logFileSystemError:(id)arg1;
 - (void)logFoundExistingRecordDuringMigration;
@@ -146,9 +151,11 @@
 - (void)logNoProxyToAvatarsDaemon;
 - (void)logNotImportingOnLaunchWithRemainingTime:(double)arg1;
 - (void)logNotificationDoesntContainChangeHistoryToken;
+- (void)logPaddleViewVideoPlayerFailed:(id)arg1;
 - (void)logParsingMetadataDefinitions;
 - (void)logParsingMetadataDefinitionsError:(id)arg1;
 - (void)logPerformTransition:(id)arg1;
+- (void)logPerformedRecentStickersMigration:(BOOL)arg1;
 - (void)logPostingChangeNotificationForIdentifiers:(id)arg1;
 - (void)logPreLoadingNeededForIndex:(unsigned long long)arg1 section:(unsigned long long)arg2;
 - (void)logPreLoadingPreset:(id)arg1 task:(id)arg2;
@@ -158,12 +165,15 @@
 - (void)logReadingBackendAtPath:(id)arg1;
 - (void)logReadingError:(id)arg1;
 - (void)logReceivedRemoteChange:(id)arg1;
-- (void)logRecordNotFoundInPuppetStore:(id)arg1;
-- (void)logRecordNotFoundInRecordStore:(id)arg1;
+- (void)logRecordsNotFoundInAnyStore:(id)arg1;
+- (void)logRecordsNotFoundInPuppetStore:(id)arg1;
+- (void)logRecordsNotFoundInRecordStore:(id)arg1;
 - (void)logRenderingConfiguration:(id)arg1;
 - (void)logRenderingModelColor:(id)arg1;
 - (void)logRenderingModelPreset:(id)arg1;
 - (void)logRenderingRecord:(id)arg1 size:(struct CGSize)arg2;
+- (void)logRenderingStickerEnd:(id)arg1;
+- (void)logRenderingStickerStart:(id)arg1;
 - (void)logRequestingPreLoadingTask:(id)arg1 forIndex:(unsigned long long)arg2 section:(unsigned long long)arg3;
 - (void)logRequestingThumbnailForIndex:(unsigned long long)arg1 section:(id)arg2;
 - (void)logResetSyncReason:(unsigned long long)arg1;
@@ -184,6 +194,7 @@
 - (void)logStartTransition:(id)arg1 state:(long long)arg2;
 - (void)logStartingPreLoadingTask:(id)arg1;
 - (void)logStartingServer;
+- (void)logStickerGeneratorPoolDidntHaveAvailableGenerator:(long long)arg1 maxCount:(long long)arg2;
 - (void)logSyncEnabled;
 - (void)logTearingDownCoreDataStack:(id)arg1;
 - (void)logThrottlingAVTView;
@@ -202,9 +213,11 @@
 - (void)logUsageTrackingBigDifferencesClusterCount:(unsigned long long)arg1;
 - (void)logUsageTrackingRecordCount:(unsigned long long)arg1;
 - (void)logUsageTrackingSmallDifferencesClusterCount:(unsigned long long)arg1;
+- (void)logUserRequestedBackupXPCActivityFinished;
 - (void)logWillResetZone;
 - (void)migratingPersistedContent:(CDUnknownBlockType)arg1;
 - (void)performingMigrationXPCActivity:(CDUnknownBlockType)arg1;
+- (void)performingUserRequestedBackupActivity:(CDUnknownBlockType)arg1;
 - (void)postingAvatarStoreChangeNotification:(CDUnknownBlockType)arg1;
 - (void)processingDidResetSyncNotification:(CDUnknownBlockType)arg1;
 - (void)processingRemoteChangeNotification:(CDUnknownBlockType)arg1;

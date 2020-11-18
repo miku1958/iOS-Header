@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)imageAtIndex:(unsigned long long)arg1;
 - (id)initWithImageSource:(struct CGImageSource *)arg1;
 - (long long)orientation;
+- (struct CGSize)size;
 - (id)type;
 
 @end

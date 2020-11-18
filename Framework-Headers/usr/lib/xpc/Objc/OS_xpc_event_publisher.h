@@ -11,10 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)_dispose;
 - (void)_xref_dispose;
+- (void)dealloc;
 - (id)description;
 - (id)init;
+- (oneway void)release;
 
 @end
 

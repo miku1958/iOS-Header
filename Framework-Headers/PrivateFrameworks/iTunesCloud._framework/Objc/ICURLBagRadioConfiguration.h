@@ -15,6 +15,7 @@
 
 @property (readonly, copy, nonatomic) NSURL *baseURL;
 @property (readonly, nonatomic) long long getTracksDPInfoKBSyncCount;
+@property (readonly, nonatomic) long long maxSupportedProtocolVersion;
 
 - (void).cxx_destruct;
 - (id)initWithBagRadioDictionary:(id)arg1;

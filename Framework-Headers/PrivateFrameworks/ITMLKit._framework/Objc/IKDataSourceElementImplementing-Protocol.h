@@ -13,6 +13,7 @@
 
 @property (readonly, copy, nonatomic) NSDictionary *indexTitles;
 @property (readonly, nonatomic) IKChangeSet *itemsChangeSet;
+@property (readonly, nonatomic) NSArray *masterPrototypes;
 @property (readonly, nonatomic) NSArray *prototypes;
 @property (readonly, copy, nonatomic) NSArray *proxiedItemElements;
 
@@ -31,6 +32,7 @@
 
 @optional
 - (BOOL)canProxyUnloadedChildElement:(IKViewElement *)arg1;
+- (IKViewElement *)masterPrototypeForItemAtIndex:(unsigned long long)arg1;
 - (IKViewElement *)proxyElementForLoadedChildElement:(IKViewElement *)arg1;
 - (void)resetImplicitUpdates;
 @end

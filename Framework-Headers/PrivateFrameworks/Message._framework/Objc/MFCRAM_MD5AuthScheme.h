@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Message/MFAuthScheme.h>
+#import <EmailCore/ECAuthenticationScheme.h>
 
-@interface MFCRAM_MD5AuthScheme : MFAuthScheme
+@interface MFCRAM_MD5AuthScheme : ECAuthenticationScheme
 {
 }
 

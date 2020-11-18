@@ -31,7 +31,7 @@
 - (void)dealloc;
 - (void)deregisterWithIntents;
 - (void)deregisterWithSearchFoundation;
-- (void)loadDataImageFromImage:(id)arg1 usingPortableImageLoader:(id)arg2 scaledSize:(CDStruct_c3b9c2ee)arg3 accessSpecifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)loadDataImageFromImage:(id)arg1 usingPortableImageLoader:(id)arg2 scaledSize:(CDStruct_c3b9c2ee)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)loadImage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)registerWithIntents;
 - (void)registerWithSearchFoundation;

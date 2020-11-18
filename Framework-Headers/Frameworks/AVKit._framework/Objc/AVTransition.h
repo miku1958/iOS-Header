@@ -6,37 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class AVTransitionPresentationContext, NSMutableArray, UIView, UIViewPropertyAnimator;
+@class AVPresentationContext, NSMutableArray, UIViewPropertyAnimator;
 @protocol AVTransitionDelegate, UIViewControllerContextTransitioningEx;
 
+__attribute__((visibility("hidden")))
 @interface AVTransition : NSObject
 {
-    BOOL _wasInitiallyInteractive;
-    AVTransitionPresentationContext *_presentationContext;
-    long long _transitionType;
+    AVPresentationContext *_presentationContext;
     id<AVTransitionDelegate> _delegate;
     id<UIViewControllerContextTransitioningEx> _transitionContext;
     UIViewPropertyAnimator *_transitionAnimator;
     UIViewPropertyAnimator *_clientAnimator;
-    UIView *_touchBlockingView;
-    UIView *_containerView;
-    UIView *_backgroundView;
     NSMutableArray *_allAnimators;
 }
 
 @property (readonly, nonatomic) NSMutableArray *allAnimators; // @synthesize allAnimators=_allAnimators;
-@property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) UIViewPropertyAnimator *clientAnimator; // @synthesize clientAnimator=_clientAnimator;
-@property (readonly, weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (weak, nonatomic) id<AVTransitionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) AVTransitionPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
-@property (readonly, weak, nonatomic) UIView *presentedView;
-@property (readonly, weak, nonatomic) UIView *presentingView;
-@property (readonly, nonatomic) UIView *touchBlockingView; // @synthesize touchBlockingView=_touchBlockingView;
+@property (strong, nonatomic) AVPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 @property (readonly, nonatomic) UIViewPropertyAnimator *transitionAnimator; // @synthesize transitionAnimator=_transitionAnimator;
+@property (readonly, nonatomic) double transitionAnimatorProgress;
 @property (readonly, weak, nonatomic) id<UIViewControllerContextTransitioningEx> transitionContext; // @synthesize transitionContext=_transitionContext;
-@property (readonly, nonatomic) long long transitionType; // @synthesize transitionType=_transitionType;
-@property (nonatomic) BOOL wasInitiallyInteractive; // @synthesize wasInitiallyInteractive=_wasInitiallyInteractive;
 
 - (void).cxx_destruct;
 - (void)_animateAlongsideInteractiveDismissalTransitionAnimationForCancelling;
@@ -45,16 +35,12 @@
 - (void)_dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)_dismissalTransitionWillBegin;
 - (struct CGRect)_finalFrameForPresentedView;
-- (struct CGAffineTransform)_finalTransformForPresentedView;
 - (void)_freezeDismissingViewForFinishing;
 - (struct CGRect)_initialFrameForPresentedView;
 - (void)_presentationTransitionDidEnd:(BOOL)arg1;
 - (void)_presentationTransitionWillBegin;
-- (struct CGAffineTransform)_rotationTransform:(double)arg1;
-- (struct CGAffineTransform)_rotationTransformFromPresentedViewToSourceView;
 - (struct CGRect)_sourceViewFrameInContainerView;
 - (void)_startOrContinueAnimatorsReversed:(BOOL)arg1;
-- (struct CGAffineTransform)_transformForDismissalAnimation;
 - (struct CGAffineTransform)_transformForScale:(double)arg1 translation:(struct CGPoint)arg2 rotation:(double)arg3 locationInWindow:(struct CGPoint)arg4 sourceRectInContainerView:(struct CGRect)arg5;
 - (void)_updateCornerAppearanceAttributesOfView:(id)arg1 toSourceView:(id)arg2 similarity:(double)arg3;
 - (void)addRunAlongsideAnimationsIfNeeded;
@@ -66,7 +52,7 @@
 - (id)initWithTransitionContext:(id)arg1;
 - (void)pauseInteractiveTransition;
 - (void)startInteractiveTransition;
-- (void)updateWithPercentComplete:(double)arg1 translation:(struct CGPoint)arg2 rotation:(double)arg3 locationInWindow:(struct CGPoint)arg4;
+- (void)updateWithPercentComplete:(double)arg1 scale:(double)arg2 translation:(struct CGPoint)arg3 rotation:(double)arg4;
 
 @end
 

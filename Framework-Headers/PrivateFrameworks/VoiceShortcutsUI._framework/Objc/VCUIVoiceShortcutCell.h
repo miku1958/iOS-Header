@@ -6,19 +6,23 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UIView;
+@class UIView, VCVoiceShortcut;
 
 @interface VCUIVoiceShortcutCell : UITableViewCell
 {
+    VCVoiceShortcut *_voiceShortcut;
     UIView *_cardView;
 }
 
 @property (weak, nonatomic) UIView *cardView; // @synthesize cardView=_cardView;
+@property (strong, nonatomic) VCVoiceShortcut *voiceShortcut; // @synthesize voiceShortcut=_voiceShortcut;
 
 - (void).cxx_destruct;
 - (void)configureWithVoiceShortcut:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateCardView;
 
 @end
 

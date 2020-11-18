@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GeoServices/NSObject-Protocol.h>
+#import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
+#import <GeoServices/GEOMapServiceThrottlableTicket-Protocol.h>
 
-@class GEOMapItemIdentifier, GEOMapServiceTraits, GEORPSuggestionEntry, GEORPSuggestionList, GEOSortPriorityMapping, NSDictionary, NSString;
+@class GEOClientRankingModel, GEOMapItemIdentifier, GEOMapServiceTraits, GEORPSuggestionEntry, GEORPSuggestionList, GEOSortPriorityMapping, NSDictionary, NSString;
 
-@protocol GEOMapServiceCompletionTicket <NSObject>
+@protocol GEOMapServiceCompletionTicket <GEOMapServiceCancellableTicket, GEOMapServiceThrottlableTicket>
 
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic, getter=_searchQuery) NSString *searchQuery;
@@ -16,12 +17,15 @@
 
 - (void)applyToSuggestionEntry:(GEORPSuggestionEntry *)arg1 withAutocompleteSearchResultIdentifier:(GEOMapItemIdentifier *)arg2;
 - (void)applyToSuggestionList:(GEORPSuggestionList *)arg1;
+- (BOOL)autocompleteTopSectionIsQuerySuggestions;
 - (void)cancel;
+- (GEOClientRankingModel *)clientRankingModel;
 - (BOOL)hasShouldDisplayNoResults;
 - (BOOL)isRapEnabled;
 - (BOOL)matchesFragment:(NSString *)arg1;
 - (double)retainSearchTime;
 - (BOOL)shouldDisplayNoResults;
+- (BOOL)showAutocompleteClientSource;
 - (GEOSortPriorityMapping *)sortPriorityMapping;
 - (void)submitWithAutoCompletionHandler:(void (^)(id<GEOCompletion>, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;
 @end

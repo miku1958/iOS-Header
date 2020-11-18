@@ -6,7 +6,6 @@
 
 #import <UIKit/UIView.h>
 
-#import <PhotosUICore/PXAssetTile-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXOverlayBadgeTile-Protocol.h>
 #import <PhotosUICore/PXReusableObject-Protocol.h>
@@ -14,13 +13,13 @@
 
 @class NSString, PXAssetBadgeManager, PXImageRequester, PXUIAssetBadgeView;
 
-@interface PXOverlayBadgeUIViewTile : UIView <PXChangeObserver, PXReusableObject, PXAssetTile, PXOverlayBadgeTile, PXUIViewBasicTile>
+@interface PXOverlayBadgeUIViewTile : UIView <PXChangeObserver, PXReusableObject, PXOverlayBadgeTile, PXUIViewBasicTile>
 {
     struct {
         BOOL badgeView;
     } _needsUpdateFlags;
-    PXImageRequester *_imageRequester;
     PXAssetBadgeManager *_badgeManager;
+    PXImageRequester *_imageRequester;
     unsigned long long __badgeOptions;
     PXUIAssetBadgeView *__badgeView;
 }

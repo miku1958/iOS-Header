@@ -11,18 +11,22 @@
 @interface ISTouchIDDialog : ISDialog
 {
     NSLock *_lock;
+    BOOL _applePayClassic;
     BOOL _isDualAction;
     BOOL _isFree;
+    BOOL _shouldShowCardPicker;
     SSPaymentSheet *_paymentSheet;
     NSString *_body;
     NSString *_username;
 }
 
+@property (readonly, getter=isApplePayClassic) BOOL applePayClassic; // @synthesize applePayClassic=_applePayClassic;
 @property (copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property (copy) NSString *fallbackExplanation;
 @property (copy) NSString *fallbackMessage;
 @property (readonly) BOOL isDualAction; // @synthesize isDualAction=_isDualAction;
 @property (nonatomic) BOOL isFree; // @synthesize isFree=_isFree;
+@property (readonly) BOOL shouldShowCardPicker; // @synthesize shouldShowCardPicker=_shouldShowCardPicker;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 - (void).cxx_destruct;

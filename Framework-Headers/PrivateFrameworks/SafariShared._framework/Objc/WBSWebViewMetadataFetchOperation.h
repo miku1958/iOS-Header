@@ -27,13 +27,13 @@
 @property (readonly, nonatomic) struct CGSize webViewSize;
 
 - (void).cxx_destruct;
+- (void)_setUpWebViewAndStartOffscreenFetching;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (void)cancel;
 - (void)clearWebView;
 - (void)dealloc;
 - (void)didCreateWebView;
 - (void)didFailFetch;
-- (void)setUpWebViewIfNeeded;
 - (void)start;
 - (void)startOffscreenFetching;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;

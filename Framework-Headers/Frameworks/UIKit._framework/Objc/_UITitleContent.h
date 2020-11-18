@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UITitleContent : NSObject
 {
-    NSString *_title;
+    NSAttributedString *_attributedText;
     double _width;
 }
 
-@property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) double width; // @synthesize width=_width;
 
-+ (id)contentWithTitle:(id)arg1 button:(id)arg2;
++ (id)contentWithTitle:(id)arg1 attributes:(id)arg2 button:(id)arg3;
 - (void).cxx_destruct;
 - (id)description;
 - (void)updateWithButton:(id)arg1;

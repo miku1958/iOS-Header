@@ -6,20 +6,22 @@
 
 #import <QuickLook/NSObject-Protocol.h>
 
-@class NSError, NSString, NSURL, QLItemViewController;
+@class NSDictionary, NSError, NSString, NSURL, QLItemViewController, QLPreviewItemEditedCopy;
 @protocol QLRemotePopoverTracker;
 
 @protocol QLPreviewItemViewControllerDelegate <NSObject>
 - (long long)dragDataOwnerForPreviewItemViewController:(QLItemViewController *)arg1;
-- (void)expandContentOfPreviewItemViewController:(QLItemViewController *)arg1;
+- (void)expandContentOfPreviewItemViewController:(QLItemViewController *)arg1 unarchivedItemsURL:(NSURL *)arg2;
 - (NSString *)loadingTextForPreviewItemViewController:(QLItemViewController *)arg1;
 - (void)previewItemViewController:(QLItemViewController *)arg1 didEnableEditMode:(BOOL)arg2;
 - (void)previewItemViewController:(QLItemViewController *)arg1 didFailWithError:(NSError *)arg2;
 - (void)previewItemViewController:(QLItemViewController *)arg1 hasUnsavedEdits:(BOOL)arg2;
 - (void)previewItemViewController:(QLItemViewController *)arg1 wantsFullScreen:(BOOL)arg2;
+- (void)previewItemViewController:(QLItemViewController *)arg1 wantsToForwardMessageToHost:(NSDictionary *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)previewItemViewController:(QLItemViewController *)arg1 wantsToOpenURL:(NSURL *)arg2;
-- (void)previewItemViewController:(QLItemViewController *)arg1 wantsToShowShareSheetWithPopoverTracker:(id<QLRemotePopoverTracker>)arg2 dismissCompletion:(void (^)(void))arg3;
-- (void)previewItemViewControllerDidEditPreview:(QLItemViewController *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)previewItemViewController:(QLItemViewController *)arg1 wantsToShowShareSheetWithPopoverTracker:(id<QLRemotePopoverTracker>)arg2 customSharedURL:(NSURL *)arg3 dismissCompletion:(void (^)(void))arg4;
+- (void)previewItemViewControllerDidChangeCurrentPreviewController:(QLItemViewController *)arg1;
+- (void)previewItemViewControllerDidEditCopyOfPreviewItem:(QLItemViewController *)arg1 editedCopy:(QLPreviewItemEditedCopy *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)previewItemViewControllerDidUpdatePreferredContentSize:(QLItemViewController *)arg1;
 - (void)previewItemViewControllerDidUpdateTitle:(QLItemViewController *)arg1;
 - (void)previewItemViewControllerWantsToDismissQuickLook:(QLItemViewController *)arg1;

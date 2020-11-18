@@ -17,5 +17,7 @@
 @property (readonly, nonatomic) NSString *selectedText;
 
 - (void)adjustTextPositionByCharacterOffset:(long long)arg1;
+- (void)setMarkedText:(NSString *)arg1 selectedRange:(struct _NSRange)arg2;
+- (void)unmarkText;
 @end
 

@@ -21,8 +21,10 @@
 
 - (void).cxx_destruct;
 - (Class)classForCoder;
+- (unsigned long long)hash;
 - (id)initWithSFImage:(id)arg1;
 - (id)initWithSpotlightIdentifier:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

@@ -34,6 +34,7 @@
 - (id)objectEnumerator;
 - (void)removeAllObjects;
 - (void)removeObject:(id)arg1;
+- (id)serializedRepresentation;
 - (void)setSet:(id)arg1;
 - (void)unionSet:(id)arg1;
 

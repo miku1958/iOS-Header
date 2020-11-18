@@ -16,6 +16,7 @@
     NSMutableDictionary *_inProgressOperationByUUID;
     BOOL _remakerSuccess;
     BOOL _abortedRemaker;
+    BOOL _cancelledRemaker;
     NSError *_remakerError;
     NSOperationQueue *_remakeOperationQueue;
     NSObject<OS_dispatch_source> *_progressTimer;
@@ -32,7 +33,7 @@
 
 + (id)remakerWithOperations:(id)arg1 options:(id)arg2;
 - (void).cxx_destruct;
-- (void)_abortWithError:(id)arg1;
+- (void)_abortWithUnderlyingOperationError:(id)arg1;
 - (void)_callProgressBlockWithProgress:(double)arg1;
 - (void)_completeOperationWithUUID:(id)arg1;
 - (double)_computeProgress;
@@ -40,6 +41,7 @@
 - (void)_configureVideoOperation:(id)arg1 withUUID:(id)arg2 dispatchGroup:(id)arg3;
 - (void)_endSessionWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)_updateProgress;
+- (void)cancelRemaking;
 - (id)init;
 - (void)remakeWithProgressHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

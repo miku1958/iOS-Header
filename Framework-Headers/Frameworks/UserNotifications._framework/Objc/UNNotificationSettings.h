@@ -9,11 +9,8 @@
 #import <UserNotifications/NSCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
 
-@class NSDictionary;
-
 @interface UNNotificationSettings : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _providesAppNotificationSettings;
     long long _authorizationStatus;
     long long _soundSetting;
     long long _badgeSetting;
@@ -24,34 +21,35 @@
     long long _alertStyle;
     long long _showPreviewsSetting;
     long long _criticalAlertSetting;
-    NSDictionary *_topicsSettings;
+    BOOL _providesAppNotificationSettings;
+    long long _announcementSetting;
+    long long _groupingSetting;
 }
 
 @property (readonly, nonatomic) long long alertSetting; // @synthesize alertSetting=_alertSetting;
 @property (readonly, nonatomic) long long alertStyle; // @synthesize alertStyle=_alertStyle;
+@property (readonly, nonatomic) long long announcementSetting; // @synthesize announcementSetting=_announcementSetting;
 @property (readonly, nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (readonly, nonatomic) long long badgeSetting; // @synthesize badgeSetting=_badgeSetting;
 @property (readonly, nonatomic) long long carPlaySetting; // @synthesize carPlaySetting=_carPlaySetting;
 @property (readonly, nonatomic) long long criticalAlertSetting; // @synthesize criticalAlertSetting=_criticalAlertSetting;
+@property (readonly, nonatomic) long long groupingSetting; // @synthesize groupingSetting=_groupingSetting;
 @property (readonly, nonatomic) long long lockScreenSetting; // @synthesize lockScreenSetting=_lockScreenSetting;
 @property (readonly, nonatomic) long long notificationCenterSetting; // @synthesize notificationCenterSetting=_notificationCenterSetting;
 @property (readonly, nonatomic) BOOL providesAppNotificationSettings; // @synthesize providesAppNotificationSettings=_providesAppNotificationSettings;
 @property (readonly, nonatomic) long long showPreviewsSetting; // @synthesize showPreviewsSetting=_showPreviewsSetting;
 @property (readonly, nonatomic) long long soundSetting; // @synthesize soundSetting=_soundSetting;
-@property (readonly, nonatomic) NSDictionary *topicsSettings; // @synthesize topicsSettings=_topicsSettings;
 
 + (id)emptySettings;
-+ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 criticalAlertSetting:(long long)arg8 alertStyle:(long long)arg9 showPreviewsSetting:(long long)arg10;
-+ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 criticalAlertSetting:(long long)arg8 alertStyle:(long long)arg9 showPreviewsSetting:(long long)arg10 providesAppNotificationSettings:(BOOL)arg11;
-+ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 criticalAlertSetting:(long long)arg8 alertStyle:(long long)arg9 showPreviewsSetting:(long long)arg10 providesAppNotificationSettings:(BOOL)arg11 topicsSettings:(id)arg12;
++ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 announcementSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 alertStyle:(long long)arg10 showPreviewsSetting:(long long)arg11 groupingSetting:(long long)arg12 providesAppNotificationSettings:(BOOL)arg13;
++ (id)settingsWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 spokenSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 alertStyle:(long long)arg10 showPreviewsSetting:(long long)arg11 providesAppNotificationSettings:(BOOL)arg12;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasEnabledSettings;
 - (unsigned long long)hash;
-- (id)initWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 criticalAlertSetting:(long long)arg8 alertStyle:(long long)arg9 showPreviewsSetting:(long long)arg10 providesAppNotificationSettings:(BOOL)arg11 topicsSettings:(id)arg12;
+- (id)initWithAuthorizationStatus:(long long)arg1 soundSetting:(long long)arg2 badgeSetting:(long long)arg3 alertSetting:(long long)arg4 notificationCenterSetting:(long long)arg5 lockScreenSetting:(long long)arg6 carPlaySetting:(long long)arg7 announcementSetting:(long long)arg8 criticalAlertSetting:(long long)arg9 alertStyle:(long long)arg10 showPreviewsSetting:(long long)arg11 groupingSetting:(long long)arg12 providesAppNotificationSettings:(BOOL)arg13;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDXPCClient, HKWorkoutConfiguration, NSString, NSUUID;
+@class HDHealthStoreClient, HKWorkoutConfiguration, NSString, NSUUID;
 
 @interface HDWorkoutSessionConfiguration : NSObject
 {
@@ -14,12 +14,12 @@
     BOOL _supportsAppRelaunchForRecovery;
     NSUUID *_sessionIdentifier;
     HKWorkoutConfiguration *_workoutConfiguration;
-    HDXPCClient *_client;
+    HDHealthStoreClient *_client;
     NSString *_clientProcessBundleIdentifier;
     NSString *_clientApplicationIdentifier;
 }
 
-@property (readonly, nonatomic) HDXPCClient *client; // @synthesize client=_client;
+@property (readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property (readonly, copy, nonatomic) NSString *clientApplicationIdentifier; // @synthesize clientApplicationIdentifier=_clientApplicationIdentifier;
 @property (readonly, copy, nonatomic) NSString *clientProcessBundleIdentifier; // @synthesize clientProcessBundleIdentifier=_clientProcessBundleIdentifier;
 @property (readonly, nonatomic) BOOL requiresCoreLocationAssertion; // @synthesize requiresCoreLocationAssertion=_requiresCoreLocationAssertion;

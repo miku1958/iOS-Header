@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) SCKStartupQueue *startupQueue; // @synthesize startupQueue=_startupQueue;
 
++ (id)supportedCommands;
 + (id)zoneMergeHandler;
 + (id)zoneSchema;
 - (void).cxx_destruct;

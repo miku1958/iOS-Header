@@ -7,6 +7,7 @@
 @class CTXPCServiceSubscriptionContext;
 
 @protocol CTXPCServiceSMSInterface
+- (void)getEmergencyTextNumbers:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getSmsReadyState:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)getSmscAddress:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 @end

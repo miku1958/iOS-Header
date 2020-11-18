@@ -7,6 +7,9 @@
 #import <Intents/INStartAudioCallIntent.h>
 
 @interface INStartAudioCallIntent (_CDSpotlightRecorderAdditions)
+- (id)cd_groupName;
+- (long long)cd_interactionMechanism;
+- (id)cd_recipients;
 - (BOOL)cd_saveToPeopleStore;
 @end
 

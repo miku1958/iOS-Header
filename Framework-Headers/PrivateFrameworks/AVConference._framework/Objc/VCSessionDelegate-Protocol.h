@@ -20,6 +20,7 @@
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteAudioPausedDidChange:(BOOL)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteVideoEnabledDidChange:(BOOL)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 remoteVideoPausedDidChange:(BOOL)arg3;
+- (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 spatialAudioSourceIDDidChange:(unsigned long long)arg3;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 videoEnabled:(BOOL)arg3 didSucceed:(BOOL)arg4 error:(NSError *)arg5;
 - (void)vcSession:(VCSession *)arg1 participantID:(NSString *)arg2 videoPaused:(BOOL)arg3 didSucceed:(BOOL)arg4 error:(NSError *)arg5;
 - (void)vcSession:(VCSession *)arg1 removeParticipantWithID:(NSString *)arg2 didSucceed:(BOOL)arg3 error:(NSError *)arg4;

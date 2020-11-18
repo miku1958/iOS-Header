@@ -51,6 +51,7 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isAirPlayDisplay;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isMainRootDisplay;
 - (BOOL)isMusicOnlyDisplay;
 - (BOOL)isRestrictedAirPlayDisplay;
 - (BOOL)isiPodOnlyDisplay;

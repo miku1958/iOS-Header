@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate;
+@class NSArray, NSDate;
 
 @interface CLKUIAlmanacTransitInfo : NSObject
 {
     NSDate *_day;
     long long _constantSun;
     NSDate *_rise;
-    NSDate *_transit;
+    NSDate *_solarNoon;
     NSDate *_set;
+    NSArray *_solarMidnights;
     CDStruct_2c43369c _location;
 }
 
@@ -23,7 +24,8 @@
 @property (nonatomic) CDStruct_2c43369c location; // @synthesize location=_location;
 @property (strong, nonatomic) NSDate *rise; // @synthesize rise=_rise;
 @property (strong, nonatomic) NSDate *set; // @synthesize set=_set;
-@property (strong, nonatomic) NSDate *transit; // @synthesize transit=_transit;
+@property (strong, nonatomic) NSArray *solarMidnights; // @synthesize solarMidnights=_solarMidnights;
+@property (strong, nonatomic) NSDate *solarNoon; // @synthesize solarNoon=_solarNoon;
 
 + (id)transitInfoForDate:(id)arg1;
 + (id)transitInfoForDate:(id)arg1 city:(id)arg2;

@@ -6,7 +6,7 @@
 
 #import <FrontBoard/NSObject-Protocol.h>
 
-@class BSProcessHandle, NSString;
+@class BSProcessHandle, NSString, RBSProcessIdentity;
 @protocol FBSServiceFacilityClientContext;
 
 @protocol FBSServiceFacilityClientHandle <NSObject>
@@ -15,6 +15,7 @@
 @property (readonly, copy, nonatomic) NSString *facilityID;
 @property (readonly, nonatomic) int pid;
 @property (readonly, nonatomic) BSProcessHandle *processHandle;
+@property (readonly, copy, nonatomic) RBSProcessIdentity *processIdentity;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIFoundation/NSLayoutManagerDelegate-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSConcreteNotifyingMutableAttributedString, NSGraphicsContext, NSLayoutManager, NSString, NSTextContainer;
+@class CUICatalog, CUIStyleEffectConfiguration, NSConcreteNotifyingMutableAttributedString, NSLayoutManager, NSString, NSTextContainer;
 
 @interface NSStringDrawingTextStorage : NSTextStorage <NSLayoutManagerDelegate>
 {
@@ -28,7 +28,6 @@
     CUICatalog *_catalog;
     CUIStyleEffectConfiguration *_styleEffects;
     double _defaultTighteningFactor;
-    NSGraphicsContext *_graphicsContext;
 }
 
 @property (strong, nonatomic) CUICatalog *cuiCatalog; // @synthesize cuiCatalog=_catalog;
@@ -36,7 +35,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property double defaultTighteningFactor; // @synthesize defaultTighteningFactor=_defaultTighteningFactor;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSGraphicsContext *graphicsContext; // @synthesize graphicsContext=_graphicsContext;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:) BOOL usesSimpleTextEffects;
@@ -75,6 +73,7 @@
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withAttributedString:(id)arg2;
 - (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)setAttributes:(id)arg1 range:(struct _NSRange)arg2;
+- (void)setGraphicsContext:(id)arg1;
 - (id)string;
 - (id)textContainer;
 - (id)textContainerForAttributedString:(id)arg1;

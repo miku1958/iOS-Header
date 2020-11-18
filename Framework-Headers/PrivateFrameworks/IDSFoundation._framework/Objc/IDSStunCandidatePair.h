@@ -21,6 +21,8 @@
     CDUnknownBlockType _sendMsgBlock;
     double _lastIncomingPacketTime;
     double _lastOutgoingPacketTime;
+    unsigned int _totalPacketsSentOnLink;
+    unsigned int _totalPacketsReceivedOnLink;
     BOOL _hbStarted;
     unsigned short _hbCounter;
     unsigned char _statsIntervalInSeconds;
@@ -66,6 +68,8 @@
     CDUnknownBlockType _sessionGoAwayBlock;
     BOOL _pendingRealloc;
     NSObject<OS_dispatch_source> *_reallocTimer;
+    BOOL _pendingNoSessionStateAllocbind;
+    NSObject<OS_dispatch_source> *_noSessionStateTimer;
     BOOL _recvDisconnected;
     BOOL _recvDisconnectedAck;
     NSData *_encKey;
@@ -76,6 +80,7 @@
     double _testStartTime;
     unsigned int _testOptions;
     BOOL _isDisconnecting;
+    double _triggeredCheckTime;
 }
 
 @property (nonatomic) double allocateTime; // @synthesize allocateTime=_allocateTime;
@@ -104,6 +109,7 @@
 @property (readonly) IDSStunCandidate *local; // @synthesize local=_local;
 @property (nonatomic) long long participantID; // @synthesize participantID=_participantID;
 @property (readonly) NSDictionary *participantIDMap; // @synthesize participantIDMap=_participantIDMap;
+@property (nonatomic) BOOL pendingNoSessionStateAllocbind; // @synthesize pendingNoSessionStateAllocbind=_pendingNoSessionStateAllocbind;
 @property (nonatomic) BOOL pendingRealloc; // @synthesize pendingRealloc=_pendingRealloc;
 @property (readonly) NSMutableArray *pendingStunRequests; // @synthesize pendingStunRequests=_pendingStunRequests;
 @property (readonly, nonatomic) unsigned char protocolVersion; // @synthesize protocolVersion=_protocolVersion;
@@ -129,10 +135,15 @@
 @property (readonly) NSData *softwareData; // @synthesize softwareData=_softwareData;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) unsigned char statsIntervalInSeconds; // @synthesize statsIntervalInSeconds=_statsIntervalInSeconds;
+@property (readonly, nonatomic) unsigned int testOptions; // @synthesize testOptions=_testOptions;
 @property (readonly, nonatomic) double testStartTime; // @synthesize testStartTime=_testStartTime;
+@property (nonatomic) unsigned int totalPacketsReceivedOnLink; // @synthesize totalPacketsReceivedOnLink=_totalPacketsReceivedOnLink;
+@property (nonatomic) unsigned int totalPacketsSentOnLink; // @synthesize totalPacketsSentOnLink=_totalPacketsSentOnLink;
+@property (nonatomic) double triggeredCheckTime; // @synthesize triggeredCheckTime=_triggeredCheckTime;
 
 + (id)candidatePairWithLocalCandidate:(id)arg1 remoteCandidate:(id)arg2 sessionID:(id)arg3 delegate:(id)arg4 sendMsgBlock:(CDUnknownBlockType)arg5;
 - (void).cxx_destruct;
+- (void)_handleNoSessionStateTimer;
 - (void)_handleReallocTimer;
 - (void)_handleSessionConnectedtTimer;
 - (void)_handleSessionConvergenceTimer;
@@ -140,7 +151,9 @@
 - (void)_notifyQREventAdded:(id)arg1;
 - (void)_notifySessionStreamInfoReceived:(id)arg1 withParticipants:(id)arg2 sentBytes:(unsigned long long)arg3 receivedBytes:(unsigned long long)arg4 offlineRequest:(BOOL)arg5 streamInfoRequest:(BOOL)arg6 success:(BOOL)arg7;
 - (BOOL)_optionallyCheckEncMarker:(id)arg1;
+- (void)_startNoSessionStateTimer;
 - (void)_startReallocTimer;
+- (void)_stopNoSessionStateTimer;
 - (void)_stopReallocTimer;
 - (void)addStunRequest:(id)arg1;
 - (id)candidatePairToken;
@@ -159,14 +172,15 @@
 - (BOOL)isSharedQRSession;
 - (BOOL)isValidRelayStunCandidatePair;
 - (unsigned int)nextSessionInfoReqID;
+- (BOOL)processDataMessageErrorIndication:(id)arg1;
 - (BOOL)processInfoIndication:(id)arg1 arrivalTime:(double)arg2;
-- (BOOL)processInfoResponse:(id)arg1 packetBuffer:(CDStruct_c4cff10b *)arg2 headerOverhead:(unsigned long long)arg3;
+- (BOOL)processInfoResponse:(id)arg1 packetBuffer:(CDStruct_12676517 *)arg2 headerOverhead:(unsigned long long)arg3;
 - (id)processParticipantsData:(char *)arg1 dataLen:(int)arg2;
 - (BOOL)processSessionInfoIndication:(id)arg1 arrivalTime:(double)arg2;
 - (void)processSessionInfoRequestTimeout:(id)arg1;
-- (BOOL)processSessionInfoResponse:(id)arg1 packetBuffer:(CDStruct_c4cff10b *)arg2 headerOverhead:(unsigned long long)arg3;
+- (BOOL)processSessionInfoResponse:(id)arg1 packetBuffer:(CDStruct_12676517 *)arg2 headerOverhead:(unsigned long long)arg3;
 - (BOOL)processStatsResponse:(id)arg1 arrivalTime:(double)arg2;
-- (BOOL)processStunErrorResponse:(id)arg1 packetBuffer:(CDStruct_c4cff10b *)arg2 headerOverhead:(unsigned long long)arg3;
+- (BOOL)processStunErrorResponse:(id)arg1 packetBuffer:(CDStruct_12676517 *)arg2 headerOverhead:(unsigned long long)arg3;
 - (BOOL)processTestResponse:(id)arg1 arrivalTime:(double)arg2;
 - (void)removeStunRequest:(id)arg1;
 - (void)sendInfoRequest:(id)arg1;
@@ -174,6 +188,7 @@
 - (void)sendStatsRequest:(id)arg1 options:(id)arg2;
 - (void)sendTestRequest:(id)arg1;
 - (void)setChannelSettings:(unsigned int)arg1;
+- (void)setPendingNoSessionState:(BOOL)arg1;
 - (void)setPropertiesWithReallocCandidatePair:(id)arg1 reallocToken:(id)arg2;
 - (void)setPropertiesWithRelaySessionInfo:(id)arg1 sessionInfoDict:(id)arg2 enableSKE:(BOOL)arg3;
 - (void)setProtocolVersion:(unsigned char)arg1 isInitiator:(BOOL)arg2 enableSKE:(BOOL)arg3;

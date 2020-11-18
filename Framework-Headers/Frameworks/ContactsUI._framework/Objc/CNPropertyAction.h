@@ -6,24 +6,22 @@
 
 #import <ContactsUI/CNContactAction.h>
 
-#import <ContactsUI/CNContactActionProtocol-Protocol.h>
-
 @class CNPropertyGroupItem, NSArray;
 @protocol CNPropertyActionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNPropertyAction : CNContactAction <CNContactActionProtocol>
+@interface CNPropertyAction : CNContactAction
 {
     NSArray *_propertyItems;
 }
 
-@property (readonly, nonatomic) BOOL canPerformAction;
 @property (weak, nonatomic) id<CNPropertyActionDelegate> delegate; // @dynamic delegate;
 @property (readonly, nonatomic) CNPropertyGroupItem *propertyItem;
 @property (copy, nonatomic) NSArray *propertyItems; // @synthesize propertyItems=_propertyItems;
 
 + (void)performDefaultActionForItem:(id)arg1 sender:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)canPerformAction;
 - (id)initWithContact:(id)arg1;
 - (id)initWithContact:(id)arg1 propertyItem:(id)arg2;
 - (id)initWithContact:(id)arg1 propertyItems:(id)arg2;

@@ -10,15 +10,12 @@
 @protocol HKFitnessMachineConnectionClientInterface, HKFitnessMachineConnectionInitiatorClientInterface;
 
 @protocol HDWorkoutServerInterface <NSObject>
-- (void)remote_activeWorkoutApplicationIdentifier:(void (^)(NSString *, NSError *))arg1;
 - (void)remote_addSamples:(NSArray *)arg1 toWorkout:(HKWorkout *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_endFitnessMachineConnectionForFitnessMachineSessionUUID:(NSUUID *)arg1 withConnectionUUID:(NSUUID *)arg2;
 - (void)remote_endFitnessMachineConnectionWithUUID:(NSUUID *)arg1;
 - (void)remote_finishAllWorkoutsWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_forbidConnectionForFitnessMachineSessionUUID:(NSUUID *)arg1 withConnectionUUID:(NSUUID *)arg2;
 - (void)remote_generatePauseOrResumeRequestWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)remote_getCurrentWorkoutSnapshotWithCompletion:(void (^)(_HKCurrentWorkoutSnapshot *, NSError *))arg1;
-- (void)remote_getFirstPartyWorkoutSnapshotWithCompletion:(void (^)(_HKFirstPartyWorkoutSnapshot *, NSError *))arg1;
 - (void)remote_markClientReadyWithConnectionUUID:(NSUUID *)arg1;
 - (void)remote_permitConnectionForFitnessMachineSessionUUID:(NSUUID *)arg1 activityType:(unsigned long long)arg2 withConnectionUUID:(NSUUID *)arg3;
 - (void)remote_recoverActiveWorkoutSessionWithCompletion:(void (^)(HKWorkoutSessionTaskConfiguration *, HKWorkoutBuilderConfiguration *, NSUUID *, NSError *))arg1;

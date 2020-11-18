@@ -48,8 +48,12 @@
 - (id)deviceRegion;
 - (id)deviceVersion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
+- (void)endRequiringUpgradedPasscodeIfNecessary;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1;
+- (void)notePasscodeUpgradeFlowDidEnd;
+- (void)notePasscodeUpgradeFlowWillBeginWithCompletion:(CDUnknownBlockType)arg1;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
@@ -69,7 +73,6 @@
 - (id)paymentWebService:(id)arg1 passesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)paymentWebService:(id)arg1 removePass:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 requestPassUpgrade:(id)arg2 pass:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -85,9 +88,10 @@
 - (BOOL)paymentWebServiceSupportsAccounts:(id)arg1;
 - (BOOL)paymentWebServiceSupportsPeerPaymentRegistration:(id)arg1;
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
-- (void)renewAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)secureElementIdentifiers;
 - (unsigned long long)secureElementOwnershipStateForCurrentUser;
+- (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(BOOL)arg1;
 - (id)supportedFeatureIdentifiersWithPaymentWebService:(id)arg1;
 - (BOOL)supportsAutomaticPassPresentation;
 - (void)updatedAccountsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;

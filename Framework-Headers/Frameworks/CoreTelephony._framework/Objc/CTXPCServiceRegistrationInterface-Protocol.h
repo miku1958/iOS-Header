@@ -32,12 +32,14 @@
 - (void)copyWirelessTechnology:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)fetchNetworkList:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)getDataMode:(CTServiceDescriptor *)arg1 completion:(void (^)(NSNumber *, NSError *))arg2;
+- (void)getEncryptionStatus:(CTServiceDescriptor *)arg1 completion:(void (^)(CTEncryptionStatusInfo *, NSError *))arg2;
 - (void)getEnhancedVoiceLinkQualityMetric:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTEnhancedLinkQualityMetric *, NSError *))arg2;
 - (void)getIMSRegistrationStatus:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTIMSRegistrationStatus *, NSError *))arg2;
 - (void)getMaxDataRate:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(long long, NSError *))arg2;
 - (void)getPublicSignalStrength:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
 - (void)getRatSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSString *, NSError *))arg2;
 - (void)getSignalStrengthInfo:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSignalStrengthInfo *, NSError *))arg2;
+- (void)getSignalStrengthMeasurements:(CTServiceDescriptor *)arg1 completion:(void (^)(CTSignalStrengthMeasurements *, NSError *))arg2;
 - (void)getSupportedDataRates:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTSupportedMaxDataRates *, NSError *))arg2;
 - (void)getVoiceLinkQualityMetric:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTVoiceLinkQualityMetric *, NSError *))arg2;
 - (void)isNetworkReselectionNeeded:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;

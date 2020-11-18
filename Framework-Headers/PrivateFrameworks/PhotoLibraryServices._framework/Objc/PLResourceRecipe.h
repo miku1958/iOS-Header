@@ -14,13 +14,23 @@
 
 + (Class)classFromRecipeID:(unsigned int)arg1;
 + (id)recipeFromID:(unsigned int)arg1;
-- (void)applyToResource:(id)arg1 sourceProperties:(id)arg2 inContext:(id)arg3;
+- (id)chooseIngredientsFrom:(id)arg1 version:(unsigned int)arg2;
+- (id)codecInContext:(id)arg1;
+- (id)colorSpaceGivenSourceColorSpace:(id)arg1 inContext:(id)arg2;
 - (BOOL)colorSpaceIsNativeForDisplay;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)expectedFileURLForVersion:(unsigned int)arg1 asset:(id)arg2;
+- (id)expectedSizeFromWidth:(long long)arg1 height:(long long)arg2;
+- (void)generateAndStoreForAsset:(id)arg1 version:(unsigned int)arg2 conversionClient:(id)arg3 progress:(id *)arg4 completion:(CDUnknownBlockType)arg5;
 - (unsigned long long)hash;
 - (id)initWithRecipeID:(unsigned int)arg1;
+- (BOOL)isDerivative;
 - (BOOL)isEqual:(id)arg1;
+- (id)maxPixelCountForAssetWidth:(long long)arg1 height:(long long)arg2;
+- (unsigned short)recipeClassID;
 - (unsigned int)recipeID;
+- (id)supportedVersionsForLocalResourceGeneration;
+- (id)utiInContext:(id)arg1;
 
 @end
 

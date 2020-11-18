@@ -17,10 +17,13 @@
     BOOL _isPhotoAnalysisAgent;
     BOOL _backgroundAnalysisActivityTriggered;
     PFSerialQueue<PFDTransactionDispatchQueue> *_executiveStateQueue;
-    _Atomic BOOL _turboMode;
     NSObject<OS_voucher> *_turboModeBoostVoucher;
     NSMutableArray *_processingLog;
     PHAActivityLog *_currentLog;
+    NSMutableArray *_cachedTurboLibraryURLs;
+    NSObject<OS_xpc_object> *_turboAnalysisActivity;
+    struct os_unfair_lock_s _turboLibrariesLock;
+    NSMutableSet *_pendingBackgroundLibraries;
     struct os_unfair_lock_s _connectedClientsLock;
     BOOL _shouldDeferActivity;
     unsigned char _state;
@@ -48,41 +51,49 @@
 @property unsigned char state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (id)bootDateForTurboLibraryRegistration;
 + (void)registerEmptyBackgroundActivity;
 - (void).cxx_destruct;
 - (void)_backgroundActivityDidBegin;
-- (void)_cleanupAfterBackgroundActivityFinishedForDefer:(BOOL)arg1 skipActivityStateCheck:(BOOL)arg2 message:(id)arg3;
+- (void)_cleanupAfterBackgroundActivityFinishedForDefer:(BOOL)arg1 skipActivityStateCheck:(BOOL)arg2;
 - (void)_installBackgroundAnalysisMonitor;
 - (void)_localeDidChangeNotification:(id)arg1;
+- (BOOL)_photoAnalysCoreDuetSchedulingDisabled;
 - (BOOL)_photoAnalysisEnabled;
 - (void)_registerBackgroundActivity;
+- (void)_registerCuratedLibraryActivity;
+- (void)_registerTurboActivity;
+- (void)_runTurboProcessing:(id)arg1;
 - (void)_startBackgroundAnalysis;
 - (void)_stopAllBackgroundAnalysisWithCompletion:(CDUnknownBlockType)arg1;
-- (id)_urlForSystemPhotoLibrary;
 - (void)addProcessingActivityToStatusDictionary:(id)arg1;
 - (void)checkQuiescenceForManager:(id)arg1;
 - (id)clientInfoForManager:(id)arg1;
 - (void)dealloc;
+- (void)disableTurboModeForManager:(id)arg1;
 - (void)dispatchAsyncToExecutiveStateQueue:(CDUnknownBlockType)arg1;
 - (void)dumpAnalysisStatusWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dumpStatusToLog;
+- (void)enableTurboModeForManager:(id)arg1;
 - (void)handleOperation:(id)arg1;
 - (BOOL)hasConnectedClientsForManager:(id)arg1;
 - (BOOL)hasPhotosConnectionForManager:(id)arg1;
 - (id)init;
-- (BOOL)isTurboMode;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)managerForPhotoLibraryURL:(id)arg1;
+- (void)notifyLibraryAvailableAtURL:(id)arg1;
 - (void)photoLibraryDidBecomeUnavailable:(id)arg1;
 - (void)removeClientHandler:(id)arg1;
-- (void)setTurboMode;
 - (void)shutdown;
 - (void)startup;
 - (id)statusAsDictionary;
+- (void)stopAllBackgroundActivities;
 - (void)stopBackgroundActivityForManager:(id)arg1;
 - (void)terminateManagerForPhotoLibraryURL:(id)arg1;
 - (void)terminateManagerIfQuiescentAndNoConnectedClients:(id)arg1;
 - (void)triggerBackgroundActivity;
+- (BOOL)turboIsEnabledForManager:(id)arg1;
+- (void)writeQALog:(id)arg1;
 
 @end
 

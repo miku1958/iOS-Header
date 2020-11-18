@@ -19,8 +19,10 @@
 
 @property (readonly) NSArray *availableChapterLocales;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration;
+@property (readonly, nonatomic) NSArray *fragments;
 @property (readonly, nonatomic) BOOL isProxy;
 @property (readonly, strong, nonatomic) id<AVLoggingIdentifier> loggingIdentifier;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 minimumTimeOffsetFromLive;
 @property (readonly, nonatomic) long long moovAtomSize;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) AVDisplayCriteria *preferredDisplayCriteria;
@@ -97,6 +99,7 @@
 - (id)initWithData:(id)arg1 contentType:(id)arg2 options:(id)arg3;
 - (id)initWithURL:(id)arg1 options:(id)arg2;
 - (BOOL)isCompatibleWithAirPlayVideo;
+- (BOOL)isCompatibleWithPhotosTranscodingServiceWithOptions:(id)arg1;
 - (BOOL)isCompatibleWithSavedPhotosAlbum;
 - (BOOL)isComposable;
 - (BOOL)isEqual:(id)arg1;

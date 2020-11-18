@@ -6,27 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUICore/PXCMMSuggestionViewDelegate-Protocol.h>
 #import <PhotosUICore/PXDiagnosticsEnvironment-Protocol.h>
 #import <PhotosUICore/PXGadget-Protocol.h>
 
-@class NSString, PXCMMSuggestionView, PXGadgetSpec, PXPersonFaceTileImageCombiner, UIColor, UILongPressGestureRecognizer;
-@protocol PXCMMSuggestion, PXGadgetDelegate;
+@class NSString, PXCMMSuggestionView, PXCMMSuggestionViewModel, PXGadgetSpec, PXPersonFaceTileImageCombiner;
+@protocol PXCMMSuggestion, PXCMMWorkflowPresenting, PXGadgetDelegate;
 
-@interface PXCMMSuggestionGadget : NSObject <PXDiagnosticsEnvironment, PXGadget>
+@interface PXCMMSuggestionGadget : NSObject <PXCMMSuggestionViewDelegate, PXDiagnosticsEnvironment, PXGadget>
 {
+    id<PXCMMSuggestion> _suggestion;
+    BOOL _didLoadSuggestion;
+    PXCMMSuggestionViewModel *_suggestionViewModel;
     PXCMMSuggestionView *_suggestionView;
-    UILongPressGestureRecognizer *_longPressGestureRecognizer;
+    struct CGSize _requestedPosterImageSize;
+    double _requestedWidth;
+    BOOL _didRequestCachingOfPosterImage;
     PXPersonFaceTileImageCombiner *_faceTileImageCombiner;
     PXGadgetSpec *_gadgetSpec;
     id<PXGadgetDelegate> _delegate;
-    id<PXCMMSuggestion> _suggestion;
-    UIColor *_backgroundColor;
+    id<PXCMMWorkflowPresenting> _workflowPresenter;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
-@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -43,27 +47,32 @@
 @property (readonly, nonatomic) BOOL supportsHighlighting;
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic) struct CGRect visibleContentRect;
+@property (readonly, nonatomic) id<PXCMMWorkflowPresenting> workflowPresenter; // @synthesize workflowPresenter=_workflowPresenter;
 
++ (id)_imageRequestOptions;
 - (void).cxx_destruct;
-- (void)_changeViewConfiguration:(CDUnknownBlockType)arg1;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
-- (void)_loadSuggestion:(id)arg1;
-- (void)_longPressGesture:(id)arg1;
-- (void)_presentSuggestion:(id)arg1 animated:(BOOL)arg2 pptConfigurationBlock:(CDUnknownBlockType)arg3;
+- (void)_cachePosterImageWithWidth:(double)arg1;
+- (void)_clearPosterImageCache;
+- (void)_loadSuggestionIfNecessary;
+- (void)_presentDetailViewAnimated:(BOOL)arg1 pptConfigurationBlock:(CDUnknownBlockType)arg2;
 - (void)_setCombinedFaceTileImage:(id)arg1;
-- (void)_tapGesture:(id)arg1;
-- (void)_updateLongPressGestureRecognizer;
-- (void)_updatePeopleSuggestionFaceTileImagesForPersons:(id)arg1;
+- (void)_updatePeopleSuggestionFaceTileImagesForPersons:(id)arg1 mutableViewModel:(id)arg2;
 - (void)commitPreviewViewController:(id)arg1;
 - (void)contentHasBeenSeen;
-- (struct NSObject *)contentView;
+- (void)dynamicUserInterfaceTraitDidChange;
 - (void)gadgetControllerHasAppeared;
+- (id)init;
+- (id)initWithWorkflowPresenter:(id)arg1;
 - (void)ppt_presentComposeRecipientViewAfterDelay:(double)arg1;
-- (void)ppt_presentDetailView;
+- (void)prefetchDuringScrollingForWidth:(double)arg1;
+- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
 - (void)presentDetailViewAnimated:(BOOL)arg1;
-- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2 outSourceRect:(out struct CGRect *)arg3;
+- (void)presentDetailViewForSuggestionView:(id)arg1 animated:(BOOL)arg2;
+- (struct NSObject *)previewViewControllerAtLocation:(struct CGPoint)arg1 fromSourceView:(struct NSObject *)arg2;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)suggestionViewSizeThatFitsDidChange:(id)arg1;
+- (struct NSObject *)targetPreviewViewForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)uniqueGadgetIdentifier;
 
 @end

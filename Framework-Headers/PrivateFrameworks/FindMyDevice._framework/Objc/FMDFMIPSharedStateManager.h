@@ -6,18 +6,29 @@
 
 #import <objc/NSObject.h>
 
+@class NSURL;
+@protocol OS_dispatch_queue;
+
 @interface FMDFMIPSharedStateManager : NSObject
 {
+    NSURL *_fmipSharedFileStaticURL;
+    NSObject<OS_dispatch_queue> *_stateManagerQueue;
 }
 
-+ (id)_fmipSharedFileURL;
-+ (id)_readSharedInfo;
-+ (BOOL)_removeSharedInfo;
-+ (BOOL)_writeSharedInfo:(id)arg1;
-+ (BOOL)fmipActive;
-+ (unsigned long long)lostModeType;
-+ (void)recalculateLostMode;
-+ (void)setFMiPActive:(BOOL)arg1;
+@property (strong) NSURL *fmipSharedFileStaticURL; // @synthesize fmipSharedFileStaticURL=_fmipSharedFileStaticURL;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *stateManagerQueue; // @synthesize stateManagerQueue=_stateManagerQueue;
+
++ (id)sharedInstance;
+- (void).cxx_destruct;
+- (id)_fmipSharedFileURL;
+- (id)_readSharedInfo;
+- (BOOL)_removeSharedInfo;
+- (BOOL)_writeSharedInfo:(id)arg1;
+- (BOOL)fmipActive;
+- (id)init;
+- (unsigned long long)lostModeType;
+- (void)recalculateLostMode;
+- (void)setFMiPActive:(BOOL)arg1;
 
 @end
 

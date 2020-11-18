@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *typeEncoding; // @synthesize typeEncoding=_typeEncoding;
 
 + (id)methodWithName:(id)arg1 implementation:(CDUnknownFunctionPointerType)arg2 typeEncoding:(id)arg3;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMethod:(struct objc_method *)arg1;
 - (id)initWithName:(id)arg1 implementation:(CDUnknownFunctionPointerType)arg2 typeEncoding:(id)arg3;
 - (id)methodBySettingName:(id)arg1;

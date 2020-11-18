@@ -16,10 +16,8 @@
 + (id)_pathToNanoRegistryUnpairTriggerFileDirectory;
 + (id)_pathToRecoveryStateFile;
 + (id)_pathToSecureDevicePropertiesFile;
-+ (id)_pathToStateMachineStateFile;
 + (id)_pathToUnpairTriggerFile;
 + (id)pathToNanoRegistryClassAFile;
-+ (id)pathToNanoRegistryHistoryActiveStateMachineFile:(id)arg1;
 + (id)pathToNanoRegistryHistoryFile;
 + (id)pathToNanoRegistryHistoryRecoveryManagerFile:(id)arg1;
 + (id)pathToNanoRegistryHistorySecurePropertiesFile;

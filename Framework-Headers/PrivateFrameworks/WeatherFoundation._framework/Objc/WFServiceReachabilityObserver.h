@@ -24,7 +24,7 @@
 @property (readonly) BOOL isServiceAvailable;
 @property (strong) NSHashTable *observerObjects; // @synthesize observerObjects=_observerObjects;
 @property (strong) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
-@property long long reachability; // @synthesize reachability=_reachability;
+@property (nonatomic) long long reachability; // @synthesize reachability=_reachability;
 @property (strong) NWPathEvaluator *serviceReachabilityEvaluator; // @synthesize serviceReachabilityEvaluator=_serviceReachabilityEvaluator;
 
 + (id)sharedObserver;

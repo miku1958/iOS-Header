@@ -10,23 +10,17 @@
 
 @protocol _CPSafariUsagePropensity <NSObject>
 
-@property (nonatomic) long long collectionEndTimestamp;
-@property (nonatomic) long long collectionStartTimestamp;
-@property (nonatomic) float competitorCompletion;
-@property (nonatomic) float competitorRecentSearch;
-@property (nonatomic) float competitorTopGoto;
-@property (nonatomic) float competitorTopTap;
-@property (nonatomic) int configuredLookbackTimeInDays;
+@property (nonatomic) float goToSite;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (nonatomic) float localOtherTap;
-@property (nonatomic) float localTopGoto;
-@property (nonatomic) float localTopTap;
+@property (nonatomic) float localGoto;
+@property (nonatomic) float localTap;
 @property (nonatomic) float other;
-@property (nonatomic) float parsecOtherTap;
-@property (nonatomic) float parsecTopGoto;
-@property (nonatomic) float parsecTopTap;
+@property (nonatomic) float parsecGoto;
+@property (nonatomic) float parsecTap;
+@property (nonatomic) float thirdPartyCompletionOrRecentSearch;
+@property (nonatomic) float thirdPartyGoto;
+@property (nonatomic) float thirdPartyTap;
 @property (nonatomic) int totalEngagements;
-@property (nonatomic) int totalSessions;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;

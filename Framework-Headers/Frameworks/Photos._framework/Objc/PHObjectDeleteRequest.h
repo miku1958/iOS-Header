@@ -4,42 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHChangeRequest.h>
 
 #import <Photos/PHDeleteChangeRequest-Protocol.h>
 
 @class NSManagedObjectID, NSString;
 
-@interface PHObjectDeleteRequest : NSObject <PHDeleteChangeRequest>
+@interface PHObjectDeleteRequest : PHChangeRequest <PHDeleteChangeRequest>
 {
     NSString *_uuid;
     NSManagedObjectID *_objectID;
     BOOL _clientEntitled;
     NSString *_clientName;
-    int _clientProcessID;
 }
 
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
-@property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
-@property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
+@property (readonly, nonatomic) NSString *clientName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, nonatomic) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
++ (id)_deleteRequestsForObjects:(id)arg1;
 + (id)deleteRequestForObject:(id)arg1;
++ (id)deleteRequestsForObjects:(id)arg1 ofType:(Class)arg2 forSelector:(SEL)arg3;
 - (void).cxx_destruct;
 - (void)deleteManagedObject:(id)arg1 photoLibrary:(id)arg2;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)init;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithUUID:(id)arg1 request:(id)arg2 objectID:(id)arg3;
+- (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
+- (id)uuid;
 - (BOOL)validateForDeleteManagedObject:(id)arg1 error:(id *)arg2;
 
 @end

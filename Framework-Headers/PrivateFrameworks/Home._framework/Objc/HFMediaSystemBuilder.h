@@ -8,7 +8,7 @@
 
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
-@class HFAppleMusicAccountArbitrator, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSString;
+@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSString;
 @protocol HFIconDescriptor;
 
 @interface HFMediaSystemBuilder : HFItemBuilder <HFServiceLikeBuilder>
@@ -20,6 +20,7 @@
     HFAppleMusicAccountArbitrator *_accountArbitrator;
     HMAccessory *_firstSetupSourceAccessory;
     HMMediaSystemBuilder *_homeKitMediaSystemBuilder;
+    HFNamingComponents *_namingComponent;
     HFRoomBuilder *_roomBuilder;
 }
 
@@ -36,6 +37,7 @@
 @property (nonatomic) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
 @property (readonly, nonatomic) HMMediaSystem *mediaSystem;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (strong, nonatomic) HFNamingComponents *namingComponent; // @synthesize namingComponent=_namingComponent;
 @property (readonly, nonatomic) NSString *originalName;
 @property (strong, nonatomic) HFRoomBuilder *room;
 @property (strong, nonatomic) HFRoomBuilder *roomBuilder; // @synthesize roomBuilder=_roomBuilder;

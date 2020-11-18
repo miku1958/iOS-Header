@@ -19,7 +19,7 @@
 
 @property (readonly, nonatomic) AVTMemoji *avatar; // @synthesize avatar=_avatar;
 @property (readonly, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;
-@property (readonly, nonatomic) AVTSnapshotBuilder *snapshotBuilder; // @synthesize snapshotBuilder=_snapshotBuilder;
+@property (strong, nonatomic) AVTSnapshotBuilder *snapshotBuilder; // @synthesize snapshotBuilder=_snapshotBuilder;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *snapshotBuilderQueue; // @synthesize snapshotBuilderQueue=_snapshotBuilderQueue;
 
 - (void).cxx_destruct;

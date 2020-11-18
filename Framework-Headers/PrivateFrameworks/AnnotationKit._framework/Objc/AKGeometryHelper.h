@@ -78,6 +78,7 @@
 + (struct CGPoint)projectVector:(struct CGPoint)arg1 ontoAspectVector:(struct CGPoint)arg2;
 + (double)radiusOfCenteredCircleFor:(struct CGRect)arg1;
 + (struct CGRect)rectForSize:(struct CGSize)arg1 inRect:(struct CGRect)arg2;
++ (BOOL)rectHasZeroSize:(struct CGRect)arg1;
 + (struct CGRect)rectWithSize:(struct CGSize)arg1 centeredAtPoint:(struct CGPoint)arg2;
 + (struct CGRect)renderingAlignedTextRectForRect:(struct CGRect)arg1 alignToScreenUsingPageController:(id)arg2 orAlignToContext:(struct CGContext *)arg3 usingAnnotation:(id)arg4;
 + (struct CGRect)renderingStrokeAlignedRectForRect:(struct CGRect)arg1 withStrokeWidth:(double)arg2 alignToScreenUsingPageController:(id)arg3 orAlignToContext:(struct CGContext *)arg4 usingAnnotation:(id)arg5;

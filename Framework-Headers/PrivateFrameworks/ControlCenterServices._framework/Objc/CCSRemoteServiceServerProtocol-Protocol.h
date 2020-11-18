@@ -6,10 +6,12 @@
 
 #import <ControlCenterServices/NSObject-Protocol.h>
 
-@class NSString;
+@class CCSModulePresentationOptions, NSString;
 
 @protocol CCSRemoteServiceServerProtocol <NSObject>
 - (void)getEnabledStateOfModuleWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(unsigned long long))arg2;
+- (void)presentModuleWithIdentifier:(NSString *)arg1 options:(CCSModulePresentationOptions *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)requestAvailableModuleIdentifiersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)requestEnableModuleWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 @end
 

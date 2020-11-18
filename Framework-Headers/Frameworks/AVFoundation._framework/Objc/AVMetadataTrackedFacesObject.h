@@ -21,6 +21,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)initDerivedMetadataObjectFromMetadataObject:(id)arg1 withTransform:(struct CGAffineTransform)arg2 isVideoMirrored:(BOOL)arg3 rollAdjustment:(double)arg4;
 - (id)initWithTime:(CDStruct_1b6d18a9)arg1 faceKitDictionary:(id)arg2 input:(id)arg3;
 
 @end

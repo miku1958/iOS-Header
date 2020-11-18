@@ -10,8 +10,8 @@
 #import <QuickLook/QLToolbarButtonAction-Protocol.h>
 #import <QuickLook/UIDragInteractionDelegate_Private-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, QLAppearance, QLPreviewContext, UIDragInteraction, UIView;
-@protocol QLItemViewControllerPresentingDelegate, QLPreviewItemViewControllerDelegate;
+@class NSArray, NSMutableArray, NSObject, NSString, PUProgressIndicatorView, QLAppearance, QLPreviewContext, UIDragInteraction, UIView;
+@protocol OS_dispatch_queue, QLItemViewControllerPresentingDelegate, QLPreviewItemViewControllerDelegate;
 
 @interface QLItemViewController : UIViewController <UIDragInteractionDelegate_Private, QLLocalPreviewingController, QLToolbarButtonAction>
 {
@@ -21,6 +21,7 @@
     BOOL _didAppearOnce;
     BOOL _isLoaded;
     BOOL _loadingFailed;
+    BOOL _isSavingEdits;
     UIView *_accessoryView;
     id<QLPreviewItemViewControllerDelegate> _delegate;
     UIDragInteraction *_dragInteraction;
@@ -28,6 +29,8 @@
     QLPreviewContext *_context;
     QLAppearance *_appearance;
     id<QLItemViewControllerPresentingDelegate> _presentingDelegate;
+    PUProgressIndicatorView *_saveEditProgressView;
+    NSObject<OS_dispatch_queue> *_saveEditsQueue;
 }
 
 @property (readonly, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
@@ -42,18 +45,16 @@
 @property (readonly) unsigned long long hash;
 @property BOOL isLoaded; // @synthesize isLoaded=_isLoaded;
 @property BOOL isLoading; // @synthesize isLoading=_isLoading;
+@property (nonatomic) BOOL isSavingEdits; // @synthesize isSavingEdits=_isSavingEdits;
 @property BOOL loadingFailed; // @synthesize loadingFailed=_loadingFailed;
 @property (weak, nonatomic) id<QLItemViewControllerPresentingDelegate> presentingDelegate; // @synthesize presentingDelegate=_presentingDelegate;
 @property (readonly, nonatomic) NSArray *registeredKeyCommands;
+@property (strong, nonatomic) PUProgressIndicatorView *saveEditProgressView; // @synthesize saveEditProgressView=_saveEditProgressView;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *saveEditsQueue; // @synthesize saveEditsQueue=_saveEditsQueue;
 @property (readonly) Class superclass;
 
-+ (double)maxLoadingTimeForItem:(id)arg1;
-+ (BOOL)providesCustomPrinter;
-+ (BOOL)shouldBeRemoteForContentType:(id)arg1;
 + (BOOL)shouldBeRemoteForMediaContentType:(id)arg1;
 + (id)supportedAudiovisualContentTypes;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
 - (void)_addDragInteractionIfNeeded;
 - (id)_cancelTouchToken;
@@ -64,7 +65,6 @@
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
 - (BOOL)automaticallyUpdateScrollViewIndicatorInset;
-- (void)beginPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
@@ -73,11 +73,16 @@
 - (BOOL)canShowToolBar;
 - (BOOL)canSwipeToDismiss;
 - (BOOL)canToggleFullScreen;
+- (void)didFinishSavingEdits;
+- (void)didStartSavingEdits;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)draggableView;
-- (void)endPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1;
+- (id)editProgressIndicatorMessage;
+- (void)editedCopyToSaveChangesWithOutputType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)excludedToolbarButtonIdentifiersForTraitCollection:(id)arg1;
 - (id)fullscreenBackgroundColor;
+- (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
+- (void)hideSaveEditProgressIndicator;
 - (id)init;
 - (void)loadPreviewControllerIfNeededWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -89,6 +94,7 @@
 - (long long)preferredWhitePointAdaptivityStyle;
 - (void)preloadViewControllerForContext:(id)arg1;
 - (void)prepareForActionSheetPresentation;
+- (void)prepareForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)presenterShouldHandleLoadingView:(id)arg1 readyToDisplay:(CDUnknownBlockType)arg2;
 - (void)previewBecameFullScreen:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)previewDidAppear:(BOOL)arg1;
@@ -97,16 +103,21 @@
 - (void)previewWillAppear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
 - (void)previewWillFinishAppearing;
+- (void)savePreviewEditedCopyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
 - (BOOL)shouldAlwaysRunFullscreen;
 - (BOOL)shouldRecognizeGestureRecognizer:(id)arg1;
+- (void)showSaveEditsProgressIndicatorAfterDelay;
+- (BOOL)supportsScrollingUpAndDownUsingKeyCommands;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)transitionDidStart:(BOOL)arg1;
 - (void)transitionWillFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (id)transitioningView;
+- (void)updateInterfaceAfterSavingEdits;
+- (void)updateInterfaceForSavingEdits;
 - (void)updateScrollViewContentOffset;
 - (void)updateScrollViewContentOffset:(BOOL)arg1 withPreviousAppearance:(id)arg2;
 

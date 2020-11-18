@@ -8,20 +8,33 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBDataReader;
 
 @interface GEONavigationRouteTransitSummary : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_possibleStops;
     NSMutableArray *_scheduledLinks;
+    struct {
+        unsigned int read_possibleStops:1;
+        unsigned int read_scheduledLinks:1;
+        unsigned int wrote_possibleStops:1;
+        unsigned int wrote_scheduledLinks:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *possibleStops; // @synthesize possibleStops=_possibleStops;
-@property (strong, nonatomic) NSMutableArray *scheduledLinks; // @synthesize scheduledLinks=_scheduledLinks;
+@property (strong, nonatomic) NSMutableArray *possibleStops;
+@property (strong, nonatomic) NSMutableArray *scheduledLinks;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)possibleStopType;
 + (Class)scheduledLinkType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsPossibleStop:(id)arg1;
+- (void)_addNoFlagsScheduledLink:(id)arg1;
+- (void)_readPossibleStops;
+- (void)_readScheduledLinks;
 - (void)addPossibleStop:(id)arg1;
 - (void)addScheduledLink:(id)arg1;
 - (void)clearPossibleStops;
@@ -36,6 +49,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)possibleStopAtIndex:(unsigned long long)arg1;
 - (unsigned long long)possibleStopsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)scheduledLinkAtIndex:(unsigned long long)arg1;
 - (unsigned long long)scheduledLinksCount;

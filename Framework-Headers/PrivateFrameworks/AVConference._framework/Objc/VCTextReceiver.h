@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveFrame:(struct tagAudioFrame *)arg1;
 - (BOOL)enqueuePacket:(struct tagAudioPacket *)arg1;
 - (id)initWithConfiguration:(struct _VCTextReceiverConfiguration *)arg1;
+- (void)initializeTextPacket:(struct tagAudioPacket *)arg1 withMediaPacket:(struct _RTPMediaPacket *)arg2;
 - (BOOL)isSupportedPayload:(int)arg1;
 - (BOOL)parsePacket:(struct tagAudioPacket *)arg1;
 - (void)processRTCPPacket;

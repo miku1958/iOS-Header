@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) BOOL web_isBackground;
 @property (readonly, nonatomic) NSString *web_suggestedFilename;
 
++ (BOOL)web_requiresCustomSnapshotting;
 - (void)web_computedContentInsetDidChange;
 - (void)web_countStringMatches:(NSString *)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
 - (void)web_didSameDocumentNavigation:(unsigned int)arg1;
@@ -33,5 +34,6 @@
 - (void)web_scrollViewDidScroll:(UIScrollView *)arg1;
 - (void)web_scrollViewDidZoom:(UIScrollView *)arg1;
 - (void)web_scrollViewWillBeginZooming:(UIScrollView *)arg1 withView:(UIView *)arg2;
+- (void)web_snapshotRectInContentViewCoordinates:(struct CGRect)arg1 snapshotWidth:(double)arg2 completionHandler:(void (^)(struct CGImage *))arg3;
 @end
 

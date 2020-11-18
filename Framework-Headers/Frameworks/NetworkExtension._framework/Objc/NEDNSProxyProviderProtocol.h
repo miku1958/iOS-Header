@@ -13,8 +13,10 @@
     NSDictionary *_providerConfiguration;
     NSString *_providerBundleIdentifier;
     NSString *_pluginType;
+    NSString *_designatedRequirement;
 }
 
+@property (copy) NSString *designatedRequirement; // @synthesize designatedRequirement=_designatedRequirement;
 @property (copy) NSString *pluginType; // @synthesize pluginType=_pluginType;
 @property (copy) NSString *providerBundleIdentifier; // @synthesize providerBundleIdentifier=_providerBundleIdentifier;
 @property (copy) NSDictionary *providerConfiguration; // @synthesize providerConfiguration=_providerConfiguration;

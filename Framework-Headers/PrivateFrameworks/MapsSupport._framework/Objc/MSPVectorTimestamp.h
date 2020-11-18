@@ -25,6 +25,7 @@
 - (BOOL)_compare:(id)arg1 comparisonResult:(out long long *)arg2 isOppositeCheck:(BOOL)arg3;
 - (id)_initWithTimestampValues:(id)arg1;
 - (BOOL)compare:(id)arg1 comparisonResult:(out long long *)arg2;
+- (long long)compare:(id)arg1 isComparable:(out BOOL *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -6,34 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NFLFontCache, NSSet, NSString;
+@class NFLFontCache, NFUnfairLock, NSString;
 
 @interface NFLAbstractCellPropertyProvider : NSObject
 {
     id *_propertiesByColumnSpan;
-    unsigned long long propertiesByColumnSpanSize;
     double _scaleValue;
     NFLFontCache *_fontCache;
-    NSSet *_supportedColumnSpans;
     Class _propertyClass;
     NSString *_plistName;
+    unsigned long long _propertiesByColumnSpanSize;
+    NFUnfairLock *_propertiesLock;
 }
 
 @property (readonly, nonatomic) NFLFontCache *fontCache; // @synthesize fontCache=_fontCache;
 @property (strong, nonatomic) NSString *plistName; // @synthesize plistName=_plistName;
+@property (nonatomic) unsigned long long propertiesByColumnSpanSize; // @synthesize propertiesByColumnSpanSize=_propertiesByColumnSpanSize;
+@property (strong, nonatomic) NFUnfairLock *propertiesLock; // @synthesize propertiesLock=_propertiesLock;
 @property (nonatomic) Class propertyClass; // @synthesize propertyClass=_propertyClass;
 @property (readonly, nonatomic) double scaleValue; // @synthesize scaleValue=_scaleValue;
-@property (readonly, nonatomic) NSSet *supportedColumnSpans; // @synthesize supportedColumnSpans=_supportedColumnSpans;
 
 + (id)plistProvider;
 + (id)publisherTitleFontLarge;
 + (id)publisherTitleFontSmall;
 - (void).cxx_destruct;
+- (void)_loadIfNeeded;
 - (void)dealloc;
 - (id)init;
 - (id)initWithScaleValue:(double)arg1 preferredContentSizeCategory:(id)arg2 fontCache:(id)arg3 plistName:(id)arg4 propertyClass:(Class)arg5;
 - (id)propertiesForColumnSpan:(long long)arg1;
-- (id)propertiesIrrespectiveToColumnSpan;
 
 @end
 

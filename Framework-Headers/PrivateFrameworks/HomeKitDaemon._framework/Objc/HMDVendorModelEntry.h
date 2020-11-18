@@ -18,6 +18,7 @@
     NSString *_appBundleID;
     NSString *_appStoreID;
     HMDAccessoryVersion *_firmwareVersion;
+    NSString *_productData;
 }
 
 @property (readonly, nonatomic) NSString *appBundleID; // @synthesize appBundleID=_appBundleID;
@@ -28,10 +29,11 @@
 @property (readonly, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (readonly, nonatomic) NSString *modelName; // @synthesize modelName=_modelName;
 @property (readonly, nonatomic) NSString *ppid; // @synthesize ppid=_ppid;
+@property (readonly, nonatomic) NSString *productData; // @synthesize productData=_productData;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithModelName:(id)arg1 manufacturer:(id)arg2 category:(id)arg3 certificationStatus:(id)arg4 ppid:(id)arg5 appBundleID:(id)arg6 appStoreID:(id)arg7 firmwareVersion:(id)arg8;
+- (id)initWithModelName:(id)arg1 manufacturer:(id)arg2 category:(id)arg3 certificationStatus:(id)arg4 ppid:(id)arg5 appBundleID:(id)arg6 appStoreID:(id)arg7 firmwareVersion:(id)arg8 productData:(id)arg9;
 - (BOOL)isEqual:(id)arg1;
 
 @end

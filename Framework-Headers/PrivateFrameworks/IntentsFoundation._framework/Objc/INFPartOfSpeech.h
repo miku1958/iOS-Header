@@ -17,9 +17,9 @@
     NSMutableDictionary *_variants;
 }
 
-@property unsigned long long gender; // @synthesize gender=_gender;
+@property (nonatomic) unsigned long long gender; // @synthesize gender=_gender;
 @property (copy, nonatomic) NSString *language; // @synthesize language=_language;
-@property unsigned long long partOfSpeechType; // @synthesize partOfSpeechType=_partOfSpeechType;
+@property (nonatomic) unsigned long long partOfSpeechType; // @synthesize partOfSpeechType=_partOfSpeechType;
 @property (strong, nonatomic) NSMutableDictionary *variants; // @synthesize variants=_variants;
 
 + (id)adjectiveWithIdentifier:(id)arg1 language:(id)arg2;

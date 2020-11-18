@@ -22,11 +22,13 @@ __attribute__((visibility("hidden")))
     BOOL _hasMapItemLaunchOptionFromTimeToLeaveNotification;
     NSDate *_proposedTime;
     NSObject<EKEventTitleDetailItemDelegate> *_editDelegate;
+    unsigned long long _numberOfTitleLines;
 }
 
 @property (weak, nonatomic) NSObject<EKEventTitleDetailItemDelegate> *editDelegate; // @synthesize editDelegate=_editDelegate;
 @property (nonatomic) BOOL hasMapItemLaunchOptionFromTimeToLeaveNotification; // @synthesize hasMapItemLaunchOptionFromTimeToLeaveNotification=_hasMapItemLaunchOptionFromTimeToLeaveNotification;
 @property (nonatomic) BOOL hidesSeparator; // @synthesize hidesSeparator=_hidesSeparator;
+@property (nonatomic) unsigned long long numberOfTitleLines; // @synthesize numberOfTitleLines=_numberOfTitleLines;
 @property (strong, nonatomic) NSDate *proposedTime; // @synthesize proposedTime=_proposedTime;
 
 - (void).cxx_destruct;

@@ -37,7 +37,9 @@
 - (id)br_sideFaultPath;
 - (id)br_stringByDeletingPathBounceNo:(unsigned long long *)arg1;
 - (id)br_stringByDeletingPathBounceNo:(unsigned long long *)arg1 andPathExtension:(id *)arg2;
+- (id)brc_libnotifyPerUserNotificationName;
 - (id)brc_representableHFSFileNameWithSuffix:(id)arg1 addedExtension:(id)arg2 makeDotFile:(BOOL)arg3;
+- (id)brc_stringByBackslashEscapingCharactersInString:(id)arg1;
 - (id)brc_stringByDeletingPathExtension;
 @end
 

@@ -8,7 +8,10 @@
 
 @interface ICAttachmentMapModel (PreviewGeneration)
 - (BOOL)generateAsynchronousPreviews;
-- (void)generatePreviewsInOperation:(id)arg1;
+- (BOOL)generatePreviewsInOperation:(id)arg1;
+- (CDUnknownBlockType)genericBrickThumbnailCreator;
+- (CDUnknownBlockType)genericListThumbnailCreator;
+- (id)missingPreviewsForCurrentDevice;
 - (BOOL)needToGeneratePreviews;
 - (BOOL)requiresNetworkToGeneratePreview;
 @end

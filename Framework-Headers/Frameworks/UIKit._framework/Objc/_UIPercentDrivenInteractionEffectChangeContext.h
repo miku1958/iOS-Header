@@ -10,17 +10,18 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface _UIPercentDrivenInteractionEffectChangeContext : NSObject <UIInteractionContext>
 {
     BOOL _ended;
     double _progress;
+    double _maximumProgress;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL ended; // @synthesize ended=_ended;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double maximumProgress; // @synthesize maximumProgress=_maximumProgress;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (readonly) Class superclass;
 

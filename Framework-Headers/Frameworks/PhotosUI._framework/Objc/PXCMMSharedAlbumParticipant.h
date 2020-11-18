@@ -15,16 +15,16 @@
 {
     NSString *_emailAddressString;
     NSString *_phoneNumberString;
-    NSString *_displayName;
+    NSString *_localizedName;
     NSString *_firstName;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) NSString *emailAddressString; // @synthesize emailAddressString=_emailAddressString;
 @property (readonly, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) NSString *phoneNumberString; // @synthesize phoneNumberString=_phoneNumberString;
 @property (readonly) Class superclass;
 

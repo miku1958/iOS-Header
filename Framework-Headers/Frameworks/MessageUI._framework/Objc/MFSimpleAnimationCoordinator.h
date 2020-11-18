@@ -19,8 +19,8 @@
 @property (strong, nonatomic) NSMutableArray *animations; // @synthesize animations=_animations;
 @property (strong, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
 
+- (void).cxx_destruct;
 - (void)animateAlongsideAnimations:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initCoordinatorAnimated:(BOOL)arg1;
 - (void)playAnimations;

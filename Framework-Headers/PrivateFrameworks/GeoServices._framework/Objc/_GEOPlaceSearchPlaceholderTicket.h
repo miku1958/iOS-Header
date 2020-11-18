@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

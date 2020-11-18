@@ -45,6 +45,7 @@
 - (Class)changeRequestClass;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (id)inviteeDisplayNameIncludingEmail:(BOOL)arg1;
+- (id)personInfoManager;
 
 @end
 

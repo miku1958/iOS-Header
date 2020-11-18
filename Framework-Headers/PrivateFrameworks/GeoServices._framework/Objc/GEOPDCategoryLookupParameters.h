@@ -8,29 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCategoryLookupParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     long long _industryCode;
     NSString *_mapsCategoryId;
     NSString *_walletCategoryId;
     struct {
-        unsigned int industryCode:1;
-    } _has;
+        unsigned int has_industryCode:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_mapsCategoryId:1;
+        unsigned int read_walletCategoryId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_industryCode:1;
+        unsigned int wrote_mapsCategoryId:1;
+        unsigned int wrote_walletCategoryId:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIndustryCode;
 @property (readonly, nonatomic) BOOL hasMapsCategoryId;
 @property (readonly, nonatomic) BOOL hasWalletCategoryId;
-@property (nonatomic) long long industryCode; // @synthesize industryCode=_industryCode;
-@property (strong, nonatomic) NSString *mapsCategoryId; // @synthesize mapsCategoryId=_mapsCategoryId;
+@property (nonatomic) long long industryCode;
+@property (strong, nonatomic) NSString *mapsCategoryId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *walletCategoryId; // @synthesize walletCategoryId=_walletCategoryId;
+@property (strong, nonatomic) NSString *walletCategoryId;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readMapsCategoryId;
+- (void)_readWalletCategoryId;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

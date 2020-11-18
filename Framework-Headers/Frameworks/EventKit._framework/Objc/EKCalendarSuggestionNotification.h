@@ -17,13 +17,10 @@
 @property (readonly, nonatomic) NSString *originAppName;
 @property (readonly, nonatomic) SGEvent *suggestedEvent;
 
-+ (id)_originBundleIdentifiersPermittedForAllNotifications;
 + (id)_queue;
 - (void).cxx_destruct;
 - (Class)_SGSuggestionsServiceClass;
-- (BOOL)hiddenFromNotificationCenter;
 - (void)updateSuggestedEventWithEventStore:(id)arg1;
-- (BOOL)whitelistedForAllNotifications;
 
 @end
 

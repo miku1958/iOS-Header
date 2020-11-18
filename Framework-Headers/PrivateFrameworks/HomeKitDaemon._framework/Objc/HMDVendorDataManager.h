@@ -41,6 +41,7 @@
 - (void)_initWithLocalFile;
 - (BOOL)_isSameVendorList:(id)arg1;
 - (id)_modelEntryForManufacturer:(id)arg1 model:(id)arg2;
+- (id)_modelEntryForProductData:(id)arg1;
 - (BOOL)_parseDatabaseFromDictionary:(id)arg1;
 - (id)_parseManufacturersList:(id)arg1;
 - (void)_saveToLocalFile:(id)arg1;
@@ -48,6 +49,7 @@
 - (void)start;
 - (void)timerDidFire:(id)arg1;
 - (id)vendorModelEntryForManufacturer:(id)arg1 model:(id)arg2;
+- (id)vendorModelEntryForProductData:(id)arg1;
 
 @end
 

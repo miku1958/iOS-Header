@@ -18,10 +18,12 @@
     unsigned long long _attributeType;
     unsigned long long _actionType;
     NSDictionary *_parameters;
+    unsigned long long _clientType;
 }
 
 @property (nonatomic) unsigned long long actionType; // @synthesize actionType=_actionType;
 @property (nonatomic) unsigned long long attributeType; // @synthesize attributeType=_attributeType;
+@property (nonatomic) unsigned long long clientType; // @synthesize clientType=_clientType;
 @property (strong, nonatomic) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (strong, nonatomic) AXPTranslationObject *translation; // @synthesize translation=_translation;

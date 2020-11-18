@@ -7,54 +7,75 @@
 #import <objc/NSObject.h>
 
 #import <AppleMediaServices/NSCopying-Protocol.h>
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class AMSProcessInfo, NSDictionary, NSString, NSURL;
 
-@interface AMSAuthenticateOptions : NSObject <NSCopying>
+@interface AMSAuthenticateOptions : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _authenticationType;
     BOOL _allowServerDialogs;
     BOOL _canMakeAccountActive;
+    BOOL _usernameEditable;
     BOOL _allowSecondaryCredentialSource;
     BOOL _remoteProxyAuthentication;
+    NSString *_appProvidedContext;
+    NSDictionary *_appProvidedData;
     NSDictionary *_createAccountQueryParams;
+    AMSProcessInfo *_clientInfo;
     NSString *_defaultButtonString;
+    NSDictionary *_HTTPHeaders;
+    NSURL *_iconBundleURL;
     NSString *_logKey;
-    id _presentingViewController;
     NSString *_promptTitle;
     NSString *_proxyAppBundleID;
     NSString *_proxyAppName;
     NSString *_reason;
     NSString *_userAgent;
+    NSString *_userAgentSuffix;
     unsigned long long _credentialSource;
-    NSString *_mediaType;
 }
 
+@property (strong, nonatomic) NSDictionary *HTTPHeaders; // @synthesize HTTPHeaders=_HTTPHeaders;
 @property (nonatomic) BOOL allowSecondaryCredentialSource; // @synthesize allowSecondaryCredentialSource=_allowSecondaryCredentialSource;
 @property (nonatomic) BOOL allowServerDialogs; // @synthesize allowServerDialogs=_allowServerDialogs;
 @property (readonly, nonatomic) BOOL allowSilentAuthentication;
+@property (copy, nonatomic) NSString *appProvidedContext; // @synthesize appProvidedContext=_appProvidedContext;
+@property (copy, nonatomic) NSDictionary *appProvidedData; // @synthesize appProvidedData=_appProvidedData;
 @property (nonatomic) unsigned long long authenticationType;
 @property (nonatomic) BOOL canMakeAccountActive; // @synthesize canMakeAccountActive=_canMakeAccountActive;
+@property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (strong, nonatomic) NSDictionary *createAccountQueryParams; // @synthesize createAccountQueryParams=_createAccountQueryParams;
 @property (nonatomic) unsigned long long credentialSource; // @synthesize credentialSource=_credentialSource;
 @property (strong, nonatomic) NSString *defaultButtonString; // @synthesize defaultButtonString=_defaultButtonString;
+@property (strong, nonatomic) NSURL *iconBundleURL; // @synthesize iconBundleURL=_iconBundleURL;
 @property (strong, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
-@property (strong, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
-@property (readonly, nonatomic) NSDictionary *optionsDictionaryForRemoteProxyAuthentication;
-@property (strong, nonatomic) id presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (strong, nonatomic) NSString *promptTitle; // @synthesize promptTitle=_promptTitle;
 @property (strong, nonatomic) NSString *proxyAppBundleID; // @synthesize proxyAppBundleID=_proxyAppBundleID;
 @property (strong, nonatomic) NSString *proxyAppName; // @synthesize proxyAppName=_proxyAppName;
 @property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic, getter=isRemoteProxyAuthentication) BOOL remoteProxyAuthentication; // @synthesize remoteProxyAuthentication=_remoteProxyAuthentication;
 @property (strong, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
+@property (strong, nonatomic) NSString *userAgentSuffix; // @synthesize userAgentSuffix=_userAgentSuffix;
+@property (nonatomic) BOOL usernameEditable; // @synthesize usernameEditable=_usernameEditable;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)authKitData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithOptionsDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)mediaType;
 - (id)optionsDictionary;
+- (id)optionsDictionaryForRemoteProxyAuthentication;
+- (id)presentingViewController;
+- (void)setAuthKitData:(id)arg1;
+- (void)setMediaType:(id)arg1;
+- (void)setPresentingViewController:(id)arg1;
 
 @end
 

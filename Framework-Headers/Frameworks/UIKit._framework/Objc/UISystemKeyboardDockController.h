@@ -8,16 +8,18 @@
 
 #import <UIKitCore/UIKeyboardDockViewDelegate-Protocol.h>
 
-@class NSString, UIKeyboardDockItem, UIKeyboardDockView;
+@class NSString, UIButton, UIKeyboardDockItem, UIKeyboardDockView;
 
 __attribute__((visibility("hidden")))
 @interface UISystemKeyboardDockController : UIViewController <UIKeyboardDockViewDelegate>
 {
     BOOL _dictationHasUsedServerManualEndpointing;
     BOOL _dictationUsingServerManualEndpointing;
+    BOOL _isSuppressingDockItemTouch;
     UIKeyboardDockItem *_globeDockItem;
     UIKeyboardDockItem *_dictationDockItem;
     UIKeyboardDockItem *_keyboardDockItem;
+    UIButton *_stopDictationButton;
     UIKeyboardDockView *_dockView;
 }
 
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_dictationDidBeginNotification:(id)arg1;
 - (void)dealloc;
 - (void)dictationItemButtonWasPressed:(id)arg1 withEvent:(id)arg2;

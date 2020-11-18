@@ -14,18 +14,24 @@ __attribute__((visibility("hidden")))
     NSObject<OS_xpc_object> *_connection;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     id _wrmClientDelegate;
+    int _mediaControlInfoVersion;
+    int _mode;
+    CDStruct_21a0265e _metricsConfig;
 }
 
 @property id<WRMClientDelegate> delegate;
+@property int mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
 
 - (void)dealloc;
 - (void)dumpReport:(id)arg1;
+- (int)getWRMSubscribeVersion;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (void)processNotificationList:(id)arg1;
 - (void)releaseServiceConnection;
-- (void)reportMetricsFaceTimeCalling:(const CDStruct_0db8e210 *)arg1;
-- (void)reportMetricsWifiCalling:(const CDStruct_0db8e210 *)arg1;
+- (void)reportImmediateMetric:(int)arg1 value:(unsigned long long)arg2;
+- (void)reportMetricsFaceTimeCalling:(const CDStruct_dea828ac *)arg1;
+- (void)reportMetricsWifiCalling:(const CDStruct_dea828ac *)arg1;
 - (void)requestNotificationFaceTimeCalling;
 - (void)sendProcessInfoWithProcessID:(unsigned long long)arg1;
 - (void)sendReport:(id)arg1;
@@ -34,8 +40,9 @@ __attribute__((visibility("hidden")))
 - (void)sendSubscriptionInfoFaceTimeCalling;
 - (void)sendUnsubscriptionInfoFaceTimeCalling;
 - (void)setConfiguration:(CDStruct_69d7cc99 *)arg1;
+- (void)setPreWarmState:(BOOL)arg1;
 - (BOOL)setupServiceConnection;
-- (void)startWRMClientWithMode:(int)arg1;
+- (void)startWRMClientWithMode:(int)arg1 metricsConfig:(CDStruct_21a0265e)arg2;
 - (void)stopWRMClient;
 
 @end

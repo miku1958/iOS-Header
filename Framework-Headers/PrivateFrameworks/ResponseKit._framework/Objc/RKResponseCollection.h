@@ -27,6 +27,7 @@
 + (id)responsesForFullScreenMoments:(id)arg1 withLanguage:(id)arg2;
 + (id)speechActsForCategory:(unsigned long long)arg1 platform:(id)arg2;
 - (void).cxx_destruct;
+- (id)cannedResponsesForCategory:(id)arg1 withLanguage:(id)arg2 options:(unsigned long long)arg3;
 - (void)flushDynamicData;
 - (id)initWithDynamicDataURL:(id)arg1 displayStringsProvider:(id)arg2;
 - (id)personalizerForLanguageID:(id)arg1;

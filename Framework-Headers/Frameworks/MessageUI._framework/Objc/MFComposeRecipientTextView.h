@@ -36,6 +36,7 @@
     NSArray *_properties;
     NSMutableArray *_recipientsBeingRemoved;
     NSUndoManager *_undoManager;
+    struct CGRect _addButtonFrame;
     BOOL _editable;
     BOOL _separatorHidden;
     BOOL _expanded;
@@ -55,7 +56,7 @@
 @property (readonly, nonatomic) UIView *atomContainerView; // @synthesize atomContainerView=_atomContainerView;
 @property (strong, nonatomic) UIFont *baseFont; // @synthesize baseFont=_baseFont;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<MFComposeRecipientTextViewDelegate> delegate;
+@property (weak, nonatomic) id<MFComposeRecipientTextViewDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didIgnoreFirstResponderResign; // @synthesize didIgnoreFirstResponderResign=_didIgnoreFirstResponderResign;
 @property (nonatomic) BOOL editable; // @synthesize editable=_editable;
@@ -78,13 +79,14 @@
 @property (readonly, copy, nonatomic) NSArray *uncommentedAddresses;
 
 + (id)defaultFont;
-- (id)_accessibilityToString;
+- (void).cxx_destruct;
 - (void)_addAddressAtomSubview:(id)arg1;
 - (void)_addButtonTapped:(id)arg1;
 - (void)_addRecord:(void *)arg1 identifier:(int)arg2;
 - (id)_atomAttachmentForRecipient:(id)arg1;
 - (unsigned long long)_atomPresentationOptionsForRecipient:(id)arg1;
 - (id)_atomViewAtCharacterIndex:(unsigned long long)arg1;
+- (id)_attributedStringWithAtomizedRecipients;
 - (id)_baseAttributes;
 - (void)_beginAtomViewAnimations;
 - (BOOL)_canAddAdditionalAtoms;
@@ -118,6 +120,7 @@
 - (void)_tapGestureRecognized:(id)arg1;
 - (id)_textContainerExclusionPathsWithAddButton:(BOOL)arg1;
 - (BOOL)_textViewContainsAtomizedRecipients;
+- (id)_toString;
 - (void)_updateAddButtonVisibility;
 - (void)_updateInactiveTextView;
 - (BOOL)_useRightToLeftLayout;
@@ -145,7 +148,7 @@
 - (void)dragEnteredAtPoint:(struct CGPoint)arg1;
 - (void)dragExited;
 - (void)dragMovedToPoint:(struct CGPoint)arg1;
-- (id)dragPreviewForDraggedItem:(id)arg1;
+- (id)dragPreviewForDraggedItem:(id)arg1 withContainer:(id)arg2;
 - (void)dropItems:(id)arg1;
 - (BOOL)finishEnteringRecipient;
 - (BOOL)hasContent;

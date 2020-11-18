@@ -8,25 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, NSMutableArray, PBUnknownFields;
+@class GEOMapRegion, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDLocationDirectedSearchResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_disambiguationLabels;
     GEOMapRegion *_displayMapRegion;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_disambiguationLabels:1;
+        unsigned int read_displayMapRegion:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_disambiguationLabels:1;
+        unsigned int wrote_displayMapRegion:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *disambiguationLabels; // @synthesize disambiguationLabels=_disambiguationLabels;
-@property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
+@property (strong, nonatomic) NSMutableArray *disambiguationLabels;
+@property (strong, nonatomic) GEOMapRegion *displayMapRegion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)disambiguationLabelType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsDisambiguationLabel:(id)arg1;
+- (void)_readDisambiguationLabels;
+- (void)_readDisplayMapRegion;
 - (void)addDisambiguationLabel:(id)arg1;
 - (void)clearDisambiguationLabels;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

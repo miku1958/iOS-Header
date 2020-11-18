@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVEndpoint, MRAVOutputDeviceSourceInfo, NSData, NSDictionary, NSString, _MRAVOutputDeviceDescriptorProtobuf;
+@class MRAVEndpoint, MRAVOutputDeviceSourceInfo, NSArray, NSData, NSDictionary, NSString, _MRAVOutputDeviceDescriptorProtobuf;
 
 @interface MRAVOutputDevice : NSObject
 {
@@ -21,6 +21,7 @@
     BOOL _groupContainsGroupLeader;
     BOOL _airPlayReceiverSessionActive;
     BOOL _groupable;
+    BOOL _supportsBluetoothSharing;
     BOOL _proxyGroupPlayer;
     BOOL _canRelayCommunicationChannel;
     BOOL _supportsBufferedAirPlay;
@@ -49,12 +50,17 @@
     NSString *_playingPairedDeviceName;
     NSString *_parentGroupIdentifier;
     MRAVOutputDeviceSourceInfo *_sourceInfo;
+    NSString *_bluetoothID;
+    NSString *_currentBluetoothListeningMode;
+    NSArray *_availableBluetoothListeningModes;
     MRAVEndpoint *_endpoint;
 }
 
 @property (readonly, nonatomic) NSData *MACAddress; // @synthesize MACAddress=_MACAddress;
 @property (readonly, nonatomic, getter=isAirPlayReceiverSessionActive) BOOL airPlayReceiverSessionActive; // @synthesize airPlayReceiverSessionActive=_airPlayReceiverSessionActive;
+@property (readonly, nonatomic) NSArray *availableBluetoothListeningModes; // @synthesize availableBluetoothListeningModes=_availableBluetoothListeningModes;
 @property (readonly, nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
+@property (readonly, nonatomic) NSString *bluetoothID; // @synthesize bluetoothID=_bluetoothID;
 @property (readonly, nonatomic) BOOL canAccessAppleMusic; // @synthesize canAccessAppleMusic=_canAccessAppleMusic;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
 @property (readonly, nonatomic) BOOL canAccessiCloudMusicLibrary; // @synthesize canAccessiCloudMusicLibrary=_canAccessiCloudMusicLibrary;
@@ -63,6 +69,8 @@
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (readonly, nonatomic) NSString *capabilitiesDescription;
 @property (readonly, nonatomic) NSString *composedTypeDescription;
+@property (strong, nonatomic) NSString *currentBluetoothListeningMode; // @synthesize currentBluetoothListeningMode=_currentBluetoothListeningMode;
+@property (readonly, nonatomic) NSString *debugName;
 @property (readonly, nonatomic) _MRAVOutputDeviceDescriptorProtobuf *descriptor;
 @property (readonly, nonatomic, getter=isDeviceGroupable) BOOL deviceGroupable; // @synthesize deviceGroupable=_deviceGroupable;
 @property (readonly, nonatomic) unsigned int deviceSubtype; // @synthesize deviceSubtype=_deviceSubtype;
@@ -75,6 +83,7 @@
 @property (readonly, nonatomic, getter=isGroupable) BOOL groupable; // @synthesize groupable=_groupable;
 @property (readonly, nonatomic) BOOL hasBatteryLevel; // @synthesize hasBatteryLevel=_hasBatteryLevel;
 @property (readonly, nonatomic) BOOL isAddedToHomeKit; // @synthesize isAddedToHomeKit=_isAddedToHomeKit;
+@property (readonly, nonatomic) BOOL isPersonalRoute;
 @property (readonly, nonatomic) NSDictionary *jsonEncodableDictionaryRepresentation;
 @property (readonly, nonatomic, getter=isLocalDevice) BOOL localDevice; // @synthesize localDevice=_localDevice;
 @property (readonly, nonatomic) NSString *logicalDeviceID; // @synthesize logicalDeviceID=_logicalDeviceID;
@@ -91,6 +100,7 @@
 @property (readonly, nonatomic) BOOL requiresAuthorization; // @synthesize requiresAuthorization=_requiresAuthorization;
 @property (readonly, nonatomic) NSString *roleDescription;
 @property (readonly, nonatomic) MRAVOutputDeviceSourceInfo *sourceInfo; // @synthesize sourceInfo=_sourceInfo;
+@property (readonly, nonatomic) BOOL supportsBluetoothSharing; // @synthesize supportsBluetoothSharing=_supportsBluetoothSharing;
 @property (readonly, nonatomic) BOOL supportsBufferedAirPlay; // @synthesize supportsBufferedAirPlay=_supportsBufferedAirPlay;
 @property (readonly, nonatomic) BOOL supportsExternalScreen; // @synthesize supportsExternalScreen=_supportsExternalScreen;
 @property (readonly, nonatomic) BOOL supportsRapport; // @synthesize supportsRapport=_supportsRapport;

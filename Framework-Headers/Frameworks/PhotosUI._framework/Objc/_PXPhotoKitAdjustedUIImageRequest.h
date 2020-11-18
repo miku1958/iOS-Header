@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (readonly, nonatomic) PHImageRequestOptions *options; // @synthesize options=_options;
 @property (readonly, copy, nonatomic) CDUnknownBlockType resultHandler; // @synthesize resultHandler=_resultHandler;
+@property (readonly, nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
 
 + (id)memoryCache;
 - (void).cxx_destruct;
@@ -33,6 +34,7 @@
 - (void)_handleCurrentVersionImageResult:(id)arg1 info:(id)arg2;
 - (void)_handleImageWasCached;
 - (void)_handleRenderedImage:(id)arg1 error:(id)arg2;
+- (void)_handleRenderingFinishedWithData:(id)arg1 destinationURL:(id)arg2 targetSize:(struct CGSize)arg3;
 - (void)_renderIfNeeded;
 - (id)_unscaledCachedImageURL;
 - (void)cacheImageInMemory:(id)arg1;

@@ -15,15 +15,18 @@
     BOOL _HTTForTextInputEnabled;
     BOOL _siriMiniIsEnabled;
     BOOL _streamingDictationIsEnabled;
+    BOOL _siriSafeForLockScreen;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_setSiriSafeForLockScreen:(BOOL)arg1;
 - (void)_updatePreferences;
 - (void)dealloc;
 - (id)init;
 - (BOOL)isHTTForTextInputEnabled;
 - (BOOL)isSiriMiniEnabled;
+- (BOOL)isSiriSafeForLockScreen;
 - (BOOL)isStreamingDictationEnabled;
 - (BOOL)isTextInputEnabled;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

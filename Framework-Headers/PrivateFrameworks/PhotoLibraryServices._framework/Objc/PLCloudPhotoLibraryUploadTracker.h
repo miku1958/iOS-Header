@@ -26,6 +26,7 @@
 @property unsigned long long totalSizeOfUnpushedOriginals; // @synthesize totalSizeOfUnpushedOriginals=_totalSizeOfUnpushedOriginals;
 @property unsigned long long totalUploadedOriginalSize; // @synthesize totalUploadedOriginalSize=_totalUploadedOriginalSize;
 
+- (void).cxx_destruct;
 - (id)_constructKeyForScopedIdentifier:(id)arg1 type:(int)arg2;
 - (void)addSizeForUnpushedOriginals:(unsigned long long)arg1 forScopedIdentifier:(id)arg2;
 - (void)dealloc;

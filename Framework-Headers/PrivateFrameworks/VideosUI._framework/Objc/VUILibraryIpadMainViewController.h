@@ -56,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (void)loadView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
 - (BOOL)vui_ppt_isLoading;
 
 @end

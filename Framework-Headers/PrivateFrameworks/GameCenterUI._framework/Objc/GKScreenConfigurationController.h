@@ -19,8 +19,8 @@
 
 + (double)_scaleForCurrentDisplayConfiguration;
 + (id)sharedController;
+- (void).cxx_destruct;
 - (void)_screensDidChange:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)registerListener:(id)arg1;
 - (void)unregisterListener:(id)arg1;

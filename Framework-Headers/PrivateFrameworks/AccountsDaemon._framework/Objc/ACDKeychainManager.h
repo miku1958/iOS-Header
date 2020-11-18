@@ -24,7 +24,7 @@
 + (void)_keychainLock_updateItem:(id)arg1 existingPassword:(id)arg2 forServiceName:(id)arg3 username:(id)arg4 accessGroup:(id)arg5 accessibility:(id)arg6 options:(id)arg7 error:(id *)arg8;
 + (void)_migrateCredential:(id)arg1 forAccount:(id)arg2 clientID:(id)arg3;
 + (void)_removeCredentialForAccountWithUsername:(id)arg1 accountQualifiedUsername:(id)arg2 accountIdentifier:(id)arg3 accountTypeIdentifier:(id)arg4 credentialType:(id)arg5 clientID:(id)arg6 options:(id)arg7 error:(id *)arg8;
-+ (void)_removeCredentialItemWithKey:(id)arg1 forAccountWithID:(id)arg2 username:(id)arg3 accountTypeID:(id)arg4 clientID:(id)arg5 options:(id)arg6 error:(id *)arg7;
++ (BOOL)_removeCredentialItemWithKey:(id)arg1 forAccountWithID:(id)arg2 username:(id)arg3 accountTypeID:(id)arg4 clientID:(id)arg5 options:(id)arg6 error:(id *)arg7;
 + (BOOL)_removeItemForService:(id)arg1 username:(id)arg2 accessGroup:(id)arg3 options:(id)arg4 error:(id *)arg5;
 + (void)_saveCredential:(id)arg1 forAccount:(id)arg2 clientID:(id)arg3 error:(id *)arg4;
 + (BOOL)_setAccountSyncItem:(id)arg1 hostname:(id)arg2 accessGroup:(id)arg3 accessibility:(id)arg4 options:(id)arg5 error:(id *)arg6;
@@ -62,12 +62,14 @@
 + (void)removeCredentialForAccount:(id)arg1 key:(id)arg2 error:(id *)arg3;
 + (void)removeDataclassAccountSyncItemForAccount:(id)arg1;
 + (id)removeTombstonesForAccount:(id)arg1 clientID:(id)arg2 error:(id *)arg3;
++ (id)server;
 + (void)setAccountSynciOSVersion:(id)arg1;
 + (void)setCredentialForAccount:(id)arg1;
 + (void)setCredentialForAccount:(id)arg1 clientID:(id)arg2;
 + (void)setCredentialForAccount:(id)arg1 clientID:(id)arg2 error:(id *)arg3;
 + (void)setCredentialForAccount:(id)arg1 error:(id *)arg2;
 + (void)setCredentialForNewAccount:(id)arg1 clientID:(id)arg2 error:(id *)arg3;
++ (void)setServer:(id)arg1;
 
 @end
 

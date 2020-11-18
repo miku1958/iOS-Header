@@ -25,6 +25,7 @@
 @property (weak, nonatomic) MTVPAFKit *vpafKit; // @synthesize vpafKit=_vpafKit;
 
 - (void).cxx_destruct;
+- (id)eventDataForTransitioningEvents;
 - (id)initWithType:(long long)arg1 playlistItem:(id)arg2 vpafKit:(id)arg3;
 - (BOOL)isStopped;
 - (unsigned long long)positionFromOverallPosition:(unsigned long long)arg1;

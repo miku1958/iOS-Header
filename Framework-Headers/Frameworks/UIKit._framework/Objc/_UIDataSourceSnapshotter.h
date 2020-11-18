@@ -7,17 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/_UIDataSourceSnapshot-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIDataSourceSnapshotter : NSObject <NSCopying>
+@interface _UIDataSourceSnapshotter : NSObject <NSCopying, _UIDataSourceSnapshot>
 {
     struct _NSRange *_sectionRanges;
     long long _sectionCount;
 }
 
 + (id)snapshotForDataSourceBackedView:(id)arg1;
++ (id)snapshotWithSectionCountsProvider:(CDUnknownBlockType)arg1;
 - (BOOL)_decrementSectionCount:(long long)arg1;
 - (BOOL)_decrementSectionCount:(long long)arg1 byCount:(long long)arg2;
+- (BOOL)_deleteAllSections;
 - (BOOL)_deleteSection:(long long)arg1;
 - (BOOL)_incrementSectionCount:(long long)arg1;
 - (BOOL)_incrementSectionCount:(long long)arg1 byCount:(long long)arg2;
@@ -33,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithDataSourceBackedView:(id)arg1;
 - (id)initWithSectionCounts:(id)arg1;
+- (id)initWithSectionCountsProvider:(CDUnknownBlockType)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (long long)numberOfItems;
 - (long long)numberOfItemsBeforeSection:(long long)arg1;
@@ -40,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfSections;
 - (struct _NSRange)rangeForSection:(long long)arg1;
 - (long long)sectionForGlobalIndex:(long long)arg1;
+- (id)snapshot;
 
 @end
 

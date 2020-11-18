@@ -17,7 +17,7 @@
     NSDate *_date;
 }
 
-@property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long numberOfReachableBTLEAccessory; // @synthesize numberOfReachableBTLEAccessory=_numberOfReachableBTLEAccessory;
 @property (nonatomic) unsigned long long numberOfReachableIPAccessory; // @synthesize numberOfReachableIPAccessory=_numberOfReachableIPAccessory;

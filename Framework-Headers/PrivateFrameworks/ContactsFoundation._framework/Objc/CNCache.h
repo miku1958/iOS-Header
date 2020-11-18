@@ -36,6 +36,7 @@
 - (void).cxx_destruct;
 - (void)addDidEvictHandler:(CDUnknownBlockType)arg1;
 - (void)callDidEvictHandlersIfNecessary;
+- (id)description;
 - (id)init;
 - (id)initWithBoundingStrategies:(id)arg1 resourceScheduler:(id)arg2;
 - (id)initWithResourceScheduler:(id)arg1;

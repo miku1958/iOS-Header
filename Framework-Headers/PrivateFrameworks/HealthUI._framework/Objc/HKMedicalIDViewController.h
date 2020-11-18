@@ -6,6 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
+#import <HealthUI/HKEmergencyCardContactUpdateDelegate-Protocol.h>
 #import <HealthUI/HKEmergencyCardDeletionDelegate-Protocol.h>
 #import <HealthUI/HKEmergencyCardRowHeightChangeDelegate-Protocol.h>
 #import <HealthUI/HKMedicalIDViewControllerDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @class HKEmergencyCardContactsTableItem, HKEmergencyCardGroupTableItem, HKEmergencyCardNameAndPictureTableItem, HKHealthStore, HKNavigationController, NSArray, NSString, _HKMedicalIDData;
 @protocol HKMedicalIDViewControllerDelegate;
 
-@interface HKMedicalIDViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, HKMedicalIDViewControllerDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate>
+@interface HKMedicalIDViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, HKMedicalIDViewControllerDelegate, HKEmergencyCardDeletionDelegate, HKEmergencyCardRowHeightChangeDelegate, HKEmergencyCardContactUpdateDelegate>
 {
     NSArray *_presentableTableItems;
     NSArray *_footers;
@@ -64,6 +65,7 @@
 - (void)_buildPresentableTableItems;
 - (void)_buildTableItems;
 - (void)_buildViewModeTableItems;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancelEditingTapped:(id)arg1;
 - (void)_contactStoreDidChange:(id)arg1;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
@@ -71,8 +73,7 @@
 - (void)_doneEditingTapped:(id)arg1;
 - (void)_doneTapped:(id)arg1;
 - (BOOL)_editable;
-- (id)_fetchMedicalIDDataSynchronously:(BOOL *)arg1;
-- (void)_fetchName;
+- (void)_fetchDemographicInformation;
 - (void)_forceDisableBiometricIfDeviceLocked;
 - (id)_newViewForFooterInSection:(long long)arg1;
 - (void)_nextButtonTapped:(id)arg1;
@@ -119,6 +120,7 @@
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)timeZoneDidChange:(id)arg1;
+- (void)updateEmergencyContactTableItem;
 - (void)updateNavigationBar;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

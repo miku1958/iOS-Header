@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSArray *allViewControllers;
 @property (nonatomic) id<SKUITabBarControllerDelegate> delegate;
 @property (readonly, nonatomic) UIViewController *floatingOverlayViewController;
+@property (nonatomic) long long forcedUserInterfaceStyle;
 @property (readonly, nonatomic) UINavigationController *moreNavigationController;
 @property (nonatomic) unsigned long long selectedIndex;
 @property (nonatomic) UIViewController *selectedViewController;
@@ -28,6 +29,5 @@
 
 @optional
 - (void)setFloatingOverlayViewController:(UIViewController *)arg1 animated:(BOOL)arg2;
-- (void)setTabBarBackdropStyle:(long long)arg1;
 @end
 

@@ -16,7 +16,7 @@
 #import <VideosUI/VUIMediaItemEntityTypesFetchControllerDelegate-Protocol.h>
 #import <VideosUI/VUIMediaLibraryFetchControllerQueueDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIBarButtonItem, VUIDownloadDataSource, VUIDownloadViewController, VUILibraryBannerCollectionViewCell, VUILibraryListPopoverViewCell, VUILibraryMediaEntityShelvesViewModel, VUILibraryMenuItemViewCell, VUILibraryPopoverViewController, VUIMediaLibrary, _VUILibrarySeeAllController;
+@class NSArray, NSDictionary, NSString, UIBarButtonItem, VUIDownloadDataSource, VUIDownloadViewController, VUILibraryBannerCollectionViewCell, VUILibraryListPopoverViewCell, VUILibraryMediaEntityShelvesViewModel, VUILibraryMenuItemViewCell, VUILibraryPopoverViewController, VUIMediaEntitiesFetchController, VUIMediaLibrary, _VUILibrarySeeAllController;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUILibraryShelfCollectionViewControllerDelegate, VUIMediaItemEntityTypesFetchControllerDelegate, VUIMediaEntitiesFetchControllerDelegate, VUIMediaLibraryFetchControllerQueueDelegate, VUILibraryPopoverDataSource, VUILibraryPopoverDelegate, UIGestureRecognizerDelegate, VUIDownloadDataSourceDelegate>
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
     BOOL _hasMenuItemFetchCompleted;
     BOOL _areLocalMediaItemsAvailable;
     BOOL _hasMediaEntitiesFetchCompleted;
-    BOOL _isUpdatingRentals;
     BOOL _hasDownloadFetchCompleted;
     BOOL _doesDeviceSupportHDR;
     BOOL _isIpad;
@@ -45,6 +44,7 @@ __attribute__((visibility("hidden")))
     VUILibraryMediaEntityShelvesViewModel *_shelvesViewModel;
     NSDictionary *_shelfTypeByFetchRequestIdentifier;
     _VUILibrarySeeAllController *_currentSeeAllController;
+    VUIMediaEntitiesFetchController *_rentalsUpdateFetchController;
     VUIDownloadDataSource *_downloadDataSource;
 }
 
@@ -64,13 +64,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *homeShares; // @synthesize homeShares=_homeShares;
 @property (nonatomic) BOOL isIpad; // @synthesize isIpad=_isIpad;
-@property (nonatomic) BOOL isUpdatingRentals; // @synthesize isUpdatingRentals=_isUpdatingRentals;
 @property (strong, nonatomic) UIBarButtonItem *libraryBarButton; // @synthesize libraryBarButton=_libraryBarButton;
 @property (strong, nonatomic) NSArray *menuCells; // @synthesize menuCells=_menuCells;
 @property (strong, nonatomic) VUILibraryMenuItemViewCell *menuItemSizingCell; // @synthesize menuItemSizingCell=_menuItemSizingCell;
 @property (strong, nonatomic) NSArray *menuMediaItemEntityTypes; // @synthesize menuMediaItemEntityTypes=_menuMediaItemEntityTypes;
 @property (strong, nonatomic) NSArray *popoverDropdownCells; // @synthesize popoverDropdownCells=_popoverDropdownCells;
 @property (strong, nonatomic) VUILibraryPopoverViewController *popoverViewController; // @synthesize popoverViewController=_popoverViewController;
+@property (strong, nonatomic) VUIMediaEntitiesFetchController *rentalsUpdateFetchController; // @synthesize rentalsUpdateFetchController=_rentalsUpdateFetchController;
 @property (strong, nonatomic) NSDictionary *shelfTypeByFetchRequestIdentifier; // @synthesize shelfTypeByFetchRequestIdentifier=_shelfTypeByFetchRequestIdentifier;
 @property (strong, nonatomic) VUILibraryMediaEntityShelvesViewModel *shelvesViewModel; // @synthesize shelvesViewModel=_shelvesViewModel;
 @property (strong, nonatomic) VUILibraryListPopoverViewCell *sizingPopoverCell; // @synthesize sizingPopoverCell=_sizingPopoverCell;

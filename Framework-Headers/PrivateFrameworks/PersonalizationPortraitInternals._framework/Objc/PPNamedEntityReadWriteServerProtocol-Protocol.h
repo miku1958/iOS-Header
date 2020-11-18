@@ -7,14 +7,15 @@
 @class NSArray, NSData, NSDate, NSString, PPSource;
 
 @protocol PPNamedEntityReadWriteServerProtocol
-- (void)clearWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (void)deleteAllNamedEntitiesFromSourcesWithBundleId:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)deleteAllNamedEntitiesFromSourcesWithBundleId:(NSString *)arg1 documentIds:(NSArray *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)deleteAllNamedEntitiesFromSourcesWithBundleId:(NSString *)arg1 groupId:(NSString *)arg2 olderThan:(NSDate *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
-- (void)deleteAllNamedEntitiesFromSourcesWithBundleId:(NSString *)arg1 groupIds:(NSArray *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)donateLocationNamedEntities:(NSArray *)arg1 bundleId:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)clearWithCompletion:(void (^)(BOOL, unsigned long long, NSError *))arg1;
+- (void)cloudSyncWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)deleteAllNamedEntitiesFromSourcesWithBundleId:(NSString *)arg1 completion:(void (^)(BOOL, unsigned long long, NSError *))arg2;
+- (void)deleteAllNamedEntitiesFromSourcesWithBundleId:(NSString *)arg1 documentIds:(NSArray *)arg2 completion:(void (^)(BOOL, unsigned long long, NSError *))arg3;
+- (void)deleteAllNamedEntitiesFromSourcesWithBundleId:(NSString *)arg1 groupId:(NSString *)arg2 olderThanDate:(NSDate *)arg3 completion:(void (^)(BOOL, unsigned long long, NSError *))arg4;
+- (void)deleteAllNamedEntitiesFromSourcesWithBundleId:(NSString *)arg1 groupIds:(NSArray *)arg2 completion:(void (^)(BOOL, unsigned long long, NSError *))arg3;
+- (void)donateLocationNamedEntities:(NSArray *)arg1 bundleId:(NSString *)arg2 groupId:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)donateMapItem:(NSData *)arg1 forPlaceName:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)donateNamedEntities:(NSArray *)arg1 source:(PPSource *)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 decayRate:(double)arg5 completion:(void (^)(BOOL, NSError *))arg6;
+- (void)donateNamedEntities:(NSArray *)arg1 source:(PPSource *)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 sentimentScore:(double)arg5 completion:(void (^)(BOOL, NSError *))arg6;
 - (void)flushDonationsWithCompletion:(void (^)(void))arg1;
 - (void)removeMapItemForPlaceName:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)removeMapItemsBeforeCutoffDate:(NSDate *)arg1 completion:(void (^)(BOOL, NSError *))arg2;

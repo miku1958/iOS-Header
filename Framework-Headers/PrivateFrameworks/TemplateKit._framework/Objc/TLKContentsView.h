@@ -6,20 +6,19 @@
 
 #import <TemplateKit/TLKStackView.h>
 
-@class NSMutableArray, UILabel;
+@class NSMutableArray, TLKLabel;
 
+__attribute__((visibility("hidden")))
 @interface TLKContentsView : TLKStackView
 {
-    unsigned long long _style;
-    UILabel *_titleLabel;
+    TLKLabel *_titleLabel;
     NSMutableArray *_detailsLabels;
 }
 
-@property (strong) NSMutableArray *detailsLabels; // @synthesize detailsLabels=_detailsLabels;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
-@property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (strong, nonatomic) NSMutableArray *detailsLabels; // @synthesize detailsLabels=_detailsLabels;
+@property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
-+ (id)detailsLabelWithStyle:(unsigned long long)arg1;
++ (id)detailsLabel;
 - (void).cxx_destruct;
 - (id)init;
 - (void)updateWithTitle:(id)arg1 contents:(id)arg2;

@@ -25,11 +25,13 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)awDeliverFaceFound;
 - (void)awFinishWithReason:(long long)arg1;
+- (void)awSetFaceDetectError;
 - (void)awSetFaceFound;
 - (void)cancel;
 - (void)dealloc;
 - (id)init;
 - (BOOL)startWithError:(id *)arg1;
+- (void)startWithReply:(CDUnknownBlockType)arg1;
 - (long long)state;
 
 @end

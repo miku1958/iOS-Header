@@ -9,15 +9,14 @@
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
 
-@class AVTAvatar, AVTAvatarEnvironment, AVTFaceTracker, NSLock, NSObject, NSString, SCNNode;
-@protocol OS_dispatch_queue, SCNSceneRendererDelegate;
+@class AVTAvatar, AVTAvatarEnvironment, AVTFaceTracker, NSLock, NSString, SCNNode;
+@protocol SCNSceneRendererDelegate;
 
 @interface AVTRenderer : SCNRenderer <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
     AVTAvatarEnvironment *_environment;
     AVTAvatar *_avatar;
     SCNNode *_avatarNode;
-    NSObject<OS_dispatch_queue> *_preloadQueue;
     NSLock *_lock;
     id<SCNSceneRendererDelegate> _fwdDelegate;
     BOOL _pauseSimulation;
@@ -61,6 +60,7 @@
 - (void)renderer:(id)arg1 willRenderScene:(id)arg2 atTime:(double)arg3;
 - (void)setDelegate:(id)arg1;
 - (void)setEnableDepthMask:(BOOL)arg1 withFlippedDepth:(BOOL)arg2;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)transitionTexture;
 
 @end

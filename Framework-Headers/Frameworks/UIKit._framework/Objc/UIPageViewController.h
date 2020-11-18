@@ -86,7 +86,6 @@
 + (BOOL)_isSupportedTransitionStyle:(long long)arg1;
 + (id)_outgoingViewControllerKeys;
 + (BOOL)doesOverridePreferredInterfaceOrientationForPresentation;
-+ (BOOL)doesOverrideSupportedInterfaceOrientations;
 + (id)stringForSpineLocation:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_beginDisablingInterfaceAutorotation;
@@ -141,7 +140,6 @@
 - (BOOL)_shouldNavigateInDirection:(long long *)arg1 inResponseToTapGestureRecognizer:(id)arg2;
 - (BOOL)_shouldNavigateInDirection:(long long *)arg1 inResponseToVelocity:(double *)arg2 ofGestureRecognizedByPanGestureRecognizer:(id)arg3;
 - (BOOL)_shouldPersistViewWhenCoding;
-- (BOOL)_shouldSynthesizeSupportedOrientations;
 - (struct CGSize)_tapRegionBreadths;
 - (struct UIEdgeInsets)_tapRegionInsets;
 - (struct CGRect *)_tapRegions;

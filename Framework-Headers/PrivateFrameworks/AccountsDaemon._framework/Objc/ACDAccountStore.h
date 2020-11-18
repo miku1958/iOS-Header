@@ -6,41 +6,42 @@
 
 #import <Accounts/ACAccountStore.h>
 
-#import <AccountsDaemon/ACDAccountStoreProtocol-Protocol.h>
+#import <AccountsDaemon/ACRemoteAccountStoreProtocol-Protocol.h>
 
-@class ACDAccessPluginManager, ACDAccountStoreFilter, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDClient, ACDClientAuthorizationManager, ACDDatabase, ACDDatabaseBackupActivity, ACDDataclassOwnersManager, ACDFakeRemoteAccountStoreSession, ACRemoteDeviceProxy, NSMutableArray, NSString;
+@class ACDAccessPluginManager, ACDAccountNotifier, ACDAuthenticationDialogManager, ACDAuthenticationPluginManager, ACDClient, ACDClientAuthorizationManager, ACDDatabaseBackupActivity, ACDDatabaseConnection, ACDDataclassOwnersManager, ACDFakeRemoteAccountStoreSession, ACRemoteDeviceProxy, NSMutableArray, NSString;
 @protocol ACDAccountStoreDelegate;
 
-@interface ACDAccountStore : ACAccountStore <ACDAccountStoreProtocol>
+@interface ACDAccountStore : ACAccountStore <ACRemoteAccountStoreProtocol>
 {
     NSMutableArray *_accountChanges;
-    ACDDatabase *_database;
+    ACDDatabaseConnection *_databaseConnection;
     ACDClientAuthorizationManager *_authorizationManager;
     ACDFakeRemoteAccountStoreSession *_fakeRemoteAccountStoreSession;
     BOOL _notificationsEnabled;
     BOOL _migrationInProgress;
     id<ACDAccountStoreDelegate> _delegate;
     ACDClient *_client;
-    ACDAccountStoreFilter *_filter;
     ACRemoteDeviceProxy *_remoteDeviceProxy;
     ACDAuthenticationPluginManager *_authenticationPluginManager;
     ACDAccessPluginManager *_accessPluginManager;
     ACDDataclassOwnersManager *_dataclassOwnersManager;
     ACDAuthenticationDialogManager *_authenticationDialogManager;
+    ACDAccountNotifier *_accountNotifier;
     ACDDatabaseBackupActivity *_databaseBackupActivity;
 }
 
 @property (strong, nonatomic) ACDAccessPluginManager *accessPluginManager; // @synthesize accessPluginManager=_accessPluginManager;
+@property (strong, nonatomic) ACDAccountNotifier *accountNotifier; // @synthesize accountNotifier=_accountNotifier;
 @property (strong, nonatomic) ACDAuthenticationDialogManager *authenticationDialogManager; // @synthesize authenticationDialogManager=_authenticationDialogManager;
 @property (strong, nonatomic) ACDAuthenticationPluginManager *authenticationPluginManager; // @synthesize authenticationPluginManager=_authenticationPluginManager;
 @property (readonly, nonatomic) ACDClientAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property (weak, nonatomic) ACDClient *client; // @synthesize client=_client;
 @property (strong, nonatomic) ACDDatabaseBackupActivity *databaseBackupActivity; // @synthesize databaseBackupActivity=_databaseBackupActivity;
+@property (readonly, nonatomic) ACDDatabaseConnection *databaseConnection; // @synthesize databaseConnection=_databaseConnection;
 @property (strong, nonatomic) ACDDataclassOwnersManager *dataclassOwnersManager; // @synthesize dataclassOwnersManager=_dataclassOwnersManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ACDAccountStoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) ACDAccountStoreFilter *filter; // @synthesize filter=_filter;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isMigrationInProgress) BOOL migrationInProgress; // @synthesize migrationInProgress=_migrationInProgress;
 @property (nonatomic) BOOL notificationsEnabled; // @synthesize notificationsEnabled=_notificationsEnabled;
@@ -55,7 +56,7 @@
 - (id)_addAccountNoSave:(id)arg1 withDataclassActions:(id)arg2 error:(id *)arg3;
 - (id)_allAccounts_sync;
 - (BOOL)_canManagedAccountType:(id)arg1 syncManagedDataclass:(id)arg2;
-- (BOOL)_canSaveAccount:(id)arg1;
+- (BOOL)_canSaveAccount:(id)arg1 error:(id *)arg2;
 - (id)_childAccountsForAccountWithID:(id)arg1;
 - (id)_clientTokenForAccountIdentifier:(id)arg1 error:(id)arg2;
 - (id)_clientTokenQueue;
@@ -114,19 +115,20 @@
 - (void)dataclassActionsForAccountSave:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dataclassesWithHandler:(CDUnknownBlockType)arg1;
 - (void)deleteAccountNoSave:(id)arg1 error:(id *)arg2;
-- (void)disconnectFromRemoteAccountStore;
 - (void)discoverPropertiesForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)displayAccountTypeForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)enabledDataclassesForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)grantedPermissionsForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)handleURL:(id)arg1;
-- (id)initWithClient:(id)arg1;
+- (id)init;
+- (id)initWithClient:(id)arg1 databaseConnection:(id)arg2;
 - (void)insertAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)insertCredentialItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isPerformingDataclassActionsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isPushSupportedForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isTetheredSyncingEnabledForDataclass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)kerberosAccountsForDomainFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)longLivedRemoteAccountStoreSession;
 - (id)masterCredentialForAccountIdentifier:(id)arg1;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1 withChangeType:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -149,6 +151,7 @@
 - (void)saveAccount:(id)arg1 verify:(BOOL)arg2 dataclassActions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)saveAccount:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)saveCredentialItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
 - (void)setClientBundleID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setPermissionGranted:(id)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3 withHandler:(CDUnknownBlockType)arg4;

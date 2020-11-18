@@ -6,10 +6,15 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
+@class PRMonogramColor, UIColor;
+
 @protocol CNAvatarImageRenderingScope <NSObject>
 - (unsigned long long)avatarViewStyle;
+- (PRMonogramColor *)color;
 - (struct CGSize)pointSize;
 - (BOOL)rightToLeft;
 - (double)scale;
+- (UIColor *)strokeColor;
+- (double)strokeWidth;
 @end
 

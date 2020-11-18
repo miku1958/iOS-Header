@@ -44,7 +44,6 @@
 
 + (double)defaultDuration;
 + (void)setDefaultDuration:(double)arg1;
-+ (void)updateTimerShortcutItem;
 + (void)warmUp;
 - (void).cxx_destruct;
 - (void)_getCachedTimersWithFuture:(id)arg1 finishBlock:(CDUnknownBlockType)arg2;

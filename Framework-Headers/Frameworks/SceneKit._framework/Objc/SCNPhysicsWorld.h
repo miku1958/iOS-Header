@@ -19,6 +19,7 @@
     struct btC3DDebugDraw *_debugDrawer;
     struct c3dAether _aether;
     BOOL _hasActiveFields;
+    BOOL _firstSimulationDone;
     id<SCNPhysicsContactDelegate> _contactDelegate;
     SCNPhysicsContact *_contact;
     SCNScene *_scene;
@@ -29,6 +30,8 @@
     NSMutableArray *_fields;
     double _elapsedTime;
     NSMutableArray *_behaviors;
+    NSArray *_activeBehaviors;
+    BOOL _activeBehaviorsValid;
     NSMutableSet *_bodies;
 }
 
@@ -61,7 +64,7 @@
 - (void)_removeFieldFromWorld:(id)arg1;
 - (void)_reset;
 - (void)_step:(double)arg1;
-- (void)_updatePhysicsFieldsTrasforms;
+- (void)_updatePhysicsFieldsTransforms;
 - (void)addBehavior:(id)arg1;
 - (void)addPhysicsBody:(id)arg1 nodeRef:(struct __C3DNode *)arg2 colGroup:(unsigned long long)arg3 colMask:(unsigned long long)arg4 colTest:(unsigned long long)arg5;
 - (void)commonInit;

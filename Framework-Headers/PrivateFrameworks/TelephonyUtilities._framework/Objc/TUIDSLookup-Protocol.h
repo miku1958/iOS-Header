@@ -6,11 +6,10 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray;
 
 @protocol TUIDSLookup <NSObject>
 
-@property (readonly) NSString *idsCanonicalDestination;
 @property (readonly) NSArray *idsCanonicalDestinations;
 
 @end

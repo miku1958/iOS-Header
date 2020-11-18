@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGRect combinedLabelRectInChartCoordinateSpace;
 @property (readonly, nonatomic) struct CGPoint combinedLabelRectMidpointInChartCoordinateSpace;
 @property (nonatomic) struct CGAffineTransform combinedLabelTransformIntoPieChartCoordinateSpace; // @synthesize combinedLabelTransformIntoPieChartCoordinateSpace=mCombinedLabelTransformIntoPieChartCoordinateSpace;
-@property (readonly, nonatomic) int enableCalloutLineSetting;
+@property (readonly, nonatomic) long long enableCalloutLineSetting;
 @property (copy, nonatomic) NSArray *pieLabels; // @synthesize pieLabels=mPieLabels;
 @property (readonly, nonatomic) BOOL stackLabels;
 @property (strong, nonatomic) TSCHChartPieWedgeElement *wedgeElement; // @synthesize wedgeElement=mWedgeElement;

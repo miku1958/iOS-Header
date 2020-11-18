@@ -22,6 +22,7 @@
     NSArray *_parsecCategoryOrder;
     id _representedObject;
     NSString *_keyboardLanguage;
+    double _scaleFactor;
     NSString *_queryString;
     unsigned long long _queryIdent;
     PRSSearchFeedback *_feedback;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (weak, nonatomic) id representedObject; // @synthesize representedObject=_representedObject;
+@property double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (strong, nonatomic) NSDictionary *server_features; // @synthesize server_features=_server_features;
 @property (weak, nonatomic) PRSSearchSession *session; // @synthesize session=_session;
 @property (nonatomic) BOOL started; // @synthesize started=_started;

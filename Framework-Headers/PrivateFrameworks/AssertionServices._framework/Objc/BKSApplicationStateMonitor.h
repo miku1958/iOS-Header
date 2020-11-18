@@ -6,31 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class BSSignal, NSArray;
-@protocol OS_dispatch_queue, OS_xpc_object;
+@class NSArray, RBSProcessMonitor;
 
 @interface BKSApplicationStateMonitor : NSObject
 {
-    NSObject<OS_xpc_object> *_connection;
-    BSSignal *_invalidationSignal;
-    CDUnknownBlockType _handler;
-    unsigned int _interestedStates;
+    struct os_unfair_lock_s _lock;
+    RBSProcessMonitor *_monitor;
     NSArray *_interestedAssertionReasons;
-    NSArray *_interestedBundleIDs;
     BOOL _elevatedPriority;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_messageHandlingQueue;
-    NSObject<OS_xpc_object> *_serverEndpoint;
-    BOOL _denied;
+    unsigned int _interestedStates;
+    NSArray *_interestedBundleIDs;
+    CDUnknownBlockType _handler;
 }
 
-@property (readonly, nonatomic) BOOL elevatedPriority;
-@property (copy, nonatomic) CDUnknownBlockType handler; // @dynamic handler;
-@property (copy, nonatomic) NSArray *interestedBundleIDs; // @dynamic interestedBundleIDs;
-@property (nonatomic) unsigned int interestedStates; // @dynamic interestedStates;
+@property (readonly, nonatomic) BOOL elevatedPriority; // @synthesize elevatedPriority=_elevatedPriority;
+@property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+@property (readonly, copy, nonatomic) NSArray *interestedBundleIDs; // @synthesize interestedBundleIDs=_interestedBundleIDs;
+@property (readonly, nonatomic) unsigned int interestedStates; // @synthesize interestedStates=_interestedStates;
 
-- (id)_connection;
-- (void)_setEndpoint:(id)arg1;
+- (void).cxx_destruct;
+- (BOOL)_clientSubscribedToThisReasonChange:(id)arg1;
+- (BOOL)_clientSubscribedToThisStateChange:(id)arg1 state:(id)arg2 prevState:(id)arg3;
+- (id)_legacyInfoForProcess:(id)arg1;
+- (id)_legacyInfoForProcess:(id)arg1 state:(id)arg2;
+- (unsigned int)_legacyStateForProcess:(id)arg1 state:(id)arg2;
 - (id)applicationInfoForApplication:(id)arg1;
 - (void)applicationInfoForApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)applicationInfoForPID:(int)arg1;
@@ -38,30 +37,15 @@
 - (unsigned int)applicationStateForApplication:(id)arg1;
 - (id)bundleInfoValueForKey:(id)arg1 PID:(int)arg2;
 - (void)dealloc;
-- (id)dumpDescriptionForSubsystem:(id)arg1;
 - (id)init;
 - (id)initWithBundleIDs:(id)arg1 states:(unsigned int)arg2;
 - (id)initWithBundleIDs:(id)arg1 states:(unsigned int)arg2 elevatedPriority:(BOOL)arg3;
 - (id)initWithBundleIDs:(id)arg1 states:(unsigned int)arg2 isUserInteractive:(BOOL)arg3;
 - (id)initWithEndpoint:(id)arg1 bundleIDs:(id)arg2 states:(unsigned int)arg3 elevatedPriority:(BOOL)arg4;
-- (id)interestedAssertionReasons;
 - (void)invalidate;
 - (BOOL)isApplicationBeingDebugged:(id)arg1;
+- (void)lock_updateConfiguration;
 - (unsigned int)mostElevatedApplicationStateForPID:(int)arg1;
-- (void)queue_connectionWasInvalidated;
-- (void)queue_handleMessage:(id)arg1;
-- (void)queue_invalidate;
-- (void)queue_registerWithServer;
-- (void)queue_reregister;
-- (void)queue_setElevatedPriority:(BOOL)arg1;
-- (void)queue_setHandler:(CDUnknownBlockType)arg1;
-- (void)queue_setInterestedAssertions:(id)arg1;
-- (void)queue_setInterestedBundleIDs:(id)arg1;
-- (void)queue_setInterestedStates:(unsigned int)arg1;
-- (void)queue_updateInterestedStates;
-- (void)queue_updateInterestedStates:(BOOL)arg1;
-- (void)setElevatedPriority:(BOOL)arg1;
-- (void)setInterestedAssertionReasons:(id)arg1;
 - (void)updateInterestedAssertionReasons:(id)arg1;
 - (void)updateInterestedBundleIDs:(id)arg1;
 - (void)updateInterestedBundleIDs:(id)arg1 states:(unsigned int)arg2;

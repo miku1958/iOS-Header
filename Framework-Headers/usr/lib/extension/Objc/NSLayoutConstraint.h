@@ -106,6 +106,7 @@
 - (BOOL)_nsib_isRedundantInEngine:(id)arg1;
 - (int)_primitiveConstraintType;
 - (id)_priorityDescription;
+- (void)_rebuildExtraVars;
 - (BOOL)_referencesLayoutItem:(id)arg1;
 - (void)_removeFromEngine:(id)arg1;
 - (void)_setActive:(BOOL)arg1 mutuallyExclusiveConstraints:(id *)arg2;
@@ -116,12 +117,14 @@
 - (void)_setMutablePropertiesFromConstraint:(id)arg1;
 - (void)_setNegativeExtraVar:(id)arg1;
 - (void)_setPrimitiveConstraintType:(int)arg1;
+- (void)_setPriority:(float)arg1 mutuallyExclusiveConstraints:(id *)arg2;
 - (void)_setSecondItem:(id)arg1 attribute:(long long)arg2;
 - (void)_setSymbolicConstant:(id)arg1;
 - (void)_setSymbolicConstant:(id)arg1 constant:(double)arg2;
 - (id)_symbolicConstant;
 - (void)_tryToActivateMeasuringUnsatisfactionChanges:(id *)arg1 andMutuallyExclusiveConstraints:(id *)arg2;
 - (BOOL)_tryToChangeContainerGeometryWithUndoHandler:(CDUnknownBlockType)arg1;
+- (double)_unsatisfaction:(double *)arg1;
 - (id)animations;
 - (id)asciiArtDescription;
 - (void)dealloc;

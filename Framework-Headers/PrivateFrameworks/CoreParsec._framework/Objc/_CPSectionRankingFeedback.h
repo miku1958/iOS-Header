@@ -32,7 +32,6 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned int localSectionPosition; // @synthesize localSectionPosition=_localSectionPosition;
 @property (nonatomic) double personalizationScore; // @synthesize personalizationScore=_personalizationScore;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (copy, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (strong, nonatomic) _CPResultSectionForFeedback *section; // @synthesize section=_section;
 @property (readonly) Class superclass;

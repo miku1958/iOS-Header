@@ -9,17 +9,17 @@
 #import <AvatarUI/AVTAvatarAttributeEditorColorSectionProtocol-Protocol.h>
 
 @class AVTAvatarColorVariationStore, NSArray, NSString;
-@protocol AVTAvatarAttributeEditorColorSectionProtocol;
+@protocol AVTAvatarAttributeEditorHeaderPicker;
 
 @interface AVTAvatarAttributeEditorColorSection : NSObject <AVTAvatarAttributeEditorColorSectionProtocol>
 {
     BOOL _alwaysShowExtended;
     NSString *_localizedName;
     NSString *_identifier;
+    id<AVTAvatarAttributeEditorHeaderPicker> _headerAccessory;
     NSArray *_primaryItems;
     NSArray *_extendedItems;
     AVTAvatarColorVariationStore *_colorVariationStore;
-    id<AVTAvatarAttributeEditorColorSectionProtocol> _subSection;
 }
 
 @property (readonly, nonatomic) BOOL alwaysShowExtended; // @synthesize alwaysShowExtended=_alwaysShowExtended;
@@ -28,15 +28,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *extendedItems; // @synthesize extendedItems=_extendedItems;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<AVTAvatarAttributeEditorHeaderPicker> headerAccessory; // @synthesize headerAccessory=_headerAccessory;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, copy, nonatomic) NSArray *primaryItems; // @synthesize primaryItems=_primaryItems;
 @property (readonly, copy, nonatomic) NSArray *sectionItems;
-@property (readonly, nonatomic) id<AVTAvatarAttributeEditorColorSectionProtocol> subSection; // @synthesize subSection=_subSection;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(BOOL)arg6 subSection:(id)arg7;
+- (id)initWithPrimaryItems:(id)arg1 extendedItems:(id)arg2 colorVariationStore:(id)arg3 localizedName:(id)arg4 identifier:(id)arg5 alwaysShowExtended:(BOOL)arg6;
 - (BOOL)shouldDisplaySeparatorBeforeSection:(id)arg1;
 - (BOOL)shouldDisplayTitle;
 

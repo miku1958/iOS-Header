@@ -6,6 +6,7 @@
 
 #import <MPSImage/MPSUnaryImageKernel.h>
 
+@class MPSImageLaplacian;
 @protocol MTLBuffer;
 
 @interface MPSImageConvolution : MPSUnaryImageKernel
@@ -20,6 +21,7 @@
     float _fBias;
     BOOL separable;
     unsigned long long specialFilterType;
+    MPSImageLaplacian *_laplacian;
 }
 
 @property (nonatomic) float bias; // @synthesize bias=_fBias;

@@ -21,14 +21,14 @@
     unsigned int _isVIP:1;
     unsigned int _isHighPriority:1;
     unsigned int _dateSentInterval;
-    unsigned int _mailboxID;
-    unsigned int _uid;
     unsigned int _dateReceivedInterval;
-    unsigned int _sortUid;
     unsigned int _sortDateReceivedInterval;
     long long _conversationHash;
+    long long _mailboxID;
     long long _generationNumber;
+    long long _uid;
     long long _messageIDHash;
+    long long _sortUid;
 }
 
 @property (readonly, nonatomic) long long conversationHash;
@@ -48,20 +48,20 @@
 @property (nonatomic) BOOL isVIP;
 @property (readonly, nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
 @property (nonatomic, getter=isKnownToHaveAttachments) BOOL knownToHaveAttachments;
-@property (readonly, nonatomic) unsigned int libraryID;
+@property (readonly, nonatomic) long long libraryID;
 @property (readonly, nonatomic, getter=isLibraryMessage) BOOL libraryMessage;
-@property (readonly, nonatomic) unsigned int mailboxID;
-@property (nonatomic) unsigned int mailboxID; // @synthesize mailboxID=_mailboxID;
+@property (readonly, nonatomic) long long mailboxID;
+@property (nonatomic) long long mailboxID; // @synthesize mailboxID=_mailboxID;
 @property (readonly, nonatomic) long long messageIDHash;
 @property (nonatomic) long long messageIDHash; // @synthesize messageIDHash=_messageIDHash;
 @property (readonly, nonatomic) BOOL read;
 @property (nonatomic) BOOL read;
 @property (readonly, nonatomic) BOOL senderVIP;
 @property (nonatomic) unsigned int sortDateReceivedInterval; // @synthesize sortDateReceivedInterval=_sortDateReceivedInterval;
-@property (nonatomic) unsigned int sortUid; // @synthesize sortUid=_sortUid;
+@property (nonatomic) long long sortUid; // @synthesize sortUid=_sortUid;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int uid;
-@property (nonatomic) unsigned int uid; // @synthesize uid=_uid;
+@property (nonatomic) long long uid; // @synthesize uid=_uid;
 @property (nonatomic) BOOL uidIsLibraryID;
 
 + (long long)newGenerationNumber;
@@ -70,7 +70,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)generationCompare:(id)arg1;
 - (id)init;
-- (id)initWithUid:(unsigned int)arg1 mailboxID:(unsigned int)arg2 messageID:(long long)arg3 dateReceivedInterval:(unsigned int)arg4 dateSentInterval:(unsigned int)arg5 conversationHash:(long long)arg6 read:(BOOL)arg7 knownToHaveAttachments:(BOOL)arg8 flagged:(BOOL)arg9 isVIP:(BOOL)arg10;
+- (id)initWithUid:(long long)arg1 mailboxID:(long long)arg2 messageID:(long long)arg3 dateReceivedInterval:(unsigned int)arg4 dateSentInterval:(unsigned int)arg5 conversationHash:(long long)arg6 read:(BOOL)arg7 knownToHaveAttachments:(BOOL)arg8 flagged:(BOOL)arg9 isVIP:(BOOL)arg10;
 - (BOOL)isEqual:(id)arg1;
 
 @end

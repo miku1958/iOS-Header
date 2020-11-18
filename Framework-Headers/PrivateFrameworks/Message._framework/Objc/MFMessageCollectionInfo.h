@@ -22,11 +22,13 @@
 @property (readonly, nonatomic) long long messageCollectionHash; // @synthesize messageCollectionHash=_messageCollectionHash;
 @property (readonly, nonatomic) unsigned long long messageCountWithDuplicates;
 @property (readonly, nonatomic) unsigned long long messagesCount;
+@property (readonly, nonatomic) unsigned long long state;
 @property (readonly, nonatomic) NSArray *uniqueMessageInfos;
+@property (readonly, nonatomic) MFMessageInfo *visibleMessageInfo;
 
 + (unsigned long long)stateForMessages:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)addMessageInfo:(id)arg1;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)duplicatesOfMessageInfo:(id)arg1;
 - (unsigned long long)indexOfMessageInfo:(id)arg1;
@@ -36,8 +38,6 @@
 - (id)messageInfoAtIndex:(unsigned long long)arg1;
 - (id)messageInfoEquivalentToMessageInfo:(id)arg1;
 - (unsigned long long)removeMessageInfo:(id)arg1;
-- (unsigned long long)state;
-- (id)visibleMessageInfo;
 
 @end
 

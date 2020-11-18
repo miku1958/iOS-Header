@@ -33,9 +33,11 @@
 @property (readonly, copy) NSString *text;
 @property (copy) NSString *type;
 
+- (id)download;
 - (id)origin;
 - (id)ping;
 - (id)relList;
+- (void)setDownload:(id)arg1;
 - (void)setPing:(id)arg1;
 
 @end

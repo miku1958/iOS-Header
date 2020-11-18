@@ -8,42 +8,59 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOBusinessOptions : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_attributeKeys;
-    int _maxBusinessResults;
     NSMutableArray *_photoOptions;
+    int _maxBusinessResults;
     BOOL _includeBusinessHours;
     BOOL _includeCenter;
     struct {
-        unsigned int maxBusinessResults:1;
-        unsigned int includeBusinessHours:1;
-        unsigned int includeCenter:1;
-    } _has;
+        unsigned int has_maxBusinessResults:1;
+        unsigned int has_includeBusinessHours:1;
+        unsigned int has_includeCenter:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_attributeKeys:1;
+        unsigned int read_photoOptions:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_attributeKeys:1;
+        unsigned int wrote_photoOptions:1;
+        unsigned int wrote_maxBusinessResults:1;
+        unsigned int wrote_includeBusinessHours:1;
+        unsigned int wrote_includeCenter:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *attributeKeys; // @synthesize attributeKeys=_attributeKeys;
+@property (strong, nonatomic) NSMutableArray *attributeKeys;
 @property (nonatomic) BOOL hasIncludeBusinessHours;
 @property (nonatomic) BOOL hasIncludeCenter;
 @property (nonatomic) BOOL hasMaxBusinessResults;
-@property (nonatomic) BOOL includeBusinessHours; // @synthesize includeBusinessHours=_includeBusinessHours;
-@property (nonatomic) BOOL includeCenter; // @synthesize includeCenter=_includeCenter;
-@property (nonatomic) int maxBusinessResults; // @synthesize maxBusinessResults=_maxBusinessResults;
-@property (strong, nonatomic) NSMutableArray *photoOptions; // @synthesize photoOptions=_photoOptions;
+@property (nonatomic) BOOL includeBusinessHours;
+@property (nonatomic) BOOL includeCenter;
+@property (nonatomic) int maxBusinessResults;
+@property (strong, nonatomic) NSMutableArray *photoOptions;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)attributeKeyType;
++ (BOOL)isValid:(id)arg1;
 + (Class)photoOptionsType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAttributeKey:(id)arg1;
+- (void)_addNoFlagsPhotoOptions:(id)arg1;
+- (void)_readAttributeKeys;
+- (void)_readPhotoOptions;
 - (void)addAttributeKey:(id)arg1;
 - (void)addPhotoOptions:(id)arg1;
 - (id)attributeKeyAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributeKeysCount;
 - (void)clearAttributeKeys;
 - (void)clearPhotoOptions;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -53,6 +70,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)photoOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoOptionsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

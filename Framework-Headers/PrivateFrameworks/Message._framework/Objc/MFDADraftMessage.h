@@ -15,13 +15,13 @@
     NSString *_bodyData;
 }
 
+- (void).cxx_destruct;
 - (id)bcc;
 - (id)body;
 - (int)bodyType;
 - (id)cc;
 - (id)clientID;
 - (id)date;
-- (void)dealloc;
 - (id)from;
 - (id)initWithMailMessage:(id)arg1 clientID:(unsigned long long)arg2;
 - (id)messageIDHeader;

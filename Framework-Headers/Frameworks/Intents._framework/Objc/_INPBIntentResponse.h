@@ -21,12 +21,14 @@
     } _has;
     BOOL _requiresAuthentication;
     BOOL _requiresProtectedData;
+    BOOL __encodeLegacyGloryData;
     int _type;
     _INPBIntentResponsePayloadFailure *_payloadFailure;
     _INPBIntentResponsePayloadSuccess *_payloadSuccess;
     _INPBUserActivity *_userActivity;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPayloadFailure;
@@ -44,10 +46,13 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) _INPBUserActivity *userActivity; // @synthesize userActivity=_userActivity;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;

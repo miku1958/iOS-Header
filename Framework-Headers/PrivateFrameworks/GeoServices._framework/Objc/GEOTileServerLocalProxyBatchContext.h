@@ -17,12 +17,14 @@ __attribute__((visibility("hidden")))
     GEOTileKeyList *_pendingNetworkList;
     GEOTileKeyList *_cacheMissNoDataList;
     GEOTileKeyList *_cacheMissStaleDataList;
+    GEOTileKeyList *_cacheMissStaleUnusableDataList;
     unsigned char _loadReason;
     GEOTileRequester *_tileRequester;
 }
 
 @property (strong, nonatomic) GEOTileKeyList *cacheMissNoDataList; // @synthesize cacheMissNoDataList=_cacheMissNoDataList;
 @property (strong, nonatomic) GEOTileKeyList *cacheMissStaleDataList; // @synthesize cacheMissStaleDataList=_cacheMissStaleDataList;
+@property (strong, nonatomic) GEOTileKeyList *cacheMissStaleUnusableDataList; // @synthesize cacheMissStaleUnusableDataList=_cacheMissStaleUnusableDataList;
 @property (strong, nonatomic) GEOTileKeyList *fullList; // @synthesize fullList=_fullList;
 @property (strong, nonatomic) GEOTileKeyList *interestList; // @synthesize interestList=_interestList;
 @property (nonatomic) unsigned char loadReason; // @synthesize loadReason=_loadReason;

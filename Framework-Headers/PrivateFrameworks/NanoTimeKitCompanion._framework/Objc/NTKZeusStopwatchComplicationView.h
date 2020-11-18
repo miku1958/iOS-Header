@@ -8,12 +8,13 @@
 
 #import <NanoTimeKitCompanion/NTKStopwatchComplicationDisplay-Protocol.h>
 
-@class NSString, UILabel;
+@class NSString, NTKColoringLabel;
 @protocol NTKComplicationDisplayObserver;
 
 @interface NTKZeusStopwatchComplicationView : NTKZeusFramedComplicationView <NTKStopwatchComplicationDisplay>
 {
-    UILabel *_label;
+    NTKColoringLabel *_label;
+    long long _stopwatchState;
 }
 
 @property (nonatomic) BOOL canUseCurvedText;
@@ -26,12 +27,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_createLabel;
 - (void)applyPalette:(id)arg1;
 - (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (struct CGRect)contentFrame;
 - (id)init;
 - (void)layoutSubviews;
-- (void)setTime:(double)arg1;
+- (void)setStopwatchState:(long long)arg1 elapsedTime:(double)arg2 shouldPauseTextCountdown:(BOOL)arg3 timeTravelDate:(id)arg4;
 
 @end
 

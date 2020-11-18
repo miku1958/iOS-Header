@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSURL *URL;
 @property (copy, nonatomic) NSArray *URLs;
+@property (readonly, nonatomic) long long _changeCountIgnoringPinningActivity;
 @property (readonly, copy, nonatomic) NSArray *availableTypes;
 @property (readonly, nonatomic) long long changeCount;
 @property (copy, nonatomic) UIColor *color;
@@ -33,13 +34,17 @@
 @property (copy, nonatomic) NSString *string;
 @property (copy, nonatomic) NSArray *strings;
 
++ (void)_clearPinnedItemProvidersForPasteboardNamed:(id)arg1;
 + (id)_pasteboardWithName:(id)arg1 create:(BOOL)arg2;
 + (id)_pasteboardWithUniqueName;
++ (void)_pinItemProviders:(id)arg1 forPasteboardNamed:(id)arg2 withExpirationDate:(id)arg3;
 + (id)generalPasteboard;
 + (id)pasteboardWithName:(id)arg1 create:(BOOL)arg2;
 + (id)pasteboardWithUniqueName;
 + (void)removePasteboardWithName:(id)arg1;
+- (void)_clearPinnedItemProviders;
 - (BOOL)_hasStrings;
+- (void)_pinItemProviders:(id)arg1 expirationDate:(id)arg2;
 - (void)addItems:(id)arg1;
 - (BOOL)canInstantiateObjectsOfClass:(Class)arg1;
 - (BOOL)containsPasteboardTypes:(id)arg1;

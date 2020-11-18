@@ -30,10 +30,12 @@
 
 - (void).cxx_destruct;
 - (void)_setup;
+- (void)_shutdown;
 - (id)initWithMachServiceName:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)logClients;
 - (void)setup;
+- (void)shutdown;
 
 @end
 

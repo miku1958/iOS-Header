@@ -4,6 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol TSDTextSelection
+#import <TSReading/NSObject-Protocol.h>
+
+@protocol TSDTextSelection <NSObject>
+
+@property (readonly, nonatomic) BOOL isAtEndOfLine;
+@property (readonly, nonatomic) struct _NSRange range;
+
 @end
 

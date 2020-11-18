@@ -10,14 +10,14 @@
 #import <PhotosUICore/PLCloudFeedEntriesObserver-Protocol.h>
 #import <PhotosUICore/PLPhotoLibraryShouldReloadObserver-Protocol.h>
 
-@class NSArray, NSMutableArray, NSOrderedSet, PLPhotoLibrary;
+@class NSArray, NSMutableArray, NSOrderedSet, PHPhotoLibrary;
 @protocol PXFeedRecentsManagerDelegate;
 
 @interface PXFeedRecentsManager : NSObject <PLCloudFeedEntriesObserver, PLAssetChangeObserver, PLPhotoLibraryShouldReloadObserver>
 {
     NSMutableArray *_pendingFeedEntriesChangeNotifications;
     NSMutableArray *_pendingAssetsChangeNotifications;
-    PLPhotoLibrary *_photoLibrary;
+    PHPhotoLibrary *_photoLibrary;
     long long _count;
     id<PXFeedRecentsManagerDelegate> _delegate;
     NSOrderedSet *__cachedRecentAssets;
@@ -28,7 +28,7 @@
 @property (copy, nonatomic, setter=_setCachedRecentPHAssets:) NSArray *_cachedRecentPHAssets; // @synthesize _cachedRecentPHAssets=__cachedRecentPHAssets;
 @property (nonatomic, setter=_setCount:) long long count; // @synthesize count=_count;
 @property (weak, nonatomic) id<PXFeedRecentsManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic, setter=_setPhotoLibrary:) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property (strong, nonatomic, setter=_setPhotoLibrary:) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, copy, nonatomic) NSOrderedSet *recentAssets;
 @property (readonly, copy, nonatomic) NSArray *recentPHAssets;
 

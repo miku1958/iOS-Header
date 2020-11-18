@@ -25,7 +25,7 @@
 + (id)transportButtonWithType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_updateImageWithType:(long long)arg1;
-- (id)imageNameForType:(long long)arg1;
+- (void)_updateTouchInsetsToFillContainerWithSize:(struct CGSize)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;

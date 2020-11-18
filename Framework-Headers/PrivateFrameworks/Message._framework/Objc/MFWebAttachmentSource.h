@@ -16,6 +16,7 @@
 
 + (id)_setOfAllSources;
 + (id)allSources;
+- (void).cxx_destruct;
 - (id)attachmentForURL:(id)arg1;
 - (void)dealloc;
 - (id)description;

@@ -12,5 +12,7 @@
 
 @optional
 - (void)activityViewController:(_SFActivityViewController *)arg1 prepareActivity:(UIActivity *)arg2 completion:(void (^)(void))arg3;
+- (BOOL)activityViewControllerSupportsDownloads:(_SFActivityViewController *)arg1;
+- (unsigned long long)browserPersonaForActivityViewController:(_SFActivityViewController *)arg1;
 @end
 

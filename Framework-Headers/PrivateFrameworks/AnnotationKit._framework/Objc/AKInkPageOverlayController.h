@@ -10,14 +10,16 @@
 #import <AnnotationKit/AKShapeDetectionControllerDelegate-Protocol.h>
 
 @class AKInkOverlayView, AKPageController, AKShapeDetectionController, NSString;
+@protocol PKRulerHostingDelegate;
 
 @interface AKInkPageOverlayController : NSObject <AKInkOverlayViewDelegate, AKShapeDetectionControllerDelegate>
 {
     BOOL _ignoreAnnotationAndSelectionKVO;
     BOOL _onlyPencilDraws;
-    AKPageController *_pageController;
     AKInkOverlayView *_inkOverlayView;
+    AKPageController *_pageController;
     AKShapeDetectionController *_shapeDetectionController;
+    id<PKRulerHostingDelegate> _rulerHostingDelegate;
     CDUnknownBlockType _delayedShapeDetectionBlock;
     double _lastStrokeEndTime;
 }
@@ -31,6 +33,7 @@
 @property double lastStrokeEndTime; // @synthesize lastStrokeEndTime=_lastStrokeEndTime;
 @property BOOL onlyPencilDraws; // @synthesize onlyPencilDraws=_onlyPencilDraws;
 @property (weak) AKPageController *pageController; // @synthesize pageController=_pageController;
+@property (weak, nonatomic) id<PKRulerHostingDelegate> rulerHostingDelegate; // @synthesize rulerHostingDelegate=_rulerHostingDelegate;
 @property (strong) AKShapeDetectionController *shapeDetectionController; // @synthesize shapeDetectionController=_shapeDetectionController;
 @property (readonly) Class superclass;
 
@@ -49,7 +52,9 @@
 - (void)_toolStatusUpdated:(id)arg1;
 - (void)_updateAllowedTouchTypesAllEnabled:(BOOL)arg1 pencilEnabled:(BOOL)arg2;
 - (void)_updateGestureDependencyPriority;
+- (void)annotationEditingDidEnd;
 - (void)beginIgnoringAnnotationSelectionObservation:(id)arg1;
+- (void)didToggleRuler;
 - (void)endIgnoringAnnotationSelectionObservation:(id)arg1;
 - (id)initWithPageController:(id)arg1;
 - (void)inputView:(id)arg1 didCollectDrawingForAnalysis:(id)arg2;
@@ -58,6 +63,7 @@
 - (BOOL)isIgnoringAnnotationAndSelectionKVO:(id)arg1;
 - (BOOL)isWaitingToCoalesceStrokes;
 - (id)overlayView:(id)arg1;
+- (struct CGSize)scaleFromDrawingInCanvasView:(id)arg1 toPageControllerModelSpace:(id)arg2;
 - (void)setup;
 - (BOOL)shapeDetectionController:(id)arg1 shouldSelectCandidateAnnotation:(id)arg2;
 - (struct CGRect)shapeDetectionControllerPositioningRectForCandidatePicker:(id)arg1;

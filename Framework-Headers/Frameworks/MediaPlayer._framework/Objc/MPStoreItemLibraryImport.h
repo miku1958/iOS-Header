@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class MPModelObject, NSArray;
 
 @interface MPStoreItemLibraryImport : NSObject
 {
     BOOL _addToCloudLibrary;
     NSArray *_importElements;
+    MPModelObject *_referralObject;
 }
 
 @property (readonly, nonatomic) BOOL addToCloudLibrary; // @synthesize addToCloudLibrary=_addToCloudLibrary;
 @property (readonly, nonatomic) NSArray *importElements; // @synthesize importElements=_importElements;
+@property (readonly, nonatomic) MPModelObject *referralObject; // @synthesize referralObject=_referralObject;
 
 - (void).cxx_destruct;
+- (id)initWithImportElements:(id)arg1 referralObject:(id)arg2 usingCloudLibraryDestination:(BOOL)arg3;
 - (id)initWithImportElements:(id)arg1 usingCloudLibraryDestination:(BOOL)arg2;
 
 @end

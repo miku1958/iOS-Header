@@ -47,6 +47,13 @@
 @property (readonly, copy, nonatomic) NSDictionary *userSettings;
 @property (readonly, copy, nonatomic) NSDictionary *userUserSettings;
 
++ (id)_addRestrictionPayloadKeysDictionary:(id)arg1 toRestrictionPayloadKeysDictionary:(id)arg2 forRestrictionKey:(id)arg3;
++ (id)_filterRestrictionDictionary:(id)arg1 removingPayloadKeysInRestrictionPayloadKeysDictionary:(id)arg2 forRestrictionKey:(id)arg3;
++ (id)_filterRestrictionPayloadKeysDictionary:(id)arg1 removingPayloadKeysInRestrictionPayloadKeysDictionary:(id)arg2 forRestrictionKey:(id)arg3;
++ (id)_lockedDownRestrictionPayloadKeysWithPayloadKeysDictionary:(id)arg1 forRestrictionKey:(id)arg2;
++ (id)_payloadKeysDictionaryAfterAddingFeature:(id)arg1 toRestrictionPayloadKeysDictionary:(id)arg2 forRestrictionKey:(id)arg3;
++ (id)addRestrictionPayloadKeysDictionary:(id)arg1 toRestrictionPayloadKeysDictionary:(id)arg2;
++ (id)allowedGrandfatheredRestrictionPayloadKeysDictionary;
 + (id)allowedImportFromAppBundleIDsWithOriginalAppBundleIDs:(id)arg1 managedAppBundleIDs:(id)arg2 localAppBundleID:(id)arg3 localAccountIsManaged:(BOOL)arg4 mayOpenFromUnmanagedToManaged:(BOOL)arg5 mayOpenFromManagedToUnmanaged:(BOOL)arg6 isAppBundleIDExemptBlock:(CDUnknownBlockType)arg7 isAppBundleIDAccountBasedBlock:(CDUnknownBlockType)arg8;
 + (id)allowedKeyboardBundleIDsAfterApplyingFilterToBundleIDs:(id)arg1 managedAppBundleIDs:(id)arg2 hostAppIsManaged:(BOOL)arg3 mayOpenFromUnmanagedToManaged:(BOOL)arg4 mayOpenFromManagedToUnmanaged:(BOOL)arg5;
 + (id)allowedOpenInAppBundleIDsWithOriginalAppBundleIDs:(id)arg1 managedAppBundleIDs:(id)arg2 localAppBundleID:(id)arg3 localAccountIsManaged:(BOOL)arg4 mayOpenFromUnmanagedToManaged:(BOOL)arg5 mayOpenFromManagedToUnmanaged:(BOOL)arg6 isAppBundleIDExemptBlock:(CDUnknownBlockType)arg7 isAppBundleIDAccountBasedBlock:(CDUnknownBlockType)arg8;
@@ -66,12 +73,17 @@
 + (id)defaultSettings;
 + (id)defaultUnionValuesForSetting:(id)arg1;
 + (id)defaultValueForSetting:(id)arg1;
++ (id)effectiveGrandfatheredRestrictionPayloadKeysDictionary;
 + (id)explicitlyRestrictedAppsBySetting;
 + (id)explicitlyRestrictedEphemeralMultiUserApps;
++ (id)filterGrandfatheredRestrictionsIfNeededFromRestrictions:(id)arg1;
 + (id)filterRestrictionDictionary:(id)arg1 acceptedKeysDict:(id)arg2;
++ (id)filterRestrictionDictionary:(id)arg1 removingPayloadKeysInRestrictionPayloadKeysDictionary:(id)arg2;
 + (id)filterRestrictionDictionary:(id)arg1 toIncludeOnlyRestrictionsThatDifferFromRestrictions:(id)arg2;
 + (id)filterRestrictionDictionaryForPublicUse:(id)arg1;
++ (id)filterRestrictionPayloadKeysDictionary:(id)arg1 removingPayloadKeysInRestrictionPayloadKeysDictionary:(id)arg2;
 + (id)filterUserSettingsForPublicUse:(id)arg1;
++ (id)grandfatheredRestrictionPayloadKeysDictionary;
 + (BOOL)intersectedValuesForFeature:(id)arg1 changedBetweenOldRestrictions:(id)arg2 andNewRestrictions:(id)arg3;
 + (id)intersectedValuesForFeature:(id)arg1 withRestrictionsDictionary:(id)arg2;
 + (BOOL)intersectedValuesSetting:(id)arg1 valueChangedBetweenOldSettings:(id)arg2 andNewSettings:(id)arg3;
@@ -93,10 +105,12 @@
 + (BOOL)restrictedBool:(id)arg1 changedBetweenOldRestrictions:(id)arg2 andNewRestrictions:(id)arg3;
 + (int)restrictedBoolForFeature:(id)arg1 withRestrictionsDictionary:(id)arg2;
 + (BOOL)restrictedValue:(id)arg1 changedBetweenOldRestrictions:(id)arg2 andNewRestrictions:(id)arg3;
++ (id)restrictionKeys;
 + (id)restrictionsAfterApplyingRestrictionsDictionary:(id)arg1 toRestrictionsDictionary:(id)arg2 outChangeDetected:(BOOL *)arg3 outError:(id *)arg4;
 + (id)restrictionsWithCurrentRestrictions:(id)arg1 defaultRestrictions:(id)arg2 profileRestrictions:(id)arg3 clientRestrictions:(id)arg4 outRestrictionsChanged:(BOOL *)arg5 outError:(id *)arg6;
 + (id)restrictionsWithCurrentRestrictions:(id)arg1 defaultRestrictions:(id)arg2 systemProfileRestrictions:(id)arg3 userProfileRestrictions:(id)arg4 systemClientRestrictions:(id)arg5 userClientRestrictions:(id)arg6 outRestrictionsChanged:(BOOL *)arg7 outError:(id *)arg8;
 + (id)sharedManager;
++ (id)systemMetadataValueForKey:(id)arg1;
 + (BOOL)unionValuesForFeature:(id)arg1 changedBetweenOldRestrictions:(id)arg2 andNewRestrictions:(id)arg3;
 + (id)unionValuesForFeature:(id)arg1 withRestrictionsDictionary:(id)arg2;
 + (BOOL)unionValuesSetting:(id)arg1 valueChangedBetweenOldSettings:(id)arg2 andNewSettings:(id)arg3;

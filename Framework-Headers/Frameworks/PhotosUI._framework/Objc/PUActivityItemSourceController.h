@@ -4,54 +4,92 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUICore/PXObservable.h>
 
+#import <PhotosUI/PUCMMActivityItemSourceDelegate-Protocol.h>
+#import <PhotosUI/PXActivityItemSourceController-Protocol.h>
 #import <PhotosUI/PXCMMActionPerformerDelegate-Protocol.h>
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@class NSArray, NSError, NSMutableOrderedSet, NSOrderedSet, NSString, NSURL, PUActivityViewController;
+@class NSArray, NSMutableArray, NSMutableOrderedSet, NSObject, NSOrderedSet, NSString, NSURL, PUActivityViewController, PUCMMActivityItemSource;
+@protocol OS_dispatch_queue, PUActivityItemSourceControllerDelegate;
 
-@interface PUActivityItemSourceController : NSObject <PXCMMActionPerformerDelegate>
+@interface PUActivityItemSourceController : PXObservable <PUCMMActivityItemSourceDelegate, PXCMMActionPerformerDelegate, PXChangeObserver, PXActivityItemSourceController>
 {
     NSMutableOrderedSet *_assetItems;
     NSMutableOrderedSet *_assetItemSources;
-    int _taskId;
+    NSArray *_activeItemSources;
+    _Atomic int _taskId;
+    unsigned long long _cloudSharedAssetCount;
+    BOOL _shouldUseMomentShareLinkInMessagesIfThresholdMet;
+    BOOL _shouldExcludeLivenessInAllItemSources;
+    BOOL _shouldExcludeLocationInAllItemSourcess;
+    BOOL _shouldShareAsOriginals;
+    BOOL _momentSharePublishAttempted;
+    unsigned long long _preferredPreparationType;
+    id<PUActivityItemSourceControllerDelegate> _delegate;
+    unsigned long long _state;
     PUActivityViewController *_activityViewController;
     CDUnknownBlockType _progressHandler;
     NSURL *_publishedURL;
-    NSArray *__activeItemSources;
-    NSError *__error;
+    PUCMMActivityItemSource *_cmmActivityItemSource;
+    NSMutableArray *_errors;
     NSString *_activeActivityType;
+    unsigned long long _numSourcesDownloading;
+    NSObject<OS_dispatch_queue> *_externalIsolation;
 }
 
-@property (strong, setter=_setActiveItemSources:) NSArray *_activeItemSources; // @synthesize _activeItemSources=__activeItemSources;
-@property (strong, setter=_setError:) NSError *_error; // @synthesize _error=__error;
 @property (strong) NSString *activeActivityType; // @synthesize activeActivityType=_activeActivityType;
+@property (copy) NSArray *activeItemSources;
+@property (readonly, copy, nonatomic) NSArray *activityItems;
 @property (weak, nonatomic) PUActivityViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
 @property (readonly, copy, nonatomic) NSOrderedSet *assetItemSources;
 @property (copy, nonatomic) NSOrderedSet *assetItems; // @synthesize assetItems=_assetItems;
 @property (readonly, copy, nonatomic) NSOrderedSet *assets;
+@property (readonly, nonatomic) PUCMMActivityItemSource *cmmActivityItemSource; // @synthesize cmmActivityItemSource=_cmmActivityItemSource;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PUActivityItemSourceControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong) NSMutableArray *errors; // @synthesize errors=_errors;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *externalIsolation; // @synthesize externalIsolation=_externalIsolation;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL itemSourcesSupportMomentShareLinkCreation;
+@property (readonly, nonatomic) BOOL momentSharePublishAttempted; // @synthesize momentSharePublishAttempted=_momentSharePublishAttempted;
+@property (nonatomic) unsigned long long numSourcesDownloading; // @synthesize numSourcesDownloading=_numSourcesDownloading;
+@property (nonatomic) unsigned long long preferredPreparationType; // @synthesize preferredPreparationType=_preferredPreparationType;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (strong, nonatomic, setter=_setPublishedURL:) NSURL *publishedURL; // @synthesize publishedURL=_publishedURL;
+@property (nonatomic) BOOL shouldExcludeLivenessInAllItemSources; // @synthesize shouldExcludeLivenessInAllItemSources=_shouldExcludeLivenessInAllItemSources;
+@property (nonatomic) BOOL shouldExcludeLocationInAllItemSourcess; // @synthesize shouldExcludeLocationInAllItemSourcess=_shouldExcludeLocationInAllItemSourcess;
+@property (nonatomic) BOOL shouldShareAsOriginals; // @synthesize shouldShareAsOriginals=_shouldShareAsOriginals;
+@property (nonatomic) BOOL shouldUseMomentShareLinkInMessagesIfThresholdMet; // @synthesize shouldUseMomentShareLinkInMessagesIfThresholdMet=_shouldUseMomentShareLinkInMessagesIfThresholdMet;
+@property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cleanupAfterPerform;
 - (void)_didPublishMomentShareLinkToURL:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_prepareForPerformWithActivityType:(id)arg1 error:(id *)arg2;
+- (void)_prepareIndividualItemSourcesForActivity:(id)arg1;
+- (void)_prepareMomentShareLinkFromIndividualItemSourcesForActivity:(id)arg1;
 - (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
 - (id)activityItemSourceForAsset:(id)arg1;
 - (void)addAssetItem:(id)arg1;
 - (void)cancel;
-- (long long)countOfImagesToShare;
-- (long long)countOfLoopsToShare;
-- (long long)countOfVideosToShare;
+- (void)cmmActivityItemSource:(id)arg1 didFinishPreparationForActivityType:(id)arg2 preparationType:(unsigned long long)arg3 withItems:(id)arg4 didCancel:(BOOL)arg5 error:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)cmmActivityItemSource:(id)arg1 willBeginPreparationWithActivityType:(id)arg2 preparationType:(unsigned long long)arg3;
+- (void)configureItemSourcesForActivityIfNeeded:(id)arg1 forcePreparationAsMomentShareLink:(BOOL)arg2;
+- (id)init;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)publishLinkForActivityType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAssetItem:(id)arg1;
+- (struct PXAssetMediaTypeCount)requestAssetsMediaTypeCount;
 - (void)runExplicitly:(BOOL)arg1 withActivityType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setState:(unsigned long long)arg1;
+- (CDStruct_2a4d9400)synthesizedSharingPreferencesForAssetItem:(id)arg1;
+- (void)updateSharingPreferencesInItemSources;
+- (void)updateState;
 
 @end
 

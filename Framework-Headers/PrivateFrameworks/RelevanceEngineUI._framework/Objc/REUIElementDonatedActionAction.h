@@ -36,10 +36,12 @@
 - (id)fullsizeAppIcon;
 - (id)initWithProperties:(id)arg1;
 - (void)siriActionsPerformer:(id)arg1 didFailWithError:(id)arg2;
+- (BOOL)siriActionsPerformer:(id)arg1 wantsToDismissViewController:(id)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)siriActionsPerformer:(id)arg1 wantsToPresentViewController:(id)arg2;
 - (void)siriActionsPerformerDidSucceed:(id)arg1;
 - (id)siriActionsPerformerWantsAlertBackgroundImage:(id)arg1;
 - (id)siriActionsPerformerWantsBackgroundViewToBlur:(id)arg1;
+- (void)siriActionsPerformerWantsToSuppressDismissal:(id)arg1;
 
 @end
 

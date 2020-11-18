@@ -38,10 +38,9 @@
 @property (strong, nonatomic) UILabel *wristSettingsLabel; // @synthesize wristSettingsLabel=_wristSettingsLabel;
 
 - (void).cxx_destruct;
-- (double)_assetBottomToTitleFirstBaseline;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
-- (double)_bodyTextLastBaselineToRecordingStepFirstBaseline;
+- (id)_recordingStepFont;
 - (void)_setUpElectrocardiogramQuery;
 - (void)_stepForwardWithElectrocardiogramRecorded:(BOOL)arg1;
 - (void)_stopElectrocardiogramQuery;
@@ -49,7 +48,6 @@
 - (id)_titleFont;
 - (id)_titleFontTextStyle;
 - (id)_titleForOnboarding:(BOOL)arg1;
-- (double)_titleLastBaselineToBodyFirstBaseline;
 - (void)heartRhythmAvailabilityDidUpdate;
 - (id)initForOnboarding:(BOOL)arg1;
 - (void)setUpConstraints;

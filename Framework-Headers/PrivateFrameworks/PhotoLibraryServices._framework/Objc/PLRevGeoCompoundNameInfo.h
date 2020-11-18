@@ -6,30 +6,35 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotoLibraryServices/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSString;
 
-@interface PLRevGeoCompoundNameInfo : NSObject
+@interface PLRevGeoCompoundNameInfo : NSObject <NSSecureCoding>
 {
     BOOL _isContinuation;
     BOOL _suffixWhenPrefixOnly;
     NSString *_namePrefix;
-    NSArray *_sortedNames;
     NSString *_nameSuffix;
+    NSArray *_sortedNames;
 }
 
-@property (nonatomic) BOOL isContinuation; // @synthesize isContinuation=_isContinuation;
-@property (readonly, copy, nonatomic) NSArray *localizedSortedNames;
-@property (readonly, copy, nonatomic) NSString *localizedTitleForNameInfo;
-@property (copy, nonatomic) NSString *namePrefix; // @synthesize namePrefix=_namePrefix;
-@property (copy, nonatomic) NSString *nameSuffix; // @synthesize nameSuffix=_nameSuffix;
-@property (copy, nonatomic) NSArray *sortedNames; // @synthesize sortedNames=_sortedNames;
-@property (nonatomic) BOOL suffixWhenPrefixOnly; // @synthesize suffixWhenPrefixOnly=_suffixWhenPrefixOnly;
+@property (readonly, nonatomic) BOOL isContinuation; // @synthesize isContinuation=_isContinuation;
+@property (readonly, copy, nonatomic) NSString *namePrefix; // @synthesize namePrefix=_namePrefix;
+@property (readonly, copy, nonatomic) NSString *nameSuffix; // @synthesize nameSuffix=_nameSuffix;
+@property (readonly, copy, nonatomic) NSArray *sortedNames; // @synthesize sortedNames=_sortedNames;
+@property (readonly, nonatomic) BOOL suffixWhenPrefixOnly; // @synthesize suffixWhenPrefixOnly=_suffixWhenPrefixOnly;
 
 + (id)_localizedNameForName:(id)arg1;
-- (void)dealloc;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)description;
-- (id)dictionaryForInfo;
-- (id)initWithDictionary:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNamePrefix:(id)arg1 nameSuffix:(id)arg2 sortedNames:(id)arg3 isContinuation:(BOOL)arg4 suffixWhenPrefixOnly:(BOOL)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (id)localizedSortedNames;
+- (id)localizedTitleForNameInfo;
 
 @end
 

@@ -11,10 +11,12 @@
 @interface CEMSystemBasicWebContentFilterDeclaration_SiteWhiteListItem : CEMPayloadBase
 {
     NSString *_payloadAddress;
+    NSString *_payloadBookmarkPath;
     NSString *_payloadPageTitle;
 }
 
 @property (copy, nonatomic) NSString *payloadAddress; // @synthesize payloadAddress=_payloadAddress;
+@property (copy, nonatomic) NSString *payloadBookmarkPath; // @synthesize payloadBookmarkPath=_payloadBookmarkPath;
 @property (copy, nonatomic) NSString *payloadPageTitle; // @synthesize payloadPageTitle=_payloadPageTitle;
 
 + (id)allowedPayloadKeys;

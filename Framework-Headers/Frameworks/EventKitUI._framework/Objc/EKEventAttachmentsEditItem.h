@@ -8,13 +8,16 @@
 
 #import <EventKitUI/EKEventAttachmentCellControllerDelegate-Protocol.h>
 #import <EventKitUI/EKEventAttachmentEditViewControllerDelegate-Protocol.h>
+#import <EventKitUI/UIDocumentPickerDelegate-Protocol.h>
+#import <EventKitUI/UIDropInteractionDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class EKUITableViewCell, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttachmentsEditItem : EKEventEditItem <EKEventAttachmentCellControllerDelegate, EKEventAttachmentEditViewControllerDelegate>
+@interface EKEventAttachmentsEditItem : EKEventEditItem <UIDocumentPickerDelegate, UIDropInteractionDelegate, EKEventAttachmentCellControllerDelegate, EKEventAttachmentEditViewControllerDelegate>
 {
     NSArray *_cellControllers;
+    EKUITableViewCell *_addAttachmentCell;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,19 +26,36 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_addAttachmentCell;
 - (void)_cleanUpCellControllers;
+- (void)_loadAndAddDataAttachmentFromItem:(id)arg1;
 - (BOOL)_shouldCondenseIntoSingleItem;
+- (BOOL)_shouldShowAddAttachmentCell;
+- (void)_showAddAttachmentViewController;
+- (void)attachmentEditViewController:(id)arg1 attachmentDidChange:(long long)arg2;
 - (BOOL)canBeConfiguredForCalendarConstraints:(id)arg1;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
+- (void)documentPickerWasCancelled:(id)arg1;
+- (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
+- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
+- (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
+- (void)dropInteraction:(id)arg1 sessionDidEnter:(id)arg2;
+- (void)dropInteraction:(id)arg1 sessionDidExit:(id)arg2;
+- (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (void)editor:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
+- (id)footerTitle;
+- (BOOL)forceTableReloadOnSave;
 - (unsigned long long)numberOfSubitems;
 - (id)owningEventForAttachmentCellController:(id)arg1;
 - (id)owningEventForAttachmentEditViewController:(id)arg1;
 - (id)parentViewControllerForAttachmentCellController:(id)arg1;
+- (void)prepareForReload;
 - (void)refreshFromCalendarItemAndStore;
+- (id)trailingSwipeActionsConfigurationForRowAtIndex:(long long)arg1;
 - (BOOL)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 
 @end

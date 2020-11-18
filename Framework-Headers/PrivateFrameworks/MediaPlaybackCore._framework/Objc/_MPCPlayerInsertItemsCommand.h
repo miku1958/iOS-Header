@@ -12,6 +12,7 @@
 
 @interface _MPCPlayerInsertItemsCommand : _MPCPlayerCommand <MPCPlayerInsertItemsCommand>
 {
+    BOOL _supportsCreateStation;
     NSArray *_devices;
     NSSet *_supportedInsertionPositions;
     NSSet *_supportedQueueTypes;
@@ -26,8 +27,10 @@
 @property (strong, nonatomic) NSSet *supportedCustomDataQueueIdentifiers; // @synthesize supportedCustomDataQueueIdentifiers=_supportedCustomDataQueueIdentifiers;
 @property (strong, nonatomic) NSSet *supportedInsertionPositions; // @synthesize supportedInsertionPositions=_supportedInsertionPositions;
 @property (strong, nonatomic) NSSet *supportedQueueTypes; // @synthesize supportedQueueTypes=_supportedQueueTypes;
+@property (nonatomic) BOOL supportsCreateStation; // @synthesize supportsCreateStation=_supportsCreateStation;
 
 - (void).cxx_destruct;
+- (id)_createRadioStationCommandRequest;
 - (id)_insertWithOptions:(id)arg1;
 - (BOOL)_isSupportedPlaybackIntent:(id)arg1 forRemotePlayer:(BOOL)arg2 atInsertionPosition:(int)arg3;
 - (id)insertAfterPlayingItemWithPlaybackIntent:(id)arg1;

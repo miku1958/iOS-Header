@@ -91,6 +91,7 @@
 - (void)_invalidateButKeepAllInfo;
 - (void)_invalidateButKeepDelegateInfo;
 - (id)_layoutAttributesForItemsInRect:(struct CGRect)arg1;
+- (int)_layoutAxis;
 - (void)_resetCachedItems;
 - (BOOL)_roundsToScreenScale;
 - (id)_rowAlignmentOptions;

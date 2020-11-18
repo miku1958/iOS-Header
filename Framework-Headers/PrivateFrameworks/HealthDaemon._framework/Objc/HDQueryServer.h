@@ -11,53 +11,57 @@
 #import <HealthDaemon/HDTaskServer-Protocol.h>
 #import <HealthDaemon/HKQueryServerInterface-Protocol.h>
 
-@class HDClientAuthorizationOracle, HDDataCollectionAssertion, HDProfile, HDXPCClient, HKObjectType, HKQuantityType, HKQueryServerConfiguration, HKSampleType, NSArray, NSDictionary, NSString, NSUUID, _HKFilter;
+@class HDDaemonTransaction, HDDataCollectionAssertion, HDHealthStoreClient, HDProfile, HDQueryServerClientState, HKObjectType, HKQuantityType, HKQueryServerConfiguration, HKSampleType, NSArray, NSDictionary, NSSet, NSString, NSUUID, _HKFilter;
 @protocol HDQueryServerDelegate, HKQueryClientInterface><NSXPCProxyCreating, OS_dispatch_queue;
 
-@interface HDQueryServer : NSObject <HDTaskServer, HDDatabaseProtectedDataObserver, HKQueryServerInterface, HDDataObserver>
+@interface HDQueryServer : NSObject <HDDatabaseProtectedDataObserver, HKQueryServerInterface, HDDataObserver, HDTaskServer>
 {
     NSDictionary *_baseDataEntityEncodingOptions;
     HKQueryServerConfiguration *_configuration;
     CDUnknownBlockType _queryDidFinishHandler;
     NSArray *_dataObservationAssertions;
     HDDataCollectionAssertion *_dataCollectionAssertion;
+    HDDaemonTransaction *_activationTransaction;
+    HDQueryServerClientState *_clientState;
+    _Atomic int _queryState;
     BOOL _shouldTakeObservationAssertions;
-    BOOL _didEndActivationTransaction;
     BOOL _observingData;
     BOOL _isCollectingData;
-    int _shouldFinish;
-    int _shouldPause;
+    _Atomic BOOL _shouldFinish;
+    _Atomic BOOL _shouldPause;
     NSObject<OS_dispatch_queue> *_unitTestQueryQueue;
     id<HDQueryServerDelegate> _delegate;
     NSUUID *_queryUUID;
-    HDXPCClient *_client;
+    HDHealthStoreClient *_client;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queryQueue;
-    long long _queryState;
     double _collectionInterval;
     _HKFilter *_filter;
     HKObjectType *_objectType;
-    HDClientAuthorizationOracle *_authorizationOracle;
+    long long _dataCount;
     CDUnknownBlockType _unitTest_queryServerSetShouldPauseHandler;
     CDUnknownBlockType _unitTest_queryServerWillChangeStateHandler;
 }
 
-@property (readonly, nonatomic) HDClientAuthorizationOracle *authorizationOracle; // @synthesize authorizationOracle=_authorizationOracle;
-@property (readonly, nonatomic) HDXPCClient *client; // @synthesize client=_client;
+@property (readonly, nonatomic) double activationTime;
+@property (readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property (readonly) BOOL clientHasActiveWorkout;
-@property (readonly) BOOL clientIsInForeground;
 @property (readonly, nonatomic) id<HKQueryClientInterface><NSXPCProxyCreating> clientProxy;
+@property (copy, nonatomic) HDQueryServerClientState *clientState; // @synthesize clientState=_clientState;
 @property (nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
+@property (readonly, copy, nonatomic) HKQueryServerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (nonatomic) long long dataCount; // @synthesize dataCount=_dataCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HDQueryServerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
+@property (readonly, copy, nonatomic) NSSet *objectTypes;
 @property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly, nonatomic) HKQuantityType *quantityType;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queryQueue; // @synthesize queryQueue=_queryQueue;
-@property (readonly, nonatomic) long long queryState; // @synthesize queryState=_queryState;
+@property (readonly) long long queryState;
 @property (readonly, copy, nonatomic) NSUUID *queryUUID; // @synthesize queryUUID=_queryUUID;
 @property (readonly, nonatomic) HKSampleType *sampleType;
 @property (readonly) Class superclass;
@@ -70,16 +74,21 @@
 + (id)requiredEntitlements;
 + (BOOL)supportsAnchorBasedAuthorization;
 + (id)taskIdentifier;
-+ (BOOL)validateConfiguration:(id)arg1 error:(out id *)arg2;
++ (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
-- (id)_activationTransactionString;
-- (id)_collectionObserverState;
-- (void)_currentWorkoutDidChange:(id)arg1;
 - (id)_predicateString;
 - (id)_queryStateString;
+- (void)_queue_activateServerWithClientState:(id)arg1 error:(id)arg2;
 - (void)_queue_beginObservingDataTypes;
 - (void)_queue_closeActivationTransactionIfNecessary;
+- (id)_queue_collectionObserverState;
+- (void)_queue_didChangeStateFromPreviousState:(long long)arg1 state:(long long)arg2;
+- (void)_queue_didDeactivate;
 - (void)_queue_endObservingDataTypes;
+- (void)_queue_logQueryWithDuration:(double)arg1;
+- (double)_queue_logThresholdHardwareFactor;
+- (void)_queue_notifyIfQueryingForHealthRecords;
+- (double)_queue_queryLogThreshold;
 - (id)_queue_sampleTypesForObservation;
 - (void)_queue_setQueryState:(long long)arg1;
 - (void)_queue_setSampleTypeObservationAssertions:(id)arg1;
@@ -94,7 +103,6 @@
 - (void)_queue_transitionToRunning;
 - (void)_queue_transitionToSuspendedState:(long long)arg1;
 - (void)_queue_updateSampleTypeObservationAssertions;
-- (BOOL)_queue_validateConfiguration:(id *)arg1;
 - (id)_sampleTypeToObserveForUpdates;
 - (void)_scheduleStartQuery;
 - (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
@@ -105,32 +113,36 @@
 - (BOOL)_shouldRegisterAsProtectedDataObserver;
 - (BOOL)_shouldStopProcessingQuery;
 - (BOOL)_shouldSuspendQuery;
-- (void)activateServerPaused:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)clientStateChanged;
+- (void)activateServerWithClientState:(id)arg1 error:(id)arg2;
+- (void)clientStateDidChange:(id)arg1;
+- (void)clientStateWillChange:(id)arg1;
 - (void)connectionInvalidated;
+- (id)createDatabaseTransactionContext;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)deactivateServerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (id)exportedInterface;
 - (id)filteredSamplesForClientWithSamples:(id)arg1;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
+- (BOOL)isQueryingForHealthRecordsTypes;
 - (id)newDataEntityEnumerator;
 - (void)onQueue:(CDUnknownBlockType)arg1;
-- (void)pauseServer;
+- (BOOL)prepareToActivateServerWithError:(id *)arg1;
 - (id)readAuthorizationStatusForType:(id)arg1 error:(id *)arg2;
 - (id)remoteInterface;
 - (void)remote_deactivateServer;
 - (void)remote_startQueryWithCompletion:(CDUnknownBlockType)arg1;
-- (void)resumeServer;
 - (CDUnknownBlockType)sampleAuthorizationFilter;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (id)sanitizedSampleForQueryClient:(id)arg1;
 - (void)scheduleDatabaseAccessOnQueueWithBlock:(CDUnknownBlockType)arg1;
+- (void)schedulePause;
 - (void)setQueryDidFinishHandler:(CDUnknownBlockType)arg1;
 - (void)setShouldPause:(BOOL)arg1;
 - (id)taskUUID;
+- (BOOL)validateConfiguration:(id *)arg1;
 
 @end
 

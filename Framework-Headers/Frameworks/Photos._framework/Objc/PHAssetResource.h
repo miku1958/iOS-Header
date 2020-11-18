@@ -6,48 +6,65 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL, PHPhotoLibrary;
+#import <Photos/PHCPLAssetResource-Protocol.h>
 
-@interface PHAssetResource : NSObject
+@class NSDate, NSManagedObjectID, NSString, NSURL, PHPhotoLibrary;
+@protocol PLResourceIdentity;
+
+@interface PHAssetResource : NSObject <PHCPLAssetResource>
 {
-    BOOL _locallyAvailable;
-    BOOL _derivative;
-    long long _resourceType;
-    NSString *_assetLocalIdentifier;
-    NSString *_uniformTypeIdentifier;
-    NSString *_originalFilename;
-    NSURL *_fileURL;
     NSURL *_privateFileURL;
-    CDUnknownBlockType _privateFileLoader;
-    PHPhotoLibrary *_photoLibrary;
     long long _pixelWidth;
     long long _pixelHeight;
     unsigned long long _fileSize;
+    BOOL _locallyAvailable;
+    NSDate *_trashedDate;
+    BOOL _trashed;
+    PHPhotoLibrary *_photoLibrary;
+    CDUnknownBlockType _privateFileLoader;
+    BOOL _current;
+    unsigned int _orientation;
+    long long _type;
+    NSString *_assetLocalIdentifier;
+    NSString *_uniformTypeIdentifier;
+    NSString *_originalFilename;
+    id<PLResourceIdentity> _backingResourceIdentity;
+    NSManagedObjectID *_assetObjectID;
+    unsigned long long _cplResourceType;
 }
 
-@property (copy, nonatomic, setter=_setAssetLocalIdentifier:) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
-@property (readonly, nonatomic, getter=isDerivative) BOOL derivative; // @synthesize derivative=_derivative;
-@property (nonatomic, setter=_setFileSize:) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
-@property (strong, nonatomic, setter=_setFileURL:) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property (readonly, nonatomic, getter=isLibraryAssetResource) BOOL libraryAssetResource;
-@property (nonatomic, getter=isLocallyAvailable, setter=_setIsLocallyAvailable:) BOOL locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;
-@property (copy, nonatomic, setter=_setOriginalFilename:) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
-@property (strong, nonatomic, setter=_setPhotoLibrary:) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
-@property (nonatomic, setter=_setPixelHeight:) long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
-@property (nonatomic, setter=_setPixelWidth:) long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
-@property (copy, nonatomic, setter=_setPrivateFileLoader:) CDUnknownBlockType privateFileLoader; // @synthesize privateFileLoader=_privateFileLoader;
-@property (strong, nonatomic, setter=_setPrivateFileURL:) NSURL *privateFileURL; // @synthesize privateFileURL=_privateFileURL;
-@property (readonly, nonatomic) long long type; // @synthesize type=_resourceType;
-@property (copy, nonatomic, setter=_setUniformTypeIdentifier:) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
+@property (readonly, nonatomic) long long analysisType;
+@property (readonly, copy, nonatomic) NSString *assetLocalIdentifier; // @synthesize assetLocalIdentifier=_assetLocalIdentifier;
+@property (readonly, nonatomic) NSManagedObjectID *assetObjectID; // @synthesize assetObjectID=_assetObjectID;
+@property (readonly, nonatomic) id<PLResourceIdentity> backingResourceIdentity; // @synthesize backingResourceIdentity=_backingResourceIdentity;
+@property (nonatomic) unsigned long long cplResourceType; // @synthesize cplResourceType=_cplResourceType;
+@property (readonly, nonatomic, getter=isCurrent) BOOL current; // @synthesize current=_current;
+@property (readonly, nonatomic) unsigned long long fileSize;
+@property (readonly, nonatomic, getter=isLocallyAvailable) BOOL locallyAvailable;
+@property (nonatomic, getter=isLocallyAvailable) BOOL locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;
+@property (nonatomic) unsigned int orientation; // @synthesize orientation=_orientation;
+@property (readonly, copy, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
+@property (readonly, nonatomic) PHPhotoLibrary *photoLibrary;
+@property (readonly, nonatomic) long long pixelHeight;
+@property (readonly, nonatomic) long long pixelWidth;
+@property (readonly, copy, nonatomic) CDUnknownBlockType privateFileLoader;
+@property (readonly, nonatomic) NSURL *privateFileURL;
+@property (strong, nonatomic) NSURL *privateFileURL; // @synthesize privateFileURL=_privateFileURL;
+@property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
+@property (readonly, nonatomic) NSDate *trashedDate;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 
-+ (id)_managedAssetWithRelationshipsPrefetchedForAsset:(id)arg1 inLibrary:(id)arg2 error:(id *)arg3;
++ (id)assetResourceForAsset:(id)arg1 qualityClass:(id)arg2;
 + (id)assetResourcesForAsset:(id)arg1;
 + (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(BOOL)arg2;
++ (id)assetResourcesForAsset:(id)arg1 includeDerivatives:(BOOL)arg2 includeMetadata:(BOOL)arg3;
 + (id)assetResourcesForLivePhoto:(id)arg1;
 - (void).cxx_destruct;
-- (long long)analysisType;
+- (id)debugDescription;
 - (id)description;
-- (id)initWithResourceType:(long long)arg1;
+- (id)initWithResource:(id)arg1 asset:(id)arg2;
+- (id)initWithType:(long long)arg1 livePhoto:(id)arg2;
 
 @end
 

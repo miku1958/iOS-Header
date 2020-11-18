@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (void)contentViewWillAppear;
 - (void)dealloc;
 - (id)initWithCollection:(id)arg1 albumGadgetDelegate:(id)arg2;
-- (void)loadContentData;
 - (void)reconfigure;
 - (id)title;
 

@@ -28,14 +28,14 @@
     NSString *_transportIdentifier;
 }
 
-@property (readonly, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType cancelHandler; // @synthesize cancelHandler=_cancelHandler;
 @property (nonatomic, getter=isCancelledByEngine) BOOL cancelledByEngine; // @synthesize cancelledByEngine=_cancelledByEngine;
 @property (strong, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property (strong, nonatomic) CPLResource *cloudResource; // @synthesize cloudResource=_cloudResource;
-@property (readonly, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (readonly, nonatomic) CDUnknownBlockType didStartHandler; // @synthesize didStartHandler=_didStartHandler;
-@property (readonly, nonatomic) CDUnknownBlockType launchHandler; // @synthesize launchHandler=_launchHandler;
-@property (readonly, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType didStartHandler; // @synthesize didStartHandler=_didStartHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType launchHandler; // @synthesize launchHandler=_launchHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) unsigned long long taskIdentifierForQueue; // @synthesize taskIdentifierForQueue=_taskIdentifierForQueue;
 @property (copy, nonatomic) NSString *transportIdentifier; // @synthesize transportIdentifier=_transportIdentifier;
 @property (strong, nonatomic) NSData *transportScope; // @synthesize transportScope=_transportScope;

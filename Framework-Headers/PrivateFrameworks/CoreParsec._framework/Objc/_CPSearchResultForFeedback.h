@@ -42,6 +42,7 @@
     NSString *_resultBundleId;
     NSString *_sectionBundleIdentifier;
     NSString *_applicationBundleIdentifier;
+    NSData *_entityData;
     unsigned long long _whichResultbundleidentifier;
     unsigned long long _whichSectionbundleid;
     unsigned long long _whichApplicationbundleid;
@@ -55,6 +56,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL doNotFold; // @synthesize doNotFold=_doNotFold;
+@property (copy, nonatomic) NSData *entityData; // @synthesize entityData=_entityData;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long hashedIdentifier; // @synthesize hashedIdentifier=_hashedIdentifier;
@@ -89,6 +91,9 @@
 @property (readonly, nonatomic) unsigned long long whichSectionbundleid; // @synthesize whichSectionbundleid=_whichSectionbundleid;
 
 - (void).cxx_destruct;
+- (void)clearApplicationbundleid;
+- (void)clearResultbundleidentifier;
+- (void)clearSectionbundleid;
 - (id)dictionaryRepresentation;
 - (id)feedbackJSON;
 - (id)initWithDictionary:(id)arg1;

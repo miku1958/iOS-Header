@@ -34,16 +34,20 @@
     NSDate *_endDate;
     NSDate *_creationDate;
     NSDate *_energyBurnedGoalDate;
+    NSDate *_briskMinutesGoalDate;
+    NSDate *_activeHoursGoalDate;
 }
 
 @property (strong, nonatomic) HKQuantity *activeEnergyBurned;
 @property (strong, nonatomic) HKQuantity *activeEnergyBurnedGoal;
 @property (readonly, nonatomic, getter=_activeEnergyCompletionPercentage) double activeEnergyCompletionPercentage;
+@property (strong, nonatomic, getter=_activeHoursGoalDate, setter=_setActiveHoursGoalDate:) NSDate *activeHoursGoalDate; // @synthesize activeHoursGoalDate=_activeHoursGoalDate;
 @property (nonatomic, getter=_activitySummaryIndex, setter=_setActivitySummaryIndex:) long long activitySummaryIndex;
 @property (strong, nonatomic) HKQuantity *appleExerciseTime;
 @property (strong, nonatomic) HKQuantity *appleExerciseTimeGoal;
 @property (strong, nonatomic) HKQuantity *appleStandHours;
 @property (strong, nonatomic) HKQuantity *appleStandHoursGoal;
+@property (strong, nonatomic, getter=_briskMinutesGoalDate, setter=_setBriskMinutesGoalDate:) NSDate *briskMinutesGoalDate; // @synthesize briskMinutesGoalDate=_briskMinutesGoalDate;
 @property (strong, nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic, getter=_dailyBriskMinutesStatistics, setter=_setDailyBriskMinutesStatistics:) NSArray *dailyBriskMinutesStatistics; // @synthesize dailyBriskMinutesStatistics=_dailyBriskMinutesStatistics;
 @property (strong, nonatomic, getter=_dailyEnergyBurnedStatistics, setter=_setDailyEnergyBurnedStatistics:) NSArray *dailyEnergyBurnedStatistics; // @synthesize dailyEnergyBurnedStatistics=_dailyEnergyBurnedStatistics;
@@ -55,6 +59,7 @@
 @property (readonly, nonatomic, getter=_exerciseTimeCompletionPercentage) double exerciseTimeCompletionPercentage;
 @property (strong, nonatomic, getter=_flightsClimbed, setter=_setFlightsClimbed:) HKQuantity *flightsClimbed;
 @property (copy, nonatomic, getter=_gregorianDateComponents, setter=_setGregorianDateComponents:) NSDateComponents *gregorianDateComponents;
+@property (readonly, nonatomic, getter=_hasEnergyBurnedGoal) BOOL hasEnergyBurnedGoal;
 @property (readonly, nonatomic, getter=_hasMoveGoal) BOOL hasMoveGoal;
 @property (strong, nonatomic, getter=_pushCount, setter=_setPushCount:) HKQuantity *pushCount;
 @property (readonly, nonatomic, getter=_standHoursCompletionPercentage) double standHoursCompletionPercentage;
@@ -62,7 +67,7 @@
 @property (strong, nonatomic) HKQuantity *stepCount;
 @property (nonatomic, getter=_wheelchairUse, setter=_setWheelchairUse:) long long wheelchairUse;
 
-+ (id)_highestEnergyBurnedActivityCacheAmongCaches:(id)arg1;
++ (id)_mostRecentlyCreatedCacheAmongCaches:(id)arg1;
 + (id)_mostSignificantCacheAmongCaches:(id)arg1;
 + (BOOL)_validateActivitySummaryDateComponents:(id)arg1 errorMessage:(id *)arg2;
 + (BOOL)_validateActivitySummaryDateComponentsRange:(id)arg1 endDateComponents:(id)arg2 errorMessage:(id *)arg3;
@@ -82,6 +87,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

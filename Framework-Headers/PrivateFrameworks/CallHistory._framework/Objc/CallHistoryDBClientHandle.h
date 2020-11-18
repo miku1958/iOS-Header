@@ -24,6 +24,7 @@
 + (id)createForServer;
 - (void).cxx_destruct;
 - (id)convertToCHRecentCalls_sync:(id)arg1;
+- (id)convertToCHRecentCalls_sync:(id)arg1 limit:(unsigned long long)arg2;
 - (BOOL)createCallRecord:(id)arg1;
 - (BOOL)createCallRecord:(id)arg1 error:(id *)arg2;
 - (BOOL)createCallRecord:(id)arg1 error:(id *)arg2 save:(BOOL)arg3;
@@ -32,16 +33,19 @@
 - (void)dealloc;
 - (BOOL)deleteAll;
 - (BOOL)deleteAll:(id *)arg1;
+- (long long)deleteCallsWithPredicate:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteObjectWithUniqueId:(id)arg1;
 - (BOOL)deleteObjectWithUniqueId:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteObjectWithUniqueId:(id)arg1 error:(id *)arg2 save:(BOOL)arg3;
 - (BOOL)deleteObjectsWithUniqueIds:(id)arg1;
 - (BOOL)deleteObjectsWithUniqueIds:(id)arg1 error:(id *)arg2;
-- (id)deleteWithPredicate:(id)arg1;
 - (id)fetchAll;
 - (id)fetchAllNoLimit;
 - (id)fetchAllObjectsWithUniqueId:(id)arg1;
-- (id)fetchCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3;
+- (unsigned long long)fetchCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
+- (unsigned long long)fetchCoalescedCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchCoalescedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)fetchObjectWithUniqueId:(id)arg1;
 - (id)fetchObjectsWithPredicate:(id)arg1;
 - (id)fetchObjectsWithUniqueIds:(id)arg1;
@@ -73,6 +77,7 @@
 - (id)updateCallRecords:(id)arg1 error:(id *)arg2;
 - (id)updateCallRecords:(id)arg1 error:(id *)arg2 save:(BOOL)arg3;
 - (id)updateCallRecords_sync:(id)arg1 error:(id *)arg2 save:(BOOL)arg3;
+- (id)updateCallsWithPredicate:(id)arg1 propertiesToUpdate:(id)arg2 error:(id *)arg3;
 - (BOOL)willHandleNotification_sync:(id)arg1;
 
 @end

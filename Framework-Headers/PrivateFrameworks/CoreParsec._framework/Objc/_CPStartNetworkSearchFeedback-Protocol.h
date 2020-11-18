@@ -10,6 +10,7 @@
 
 @protocol _CPStartNetworkSearchFeedback <NSObject>
 
+@property (copy, nonatomic) NSData *bodyData;
 @property (nonatomic) int endpoint;
 @property (copy, nonatomic) NSDictionary *headers;
 @property (copy, nonatomic) NSString *input;

@@ -6,15 +6,8 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC15ConversationKit8Defaults : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *demo_requiredParticipantsStep;
-    MISSING_TYPE *demo_didOriginateFromFaceTime;
-    MISSING_TYPE *demo_requiredParticipantIdentifiers;
-    MISSING_TYPE *demo_fakeParticipantIdentifiers;
-    MISSING_TYPE *demo_currentRequiredParticipantHandles;
 }
 
 @end

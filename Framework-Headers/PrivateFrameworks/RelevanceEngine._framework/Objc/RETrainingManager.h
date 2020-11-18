@@ -6,13 +6,13 @@
 
 #import <RelevanceEngine/RERelevanceEngineSubsystem.h>
 
-#import <RelevanceEngine/RELoggable-Protocol.h>
 #import <RelevanceEngine/RERemoteTrainingClientListenerDelegate-Protocol.h>
+#import <RelevanceEngine/RETrainingManagerProperties-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSObject, NSString, RELiveElementCoordinator, REMLModelManager, RERemoteTrainingClientListener, RETrainingContext, RETrainingScheduler;
+@class NSMutableArray, NSMutableSet, NSObject, RELiveElementCoordinator, REMLModelManager, RERemoteTrainingClientListener, RETrainingContext, RETrainingScheduler;
 @protocol OS_dispatch_queue;
 
-@interface RETrainingManager : RERelevanceEngineSubsystem <RELoggable, RERemoteTrainingClientListenerDelegate>
+@interface RETrainingManager : RERelevanceEngineSubsystem <RERemoteTrainingClientListenerDelegate, RETrainingManagerProperties>
 {
     RELiveElementCoordinator *_coordinator;
     REMLModelManager *_modelManager;
@@ -28,21 +28,20 @@
 }
 
 @property (strong) RETrainingContext *currentTrainingContext; // @synthesize currentTrainingContext=_currentTrainingContext;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSMutableArray *trainingEvents;
+@property (readonly, nonatomic) RETrainingScheduler *trainingScheduler;
 
 - (void).cxx_destruct;
-- (void)_performTrainingWithForced:(BOOL)arg1;
-- (void)_queue_trainElement:(id)arg1 featureMap:(id)arg2 isPositiveEvent:(BOOL)arg3 interaction:(id)arg4 context:(id)arg5;
+- (void)_performTraining:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_performTrainingForPredictionElement:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3 context:(id)arg4;
+- (void)_queue_trainElementWithIdentifier:(id)arg1 relevanceProviders:(id)arg2 featureMap:(id)arg3 isPositiveEvent:(BOOL)arg4 interaction:(id)arg5 context:(id)arg6;
 - (void)addTrainingContext:(id)arg1;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)flushTraining;
 - (id)initWithRelevanceEngine:(id)arg1;
 - (void)makeContextCurrent:(id)arg1;
-- (void)manuallyPerformTraining;
+- (void)manuallyPerformTrainingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)performTrainingForElement:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3;
 - (void)performTrainingForElement:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3 context:(id)arg4;
 - (void)performTrainingForElementWithIdentifier:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3;
 - (void)performTrainingForElementWithIdentifier:(id)arg1 isPositiveEvent:(BOOL)arg2 interaction:(id)arg3 context:(id)arg4;

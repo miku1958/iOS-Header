@@ -17,7 +17,6 @@
 @property (strong, nonatomic) UIView<NTKComplicationImageView> *imageView; // @synthesize imageView=_imageView;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_updateForTemplateChange;

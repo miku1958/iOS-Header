@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)trackEventWithScalar:(unsigned long long)arg1 extracted:(struct SGMBannerExtractionType_)arg2;
+- (void)trackEventWithScalar:(unsigned long long)arg1 extracted:(struct SGMBannerExtractionType_)arg2 extractionModelVersion:(unsigned long long)arg3;
 
 @end
 

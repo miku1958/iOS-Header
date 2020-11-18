@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) unsigned long long backingStore; // @synthesize backingStore=_backingStore;
-@property (readonly, copy, nonatomic) NSDictionary *configurationOptions; // @synthesize configurationOptions=_configurationOptions;
+@property (readonly, copy) NSDictionary *configurationOptions; // @synthesize configurationOptions=_configurationOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -53,10 +53,12 @@ __attribute__((visibility("hidden")))
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (id)requiredCancellerInOptions:(id)arg1 error:(id *)arg2;
 - (BOOL)supportsProcessingDevice:(id)arg1;
+- (void)updateConfigurationOptionsWithObject:(id)arg1 forKey:(id)arg2;
 - (BOOL)useGPU;
 - (BOOL)validateImageBuffer:(id)arg1 error:(id *)arg2;
 - (id)validatedImageBufferFromOptions:(id)arg1 error:(id *)arg2;
 - (id)validatedProcessingDeviceInOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpWithOptions:(id)arg1 error:(id *)arg2;
 
 @end
 

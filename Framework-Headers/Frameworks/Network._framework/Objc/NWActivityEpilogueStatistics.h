@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, PBCodable;
+@class NSUUID, NWL2Report, PBCodable;
 
 @interface NWActivityEpilogueStatistics : NSObject
 {
     unsigned int _awdMetricID;
     NSUUID *_externallyVisibleActivityUUID;
     NSUUID *_externallyVisibleParentUUID;
+    NWL2Report *_layer2Report;
     PBCodable *_awdReport;
+    NSUUID *_activityUUID;
+    NSUUID *_parentUUID;
     struct nw_activity_epilogue_report_s _report;
 }
 
-@property (readonly, nonatomic) NSUUID *activityUUID;
+@property (strong, nonatomic) NSUUID *activityUUID; // @synthesize activityUUID=_activityUUID;
 @property (nonatomic) unsigned int awdMetricID; // @synthesize awdMetricID=_awdMetricID;
 @property (strong, nonatomic) PBCodable *awdReport; // @synthesize awdReport=_awdReport;
 @property (readonly, nonatomic) int completionReason;
@@ -26,8 +29,10 @@
 @property (strong, nonatomic) NSUUID *externallyVisibleActivityUUID; // @synthesize externallyVisibleActivityUUID=_externallyVisibleActivityUUID;
 @property (strong, nonatomic) NSUUID *externallyVisibleParentUUID; // @synthesize externallyVisibleParentUUID=_externallyVisibleParentUUID;
 @property (readonly, nonatomic) unsigned int fragmentsQuenched;
+@property (readonly, nonatomic) unsigned long long investigation_identifier;
 @property (readonly, nonatomic) unsigned int label;
-@property (readonly, nonatomic) NSUUID *parentUUID;
+@property (strong, nonatomic) NWL2Report *layer2Report; // @synthesize layer2Report=_layer2Report;
+@property (strong, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
 @property (nonatomic) struct nw_activity_epilogue_report_s report; // @synthesize report=_report;
 @property (readonly, nonatomic) BOOL retry;
 

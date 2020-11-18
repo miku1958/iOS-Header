@@ -8,11 +8,12 @@
 
 #import <CameraUI/CAMPanoramaCaptureRequestDelegate-Protocol.h>
 #import <CameraUI/CAMStillImageCaptureRequestDelegate-Protocol.h>
+#import <CameraUI/CAMStillImageCapturingVideoDelegate-Protocol.h>
 #import <CameraUI/CAMVideoCaptureRequestDelegate-Protocol.h>
 
 @class NSString, NSTimer;
 
-@interface CAMIdleController : NSObject <CAMStillImageCaptureRequestDelegate, CAMVideoCaptureRequestDelegate, CAMPanoramaCaptureRequestDelegate>
+@interface CAMIdleController : NSObject <CAMStillImageCaptureRequestDelegate, CAMVideoCaptureRequestDelegate, CAMPanoramaCaptureRequestDelegate, CAMStillImageCapturingVideoDelegate>
 {
     BOOL _updatingIdleTimer;
     NSTimer *_enableIdleTimer;
@@ -35,9 +36,11 @@
 - (void)dealloc;
 - (id)init;
 - (void)panoramaRequestDidStartCapturing:(id)arg1;
-- (void)panoramaRequestDidStopCapturing:(id)arg1;
+- (void)panoramaRequestDidStopCapturing:(id)arg1 interrupted:(BOOL)arg2;
 - (void)startUpdatingIdleTimer;
-- (void)stillImageRequestDidStopCapturing:(id)arg1;
+- (void)stillImageRequestDidStopCapturingStillImage:(id)arg1;
+- (void)stillImageRequestWillStartCapturingCTMVideoWithCaptureInFlight:(BOOL)arg1;
+- (void)stillImageRequestsDidStopCapturingCTMVideo;
 - (void)stopUpdatingIdleTimer;
 - (void)timelapseRequestDidResumeCapturing;
 - (void)timelapseRequestDidStartCapturing;

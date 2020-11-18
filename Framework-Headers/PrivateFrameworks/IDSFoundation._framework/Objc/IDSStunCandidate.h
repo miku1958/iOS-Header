@@ -16,9 +16,10 @@
     struct sockaddr_storage _address;
     struct sockaddr_storage _external;
     CDStruct_330c469e _prefix;
-    unsigned long long _radioAccessTechnology;
+    unsigned int _radioAccessTechnology;
     unsigned int _mtu;
     double _extIPDetectionStartTime;
+    unsigned short _remoteLinkFlags;
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
@@ -29,21 +30,23 @@
 @property (nonatomic) unsigned int mtu; // @synthesize mtu=_mtu;
 @property (nonatomic) CDStruct_330c469e *prefix;
 @property (readonly, nonatomic) unsigned long long priority; // @synthesize priority=_priority;
-@property (nonatomic) unsigned long long radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
+@property (nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
+@property (nonatomic) unsigned short remoteLinkFlags; // @synthesize remoteLinkFlags=_remoteLinkFlags;
 @property (readonly, nonatomic) long long transport; // @synthesize transport=_transport;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
-+ (id)candidateWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned long long)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr *)arg6 external:(struct sockaddr *)arg7;
++ (id)candidateWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned int)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr *)arg6 external:(struct sockaddr *)arg7;
 - (void)dealloc;
 - (id)description;
 - (BOOL)hasNATIPv4Address;
 - (BOOL)hasNATIPv4External;
-- (id)initWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned long long)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr *)arg6 external:(struct sockaddr *)arg7;
+- (id)initWithType:(unsigned long long)arg1 transport:(long long)arg2 radioAccessTechnology:(unsigned int)arg3 mtu:(unsigned int)arg4 index:(int)arg5 address:(struct sockaddr *)arg6 external:(struct sockaddr *)arg7;
 - (BOOL)isCellularStunCandidate;
 - (BOOL)isCompatibleWithStunCandidate:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLinkLocalStunCandidate;
 - (BOOL)isRelayStunCandidate;
+- (BOOL)isSameNetworkType:(id)arg1;
 - (BOOL)isServerReflexiveStunCandidate;
 - (void)updateTransport:(long long)arg1;
 

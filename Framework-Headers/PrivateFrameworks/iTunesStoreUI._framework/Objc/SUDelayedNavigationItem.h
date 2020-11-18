@@ -24,6 +24,7 @@
 @property (nonatomic) BOOL shouldDelayChanges; // @synthesize shouldDelayChanges=_shouldDelayChanges;
 @property (strong, nonatomic) SUNavigationItem *wrappedNavigationItem; // @synthesize wrappedNavigationItem=_wrappedNavigationItem;
 
+- (void).cxx_destruct;
 - (void)_prepareButtonItemForDisplay:(id)arg1;
 - (void)_scheduleCommit;
 - (id)backButtonTitle;

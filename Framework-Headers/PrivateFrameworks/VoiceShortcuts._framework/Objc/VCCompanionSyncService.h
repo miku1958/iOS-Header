@@ -8,48 +8,54 @@
 
 #import <VoiceShortcuts/SYServiceDelegate-Protocol.h>
 #import <VoiceShortcuts/VCCompanionSyncSessionDelegate-Protocol.h>
-#import <VoiceShortcuts/VCVoiceShortcutSyncService-Protocol.h>
 
-@class NSArray, NSString, SYService, VCCompanionSyncSession;
-@protocol OS_dispatch_queue, VCCompanionSyncServiceDelegate;
+@class NSSet, NSString, SYService, VCCompanionSyncSession, VCNRDeviceSyncService, WFDebouncer;
+@protocol OS_dispatch_queue, VCCompanionSyncServiceDelegate, VCSyncDataEndpoint;
 
-@interface VCCompanionSyncService : NSObject <SYServiceDelegate, VCCompanionSyncSessionDelegate, VCVoiceShortcutSyncService>
+@interface VCCompanionSyncService : NSObject <SYServiceDelegate, VCCompanionSyncSessionDelegate>
 {
-    BOOL _hasBeenStarted;
     id<VCCompanionSyncServiceDelegate> _delegate;
-    NSArray *_syncDataHandlers;
-    NSString *_syncServiceIdentifier;
-    NSObject<OS_dispatch_queue> *_syncQueue;
-    SYService *_syService;
+    SYService *_service;
+    NSObject<OS_dispatch_queue> *_queue;
+    id<VCSyncDataEndpoint> _syncDataEndpoint;
+    WFDebouncer *_debouncer;
+    NSSet *_currentDataHandlers;
     VCCompanionSyncSession *_currentSession;
+    VCNRDeviceSyncService *_currentSyncService;
 }
 
+@property (copy, nonatomic) NSSet *currentDataHandlers; // @synthesize currentDataHandlers=_currentDataHandlers;
 @property (strong, nonatomic) VCCompanionSyncSession *currentSession; // @synthesize currentSession=_currentSession;
+@property (copy, nonatomic) VCNRDeviceSyncService *currentSyncService; // @synthesize currentSyncService=_currentSyncService;
+@property (readonly, nonatomic) WFDebouncer *debouncer; // @synthesize debouncer=_debouncer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VCCompanionSyncServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasBeenStarted; // @synthesize hasBeenStarted=_hasBeenStarted;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) SYService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) SYService *syService; // @synthesize syService=_syService;
-@property (readonly, nonatomic) NSArray *syncDataHandlers; // @synthesize syncDataHandlers=_syncDataHandlers;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *syncQueue; // @synthesize syncQueue=_syncQueue;
-@property (strong, nonatomic) NSString *syncServiceIdentifier; // @synthesize syncServiceIdentifier=_syncServiceIdentifier;
+@property (readonly, nonatomic) id<VCSyncDataEndpoint> syncDataEndpoint; // @synthesize syncDataEndpoint=_syncDataEndpoint;
 
-+ (void)initialize;
-+ (id)successfulChangesFromAllSyncedChanges:(id)arg1 sessionFinishError:(id)arg2;
 - (void).cxx_destruct;
-- (void)clearSyncStateForAllDataHandlers;
 - (void)companionSyncSession:(id)arg1 didFinishWithError:(id)arg2;
-- (id)initWithSyncDataHandlers:(id)arg1 pairedDeviceIdentifier:(id)arg2;
+- (void)companionSyncSession:(id)arg1 didUpdateProgress:(double)arg2;
+- (void)companionSyncSessionDidFinishSendingChanges:(id)arg1;
+- (void)configureReasonForUnderlyingSession:(id)arg1 withSession:(id)arg2;
+- (void)dealloc;
+- (id)initWithSyncDataEndpoint:(id)arg1;
 - (BOOL)isRunningOnWatch;
 - (void)requestFullResync;
 - (void)requestSync;
+- (void)requestSyncImmediately;
+- (void)resetSession;
+- (void)resumeServiceIfNecessary;
+- (void)service:(id)arg1 didSwitchFromPairingID:(id)arg2 toPairingID:(id)arg3;
+- (void)service:(id)arg1 encounteredError:(id)arg2 context:(id)arg3;
 - (BOOL)service:(id)arg1 startSession:(id)arg2 error:(id *)arg3;
-- (BOOL)startSyncService:(id *)arg1;
-- (void)startSyncSession;
-- (void)stopSyncService;
-- (void)voiceShortcutsDidChange;
+- (void)service:(id)arg1 willSwitchFromPairingID:(id)arg2 toPairingID:(id)arg3;
+- (void)updateCurrentSyncServiceIfNecessary;
+- (void)updateSyncDataHandlers;
 
 @end
 

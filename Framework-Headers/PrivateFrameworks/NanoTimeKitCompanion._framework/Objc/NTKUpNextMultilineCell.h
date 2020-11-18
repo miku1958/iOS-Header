@@ -6,9 +6,11 @@
 
 #import <NanoTimeKitCompanion/NTKUpNextBaseCell.h>
 
-@class CLKFont, NSArray, NTKColoringLabel, NTKUpNextImageView, UILayoutGuide, UIView;
+#import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 
-@interface NTKUpNextMultilineCell : NTKUpNextBaseCell
+@class CLKFont, NSArray, NSString, NTKColoringLabel, NTKUpNextImageView, UILayoutGuide, UIView;
+
+@interface NTKUpNextMultilineCell : NTKUpNextBaseCell <CLKMonochromeFilterProvider>
 {
     UILayoutGuide *_contentLayoutGuide;
     UILayoutGuide *_descriptionTextLayoutGuide;
@@ -44,12 +46,24 @@
     NSArray *_withoutDescriptionImageViewConstraints;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (struct CGSize)suggestedBodyImageSizeForDevice:(id)arg1;
 - (void).cxx_destruct;
+- (id)colorForView:(id)arg1 accented:(BOOL)arg2;
 - (void)configureWithContent:(id)arg1;
+- (id)filterForView:(id)arg1 style:(long long)arg2;
+- (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)prepareForReuse;
+- (void)setFilterProvider:(id)arg1;
 - (void)setPaused:(BOOL)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateConstraints;
+- (void)updateMonochromeColor;
 
 @end
 

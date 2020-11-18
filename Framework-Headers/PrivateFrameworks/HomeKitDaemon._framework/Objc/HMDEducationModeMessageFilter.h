@@ -4,22 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDMessageFilter.h>
+#import <HMFoundation/HMFMessageFilter.h>
 
-@interface HMDEducationModeMessageFilter : HMDMessageFilter
+@interface HMDEducationModeMessageFilter : HMFMessageFilter
 {
-    BOOL _ephemeralMultiUser;
-    BOOL _managedAppleID;
 }
 
-@property (nonatomic, getter=isEphemeralMultiUser) BOOL ephemeralMultiUser; // @synthesize ephemeralMultiUser=_ephemeralMultiUser;
-@property (nonatomic, getter=isManagedAppleID) BOOL managedAppleID; // @synthesize managedAppleID=_managedAppleID;
-
-- (void)_update;
-- (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
-- (void)dealloc;
-- (void)handleActiveAccountChanged:(id)arg1;
-- (id)initWithName:(id)arg1;
++ (BOOL)canInitWithMessage:(id)arg1;
++ (id)policyClasses;
+- (BOOL)acceptWithPolicies:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -10,6 +10,8 @@
 {
 }
 
++ (BOOL)inUserSessionLoginUI;
++ (void)postStartupActions;
 + (void)postStartupTransitionActions;
 
 @end

@@ -35,11 +35,13 @@
 - (void).cxx_destruct;
 - (double)_outlineLineWidth;
 - (struct CGAffineTransform)_transformForFaceView;
+- (void)_updateOutlineColor;
 - (id)initWithFaceSize:(struct CGSize)arg1 style:(long long)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

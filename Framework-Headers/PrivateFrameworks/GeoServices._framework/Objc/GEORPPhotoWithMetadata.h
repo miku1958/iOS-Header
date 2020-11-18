@@ -8,34 +8,46 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSData;
+@class GEOLatLng, NSData, PBDataReader;
 
 @interface GEORPPhotoWithMetadata : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     double _creationDate;
-    double _geotagHorizontalAccuracy;
-    double _geotagTimestamp;
     NSData *_data;
     GEOLatLng *_geotagCoordinate;
+    double _geotagHorizontalAccuracy;
+    double _geotagTimestamp;
     struct {
-        unsigned int creationDate:1;
-        unsigned int geotagHorizontalAccuracy:1;
-        unsigned int geotagTimestamp:1;
-    } _has;
+        unsigned int has_creationDate:1;
+        unsigned int has_geotagHorizontalAccuracy:1;
+        unsigned int has_geotagTimestamp:1;
+        unsigned int read_data:1;
+        unsigned int read_geotagCoordinate:1;
+        unsigned int wrote_creationDate:1;
+        unsigned int wrote_data:1;
+        unsigned int wrote_geotagCoordinate:1;
+        unsigned int wrote_geotagHorizontalAccuracy:1;
+        unsigned int wrote_geotagTimestamp:1;
+    } _flags;
 }
 
-@property (nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
-@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
-@property (strong, nonatomic) GEOLatLng *geotagCoordinate; // @synthesize geotagCoordinate=_geotagCoordinate;
-@property (nonatomic) double geotagHorizontalAccuracy; // @synthesize geotagHorizontalAccuracy=_geotagHorizontalAccuracy;
-@property (nonatomic) double geotagTimestamp; // @synthesize geotagTimestamp=_geotagTimestamp;
+@property (nonatomic) double creationDate;
+@property (strong, nonatomic) NSData *data;
+@property (strong, nonatomic) GEOLatLng *geotagCoordinate;
+@property (nonatomic) double geotagHorizontalAccuracy;
+@property (nonatomic) double geotagTimestamp;
 @property (nonatomic) BOOL hasCreationDate;
 @property (readonly, nonatomic) BOOL hasData;
 @property (readonly, nonatomic) BOOL hasGeotagCoordinate;
 @property (nonatomic) BOOL hasGeotagHorizontalAccuracy;
 @property (nonatomic) BOOL hasGeotagTimestamp;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readData;
+- (void)_readGeotagCoordinate;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +55,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

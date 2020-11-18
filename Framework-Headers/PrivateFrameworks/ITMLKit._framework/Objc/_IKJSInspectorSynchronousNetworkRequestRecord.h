@@ -8,15 +8,19 @@
 
 #import <ITMLKit/IKNetworkRequestRecord-Protocol.h>
 
-@class NSData, NSString, NSURLRequest, NSURLResponse, _IKJSInspectorNetworkLoader;
+@class NSData, NSDate, NSDictionary, NSString, NSURLRequest, NSURLResponse, _IKJSInspectorNetworkLoader;
 
 @interface _IKJSInspectorSynchronousNetworkRequestRecord : NSObject <IKNetworkRequestRecord>
 {
-    BOOL _didSendURLRequest;
+    NSDate *_redirectEndTime;
+    BOOL _isRedirecting;
+    NSDate *_startTime;
     NSString *_identifier;
     _IKJSInspectorNetworkLoader *_loader;
     long long _resourceType;
     long long _initiatorType;
+    long long _state;
+    NSDictionary *_timingData;
     NSURLRequest *_URLRequest;
     NSURLResponse *_URLResponse;
     NSData *_responseBodyData;
@@ -32,13 +36,16 @@
 @property (weak, nonatomic) _IKJSInspectorNetworkLoader *loader; // @synthesize loader=_loader;
 @property (readonly, nonatomic) long long resourceType; // @synthesize resourceType=_resourceType;
 @property (copy, nonatomic) NSData *responseBodyData; // @synthesize responseBodyData=_responseBodyData;
+@property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSDictionary *timingData; // @synthesize timingData=_timingData;
 
 + (long long)_protocolResourceTypeForType:(long long)arg1;
 + (long long)_responseSourceTypeForCacheType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_didCompleteLoadingFromCache:(long long)arg1 mimeType:(id)arg2 withResponseBody:(id)arg3 timestamp:(double)arg4;
 - (void)_dispatchEvent:(long long)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_processEventType:(long long)arg1;
 - (void)didCompleteLoadingFromCache:(long long)arg1 mimeType:(id)arg2 withResponseBody:(id)arg3;
 - (void)didCompleteLoadingFromCache:(long long)arg1 withResponseBody:(id)arg2 mimeType:(id)arg3;
 - (void)didCompleteLoadingFromCache:(long long)arg1 withResponseBodyBlock:(CDUnknownBlockType)arg2;
@@ -49,6 +56,7 @@
 - (void)didReceiveResponse:(id)arg1 timingData:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 loader:(id)arg2 resourceType:(long long)arg3 initiatorType:(long long)arg4;
 - (void)willSendRequest:(id)arg1;
+- (void)willSendRequest:(id)arg1 redirectResponse:(id)arg2;
 
 @end
 

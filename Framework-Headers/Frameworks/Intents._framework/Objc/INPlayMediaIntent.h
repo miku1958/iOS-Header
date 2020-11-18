@@ -8,7 +8,7 @@
 
 #import <Intents/INPlayMediaIntentExport-Protocol.h>
 
-@class INMediaItem, NSArray, NSDate, NSNumber, NSString;
+@class INMediaItem, INMediaSearch, NSArray, NSDate, NSNumber, NSString;
 
 @interface INPlayMediaIntent : INIntent <INPlayMediaIntentExport>
 {
@@ -19,10 +19,14 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDate *expirationDate;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (readonly, copy, nonatomic) INMediaItem *mediaContainer;
 @property (readonly, copy, nonatomic) NSArray *mediaItems;
+@property (readonly, copy, nonatomic) INMediaSearch *mediaSearch;
 @property (readonly, copy, nonatomic) NSNumber *playShuffled;
+@property (readonly, nonatomic) long long playbackQueueLocation;
 @property (readonly, nonatomic) long long playbackRepeatMode;
+@property (readonly, copy, nonatomic) NSNumber *playbackSpeed;
 @property (copy, nonatomic) NSString *proxiedBundleIdentifier;
 @property (copy, nonatomic) NSString *recoID;
 @property (readonly, copy, nonatomic) NSNumber *resumePlayback;
@@ -33,6 +37,7 @@
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
 - (long long)_intentCategory;
+- (id)_keyCodableAttributes;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (void)_setMetadata:(id)arg1;
@@ -42,13 +47,17 @@
 - (id)_validParameterCombinationsWithSchema:(id)arg1;
 - (id)domain;
 - (id)initWithMediaItems:(id)arg1 mediaContainer:(id)arg2 playShuffled:(id)arg3 playbackRepeatMode:(long long)arg4 resumePlayback:(id)arg5;
+- (id)initWithMediaItems:(id)arg1 mediaContainer:(id)arg2 playShuffled:(id)arg3 playbackRepeatMode:(long long)arg4 resumePlayback:(id)arg5 playbackQueueLocation:(long long)arg6 playbackSpeed:(id)arg7 mediaSearch:(id)arg8;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setMediaContainer:(id)arg1;
 - (void)setMediaItems:(id)arg1;
+- (void)setMediaSearch:(id)arg1;
 - (void)setParametersByName:(id)arg1;
 - (void)setPlayShuffled:(id)arg1;
+- (void)setPlaybackQueueLocation:(long long)arg1;
 - (void)setPlaybackRepeatMode:(long long)arg1;
+- (void)setPlaybackSpeed:(id)arg1;
 - (void)setResumePlayback:(id)arg1;
 - (void)setVerb:(id)arg1;
 - (id)verb;

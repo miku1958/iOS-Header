@@ -9,8 +9,9 @@
 #import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVMicaPackage, NSString, NSTimer, UISelectionFeedbackGenerator, UIViewPropertyAnimator;
+@class AVMicaPackage, NSString, NSTimer, UIImageView, UISelectionFeedbackGenerator, UIViewPropertyAnimator;
 
+__attribute__((visibility("hidden")))
 @interface AVVolumeButtonControl : UIControl <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
 {
     long long _trackingState;
@@ -18,12 +19,14 @@
     BOOL _collapsed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
+    BOOL _removed;
     BOOL _longPressEnabled;
     BOOL _showsHighlightedAppearance;
     UISelectionFeedbackGenerator *_feedbackGenerator;
     NSString *_micaPackageStateName;
     UIViewPropertyAnimator *_highlightAnimator;
     AVMicaPackage *_micaPackage;
+    UIImageView *_imageView;
     NSTimer *_longPressTimer;
     struct CGSize _extrinsicContentSize;
     struct CGPoint _translationOfPanFromPreviousTouch;
@@ -45,6 +48,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UIViewPropertyAnimator *highlightAnimator; // @synthesize highlightAnimator=_highlightAnimator;
 @property (nonatomic) struct NSDirectionalEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
+@property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
 @property (nonatomic) struct CGPoint initialPreciseLocationOfTouch; // @synthesize initialPreciseLocationOfTouch=_initialPreciseLocationOfTouch;
 @property (nonatomic) struct CGPoint locationOfTouchInWindow; // @synthesize locationOfTouchInWindow=_locationOfTouchInWindow;
@@ -52,6 +56,7 @@
 @property (weak, nonatomic) NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
 @property (strong, nonatomic) AVMicaPackage *micaPackage; // @synthesize micaPackage=_micaPackage;
 @property (strong, nonatomic) NSString *micaPackageStateName; // @synthesize micaPackageStateName=_micaPackageStateName;
+@property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (nonatomic) BOOL showsHighlightedAppearance; // @synthesize showsHighlightedAppearance=_showsHighlightedAppearance;
 @property (readonly) Class superclass;
 @property (nonatomic) long long trackingState; // @synthesize trackingState=_trackingState;
@@ -67,12 +72,14 @@
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (struct CGRect)hitRect;
+- (id)imageNameForMicaPackageState;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setHidden:(BOOL)arg1;
+- (void)setNeedsUpdateGlyphRenderingMode;
 - (void)triggerSelectionChangedFeedback;
-- (void)willMoveToWindow:(id)arg1;
 
 @end
 

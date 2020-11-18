@@ -6,23 +6,23 @@
 
 #import <NanoTimeKitCompanion/NTKDigitalFaceView.h>
 
+#import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 #import <NanoTimeKitCompanion/NTKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/REElementActionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/REUIElementIntentActionDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/REUIRelevanceEngineControllerDelegate-Protocol.h>
-#import <NanoTimeKitCompanion/UICollectionViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSOrderedSet, NSSet, NSString, NSTimer, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKUpNextCollectionView, NTKUpNextCollectionViewFlowLayout, NTKUtilityComplicationFactory, REUIRelevanceEngineController, REUpNextScheduler, UIImage, UITapGestureRecognizer, UIView;
+@class NSArray, NSMutableArray, NSMutableSet, NSOrderedSet, NSSet, NSString, NSTimer, NTKDigitalTimeLabelStyle, NTKUpNextCollectionView, NTKUpNextCollectionViewFlowLayout, NTKUtilityComplicationFactory, REUIRelevanceEngineController, REUpNextScheduler, UICollectionViewDiffableDataSource, UIImage, UITapGestureRecognizer, UIView;
 
-@interface NTKUpNextFaceView : NTKDigitalFaceView <REUIRelevanceEngineControllerDelegate, REElementActionDelegate, REUIElementIntentActionDelegate, NTKSensitiveUIStateObserver, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface NTKUpNextFaceView : NTKDigitalFaceView <REUIRelevanceEngineControllerDelegate, REElementActionDelegate, REUIElementIntentActionDelegate, NTKSensitiveUIStateObserver, CLKMonochromeFilterProvider, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 {
-    NTKDigitalTimeLabel *_timeLabel;
     NTKDigitalTimeLabelStyle *_timeLabelDefaultStyle;
     NTKDigitalTimeLabelStyle *_timeLabelSmallInUpperRightCornerStyle;
     NTKUtilityComplicationFactory *_utilityComplicationFactory;
-    NTKUpNextCollectionView *_contentView;
+    NTKUpNextCollectionView *_collectionView;
+    UICollectionViewDiffableDataSource *_collectionViewDataSource;
     NTKUpNextCollectionViewFlowLayout *_layout;
     REUIRelevanceEngineController *_engineController;
     UITapGestureRecognizer *_viewModeTapGesture;
@@ -44,10 +44,11 @@
     BOOL _cancelInflightScroll;
     BOOL _isProgramaticScrollEvent;
     BOOL _crownInverted;
-    BOOL _suppressUpdates;
+    BOOL _suppressBatchUpdates;
     BOOL _suppressCrownEvents;
     BOOL _inBatchUpdate;
     BOOL _isBacklightOn;
+    NSMutableSet *_batchReloadIdentifiers;
     NSOrderedSet *_currentApplicationIdentifiers;
     REUpNextScheduler *_applicationIdentifierUpdateScheduler;
     NSSet *_dwellIndexPathes;
@@ -60,7 +61,7 @@
     BOOL _scrollingStoppedTransition;
     long long _previousDataMode;
     unsigned long long _faceColor;
-    BOOL _hasPerformedAnyBatchUpdates;
+    BOOL _engineInitiallyLoaded;
     NSMutableArray *_snapshotCallbacks;
 }
 
@@ -69,8 +70,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_reuseIdentifierForContent:(id)arg1;
 + (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 + (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
++ (double)suggestedCellHeightForDevice:(id)arg1;
 - (void).cxx_destruct;
 - (id)_additionalPrelaunchApplicationIdentifiers;
 - (void)_allowContentViewInteractive:(BOOL)arg1;
@@ -91,13 +94,20 @@
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterSettingViewMode:(long long)arg1 scroll:(BOOL)arg2 targetOffset:(struct CGPoint)arg3 needsLayout:(BOOL)arg4;
 - (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
+- (id)_configureCellForItemWithIdentifier:(id)arg1 atIndexPath:(id)arg2;
+- (void)_configureCollectionViewDataSource;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (id)_configureSupplementaryViewForSupplementaryElementOfKind:(id)arg1 atIndexPath:(id)arg2;
+- (void)_configureVisibleCell:(id)arg1;
+- (id)_contentAtIndexPath:(id)arg1;
 - (struct CGPoint)_defaultPointForDefaultMode;
 - (id)_detachedComplicationDisplays;
 - (void)_deviceOrientationInvertedDidChangeNotification:(id)arg1;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (BOOL)_dismissPresentedViewControllerIfNecessary:(BOOL)arg1;
 - (unsigned long long)_distanceForIndexPathFromNow:(id)arg1;
+- (void)_ensureContentLoadedWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_finalizeForSnapshotting:(CDUnknownBlockType)arg1;
 - (void)_handleEngineChangeNotification;
 - (void)_handleOrdinaryScreenWake;
@@ -109,19 +119,27 @@
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_layoutTimeLabelForViewMode:(long long)arg1;
 - (void)_layoutTimeLabelPlatterViewMode:(long long)arg1;
+- (void)_loadCollectionViewDataAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_loadContentViews;
 - (void)_loadEngineController;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (long long)_numberOfItemsInCollectionViewSection:(long long)arg1;
+- (long long)_numberOfSectionsInCollectionView;
 - (void)_performWristRaiseAnimation;
 - (void)_postPositiveDwellEventsForTopElements;
+- (void)_prepareForEditing;
 - (void)_prepareWristRaiseAnimation;
+- (void)_reloadCollectionViewData;
 - (void)_reloadContentIfNeeded;
+- (void)_removeUnmanagedCollectionViewCells;
 - (void)_resetVisibilityForCells;
 - (id)_sectionEnumerationOrder;
 - (void)_setSiriBlurColor;
 - (void)_setViewMode:(long long)arg1 scroll:(BOOL)arg2 scrollToPoint:(struct CGPoint)arg3 secondaryPoint:(struct CGPoint)arg4 force:(BOOL)arg5 velocity:(double)arg6 animated:(BOOL)arg7;
+- (void)_setupCell:(id)arg1 withContent:(id)arg2 representedIdentifier:(id)arg3;
 - (BOOL)_shouldUseCanonicalContent;
 - (void)_showSiriUnavailableAlert:(id)arg1;
 - (void)_startPositiveDwellForTopElementsTimerIfNeeded;
@@ -131,7 +149,8 @@
 - (BOOL)_supportsTimeScrubbing;
 - (void)_switchViewModeForCurrentMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)_switchViewModeToDefault;
-- (id)_timeLabelStyleForViewMode:(long long)arg1;
+- (unsigned long long)_timeLabelOptions;
+- (void)_unloadContentViews;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateApplicationIdentifiersAndLocationAuthorization;
 - (void)_updateCrownInvertedSetting;
@@ -140,14 +159,11 @@
 - (BOOL)_usesCustomZoom;
 - (double)_verticalPaddingForStatusBar;
 - (BOOL)_wantsStatusBarHidden;
-- (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didUnhighlightItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
-- (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
-- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)dealloc;
 - (void)elementAction:(id)arg1 didFinishTask:(BOOL)arg2;
@@ -156,16 +172,18 @@
 - (void)engineController:(id)arg1 didInsertContent:(id)arg2 atIndexPath:(id)arg3;
 - (void)engineController:(id)arg1 didMoveContent:(id)arg2 fromIndexPath:(id)arg3 toIndexPath:(id)arg4;
 - (void)engineController:(id)arg1 didReloadContent:(id)arg2 atIndexPath:(id)arg3;
+- (void)engineController:(id)arg1 didReloadContent:(id)arg2 withIdentifier:(id)arg3;
 - (void)engineController:(id)arg1 didRemoveContent:(id)arg2 atIndexPath:(id)arg3;
 - (BOOL)engineController:(id)arg1 isElementAtIndexPathVisible:(id)arg2;
 - (void)engineController:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)engineControllerDidFinishUpdatingRelevance:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (id)intentActionWantsBackgroundImageForAlert:(id)arg1;
 - (id)intentActionWantsBackgroundToBlurForAlert:(id)arg1;
 - (id)intentActionWantsViewToBlurForAlert:(id)arg1;
 - (void)layoutSubviews;
-- (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)performScrollTestNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)presentedViewControllerShouldBecomeFirstResponder:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;

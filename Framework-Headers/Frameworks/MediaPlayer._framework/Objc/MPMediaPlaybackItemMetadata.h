@@ -121,8 +121,10 @@
 - (void)getNetworkConstraintsForDownloadKind:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (long long)likedState:(id)arg1;
 - (void)loadMediaItemWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setCachedLocalPlaybackAssetFilePath:(id)arg1 protectionType:(unsigned long long)arg2 assetQuality:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)setLikedState:(long long)arg1 forUserIdentity:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)setLikedState:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)streamingPlaybackAssetDestinationFilePathForAssetQuality:(unsigned long long)arg1 assetFlavor:(id)arg2 protectionType:(unsigned long long)arg3 pathExtension:(id)arg4;
 - (id)streamingPlaybackPurchaseBundleDestinationFilePathForAssetFilePath:(id)arg1;

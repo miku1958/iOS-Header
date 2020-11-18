@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueIdentifier;
 
+- (void)dealloc;
 - (void)requestInfo:(CDUnknownBlockType)arg1;
 - (void)setData:(id)arg1 newContentType:(id)arg2 newFilename:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setFileWrapper:(id)arg1 contentType:(id)arg2 completion:(CDUnknownBlockType)arg3;

@@ -13,18 +13,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityHandwritingAttributeAcceptsRawInput;
 - (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSets;
-- (BOOL)_accessibilityHandwritingAttributeCanDeleteCharacter;
 - (unsigned long long)_accessibilityHandwritingAttributePreferredCharacterSet;
 - (BOOL)_accessibilityHandwritingAttributeShouldEchoCharacter;
 - (BOOL)_accessibilityHandwritingAttributeShouldPlayKeyboardSecureClickSound;
-- (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;
+- (BOOL)_accessibilityHasDeletableText;
+- (void)_accessibilityInsertText:(id)arg1;
 - (BOOL)_accessibilityIsPasswordQuestion;
 - (long long)_accessibilityQuestionKeyboardType;
 - (id)_accessibilityQuestionTextField;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
 - (BOOL)_accessibilitySupportsHandwriting;
+- (BOOL)_accessibilitySupportsTextInsertionAndDeletion;
 
 @end
 

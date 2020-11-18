@@ -12,11 +12,13 @@
 
 @property (copy, nonatomic) NSArray *birthdays;
 
+- (id)addAllPropertiesFromContact:(id)arg1;
 - (id)addProperties:(id)arg1 excludingProperties:(id)arg2 fromContact:(id)arg3;
 - (BOOL)hasNonPersistedData;
 - (void)removePhoto;
 - (BOOL)saveContactInStore:(id)arg1 group:(id)arg2 container:(id)arg3;
 - (BOOL)saveContactInStore:(id)arg1 group:(id)arg2 container:(id)arg3 request:(id)arg4;
 - (void)updateContactTypeWithPolicy:(id)arg1;
+- (void)updateImageInfoWithType:(unsigned long long)arg1;
 @end
 

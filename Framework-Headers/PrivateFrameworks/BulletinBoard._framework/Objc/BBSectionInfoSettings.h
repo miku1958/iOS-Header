@@ -11,7 +11,6 @@
 
 @interface BBSectionInfoSettings : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _allowsNotifications;
     BOOL _showsOnExternalDevices;
     BOOL _showsCustomSettingsLink;
     long long _authorizationStatus;
@@ -22,11 +21,12 @@
     unsigned long long _pushSettings;
     long long _carPlaySetting;
     long long _criticalAlertSetting;
+    long long _spokenNotificationSetting;
     long long _bulletinGroupingSetting;
 }
 
 @property (nonatomic) unsigned long long alertType; // @synthesize alertType=_alertType;
-@property (nonatomic) BOOL allowsNotifications; // @synthesize allowsNotifications=_allowsNotifications;
+@property (nonatomic) BOOL allowsNotifications;
 @property (nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (nonatomic) long long bulletinGroupingSetting; // @synthesize bulletinGroupingSetting=_bulletinGroupingSetting;
 @property (nonatomic) long long carPlaySetting; // @synthesize carPlaySetting=_carPlaySetting;
@@ -40,6 +40,7 @@
 @property (nonatomic) BOOL showsInNotificationCenter;
 @property (nonatomic) BOOL showsMessagePreview;
 @property (nonatomic) BOOL showsOnExternalDevices; // @synthesize showsOnExternalDevices=_showsOnExternalDevices;
+@property (nonatomic) long long spokenNotificationSetting; // @synthesize spokenNotificationSetting=_spokenNotificationSetting;
 
 + (id)sectionInfoSettingsForManagedBundleID:(id)arg1;
 + (BOOL)supportsSecureCoding;

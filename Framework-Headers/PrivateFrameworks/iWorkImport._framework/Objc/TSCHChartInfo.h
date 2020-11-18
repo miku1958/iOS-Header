@@ -197,6 +197,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasObjectValueForProperty:(int)arg1 value:(id *)arg2;
 - (BOOL)hasRoundedCorners;
 - (BOOL)hasTractReference;
+- (BOOL)hasTwoYValueAxes;
 - (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1;
 - (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1 omitLabelPlacement:(BOOL)arg2;
 - (id)infoGeometryForDesiredPureLayoutGeometry:(id)arg1;

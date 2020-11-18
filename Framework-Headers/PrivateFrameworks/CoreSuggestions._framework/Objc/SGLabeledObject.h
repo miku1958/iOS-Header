@@ -6,15 +6,16 @@
 
 #import <CoreSuggestions/SGObject.h>
 
-@class NSString;
+@class NSString, SGExtractionInfo;
 
 @interface SGLabeledObject : SGObject
 {
     NSString *_label;
-    unsigned long long _extractionType;
+    SGExtractionInfo *_extractionInfo;
 }
 
-@property (readonly, nonatomic) unsigned long long extractionType; // @synthesize extractionType=_extractionType;
+@property (readonly, nonatomic) SGExtractionInfo *extractionInfo; // @synthesize extractionInfo=_extractionInfo;
+@property (readonly, nonatomic) unsigned long long extractionType;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 
 + (BOOL)supportsSecureCoding;
@@ -22,7 +23,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLabel:(id)arg1 extractionType:(unsigned long long)arg2 recordId:(id)arg3;
+- (id)initWithLabel:(id)arg1 extractionInfo:(id)arg2 recordId:(id)arg3;
 - (id)initWithLabel:(id)arg1 extractionType:(unsigned long long)arg2 recordId:(id)arg3 origin:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLabeledObject:(id)arg1;

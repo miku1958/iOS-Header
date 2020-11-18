@@ -8,21 +8,33 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOURLOptions, NSMutableArray;
+@class GEOURLOptions, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOURLPresent : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSMutableArray *_items;
     GEOURLOptions *_options;
+    struct {
+        unsigned int read_items:1;
+        unsigned int read_options:1;
+        unsigned int wrote_items:1;
+        unsigned int wrote_options:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasOptions;
-@property (strong, nonatomic) NSMutableArray *items; // @synthesize items=_items;
-@property (strong, nonatomic) GEOURLOptions *options; // @synthesize options=_options;
+@property (strong, nonatomic) NSMutableArray *items;
+@property (strong, nonatomic) GEOURLOptions *options;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)itemType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsItem:(id)arg1;
+- (void)_readItems;
+- (void)_readOptions;
 - (void)addItem:(id)arg1;
 - (void)clearItems;
 - (void)copyTo:(id)arg1;
@@ -36,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (id)itemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)itemsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

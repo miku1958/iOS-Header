@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)setThrottlingInterval:(double)arg1;
 - (BOOL)setupRTPForIDS:(id *)arg1;
 - (BOOL)setupRTPWithIPInfo:(struct _VCMediaStreamTransportSetupInfo *)arg1 error:(id *)arg2;
+- (BOOL)setupRTPWithNWConnection:(struct _VCMediaStreamTransportSetupInfo *)arg1 error:(id *)arg2;
 - (BOOL)setupRTPWithSockets:(struct _VCMediaStreamTransportSetupInfo *)arg1 error:(id *)arg2;
 - (BOOL)setupRTPWithTransportSetupInfo:(struct _VCMediaStreamTransportSetupInfo *)arg1 error:(id *)arg2;
 - (int)setupSRTP;

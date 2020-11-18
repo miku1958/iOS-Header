@@ -26,9 +26,10 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_registerForMessages;
+- (BOOL)_shouldFilterAccessoryProfile:(id)arg1;
 - (void)addAdvertisement:(id)arg1;
 - (id)assistantObject;
-- (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
 - (id)dumpSimpleState;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;

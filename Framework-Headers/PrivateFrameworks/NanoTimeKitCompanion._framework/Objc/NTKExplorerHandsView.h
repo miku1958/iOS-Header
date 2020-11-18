@@ -11,8 +11,10 @@
 @interface NTKExplorerHandsView : NTKAnalogHandsView
 {
     UIColor *_secondHandDotColor;
+    struct CGPoint _secondHandCenter;
 }
 
+@property (nonatomic) struct CGPoint secondHandCenter; // @synthesize secondHandCenter=_secondHandCenter;
 @property (strong, nonatomic) UIColor *secondHandDotColor; // @synthesize secondHandDotColor=_secondHandDotColor;
 
 - (void).cxx_destruct;

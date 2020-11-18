@@ -22,6 +22,7 @@
 @property (readonly) NSString *px_displayName;
 @property (readonly) NSDate *px_keyPhotoDate;
 @property (readonly) NSString *px_localIdentifier;
+@property (readonly) NSString *px_localizedName;
 @property (readonly) Class superclass;
 
 + (void)px_loadRepresentativeFacesForPersons:(id)arg1;

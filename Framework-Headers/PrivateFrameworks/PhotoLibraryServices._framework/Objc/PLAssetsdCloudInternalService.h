@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotoLibraryServices/PLAbstractLibraryServicesManagerService.h>
 
 #import <PhotoLibraryServices/PLAssetsdCloudInternalServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PLAssetsdCloudInternalService : NSObject <PLAssetsdCloudInternalServiceProtocol>
+@interface PLAssetsdCloudInternalService : PLAbstractLibraryServicesManagerService <PLAssetsdCloudInternalServiceProtocol>
 {
 }
 
@@ -18,6 +18,29 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+
+- (void)acceptMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)cloudSharingSpaceManagementRequestWithType:(unsigned long long)arg1 optionalBytesToPurge:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)createPhotostreamAlbumWithStreamID:(id)arg1;
+- (void)emailAddressForKey:(long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)enablePhotostreamsWithStreamID:(id)arg1;
+- (void)fetchMomentShareWithURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)forceSyncMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getCurrentTransferProgress:(CDUnknownBlockType)arg1;
+- (void)getSystemBudgetsWithReply:(CDUnknownBlockType)arg1;
+- (void)isReadyForCloudPhotoLibraryWithReply:(CDUnknownBlockType)arg1;
+- (void)keyForEmailAddress:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)overrideSystemBudgetsForSyncSession:(BOOL)arg1 systemBudgets:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)personInfoDictionaryForPersonID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)publishMomentShareWithUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)queryUserIdentitiesWithEmails:(id)arg1 phoneNumbers:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setCloudPhotoLibraryEnabledState:(BOOL)arg1;
+- (void)setCloudPhotoLibraryPauseState:(BOOL)arg1 reason:(short)arg2;
+- (void)setPersonInfoDictionary:(id)arg1 forPersonID:(id)arg2;
+- (void)shouldAutoEnableiCPLOnOSXWithReply:(CDUnknownBlockType)arg1;
+- (void)syncCloudPhotoLibrary;
+- (void)updateSharedAlbumsCachedServerConfigurationLimits;
 
 @end
 

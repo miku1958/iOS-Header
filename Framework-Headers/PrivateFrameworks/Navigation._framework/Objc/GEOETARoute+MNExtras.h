@@ -7,6 +7,10 @@
 #import <GeoServices/GEOETARoute.h>
 
 @interface GEOETARoute (MNExtras)
-- (id)initForRoute:(id)arg1 usingETAsFromOtherRoute:(id)arg2;
+
+@property (readonly, nonatomic) BOOL hasTrafficIncidentAlert;
+@property (readonly, nonatomic) BOOL hasValidTrafficIncidentAlert;
+
+- (id)initForRoute:(id)arg1 usingETAsFromOtherRoute:(id)arg2 traffic:(id)arg3;
 @end
 

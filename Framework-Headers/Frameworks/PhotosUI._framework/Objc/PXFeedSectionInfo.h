@@ -29,6 +29,7 @@
     PLCloudSharedAlbumInvitationRecord *_invitationRecord;
     long long _numberOfItems;
     NSIndexSet *_excludedAssetIndexes;
+    long long _cachedInboxModelType;
 }
 
 @property (copy, nonatomic) NSString *albumTitle; // @synthesize albumTitle=_albumTitle;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) unsigned long long assetsCount;
 @property (readonly, nonatomic) unsigned long long assetsCount;
 @property (readonly, nonatomic) NSArray *assetsForOneUp;
+@property (nonatomic) long long cachedInboxModelType; // @synthesize cachedInboxModelType=_cachedInboxModelType;
 @property (readonly, nonatomic) BOOL canShowAvalancheStacks;
 @property (readonly, nonatomic) BOOL canShowComments;
 @property (readonly, nonatomic) PLCloudFeedEntry *cloudFeedEntry; // @synthesize cloudFeedEntry=_cloudFeedEntry;
@@ -52,6 +54,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *inboxModelTitle;
+@property (readonly, nonatomic) long long inboxModelType;
+@property (readonly, nonatomic) long long inboxModelType;
 @property (strong, nonatomic) PLCloudSharedAlbumInvitationRecord *invitationRecord; // @synthesize invitationRecord=_invitationRecord;
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) BOOL isMine;
@@ -79,7 +83,6 @@
 @property (strong, nonatomic) PLManagedAsset *tertiaryKeyAsset; // @synthesize tertiaryKeyAsset=_tertiaryKeyAsset;
 @property (readonly, strong, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;
-@property (readonly, nonatomic) long long type;
 @property (readonly, nonatomic) BOOL userIsSender;
 @property (readonly, strong, nonatomic) NSString *uuid;
 @property (readonly, nonatomic) unsigned long long videosCount;
@@ -117,6 +120,7 @@
 - (long long)indexOfItemWithAsset:(id)arg1;
 - (long long)indexOfItemWithComment:(id)arg1;
 - (id)initWithCloudFeedEntry:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)likesForItemAtIndex:(long long)arg1;
 - (void)reload;
 - (id)sharedAlbumWithGUID:(id)arg1;

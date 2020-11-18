@@ -52,6 +52,7 @@
 @property (readonly, strong, nonatomic) NSArray *installationWarnings;
 @property (readonly, nonatomic) BOOL isInstalledForSystem;
 @property (readonly, nonatomic) BOOL isInstalledForUser;
+@property (readonly, nonatomic) BOOL isManagedByMDM;
 @property (readonly, nonatomic) BOOL isManagedByProfileService;
 @property (readonly, nonatomic) BOOL isSigned;
 @property (readonly, nonatomic) BOOL isStub; // @synthesize isStub=_isStub;
@@ -94,8 +95,10 @@
 + (id)profileDictionaryFromProfileData:(id)arg1 outSignerCerts:(id *)arg2 outError:(id *)arg3;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 allowEmptyPayload:(BOOL)arg3 outError:(id *)arg4;
 + (id)profileWithData:(id)arg1 fileName:(id)arg2 outError:(id *)arg3;
++ (id)profileWithData:(id)arg1 options:(id)arg2 fileName:(id)arg3 allowEmptyPayload:(BOOL)arg4 outError:(id *)arg5;
++ (id)profileWithData:(id)arg1 options:(id)arg2 outError:(id *)arg3;
 + (id)profileWithData:(id)arg1 outError:(id *)arg2;
-+ (id)profileWithDictionary:(id)arg1 signerCerts:(id)arg2 fileName:(id)arg3 allowEmptyPayload:(BOOL)arg4 outError:(id *)arg5;
++ (id)profileWithDictionary:(id)arg1 options:(id)arg2 signerCerts:(id)arg3 fileName:(id)arg4 allowEmptyPayload:(BOOL)arg5 outError:(id *)arg6;
 + (id)removeOptionalNonZeroLengthStringInDictionary:(id)arg1 key:(id)arg2 errorDomain:(id)arg3 invalidDataCode:(long long)arg4 invalidDataErrorString:(id)arg5 outError:(id *)arg6;
 + (id)removeOptionalObjectInDictionary:(id)arg1 key:(id)arg2 type:(Class)arg3 errorDomain:(id)arg4 invalidDataCode:(long long)arg5 invalidDataErrorString:(id)arg6 outError:(id *)arg7;
 + (id)removeRequiredNonZeroLengthStringInDictionary:(id)arg1 key:(id)arg2 errorDomain:(id)arg3 missingDataCode:(long long)arg4 missingDataErrorString:(id)arg5 invalidDataCode:(long long)arg6 invalidDataErrorString:(id)arg7 outError:(id *)arg8;
@@ -118,9 +121,11 @@
 - (id)initWithDictionary:(id)arg1 signerCerts:(id)arg2 allowEmptyPayload:(BOOL)arg3 outError:(id *)arg4;
 - (id)installationWarningsIncludeUnsignedProfileWarning:(BOOL)arg1;
 - (BOOL)isProfileUIInstallationEffectivelyAllowed;
+- (BOOL)isUserEnrollmentProfile;
 - (id)malformedProfileErrorWithError:(id)arg1;
 - (BOOL)mayInstallWithOptions:(id)arg1 hasInteractionClient:(BOOL)arg2 outError:(id *)arg3;
 - (id)payloadWithUUID:(id)arg1;
+- (id)payloadsWithClass:(Class)arg1;
 - (void)replacePayloadWithUUID:(id)arg1 withPayload:(id)arg2;
 - (id)restrictionsWithHeuristicsAppliedOutError:(id *)arg1;
 - (id)signatureVersion;

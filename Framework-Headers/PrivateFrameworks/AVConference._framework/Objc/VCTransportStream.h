@@ -13,6 +13,10 @@ __attribute__((visibility("hidden")))
     int _vtpReceiveSocket;
     int _vtpCancelSocket;
     struct tagVCMediaQueue *_mediaQueue;
+    CDUnknownBlockType _callback;
+    void *_callbackContext;
+    int _vtpCallbackId;
+    struct fd_set _readFDsForCallback;
 }
 
 @property (nonatomic) struct tagVCMediaQueue *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
@@ -21,7 +25,10 @@ __attribute__((visibility("hidden")))
 - (void)VCTransportStreamUnblock;
 - (void)dealloc;
 - (id)initWithTransportSessionID:(unsigned int)arg1 options:(id)arg2;
+- (void)processVTPPacket:(struct _VTPPacket *)arg1;
 - (int)receivePacket:(CDStruct_88f6cd69 *)arg1;
+- (int)registerPacketCallbackContext:(void *)arg1 callback:(CDUnknownBlockType)arg2;
+- (int)unregisterPacketCallback;
 
 @end
 

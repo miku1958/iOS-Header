@@ -7,29 +7,29 @@
 #import <SearchUI/SearchUICardSectionView.h>
 
 #import <SearchUI/FUFlightViewControllerDelegate-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
 @class FUFlightViewController, NSString, NUIContainerBoxView, SFFlightCardSection;
 
-@interface SearchUIFlightCardSectionView : SearchUICardSectionView <FUFlightViewControllerDelegate>
+@interface SearchUIFlightCardSectionView : SearchUICardSectionView <FUFlightViewControllerDelegate, NUIContainerViewDelegate>
 {
     FUFlightViewController *_flightViewController;
     unsigned long long _lastSelectedLegIndex;
 }
 
-@property (strong) NUIContainerBoxView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) NUIContainerBoxView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) FUFlightViewController *flightViewController; // @synthesize flightViewController=_flightViewController;
+@property (strong, nonatomic) FUFlightViewController *flightViewController; // @synthesize flightViewController=_flightViewController;
 @property (readonly) unsigned long long hash;
-@property unsigned long long lastSelectedLegIndex; // @synthesize lastSelectedLegIndex=_lastSelectedLegIndex;
-@property (strong) SFFlightCardSection *section; // @dynamic section;
+@property (nonatomic) unsigned long long lastSelectedLegIndex; // @synthesize lastSelectedLegIndex=_lastSelectedLegIndex;
+@property (strong, nonatomic) SFFlightCardSection *section; // @dynamic section;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)flightController:(id)arg1 didSelectLeg:(long long)arg2 ofFlight:(long long)arg3;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (id)setupContentView;
-- (BOOL)spansFullWidth;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 
 @end

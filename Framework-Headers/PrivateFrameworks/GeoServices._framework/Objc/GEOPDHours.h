@@ -8,22 +8,34 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDHoursThreshold, PBUnknownFields;
+@class GEOPDHoursThreshold, PBDataReader, PBUnknownFields;
 
 @interface GEOPDHours : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _days;
     struct GEOPDLocalTimeRange *_timeRanges;
     unsigned long long _timeRangesCount;
     unsigned long long _timeRangesSpace;
     GEOPDHoursThreshold *_hoursThreshold;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_days:1;
+        unsigned int read_timeRanges:1;
+        unsigned int read_hoursThreshold:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_days:1;
+        unsigned int wrote_timeRanges:1;
+        unsigned int wrote_hoursThreshold:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *days;
 @property (readonly, nonatomic) unsigned long long daysCount;
 @property (readonly, nonatomic) BOOL hasHoursThreshold;
-@property (strong, nonatomic) GEOPDHoursThreshold *hoursThreshold; // @synthesize hoursThreshold=_hoursThreshold;
+@property (strong, nonatomic) GEOPDHoursThreshold *hoursThreshold;
 @property (readonly, nonatomic) struct GEOPDLocalTimeRange *timeRanges;
 @property (readonly, nonatomic) unsigned long long timeRangesCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
@@ -31,13 +43,20 @@
 + (id)_allHoursForPlaceData:(id)arg1;
 + (id)completeOperatingHoursForPlaceData:(id)arg1 withTimeZone:(id)arg2;
 + (BOOL)currentOperatingHoursAvailableForPlaceData:(id)arg1 withTimeZone:(id)arg2;
++ (BOOL)isValid:(id)arg1;
 + (BOOL)operatingHoursAvailableForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsDays:(id)arg1;
+- (void)_addNoFlagsDay:(int)arg1;
+- (void)_addNoFlagsTimeRange:(struct GEOPDLocalTimeRange)arg1;
+- (void)_readDays;
+- (void)_readHoursThreshold;
+- (void)_readTimeRanges;
 - (void)addDay:(int)arg1;
 - (void)addTimeRange:(struct GEOPDLocalTimeRange)arg1;
 - (void)clearDays;
 - (void)clearTimeRanges;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)dayAtIndex:(unsigned long long)arg1;
@@ -48,6 +67,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setDays:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setTimeRanges:(struct GEOPDLocalTimeRange *)arg1 count:(unsigned long long)arg2;

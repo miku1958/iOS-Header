@@ -18,8 +18,8 @@
     BOOL _maintainsInput;
     BOOL _supportsAccurateWordCallbacks;
     BOOL _audioSessionIDIsValid;
-    BOOL _useVoiceBooster;
     BOOL _useMonarchStyleRate;
+    BOOL _synthesizeSilently;
     unsigned int _audioSessionID;
     unsigned int _audioQueueFlags;
     NSString *_text;
@@ -34,7 +34,9 @@
     double _dispatchTime;
     double _handledTime;
     NSArray *_channels;
+    unsigned long long _synthesizerInstanceID;
     void *_clientContext;
+    CDUnknownBlockType _audioBufferCallback;
     NSString *_originalString;
     NSMutableArray *_originalWordRanges;
     NSMutableArray *_processedWordRanges;
@@ -43,6 +45,7 @@
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
+@property (copy, nonatomic) CDUnknownBlockType audioBufferCallback; // @synthesize audioBufferCallback=_audioBufferCallback;
 @property (nonatomic) unsigned int audioQueueFlags; // @synthesize audioQueueFlags=_audioQueueFlags;
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (nonatomic) BOOL audioSessionIDIsValid; // @synthesize audioSessionIDIsValid=_audioSessionIDIsValid;
@@ -63,9 +66,10 @@
 @property (strong, nonatomic) NSMutableArray *replacedWords; // @synthesize replacedWords=_replacedWords;
 @property (strong, nonatomic) TTSSpeechChannel *speechChannel; // @synthesize speechChannel=_speechChannel;
 @property (nonatomic) BOOL supportsAccurateWordCallbacks; // @synthesize supportsAccurateWordCallbacks=_supportsAccurateWordCallbacks;
+@property (nonatomic) BOOL synthesizeSilently; // @synthesize synthesizeSilently=_synthesizeSilently;
+@property (nonatomic) unsigned long long synthesizerInstanceID; // @synthesize synthesizerInstanceID=_synthesizerInstanceID;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) BOOL useMonarchStyleRate; // @synthesize useMonarchStyleRate=_useMonarchStyleRate;
-@property (nonatomic) BOOL useVoiceBooster; // @synthesize useVoiceBooster=_useVoiceBooster;
 @property (nonatomic) double volume; // @synthesize volume=_volume;
 @property (nonatomic) long long wordRangeCallbacksDispatched; // @synthesize wordRangeCallbacksDispatched=_wordRangeCallbacksDispatched;
 
@@ -81,6 +85,7 @@
 - (void)speechRequestDidPauseForService:(id)arg1;
 - (void)speechRequestDidStartForService:(id)arg1;
 - (void)speechRequestDidStopWithSuccess:(BOOL)arg1 phonemesSpoken:(id)arg2 forService:(id)arg3 error:(id)arg4;
+- (void)speechRequestDidSynthesizeSilentlyToURL:(id)arg1 forService:(id)arg2;
 - (void)speechRequestMark:(long long)arg1 didStartForRange:(struct _NSRange)arg2 forService:(id)arg3;
 - (long long)vocalizerFootprint;
 - (long long)vocalizerGender;

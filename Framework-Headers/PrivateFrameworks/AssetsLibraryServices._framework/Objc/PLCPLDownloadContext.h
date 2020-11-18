@@ -25,7 +25,7 @@
 @property (strong) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property double updateLastQueuedTime; // @synthesize updateLastQueuedTime=_updateLastQueuedTime;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)updateFromDownloadStatusUserInfo:(id)arg1;
 

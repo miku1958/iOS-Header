@@ -72,6 +72,7 @@
 - (void)didUpdateDefaultPaymentPassWithUniqueIdentifier:(id)arg1;
 - (void)disbursementVoucherWithDisbursementSource:(unsigned long long)arg1 disbursementTarget:(unsigned long long)arg2 bundleIdentifier:(id)arg3 teamIdentifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)downloadAllPaymentPasses;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)expressPassInformationForMode:(id)arg1;
 - (id)expressPassInformationWithPassUniqueIdentifier:(id)arg1;
 - (id)expressPassesInformation;
@@ -145,13 +146,12 @@
 - (void)submitTransactionAnswerForTransaction:(id)arg1 questionType:(unsigned long long)arg2 answer:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3;
 - (void)submitVerificationCode:(id)arg1 verificationData:(id)arg2 forDPANIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (BOOL)supportsDisbursements;
 - (void)transactionCountByPeriodForPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 calendar:(id)arg4 unit:(unsigned long long)arg5 includePurchaseTotal:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)transactionWithReferenceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transactionWithServiceIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)transactionWithTransactionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)transactionsAppLaunchTokenForPassWithUniqueIdentifier:(id)arg1;
-- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 matchingMapsMerchantIdentifier:(unsigned long long)arg2 orMapsBrandIdentifier:(unsigned long long)arg3 orMerchantCleanName:(id)arg4 withTransactionSource:(unsigned long long)arg5 withBackingData:(unsigned long long)arg6 limit:(long long)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 matchingMerchant:(id)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withMapsIdentifier:(unsigned long long)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 withTransactionSource:(unsigned long long)arg3 withBackingData:(unsigned long long)arg4 limit:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(CDUnknownBlockType)arg5;

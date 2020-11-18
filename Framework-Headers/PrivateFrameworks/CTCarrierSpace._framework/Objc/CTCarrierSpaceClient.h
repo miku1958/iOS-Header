@@ -36,6 +36,7 @@
 - (void)fetchPlansInfo:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchUsageInfo:(CDUnknownBlockType)arg1;
 - (void)fetchUsageInfo:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getAuthenticationContext:(CDUnknownBlockType)arg1;
 - (void)getCapabilities:(CDUnknownBlockType)arg1;
 - (void)getUserConsentFlowInfo:(CDUnknownBlockType)arg1;
 - (id)init;
@@ -43,6 +44,7 @@
 - (id)initWithQueue:(struct dispatch_queue_s *)arg1 andListenerEndpoint:(id)arg2;
 - (void)invalidate;
 - (void)ping:(CDUnknownBlockType)arg1;
+- (void)purchasePlan:(id)arg1 authInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)purchasePlan:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)refreshAllInfo:(CDUnknownBlockType)arg1;
 - (void)refreshAppsInfo:(CDUnknownBlockType)arg1;

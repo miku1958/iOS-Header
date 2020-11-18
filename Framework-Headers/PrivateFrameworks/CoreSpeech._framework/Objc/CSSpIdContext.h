@@ -13,6 +13,7 @@
     NSString *_uniqueUttTag;
     unsigned long long _activeChannel;
     CSAsset *_asset;
+    CSAsset *_fallbackAsset;
     NSString *_locale;
     NSDictionary *_vtEventInfo;
     unsigned long long _invocationStyle;
@@ -20,6 +21,7 @@
 
 @property (nonatomic) unsigned long long activeChannel; // @synthesize activeChannel=_activeChannel;
 @property (strong, nonatomic) CSAsset *asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) CSAsset *fallbackAsset; // @synthesize fallbackAsset=_fallbackAsset;
 @property (nonatomic) unsigned long long invocationStyle; // @synthesize invocationStyle=_invocationStyle;
 @property (readonly, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSString *uniqueUttTag; // @synthesize uniqueUttTag=_uniqueUttTag;
@@ -27,7 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithSpIdInvocationStyle:(unsigned long long)arg1 asset:(id)arg2 locale:(id)arg3 vtEventInfo:(id)arg4;
+- (id)initWithSpIdInvocationStyle:(unsigned long long)arg1 asset:(id)arg2 fallbackAsset:(id)arg3 locale:(id)arg4 vtEventInfo:(id)arg5;
 - (id)utteranceAudioFilepathForSpIdType:(unsigned long long)arg1;
 - (id)utteranceMetadataFilePathForSpIdType:(unsigned long long)arg1;
 

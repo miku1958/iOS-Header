@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class PHImportRecord;
+@class PHAsset, PHImportAsset, PHImportRecord;
 
 @protocol PHImportServiceImporterDelegate
 - (void)completedImportRecord:(PHImportRecord *)arg1;
+- (long long)importAsset:(PHImportAsset *)arg1 asDuplicateOfLibraryAsset:(PHAsset *)arg2 applyToAll:(BOOL *)arg3;
 @end
 

@@ -8,7 +8,7 @@
 
 #import <CoreThemeDefinition/TDElementAttributes-Protocol.h>
 
-@class TDAppearance, TDThemeDeploymentTarget, TDThemeDirection, TDThemeDisplayGamut, TDThemeDrawingLayer, TDThemeElement, TDThemeGraphicsFeatureSetClass, TDThemeIdiom, TDThemePart, TDThemePresentationState, TDThemeSize, TDThemeState, TDThemeUISizeClass, TDThemeValue;
+@class TDAppearance, TDLocalization, TDThemeDeploymentTarget, TDThemeDirection, TDThemeDisplayGamut, TDThemeDrawingLayer, TDThemeElement, TDThemeGlyphSize, TDThemeGlyphWeight, TDThemeGraphicsFeatureSetClass, TDThemeIdiom, TDThemePart, TDThemePresentationState, TDThemeSize, TDThemeState, TDThemeUISizeClass, TDThemeValue;
 
 @interface TDRenditionKeySpec : NSManagedObject <TDElementAttributes>
 {
@@ -18,7 +18,7 @@
     unsigned int _subtype;
     unsigned int _nameIdentifier;
     unsigned int _memoryClass;
-    struct _renditionkeytoken _stackScratchKey[18];
+    struct _renditionkeytoken _stackScratchKey[22];
     struct _renditionkeytoken *_scratchKey;
 }
 
@@ -26,9 +26,12 @@
 @property (strong, nonatomic) TDThemeDirection *direction; // @dynamic direction;
 @property (strong, nonatomic) TDThemeElement *element; // @dynamic element;
 @property (strong, nonatomic) TDThemeDisplayGamut *gamut; // @dynamic gamut;
+@property (strong, nonatomic) TDThemeGlyphSize *glyphSize; // @dynamic glyphSize;
+@property (strong, nonatomic) TDThemeGlyphWeight *glyphWeight; // @dynamic glyphWeight;
 @property (strong, nonatomic) TDThemeGraphicsFeatureSetClass *graphicsFeatureSetClass; // @dynamic graphicsFeatureSetClass;
 @property (strong, nonatomic) TDThemeIdiom *idiom; // @dynamic idiom;
 @property (strong, nonatomic) TDThemeDrawingLayer *layer; // @dynamic layer;
+@property (strong, nonatomic) TDLocalization *localization; // @dynamic localization;
 @property (strong, nonatomic) TDThemePart *part; // @dynamic part;
 @property (strong, nonatomic) TDThemePresentationState *presentationState; // @dynamic presentationState;
 @property (strong, nonatomic) TDThemeState *previousState; // @dynamic previousState;

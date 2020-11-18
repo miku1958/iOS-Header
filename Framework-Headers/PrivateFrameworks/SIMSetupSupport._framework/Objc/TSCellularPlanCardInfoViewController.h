@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/UIViewController.h>
+#import <OnBoardingKit/OBBaseWelcomeController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 #import <SIMSetupSupport/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, UILabel, UIScrollView, UITableView, UITextField;
+@class NSArray, NSLayoutConstraint, NSString, UIBarButtonItem, UILabel, UIScrollView, UITableView, UITextField;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanCardInfoViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TSSetupFlowItem>
+@interface TSCellularPlanCardInfoViewController : OBBaseWelcomeController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, TSSetupFlowItem>
 {
     NSString *_fauxCardData;
     NSArray *_tableData;
     UITextField *_activeTextField;
     struct CGSize _keyboardSize;
+    UIBarButtonItem *_nextButton;
     id<TSSIMSetupFlowDelegate> _delegate;
     UILabel *_enterActivationLabel;
     UITableView *_infoTableView;
@@ -39,6 +40,7 @@
 
 - (void).cxx_destruct;
 - (void)addNewPlanWithUserInfo:(id)arg1;
+- (BOOL)canBeShownFromSuspendedState;
 - (void)configureCell:(id)arg1 atIndexPath:(id)arg2;
 - (id)init;
 - (void)keyboardWasShown:(id)arg1;
@@ -47,6 +49,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;

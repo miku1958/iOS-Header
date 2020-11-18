@@ -9,14 +9,22 @@
 @class NSData, NSDate, NSUUID;
 
 @protocol MSPRemoteModelAccess <NSObject>
-- (void)commitFavoritesSerializedRepresentation:(NSData *)arg1 operationIdentifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)commitHistorySerializedRepresentation:(NSData *)arg1 earliestKnownSyncDate:(NSDate *)arg2 operationIdentifier:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)commitCollectionsSerializedRepresentation:(NSData *)arg1 operationIdentifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)commitFavoritesSerializedRepresentation:(NSData *)arg1 reapingTombstones:(BOOL)arg2 operationIdentifier:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)commitHistorySerializedRepresentation:(NSData *)arg1 reapingTombstones:(BOOL)arg2 earliestKnownSyncDate:(NSDate *)arg3 operationIdentifier:(NSUUID *)arg4 completion:(void (^)(NSError *))arg5;
+- (void)commitPinnedPlacesSerializedRepresentation:(NSData *)arg1 operationIdentifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)eraseCollectionsSerializedRepresentationWithCompletion:(void (^)(NSError *))arg1;
 - (void)eraseFavoritesSerializedRepresentationWithCompletion:(void (^)(NSError *))arg1;
 - (void)eraseHistorySerializedRepresentationWithCompletion:(void (^)(NSError *))arg1;
+- (void)erasePinnedPlacesSerializedRepresentationWithCompletion:(void (^)(NSError *))arg1;
+- (void)fetchCollectionsSerializedRepresentationWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)fetchFavoritesSerializedRepresentationWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)fetchHistorySerializedRepresentationWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)fetchLastKnownCollectionsOperationIdentifier:(void (^)(NSUUID *))arg1;
 - (void)fetchLastKnownFavoritesOperationIdentifier:(void (^)(NSUUID *))arg1;
 - (void)fetchLastKnownHistoryOperationIdentifier:(void (^)(NSUUID *))arg1;
+- (void)fetchLastKnownPinnedPlacesOperationIdentifier:(void (^)(NSUUID *))arg1;
+- (void)fetchPinnedPlacesSerializedRepresentationWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)noteMapstoolChangedFavoritesOnDisk;
 - (void)noteMapstoolChangedHistoryOnDisk;
 - (void)testByNotingHistoryChangedOnDisk;

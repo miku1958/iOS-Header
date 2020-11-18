@@ -17,7 +17,6 @@
 @property (readonly, nonatomic) unsigned long long repeat; // @dynamic repeat;
 @property (readonly, nonatomic) struct _SXConvertibleValue width; // @dynamic width;
 
-+ (id)typeString;
 - (unsigned long long)repeatWithValue:(id)arg1 withType:(int)arg2;
 
 @end

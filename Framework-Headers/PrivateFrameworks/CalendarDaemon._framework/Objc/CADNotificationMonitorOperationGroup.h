@@ -13,25 +13,22 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (void)_logNotificationCountsForNotificationTypes:(id)arg1;
-+ (id)_stringForNotificationType:(int)arg1;
 + (BOOL)requiresEventAccess;
 + (BOOL)requiresEventOrReminderAccess;
 + (BOOL)requiresReminderAccess;
 + (id)whitelistedBundles;
 - (void)CADCalendar:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADCalendarSetClearedFromNotificationCenter:(id)arg1 error:(CDUnknownBlockType)arg2;
-- (void)CADDatabaseGetEventNotificationItems:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseGetEventNotificationItemsFilteredByShowsNotificationsFlag:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseGetInboxRepliedSectionItems:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetInviteReplyNotifications:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseGetReminderNotificationItems:(CDUnknownBlockType)arg1;
+- (void)CADDatabaseGetNotificationCountForSourceWithExternalIdentifier:(id)arg1 excludingDelegateSources:(BOOL)arg2 filteredByShowsNotificationsFlag:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseGetResourceChanges:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetSharedCalendarInvitationsWithReply:(CDUnknownBlockType)arg1;
 - (void)CADEvent:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADEventSetInvitationStatus:(int)arg1 forEvent:(id)arg2 error:(CDUnknownBlockType)arg3;
 - (void)CADInviteReplyNotification:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
 - (void)CADResourceChange:(id)arg1 setAlertedWithError:(CDUnknownBlockType)arg2;
-- (BOOL)_event:(void *)arg1 hasOccurrenceEndingAfterDate:(double)arg2;
 
 @end
 

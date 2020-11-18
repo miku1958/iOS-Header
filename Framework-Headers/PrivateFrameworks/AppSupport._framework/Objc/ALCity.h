@@ -24,11 +24,13 @@
     NSString *_unlocalizedCountryOverride;
     NSString *_identifierForCPCity;
     BOOL _localizationAttempted;
+    BOOL _displayNameIncludingCountryShowsOnlyCountry;
 }
 
 @property (readonly, nonatomic) NSString *classicIdentifier;
 @property (strong, nonatomic) NSString *countryName;
 @property (strong, nonatomic) NSString *countryOverride;
+@property (nonatomic) BOOL displayNameIncludingCountryShowsOnlyCountry; // @synthesize displayNameIncludingCountryShowsOnlyCountry=_displayNameIncludingCountryShowsOnlyCountry;
 @property (nonatomic) int identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) float latitude; // @synthesize latitude=_latitude;
 @property (strong, nonatomic) NSString *localeCode; // @synthesize localeCode=_localeCode;

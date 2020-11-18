@@ -15,12 +15,15 @@
 @property (readonly, nonatomic) HFMultiStateControlItem *controlItem; // @dynamic controlItem;
 
 + (Class)controlItemClass;
+- (BOOL)_isCharacteristicTypeRotationDirection;
+- (BOOL)_shouldUseWheelPickerView;
 - (BOOL)_useOverrideStatusText;
 - (id)controlToViewValueTransformer;
 - (id)createInteractionCoordinator;
 - (id)createViewProfile;
 - (void)modelValueDidChange;
 - (id)overrideStatusText;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

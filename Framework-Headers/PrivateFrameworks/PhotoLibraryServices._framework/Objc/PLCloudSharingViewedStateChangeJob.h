@@ -31,15 +31,15 @@
 + (void)markAssetCollection:(id)arg1 asHavingUnreadComments:(BOOL)arg2 inAlbum:(id)arg3;
 + (void)setLastViewedCommentDate:(id)arg1 forAssetCollection:(id)arg2 inAlbum:(id)arg3;
 + (void)updateUnviewedAssetCollectionCount:(int)arg1 forAlbum:(id)arg2;
+- (void).cxx_destruct;
 - (void)_executeAlbumUnviewedAssetCountChangedWithGroup;
 - (void)_executeAlbumViewedStateChanged;
 - (void)_executeAssetCommentsReadStateChangedWithGroup;
 - (void)_executeAssetLastViewedCommentDateChangedWithGroup;
 - (long long)daemonOperation;
-- (void)dealloc;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
 - (void)run;
 - (void)runDaemonSide;
 

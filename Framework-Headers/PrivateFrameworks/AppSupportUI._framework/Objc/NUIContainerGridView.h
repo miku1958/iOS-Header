@@ -8,108 +8,93 @@
 
 #import <AppSupportUI/_NUIGridArrangementContainer-Protocol.h>
 
-@class NSMutableArray, NSString;
-@protocol NUIContainerGridViewDelegate;
+@class NSArray, NSMutableArray, NSString;
 
 @interface NUIContainerGridView : NUIContainerView <_NUIGridArrangementContainer>
 {
     NSMutableArray *_viewRows;
-    struct _NUIGridArrangement _visibleArrangement;
-    struct CGSize _visibleCount;
+    struct _NUIGridArrangement _arrangement;
+    CDStruct_0d6b4eb6 _visibleCount;
     struct map<UIView *, const std::__1::pair<_NSRange, _NSRange>, std::__1::less<UIView *>, std::__1::allocator<std::__1::pair<UIView *const, const std::__1::pair<_NSRange, _NSRange>>>> _viewRanges;
-    struct map<unsigned long, const std::__1::pair<UIView *, UIView *>, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, const std::__1::pair<UIView *, UIView *>>>> _rowBaselineViews;
     struct CGSize _spacing;
-    struct vector<_NUIGridViewDimensionConfiguration, std::__1::allocator<_NUIGridViewDimensionConfiguration>> _rows;
-    struct vector<_NUIGridViewDimensionConfiguration, std::__1::allocator<_NUIGridViewDimensionConfiguration>> _columns;
+    NSMutableArray *_rows;
+    NSMutableArray *_columns;
     struct {
+        unsigned int horzAlign:8;
+        unsigned int vertAlign:8;
         unsigned int inInsertOrRemove:1;
-        unsigned int pendingUpdate:1;
-        unsigned int delegateMinSpacing:1;
-        unsigned int delegateMinDirectionalSpacing:1;
-        unsigned int delegateHorizontalAlignment:1;
-        unsigned int delegateVerticalAlignment:1;
+        unsigned int hasMutations:1;
     } _gridViewFlags;
-    long long _horizontalAlignment;
-    long long _verticalAlignment;
     double _rowHeight;
     double _columnWidth;
 }
 
+@property (copy, nonatomic) NSArray *arrangedSubviewRows;
 @property (nonatomic) double columnSpacing;
 @property (nonatomic) double columnWidth; // @synthesize columnWidth=_columnWidth;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<NUIContainerGridViewDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
+@property (nonatomic) long long horizontalAlignment;
 @property (nonatomic) long long horizontalDistribution;
 @property (readonly, nonatomic) long long numberOfColumns;
 @property (readonly, nonatomic) long long numberOfRows;
 @property (nonatomic) double rowHeight; // @synthesize rowHeight=_rowHeight;
 @property (nonatomic) double rowSpacing;
 @property (readonly) Class superclass;
-@property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
+@property (nonatomic) long long verticalAlignment;
 @property (nonatomic) long long verticalDistribution;
 
++ (id)containerGridViewWithArrangedSubviewRows:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_baselineViewForFirstBaseline:(BOOL)arg1 forRow:(unsigned long long)arg2;
 - (id)_baselineViewVendForFirstBaseline:(BOOL)arg1 fromViews:(id)arg2;
 - (struct CGSize)_calculateArrangedSizeFittingSize:(struct CGSize)arg1 forLayout:(BOOL)arg2;
 - (double)_heightOfRowAtIndex:(long long)arg1;
 - (long long)_horizontalAlignmentOfView:(id)arg1 inColumn:(long long)arg2;
-- (void)_invalidateIntrinsicContentSizeAndUpdateArrangedSubviewsToMatchCurrentGrid;
 - (void)_setupViewRangesIfNeeded;
-- (void)_updateArrangedSubviewsToMatchCurrentGrid;
 - (BOOL)_verifyInternalGridConsistencyWarningOnly:(BOOL)arg1;
-- (long long)_verticalAlignmentOfView:(id)arg1 inColumn:(long long)arg2;
+- (long long)_verticalAlignmentOfView:(id)arg1 row:(long long)arg2;
 - (double)_widthOfColumnAtIndex:(long long)arg1;
-- (void)addColumnWithArrangedSubviews:(id)arg1;
-- (void)addRowWithArrangedSubviews:(id)arg1;
+- (id)addColumnWithArrangedSubviews:(id)arg1;
+- (id)addRowWithArrangedSubviews:(id)arg1;
 - (id)arrangedDescription;
 - (id)arrangedSubviewInColumnAtIndex:(long long)arg1 rowAtIndex:(long long)arg2;
-- (id)arrangedSubviewsInColumnAtIndex:(long long)arg1;
-- (id)arrangedSubviewsInRowAtIndex:(long long)arg1;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
+- (id)calculateViewForFirstBaselineLayout;
+- (id)calculateViewForLastBaselineLayout;
+- (id)columnAtIndex:(long long)arg1;
 - (long long)columnIndexForArrangedSubview:(id)arg1;
 - (void)dealloc;
+- (id)debugArrayForDimension:(id)arg1;
+- (id)debugDictionary;
+- (id)debugDictionaryForDimensionConfiguration:(id)arg1;
+- (id)debugDictionaryForVisibleArrangedSubview:(id)arg1;
 - (void)didInsertArrangedSubview:(id)arg1 atIndex:(long long)arg2;
 - (void)didRemoveArrangedSubview:(id)arg1 atIndex:(long long)arg2;
+- (void)ensureArrangedSubviewsAreValid;
 - (void)getColumnRange:(struct _NSRange *)arg1 rowRange:(struct _NSRange *)arg2 forArrangedSubview:(id)arg3;
-- (double)heightOfRowAtIndex:(long long)arg1;
-- (long long)horizontalAlignmentOfColumnAtIndex:(unsigned long long)arg1;
-- (id)initWithArrangeSubviewRows:(id)arg1;
 - (id)initWithArrangedSubviewRows:(id)arg1;
 - (id)initWithArrangedSubviews:(id)arg1;
-- (void)insertColumnAtIndex:(long long)arg1 withArrangedSubviews:(id)arg2;
-- (void)insertRowAtIndex:(long long)arg1 withArrangedSubviews:(id)arg2;
-- (BOOL)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(BOOL)arg1;
-- (BOOL)isColumnAtIndexHidden:(long long)arg1;
-- (BOOL)isRowAtIndexHidden:(long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)insertColumnAtIndex:(long long)arg1 withArrangedSubviews:(id)arg2;
+- (id)insertRowAtIndex:(long long)arg1 withArrangedSubviews:(id)arg2;
 - (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
+- (void)moveColumnAtIndex:(long long)arg1 toIndex:(long long)arg2;
+- (void)moveRowAtIndex:(long long)arg1 toIndex:(long long)arg2;
+- (BOOL)needsBaselineDebugBoundingBoxesForArrangedSubview:(id)arg1;
 - (void)populateGridArrangementCells:(vector_f8404f95 *)arg1;
 - (void)populateGridArrangementDimension:(vector_b8a5df6e *)arg1 withCells:(const vector_f8404f95 *)arg2 axis:(long long)arg3;
 - (void)removeColumnAtIndex:(long long)arg1;
 - (void)removeRowAtIndex:(long long)arg1;
 - (void)replaceArrangedSubview:(id)arg1 inColumnAtIndex:(long long)arg2 rowAtIndex:(long long)arg3;
+- (void)replaceArrangedSubviewAtIndex:(unsigned long long)arg1 withView:(id)arg2;
+- (id)rowAtIndex:(long long)arg1;
 - (long long)rowIndexForArrangedSubview:(id)arg1;
 - (void)setBaselineRelativeArrangement:(BOOL)arg1;
-- (void)setColumnAtIndex:(long long)arg1 hidden:(BOOL)arg2;
-- (void)setHeight:(double)arg1 ofRowAtIndex:(long long)arg2;
-- (void)setHorizontalAlignment:(long long)arg1 ofColumnAtIndex:(long long)arg2;
-- (void)setRowAtIndex:(long long)arg1 hidden:(BOOL)arg2;
-- (void)setSpacing:(double)arg1 afterColumnAtIndex:(long long)arg2;
-- (void)setSpacing:(double)arg1 afterRowAtIndex:(long long)arg2;
-- (void)setVerticalAlignment:(long long)arg1 ofColumnAtIndex:(long long)arg2;
-- (void)setWidth:(double)arg1 ofColumnAtIndex:(long long)arg2;
-- (double)spacingAfterColumnAtIndex:(long long)arg1;
-- (double)spacingAfterRowAtIndex:(long long)arg1;
-- (long long)verticalAlignmentOfColumnAtIndex:(unsigned long long)arg1;
-- (id)viewForFirstBaselineLayout;
-- (id)viewForFirstBaselineLayoutInRow:(long long)arg1;
-- (id)viewForLastBaselineLayout;
-- (id)viewForLastBaselineLayoutInRow:(long long)arg1;
-- (double)widthOfColumnAtIndex:(long long)arg1;
+- (BOOL)setNeedsInvalidation:(long long)arg1;
+- (id)viewForFirstBaselineLayoutInRowAtIndex:(long long)arg1;
+- (id)viewForLastBaselineLayoutInRowAtIndex:(long long)arg1;
 
 @end
 

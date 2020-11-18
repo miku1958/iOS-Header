@@ -20,7 +20,7 @@
 @property (nonatomic) long long tag; // @synthesize tag=_tag;
 
 - (void).cxx_destruct;
-- (id)cellForSubitemAtIndex:(unsigned long long)arg1;
+- (id)cellForSubitemAtIndex:(unsigned long long)arg1 withTraitCollection:(id)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)description;
 - (BOOL)hasSubitemForIndexPathRow:(unsigned long long)arg1;

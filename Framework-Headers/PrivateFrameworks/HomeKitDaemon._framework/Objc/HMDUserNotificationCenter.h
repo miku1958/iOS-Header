@@ -28,11 +28,11 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_getActionCombinationCategory:(id)arg1;
 - (void)_removeRequestWithIdentifier:(id)arg1;
 - (void)_removeRequestWithIdentifiersFromNotificationCenter:(id)arg1;
 - (void)_showNotification:(id)arg1;
 - (void)configureHomeManager:(id)arg1;
+- (id)createNotificationAttachmentWithIdentifier:(id)arg1 forFileAtPath:(id)arg2;
 - (void)cullBulletinsToCount:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
@@ -41,6 +41,7 @@
 - (void)registerNotificationCategories;
 - (void)removeRequestWithIdentifier:(id)arg1;
 - (void)setBadgeNumber:(id)arg1;
+- (id)showNotificationWithTitle:(id)arg1 body:(id)arg2 threadIdentifier:(id)arg3 categoryIdentifier:(id)arg4 requestIdentifier:(id)arg5 date:(id)arg6 attachments:(id)arg7 userInfo:(id)arg8 shouldIgnoreDoNotDisturb:(BOOL)arg9;
 - (id)sortDescriptors;
 - (id)sortedRequestsByDate;
 - (void)updateNotification:(id)arg1 content:(id)arg2;

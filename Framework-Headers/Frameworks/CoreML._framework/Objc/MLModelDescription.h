@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSOrderedSet, NSString;
+#import <CoreML/NSSecureCoding-Protocol.h>
 
-@interface MLModelDescription : NSObject
+@class NSDictionary, NSOrderedSet, NSString, NSURL;
+
+@interface MLModelDescription : NSObject <NSSecureCoding>
 {
+    BOOL _isUpdatable;
     NSDictionary *_inputDescriptionsByName;
     NSDictionary *_outputDescriptionsByName;
     NSString *_predictedFeatureName;
@@ -17,22 +20,35 @@
     NSDictionary *_metadata;
     NSOrderedSet *_inputFeatureNames;
     NSOrderedSet *_outputFeatureNames;
+    NSURL *_modelURL;
+    NSDictionary *_trainingInputDescriptionsByName;
+    NSDictionary *_parameterDescriptionsByKey;
 }
 
 @property (readonly, nonatomic) NSDictionary *inputDescriptionsByName; // @synthesize inputDescriptionsByName=_inputDescriptionsByName;
 @property (strong) NSOrderedSet *inputFeatureNames; // @synthesize inputFeatureNames=_inputFeatureNames;
+@property (nonatomic) BOOL isUpdatable; // @synthesize isUpdatable=_isUpdatable;
 @property (readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (strong, nonatomic) NSURL *modelURL; // @synthesize modelURL=_modelURL;
 @property (readonly, nonatomic) NSDictionary *outputDescriptionsByName; // @synthesize outputDescriptionsByName=_outputDescriptionsByName;
 @property (strong) NSOrderedSet *outputFeatureNames; // @synthesize outputFeatureNames=_outputFeatureNames;
+@property (strong, nonatomic) NSDictionary *parameterDescriptionsByKey; // @synthesize parameterDescriptionsByKey=_parameterDescriptionsByKey;
 @property (readonly, copy, nonatomic) NSString *predictedFeatureName; // @synthesize predictedFeatureName=_predictedFeatureName;
 @property (readonly, copy, nonatomic) NSString *predictedProbabilitiesName; // @synthesize predictedProbabilitiesName=_predictedProbabilitiesName;
+@property (strong, nonatomic) NSDictionary *trainingInputDescriptionsByName; // @synthesize trainingInputDescriptionsByName=_trainingInputDescriptionsByName;
 
 + (id)metadataWithFormat:(struct _MLModelMetadataSpecification *)arg1;
 + (id)metadataWithSpecification:(struct _MLModelSpecification *)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugQuickLookObject;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithInputDescriptions:(id)arg1 outputDescriptions:(id)arg2 predictedFeatureName:(id)arg3 predictedProbabilitiesName:(id)arg4 metadata:(id)arg5;
+- (id)initWithInputDescriptions:(id)arg1 outputDescriptions:(id)arg2 predictedFeatureName:(id)arg3 predictedProbabilitiesName:(id)arg4 trainingInputDescriptions:(id)arg5 metadata:(id)arg6;
 - (id)initWithModelDescriptionSpecification:(struct _MLModelDescriptionSpecification *)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDescription:(id)arg1;

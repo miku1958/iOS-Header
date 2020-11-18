@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BOOL isCorrupt;
 @property (readonly, nonatomic) NSArray *messageEditChatItems; // @synthesize messageEditChatItems=_messageEditChatItems;
 @property (nonatomic) struct _NSRange messagePartRange; // @synthesize messagePartRange=_messagePartRange;
+@property (readonly, nonatomic) BOOL requiresSiriAttribution;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSAttributedString *text; // @synthesize text=_text;
 @property (strong, nonatomic, setter=_setVisibleAssociatedMessageChatItems:) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
@@ -47,7 +48,9 @@
 + (id)_newMessagePartsForMessageItem:(id)arg1;
 + (id)_newMessagePartsForMessageItem:(id)arg1 shouldDisplayLink:(BOOL)arg2 isBusiness:(BOOL)arg3 parentChatIsSpam:(BOOL)arg4 hasKnownParticipants:(BOOL)arg5;
 + (id)_richLinkRangesForMessageText:(id)arg1 sender:(id)arg2 isWhitelistedRichLinkSender:(BOOL)arg3;
++ (BOOL)_shouldAggregateForTransferType:(id)arg1;
 + (BOOL)_supportsRichLinkURL:(id)arg1 forSender:(id)arg2 isWhitelistedRichLinkSender:(BOOL)arg3;
++ (BOOL)isSiriEnabled;
 - (void).cxx_destruct;
 - (id)_initWithItem:(id)arg1 messagePartRange:(struct _NSRange)arg2;
 - (id)_initWithItem:(id)arg1 text:(id)arg2 index:(long long)arg3 messagePartRange:(struct _NSRange)arg4 visibleAssociatedMessageChatItems:(id)arg5;
@@ -55,6 +58,7 @@
 - (BOOL)canDelete;
 - (BOOL)canSendMessageAcknowledgment;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)transcriptText;
 
 @end
 

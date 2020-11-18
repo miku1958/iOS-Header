@@ -16,8 +16,8 @@
     Class _principalClass;
     id _initialPath;
     id _resolvedPath;
-    Class _firstClass;
-    id _lock;
+    NSString *_firstClassName;
+    struct os_unfair_lock_s _lock;
 }
 
 @property (readonly, copy) NSURL *appStoreReceiptURL;
@@ -47,6 +47,7 @@
 
 + (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundleWithURL:(id)arg4;
 + (id)URLsForResourcesWithExtension:(id)arg1 subdirectory:(id)arg2 inBundleWithURL:(id)arg3;
++ (id)_bundleWithIdentifier:(id)arg1 andLibraryName:(id)arg2;
 + (id)allBundles;
 + (id)allFrameworks;
 + (id)bundleForClass:(Class)arg1;

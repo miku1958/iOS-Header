@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)canBecomeFocused;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

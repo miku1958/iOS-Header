@@ -9,6 +9,7 @@
 @class NSString, UIGestureRecognizer, _SFNavigationBarURLButton;
 
 @protocol _SFNavigationBarURLButtonDelegate <NSObject>
+- (BOOL)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 shouldAllowLongPressAtPoint:(struct CGPoint)arg2;
 - (BOOL)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 shouldShowMenuForGestureWithRecognizer:(UIGestureRecognizer *)arg2;
 - (void)navigationBarURLButtonDidReceiveCopyCommand:(_SFNavigationBarURLButton *)arg1;
 - (void)navigationBarURLButtonDidReceivePasteCommand:(_SFNavigationBarURLButton *)arg1;

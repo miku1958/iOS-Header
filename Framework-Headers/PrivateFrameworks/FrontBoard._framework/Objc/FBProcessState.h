@@ -13,24 +13,24 @@
 
 @interface FBProcessState : NSObject <BSDescriptionProviding, NSCopying>
 {
-    int _pid;
     BOOL _running;
     BOOL _foreground;
-    int _taskState;
-    int _visibility;
-    int _effectiveVisibility;
+    BOOL _debugging;
+    int _pid;
+    long long _taskState;
+    long long _visibility;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, getter=isDebugging) BOOL debugging; // @synthesize debugging=_debugging;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) int effectiveVisibility; // @synthesize effectiveVisibility=_effectiveVisibility;
-@property (nonatomic, getter=isForeground) BOOL foreground; // @synthesize foreground=_foreground;
+@property (readonly, nonatomic, getter=isForeground) BOOL foreground; // @synthesize foreground=_foreground;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int pid; // @synthesize pid=_pid;
-@property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
+@property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly) Class superclass;
-@property (nonatomic) int taskState; // @synthesize taskState=_taskState;
-@property (nonatomic) int visibility; // @synthesize visibility=_visibility;
+@property (nonatomic) long long taskState; // @synthesize taskState=_taskState;
+@property (nonatomic) long long visibility; // @synthesize visibility=_visibility;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

@@ -6,31 +6,31 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface VKFeatureAccessibilityElement : UIAccessibilityElement
 {
-    NSMutableArray *_featureArray;
+    NSMutableSet *_featureSet;
     NSMutableArray *_paths;
     BOOL _isPOI;
     BOOL _isRouteEta;
     int _style;
     float _strokeWidth;
     int _sortKey;
-    unsigned long long _featureId;
     unsigned long long _shieldType;
+    NSMutableDictionary *_pointToFeatureDict;
     NSMutableArray *_hitTestPaths;
     NSString *_shieldText;
 }
 
-@property (readonly, nonatomic) NSMutableArray *featureArray; // @synthesize featureArray=_featureArray;
-@property (nonatomic) unsigned long long featureId; // @synthesize featureId=_featureId;
+@property (readonly, nonatomic) NSMutableSet *featureSet; // @synthesize featureSet=_featureSet;
 @property (strong, nonatomic) NSMutableArray *hitTestPaths; // @synthesize hitTestPaths=_hitTestPaths;
 @property (nonatomic) BOOL isPOI; // @synthesize isPOI=_isPOI;
 @property (readonly, nonatomic) BOOL isRoad;
 @property (nonatomic) BOOL isRouteEta; // @synthesize isRouteEta=_isRouteEta;
 @property (readonly, nonatomic) long long mapFeatureType;
 @property (strong, nonatomic) NSMutableArray *paths; // @synthesize paths=_paths;
+@property (strong, nonatomic) NSMutableDictionary *pointToFeatureDict; // @synthesize pointToFeatureDict=_pointToFeatureDict;
 @property (strong, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property (nonatomic) unsigned long long shieldType; // @synthesize shieldType=_shieldType;
 @property (nonatomic) int sortKey; // @synthesize sortKey=_sortKey;
@@ -52,15 +52,17 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (id)accessibilityPaths;
-- (void)addFeature:(void *)arg1;
+- (void)addFeature:(CDStruct_123780e2 *)arg1;
+- (void)addFeatureWrapper:(id)arg1;
 - (void)addFeaturesFromElement:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)detailedFeatureElementInfoAtPoint:(struct CGPoint)arg1;
 - (id)initWithAccessibilityContainer:(id)arg1;
-- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_58d0ca89 *)arg2 featureTypeContext:(void *)arg3 ignoreMissingName:(BOOL)arg4 useLocalizedLabels:(BOOL)arg5;
+- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_123780e2 *)arg2 ignoreMissingName:(BOOL)arg3 useLocalizedLabels:(BOOL)arg4;
 - (BOOL)pointInside:(struct CGPoint)arg1;
-- (id)pointsFromFeature:(id)arg1;
+- (id)pointsFromFeatureWrapper:(id)arg1;
+- (void)removeFeatures;
 - (void)startLocationInformationRequest:(struct CGPoint)arg1;
 
 @end

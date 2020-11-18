@@ -16,12 +16,16 @@
 @property (readonly, nonatomic) BOOL hasLabel;
 @property (nonatomic) BOOL hasRemainingTime;
 @property (nonatomic) BOOL hasState;
+@property (nonatomic) BOOL hasType;
 @property (copy, nonatomic) NSString *identifier;
 @property (strong, nonatomic) _INPBDataString *label;
 @property (nonatomic) double remainingTime;
 @property (nonatomic) int state;
+@property (nonatomic) int type;
 
 - (int)StringAsState:(NSString *)arg1;
+- (int)StringAsType:(NSString *)arg1;
 - (NSString *)stateAsString:(int)arg1;
+- (NSString *)typeAsString:(int)arg1;
 @end
 

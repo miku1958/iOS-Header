@@ -38,11 +38,11 @@
 - (void)_invalidatePhoneNumber;
 - (id)_telephonyClient;
 - (id)_telephonySubscriptionContext;
+- (void)activeSubscriptionsDidChange;
 - (void)dealloc;
 - (void)phoneNumberAvailable:(id)arg1;
 - (void)phoneNumberChanged:(id)arg1;
-- (BOOL)sendSMSWithText:(id)arg1 toPhoneNumber:(id)arg2;
-- (void)subscriptionInfoDidChange;
+- (BOOL)sendSMSWithText:(id)arg1 toPhoneNumber:(id)arg2 error:(id *)arg3;
 
 @end
 

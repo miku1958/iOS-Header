@@ -46,6 +46,7 @@
 
 - (void).cxx_destruct;
 - (void)_archiveDevicesToDisk;
+- (void)_createThumbnailCacheDirectory;
 - (id)_fetchPaymentInstrumentsForRequestingDevice:(id)arg1;
 - (void)_paymentCancellationReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_paymentClientUpdateReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
@@ -59,6 +60,7 @@
 - (void)_populateDevicesIfNeeded;
 - (void)_postCTLMThrottleUncapNotification;
 - (id)_preparePaymentDeviceResponseForRequestingDevice:(id)arg1;
+- (void)_promptDetailsForVirtualCardRequestReceived:(id)arg1 service:(id)arg2 account:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)_queue_addThumbnailCompletionHandler:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (id)_queue_cancelRemotePaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_queue_deviceIsRegistered:(id)arg1;
@@ -87,6 +89,7 @@
 - (id)initWithIDSService:(id)arg1;
 - (id)initWithTargetQueue:(id)arg1;
 - (void)invalidateMessage:(id)arg1;
+- (void)promptDetailsForVirtualCard:(id)arg1 showNotification:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeDelegate:(id)arg1;
 - (id)requestForIdentifier:(id)arg1;
 - (id)requestInstrumentThumbnail:(id)arg1 forRemoteDevice:(id)arg2 size:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;

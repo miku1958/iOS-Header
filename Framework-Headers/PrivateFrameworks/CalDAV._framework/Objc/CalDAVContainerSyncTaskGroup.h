@@ -21,8 +21,6 @@
     id<CalDAVCalendar> _calendar;
     NSDateComponents *_eventFilterStartDate;
     NSDateComponents *_eventFilterEndDate;
-    NSDateComponents *_todoFilterStartDate;
-    NSDateComponents *_todoFilterEndDate;
 }
 
 @property (strong, nonatomic) id<CalDAVCalendar> calendar; // @synthesize calendar=_calendar;
@@ -34,8 +32,6 @@
 @property (nonatomic) BOOL supportsExtendedCalendarQuery; // @synthesize supportsExtendedCalendarQuery=_supportsExtendedCalendarQuery;
 @property (nonatomic) BOOL syncEvents; // @synthesize syncEvents=_syncEvents;
 @property (nonatomic) BOOL syncTodos; // @synthesize syncTodos=_syncTodos;
-@property (strong, nonatomic) NSDateComponents *todoFilterEndDate; // @synthesize todoFilterEndDate=_todoFilterEndDate;
-@property (strong, nonatomic) NSDateComponents *todoFilterStartDate; // @synthesize todoFilterStartDate=_todoFilterStartDate;
 
 - (void).cxx_destruct;
 - (BOOL)_shouldFetchEventsForState:(int)arg1;

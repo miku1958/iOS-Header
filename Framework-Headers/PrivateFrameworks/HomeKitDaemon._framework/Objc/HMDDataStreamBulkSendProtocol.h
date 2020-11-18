@@ -8,11 +8,12 @@
 
 #import <HomeKitDaemon/HMDDataStreamProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class NSMapTable, NSString;
+@class NSMapTable, NSMutableDictionary, NSString;
 @protocol HMDDataStreamProtocolDelegate, OS_dispatch_queue;
 
-@interface HMDDataStreamBulkSendProtocol : NSObject <HMFLogging, HMDDataStreamProtocol>
+@interface HMDDataStreamBulkSendProtocol : NSObject <HMFLogging, HMDDataStreamProtocol, HMFTimerDelegate>
 {
     BOOL _isConnected;
     unsigned int _nextSessionIdentifier;
@@ -21,17 +22,21 @@
     id _accessory;
     NSMapTable *_listeners;
     NSMapTable *_activeBulkSendSessions;
+    NSMutableDictionary *_pendingBulkSendSessionContextBySessionIdentifier;
+    CDUnknownBlockType _bulkSendSessionContextFactory;
 }
 
 @property (weak, nonatomic) id accessory; // @synthesize accessory=_accessory;
-@property (strong, nonatomic) NSMapTable *activeBulkSendSessions; // @synthesize activeBulkSendSessions=_activeBulkSendSessions;
+@property (readonly) NSMapTable *activeBulkSendSessions; // @synthesize activeBulkSendSessions=_activeBulkSendSessions;
+@property (readonly) CDUnknownBlockType bulkSendSessionContextFactory; // @synthesize bulkSendSessionContextFactory=_bulkSendSessionContextFactory;
 @property (weak, nonatomic) id<HMDDataStreamProtocolDelegate> dataStream; // @synthesize dataStream=_dataStream;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isConnected; // @synthesize isConnected=_isConnected;
 @property (strong, nonatomic) NSMapTable *listeners; // @synthesize listeners=_listeners;
-@property (nonatomic) unsigned int nextSessionIdentifier; // @synthesize nextSessionIdentifier=_nextSessionIdentifier;
+@property unsigned int nextSessionIdentifier; // @synthesize nextSessionIdentifier=_nextSessionIdentifier;
+@property (readonly) NSMutableDictionary *pendingBulkSendSessionContextBySessionIdentifier; // @synthesize pendingBulkSendSessionContextBySessionIdentifier=_pendingBulkSendSessionContextBySessionIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
@@ -49,7 +54,7 @@
 - (void)_handleOpenWithRequestHeader:(id)arg1 payload:(id)arg2;
 - (void)_pumpMessage:(id)arg1 session:(id)arg2;
 - (void)_pumpReceiveFailure:(id)arg1 session:(id)arg2;
-- (void)_rejectSessionCandidate:(id)arg1 reason:(unsigned short)arg2;
+- (void)_rejectSessionCandidate:(id)arg1 status:(unsigned short)arg2;
 - (void)_removeBulkSendSessionForSessionIdentifier:(id)arg1;
 - (void)_sendAckMessageWithIdentifier:(id)arg1;
 - (void)_sendCloseMessageWithIdentifier:(id)arg1 reason:(unsigned short)arg2;
@@ -57,9 +62,10 @@
 - (void)_sendOpenResponseWithRequestHeader:(id)arg1 status:(unsigned short)arg2;
 - (void)_sendOpenResponseWithRequestHeader:(id)arg1 streamIdentifier:(id)arg2;
 - (void)_startSessionCandidate:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)_startSessionForFileType:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)addListener:(id)arg1 fileType:(id)arg2;
 - (void)asyncBulkSendSessionCandidate:(id)arg1 didAcceptOnQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
-- (void)asyncBulkSendSessionCandidate:(id)arg1 didRejectWithReason:(unsigned short)arg2;
+- (void)asyncBulkSendSessionCandidate:(id)arg1 didRejectWithStatus:(unsigned short)arg2;
 - (void)asyncBulkSendSessionDidCancelSessionWithIdentifier:(id)arg1 reason:(unsigned short)arg2 hadReceivedEof:(BOOL)arg3;
 - (void)dataStream:(id)arg1 didFailWithError:(id)arg2;
 - (void)dataStream:(id)arg1 didReceiveEvent:(id)arg2 header:(id)arg3 payload:(id)arg4;
@@ -68,7 +74,10 @@
 - (void)dataStreamDidClose:(id)arg1;
 - (void)dataStreamDidOpen:(id)arg1;
 - (id)initWithQueue:(id)arg1 accessory:(id)arg2;
+- (id)initWithQueue:(id)arg1 accessory:(id)arg2 bulkSendSessionContextFactory:(CDUnknownBlockType)arg3;
 - (void)removeListener:(id)arg1;
+- (void)startSessionForFileType:(id)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (void)timerDidFire:(id)arg1;
 
 @end
 

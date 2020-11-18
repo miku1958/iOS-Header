@@ -6,13 +6,13 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXColumnLayout, SXLayoutBlueprint;
+@class SXColumnLayout, SXLayoutBlueprint, SXLayoutDescription;
 @protocol SXLayouterDelegate;
 
 @protocol SXLayouter <NSObject>
 
 @property (weak, nonatomic) id<SXLayouterDelegate> delegate;
 
-- (void)layoutBlueprint:(SXLayoutBlueprint *)arg1 columnLayout:(SXColumnLayout *)arg2 shouldContinue:(BOOL *)arg3;
+- (void)layoutBlueprint:(SXLayoutBlueprint *)arg1 columnLayout:(SXColumnLayout *)arg2 description:(SXLayoutDescription *)arg3 shouldContinue:(BOOL *)arg4;
 @end
 

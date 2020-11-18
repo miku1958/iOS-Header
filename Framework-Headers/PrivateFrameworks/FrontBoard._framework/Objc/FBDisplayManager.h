@@ -10,7 +10,6 @@
 
 @interface FBDisplayManager : FBSDisplayMonitor
 {
-    BOOL _mainConnected;
 }
 
 @property (readonly, copy, nonatomic) FBSDisplayConfiguration *mainDisplay;
@@ -22,7 +21,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
-- (void)postMainDisplayConnection;
+- (void)postBookendConnections;
 
 @end
 

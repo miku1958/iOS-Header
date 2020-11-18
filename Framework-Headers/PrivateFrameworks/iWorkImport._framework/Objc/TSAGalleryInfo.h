@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL autoListTermination;
 @property (nonatomic) long long captionMode;
 @property (readonly, nonatomic) TSWPStorage *captionStorage;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) NSArray *containedModels;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
@@ -50,13 +51,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 @property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
 
 + (void)addDefaultGalleryCaptionParagraphStyleIfNeededWithFontSize:(double)arg1 toStylesheet:(id)arg2;
 + (id)defaultGalleryCaptionParagraphStyleInStylesheet:(id)arg1;
 + (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
++ (void)i_configureCaptionStorage:(id)arg1;
 + (id)i_newCaptionStorageWithContext:(id)arg1;
 + (id)p_defaultCaptionParagraphStylePropertiesWithFontSize:(double)arg1;
 + (id)p_overrideCaptionParagraphStyleIdentifier;
@@ -66,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)animationFilters;
+- (BOOL)canCopyData;
 - (id)childEnumerator;
 - (id)childEnumeratorForUserSearch;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 animationFilter:(id)arg2;

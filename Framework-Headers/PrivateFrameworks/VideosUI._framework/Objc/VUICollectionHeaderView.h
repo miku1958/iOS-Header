@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _selectionHandler;
     IKViewElement *_viewElement;
     IKViewElement *_buttonViewElement;
+    IKViewElement *_imageViewElement;
     VUICollectionHeaderViewLayout *_layout;
     VUILabel *_titleTextView;
     VUILabel *_subtitleTextView;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) IKViewElement *buttonViewElement; // @synthesize buttonViewElement=_buttonViewElement;
 @property (strong, nonatomic) UIButton *headerButton; // @synthesize headerButton=_headerButton;
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) IKViewElement *imageViewElement; // @synthesize imageViewElement=_imageViewElement;
 @property (strong, nonatomic) VUICollectionHeaderViewLayout *layout; // @synthesize layout=_layout;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (copy, nonatomic) CDUnknownBlockType selectionHandler; // @synthesize selectionHandler=_selectionHandler;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_selectButtonAction:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

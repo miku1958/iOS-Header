@@ -20,6 +20,7 @@
 - (BOOL)hasMarkedText;
 - (void)setTwoFingerTapTimestamp:(double)arg1;
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
+- (BOOL)shouldAllowTwoFingerSelectionGesture;
 - (BOOL)transitionInProgress;
 - (void)willBeginGesture;
 @end

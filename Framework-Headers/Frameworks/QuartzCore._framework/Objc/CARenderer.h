@@ -20,7 +20,9 @@
 @property (strong) CALayer *layer;
 
 + (id)rendererWithEAGLContext:(id)arg1 options:(id)arg2;
++ (id)rendererWithMTLTexture:(id)arg1 options:(id)arg2;
 - (id)_initWithEAGLContext:(id)arg1 options:(id)arg2;
+- (id)_initWithMTLTexture:(id)arg1 options:(id)arg2;
 - (id)_initWithOptions:(id)arg1;
 - (void)addUpdateRect:(struct CGRect)arg1;
 - (void)beginFrameAtTime:(double)arg1 timeStamp:(CDStruct_e50ab651 *)arg2;
@@ -29,6 +31,7 @@
 - (BOOL)hasMissingContent;
 - (double)nextFrameTime;
 - (void)render;
+- (void)setDestination:(id)arg1;
 - (struct CGRect)updateBounds;
 
 @end

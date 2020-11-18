@@ -43,10 +43,14 @@
     BOOL _isFiltered;
     BOOL _hasHadSuccessfulQuery;
     BOOL _wasReportedAsJunk;
+    BOOL _meCardUpdated;
     NSString *_cloudKitRecordID;
     NSString *_srCloudKitRecordID;
+    NSString *_lastSeenMessageGuid;
     NSString *_srServerChangeToken;
     long long _srCloudKitSyncState;
+    NSDictionary *_nicknamesForParticipants;
+    unsigned long long _numMessagesSent;
 }
 
 @property (readonly, strong) IMDAccount *account;
@@ -75,7 +79,11 @@
 @property (strong) IMMessageItem *lastMessage;
 @property long long lastMessageTimeStampOnLoad;
 @property (nonatomic) long long lastReadMessageTimeStamp;
+@property (readonly, copy) NSString *lastSeenMessageGuid; // @synthesize lastSeenMessageGuid=_lastSeenMessageGuid;
 @property (readonly, strong) NSDate *lastSentMessageDate;
+@property BOOL meCardUpdated; // @synthesize meCardUpdated=_meCardUpdated;
+@property (readonly, nonatomic) NSDictionary *nicknamesForParticipants; // @synthesize nicknamesForParticipants=_nicknamesForParticipants;
+@property unsigned long long numMessagesSent; // @synthesize numMessagesSent=_numMessagesSent;
 @property (readonly, copy) NSString *originalGroupID;
 @property (copy) NSArray *participants;
 @property BOOL pendingENGroupParticipantUpdate; // @synthesize pendingENGroupParticipantUpdate=_pendingENGroupParticipantUpdate;
@@ -103,6 +111,7 @@
 - (id)_chatRegistry;
 - (id)_ckUniqueID;
 - (id)_copyCKRecordFromExistingCKMetadataIsUsingStringRay:(BOOL)arg1 zoneID:(id)arg2 salt:(id)arg3;
+- (void)_persistMergedIDMergedChatsIfNeeded:(id)arg1;
 - (id)_personIdentity;
 - (void)_updateCachedParticipants;
 - (void)_updateLastMessage:(id)arg1;
@@ -125,6 +134,9 @@
 - (BOOL)isNewerThan:(id)arg1;
 - (BOOL)isOlderThan:(id)arg1;
 - (BOOL)isSMSSpam;
+- (BOOL)isiMessageSpam;
+- (id)lastSeenMessageGUID;
+- (void)meCardHasUpdated;
 - (id)recordName;
 - (void)removeParticipant:(id)arg1;
 - (void)removeParticipants:(id)arg1;
@@ -142,10 +154,13 @@
 - (void)updateHasHadSuccessfulQuery:(BOOL)arg1;
 - (void)updateIsFiltered:(BOOL)arg1;
 - (void)updateIsSMSSpamChatProperty:(BOOL)arg1;
+- (void)updateIsiMessageSpam:(BOOL)arg1;
 - (void)updateLastAddressedHandle:(id)arg1;
 - (void)updateLastAddressedHandle:(id)arg1 forceUpdate:(BOOL)arg2;
 - (void)updateLastAddressedSIMID:(id)arg1;
 - (void)updateLastReadMessageTimeStampIfNeeded:(long long)arg1;
+- (void)updateLastSeenMessageGuidIfNeeded:(id)arg1;
+- (void)updateNicknamesForParticipants:(id)arg1;
 - (void)updateNumberOfTimesRespondedToThread;
 - (void)updateOriginalGroupID:(id)arg1;
 - (void)updateProperties:(id)arg1;

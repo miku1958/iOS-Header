@@ -14,10 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityTouchContainerShouldOutputBraille;
+- (long long)accessibilityContainerType;
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 
 @end
 

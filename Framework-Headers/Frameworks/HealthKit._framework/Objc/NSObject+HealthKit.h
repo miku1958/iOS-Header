@@ -8,6 +8,7 @@
 
 @interface NSObject (HealthKit)
 - (id)_hk_valueForSafeValueForKeyPath:(id)arg1;
+- (id)hk_classNameWithTag:(id)arg1;
 - (BOOL)hk_expectMissingKeyPath:(id)arg1 error:(id *)arg2;
 - (BOOL)hk_hasValueForKeyPath:(id)arg1;
 - (id)hk_safeArrayForKeyPath:(id)arg1 error:(id *)arg2;

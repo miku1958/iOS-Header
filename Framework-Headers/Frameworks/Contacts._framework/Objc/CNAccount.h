@@ -13,11 +13,13 @@
 
 @interface CNAccount : NSObject <NSCopying, NSSecureCoding>
 {
+    int _iOSLegacyIdentifier;
     NSString *_identifier;
     NSString *_externalIdentifierString;
 }
 
 @property (readonly, copy, nonatomic) NSString *externalIdentifierString; // @synthesize externalIdentifierString=_externalIdentifierString;
+@property (readonly, nonatomic) int iOSLegacyIdentifier; // @synthesize iOSLegacyIdentifier=_iOSLegacyIdentifier;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
 + (id)identifierProvider;
@@ -37,6 +39,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithExternalIdentifier:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 externalIdentifier:(id)arg2;
+- (id)initWithIdentifier:(id)arg1 externalIdentifier:(id)arg2 iOSLegacyIdentifier:(int)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

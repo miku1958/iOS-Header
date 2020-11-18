@@ -10,12 +10,14 @@
 
 @interface WLKChannelsRequestOperation : WLKUTSNetworkRequestOperation
 {
+    BOOL _filtered;
     WLKChannelsResponse *_channelsResponse;
     NSString *_caller;
 }
 
 @property (copy, nonatomic) NSString *caller; // @synthesize caller=_caller;
 @property (strong, nonatomic) WLKChannelsResponse *channelsResponse; // @synthesize channelsResponse=_channelsResponse;
+@property (nonatomic) BOOL filtered; // @synthesize filtered=_filtered;
 
 - (void).cxx_destruct;
 - (id)initWithCaller:(id)arg1;

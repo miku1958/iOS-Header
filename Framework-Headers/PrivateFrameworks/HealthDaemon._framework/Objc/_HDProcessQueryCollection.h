@@ -6,23 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class HDQueryServerClientState, NSArray, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface _HDProcessQueryCollection : NSObject
 {
     NSMutableDictionary *_queryServersByUUID;
-    BOOL _processSuspended;
+    NSObject<OS_dispatch_source> *_timer;
+    NSObject<OS_dispatch_queue> *_queue;
     NSString *_processBundleIdentifier;
+    HDQueryServerClientState *_clientState;
 }
 
+@property (copy, nonatomic) HDQueryServerClientState *clientState; // @synthesize clientState=_clientState;
 @property (readonly, nonatomic) BOOL hasQueryServers;
 @property (readonly, copy, nonatomic) NSString *processBundleIdentifier; // @synthesize processBundleIdentifier=_processBundleIdentifier;
-@property (nonatomic, getter=isProcessSuspended) BOOL processSuspended; // @synthesize processSuspended=_processSuspended;
 @property (readonly, copy, nonatomic) NSArray *queryServers;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 - (void).cxx_destruct;
 - (void)addQueryServer:(id)arg1;
 - (id)initWithProcessBundleIdentifier:(id)arg1;
+- (void)queue_cancelStateChangeTimer;
+- (void)queue_startStateChangeTimerWithInterval:(double)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)removeQueryServer:(id)arg1;
 
 @end

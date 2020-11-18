@@ -23,11 +23,13 @@
 @property (strong, nonatomic) SUOperationProgress *progress; // @synthesize progress=_progress;
 
 + (BOOL)supportsSecureCoding;
+- (BOOL)allowCellularDownload;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isValidDownload;
 - (unsigned long long)totalSpaceConsumed;
 
 @end

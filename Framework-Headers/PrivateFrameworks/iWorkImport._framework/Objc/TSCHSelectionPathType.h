@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 + (id)referenceLineType;
 + (id)referenceLineValueLabelType;
 + (id)selectionPathTypeWithType:(id)arg1 name:(id)arg2;
++ (id)seriesEditModeType;
 + (id)seriesLabelType;
 + (id)seriesSymbolType;
 + (id)seriesType;

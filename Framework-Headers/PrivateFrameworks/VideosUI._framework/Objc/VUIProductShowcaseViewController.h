@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithViewElement:(id)arg1;
 - (void)viewDidLayoutSubviews;
 

@@ -11,12 +11,15 @@
 
 @protocol AVFullScreenViewControllerDelegate <NSObject>
 - (void)fullScreenViewController:(AVFullScreenViewController *)arg1 viewWillTransitionToSize:(struct CGSize)arg2 coordinator:(id<UIViewControllerTransitionCoordinator>)arg3;
-- (void)fullScreenViewControllerNeedsAppBasedStatusBarAppearanceUpdate:(AVFullScreenViewController *)arg1;
 - (void)fullScreenViewControllerWillBeginFullScreenPresentation:(AVFullScreenViewController *)arg1;
 - (void)fullScreenViewControllerWillEndFullScreenPresentation:(AVFullScreenViewController *)arg1;
 - (UIResponder *)keyCommandResponderForFullScreenViewController:(AVFullScreenViewController *)arg1;
+- (UIView *)playbackContainerViewForFullScreenViewController:(AVFullScreenViewController *)arg1;
+- (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredStatusStyleForFullScreenViewController:(AVFullScreenViewController *)arg1;
 - (BOOL)prefersStatusBarHiddenForFullScreenViewController:(AVFullScreenViewController *)arg1;
+- (BOOL)shouldAutorotate;
+- (unsigned long long)supportedInterfaceOrientations;
 - (UIView *)viewForFullScreenViewController:(AVFullScreenViewController *)arg1;
 @end
 

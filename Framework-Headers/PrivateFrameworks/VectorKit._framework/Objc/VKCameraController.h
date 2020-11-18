@@ -9,18 +9,21 @@
 #import <VectorKit/VKCameraController-Protocol.h>
 
 @class GEOMapRegion, NSString, VKCamera;
-@protocol MDRenderTarget, VKCameraControllerDelegate;
+@protocol MDRenderTarget, VKMapViewCameraDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VKCameraController : NSObject <VKCameraController>
 {
     VKCamera *_camera;
     id<MDRenderTarget> _canvas;
-    id<VKCameraControllerDelegate> _delegate;
+    id<VKMapViewCameraDelegate> _cameraDelegate;
     BOOL _gesturing;
     unsigned long long _regionChangeCount;
     BOOL _inProgressRegionChangeIsAnimated;
     struct VKEdgeInsets _edgeInsets;
+    struct MapDataAccess *_mapDataAccess;
+    struct AnimationRunner *_animationRunner;
+    struct RunLoopController *_runLoopController;
     BOOL _staysCenteredDuringPinch;
     BOOL _staysCenteredDuringRotation;
     BOOL _isPitchEnabled;
@@ -30,6 +33,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL allowDatelineWraparound; // @synthesize allowDatelineWraparound=_allowDatelineWraparound;
 @property (readonly, nonatomic) double altitude;
+@property (readonly, nonatomic) struct AnimationRunner *animationRunner; // @synthesize animationRunner=_animationRunner;
 @property (readonly, nonatomic) BOOL canPitch;
 @property (readonly, nonatomic) BOOL canRotate;
 @property (nonatomic) CDStruct_c3b9c2ee centerCoordinate;
@@ -43,16 +47,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isPitched;
 @property (nonatomic) BOOL isRotateEnabled; // @synthesize isRotateEnabled=_isRotateEnabled;
 @property (readonly, nonatomic) BOOL isRotated;
+@property (readonly, nonatomic) struct MapDataAccess *mapDataAccess; // @synthesize mapDataAccess=_mapDataAccess;
 @property (readonly, nonatomic) GEOMapRegion *mapRegion;
 @property (readonly, nonatomic) double maxPitch;
 @property (nonatomic) double pitch;
 @property (readonly, nonatomic) double presentationHeading;
+@property (readonly, nonatomic) struct RunLoopController *runLoopController; // @synthesize runLoopController=_runLoopController;
 @property (nonatomic) BOOL staysCenteredDuringPinch; // @synthesize staysCenteredDuringPinch=_staysCenteredDuringPinch;
 @property (nonatomic) BOOL staysCenteredDuringRotation; // @synthesize staysCenteredDuringRotation=_staysCenteredDuringRotation;
 @property (readonly) Class superclass;
 
 - (void)beginRegionChange:(BOOL)arg1;
 - (id)camera;
+- (id)cameraDelegate;
 - (BOOL)canZoomInForTileSize:(long long)arg1;
 - (BOOL)canZoomOutForTileSize:(long long)arg1;
 - (id)canvas;
@@ -64,13 +71,12 @@ __attribute__((visibility("hidden")))
 - (double)currentZoomLevelForTileSize:(long long)arg1;
 - (Matrix_443f5d51)cursorFromScreenPoint:(struct CGPoint)arg1;
 - (void)dealloc;
-- (id)delegate;
 - (id)detailedDescription;
-- (id)detailedDescriptionDictionaryRepresentation;
 - (struct VKEdgeInsets)edgeInsets;
 - (void)edgeInsetsDidEndAnimating;
 - (void)edgeInsetsWillBeginAnimating;
 - (void)endRegionChange;
+- (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 - (BOOL)isAnimating;
 - (BOOL)isChangingRegion;
 - (BOOL)isGesturing;
@@ -78,11 +84,12 @@ __attribute__((visibility("hidden")))
 - (double)maximumZoomLevelForTileSize:(long long)arg1;
 - (double)minimumZoomLevel;
 - (double)minimumZoomLevelForTileSize:(long long)arg1;
+- (void)populateDebugNode:(struct DebugTreeNode *)arg1 withOptions:(const bitset_dc343b9a *)arg2;
 - (BOOL)restoreViewportFromInfo:(id)arg1;
 - (struct CGPoint)scaledScreenPointForPoint:(struct CGPoint)arg1;
 - (void)setCamera:(id)arg1;
+- (void)setCameraDelegate:(id)arg1;
 - (void)setCanvas:(id)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 - (void)setGesturing:(BOOL)arg1;
 - (void)stylesheetDidChange;

@@ -16,6 +16,7 @@
 - (void)countPassesOfType:(unsigned long long)arg1 handler:(void (^)(unsigned long long))arg2;
 - (void)defaultPaymentPassWithHandler:(void (^)(PKPaymentPass *))arg1;
 - (void)expressTransitPassWithHandler:(void (^)(PKPass *))arg1;
+- (void)getArchivedObjectWithUniqueID:(NSString *)arg1 handler:(void (^)(NSData *))arg2;
 - (void)getContentForUniqueID:(NSString *)arg1 handler:(void (^)(PKContent *))arg2;
 - (void)getDataForBundleResourceNamed:(NSString *)arg1 withExtension:(NSString *)arg2 objectUniqueIdentifier:(NSString *)arg3 handler:(void (^)(NSData *))arg4;
 - (void)getImageSetForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 suffix:(NSString *)arg4 handler:(void (^)(PKImageSet *))arg5;
@@ -38,6 +39,7 @@
 - (void)sortedTransitPassesForAppletDataFormat:(NSString *)arg1 handler:(void (^)(NSArray *))arg2;
 - (void)submitVerificationCode:(NSString *)arg1 verificationData:(NSData *)arg2 forPassWithUniqueID:(NSString *)arg3 handler:(void (^)(BOOL, NSError *))arg4;
 - (void)supportedTransitPartnersForDigitalIssuance:(void (^)(NSArray *))arg1;
+- (void)supportsDisbursements:(void (^)(BOOL, NSError *))arg1;
 - (void)transitMessageForRouteInfo:(PKMapsTransitRouteInfo *)arg1 handler:(void (^)(PKMapsTransitMessage *))arg2;
 @end
 

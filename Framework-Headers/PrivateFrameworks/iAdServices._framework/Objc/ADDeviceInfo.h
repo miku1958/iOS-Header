@@ -14,6 +14,7 @@
 {
     BOOL _batteryDischarging;
     BOOL _carKitConnected;
+    BOOL _voiceOverRunning;
     int _orientation;
     int _interfaceIdiom;
     NSString *_deviceModel;
@@ -24,26 +25,38 @@
     NSNumber *_screenHeight;
     NSArray *_keyboards;
     NSNumber *_scale;
+    NSString *_locality;
+    NSString *_administrativeArea;
+    NSString *_subAdministrativeArea;
+    NSString *_ISOcountryCode;
+    NSString *_postalCode;
 }
 
+@property (copy, nonatomic) NSString *ISOcountryCode; // @synthesize ISOcountryCode=_ISOcountryCode;
+@property (copy, nonatomic) NSString *administrativeArea; // @synthesize administrativeArea=_administrativeArea;
 @property (nonatomic) BOOL batteryDischarging; // @synthesize batteryDischarging=_batteryDischarging;
 @property (strong, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 @property (nonatomic) BOOL carKitConnected; // @synthesize carKitConnected=_carKitConnected;
 @property (strong, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (nonatomic) int interfaceIdiom; // @synthesize interfaceIdiom=_interfaceIdiom;
 @property (copy, nonatomic) NSArray *keyboards; // @synthesize keyboards=_keyboards;
+@property (copy, nonatomic) NSString *locality; // @synthesize locality=_locality;
 @property (nonatomic) int orientation; // @synthesize orientation=_orientation;
+@property (copy, nonatomic) NSString *postalCode; // @synthesize postalCode=_postalCode;
 @property (strong, nonatomic) NSNumber *scale; // @synthesize scale=_scale;
 @property (strong, nonatomic) NSNumber *screenHeight; // @synthesize screenHeight=_screenHeight;
 @property (strong, nonatomic) NSNumber *screenWidth; // @synthesize screenWidth=_screenWidth;
+@property (copy, nonatomic) NSString *subAdministrativeArea; // @synthesize subAdministrativeArea=_subAdministrativeArea;
 @property (strong, nonatomic) NSString *systemName; // @synthesize systemName=_systemName;
 @property (strong, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
+@property (nonatomic) BOOL voiceOverRunning; // @synthesize voiceOverRunning=_voiceOverRunning;
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)updateLocality:(id)arg1 adminArea:(id)arg2 subAdmin:(id)arg3 isoCountryCode:(id)arg4 postalCode:(id)arg5;
 
 @end
 

@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _redundancyPercentage;
     double _redundancyInterval;
-    unsigned int _packetLossPercentageIncreaseThresholds[3];
-    unsigned int _packetLossPercentageDecreaseThresholds[3];
+    double _packetLossPercentageIncreaseThresholds[3];
+    double _packetLossPercentageDecreaseThresholds[3];
     BOOL _isPacketLossIncreasing;
-    unsigned int _packetLossPercentage;
-    unsigned int _packetLossPercentageThreshold;
+    double _packetLossPercentage;
+    double _packetLossPercentageThreshold;
     unsigned int _burstLossPacketCount;
     BOOL _isUplinkRecentlyCongested;
 }
@@ -33,8 +33,8 @@ __attribute__((visibility("hidden")))
 
 - (void)computeRedundancyInfo;
 - (id)init;
-- (unsigned int)updateRedundancyPercentageWithPLRThresholds:(unsigned int *)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_48a7b5a5)arg1;
+- (unsigned int)updateRedundancyPercentageWithPLRThresholds:(double *)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
 
 @end
 

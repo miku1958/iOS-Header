@@ -107,6 +107,7 @@
 - (void)_updateFooterHeight;
 - (void)_updateFooterTitle;
 - (void)_updateHeight;
+- (void)controllerTraitCollectionDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)loadContentData;

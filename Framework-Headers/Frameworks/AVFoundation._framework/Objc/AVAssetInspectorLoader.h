@@ -28,7 +28,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_figAsset) struct OpaqueFigAsset *figAsset;
 @property (readonly, nonatomic) NSArray *figChapterGroupInfo;
 @property (readonly, nonatomic) NSArray *figChapters;
+@property (readonly, nonatomic) long long firstFragmentSequenceNumber;
 @property (readonly, nonatomic, getter=_formatReader) struct OpaqueFigFormatReader *formatReader;
+@property (readonly, nonatomic) long long fragmentCount;
 @property (nonatomic, getter=_fragmentMindingInterval, setter=_setFragmentMindingInterval:) double fragmentMindingInterval;
 @property (readonly, nonatomic) BOOL hasProtectedContent;
 @property (readonly, nonatomic) NSString *lyrics;

@@ -42,6 +42,7 @@
 - (id)manifestHash;
 - (id)remoteAssetManager;
 - (BOOL)remoteAssetsDownloaded;
+- (BOOL)remoteAssetsDownloadedForScreenScale:(double)arg1 suffix:(id)arg2;
 - (id)resourceValueForKey:(id)arg1;
 - (void)revocationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)serializedFileWrapper;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithActivityType:(id)arg1 title:(id)arg2 image:(id)arg3 proxyID:(unsigned long long)arg4;
+- (id)activityTypeWithActivity:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

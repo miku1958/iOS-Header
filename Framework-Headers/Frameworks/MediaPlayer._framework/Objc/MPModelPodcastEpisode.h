@@ -29,6 +29,7 @@
 @property (copy, nonatomic) NSDateComponents *releaseDateComponents; // @dynamic releaseDateComponents;
 @property (readonly, nonatomic) long long seasonNumber; // @dynamic seasonNumber;
 @property (copy, nonatomic) NSURL *shareURL; // @dynamic shareURL;
+@property (copy, nonatomic) NSURL *streamURL; // @dynamic streamURL;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 @property (nonatomic) float userRating; // @dynamic userRating;
 
@@ -47,6 +48,7 @@
 + (id)__releaseDateComponents_KEY;
 + (id)__seasonNumber_KEY;
 + (id)__shareURL_KEY;
++ (id)__streamURL_KEY;
 + (id)__title_KEY;
 + (id)__userRating_KEY;
 + (id)kindWithVariants:(unsigned long long)arg1;

@@ -19,7 +19,7 @@
 @property (strong) CADDatabaseInitializationOptions *initializationOptions; // @synthesize initializationOptions=_initializationOptions;
 
 - (void).cxx_destruct;
-- (void)_callReplyHandler:(id)arg1 ofInvocation:(id)arg2 withError:(id)arg3;
+- (void)_callReplyHandler:(id)arg1 ofInvocation:(id)arg2 withErrorCode:(long long)arg3;
 - (id)_getReplyBlockFromInvocation:(id)arg1;
 - (id)_replaceReplyBlockInInvocation:(id)arg1 retryingAfterInitializationWithContextHolder:(id)arg2;
 - (BOOL)_shouldResendInitializationOptionsForInvocation:(id)arg1;

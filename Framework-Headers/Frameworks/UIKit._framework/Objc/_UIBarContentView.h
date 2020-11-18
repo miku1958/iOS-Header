@@ -8,28 +8,30 @@
 
 #import <UIKitCore/_UIButtonBarAppearanceDelegate-Protocol.h>
 
-@class NSString, UIColor, UIImage;
+@class NSString, UIColor, UIImage, _UIBarButtonItemAppearanceStorage;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarContentView : UIView <_UIButtonBarAppearanceDelegate>
 {
     BOOL _barWantsLetterpress;
+    BOOL _barIsBlack;
     BOOL _centerTextButtons;
     Class _appearanceGuideClass;
-    id _appearanceStorage;
+    _UIBarButtonItemAppearanceStorage *_appearanceStorage;
     UIImage *_backIndicatorMaskImage;
 }
 
 @property (strong, nonatomic, setter=_setAppearanceGuideClass:) Class _appearanceGuideClass; // @synthesize _appearanceGuideClass;
-@property (readonly, nonatomic) id appearanceStorage; // @synthesize appearanceStorage=_appearanceStorage;
-@property (readonly, nonatomic) double backButtonMargin; // @dynamic backButtonMargin;
+@property (readonly, nonatomic) _UIBarButtonItemAppearanceStorage *appearanceStorage; // @synthesize appearanceStorage=_appearanceStorage;
+@property (readonly, nonatomic) double backButtonMargin;
 @property (readonly, nonatomic) double backButtonMaximumWidth;
-@property (strong, nonatomic) UIImage *backIndicatorImage; // @dynamic backIndicatorImage;
+@property (strong, nonatomic) UIImage *backIndicatorImage;
 @property (strong, nonatomic) UIImage *backIndicatorMaskImage; // @synthesize backIndicatorMaskImage=_backIndicatorMaskImage;
-@property (readonly, nonatomic) long long barMetrics; // @dynamic barMetrics;
+@property (nonatomic) BOOL barIsBlack; // @synthesize barIsBlack=_barIsBlack;
 @property (readonly, nonatomic) long long barType;
 @property (nonatomic) BOOL barWantsLetterpress; // @synthesize barWantsLetterpress=_barWantsLetterpress;
 @property (nonatomic) BOOL centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
+@property (readonly, nonatomic) BOOL compactMetrics;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double defaultEdgeSpacing;
 @property (readonly, nonatomic) double defaultTextPadding;
@@ -62,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)_setTitleTextAttributes:(id)arg1 forState:(unsigned long long)arg2;
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
 - (double)absorptionForItem:(id)arg1;
-- (id)defaultFontDescriptor;
 - (unsigned long long)edgesPaddingBarButtonItem:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

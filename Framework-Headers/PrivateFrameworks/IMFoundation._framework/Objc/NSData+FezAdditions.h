@@ -6,7 +6,14 @@
 
 #import <Foundation/NSData.h>
 
+@class NSString;
+
 @interface NSData (FezAdditions)
+
+@property (readonly, nonatomic) NSData *SHA1Data;
+@property (readonly, nonatomic) NSString *SHA1HexString;
+@property (readonly, nonatomic) NSData *SHA256Data;
+
 + (id)__imDataWithHexString:(id)arg1;
 + (id)__imDataWithRandomBytes:(unsigned long long)arg1;
 - (id)_FTDecompressData;

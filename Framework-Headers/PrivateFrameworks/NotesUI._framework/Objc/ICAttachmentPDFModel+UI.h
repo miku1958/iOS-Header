@@ -7,6 +7,8 @@
 #import <NotesShared/ICAttachmentPDFModel.h>
 
 @interface ICAttachmentPDFModel (UI)
+- (void)drawPreviewInRect:(struct CGRect)arg1;
+- (BOOL)generatePreviewsInOperation:(id)arg1;
 - (CDUnknownBlockType)genericBrickThumbnailCreator;
 - (CDUnknownBlockType)genericListThumbnailCreator;
 @end

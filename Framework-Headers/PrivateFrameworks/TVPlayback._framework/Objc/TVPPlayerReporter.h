@@ -16,12 +16,12 @@ __attribute__((visibility("hidden")))
     NSString *_optFlag;
     double _timeWatched;
     double _timeWatchedStart;
-    NSObject *_reportingHierarchyToken;
+    id _reportingHierarchyToken;
 }
 
 @property (strong) NSString *optFlag; // @synthesize optFlag=_optFlag;
 @property (weak, nonatomic) TVPPlayer *player; // @synthesize player=_player;
-@property (strong, nonatomic) NSObject *reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+@property (strong, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
 @property (strong) RTCReporting *rtcAgent; // @synthesize rtcAgent=_rtcAgent;
 @property double timeWatched; // @synthesize timeWatched=_timeWatched;
 @property double timeWatchedStart; // @synthesize timeWatchedStart=_timeWatchedStart;

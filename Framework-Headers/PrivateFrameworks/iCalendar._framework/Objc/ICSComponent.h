@@ -20,7 +20,7 @@
 @property (strong) NSArray *attach;
 @property (strong) NSArray *attendee;
 @property int classification;
-@property (strong) NSMutableArray *components; // @synthesize components=_components;
+@property (strong, nonatomic) NSMutableArray *components; // @synthesize components=_components;
 @property (strong) NSArray *conferences;
 @property (strong) ICSDate *created;
 @property (strong) NSString *description;

@@ -15,12 +15,14 @@
     BOOL _disabledAppearance;
     BOOL _flattenImage;
     BOOL _scaleImage;
+    long long _customUserInterfaceStyle;
     NSString *_title;
     UIImage *_image;
     UIView *_customView;
     struct UIEdgeInsets _imageInsets;
 }
 
+@property (nonatomic) long long customUserInterfaceStyle; // @synthesize customUserInterfaceStyle=_customUserInterfaceStyle;
 @property (strong, nonatomic) UIView *customView; // @synthesize customView=_customView;
 @property (nonatomic) BOOL disabledAppearance; // @synthesize disabledAppearance=_disabledAppearance;
 @property (nonatomic) BOOL flattenImage; // @synthesize flattenImage=_flattenImage;
@@ -29,7 +31,7 @@
 @property (nonatomic) BOOL scaleImage; // @synthesize scaleImage=_scaleImage;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (id)HUDItemForBarButtonItem:(id)arg1;
++ (id)HUDItemForBarButtonItem:(id)arg1 atPoint:(struct CGPoint)arg2 inView:(id)arg3;
 + (id)HUDItemForTabBarItem:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

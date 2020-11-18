@@ -9,9 +9,19 @@
 __attribute__((visibility("hidden")))
 @interface _UIVisualEffectContentView : _UIVisualEffectSubview
 {
+    BOOL _disableGroupFiltering;
+    BOOL _currentlyDisplayingRequestedEffects;
 }
 
+- (void)applyIdentityFilterEffects;
+- (void)applyRequestedFilterEffects;
+- (id)description;
+- (void)didAddSubview:(id)arg1;
+- (BOOL)disableGroupFiltering;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setDisableGroupFiltering:(BOOL)arg1;
+- (void)setFilters:(id)arg1;
+- (void)willRemoveSubview:(id)arg1;
 
 @end
 

@@ -9,17 +9,20 @@
 @class NSAttributedString, NSString, UIControl, UILabel, UITextField, UIView;
 @protocol UITextFieldDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftTextFieldTableViewCell : UITableViewCell
 {
     UILabel *_label;
     UITextField *_textField;
     UIView *_topBorderView;
+    BOOL _leftToRight;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
 @property (nonatomic) long long keyboardType;
 @property (copy, nonatomic) NSString *label;
+@property (nonatomic) BOOL leftToRight; // @synthesize leftToRight=_leftToRight;
 @property (readonly, nonatomic) UIControl *textField; // @synthesize textField=_textField;
 @property (nonatomic) id<UITextFieldDelegate> textFieldDelegate;
 @property (copy, nonatomic) NSString *value;

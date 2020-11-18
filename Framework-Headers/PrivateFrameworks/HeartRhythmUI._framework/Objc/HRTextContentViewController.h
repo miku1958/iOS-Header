@@ -6,19 +6,21 @@
 
 #import <HealthUI/HKViewController.h>
 
-@class NSAttributedString;
+@class NSString;
 
 @interface HRTextContentViewController : HKViewController
 {
-    NSAttributedString *_attributedString;
+    NSString *_string;
 }
 
-@property (strong, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
+@property (copy, nonatomic) NSString *string; // @synthesize string=_string;
 
 - (void).cxx_destruct;
-- (id)initWithAttributedString:(id)arg1;
+- (id)_attributedStringFromString:(id)arg1;
+- (id)initWithString:(id)arg1;
 - (void)loadView;
 - (id)textView;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

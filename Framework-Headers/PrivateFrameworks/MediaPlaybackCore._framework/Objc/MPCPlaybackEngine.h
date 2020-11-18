@@ -8,16 +8,18 @@
 
 #import <MediaPlaybackCore/MPCExplicitContentAuthorizationDelegate-Protocol.h>
 
-@class MPCPlaybackIntent, MPCPlayerPath, MPProtocolProxy, NSString, UIView, _MPCAVController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCReportingController;
+@class MPCAudioSpectrumAnalyzer, MPCPlaybackIntent, MPCPlayerPath, MPProtocolProxy, NSString, UIView, _MPCAVController, _MPCLeaseManager, _MPCMediaRemotePublisher, _MPCPlaybackEngineSessionManager, _MPCReportingController;
 @protocol MPCPlaybackEngineDelegate, MPCPlaybackEngineEventObserving;
 
 @interface MPCPlaybackEngine : NSObject <MPCExplicitContentAuthorizationDelegate>
 {
+    MPCAudioSpectrumAnalyzer *_audioAnalyzer;
     BOOL _pictureInPictureSupported;
     BOOL _videoSupported;
     BOOL _stateRestorationSupported;
     BOOL _scheduledPlaybackStatePreservation;
     BOOL _systemMusicApplication;
+    BOOL _audioAnalyzerEnabled;
     NSString *_playerID;
     id<MPCPlaybackEngineDelegate> _delegate;
     MPCPlaybackIntent *_fallbackPlaybackIntent;
@@ -25,11 +27,17 @@
     _MPCAVController *_implementation;
     _MPCMediaRemotePublisher *_mediaRemotePublisher;
     _MPCReportingController *_reportingController;
+    _MPCPlaybackEngineSessionManager *_sessionManager;
     _MPCLeaseManager *_leaseManager;
+    unsigned long long _options;
     NSString *_audioSessionCategory;
+    unsigned long long _audioSessionOptions;
 }
 
+@property (readonly, nonatomic) MPCAudioSpectrumAnalyzer *audioAnalyzer; // @synthesize audioAnalyzer=_audioAnalyzer;
+@property (nonatomic, getter=isAudioAnalyzerEnabled) BOOL audioAnalyzerEnabled; // @synthesize audioAnalyzerEnabled=_audioAnalyzerEnabled;
 @property (copy, nonatomic) NSString *audioSessionCategory; // @synthesize audioSessionCategory=_audioSessionCategory;
+@property (nonatomic) unsigned long long audioSessionOptions; // @synthesize audioSessionOptions=_audioSessionOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPCPlaybackEngineDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -39,11 +47,13 @@
 @property (readonly, nonatomic) _MPCAVController *implementation; // @synthesize implementation=_implementation;
 @property (readonly, nonatomic) _MPCLeaseManager *leaseManager; // @synthesize leaseManager=_leaseManager;
 @property (readonly, nonatomic) _MPCMediaRemotePublisher *mediaRemotePublisher; // @synthesize mediaRemotePublisher=_mediaRemotePublisher;
+@property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (nonatomic, getter=isPictureInPictureSupported) BOOL pictureInPictureSupported; // @synthesize pictureInPictureSupported=_pictureInPictureSupported;
 @property (readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
 @property (readonly, nonatomic) MPCPlayerPath *playerPath;
 @property (readonly, nonatomic) _MPCReportingController *reportingController; // @synthesize reportingController=_reportingController;
 @property (nonatomic, getter=hasScheduledPlaybackStatePreservation) BOOL scheduledPlaybackStatePreservation; // @synthesize scheduledPlaybackStatePreservation=_scheduledPlaybackStatePreservation;
+@property (readonly, nonatomic) _MPCPlaybackEngineSessionManager *sessionManager; // @synthesize sessionManager=_sessionManager;
 @property (nonatomic, getter=isStateRestorationSupported) BOOL stateRestorationSupported; // @synthesize stateRestorationSupported=_stateRestorationSupported;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isSystemMusicApplication) BOOL systemMusicApplication; // @synthesize systemMusicApplication=_systemMusicApplication;
@@ -54,12 +64,14 @@
 + (BOOL)requiresMainThread;
 - (void).cxx_destruct;
 - (void)_initializePlaybackStack;
-- (void)_preservePlaybackStateImmediately;
-- (void)_restorePlaybackStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_itemAssetLoadedNotification:(id)arg1;
+- (void)_itemInsertedNotification:(id)arg1;
+- (BOOL)_shouldIgnorePlaybackSessionError:(id)arg1;
 - (void)addEngineObserver:(id)arg1;
 - (void)addSupportedSpecializedQueueIdentifier:(id)arg1 localizedName:(id)arg2 queueType:(long long)arg3 queueParameters:(id)arg4;
 - (void)becomeActive;
 - (id)initWithPlayerID:(id)arg1;
+- (id)initWithPlayerID:(id)arg1 options:(unsigned long long)arg2;
 - (void)removeEngineObserver:(id)arg1;
 - (void)removeSupportedSpecializedQueueIdentifier:(id)arg1;
 - (void)reportUserSeekFromTime:(double)arg1 toTime:(double)arg2;

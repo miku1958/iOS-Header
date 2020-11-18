@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
-- (void)orientationManager:(id)arg1 deviceOrientationMayHaveChanged:(long long)arg2 isDeviceOrientationLocked:(BOOL)arg3;
+- (void)orientationManager:(id)arg1 deviceOrientationMayHaveChanged:(long long)arg2 changeSource:(long long)arg3 isDeviceOrientationLocked:(BOOL)arg4;
 
 @end
 

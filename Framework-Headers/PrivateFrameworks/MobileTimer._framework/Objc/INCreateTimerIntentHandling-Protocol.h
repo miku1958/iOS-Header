@@ -15,5 +15,6 @@
 - (void)confirmCreateTimer:(INCreateTimerIntent *)arg1 completion:(void (^)(INCreateTimerIntentResponse *))arg2;
 - (void)resolveDurationForCreateTimer:(INCreateTimerIntent *)arg1 withCompletion:(void (^)(INTimeIntervalResolutionResult *))arg2;
 - (void)resolveLabelForCreateTimer:(INCreateTimerIntent *)arg1 withCompletion:(void (^)(INCreateTimerLabelResolutionResult *))arg2;
+- (void)resolveTypeForCreateTimer:(INCreateTimerIntent *)arg1 withCompletion:(void (^)(INTimerTypeResolutionResult *))arg2;
 @end
 

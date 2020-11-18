@@ -4,60 +4,54 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
 #import <PhotosUICore/AAUIGenericTermsRemoteUIDelegate-Protocol.h>
 #import <PhotosUICore/PSCloudStorageOffersManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXCloudPhotoWelcomeNavigationControllerDismissDelegate-Protocol.h>
-#import <PhotosUICore/PXCloudPhotoWelcomeViewDelegate-Protocol.h>
 
-@class AAUIGenericTermsRemoteUI, NSString, PSCloudStorageOffersManager, PXCloudPhotoWelcomeView;
+@class AAUIGenericTermsRemoteUI, NSArray, NSString, PSCloudStorageOffersManager;
 
-@interface PXCloudPhotoWelcomeViewController : UIViewController <PXCloudPhotoWelcomeViewDelegate, PSCloudStorageOffersManagerDelegate, AAUIGenericTermsRemoteUIDelegate, PXCloudPhotoWelcomeNavigationControllerDismissDelegate>
+@interface PXCloudPhotoWelcomeViewController : OBWelcomeController <PSCloudStorageOffersManagerDelegate, AAUIGenericTermsRemoteUIDelegate, PXCloudPhotoWelcomeNavigationControllerDismissDelegate>
 {
-    PSCloudStorageOffersManager *_offersManager;
-    AAUIGenericTermsRemoteUI *_termsManager;
-    BOOL _requireStorageUpgrade;
-    BOOL _enableOnAppear;
-    PXCloudPhotoWelcomeView *_welcomeView;
+    BOOL __requireStorageUpgrade;
+    BOOL __enableOnAppear;
+    NSArray *__buttons;
+    PSCloudStorageOffersManager *__offersManager;
+    AAUIGenericTermsRemoteUI *__termsManager;
 }
 
+@property (strong, nonatomic, setter=_setButtons:) NSArray *_buttons; // @synthesize _buttons=__buttons;
+@property (nonatomic, setter=_setEnableOnAppear:) BOOL _enableOnAppear; // @synthesize _enableOnAppear=__enableOnAppear;
+@property (strong, nonatomic, setter=_setOffersManager:) PSCloudStorageOffersManager *_offersManager; // @synthesize _offersManager=__offersManager;
+@property (nonatomic, setter=_setRequireStorageUpgrade:) BOOL _requireStorageUpgrade; // @synthesize _requireStorageUpgrade=__requireStorageUpgrade;
+@property (strong, nonatomic, setter=_setTermsManager:) AAUIGenericTermsRemoteUI *_termsManager; // @synthesize _termsManager=__termsManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) PXCloudPhotoWelcomeView *welcomeView; // @synthesize welcomeView=_welcomeView;
 
-+ (BOOL)shouldPresentCloudPhotoWelcomeViewController:(BOOL *)arg1;
 - (void).cxx_destruct;
 - (void)_applicationWillEnterForeground:(id)arg1;
+- (void)_cloudPhotoWelcomeViewGoButtonTapped:(id)arg1;
+- (void)_cloudPhotoWelcomeViewLearnMoreTapped:(id)arg1;
+- (void)_cloudPhotoWelcomeViewNotNowButtonTapped:(id)arg1;
 - (void)_continueWithoutStoragePurchase:(id)arg1;
-- (void)_dismiss;
-- (void)_enableButtons;
-- (void)_enableCPLDataClass;
 - (void)_enableCloudPhotoLibrary;
+- (void)_enableCloudPhotoLibraryWithoutCheck;
 - (void)_handleEnableError:(id)arg1;
-- (void)_handleGoButtonTapped;
-- (void)_presentStoragePurchaseController;
+- (void)_setButtonsEnabled:(BOOL)arg1;
 - (void)_updateCurrentActivity;
-- (void)cloudPhotoWelcomeViewGoButtonTapped:(id)arg1;
-- (void)cloudPhotoWelcomeViewLearnMoreTapped:(id)arg1;
-- (void)cloudPhotoWelcomeViewNotNowButtonTapped:(id)arg1;
 - (void)genericTermsRemoteUI:(id)arg1 didFinishWithSuccess:(BOOL)arg2;
+- (id)initWithDefaultTitle;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3;
+- (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 contentLayout:(long long)arg4;
 - (void)manager:(id)arg1 loadDidFailWithError:(id)arg2;
 - (void)manager:(id)arg1 willPresentViewController:(id)arg2;
 - (void)managerDidCancel:(id)arg1;
 - (void)navigationControllerDidDismissViewController:(id)arg1;
-- (long long)preferredInterfaceOrientationForPresentation;
-- (id)presentingViewControllerTraitCollection;
-- (BOOL)shouldAutorotate;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (unsigned long long)supportedInterfaceOrientations;
-- (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

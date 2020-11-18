@@ -6,13 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-#import <CameraUI/CAMBadgeViewDelegate-Protocol.h>
 #import <CameraUI/CAMInstructionLabelDelegate-Protocol.h>
+#import <CameraUI/CAMViewfinderTransitionable-Protocol.h>
+#import <CameraUI/CEKBadgeViewDelegate-Protocol.h>
 
-@class CAMBottomBar, CAMBurstIndicatorView, CAMDisabledModeOverlayView, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlashBadge, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMHDRBadge, CAMLightingControl, CAMLightingNameBadge, CAMLivePhotoBadge, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewContainerMaskingView, CAMPreviewContainerView, CAMPreviewView, CAMQRCodeDescriptionOverlayView, CAMQRCodeInstructionLabel, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMTimerIndicatorView, CAMTopBar, CAMViewfinderFlipTransition, CAMViewfinderOpenAndCloseTransition, CAMZoomControl, CAMZoomSlider, CUShutterButton, NSArray, NSString;
+@class CAMBottomBar, CAMBurstIndicatorView, CAMDisabledModeOverlayView, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlashBadge, CAMFlipButton, CAMFocusLockBadge, CAMFramerateIndicatorView, CAMHDRBadge, CAMLivePhotoBadge, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewContainerMaskingView, CAMPreviewView, CAMQRCodeInstructionLabel, CAMShallowDepthOfFieldBadge, CAMShutterIndicatorView, CAMTimerIndicatorView, CAMTopBar, CAMViewfinderFlipTransition, CAMViewfinderOpenAndCloseTransition, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, CUShutterButton, NSArray, NSString;
 @protocol CAMControlVisibilityDelegate;
 
-@interface CAMViewfinderView : UIView <CAMBadgeViewDelegate, CAMInstructionLabelDelegate>
+@interface CAMViewfinderView : UIView <CEKBadgeViewDelegate, CAMInstructionLabelDelegate, CAMViewfinderTransitionable>
 {
     BOOL _useCreativeControls;
     BOOL _automaticallyAdjustsTopBarOrientation;
@@ -31,7 +32,6 @@
     CAMShallowDepthOfFieldBadge *_shallowDepthOfFieldBadge;
     CAMPortraitModeInstructionLabel *_portraitModeInstructionLabel;
     CAMPortraitModeDescriptionOverlayView *_portraitModeDescriptionOverlayView;
-    CAMQRCodeDescriptionOverlayView *_qrCodeDescriptionOverlayView;
     CAMQRCodeInstructionLabel *_qrCodeInstructionLabel;
     CAMFilterNameBadge *_filterNameBadge;
     CAMShutterIndicatorView *_shutterIndicatorView;
@@ -43,14 +43,14 @@
     long long _previewViewOrientation;
     CAMZoomSlider *_zoomSlider;
     CAMZoomControl *_zoomControl;
-    CAMLightingControl *_lightingControl;
-    CAMLightingNameBadge *_lightingNameBadge;
+    CEKLightingControl *_lightingControl;
+    CEKLightingNameBadge *_lightingNameBadge;
     CAMDisabledModeOverlayView *_disabledModeOverlayView;
     long long _desiredAspectRatio;
     long long _maskingAspectRatio;
     long long _orientation;
     CAMPreviewContainerMaskingView *__previewContainerMaskingView;
-    CAMPreviewContainerView *__previewContainerView;
+    UIView *__previewContainerView;
     CAMViewfinderOpenAndCloseTransition *__openAndCloseTransition;
     CAMViewfinderFlipTransition *__flipTransition;
     UIView *__topBarExtensionView;
@@ -62,7 +62,7 @@
 @property (strong, nonatomic, setter=_setFlipTransition:) CAMViewfinderFlipTransition *_flipTransition; // @synthesize _flipTransition=__flipTransition;
 @property (strong, nonatomic, setter=_setOpenAndCloseTransition:) CAMViewfinderOpenAndCloseTransition *_openAndCloseTransition; // @synthesize _openAndCloseTransition=__openAndCloseTransition;
 @property (readonly, nonatomic) CAMPreviewContainerMaskingView *_previewContainerMaskingView; // @synthesize _previewContainerMaskingView=__previewContainerMaskingView;
-@property (readonly, nonatomic) CAMPreviewContainerView *_previewContainerView; // @synthesize _previewContainerView=__previewContainerView;
+@property (readonly, nonatomic) UIView *_previewContainerView; // @synthesize _previewContainerView=__previewContainerView;
 @property (strong, nonatomic, setter=_setTopBarExtensionView:) UIView *_topBarExtensionView; // @synthesize _topBarExtensionView=__topBarExtensionView;
 @property (nonatomic) BOOL automaticallyAdjustsTopBarOrientation; // @synthesize automaticallyAdjustsTopBarOrientation=_automaticallyAdjustsTopBarOrientation;
 @property (strong, nonatomic) CAMBottomBar *bottomBar; // @synthesize bottomBar=_bottomBar;
@@ -79,8 +79,8 @@
 @property (strong, nonatomic) CAMFramerateIndicatorView *framerateIndicatorView; // @synthesize framerateIndicatorView=_framerateIndicatorView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
-@property (strong, nonatomic) CAMLightingControl *lightingControl; // @synthesize lightingControl=_lightingControl;
-@property (strong, nonatomic) CAMLightingNameBadge *lightingNameBadge; // @synthesize lightingNameBadge=_lightingNameBadge;
+@property (strong, nonatomic) CEKLightingControl *lightingControl; // @synthesize lightingControl=_lightingControl;
+@property (strong, nonatomic) CEKLightingNameBadge *lightingNameBadge; // @synthesize lightingNameBadge=_lightingNameBadge;
 @property (strong, nonatomic) CAMLivePhotoBadge *livePhotoBadge; // @synthesize livePhotoBadge=_livePhotoBadge;
 @property (nonatomic) long long maskingAspectRatio; // @synthesize maskingAspectRatio=_maskingAspectRatio;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
@@ -89,7 +89,6 @@
 @property (strong, nonatomic) CAMPortraitModeInstructionLabel *portraitModeInstructionLabel; // @synthesize portraitModeInstructionLabel=_portraitModeInstructionLabel;
 @property (strong, nonatomic) CAMPreviewView *previewView; // @synthesize previewView=_previewView;
 @property (nonatomic) long long previewViewOrientation; // @synthesize previewViewOrientation=_previewViewOrientation;
-@property (strong, nonatomic) CAMQRCodeDescriptionOverlayView *qrCodeDescriptionOverlayView; // @synthesize qrCodeDescriptionOverlayView=_qrCodeDescriptionOverlayView;
 @property (strong, nonatomic) CAMQRCodeInstructionLabel *qrCodeInstructionLabel; // @synthesize qrCodeInstructionLabel=_qrCodeInstructionLabel;
 @property (strong, nonatomic) CAMShallowDepthOfFieldBadge *shallowDepthOfFieldBadge; // @synthesize shallowDepthOfFieldBadge=_shallowDepthOfFieldBadge;
 @property (strong, nonatomic) CUShutterButton *shutterButton; // @synthesize shutterButton=_shutterButton;
@@ -111,7 +110,6 @@
 - (struct CGRect)_cameraPreviewFrameForAspectRatio:(long long)arg1 topBarFrame:(struct CGRect)arg2 bottomBarFrame:(struct CGRect)arg3 shouldShiftPreviewForUtilityBar:(BOOL)arg4;
 - (void)_cameraTopBarForLayoutForLayoutStyle:(long long)arg1 shouldAdjustTopBarOrientation:(BOOL)arg2 bounds:(struct CGRect *)arg3 center:(struct CGPoint *)arg4 transform:(struct CGAffineTransform *)arg5;
 - (void)_commonCAMViewfinderViewInitializationWithLayoutStyle:(long long)arg1;
-- (struct CGAffineTransform)_correctingTransformFromPreviewViewOrientation:(long long)arg1;
 - (void)_createPlaceholderSnapshotAndPerformDoubleSidedFadeForView:(id)arg1 fadeOutDuration:(double)arg2 fadeOutDelay:(double)arg3 fadeInDuration:(double)arg4 fadeInDelay:(double)arg5;
 - (void)_createPlaceholderSnapshotAndPerformSingleSidedFadeForView:(id)arg1 fadeOutDuration:(double)arg2 fadeOutDelay:(double)arg3;
 - (void)_enforceBadgeSubviewOrderingWithAppearingBadges:(id)arg1;
@@ -161,16 +159,12 @@
 - (BOOL)_wantsFullScreenPreviewRegardlessOfLayoutForLayoutStyle:(long long)arg1;
 - (BOOL)_wantsInterfaceOrientedPreviewForLayoutStyle:(long long)arg1;
 - (void)badgeViewDidChangeIntrinsicContentSize:(id)arg1;
-- (void)closeAndRotateWithDirection:(unsigned long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)closeWithBlur:(BOOL)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)handleApplicationDidEnterBackground;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithLayoutStyle:(long long)arg1;
 - (void)instructionLabelDidChangeIntrinsicContentSize:(id)arg1;
 - (void)layoutSubviews;
-- (void)openForReason:(long long)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)prepareForAutorotation;
 - (void)prepareForResumingUsingCrossfade;
 - (void)removeInflightBlurAnimations;

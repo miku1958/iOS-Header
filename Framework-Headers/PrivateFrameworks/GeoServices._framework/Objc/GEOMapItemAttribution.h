@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) BOOL shouldOpenInAppStore;
 @property (readonly, nonatomic) NSString *webBaseActionURL;
 
++ (id)attributionWithDataAttribution:(id)arg1 searchInfo:(id)arg2 class:(Class)arg3;
 - (void).cxx_destruct;
 - (id)_yelpHTTPURLForRequirement:(int)arg1 withUID:(id)arg2 writeAReview:(BOOL)arg3;
 - (id)initWithSearchAttributionInfo:(id)arg1 attributionURLs:(id)arg2;

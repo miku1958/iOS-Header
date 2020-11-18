@@ -10,6 +10,7 @@
 
 @interface HCServer : NSObject
 {
+    BOOL _deadConnection;
     id<AXHeardServerDelegate> _delegate;
     id<AXHeardServerMessageDelegate> _messageDelegate;
     NSObject<OS_dispatch_queue> *_connectionQueue;
@@ -17,7 +18,9 @@
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
+@property (nonatomic) BOOL deadConnection; // @synthesize deadConnection=_deadConnection;
 @property (weak, nonatomic) id<AXHeardServerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) BOOL isConnected;
 @property (weak, nonatomic) id<AXHeardServerMessageDelegate> messageDelegate; // @synthesize messageDelegate=_messageDelegate;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
@@ -30,6 +33,7 @@
 - (void)sendMessageWithPayload:(id)arg1 andIdentifier:(unsigned long long)arg2;
 - (void)sendSynchronousMessageWithPayload:(id)arg1 andIdentifier:(unsigned long long)arg2;
 - (id)setupServerIfNecessary;
+- (BOOL)shouldRestartOnInterruption;
 - (void)startServerWithDelegate:(id)arg1;
 - (void)terminateConnection;
 

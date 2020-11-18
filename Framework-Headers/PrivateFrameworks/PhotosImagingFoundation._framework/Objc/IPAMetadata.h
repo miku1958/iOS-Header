@@ -8,13 +8,11 @@
 
 #import <PhotosImagingFoundation/NSCopying-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSString, NSTimeZone;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSTimeZone;
 
 @interface IPAMetadata : NSObject <NSCopying>
 {
     BOOL _xmpLoaded;
-    NSDate *_imageDate;
-    NSTimeZone *_imageTimeZone;
     NSString *_filePath;
     NSMutableDictionary *_exifProperties;
     NSMutableDictionary *_iptcProperties;
@@ -27,7 +25,11 @@
     long long _originalOrientation;
     long long _orientation;
     NSArray *_cgImageMetadataProperties;
+    NSDate *_timeZoneAdjustedImageDate;
+    NSTimeZone *_imageTimeZone;
+    NSString *_jsonFormattedDescription;
     NSString *_fileTypeIdentifier;
+    CLLocation *_exifLocation;
     struct CGSize _originalUnrotatedSize;
 }
 
@@ -38,37 +40,49 @@
 @property (strong, nonatomic) NSMutableDictionary *cgImageProperties; // @synthesize cgImageProperties=_cgImageProperties;
 @property (strong, nonatomic) NSMutableDictionary *customInfo; // @synthesize customInfo=_customInfo;
 @property (readonly, nonatomic) long long customRendered;
-@property (readonly, nonatomic) CLLocation *exifLocation;
+@property (readonly, nonatomic) NSString *deferredPhotoProcessingIdentifer;
+@property (readonly, nonatomic) NSString *exifImageDateTimeString;
+@property (strong, nonatomic) CLLocation *exifLocation; // @synthesize exifLocation=_exifLocation;
 @property (strong, nonatomic) NSMutableDictionary *exifProperties; // @synthesize exifProperties=_exifProperties;
-@property (copy, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
+@property (strong, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
 @property (strong, nonatomic) NSMutableDictionary *fileSystemProperties; // @synthesize fileSystemProperties=_fileSystemProperties;
 @property (strong, nonatomic) NSString *fileTypeIdentifier; // @synthesize fileTypeIdentifier=_fileTypeIdentifier;
 @property (strong, nonatomic) NSArray *focusPoints; // @synthesize focusPoints=_focusPoints;
 @property (readonly, nonatomic) NSString *groupingUuid;
 @property (readonly, nonatomic) BOOL hasCustomRendered;
-@property (strong, nonatomic) NSDate *imageDate; // @synthesize imageDate=_imageDate;
+@property (readonly, nonatomic) NSDate *imageDate;
 @property (readonly, nonatomic) struct CGSize imageSize;
 @property (strong, nonatomic) NSTimeZone *imageTimeZone; // @synthesize imageTimeZone=_imageTimeZone;
 @property (strong, nonatomic) NSMutableDictionary *iptcProperties; // @synthesize iptcProperties=_iptcProperties;
 @property (readonly, nonatomic) BOOL isAutoloop;
+@property (readonly, nonatomic) BOOL isCompositeHDR;
+@property (readonly, nonatomic) BOOL isDeferredPhotoProxy;
 @property (readonly, nonatomic) BOOL isLongExposure;
 @property (readonly, nonatomic) BOOL isMirror;
 @property (readonly, nonatomic) BOOL isPortrait;
-@property (readonly, copy) NSString *jsonFormattedDescription;
+@property (readonly, nonatomic) BOOL isSDOF;
+@property (readonly, nonatomic) BOOL isSpatialOverCapture;
+@property (strong, nonatomic) NSString *jsonFormattedDescription; // @synthesize jsonFormattedDescription=_jsonFormattedDescription;
+@property (readonly, nonatomic) NSString *mediaGroupUUID;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) long long originalOrientation; // @synthesize originalOrientation=_originalOrientation;
 @property (nonatomic) struct CGSize originalUnrotatedSize; // @synthesize originalUnrotatedSize=_originalUnrotatedSize;
+@property (readonly, nonatomic) NSString *spatialOverCaptureIdentifier;
+@property (strong, nonatomic) NSDate *timeZoneAdjustedImageDate; // @synthesize timeZoneAdjustedImageDate=_timeZoneAdjustedImageDate;
+@property (readonly, nonatomic) NSString *timeZoneName;
+@property (readonly, nonatomic) NSNumber *timeZoneOffset;
 @property (nonatomic) BOOL xmpLoaded; // @synthesize xmpLoaded=_xmpLoaded;
 
 + (id)defaultOptionsForCGImageSource;
 + (id)metadataIdentifierTypeMapCommon;
 + (id)metadataIdentifierTypeMapImage;
 + (id)metadataIdentifierTypeMapVideo;
-+ (struct CGImageSource *)newImageSourceForData:(id)arg1 uti:(id)arg2;
-+ (struct CGImageSource *)newImageSourceForURL:(id)arg1;
++ (struct CGImageSource *)newImageSourceForData:(id)arg1 uti:(id)arg2 options:(id)arg3;
++ (struct CGImageSource *)newImageSourceForURL:(id)arg1 options:(id)arg2;
 + (id)proxyPropertyListForAVAsset:(id)arg1 reduceMetadata:(BOOL)arg2;
++ (void)test_digestedDateTimeExifAttributesFromExif:(id)arg1;
++ (id)utiFromFastModernizeVideoMediaWithMetadata:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)_didSetValidSubsec:(double *)arg1 forSubsecAsString:(id)arg2;
 - (void)_digestedAVExifAttributesFromExif:(id)arg1;
 - (void)_digestedCameraSettingsExifAttributesFromExif:(id)arg1;
 - (void)_digestedCollapseArrayExifAttributesFromExif:(id)arg1;
@@ -78,10 +92,7 @@
 - (id)_digestedIptcAttributesFromRawAttributes:(id)arg1;
 - (void)_digestedOrientationExifAttributesFromExif:(id)arg1;
 - (void)_enforceProperFormatting:(id)arg1;
-- (BOOL)_validSubsec:(double)arg1;
-- (BOOL)_validTimezone:(id)arg1 forLongitude:(id)arg2;
 - (void)addEntriesFromDictionary:(id)arg1 toDictionary:(id)arg2;
-- (void)applyTimezoneAndImageDateFromUTCDate:(id)arg1 toExifProperties:(id)arg2;
 - (void)audioVideoProxyPropertyListForAsset:(id)arg1 performExport:(BOOL)arg2 atEnd:(CDUnknownBlockType)arg3;
 - (void)clearImageAttributes;
 - (BOOL)conformsToUTType:(struct __CFString *)arg1 forExtention:(id)arg2;
@@ -95,19 +106,19 @@
 - (id)encodedData;
 - (id)encodedDataReduceIfLargerThan:(unsigned long long)arg1;
 - (id)exifPropertyForKey:(id)arg1;
+- (id)exifTimezoneOffsetFromDateString:(id)arg1 offsetInSeconds:(long long *)arg2;
 - (void)extractFocusPointsFrom:(id)arg1 orExifAux:(id)arg2;
 - (long long)hdrType;
 - (id)init;
-- (id)initWithFileData:(id)arg1 path:(id)arg2 cgImageProperties:(id)arg3 loadXmpData:(BOOL)arg4 xmpSidecarPath:(id)arg5;
-- (id)initWithFileData:(id)arg1 path:(id)arg2 fileSize:(unsigned long long)arg3 cgImageProperties:(id)arg4 imageSource:(struct CGImageSource *)arg5 loadXmpData:(BOOL)arg6 xmpSidecarPath:(id)arg7 loadEssentialMetadataOnly:(BOOL)arg8;
-- (id)initWithPath:(id)arg1;
-- (id)initWithPath:(id)arg1 cgImageProperties:(id)arg2 loadXmpData:(BOOL)arg3 xmpSidecarPath:(id)arg4;
-- (id)initWithPath:(id)arg1 fileSize:(unsigned long long)arg2 loadEssentialMetadataOnly:(BOOL)arg3;
-- (id)initWithPath:(id)arg1 loadXmpData:(BOOL)arg2 xmpSidecarPath:(id)arg3;
+- (id)initWithPath:(id)arg1 cgImageProperties:(id)arg2;
+- (id)initWithPath:(id)arg1 fileData:(id)arg2 imageSource:(struct CGImageSource *)arg3 cgImageProperties:(id)arg4 options:(id)arg5 loadMinMetadata:(BOOL)arg6 loadXmpData:(BOOL)arg7 xmpSidecarPath:(id)arg8;
+- (id)initWithPath:(id)arg1 fileData:(id)arg2 options:(id)arg3 loadXmpData:(BOOL)arg4 xmpSidecarPath:(id)arg5;
+- (id)initWithPath:(id)arg1 imageSource:(struct CGImageSource *)arg2 options:(id)arg3 loadXmpData:(BOOL)arg4 xmpSidecarPath:(id)arg5;
+- (id)initWithPath:(id)arg1 loadMinMetadata:(BOOL)arg2;
+- (id)initWithPath:(id)arg1 options:(id)arg2;
 - (id)iptcPropertyForKey:(id)arg1;
-- (BOOL)isCompositeHDR;
-- (BOOL)isSDOF;
 - (BOOL)isSloMoForType:(unsigned char)arg1;
+- (void)loadAudioVideoAttributesForAVAsset:(id)arg1 path:(id)arg2 fullMetadata:(BOOL)arg3;
 - (void)mergeMetadata:(id)arg1;
 - (void)mergeMetadataFromFileToSidecarFromPropertySet:(id)arg1 toSidecarSet:(id)arg2 ofType:(id)arg3;
 - (void)restoreImportantMetadataFromPropertySet:(id)arg1 toSidecarSet:(id)arg2;
@@ -122,10 +133,7 @@
 - (void)setEncodedImageData:(id)arg1;
 - (void)setExifProperty:(id)arg1 forKey:(id)arg2;
 - (void)setIPTCProperty:(id)arg1 forKey:(id)arg2;
-- (void)setImagePropertiesForURL:(id)arg1;
 - (void)setRawFileSystemAttributes:(id)arg1;
-- (id)timeZoneAdjustedImageDate;
-- (id)utiFastModernizeVideoMedia;
 - (id)utiForExtension:(id)arg1;
 - (void)waitForAsync_setAudioVideoAttributesForAVProxyData:(id)arg1;
 - (void)waitForAsync_setAudioVideoAttributesForURL:(id)arg1;

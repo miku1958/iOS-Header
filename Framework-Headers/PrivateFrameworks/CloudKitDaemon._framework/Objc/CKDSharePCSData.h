@@ -6,10 +6,13 @@
 
 #import <CloudKitDaemon/CKDPCSData.h>
 
+#import <CloudKitDaemon/NSCopying-Protocol.h>
+#import <CloudKitDaemon/NSSecureCoding-Protocol.h>
+
 @class CKRecordID, NSData, NSString;
 
 __attribute__((visibility("hidden")))
-@interface CKDSharePCSData : CKDPCSData
+@interface CKDSharePCSData : CKDPCSData <NSSecureCoding, NSCopying>
 {
     struct _OpaquePCSShareProtection *_publicPCS;
     CKRecordID *_shareID;
@@ -37,10 +40,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *shareEtag; // @synthesize shareEtag=_shareEtag;
 @property (strong, nonatomic) CKRecordID *shareID; // @synthesize shareID=_shareID;
 
++ (id)dataWithShare:(id)arg1 serviceType:(unsigned long long)arg2;
 + (id)dataWithShareID:(id)arg1 pcsData:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

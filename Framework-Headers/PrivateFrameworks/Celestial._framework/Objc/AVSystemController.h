@@ -11,6 +11,7 @@
     struct AVSystemControllerPrivate *_priv;
 }
 
++ (id)compatibleAudioRouteForRoute:(id)arg1;
 + (void)initialize;
 + (id)sharedAVSystemController;
 - (BOOL)allowUserToExceedEUVolumeLimit;
@@ -24,6 +25,7 @@
 - (BOOL)currentRouteHasVolumeControl;
 - (void)dealloc;
 - (BOOL)didCancelRoutePicking:(id)arg1;
+- (id)errorWithCode:(int)arg1 description:(id)arg2;
 - (BOOL)getActiveCategoryMuted:(BOOL *)arg1;
 - (BOOL)getActiveCategoryMuted:(BOOL *)arg1 forRoute:(id)arg2 andDeviceIdentifier:(id)arg3;
 - (BOOL)getActiveCategoryVolume:(float *)arg1 andName:(id *)arg2;
@@ -36,7 +38,6 @@
 - (void)handleServerDied;
 - (BOOL)hasRouteSharingPolicyLongFormVideo:(id)arg1;
 - (id)init;
-- (void)makeError:(id *)arg1 withDescription:(id)arg2 code:(int)arg3;
 - (BOOL)okToNotifyFromThisThread;
 - (id)pickableRoutesForCategory:(id)arg1;
 - (id)pickableRoutesForCategory:(id)arg1 andMode:(id)arg2;

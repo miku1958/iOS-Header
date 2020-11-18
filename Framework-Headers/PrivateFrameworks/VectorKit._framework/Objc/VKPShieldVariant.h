@@ -112,7 +112,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) CDStruct_79d0722e textShadow; // @synthesize textShadow=_textShadow;
 @property (nonatomic) CDStruct_f43f0670 textStroke; // @synthesize textStroke=_textStroke;
 
-- (Matrix_5173352a)_colorForMaskColor:(int)arg1 colors:(CDStruct_b3fd5d76 *)arg2;
 - (void)addCenterPoint:(float)arg1;
 - (void)addLayer:(CDStruct_033e8ed6)arg1;
 - (float)centerPointAtIndex:(unsigned long long)arg1;
@@ -127,7 +126,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (CDStruct_033e8ed6)layerAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
-- (struct CGImage *)newImageWithTextureAtlases:(id)arg1 atlasToImageCache:(id)arg2 atlasToImageCacheLock:(id)arg3 contentScale:(double)arg4 colors:(CDStruct_b3fd5d76 *)arg5;
 - (BOOL)readFrom:(id)arg1;
 - (void)setCenterPoints:(float *)arg1 count:(unsigned long long)arg2;
 - (void)setLayers:(CDStruct_033e8ed6 *)arg1 count:(unsigned long long)arg2;

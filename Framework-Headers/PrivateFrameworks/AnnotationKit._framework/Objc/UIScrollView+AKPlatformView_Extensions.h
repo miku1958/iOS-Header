@@ -7,6 +7,7 @@
 #import <UIKit/UIScrollView.h>
 
 @interface UIScrollView (AKPlatformView_Extensions)
+- (void)_swizzled_scrollViewAnimationEnded:(id)arg1 finished:(BOOL)arg2;
 - (double)akMagnification;
 @end
 

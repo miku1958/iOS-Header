@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface MLImageSize : NSObject
+#import <CoreML/NSSecureCoding-Protocol.h>
+
+@interface MLImageSize : NSObject <NSSecureCoding>
 {
     long long _pixelsWide;
     long long _pixelsHigh;
@@ -15,8 +17,11 @@
 @property (readonly) long long pixelsHigh; // @synthesize pixelsHigh=_pixelsHigh;
 @property (readonly) long long pixelsWide; // @synthesize pixelsWide=_pixelsWide;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPixelsWide:(long long)arg1 pixelsHigh:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToImageSize:(id)arg1;

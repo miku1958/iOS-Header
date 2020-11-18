@@ -20,10 +20,6 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
-struct atomic_flag {
-    _Atomic BOOL _Value;
-};
-
 #pragma mark Typedef'd Structures
 
 // Ambiguous groups

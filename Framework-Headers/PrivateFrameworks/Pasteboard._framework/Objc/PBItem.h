@@ -23,6 +23,7 @@
     NSMutableOrderedSet *_itemQueue_typeOrder;
     NSMutableDictionary *_itemQueue_preferredRepresentationByType;
     NSMutableDictionary *_itemQueue_visibilityByType;
+    NSMutableDictionary *_itemQueue_dataAvailabilityByType;
     id _itemQueue_localUserInfo;
     id<NSObject> _itemQueue_localObject;
     NSDictionary *_itemQueue_metadata;
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableDictionary *itemQueue_dataAvailabilityByType; // @synthesize itemQueue_dataAvailabilityByType=_itemQueue_dataAvailabilityByType;
 @property (weak, nonatomic) id<PBItemDataTransferDelegate> itemQueue_dataTransferDelegate; // @synthesize itemQueue_dataTransferDelegate=_itemQueue_dataTransferDelegate;
 @property (nonatomic) BOOL itemQueue_isStoredOnServer; // @synthesize itemQueue_isStoredOnServer=_itemQueue_isStoredOnServer;
 @property (strong, nonatomic) id<NSObject> itemQueue_localObject; // @synthesize itemQueue_localObject=_itemQueue_localObject;
@@ -89,6 +91,7 @@
 - (id)initWithData:(id)arg1 type:(id)arg2;
 - (id)initWithNSItemProvider:(id)arg1;
 - (id)initWithObject:(id)arg1;
+- (BOOL)isDataAvailableImmediatelyForType:(id)arg1;
 - (id)itemQueue_availableTypes;
 - (BOOL)itemQueue_canInstantiateObjectOfClass:(Class)arg1;
 - (BOOL)itemQueue_hasRepresentationConformingToType:(id)arg1;

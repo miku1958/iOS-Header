@@ -24,6 +24,8 @@ __attribute__((visibility("hidden")))
 - (void)didChangePreferredContentSize:(struct CGSize)arg1;
 - (void)didCompleteWithContact:(id)arg1;
 - (void)didDeleteContact:(id)arg1;
+- (void)didExecuteClearRecentsDataAction;
+- (void)didExecuteDeleteFromDowntimeWhitelistAction;
 - (id)init;
 - (BOOL)isOutOfProcess;
 - (void)isPresentingEditingController:(BOOL)arg1;

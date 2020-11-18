@@ -6,7 +6,6 @@
 
 #import <PhotosUI/PUBlackOneUpInterfaceTheme.h>
 
-__attribute__((visibility("hidden")))
 @interface PUBlackOneUpWhiteTintInterfaceTheme : PUBlackOneUpInterfaceTheme
 {
 }

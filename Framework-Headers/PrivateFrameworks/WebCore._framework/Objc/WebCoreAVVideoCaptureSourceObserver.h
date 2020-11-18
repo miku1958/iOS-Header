@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 
 - (void)addNotificationObservers;
 - (void)beginSessionInterrupted:(id)arg1;
-- (void)captureOutput:(struct AVCaptureOutput *)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(struct AVCaptureConnection *)arg3;
+- (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)deviceConnectedDidChange:(id)arg1;
 - (void)disconnect;
 - (void)endSessionInterrupted:(id)arg1;

@@ -17,8 +17,10 @@
     NSMutableArray *_danglingPlanItems;
     NSString *_iccid;
     UIBarButtonItem *_cancelButton;
+    NSMutableArray *_currentItemsForIMessage;
 }
 
+@property (strong) NSMutableArray *currentItemsForIMessage; // @synthesize currentItemsForIMessage=_currentItemsForIMessage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -28,7 +30,6 @@
 - (void).cxx_destruct;
 - (id)firstViewController;
 - (id)initWithIccid:(id)arg1 showAddPlan:(BOOL)arg2 allowDismiss:(BOOL)arg3;
-- (BOOL)isPhoneFlow;
 - (id)nextViewControllerFrom:(id)arg1;
 - (void)setDefaultNavigationItems:(id)arg1;
 - (void)viewControllerDidComplete:(id)arg1;

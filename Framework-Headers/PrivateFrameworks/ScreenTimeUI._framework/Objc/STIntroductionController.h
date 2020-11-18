@@ -6,8 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, STIntroductionModel;
+@class NSString, STIntroductionModel, UINavigationController, UIViewController;
 
+__attribute__((visibility("hidden")))
 @interface STIntroductionController : NSObject
 {
     BOOL _allowParentalControls;
@@ -17,22 +18,25 @@
     NSString *_childName;
     CDUnknownBlockType _completionBlock;
     STIntroductionModel *_introductionModel;
+    UINavigationController *_navigationController;
 }
 
 @property BOOL allowParentalControls; // @synthesize allowParentalControls=_allowParentalControls;
 @property (copy) NSString *childName; // @synthesize childName=_childName;
 @property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property BOOL forceParentalControls; // @synthesize forceParentalControls=_forceParentalControls;
-@property (strong, nonatomic) STIntroductionModel *introductionModel; // @synthesize introductionModel=_introductionModel;
+@property (readonly) UIViewController *initialViewController;
+@property (readonly) STIntroductionModel *introductionModel; // @synthesize introductionModel=_introductionModel;
 @property (nonatomic) BOOL isModalPresentation; // @synthesize isModalPresentation=_isModalPresentation;
+@property (strong) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property BOOL skipWelcome; // @synthesize skipWelcome=_skipWelcome;
 
 - (void).cxx_destruct;
+- (void)_cancel:(id)arg1;
+- (void)_viewControllerCompleted:(id)arg1;
+- (id)_viewControllerFollowingViewController:(id)arg1;
 - (id)init;
-- (id)initialViewController;
 - (void)presentOverViewController:(id)arg1;
-- (void)viewControllerCompleted:(id)arg1 model:(id)arg2;
-- (id)viewControllerFollowingViewController:(id)arg1;
 
 @end
 

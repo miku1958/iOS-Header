@@ -9,17 +9,19 @@
 #import <MediaControls/MPRequestResponseControllerDelegate-Protocol.h>
 #import <MediaControls/UITableViewDataSource-Protocol.h>
 #import <MediaControls/UITableViewDelegate-Protocol.h>
+#import <MediaControls/UITableViewDelegatePrivate-Protocol.h>
 
-@class MPRequestResponseController, NSArray, NSString, UITableView, UIView;
+@class MPAVClippingTableView, MPRequestResponseController, MTVisualStylingProvider, NSArray, NSString, UIView;
 @protocol MediaControlsLanguageOptionsViewControllerDelegate;
 
-@interface MediaControlsLanguageOptionsViewController : UIViewController <MPRequestResponseControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface MediaControlsLanguageOptionsViewController : UIViewController <MPRequestResponseControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDelegatePrivate>
 {
     NSArray *_languageOptionGroups;
     id<MediaControlsLanguageOptionsViewControllerDelegate> _delegate;
     MPRequestResponseController *_requestResponseController;
     UIView *_materialView;
-    UITableView *_tableView;
+    MPAVClippingTableView *_tableView;
+    MTVisualStylingProvider *_visualStylingProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,9 +32,11 @@
 @property (strong, nonatomic) UIView *materialView; // @synthesize materialView=_materialView;
 @property (strong, nonatomic) MPRequestResponseController *requestResponseController; // @synthesize requestResponseController=_requestResponseController;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property (strong, nonatomic) MPAVClippingTableView *tableView; // @synthesize tableView=_tableView;
+@property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
 - (BOOL)controller:(id)arg1 shouldRetryFailedRequestWithError:(id)arg2;
 - (id)initWithRouteUID:(id)arg1;
@@ -41,9 +45,11 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHaveFullLengthBottomSeparatorForSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHaveFullLengthTopSeparatorForSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

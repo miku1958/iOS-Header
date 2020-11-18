@@ -11,6 +11,7 @@
 }
 
 + (BOOL)iterSortedEntriesInDirectory:(id)arg1 selectDirent:(CDUnknownBlockType)arg2 onSortedDirent:(CDUnknownBlockType)arg3 error:(id *)arg4;
++ (id)mkstempWithPrefix:(id)arg1 error:(id *)arg2;
 
 @end
 

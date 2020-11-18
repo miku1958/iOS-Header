@@ -15,10 +15,12 @@
 @interface _INPBGeographicalFeature : PBCodable <_INPBGeographicalFeature, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_geographicalFeatureDescriptors;
     _INPBString *_geographicalFeatureType;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *geographicalFeatureDescriptors; // @synthesize geographicalFeatureDescriptors=_geographicalFeatureDescriptors;
@@ -29,12 +31,15 @@
 @property (readonly) Class superclass;
 
 + (Class)geographicalFeatureDescriptorsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addGeographicalFeatureDescriptors:(id)arg1;
 - (void)clearGeographicalFeatureDescriptors;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)geographicalFeatureDescriptorsAtIndex:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

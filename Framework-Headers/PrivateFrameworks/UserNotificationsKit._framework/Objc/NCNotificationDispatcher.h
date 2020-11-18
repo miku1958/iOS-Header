@@ -9,7 +9,7 @@
 #import <UserNotificationsKit/NCNotificationAlertDestinationDelegate-Protocol.h>
 #import <UserNotificationsKit/NCNotificationDestinationDelegate-Protocol.h>
 
-@class NCNotificationAlertQueue, NCNotificationDestinationsRegistry, NCNotificationStore, NSHashTable, NSMutableDictionary, NSString;
+@class NCLayoutLoopDetector, NCNotificationAlertQueue, NCNotificationDestinationsRegistry, NCNotificationStore, NSHashTable, NSMutableDictionary, NSString;
 @protocol NCAlertingController, NCNotificationDispatcherDelegate;
 
 @interface NCNotificationDispatcher : NSObject <NCNotificationAlertDestinationDelegate, NCNotificationDestinationDelegate>
@@ -20,6 +20,7 @@
     NCNotificationAlertQueue *_alertQueue;
     NSMutableDictionary *_sectionSettings;
     NSHashTable *_sourceDelegates;
+    NCLayoutLoopDetector *_layoutDetector;
     id<NCAlertingController> _alertingController;
 }
 
@@ -30,24 +31,20 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NCNotificationDestinationsRegistry *destinationsRegistry; // @synthesize destinationsRegistry=_destinationsRegistry;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NCLayoutLoopDetector *layoutDetector; // @synthesize layoutDetector=_layoutDetector;
 @property (strong, nonatomic) NCNotificationStore *notificationStore; // @synthesize notificationStore=_notificationStore;
 @property (strong, nonatomic) NSMutableDictionary *sectionSettings; // @synthesize sectionSettings=_sectionSettings;
 @property (strong, nonatomic) NSHashTable *sourceDelegates; // @synthesize sourceDelegates=_sourceDelegates;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addNotificationRequestToLayoutsInProgress:(id)arg1;
 - (void)_clearUnsafeNotification:(id)arg1;
 - (void)_didPostNotificationRequest:(id)arg1;
 - (void)_didRemoveNotificationRequest:(id)arg1;
 - (BOOL)_isRegisteredDestination:(id)arg1;
-- (BOOL)_layoutsInProgressContainsNotificationRequest:(id)arg1;
-- (id)_notificationLayoutsInProgress;
 - (void)_performOperationForRequestDestinations:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_registerAlertDestination:(id)arg1;
 - (void)_registerDestination:(id)arg1;
-- (void)_removeNotificationRequestFromLayoutsInProgress:(id)arg1;
-- (void)_setNotificationLayoutsInProgress:(id)arg1;
 - (BOOL)_shouldPostNotificationRequest:(id)arg1;
 - (void)_willPostNotificationRequest:(id)arg1;
 - (void)addDispatcherSourceDelegate:(id)arg1;

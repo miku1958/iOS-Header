@@ -51,6 +51,7 @@
 - (id)initWithSBSApplicationShortcutItem:(id)arg1;
 - (void)loadImageDataForDesiredSize:(long long)arg1 scale:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)processAction;
+- (id)shortcutItem;
 
 @end
 

@@ -6,21 +6,22 @@
 
 #import <UIKit/UIView.h>
 
+#import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface NCToggleControlPair : UIView <PLContentSizeCategoryAdjusting>
+@interface NCToggleControlPair : UIView <PLContentSizeCategoryAdjusting, MTMaterialGrouping>
 {
+    NSString *_materialGroupNameBase;
     NSArray *_toggleControls;
-    NSString *_backgroundGroupName;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory;
-@property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *toggleControls; // @synthesize toggleControls=_toggleControls;

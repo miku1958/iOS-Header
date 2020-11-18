@@ -6,12 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <VoiceShortcutsUI/VCUICreateVoiceShortcutViewControllerDelegate-Protocol.h>
+#import <VoiceShortcutsUI/VCUIShortcutViewControllerDelegate-Protocol.h>
 
 @class NSString, UITextView;
 @protocol VCActionDonation;
 
-@interface VCUIActionDonationDetailsViewController : UIViewController <VCUICreateVoiceShortcutViewControllerDelegate>
+@interface VCUIActionDonationDetailsViewController : UIViewController <VCUIShortcutViewControllerDelegate>
 {
     id<VCActionDonation> _donation;
 }
@@ -26,10 +26,10 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)createVoiceShortcut;
-- (void)createVoiceShortcutViewController:(id)arg1 didCreateVoiceShortcut:(id)arg2;
-- (void)createVoiceShortcutViewControllerDidCancel:(id)arg1;
 - (id)initWithDonation:(id)arg1;
 - (void)loadView;
+- (void)shortcutViewController:(id)arg1 didCreateShortcut:(id)arg2;
+- (void)shortcutViewControllerDidCancel:(id)arg1;
 
 @end
 

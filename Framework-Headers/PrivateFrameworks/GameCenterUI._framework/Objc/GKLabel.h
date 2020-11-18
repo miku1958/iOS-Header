@@ -32,8 +32,8 @@
 @property (readonly, nonatomic) BOOL usingAttributedText; // @synthesize usingAttributedText=_usingAttributedText;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)applyTextStyle:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)replayAndApplyStyleUnlessInhibited;
 - (void)replayAndApplyStyleWithSystemContentChange:(BOOL)arg1;

@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
 - (id)_decodeReplyFromXPCObject:(id)arg1 forSelector:(SEL)arg2 interface:(id)arg3;
 - (void)_startReadingFromXPCObject:(id)arg1;
 - (void)_validateAllowedClass:(Class)arg1 forKey:(id)arg2 allowingInvocations:(BOOL)arg3;
+- (void)_validateAllowedXPCType:(struct _xpc_type_s *)arg1 forKey:(id)arg2;
+- (id)_xpcObjectForIndex:(long long)arg1;
 - (id)allowedClasses;
 - (BOOL)allowsKeyedCoding;
 - (id)connection;

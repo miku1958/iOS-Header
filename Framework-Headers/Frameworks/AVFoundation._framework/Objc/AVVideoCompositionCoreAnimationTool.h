@@ -23,7 +23,6 @@
 - (id)_postProcessingRootLayer;
 - (id)_postProcessingVideoLayers;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithMagicTrackID:(int)arg1 animationLayer:(id)arg2 videoLayers:(id)arg3;
 
 @end

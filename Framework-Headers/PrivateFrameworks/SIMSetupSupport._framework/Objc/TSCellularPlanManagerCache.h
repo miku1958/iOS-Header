@@ -24,6 +24,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_getByteRepresentationOf:(id)arg1;
 - (id)_getValidatedPlanItemFor:(id)arg1;
 - (void)_initialize;
 - (void)_updateCachedFlowTypes;
@@ -33,6 +34,8 @@
 - (void)addNewPlanWithCardData:(id)arg1 confirmationCode:(id)arg2 userConsentResponse:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (long long)calculateInstallConsentTextTypeFor:(id)arg1;
 - (void)dealloc;
+- (void)didPurchasePlanForEid:(id)arg1 iccid:(id)arg2 smdpURL:(id)arg3;
+- (void)didTransferPlanForEid:(id)arg1 iccid:(id)arg2 smdpURL:(id)arg3 state:(id)arg4;
 - (id)getDanglingPlanItems;
 - (id)getPredefinedLabels;
 - (id)getShortLabelsForLabels:(id)arg1;
@@ -41,9 +44,11 @@
 - (id)remapSimLabel:(id)arg1 to:(id)arg2;
 - (void)resumePlanProvisioning:(BOOL)arg1 userConsent:(long long)arg2;
 - (void)selectPlanForData:(id)arg1;
-- (void)selectPlanForIMessage:(id)arg1;
 - (void)selectPlanForVoice:(id)arg1;
+- (void)selectPlansForIMessage:(id)arg1;
+- (void)sendUserResponse:(unsigned long long)arg1 confirmationCode:(id)arg2;
 - (id)setLabelForPlan:(id)arg1 label:(id)arg2;
+- (void)setUserInPurchaseFlow:(BOOL)arg1;
 - (void)shouldShowPlanSetupWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) id<PSSplitViewControllerNavigationDelegate> navigationDelegate; // @synthesize navigationDelegate=_navigationDelegate;
 
 - (void).cxx_destruct;
+- (id)categoryController;
 - (id)childViewControllerForStatusBarStyle;
 - (void)popRecursivelyToRootController;
 - (void)setViewControllers:(id)arg1;

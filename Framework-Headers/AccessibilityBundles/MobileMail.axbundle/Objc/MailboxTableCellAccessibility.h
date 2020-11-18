@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsFlaggedMailboxCell;
+- (BOOL)_accessibilityMailboxUsesUnreadCount;
 - (long long)_accessibilityScannerActivateBehavior;
 - (void)_setUnreadCount:(unsigned long long)arg1;
 - (id)accessibilityLabel;

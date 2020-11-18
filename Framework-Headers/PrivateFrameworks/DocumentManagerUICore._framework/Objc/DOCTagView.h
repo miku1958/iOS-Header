@@ -6,30 +6,34 @@
 
 #import <UIKit/UIView.h>
 
-@class DOCTag, UIFont, UILabel, UIVisualEffectView;
+@class DOCTag, UIFont, UILabel;
 @protocol DOCTagViewDelegate;
 
 @interface DOCTagView : UIView
 {
     DOCTag *_tagValue;
+    double _maxWidth;
     id<DOCTagViewDelegate> _delegate;
     UILabel *_tagNameLabel;
-    UIVisualEffectView *_tagNameLabelWrapper;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory;
 @property (weak, nonatomic) id<DOCTagViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIFont *font;
+@property (nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
 @property (readonly, nonatomic) UILabel *tagNameLabel; // @synthesize tagNameLabel=_tagNameLabel;
-@property (readonly, nonatomic) UIVisualEffectView *tagNameLabelWrapper; // @synthesize tagNameLabelWrapper=_tagNameLabelWrapper;
-@property (strong, nonatomic) DOCTag *tagValue; // @synthesize tagValue=_tagValue;
+@property (copy, nonatomic) DOCTag *tagValue; // @synthesize tagValue=_tagValue;
 
 - (void).cxx_destruct;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 - (void)longPressGestureRecognizer:(id)arg1;
 - (void)removeTag:(id)arg1;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)updateColors;
 - (id)viewForLastBaselineLayout;
 
 @end

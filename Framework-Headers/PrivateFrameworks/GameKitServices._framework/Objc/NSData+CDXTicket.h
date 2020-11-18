@@ -7,6 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (CDXTicket)
++ (id)dataWithSockAddr:(const struct sockaddr *)arg1;
 - (const struct CDXTicket *)CDXTicket;
 - (id)CDXTicketExpirationDate;
 - (BOOL)CDXTicketIsHolePunch;
@@ -20,5 +21,6 @@
 - (id)CDXTicketTrimmed;
 - (BOOL)CDXTicketWellFormed;
 - (struct CDXTicket *)mutableCDXTicket;
+- (struct sockaddr *)sockAddr;
 @end
 

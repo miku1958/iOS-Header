@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSError, QLItemPresenterViewController, QLItemViewController;
+@class NSError, NSString, QLItemPresenterViewController, QLItemViewController;
 
 @protocol QLItemViewControllerPresentingDelegate
 
+@property (readonly, nonatomic) NSString *hostApplicationBundleIdentifier;
 @property (readonly) QLItemPresenterViewController *itemPresenterViewController;
 
 - (void)previewItemViewController:(QLItemViewController *)arg1 didFailWithError:(NSError *)arg2;

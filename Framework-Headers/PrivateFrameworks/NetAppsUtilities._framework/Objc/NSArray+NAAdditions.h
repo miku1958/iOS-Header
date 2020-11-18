@@ -9,6 +9,7 @@
 @interface NSArray (NAAdditions)
 + (id)na_arrayByRepeatingWithCount:(unsigned long long)arg1 generatorBlock:(CDUnknownBlockType)arg2;
 + (id)na_arrayWithSafeObject:(id)arg1;
++ (id)na_arrayWithTerminator:(id)arg1 nullableObjects:(id)arg2;
 - (BOOL)na_all:(CDUnknownBlockType)arg1;
 - (BOOL)na_any:(CDUnknownBlockType)arg1;
 - (id)na_arrayByFlattening;
@@ -21,5 +22,6 @@
 - (id)na_flatMap:(CDUnknownBlockType)arg1;
 - (id)na_map:(CDUnknownBlockType)arg1;
 - (id)na_reduceWithInitialValue:(id)arg1 reducer:(CDUnknownBlockType)arg2;
+- (BOOL)na_safeContainsObject:(id)arg1;
 @end
 

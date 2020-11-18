@@ -36,6 +36,7 @@
 - (void)setCharacteristic:(id)arg1 triggerValueRange:(id)arg2;
 - (BOOL)supportsConditions;
 - (BOOL)supportsEndEvents;
+- (id)thresholdValueForCharacteristic:(id)arg1 thresholdValueRange:(id)arg2;
 - (BOOL)wouldFireForCharacteristic:(id)arg1 value:(id)arg2;
 
 @end

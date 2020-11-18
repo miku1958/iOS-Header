@@ -13,6 +13,7 @@
 @interface _NTKKeylinePathView : NTKColoringView <NTKKeylineView>
 {
     UIBezierPath *_path;
+    UIBezierPath *_secondPath;
     NTKKeylineTouchable *touchable;
 }
 
@@ -29,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 secondPath:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

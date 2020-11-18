@@ -22,9 +22,13 @@
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 
 + (id)defaultSettings;
++ (id)defaultSettingsWithCacheSize:(unsigned long long)arg1;
++ (id)offMainThreadSynchronousRenderingOnlySettingsWithCacheSize:(unsigned long long)arg1;
 + (id)settingsWithContactStore:(id)arg1;
-+ (id)settingsWithContactStore:(id)arg1 personaStore:(id)arg2;
-+ (id)settingsWithContactStore:(id)arg1 personaStore:(id)arg2 schedulerProvider:(id)arg3;
++ (id)settingsWithContactStore:(id)arg1 cacheSize:(unsigned long long)arg2;
++ (id)settingsWithContactStore:(id)arg1 cacheSize:(unsigned long long)arg2 schedulerProvider:(id)arg3;
++ (id)settingsWithContactStore:(id)arg1 cacheSize:(unsigned long long)arg2 schedulerProvider:(id)arg3 concurrentCaches:(BOOL)arg4;
++ (id)settingsWithContactStore:(id)arg1 schedulerProvider:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithLikenessResolver:(id)arg1 likenessRenderer:(id)arg2 schedulerProvider:(id)arg3;
 

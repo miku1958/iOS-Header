@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSDate, NSDictionary, NSString;
 @protocol GKPreferencesDelegate;
 
 @interface GKPreferences : NSObject
@@ -31,6 +31,7 @@
 @property (nonatomic) unsigned long long exchangeDataMaximumSize;
 @property (readonly, nonatomic) unsigned long long exchangeDefaultMaxInitiatedExchangesPerPlayer;
 @property (nonatomic) unsigned long long exchangeMaxInitiatedExchangesPerPlayer;
+@property (nonatomic) BOOL forceDefaultNickname;
 @property (nonatomic) BOOL forceRelay;
 @property (readonly, nonatomic, getter=isGameCenterRestricted) BOOL gameCenterRestricted;
 @property (nonatomic) double garbageCollectionInterval;
@@ -61,6 +62,9 @@
 @property (nonatomic) BOOL preemptiveRelay;
 @property (nonatomic) id<GKPreferencesDelegate> preferencesDelegate;
 @property (nonatomic) long long pushEnvironment;
+@property (nonatomic) unsigned long long recentNumberOfPlayers;
+@property (nonatomic) BOOL restrictToAutomatch;
+@property (nonatomic) BOOL restrictToTournamentPlayers;
 @property (nonatomic) BOOL shouldAddPlayerInfoToAddressBook;
 @property (nonatomic) BOOL shouldAllowNearbyMultiplayer;
 @property (nonatomic) BOOL shouldAnnotateImageUsage;
@@ -74,6 +78,28 @@
 @property (readonly, nonatomic, getter=isStoreDemoModeEnabled) BOOL storeDemoModeEnabled;
 @property (nonatomic) double terminationInterval;
 @property (copy, nonatomic) NSString *testRunID;
+@property (nonatomic) long long tournamentAutoDuration;
+@property (nonatomic) long long tournamentCreationMethod;
+@property (nonatomic) long long tournamentCustomDuration;
+@property (nonatomic) long long tournamentCustomMaxPlayers;
+@property (nonatomic) long long tournamentCustomMaxReplays;
+@property (nonatomic) long long tournamentCustomMinPlayers;
+@property (nonatomic) BOOL tournamentDemoModeEnabled;
+@property (nonatomic) long long tournamentDuration;
+@property (strong, nonatomic) NSDate *tournamentEndDate;
+@property (nonatomic) long long tournamentMaxPlayers;
+@property (nonatomic) long long tournamentMaxReplays;
+@property (nonatomic) long long tournamentMaxSimulatedFriends;
+@property (nonatomic) long long tournamentMaxSimulatedPlayers;
+@property (nonatomic) long long tournamentMinPlayers;
+@property (nonatomic) long long tournamentParticipantState;
+@property (nonatomic) long long tournamentPlayers;
+@property (nonatomic) long long tournamentReplays;
+@property (nonatomic) long long tournamentServer;
+@property (strong, nonatomic) NSDate *tournamentStartDate;
+@property (nonatomic) long long tournamentState;
+@property (nonatomic) long long tournamentUIAppearanceStyle;
+@property (nonatomic) BOOL tournamentsDebuggingEnabled;
 @property (nonatomic) BOOL useInternalHeader;
 @property (nonatomic) BOOL useTestProtocols;
 @property (nonatomic) BOOL verboseLogging;
@@ -81,7 +107,7 @@
 
 + (id)displayNameForEnvironment:(long long)arg1;
 + (id)hostNameForEnvironment:(long long)arg1;
-+ (id)sharedPreferences;
++ (id)shared;
 - (void)_didWriteKey:(struct __CFString *)arg1;
 - (void)applicationWillEnterBackground:(id)arg1;
 - (BOOL)booleanValueForKey:(struct __CFString *)arg1;

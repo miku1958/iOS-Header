@@ -7,7 +7,7 @@
 #import <Silex/NSObject-Protocol.h>
 #import <Silex/SXTextStyleFontDescribing-Protocol.h>
 
-@class SXJSONArray, SXShadow, SXTextDecoration, SXTextStroke, UIColor;
+@class SXJSONArray, SXTextDecoration, SXTextShadow, SXTextStroke, UIColor;
 
 @protocol SXConditionalTextStyleProperties <NSObject, SXTextStyleFontDescribing>
 
@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) SXTextDecoration *strikethrough;
 @property (readonly, nonatomic) SXTextStroke *stroke;
 @property (readonly, nonatomic) UIColor *textColor;
-@property (readonly, nonatomic) SXShadow *textShadow;
+@property (readonly, nonatomic) SXTextShadow *textShadow;
 @property (readonly, nonatomic) long long textTransform;
 @property (readonly, nonatomic) double tracking;
 @property (readonly, nonatomic) SXTextDecoration *underline;

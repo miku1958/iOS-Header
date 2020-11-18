@@ -19,8 +19,12 @@
     NSString *_clientVersion;
     NSString *_requestingBundleIdentifier;
     NSString *_requestingBundleVersion;
+    NSString *_bagProfile;
+    NSString *_bagProfileVersion;
 }
 
+@property (readonly, copy, nonatomic) NSString *bagProfile;
+@property (readonly, copy, nonatomic) NSString *bagProfileVersion;
 @property (readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly, copy, nonatomic) NSString *clientVersion; // @synthesize clientVersion=_clientVersion;
 @property (readonly, copy, nonatomic) NSString *processName; // @synthesize processName=_processName;
@@ -32,9 +36,11 @@
 - (void).cxx_destruct;
 - (id)_clientInfoCopyWithClass:(Class)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSystemApplicationType:(long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

@@ -7,11 +7,13 @@
 #import <VoiceShortcutsUI/CRFeedbackListener-Protocol.h>
 
 @class UIViewController;
+@protocol CRCard;
 
 @protocol CRKFeedbackDelegate <CRFeedbackListener>
 
 @optional
 - (void)presentViewController:(UIViewController *)arg1;
+- (void)presentViewControllerForCard:(id<CRCard>)arg1 animate:(BOOL)arg2;
 - (void)willDismissViewController:(UIViewController *)arg1;
 @end
 

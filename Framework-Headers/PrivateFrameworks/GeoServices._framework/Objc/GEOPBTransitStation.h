@@ -9,22 +9,35 @@
 #import <GeoServices/GEOTransitNamedItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSMutableArray, NSString, PBUnknownFields;
+@class GEOLatLng, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPBTransitStation : PBCodable <GEOTransitNamedItem, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _muid;
     GEOLatLng *_location;
+    unsigned long long _muid;
     NSString *_nameDisplayString;
+    NSMutableArray *_zoomNames;
     unsigned int _stationIndex;
     int _structureType;
-    NSMutableArray *_zoomNames;
     struct {
-        unsigned int muid:1;
-        unsigned int stationIndex:1;
-        unsigned int structureType:1;
-    } _has;
+        unsigned int has_muid:1;
+        unsigned int has_stationIndex:1;
+        unsigned int has_structureType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_location:1;
+        unsigned int read_nameDisplayString:1;
+        unsigned int read_zoomNames:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_location:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_nameDisplayString:1;
+        unsigned int wrote_zoomNames:1;
+        unsigned int wrote_stationIndex:1;
+        unsigned int wrote_structureType:1;
+    } _flags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,21 +49,27 @@
 @property (nonatomic) BOOL hasStationIndex;
 @property (nonatomic) BOOL hasStructureType;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
+@property (strong, nonatomic) GEOLatLng *location;
 @property (nonatomic) unsigned long long muid;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (strong, nonatomic) NSString *nameDisplayString; // @synthesize nameDisplayString=_nameDisplayString;
-@property (nonatomic) unsigned int stationIndex; // @synthesize stationIndex=_stationIndex;
-@property (nonatomic) int structureType; // @synthesize structureType=_structureType;
+@property (nonatomic) unsigned long long muid;
+@property (strong, nonatomic) NSString *nameDisplayString;
+@property (nonatomic) unsigned int stationIndex;
+@property (nonatomic) int structureType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *zoomNames; // @synthesize zoomNames=_zoomNames;
+@property (strong, nonatomic) NSMutableArray *zoomNames;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)zoomNameType;
 - (void).cxx_destruct;
 - (int)StringAsStructureType:(id)arg1;
+- (void)_addNoFlagsZoomName:(id)arg1;
+- (void)_readLocation;
+- (void)_readNameDisplayString;
+- (void)_readZoomNames;
 - (void)addZoomName:(id)arg1;
 - (id)bestName;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearZoomNames;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -58,6 +77,7 @@
 - (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)structureTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

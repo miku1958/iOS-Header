@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_presentViewControllerForError:(id)arg1;
+- (void)_resetRemoteConfiguration;
 - (id)accessoryView;
 - (void)configureAsAccessoryViewContainerForPreviewCollection:(id)arg1;
 - (void)configureWithNumberOfItems:(long long)arg1 currentPreviewItemIndex:(unsigned long long)arg2 itemProvider:(id)arg3 stateManager:(id)arg4;
@@ -44,10 +45,11 @@ __attribute__((visibility("hidden")))
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)saveCurrentPreviewEditsSynchronously:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
+- (void)setIsContentManaged:(BOOL)arg1;
 - (void)setLoadingString:(id)arg1;
-- (void)setSourceIsManaged:(BOOL)arg1;
 - (void)startTransitionWithSourceViewProvider:(id)arg1 transitionController:(id)arg2 presenting:(BOOL)arg3 useInteractiveTransition:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)tearDownTransition:(BOOL)arg1;
 - (void)toolbarButtonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

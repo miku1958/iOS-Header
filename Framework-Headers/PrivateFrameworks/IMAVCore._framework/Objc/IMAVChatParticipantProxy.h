@@ -15,10 +15,10 @@
 }
 
 @property (readonly, nonatomic) BOOL _inviteDelivered;
-@property (readonly, strong, nonatomic) IMAVChat *avChat;
-@property (readonly, strong, nonatomic) NSString *name;
+@property (readonly, nonatomic) IMAVChat *avChat;
+@property (readonly, nonatomic) NSString *name;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithDictionary:(id)arg1 chat:(id)arg2;
 - (BOOL)isLocalParticipant;

@@ -23,7 +23,9 @@
 @property (weak, nonatomic) id<BCSActionPickerItemDelegate> actionPickerItemDelegate; // @synthesize actionPickerItemDelegate=_actionPickerItemDelegate;
 @property (readonly, copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
 @property (readonly, nonatomic, getter=isCopyActionItem) BOOL copyActionItem; // @synthesize copyActionItem=_copyActionItem;
+@property (readonly, nonatomic) long long dataType;
 @property (readonly, copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (readonly, copy, nonatomic) NSString *localizedDefaultActionDescription;
 @property (readonly, nonatomic) BOOL shouldDismissAlertWhenActionIsTaken;
 @property (readonly, copy, nonatomic) NSString *targetApplicationBundleIdentifier; // @synthesize targetApplicationBundleIdentifier=_targetApplicationBundleIdentifier;
 

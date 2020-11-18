@@ -6,6 +6,7 @@
 
 #import <UIKit/UISplitViewController.h>
 
+#import <VideosUI/UISplitViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUICategoryMenuViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUIHomeShareViewControllerDelegate-Protocol.h>
 #import <VideosUI/VUILibraryCategoryMenuViewModelDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @protocol VUILibrarySplitViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUILibrarySplitViewController : UISplitViewController <VUILibraryCategoryMenuViewModelDelegate, VUICategoryMenuViewControllerDelegate, VUILibraryGridCollectionViewControllerDelegate, VUIHomeShareViewControllerDelegate>
+@interface VUILibrarySplitViewController : UISplitViewController <VUILibraryCategoryMenuViewModelDelegate, VUICategoryMenuViewControllerDelegate, VUILibraryGridCollectionViewControllerDelegate, VUIHomeShareViewControllerDelegate, UISplitViewControllerDelegate>
 {
     BOOL _shouldShowBackButton;
     BOOL _hasLoaded;
@@ -64,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)_setDisplayModeForLayoutType:(long long)arg1;
 - (void)_showOrHideNoContentView;
 - (void)_updateRentals;
+- (id)_viewControllerForIndexPath:(id)arg1;
 - (void)categoryMenuViewController:(id)arg1 didSelectMenuItemAtIndexPath:(id)arg2;
 - (void)categoryMenuViewControllerShouldDismiss:(id)arg1;
 - (void)categoryViewModel:(id)arg1 categoriesDidChange:(id)arg2;
@@ -74,6 +76,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithMediaLibrary:(id)arg1;
 - (void)loadView;
 - (void)setPageMetricsForCategory:(id)arg1 onLibraryGridCollectionViewController:(id)arg2;
+- (void)showDetailViewController:(id)arg1 sender:(id)arg2;
+- (BOOL)splitViewController:(id)arg1 collapseSecondaryViewController:(id)arg2 ontoPrimaryViewController:(id)arg3;
+- (id)splitViewController:(id)arg1 separateSecondaryViewControllerFromPrimaryViewController:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

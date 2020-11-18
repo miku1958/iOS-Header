@@ -10,6 +10,9 @@
 {
 }
 
+@property (readonly, nonatomic, getter=isUILocked) BOOL UILocked;
+@property (readonly, nonatomic) int lastLockSource;
+
 + (BOOL)_isSessionLoginSession;
 + (BOOL)_showingBuddyLockScreen;
 + (void)accessibilityInitializeBundle;
@@ -24,7 +27,6 @@
 - (BOOL)_accessibilityAllowShowNotificationGestureOverride;
 - (void)_accessibilitySetAllowShowNotificationGestureOverride:(BOOL)arg1;
 - (BOOL)isDimmed;
-- (BOOL)isUILocked;
 
 @end
 

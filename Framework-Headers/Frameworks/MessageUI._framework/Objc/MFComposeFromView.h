@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MessageUI/MFComposeHeaderView.h>
+#import <MessageUI/MFMailComposeHeaderView.h>
 
 @class UILabel, UIView;
 
-@interface MFComposeFromView : MFComposeHeaderView
+@interface MFComposeFromView : MFMailComposeHeaderView
 {
     UILabel *_accountLabel;
     UIView *_background;
@@ -17,15 +17,15 @@
 
 @property (nonatomic) BOOL accountHasUnsafeDomain; // @synthesize accountHasUnsafeDomain=_accountHasUnsafeDomain;
 
+- (void).cxx_destruct;
 - (id)_accountLabel;
 - (void)_setBackgroundVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGRect)accountLabelRect;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)refreshPreferredContentSize;
 - (void)setAccountLabel:(id)arg1;
 - (void)setLabelHighlighted:(BOOL)arg1;
-- (void)tintColorDidChange;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

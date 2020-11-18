@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class HUQuickControlViewController;
+@class HUQuickControlViewController, NSSet;
 
 @interface HUQuickControlViewControllerGroup : NSObject
 {
     HUQuickControlViewController *_primaryViewController;
-    HUQuickControlViewController *_alternateViewController;
+    NSSet *_alternateViewControllers;
 }
 
-@property (readonly, nonatomic) HUQuickControlViewController *alternateViewController; // @synthesize alternateViewController=_alternateViewController;
+@property (readonly, nonatomic) NSSet *alternateViewControllers; // @synthesize alternateViewControllers=_alternateViewControllers;
 @property (readonly, nonatomic) HUQuickControlViewController *primaryViewController; // @synthesize primaryViewController=_primaryViewController;
 
 - (void).cxx_destruct;
-- (id)initWithPrimaryViewController:(id)arg1 alternateViewController:(id)arg2;
+- (id)initWithPrimaryViewController:(id)arg1 alternateViewControllers:(id)arg2;
 
 @end
 

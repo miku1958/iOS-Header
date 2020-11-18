@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MessageUI/MFMailMarkupDelegate-Protocol.h>
 #import <MessageUI/UIDocumentPickerDelegate-Protocol.h>
 #import <MessageUI/UIPickerViewDelegate-Protocol.h>
 #import <MessageUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <MessageUI/UITableViewDataSource-Protocol.h>
 #import <MessageUI/UITableViewDelegate-Protocol.h>
 
-@class MFAttachment, MFFromAddressTableView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSString, UIPickerView, UIViewController, _MFMailCompositionContext;
+@class MFAttachment, MFFromAddressTableView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSDictionary, NSString, UIBarButtonItem, UIPickerView, UIView, UIViewController, _MFMailCompositionContext;
+@protocol MFComposeBodyField;
 
-@protocol MFMailComposeViewDelegate <UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate, MFMailMarkupDelegate>
+@protocol MFMailComposeViewDelegate <UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
 - (BOOL)bccAddressesDirtied;
 - (BOOL)canShowAttachmentPicker;
 - (BOOL)canShowFromField;
@@ -32,6 +32,7 @@
 - (void)markupAttachment:(MFAttachment *)arg1;
 - (MFMailPopoverManager *)popoverManager;
 - (UIViewController *)presentationViewController;
+- (void)scanDocument;
 - (void)scrollToSelectedEntryInFromAddressTableView:(MFFromAddressTableView *)arg1;
 - (void)selectCurrentEntryForFromAddressPickerView:(UIPickerView *)arg1;
 - (MFMailAccountProxy *)sendingAccountProxy;
@@ -43,7 +44,14 @@
 - (void)updateSignature;
 
 @optional
+- (struct UIEdgeInsets)additionalContentInsetForBodyField:(UIView<MFComposeBodyField> *)arg1;
+- (BOOL)canShowContentVariationPicker;
+- (void)composeBodyFieldDidChangeFontAttributes:(NSDictionary *)arg1;
 - (void)composeBodyFieldDidFinishLoad;
 - (void)composeViewBodyTextChanged:(MFMailComposeView *)arg1;
+- (NSString *)contentVariationName;
+- (void)showContentVariationPickerFromRect:(struct CGRect)arg1 inView:(UIView *)arg2;
+- (void)showMissingAttachmentDataAlert;
+- (void)showStyleSelector:(UIBarButtonItem *)arg1;
 @end
 

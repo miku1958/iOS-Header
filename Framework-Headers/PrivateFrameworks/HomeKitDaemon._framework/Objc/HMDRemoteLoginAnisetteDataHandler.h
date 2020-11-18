@@ -37,6 +37,11 @@
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)_handleEraseAnisetteDataRequestMessage:(id)arg1;
+- (void)_handleFetchAnisetteDataRequestMessage:(id)arg1;
+- (void)_handleLegacyAnisetteDataRequestMessage:(id)arg1;
+- (void)_handleProvisionAnisetteDataRequestMessage:(id)arg1;
+- (void)_handleSyncAnisetteDataRequestMessage:(id)arg1;
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 - (id)initWithUUID:(id)arg1 accessory:(id)arg2;
 - (id)logIdentifier;

@@ -6,57 +6,76 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSCache, NSString, PXExtendedTraitCollection, PXLayoutMetricInterpolator, UIColor;
+@class NSArray, NSCache, PXExtendedTraitCollection, PXLayoutMetricInterpolator, UIColor;
 
 @interface PXFeatureSpec : NSObject
 {
     BOOL _shouldInsetAllPhotoDetailsContent;
     BOOL __shouldUseMiniMargins;
+    unsigned long long _options;
     long long _sizeClass;
+    long long _sizeSubclass;
+    long long _layoutOrientation;
+    long long _layoutDirection;
     long long _userInterfaceIdiom;
     long long _userInterfaceFeature;
+    long long _userInterfaceStyle;
+    long long _userInterfaceLevel;
+    long long _contentSizeCategory;
     double _displayScale;
     NSArray *_collectionTileImageOverlaySpecs;
     NSArray *_collectionTileImageOverlaySpecsHighlighted;
     NSCache *__viewSpecCache;
     PXExtendedTraitCollection *__extendedTraitCollection;
     PXLayoutMetricInterpolator *__horizontalContentGuideInsetsInterpolator;
-    struct CGSize __layoutReferenceSize;
+    struct CGSize _layoutReferenceSize;
     struct UIEdgeInsets _safeAreaInsets;
     struct UIEdgeInsets _layoutMargins;
 }
 
 @property (readonly, nonatomic) PXExtendedTraitCollection *_extendedTraitCollection; // @synthesize _extendedTraitCollection=__extendedTraitCollection;
 @property (readonly, nonatomic) PXLayoutMetricInterpolator *_horizontalContentGuideInsetsInterpolator; // @synthesize _horizontalContentGuideInsetsInterpolator=__horizontalContentGuideInsetsInterpolator;
-@property (readonly, nonatomic) struct CGSize _layoutReferenceSize; // @synthesize _layoutReferenceSize=__layoutReferenceSize;
 @property (readonly, nonatomic) BOOL _shouldUseMiniMargins; // @synthesize _shouldUseMiniMargins=__shouldUseMiniMargins;
 @property (readonly, nonatomic) NSCache *_viewSpecCache; // @synthesize _viewSpecCache=__viewSpecCache;
 @property (readonly, nonatomic) double collectionTileImageCornerRadius;
 @property (readonly, nonatomic) NSArray *collectionTileImageOverlaySpecs; // @synthesize collectionTileImageOverlaySpecs=_collectionTileImageOverlaySpecs;
 @property (readonly, nonatomic) NSArray *collectionTileImageOverlaySpecsHighlighted; // @synthesize collectionTileImageOverlaySpecsHighlighted=_collectionTileImageOverlaySpecsHighlighted;
+@property (readonly, nonatomic) long long contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
+@property (readonly, nonatomic) struct UIEdgeInsets curatedLibraryEdgeToEdgeContentDefaultPadding;
 @property (readonly, nonatomic) UIColor *defaultBackgroundColor;
 @property (readonly, nonatomic) double defaultCornerRadius;
 @property (readonly, nonatomic) double defaultDarkenSourceOverAmount;
-@property (readonly, nonatomic) NSString *defaultListChevronImageName;
 @property (readonly, nonatomic) UIColor *defaultPlaceholderColor;
 @property (readonly, nonatomic) UIColor *defaultPlacesPlaceholderColor;
 @property (readonly, nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
+@property (readonly, nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (readonly, nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
+@property (readonly, nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
+@property (readonly, nonatomic) struct CGSize layoutReferenceSize; // @synthesize layoutReferenceSize=_layoutReferenceSize;
 @property (readonly, nonatomic) long long localizedLeadingTextAlignment;
+@property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
 @property (readonly, nonatomic) BOOL shouldInsetAllPhotoDetailsContent; // @synthesize shouldInsetAllPhotoDetailsContent=_shouldInsetAllPhotoDetailsContent;
 @property (readonly, nonatomic) long long sizeClass; // @synthesize sizeClass=_sizeClass;
+@property (readonly, nonatomic) long long sizeSubclass; // @synthesize sizeSubclass=_sizeSubclass;
+@property (readonly, nonatomic) double spacingBetweenMonthCards;
+@property (readonly, nonatomic) double spacingBetweenYearCards;
 @property (readonly, nonatomic) long long userInterfaceFeature; // @synthesize userInterfaceFeature=_userInterfaceFeature;
 @property (readonly, nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
+@property (readonly, nonatomic) long long userInterfaceLevel; // @synthesize userInterfaceLevel=_userInterfaceLevel;
+@property (readonly, nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 
 - (void).cxx_destruct;
 - (long long)_capitalizationStyleFromTextAttributes:(id)arg1 defaultCapitalizationStyle:(long long)arg2;
+- (struct UIEdgeInsets)_fullscreenContentInsetsForWidth:(double)arg1;
 - (id)_textAttributesForFontName:(id)arg1 fontSize:(double)arg2 lineHeight:(double)arg3 tracking:(double)arg4 stroke:(double)arg5;
 - (struct UIColor *)collectionTileImageOverlayColor;
 - (struct UIColor *)collectionTileImageOverlayColorHighlighted;
 - (void)configureViewSpec:(id)arg1;
-- (struct UIEdgeInsets)contentGuideInsetsForScrollDirection:(long long)arg1;
+- (struct UIEdgeInsets)contentGuideInsetsForScrollAxis:(long long)arg1;
 - (id)createViewSpecWithDescriptor:(struct PXViewSpecDescriptor)arg1;
+- (id)fullscreenMiroViewSpec;
+- (id)fullscreenMiroViewSpecWithBoundingSize:(struct CGSize)arg1;
 - (id)init;
 - (id)initWithExtendedTraitCollection:(id)arg1;
 - (id)initWithExtendedTraitCollection:(id)arg1 options:(unsigned long long)arg2;

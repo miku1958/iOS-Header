@@ -70,7 +70,6 @@
 - (BOOL)configureVpnOnDemand:(id)arg1 vpnType:(id)arg2;
 - (BOOL)configureVpnOnDemandRules:(id)arg1;
 - (void)copyPasswordsFromSystemKeychain;
-- (id)copyProfileDictionary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionWithOptions:(unsigned long long)arg1;
@@ -106,9 +105,11 @@
 - (id)initWithVPNPayload:(id)arg1 configurationName:(id)arg2 grade:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isSupportedBySC;
+- (id)mergeArray:(id)arg1 withArray:(id)arg2;
 - (BOOL)needToUpdateKeychain;
 - (BOOL)setAppLayerVPNRuleSettings:(id)arg1 withAppIdentifier:(id)arg2;
 - (BOOL)setAppLayerVPNUUID:(id)arg1 andSafariDomains:(id)arg2;
+- (BOOL)setCalendarDomains:(id)arg1;
 - (BOOL)setCertificateContentFilter:(id)arg1;
 - (BOOL)setCertificates:(id)arg1;
 - (BOOL)setCertificatesAOVpn:(id)arg1;
@@ -116,6 +117,8 @@
 - (BOOL)setCertificatesVPN:(id)arg1;
 - (BOOL)setConfigurationSharedSecret:(id)arg1;
 - (BOOL)setConfigurationVPNPassword:(id)arg1;
+- (BOOL)setContactsDomains:(id)arg1;
+- (BOOL)setMailDomains:(id)arg1;
 - (BOOL)setPayloadInfoCommon:(id)arg1 payloadOrganization:(id)arg2;
 - (BOOL)setPayloadInfoIdentity:(id)arg1;
 - (BOOL)setPayloadInfoIdentityIPSecSharedSecret:(id)arg1;
@@ -123,6 +126,8 @@
 - (BOOL)setPayloadInfoIdentityProxy:(id)arg1;
 - (BOOL)setPayloadInfoIdentityUserNameAndPassword:(id)arg1;
 - (BOOL)setProfileInfo:(id)arg1;
+- (BOOL)setRestrictDomains:(BOOL)arg1;
+- (BOOL)setSMBDomains:(id)arg1;
 - (void)syncWithKeychainInDomain:(long long)arg1;
 - (void)syncWithSystemKeychain;
 - (void)syncWithUserKeychain;

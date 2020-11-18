@@ -19,7 +19,7 @@
     NSArray *_recipients;
     NSDate *_date;
     NSDate *_dateRead;
-    NSDate *_lastReadDate;
+    NSDate *_dateForLastReadMessageInChat;
     IMSPIHandle *_sender;
     long long _messageID;
     NSArray *_attachments;
@@ -27,6 +27,7 @@
     BOOL _isRead;
     BOOL _isAudioMessage;
     BOOL _isGroupChat;
+    BOOL _hasDataDetectedResults;
     long long _itemType;
     NSString *_groupID;
     NSString *_chatIdentifier;
@@ -40,24 +41,27 @@
     PKCurrencyAmount *_peerPaymentAmount;
 }
 
+@property (readonly) BOOL allowedByScreenTime;
 @property (strong) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (strong) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
 @property (strong) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong) NSArray *chatGuids; // @synthesize chatGuids=_chatGuids;
 @property (strong) NSString *chatIdentifier; // @synthesize chatIdentifier=_chatIdentifier;
 @property (strong) NSDate *date; // @synthesize date=_date;
+@property (strong) NSDate *dateForLastReadMessageInChat; // @synthesize dateForLastReadMessageInChat=_dateForLastReadMessageInChat;
 @property (strong) NSDate *dateRead; // @synthesize dateRead=_dateRead;
 @property (strong) NSString *displayAppName; // @synthesize displayAppName=_displayAppName;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong) NSString *effect; // @synthesize effect=_effect;
 @property (strong) NSString *groupID; // @synthesize groupID=_groupID;
 @property (strong) NSString *guid; // @synthesize guid=_guid;
+@property BOOL hasDataDetectedResults; // @synthesize hasDataDetectedResults=_hasDataDetectedResults;
 @property BOOL isAudioMessage; // @synthesize isAudioMessage=_isAudioMessage;
 @property BOOL isGroupChat; // @synthesize isGroupChat=_isGroupChat;
 @property BOOL isOutgoing; // @synthesize isOutgoing=_isOutgoing;
 @property BOOL isRead; // @synthesize isRead=_isRead;
 @property long long itemType; // @synthesize itemType=_itemType;
-@property (strong) NSDate *lastReadDate; // @synthesize lastReadDate=_lastReadDate;
+@property (readonly) NSDate *lastReadDate;
 @property long long messageID; // @synthesize messageID=_messageID;
 @property long long messageType; // @synthesize messageType=_messageType;
 @property (strong) PKCurrencyAmount *peerPaymentAmount; // @synthesize peerPaymentAmount=_peerPaymentAmount;

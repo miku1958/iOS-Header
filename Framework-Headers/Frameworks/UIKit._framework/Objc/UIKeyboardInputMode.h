@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) BOOL isDefaultRightToLeft;
 @property (nonatomic) BOOL isDisplayed; // @synthesize isDisplayed;
 @property (readonly, nonatomic) BOOL isExtensionInputMode;
+@property (readonly, nonatomic) BOOL isSpecializedInputMode;
 @property (readonly, nonatomic) BOOL isStalledExtensionInputMode;
 @property (strong, nonatomic) NSString *languageWithRegion; // @synthesize languageWithRegion=_languageWithRegion;
 @property (strong, nonatomic) NSArray *multilingualLanguages; // @synthesize multilingualLanguages=_multilingualLanguages;
@@ -47,7 +48,6 @@
 @property (strong, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
 @property (strong, nonatomic) NSString *softwareLayout; // @synthesize softwareLayout;
 
-+ (id)autofillFallbackInputMode;
 + (id)autofillSignupInputMode;
 + (id)canonicalLanguageIdentifierFromIdentifier:(id)arg1;
 + (id)dictationInputMode;

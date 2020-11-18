@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SGMContactConfirmed, SGMContactDetailConfirmed, SGMContactDetailRejected, SGMContactDetailUsed, SGMContactInBanner, SGMContactRejected, SGMEventBannerConfirmed, SGMEventBannerRejected, SGMEventInBanner, SGMMaybeInformationShown, SGMUnknownContactInformationShown;
+@class SGMContactConfirmed, SGMContactDetailConfirmed, SGMContactDetailConversationTurn, SGMContactDetailRejected, SGMContactDetailUsed, SGMContactInBanner, SGMContactRejected, SGMEventBannerConfirmed, SGMEventBannerRejected, SGMEventInBanner, SGMMaybeInformationShown, SGMUnknownContactInformationShown;
 
 @interface SGSuggestedActionMetrics : NSObject
 {
@@ -21,10 +21,12 @@
     SGMEventBannerRejected *_eventBannerRejected;
     SGMMaybeInformationShown *_maybeInformationShown;
     SGMUnknownContactInformationShown *_unknownContactInformationShown;
+    SGMContactDetailConversationTurn *_contactDetailConversationTurn;
 }
 
 @property (strong, nonatomic) SGMContactConfirmed *contactConfirmed; // @synthesize contactConfirmed=_contactConfirmed;
 @property (strong, nonatomic) SGMContactDetailConfirmed *contactDetailConfirmed; // @synthesize contactDetailConfirmed=_contactDetailConfirmed;
+@property (strong, nonatomic) SGMContactDetailConversationTurn *contactDetailConversationTurn; // @synthesize contactDetailConversationTurn=_contactDetailConversationTurn;
 @property (strong, nonatomic) SGMContactDetailRejected *contactDetailRejected; // @synthesize contactDetailRejected=_contactDetailRejected;
 @property (strong, nonatomic) SGMContactDetailUsed *contactDetailUsed; // @synthesize contactDetailUsed=_contactDetailUsed;
 @property (strong, nonatomic) SGMContactInBanner *contactInBanner; // @synthesize contactInBanner=_contactInBanner;
@@ -41,9 +43,10 @@
 + (void)recordBannerRejectedWithContact:(id)arg1 inApp:(struct SGMBannerDisplayApp_)arg2;
 + (void)recordBannerRejectedWithEvent:(id)arg1 inApp:(struct SGMBannerDisplayApp_)arg2;
 + (void)recordBannerShownWithContacts:(id)arg1 events:(id)arg2 inApp:(struct SGMBannerDisplayApp_)arg3;
-+ (void)recordContactDetailEngagementWithResolution:(long long)arg1 detailType:(struct SGMContactDetailType_)arg2 extractionType:(unsigned long long)arg3;
++ (void)recordContactDetailEngagementWithResolution:(long long)arg1 detailType:(struct SGMContactDetailType_)arg2 extractionType:(unsigned long long)arg3 modelVersion:(id)arg4;
 + (void)recordContactDetailUsage:(id)arg1 withApp:(id)arg2;
-+ (void)recordMaybeContactFrom:(unsigned long long)arg1;
++ (void)recordConversationTurnWithContact:(id)arg1 received:(BOOL)arg2 curated:(BOOL)arg3 throughApp:(id)arg4 withDetailName:(id)arg5 withDetailExtraction:(id)arg6;
++ (void)recordMaybeContactFrom:(unsigned long long)arg1 withVersion:(id)arg2;
 - (void).cxx_destruct;
 - (id)init;
 

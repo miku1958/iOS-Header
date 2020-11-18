@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
 @interface _WKPreviewControllerDataSource : NSObject <QLPreviewControllerDataSource>
 {
     struct RetainPtr<NSItemProvider> _itemProvider;
-    struct RetainPtr<QLItem> _item;
+    struct RetainPtr<ARQuickLookWebKitItem> _item;
+    struct URL _originatingPageURL;
+    struct URL _downloadedURL;
     CDUnknownBlockType _completionHandler;
     NSString *_mimeType;
 }
@@ -27,7 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)failWithError:(id)arg1;
 - (void)finish:(struct URL)arg1;
-- (id)initWithMIMEType:(id)arg1;
+- (id)initWithMIMEType:(id)arg1 originatingPageURL:(struct URL)arg2;
 - (long long)numberOfPreviewItemsInPreviewController:(id)arg1;
 - (id)previewController:(id)arg1 previewItemAtIndex:(long long)arg2;
 - (void)setProgress:(float)arg1;

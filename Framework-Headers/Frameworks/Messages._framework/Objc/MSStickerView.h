@@ -55,6 +55,7 @@
 - (void)_resetPeel:(BOOL)arg1;
 - (void)_setImage:(id)arg1;
 - (void)_stickerPreviewCachePreviewDidChange:(id)arg1;
+- (id)_stickerSendManager;
 - (void)_swapWithOutlineImage;
 - (void)_updateStickerView;
 - (id)accessibilityLabel;

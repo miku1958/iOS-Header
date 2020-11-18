@@ -21,7 +21,7 @@
 - (id)photosPickerViewControllerSpec;
 - (BOOL)shouldPlaceSelectAllButtonInRightNavigationBar;
 - (unsigned long long)supportedInterfaceOrientations;
-- (int)thumbnailImageFormat;
+- (unsigned short)thumbnailImageFormat;
 
 @end
 

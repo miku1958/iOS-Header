@@ -23,6 +23,7 @@
             unsigned int keyboardEventsLagging:1;
             unsigned int hardwareKeyboardMode:1;
             unsigned int splitKeyboardMode:1;
+            unsigned int floatingKeyboardMode:1;
             unsigned int wordLearningEnabled:1;
             unsigned int autocorrectionEnabled:1;
             unsigned int shortcutConversionEnabled:1;
@@ -33,6 +34,7 @@
             unsigned int longPredictionListEnabled:1;
             unsigned int needAutofill:1;
             unsigned int needOneTimeCodeAutofill:1;
+            unsigned int landscapeOrientation:1;
         } fields;
     } _mask;
     union {
@@ -46,6 +48,7 @@
     NSUUID *_documentIdentifier;
     NSString *_clientIdentifier;
     NSString *_inputMode;
+    NSArray *_auxiliaryInputModeLanguages;
     NSString *_recipientIdentifier;
     TIInputContextHistory *_inputContextHistory;
     TIKeyboardLayout *_keyLayout;
@@ -69,12 +72,14 @@
 @property (nonatomic) BOOL autocorrectionListUIDisplayed;
 @property (strong, nonatomic) NSDictionary *autofillContext; // @synthesize autofillContext=_autofillContext;
 @property (nonatomic) unsigned long long autofillMode; // @synthesize autofillMode=_autofillMode;
+@property (copy, nonatomic) NSArray *auxiliaryInputModeLanguages; // @synthesize auxiliaryInputModeLanguages=_auxiliaryInputModeLanguages;
 @property (nonatomic) BOOL canSendCurrentLocation;
 @property (nonatomic) BOOL candidateSelectionPredictionEnabled;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) TIKeyboardCandidate *currentCandidate; // @synthesize currentCandidate=_currentCandidate;
 @property (strong, nonatomic) NSUUID *documentIdentifier; // @synthesize documentIdentifier=_documentIdentifier;
 @property (strong, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
+@property (nonatomic) BOOL floatingKeyboardMode;
 @property (nonatomic) BOOL hardwareKeyboardMode;
 @property (strong, nonatomic) TIInputContextHistory *inputContextHistory; // @synthesize inputContextHistory=_inputContextHistory;
 @property (copy, nonatomic) NSString *inputForMarkedText; // @synthesize inputForMarkedText=_inputForMarkedText;
@@ -83,6 +88,7 @@
 @property (strong, nonatomic) TIKeyboardLayout *keyLayout; // @synthesize keyLayout=_keyLayout;
 @property (nonatomic) BOOL keyboardEventsLagging;
 @property (nonatomic) unsigned long long keyboardType;
+@property (nonatomic) BOOL landscapeOrientation;
 @property (copy, nonatomic) TIKeyboardLayoutState *layoutState; // @synthesize layoutState=_layoutState;
 @property (nonatomic) BOOL longPredictionListEnabled;
 @property (nonatomic) BOOL needAutofill;
@@ -95,6 +101,7 @@
 @property (nonatomic) BOOL secureTextEntry;
 @property (nonatomic) int shiftState; // @synthesize shiftState=_shiftState;
 @property (nonatomic) BOOL shortcutConversionEnabled;
+@property (readonly, nonatomic) BOOL shouldOutputFullwidthSpace;
 @property (nonatomic) BOOL shouldSkipCandidateSelection;
 @property (nonatomic) BOOL splitKeyboardMode;
 @property (copy, nonatomic) NSArray *supportedPayloadIds; // @synthesize supportedPayloadIds=_supportedPayloadIds;

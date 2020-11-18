@@ -25,12 +25,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double topThreshold;
-@property (readonly, nonatomic) long long uberLayoutInterfaceStyle;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 - (void).cxx_destruct;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)setBannerOpacity:(double)arg1;
+- (void)setTransitionBannerOpacity:(double)arg1;
 - (void)setUberImageOffset:(double)arg1;
 - (void)setWhiteBannerOpacity:(double)arg1;
 

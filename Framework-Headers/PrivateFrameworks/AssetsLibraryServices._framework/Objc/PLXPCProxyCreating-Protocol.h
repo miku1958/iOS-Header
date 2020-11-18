@@ -7,7 +7,11 @@
 #import <AssetsLibraryServices/NSObject-Protocol.h>
 
 @protocol PLXPCProxyCreating <NSObject>
+- (id)_unboostingRemoteObjectProxy;
 - (id)remoteObjectProxyWithErrorHandler:(void (^)(NSError *))arg1;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(void (^)(NSError *))arg1;
+
+@optional
+- (void)addBarrierBlock:(void (^)(void))arg1;
 @end
 

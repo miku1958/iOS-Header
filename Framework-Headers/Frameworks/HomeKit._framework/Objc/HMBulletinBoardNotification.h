@@ -23,8 +23,8 @@
     NSUUID *_uniqueIdentifier;
     NSUUID *_targetUUID;
     HMService *_service;
-    _HMContext *_context;
     NSString *_logID;
+    _HMContext *_context;
 }
 
 @property (strong, nonatomic) NSPredicate *condition; // @synthesize condition=_condition;

@@ -8,6 +8,7 @@
 
 @class AVCapturePhotoSettings, AVCaptureResolvedPhotoSettings, AVWeakReferencingDelegateStorage, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface AVCapturePhotoRequest : NSObject
 {
     AVWeakReferencingDelegateStorage *_delegateStorage;
@@ -17,9 +18,9 @@
     NSArray *_expectedPhotoManifest;
     unsigned int _firedCallbackFlags;
     unsigned long long _firedPhotoCallbacksCount;
-    void *_previewSurface;
+    struct __IOSurface *_previewSurface;
     struct opaqueCMSampleBuffer *_previewSampleBuffer;
-    void *_thumbnailSurface;
+    struct __IOSurface *_thumbnailSurface;
     BOOL _delegateSupportsDebugMetadataSidecarFile;
     BOOL _lensStabilizationSupported;
 }
@@ -33,9 +34,9 @@
 @property (readonly) BOOL lensStabilizationSupported; // @synthesize lensStabilizationSupported=_lensStabilizationSupported;
 @property (readonly) unsigned int photoCallbackFlavor; // @synthesize photoCallbackFlavor=_photoCallbackFlavor;
 @property (strong, nonatomic) struct opaqueCMSampleBuffer *previewSampleBuffer; // @synthesize previewSampleBuffer=_previewSampleBuffer;
-@property (strong, nonatomic) void *previewSurface; // @synthesize previewSurface=_previewSurface;
+@property (strong, nonatomic) struct __IOSurface *previewSurface; // @synthesize previewSurface=_previewSurface;
 @property (strong, nonatomic) AVCaptureResolvedPhotoSettings *resolvedSettings;
-@property (strong, nonatomic) void *thumbnailSurface; // @synthesize thumbnailSurface=_thumbnailSurface;
+@property (strong, nonatomic) struct __IOSurface *thumbnailSurface; // @synthesize thumbnailSurface=_thumbnailSurface;
 @property (readonly) AVCapturePhotoSettings *unresolvedSettings; // @synthesize unresolvedSettings=_unresolvedSettings;
 
 + (id)requestWithDelegate:(id)arg1 settings:(id)arg2 lensStabilizationSupported:(BOOL)arg3;

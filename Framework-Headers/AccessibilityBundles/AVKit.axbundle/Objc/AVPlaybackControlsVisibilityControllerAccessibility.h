@@ -13,7 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityHandlePlayerLayerViewFocused:(id)arg1;
+- (void)_accessibilityPlayerLayerViewAccessibilityFocusedChanged:(id)arg1;
+- (void)_axSetShouldShowRegularControlsBecauseOfAccessibility:(BOOL)arg1;
+- (BOOL)_axShouldShowRegularControlsBecauseOfAccessibility;
 - (void)_startTimerToHideRegularItemsAfterDelay:(double)arg1 ifPlaying:(BOOL)arg2;
+- (void)endShowingItemsDueToIndirectUserInteraction;
+- (id)init;
 
 @end
 

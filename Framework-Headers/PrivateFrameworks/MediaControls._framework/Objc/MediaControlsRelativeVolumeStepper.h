@@ -6,15 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class MPButton, MPVolumeController, MTMaterialView, NSBundle;
+@class MPButton, MPVolumeController, MTMaterialView, MTVisualStylingProvider, NSBundle;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsRelativeVolumeStepper : UIView
 {
     MPVolumeController *_volumeController;
-    MPButton *_increaseButton;
-    MPButton *_decreaseButton;
+    MTVisualStylingProvider *_visualStylingProvider;
     MTMaterialView *_increaseBackground;
     MTMaterialView *_decreaseBackground;
+    MPButton *_increaseButton;
+    MPButton *_decreaseButton;
     NSBundle *_mediaControlsBundle;
 }
 
@@ -23,6 +25,7 @@
 @property (strong, nonatomic) MTMaterialView *increaseBackground; // @synthesize increaseBackground=_increaseBackground;
 @property (strong, nonatomic) MPButton *increaseButton; // @synthesize increaseButton=_increaseButton;
 @property (strong, nonatomic) NSBundle *mediaControlsBundle; // @synthesize mediaControlsBundle=_mediaControlsBundle;
+@property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 @property (strong, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 
 - (void).cxx_destruct;
@@ -34,7 +37,6 @@
 - (void)increaseTouchUpInside:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

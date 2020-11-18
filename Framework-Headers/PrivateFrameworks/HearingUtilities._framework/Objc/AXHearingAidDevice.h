@@ -38,6 +38,8 @@
     BOOL _supportsBinauralStreaming;
     BOOL _supportsCombinedPresets;
     BOOL _supportsCombinedVolumes;
+    BOOL _leftPeripheralPaired;
+    BOOL _rightPeripheralPaired;
     short _leftMicrophoneVolumeSteps;
     short _rightMicrophoneVolumeSteps;
     short _leftStreamVolumeSteps;
@@ -51,6 +53,7 @@
     unsigned int rightProgramVersion;
     unsigned int _leftPresetBitmask;
     unsigned int _rightPresetBitmask;
+    int _availableInputEars;
     NSString *leftUUID;
     NSString *rightUUID;
     NSString *name;
@@ -93,6 +96,7 @@
 }
 
 @property (nonatomic) int availableEars; // @synthesize availableEars=_availableEars;
+@property (nonatomic) int availableInputEars; // @synthesize availableInputEars=_availableInputEars;
 @property (strong, nonatomic) AXHearingAidMode *currentLeftProgram; // @synthesize currentLeftProgram;
 @property (strong, nonatomic) AXHearingAidMode *currentLeftStreamingProgram; // @synthesize currentLeftStreamingProgram;
 @property (strong, nonatomic) AXHearingAidMode *currentRightProgram; // @synthesize currentRightProgram;
@@ -116,6 +120,7 @@
 @property (nonatomic) double leftMixedVolume; // @synthesize leftMixedVolume=_leftMixedVolume;
 @property (nonatomic) short leftMixedVolumeSteps; // @synthesize leftMixedVolumeSteps=_leftMixedVolumeSteps;
 @property (strong, nonatomic) CBPeripheral *leftPeripheral; // @synthesize leftPeripheral;
+@property (nonatomic) BOOL leftPeripheralPaired; // @synthesize leftPeripheralPaired=_leftPeripheralPaired;
 @property (strong, nonatomic) NSString *leftPeripheralUUID; // @synthesize leftPeripheralUUID;
 @property (nonatomic) unsigned int leftPresetBitmask; // @synthesize leftPresetBitmask=_leftPresetBitmask;
 @property (nonatomic) unsigned int leftProgramVersion; // @synthesize leftProgramVersion;
@@ -145,6 +150,7 @@
 @property (nonatomic) double rightMixedVolume; // @synthesize rightMixedVolume=_rightMixedVolume;
 @property (nonatomic) short rightMixedVolumeSteps; // @synthesize rightMixedVolumeSteps=_rightMixedVolumeSteps;
 @property (strong, nonatomic) CBPeripheral *rightPeripheral; // @synthesize rightPeripheral;
+@property (nonatomic) BOOL rightPeripheralPaired; // @synthesize rightPeripheralPaired=_rightPeripheralPaired;
 @property (strong, nonatomic) NSString *rightPeripheralUUID; // @synthesize rightPeripheralUUID;
 @property (nonatomic) unsigned int rightPresetBitmask; // @synthesize rightPresetBitmask=_rightPresetBitmask;
 @property (nonatomic) unsigned int rightProgramVersion; // @synthesize rightProgramVersion;
@@ -169,9 +175,9 @@
 - (void).cxx_destruct;
 - (void)_init;
 - (void)_sendDelayedWrites;
-- (void)_writeAllProgramSelectionsToPeripheral;
 - (BOOL)addPeripheral:(id)arg1;
 - (unsigned long long)availablePropertiesForPeripheral:(id)arg1;
+- (void)checkPairingStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connect;
 - (int)connectedEars;
 - (void)connectionDidChange;
@@ -180,7 +186,9 @@
 - (void)delayWriteProperty:(unsigned long long)arg1 forPeripheral:(id)arg2;
 - (id)deviceDescription;
 - (BOOL)deviceSupportsProperty:(unsigned long long)arg1;
+- (unsigned long long)deviceType;
 - (BOOL)didLoadBasicProperties;
+- (BOOL)didLoadOptionalBasicProperties;
 - (BOOL)didLoadPersistentProperties;
 - (BOOL)didLoadRequiredProperties;
 - (void)disconnectAndUnpair:(BOOL)arg1;
@@ -188,9 +196,8 @@
 - (id)initWithLeftDevice:(id)arg1 andRightDevice:(id)arg2;
 - (id)initWithPeripheral:(id)arg1;
 - (id)initWithPersistentRepresentation:(id)arg1;
-- (BOOL)isBluetoothPaired;
 - (BOOL)isConnected;
-- (BOOL)isPartiallyBluetoothPaired;
+- (BOOL)isFakeDevice;
 - (BOOL)leftAvailable;
 - (void)loadBasicProperties;
 - (void)loadFailedProperties;
@@ -216,10 +223,12 @@
 - (id)programs;
 - (void)readProperty:(unsigned long long)arg1 fromPeripheral:(id)arg2;
 - (void)readValueForCharacteristic:(id)arg1 fromPeripheral:(id)arg2;
+- (unsigned long long)requiredProperties;
 - (BOOL)rightAvailable;
 - (void)selectProgram:(id)arg1 forEar:(int)arg2;
 - (id)selectedProgramIndexes;
 - (id)selectedPrograms;
+- (id)serviceUUID;
 - (void)setBass:(BOOL)arg1 forLeft:(BOOL)arg2;
 - (void)setMixedVolume:(double)arg1 forLeft:(BOOL)arg2;
 - (void)setNotify:(BOOL)arg1 forPeripheral:(id)arg2;

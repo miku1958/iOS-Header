@@ -10,33 +10,32 @@
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
 @class HUPersonalRequestsDevicesItemModule, NSString;
-@protocol HUPersonalRequestsDevicesModuleControllerDelegate;
 
 @interface HUPersonalRequestsDevicesModuleController : HUItemTableModuleController <HUSwitchCellDelegate, UITextViewDelegate>
 {
-    id<HUPersonalRequestsDevicesModuleControllerDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<HUPersonalRequestsDevicesModuleControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HUPersonalRequestsDevicesItemModule *module; // @dynamic module;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
 - (BOOL)_isCurrentDeviceCandidateForLocationDevice;
 - (id)_preflightEnablingPersonalRequests;
+- (void)_presentAlert:(id)arg1;
 - (id)_promptToChangeLocationDeviceFromCurrentDevice:(id)arg1;
 - (id)_promptToChangeLocationDeviceIfNecessary;
 - (id)_promptToEnableSiriIfNecessary;
 - (void)_togglePersonalRequestStateForItem:(id)arg1;
 - (Class)cellClassForItem:(id)arg1;
 - (id)initWithModule:(id)arg1;
-- (id)initWithModule:(id)arg1 delegate:(id)arg2;
+- (id)initWithModule:(id)arg1 host:(id)arg2;
+- (id)setPersonalRequestsDevices:(id)arg1;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(BOOL)arg2;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (id)turnOnPersonalRequestsForAllDevices;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(BOOL)arg3;
 
 @end

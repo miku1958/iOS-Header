@@ -11,6 +11,7 @@
 @protocol HUQuickControlControllableView <NSObject>
 
 @property (copy, nonatomic) HUQuickControlViewProfile *profile;
+@property (nonatomic) unsigned long long reachabilityState;
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) id value;
 

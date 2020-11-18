@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSCloudTabDeviceProvider-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, WBSCloudTabDevice;
+@class NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, WBSCloudTabDevice;
 @protocol OS_dispatch_queue, WBSCloudTabStoreDelegate;
 
 @interface WBSCloudTabStore : NSObject <WBSCloudTabDeviceProvider>
@@ -18,24 +18,27 @@
     NSMutableDictionary *_deviceUUIDsToCloseRequestsFromKVS;
     BOOL _hasAttemptedToRemoveCurrentDeviceFromKVS;
     BOOL _isFetchingDataFromCloudKit;
+    BOOL _hasAttemptedToFetchDevicesAtLeastOnce;
     NSMutableArray *_syncedCloudTabDevicesFromCloudKit;
     WBSCloudTabDevice *_currentDevice;
     NSMutableDictionary *_deviceUUIDsToCloseRequestsFromCloudKit;
+    NSError *_lastFetchError;
     BOOL _syncAgentIsAvailable;
     id<WBSCloudTabStoreDelegate> _wbsDelegate;
 }
 
 @property (readonly, nonatomic) BOOL atLeastOneOtherActiveDeviceIsRegistered;
-@property (readonly, nonatomic) BOOL atLeastOneOtherActiveDeviceIsRegisteredInCloudKit;
 @property (readonly, nonatomic) BOOL currentDeviceIsRegisteredInCloudKit;
 @property (readonly, copy, nonatomic) NSDate *dateOfLastCloudTabDevicesUpdate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentationOfCurrentDeviceInCloudKit;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSError *lastFetchError;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL syncAgentIsAvailable; // @synthesize syncAgentIsAvailable=_syncAgentIsAvailable;
 @property (readonly, copy, nonatomic) NSArray *syncedCloudTabDevices;
+@property (readonly, nonatomic) long long uniqueDeviceMultiplicity;
 @property (weak, nonatomic) id<WBSCloudTabStoreDelegate> wbsDelegate; // @synthesize wbsDelegate=_wbsDelegate;
 
 + (id)_debugErrorMessageForCode:(long long)arg1;
@@ -50,7 +53,8 @@
 - (id)_deviceWithTabsWithOutstandingCloseRequestsRemoved:(id)arg1 closeRequestsForDevice:(id)arg2;
 - (id)_devicesByRemovingDevicesFromKVSWithOutstandingCloseRequests:(id)arg1;
 - (id)_devicesByRemovingThisDeviceAndDevicesWithNoTabs:(id)arg1;
-- (void)_didFetchDeviceDictionariesFromCloudKit:(id)arg1 fetchedCloseRequests:(id)arg2;
+- (void)_didFetchDeviceDictionariesFromCloudKit:(id)arg1 fetchedCloseRequests:(id)arg2 error:(id)arg3;
+- (void)_didFetchDeviceDictionariesFromCloudKit:(id)arg1 fetchedCloseRequests:(id)arg2 fetchedDevicesBySyncing:(BOOL)arg3 error:(id)arg4;
 - (unsigned long long)_indexOfDevice:(id)arg1 inSyncedCloudTabDevices:(id)arg2;
 - (id)_keyValueStoreDictionaryRepresentation:(long long)arg1;
 - (void)_pruneOrphanedCloseRequestsFromKVS;
@@ -61,6 +65,7 @@
 - (void)_tabsWereClosed:(id)arg1 onDevice:(id)arg2 deviceIsStoredInCloudKit:(BOOL)arg3 syncedCloudTabDevices:(id)arg4;
 - (BOOL)_writeCloseRequestForTab:(id)arg1 onDevice:(id)arg2 deviceIsStoredInCloudKit:(BOOL)arg3;
 - (void)clearTabsForFirstDuplicateDeviceInCloudKitWithName:(id)arg1;
+- (void)clearTabsForFirstDuplicateDeviceInCloudKitWithName:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (BOOL)closeAllTabsOnDevice:(id)arg1;
 - (BOOL)closeTab:(id)arg1 onDevice:(id)arg2;
 - (BOOL)closeTabs:(id)arg1 onDevice:(id)arg2;
@@ -74,7 +79,7 @@
 - (void)pruneExpiredDevicesFromKVS;
 - (void)resetSyncedCloudTabDevicesAndCloseRequestsFromCloudKit;
 - (void)resetSyncedCloudTabDevicesAndCloseRequestsFromKVS;
-- (void)saveCurrentCloudTabDeviceDictionaryToCloudKit:(id)arg1;
+- (void)saveCurrentCloudTabDeviceDictionaryToCloudKit:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)synchronizeCloudTabDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

@@ -17,6 +17,8 @@
     BOOL _createsJobs;
     BOOL _displaysOnLockScreen;
     BOOL _installUniversalVariant;
+    BOOL _isDSIDLess;
+    BOOL _isUpdate;
     BOOL _isBackgroundUpdate;
     BOOL _isRedownload;
     BOOL _shouldCancelForInstalledBundleItems;
@@ -57,8 +59,10 @@
 @property (nonatomic) BOOL installUniversalVariant; // @synthesize installUniversalVariant=_installUniversalVariant;
 @property (nonatomic) BOOL isBackgroundUpdate; // @synthesize isBackgroundUpdate=_isBackgroundUpdate;
 @property (nonatomic) BOOL isCompatibilityUpdate; // @synthesize isCompatibilityUpdate=_isCompatibilityUpdate;
+@property (nonatomic) BOOL isDSIDLess; // @synthesize isDSIDLess=_isDSIDLess;
 @property (nonatomic) BOOL isRedownload; // @synthesize isRedownload=_isRedownload;
 @property (nonatomic) BOOL isRefresh; // @synthesize isRefresh=_isRefresh;
+@property (nonatomic) BOOL isUpdate; // @synthesize isUpdate=_isUpdate;
 @property (copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
 @property (copy, nonatomic) NSNumber *ownerDSID; // @synthesize ownerDSID=_ownerDSID;

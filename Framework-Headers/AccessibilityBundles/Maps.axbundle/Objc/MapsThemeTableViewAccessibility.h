@@ -13,7 +13,6 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilitySupplementaryHeaderViews;
 - (struct UIEdgeInsets)_accessibilityVisibleContentInset;
 - (id)_axSearchResultsViewController;
 

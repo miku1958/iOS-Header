@@ -13,7 +13,6 @@
 }
 
 + (id)alloc;
-+ (void)load;
 - (id)allKeys;
 - (id)allValues;
 - (unsigned long long)capacity;

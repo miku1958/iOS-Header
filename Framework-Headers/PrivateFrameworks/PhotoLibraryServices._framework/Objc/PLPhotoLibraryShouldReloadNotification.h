@@ -6,11 +6,15 @@
 
 #import <PhotoLibraryServices/PLChangeNotification.h>
 
+@class PLPhotoLibrary;
+
 @interface PLPhotoLibraryShouldReloadNotification : PLChangeNotification
 {
+    PLPhotoLibrary *_photoLibrary;
 }
 
-- (id)initNotification;
+- (void).cxx_destruct;
+- (id)initNotificationWithPhotoLibrary:(id)arg1;
 - (id)name;
 - (id)object;
 - (id)userInfo;

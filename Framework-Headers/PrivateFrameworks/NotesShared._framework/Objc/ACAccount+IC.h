@@ -8,9 +8,16 @@
 
 @interface ACAccount (IC)
 - (BOOL)ic_hasICloudEmailAddress;
+- (BOOL)ic_hasPersonaIdentifier;
+- (BOOL)ic_isBasicAccountClass;
+- (BOOL)ic_isFullAccountClass;
+- (BOOL)ic_isICloudNotesAccount;
 - (BOOL)ic_isManagedAppleID;
+- (BOOL)ic_isNotesEnabled;
 - (BOOL)ic_isNotesMigrated;
 - (BOOL)ic_isPrimaryAppleAccount;
+- (BOOL)ic_shouldCreateSeparatePersistentStore;
 - (BOOL)ic_supportsHTMLNotes;
+- (BOOL)ic_supportsModernNotes;
 @end
 

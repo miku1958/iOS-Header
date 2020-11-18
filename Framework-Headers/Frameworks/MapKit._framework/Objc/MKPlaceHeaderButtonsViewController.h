@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     NSArray *_constraints;
     MKPlaceHeaderButton *_primaryButton;
     MKPlaceHeaderButton *_secondaryButton;
-    MKPlaceHeaderButton *_tertiaryButton;
     NSAttributedString *_primaryAttributedString;
     NSString *_currentETAString;
     BOOL _resizableViewsDisabled;
@@ -29,33 +28,30 @@ __attribute__((visibility("hidden")))
     id<MKPlaceHeaderButtonsViewControllerDelegate> _delegate;
     unsigned long long _primaryButtonType;
     _MKPlaceActionButtonController *_secondaryButtonController;
-    _MKPlaceActionButtonController *_tertiaryButtonController;
-    double _contentAlpha;
 }
 
-@property (nonatomic) double contentAlpha; // @synthesize contentAlpha=_contentAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKPlaceHeaderButtonsViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<GEOTransitLineItem> lineItem; // @synthesize lineItem=_lineItem;
-@property (readonly, nonatomic) id<_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
+@property (strong, nonatomic) id<GEOTransitLineItem> lineItem; // @synthesize lineItem=_lineItem;
+@property (strong, nonatomic) id<_MKPlaceItem> placeItem; // @synthesize placeItem=_placeItem;
 @property (nonatomic) unsigned long long primaryButtonType; // @synthesize primaryButtonType=_primaryButtonType;
 @property (nonatomic) BOOL resizableViewsDisabled; // @synthesize resizableViewsDisabled=_resizableViewsDisabled;
 @property (strong, nonatomic) _MKPlaceActionButtonController *secondaryButtonController; // @synthesize secondaryButtonController=_secondaryButtonController;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) _MKPlaceActionButtonController *tertiaryButtonController; // @synthesize tertiaryButtonController=_tertiaryButtonController;
 
 - (void).cxx_destruct;
 - (void)ETAProviderUpdated:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_commonInit;
 - (void)_contentSizeDidChange;
 - (id)attributedStringWith:(id)arg1;
 - (id)directionAttributedStringWithETAString;
 - (id)etaStringFor:(unsigned long long)arg1 travelTime:(double)arg2;
 - (id)infoCardChildPossibleActions;
-- (id)initWithLineItem:(id)arg1;
-- (id)initWithPlaceItem:(id)arg1;
+- (id)infoCardChildUnactionableUIElements;
+- (id)init;
 - (id)primaryAttributedString;
 - (void)primaryButtonSelected:(id)arg1;
 - (id)rerouteAttributedString;

@@ -8,7 +8,7 @@
 
 #import <MusicLibrary/NSCopying-Protocol.h>
 
-@class MIPMovie, MIPPodcast, MIPSong, MIPTVShow, NSMutableArray, NSString;
+@class MIPMovie, MIPPodcast, MIPSong, MIPTVShow, NSData, NSMutableArray, NSString;
 
 @interface MIPMediaItem : PBCodable <NSCopying>
 {
@@ -45,6 +45,7 @@
     int _drmVersionsCode;
     NSString *_extrasUrl;
     int _fileKind;
+    NSData *_flattenedChapterData;
     NSString *_grouping;
     NSMutableArray *_libraryIdentifiers;
     int _likedState;
@@ -73,6 +74,7 @@
     int _year;
     BOOL _cloudAssetAvailable;
     BOOL _explicitContent;
+    BOOL _hasChapterData;
     BOOL _hasLocalAsset;
     BOOL _hidden;
     BOOL _inUsersCloudLibrary;
@@ -122,6 +124,7 @@
         unsigned int year:1;
         unsigned int cloudAssetAvailable:1;
         unsigned int explicitContent:1;
+        unsigned int hasChapterData:1;
         unsigned int hasLocalAsset:1;
         unsigned int hidden:1;
         unsigned int inUsersCloudLibrary:1;
@@ -157,10 +160,12 @@
 @property (nonatomic) long long familyAccountId; // @synthesize familyAccountId=_familyAccountId;
 @property (nonatomic) int fileKind; // @synthesize fileKind=_fileKind;
 @property (nonatomic) long long fileSize; // @synthesize fileSize=_fileSize;
+@property (strong, nonatomic) NSData *flattenedChapterData; // @synthesize flattenedChapterData=_flattenedChapterData;
 @property (strong, nonatomic) NSString *grouping; // @synthesize grouping=_grouping;
 @property (nonatomic) BOOL hasAccountId;
 @property (readonly, nonatomic) BOOL hasArtworkId;
 @property (nonatomic) BOOL hasBookmarkTimeMilliseconds;
+@property (nonatomic) BOOL hasChapterData; // @synthesize hasChapterData=_hasChapterData;
 @property (readonly, nonatomic) BOOL hasChapterMetadataUrl;
 @property (nonatomic) BOOL hasCloudAssetAvailable;
 @property (nonatomic) BOOL hasCloudMatchedStatus;
@@ -182,7 +187,9 @@
 @property (nonatomic) BOOL hasFamilyAccountId;
 @property (nonatomic) BOOL hasFileKind;
 @property (nonatomic) BOOL hasFileSize;
+@property (readonly, nonatomic) BOOL hasFlattenedChapterData;
 @property (readonly, nonatomic) BOOL hasGrouping;
+@property (nonatomic) BOOL hasHasChapterData;
 @property (nonatomic) BOOL hasHasLocalAsset;
 @property (nonatomic) BOOL hasHidden;
 @property (nonatomic) BOOL hasInUsersCloudLibrary;

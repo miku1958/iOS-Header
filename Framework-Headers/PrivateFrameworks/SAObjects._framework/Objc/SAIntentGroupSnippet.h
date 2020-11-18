@@ -17,6 +17,8 @@
 @property (copy, nonatomic) NSArray *commands;
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *intent;
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *intentResponse;
+@property (copy, nonatomic) NSString *jsonEncodedIntent;
+@property (copy, nonatomic) NSString *jsonEncodedIntentResponse;
 @property (strong, nonatomic) id<SAServerBoundCommand> processSynapseFlowCommand;
 @property (copy, nonatomic) NSArray *snippetTemplates;
 @property (nonatomic) BOOL widgetAllowed;

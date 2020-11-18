@@ -12,17 +12,6 @@
 
 @property unsigned int fontSmoothingStyle;
 
-+ (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
-+ (BOOL)_hasRenderLayerSubclass;
-+ (id)defaultValueForKey:(id)arg1;
-+ (BOOL)needsDisplayForKey:(id)arg1;
-- (void)_colorSpaceDidChange;
-- (struct Layer *)_copyRenderLayer:(struct Transaction *)arg1 layerFlags:(unsigned int)arg2 commitFlags:(unsigned int *)arg3;
-- (void)_drawLine:(struct __CTLine *)arg1 inContext:(struct CGContext *)arg2 atPoint:(struct CGPoint)arg3;
-- (BOOL)_renderLayerDefinesProperty:(unsigned int)arg1;
-- (unsigned int)_renderLayerPropertyAnimationFlags:(unsigned int)arg1;
-- (struct CGColorSpace *)_retainColorSpace;
-- (void)didChangeValueForKey:(id)arg1;
 
 @end
 

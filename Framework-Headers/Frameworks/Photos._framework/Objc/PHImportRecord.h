@@ -12,28 +12,22 @@
 {
     NSString *_rawAssetIdentifier;
     BOOL _referencedImport;
-    BOOL _isDownloaded;
     unsigned char _importType;
-    unsigned char _importFileOperation;
     NSString *_assetIdentifier;
     PHImportAsset *_importAsset;
     NSMutableArray *_relatedRecords;
-    NSString *_sourcePath;
-    NSString *_destinationPath;
+    NSString *_downloadedPath;
     PHImportTimerCollection *_timers;
 }
 
 @property (strong, nonatomic) NSString *assetIdentifier; // @synthesize assetIdentifier=_assetIdentifier;
-@property (strong, nonatomic) NSString *destinationPath; // @synthesize destinationPath=_destinationPath;
+@property (readonly) BOOL canReference;
+@property (strong, nonatomic) NSString *downloadedPath; // @synthesize downloadedPath=_downloadedPath;
 @property (strong, nonatomic) PHImportAsset *importAsset; // @synthesize importAsset=_importAsset;
-@property (nonatomic) unsigned char importFileOperation; // @synthesize importFileOperation=_importFileOperation;
 @property (nonatomic) unsigned char importType; // @synthesize importType=_importType;
-@property (nonatomic) BOOL isDownloaded; // @synthesize isDownloaded=_isDownloaded;
-@property (readonly, nonatomic) BOOL isReferenced;
 @property (readonly, nonatomic) NSString *rawAssetIdentifier;
 @property (nonatomic) BOOL referencedImport; // @synthesize referencedImport=_referencedImport;
 @property (strong, nonatomic) NSMutableArray *relatedRecords; // @synthesize relatedRecords=_relatedRecords;
-@property (strong, nonatomic) NSString *sourcePath; // @synthesize sourcePath=_sourcePath;
 @property (strong, nonatomic) PHImportTimerCollection *timers; // @synthesize timers=_timers;
 
 - (void).cxx_destruct;
@@ -43,11 +37,10 @@
 - (id)allImportRecords;
 - (void)cleanupAfterFailure;
 - (id)description;
+- (id)descriptionWithPrefix:(id)arg1;
 - (id)initWithImportAsset:(id)arg1;
 - (BOOL)needsDownload;
 - (id)recordForAsset:(id)arg1;
-- (void)setDownloadedAtPath:(id)arg1;
-- (void)updateImportType;
 
 @end
 

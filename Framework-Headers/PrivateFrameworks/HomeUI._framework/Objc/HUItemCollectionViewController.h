@@ -19,10 +19,12 @@
 {
     BOOL _wantsPreferredContentSize;
     BOOL _hasFinishedInitialLoad;
+    BOOL _viewVisible;
     BOOL _visibilityUpdatesEnabled;
     HFItemManager *_itemManager;
-    NSMutableArray *_foregroundUpdateFutures;
     NSMutableSet *_registeredCellClasses;
+    NSMutableArray *_foregroundUpdateFutures;
+    NSMutableArray *_viewVisibleFutures;
     id<NACancelable> _deferredVisibilityUpdate;
     NSHashTable *_childViewControllersAtViewWillAppearTime;
     NSHashTable *_childViewControllersAtViewWillDisappearTime;
@@ -40,6 +42,8 @@
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property (readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isViewVisible) BOOL viewVisible; // @synthesize viewVisible=_viewVisible;
+@property (readonly, nonatomic) NSMutableArray *viewVisibleFutures; // @synthesize viewVisibleFutures=_viewVisibleFutures;
 @property (nonatomic) BOOL visibilityUpdatesEnabled; // @synthesize visibilityUpdatesEnabled=_visibilityUpdatesEnabled;
 @property (nonatomic) BOOL wantsPreferredContentSize; // @synthesize wantsPreferredContentSize=_wantsPreferredContentSize;
 
@@ -50,6 +54,7 @@
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)configureCell:(id)arg1 forItem:(id)arg2;
 - (void)executionEnvironmentRunningStateDidChange:(id)arg1;

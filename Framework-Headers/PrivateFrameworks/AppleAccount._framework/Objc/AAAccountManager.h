@@ -20,7 +20,6 @@
 - (void).cxx_destruct;
 - (id)_accountStore;
 - (void)_beginObservingAccountStoreDidChangeNotification;
-- (void)_removeAppleIDCertsForUsername:(id)arg1;
 - (void)_stopObservingAccountStoreDidChangeNotification;
 - (id)accountWithIdentifier:(id)arg1;
 - (id)accountWithPersonID:(id)arg1;

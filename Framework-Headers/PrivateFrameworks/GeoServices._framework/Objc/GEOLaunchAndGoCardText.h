@@ -8,32 +8,60 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, GEOPlaceFormattedString;
+@class GEOFormattedString, GEOPlaceFormattedString, PBDataReader, PBUnknownFields;
 
 @interface GEOLaunchAndGoCardText : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOPlaceFormattedString *_body;
     GEOFormattedString *_cardTitle;
     GEOPlaceFormattedString *_commuteTitle;
     GEOFormattedString *_routeDescription;
     GEOFormattedString *_routeTitle;
     GEOPlaceFormattedString *_title;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_body:1;
+        unsigned int read_cardTitle:1;
+        unsigned int read_commuteTitle:1;
+        unsigned int read_routeDescription:1;
+        unsigned int read_routeTitle:1;
+        unsigned int read_title:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_body:1;
+        unsigned int wrote_cardTitle:1;
+        unsigned int wrote_commuteTitle:1;
+        unsigned int wrote_routeDescription:1;
+        unsigned int wrote_routeTitle:1;
+        unsigned int wrote_title:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPlaceFormattedString *body; // @synthesize body=_body;
-@property (strong, nonatomic) GEOFormattedString *cardTitle; // @synthesize cardTitle=_cardTitle;
-@property (strong, nonatomic) GEOPlaceFormattedString *commuteTitle; // @synthesize commuteTitle=_commuteTitle;
+@property (strong, nonatomic) GEOPlaceFormattedString *body;
+@property (strong, nonatomic) GEOFormattedString *cardTitle;
+@property (strong, nonatomic) GEOPlaceFormattedString *commuteTitle;
 @property (readonly, nonatomic) BOOL hasBody;
 @property (readonly, nonatomic) BOOL hasCardTitle;
 @property (readonly, nonatomic) BOOL hasCommuteTitle;
 @property (readonly, nonatomic) BOOL hasRouteDescription;
 @property (readonly, nonatomic) BOOL hasRouteTitle;
 @property (readonly, nonatomic) BOOL hasTitle;
-@property (strong, nonatomic) GEOFormattedString *routeDescription; // @synthesize routeDescription=_routeDescription;
-@property (strong, nonatomic) GEOFormattedString *routeTitle; // @synthesize routeTitle=_routeTitle;
-@property (strong, nonatomic) GEOPlaceFormattedString *title; // @synthesize title=_title;
+@property (strong, nonatomic) GEOFormattedString *routeDescription;
+@property (strong, nonatomic) GEOFormattedString *routeTitle;
+@property (strong, nonatomic) GEOPlaceFormattedString *title;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readBody;
+- (void)_readCardTitle;
+- (void)_readCommuteTitle;
+- (void)_readRouteDescription;
+- (void)_readRouteTitle;
+- (void)_readTitle;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +69,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

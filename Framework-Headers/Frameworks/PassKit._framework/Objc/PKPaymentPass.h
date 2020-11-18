@@ -38,6 +38,7 @@
     NSSet *_deviceInAppPaymentApplications;
     NSString *_cobrandName;
     NSURL *_transactionServiceURL;
+    NSURL *_transactionServiceRegistrationURL;
     NSString *_transactionPushTopic;
     NSURL *_messageServiceURL;
     NSString *_messagePushTopic;
@@ -82,6 +83,7 @@
 @property (nonatomic) BOOL supportsPeerPayment; // @synthesize supportsPeerPayment=_supportsPeerPayment;
 @property (nonatomic) BOOL supportsSerialNumberBasedProvisioning; // @synthesize supportsSerialNumberBasedProvisioning=_supportsSerialNumberBasedProvisioning;
 @property (copy, nonatomic) NSString *transactionPushTopic; // @synthesize transactionPushTopic=_transactionPushTopic;
+@property (copy, nonatomic) NSURL *transactionServiceRegistrationURL; // @synthesize transactionServiceRegistrationURL=_transactionServiceRegistrationURL;
 @property (copy, nonatomic) NSURL *transactionServiceURL; // @synthesize transactionServiceURL=_transactionServiceURL;
 @property (readonly, copy, nonatomic) PKTransitPassProperties *transitProperties;
 @property (readonly, nonatomic) NSArray *upgradeRequests;
@@ -111,12 +113,14 @@
 - (BOOL)isAccessPass;
 - (BOOL)isContactlessPaymentSupportedForTransitNetworks:(id)arg1;
 - (BOOL)isDevicePrimaryPaymentApplicationPersonalized;
+- (BOOL)isOctopusPass;
 - (BOOL)isSuicaPass;
 - (BOOL)isTransitPass;
 - (id)notificationCenterTitle;
 - (id)paymentApplicationForAID:(id)arg1;
 - (id)paymentApplicationsForSecureElementIdentifiers:(id)arg1;
 - (id)primaryPaymentApplicationForSecureElementIdentifiers:(id)arg1;
+- (BOOL)requiresFelicaSecureElement;
 - (void)sanitizePaymentApplications;
 - (id)sanitizedDeviceAccountNumber;
 - (BOOL)shouldIgnoreTransactionUpdatesSwitch;

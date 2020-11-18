@@ -15,5 +15,6 @@
 
 + (unsigned long long)_sf_operationForDropSession:(id)arg1;
 + (void)_sf_webBookmarksFromDropSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_sf_contextMenuUsingCollection:(id)arg1 withUserInfo:(id)arg2 handler:(id)arg3;
 @end
 

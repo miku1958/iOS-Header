@@ -11,6 +11,7 @@
 }
 
 + (id)stringByEscapingSearchString:(id)arg1;
++ (id)userActivityPersistentIdentifierForNote:(id)arg1;
 
 @end
 

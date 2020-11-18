@@ -55,6 +55,7 @@
 - (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 isCustom:(BOOL)arg3;
 - (id)initWithLanguageCode:(id)arg1 gender:(long long)arg2 isCustom:(BOOL)arg3 name:(id)arg4 footprint:(long long)arg5 contentVersion:(id)arg6 masteredVersion:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isLanguageAndGenderEqual:(id)arg1;
 - (BOOL)isMatchForVoiceAsset:(id)arg1;
 - (BOOL)isValidForSiriSessionLanguage:(id)arg1;
 

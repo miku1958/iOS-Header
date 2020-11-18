@@ -20,7 +20,7 @@
     NSString *_airportCode;
     NSData *_handle;
     NSString *_label;
-    unsigned long long _locationType;
+    int _locationType;
     struct {
         unsigned int accuracy:1;
         unsigned int latitude:1;
@@ -45,19 +45,19 @@
 @property (nonatomic) BOOL hasQuality;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) double latitude; // @synthesize latitude=_latitude;
-@property (nonatomic) unsigned long long locationType; // @synthesize locationType=_locationType;
+@property (nonatomic) int locationType; // @synthesize locationType=_locationType;
 @property (nonatomic) double longitude; // @synthesize longitude=_longitude;
 @property (nonatomic) double quality; // @synthesize quality=_quality;
 
 - (void).cxx_destruct;
-- (unsigned long long)StringAsLocationType:(id)arg1;
+- (int)StringAsLocationType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (id)locationTypeAsString:(unsigned long long)arg1;
+- (id)locationTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

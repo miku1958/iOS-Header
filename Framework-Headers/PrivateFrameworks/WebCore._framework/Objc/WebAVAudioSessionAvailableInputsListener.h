@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface WebAVAudioSessionAvailableInputsListener : NSObject
 {
-    Function_89d21b48 _callback;
+    Function_15535652 _callback;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithCallback:(Function_89d21b48 *)arg1;
+- (id)initWithCallback:(Function_15535652 *)arg1;
 - (void)invalidate;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 

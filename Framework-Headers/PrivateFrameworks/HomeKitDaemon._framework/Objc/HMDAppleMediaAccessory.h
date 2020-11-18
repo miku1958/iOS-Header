@@ -62,7 +62,7 @@
 - (id)assistantObject;
 - (void)autoConfigureTargetControllers;
 - (id)backingStoreObjects:(long long)arg1;
-- (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
+- (void)configureWithHome:(id)arg1 msgDispatcher:(id)arg2 configurationTracker:(id)arg3;
 - (void)createPairingIdentity;
 - (void)dealloc;
 - (id)deviceMonitor;
@@ -76,8 +76,6 @@
 - (void)handleCurrentNetworkChangedNotification:(id)arg1;
 - (void)handleDeviceIsNotReachable:(id)arg1;
 - (void)handleDeviceIsReachable:(id)arg1;
-- (void)handleDeviceReachabilityChange:(BOOL)arg1;
-- (void)handleDeviceUpdated;
 - (void)handleRemovedSoftwareUpdateModel:(id)arg1 message:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -86,7 +84,6 @@
 - (BOOL)isRemotelyReachable;
 - (id)messageReceiverChildren;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
-- (void)notifyClientsOfUpdatedRootSettings:(id)arg1;
 - (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
 - (long long)reachableTransports;
@@ -104,6 +101,9 @@
 - (void)setWifiNetworkInfo:(id)arg1;
 - (BOOL)shouldUpdateWithDevice:(id)arg1;
 - (void)startMonitoringReachability;
+- (BOOL)supportsMediaContentProfile;
+- (BOOL)supportsMultiUser;
+- (BOOL)supportsPersonalRequests;
 - (BOOL)supportsSettings;
 - (BOOL)supportsSoftwareUpdate;
 - (BOOL)supportsTargetControl;

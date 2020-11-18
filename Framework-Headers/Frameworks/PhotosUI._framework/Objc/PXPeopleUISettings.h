@@ -15,17 +15,19 @@
     BOOL _displayConfirmAdditionalSuggestionType;
     BOOL _displayConfirmationPhotoDate;
     BOOL _debugBlurredCells;
-    BOOL _debugMaybeContact;
+    BOOL _showContactSuggestions;
+    BOOL _showMaybeContact;
 }
 
 @property (nonatomic, getter=shouldAlwaysShowBootstrap) BOOL alwaysShowBootstrap; // @synthesize alwaysShowBootstrap=_alwaysShowBootstrap;
 @property (nonatomic, getter=shouldAlwaysShowCandidateWidget) BOOL alwaysShowCandidateWidget; // @synthesize alwaysShowCandidateWidget=_alwaysShowCandidateWidget;
 @property (nonatomic, getter=shouldAlwaysShowMe) BOOL alwaysShowMe; // @synthesize alwaysShowMe=_alwaysShowMe;
 @property (nonatomic, getter=shouldDebugBlurredCells) BOOL debugBlurredCells; // @synthesize debugBlurredCells=_debugBlurredCells;
-@property (nonatomic, getter=shouldDebugMaybeContact) BOOL debugMaybeContact; // @synthesize debugMaybeContact=_debugMaybeContact;
 @property (nonatomic, getter=shouldDisplayBootstrapSuggestionType) BOOL displayBootstrapSuggestionType; // @synthesize displayBootstrapSuggestionType=_displayBootstrapSuggestionType;
 @property (nonatomic, getter=shouldDisplayConfirmAdditionalSuggestionType) BOOL displayConfirmAdditionalSuggestionType; // @synthesize displayConfirmAdditionalSuggestionType=_displayConfirmAdditionalSuggestionType;
 @property (nonatomic, getter=shouldDisplayConfirmationPhotoDate) BOOL displayConfirmationPhotoDate; // @synthesize displayConfirmationPhotoDate=_displayConfirmationPhotoDate;
+@property (nonatomic, getter=shouldShowContactSuggestions) BOOL showContactSuggestions; // @synthesize showContactSuggestions=_showContactSuggestions;
+@property (nonatomic, getter=shouldShowMaybeContact) BOOL showMaybeContact; // @synthesize showMaybeContact=_showMaybeContact;
 
 + (id)settingsControllerModule;
 + (id)sharedInstance;

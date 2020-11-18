@@ -4,37 +4,59 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <UIKitCore/UICommand.h>
 
-#import <UIKitCore/NSCopying-Protocol.h>
-#import <UIKitCore/NSSecureCoding-Protocol.h>
+@class NSArray, NSIndexSet, NSString, UIEvent, UIImage, UIResponder, UIViewController;
 
-@class NSIndexSet, NSString, UIEvent, UIResponder, UIViewController;
-
-@interface UIKeyCommand : NSObject <NSCopying, NSSecureCoding>
+@interface UIKeyCommand : UICommand
 {
+    NSString *_lastLayout;
     NSIndexSet *_keyCodes;
-    SEL _action;
     SEL _upAction;
     BOOL _repeatable;
+    BOOL _isPlaceholder;
     long long _buttonType;
     UIEvent *_triggeringEvent;
     UIResponder *_originatingResponder;
     NSString *_segueIdentifier;
     UIViewController *_controllerForSegue;
+    BOOL _handleAfterKeyEvent;
     NSString *_input;
     long long _modifierFlags;
-    NSString *_discoverabilityTitle;
+    NSString *_layoutAwareInput;
+    long long _layoutAwareModifierFlags;
 }
 
-@property (copy, nonatomic) NSString *discoverabilityTitle; // @synthesize discoverabilityTitle=_discoverabilityTitle;
+@property (readonly, nonatomic) long long _buttonType;
+@property (readonly, nonatomic) UIViewController *_controllerForSegue;
+@property (readonly, nonatomic) BOOL _handleAfterKeyEvent;
+@property (readonly, nonatomic) NSIndexSet *_keyCodes;
+@property (readonly, nonatomic) NSString *_layoutAwareInput; // @synthesize _layoutAwareInput;
+@property (readonly, nonatomic) long long _layoutAwareModifierFlags; // @synthesize _layoutAwareModifierFlags;
+@property (readonly, nonatomic) NSString *_segueIdentifier;
+@property (readonly, nonatomic) UIEvent *_triggeringEvent;
+@property (readonly, nonatomic) SEL action; // @dynamic action;
+@property (readonly, nonatomic) NSArray *alternates; // @dynamic alternates;
+@property (nonatomic) unsigned long long attributes; // @dynamic attributes;
+@property (readonly, nonatomic) NSString *discoverabilityInput;
+@property (copy, nonatomic) NSString *discoverabilityTitle; // @dynamic discoverabilityTitle;
+@property (copy, nonatomic) UIImage *image; // @dynamic image;
 @property (readonly, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly, nonatomic) BOOL isPlaceholder;
 @property (readonly, nonatomic) long long modifierFlags; // @synthesize modifierFlags=_modifierFlags;
+@property (readonly, nonatomic) id propertyList; // @dynamic propertyList;
+@property (readonly, nonatomic) BOOL repeatable;
+@property (nonatomic) long long state; // @dynamic state;
+@property (copy, nonatomic) NSString *title; // @dynamic title;
+@property (readonly, nonatomic) SEL upAction;
 
++ (id)commandWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 input:(id)arg4 modifierFlags:(long long)arg5 propertyList:(id)arg6;
++ (id)commandWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 input:(id)arg4 modifierFlags:(long long)arg5 propertyList:(id)arg6 alternates:(id)arg7;
 + (id)keyCommandWithCompactInput:(id)arg1 action:(SEL)arg2 upAction:(SEL)arg3;
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 action:(SEL)arg3;
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 action:(SEL)arg3 discoverabilityTitle:(id)arg4;
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 action:(SEL)arg3 upAction:(SEL)arg4;
++ (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 action:(SEL)arg3 upAction:(SEL)arg4 discoverabilityTitle:(id)arg5;
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 buttonType:(long long)arg3;
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 segueIdentifier:(id)arg3;
 + (id)keyCommandWithInput:(id)arg1 modifierFlags:(long long)arg2 segueIdentifier:(id)arg3 discoverabilityTitle:(id)arg4;
@@ -44,32 +66,30 @@
 + (id)keyCommandWithKeyCodes:(id)arg1 modifierFlags:(long long)arg2 buttonType:(long long)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (long long)_buttonType;
-- (id)_controllerForSegue;
+- (id)_immutableCopy;
 - (id)_initWithInput:(id)arg1 modifierFlags:(long long)arg2 keyCodes:(id)arg3 action:(SEL)arg4 upAction:(SEL)arg5 discoverabilityTitle:(id)arg6 buttonType:(long long)arg7 segueIdentifier:(id)arg8;
-- (id)_keyCodes;
+- (id)_leafKeyInput;
+- (long long)_leafKeyModifierFlags;
+- (void)_localizeWithGSKeyboard:(struct __GSKeyboard *)arg1;
+- (void)_markHandleAfterKeyEvent;
 - (id)_nonRepeatableKeyCommand;
-- (id)_segueIdentifier;
-- (void)_setButtonType:(long long)arg1;
+- (id)_placeholderKeyCommand;
 - (void)_setOriginatingResponder:(id)arg1;
 - (void)_setTriggeringEvent:(id)arg1;
 - (void)_setViewControllerForSegue:(id)arg1;
-- (id)_triggeringEvent;
-- (SEL)action;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)discoverabilityInput;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithCommand:(id)arg1;
 - (id)initWithKeyCommand:(id)arg1;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 input:(id)arg4 modifierFlags:(long long)arg5 propertyList:(id)arg6 alternates:(id)arg7 discoverabilityTitle:(id)arg8 attributes:(unsigned long long)arg9 state:(long long)arg10;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 propertyList:(id)arg4 alternates:(id)arg5 discoverabilityTitle:(id)arg6 attributes:(unsigned long long)arg7 state:(long long)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (id)nextResponder;
-- (BOOL)repeatable;
-- (void)setAction:(SEL)arg1;
 - (BOOL)triggerSegueIfPossible;
-- (SEL)upAction;
 
 @end
 

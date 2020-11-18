@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBDataString, _INPBIntentMetadata;
+@class NSString, _INPBDataString, _INPBIntentMetadata;
 
 @protocol _INPBCreateTimerIntent <NSObject>
 
@@ -14,8 +14,12 @@
 @property (nonatomic) BOOL hasDuration;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasLabel;
+@property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property (strong, nonatomic) _INPBDataString *label;
+@property (nonatomic) int type;
 
+- (int)StringAsType:(NSString *)arg1;
+- (NSString *)typeAsString:(int)arg1;
 @end
 

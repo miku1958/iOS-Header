@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSString *url;
 
 - (id)_defaultOffer;
+- (BOOL)_mapkit_writeBinaryPlist:(id)arg1 atomically:(BOOL)arg2;
 - (id)_ratingData;
 - (id)bestImageURLForWidth:(double)arg1;
 @end

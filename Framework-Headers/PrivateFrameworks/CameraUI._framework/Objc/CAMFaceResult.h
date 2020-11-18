@@ -6,24 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class AVMetadataFaceObject;
+#import <CameraUI/CAMMetadataObjectResult-Protocol.h>
 
-@interface CAMFaceResult : NSObject
+@class AVMetadataFaceObject, AVMetadataObject, NSString;
+
+@interface CAMFaceResult : NSObject <CAMMetadataObjectResult>
 {
-    long long _identifier;
+    NSString *_uniqueIdentifier;
     double _rollAngle;
     AVMetadataFaceObject *_underlyingFaceObject;
     struct CGRect _bounds;
 }
 
 @property (readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
-@property (readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *metadataType;
 @property (readonly, nonatomic) double rollAngle; // @synthesize rollAngle=_rollAngle;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) AVMetadataFaceObject *underlyingFaceObject; // @synthesize underlyingFaceObject=_underlyingFaceObject;
+@property (readonly, nonatomic) AVMetadataObject *underlyingMetadataObject;
+@property (readonly, copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 - (void).cxx_destruct;
 - (id)burstMetadataRepresentation;
-- (id)description;
 - (id)initWithFaceObject:(id)arg1;
 
 @end

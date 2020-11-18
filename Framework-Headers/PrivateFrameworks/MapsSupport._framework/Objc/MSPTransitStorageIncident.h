@@ -19,7 +19,7 @@
     unsigned int _creationDatetime;
     unsigned int _endDatetime;
     NSString *_fullDescription;
-    long long _iconType;
+    int _iconType;
     unsigned int _lastUpdatedDatetime;
     NSString *_messageForNonRoutable;
     NSString *_messageForRoutePlanning;
@@ -65,8 +65,8 @@
 @property (readonly, nonatomic) BOOL hasSummary;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) long long iconType;
-@property (nonatomic) long long iconType; // @synthesize iconType=_iconType;
+@property (readonly, nonatomic) int iconType;
+@property (nonatomic) int iconType; // @synthesize iconType=_iconType;
 @property (readonly, nonatomic) NSDate *lastUpdated;
 @property (nonatomic) unsigned int lastUpdatedDatetime; // @synthesize lastUpdatedDatetime=_lastUpdatedDatetime;
 @property (readonly, nonatomic) NSString *messageForNonRoutable;
@@ -88,7 +88,7 @@
 
 + (Class)affectedEntitiesType;
 - (void).cxx_destruct;
-- (long long)StringAsIconType:(id)arg1;
+- (int)StringAsIconType:(id)arg1;
 - (void)addAffectedEntities:(id)arg1;
 - (id)affectedEntitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)affectedEntitiesCount;
@@ -96,7 +96,7 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
-- (id)iconTypeAsString:(long long)arg1;
+- (id)iconTypeAsString:(int)arg1;
 - (id)initWithIncident:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

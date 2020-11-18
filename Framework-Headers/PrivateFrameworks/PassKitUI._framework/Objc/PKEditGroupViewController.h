@@ -8,12 +8,12 @@
 
 #import <PassKitUI/PKEditPassesDetailsResponder-Protocol.h>
 #import <PassKitUI/PKGroupDelegate-Protocol.h>
-#import <PassKitUI/UIViewControllerPreviewingDelegate-Protocol.h>
+#import <PassKitUI/_UIContextMenuInteractionDelegate-Protocol.h>
 
 @class NSString, PKGroup, PKPass, UIBarButtonItem, UITableView;
-@protocol PKEditGroupViewControllerDelegate, PKGroupDelegate, UIViewControllerPreviewing;
+@protocol PKEditGroupViewControllerDelegate, PKGroupDelegate;
 
-@interface PKEditGroupViewController : PKEditTableViewController <PKGroupDelegate, UIViewControllerPreviewingDelegate, PKEditPassesDetailsResponder>
+@interface PKEditGroupViewController : PKEditTableViewController <PKGroupDelegate, _UIContextMenuInteractionDelegate, PKEditPassesDetailsResponder>
 {
     PKGroup *_group;
     id<PKGroupDelegate> _savedDelegate;
@@ -22,7 +22,6 @@
     PKPass *_viewingPass;
     UITableView *_tableView;
     struct CGSize _imageSizeNeeded;
-    id<UIViewControllerPreviewing> _previewingContext;
     id<PKEditGroupViewControllerDelegate> _delegate;
 }
 
@@ -35,20 +34,21 @@
 - (void)_deleteAllPassesInGroup;
 - (void)_deleteButtonPressed;
 - (void)configureCell:(id)arg1 atIndexPath:(id)arg2 withPass:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 actionsForMenuAtLocation:(struct CGPoint)arg2 withSuggestedActions:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
+- (BOOL)contextMenuInteractionShouldBegin:(id)arg1;
 - (void)dealloc;
 - (id)group;
 - (void)group:(id)arg1 didInsertPass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didMovePassFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didRemovePass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didUpdatePass:(id)arg2 atIndex:(unsigned long long)arg3;
-- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 delegate:(id)arg3;
+- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 placeholders:(id)arg3 delegate:(id)arg4;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)pass;
 - (id)passAtIndexPath:(id)arg1;
 - (BOOL)passExistsWithUniqueIdentifier:(id)arg1;
 - (void)prefetchItemsAtIndexPaths:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (BOOL)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;

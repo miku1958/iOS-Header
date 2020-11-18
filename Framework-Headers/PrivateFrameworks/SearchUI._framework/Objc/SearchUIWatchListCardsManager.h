@@ -17,11 +17,11 @@
     SearchUIWatchListUtilities *_watchListUtility;
 }
 
-@property BOOL isInUpNext; // @synthesize isInUpNext=_isInUpNext;
-@property (strong) WLKCanonicalPlayablesResponse *response; // @synthesize response=_response;
-@property (strong) NSHashTable *rowModels; // @synthesize rowModels=_rowModels;
-@property (strong) NSString *watchListIdentifier; // @synthesize watchListIdentifier=_watchListIdentifier;
-@property (strong) SearchUIWatchListUtilities *watchListUtility; // @synthesize watchListUtility=_watchListUtility;
+@property (nonatomic) BOOL isInUpNext; // @synthesize isInUpNext=_isInUpNext;
+@property (strong, nonatomic) WLKCanonicalPlayablesResponse *response; // @synthesize response=_response;
+@property (strong, nonatomic) NSHashTable *rowModels; // @synthesize rowModels=_rowModels;
+@property (strong, nonatomic) NSString *watchListIdentifier; // @synthesize watchListIdentifier=_watchListIdentifier;
+@property (strong, nonatomic) SearchUIWatchListUtilities *watchListUtility; // @synthesize watchListUtility=_watchListUtility;
 
 + (BOOL)isUpNextCardSection:(id)arg1;
 - (void).cxx_destruct;

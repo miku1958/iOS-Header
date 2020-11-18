@@ -6,55 +6,35 @@
 
 #import <UIKit/UIView.h>
 
-@class MISSING_TYPE, UIImageView, UILabel, UIVisualEffectView;
+@class MISSING_TYPE, _TtC15ConversationKit19ParticipantInfoView;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit15ParticipantView : UIView
 {
-    MISSING_TYPE *participantIdentifier;
-    MISSING_TYPE *lastConfigurationHashValue;
+    MISSING_TYPE *backgroundEffectsView;
     MISSING_TYPE *contentView;
-    MISSING_TYPE *associatedVideoProvider;
-    MISSING_TYPE *videoTransform;
-    MISSING_TYPE *audioVisualizationView;
-    MISSING_TYPE *contactGlowView;
-    MISSING_TYPE *contactView;
+    MISSING_TYPE *monogramView;
     MISSING_TYPE *videoView;
-    MISSING_TYPE *pausedVideoView;
-    MISSING_TYPE *loggingIdentifier;
-    MISSING_TYPE *overlayBackdropView;
-    MISSING_TYPE *overlaySpinner;
-    MISSING_TYPE *overlayIconView;
-    MISSING_TYPE *overlaySubtitleLabel;
-    MISSING_TYPE *overlayTitleLabelContainerView;
+    MISSING_TYPE *alertView;
+    MISSING_TYPE *videoOverlayView;
     MISSING_TYPE *bottomBar;
-    MISSING_TYPE *bottomBarLabel;
-    MISSING_TYPE *bottomBarButton;
-    MISSING_TYPE *squareLayoutGuide;
-    MISSING_TYPE *avatarToLabelLayoutGuide;
-    MISSING_TYPE *overlayViewTopLayoutGuide;
-    MISSING_TYPE *overlayViewBottomLayoutGuide;
-    MISSING_TYPE *overlayConstraints;
-    MISSING_TYPE *labelState;
-    MISSING_TYPE *overallLayoutState;
-    MISSING_TYPE *backgroundBackdropView;
-    MISSING_TYPE *debugProminenceLabel;
-    MISSING_TYPE *bottomBarHideTimer;
-    MISSING_TYPE *style;
+    MISSING_TYPE *debugLabel;
+    MISSING_TYPE *mostRecentViewModelHash;
+    MISSING_TYPE *loggingIdentifier;
+    MISSING_TYPE *hideBottomBarTimer;
+    MISSING_TYPE *hideAlertViewTimer;
+    MISSING_TYPE *participantIdentifier;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *isInRoster;
+    MISSING_TYPE *customCornerRadius;
+    MISSING_TYPE *isExpanded;
 }
 
-@property (nonatomic, readonly) UIVisualEffectView *bottomBar; // @synthesize bottomBar;
-@property (nonatomic, readonly) UILabel *bottomBarLabel; // @synthesize bottomBarLabel;
-@property (nonatomic, readonly) UIVisualEffectView *overlayBackdropView; // @synthesize overlayBackdropView;
-@property (nonatomic, readonly) UIImageView *overlayIconView; // @synthesize overlayIconView;
-@property (nonatomic, readonly) UILabel *overlaySubtitleLabel; // @synthesize overlaySubtitleLabel;
-@property (nonatomic) long long style; // @synthesize style;
+@property (nonatomic, readonly) _TtC15ConversationKit19ParticipantInfoView *bottomBar; // @synthesize bottomBar;
+@property (nonatomic) BOOL isExpanded; // @synthesize isExpanded;
+@property (nonatomic) BOOL isInRoster; // @synthesize isInRoster;
 
 - (void).cxx_destruct;
-- (BOOL)accessibilityIsShowingVideo;
 - (void)dealloc;
-- (void)didTapExpandButton;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

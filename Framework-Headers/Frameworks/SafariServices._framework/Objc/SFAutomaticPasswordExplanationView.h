@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
     UILabel *_explanationLabel;
     UILabel *_passwordRetrievalExpalantionLabel;
     UIButton *_useStrongPasswordButton;
-    UIButton *_useCustomPasswordButton;
+    UIButton *_useOtherPasswordButton;
     long long _keyboardAppearance;
 }
 
@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
 @property (readonly, nonatomic) UILabel *passwordRetrievalExpalantionLabel; // @synthesize passwordRetrievalExpalantionLabel=_passwordRetrievalExpalantionLabel;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) UIButton *useCustomPasswordButton; // @synthesize useCustomPasswordButton=_useCustomPasswordButton;
+@property (readonly, nonatomic) UIButton *useOtherPasswordButton; // @synthesize useOtherPasswordButton=_useOtherPasswordButton;
 @property (readonly, nonatomic) UIButton *useStrongPasswordButton; // @synthesize useStrongPasswordButton=_useStrongPasswordButton;
 
 - (void).cxx_destruct;

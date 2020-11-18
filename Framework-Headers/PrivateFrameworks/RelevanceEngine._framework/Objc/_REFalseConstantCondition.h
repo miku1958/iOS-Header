@@ -11,7 +11,7 @@
 }
 
 + (id)sharedInstance;
-- (BOOL)_acceptsFeatureMap:(id)arg1;
+- (BOOL)_acceptsFeatureMap:(id)arg1 predictionSet:(id)arg2 explanation:(id *)arg3;
 - (id)_inflectionFeatureValuePairs;
 - (id)_notCondition;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/NSCopying-Protocol.h>
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface ICLibraryAuthServiceClientTokenIdentifier : NSObject <NSCopying>
+@interface ICLibraryAuthServiceClientTokenIdentifier : NSObject <NSCopying, NSSecureCoding>
 {
     NSNumber *_DSID;
     NSString *_deviceGUID;
@@ -19,8 +20,11 @@
 @property (readonly, copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property (readonly, copy, nonatomic) NSString *deviceGUID; // @synthesize deviceGUID=_deviceGUID;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithResponseDictionary:(id)arg1;
 
 @end

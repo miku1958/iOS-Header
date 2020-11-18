@@ -25,7 +25,7 @@
 - (void)didSelectRow:(long long)arg1;
 - (Class)editCellClass;
 - (void)editOptionCell:(id)arg1 didSelectOptionAtIndex:(long long)arg2;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5;
 - (void)reloadActionRow;
 - (void)setSelectedOptions:(id)arg1;
 

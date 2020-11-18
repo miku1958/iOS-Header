@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <FindMyDevice/FMDCodable-Protocol.h>
 #import <FindMyDevice/FMDIdentifiable-Protocol.h>
 #import <FindMyDevice/NSCopying-Protocol.h>
 
 @class NSString;
 
-@interface FMDAccessoryIdentifier : NSObject <NSCopying, FMDIdentifiable>
+@interface FMDAccessoryIdentifier : NSObject <FMDCodable, NSCopying, FMDIdentifiable>
 {
     NSString *_string;
 }
@@ -28,9 +29,11 @@
 - (id)computeAccessoryIdentifierWithAddress:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)encodeWithFMDCoder:(id)arg1 error:(id *)arg2;
 - (id)initWithAddress:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeviceVendor:(id)arg1 deviceProductId:(id)arg2;
+- (id)initWithFMDCoder:(id)arg1 error:(id *)arg2;
 - (id)initWithString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)stringValue;

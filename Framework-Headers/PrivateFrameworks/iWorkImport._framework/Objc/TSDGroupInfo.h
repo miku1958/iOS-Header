@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText; // @dynamic anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) BOOL canAspectRatioLockBeChangedByUser;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) NSArray *containedModels;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -38,15 +38,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSSet *infosToObserveForAttachedInfo;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
+@property (readonly, nonatomic) BOOL isEffectivelyEmpty;
 @property (readonly, nonatomic) BOOL isFreehandDrawing;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @dynamic owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @dynamic parentInfo;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 
-+ (BOOL)canEditGroupsInCollaborativeDocuments;
 + (Class)classForUnarchiver:(id)arg1;
 + (id)drawablesToInsertForGroup:(id)arg1 filteredWithBlock:(CDUnknownBlockType)arg2;
 + (id)groupGeometryFromChildrenInfos:(id)arg1;
@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
 - (BOOL)canAnchor;
+- (BOOL)canCopyData;
 - (id)childEnumerator;
 - (BOOL)containsDisallowedElementKind:(unsigned int)arg1;
 - (id)copyWithContext:(id)arg1;
@@ -81,6 +82,8 @@ __attribute__((visibility("hidden")))
 - (void)moveChildren:(id)arg1 toIndexes:(id)arg2;
 - (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
 - (BOOL)needsDownload;
+- (void)p_didUpdateChildInfos;
+- (id)p_ungroupedGeometryForInfo:(id)arg1;
 - (void)processSelectedStoragesWithStatisticsController:(id)arg1;
 - (void)removeAllChildrenInDocument:(BOOL)arg1;
 - (void)removeChildInfo:(id)arg1;
@@ -89,7 +92,8 @@ __attribute__((visibility("hidden")))
 - (void)replaceChildInfo:(id)arg1 with:(id)arg2;
 - (void)saveToArchive:(struct GroupArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)setChildInfos:(id)arg1;
+- (BOOL)shouldBeIgnoredWhenCopying;
+- (BOOL)shouldShowInPrint;
 - (BOOL)supportsParentRotation;
 - (id)ungroupedGeometryForChildInfo:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

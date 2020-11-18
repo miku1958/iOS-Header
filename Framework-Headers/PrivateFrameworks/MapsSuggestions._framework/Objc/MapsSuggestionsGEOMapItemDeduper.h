@@ -13,6 +13,7 @@
 @interface MapsSuggestionsGEOMapItemDeduper : MapsSuggestionsBaseDeduper <MapsSuggestionsDeduper>
 {
     long long _type;
+    struct NSString *_name;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,6 +23,7 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 + (BOOL)isEnabled;
+- (void).cxx_destruct;
 - (BOOL)dedupeByEnrichingEntry:(id)arg1 withEntry:(id)arg2;
 - (id)initWithSacrificedType:(long long)arg1;
 

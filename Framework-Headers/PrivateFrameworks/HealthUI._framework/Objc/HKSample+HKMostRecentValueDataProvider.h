@@ -6,7 +6,22 @@
 
 #import <HealthKit/HKSample.h>
 
-@interface HKSample (HKMostRecentValueDataProvider)
+#import <HealthUI/HKDataMetadataObject-Protocol.h>
+
+@class NSDictionary;
+
+@interface HKSample (HKMostRecentValueDataProvider) <HKDataMetadataObject>
+
+@property (readonly, nonatomic) NSDictionary *metadata;
+
+- (void)addDetailValuesToSection:(id)arg1;
+- (id)dataForSharingWithHealthStore:(id)arg1;
 - (id)dataProviderValue;
+- (id)detailedReportName;
+- (void)fetchSubSampleTypesWithHealthStore:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)fixedAggregateValuesWithDisplayTypeController:(id)arg1 unitController:(id)arg2;
+- (id)hk_additionalMetadataSectionsWithHealthStore:(id)arg1 displayTypeController:(id)arg2 unitController:(id)arg3;
+- (id)subSamplePredicate;
+- (id)subSampleSectionTitle;
 @end
 

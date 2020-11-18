@@ -6,20 +6,24 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, STUsageReportGraphDataPoint;
+@class NSArray, STUsageReportGraphDataPoint, UIColor;
 
+__attribute__((visibility("hidden")))
 @interface STBarView : UIView
 {
-    BOOL _selected;
     STUsageReportGraphDataPoint *_dataPoint;
+    UIColor *_color;
     NSArray *_sectionViews;
     NSArray *_sectionHeightConstraints;
+    UIView *_darkenedView;
 }
 
+@property (copy, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (getter=isDarkened) BOOL darkened;
+@property (readonly) UIView *darkenedView; // @synthesize darkenedView=_darkenedView;
 @property (strong, nonatomic) STUsageReportGraphDataPoint *dataPoint; // @synthesize dataPoint=_dataPoint;
 @property (copy, nonatomic) NSArray *sectionHeightConstraints; // @synthesize sectionHeightConstraints=_sectionHeightConstraints;
 @property (copy, nonatomic) NSArray *sectionViews; // @synthesize sectionViews=_sectionViews;
-@property (nonatomic) BOOL selected; // @synthesize selected=_selected;
 
 - (void).cxx_destruct;
 - (id)initWithDataPoint:(id)arg1;

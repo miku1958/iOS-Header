@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (struct CGPoint)endPointForPath:(id)arg1 andBounds:(struct CGRect)arg2;
-- (int)fillType;
+- (long long)fillType;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;

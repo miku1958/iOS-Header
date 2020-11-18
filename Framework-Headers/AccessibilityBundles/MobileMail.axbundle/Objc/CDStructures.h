@@ -32,7 +32,3 @@ struct UIEdgeInsets {
     double _field4;
 };
 
-struct UIViewController {
-    Class _field1;
-};
-

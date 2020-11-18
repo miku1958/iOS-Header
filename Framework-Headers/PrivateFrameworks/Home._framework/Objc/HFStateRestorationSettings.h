@@ -32,6 +32,7 @@
 - (void)removeObserver:(id)arg1;
 - (void)saveSelectedRoomIdentifier:(id)arg1 forHomeIdentifier:(id)arg2;
 - (id)selectedRoomIdentifierForHomeIdentifier:(id)arg1;
+- (void)syncToNanoPrefs;
 
 @end
 

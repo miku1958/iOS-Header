@@ -38,6 +38,7 @@
 - (void)_dirtyConfigurationAndReloadIfNeeded;
 - (void)_reconfigureRootViewController;
 - (void)cancel:(id)arg1;
+- (id)init;
 - (id)initWithProvisioningController:(id)arg1 context:(long long)arg2;
 - (void)loadView;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
@@ -46,6 +47,7 @@
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewController:(id)arg1 didShowProvisioningError:(id)arg2;
+- (void)viewController:(id)arg1 requestPasscodeUpgradeWithCompletion:(CDUnknownBlockType)arg2;
 - (void)viewControllerDidCancelSetupFlow:(id)arg1;
 - (void)viewControllerDidShowEligibilityIssue:(id)arg1;
 - (void)viewControllerDidTerminateSetupFlow:(id)arg1;

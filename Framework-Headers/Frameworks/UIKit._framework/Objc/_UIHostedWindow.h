@@ -33,26 +33,28 @@
 - (BOOL)_canPromoteFromKeyWindowStack;
 - (void)_configureContextOptions:(id)arg1;
 - (long long)_defaultTintAdjustmentMode;
-- (BOOL)_isConstrainedByScreenJail;
+- (void)_didCreateRootPresentationController;
+- (void)_didMoveFromScreen:(id)arg1 toScreen:(id)arg2;
+- (BOOL)_extendsScreenSceneLifetime;
 - (BOOL)_isWindowServerHostingManaged;
 - (BOOL)_needsShakesWhenInactive;
 - (id)_normalInheritedTintColor;
 - (long long)_orientationForRootTransform;
+- (long long)_orientationForSceneTransform;
 - (long long)_orientationForViewTransform;
+- (BOOL)_preventsRootPresentationController;
 - (void)_registerScrollToTopView:(id)arg1;
 - (void)_setFirstResponder:(id)arg1;
 - (BOOL)_shouldPropagateTraitCollectionChanges;
-- (id)_traitCollectionForSize:(struct CGSize)arg1 screenCollection:(id)arg2;
+- (id)_traitCollectionForSize:(struct CGSize)arg1 parentCollection:(id)arg2;
 - (void)_unregisterScrollToTopView:(id)arg1;
-- (void)_updateAppTintView;
-- (void)_updateTransformLayerForClassicPresentation;
 - (void)_updateWindowTraitsAndNotify:(BOOL)arg1;
+- (BOOL)_updatesSafeAreaInsetsOnRead;
 - (BOOL)_usesWindowServerHitTesting;
 - (unsigned int)contextID;
 - (void)dealloc;
 - (void)didSetResponderTargetForCalloutBar:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)setScreen:(id)arg1;
 
 @end
 

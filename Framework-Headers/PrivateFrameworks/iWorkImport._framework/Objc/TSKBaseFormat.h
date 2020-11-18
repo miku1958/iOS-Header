@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned char basePlaces; // @synthesize basePlaces=_basePlaces;
 @property (readonly, nonatomic) BOOL baseUseMinusSign; // @synthesize baseUseMinusSign=_baseUseMinusSign;
 
++ (id)defaultHexadecimalFormat;
 - (id)asBaseFormat;
 - (unsigned long long)hash;
 - (id)initWithBase:(unsigned char)arg1 basePlaces:(unsigned char)arg2 baseUseMinusSign:(BOOL)arg3;

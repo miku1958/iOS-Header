@@ -12,6 +12,7 @@
 {
     BOOL _anonymous;
     BOOL _pushTrigger;
+    unsigned int _randomValue;
     NSURL *_c2MetricsEndpoint;
     unsigned long long _reportFrequency;
     unsigned long long _reportFrequencyBase;
@@ -25,6 +26,7 @@
     NSString *_environment;
     NSArray *_operationGroups;
     NSArray *_clientOperations;
+    CDUnknownBlockType _didCompleteWithError;
     CDUnknownBlockType _testBehavior_reportMetric;
 }
 
@@ -34,9 +36,12 @@
 @property (strong, nonatomic) NSString *clientProcessBundleId; // @synthesize clientProcessBundleId=_clientProcessBundleId;
 @property (strong, nonatomic) NSString *clientProcessVersion; // @synthesize clientProcessVersion=_clientProcessVersion;
 @property (strong, nonatomic) NSString *container; // @synthesize container=_container;
+@property (copy, nonatomic) CDUnknownBlockType didCompleteWithError; // @synthesize didCompleteWithError=_didCompleteWithError;
 @property (strong, nonatomic) NSString *environment; // @synthesize environment=_environment;
+@property (readonly, nonatomic) NSString *headerValueForTriggers;
 @property (strong, nonatomic) NSArray *operationGroups; // @synthesize operationGroups=_operationGroups;
 @property (nonatomic) BOOL pushTrigger; // @synthesize pushTrigger=_pushTrigger;
+@property (nonatomic) unsigned int randomValue; // @synthesize randomValue=_randomValue;
 @property (nonatomic) unsigned long long reportClientOperationFrequency; // @synthesize reportClientOperationFrequency=_reportClientOperationFrequency;
 @property (nonatomic) unsigned long long reportClientOperationFrequencyBase; // @synthesize reportClientOperationFrequencyBase=_reportClientOperationFrequencyBase;
 @property (nonatomic) unsigned long long reportFrequency; // @synthesize reportFrequency=_reportFrequency;

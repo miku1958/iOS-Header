@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <Home/HMAccessorySettingsDelegate-Protocol.h>
+#import <Home/HFHomeKitSettingsObserver-Protocol.h>
 #import <Home/NAIdentifiable-Protocol.h>
 
-@class HMAccessorySetting, HMAccessorySettings, NADeallocationSentinel, NSString;
-@protocol HFAccessorySettingsObserver, _HFSettingsObserverTupleOwning;
+@class HMSetting, HMSettings, NADeallocationSentinel, NSString;
+@protocol HFHomeKitSettingsObserver, _HFSettingsObserverTupleOwning;
 
-@interface _HFSettingsObserverTuple : NSObject <HMAccessorySettingsDelegate, NAIdentifiable>
+@interface _HFSettingsObserverTuple : NSObject <HFHomeKitSettingsObserver, NAIdentifiable>
 {
-    HMAccessorySettings *_settings;
-    HMAccessorySetting *_setting;
-    id<HFAccessorySettingsObserver> _observer;
+    HMSettings *_settings;
+    HMSetting *_setting;
+    id<HFHomeKitSettingsObserver> _observer;
     id<_HFSettingsObserverTupleOwning> _owner;
     NADeallocationSentinel *_observerDeallocationSentinel;
 }
@@ -24,11 +24,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<HFAccessorySettingsObserver> observer; // @synthesize observer=_observer;
+@property (weak, nonatomic) id<HFHomeKitSettingsObserver> observer; // @synthesize observer=_observer;
 @property (strong, nonatomic) NADeallocationSentinel *observerDeallocationSentinel; // @synthesize observerDeallocationSentinel=_observerDeallocationSentinel;
 @property (weak, nonatomic) id<_HFSettingsObserverTupleOwning> owner; // @synthesize owner=_owner;
-@property (strong, nonatomic) HMAccessorySetting *setting; // @synthesize setting=_setting;
-@property (strong, nonatomic) HMAccessorySettings *settings; // @synthesize settings=_settings;
+@property (strong, nonatomic) HMSetting *setting; // @synthesize setting=_setting;
+@property (strong, nonatomic) HMSettings *settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 
 + (id)na_identity;

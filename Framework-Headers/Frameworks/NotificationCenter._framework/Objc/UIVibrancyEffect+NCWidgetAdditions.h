@@ -7,7 +7,14 @@
 #import <UIKit/UIVibrancyEffect.h>
 
 @interface UIVibrancyEffect (NCWidgetAdditions)
++ (id)_widgetEffectForPrivateVibrancyStyle:(long long)arg1;
++ (id)notificationCenterVibrancyEffect;
++ (id)widgetEffectForVibrancyStyle:(long long)arg1;
++ (id)widgetPrimaryHighlightVibrancyEffect;
 + (id)widgetPrimaryVibrancyEffect;
++ (id)widgetQuaternaryVibrancyEffect;
++ (id)widgetSecondaryHighlightVibrancyEffect;
 + (id)widgetSecondaryVibrancyEffect;
++ (id)widgetTertiaryVibrancyEffect;
 @end
 

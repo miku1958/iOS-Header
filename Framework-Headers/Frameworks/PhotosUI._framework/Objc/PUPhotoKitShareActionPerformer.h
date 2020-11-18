@@ -6,15 +6,17 @@
 
 #import <PhotosUI/PUPhotoKitActionPerformer.h>
 
-@class PUPhotosSharingViewController;
+@class PUActivitySharingController, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotoKitShareActionPerformer : PUPhotoKitActionPerformer
 {
-    PUPhotosSharingViewController *_preheatedSharingViewController;
+    UIViewController *_preheatedSharingViewController;
+    PUActivitySharingController *_activitySharingController;
 }
 
-@property (strong, nonatomic) PUPhotosSharingViewController *preheatedSharingViewController; // @synthesize preheatedSharingViewController=_preheatedSharingViewController;
+@property (strong, nonatomic) PUActivitySharingController *activitySharingController; // @synthesize activitySharingController=_activitySharingController;
+@property (strong, nonatomic) UIViewController *preheatedSharingViewController; // @synthesize preheatedSharingViewController=_preheatedSharingViewController;
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2;
 + (BOOL)shouldEnableOnAsset:(id)arg1 inAssetCollection:(id)arg2;

@@ -8,11 +8,10 @@
 
 #import <Intents/INActivateCarSignalIntentResponseExport-Protocol.h>
 
-@class NSString, _INPBActivateCarSignalIntentResponse;
+@class NSString;
 
 @interface INActivateCarSignalIntentResponse : INIntentResponse <INActivateCarSignalIntentResponseExport>
 {
-    _INPBActivateCarSignalIntentResponse *_responseMessagePBRepresentation;
 }
 
 @property (readonly, nonatomic) long long code;
@@ -27,11 +26,10 @@
 + (int)_errorCodeFromCode:(long long)arg1;
 + (int)_typeFromCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

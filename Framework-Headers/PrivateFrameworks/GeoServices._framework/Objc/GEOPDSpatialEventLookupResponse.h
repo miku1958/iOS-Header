@@ -8,39 +8,70 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDMapsIdentifier, GEOTimezone, NSMutableArray, PBUnknownFields;
+@class GEOLatLng, GEOPDMapsIdentifier, GEOTimezone, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSpatialEventLookupResponse : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _categorys;
     GEOLatLng *_center;
     NSMutableArray *_eventDateTimes;
     GEOPDMapsIdentifier *_eventId;
+    GEOPDMapsIdentifier *_poiId;
     GEOTimezone *_timezone;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_categorys:1;
+        unsigned int read_center:1;
+        unsigned int read_eventDateTimes:1;
+        unsigned int read_eventId:1;
+        unsigned int read_poiId:1;
+        unsigned int read_timezone:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_categorys:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_eventDateTimes:1;
+        unsigned int wrote_eventId:1;
+        unsigned int wrote_poiId:1;
+        unsigned int wrote_timezone:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *categorys;
 @property (readonly, nonatomic) unsigned long long categorysCount;
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
-@property (strong, nonatomic) NSMutableArray *eventDateTimes; // @synthesize eventDateTimes=_eventDateTimes;
-@property (strong, nonatomic) GEOPDMapsIdentifier *eventId; // @synthesize eventId=_eventId;
+@property (strong, nonatomic) GEOLatLng *center;
+@property (strong, nonatomic) NSMutableArray *eventDateTimes;
+@property (strong, nonatomic) GEOPDMapsIdentifier *eventId;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (readonly, nonatomic) BOOL hasEventId;
+@property (readonly, nonatomic) BOOL hasPoiId;
 @property (readonly, nonatomic) BOOL hasTimezone;
-@property (strong, nonatomic) GEOTimezone *timezone; // @synthesize timezone=_timezone;
+@property (strong, nonatomic) GEOPDMapsIdentifier *poiId;
+@property (strong, nonatomic) GEOTimezone *timezone;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)eventDateTimeType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCategorys:(id)arg1;
+- (void)_addNoFlagsCategory:(int)arg1;
+- (void)_addNoFlagsEventDateTime:(id)arg1;
+- (void)_readCategorys;
+- (void)_readCenter;
+- (void)_readEventDateTimes;
+- (void)_readEventId;
+- (void)_readPoiId;
+- (void)_readTimezone;
 - (void)addCategory:(int)arg1;
 - (void)addEventDateTime:(id)arg1;
 - (int)categoryAtIndex:(unsigned long long)arg1;
 - (id)categorysAsString:(int)arg1;
 - (void)clearCategorys;
 - (void)clearEventDateTimes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -51,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setCategorys:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

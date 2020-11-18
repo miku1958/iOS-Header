@@ -6,25 +6,45 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFItem, HFStaticItem, HFUserNotificationServiceSettings, HUTriggerConditionEditorItemModule;
+@class HFItem, HFStaticItem, HFUserNotificationServiceSettings, HUCameraSmartDetectionSettingsModule, HUTriggerConditionEditorItemModule;
 @protocol HFServiceLikeItem, HFUserNotificationServiceSettingsProviding;
 
 @interface HUStatusAndNotificationsItemManager : HFItemManager
 {
     BOOL _showStatusSection;
+    BOOL _showsCameraSnapshotSection;
+    BOOL _showsCameraSmartNotificationSection;
+    BOOL _showsTriggerConditionSection;
+    BOOL _showsDoorbellSection;
+    BOOL _showsSmartActivitySection;
+    BOOL _serviceItemBelongsToCamera;
     HFStaticItem *_includeInStatusItem;
     HFStaticItem *_allowNotificationsItem;
+    HFStaticItem *_allowCameraSnapshotsItem;
+    HFStaticItem *_allowDoorbellNotificationsItem;
+    HFStaticItem *_allowActivityNotificationsItem;
     HFItem<HFServiceLikeItem> *_serviceItem;
     HUTriggerConditionEditorItemModule *_conditionModule;
+    HUCameraSmartDetectionSettingsModule *_cameraSmartDetectionSettingsModule;
 }
 
+@property (strong, nonatomic) HFStaticItem *allowActivityNotificationsItem; // @synthesize allowActivityNotificationsItem=_allowActivityNotificationsItem;
+@property (strong, nonatomic) HFStaticItem *allowCameraSnapshotsItem; // @synthesize allowCameraSnapshotsItem=_allowCameraSnapshotsItem;
+@property (strong, nonatomic) HFStaticItem *allowDoorbellNotificationsItem; // @synthesize allowDoorbellNotificationsItem=_allowDoorbellNotificationsItem;
 @property (strong, nonatomic) HFStaticItem *allowNotificationsItem; // @synthesize allowNotificationsItem=_allowNotificationsItem;
+@property (readonly, nonatomic) HUCameraSmartDetectionSettingsModule *cameraSmartDetectionSettingsModule; // @synthesize cameraSmartDetectionSettingsModule=_cameraSmartDetectionSettingsModule;
 @property (readonly, nonatomic) HUTriggerConditionEditorItemModule *conditionModule; // @synthesize conditionModule=_conditionModule;
 @property (strong, nonatomic) HFStaticItem *includeInStatusItem; // @synthesize includeInStatusItem=_includeInStatusItem;
 @property (readonly, nonatomic) HFUserNotificationServiceSettings *notificationSettings;
 @property (readonly, nonatomic) id<HFUserNotificationServiceSettingsProviding> notificationSettingsProvider;
 @property (readonly, nonatomic) HFItem<HFServiceLikeItem> *serviceItem; // @synthesize serviceItem=_serviceItem;
+@property (nonatomic) BOOL serviceItemBelongsToCamera; // @synthesize serviceItemBelongsToCamera=_serviceItemBelongsToCamera;
 @property (nonatomic) BOOL showStatusSection; // @synthesize showStatusSection=_showStatusSection;
+@property (nonatomic) BOOL showsCameraSmartNotificationSection; // @synthesize showsCameraSmartNotificationSection=_showsCameraSmartNotificationSection;
+@property (nonatomic) BOOL showsCameraSnapshotSection; // @synthesize showsCameraSnapshotSection=_showsCameraSnapshotSection;
+@property (nonatomic) BOOL showsDoorbellSection; // @synthesize showsDoorbellSection=_showsDoorbellSection;
+@property (nonatomic) BOOL showsSmartActivitySection; // @synthesize showsSmartActivitySection=_showsSmartActivitySection;
+@property (nonatomic) BOOL showsTriggerConditionSection; // @synthesize showsTriggerConditionSection=_showsTriggerConditionSection;
 
 - (void).cxx_destruct;
 - (id)_buildItemProvidersForHome:(id)arg1;
@@ -33,7 +53,11 @@
 - (id)homeStatusVisibleObject;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)initWithServiceItem:(id)arg1 delegate:(id)arg2 home:(id)arg3;
+- (id)updateAllowDoorbellNotifications:(BOOL)arg1;
 - (id)updateAllowNotifications:(BOOL)arg1;
+- (id)updateAllowSmartActivityNotifications:(BOOL)arg1;
+- (id)updateAllowSnapshotsInNotifications:(BOOL)arg1;
+- (id)updateCameraSmartNotificationCondition:(id)arg1;
 - (id)updateNotificationCondition:(id)arg1;
 
 @end

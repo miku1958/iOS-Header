@@ -39,6 +39,7 @@
     NSError *_error;
     NSDictionary *_avDownloadOptions;
     long long _handlingType;
+    double _startTime;
     double _lastUpdateTime;
     double _lastProgressUpdateTime;
     CDUnknownBlockType _completionHandler;
@@ -68,6 +69,7 @@
 @property (readonly, copy, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;
+@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
 @property (nonatomic) long long type; // @synthesize type=_type;

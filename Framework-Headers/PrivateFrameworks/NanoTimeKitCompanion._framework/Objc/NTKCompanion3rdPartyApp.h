@@ -28,12 +28,12 @@
 @property (strong, nonatomic) NSURL *urlToWatchKitBundle; // @synthesize urlToWatchKitBundle=_urlToWatchKitBundle;
 
 + (id)_URLOfFirstItemWithExtension:(id)arg1 inDirectory:(id)arg2;
-+ (BOOL)_isValidApplicationInformation:(id)arg1;
++ (BOOL)_isValidApplication:(id)arg1;
 + (BOOL)_isValidComplicationsInformation:(id)arg1;
 + (id)_urlsToGalleryBundleInApplicationWithContainerBundleId:(id)arg1;
-+ (id)companion3rdPartyAppWithInfo:(id)arg1 supportedComplicationFamilies:(id)arg2 device:(id)arg3;
++ (id)companion3rdPartyRemoteApp:(id)arg1 device:(id)arg2;
 - (void).cxx_destruct;
-- (id)_initWithDevice:(id)arg1 applicationInfo:(id)arg2 galleryBundles:(id)arg3 watchKitBundle:(id)arg4;
+- (id)_initWithDevice:(id)arg1 remoteApplication:(id)arg2 galleryBundles:(id)arg3 watchKitBundle:(id)arg4;
 - (id)_initWithWatchAppId:(id)arg1 containerAppId:(id)arg2 complicationClientId:(id)arg3;
 - (BOOL)_installStateFromAppConduitInstallState:(long long)arg1;
 - (id)appRegistrationDate;

@@ -17,11 +17,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)beginAccessing;
 - (void *)bytes;
 - (struct __CFData *)copyCFData;
-- (void *)copyPropertyListWithMutability:(unsigned long long)arg1;
+- (void *)copyPropertyListWithMutability:(unsigned long long)arg1 error:(struct __CFError **)arg2;
 - (id)copyXPCData;
 - (void)endAccessing;
 - (unsigned long long)length;
 - (BOOL)purgable;
+- (void)quicklyValidatePlistAndOnFailureInvokeBlock:(CDUnknownBlockType)arg1;
 - (BOOL)validatePlist;
 
 @end

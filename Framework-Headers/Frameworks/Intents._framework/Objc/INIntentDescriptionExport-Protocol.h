@@ -7,7 +7,7 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSString;
 
 @protocol INIntentDescriptionExport <NSObject, JSExport>
 
@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) BOOL isPrivate;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *responseName;
-@property (readonly, copy, nonatomic) NSDictionary *slotsByName;
 @property (readonly, copy, nonatomic) NSString *type;
 
 - (id)init;

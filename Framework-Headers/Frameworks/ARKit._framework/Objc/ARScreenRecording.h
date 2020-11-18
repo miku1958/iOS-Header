@@ -18,10 +18,9 @@
 @property (nonatomic) BOOL saveInPhotosLibrary; // @synthesize saveInPhotosLibrary=_saveInPhotosLibrary;
 
 - (void).cxx_destruct;
-- (void)alertUserWithTitle:(id)arg1 message:(id)arg2;
 - (id)initWith:(id)arg1;
-- (void)start;
-- (void)stop;
+- (void)startRecordingWithHandler:(CDUnknownBlockType)arg1;
+- (void)stopRecordingWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

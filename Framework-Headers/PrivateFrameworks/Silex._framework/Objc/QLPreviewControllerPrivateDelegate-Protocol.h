@@ -12,6 +12,7 @@
 @protocol QLPreviewControllerPrivateDelegate <QLPreviewControllerDelegate>
 
 @optional
+- (NSArray *)additionalActivitiesTypesForPreviewController:(QLPreviewController *)arg1;
 - (NSArray *)dismissActionsForPreviewController:(QLPreviewController *)arg1;
 - (NSArray *)excludedActivityTypesForPreviewController:(QLPreviewController *)arg1;
 - (BOOL)previewController:(QLPreviewController *)arg1 canEditItem:(id<QLPreviewItem>)arg2;
@@ -24,6 +25,7 @@
 - (void)previewController:(QLPreviewController *)arg1 didLoadPreviewItemAtIndex:(unsigned long long)arg2 withError:(NSError *)arg3;
 - (void)previewController:(QLPreviewController *)arg1 didPresentPreviewItemAtIndex:(unsigned long long)arg2;
 - (void)previewController:(QLPreviewController *)arg1 didTransitionToState:(long long)arg2;
+- (BOOL)previewController:(QLPreviewController *)arg1 shouldAllowKeyCommandWithIdentifier:(unsigned long long)arg2;
 - (BOOL)previewController:(QLPreviewController *)arg1 shouldSaveEditedItem:(id<QLPreviewItem>)arg2;
 - (UIView *)previewController:(QLPreviewController *)arg1 transitionViewForPreviewItem:(id<QLPreviewItem>)arg2 uncroppedSourceFrame:(struct CGRect *)arg3;
 - (UIView *)previewController:(QLPreviewController *)arg1 transitionViewForPreviewItem:(id<QLPreviewItem>)arg2 uncroppedSourceFrame:(struct CGRect *)arg3 realSize:(struct CGSize *)arg4;

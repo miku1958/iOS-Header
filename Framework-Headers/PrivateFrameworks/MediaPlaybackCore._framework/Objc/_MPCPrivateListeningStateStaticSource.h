@@ -13,6 +13,7 @@
     NSNumber *_value;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithValue:(id)arg1;
 - (id)currentValue;

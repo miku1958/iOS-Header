@@ -6,7 +6,7 @@
 
 #import <UIKitServices/UISDisplayContext.h>
 
-@class FBSDisplayConfiguration;
+@class FBSDisplayConfiguration, UISApplicationSupportDisplayEdgeInfo;
 
 @interface UISMutableDisplayContext : UISDisplayContext
 {
@@ -14,6 +14,8 @@
 
 @property (nonatomic) unsigned long long artworkSubtype; // @dynamic artworkSubtype;
 @property (strong, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @dynamic displayConfiguration;
+@property (strong, nonatomic) UISApplicationSupportDisplayEdgeInfo *displayEdgeInfo; // @dynamic displayEdgeInfo;
+@property (nonatomic) unsigned long long userInterfaceStyle; // @dynamic userInterfaceStyle;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

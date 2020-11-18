@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 - (id)genericToSpecificPropertyMap;
 - (BOOL)supportsSymbolDrawing;
 - (BOOL)supportsSymbolFillForSymbolType:(int)arg1;
+- (id)userInterfaceName;
 
 @end
 

@@ -20,10 +20,10 @@
 @property (readonly, nonatomic) struct CGRect rawCropRect; // @synthesize rawCropRect=_rawCropRect;
 @property (readonly, nonatomic) UIImage *rawImage; // @synthesize rawImage=_rawImage;
 @property (readonly, nonatomic) NSString *serverCacheTag; // @synthesize serverCacheTag=_serverCacheTag;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)entryWithRawImage:(id)arg1 rawCropRect:(struct CGRect)arg2 serverCacheTag:(id)arg3;
 - (void).cxx_destruct;
-- (BOOL)valid;
 
 @end
 

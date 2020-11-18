@@ -19,8 +19,8 @@
 }
 
 @property (strong, nonatomic) CPLResource *cloudResource; // @synthesize cloudResource=_cloudResource;
-@property (readonly, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (readonly, nonatomic) CDUnknownBlockType launchHandler; // @synthesize launchHandler=_launchHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (readonly, copy, nonatomic) CDUnknownBlockType launchHandler; // @synthesize launchHandler=_launchHandler;
 
 + (id)failedTaskForResource:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;

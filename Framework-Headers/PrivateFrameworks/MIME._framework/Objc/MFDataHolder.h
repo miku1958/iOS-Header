@@ -18,9 +18,9 @@
 
 + (id)dataHolder;
 + (id)dataHolderWithData:(id)arg1;
+- (void).cxx_destruct;
 - (void)addData:(id)arg1;
 - (id)data;
-- (void)dealloc;
 - (void)enumerateByteRangesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateConvertingNewlinesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateDatasUsingBlock:(CDUnknownBlockType)arg1;

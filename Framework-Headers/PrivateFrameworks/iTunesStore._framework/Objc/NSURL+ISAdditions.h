@@ -16,6 +16,7 @@
 - (id)copyQueryStringDictionaryWithUnescapedValues:(BOOL)arg1;
 - (void)enumerateQueryWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)isSafeExternalURL;
+- (id)sanitizedURL;
 - (id)schemeSwizzledURL;
 - (id)urlByReplacingSchemeWithScheme:(id)arg1;
 - (id)urlBySettingQueryStringDictionary:(id)arg1;

@@ -11,11 +11,10 @@
 @interface AVRoutingSession : NSObject
 {
     AVRoutingSessionInternal *_ivars;
-    BOOL _establishedAutomaticallyFromLikelyDestination;
 }
 
 @property (readonly) AVRoutingSessionDestination *destination;
-@property (readonly) BOOL establishedAutomaticallyFromLikelyDestination; // @synthesize establishedAutomaticallyFromLikelyDestination=_establishedAutomaticallyFromLikelyDestination;
+@property (readonly) BOOL establishedAutomaticallyFromLikelyDestination;
 
 - (void)dealloc;
 

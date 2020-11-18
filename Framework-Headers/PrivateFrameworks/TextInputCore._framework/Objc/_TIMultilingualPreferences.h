@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) TIInputMode *preferredSecondaryInputMode;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *userEnabledInputModes;
+@property (readonly, nonatomic) NSArray *userPreferredLanguages;
 
 + (id)inputModesForIdentifiers:(id)arg1;
 

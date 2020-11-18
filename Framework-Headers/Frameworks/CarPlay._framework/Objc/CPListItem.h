@@ -8,21 +8,22 @@
 
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID, UIImage;
+@class CPImageSet, NSString, NSUUID, UIImage;
 
 @interface CPListItem : NSObject <NSSecureCoding>
 {
     BOOL _showsDisclosureIndicator;
     NSString *_text;
     NSString *_detailText;
-    UIImage *_image;
     id _userInfo;
+    CPImageSet *_imageSet;
     NSUUID *_identifier;
 }
 
 @property (readonly, copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) UIImage *image;
+@property (strong, nonatomic) CPImageSet *imageSet; // @synthesize imageSet=_imageSet;
 @property (readonly, nonatomic) BOOL showsDisclosureIndicator; // @synthesize showsDisclosureIndicator=_showsDisclosureIndicator;
 @property (readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;

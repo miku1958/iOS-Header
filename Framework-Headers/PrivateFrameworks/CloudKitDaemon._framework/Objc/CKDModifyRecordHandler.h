@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKRecord, CKRecordID, NSError, NSMutableDictionary, NSString;
+@class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKDZonePCSData, CKRecord, CKRecordID, NSDictionary, NSError, NSMutableDictionary, NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _isDelete;
     BOOL _saveCompletionBlockCalled;
     BOOL _needsRefetch;
+    BOOL _didAttemptDugongKeyRoll;
     BOOL _didRollRecordPCSMasterKey;
     int _saveAttempts;
     CKDModifyRecordsOperation *_operation;
@@ -29,10 +30,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_rereferencedAssetArrayByFieldname;
     CKDProgressTracker *_progressTracker;
     long long _batchRank;
+    CKDZonePCSData *_sharedZonePCSData;
+    NSDictionary *_assetUUIDToExpectedProperties;
     CKRecordID *_recordID;
 }
 
+@property (copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property (nonatomic) long long batchRank; // @synthesize batchRank=_batchRank;
+@property (nonatomic) BOOL didAttemptDugongKeyRoll; // @synthesize didAttemptDugongKeyRoll=_didAttemptDugongKeyRoll;
 @property (nonatomic) BOOL didRollRecordPCSMasterKey; // @synthesize didRollRecordPCSMasterKey=_didRollRecordPCSMasterKey;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
@@ -52,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL saveCompletionBlockCalled; // @synthesize saveCompletionBlockCalled=_saveCompletionBlockCalled;
 @property (strong, nonatomic) CKRecord *serverRecord; // @synthesize serverRecord=_serverRecord;
 @property (strong, nonatomic) CKDSharePCSData *sharePCSData; // @synthesize sharePCSData=_sharePCSData;
+@property (strong, nonatomic) CKDZonePCSData *sharedZonePCSData; // @synthesize sharedZonePCSData=_sharedZonePCSData;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 
 + (id)_stringForState:(unsigned long long)arg1;
@@ -81,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)_unwrapRecordPCSForParent;
 - (void)_unwrapRecordPCSForZone;
 - (void)_unwrapRecordPCSWithShareID:(id)arg1;
+- (BOOL)_useZoneishPCS;
 - (BOOL)_wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3 recordID:(id)arg4;
 - (BOOL)_wrapEncryptedDataForRecordValueStore:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (BOOL)_wrapEncryptedDataOnRecord:(id)arg1;
@@ -94,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)noteSideEffectRecordPendingModify:(id)arg1;
 - (id)prepareAssetsForUploadWithError:(id *)arg1;
 - (void)prepareForSave;
+- (void)prepareStreamingAsset:(id)arg1 forUploadWithRecord:(id)arg2;
 - (void)savePCSDataToCache;
 - (id)sideEffectRecordIDs;
 

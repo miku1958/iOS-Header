@@ -6,26 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSArray;
 
 @interface AVTAvatarFetchRequest : NSObject
 {
-    NSString *_identifier;
+    NSArray *_identifiers;
+    NSArray *_excludingIdentifiers;
     long long _criteria;
+    long long _fetchLimit;
 }
 
 @property (readonly, nonatomic) long long criteria; // @synthesize criteria=_criteria;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSArray *excludingIdentifiers; // @synthesize excludingIdentifiers=_excludingIdentifiers;
+@property (readonly, nonatomic) long long fetchLimit; // @synthesize fetchLimit=_fetchLimit;
+@property (readonly, copy, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
 
 + (id)requestForAllAvatars;
++ (id)requestForAllAvatarsExcluding:(id)arg1;
 + (id)requestForAvatarWithIdentifier:(id)arg1;
++ (id)requestForAvatarsWithIdentifiers:(id)arg1;
 + (id)requestForCustomAvatars;
++ (id)requestForCustomAvatarsWithLimit:(long long)arg1;
 + (id)requestForPredefinedAvatars;
 + (id)requestForStorePrimaryAvatar;
 - (void).cxx_destruct;
 - (unsigned long long)hash;
 - (id)initWithCriteria:(long long)arg1;
 - (id)initWithCriteria:(long long)arg1 identifier:(id)arg2;
+- (id)initWithCriteria:(long long)arg1 identifiers:(id)arg2 excludedIdentifiers:(id)arg3 fetchLimit:(long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

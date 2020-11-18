@@ -7,6 +7,8 @@
 #import <CoreRoutine/RTPredictedLocationOfInterest.h>
 
 @interface RTPredictedLocationOfInterest (RTStateModel)
+- (id)initWithHistoryEntryPlaceDisplay:(id)arg1;
+- (id)initWithHistoryEntryRoute:(id)arg1;
 - (id)initWithLocationOfInterest:(id)arg1 confidence:(double)arg2 nextEntryTime:(id)arg3 motionActivityType:(unsigned long long)arg4;
 @end
 

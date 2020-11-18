@@ -8,22 +8,26 @@
 
 #import <coreroutine/RTMapItemProvider-Protocol.h>
 
-@class NSString, RTMapServiceManager;
+@class NSString, RTMapItemProviderReverseGeocodeParameters, RTMapServiceManager;
 
 @interface RTMapItemProviderReverseGeocode : NSObject <RTMapItemProvider>
 {
     RTMapServiceManager *_mapServiceManager;
+    RTMapItemProviderReverseGeocodeParameters *_parameters;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
+@property (strong, nonatomic) RTMapItemProviderReverseGeocodeParameters *parameters; // @synthesize parameters=_parameters;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithMapServiceManager:(id)arg1;
-- (id)mapItemsWithinDistance:(double)arg1 location:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
+- (id)init;
+- (id)initWithDefaultsManager:(id)arg1 mapServiceManager:(id)arg2;
+- (id)initWithMapServiceManager:(id)arg1 parameters:(id)arg2;
+- (id)mapItemsWithOptions:(id)arg1 error:(id *)arg2;
 
 @end
 

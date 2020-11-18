@@ -11,8 +11,8 @@
 #import <PhotosUI/PULoadingStatusManagerDelegate-Protocol.h>
 #import <PhotosUI/PXAssetEditOperationManagerObserver-Protocol.h>
 
-@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator, PXAssetEditOperationManager, PXGestureProvider, PXPhotosDetailsContext;
-@protocol PXImportStatusManager;
+@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUOneUpMergedVideoProvider, PUTileAnimator, PXAssetEditOperationManager, PXGestureProvider, PXPhotosDetailsContext;
+@protocol PXAssetImportStatusManager;
 
 @interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate, PXAssetEditOperationManagerObserver>
 {
@@ -22,9 +22,10 @@
     PUBrowsingViewModel *_viewModel;
     PUContentTileProvider *_contentTileProvider;
     PULoadingStatusManager *_loadingStatusManager;
-    id<PXImportStatusManager> _importStatusManager;
+    id<PXAssetImportStatusManager> _importStatusManager;
     PXPhotosDetailsContext *_photosDetailsContext;
     PXGestureProvider *_gestureProvider;
+    PUOneUpMergedVideoProvider *_mergedVideoProvider;
     PXAssetEditOperationManager *_editOperationManager;
     PUTileAnimator *_tileAnimator;
 }
@@ -37,9 +38,10 @@
 @property (readonly, nonatomic) PXAssetEditOperationManager *editOperationManager; // @synthesize editOperationManager=_editOperationManager;
 @property (readonly, nonatomic) PXGestureProvider *gestureProvider; // @synthesize gestureProvider=_gestureProvider;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<PXImportStatusManager> importStatusManager; // @synthesize importStatusManager=_importStatusManager;
+@property (readonly, nonatomic) id<PXAssetImportStatusManager> importStatusManager; // @synthesize importStatusManager=_importStatusManager;
 @property (readonly, nonatomic) PULoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (readonly, nonatomic) PUOneUpMergedVideoProvider *mergedVideoProvider; // @synthesize mergedVideoProvider=_mergedVideoProvider;
 @property (readonly, nonatomic) PXPhotosDetailsContext *photosDetailsContext; // @synthesize photosDetailsContext=_photosDetailsContext;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PUTileAnimator *tileAnimator; // @synthesize tileAnimator=_tileAnimator;

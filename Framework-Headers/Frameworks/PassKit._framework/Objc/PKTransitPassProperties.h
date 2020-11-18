@@ -30,16 +30,20 @@
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic) PKFelicaPassProperties *felicaProperties;
 @property (readonly, nonatomic, getter=isInStation) BOOL inStation;
+@property (readonly, nonatomic) BOOL isEnRoute;
 @property (readonly, copy, nonatomic) NSDecimalNumber *transitBalance;
 @property (readonly, copy, nonatomic) NSString *transitBalanceCurrencyCode;
 
++ (Class)equalityClass;
 + (id)passPropertiesForPass:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTransitAppletState:(id)arg1 paymentApplication:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

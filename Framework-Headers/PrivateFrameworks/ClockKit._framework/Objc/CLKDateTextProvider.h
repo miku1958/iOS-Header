@@ -12,6 +12,7 @@
 {
     NSDateFormatter *_dateFormatter;
     NSArray *_templateSeries;
+    BOOL _uppercase;
     BOOL _shortUnits;
     BOOL _allowsNarrowUnits;
     BOOL _narrowStandaloneWeekdayDay;
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL narrowStandaloneWeekdayDay; // @synthesize narrowStandaloneWeekdayDay=_narrowStandaloneWeekdayDay;
 @property (nonatomic) BOOL shortUnits; // @synthesize shortUnits=_shortUnits;
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property (nonatomic) BOOL uppercase; // @synthesize uppercase=_uppercase;
 
 + (BOOL)supportsSecureCoding;
 + (id)textProviderWithDate:(id)arg1 units:(unsigned long long)arg2;

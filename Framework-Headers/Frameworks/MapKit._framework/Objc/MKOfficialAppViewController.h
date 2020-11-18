@@ -34,11 +34,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_loadAppArtwork:(id)arg1 adamID:(id)arg2;
 - (void)_loadOfficialApp;
 - (void)_updateAppImage:(id)arg1 error:(id)arg2;
 - (void)_updateView:(id)arg1;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)initWithMKMapItem:(id)arg1;
 - (void)officialAppViewDidSelectPunchOutButton:(id)arg1;
 - (void)updateOfficialViewButtonText;

@@ -9,33 +9,39 @@
 #import <HomeUI/UIPickerViewDataSource-Protocol.h>
 #import <HomeUI/UIPickerViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIPickerView;
+@class HFItem, NSIndexPath, NSString, UIPickerView;
+@protocol HUPickerCellDelegate;
 
 @interface HUPickerViewCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource>
 {
-    BOOL _shouldPostNotifications;
-    NSArray *_data;
+    NSIndexPath *_selectedIndexPath;
+    HFItem *_item;
+    id<HUPickerCellDelegate> _delegate;
     UIPickerView *_pickerView;
+    long long _numberOfValues;
 }
 
-@property (strong, nonatomic) NSArray *data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HUPickerCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
+@property (nonatomic) long long numberOfValues; // @synthesize numberOfValues=_numberOfValues;
 @property (strong, nonatomic) UIPickerView *pickerView; // @synthesize pickerView=_pickerView;
-@property (readonly, nonatomic) id selectedValue;
-@property (nonatomic) BOOL shouldPostNotifications; // @synthesize shouldPostNotifications=_shouldPostNotifications;
+@property (readonly, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_resizeCellForPickerView;
-- (id)_setupPickerView;
+- (BOOL)_canSelectValueAtIndex:(long long)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
+- (id)pickerView:(id)arg1 attributedTitleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
 - (void)prepareForReuse;
+- (void)reloadPickerView;
+- (void)setSelectedIndex:(long long)arg1 animated:(BOOL)arg2;
 
 @end
 

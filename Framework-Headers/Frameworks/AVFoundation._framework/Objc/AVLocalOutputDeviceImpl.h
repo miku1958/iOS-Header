@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSString *ID;
 @property (readonly, nonatomic) NSDictionary *airPlayProperties;
 @property (readonly, nonatomic) BOOL automaticallyAllowsConnectionsFromPeersInHomeGroup;
+@property (readonly, nonatomic) NSArray *availableBluetoothListeningModes;
 @property (readonly, nonatomic) NSNumber *batteryLevel;
 @property (readonly, nonatomic) BOOL canAccessAppleMusic;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
 @property (readonly, copy, nonatomic) NSArray *connectedPairedDevices;
+@property (copy, nonatomic) NSString *currentBluetoothListeningMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long deviceFeatures;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSData *identifyingMACAddress;
 @property (readonly, nonatomic, getter=isInUseByPairedDevice) BOOL inUseByPairedDevice;
 @property (readonly, nonatomic) BOOL isGroupLeader;
+@property (readonly, nonatomic) NSNumber *isInEar;
 @property (readonly, nonatomic) BOOL isLogicalDeviceLeader;
 @property (readonly, nonatomic) NSNumber *leftBatteryLevel;
 @property (readonly, nonatomic) NSString *logicalDeviceID;
@@ -58,7 +61,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *rightBatteryLevel;
 @property (readonly, nonatomic) NSString *serialNumber;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsBluetoothSharing;
 @property (readonly, nonatomic) BOOL supportsBufferedAirPlay;
+@property (readonly, nonatomic) NSNumber *supportsDataOverACLProtocol;
 @property (readonly) float volume;
 
 - (void).cxx_destruct;

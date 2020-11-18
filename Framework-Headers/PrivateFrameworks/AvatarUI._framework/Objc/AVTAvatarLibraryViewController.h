@@ -53,7 +53,7 @@
 - (void)insertItemsAtIndexes:(id)arg1 deleteItemsAtIndexes:(id)arg2 reloadItemsAtIndexes:(id)arg3;
 - (void)loadView;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (void)presentUIViewController:(id)arg1;
+- (void)presentUIViewController:(id)arg1 forItem:(id)arg2;
 - (void)presetEditorViewController:(id)arg1;
 - (void)updateVisibleHeaders;
 - (void)viewDidLayoutSubviews;

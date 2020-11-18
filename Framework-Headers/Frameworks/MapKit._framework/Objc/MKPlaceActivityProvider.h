@@ -23,6 +23,7 @@
 - (id)activityTitle;
 - (id)activityURL;
 - (id)initWithMapItem:(id)arg1;
+- (id)mapMetadataSpecialization;
 - (BOOL)shouldUseWebPlaceCardForActivityType:(id)arg1;
 - (id)webPlaceCardURL;
 

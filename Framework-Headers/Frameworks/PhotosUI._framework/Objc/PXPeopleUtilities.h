@@ -13,26 +13,31 @@
 + (id)_daysDictionary;
 + (BOOL)_hasRecentlyHandledBootstrapForPerson:(id)arg1;
 + (CDUnknownBlockType)_manualOrderComparator;
-+ (CDUnknownBlockType)_otherPeopleComparator;
++ (void)_peopleFaceTilesForFaces:(id)arg1 asset:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)_peopleHomeFetchResultForPersonType:(long long)arg1;
 + (void)_setDaysDictionary:(id)arg1;
++ (id)_titleStringForPeople:(id)arg1 singlePersonFallback:(id)arg2 groupFallback:(id)arg3;
 + (id)alertControllerForRemovingNumberOfPeople:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (id)alertControllerForResettingPeopleWithCompletion:(CDUnknownBlockType)arg1;
 + (id)assetCollectionListFetchResultForPerson:(id)arg1;
-+ (id)bootstrapContextForPersonSuggestion:(id)arg1 type:(unsigned long long)arg2;
 + (id)bootstrapViewControllerForContext:(id)arg1 delegate:(id)arg2;
 + (BOOL)changePeople:(id)arg1 toPersonType:(long long)arg2 error:(id *)arg3;
 + (id)changePerson:(id)arg1 toPersonType:(long long)arg2;
 + (CDUnknownBlockType)comparatorForFetchType:(unsigned long long)arg1;
-+ (id)createDetailsForPerson:(id)arg1;
-+ (BOOL)facesSyncFeatureEnabled;
++ (struct CGRect)faceRectForPeopleFaceTile:(id)arg1;
++ (id)facesForPerson:(id)arg1 inAssets:(id)arg2;
++ (id)generateNewFaceTileFromFaceTile:(id)arg1;
 + (id)identifiersForPeople:(id)arg1;
++ (BOOL)isFavoritePerson:(id)arg1;
 + (BOOL)isPersonHiddenFromPeopleHome:(id)arg1;
 + (long long)manualOrderForInsertingAtEndOfSectionWithType:(long long)arg1;
 + (void)markHandledBootstrapForPerson:(id)arg1;
++ (id)memoryTitleStringFromPeople:(id)arg1;
 + (void)mergePersons:(id)arg1 withPerson:(id)arg2;
-+ (id)modelObjectsFromPersonItemArray:(id)arg1;
++ (void)peopleFaceTilesForAsset:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)peopleFaceTilesForFaces:(id)arg1 asset:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)peopleWithPersonUris:(id)arg1;
++ (id)personFaceTileByPersonIdForPersons:(id)arg1 options:(id)arg2;
 + (id)personWithLocalIdentifier:(id)arg1;
 + (id)personWithPersonUri:(id)arg1;
 + (id)sharedContactStore;
@@ -40,6 +45,9 @@
 + (BOOL)showBootstrapIfNeededWithContext:(id)arg1 fromParentVC:(id)arg2;
 + (BOOL)showBootstrapIfNeededWithContext:(id)arg1 fromParentVC:(id)arg2 delegate:(id)arg3;
 + (BOOL)showBootstrapIfNeededWithContext:(id)arg1 fromParentVC:(id)arg2 force:(BOOL)arg3 delegate:(id)arg4;
++ (id)slideshowTitleStringForPeople:(id)arg1;
++ (id)sortDescriptorsForManualSort;
++ (id)titleStringForPeople:(id)arg1;
 
 @end
 

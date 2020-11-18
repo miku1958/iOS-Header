@@ -6,7 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@interface MLPredictionOptions : NSObject
+#import <CoreML/NSCopying-Protocol.h>
+#import <CoreML/NSSecureCoding-Protocol.h>
+
+@interface MLPredictionOptions : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _usesCPUOnly;
     unsigned long long _classifyTopK;
@@ -19,7 +22,11 @@
 @property (nonatomic) BOOL usesCPUOnly; // @synthesize usesCPUOnly=_usesCPUOnly;
 
 + (id)defaultOptions;
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithUseCPUOnly:(BOOL)arg1;
 - (id)initWithUsesCPUOnly:(BOOL)arg1;
 

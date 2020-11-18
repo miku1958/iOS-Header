@@ -15,8 +15,8 @@
     BOOL _empty;
     NSMutableArray *_mutableCandidates;
     NSMutableDictionary *_mutableCandidateRefsDictionary;
-    NSArray *_initiallyHiddenCandidates;
-    unsigned long long _selectedHiddenCandidateIndex;
+    NSArray *_disambiguationCandidates;
+    unsigned long long _selectedDisambiguationCandidateIndex;
     NSArray *_proactiveCandidates;
     NSArray *_autoconvertedCandidates;
     NSString *_autoconvertedCandidateString;
@@ -29,14 +29,14 @@
 @property (strong, nonatomic) NSString *autoconvertedInputString; // @synthesize autoconvertedInputString=_autoconvertedInputString;
 @property (readonly, nonatomic) NSDictionary *candidateRefsDictionary;
 @property (readonly, nonatomic) NSArray *candidates;
+@property (copy, nonatomic) NSArray *disambiguationCandidates; // @synthesize disambiguationCandidates=_disambiguationCandidates;
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
-@property (copy, nonatomic) NSArray *initiallyHiddenCandidates; // @synthesize initiallyHiddenCandidates=_initiallyHiddenCandidates;
 @property (strong, nonatomic) NSMutableDictionary *mutableCandidateRefsDictionary; // @synthesize mutableCandidateRefsDictionary=_mutableCandidateRefsDictionary;
 @property (strong, nonatomic) NSMutableArray *mutableCandidates; // @synthesize mutableCandidates=_mutableCandidates;
 @property (readonly, nonatomic) NSMutableArray *mutableProactiveTriggers; // @synthesize mutableProactiveTriggers=_mutableProactiveTriggers;
 @property (strong, nonatomic) NSArray *proactiveCandidates; // @synthesize proactiveCandidates=_proactiveCandidates;
 @property (readonly, nonatomic) NSArray *proactiveTriggers;
-@property (nonatomic) unsigned long long selectedHiddenCandidateIndex; // @synthesize selectedHiddenCandidateIndex=_selectedHiddenCandidateIndex;
+@property (nonatomic) unsigned long long selectedDisambiguationCandidateIndex; // @synthesize selectedDisambiguationCandidateIndex=_selectedDisambiguationCandidateIndex;
 
 + (id)emptySet;
 - (void).cxx_destruct;
@@ -54,7 +54,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithCandidates:(id)arg1 candidateRefsDictionary:(id)arg2;
-- (id)initWithCandidates:(id)arg1 candidateRefsDictionary:(id)arg2 initiallyHiddenCandidates:(id)arg3 selectedHiddenCandidateIndex:(unsigned long long)arg4;
+- (id)initWithCandidates:(id)arg1 candidateRefsDictionary:(id)arg2 disambiguationCandidates:(id)arg3 selectedDisambiguationCandidateIndex:(unsigned long long)arg4;
 - (void)insertMecabraCandidate:(id)arg1 mecabraCandidateRef:(void *)arg2 atIndex:(unsigned long long)arg3;
 - (void)insertSyntheticMecabraCandidateWithSurface:(id)arg1 input:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)moveCandidate:(id)arg1 fromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;

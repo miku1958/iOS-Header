@@ -30,6 +30,7 @@
 - (float)obstruction;
 - (float)occlusion;
 - (float)pan;
+- (long long)pointSourceInHeadMode;
 - (struct AVAudio3DPoint)position;
 - (float)rate;
 - (long long)renderingAlgorithm;
@@ -37,10 +38,13 @@
 - (void)setObstruction:(float)arg1;
 - (void)setOcclusion:(float)arg1;
 - (void)setPan:(float)arg1;
+- (void)setPointSourceInHeadMode:(long long)arg1;
 - (void)setPosition:(struct AVAudio3DPoint)arg1;
 - (void)setRate:(float)arg1;
 - (void)setRenderingAlgorithm:(long long)arg1;
 - (void)setReverbBlend:(float)arg1;
+- (void)setSourceMode:(long long)arg1;
+- (long long)sourceMode;
 
 @end
 

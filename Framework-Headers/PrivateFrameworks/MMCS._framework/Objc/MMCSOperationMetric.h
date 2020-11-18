@@ -8,7 +8,7 @@
 
 #import <MMCS/MMCSOperationMetric-Protocol.h>
 
-@class NSArray, NSDate, NSMutableArray, NSMutableSet, NSString;
+@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MMCSOperationMetric : NSObject <MMCSOperationMetric>
@@ -19,6 +19,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _bytesDownloaded;
     unsigned long long _connections;
     unsigned long long _connectionsCreated;
+    NSMutableDictionary *_totalBytesByChunkProfile;
+    NSMutableDictionary *_chunkCountByChunkProfile;
+    NSMutableDictionary *_fileCountByChunkProfile;
     NSMutableSet *_requestUUIDs;
     NSDate *_startDate;
     double _duration;
@@ -27,12 +30,14 @@ __attribute__((visibility("hidden")))
 
 @property unsigned long long bytesDownloaded; // @synthesize bytesDownloaded=_bytesDownloaded;
 @property unsigned long long bytesUploaded; // @synthesize bytesUploaded=_bytesUploaded;
+@property (readonly) NSMutableDictionary *chunkCountByChunkProfile; // @synthesize chunkCountByChunkProfile=_chunkCountByChunkProfile;
 @property unsigned long long connections; // @synthesize connections=_connections;
 @property unsigned long long connectionsCreated; // @synthesize connectionsCreated=_connectionsCreated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property double duration; // @synthesize duration=_duration;
 @property double executing; // @synthesize executing=_executing;
+@property (readonly) NSMutableDictionary *fileCountByChunkProfile; // @synthesize fileCountByChunkProfile=_fileCountByChunkProfile;
 @property (readonly) unsigned long long hash;
 @property double queueing; // @synthesize queueing=_queueing;
 @property (strong, nonatomic) NSMutableArray *ranges; // @synthesize ranges=_ranges;
@@ -40,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSMutableSet *requestUUIDs; // @synthesize requestUUIDs=_requestUUIDs;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
+@property (readonly) NSMutableDictionary *totalBytesByChunkProfile; // @synthesize totalBytesByChunkProfile=_totalBytesByChunkProfile;
 
 - (void).cxx_destruct;
 - (double)absoluteStart;

@@ -14,15 +14,18 @@
 {
     id _pingHandler;
     BOOL _forBulletin;
+    BOOL _forNotification;
     NSString *_sectionID;
     unsigned long long _ackType;
 }
 
 @property (nonatomic) unsigned long long ackType; // @synthesize ackType=_ackType;
 @property (readonly, nonatomic) BOOL canAck;
+@property (readonly, nonatomic) BOOL canAckOnLocalConnection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL forBulletin; // @synthesize forBulletin=_forBulletin;
+@property (nonatomic) BOOL forNotification; // @synthesize forNotification=_forNotification;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property (readonly) Class superclass;

@@ -8,12 +8,13 @@
 
 #import <NanoTimeKitCompanion/NTKComplicationDisplayObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKControl-Protocol.h>
+#import <NanoTimeKitCompanion/NTKSensitiveUIStateObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
 
 @class CLKComplicationTemplate, NSDate, NSString, UIView;
-@protocol NTKComplicationDisplay, NTKComplicationDisplayWrapperViewAnimationDelegate;
+@protocol CLKMonochromeFilterProvider, NTKComplicationDisplay, NTKComplicationDisplayWrapperViewAnimationDelegate;
 
-@interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, NTKControl, NTKTimeTravel>
+@interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, NTKSensitiveUIStateObserver, NTKControl, NTKTimeTravel>
 {
     UIView<NTKComplicationDisplay> *_currentComplicationView;
     UIView<NTKComplicationDisplay> *_nextComplicationView;
@@ -21,6 +22,7 @@
     UIView *_clipView;
     UIView *_earlierContainerView;
     UIView *_laterContainerView;
+    CLKComplicationTemplate *_prevTemplate;
     CLKComplicationTemplate *_template;
     NSDate *_timeTravelDate;
     BOOL _didChangeLayoutOverride;
@@ -43,6 +45,7 @@
     CLKComplicationTemplate *_complicationTemplate;
     double _alphaForDimmedState;
     long long _layoutOverride;
+    id<CLKMonochromeFilterProvider> _filterProvider;
     struct CGSize _maxSize;
 }
 
@@ -57,6 +60,7 @@
 @property (copy, nonatomic) CDUnknownBlockType displayConfigurationHandler; // @synthesize displayConfigurationHandler=_displayConfigurationHandler;
 @property (nonatomic) BOOL editing; // @synthesize editing=_editing;
 @property (readonly, nonatomic) long long family; // @synthesize family=_family;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 @property (readonly, nonatomic) BOOL hasLegacyDisplay; // @synthesize hasLegacyDisplay=_hasLegacyDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long layoutOverride; // @synthesize layoutOverride=_layoutOverride;
@@ -78,14 +82,16 @@
 - (void)_invokeTouchUpInsideHandler;
 - (void)_prepareToSetDisplay:(id)arg1 withComplicationAnimation:(inout unsigned long long *)arg2;
 - (void)_removeDisplay:(id)arg1;
-- (void)_replaceDisplayWithDisplayClass:(Class)arg1 template:(id)arg2 reason:(long long)arg3 animation:(unsigned long long)arg4;
+- (void)_replaceDisplayWithDisplayClass:(Class)arg1 template:(id)arg2 reason:(long long)arg3 animation:(unsigned long long)arg4 animationType:(unsigned long long)arg5 animationFraction:(float)arg6;
 - (void)_resetComplicationViews;
+- (void)_setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3 animationType:(unsigned long long)arg4 animationFraction:(float)arg5;
 - (void)_setDimmed:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_setDisplay:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
+- (void)_setDisplay:(id)arg1 withComplicationAnimation:(unsigned long long)arg2 animationType:(unsigned long long)arg3 animationFraction:(float)arg4;
 - (void)_setDisplayEditing:(BOOL)arg1;
 - (void)_setDisplayMaxSize:(struct CGSize)arg1;
-- (void)_startDefaultNewDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 forward:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (void)_timelineAnimationDidFinish;
 - (void)_tryToSetDisplayHighlighted:(BOOL)arg1;
+- (void)_updateVisibilityForSensitivity:(long long)arg1;
 - (void)complicationDisplayNeedsResize:(id)arg1;
 - (void)dealloc;
 - (id)init;
@@ -96,8 +102,9 @@
 - (void)layoutSubviews;
 - (void)needsResize;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)sensitiveUIStateChanged;
 - (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
-- (void)setComplicationView:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
+- (void)setComplicationView:(id)arg1 withComplicationAnimation:(unsigned long long)arg2 animationType:(unsigned long long)arg3 animationFraction:(float)arg4;
 - (void)setDimmed:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;

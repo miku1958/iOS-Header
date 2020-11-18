@@ -8,6 +8,8 @@
 
 @interface NSURLSessionConfiguration (GEODataRequest)
 - (void)geo_configureWithRequest:(id)arg1;
+- (BOOL)geo_hasApplicationAttribution:(id)arg1;
 - (BOOL)geo_isCompatibleWithRequest:(id)arg1;
+- (void)geo_setApplicationAttribution:(id)arg1;
 @end
 

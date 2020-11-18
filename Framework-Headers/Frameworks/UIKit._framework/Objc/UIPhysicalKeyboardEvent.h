@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface UIPhysicalKeyboardEvent : UIPressesEvent
 {
+    BOOL _canPrivatizeInput;
     BOOL __externalEvent;
     int _inputFlags;
     NSString *_modifiedInput;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
     NSString *_markedInput;
     long long _modifierFlags;
     NSString *_privateInput;
+    long long _privateModifierFlags;
     NSString *_hint;
 }
 
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *_modifiedInput; // @synthesize _modifiedInput;
 @property (nonatomic) long long _modifierFlags; // @synthesize _modifierFlags;
 @property (strong, nonatomic) NSString *_privateInput; // @synthesize _privateInput;
+@property (nonatomic) long long _privateModifierFlags; // @synthesize _privateModifierFlags;
 @property (strong, nonatomic) NSString *_shiftModifiedInput; // @synthesize _shiftModifiedInput;
 @property (strong, nonatomic) NSString *_unmodifiedInput; // @synthesize _unmodifiedInput;
 

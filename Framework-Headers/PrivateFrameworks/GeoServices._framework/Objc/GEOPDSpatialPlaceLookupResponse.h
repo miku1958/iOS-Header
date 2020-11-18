@@ -8,34 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDBounds, GEOPDMapsIdentifier, PBUnknownFields;
+@class GEOLatLng, GEOPDBounds, GEOPDMapsIdentifier, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSpatialPlaceLookupResponse : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _categorys;
     GEOPDBounds *_bounds;
     GEOLatLng *_center;
     GEOPDMapsIdentifier *_placeId;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_categorys:1;
+        unsigned int read_bounds:1;
+        unsigned int read_center:1;
+        unsigned int read_placeId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_categorys:1;
+        unsigned int wrote_bounds:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_placeId:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDBounds *bounds; // @synthesize bounds=_bounds;
+@property (strong, nonatomic) GEOPDBounds *bounds;
 @property (readonly, nonatomic) int *categorys;
 @property (readonly, nonatomic) unsigned long long categorysCount;
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (strong, nonatomic) GEOLatLng *center;
 @property (readonly, nonatomic) BOOL hasBounds;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (readonly, nonatomic) BOOL hasPlaceId;
-@property (strong, nonatomic) GEOPDMapsIdentifier *placeId; // @synthesize placeId=_placeId;
+@property (strong, nonatomic) GEOPDMapsIdentifier *placeId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCategorys:(id)arg1;
+- (void)_addNoFlagsCategory:(int)arg1;
+- (void)_readBounds;
+- (void)_readCategorys;
+- (void)_readCenter;
+- (void)_readPlaceId;
 - (void)addCategory:(int)arg1;
 - (int)categoryAtIndex:(unsigned long long)arg1;
 - (id)categorysAsString:(int)arg1;
 - (void)clearCategorys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -44,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setCategorys:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

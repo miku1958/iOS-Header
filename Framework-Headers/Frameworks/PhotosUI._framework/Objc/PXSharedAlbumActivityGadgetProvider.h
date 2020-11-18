@@ -9,8 +9,8 @@
 #import <PhotosUICore/PXFeedSectionInfosManagerDelegate-Protocol.h>
 #import <PhotosUICore/PXSharedAlbumInvitationGadgetDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, PXFeedSectionInfosManager;
-@protocol PXGadgetDelegate;
+@class NSMutableArray, NSString, PXFeedSectionInfosManager, PXGadgetNavigationHelper;
+@protocol PXGadgetDelegate, PXGadgetTransition;
 
 @interface PXSharedAlbumActivityGadgetProvider : PXGadgetProvider <PXFeedSectionInfosManagerDelegate, PXSharedAlbumInvitationGadgetDelegate>
 {
@@ -26,10 +26,12 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long estimatedGadgetCount; // @synthesize estimatedGadgetCount=_estimatedGadgetCount;
 @property (strong, nonatomic) PXFeedSectionInfosManager *feedSectionInfosManager; // @synthesize feedSectionInfosManager=_feedSectionInfosManager;
+@property (readonly, nonatomic) id<PXGadgetTransition> gadgetTransition;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *invitationAlbumCloudGUID; // @synthesize invitationAlbumCloudGUID=_invitationAlbumCloudGUID;
 @property (readonly, nonatomic) long long maxNumberOfSections; // @synthesize maxNumberOfSections=_maxNumberOfSections;
 @property (weak, nonatomic) id<PXGadgetDelegate> nextGadgetResponder;
+@property (readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

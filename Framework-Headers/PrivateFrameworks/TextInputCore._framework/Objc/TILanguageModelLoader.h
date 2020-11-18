@@ -46,7 +46,7 @@
 + (void)resetClientAndRecipientCache;
 + (void)setAsynchronousLoad:(BOOL)arg1;
 + (void)setOfflineTrainingEnabled:(BOOL)arg1;
-+ (id)sharedLanguageModelLoaderForInputMode:(id)arg1 dynamicResourcePath:(id)arg2 mobileAssets:(id)arg3 usesLinguisticContext:(BOOL)arg4;
++ (id)sharedLanguageModelLoaderForInputMode:(id)arg1 staticResourcePaths:(id)arg2 dynamicResourcePath:(id)arg3 mobileAssets:(id)arg4 usesLinguisticContext:(BOOL)arg5;
 + (void)startObservingContactStore;
 + (shared_ptr_e9f752ce)stubForLocale:(id)arg1 adaptationContext:(id)arg2 staticResourcePaths:(id)arg3 dynamicResourcePath:(id)arg4;
 - (id).cxx_construct;
@@ -54,7 +54,7 @@
 - (void)clearDynamicLearningCaches;
 - (void)findRecordsMatchingRecipient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)flushDynamicLearningCaches;
-- (id)initWithInputMode:(id)arg1 dynamicResourcePath:(id)arg2 mobileAssets:(id)arg3 usesLinguisticContext:(BOOL)arg4;
+- (id)initWithInputMode:(id)arg1 staticResourcePaths:(id)arg2 dynamicResourcePath:(id)arg3 mobileAssets:(id)arg4 usesLinguisticContext:(BOOL)arg5;
 - (shared_ptr_e9f752ce)languageModelForAdaptationContext:(id)arg1;
 - (shared_ptr_e9f752ce)lightweightLanguageModel;
 - (void)lookupRecordForRecipientIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

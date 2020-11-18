@@ -8,27 +8,46 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOLocalizedAttribution : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_displayName;
     NSString *_language;
     NSMutableArray *_logoURLs;
     NSMutableArray *_snippetLogoURLs;
+    struct {
+        unsigned int read_displayName:1;
+        unsigned int read_language:1;
+        unsigned int read_logoURLs:1;
+        unsigned int read_snippetLogoURLs:1;
+        unsigned int wrote_displayName:1;
+        unsigned int wrote_language:1;
+        unsigned int wrote_logoURLs:1;
+        unsigned int wrote_snippetLogoURLs:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (readonly, nonatomic) BOOL hasLanguage;
-@property (strong, nonatomic) NSString *language; // @synthesize language=_language;
-@property (strong, nonatomic) NSMutableArray *logoURLs; // @synthesize logoURLs=_logoURLs;
-@property (strong, nonatomic) NSMutableArray *snippetLogoURLs; // @synthesize snippetLogoURLs=_snippetLogoURLs;
+@property (strong, nonatomic) NSString *language;
+@property (strong, nonatomic) NSMutableArray *logoURLs;
+@property (strong, nonatomic) NSMutableArray *snippetLogoURLs;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)logoURLsType;
 + (Class)snippetLogoURLsType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsLogoURLs:(id)arg1;
+- (void)_addNoFlagsSnippetLogoURLs:(id)arg1;
+- (void)_readDisplayName;
+- (void)_readLanguage;
+- (void)_readLogoURLs;
+- (void)_readSnippetLogoURLs;
 - (void)addLogoURLs:(id)arg1;
 - (void)addSnippetLogoURLs:(id)arg1;
 - (id)bestURLForLogos:(id)arg1 scale:(double)arg2;
@@ -43,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)logoURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)logoURLsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)snippetLogoURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)snippetLogoURLsCount;

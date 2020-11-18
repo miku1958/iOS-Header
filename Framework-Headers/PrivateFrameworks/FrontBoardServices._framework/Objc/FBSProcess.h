@@ -9,35 +9,29 @@
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/FBSProcessInternal-Protocol.h>
 
-@class BSMachPortTaskNameRight, FBSProcessHandle, NSString;
+@class BSMachPortTaskNameRight, BSProcessHandle, NSString, RBSProcessIdentity;
 
 @interface FBSProcess : NSObject <FBSProcessInternal, BSDescriptionProviding>
 {
-    int _pid;
-    NSString *_name;
-    NSString *_bundleIdentifier;
-    NSString *_launchdLabel;
-    long long _type;
+    BSProcessHandle *_handle;
+    RBSProcessIdentity *_identity;
     BSMachPortTaskNameRight *_taskNameRight;
+    BOOL _running;
 }
 
-@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) FBSProcessHandle *handle;
+@property (readonly, strong, nonatomic) BSProcessHandle *handle;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *jobLabel; // @synthesize jobLabel=_launchdLabel;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
-@property (readonly, nonatomic, getter=isRunning) BOOL running; // @dynamic running;
+@property (readonly, strong, nonatomic) RBSProcessIdentity *identity;
+@property (readonly, nonatomic) int pid;
+@property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) BSMachPortTaskNameRight *taskNameRight; // @synthesize taskNameRight=_taskNameRight;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)currentProcess;
 - (void).cxx_destruct;
 - (id)_initForCurrentProcess;
-- (id)_initWithPID:(int)arg1 bundleID:(id)arg2;
 - (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;
 - (BOOL)_watchdog:(id)arg1 shouldTerminateWithDeclineReason:(out id *)arg2;
 - (id)_watchdog:(id)arg1 terminationRequestForViolatedProvision:(id)arg2 error:(id)arg3;

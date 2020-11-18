@@ -15,7 +15,6 @@
 @property (readonly, nonatomic) BOOL vertical; // @dynamic vertical;
 @property (readonly, nonatomic) BOOL windowed; // @dynamic windowed;
 
-+ (id)typeString;
 - (Class)handlerClassForComponent:(id)arg1;
 
 @end

@@ -45,6 +45,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)key;
+- (id)serverVoiceNameForGender:(long long)arg1;
 
 @end
 

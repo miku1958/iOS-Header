@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class MPStoreRedownloadProductResponse, NSError, NSObject, NSString, SSVLoadURLOperation;
+@class ICMediaRedownloadRequest, MPStoreRedownloadProductResponse, NSError, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MPStoreRedownloadProductOperation : NSOperation
@@ -15,7 +15,7 @@
     MPStoreRedownloadProductResponse *_redownloadProductResponse;
     NSError *_responseError;
     BOOL _shouldUseStreamingRedownload;
-    SSVLoadURLOperation *_URLOperation;
+    ICMediaRedownloadRequest *_redownloadRequest;
     BOOL _streamingRental;
     NSString *_buyParameters;
     unsigned long long _endpointType;

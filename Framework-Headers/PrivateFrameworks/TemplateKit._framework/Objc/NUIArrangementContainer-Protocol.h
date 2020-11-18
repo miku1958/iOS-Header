@@ -15,6 +15,5 @@
 @optional
 - (double)displayScale;
 - (long long)effectiveUserInterfaceLayoutDirection;
-- (BOOL)supportsAsynchronousMeasurement;
 @end
 

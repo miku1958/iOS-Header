@@ -29,11 +29,10 @@
 - (id)_colorComplicationViewForSlot:(id)arg1;
 - (id)_complicationContainerViewForSlot:(id)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
-- (id)_complicationSlotsHiddenByEditOption:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (double)_edgeGapForState:(long long)arg1;
 - (void)_enumerateColorComplicationSlotsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
@@ -55,6 +54,7 @@
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_unloadSnapshotContentViews;
+- (BOOL)_wantsConstantSpeedZoom;
 - (BOOL)_wantsStatusBarIconShadow;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;

@@ -27,11 +27,10 @@
 - (void).cxx_destruct;
 - (BOOL)_requestIsValid:(id)arg1;
 - (BOOL)canHandleRequest:(id)arg1;
-- (id)operationForRequest:(id)arg1;
 - (void)prepareResponseForRequest:(id)arg1 allowDelayedResponse:(BOOL)arg2;
 - (id)responseForRequest:(id)arg1 willProvideUpdates:(BOOL *)arg2;
 - (void)webViewMetadataFetchOperation:(id)arg1 didFinishUsingWebView:(id)arg2;
-- (id)webViewMetadataFetchOperation:(id)arg1 webViewOfSize:(struct CGSize)arg2 withConfiguration:(id)arg3;
+- (void)webViewMetadataFetchOperation:(id)arg1 getWebViewOfSize:(struct CGSize)arg2 withConfiguration:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

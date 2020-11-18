@@ -14,6 +14,7 @@
 {
 }
 
+@property (readonly, nonatomic) BOOL animated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

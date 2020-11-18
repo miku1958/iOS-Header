@@ -6,12 +6,11 @@
 
 #import <AVFoundation/NSObject-Protocol.h>
 
-@class AVWeakReference, NSDictionary;
+@class AVWeakReference;
 
 @protocol AVAssetResourceLoaderRequest <NSObject>
 + (SEL)_selectorForInformingDelegateOfCancellationByFig;
 - (void)_performCancellationByClient;
-- (NSDictionary *)_requestDictionary;
 - (unsigned long long)_requestID;
 - (struct __CFDictionary *)_requestInfo;
 - (BOOL)_shouldInformDelegateOfFigCancellation;

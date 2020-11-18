@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableOrderedSet;
+@class CNAutocompleteFetchRequest, NSMutableOrderedSet;
 @protocol CNAutocompleteFetchDelegate, CNFuture, CNPromise;
 
 @interface CNAutocompleteQueryResponsePreparer : NSObject
 {
     NSMutableOrderedSet *_previouslyReturnedResults;
     id<CNAutocompleteFetchDelegate> _delegate;
+    CNAutocompleteFetchRequest *_fetchRequest;
     id<CNFuture> _priorityResultsFuture;
     id<CNPromise> _matchingPriorityResultsPromise;
 }
 
 @property (readonly, weak, nonatomic) id<CNAutocompleteFetchDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) CNAutocompleteFetchRequest *fetchRequest; // @synthesize fetchRequest=_fetchRequest;
 @property (strong, nonatomic) id<CNPromise> matchingPriorityResultsPromise; // @synthesize matchingPriorityResultsPromise=_matchingPriorityResultsPromise;
 @property (strong, nonatomic) id<CNFuture> priorityResultsFuture; // @synthesize priorityResultsFuture=_priorityResultsFuture;
 
@@ -28,7 +30,11 @@
 - (id)findUniqueResults:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
+- (id)initWithDelegate:(id)arg1 fetchRequest:(id)arg2;
+- (id)partitionCandidatesForRanking:(id)arg1;
 - (id)prepareResults:(id)arg1;
+- (BOOL)resultIdentifierIsValidMessagesChatGuid:(id)arg1;
+- (BOOL)resultMatchesPrefix:(id)arg1 inNameComponentsOfResult:(id)arg2;
 - (id)resultsNotPreviouslyReturned:(id)arg1;
 - (id)sortResults;
 - (id)suppressResultsWithAddresses:(id)arg1;

@@ -16,10 +16,12 @@
     NSArray *_packedObjects;
 }
 
+@property (readonly, nonatomic) unsigned long long countOfEmptyNodes;
 @property (strong, nonatomic) NSArray *objectsToPack;
 @property (strong) NSArray *packedObjects; // @synthesize packedObjects=_packedObjects;
 @property (strong) _TDPackerNode *root; // @synthesize root=_root;
 
+- (void)_countOfEmptyNodes:(id)arg1 count:(unsigned long long *)arg2;
 - (id)_findNode:(id)arg1 ofSize:(struct CGSize)arg2;
 - (id)_growDown:(struct CGSize)arg1;
 - (id)_growNodeToSize:(struct CGSize)arg1;

@@ -14,23 +14,25 @@ __attribute__((visibility("hidden")))
 @interface GEOPDSearchSubstringDescriptor : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSMutableArray *_spanDatas;
     int _beginIndex;
     int _endIndex;
-    NSMutableArray *_spanDatas;
     int _stringType;
 }
 
-@property (nonatomic) int beginIndex; // @synthesize beginIndex=_beginIndex;
-@property (nonatomic) int endIndex; // @synthesize endIndex=_endIndex;
-@property (strong, nonatomic) NSMutableArray *spanDatas; // @synthesize spanDatas=_spanDatas;
-@property (nonatomic) int stringType; // @synthesize stringType=_stringType;
+@property (nonatomic) int beginIndex;
+@property (nonatomic) int endIndex;
+@property (strong, nonatomic) NSMutableArray *spanDatas;
+@property (nonatomic) int stringType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)spanDataType;
 - (void).cxx_destruct;
 - (int)StringAsStringType:(id)arg1;
 - (void)addSpanData:(id)arg1;
 - (void)clearSpanDatas;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)spanDataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spanDatasCount;

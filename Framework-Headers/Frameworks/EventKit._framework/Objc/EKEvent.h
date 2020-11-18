@@ -8,7 +8,7 @@
 
 #import <EventKit/EKJunkInvitationProtocol_Private-Protocol.h>
 
-@class EKCalendarDate, EKEventStore, EKParticipant, EKReadWriteLock, EKStructuredLocation, EKSuggestedEventInfo, NSArray, NSDate, NSNumber, NSString, NSURL;
+@class EKCalendarDate, EKEventStore, EKParticipant, EKReadWriteLock, EKStructuredLocation, EKSuggestedEventInfo, NSArray, NSDate, NSNumber, NSSet, NSString, NSURL;
 
 @interface EKEvent : EKCalendarItem <EKJunkInvitationProtocol_Private>
 {
@@ -29,6 +29,7 @@
 }
 
 @property (readonly, nonatomic) NSString *UUID; // @dynamic UUID;
+@property (copy, nonatomic) NSSet *actions;
 @property (nonatomic, getter=isAllDay) BOOL allDay;
 @property (readonly, nonatomic) BOOL allowsAvailabilityModifications;
 @property (readonly, nonatomic) BOOL allowsParticipationStatusModifications;
@@ -69,6 +70,7 @@
 @property (readonly, copy, nonatomic) NSDate *initialEndDate;
 @property (readonly, copy, nonatomic) NSDate *initialStartDate;
 @property (nonatomic) unsigned long long invitationStatus;
+@property (nonatomic) BOOL isAlerted;
 @property (readonly, nonatomic) BOOL isAllDayDirty;
 @property (readonly, nonatomic) BOOL isDetached;
 @property (readonly, nonatomic) BOOL isEditable;
@@ -102,6 +104,7 @@
 @property (readonly, nonatomic) EKStructuredLocation *preferredLocationWithoutPrediction;
 @property (nonatomic) long long privacyLevel;
 @property (strong, nonatomic) NSDate *proposedStartDate;
+@property (copy, nonatomic) NSString *recurrenceSet;
 @property (nonatomic) BOOL requiresDetachDueToSnoozedAlarm; // @synthesize requiresDetachDueToSnoozedAlarm=_requiresDetachDueToSnoozedAlarm;
 @property (readonly, nonatomic) BOOL responseMustApplyToAll;
 @property (readonly, nonatomic) NSString *sendersEmail;
@@ -127,6 +130,7 @@
 + (long long)_eventAvailabilityForParticipantStatus:(long long)arg1 supportedEventAvailabilities:(unsigned long long)arg2 isAllDayEvent:(BOOL)arg3;
 + (id)_locationStringForLocations:(id)arg1;
 + (id)eventWithEventStore:(id)arg1;
++ (id)externalUriScheme;
 + (Class)frozenClass;
 + (id)generateUniqueIDWithEvent:(id)arg1 originalEvent:(id)arg2 calendar:(id)arg3;
 + (id)knownKeysToSkipForFutureChanges;
@@ -156,13 +160,16 @@
 - (void)_detachWithStartDate:(id)arg1 newStartDate:(id)arg2 future:(BOOL)arg3;
 - (id)_detectConferenceURL;
 - (id)_effectiveTimeZone;
+- (CDStruct_79f9e052)_endDateGrForTimeZone:(id)arg1;
 - (BOOL)_eventIsTheOnlyRemainingOccurrence;
 - (BOOL)_fetchedEventIsConflict:(id)arg1 forStartDate:(id)arg2 endDate:(id)arg3;
 - (void)_filterExceptionDates;
+- (id)_firstNonConferenceRoomLocationTitle;
 - (id)_generateNewUniqueID;
-- (CDStruct_79f9e052)_gregorianDateCorrectedForTimeZoneFromCalendarDate:(id)arg1 orNSDate:(id)arg2;
+- (CDStruct_79f9e052)_gregorianDateCorrectedForTimeZone:(id)arg1 fromCalendarDate:(id)arg2 orNSDate:(id)arg3;
 - (BOOL)_hasChangesForConferenceURLDetection;
 - (BOOL)_hasExternalIDOrDeliverySource;
+- (unsigned int)_invitationChangedPropertyFlags;
 - (BOOL)_invitationChangedPropertyForFlag:(unsigned int)arg1;
 - (BOOL)_isAllDay;
 - (BOOL)_isInitialOccurrenceDate:(id)arg1;
@@ -179,9 +186,14 @@
 - (BOOL)_reset;
 - (void)_sendModifiedNote;
 - (void)_setInvitationChangedProperty:(BOOL)arg1 forFlag:(unsigned int)arg2;
+- (void)_setInvitationStatusAlertedIfNecessary;
+- (void)_setInvitationStatusUnalertedIfNecessary;
 - (void)_setStartDate:(id)arg1 andClearProposedTimes:(BOOL)arg2;
+- (BOOL)_shouldAlertInviteeDeclines;
 - (BOOL)_shouldCancelInsteadOfDeleteWithSpan:(long long)arg1;
 - (BOOL)_shouldDeclineInsteadOfDelete;
+- (BOOL)_shouldPreserveFutureWhenSlicingWithStartDate:(id)arg1 newStartDate:(id)arg2;
+- (CDStruct_79f9e052)_startDateGrForTimeZone:(id)arg1;
 - (id)_travelTimeInternalDescription;
 - (void)_updateConferenceURL;
 - (id)_updateMasterDate:(id)arg1 forChangeToOccurrenceDate:(id)arg2 fromOriginalOccurrenceDate:(id)arg3;
@@ -194,12 +206,13 @@
 - (BOOL)_validateDatesAndRecurrencesGivenSpan:(long long)arg1 error:(id *)arg2;
 - (BOOL)_validateDurationConstrainedToRecurrenceInterval;
 - (void)_willCommit;
-- (id)actions;
+- (void)addEventAction:(id)arg1;
 - (BOOL)allowsAlarmModifications;
 - (BOOL)allowsAttendeesModifications;
 - (BOOL)allowsCalendarModifications;
 - (BOOL)allowsRecurrenceModifications;
 - (BOOL)allowsSpansOtherThanThisEvent;
+- (id)birthdayContactName;
 - (BOOL)canForward;
 - (BOOL)canMoveToCalendar:(id)arg1 fromCalendar:(id)arg2 error:(id *)arg3;
 - (BOOL)changingAllDayPropertyIsAllowed;
@@ -215,6 +228,7 @@
 - (void)confirmPredictedLocation:(id)arg1;
 - (BOOL)conformsToRecurrenceRules:(id)arg1;
 - (BOOL)couldBeJunk;
+- (unsigned long long)countOfAttendeeProposedTimes;
 - (void)dismissAcceptedProposeNewTimeNotification;
 - (CDStruct_79f9e052)endDatePinnedForAllDay;
 - (id)endDateRaw;
@@ -231,9 +245,11 @@
 - (BOOL)isInvitation;
 - (BOOL)isProposedTimeEvent;
 - (BOOL)isTentative;
+- (id)lunarCalendarString;
 - (void)markAsCommitted;
 - (void)markAsSaved;
 - (void)markEventAsAttendeeForward;
+- (id)masterEvent;
 - (BOOL)needsOccurrenceCacheUpdate;
 - (void)overrideStartDate:(id)arg1;
 - (id)potentialConflictOccurrenceDatesInTimePeriod:(double *)arg1;
@@ -243,6 +259,7 @@
 - (id)recurrenceRule;
 - (BOOL)refresh;
 - (void)rejectPredictedLocation;
+- (void)removeEventAction:(id)arg1;
 - (BOOL)removeWithSpan:(long long)arg1 error:(id *)arg2;
 - (BOOL)requiresDetach;
 - (void)reset;
@@ -251,9 +268,11 @@
 - (void)rollback;
 - (id)scanForConflicts;
 - (BOOL)serverSupportedProposeNewTime;
+- (void)setBirthdayContact:(id)arg1;
 - (void)setEndDateRaw:(id)arg1;
 - (void)setIsJunk:(BOOL)arg1 shouldSave:(BOOL)arg2;
 - (void)setLocationPredictionAllowed:(BOOL)arg1;
+- (void)setLunarCalendarString:(id)arg1;
 - (void)setNeedsOccurrenceCacheUpdate:(BOOL)arg1;
 - (void)setNotes:(id)arg1;
 - (void)setNotesCommon:(id)arg1;
@@ -270,11 +289,14 @@
 - (id)startDateForRecurrence;
 - (CDStruct_79f9e052)startDatePinnedForAllDay;
 - (id)startDateRaw;
+- (BOOL)supportsAddingAttachments;
 - (id)title;
 - (id)uniqueId;
 - (void)updateConferenceURLIfNeeded;
+- (void)updateEndDateForDate:(id)arg1;
 - (BOOL)updateEventToEvent:(id)arg1;
 - (BOOL)updateEventToEvent:(id)arg1 commit:(BOOL)arg2;
+- (void)updateStartDateForDate:(id)arg1;
 - (BOOL)updateWithGeocodedMapItemAndSaveWithCommit:(id)arg1 eventStore:(id)arg2 error:(id *)arg3;
 - (BOOL)validate:(id *)arg1;
 - (BOOL)validateRecurrenceRule:(id)arg1 error:(id *)arg2;

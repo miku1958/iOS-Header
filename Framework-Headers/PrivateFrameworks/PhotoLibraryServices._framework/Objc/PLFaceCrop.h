@@ -44,7 +44,6 @@
 + (id)allFaceCropsInPhotoLibrary:(id)arg1;
 + (long long)cloudDeletionTypeForTombstone:(id)arg1;
 + (id)cloudUUIDKeyForDeletion;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)faceCropsToUploadInPhotoLibrary:(id)arg1 limit:(unsigned long long)arg2;
 + (id)faceCropsWithUUIDs:(id)arg1 inManagedObjectContext:(id)arg2;

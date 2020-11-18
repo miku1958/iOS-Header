@@ -16,6 +16,7 @@
 {
     BOOL _hasCalloutName;
     BOOL _hasCalloutImage;
+    BOOL _allSnapshotsLoaded;
     NTKCGalleryCollection *_collection;
     id<NTKCGalleryCellDelegate> _delegate;
     long long _selectedIndex;
@@ -34,6 +35,7 @@
 }
 
 @property (strong, nonatomic) _NTKCAddNewFace *addNewFace; // @synthesize addNewFace=_addNewFace;
+@property (nonatomic) BOOL allSnapshotsLoaded; // @synthesize allSnapshotsLoaded=_allSnapshotsLoaded;
 @property (strong, nonatomic) NTKCGalleryCollection *collection; // @synthesize collection=_collection;
 @property (strong, nonatomic) UICollectionView *collectionView; // @synthesize collectionView=_collectionView;
 @property (strong, nonatomic) UIStackView *collectionViewFooterStack; // @synthesize collectionViewFooterStack=_collectionViewFooterStack;
@@ -63,11 +65,13 @@
 - (void)_fontSizeDidChange;
 - (BOOL)_shouldShowAddNewFace;
 - (void)calculateHeightForCollection;
+- (void)clearSelectedFaces;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
+- (id)containerViewForFace:(id)arg1;
 - (void)dealloc;
 - (void)didMoveToSuperview;
 - (void)ensureCorrectTitleViewOrientation;
@@ -76,7 +80,7 @@
 - (id)init;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
-- (id)previewViewAndRect:(struct CGRect *)arg1 forFace:(id)arg2;
+- (void)selectFace:(id)arg1;
 - (BOOL)shouldShowFooterTextInCollectionView;
 - (void)showFooterTextIfNeeded;
 - (void)updateFaceAtIndex:(unsigned long long)arg1;

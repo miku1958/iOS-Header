@@ -12,23 +12,32 @@
 
 @interface USApplicationUsageReport : NSObject <NSSecureCoding>
 {
-    NSString *_bundleIdentifier;
+    NSString *_canonicalBundleIdentifier;
     double _totalUsageTime;
-    double _applicationUsageTime;
+    NSDictionary *_applicationUsageByBundleIdentifier;
     NSDictionary *_webUsageByDomain;
+    NSDictionary *_userNotificationsByBundleIdentifier;
+    NSDictionary *_pickupsByBundleIdentifier;
 }
 
-@property (readonly) double applicationUsageTime; // @synthesize applicationUsageTime=_applicationUsageTime;
-@property (readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy) NSDictionary *applicationUsageByBundleIdentifier; // @synthesize applicationUsageByBundleIdentifier=_applicationUsageByBundleIdentifier;
+@property (readonly) double applicationUsageTime;
+@property (readonly, copy) NSString *bundleIdentifier;
+@property (readonly, copy) NSString *canonicalBundleIdentifier; // @synthesize canonicalBundleIdentifier=_canonicalBundleIdentifier;
+@property (copy) NSDictionary *pickupsByBundleIdentifier; // @synthesize pickupsByBundleIdentifier=_pickupsByBundleIdentifier;
+@property (readonly) unsigned long long totalPickups;
 @property (readonly) double totalUsageTime; // @synthesize totalUsageTime=_totalUsageTime;
+@property (readonly) unsigned long long totalUserNotifications;
+@property (copy) NSDictionary *userNotificationsByBundleIdentifier; // @synthesize userNotificationsByBundleIdentifier=_userNotificationsByBundleIdentifier;
 @property (readonly, copy) NSDictionary *webUsageByDomain; // @synthesize webUsageByDomain=_webUsageByDomain;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_usApplicationUsageReportCommonInitWithBundleIdentifier:(id)arg1 totalUsageTime:(double)arg2 applicationUsageTime:(double)arg3 webUsageByDomain:(id)arg4;
+- (void)_usApplicationUsageReportCommonInitWithCanonicalBundleIdentifier:(id)arg1 totalUsageTime:(double)arg2 applicationUsageByBundleIdentifier:(id)arg3 webUsageByDomain:(id)arg4 userNotificationsByBundleIdentifier:(id)arg5 pickupsByBundleIdentifier:(id)arg6;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 totalUsageTime:(double)arg2 applicationUsageTime:(double)arg3 webUsageByDomain:(id)arg4;
+- (id)initWithCanonicalBundleIdentifier:(id)arg1 totalUsageTime:(double)arg2 applicationUsageByBundleIdentifier:(id)arg3 webUsageByDomain:(id)arg4 userNotificationsByBundleIdentifier:(id)arg5 pickupsByBundleIdentifier:(id)arg6;
 - (id)initWithCoder:(id)arg1;
 
 @end

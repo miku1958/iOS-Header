@@ -24,15 +24,19 @@
     double _briskMinutesGoal;
     double _energyBurned;
     double _energyBurnedGoal;
+    double _mmv;
+    double _mmg;
     double _stepCount;
     double _pushCount;
     long long _wheelchairUse;
     double _walkingAndRunningDistance;
+    long long _amm;
 }
 
 @property (nonatomic) double activeHours; // @synthesize activeHours=_activeHours;
 @property (nonatomic) double activeHoursGoal; // @synthesize activeHoursGoal=_activeHoursGoal;
 @property (readonly, nonatomic) double activeHoursGoalPercentage;
+@property (nonatomic) long long amm; // @synthesize amm=_amm;
 @property (nonatomic) double briskMinutes; // @synthesize briskMinutes=_briskMinutes;
 @property (nonatomic) double briskMinutesGoal; // @synthesize briskMinutesGoal=_briskMinutesGoal;
 @property (readonly, nonatomic) double briskMinutesGoalPercentage;
@@ -41,6 +45,9 @@
 @property (readonly, nonatomic) double energyBurnedGoalPercentage;
 @property (strong, nonatomic) NSUUID *friendUUID; // @synthesize friendUUID=_friendUUID;
 @property (nonatomic) BOOL hasCarriedForwardGoals; // @synthesize hasCarriedForwardGoals=_hasCarriedForwardGoals;
+@property (nonatomic) double mmg; // @synthesize mmg=_mmg;
+@property (readonly, nonatomic) double mmgp;
+@property (nonatomic) double mmv; // @synthesize mmv=_mmv;
 @property (nonatomic) double pushCount; // @synthesize pushCount=_pushCount;
 @property (nonatomic) long long snapshotIndex; // @synthesize snapshotIndex=_snapshotIndex;
 @property (strong, nonatomic) NSDate *snapshotUploadedDate; // @synthesize snapshotUploadedDate=_snapshotUploadedDate;
@@ -57,6 +64,7 @@
 + (id)snapshotWithActivitySummary:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_mostSignificantSnapshot:(id)arg1;
 - (id)activitySummary;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

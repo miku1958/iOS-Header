@@ -27,8 +27,11 @@ __attribute__((visibility("hidden")))
 + (id)shortTimeDisplayIdentifier;
 + (id)timeDisplayIdentifier;
 - (void).cxx_destruct;
+- (void)_create_dateView;
+- (void)_create_pillTimeView;
+- (void)_create_shortTimeView;
+- (void)_create_timeView;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
-- (id)createDisplayItemForIdentifier:(id)arg1;
 - (id)dependentEntryKeys;
 - (id)viewForIdentifier:(id)arg1;
 

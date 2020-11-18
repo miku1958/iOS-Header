@@ -28,21 +28,35 @@
     long long _baseVersion;
     NSNumber *_originalResourceChoice;
     NSURL *_videoURL;
+    NSURL *_overCapturePhotoURL;
+    NSURL *_overCaptureVideoURL;
+    NSURL *_frontSwappingImageRenderURL;
+    NSURL *_backSwappingImageRenderURL;
+    NSURL *_frontSwappingVideoRenderURL;
+    NSURL *_backSwappingVideoRenderURL;
+    PHAdjustmentData *_originalAdjustmentData;
 }
 
 @property (strong, nonatomic) PHAdjustmentData *adjustmentData; // @synthesize adjustmentData=_adjustmentData;
 @property (readonly) AVAsset *audiovisualAsset; // @synthesize audiovisualAsset=_avAsset;
 @property (readonly) AVAsset *avAsset;
+@property (copy, nonatomic) NSURL *backSwappingImageRenderURL; // @synthesize backSwappingImageRenderURL=_backSwappingImageRenderURL;
+@property (copy, nonatomic) NSURL *backSwappingVideoRenderURL; // @synthesize backSwappingVideoRenderURL=_backSwappingVideoRenderURL;
 @property (nonatomic) long long baseVersion; // @synthesize baseVersion=_baseVersion;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic) UIImage *displaySizeImage; // @synthesize displaySizeImage=_displaySizeImage;
+@property (copy, nonatomic) NSURL *frontSwappingImageRenderURL; // @synthesize frontSwappingImageRenderURL=_frontSwappingImageRenderURL;
+@property (copy, nonatomic) NSURL *frontSwappingVideoRenderURL; // @synthesize frontSwappingVideoRenderURL=_frontSwappingVideoRenderURL;
 @property (nonatomic) int fullSizeImageOrientation; // @synthesize fullSizeImageOrientation=_fullSizeImageOrientation;
 @property (copy, nonatomic) NSURL *fullSizeImageURL; // @synthesize fullSizeImageURL=_fullSizeImageURL;
 @property (strong, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 @property (copy, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) unsigned long long mediaSubtypes; // @synthesize mediaSubtypes=_mediaSubtypes;
 @property (nonatomic) long long mediaType; // @synthesize mediaType=_mediaType;
+@property (strong, nonatomic) PHAdjustmentData *originalAdjustmentData; // @synthesize originalAdjustmentData=_originalAdjustmentData;
 @property (strong, nonatomic) NSNumber *originalResourceChoice; // @synthesize originalResourceChoice=_originalResourceChoice;
+@property (copy, nonatomic) NSURL *overCapturePhotoURL; // @synthesize overCapturePhotoURL=_overCapturePhotoURL;
+@property (copy, nonatomic) NSURL *overCaptureVideoURL; // @synthesize overCaptureVideoURL=_overCaptureVideoURL;
 @property (nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 @property (copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property (copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;

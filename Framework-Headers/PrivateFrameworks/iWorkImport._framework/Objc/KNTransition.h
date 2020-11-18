@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAutomaticTrigger;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSSet *inspectableAttributes;
+@property (readonly, nonatomic) BOOL isAutomaticTransition;
 @property (readonly, nonatomic) BOOL isMagicMove;
 @property (readonly, nonatomic) NSArray *localizedEventTriggerNames;
 @property (readonly, nonatomic) long long randomNumberSeed;

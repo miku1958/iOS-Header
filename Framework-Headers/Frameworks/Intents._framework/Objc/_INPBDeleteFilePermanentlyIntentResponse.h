@@ -20,8 +20,10 @@
     } _has;
     BOOL _confirm;
     BOOL _success;
+    BOOL __encodeLegacyGloryData;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL confirm; // @synthesize confirm=_confirm;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,8 +33,11 @@
 @property (nonatomic) BOOL success; // @synthesize success=_success;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

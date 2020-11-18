@@ -8,15 +8,15 @@
 
 #import <HealthUI/HKHealthPrivacyHostRemoteViewController-Protocol.h>
 
-@protocol HKHealthPrivacyHostAuthorizationViewControllerDelegate, HKHealthPrivacyServiceRemoteAuthorizationViewController;
+@protocol HKHealthPrivacyHostAuthorizationControllerDelegate, HKHealthPrivacyServiceRemoteAuthorizationViewController;
 
 @interface HKHealthPrivacyHostAuthorizationViewController : _UIRemoteViewController <HKHealthPrivacyHostRemoteViewController>
 {
-    id<HKHealthPrivacyHostAuthorizationViewControllerDelegate> _delegate;
+    id<HKHealthPrivacyHostAuthorizationControllerDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) id<HKHealthPrivacyServiceRemoteAuthorizationViewController> _healthPrivacyServiceViewControllerProxy;
-@property (weak, nonatomic) id<HKHealthPrivacyHostAuthorizationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<HKHealthPrivacyHostAuthorizationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
 + (id)exportedInterface;
 + (id)requestRemoteViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;

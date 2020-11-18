@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)diffMultiValue:(id)arg1 toMultiValue:(id)arg2;
 + (id)emptyDiff;
 - (void).cxx_destruct;
-- (BOOL)applyToABPerson:(void *)arg1 propertyDescription:(id)arg2 error:(id *)arg3;
+- (BOOL)applyToABPerson:(void *)arg1 propertyDescription:(id)arg2 logger:(id)arg3 error:(id *)arg4;
 - (id)description;
 - (id)initWithUpdates:(id)arg1;
 - (BOOL)isEmpty;

@@ -6,11 +6,34 @@
 
 #import <AssetsLibraryServices/PLAssetsdBaseClient.h>
 
+@class NSMutableDictionary;
+
 @interface PLAssetsdLibraryClient : PLAssetsdBaseClient
 {
+    NSMutableDictionary *_securityScopedURLs;
 }
 
+- (void).cxx_destruct;
+- (id)_assetURIStringsForPhotos:(id)arg1;
+- (BOOL)_consumeSandboxExtensions:(id)arg1;
+- (void)_stopUsingSecurityScopedURLs;
+- (void)automaticallyDeleteEmptyAlbumWithObjectID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)createPhotoLibraryDatabaseWithError:(id *)arg1;
+- (void)dealloc;
+- (long long)getCurrentModelVersion;
+- (id)getPhotoLibraryStoreXPCListenerEndpoint;
+- (void)importFileSystemAssetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)launchAssetsd;
+- (BOOL)openPhotoLibraryDatabaseWithPostOpenProgress:(id *)arg1 error:(id *)arg2;
+- (void)pendingEventsForRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)publishRemoteChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)recoverFromCrashIfNeeded;
+- (BOOL)repairSingletonObjectsWithError:(id *)arg1;
+- (BOOL)shutdownPhotoLibraryDatabaseWithError:(id *)arg1;
+- (BOOL)synchronouslyImportFileSystemAssetsWithError:(id *)arg1;
+- (BOOL)synchronouslyUpdateThumbnailsForPhotos:(id)arg1 assignNewIndex:(BOOL)arg2 forceRefresh:(BOOL)arg3 error:(id *)arg4;
+- (void)updateThumbnailsForPhotos:(id)arg1 assignNewIndex:(BOOL)arg2 forceRefresh:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)upgradePhotoLibraryDatabaseWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

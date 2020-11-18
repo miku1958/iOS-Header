@@ -6,25 +6,15 @@
 
 #import <Silex/SXJSONObject.h>
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
-
-@class NSString;
-
-@interface SXFill : SXJSONObject <SXClassFactoryProtocol>
+@interface SXFill : SXJSONObject
 {
 }
 
 @property (readonly, nonatomic) unsigned long long attachment; // @dynamic attachment;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long fillMode; // @dynamic fillMode;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long horizontalAlignment; // @dynamic horizontalAlignment;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long verticalAlignment; // @dynamic verticalAlignment;
 
-+ (void)initializeObject;
-+ (id)typeString;
 - (unsigned long long)attachmentWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)fillModeWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)horizontalAlignmentWithValue:(id)arg1 withType:(int)arg2;

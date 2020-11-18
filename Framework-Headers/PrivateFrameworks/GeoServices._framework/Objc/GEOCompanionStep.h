@@ -8,36 +8,63 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCompanionDriveStep, GEOCompanionFerryStep, GEOCompanionWalkStep, NSMutableArray, NSString;
+@class GEOCompanionDriveStep, GEOCompanionFerryStep, GEOCompanionWalkStep, NSData, NSMutableArray, NSString, PBDataReader;
 
 @interface GEOCompanionStep : PBCodable <NSCopying>
 {
-    unsigned int _distance;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOCompanionDriveStep *_driveStep;
-    unsigned int _endCoordinateIndex;
     GEOCompanionFerryStep *_ferryStep;
+    NSMutableArray *_guidanceEvents;
     NSMutableArray *_instructionWithAlternatives;
     NSString *_listInstruction;
-    unsigned int _maneuverStartCoordinateIndex;
     NSString *_roadName;
+    NSData *_updateID;
+    GEOCompanionWalkStep *_walkStep;
+    unsigned int _distance;
+    unsigned int _endCoordinateIndex;
+    unsigned int _maneuverStartCoordinateIndex;
     unsigned int _startCoordinateIndex;
     unsigned int _stepID;
     unsigned int _time;
-    GEOCompanionWalkStep *_walkStep;
     struct {
-        unsigned int distance:1;
-        unsigned int endCoordinateIndex:1;
-        unsigned int maneuverStartCoordinateIndex:1;
-        unsigned int startCoordinateIndex:1;
-        unsigned int stepID:1;
-        unsigned int time:1;
-    } _has;
+        unsigned int has_distance:1;
+        unsigned int has_endCoordinateIndex:1;
+        unsigned int has_maneuverStartCoordinateIndex:1;
+        unsigned int has_startCoordinateIndex:1;
+        unsigned int has_stepID:1;
+        unsigned int has_time:1;
+        unsigned int read_driveStep:1;
+        unsigned int read_ferryStep:1;
+        unsigned int read_guidanceEvents:1;
+        unsigned int read_instructionWithAlternatives:1;
+        unsigned int read_listInstruction:1;
+        unsigned int read_roadName:1;
+        unsigned int read_updateID:1;
+        unsigned int read_walkStep:1;
+        unsigned int wrote_driveStep:1;
+        unsigned int wrote_ferryStep:1;
+        unsigned int wrote_guidanceEvents:1;
+        unsigned int wrote_instructionWithAlternatives:1;
+        unsigned int wrote_listInstruction:1;
+        unsigned int wrote_roadName:1;
+        unsigned int wrote_updateID:1;
+        unsigned int wrote_walkStep:1;
+        unsigned int wrote_distance:1;
+        unsigned int wrote_endCoordinateIndex:1;
+        unsigned int wrote_maneuverStartCoordinateIndex:1;
+        unsigned int wrote_startCoordinateIndex:1;
+        unsigned int wrote_stepID:1;
+        unsigned int wrote_time:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int distance; // @synthesize distance=_distance;
-@property (strong, nonatomic) GEOCompanionDriveStep *driveStep; // @synthesize driveStep=_driveStep;
-@property (nonatomic) unsigned int endCoordinateIndex; // @synthesize endCoordinateIndex=_endCoordinateIndex;
-@property (strong, nonatomic) GEOCompanionFerryStep *ferryStep; // @synthesize ferryStep=_ferryStep;
+@property (nonatomic) unsigned int distance;
+@property (strong, nonatomic) GEOCompanionDriveStep *driveStep;
+@property (nonatomic) unsigned int endCoordinateIndex;
+@property (strong, nonatomic) GEOCompanionFerryStep *ferryStep;
+@property (strong, nonatomic) NSMutableArray *guidanceEvents;
 @property (nonatomic) BOOL hasDistance;
 @property (readonly, nonatomic) BOOL hasDriveStep;
 @property (nonatomic) BOOL hasEndCoordinateIndex;
@@ -48,25 +75,43 @@
 @property (nonatomic) BOOL hasStartCoordinateIndex;
 @property (nonatomic) BOOL hasStepID;
 @property (nonatomic) BOOL hasTime;
+@property (readonly, nonatomic) BOOL hasUpdateID;
 @property (readonly, nonatomic) BOOL hasWalkStep;
-@property (strong, nonatomic) NSMutableArray *instructionWithAlternatives; // @synthesize instructionWithAlternatives=_instructionWithAlternatives;
-@property (strong, nonatomic) NSString *listInstruction; // @synthesize listInstruction=_listInstruction;
-@property (nonatomic) unsigned int maneuverStartCoordinateIndex; // @synthesize maneuverStartCoordinateIndex=_maneuverStartCoordinateIndex;
-@property (strong, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
-@property (nonatomic) unsigned int startCoordinateIndex; // @synthesize startCoordinateIndex=_startCoordinateIndex;
-@property (nonatomic) unsigned int stepID; // @synthesize stepID=_stepID;
-@property (nonatomic) unsigned int time; // @synthesize time=_time;
-@property (strong, nonatomic) GEOCompanionWalkStep *walkStep; // @synthesize walkStep=_walkStep;
+@property (strong, nonatomic) NSMutableArray *instructionWithAlternatives;
+@property (strong, nonatomic) NSString *listInstruction;
+@property (nonatomic) unsigned int maneuverStartCoordinateIndex;
+@property (strong, nonatomic) NSString *roadName;
+@property (nonatomic) unsigned int startCoordinateIndex;
+@property (nonatomic) unsigned int stepID;
+@property (nonatomic) unsigned int time;
+@property (strong, nonatomic) NSData *updateID;
+@property (strong, nonatomic) GEOCompanionWalkStep *walkStep;
 
++ (Class)guidanceEventType;
 + (Class)instructionWithAlternativesType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsGuidanceEvent:(id)arg1;
+- (void)_addNoFlagsInstructionWithAlternatives:(id)arg1;
+- (void)_readDriveStep;
+- (void)_readFerryStep;
+- (void)_readGuidanceEvents;
+- (void)_readInstructionWithAlternatives;
+- (void)_readListInstruction;
+- (void)_readRoadName;
+- (void)_readUpdateID;
+- (void)_readWalkStep;
+- (void)addGuidanceEvent:(id)arg1;
 - (void)addInstructionWithAlternatives:(id)arg1;
+- (void)clearGuidanceEvents;
 - (void)clearInstructionWithAlternatives;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)geoStep;
+- (id)guidanceEventAtIndex:(unsigned long long)arg1;
+- (unsigned long long)guidanceEventsCount;
 - (unsigned long long)hash;
 - (id)initWithStep:(id)arg1 route:(id)arg2 stringFormatter:(id)arg3;
 - (id)instructionWithAlternativesAtIndex:(unsigned long long)arg1;
@@ -74,6 +119,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)maneuverStep;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

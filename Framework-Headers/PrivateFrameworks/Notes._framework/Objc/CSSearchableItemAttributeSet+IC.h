@@ -11,16 +11,25 @@
 @interface CSSearchableItemAttributeSet (IC)
 
 @property (copy, nonatomic) NSString *ic_dataSourceIdentifier;
-@property (copy, nonatomic) NSString *ic_managedObjectIDURI;
+@property (nonatomic) BOOL ic_hasAttachments;
+@property (nonatomic) BOOL ic_hasChecklists;
+@property (nonatomic) BOOL ic_hasDrawings;
+@property (nonatomic) BOOL ic_hasScannedDocuments;
+@property (nonatomic) BOOL ic_isLocked;
+@property (nonatomic) BOOL ic_isShared;
 @property (nonatomic) unsigned long long ic_searchResultType;
 
 + (id)ic_customAttributeKeyDictionary;
 + (id)ic_customAttributeKeyWithName:(id)arg1 searchable:(BOOL)arg2 searchableByDefault:(BOOL)arg3 unique:(BOOL)arg4 multiValued:(BOOL)arg5;
 + (id)ic_dataSourceIdentifierCustomKey;
-+ (id)ic_managedObjectIDCustomKey;
++ (id)ic_itemHasAttachmentsCustomKey;
++ (id)ic_itemHasChecklistsCustomKey;
++ (id)ic_itemHasDrawingsCustomKey;
++ (id)ic_itemHasScannedDocumentsCustomKey;
++ (id)ic_itemIsLockedCustomKey;
++ (id)ic_itemIsSharedCustomKey;
 + (id)ic_searchResultTypeCustomKey;
 + (id)ic_specializedIndexFieldAttributeKeyForStringField:(id)arg1;
-- (long long)ic_daysSinceModification;
 - (void)ic_populateValuesForSpecializedFields;
 - (unsigned long long)ic_relevance;
 @end

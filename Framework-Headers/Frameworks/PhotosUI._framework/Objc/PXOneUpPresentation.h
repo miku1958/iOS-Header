@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXPhotosDetailsContext, PXUIMediaProvider, UIViewController;
-@protocol PXImportStatusManager, PXOneUpPresentationDelegate, PXOneUpPresentationImplementationDelegate;
+@class PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXPhotosDetailsContext, PXUIMediaProvider, UIScrollView, UIViewController;
+@protocol PXAssetImportStatusManager, PXOneUpPresentationDelegate, PXOneUpPresentationImplementationDelegate;
 
 @interface PXOneUpPresentation : NSObject
 {
@@ -15,16 +15,18 @@
         BOOL respondsToPhotosDetailsContext;
         BOOL respondsToInitialAssetReference;
         BOOL respondsToCurrentImageForAssetReference;
-        BOOL respondsToRegionOfInterestForAssetReferenceInCoordinateSpace;
+        BOOL respondsToRegionOfInterestForAssetReference;
         BOOL respondsToScrollAssetReferenceToVisible;
         BOOL respondsToSetHiddenAssetReferences;
         BOOL respondsToShouldAutoPlay;
+        BOOL respondsToPreventShowInAllPhotos;
         BOOL respondsToActionManager;
         BOOL respondsToActionManagerForPreviewing;
         BOOL respondsToActionContext;
         BOOL respondsToGestureProvider;
         BOOL respondsToImportStatusManager;
         BOOL respondsToOrigin;
+        BOOL respondsToScrollView;
     } _delegateFlags;
     struct {
         BOOL respondsToPresentingViewControllerViewWillAppear;
@@ -55,13 +57,15 @@
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) PXGestureProvider *gestureProvider;
 @property (weak, nonatomic) id<PXOneUpPresentationImplementationDelegate> implementationDelegate; // @synthesize implementationDelegate=_implementationDelegate;
-@property (readonly, nonatomic) id<PXImportStatusManager> importStatusManager;
+@property (readonly, nonatomic) id<PXAssetImportStatusManager> importStatusManager;
 @property (readonly, nonatomic) PXAssetReference *initialAssetReference;
 @property (readonly, nonatomic) PXUIMediaProvider *mediaProvider;
 @property (readonly, nonatomic) long long origin;
 @property (weak, nonatomic) UIViewController *originalPresentingViewController; // @synthesize originalPresentingViewController=_originalPresentingViewController;
 @property (readonly, nonatomic) PXPhotosDetailsContext *photosDetailsContext;
 @property (readonly, weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (readonly, nonatomic) BOOL preventShowInAllPhotosAction;
+@property (readonly, nonatomic) UIScrollView *scrollView;
 @property (readonly, nonatomic) BOOL shouldAutoPlay;
 
 - (void).cxx_destruct;

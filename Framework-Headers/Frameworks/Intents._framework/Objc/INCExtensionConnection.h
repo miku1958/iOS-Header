@@ -42,6 +42,7 @@
 - (void).cxx_destruct;
 - (BOOL)_cancelRequestTimer;
 - (void)_startRequestTimerWithExtensionProxy:(id)arg1;
+- (double)_timeoutIntervalForTransactionState:(id)arg1;
 - (id)initWithIntent:(id)arg1;
 - (id)initWithIntent:(id)arg1 remoteProxyProvider:(CDUnknownBlockType)arg2;
 - (id)initWithIntent:(id)arg1 supportedExtensionTypes:(long long)arg2 remoteProxyProvider:(CDUnknownBlockType)arg3;

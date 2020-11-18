@@ -6,14 +6,66 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, MKMapView;
+#import <MapKit/MKInfoCardThemeListener-Protocol.h>
+#import <MapKit/MKStackingViewControllerSizableView-Protocol.h>
 
-@interface UIView (MapKitExtras)
+@class CALayer, MKMapView, NSString;
+@protocol MKInfoCardTheme;
 
+@interface UIView (MapKitExtras) <MKStackingViewControllerSizableView, MKInfoCardThemeListener>
+
+@property (readonly, nonatomic) double _currentScreenScale; // @dynamic _currentScreenScale;
 @property (readonly, strong, nonatomic) MKMapView *_mapKit_mapView;
 @property (readonly, strong, nonatomic) CALayer *_mapkit_currentLayer;
 @property (readonly, nonatomic) struct CGRect _mapkit_doubleFrame;
+@property (readonly, nonatomic) BOOL _mapkit_isDarkModeEnabled;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<MKInfoCardTheme> mk_theme;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
++ (void)_mapkit_animateFromCurrentStateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)_mapkit_animateWithDuration:(double)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
++ (double)_mapkit_currentAnimationDuration;
++ (id)_mapkit_currentAnimationTimingFunction;
++ (BOOL)_mapkit_shouldAdoptImplicitAnimationParameters;
++ (void)_maps_setDoesNotTranslateAutoresizingConstraintsForViewsDictionary:(id)arg1;
+- (id)_findNearestViewController;
+- (void)_mapKit_setNeedsDisplay;
+- (BOOL)_mapkit_YCoordinate:(double)arg1 liesInDirection:(long long)arg2 startingFromYCoordinate:(double)arg3;
+- (double)_mapkit_YCoordinateAtDistance:(double)arg1 inDirection:(long long)arg2 fromEdge:(long long)arg3;
+- (double)_mapkit_YCoordinateAtDistance:(double)arg1 inDirection:(long long)arg2 fromYCoordinate:(double)arg3;
+- (id)_mapkit_accessoryControlToExtendWithCallout;
+- (id)_mapkit_constraintsPinningSubviewToBounds:(id)arg1;
+- (float)_mapkit_contentCompressionResistancePriorityForAxis:(long long)arg1;
+- (float)_mapkit_contentHuggingPriorityForAxis:(long long)arg1;
 - (unsigned long long)_mapkit_countOfSet:(id)arg1 minusSubset:(id)arg2;
+- (struct CGSize)_mapkit_fittingSize;
+- (void)_mapkit_insertSubview:(id)arg1 atIndex:(long long)arg2;
+- (void)_mapkit_insertSubviewAboveAllOtherSubviews:(id)arg1;
+- (void)_mapkit_insertSubviewBelowAllOtherSubviews:(id)arg1;
+- (BOOL)_mapkit_isDescendantOfView:(id)arg1;
+- (BOOL)_mapkit_isRTL;
+- (void)_mapkit_layoutBelowIfNeeded;
+- (void)_mapkit_layoutIfNeeded;
+- (double)_mapkit_leadingMargin;
+- (struct CGRect)_mapkit_rectWithSize:(struct CGSize)arg1 XCoordinate:(double)arg2 atDistance:(double)arg3 inDirection:(long long)arg4 fromEdge:(long long)arg5;
+- (void)_mapkit_setBackgroundColor:(id)arg1;
+- (void)_mapkit_setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
+- (void)_mapkit_setContentHuggingPriority:(float)arg1 forAxis:(long long)arg2;
+- (void)_mapkit_setNeedsLayout;
+- (void)_mapkit_setNeedsUpdateConstraints;
+- (struct CGSize)_mapkit_sizeThatFits:(struct CGSize)arg1;
+- (void)_mapkit_sizeToFit;
+- (double)_mapkit_trailingMargin;
+- (struct CGRect)_mapkit_translateRect:(struct CGRect)arg1 ifNeededFromSingleEdge:(unsigned long long)arg2;
+- (void)_mapkit_updateConstraintsIfNeeded;
+- (struct UIEdgeInsets)_mapkit_userInterfaceOnlySafeAreaInsets;
+- (void)infoCardThemeChanged;
 @end
 

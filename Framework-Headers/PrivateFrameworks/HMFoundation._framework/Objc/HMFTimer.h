@@ -12,9 +12,10 @@
 @interface HMFTimer : HMFObject
 {
     HMFUnfairLock *_lock;
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
+    NSObject<OS_dispatch_queue> *_timerQueue;
     double _timeInterval;
-    unsigned long long _leeway;
+    long long _leeway;
     BOOL _running;
     NSDate *_fireDate;
     id<HMFTimerDelegate> _delegate;
@@ -23,8 +24,9 @@
 }
 
 @property (weak) id<HMFTimerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong) NSObject<OS_dispatch_queue> *delegateQueue;
 @property (readonly, copy) NSDate *fireDate; // @synthesize fireDate=_fireDate;
-@property (readonly, nonatomic) unsigned long long leeway; // @synthesize leeway=_leeway;
+@property (readonly, nonatomic) unsigned long long leeway;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly, nonatomic) double timeInterval; // @synthesize timeInterval=_timeInterval;

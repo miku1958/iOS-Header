@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class BPSMultipleWatchMigrationView, BPSRemoteWatchView, NSArray;
+@class BPSMultipleWatchMigrationView, BPSRemoteWatchView, NSArray, NSString;
 @protocol BPSWatchMigrationControllerDelegate;
 
 @interface BPSWatchMigrationController : UIViewController
@@ -15,6 +15,7 @@
     id<BPSWatchMigrationControllerDelegate> _migrationDelegate;
     BPSRemoteWatchView *_watchView;
     BPSMultipleWatchMigrationView *_multipleWatchView;
+    NSString *_sourceDeviceName;
     NSArray *_migratableDevices;
 }
 
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) NSArray *migratableDevices; // @synthesize migratableDevices=_migratableDevices;
 @property (weak, nonatomic) id<BPSWatchMigrationControllerDelegate> migrationDelegate; // @synthesize migrationDelegate=_migrationDelegate;
 @property (strong, nonatomic) BPSMultipleWatchMigrationView *multipleWatchView; // @synthesize multipleWatchView=_multipleWatchView;
+@property (strong, nonatomic) NSString *sourceDeviceName; // @synthesize sourceDeviceName=_sourceDeviceName;
 @property (strong, nonatomic) BPSRemoteWatchView *watchView; // @synthesize watchView=_watchView;
 
 - (void).cxx_destruct;
@@ -29,6 +31,7 @@
 - (void)_saveMigrationPreference:(BOOL)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithSnapshot:(id)arg1;
+- (id)initWithSourceDeviceName:(id)arg1;
 - (void)loadView;
 - (BOOL)shouldBeDisplayedGivenMigrationData:(id)arg1;
 

@@ -21,16 +21,15 @@
         struct __C3DRendererElement *_field8;
         long long _field9;
     } *_context;
-    id<MTLCommandQueue> _commandQueue;
-    id<MTLCommandBuffer> _commandBuffer;
-    id<MTLDevice> _device;
 }
 
-@property (readonly, nonatomic) id<MTLCommandBuffer> commandBuffer; // @synthesize commandBuffer=_commandBuffer;
-@property (readonly, nonatomic) id<MTLCommandQueue> commandQueue; // @synthesize commandQueue=_commandQueue;
-@property (readonly, nonatomic) id<MTLDevice> device; // @synthesize device=_device;
+@property (readonly, nonatomic) id<MTLCommandBuffer> commandBuffer;
+@property (readonly, nonatomic) id<MTLCommandQueue> commandQueue;
+@property (readonly, nonatomic) id<MTLDevice> device;
 @property (readonly, nonatomic) double time;
 
+- (id)inputTextureWithName:(id)arg1;
+- (id)outputTextureWithName:(id)arg1;
 
 @end
 

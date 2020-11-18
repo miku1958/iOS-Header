@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SceneKit/SCNTextureLayerSource.h>
+#import <SceneKit/SCNTextureCoreAnimationSource.h>
+
+@class UIView, UIWindow;
 
 __attribute__((visibility("hidden")))
-@interface SCNTextureUIKitSource : SCNTextureLayerSource
+@interface SCNTextureUIKitSource : SCNTextureCoreAnimationSource
 {
     BOOL _setup;
     BOOL _windowReady;
     id _source;
-    id _uiWindow;
-    id _uiView;
+    UIWindow *_uiWindow;
+    UIView *_uiView;
     struct CGSize _sizeCache;
     unsigned int _textureID;
     struct __C3DEngineContext *_engineContext;
@@ -21,8 +23,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) id source; // @synthesize source=_source;
-@property (strong, nonatomic) id uiView; // @synthesize uiView=_uiView;
-@property (strong, nonatomic) id uiWindow; // @synthesize uiWindow=_uiWindow;
+@property (strong, nonatomic) UIView *uiView; // @synthesize uiView=_uiView;
+@property (strong, nonatomic) UIWindow *uiWindow; // @synthesize uiWindow=_uiWindow;
 
 - (void)_layerTreeDidUpdate;
 - (void)cleanup:(struct __C3DRendererContext *)arg1;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)layerSizeInPixels;
 - (id)layerToFocusForRenderedLayer:(id)arg1;
 - (void)setup;
+- (BOOL)supportsMetal;
 - (struct __C3DTexture *)textureWithEngineContext:(struct __C3DEngineContext *)arg1 textureSampler:(struct __C3DTextureSampler *)arg2 nextFrameTime:(double *)arg3;
 
 @end

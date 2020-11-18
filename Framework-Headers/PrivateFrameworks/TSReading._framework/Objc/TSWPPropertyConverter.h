@@ -10,6 +10,7 @@
 {
 }
 
++ (void)initialize;
 + (id)mapCharacterPropertiesFromNS:(id)arg1;
 + (void)mapCharacterPropertiesFromNS:(id)arg1 toWP:(id)arg2;
 + (void)mapCharacterPropertiesFromStyle:(id)arg1 secondaryStyle:(id)arg2 toNS:(id)arg3 stickyFont:(id *)arg4 scale:(double)arg5;

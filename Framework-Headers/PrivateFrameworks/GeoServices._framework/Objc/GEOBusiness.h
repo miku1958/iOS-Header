@@ -8,12 +8,15 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSMutableArray, NSString, PBUnknownFields;
+@class GEOLatLng, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOBusiness : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     unsigned long long _uID;
+    NSString *_uRL;
     NSMutableArray *_attributeKeyValues;
     NSMutableArray *_attributions;
     NSMutableArray *_categorys;
@@ -29,18 +32,53 @@
     NSMutableArray *_sources;
     NSMutableArray *_starRatings;
     NSString *_telephone;
-    NSString *_uRL;
     BOOL _isClosed;
     struct {
-        unsigned int uID:1;
-        unsigned int isClosed:1;
-    } _has;
+        unsigned int has_uID:1;
+        unsigned int has_isClosed:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_uRL:1;
+        unsigned int read_attributeKeyValues:1;
+        unsigned int read_attributions:1;
+        unsigned int read_categorys:1;
+        unsigned int read_center:1;
+        unsigned int read_localizedCategories:1;
+        unsigned int read_mapsURL:1;
+        unsigned int read_name:1;
+        unsigned int read_openHours:1;
+        unsigned int read_phoneticName:1;
+        unsigned int read_photos:1;
+        unsigned int read_placeDataAmendments:1;
+        unsigned int read_ratings:1;
+        unsigned int read_sources:1;
+        unsigned int read_starRatings:1;
+        unsigned int read_telephone:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_uID:1;
+        unsigned int wrote_uRL:1;
+        unsigned int wrote_attributeKeyValues:1;
+        unsigned int wrote_attributions:1;
+        unsigned int wrote_categorys:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_localizedCategories:1;
+        unsigned int wrote_mapsURL:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_openHours:1;
+        unsigned int wrote_phoneticName:1;
+        unsigned int wrote_photos:1;
+        unsigned int wrote_placeDataAmendments:1;
+        unsigned int wrote_ratings:1;
+        unsigned int wrote_sources:1;
+        unsigned int wrote_starRatings:1;
+        unsigned int wrote_telephone:1;
+        unsigned int wrote_isClosed:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *attributeKeyValues; // @synthesize attributeKeyValues=_attributeKeyValues;
-@property (strong, nonatomic) NSMutableArray *attributions; // @synthesize attributions=_attributions;
-@property (strong, nonatomic) NSMutableArray *categorys; // @synthesize categorys=_categorys;
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (strong, nonatomic) NSMutableArray *attributeKeyValues;
+@property (strong, nonatomic) NSMutableArray *attributions;
+@property (strong, nonatomic) NSMutableArray *categorys;
+@property (strong, nonatomic) GEOLatLng *center;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (nonatomic) BOOL hasIsClosed;
 @property (readonly, nonatomic) BOOL hasMapsURL;
@@ -49,25 +87,26 @@
 @property (readonly, nonatomic) BOOL hasTelephone;
 @property (nonatomic) BOOL hasUID;
 @property (readonly, nonatomic) BOOL hasURL;
-@property (nonatomic) BOOL isClosed; // @synthesize isClosed=_isClosed;
-@property (strong, nonatomic) NSMutableArray *localizedCategories; // @synthesize localizedCategories=_localizedCategories;
-@property (strong, nonatomic) NSString *mapsURL; // @synthesize mapsURL=_mapsURL;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSMutableArray *openHours; // @synthesize openHours=_openHours;
-@property (strong, nonatomic) NSString *phoneticName; // @synthesize phoneticName=_phoneticName;
-@property (strong, nonatomic) NSMutableArray *photos; // @synthesize photos=_photos;
-@property (strong, nonatomic) NSMutableArray *placeDataAmendments; // @synthesize placeDataAmendments=_placeDataAmendments;
-@property (strong, nonatomic) NSMutableArray *ratings; // @synthesize ratings=_ratings;
-@property (strong, nonatomic) NSMutableArray *sources; // @synthesize sources=_sources;
-@property (strong, nonatomic) NSMutableArray *starRatings; // @synthesize starRatings=_starRatings;
-@property (strong, nonatomic) NSString *telephone; // @synthesize telephone=_telephone;
-@property (nonatomic) unsigned long long uID; // @synthesize uID=_uID;
-@property (strong, nonatomic) NSString *uRL; // @synthesize uRL=_uRL;
+@property (nonatomic) BOOL isClosed;
+@property (strong, nonatomic) NSMutableArray *localizedCategories;
+@property (strong, nonatomic) NSString *mapsURL;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSMutableArray *openHours;
+@property (strong, nonatomic) NSString *phoneticName;
+@property (strong, nonatomic) NSMutableArray *photos;
+@property (strong, nonatomic) NSMutableArray *placeDataAmendments;
+@property (strong, nonatomic) NSMutableArray *ratings;
+@property (strong, nonatomic) NSMutableArray *sources;
+@property (strong, nonatomic) NSMutableArray *starRatings;
+@property (strong, nonatomic) NSString *telephone;
+@property (nonatomic) unsigned long long uID;
+@property (strong, nonatomic) NSString *uRL;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)attributeKeyValueType;
 + (Class)attributionType;
 + (Class)categoryType;
++ (BOOL)isValid:(id)arg1;
 + (Class)localizedCategoriesType;
 + (Class)openHoursType;
 + (Class)photoType;
@@ -76,6 +115,32 @@
 + (Class)sourceType;
 + (Class)starRatingType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAttributeKeyValue:(id)arg1;
+- (void)_addNoFlagsAttribution:(id)arg1;
+- (void)_addNoFlagsCategory:(id)arg1;
+- (void)_addNoFlagsLocalizedCategories:(id)arg1;
+- (void)_addNoFlagsOpenHours:(id)arg1;
+- (void)_addNoFlagsPhoto:(id)arg1;
+- (void)_addNoFlagsPlaceDataAmendment:(id)arg1;
+- (void)_addNoFlagsRating:(id)arg1;
+- (void)_addNoFlagsSource:(id)arg1;
+- (void)_addNoFlagsStarRating:(id)arg1;
+- (void)_readAttributeKeyValues;
+- (void)_readAttributions;
+- (void)_readCategorys;
+- (void)_readCenter;
+- (void)_readLocalizedCategories;
+- (void)_readMapsURL;
+- (void)_readName;
+- (void)_readOpenHours;
+- (void)_readPhoneticName;
+- (void)_readPhotos;
+- (void)_readPlaceDataAmendments;
+- (void)_readRatings;
+- (void)_readSources;
+- (void)_readStarRatings;
+- (void)_readTelephone;
+- (void)_readURL;
 - (void)addAttributeKeyValue:(id)arg1;
 - (void)addAttribution:(id)arg1;
 - (void)addCategory:(id)arg1;
@@ -102,6 +167,7 @@
 - (void)clearRatings;
 - (void)clearSources;
 - (void)clearStarRatings;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -121,6 +187,7 @@
 - (unsigned long long)placeDataAmendmentsCount;
 - (id)ratingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)ratingsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)sourceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sourcesCount;

@@ -9,7 +9,7 @@
 #import <IMCore/IMSendProgressDelegate-Protocol.h>
 #import <IMCore/INSpeakable-Protocol.h>
 
-@class IMAccount, IMChatRegistry, IMHandle, IMMessage, IMMessageItem, IMScheduledUpdater, IMSendProgress, IMTimingCollection, MKMapItem, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString, TUConversation;
+@class IMAccount, IMChatRegistry, IMHandle, IMMessage, IMMessageItem, IMOrderingTools, IMScheduledUpdater, IMSendProgress, IMTimingCollection, MKMapItem, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSSet, NSString;
 @protocol IMChatItemRules;
 
 @interface IMChat : IMItemsController <INSpeakable, IMSendProgressDelegate>
@@ -17,7 +17,6 @@
     NSString *_guid;
     NSString *_typingGUID;
     NSString *_localUserIsComposing;
-    NSString *_currentLocationGUID;
     NSString *_identifier;
     IMAccount *_account;
     NSString *_displayName;
@@ -68,8 +67,10 @@
     BOOL _hasSurfRequest;
     NSString *_personCentricID;
     NSDictionary *_bizIntent;
+    NSString *_groupChatIdentifierUppercase;
     double _latestTypingIndicatorTimeInterval;
-    TUConversation *_conversation;
+    IMOrderingTools *_orderingTools;
+    NSString *_currentLocationGUID;
 }
 
 @property (nonatomic, getter=isVIP) BOOL VIP;
@@ -85,11 +86,12 @@
 @property (readonly, nonatomic) BOOL canHaveMultipleParticipants;
 @property (readonly, nonatomic) BOOL canLeaveChat;
 @property (readonly, nonatomic) NSString *chatIdentifier;
+@property (readonly, copy, nonatomic) NSArray *chatItems;
 @property (readonly, nonatomic) IMChatRegistry *chatRegistry;
 @property (readonly, nonatomic) unsigned char chatStyle; // @synthesize chatStyle=_style;
 @property (nonatomic) void *contextInfo; // @synthesize contextInfo=_context;
-@property (readonly, nonatomic) TUConversation *conversation; // @synthesize conversation=_conversation;
 @property (readonly, copy, nonatomic) NSNumber *countOfAttachmentsNotCachedLocally;
+@property (strong, nonatomic) NSString *currentLocationGUID; // @synthesize currentLocationGUID=_currentLocationGUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -102,9 +104,11 @@
 @property (nonatomic) BOOL forceMMS;
 @property (strong, nonatomic) NSArray *frequentReplies; // @synthesize frequentReplies=_frequentReplies;
 @property (readonly, nonatomic, getter=isGroupChat) BOOL groupChat;
+@property (strong, nonatomic) NSString *groupChatIdentifierUppercase; // @synthesize groupChatIdentifierUppercase=_groupChatIdentifierUppercase;
 @property (strong, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (readonly, nonatomic) NSString *guid; // @synthesize guid=_guid;
 @property (nonatomic) BOOL hasHadSuccessfulQuery;
+@property (readonly, nonatomic) BOOL hasMessageFromMe;
 @property (readonly, nonatomic) BOOL hasMoreMessagesToLoad;
 @property (readonly, nonatomic) BOOL hasMoreRecentMessagesToLoad;
 @property (readonly, nonatomic) BOOL hasRecipientsFollowingLocation;
@@ -112,6 +116,7 @@
 @property (readonly, nonatomic) BOOL hasSiblingRecipientsSharingLocation;
 @property (nonatomic) BOOL hasSurfRequest; // @synthesize hasSurfRequest=_hasSurfRequest;
 @property (readonly, nonatomic) BOOL hasUnhandledInvitation;
+@property (readonly, nonatomic) BOOL hasVerifiedBusiness;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
@@ -135,6 +140,7 @@
 @property (readonly, nonatomic) IMMessage *lastMessage;
 @property (readonly, nonatomic) BOOL lastMessageExists;
 @property (readonly, nonatomic) long long lastMessageTimeStampOnLoad; // @synthesize lastMessageTimeStampOnLoad=_lastMessageTimeStampOnLoad;
+@property (readonly, nonatomic) NSString *lastSeenMessageGuid;
 @property (readonly, nonatomic) IMMessage *lastSentMessage;
 @property (readonly, nonatomic) NSDate *lastSentMessageDate;
 @property (readonly, nonatomic) NSDate *lastTUConversationCreatedDate;
@@ -147,6 +153,7 @@
 @property (readonly, nonatomic) unsigned long long messageCount;
 @property (readonly, nonatomic) unsigned long long messageFailureCount;
 @property (nonatomic) unsigned long long numberOfMessagesToKeepLoaded;
+@property (strong, nonatomic) IMOrderingTools *orderingTools; // @synthesize orderingTools=_orderingTools;
 @property (readonly, nonatomic) unsigned long long overallChatStatus;
 @property (readonly, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property (readonly, nonatomic) NSString *persistentID;
@@ -164,12 +171,9 @@
 @property (readonly, copy, nonatomic) NSDate *watermarkDate;
 @property (readonly, nonatomic) long long watermarkMessageID;
 
-+ (id)_GUIDsForKey:(id)arg1;
 + (Class)_NPSManagerClass;
 + (id)__im_adjustMessageSummaryInfoForSending:(id)arg1;
 + (void)_initializeFMF;
-+ (void)_removeGUID:(id)arg1 fromList:(id)arg2;
-+ (void)_storeGUID:(id)arg1 forKey:(id)arg2;
 + (Class)chatItemRulesClass;
 + (void)cleanWatermarkCache;
 + (BOOL)isGUIDInAttemptingListInScrutinyMode:(id)arg1;
@@ -189,9 +193,9 @@
 - (id)_archivedItemsToReplace:(id)arg1 numberOfMessagesBeforeGUID:(unsigned long long)arg2 numberOfMessagesAfterGUID:(unsigned long long)arg3;
 - (void)_calculateDowngradeState;
 - (void)_calculateDowngradeStateTimerFired;
-- (BOOL)_chatHasValidAccount:(id)arg1 forService:(id)arg2;
 - (void)_clearCachedIdentifier;
 - (void)_clearDowngradeMarkers;
+- (void)_clearPendingMessages;
 - (void)_clearUnreadCount;
 - (long long)_compareChat:(id)arg1 withDate:(id)arg2 withDate:(id)arg3;
 - (void)_configureLocationShareItem:(id)arg1;
@@ -246,7 +250,6 @@
 - (void)_replaceStaleChatItems;
 - (void)_resetChatIdToLastMessageItemMap;
 - (BOOL)_sanityCheckAccounts;
-- (void)_sendCurrentLocationMessageUsingLocationManager:(id)arg1;
 - (void)_sendMessage:(id)arg1 adjustingSender:(BOOL)arg2 shouldQueue:(BOOL)arg3;
 - (BOOL)_serverBagPreventsScrutinyMode;
 - (void)_setAccount:(id)arg1;
@@ -281,6 +284,8 @@
 - (id)_tuDateForChat:(id)arg1;
 - (void)_unwatchHandleStatusChangedForHandle:(id)arg1;
 - (void)_updateChatItems;
+- (void)_updateChatItemsAsNotSpam;
+- (void)_updateChatItemsAsNotSpamEnumeratingItems:(CDUnknownBlockType)arg1;
 - (void)_updateChatItemsWithReason:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_updateChatItemsWithReason:(id)arg1 block:(CDUnknownBlockType)arg2 shouldPost:(BOOL)arg3;
 - (void)_updateDisplayName:(id)arg1;
@@ -288,13 +293,18 @@
 - (void)_updateEngramID:(id)arg1;
 - (void)_updateLastAddressedHandleID:(id)arg1;
 - (void)_updateLastAddressedSIMID:(id)arg1;
+- (void)_updateLastSeenMessageGuid:(id)arg1;
 - (void)_updateLocationShareItemsForSender:(id)arg1;
 - (void)_watchHandleStatusChangedForHandle:(id)arg1;
 - (void)acceptInvitation;
 - (void)addPendingParticipants:(id)arg1;
 - (id)allChatProperties;
 - (id)allMessagesToReportAsSpam;
+- (BOOL)allParticipantsAreContacts;
 - (id)allPropertiesOfParticipant:(id)arg1;
+- (BOOL)allowedToShowConversation;
+- (void)allowedToShowConversation:(CDUnknownBlockType)arg1;
+- (BOOL)authorizationToSendCurrentLocationMessageDetermined;
 - (BOOL)authorizedToSendCurrentLocationMessage;
 - (void)autoReportSpam;
 - (void)beginHoldingUpdatesForKey:(id)arg1;
@@ -306,7 +316,6 @@
 - (BOOL)canSendMessage:(id)arg1;
 - (BOOL)canSendTransfer:(id)arg1;
 - (void)cancelMessage:(id)arg1;
-- (id)chatItems;
 - (id)chatItemsForItems:(id)arg1;
 - (void)clear;
 - (void)clearScrutinyMode;
@@ -314,11 +323,13 @@
 - (long long)compareChatByDate:(id)arg1;
 - (long long)compareChatByTUDateAndLastFinishedMessageDate:(id)arg1;
 - (BOOL)containsMessageFromContactOrMe;
+- (id)conversation;
 - (void)dealloc;
 - (void)declineInvitation;
 - (BOOL)deleteAllHistory;
 - (void)deleteChatItems:(id)arg1;
 - (void)deleteExtensionPayloadData;
+- (void)deleteIMMessageItems:(id)arg1;
 - (void)deleteTransfers:(id)arg1;
 - (void)didUnregisterFromRegistry:(id)arg1;
 - (void)downloadPurgedAttachments;
@@ -349,6 +360,7 @@
 - (id)loadMessagesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 loadImmediately:(BOOL)arg3;
 - (id)loadMessagesUpToGUID:(id)arg1 date:(id)arg2 limit:(unsigned long long)arg3 loadImmediately:(BOOL)arg4;
 - (id)loadMessagesUpToGUID:(id)arg1 limit:(unsigned long long)arg2;
+- (void)loadParticipantContactsIfNecessary;
 - (id)loadUnreadMessagesWithLimit:(unsigned long long)arg1 fallbackToMessagesUpToGUID:(id)arg2;
 - (BOOL)mapsToTUConversation:(id)arg1;
 - (void)markAllLocationShareItemsAsUnactionable;
@@ -370,6 +382,7 @@
 - (void)remove;
 - (void)removeParticipants:(id)arg1 reason:(id)arg2;
 - (void)removeParticipantsFromiMessageChat:(id)arg1 reason:(id)arg2;
+- (void)resortMessages;
 - (void)saveWatermark;
 - (unsigned long long)scrutinyModeAttemptCount;
 - (void)sendCurrentLocationMessage;
@@ -377,7 +390,9 @@
 - (void)sendDowngradePingForMessage:(id)arg1 manualDowngrade:(BOOL)arg2;
 - (void)sendMessage:(id)arg1;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withAssociatedMessageInfo:(id)arg3;
+- (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withAssociatedMessageInfo:(id)arg3 withGuid:(id)arg4;
 - (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withMessageSummaryInfo:(id)arg3;
+- (void)sendMessageAcknowledgment:(long long)arg1 forChatItem:(id)arg2 withMessageSummaryInfo:(id)arg3 withGuid:(id)arg4;
 - (void)sendProgress:(id)arg1 progressDidChange:(float)arg2 sendingMessages:(id)arg3 sendCount:(unsigned long long)arg4 totalCount:(unsigned long long)arg5 finished:(BOOL)arg6;
 - (id)sendProgressDelegate;
 - (void)setLocalUserIsComposing:(id)arg1 typingIndicatorData:(id)arg2;
@@ -399,11 +414,12 @@
 - (void)updateMessage:(id)arg1 flags:(unsigned long long)arg2;
 - (void)updateShouldForceToSMS:(BOOL)arg1;
 - (void)updateWasDetectedAsSMSSpam:(BOOL)arg1;
+- (void)updateWasDetectedAsiMessageSpam:(BOOL)arg1;
 - (void)updateWatermarks;
 - (void)userToggledReadReceiptSwitch:(BOOL)arg1;
 - (id)valueForChatProperty:(id)arg1;
 - (id)valueForProperty:(id)arg1 ofParticipant:(id)arg2;
-- (void)verifyChatShouldBeSMSSpam;
+- (void)verifyChatShouldBeSpamWithService:(id)arg1;
 - (void)verifyFiltering;
 - (void)watermarkInForScrutinyMode;
 - (void)watermarkOutForScrutinyMode;

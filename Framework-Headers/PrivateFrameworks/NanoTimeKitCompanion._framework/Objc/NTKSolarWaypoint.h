@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <NanoTimeKitCompanion/NTKCacheableKeyProvider-Protocol.h>
+
 @class NSDate, NSString, NTKSolarTimeModel;
 
-@interface NTKSolarWaypoint : NSObject
+@interface NTKSolarWaypoint : NSObject <NTKCacheableKeyProvider>
 {
     long long _type;
     NSDate *_waypointDate;
@@ -17,15 +19,19 @@
     double _percentageThroughPeriodForWaypointDate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) double percentageThroughPeriodForWaypointDate; // @synthesize percentageThroughPeriodForWaypointDate=_percentageThroughPeriodForWaypointDate;
 @property (readonly, nonatomic) NTKSolarTimeModel *solarTimeModel; // @synthesize solarTimeModel=_solarTimeModel;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSDate *waypointDate; // @synthesize waypointDate=_waypointDate;
 
 - (void).cxx_destruct;
-- (id)description;
 - (id)initWithType:(long long)arg1 solarTimeModel:(id)arg2;
+- (id)ntkCacheableKey;
 - (void)updateDependentValues;
 - (void)updateDependentValuesWithPlaceholderData;
 

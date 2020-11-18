@@ -28,12 +28,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_transactionName:(id)arg1;
 - (void).cxx_destruct;
 - (void)_connectToService:(id)arg1;
 - (void)_connectToServices;
 - (void)_disconnectFromService:(id)arg1;
-- (void)_disconnectFromServices;
+- (void)_disconnectFromServicesStopConnecting:(BOOL)arg1;
 - (void)_handleBluetoothUpdates:(long long)arg1;
 - (void)_subscribeBluetoothStateUpdates;
 - (void)connectToService:(id)arg1;

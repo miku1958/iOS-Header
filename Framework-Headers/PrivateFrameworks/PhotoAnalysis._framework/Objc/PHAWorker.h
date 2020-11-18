@@ -44,8 +44,8 @@
 - (void)assertUserInitiatedRequestQueue;
 - (BOOL)canRunWhenGraphIsLoaded;
 - (void)cooldown;
-- (BOOL)dispatchAsyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
-- (BOOL)dispatchSyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
+- (void)dispatchAsyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
+- (void)dispatchSyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
 - (void)handleOperation:(id)arg1;
 - (BOOL)hasAdditionalJobsForScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
 - (id)init;
@@ -58,11 +58,9 @@
 - (void)pingWorkerWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setLibraryScopedWorkerPreferencesValue:(id)arg1 forKey:(id)arg2;
 - (void)shutdown;
-- (BOOL)startAcknowledgeDeletionsJob:(id)arg1 error:(id *)arg2;
 - (BOOL)startAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)startup;
 - (id)statusAsDictionary;
-- (BOOL)stopAcknowledgeDeletionsJob:(id)arg1 error:(id *)arg2;
 - (BOOL)stopAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)updateLibraryScopedWorkerPreferencesWithEntriesFromDictionary:(id)arg1 keysToRemove:(id)arg2;
 - (void)warmup;

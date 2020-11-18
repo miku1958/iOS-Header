@@ -112,7 +112,6 @@
 - (void)photoMarkupController:(id)arg1 didFinishWithSavedAsset:(id)arg2;
 - (id)reviewAssetProviderRequestForDisplayAsset:(id)arg1;
 - (id)reviewScreenBarsModelForAssetExplorerReviewScreenActionManager:(id)arg1;
-- (void)videoEditViewController:(id)arg1 didFinishEditingSessionForAsset:(id)arg2 completed:(BOOL)arg3;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

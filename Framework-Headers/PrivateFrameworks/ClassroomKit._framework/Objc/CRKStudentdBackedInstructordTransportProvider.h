@@ -8,17 +8,20 @@
 
 #import <ClassroomKit/CRKTransportProviding-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 @protocol CRKRequestPerformingProtocol;
 
 @interface CRKStudentdBackedInstructordTransportProvider : NSObject <CRKTransportProviding>
 {
-    id<CRKRequestPerformingProtocol> mStudentDaemonProxy;
+    id<CRKRequestPerformingProtocol> _studentDaemonProxy;
+    NSURL *_classroomAppBundleURL;
 }
 
+@property (strong, nonatomic) NSURL *classroomAppBundleURL; // @synthesize classroomAppBundleURL=_classroomAppBundleURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<CRKRequestPerformingProtocol> studentDaemonProxy; // @synthesize studentDaemonProxy=_studentDaemonProxy;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -26,6 +29,7 @@
 - (void)fetchTransportWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithStudentDaemonProxy:(id)arg1;
+- (id)initWithStudentDaemonProxy:(id)arg1 classroomAppBundleURL:(id)arg2;
 
 @end
 

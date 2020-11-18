@@ -28,11 +28,12 @@
 @property (strong, nonatomic) NSString *text;
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
+@property (nonatomic) struct UIEdgeInsets textInset;
 
 + (id)_formattedStringsCache;
 - (void).cxx_destruct;
 - (id)_addDefaultAttributesToAttributedString:(id)arg1;
-- (id)_attributedAjudstedMultiPartStringFromString:(id)arg1;
+- (id)_attributedAdjustedMultiPartStringFromString:(id)arg1;
 - (void)_setupTextView;
 - (id)_textAttributes;
 - (void)_updateStrings;

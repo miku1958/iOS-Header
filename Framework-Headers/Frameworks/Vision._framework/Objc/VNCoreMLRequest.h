@@ -21,9 +21,9 @@
 - (void).cxx_destruct;
 - (BOOL)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
+- (id)description;
 - (id)initWithModel:(id)arg1;
 - (id)initWithModel:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (id)newDefaultRequestInstance;
 - (id)sequencedRequestPreviousObservationsKey;

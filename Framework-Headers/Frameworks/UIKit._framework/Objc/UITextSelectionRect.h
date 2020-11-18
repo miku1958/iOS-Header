@@ -12,6 +12,7 @@
 {
 }
 
+@property (readonly, nonatomic) BOOL _drawsOwnHighlight;
 @property (readonly, nonatomic) BOOL containsEnd;
 @property (readonly, nonatomic) BOOL containsStart;
 @property (readonly, nonatomic, getter=_isImpl) UITextSelectionRectImpl *isImpl;

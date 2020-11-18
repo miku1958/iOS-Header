@@ -11,6 +11,8 @@
 
 @interface TIKeyboardApplicationStateMonitor : NSObject
 {
+    double _appActivityTimeDurationThreshold;
+    double _appActivityKeyboardUsageFractionThreshold;
     NSObject<TIKeyboardApplicationStateResponses> *_delegate;
     BKSApplicationStateMonitor *_applicationStateMonitor;
     NSString *_activeAppBundleID;
@@ -21,6 +23,7 @@
     NSMutableSet *_imSuppressingBundleIDs;
     NSLock *_activeStateDataLock;
     NSLock *_databaseInUseLock;
+    NSDate *_timeOfLastFlushToDisk;
     NSCalendar *_utcCalendar;
     NSMutableArray *_keyboardUsageTimes;
     double _activeKeyboardStartTime;
@@ -38,19 +41,23 @@
 @property (strong, nonatomic) NSMutableSet *foregroundApps; // @synthesize foregroundApps=_foregroundApps;
 @property (strong, nonatomic) NSMutableSet *imSuppressingBundleIDs; // @synthesize imSuppressingBundleIDs=_imSuppressingBundleIDs;
 @property (strong, nonatomic) NSMutableArray *keyboardUsageTimes; // @synthesize keyboardUsageTimes=_keyboardUsageTimes;
+@property (strong, nonatomic) NSDate *timeOfLastFlushToDisk; // @synthesize timeOfLastFlushToDisk=_timeOfLastFlushToDisk;
 @property (strong, nonatomic) NSCalendar *utcCalendar; // @synthesize utcCalendar=_utcCalendar;
 
 - (void).cxx_destruct;
 - (void)applicationUninstalled:(id)arg1;
 - (id)databaseLocation;
 - (void)dealloc;
+- (BOOL)flushPendingChangesToDisk;
 - (void)handleApplicationStateChange:(id)arg1;
 - (BOOL)ignoreAppExtension:(id)arg1;
 - (id)init;
+- (id)initWithAppActivityTimeDurationThreshold:(double)arg1 keyboardUsageFractionThreshold:(double)arg2;
 - (void)keyboardInUse;
 - (void)keyboardNoLongerInUse;
 - (void)logOutKeyboardActivity:(double)arg1;
 - (void)startANewKeyboardActivity:(id)arg1;
+- (BOOL)threadUnsafeFlushChangesToDiskWithImmediacy:(BOOL)arg1;
 
 @end
 

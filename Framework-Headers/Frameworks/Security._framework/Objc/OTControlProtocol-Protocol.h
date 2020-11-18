@@ -4,21 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Security/NSObject-Protocol.h>
+@class NSArray, NSData, NSError, NSString, OTJoiningConfiguration, OTOperationConfiguration, _SFECKeyPair;
 
-@class NSData, NSString;
-
-@protocol OTControlProtocol <NSObject>
+@protocol OTControlProtocol
+- (void)attemptSosUpgrade:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)createRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 recoveryKey:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)establish:(NSString *)arg1 context:(NSString *)arg2 altDSID:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)fetchAllViableBottles:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSArray *, NSArray *, NSError *))arg3;
+- (void)fetchCliqueStatus:(NSString *)arg1 context:(NSString *)arg2 configuration:(OTOperationConfiguration *)arg3 reply:(void (^)(long long, NSError *))arg4;
+- (void)fetchEgoPeerID:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
+- (void)fetchEscrowContents:(NSString *)arg1 contextID:(NSString *)arg2 reply:(void (^)(NSData *, NSString *, NSData *, NSError *))arg3;
+- (void)fetchTrustStatus:(NSString *)arg1 context:(NSString *)arg2 configuration:(OTOperationConfiguration *)arg3 reply:(void (^)(long long, NSString *, NSNumber *, BOOL, NSError *))arg4;
+- (void)handleIdentityChangeForSigningKey:(_SFECKeyPair *)arg1 ForEncryptionKey:(_SFECKeyPair *)arg2 ForPeerID:(NSString *)arg3 reply:(void (^)(BOOL, NSError *))arg4;
+- (void)healthCheck:(NSString *)arg1 context:(NSString *)arg2 skipRateLimitingCheck:(BOOL)arg3 reply:(void (^)(NSError *))arg4;
+- (void)joinWithRecoveryKey:(NSString *)arg1 contextID:(NSString *)arg2 recoveryKey:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)launchBottledPeer:(NSString *)arg1 bottleID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)leaveClique:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)listOfEligibleBottledPeerRecords:(void (^)(NSArray *, NSError *))arg1;
+- (void)notifyIDMSTrustLevelChangeForContainer:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)octagonEncryptionPublicKey:(void (^)(NSData *, NSError *))arg1;
 - (void)octagonSigningPublicKey:(void (^)(NSData *, NSError *))arg1;
+- (void)peerDeviceNamesByPeerID:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)postCDPFollowupResult:(BOOL)arg1 type:(NSString *)arg2 error:(NSError *)arg3 containerName:(NSString *)arg4 contextName:(NSString *)arg5 reply:(void (^)(NSError *))arg6;
 - (void)preflightBottledPeer:(NSString *)arg1 dsid:(NSString *)arg2 reply:(void (^)(NSData *, NSString *, NSData *, NSError *))arg3;
+- (void)removeFriendsInClique:(NSString *)arg1 context:(NSString *)arg2 peerIDs:(NSArray *)arg3 reply:(void (^)(NSError *))arg4;
 - (void)reset:(void (^)(BOOL, NSError *))arg1;
+- (void)resetAndEstablish:(NSString *)arg1 context:(NSString *)arg2 altDSID:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)restore:(NSString *)arg1 contextID:(NSString *)arg2 bottleSalt:(NSString *)arg3 entropy:(NSData *)arg4 bottleID:(NSString *)arg5 reply:(void (^)(NSError *))arg6;
 - (void)restore:(NSString *)arg1 dsid:(NSString *)arg2 secret:(NSData *)arg3 escrowRecordID:(NSString *)arg4 reply:(void (^)(NSData *, NSData *, NSError *))arg5;
-- (void)scheduleCFUForFuture;
+- (void)rpcEpochWithConfiguration:(OTJoiningConfiguration *)arg1 reply:(void (^)(unsigned long long, NSError *))arg2;
+- (void)rpcJoinWithConfiguration:(OTJoiningConfiguration *)arg1 vouchData:(NSData *)arg2 vouchSig:(NSData *)arg3 preapprovedKeys:(NSArray *)arg4 reply:(void (^)(NSError *))arg5;
+- (void)rpcPrepareIdentityAsApplicantWithConfiguration:(OTJoiningConfiguration *)arg1 reply:(void (^)(NSString *, NSData *, NSData *, NSData *, NSData *, NSError *))arg2;
+- (void)rpcVoucherWithConfiguration:(OTJoiningConfiguration *)arg1 peerID:(NSString *)arg2 permanentInfo:(NSData *)arg3 permanentInfoSig:(NSData *)arg4 stableInfo:(NSData *)arg5 stableInfoSig:(NSData *)arg6 reply:(void (^)(NSData *, NSData *, NSError *))arg7;
 - (void)scrubBottledPeer:(NSString *)arg1 bottleID:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
-- (void)signIn:(NSString *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
-- (void)signOut:(void (^)(BOOL, NSError *))arg1;
+- (void)signIn:(NSString *)arg1 container:(NSString *)arg2 context:(NSString *)arg3 reply:(void (^)(NSError *))arg4;
+- (void)signOut:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)startOctagonStateMachine:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)status:(NSString *)arg1 context:(NSString *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 @end
 

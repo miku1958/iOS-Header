@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Preferences/PSListController.h>
+#import <ScreenTimeUI/STPINListViewController.h>
 
 @class NSArray, NSSet, PSSpecifier, STAlwaysAllowList;
-@protocol STAlwaysAllowListControllerDelegate, STRootViewModelCoordinator;
+@protocol STAlwaysAllowListControllerDelegate;
 
-@interface STAlwaysAllowListController : PSListController
+__attribute__((visibility("hidden")))
+@interface STAlwaysAllowListController : STPINListViewController
 {
     id<STAlwaysAllowListControllerDelegate> _delegate;
-    id<STRootViewModelCoordinator> _coordinator;
     STAlwaysAllowList *_alwaysAllowList;
     NSArray *_chooseBundleIDs;
     NSSet *_installedBundleIDs;
+    PSSpecifier *_allowedContactsSpecifier;
     PSSpecifier *_allowedAppsGroupSpecifier;
     NSArray *_allowedAppsSpecifiers;
     PSSpecifier *_chooseAppsGroupSpecifier;
@@ -24,27 +25,37 @@
 
 @property (strong, nonatomic) PSSpecifier *allowedAppsGroupSpecifier; // @synthesize allowedAppsGroupSpecifier=_allowedAppsGroupSpecifier;
 @property (strong, nonatomic) NSArray *allowedAppsSpecifiers; // @synthesize allowedAppsSpecifiers=_allowedAppsSpecifiers;
+@property (strong) PSSpecifier *allowedContactsSpecifier; // @synthesize allowedContactsSpecifier=_allowedContactsSpecifier;
 @property (copy, nonatomic) STAlwaysAllowList *alwaysAllowList; // @synthesize alwaysAllowList=_alwaysAllowList;
 @property (strong, nonatomic) PSSpecifier *chooseAppsGroupSpecifier; // @synthesize chooseAppsGroupSpecifier=_chooseAppsGroupSpecifier;
 @property (strong, nonatomic) NSArray *chooseAppsSpecifiers; // @synthesize chooseAppsSpecifiers=_chooseAppsSpecifiers;
 @property (copy, nonatomic) NSArray *chooseBundleIDs; // @synthesize chooseBundleIDs=_chooseBundleIDs;
-@property (strong, nonatomic) id<STRootViewModelCoordinator> coordinator; // @synthesize coordinator=_coordinator;
 @property (weak, nonatomic) id<STAlwaysAllowListControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSSet *installedBundleIDs; // @synthesize installedBundleIDs=_installedBundleIDs;
 
 - (void).cxx_destruct;
+- (id)_allowedContactsDuringDowntimeText:(id)arg1;
+- (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_insertAllowedAppSpecifier:(id)arg1;
+- (void)_removeAllowedAppSpecifier:(id)arg1;
 - (id)appSpecifiersForBundleIDs:(id)arg1;
 - (BOOL)canBeShownFromSuspendedState;
 - (id)createAllowedAppsSpecifiers;
 - (id)createChooseAppsSpecifiers;
+- (void)dealloc;
 - (id)init;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeAllowedIdentifier:(id)arg1 withSpecifier:(id)arg2;
 - (id)removeMessagesConfirmationPrompt;
+- (void)setCoordinator:(id)arg1;
 - (BOOL)shouldReloadSpecifiersOnResume;
 - (id)specifiers;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
+- (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForDeleteConfirmationButtonForRowAtIndexPath:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;

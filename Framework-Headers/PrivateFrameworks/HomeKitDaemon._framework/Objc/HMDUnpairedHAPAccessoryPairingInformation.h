@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFTimer, NSString, NSUUID;
+@class HAPAccessoryConfiguration, HMFTimer, NSData, NSString, NSUUID;
 
 @interface HMDUnpairedHAPAccessoryPairingInformation : HMFObject
 {
@@ -21,21 +21,27 @@
     CDUnknownBlockType _setupCodeProviderCompletionHandler;
     HMFTimer *_pairingRetryTimer;
     HMFTimer *_reconfirmTimer;
+    HAPAccessoryConfiguration *_hapAccessoryConfiguration;
     NSString *_accessoryName;
     NSUUID *_accessoryUUID;
+    NSString *_accessoryServerIdentifier;
     NSString *_homeName;
     NSString *_setupCode;
     NSString *_setupID;
+    NSData *_ownershipToken;
 }
 
 @property (strong, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
+@property (strong, nonatomic) NSString *accessoryServerIdentifier; // @synthesize accessoryServerIdentifier=_accessoryServerIdentifier;
 @property (strong, nonatomic) NSUUID *accessoryUUID; // @synthesize accessoryUUID=_accessoryUUID;
 @property (copy, nonatomic) CDUnknownBlockType addAccessoryCompletionHandler; // @synthesize addAccessoryCompletionHandler=_addAccessoryCompletionHandler;
 @property (copy, nonatomic) CDUnknownBlockType addAccessoryProgressHandler; // @synthesize addAccessoryProgressHandler=_addAccessoryProgressHandler;
 @property (nonatomic) BOOL allowAddUnauthenticatedAccessory; // @synthesize allowAddUnauthenticatedAccessory=_allowAddUnauthenticatedAccessory;
+@property (readonly, nonatomic) HAPAccessoryConfiguration *hapAccessoryConfiguration; // @synthesize hapAccessoryConfiguration=_hapAccessoryConfiguration;
 @property (strong, nonatomic) NSString *homeName; // @synthesize homeName=_homeName;
 @property (nonatomic) long long linkType; // @synthesize linkType=_linkType;
 @property (nonatomic) BOOL needsUserConsent; // @synthesize needsUserConsent=_needsUserConsent;
+@property (strong, nonatomic) NSData *ownershipToken; // @synthesize ownershipToken=_ownershipToken;
 @property (strong, nonatomic) HMFTimer *pairingInterruptionTimer; // @synthesize pairingInterruptionTimer=_pairingInterruptionTimer;
 @property (strong, nonatomic) HMFTimer *pairingRetryTimer; // @synthesize pairingRetryTimer=_pairingRetryTimer;
 @property (nonatomic) BOOL provideNetworkCredentialsToAccessory; // @synthesize provideNetworkCredentialsToAccessory=_provideNetworkCredentialsToAccessory;
@@ -47,8 +53,10 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithAccessoryDescription:(id)arg1 linkType:(long long)arg2 needsUserConsent:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4 progressHandler:(CDUnknownBlockType)arg5;
-- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 linkType:(long long)arg3 homeName:(id)arg4 setupCode:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 setupCodeProvider:(CDUnknownBlockType)arg7;
+- (id)initWithAccessoryDescription:(id)arg1 linkType:(long long)arg2 needsUserConsent:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4 progressHandler:(CDUnknownBlockType)arg5 wiFiPSK:(id)arg6 country:(id)arg7;
+- (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 linkType:(long long)arg3 homeName:(id)arg4 setupCode:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 setupCodeProvider:(CDUnknownBlockType)arg7 wiFiPSK:(id)arg8 country:(id)arg9;
+- (BOOL)matchesAccessoryServer:(id)arg1;
+- (BOOL)matchesUnpairedAccessory:(id)arg1;
 
 @end
 

@@ -17,6 +17,7 @@
     NSString *_instanceIdentifier;
     NSString *_name;
     NSMutableArray *_outputDevices;
+    NSMutableArray *_personalOutputDevices;
     NSString *_uniqueIdentifier;
     BOOL _canModifyGroupMembership;
     BOOL _isLocalEndpoint;
@@ -45,13 +46,17 @@
 @property (nonatomic) BOOL isProxyGroupPlayer; // @synthesize isProxyGroupPlayer=_isProxyGroupPlayer;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSMutableArray *outputDevices; // @synthesize outputDevices=_outputDevices;
+@property (strong, nonatomic) NSMutableArray *personalOutputDevices; // @synthesize personalOutputDevices=_personalOutputDevices;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (Class)outputDevicesType;
++ (Class)personalOutputDevicesType;
 - (void).cxx_destruct;
 - (int)StringAsConnectionType:(id)arg1;
 - (void)addOutputDevices:(id)arg1;
+- (void)addPersonalOutputDevices:(id)arg1;
 - (void)clearOutputDevices;
+- (void)clearPersonalOutputDevices;
 - (id)connectionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -62,6 +67,8 @@
 - (void)mergeFrom:(id)arg1;
 - (id)outputDevicesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)outputDevicesCount;
+- (id)personalOutputDevicesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)personalOutputDevicesCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

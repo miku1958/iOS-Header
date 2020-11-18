@@ -8,13 +8,14 @@
 
 #import <coreroutine/RTMapItemProvider-Protocol.h>
 
-@class NSObject, NSString, RTMapServiceManager, RTPersonalizationPortraitManager;
+@class NSObject, NSString, RTMapItemProviderPortraitParameters, RTMapServiceManager, RTPersonalizationPortraitManager;
 @protocol OS_dispatch_queue;
 
 @interface RTMapItemProviderPortrait : RTMapItemProviderBase <RTMapItemProvider>
 {
     NSObject<OS_dispatch_queue> *_queue;
     RTMapServiceManager *_mapServiceManager;
+    RTMapItemProviderPortraitParameters *_parameters;
     RTPersonalizationPortraitManager *_personalizationPortraitManager;
 }
 
@@ -22,15 +23,17 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) RTMapServiceManager *mapServiceManager; // @synthesize mapServiceManager=_mapServiceManager;
+@property (readonly, copy, nonatomic) RTMapItemProviderPortraitParameters *parameters; // @synthesize parameters=_parameters;
 @property (strong, nonatomic) RTPersonalizationPortraitManager *personalizationPortraitManager; // @synthesize personalizationPortraitManager=_personalizationPortraitManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_mapItemsForLocation:(id)arg1 withNames:(id)arg2 error:(id *)arg3;
+- (id)_mapItemsForLocation:(id)arg1 withNames:(id)arg2 withinDistance:(double)arg3 options:(id)arg4 error:(id *)arg5;
 - (id)init;
-- (id)initWithDistanceCalculator:(id)arg1 mapServiceManager:(id)arg2 personalizationPortraitManager:(id)arg3;
-- (id)mapItemsWithinDistance:(double)arg1 location:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
+- (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2 mapServiceManager:(id)arg3 parameters:(id)arg4 personalizationPortraitManager:(id)arg5;
+- (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2 mapServiceManager:(id)arg3 personalizationPortraitManager:(id)arg4;
+- (id)mapItemsWithOptions:(id)arg1 error:(id *)arg2;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <ControlCenterUIKit/CCUIContentModuleContentViewController-Protocol.h>
 
-@class CCUICAPackageDescription, CCUIToggleModule, NSString, UIColor, UIImage, UIImageView;
+@class CCUICAPackageDescription, CCUIToggleModule, NSString, UIColor, UIImage, UIImageView, UIViewPropertyAnimator;
 
 @interface CCUIToggleViewController : CCUIButtonModuleViewController <CCUIContentModuleContentViewController>
 {
@@ -21,16 +21,19 @@
     CCUIToggleModule *_module;
 }
 
+@property (readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) CCUIToggleModule *module; // @synthesize module=_module;
 @property (readonly, nonatomic) double preferredExpandedContentHeight;
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
+@property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;
 - (void)reconfigureView;
 - (void)refreshState;

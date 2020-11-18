@@ -22,6 +22,9 @@
     BOOL _AWDL;
     BOOL _Cellular;
     BOOL _temporary;
+    BOOL _companionLink;
+    BOOL _expensive;
+    BOOL _constrained;
 }
 
 @property (readonly, getter=isAWDL) BOOL AWDL; // @synthesize AWDL=_AWDL;
@@ -29,9 +32,12 @@
 @property (readonly) unsigned long long IPVersion;
 @property (readonly) IDSSockAddrWrapper *address; // @synthesize address=_address;
 @property (readonly) NSData *bssid; // @synthesize bssid=_bssid;
+@property (readonly, getter=isCompanionLink) BOOL companionLink; // @synthesize companionLink=_companionLink;
+@property (nonatomic) BOOL constrained; // @synthesize constrained=_constrained;
 @property (readonly) unsigned int delegatedIndex; // @synthesize delegatedIndex=_delegatedIndex;
 @property (readonly) NSString *delegatedName; // @synthesize delegatedName=_delegatedName;
 @property (readonly) IDSSockAddrWrapper *destination; // @synthesize destination=_destination;
+@property (readonly, nonatomic) BOOL expensive; // @synthesize expensive=_expensive;
 @property (copy) IDSSockAddrWrapper *external; // @synthesize external=_external;
 @property (readonly) unsigned int index; // @synthesize index=_index;
 @property (readonly) NSString *name; // @synthesize name=_name;

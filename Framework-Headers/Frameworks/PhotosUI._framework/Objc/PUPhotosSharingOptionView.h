@@ -16,16 +16,16 @@ __attribute__((visibility("hidden")))
     PXUIAssetBadgeView *_toggleGlyphButton;
     id _target;
     SEL _action;
-    BOOL _enabled;
-    BOOL _selected;
+    BOOL _interactive;
+    BOOL _toggled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
+@property (nonatomic, getter=isInteractive) BOOL interactive; // @synthesize interactive=_interactive;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isToggled) BOOL toggled; // @synthesize toggled=_toggled;
 
 - (void).cxx_destruct;
 - (void)assetBadgeView:(id)arg1 userDidSelectBadges:(unsigned long long)arg2;

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <RelevanceEngine/RELoggable-Protocol.h>
+#import <RelevanceEngine/REElementDataSourceProperties-Protocol.h>
 
-@class NSArray, NSString;
-@protocol REElementDataSourceDelegate;
+@class NSArray, NSDictionary, NSString;
+@protocol REElementDataSourceActivityDelegate, REElementDataSourceDelegate;
 
-@interface REElementDataSource : NSObject <RELoggable>
+@interface REElementDataSource : NSObject <REElementDataSourceProperties>
 {
+    id<REElementDataSourceActivityDelegate> _activityDelegate;
     BOOL _running;
     BOOL _allowsLocationUse;
     BOOL _unlockedSinceBoot;
@@ -22,40 +23,46 @@
 }
 
 @property (nonatomic) BOOL allowsLocationUse; // @synthesize allowsLocationUse=_allowsLocationUse;
-@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) NSDictionary *dataSourceProperties;
 @property (weak, nonatomic) id<REElementDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logHeader; // @synthesize logHeader=_logHeader;
+@property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *supportedSections;
 @property (readonly, nonatomic, getter=hasUnlockedSinceBoot) BOOL unlockedSinceBoot; // @synthesize unlockedSinceBoot=_unlockedSinceBoot;
 
 + (id)applicationBundleIdentifier;
 + (id)bundleIdentifier;
 + (id)contentAttributes;
++ (unsigned long long)elementContentMode;
 + (CDStruct_2ec95fd7)minimumSupportedSystemVersion;
 + (id)overrideDataSourceImage;
 + (id)overrideLocalizedDataSourceName;
 + (BOOL)supportsPersistence;
 + (BOOL)wantsAppPrewarm;
++ (BOOL)wantsAutomaticFetching;
 + (BOOL)wantsLocationInUseAsserton;
 + (BOOL)wantsPrivateQueue;
 + (BOOL)wantsReloadForFirstDeviceUnlock;
 + (BOOL)wantsReloadForSignificantTimeChange;
 - (void).cxx_destruct;
+- (id)activityDelegate;
+- (void)beginActivity:(id)arg1;
+- (void)beginFetchingData;
 - (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (id)complicationDescriptor;
 - (void)elementWithIdentifierDidBecomeHidden:(id)arg1;
 - (void)elementWithIdentifierWillBecomeVisible:(id)arg1;
+- (void)finishActivity:(id)arg1;
+- (void)finishFetchingData;
 - (void)getElementsDuringDateInterval:(id)arg1 inSection:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getElementsInSection:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)loadLoggingHeader;
 - (void)pause;
 - (void)resume;
+- (void)setActivityDelegate:(id)arg1;
 - (void)setRunning:(BOOL)arg1;
 - (void)setUnlockedSinceBoot:(BOOL)arg1;
 

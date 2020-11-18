@@ -27,10 +27,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UINavigationControllerRefreshControlHostDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double fullHeightOfRefreshControl;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *hostContainerView; // @synthesize hostContainerView=_hostContainerView;
 @property (readonly, weak, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
-@property (strong) UIRefreshControl *refreshControl; // @synthesize refreshControl=_refreshControl;
+@property (weak) UIRefreshControl *refreshControl; // @synthesize refreshControl=_refreshControl;
 @property (strong) NSArray *refreshControlConstraints; // @synthesize refreshControlConstraints=_refreshControlConstraints;
 @property (readonly) BOOL refreshControlInsetsAffectScrollViewRubberBanding;
 @property (nonatomic) double restingHeightOfRefreshControl; // @synthesize restingHeightOfRefreshControl=_restingHeightOfRefreshControl;
@@ -47,12 +48,13 @@ __attribute__((visibility("hidden")))
 - (double)_thresholdForObstructedContentFullAlpha;
 - (double)_thresholdForObstructedContentZeroAlpha;
 - (void)_updateFadeOutProgress;
+- (void)dealloc;
 - (void)decrementInsetHeight:(double)arg1;
 - (void)incrementInsetHeight:(double)arg1;
 - (id)initWithNavigationController:(id)arg1 scrollView:(id)arg2;
 - (BOOL)isHostingRefreshControlOwnedByScrollView:(id)arg1;
 - (void)refreshControl:(id)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3;
-- (void)stopAnimationsAndSetToIdle;
+- (void)stopAnimations;
 
 @end
 

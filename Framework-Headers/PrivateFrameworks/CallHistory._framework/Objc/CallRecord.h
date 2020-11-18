@@ -8,6 +8,7 @@
 
 @class NSDate, NSNumber, NSSet, NSString, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface CallRecord : NSManagedObject
 {
 }
@@ -25,7 +26,6 @@
 @property (copy, nonatomic) NSNumber *handle_type; // @dynamic handle_type;
 @property (copy, nonatomic) NSString *iso_country_code; // @dynamic iso_country_code;
 @property (copy, nonatomic) NSUUID *localParticipantUUID; // @dynamic localParticipantUUID;
-@property (strong, nonatomic) NSString *local_address; // @dynamic local_address;
 @property (copy, nonatomic) NSString *location; // @dynamic location;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
 @property (copy, nonatomic) NSNumber *number_availability; // @dynamic number_availability;
@@ -40,7 +40,9 @@
 @property (readonly, nonatomic) BOOL supportsOutgoingLocalParticipantUUID;
 @property (readonly, nonatomic) BOOL supportsRemoteParticipantHandles;
 @property (readonly, nonatomic) BOOL supportsServiceProvider;
+@property (readonly, nonatomic) BOOL supportsVerificationStatus;
 @property (copy, nonatomic) NSString *unique_id; // @dynamic unique_id;
+@property (copy, nonatomic) NSNumber *verificationStatus; // @dynamic verificationStatus;
 
 + (id)fetchRequest;
 - (id)compositeCallCategoryForContext:(id)arg1;
@@ -49,6 +51,7 @@
 - (id)compositeOutgoingLocalParticipantUUIDForContext:(id)arg1;
 - (id)compositeRemoteParticipantHandlesForContext:(id)arg1;
 - (id)compositeServiceProviderForContext:(id)arg1;
+- (id)compositeVerificationStatusForContext:(id)arg1;
 
 @end
 

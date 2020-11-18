@@ -4,11 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CalendarDaemon/CADChangeTrackingClientId.h>
+#import <objc/NSObject.h>
 
-@interface EKChangeTrackingClientId : CADChangeTrackingClientId
+@class CADChangeTrackingClientId, NSString;
+
+@interface EKChangeTrackingClientId : NSObject
 {
+    NSString *_suffix;
+    NSString *_customClientId;
 }
+
+@property (readonly, nonatomic) CADChangeTrackingClientId *CADChangeTrackingClientId;
+@property (readonly, copy, nonatomic) NSString *customClientId; // @synthesize customClientId=_customClientId;
+@property (readonly, copy, nonatomic) NSString *suffix; // @synthesize suffix=_suffix;
+
+- (void).cxx_destruct;
+- (id)init;
+- (id)initWithCustomClientId:(id)arg1;
+- (id)initWithCustomClientId:(id)arg1 suffix:(id)arg2;
+- (id)initWithSuffix:(id)arg1;
 
 @end
 

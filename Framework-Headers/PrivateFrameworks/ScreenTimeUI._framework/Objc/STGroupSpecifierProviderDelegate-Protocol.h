@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ScreenTimeUI/NSObject-Protocol.h>
+#import <ScreenTimeUI/PSController-Protocol.h>
 
 @class PSConfirmationSpecifier, PSSpecifier, STGroupSpecifierProvider, UIViewController;
 
-@protocol STGroupSpecifierProviderDelegate <NSObject>
+@protocol STGroupSpecifierProviderDelegate <PSController>
 - (void)specifierProvider:(STGroupSpecifierProvider *)arg1 dismissViewControllerAnimated:(BOOL)arg2;
 - (void)specifierProvider:(STGroupSpecifierProvider *)arg1 lazyLoadBundle:(PSSpecifier *)arg2;
 - (void)specifierProvider:(STGroupSpecifierProvider *)arg1 popToViewControllerAnimated:(BOOL)arg2;
 - (void)specifierProvider:(STGroupSpecifierProvider *)arg1 presentViewController:(UIViewController *)arg2 animated:(BOOL)arg3;
 - (void)specifierProvider:(STGroupSpecifierProvider *)arg1 presentViewController:(UIViewController *)arg2 animated:(BOOL)arg3 completion:(void (^)(void))arg4;
+- (void)specifierProvider:(STGroupSpecifierProvider *)arg1 reloadSectionHeaderFootersWithAnimation:(long long)arg2;
 - (void)specifierProvider:(STGroupSpecifierProvider *)arg1 reloadSpecifier:(PSSpecifier *)arg2 animated:(BOOL)arg3;
 - (void)specifierProvider:(STGroupSpecifierProvider *)arg1 showConfirmationViewForSpecifier:(PSConfirmationSpecifier *)arg2;
 - (void)specifierProvider:(STGroupSpecifierProvider *)arg1 showController:(UIViewController *)arg2 animated:(BOOL)arg3;

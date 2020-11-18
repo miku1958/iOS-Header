@@ -11,5 +11,11 @@
 @protocol ICDeviceBrowserDelegate <NSObject>
 - (void)deviceBrowser:(ICDeviceBrowser *)arg1 didAddDevice:(ICDevice *)arg2 moreComing:(BOOL)arg3;
 - (void)deviceBrowser:(ICDeviceBrowser *)arg1 didRemoveDevice:(ICDevice *)arg2 moreGoing:(BOOL)arg3;
+
+@optional
+- (void)deviceBrowser:(ICDeviceBrowser *)arg1 deviceDidChangeName:(ICDevice *)arg2;
+- (void)deviceBrowser:(ICDeviceBrowser *)arg1 deviceDidChangeSharingState:(ICDevice *)arg2;
+- (void)deviceBrowser:(ICDeviceBrowser *)arg1 requestsSelectDevice:(ICDevice *)arg2;
+- (void)deviceBrowserDidEnumerateLocalDevices:(ICDeviceBrowser *)arg1;
 @end
 

@@ -16,6 +16,8 @@
 }
 
 @property (strong, nonatomic) HFEventBuilder<HFLocationEventBuilder> *eventBuilder; // @synthesize eventBuilder=_eventBuilder;
+@property (readonly, nonatomic) BOOL isCustomLocationTrigger;
+@property (readonly, nonatomic) BOOL locationCanBeEdited;
 @property (strong, nonatomic) NSSet *stagedEvents; // @synthesize stagedEvents=_stagedEvents;
 
 + (Class)homeKitRepresentationClass;

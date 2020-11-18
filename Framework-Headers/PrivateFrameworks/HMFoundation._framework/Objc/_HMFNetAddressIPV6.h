@@ -6,6 +6,7 @@
 
 #import <HMFoundation/HMFNetAddressInternal.h>
 
+__attribute__((visibility("hidden")))
 @interface _HMFNetAddressIPV6 : HMFNetAddressInternal
 {
     struct sockaddr_in6 *_internal;
@@ -15,6 +16,7 @@
 
 - (unsigned long long)addressFamily;
 - (id)addressString;
+- (id)dataUsingEncoding:(unsigned long long)arg1;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (id)init;

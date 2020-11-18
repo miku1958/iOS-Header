@@ -10,10 +10,10 @@
 
 @interface MFDAFolderChangeResult : NSObject
 {
+    long long _statusCode;
     NSError *_error;
     NSString *_folderID;
     NSString *_folderName;
-    long long _statusCode;
 }
 
 @property (readonly) NSError *error; // @synthesize error=_error;
@@ -21,7 +21,7 @@
 @property (readonly) NSString *folderName; // @synthesize folderName=_folderName;
 @property (readonly) long long statusCode; // @synthesize statusCode=_statusCode;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithStatusCode:(long long)arg1 error:(id)arg2 folderID:(id)arg3 folderName:(id)arg4;
 - (BOOL)wasSuccessful;

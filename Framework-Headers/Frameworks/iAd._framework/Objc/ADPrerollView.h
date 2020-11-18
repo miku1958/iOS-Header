@@ -15,10 +15,10 @@
 
 @interface ADPrerollView : UIView <UIGestureRecognizerDelegate, ADPrerollTopBarDelegate, ADPrerollBottomBarDelegate>
 {
-    id<ADPrerollViewDelegate> _delegate;
     BOOL _barsVisible;
     BOOL _hasAction;
     BOOL _skipButtonCountingDown;
+    id<ADPrerollViewDelegate> _delegate;
     ADPrerollTopBar *_topBar;
     ADPrerollBottomBar *_bottomBar;
     UIImageView *_swooshView;
@@ -31,7 +31,7 @@
 @property (nonatomic) BOOL barsVisible; // @synthesize barsVisible=_barsVisible;
 @property (strong, nonatomic) ADPrerollBottomBar *bottomBar; // @synthesize bottomBar=_bottomBar;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<ADPrerollViewDelegate> delegate;
+@property (weak, nonatomic) id<ADPrerollViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAction; // @synthesize hasAction=_hasAction;
 @property (readonly) unsigned long long hash;
@@ -43,6 +43,7 @@
 @property (strong, nonatomic) ADPrerollTopBar *topBar; // @synthesize topBar=_topBar;
 
 + (Class)layerClass;
+- (void).cxx_destruct;
 - (void)_firePassiveWatchingTimer:(id)arg1;
 - (BOOL)_layoutForExpandedSize;
 - (void)_privacyButtonWasTapped;
@@ -55,7 +56,6 @@
 - (void)bottomBarPauseButtonTapped:(id)arg1;
 - (void)bottomBarPlayButtonTapped:(id)arg1;
 - (void)bottomBarSkipButtonTapped:(id)arg1;
-- (void)dealloc;
 - (void)displayAsPaused:(BOOL)arg1;
 - (void)enablePrivacyButton;
 - (void)fadeToBlackWithCompletion:(CDUnknownBlockType)arg1;

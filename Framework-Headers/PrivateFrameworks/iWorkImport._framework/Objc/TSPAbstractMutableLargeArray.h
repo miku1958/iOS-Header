@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *allObjects;
 @property (readonly) unsigned long long count;
 @property (nonatomic) unsigned int delayedArchivingPriority;
+@property (readonly, nonatomic) BOOL disableSegmentation;
 @property (readonly, nonatomic) unsigned long long estimatedByteSize; // @synthesize estimatedByteSize=_estimatedByteSize;
 @property (readonly, nonatomic) BOOL hasDelayedArchivingPriority;
 @property (readonly, nonatomic) BOOL hasMaxSegmentElementCount;

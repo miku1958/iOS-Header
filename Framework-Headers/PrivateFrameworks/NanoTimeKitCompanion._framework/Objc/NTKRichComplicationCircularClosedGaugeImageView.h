@@ -6,21 +6,23 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
 
-@class NTKRichComplicationRingProgressView, UIImageView;
+@class NTKRichComplicationImageView, NTKRichComplicationRingProgressView;
 
 @interface NTKRichComplicationCircularClosedGaugeImageView : NTKRichComplicationCircularBaseView
 {
-    UIImageView *_imageView;
+    NTKRichComplicationImageView *_imageView;
     NTKRichComplicationRingProgressView *_progressView;
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
 - (void)layoutSubviews;
+- (void)setPaused:(BOOL)arg1;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

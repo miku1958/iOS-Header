@@ -18,10 +18,12 @@
         unsigned int deleteMultiple:1;
     } _has;
     BOOL _deleteMultiple;
+    BOOL __encodeLegacyGloryData;
     _INPBIntentMetadata *_intentMetadata;
     _INPBTimer *_targetTimer;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL deleteMultiple; // @synthesize deleteMultiple=_deleteMultiple;
 @property (readonly, copy) NSString *description;
@@ -33,9 +35,12 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBTimer *targetTimer; // @synthesize targetTimer=_targetTimer;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

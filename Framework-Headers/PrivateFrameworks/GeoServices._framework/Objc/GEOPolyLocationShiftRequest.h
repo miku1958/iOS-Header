@@ -15,8 +15,9 @@
     GEOLatLng *_location;
 }
 
-@property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
+@property (strong, nonatomic) GEOLatLng *location;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -25,6 +26,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_dispose;
 - (id)copy;
+- (void)dealloc;
 - (BOOL)isEqual:(id)arg1;
 
 @end

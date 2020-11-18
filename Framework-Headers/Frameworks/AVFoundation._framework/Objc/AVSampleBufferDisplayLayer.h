@@ -27,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL outputObscuredDueToInsufficientExternalProtection;
 @property (nonatomic) BOOL preventsCapture;
+@property (nonatomic) BOOL preventsDisplaySleepDuringVideoPlayback;
 @property (readonly, getter=isReadyForMoreMediaData) BOOL readyForMoreMediaData;
 @property (readonly, nonatomic) long long status;
 @property (readonly) Class superclass;
@@ -39,6 +40,8 @@
 + (BOOL)automaticallyNotifiesObserversOfStatus;
 - (void)_addAnimationsForContentLayer:(id)arg1 size:(struct CGSize)arg2 gravity:(id)arg3;
 - (void)_addFigVideoQueueListeners;
+- (void)_callOldPrerollCompletionHandlerWithSuccess:(BOOL)arg1 andSetNewPrerollCompletionHandler:(CDUnknownBlockType)arg2 forRequestID:(int)arg3;
+- (void)_completedDecodeForPrerollForRequestID:(int)arg1;
 - (int)_createVideoQueue;
 - (void)_didFinishSuspension:(id)arg1;
 - (void)_flushComplete;
@@ -59,11 +62,11 @@
 - (void)copyFigSampleBufferAudioRenderer:(struct OpaqueFigSampleBufferAudioRenderer **)arg1;
 - (void)dealloc;
 - (void)enqueueSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)finalize;
 - (void)flush;
 - (void)flushAndRemoveImage;
 - (void)flushWithRemovalOfDisplayedImage:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)prerollDecodeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)setBounds:(struct CGRect)arg1;
 - (BOOL)setRenderSynchronizer:(id)arg1 error:(id *)arg2;

@@ -17,18 +17,20 @@ __attribute__((visibility("hidden")))
     GEOPDVenueIdentifier *_venueFilter;
     int _venueSearchType;
     struct {
-        unsigned int venueSearchType:1;
-    } _has;
+        unsigned int has_venueSearchType:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasVenueFilter;
 @property (nonatomic) BOOL hasVenueSearchType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDVenueIdentifier *venueFilter; // @synthesize venueFilter=_venueFilter;
-@property (nonatomic) int venueSearchType; // @synthesize venueSearchType=_venueSearchType;
+@property (strong, nonatomic) GEOPDVenueIdentifier *venueFilter;
+@property (nonatomic) int venueSearchType;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsVenueSearchType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)venueSearchTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

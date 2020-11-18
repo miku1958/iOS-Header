@@ -19,10 +19,12 @@
     TUCallProviderManager *_callProviderManager;
     NSObject<OS_dispatch_queue> *_queue;
     NSMapTable *_delegateToQueue;
+    unsigned long long _dataSourceExclusions;
 }
 
 @property (strong, nonatomic) TUCallProviderManager *callProviderManager; // @synthesize callProviderManager=_callProviderManager;
 @property (strong, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
+@property (nonatomic) unsigned long long dataSourceExclusions; // @synthesize dataSourceExclusions=_dataSourceExclusions;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSMapTable *delegateToQueue; // @synthesize delegateToQueue=_delegateToQueue;
 @property (readonly, copy) NSString *description;

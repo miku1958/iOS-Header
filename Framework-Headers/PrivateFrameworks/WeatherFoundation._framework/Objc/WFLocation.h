@@ -42,6 +42,7 @@
 @property (copy, nonatomic) NSString *stateAbbreviation; // @synthesize stateAbbreviation=_stateAbbreviation;
 @property (copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (copy, nonatomic) NSString *weatherDisplayName; // @synthesize weatherDisplayName=_weatherDisplayName;
+@property (readonly, nonatomic) NSString *wf_weatherChannelGeocodeValue;
 
 + (long long)currentArchiveVersion;
 + (id)knownKeys;
@@ -56,7 +57,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithCloudDictionaryRepresentation:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocalDataRepresentation:(id)arg1;

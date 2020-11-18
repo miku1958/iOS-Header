@@ -39,6 +39,7 @@
 - (id)recordsWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
 - (id)relatedScopedIdentifierForRecordWithScopedIdentifier:(id)arg1;
 - (id)resourceOfType:(unsigned long long)arg1 forRecordWithScopedIdentifier:(id)arg2 error:(id *)arg3;
+- (id)resourceOfType:(unsigned long long)arg1 forRecordWithScopedIdentifier:(id)arg2 recordClass:(Class *)arg3 error:(id *)arg4;
 - (unsigned long long)scopeType;
 - (id)status;
 - (id)statusDictionary;

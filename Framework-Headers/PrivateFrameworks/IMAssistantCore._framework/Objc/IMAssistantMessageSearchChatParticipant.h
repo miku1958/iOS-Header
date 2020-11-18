@@ -21,7 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithHandle:(id)arg1 contactIdentifiers:(id)arg2 isMe:(BOOL)arg3;
-- (BOOL)matchesPerson:(id)arg1;
+- (BOOL)matchesPerson:(id)arg1 withUnifiedContactIdentifiers:(id)arg2;
 
 @end
 

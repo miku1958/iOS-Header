@@ -10,53 +10,76 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBTask-Protocol.h>
 
-@class NSString, _INPBDataString, _INPBDateTime, _INPBSpatialEventTrigger, _INPBTemporalEventTrigger;
+@class NSString, _INPBContactEventTrigger, _INPBDataString, _INPBDateTime, _INPBSpatialEventTrigger, _INPBTemporalEventTrigger;
 
 @interface _INPBTask : PBCodable <_INPBTask, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int priority:1;
         unsigned int status:1;
+        unsigned int taskReference:1;
         unsigned int taskType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
+    int _priority;
     int _status;
+    int _taskReference;
     int _taskType;
+    _INPBContactEventTrigger *_contactEventTrigger;
     _INPBDateTime *_createdDateTime;
     NSString *_identifier;
     _INPBDateTime *_modifiedDateTime;
+    NSString *_parentIdentifier;
     _INPBSpatialEventTrigger *_spatialEventTrigger;
     _INPBTemporalEventTrigger *_temporalEventTrigger;
     _INPBDataString *_title;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (strong, nonatomic) _INPBContactEventTrigger *contactEventTrigger; // @synthesize contactEventTrigger=_contactEventTrigger;
 @property (strong, nonatomic) _INPBDateTime *createdDateTime; // @synthesize createdDateTime=_createdDateTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasContactEventTrigger;
 @property (readonly, nonatomic) BOOL hasCreatedDateTime;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasModifiedDateTime;
+@property (readonly, nonatomic) BOOL hasParentIdentifier;
+@property (nonatomic) BOOL hasPriority;
 @property (readonly, nonatomic) BOOL hasSpatialEventTrigger;
 @property (nonatomic) BOOL hasStatus;
+@property (nonatomic) BOOL hasTaskReference;
 @property (nonatomic) BOOL hasTaskType;
 @property (readonly, nonatomic) BOOL hasTemporalEventTrigger;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) _INPBDateTime *modifiedDateTime; // @synthesize modifiedDateTime=_modifiedDateTime;
+@property (copy, nonatomic) NSString *parentIdentifier; // @synthesize parentIdentifier=_parentIdentifier;
+@property (nonatomic) int priority; // @synthesize priority=_priority;
 @property (strong, nonatomic) _INPBSpatialEventTrigger *spatialEventTrigger; // @synthesize spatialEventTrigger=_spatialEventTrigger;
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (readonly) Class superclass;
+@property (nonatomic) int taskReference; // @synthesize taskReference=_taskReference;
 @property (nonatomic) int taskType; // @synthesize taskType=_taskType;
 @property (strong, nonatomic) _INPBTemporalEventTrigger *temporalEventTrigger; // @synthesize temporalEventTrigger=_temporalEventTrigger;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (int)StringAsPriority:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
+- (int)StringAsTaskReference:(id)arg1;
 - (int)StringAsTaskType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)priorityAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
+- (id)taskReferenceAsString:(int)arg1;
 - (id)taskTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

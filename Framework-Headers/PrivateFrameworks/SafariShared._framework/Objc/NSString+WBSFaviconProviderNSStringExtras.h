@@ -7,12 +7,52 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (WBSFaviconProviderNSStringExtras)
+
+@property (readonly, nonatomic) BOOL safari_isPDFMIMEType;
+@property (readonly, copy, nonatomic) NSString *safari_stringByRemovingExcessWhitespace;
+@property (readonly, copy, nonatomic) NSString *safari_stringByRemovingParenthesizedDomain;
+@property (readonly, copy, nonatomic) NSString *safari_userVisibleTitleIgnoringFullURLString;
+
++ (id)safari_localizedStringFromComponents:(id)arg1 usingConjunctionForFinalJoiner:(BOOL)arg2;
++ (id)safari_stringByBase64EncodingData:(id)arg1;
++ (id)safari_stringWithJSValue:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2;
++ (id)safari_stringWithJSValue:(struct OpaqueJSValue *)arg1 context:(struct OpaqueJSContext *)arg2 nullStringPolicy:(long long)arg3;
++ (id)safari_stringWithUTF8Bytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)_safari_variantsOfURLStringInFaviconFormat:(BOOL)arg1;
+- (id)safari_bestLanguageTag;
+- (id)safari_bestURLForUserTypedString;
+- (id)safari_bestURLStringForUserTypedString;
+- (id)safari_canonicalURLForFrequentlyVisitedSites;
+- (id)safari_canonicalURLStringForFrequentlyVisitedSites;
+- (id)safari_containedURLs;
 - (id)safari_domainFaviconURLStringVariantsForFaviconDatabase;
 - (id)safari_domainURLStringPrefixVariantsForFaviconDatabase;
+- (void)safari_enumerateSubdomainRangesInHostUsingBlock:(CDUnknownBlockType)arg1;
+- (id)safari_fixedStringByExpandingTildeInPathToUserHomeDirectory;
+- (BOOL)safari_hasDirectionalPrefix;
+- (BOOL)safari_isJavaScriptURLString;
+- (BOOL)safari_isPathExtensionAllowedForAnalytics;
+- (BOOL)safari_isVisualDuplicateOfURLString:(id)arg1;
+- (BOOL)safari_looksLikeObscuredPassword;
+- (id)safari_md5Hash;
+- (id)safari_normalizedParsecInputString;
+- (id)safari_possibleTopLevelDomainCorrectionForUserTypedString;
+- (id)safari_scriptIfJavaScriptURLString;
+- (id)safari_sha256Hash;
+- (id)safari_stringByDeletingStartingSlash;
+- (id)safari_stringByDeletingTrailingSlash;
+- (id)safari_stringByFoldingWideCharactersAndNormalizing;
 - (id)safari_stringByFormattingForFaviconDatabase;
 - (id)safari_stringByFormattingForIconControllerDatabase;
+- (id)safari_stringByRemovingDirectionalPrefix;
+- (id)safari_stringByRemovingTopLevelDomainFromHost;
+- (id)safari_stringByRemovingUnnecessaryCharactersFromUserTypedURLString;
+- (id)safari_stringBySubstitutingAmpersandAndAngleBracketsForHTMLEntities;
+- (id)safari_stringBySubstitutingHTMLEntitiesForAmpersandAndAngleBrackets;
+- (id)safari_stringEncodedAsURLQueryParameter;
+- (id)safari_stringWithFont:(id)arg1 forWidth:(double)arg2 lineBreakMode:(long long)arg3;
 - (id)safari_urlStringVariantsForFaviconDatabase;
 - (id)safari_urlStringVariantsForIconControllerDatabase;
+- (id)safari_userVisibleURL;
 @end
 

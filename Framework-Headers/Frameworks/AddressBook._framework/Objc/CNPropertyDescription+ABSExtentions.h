@@ -11,6 +11,6 @@
 - (id)CNValueFromABSValue:(void *)arg1;
 - (BOOL)absPropertyID:(int *)arg1;
 - (unsigned int)absPropertyType;
-- (BOOL)isValidABSValue:(void *)arg1 error:(struct __CFError **)arg2;
+- (BOOL)convertABSValue:(void *)arg1 toCNValue:(id *)arg2 error:(struct __CFError **)arg3;
 @end
 

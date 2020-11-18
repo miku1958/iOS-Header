@@ -7,15 +7,20 @@
 #import <NanoTimeKitCompanion/_Geometry.h>
 
 @class NSNumber;
+@protocol MTLTexture;
 
 @interface _Background : _Geometry
 {
     NSNumber *_numbers;
     NSNumber *_glow;
+    id<MTLTexture> _numbersTex;
+    id<MTLTexture> _glowTex;
 }
 
 @property (strong, nonatomic) NSNumber *glow; // @synthesize glow=_glow;
+@property (strong, nonatomic) id<MTLTexture> glowTex; // @synthesize glowTex=_glowTex;
 @property (strong, nonatomic) NSNumber *numbers; // @synthesize numbers=_numbers;
+@property (strong, nonatomic) id<MTLTexture> numbersTex; // @synthesize numbersTex=_numbersTex;
 
 - (void).cxx_destruct;
 

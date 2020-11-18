@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/AUAudioUnit.h>
+#import <AudioToolboxCore/AUAudioUnit.h>
 
 @class AUParameterTree, AUV2BridgeBusArray, NSObject;
 @protocol OS_dispatch_queue;
@@ -15,14 +15,16 @@
     struct AUListenerBase *_eventListener;
     struct AUListenerBase *_parameterListener;
     BOOL _removingObserverWithContext;
-    struct OpaqueAudioComponentInstance *_audioUnit;
     BOOL _audioUnitIsOwned;
     AUV2BridgeBusArray *_inputBusses;
     AUV2BridgeBusArray *_outputBusses;
     AUParameterTree *_cachedParameterTree;
     struct unique_ptr<AUAudioUnitV2Bridge_Renderer, std::__1::default_delete<AUAudioUnitV2Bridge_Renderer>> _renderer;
     CDUnknownBlockType _MIDIOutputEventBlock;
+    struct OpaqueAudioComponentInstance *_audioUnit;
 }
+
+@property (readonly, nonatomic) struct OpaqueAudioComponentInstance *audioUnit; // @synthesize audioUnit=_audioUnit;
 
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (id).cxx_construct;
@@ -52,6 +54,8 @@
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
 - (void)reset;
+- (void)setFullState:(id)arg1;
+- (void)setFullStateForDocument:(id)arg1;
 - (void)setMIDIOutputEventBlock:(CDUnknownBlockType)arg1;
 
 @end

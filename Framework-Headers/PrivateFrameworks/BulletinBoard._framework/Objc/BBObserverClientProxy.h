@@ -64,6 +64,7 @@
 - (void)setObserverFeed:(unsigned long long)arg1 attachToLightsAndSirensGateway:(id)arg2;
 - (id)transactionBulletinIDs;
 - (void)updateBulletin:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)updateGlobalSettings:(id)arg1;
 - (void)updateSectionInfo:(id)arg1;
 - (void)updateSectionParameters:(id)arg1 forSectionID:(id)arg2;
 

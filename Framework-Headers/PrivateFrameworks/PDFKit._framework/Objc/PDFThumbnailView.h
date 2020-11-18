@@ -7,51 +7,34 @@
 #import <UIKit/UIView.h>
 
 #import <PDFKit/NSCoding-Protocol.h>
-#import <PDFKit/PDFCollectionViewDataSource-Protocol.h>
-#import <PDFKit/PDFCollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSString, PDFThumbnailViewPrivateVars, PDFView, UIColor;
+@class NSArray, PDFThumbnailViewPrivate, PDFView, UIColor;
 
-@interface PDFThumbnailView : UIView <PDFCollectionViewDelegate, PDFCollectionViewDataSource, NSCoding>
+@interface PDFThumbnailView : UIView <NSCoding>
 {
-    PDFThumbnailViewPrivateVars *_private;
-    struct UIEdgeInsets _contentInset;
+    PDFThumbnailViewPrivate *_private;
 }
 
-@property (strong, nonatomic) PDFView *PDFView;
+@property (weak, nonatomic) PDFView *PDFView;
 @property (copy, nonatomic) UIColor *backgroundColor;
-@property (nonatomic) struct UIEdgeInsets contentInset; // @synthesize contentInset=_contentInset;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) struct UIEdgeInsets contentInset;
 @property (nonatomic) long long layoutMode;
 @property (readonly, nonatomic) NSArray *selectedPages;
-@property (readonly) Class superclass;
 @property (nonatomic) struct CGSize thumbnailSize;
 
 - (void).cxx_destruct;
 - (void)_commonInit;
-- (CDUnknownBlockType)_newIconSetterBlockForIconView:(id)arg1 andIndexPath:(id)arg2;
-- (void)_pdfDocumentWasUnlocked:(id)arg1;
-- (void)configureItem:(id)arg1 forRepresentedObject:(id)arg2 andViewIndexPath:(id)arg3 usingOptionalImage:(id)arg4;
-- (id)currentIndexPath;
+- (void)_updateLayout;
+- (void)currentPageChanged:(id)arg1;
 - (void)dealloc;
-- (void)didEndDisplayingItem:(id)arg1;
-- (void)didSelectItemAtIndexPath:(id)arg1;
-- (void)documentChanged;
-- (void)documentUnlocked;
+- (void)documentChanged:(id)arg1;
+- (void)documentMutated:(id)arg1;
+- (void)documentUnlocked:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)indexPathForRepresentedObject:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (long long)numberOfItemsInSection:(long long)arg1;
-- (id)pdfView;
-- (id)representedObjectAtIndexPath:(id)arg1;
-- (id)scrubbingAtFraction:(double)arg1 betweenIndexPath:(id)arg2 andIndexPath:(id)arg3 outDiscreteFraction:(double *)arg4;
-- (void)selectionChanged;
-- (void)setHorizontalMode:(BOOL)arg1;
-- (void)setPdfView:(id)arg1;
+- (void)pageChanged:(id)arg1;
 
 @end
 

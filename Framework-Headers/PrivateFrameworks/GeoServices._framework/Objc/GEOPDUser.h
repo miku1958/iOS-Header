@@ -8,23 +8,30 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPhoto, NSString, PBUnknownFields;
+@class GEOPDPhoto, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDUser : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDPhoto *_image;
     NSString *_name;
+    CDStruct_f720eac6 _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasImage;
 @property (readonly, nonatomic) BOOL hasName;
-@property (strong, nonatomic) GEOPDPhoto *image; // @synthesize image=_image;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) GEOPDPhoto *image;
+@property (strong, nonatomic) NSString *name;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readImage;
+- (void)_readName;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

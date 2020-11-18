@@ -6,11 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@interface CNEntitlementVerifier : NSObject
+#import <ContactsFoundation/CNEntitlementVerification-Protocol.h>
+
+@class NSString;
+
+@interface CNEntitlementVerifier : NSObject <CNEntitlementVerification>
 {
 }
 
-+ (BOOL)auditToken:(CDStruct_6ad76789)arg1 hasBooleanEntitlement:(id)arg2 error:(id *)arg3;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (BOOL)auditToken:(CDStruct_4c969caf)arg1 hasBooleanEntitlement:(id)arg2 error:(id *)arg3;
++ (BOOL)auditToken:(CDStruct_4c969caf)arg1 isFirstOrSecondPartyWithError:(id *)arg2;
 + (BOOL)currentProcessHasBooleanEntitlement:(id)arg1 error:(id *)arg2;
 + (BOOL)secTask:(struct __SecTask *)arg1 hasBooleanEntitlement:(id)arg2 error:(id *)arg3;
 

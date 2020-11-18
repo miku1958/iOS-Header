@@ -6,28 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIViewController;
-@protocol PXActionPerformerDelegate;
+#import <PhotosUICore/PXActivityActionDelegate-Protocol.h>
 
-@interface PXActionPerformer : NSObject
+@class NSString;
+@protocol PXActionPerformerDelegate, PXAnonymousViewController;
+
+@interface PXActionPerformer : NSObject <PXActivityActionDelegate>
 {
     CDUnknownBlockType _completionHandler;
     BOOL _success;
     BOOL _cancellable;
     NSString *_actionType;
+    id _sender;
     unsigned long long _state;
     id<PXActionPerformerDelegate> _delegate;
-    UIViewController *_presentedViewController;
+    struct NSObject *_presentedViewController;
     CDUnknownBlockType _viewControllerPresenter;
     CDUnknownBlockType _viewControllerDismisser;
 }
 
 @property (readonly, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
+@property (readonly, nonatomic) NSString *activitySystemImageName;
+@property (readonly, nonatomic) NSString *activityType;
 @property (readonly, nonatomic, getter=isCancellable) BOOL cancellable; // @synthesize cancellable=_cancellable;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXActionPerformerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<PXAnonymousViewController> *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
+@property (weak, nonatomic) id sender; // @synthesize sender=_sender;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) BOOL success; // @synthesize success=_success;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType viewControllerDismisser; // @synthesize viewControllerDismisser=_viewControllerDismisser;
 @property (copy, nonatomic) CDUnknownBlockType viewControllerPresenter; // @synthesize viewControllerPresenter=_viewControllerPresenter;
 
@@ -38,16 +48,22 @@
 - (void)_handleStepFinished:(unsigned long long)arg1 withSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)_performUnlockIfNeeded;
 - (void)_transitionToState:(unsigned long long)arg1 withSuccess:(BOOL)arg2 error:(id)arg3;
+- (id)activity;
+- (id)alertAction;
+- (BOOL)canPerformWithActivityItems:(id)arg1 forActivity:(id)arg2;
 - (void)cancelActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)completeBackgroundTaskWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)completeUserInteractionTaskWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (BOOL)dismissViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)dismissViewController:(struct NSObject *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithActionType:(id)arg1;
+- (id)localizedTitleForUseCase:(unsigned long long)arg1;
 - (void)performActionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)performActivity:(id)arg1;
 - (void)performBackgroundTask;
 - (void)performUserInteractionTask;
-- (BOOL)presentViewController:(id)arg1;
+- (BOOL)performerResetsAfterCompletion;
+- (BOOL)presentViewController:(struct NSObject *)arg1;
 - (BOOL)requiresUnlockedDevice;
 
 @end

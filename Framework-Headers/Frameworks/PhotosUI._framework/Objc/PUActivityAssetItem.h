@@ -6,19 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotosUI/NSCopying-Protocol.h>
+
 @class PHAsset;
 
-@interface PUActivityAssetItem : NSObject
+@interface PUActivityAssetItem : NSObject <NSCopying>
 {
-    BOOL _useStillImage;
+    BOOL _excludeLiveness;
+    BOOL _excludeLocation;
     PHAsset *_asset;
 }
 
 @property (readonly, nonatomic) PHAsset *asset; // @synthesize asset=_asset;
-@property (nonatomic) BOOL useStillImage; // @synthesize useStillImage=_useStillImage;
+@property (nonatomic) BOOL excludeLiveness; // @synthesize excludeLiveness=_excludeLiveness;
+@property (nonatomic) BOOL excludeLocation; // @synthesize excludeLocation=_excludeLocation;
 
 + (id)itemsForAssets:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithAsset:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

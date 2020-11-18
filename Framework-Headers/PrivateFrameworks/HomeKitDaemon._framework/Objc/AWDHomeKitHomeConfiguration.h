@@ -13,7 +13,15 @@
 @interface AWDHomeKitHomeConfiguration : PBCodable <NSCopying>
 {
     NSMutableArray *_eventTriggers;
+    int _networkProtectionStatus;
     unsigned int _numAccessories;
+    unsigned int _numAccessoriesNetworkProtectionAutoFullAccess;
+    unsigned int _numAccessoriesNetworkProtectionAutoProtectedHomeKitLAN;
+    unsigned int _numAccessoriesNetworkProtectionAutoProtectedMainLAN;
+    unsigned int _numAccessoriesNetworkProtectionFullAccess;
+    unsigned int _numAccessoriesNetworkProtectionHomeKitOnly;
+    unsigned int _numAccessoriesNetworkProtectionUnprotected;
+    unsigned int _numAccessoriesWiFiPPSKCredential;
     unsigned int _numAccessoryServiceGroups;
     unsigned int _numAdmins;
     unsigned int _numAppleAudioAccessories;
@@ -34,6 +42,7 @@
     unsigned int _numRooms;
     unsigned int _numScenes;
     unsigned int _numServices;
+    unsigned int _numShortcuts;
     unsigned int _numTargetControllers;
     unsigned int _numTelevisionAccessories;
     unsigned int _numTimerTriggers;
@@ -46,7 +55,15 @@
     BOOL _isResidentAvailable;
     BOOL _primaryReportingDevice;
     struct {
+        unsigned int networkProtectionStatus:1;
         unsigned int numAccessories:1;
+        unsigned int numAccessoriesNetworkProtectionAutoFullAccess:1;
+        unsigned int numAccessoriesNetworkProtectionAutoProtectedHomeKitLAN:1;
+        unsigned int numAccessoriesNetworkProtectionAutoProtectedMainLAN:1;
+        unsigned int numAccessoriesNetworkProtectionFullAccess:1;
+        unsigned int numAccessoriesNetworkProtectionHomeKitOnly:1;
+        unsigned int numAccessoriesNetworkProtectionUnprotected:1;
+        unsigned int numAccessoriesWiFiPPSKCredential:1;
         unsigned int numAccessoryServiceGroups:1;
         unsigned int numAdmins:1;
         unsigned int numAppleAudioAccessories:1;
@@ -67,6 +84,7 @@
         unsigned int numRooms:1;
         unsigned int numScenes:1;
         unsigned int numServices:1;
+        unsigned int numShortcuts:1;
         unsigned int numTargetControllers:1;
         unsigned int numTelevisionAccessories:1;
         unsigned int numTimerTriggers:1;
@@ -85,7 +103,15 @@
 @property (nonatomic) BOOL hasIsOwner;
 @property (nonatomic) BOOL hasIsPrimaryResident;
 @property (nonatomic) BOOL hasIsResidentAvailable;
+@property (nonatomic) BOOL hasNetworkProtectionStatus;
 @property (nonatomic) BOOL hasNumAccessories;
+@property (nonatomic) BOOL hasNumAccessoriesNetworkProtectionAutoFullAccess;
+@property (nonatomic) BOOL hasNumAccessoriesNetworkProtectionAutoProtectedHomeKitLAN;
+@property (nonatomic) BOOL hasNumAccessoriesNetworkProtectionAutoProtectedMainLAN;
+@property (nonatomic) BOOL hasNumAccessoriesNetworkProtectionFullAccess;
+@property (nonatomic) BOOL hasNumAccessoriesNetworkProtectionHomeKitOnly;
+@property (nonatomic) BOOL hasNumAccessoriesNetworkProtectionUnprotected;
+@property (nonatomic) BOOL hasNumAccessoriesWiFiPPSKCredential;
 @property (nonatomic) BOOL hasNumAccessoryServiceGroups;
 @property (nonatomic) BOOL hasNumAdmins;
 @property (nonatomic) BOOL hasNumAppleAudioAccessories;
@@ -106,6 +132,7 @@
 @property (nonatomic) BOOL hasNumRooms;
 @property (nonatomic) BOOL hasNumScenes;
 @property (nonatomic) BOOL hasNumServices;
+@property (nonatomic) BOOL hasNumShortcuts;
 @property (nonatomic) BOOL hasNumTargetControllers;
 @property (nonatomic) BOOL hasNumTelevisionAccessories;
 @property (nonatomic) BOOL hasNumTimerTriggers;
@@ -117,7 +144,15 @@
 @property (nonatomic) BOOL isOwner; // @synthesize isOwner=_isOwner;
 @property (nonatomic) BOOL isPrimaryResident; // @synthesize isPrimaryResident=_isPrimaryResident;
 @property (nonatomic) BOOL isResidentAvailable; // @synthesize isResidentAvailable=_isResidentAvailable;
+@property (nonatomic) int networkProtectionStatus; // @synthesize networkProtectionStatus=_networkProtectionStatus;
 @property (nonatomic) unsigned int numAccessories; // @synthesize numAccessories=_numAccessories;
+@property (nonatomic) unsigned int numAccessoriesNetworkProtectionAutoFullAccess; // @synthesize numAccessoriesNetworkProtectionAutoFullAccess=_numAccessoriesNetworkProtectionAutoFullAccess;
+@property (nonatomic) unsigned int numAccessoriesNetworkProtectionAutoProtectedHomeKitLAN; // @synthesize numAccessoriesNetworkProtectionAutoProtectedHomeKitLAN=_numAccessoriesNetworkProtectionAutoProtectedHomeKitLAN;
+@property (nonatomic) unsigned int numAccessoriesNetworkProtectionAutoProtectedMainLAN; // @synthesize numAccessoriesNetworkProtectionAutoProtectedMainLAN=_numAccessoriesNetworkProtectionAutoProtectedMainLAN;
+@property (nonatomic) unsigned int numAccessoriesNetworkProtectionFullAccess; // @synthesize numAccessoriesNetworkProtectionFullAccess=_numAccessoriesNetworkProtectionFullAccess;
+@property (nonatomic) unsigned int numAccessoriesNetworkProtectionHomeKitOnly; // @synthesize numAccessoriesNetworkProtectionHomeKitOnly=_numAccessoriesNetworkProtectionHomeKitOnly;
+@property (nonatomic) unsigned int numAccessoriesNetworkProtectionUnprotected; // @synthesize numAccessoriesNetworkProtectionUnprotected=_numAccessoriesNetworkProtectionUnprotected;
+@property (nonatomic) unsigned int numAccessoriesWiFiPPSKCredential; // @synthesize numAccessoriesWiFiPPSKCredential=_numAccessoriesWiFiPPSKCredential;
 @property (nonatomic) unsigned int numAccessoryServiceGroups; // @synthesize numAccessoryServiceGroups=_numAccessoryServiceGroups;
 @property (nonatomic) unsigned int numAdmins; // @synthesize numAdmins=_numAdmins;
 @property (nonatomic) unsigned int numAppleAudioAccessories; // @synthesize numAppleAudioAccessories=_numAppleAudioAccessories;
@@ -138,6 +173,7 @@
 @property (nonatomic) unsigned int numRooms; // @synthesize numRooms=_numRooms;
 @property (nonatomic) unsigned int numScenes; // @synthesize numScenes=_numScenes;
 @property (nonatomic) unsigned int numServices; // @synthesize numServices=_numServices;
+@property (nonatomic) unsigned int numShortcuts; // @synthesize numShortcuts=_numShortcuts;
 @property (nonatomic) unsigned int numTargetControllers; // @synthesize numTargetControllers=_numTargetControllers;
 @property (nonatomic) unsigned int numTelevisionAccessories; // @synthesize numTelevisionAccessories=_numTelevisionAccessories;
 @property (nonatomic) unsigned int numTimerTriggers; // @synthesize numTimerTriggers=_numTimerTriggers;
@@ -149,6 +185,7 @@
 
 + (Class)eventTriggersType;
 - (void).cxx_destruct;
+- (int)StringAsNetworkProtectionStatus:(id)arg1;
 - (void)addEventTriggers:(id)arg1;
 - (void)clearEventTriggers;
 - (void)copyTo:(id)arg1;
@@ -160,6 +197,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)networkProtectionStatusAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

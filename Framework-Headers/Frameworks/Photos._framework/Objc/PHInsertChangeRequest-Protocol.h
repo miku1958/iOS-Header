@@ -6,15 +6,16 @@
 
 #import <Photos/PHChangeRequest-Protocol.h>
 
-@class NSManagedObject, PHChangeRequestHelper, PLPhotoLibrary;
+@class NSManagedObject, PLPhotoLibrary;
 
 @protocol PHInsertChangeRequest <PHChangeRequest>
 
-@property (readonly, nonatomic) PHChangeRequestHelper *helper;
-@property (readonly, getter=isNew) BOOL new;
+@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
+@property (readonly) BOOL isNewRequest;
 
 + (BOOL)canGenerateUUIDWithoutEntitlements;
 - (NSManagedObject *)createManagedObjectForInsertIntoPhotoLibrary:(PLPhotoLibrary *)arg1 error:(id *)arg2;
+- (void)finalizeRequestWithBatchSuccess:(BOOL)arg1;
 - (id)initForNewObject;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(PLPhotoLibrary *)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(PLPhotoLibrary *)arg1 error:(id *)arg2;

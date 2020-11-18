@@ -11,16 +11,16 @@
 @interface _WBSSiteMetadataToken : NSObject
 {
     BOOL _isOneTimeRequest;
+    BOOL _didReceiveResponse;
     WBSSiteMetadataRequest *_request;
     long long _priority;
     CDUnknownBlockType _responseHandler;
     NSTimer *_delayTimer;
-    long long _lastResponseType;
 }
 
 @property (strong, nonatomic) NSTimer *delayTimer; // @synthesize delayTimer=_delayTimer;
+@property (nonatomic) BOOL didReceiveResponse; // @synthesize didReceiveResponse=_didReceiveResponse;
 @property (readonly, nonatomic) BOOL isOneTimeRequest; // @synthesize isOneTimeRequest=_isOneTimeRequest;
-@property (nonatomic) long long lastResponseType; // @synthesize lastResponseType=_lastResponseType;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) WBSSiteMetadataRequest *request; // @synthesize request=_request;
 @property (readonly, copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;

@@ -25,7 +25,6 @@
 
 + (id)defaultFilePath;
 - (void).cxx_destruct;
-- (void)_deleteSuppressedEntriesFile;
 - (BOOL)_loadSuppressedEntries;
 - (BOOL)_saveSuppressedEntries;
 - (id)init;
@@ -35,6 +34,8 @@
 - (void)purge;
 - (BOOL)saveSuppressedEntries;
 - (BOOL)suppressEntry:(id)arg1 forTime:(double)arg2;
+- (id)test_dateUntilSuppressedEntry:(id)arg1;
+- (void)test_deleteSuppressedEntriesFile;
 
 @end
 

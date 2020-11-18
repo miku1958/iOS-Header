@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) BOOL cameraCapable;
 @property (readonly, nonatomic) BOOL cameraConnected;
 @property (nonatomic) id<IMAVControllerDelegate> delegate;
-@property (readonly, strong, nonatomic) NSArray *delegates;
+@property (readonly, nonatomic) NSArray *delegates;
 @property (readonly, nonatomic) BOOL hasActiveConference;
 @property (readonly, nonatomic) BOOL hasRunningConference;
 @property (readonly, nonatomic) BOOL microphoneCapable;
@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) unsigned int overallChatState;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_dumpCaps;
 - (void)_receivedPendingACRequests;
 - (void)_receivedPendingVCRequests;
@@ -43,7 +44,6 @@
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)blockOnPendingVCInvitationsWithCapabilities:(long long)arg1;
 - (void)cancelVCRequestWithBuddy:(id)arg1 vcProps:(id)arg2 forAccount:(id)arg3 conferenceID:(id)arg4 reason:(id)arg5;
-- (void)dealloc;
 - (void)declineVCRequestWithBuddy:(id)arg1 response:(unsigned int)arg2 vcProps:(id)arg3 conferenceID:(id)arg4;
 - (void)declineVCRequestWithBuddy:(id)arg1 response:(unsigned int)arg2 vcProps:(id)arg3 forAccount:(id)arg4 conferenceID:(id)arg5;
 - (id)init;

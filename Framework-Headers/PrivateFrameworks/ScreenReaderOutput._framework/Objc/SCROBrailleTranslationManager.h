@@ -6,52 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSRecursiveLock, NSString;
-@protocol SCROBrailleTranslatorProtocol;
+@class BRLTTranslationService, NSString;
+@protocol OS_dispatch_queue;
 
 @interface SCROBrailleTranslationManager : NSObject
 {
-    NSRecursiveLock *_contentLock;
-    id<SCROBrailleTranslatorProtocol> _translator;
-    NSBundle *_translatorBundle;
     BOOL _tableSupportsContractedBraille;
     BOOL _tableSupportsEightDotBraille;
-    id<SCROBrailleTranslatorProtocol> _auxTranslator;
-    NSBundle *_auxTranslatorBundle;
-    BOOL _auxTableSupportsContractedBraille;
-    BOOL _auxTableSupportsEightDotBraille;
-    id<SCROBrailleTranslatorProtocol> _nemethTranslator;
     BOOL _alwaysUsesNemethCodeForTechnicalText;
-    NSString *_primaryTranslationTableIdentifier;
+    NSString *_queue_defaultLanguage;
+    BRLTTranslationService *_translationService;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (nonatomic) BOOL alwaysUsesNemethCodeForTechnicalText; // @synthesize alwaysUsesNemethCodeForTechnicalText=_alwaysUsesNemethCodeForTechnicalText;
-@property (readonly, nonatomic) BOOL auxiliaryTableSupportsContractedBraille; // @synthesize auxiliaryTableSupportsContractedBraille=_auxTableSupportsContractedBraille;
-@property (readonly, nonatomic) BOOL auxiliaryTableSupportsEightDotBraille; // @synthesize auxiliaryTableSupportsEightDotBraille=_auxTableSupportsEightDotBraille;
+@property (copy, nonatomic) NSString *defaultLanguage; // @synthesize defaultLanguage=_queue_defaultLanguage;
 @property (readonly, nonatomic) BOOL primaryTableSupportsContractedBraille; // @synthesize primaryTableSupportsContractedBraille=_tableSupportsContractedBraille;
 @property (readonly, nonatomic) BOOL primaryTableSupportsEightDotBraille; // @synthesize primaryTableSupportsEightDotBraille=_tableSupportsEightDotBraille;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) BRLTTranslationService *translationService; // @synthesize translationService=_translationService;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (void)_loadPrimaryTableIfNecessary;
-- (id)_loadTableIdentifier:(id)arg1 bundle:(id *)arg2 existingBundle:(id)arg3 existingTranslator:(id)arg4;
-- (id)_printBrailleForText:(id)arg1 primaryTable:(BOOL)arg2 contracted:(BOOL)arg3 eightDot:(BOOL)arg4 locations:(id *)arg5 isTechnical:(BOOL)arg6 textPositionsRange:(struct _NSRange)arg7;
-- (id)auxiliaryTableIdentifier;
 - (id)init;
-- (void)lockAuxiliaryTable;
-- (unsigned long long)numberOfTranslatorsLoaded;
-- (BOOL)primaryAndAuxiliaryTranslatorsAreIdentical;
-- (id)primaryTableIdentifier;
+- (void)loadTranslatorWithServiceIdentifier:(id)arg1;
+- (void)loadTranslatorWithServiceIdentifier:(id)arg1 forUnitTesting:(BOOL)arg2;
 - (BOOL)primaryTableSupportsRoundTripping;
-- (id)printBrailleForTechnicalText:(id)arg1 primaryTable:(BOOL)arg2 locations:(id *)arg3;
-- (id)printBrailleForText:(id)arg1 contracted:(BOOL)arg2 eightDot:(BOOL)arg3 locations:(id *)arg4;
-- (id)printBrailleForText:(id)arg1 primaryTable:(BOOL)arg2 contracted:(BOOL)arg3 eightDot:(BOOL)arg4 locations:(id *)arg5;
-- (id)printBrailleForText:(id)arg1 primaryTable:(BOOL)arg2 contracted:(BOOL)arg3 eightDot:(BOOL)arg4 locations:(id *)arg5 textPositionsRange:(struct _NSRange)arg6;
-- (void)setAuxiliaryTranslationTableWithTableIdentifier:(id)arg1;
-- (void)setPrimaryTranslationTableWithTableIdentifier:(id)arg1;
-- (id)textForPrintBraille:(id)arg1 contracted:(BOOL)arg2 eightDot:(BOOL)arg3 locations:(id *)arg4;
-- (id)textForPrintBraille:(id)arg1 primaryTable:(BOOL)arg2 contracted:(BOOL)arg3 eightDot:(BOOL)arg4 locations:(id *)arg5;
-- (void)unlockAuxiliaryTable;
+- (id)printBrailleForText:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 textPositionsRange:(struct _NSRange)arg4 locations:(id *)arg5;
+- (id)textForPrintBraille:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 locations:(id *)arg4;
 
 @end
 

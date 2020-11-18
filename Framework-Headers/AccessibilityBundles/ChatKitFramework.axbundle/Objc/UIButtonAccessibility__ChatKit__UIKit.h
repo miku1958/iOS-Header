@@ -12,8 +12,6 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (struct CGRect)accessibilityFrame;
-- (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 
 @end

@@ -8,17 +8,17 @@
 
 #import <FamilyCircleUI/MFContactsSearchConsumer-Protocol.h>
 
-@class MFContactsSearchManager, MFContactsSearchResultsModel, NSNumber, NSString;
+@class MFContactsSearchManager, NSMutableArray, NSNumber, NSString;
 @protocol AAUIContactsSearchDelegate;
 
 @interface FAContactsSearchController : NSObject <MFContactsSearchConsumer>
 {
     MFContactsSearchManager *_searchManager;
-    MFContactsSearchResultsModel *_searchResultsModel;
     long long _countOfPendingResultBatches;
     BOOL _didFindResults;
     NSNumber *_searchTaskID;
     id<AAUIContactsSearchDelegate> _delegate;
+    NSMutableArray *_resultsArray;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,9 +32,9 @@
 - (void)beganNetworkActivity;
 - (void)beginSearchWithString:(id)arg1;
 - (void)cancelSearch;
-- (void)consumeSearchResults:(id)arg1 type:(unsigned long long)arg2 taskID:(id)arg3;
+- (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (void)endedNetworkActivity;
-- (void)finishedSearchingForType:(unsigned long long)arg1;
+- (void)finishedSearchingForAutocompleteResults;
 - (void)finishedTaskWithID:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 

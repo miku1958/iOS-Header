@@ -26,8 +26,11 @@
 @property (strong, nonatomic) NSSet *SSLCipherSuitesInternal; // @synthesize SSLCipherSuitesInternal=_SSLCipherSuitesInternal;
 @property (copy, nonatomic) NSData *TLSSessionID;
 @property (copy, nonatomic) NSString *account;
+@property (nonatomic) BOOL allowDuplicateStateUpdates;
+@property (nonatomic) BOOL allowJoiningConnectedFd;
 @property (nonatomic) BOOL allowSocketAccess;
 @property (nonatomic) BOOL allowUnusableAddresses;
+@property (nonatomic) BOOL attachProtocolListener;
 @property (nonatomic) unsigned long long dataMode;
 @property (nonatomic) BOOL disableNagleAlgorithm;
 @property (nonatomic, getter=isDiscretionary) BOOL discretionary;
@@ -38,8 +41,10 @@
 @property (nonatomic) BOOL enableTFO;
 @property (nonatomic) BOOL enableTFONoCookie;
 @property (nonatomic) BOOL enableTLS;
+@property (nonatomic) BOOL fastOpenForceEnable;
 @property (nonatomic) BOOL httpsProxyIsOpaque;
 @property (nonatomic) BOOL httpsProxyOverTLS;
+@property (nonatomic) BOOL ignoreResolverStats;
 @property (nonatomic) BOOL indefinite;
 @property (strong) NSObject<OS_nw_parameters> *internalParameters; // @synthesize internalParameters=_internalParameters;
 @property (readonly, nonatomic) unsigned char ipProtocol;
@@ -50,10 +55,11 @@
 @property (strong, nonatomic) NWAddressEndpoint *localAddress;
 @property (nonatomic) unsigned long long maximumSSLProtocolVersion;
 @property (nonatomic) unsigned long long maximumSSLProtocolVersionInternal; // @synthesize maximumSSLProtocolVersionInternal=_maximumSSLProtocolVersionInternal;
-@property (nonatomic) NSData *metadata;
+@property (strong, nonatomic) NSData *metadata;
 @property (nonatomic) unsigned long long minimumSSLProtocolVersion;
 @property (nonatomic) unsigned long long minimumSSLProtocolVersionInternal; // @synthesize minimumSSLProtocolVersionInternal=_minimumSSLProtocolVersionInternal;
 @property (nonatomic) BOOL multipath;
+@property (nonatomic) BOOL multipathForceEnable;
 @property (nonatomic) int multipathService;
 @property (nonatomic) BOOL noProxy;
 @property (strong, nonatomic) NSUUID *parentID;
@@ -62,8 +68,10 @@
 @property (readonly, copy, nonatomic) NSString *privateDescription;
 @property (copy, nonatomic) NSUUID *processUUID;
 @property (readonly, nonatomic) BOOL prohibitCellular;
+@property (nonatomic) BOOL prohibitConstrainedPaths;
 @property (nonatomic) BOOL prohibitExpensivePaths;
 @property (nonatomic) BOOL prohibitFallback;
+@property (nonatomic) BOOL prohibitJoiningProtocols;
 @property (nonatomic) BOOL prohibitRoaming;
 @property (copy, nonatomic) NSArray *protocolTransforms;
 @property (copy, nonatomic) NSDictionary *proxyConfiguration;
@@ -76,6 +84,7 @@
 @property (nonatomic) BOOL reuseLocalAddress;
 @property (readonly, nonatomic) NSURL *sanitizedURL;
 @property (nonatomic) unsigned long long trafficClass;
+@property (readonly, nonatomic) unsigned char transportProtocol;
 @property (nonatomic) BOOL trustInvalidCertificates;
 @property (nonatomic) unsigned int uid;
 @property (copy, nonatomic) NSURL *url;
@@ -123,7 +132,6 @@
 - (void)setProtocolAtLevel:(unsigned long long)arg1 protocol:(struct nw_protocol_identifier *)arg2;
 - (void)setSourceApplicationWithBundleID:(id)arg1;
 - (void)setSourceApplicationWithToken:(CDStruct_6ad76789)arg1;
-- (int)sslProtocolWithTLSVersion:(unsigned short)arg1;
 - (unsigned short)tlsVersionWithSSLProtocol:(int)arg1;
 
 @end

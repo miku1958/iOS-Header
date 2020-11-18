@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOMapItemTransitInfo-Protocol.h>
 
-@class GEOPDTransitInfoSnippet, NSArray, NSDate, NSString;
+@class GEOComposedRoute, GEOPDTransitInfoSnippet, NSArray, NSDate, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOMapItemTransitInfoSnippet : NSObject <GEOMapItemTransitInfo>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSString *_displayName;
 }
 
+@property (readonly, nonatomic) GEOComposedRoute *composedRoute;
 @property (readonly, nonatomic) NSArray *connections;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSArray *departureSequences;
@@ -31,9 +32,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDate *lastFullScheduleValidDate;
 @property (readonly, nonatomic) NSArray *lines;
 @property (readonly, nonatomic) unsigned long long linesCount;
+@property (readonly, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *systems;
 @property (readonly, nonatomic) unsigned long long systemsCount;
+@property (readonly, nonatomic) double timeToLive;
+@property (readonly, nonatomic) NSString *title;
+@property (readonly, nonatomic) NSArray *transitTripStops;
 
 - (void).cxx_destruct;
 - (id)allSequencesForSystem:(id)arg1 direction:(id)arg2;
@@ -44,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithTransitInfoSnippet:(id)arg1;
 - (id)linesForSystem:(id)arg1;
 - (unsigned long long)numAdditionalDeparturesForSequence:(id)arg1;
-- (id)sequencesForSystem:(id)arg1 excludingIncidentEntities:(id)arg2 direction:(id)arg3 validForDateFromBlock:(CDUnknownBlockType)arg4;
 - (id)serviceResumesDateForLine:(id)arg1 excludingIncidentEntities:(id)arg2 afterDate:(id)arg3 blocked:(out BOOL *)arg4;
 
 @end

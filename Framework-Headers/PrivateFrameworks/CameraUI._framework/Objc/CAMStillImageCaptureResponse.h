@@ -8,7 +8,7 @@
 
 #import <CameraUI/CAMTransientAssetConvertible-Protocol.h>
 
-@class CAMStillImageCaptureCoordinationInfo, NSDate, NSDictionary, NSString, NSURL, UIImage;
+@class NSDate, NSDictionary, NSString, NSURL, UIImage;
 
 @interface CAMStillImageCaptureResponse : CAMCaptureResponse <CAMTransientAssetConvertible>
 {
@@ -19,17 +19,17 @@
     NSString *_burstIdentifier;
     unsigned long long _burstRepresentedCount;
     UIImage *_imageWellImage;
-    CAMStillImageCaptureCoordinationInfo *_coordinationInfo;
+    struct CGSize _finalExpectedPixelSize;
 }
 
 @property (readonly, copy, nonatomic) NSString *burstIdentifier; // @synthesize burstIdentifier=_burstIdentifier;
 @property (readonly, nonatomic) unsigned long long burstRepresentedCount; // @synthesize burstRepresentedCount=_burstRepresentedCount;
 @property (readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
-@property (readonly, nonatomic) CAMStillImageCaptureCoordinationInfo *coordinationInfo; // @synthesize coordinationInfo=_coordinationInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration;
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
+@property (readonly, nonatomic) struct CGSize finalExpectedPixelSize; // @synthesize finalExpectedPixelSize=_finalExpectedPixelSize;
 @property (readonly, nonatomic) BOOL flashFired;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIImage *imageWellImage; // @synthesize imageWellImage=_imageWellImage;
@@ -49,7 +49,7 @@
 @property (readonly, nonatomic) NSString *uuid;
 
 - (void).cxx_destruct;
-- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 expectingPairedVideo:(BOOL)arg9;
+- (id)initWithUUID:(id)arg1 captureSession:(unsigned short)arg2 captureDate:(id)arg3 metadata:(id)arg4 burstIdentifier:(id)arg5 burstRepresentedCount:(unsigned long long)arg6 imageWellImage:(id)arg7 coordinationInfo:(id)arg8 finalExpectedPixelSize:(struct CGSize)arg9 expectingPairedVideo:(BOOL)arg10;
 
 @end
 

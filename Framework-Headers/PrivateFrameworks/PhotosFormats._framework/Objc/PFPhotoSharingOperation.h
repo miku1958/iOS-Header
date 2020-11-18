@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class NSError, NSObject, NSString, NSURL, PFAssetAdjustments;
+@class CLLocation, NSDate, NSError, NSObject, NSString, NSURL, PFAssetAdjustments;
 @protocol OS_dispatch_queue;
 
 @interface PFPhotoSharingOperation : NSOperation
@@ -20,23 +20,31 @@
     BOOL _shouldStripMetadata;
     NSURL *_outputDirectoryURL;
     NSString *_outputFilename;
+    CLLocation *_customLocation;
+    NSDate *_customDate;
     NSString *_customAccessibilityLabel;
     NSURL *_imageURL;
+    NSURL *_resultingFileURL;
     PFAssetAdjustments *__adjustments;
 }
 
 @property (strong, nonatomic, setter=_setAdjustments:) PFAssetAdjustments *_adjustments; // @synthesize _adjustments=__adjustments;
 @property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
+@property (copy, nonatomic) NSDate *customDate; // @synthesize customDate=_customDate;
+@property (copy, nonatomic) CLLocation *customLocation; // @synthesize customLocation=_customLocation;
 @property (copy, nonatomic, setter=_setImageURL:) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (readonly, nonatomic) NSError *operationError;
 @property (copy, nonatomic) NSURL *outputDirectoryURL; // @synthesize outputDirectoryURL=_outputDirectoryURL;
 @property (copy, nonatomic) NSString *outputFilename; // @synthesize outputFilename=_outputFilename;
 @property (readonly, nonatomic) float progress;
+@property (readonly, copy, nonatomic) NSURL *resultingFileURL; // @synthesize resultingFileURL=_resultingFileURL;
 @property (nonatomic) BOOL shouldConvertToSRGB; // @synthesize shouldConvertToSRGB=_shouldConvertToSRGB;
 @property (nonatomic) BOOL shouldStripLocation; // @synthesize shouldStripLocation=_shouldStripLocation;
 @property (nonatomic) BOOL shouldStripMetadata; // @synthesize shouldStripMetadata=_shouldStripMetadata;
 @property (readonly, nonatomic) BOOL success;
 
++ (id)operationErrorWithCode:(long long)arg1 withDescription:(id)arg2;
++ (BOOL)outputSupportedForTypeIdentifier:(struct __CFString *)arg1;
 - (void).cxx_destruct;
 - (id)initWithImageURL:(id)arg1 adjustmentData:(id)arg2;
 - (void)main;

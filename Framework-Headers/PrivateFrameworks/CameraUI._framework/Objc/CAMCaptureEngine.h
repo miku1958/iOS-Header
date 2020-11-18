@@ -9,7 +9,7 @@
 #import <CameraUI/AVCaptureVideoThumbnailContentsDelegate-Protocol.h>
 #import <CameraUI/CAMPanoramaProcessorDelegate-Protocol.h>
 
-@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, CAMCaptureMovieFileOutput, CAMMemoizationCache, CAMPanoramaConfiguration, CAMPanoramaOutput, CAMPanoramaProcessor, CAMPowerController, CIContext, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
+@class AVCaptureDevice, AVCaptureDeviceInput, AVCaptureMetadataOutput, AVCapturePhotoOutput, AVCaptureSession, AVCaptureVideoDataOutput, AVCaptureVideoPreviewLayer, AVCaptureVideoThumbnailOutput, AVSpatialOverCaptureVideoPreviewLayer, CAMCaptureMovieFileOutput, CAMMemoizationCache, CAMPanoramaConfiguration, CAMPanoramaOutput, CAMPanoramaProcessor, CAMPowerController, CIContext, NSHashTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface CAMCaptureEngine : NSObject <CAMPanoramaProcessorDelegate, AVCaptureVideoThumbnailContentsDelegate>
@@ -32,9 +32,13 @@
     AVCaptureSession *__captureSession;
     NSObject<OS_dispatch_queue> *__captureSessionQueue;
     AVCaptureVideoPreviewLayer *__videoPreviewLayer;
+    AVSpatialOverCaptureVideoPreviewLayer *__overCaptureVideoPreviewLayer;
     CAMPowerController *__powerController;
-    AVCaptureDevice *_cameraDevice;
+    AVCaptureDevice *_currentCameraDevice;
+    AVCapturePhotoOutput *_currentStillImageOutput;
     NSMutableDictionary *__sessionQueueRegisteredStillImageRequests;
+    NSMutableSet *__sessionQueueRegisteredStillImageRequestsDispatchedToFilteringQueue;
+    NSMutableDictionary *__sessionQueueCachedPhotoInitiationSettings;
     NSMutableDictionary *__sessionQueueRequestsBeingRecorded;
     NSObject<OS_dispatch_queue> *__captureServicesQueue;
     NSMutableArray *__servicesQueueCaptureServices;
@@ -65,6 +69,7 @@
 @property (readonly, nonatomic) long long _engineOptions; // @synthesize _engineOptions=__engineOptions;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_metadataObjectsQueue; // @synthesize _metadataObjectsQueue=__metadataObjectsQueue;
 @property (nonatomic, setter=_setNumberOfRecoveryAttempts:) unsigned long long _numberOfRecoveryAttempts; // @synthesize _numberOfRecoveryAttempts=__numberOfRecoveryAttempts;
+@property (readonly, nonatomic) AVSpatialOverCaptureVideoPreviewLayer *_overCaptureVideoPreviewLayer; // @synthesize _overCaptureVideoPreviewLayer=__overCaptureVideoPreviewLayer;
 @property (nonatomic, setter=_setPanoramaAssertionIdentifier:) unsigned int _panoramaAssertionIdentifier; // @synthesize _panoramaAssertionIdentifier=__panoramaAssertionIdentifier;
 @property (strong, nonatomic, setter=_setPanoramaFirstImageQueueUpdateSemaphore:) NSObject<OS_dispatch_semaphore> *_panoramaFirstImageQueueUpdateSemaphore; // @synthesize _panoramaFirstImageQueueUpdateSemaphore=__panoramaFirstImageQueueUpdateSemaphore;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_panoramaFirstImageQueueUpdateSemaphoreQueue; // @synthesize _panoramaFirstImageQueueUpdateSemaphoreQueue=__panoramaFirstImageQueueUpdateSemaphoreQueue;
@@ -76,11 +81,14 @@
 @property (readonly, nonatomic) CAMPowerController *_powerController; // @synthesize _powerController=__powerController;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_recoveryMutexQueue; // @synthesize _recoveryMutexQueue=__recoveryMutexQueue;
 @property (readonly, nonatomic) NSMutableArray *_servicesQueueCaptureServices; // @synthesize _servicesQueueCaptureServices=__servicesQueueCaptureServices;
+@property (readonly, nonatomic) NSMutableDictionary *_sessionQueueCachedPhotoInitiationSettings; // @synthesize _sessionQueueCachedPhotoInitiationSettings=__sessionQueueCachedPhotoInitiationSettings;
 @property (readonly, nonatomic) NSMutableDictionary *_sessionQueueRegisteredStillImageRequests; // @synthesize _sessionQueueRegisteredStillImageRequests=__sessionQueueRegisteredStillImageRequests;
+@property (readonly, nonatomic) NSMutableSet *_sessionQueueRegisteredStillImageRequestsDispatchedToFilteringQueue; // @synthesize _sessionQueueRegisteredStillImageRequestsDispatchedToFilteringQueue=__sessionQueueRegisteredStillImageRequestsDispatchedToFilteringQueue;
 @property (readonly, nonatomic) NSMutableDictionary *_sessionQueueRequestsBeingRecorded; // @synthesize _sessionQueueRequestsBeingRecorded=__sessionQueueRequestsBeingRecorded;
 @property (readonly, nonatomic) AVCaptureVideoPreviewLayer *_videoPreviewLayer; // @synthesize _videoPreviewLayer=__videoPreviewLayer;
 @property (readonly, nonatomic) NSHashTable *_videoThumbnailContentsDelegates; // @synthesize _videoThumbnailContentsDelegates=__videoThumbnailContentsDelegates;
-@property (strong, nonatomic) AVCaptureDevice *cameraDevice; // @synthesize cameraDevice=_cameraDevice;
+@property (strong, nonatomic) AVCaptureDevice *currentCameraDevice; // @synthesize currentCameraDevice=_currentCameraDevice;
+@property (strong, nonatomic) AVCapturePhotoOutput *currentStillImageOutput; // @synthesize currentStillImageOutput=_currentStillImageOutput;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -89,20 +97,24 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) AVCaptureVideoPreviewLayer *videoPreviewLayer;
 
++ (id)_cacheKeyForDeviceType:(id)arg1 position:(long long)arg2;
 + (void)preheatCaptureResources;
 - (void).cxx_destruct;
 - (id)_accumulatedUserInfoFromCommand:(id)arg1;
 - (void)_beginSessionConfigurationIfRequiredByCommand:(id)arg1 withContext:(id)arg2 logReason:(out id *)arg3;
 - (void)_cancelDelayedSessionNonstartRecovery;
-- (id)_captureEngineDeviceForDevice:(long long)arg1;
+- (id)_captureEngineDeviceForDeviceType:(id)arg1 position:(long long)arg2;
 - (void)_captureOutput:(id)arg1 didFinishRecordingToOutputFileAtURL:(id)arg2 fromConnections:(id)arg3 forVideoCaptureRequest:(id)arg4 videoZoomFactor:(double)arg5 error:(id)arg6;
 - (void)_commitSessionConfigurationIfNecessaryWithLogReason:(id)arg1;
+- (id)_coordinationInfoForCTMVideoRequest:(id)arg1 videoOutputURL:(id)arg2 resolvedMomentCaptureMovieSettings:(id)arg3;
 - (id)_coordinationInfoForRequest:(id)arg1 photo:(id)arg2;
 - (id)_coordinationInfoForRequest:(id)arg1 resolvedSettings:(id)arg2 videoComplementURL:(id)arg3 isFiltered:(BOOL)arg4;
 - (double)_delayForRecoveryAttempt:(unsigned long long)arg1;
+- (void)_didFinishStillImageCaptureForUniqueID:(long long)arg1 error:(id)arg2;
 - (void)_enumerateCaptureServicesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateCaptureServicesUsingBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_executeCommand:(id)arg1 withContext:(id)arg2;
+- (id)_expectedResultSpecifiersForResolvedMomentCaptureMovieSettings:(id)arg1;
 - (id)_expectedResultSpecifiersForResolvedPhotoSettings:(id)arg1;
 - (void)_handleApplicationDidEnterBackground:(id)arg1;
 - (void)_handleApplicationWillEnterForeground:(id)arg1;
@@ -116,9 +128,11 @@
 - (BOOL)_lockAllEngineManagedDevices;
 - (BOOL)_lockManagedCapturedDevice:(id)arg1;
 - (void)_notifyServicesOfPanoramaConfigurationChangeWithImageQueue:(struct _CAImageQueue *)arg1 direction:(long long)arg2;
-- (void)_panoramaSampleBufferQueue_stopPanoramaCaptureIfNecessary;
+- (void)_panoramaSampleBufferQueue_stopPanoramaCaptureIfNecessaryInterrupted:(BOOL)arg1;
 - (void)_performSessionNonstartRecoveryIfNeeded;
 - (void)_performSessionRuntimeRecovery:(id)arg1;
+- (id)_photoOutputFromSession:(id)arg1;
+- (id)_previewFiltersForFilterType:(long long)arg1 previewCrop:(long long)arg2 inPreviewSize:(struct CGSize)arg3;
 - (void)_recoverFromSessionRuntimeError;
 - (void)_resetPerformingRecoveryState;
 - (void)_scheduleDelayedRecoveryCheckIfNecessary;
@@ -132,7 +146,7 @@
 - (void)_unlockAllEngineManagedDevices;
 - (void)_unlockManagedCaptureDevice:(id)arg1;
 - (void)_updateContext:(id)arg1;
-- (void)_updateCurrentCameraDevice;
+- (void)_updateCurrentlyConfiguredObjects;
 - (void)_updateEffectsSubgraph;
 - (BOOL)_updatePanoramaSubgraphForEnteringBackground:(BOOL)arg1;
 - (void)_updateVideoThumbnailSubgraph;
@@ -143,20 +157,30 @@
 - (id)audioCaptureDeviceInput;
 - (id)backCameraDevice;
 - (id)backDualCameraDevice;
+- (id)backSuperWideCameraDevice;
 - (id)backTelephotoCameraDevice;
+- (id)backTripleCameraDevice;
+- (id)backWideDualCameraDevice;
+- (void)cacheMomentCaptureSettings:(id)arg1 forIdentifier:(id)arg2;
+- (id)cachedMomentCaptureSettingsForIdentifier:(id)arg1;
+- (void)captureOutput:(id)arg1 didBeginMovieCaptureForResolvedSettings:(id)arg2;
 - (void)captureOutput:(id)arg1 didCapturePhotoForResolvedSettings:(id)arg2;
 - (void)captureOutput:(id)arg1 didDropSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)captureOutput:(id)arg1 didFinishCaptureForResolvedSettings:(id)arg2 error:(id)arg3;
+- (void)captureOutput:(id)arg1 didFinishMovieCaptureForResolvedSettings:(id)arg2 error:(id)arg3;
 - (void)captureOutput:(id)arg1 didFinishProcessingLivePhotoToMovieFileAtURL:(id)arg2 duration:(CDStruct_1b6d18a9)arg3 photoDisplayTime:(CDStruct_1b6d18a9)arg4 resolvedSettings:(id)arg5 error:(id)arg6;
 - (void)captureOutput:(id)arg1 didFinishRecordingLivePhotoMovieForEventualFileAtURL:(id)arg2 resolvedSettings:(id)arg3;
+- (void)captureOutput:(id)arg1 didFinishRecordingMovie:(id)arg2;
 - (void)captureOutput:(id)arg1 didFinishRecordingToOutputFileAtURL:(id)arg2 fromConnections:(id)arg3 error:(id)arg4;
-- (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
+- (void)captureOutput:(id)arg1 didFinishWritingMovie:(id)arg2 error:(id)arg3;
+- (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 forMetadataObjectTypes:(id)arg3 fromConnection:(id)arg4;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)captureOutput:(id)arg1 didStartRecordingToOutputFileAtURL:(id)arg2 fromConnections:(id)arg3;
 - (void)captureOutput:(id)arg1 willBeginCaptureForResolvedSettings:(id)arg2;
 - (void)captureOutput:(id)arg1 willCapturePhotoForResolvedSettings:(id)arg2;
 - (void)changePanoramaEncodingBehaviorIfNeeded:(long long)arg1;
 - (void)changeToPanoramaDirection:(long long)arg1;
+- (void)clearCachedMomentCaptureSettingsForIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)effectsPreviewVideoDataOutput;
 - (void)enqueueCommand:(id)arg1;
@@ -165,7 +189,7 @@
 - (id)initWithPowerController:(id)arg1 options:(long long)arg2;
 - (id)metadataOutput;
 - (id)movieFileOutput;
-- (id)panoramaConfiguration;
+- (id)overCaptureVideoPreviewLayer;
 - (void)panoramaProcessor:(id)arg1 didProcessSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 withStatus:(int)arg3 forRequest:(id)arg4;
 - (id)panoramaVideoDataOutput;
 - (id)prewarmedAudioDeviceInput:(id)arg1 device:(id)arg2;
@@ -179,7 +203,7 @@
 - (void)startPanoramaCaptureWithRequest:(id)arg1;
 - (void)startWithRetryCount:(unsigned long long)arg1 retryInterval:(double)arg2 logReason:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)stillImageOutput;
-- (void)stopPanoramaCapture;
+- (void)stopPanoramaCaptureInterrupted:(BOOL)arg1;
 - (void)stopRecording;
 - (void)stopWithCompletion:(CDUnknownBlockType)arg1;
 - (void)unregisterCaptureService:(id)arg1;

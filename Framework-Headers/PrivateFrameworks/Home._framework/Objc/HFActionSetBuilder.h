@@ -8,7 +8,7 @@
 
 #import <Home/HFActionSetBuilderProtocol-Protocol.h>
 
-@class HFMutableSetDiff, HMActionSet, NSArray, NSString;
+@class HFMediaPlaybackActionBuilder, HFMutableSetDiff, HMActionSet, NSArray, NSString;
 @protocol HFIconDescriptor;
 
 @interface HFActionSetBuilder : HFItemBuilder <HFActionSetBuilderProtocol>
@@ -29,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<HFIconDescriptor> iconDescriptor; // @synthesize iconDescriptor=_iconDescriptor;
 @property (nonatomic) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
+@property (readonly, nonatomic) HFMediaPlaybackActionBuilder *mediaAction;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL requiresDeviceUnlock;
 @property (readonly) Class superclass;

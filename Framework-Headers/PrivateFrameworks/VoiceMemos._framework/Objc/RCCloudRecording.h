@@ -8,7 +8,7 @@
 
 #import <VoiceMemos/RCMutableRecording-Protocol.h>
 
-@class AVAsset, CLLocation, NSDate, NSString, NSURL;
+@class AVAsset, CLLocation, NSData, NSDate, NSNumber, NSString, NSURL;
 @protocol _NSFileBackedFuture;
 
 @interface RCCloudRecording : NSManagedObject <RCMutableRecording>
@@ -17,12 +17,14 @@
 }
 
 @property (readonly, copy, nonatomic) NSURL *URIRepresentation;
+@property (strong, nonatomic) NSData *audioDigest; // @dynamic audioDigest;
 @property (strong, nonatomic) id<_NSFileBackedFuture> audioFuture; // @dynamic audioFuture;
-@property (readonly, nonatomic) AVAsset *avAsset;
+@property (strong, nonatomic) AVAsset *avAsset; // @synthesize avAsset=_avAsset;
 @property (copy, nonatomic) NSString *customLabel; // @dynamic customLabel;
 @property (copy, nonatomic) NSDate *date; // @dynamic date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL downloading;
 @property (nonatomic) double duration; // @dynamic duration;
 @property (readonly, nonatomic) BOOL editing;
 @property (nonatomic) BOOL evicted;
@@ -36,6 +38,8 @@
 @property (copy, nonatomic) NSString *path; // @dynamic path;
 @property (nonatomic) BOOL pendingRestore;
 @property (readonly, nonatomic) BOOL playable;
+@property (readonly, nonatomic) NSNumber *purgeableAudioFutureSize;
+@property (nonatomic) BOOL recordedOnWatch;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL synced;
 @property (readonly, copy, nonatomic) NSString *title;
@@ -44,13 +48,18 @@
 @property (readonly, nonatomic) BOOL uploaded;
 @property (readonly, copy, nonatomic) NSURL *url;
 
++ (id)cacheDeletedOnWatchPredicate;
++ (void)initialize;
++ (BOOL)isRecordingPurgeable:(id)arg1;
 + (id)playablePredicate;
 + (id)savedRecordingURIForSearchableItemIdentifier:(id)arg1;
 + (id)searchableItemIdentifierForSavedRecordingURI:(id)arg1;
++ (BOOL)setPurgeable:(BOOL)arg1 recordingURL:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_activityURLCreateIfNecessary:(BOOL)arg1;
 - (id)_detailLabel;
 - (id)_labelAllowingEmptyString:(BOOL)arg1;
+- (void)_updateAudioFuture:(id)arg1;
 - (void)_validatePath;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 subjectForActivityType:(id)arg2;
@@ -59,13 +68,16 @@
 - (void)awakeFromFetch;
 - (void)awakeFromInsert;
 - (id)name;
+- (id)purgeAudioFuture:(id *)arg1;
 - (id)searchableItem;
+- (void)setDownloading:(BOOL)arg1;
 - (void)setEditing:(BOOL)arg1;
 - (void)setLocation:(id)arg1;
 - (void)setManuallyRenamed:(BOOL)arg1;
 - (void)setName:(id)arg1;
 - (void)setPlayable:(BOOL)arg1;
 - (void)setTitle:(id)arg1;
+- (BOOL)synchronizeRecordingMetadata:(id *)arg1;
 - (BOOL)synchronizeWithExistingAudioFuture:(id *)arg1;
 - (void)willSave;
 

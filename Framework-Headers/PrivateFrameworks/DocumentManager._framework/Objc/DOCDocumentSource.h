@@ -9,36 +9,43 @@
 #import <DocumentManager/NSCopying-Protocol.h>
 #import <DocumentManager/NSSecureCoding-Protocol.h>
 
-@class FPProvider, NSArray, NSString, UIImage;
+@class FPProviderDomain, NSArray, NSString, UIImage;
 
 @interface DOCDocumentSource : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _hasTemplateIcon;
     BOOL _hidden;
     NSString *_displayName;
+    NSString *_providerName;
+    NSString *_domainName;
     UIImage *_icon;
     NSString *_promptText;
     NSString *_identifier;
     NSArray *_documentTypes;
-    FPProvider *_searching_fileProvider;
+    FPProviderDomain *_searching_fileProviderDomain;
 }
 
+@property (readonly) BOOL appearsInMoveUI;
 @property (copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy) NSArray *documentTypes; // @synthesize documentTypes=_documentTypes;
+@property (copy) NSString *domainName; // @synthesize domainName=_domainName;
 @property BOOL hasTemplateIcon; // @synthesize hasTemplateIcon=_hasTemplateIcon;
 @property BOOL hidden; // @synthesize hidden=_hidden;
 @property (strong) UIImage *icon; // @synthesize icon=_icon;
 @property (copy) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) BOOL isAvailableSystemWide;
+@property (readonly) BOOL isiCloudBased;
 @property (copy) NSString *promptText; // @synthesize promptText=_promptText;
-@property FPProvider *searching_fileProvider; // @synthesize searching_fileProvider=_searching_fileProvider;
+@property (copy) NSString *providerName; // @synthesize providerName=_providerName;
+@property FPProviderDomain *searching_fileProviderDomain; // @synthesize searching_fileProviderDomain=_searching_fileProviderDomain;
+@property (readonly) unsigned long long status;
+@property (readonly, nonatomic) NSArray *supportedSearchFilters;
 
 + (void)defaultSourceForBundleIdentifier:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (id)defaultSourceForBundleIdentifier:(id)arg1 defaultSourceIdentifier:(id)arg2 sources:(id)arg3;
 + (void)defaultSourceForBundleIdentifier:(id)arg1 selectedSourceIdentifier:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)defaultSourceIdentifierForBundleIdentifier:(id)arg1;
 + (void)endSearchingSources:(id)arg1;
-+ (BOOL)isICloudFileProviderEnabledForBundleIdentifier:(id)arg1;
 + (void)setDefaultSource:(id)arg1 forBundleIdentifier:(id)arg2;
 + (void)setDefaultSourceIdentifier:(id)arg1 forBundleIdentifier:(id)arg2;
 + (id)sourceIdentifierOrderWithDefault:(id)arg1;
@@ -51,6 +58,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isValidForConfiguration:(id)arg1;
 - (id)sanitizedSource;
 - (BOOL)usesEnumeration;
 

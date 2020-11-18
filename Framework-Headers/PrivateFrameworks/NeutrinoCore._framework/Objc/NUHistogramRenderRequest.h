@@ -6,14 +6,23 @@
 
 #import <NeutrinoCore/NURenderRequest.h>
 
-@class NUColorSpace;
+#import <NeutrinoCore/NUTimeBased-Protocol.h>
 
-@interface NUHistogramRenderRequest : NURenderRequest
+@class NSString, NUColorSpace, NUHistogramParameters;
+
+@interface NUHistogramRenderRequest : NURenderRequest <NUTimeBased>
 {
+    NUHistogramParameters *_parameters;
     NUColorSpace *_colorSpace;
 }
 
 @property (strong, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NUHistogramParameters *parameters;
+@property (readonly) Class superclass;
+@property (nonatomic) CDStruct_1b6d18a9 time;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

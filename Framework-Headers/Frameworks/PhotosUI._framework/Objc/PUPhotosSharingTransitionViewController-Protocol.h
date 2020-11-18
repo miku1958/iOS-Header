@@ -9,10 +9,12 @@
 @class PUPhotosSharingTransitionContext, UICollectionView, UICollectionViewLayout, UIView;
 
 @protocol PUPhotosSharingTransitionViewController <NSObject>
-- (UIView *)embeddedActivityView;
-- (struct CGRect)embeddedActivityViewFrameWhenShowing:(BOOL)arg1;
 - (void)setPhotosSharingTransitionContext:(PUPhotosSharingTransitionContext *)arg1;
 - (void)setPhotosSharingTransitionLayout:(UICollectionViewLayout *)arg1 animated:(BOOL)arg2;
 - (UICollectionView *)transitionCollectionView;
+
+@optional
+- (UIView *)embeddedActivityView;
+- (struct CGRect)embeddedActivityViewFrameWhenShowing:(BOOL)arg1;
 @end
 

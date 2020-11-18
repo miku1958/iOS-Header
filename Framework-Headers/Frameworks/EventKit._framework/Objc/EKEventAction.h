@@ -6,15 +6,17 @@
 
 #import <EventKit/EKObject.h>
 
-@class NSString;
+@class NSData, NSString;
 
-__attribute__((visibility("hidden")))
 @interface EKEventAction : EKObject
 {
 }
 
-@property (readonly, nonatomic) NSString *externalFolderID;
-@property (readonly, nonatomic) NSString *externalID;
+@property (copy, nonatomic) NSString *externalFolderID;
+@property (copy, nonatomic) NSString *externalID;
+@property (copy, nonatomic) NSString *externalModificationTag;
+@property (copy, nonatomic) NSData *externalRepresentation;
+@property (copy, nonatomic) NSString *externalScheduleID;
 
 + (Class)frozenClass;
 

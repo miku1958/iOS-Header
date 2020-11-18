@@ -19,6 +19,7 @@
     AVCMediaStreamConfig *_configuration;
     NSDictionary *_capabilities;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    long long _streamToken;
 }
 
 @property (strong, nonatomic) NSDictionary *capabilities; // @synthesize capabilities=_capabilities;
@@ -65,6 +66,7 @@
 - (void)stop;
 - (void)stopContinuousDTMF;
 - (void)terminateSession;
+- (id)validateInitializeConnectionResult:(id)arg1;
 - (void)vcMediaStream:(id)arg1 didPauseStream:(BOOL)arg2 error:(id)arg3;
 - (void)vcMediaStream:(id)arg1 didReceiveDTMFEventWithDigit:(BOOL)arg2;
 - (void)vcMediaStream:(id)arg1 didReceiveRTCPPackets:(id)arg2;

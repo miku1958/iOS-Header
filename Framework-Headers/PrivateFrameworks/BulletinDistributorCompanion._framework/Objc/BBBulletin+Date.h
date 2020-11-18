@@ -6,8 +6,17 @@
 
 #import <BulletinBoard/BBBulletin.h>
 
+@class NSDate;
+
 @interface BBBulletin (Date)
+
+@property (readonly, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
+
+- (id)bltContext;
+- (id)blt_uniqueKey;
 - (id)dateOrRecencyDate;
+- (BOOL)matchesPublisherBulletinID:(id)arg1 andRecordID:(id)arg2;
 - (id)publishDate;
+- (id)sectionMatchID;
 @end
 

@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)defaultServices;
-- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithStyle:(long long)arg1;
 - (id)titleForAddCustomItem;
 - (id)titleForPickerItem:(id)arg1;
 

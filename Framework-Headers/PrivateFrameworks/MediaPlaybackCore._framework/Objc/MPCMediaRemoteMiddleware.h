@@ -7,14 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlaybackCore/MPCPlayerResponseBuilder-Protocol.h>
+#import <MediaPlaybackCore/MPCPlayerSessionResponseBuilder-Protocol.h>
+#import <MediaPlaybackCore/MPCResponseMediaRemoteControllerChaining-Protocol.h>
 #import <MediaPlaybackCore/MPMiddleware-Protocol.h>
 
-@class MPCMediaRemoteController, MPSectionedCollection, NSArray, NSIndexPath, NSString;
+@class MPCFuture, MPCMediaRemoteController, MPSectionedCollection, NSArray, NSIndexPath, NSString;
 @protocol MPCSupportedCommands;
 
-@interface MPCMediaRemoteMiddleware : NSObject <MPCPlayerResponseBuilder, MPMiddleware>
+@interface MPCMediaRemoteMiddleware : NSObject <MPCResponseMediaRemoteControllerChaining, MPCPlayerResponseBuilder, MPCPlayerSessionResponseBuilder, MPMiddleware>
 {
     NSArray *_invalidationObservers;
+    MPCFuture *_controllerFuture;
     MPCMediaRemoteController *_controller;
     MPSectionedCollection *_queueContentItems;
     MPSectionedCollection *_queueModelObjects;
@@ -25,10 +28,17 @@
 }
 
 @property (strong, nonatomic) MPCMediaRemoteController *controller; // @synthesize controller=_controller;
+@property (strong, nonatomic) MPCFuture *controllerFuture; // @synthesize controllerFuture=_controllerFuture;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *invalidationObservers; // @synthesize invalidationObservers=_invalidationObservers;
@@ -37,6 +47,8 @@
 @property (strong, nonatomic) MPSectionedCollection *queueContentItems; // @synthesize queueContentItems=_queueContentItems;
 @property (copy, nonatomic) NSString *queueIdentifier; // @synthesize queueIdentifier=_queueIdentifier;
 @property (strong, nonatomic) MPSectionedCollection *queueModelObjects; // @synthesize queueModelObjects=_queueModelObjects;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<MPCSupportedCommands> supportedCommands; // @synthesize supportedCommands=_supportedCommands;
@@ -48,6 +60,7 @@
 - (id)init;
 - (id)operationsForPlayerRequest:(id)arg1;
 - (id)operationsForRequest:(id)arg1;
+- (id)operationsForSessionRequest:(id)arg1;
 - (BOOL)playerCommandEnabled:(BOOL)arg1 command:(unsigned int)arg2 chain:(id)arg3;
 - (id)playerCommandOptionValue:(id)arg1 forKey:(id)arg2 command:(unsigned int)arg3 chain:(id)arg4;
 - (BOOL)playerCommandSupported:(BOOL)arg1 command:(unsigned int)arg2 chain:(id)arg3;
@@ -57,6 +70,7 @@
 - (long long)playerItemEditingStyleFlags:(long long)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (BOOL)playerItemIsPlaceholder:(BOOL)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (id)playerItemLanguageOptionGroups:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
+- (id)playerItemLocalizedDurationString:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (long long)playerLastChangeDirection:(long long)arg1 chain:(id)arg2;
 - (id)playerModelObject:(id)arg1 propertySet:(id)arg2 atIndexPath:(id)arg3 chain:(id)arg4;
 - (unsigned long long)playerNumberOfItems:(unsigned long long)arg1 inSection:(unsigned long long)arg2 chain:(id)arg3;
@@ -67,7 +81,10 @@
 - (long long)playerShuffleType:(long long)arg1 chain:(id)arg2;
 - (long long)playerState:(long long)arg1 chain:(id)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(id)arg2;
-- (id)playerVideoView:(id)arg1 chain:(id)arg2;
+- (id)sessionMetadataObject:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
+- (long long)sessionNumberOfPlayerPaths:(long long)arg1 chain:(id)arg2;
+- (long long)sessionNumberOfSessions:(long long)arg1 forPlayerPathAtIndex:(long long)arg2 chain:(id)arg3;
+- (id)sessionPlayerPath:(id)arg1 atIndex:(long long)arg2 chain:(id)arg3;
 - (id)tracklistUniqueIdentifier:(id)arg1 chain:(id)arg2;
 
 @end

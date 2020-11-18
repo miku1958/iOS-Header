@@ -10,7 +10,6 @@
 
 @class EKCalendar, EKCalendarItem, NSDate, NSNumber, NSString, NSURL;
 
-__attribute__((visibility("hidden")))
 @interface EKResourceChange : EKObject <EKIdentityProtocol>
 {
 }
@@ -38,8 +37,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL titleChanged;
 @property (readonly, nonatomic) NSNumber *updateCount;
 
++ (id)calendarItemPropertyName;
 + (Class)frozenClass;
 + (id)knownRelationshipSingleValueKeys;
++ (id)knownRelationshipWeakKeys;
 - (id)URL;
 - (BOOL)_propertyWithFlagDidChange:(unsigned int)arg1;
 - (unsigned int)changedProperties;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)firstName;
 - (id)lastName;
 - (id)name;
+- (id)notification;
 - (id)phoneNumber;
 
 @end

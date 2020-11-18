@@ -26,6 +26,7 @@
 
 + (id)_latestAccountViewController;
 - (void).cxx_destruct;
+- (id)_URLByRemovingBlacklistedParametersWithURL:(id)arg1;
 - (id)_authenticationQueryParametersForStyle:(long long)arg1;
 - (id)_bagKeyForStyle:(long long)arg1;
 - (void)_closeMescalSession;

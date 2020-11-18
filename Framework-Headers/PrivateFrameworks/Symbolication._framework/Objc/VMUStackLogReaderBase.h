@@ -18,14 +18,17 @@
     NSSet *_excludedFrames;
     NSMutableDictionary *_binaryImagePathToIdentifierMap;
     BOOL _usesLiteMode;
+    BOOL _coldestFrameIsNotThreadId;
 }
 
+@property (readonly) BOOL coldestFrameIsNotThreadId; // @synthesize coldestFrameIsNotThreadId=_coldestFrameIsNotThreadId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSSet *excludedFrames; // @synthesize excludedFrames=_excludedFrames;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL inspectingLiveProcess;
 @property (readonly) BOOL is64bit;
+@property (readonly) unsigned long long nodesInUniquingTable;
 @property (readonly) VMUVMRegionTracker *regionTracker; // @synthesize regionTracker=_regionTracker;
 @property (readonly) Class superclass;
 @property (readonly) unsigned int task; // @synthesize task=_task;
@@ -34,6 +37,7 @@
 - (void).cxx_destruct;
 - (id)binaryImagePathForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange)binaryImageRangeForPCaddress:(unsigned long long)arg1;
+- (int)enumerateMSLRecordsAndPayloads:(CDUnknownBlockType)arg1;
 - (int)enumerateRecords:(CDUnknownBlockType)arg1;
 - (id)functionNameForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange)functionRangeContainingPCaddress:(unsigned long long)arg1;
@@ -47,7 +51,7 @@
 - (id)sourcePathForPCaddress:(unsigned long long)arg1;
 - (id)symbolicatedBacktraceForFrames:(unsigned long long *)arg1 frameCount:(long long)arg2 options:(unsigned long long)arg3;
 - (id)symbolicatedBacktraceForNode:(unsigned int)arg1 nodeDetails:(CDStruct_599faf0f)arg2 isLiteZone:(BOOL)arg3 options:(unsigned long long)arg4;
-- (id)symbolicatedBacktraceForStackID:(unsigned long long)arg1 isLiteZone:(BOOL)arg2 options:(unsigned long long)arg3;
+- (id)symbolicatedBacktraceForStackID:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)vmuVMRegionForAddress:(unsigned long long)arg1;
 
 @end

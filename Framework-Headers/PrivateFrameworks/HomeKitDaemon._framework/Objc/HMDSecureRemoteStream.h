@@ -10,10 +10,12 @@
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 
 @class HMDAWDRemoteSessionMetric, HMDDevice, HMDSecureRemoteStreamInternal, HMDUser, HMFPairingIdentity, NSArray, NSDate, NSNumber, NSObject, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDSecureRemoteStream : HMFMessageTransport <HMFLogging, HMFObject>
 {
+    id<HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _open;
     BOOL _idle;
     BOOL _supportsSharedIdentities;
@@ -23,8 +25,6 @@
     HMDDevice *_peerDevice;
     long long _role;
     NSUUID *_sessionID;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDUser *_peer;
     HMFPairingIdentity *_peerIdentity;
     HMDSecureRemoteStreamInternal *_remoteSession;
@@ -48,7 +48,6 @@
 @property (strong, nonatomic) HMFPairingIdentity *peerIdentity; // @synthesize peerIdentity=_peerIdentity;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (strong, nonatomic) HMDSecureRemoteStreamInternal *remoteSession; // @synthesize remoteSession=_remoteSession;
 @property (readonly) long long role; // @synthesize role=_role;
@@ -56,7 +55,6 @@
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsSharedIdentities; // @synthesize supportsSharedIdentities=_supportsSharedIdentities;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
@@ -71,7 +69,6 @@
 - (void)handleSecureMessage:(id)arg1 fromTransport:(id)arg2;
 - (id)initWithCurrentDevice:(id)arg1 peerDevice:(id)arg2 clientMode:(BOOL)arg3 sessionID:(id)arg4;
 - (id)logIdentifier;
-- (void)notifyClientsUpdatedIdle:(BOOL)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setIdle:(BOOL)arg1;
 - (void)setMaximumRemoteStreams:(id)arg1;

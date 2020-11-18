@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)resetFlags;
 - (void)setIsMissingData:(BOOL)arg1;
 - (id)streamReadChannel;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
 
 @end
 

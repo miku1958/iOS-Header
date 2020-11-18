@@ -19,6 +19,7 @@
 @optional
 - (void)_cancelProvidingItemAtURL:(NSURL *)arg1 toReaderWithID:(id)arg2;
 - (void)_getPhysicalURLForURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *))arg2;
+- (void)_movingItemAtURL:(NSURL *)arg1 requiresProvidingWithDestinationURL:(NSURL *)arg2 completionHandler:(void (^)(BOOL))arg3;
 - (NSURL *)_physicalURLForURL:(NSURL *)arg1;
 - (void)_provideItemAtURL:(NSURL *)arg1 toReaderWithID:(id)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)_providedItemAtURL:(NSURL *)arg1 didGainPresenterWithID:(id)arg2;

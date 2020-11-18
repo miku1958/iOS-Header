@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
+- (id)_accessibilityComposeElementsForSorting;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (unsigned long long)_axIndexOfRecipient:(id)arg1 inArray:(id)arg2;
 - (id)_searchResultsTable;

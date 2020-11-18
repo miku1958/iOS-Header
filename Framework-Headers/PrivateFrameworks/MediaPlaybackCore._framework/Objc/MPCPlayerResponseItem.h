@@ -14,6 +14,7 @@
     BOOL _placeholder;
     NSString *_contentItemIdentifier;
     long long _revision;
+    NSString *_localizedDurationString;
     NSArray *_languageOptionGroups;
     MPCPlayerResponse *_response;
     NSIndexPath *_indexPath;
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) CDStruct_fce57115 duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) NSIndexPath *indexPath; // @synthesize indexPath=_indexPath;
 @property (readonly, nonatomic) NSArray *languageOptionGroups; // @synthesize languageOptionGroups=_languageOptionGroups;
+@property (readonly, nonatomic) NSString *localizedDurationString; // @synthesize localizedDurationString=_localizedDurationString;
 @property (readonly, nonatomic) MPModelGenericObject *metadataObject; // @synthesize metadataObject=_metadataObject;
 @property (readonly, nonatomic, getter=isPlaceholder) BOOL placeholder; // @synthesize placeholder=_placeholder;
 @property (readonly, weak, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;

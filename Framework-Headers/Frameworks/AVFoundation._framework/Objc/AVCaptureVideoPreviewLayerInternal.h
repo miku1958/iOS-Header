@@ -9,6 +9,7 @@
 @class AVCaptureConnection, AVCaptureSession, AVWeakReference, CALayer, NSArray, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVCaptureVideoPreviewLayerInternal : NSObject
 {
     NSString *sinkID;
@@ -25,6 +26,7 @@
     NSString *gravity;
     BOOL disableActions;
     AVWeakReference *weakReference;
+    BOOL isPreviewing;
     long long orientation;
     BOOL automaticallyAdjustsMirroring;
     BOOL mirrored;

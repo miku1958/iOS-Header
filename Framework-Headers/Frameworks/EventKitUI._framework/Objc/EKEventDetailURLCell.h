@@ -6,25 +6,39 @@
 
 #import <EventKitUI/EKEventDetailCell.h>
 
-@class UILabel, UITextView;
+#import <EventKitUI/UITextViewDelegate-Protocol.h>
+
+@class NSString, NSURL, SGSuggestedEventLaunchInfo, UILabel, UITextView;
 
 __attribute__((visibility("hidden")))
-@interface EKEventDetailURLCell : EKEventDetailCell
+@interface EKEventDetailURLCell : EKEventDetailCell <UITextViewDelegate>
 {
     UILabel *_URLTitleView;
     UITextView *_URLView;
     int _lastLayoutPosition;
+    NSURL *_url;
+    SGSuggestedEventLaunchInfo *_launchInfo;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (Class)_SGSuggestionsServiceClass;
 - (void).cxx_destruct;
 - (id)_URLTitleView;
 - (id)_URLView;
 - (void)_layoutForWidth:(double)arg1 position:(int)arg2;
-- (id)initWithEvent:(id)arg1 editable:(BOOL)arg2 style:(long long)arg3;
+- (id)initWithEvent:(id)arg1 launchInfo:(id)arg2 editable:(BOOL)arg3 style:(long long)arg4;
+- (id)initWithEvent:(id)arg1 url:(id)arg2 editable:(BOOL)arg3 style:(long long)arg4;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
 - (void)layoutSubviews;
-- (void)setURL:(id)arg1;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (BOOL)update;
+- (BOOL)updateLink;
+- (void)updateLinkWithLaunchInfo;
+- (void)updateLinkWithURL;
 
 @end
 

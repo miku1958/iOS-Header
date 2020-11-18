@@ -32,11 +32,12 @@
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)_pause;
 - (void)_resume;
-- (id)_textProviderWithIsPaused:(BOOL)arg1;
 - (void)_updateDialProgress;
 - (void)dealloc;
 - (id)init;
 - (void)layoutSubviews;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

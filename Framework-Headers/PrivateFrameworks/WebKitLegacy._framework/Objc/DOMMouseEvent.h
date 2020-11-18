@@ -14,7 +14,7 @@
 }
 
 @property (readonly) BOOL altKey;
-@property (readonly) unsigned short button;
+@property (readonly) short button;
 @property (readonly) int clientX;
 @property (readonly) int clientY;
 @property (readonly) BOOL ctrlKey;

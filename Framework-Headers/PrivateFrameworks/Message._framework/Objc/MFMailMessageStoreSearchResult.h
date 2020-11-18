@@ -18,8 +18,8 @@
 @property (readonly, nonatomic) unsigned long long count;
 @property (strong, nonatomic) NSMutableDictionary *mailboxToRemoteIdDictionary; // @synthesize mailboxToRemoteIdDictionary=_mailboxToRemoteIdDictionary;
 
+- (void).cxx_destruct;
 - (void)addRemoteID:(id)arg1 mailbox:(id)arg2;
-- (void)dealloc;
 - (void)enumerateMailboxesAndRemoteIDsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 

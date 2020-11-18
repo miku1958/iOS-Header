@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class NSDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface VUIExtrasInfo : NSObject
@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *adamID;
 @property (readonly, nonatomic) NSNumber *contentRating;
 @property (readonly, nonatomic) NSString *extrasURLString;
+@property (readonly, nonatomic) BOOL isEntitledToPlay;
 @property (readonly, nonatomic) BOOL isLightTheme;
 @property (readonly, nonatomic) NSString *loadingImage;
 @property (readonly, nonatomic) NSString *previewURLString;
+@property (readonly, nonatomic) NSURL *tvAppDeeplinkURL;
 
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;

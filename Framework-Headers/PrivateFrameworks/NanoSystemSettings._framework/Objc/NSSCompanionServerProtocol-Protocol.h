@@ -9,8 +9,12 @@
 @class NSData, NSString;
 
 @protocol NSSCompanionServerProtocol <NSSServerProtocol>
+- (void)cancelActiveLogFileTranfers;
+- (void)deleteDiagnosticLogFile:(NSString *)arg1 withResult:(void (^)(NSError *))arg2;
 - (void)getAboutInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getAccountsInfoForAccountType:(NSString *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getDiagnosticLogFileFromGizmo:(NSString *)arg1 withResults:(void (^)(NSURL *, NSError *))arg2;
+- (void)getDiagnosticLogsInfo:(void (^)(NSArray *, NSError *))arg1;
 - (void)getLegalDocuments:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getLocalesInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getProfileWithIdentifier:(NSString *)arg1 replyHandler:(void (^)(NSData *, NSError *))arg2;

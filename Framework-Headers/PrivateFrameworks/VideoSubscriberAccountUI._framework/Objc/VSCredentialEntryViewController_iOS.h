@@ -7,48 +7,58 @@
 #import <AccountsUI/ACUIViewController.h>
 
 #import <VideoSubscriberAccountUI/VSCredentialEntryViewController-Protocol.h>
+#import <VideoSubscriberAccountUI/VSPSPickerTableViewCellDelegate-Protocol.h>
 
-@class NSString, PSTextFieldSpecifier, UIButton, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
+@class NSArray, NSString, PSSpecifier, UIButton, UIView, VSCredentialEntryPicker, VSCredentialEntryViewModel, VSIdentityProviderLogoView, VSViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VSCredentialEntryViewController_iOS : ACUIViewController <VSCredentialEntryViewController>
+@interface VSCredentialEntryViewController_iOS : ACUIViewController <VSCredentialEntryViewController, VSPSPickerTableViewCellDelegate>
 {
     BOOL _cancellationAllowed;
     VSCredentialEntryViewModel *_viewModel;
     id<VSAuthenticationViewControllerDelegate> _delegate;
     VSIdentityProviderLogoView *_logoView;
     UIButton *_linkButton;
-    PSTextFieldSpecifier *_usernameFieldSpecifier;
-    PSTextFieldSpecifier *_passwordFieldSpecifier;
+    NSArray *_buttons;
+    UIView *_buttonView;
+    NSArray *_fieldSpecifiers;
     double _keyboardHeight;
     id _textFieldTextDidChangeObserver;
     id _keyboardWillShowObserver;
     id _keyboardWillHideObserver;
     id _weakTarget;
+    PSSpecifier *_pickerButtonSpecifier;
+    PSSpecifier *_pickerSpecifier;
+    VSCredentialEntryPicker *_picker;
 }
 
+@property (strong, nonatomic) UIView *buttonView; // @synthesize buttonView=_buttonView;
+@property (strong, nonatomic) NSArray *buttons; // @synthesize buttons=_buttons;
 @property (nonatomic, getter=isCancellationAllowed) BOOL cancellationAllowed; // @synthesize cancellationAllowed=_cancellationAllowed;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VSAuthenticationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSArray *fieldSpecifiers; // @synthesize fieldSpecifiers=_fieldSpecifiers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
 @property (weak, nonatomic) id keyboardWillHideObserver; // @synthesize keyboardWillHideObserver=_keyboardWillHideObserver;
 @property (weak, nonatomic) id keyboardWillShowObserver; // @synthesize keyboardWillShowObserver=_keyboardWillShowObserver;
 @property (strong, nonatomic) UIButton *linkButton; // @synthesize linkButton=_linkButton;
 @property (strong, nonatomic) VSIdentityProviderLogoView *logoView; // @synthesize logoView=_logoView;
-@property (strong, nonatomic) PSTextFieldSpecifier *passwordFieldSpecifier; // @synthesize passwordFieldSpecifier=_passwordFieldSpecifier;
+@property (strong, nonatomic) VSCredentialEntryPicker *picker; // @synthesize picker=_picker;
+@property (strong, nonatomic) PSSpecifier *pickerButtonSpecifier; // @synthesize pickerButtonSpecifier=_pickerButtonSpecifier;
+@property (strong, nonatomic) PSSpecifier *pickerSpecifier; // @synthesize pickerSpecifier=_pickerSpecifier;
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id textFieldTextDidChangeObserver; // @synthesize textFieldTextDidChangeObserver=_textFieldTextDidChangeObserver;
-@property (strong, nonatomic) PSTextFieldSpecifier *usernameFieldSpecifier; // @synthesize usernameFieldSpecifier=_usernameFieldSpecifier;
 @property (readonly, nonatomic) VSViewModel *viewModel;
 @property (strong, nonatomic) id weakTarget; // @synthesize weakTarget=_weakTarget;
 
 - (void).cxx_destruct;
 - (id)_createSpecifierForField:(id)arg1;
 - (id)_credentialEntryFieldForSpecifier:(id)arg1;
+- (void)_jsButtonTapped:(id)arg1;
 - (void)_linkButtonTapped:(id)arg1;
 - (id)_linkURL;
 - (void)_presentError:(id)arg1;
@@ -65,6 +75,11 @@ __attribute__((visibility("hidden")))
 - (void)doneButtonPressed:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)pickerButtonSelected;
+- (void)pickerViewCell:(id)arg1 didSelectRow:(long long)arg2;
+- (id)pickerViewCell:(id)arg1 titleForRow:(long long)arg2;
+- (long long)pickerViewCellInitialSelectedRow:(id)arg1;
+- (long long)pickerViewCellNumberOfRows:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setViewModel:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

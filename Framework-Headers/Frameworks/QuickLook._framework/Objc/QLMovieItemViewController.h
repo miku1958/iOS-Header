@@ -6,30 +6,49 @@
 
 #import <QuickLook/QLMediaItemViewController.h>
 
+#import <QuickLook/AVEditBehaviorDelegate-Protocol.h>
 #import <QuickLook/AVPictureInPictureControllerDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PHPlaceholderView, QLOverlayPlayButton, QLVideoScrubberView, UIScrollView, UIView;
+@class AVEditBehavior, AVPlayerViewController, NSLayoutConstraint, NSString, PHPlaceholderView, QLMovieEdits, QLOverlayPlayButton, QLVideoScrubberView, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
-@interface QLMovieItemViewController : QLMediaItemViewController <AVPictureInPictureControllerDelegate>
+@interface QLMovieItemViewController : QLMediaItemViewController <AVPictureInPictureControllerDelegate, AVEditBehaviorDelegate>
 {
     BOOL _previewIsVisisble;
     BOOL _isObservingPlayerExternalPlaybackActive;
     PHPlaceholderView *_airPlayPlaceholderView;
+    BOOL _isEditing;
+    BOOL _isSavingEditsBeforeDismissing;
+    BOOL _assetCanBeRotated;
+    AVPlayerViewController *_playerViewController;
     QLOverlayPlayButton *_playButton;
     QLVideoScrubberView *_scrubber;
     NSLayoutConstraint *_bottomScrubberConstraint;
     UIView *_scrubberContainer;
     UIScrollView *_scrubberContainerScrollView;
     double _scrubberVerticalOffset;
+    UIView *_playerViewContainer;
+    UIScrollView *_playerViewControllerScrollView;
+    AVEditBehavior *_editBehavior;
+    QLMovieEdits *_edits;
+    QLMovieEdits *_editsSinceLastSave;
 }
 
 @property (readonly, nonatomic) PHPlaceholderView *airPlayPlaceholderView;
+@property (nonatomic) BOOL assetCanBeRotated; // @synthesize assetCanBeRotated=_assetCanBeRotated;
 @property (strong) NSLayoutConstraint *bottomScrubberConstraint; // @synthesize bottomScrubberConstraint=_bottomScrubberConstraint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) AVEditBehavior *editBehavior; // @synthesize editBehavior=_editBehavior;
+@property (strong, nonatomic) QLMovieEdits *edits; // @synthesize edits=_edits;
+@property (strong, nonatomic) QLMovieEdits *editsSinceLastSave; // @synthesize editsSinceLastSave=_editsSinceLastSave;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isEditing; // @synthesize isEditing=_isEditing;
+@property (nonatomic) BOOL isSavingEditsBeforeDismissing; // @synthesize isSavingEditsBeforeDismissing=_isSavingEditsBeforeDismissing;
 @property (strong) QLOverlayPlayButton *playButton; // @synthesize playButton=_playButton;
+@property (strong, nonatomic) UIView *playerViewContainer; // @synthesize playerViewContainer=_playerViewContainer;
+@property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
+@property (weak, nonatomic) UIScrollView *playerViewControllerScrollView; // @synthesize playerViewControllerScrollView=_playerViewControllerScrollView;
 @property (strong) QLVideoScrubberView *scrubber; // @synthesize scrubber=_scrubber;
 @property (strong) UIView *scrubberContainer; // @synthesize scrubberContainer=_scrubberContainer;
 @property (strong) UIScrollView *scrubberContainerScrollView; // @synthesize scrubberContainerScrollView=_scrubberContainerScrollView;
@@ -37,26 +56,62 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_enterEditMode;
+- (BOOL)_enterEditModeIfPossible;
+- (void)_exitEditMode:(BOOL)arg1;
+- (void)_resetTrimmingValues;
+- (void)_rotateIfPossible;
+- (void)_rotateMovieRight;
+- (void)_rotateRightButtonTapped;
+- (void)_saveMovieIfEdited:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_saveMovieIfEditedWithEditedCopy:(id)arg1 shouldDismissAfterSaving:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_setupEditBehavior;
+- (void)_showFailedToSaveChangesAlertWithError:(id)arg1;
+- (void)_updateEditMode;
+- (void)_updateEditsTrimmingValuesWithTrimStartTime:(double)arg1 trimEndTime:(double)arg2;
+- (void)_updateInterfaceAfterExitingEditMode;
 - (void)_updatePlaceHolderView;
+- (void)_updatePlayButtonVisibility;
+- (BOOL)_videoIsPlaying;
 - (id)accessoryView;
 - (void)addScrubberIfNeededWithDeferral;
+- (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
+- (BOOL)canPinchToDismiss;
+- (BOOL)canSwipeToDismiss;
+- (BOOL)canToggleFullScreen;
 - (void)dealloc;
 - (void)didChangePlayingStatus;
+- (id)editBehaviorAlertActionsForDoneButtonTap:(id)arg1;
+- (void)editBehaviorDidCancel:(id)arg1;
+- (void)editButtonTapped;
+- (id)editProgressIndicatorMessage;
+- (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
+- (id)init;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)parallaxView;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
-- (void)play;
+- (BOOL)play;
 - (long long)preferredWhitePointAdaptivityStyle;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
+- (id)registeredKeyCommands;
+- (void)savePreviewEditedCopyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)scrollView;
+- (id)scrollViewInView:(id)arg1;
 - (void)setPlayControlsHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (id)setupPlayerViewWithPlayer:(id)arg1;
+- (BOOL)shouldAllowEditingContents;
+- (BOOL)shouldDisplayPlayButtonInNavigationBar;
 - (id)timeLabelScrollView;
+- (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)transitionDidStart:(BOOL)arg1;
 - (id)transitioningView;
+- (void)updateInterfaceAfterSavingEdits;
+- (void)updateInterfaceForSavingEdits;
 
 @end
 

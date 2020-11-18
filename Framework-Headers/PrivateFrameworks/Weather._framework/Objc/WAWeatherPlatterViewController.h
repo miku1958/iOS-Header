@@ -16,14 +16,17 @@
     NSURL *_commitURL;
     WFURLComponents *_URLComponents;
     WATodayModel *_model;
+    UIView *_backgroundView;
     WATodayHeaderView *_headerView;
     UIView *_dividerLineView;
     NSArray *_hourlyForecastViews;
     UIStackView *_hourlyBeltView;
     NSMutableArray *_constraints;
+    double _viewWidth;
 }
 
 @property (strong, nonatomic) WFURLComponents *URLComponents; // @synthesize URLComponents=_URLComponents;
+@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (copy, nonatomic) NSURL *commitURL; // @synthesize commitURL=_commitURL;
 @property (strong, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,6 +39,7 @@
 @property (strong, nonatomic) WATodayModel *model; // @synthesize model=_model;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
+@property (nonatomic) double viewWidth; // @synthesize viewWidth=_viewWidth;
 
 - (void).cxx_destruct;
 - (void)_buildModelForLocation:(id)arg1;
@@ -48,7 +52,14 @@
 - (id)initWithLocationString:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURLComponents:(id)arg1;
+- (void)setupBackgroundView;
+- (void)setupConstraints;
+- (void)setupDividerView;
+- (void)setupHeaderView;
+- (void)setupHourlyForecast;
 - (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnitTo:(int)arg2;
+- (void)updateViewConstraints;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 
 @end

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PassKitUI/PKViewController.h>
+#import <UIKit/UIViewController.h>
 
+#import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
 @class NSArray, NSString, PKAccount, UILabel, UIScrollView, UITextView;
 
-@interface PKAccountBillPaymentLearnMoreViewController : PKViewController <UITextViewDelegate>
+@interface PKAccountBillPaymentLearnMoreViewController : UIViewController <UITextViewDelegate, UIScrollViewDelegate>
 {
     PKAccount *_account;
     UIScrollView *_scrollView;
@@ -37,6 +38,7 @@
 - (void)doneButtonTapped;
 - (id)initWithAccount:(id)arg1;
 - (void)loadView;
+- (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)viewDidLayoutSubviews;
 

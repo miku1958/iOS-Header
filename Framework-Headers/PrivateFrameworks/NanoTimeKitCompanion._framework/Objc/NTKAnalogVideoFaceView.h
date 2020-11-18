@@ -40,7 +40,6 @@
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applySlow;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
-- (void)_backlightDidTurnOff;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterOrb:(BOOL)arg1;
 - (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
@@ -54,11 +53,10 @@
 - (id)_complicationsTapColor;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (double)_contentAlphaForEditMode:(long long)arg1;
 - (struct CGPoint)_contentCenterOffset;
 - (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (void)_customizeVideoPlayerOnSetup;
 - (id)_detachedComplicationDisplays;
 - (void)_faceLibraryDismissed;
@@ -81,9 +79,9 @@
 - (void)_loadSnapshotContentViews;
 - (double)_minimumBreathingScaleForComplicationSlot:(id)arg1;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (id)_pickerMaskForSlot:(id)arg1;
 - (void)_prepareForEditing;
 - (void)_prepareForOrb;
-- (void)_prepareTimeViewForReuse:(id)arg1;
 - (void)_setVideoPlayerDataSource:(id)arg1;
 - (void)_setupTransitioningViewIfNeeded:(BOOL)arg1;
 - (BOOL)_shouldAnimateComplicationsOnTap;
@@ -97,11 +95,13 @@
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (void)customizeFaceViewForListing:(id)arg1 changeEvent:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)faceViewWasTapped:(id)arg1;
+- (void)handleScreenBlanked;
 - (id)imageForEditOption:(id)arg1;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (double)keylineStyleForComplicationSlot:(id)arg1;
 - (void)layoutSubviews;
 - (void)setDataMode:(long long)arg1;
+- (void)setNormalComplicationDisplayWrapper:(id)arg1 forSlot:(id)arg2;
 - (void)setupVideoPlayerView;
 - (BOOL)shouldFadeIncomingView;
 - (BOOL)slotUsesCurvedText:(id)arg1;

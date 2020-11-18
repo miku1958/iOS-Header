@@ -32,6 +32,7 @@
 @property (strong) UIColor *strokeColor;
 
 - (void).cxx_destruct;
+- (void)_performInitialConfiguration;
 - (void)applyFillPropertiesToContext:(struct CGContext *)arg1 atZoomScale:(double)arg2;
 - (void)applyStrokePropertiesToContext:(struct CGContext *)arg1 atZoomScale:(double)arg2;
 - (BOOL)canDrawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2;

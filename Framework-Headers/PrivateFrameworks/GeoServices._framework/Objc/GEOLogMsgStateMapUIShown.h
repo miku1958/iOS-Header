@@ -11,18 +11,27 @@
 @interface GEOLogMsgStateMapUIShown : PBCodable <NSCopying>
 {
     BOOL _isAirQualityShown;
+    BOOL _isLookAroundEntryIconShown;
+    BOOL _isVenueExperienceShown;
     BOOL _isWeatherShown;
     struct {
-        unsigned int isAirQualityShown:1;
-        unsigned int isWeatherShown:1;
-    } _has;
+        unsigned int has_isAirQualityShown:1;
+        unsigned int has_isLookAroundEntryIconShown:1;
+        unsigned int has_isVenueExperienceShown:1;
+        unsigned int has_isWeatherShown:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsAirQualityShown;
+@property (nonatomic) BOOL hasIsLookAroundEntryIconShown;
+@property (nonatomic) BOOL hasIsVenueExperienceShown;
 @property (nonatomic) BOOL hasIsWeatherShown;
-@property (nonatomic) BOOL isAirQualityShown; // @synthesize isAirQualityShown=_isAirQualityShown;
-@property (nonatomic) BOOL isWeatherShown; // @synthesize isWeatherShown=_isWeatherShown;
+@property (nonatomic) BOOL isAirQualityShown;
+@property (nonatomic) BOOL isLookAroundEntryIconShown;
+@property (nonatomic) BOOL isVenueExperienceShown;
+@property (nonatomic) BOOL isWeatherShown;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +39,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -26,6 +26,7 @@
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void)dealloc;
 - (void)dispose;
+- (id)extensionPoint;
 - (void)handleNewFlow:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleReport:(id)arg1;
 - (void)notifyRulesChanged;
@@ -34,7 +35,6 @@
 - (void)provideURLAppendStringMap:(id)arg1;
 - (void)startFilterWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopObserving;
-- (void)stopWithReason:(int)arg1;
 
 @end
 

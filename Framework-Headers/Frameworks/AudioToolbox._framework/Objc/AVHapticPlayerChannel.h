@@ -23,6 +23,7 @@
 - (BOOL)clearEvents:(double)arg1 error:(id *)arg2;
 - (id)initWithChannelID:(id)arg1 client:(id)arg2;
 - (void)invalidate;
+- (BOOL)resetAtTime:(double)arg1 error:(id *)arg2;
 - (BOOL)scheduleParameterCurve:(unsigned long long)arg1 curve:(id)arg2 atTime:(double)arg3 error:(id *)arg4;
 - (BOOL)sendEvents:(id)arg1 atTime:(double)arg2 error:(id *)arg3;
 - (BOOL)setParameter:(unsigned long long)arg1 value:(float)arg2 atTime:(double)arg3 error:(id *)arg4;

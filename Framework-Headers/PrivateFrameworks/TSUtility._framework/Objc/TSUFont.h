@@ -14,7 +14,6 @@
 }
 
 @property (readonly, nonatomic) struct __CTFont *CTFont; // @synthesize CTFont=_ctFont;
-@property (readonly, nonatomic) UIFont *UIFont;
 @property (readonly, nonatomic) double ascender;
 @property (readonly, nonatomic) double capHeight;
 @property (readonly, nonatomic) double descender;
@@ -27,7 +26,7 @@
 
 + (id)boldSystemFontOfSize:(double)arg1;
 + (id)fontWithName:(id)arg1 size:(double)arg2;
-+ (id)fontWithUIFont:(id)arg1;
++ (id)fontWithPlatformFont:(id)arg1;
 + (id)italicSystemFontOfSize:(double)arg1;
 + (id)systemFontOfSize:(double)arg1;
 + (id)systemFontOfSize:(double)arg1 weight:(double)arg2;
@@ -36,7 +35,7 @@
 - (id)fontWithScale:(double)arg1;
 - (id)fontWithSize:(double)arg1;
 - (id)initWithCTFont:(struct __CTFont *)arg1;
-- (id)initWithUIFont:(id)arg1;
+- (id)initWithPlatformFont:(id)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <HomeUI/HUGridDisplayOptions-Protocol.h>
 #import <HomeUI/NSCopying-Protocol.h>
 
-@class HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridServiceCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
+@class HUGridCameraCellLayoutOptions, HUGridHeadlineCellLayoutOptions, HUGridSceneCellLayoutOptions, HUGridServiceCellLayoutOptions, HUGridStatusBannerCellLayoutOptions, HUNavigationBarLayoutOptions, NSNumber, NSString, UIFont;
 
 @interface HUGridLayoutOptions : NSObject <HUGridDisplayOptions, NSCopying>
 {
@@ -46,6 +46,8 @@
     HUGridSceneCellLayoutOptions *_sceneCellOptions;
     HUGridServiceCellLayoutOptions *_serviceCellOptions;
     HUNavigationBarLayoutOptions *_navigationBarOptions;
+    HUGridStatusBannerCellLayoutOptions *_statusBannerCellOptions;
+    long long _numberOfCameraCellsPerRow;
     NSNumber *_overrideViewSizeSubclass;
     struct CGSize _viewSize;
     struct UIEdgeInsets _sectionTitleMargin;
@@ -75,9 +77,11 @@
 @property (nonatomic) double minimumMarginBelowHeadline; // @synthesize minimumMarginBelowHeadline=_minimumMarginBelowHeadline;
 @property (nonatomic) double minimumMarginBelowStatus; // @synthesize minimumMarginBelowStatus=_minimumMarginBelowStatus;
 @property (copy, nonatomic) HUNavigationBarLayoutOptions *navigationBarOptions; // @synthesize navigationBarOptions=_navigationBarOptions;
+@property (readonly, nonatomic) long long numberOfCameraCellsPerRow; // @synthesize numberOfCameraCellsPerRow=_numberOfCameraCellsPerRow;
 @property (readonly, nonatomic) long long numberOfColumns;
 @property (strong, nonatomic) NSNumber *overrideNumberOfColumns; // @synthesize overrideNumberOfColumns=_overrideNumberOfColumns;
 @property (strong, nonatomic) NSNumber *overrideViewSizeSubclass; // @synthesize overrideViewSizeSubclass=_overrideViewSizeSubclass;
+@property (readonly, nonatomic) double pointWidthForCurrentViewSizeSubclass;
 @property (readonly, nonatomic) double pointWidthForFullWidthCell;
 @property (nonatomic) double rowSpacing; // @synthesize rowSpacing=_rowSpacing;
 @property (copy, nonatomic) HUGridSceneCellLayoutOptions *sceneCellOptions; // @synthesize sceneCellOptions=_sceneCellOptions;
@@ -91,6 +95,7 @@
 @property (nonatomic) double sectionTopMargin; // @synthesize sectionTopMargin=_sectionTopMargin;
 @property (nonatomic) double sectionTrailingMargin; // @synthesize sectionTrailingMargin=_sectionTrailingMargin;
 @property (copy, nonatomic) HUGridServiceCellLayoutOptions *serviceCellOptions; // @synthesize serviceCellOptions=_serviceCellOptions;
+@property (copy, nonatomic) HUGridStatusBannerCellLayoutOptions *statusBannerCellOptions; // @synthesize statusBannerCellOptions=_statusBannerCellOptions;
 @property (nonatomic) double statusDetailsBaselineToFirstSectionTitleBaselineDistance; // @synthesize statusDetailsBaselineToFirstSectionTitleBaselineDistance=_statusDetailsBaselineToFirstSectionTitleBaselineDistance;
 @property (strong, nonatomic) UIFont *statusDetailsFont; // @synthesize statusDetailsFont=_statusDetailsFont;
 @property (nonatomic) BOOL statusHidden; // @synthesize statusHidden=_statusHidden;
@@ -98,7 +103,6 @@
 @property (strong, nonatomic) UIFont *statusItemFont; // @synthesize statusItemFont=_statusItemFont;
 @property (readonly, nonatomic) double statusListCellBottomMargin;
 @property (readonly, nonatomic) double statusListCellHeight;
-@property (readonly, nonatomic) double statusListCellTopMargin;
 @property (readonly) Class superclass;
 @property (nonatomic) double topOfViewToFirstStatusItemBaselineDistance; // @synthesize topOfViewToFirstStatusItemBaselineDistance=_topOfViewToFirstStatusItemBaselineDistance;
 @property (readonly, nonatomic) struct CGSize viewSize; // @synthesize viewSize=_viewSize;
@@ -120,6 +124,7 @@
 - (double)pointWidthForNumberOfColumns:(long long)arg1;
 - (double)preferredSectionHeightForNumberOfSceneRows:(unsigned long long)arg1;
 - (double)preferredSectionHeightForNumberOfServiceRows:(unsigned long long)arg1 spanningColumns:(unsigned long long)arg2;
+- (double)statusListCellTopMargin:(BOOL)arg1 forStatusBannerWidth:(double)arg2 havingTitleAndDescription:(id)arg3 contentSizeCategory:(id)arg4;
 
 @end
 

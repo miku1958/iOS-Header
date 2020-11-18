@@ -6,11 +6,34 @@
 
 #import <UIKitCore/_UIStatusBarVisualProvider_iOS.h>
 
+@class NSTimer, _UIStatusBarDisplayItemPlacement, _UIStatusBarRegion;
+
 @interface _UIStatusBarVisualProvider_Phone : _UIStatusBarVisualProvider_iOS
 {
+    _UIStatusBarDisplayItemPlacement *_backgroundActivityDetailPlacement;
+    _UIStatusBarDisplayItemPlacement *_pillIconPlacement;
+    _UIStatusBarRegion *_pillRegion;
+    NSTimer *_backgroundActivityDetailTimer;
 }
 
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *backgroundActivityDetailPlacement; // @synthesize backgroundActivityDetailPlacement=_backgroundActivityDetailPlacement;
+@property (strong, nonatomic) NSTimer *backgroundActivityDetailTimer; // @synthesize backgroundActivityDetailTimer=_backgroundActivityDetailTimer;
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *pillIconPlacement; // @synthesize pillIconPlacement=_pillIconPlacement;
+@property (strong, nonatomic) _UIStatusBarRegion *pillRegion; // @synthesize pillRegion=_pillRegion;
+
 + (Class)visualProviderSubclassForScreen:(id)arg1;
+- (void).cxx_destruct;
+- (id)_animationForBackgroundActivityIcon;
+- (id)_animationForBackgroundActivityPill;
+- (void)_hideActivityDetailAndUpdate:(BOOL)arg1;
+- (void)_updateBackgroundActivityWithEntry:(id)arg1 timeEntry:(id)arg2 needsUpdate:(BOOL)arg3;
+- (void)actionable:(id)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;
+- (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (id)animationForBackgroundActivityPillWithDuration:(double)arg1 scale:(double)arg2;
+- (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (void)updateDataForBackgroundActivity:(id)arg1;
+- (void)updatePill;
+- (id)willUpdateWithData:(id)arg1;
 
 @end
 

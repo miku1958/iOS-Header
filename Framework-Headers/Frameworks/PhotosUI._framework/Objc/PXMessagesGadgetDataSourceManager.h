@@ -8,8 +8,8 @@
 
 #import <PhotosUICore/PXCMMCloudGadgetViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, PXCMMSuggestionsDataSourceManager, PXCloudWelcomeGadgetProvider, PXMessagesCMMSuggestionsCollectionGadgetProvider, PXMessagesExtensionViewModel, PXMessagesRecentPhotosGadgetProvider, UIViewController;
-@protocol PXGadgetDelegate, PXPhotoLibraryPresenting;
+@class NSArray, NSString, PXCMMSuggestionsDataSourceManager, PXCloudWelcomeGadgetProvider, PXGadgetNavigationHelper, PXMessagesCMMSuggestionsCollectionGadgetProvider, PXMessagesExtensionViewModel, PXMessagesRecentPhotosGadgetProvider, UIViewController;
+@protocol PXGadgetDelegate, PXGadgetTransition, PXPhotoLibraryPresenting;
 
 @interface PXMessagesGadgetDataSourceManager : PXGadgetDataSourceManager <PXCMMCloudGadgetViewControllerDelegate>
 {
@@ -26,12 +26,14 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<PXGadgetTransition> gadgetTransition;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<PXGadgetDelegate> nextGadgetResponder;
 @property (copy, nonatomic) NSString *placeholderTitle; // @synthesize placeholderTitle=_placeholderTitle;
 @property (nonatomic) double recentPhotosHeight; // @synthesize recentPhotosHeight=_recentPhotosHeight;
 @property (strong, nonatomic) PXMessagesRecentPhotosGadgetProvider *recentPhotosProvider; // @synthesize recentPhotosProvider=_recentPhotosProvider;
 @property (strong, nonatomic) UIViewController<PXPhotoLibraryPresenting> *recentPhotosViewController; // @synthesize recentPhotosViewController=_recentPhotosViewController;
+@property (readonly, nonatomic) PXGadgetNavigationHelper *rootNavigationHelper;
 @property (strong, nonatomic) PXCMMSuggestionsDataSourceManager *suggestionsDataSourceManager; // @synthesize suggestionsDataSourceManager=_suggestionsDataSourceManager;
 @property (readonly) Class superclass;
 

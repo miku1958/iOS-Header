@@ -18,7 +18,7 @@
     id<WBSCloudKitThrottlerDataStore> _dataStore;
 }
 
-@property (strong, nonatomic) id<WBSCloudKitThrottlerDataStore> dataStore; // @synthesize dataStore=_dataStore;
+@property (weak, nonatomic) id<WBSCloudKitThrottlerDataStore> dataStore; // @synthesize dataStore=_dataStore;
 
 + (id)_distributionBucketsFromConfiguration:(id)arg1;
 + (BOOL)policyStringRepresentsValidPolicy:(id)arg1;

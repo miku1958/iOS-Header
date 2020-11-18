@@ -32,11 +32,13 @@
 + (id)na_identity;
 + (Class)valueClass;
 - (void).cxx_destruct;
-- (id)_characteristicValuesByTypeForBatchReadResponse:(id)arg1;
 - (id)_descriptionWithCharacteristicOptions:(BOOL)arg1 includeResults:(BOOL)arg2;
+- (long long)_primaryStateForValue:(id)arg1;
 - (id)_standardResultsForResultValue:(id)arg1 characteristicValuesByType:(id)arg2;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)_tintColor;
 - (BOOL)canCopyWithCharacteristicOptions:(id)arg1;
+- (id)characteristicValuesByTypeForBatchReadResponse:(id)arg1;
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (id)copyWithValueSource:(id)arg1;

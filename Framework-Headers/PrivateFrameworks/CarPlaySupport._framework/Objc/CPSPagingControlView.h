@@ -40,6 +40,7 @@
 - (void)_invokeDelegateForPageIndex:(unsigned long long)arg1;
 - (id)_linearFocusItems;
 - (void)_update;
+- (void)_updateImages;
 - (void)enablePageControlsIfNecessary;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

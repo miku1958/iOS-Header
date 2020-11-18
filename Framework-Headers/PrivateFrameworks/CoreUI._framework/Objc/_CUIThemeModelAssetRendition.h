@@ -6,10 +6,23 @@
 
 #import <CoreUI/CUIThemeRendition.h>
 
+@class MDLAsset, NSArray, NSMutableArray;
+
 __attribute__((visibility("hidden")))
 @interface _CUIThemeModelAssetRendition : CUIThemeRendition
 {
+    MDLAsset *_asset;
+    NSMutableArray *_meshKeys;
 }
+
+@property (readonly) NSArray *meshKeys;
+
+- (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
+- (void)dealloc;
+- (id)initForArchiving:(id)arg1 withMeshRenditionKeys:(id)arg2;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)modelAsset;
+- (unsigned long long)writeToData:(id)arg1;
 
 @end
 

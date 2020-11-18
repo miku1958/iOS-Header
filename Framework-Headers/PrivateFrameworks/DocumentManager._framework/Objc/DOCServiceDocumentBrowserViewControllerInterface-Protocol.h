@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class FPSandboxingURLWrapper, NSArray, NSString;
+@class FPItem, FPSandboxingURLWrapper, NSArray, NSString, NSURL;
 
 @protocol DOCServiceDocumentBrowserViewControllerInterface
-- (void)_browserProxyWithCompletionBlock:(void (^)(id<DOCServiceBrowserViewControllerProxy>))arg1;
 - (void)_clearCurrentOpenInteraction;
 - (void)_dismissAllPresentedViewControllers:(BOOL)arg1 completion:(void (^)(void))arg2;
 - (void)_importDocumentAtURLWrapper:(FPSandboxingURLWrapper *)arg1 mode:(unsigned long long)arg2 toCurrentBrowserLocationWithCompletion:(void (^)(DOCItem *, NSError *))arg3;
@@ -21,5 +20,9 @@
 - (void)_setCreateButtonAspectRatio:(double)arg1;
 - (void)_setCreateButtonTitle:(NSString *)arg1;
 - (void)_setCustomActions:(NSArray *)arg1;
+- (void)_setSceneIdentifier:(NSString *)arg1;
+- (void)_wakeUpForKeyCommands;
+- (void)getTransitionControllerForItem:(FPItem *)arg1 completionBlock:(void (^)(id<DOCServiceTransitionProtocol>))arg2;
+- (void)getTransitionControllerForURL:(NSURL *)arg1 completionBlock:(void (^)(id<DOCServiceTransitionProtocol>))arg2;
 @end
 

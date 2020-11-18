@@ -31,7 +31,7 @@
 - (id)_numberAttributedStringWithNumberText:(id)arg1 attributes:(id)arg2;
 - (id)_numberFont;
 - (id)_numberImageForNumberText:(id)arg1 withAttributes:(id)arg2;
-- (struct CGSize)_numberLabelSizeForText:(id)arg1;
+- (struct CGSize)_numberLabelSizeForText:(id)arg1 withAttributes:(id)arg2;
 - (id)_numberTextAttributes;
 - (void)_setAttributeTitleForButton:(id)arg1 withColor:(id)arg2;
 - (id)_textAttributesWithColor:(id)arg1;

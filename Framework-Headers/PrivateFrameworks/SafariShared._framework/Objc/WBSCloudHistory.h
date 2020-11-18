@@ -8,8 +8,8 @@
 
 #import <SafariShared/WBSCloudKitThrottlerDataStore-Protocol.h>
 
-@class NSMutableDictionary, NSString, WBSCloudHistoryConfiguration, WBSCloudHistoryPushAgentProxy, WBSCloudKitThrottler, WBSHistory, WBSOneShotTimer;
-@protocol NSObject, OS_dispatch_queue, WBSCloudHistoryDataStore;
+@class NSMutableArray, NSMutableDictionary, NSString, WBSCloudHistoryConfiguration, WBSCloudHistoryPushAgentProxy, WBSCloudKitThrottler, WBSHistory, WBSOneShotTimer;
+@protocol NSObject, OS_dispatch_queue, WBSCloudHistoryDataStore, WBSCloudKitContainerManateeObserving;
 
 @interface WBSCloudHistory : NSObject <WBSCloudKitThrottlerDataStore>
 {
@@ -37,6 +37,12 @@
     NSMutableDictionary *_syncCircleSizeRetrievalCompletionHandlersByOperation;
     CDUnknownBlockType _fetchCompletionHandler;
     CDUnknownBlockType _saveCompletionHandler;
+    id<WBSCloudKitContainerManateeObserving> _containerManateeObserver;
+    NSMutableArray *_storeDeterminationCompletionBlocks;
+    long long _currentManateeState;
+    BOOL _manateeStateNeedsUpdate;
+    BOOL _isWaitingForPCSIdentityUpdate;
+    BOOL _determiningStoreType;
     BOOL _removedHistoryItemsArePendingSave;
 }
 
@@ -59,15 +65,20 @@
 - (id)_currentFetchChangesThrottlerPolicyString;
 - (id)_currentSaveChangesThrottlerPolicyString;
 - (id)_currentSyncCircleSizeRetrievalThrottlerPolicyString;
+- (void)_deleteAllCloudHistoryAndSaveAgain;
+- (void)_determineCloudHistoryStoreWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_determineNumberOfDevicesInSyncCircleForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (long long)_estimatedPriorityForPotentialSaveAttempt;
 - (void)_fetchAndMergeChangesWithServerChangeTokenData:(id)arg1 withPriority:(long long)arg2;
 - (void)_fetchChangesInResponseToPushNotification:(id)arg1;
 - (void)_fetchChangesWhenHistoryLoads;
 - (void)_getServerChangeTokenDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_handleManateeErrorIfNeeded:(id)arg1;
 - (void)_historyItemsWereRemoved:(id)arg1;
 - (void)_historyWasLoaded:(id)arg1;
 - (void)_initializePushNotificationSupport;
+- (id)_manateeErrorCode:(id)arg1;
+- (void)_pcsIdentitiesChangedNotification:(id)arg1;
 - (void)_performBlockAsynchronouslyOnCloudHistoryQueueAfterHistoryHasLoaded:(CDUnknownBlockType)arg1;
 - (void)_persistLongLivedSaveOperationDictionaryWithOperationID:(id)arg1 databaseGeneration:(long long)arg2;
 - (void)_persistedLongLivedSaveOperationID:(id *)arg1 databaseGeneration:(long long *)arg2;
@@ -83,6 +94,7 @@
 - (void)_removePersistedLongLivedSaveOperationDictionary;
 - (void)_replayPersistedLongLivedSaveOperationIfNecessary;
 - (void)_resetCloudHistoryDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_resetForAccountChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)_resultFromError:(id)arg1;
 - (void)_saveChangesWhenHistoryLoads;
 - (void)_saveVisits:(id)arg1 tombstones:(id)arg2 toCloudHistoryBypassingThrottler:(BOOL)arg3 longLivedOperationPersistenceCompletion:(CDUnknownBlockType)arg4 withCallback:(CDUnknownBlockType)arg5;
@@ -90,6 +102,7 @@
 - (void)_setCachedNumberOfDevicesInSyncCircle:(unsigned long long)arg1;
 - (void)_setPushNotificationAreInitialized:(BOOL)arg1;
 - (void)_setServerChangeToken:(id)arg1;
+- (void)_transitionCloudHistoryStoreToManateeState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateDeviceCountInResponseToPushNotification;
 - (void)_updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateThrottlerPolicies;

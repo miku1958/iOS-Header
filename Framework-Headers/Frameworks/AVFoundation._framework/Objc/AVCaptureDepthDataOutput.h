@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) id<AVCaptureDepthDataOutputDelegate> delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateCallbackQueue;
 @property (readonly, nonatomic) id delegateOverride;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateOverrideCallbackQueue;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFilteringEnabled) BOOL filteringEnabled;
 @property (readonly) unsigned long long hash;
@@ -31,7 +32,7 @@
 - (id)addConnection:(id)arg1 error:(id *)arg2;
 - (BOOL)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
 - (BOOL)appliesOrientationWithPhysicalRotationForConnection:(id)arg1;
-- (BOOL)canAddConnectionForMediaType:(id)arg1;
+- (BOOL)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (id)init;

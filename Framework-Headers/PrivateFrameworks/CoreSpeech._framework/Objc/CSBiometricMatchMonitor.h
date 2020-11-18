@@ -6,29 +6,19 @@
 
 #import <CoreSpeech/CSEventMonitor.h>
 
-#import <CoreSpeech/BKDeviceDelegate-Protocol.h>
-
-@class BKDevice, NSString;
 @protocol CSBiometricMatchMonitorDelegate;
 
-@interface CSBiometricMatchMonitor : CSEventMonitor <BKDeviceDelegate>
+@interface CSBiometricMatchMonitor : CSEventMonitor
 {
     id<CSBiometricMatchMonitorDelegate> _delegate;
-    BKDevice *_biometricDevice;
 }
 
-@property (strong, nonatomic) BKDevice *biometricDevice; // @synthesize biometricDevice=_biometricDevice;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CSBiometricMatchMonitorDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)device:(id)arg1 matchEventOccurred:(id)arg2;
+- (unsigned long long)getBiometricMatchResultForTriggerTimeStamp:(unsigned long long)arg1;
 - (BOOL)getLastBiometricMatchEvent:(BOOL *)arg1 atTime:(unsigned long long *)arg2;
-- (id)init;
 - (void)startObserving;
 
 @end

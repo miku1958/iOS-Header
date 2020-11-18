@@ -15,13 +15,21 @@
 @property (nonatomic) BOOL hasBooleanValue;
 @property (nonatomic) BOOL hasDoubleValue;
 @property (nonatomic) BOOL hasIntegerValue;
+@property (nonatomic) BOOL hasLimitValue;
 @property (readonly, nonatomic) BOOL hasStringValue;
+@property (nonatomic) BOOL hasUnit;
 @property (nonatomic) BOOL hasValueType;
 @property (nonatomic) long long integerValue;
+@property (nonatomic) int limitValue;
 @property (copy, nonatomic) NSString *stringValue;
+@property (nonatomic) int unit;
 @property (nonatomic) int valueType;
 
+- (int)StringAsLimitValue:(NSString *)arg1;
+- (int)StringAsUnit:(NSString *)arg1;
 - (int)StringAsValueType:(NSString *)arg1;
+- (NSString *)limitValueAsString:(int)arg1;
+- (NSString *)unitAsString:(int)arg1;
 - (NSString *)valueTypeAsString:(int)arg1;
 @end
 

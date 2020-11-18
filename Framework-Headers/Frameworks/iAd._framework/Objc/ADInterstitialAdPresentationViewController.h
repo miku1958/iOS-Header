@@ -15,9 +15,9 @@
 }
 
 @property (strong, nonatomic) ADCountdownButton *closeButton; // @synthesize closeButton=_closeButton;
-@property (readonly, weak, nonatomic) ADInterstitialAd *interstitialAd;
+@property (weak, nonatomic) ADInterstitialAd *interstitialAd; // @synthesize interstitialAd=_interstitialAd;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initForInterstitialAd:(id)arg1;
 - (void)loadView;
 - (BOOL)prefersStatusBarHidden;

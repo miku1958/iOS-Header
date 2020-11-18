@@ -16,8 +16,8 @@
     NSString *_alternateName;
     NSString *_message;
     CNContactPhotoView *_photoView;
-    NSMutableArray *_headerConstraints;
     NSArray *_contacts;
+    NSMutableArray *_headerConstraints;
     NSDictionary *_nameTextAttributes;
     NSDictionary *_taglineTextAttributes;
     UILabel *_nameLabel;

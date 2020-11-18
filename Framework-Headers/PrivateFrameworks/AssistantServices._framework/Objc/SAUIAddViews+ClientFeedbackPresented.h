@@ -10,5 +10,8 @@
 
 @interface SAUIAddViews (ClientFeedbackPresented) <AFAceCommandDialogInfoExtracting>
 - (void)_af_extractDialogInfo:(CDUnknownBlockType)arg1;
+- (void)af_addEntriesToAnalyticsContext:(id)arg1;
+- (id)af_dialogIdentifiersForAnalyticsContext;
+- (id)af_dialogPhase;
 @end
 

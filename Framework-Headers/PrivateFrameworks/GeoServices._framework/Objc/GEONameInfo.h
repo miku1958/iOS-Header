@@ -8,23 +8,38 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 @interface GEONameInfo : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_locale;
     NSString *_name;
     NSString *_phoneticName;
-    int _phoneticType;
     NSString *_shield;
+    int _phoneticType;
     int _shieldType;
     int _signType;
     struct {
-        unsigned int phoneticType:1;
-        unsigned int shieldType:1;
-        unsigned int signType:1;
-    } _has;
+        unsigned int has_phoneticType:1;
+        unsigned int has_shieldType:1;
+        unsigned int has_signType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_locale:1;
+        unsigned int read_name:1;
+        unsigned int read_phoneticName:1;
+        unsigned int read_shield:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_locale:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_phoneticName:1;
+        unsigned int wrote_shield:1;
+        unsigned int wrote_phoneticType:1;
+        unsigned int wrote_shieldType:1;
+        unsigned int wrote_signType:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasLocale;
@@ -34,18 +49,24 @@
 @property (readonly, nonatomic) BOOL hasShield;
 @property (nonatomic) BOOL hasShieldType;
 @property (nonatomic) BOOL hasSignType;
-@property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *phoneticName; // @synthesize phoneticName=_phoneticName;
-@property (nonatomic) int phoneticType; // @synthesize phoneticType=_phoneticType;
-@property (strong, nonatomic) NSString *shield; // @synthesize shield=_shield;
-@property (nonatomic) int shieldType; // @synthesize shieldType=_shieldType;
-@property (nonatomic) int signType; // @synthesize signType=_signType;
+@property (strong, nonatomic) NSString *locale;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *phoneticName;
+@property (nonatomic) int phoneticType;
+@property (strong, nonatomic) NSString *shield;
+@property (nonatomic) int shieldType;
+@property (nonatomic) int signType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsPhoneticType:(id)arg1;
 - (int)StringAsSignType:(id)arg1;
+- (void)_readLocale;
+- (void)_readName;
+- (void)_readPhoneticName;
+- (void)_readShield;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -54,6 +75,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)phoneticTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)signTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

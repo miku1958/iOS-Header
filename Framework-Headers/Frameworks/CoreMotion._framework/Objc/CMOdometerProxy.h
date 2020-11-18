@@ -7,12 +7,11 @@
 #import <objc/NSObject.h>
 
 @class CMOdometer;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMOdometerProxy : NSObject
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     NSObject<OS_dispatch_queue> *fCallbackQueue;
     struct CLConnectionClient *fLocationdConnection;
     CDUnknownBlockType fHandler;
@@ -30,9 +29,7 @@
 
 - (void)_startDaemonConnection;
 - (void)_startOdometerUpdatesWithHandler:(CDUnknownBlockType)arg1;
-- (void)_startWatchdogCheckins;
 - (void)_stopOdometerUpdates;
-- (void)_stopWatchdogCheckins;
 - (void)_teardown;
 - (void)dealloc;
 - (id)initWithOdometer:(id)arg1;

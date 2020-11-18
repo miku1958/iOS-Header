@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class CNiOSABPredicateRunner, CNiOSAddressBook, NSURL;
-@protocol CNContactsLoggerProvider, CNSchedulerProvider, SGSuggestionsServiceContactsProtocol;
+#import <Contacts/NSCopying-Protocol.h>
 
-@interface CNContactsEnvironment : NSObject
+@class CNiOSABPredicateRunner, CNiOSAddressBook, NSArray, NSURL;
+@protocol CNContactsLoggerProvider, CNSchedulerProvider, CNSiriIntelligenceSettingsProtocol, SGSuggestionsServiceContactsProtocol;
+
+@interface CNContactsEnvironment : NSObject <NSCopying>
 {
     CNiOSAddressBook *_addressBook;
     id<CNSchedulerProvider> _schedulerProvider;
     NSURL *_baseURL;
     id<SGSuggestionsServiceContactsProtocol> _suggestionsService;
+    id<CNSiriIntelligenceSettingsProtocol> _siriIntelligenceSettings;
+    NSArray *_delegateInfos;
     CNiOSABPredicateRunner *_abPredicateRunner;
     id<CNContactsLoggerProvider> _loggerProvider;
 }
@@ -22,8 +26,10 @@
 @property (strong, nonatomic) CNiOSABPredicateRunner *abPredicateRunner; // @synthesize abPredicateRunner=_abPredicateRunner;
 @property (readonly, nonatomic) CNiOSAddressBook *addressBook;
 @property (copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
+@property (strong, nonatomic) NSArray *delegateInfos; // @synthesize delegateInfos=_delegateInfos;
 @property (readonly, nonatomic) id<CNContactsLoggerProvider> loggerProvider; // @synthesize loggerProvider=_loggerProvider;
 @property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
+@property (strong, nonatomic) id<CNSiriIntelligenceSettingsProtocol> siriIntelligenceSettings; // @synthesize siriIntelligenceSettings=_siriIntelligenceSettings;
 @property (strong, nonatomic) id<SGSuggestionsServiceContactsProtocol> suggestionsService; // @synthesize suggestionsService=_suggestionsService;
 @property (readonly, nonatomic) BOOL useInMemoryStores;
 
@@ -37,10 +43,14 @@
 + (id)unitTestingEnvironmentWithDataLocationName:(id)arg1 schedulerProvider:(id)arg2 loggerProvider:(id)arg3;
 + (id)unitTestingEnvironmentWithSchedulerProvider:(id)arg1 loggerProvider:(id)arg2;
 - (void).cxx_destruct;
+- (id)copyWithDelegateInfos:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSchedulerProvider:(id)arg1 loggerProvider:(id)arg2;
+- (void)makeCurrentEnvironment;
+- (void)setAddressBook:(id)arg1;
 
 @end
 

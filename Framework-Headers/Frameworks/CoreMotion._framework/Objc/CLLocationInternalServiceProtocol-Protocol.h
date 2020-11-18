@@ -4,40 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSString;
+@class CLLocation, NSArray, NSData, NSDictionary, NSString, NSUUID;
 
 @protocol CLLocationInternalServiceProtocol
+- (void)applyArchivedAuthorizationDecisions:(NSData *)arg1 withConfirmationToken:(NSUUID *)arg2 replyBlock:(void (^)(NSError *))arg3;
+- (void)checkAndExerciseAuthorizationForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 services:(unsigned long long)arg3 replyBlock:(void (^)(NSError *, BOOL))arg4;
 - (void)copyLastLogWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)displayStatisticsWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)dumpLogsWithDescription:(NSString *)arg1 replyBlock:(void (^)(NSError *))arg2;
 - (void)getActivitiesWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
 - (void)getAppsUsingLocationWithReplyBlock:(void (^)(NSError *, NSDictionary *))arg1;
+- (void)getArchivedAuthorizationDecisionsWithReplyBlock:(void (^)(NSError *, NSData *))arg1;
+- (void)getAuthorizationPromptMapDisplayEnabledWithReplyBlock:(void (^)(NSError *, BOOL))arg1;
 - (void)getAuthorizationStatusForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, int))arg3;
-- (void)getAuthorizationStatusForService:(unsigned long long)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *, unsigned int))arg4;
 - (void)getGestureServiceEnabledWithReplyBlock:(void (^)(NSError *, BOOL))arg1;
 - (void)getLocationDefaultForKey:(NSString *)arg1 replyBlock:(void (^)(NSError *, NSData *))arg2;
 - (void)getLocationForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 dynamicAccuracyReductionEnabled:(BOOL)arg3 allowsAlteredAccessoryLocations:(BOOL)arg4 replyBlock:(void (^)(NSError *, struct))arg5;
 - (void)getLocationServicesEnabledWithReplyBlock:(void (^)(NSError *, int))arg1;
 - (void)getMonitoredRegionsForBundleID:(NSString *)arg1 orBundlePath:(NSString *)arg2 replyBlock:(void (^)(NSError *, NSDictionary *))arg3;
 - (void)getOscarTimeSyncWithReplyBlock:(void (^)(NSError *, unsigned long long, unsigned long long))arg1;
+- (void)getPipelinedCacheWithReply:(void (^)(NSError *, NSArray *))arg1;
 - (void)getPrivateMode:(void (^)(NSError *, BOOL))arg1;
 - (void)getStatusBarIconEnabledForEntityClass:(unsigned int)arg1 replyBlock:(void (^)(NSError *, BOOL))arg2;
 - (void)getStatusBarIconState:(void (^)(NSError *, int))arg1;
 - (void)getTechnologiesInUseWithReplyBlock:(void (^)(NSError *, NSArray *))arg1;
 - (void)gyroCalibrationDatabaseSupportsMiniCalibrationWithReplyBlock:(void (^)(NSError *, int))arg1;
+- (void)notifyPassKitPayment:(NSString *)arg1 transaction:(NSString *)arg2 info:(NSDictionary *)arg3;
+- (void)notifyWeatherForecast:(NSDictionary *)arg1 airQualityConditions:(NSDictionary *)arg2 hourlyForecasts:(NSArray *)arg3 dailyForecasts:(NSArray *)arg4 location:(CLLocation *)arg5;
 - (void)performMigrationWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)pingDaemonWithReplyBlock:(void (^)(NSError *))arg1;
 - (void)resetAllClientsWithReplyBlock:(void (^)(NSError *))arg1;
-- (void)setAuthorizationStatus:(BOOL)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
-- (void)setAuthorizationStatusByType:(int)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
+- (void)setAuthorizationPromptMapDisplayEnabled:(BOOL)arg1 replyBlock:(void (^)(NSError *))arg2;
+- (void)setAuthorizationStatus:(BOOL)arg1 withCorrectiveCompensation:(int)arg2 forBundleID:(NSString *)arg3 orBundlePath:(NSString *)arg4 replyBlock:(void (^)(NSError *))arg5;
+- (void)setAuthorizationStatusByType:(int)arg1 withCorrectiveCompensation:(int)arg2 forBundleID:(NSString *)arg3 orBundlePath:(NSString *)arg4 replyBlock:(void (^)(NSError *))arg5;
 - (void)setBackgroundIndicatorEnabled:(BOOL)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)setGestureServiceEnabled:(BOOL)arg1 replyBlock:(void (^)(NSError *))arg2;
 - (void)setLocationDefaultForKey:(NSString *)arg1 andValue:(NSData *)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)setLocationServicesEnabled:(BOOL)arg1 replyBlock:(void (^)(NSError *))arg2;
-- (void)setMapMatchingRouteHint:(NSData *)arg1 replyBlock:(void (^)(NSError *))arg2;
+- (void)setMapMatchingRouteHint:(NSData *)arg1 routingType:(int)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)setPrivateMode:(BOOL)arg1 replyBlock:(void (^)(NSError *))arg2;
 - (void)setStatusBarIconEnabledForEntityClass:(unsigned int)arg1 enabled:(BOOL)arg2 replyBlock:(void (^)(NSError *))arg3;
+- (void)setTemporaryAuthorizationGranted:(BOOL)arg1 forBundleID:(NSString *)arg2 orBundlePath:(NSString *)arg3 replyBlock:(void (^)(NSError *))arg4;
 - (void)shutdownDaemonWithReplyBlock:(void (^)(NSError *))arg1;
-- (void)timeZoneForLocation:(CDStruct_b79ad89f)arg1 replyBlock:(void (^)(NSError *, NSString *))arg2;
+- (void)timeZoneForLocation:(CDStruct_a4140ae0)arg1 replyBlock:(void (^)(NSError *, NSString *))arg2;
 @end
 

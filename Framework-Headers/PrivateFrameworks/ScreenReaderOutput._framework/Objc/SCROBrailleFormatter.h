@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <ScreenReaderOutput/BRLTBrailleStateManagerDelegate-Protocol.h>
+#import <ScreenReaderOutput/BRLTBrailleTranslationDelegateProtocol-Protocol.h>
 #import <ScreenReaderOutput/NSCopying-Protocol.h>
 
-@class NSArray, NSAttributedString, NSDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, SCROBrailleChunk;
+@class BRLTBrailleStateManager, NSAttributedString, NSString;
+@protocol BRLTBrailleStateManagerDelegate;
 
-@interface SCROBrailleFormatter : NSObject <NSCopying>
+@interface SCROBrailleFormatter : NSObject <BRLTBrailleTranslationDelegateProtocol, BRLTBrailleStateManagerDelegate, NSCopying>
 {
-    NSMutableArray *_chunkArray;
-    NSMutableDictionary *_chunkDictionary;
-    NSMapTable *_tokenMap;
     BOOL _outputShowEightDot;
     BOOL _inputShowEightDot;
     BOOL _showDotsSevenAndEight;
@@ -27,46 +27,55 @@
     id _appToken;
     long long _lineOffset;
     NSAttributedString *_statusText;
-    SCROBrailleChunk *_editingChunk;
+    BRLTBrailleStateManager *_stateManager;
     long long _firstToken;
     long long _lastToken;
     unsigned long long _generationID;
+    id<BRLTBrailleStateManagerDelegate> _outputDelegate;
 }
 
 @property (nonatomic) BOOL anyUnread; // @synthesize anyUnread=_anyUnread;
 @property (strong, nonatomic) id appToken; // @synthesize appToken=_appToken;
-@property (readonly, nonatomic) NSArray *chunkArray; // @synthesize chunkArray=_chunkArray;
-@property (readonly, nonatomic) NSDictionary *chunkDictionary; // @synthesize chunkDictionary=_chunkDictionary;
 @property (nonatomic) BOOL currentUnread; // @synthesize currentUnread=_currentUnread;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int displayMode; // @synthesize displayMode=_displayMode;
-@property (readonly, weak, nonatomic) SCROBrailleChunk *editingChunk; // @synthesize editingChunk=_editingChunk;
 @property (readonly, nonatomic) long long firstToken; // @synthesize firstToken=_firstToken;
 @property (readonly, nonatomic) unsigned long long generationID; // @synthesize generationID=_generationID;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int inputContractionMode; // @synthesize inputContractionMode=_inputContractionMode;
 @property (readonly, nonatomic) BOOL inputShowEightDot; // @synthesize inputShowEightDot=_inputShowEightDot;
 @property (readonly, nonatomic) long long lastToken; // @synthesize lastToken=_lastToken;
 @property (nonatomic) int lineFocus; // @synthesize lineFocus=_lineFocus;
 @property (nonatomic) long long lineOffset; // @synthesize lineOffset=_lineOffset;
 @property (readonly, nonatomic) int outputContractionMode; // @synthesize outputContractionMode=_outputContractionMode;
+@property (weak, nonatomic) id<BRLTBrailleStateManagerDelegate> outputDelegate; // @synthesize outputDelegate=_outputDelegate;
 @property (readonly, nonatomic) BOOL outputShowEightDot; // @synthesize outputShowEightDot=_outputShowEightDot;
 @property (readonly, nonatomic) BOOL showDotsSevenAndEight; // @synthesize showDotsSevenAndEight=_showDotsSevenAndEight;
+@property (readonly, nonatomic) BRLTBrailleStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property (strong, nonatomic) NSAttributedString *statusText; // @synthesize statusText=_statusText;
+@property (readonly) Class superclass;
 
++ (void)resetEditingManager;
 - (void).cxx_destruct;
-- (void)addChunk:(id)arg1 forToken:(long long)arg2;
 - (void)addText:(id)arg1 language:(id)arg2 selection:(struct _NSRange *)arg3 token:(long long)arg4 focus:(struct _NSRange *)arg5 isEditableText:(BOOL)arg6;
 - (void)addText:(id)arg1 language:(id)arg2 selection:(struct _NSRange *)arg3 token:(long long)arg4 focus:(struct _NSRange *)arg5 technical:(BOOL)arg6 isEditableText:(BOOL)arg7;
 - (void)addText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 focus:(struct _NSRange *)arg6 technical:(BOOL)arg7 isEditableText:(BOOL)arg8;
 - (void)addText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 focus:(struct _NSRange *)arg6 technical:(BOOL)arg7 isEditableText:(BOOL)arg8 paddingRange:(struct _NSRange)arg9 editingString:(id)arg10;
 - (void)addText:(id)arg1 selection:(struct _NSRange *)arg2 token:(long long)arg3 focus:(struct _NSRange *)arg4 isEditableText:(BOOL)arg5;
 - (void)addText:(id)arg1 selection:(struct _NSRange *)arg2 token:(long long)arg3 focus:(struct _NSRange *)arg4 technical:(BOOL)arg5 isEditableText:(BOOL)arg6;
+- (void)brailleDisplayDeletedCharacter:(id)arg1;
+- (void)brailleDisplayInsertedCharacter:(id)arg1;
+- (void)brailleDisplayStringDidChange:(id)arg1 brailleSelection:(struct _NSRange)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)deepCopyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (void)enumerateChunksOfText:(id)arg1 selection:(struct _NSRange *)arg2 focus:(struct _NSRange *)arg3 paddingRange:(struct _NSRange)arg4 usingBlock:(CDUnknownBlockType)arg5;
+- (void)didInsertScriptString:(id)arg1;
 - (id)initWithOutputContractionMode:(int)arg1 inputContractionMode:(int)arg2 outputShowEightDot:(BOOL)arg3 inputShowEightDot:(BOOL)arg4 showDotsSevenAndEight:(BOOL)arg5;
+- (id)printBrailleForText:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 textPositionsRange:(struct _NSRange)arg4 locations:(id *)arg5;
 - (struct _NSRange)rangeOfBrailleCellRepresentingCharacterAtIndex:(unsigned long long)arg1;
-- (void)replaceObjectInChunkArrayAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
+- (void)replaceScriptStringRange:(struct _NSRange)arg1 withScriptString:(id)arg2 cursorLocation:(unsigned long long)arg3;
+- (void)scriptSelectionDidChange:(struct _NSRange)arg1;
+- (id)textForPrintBraille:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 locations:(id *)arg4;
 - (void)translate;
 - (void)translate:(BOOL)arg1;
 

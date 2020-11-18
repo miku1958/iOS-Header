@@ -8,16 +8,16 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit20LocalParticipantView : UIView
 {
     MISSING_TYPE *participantView;
-    MISSING_TYPE *style;
+    MISSING_TYPE *isInRoster;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 
 @end
 

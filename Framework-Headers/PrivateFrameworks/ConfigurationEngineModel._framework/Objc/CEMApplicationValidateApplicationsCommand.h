@@ -12,18 +12,18 @@
 
 @interface CEMApplicationValidateApplicationsCommand : CEMCommandBase <CEMRegisteredTypeProtocol>
 {
-    NSArray *_payloadIdentifiers;
+    NSArray *_payloadBundleIdentifiers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSArray *payloadIdentifiers; // @synthesize payloadIdentifiers=_payloadIdentifiers;
+@property (copy, nonatomic) NSArray *payloadBundleIdentifiers; // @synthesize payloadBundleIdentifiers=_payloadBundleIdentifiers;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 withIdentifiers:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withBundleIdentifiers:(id)arg2;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;

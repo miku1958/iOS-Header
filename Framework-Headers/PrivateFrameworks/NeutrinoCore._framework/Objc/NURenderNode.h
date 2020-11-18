@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioMix, AVComposition, AVDepthData, AVPortraitEffectsMatte, AVVideoComposition, CIImage, NSDictionary, NSString, NUGeometrySpaceMap, NUImageGeometry;
+@class AVAudioMix, AVComposition, AVVideoComposition, CIImage, NSDictionary, NSMutableDictionary, NSString, NUGeometrySpaceMap, NUImageGeometry;
 @protocol NUImageProperties, NUVideoProperties;
 
 @interface NURenderNode : NSObject
@@ -19,8 +19,7 @@
     NSDictionary *_settings;
     struct NSDictionary *_xforms;
     CIImage *_cached_outputImage;
-    AVDepthData *_cached_outputDepthData;
-    AVPortraitEffectsMatte *_cached_outputPortraitEffectsMatte;
+    NSMutableDictionary *_cached_auxiliaryImages;
     AVComposition *_cached_outputVideo;
     AVVideoComposition *_cached_outputVideoComposition;
     AVAudioMix *_cached_outputAudioMix;
@@ -32,13 +31,12 @@
     NSString *_spaceMapKey;
 }
 
+@property (strong) NSMutableDictionary *cached_auxiliaryImages; // @synthesize cached_auxiliaryImages=_cached_auxiliaryImages;
 @property (strong) NUGeometrySpaceMap *cached_geometrySpaceMap; // @synthesize cached_geometrySpaceMap=_cached_geometrySpaceMap;
 @property (strong) id<NUImageProperties> cached_imageProperties; // @synthesize cached_imageProperties=_cached_imageProperties;
 @property (strong) AVAudioMix *cached_outputAudioMix; // @synthesize cached_outputAudioMix=_cached_outputAudioMix;
-@property (strong) AVDepthData *cached_outputDepthData; // @synthesize cached_outputDepthData=_cached_outputDepthData;
 @property (strong) CIImage *cached_outputImage; // @synthesize cached_outputImage=_cached_outputImage;
 @property (strong) NUImageGeometry *cached_outputImageGeometry; // @synthesize cached_outputImageGeometry=_cached_outputImageGeometry;
-@property (strong) AVPortraitEffectsMatte *cached_outputPortraitEffectsMatte; // @synthesize cached_outputPortraitEffectsMatte=_cached_outputPortraitEffectsMatte;
 @property (strong) AVComposition *cached_outputVideo; // @synthesize cached_outputVideo=_cached_outputVideo;
 @property (strong) AVVideoComposition *cached_outputVideoComposition; // @synthesize cached_outputVideoComposition=_cached_outputVideoComposition;
 @property (strong) id<NUVideoProperties> cached_videoProperties; // @synthesize cached_videoProperties=_cached_videoProperties;
@@ -59,19 +57,19 @@
 - (id)_descriptionWithOffset:(long long)arg1 showInputs:(BOOL)arg2;
 - (id)_dictionaryToSingleLineString:(id)arg1;
 - (id)_evaluateAudioMix:(out id *)arg1;
-- (id)_evaluateDepthData:(out id *)arg1;
+- (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id *)arg2;
 - (id)_evaluateGeometrySpaceMap:(out id *)arg1;
 - (id)_evaluateImage:(out id *)arg1;
 - (id)_evaluateImageGeometry:(out id *)arg1;
 - (id)_evaluateImageProperties:(out id *)arg1;
-- (id)_evaluatePortraitEffectsMatte:(out id *)arg1;
 - (id)_evaluateVideo:(out id *)arg1;
 - (id)_evaluateVideoComposition:(out id *)arg1;
 - (id)_evaluateVideoProperties:(out id *)arg1;
 - (id)_generateSpaceMapKey;
 - (unsigned long long)_hash;
-- (BOOL)canPropagateOriginalDepthData;
+- (BOOL)canPropagateOriginalAuxiliaryData;
 - (id)debugDescription;
+- (id)debugQuickLookObject;
 - (id)description;
 - (id)descriptionSubClassHook;
 - (id)evaluateRenderDependenciesWithRequest:(id)arg1 error:(out id *)arg2;
@@ -89,8 +87,7 @@
 - (id)nodeByReplayingAgainstCache:(id)arg1 error:(out id *)arg2;
 - (id)nodeByReplayingAgainstCache:(id)arg1 pipelineState:(id)arg2 error:(out id *)arg3;
 - (void)nu_updateDigest:(id)arg1;
-- (id)originalDepthData:(out id *)arg1;
-- (id)originalPortraitEffectsMatte:(out id *)arg1;
+- (id)originalAuxiliaryImageForType:(long long)arg1 error:(out id *)arg2;
 - (id)outputAudioMix:(out id *)arg1;
 - (id)outputGeometrySpaceMap:(out id *)arg1;
 - (id)outputImage:(out id *)arg1;

@@ -29,6 +29,7 @@
 + (id)diffsToActivate:(BOOL)arg1 withDate:(id)arg2;
 + (id)diffsToClearStatusCodeAndCompatibilityState;
 + (id)diffsToPair:(BOOL)arg1 withDate:(id)arg2;
++ (id)diffsToSetStatusCode:(unsigned long long)arg1;
 + (id)diffsToSetStatusCode:(unsigned long long)arg1 andCompatibilityState:(unsigned short)arg2;
 + (id)enclosedClassTypes;
 + (void)parseDiff:(id)arg1 forPropertyChange:(id)arg2 withBlock:(CDUnknownBlockType)arg3;

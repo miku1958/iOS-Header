@@ -27,6 +27,7 @@
 @property (nonatomic, setter=_setColorFilterEnabled:) BOOL _colorFilterEnabled;
 @property (nonatomic, setter=_setCompositingBordersVisible:) BOOL _compositingBordersVisible;
 @property (nonatomic, setter=_setCompositingRepaintCountersVisible:) BOOL _compositingRepaintCountersVisible;
+@property (nonatomic, setter=_setContentChangeObserverEnabled:) BOOL _contentChangeObserverEnabled;
 @property (nonatomic, setter=_setDefaultFixedPitchFontSize:) unsigned long long _defaultFixedPitchFontSize;
 @property (nonatomic, setter=_setDefaultFontSize:) unsigned long long _defaultFontSize;
 @property (nonatomic, setter=_setDeveloperExtrasEnabled:) BOOL _developerExtrasEnabled;
@@ -42,6 +43,8 @@
 @property (nonatomic, setter=_setHiddenPageDOMTimerThrottlingEnabled:) BOOL _hiddenPageDOMTimerThrottlingEnabled;
 @property (nonatomic, setter=_setICECandidateFilteringEnabled:) BOOL _iceCandidateFilteringEnabled;
 @property (nonatomic, setter=_setInactiveMediaCaptureSteamRepromptIntervalInMinutes:) double _inactiveMediaCaptureSteamRepromptIntervalInMinutes;
+@property (nonatomic, setter=_setInterruptAudioOnPageVisibilityChangeEnabled:) BOOL _interruptAudioOnPageVisibilityChangeEnabled;
+@property (nonatomic, setter=_setItpDebugModeEnabled:) BOOL _itpDebugModeEnabled;
 @property (nonatomic, setter=_setJavaScriptCanAccessClipboard:) BOOL _javaScriptCanAccessClipboard;
 @property (nonatomic, setter=_setJavaScriptRuntimeFlags:) unsigned long long _javaScriptRuntimeFlags;
 @property (nonatomic, setter=_setLargeImageAsyncDecodingEnabled:) BOOL _largeImageAsyncDecodingEnabled;
@@ -50,8 +53,10 @@
 @property (nonatomic, setter=_setLowPowerVideoAudioBufferSizeEnabled:) BOOL _lowPowerVideoAudioBufferSizeEnabled;
 @property (nonatomic, setter=_setMediaCaptureRequiresSecureConnection:) BOOL _mediaCaptureRequiresSecureConnection;
 @property (nonatomic, setter=_setMediaDevicesEnabled:) BOOL _mediaDevicesEnabled;
+@property (nonatomic, setter=_setMediaSourceEnabled:) BOOL _mediaSourceEnabled;
 @property (nonatomic, setter=_setMockCaptureDevicesEnabled:) BOOL _mockCaptureDevicesEnabled;
 @property (nonatomic, setter=_setMockCaptureDevicesPromptEnabled:) BOOL _mockCaptureDevicesPromptEnabled;
+@property (nonatomic, setter=_setNeedsSiteSpecificQuirks:) BOOL _needsSiteSpecificQuirks;
 @property (nonatomic, setter=_setOfflineApplicationCacheIsEnabled:) BOOL _offlineApplicationCacheIsEnabled;
 @property (nonatomic, setter=_setPageVisibilityBasedProcessSuppressionEnabled:) BOOL _pageVisibilityBasedProcessSuppressionEnabled;
 @property (nonatomic, setter=_setPeerConnectionEnabled:) BOOL _peerConnectionEnabled;
@@ -59,6 +64,7 @@
 @property (nonatomic, setter=_setResourceUsageOverlayVisible:) BOOL _resourceUsageOverlayVisible;
 @property (nonatomic, getter=_isSafeBrowsingEnabled, setter=_setSafeBrowsingEnabled:) BOOL _safeBrowsingEnabled;
 @property (nonatomic, setter=_setScreenCaptureEnabled:) BOOL _screenCaptureEnabled;
+@property (nonatomic, setter=_setShouldAllowDesignSystemUIFonts:) BOOL _shouldAllowDesignSystemUIFonts;
 @property (nonatomic, setter=_setShouldAllowUserInstalledFonts:) BOOL _shouldAllowUserInstalledFonts;
 @property (nonatomic, setter=_setShouldEnableTextAutosizingBoost:) BOOL _shouldEnableTextAutosizingBoost;
 @property (nonatomic, setter=_setShouldIgnoreMetaViewport:) BOOL _shouldIgnoreMetaViewport;
@@ -66,7 +72,6 @@
 @property (nonatomic, setter=_setSimpleLineLayoutDebugBordersEnabled:) BOOL _simpleLineLayoutDebugBordersEnabled;
 @property (nonatomic, setter=_setSimpleLineLayoutEnabled:) BOOL _simpleLineLayoutEnabled;
 @property (nonatomic, getter=_isStandalone, setter=_setStandalone:) BOOL _standalone;
-@property (nonatomic, setter=_setStorageAccessPromptsEnabled:) BOOL _storageAccessPromptsEnabled;
 @property (nonatomic, setter=_setStorageBlockingPolicy:) long long _storageBlockingPolicy;
 @property (nonatomic, setter=_setSubpixelAntialiasedLayerTextEnabled:) BOOL _subpixelAntialiasedLayerTextEnabled;
 @property (nonatomic, setter=_setTelephoneNumberDetectionIsEnabled:) BOOL _telephoneNumberDetectionIsEnabled;
@@ -74,11 +79,11 @@
 @property (nonatomic, setter=_setTiledScrollingIndicatorVisible:) BOOL _tiledScrollingIndicatorVisible;
 @property (nonatomic, setter=_setVideoQualityIncludesDisplayCompositingEnabled:) BOOL _videoQualityIncludesDisplayCompositingEnabled;
 @property (nonatomic, setter=_setVisibleDebugOverlayRegions:) unsigned long long _visibleDebugOverlayRegions;
-@property (nonatomic, setter=_setVisualViewportEnabled:) BOOL _visualViewportEnabled;
 @property (nonatomic, setter=_setWebAnimationsCSSIntegrationEnabled:) BOOL _webAnimationsCSSIntegrationEnabled;
 @property (nonatomic, setter=_setWebRTCLegacyAPIEnabled:) BOOL _webRTCLegacyAPIEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isFraudulentWebsiteWarningEnabled) BOOL fraudulentWebsiteWarningEnabled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL javaScriptCanOpenWindowsAutomatically;
 @property (nonatomic) BOOL javaScriptEnabled;

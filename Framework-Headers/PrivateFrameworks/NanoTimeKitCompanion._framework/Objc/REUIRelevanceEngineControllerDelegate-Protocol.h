@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NSIndexPath, REContent, REUIRelevanceEngineController;
+@class NSIndexPath, NSString, REContent, REUIRelevanceEngineController;
 
 @protocol REUIRelevanceEngineControllerDelegate <NSObject>
 - (void)engineController:(REUIRelevanceEngineController *)arg1 didInsertContent:(REContent *)arg2 atIndexPath:(NSIndexPath *)arg3;
@@ -15,7 +15,10 @@
 - (void)engineController:(REUIRelevanceEngineController *)arg1 didRemoveContent:(REContent *)arg2 atIndexPath:(NSIndexPath *)arg3;
 
 @optional
+- (void)engineController:(REUIRelevanceEngineController *)arg1 didReloadContent:(REContent *)arg2 withIdentifier:(NSString *)arg3;
 - (BOOL)engineController:(REUIRelevanceEngineController *)arg1 isElementAtIndexPathVisible:(NSIndexPath *)arg2;
 - (void)engineController:(REUIRelevanceEngineController *)arg1 performBatchUpdateBlock:(void (^)(void))arg2 completion:(void (^)(void))arg3;
+- (void)engineControllerDidBeginUpdatingRelevance:(REUIRelevanceEngineController *)arg1;
+- (void)engineControllerDidFinishUpdatingRelevance:(REUIRelevanceEngineController *)arg1;
 @end
 

@@ -26,6 +26,7 @@
 
 + (BOOL)_hasSpaceForInsertionAtDepth:(unsigned long long)arg1 betweenEarlierPosition:(id)arg2 andLaterPosition:(id)arg3 clientIdentifier:(id)arg4;
 + (id)_pathComponentsForSignpost:(id)arg1;
++ (BOOL)_randBoolForStrategy:(unsigned long long)arg1;
 + (long long)_strategyForAllocationAtDepth:(unsigned long long)arg1;
 + (id)finalPositionWithClientIdentifier:(id)arg1;
 + (id)finalSignpostWithClientIdentifier:(id)arg1;

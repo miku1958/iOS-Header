@@ -8,15 +8,26 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
+@class NSDictionary, NSMutableDictionary;
+
 @interface UIAutonomousSingleAppModeConfiguration : NSObject <NSCopying>
 {
+    NSMutableDictionary *_propertiesAsDictionary;
     unsigned long long _style;
 }
 
+@property (nonatomic) BOOL allowsAutoLock;
+@property (nonatomic) BOOL allowsLockButton;
+@property (nonatomic) BOOL automaticallyRelaunchesAfterAppCrash;
+@property (readonly, nonatomic) NSDictionary *propertiesAsDictionary;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 
 + (id)defaultConfiguration;
 + (id)defaultConfigurationForStyle:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (BOOL)__gaxTrampoline_defaultBoolValueForFeatureKey:(id)arg1;
+- (BOOL)_boolValueForFeatureKey:(id)arg1;
+- (void)_setBoolValue:(BOOL)arg1 forFeatureKey:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

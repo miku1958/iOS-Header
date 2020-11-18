@@ -12,11 +12,15 @@
 - (void)_srDeleteFilesWithPrefix:(id)arg1;
 - (unsigned long long)_srDeviceFreeDiskSpace;
 - (BOOL)_srDeviceHasSufficientFreeSpaceForRecording;
+- (BOOL)_srDeviceHasSufficientSpaceForCurrentRecording;
 - (id)_srGetCreationDateForFile:(id)arg1;
 - (void)_srMoveFileFromURL:(id)arg1 toURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_srRemoveFile:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_srSetupTempDirectory;
 - (long long)_srSizeOfTempDir:(id *)arg1;
 - (id)_srTempPath;
+- (id)dateSuffix;
+- (id)outputPath:(BOOL)arg1 bundleID:(id)arg2;
+- (id)trimmedOutputPath:(id)arg1;
 @end
 

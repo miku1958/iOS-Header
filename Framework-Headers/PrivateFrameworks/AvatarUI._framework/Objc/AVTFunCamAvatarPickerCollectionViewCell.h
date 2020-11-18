@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class AVTUIAnimatingImageView, CAShapeLayer, NSUUID, UIButton, UILabel;
+@class AVTUIAnimatingImageView, CAShapeLayer, NSUUID, UIButton;
 
 @interface AVTFunCamAvatarPickerCollectionViewCell : UICollectionViewCell
 {
@@ -17,13 +17,14 @@
     CDUnknownBlockType _imageInsetProvider;
     long long _imageContentMode;
     AVTUIAnimatingImageView *_imageView;
-    UILabel *_titleLabel;
     UIButton *_accessoryButton;
     CAShapeLayer *_selectionLayer;
+    struct CGSize _engagedSize;
 }
 
 @property (strong, nonatomic) UIButton *accessoryButton; // @synthesize accessoryButton=_accessoryButton;
 @property (strong, nonatomic) NSUUID *displaySessionUUID; // @synthesize displaySessionUUID=_displaySessionUUID;
+@property (nonatomic) struct CGSize engagedSize; // @synthesize engagedSize=_engagedSize;
 @property (nonatomic) long long imageContentMode; // @synthesize imageContentMode=_imageContentMode;
 @property (copy, nonatomic) CDUnknownBlockType imageInsetProvider; // @synthesize imageInsetProvider=_imageInsetProvider;
 @property (readonly, nonatomic) AVTUIAnimatingImageView *imageView; // @synthesize imageView=_imageView;
@@ -31,10 +32,8 @@
 @property (readonly, nonatomic) CAShapeLayer *selectionLayer; // @synthesize selectionLayer=_selectionLayer;
 @property (nonatomic) BOOL selectionVisible; // @synthesize selectionVisible=_selectionVisible;
 @property (nonatomic) BOOL showsTitle; // @synthesize showsTitle=_showsTitle;
-@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 + (id)cellIdentifier;
-+ (CDUnknownBlockType)imageInsetProviderForConstant:(double)arg1;
 + (struct CGPath *)selectionPathInBounds:(struct CGRect)arg1;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -45,7 +44,6 @@
 - (void)updateSelectionLayer;
 - (void)updateWithImage:(id)arg1 animated:(BOOL)arg2;
 - (void)updateWithTintColor:(id)arg1;
-- (void)updateWithTitle:(id)arg1;
 
 @end
 

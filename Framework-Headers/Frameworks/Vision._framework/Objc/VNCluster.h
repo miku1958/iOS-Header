@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <Vision/NSCopying-Protocol.h>
+#import <Vision/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSDictionary;
 
-@interface VNCluster : NSObject
+@interface VNCluster : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _shouldUpdateRepresentative;
     NSArray *_objects;
@@ -25,9 +28,13 @@
 @property (strong, nonatomic) NSArray *suggestedIdsForRepresentative; // @synthesize suggestedIdsForRepresentative=_suggestedIdsForRepresentative;
 @property (nonatomic) unsigned long long totalObjectCount; // @synthesize totalObjectCount=_totalObjectCount;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

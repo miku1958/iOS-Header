@@ -12,7 +12,7 @@
 @protocol SCROBrailleDisplayCommandDispatcherDelegate <NSObject>
 - (id<SCROBrailleDisplayInputManagerProtocol>)brailleInputManager;
 - (void)handleCommandDeleteKeyEvent:(SCROBrailleKey *)arg1 forDispatcher:(id<SCROBrailleDisplayCommandDispatcherProtocol>)arg2;
-- (void)handleCommandEscapeForDispatcher:(id<SCROBrailleDisplayCommandDispatcherProtocol>)arg1;
+- (void)handleCommandEscapeKeyEvent:(SCROBrailleKey *)arg1 forDispatcher:(id<SCROBrailleDisplayCommandDispatcherProtocol>)arg2;
 - (void)handleCommandForwardDeleteKeyEvent:(SCROBrailleKey *)arg1 forDispatcher:(id<SCROBrailleDisplayCommandDispatcherProtocol>)arg2;
 - (void)handleCommandMoveLeftForDispatcher:(id<SCROBrailleDisplayCommandDispatcherProtocol>)arg1;
 - (void)handleCommandMoveRightForDispatcher:(id<SCROBrailleDisplayCommandDispatcherProtocol>)arg1;

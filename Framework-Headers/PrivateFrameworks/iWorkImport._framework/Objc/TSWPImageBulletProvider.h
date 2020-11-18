@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 - (id)dataForImageBullet:(id)arg1 withContext:(id)arg2;
 - (id)p_pathToPredefinedImages;
 - (id)p_predefinedImageNames;
+- (id)predefinedImageFilenamesWithContext:(id)arg1;
+- (id)predefinedImagesWithContext:(id)arg1;
 
 @end
 

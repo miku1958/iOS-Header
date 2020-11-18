@@ -40,7 +40,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL shrinkTextToFit;
 @property (readonly, nonatomic) double textScaleFactor;
 
-+ (double)p_constrainedDimensionForDimension:(double)arg1 min:(double)arg2 max:(double)arg3;
++ (double)p_constrainedImageContainerHeightForHeight:(double)arg1;
++ (double)p_constrainedImageContainerWidthForWidth:(double)arg1 maxLayoutWidth:(double)arg2;
 - (void).cxx_destruct;
 - (id)additionalGuides;
 - (struct CGSize)adjustedInsetsForTarget:(id)arg1;
@@ -48,10 +49,12 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
 - (struct CGRect)boundsForStandardKnobs;
+- (struct CGPoint)calculateOffsetForGalleryItem:(id)arg1 withFacesRect:(struct CGRect)arg2;
 - (id)children;
 - (id)computeLayoutGeometry;
 - (void)dealloc;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (BOOL)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (struct CGRect)imageFrameInRootWithDragOffset:(struct CGPoint)arg1;
 - (struct CGRect)imageRectInImageContainerForItem:(id)arg1;
@@ -62,10 +65,12 @@ __attribute__((visibility("hidden")))
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (void)invalidateSize;
 - (struct CGSize)minimumSize;
+- (BOOL)needsToValidateChildrenForInlineLayout;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (id)p_galleryInfo;
 - (struct CGRect)p_imageRectInImageContainerForItem:(id)arg1 dragOffset:(struct CGPoint)arg2;
-- (struct CGSize)p_maximumLayoutSize;
+- (void)p_invalidateOwningAttachmentSize;
+- (struct CGSize)p_maxLayoutSize;
 - (double)p_minScaleForItem:(id)arg1;
 - (id)pathForClippingConnectionLines;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;

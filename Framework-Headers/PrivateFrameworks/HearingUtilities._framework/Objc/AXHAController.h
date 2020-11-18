@@ -9,12 +9,14 @@
 #import <HearingUtilities/AXIDCControllerBrowserDelegateProtocol-Protocol.h>
 
 @class AXDispatchTimer, HCXPCMessage, NSDictionary, NSString;
+@protocol OS_os_transaction;
 
 @interface AXHAController : NSObject <AXIDCControllerBrowserDelegateProtocol>
 {
     BOOL _isListening;
     AXDispatchTimer *_liveListenLevelsTimer;
     NSString *_pairedDeviceUUID;
+    NSObject<OS_os_transaction> *_transaction;
     NSDictionary *_availableDevicesDescription;
     HCXPCMessage *_liveListenMessage;
 }
@@ -26,6 +28,7 @@
 @property (strong, nonatomic) HCXPCMessage *liveListenMessage; // @synthesize liveListenMessage=_liveListenMessage;
 @property (strong, nonatomic) NSString *pairedDeviceUUID; // @synthesize pairedDeviceUUID=_pairedDeviceUUID;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 
 + (id)sharedController;
 - (void).cxx_destruct;
@@ -37,7 +40,6 @@
 - (id)disconnectAndForceSlave:(id)arg1;
 - (BOOL)hearingAidsPaired;
 - (id)init;
-- (void)passConnectionToController:(id)arg1 withReason:(long long)arg2;
 - (id)readAvailableControllers:(id)arg1;
 - (id)readAvailableDevices:(id)arg1;
 - (id)readDeviceProperty:(id)arg1;
@@ -46,8 +48,8 @@
 - (void)sendUpdatesForProperties:(id)arg1 excludingClient:(id)arg2;
 - (void)setListenForAvailableDeviceUpdates:(BOOL)arg1;
 - (void)setPairedHearingAid:(id)arg1;
-- (void)startSearchCycle;
-- (void)trustChainAvailabilityDidChange:(id)arg1;
+- (void)transitionToPeer;
+- (void)updateNearbyDeviceAvailability;
 - (void)willSwitchUser;
 - (id)writeDeviceProperty:(id)arg1;
 

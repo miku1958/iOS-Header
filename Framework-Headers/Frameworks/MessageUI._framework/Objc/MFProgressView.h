@@ -21,10 +21,11 @@
     id<MFProgressViewDelegate> _delegate;
 }
 
-@property (nonatomic) id<MFProgressViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MFProgressViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
 + (id)progressViewWithDefaultStyleStrokeAndRect;
+- (void).cxx_destruct;
 - (void)_adjustProgress;
 - (void)_drawCircleWithCenter:(struct CGPoint)arg1 radius:(double)arg2;
 - (void)_drawProgressInRect:(struct CGRect)arg1;

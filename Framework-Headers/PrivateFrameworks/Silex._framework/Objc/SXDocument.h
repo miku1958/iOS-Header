@@ -7,7 +7,7 @@
 #import <Silex/SXJSONObject.h>
 
 @class NSString, SXDocumentStyle, SXJSONArray, SXJSONDictionary, SXMetaData;
-@protocol SXAdvertisingSettings, SXAutoPlacement, SXDocumentLayout;
+@protocol SXAdvertisingSettings, SXAutoPlacement, SXDocumentLayout, SXHints;
 
 @interface SXDocument : SXJSONObject
 {
@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) SXJSONDictionary *componentTextStyles; // @dynamic componentTextStyles;
 @property (readonly, nonatomic) SXJSONArray *components; // @dynamic components;
 @property (readonly, nonatomic) SXDocumentStyle *documentStyle; // @dynamic documentStyle;
+@property (readonly, nonatomic) id<SXHints> hints; // @dynamic hints;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *language; // @dynamic language;
 @property (readonly, nonatomic) id<SXDocumentLayout> layout; // @dynamic layout;

@@ -4,18 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <iWorkImport/TSDLayoutChangeObserver.h>
 
 #import <iWorkImport/TSDCanvasDelegate-Protocol.h>
-#import <iWorkImport/TSDDynamicCanvasDelegate-Protocol.h>
 #import <iWorkImport/TSDPartitioner-Protocol.h>
-#import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
 
 @class NSString, TSDCanvas, TSDDrawableInfo, TSUPointerKeyDictionary;
 @protocol TSDCanvasProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSDDefaultPartitioner : NSObject <TSKChangeSourceObserver, TSDDynamicCanvasDelegate, TSDPartitioner, TSDCanvasDelegate>
+@interface TSDDefaultPartitioner : TSDLayoutChangeObserver <TSDPartitioner, TSDCanvasDelegate>
 {
     TSDDrawableInfo *mInfo;
     TSDCanvas *mCanvas;
@@ -34,6 +32,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (BOOL)didHint:(id)arg1 syncWithNextHint:(id)arg2 horizontally:(BOOL)arg3 delta:(int)arg4;
+- (void)didProcessAllChanges;
 - (id)documentRoot;
 - (id)hintForLayout:(id)arg1;
 - (struct CGImage *)i_cachedImageForCanvas:(id)arg1;

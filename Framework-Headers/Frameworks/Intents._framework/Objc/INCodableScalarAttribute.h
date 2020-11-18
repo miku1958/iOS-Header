@@ -16,12 +16,18 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
-- (id)_dictionaryRepresentation;
+- (Class)_relationshipValueTransformerClass;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithPropertyName:(id)arg1 type:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (Class)objectClass;
+- (Class)resolutionResultClass;
+- (void)updateWithDictionary:(id)arg1;
+- (long long)valueType;
 
 @end
 

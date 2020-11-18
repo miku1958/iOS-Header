@@ -12,5 +12,9 @@
 
 @property (strong, nonatomic) UIView *badgeView;
 
+- (id)_assetManager;
+- (id)_monogrammer;
+- (void)_setupAssetManagerWithApplicationBundleURL:(id)arg1;
+- (void)sb_buildIconImageWithApplicationBundleURL:(id)arg1 image:(id *)arg2 systemImageName:(id *)arg3;
 @end
 

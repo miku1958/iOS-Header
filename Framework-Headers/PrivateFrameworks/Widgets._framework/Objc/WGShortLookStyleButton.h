@@ -6,19 +6,25 @@
 
 #import <UIKit/UIControl.h>
 
+#import <Widgets/MTMaterialGrouping-Protocol.h>
+
 @class BSUIFontProvider, MTMaterialView, NSString, UILabel;
 
-@interface WGShortLookStyleButton : UIControl
+@interface WGShortLookStyleButton : UIControl <MTMaterialGrouping>
 {
     MTMaterialView *_backgroundView;
     UILabel *_titleLabel;
     BSUIFontProvider *_fontProvider;
-    double _dimension;
+    struct CGSize _size;
     BOOL _backgroundBlurred;
 }
 
 @property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred; // @synthesize backgroundBlurred=_backgroundBlurred;
-@property (strong, nonatomic) NSString *groupName;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *materialGroupNameBase;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
@@ -26,14 +32,20 @@
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureMaskIfNecessary;
 - (void)_configureTitleLabelIfNecessary;
-- (double)_dimension;
 - (id)_fontProvider;
 - (void)_layoutTitleLabel;
-- (double)_minimumScaleFactorForFont:(id)arg1;
 - (void)_setBackgroundViewCornerRadius:(double)arg1;
+- (struct CGSize)_size;
+- (void)_updateHighlight;
 - (void)_updateTitleLabelFont;
+- (void)_updateTouchInsetsIfNecessary;
+- (id)fontForTitle:(id)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)invalidateCachedGeometry;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

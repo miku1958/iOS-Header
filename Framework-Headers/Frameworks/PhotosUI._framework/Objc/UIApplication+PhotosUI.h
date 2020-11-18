@@ -7,6 +7,11 @@
 #import <UIKit/UIApplication.h>
 
 @interface UIApplication (PhotosUI)
++ (id)_pu_debugSearchViewController:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
++ (id)_pu_debugSearchViewControllerHierarchyUsingBlock:(CDUnknownBlockType)arg1;
++ (id)pu_debugCurrentAsset;
++ (id)pu_debugCurrentViewModel;
++ (id)pu_firstViewControllerPassingTest:(CDUnknownBlockType)arg1;
 - (id)ppt_testDefinitions;
 - (id)pu_beginDisablingIdleTimer;
 - (void)pu_endDisablingIdleTimer:(id)arg1;

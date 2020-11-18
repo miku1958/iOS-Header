@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilitySpeakThisElementsAndStrings;
 - (id)_actionsToolbar;
 - (long long)_axCurrentLayoutIntent;

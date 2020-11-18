@@ -144,6 +144,7 @@ __attribute__((visibility("hidden")))
 - (struct TSUCellCoord)p_cellIDForHyperlinkField:(id)arg1;
 - (id)p_columnForCellID:(struct TSUCellCoord)arg1;
 - (struct CGAffineTransform)p_horizontalAlignmentTransformForHyperlinkWithBounds:(struct CGRect)arg1 inCell:(struct TSUCellCoord)arg2;
+- (BOOL)p_isTableRenderingRotated;
 - (void)p_removeObservers;
 - (void)p_resetDynamicModePropertiesForContainedTextEditing;
 - (BOOL)p_shouldPerformOnChildTextReps:(SEL)arg1;

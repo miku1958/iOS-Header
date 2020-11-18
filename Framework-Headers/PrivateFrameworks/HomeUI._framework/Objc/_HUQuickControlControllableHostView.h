@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<HUQuickControlViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property (copy, nonatomic) HUQuickControlViewProfile *profile; // @synthesize profile=_profile;
+@property (nonatomic) unsigned long long reachabilityState;
 @property (strong, nonatomic) id secondaryValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isUserInteractionActive) BOOL userInteractionActive; // @synthesize userInteractionActive=_userInteractionActive;

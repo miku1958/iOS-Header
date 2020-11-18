@@ -6,36 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSManagedObjectID, NSMutableDictionary, NSMutableSet, NSString;
+@class NSError, NSManagedObjectID, NSMutableDictionary, NSMutableSet, NSString, PHPerformChangesRequest;
+@protocol PHChangeRequest, PLClientAuthorization;
 
 @interface PHChangeRequestHelper : NSObject
 {
     BOOL _isMutated;
-    BOOL _isNew;
+    BOOL _isNewRequest;
     NSMutableDictionary *_mutations;
     NSMutableSet *_nilMutations;
-    id _changeRequest;
+    id<PLClientAuthorization> _clientAuthorization;
+    id<PHChangeRequest> _changeRequest;
+    PHPerformChangesRequest *_request;
     NSString *_uuid;
     NSString *_uuidSaveToken;
     NSManagedObjectID *_objectID;
     NSError *_placeholderRequestError;
 }
 
-@property (weak, nonatomic) id changeRequest; // @synthesize changeRequest=_changeRequest;
+@property (weak, nonatomic) id<PHChangeRequest> changeRequest; // @synthesize changeRequest=_changeRequest;
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
+@property (readonly, nonatomic) NSString *clientName;
 @property (nonatomic, getter=isMutated) BOOL mutated;
 @property (readonly, nonatomic) NSMutableDictionary *mutations; // @synthesize mutations=_mutations;
-@property (nonatomic, getter=isNew) BOOL new;
+@property (nonatomic, getter=isNewRequest) BOOL newRequest;
 @property (readonly, nonatomic) NSMutableSet *nilMutations; // @synthesize nilMutations=_nilMutations;
 @property (strong, nonatomic) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
 @property (readonly, nonatomic) NSError *placeholderRequestError; // @synthesize placeholderRequestError=_placeholderRequestError;
+@property (nonatomic) PHPerformChangesRequest *request; // @synthesize request=_request;
 @property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) NSString *uuidSaveToken; // @synthesize uuidSaveToken=_uuidSaveToken;
 
 + (id)changeRequestForObject:(id)arg1;
-+ (id)changeRequestWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5 clientSender:(id)arg6;
++ (id)changeRequestWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (void).cxx_destruct;
 - (BOOL)_generateUUIDIfNecessary:(id *)arg1;
-- (BOOL)_validateOrGenerateUUIDWithClientEntitled:(BOOL)arg1 changeRequest:(id)arg2;
+- (BOOL)_validateOrGenerateUUIDWithClientEntitled:(BOOL)arg1 request:(id)arg2 changeRequest:(id)arg3;
 - (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
 - (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
@@ -46,7 +52,7 @@
 - (id)initForNewObjectWithChangeRequest:(id)arg1;
 - (id)initForNewObjectWithUUID:(id)arg1 changeRequest:(id)arg2;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2 changeRequest:(id)arg3;
-- (id)initWithXPCDict:(id)arg1 changeRequest:(id)arg2 clientEntitlements:(id)arg3;
+- (id)initWithXPCDict:(id)arg1 changeRequest:(id)arg2 request:(id)arg3 clientAuthorization:(id)arg4;
 - (id)placeholderForCreatedObjectWithClass:(Class)arg1 changeRequest:(id)arg2;
 - (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;

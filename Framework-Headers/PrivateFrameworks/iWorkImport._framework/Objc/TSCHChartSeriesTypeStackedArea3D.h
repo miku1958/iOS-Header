@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)genericToSpecificPropertyMap;
 - (int)legendBadgeType;
 - (BOOL)supportsSymbolDrawing;
+- (id)userInterfaceName;
 
 @end
 

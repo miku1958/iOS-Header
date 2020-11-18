@@ -46,6 +46,7 @@
     unsigned int _eqIndex;
     NSMutableArray *_enqueuedNMEASentences;
     unsigned long long _destinationSharingOptions;
+    NSDictionary *_protocolDetails;
     NSString *_coreAccessoryPrimaryUUID;
     NSString *_bonjourName;
     CDUnknownBlockType _pairingCompletionBlock;
@@ -85,6 +86,7 @@
 @property BOOL pointOfInterestHandoffEnabled; // @synthesize pointOfInterestHandoffEnabled=_pointOfInterestHandoffEnabled;
 @property (copy, nonatomic) NSString *ppid; // @synthesize ppid=_ppid;
 @property (copy, nonatomic) NSString *preferredApp; // @synthesize preferredApp=_preferredApp;
+@property (copy, nonatomic) NSDictionary *protocolDetails; // @synthesize protocolDetails=_protocolDetails;
 @property (strong, nonatomic) NSDictionary *protocols; // @synthesize protocols=_protocols;
 @property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (readonly, nonatomic) NSArray *sessionsList;

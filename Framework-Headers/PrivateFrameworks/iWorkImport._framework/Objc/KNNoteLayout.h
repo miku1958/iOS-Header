@@ -49,7 +49,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)darkModeEnabled;
 - (void)dealloc;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (BOOL)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
+- (unsigned long long)initialCharIndex;
 - (void)insertChild:(id)arg1 above:(id)arg2;
 - (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertChild:(id)arg1 below:(id)arg2;

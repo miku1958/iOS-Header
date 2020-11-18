@@ -13,6 +13,10 @@
 + (id)preferencesValueforKey:(struct __CFString *)arg1 domain:(struct __CFString *)arg2;
 + (BOOL)wants2DOverlayControlsHidden;
 + (BOOL)wantsAnimationDisabled;
++ (BOOL)wantsDebugVisualizationEnabled;
++ (BOOL)wantsRayTracedAmbientOcclusionEnabled;
++ (BOOL)wantsSTAREnabled;
++ (BOOL)wantsStatisticsShown;
 + (BOOL)wantsStatusBarHidden;
 
 @end

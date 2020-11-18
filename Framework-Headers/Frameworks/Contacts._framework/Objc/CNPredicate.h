@@ -26,9 +26,11 @@
 @property (readonly) Class superclass;
 
 + (id)_convertSuggestions:(id)arg1 withSortOrder:(long long)arg2 mutableObjects:(BOOL)arg3;
++ (id)os_log;
 - (void).cxx_destruct;
 - (void)_convertContactMatches:(id)arg1 withService:(id)arg2 intoSuggestions:(id)arg3;
 - (id)cn_predicate;
+- (CDUnknownBlockType)cn_resultTransformWithMatchInfos:(id)arg1;
 - (id)contactsFromDonationStore:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

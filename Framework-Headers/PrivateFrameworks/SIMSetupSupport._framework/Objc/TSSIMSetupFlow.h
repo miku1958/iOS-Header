@@ -25,8 +25,11 @@
 + (id)initActivationCodeRequireSetup:(BOOL)arg1;
 + (id)initWithActivationCodeOnlyFlow;
 + (id)initWithAppName:(id)arg1 requireSetup:(BOOL)arg2;
++ (id)initWithAppName:(id)arg1 requireSetup:(BOOL)arg2 skipGeneralInstallConsent:(BOOL)arg3;
++ (id)initWithOptions:(id)arg1;
 + (id)initWithSetupFlowWithIccid:(id)arg1 showAddPlan:(BOOL)arg2;
 + (void)needsToRun:(CDUnknownBlockType)arg1;
++ (void)needsToRunUsingMessageSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)firstViewController;
 - (void)firstViewController:(CDUnknownBlockType)arg1;

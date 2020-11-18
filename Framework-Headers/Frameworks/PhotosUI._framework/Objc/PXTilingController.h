@@ -175,6 +175,7 @@
 - (void)setReferenceSize:(struct CGSize)arg1 contentInset:(struct UIEdgeInsets)arg2;
 - (struct PXTileIdentifier)tileIdentifierForTile:(void *)arg1;
 - (void)tilingLayout:(id)arg1 invalidatedWithContext:(id)arg2;
+- (id)titleSubtitleTileWithIdentifier:(struct PXTileIdentifier)arg1;
 - (void)transitionToLayout:(id)arg1;
 - (void)unregisterPreheatHandler:(id)arg1 context:(void *)arg2;
 - (void)updateLayout;

@@ -6,13 +6,15 @@
 
 #import <UserNotifications/UNNotificationCategory.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UNNotificationAction;
 
 @interface UNMutableNotificationCategory : UNNotificationCategory
 {
 }
 
 @property (copy, nonatomic) NSArray *actions; // @dynamic actions;
+@property (copy, nonatomic) NSString *actionsMenuTitle; // @dynamic actionsMenuTitle;
+@property (copy, nonatomic) UNNotificationAction *alternateAction; // @dynamic alternateAction;
 @property (nonatomic) unsigned long long backgroundStyle; // @dynamic backgroundStyle;
 @property (copy, nonatomic) NSString *categorySummaryFormat; // @dynamic categorySummaryFormat;
 @property (copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @dynamic hiddenPreviewsBodyPlaceholder;

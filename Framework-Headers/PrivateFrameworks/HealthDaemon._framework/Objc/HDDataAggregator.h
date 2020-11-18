@@ -37,16 +37,15 @@
 - (void)daemonReady:(id)arg1;
 - (void)dataCollector:(id)arg1 didChangeState:(id)arg2;
 - (void)dataCollector:(id)arg1 didCollectSensorData:(id)arg2 device:(id)arg3;
-- (void)dataCollector:(id)arg1 didCollectSensorDatum:(id)arg2;
 - (void)dataCollector:(id)arg1 didCollectSensorDatum:(id)arg2 device:(id)arg3;
-- (double)defaultDataCollectionInterval;
 - (id)diagnosticDescription;
 - (BOOL)didPersistObjects:(id)arg1 lastDatum:(id)arg2 collector:(id)arg3 error:(id *)arg4;
 - (id)initWithDataCollectionManager:(id)arg1;
-- (BOOL)persistObjects:(id)arg1 lastDatum:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 error:(id *)arg6;
+- (BOOL)persistForCollector:(id)arg1 usedDatums:(id)arg2 source:(id)arg3 device:(id)arg4 error:(id *)arg5 persistenceHandler:(CDUnknownBlockType)arg6;
+- (BOOL)persistObjects:(id)arg1 usedDatums:(id)arg2 collector:(id)arg3 source:(id)arg4 device:(id)arg5 error:(id *)arg6;
 - (void)recomputeCollectorConfiguration;
 - (void)registerDataCollector:(id)arg1 state:(id)arg2;
-- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)requestAggregationThroughDate:(id)arg1 mode:(long long)arg2 freezeSeries:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)resume;
 - (void)unregisterDataCollector:(id)arg1;
 

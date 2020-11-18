@@ -8,20 +8,26 @@
 
 #import <PhotosFormats/NSCopying-Protocol.h>
 
-@class NSString, NSURL;
+@class CLLocation, NSDate, NSString, NSURL;
 
 @interface PFSharingRemakerOptions : NSObject <NSCopying>
 {
     BOOL _shouldStripLocation;
     BOOL _shouldStripAllMetadata;
     BOOL _shouldConvertToSRGB;
+    CLLocation *_customLocation;
+    NSDate *_customDate;
     NSString *_customAccessibilityLabel;
     NSURL *_outputDirectoryURL;
     NSString *_outputFilename;
     NSString *_exportPreset;
+    NSString *_exportFileType;
 }
 
 @property (copy, nonatomic) NSString *customAccessibilityLabel; // @synthesize customAccessibilityLabel=_customAccessibilityLabel;
+@property (copy, nonatomic) NSDate *customDate; // @synthesize customDate=_customDate;
+@property (copy, nonatomic) CLLocation *customLocation; // @synthesize customLocation=_customLocation;
+@property (copy, nonatomic) NSString *exportFileType; // @synthesize exportFileType=_exportFileType;
 @property (copy, nonatomic) NSString *exportPreset; // @synthesize exportPreset=_exportPreset;
 @property (copy, nonatomic) NSURL *outputDirectoryURL; // @synthesize outputDirectoryURL=_outputDirectoryURL;
 @property (copy, nonatomic) NSString *outputFilename; // @synthesize outputFilename=_outputFilename;

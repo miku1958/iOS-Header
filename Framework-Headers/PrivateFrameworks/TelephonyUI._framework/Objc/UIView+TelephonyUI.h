@@ -10,5 +10,6 @@
 
 @property (readonly, nonatomic) long long tp_userInterfaceLayoutDirection;
 
++ (void)tpSetSemanticContentAttribute_recursive:(long long)arg1 startingAtView:(id)arg2;
 @end
 

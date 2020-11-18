@@ -19,8 +19,8 @@
 
 @property (readonly) NSError *error;
 
+- (void).cxx_destruct;
 - (void)actionFailed:(long long)arg1 forTask:(id)arg2 error:(id)arg3;
-- (void)dealloc;
 - (id)init;
 - (void)resolvedRecipientsByEmailAddress:(id)arg1;
 - (id)waitForResolvedRecipients;

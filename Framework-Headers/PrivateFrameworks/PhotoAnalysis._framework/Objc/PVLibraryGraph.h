@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/MAGraph.h>
+#import <KnowledgeGraphKit/MAGraph.h>
 
 #import <PhotoAnalysis/PVPhotoLibraryProtocol-Protocol.h>
 
@@ -24,11 +24,11 @@
 @property (readonly) Class superclass;
 
 + (id)defaultFacesDataSnapshotPath;
-+ (Class)edgeClass;
++ (Class)edgeClassForLabel:(id)arg1 domain:(unsigned short)arg2;
 + (id)graphForFacesDataSnapshotAtPath:(id)arg1;
 + (id)graphForLibrary:(id)arg1 ingestPeople:(BOOL)arg2;
 + (id)graphWithName:(id)arg1 forFacesDataSnapshotAtPath:(id)arg2;
-+ (Class)nodeClass;
++ (Class)nodeClassForLabel:(id)arg1 domain:(unsigned short)arg2;
 + (id)originGraphForFacesDataSnapshotAtPath:(id)arg1;
 - (void).cxx_destruct;
 - (id)_infoNode;
@@ -64,7 +64,6 @@
 - (id)pv_fetchPersonsInMoment:(id)arg1;
 - (id)pv_fetchPersonsWithLocalIdentifiers:(id)arg1;
 - (id)pv_fetchPersonsWithType:(unsigned long long)arg1;
-- (BOOL)pv_isLibraryBeingSynchronized;
 - (id)pv_lastAssetDate;
 - (unsigned long long)pv_numberOfFacesWithFaceprints;
 - (BOOL)pv_performChangesAndWait:(CDUnknownBlockType)arg1 error:(id *)arg2;

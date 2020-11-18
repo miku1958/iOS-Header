@@ -5,15 +5,17 @@
 //
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
+#import <PhotoLibraryServices/PLValidatesResourceModel-Protocol.h>
 
 @class NSData, NSString, NSURL;
 @protocol PLAssetID, PLResourceDataStoreKey;
 
-@protocol PLResourceDataStoreKey <NSObject>
+@protocol PLResourceDataStoreKey <PLValidatesResourceModel, NSObject>
 - (NSString *)descriptionForAssetID:(id<PLAssetID>)arg1;
 - (NSURL *)fileURLForAssetID:(id<PLAssetID>)arg1;
 - (id<PLResourceDataStoreKey>)initWithKeyStruct:(const void *)arg1;
-- (BOOL)isValid;
+- (BOOL)isEqualToKey:(id<PLResourceDataStoreKey>)arg1;
 - (NSData *)keyData;
+- (NSString *)uniformTypeIdentifier;
 @end
 

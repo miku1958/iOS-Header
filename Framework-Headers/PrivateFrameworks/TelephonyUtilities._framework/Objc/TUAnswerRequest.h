@@ -10,7 +10,7 @@
 #import <TelephonyUtilities/TUCallRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class NSDate, NSString;
+@class IDSDestination, NSDate, NSString;
 
 @interface TUAnswerRequest : NSObject <NSSecureCoding, TUCallRequest, TUVideoRequest>
 {
@@ -19,6 +19,9 @@
     BOOL _downgradeToAudio;
     NSString *_uniqueProxyIdentifier;
     NSString *_sourceIdentifier;
+    IDSDestination *_endpointIDSDestination;
+    NSString *_endpointRapportMediaSystemIdentifier;
+    NSString *_endpointRapportEffectiveIdentifier;
     long long _behavior;
     NSDate *_dateAnswered;
     struct CGSize _localLandscapeAspectRatio;
@@ -30,6 +33,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL downgradeToAudio; // @synthesize downgradeToAudio=_downgradeToAudio;
+@property (strong, nonatomic) IDSDestination *endpointIDSDestination; // @synthesize endpointIDSDestination=_endpointIDSDestination;
+@property (strong, nonatomic) NSString *endpointRapportEffectiveIdentifier; // @synthesize endpointRapportEffectiveIdentifier=_endpointRapportEffectiveIdentifier;
+@property (strong, nonatomic) NSString *endpointRapportMediaSystemIdentifier; // @synthesize endpointRapportMediaSystemIdentifier=_endpointRapportMediaSystemIdentifier;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;

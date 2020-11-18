@@ -18,6 +18,7 @@
     BOOL _drop;
     BOOL _remediate;
     BOOL _urlAppendString;
+    BOOL _pause;
     NSString *_remediationURLMapKey;
     NSString *_remediationButtonTextMapKey;
     NSString *_urlAppendStringMapKey;
@@ -25,6 +26,7 @@
 
 @property BOOL drop; // @synthesize drop=_drop;
 @property BOOL needRules; // @synthesize needRules=_needRules;
+@property BOOL pause; // @synthesize pause=_pause;
 @property BOOL remediate; // @synthesize remediate=_remediate;
 @property (strong) NSString *remediationButtonTextMapKey; // @synthesize remediationButtonTextMapKey=_remediationButtonTextMapKey;
 @property (strong) NSString *remediationURLMapKey; // @synthesize remediationURLMapKey=_remediationURLMapKey;
@@ -38,6 +40,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDrop:(BOOL)arg1 remediate:(BOOL)arg2;
+- (id)initWithPause:(BOOL)arg1;
 
 @end
 

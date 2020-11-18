@@ -10,15 +10,14 @@
 
 @interface SearchUIActionDomainIndicatorViewController : SearchUIAccessoryViewController
 {
-    unsigned long long _style;
 }
 
-@property unsigned long long style; // @synthesize style=_style;
-@property (strong) SearchUIImageView *view; // @dynamic view;
+@property (strong, nonatomic) SearchUIImageView *view; // @dynamic view;
 
-+ (BOOL)supportsResult:(id)arg1;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
-- (void)updateWithResult:(id)arg1;
++ (BOOL)supportsRowModel:(id)arg1;
+- (id)setupView;
+- (unsigned long long)type;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

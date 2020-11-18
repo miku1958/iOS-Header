@@ -10,7 +10,7 @@
 #import <UserNotifications/NSMutableCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, UNNotificationAction;
 
 @interface UNNotificationCategory : NSObject <NSMutableCopying, NSCopying, NSSecureCoding>
 {
@@ -20,12 +20,16 @@
     NSString *_identifier;
     NSString *_hiddenPreviewsBodyPlaceholder;
     NSString *_categorySummaryFormat;
+    NSString *_actionsMenuTitle;
+    UNNotificationAction *_alternateAction;
     unsigned long long _options;
     unsigned long long _backgroundStyle;
     unsigned long long _listPriority;
 }
 
 @property (readonly, copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (readonly, copy, nonatomic) NSString *actionsMenuTitle; // @synthesize actionsMenuTitle=_actionsMenuTitle;
+@property (readonly, copy, nonatomic) UNNotificationAction *alternateAction; // @synthesize alternateAction=_alternateAction;
 @property (readonly, nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, copy, nonatomic) NSString *categorySummaryFormat; // @synthesize categorySummaryFormat=_categorySummaryFormat;
 @property (readonly, copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @synthesize hiddenPreviewsBodyPlaceholder=_hiddenPreviewsBodyPlaceholder;
@@ -43,7 +47,7 @@
 + (id)categoryWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 intentIdentifiers:(id)arg4 options:(unsigned long long)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 intentIdentifiers:(id)arg4 hiddenPreviewsBodyPlaceholder:(id)arg5 categorySummaryFormat:(id)arg6 options:(unsigned long long)arg7 backgroundStyle:(unsigned long long)arg8 listPriority:(unsigned long long)arg9;
+- (id)_initWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 alternateAction:(id)arg4 intentIdentifiers:(id)arg5 hiddenPreviewsBodyPlaceholder:(id)arg6 categorySummaryFormat:(id)arg7 actionsMenuTitle:(id)arg8 options:(unsigned long long)arg9 backgroundStyle:(unsigned long long)arg10 listPriority:(unsigned long long)arg11;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

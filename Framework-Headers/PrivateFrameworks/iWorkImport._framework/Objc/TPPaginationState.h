@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)advancePageIndex;
 - (void)advanceSectionIndex;
 - (void)backUpToPageIndexPath:(id)arg1 documentPageIndex:(unsigned long long)arg2;
+- (struct _NSRange)footnoteRangeInBodyTextRange:(struct _NSRange)arg1;
 - (id)initWithBodyStorage:(id)arg1;
 - (BOOL)isPaginationCompleteThroughDocumentPageIndex:(unsigned long long)arg1;
 - (BOOL)isPaginationCompleteUpToDocumentPageIndex:(unsigned long long)arg1;

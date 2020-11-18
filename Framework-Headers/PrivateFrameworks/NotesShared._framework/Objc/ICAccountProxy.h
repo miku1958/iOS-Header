@@ -8,7 +8,7 @@
 
 #import <NotesShared/ICNoteContainer-Protocol.h>
 
-@class ICAccount, NSString;
+@class ICAccount, ICFolderCustomNoteSortType, NSArray, NSData, NSManagedObjectContext, NSString;
 
 @interface ICAccountProxy : NSObject <ICNoteContainer>
 {
@@ -16,30 +16,45 @@
 }
 
 @property (strong) ICAccount *account; // @synthesize account=_account;
+@property (readonly, nonatomic) BOOL canBeSharedViaICloud;
+@property (readonly, nonatomic) NSString *containerIdentifier;
+@property (readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isAllNotesContainer;
+@property (readonly, nonatomic) BOOL isSharedViaICloud;
+@property (readonly, nonatomic) BOOL isTrashFolder;
+@property (readonly) NSManagedObjectContext *managedObjectContext;
 @property (readonly, nonatomic) ICAccount *noteContainerAccount;
+@property (strong, nonatomic) NSData *subFolderOrderMergeableData;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsEditingNotes;
+@property (readonly, nonatomic) NSArray *visibleSubFolders;
 
 + (id)accountProxyWithAccount:(id)arg1;
++ (id)keyPathsForValuesAffectingVisibleNotesCount;
 - (void).cxx_destruct;
 - (id)accountName;
-- (BOOL)canBeSharedViaICloud;
 - (long long)compare:(id)arg1;
+- (id)customNoteSortTypeValue;
+- (id)detailForTableViewCell;
 - (id)initWithAccount:(id)arg1;
 - (BOOL)isDeleted;
 - (BOOL)isLeaf;
+- (BOOL)isModernCustomFolder;
+- (BOOL)mergeWithSubFolderMergeableData:(id)arg1;
 - (BOOL)noteIsVisible:(id)arg1;
 - (id)noteVisibilityTestingForSearchingAccount;
 - (id)predicateForPinnedNotes;
 - (id)predicateForSearchableAttachments;
 - (id)predicateForSearchableNotes;
 - (id)predicateForVisibleNotes;
-- (BOOL)supportsEditingNotes;
+- (void)saveSubFolderMergeableDataIfNeeded;
 - (BOOL)supportsVisibilityTestingType:(long long)arg1;
 - (id)titleForNavigationBar;
 - (id)titleForTableViewCell;
+- (void)updateSubFolderMergeableDataChangeCount;
 - (id)visibleNoteContainerChildren;
 - (id)visibleNotes;
 - (unsigned long long)visibleNotesCount;

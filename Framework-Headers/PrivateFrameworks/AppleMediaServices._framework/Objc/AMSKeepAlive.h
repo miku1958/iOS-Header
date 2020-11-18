@@ -7,24 +7,38 @@
 #import <objc/NSObject.h>
 
 @class NSString;
+@protocol OS_os_transaction;
 
 __attribute__((visibility("hidden")))
 @interface AMSKeepAlive : NSObject
 {
+    NSObject<OS_os_transaction> *_transaction;
+    NSString *_logKey;
     NSString *_name;
+    long long _style;
 }
 
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
-+ (void)addKeepAliveForName:(id)arg1;
-+ (void)interrupt;
++ (void)_accessAssertionCache:(CDUnknownBlockType)arg1;
++ (void)_handleAssertionExpiration;
 + (id)keepAliveWithFormat:(id)arg1;
 + (id)keepAliveWithName:(id)arg1;
-+ (void)removeKeepAliveForName:(id)arg1;
++ (id)keepAliveWithName:(id)arg1 style:(long long)arg2;
++ (void)keepAliveWithName:(id)arg1 style:(long long)arg2 block:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)_assertionName;
+- (id)_cacheKey;
+- (void)_removeOSTransaction;
+- (void)_removeProcessAssertion;
+- (void)_startLogTimer;
+- (void)_takeOSTransaction;
+- (void)_takeProcessAssertion;
 - (void)dealloc;
-- (id)description;
 - (id)initWithName:(id)arg1;
+- (id)initWithName:(id)arg1 style:(long long)arg2;
+- (void)invalidate;
 
 @end
 

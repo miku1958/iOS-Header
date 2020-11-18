@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSArray, NSDate, NSString, UIButton, UIImageView, UILabel, UIView, _UIBackdropView;
+@class NSArray, NSDate, NSString, UIButton, UIImageView, UILabel, UIView, UIVisualEffectView;
 @protocol PUPhotosSectionHeaderViewDelegate;
 
 @interface PUPhotosSectionHeaderView : UICollectionReusableView
@@ -23,7 +23,7 @@
     BOOL _highlightViewVisible;
     BOOL _inLayoutTransition;
     BOOL _performingBatchDateDependentUpdate;
-    _UIBackdropView *_backdropView;
+    UIVisualEffectView *_visualEffectView;
     BOOL _usingBackgroundBlur;
     UIView *_highlightView;
     BOOL _useYearOnlyForDefaultTitle;
@@ -89,7 +89,6 @@
 - (BOOL)_usingDateAsTitle;
 - (BOOL)allowLocationTapForTouch:(id)arg1;
 - (void)applyLayoutAttributes:(id)arg1;
-- (void)dealloc;
 - (void)didEndDisplaying;
 - (void)didTransitionFromLayout:(id)arg1 toLayout:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

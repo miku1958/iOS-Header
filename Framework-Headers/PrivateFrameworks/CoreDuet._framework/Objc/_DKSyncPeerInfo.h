@@ -6,24 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSUUID, _DKSyncPeer;
+@class NSUUID, _DKSyncPeer;
 
 @interface _DKSyncPeerInfo : NSObject
 {
     NSUUID *_uuid;
     _DKSyncPeer *_peer;
     long long _transports;
-    NSString *_transportsString;
 }
 
 @property (strong, nonatomic) _DKSyncPeer *peer; // @synthesize peer=_peer;
 @property (nonatomic) long long transports; // @synthesize transports=_transports;
-@property (strong, nonatomic) NSString *transportsString; // @synthesize transportsString=_transportsString;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
+- (id)transportsString;
 
 @end
 

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <ContactsUI/_UIPreviewInteractionViewControllerTransition-Protocol.h>
+#import <ContactsUI/_UIClickPresentationTransition-Protocol.h>
 
-@class CNAvatarCardViewController, CNContactOrbHeaderView, NSString, UIView;
+@class CNAvatarCardViewController, CNContactOrbHeaderView, NSString, UITargetedPreview, UIView, UIViewPropertyAnimator, UIVisualEffectView;
 @protocol CNAvatarCardControllerOrbTransitionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNAvatarCardControllerOrbTransition : NSObject <_UIPreviewInteractionViewControllerTransition>
+@interface CNAvatarCardControllerOrbTransition : NSObject <_UIClickPresentationTransition>
 {
     BOOL _isDismissing;
     CNContactOrbHeaderView *_headerView;
@@ -21,12 +21,14 @@ __attribute__((visibility("hidden")))
     UIView *_highlightedView;
     id<CNAvatarCardControllerOrbTransitionDelegate> _delegate;
     double _highlightViewToAlpha;
+    UIVisualEffectView *_visualEffectView;
     struct CGRect _sourceRect;
     struct CGAffineTransform _endHeaderTransform;
     struct CGAffineTransform _endActionListTransform;
 }
 
 @property (weak, nonatomic) CNAvatarCardViewController *cardViewController; // @synthesize cardViewController=_cardViewController;
+@property (readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNAvatarCardControllerOrbTransitionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -37,13 +39,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double highlightViewToAlpha; // @synthesize highlightViewToAlpha=_highlightViewToAlpha;
 @property (weak, nonatomic) UIView *highlightedView; // @synthesize highlightedView=_highlightedView;
 @property (nonatomic) BOOL isDismissing; // @synthesize isDismissing=_isDismissing;
+@property (copy, nonatomic) UITargetedPreview *sourcePreview;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
 @property (weak, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 
 - (void).cxx_destruct;
 - (struct CGRect)_sourceRectInContainerView:(id)arg1;
-- (id)initWithCardViewController:(id)arg1 headerView:(id)arg2 sourceView:(id)arg3 highlightedView:(id)arg4 sourceRect:(struct CGRect)arg5 isDismissing:(BOOL)arg6;
+- (id)initWithCardViewController:(id)arg1 headerView:(id)arg2 sourceView:(id)arg3 highlightedView:(id)arg4 sourceRect:(struct CGRect)arg5 backgroundVisualEffectView:(id)arg6 isDismissing:(BOOL)arg7;
 - (void)performTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
 - (void)prepareTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
 - (void)setupTransitionFromView:(id)arg1 toView:(id)arg2 withContainerView:(id)arg3;

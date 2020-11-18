@@ -13,13 +13,17 @@
 
 @interface PKPaymentTransactionProcessor : NSObject <CLLocationManagerDelegate>
 {
+    struct os_unfair_lock_s _itemsLock;
     NSMutableSet *_locationUpdateItems;
+    NSMutableSet *_backgroundLocationUpdateItems;
     NSMutableArray *_reverseGeocodeItems;
     NSMutableSet *_stationsUpdateItems;
     NSMutableSet *_merchantCleanupItems;
     CLLocationManager *_locationManager;
+    CLLocationManager *_backgroundMerchantLocationManager;
     CLGeocoder *_geocoder;
     NSObject<OS_dispatch_source> *_locationUpdateTimeoutTimer;
+    NSObject<OS_dispatch_source> *_backgroundLocationUpdateTimer;
     BOOL _active;
     PKMerchantCategoryCodeMap *_categoryCodeMap;
     id<PKPaymentTransactionProcessorDelegate> _delegate;
@@ -28,17 +32,20 @@
 
 @property (readonly, nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPaymentTransactionProcessorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentTransactionProcessorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) PKUsageNotificationServer *usageNotificationServer; // @synthesize usageNotificationServer=_usageNotificationServer;
 
 - (void).cxx_destruct;
+- (void)_abortUpdatingLocationForAllBackgroundLocationUpdateItems;
 - (void)_abortUpdatingLocationForAllLocationUpdateItems;
 - (void)_abortUpdatingLocationForLocationUpdateItem:(id)arg1;
+- (void)_beginProcessingPaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 skipLocation:(BOOL)arg4;
 - (void)_beginReverseGeocodingIfPossible;
 - (void)_continueUpdatingLocationForTransactionUpdateItem:(id)arg1;
+- (void)_markTransactionAsFullyProcessedAndNotifyDelegate:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
 - (id)_pendingLocationUpdateItemForTransaction:(id)arg1;
 - (id)_pendingMerchantCleanupItemForTransaction:(id)arg1;
 - (id)_pendingReverseGeocodeUpdateItemForTransaction:(id)arg1;
@@ -46,10 +53,13 @@
 - (void)_processForLocalMCCLookup:(id)arg1;
 - (void)_processItemForMerchantCleanup:(id)arg1 clearingAttempt:(BOOL)arg2;
 - (void)_processItemForStationsCleanup:(id)arg1;
+- (void)_processPaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
+- (void)_processPaymentTransactionForDemoMode:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
 - (void)_processPaymentTransactionForLocationUpdate:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
 - (void)_processPaymentTransactionForMerchantCleanup:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 clearingAttempt:(BOOL)arg4;
 - (void)_processPaymentTransactionForStationsUpdate:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
-- (void)_processTransactionPostLocation:(id)arg1 withPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3;
+- (void)_reportTransactionWithFinalLocation:(id)arg1;
+- (void)_startUpdatingBackgroundLocationIfPossible;
 - (void)_startUpdatingLocationIfPossible;
 - (void)_stopUpdatingLocationIfPossible;
 - (void)_updateActiveState;

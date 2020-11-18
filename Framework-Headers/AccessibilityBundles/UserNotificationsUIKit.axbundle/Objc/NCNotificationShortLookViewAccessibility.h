@@ -14,8 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityBannerIsSticky;
-- (BOOL)_axClear:(id)arg1;
 - (BOOL)_axDismiss;
+- (BOOL)_axDismissAction:(id)arg1;
 - (BOOL)_axIsGrouped;
 - (BOOL)_axMore:(id)arg1;
 - (id)_axNCNotificationViewController;

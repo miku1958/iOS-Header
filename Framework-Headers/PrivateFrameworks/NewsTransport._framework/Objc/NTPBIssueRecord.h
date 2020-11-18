@@ -20,6 +20,7 @@
     NSMutableArray *_allowedStorefrontIDs;
     NTPBRecordBase *_base;
     NSMutableArray *_blockedStorefrontIDs;
+    NSMutableArray *_bundleFeaturedArticleIDs;
     NSString *_channelTagID;
     NSString *_coverArticleID;
     NSString *_coverImageURL;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) NSMutableArray *allowedStorefrontIDs; // @synthesize allowedStorefrontIDs=_allowedStorefrontIDs;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (strong, nonatomic) NSMutableArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
+@property (strong, nonatomic) NSMutableArray *bundleFeaturedArticleIDs; // @synthesize bundleFeaturedArticleIDs=_bundleFeaturedArticleIDs;
 @property (strong, nonatomic) NSString *channelTagID; // @synthesize channelTagID=_channelTagID;
 @property (strong, nonatomic) NSString *coverArticleID; // @synthesize coverArticleID=_coverArticleID;
 @property (nonatomic) double coverAspectRatio; // @synthesize coverAspectRatio=_coverAspectRatio;
@@ -101,10 +103,12 @@
 + (Class)allArticleIDsType;
 + (Class)allowedStorefrontIDsType;
 + (Class)blockedStorefrontIDsType;
++ (Class)bundleFeaturedArticleIDsType;
 + (Class)topicTagIDsType;
 - (void)addAllArticleIDs:(id)arg1;
 - (void)addAllowedStorefrontIDs:(id)arg1;
 - (void)addBlockedStorefrontIDs:(id)arg1;
+- (void)addBundleFeaturedArticleIDs:(id)arg1;
 - (void)addTopicTagIDs:(id)arg1;
 - (id)allArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)allArticleIDsCount;
@@ -112,9 +116,12 @@
 - (unsigned long long)allowedStorefrontIDsCount;
 - (id)blockedStorefrontIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)blockedStorefrontIDsCount;
+- (id)bundleFeaturedArticleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)bundleFeaturedArticleIDsCount;
 - (void)clearAllArticleIDs;
 - (void)clearAllowedStorefrontIDs;
 - (void)clearBlockedStorefrontIDs;
+- (void)clearBundleFeaturedArticleIDs;
 - (void)clearTopicTagIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

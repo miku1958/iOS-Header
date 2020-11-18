@@ -18,10 +18,10 @@
     NSDate *_startLoadingDate;
     unsigned long long _displayStyle;
     id<FUFlightViewControllerDelegate> _delegate;
-    FUFlightView *_regularFlightView;
-    FUFlightView *_compactFlightView;
     BOOL _requiresDataLoad;
     BOOL _viewLoaded;
+    FUFlightView *_regularFlightView;
+    FUFlightView *_previewFlightView;
     BOOL _highlightCurrentFlightLeg;
     BOOL _showInfoPanel;
     NSArray *_flights;
@@ -30,7 +30,6 @@
 }
 
 @property (strong) NSString *airlineCode; // @synthesize airlineCode=_airlineCode;
-@property (strong) FUFlightView *compactFlightView; // @synthesize compactFlightView=_compactFlightView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) NSNumber *flightCode; // @synthesize flightCode=_flightCode;
@@ -38,6 +37,7 @@
 @property (strong, nonatomic) NSArray *flights; // @synthesize flights=_flights;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlightCurrentFlightLeg; // @synthesize highlightCurrentFlightLeg=_highlightCurrentFlightLeg;
+@property (strong) FUFlightView *previewFlightView; // @synthesize previewFlightView=_previewFlightView;
 @property (strong) FUFlightView *regularFlightView; // @synthesize regularFlightView=_regularFlightView;
 @property (nonatomic) long long selectedFlight;
 @property (nonatomic) long long selectedLeg;

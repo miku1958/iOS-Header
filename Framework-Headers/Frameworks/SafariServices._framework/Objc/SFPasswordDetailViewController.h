@@ -6,7 +6,7 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class SFEditableTableViewCell, UIBarButtonItem, WBSSavedPassword;
+@class SFEditableTableViewCell, SFSafariViewController, UIBarButtonItem, WBSSavedPassword;
 @protocol SFPasswordDetailViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     UIBarButtonItem *_backBarButtonItem;
     SFEditableTableViewCell *_userCell;
     SFEditableTableViewCell *_passwordCell;
+    SFSafariViewController *_changePasswordSafariViewController;
     id<SFPasswordDetailViewControllerDelegate> _delegate;
 }
 
@@ -37,7 +38,9 @@ __attribute__((visibility("hidden")))
 - (void)_doneBarButtonItemTapped:(id)arg1;
 - (void)_editBarButtonItemTapped:(id)arg1;
 - (id)_editableCellWithCell:(id)arg1;
+- (void)_passwordStoreDidUpdate;
 - (void)_setHighLyLegibleFontForDetailTextInCell:(id)arg1;
+- (void)_showChangePasswordSafariViewController;
 - (void)_textFieldChanged:(id)arg1;
 - (void)_willHideUIMenuController:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
@@ -58,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 
 @end

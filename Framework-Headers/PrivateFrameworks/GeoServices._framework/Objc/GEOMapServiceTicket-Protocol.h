@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GeoServices/NSObject-Protocol.h>
+#import <GeoServices/GEOMapServiceCancellableTicket-Protocol.h>
+#import <GeoServices/GEOMapServiceCorrectableTicket-Protocol.h>
+#import <GeoServices/GEOMapServiceThrottlableTicket-Protocol.h>
 
-@class GEOApplicationAuditToken, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORPCorrectedSearch, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSObject, NSString;
+@class GEOApplicationAuditToken, GEOCategorySearchResultSection, GEODirectionIntent, GEOMapRegion, GEOMapServiceTraits, GEOPDMerchantLookupResult, GEORPPlaceInfo, GEORelatedSearchSuggestion, GEOResolvedItem, NSArray, NSDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@protocol GEOMapServiceTicket <NSObject>
+@protocol GEOMapServiceTicket <GEOMapServiceCancellableTicket, GEOMapServiceCorrectableTicket, GEOMapServiceThrottlableTicket>
 
 @property (readonly, nonatomic) NSArray *browseCategories;
 @property (nonatomic) unsigned long long cachePolicy;
-@property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
+@property (readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
@@ -27,14 +29,13 @@
 @property (readonly, nonatomic) NSString *resultDisplayHeader;
 @property (readonly, nonatomic) NSString *resultSectionHeader;
 @property (readonly, nonatomic) NSArray *retainedSearchMetadata;
+@property (readonly, nonatomic) NSArray *searchResultSections;
 @property (readonly, nonatomic) int searchResultType;
 @property (readonly, nonatomic) BOOL shouldEnableRedoSearch;
 @property (readonly, nonatomic) BOOL showDymSuggestionCloseButton;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 
-- (void)applyToCorrectedSearch:(GEORPCorrectedSearch *)arg1;
 - (void)applyToPlaceInfo:(GEORPPlaceInfo *)arg1;
-- (void)cancel;
 - (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 auditToken:(GEOApplicationAuditToken *)arg2 timeout:(long long)arg3 networkActivity:(void (^)(BOOL))arg4;
 - (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 auditToken:(GEOApplicationAuditToken *)arg2 timeout:(long long)arg3 networkActivity:(void (^)(BOOL))arg4 queue:(NSObject<OS_dispatch_queue> *)arg5;
 - (void)submitWithHandler:(void (^)(NSArray *, NSError *))arg1 networkActivity:(void (^)(BOOL))arg2;

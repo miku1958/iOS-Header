@@ -46,14 +46,19 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_encodeWithCoder:(id)arg1;
-- (void)configureWithMessageDispatcher:(id)arg1;
+- (void)configureWithMessageDispatcher:(id)arg1 configurationTracker:(id)arg2;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
+- (id)findServiceWithType:(id)arg1;
+- (void)handleInitialState;
 - (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3;
+- (id)initWithAccessory:(id)arg1 uniqueIdentifier:(id)arg2 services:(id)arg3 workQueue:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
 - (void)registerForMessages;
+- (id)runtimeState;
+- (void)unconfigure;
 
 @end
 

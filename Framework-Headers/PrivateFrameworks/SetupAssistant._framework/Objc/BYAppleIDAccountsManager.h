@@ -26,6 +26,7 @@
 - (id)initForDelegateBundleIDs:(id)arg1;
 - (void)loginDelegateAccountsWithUsername:(id)arg1 password:(id)arg2 rawPassword:(id)arg3 skipiTunes:(BOOL)arg4 onlyAppleIDPlugin:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)performSilentICDPUpgrade;
+- (void)preloadDefaultLoginParametersWithBundleIDs:(id)arg1;
 - (void)repeatedlyAttemptPostRestoreRenewForAccount:(id)arg1 loginContext:(id)arg2 numberOfAttemptsAllowed:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)runPostRestoreRenewCredentialsIfNeeded;
 - (id)storedLoginContext;

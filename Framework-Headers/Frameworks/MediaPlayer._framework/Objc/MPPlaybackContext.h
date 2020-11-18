@@ -13,8 +13,6 @@
 @interface MPPlaybackContext : NSObject <NSSecureCoding>
 {
     MPAVItem *_playerCurrentItem;
-    BOOL _requireFinalTracklist;
-    BOOL _shouldRestartPlayback;
     long long _startIndex;
     long long _actionAfterQueueLoad;
     long long _shuffleType;
@@ -27,18 +25,18 @@
 }
 
 @property (nonatomic) long long actionAfterQueueLoad; // @synthesize actionAfterQueueLoad=_actionAfterQueueLoad;
+@property (readonly, nonatomic) BOOL containsRestorableContent;
+@property (readonly, nonatomic) BOOL containsTransportableContent;
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
-@property (strong, nonatomic) MPAVItem *playerCurrentItem;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
-@property (nonatomic) BOOL requireFinalTracklist; // @synthesize requireFinalTracklist=_requireFinalTracklist;
 @property (readonly, nonatomic) BOOL shouldBecomeActive;
-@property (nonatomic) BOOL shouldRestartPlayback; // @synthesize shouldRestartPlayback=_shouldRestartPlayback;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (copy, nonatomic) NSString *siriAssetInfo; // @synthesize siriAssetInfo=_siriAssetInfo;
 @property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property (copy, nonatomic) NSDictionary *siriWHAMetricsInfo; // @synthesize siriWHAMetricsInfo=_siriWHAMetricsInfo;
 @property (nonatomic) long long startIndex; // @synthesize startIndex=_startIndex;
+@property (readonly, nonatomic, getter=isSupported) BOOL supported;
 
 + (Class)queueFeederClass;
 + (BOOL)supportsSecureCoding;

@@ -18,7 +18,6 @@
 - (id)_axExifLabel;
 - (id)_axMainAssetURL;
 - (id)_axSourceObject;
-- (void)_initPhotoDesc;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityURL;

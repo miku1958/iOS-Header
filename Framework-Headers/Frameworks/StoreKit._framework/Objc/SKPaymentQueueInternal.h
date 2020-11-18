@@ -6,26 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, SKPaymentQueueClient, SKXPCConnection;
-@protocol OS_dispatch_queue;
+@class NSMutableArray, NSMutableDictionary, NSString, SKPaymentQueueClient, SKXPCConnection;
+@protocol SKPaymentQueueDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKPaymentQueueInternal : NSObject
 {
     BOOL _checkedIn;
-    SKPaymentQueueClient *_client;
     BOOL _isRefreshing;
-    NSMutableArray *_localTransactions;
-    NSMutableArray *_observerReferences;
-    NSObject<OS_dispatch_queue> *_observerReferencesAccessQueue;
-    SKXPCConnection *_requestConnection;
-    SKXPCConnection *_responseConnection;
     BOOL _restoreFinishedDuringRefresh;
     BOOL _restoringCompletedTransactions;
+    NSString *_identifier;
+    SKPaymentQueueClient *_client;
+    NSMutableDictionary *_downloads;
+    NSMutableArray *_localTransactions;
     NSMutableArray *_transactions;
+    NSMutableArray *_weakObservers;
+    SKXPCConnection *_requestConnection;
+    SKXPCConnection *_responseConnection;
+    id<SKPaymentQueueDelegate> _delegate;
 }
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)init;
 
 @end
 

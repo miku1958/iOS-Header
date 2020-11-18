@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property NSString *versionString; // @synthesize versionString=_versionString;
 
 + (id)defaultVersionString;
+- (void)addImageFromIOSurface:(struct __IOSurface *)arg1 properties:(id)arg2 identifier:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)addYUVImage:(id)arg1 properties:(id)arg2 identifier:(id)arg3 imageProps:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (id)bestImageIdentifiers;
 - (id)burstDocumentDirectory;

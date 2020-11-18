@@ -52,7 +52,7 @@
 - (void)queueConnectionToTrustedServiceManagerForPushTopic:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)queueConnectionToTrustedServiceManagerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registrationDataWithAuthToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)rewrapDataWithDeviceIdentifier:(id)arg1 certificates:(id)arg2 kextBlacklistVersion:(id)arg3;
+- (void)rewrapDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setRegistrationRegionMap:(id)arg1 primaryRegionTopic:(id)arg2;
 - (void)signData:(id)arg1 signatureEntanglementMode:(unsigned long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)signatureForAuthToken:(id)arg1 completion:(CDUnknownBlockType)arg2;

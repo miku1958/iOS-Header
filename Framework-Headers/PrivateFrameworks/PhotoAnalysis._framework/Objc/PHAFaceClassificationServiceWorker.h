@@ -20,6 +20,7 @@
     PVVisionAnalyzer *_analyzer;
     NSMutableSet *_outstandingImageRequests;
     VNPersonsModel *_personsModel;
+    unsigned long long _numberOfAssetsToProcess;
 }
 
 @property (strong) PVVisionAnalyzer *analyzer; // @synthesize analyzer=_analyzer;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property unsigned long long numberOfAssetsToProcess; // @synthesize numberOfAssetsToProcess=_numberOfAssetsToProcess;
 @property (strong) NSMutableSet *outstandingImageRequests; // @synthesize outstandingImageRequests=_outstandingImageRequests;
 @property (strong) VNPersonsModel *personsModel; // @synthesize personsModel=_personsModel;
 @property (readonly) Class superclass;

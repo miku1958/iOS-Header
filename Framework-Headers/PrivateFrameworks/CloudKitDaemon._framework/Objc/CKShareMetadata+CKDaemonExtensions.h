@@ -10,5 +10,7 @@
 - (void)_decryptDataWithPCSBlob:(struct _OpaquePCSShareProtection *)arg1 pcsManager:(id)arg2;
 - (void)_encryptDataWithPCSBlob:(struct _OpaquePCSShareProtection *)arg1 pcsManager:(id)arg2;
 - (BOOL)hasEncryptedData;
+- (struct _OpaquePCSShareProtection *)publicPCS;
+- (void)setPublicPCS:(struct _OpaquePCSShareProtection *)arg1;
 @end
 

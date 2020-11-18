@@ -8,7 +8,7 @@
 
 #import <Notes/ICSearchIndexerDataSource-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString;
+@class NSMutableOrderedSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface ICBaseSearchIndexerDataSource : NSObject <ICSearchIndexerDataSource>
@@ -16,20 +16,16 @@
     BOOL _observingChanges;
     BOOL _needsReindexing;
     NSObject<OS_dispatch_queue> *_processingQueue;
-    NSMutableSet *_objectIDsToProcess;
-    NSMutableSet *_objectIDsBeingProcessed;
-    NSMutableDictionary *_objectIDsByIdentifier;
-    NSMutableDictionary *_identifiersByObjectID;
+    NSMutableOrderedSet *_objectIDsToProcess;
+    NSMutableOrderedSet *_objectIDsBeingProcessed;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableDictionary *identifiersByObjectID; // @synthesize identifiersByObjectID=_identifiersByObjectID;
 @property BOOL needsReindexing; // @synthesize needsReindexing=_needsReindexing;
-@property (strong, nonatomic) NSMutableSet *objectIDsBeingProcessed; // @synthesize objectIDsBeingProcessed=_objectIDsBeingProcessed;
-@property (strong, nonatomic) NSMutableDictionary *objectIDsByIdentifier; // @synthesize objectIDsByIdentifier=_objectIDsByIdentifier;
-@property (strong, nonatomic) NSMutableSet *objectIDsToProcess; // @synthesize objectIDsToProcess=_objectIDsToProcess;
+@property (strong, nonatomic) NSMutableOrderedSet *objectIDsBeingProcessed; // @synthesize objectIDsBeingProcessed=_objectIDsBeingProcessed;
+@property (strong, nonatomic) NSMutableOrderedSet *objectIDsToProcess; // @synthesize objectIDsToProcess=_objectIDsToProcess;
 @property (nonatomic, getter=isObservingChanges) BOOL observingChanges; // @synthesize observingChanges=_observingChanges;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property (readonly) Class superclass;
@@ -37,32 +33,34 @@
 + (id)didReindexForMigrationUserDefaultKeyForIdentifier:(id)arg1;
 + (BOOL)isAccountReindexedForMigration:(id)arg1;
 + (void)markAccountReindexedForMigration:(id)arg1;
-+ (void)unmarkAccountReindexedForMigration:(id)arg1;
 - (void).cxx_destruct;
-- (id)allIndexableObjectIdentifiersByObjectID;
+- (id)allIndexableObjectIDsInReversedReindexingOrder;
 - (void)clearObjectIDsToIgnoreAndStageForReindexing;
+- (void)clearObjectIDsToProcess;
 - (void)contextWillSave:(id)arg1;
 - (id)dataSourceIdentifier;
-- (id)indexableObjectIDsWithIdentifiers:(id)arg1;
+- (id)indexableObjectIDsWithURIs:(id)arg1;
+- (unsigned long long)indexingPriority;
 - (id)init;
 - (void)loadState;
 - (id)newManagedObjectContext;
+- (id)objectForManagedObjectIDURI:(id)arg1 context:(id)arg2;
 - (id)objectForSearchableItem:(id)arg1 context:(id)arg2;
-- (id)objectForSearchableItemIdentifier:(id)arg1 context:(id)arg2;
+- (id)objectIDURIsToBeDeleted;
 - (id)objectIDsFromSearchableItems:(id)arg1;
 - (id)objectIDsNeedingIndexing;
 - (id)persistentStoreCoordinator;
 - (void)resetContextObservers;
 - (void)saveState;
-- (void)searchIndexerDidFinishDeletingSearchableItemsWithIdentifiers:(id)arg1 error:(id)arg2;
+- (void)searchIndexerDidFinishDeletingSearchableItemsWithObjectIDURIs:(id)arg1 error:(id)arg2;
 - (void)searchIndexerDidFinishIndexingObjectIDs:(id)arg1 error:(id)arg2;
-- (void)searchIndexerWillDeleteSearchableItemsWithIdentifiers:(id)arg1;
+- (void)searchIndexerWillDeleteSearchableItemsWithObjectIDURIs:(id)arg1;
 - (void)searchIndexerWillIndexObjectIDs:(id)arg1;
 - (id)searchableItemForObject:(id)arg1;
-- (id)searchableItemIdentifiersByObjectIDsForObjectIDs:(id)arg1;
-- (id)searchableItemIdentifiersToBeDeleted;
 - (id)searchableItemsForObjectIDs:(id)arg1;
+- (BOOL)shouldIndexableObjectExistInIndexing:(id)arg1;
 - (void)stageForReindexing;
+- (void)stageObjectIDURIsForIndexing:(id)arg1;
 - (void)startObservingChanges;
 - (id)stateDefaultsKey;
 - (void)stopObservingChanges;

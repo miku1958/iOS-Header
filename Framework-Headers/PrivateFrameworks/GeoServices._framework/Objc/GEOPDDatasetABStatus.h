@@ -15,15 +15,17 @@
     PBUnknownFields *_unknownFields;
     unsigned int _datasetId;
     struct {
-        unsigned int datasetId:1;
-    } _has;
+        unsigned int has_datasetId:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int datasetId; // @synthesize datasetId=_datasetId;
+@property (nonatomic) unsigned int datasetId;
 @property (nonatomic) BOOL hasDatasetId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -31,6 +33,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

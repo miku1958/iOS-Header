@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSDictionary *additionalDocumentPropertiesForWrite;
 @property (readonly, nonatomic) NSDictionary *additionalDocumentSupportPropertiesForWrite;
+@property (readonly, nonatomic) long long archiveValidationMode;
 @property (readonly, nonatomic) BOOL areNewExternalReferencesToDataAllowed;
 @property (readonly, nonatomic) NSUUID *baseUUIDForObjectUUID;
 @property (readonly, copy) NSString *debugDescription;
@@ -78,10 +79,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *temporaryURL;
 
 - (void).cxx_destruct;
-- (void)_beginImport;
+- (void)_beginImportWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_continueImportWithSuccess:(BOOL)arg1 error:(id)arg2 completedSteps:(int)arg3;
 - (void)_performImportWithCompletedSteps:(int)arg1;
-- (id)_prepareTemplate:(id)arg1;
 - (BOOL)_saveContextToTemporaryURL:(id)arg1 passphrase:(id)arg2 originalURL:(id)arg3 documentUUID:(id)arg4 error:(id *)arg5;
 - (void)_setPresentedItemURL:(id)arg1;
 - (void)addIncompatibleMediaContainer:(id)arg1 incompatibleData:(id)arg2 compatibilityLevel:(long long)arg3;
@@ -91,7 +91,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)beginImport;
 - (void)beginImportAsync;
 - (void)cancelImport;
-- (void)checkDownloadPermissionForMissingResourceAccessTypes:(long long)arg1 estimatedMissingResourcesSize:(unsigned long long)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)defaultDraftName;
 - (id)documentProvider;
@@ -102,7 +101,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithPath:(id)arg1 delegate:(id)arg2;
 - (id)initWithPath:(id)arg1 documentType:(id)arg2 delegate:(id)arg3;
 - (id)logContext;
-- (id)makeObjectContextWithTemplateInfo:(id)arg1 error:(id *)arg2;
+- (id)makeObjectContextWithTemplateDocument:(id)arg1 error:(id *)arg2;
 - (id)name;
 - (BOOL)needsFileCoordination;
 - (id)packageDataForWrite;
@@ -110,7 +109,6 @@ __attribute__((visibility("hidden")))
 - (void)prepareForImportDisplayingProgress:(BOOL)arg1;
 - (void)presentPersistenceError:(id)arg1;
 - (void)presentedItemDidMoveToURL:(id)arg1;
-- (id)progressTitleForDownloadingResourceAccessTypes:(long long)arg1;
 - (void)relinquishPresentedItemToWriter:(CDUnknownBlockType)arg1;
 - (void)removeFilePresenter;
 - (void)removeWarning:(id)arg1;
@@ -120,8 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)showProgressIfNeededForURL:(id)arg1;
 - (void)suspendAutosaveWithReason:(id)arg1;
 - (void)suspendSaveAndAutosaveWithReason:(id)arg1;
-- (id)templateInfoWithName:(id)arg1;
-- (id)templateInfoWithName:(id)arg1 variantIndex:(unsigned long long)arg2;
+- (id)templateDocumentWithName:(id)arg1 variantIndex:(unsigned long long)arg2;
 - (id)warnings;
 - (void)willSaveImportedDocument;
 

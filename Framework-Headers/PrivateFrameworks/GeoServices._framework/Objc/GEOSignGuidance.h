@@ -8,46 +8,74 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOJunctionInfo, GEONameInfo, NSMutableArray;
+@class GEOJunctionInfo, GEONameInfo, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOSignGuidance : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOJunctionInfo *_junctionInfo;
-    int _maneuverArrowOverride;
     NSMutableArray *_secondarySigns;
     GEONameInfo *_shieldName;
     NSMutableArray *_signDetails;
     NSMutableArray *_signTitles;
+    int _maneuverArrowOverride;
     unsigned int _stackRanking;
     struct {
-        unsigned int maneuverArrowOverride:1;
-        unsigned int stackRanking:1;
-    } _has;
+        unsigned int has_maneuverArrowOverride:1;
+        unsigned int has_stackRanking:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_junctionInfo:1;
+        unsigned int read_secondarySigns:1;
+        unsigned int read_shieldName:1;
+        unsigned int read_signDetails:1;
+        unsigned int read_signTitles:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_junctionInfo:1;
+        unsigned int wrote_secondarySigns:1;
+        unsigned int wrote_shieldName:1;
+        unsigned int wrote_signDetails:1;
+        unsigned int wrote_signTitles:1;
+        unsigned int wrote_maneuverArrowOverride:1;
+        unsigned int wrote_stackRanking:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasJunctionInfo;
 @property (nonatomic) BOOL hasManeuverArrowOverride;
 @property (readonly, nonatomic) BOOL hasShieldName;
 @property (nonatomic) BOOL hasStackRanking;
-@property (strong, nonatomic) GEOJunctionInfo *junctionInfo; // @synthesize junctionInfo=_junctionInfo;
-@property (nonatomic) int maneuverArrowOverride; // @synthesize maneuverArrowOverride=_maneuverArrowOverride;
-@property (strong, nonatomic) NSMutableArray *secondarySigns; // @synthesize secondarySigns=_secondarySigns;
-@property (strong, nonatomic) GEONameInfo *shieldName; // @synthesize shieldName=_shieldName;
-@property (strong, nonatomic) NSMutableArray *signDetails; // @synthesize signDetails=_signDetails;
-@property (strong, nonatomic) NSMutableArray *signTitles; // @synthesize signTitles=_signTitles;
-@property (nonatomic) unsigned int stackRanking; // @synthesize stackRanking=_stackRanking;
+@property (strong, nonatomic) GEOJunctionInfo *junctionInfo;
+@property (nonatomic) int maneuverArrowOverride;
+@property (strong, nonatomic) NSMutableArray *secondarySigns;
+@property (strong, nonatomic) GEONameInfo *shieldName;
+@property (strong, nonatomic) NSMutableArray *signDetails;
+@property (strong, nonatomic) NSMutableArray *signTitles;
+@property (nonatomic) unsigned int stackRanking;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)secondarySignType;
 + (Class)signDetailType;
 + (Class)signTitleType;
 - (void).cxx_destruct;
 - (int)StringAsManeuverArrowOverride:(id)arg1;
+- (void)_addNoFlagsSecondarySign:(id)arg1;
+- (void)_addNoFlagsSignDetail:(id)arg1;
+- (void)_addNoFlagsSignTitle:(id)arg1;
+- (void)_readJunctionInfo;
+- (void)_readSecondarySigns;
+- (void)_readShieldName;
+- (void)_readSignDetails;
+- (void)_readSignTitles;
 - (void)addSecondarySign:(id)arg1;
 - (void)addSignDetail:(id)arg1;
 - (void)addSignTitle:(id)arg1;
 - (void)clearSecondarySigns;
 - (void)clearSignDetails;
 - (void)clearSignTitles;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -56,6 +84,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)maneuverArrowOverrideAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)secondarySignAtIndex:(unsigned long long)arg1;
 - (unsigned long long)secondarySignsCount;

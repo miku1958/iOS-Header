@@ -16,13 +16,13 @@
 @property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 
 + (void)updateAlbumMetadata:(id)arg1;
+- (void).cxx_destruct;
 - (id)_argumentsDictionaryAsData:(id)arg1;
 - (id)_argumentsDictionaryFromXPCEvent:(id)arg1;
 - (long long)daemonOperation;
-- (void)dealloc;
 - (id)description;
 - (void)encodeToXPCObject:(id)arg1;
-- (id)initFromXPCObject:(id)arg1 connection:(id)arg2;
+- (id)initFromXPCObject:(id)arg1 libraryServicesManager:(id)arg2;
 - (void)run;
 - (void)runDaemonSide;
 

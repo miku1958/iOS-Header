@@ -24,6 +24,8 @@
 - (void).cxx_destruct;
 - (long long)_fetchManateeAvailability:(id *)arg1;
 - (void)_lockedFetchAndUpdateManateeAvailability;
+- (BOOL)accountSupportsManatee:(id)arg1;
+- (void)dealloc;
 - (void)handleUpdateNotificationWithAvailability:(id)arg1;
 - (id)init;
 - (BOOL)isManateeAvailable:(id *)arg1;

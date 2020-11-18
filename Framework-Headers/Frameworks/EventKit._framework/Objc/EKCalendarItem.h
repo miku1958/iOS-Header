@@ -34,12 +34,14 @@
 @property (copy, nonatomic) NSTimeZone *timeZone;
 @property (copy, nonatomic) NSString *title;
 
++ (BOOL)_shouldDeleteAndAddForMoveFromCalendar:(id)arg1 toCalendar:(id)arg2;
 + (id)knownRelationshipMultiValueKeys;
 + (id)knownRelationshipSingleValueKeys;
 + (id)knownRelationshipWeakKeys;
 + (id)timeZoneFromTimeZoneName:(id)arg1 withFloatingTimeZone:(id)arg2;
 + (id)timeZoneNameFromTimeZone:(id)arg1;
 - (void)_addAttachment:(id)arg1;
+- (void)_addDefaultAlarms;
 - (void)_addDetachedItem:(id)arg1;
 - (void)_addExceptionDate:(id)arg1;
 - (void)_adjustAfterRebaseForMovingFromOldSource:(id)arg1 toNewSource:(id)arg2 committingItem:(id)arg3;
@@ -57,16 +59,19 @@
 - (void)_recursivelyPerformBlockOnSelfAndDetachedItems:(CDUnknownBlockType)arg1 forCommittingItem:(id)arg2;
 - (void)_removeAttachment:(id)arg1;
 - (void)_removeAttendee:(id)arg1;
+- (void)_removeDefaultAlarms;
 - (void)_removeDetachedItem:(id)arg1;
 - (void)_removeExceptionDate:(id)arg1;
 - (void)_setCalendarRecursively:(id)arg1 forCommittingItem:(id)arg2;
 - (void)_setCustomObject:(id)arg1 forKey:(id)arg2 local:(BOOL)arg3;
 - (void)_setSelfAttendee:(id)arg1;
 - (id)_structuredDataDictionaryFromData:(id)arg1;
+- (void)_updateDefaultAlarms;
 - (void)_updateHasAttendeesIfNeeded;
 - (void)_updateHasNotesIfNeeded;
 - (void)_updateHasRecurrenceRulesIfNeeded;
 - (void)_updateModifiedAlarmByAcknowledging;
+- (BOOL)_validateDeletable:(id *)arg1;
 - (void)_willCommit;
 - (id)action;
 - (unsigned long long)actionsState;
@@ -82,6 +87,8 @@
 - (id)appLink;
 - (id)appLinkData;
 - (id)attendeeForMe;
+- (id)attendeeMatchingEmailAddress:(id)arg1;
+- (id)attendeesRaw;
 - (id)calendarScale;
 - (BOOL)canMoveToCalendar:(id)arg1 error:(id *)arg2;
 - (BOOL)canMoveToCalendar:(id)arg1 fromCalendar:(id)arg2 error:(id *)arg3;
@@ -99,6 +106,7 @@
 - (id)externalData;
 - (id)externalID;
 - (id)externalModificationTag;
+- (id)externalScheduleID;
 - (id)externalURI;
 - (id)filterAttendeesPendingDeletion:(id)arg1;
 - (id)findOriginalAlarmStartingWith:(id)arg1;
@@ -150,6 +158,7 @@
 - (void)setExternalData:(id)arg1;
 - (void)setExternalID:(id)arg1;
 - (void)setExternalModificationTag:(id)arg1;
+- (void)setExternalScheduleID:(id)arg1;
 - (void)setLastModifiedDate:(id)arg1;
 - (void)setLocalCustomObject:(id)arg1 forKey:(id)arg2;
 - (void)setModifiedProperties:(unsigned int)arg1;

@@ -8,15 +8,15 @@
 
 #import <GeoServices/_GEONetworkDefaultsServerProxyDelegate-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSString;
-@protocol OS_dispatch_queue, _GEONetworkDefaultsServerProxy;
+@class NSDictionary, NSMutableArray, NSString, geo_isolater;
+@protocol _GEONetworkDefaultsServerProxy;
 
 @interface GEONetworkDefaults : NSObject <_GEONetworkDefaultsServerProxyDelegate>
 {
     id<_GEONetworkDefaultsServerProxy> _serverProxy;
     NSMutableArray *_completionHandlers;
     NSDictionary *_networkDefaults;
-    NSObject<OS_dispatch_queue> *_networkDefaultsIsolation;
+    geo_isolater *_networkDefaultsIsolation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +31,7 @@
 - (void).cxx_destruct;
 - (BOOL)_needsUpdate;
 - (id)allKeys;
+- (void)allKeysAndValues:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)serverProxy:(id)arg1 networkDefaultsDidChange:(id)arg2;
 - (void)updateIfNecessary:(CDUnknownBlockType)arg1;

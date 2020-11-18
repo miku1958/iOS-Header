@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INPerson, NSDate, NSNumber, NSString;
 
-@interface INCallRecord : NSObject <INCacheableContainer, NSCopying, NSSecureCoding>
+@interface INCallRecord : NSObject <INCacheableContainer, INJSONSerializable, NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     NSDate *_dateCreated;
@@ -21,6 +22,7 @@
     NSNumber *_callDuration;
     NSNumber *_unseen;
     long long _callCapability;
+    NSNumber *_numberOfCalls;
 }
 
 @property (readonly, nonatomic) long long callCapability; // @synthesize callCapability=_callCapability;
@@ -29,22 +31,30 @@
 @property (readonly, copy, nonatomic) INPerson *caller; // @synthesize caller=_caller;
 @property (readonly, copy, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSNumber *numberOfCalls; // @synthesize numberOfCalls=_numberOfCalls;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSNumber *unseen; // @synthesize unseen=_unseen;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_intents_cacheableObjects;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7;
+- (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7 numberOfCalls:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 
 @end

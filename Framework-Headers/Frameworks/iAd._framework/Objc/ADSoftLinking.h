@@ -57,7 +57,6 @@
 @property (readonly, nonatomic) NSString *SKStoreProductParameterITunesItemIdentifier;
 @property (readonly, nonatomic) Class SKStoreProductViewController;
 @property (readonly, nonatomic) Class TLToneManager;
-@property (readonly, nonatomic) Class WBUFormDataControllerWK1;
 @property (readonly, nonatomic) NSMutableDictionary *boundSymbols; // @synthesize boundSymbols=_boundSymbols;
 @property (readonly, nonatomic) NSString *kToneArtistKey;
 @property (readonly, nonatomic) NSString *kToneDurationKey;
@@ -67,6 +66,7 @@
 @property (readonly, nonatomic) NSMutableDictionary *loadedFrameworks; // @synthesize loadedFrameworks=_loadedFrameworks;
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (Class)_classWithName:(id)arg1 inFrameworkAtPath:(id)arg2;
 - (void)_loadFrameworkIfNeeded:(id)arg1;
 - (void *)_pointerToSymbolWithName:(id)arg1 inFrameworkAtPath:(id)arg2;

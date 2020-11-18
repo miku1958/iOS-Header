@@ -23,8 +23,10 @@
     NSTextCheckingResult *_textCheckingResult;
 }
 
+@property (readonly, nonatomic) BOOL isCloseQuote;
 @property (readonly, nonatomic) BOOL isDate;
 @property (readonly, nonatomic) BOOL isEmailAddress;
+@property (readonly, nonatomic) BOOL isOpenQuote;
 @property (readonly, nonatomic) BOOL isPhoneNumber;
 @property (readonly, nonatomic) BOOL isPunctuation;
 @property (readonly, nonatomic) BOOL isSentenceTerminator;

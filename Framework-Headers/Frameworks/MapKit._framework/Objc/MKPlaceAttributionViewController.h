@@ -9,13 +9,12 @@
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 #import <MapKit/MKPlaceAttributionCellDelegate-Protocol.h>
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
-#import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
 @class MKMapItem, MKPlaceAttributionCell, NSArray, NSAttributedString, NSString, _MKMapItemAttribution;
 @protocol _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MKPlaceAttributionViewController : MKPlaceSectionViewController <MKPlaceAttributionCellDelegate, MKStackingViewControllerFixedHeightAware, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
+@interface MKPlaceAttributionViewController : MKPlaceSectionViewController <MKPlaceAttributionCellDelegate, MKStackingViewControllerFixedHeightAware, MKModuleViewControllerProtocol>
 {
     BOOL _resizableViewsDisabled;
     NSArray *_urlStrings;
@@ -28,7 +27,7 @@ __attribute__((visibility("hidden")))
 
 @property (weak, nonatomic) id<_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
 @property (strong, nonatomic) _MKMapItemAttribution *attribution; // @synthesize attribution=_attribution;
-@property (strong) MKPlaceAttributionCell *attributionCell; // @synthesize attributionCell=_attributionCell;
+@property (strong, nonatomic) MKPlaceAttributionCell *attributionCell; // @synthesize attributionCell=_attributionCell;
 @property (copy, nonatomic) NSAttributedString *attributionString; // @synthesize attributionString=_attributionString;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -39,8 +38,9 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *urlStrings; // @synthesize urlStrings=_urlStrings;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)infoAttributionString;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (void)loadView;
 - (void)openURL;
 - (void)updateLogo;

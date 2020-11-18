@@ -76,6 +76,7 @@
 - (void)_addTask:(id)arg1;
 - (void)_cancelDownloadTask:(id)arg1 byProducingResumeData:(CDUnknownBlockType)arg2;
 - (void)_cancelTask:(id)arg1;
+- (void)_copyAttributesFromNSURLTask:(id)arg1 toNSURLTask:(id)arg2;
 - (void)_dataTask:(id)arg1 completedWithData:(id)arg2 response:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_downloadTask:(id)arg1 completedWithLocation:(id)arg2 response:(id)arg3 error:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_downloadTaskWithResumeData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

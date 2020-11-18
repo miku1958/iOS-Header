@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<HUAboutResidentDeviceFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<HUAboutResidentDeviceFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets messageInsets; // @synthesize messageInsets=_messageInsets;

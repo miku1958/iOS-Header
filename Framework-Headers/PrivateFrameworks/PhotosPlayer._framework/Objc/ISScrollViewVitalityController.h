@@ -10,6 +10,7 @@
 
 @interface ISScrollViewVitalityController : NSObject
 {
+    BOOL _enabled;
     BOOL __isPerformingChanges;
     BOOL _scrolling;
     BOOL _decelerating;
@@ -26,6 +27,7 @@
 @property (weak, nonatomic, setter=_setScrollView:) UIScrollView *_scrollView; // @synthesize _scrollView=__scrollView;
 @property (readonly, nonatomic) BOOL canPerformVitality;
 @property (nonatomic, getter=isDecelerating) BOOL decelerating; // @synthesize decelerating=_decelerating;
+@property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) NSDate *estimatedScrollEndDate; // @synthesize estimatedScrollEndDate=_estimatedScrollEndDate;
 @property (nonatomic) BOOL hasTargetContentOffset; // @synthesize hasTargetContentOffset=_hasTargetContentOffset;
 @property (nonatomic, getter=isScrolling) BOOL scrolling; // @synthesize scrolling=_scrolling;

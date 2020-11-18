@@ -26,5 +26,6 @@
 - (id)safari_setForKey:(id)arg1;
 - (id)safari_stringForKey:(id)arg1;
 - (id)safari_stringForKey:(id)arg1 returningNilIfEmpty:(BOOL)arg2;
+- (id)safari_userActivityForKey:(id)arg1;
 @end
 

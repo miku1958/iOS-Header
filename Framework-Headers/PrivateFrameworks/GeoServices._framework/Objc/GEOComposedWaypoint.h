@@ -8,27 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOMapItemStorage, GEOWaypointTyped;
+@class GEOLatLng, GEOMapItemStorage, GEOWaypointTyped, PBDataReader;
 
 @interface GEOComposedWaypoint : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_latLng;
     GEOMapItemStorage *_mapItemStorage;
     GEOWaypointTyped *_waypoint;
+    struct {
+        unsigned int read_latLng:1;
+        unsigned int read_mapItemStorage:1;
+        unsigned int read_waypoint:1;
+        unsigned int wrote_latLng:1;
+        unsigned int wrote_mapItemStorage:1;
+        unsigned int wrote_waypoint:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasLatLng;
 @property (readonly, nonatomic) BOOL hasMapItemStorage;
 @property (readonly, nonatomic) BOOL hasWaypoint;
-@property (strong, nonatomic) GEOLatLng *latLng; // @synthesize latLng=_latLng;
-@property (strong, nonatomic) GEOMapItemStorage *mapItemStorage; // @synthesize mapItemStorage=_mapItemStorage;
-@property (strong, nonatomic) GEOWaypointTyped *waypoint; // @synthesize waypoint=_waypoint;
+@property (strong, nonatomic) GEOLatLng *latLng;
+@property (strong, nonatomic) GEOMapItemStorage *mapItemStorage;
+@property (strong, nonatomic) GEOWaypointTyped *waypoint;
 
 + (id)composedWaypointForAddressString:(id)arg1 traits:(id)arg2 clientAttributes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 networkActivityHandler:(CDUnknownBlockType)arg5;
 + (id)composedWaypointForCurrentLocation:(id)arg1 traits:(id)arg2 auditToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 networkActivityHandler:(CDUnknownBlockType)arg5;
 + (id)composedWaypointForCurrentLocation:(id)arg1 traits:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 networkActivityHandler:(CDUnknownBlockType)arg4;
 + (id)composedWaypointForID:(unsigned long long)arg1 resultsProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4 clientAttributes:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 networkActivityHandler:(CDUnknownBlockType)arg7;
-+ (id)composedWaypointForID:(unsigned long long)arg1 traits:(id)arg2 clientAttributes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 networkActivityHandler:(CDUnknownBlockType)arg5;
++ (id)composedWaypointForIdentifier:(id)arg1 traits:(id)arg2 clientAttributes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 networkActivityHandler:(CDUnknownBlockType)arg5;
 + (id)composedWaypointForIncompleteMapItem:(id)arg1 traits:(id)arg2 clientAttributes:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 networkActivityHandler:(CDUnknownBlockType)arg5;
 + (id)composedWaypointForLocation:(id)arg1 mapItem:(id)arg2 traits:(id)arg3 auditToken:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 networkActivityHandler:(CDUnknownBlockType)arg6;
 + (id)composedWaypointForLocation:(id)arg1 mapItem:(id)arg2 traits:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 networkActivityHandler:(CDUnknownBlockType)arg5;
@@ -41,11 +51,16 @@
 + (id)composedWaypointForSearchString:(id)arg1 completionItem:(id)arg2 traits:(id)arg3 clientAttributes:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 networkActivityHandler:(CDUnknownBlockType)arg6;
 + (id)composedWaypointForTransitID:(unsigned long long)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 isCurrentLocation:(BOOL)arg3 traits:(id)arg4 clientAttributes:(id)arg5 completionHandler:(CDUnknownBlockType)arg6 networkActivityHandler:(CDUnknownBlockType)arg7;
 + (id)composedWaypointForWaypointTyped:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 networkActivityHandler:(CDUnknownBlockType)arg3;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (id)_addressCandidatesForComparison;
 - (id)_locationCandidatesForComparison;
 - (id)_muidCandidatesForComparison;
+- (void)_readLatLng;
+- (void)_readMapItemStorage;
+- (void)_readWaypoint;
 - (id)_regionCandidatesForContainment;
+- (id)bestLatLng;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -61,6 +76,7 @@
 - (BOOL)isSameAs:(id)arg1;
 - (BOOL)isSameAs:(id)arg1 comparisonCriteria:(unsigned long long)arg2;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setIsCurrentLocation:(BOOL)arg1;
 - (id)timezone;

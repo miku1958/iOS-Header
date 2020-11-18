@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) NSString *personID;
 
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)keyPathsForValuesAffectingPersonID;
 + (id)photoStreamAlbumWithStreamID:(id)arg1 inPhotoLibrary:(id)arg2 createIfNeeded:(BOOL)arg3;

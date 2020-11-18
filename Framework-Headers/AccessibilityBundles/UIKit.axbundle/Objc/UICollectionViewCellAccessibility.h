@@ -13,13 +13,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityChildren;
 - (void)_accessibilityClearInternalCaches;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityIndexPath;
+- (struct _NSRange)_accessibilityIndexPathAsRange;
+- (BOOL)_accessibilityIsInCollectionCell;
 - (BOOL)_accessibilityIsOutsideParentBounds;
 - (id)_accessibilityParentCollectionView;
 - (id)_accessibilityParentScrollView;
+- (BOOL)_axContentViewHasSingleFocusableSubview;
+- (BOOL)_isEligibleForFocusInteraction;
 - (void)accessibilityClearInternalData;
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityDropPointDescriptors;
@@ -30,6 +35,7 @@
 - (unsigned long long)accessibilityTraits;
 - (void)addSubview:(id)arg1;
 - (id)axData;
+- (BOOL)canBecomeFocused;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (void)insertSubview:(id)arg1 aboveSubview:(id)arg2;
 - (void)insertSubview:(id)arg1 atIndex:(long long)arg2;

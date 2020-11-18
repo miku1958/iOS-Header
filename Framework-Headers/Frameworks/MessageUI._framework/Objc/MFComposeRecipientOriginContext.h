@@ -14,12 +14,10 @@
     unsigned long long _resultType;
 }
 
-@property (readonly, nonatomic) unsigned long long resultType; // @synthesize resultType=_resultType;
-@property (readonly, nonatomic) NSString *searchTerm; // @synthesize searchTerm=_searchTerm;
+@property (nonatomic) unsigned long long resultType; // @synthesize resultType=_resultType;
+@property (strong, nonatomic) NSString *searchTerm; // @synthesize searchTerm=_searchTerm;
 
-- (void)dealloc;
-- (void)setResultType:(unsigned long long)arg1;
-- (void)setSearchTerm:(id)arg1;
+- (void).cxx_destruct;
 
 @end
 

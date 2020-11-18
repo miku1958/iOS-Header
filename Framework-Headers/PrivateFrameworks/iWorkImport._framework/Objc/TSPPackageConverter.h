@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)newPackageConverterWithURL:(id)arg1 preserveExtendedAttributes:(BOOL)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (BOOL)checkPassword:(id)arg1;
-- (BOOL)enumeratePackageEntriesWithZipArchive:(id)arg1 accessor:(CDUnknownBlockType)arg2;
+- (BOOL)enumeratePackageEntriesWithZipArchive:(id)arg1 needsReadChannel:(BOOL)arg2 accessor:(CDUnknownBlockType)arg3;
 - (BOOL)hasEntriesMatchingFilter:(id)arg1;
 - (id)init;
 - (id)initWithURL:(id)arg1 package:(id)arg2 fileCoordinatorDelegate:(id)arg3 preserveExtendedAttributes:(BOOL)arg4 error:(id *)arg5;

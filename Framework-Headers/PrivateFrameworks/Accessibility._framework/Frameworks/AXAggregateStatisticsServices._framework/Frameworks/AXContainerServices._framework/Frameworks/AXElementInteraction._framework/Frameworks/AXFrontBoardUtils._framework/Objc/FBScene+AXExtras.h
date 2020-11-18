@@ -8,8 +8,8 @@
 
 @interface FBScene (AXExtras)
 - (BOOL)accessibilityIsSceneOccluded;
+- (BOOL)accessibilityIsSceneOnCarScreen;
 - (BOOL)accessibilityIsSceneOnMainScreen;
-- (BOOL)accessibilityIsShowingSheet;
 - (BOOL)accessibilitySceneBelongsToTheSystemApp;
 - (id)accessibilitySceneDescription;
 - (struct CGRect)accessibilitySceneFrame;

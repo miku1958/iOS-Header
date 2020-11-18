@@ -10,33 +10,51 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBSpatialEventTrigger-Protocol.h>
 
-@class NSString, _INPBLocationValue;
+@class NSArray, NSString, _INPBLocationValue;
 
 @interface _INPBSpatialEventTrigger : PBCodable <_INPBSpatialEventTrigger, NSSecureCoding, NSCopying>
 {
     struct {
         unsigned int event:1;
+        unsigned int mobileSpace:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _event;
+    int _mobileSpace;
     _INPBLocationValue *_location;
+    NSArray *_suggestedValues;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int event; // @synthesize event=_event;
 @property (nonatomic) BOOL hasEvent;
 @property (readonly, nonatomic) BOOL hasLocation;
+@property (nonatomic) BOOL hasMobileSpace;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBLocationValue *location; // @synthesize location=_location;
+@property (nonatomic) int mobileSpace; // @synthesize mobileSpace=_mobileSpace;
+@property (copy, nonatomic) NSArray *suggestedValues; // @synthesize suggestedValues=_suggestedValues;
+@property (readonly, nonatomic) unsigned long long suggestedValuesCount;
 @property (readonly) Class superclass;
 
++ (Class)suggestedValuesType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsEvent:(id)arg1;
+- (int)StringAsMobileSpace:(id)arg1;
+- (void)addSuggestedValues:(id)arg1;
+- (void)clearSuggestedValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)eventAsString:(int)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)mobileSpaceAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)suggestedValuesAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

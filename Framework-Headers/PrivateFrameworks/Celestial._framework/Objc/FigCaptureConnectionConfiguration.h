@@ -15,6 +15,7 @@
 {
     NSString *_connectionID;
     unsigned int _mediaType;
+    int _underlyingDeviceType;
     FigCaptureSourceConfiguration *_sourceConfiguration;
     FigCaptureSinkConfiguration *_sinkConfiguration;
     BOOL _enabled;
@@ -33,6 +34,7 @@
 @property (readonly) FigCaptureStillImageSinkConfiguration *stillImageSinkConfiguration;
 @property (readonly) Class superclass;
 @property (readonly) FigCaptureVideoThumbnailSinkConfiguration *thumbnailSinkConfiguration;
+@property (nonatomic) int underlyingDeviceType; // @synthesize underlyingDeviceType=_underlyingDeviceType;
 @property (readonly) FigCaptureVideoDataSinkConfiguration *videoDataSinkConfiguration;
 @property (readonly) FigCaptureVideoPreviewSinkConfiguration *videoPreviewSinkConfiguration;
 

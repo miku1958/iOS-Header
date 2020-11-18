@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, SGContactDetail;
 
 @interface SGContactDetailsHolder : NSObject
 {
@@ -15,11 +15,15 @@
     NSArray *_phoneNumbers;
     NSArray *_instantMessageAddresses;
     NSArray *_socialProfiles;
+    SGContactDetail *_birthday;
+    SGContactDetail *_photoPath;
 }
 
+@property (strong, nonatomic) SGContactDetail *birthday; // @synthesize birthday=_birthday;
 @property (strong, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
 @property (strong, nonatomic) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
 @property (strong, nonatomic) NSArray *phoneNumbers; // @synthesize phoneNumbers=_phoneNumbers;
+@property (strong, nonatomic) SGContactDetail *photoPath; // @synthesize photoPath=_photoPath;
 @property (strong, nonatomic) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
 @property (strong, nonatomic) NSArray *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
 

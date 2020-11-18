@@ -31,6 +31,7 @@
 - (oneway void)resetActiveTileGroup;
 - (NSObject<OS_dispatch_queue> *)serverQueue;
 - (oneway void)setActiveTileGroupIdentifier:(NSNumber *)arg1;
+- (void)setActiveTileGroupIdentifier:(NSNumber *)arg1 updateType:(long long)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)setManifestToken:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)updateIfNecessary:(void (^)(NSError *))arg1;
 - (NSProgress *)updateProgress;

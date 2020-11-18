@@ -15,7 +15,7 @@
 }
 
 @property (copy, nonatomic) NSSet *sourceIDs; // @synthesize sourceIDs=_sourceIDs;
-@property (strong, nonatomic) NSSet *types; // @synthesize types=_types;
+@property (copy, nonatomic) NSSet *types; // @synthesize types=_types;
 
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;

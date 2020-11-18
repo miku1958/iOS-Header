@@ -13,9 +13,11 @@
     NSString *_maxResourceSize;
     NSString *_maxImageSize;
     NSURL *_meCardURL;
+    BOOL _isGuardianRestricted;
 }
 
 @property (readonly, nonatomic) BOOL isAddressBook;
+@property (nonatomic) BOOL isGuardianRestricted; // @synthesize isGuardianRestricted=_isGuardianRestricted;
 @property (readonly, nonatomic) BOOL isSearchAddressBook;
 @property (readonly, nonatomic) BOOL isSharedAddressBook;
 @property (strong, nonatomic) NSString *maxImageSize; // @synthesize maxImageSize=_maxImageSize;

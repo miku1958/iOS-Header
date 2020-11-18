@@ -33,12 +33,16 @@
 - (id)initWithOpaqueRepresentation:(id)arg1;
 - (id)opaqueRepresentation;
 - (long long)supportForAVAsset:(id)arg1;
+- (long long)supportForAdjustmentBaseResources;
+- (long long)supportForAssetBundleVersion:(id)arg1;
 - (long long)supportForCodec:(unsigned int)arg1;
 - (long long)supportForContainerTypeIdentifier:(id)arg1;
 - (long long)supportForFormatDescription:(struct opaqueCMFormatDescription *)arg1;
 - (long long)supportForLivePhotoVersion:(id)arg1;
+- (long long)supportValueByApplyingUserDefaultsPeerAssetBundleSupportOverrideToValue:(long long)arg1 selector:(SEL)arg2;
 - (long long)supportValueByApplyingUserDefaultsPeerOverrideToValue:(long long)arg1 selector:(SEL)arg2;
 - (BOOL)supportsTranscodeChoice;
+- (long long)userDefaultsPeerAssetBundleSupportOverrideValue;
 - (long long)userDefaultsPeerOverrideValue;
 
 @end

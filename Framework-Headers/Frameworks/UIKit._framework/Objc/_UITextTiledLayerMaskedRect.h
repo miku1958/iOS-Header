@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 + (id)ghostedRect:(struct CGRect)arg1;
 + (id)rect:(struct CGRect)arg1 alpha:(double)arg2;
+- (id)description;
 - (id)initWithRect:(struct CGRect)arg1 alpha:(double)arg2;
 
 @end

@@ -10,15 +10,18 @@
 
 @protocol VMUStackLogReader <NSObject>
 
+@property (readonly) BOOL coldestFrameIsNotThreadId;
 @property (strong, nonatomic) NSSet *excludedFrames;
 @property (readonly) BOOL inspectingLiveProcess;
 @property (readonly) BOOL is64bit;
+@property (readonly) unsigned long long nodesInUniquingTable;
 @property (readonly) VMUVMRegionTracker *regionTracker;
 @property (readonly) unsigned int task;
 @property (readonly) BOOL usesLiteMode;
 
 - (NSString *)binaryImagePathForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange)binaryImageRangeForPCaddress:(unsigned long long)arg1;
+- (int)enumerateMSLRecordsAndPayloads:(void (^)(unsigned int, unsigned long long, unsigned long long, struct))arg1;
 - (int)enumerateRecords:(void (^)(unsigned int, unsigned long long, unsigned long long, unsigned long long))arg1;
 - (NSString *)functionNameForPCaddress:(unsigned long long)arg1;
 - (struct _VMURange)functionRangeContainingPCaddress:(unsigned long long)arg1;
@@ -31,11 +34,15 @@
 - (NSString *)sourcePathForPCaddress:(unsigned long long)arg1;
 - (NSString *)symbolicatedBacktraceForFrames:(unsigned long long *)arg1 frameCount:(long long)arg2 options:(unsigned long long)arg3;
 - (NSString *)symbolicatedBacktraceForNode:(unsigned int)arg1 nodeDetails:(CDStruct_599faf0f)arg2 isLiteZone:(BOOL)arg3 options:(unsigned long long)arg4;
-- (NSString *)symbolicatedBacktraceForStackID:(unsigned long long)arg1 isLiteZone:(BOOL)arg2 options:(unsigned long long)arg3;
+- (NSString *)symbolicatedBacktraceForStackID:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (VMUVMRegion *)vmuVMRegionForAddress:(unsigned long long)arg1;
 
 @optional
+- (CDStruct_69d7cc99)liteMSLPayloadforMallocAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
+- (CDStruct_69d7cc99)liteMSLPayloadforVMregionAddress:(unsigned long long)arg1;
 - (unsigned long long)liteModeStackIDforAddress:(unsigned long long)arg1 size:(unsigned long long)arg2;
 - (unsigned long long)liteModeStackIDforVMregionAddress:(unsigned long long)arg1;
+- (unsigned long long)stackIDForNode:(unsigned int)arg1;
+- (void)streamFullStackLogsToBlock:(int (^)(void *, unsigned long long))arg1;
 @end
 

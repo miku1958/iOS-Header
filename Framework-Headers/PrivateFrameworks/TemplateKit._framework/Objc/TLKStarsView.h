@@ -6,19 +6,23 @@
 
 #import <TemplateKit/TLKStackView.h>
 
+@class UIFont;
+
+__attribute__((visibility("hidden")))
 @interface TLKStarsView : TLKStackView
 {
+    double _starRating;
+    UIFont *_font;
     double _currentStarRating;
 }
 
-@property double currentStarRating; // @synthesize currentStarRating=_currentStarRating;
+@property (nonatomic) double currentStarRating; // @synthesize currentStarRating=_currentStarRating;
+@property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
+@property (nonatomic) double starRating; // @synthesize starRating=_starRating;
 
-+ (id)emptyStar;
-+ (id)fullStar;
-+ (id)halfStar;
-+ (id)starImageWithName:(id)arg1;
+- (void).cxx_destruct;
 - (id)init;
-- (void)updateStarRating:(double)arg1;
+- (void)updateStarImages;
 
 @end
 

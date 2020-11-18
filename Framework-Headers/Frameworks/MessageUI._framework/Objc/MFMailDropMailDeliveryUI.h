@@ -20,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_contentForAttachmentPassingTest:(CDUnknownBlockType)arg1;
 - (id)_headersByAddingMailDropHeaders:(id)arg1;
 - (id)_mailDropAttachmentHTMLStringForAttachment:(id)arg1;
@@ -28,7 +29,6 @@
 - (id)contentForContentID:(id)arg1;
 - (id)contentForPlaceholder:(id)arg1;
 - (id)contentForURL:(id)arg1;
-- (void)dealloc;
 - (id)deliverSynchronouslyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)scaledImages:(id)arg1;
 - (BOOL)updateMessageWithAttachmentsSynchronously;

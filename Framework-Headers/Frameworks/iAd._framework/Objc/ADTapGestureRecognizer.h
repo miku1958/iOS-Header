@@ -19,7 +19,7 @@
 @property (copy, nonatomic) CDUnknownBlockType touchMovedHandler; // @synthesize touchMovedHandler=_touchMovedHandler;
 @property (copy, nonatomic) CDUnknownBlockType touchUpHandler; // @synthesize touchUpHandler=_touchUpHandler;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)reset;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;

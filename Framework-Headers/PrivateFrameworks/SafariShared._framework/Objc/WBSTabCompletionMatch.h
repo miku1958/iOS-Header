@@ -19,7 +19,7 @@
 
 + (long long)_matchLocationForString:(id)arg1 url:(id)arg2 title:(id)arg3;
 - (void).cxx_destruct;
-- (id)initWithUserTypedString:(id)arg1 url:(id)arg2 title:(id)arg3;
+- (id)initWithUserTypedString:(id)arg1 url:(id)arg2 title:(id)arg3 forQueryID:(long long)arg4;
 - (id)originalURLString;
 - (id)userVisibleURLString;
 

@@ -10,9 +10,16 @@
 
 @interface ADAttribution : NSObject <ADAttribution_XPC>
 {
+    BOOL _hasCompletedResponse;
+    int _numRetries;
 }
 
+@property (nonatomic) BOOL hasCompletedResponse; // @synthesize hasCompletedResponse=_hasCompletedResponse;
+@property (nonatomic) int numRetries; // @synthesize numRetries=_numRetries;
+
 + (id)sharedInstance;
+- (id)init;
+- (void)initiateRequestOnConnection:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)requestAttributionDetailsWithBlock:(CDUnknownBlockType)arg1;
 - (void)setStocksAdEnabled:(BOOL)arg1;
 

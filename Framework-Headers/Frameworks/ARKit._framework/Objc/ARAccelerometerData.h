@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/ARDictionaryCoding-Protocol.h>
+#import <ARKit/ARMetadataWrapperCoding-Protocol.h>
 #import <ARKit/ARMutableSensorData-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface ARAccelerometerData : NSObject <ARDictionaryCoding, ARMutableSensorData, NSSecureCoding>
+@interface ARAccelerometerData : NSObject <ARDictionaryCoding, ARMetadataWrapperCoding, ARMutableSensorData, NSSecureCoding>
 {
     double _timestamp;
     double _temperature;
@@ -30,9 +31,11 @@
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)encodeToDictionary;
+- (id)encodeToMetadataWrapper;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithMetadataWrapper:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

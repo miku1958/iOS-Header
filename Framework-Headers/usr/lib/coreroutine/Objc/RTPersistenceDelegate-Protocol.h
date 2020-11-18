@@ -6,20 +6,29 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class NSDictionary, NSError, NSManagedObjectContext, NSSet, RTPersistenceManager, RTPersistenceStore;
+@class NSCloudKitMirroringDelegateOptions, NSDictionary, NSError, NSManagedObjectContext, NSManagedObjectModel, NSPersistentStoreCoordinator, NSSet, NSString, RTPersistenceManager, RTPersistenceMigrator, RTPersistenceMirroringManager, RTPersistenceStore;
+@protocol RTPersistenceModelProvider;
 
 @protocol RTPersistenceDelegate <NSObject>
 - (NSSet *)appleIDsForStore:(RTPersistenceStore *)arg1;
 - (NSDictionary *)mirroringOptionsForStoreWithType:(unsigned long long)arg1;
 - (NSDictionary *)optionsForStoreWithType:(unsigned long long)arg1 error:(id *)arg2;
-- (void)persistenceManagerDidFinishResetSync:(RTPersistenceManager *)arg1;
-- (void)persistenceManagerWillStartResetSync:(RTPersistenceManager *)arg1;
+- (void)persistenceManagerDidFinishResetSync:(RTPersistenceManager *)arg1 userInfo:(NSDictionary *)arg2;
+- (void)persistenceManagerWillStartResetSync:(RTPersistenceManager *)arg1 userInfo:(NSDictionary *)arg2 context:(NSManagedObjectContext *)arg3;
+- (BOOL)persistenceMirroringManagerDidFinishZonePurge:(RTPersistenceMirroringManager *)arg1 store:(RTPersistenceStore *)arg2 context:(NSManagedObjectContext *)arg3 error:(id *)arg4;
 - (BOOL)prepareStore:(RTPersistenceStore *)arg1 withContext:(NSManagedObjectContext *)arg2 error:(id *)arg3;
+- (NSDictionary *)remoteServerOptionsForStoreWithType:(unsigned long long)arg1;
 - (BOOL)store:(RTPersistenceStore *)arg1 validateAppleIDs:(NSSet *)arg2;
 
 @optional
 - (BOOL)backupPersistenceStore:(RTPersistenceStore *)arg1 error:(id *)arg2;
+- (BOOL)importSourceStore:(RTPersistenceStore *)arg1 sourceCoordinator:(NSPersistentStoreCoordinator *)arg2 destinationStore:(RTPersistenceStore *)arg3 destinationCoordinator:(NSPersistentStoreCoordinator *)arg4 managedObjectModel:(NSManagedObjectModel *)arg5 configuration:(NSString *)arg6 error:(id *)arg7;
+- (void)persistenceManager:(RTPersistenceManager *)arg1 didFinishSetup:(BOOL)arg2;
+- (void)persistenceMigrator:(RTPersistenceMigrator *)arg1 didFinishMigratingStore:(RTPersistenceStore *)arg2 withModelProvider:(id<RTPersistenceModelProvider>)arg3;
+- (void)persistenceMigrator:(RTPersistenceMigrator *)arg1 didStartMigratingStore:(RTPersistenceStore *)arg2 withModelProvider:(id<RTPersistenceModelProvider>)arg3;
 - (void)persistenceStore:(RTPersistenceStore *)arg1 encounteredCriticalError:(NSError *)arg2;
 - (void)persistenceStore:(RTPersistenceStore *)arg1 failedWithError:(NSError *)arg2;
+- (void)persistenceStore:(RTPersistenceStore *)arg1 willBeginMirroringWithOptions:(NSCloudKitMirroringDelegateOptions *)arg2;
+- (BOOL)purgeExpiredRecordsFromPersistenceStore:(RTPersistenceStore *)arg1 withContext:(NSManagedObjectContext *)arg2 error:(id *)arg3;
 @end
 

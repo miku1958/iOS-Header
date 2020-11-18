@@ -16,18 +16,19 @@
     unsigned int _identifier;
     int _style;
     struct {
-        unsigned int identifier:1;
-        unsigned int style:1;
-    } _has;
+        unsigned int has_identifier:1;
+        unsigned int has_style:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasStyle;
-@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) int style; // @synthesize style=_style;
+@property (nonatomic) unsigned int identifier;
+@property (nonatomic) int style;
 @property (readonly, nonatomic) struct GEORPVisibleTileKey *tileKeys;
 @property (readonly, nonatomic) unsigned long long tileKeysCount;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsStyle:(id)arg1;
 - (void)addTileKey:(struct GEORPVisibleTileKey)arg1;
 - (void)clearTileKeys;
@@ -39,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setTileKeys:(struct GEORPVisibleTileKey *)arg1 count:(unsigned long long)arg2;
 - (id)styleAsString:(int)arg1;

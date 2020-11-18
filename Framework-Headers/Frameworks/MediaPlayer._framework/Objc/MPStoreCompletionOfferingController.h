@@ -48,8 +48,6 @@
 - (id)completionOfferingForAlbumItemsQuery:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;
-- (void)profileConnectionDidReceiveRestrictionChangedNotification:(id)arg1 userInfo:(id)arg2;
 - (unsigned long long)startCompletionOfferingLookupForAlbumItemsQuery:(id)arg1 responseBlock:(CDUnknownBlockType)arg2;
 
 @end

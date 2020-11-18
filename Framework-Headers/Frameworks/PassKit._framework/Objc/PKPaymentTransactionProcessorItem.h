@@ -10,7 +10,9 @@
 
 @interface PKPaymentTransactionProcessorItem : NSObject
 {
+    struct os_unfair_lock_s _transactionLock;
     BOOL _foundOptimalLocation;
+    BOOL _useBackgroundLocation;
     PKPaymentTransaction *_paymentTransaction;
     PKPaymentApplication *_paymentApplication;
     NSString *_passUniqueIdentifier;
@@ -20,8 +22,10 @@
 @property (strong, nonatomic) NSString *passUniqueIdentifier; // @synthesize passUniqueIdentifier=_passUniqueIdentifier;
 @property (strong, nonatomic) PKPaymentApplication *paymentApplication; // @synthesize paymentApplication=_paymentApplication;
 @property (strong, nonatomic) PKPaymentTransaction *paymentTransaction; // @synthesize paymentTransaction=_paymentTransaction;
+@property (nonatomic) BOOL useBackgroundLocation; // @synthesize useBackgroundLocation=_useBackgroundLocation;
 
 - (void).cxx_destruct;
+- (id)init;
 
 @end
 

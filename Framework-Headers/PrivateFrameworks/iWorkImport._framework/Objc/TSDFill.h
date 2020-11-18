@@ -11,7 +11,7 @@
 #import <iWorkImport/TSSPropertyCommandSerializing-Protocol.h>
 #import <iWorkImport/TSSPropertyValueArchiving-Protocol.h>
 
-@class NSString;
+@class NSString, TSUColor;
 
 __attribute__((visibility("hidden")))
 @interface TSDFill : NSObject <TSSPropertyCommandSerializing, TSSPropertyValueArchiving, TSDPathPainter, TSSPreset>
@@ -22,9 +22,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) long long fillType;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *presetKind;
+@property (readonly, nonatomic) TSUColor *referenceColor;
+@property (readonly, nonatomic) TSUColor *referenceColorForFontArchiving;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL tsch_hasAllResources; // @dynamic tsch_hasAllResources;
@@ -36,7 +39,6 @@ __attribute__((visibility("hidden")))
 - (id)convertForChartSeriesType:(id)arg1 context:(id)arg2;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (BOOL)drawsInOneStep;
-- (int)fillType;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
 - (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
 - (BOOL)isClear;
@@ -45,7 +47,6 @@ __attribute__((visibility("hidden")))
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(BOOL)arg4;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
-- (id)referenceColor;
 - (BOOL)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;

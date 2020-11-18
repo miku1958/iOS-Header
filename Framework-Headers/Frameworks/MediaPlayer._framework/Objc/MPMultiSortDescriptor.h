@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSDictionary *relatedProperties; // @synthesize relatedProperties=_relatedProperties;
 
 + (id)sortDescriptorWithRelatedProperties:(id)arg1 ascending:(BOOL)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

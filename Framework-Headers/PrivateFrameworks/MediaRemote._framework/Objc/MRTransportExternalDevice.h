@@ -125,6 +125,8 @@
 - (void)_handleOutputDevicesUpdatedMessage:(id)arg1;
 - (void)_handlePlaybackQueueRequest:(void *)arg1 forPlayer:(void *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handlePlaybackQueueResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handlePlaybackSessionMigrateRequest:(struct _MRPlaybackSessionProtobuf *)arg1 request:(id)arg2 forPlayerPath:(struct _MRNowPlayingPlayerPathProtobuf *)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_handlePlaybackSessionRequest:(void *)arg1 forPlayerPath:(void *)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_handlePresentRouteAuthorizationStatusMessage:(id)arg1;
 - (void)_handlePromptForRouteAuthorizationMessage:(id)arg1;
 - (void)_handleRemoteCommand:(unsigned int)arg1 withOptions:(id)arg2 playerPath:(void *)arg3 completion:(CDUnknownBlockType)arg4;
@@ -132,6 +134,7 @@
 - (void)_handleRemovePlayerMessage:(id)arg1;
 - (void)_handleSetArtworkMessage:(id)arg1;
 - (void)_handleSetConnectionStateMessage:(id)arg1;
+- (void)_handleSetDefaultSupportedCommandsMessage:(id)arg1;
 - (void)_handleSetNowPlayingClientMessage:(id)arg1;
 - (void)_handleSetNowPlayingPlayerMessage:(id)arg1;
 - (void)_handleSetStateMessage:(id)arg1;
@@ -154,7 +157,7 @@
 - (id)_onWorkerQueue_loadDeviceInfo;
 - (id)_onWorkerQueue_openSecuritySession;
 - (id)_onWorkerQueue_setupCustomOrigin;
-- (void)_onWorkerQueue_syncClientState;
+- (id)_onWorkerQueue_syncClientState;
 - (void)_transportDeviceInfoDidChangeNotification:(id)arg1;
 - (void)_updateNowPlayingInfo;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;

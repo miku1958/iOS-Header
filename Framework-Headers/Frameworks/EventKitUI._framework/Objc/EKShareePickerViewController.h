@@ -21,7 +21,7 @@
 @property (weak, nonatomic) id<EKShareePickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSArray *sharees;
+@property (readonly, copy, nonatomic) NSArray *sharees;
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
@@ -34,9 +34,10 @@
 - (void)cancel;
 - (void)eventAttendeePicker:(id)arg1 cacheValidationStatus:(unsigned long long)arg2 forAddress:(id)arg3;
 - (unsigned long long)eventAttendeePicker:(id)arg1 getValidationStatusForAddress:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 calendar:(id)arg2;
 - (struct CGSize)preferredContentSize;
 - (void)setSearchAccountID:(id)arg1;
+- (void)setSharees:(id)arg1;
 - (void)viewDidLoad;
 
 @end

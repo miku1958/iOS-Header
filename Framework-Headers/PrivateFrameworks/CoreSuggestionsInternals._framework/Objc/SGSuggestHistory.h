@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSUbiquitousKeyValueStore, SGNoCloudNSUbiquitousKeyValueStore;
+@class NSUbiquitousKeyValueStore, SGNoCloudNSUbiquitousKeyValueStore, _PASLock;
 
 @interface SGSuggestHistory : NSObject
 {
-    struct SGHistorySharedData *_privateShared;
-    struct SGMutexSynchronizedObject<SGHistorySharedData> *_shared;
+    _PASLock *_lock;
     NSUbiquitousKeyValueStore *_backingKVStore;
     SGNoCloudNSUbiquitousKeyValueStore *_noCloudFakeBackingKVStore;
 }
@@ -24,71 +23,85 @@
 + (id)sharedSuggestHistory;
 - (void).cxx_destruct;
 - (BOOL)_anyHash:(id)arg1 inSet:(id)arg2;
-- (id)_hashesForConfirmedField:(id)arg1 value:(id)arg2 storageEvent:(id)arg3;
+- (id)_canaryHash;
+- (id)_hashesForConfirmedField:(id)arg1 value:(id)arg2 storageEvent:(id)arg3 forMatching:(BOOL)arg4;
 - (void)_setHashes:(id)arg1 forKey:(id)arg2;
+- (void)_setInternalStateAccordingToKVS:(id)arg1;
 - (void)_tellObserversHashesDidChange;
 - (void)addObserver:(id)arg1;
 - (void)confirmEvent:(id)arg1;
 - (void)confirmEventFromExternalDevice:(id)arg1;
 - (void)confirmFieldValues:(id)arg1 forStorageEvent:(id)arg2;
-- (id)confirmHashesForOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2;
+- (id)confirmHashesForOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2 forMatching:(BOOL)arg3;
+- (id)confirmHashesForRemindersOpaqueKey:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2 forMatching:(BOOL)arg3;
 - (void)confirmOrRejectContact:(id)arg1;
 - (void)confirmOrRejectCuratedDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetail:(id)arg1 forContact:(id)arg2;
 - (void)confirmOrRejectDetailHashes:(id)arg1;
 - (void)confirmOrRejectRecordForContact:(id)arg1;
 - (void)confirmRealtimeContact:(id)arg1;
+- (void)confirmReminder:(id)arg1;
 - (void)confirmStorageEvent:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)handleSyncedDataChanged:(id)arg1;
 - (BOOL)hasConfirmedField:(id)arg1 value:(id)arg2 forStorageEvent:(id)arg3;
 - (BOOL)hasContact:(id)arg1;
 - (BOOL)hasContactDetail:(id)arg1 forContact:(id)arg2;
 - (BOOL)hasStorageContact:(id)arg1;
-- (id)hashesForContact:(id)arg1;
-- (id)hashesForContactDetail:(id)arg1 fromContact:(id)arg2;
-- (id)hashesForCuratedContactDetail:(id)arg1 fromContact:(id)arg2;
-- (id)hashesForOpaqueKey:(id)arg1;
-- (id)hashesForPseudoEventByKey:(id)arg1;
-- (id)hashesForStorageContact:(id)arg1;
+- (id)hashesForContact:(id)arg1 forMatching:(BOOL)arg2;
+- (id)hashesForContactDetail:(id)arg1 fromContact:(id)arg2 forMatching:(BOOL)arg3;
+- (id)hashesForCuratedContactDetail:(id)arg1 fromContact:(id)arg2 forMatching:(BOOL)arg3;
+- (id)hashesForOpaqueKey:(id)arg1 forMatching:(BOOL)arg2;
+- (id)hashesForPseudoEventByKey:(id)arg1 forMatching:(BOOL)arg2;
+- (id)hashesForStorageContact:(id)arg1 forMatching:(BOOL)arg2;
+- (id)hashesForStrings:(id)arg1 forMatching:(BOOL)arg2;
 - (id)identityBasedHashesForPseudoEvent:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2;
+- (id)identityBasedHashesForPseudoReminder:(id)arg1 withCreationTime:(struct SGUnixTimestamp_)arg2;
 - (id)identitySalt;
 - (id)init;
 - (id)initWithKVS:(id)arg1;
 - (BOOL)isConfirmedEvent:(id)arg1;
-- (BOOL)isConfirmedEvent:(id)arg1 withScopeLock:(const SGMutexSynchronizedPtr_22985514 *)arg2;
+- (BOOL)isConfirmedReminder:(id)arg1;
 - (BOOL)isRejectedEvent:(id)arg1;
-- (BOOL)isRejectedEvent:(id)arg1 withScopeLock:(const SGMutexSynchronizedPtr_22985514 *)arg2;
+- (BOOL)isRejectedReminder:(id)arg1;
 - (BOOL)isUpdatableContact:(id)arg1;
 - (BOOL)isValidNewEvent:(id)arg1;
+- (BOOL)isValidNewReminder:(id)arg1;
 - (BOOL)isValidSuggestion:(id)arg1;
 - (id)keysForContact:(id)arg1;
 - (id)keysForContactDetail:(id)arg1 ofContact:(id)arg2;
 - (id)keysForCuratedContactDetail:(id)arg1 ofContact:(id)arg2;
 - (id)keysForStorageContact:(id)arg1;
 - (id)loadResetInfo;
+- (id)modernHashesForClassicHashes:(id)arg1 forMatching:(BOOL)arg2;
 - (id)mutableSetForKey:(id)arg1;
-- (void)pushAll:(const SGMutexSynchronizedPtr_22985514 *)arg1;
-- (void)pushConfirmedEventFields:(const SGMutexSynchronizedPtr_22985514 *)arg1;
-- (void)pushConfirmedEvents:(const SGMutexSynchronizedPtr_22985514 *)arg1;
-- (void)pushContacts:(const SGMutexSynchronizedPtr_22985514 *)arg1;
-- (void)pushDontUpdate:(const SGMutexSynchronizedPtr_22985514 *)arg1;
+- (void)pushAll:(id)arg1;
+- (void)pushConfirmedEventFields:(id)arg1;
+- (void)pushConfirmedEvents:(id)arg1;
+- (void)pushConfirmedReminders:(id)arg1;
+- (void)pushContacts:(id)arg1;
+- (void)pushDontUpdate:(id)arg1;
 - (void)pushEmptyHashesForTestingKey:(id)arg1;
-- (void)pushRejectedEvents:(const SGMutexSynchronizedPtr_22985514 *)arg1;
-- (void)pushResetInfo:(const SGMutexSynchronizedPtr_22985514 *)arg1;
-- (void)pushStorageDetails:(const SGMutexSynchronizedPtr_22985514 *)arg1;
+- (void)pushRejectedEvents:(id)arg1;
+- (void)pushRejectedReminders:(id)arg1;
+- (void)pushResetInfo:(id)arg1;
+- (void)pushStorageDetails:(id)arg1;
 - (void)rejectEvent:(id)arg1;
 - (void)rejectEventFromExternalDevice:(id)arg1;
-- (id)rejectHashesForOpaqueKey:(id)arg1;
+- (id)rejectHashesForOpaqueKey:(id)arg1 forMatching:(BOOL)arg2;
 - (void)rejectRealtimeContact:(id)arg1;
+- (void)rejectReminder:(id)arg1;
 - (void)rejectStorageEvent:(id)arg1;
+- (void)removeConfirmationHistoryForEntityWithOpaqueKey:(id)arg1 creationTimestamp:(struct SGUnixTimestamp_)arg2;
+- (void)removeConfirmationHistoryForEvent:(id)arg1;
 - (void)reset;
 - (void)resetNoFlush;
 - (id)setForKey:(id)arg1;
 - (void)setInternalStateAccordingToKVS;
 - (void)writeAndPushConfirmedEventHashes:(id)arg1;
+- (void)writeAndPushConfirmedReminderHashes:(id)arg1;
 - (void)writeAndPushRejectedEventHashes:(id)arg1;
+- (void)writeAndPushRejectedReminderHashes:(id)arg1;
 
 @end
 

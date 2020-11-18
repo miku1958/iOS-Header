@@ -8,20 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEOTransitIncidentItem : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_transitIncidentTitle;
     NSString *_transitLineMuid;
+    struct {
+        unsigned int read_transitIncidentTitle:1;
+        unsigned int read_transitLineMuid:1;
+        unsigned int wrote_transitIncidentTitle:1;
+        unsigned int wrote_transitLineMuid:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasTransitIncidentTitle;
 @property (readonly, nonatomic) BOOL hasTransitLineMuid;
-@property (strong, nonatomic) NSString *transitIncidentTitle; // @synthesize transitIncidentTitle=_transitIncidentTitle;
-@property (strong, nonatomic) NSString *transitLineMuid; // @synthesize transitLineMuid=_transitLineMuid;
+@property (strong, nonatomic) NSString *transitIncidentTitle;
+@property (strong, nonatomic) NSString *transitLineMuid;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readTransitIncidentTitle;
+- (void)_readTransitLineMuid;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -17,6 +17,7 @@
 - (id)_accessibilityControlCenterButtonHint;
 - (id)_accessibilityControlCenterButtonIdentifier;
 - (id)_accessibilityControlCenterButtonLabel;
+- (BOOL)_accessibilityControlCenterMenuItemAtIndexIsValid:(long long)arg1;
 - (BOOL)_accessibilityControlCenterShouldExpandContentModule;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityModuleViewElements;

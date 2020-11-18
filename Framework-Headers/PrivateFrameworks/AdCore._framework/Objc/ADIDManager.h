@@ -8,11 +8,12 @@
 
 #import <AdCore/ADIDManager_XPC-Protocol.h>
 
-@class DSIDRecord, NSArray, NSString;
+@class DSIDRecord, NSArray, NSDictionary, NSString;
 
 @interface ADIDManager : ADSingleton <ADIDManager_XPC>
 {
     DSIDRecord *_activeDSIDRecord;
+    NSDictionary *_usageVectors;
     NSArray *_monthlyResetArray;
 }
 
@@ -20,6 +21,7 @@
 @property (readonly, nonatomic) long long IDFAMonthResetCount;
 @property (strong) DSIDRecord *activeDSIDRecord; // @synthesize activeDSIDRecord=_activeDSIDRecord;
 @property (strong) NSArray *monthlyResetArray; // @synthesize monthlyResetArray=_monthlyResetArray;
+@property (strong, nonatomic) NSDictionary *usageVectors; // @synthesize usageVectors=_usageVectors;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -32,6 +34,7 @@
 - (id)loadFakeRecord:(id)arg1;
 - (BOOL)loadIDs;
 - (void)logIDs:(id)arg1;
+- (id)readUsageVectors:(id)arg1;
 - (id)reloadRecords:(id)arg1;
 - (void)reloadRecords:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)retrieveDeviceIDs;

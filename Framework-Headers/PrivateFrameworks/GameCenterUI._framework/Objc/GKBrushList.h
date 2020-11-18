@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSArray *brushList; // @synthesize brushList=_brushList;
 
 + (id)brushListWithBrushes:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)didDrawRect:(struct CGRect)arg1 withBrushAtIndex:(unsigned long long)arg2 input:(id)arg3;
 - (void)drawInRect:(struct CGRect)arg1 withContext:(struct CGContext *)arg2 input:(id)arg3;
 - (struct CGRect)drawRectForBrushAtIndex:(unsigned long long)arg1 fromRect:(struct CGRect)arg2 input:(id)arg3;

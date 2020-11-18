@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class IKViewElement, _TVImageView;
+@class IKViewElement, NSString, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUIBadgeViewWrapper : NSObject
 {
     _TVImageView *_badgeView;
     IKViewElement *_badgeElement;
+    NSString *_badgeType;
     struct CGSize _badgeSize;
     struct CGRect _badgeFrame;
 }
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) IKViewElement *badgeElement; // @synthesize badgeElement=_badgeElement;
 @property (nonatomic) struct CGRect badgeFrame; // @synthesize badgeFrame=_badgeFrame;
 @property (nonatomic) struct CGSize badgeSize; // @synthesize badgeSize=_badgeSize;
+@property (strong, nonatomic) NSString *badgeType; // @synthesize badgeType=_badgeType;
 @property (strong, nonatomic) _TVImageView *badgeView; // @synthesize badgeView=_badgeView;
 
 - (void).cxx_destruct;

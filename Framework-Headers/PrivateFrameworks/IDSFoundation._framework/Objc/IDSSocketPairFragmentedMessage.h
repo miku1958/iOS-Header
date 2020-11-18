@@ -6,9 +6,11 @@
 
 #import <IDSFoundation/IDSSocketPairMessage.h>
 
-@class NSData;
+#import <IDSFoundation/IDSSocketPairMessage-Protocol.h>
 
-@interface IDSSocketPairFragmentedMessage : IDSSocketPairMessage
+@class NSData, NSDate, NSString;
+
+@interface IDSSocketPairFragmentedMessage : IDSSocketPairMessage <IDSSocketPairMessage>
 {
     unsigned long long _offset;
     unsigned int _fragmentedMessageID;
@@ -18,9 +20,16 @@
 }
 
 @property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) BOOL expectsPeerResponse;
+@property (strong, nonatomic) NSDate *expiryDate;
 @property (readonly, nonatomic) unsigned int fragmentIndex; // @synthesize fragmentIndex=_fragmentIndex;
 @property (readonly, nonatomic) unsigned int fragmentedMessageID; // @synthesize fragmentedMessageID=_fragmentedMessageID;
+@property (readonly, nonatomic) NSString *messageUUID;
+@property (readonly, nonatomic) NSString *peerResponseIdentifier;
+@property (nonatomic) unsigned int sequenceNumber;
+@property (nonatomic) unsigned short streamID;
 @property (readonly, nonatomic) unsigned int totalFragmentCount; // @synthesize totalFragmentCount=_totalFragmentCount;
+@property (readonly, nonatomic) BOOL wantsAppAck;
 
 + (id)createMessageFragmentsFromOriginalMessage:(id)arg1 withFragmentedMessageID:(unsigned int)arg2 fragmentSize:(unsigned int)arg3;
 + (id)createOriginalMessageFromFragmentedMessages:(id)arg1;

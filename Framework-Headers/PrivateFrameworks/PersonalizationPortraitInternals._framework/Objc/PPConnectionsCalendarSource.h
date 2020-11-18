@@ -21,9 +21,9 @@
 @property (readonly) Class superclass;
 
 + (id)identifier;
-+ (id)locationLabelFromEKEvent:(id)arg1;
-+ (id)locationNameFromEKEvent:(id)arg1;
-+ (id)locationValueFromEKEvent:(id)arg1;
++ (id)locationLabelFromEvent:(id)arg1;
++ (id)locationNameFromEvent:(id)arg1;
++ (id)locationValueFromEvent:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)ekEventWithExternalID:(id)arg1;

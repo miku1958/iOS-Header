@@ -8,6 +8,7 @@
 
 @class UIFont, UITraitCollection;
 
+__attribute__((visibility("hidden")))
 @interface AVStyleSheet : NSObject
 {
     BOOL _shouldUseCompactFullScreenSize;
@@ -76,7 +77,7 @@
 - (void).cxx_destruct;
 - (void)_loadFontsIfNeeded;
 - (id)initWithTraitCollection:(id)arg1 shouldUseCompactFullScreenSize:(BOOL)arg2;
-- (struct UIEdgeInsets)playbackControlsViewLayoutMarginsForView:(id)arg1 isFullScreen:(BOOL)arg2;
+- (struct UIEdgeInsets)playbackControlsViewLayoutMarginsForView:(id)arg1 keyboardHeight:(double)arg2 isFullScreen:(BOOL)arg3;
 
 @end
 

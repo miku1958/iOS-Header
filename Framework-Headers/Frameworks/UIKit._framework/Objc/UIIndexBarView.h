@@ -6,11 +6,12 @@
 
 #import <UIKitCore/UIControl.h>
 
-@class NSArray, UIColor, UISelectionFeedbackGenerator;
+#import <UIKitCore/UIAccessibilityHUDGestureDelegate-Protocol.h>
+
+@class NSArray, NSString, UIAccessibilityHUDGestureManager, UIColor, UISelectionFeedbackGenerator;
 @protocol UIIndexBarViewDelegate, UIIndexBarVisualStyle;
 
-__attribute__((visibility("hidden")))
-@interface UIIndexBarView : UIControl
+@interface UIIndexBarView : UIControl <UIAccessibilityHUDGestureDelegate>
 {
     UIColor *_indexColor;
     NSArray *_entries;
@@ -22,28 +23,40 @@ __attribute__((visibility("hidden")))
     double _cachedDisplayHighlightedIndex;
     UIColor *_nonTrackingBackgroundColor;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
+    UIAccessibilityHUDGestureManager *_axHUDGestureManager;
     id<UIIndexBarVisualStyle> _visualStyle;
     NSArray *_displayEntries;
 }
 
+@property (strong, nonatomic) UIAccessibilityHUDGestureManager *axHUDGestureManager; // @synthesize axHUDGestureManager=_axHUDGestureManager;
 @property (nonatomic) double cachedDisplayHighlightedIndex; // @synthesize cachedDisplayHighlightedIndex=_cachedDisplayHighlightedIndex;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) double deflection; // @synthesize deflection=_deflection;
 @property (weak, nonatomic) id<UIIndexBarViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *displayEntries; // @synthesize displayEntries=_displayEntries;
 @property (readonly, nonatomic) double displayHighlightedIndex;
 @property (copy, nonatomic) NSArray *entries; // @synthesize entries=_entries;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long highlightStyle; // @synthesize highlightStyle=_highlightStyle;
 @property (nonatomic) double highlightedIndex; // @synthesize highlightedIndex=_highlightedIndex;
 @property (copy, nonatomic) UIColor *indexColor; // @synthesize indexColor=_indexColor;
 @property (copy, nonatomic) UIColor *nonTrackingBackgroundColor; // @synthesize nonTrackingBackgroundColor=_nonTrackingBackgroundColor;
 @property (strong, nonatomic) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) UIColor *trackingBackgroundColor; // @synthesize trackingBackgroundColor=_trackingBackgroundColor;
 @property (strong, nonatomic) id<UIIndexBarVisualStyle> visualStyle; // @synthesize visualStyle=_visualStyle;
 
 - (void).cxx_destruct;
+- (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;
+- (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
+- (BOOL)_accessibilityHUDGestureManager:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)_accessibilityHUDGestureManagerCancelsTouchesInView:(id)arg1;
 - (BOOL)_canDrawContent;
+- (BOOL)_defaultCanBecomeFocused;
 - (BOOL)_didSelectEntry:(id)arg1 atIndex:(long long)arg2;
 - (BOOL)_selectEntry:(id)arg1 atIndex:(long long)arg2;
+- (void)_setupAXHUDGestureIfNecessary;
 - (void)_updateBackgroundColor;
 - (void)_updateDisplayEntries;
 - (void)_userInteractionStarted;
@@ -53,6 +66,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canBecomeFocused;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
+- (void)didMoveToWindow;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

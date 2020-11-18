@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2 captureView:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2;
 
 @end
 

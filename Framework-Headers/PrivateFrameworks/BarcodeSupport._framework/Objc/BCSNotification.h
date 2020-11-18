@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class BBBulletinRequest, BCSAction, BCSNotificationIcon, NSMutableDictionary, NSString;
+@class BCSAction, BCSNotificationIcon, NSMutableDictionary, NSString, UNNotificationRequest;
 
 @interface BCSNotification : NSObject
 {
@@ -17,10 +17,10 @@
     int _requestingProcessID;
 }
 
-@property (readonly, nonatomic) BBBulletinRequest *bulletinRequest;
 @property (readonly, nonatomic) BOOL canHandleActionLocally;
 @property (readonly, nonatomic) long long codeType;
 @property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) UNNotificationRequest *request;
 @property (nonatomic) int requestingProcessID; // @synthesize requestingProcessID=_requestingProcessID;
 
 + (id)_tlAlertConfiguration;
@@ -30,18 +30,19 @@
 - (id)_actionDescriptionString;
 - (id)_actionTypeStringForNFC;
 - (id)_actionTypeStringForQRCode;
-- (id)_bbActionFromActionPickerItem:(id)arg1;
+- (id)_attachmentIconURL;
+- (id)_content;
+- (id)_contentExtensionData;
 - (BOOL)_contentIsPreviewable;
 - (id)_defaultURL;
 - (id)_fbOptionsHandlingUnlockIfNecessary;
 - (void)_handleCalendarEventWithICSString:(id)arg1;
 - (void)_handleContactInfo:(id)arg1;
 - (id)_initWithAction:(id)arg1;
+- (id)_notificationActionFromActionPickerItem:(id)arg1;
 - (id)_orderAppLinkActionsByRecency:(id)arg1;
 - (void)_performActionAfterUnlock:(CDUnknownBlockType)arg1;
-- (void)_performActionAfterUnlock:(BOOL)arg1 actionBlock:(CDUnknownBlockType)arg2;
 - (id)_pickerLabelForURLActionPickerItem:(id)arg1;
-- (id)_previewableData;
 - (BOOL)_shouldHandleActionPickerItemLocally:(id)arg1;
 - (BOOL)_shouldManuallyRequireAuthenticationForURL:(id)arg1;
 - (BOOL)_shouldRequireUserToPickTargetApp;
@@ -49,7 +50,6 @@
 - (void)_showAppPickerAlertWithFBOptions:(id)arg1;
 - (id)_supplementActions;
 - (id)_title;
-- (id)attachmentDataForConstraints:(id)arg1;
 - (void)didHandleBulletinActionWithIdentifier:(id)arg1;
 - (void)handleActionWithIdentifier:(id)arg1 notificationResponseOriginID:(id)arg2;
 - (BOOL)shouldHandleBulletinActionWithIdentifier:(id)arg1;

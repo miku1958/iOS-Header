@@ -15,10 +15,12 @@
 
 + (id)URLForAddress:(id)arg1;
 + (id)URLForAddress:(id)arg1 label:(id)arg2;
++ (id)URLForCollectionStorage:(id)arg1;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D)arg1;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D)arg1 address:(id)arg2 label:(id)arg3;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D)arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D)arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4 useWebPlaceCard:(BOOL)arg5;
++ (id)URLForCoordinate:(struct CLLocationCoordinate2D)arg1 address:(id)arg2 label:(id)arg3 extraStorage:(id)arg4 useWebPlaceCard:(BOOL)arg5 muninViewState:(id)arg6;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D)arg1 address:(id)arg2 label:(id)arg3 useWebPlaceCard:(BOOL)arg4;
 + (id)URLForCoordinate:(struct CLLocationCoordinate2D)arg1 label:(id)arg2;
 + (id)URLForDirectionsFrom:(id)arg1 to:(id)arg2;
@@ -31,6 +33,7 @@
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D)arg4 address:(id)arg5;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D)arg4 address:(id)arg5 extraStorage:(id)arg6;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D)arg4 address:(id)arg5 extraStorage:(id)arg6 useWebPlaceCard:(BOOL)arg7;
++ (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D)arg4 address:(id)arg5 extraStorage:(id)arg6 useWebPlaceCard:(BOOL)arg7 muninViewState:(id)arg8;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D)arg4 address:(id)arg5 useWebPlaceCard:(BOOL)arg6;
 + (id)URLForInternalBusiness:(id)arg1 id:(unsigned long long)arg2 provider:(int)arg3 coordinate:(struct CLLocationCoordinate2D)arg4 address:(id)arg5 useWebPlaceCard:(BOOL)arg6 mapItemData:(id)arg7;
 + (id)URLForSearch:(id)arg1;

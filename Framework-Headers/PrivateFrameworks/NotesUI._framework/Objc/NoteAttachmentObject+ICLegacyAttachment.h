@@ -17,6 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)cidURL;
 - (id)fileURL;
 - (id)identifier;
 - (id)typeUTI;

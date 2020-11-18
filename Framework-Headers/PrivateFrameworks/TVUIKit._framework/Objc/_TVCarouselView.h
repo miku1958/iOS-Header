@@ -39,8 +39,12 @@
     double _originalSelectionDuration;
     double _originalUnselectionDuration;
     long long _numFocusChangesInInterval;
-    BOOL _layoutUpdateInProgress;
     NSDictionary *_previousCollectionToDatasourceIndexMap;
+    struct {
+        BOOL layoutUpdateInProgress;
+        BOOL firstLayoutPass;
+    } _flags;
+    BOOL _shouldScaleOnIdleFocus;
     id<TVCarouselViewDataSource> _dataSource;
     id<TVCarouselViewDelegate> _delegate;
     double _interitemSpacing;
@@ -79,6 +83,7 @@
 @property (nonatomic) double offsetChangePerSecond; // @synthesize offsetChangePerSecond=_offsetChangePerSecond;
 @property (nonatomic) double previousDisplayLinkTimestamp; // @synthesize previousDisplayLinkTimestamp=_previousDisplayLinkTimestamp;
 @property (nonatomic) unsigned long long scrollMode; // @synthesize scrollMode=_scrollMode;
+@property (nonatomic) BOOL shouldScaleOnIdleFocus; // @synthesize shouldScaleOnIdleFocus=_shouldScaleOnIdleFocus;
 @property (nonatomic) double showcaseFactor; // @synthesize showcaseFactor=_showcaseFactor;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGPoint targetContentOffset; // @synthesize targetContentOffset=_targetContentOffset;
@@ -87,8 +92,8 @@
 
 - (void).cxx_destruct;
 - (void)_animatePagedCenteringAnimated:(BOOL)arg1 animations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
-- (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (BOOL)_canScrollCarouselView;
 - (id)_cellForItemAtIndex:(unsigned long long)arg1;
 - (long long)_centerCollectionViewCellIndex;
@@ -130,7 +135,6 @@
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)dealloc;
 - (id)dequeueReusableCellWithReuseIdentifier:(id)arg1 forIndex:(unsigned long long)arg2;
-- (void)didMoveToSuperview;
 - (void)didMoveToWindow;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)displayLinkDidFire:(id)arg1;
@@ -147,6 +151,7 @@
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setInteritemSpacing:(double)arg1 animated:(BOOL)arg2;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tv_setShowcaseFactor:(double)arg1;
 

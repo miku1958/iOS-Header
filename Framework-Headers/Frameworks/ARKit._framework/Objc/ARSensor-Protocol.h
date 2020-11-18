@@ -18,5 +18,6 @@
 - (void)stop;
 
 @optional
+- (void)forceUpdatePowerUsage:(unsigned long long)arg1;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FKFriendsManager, HKHealthStore, NSArray, SOSLegacyContactsManager;
+@class HKHealthStore, NSArray, SOSLegacyContactsManager;
 @protocol OS_dispatch_semaphore;
 
 @interface SOSContactsManager : NSObject
@@ -16,16 +16,10 @@
     NSArray *_medicalIDEmergencyContacts;
     HKHealthStore *_healthStore;
     NSObject<OS_dispatch_semaphore> *_medicalIDContactsInitialStateSemaphore;
-    NSObject<OS_dispatch_semaphore> *_friendsManagerContactsInitialStateSemaphore;
-    FKFriendsManager *_friendsManager;
     struct _opaque_pthread_mutex_t _medicalIDEmergencyContactsMutex;
-    struct _opaque_pthread_mutex_t _friendsManagerContactsMutex;
 }
 
 @property (readonly, nonatomic) BOOL SOSContactsExist;
-@property (strong, nonatomic) FKFriendsManager *friendsManager; // @synthesize friendsManager=_friendsManager;
-@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *friendsManagerContactsInitialStateSemaphore; // @synthesize friendsManagerContactsInitialStateSemaphore=_friendsManagerContactsInitialStateSemaphore;
-@property (nonatomic) struct _opaque_pthread_mutex_t friendsManagerContactsMutex; // @synthesize friendsManagerContactsMutex=_friendsManagerContactsMutex;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly, nonatomic) SOSLegacyContactsManager *legacyContactsManager;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *medicalIDContactsInitialStateSemaphore; // @synthesize medicalIDContactsInitialStateSemaphore=_medicalIDContactsInitialStateSemaphore;
@@ -38,26 +32,17 @@
 - (void).cxx_destruct;
 - (id)SOSContactDestinations;
 - (void)SOSContactsWithTimeout:(double)arg1 andCompletion:(CDUnknownBlockType)arg2;
-- (id)SOSDestinationsForFriend:(id)arg1;
-- (id)SOSFormattedDestinationForFriend:(id)arg1 withDestinationNumber:(id)arg2;
-- (id)SOSFriends;
-- (id)SOSFriendsDestinations;
-- (id)_contactFromFriend:(id)arg1;
 - (BOOL)_isEmergencyNumber:(id)arg1;
 - (void)_medicalContactsDidChange;
 - (void)_medicalIDEmergencyContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_userDefaults;
-- (void)_waitForFriendsManagerInitialState;
 - (void)_waitForMedicalIDInitialState;
-- (BOOL)addContactAsSOSFriend:(id)arg1 destinationNumber:(id)arg2 error:(id *)arg3;
-- (BOOL)addSOSFriend:(id)arg1 destinationNumber:(id)arg2 error:(id *)arg3;
-- (void)contactStoreDidChange;
 - (void)dealloc;
 - (void)fetchMedicalIDEmergencyContacts;
 - (BOOL)hasValidContactsToMessage;
 - (id)init;
+- (id)initWithHealthStore:(id)arg1;
 - (id)phoneNumbersToMessage;
-- (void)removeSOSFriend:(id)arg1 destinationNumber:(id)arg2;
 
 @end
 

@@ -18,6 +18,7 @@
     BOOL _hideIcon;
     BOOL _iconForegroundColorFollowsTintColor;
     BOOL _iconTintColorFollowsDisabledState;
+    BOOL _separatorInsetLinesUpWithText;
     HFItem *_item;
     UIColor *_iconForegroundColor;
     double _iconAlpha;
@@ -51,6 +52,7 @@
 @property (strong, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
+@property (nonatomic) BOOL separatorInsetLinesUpWithText; // @synthesize separatorInsetLinesUpWithText=_separatorInsetLinesUpWithText;
 @property (strong, nonatomic) NSArray *staticConstraints; // @synthesize staticConstraints=_staticConstraints;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *textLabel; // @dynamic textLabel;

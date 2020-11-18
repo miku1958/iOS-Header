@@ -19,6 +19,7 @@
 @property (weak, nonatomic) UIViewController *passcodeViewController; // @synthesize passcodeViewController=_passcodeViewController;
 
 - (void).cxx_destruct;
+- (BOOL)alwaysBounceVertical;
 - (void)animateTransitionToPasscodeInput:(id)arg1 animation:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -12,7 +12,7 @@
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 #import <CarPlay/NSSecureCoding-Protocol.h>
 
-@class CPBarButton, NSArray, NSOperationQueue, NSString, NSUUID;
+@class CPBarButton, NAFuture, NSArray, NSString, NSUUID;
 @protocol CPBaseTemplateProviding, CPTemplateDelegate;
 
 @interface CPTemplate : NSObject <CPBarButtonDelegate, CPBarButtonProviding, CPControlDelegate, CPTemplateDelegate, NSSecureCoding>
@@ -20,16 +20,15 @@
     CPBarButton *_backButton;
     id _userInfo;
     id<CPBaseTemplateProviding> _templateProvider;
+    NAFuture *_templateProviderFuture;
     NSUUID *_identifier;
     id<CPTemplateDelegate> _templateDelegate;
     NSArray *_internalLeadingBarButtons;
     NSArray *_internalTrailingBarButtons;
-    NSOperationQueue *_deferredOperationQueue;
 }
 
 @property (strong, nonatomic) CPBarButton *backButton; // @synthesize backButton=_backButton;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSOperationQueue *deferredOperationQueue; // @synthesize deferredOperationQueue=_deferredOperationQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
@@ -39,6 +38,7 @@
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
 @property (strong, nonatomic) id<CPBaseTemplateProviding> templateProvider; // @synthesize templateProvider=_templateProvider;
+@property (strong, nonatomic) NAFuture *templateProviderFuture; // @synthesize templateProviderFuture=_templateProviderFuture;
 @property (strong, nonatomic) NSArray *trailingNavigationBarButtons;
 @property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 
@@ -46,12 +46,13 @@
 - (void).cxx_destruct;
 - (BOOL)barButton:(id)arg1 setImage:(id)arg2;
 - (BOOL)barButton:(id)arg1 setTitle:(id)arg2;
+- (void)connectTemplateProvider:(id)arg1;
 - (BOOL)control:(id)arg1 setEnabled:(BOOL)arg2;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleActionForControlIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)invalidateTemplateProvider;
 - (void)templateDidAppear:(id)arg1 animated:(BOOL)arg2;
 - (void)templateDidDisappear:(id)arg1 animated:(BOOL)arg2;
 - (void)templateWillAppear:(id)arg1 animated:(BOOL)arg2;

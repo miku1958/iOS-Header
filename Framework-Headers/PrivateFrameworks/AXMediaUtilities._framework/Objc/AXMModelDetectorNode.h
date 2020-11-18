@@ -6,13 +6,15 @@
 
 #import <AXMediaUtilities/AXMEvaluationNode.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface AXMModelDetectorNode : AXMEvaluationNode
 {
     NSURL *_modelURL;
+    NSString *_modelIdentifier;
 }
 
+@property (readonly, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property (strong, nonatomic) NSURL *modelURL; // @synthesize modelURL=_modelURL;
 
 + (BOOL)isSupported;

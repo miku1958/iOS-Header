@@ -6,9 +6,11 @@
 
 #import <RelevanceEngine/REPredictor.h>
 
+#import <RelevanceEngine/REActivitySummaryPredictorProperties-Protocol.h>
+
 @class NSSet;
 
-@interface REActivitySummaryPredictor : REPredictor
+@interface REActivitySummaryPredictor : REPredictor <REActivitySummaryPredictorProperties>
 {
     NSSet *_queries;
     float _activeEnergyPercentComplete;
@@ -23,14 +25,13 @@
 + (id)supportedFeatures;
 + (double)updateInterval;
 - (void).cxx_destruct;
+- (id)_init;
 - (void)_runQuery:(id)arg1;
 - (void)_startActivitySummaryQueryWithRetries:(long long)arg1;
 - (void)_stopQueries;
 - (void)_stopQuery:(id)arg1;
-- (void)_updateWithActivitySummary:(id)arg1;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+- (void)_updateWithActivitySummary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
-- (id)init;
 - (void)pause;
 - (void)resume;
 - (void)update;

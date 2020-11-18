@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSString;
+@class NSArray, NSHashTable, NSString;
 @protocol OS_os_log;
 
 @interface HKSynchronousObserverSet : NSObject
@@ -17,6 +17,7 @@
     struct os_unfair_lock_s _lock;
 }
 
+@property (readonly, copy) NSArray *allObservers;
 @property (readonly) unsigned long long count;
 
 - (void).cxx_destruct;

@@ -25,6 +25,7 @@
 + (id)dateWithTimeIntervalSinceReferenceDate:(double)arg1;
 + (id)distantFuture;
 + (id)distantPast;
++ (id)now;
 + (BOOL)supportsSecureCoding;
 + (double)timeIntervalSinceReferenceDate;
 - (unsigned long long)_cfTypeID;

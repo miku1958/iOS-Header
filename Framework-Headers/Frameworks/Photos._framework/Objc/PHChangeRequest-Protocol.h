@@ -6,26 +6,24 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@class NSError, NSManagedObjectID, NSObject, NSSet, NSString, PHPhotoLibrary;
-@protocol OS_xpc_object;
+@class NSError, NSManagedObjectID, NSObject, NSString, PHPerformChangesRequest, PHPhotoLibrary, PLPhotoLibrary;
+@protocol OS_xpc_object, PLClientAuthorization;
 
 @protocol PHChangeRequest <NSObject>
 
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) int clientProcessID;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
-@property (readonly, nonatomic) NSString *uuid;
 
 - (void)encodeToXPCDict:(NSObject<OS_xpc_object> *)arg1;
 - (id)initWithUUID:(NSString *)arg1 objectID:(NSManagedObjectID *)arg2;
-- (id)initWithXPCDict:(NSObject<OS_xpc_object> *)arg1 clientEntitlements:(NSSet *)arg2 clientName:(NSString *)arg3 clientBundleID:(NSString *)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(NSObject<OS_xpc_object> *)arg1 request:(PHPerformChangesRequest *)arg2 clientAuthorization:(id<PLClientAuthorization>)arg3;
 - (BOOL)prepareForPhotoLibraryCheck:(PHPhotoLibrary *)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 
 @optional
-- (void)changeFailedOnClientWithError:(NSError *)arg1;
-- (void)changeFailedOnDaemonWithError:(NSError *)arg1;
+- (void)changeFailedOnClientWithLibrary:(PLPhotoLibrary *)arg1 error:(NSError *)arg2;
+- (void)changeFailedOnDaemonWithLibrary:(PLPhotoLibrary *)arg1 error:(NSError *)arg2;
 @end
 

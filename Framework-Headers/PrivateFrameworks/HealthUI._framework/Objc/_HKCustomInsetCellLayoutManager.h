@@ -15,6 +15,7 @@
 @property (nonatomic) double textLabelLeftInset; // @synthesize textLabelLeftInset=_textLabelLeftInset;
 @property (nonatomic) double topInset; // @synthesize topInset=_topInset;
 
++ (BOOL)requiresLegacyLayout;
 - (struct CGRect)accessoryEndingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3;
 - (struct CGRect)accessoryStartingRectForCell:(id)arg1 forNewEditingState:(BOOL)arg2 showingDeleteConfirmation:(BOOL)arg3;
 - (struct CGRect)contentEndingRectForCell:(id)arg1 forDisplayOfDeleteConfirmation:(BOOL)arg2;

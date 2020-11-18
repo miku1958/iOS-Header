@@ -6,18 +6,19 @@
 
 #import <UserNotificationsKit/NSObject-Protocol.h>
 
-@class NCCoalescedNotification, NCNotificationRequest, NCNotificationSectionSettings, NSString;
+@class BSServiceConnectionEndpoint, NCNotificationRequest, NCNotificationSectionSettings, NSString;
 @protocol NCNotificationDestinationDelegate;
 
 @protocol NCNotificationDestination <NSObject>
 
 @property (weak, nonatomic) id<NCNotificationDestinationDelegate> delegate;
+@property (readonly, nonatomic) BSServiceConnectionEndpoint *endpoint;
 @property (readonly, nonatomic) NSString *identifier;
 
 - (BOOL)canReceiveNotificationRequest:(NCNotificationRequest *)arg1;
-- (void)modifyNotificationRequest:(NCNotificationRequest *)arg1 forCoalescedNotification:(NCCoalescedNotification *)arg2;
-- (void)postNotificationRequest:(NCNotificationRequest *)arg1 forCoalescedNotification:(NCCoalescedNotification *)arg2;
-- (void)withdrawNotificationRequest:(NCNotificationRequest *)arg1 forCoalescedNotification:(NCCoalescedNotification *)arg2;
+- (void)modifyNotificationRequest:(NCNotificationRequest *)arg1;
+- (void)postNotificationRequest:(NCNotificationRequest *)arg1;
+- (void)withdrawNotificationRequest:(NCNotificationRequest *)arg1;
 
 @optional
 - (BOOL)interceptsQueueRequest:(NCNotificationRequest *)arg1;

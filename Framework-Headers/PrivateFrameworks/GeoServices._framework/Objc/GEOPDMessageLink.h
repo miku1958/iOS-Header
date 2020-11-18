@@ -8,24 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOTimezone, NSMutableArray, NSString, PBUnknownFields;
+@class GEOTimezone, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDMessageLink : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_hoursOfOperations;
     NSString *_messageId;
     NSString *_messageUrl;
     NSString *_navBackgroundColor;
     NSString *_navTintColor;
-    int _responseTime;
     GEOTimezone *_timezone;
+    int _responseTime;
     BOOL _isVerified;
     struct {
-        unsigned int responseTime:1;
-        unsigned int isVerified:1;
-    } _has;
+        unsigned int has_responseTime:1;
+        unsigned int has_isVerified:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_hoursOfOperations:1;
+        unsigned int read_messageId:1;
+        unsigned int read_messageUrl:1;
+        unsigned int read_navBackgroundColor:1;
+        unsigned int read_navTintColor:1;
+        unsigned int read_timezone:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_hoursOfOperations:1;
+        unsigned int wrote_messageId:1;
+        unsigned int wrote_messageUrl:1;
+        unsigned int wrote_navBackgroundColor:1;
+        unsigned int wrote_navTintColor:1;
+        unsigned int wrote_timezone:1;
+        unsigned int wrote_responseTime:1;
+        unsigned int wrote_isVerified:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsVerified;
@@ -35,22 +53,31 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasNavTintColor;
 @property (nonatomic) BOOL hasResponseTime;
 @property (readonly, nonatomic) BOOL hasTimezone;
-@property (strong, nonatomic) NSMutableArray *hoursOfOperations; // @synthesize hoursOfOperations=_hoursOfOperations;
-@property (nonatomic) BOOL isVerified; // @synthesize isVerified=_isVerified;
-@property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
-@property (strong, nonatomic) NSString *messageUrl; // @synthesize messageUrl=_messageUrl;
-@property (strong, nonatomic) NSString *navBackgroundColor; // @synthesize navBackgroundColor=_navBackgroundColor;
-@property (strong, nonatomic) NSString *navTintColor; // @synthesize navTintColor=_navTintColor;
-@property (nonatomic) int responseTime; // @synthesize responseTime=_responseTime;
-@property (strong, nonatomic) GEOTimezone *timezone; // @synthesize timezone=_timezone;
+@property (strong, nonatomic) NSMutableArray *hoursOfOperations;
+@property (nonatomic) BOOL isVerified;
+@property (strong, nonatomic) NSString *messageId;
+@property (strong, nonatomic) NSString *messageUrl;
+@property (strong, nonatomic) NSString *navBackgroundColor;
+@property (strong, nonatomic) NSString *navTintColor;
+@property (nonatomic) int responseTime;
+@property (strong, nonatomic) GEOTimezone *timezone;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)hoursOfOperationType;
++ (BOOL)isValid:(id)arg1;
 + (id)messageLinkForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsResponseTime:(id)arg1;
+- (void)_addNoFlagsHoursOfOperation:(id)arg1;
+- (void)_readHoursOfOperations;
+- (void)_readMessageId;
+- (void)_readMessageUrl;
+- (void)_readNavBackgroundColor;
+- (void)_readNavTintColor;
+- (void)_readTimezone;
 - (void)addHoursOfOperation:(id)arg1;
 - (void)clearHoursOfOperations;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -60,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hoursOfOperationsCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)responseTimeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

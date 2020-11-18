@@ -9,7 +9,7 @@
 #import <Navigation/GEOServerFormatToken-Protocol.h>
 
 @class NSArray, NSString;
-@protocol GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
+@protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
 
 __attribute__((visibility("hidden")))
 @interface _TempToken : NSObject <GEOServerFormatToken>
@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
     id<GEOServerFormatTokenPriceValue> _priceValue;
     id<GEOTransitArtworkDataSource> _artworkValue;
     NSArray *_timeStampValues;
+    id<GEOServerFormatTokenCountdownValue> _countdownValue;
 }
 
 @property (strong, nonatomic) id<GEOTransitArtworkDataSource> artworkValue; // @synthesize artworkValue=_artworkValue;
+@property (strong, nonatomic) id<GEOServerFormatTokenCountdownValue> countdownValue; // @synthesize countdownValue=_countdownValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithToken:(id)arg1;
 
 @end
 

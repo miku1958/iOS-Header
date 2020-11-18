@@ -8,24 +8,29 @@
 
 #import <IDSFoundation/ENCypher-Protocol.h>
 
-@class NSString;
+@class IDSMPPublicLegacyIdentity, NSString;
 
 @interface IDSLegacyDeviceMessageProtectionCypher : NSObject <ENCypher>
 {
+    IDSMPPublicLegacyIdentity *_publicIdentity;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) IDSMPPublicLegacyIdentity *publicIdentity; // @synthesize publicIdentity=_publicIdentity;
 @property (readonly) Class superclass;
 
 + (id)cypherWithEndpoint:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)_fullIdentityFromAccountIdentity:(id)arg1 error:(id *)arg2;
 - (id)cypherData:(id)arg1 withAccountIdentity:(id)arg2 identifier:(id *)arg3 error:(id *)arg4;
 - (id)decypherData:(id)arg1 withAccountIdentity:(id)arg2 signingDevicePublicKey:(id)arg3 identifier:(id)arg4 error:(id *)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithPublicIdentity:(id)arg1;
 
 @end
 

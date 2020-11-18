@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSOperationQueue, SBSApplicationShortcutService;
+@class NSData, NSOperationQueue, PLDatabaseContext, SBSApplicationShortcutService;
 
 @interface PLQuickActionManager : NSObject
 {
     id _cameraWellObserver;
-    id _localeObserver;
     NSOperationQueue *_operationQueue;
+    PLDatabaseContext *_databaseContext;
     BOOL __mostRecentPhotoIsInvalid;
     NSData *__cachedMostRecentPhotoData;
     SBSApplicationShortcutService *__appShortcutService;
@@ -28,19 +28,18 @@
 @property (strong, nonatomic, setter=_setCachedMostRecentPhotoData:) NSData *_cachedMostRecentPhotoData; // @synthesize _cachedMostRecentPhotoData=__cachedMostRecentPhotoData;
 @property (nonatomic, setter=_setMostRecentPhotoIsInvalid:) BOOL _mostRecentPhotoIsInvalid; // @synthesize _mostRecentPhotoIsInvalid=__mostRecentPhotoIsInvalid;
 
-+ (id)sharedManager;
+- (void).cxx_destruct;
 - (id)_buildFavoritesQuickAction;
 - (id)_buildMostRecentPhotoQuickAction;
-- (id)_buildOneYearAgoQuickAction:(id)arg1;
+- (id)_buildOneYearAgoQuickAction;
 - (id)_buildSearchQuickAction;
-- (id)_shortcutImageNamed:(id)arg1;
-- (BOOL)_userHasPhotos:(id)arg1;
-- (BOOL)_userHasPhotosFromLastYear:(id)arg1;
+- (id)_shortcutSystemImageNamed:(id)arg1;
+- (BOOL)_userHasPhotos;
+- (BOOL)_userHasPhotosFromLastYear;
 - (void)buildQuickActionItems;
 - (void)cameraPreviewWellImageDidChange;
 - (void)dealloc;
-- (id)init;
-- (void)rebuildQuickActionForLocaleChanges;
+- (id)initWithDatabaseContext:(id)arg1;
 
 @end
 

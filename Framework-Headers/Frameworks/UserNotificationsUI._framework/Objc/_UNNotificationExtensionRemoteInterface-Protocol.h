@@ -9,7 +9,6 @@
 @protocol _UNNotificationExtensionRemoteInterface
 - (void)_didReceiveNotification:(UNNotification *)arg1;
 - (void)_didReceiveNotificationResponse:(UNNotificationResponse *)arg1;
-- (void)_loadAudioAccessoryViewForNotification:(UNNotification *)arg1;
 - (void)_mediaPause;
 - (void)_mediaPlay;
 - (void)_preserveInputViews;

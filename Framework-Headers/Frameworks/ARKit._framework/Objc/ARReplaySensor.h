@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
-#import <ARKit/ARSensor-Protocol.h>
+#import <ARKit/ARReplaySensorProtocol-Protocol.h>
 
-@class ARImageCroppingTechnique, AVAssetReader, AVAssetReaderOutputMetadataAdaptor, AVAssetReaderTrackOutput, AVURLAsset, NSArray, NSDictionary, NSMutableArray, NSSet, NSString;
+@class ARImageCroppingTechnique, AVAssetReader, AVAssetReaderOutputMetadataAdaptor, AVAssetReaderTrackOutput, AVURLAsset, NSArray, NSDictionary, NSMutableArray, NSSet, NSString, NSURL;
 @protocol ARReplaySensorDelegate, ARSensorDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface ARReplaySensor : NSObject <ARInternalSessionObserver, ARSensor>
+@interface ARReplaySensor : NSObject <ARInternalSessionObserver, ARReplaySensorProtocol>
 {
     BOOL _manualCommandLineMode;
     AVURLAsset *_asset;
@@ -20,6 +20,7 @@
     NSMutableArray *_arAccelerometerData;
     NSMutableArray *_arGyroData;
     NSMutableArray *_arDeviceOrientationData;
+    NSMutableArray *_arLocationData;
     CDUnknownBlockType _customDataGetter;
     NSDictionary *_recordedResultGetters;
     double _originalToReplayTimestampDifference;
@@ -34,10 +35,12 @@
     int _accelDataIndex;
     int _gyroDataIndex;
     int _deviceOrientationDataIndex;
+    int _locationDataIndex;
     BOOL _running;
     BOOL _metadataLoadedFromAsset;
     BOOL _interrupted;
     BOOL _replayStarted;
+    _Atomic BOOL _finishedReplaying;
     struct opaqueCMSampleBuffer *_nextSampleBuffer;
     AVAssetReader *_assetReader;
     AVAssetReaderTrackOutput *_imageOutput;
@@ -49,6 +52,8 @@
     AVAssetReaderOutputMetadataAdaptor *_imageOutputMetadataAdaptor;
     AVAssetReaderOutputMetadataAdaptor *_accelOutputMetadataAdaptor_CV3D;
     AVAssetReaderOutputMetadataAdaptor *_gyroOutputMetadataAdaptor_CV3D;
+    AVAssetReaderOutputMetadataAdaptor *_deviceMotionOutputMetadataAdaptor_CV3D;
+    AVAssetReaderOutputMetadataAdaptor *_locationMetadataAdaptor_CV3D;
     AVAssetReaderOutputMetadataAdaptor *_imageOutputMetadataAdaptor_CV3D;
     AVAssetReaderOutputMetadataAdaptor *_deviceOrientationOutputMetadataAdaptor;
     AVAssetReaderOutputMetadataAdaptor *_customDataOutputMetadataAdaptor;
@@ -66,7 +71,10 @@
     int _imageIndex;
     id<ARSensorDelegate> _delegate;
     id<ARReplaySensorDelegate> _replaySensorDelegate;
+    NSURL *_sequenceURL;
     NSString *_deviceModel;
+    NSString *_osVersion;
+    NSString *_arkitVersion;
     double _nominalFrameRate;
     unsigned long long _recordedSensorTypes;
     NSSet *_recordedResultClasses;
@@ -78,11 +86,13 @@
 }
 
 @property float advanceFramesPerSecondMultiplier; // @synthesize advanceFramesPerSecondMultiplier=_advanceFramesPerSecondMultiplier;
+@property (readonly, nonatomic) NSString *arkitVersion; // @synthesize arkitVersion=_arkitVersion;
 @property (copy, nonatomic) NSSet *customDataClasses; // @synthesize customDataClasses=_customDataClasses;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ARSensorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
+@property (readonly, nonatomic) BOOL finishedReplaying;
 @property (nonatomic) unsigned long long forcePlaybackFramesPerSecond; // @synthesize forcePlaybackFramesPerSecond=_forcePlaybackFramesPerSecond;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int imageIndex; // @synthesize imageIndex=_imageIndex;
@@ -91,11 +101,13 @@
 @property (readonly, nonatomic) BOOL isReplayingManually; // @synthesize isReplayingManually=_isReplayingManually;
 @property long long nextFrameIndex; // @synthesize nextFrameIndex=_nextFrameIndex;
 @property (readonly, nonatomic) double nominalFrameRate; // @synthesize nominalFrameRate=_nominalFrameRate;
+@property (readonly, nonatomic) NSString *osVersion; // @synthesize osVersion=_osVersion;
 @property (nonatomic) unsigned long long powerUsage;
 @property (readonly, nonatomic) NSArray *recordedResultClassList;
 @property (readonly, nonatomic) NSSet *recordedResultClasses; // @synthesize recordedResultClasses=_recordedResultClasses;
 @property (readonly, nonatomic) unsigned long long recordedSensorTypes; // @synthesize recordedSensorTypes=_recordedSensorTypes;
-@property (weak, nonatomic) id<ARReplaySensorDelegate> replaySensorDelegate; // @synthesize replaySensorDelegate=_replaySensorDelegate;
+@property (weak) id<ARReplaySensorDelegate> replaySensorDelegate; // @synthesize replaySensorDelegate=_replaySensorDelegate;
+@property (readonly, nonatomic) NSURL *sequenceURL; // @synthesize sequenceURL=_sequenceURL;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isSynchronousMode) BOOL synchronousMode; // @synthesize synchronousMode=_synchronousMode;
 @property long long targetFrameIndex; // @synthesize targetFrameIndex=_targetFrameIndex;
@@ -119,11 +131,13 @@
 - (id)getNextDeviceOrientationData;
 - (id)getNextGyroData;
 - (id)getNextImageData;
+- (id)getNextLocationData;
 - (id)getResultDataForClasses:(id)arg1 atTimestamp:(double)arg2;
 - (BOOL)hasAccelerometerDataForTime:(double)arg1;
 - (BOOL)hasDeviceOrientationDataForTime:(double)arg1;
 - (BOOL)hasGyroDataForTime:(double)arg1;
 - (BOOL)hasImageDataForTimestamp:(double)arg1;
+- (BOOL)hasLocationDataForTime:(double)arg1;
 - (BOOL)hasMoreData;
 - (id)initWithDataFromFile:(id)arg1;
 - (id)initWithSequenceURL:(id)arg1 manualReplay:(BOOL)arg2;

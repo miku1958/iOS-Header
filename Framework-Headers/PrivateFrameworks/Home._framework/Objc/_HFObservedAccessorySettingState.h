@@ -8,12 +8,12 @@
 
 #import <Home/NAIdentifiable-Protocol.h>
 
-@class HMAccessorySetting, HMAccessorySettings, NSSet, NSString;
+@class HMSetting, HMSettings, NSSet, NSString;
 
 @interface _HFObservedAccessorySettingState : NSObject <NAIdentifiable>
 {
-    HMAccessorySettings *_settings;
-    HMAccessorySetting *_setting;
+    HMSettings *_settings;
+    HMSetting *_setting;
     NSSet *_selectionOptions;
 }
 
@@ -21,8 +21,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSSet *selectionOptions; // @synthesize selectionOptions=_selectionOptions;
-@property (readonly, nonatomic) HMAccessorySetting *setting; // @synthesize setting=_setting;
-@property (readonly, nonatomic) HMAccessorySettings *settings; // @synthesize settings=_settings;
+@property (readonly, nonatomic) HMSetting *setting; // @synthesize setting=_setting;
+@property (readonly, nonatomic) HMSettings *settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 
 + (id)na_identity;

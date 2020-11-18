@@ -6,18 +6,16 @@
 
 #import <Foundation/NSProxy.h>
 
-@class CNWeakReference;
-
 @interface CNWeakProxy : NSProxy
 {
     Class _targetClass;
-    CNWeakReference *_weakReference;
+    id _weakReference;
 }
 
 + (id)weakProxyWithObject:(id)arg1;
+- (void).cxx_destruct;
 - (Class)class;
 - (BOOL)conformsToProtocol:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;

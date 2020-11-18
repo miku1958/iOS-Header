@@ -6,18 +6,21 @@
 
 #import <UIKit/UIAccessibilityElement.h>
 
-@class SBAppSwitcherContentViewUIViewAccessibility;
+@class SBAppLayoutAccessibility, SBFluidSwitcherContentViewAccessibility;
+@protocol SBAppSwticherAppAccessibilityElementDelegate;
 
 @interface SBAppSwitcherAppAccessibilityElement : UIAccessibilityElement
 {
     BOOL _isControlCenter;
-    id _appLayout;
+    SBAppLayoutAccessibility *_appLayout;
     id _itemContainer;
-    SBAppSwitcherContentViewUIViewAccessibility *_contentView;
+    SBFluidSwitcherContentViewAccessibility *_contentView;
+    id<SBAppSwticherAppAccessibilityElementDelegate> _delegate;
 }
 
-@property (strong, nonatomic) id appLayout; // @synthesize appLayout=_appLayout;
-@property (weak, nonatomic) SBAppSwitcherContentViewUIViewAccessibility *contentView; // @synthesize contentView=_contentView;
+@property (strong, nonatomic) SBAppLayoutAccessibility *appLayout; // @synthesize appLayout=_appLayout;
+@property (weak, nonatomic) SBFluidSwitcherContentViewAccessibility *contentView; // @synthesize contentView=_contentView;
+@property (weak, nonatomic) id<SBAppSwticherAppAccessibilityElementDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isControlCenter; // @synthesize isControlCenter=_isControlCenter;
 @property (strong, nonatomic) id itemContainer; // @synthesize itemContainer=_itemContainer;
 

@@ -6,7 +6,9 @@
 
 #import <NanoTimeKitCompanion/NTKComplicationDisplay-Protocol.h>
 
+@class NSDate;
+
 @protocol NTKStopwatchComplicationDisplay <NTKComplicationDisplay>
-- (void)setTime:(double)arg1;
+- (void)setStopwatchState:(long long)arg1 elapsedTime:(double)arg2 shouldPauseTextCountdown:(BOOL)arg3 timeTravelDate:(NSDate *)arg4;
 @end
 

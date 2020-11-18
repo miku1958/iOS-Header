@@ -6,12 +6,23 @@
 
 #import <Foundation/NSError.h>
 
-@interface NSError (MSPAdditions)
+#import <MapsSupport/MSPJournaled-Protocol.h>
+
+@class NSString;
+
+@interface NSError (MSPAdditions) <MSPJournaled>
 
 @property (readonly) BOOL _maps_isCloudKitErrorContainingNotFoundMarkersOnly;
 @property (readonly) BOOL _maps_isCloudKitTokenExpirationError;
 @property (readonly) BOOL _maps_isFileNotFoundError;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)MSPSyncErrorWithCode:(long long)arg1 description:(id)arg2;
+- (id)MSPJournalDescription;
 - (BOOL)_maps_isCloudKitErrorWithCode:(long long)arg1 partialErrorsPolicy:(long long)arg2;
+- (BOOL)isMSPSyncErrorWithCode:(long long)arg1;
 @end
 

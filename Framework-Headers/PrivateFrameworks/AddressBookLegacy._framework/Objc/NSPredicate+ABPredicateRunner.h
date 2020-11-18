@@ -7,6 +7,13 @@
 #import <Foundation/NSPredicate.h>
 
 @interface NSPredicate (ABPredicateRunner)
+- (void)ab_addCallbackContextToArray:(id)arg1;
+- (void)ab_bindJoinClauseComponentOfStatement:(struct CPSqliteStatement *)arg1 withBindingOffset:(int *)arg2 predicateIdentifier:(int)arg3;
+- (void)ab_bindSelectClauseComponentOfStatement:(struct CPSqliteStatement *)arg1 withBindingOffset:(int *)arg2 predicateIdentifier:(int)arg3;
+- (void)ab_bindWhereClauseComponentOfStatement:(struct CPSqliteStatement *)arg1 withBindingOffset:(int *)arg2 predicateIdentifier:(int)arg3;
+- (BOOL)ab_hasCallback;
+- (id)ab_metadataForMatchingRow:(struct CPSqliteStatement *)arg1 columnOffset:(unsigned long long)arg2;
+- (id)ab_newQueryWithSortOrder:(unsigned int)arg1 ranked:(BOOL)arg2 addressBook:(void *)arg3 propertyIndices:(const struct __CFDictionary **)arg4;
 - (void)ab_runPredicateWithSortOrder:(unsigned int)arg1 ranked:(BOOL)arg2 inAddressBook:(void *)arg3 withDelegate:(id)arg4;
 @end
 

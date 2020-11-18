@@ -13,9 +13,15 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsAlwaysAllowCell;
 - (BOOL)_accessibilityIsSTUIExpandable;
 - (BOOL)_accessibilityIsSTUIExpanded;
+- (BOOL)_accessibilitySupportsActivateAction;
+- (BOOL)_accessibilityTableViewCellHidesInsertControl;
 - (id)_axSpecifier;
+- (id)_privateAccessibilityCustomActions;
+- (BOOL)accessibilityActivate;
+- (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 

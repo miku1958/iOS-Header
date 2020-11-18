@@ -6,16 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@interface TSgPTPTime : NSObject
+#import <TimeSync/NSCopying-Protocol.h>
+
+@interface TSgPTPTime : NSObject <NSCopying>
 {
-    unsigned int _nanoseconds;
-    unsigned long long _seconds;
+    BOOL _ptpTimescale;
+    BOOL _timeTraceable;
+    BOOL _frequencyTraceable;
+    unsigned short _localPortNumber;
+    unsigned long long _nanosecondsSinceEpoch;
+    unsigned long long _grandmasterIdentity;
 }
 
-@property (nonatomic) unsigned int nanoseconds; // @synthesize nanoseconds=_nanoseconds;
-@property (nonatomic) unsigned long long nanoseconds64Representation; // @dynamic nanoseconds64Representation;
-@property (nonatomic) unsigned long long seconds; // @synthesize seconds=_seconds;
+@property (readonly, nonatomic, getter=isFrequencyTraceable) BOOL frequencyTraceable; // @synthesize frequencyTraceable=_frequencyTraceable;
+@property (readonly, nonatomic) unsigned long long grandmasterIdentity; // @synthesize grandmasterIdentity=_grandmasterIdentity;
+@property (readonly, nonatomic) unsigned short localPortNumber; // @synthesize localPortNumber=_localPortNumber;
+@property (readonly, nonatomic) unsigned int nanoseconds; // @dynamic nanoseconds;
+@property (readonly, nonatomic) unsigned long long nanosecondsSinceEpoch; // @synthesize nanosecondsSinceEpoch=_nanosecondsSinceEpoch;
+@property (readonly, nonatomic, getter=isPTPTimescale) BOOL ptpTimescale; // @synthesize ptpTimescale=_ptpTimescale;
+@property (readonly, nonatomic) unsigned long long seconds; // @dynamic seconds;
+@property (readonly, nonatomic, getter=isTimeTraceable) BOOL timeTraceable; // @synthesize timeTraceable=_timeTraceable;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (unsigned long long)hash;
+- (id)init;
+- (id)initWithNanosecondsSinceEpoch:(unsigned long long)arg1 onGrandmaster:(unsigned long long)arg2 withLocalPortNumber:(unsigned short)arg3 ptpTimescale:(BOOL)arg4 timeTraceable:(BOOL)arg5 frequencyTraceable:(BOOL)arg6;
+- (id)initWithSeconds:(unsigned long long)arg1 nanoseconds:(unsigned int)arg2 onGrandmaster:(unsigned long long)arg3 withLocalPortNumber:(unsigned short)arg4 ptpTimescale:(BOOL)arg5 timeTraceable:(BOOL)arg6 frequencyTraceable:(BOOL)arg7;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

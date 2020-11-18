@@ -12,7 +12,8 @@
 
 + (id)hardwarePlatform;
 + (BOOL)isAudioAccessory;
-+ (BOOL)isServerTTSPlatform;
++ (BOOL)isInternalBuild;
++ (BOOL)isSeedBuild;
 + (BOOL)isWatch;
 + (id)legacyPlatforms;
 

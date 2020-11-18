@@ -6,18 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BCSDataProviderDelegate-Protocol.h>
+#import <BarcodeSupport/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class BBDataProviderConnection, BBDataProviderProxy, BCSNFCDataProvider, BCSQRCodeDataProvider, NSMutableSet, NSString;
+@class NSMutableSet, NSString, UNUserNotificationCenter;
 
-__attribute__((visibility("hidden")))
-@interface BCSNotificationManager : NSObject <BCSDataProviderDelegate>
+@interface BCSNotificationManager : NSObject <UNUserNotificationCenterDelegate>
 {
-    BBDataProviderConnection *_bbConnection;
-    BBDataProviderProxy *_qrCodeBBProxy;
-    BCSQRCodeDataProvider *_qrCodeDataProvider;
-    BBDataProviderProxy *_nfcBBProxy;
-    BCSNFCDataProvider *_nfcDataProvider;
+    UNUserNotificationCenter *_qrCodeUserNotificationCenter;
+    UNUserNotificationCenter *_nfcUserNotificationCenter;
     NSMutableSet *_notifications;
 }
 
@@ -28,14 +24,14 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedManager;
 - (void).cxx_destruct;
-- (id)_bbProxyForCodeType:(long long)arg1;
+- (void)_configureUserNotificationCenter;
 - (id)_notificationWithIdentifier:(id)arg1;
-- (id)clearedInfoForBulletins:(id)arg1 lastClearedInfo:(id)arg2;
-- (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 sizeConstraints:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
-- (void)handleBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)_userNotificationCenterForCodeType:(long long)arg1;
+- (void)didReceiveNotificationResponse:(id)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)scheduleNotification:(id)arg1 codeType:(long long)arg2;
+- (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)withdrawNotificationsWithProcessID:(int)arg1 codeType:(long long)arg2;
 
 @end

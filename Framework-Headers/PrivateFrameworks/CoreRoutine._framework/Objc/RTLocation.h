@@ -18,12 +18,14 @@
     double _longitude;
     double _uncertainty;
     NSDate *_date;
+    double _speed;
 }
 
 @property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic) double latitude; // @synthesize latitude=_latitude;
 @property (readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
 @property (readonly, nonatomic) int referenceFrame; // @synthesize referenceFrame=_referenceFrame;
+@property (readonly, nonatomic) double speed; // @synthesize speed=_speed;
 @property (readonly, nonatomic) double uncertainty; // @synthesize uncertainty=_uncertainty;
 
 + (BOOL)supportsSecureCoding;
@@ -33,10 +35,11 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithCLLocation:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 date:(id)arg4;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 date:(id)arg4 referenceFrame:(int)arg5;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 date:(id)arg4 referenceFrame:(int)arg5 speed:(double)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLocation:(id)arg1;
 

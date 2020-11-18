@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class NSDate, NSDictionary, NSOrderedSet, PARSession, SFRankingFeedback;
+@class NSDate, NSDictionary, NSOrderedSet, NSString, PARSession, SFRankingFeedback;
 
 @interface NTParsecZKWNewsOperation : FCOperation
 {
@@ -16,13 +16,17 @@
     NSDictionary *_resultSearchResultsBySearchResultID;
     SFRankingFeedback *_resultRankingFeedback;
     CDUnknownBlockType _newsCompletionHandler;
+    double _scale;
+    NSString *_keyboardInputMode;
 }
 
 @property (copy, nonatomic) NSDate *fetchDate; // @synthesize fetchDate=_fetchDate;
+@property (copy, nonatomic) NSString *keyboardInputMode; // @synthesize keyboardInputMode=_keyboardInputMode;
 @property (copy, nonatomic) CDUnknownBlockType newsCompletionHandler; // @synthesize newsCompletionHandler=_newsCompletionHandler;
 @property (copy, nonatomic) SFRankingFeedback *resultRankingFeedback; // @synthesize resultRankingFeedback=_resultRankingFeedback;
 @property (copy, nonatomic) NSOrderedSet *resultSearchResultIDs; // @synthesize resultSearchResultIDs=_resultSearchResultIDs;
 @property (copy, nonatomic) NSDictionary *resultSearchResultsBySearchResultID; // @synthesize resultSearchResultsBySearchResultID=_resultSearchResultsBySearchResultID;
+@property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (strong, nonatomic) PARSession *session; // @synthesize session=_session;
 
 - (void).cxx_destruct;

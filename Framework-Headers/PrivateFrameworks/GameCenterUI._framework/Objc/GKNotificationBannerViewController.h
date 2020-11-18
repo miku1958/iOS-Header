@@ -23,13 +23,13 @@
 @property (strong, nonatomic) NSLayoutConstraint *bannerWidthConstraint; // @synthesize bannerWidthConstraint=_bannerWidthConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *bannerYPositionConstraint; // @synthesize bannerYPositionConstraint=_bannerYPositionConstraint;
 
+- (void).cxx_destruct;
 - (struct CGPoint)_hiddenBannerPosition:(struct CGSize)arg1;
 - (struct CGPoint)_visibleBannerCenterPosition:(struct CGSize)arg1;
 - (void)addBannerView:(id)arg1;
 - (void)addConstraintsForBannerView;
 - (void)addConstraintsForTVOSBannerView;
 - (double)bannerWidthForViewSize:(struct CGSize)arg1;
-- (void)dealloc;
 - (void)handleWindowPan:(id)arg1;
 - (void)handleWindowSingleTap:(id)arg1;
 - (void)hideBannerQuickly:(BOOL)arg1;

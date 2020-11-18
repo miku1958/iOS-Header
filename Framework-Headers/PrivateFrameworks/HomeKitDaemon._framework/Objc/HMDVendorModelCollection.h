@@ -23,6 +23,7 @@
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (id)lookupModel:(id)arg1;
+- (id)lookupProductData:(id)arg1;
 
 @end
 

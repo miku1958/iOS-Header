@@ -43,11 +43,12 @@
 + (id)getSynthesizedIPv6Address:(id)arg1 outgoingIf:(unsigned long long)arg2 nat64Prefixes:(CDStruct_c3d3b44c *)arg3 numNat64Prefixes:(int)arg4;
 - (void).cxx_destruct;
 - (BOOL)checkRedirectCount;
-- (BOOL)chooseNextServerOrRedirectedResolvedAddress;
+- (id)chooseNextServerOrRedirectedResolvedAddress;
 - (void)dealloc;
 - (id)getServerOrRedirectedAddress;
 - (id)getViableServerAddressForPath:(id)arg1;
-- (void)setServerOrRedirectedResolvedAddress:(id)arg1;
+- (id)normalizeServerAddress:(id)arg1 defaultPath:(id)arg2;
+- (void)setServerOrRedirectedResolvedAddress:(id)arg1 defaultPath:(id)arg2;
 - (BOOL)startRedirectTimer;
 - (void)stopRedirectTimer;
 

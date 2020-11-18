@@ -19,6 +19,7 @@
 + (id)_accountWithAccountClass:(Class)arg1 persistentAccount:(id)arg2 useExisting:(BOOL)arg3;
 + (BOOL)_shouldUpdateAccountsInPlace;
 + (id)sharedAccountStore;
+- (void).cxx_destruct;
 - (id)_accountWithPersistentAccount:(id)arg1 useExisting:(BOOL)arg2;
 - (void)_accountsStoreChanged:(id)arg1;
 - (id)accountsWithTypeIdentifiers:(id)arg1 error:(id *)arg2;

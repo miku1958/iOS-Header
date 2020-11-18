@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_configureToUseDefaultValues;
 - (id)_currentRegionCode;
 - (void)_parseConfiguration:(id)arg1;
+- (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (BOOL)isEqualToConfiguration:(id)arg1;
 

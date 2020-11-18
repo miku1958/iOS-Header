@@ -12,6 +12,7 @@
 @interface _CDEventIndexerContext : NSObject
 {
     _CDEventIndexerBookmark *_bookmark;
+    long long _currentVersion;
     unsigned long long _batchSize;
     CDUnknownBlockType _completion;
     NSDate *_indexDate;
@@ -21,6 +22,7 @@
 @property (nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property (strong, nonatomic) _CDEventIndexerBookmark *bookmark; // @synthesize bookmark=_bookmark;
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
+@property (nonatomic) long long currentVersion; // @synthesize currentVersion=_currentVersion;
 @property (readonly, nonatomic) NSDate *indexDate; // @synthesize indexDate=_indexDate;
 @property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 

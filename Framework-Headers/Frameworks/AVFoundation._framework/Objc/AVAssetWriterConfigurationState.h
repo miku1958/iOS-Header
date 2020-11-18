@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 @class AVMediaFileType, NSArray, NSURL;
+@protocol AVAssetWriterDelegate;
 
 __attribute__((visibility("hidden")))
 @interface AVAssetWriterConfigurationState : NSObject
 {
     NSURL *_URL;
+    id<AVAssetWriterDelegate> _delegate;
     AVMediaFileType *_mediaFileType;
     CDStruct_1b6d18a9 _movieFragmentInterval;
     CDStruct_1b6d18a9 _overallDurationHint;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (weak) id<AVAssetWriterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (copy, nonatomic) NSURL *directoryForTemporaryFiles; // @synthesize directoryForTemporaryFiles=_directoryForTemporaryFiles;
 @property (copy, nonatomic) NSArray *inputGroups; // @synthesize inputGroups=_inputGroups;
 @property (copy, nonatomic) NSArray *inputs; // @synthesize inputs=_inputs;
@@ -44,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long singlePassFileSize; // @synthesize singlePassFileSize=_singlePassFileSize;
 @property (nonatomic) long long singlePassMediaDataSize; // @synthesize singlePassMediaDataSize=_singlePassMediaDataSize;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 
 @end

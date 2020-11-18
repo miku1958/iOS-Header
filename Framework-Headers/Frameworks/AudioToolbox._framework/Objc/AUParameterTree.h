@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/AUParameterGroup.h>
+#import <AudioToolboxCore/AUParameterGroup.h>
 
-#import <AudioToolbox/NSSecureCoding-Protocol.h>
+#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
 
 @class AUAudioUnit_XH, NSObject, NSXPCConnection;
 @protocol OS_dispatch_queue;

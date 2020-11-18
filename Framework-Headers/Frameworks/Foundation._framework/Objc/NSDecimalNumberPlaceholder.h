@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)autorelease;
+- (Class)classForCoder;
 - (id)init;
 - (id)initWithBool:(BOOL)arg1;
 - (id)initWithChar:(BOOL)arg1;

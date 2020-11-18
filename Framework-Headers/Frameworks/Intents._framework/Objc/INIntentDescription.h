@@ -13,6 +13,8 @@
 
 @interface INIntentDescription : NSObject <INIntentDescriptionExport, NSCopying>
 {
+    NSDictionary *_slotsByName;
+    NSDictionary *_alternativeSlotNames;
     BOOL _isPrivate;
     NSString *_name;
     NSString *_responseName;
@@ -21,7 +23,6 @@
     NSString *_type;
     SEL _handleSelector;
     SEL _confirmSelector;
-    NSDictionary *_slotsByName;
 }
 
 @property (readonly, nonatomic) SEL confirmSelector; // @synthesize confirmSelector=_confirmSelector;
@@ -34,7 +35,7 @@
 @property (readonly, nonatomic) BOOL isPrivate; // @synthesize isPrivate=_isPrivate;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, nonatomic) NSString *responseName; // @synthesize responseName=_responseName;
-@property (readonly, copy, nonatomic) NSDictionary *slotsByName; // @synthesize slotsByName=_slotsByName;
+@property (readonly, copy, nonatomic) NSDictionary *slotsByName;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
@@ -42,6 +43,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithName:(id)arg1 responseName:(id)arg2 facadeClass:(Class)arg3 dataClass:(Class)arg4 type:(id)arg5 isPrivate:(BOOL)arg6 handleSelector:(SEL)arg7 confirmSelector:(SEL)arg8 slotsByName:(id)arg9;
 - (BOOL)isEqual:(id)arg1;
+- (id)slotByName:(id)arg1;
+- (id)slotDescriptions;
 
 @end
 

@@ -29,10 +29,10 @@
 @property (strong, nonatomic) UIColor *topBackgroundColor; // @synthesize topBackgroundColor=_topBackgroundColor;
 @property (readonly, nonatomic) id windowScriptObject;
 
+- (void).cxx_destruct;
 - (void)_setPinnedHeaderView:(id)arg1 withTopInsetAdjustment:(double)arg2;
 - (void)_setRichTextReaderViewportSettings;
 - (void)beginSynchronousLayout;
-- (void)dealloc;
 - (void)endSynchronousLayout;
 - (BOOL)getStatusBarStyle:(long long *)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

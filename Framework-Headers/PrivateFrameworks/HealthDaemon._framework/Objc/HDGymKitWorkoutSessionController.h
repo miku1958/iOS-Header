@@ -43,6 +43,7 @@
 - (void)fitnessMachineSessionUUID:(id)arg1 updatedRecoveryConfiguration:(id)arg2;
 - (void)generateError:(id)arg1;
 - (void)generateEvent:(id)arg1;
+- (void)generateMetadata:(id)arg1;
 - (void)hktest_setStateTransitionCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithProfile:(id)arg1 sessionConfiguration:(id)arg2 sessionStateController:(id)arg3 recoveryState:(id)arg4;
 - (BOOL)pauseWithError:(id *)arg1;

@@ -22,6 +22,7 @@
 @property (readonly) unsigned long long segmentCount;
 @property (strong) NSArray *segments; // @synthesize segments=_segments;
 @property (readonly) NSArray *segmentsCopy;
+@property (readonly, nonatomic) CDStruct_73a5d3ca timeRange;
 
 + (void)_mergeBoundarySegmentsInArray:(id)arg1;
 + (id)_mutableSegmentsByClippingToTimeRange:(CDStruct_73a5d3ca)arg1 withSegments:(id)arg2;
@@ -42,6 +43,7 @@
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (BOOL)saveContentsToURL:(id)arg1;
 - (id)segmentsByClippingToTimeRange:(CDStruct_73a5d3ca)arg1;
+- (id)segmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1;
 
 @end
 

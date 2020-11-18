@@ -17,7 +17,11 @@
 - (void)_applyPausedUpdate;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)_outerView;
-- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (void)_updateInnerLabel;
+- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
+- (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

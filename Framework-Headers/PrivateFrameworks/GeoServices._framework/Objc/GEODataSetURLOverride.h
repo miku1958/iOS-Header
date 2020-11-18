@@ -8,18 +8,19 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEODataSetURLOverride : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_addressCorrectionInitURL;
     NSString *_addressCorrectionUpdateURL;
     NSString *_announcementsURL;
     NSString *_batchReverseGeocoderURL;
     NSString *_businessPortalBaseURL;
-    unsigned int _dataSet;
     NSString *_directionsURL;
     NSString *_dispatcherURL;
     NSString *_etaURL;
@@ -30,18 +31,54 @@ __attribute__((visibility("hidden")))
     NSString *_problemSubmissionURL;
     NSString *_simpleETAURL;
     NSString *_spatialLookupURL;
-    CDStruct_2fe9a6d4 _has;
+    unsigned int _dataSet;
+    struct {
+        unsigned int has_dataSet:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_addressCorrectionInitURL:1;
+        unsigned int read_addressCorrectionUpdateURL:1;
+        unsigned int read_announcementsURL:1;
+        unsigned int read_batchReverseGeocoderURL:1;
+        unsigned int read_businessPortalBaseURL:1;
+        unsigned int read_directionsURL:1;
+        unsigned int read_dispatcherURL:1;
+        unsigned int read_etaURL:1;
+        unsigned int read_logMessageUsageURL:1;
+        unsigned int read_problemCategoriesURL:1;
+        unsigned int read_problemOptInURL:1;
+        unsigned int read_problemStatusURL:1;
+        unsigned int read_problemSubmissionURL:1;
+        unsigned int read_simpleETAURL:1;
+        unsigned int read_spatialLookupURL:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_addressCorrectionInitURL:1;
+        unsigned int wrote_addressCorrectionUpdateURL:1;
+        unsigned int wrote_announcementsURL:1;
+        unsigned int wrote_batchReverseGeocoderURL:1;
+        unsigned int wrote_businessPortalBaseURL:1;
+        unsigned int wrote_directionsURL:1;
+        unsigned int wrote_dispatcherURL:1;
+        unsigned int wrote_etaURL:1;
+        unsigned int wrote_logMessageUsageURL:1;
+        unsigned int wrote_problemCategoriesURL:1;
+        unsigned int wrote_problemOptInURL:1;
+        unsigned int wrote_problemStatusURL:1;
+        unsigned int wrote_problemSubmissionURL:1;
+        unsigned int wrote_simpleETAURL:1;
+        unsigned int wrote_spatialLookupURL:1;
+        unsigned int wrote_dataSet:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *addressCorrectionInitURL; // @synthesize addressCorrectionInitURL=_addressCorrectionInitURL;
-@property (strong, nonatomic) NSString *addressCorrectionUpdateURL; // @synthesize addressCorrectionUpdateURL=_addressCorrectionUpdateURL;
-@property (strong, nonatomic) NSString *announcementsURL; // @synthesize announcementsURL=_announcementsURL;
-@property (strong, nonatomic) NSString *batchReverseGeocoderURL; // @synthesize batchReverseGeocoderURL=_batchReverseGeocoderURL;
-@property (strong, nonatomic) NSString *businessPortalBaseURL; // @synthesize businessPortalBaseURL=_businessPortalBaseURL;
-@property (nonatomic) unsigned int dataSet; // @synthesize dataSet=_dataSet;
-@property (strong, nonatomic) NSString *directionsURL; // @synthesize directionsURL=_directionsURL;
-@property (strong, nonatomic) NSString *dispatcherURL; // @synthesize dispatcherURL=_dispatcherURL;
-@property (strong, nonatomic) NSString *etaURL; // @synthesize etaURL=_etaURL;
+@property (strong, nonatomic) NSString *addressCorrectionInitURL;
+@property (strong, nonatomic) NSString *addressCorrectionUpdateURL;
+@property (strong, nonatomic) NSString *announcementsURL;
+@property (strong, nonatomic) NSString *batchReverseGeocoderURL;
+@property (strong, nonatomic) NSString *businessPortalBaseURL;
+@property (nonatomic) unsigned int dataSet;
+@property (strong, nonatomic) NSString *directionsURL;
+@property (strong, nonatomic) NSString *dispatcherURL;
+@property (strong, nonatomic) NSString *etaURL;
 @property (readonly, nonatomic) BOOL hasAddressCorrectionInitURL;
 @property (readonly, nonatomic) BOOL hasAddressCorrectionUpdateURL;
 @property (readonly, nonatomic) BOOL hasAnnouncementsURL;
@@ -58,16 +95,33 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasProblemSubmissionURL;
 @property (readonly, nonatomic) BOOL hasSimpleETAURL;
 @property (readonly, nonatomic) BOOL hasSpatialLookupURL;
-@property (strong, nonatomic) NSString *logMessageUsageURL; // @synthesize logMessageUsageURL=_logMessageUsageURL;
-@property (strong, nonatomic) NSString *problemCategoriesURL; // @synthesize problemCategoriesURL=_problemCategoriesURL;
-@property (strong, nonatomic) NSString *problemOptInURL; // @synthesize problemOptInURL=_problemOptInURL;
-@property (strong, nonatomic) NSString *problemStatusURL; // @synthesize problemStatusURL=_problemStatusURL;
-@property (strong, nonatomic) NSString *problemSubmissionURL; // @synthesize problemSubmissionURL=_problemSubmissionURL;
-@property (strong, nonatomic) NSString *simpleETAURL; // @synthesize simpleETAURL=_simpleETAURL;
-@property (strong, nonatomic) NSString *spatialLookupURL; // @synthesize spatialLookupURL=_spatialLookupURL;
+@property (strong, nonatomic) NSString *logMessageUsageURL;
+@property (strong, nonatomic) NSString *problemCategoriesURL;
+@property (strong, nonatomic) NSString *problemOptInURL;
+@property (strong, nonatomic) NSString *problemStatusURL;
+@property (strong, nonatomic) NSString *problemSubmissionURL;
+@property (strong, nonatomic) NSString *simpleETAURL;
+@property (strong, nonatomic) NSString *spatialLookupURL;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readAddressCorrectionInitURL;
+- (void)_readAddressCorrectionUpdateURL;
+- (void)_readAnnouncementsURL;
+- (void)_readBatchReverseGeocoderURL;
+- (void)_readBusinessPortalBaseURL;
+- (void)_readDirectionsURL;
+- (void)_readDispatcherURL;
+- (void)_readEtaURL;
+- (void)_readLogMessageUsageURL;
+- (void)_readProblemCategoriesURL;
+- (void)_readProblemOptInURL;
+- (void)_readProblemStatusURL;
+- (void)_readProblemSubmissionURL;
+- (void)_readSimpleETAURL;
+- (void)_readSpatialLookupURL;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -75,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

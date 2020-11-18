@@ -18,8 +18,8 @@
 @property (readonly, strong, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 @property (readonly, strong, nonatomic) NSString *string;
 
++ (id)textWithAttributedString:(id)arg1;
 + (id)textWithDOMElement:(id)arg1 usingParseBlock:(CDUnknownBlockType)arg2;
-+ (id)textWithString:(id)arg1;
 - (void).cxx_destruct;
 - (id)_attributedStringFromDomElement:(id)arg1 usingParseBlock:(CDUnknownBlockType)arg2;
 - (id)_attributedStringWithDefaultAttributes:(id)arg1 fontHandler:(CDUnknownBlockType)arg2 style:(id)arg3;

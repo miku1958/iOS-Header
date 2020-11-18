@@ -4,26 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UIVisualEffectView.h>
 
-@class UILabel, UIVisualEffect, UIVisualEffectView;
+@class NSString, UIColor, UIFont, UILabel;
 
-@interface DOCVisualEffectLabel : UIView
+@interface DOCVisualEffectLabel : UIVisualEffectView
 {
     UILabel *_label;
-    UIVisualEffectView *_visualEffectView;
 }
 
-@property (copy, nonatomic) UIVisualEffect *effect;
-@property (readonly, nonatomic) UILabel *label; // @synthesize label=_label;
-@property (readonly, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
+@property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @dynamic adjustsFontForContentSizeCategory;
+@property (copy, nonatomic) UIFont *font; // @dynamic font;
+@property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (nonatomic) long long lineBreakMode; // @dynamic lineBreakMode;
+@property (nonatomic) long long numberOfLines;
+@property (copy, nonatomic) NSString *text; // @dynamic text;
+@property (nonatomic) long long textAlignment;
+@property (copy, nonatomic) UIColor *textColor;
 
 - (void).cxx_destruct;
-- (void)DOCVisualEffectLabelSharedInitWithEffect:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithEffect:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 effect:(id)arg2;
+- (struct CGSize)intrinsicContentSize;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (id)viewForLastBaselineLayout;
 
 @end

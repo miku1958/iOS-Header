@@ -6,19 +6,25 @@
 
 #import <AXMediaUtilities/AXMEvaluationNode.h>
 
+@class VNSceneClassificationRequest;
+
 @interface AXMSceneDetectorNode : AXMEvaluationNode
 {
+    unsigned int _taxonomyOptions;
+    VNSceneClassificationRequest *__sceneClassificationRequest;
 }
+
+@property (strong, nonatomic, setter=_setSceneClassificationRequest:) VNSceneClassificationRequest *_sceneClassificationRequest; // @synthesize _sceneClassificationRequest=__sceneClassificationRequest;
+@property (nonatomic) unsigned int taxonomyOptions; // @synthesize taxonomyOptions=_taxonomyOptions;
 
 + (BOOL)isSupported;
 + (id)possibleSceneClassifications;
 + (BOOL)supportsSecureCoding;
 + (id)title;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluate:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (void)nodeInitialize;
-- (BOOL)requiresVisionFramework;
 - (BOOL)validateVisionKitSoftLinkSymbols;
 
 @end

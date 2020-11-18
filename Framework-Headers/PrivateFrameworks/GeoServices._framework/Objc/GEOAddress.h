@@ -9,39 +9,53 @@
 #import <GeoServices/GEOURLSerializable-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOStructuredAddress, NSMutableArray, NSString, PBUnknownFields;
+@class GEOStructuredAddress, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOAddress : PBCodable <GEOURLSerializable, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_formattedAddressLines;
-    int _formattedAddressType;
     GEOStructuredAddress *_structuredAddress;
+    int _formattedAddressType;
     struct {
-        unsigned int formattedAddressType:1;
-    } _has;
+        unsigned int has_formattedAddressType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_formattedAddressLines:1;
+        unsigned int read_structuredAddress:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_formattedAddressLines:1;
+        unsigned int wrote_structuredAddress:1;
+        unsigned int wrote_formattedAddressType:1;
+    } _flags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSMutableArray *formattedAddressLines; // @synthesize formattedAddressLines=_formattedAddressLines;
-@property (nonatomic) int formattedAddressType; // @synthesize formattedAddressType=_formattedAddressType;
+@property (strong, nonatomic) NSMutableArray *formattedAddressLines;
+@property (nonatomic) int formattedAddressType;
 @property (nonatomic) BOOL hasFormattedAddressType;
 @property (readonly, nonatomic) BOOL hasStructuredAddress;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) GEOStructuredAddress *structuredAddress; // @synthesize structuredAddress=_structuredAddress;
+@property (strong, nonatomic) GEOStructuredAddress *structuredAddress;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)formattedAddressLineType;
 + (id)geoAddressForPlaceData:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsFormattedAddressType:(id)arg1;
+- (void)_addNoFlagsFormattedAddressLine:(id)arg1;
 - (BOOL)_isEquivalentURLRepresentationTo:(id)arg1;
+- (void)_readFormattedAddressLines;
+- (void)_readStructuredAddress;
 - (void)addFormattedAddressLine:(id)arg1;
 - (id)addressDictionary;
 - (id)bestName;
 - (void)clearFormattedAddressLines;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
@@ -49,9 +63,12 @@
 - (unsigned long long)formattedAddressLinesCount;
 - (id)formattedAddressTypeAsString:(int)arg1;
 - (id)initWithAddressDictionary:(id)arg1;
+- (id)initWithPostalAddress:(id)arg1;
 - (id)initWithUrlRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)postalAddress;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)urlRepresentation;
 - (void)writeTo:(id)arg1;

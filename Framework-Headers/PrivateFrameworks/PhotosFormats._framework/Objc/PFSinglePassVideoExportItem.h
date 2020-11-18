@@ -77,6 +77,7 @@
 - (void).cxx_destruct;
 - (void)_cancel;
 - (id)bitRateControllerForTargetEncodingBitRate:(long long)arg1;
+- (void)configureDroppableFrameRateForCompressionSession:(struct OpaqueVTCompressionSession *)arg1 inputWidth:(int)arg2 inputHeight:(int)arg3;
 - (void)dealloc;
 - (long long)estimatedOutputBitRate;
 - (id)init;

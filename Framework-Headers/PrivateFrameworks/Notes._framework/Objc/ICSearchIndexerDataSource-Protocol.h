@@ -6,27 +6,30 @@
 
 #import <Notes/NSObject-Protocol.h>
 
-@class CSSearchableItem, NSArray, NSDictionary, NSError, NSManagedObjectContext, NSPersistentStoreCoordinator, NSString;
+@class CSSearchableItem, NSArray, NSError, NSManagedObjectContext, NSPersistentStoreCoordinator, NSString;
 @protocol ICSearchIndexable;
 
 @protocol ICSearchIndexerDataSource <NSObject>
-- (NSDictionary *)allIndexableObjectIdentifiersByObjectID;
+- (NSArray *)allIndexableObjectIDsInReversedReindexingOrder;
+- (void)clearObjectIDsToProcess;
 - (NSString *)dataSourceIdentifier;
-- (NSArray *)indexableObjectIDsWithIdentifiers:(NSArray *)arg1;
+- (NSArray *)indexableObjectIDsWithURIs:(NSArray *)arg1;
+- (unsigned long long)indexingPriority;
 - (BOOL)isObservingChanges;
 - (BOOL)needsReindexing;
 - (NSManagedObjectContext *)newManagedObjectContext;
+- (id<ICSearchIndexable>)objectForManagedObjectIDURI:(NSString *)arg1 context:(NSManagedObjectContext *)arg2;
 - (id<ICSearchIndexable>)objectForSearchableItem:(CSSearchableItem *)arg1 context:(NSManagedObjectContext *)arg2;
-- (id<ICSearchIndexable>)objectForSearchableItemIdentifier:(NSString *)arg1 context:(NSManagedObjectContext *)arg2;
+- (NSArray *)objectIDURIsToBeDeleted;
 - (NSArray *)objectIDsNeedingIndexing;
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
-- (void)searchIndexerDidFinishDeletingSearchableItemsWithIdentifiers:(NSArray *)arg1 error:(NSError *)arg2;
+- (void)searchIndexerDidFinishDeletingSearchableItemsWithObjectIDURIs:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)searchIndexerDidFinishIndexingObjectIDs:(NSArray *)arg1 error:(NSError *)arg2;
-- (void)searchIndexerWillDeleteSearchableItemsWithIdentifiers:(NSArray *)arg1;
+- (void)searchIndexerWillDeleteSearchableItemsWithObjectIDURIs:(NSArray *)arg1;
 - (void)searchIndexerWillIndexObjectIDs:(NSArray *)arg1;
-- (NSArray *)searchableItemIdentifiersToBeDeleted;
 - (NSArray *)searchableItemsForObjectIDs:(NSArray *)arg1;
 - (void)stageForReindexing;
+- (void)stageObjectIDURIsForIndexing:(NSArray *)arg1;
 - (void)startObservingChanges;
 - (void)stopObservingChanges;
 @end

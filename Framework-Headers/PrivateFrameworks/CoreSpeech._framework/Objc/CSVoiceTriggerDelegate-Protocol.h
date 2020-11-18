@@ -13,9 +13,9 @@
 
 @optional
 - (void)keywordDetectorDidDetectKeyword;
+- (void)raiseToSpeakDetected:(NSDictionary *)arg1;
 - (void)voiceTriggerDidDetectNearMiss:(NSDictionary *)arg1;
 - (void)voiceTriggerDidDetectSpeakerReject:(NSDictionary *)arg1;
-- (void)voiceTriggerDidDetectTwoShotAtTime:(double)arg1;
 - (void)voiceTriggerGotSuperVector:(NSData *)arg1;
 @end
 

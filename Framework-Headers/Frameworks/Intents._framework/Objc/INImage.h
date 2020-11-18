@@ -9,13 +9,14 @@
 #import <Intents/INCacheableObject-Protocol.h>
 #import <Intents/INImageExport-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/INKeyImageProducing-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString, NSURL;
 
-@interface INImage : NSObject <INKeyImageProducing, INCacheableObject, INImageProxyInjecting, INImageExport, NSCopying, NSSecureCoding>
+@interface INImage : NSObject <INJSONSerializable, INKeyImageProducing, INCacheableObject, INImageProxyInjecting, INImageExport, NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     CDStruct_8caa76fc _imageSize;
@@ -36,18 +37,23 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)_bundleImageWithURL:(id)arg1;
 + (id)_classesInCluster;
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (void)buildFromCachePayload:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)imageNamed:(id)arg1;
 + (id)imageWithImageData:(id)arg1;
@@ -69,7 +75,8 @@
 - (id)_initWithIdentifier:(id)arg1;
 - (id)_initWithURLRepresentation:(id)arg1;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (void)_loadImageDataAndSizeWithHelper:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_preferredImageLoader;
 - (void)_requestProxy:(CDUnknownBlockType)arg1;

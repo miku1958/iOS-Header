@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSString *dictionaryKey;
-@property unsigned long long gender; // @synthesize gender=_gender;
-@property unsigned long long plurality; // @synthesize plurality=_plurality;
+@property (nonatomic) unsigned long long gender; // @synthesize gender=_gender;
+@property (nonatomic) unsigned long long plurality; // @synthesize plurality=_plurality;
 
 + (id)variant;
 + (id)variantWithVariants:(unsigned long long)arg1;

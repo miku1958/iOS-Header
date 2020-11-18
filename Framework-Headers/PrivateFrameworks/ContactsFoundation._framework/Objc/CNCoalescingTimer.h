@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class CNUnfairLock;
 @protocol CNCancelable, CNScheduler;
 
 @interface CNCoalescingTimer : NSObject
 {
-    id<CNScheduler> _resourceLock;
-    id<CNScheduler> _downstreamScheduler;
-    id<CNScheduler> _delayScheduler;
-    id<CNCancelable> _scheduledToken;
-    CDUnknownBlockType _block;
-    double _delay;
     BOOL _open;
     BOOL _someoneWaiting;
+    id<CNCancelable> _scheduledToken;
+    id<CNScheduler> _downstreamScheduler;
+    CNUnfairLock *_resourceLock;
+    id<CNScheduler> _delayScheduler;
+    CDUnknownBlockType _block;
+    double _delay;
     unsigned long long _options;
 }
 
@@ -27,10 +28,11 @@
 @property (readonly, nonatomic) id<CNScheduler> downstreamScheduler; // @synthesize downstreamScheduler=_downstreamScheduler;
 @property (nonatomic) BOOL open; // @synthesize open=_open;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
-@property (readonly, nonatomic) id<CNScheduler> resourceLock; // @synthesize resourceLock=_resourceLock;
+@property (readonly, nonatomic) CNUnfairLock *resourceLock; // @synthesize resourceLock=_resourceLock;
 @property (strong, nonatomic) id<CNCancelable> scheduledToken; // @synthesize scheduledToken=_scheduledToken;
-@property (nonatomic) BOOL someoneWaiting; // @synthesize someoneWaiting=_someoneWaiting;
+@property (nonatomic, getter=isSomeoneWaiting) BOOL someoneWaiting; // @synthesize someoneWaiting=_someoneWaiting;
 
++ (id)os_log;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)handleEvent;

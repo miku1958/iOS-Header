@@ -7,9 +7,17 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (CKUtilsAdditions)
+
+@property (readonly, nonatomic, getter=isComparisonError) BOOL comparisonError;
+
 + (id)CKErrorFromErrno;
 + (id)CKErrorWithPOSIXCode:(int)arg1;
+- (id)CKClientSuitableError;
+- (id)CKClientSuitableUnderlyingError;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
+- (BOOL)CKHasCKErrorInChildChain;
+- (BOOL)CKIsCKError;
+- (BOOL)CKIsNotFoundError;
 - (BOOL)CKIsPOSIXErrorCode:(long long)arg1;
 @end
 

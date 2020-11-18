@@ -4,35 +4,63 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSOperation.h>
+#import <objc/NSObject.h>
 
-@class NSError, NSObject, PHAssetResourceRequestOptions, PHInternalAssetResource;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+#import <Photos/PHAssetResourceRequest-Protocol.h>
+#import <Photos/PHResourceAvailabilityChangeRequestDelegate-Protocol.h>
 
-@interface PHAssetResourceRequest : NSOperation
+@class NSDictionary, NSProgress, NSString, PHAssetResource, PHAssetResourceRequestOptions, PHResourceAvailabilityJob;
+@protocol PHAssetResourceRequestDelegate;
+
+@interface PHAssetResourceRequest : NSObject <PHResourceAvailabilityChangeRequestDelegate, PHAssetResourceRequest>
 {
-    int _cloudResourceRequestID;
-    PHInternalAssetResource *_assetResource;
-    PHAssetResourceRequestOptions *_options;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_semaphore> *_cloudResourceDownloadWaitSemaphore;
-    struct os_unfair_lock_s _dataHandlerLock;
-    CDUnknownBlockType _dataHandler;
+    PHResourceAvailabilityJob *_availabilityJob;
+    struct os_unfair_lock_s _lock;
+    BOOL _cancelled;
+    NSProgress *_availabilityProgress;
+    NSProgress *_fileStreamProgress;
+    NSProgress *_totalProgress;
+    BOOL _loadURLOnly;
     int _requestID;
-    NSError *_error;
+    PHAssetResource *_assetResource;
+    PHAssetResourceRequestOptions *_options;
+    unsigned long long _managerID;
+    id<PHAssetResourceRequestDelegate> _delegate;
+    CDUnknownBlockType _completionHandler;
+    NSDictionary *_info;
+    NSString *_taskIdentifier;
+    CDUnknownBlockType _dataHandler;
 }
 
-@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, copy, nonatomic) PHAssetResourceRequestOptions *options; // @synthesize options=_options;
+@property (readonly, nonatomic) PHAssetResource *assetResource; // @synthesize assetResource=_assetResource;
+@property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
+@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (copy, nonatomic) CDUnknownBlockType dataHandler; // @synthesize dataHandler=_dataHandler;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, weak, nonatomic) id<PHAssetResourceRequestDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSDictionary *info; // @synthesize info=_info;
+@property (nonatomic) BOOL loadURLOnly; // @synthesize loadURLOnly=_loadURLOnly;
+@property (readonly, nonatomic) unsigned long long managerID; // @synthesize managerID=_managerID;
+@property (readonly, nonatomic) PHAssetResourceRequestOptions *options; // @synthesize options=_options;
 @property (readonly, nonatomic) int requestID; // @synthesize requestID=_requestID;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 
++ (id)_globalFileIOQueue;
 - (void).cxx_destruct;
-- (BOOL)_downloadResourceForAssetWithLocalIdentifier:(id)arg1 progress:(CDUnknownBlockType)arg2 error:(id *)arg3;
-- (void)_onQueueSync:(CDUnknownBlockType)arg1;
-- (long long)_streamDataAtURL:(id)arg1 progress:(CDUnknownBlockType)arg2 dataHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (void)_finishAsyncWithLocallyAvailableResourceAtURL:(id)arg1;
+- (id)_initialValidationError;
+- (void)_reportProgress;
+- (void)_setupProgressIfNeeded;
+- (void)_streamDataAtURL:(id)arg1 dataHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_updateAssetResourceWithLocallyAvailable:(BOOL)arg1 fileURL:(id)arg2;
 - (void)cancel;
-- (id)initWithRequestID:(int)arg1 assetResource:(id)arg2 options:(id)arg3 dataHandler:(CDUnknownBlockType)arg4;
-- (void)main;
+- (id)initWithAssetResource:(id)arg1 options:(id)arg2 requestID:(int)arg3 managerID:(unsigned long long)arg4 delegate:(id)arg5 dataReceivedHandler:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)resourceAvailabilityChangeRequest:(id)arg1 didFinishWithSuccess:(BOOL)arg2 url:(id)arg3 data:(id)arg4 info:(id)arg5 error:(id)arg6;
+- (void)resourceAvailabilityChangeRequest:(id)arg1 didReportProgress:(double)arg2 completed:(BOOL)arg3 error:(id)arg4;
+- (void)startRequest;
 
 @end
 

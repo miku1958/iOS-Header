@@ -8,7 +8,7 @@
 
 #import <VoiceMemos/RCSAudioFile-Protocol.h>
 
-@class AVAudioFormat, NSString, NSURL, RCSSavedRecordingAccessToken;
+@class AVAudioFormat, NSDictionary, NSString, NSURL, RCSSavedRecordingAccessToken;
 
 __attribute__((visibility("hidden")))
 @interface _RCSAudioFile : NSObject <RCSAudioFile>
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) RCSSavedRecordingAccessToken *fileToken; // @synthesize fileToken=_fileToken;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) AVAudioFormat *processingFormat;
+@property (readonly, nonatomic) NSDictionary *settings;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url;
 

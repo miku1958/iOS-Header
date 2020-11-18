@@ -14,6 +14,7 @@
 - (void)editView:(NTKFaceEditView *)arg1 didTapKeylineForKey:(NSString *)arg2 editMode:(long long)arg3;
 - (void)editView:(NTKFaceEditView *)arg1 keylineDidBreathe:(double)arg2 forKey:(NSString *)arg3 editMode:(long long)arg4;
 - (void)editView:(NTKFaceEditView *)arg1 keylineDidRubberBand:(double)arg2 forKey:(NSString *)arg3 editMode:(long long)arg4;
+- (BOOL)editViewShouldShowPageDotsOnBottom:(NTKFaceEditView *)arg1;
 - (void)editViewWillBeginScrolling:(NTKFaceEditView *)arg1;
 @end
 

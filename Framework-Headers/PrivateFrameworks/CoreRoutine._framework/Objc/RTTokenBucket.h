@@ -30,7 +30,7 @@
 - (void)_replenishTokens;
 - (unsigned long long)countOfOperationsAllowed;
 - (unsigned long long)countOfOperationsAllowedWithCost:(double)arg1;
-- (void)dumpStatistics;
+- (id)dumpStatistics;
 - (id)init;
 - (id)initWithFillRate:(double)arg1 capacity:(double)arg2;
 - (id)initWithFillRate:(double)arg1 capacity:(double)arg2 initialAllocation:(double)arg3;

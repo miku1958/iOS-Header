@@ -16,19 +16,18 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedPool;
 - (void).cxx_destruct;
-- (void)_reclaimRecyclePool;
-- (void)_releaseTiles;
+- (struct CGContext *)_createContextForTileSurface:(id)arg1 ofRequest:(id)arg2;
+- (id)_createTileSurfaceForRequest:(id)arg1;
+- (void)_renderTileForRequest:(id)arg1;
+- (int)activeTileCount;
 - (void)dealloc;
-- (BOOL)drawTileEdges;
 - (id)init;
-- (void)queryUsedTiles:(int *)arg1 andFreeTiles:(int *)arg2;
-- (void)releasePDFTileSurface:(id)arg1 shouldRecycle:(BOOL)arg2;
-- (void)renderIOTileForRequest:(id)arg1;
-- (void)requestPDFTileSurfaceForTarget:(id)arg1 forPage:(id)arg2 withRenderingProperties:(id)arg3 atZoomFactor:(double)arg4 frame:(struct CGRect)arg5 transform:(struct CGAffineTransform)arg6 shouldAntiAlias:(BOOL)arg7;
-- (void)setDrawTileEdges:(BOOL)arg1;
-- (void)setSaveBitmapFiles;
-- (void)setTileRenderType:(int)arg1;
-- (int)tileRenderType;
+- (void)releasePDFTileSurface:(id)arg1;
+- (void)requestPDFTileSurfaceForTarget:(id)arg1 forPage:(id)arg2 withRenderingProperties:(id)arg3 atZoomFactor:(double)arg4 frame:(struct CGRect)arg5 transform:(struct CGAffineTransform)arg6;
+- (void)saveBitmapFiles;
+- (void)setTileSurfaceType:(int)arg1;
+- (int)tileSurfaceSize;
+- (int)tileSurfaceType;
 
 @end
 

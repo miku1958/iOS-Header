@@ -33,6 +33,7 @@
 - (id)init;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)restoreOriginalNavigationControllerIfNecessary:(id)arg1;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 
 @end
 

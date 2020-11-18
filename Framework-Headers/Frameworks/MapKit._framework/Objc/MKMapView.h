@@ -6,28 +6,33 @@
 
 #import <UIKit/UIView.h>
 
+#import <MapKit/GEOConfigChangeListenerDelegate-Protocol.h>
 #import <MapKit/GEOLogContextDelegate-Protocol.h>
 #import <MapKit/GEOResourceManifestTileGroupObserver-Protocol.h>
+#import <MapKit/MKAnnotationContainerViewDelegate-Protocol.h>
 #import <MapKit/MKAnnotationManagerDelegate-Protocol.h>
 #import <MapKit/MKAnnotationMarkerContainer-Protocol.h>
+#import <MapKit/MKLocationManagerObserver-Protocol.h>
 #import <MapKit/MKMapGestureControllerDelegate-Protocol.h>
 #import <MapKit/MKOverlayContainerViewDelegate-Protocol.h>
 #import <MapKit/MKRotationFilterDelegate-Protocol.h>
 #import <MapKit/MKVariableDelayTapRecognizerDelegate-Protocol.h>
 #import <MapKit/NSCoding-Protocol.h>
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <MapKit/VKMapViewCameraDelegate-Protocol.h>
 #import <MapKit/VKMapViewDelegate-Protocol.h>
 
-@class CLLocation, GEOMapRegion, GEOResourceManifestConfiguration, MKAnnotationContainerView, MKAnnotationManager, MKAnnotationView, MKAttributionLabel, MKBasicMapView, MKCompassView, MKDebugLocationConsole, MKMapCamera, MKMapGestureController, MKMapViewInternal, MKMapViewLabelMarkerState, MKOverlayContainerView, MKRotationFilter, MKScaleView, MKUserLocation, NSArray, NSDictionary, NSLayoutConstraint, NSObject, NSString, NSTimer, UIGestureRecognizer, UIImageView, UILayoutGuide, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UITextView, VKLabelMarker, VKMapView, VKNavContext, VKRouteContext, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker, _MKCustomFeatureStore, _MKEnvironmentLabel;
-@protocol MKMapViewDelegate, MKMapViewDelegate><MKMapViewDelegatePrivate, OS_dispatch_group;
+@class CLLocation, GEOMapRegion, MKAnnotationContainerView, MKAnnotationManager, MKAnnotationView, MKAppleLogoImageView, MKAttributionLabel, MKBasicMapView, MKCompassView, MKDebugLocationConsole, MKMapCamera, MKMapCameraBoundary, MKMapCameraZoomRange, MKMapGestureController, MKMapViewInternal, MKMapViewLabelMarkerState, MKOverlayContainerView, MKPointOfInterestFilter, MKRotationFilter, MKScaleView, MKUserLocation, NSArray, NSDictionary, NSLayoutConstraint, NSObject, NSString, NSTimer, UIGestureRecognizer, UIImageView, UILayoutGuide, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UITextView, UITraitCollection, VKLabelMarker, VKMapView, VKNavContext, VKRouteContext, VKVenueBuildingFeatureMarker, VKVenueFeatureMarker, _MKCustomFeatureStore, _MKEnvironmentLabel;
+@protocol MKMapViewDelegate, MKMapViewDelegate><MKMapViewDelegatePrivate, OS_dispatch_group, OS_dispatch_queue;
 
-@interface MKMapView : UIView <MKOverlayContainerViewDelegate, VKMapViewDelegate, MKMapGestureControllerDelegate, MKAnnotationMarkerContainer, MKAnnotationManagerDelegate, GEOLogContextDelegate, MKRotationFilterDelegate, UIGestureRecognizerDelegate, MKVariableDelayTapRecognizerDelegate, GEOResourceManifestTileGroupObserver, NSCoding>
+@interface MKMapView : UIView <MKLocationManagerObserver, MKOverlayContainerViewDelegate, MKMapGestureControllerDelegate, UIGestureRecognizerDelegate, MKVariableDelayTapRecognizerDelegate, VKMapViewDelegate, VKMapViewCameraDelegate, MKAnnotationMarkerContainer, MKAnnotationManagerDelegate, GEOLogContextDelegate, MKRotationFilterDelegate, GEOConfigChangeListenerDelegate, GEOResourceManifestTileGroupObserver, MKAnnotationContainerViewDelegate, NSCoding>
 {
     MKMapViewInternal *_internal;
     UIView *_contentView;
     MKAnnotationManager *_annotationManager;
     MKAnnotationContainerView *_annotationContainer;
     MKAttributionLabel *_attributionLabel;
+    MKAppleLogoImageView *_appleLogoImageView;
     CDUnknownBlockType _annotationRectTest;
     CDUnknownBlockType _annotationCoordinateTest;
     UIImageView *_attributionBadgeView;
@@ -67,24 +72,30 @@
     CDUnknownBlockType _showCalloutAfterRegionChangeBlock;
     CDUnknownBlockType _selectAnnotationViewAfterRedrawBlock;
     UITextView *_vectorKitDebugView;
+    UITextView *_geodHealthConsoleView;
     struct UIEdgeInsets _edgeInsets;
     UIPanGestureRecognizer *_vectorKitStyleDebugGestureRecognizer;
     double _verticalYawOverride;
     int _attributionCorner;
+    long long _originalLoopRate;
+    long long _preGesturingLoopRate;
     long long _annotationTrackingZoomStyle;
     id _topLayoutGuide;
     id _bottomLayoutGuide;
+    NSObject<OS_dispatch_queue> *_lastEffectiveTraitCollectionIsolationQueue;
+    UITraitCollection *_lastTraitCollection;
     MKRotationFilter *_rotationFilter;
+    MKAnnotationView *_longPressedAnnotationView;
     struct {
         unsigned int changingRegion:1;
         unsigned int debugViewHeading:1;
         unsigned int draggingInterrupted:1;
         unsigned int didStartSmoothScrolling:1;
         unsigned int hasRenderedSomething:1;
+        unsigned int hasSignaledWillStartRendering:1;
         unsigned int ignoreHeadingUpdates:1;
         unsigned int ignoreLocationUpdates:1;
         unsigned int isSuspended:1;
-        unsigned int forceDisplayEffects:1;
         unsigned int longPressing:1;
         unsigned int persistFixedUserLocation:1;
         unsigned int regionChangeIsAnimated:1;
@@ -102,6 +113,7 @@
         unsigned int isChangingViewSize:1;
         unsigned int isChangingEdgeInsets:1;
         unsigned int showsAttribution:1;
+        unsigned int showsAppleLogo:1;
         unsigned int canShowAttributionBadge:1;
         unsigned int showsVenues:1;
         unsigned int rotating:1;
@@ -143,6 +155,7 @@
         unsigned int delegateDidChangeUserTrackingModeButton:1;
         unsigned int useTopBottomLayoutGuides:1;
         unsigned int useLayoutMargins:1;
+        unsigned int geodHealthConsoleEnabled:1;
     } _flags;
     BOOL _hasSetLayoutMargins;
     UILayoutGuide *_edgeInsetsGuide;
@@ -152,15 +165,10 @@
     NSLayoutConstraint *_edgeInsetsBottomConstraint;
     unsigned long long _suspendPropagatingEdgeInsetsCount;
     BOOL _automaticallySnapsToNorth;
+    long long _cachedMuninAvailability;
     BOOL _forceLayoutOnBoundsChange;
     BOOL _hasPendingEdgeInsetsChange;
-    long long _originalLoopRate;
-    long long _preGesturingLoopRate;
     NSObject<OS_dispatch_group> *_calloutShowAnimationGroup;
-    struct UIEdgeInsets _attributionInsets;
-    struct UIEdgeInsets _compassInsets;
-    unsigned long long _compassInsetEdges;
-    BOOL _explicitCompassInsetEdges;
     _MKCustomFeatureStore *_annotationsCustomFeatureStore;
     double _lastYaw;
     BOOL _lastPossiblyVisible;
@@ -170,22 +178,35 @@
     double _oldHeading;
     double _oldPitch;
     double _oldAltitude;
+    struct UIEdgeInsets _attributionInsets;
+    struct UIEdgeInsets _compassInsets;
+    unsigned long long _compassInsetEdges;
+    BOOL _explicitCompassInsetEdges;
     MKMapViewLabelMarkerState *_selectedLabelMarkerState;
+    double _appleLogoImageWidth;
     BOOL _compassSuppressedForFloorPicker;
+    BOOL _geodHealthConsoleEnabled;
     double _compassVisibleRotationThreshold;
     long long _interactionMode;
     unsigned long long _currentFlyoverAnimationID;
+    MKMapCameraZoomRange *_cameraZoomRange;
+    MKMapCameraBoundary *_cameraBoundary;
+    MKPointOfInterestFilter *_pointOfInterestFilter;
     long long _compassViewSize;
     long long _compassViewStyle;
+    CDUnknownBlockType _labelsDidLayoutCallback;
 }
 
 @property (nonatomic) BOOL _annotationViewsAreAddedImmediately;
+@property (readonly, nonatomic) CDStruct_c3b9c2ee _centerMapPoint;
+@property (readonly, nonatomic) long long _interfaceOrientation;
 @property (weak, nonatomic, getter=_safeDelegate, setter=_setSafeDelegate:) id<MKMapViewDelegate> _safeDelegate;
+@property (strong, nonatomic) NSTimer *_startEffectsTimer;
 @property (readonly, nonatomic) double _zoomLevel;
 @property (readonly, nonatomic) double _zoomScale;
-@property (strong, nonatomic, getter=_additionalManifestConfiguration, setter=_setAdditionalManifestConfiguration:) GEOResourceManifestConfiguration *additionalManifestConfiguration;
 @property (nonatomic, getter=_allowsPopoverWhenNotInWindow, setter=_setAllowsPopoverWhenNotInWindow:) BOOL allowsPopoverWhenNotInWindow;
 @property (nonatomic, getter=_alwaysShowHeadingIndicator, setter=_setAlwaysShowHeadingIndicatorIfSupported:) BOOL alwaysShowHeadingIndicator;
+@property (readonly, nonatomic, getter=_isAnimating) BOOL animating;
 @property (nonatomic, getter=_annotationTrackingZoomStyle, setter=_setAnnotationTrackingZoomStyle:) long long annotationTrackingZoomStyle; // @synthesize annotationTrackingZoomStyle=_annotationTrackingZoomStyle;
 @property (readonly, nonatomic, getter=_annotationViews) NSArray *annotationViews;
 @property (readonly, nonatomic) struct CGRect annotationVisibleRect;
@@ -197,12 +218,16 @@
 @property (nonatomic, getter=_automaticallySnapsToNorth, setter=_setAutomaticallySnapsToNorth:) BOOL automaticallySnapsToNorth;
 @property (readonly, nonatomic, getter=_calloutShowAnimationGroup) NSObject<OS_dispatch_group> *calloutShowAnimationGroup; // @synthesize calloutShowAnimationGroup=_calloutShowAnimationGroup;
 @property (copy, nonatomic) MKMapCamera *camera;
+@property (copy, nonatomic) MKMapCameraBoundary *cameraBoundary; // @synthesize cameraBoundary=_cameraBoundary;
+@property (copy, nonatomic) MKMapCameraZoomRange *cameraZoomRange; // @synthesize cameraZoomRange=_cameraZoomRange;
 @property (readonly, nonatomic, getter=_canEnter3DMode) BOOL canEnter3DMode;
 @property (readonly, nonatomic, getter=_canEnter3DModeFlyover) BOOL canEnter3DModeFlyover;
 @property (readonly, nonatomic, getter=_canEnterNightMode) BOOL canEnterNightMode;
+@property (readonly, nonatomic) BOOL canRotateForHeading;
 @property (nonatomic, getter=_canSelectAllLabels, setter=_setCanSelectAllLabels:) BOOL canSelectAllLabels;
 @property (nonatomic, getter=_canSelectPOIs, setter=_setCanSelectPOIs:) BOOL canSelectPOIs;
 @property (nonatomic) BOOL canShowAttributionBadge;
+@property (readonly, nonatomic, getter=_canShowControls) BOOL canShowControls;
 @property (readonly, nonatomic, getter=_canShowFlyover) BOOL canShowFlyover;
 @property (nonatomic) struct CLLocationCoordinate2D centerCoordinate;
 @property (readonly, nonatomic, getter=_isChangingRegionForGesture) BOOL changingRegionForGesture;
@@ -218,23 +243,33 @@
 @property (readonly, nonatomic, getter=_debugConsole) MKDebugLocationConsole *debugConsole;
 @property (copy, nonatomic, getter=_debugConsoleAdditionalInfoProvider, setter=_setDebugConsoleAdditionalInfoProvider:) CDUnknownBlockType debugConsoleAdditionalInfoProvider;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKMapViewDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_detailedDescription) NSString *detailedDescription;
 @property (readonly, nonatomic, getter=_detailedDescriptionDictionaryRepresentation) NSDictionary *detailedDescriptionDictionaryRepresentation;
 @property (nonatomic, getter=_isDimmingOutsideVenueWithFocus) BOOL dimmingOutsideVenueWithFocus;
 @property (nonatomic, getter=_displayedSearchResultsType, setter=_setDisplayedSearchResultsType:) long long displayedSearchResultsType;
 @property (readonly, nonatomic, getter=_doubleTapGestureRecognizer) UITapGestureRecognizer *doubleTapGestureRecognizer;
-@property (nonatomic, getter=_edgeInsets, setter=_setEdgeInsets:) struct UIEdgeInsets edgeInsets;
+@property (nonatomic, getter=_edgeInsets, setter=_setEdgeInsets:) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (readonly, nonatomic, getter=_edgeInsetsLayoutGuide) UILayoutGuide *edgeInsetsLayoutGuide;
-@property (nonatomic, getter=_forceDisplayEffects, setter=_setForceDisplayEffects:) BOOL forceDisplayEffects;
+@property (readonly, nonatomic) BOOL effectsEnabled;
+@property (nonatomic, getter=_isGeodHealthConsoleEnabled, setter=_setGeodHealthConsoleEnabled:) BOOL geodHealthConsoleEnabled; // @synthesize geodHealthConsoleEnabled=_geodHealthConsoleEnabled;
 @property (readonly, nonatomic, getter=_isHandlingNonselectingTap) BOOL handlingNonselectingTap;
+@property (readonly, nonatomic) BOOL hasRenderedSomething;
 @property (readonly, nonatomic) BOOL hasUserLocation;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreLocationUpdates;
 @property (nonatomic, getter=_isInactive, setter=_setInactive:) BOOL inactive;
 @property (nonatomic, getter=_interactionMode, setter=_setInteractionMode:) long long interactionMode; // @synthesize interactionMode=_interactionMode;
 @property (nonatomic, getter=_labelEdgeInsets, setter=_setLabelEdgeInsets:) struct UIEdgeInsets labelEdgeInsets;
+@property (copy, nonatomic, getter=_labelsDidLayoutCallback, setter=_setLabelsDidLayoutCallback:) CDUnknownBlockType labelsDidLayoutCallback; // @synthesize labelsDidLayoutCallback=_labelsDidLayoutCallback;
+@property (nonatomic, getter=_loadMuninAvailability, setter=_setLoadMuninAvailability:) BOOL loadMuninAvailability;
 @property (nonatomic, getter=_localizeLabels, setter=_setLocalizeLabels:) BOOL localizeLabels;
 @property (nonatomic, getter=_isLocationPulseEnabled, setter=_setLocationPulseEnabled:) BOOL locationPulseEnabled;
 @property (readonly, nonatomic, getter=_longPressGestureRecognizer) UILongPressGestureRecognizer *longPressGestureRecognizer;
@@ -243,13 +278,16 @@
 @property (nonatomic) unsigned long long mapType;
 @property (readonly, nonatomic, getter=_maximumZoomLevel) double maximumZoomLevel;
 @property (readonly, nonatomic, getter=_minimumZoomLevel) double minimumZoomLevel;
+@property (readonly, nonatomic, getter=_muninAvailability) long long muninAvailability;
 @property (readonly, nonatomic, getter=_nonselectingTapGestureRecognizer) UITapGestureRecognizer *nonselectingTapGestureRecognizer;
+@property (readonly, nonatomic, getter=_oneHandedZoomGestureRecognizer) UIGestureRecognizer *oneHandedZoomGestureRecognizer;
 @property (readonly, nonatomic) NSArray *overlays;
 @property (nonatomic, getter=_panWithMomentum, setter=_setPanWithMomentum:) BOOL panWithMomentum;
 @property (readonly, nonatomic, getter=_panningGestureRecognizer) UIPanGestureRecognizer *panningGestureRecognizer;
 @property (readonly, nonatomic, getter=_pinchGestureRecognizer) UIPinchGestureRecognizer *pinchGestureRecognizer;
 @property (nonatomic, getter=isPitchEnabled) BOOL pitchEnabled;
 @property (readonly, nonatomic, getter=_isPitched) BOOL pitched;
+@property (copy, nonatomic) MKPointOfInterestFilter *pointOfInterestFilter; // @synthesize pointOfInterestFilter=_pointOfInterestFilter;
 @property (strong, nonatomic) CLLocation *predictedUserLocation;
 @property (readonly, nonatomic) double presentationYaw;
 @property (nonatomic) CDStruct_b7cb895d region;
@@ -266,9 +304,11 @@
 @property (nonatomic, getter=_shouldAnimatePositionWithRouteMatch, setter=_setShouldAnimatePositionWithRouteMatch:) BOOL shouldAnimatePositionWithRouteMatch;
 @property (nonatomic, getter=_shouldLoadFallbackTiles, setter=_setShouldLoadFallbackTiles:) BOOL shouldLoadFallbackTiles;
 @property (nonatomic, getter=_shouldSplitRouteLine, setter=_setShouldSplitRouteLine:) BOOL shouldSplitRouteLine;
+@property (nonatomic, getter=_showHeadingIndicator, setter=_setShowHeadingIndicator:) BOOL showHeadingIndicator;
 @property (nonatomic, getter=_showHeadingIndicatorForStepping, setter=_setShowHeadingIndicatorForStepping:) BOOL showHeadingIndicatorForStepping;
 @property (readonly, nonatomic, getter=_isShowingAttributionBadge) BOOL showingAttributionBadge;
 @property (readonly, nonatomic, getter=_isShowingFlyover) BOOL showingFlyover;
+@property (nonatomic, getter=_showsAppleLogo, setter=_setShowsAppleLogo:) BOOL showsAppleLogo;
 @property (nonatomic) BOOL showsAttribution;
 @property (nonatomic) BOOL showsBuildings;
 @property (nonatomic) BOOL showsCompass;
@@ -283,8 +323,10 @@
 @property (nonatomic) BOOL showsUserLocation;
 @property (nonatomic, getter=_showsVenues, setter=_setShowsVenues:) BOOL showsVenues;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (nonatomic, getter=isSuspended) BOOL suspended;
 @property (readonly, nonatomic, getter=_transitLineMarkersInCurrentViewport) NSArray *transitLineMarkersInCurrentViewport;
-@property (readonly, nonatomic, getter=_twoFingerPanGestureRecognizer) UIPanGestureRecognizer *twoFingerPanGestureRecognizer;
 @property (readonly, nonatomic, getter=_twoFingerTapGestureRecognizer) UITapGestureRecognizer *twoFingerTapGestureRecognizer;
 @property (nonatomic, getter=_useBalloonCalloutsForLabels, setter=_setUseBalloonCalloutsForLabels:) BOOL useBalloonCalloutsForLabels;
 @property (nonatomic, getter=_userInteractionPausesLocationUpdates, setter=_setUserInteractionPausesLocationUpdates:) BOOL userInteractionPausesLocationUpdates;
@@ -294,7 +336,6 @@
 @property (nonatomic) long long userTrackingMode;
 @property (nonatomic, getter=_userTrackingZoomStyle, setter=_setUserTrackingZoomStyle:) long long userTrackingZoomStyle;
 @property (nonatomic, getter=_isVectorKitConsoleEnabled, setter=_setVectorKitConsoleEnabled:) BOOL vectorKitConsoleEnabled;
-@property (nonatomic, getter=_isVectorKitStyleDebugEnabled, setter=_setVectorKitStyleDebugEnabled:) BOOL vectorKitStyleDebugEnabled;
 @property (readonly, nonatomic) VKVenueBuildingFeatureMarker *venueBuildingWithFocus;
 @property (readonly, nonatomic) VKVenueFeatureMarker *venueWithFocus;
 @property (nonatomic) CDStruct_02837cd9 visibleMapRect;
@@ -317,13 +358,15 @@
 - (void)_addSetRegionBlockWhenSized:(CDUnknownBlockType)arg1;
 - (void)_addVectorOverlay:(id)arg1;
 - (void)_addViewsForAnnotations:(id)arg1;
+- (double)_animationDurationWhenSettingCameraBoundary:(id)arg1;
 - (id)_annotationAtPoint:(struct CGPoint)arg1 avoidCurrent:(BOOL)arg2;
 - (void)_annotationViewDragStateChanged:(id)arg1;
 - (double)_boundedZoomLevel:(double)arg1;
 - (id)_camera;
+- (double)_cameraAltitudeClampedToZoomRange:(id)arg1;
+- (BOOL)_canShowAppleLogo;
 - (BOOL)_canZoomIn;
 - (BOOL)_canZoomOut;
-- (CDStruct_c3b9c2ee)_centerMapPoint;
 - (struct CGPoint)_centerPoint;
 - (void)_clearFixedUserLocation;
 - (void)_clearGestureRecognizers;
@@ -331,7 +374,7 @@
 - (void)_clearLayoutGuides;
 - (void)_clearRouteContext;
 - (BOOL)_clearUserLocationOnLocationReset;
-- (id)_commonInitFromIB:(BOOL)arg1 gestureRecognizerHostView:(id)arg2 showsAttribution:(BOOL)arg3;
+- (id)_commonInitFromIB:(BOOL)arg1 gestureRecognizerHostView:(id)arg2 showsAttribution:(BOOL)arg3 showsAppleLogo:(BOOL)arg4;
 - (void)_configureGestureRecognizers:(id)arg1;
 - (struct CGPoint)_convertCoordinate:(struct CLLocationCoordinate2D)arg1 toPointToView:(id)arg2;
 - (struct CGPoint)_convertMapPoint:(CDStruct_c3b9c2ee)arg1 toPointToView:(id)arg2;
@@ -350,14 +393,13 @@
 - (void)_displayWorld;
 - (double)_distanceFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 fromView:(id)arg3 withPrecision:(long long)arg4;
 - (void)_dropDraggingAnnotationView:(BOOL)arg1;
-- (double)_durationFoCamera:(id)arg1;
+- (double)_durationForCamera:(id)arg1;
 - (void)_endZoomForExternalGesture;
 - (void)_enter3DMode;
 - (void)_enterARMode;
 - (void)_enterARModeWithLocation:(id)arg1;
 - (void)_exit3DMode;
 - (void)_exitARMode;
-- (id)_findLayoutGuideVC;
 - (void)_fixUserLocationFromPresentationValue;
 - (id)_flattenedAnnotationsForAnnotationViews:(id)arg1 maxdisplayPriority:(float *)arg2;
 - (void)_forceFrame;
@@ -366,16 +408,16 @@
 - (void)_goToMapRegion:(id)arg1 duration:(double)arg2 animated:(BOOL)arg3;
 - (void)_goToMapRegion:(id)arg1 duration:(double)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleCompassTap:(id)arg1;
+- (void)_handleLongPressGesture:(id)arg1;
+- (void)_handleSelectGestureToDeselect:(id)arg1;
+- (void)_handleSelectGestureToSelect:(id)arg1;
 - (void)_handleSelectionAtPoint:(struct CGPoint)arg1;
-- (void)_handleStyleDebugGesture:(id)arg1;
-- (void)_handleTapToDeselect:(id)arg1;
-- (void)_handleTapToSelect:(id)arg1;
 - (BOOL)_hasSelectedTransitLines;
 - (BOOL)_iconsShouldAlignToPixels;
-- (id)_initWithFrame:(struct CGRect)arg1 gestureRecognizerHostView:(id)arg2 showsAttribution:(BOOL)arg3;
+- (id)_initWithFrame:(struct CGRect)arg1 gestureRecognizerHostView:(id)arg2 showsAttribution:(BOOL)arg3 showsAppleLogo:(BOOL)arg4;
 - (void)_insertSubview:(id)arg1;
-- (long long)_interfaceOrientation;
-- (void)_invalidateAllOverlayRenderers;
+- (void)_insertSubviewBelowAnnotationContainerView:(id)arg1;
+- (void)_invalidateAllOverlayRendererColors;
 - (BOOL)_isHandlingUserEvent;
 - (BOOL)_isLocationPropagationEnabled;
 - (BOOL)_isUserLocationInView:(BOOL)arg1;
@@ -388,6 +430,7 @@
 - (id)_labelMarkersInCurrentViewport;
 - (id)_labelMarkersInCurrentViewportForType:(int)arg1;
 - (void)_layoutAttribution;
+- (void)_locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
 - (CDStruct_80aa614a)_mapDisplayStyle;
 - (double)_mapKitZoomLevelForVectorKitTileZoomLevel:(double)arg1;
 - (CDStruct_02837cd9)_mapRectWithFraction:(double)arg1 ofVisible:(CDStruct_02837cd9)arg2;
@@ -402,11 +445,11 @@
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_postDidUpdateYawNotification;
 - (void)_prepareFlyoverAnimation:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_registerSceneLifecycleNotifications;
 - (void)_removeCustomFeatureDataSource:(id)arg1;
 - (void)_removePersistentVectorOverlay:(id)arg1;
 - (void)_removeVectorOverlay:(id)arg1;
 - (void)_replaceAnnotation:(id)arg1 withAnnotation:(id)arg2;
-- (void)_restoreViewportFromDictionary:(id)arg1;
 - (void)_resumeFlyoverAnimation;
 - (void)_resumePropagatingEdgeInsets;
 - (void)_resumeUserInteraction;
@@ -414,8 +457,9 @@
 - (BOOL)_roomForCompass;
 - (BOOL)_rotationPossible;
 - (long long)_roundedZoomLevel;
+- (id)_routeInfoForRoute:(id)arg1;
+- (void)_sceneWillEnterForeground:(id)arg1;
 - (void)_selectAnnotation:(id)arg1 animated:(BOOL)arg2;
-- (void)_selectAnnotation:(id)arg1 animated:(BOOL)arg2 avoid:(struct CGRect)arg3;
 - (void)_selectLabelMarker:(id)arg1 animated:(BOOL)arg2;
 - (void)_selectTransitLineMarker:(id)arg1;
 - (void)_selectTransitLineMarkerWithIdentifier:(id)arg1;
@@ -424,25 +468,28 @@
 - (void)_setAlternateRouteContextAnnotationETAComparison:(unsigned char)arg1 forRoute:(id)arg2;
 - (void)_setCamera:(id)arg1;
 - (void)_setCamera:(id)arg1 animated:(BOOL)arg2;
+- (void)_setCamera:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_setCamera:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setCamera:(id)arg1 duration:(double)arg2 springMass:(float)arg3 springStiffness:(float)arg4 springDamping:(float)arg5 springVelocity:(float)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)_setCamera:(id)arg1 duration:(double)arg2 timing:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_setCamera:(id)arg1 duration:(double)arg2 timingCurve:(long long)arg3;
+- (void)_setCamera:(id)arg1 duration:(double)arg2 timingCurve:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_setCamera:(id)arg1 springMass:(float)arg2 springStiffness:(float)arg3 springDamping:(float)arg4 springVelocity:(float)arg5;
+- (void)_setCameraBoundary:(id)arg1 animated:(BOOL)arg2;
+- (void)_setCameraZoomRange:(id)arg1 animated:(BOOL)arg2;
 - (void)_setClearUserLocationOnLocationReset:(BOOL)arg1;
 - (void)_setCompassViewSize:(long long)arg1 style:(long long)arg2;
-- (void)_setCompassVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setCompassVisible:(BOOL)arg1 animated:(BOOL)arg2 force:(BOOL)arg3;
 - (void)_setEdgeInsets:(struct UIEdgeInsets)arg1 explicit:(BOOL)arg2;
 - (void)_setLocationPropagationEnabled:(BOOL)arg1;
 - (void)_setMapDisplayStyle:(CDStruct_80aa614a)arg1;
 - (void)_setMapType:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)_setMapType:(unsigned long long)arg1 onInit:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_setMapType:(unsigned long long)arg1 onInit:(BOOL)arg2 animated:(BOOL)arg3 forceSetting:(BOOL)arg4;
+- (void)_setRouteContextAnnotationFocus:(BOOL)arg1 forRoute:(id)arg2;
 - (void)_setRouteContextAnnotationText:(id)arg1 tollCurrency:(unsigned char)arg2 forRoute:(id)arg3;
 - (void)_setRouteContextForRoute:(id)arg1;
 - (void)_setRouteContextForRoutes:(id)arg1 selectedRouteIndex:(unsigned long long)arg2;
 - (void)_setRouteContextInspectedLegIndex:(unsigned long long)arg1 inspectedStepIndex:(unsigned long long)arg2;
-- (void)_setShowHeadingIndicator:(BOOL)arg1;
-- (void)_setShowsTraffic:(BOOL)arg1;
 - (void)_setTracePlaybackSpeedMultiplier:(double)arg1;
 - (void)_setUseVehicleHeading:(BOOL)arg1;
 - (void)_setUserTrackingMode:(long long)arg1 animated:(BOOL)arg2 fromTrackingButton:(BOOL)arg3;
@@ -450,18 +497,15 @@
 - (void)_setVisibleMapRect:(CDStruct_02837cd9)arg1 duration:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setZoomScale:(double)arg1 centerCoordinate:(struct CLLocationCoordinate2D)arg2 duration:(double)arg3 animated:(BOOL)arg4;
 - (void)_setZoomScale:(double)arg1 centerMapPoint:(CDStruct_c3b9c2ee)arg2 duration:(double)arg3 animated:(BOOL)arg4;
-- (multimap_e5545ed7)_shareSectionsForRoutes:(id)arg1;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (BOOL)_shouldDisplayScaleForCurrentRegion;
-- (BOOL)_showHeadingIndicator;
+- (BOOL)_shouldSupportAlwaysShowHeadingIndicator;
 - (void)_showOrHideScaleIfNecessary:(BOOL)arg1;
-- (BOOL)_showsTraffic;
 - (void)_sizeDidChangeWithCenterCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (void)_sizeWillChange;
 - (void)_snapToNorthIfNecessary;
 - (void)_snapToTrueNorthAndCallBack:(BOOL)arg1;
 - (void)_startEffects;
-- (id)_startEffectsTimer;
 - (void)_startFlyoverTourAnimation:(unsigned long long)arg1 duration:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_startPanningAtPoint:(struct CGPoint)arg1;
 - (void)_startTrackingHeading;
@@ -470,11 +514,14 @@
 - (void)_stopFlyoverAnimation;
 - (void)_stopPanningAtPoint:(struct CGPoint)arg1;
 - (void)_stopTrackingHeading;
-- (BOOL)_supportsVKMapType:(long long)arg1;
+- (BOOL)_supportsVKMapType:(int)arg1;
 - (void)_suspendPropagatingEdgeInsets;
 - (void)_suspendUserInteraction;
 - (id)_transitLineMarkerForIdentifier:(id)arg1;
 - (id)_transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;
+- (void)_unregisterSceneLifecycleNotifications;
+- (void)_updateAppearanceIfNeeded;
+- (void)_updateAppleLogoVisibility;
 - (void)_updateAttribution;
 - (void)_updateCameraState;
 - (void)_updateCompassPosition;
@@ -486,6 +533,7 @@
 - (void)_updateFallbackTileLoading;
 - (void)_updateFromCamera:(id)arg1;
 - (void)_updateFromCamera:(id)arg1 duration:(double)arg2 timing:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_updateGeodHealthConsoleFrameWithEdgeInsets;
 - (void)_updateHeading:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateHeadingIndicatorAnimated:(BOOL)arg1;
 - (void)_updateHeadingOrientation;
@@ -509,10 +557,11 @@
 - (BOOL)_userLocationWithinVisibleMapBounds;
 - (double)_vectorKitTileZoomLevelForMapKitZoomLevel:(double)arg1;
 - (int)_viewIndexForSubview:(id)arg1;
-- (id)_viewportDictionary;
+- (CDUnknownBlockType)_vkTimingFunctionForUIViewAnimationCurve:(long long)arg1;
 - (void)_willChangeRegionAnimated:(BOOL)arg1;
 - (void)_willChangeStatusBarFrame:(id)arg1;
 - (void)_willStartZoom:(BOOL)arg1;
+- (void)_withEffectiveTraitCollection:(CDUnknownBlockType)arg1;
 - (void)_zoomIn;
 - (void)_zoomInWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (double)_zoomLevelForMapRect:(CDStruct_02837cd9)arg1 includeAccessoryPadding:(BOOL)arg2;
@@ -555,22 +604,22 @@
 - (id)annotationManager:(id)arg1 representationForAnnotation:(id)arg2;
 - (BOOL)annotationManager:(id)arg1 shouldAnimateDeselectionOfAnnotation:(id)arg2 forSelectionOfAnnotation:(id)arg3;
 - (void)annotationManager:(id)arg1 willDeselectAnnotationRepresentation:(id)arg2;
+- (void)annotationManagerDidChangeVisibleAnnotationRepresentations:(id)arg1;
 - (CDUnknownBlockType)annotationRectTest;
 - (id)annotationsInMapRect:(CDStruct_02837cd9)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationDidFinishSuspensionSnapshot:(id)arg1;
+- (void)applicationWillEnterForeground:(id)arg1;
 - (void)applicationWillResignActive:(id)arg1;
 - (void)applicationWillTerminate:(id)arg1;
 - (struct CGRect)attributionFrame;
 - (id)beginStoppingEffects;
 - (void)calloutDidAppearForAnnotationView:(id)arg1 inContainer:(id)arg2;
 - (BOOL)calloutViewContainsPoint:(struct CGPoint)arg1;
-- (BOOL)canRotateForHeading;
 - (id)compassView;
 - (id)compassVisibilityAnimation;
 - (BOOL)compassVisible;
-- (void)contentSizeCategoryDidChange:(id)arg1;
 - (struct CGPoint)convertCoordinate:(struct CLLocationCoordinate2D)arg1 toPointToView:(id)arg2;
 - (struct CGRect)convertMapRect:(CDStruct_02837cd9)arg1 toRectToView:(id)arg2;
 - (struct CLLocationCoordinate2D)convertPoint:(struct CGPoint)arg1 toCoordinateFromView:(id)arg2;
@@ -581,6 +630,7 @@
 - (int)currentMapViewTargetForAnalytics;
 - (int)currentUITargetForAnalytics;
 - (void)dealloc;
+- (short)defaultFloorForBuildingsInVenue:(id)arg1;
 - (id)dequeueReusableAnnotationViewWithIdentifier:(id)arg1;
 - (id)dequeueReusableAnnotationViewWithIdentifier:(id)arg1 forAnnotation:(id)arg2;
 - (void)deselectAnnotation:(id)arg1 animated:(BOOL)arg2;
@@ -592,12 +642,10 @@
 - (BOOL)displayedFloorIsDefaultForBuildingsInVenue:(id)arg1;
 - (short)displayedFloorOrdinalForBuildingsInVenue:(id)arg1;
 - (void)drawRect:(struct CGRect)arg1 forViewPrintFormatter:(id)arg2;
-- (BOOL)effectsEnabled;
 - (void)enableMapRotationIfNeeded;
 - (void)encodeWithCoder:(id)arg1;
 - (void)exchangeOverlay:(id)arg1 withOverlay:(id)arg2;
 - (void)exchangeOverlayAtIndex:(unsigned long long)arg1 withOverlayAtIndex:(unsigned long long)arg2;
-- (void)geoDefaultsDidChange:(id)arg1;
 - (struct CGPoint)gestureController:(id)arg1 focusPointForPoint:(struct CGPoint)arg2 gestureKind:(long long)arg3;
 - (BOOL)gestureController:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (double)gestureController:(id)arg1 shouldWaitForNextTapForDuration:(double)arg2 afterTouch:(id)arg3;
@@ -624,8 +672,6 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)goToDefaultLocation;
-- (void)handleLongPress:(id)arg1;
-- (BOOL)hasRenderedSomething;
 - (id)initFromIBWithFrame:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -636,7 +682,6 @@
 - (BOOL)isCurrentlyRotated;
 - (BOOL)isLocationConsoleEnabled;
 - (BOOL)isShowingNoDataPlaceholders;
-- (BOOL)isSuspended;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)locationManager:(id)arg1 didUpdateVehicleHeading:(double)arg2 timestamp:(id)arg3;
@@ -654,40 +699,41 @@
 - (id)mapAttributionWithStringAttributes:(id)arg1 allowMultiLine:(BOOL)arg2;
 - (void)mapLayer:(id)arg1 arSessionWasInterrupted:(unsigned long long)arg2;
 - (void)mapLayer:(id)arg1 arTrackingStateDidChange:(unsigned long long)arg2 reason:(unsigned long long)arg3;
-- (void)mapLayer:(id)arg1 canEnter3DModeDidChange:(BOOL)arg2;
 - (void)mapLayer:(id)arg1 canShowFlyoverDidChange:(BOOL)arg2;
-- (void)mapLayer:(id)arg1 canZoomInDidChange:(BOOL)arg2;
-- (void)mapLayer:(id)arg1 canZoomOutDidChange:(BOOL)arg2;
-- (void)mapLayer:(id)arg1 didBecomePitched:(BOOL)arg2;
-- (void)mapLayer:(id)arg1 didChangeRegionAnimated:(BOOL)arg2;
 - (void)mapLayer:(id)arg1 didEncounterARError:(id)arg2;
 - (void)mapLayer:(id)arg1 didStopFlyoverTourCompleted:(BOOL)arg2;
 - (void)mapLayer:(id)arg1 didUpdateVerticalYawTo:(double)arg2;
 - (void)mapLayer:(id)arg1 flyoverModeDidChange:(int)arg2;
 - (void)mapLayer:(id)arg1 flyoverModeWillChange:(int)arg2;
 - (void)mapLayer:(id)arg1 flyoverTourLabelDidChange:(id)arg2;
-- (id)mapLayer:(id)arg1 presentationForAnnotation:(id)arg2;
 - (void)mapLayer:(id)arg1 selectedLabelMarkerDidChangeState:(id)arg2;
 - (void)mapLayer:(id)arg1 selectedLabelMarkerWillDisappear:(id)arg2;
 - (void)mapLayer:(id)arg1 showingFlyoverDidChange:(BOOL)arg2;
 - (void)mapLayer:(id)arg1 venueWithFocusDidChange:(id)arg2 building:(id)arg3;
-- (void)mapLayer:(id)arg1 willChangeRegionAnimated:(BOOL)arg2;
-- (void)mapLayer:(id)arg1 willTransitionFrom:(long long)arg2 to:(long long)arg3 duration:(double)arg4;
+- (void)mapLayer:(id)arg1 willTransitionTo:(long long)arg2;
 - (void)mapLayerARSessionInterruptionEnded:(id)arg1;
-- (void)mapLayerDidBecomeFullyDrawn:(id)arg1 hasFailedTiles:(BOOL)arg2;
-- (void)mapLayerDidBecomePartiallyDrawn:(id)arg1;
-- (void)mapLayerDidChangeVisibleRegion:(id)arg1;
+- (void)mapLayerCanEnter3DModeDidChange:(BOOL)arg1;
+- (void)mapLayerCanZoomInDidChange:(BOOL)arg1;
+- (void)mapLayerCanZoomOutDidChange:(BOOL)arg1;
+- (void)mapLayerDidBecomePitched:(BOOL)arg1;
+- (void)mapLayerDidChangeRegionAnimated:(BOOL)arg1;
+- (void)mapLayerDidChangeSceneState:(id)arg1 withState:(unsigned long long)arg2;
+- (void)mapLayerDidChangeVisibleRegion;
 - (void)mapLayerDidDraw:(id)arg1;
 - (void)mapLayerDidEnterAR:(id)arg1;
 - (void)mapLayerDidExitAR:(id)arg1;
 - (void)mapLayerDidFailLoadingTiles:(id)arg1 withError:(id)arg2;
-- (void)mapLayerDidFinishInitialTrackingAnimation:(id)arg1;
+- (void)mapLayerDidFinishInitialTrackingAnimation;
 - (void)mapLayerDidFinishLoadingTiles:(id)arg1;
 - (void)mapLayerDidStartLoadingTiles:(id)arg1;
-- (void)mapLayerNavigationCameraDidLeaveDefaultZoom:(id)arg1;
-- (void)mapLayerNavigationCameraDidReturnToDefaultZoom:(id)arg1;
-- (void)mapLayerNavigationCameraHasStartedPanning:(id)arg1;
-- (void)mapLayerNavigationCameraHasStoppedPanning:(id)arg1;
+- (void)mapLayerLabelsDidLayout:(id)arg1;
+- (void)mapLayerMuninAvailabilityDidChange:(long long)arg1;
+- (void)mapLayerNavigationCameraDidLeaveDefaultZoom;
+- (void)mapLayerNavigationCameraDidReturnToDefaultZoom;
+- (void)mapLayerNavigationCameraHasStartedPanning;
+- (void)mapLayerNavigationCameraHasStoppedPanning;
+- (id)mapLayerPresentationForAnnotation:(id)arg1;
+- (void)mapLayerWillChangeRegionAnimated:(BOOL)arg1;
 - (void)mapLayerWillEnterAR:(id)arg1;
 - (void)mapLayerWillStartFlyoverTour:(id)arg1;
 - (CDStruct_02837cd9)mapRectThatFits:(CDStruct_02837cd9)arg1;
@@ -723,9 +769,12 @@
 - (void)setBackdropViewQualityChangingDisabled:(BOOL)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCamera:(id)arg1 animated:(BOOL)arg2;
+- (void)setCamera:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setCamera:(id)arg1 duration:(double)arg2 springMass:(float)arg3 springStiffness:(float)arg4 springDamping:(float)arg5 springVelocity:(float)arg6;
 - (void)setCamera:(id)arg1 duration:(double)arg2 springMass:(float)arg3 springStiffness:(float)arg4 springDamping:(float)arg5 springVelocity:(float)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)setCamera:(id)arg1 springMass:(float)arg2 springStiffness:(float)arg3 springDamping:(float)arg4 springVelocity:(float)arg5;
+- (void)setCameraBoundary:(id)arg1 animated:(BOOL)arg2;
+- (void)setCameraZoomRange:(id)arg1 animated:(BOOL)arg2;
 - (void)setCenter:(struct CGPoint)arg1;
 - (void)setCenterCoordinate:(struct CLLocationCoordinate2D)arg1 animated:(BOOL)arg2;
 - (void)setCenterCoordinate:(struct CLLocationCoordinate2D)arg1 zoomLevel:(double)arg2 animated:(BOOL)arg3;
@@ -737,20 +786,21 @@
 - (void)setLocationConsoleEnabled:(BOOL)arg1;
 - (void)setRegion:(CDStruct_b7cb895d)arg1 animated:(BOOL)arg2;
 - (void)setSelectedVenuePoiFeatureId:(unsigned long long)arg1;
-- (void)setSuspended:(BOOL)arg1;
 - (void)setUserTrackingMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)setVehicleState:(CDStruct_b31ca263)arg1;
 - (void)setVisibleMapRect:(CDStruct_02837cd9)arg1 animated:(BOOL)arg2;
 - (void)setVisibleMapRect:(CDStruct_02837cd9)arg1 edgePadding:(struct UIEdgeInsets)arg2 animated:(BOOL)arg3;
-- (void)set_startEffectsTimer:(id)arg1;
 - (BOOL)shouldHideOffscreenSelectedAnnotation;
 - (void)showAnnotations:(id)arg1 animated:(BOOL)arg2;
 - (void)snapToNorth:(id)arg1;
+- (void)startLinearZoomIn:(BOOL)arg1;
 - (void)startUpdatingUserLocation;
 - (void)stopUpdatingUserLocation;
+- (void)stopZoomingWithInertia;
 - (void)toggleLocationConsole:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLayoutGuides;
+- (void)valueChangedForGEOConfigKey:(CDStruct_35640fce)arg1;
 - (id)venueWithID:(unsigned long long)arg1;
 - (id)viewForAnnotation:(id)arg1;
 - (id)viewForOverlay:(id)arg1;

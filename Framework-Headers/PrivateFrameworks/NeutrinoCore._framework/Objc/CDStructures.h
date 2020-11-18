@@ -4,7 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#pragma mark Blocks
+@class MISSING_TYPE;
+
+#pragma mark Function Pointers and Blocks
+
+typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
@@ -31,16 +35,21 @@ struct CGAffineTransform {
 };
 
 struct CGPoint {
-    double _field1;
-    double _field2;
+    double x;
+    double y;
 };
 
 struct CGRect {
-    struct CGPoint _field1;
-    struct CGSize _field2;
+    struct CGPoint origin;
+    struct CGSize size;
 };
 
 struct CGSize {
+    double width;
+    double height;
+};
+
+struct CGVector {
     double _field1;
     double _field2;
 };
@@ -111,6 +120,10 @@ struct map<unsigned int, std::__1::stack<unsigned int, std::__1::deque<unsigned 
     } __tree_;
 };
 
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 struct unique_ptr<NU::Histogram<long, double>, std::__1::default_delete<NU::Histogram<long, double>>> {
     struct __compressed_pair<NU::Histogram<long, double>*, std::__1::default_delete<NU::Histogram<long, double>>> {
         struct Histogram<long, double> *__value_;
@@ -164,7 +177,16 @@ struct vector<unsigned char, std::__1::allocator<unsigned char>> {
 typedef struct {
     BOOL _field1;
     BOOL _field2;
-} CDStruct_3d581f42;
+    BOOL _field3;
+} CDStruct_2a4d9400;
+
+typedef struct {
+    MISSING_TYPE *_field1[3];
+} CDStruct_d80e62f2;
+
+typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
 
 typedef struct {
     double min;

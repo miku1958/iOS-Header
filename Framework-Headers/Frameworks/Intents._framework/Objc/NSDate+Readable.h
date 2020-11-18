@@ -6,7 +6,19 @@
 
 #import <Foundation/NSDate.h>
 
-@interface NSDate (Readable)
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+#import <Intents/INJSONSerializable-Protocol.h>
+
+@class NSString;
+
+@interface NSDate (Readable) <INJSONSerializable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 @end
 

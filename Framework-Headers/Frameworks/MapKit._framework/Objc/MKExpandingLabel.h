@@ -49,7 +49,7 @@
 - (void)_setExpansionMode:(unsigned long long)arg1;
 - (void)_setTextExclusionPath;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PLAssetContainer-Protocol.h>
 
-@class NSDictionary, NSMutableIndexSet, NSMutableOrderedSet, NSNumber, NSOrderedSet, NSPredicate, NSString, NSURL, UIImage;
+@class NSMutableIndexSet, NSMutableOrderedSet, NSNumber, NSObject, NSOrderedSet, NSPredicate, NSString, NSURL, PLPhotoLibrary;
 
 @protocol PLAlbumProtocol <PLAssetContainer>
 
@@ -35,9 +35,9 @@
 @property (readonly, copy, nonatomic) NSString *name;
 @property (nonatomic) int pendingItemsCount;
 @property (nonatomic) int pendingItemsType;
-@property (readonly, strong, nonatomic) UIImage *posterImage;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
+@property (readonly, strong, nonatomic) NSObject *posterImage;
 @property (readonly, nonatomic) BOOL shouldDeleteWhenEmpty;
-@property (strong, nonatomic) NSDictionary *slideshowSettings;
 @property (readonly, copy, nonatomic) CDUnknownBlockType sortingComparator;
 
 - (void)batchFetchAssets:(NSOrderedSet *)arg1;

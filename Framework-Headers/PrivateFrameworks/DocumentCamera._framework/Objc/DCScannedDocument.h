@@ -16,8 +16,7 @@
 }
 
 @property (strong, nonatomic) NSMutableArray *docInfos; // @synthesize docInfos=_docInfos;
-@property (readonly) unsigned long long numberOfScans;
-@property (readonly) unsigned long long pageCount;
+@property (readonly, nonatomic) unsigned long long pageCount;
 @property (readonly, nonatomic) NSURL *scannedDocumentImageDirectoryURL; // @synthesize scannedDocumentImageDirectoryURL=_scannedDocumentImageDirectoryURL;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
@@ -41,6 +40,7 @@
 - (id)initWithDocInfoCollection:(id)arg1 imageCache:(id)arg2;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (BOOL)makeSureScanDirectoryExists:(id *)arg1;
+- (unsigned long long)numberOfScans;
 - (id)pListURL:(id)arg1;
 - (void)replaceContentsWithDocInfoCollection:(id)arg1 imageCache:(id)arg2;
 - (BOOL)saveToURL:(id)arg1 error:(id *)arg2;

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityAlwaysOrderedFirst;
+- (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityOverridesInvisibility;
 - (void)_adjustDoubleHeightTextVisibility;
 - (void)_finishedSettingStyleWithOldHeight:(double)arg1 newHeight:(double)arg2 animation:(int)arg3;

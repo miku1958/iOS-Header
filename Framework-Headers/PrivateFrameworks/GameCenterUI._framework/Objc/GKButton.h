@@ -24,8 +24,8 @@
 @property (readonly) Class superclass;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)applyTextStyle:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)replayAndApplyStyleWithSystemContentChange:(BOOL)arg1;
 - (void)setAttributedTitle:(id)arg1 forState:(unsigned long long)arg2;

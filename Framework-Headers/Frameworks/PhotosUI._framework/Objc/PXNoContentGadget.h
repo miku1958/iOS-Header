@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXGadget-Protocol.h>
 
-@class NSString, PXContentUnavailableView, PXGadgetSpec;
+@class NSString, PXGadgetSpec, PXNoContentGadgetView;
 @protocol PXGadgetDelegate;
 
 @interface PXNoContentGadget : NSObject <PXGadget>
@@ -16,14 +16,16 @@
     PXGadgetSpec *_gadgetSpec;
     long long _priority;
     id<PXGadgetDelegate> _delegate;
+    NSString *_title;
+    NSString *_message;
     double _contentHeightAdjustment;
-    PXContentUnavailableView *_noContentView;
+    PXNoContentGadgetView *_noContentView;
     double _minimumContentHeight;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (nonatomic) double contentHeightAdjustment; // @synthesize contentHeightAdjustment=_contentHeightAdjustment;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXGadgetDelegate> delegate; // @synthesize delegate=_delegate;
@@ -34,24 +36,25 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (readonly, nonatomic) NSString *localizedTitle;
-@property (copy, nonatomic) NSString *message;
+@property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, nonatomic) double minimumContentHeight; // @synthesize minimumContentHeight=_minimumContentHeight;
-@property (strong, nonatomic) PXContentUnavailableView *noContentView; // @synthesize noContentView=_noContentView;
+@property (strong, nonatomic) PXNoContentGadgetView *noContentView; // @synthesize noContentView=_noContentView;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsAssetsDrop;
 @property (readonly, nonatomic) BOOL supportsHighlighting;
 @property (readonly, nonatomic) BOOL supportsSelection;
-@property (copy, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) struct CGRect visibleContentRect;
 
 - (void).cxx_destruct;
 - (void)configureWithButtonTitle:(id)arg1 buttonAction:(CDUnknownBlockType)arg2;
-- (struct NSObject *)contentView;
 - (BOOL)hasLoadedContentData;
 - (id)init;
 - (id)initWithLocalizedTitle:(id)arg1 localizedMessage:(id)arg2;
 - (id)initWithLocalizedTitle:(id)arg1 localizedMessage:(id)arg2 minimumContentHeight:(double)arg3;
+- (double)preferredHeightForViewController:(struct NSObject *)arg1;
+- (void)prepareCollectionViewItem:(struct UICollectionViewCell *)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

@@ -31,6 +31,7 @@
 - (id)init;
 - (CDStruct_f6aba300)watchAtrialFibrillationDetectionVersion;
 - (id)watchBuildType;
+- (id)watchCompanionDevicePlatform;
 - (CDStruct_f6aba300)watchElectrocardiogramVersion;
 - (id)watchModelNumber;
 - (id)watchOSBuildVersion;

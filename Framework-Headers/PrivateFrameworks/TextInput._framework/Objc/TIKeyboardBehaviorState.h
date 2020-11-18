@@ -16,11 +16,13 @@
     BOOL followsZhuyin;
     BOOL spaceConfirmation;
     BOOL hardwareKeyboardMode;
+    BOOL followsIncompleteRomaji;
     BOOL _hasAutocorrection;
     BOOL _userSelectedCurrentCandidate;
     BOOL _showsCandidatesInLayout;
 }
 
+@property (nonatomic) BOOL followsIncompleteRomaji; // @synthesize followsIncompleteRomaji;
 @property (nonatomic) BOOL followsZhuyin; // @synthesize followsZhuyin;
 @property (nonatomic) BOOL hardwareKeyboardMode; // @synthesize hardwareKeyboardMode;
 @property (nonatomic) BOOL hasAutocorrection; // @synthesize hasAutocorrection=_hasAutocorrection;

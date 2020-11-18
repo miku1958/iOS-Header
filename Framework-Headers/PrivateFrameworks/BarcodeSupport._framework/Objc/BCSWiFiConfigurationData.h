@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface BCSWiFiConfigurationData : NSObject <BCSParsedDataPrivate>
 {
     BOOL _WEP;
+    BOOL _hidden;
     NSString *_ssid;
     NSString *_password;
 }
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *extraPreviewText;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, copy, nonatomic) NSString *ssid; // @synthesize ssid=_ssid;
 @property (readonly) Class superclass;
@@ -32,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSSID:(id)arg1 isWEP:(BOOL)arg2 password:(id)arg3;
+- (id)initWithSSID:(id)arg1 isWEP:(BOOL)arg2 password:(id)arg3 isHidden:(BOOL)arg4;
 
 @end
 

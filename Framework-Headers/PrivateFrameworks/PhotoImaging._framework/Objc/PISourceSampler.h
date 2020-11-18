@@ -6,9 +6,15 @@
 
 #import <NeutrinoCore/NUColorSampler.h>
 
-@interface PISourceSampler : NUColorSampler
+#import <PhotoImaging/PITagColorSampler-Protocol.h>
+
+@class NSString;
+
+@interface PISourceSampler : NUColorSampler <PITagColorSampler>
 {
 }
+
+@property (readonly, nonatomic) NSString *tag;
 
 - (id)_pipelineFilters;
 

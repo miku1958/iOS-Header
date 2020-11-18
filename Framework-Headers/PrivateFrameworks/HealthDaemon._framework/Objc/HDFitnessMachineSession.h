@@ -30,6 +30,7 @@
     unsigned long long _machineState;
     NSDate *_machineStartDate;
     NSDate *_machineStateUpdateDate;
+    NSDate *_machinePreferredUntilDate;
     NSArray *_oobDataArray;
 }
 
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) HDEnhancedFTMSData *initialEnhancedFTMSData; // @synthesize initialEnhancedFTMSData=_initialEnhancedFTMSData;
 @property (strong, nonatomic) HDFitnessMachineDataCharacteristicBase *initialMachineData; // @synthesize initialMachineData=_initialMachineData;
 @property (strong, nonatomic) HDFitnessMachineStatus *initialMachineStatus; // @synthesize initialMachineStatus=_initialMachineStatus;
+@property (strong, nonatomic) NSDate *machinePreferredUntilDate; // @synthesize machinePreferredUntilDate=_machinePreferredUntilDate;
 @property (strong, nonatomic) NSDate *machineStartDate; // @synthesize machineStartDate=_machineStartDate;
 @property (nonatomic) unsigned long long machineState; // @synthesize machineState=_machineState;
 @property (strong, nonatomic) NSDate *machineStateUpdateDate; // @synthesize machineStateUpdateDate=_machineStateUpdateDate;

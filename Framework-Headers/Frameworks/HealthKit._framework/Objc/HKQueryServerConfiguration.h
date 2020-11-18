@@ -6,19 +6,24 @@
 
 #import <HealthKit/HKTaskConfiguration.h>
 
-@class HKObjectType, _HKFilter;
+@class HKObjectType, NSString, _HKFilter;
 
-__attribute__((visibility("hidden")))
 @interface HKQueryServerConfiguration : HKTaskConfiguration
 {
     BOOL _shouldDeactivateAfterInitialResults;
     BOOL _shouldSuppressDataCollection;
     HKObjectType *_objectType;
+    NSString *_debugIdentifier;
     _HKFilter *_filter;
+    long long _qualityOfService;
+    double _activationTime;
 }
 
+@property (nonatomic) double activationTime; // @synthesize activationTime=_activationTime;
+@property (copy, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
 @property (strong, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
-@property (strong, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
+@property (copy, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
+@property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (nonatomic) BOOL shouldDeactivateAfterInitialResults; // @synthesize shouldDeactivateAfterInitialResults=_shouldDeactivateAfterInitialResults;
 @property (nonatomic) BOOL shouldSuppressDataCollection; // @synthesize shouldSuppressDataCollection=_shouldSuppressDataCollection;
 
@@ -26,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

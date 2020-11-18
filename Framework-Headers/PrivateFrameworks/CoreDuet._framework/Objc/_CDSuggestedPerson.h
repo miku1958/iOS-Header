@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactProperty, NSArray, _CDContact;
+@class NSArray, NSString, _CDContact;
 
 @interface _CDSuggestedPerson : NSObject
 {
-    CNContactProperty *_contactProperty;
     _CDContact *_contact;
+    NSString *_interactionBundleID;
     double _rank;
     double _score;
     NSArray *_interactions;
 }
 
 @property (strong) _CDContact *contact; // @synthesize contact=_contact;
-@property (strong) CNContactProperty *contactProperty; // @synthesize contactProperty=_contactProperty;
+@property (strong) NSString *interactionBundleID; // @synthesize interactionBundleID=_interactionBundleID;
 @property (strong) NSArray *interactions; // @synthesize interactions=_interactions;
 @property double rank; // @synthesize rank=_rank;
 @property double score; // @synthesize score=_score;

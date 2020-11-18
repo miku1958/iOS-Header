@@ -33,7 +33,6 @@
 @property (nonatomic) BOOL isOverApp; // @synthesize isOverApp=_isOverApp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL readerTextAvailable; // @synthesize readerTextAvailable=_readerTextAvailable;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;

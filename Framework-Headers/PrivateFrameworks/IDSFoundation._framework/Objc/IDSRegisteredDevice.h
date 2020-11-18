@@ -9,17 +9,21 @@
 #import <IDSFoundation/NSCopying-Protocol.h>
 #import <IDSFoundation/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSArray, NSData, NSString;
 
 @interface IDSRegisteredDevice : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_name;
     NSString *_hardwareVersion;
     NSData *_pushToken;
+    NSArray *_URIs;
+    NSData *_publicDeviceIdentity;
 }
 
+@property (readonly, nonatomic) NSArray *URIs; // @synthesize URIs=_URIs;
 @property (readonly, nonatomic) NSString *hardwareVersion; // @synthesize hardwareVersion=_hardwareVersion;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSData *publicDeviceIdentity; // @synthesize publicDeviceIdentity=_publicDeviceIdentity;
 @property (readonly, nonatomic) NSData *pushToken; // @synthesize pushToken=_pushToken;
 
 + (id)registeredDeviceFromDependentRegistrationDictionary:(id)arg1;
@@ -30,7 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithName:(id)arg1 hardwareVersion:(id)arg2 pushToken:(id)arg3;
+- (id)initWithName:(id)arg1 hardwareVersion:(id)arg2 pushToken:(id)arg3 URIs:(id)arg4 publicDeviceIdentity:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRegisteredDevice:(id)arg1;
 

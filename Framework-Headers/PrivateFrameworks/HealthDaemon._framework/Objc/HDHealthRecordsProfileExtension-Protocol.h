@@ -4,7 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@protocol HDHealthRecordsAccountEventObserver;
+
 @protocol HDHealthRecordsProfileExtension
+- (void)addAccountEventObserver:(id<HDHealthRecordsAccountEventObserver>)arg1;
 - (BOOL)deviceConfigurationSupportsHealthRecords:(BOOL *)arg1 error:(id *)arg2;
+- (BOOL)hasAccounts:(BOOL *)arg1 error:(id *)arg2;
+- (void)removeAccountEventObserver:(id<HDHealthRecordsAccountEventObserver>)arg1;
 @end
 

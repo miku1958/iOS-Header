@@ -21,13 +21,22 @@
 
 @property (strong) NSString *addressMapping; // @synthesize addressMapping=_addressMapping;
 @property (strong) NSString *dateMapping; // @synthesize dateMapping=_dateMapping;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) NSString *emailMapping; // @synthesize emailMapping=_emailMapping;
+@property (readonly) unsigned long long hash;
 @property (strong) NSString *phoneMapping; // @synthesize phoneMapping=_phoneMapping;
+@property (readonly) Class superclass;
 @property (strong) NSString *targetMapping; // @synthesize targetMapping=_targetMapping;
 
 + (id)withTargetMapping:(id)arg1 phoneMapping:(id)arg2 emailMapping:(id)arg3 addressMapping:(id)arg4 andDateMapping:(id)arg5;
 - (void).cxx_destruct;
+- (id)extendMatchArray:(id)arg1 withTarget:(id)arg2;
+- (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)initWithTargetMapping:(id)arg1 phoneMapping:(id)arg2 emailMapping:(id)arg3 addressMapping:(id)arg4 andDateMapping:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToEntityMatchingTransformer:(id)arg1;
+- (id)toPlistWithChunks:(id)arg1;
 - (id)transform:(id)arg1;
 
 @end

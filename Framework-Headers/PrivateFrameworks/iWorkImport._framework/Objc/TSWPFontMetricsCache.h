@@ -23,11 +23,11 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (CDStruct_5b0a1db3)fontHeightInfoForFont:(struct __CTFont *)arg1;
+- (struct TSWPFontHeightInfo)fontHeightInfoForFont:(struct __CTFont *)arg1;
 - (id)init;
-- (void)p_addEntryForFont:(struct __CTFont *)arg1 heightInfo:(const CDStruct_5b0a1db3 *)arg2 widths:(unsigned long long)arg3;
-- (BOOL)p_findEntryForFont:(struct __CTFont *)arg1 outHeightInfo:(out CDStruct_5b0a1db3 *)arg2 outWidths:(out unsigned long long *)arg3 outCollision:(out BOOL *)arg4;
-- (CDStruct_5b0a1db3)p_fontHeightInfoForFont:(struct __CTFont *)arg1 outWidths:(out unsigned long long *)arg2;
+- (void)p_addEntryForFont:(struct __CTFont *)arg1 heightInfo:(const struct TSWPFontHeightInfo *)arg2 widths:(unsigned long long)arg3;
+- (BOOL)p_findEntryForFont:(struct __CTFont *)arg1 outHeightInfo:(out struct TSWPFontHeightInfo *)arg2 outWidths:(out unsigned long long *)arg3 outCollision:(out BOOL *)arg4;
+- (struct TSWPFontHeightInfo)p_fontHeightInfoForFont:(struct __CTFont *)arg1 outWidths:(out unsigned long long *)arg2;
 - (unsigned long long)supportedFractionalWidthsForFont:(struct __CTFont *)arg1;
 
 @end

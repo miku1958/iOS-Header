@@ -15,14 +15,18 @@
 
 + (id)compoundFilterWithFilter:(id)arg1 otherFilter:(id)arg2;
 + (id)falseFilter;
++ (BOOL)filter:(id)arg1 acceptsActivitySummary:(id)arg2;
 + (BOOL)filter:(id)arg1 acceptsDataObject:(id)arg2;
++ (BOOL)filter:(id)arg1 acceptsDataObjectWithStartTimestamp:(double)arg2 endTimestamp:(double)arg3 valueInCanonicalUnit:(double)arg4;
 + (id)filterByCombiningFilters:(id)arg1 compoundType:(unsigned long long)arg2;
 + (id)filterForKeyPath:(id)arg1 predicateOperatorType:(unsigned long long)arg2 value:(id)arg3 dataTypes:(id)arg4;
 + (BOOL)supportsSecureCoding;
 + (id)trueFilter;
 - (id)_copyWithZone:(struct _NSZone *)arg1 subfilters:(id)arg2;
 - (id)_subfilters;
+- (BOOL)acceptsActivitySummary:(id)arg1;
 - (BOOL)acceptsDataObject:(id)arg1;
+- (BOOL)acceptsDataObjectWithStartTimestamp:(double)arg1 endTimestamp:(double)arg2 valueInCanonicalUnit:(double)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)filterByApplyingTransformation:(CDUnknownBlockType)arg1;

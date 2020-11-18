@@ -16,6 +16,7 @@
 
 @property (nonatomic) BOOL backedByVirtualAllSearchMailbox; // @synthesize backedByVirtualAllSearchMailbox=_backedByVirtualAllSearchMailbox;
 
+- (void).cxx_destruct;
 - (id)_additionalHeadersForAction:(int)arg1 ofMessage:(id)arg2;
 - (id)_downloadHeadersForMessages:(id)arg1;
 - (id)_fetchBodyDataForMessage:(id)arg1 andHeaderDataIfReadilyAvailable:(id *)arg2 downloadIfNecessary:(BOOL)arg3 partial:(BOOL *)arg4;
@@ -27,20 +28,19 @@
 - (id)additionalHeadersForForwardOfMessage:(id)arg1;
 - (id)additionalHeadersForReplyOfMessage:(id)arg1;
 - (BOOL)allowsAppend;
-- (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2 newMessageIDs:(id)arg3 newMessages:(id)arg4 flagsToSet:(id)arg5;
 - (id)bestAlternativeForPart:(id)arg1;
 - (BOOL)bodyFetchRequiresNetworkActivity;
 - (BOOL)canFetchSearchResults;
-- (id)copyOfAllMessagesForBodyLoadingFromRowID:(unsigned int)arg1 limit:(unsigned int)arg2;
+- (id)copyOfAllMessagesForBodyLoadingFromRowID:(long long)arg1 limit:(unsigned int)arg2;
 - (id)defaultAlternativeForPart:(id)arg1;
 - (void)deleteMessagesOlderThanNumberOfDays:(int)arg1 compact:(BOOL)arg2;
+- (id)fetchBodyDataForRemoteID:(id)arg1;
 - (long long)fetchMessagesMatchingCriterion:(id)arg1 limit:(unsigned int)arg2;
 - (long long)fetchNumMessages:(unsigned long long)arg1 preservingUID:(id)arg2 options:(unsigned long long)arg3;
 - (unsigned long long)fetchWindow;
 - (unsigned long long)growFetchWindow;
 - (BOOL)hasMoreFetchableMessages;
 - (id)initWithMailboxUid:(id)arg1 readOnly:(BOOL)arg2;
-- (void)issueFlagUpdates:(id)arg1 forMessages:(id)arg2;
 - (id)loadMeetingDataForMessage:(id)arg1;
 - (id)loadMeetingExternalIDForMessage:(id)arg1;
 - (id)loadMeetingMetadataForMessage:(id)arg1;
@@ -48,15 +48,12 @@
 - (id)messageForRemoteID:(id)arg1;
 - (id)messageForRemoteID:(id)arg1 inMailbox:(id)arg2;
 - (void)purgeMessagesBeyondLimit:(unsigned long long)arg1 keepingMessage:(id)arg2;
+- (BOOL)replayFlagChange:(id)arg1 forRemoteIDs:(id)arg2 error:(id *)arg3;
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;
-- (id)setFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
-- (void)setServerFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (BOOL)shouldDownloadBodyDataForMessage:(id)arg1;
 - (BOOL)shouldGrowFetchWindow;
-- (BOOL)shouldSetSummaryForMessage:(id)arg1;
 - (id)storeSearchResultMatchingSearchText:(id)arg1 criterion:(id)arg2 limit:(unsigned int)arg3 offset:(id)arg4 error:(id *)arg5;
 - (BOOL)wantsLineEndingConversionForMIMEPart:(id)arg1;
-- (id)willSetFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 
 @end
 

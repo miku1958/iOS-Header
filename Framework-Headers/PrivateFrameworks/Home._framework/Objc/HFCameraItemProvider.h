@@ -6,20 +6,26 @@
 
 #import <Home/HFItemProvider.h>
 
-@class HMHome, NSMutableSet;
+@class HMHome, HMRoom, NSMutableSet;
 
 @interface HFCameraItemProvider : HFItemProvider
 {
+    BOOL _onlyShowsFavorites;
     CDUnknownBlockType _filter;
     HMHome *_home;
+    HMRoom *_room;
     NSMutableSet *_cameraItems;
 }
 
 @property (strong, nonatomic) NSMutableSet *cameraItems; // @synthesize cameraItems=_cameraItems;
 @property (copy, nonatomic) CDUnknownBlockType filter; // @synthesize filter=_filter;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (nonatomic) BOOL onlyShowsFavorites; // @synthesize onlyShowsFavorites=_onlyShowsFavorites;
+@property (strong, nonatomic) HMRoom *room; // @synthesize room=_room;
 
 - (void).cxx_destruct;
+- (CDUnknownBlockType)_favoriteFilter;
+- (CDUnknownBlockType)_roomFilter;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1;

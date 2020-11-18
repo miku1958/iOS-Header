@@ -57,6 +57,7 @@
 - (id)parametersToObscure;
 - (id)phoneNumber;
 - (id)propertiesToObscure;
+- (id)sanitizeAddressString:(id)arg1;
 - (void)setURL:(id)arg1;
 - (void)setX_calendarserver_email:(id)arg1;
 - (BOOL)shouldObscureValue;

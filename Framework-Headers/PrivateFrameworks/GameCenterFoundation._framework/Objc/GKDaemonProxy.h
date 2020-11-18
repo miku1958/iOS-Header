@@ -70,6 +70,7 @@
 - (id)interfaceLookup;
 - (id)invocationQueue;
 - (void)loadRemoteImageDataForClientForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (oneway void)localPlayerAcceptedCustomTournamentInvite;
 - (id)localizedMessageFromDictionary:(id)arg1 forBundleID:(id)arg2;
 - (oneway void)processQuickAction:(id)arg1;
 - (oneway void)receivedChallengeSelected:(id)arg1;

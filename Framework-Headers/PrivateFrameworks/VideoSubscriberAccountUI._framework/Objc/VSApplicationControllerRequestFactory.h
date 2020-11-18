@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)_attributeQuerySAMLRequestStringWithAttributeNames:(id)arg1 channelID:(id)arg2 authenticationToken:(id)arg3 error:(id *)arg4;
 + (id)_authNRequestSAMLStringWithAuthenticationToken:(id)arg1 forced:(BOOL)arg2 error:(id *)arg3;
 + (id)_logoutSAMLRequestStringWithError:(id *)arg1;
+- (id)STBOptOutApplicationControllerRequest;
 - (id)accountMetadataApplicationControllerRequestWithAccountMetadataRequest:(id)arg1 authenticationToken:(id)arg2;
 - (id)authenticationApplicationControllerRequestWithAuthenticationToken:(id)arg1 forcedAuthentication:(BOOL)arg2;
 - (id)logoutApplicationControllerRequestWithAuthenticationToken:(id)arg1;

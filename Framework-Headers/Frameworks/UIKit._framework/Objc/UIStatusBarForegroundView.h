@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarForegroundView : UIView <UIAccessibilityHUDGestureDelegate>
 {
     BOOL _usesVerticalLayout;
-    BOOL _itemIsEnabled[47];
+    BOOL _itemIsEnabled[48];
     UIStatusBarLayoutManager *_layoutManagers[3];
     int _ignoreDataLevel;
     NSMutableArray *_actionAnimationStack;

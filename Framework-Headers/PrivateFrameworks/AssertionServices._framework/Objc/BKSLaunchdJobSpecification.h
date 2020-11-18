@@ -21,6 +21,7 @@
     NSArray *_arguments;
     NSArray *_machServices;
     NSDictionary *_environment;
+    NSString *_managedPersona;
     NSString *_standardOutput;
     NSString *_standardError;
     unsigned long long _executionOptions;
@@ -37,14 +38,15 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *labelPrefix; // @synthesize labelPrefix=_labelPrefix;
 @property (copy, nonatomic) NSArray *machServices; // @synthesize machServices=_machServices;
+@property (copy, nonatomic) NSString *managedPersona; // @synthesize managedPersona=_managedPersona;
 @property (copy, nonatomic) NSString *standardError; // @synthesize standardError=_standardError;
 @property (copy, nonatomic) NSString *standardOutput; // @synthesize standardOutput=_standardOutput;
 @property (readonly) Class superclass;
 
 + (id)specification;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;

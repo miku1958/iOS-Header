@@ -33,8 +33,9 @@
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_enumerateDataForLead:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_setPayload:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateDataForLead:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;

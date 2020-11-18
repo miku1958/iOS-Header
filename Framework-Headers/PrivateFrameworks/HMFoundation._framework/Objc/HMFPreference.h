@@ -14,6 +14,7 @@
     NSString *_key;
     unsigned long long _options;
     id<NSObject> _value;
+    HMFPreference *_parent;
 }
 
 @property (readonly, nonatomic) BOOL boolValue;
@@ -21,6 +22,7 @@
 @property (readonly) NSString *key; // @synthesize key=_key;
 @property (readonly, copy, nonatomic) NSNumber *numberValue;
 @property (readonly) unsigned long long options; // @synthesize options=_options;
+@property (readonly, weak) HMFPreference *parent; // @synthesize parent=_parent;
 @property (readonly, copy, nonatomic) NSString *stringValue;
 @property (copy) id<NSObject> value; // @synthesize value=_value;
 
@@ -28,6 +30,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithKey:(id)arg1 options:(unsigned long long)arg2 defaultValue:(id)arg3;
+- (id)initWithKey:(id)arg1 options:(unsigned long long)arg2 defaultValue:(id)arg3 parent:(id)arg4;
 - (id)shortDescription;
 
 @end

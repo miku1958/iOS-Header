@@ -21,9 +21,9 @@ __attribute__((visibility("hidden")))
 + (void)initialize;
 + (BOOL)isAnimationTestingEnabled;
 + (BOOL)isCustomEffectTimingCurveEditingEnabled;
++ (BOOL)isDiscreteGPUAquisitionDisabled;
 + (BOOL)isDiscreteGPUNeededInShow:(id)arg1;
 + (BOOL)isDisplayLoggingEnabled;
-+ (BOOL)isFPSGraphEnabled;
 + (BOOL)isFPSLoggingEnabled;
 + (BOOL)isFPSLoggingTimerDisabled;
 + (BOOL)isGLStateValidationEnabled;

@@ -11,6 +11,10 @@
 }
 
 + (id)DKKnowledgeTestDirectoryString;
++ (id)bundleBuiltInPlugInsPath;
++ (id)bundlePathForResource:(id)arg1 ofType:(id)arg2;
++ (id)contentProviderBundlePaths;
++ (id)contentProvidersPath;
 + (id)defaultSleepPath;
 + (id)eventPlistPath;
 + (id)interactionCopyDirectory;
@@ -21,7 +25,6 @@
 + (id)otaSleepPath;
 + (id)peopleDirectory;
 + (id)policiesConfigPath;
-+ (id)privateEventPlistPath;
 + (id)simulatorHomePathFor:(id)arg1;
 + (id)simulatorSharedPathFor:(id)arg1;
 + (id)simulatorSystemPathFor:(id)arg1 withEnvVar:(id)arg2;

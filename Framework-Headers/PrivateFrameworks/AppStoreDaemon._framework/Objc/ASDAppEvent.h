@@ -9,42 +9,56 @@
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSString;
+@class NSArray, NSDate, NSNumber, NSString;
 
 @interface ASDAppEvent : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _hasBeenPosted;
     BOOL _isBeta;
+    NSString *_accountID;
     NSString *_bundleID;
     NSString *_bundleVersion;
     NSString *_cohort;
     NSString *_deviceVendorID;
+    long long _duration;
     long long _foregroundUsage;
+    NSArray *_foregroundUsageEvents;
     long long _count;
     NSDate *_date;
     long long _eventSubtype;
+    NSNumber *_eventTime;
     long long _eventType;
     NSNumber *_evid;
     NSNumber *_itemID;
     NSString *_itemName;
     NSString *_shortVersion;
+    NSNumber *_startTime;
     NSNumber *_storefront;
+    NSString *_weekStartDate;
 }
 
+@property (copy, nonatomic) NSString *accountID; // @synthesize accountID=_accountID;
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (copy, nonatomic) NSString *cohort; // @synthesize cohort=_cohort;
 @property (nonatomic) long long count; // @synthesize count=_count;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (copy, nonatomic) NSString *deviceVendorID; // @synthesize deviceVendorID=_deviceVendorID;
+@property (nonatomic) long long duration; // @synthesize duration=_duration;
 @property (nonatomic) long long eventSubtype; // @synthesize eventSubtype=_eventSubtype;
+@property (copy, nonatomic) NSNumber *eventTime; // @synthesize eventTime=_eventTime;
 @property (nonatomic) long long eventType; // @synthesize eventType=_eventType;
 @property (copy, nonatomic) NSNumber *evid; // @synthesize evid=_evid;
 @property (nonatomic) long long foregroundUsage; // @synthesize foregroundUsage=_foregroundUsage;
+@property (copy, nonatomic) NSArray *foregroundUsageEvents; // @synthesize foregroundUsageEvents=_foregroundUsageEvents;
+@property (nonatomic) BOOL hasBeenPosted; // @synthesize hasBeenPosted=_hasBeenPosted;
 @property (nonatomic) BOOL isBeta; // @synthesize isBeta=_isBeta;
 @property (copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
 @property (copy, nonatomic) NSString *shortVersion; // @synthesize shortVersion=_shortVersion;
+@property (copy, nonatomic) NSNumber *startTime; // @synthesize startTime=_startTime;
 @property (copy, nonatomic) NSNumber *storefront; // @synthesize storefront=_storefront;
+@property (copy, nonatomic) NSString *weekStartDate; // @synthesize weekStartDate=_weekStartDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

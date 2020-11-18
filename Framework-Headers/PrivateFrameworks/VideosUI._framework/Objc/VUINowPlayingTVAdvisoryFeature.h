@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double duration;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isSkippable) BOOL skippable;
-@property (readonly, nonatomic) double startTime;
+@property (nonatomic) double startTime;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type;
 @property (strong, nonatomic) id userInfo;

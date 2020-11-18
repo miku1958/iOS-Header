@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, VCMediaNegotiatorAudioResults, VCMediaNegotiatorCaptionsResults, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorMomentsResults, VCMediaNegotiatorResults, VCMediaNegotiatorVideoResults;
+@class NSArray, NSMutableArray, VCMediaNegotiatorAudioResults, VCMediaNegotiatorCaptionsResults, VCMediaNegotiatorFaceTimeSettingsResults, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorMomentsResults, VCMediaNegotiatorResults, VCMediaNegotiatorVideoResults;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiator : NSObject
@@ -21,49 +21,63 @@ __attribute__((visibility("hidden")))
     VCMediaNegotiatorVideoResults *_negotiatedScreenSettings;
     VCMediaNegotiatorCaptionsResults *_negotiatedCaptionsSettings;
     VCMediaNegotiatorMomentsResults *_negotiatedMomentsSettings;
+    VCMediaNegotiatorFaceTimeSettingsResults *_negotiatedFaceTimeSettings;
     NSMutableArray *_negotiatedMultiwayAudioStreams;
     NSMutableArray *_negotiatedMultiwayVideoStreams;
+    long long _negotiationMode;
 }
 
 @property (readonly, nonatomic) BOOL isCaller;
 @property (readonly, nonatomic) VCMediaNegotiatorLocalConfiguration *localSettings; // @synthesize localSettings=_localSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorAudioResults *negotiatedAudioSettings; // @synthesize negotiatedAudioSettings=_negotiatedAudioSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorCaptionsResults *negotiatedCaptionsSettings; // @synthesize negotiatedCaptionsSettings=_negotiatedCaptionsSettings;
+@property (readonly, nonatomic) VCMediaNegotiatorFaceTimeSettingsResults *negotiatedFaceTimeSettings; // @synthesize negotiatedFaceTimeSettings=_negotiatedFaceTimeSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorMomentsResults *negotiatedMomentsSettings; // @synthesize negotiatedMomentsSettings=_negotiatedMomentsSettings;
 @property (readonly, nonatomic) NSArray *negotiatedMultiwayAudioStreams; // @synthesize negotiatedMultiwayAudioStreams=_negotiatedMultiwayAudioStreams;
 @property (readonly, nonatomic) NSArray *negotiatedMultiwayVideoStreams; // @synthesize negotiatedMultiwayVideoStreams=_negotiatedMultiwayVideoStreams;
 @property (readonly, nonatomic) VCMediaNegotiatorVideoResults *negotiatedScreenSettings; // @synthesize negotiatedScreenSettings=_negotiatedScreenSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorResults *negotiatedSettings; // @synthesize negotiatedSettings=_negotiatedSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorVideoResults *negotiatedVideoSettings; // @synthesize negotiatedVideoSettings=_negotiatedVideoSettings;
+@property (readonly, nonatomic) long long negotiationMode; // @synthesize negotiationMode=_negotiationMode;
 @property (readonly, nonatomic) BOOL usePreNegotiation; // @synthesize usePreNegotiation=_usePreNegotiation;
 
++ (void)dumpBlob:(id)arg1 prefix:(id)arg2 force:(BOOL)arg3;
++ (int)imageTypeBlobSettingsFromSet:(id)arg1;
++ (id)localConfigurationWithData:(id)arg1 deviceRole:(int)arg2 preferredAudioPayload:(int)arg3;
 + (id)negotiationBlobFromData:(id)arg1;
 + (id)newCompressedBlob:(id)arg1;
 + (id)newDecompressedBlob:(id)arg1;
-- (BOOL)addBandwidthSettingsForMediaBlob:(id)arg1 operatingMode:(int)arg2 connectionType:(int)arg3;
-- (int)bandwidthConfigurationWithOperatingMode:(int)arg1 connectionType:(int)arg2;
++ (BOOL)validateLocalConfiguration:(id)arg1;
++ (BOOL)validateMultiwayAudioStreamConfigurations:(id)arg1;
++ (BOOL)validateMultiwayVideoStreamConfigurations:(id)arg1;
++ (int)videoCodecBlobSettingsFromSet:(id)arg1;
+- (BOOL)addBandwidthSettingsForMediaBlob:(id)arg1 operatingMode:(int)arg2 connectionType:(int)arg3 maxBitrate:(unsigned int)arg4;
 - (BOOL)canDecodeVideo:(id)arg1;
 - (BOOL)canEncodeVideo:(id)arg1;
 - (void)dealloc;
-- (void)dumpBlob:(id)arg1 prefix:(id)arg2;
 - (id)getPreferredScreenPayloadList;
 - (id)getPreferredVideoPayloadList:(id)arg1;
 - (id)initWithLocalSettings:(id)arg1;
+- (id)initWithMode:(long long)arg1 localSettings:(id)arg2;
 - (BOOL)isCellular16x9EncodeCapable;
 - (BOOL)isVideoStreamSupported:(int)arg1;
+- (id)localeWithMediaBlobLanguage:(int)arg1;
+- (int)mediaBlobLanguageWithLocale:(id)arg1;
 - (void)negotiateAudioAllowRecording:(id)arg1;
 - (BOOL)negotiateAudioDTXPayload:(id)arg1;
 - (BOOL)negotiateAudioPrimaryPayload:(id)arg1;
 - (BOOL)negotiateAudioREDPayload:(id)arg1;
 - (void)negotiateAudioSecondaryPayloads:(id)arg1;
 - (BOOL)negotiateAudioSettings:(id)arg1;
-- (void)negotiateAudioUseSBR:(id)arg1 audioRuleCollection:(id)arg2;
+- (void)negotiateAudioUseSBR:(id)arg1;
 - (BOOL)negotiateCaptionsWithCaptionsSettings:(id)arg1;
+- (BOOL)negotiateFaceTimeSettings:(id)arg1;
 - (BOOL)negotiateMomentsWithMomentsSettings:(id)arg1;
 - (BOOL)negotiateMultiwayAudioStreams:(id)arg1;
 - (BOOL)negotiateMultiwayVideoStreams:(id)arg1;
 - (void)negotiateRTCPFB:(id)arg1;
 - (BOOL)negotiateScreenSettings:(id)arg1;
+- (void)negotiateTilesPerFrame:(id)arg1;
 - (id)negotiateVideoMaxResolutionWithEncodeRules:(id)arg1 decodeRules:(id)arg2 isEncoder:(BOOL)arg3;
 - (BOOL)negotiateVideoSettings:(id)arg1;
 - (id)negotiatedFeaturesStringWithLocalFeaturesString:(id)arg1 remoteFeaturesString:(id)arg2;
@@ -74,16 +88,20 @@ __attribute__((visibility("hidden")))
 - (BOOL)processResponseBlob:(id)arg1;
 - (unsigned int)remoteMaxBandwidthForOperatingMode:(int)arg1 connectionType:(int)arg2;
 - (void)saveRemoteBandwidthSettingsWithMediaBlob:(id)arg1;
+- (BOOL)selectBestScreenRule:(id)arg1 preferredPayloadOrder:(id)arg2;
 - (BOOL)selectBestVideoRuleForTransport:(unsigned char)arg1 payload:(int)arg2 encodingType:(unsigned char)arg3 localVideoRuleCollection:(id)arg4 remoteVideoSettings:(id)arg5 negotiatedVideoSettings:(id)arg6 isScreen:(BOOL)arg7;
 - (id)selectVideoFeatureString:(id)arg1 selectedPayload:(int)arg2;
 - (BOOL)setupAudioWithNegotiatedSettings:(id)arg1;
 - (BOOL)setupBandwidthSettingsForMediaBlob:(id)arg1;
 - (void)setupCaptionsForMediaBlob:(id)arg1;
+- (void)setupFaceTimeSettingsForMediaBlob:(id)arg1 isResponse:(BOOL)arg2;
 - (void)setupMomentsForMediaBlob:(id)arg1;
 - (void)setupMultiwayAudioStreamsForMediaBlob:(id)arg1;
 - (void)setupMultiwayVideoStreamsForMediaBlob:(id)arg1;
 - (BOOL)setupScreenWithNegotiatedSettings:(id)arg1;
 - (BOOL)setupVideoWithNegotiatedSettings:(id)arg1;
+- (BOOL)supportsHEIFEncoding;
+- (BOOL)supportsHEVCEncoding;
 
 @end
 

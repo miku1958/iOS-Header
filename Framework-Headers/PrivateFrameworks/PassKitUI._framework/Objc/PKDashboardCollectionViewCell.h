@@ -12,6 +12,7 @@
 {
     UIView *_separatorView;
     BOOL _showsBottomSeparator;
+    BOOL _bottomSeparatorVisible;
     unsigned long long _maskType;
     struct CGRect _previousMaskBounds;
     unsigned long long _previousMaskType;
@@ -27,8 +28,11 @@
 @property (nonatomic) BOOL wantsCustomAppearance; // @synthesize wantsCustomAppearance=_wantsCustomAppearance;
 @property (nonatomic) BOOL wantsDefaultHighlightBehavior; // @synthesize wantsDefaultHighlightBehavior=_wantsDefaultHighlightBehavior;
 
++ (id)defaultBackgroundColor;
 + (double)defaultHorizontalInset;
 - (void).cxx_destruct;
+- (double)_bottomSeparatorAlpha;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)setBottomSeparatorVisible:(BOOL)arg1 animated:(BOOL)arg2;

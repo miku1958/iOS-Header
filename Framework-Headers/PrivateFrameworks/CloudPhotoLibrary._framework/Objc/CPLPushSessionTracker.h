@@ -56,6 +56,7 @@
 @property (readonly, nonatomic) NSArray *updatedRecords;
 
 - (void).cxx_destruct;
+- (id)_realChangeFromChange:(id)arg1 comparedToStoredRecord:(id)arg2 changeType:(unsigned long long)arg3;
 - (id)_resourceIdentitiesFromChange:(id)arg1;
 - (BOOL)applyChangesToClientCacheWithError:(id *)arg1;
 - (BOOL)checkScopeIdentifier:(id)arg1;

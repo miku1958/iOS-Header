@@ -13,6 +13,7 @@
 
 @interface MPSExternalPluginBase : NSObject <MPSExternalPluginBase>
 {
+    MPSExternalPluginBase *_self;
     id<MTLDevice> _device;
 }
 
@@ -24,6 +25,7 @@
 - (id)device;
 - (id)init;
 - (id)initWithDevice:(id)arg1;
+- (unsigned long long)maxBatchSize;
 
 @end
 

@@ -29,6 +29,7 @@
 @property (nonatomic) unsigned int targetAudioSessionID; // @dynamic targetAudioSessionID;
 
 + (id)discoverySessionWithEndpointFeatures:(unsigned int)arg1;
++ (id)discoverySessionWithEndpointFeatures:(unsigned int)arg1 enableThrottling:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_init;
 - (id)addEndpointsChangedCallback:(CDUnknownBlockType)arg1;

@@ -6,31 +6,53 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSNumber, NSOperationQueue, NSString;
+#import <iTunesCloud/ICLibraryAuthServiceClientTokenProviderProtocol-Protocol.h>
+#import <iTunesCloud/NSXPCListenerDelegate-Protocol.h>
+
+@class AFMultiUserConnection, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, NSXPCListener;
 @protocol OS_dispatch_queue;
 
-@interface ICLibraryAuthServiceClientTokenProvider : NSObject
+@interface ICLibraryAuthServiceClientTokenProvider : NSObject <ICLibraryAuthServiceClientTokenProviderProtocol, NSXPCListenerDelegate>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSObject<OS_dispatch_queue> *_calloutQueue;
-    NSObject<OS_dispatch_queue> *_delayQueue;
-    NSString *_cachedClientToken;
-    NSDate *_cachedClientTokenExpiration;
-    NSNumber *_cachedDSID;
-    CDUnknownBlockType _requestDelayBlock;
     NSOperationQueue *_operationQueue;
+    NSMutableDictionary *_tokenCache;
+    BOOL _isService;
+    NSXPCListener *_xpcServiceListener;
+    NSMutableSet *_xpcConnections;
+    NSXPCConnection *_xpcClientConnection;
+    NSMutableSet *_dsidsToExcludeFromAutoRefresh;
+    AFMultiUserConnection *_siriConnection;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedProvider;
 - (void).cxx_destruct;
-- (id)_activeAccountDSID;
-- (void)_handleITunesStoreAccountsChanged;
-- (void)_handleRequestTokenForExternalRequest:(BOOL)arg1;
-- (void)_handleTokenResponse:(id)arg1 tokenRequest:(id)arg2;
-- (CDUnknownBlockType)_requestTokenWithDelay:(long long)arg1 forExternalRequest:(BOOL)arg2;
-- (void)_userIdentityStoreDidChangeNotification:(id)arg1;
+- (void)_addConnection:(id)arg1;
+- (id)_clientConnection;
+- (void)_commitCache;
+- (void)_handleLibraryAuthServiceClientTokenDidChangeDistributedNotification:(id)arg1;
+- (void)_loadCache;
+- (void)_refreshTokenForDSID:(id)arg1 forExternalRequest:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_refreshTokensForDSIDs:(id)arg1 forExternalRequest:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_removeConnection:(id)arg1;
+- (void)_updateRefreshTimer;
+- (void)addTokenResult:(id)arg1 forDSID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)cachedTokenAndResetCache:(BOOL)arg1;
+- (void)dealloc;
+- (void)getAllTokensForAssistantForcingRefresh:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getTokenForDSID:(id)arg1 forceRefresh:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getTokenForcingRefresh:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getTokenResultForDSID:(id)arg1 forceRefresh:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getTokenResultsForDSIDs:(id)arg1 forceRefresh:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
+- (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)startService;
+- (void)stopService;
 
 @end
 

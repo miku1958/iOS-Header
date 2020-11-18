@@ -9,8 +9,10 @@
 @class NSData;
 
 @protocol FPXEnumerator <NSObject>
+- (void)currentSyncAnchorWithCompletion:(void (^)(NSData *, NSError *))arg1;
 - (void)enumerateChangesFromToken:(NSData *)arg1 reply:(void (^)(NSArray *, NSArray *, BOOL, NSData *, NSError *))arg2;
 - (void)enumerateItemsFromPage:(NSData *)arg1 reply:(void (^)(NSArray *, NSData *, NSData *, NSError *))arg2;
 - (void)invalidate;
+- (void)keepAliveConnectionForRegisteredObserver:(void (^)(void))arg1;
 @end
 

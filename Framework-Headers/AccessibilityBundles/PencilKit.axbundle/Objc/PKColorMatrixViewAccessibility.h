@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)didTapColorButton:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

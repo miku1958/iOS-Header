@@ -13,7 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (struct CGRect)_accessibilityDirectInteractionFrame;
+- (BOOL)_accessibilityKeyboardIsContinuousPathAvailable;
+- (BOOL)_accessibilityKeyboardIsContinuousPathTracking;
 - (BOOL)_accessibilityKeyboardSupportsGestureMode;
 - (id)_accessibilityNativeFocusPreferredElement;
 - (BOOL)_accessibilitySwitchToGestureMode:(BOOL)arg1;
@@ -27,9 +30,9 @@
 - (BOOL)_axEnterTextValue:(id)arg1;
 - (BOOL)_axShift;
 - (BOOL)_axShiftLock;
+- (BOOL)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (void)_voiceOverStatus:(id)arg1;
 - (struct CGRect)accessibilityFrame;
-- (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (void)activate;
 - (void)deactivate;
 - (void)dealloc;

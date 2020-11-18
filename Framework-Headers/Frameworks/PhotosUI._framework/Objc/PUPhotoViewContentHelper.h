@@ -16,6 +16,7 @@
     PUBackgroundColorView *_photoDecorationBorderView;
     PUBackgroundColorView *_photoDecorationOverlayView;
     BOOL _hasTransform;
+    BOOL _hasLayerBackgroundColor;
     struct {
         BOOL respondsToLivePhotoWillBeginPlaybackWithStyle;
     } _delegateFlags;
@@ -46,11 +47,13 @@
     long long _fillMode;
     UIImage *_photoImage;
     UIImage *_placeHolderImage;
+    UIView *_transitionSnapshotView;
     PUPhotoDecoration *_photoDecoration;
     double _cornerRadius;
     unsigned long long _cornersToRound;
     UIColor *_overlayColor;
     double _contentAlpha;
+    double _darkContentOverlayAlpha;
     UIColor *_backgroundColor;
     id<PUPhotoViewContentHelperDelegate> _delegate;
     PHLivePhoto *_livePhoto;
@@ -65,6 +68,7 @@
     NSString *_title;
     NSString *_subtitle;
     UIImageView *_photoImageView;
+    UIView *_darkContentOverlay;
     UIImageView *__crossfadeImageView;
     PUAvalancheStackView *_avalancheStackView;
     PHLivePhotoView *_livePhotoView;
@@ -74,6 +78,7 @@
     PXTitleSubtitleUILabel *__titleSubtitleLabel;
     ISWrappedAVAudioSession *__audioSession;
     struct CGSize _photoSize;
+    struct CGSize _customPaddingForBadgeElements;
     struct PXAssetBadgeInfo _badgeInfo;
     struct CGAffineTransform _imageTransform;
 }
@@ -98,6 +103,9 @@
 @property (readonly, weak, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, nonatomic) unsigned long long cornersToRound; // @synthesize cornersToRound=_cornersToRound;
+@property (nonatomic) struct CGSize customPaddingForBadgeElements; // @synthesize customPaddingForBadgeElements=_customPaddingForBadgeElements;
+@property (strong, nonatomic) UIView *darkContentOverlay; // @synthesize darkContentOverlay=_darkContentOverlay;
+@property (nonatomic) double darkContentOverlayAlpha; // @synthesize darkContentOverlayAlpha=_darkContentOverlayAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPhotoViewContentHelperDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -131,6 +139,7 @@
 @property (nonatomic, getter=isTextBannerVisible) BOOL textBannerVisible; // @synthesize textBannerVisible=_isTextBannerVisible;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
+@property (strong, nonatomic) UIView *transitionSnapshotView; // @synthesize transitionSnapshotView=_transitionSnapshotView;
 @property (nonatomic) BOOL useOverlay; // @synthesize useOverlay=_useOverlay;
 
 + (struct CGRect)_imageContentFrameForBounds:(struct CGRect)arg1 imageSize:(struct CGSize)arg2 fillMode:(long long)arg3;
@@ -151,6 +160,7 @@
 - (void)_updateHighlight;
 - (void)_updateIfNeeded;
 - (void)_updateImageView;
+- (void)_updateLayerBackgroundColorIfNeeded;
 - (void)_updateLayerCornerRadius;
 - (void)_updateLivePhotoView;
 - (void)_updateLivePhotoViewPreparing;
@@ -162,6 +172,7 @@
 - (void)_updateTextBannerView;
 - (void)_updateTitleSubtitleUILabelIfNeeded;
 - (void)animateCrossfadeToImage:(id)arg1;
+- (void)contentViewDynamicUserInterfaceTraitDidChange;
 - (struct CGSize)contentViewSizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)imageContentFrameForBounds:(struct CGRect)arg1;
 - (id)init;

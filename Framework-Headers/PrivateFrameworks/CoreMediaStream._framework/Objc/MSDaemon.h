@@ -27,7 +27,6 @@
 - (void).cxx_destruct;
 - (void)_didChangeIdleBusyState:(BOOL)arg1;
 - (void)_hysteresisTimerDidFire:(id)arg1;
-- (void)dealloc;
 - (void)didIdle;
 - (void)didUnidle;
 - (id)init;

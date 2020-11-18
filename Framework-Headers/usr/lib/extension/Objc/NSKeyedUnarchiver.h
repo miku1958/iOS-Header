@@ -32,6 +32,7 @@
 @property id<NSKeyedUnarchiverDelegate> delegate;
 @property BOOL requiresSecureCoding;
 
++ (id)_strictlyUnarchivedObjectOfClasses:(id)arg1 fromData:(id)arg2 error:(id *)arg3;
 + (Class)classForClassName:(id)arg1;
 + (void)initialize;
 + (void)setClass:(Class)arg1 forClassName:(id)arg2;
@@ -49,11 +50,13 @@
 - (unsigned int)_currentUniqueIdentifier;
 - (id)_decodeArrayOfObjectsForKey:(id)arg1;
 - (id)_decodePropertyListForKey:(id)arg1;
+- (void)_enableStrictSecureDecodingMode;
 - (id)_initForReadingFromData:(id)arg1 error:(id *)arg2 throwLegacyExceptions:(BOOL)arg3;
 - (id)_initWithStream:(struct __CFReadStream *)arg1 data:(id)arg2 topDict:(struct __CFDictionary *)arg3;
 - (void)_replaceObject:(id)arg1 withObject:(id)arg2;
 - (void)_setAllowedClassNames:(id)arg1;
 - (void)_temporaryMapReplaceObject:(id)arg1 withObject:(id)arg2;
+- (BOOL)_validateAllowedClassesContainsClass:(Class)arg1 forKey:(id)arg2;
 - (BOOL)_validatePropertyListClass:(Class)arg1 forKey:(id)arg2;
 - (id)allowedClasses;
 - (BOOL)allowsKeyedCoding;

@@ -7,11 +7,13 @@
 #import <TSReading/TSDiOSCanvasViewController.h>
 
 #import <TSReading/UIDragInteractionDelegate-Protocol.h>
+#import <TSReading/UITextInteractionDelegate-Protocol.h>
+#import <TSReading/UITextLinkInteraction-Protocol.h>
 #import <TSReading/_UINonEditableTextSelectionForceGestureDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, TSUColor, TSWPHardPressGestureRecognizer, TSWPInteractiveCanvasController, TSWPLongPressGestureRecognizer, TSWPSwipeGestureRecognizer, TSWPTwoPartAction, UIGestureRecognizer, UITapGestureRecognizer;
+@class NSMutableArray, NSString, TSUColor, TSWPHardPressGestureRecognizer, TSWPHyperlinkField, TSWPInteractiveCanvasController, TSWPLongPressGestureRecognizer, TSWPRep, TSWPSwipeGestureRecognizer, TSWPTwoPartAction, UIGestureRecognizer, UITapGestureRecognizer, UITextInteraction;
 
-@interface TSWPiOSCanvasViewController : TSDiOSCanvasViewController <_UINonEditableTextSelectionForceGestureDelegate, UIDragInteractionDelegate>
+@interface TSWPiOSCanvasViewController : TSDiOSCanvasViewController <UITextInteractionDelegate, UITextLinkInteraction, UIDragInteractionDelegate, _UINonEditableTextSelectionForceGestureDelegate>
 {
     UIGestureRecognizer *_hyperlinkGestureRecognizer;
     TSWPSwipeGestureRecognizer *_rightSwipeGestureRecognizer;
@@ -19,8 +21,13 @@
     TSWPLongPressGestureRecognizer *_longPressGestureRecognizer;
     TSWPTwoPartAction *_delayedTapAction;
     NSMutableArray *_gestureRecognizers;
+    BOOL _isInteractingWithHyperLink;
+    BOOL _linkInteractionIsLongPress;
+    TSWPHyperlinkField *_interactionHyperlinkField;
+    TSWPRep *_interactionHyperLinkRep;
     UITapGestureRecognizer *_secondarySingleTapGestureRecognizer;
     TSWPHardPressGestureRecognizer *_hardPressGesture;
+    UITextInteraction *_textInteraction;
 }
 
 @property (readonly, nonatomic) TSUColor *backgroundColorForMagnifier;
@@ -33,15 +40,22 @@
 @property (readonly, nonatomic) TSWPLongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property (readonly, nonatomic) UITapGestureRecognizer *secondarySingleTapGestureRecognizer; // @synthesize secondarySingleTapGestureRecognizer=_secondarySingleTapGestureRecognizer;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UITextInteraction *textInteraction; // @synthesize textInteraction=_textInteraction;
 @property (readonly, nonatomic) TSWPSwipeGestureRecognizer *textLeftSwipeGestureRecognizer; // @synthesize textLeftSwipeGestureRecognizer=_leftSwipeGestureRecognizer;
 @property (readonly, nonatomic) TSWPSwipeGestureRecognizer *textRightSwipeGestureRecognizer; // @synthesize textRightSwipeGestureRecognizer=_rightSwipeGestureRecognizer;
 
 - (void)_clearSelectedRange;
 - (id)_dragItemsForInteraction:(id)arg1 session:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
+- (id)_hitRepAtPoint:(struct CGPoint)arg1;
+- (id)_hyperLinkFieldAtPoint:(struct CGPoint)arg1;
+- (void)_resetAndClearInteractions;
+- (void)_resetLinkInteraction;
+- (BOOL)_shouldAllowInteractionAtPoint:(struct CGPoint)arg1;
 - (id)actionForHyperlink:(id)arg1 inRep:(id)arg2 gesture:(id)arg3;
 - (void)addSwipeGestureRecognizers;
 - (BOOL)canDisplayHyperlinkUI;
 - (void)cancelDelayedTapAction;
+- (void)cancelInteractionWithLink;
 - (void)dealloc;
 - (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
@@ -58,6 +72,13 @@
 - (BOOL)hyperlinkUIShouldShowCustomUI;
 - (void)hyperlinkUIShowCustomUIforRep:(id)arg1 field:(id)arg2;
 - (void)hyperlinkUIWillShow;
+- (void)interactionDidEnd:(id)arg1;
+- (BOOL)interactionShouldBegin:(id)arg1;
+- (BOOL)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (BOOL)interactionShouldSuppressSystemUI:(id)arg1;
+- (void)interactionWillBegin:(id)arg1;
+- (BOOL)isInteractingWithLink;
+- (BOOL)mightHaveLinks;
 - (BOOL)onlyAllowTextSwipesWhenEditing;
 - (void)p_addSwipeGestureRecognizer:(id)arg1 failRequiredFor:(id)arg2;
 - (void)p_endHardPressGestureRecognizer;
@@ -69,9 +90,17 @@
 - (BOOL)shouldAllowSelectionGestures:(BOOL)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldHideCanvasLayerInMagnifier;
 - (void)startDelayedTapAction:(id)arg1;
+- (void)startInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (void)startLongInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (void)tapLinkAtPoint:(struct CGPoint)arg1;
 - (void)teardown;
+- (void)updateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (void)validateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willBeginGesture;
+- (BOOL)willInteractWithLinkAtPoint:(struct CGPoint)arg1;
 
 @end
 

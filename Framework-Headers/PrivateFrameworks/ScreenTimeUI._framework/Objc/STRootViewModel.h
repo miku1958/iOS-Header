@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSSet, STUser;
+@class NSArray, NSDictionary, NSSet, STUIUser;
 
+__attribute__((visibility("hidden")))
 @interface STRootViewModel : NSObject
 {
     BOOL _canStopScreenTimeWithoutPasscode;
     BOOL _isCloudSyncEnabled;
     NSSet *_installedBundleIDs;
     NSDictionary *_installedBundleIDsByCategoryIdentifier;
-    STUser *_me;
+    STUIUser *_me;
     NSArray *_children;
     NSArray *_devices;
 }
@@ -36,7 +37,7 @@
 @property (nonatomic) BOOL isCloudSyncEnabled; // @synthesize isCloudSyncEnabled=_isCloudSyncEnabled;
 @property (readonly, nonatomic) BOOL isRemotelyManagedUserWithPasscode;
 @property (readonly, nonatomic) BOOL isSharingUsageData;
-@property (copy, nonatomic) STUser *me; // @synthesize me=_me;
+@property (copy, nonatomic) STUIUser *me; // @synthesize me=_me;
 @property (readonly, nonatomic, getter=isScreenTimeEnabled) BOOL screenTimeEnabled;
 @property (readonly, nonatomic, getter=isWebUsageEnabled) BOOL webUsageEnabled;
 

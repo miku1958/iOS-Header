@@ -28,10 +28,12 @@
 - (id)_initWithEntitlementValues:(id)arg1;
 - (id)_typesFromIdentifierArray:(id)arg1;
 - (id)applicationIdentifier;
+- (BOOL)arrayEntitlement:(id)arg1 containsString:(id)arg2;
 - (id)description;
 - (BOOL)hasAccessEntitlementWithIdentifer:(id)arg1;
 - (BOOL)hasEntitlement:(id)arg1;
 - (BOOL)hasPrivateAccessEntitlementWithIdentifer:(id)arg1;
+- (BOOL)hasPrivateMetadataAccess;
 - (id)init;
 - (id)stringForEntitlement:(id)arg1;
 - (id)typesForReadAuthorizationOverride;

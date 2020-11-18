@@ -6,13 +6,14 @@
 
 #import <SAObjects/SABaseClientBoundCommand.h>
 
-@class SAIntentGroupProtobufMessage;
+@class NSString, SAIntentGroupProtobufMessage;
 
 @interface SAIntentGroupIntentSignal : SABaseClientBoundCommand
 {
 }
 
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *intent;
+@property (copy, nonatomic) NSString *jsonEncodedIntent;
 
 + (id)intentSignal;
 + (id)intentSignalWithDictionary:(id)arg1 context:(id)arg2;

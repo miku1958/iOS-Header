@@ -31,7 +31,6 @@
 @property (readonly, copy) NSNumber *memberDSID; // @synthesize memberDSID=_memberDSID;
 @property (readonly, copy) NSString *memberHashedDSID; // @synthesize memberHashedDSID=_memberHashedDSID;
 @property double monogramDiameter; // @synthesize monogramDiameter=_monogramDiameter;
-@property long long monogramStyle;
 @property (copy) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (readonly) unsigned long long requestedSize; // @synthesize requestedSize=_requestedSize;
 @property double requiredHeight; // @synthesize requiredHeight=_requiredHeight;

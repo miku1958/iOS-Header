@@ -17,8 +17,8 @@
     unsigned long long _length;
 }
 
-@property unsigned long long length; // @synthesize length=_length;
-@property unsigned long long position; // @synthesize position=_pos;
+@property (nonatomic) unsigned long long length; // @synthesize length=_length;
+@property (nonatomic) unsigned long long position; // @synthesize position=_pos;
 
 - (id)data;
 - (void)dealloc;

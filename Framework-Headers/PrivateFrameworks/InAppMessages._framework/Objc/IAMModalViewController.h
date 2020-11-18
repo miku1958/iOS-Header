@@ -6,50 +6,39 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <InAppMessages/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <InAppMessages/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <InAppMessages/_UISheetPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIView;
+@class NSString, UIView;
 @protocol IAMViewControllerMetricsDelegate;
 
-@interface IAMModalViewController : UIViewController <UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
+@interface IAMModalViewController : UIViewController <_UISheetPresentationControllerDelegate>
 {
-    NSArray *_defaultLayoutConstraints;
-    NSArray *_fullscreenLayoutConstraints;
-    NSArray *_padLayoutConstraints;
     BOOL _shouldPresentFullscreen;
+    BOOL _shouldUsePadLayout;
     UIViewController *_contentViewController;
     id<IAMViewControllerMetricsDelegate> _metricsDelegate;
     CDUnknownBlockType _viewControllerWillDismissBlock;
-    UIView *_backgroundView;
-    UIView *_modalView;
     UIView *_contentView;
 }
 
-@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (strong, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<IAMViewControllerMetricsDelegate> metricsDelegate; // @synthesize metricsDelegate=_metricsDelegate;
-@property (strong, nonatomic) UIView *modalView; // @synthesize modalView=_modalView;
 @property (nonatomic) BOOL shouldPresentFullscreen; // @synthesize shouldPresentFullscreen=_shouldPresentFullscreen;
-@property (readonly) BOOL shouldUsePadLayout;
+@property (readonly) BOOL shouldUsePadLayout; // @synthesize shouldUsePadLayout=_shouldUsePadLayout;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType viewControllerWillDismissBlock; // @synthesize viewControllerWillDismissBlock=_viewControllerWillDismissBlock;
 
 - (void).cxx_destruct;
-- (void)_handleBackgroundTapGesture:(id)arg1;
-- (void)animateTransition:(id)arg1;
-- (id)animationControllerForDismissedController:(id)arg1;
-- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (long long)preferredStatusBarStyle;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (BOOL)shouldAutorotate;
-- (void)traitCollectionDidChange:(id)arg1;
-- (double)transitionDuration:(id)arg1;
 - (void)viewDidLoad;
 
 @end

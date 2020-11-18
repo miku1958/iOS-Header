@@ -13,6 +13,7 @@
 + (id)sharedInstance;
 + (BOOL)supportsSecureCoding;
 - (void)addMetric:(id)arg1;
+- (void)appendVisionObservations:(id)arg1;
 - (id)captureMetrics:(long long)arg1 name:(id)arg2 forTask:(CDUnknownBlockType)arg3;
 - (void)clearMetrics;
 - (BOOL)diagnosticsEnabled;
@@ -21,6 +22,7 @@
 - (id)metrics;
 - (void)setDiagnosticsEnabled:(BOOL)arg1;
 - (id)startMeasurement:(long long)arg1 name:(id)arg2;
+- (id)visionObservations;
 
 @end
 

@@ -16,28 +16,27 @@
 {
     NSObject<OS_dispatch_queue> *_requestProcessingQueue;
     WBSParsecDFeedbackDispatcher *_feedbackDispatcher;
-    GEOUserSessionEntity *_geoUserSessionEntity;
-    BOOL _valid;
+    GEOUserSessionEntity *_threadUnsafeGEOUserSessionEntity;
+    struct os_unfair_lock_s _geoUserSessionLock;
     BOOL _skipAutoFillDataUpdates;
-    id<WBSParsecSearchSessionDelegate> _delegate;
-    WBSCompletionQuery *_currentQuery;
-    double _uiScale;
-    PARSession *_parsecdSession;
+    double _threadUnsafeUIScale;
+    WBSCompletionQuery *_threadUnsafeCurrentQuery;
+    id<WBSParsecSearchSessionDelegate> _threadUnsafeDelegate;
+    PARSession *_threadUnsafeParsecdSession;
     unsigned long long _currentQueryID;
 }
 
-@property (strong, nonatomic) WBSCompletionQuery *currentQuery; // @synthesize currentQuery=_currentQuery;
+@property (strong, nonatomic) WBSCompletionQuery *currentQuery; // @synthesize currentQuery=_threadUnsafeCurrentQuery;
 @property unsigned long long currentQueryID; // @synthesize currentQueryID=_currentQueryID;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WBSParsecSearchSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<WBSParsecSearchSessionDelegate> delegate; // @synthesize delegate=_threadUnsafeDelegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<WBSParsecFeedbackDispatcher> feedbackDispatcher;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PARSession *parsecdSession; // @synthesize parsecdSession=_parsecdSession;
+@property (strong, nonatomic) PARSession *parsecdSession; // @synthesize parsecdSession=_threadUnsafeParsecdSession;
 @property (readonly, nonatomic) BOOL skipAutoFillDataUpdates; // @synthesize skipAutoFillDataUpdates=_skipAutoFillDataUpdates;
 @property (readonly) Class superclass;
-@property (nonatomic, setter=setUIScale:) double uiScale; // @synthesize uiScale=_uiScale;
-@property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
+@property (nonatomic, setter=setUIScale:) double uiScale; // @synthesize uiScale=_threadUnsafeUIScale;
 
 + (void)_updateAutoFillCorrectionSetsIfNeededForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)_updateAutoFillTLDsIfNeededForSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

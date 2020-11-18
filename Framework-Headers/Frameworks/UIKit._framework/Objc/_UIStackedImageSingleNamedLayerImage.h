@@ -9,6 +9,7 @@
 #import <UIKitCore/UINamedLayerImage-Protocol.h>
 
 @class NSString, UIImage;
+@protocol UINamedLayerContentProvider;
 
 __attribute__((visibility("hidden")))
 @interface _UIStackedImageSingleNamedLayerImage : NSObject <UINamedLayerImage>
@@ -17,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) int blendMode;
+@property (readonly, nonatomic) id<UINamedLayerContentProvider> contentProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL fixedFrame;

@@ -15,8 +15,9 @@
     NSMutableArray *_logMessages;
 }
 
-@property (strong, nonatomic) NSMutableArray *logMessages; // @synthesize logMessages=_logMessages;
+@property (strong, nonatomic) NSMutableArray *logMessages;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)logMessageType;
 - (void).cxx_destruct;
 - (void)addLogMessage:(id)arg1;
@@ -30,6 +31,7 @@
 - (id)logMessageAtIndex:(unsigned long long)arg1;
 - (unsigned long long)logMessagesCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

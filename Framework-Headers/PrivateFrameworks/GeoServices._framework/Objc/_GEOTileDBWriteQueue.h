@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)dataForKey:(const struct _GEOTileKey *)arg1 ETag:(id *)arg2 originalLoadReason:(unsigned char *)arg3 isKnownNotToExist:(BOOL *)arg4;
 - (void)dropAllPendingOperations;
 - (void)flushPendingOperations:(BOOL)arg1;
+- (id)init;
 - (id)initWithDB:(id)arg1 maxOperations:(unsigned long long)arg2 maxOperationsSizeInBytes:(unsigned long long)arg3;
 - (void)prunePendingOperationsSupercededByOperation:(id)arg1;
 

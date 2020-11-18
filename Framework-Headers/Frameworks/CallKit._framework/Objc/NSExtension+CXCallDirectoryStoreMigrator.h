@@ -8,14 +8,19 @@
 
 #import <CallKit/CXCallDirectoryStoreMigratorExtension-Protocol.h>
 
-@class NSString;
+@class LSPlugInKitProxy, NSString, NSURL;
 
 @interface NSExtension (CXCallDirectoryStoreMigrator) <CXCallDirectoryStoreMigratorExtension>
 
+@property (readonly, nonatomic) NSURL *containingAppURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEnabledViaPlugInKit) BOOL enabledViaPlugInKit;
+@property (readonly, nonatomic, getter=isEnabledViaPlugInKit) BOOL enabledViaPlugInKit;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *localizedContainingAppName;
+@property (readonly, nonatomic) NSString *localizedName;
+@property (readonly, nonatomic) LSPlugInKitProxy *plugInKitProxy;
 @property (readonly) Class superclass;
 
 @end

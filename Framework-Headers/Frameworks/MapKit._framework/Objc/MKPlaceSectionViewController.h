@@ -31,6 +31,7 @@
 - (void)sectionView:(id)arg1 didSelectHeader:(id)arg2;
 - (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)stackViewNeedsLayout:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

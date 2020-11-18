@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Message/MFSASLAuthenticator.h>
+#import <EmailCore/ECSASLAuthenticator.h>
 
-@interface MFCRAM_MD5Authenticator : MFSASLAuthenticator
+@interface MFCRAM_MD5Authenticator : ECSASLAuthenticator
 {
 }
 

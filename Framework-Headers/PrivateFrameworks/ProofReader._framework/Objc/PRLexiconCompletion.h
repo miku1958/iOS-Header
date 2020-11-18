@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface PRLexiconCompletion : NSObject
 {
     unsigned int _tokenID;
     double _score;
 }
 
+@property (readonly) double score; // @synthesize score=_score;
+@property (readonly) unsigned int tokenID; // @synthesize tokenID=_tokenID;
+
 - (id)description;
 - (id)initWithTokenID:(unsigned int)arg1 score:(double)arg2;
-- (double)score;
-- (unsigned int)tokenID;
 
 @end
 

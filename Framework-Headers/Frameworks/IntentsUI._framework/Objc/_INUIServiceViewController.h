@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)_errorHandlingRemoteViewControllerProxy;
 - (void)addChildViewController:(id)arg1;
 - (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 interactiveBehavior:(unsigned long long)arg3 context:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)desiresInteractivity:(CDUnknownBlockType)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)queryRepresentedPropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewWasCancelled;

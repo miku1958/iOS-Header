@@ -8,14 +8,16 @@
 
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
-@class HFRoomBuilder, HMAccessory, NSArray, NSString;
+@class HFNamingComponents, HFRoomBuilder, HMAccessory, NSArray, NSString;
 @protocol HFIconDescriptor;
 
 @interface HFAccessoryBuilder : HFItemBuilder <HFServiceLikeBuilder>
 {
     BOOL isFavorite;
+    BOOL _skipPropagateFavoriteToServices;
     NSString *name;
     HFRoomBuilder *room;
+    HFNamingComponents *_namingComponent;
 }
 
 @property (readonly, nonatomic) HMAccessory *accessory;
@@ -26,8 +28,10 @@
 @property (strong, nonatomic) id<HFIconDescriptor> iconDescriptor;
 @property (nonatomic) BOOL isFavorite; // @synthesize isFavorite;
 @property (copy, nonatomic) NSString *name; // @synthesize name;
+@property (strong, nonatomic) HFNamingComponents *namingComponent; // @synthesize namingComponent=_namingComponent;
 @property (readonly, nonatomic) NSString *originalName;
 @property (strong, nonatomic) HFRoomBuilder *room; // @synthesize room;
+@property (nonatomic) BOOL skipPropagateFavoriteToServices; // @synthesize skipPropagateFavoriteToServices=_skipPropagateFavoriteToServices;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsFavoriting;
 

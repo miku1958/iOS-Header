@@ -63,9 +63,13 @@
 @property (readonly, nonatomic) NSString *groupLeaderAirplayIdentifier;
 @property (readonly, nonatomic) NSString *groupUID; // @synthesize groupUID=_groupUID;
 @property (readonly, nonatomic, getter=isH1Route) BOOL h1Route;
+@property (readonly, nonatomic, getter=isHeadphonesRoute) BOOL headphonesRoute;
 @property (readonly, nonatomic, getter=isHearingDeviceRoute) BOOL hearingDeviceRoute;
 @property (readonly, nonatomic, getter=isHomePodRoute) BOOL homePodRoute; // @synthesize homePodRoute=_homePodRoute;
 @property (readonly, nonatomic) BOOL isDeviceRoute;
+@property (readonly, nonatomic) BOOL isSplitRoute;
+@property (readonly, nonatomic, getter=isLowLatencyRoute) BOOL lowLatencyRoute;
+@property (readonly, nonatomic) long long numberOfOutputDevices;
 @property (readonly, nonatomic) long long passwordType;
 @property (readonly, nonatomic) long long pickableRouteType; // @synthesize pickableRouteType=_pickableRouteType;
 @property (nonatomic, getter=isPicked) BOOL picked;
@@ -83,7 +87,10 @@
 @property (readonly, nonatomic) long long routeType; // @synthesize routeType=_routeType;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property (readonly, nonatomic, getter=isRoutingToWirelessDevice) BOOL routingToWirelessDevice;
+@property (readonly, nonatomic, getter=isShareableRoute) BOOL shareableRoute;
 @property (readonly, nonatomic, getter=isSmartAudio) BOOL smartAudio;
+@property (readonly, nonatomic, getter=isSplitRoute) BOOL splitRoute;
+@property (readonly, nonatomic, getter=isSplitterCapable) BOOL splitterCapable;
 @property (readonly, nonatomic, getter=isStereoPair) BOOL stereoPair;
 @property (readonly, nonatomic) BOOL supportsGrouping;
 @property (readonly, nonatomic) BOOL supportsRemoteControl;

@@ -9,11 +9,12 @@
 #import <MediaPlaybackCore/NSCopying-Protocol.h>
 #import <MediaPlaybackCore/NSSecureCoding-Protocol.h>
 
-@class MPAVRoute, NSString;
+@class MPAVRoute, NSArray, NSString;
 
 @interface MPCPlayerPath : NSObject <NSCopying, NSSecureCoding>
 {
     int _pid;
+    NSArray *_routeUIDs;
     BOOL _resolved;
     NSString *_bundleID;
     NSString *_playerID;
@@ -24,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, nonatomic, getter=isInProcess) BOOL inProcess;
 @property (readonly, nonatomic) void *mediaRemotePlayerPath; // @synthesize mediaRemotePlayerPath=_mediaRemotePlayerPath;
+@property (readonly, nonatomic) void *origin;
 @property (readonly, copy, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
 @property (readonly, copy, nonatomic) NSString *representedBundleDisplayName;
 @property (readonly, copy, nonatomic) NSString *representedBundleID;
@@ -33,11 +35,11 @@
 
 + (id)deviceActivePlayerPath;
 + (id)pathWithCustomOrigin:(void *)arg1 bundleID:(id)arg2 playerID:(id)arg3;
++ (id)pathWithDeviceUIDs:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 + (id)pathWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 + (id)pathWithRoute:(id)arg1 mediaRemotePlayerPath:(void *)arg2 isResolved:(BOOL)arg3;
 + (BOOL)supportsSecureCoding;
 + (id)systemMusicPathWithRoute:(id)arg1 playerID:(id)arg2;
-+ (id)unresolvablePathWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -45,9 +47,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDeviceUIDs:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 - (id)initWithRoute:(id)arg1 bundleID:(id)arg2 pid:(int)arg3 playerID:(id)arg4;
 - (id)initWithRoute:(id)arg1 bundleID:(id)arg2 playerID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)pathByAppendingPlayerIDSuffix:(id)arg1;
 - (void)resolveWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resolveWithRouteResolvedHandler:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CPSearchMatcher, NSRecursiveLock;
+@class ALSCGreenClient, CPSearchMatcher, NSDate, NSRecursiveLock;
 
 @interface ALCityManager : NSObject
 {
@@ -14,16 +14,30 @@
     struct sqlite3 *_localizedDb;
     CPSearchMatcher *_citySearchMatcher;
     NSRecursiveLock *_databaseAccessRecursiveLock;
+    BOOL _greenKey1ValueCache;
+    BOOL _greenKey2ValueCache;
+    BOOL _greenKey3ValueCache;
+    NSDate *_greenKeyValueCacheExpirationDate;
+    ALSCGreenClient *_greenClient;
 }
 
 @property (readonly) CPSearchMatcher *citySearchMatcher; // @synthesize citySearchMatcher=_citySearchMatcher;
 
++ (id)_displayStringForTaiwanRegionWithKey2Value:(BOOL)arg1;
 + (id)_localeDictionaryFromSQLRow:(char **)arg1;
++ (id)displayStringForHongKongSAR;
++ (id)displayStringForHongKongSARChina;
++ (id)displayStringForMacaoSAR;
++ (id)displayStringForMacaoSARChina;
++ (id)displayStringForTaiwanRegion;
 + (struct __CFArray *)legacyCityForCity:(id)arg1;
 + (id)newCitiesByIdentifierMap:(id)arg1;
 + (id)sharedManager;
 - (id)_cityForTimeZone:(id)arg1 localeCode:(id)arg2;
 - (id)_defaultCityForTimeZone:(id)arg1 localeCode:(id)arg2;
+- (void)_whileDatabaseLocked_ensureGreenKeyValueCaches;
+- (id)_whileDatabaseLocked_localeCodesMatchingQualifier:(id)arg1;
+- (void)_whileDatabaseLocked_modifyCityForGreen:(id)arg1;
 - (id)allCities;
 - (id)allLocales;
 - (id)bestCityForLegacyCity:(struct __CFArray *)arg1;

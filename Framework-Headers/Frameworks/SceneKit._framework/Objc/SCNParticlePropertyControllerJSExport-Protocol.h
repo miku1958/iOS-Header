@@ -13,7 +13,7 @@
 @property (strong, nonatomic) CAAnimation *animation;
 @property (nonatomic) double inputBias;
 @property (nonatomic) long long inputMode;
-@property (weak, nonatomic) SCNNode *inputOrigin;
+@property (nonatomic) SCNNode *inputOrigin;
 @property (copy, nonatomic) NSString *inputProperty;
 @property (nonatomic) double inputScale;
 

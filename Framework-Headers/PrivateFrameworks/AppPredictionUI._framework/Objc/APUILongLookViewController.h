@@ -6,18 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <AppPredictionUI/PLClickPresentationInteractionPresentable-Protocol.h>
 #import <AppPredictionUI/PLExpandedPlatterPresentationViewDelegate-Protocol.h>
-#import <AppPredictionUI/PLPreviewInteractionPresentable-Protocol.h>
 
 @class NSString, PLExpandedPlatterView, SUICProgressEventViewController, UIActivityIndicatorView, UITapGestureRecognizer, UIView;
-@protocol APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate, PLPreviewInteractionPresenting;
+@protocol APUILongLookViewControllerDataSource, APUILongLookViewControllerDelegate, PLClickPresentationInteractionPresenting;
 
-@interface APUILongLookViewController : UIViewController <PLPreviewInteractionPresentable, PLExpandedPlatterPresentationViewDelegate>
+@interface APUILongLookViewController : UIViewController <PLClickPresentationInteractionPresentable, PLExpandedPlatterPresentationViewDelegate>
 {
     SUICProgressEventViewController *_progressEventViewController;
     UIActivityIndicatorView *_activityIndicatorView;
     BOOL _suppressSpinner;
-    id<PLPreviewInteractionPresenting> _presenter;
+    id<PLClickPresentationInteractionPresenting> _presenter;
     id<APUILongLookViewControllerDataSource> _dataSource;
     id<APUILongLookViewControllerDelegate> _delegate;
     PLExpandedPlatterView *_expandedPlatterView;
@@ -31,7 +31,7 @@
 @property (strong, nonatomic) PLExpandedPlatterView *expandedPlatterView; // @synthesize expandedPlatterView=_expandedPlatterView;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UITapGestureRecognizer *platterTapGestureRecognizer; // @synthesize platterTapGestureRecognizer=_platterTapGestureRecognizer;
-@property (weak, nonatomic) id<PLPreviewInteractionPresenting> presenter; // @synthesize presenter=_presenter;
+@property (weak, nonatomic) id<PLClickPresentationInteractionPresenting> presenter; // @synthesize presenter=_presenter;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *viewForTouchContinuation;
 @property (readonly, nonatomic) UIView *viewWithContent;

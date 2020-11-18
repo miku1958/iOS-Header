@@ -21,7 +21,7 @@
 @property (copy, nonatomic) NSArray *mailboxNames; // @synthesize mailboxNames=_mailboxNames;
 @property (copy, nonatomic) NSString *notificationNamePrefix; // @synthesize notificationNamePrefix=_notificationNamePrefix;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (void)registerForPush:(CDUnknownBlockType)arg1;
 

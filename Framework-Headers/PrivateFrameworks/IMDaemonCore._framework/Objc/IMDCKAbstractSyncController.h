@@ -24,6 +24,7 @@
 - (BOOL)_fetchedAllChangesFromCloudKit;
 - (void)addSyncDebuggingInfoToDictionary:(id)arg1;
 - (id)ckUtilities;
+- (void)clearLocalSyncState:(unsigned long long)arg1;
 - (void)setBroadcastedSyncStateStateToFinished;
 - (void)setBroadcastedSyncStateStateToStarting;
 - (void)setBroadcastedSyncStateToDeleting;

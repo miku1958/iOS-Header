@@ -21,6 +21,7 @@
 
 + (void)flushSharedInstance;
 + (id)sharedDefaults;
+- (id)changeNotificationName;
 - (id)filteredGroupAndContainerIDs;
 - (id)init;
 - (long long)newContactDisplayNameOrder;

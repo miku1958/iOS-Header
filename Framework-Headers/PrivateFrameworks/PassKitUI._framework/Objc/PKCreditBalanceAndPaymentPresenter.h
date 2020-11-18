@@ -32,11 +32,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_accountServiceResoultionControllerWithItem:(id)arg1;
 - (void)_configureActivityCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (void)_configureBalanceCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (void)_configurePaymentDueCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (BOOL)_useAccessibilityLayoutForCollectionView:(id)arg1;
-- (void)accountServiceAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (BOOL)cellIsIndependentForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;

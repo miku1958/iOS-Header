@@ -13,7 +13,6 @@
 @class AVPlayerViewController, MPAVRoutingController, NSString, TVPStateMachine, UIButton, UIImage, UIViewController, VUINowPlayingFeatureMonitor, VUIPlayer, VUIVideoAdvisoryLogoImageDownloader, VUIVideoAdvisoryView, VideosExtrasContext, VideosExtrasPresenter;
 @protocol TVPMediaItem;
 
-__attribute__((visibility("hidden")))
 @interface VUIPlaybackManager : NSObject <AVPlayerViewControllerDelegatePrivate, VideosExtrasContextDelegate, VUINowPlayingFeatureMonitorDelegate>
 {
     BOOL _requiresLinearPlayback;
@@ -52,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VideosExtrasPresenter *extrasPresenter; // @synthesize extrasPresenter=_extrasPresenter;
 @property (strong, nonatomic) VUINowPlayingFeatureMonitor *featureMonitor; // @synthesize featureMonitor=_featureMonitor;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isFullscreenPlaybackUIBeingShown;
 @property (readonly, nonatomic) BOOL isPIPing;
 @property (readonly, nonatomic) BOOL isPlaybackUIBeingShown;
 @property (strong, nonatomic) VUIVideoAdvisoryLogoImageDownloader *logoImageDownloader; // @synthesize logoImageDownloader=_logoImageDownloader;
@@ -69,7 +69,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (void)_performRatingAndAgeVerificationWithMediaItem:(id)arg1 presentingController:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (id)_playlistForIKMediaElements:(id)arg1 isExtrasContent:(BOOL)arg2;
 + (void)_presentCantPlaybackOverCellularAlertControllerWithMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)_presentCellularPlaybackIsDisabledAlertControllerWithPresentingViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)_presentStartingPlaybackWindowWarningWithRentalMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -77,14 +76,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)_shouldWarnAboutPlaybackQualityForRentalMediaItem:(id)arg1;
 + (BOOL)_shouldWarnStartingRentalPlaybackWindowWithMediaItem:(id)arg1;
 + (void)_showCellularPlaybackQualityOptionsForRentalMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (id)_storeAuxMediaItemForIKMediaElement:(id)arg1 isExtrasContent:(BOOL)arg2;
-+ (id)_storeMediaItemsForAdamID:(long long)arg1 IKMediaElement:(id)arg2;
 + (void)_verifyMediaItemIsPlayableOnCellular:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (id)mediaItemForMPMediaItem:(id)arg1;
-+ (id)playlistForIKMediaElements:(id)arg1;
-+ (id)playlistForIKPlaylistElement:(id)arg1;
-+ (id)playlistForMPMediaItems:(id)arg1;
-+ (id)playlistForVUIMediaItems:(id)arg1;
 + (void)preflightPlaybackWithMediaItem:(id)arg1 presentingViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -99,8 +91,8 @@ __attribute__((visibility("hidden")))
 - (void)_configureStillWatchingFeatureMonitoringIfLivePlayback;
 - (void)_currentMediaItemDidChange:(id)arg1;
 - (void)_downloadRatingImageIfAvailable:(id)arg1;
+- (void)_externalPlaybackTypeDidChange:(id)arg1;
 - (void)_handleTapGesture:(id)arg1;
-- (BOOL)_isiPhone;
 - (void)_notifyAVPlayerViewControllerDisplaySize;
 - (void)_playbackErrorDidOccur:(id)arg1;
 - (void)_playbackStateDidChange:(id)arg1;
@@ -117,6 +109,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateAVPlayerViewControllerWithActiveAVPlayer;
 - (void)_updateRequiresLinearPlayback;
 - (void)_updateRollsInfoFromMainPlayersCurrentMediaItem;
+- (void)_updateStopWhenBackgroundedFeatureForApplicationState:(long long)arg1 isFullScreen:(BOOL)arg2;
 - (void)_updateTimeBoundFeature:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateTimeTriggeredFeature:(id)arg1 animated:(BOOL)arg2;
 - (void)dismissPlaybackAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;

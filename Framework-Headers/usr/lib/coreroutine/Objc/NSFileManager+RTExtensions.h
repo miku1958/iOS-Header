@@ -10,6 +10,7 @@
 + (id)crashReporterPath;
 + (id)dataVaultPath;
 + (id)defaultsDomain;
++ (id)frameworkBundle;
 + (id)frameworkDirectoryPath;
 + (id)pathInCacheDirectory:(id)arg1;
 + (id)routineCacheDirectoryPath;

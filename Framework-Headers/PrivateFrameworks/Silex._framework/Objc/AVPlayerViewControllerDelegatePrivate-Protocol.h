@@ -14,8 +14,7 @@
 @optional
 - (void)playerViewController:(AVPlayerViewController *)arg1 contentViewWillTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)arg3;
 - (UIView *)playerViewController:(AVPlayerViewController *)arg1 targetViewForDismissalAnimationWithProposedTargetView:(UIView *)arg2;
-- (void)playerViewController:(AVPlayerViewController *)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id<UIViewControllerTransitionCoordinator>)arg2;
-- (void)playerViewController:(AVPlayerViewController *)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id<UIViewControllerTransitionCoordinator>)arg2;
 - (void)playerViewController:(AVPlayerViewController *)arg1 willTransitionToVisibilityOfPlaybackControls:(BOOL)arg2 withAnimationCoordinator:(id<AVPlayerViewControllerAnimationCoordinator>)arg3;
+- (BOOL)playerViewControllerShouldMuteVolumeForFullScreenDismissalTransition:(AVPlayerViewController *)arg1;
 @end
 

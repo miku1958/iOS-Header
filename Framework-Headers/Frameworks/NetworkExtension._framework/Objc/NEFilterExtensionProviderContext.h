@@ -21,14 +21,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSObject<OS_dispatch_queue> *queue;
+@property (readonly) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)setExtensionIdentifier:(id)arg1 deviceIdentifier:(id)arg2;
+- (void)setConfiguration:(id)arg1 extensionIdentifier:(id)arg2;
 - (void)startFilterWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopWithReason:(int)arg1;
-- (void)updateConfiguration:(id)arg1;
 
 @end
 

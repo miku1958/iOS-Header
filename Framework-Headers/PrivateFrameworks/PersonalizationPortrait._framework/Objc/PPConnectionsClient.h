@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <PersonalizationPortrait/PPConnectionsClientProtocol-Protocol.h>
+
 @class PPXPCClientHelper, PPXPCClientPipelinedBatchQueryManager;
 
-@interface PPConnectionsClient : NSObject
+@interface PPConnectionsClient : NSObject <PPConnectionsClientProtocol>
 {
     PPXPCClientHelper *_clientHelper;
     PPXPCClientPipelinedBatchQueryManager *_queryManager;
@@ -22,6 +24,7 @@
 - (BOOL)recentLocationDonationsSinceDate:(id)arg1 client:(id)arg2 error:(id *)arg3 handleBatch:(CDUnknownBlockType)arg4;
 - (void)recentLocationsBatch:(id)arg1 isLast:(BOOL)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)recentLocationsForConsumer:(unsigned long long)arg1 criteria:(id)arg2 limit:(unsigned long long)arg3 explanationSet:(id)arg4 client:(id)arg5 error:(id *)arg6 handleBatch:(CDUnknownBlockType)arg7;
+- (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

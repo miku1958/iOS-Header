@@ -6,32 +6,38 @@
 
 #import <objc/NSObject.h>
 
+#import <SafariShared/NSCopying-Protocol.h>
+
 @class NSString;
 
-@interface WBSReaderFont : NSObject
+@interface WBSReaderFont : NSObject <NSCopying>
 {
     NSString *_familyName;
     NSString *_displayName;
     NSString *_localizedName;
     BOOL _hasCalculatedLocalizedName;
-    BOOL _systemFont;
+    long long _type;
 }
 
 @property (readonly, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
+@property (readonly, nonatomic) NSString *familyNameForWebContent;
 @property (readonly, nonatomic, getter=isInstalled) BOOL installed;
-@property (readonly, nonatomic, getter=isSystemFont) BOOL systemFont; // @synthesize systemFont=_systemFont;
 
 + (id)fontWithFamilyName:(id)arg1 displayName:(id)arg2;
 + (id)systemFont;
++ (id)systemFontWithDisplayName:(id)arg1;
++ (id)systemSerifFont;
 - (void).cxx_destruct;
 - (RetainPtr_887fe677)_fontDescriptorRefForFontFamilyName:(id)arg1 restrictToEnabled:(BOOL)arg2;
-- (id)_initWithFamilyName:(id)arg1 displayName:(id)arg2 isSystemFont:(BOOL)arg3;
+- (id)_initWithFamilyName:(id)arg1 displayName:(id)arg2 type:(long long)arg3;
 - (id)_localizedName;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)fontOfSize:(double)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (void)isInstalledWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

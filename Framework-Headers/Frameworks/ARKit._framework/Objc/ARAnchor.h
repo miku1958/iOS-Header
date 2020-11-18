@@ -15,6 +15,7 @@
 {
     NSUUID *_identifier;
     NSString *_name;
+    NSUUID *_sessionIdentifier;
     double _lastUpdateTimestamp;
     CDStruct_14d5dc5e _transform;
     CDStruct_14d5dc5e _referenceTransform;
@@ -24,6 +25,7 @@
 @property (nonatomic) double lastUpdateTimestamp; // @synthesize lastUpdateTimestamp=_lastUpdateTimestamp;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) CDStruct_14d5dc5e referenceTransform; // @synthesize referenceTransform=_referenceTransform;
+@property (strong, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (nonatomic) CDStruct_14d5dc5e transform; // @synthesize transform=_transform;
 
 + (BOOL)supportsSecureCoding;

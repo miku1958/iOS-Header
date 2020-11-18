@@ -8,47 +8,58 @@
 
 #import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 
-@class NSIndexPath, NSMutableDictionary, NSString, UIScrollView, UISwipeActionsConfiguration, UISwipeHandler, UIView;
-@protocol UISwipeActionHost;
+@class NSIndexPath, NSMutableSet, NSString, UIScrollView, UISwipeActionsConfiguration, UISwipeOccurrence, UIView, _UISwipeHandler;
+@protocol UISwipeActionHost, UISwipeActionHost_Internal;
 
 @interface UISwipeActionController : NSObject <_UIScrollViewScrollObserver>
 {
     id<UISwipeActionHost> _swipeActionHost;
-    NSIndexPath *_swipedIndexPath;
     unsigned long long _style;
     UISwipeActionsConfiguration *_incomingSwipeActionsConfiguration;
     UIScrollView *_containerView;
-    UISwipeHandler *_swipeHandler;
-    NSMutableDictionary *_swipeOccurrences;
+    _UISwipeHandler *_swipeHandler;
+    NSMutableSet *_swipeOccurrences;
+    UISwipeOccurrence *_currentSwipeOccurrence;
 }
 
 @property (weak, nonatomic) UIScrollView *containerView; // @synthesize containerView=_containerView;
+@property (weak, nonatomic) UISwipeOccurrence *currentSwipeOccurrence; // @synthesize currentSwipeOccurrence=_currentSwipeOccurrence;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UISwipeActionsConfiguration *incomingSwipeActionsConfiguration; // @synthesize incomingSwipeActionsConfiguration=_incomingSwipeActionsConfiguration;
+@property (readonly, nonatomic, getter=_internalSwipeActionHost) id<UISwipeActionHost_Internal> internalSwipeActionHost;
+@property (readonly, nonatomic, getter=_prefersRTL) BOOL prefersRTL;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<UISwipeActionHost> swipeActionHost; // @synthesize swipeActionHost=_swipeActionHost;
 @property (nonatomic) BOOL swipeEnabled;
-@property (strong, nonatomic) UISwipeHandler *swipeHandler; // @synthesize swipeHandler=_swipeHandler;
-@property (strong, nonatomic) NSMutableDictionary *swipeOccurrences; // @synthesize swipeOccurrences=_swipeOccurrences;
-@property (copy, nonatomic) NSIndexPath *swipedIndexPath; // @synthesize swipedIndexPath=_swipedIndexPath;
+@property (strong, nonatomic) _UISwipeHandler *swipeHandler; // @synthesize swipeHandler=_swipeHandler;
+@property (strong, nonatomic) NSMutableSet *swipeOccurrences; // @synthesize swipeOccurrences=_swipeOccurrences;
+@property (readonly, nonatomic) NSIndexPath *swipedIndexPath;
 @property (readonly, nonatomic) UIView *swipedItemView;
 
 - (void).cxx_destruct;
-- (id)_currentSwipeOccurrence;
+- (id)_existingSwipeOccurrenceForIndexPath:(id)arg1;
 - (void)_observeScrollViewDidScroll:(id)arg1;
-- (void)_resetSwipedItemAnimated:(BOOL)arg1 swipeInfo:(CDStruct_9b6dff2a)arg2 completion:(CDUnknownBlockType)arg3;
+- (unsigned long long)_swipeDirectionForLeadingEdge:(BOOL)arg1;
 - (CDStruct_324b76a9)configureForSwipeDirection:(unsigned long long)arg1 configuration:(id)arg2 startingAtTouchLocation:(struct CGPoint)arg3;
 - (void)dealloc;
+- (void)deleteRowAtIndexPath:(id)arg1;
+- (void)deleteSectionAtIndex:(unsigned long long)arg1;
 - (id)initWithSwipeActionHost:(id)arg1 style:(unsigned long long)arg2;
+- (void)insertRowAtIndexPath:(id)arg1;
+- (void)insertSectionAtIndex:(unsigned long long)arg1;
+- (void)moveRowAtIndexPath:(id)arg1 toIndexPath:(id)arg2;
+- (void)moveSectionAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
 - (void)resetSwipedItemAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)swipeHandler:(id)arg1 didConfirmSwipeWithInfo:(CDStruct_9b6dff2a)arg2;
-- (void)swipeHandler:(id)arg1 didGenerateSwipeWithInfo:(CDStruct_9b6dff2a)arg2;
-- (BOOL)swipeHandler:(id)arg1 mayBeginSwipeAtLocation:(struct CGPoint)arg2 withDirection:(unsigned long long)arg3;
+- (void)swipeHandler:(id)arg1 didGenerateSwipeWithInfo:(CDStruct_9b6dff2a)arg2 isTracking:(BOOL)arg3;
+- (BOOL)swipeHandler:(id)arg1 mayBeginSwipeAtLocation:(struct CGPoint)arg2 withProposedDirection:(unsigned long long)arg3;
 - (void)swipeHandlerDidBeginSwipe:(id)arg1;
+- (struct CGRect)swipeHandlerRestingFrame:(id)arg1;
 - (void)swipeItemAtIndexPath:(id)arg1 configuration:(id)arg2 direction:(unsigned long long)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)swipeOccurrence:(id)arg1 didChangeStateFrom:(long long)arg2;
 - (void)swipeOccurrence:(id)arg1 willFinishWithDeletion:(BOOL)arg2;
 - (void)swipeOccurrenceDidFinish:(id)arg1;
 - (BOOL)touchAtLocationShouldDismissSwipedItem:(struct CGPoint)arg1 isTouchUp:(BOOL)arg2;

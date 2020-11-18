@@ -7,6 +7,10 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (TKExtensions)
+- (id)tk_dequeueObject;
+- (void)tk_enqueueObject:(id)arg1;
 - (void)tk_ensureHasItemsOrNullUpToIndex:(unsigned long long)arg1;
+- (id)tk_lastEnqueuedObject;
+- (id)tk_nextDequeuedObject;
 @end
 

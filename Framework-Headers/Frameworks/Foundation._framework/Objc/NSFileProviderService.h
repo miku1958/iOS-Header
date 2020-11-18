@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 
 - (void)dealloc;
+- (id)fetchFileProviderConnectionAndReturnError:(id *)arg1;
 - (void)getFileProviderConnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithName:(id)arg1 endpointCreatingProxy:(id)arg2 requestFinishedGroup:(id)arg3;
 

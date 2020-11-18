@@ -17,16 +17,18 @@
 @property (copy, nonatomic) NSDictionary *UTITypes; // @synthesize UTITypes=_UTITypes;
 @property (copy, nonatomic) NSDictionary *dynamicTypes; // @synthesize dynamicTypes=_dynamicTypes;
 
-+ (id)previewGeneratorClasses;
 + (id)sharedInstance;
-- (Class)_classForUTIType:(id)arg1;
 - (Class)_previewGeneratorClassForSourceURL:(id)arg1;
+- (BOOL)_utiTypeIsHEICish:(id)arg1;
 - (void)dealloc;
-- (BOOL)generateAndPersistPreviewFromSourceURL:(id)arg1 previewURL:(id)arg2 previewConstraints:(struct IMPreviewConstraints)arg3 error:(id *)arg4;
+- (BOOL)generateAndPersistMapPreviewFromSourceURL:(id)arg1 previewURL:(id)arg2 size:(out struct CGSize *)arg3 previewConstraints:(struct IMPreviewConstraints)arg4 error:(id *)arg5;
+- (BOOL)generateAndPersistPreviewFromSourceURL:(id)arg1 previewURL:(id)arg2 size:(out struct CGSize *)arg3 previewConstraints:(struct IMPreviewConstraints)arg4 error:(id *)arg5;
 - (id)init;
 - (BOOL)movePreviewToDiskCache:(id)arg1 previewURL:(id)arg2 error:(id *)arg3;
 - (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 - (BOOL)persistPreviewToDiskCache:(struct CGImage *)arg1 previewURL:(id)arg2 error:(id *)arg3;
+- (Class)previewGeneratorClassForUTIType:(id)arg1;
+- (BOOL)sizePreviewFromSourceURL:(id)arg1 size:(out struct CGSize *)arg2 previewConstraints:(struct IMPreviewConstraints)arg3 error:(id *)arg4;
 
 @end
 

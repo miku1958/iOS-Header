@@ -9,6 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardBasedNonEditableTextSelectionInteraction : _UIKeyboardBasedTextSelectionInteraction
 {
+    BOOL _isShiftKeyBeingHeld;
 }
 
 - (void)_synchronousGranularityExpandingGestureWithTimeInterval:(double)arg1 timeGranularity:(double)arg2 isMidPan:(BOOL)arg3;

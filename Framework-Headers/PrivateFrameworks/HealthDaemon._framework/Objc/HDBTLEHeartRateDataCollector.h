@@ -44,8 +44,8 @@
 - (void)_queue_updateForCurrentConfiguration;
 - (id)aggregator;
 - (void)beginCollectionForDataAggregator:(id)arg1 lastPersistedSensorDatum:(id)arg2;
+- (BOOL)canResumeCollectionFromLastSensorDatum;
 - (void)dataAggregator:(id)arg1 wantsCollectionWithConfiguration:(id)arg2;
-- (id)deviceForDataAggregator:(id)arg1;
 - (id)identifierForDataAggregator:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (Class)sensorDatumClassForAggregator:(id)arg1;

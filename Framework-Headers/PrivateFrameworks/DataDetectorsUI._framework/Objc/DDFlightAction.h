@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)adaptForPresentationInPopover:(BOOL)arg1;
 - (void)closePressed;
+- (id)icon;
 - (id)initWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 - (int)interactionType;
 - (id)localizedName;

@@ -28,13 +28,18 @@
 @property (strong, nonatomic) UIColor *unselectedTextColor; // @synthesize unselectedTextColor=_unselectedTextColor;
 
 + (id)_chevronImageForTraitCollection:(id)arg1;
++ (id)_chevronImageForTraitCollection:(id)arg1 selected:(BOOL)arg2;
++ (id)buttonWithChevronImageForTraitCollection:(id)arg1;
 + (id)buttonWithChevronImageForTraitCollection:(id)arg1 highlightColor:(id)arg2;
++ (id)buttonWithOK;
 + (id)buttonWithOKAndHighlightColor:(id)arg1;
++ (id)buttonWithText:(id)arg1;
 + (id)buttonWithText:(id)arg1 highlightColor:(id)arg2;
 + (id)highlightColorForNightTime:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

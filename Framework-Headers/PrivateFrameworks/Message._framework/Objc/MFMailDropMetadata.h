@@ -22,19 +22,19 @@
     unsigned long long _flags;
 }
 
-@property (getter=UUID, setter=setUUID:) NSString *UUID;
+@property (weak) NSString *UUID;
 @property BOOL autoArchive; // @synthesize autoArchive=_autoArchive;
-@property (copy, nonatomic) NSURL *directUrl; // @synthesize directUrl=_directUrl;
+@property (strong, nonatomic) NSURL *directUrl; // @synthesize directUrl=_directUrl;
 @property (copy, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property (copy, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
 @property long long fileSize; // @synthesize fileSize=_fileSize;
 @property unsigned long long flags; // @synthesize flags=_flags;
 @property BOOL isInvalid; // @synthesize isInvalid=_isInvalid;
 @property (copy, nonatomic) NSString *mimeType; // @synthesize mimeType=_mimeType;
-@property (copy, nonatomic) NSURL *wrappedUrl; // @synthesize wrappedUrl=_wrappedUrl;
+@property (strong, nonatomic) NSURL *wrappedUrl; // @synthesize wrappedUrl=_wrappedUrl;
 
 + (id)mailDropMetadata;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)directUrlString;
 - (BOOL)isBanner;

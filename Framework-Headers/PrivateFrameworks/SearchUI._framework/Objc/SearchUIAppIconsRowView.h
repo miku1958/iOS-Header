@@ -8,45 +8,73 @@
 
 #import <SearchUI/NUIArrangementContainer-Protocol.h>
 #import <SearchUI/NUIGridArrangementDataSource-Protocol.h>
+#import <SearchUI/SBIconViewDelegate-Protocol.h>
+#import <SearchUI/SBLeafIconDataSource-Protocol.h>
 
-@class NSMutableArray, NSString, NUIGridArrangement;
+@class NSMapTable, NSMutableArray, NSString, NUIGridArrangement, SBHIconImageCache;
+@protocol SearchUIFeedbackDelegate;
 
-@interface SearchUIAppIconsRowView : UIView <NUIGridArrangementDataSource, NUIArrangementContainer>
+@interface SearchUIAppIconsRowView : UIView <SBLeafIconDataSource, NUIGridArrangementDataSource, NUIArrangementContainer, SBIconViewDelegate>
 {
-    NSMutableArray *_buttons;
-    NSMutableArray *_labels;
+    id<SearchUIFeedbackDelegate> _delegate;
+    NSMutableArray *_iconViews;
     NSMutableArray *_spacingHelpers;
     NSMutableArray *_endsSpacingHelpers;
     NSMutableArray *_itemAtIndex;
     NSMutableArray *_spacerDebuggerViews;
     NUIGridArrangement *_arrangment;
-    unsigned long long _style;
+    SBHIconImageCache *_iconImageCache;
+    NSMapTable *_iconImageGenerationCountByView;
 }
 
 @property (strong, nonatomic) NUIGridArrangement *arrangment; // @synthesize arrangment=_arrangment;
-@property (strong, nonatomic) NSMutableArray *buttons; // @synthesize buttons=_buttons;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak) id<SearchUIFeedbackDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *endsSpacingHelpers; // @synthesize endsSpacingHelpers=_endsSpacingHelpers;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SBHIconImageCache *iconImageCache; // @synthesize iconImageCache=_iconImageCache;
+@property (strong, nonatomic) NSMapTable *iconImageGenerationCountByView; // @synthesize iconImageGenerationCountByView=_iconImageGenerationCountByView;
+@property (strong, nonatomic) NSMutableArray *iconViews; // @synthesize iconViews=_iconViews;
 @property (strong, nonatomic) NSMutableArray *itemAtIndex; // @synthesize itemAtIndex=_itemAtIndex;
-@property (strong, nonatomic) NSMutableArray *labels; // @synthesize labels=_labels;
 @property (strong, nonatomic) NSMutableArray *spacerDebuggerViews; // @synthesize spacerDebuggerViews=_spacerDebuggerViews;
 @property (strong, nonatomic) NSMutableArray *spacingHelpers; // @synthesize spacingHelpers=_spacingHelpers;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
-+ (id)appLabelWithStyle:(unsigned long long)arg1;
++ (struct SBIconImageInfo)appIconImageInfo;
++ (id)appLabel;
++ (id)applicationShortcutService;
++ (id)imageCache;
 + (double)numberOfIcons;
 - (void).cxx_destruct;
+- (void)appIconsChanged:(id)arg1;
+- (id)applicationBundleURLForShortcutsWithIconView:(id)arg1;
+- (id)applicationShortcutWidgetBundleIdentifierForShortcutsWithIconView:(id)arg1;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
+- (void)dealloc;
+- (void)fetchApplicationShortcutInfoForIcon:(id)arg1;
+- (void)fetchIconImageForIcon:(id)arg1 iconView:(id)arg2;
 - (double)gridArrangement:(id)arg1 heightOfRowAtIndex:(long long)arg2 spacingAfter:(double *)arg3;
 - (id)gridArrangement:(id)arg1 itemAtIndex:(long long)arg2 columns:(struct _NSRange *)arg3 rows:(struct _NSRange *)arg4 horizontalAlignment:(long long *)arg5 verticalAlignment:(long long *)arg6;
+- (id)icon:(id)arg1 displayNameForLocation:(id)arg2;
+- (id)icon:(id)arg1 imageWithInfo:(struct SBIconImageInfo)arg2;
+- (BOOL)icon:(id)arg1 launchFromLocation:(id)arg2 context:(id)arg3;
+- (unsigned long long)iconImageGenerationCountForIconView:(id)arg1;
+- (void)iconTapped:(id)arg1;
+- (id)iconView:(id)arg1 applicationShortcutItemsWithProposedItems:(id)arg2;
+- (BOOL)iconView:(id)arg1 shouldActivateApplicationShortcutItem:(id)arg2 atIndex:(unsigned long long)arg3;
+- (BOOL)iconViewCanBeginDrags:(id)arg1;
+- (BOOL)iconViewShouldBeginShortcutsPresentation:(id)arg1;
+- (void)incrementIconImageGenerationCountForIconView:(id)arg1;
 - (id)init;
-- (id)initWithStyle:(unsigned long long)arg1;
+- (BOOL)isTimedOutForIcon:(id)arg1;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;
 - (void)layoutSubviews;
 - (long long)numberOfItemsInGridArrangement:(id)arg1;
+- (id)parallaxSettingsForShortcutsPresentationWithIconView:(id)arg1;
+- (unsigned long long)priorityForIcon:(id)arg1;
+- (BOOL)shouldHideShortcutsForAppIcon:(id)arg1;
+- (BOOL)shouldUseSecureWindowForShortcutsPresentationWithIconView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)updateWithResultsForRow:(id)arg1;

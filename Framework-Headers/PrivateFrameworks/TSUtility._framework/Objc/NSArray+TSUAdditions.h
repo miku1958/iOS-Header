@@ -9,6 +9,7 @@
 @interface NSArray (TSUAdditions)
 + (id)arrayWithCGFloats:(double *)arg1 count:(unsigned long long)arg2;
 + (id)arrayWithInts:(int *)arg1 count:(unsigned long long)arg2;
+- (void)appendJsonStringToString:(id)arg1;
 - (id)initWithCGFloats:(double *)arg1 count:(unsigned long long)arg2;
 - (id)initWithInts:(int *)arg1 count:(unsigned long long)arg2;
 - (id)tsu_arrayByFlattening;

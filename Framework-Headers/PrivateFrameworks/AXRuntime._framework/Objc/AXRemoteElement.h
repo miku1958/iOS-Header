@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) unsigned long long uuidHash;
 
++ (BOOL)_isSerializableAccessibilityElement;
 + (void)initialize;
 + (BOOL)registerRemoteElement:(id)arg1;
 + (id)remoteElementForBlock:(CDUnknownBlockType)arg1;
@@ -39,6 +40,7 @@
 + (id)remoteElementsForContextId:(unsigned int)arg1;
 - (void).cxx_destruct;
 - (id)_accessibilityActiveKeyboard;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityFirstElement;
 - (void)_accessibilityIncreaseSelection:(id)arg1;
 - (id)_accessibilityLastElement;
@@ -46,6 +48,7 @@
 - (id)_accessibilitySortedElementsWithin;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (void)_getRemoteValuesOffMainThread:(CDUnknownBlockType)arg1;
 - (id)_remoteElementWithAttribute:(long long)arg1 limitToRemoteSubviews:(BOOL)arg2;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;

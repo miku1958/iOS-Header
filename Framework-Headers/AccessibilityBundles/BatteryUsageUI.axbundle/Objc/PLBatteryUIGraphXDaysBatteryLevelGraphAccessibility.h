@@ -13,6 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesName;
+- (id)_accessibilityDataSeriesTitleForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesUnitLabelForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesValueDescriptionForPosition:(double)arg1 axis:(long long)arg2;
 - (id)_accessibilityGraphElementsWithData:(id)arg1 endDate:(id)arg2 numIntervals:(int)arg3 intervalWidth:(double)arg4 intervalHeight:(double)arg5 yOrigin:(double)arg6 tapIndex:(int)arg7;
 
 @end

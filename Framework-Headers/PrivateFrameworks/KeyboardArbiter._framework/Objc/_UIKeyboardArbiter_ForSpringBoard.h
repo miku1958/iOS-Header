@@ -8,12 +8,14 @@
 
 #import <KeyboardArbiter/_UIKeyboardArbiterLink-Protocol.h>
 
-@class NSString, SBUIScene, SBUIWorkspace, _UIKeyboardArbiter;
+@class FBSScene, FBSSceneClientSettings, NSString, _UIKeyboardArbiter;
+@protocol OS_dispatch_queue;
 
 @interface _UIKeyboardArbiter_ForSpringBoard : NSObject <_UIKeyboardArbiterLink>
 {
-    SBUIWorkspace *_workspace;
-    SBUIScene *_scene;
+    FBSScene *_scene;
+    FBSSceneClientSettings *_clientSettings;
+    NSObject<OS_dispatch_queue> *_queue;
     _UIKeyboardArbiter *owner;
 }
 
@@ -27,6 +29,7 @@
 
 + (void)launch;
 - (void).cxx_destruct;
+- (id)_createSceneWithIdentifier:(id)arg1 initialClientSettings:(id)arg2;
 - (void)attach:(id)arg1;
 - (void)connectWithQueue:(id)arg1;
 - (void)createSceneWithCompletion:(CDUnknownBlockType)arg1;

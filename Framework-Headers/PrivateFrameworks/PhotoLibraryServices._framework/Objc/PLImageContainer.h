@@ -24,11 +24,14 @@
 @property (readonly, nonatomic) struct CGSize pixelSize;
 @property (readonly, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 
+- (void).cxx_destruct;
 - (void)dealloc;
+- (id)description;
 - (id)initWithCGImage:(struct CGImage *)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1 ioSurface:(void *)arg2 CIImage:(id)arg3 backingData:(id)arg4 uniformTypeIdentifier:(id)arg5 size:(struct CGSize)arg6;
-- (id)initWithUIImage:(id)arg1;
-- (id)initWithUIImage:(id)arg1 backingData:(id)arg2 uniformTypeIdentifier:(id)arg3;
+- (id)initWithIOSurface:(struct __IOSurface *)arg1;
+- (id)initWithPLImage:(struct NSObject *)arg1;
+- (id)initWithPLImage:(struct NSObject *)arg1 backingData:(id)arg2 uniformTypeIdentifier:(id)arg3;
 
 @end
 

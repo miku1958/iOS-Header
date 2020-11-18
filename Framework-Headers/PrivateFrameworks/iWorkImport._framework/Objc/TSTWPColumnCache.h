@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSUConcurrentMutableDictionaryCache.h>
+#import <iWorkImport/TSUUnfairMutableDictionaryCache.h>
 
 __attribute__((visibility("hidden")))
-@interface TSTWPColumnCache : TSUConcurrentMutableDictionaryCache
+@interface TSTWPColumnCache : TSUUnfairMutableDictionaryCache
 {
 }
 

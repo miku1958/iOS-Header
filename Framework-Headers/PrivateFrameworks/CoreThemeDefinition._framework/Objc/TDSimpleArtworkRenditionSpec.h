@@ -18,6 +18,7 @@
 @property (nonatomic) struct CGRect alignmentRect; // @dynamic alignmentRect;
 @property (strong, nonatomic) NSString *alignmentRectString; // @dynamic alignmentRectString;
 @property (nonatomic) BOOL allowsCompactCompression; // @dynamic allowsCompactCompression;
+@property (nonatomic) BOOL allowsDeepmap2Compression; // @dynamic allowsDeepmap2Compression;
 @property (nonatomic) BOOL allowsDeepmapCompression; // @dynamic allowsDeepmapCompression;
 @property (nonatomic) BOOL allowsHevcCompression; // @dynamic allowsHevcCompression;
 @property (nonatomic) BOOL allowsMultiPassEncoding; // @dynamic allowsMultiPassEncoding;

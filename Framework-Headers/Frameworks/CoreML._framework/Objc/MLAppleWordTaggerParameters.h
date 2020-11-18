@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @interface MLAppleWordTaggerParameters : NSObject
 {
@@ -19,10 +19,12 @@
     NSString *_tokenLengthsOutputFeatureName;
     NSData *_modelParameterData;
     NSArray *_tagNames;
+    NSDictionary *_metadata;
 }
 
 @property (strong) NSString *inputFeatureName; // @synthesize inputFeatureName=_inputFeatureName;
 @property (strong) NSString *language; // @synthesize language=_language;
+@property (strong) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (strong) NSData *modelParameterData; // @synthesize modelParameterData=_modelParameterData;
 @property unsigned long long revision; // @synthesize revision=_revision;
 @property (strong) NSArray *tagNames; // @synthesize tagNames=_tagNames;
@@ -33,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithData:(unsigned long long)arg1 language:(id)arg2 inputFeatureName:(id)arg3 tokensFeatureName:(id)arg4 tokenTagsFeatureName:(id)arg5 tokenLocationsFeatureName:(id)arg6 tokenLengthsFeatureName:(id)arg7 modelData:(id)arg8 tagNames:(id)arg9 error:(id *)arg10;
+- (id)initWithData:(unsigned long long)arg1 language:(id)arg2 inputFeatureName:(id)arg3 tokensFeatureName:(id)arg4 tokenTagsFeatureName:(id)arg5 tokenLocationsFeatureName:(id)arg6 tokenLengthsFeatureName:(id)arg7 modelData:(id)arg8 tagNames:(id)arg9 metadata:(id)arg10 error:(id *)arg11;
 
 @end
 

@@ -25,7 +25,7 @@
 @property (nonatomic) unsigned long long numOfIterations; // @synthesize numOfIterations=_numOfIterations;
 @property (strong, nonatomic) CLLocation *selectedHomeLocation; // @synthesize selectedHomeLocation=_selectedHomeLocation;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *tuples; // @synthesize tuples=_tuples;
+@property (copy, nonatomic) NSArray *tuples; // @synthesize tuples=_tuples;
 
 + (id)eventWithLocationTuples:(id)arg1 selectedHomeLocation:(id)arg2 numberOfIterations:(unsigned long long)arg3 nearestLOI:(id)arg4;
 + (void)initialize;

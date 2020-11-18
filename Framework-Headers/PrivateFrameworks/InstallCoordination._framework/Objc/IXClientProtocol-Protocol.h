@@ -15,6 +15,7 @@
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getAppAssetPromise:(void (^)(IXDataPromiseSeed *, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getAppAssetPromiseDRI:(void (^)(unsigned long long, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getCoordinationState:(void (^)(unsigned long long, NSError *))arg2;
+- (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getDeviceSecurityPromise:(void (^)(IXDataPromiseSeed *, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getErrorInfo:(void (^)(unsigned long long, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getInitialODRAssetPromises:(void (^)(NSArray *, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getIsComplete:(void (^)(BOOL, NSError *))arg2;
@@ -24,7 +25,6 @@
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getUserDataPromise:(void (^)(IXDataPromiseSeed *, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 getUserDataRestoreShouldBegin:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 hasAppAssetPromise:(void (^)(BOOL, NSError *))arg2;
-- (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 hasAutoEnabledExtensionTypes:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 hasInitialODRAssetPromises:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 hasInstallOptions:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 hasPlaceholderPromise:(void (^)(BOOL, NSError *))arg2;
@@ -33,14 +33,16 @@
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 prioritizeWithCompletion:(void (^)(NSError *))arg2;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setAppAssetPromiseDRI:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setAppAssetPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
-- (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setAutoEnabledExtensionTypes:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setDeviceSecurityPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setImportance:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setInitialODRAssetPromiseUUIDs:(NSArray *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setInstallOptionsPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setIsPaused:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setPlaceholderPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setPreparationPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setTargetGizmoPairingID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 setUserDataPromiseUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (oneway void)_remote_IXSCoordinatedAppInstall:(NSUUID *)arg1 targetGizmoPairingIDWithCompletion:(void (^)(NSUUID *, NSError *))arg2;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 cancelForReason:(NSError *)arg2 client:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 getErrorInfo:(void (^)(unsigned long long, NSError *))arg2;
 - (oneway void)_remote_IXSDataPromise:(NSUUID *)arg1 getIsComplete:(void (^)(BOOL, NSError *))arg2;
@@ -81,7 +83,7 @@
 - (void)_remote_addObserversForDataPromisesWithUUIDs:(NSSet *)arg1;
 - (void)_remote_cancelCoordinatorForAppWithBundleID:(NSString *)arg1 reason:(NSError *)arg2 client:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (void)_remote_cancelCoordinatorsForAppsWithBundleIDs:(NSArray *)arg1 reason:(NSError *)arg2 client:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
-- (void)_remote_createAppInstallCoordinatorWithSeed:(IXAppInstallCoordinatorSeed *)arg1 createIfNotExisting:(BOOL)arg2 completion:(void (^)(IXAppInstallCoordinatorSeed *, BOOL, NSError *))arg3;
+- (void)_remote_createAppInstallCoordinatorWithSeed:(IXAppInstallCoordinatorSeed *)arg1 createIfNotExisting:(BOOL)arg2 requireMatchingIntent:(BOOL)arg3 completion:(void (^)(IXAppInstallCoordinatorSeed *, BOOL, NSError *))arg4;
 - (void)_remote_createInMemoryDataPromiseWithSeed:(IXPromisedInMemoryDataSeed *)arg1 data:(NSData *)arg2 completion:(void (^)(IXPromisedInMemoryDataSeed *, NSError *))arg3;
 - (void)_remote_createInMemoryDictionaryPromiseWithSeed:(IXPromisedInMemoryDictionarySeed *)arg1 dictionary:(NSDictionary *)arg2 completion:(void (^)(IXPromisedInMemoryDictionarySeed *, NSError *))arg3;
 - (void)_remote_createOutOfBandStreamingZipTransferDataPromiseWithSeed:(IXPromisedOutOfBandStreamingZipTransferSeed *)arg1 completion:(void (^)(IXPromisedOutOfBandStreamingZipTransferSeed *, NSError *))arg2;
@@ -90,6 +92,7 @@
 - (void)_remote_createStreamingZipTransferDataPromiseWithSeed:(IXPromisedStreamingZipTransferSeed *)arg1 completion:(void (^)(IXPromisedStreamingZipTransferSeed *, NSError *))arg2;
 - (void)_remote_createTransferToPathDataPromiseWithSeed:(IXPromisedTransferToPathSeed *)arg1 completion:(void (^)(IXPromisedTransferToPathSeed *, NSError *))arg2;
 - (void)_remote_displayUserPresentableErrorForApp:(NSString *)arg1 code:(long long)arg2;
+- (void)_remote_displayUserPresentableErrorForAppWithLocalizedName:(NSString *)arg1 code:(long long)arg2;
 - (void)_remote_displayUserPresentableErrorForApps:(NSArray *)arg1 code:(long long)arg2;
 - (void)_remote_fetchRegisteredDataPromiseInfoForCreator:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)_remote_fetchSeedsForCoordinatorsWithIntent:(unsigned long long)arg1 completion:(void (^)(NSArray *, NSError *))arg2;

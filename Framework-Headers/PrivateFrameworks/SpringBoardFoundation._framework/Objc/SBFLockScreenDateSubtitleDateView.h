@@ -22,7 +22,7 @@
 @property (nonatomic) BOOL useCompactDateFormat; // @synthesize useCompactDateFormat=_useCompactDateFormat;
 
 + (id)dateTimeLunarDateFont;
-+ (CDStruct_d2b197d1)dateTimeLunarDateFontMetrics;
++ (CDStruct_91d2e2b9)dateTimeLunarDateFontMetrics;
 + (double)scaledFontSize:(double)arg1 withMaximumFontSizeCategory:(id)arg2;
 + (double)subtitleLabelToLunarDateLabelBaselineDifferenceY;
 - (void).cxx_destruct;

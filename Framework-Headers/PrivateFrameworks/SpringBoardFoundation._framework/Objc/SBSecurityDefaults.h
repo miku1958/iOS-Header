@@ -18,8 +18,10 @@
 @property (nonatomic, getter=isBlockedForThermal) BOOL blockedForThermal; // @dynamic blockedForThermal;
 @property (readonly, nonatomic, getter=isDeviceWipeEnabled) BOOL deviceWipeEnabled; // @dynamic deviceWipeEnabled;
 @property (readonly, nonatomic) BOOL dontLockEver; // @dynamic dontLockEver;
+@property (readonly, nonatomic) BOOL enableLayerBasedViewSecurity; // @dynamic enableLayerBasedViewSecurity;
 @property (strong, nonatomic) NSNumber *numberOfFailedPasscodeAttempts; // @dynamic numberOfFailedPasscodeAttempts;
 @property (strong, nonatomic, getter=isPendingDeviceWipe) NSNumber *pendingDeviceWipe; // @dynamic pendingDeviceWipe;
+@property (readonly, nonatomic) BOOL reportSecureDrawViolations; // @dynamic reportSecureDrawViolations;
 @property (strong, nonatomic) NSNumber *unblockTimeFromReferenceDate; // @dynamic unblockTimeFromReferenceDate;
 
 - (void)_bindAndRegisterDefaults;

@@ -16,12 +16,12 @@
 - (BOOL)adaptationEnabled;
 - (BOOL)blueLightStatusEnabled;
 - (BOOL)brightnessFiltersEnabled;
+- (struct AXBColorFilterDescription)colorFilterFromLastUpdate;
 - (id<AXBackBoardServerInstanceDelegate>)delegate;
 - (void)disableBrightnessFilters;
 - (void)forceLoadGAXBundle;
 - (void)resetAccessibilityFeatures;
 - (void)restoreCachedBrightnessFilters;
 - (BOOL)supportsAdaptation;
-- (BOOL)supportsBlueLightReduction;
 @end
 

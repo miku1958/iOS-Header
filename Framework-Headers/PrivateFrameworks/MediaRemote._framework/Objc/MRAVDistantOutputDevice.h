@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)MACAddress;
 - (float)batteryLevel;
+- (id)bluetoothID;
 - (BOOL)canAccessAppleMusic;
 - (BOOL)canAccessRemoteAssets;
 - (BOOL)canAccessiCloudMusicLibrary;

@@ -9,47 +9,38 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSArray, NSMutableSet, NSObject, NSString;
-@protocol HMDWatchManagerDelegate, OS_dispatch_queue;
+@class IDSService, NSArray, NSObject, NSString;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDWatchManager : HMFObject <HMFLogging, IDSServiceDelegate>
 {
-    NSMutableSet *_connectedWatches;
+    id<HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _pairedWithWatch;
-    id<HMDWatchManagerDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    NSArray *_connectedWatches;
     IDSService *_service;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (readonly, copy, nonatomic) NSArray *connectedWatches;
+@property (readonly, copy) NSArray *connectedWatches; // @synthesize connectedWatches=_connectedWatches;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<HMDWatchManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (getter=isPairedWithWatch) BOOL pairedWithWatch; // @synthesize pairedWithWatch=_pairedWithWatch;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly, getter=isPairedWithWatch) BOOL pairedWithWatch; // @synthesize pairedWithWatch=_pairedWithWatch;
 @property (readonly, nonatomic) IDSService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSArray *watches;
+@property (readonly, copy) NSArray *watches;
 
 + (BOOL)isCompatibleWatchDevice:(id)arg1;
 + (id)logCategory;
++ (id)sharedManager;
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (void)__initializeConnectedDevices;
-- (void)_updateConnectedDevices:(id)arg1;
-- (void)addConnectedWatch:(id)arg1;
+- (id)attributeDescriptions;
 - (id)connectedWatchFromDeviceID:(id)arg1;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
-- (void)notifyDelegateOfAddedConnectedWatch:(id)arg1;
-- (void)notifyDelegateOfRemovedConnectedWatch:(id)arg1;
-- (void)removeConnectedWatch:(id)arg1;
 - (void)service:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 devicesChanged:(id)arg2;
-- (id)shortDescription;
 
 @end
 

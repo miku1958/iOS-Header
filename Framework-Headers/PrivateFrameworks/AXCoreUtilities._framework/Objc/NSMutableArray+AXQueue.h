@@ -11,5 +11,6 @@
 - (void)ax_enqueueObject:(id)arg1;
 - (id)ax_lastEnqueuedObject;
 - (id)ax_nextDequeuedObject;
+- (void)ax_removeObjectsFromArrayUsingBlock:(CDUnknownBlockType)arg1;
 @end
 

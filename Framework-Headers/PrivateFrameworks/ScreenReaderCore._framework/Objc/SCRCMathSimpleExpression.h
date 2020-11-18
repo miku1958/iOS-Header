@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isInteger;
 - (BOOL)isWordOrAbbreviation;
 - (id)latexMathModeDescription;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2;
 
 @end
 

@@ -22,7 +22,6 @@
 @property (strong, nonatomic) CLKComplicationTemplateModularLargeTable *complicationTemplate; // @dynamic complicationTemplate;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (void)_enumerateColumnRowsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;

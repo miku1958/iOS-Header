@@ -9,7 +9,7 @@
 #import <CalendarNotification/CLLocationManagerDelegate-Protocol.h>
 
 @class CLLocationManager, EKTimedEventStorePurger, NSMutableDictionary, NSString, PCPersistentTimer;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol CALNRouteHypothesizerProvider, OS_dispatch_queue, OS_dispatch_source;
 
 @interface EKTravelEngine : NSObject <CLLocationManagerDelegate>
 {
@@ -28,6 +28,7 @@
     CDUnknownBlockType _adviceBlock;
     CDUnknownBlockType _authorizationChangedBlock;
     CDUnknownBlockType _eventSignificantlyChangedBlock;
+    id<CALNRouteHypothesizerProvider> _routeHypothesizerProvider;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType adviceBlock; // @synthesize adviceBlock=_adviceBlock;
@@ -38,6 +39,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType eventSignificantlyChangedBlock; // @synthesize eventSignificantlyChangedBlock=_eventSignificantlyChangedBlock;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<CALNRouteHypothesizerProvider> routeHypothesizerProvider; // @synthesize routeHypothesizerProvider=_routeHypothesizerProvider;
 @property (readonly) Class superclass;
 
 + (double)_periodicRefreshInterval;
@@ -45,6 +47,7 @@
 + (double)requestRefreshTimeInterval;
 + (id)requestedDarwinNotifications;
 + (id)travelEligibleEvents:(id)arg1 fromStartDate:(id)arg2 untilEndDate:(id)arg3;
++ (id)travelEligibleEventsInEventStore:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_authorizedToAcquireLocation;
 - (void)_calDatabaseChangedNotificationReceived;
@@ -76,7 +79,7 @@
 - (void)dealloc;
 - (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
 - (void)handleDarwinNotification:(id)arg1;
-- (id)init;
+- (id)initWithRouteHypothesizerProvider:(id)arg1;
 - (BOOL)isLocationManagerStatusAuthorized:(int)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)requestHypothesisRefreshAtDate:(id)arg1 forEventWithExternalURL:(id)arg2;

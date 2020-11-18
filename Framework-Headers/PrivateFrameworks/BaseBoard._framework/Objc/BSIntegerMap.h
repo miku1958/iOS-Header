@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)_initWithMapTable:(id)arg1 zeroIndexValue:(id)arg2;
+- (id)allKeys;
 - (BOOL)containsObjectForKey:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateKeysWithBlock:(CDUnknownBlockType)arg1;

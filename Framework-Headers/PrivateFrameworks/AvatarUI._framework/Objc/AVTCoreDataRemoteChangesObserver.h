@@ -9,7 +9,7 @@
 #import <AvatarUI/AVTCoreDataRemoteChangesObserver-Protocol.h>
 
 @class AVTCoreEnvironment, NSMutableArray;
-@protocol AVTCoreDataPersistentStoreConfiguration, AVTEventCoalescer, AVTUILogger, NSObject, OS_dispatch_queue, OS_os_transaction;
+@protocol AVTCoreDataPersistentStoreConfiguration, AVTEventCoalescer, AVTUILogger, NSObject, OS_dispatch_queue;
 
 @interface AVTCoreDataRemoteChangesObserver : NSObject <AVTCoreDataRemoteChangesObserver>
 {
@@ -21,7 +21,6 @@
     id<NSObject> _observationToken;
     NSMutableArray *_changeHandlers;
     NSMutableArray *_transactionsForPendingChanges;
-    NSObject<OS_os_transaction> *_osTransaction;
 }
 
 @property (readonly, nonatomic) NSMutableArray *changeHandlers; // @synthesize changeHandlers=_changeHandlers;
@@ -30,7 +29,6 @@
 @property (readonly, nonatomic) AVTCoreEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly, nonatomic) id<AVTUILogger> logger; // @synthesize logger=_logger;
 @property (strong, nonatomic) id<NSObject> observationToken; // @synthesize observationToken=_observationToken;
-@property (strong, nonatomic) NSObject<OS_os_transaction> *osTransaction; // @synthesize osTransaction=_osTransaction;
 @property (readonly, nonatomic) NSMutableArray *transactionsForPendingChanges; // @synthesize transactionsForPendingChanges=_transactionsForPendingChanges;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
@@ -40,7 +38,7 @@
 - (id)initWithConfiguration:(id)arg1 workQueue:(id)arg2 coalescer:(id)arg3 environment:(id)arg4;
 - (BOOL)isObservingChanges;
 - (void)performManagedObjectContextWork:(CDUnknownBlockType)arg1;
-- (void)processRemoteChangeNotification:(id)arg1;
+- (void)processRemoteChangeNotification:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerCoalescerEventHandler;
 - (void)startObservingChanges;
 

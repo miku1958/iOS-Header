@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class GEOCompanionRouteContext, GEOCompanionRouteDetails, GEOCompanionRouteStatus, GEOComposedRoute, GEOLocation, GEONameInfo, GEONavigationGuidanceState, GEONavigationRouteSummary, GEONavigationRouteTransitSummary, GEORouteMatch, NSArray, NSData, NSString, NSXPCConnection;
+@class GEOComposedRoute, GEOLocation, GEONameInfo, GEONavigationGuidanceState, GEONavigationRouteSummary, GEONavigationRouteTransitSummary, GEORouteMatch, NSArray, NSData, NSString, NSXPCConnection;
 @protocol GEOServerFormattedStepStringFormatter;
 
 @interface GEONavigationProxy : NSObject
 {
     NSXPCConnection *_navdConnection;
-    NSXPCConnection *_nanomapscdConnection;
     int _navigationStartedToken;
     BOOL _hasNavigationStartedToken;
     NSString *_destinationName;
@@ -39,28 +38,17 @@
     NSData *_trafficIncidentAlertDetailsData;
     int _navigationVoiceVolume;
     BOOL _isNavigatingInLowGuidance;
-    GEOCompanionRouteDetails *_companionRouteDetails;
-    GEOCompanionRouteStatus *_companionRouteStatus;
-    GEOCompanionRouteContext *_companionRouteContext;
-    BOOL _shouldSendRouteWithStatus;
     BOOL _isConnectedToCarplay;
     id<GEOServerFormattedStepStringFormatter> _formatter;
 }
 
-@property (strong) id<GEOServerFormattedStepStringFormatter> formatter; // @synthesize formatter=_formatter;
+@property (strong, nonatomic) id<GEOServerFormattedStepStringFormatter> formatter; // @synthesize formatter=_formatter;
 
 - (void).cxx_destruct;
 - (void)_clearState;
-- (void)_closeNanomapscdConnection;
 - (void)_closeNavdConnection;
-- (void)_invalidateNavigationSessionWithRouteContext:(id)arg1;
-- (void)_markCurrentHapticsAsTriggered;
-- (void)_openNanomapscdConnection;
 - (void)_openNavdConnection;
 - (void)_sendActiveRouteDetailsData;
-- (void)_sendCoalescedCompanionRouteStatus;
-- (void)_sendCompanionRouteDetails:(id)arg1 routeStatus:(id)arg2 routeContext:(id)arg3;
-- (void)_sendCompanionRouteStatus;
 - (void)_sendCurrentRoadName;
 - (void)_sendGuidanceState;
 - (void)_sendNavigationVoiceVolume;
@@ -73,11 +61,10 @@
 - (void)_sendStepNameInfo;
 - (void)_sendTrafficIncidentAlertDetailsData;
 - (void)_sendTransitSummary;
-- (void)_updateCompanionRouteStatus;
 - (void)dealloc;
 - (void)setActiveRouteDetailsData:(id)arg1;
 - (void)setAnnouncementStage:(unsigned long long)arg1;
-- (void)setClusteredSectionSelectedRideFromRoute:(id)arg1 routeID:(id)arg2;
+- (void)setClusteredSectionSelectedRideFromRoute:(id)arg1;
 - (void)setCurrentRoadName:(id)arg1;
 - (void)setDestinationName:(id)arg1;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
@@ -86,6 +73,7 @@
 - (void)setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (void)setLastLocation:(id)arg1;
 - (void)setLocationUnreliable:(BOOL)arg1;
+- (void)setNavigationSessionState:(unsigned long long)arg1 transportType:(int)arg2;
 - (void)setNavigationState:(int)arg1;
 - (void)setNavigationVoiceVolume:(int)arg1;
 - (void)setNextAnnouncementStage:(unsigned long long)arg1 timeUntilNextAnnouncement:(double)arg2;

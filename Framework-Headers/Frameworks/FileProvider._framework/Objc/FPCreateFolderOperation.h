@@ -19,9 +19,9 @@
 @property (copy, nonatomic) CDUnknownBlockType createFolderCompletionBlock; // @synthesize createFolderCompletionBlock=_createFolderCompletionBlock;
 
 - (void).cxx_destruct;
+- (void)actionMain;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithParentItem:(id)arg1 folderName:(id)arg2;
-- (void)mainWithExtensionProxy:(id)arg1;
 - (void)presendNotifications;
 
 @end

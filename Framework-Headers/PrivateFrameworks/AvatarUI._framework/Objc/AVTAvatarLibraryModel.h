@@ -8,7 +8,7 @@
 
 #import <AvatarUI/AVTAvatarEditorViewControllerDelegate-Protocol.h>
 
-@class AVTAvatarLibraryCreateNewItem, AVTUIEnvironment, NSArray, NSMutableArray, NSString;
+@class AVTAvatarLibraryCreateNewItem, AVTUIEnvironment, AVTViewSessionProvider, NSArray, NSMutableArray, NSString;
 @protocol AVTAvatarLibraryModelDelegate, AVTAvatarStoreInternal;
 
 @interface AVTAvatarLibraryModel : NSObject <AVTAvatarEditorViewControllerDelegate>
@@ -16,6 +16,7 @@
     BOOL _isCreatingAvatar;
     id<AVTAvatarLibraryModelDelegate> _delegate;
     id<AVTAvatarStoreInternal> _avatarStore;
+    AVTViewSessionProvider *_viewSessionProvider;
     AVTUIEnvironment *_environment;
     AVTAvatarLibraryCreateNewItem *_createNewItem;
     NSMutableArray *_mutableLibraryItems;
@@ -32,12 +33,13 @@
 @property (readonly, nonatomic) NSArray *libraryItems;
 @property (readonly, nonatomic) NSMutableArray *mutableLibraryItems; // @synthesize mutableLibraryItems=_mutableLibraryItems;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) AVTViewSessionProvider *viewSessionProvider; // @synthesize viewSessionProvider=_viewSessionProvider;
 
 - (void).cxx_destruct;
 - (void)avatarEditorViewController:(id)arg1 didFinishWithAvatarRecord:(id)arg2;
 - (void)avatarEditorViewControllerDidCancel:(id)arg1;
 - (long long)indexForRecord:(id)arg1;
-- (id)initWithAvatarStore:(id)arg1 environment:(id)arg2;
+- (id)initWithAvatarStore:(id)arg1 avtViewSessionProvider:(id)arg2 environment:(id)arg3;
 - (void)insertItemForRecord:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)libraryItemsFromAvatarRecords:(id)arg1;
 - (void)load;
@@ -45,7 +47,7 @@
 - (void)performActionOnItemAtIndex:(unsigned long long)arg1;
 - (void)presentActionSheetForRecordItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)presentEditor:(id)arg1 forCreating:(BOOL)arg2;
-- (void)presetShareSheetWithRecords:(id)arg1;
+- (void)presetShareSheetWithRecords:(id)arg1 fromItem:(id)arg2;
 - (void)reloadDataForRecords:(id)arg1;
 - (void)removeItemForRecordAtIndex:(unsigned long long)arg1;
 - (void)storeDidChangeNotification:(id)arg1;

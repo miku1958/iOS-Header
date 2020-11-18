@@ -19,6 +19,7 @@
     long long _detailViewStyle;
     NSDictionary *_recurringDetailsRowMap;
     NSNumberFormatter *_currencyFormatter;
+    NSNumberFormatter *_localizedDayNumberFormatter;
     NSDateFormatter *_productDateFormatter;
     NSDateFormatter *_productDayFormatter;
     NSDateFormatter *_localTimeFormatter;
@@ -63,6 +64,7 @@
 - (id)_tableView:(id)arg1 recurringPaymentStatusCellForRowAtIndexPath:(id)arg2;
 - (id)_tableView:(id)arg1 recurringPaymentUpcomingPaymentCellForPaymentDetailsRowAtIndexPath:(id)arg2;
 - (id)initWithAccount:(id)arg1 payment:(id)arg2 paymentWebService:(id)arg3 detailViewStyle:(long long)arg4;
+- (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -72,6 +74,7 @@
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

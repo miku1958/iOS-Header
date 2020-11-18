@@ -21,6 +21,7 @@
     NSNumber *_responderDSID;
     NSString *_clientIdentifier;
     NSDate *_dateAddedToLocalCache;
+    NSString *_statusDescription;
 }
 
 @property (copy) NSString *ask; // @synthesize ask=_ask;
@@ -32,12 +33,11 @@
 @property BOOL requestedOnThisDevice; // @synthesize requestedOnThisDevice=_requestedOnThisDevice;
 @property (copy) NSNumber *requesterDSID; // @synthesize requesterDSID=_requesterDSID;
 @property (copy) NSNumber *responderDSID; // @synthesize responderDSID=_responderDSID;
-@property (readonly) NSString *statusDescription;
+@property (readonly) NSString *statusDescription; // @synthesize statusDescription=_statusDescription;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)cacheRepresentation;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAsk:(id)arg1 requestInfo:(id)arg2;
 - (id)initWithCacheRepresentation:(id)arg1;

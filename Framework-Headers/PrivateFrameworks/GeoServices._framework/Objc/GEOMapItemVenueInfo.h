@@ -30,9 +30,9 @@
 @property (readonly, nonatomic) int venueFeatureType; // @synthesize venueFeatureType=_venueFeatureType;
 @property (readonly, nonatomic) id<GEOVenueIdentifier> venueIdentifier; // @synthesize venueIdentifier=_venueIdentifier;
 
-+ (id)fakeVenueInfoForPlace:(id)arg1;
 - (void).cxx_destruct;
 - (id)_filtersFromVenueInfo:(id)arg1;
+- (id)init;
 - (id)initWithIdentifier:(id)arg1 featureType:(int)arg2 filters:(id)arg3 parent:(id)arg4 contents:(id)arg5;
 - (id)initWithVenueInfo:(id)arg1;
 

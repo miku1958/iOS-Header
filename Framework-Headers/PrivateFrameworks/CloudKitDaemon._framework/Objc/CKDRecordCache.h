@@ -39,18 +39,20 @@ __attribute__((visibility("hidden")))
 - (void)addRecord:(id)arg1 knownUserKeys:(id)arg2;
 - (void)clearAllRecords;
 - (void)clearAllRecordsForZoneWithID:(id)arg1;
+- (void)clearAllRecordsInScope;
+- (void)clearAssetAuthTokensForRecord:(id)arg1;
 - (void)clearAssetAuthTokensForRecordWithID:(id)arg1;
 - (void)close;
 - (void)deleteRecordWithID:(id)arg1;
 - (id)etagForRecordID:(id)arg1 requiredKeys:(id)arg2;
 - (id)initWithDatabase:(id)arg1 dbPool:(id)arg2 context:(id)arg3 scope:(long long)arg4;
+- (unsigned long long)numberOfRecordsWithID:(id)arg1;
 - (void)open;
 - (unsigned long long)recordCacheSizeLimit;
 - (id)recordWithID:(id)arg1 requiredKeys:(id)arg2;
 - (id)recordsWithIDs:(id)arg1 requiredKeys:(id)arg2;
 - (void)releaseDatabase;
 - (void)scheduleRecordExpirationWithExpiryDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (unsigned long long)sqlBatchCount;
 
 @end
 

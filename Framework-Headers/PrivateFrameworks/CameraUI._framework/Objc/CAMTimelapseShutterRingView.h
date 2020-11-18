@@ -11,41 +11,44 @@
 @interface CAMTimelapseShutterRingView : UIView
 {
     BOOL _animating;
-    long long _layoutStyle;
+    double __smallTickRotationRadians;
+    double __largeTickRotationRadians;
     CALayer *__smallTickLayer;
     CALayer *__largeTickLayer;
     CAReplicatorLayer *__smallTickReplicatorLayer;
     CAReplicatorLayer *__largeTickReplicatorLayer;
     CALayer *__timerHandLayer;
     CALayer *__timerHandParentLayer;
+    CDStruct_8ae1ff66 _spec;
 }
 
 @property (readonly, nonatomic) CALayer *_largeTickLayer; // @synthesize _largeTickLayer=__largeTickLayer;
 @property (readonly, nonatomic) CAReplicatorLayer *_largeTickReplicatorLayer; // @synthesize _largeTickReplicatorLayer=__largeTickReplicatorLayer;
+@property (readonly, nonatomic) double _largeTickRotationRadians; // @synthesize _largeTickRotationRadians=__largeTickRotationRadians;
 @property (readonly, nonatomic) CALayer *_smallTickLayer; // @synthesize _smallTickLayer=__smallTickLayer;
 @property (readonly, nonatomic) CAReplicatorLayer *_smallTickReplicatorLayer; // @synthesize _smallTickReplicatorLayer=__smallTickReplicatorLayer;
+@property (readonly, nonatomic) double _smallTickRotationRadians; // @synthesize _smallTickRotationRadians=__smallTickRotationRadians;
 @property (readonly, nonatomic) CALayer *_timerHandLayer; // @synthesize _timerHandLayer=__timerHandLayer;
 @property (readonly, nonatomic) CALayer *_timerHandParentLayer; // @synthesize _timerHandParentLayer=__timerHandParentLayer;
 @property (nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
-@property (readonly, nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property (readonly, nonatomic) CDStruct_8ae1ff66 spec; // @synthesize spec=_spec;
 
 - (void).cxx_destruct;
 - (void)_addStartAnimations;
 - (void)_addStopAnimations;
-- (void)_commonCAMTimelapseShutterRingViewInitializationWithLayoutStyle:(long long)arg1;
-- (struct CGSize)_largeTickSizeForLayoutStyle:(long long)arg1;
+- (void)_commonCAMTimelapseShutterRingViewInitializationWithSpec:(CDStruct_8ae1ff66)arg1;
 - (void)_removeStartAnimations;
 - (void)_removeStopAnimations;
+- (double)_rotationRadiansFromTickCount:(long long)arg1;
 - (double)_rotationZFromTransform:(struct CATransform3D)arg1;
 - (BOOL)_shouldUseAnimations;
-- (struct CGSize)_smallTickSizeForLayoutStyle:(long long)arg1;
 - (void)_startAnimating;
 - (void)_stopAnimating;
 - (double)_tickRadiusForTickSize:(struct CGSize)arg1 ringSize:(struct CGSize)arg2;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithLayoutStyle:(long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 spec:(CDStruct_8ae1ff66)arg2;
+- (id)initWithSpec:(CDStruct_8ae1ff66)arg1;
 - (void)layoutSublayersOfLayer:(id)arg1;
+- (void)setSpec:(CDStruct_8ae1ff66)arg1;
 
 @end
 

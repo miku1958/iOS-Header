@@ -9,23 +9,26 @@
 #import <DoNotDisturbServer/DNDSBackingStore-Protocol.h>
 
 @class NSString, NSURL;
+@protocol DNDSBackingStoreDelegate;
 
 @interface DNDSJSONBackingStore : NSObject <DNDSBackingStore>
 {
     Class _recordClass;
     NSURL *_fileURL;
     unsigned long long _versionNumber;
+    id<DNDSBackingStoreDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<DNDSBackingStoreDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)initWithRecordClass:(Class)arg1 fileURL:(id)arg2 versionNumber:(unsigned long long)arg3;
-- (id)readAllRecordsWithError:(id *)arg1 lastUpdateDate:(out id *)arg2;
-- (BOOL)writeAllRecords:(id)arg1 withError:(id *)arg2;
+- (id)readRecordWithError:(id *)arg1;
+- (BOOL)writeRecord:(id)arg1 error:(id *)arg2;
 
 @end
 

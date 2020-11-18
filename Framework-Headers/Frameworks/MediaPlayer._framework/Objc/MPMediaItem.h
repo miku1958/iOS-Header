@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) unsigned long long composerPersistentID;
 @property (copy, nonatomic) NSDate *dateAccessed;
 @property (readonly, nonatomic) NSDate *dateAdded;
+@property (readonly, nonatomic) NSDate *dateDownloaded;
 @property (readonly, nonatomic) unsigned long long discCount;
 @property (readonly, nonatomic) unsigned long long discNumber;
 @property (readonly, nonatomic) NSString *effectiveAlbumArtist;
@@ -67,6 +68,7 @@
 @property (readonly, nonatomic) unsigned long long year;
 
 + (id)MPSD_mediaItemPropertiesForDownloadability;
++ (id)ULIDPropertyForGroupingType:(long long)arg1;
 + (void)_createFilterableDictionary;
 + (BOOL)_isValidItemProperty:(id)arg1;
 + (id)artworkCatalogCacheProperties;
@@ -103,7 +105,7 @@
 - (BOOL)incrementPlayCountForStopTime:(double)arg1;
 - (void)incrementSkipCount;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMultiverseIdentifier:(id)arg1;
+- (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
 - (id)initWithPersistentID:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (Class)itemArrayCoderPIDDataCodingClass;

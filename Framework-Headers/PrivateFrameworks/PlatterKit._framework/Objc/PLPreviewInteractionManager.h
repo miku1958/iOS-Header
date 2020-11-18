@@ -4,56 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PlatterKit/PLClickPresentationInteractionManager.h>
 
-#import <PlatterKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <PlatterKit/UIPreviewInteractionDelegatePrivate-Protocol.h>
+@protocol PLPreviewInteractionManagerDelegate;
 
-@class NSString, UIGestureRecognizer, UIPreviewInteraction, UIViewController, _UIPreviewInteractionViewControllerPresentation;
-@protocol PLPreviewInteractionManagerDelegate, PLPreviewInteractionPresentable, PLPreviewInteractionPresenting;
-
-@interface PLPreviewInteractionManager : NSObject <UIGestureRecognizerDelegate, UIPreviewInteractionDelegatePrivate>
+@interface PLPreviewInteractionManager : PLClickPresentationInteractionManager
 {
-    BOOL _didPresent;
-    UIViewController<PLPreviewInteractionPresenting> *_presentingViewController;
-    UIPreviewInteraction *_previewInteraction;
-    _UIPreviewInteractionViewControllerPresentation *_previewInteractionPresentation;
-    CDUnknownBlockType _presentationCompletion;
-    CDUnknownBlockType _dismissalCompletion;
-    BOOL _didInteractionInitiateWithHint;
-    BOOL _willPresent;
-    id<PLPreviewInteractionManagerDelegate> _delegate;
-    UIViewController<PLPreviewInteractionPresentable> *_presentedViewController;
 }
 
-@property (readonly, nonatomic, getter=hasCommittedToPresentation) BOOL committedToPresentation;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PLPreviewInteractionManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (nonatomic, setter=_setDidInteractionInitiateWithHint:) BOOL didInteractionInitiateWithHint; // @synthesize didInteractionInitiateWithHint=_didInteractionInitiateWithHint;
-@property (readonly, nonatomic) UIGestureRecognizer *gestureRecognizerForExclusionRelationship;
-@property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) UIViewController<PLPreviewInteractionPresentable> *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
-@property (readonly) Class superclass;
-@property (nonatomic, getter=_willPresent, setter=_setWillPresent:) BOOL willPresent; // @synthesize willPresent=_willPresent;
+@property (weak, nonatomic) id<PLPreviewInteractionManagerDelegate> delegate; // @dynamic delegate;
 
 + (void)initialize;
-- (void).cxx_destruct;
-- (BOOL)_dismissIfPossibleWithTrigger:(long long)arg1;
-- (id)_newPreviewInteractionWithView:(id)arg1;
-- (id)_previewInteraction:(id)arg1 viewControllerPresentationForPresentingViewController:(id)arg2;
-- (id)_previewInteractionHighlighterForPreviewTransition:(id)arg1;
-- (BOOL)_previewInteractionShouldAutomaticallyTransitionToPreviewAfterDelay:(id)arg1;
-- (void)_previewInteractionViewControllerTransitionDidDismiss:(BOOL)arg1;
-- (void)_previewInteractionViewControllerTransitionDidPresent:(BOOL)arg1;
-- (void)completeTransitionImmediately;
-- (BOOL)dismissIfPossible:(CDUnknownBlockType)arg1;
+- (id)_delegateContainerView;
+- (void)_delegateDeclinedDismissingPresentedContentWithTrigger:(long long)arg1;
+- (void)_delegateDidEndUserInteraction;
+- (id)_delegatePresentedViewController;
+- (BOOL)_delegateShouldBeginInteractionWithTouchAtLocation:(struct CGPoint)arg1;
+- (void)_delegateShouldFinishInteractionWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (id)_delegateTransitioningDelegate;
+- (void)_delegateWillBeginUserInteraction;
+- (void)_delegateWillDismissPresentedContentWithTrigger:(long long)arg1;
 - (id)initWithPresentingViewController:(id)arg1;
-- (BOOL)presentIfPossible:(CDUnknownBlockType)arg1;
-- (void)previewInteraction:(id)arg1 didUpdatePreviewTransition:(double)arg2 ended:(BOOL)arg3;
-- (void)previewInteractionDidCancel:(id)arg1;
-- (BOOL)previewInteractionShouldBegin:(id)arg1;
-- (void)resetForInitialInteraction;
 
 @end
 

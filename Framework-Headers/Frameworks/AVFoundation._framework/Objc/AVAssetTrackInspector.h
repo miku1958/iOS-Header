@@ -8,13 +8,13 @@
 
 #import <AVFoundation/AVAsynchronousKeyValueLoading-Protocol.h>
 
-@class AVWeakReference, NSArray, NSDictionary, NSLocale, NSString;
+@class AVDispatchOnce, AVWeakReference, NSArray, NSDictionary, NSLocale, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVAssetTrackInspector : AVFigObjectInspector <AVAsynchronousKeyValueLoading>
 {
     AVWeakReference *_weakReference;
-    long long _synthesizeMediaCharacteristicsOnce;
+    AVDispatchOnce *_synthesizeMediaCharacteristicsOnce;
     NSArray *_cachedMediaCharacteristics;
 }
 
@@ -32,8 +32,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=_figMediaType) unsigned int figMediaType;
 @property (readonly, nonatomic, getter=_figTrackReader) struct OpaqueFigTrackReader *figTrackReader;
 @property (readonly, nonatomic) NSArray *formatDescriptions;
+@property (readonly, nonatomic) BOOL hasAudibleBooksContent;
+@property (readonly, nonatomic) BOOL hasAudioSampleDependencies;
 @property (readonly, nonatomic) BOOL hasProtectedContent;
+@property (readonly, nonatomic) BOOL isAudibleBooksContentAuthorized;
 @property (readonly, nonatomic) NSString *languageCode;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 latentBaseDecodeTimeStampOfFirstTrackFragment;
 @property (readonly, nonatomic) long long layer;
 @property (readonly, nonatomic) NSLocale *locale;
 @property (readonly, nonatomic) NSDictionary *loudnessInfo;
@@ -45,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) int naturalTimeScale;
 @property (readonly, nonatomic) float nominalFrameRate;
+@property (readonly, nonatomic) float peakDataRate;
 @property (readonly, nonatomic) int playabilityValidationResult;
 @property (readonly, nonatomic, getter=isPlayable) BOOL playable;
 @property (readonly, nonatomic) struct CGAffineTransform preferredTransform;

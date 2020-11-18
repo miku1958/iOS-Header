@@ -4,28 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreSpotlight/_MDExtensionLoader.h>
 
-@protocol OS_dispatch_queue;
-
-@interface _MDIndexExtensionLoader : NSObject
+@interface _MDIndexExtensionLoader : _MDExtensionLoader
 {
-    id _matchingContext;
-    NSObject<OS_dispatch_queue> *_queue;
-    long long _notificationCount;
 }
 
-@property (strong, nonatomic) id matchingContext; // @synthesize matchingContext=_matchingContext;
-@property (nonatomic) long long notificationCount; // @synthesize notificationCount=_notificationCount;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-
 + (id)_matchDictionary;
-- (void).cxx_destruct;
 - (id)_filterIndexExtensions:(id)arg1 outFileProviderBundleMap:(id *)arg2;
-- (void)findExtensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
-- (void)startLookingForExtensionsWithMatchUpdateHandler:(CDUnknownBlockType)arg1;
-- (void)stopLookingForExtensions;
 
 @end
 

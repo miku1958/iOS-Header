@@ -13,8 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsScannerElement;
+- (unsigned long long)_accessibilityAutomationType;
+- (BOOL)_axIsInvisibleButton;
+- (BOOL)accessibilityElementsHidden;
 - (id)accessibilityLabel;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

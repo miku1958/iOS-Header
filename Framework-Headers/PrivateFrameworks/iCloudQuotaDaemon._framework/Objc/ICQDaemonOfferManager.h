@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class FLFollowUpController, NSNumber, NSURLSession;
+@class FLFollowUpController, NSNumber, NSURLSession, _ICQAccountManager;
 
 @interface ICQDaemonOfferManager : NSObject
 {
     NSURLSession *_sharedURLSession;
     FLFollowUpController *_followUpController;
+    _ICQAccountManager *_accountManager;
 }
 
+@property (readonly) _ICQAccountManager *accountManager; // @synthesize accountManager=_accountManager;
 @property (nonatomic, getter=isBuddyOfferEnabled) BOOL buddyOfferEnabled;
 @property (nonatomic, getter=isLegacyDeviceStorageLevelNotificationEnabled) BOOL legacyDeviceStorageLevelNotificationEnabled;
+@property (readonly) NSURLSession *sharedURLSession; // @synthesize sharedURLSession=_sharedURLSession;
 @property (nonatomic) BOOL shouldDirectToStorageManagement;
 @property (nonatomic, getter=isSimulatedDeviceStorageAlmostFull) BOOL simulatedDeviceStorageAlmostFull;
 @property (strong, nonatomic) NSNumber *simulatedPhotosLibrarySize;
@@ -31,7 +34,7 @@
 - (void)_daemonOfferStubsDictionaryForAccount:(id)arg1 isForBuddy:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchDaemonOfferForAccount:(id)arg1 stub:(id)arg2 notificationID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_fetchDaemonOfferStubsForAccount:(id)arg1 isForBuddy:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_fetchDictionaryForAccount:(id)arg1 quotaKey:(id)arg2 stub:(id)arg3 notificationID:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_fetchDictionaryForAccount:(id)arg1 quotaKey:(id)arg2 stub:(id)arg3 notificationID:(id)arg4 contextDictionary:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (BOOL)_isBackupEnabledForAccount:(id)arg1;
 - (id)_placeholderOfferForAccount:(id)arg1 isForBuddy:(BOOL)arg2 error:(id)arg3;
 - (void)_postDaemonOfferChangedDueToPushDarwinNotification;
@@ -58,6 +61,7 @@
 - (unsigned long long)daemonOfferSource;
 - (void)forcePostFollowup;
 - (id)init;
+- (id)initWithAccountManager:(id)arg1;
 - (void)postBuddyOfferType:(id)arg1;
 - (void)postOfferType:(id)arg1;
 - (void)processPushNotificationDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;

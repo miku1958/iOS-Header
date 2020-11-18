@@ -26,6 +26,7 @@
     UIView *_scrollToTopView;
     _SFCrashBanner *_crashBanner;
     double _crashBannerOffset;
+    UIView *_quickLookDocumentView;
     double _minimalUITopOffset;
     id<SFBrowserViewDelegate> _delegate;
 }
@@ -40,8 +41,8 @@
 @property (nonatomic) double minimalUITopOffset; // @synthesize minimalUITopOffset=_minimalUITopOffset;
 @property (strong, nonatomic) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) unsigned long long navigationBarBehavior; // @synthesize navigationBarBehavior=_navigationBarBehavior;
-@property (readonly, nonatomic) double navigationBarOffset;
 @property (strong, nonatomic) _SFLinkPreviewHeader *previewHeader; // @synthesize previewHeader=_previewHeader;
+@property (strong, nonatomic) UIView *quickLookDocumentView; // @synthesize quickLookDocumentView=_quickLookDocumentView;
 @property (readonly, nonatomic) UIView *scrollToTopView; // @synthesize scrollToTopView=_scrollToTopView;
 @property (nonatomic) BOOL shouldUseScrollToTopView; // @synthesize shouldUseScrollToTopView=_shouldUseScrollToTopView;
 @property (strong, nonatomic) UIView *statusBarBackgroundView; // @synthesize statusBarBackgroundView=_statusBarBackgroundView;
@@ -55,9 +56,7 @@
 - (void)layoutSubviews;
 - (void)setContentReadyForDisplay;
 - (void)updateDismissButtonStyle:(long long)arg1;
-- (void)updateNavigationBarTintColor:(id)arg1;
 - (void)updatePreviewHeader;
-- (void)updateToolbarTintColor:(id)arg1;
 
 @end
 

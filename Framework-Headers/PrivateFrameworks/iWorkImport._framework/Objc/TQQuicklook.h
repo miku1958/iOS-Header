@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <iWorkImport/TSPDocumentResourceFileURLProvider-Protocol.h>
+#import <iWorkImport/TSUResourceFileURLProvider-Protocol.h>
 
 @class NSBundle, NSString, TSABaseApplicationDelegate, TSACirrusDocument, TSUTemporaryDirectory;
 @protocol TSKRenderingExporter;
 
 __attribute__((visibility("hidden")))
-@interface TQQuicklook : NSObject <TSPDocumentResourceFileURLProvider>
+@interface TQQuicklook : NSObject <TSUResourceFileURLProvider>
 {
     NSString *mPath;
     TSACirrusDocument *mDocument;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (Class)appDelegateClass;
 - (void)close;
 - (void)dealloc;
-- (id)fileURLForDocumentResourceInfo:(id)arg1;
+- (id)fileURLForResourceInfo:(id)arg1;
 - (struct __CFString *)getIdentifierForApp:(id)arg1;
 - (id)initWithPath:(id)arg1 passphrase:(id)arg2;
 - (BOOL)load;

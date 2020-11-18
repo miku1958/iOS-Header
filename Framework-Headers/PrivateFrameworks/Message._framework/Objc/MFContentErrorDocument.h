@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) NSString *content;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMimePart:(id)arg1;
 
 @end

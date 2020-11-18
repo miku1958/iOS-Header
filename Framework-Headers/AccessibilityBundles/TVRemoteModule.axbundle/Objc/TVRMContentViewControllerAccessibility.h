@@ -13,8 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (void)viewDidLoad;
+- (id)_accessibilityControlCenterButtonLabel;
 
 @end
 

@@ -8,25 +8,30 @@
 
 #import <RelevanceEngine/NSCopying-Protocol.h>
 
+@class NSMutableSet, NSSet;
+
 @interface REMLPrediction : NSObject <NSCopying>
 {
-    float _actionProbability;
-    float _appActionProbability;
+    NSMutableSet *_explanations;
     float _mean;
     float _variance;
     float _probability;
     float _pessimistic;
+    float _bias;
 }
 
-@property (nonatomic) float actionProbability;
-@property (nonatomic) float appActionProbability;
+@property (nonatomic) float bias; // @synthesize bias=_bias;
+@property (readonly, nonatomic) NSSet *explanations;
 @property (readonly, nonatomic) float mean; // @synthesize mean=_mean;
 @property (readonly, nonatomic) float pessimistic; // @synthesize pessimistic=_pessimistic;
 @property (readonly, nonatomic) float probability; // @synthesize probability=_probability;
 @property (readonly, nonatomic) float variance; // @synthesize variance=_variance;
 
 + (id)predictionWithProbability:(float)arg1 mean:(float)arg2 variance:(float)arg3 pessimistic:(float)arg4;
+- (void).cxx_destruct;
+- (void)addExplanation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)explanationDescription;
 
 @end
 

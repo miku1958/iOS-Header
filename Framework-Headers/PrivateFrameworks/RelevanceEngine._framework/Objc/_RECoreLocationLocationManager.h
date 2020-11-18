@@ -30,6 +30,7 @@
 - (void)_notifyUpdateHandlersWithError:(id)arg1;
 - (void)_updateLocation:(id)arg1;
 - (id)currentLocation;
+- (void)dealloc;
 - (id)init;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;

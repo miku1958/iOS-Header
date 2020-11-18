@@ -8,6 +8,7 @@
 
 @interface PKPaymentAuthorizationDataModel (NanoPassKit)
 - (BOOL)_hasNonPeerPaymentAcceptedPasses;
+- (BOOL)npkIsCardOnFilePayment;
 - (BOOL)npkIsPeerPayment;
 - (BOOL)npkIsSkeletonPeerPayment;
 - (BOOL)npkIsSplitPeerPayment;

@@ -47,6 +47,7 @@
     NSString *_nameImageMaskWidgetLQURL;
     NSData *_nameImageMetadata;
     NSString *_nameImageURL;
+    NSString *_paidBundleSubscriptionButtonConfigurationJson;
     NSString *_parentID;
     NSString *_primaryAudience;
     NSString *_publisherPaidAuthorizationURL;
@@ -138,6 +139,7 @@
 @property (readonly, nonatomic) BOOL hasNameImageMetadata;
 @property (nonatomic) BOOL hasNameImageScaleFactor;
 @property (readonly, nonatomic) BOOL hasNameImageURL;
+@property (readonly, nonatomic) BOOL hasPaidBundleSubscriptionButtonConfigurationJson;
 @property (readonly, nonatomic) BOOL hasParentID;
 @property (readonly, nonatomic) BOOL hasPrimaryAudience;
 @property (readonly, nonatomic) BOOL hasPublisherPaidAuthorizationURL;
@@ -177,6 +179,7 @@
 @property (strong, nonatomic) NSData *nameImageMetadata; // @synthesize nameImageMetadata=_nameImageMetadata;
 @property (nonatomic) double nameImageScaleFactor; // @synthesize nameImageScaleFactor=_nameImageScaleFactor;
 @property (strong, nonatomic) NSString *nameImageURL; // @synthesize nameImageURL=_nameImageURL;
+@property (strong, nonatomic) NSString *paidBundleSubscriptionButtonConfigurationJson; // @synthesize paidBundleSubscriptionButtonConfigurationJson=_paidBundleSubscriptionButtonConfigurationJson;
 @property (strong, nonatomic) NSString *parentID; // @synthesize parentID=_parentID;
 @property (strong, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
 @property (strong, nonatomic) NSString *publisherPaidAuthorizationURL; // @synthesize publisherPaidAuthorizationURL=_publisherPaidAuthorizationURL;

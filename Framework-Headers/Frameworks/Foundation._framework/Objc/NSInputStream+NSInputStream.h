@@ -11,7 +11,9 @@
 + (id)inputStreamWithData:(id)arg1;
 + (id)inputStreamWithFileAtPath:(id)arg1;
 + (id)inputStreamWithURL:(id)arg1;
+- (CDStruct_87dc826d)_cfStreamError;
 - (unsigned long long)_cfTypeID;
+- (void)dealloc;
 - (BOOL)getBuffer:(char **)arg1 length:(unsigned long long *)arg2;
 - (BOOL)hasBytesAvailable;
 - (id)initWithData:(id)arg1;

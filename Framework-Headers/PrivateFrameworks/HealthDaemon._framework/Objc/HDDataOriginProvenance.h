@@ -24,7 +24,7 @@
 }
 
 @property (strong, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
-@property (nonatomic) CDStruct_f6aba300 operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;
+@property (nonatomic) CDStruct_2ec95fd7 operatingSystemVersion; // @synthesize operatingSystemVersion=_operatingSystemVersion;
 @property (copy, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (strong, nonatomic) NSNumber *sourceID; // @synthesize sourceID=_sourceID;
 @property (copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
@@ -32,7 +32,7 @@
 @property (copy, nonatomic) NSString *systemBuild; // @synthesize systemBuild=_systemBuild;
 @property (copy, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
 
-+ (id)dataProvenanceWithSyncProvenance:(long long)arg1 productType:(id)arg2 systemBuild:(id)arg3 operatingSystemVersion:(CDStruct_f6aba300)arg4 sourceVersion:(id)arg5 timeZoneName:(id)arg6 sourceID:(id)arg7 deviceID:(id)arg8;
++ (id)dataProvenanceWithSyncProvenance:(long long)arg1 productType:(id)arg2 systemBuild:(id)arg3 operatingSystemVersion:(CDStruct_2ec95fd7)arg4 sourceVersion:(id)arg5 timeZoneName:(id)arg6 sourceID:(id)arg7 deviceID:(id)arg8;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

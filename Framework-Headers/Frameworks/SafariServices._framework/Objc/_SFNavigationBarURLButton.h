@@ -8,39 +8,38 @@
 
 #import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UIImage, UIImageView;
+@class NSString, UIGestureRecognizer, UIVibrancyEffect, UIView, UIVisualEffectView, _SFNavigationBarTheme;
 @protocol _SFNavigationBarURLButtonDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _SFNavigationBarURLButton : UIButton <UIGestureRecognizerDelegate>
 {
-    UIImageView *_overlayImageView;
-    UIImageView *_tintImageView;
-    UIImage *_darkBackgroundImage;
-    UIImage *_lightBackgroundImage;
+    UIVibrancyEffect *_highlightedVibrancyEffect;
+    UIVibrancyEffect *_vibrancyEffect;
+    UIVisualEffectView *_effectView;
+    UIView *_effectMask;
     UIGestureRecognizer *_longPressGestureRecognizer;
-    BOOL _usesLightOverlayAndTintAlpha;
     double _backgroundAlphaFactor;
-    long long _backgroundStyle;
+    _SFNavigationBarTheme *_theme;
     id<_SFNavigationBarURLButtonDelegate> _delegate;
     double _urlOutlineCornerRadius;
 }
 
 @property (nonatomic) double backgroundAlphaFactor; // @synthesize backgroundAlphaFactor=_backgroundAlphaFactor;
-@property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFNavigationBarURLButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) _SFNavigationBarTheme *theme; // @synthesize theme=_theme;
 @property (nonatomic, setter=setURLOutlineCornerRadius:) double urlOutlineCornerRadius; // @synthesize urlOutlineCornerRadius=_urlOutlineCornerRadius;
-@property (nonatomic) BOOL usesLightOverlayAndTintAlpha; // @synthesize usesLightOverlayAndTintAlpha=_usesLightOverlayAndTintAlpha;
 
 - (void).cxx_destruct;
 - (id)_accessibilityQuickSpeakContent;
 - (void)_dismissMenu:(id)arg1;
 - (void)_handleLongPress:(id)arg1;
 - (void)_updateBackgroundImageAnimated:(BOOL)arg1;
+- (void)_updateEffectView;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;

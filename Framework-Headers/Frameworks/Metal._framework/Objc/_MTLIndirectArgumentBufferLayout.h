@@ -6,21 +6,27 @@
 
 #import <objc/NSObject.h>
 
+@protocol MTLDeviceSPI;
+
 @interface _MTLIndirectArgumentBufferLayout : NSObject
 {
+    struct _MTLIndirectArgumentBufferLayoutPrivate *_private;
 }
 
 @property (readonly) unsigned long long alignment; // @dynamic alignment;
 @property (readonly) BOOL bufferLayoutMatchesFrontEndLayout; // @dynamic bufferLayoutMatchesFrontEndLayout;
+@property (readonly, nonatomic) id<MTLDeviceSPI> device;
 @property (readonly) unsigned long long encodedLength; // @dynamic encodedLength;
 @property (readonly) unsigned int hashMask;
 @property (readonly) unsigned int hashOffset;
 @property (readonly) unsigned int hashSignature;
 @property (readonly) unsigned int hashValue;
 
+- (id)bufferLayoutForResourceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)constantOffsetAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)setStructType:(id)arg1 withDevice:(id)arg2;
 - (unsigned long long)uniqueIdentifierForComputePipelineAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;
 - (unsigned long long)uniqueIdentifierForIndirectCommandBufferAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;
 - (unsigned long long)uniqueIdentifierForRenderPipelineAtIndex:(unsigned long long)arg1 inIndirectArgumentBuffer:(id)arg2 atOffset:(unsigned long long)arg3;

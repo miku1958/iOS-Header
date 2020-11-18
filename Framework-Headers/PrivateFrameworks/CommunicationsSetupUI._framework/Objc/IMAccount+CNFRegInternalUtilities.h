@@ -11,5 +11,6 @@
 - (BOOL)CNFRegRegisteringLocalPhoneNumberSentinelAlias;
 - (BOOL)CNFRegSignInComplete;
 - (BOOL)CNFRegSignInFailed;
+- (id)loginDisplayString;
 @end
 

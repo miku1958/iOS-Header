@@ -7,6 +7,10 @@
 #import <HealthKit/HKCDADocumentSample.h>
 
 @interface HKCDADocumentSample (HKDataMetadataViewController)
+- (void)addDetailValuesToSection:(id)arg1;
 - (id)dataForSharingWithHealthStore:(id)arg1;
+- (id)detailedReportName;
+- (void)fetchDetailedReportWithHealthStore:(id)arg1 reportDataBlock:(CDUnknownBlockType)arg2;
+- (BOOL)hasAssociatedReport;
 @end
 

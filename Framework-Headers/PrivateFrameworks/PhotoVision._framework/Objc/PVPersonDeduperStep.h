@@ -33,9 +33,10 @@
 - (void).cxx_destruct;
 - (id)_resolveMergeCandidate:(id)arg1 forPerson:(id)arg2;
 - (BOOL)addPotentialMergeCandidateForPerson:(id)arg1 withOtherPerson:(id)arg2 updateBlock:(CDUnknownBlockType)arg3;
+- (float)adjustedThreshold:(float)arg1 forMinAgeType:(unsigned short)arg2;
 - (void)dedupePersons:(id)arg1 withOtherPersons:(id)arg2 updateBlock:(CDUnknownBlockType)arg3 resultBlock:(CDUnknownBlockType)arg4;
 - (id)initWithPersonClusterManager:(id)arg1 invalidCandidatesMapping:(id)arg2 profile:(id)arg3;
-- (BOOL)isPersonSimilar:(id)arg1 withOtherPerson:(id)arg2 withDistance:(float)arg3;
+- (BOOL)isPersonSimilar:(id)arg1 withOtherPerson:(id)arg2 withDistance:(float)arg3 minAgeType:(unsigned short)arg4;
 - (id)mergeCandidatePersonsWithUpdateBlock:(CDUnknownBlockType)arg1;
 - (BOOL)shouldStopWithUpdateBlock:(CDUnknownBlockType)arg1;
 

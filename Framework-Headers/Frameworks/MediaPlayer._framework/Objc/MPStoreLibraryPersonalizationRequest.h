@@ -19,9 +19,10 @@
 @property (strong, nonatomic) MPSectionedCollection *representedObjects; // @synthesize representedObjects=_representedObjects;
 @property (readonly, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
 
-+ (id)defaultLibraryView;
++ (id)libraryViewWithUserIdentity:(id)arg1;
 + (id)personalizedResponseForContentDescriptor:(id)arg1 requestedProperties:(id)arg2;
-+ (id)sharedQueue;
++ (id)preferredQueue;
++ (BOOL)requiresNetwork;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

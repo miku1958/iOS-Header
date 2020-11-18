@@ -24,6 +24,7 @@
             unsigned int gesture:1;
             unsigned int synthesizedByAcceptingCandidate:1;
             unsigned int doubleSpace:1;
+            unsigned int rapidDelete:1;
         } fields;
     } _flags;
     BOOL _backspace;
@@ -32,6 +33,7 @@
     TIKeyboardTouchEvent *_touchEvent;
     TIKeyboardCandidate *_acceptedCandidate;
     NSString *_inputManagerHint;
+    double _timestamp;
 }
 
 @property (strong, nonatomic) TIKeyboardCandidate *acceptedCandidate; // @synthesize acceptedCandidate=_acceptedCandidate;
@@ -44,8 +46,10 @@
 @property (nonatomic, getter=isMultitap) BOOL multitap;
 @property (copy, nonatomic) id<NSCopying><NSObject><NSSecureCoding> object; // @synthesize object=_object;
 @property (nonatomic, getter=isPopupVariant) BOOL popupVariant;
+@property (nonatomic, getter=isRapidDelete) BOOL rapidDelete;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;
 @property (nonatomic, getter=isSynthesizedByAcceptingCandidate) BOOL synthesizedByAcceptingCandidate;
+@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) TIKeyboardTouchEvent *touchEvent; // @synthesize touchEvent=_touchEvent;
 @property (nonatomic, getter=isUppercase) BOOL uppercase;
 

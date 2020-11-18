@@ -15,16 +15,21 @@
     PBUnknownFields *_unknownFields;
     double _duration;
     double _startTime;
-    CDStruct_beabc505 _has;
+    struct {
+        unsigned int has_duration:1;
+        unsigned int has_startTime:1;
+    } _flags;
 }
 
-@property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (nonatomic) double duration;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasStartTime;
-@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
+@property (nonatomic) double startTime;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +37,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <HomeKit/HMAccessControl.h>
 
-@class HMUserPresenceAuthorization, HMUserPresenceCompute;
+@class HMUserCameraAccess, HMUserPresenceAuthorization, HMUserPresenceCompute;
 
 @interface HMHomeAccessControl : HMAccessControl
 {
@@ -15,20 +15,24 @@
     BOOL _remoteAccessAllowed;
     HMUserPresenceAuthorization *_presenceAuthStatus;
     HMUserPresenceCompute *_presenceComputeStatus;
+    HMUserCameraAccess *_camerasAccess;
 }
 
 @property (nonatomic, getter=isAdministrator) BOOL administrator; // @synthesize administrator=_administrator;
+@property (strong, nonatomic) HMUserCameraAccess *camerasAccess; // @synthesize camerasAccess=_camerasAccess;
 @property (getter=isOwner) BOOL owner; // @synthesize owner=_owner;
 @property (strong, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
 @property (strong, nonatomic) HMUserPresenceCompute *presenceComputeStatus; // @synthesize presenceComputeStatus=_presenceComputeStatus;
 @property (getter=isRemoteAccessAllowed) BOOL remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
 
 - (void).cxx_destruct;
-- (id)initWithUser:(id)arg1 owner:(BOOL)arg2 administratorPrivilege:(BOOL)arg3 remoteAccess:(BOOL)arg4 presenceAuthStatus:(id)arg5 presenceComputeStatus:(id)arg6;
+- (unsigned long long)camerasAccessLevel;
+- (id)initWithUser:(id)arg1 owner:(BOOL)arg2 administratorPrivilege:(BOOL)arg3 remoteAccess:(BOOL)arg4 presenceAuthStatus:(id)arg5 presenceComputeStatus:(id)arg6 camerasAccess:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)presenceAuthorizationStatus;
 - (unsigned long long)presenceComputationStatus;
 - (void)updateAdministratorAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateCamerasAccessLevel:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updatePresenceAuthorizationStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateRemoteAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

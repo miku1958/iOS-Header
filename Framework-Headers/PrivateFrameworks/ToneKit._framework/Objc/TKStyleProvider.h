@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) double vibrationRecorderProgressToolbarVerticalOffset;
 @property (readonly, nonatomic) double vibrationRecorderProgressViewAccessibilityAdditionalHeight;
 @property (readonly, nonatomic) double vibrationRecorderProgressViewDotHorizontalInset;
+@property (readonly, nonatomic) UIColor *vibrationRecorderProgressViewDotTintColor;
 @property (readonly, nonatomic) double vibrationRecorderProgressViewHeight;
 @property (readonly, nonatomic) double vibrationRecorderProgressViewHorizontalOffsetFromEdge;
 @property (readonly, nonatomic) UIImage *vibrationRecorderProgressViewResizableDotImage;
@@ -50,9 +51,8 @@
 
 - (void).cxx_destruct;
 - (id)_bundle;
-- (id)_cachedImageForPropertyWithSelector:(SEL)arg1 size:(struct CGSize)arg2 opaque:(BOOL)arg3 withDrawingBlock:(CDUnknownBlockType)arg4;
 - (id)_cachedImageWithName:(id)arg1 forPropertyWithSelector:(SEL)arg2;
-- (id)_cachedResizableImageForPropertyWithSelector:(SEL)arg1 capInsets:(struct UIEdgeInsets)arg2 size:(struct CGSize)arg3 opaque:(BOOL)arg4 withDrawingBlock:(CDUnknownBlockType)arg5;
+- (id)_cachedResizableImageForPropertyWithSelector:(SEL)arg1 capInsets:(struct UIEdgeInsets)arg2 size:(struct CGSize)arg3 imageRenderingMode:(long long)arg4 withDrawingActions:(CDUnknownBlockType)arg5;
 - (id)_cachedStyleObjectForPropertyWithSelector:(SEL)arg1;
 - (void)_didReceiveMemoryWarning:(id)arg1;
 - (void)_setCachedStyleObject:(id)arg1 forPropertyWithSelector:(SEL)arg2;

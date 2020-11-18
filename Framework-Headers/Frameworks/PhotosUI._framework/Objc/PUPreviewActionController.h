@@ -7,29 +7,26 @@
 #import <objc/NSObject.h>
 
 #import <PhotosUI/PUAssetActionPerformerDelegate-Protocol.h>
-#import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 
 @class NSArray, NSString, PUAssetActionPerformer, PUBrowsingSession, PXActionManager, UIViewController;
 @protocol PUPreviewActionControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUPreviewActionController : NSObject <PUBrowsingViewModelChangeObserver, PUAssetActionPerformerDelegate>
+@interface PUPreviewActionController : NSObject <PUAssetActionPerformerDelegate>
 {
     struct {
-        BOOL didDismissWithIdentifiedAction;
+        BOOL didDismissWithActionIdentifier;
         BOOL preventRevealInMomentAction;
     } _delegateRespondsTo;
-    BOOL __needsUpdateActions;
     PUBrowsingSession *_browsingSession;
     UIViewController *_presentingViewController;
     id<PUPreviewActionControllerDelegate> _delegate;
     PXActionManager *_photosUICoreActionManager;
-    NSArray *_previewActions;
     PUAssetActionPerformer *__activeActionPerformer;
 }
 
 @property (strong, nonatomic, setter=_setActiveActionPerformer:) PUAssetActionPerformer *_activeActionPerformer; // @synthesize _activeActionPerformer=__activeActionPerformer;
-@property (nonatomic, setter=_setNeedsUpdateActions:) BOOL _needsUpdateActions; // @synthesize _needsUpdateActions=__needsUpdateActions;
+@property (readonly, nonatomic) NSArray *actions;
 @property (strong, nonatomic) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPreviewActionControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -37,26 +34,20 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXActionManager *photosUICoreActionManager; // @synthesize photosUICoreActionManager=_photosUICoreActionManager;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property (strong, nonatomic, setter=_setPreviewActions:) NSArray *previewActions; // @synthesize previewActions=_previewActions;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (unsigned long long)_actionForPreferredAction:(unsigned long long)arg1;
 - (void)_executeActionPerformer:(id)arg1;
-- (void)_invalidateActions;
-- (BOOL)_needsUpdate;
-- (void)_notifiyDelegateOfIdentifiedAction:(id)arg1;
+- (void)_notifiyDelegateOfAction:(id)arg1;
 - (void)_performCopyAction;
 - (void)_performFavoriteAction:(BOOL)arg1;
 - (void)_performRestoreAction;
 - (void)_performRevealInMomentAction;
 - (void)_performSimpleActionWithType:(unsigned long long)arg1;
 - (void)_performTrashAction;
-- (void)_updateActionsIfNeeded;
-- (void)_updateIfNeeded;
 - (BOOL)assetActionPerformer:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)assetActionPerformer:(id)arg1 presentViewController:(id)arg2;
-- (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end
 

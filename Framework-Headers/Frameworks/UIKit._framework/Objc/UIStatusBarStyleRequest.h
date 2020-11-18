@@ -14,7 +14,6 @@
 @interface UIStatusBarStyleRequest : NSObject <NSMutableCopying, NSCopying>
 {
     long long _style;
-    BOOL _legacy;
     long long _legibilityStyle;
     UIColor *_foregroundColor;
     NSNumber *_overrideHeight;
@@ -23,7 +22,6 @@
 
 @property (readonly, nonatomic) double foregroundAlpha; // @synthesize foregroundAlpha=_foregroundAlpha;
 @property (readonly, strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
-@property (readonly, nonatomic, getter=isLegacy) BOOL legacy; // @synthesize legacy=_legacy;
 @property (readonly, nonatomic) long long legibilityStyle; // @synthesize legibilityStyle=_legibilityStyle;
 @property (readonly, strong, nonatomic) NSNumber *overrideHeight; // @synthesize overrideHeight=_overrideHeight;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
@@ -35,10 +33,13 @@
 - (id)init;
 - (id)initWithStyle:(long long)arg1 legacy:(BOOL)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4;
 - (id)initWithStyle:(long long)arg1 legacy:(BOOL)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 foregroundAlpha:(double)arg5;
-- (id)initWithStyle:(long long)arg1 legacy:(BOOL)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 foregroundAlpha:(double)arg5 overrideHeight:(id)arg6;
-- (id)initWithStyle:(long long)arg1 legacy:(BOOL)arg2 legibilityStyle:(long long)arg3 foregroundColor:(id)arg4 overrideHeight:(id)arg5;
+- (id)initWithStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3;
+- (id)initWithStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3 foregroundAlpha:(double)arg4;
+- (id)initWithStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3 foregroundAlpha:(double)arg4 overrideHeight:(id)arg5;
+- (id)initWithStyle:(long long)arg1 legibilityStyle:(long long)arg2 foregroundColor:(id)arg3 overrideHeight:(id)arg4;
 - (BOOL)isDoubleHeight;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isLegacy;
 - (BOOL)isTranslucent;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL validVisualRanges; // @synthesize validVisualRanges=_validVisualRanges;
 
 + (Class)archivedSelectionClass;
-+ (BOOL)p_checkEndOfLineFlagForRange:(struct _NSRange *)arg1 leadingEdge:(BOOL *)arg2 type:(int *)arg3 endOfLine:(BOOL)arg4 storage:(id)arg5;
++ (BOOL)p_checkEndOfLineFlagForRange:(inout struct _NSRange *)arg1 leadingEdge:(inout BOOL *)arg2 type:(inout int *)arg3 endOfLine:(BOOL)arg4 storage:(id)arg5;
 + (id)selectionFromWPSelection:(id)arg1;
 + (id)selectionWithRange:(struct _NSRange)arg1;
 + (id)selectionWithRange:(struct _NSRange)arg1 type:(int)arg2 leadingEdge:(BOOL)arg3 storage:(id)arg4;

@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class CARSessionStatus, CRCarPlayAppBlacklist, NSSet;
+@class CARSessionStatus, CRCarPlayAppBlacklist;
 
 @interface CRCarPlayAppPolicyEvaluator : NSObject
 {
     CARSessionStatus *_sessionStatus;
     BOOL _geoSupported;
     CRCarPlayAppBlacklist *_blacklist;
-    NSSet *__simulatedAccessoryProtocols;
 }
 
-@property (strong, nonatomic) NSSet *_simulatedAccessoryProtocols; // @synthesize _simulatedAccessoryProtocols=__simulatedAccessoryProtocols;
 @property (strong, nonatomic) CRCarPlayAppBlacklist *blacklist; // @synthesize blacklist=_blacklist;
 @property (nonatomic, getter=isGeoSupported) BOOL geoSupported; // @synthesize geoSupported=_geoSupported;
 
@@ -24,9 +22,12 @@
 - (void).cxx_destruct;
 - (BOOL)_appWithDeclaration:(id)arg1 supportsAllIntents:(id)arg2;
 - (BOOL)_appWithDeclaration:(id)arg1 supportsAnyIntents:(id)arg2;
-- (BOOL)_connectedProtocolsIntersectsAppProtocols:(id)arg1;
+- (unsigned long long)_applicationCategoryForAppDeclaration:(id)arg1 policy:(id)arg2;
 - (id)_sessionStatus;
+- (id)_vehicleProtocolsForCertificateSerial:(id)arg1;
+- (BOOL)_vehicleProtocolsIntersectAppProtocols:(id)arg1 certificateSerial:(id)arg2;
 - (id)effectivePolicyForAppDeclaration:(id)arg1;
+- (id)effectivePolicyForAppDeclaration:(id)arg1 inVehicleWithCertificateSerial:(id)arg2;
 - (void)fetchApplicationBundleIdentifiersForCarIntents:(CDUnknownBlockType)arg1;
 - (id)init;
 

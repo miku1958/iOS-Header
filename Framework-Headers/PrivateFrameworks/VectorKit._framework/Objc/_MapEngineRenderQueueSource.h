@@ -22,7 +22,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (id)initWithEngine:(struct MapEngine *)arg1;
-- (RenderQueue_efd5f737 *)renderQueueForTimestamp:(double)arg1;
+- (BOOL)isDelayedRenderQueueConsumptionSupported;
+- (struct RenderQueue *)renderQueueForTimestamp:(double)arg1;
 
 @end
 

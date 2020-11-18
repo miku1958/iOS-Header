@@ -40,11 +40,13 @@
     BOOL _autoUpdateForceOn;
     BOOL _autoUpdateForceOff;
     BOOL _automaticUpdateV2Enabled;
-    BOOL _backgroundDLKnownBuilds;
     NSNumber *_bannerDelay;
+    BOOL _autoDownloadDeletedBuild;
+    BOOL _backgroundDLKnownBuilds;
 }
 
 @property (readonly, nonatomic) BOOL allowSameBuildUpdates; // @synthesize allowSameBuildUpdates=_allowSameBuildUpdates;
+@property (readonly, nonatomic) BOOL autoDownloadDeletedBuild; // @synthesize autoDownloadDeletedBuild=_autoDownloadDeletedBuild;
 @property (readonly, nonatomic) NSNumber *autoSUEndDelta; // @synthesize autoSUEndDelta=_autoSUEndDelta;
 @property (readonly, nonatomic) NSNumber *autoSUStartDelta; // @synthesize autoSUStartDelta=_autoSUStartDelta;
 @property (readonly, nonatomic) NSNumber *autoSUUnlockEndDelta; // @synthesize autoSUUnlockEndDelta=_autoSUUnlockEndDelta;

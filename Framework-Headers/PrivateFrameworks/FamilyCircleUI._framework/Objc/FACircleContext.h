@@ -9,7 +9,7 @@
 #import <FamilyCircleUI/NSCoding-Protocol.h>
 #import <FamilyCircleUI/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSURL;
+@class AKAppleIDAuthenticationContext, NSData, NSDictionary, NSString, NSURL;
 
 @interface FACircleContext : NSObject <NSCoding, NSSecureCoding>
 {
@@ -18,9 +18,11 @@
     NSString *_clientBundleID;
     NSDictionary *_additionalParameters;
     NSURL *_urlForContext;
+    AKAppleIDAuthenticationContext *_authContext;
 }
 
 @property (copy, nonatomic) NSDictionary *additionalParameters; // @synthesize additionalParameters=_additionalParameters;
+@property (strong, nonatomic) AKAppleIDAuthenticationContext *authContext; // @synthesize authContext=_authContext;
 @property (copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property (copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, copy, nonatomic) NSData *dataRepresentation;

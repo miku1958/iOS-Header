@@ -15,9 +15,15 @@
 {
     NEFilterFlow *_flow;
     long long _action;
+    long long _event;
+    unsigned long long _bytesInboundCount;
+    unsigned long long _bytesOutboundCount;
 }
 
 @property long long action; // @synthesize action=_action;
+@property unsigned long long bytesInboundCount; // @synthesize bytesInboundCount=_bytesInboundCount;
+@property unsigned long long bytesOutboundCount; // @synthesize bytesOutboundCount=_bytesOutboundCount;
+@property (readonly) long long event; // @synthesize event=_event;
 @property (copy) NEFilterFlow *flow; // @synthesize flow=_flow;
 
 + (BOOL)supportsSecureCoding;
@@ -26,7 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithFlow:(id)arg1 action:(long long)arg2;
+- (id)initWithFlow:(id)arg1 action:(long long)arg2 event:(long long)arg3;
 
 @end
 

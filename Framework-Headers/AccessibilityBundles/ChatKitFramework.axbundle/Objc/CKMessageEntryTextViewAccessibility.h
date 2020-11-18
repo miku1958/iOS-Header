@@ -30,6 +30,7 @@
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (id)accessibilityPlaceholderValue;
+- (id)accessibilityTextualContext;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 - (void)layoutSubviews;

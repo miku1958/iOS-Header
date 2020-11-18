@@ -21,9 +21,9 @@
 @property (nonatomic) unsigned int maximumSize; // @synthesize maximumSize=_maximumSize;
 @property (readonly, nonatomic) unsigned int size; // @synthesize size=_currentSize;
 
+- (void).cxx_destruct;
 - (BOOL)_flush;
 - (BOOL)addItem:(id)arg1;
-- (void)dealloc;
 - (BOOL)flush;
 - (BOOL)flushIfNecessary;
 - (BOOL)handleItems:(id)arg1;

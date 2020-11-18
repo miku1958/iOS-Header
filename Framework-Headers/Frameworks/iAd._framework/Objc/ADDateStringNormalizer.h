@@ -19,7 +19,7 @@
 + (id)formatter;
 + (id)normalizers;
 + (id)relativeDateFormatStringForDate:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)normalize:(id)arg1;
 
 @end

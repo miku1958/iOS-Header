@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSArray *additionalInfosForChildLayouts;
+@property (readonly, nonatomic) NSArray *childInfosForChildLayouts;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 
 - (id)initWithInfo:(id)arg1;

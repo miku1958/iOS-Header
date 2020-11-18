@@ -10,6 +10,8 @@
 
 @protocol TTTextUndoTarget <NSObject>
 - (void)applyUndoGroup:(TTMergeableStringUndoGroup *)arg1;
+
+@optional
 - (TTMergeableStringUndoGroup *)newCoalescingUndoGroup;
 @end
 

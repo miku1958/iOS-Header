@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet, UNSApplicationLauncher;
+@class NSMutableDictionary, NSMutableSet, UNSApplicationLauncher, UNSLocalizationService, UNSNotificationCategoryRepository;
 @protocol OS_dispatch_queue;
 
 @interface UNSApplicationService : NSObject
 {
     NSMutableSet *_foregroundBundleIdentifiers;
-    NSMutableSet *_installedBundleIdentifiers;
-    NSMutableDictionary *_bundleIdentifierToBundleURL;
+    NSMutableDictionary *_processBundleIdentifiersToApplicationBundleIdentifiers;
     UNSApplicationLauncher *_applicationLauncher;
+    UNSNotificationCategoryRepository *_categoryRepository;
+    UNSLocalizationService *_localizationService;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -24,7 +25,7 @@
 - (void)_queue_notificationSourcesDidUninstall:(id)arg1;
 - (void)_queue_willPresentNotification:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)didChangeApplicationState:(unsigned int)arg1 forBundleIdentifier:(id)arg2;
-- (id)initWithApplicationLauncher:(id)arg1;
+- (id)initWithApplicationLauncher:(id)arg1 categoryRepository:(id)arg2 localizationService:(id)arg3;
 - (BOOL)isApplicationForeground:(id)arg1;
 - (void)notificationSourcesDidInstall:(id)arg1;
 - (void)notificationSourcesDidUninstall:(id)arg1;

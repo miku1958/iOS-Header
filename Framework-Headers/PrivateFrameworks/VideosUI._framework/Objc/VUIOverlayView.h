@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 + (id)overlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
++ (id)overlayViewFromMediaItem:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 - (void).cxx_destruct;
 - (void)layoutSubviews;
 - (void)reset;

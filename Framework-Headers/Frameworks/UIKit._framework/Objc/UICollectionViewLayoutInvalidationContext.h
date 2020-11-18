@@ -23,13 +23,13 @@
         unsigned int invalidateDataSource:1;
         unsigned int invalidateEverything:1;
     } _invalidationContextFlags;
-    BOOL _initiatedFromReloadData;
     BOOL _retainExistingSizingInfoForEstimates;
+    long long _intent;
 }
 
 @property (nonatomic) struct CGPoint contentOffsetAdjustment;
 @property (nonatomic) struct CGSize contentSizeAdjustment;
-@property (nonatomic, getter=_initiatedFromReloadData, setter=_setInitiatedFromReloadData:) BOOL initiatedFromReloadData; // @synthesize initiatedFromReloadData=_initiatedFromReloadData;
+@property (nonatomic, getter=_intent, setter=_setIntent:) long long intent; // @synthesize intent=_intent;
 @property (nonatomic, setter=_setInteractiveMovementTarget:) struct CGPoint interactiveMovementTarget;
 @property (nonatomic, setter=_setInvalidateDataSourceCounts:) BOOL invalidateDataSourceCounts;
 @property (nonatomic, setter=_setInvalidateEverything:) BOOL invalidateEverything;

@@ -6,14 +6,13 @@
 
 #import <PassKitUI/PKPassFaceView.h>
 
-@class PKBarcodeStickerView, PKLinkedAppIconView, UIImageView, UILabel, UIView;
+@class PKBarcodeStickerView, PKLinkedAppIconView, UILabel, UIView;
 
 @interface PKPassFrontFaceView : PKPassFaceView
 {
-    PKBarcodeStickerView *_barcodeView;
-    UIImageView *_contactlessLogoView;
-    UIView *_bottomRightItemView;
     UILabel *_logoLabel;
+    PKBarcodeStickerView *_barcodeView;
+    UIView *_bottomRightItemView;
     BOOL _showsLinkedApp;
     BOOL _showsBarcodeView;
     BOOL _showsLiveBalance;
@@ -36,6 +35,7 @@
 - (struct CGSize)contentSize;
 - (void)createBodyContentViews;
 - (id)createContactlessLogoView;
+- (id)createExpiredLabel;
 - (void)createHeaderContentViews;
 - (void)dealloc;
 - (id)init;

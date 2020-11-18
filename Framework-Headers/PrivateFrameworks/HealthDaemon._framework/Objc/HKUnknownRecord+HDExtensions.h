@@ -6,7 +6,20 @@
 
 #import <HealthKit/HKUnknownRecord.h>
 
-@interface HKUnknownRecord (HDExtensions)
+#import <HealthDaemon/HDCoding-Protocol.h>
+
+@class NSString;
+
+@interface HKUnknownRecord (HDExtensions) <HDCoding>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)createWithCodable:(id)arg1;
 + (Class)hd_dataEntityClass;
+- (BOOL)addCodableRepresentationToCollection:(id)arg1;
+- (id)codableRepresentationForSync;
 @end
 

@@ -34,13 +34,6 @@
 + (id)dialogWithTitle:(id)arg1 message:(id)arg2;
 + (id)dialogWithTitle:(id)arg1 message:(id)arg2 style:(long long)arg3;
 - (void).cxx_destruct;
-- (id)_createWindowAndMakeVisible;
-- (BOOL)_currentProcessLinksAppKit;
-- (BOOL)_currentProcessLinksUIKit;
-- (void)_finishWithButtonIndex:(long long)arg1;
-- (void)_presentMacDialogFromWindow:(id)arg1;
-- (BOOL)_presentiOSDialogFromViewController:(id)arg1;
-- (void)_removeKeyWindow:(id)arg1;
 - (void)addButton:(id)arg1;
 - (void)addTextField:(id)arg1;
 - (id)initWithTitle:(id)arg1 message:(id)arg2 style:(long long)arg3;

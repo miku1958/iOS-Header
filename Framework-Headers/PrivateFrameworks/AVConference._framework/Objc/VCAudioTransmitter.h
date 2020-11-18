@@ -91,15 +91,15 @@ __attribute__((visibility("hidden")))
     unsigned int _tierNetworkBitrate;
     BOOL _sendActiveVoiceOnly;
     double _lastReportingCallbackTime;
-    struct {
-        unsigned int averageNetworkBitrate;
-        unsigned int averageMediaBitrate;
-        double averageFramerate;
-    } _currentChannelMetrics;
+    CDStruct_3ab08b48 _currentChannelMetrics;
     CDStruct_94aa5fb4 _idsChannelDataFormat;
     unsigned int _maxIDSStreamIdCount;
     NSArray *_supportedNumRedundantPayload;
     BOOL _currentDTXEnable;
+    unsigned char _mediaControlInfoVersion;
+    BOOL _alwaysOnAudioRedundancyEnabled;
+    BOOL _cellularAllowRedLowBitratesEnabled;
+    BOOL _wifiAllowRedLowBitratesEnabled;
 }
 
 @property (readonly, nonatomic) int actualAudioSendingBitrate; // @synthesize actualAudioSendingBitrate=_actualAudioSendingBitrate;
@@ -107,7 +107,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int audioTxBitrate; // @synthesize audioTxBitrate=_audioTxBitrate;
 @property (readonly, nonatomic) VCAudioPayloadConfig *currentAudioPayloadConfig;
 @property (readonly, nonatomic) VCAudioTier *currentAudioTier; // @synthesize currentAudioTier=_currentAudioTier;
-@property (nonatomic) CDStruct_1c8e0384 currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
+@property (nonatomic) CDStruct_3ab08b48 currentChannelMetrics; // @synthesize currentChannelMetrics=_currentChannelMetrics;
 @property (nonatomic, getter=isCurrentDTXEnabled) BOOL currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
 @property (readonly, copy) NSString *debugDescription;
 @property id<VCAudioTransmitterDelegate> delegate;
@@ -121,6 +121,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isRedEnabled; // @synthesize isRedEnabled=_isRedEnabled;
 @property (readonly, nonatomic) unsigned int lastSentAudioSampleTime; // @synthesize lastSentAudioSampleTime=_lastSentAudioSampleTime;
 @property (nonatomic) unsigned int maxIDSStreamIdCount; // @synthesize maxIDSStreamIdCount=_maxIDSStreamIdCount;
+@property (nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
 @property (nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
 @property (nonatomic) int qualityIndicator; // @synthesize qualityIndicator=_qualityIndicator;
 @property (nonatomic) unsigned int rateChangeCounter; // @synthesize rateChangeCounter=_rateChangeCounter;

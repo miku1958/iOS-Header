@@ -26,7 +26,7 @@
 @property (readonly) long long resultType; // @synthesize resultType=_resultType;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)enumerateLocalEventsWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithResultType:(long long)arg1 events:(id)arg2 changeHubEventIndex:(unsigned long long)arg3;
 - (id)initWithSuccesfulEvents:(id)arg1 changeHubEventIndex:(unsigned long long)arg2;

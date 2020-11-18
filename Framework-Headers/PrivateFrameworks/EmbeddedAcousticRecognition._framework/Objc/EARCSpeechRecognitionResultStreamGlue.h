@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initWithStream:(struct EARCSpeechRecognitionResultStream *)arg1;
 - (void)speechRecognizer:(id)arg1 didFinishRecognitionWithError:(id)arg2;
+- (void)speechRecognizer:(id)arg1 didProcessAudioDuration:(double)arg2;
 - (void)speechRecognizer:(id)arg1 didRecognizeFinalResults:(id)arg2;
 - (void)speechRecognizer:(id)arg1 didRecognizeFinalResults:(id)arg2 tokenSausage:(id)arg3 nBestChoices:(id)arg4;
 - (void)speechRecognizer:(id)arg1 didRecognizePartialResult:(id)arg2;

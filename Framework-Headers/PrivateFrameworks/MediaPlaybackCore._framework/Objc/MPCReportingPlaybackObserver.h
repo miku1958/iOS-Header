@@ -14,6 +14,7 @@
     BOOL _hasPendingContainerChange;
     BOOL _hasSetLastPlayEventTimeStamp;
     BOOL _isReloadingWithPlaybackContext;
+    BOOL _itemDidChangeWhenReloadingPlaybackContext;
     BOOL _isScrubbing;
     MPAVItem *_itemForCurrentTimeChange;
     NSOperationQueue *_recordEventOperationQueue;
@@ -44,12 +45,14 @@
 - (void)_playerDidReloadWithPlaybackContextNotification:(id)arg1;
 - (void)_playerDidSetCurrentTimeNotification:(id)arg1;
 - (void)_playerItemDidChangeNotification:(id)arg1;
+- (void)_playerItemDidChangeWhenReloadingPlaybackContextNotification:(id)arg1;
 - (void)_playerItemWillChangeNotification:(id)arg1;
 - (void)_playerPlaybackStateDidChangeNotification:(id)arg1;
 - (void)_playerWillReloadWithPlaybackContextNotification:(id)arg1;
 - (void)_playerWillSetCurrentTimeNotification:(id)arg1;
 - (void)_reportPlaybackEndedForTimeoutWithItem:(id)arg1;
 - (void)_sendPlaybackEndNotification:(double)arg1 endTime:(double)arg2;
+- (void)_sendPlaybackStartNotification;
 - (void)_setLastPlayEventEndTimeForCurrentItem:(double)arg1;
 - (void)dealloc;
 - (void)didHitPlaybackTimeoutEndingPlayback:(BOOL)arg1 withCurrentItem:(id)arg2;

@@ -12,15 +12,21 @@
 {
     BOOL _hasActiveWorkout;
     BOOL _hasForegroundObserver;
-    double _requestedCollectionInterval;
+    double _collectionLatency;
+    double _aggregationInterval;
+    double _maximumSeriesDuration;
 }
 
-@property (nonatomic) BOOL hasActiveWorkout; // @synthesize hasActiveWorkout=_hasActiveWorkout;
+@property (readonly, nonatomic) double aggregationInterval; // @synthesize aggregationInterval=_aggregationInterval;
+@property (readonly, nonatomic) double collectionLatency; // @synthesize collectionLatency=_collectionLatency;
+@property (readonly, nonatomic) BOOL hasActiveWorkout; // @synthesize hasActiveWorkout=_hasActiveWorkout;
 @property (nonatomic) BOOL hasForegroundObserver; // @synthesize hasForegroundObserver=_hasForegroundObserver;
-@property (nonatomic) double requestedCollectionInterval; // @synthesize requestedCollectionInterval=_requestedCollectionInterval;
+@property (readonly, nonatomic) double maximumSeriesDuration; // @synthesize maximumSeriesDuration=_maximumSeriesDuration;
 
++ (id)configurationWithLatency:(double)arg1 interval:(double)arg2 seriesDuration:(double)arg3 activeWorkout:(BOOL)arg4 foregroundObserver:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)initWithLatency:(double)arg1 interval:(double)arg2 seriesDuration:(double)arg3 activeWorkout:(BOOL)arg4 foregroundObserver:(BOOL)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

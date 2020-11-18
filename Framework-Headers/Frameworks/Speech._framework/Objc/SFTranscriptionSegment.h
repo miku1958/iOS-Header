@@ -9,7 +9,7 @@
 #import <Speech/NSCopying-Protocol.h>
 #import <Speech/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SFVoiceAnalytics;
 
 @interface SFTranscriptionSegment : NSObject <NSCopying, NSSecureCoding>
 {
@@ -18,6 +18,7 @@
     double _timestamp;
     double _duration;
     NSArray *_alternativeSubstrings;
+    SFVoiceAnalytics *_voiceAnalytics;
     NSArray *_alternativeConfidences;
     NSString *_phoneSequence;
     NSString *_ipaPhoneSequence;
@@ -33,10 +34,11 @@
 @property (readonly, copy, nonatomic) NSString *substring; // @synthesize substring=_substring;
 @property (readonly, nonatomic) struct _NSRange substringRange; // @synthesize substringRange=_substringRange;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) SFVoiceAnalytics *voiceAnalytics; // @synthesize voiceAnalytics=_voiceAnalytics;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithSubstring:(id)arg1 range:(struct _NSRange)arg2 timestamp:(double)arg3 duration:(double)arg4 confidence:(float)arg5 alternativeSubstrings:(id)arg6 alternativeConfidences:(id)arg7 phoneSequence:(id)arg8 ipaPhoneSequence:(id)arg9;
+- (id)_initWithSubstring:(id)arg1 range:(struct _NSRange)arg2 timestamp:(double)arg3 duration:(double)arg4 confidence:(float)arg5 alternativeSubstrings:(id)arg6 alternativeConfidences:(id)arg7 phoneSequence:(id)arg8 ipaPhoneSequence:(id)arg9 voiceAnalytics:(id)arg10;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

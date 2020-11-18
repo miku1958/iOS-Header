@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _returnEmptyCells;
     BOOL _returnOneEmptyCell;
     BOOL _terminateRegionIterator;
+    BOOL _returnOnlyFormulas;
     unsigned int _rowForColumnIndexesWithMerges;
     TSTTableInfo *_tableInfo;
     TSTTableModel *_tableModel;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL returnCellContents; // @synthesize returnCellContents=_returnCellContents;
 @property (nonatomic) BOOL returnEmptyCells; // @synthesize returnEmptyCells=_returnEmptyCells;
 @property (nonatomic) BOOL returnOneEmptyCell; // @synthesize returnOneEmptyCell=_returnOneEmptyCell;
+@property (nonatomic) BOOL returnOnlyFormulas; // @synthesize returnOnlyFormulas=_returnOnlyFormulas;
 @property (nonatomic) unsigned int rowForColumnIndexesWithMerges; // @synthesize rowForColumnIndexesWithMerges=_rowForColumnIndexesWithMerges;
 @property (strong, nonatomic) id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> strokeIterator; // @synthesize strokeIterator=_strokeIterator;
 @property (readonly) Class superclass;

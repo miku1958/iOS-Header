@@ -6,7 +6,7 @@
 
 #import <CoreTelephony/NSObject-Protocol.h>
 
-@class CTCellInfo, CTEnhancedDataLinkQualityMetric, CTEnhancedLinkQualityMetric, CTIMSRegistrationTransportInfo, CTNetworkList, CTRegistrationDisplayStatus, CTSignalStrengthInfo, CTVoiceLinkQualityMetric, CTXPCServiceSubscriptionContext, NSDictionary, NSNumber, NSString;
+@class CTCellInfo, CTEncryptionStatusInfo, CTEnhancedDataLinkQualityMetric, CTEnhancedLinkQualityMetric, CTIMSRegistrationTransportInfo, CTNetworkList, CTRegistrationDisplayStatus, CTServiceDescriptor, CTSignalStrengthInfo, CTVoiceLinkQualityMetric, CTXPCServiceSubscriptionContext, NSDictionary, NSNumber, NSString;
 
 @protocol CoreTelephonyClientRegistrationDelegate <NSObject>
 
@@ -15,6 +15,7 @@
 - (void)cellMonitorUpdate:(CTXPCServiceSubscriptionContext *)arg1 info:(CTCellInfo *)arg2;
 - (void)customerServiceProfileChanged:(CTXPCServiceSubscriptionContext *)arg1 visible:(BOOL)arg2;
 - (void)displayStatusChanged:(CTXPCServiceSubscriptionContext *)arg1 status:(CTRegistrationDisplayStatus *)arg2;
+- (void)encryptionStatusChanged:(CTServiceDescriptor *)arg1 info:(CTEncryptionStatusInfo *)arg2;
 - (void)enhancedDataLinkQualityChanged:(CTXPCServiceSubscriptionContext *)arg1 metric:(CTEnhancedDataLinkQualityMetric *)arg2;
 - (void)enhancedVoiceLinkQualityChanged:(CTXPCServiceSubscriptionContext *)arg1 metric:(CTEnhancedLinkQualityMetric *)arg2;
 - (void)imsRegistrationChanged:(CTXPCServiceSubscriptionContext *)arg1 info:(CTIMSRegistrationTransportInfo *)arg2;

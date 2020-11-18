@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsSymbolFillForSymbolType:(int)arg1;
 - (BOOL)supportsValueLabelsAxisOption;
 - (BOOL)supportsValueLabelsSeriesName;
+- (id)userInterfaceName;
 - (unsigned long long)valueDimensions;
 
 @end

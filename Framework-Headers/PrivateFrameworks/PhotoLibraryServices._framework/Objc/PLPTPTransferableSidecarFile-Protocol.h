@@ -17,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSDate *modificationDate;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, nonatomic) long long ptpTrashedState;
+@property (readonly, nonatomic) unsigned int resourceType;
 
 @end
 

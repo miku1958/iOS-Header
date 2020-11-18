@@ -11,35 +11,35 @@
 @class AVPictureInPicturePlayerLayerView, AVPlayerController, NSString;
 @protocol AVPictureInPictureViewControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface AVPictureInPictureViewController : UIViewController <PGPictureInPictureViewController>
 {
-    id<AVPictureInPictureViewControllerDelegate> _delegate;
-    struct {
-        BOOL pictureInPictureViewControllerViewDidAppear;
-        BOOL pictureInPictureViewControllerViewWillDisappear;
-    } _delegateRespondsTo;
+    BOOL _shouldShowAlternateActionButtonImage;
     AVPlayerController *_playerController;
+    AVPictureInPicturePlayerLayerView *_pictureInPicturePlayerLayerView;
+    id<AVPictureInPictureViewControllerDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<AVPictureInPictureViewControllerDelegate> delegate;
+@property (weak, nonatomic) id<AVPictureInPictureViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) AVPictureInPicturePlayerLayerView *pictureInPicturePlayerLayerView;
+@property (readonly, nonatomic) AVPictureInPicturePlayerLayerView *pictureInPicturePlayerLayerView; // @synthesize pictureInPicturePlayerLayerView=_pictureInPicturePlayerLayerView;
 @property (strong, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
-@property (readonly, nonatomic) BOOL shouldShowAlternateActionButtonImage;
+@property (nonatomic) BOOL shouldShowAlternateActionButtonImage; // @synthesize shouldShowAlternateActionButtonImage=_shouldShowAlternateActionButtonImage;
 @property (readonly, nonatomic) BOOL shouldShowLoadingIndicator;
 @property (readonly) Class superclass;
 
-+ (id)keyPathsForValuesAffectingShouldShowAlternateActionButtonImage;
 + (id)keyPathsForValuesAffectingShouldShowLoadingIndicator;
 - (void).cxx_destruct;
 - (void)actionButtonTapped;
 - (void)dealloc;
 - (void)didAnimatePictureInPictureStop;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithPictureInPicturePlayerLayerView:(id)arg1;
+- (void)loadView;
 - (void)willAnimatePictureInPictureStart;
 
 @end

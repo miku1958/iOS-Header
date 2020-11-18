@@ -4,17 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <OnBoardingKit/OBSplashController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
-#import <OnBoardingKit/OBNavigationBarTitleTransistor-Protocol.h>
-#import <OnBoardingKit/UIScrollViewDelegate-Protocol.h>
+@class NSString, OBPrivacyFlow, UIButton, UILabel;
 
-@class NSString, OBNavigationBarDisplayState, OBPrivacyFlow, UIButton, UILabel, UINavigationController;
-
-@interface OBPrivacySplashController : OBSplashController <UIScrollViewDelegate, OBNavigationBarTitleTransistor>
+@interface OBPrivacySplashController : OBWelcomeController
 {
     OBPrivacyFlow *_flow;
-    UINavigationController *_nav;
     BOOL _suppressPerPageAnalyticsLogging;
     BOOL _allowsOpeningSafari;
     BOOL _showLinkToPrivacyGateway;
@@ -29,24 +25,20 @@
     UILabel *_privacyGatewayDescription;
     UILabel *_linkToPrivacyGateway;
     UIButton *_unifiedAboutButton;
-    OBNavigationBarDisplayState *_cachedBarState;
+    CDUnknownBlockType _defaultButtonHandler;
 }
 
 @property BOOL allowsOpeningSafari; // @synthesize allowsOpeningSafari=_allowsOpeningSafari;
-@property (strong, nonatomic) OBNavigationBarDisplayState *cachedBarState; // @synthesize cachedBarState=_cachedBarState;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (copy) CDUnknownBlockType defaultButtonHandler; // @synthesize defaultButtonHandler=_defaultButtonHandler;
 @property unsigned long long displayDeviceType; // @synthesize displayDeviceType=_displayDeviceType;
 @property (strong) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property BOOL forceLargeMargins; // @synthesize forceLargeMargins=_forceLargeMargins;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isCombined; // @synthesize isCombined=_isCombined;
 @property (strong) UILabel *linkToPrivacyGateway; // @synthesize linkToPrivacyGateway=_linkToPrivacyGateway;
 @property (strong) UIButton *linkToPrivacyGatewayButton; // @synthesize linkToPrivacyGatewayButton=_linkToPrivacyGatewayButton;
 @property (strong) UILabel *privacyGatewayDescription; // @synthesize privacyGatewayDescription=_privacyGatewayDescription;
 @property (nonatomic) BOOL showLinkToPrivacyGateway; // @synthesize showLinkToPrivacyGateway=_showLinkToPrivacyGateway;
 @property BOOL showsLinkToUnifiedAbout; // @synthesize showsLinkToUnifiedAbout=_showsLinkToUnifiedAbout;
-@property (readonly) Class superclass;
 @property BOOL suppressPerPageAnalyticsLogging; // @synthesize suppressPerPageAnalyticsLogging=_suppressPerPageAnalyticsLogging;
 @property (strong) UIButton *unifiedAboutButton; // @synthesize unifiedAboutButton=_unifiedAboutButton;
 @property BOOL useModalStyle; // @synthesize useModalStyle=_useModalStyle;
@@ -56,27 +48,17 @@
 - (void).cxx_destruct;
 - (id)_defaultButtonTitle;
 - (void)_initializeFromBundle;
+- (void)defaultButtonPressed:(id)arg1;
 - (id)initWithFlow:(id)arg1;
 - (id)initWithPrivacyIdentifier:(id)arg1;
-- (void)restoreNavigationBarAppearance;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)setCurrentNavigationBarDisplayState:(id)arg1;
-- (void)setDarkMode:(BOOL)arg1;
 - (void)setDismissHandlerForDefaultButton:(CDUnknownBlockType)arg1;
-- (void)setRestoreState:(id)arg1;
-- (BOOL)shouldUseTiledTextViews;
 - (void)showPrivacyGateway:(id)arg1;
 - (void)showUnifiedAbout:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFontForPrivacyGateway;
 - (void)updateFontForUnifiedAboutButton;
-- (void)updateNavigationBarAnimated:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

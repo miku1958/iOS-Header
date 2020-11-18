@@ -31,6 +31,7 @@
 + (id)currentConnectionTypeHeader;
 - (void).cxx_destruct;
 - (void)_getSignatureDataForRequest:(id)arg1 urlBag:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_shouldPersonalizeRequest;
 - (id)_stringForCachePolicy:(unsigned long long)arg1;
 - (void)buildStoreURLRequestWithURLRequest:(id)arg1 builderProperties:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)buildURLRequestWithCompletionHandler:(CDUnknownBlockType)arg1;

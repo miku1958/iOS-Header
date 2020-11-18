@@ -6,9 +6,11 @@
 
 #import <IDSFoundation/IDSSocketPairMessage.h>
 
-@class NSString;
+#import <IDSFoundation/IDSSocketPairMessage-Protocol.h>
 
-@interface IDSSocketPairAppAckMessage : IDSSocketPairMessage
+@class NSData, NSDate, NSString;
+
+@interface IDSSocketPairAppAckMessage : IDSSocketPairMessage <IDSSocketPairMessage>
 {
     unsigned long long _offset;
     unsigned int _sequenceNumber;
@@ -16,9 +18,14 @@
     NSString *_peerResponseIdentifier;
 }
 
+@property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) BOOL expectsPeerResponse;
+@property (strong, nonatomic) NSDate *expiryDate;
+@property (readonly, nonatomic) NSString *messageUUID;
 @property (readonly, nonatomic) NSString *peerResponseIdentifier; // @synthesize peerResponseIdentifier=_peerResponseIdentifier;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
+@property (readonly, nonatomic) BOOL wantsAppAck;
 
 - (void).cxx_destruct;
 - (id)_nonHeaderData;

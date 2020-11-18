@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_os_transaction;
+@protocol OS_dispatch_source, OS_os_transaction;
 
 @interface SGXpcTransaction : NSObject
 {
     NSObject<OS_os_transaction> *_transaction;
     struct atomic_flag _done;
+    NSObject<OS_dispatch_source> *_timeoutTimer;
 }
 
 + (id)transactionWithName:(const void *)arg1;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)done;
+- (BOOL)doneReturningWasDone;
 - (id)init;
 - (id)initWithName:(const void *)arg1;
 - (void)setTimeout:(double)arg1;

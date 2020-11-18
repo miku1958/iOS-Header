@@ -16,12 +16,14 @@
     NSString *_name;
     NSData *_iconData;
     NSData *_badgeIconData;
+    NSString *_shortVersionString;
 }
 
 @property (strong, nonatomic) NSData *badgeIconData; // @synthesize badgeIconData=_badgeIconData;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *shortVersionString; // @synthesize shortVersionString=_shortVersionString;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

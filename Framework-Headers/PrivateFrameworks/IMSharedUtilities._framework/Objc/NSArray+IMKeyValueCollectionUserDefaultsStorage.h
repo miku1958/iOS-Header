@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (IMKeyValueCollectionUserDefaultsStorage)
+- (id)__im_canonicalIDSIDsFromAddresses;
 - (BOOL)isArchivable_im;
 @end
 

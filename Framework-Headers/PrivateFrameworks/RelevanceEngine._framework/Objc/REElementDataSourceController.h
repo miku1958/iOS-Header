@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <RelevanceEngine/REElementDataSourceControllerProperties-Protocol.h>
 #import <RelevanceEngine/REElementDataSourceDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, REElementDataSource, RERelevanceEngine, RERelevanceProviderEnvironment, REUpNextScheduler;
 @protocol OS_dispatch_queue, REElementDataSourceControllerDelegate;
 
-@interface REElementDataSourceController : NSObject <REElementDataSourceDelegate>
+@interface REElementDataSourceController : NSObject <REElementDataSourceControllerProperties, REElementDataSourceDelegate>
 {
     NSString *_loggingHeader;
     NSMutableSet *_dataSourceElements;
@@ -23,6 +24,7 @@
     REUpNextScheduler *_reloadScheduler;
     BOOL _wantsReloadWhilePaused;
     BOOL _hasDataAvailable;
+    unsigned long long _contentMode;
     BOOL _isPerformingReload;
     NSMutableArray *_enqueuedBlocks;
     NSSet *_supportedSections;
@@ -40,19 +42,25 @@
 }
 
 @property (readonly, nonatomic) NSArray *allElements;
+@property (readonly, nonatomic) NSArray *allProvidedElements;
+@property (readonly, nonatomic) BOOL allowsLocationUse;
 @property (readonly, nonatomic) NSString *applicationBundleIdentifier;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) REElementDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, nonatomic) Class dataSourceClass;
 @property (readonly, nonatomic) Class dataSourceClass; // @synthesize dataSourceClass=_dataSourceClass;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<REElementDataSourceControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasDataAvailable;
 @property (readonly, nonatomic) BOOL hasLoadedData;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *name;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSArray *supportedSections;
+@property (readonly, nonatomic) unsigned long long updateCount;
 
-+ (id)_sharedDataSourceQueue;
 - (void).cxx_destruct;
 - (void)_addElementIdentifier:(id)arg1;
 - (id)_allDataSourceElements;
@@ -63,6 +71,7 @@
 - (id)_groupElements:(id)arg1 bySections:(id)arg2;
 - (void)_handleDeviceLockStateChange:(id)arg1;
 - (void)_handleSignifiantTimeChange:(id)arg1;
+- (id)_initWithRelevanceEngine:(id)arg1 dataSourceClass:(Class)arg2 dataSource:(id)arg3;
 - (void)_loadLoggingHeader;
 - (void)_namespaceElementIdentifier:(id)arg1 section:(id)arg2;
 - (void)_performOrEnqueueUpdateBlock:(CDUnknownBlockType)arg1;
@@ -78,11 +87,11 @@
 - (void)_setSection:(id)arg1 forElementWithIdentifier:(id)arg2;
 - (id)_shallowCopiedElements:(id)arg1;
 - (void)_storeElement:(id)arg1;
+- (BOOL)_supportsContentRelevanceProviderForElement:(id)arg1;
 - (id)_updateRelevanceProvidersForElement:(id)arg1;
 - (BOOL)_validElement:(id)arg1;
 - (void)addElements:(id)arg1 toSection:(unsigned long long)arg2;
 - (void)addElements:(id)arg1 toSectionWithIdentifier:(id)arg2;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)elementDidBecomeHidden:(id)arg1;
 - (id)elementOperationQueue;
@@ -90,6 +99,7 @@
 - (void)fetchElementWithIdentifierVisible:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasElementWithId:(id)arg1 inSection:(unsigned long long)arg2;
 - (BOOL)hasElementWithId:(id)arg1 inSectionWithIdentifier:(id)arg2;
+- (id)initWithRelevanceEngine:(id)arg1 dataSource:(id)arg2;
 - (id)initWithRelevanceEngine:(id)arg1 dataSourceClass:(Class)arg2;
 - (void)invalidateAndReloadWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidateElements;

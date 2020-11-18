@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSThread;
+@class NSOperationQueue;
 
 @interface LKLoginSupport : NSObject
 {
-    NSThread *_timerThread;
+    NSOperationQueue *_listenerQueue;
+    NSOperationQueue *_completionQueue;
 }
 
-@property (strong, nonatomic) NSThread *timerThread; // @synthesize timerThread=_timerThread;
+@property (strong, nonatomic) NSOperationQueue *completionQueue; // @synthesize completionQueue=_completionQueue;
+@property (strong, nonatomic) NSOperationQueue *listenerQueue; // @synthesize listenerQueue=_listenerQueue;
 
++ (BOOL)isNewUserAbleToLogin;
 - (void).cxx_destruct;
-- (void)_createTimerWithTimeOutPeriod:(double)arg1 error:(id)arg2 timeOutHandler:(CDUnknownBlockType)arg3;
 - (id)_errorForNotificationType:(unsigned long long)arg1;
 - (id)_notificationForNotificationType:(unsigned long long)arg1;
 - (void)_runWhenDarwinNotificationPosted:(unsigned long long)arg1 timeOutPeriod:(double)arg2 block:(CDUnknownBlockType)arg3;
-- (void)_setTimeOutTimer:(id)arg1;
-- (void)_startTimerThread;
-- (void)dealloc;
+- (void)_runWithTimeOutPeriod:(double)arg1 notificationType:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)_timeOutAfterTimePeriod:(double)arg1 withError:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)runWithTimeOutPeriod:(double)arg1 loggedInBlock:(CDUnknownBlockType)arg2;
 - (void)runWithTimeOutPeriod:(double)arg1 readyToLoginBlock:(CDUnknownBlockType)arg2;

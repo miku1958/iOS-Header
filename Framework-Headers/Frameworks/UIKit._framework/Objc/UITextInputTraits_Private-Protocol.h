@@ -28,10 +28,12 @@
 @property (nonatomic) BOOL displaySecureTextUsingPlainText;
 @property (nonatomic) int emptyContentReturnKeyType;
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
+@property (nonatomic) struct UIEdgeInsets floatingKeyboardEdgeInsets;
 @property (nonatomic) BOOL forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL forceFloatingKeyboard;
 @property (nonatomic) BOOL hasDefaultContents;
 @property (nonatomic) BOOL hidePrediction;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
@@ -48,6 +50,7 @@
 @property (strong, nonatomic) UIImage *selectionDragDotImage;
 @property (strong, nonatomic) UIColor *selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType;
+@property (nonatomic) BOOL showDictationButton;
 @property (nonatomic) BOOL suppressReturnKeyStyling;
 @property (nonatomic) int textLoupeVisibility;
 @property (nonatomic) long long textScriptType;
@@ -56,6 +59,7 @@
 @property (nonatomic) struct __CFCharacterSet *textTrimmingSet;
 @property (strong, nonatomic) UIColor *underlineColorForSpelling;
 @property (strong, nonatomic) UIColor *underlineColorForTextAlternatives;
+@property (nonatomic) BOOL useAutomaticEndpointing;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange;
 

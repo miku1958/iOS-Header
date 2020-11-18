@@ -87,11 +87,14 @@
 @property (readonly, nonatomic) IKChangeSet *unfilteredChildrenChangeSet; // @synthesize unfilteredChildrenChangeSet=_unfilteredChildrenChangeSet;
 @property (nonatomic) unsigned long long updateType; // @synthesize updateType=_updateType;
 
++ (id)DOMEventTypeNameMap;
++ (id)_eventXMLNameMap;
 + (id)effectiveChildDOMElementsForDOMElement:(id)arg1;
 + (unsigned long long)evaluateElementUpdateType:(id)arg1;
 + (BOOL)shouldParseChildDOMElement:(id)arg1;
 + (BOOL)shouldParseChildDOMElements;
 + (id)supportedFeatures;
++ (id)supportedFeaturesForElementName:(id)arg1;
 + (unsigned long long)updateTypeForChangeInAttribute:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3;
 + (void)willParseDOMElement:(id)arg1;
 - (void).cxx_destruct;
@@ -115,6 +118,7 @@
 - (id)initWithOriginalElement:(id)arg1;
 - (id)initWithPrototypeElement:(id)arg1 parent:(id)arg2 appDataItem:(id)arg3;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (void)performImplicitUpdates:(CDUnknownBlockType)arg1;
 - (id)proxyElementForLoadedChildElement:(id)arg1;
 - (void)resetImplicitUpdates;
 - (void)resetProperty:(unsigned long long)arg1;

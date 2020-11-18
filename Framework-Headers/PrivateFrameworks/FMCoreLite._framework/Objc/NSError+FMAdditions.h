@@ -7,6 +7,12 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (FMAdditions)
++ (id)fm_cancelledError;
++ (id)fm_errorWithCode:(long long)arg1;
++ (id)fm_genericError;
++ (id)fm_timeoutError;
+- (BOOL)fm_isCancelledError;
 - (BOOL)fm_isFileNotFoundError;
+- (BOOL)fm_isTimeoutError;
 @end
 

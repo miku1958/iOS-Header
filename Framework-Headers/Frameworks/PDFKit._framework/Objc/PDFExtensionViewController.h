@@ -23,15 +23,13 @@
 - (void)_pageChangedNotification:(id)arg1;
 - (void)_pdfViewZoomToRect:(id)arg1;
 - (void)_selectionChangedNotification:(id)arg1;
+- (void)_selectionPointsChangedNotification:(id)arg1;
 - (void)_setupDocumentViewSize;
 - (void)_textSelectionDidCopyDataNotification:(id)arg1;
 - (void)_textSelectionDidCopyStringNotification:(id)arg1;
-- (void)_textSelectionPointChangedNotification:(id)arg1;
 - (void)_textSelectionShowTextSelectionMenu:(id)arg1;
-- (void)_textSelectionStateChangedNotification:(id)arg1;
 - (void)_updateDocumentIsLocked;
 - (void)_updatePageCount;
-- (void)_updateSelectionRects;
 - (void)_updateTextSelectionPoints;
 - (void)_zoomToRect:(struct CGRect)arg1;
 - (void)cancelFindString;
@@ -50,6 +48,7 @@
 - (void)setMaximumZoomScale:(double)arg1;
 - (void)setMinimumZoomScale:(double)arg1;
 - (void)setupPDFView;
+- (void)snapshotViewRect:(struct CGRect)arg1 forWidth:(double)arg2 afterScreenUpdates:(BOOL)arg3;
 - (void)unlockWithPassword:(id)arg1;
 - (void)updatePDFViewLayout:(struct CGRect)arg1 scrollViewFrame:(struct CGRect)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3 zoomScale:(double)arg4;
 - (void)viewDidLoad;

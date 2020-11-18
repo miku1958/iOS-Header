@@ -6,25 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile;
+@class HDDatabaseTransactionContext, HDProfile, _HKFilter;
 
 @interface HDActivitySummaryBuilder : NSObject
 {
     HDProfile *_profile;
+    _HKFilter *_filter;
     BOOL _shouldIncludePrivateProperties;
     BOOL _shouldIncludeStatistics;
+    BOOL _orderByDateAscending;
+    unsigned long long _limit;
+    HDDatabaseTransactionContext *_databaseTransactionContext;
+    long long _enumeratedSummaryCount;
 }
 
+@property (copy, nonatomic) HDDatabaseTransactionContext *databaseTransactionContext; // @synthesize databaseTransactionContext=_databaseTransactionContext;
+@property (readonly, nonatomic) long long enumeratedSummaryCount; // @synthesize enumeratedSummaryCount=_enumeratedSummaryCount;
+@property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
+@property (nonatomic) BOOL orderByDateAscending; // @synthesize orderByDateAscending=_orderByDateAscending;
 @property (nonatomic) BOOL shouldIncludePrivateProperties; // @synthesize shouldIncludePrivateProperties=_shouldIncludePrivateProperties;
 @property (nonatomic) BOOL shouldIncludeStatistics; // @synthesize shouldIncludeStatistics=_shouldIncludeStatistics;
 
 - (void).cxx_destruct;
 - (BOOL)_enumerateActivitySummariesAndCachesWithPredicate:(id)arg1 largestAnchor:(long long *)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
-- (id)activitySummariesWithPredicate:(id)arg1 error:(id *)arg2;
 - (void)activitySummariesWithPredicate:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)batchedActivitySummariesWithPredicate:(id)arg1 maxBatchSize:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateActivitySummariesWithPredicate:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithProfile:(id)arg1;
+- (id)initWithProfile:(id)arg1 filter:(id)arg2;
 
 @end
 

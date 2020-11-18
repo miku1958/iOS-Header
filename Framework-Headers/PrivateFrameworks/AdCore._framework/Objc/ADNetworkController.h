@@ -29,7 +29,9 @@
 - (void)_checkForNetwork;
 - (void)_checkForNetworkAndNotify;
 - (void)_updateStatus:(BOOL)arg1;
-- (int)dataIndicatorToConnection:(id)arg1;
+- (int)cellNetworkType;
+- (int)dataIndicatorToConnection:(int)arg1;
+- (id)getDataContext:(id)arg1;
 - (int)networkType;
 - (void)start;
 

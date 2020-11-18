@@ -29,11 +29,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) UISimpleTextPrintFormatter *printFormatter; // @synthesize printFormatter=_printFormatter;
 @property (readonly) Class superclass;
 
-+ (BOOL)providesCustomPrinter;
-+ (BOOL)shouldBeRemoteForContentType:(id)arg1;
-+ (id)supportedContentTypes;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
+- (BOOL)_documentAttributesContainTextColors:(id)arg1;
+- (void)_setupTextViewColorsWithDocumentAttributes:(id)arg1;
 - (void)_updateConstraintConstants:(BOOL)arg1;
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
@@ -46,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (long long)preferredWhitePointAdaptivityStyle;
 - (void)prepareForDrawingPages:(struct _NSRange)arg1 ofSize:(struct CGSize)arg2;
 - (id)printer;
+- (void)provideCurrentPageAndVisibleRectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)registeredKeyCommands;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;

@@ -6,19 +6,26 @@
 
 #import <UIKit/UIImageView.h>
 
+@class UIColor;
 @protocol MKArtworkImageSource;
 
 @interface MKArtworkImageView : UIImageView
 {
     UIImageView *_cachedBadgeView;
     id<MKArtworkImageSource> _imageSource;
+    UIColor *_primaryTintColor;
+    UIColor *_secondaryTintColor;
 }
 
 @property (readonly, nonatomic) UIImageView *badgeView;
 @property (strong, nonatomic) id<MKArtworkImageSource> imageSource; // @synthesize imageSource=_imageSource;
+@property (strong, nonatomic) UIColor *primaryTintColor; // @synthesize primaryTintColor=_primaryTintColor;
+@property (strong, nonatomic) UIColor *secondaryTintColor; // @synthesize secondaryTintColor=_secondaryTintColor;
 
 - (void).cxx_destruct;
 - (void)_updateImageView;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -14,7 +14,7 @@
     NSIndexSet *_geometrySet;
 }
 
-@property (readonly, copy, nonatomic) PXGridLayoutMetrics *metrics; // @dynamic metrics;
+@property (copy, nonatomic) PXGridLayoutMetrics *metrics; // @dynamic metrics;
 
 - (void).cxx_destruct;
 - (void)_getAdditionalGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
@@ -24,7 +24,6 @@
 - (id)geometryKinds;
 - (void)getGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2 withKind:(long long)arg3;
 - (void)getGeometry:(struct _PXLayoutGeometry *)arg1 forItemAtIndex:(unsigned long long)arg2;
-- (id)init;
 - (id)initWithMetrics:(id)arg1;
 - (unsigned long long)numberOfGeometriesWithKind:(long long)arg1;
 - (struct CGSize)size;

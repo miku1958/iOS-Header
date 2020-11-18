@@ -44,10 +44,11 @@
 - (void)_prepareForEditing;
 - (void)_prepareForSnapshotting;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
 - (struct CGSize)_sceneSize;
 - (void)_setContentViewsOpaque:(BOOL)arg1;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
+- (void)_setupSceneHostViewIfNecessary;
 - (BOOL)_shouldFreezeSceneForEditMode:(long long)arg1;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_unloadSnapshotContentViews;

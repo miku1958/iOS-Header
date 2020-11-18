@@ -148,6 +148,8 @@
 - (int)maximumPasswordLength;
 - (int)maximumRecordedNameDuration;
 - (int)minimumPasswordLength;
+- (void)movePendingMessagesToInboxTask:(id)arg1;
+- (void)movePendingMessagesToTrashTask:(id)arg1;
 - (void)moveRecordsWithIdentifiersToInbox:(id)arg1;
 - (void)moveRecordsWithIdentifiersToTrash:(id)arg1;
 - (Class)notificationInterpreterClass;

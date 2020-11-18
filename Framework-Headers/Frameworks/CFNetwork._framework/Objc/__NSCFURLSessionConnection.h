@@ -11,7 +11,6 @@
 @class NSURLResponse, NSURLSessionTask;
 @protocol OS_dispatch_data, OS_dispatch_queue, SessionConnectionDelegate;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFURLSessionConnection : NSObject <NSCopying>
 {
     NSURLSessionTask *_task;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)cancel;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)expectedProgressTargetChanged;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)resume;
 - (void)setBytesPerSecondLimit:(long long)arg1;

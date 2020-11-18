@@ -9,8 +9,8 @@
 #import <Message/MFActivityCondition-Protocol.h>
 #import <Message/MFActivityConditionBuilder-Protocol.h>
 
-@class MFCancelationToken, MFObservable, NSString;
-@protocol MFScheduler;
+@class EFCancelationToken, EFObservable, NSString;
+@protocol EFScheduler;
 
 @interface MFActivityCondition : NSObject <MFActivityConditionBuilder, MFActivityCondition>
 {
@@ -21,12 +21,12 @@
     BOOL _satisfied;
     float _minBatteryLevel;
     long long _maxThermalPressureLevel;
-    MFCancelationToken *_cancellationToken;
-    id<MFScheduler> _scheduler;
+    EFCancelationToken *_cancellationToken;
+    id<EFScheduler> _scheduler;
 }
 
-@property (strong, nonatomic) MFCancelationToken *cancellationToken; // @synthesize cancellationToken=_cancellationToken;
-@property (readonly, nonatomic) MFObservable *conditionsObservable;
+@property (strong, nonatomic) EFCancelationToken *cancellationToken; // @synthesize cancellationToken=_cancellationToken;
+@property (readonly, nonatomic) EFObservable *conditionsObservable;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -37,7 +37,7 @@
 @property (nonatomic) BOOL requireScreenLocked; // @synthesize requireScreenLocked=_requireScreenLocked;
 @property (nonatomic) BOOL requireWiFi; // @synthesize requireWiFi=_requireWiFi;
 @property (nonatomic, getter=isSatisfied) BOOL satisfied; // @synthesize satisfied=_satisfied;
-@property (strong, nonatomic) id<MFScheduler> scheduler; // @synthesize scheduler=_scheduler;
+@property (strong, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
 
 + (id)alwaysSatisfiedCondition;

@@ -20,7 +20,6 @@
 @property (readonly, nonatomic) CDStruct_f6aba300 minimumVersion; // @synthesize minimumVersion=_minimumVersion;
 
 + (id)defaultCloudBookmarksEligibleOperatingSystemRanges;
-+ (id)rangeWithCloudBookmarksMigrationRampSettingsDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)includesOperatingSystemVersion:(CDStruct_f6aba300)arg1 inFamily:(id)arg2;
 - (id)initWithFamily:(id)arg1 minimumVersion:(CDStruct_f6aba300)arg2 maximumVersion:(CDStruct_f6aba300)arg3;

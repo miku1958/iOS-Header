@@ -51,11 +51,11 @@
 - (void)actionSliderDidCancelSlide:(id)arg1;
 - (void)actionSliderDidCompleteSlide:(id)arg1;
 - (void)dealloc;
-- (void)hideAnimated:(BOOL)arg1;
+- (void)hideAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 vibrantSettings:(id)arg2;
 - (void)layoutSubviews;
-- (void)showAnimated:(BOOL)arg1;
+- (void)showAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

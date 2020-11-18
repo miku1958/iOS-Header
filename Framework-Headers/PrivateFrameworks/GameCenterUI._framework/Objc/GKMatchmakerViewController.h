@@ -15,7 +15,7 @@
 @interface GKMatchmakerViewController : UINavigationController <GKMatchDelegate, GKExtensionParentViewControllerProtocol>
 {
     BOOL _hosted;
-    id<GKMatchmakerViewControllerDelegate> _matchmakerDelegateWeak;
+    id<GKMatchmakerViewControllerDelegate> matchmakerDelegate;
     GKMatchRequest *_matchRequest;
     GKMatchmakerHostViewController *_remoteViewController;
     GKInvite *_acceptedInvite;
@@ -33,12 +33,13 @@
 @property (nonatomic, getter=isHosted) BOOL hosted; // @synthesize hosted=_hosted;
 @property (strong, nonatomic) NSMutableArray *hostedPlayers; // @synthesize hostedPlayers=_hostedPlayers;
 @property (strong, nonatomic) GKMatch *match; // @synthesize match=_match;
-@property (readonly, strong, nonatomic) GKMatchRequest *matchRequest; // @synthesize matchRequest=_matchRequest;
-@property (nonatomic) id<GKMatchmakerViewControllerDelegate> matchmakerDelegate; // @synthesize matchmakerDelegate=_matchmakerDelegateWeak;
+@property (strong, nonatomic) GKMatchRequest *matchRequest; // @synthesize matchRequest=_matchRequest;
+@property (nonatomic) id<GKMatchmakerViewControllerDelegate> matchmakerDelegate; // @synthesize matchmakerDelegate;
 @property (strong, nonatomic) GKMatchmakerHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (readonly) Class superclass;
 
 + (BOOL)_preventsAppearanceProxyCustomization;
+- (void).cxx_destruct;
 - (void)_setupChildViewController;
 - (void)_setupRemoteViewController;
 - (void)addPlayersToMatch:(id)arg1;

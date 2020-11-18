@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDMessageFilter.h>
+#import <HMFoundation/HMFMessageFilter.h>
 
-@interface HMDLostModeMessageFilter : HMDMessageFilter
+@interface HMDLostModeMessageFilter : HMFMessageFilter
 {
-    BOOL _deviceLost;
 }
 
-@property (nonatomic, getter=isDeviceLost) BOOL deviceLost; // @synthesize deviceLost=_deviceLost;
-
-- (void)_deviceLostStateNotification:(id)arg1;
-- (BOOL)acceptMessage:(id)arg1 target:(id)arg2 errorReason:(id *)arg3;
-- (id)initWithName:(id)arg1;
++ (BOOL)canInitWithMessage:(id)arg1;
++ (id)policyClasses;
+- (BOOL)acceptWithPolicies:(id)arg1 error:(id *)arg2;
 
 @end
 

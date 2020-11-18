@@ -26,7 +26,6 @@
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)layoutSubviews;
 - (void)performAccessoryAction;
 - (void)performDefaultAction;
 - (void)prepareForReuse;

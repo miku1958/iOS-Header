@@ -12,6 +12,7 @@
 - (CDUnknownBlockType)CNLabeledValueFromABSMultiValueTranform;
 - (id)CNValueFromABSValue:(void *)arg1;
 - (CDUnknownBlockType)dictionaryBasedMultiValueTransformWithLabelMapping:(id)arg1 inputKeys:(id)arg2 destinationClass:(Class)arg3 valueMapping:(id)arg4;
+- (BOOL)isABSLabeledValueValue:(id)arg1 equalToValue:(id)arg2;
 - (CDUnknownBlockType)multiValueTransformWithLabelMapping:(id)arg1 valueTransform:(CDUnknownBlockType)arg2;
 - (CDUnknownBlockType)passThroughMultivalueTransformWithLabelMapping:(id)arg1;
 @end

@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 @property (readonly) Class superclass;
-@property (nonatomic) float volume;
+@property (nonatomic) float volume; // @dynamic volume;
 
 - (void)callLegacyCompletionHandlerForType:(long long)arg1 legacyHandler:(CDUnknownBlockType)arg2;
 - (void)didAttachToEngine:(id)arg1;

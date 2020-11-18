@@ -7,27 +7,38 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSMutableDictionary, NSString;
-@protocol SFAirDropBrowserBatchDelegate, SFAirDropBrowserDelegate;
+@protocol SFAirDropBrowserBatchDelegate, SFAirDropBrowserDelegate, SFAirDropBrowserDiffableDelegate;
 
 @interface SFAirDropBrowser : NSObject
 {
     struct __SFBrowser *_browser;
     NSMutableDictionary *_nodes;
     BOOL _shouldDeliverEmptyUpdates;
+    BOOL _includePeopleSuggestions;
     NSString *_sessionID;
     NSArray *_people;
     id<SFAirDropBrowserDelegate> _delegate;
     id<SFAirDropBrowserBatchDelegate> _batchDelegate;
+    NSString *_sendingAppBundleID;
+    NSArray *_urlsBeingShared;
+    NSArray *_photosAssetIDs;
+    id<SFAirDropBrowserDiffableDelegate> _diffableDelegate;
+    NSMutableDictionary *_nodeIDToNode;
 }
 
 @property (weak) id<SFAirDropBrowserBatchDelegate> batchDelegate; // @synthesize batchDelegate=_batchDelegate;
 @property (weak) id<SFAirDropBrowserDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<SFAirDropBrowserDiffableDelegate> diffableDelegate; // @synthesize diffableDelegate=_diffableDelegate;
+@property (nonatomic) BOOL includePeopleSuggestions; // @synthesize includePeopleSuggestions=_includePeopleSuggestions;
+@property (readonly, nonatomic) NSMutableDictionary *nodeIDToNode; // @synthesize nodeIDToNode=_nodeIDToNode;
 @property (readonly, nonatomic) NSArray *people; // @synthesize people=_people;
+@property (copy, nonatomic) NSArray *photosAssetIDs; // @synthesize photosAssetIDs=_photosAssetIDs;
+@property (copy, nonatomic) NSString *sendingAppBundleID; // @synthesize sendingAppBundleID=_sendingAppBundleID;
 @property (copy, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
+@property (copy, nonatomic) NSArray *urlsBeingShared; // @synthesize urlsBeingShared=_urlsBeingShared;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)getChangedIndexesForClientPeopleList:(id)arg1 peopleList:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getChangedIndexesForClientPeopleList:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)handleBrowserCallBack;
 - (id)init;

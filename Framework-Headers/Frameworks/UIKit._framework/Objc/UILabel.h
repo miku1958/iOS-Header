@@ -8,13 +8,14 @@
 
 #import <UIKitCore/NSCoding-Protocol.h>
 #import <UIKitCore/UIContentSizeCategoryAdjusting-Protocol.h>
+#import <UIKitCore/_UILabelContentAttributesProvider-Protocol.h>
 #import <UIKitCore/_UILabelVisualStyleSubject-Protocol.h>
 #import <UIKitCore/_UIMultilineTextContentSizing-Protocol.h>
 #import <UIKitCore/_UIViewBaselineSpacing-Protocol.h>
 
 @class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelContent, _UILabelScaledMetrics, _UILabelVisualStyle, _UITextSizeCache;
 
-@interface UILabel : UIView <_UIViewBaselineSpacing, _UIMultilineTextContentSizing, _UILabelVisualStyleSubject, NSCoding, UIContentSizeCategoryAdjusting>
+@interface UILabel : UIView <_UIViewBaselineSpacing, _UIMultilineTextContentSizing, _UILabelVisualStyleSubject, _UILabelContentAttributesProvider, NSCoding, UIContentSizeCategoryAdjusting>
 {
     struct CGSize _size;
     UIColor *_highlightedColor;
@@ -49,22 +50,23 @@
         unsigned int marqueeEnabled:1;
         unsigned int marqueeRunable:1;
         unsigned int marqueeRequired:1;
-        unsigned int drawsLetterpress:1;
         unsigned int usesExplicitPreferredMaxLayoutWidth:1;
         unsigned int drawsDebugBaselines:1;
         unsigned int explicitBaselineOffset:1;
         unsigned int usesSimpleTextEffects:1;
-        unsigned int isVariableLengthString:1;
         unsigned int wantsUnderlineForAccessibilityButtonShapesEnabled:1;
         unsigned int disableUpdateTextColorOnTraitCollectionChange:1;
         unsigned int textAlignmentFollowsWritingDirection:1;
         unsigned int textAlignmentMirrored:1;
         unsigned int shortcutIntrinsicContentSize:1;
+        unsigned int multilineLabelRequiresCarefulMeasurement:1;
         unsigned int noNeedsDisplayCheckForBaselineCalculationNeeded:1;
         unsigned int overallWritingDirectionFollowsLayoutDirection:1;
+        unsigned int hyphenationFactorIgnoredIfURLsDetected:1;
     } _textLabelFlags;
     BOOL _adjustsFontForContentSizeCategory;
     BOOL __textColorFollowsTintColor;
+    BOOL __supportMultiLineShrinkToFit;
     double _preferredMaxLayoutWidth;
     double _multilineContextWidth;
     UIFont *_fontForShortcutBaselineCalculation;
@@ -78,8 +80,10 @@
 @property (readonly, nonatomic) double _firstLineBaselineOffsetFromBoundsTop;
 @property (nonatomic, setter=_setFirstLineCapFrameOriginY:) double _firstLineCapFrameOriginY;
 @property (strong, nonatomic, setter=set_fontForShortcutBaselineCalculation:) UIFont *_fontForShortcutBaselineCalculation; // @synthesize _fontForShortcutBaselineCalculation;
+@property (nonatomic, setter=_setHyphenationFactorIgnoredIfURLsDetected:) BOOL _hyphenationFactorIgnoredIfURLsDetected;
 @property (readonly, nonatomic) double _lastLineBaseline;
 @property (nonatomic, setter=_setLastLineBaselineFrameOriginY:) double _lastLineBaselineFrameOriginY;
+@property (nonatomic, setter=_setSupportMultiLineShrinkToFit:) BOOL _supportMultiLineShrinkToFit; // @synthesize _supportMultiLineShrinkToFit=__supportMultiLineShrinkToFit;
 @property (strong, nonatomic, getter=_synthesizedAttributedText, setter=_setSynthesizedAttributedText:) NSAttributedString *_synthesizedAttributedText;
 @property (nonatomic, setter=_setTextColorFollowsTintColor:) BOOL _textColorFollowsTintColor; // @synthesize _textColorFollowsTintColor=__textColorFollowsTintColor;
 @property (strong, nonatomic, setter=_setVisualStyle:) _UILabelVisualStyle *_visualStyle; // @synthesize _visualStyle=__visualStyle;
@@ -118,10 +122,10 @@
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @dynamic userInteractionEnabled;
 
 + (id)_defaultAttributes;
++ (id)_defaultColor;
 + (struct CGRect)_insetRect:(struct CGRect)arg1 forAttributedString:(id)arg2 withDefaultFont:(id)arg3 inView:(id)arg4;
 + (struct UIEdgeInsets)_insetsForAttributedString:(id)arg1 withDefaultFont:(id)arg2 inView:(id)arg3;
 + (struct UIEdgeInsets)_insetsForString:(id)arg1 withFont:(id)arg2 inView:(id)arg3;
-+ (struct CGSize)_legacy_adjustSizeForWebKitConstraining:(struct CGSize)arg1 withFont:(id)arg2;
 + (struct __CFCharacterSet *)_tooBigChars;
 + (id)defaultFont;
 + (Class)layerClass;
@@ -130,11 +134,12 @@
 - (void)_accessibilityButtonShapesChangedNotification:(id)arg1;
 - (void)_accessibilityButtonShapesParametersDidChange;
 - (double)_actualScaleFactor;
-- (void)_adjustPreferredFontForCurrentContentSizeCategory;
+- (void)_adjustFontForAccessibilityTraits:(BOOL)arg1;
 - (void)_ancestorWillUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)_applicationWillResignActiveNotification:(id)arg1;
 - (id)_associatedScalingLabel;
+- (id)_attributedStringByDisablingHyphenationIfURLsDetected:(id)arg1;
 - (BOOL)_attributedStringHasAttributesNotCoveredByPrimitives;
 - (id)_attributedStringIsolatingStringWritingDirection:(id)arg1;
 - (double)_autolayoutSpacingAtEdge:(int)arg1 forAttribute:(long long)arg2 inContainer:(id)arg3 isGuide:(BOOL)arg4;
@@ -159,12 +164,14 @@
 - (double)_firstBaselineOffsetFromTop;
 - (double)_firstLineBaseline;
 - (id)_fontInfoForBaselineSpacing;
+- (BOOL)_hasBaseline;
 - (BOOL)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
 - (BOOL)_hasFontInfoForVerticalBaselineSpacing;
 - (float)_hyphenationFactor;
+- (BOOL)_hyphenationPossiblyDisabledIfURLsDetected;
 - (id)_image;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
-- (void)_invalidateAsNeededForNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2 withLinkCheck:(BOOL)arg3;
+- (void)_invalidateAsNeededForNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (void)_invalidateCachedDefaultAttributes;
 - (void)_invalidateLayout;
 - (void)_invalidateSynthesizedAttributedTextAndLayout;
@@ -176,8 +183,10 @@
 - (id)_materializedAttributedString;
 - (double)_maximumMarqueeTextWidth;
 - (long long)_measuredNumberOfLines;
+- (void)_mergeDefaultAttributesForDowngradingContent:(id)arg1;
 - (double)_minimumFontSize;
 - (double)_multilineContextWidth;
+- (BOOL)_multilineLabelRequiresCarefulMeasurement;
 - (BOOL)_needsDisplayForbaselineCalculation;
 - (BOOL)_needsDoubleUpdateConstraintsPass;
 - (void)_noteInstanceCustomizationForAttributedString:(id)arg1 attributes:(id)arg2;
@@ -196,8 +205,10 @@
 - (void)_setFont:(id)arg1;
 - (void)_setHyphenationFactor:(float)arg1;
 - (void)_setLineBreakMode:(long long)arg1;
+- (void)_setLineBreakStrategy:(unsigned long long)arg1;
 - (void)_setMinimumFontSize:(double)arg1;
 - (void)_setMultilineContextWidth:(double)arg1;
+- (void)_setMultilineLabelRequiresCarefulMeasurement:(BOOL)arg1;
 - (void)_setNeedsDisplayForInvalidatedContents;
 - (void)_setOverallWritingDirectionFollowsLayoutDirection:(BOOL)arg1;
 - (void)_setShadow:(id)arg1;
@@ -210,6 +221,7 @@
 - (void)_setUseShortcutIntrinsicContentSize:(BOOL)arg1;
 - (void)_setUsesSimpleTextEffects:(BOOL)arg1;
 - (void)_setWordRoundingEnabled:(BOOL)arg1;
+- (void)_setupDefaultStyleEffectConfiguration;
 - (id)_shadow;
 - (BOOL)_shouldCeilSizeToViewScale;
 - (BOOL)_shouldDrawUnderlinesLikeWebKit;
@@ -226,6 +238,7 @@
 - (struct CGRect)_textRectForBounds:(struct CGRect)arg1 limitedToNumberOfLines:(long long)arg2 includingShadow:(BOOL)arg3;
 - (BOOL)_updateScaledMetricsForRect:(struct CGRect)arg1;
 - (void)_updateTextColorWithFallbackColorIfNeeded;
+- (void)_updateTextEffectsConfigurationIfNeeded;
 - (void)_updateVariableLengthStringIfNeeded;
 - (BOOL)_useShortcutIntrinsicContentSize;
 - (BOOL)_usesSimpleTextEffects;
@@ -238,7 +251,6 @@
 - (void)drawContentsInRect:(struct CGRect)arg1;
 - (void)drawRect:(struct CGRect)arg1;
 - (void)drawTextInRect:(struct CGRect)arg1;
-- (BOOL)drawsLetterpress;
 - (BOOL)drawsUnderline;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -247,8 +259,9 @@
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isAccessibilityElementByDefault;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
+- (id)largeContentTitle;
 - (void)layerWillDraw:(id)arg1;
-- (id)letterpressStyle;
+- (unsigned long long)lineBreakStrategy;
 - (BOOL)marqueeEnabled;
 - (BOOL)marqueeRunning;
 - (struct CGSize)rawSize;
@@ -256,16 +269,16 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCentersHorizontally:(BOOL)arg1;
 - (void)setColor:(id)arg1;
-- (void)setDrawsLetterpress:(BOOL)arg1;
 - (void)setDrawsUnderline:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
-- (void)setLetterpressStyle:(id)arg1;
+- (void)setLineBreakStrategy:(unsigned long long)arg1;
 - (void)setMarqueeEnabled:(BOOL)arg1;
 - (void)setMarqueeRunning:(BOOL)arg1;
 - (void)setNeedsDisplay;
 - (void)setRawSize:(struct CGSize)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (void)setShadowBlur:(double)arg1;
+- (void)set_multilineLabelRequiresCarefulMeasurement:(BOOL)arg1;
 - (void)set_useShortcutIntrinsicContentSize:(BOOL)arg1;
 - (double)shadowBlur;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

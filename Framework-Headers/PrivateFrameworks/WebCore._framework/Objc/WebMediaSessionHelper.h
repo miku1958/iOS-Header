@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
 - (void)applicationWillResignActive:(id)arg1;
+- (void)carPlayIsConnectedDidChange:(id)arg1;
+- (void)carPlayServerDied:(id)arg1;
 - (void)clearCallback;
 - (void)dealloc;
 - (BOOL)hasWirelessTargetsAvailable;

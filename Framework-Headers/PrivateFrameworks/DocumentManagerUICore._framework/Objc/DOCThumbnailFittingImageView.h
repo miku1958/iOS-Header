@@ -4,36 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <DocumentManagerUICore/DOCFittingImageView.h>
+#import <DocumentManagerUICore/DOCBorderedFittingImageView.h>
 
-#import <DocumentManagerUICore/DOCAppearanceProtocol-Protocol.h>
+@class FPItem, NSURL;
 
-@class DOCAppearance, FPItem, NSString, NSURL;
-
-@interface DOCThumbnailFittingImageView : DOCFittingImageView <DOCAppearanceProtocol>
+@interface DOCThumbnailFittingImageView : DOCBorderedFittingImageView
 {
-    DOCAppearance *_appearance;
     FPItem *_item;
     NSURL *_url;
     long long _generatorGeneration;
 }
 
-@property (strong, nonatomic) DOCAppearance *appearance; // @synthesize appearance=_appearance;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) long long generatorGeneration; // @synthesize generatorGeneration=_generatorGeneration;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) FPItem *item; // @synthesize item=_item;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
 - (void)_commonInitWithSize:(struct CGSize)arg1;
+- (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1 item:(id)arg2;
 - (id)initWithSize:(struct CGSize)arg1 url:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateAppearance:(id)arg1;
 - (void)updateThumbnail;
 - (void)updateThumbnailForItem:(id)arg1;
 - (void)updateThumbnailForURL:(id)arg1;

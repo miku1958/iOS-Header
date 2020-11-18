@@ -15,8 +15,8 @@
 
 @property (strong, nonatomic) NSString *htmlBody; // @synthesize htmlBody=_htmlBody;
 
+- (void).cxx_destruct;
 - (id)copy;
-- (void)dealloc;
 - (id)multipartContent;
 
 @end

@@ -203,7 +203,8 @@
 - (void)reloadFromOrigin;
 - (void)removeUnchangeableStyles;
 - (struct CGRect)renderRectForPoint:(struct CGPoint)arg1 isReplaced:(BOOL *)arg2 fontSize:(float *)arg3;
-- (id)renderTreeAsExternalRepresentationForPrinting:(BOOL)arg1;
+- (id)renderTreeAsExternalRepresentationForPrinting;
+- (id)renderTreeAsExternalRepresentationWithOptions:(unsigned long long)arg1;
 - (BOOL)renderedCharactersExceed:(unsigned long long)arg1;
 - (struct CGSize)renderedSizeOfNode:(id)arg1 constrainedToWidth:(float)arg2;
 - (void)resetSelection;

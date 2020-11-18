@@ -6,38 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class UIImage;
+@class UIColor;
 
 @interface PXGadgetSpec : NSObject
 {
     BOOL _shouldInsetAllContent;
-    BOOL _forceTouchCapabilityAvailable;
-    long long _scrollDirection;
+    BOOL _shouldUseAccessibilityLayout;
+    long long _scrollAxis;
     double _interItemSpacing;
     long long _layoutSizeClass;
     long long _layoutOrientation;
+    double _displayScale;
     double _layoutReferenceWidth;
+    UIColor *_backgroundColor;
     struct UIEdgeInsets _contentInsets;
+    struct UIEdgeInsets _layoutInsets;
     struct UIEdgeInsets _accessoryViewInset;
 }
 
-@property (readonly, nonatomic) UIImage *accessoryImage;
 @property (readonly, nonatomic) struct UIEdgeInsets accessoryViewInset; // @synthesize accessoryViewInset=_accessoryViewInset;
+@property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
-@property (readonly, nonatomic) BOOL forceTouchCapabilityAvailable; // @synthesize forceTouchCapabilityAvailable=_forceTouchCapabilityAvailable;
+@property (readonly, nonatomic) double displayScale; // @synthesize displayScale=_displayScale;
 @property (readonly, nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
+@property (readonly, nonatomic) struct UIEdgeInsets layoutInsets; // @synthesize layoutInsets=_layoutInsets;
 @property (readonly, nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property (readonly, nonatomic) double layoutReferenceWidth; // @synthesize layoutReferenceWidth=_layoutReferenceWidth;
 @property (readonly, nonatomic) long long layoutSizeClass; // @synthesize layoutSizeClass=_layoutSizeClass;
-@property (readonly, nonatomic) long long scrollDirection; // @synthesize scrollDirection=_scrollDirection;
+@property (readonly, nonatomic) long long scrollAxis; // @synthesize scrollAxis=_scrollAxis;
 @property (readonly, nonatomic) BOOL shouldInsetAllContent; // @synthesize shouldInsetAllContent=_shouldInsetAllContent;
+@property (readonly, nonatomic) BOOL shouldUseAccessibilityLayout; // @synthesize shouldUseAccessibilityLayout=_shouldUseAccessibilityLayout;
 
-+ (void)initialize;
++ (id)horizontalContentInsetsInterpolator;
++ (double)sectionHeaderHeightForStyle:(unsigned long long)arg1 dividerHidden:(BOOL)arg2;
++ (double)sectionHeaderTitleBottomSpacingForStyle:(unsigned long long)arg1;
++ (double)sectionHeaderTitleHeightForStyle:(unsigned long long)arg1 dividerHidden:(BOOL)arg2;
++ (double)sectionHeaderTopSpacingForStyle:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (struct UIEdgeInsets)acccessoryViewInsetForTraitCollection:(id)arg1;
 - (double)columnSpacingForColumnSpan:(long long)arg1;
 - (double)columnWidthForColumnSpan:(long long)arg1;
-- (id)initWithTraitCollection:(id)arg1 scrollDirection:(long long)arg2;
+- (id)initWithTraitCollection:(id)arg1 scrollAxis:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToGadgetSpec:(id)arg1;
+- (BOOL)shouldInsetContentForTraitCollection:(id)arg1;
 
 @end
 

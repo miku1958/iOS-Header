@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class VCVoiceShortcutClient;
+@protocol INVCVoiceShortcutClient;
 
 @interface INVoiceShortcutCenter : NSObject
 {
-    VCVoiceShortcutClient *_voiceShortcutClient;
+    id<INVCVoiceShortcutClient> _voiceShortcutClient;
 }
 
-@property (strong, nonatomic, setter=_setVoiceShortcutClient:) VCVoiceShortcutClient *voiceShortcutClient; // @synthesize voiceShortcutClient=_voiceShortcutClient;
+@property (strong, nonatomic, setter=_setVoiceShortcutClient:) id<INVCVoiceShortcutClient> voiceShortcutClient; // @synthesize voiceShortcutClient=_voiceShortcutClient;
 
 + (void)initialize;
 + (id)sharedCenter;

@@ -12,26 +12,42 @@
 @interface HKProxyProvider : NSObject
 {
     _HKXPCConnection *_connection;
-    NSObject<OS_dispatch_queue> *_connectionQueue;
+    long long _connectionGeneration;
+    BOOL _invalidated;
+    CDUnknownBlockType _lock_automaticProxyReconnectionHandler;
+    struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_clientQueue;
+    int _notifyToken;
     NSMutableArray *_pendingFetchContinuations;
+    BOOL _shouldRetryOnInterruption;
     HKHealthStore *_healthStore;
     NSString *_proxyIdentifier;
     id<_HKXPCExportable> _exportedObject;
 }
 
+@property (copy) CDUnknownBlockType automaticProxyReconnectionHandler;
 @property (readonly, weak, nonatomic) id<_HKXPCExportable> exportedObject; // @synthesize exportedObject=_exportedObject;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly, nonatomic) NSString *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
+@property BOOL shouldRetryOnInterruption; // @synthesize shouldRetryOnInterruption=_shouldRetryOnInterruption;
 
++ (id)_relaunchQueue;
 - (void).cxx_destruct;
-- (void)_connectionQueue_fetchEndpointAndConnectionWithRetryCount:(long long)arg1;
+- (void)_fetchProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchRetryingProxyWithErrorCount:(long long)arg1 handler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
-- (void)_resetConnection;
+- (void)_getSynchronousProxyWithErrorCount:(long long)arg1 handler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
+- (void)_getSynchronousProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)_handleError:(id)arg1 connectionGeneration:(long long)arg2;
+- (void)_lock_fetchEndpointAndConnectionWithContinuation:(CDUnknownBlockType)arg1;
+- (void)_lock_flushContinuationsWithConnection:(id)arg1 error:(id)arg2;
+- (void)_lock_setUpConnectionWithEndpoint:(id)arg1;
+- (void)_resetConnectionWithGeneration:(long long)arg1;
+- (void)_serverDidFinishLaunching;
 - (void)dealloc;
+- (id)description;
 - (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 endpointHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)fetchProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
-- (void)fetchRetryingProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)getSynchronousProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)initWithHealthStore:(id)arg1 proxyIdentifier:(id)arg2 exportedObject:(id)arg3;
 - (void)invalidate;
 

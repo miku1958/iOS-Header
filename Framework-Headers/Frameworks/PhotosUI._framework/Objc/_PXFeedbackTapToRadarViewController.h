@@ -6,17 +6,21 @@
 
 #import <UIKit/UIViewController.h>
 
-@class UISwitch;
+@class UISegmentedControl, UISwitch;
 @protocol _PXFeedbackTapToRadarViewControllerDelegate;
 
 @interface _PXFeedbackTapToRadarViewController : UIViewController
 {
     UISwitch *_screenshotSwitch;
+    UISwitch *_diagnoseSwitch;
     id<_PXFeedbackTapToRadarViewControllerDelegate> _delegate;
+    UISegmentedControl *_segmentedControl;
 }
 
 @property (strong, nonatomic) id<_PXFeedbackTapToRadarViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) UISwitch *diagnoseSwitch; // @synthesize diagnoseSwitch=_diagnoseSwitch;
 @property (strong, nonatomic) UISwitch *screenshotSwitch; // @synthesize screenshotSwitch=_screenshotSwitch;
+@property (strong, nonatomic) UISegmentedControl *segmentedControl; // @synthesize segmentedControl=_segmentedControl;
 
 - (void).cxx_destruct;
 - (void)_didSelectCancelButton:(id)arg1;

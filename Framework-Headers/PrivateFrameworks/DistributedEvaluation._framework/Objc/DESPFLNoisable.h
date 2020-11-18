@@ -13,6 +13,11 @@
 @interface DESPFLNoisable : PBCodable <NSCopying>
 {
     struct {
+        float *list;
+        unsigned long long count;
+        unsigned long long size;
+    } _data32s;
+    struct {
         double *list;
         unsigned long long count;
         unsigned long long size;
@@ -20,6 +25,7 @@
     double _weight;
     unsigned int _iteration;
     NSString *_recipeId;
+    NSString *_uuid;
     int _version;
     struct {
         unsigned int weight:1;
@@ -28,22 +34,29 @@
     } _has;
 }
 
+@property (readonly, nonatomic) float *data32s;
+@property (readonly, nonatomic) unsigned long long data32sCount;
 @property (readonly, nonatomic) double *datas;
 @property (readonly, nonatomic) unsigned long long datasCount;
 @property (nonatomic) BOOL hasIteration;
 @property (readonly, nonatomic) BOOL hasRecipeId;
+@property (readonly, nonatomic) BOOL hasUuid;
 @property (nonatomic) BOOL hasVersion;
 @property (nonatomic) BOOL hasWeight;
 @property (nonatomic) unsigned int iteration; // @synthesize iteration=_iteration;
 @property (strong, nonatomic) NSString *recipeId; // @synthesize recipeId=_recipeId;
+@property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (nonatomic) int version; // @synthesize version=_version;
 @property (nonatomic) double weight; // @synthesize weight=_weight;
 
 - (void).cxx_destruct;
+- (void)addData32:(float)arg1;
 - (void)addData:(double)arg1;
+- (void)clearData32s;
 - (void)clearDatas;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (float)data32AtIndex:(unsigned long long)arg1;
 - (double)dataAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)description;
@@ -52,6 +65,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setData32s:(float *)arg1 count:(unsigned long long)arg2;
 - (void)setDatas:(double *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 

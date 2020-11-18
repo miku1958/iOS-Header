@@ -6,7 +6,7 @@
 
 #import <VideosUI/NSObject-Protocol.h>
 
-@class CKShareMetadata, INIntent, NSArray, NSCoder, NSData, NSDictionary, NSError, NSString, NSURL, NSUserActivity, UIApplication, UIApplicationShortcutItem, UILocalNotification, UIUserNotificationSettings, UIViewController, UIWindow;
+@class CKShareMetadata, INIntent, NSArray, NSCoder, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUserActivity, UIApplication, UIApplicationShortcutItem, UILocalNotification, UISceneConfiguration, UISceneConnectionOptions, UISceneSession, UIUserNotificationSettings, UIViewController, UIWindow;
 
 @protocol UIApplicationDelegate <NSObject>
 
@@ -14,10 +14,12 @@
 
 
 @optional
+- (UISceneConfiguration *)application:(UIApplication *)arg1 configurationForConnectingSceneSession:(UISceneSession *)arg2 options:(UISceneConnectionOptions *)arg3;
 - (BOOL)application:(UIApplication *)arg1 continueUserActivity:(NSUserActivity *)arg2 restorationHandler:(void (^)(NSArray *))arg3;
 - (void)application:(UIApplication *)arg1 didChangeStatusBarFrame:(struct CGRect)arg2;
 - (void)application:(UIApplication *)arg1 didChangeStatusBarOrientation:(long long)arg2;
 - (void)application:(UIApplication *)arg1 didDecodeRestorableStateWithCoder:(NSCoder *)arg2;
+- (void)application:(UIApplication *)arg1 didDiscardSceneSessions:(NSSet *)arg2;
 - (void)application:(UIApplication *)arg1 didFailToContinueUserActivityWithType:(NSString *)arg2 error:(NSError *)arg3;
 - (void)application:(UIApplication *)arg1 didFailToRegisterForRemoteNotificationsWithError:(NSError *)arg2;
 - (BOOL)application:(UIApplication *)arg1 didFinishLaunchingWithOptions:(NSDictionary *)arg2;

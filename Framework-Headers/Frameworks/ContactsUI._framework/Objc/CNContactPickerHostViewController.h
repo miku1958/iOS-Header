@@ -15,7 +15,6 @@
 __attribute__((visibility("hidden")))
 @interface CNContactPickerHostViewController : _UIRemoteViewController <CNContactPickerContentViewController, CNContactPickerHostProtocol>
 {
-    void *_addressBook;
     id<CNContactPickerContentDelegate> _delegate;
     id<NSCopying> _currentRequestIdentifier;
     NSExtension *_extension;
@@ -34,14 +33,12 @@ __attribute__((visibility("hidden")))
 + (id)contextForIdentifier:(id)arg1;
 + (BOOL)getViewController:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (void *)addressBook;
-- (void)dealloc;
 - (void)invalidate;
 - (void)invalidateSelectionAnimated:(BOOL)arg1;
 - (void)pickerDidCancel;
+- (void)pickerDidSelectAddNewContact;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
-- (void)setAddressBook:(void *)arg1;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
 
 @end

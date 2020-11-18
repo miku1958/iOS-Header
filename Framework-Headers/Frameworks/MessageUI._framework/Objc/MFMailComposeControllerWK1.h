@@ -17,12 +17,14 @@
 - (id)_composeBodyField;
 - (id)_copyMessageDataForActivityHandoff;
 - (id)_copyMessagePlainTextForDonation;
+- (id)_copyMessagePlainTextForDonationRemoveQuotes:(BOOL)arg1;
 - (id)_createSignatureController;
 - (void)_endBlockingBodyScroll;
 - (struct CGRect)_optimalRectForPresentingPopoverInBodyField;
 - (void)_placeCaretAtStartOfBodyField;
 - (id)_selectedAttachmentURLs;
 - (void)_setBodyFieldAutocorrectionContext:(id)arg1;
+- (id)_signatureController;
 - (void)dealloc;
 - (void)loadView;
 - (void)setIsModal:(BOOL)arg1;

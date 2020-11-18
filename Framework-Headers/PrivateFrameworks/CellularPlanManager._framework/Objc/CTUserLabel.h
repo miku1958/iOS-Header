@@ -14,11 +14,13 @@
 @interface CTUserLabel : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_label;
+    NSString *_labelId;
     NSString *_key;
 }
 
 @property (readonly, nonatomic) NSString *key; // @synthesize key=_key;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
+@property (readonly, nonatomic) NSString *labelId; // @synthesize labelId=_labelId;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -28,7 +30,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithKey:(id)arg1 label:(id)arg2;
+- (id)initWithKey:(id)arg1 label:(id)arg2 labelId:(id)arg3;
 - (id)initWithLabel:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

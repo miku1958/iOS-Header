@@ -4,30 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PersonalizationPortraitInternals/PPContactSuggester.h>
+#import <objc/NSObject.h>
 
-@class NSObject;
-@protocol OS_dispatch_source;
+@class _PASLock;
 
-@interface PPPeopleSuggester : PPContactSuggester
+@interface PPPeopleSuggester : NSObject
 {
-    CDUnknownBlockType _mockBlock;
-    NSObject<OS_dispatch_source> *_timer;
-    unsigned char _numberOfContactsToSuggest;
+    _PASLock *_lock;
 }
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_makeDuetPeopleSuggester;
-- (void)_processPeopleSuggestions:(id)arg1 favorites:(id)arg2 doRetry:(BOOL)arg3;
-- (void)_refreshPeopleSuggestionsAndRetryIfNoResults:(BOOL)arg1;
-- (void)clearCaches;
-- (void)clearCachesWithoutRefreshing;
-- (id)initWithMock:(CDUnknownBlockType)arg1;
-- (id)initWithNumberOfContactsToSuggest:(unsigned char)arg1;
-- (unsigned char)numberOfContactsToSuggest;
-- (void)refreshMockPeopleSuggestions;
-- (void)setNumberOfContactsToSuggest:(unsigned char)arg1;
-- (void)waitForData;
+- (double)_cacheEntryAgeThresholdSecondsSince1970;
+- (id)_rankedContactIdentifiersMatchingName:(id)arg1;
+- (void)_sweepCache;
+- (id)init;
+- (id)rankedContactIdentifiers;
+- (id)rankedContactIdentifiersMatchingName:(id)arg1;
 
 @end
 

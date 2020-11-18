@@ -19,7 +19,7 @@
 @property (readonly, nonatomic) unsigned long long resultCode; // @synthesize resultCode=_resultCode;
 @property (readonly, nonatomic) NSArray *transferedMessages; // @synthesize transferedMessages=_transferedMessages;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)debugDescription;
 - (id)initWithResultCode:(unsigned long long)arg1 failedMessages:(id)arg2 transferedMessage:(id)arg3;
 

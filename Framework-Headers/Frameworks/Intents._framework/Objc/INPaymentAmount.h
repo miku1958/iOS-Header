@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INCurrencyAmount;
+@class INCurrencyAmount, NSString;
 
-@interface INPaymentAmount : NSObject <NSCopying, NSSecureCoding>
+@interface INPaymentAmount : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
     INCurrencyAmount *_amount;
     long long _amountType;
@@ -19,16 +20,20 @@
 
 @property (readonly, copy, nonatomic) INCurrencyAmount *amount; // @synthesize amount=_amount;
 @property (readonly, nonatomic) long long amountType; // @synthesize amountType=_amountType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithAmountType:(long long)arg1 amount:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

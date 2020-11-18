@@ -9,10 +9,12 @@
 @class GEOComposedWaypoint, GEOURLRouteHandle;
 
 @protocol MSPHistoryEntryRoute <MSPHistoryEntry>
-- (GEOComposedWaypoint *)endWaypoint;
-- (BOOL)navigationWasInterrupted;
-- (GEOURLRouteHandle *)routeHandle;
-- (GEOComposedWaypoint *)startWaypoint;
-- (long long)transportType;
+
+@property (readonly, nonatomic) GEOComposedWaypoint *endWaypoint;
+@property (readonly, nonatomic) BOOL navigationWasInterrupted;
+@property (readonly, nonatomic) GEOURLRouteHandle *routeHandle;
+@property (readonly, nonatomic) GEOComposedWaypoint *startWaypoint;
+@property (readonly, nonatomic) long long transportType;
+
 @end
 

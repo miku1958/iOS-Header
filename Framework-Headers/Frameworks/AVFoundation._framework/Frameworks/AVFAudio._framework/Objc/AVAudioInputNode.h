@@ -18,7 +18,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic) float volume;
+@property (nonatomic, getter=isVoiceProcessingAGCEnabled) BOOL voiceProcessingAGCEnabled;
+@property (nonatomic, getter=isVoiceProcessingBypassed) BOOL voiceProcessingBypassed;
+@property (nonatomic, getter=isVoiceProcessingInputMuted) BOOL voiceProcessingInputMuted;
+@property (nonatomic) float volume; // @dynamic volume;
 
 - (float)rate;
 - (BOOL)setManualRenderingInputPCMFormat:(id)arg1 inputBlock:(CDUnknownBlockType)arg2;

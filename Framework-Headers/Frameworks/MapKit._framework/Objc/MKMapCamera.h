@@ -18,10 +18,12 @@
     double _pitch;
     double _altitude;
     MKMapView *_mapView;
+    BOOL _pitchAdjustsAltitude;
 }
 
 @property (nonatomic) double altitude; // @synthesize altitude=_altitude;
 @property (nonatomic) struct CLLocationCoordinate2D centerCoordinate; // @synthesize centerCoordinate=_centerCoordinate;
+@property (nonatomic) double centerCoordinateDistance;
 @property (nonatomic) double heading; // @synthesize heading=_heading;
 @property (nonatomic) double pitch;
 @property (nonatomic, getter=_precisePitch, setter=_setPrecisePitch:) double precisePitch; // @synthesize precisePitch=_pitch;

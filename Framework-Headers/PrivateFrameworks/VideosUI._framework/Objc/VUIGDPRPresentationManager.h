@@ -23,6 +23,7 @@
 + (BOOL)showGDPRWelcomeScreen:(id)arg1;
 + (void)showOfflineGDPRWelcomeScreen;
 - (void).cxx_destruct;
+- (void)_dismissAllModalsIfPresent:(id)arg1;
 - (void)_handleContinueButton;
 - (void)_handleOfflineContinueButton;
 - (void)_showIOSWelcomeControllerWithAppContext:(id)arg1 offline:(BOOL)arg2;

@@ -47,6 +47,7 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)autoConfirmedCountForSummaryViewController:(id)arg1;
+- (void)cancelOperation:(id)arg1;
 - (void)confirmTapped:(id)arg1;
 - (void)confirmationCountUpdatedForSuggestionManager:(id)arg1 undoing:(BOOL)arg2;
 - (void)denyTapped:(id)arg1;

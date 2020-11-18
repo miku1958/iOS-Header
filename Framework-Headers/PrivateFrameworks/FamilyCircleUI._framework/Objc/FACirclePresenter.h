@@ -8,7 +8,7 @@
 
 #import <FamilyCircleUI/FACircleRemoteUIDelegateDelegate-Protocol.h>
 
-@class FACircleRemoteUIDelegate, NSString, RemoteUIController, UIViewController;
+@class FACircleRemoteUIDelegate, NSString, RUIStyle, RemoteUIController, UIViewController;
 
 @interface FACirclePresenter : NSObject <FACircleRemoteUIDelegateDelegate>
 {
@@ -16,8 +16,10 @@
     FACircleRemoteUIDelegate *_remoteUIDelegate;
     CDUnknownBlockType _completion;
     UIViewController *_presenter;
+    RUIStyle *_customRUIStyle;
 }
 
+@property (strong, nonatomic) RUIStyle *customRUIStyle; // @synthesize customRUIStyle=_customRUIStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

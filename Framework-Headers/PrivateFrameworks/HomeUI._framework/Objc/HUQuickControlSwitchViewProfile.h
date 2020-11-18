@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 - (double)gestureDragCoefficient;
+- (BOOL)supportsTouchContinuation;
 
 @end
 

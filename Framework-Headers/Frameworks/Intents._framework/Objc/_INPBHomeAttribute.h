@@ -17,10 +17,12 @@
     struct {
         unsigned int attributeType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _attributeType;
     _INPBHomeAttributeValue *_attributeValue;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int attributeType; // @synthesize attributeType=_attributeType;
 @property (strong, nonatomic) _INPBHomeAttributeValue *attributeValue; // @synthesize attributeValue=_attributeValue;
 @property (readonly, copy) NSString *debugDescription;
@@ -30,11 +32,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsAttributeType:(id)arg1;
 - (id)attributeTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

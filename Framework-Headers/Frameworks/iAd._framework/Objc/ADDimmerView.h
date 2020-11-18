@@ -11,19 +11,19 @@
 
 @interface ADDimmerView : UIView
 {
-    id<ADDimmerViewDelegate> _delegate;
     BOOL _dimmed;
+    id<ADDimmerViewDelegate> _delegate;
     ADTapGestureRecognizer *_gestureRecognizer;
 }
 
-@property (weak, nonatomic) id<ADDimmerViewDelegate> delegate;
+@property (weak, nonatomic) id<ADDimmerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL dimmed; // @synthesize dimmed=_dimmed;
 @property (readonly, nonatomic) BOOL enabled;
 @property (strong, nonatomic) ADTapGestureRecognizer *gestureRecognizer; // @synthesize gestureRecognizer=_gestureRecognizer;
 
+- (void).cxx_destruct;
 - (void)_tapRecognized:(id)arg1;
 - (void)addADTapGestureRecognizer;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)removeADTapGestureRecognizer;
 

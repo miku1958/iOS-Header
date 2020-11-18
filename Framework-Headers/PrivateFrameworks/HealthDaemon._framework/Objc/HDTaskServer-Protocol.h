@@ -6,18 +6,18 @@
 
 #import <HealthDaemon/_HKXPCExportable-Protocol.h>
 
-@class HDProfile, HDXPCClient, HKTaskConfiguration, NSArray, NSString, NSUUID;
+@class HDHealthStoreClient, HKTaskConfiguration, NSArray, NSString, NSUUID;
 @protocol HDTaskServerDelegate;
 
 @protocol HDTaskServer <_HKXPCExportable>
 + (NSArray *)requiredEntitlements;
 + (NSString *)taskIdentifier;
-- (id)initWithUUID:(NSUUID *)arg1 configuration:(HKTaskConfiguration *)arg2 client:(HDXPCClient *)arg3 profile:(HDProfile *)arg4 delegate:(id<HDTaskServerDelegate>)arg5;
+- (id)initWithUUID:(NSUUID *)arg1 configuration:(HKTaskConfiguration *)arg2 client:(HDHealthStoreClient *)arg3 delegate:(id<HDTaskServerDelegate>)arg4;
 - (NSUUID *)taskUUID;
 
 @optional
 + (Class)configurationClass;
-+ (id)createTaskServerWithUUID:(NSUUID *)arg1 configuration:(HKTaskConfiguration *)arg2 client:(HDXPCClient *)arg3 profile:(HDProfile *)arg4 delegate:(id<HDTaskServerDelegate>)arg5 error:(id *)arg6;
-+ (BOOL)validateConfiguration:(HKTaskConfiguration *)arg1 error:(out id *)arg2;
++ (id)createTaskServerWithUUID:(NSUUID *)arg1 configuration:(HKTaskConfiguration *)arg2 client:(HDHealthStoreClient *)arg3 delegate:(id<HDTaskServerDelegate>)arg4 error:(id *)arg5;
++ (BOOL)validateConfiguration:(HKTaskConfiguration *)arg1 client:(HDHealthStoreClient *)arg2 error:(id *)arg3;
 @end
 

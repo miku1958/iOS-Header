@@ -18,7 +18,6 @@
 - (void)_accessibilityLoadSolarPathInfo;
 - (void)_applyDataMode;
 - (void)_handleViewModeTapGesture:(id)arg1;
-- (void)_loadSnapshotContentViews;
 - (void)_setViewMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)crownInputSequencerIdleDidChange:(id)arg1;
 

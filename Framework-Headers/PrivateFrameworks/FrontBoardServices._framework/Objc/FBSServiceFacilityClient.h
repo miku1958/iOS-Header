@@ -7,39 +7,62 @@
 #import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSInvalidatable-Protocol.h>
+#import <FrontBoardServices/FBSServiceFacilityClientConfiguring-Protocol.h>
 #import <FrontBoardServices/FBSServiceFacilityClientMessaging-Protocol.h>
-#import <FrontBoardServices/FBSServiceFacilityXPCClientDelegate-Protocol.h>
 
-@class FBSServiceFacilityXPCClient, NSString;
+@class BSServiceConnection, BSServiceConnectionEndpoint, BSServiceInterface, BSServiceQuality, NSString;
 @protocol OS_dispatch_queue;
 
-@interface FBSServiceFacilityClient : NSObject <FBSServiceFacilityXPCClientDelegate, FBSServiceFacilityClientMessaging, BSInvalidatable>
+@interface FBSServiceFacilityClient : NSObject <FBSServiceFacilityClientConfiguring, FBSServiceFacilityClientMessaging, BSInvalidatable>
 {
-    NSString *_identifier;
-    NSObject<OS_dispatch_queue> *_queue;
-    FBSServiceFacilityXPCClient *_client;
+    BSServiceConnectionEndpoint *_endpoint;
+    NSString *_facilityID;
+    BSServiceQuality *_serviceQuality;
+    BSServiceInterface *_interface;
+    id _configOnly_interfaceTarget;
+    NSObject<OS_dispatch_queue> *_calloutQueue;
+    BOOL _configured;
+    struct os_unfair_lock_s _lock;
+    BSServiceConnection *_lock_connection;
+    BOOL _lock_connectionDenied;
+    BOOL _lock_activated;
+    BOOL _lock_invalidated;
+    BOOL _uisHack;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_queue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *calloutQueue; // @synthesize calloutQueue=_calloutQueue;
+@property (readonly, nonatomic, getter=isConfigured) BOOL configured; // @synthesize configured=_configured;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BSServiceQuality *serviceQuality; // @synthesize serviceQuality=_serviceQuality;
 @property (readonly) Class superclass;
 
++ (id)defaultShellEndpoint;
 - (void).cxx_destruct;
-- (void)client:(id)arg1 configureConnectMessage:(id)arg2;
-- (void)client:(id)arg1 handleError:(id)arg2;
-- (void)client:(id)arg1 handleMessage:(id)arg2 withType:(long long)arg3;
+- (BOOL)_isValid;
+- (void)_lock_activate;
+- (void)_lock_invalidate;
+- (void)_queue_handleError:(id)arg1;
+- (void)_queue_handleMessage:(id)arg1;
+- (void)activate;
 - (void)configureConnectMessage:(id)arg1;
 - (void)dealloc;
 - (void)handleError:(id)arg1;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
 - (id)init;
+- (id)initWithConfigurator:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1 calloutQueue:(id)arg2;
 - (void)invalidate;
 - (void)sendMessage:(id)arg1 withType:(long long)arg2;
 - (void)sendMessage:(id)arg1 withType:(long long)arg2 replyHandler:(CDUnknownBlockType)arg3 waitForReply:(BOOL)arg4 timeout:(double)arg5;
+- (void)setCalloutQueue:(id)arg1;
+- (void)setEndpoint:(id)arg1;
+- (void)setIdentifier:(id)arg1;
+- (void)setInterface:(id)arg1;
+- (void)setInterfaceTarget:(id)arg1;
+- (void)setServiceQuality:(id)arg1;
 
 @end
 

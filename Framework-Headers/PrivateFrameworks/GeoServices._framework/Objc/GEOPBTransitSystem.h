@@ -9,24 +9,38 @@
 #import <GeoServices/GEOTransitNamedItem-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPBTransitArtwork, GEOStyleAttributes, NSString, PBUnknownFields;
+@class GEOPBTransitArtwork, GEOStyleAttributes, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPBTransitSystem : PBCodable <GEOTransitNamedItem, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _muid;
     GEOPBTransitArtwork *_artwork;
+    unsigned long long _muid;
     NSString *_nameDisplayString;
     GEOStyleAttributes *_styleAttributes;
-    unsigned int _systemIndex;
     NSString *_website;
+    unsigned int _systemIndex;
     struct {
-        unsigned int muid:1;
-        unsigned int systemIndex:1;
-    } _has;
+        unsigned int has_muid:1;
+        unsigned int has_systemIndex:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_artwork:1;
+        unsigned int read_nameDisplayString:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int read_website:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_artwork:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_nameDisplayString:1;
+        unsigned int wrote_styleAttributes:1;
+        unsigned int wrote_website:1;
+        unsigned int wrote_systemIndex:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPBTransitArtwork *artwork; // @synthesize artwork=_artwork;
+@property (strong, nonatomic) GEOPBTransitArtwork *artwork;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasArtwork;
@@ -38,16 +52,22 @@
 @property (readonly, nonatomic) BOOL hasWebsite;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long muid;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (strong, nonatomic) NSString *nameDisplayString; // @synthesize nameDisplayString=_nameDisplayString;
-@property (strong, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
+@property (nonatomic) unsigned long long muid;
+@property (strong, nonatomic) NSString *nameDisplayString;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned int systemIndex; // @synthesize systemIndex=_systemIndex;
+@property (nonatomic) unsigned int systemIndex;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *website; // @synthesize website=_website;
+@property (strong, nonatomic) NSString *website;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readArtwork;
+- (void)_readNameDisplayString;
+- (void)_readStyleAttributes;
+- (void)_readWebsite;
 - (id)bestName;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
@@ -55,6 +75,7 @@
 - (id)identifier;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

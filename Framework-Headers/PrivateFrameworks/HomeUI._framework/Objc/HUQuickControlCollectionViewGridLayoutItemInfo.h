@@ -8,12 +8,14 @@
 
 @interface HUQuickControlCollectionViewGridLayoutItemInfo : NSObject
 {
+    unsigned long long _titlePosition;
     struct CGSize _preferredSize;
     struct CGSize _size;
 }
 
 @property (nonatomic) struct CGSize preferredSize; // @synthesize preferredSize=_preferredSize;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (nonatomic) unsigned long long titlePosition; // @synthesize titlePosition=_titlePosition;
 
 
 @end

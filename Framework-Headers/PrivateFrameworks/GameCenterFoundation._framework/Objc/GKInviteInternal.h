@@ -22,9 +22,9 @@
     NSData *_peerNATIP;
     NSData *_peerBlob;
     NSString *_rid;
-    int _playerGroup;
+    unsigned long long _playerGroup;
     unsigned int _playerAttributes;
-    int _peerNATType;
+    long long _peerNATType;
     unsigned long long _matchType;
     unsigned char _version;
     NSString *_participantID;
@@ -41,11 +41,11 @@
 @property (strong, nonatomic) NSData *peerBlob; // @synthesize peerBlob=_peerBlob;
 @property (strong, nonatomic) NSString *peerID; // @synthesize peerID=_peerID;
 @property (strong, nonatomic) NSData *peerNATIP; // @synthesize peerNATIP=_peerNATIP;
-@property (nonatomic) int peerNATType; // @synthesize peerNATType=_peerNATType;
+@property (nonatomic) long long peerNATType; // @synthesize peerNATType=_peerNATType;
 @property (strong, nonatomic) NSData *peerPushToken; // @synthesize peerPushToken=_peerPushToken;
 @property (strong, nonatomic) GKPlayerInternal *player; // @synthesize player=_player;
 @property (nonatomic) unsigned int playerAttributes; // @synthesize playerAttributes=_playerAttributes;
-@property (nonatomic) int playerGroup; // @synthesize playerGroup=_playerGroup;
+@property (nonatomic) unsigned long long playerGroup; // @synthesize playerGroup=_playerGroup;
 @property (strong, nonatomic) NSString *rid; // @synthesize rid=_rid;
 @property (strong, nonatomic) NSData *sessionToken; // @synthesize sessionToken=_sessionToken;
 @property (nonatomic) unsigned char version; // @synthesize version=_version;

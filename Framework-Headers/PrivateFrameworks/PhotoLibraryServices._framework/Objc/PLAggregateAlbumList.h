@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
 
 + (struct NSObject *)albumListWithFilter:(int)arg1 inPhotoLibrary:(id)arg2;
+- (void).cxx_destruct;
 - (void)_invalidateAllAlbums;
 - (BOOL)albumHasFixedOrder:(struct NSObject *)arg1;
 - (short)albumListType;

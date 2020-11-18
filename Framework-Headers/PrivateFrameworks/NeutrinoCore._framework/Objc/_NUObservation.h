@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithObserver:(id)arg1 key:(long long)arg2 queue:(id)arg3 block:(CDUnknownBlockType)arg4;
+- (void)notifyWithBlock:(CDUnknownBlockType)arg1;
 
 @end
 

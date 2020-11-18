@@ -15,12 +15,14 @@
     BOOL _canRunUserInitiatedForegroundAnalysis;
     BOOL _canUseNetwork;
     BOOL _turboMode;
+    BOOL _cancelsTurboMode;
 }
 
 @property (readonly, nonatomic) BOOL canRunAutomaticBackgroundAnalysis; // @synthesize canRunAutomaticBackgroundAnalysis=_canRunAutomaticBackgroundAnalysis;
 @property (readonly, nonatomic) BOOL canRunAutomaticForegroundAnalysis; // @synthesize canRunAutomaticForegroundAnalysis=_canRunAutomaticForegroundAnalysis;
 @property (readonly, nonatomic) BOOL canRunUserInitiatedForegroundAnalysis; // @synthesize canRunUserInitiatedForegroundAnalysis=_canRunUserInitiatedForegroundAnalysis;
 @property (readonly, nonatomic) BOOL canUseNetwork; // @synthesize canUseNetwork=_canUseNetwork;
+@property (nonatomic) BOOL cancelsTurboMode; // @synthesize cancelsTurboMode=_cancelsTurboMode;
 @property (nonatomic, getter=isTurboMode) BOOL turboMode; // @synthesize turboMode=_turboMode;
 
 + (id)constraintsWithAllAllowances;
@@ -32,6 +34,7 @@
 - (id)initFromBitString:(id)arg1;
 - (id)initWithCanRunAutomaticBackgroundAnalysis:(BOOL)arg1 canRunAutomaticForegroundAnalysis:(BOOL)arg2 canRunUserInitiatedForegroundAnalysis:(BOOL)arg3 canUseNetwork:(BOOL)arg4;
 - (BOOL)isEqualToConstraints:(id)arg1;
+- (unsigned int)qosClassForProcessing;
 - (id)statusAsDictionary;
 
 @end

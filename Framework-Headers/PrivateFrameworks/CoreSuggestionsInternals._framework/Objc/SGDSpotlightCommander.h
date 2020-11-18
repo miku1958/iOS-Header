@@ -19,7 +19,8 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_attemptToProcessRequests;
-- (void)_executeReiportOfIdentifiers:(id)arg1;
+- (void)_executeReimportOfIdentifiers:(id)arg1;
+- (void)_issueCommand:(id)arg1;
 - (BOOL)_locked;
 - (id)_protectionClasses;
 - (void)_registerForLockStateChange;

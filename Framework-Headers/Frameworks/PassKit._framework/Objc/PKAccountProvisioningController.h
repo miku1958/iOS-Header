@@ -24,14 +24,12 @@
     unsigned long long _localPassActivationState;
     unsigned long long _provisionWatchPassState;
     unsigned long long _addToIDMSState;
-    unsigned long long _addToVPANState;
     unsigned long long _makeAccountPassDefaultOnLocalDeviceState;
     unsigned long long _addToAMPState;
 }
 
 @property (readonly, nonatomic) unsigned long long addToAMPState; // @synthesize addToAMPState=_addToAMPState;
 @property (readonly, nonatomic) unsigned long long addToIDMSState; // @synthesize addToIDMSState=_addToIDMSState;
-@property (readonly, nonatomic) unsigned long long addToVPANState; // @synthesize addToVPANState=_addToVPANState;
 @property (weak, nonatomic) id<PKAccountProvisioningControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL didAddToAMP; // @synthesize didAddToAMP=_didAddToAMP;
 @property (readonly, nonatomic) unsigned long long localPassActivationState; // @synthesize localPassActivationState=_localPassActivationState;
@@ -53,7 +51,6 @@
 - (void)_stopPassActivationObserver;
 - (void)addToAMPAsDefault:(BOOL)arg1;
 - (void)addToIDMS;
-- (void)addVPAN;
 - (void)dealloc;
 - (id)initWithAccountCredential:(id)arg1 provisioningController:(id)arg2 accountService:(id)arg3;
 - (void)makeAccountPassDefaultOnLocalDevice;

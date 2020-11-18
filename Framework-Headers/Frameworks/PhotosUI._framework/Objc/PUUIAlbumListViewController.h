@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAllowEmailInAlbumSubtitle;
 - (BOOL)shouldHideEmptyCollections;
 - (BOOL)shouldShowAllPhotosItem;
-- (unsigned long long)supportedInterfaceOrientations;
 - (void)updateNavigationBarAnimated:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

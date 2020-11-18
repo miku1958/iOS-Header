@@ -21,7 +21,6 @@
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateSecondaryForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;

@@ -36,8 +36,13 @@
     NSString *_remediationButtonText;
     NSString *_organization;
     NSURL *_parentURL;
+    struct ne_filter_globals *_globals;
+    unsigned long long _byteInboundCount;
+    unsigned long long _byteOutboundCount;
 }
 
+@property unsigned long long byteInboundCount; // @synthesize byteInboundCount=_byteInboundCount;
+@property unsigned long long byteOutboundCount; // @synthesize byteOutboundCount=_byteOutboundCount;
 @property unsigned int controlUnit; // @synthesize controlUnit=_controlUnit;
 @property (strong) NSURLRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property (strong) NSURLResponse *currentResponse; // @synthesize currentResponse=_currentResponse;
@@ -45,6 +50,7 @@
 @property (strong) NWPathEvaluator *evaluator; // @synthesize evaluator=_evaluator;
 @property BOOL expectRemediation; // @synthesize expectRemediation=_expectRemediation;
 @property (strong) NSUUID *flowUUID; // @synthesize flowUUID=_flowUUID;
+@property (readonly) struct ne_filter_globals *globals; // @synthesize globals=_globals;
 @property unsigned long long lastPendingDataStartIndex; // @synthesize lastPendingDataStartIndex=_lastPendingDataStartIndex;
 @property unsigned long long lastSendDataLength; // @synthesize lastSendDataLength=_lastSendDataLength;
 @property (strong) NSString *organization; // @synthesize organization=_organization;
@@ -64,13 +70,15 @@
 @property (strong) NSURL *url; // @synthesize url=_url;
 @property (strong) NSString *urlAppendString; // @synthesize urlAppendString=_urlAppendString;
 
-+ (void)connectToFilterUnit:(unsigned int)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)filterRequired;
 - (void).cxx_destruct;
 - (void)addData:(id)arg1 withCompletionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)connectToFilterUnit:(unsigned int)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)dataCompleteWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)filterOptions;
 - (void)finishedLoadingWithDecisionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)generateCryptoSignature:(unsigned char [32])arg1 length:(unsigned int *)arg2;
+- (void)initGlobals;
 - (id)initWithDecisionQueue:(id)arg1;
 - (id)initWithParentURL:(id)arg1 decisionQueue:(id)arg2;
 - (id)initWithURL:(id)arg1 direction:(long long)arg2 socketIdentifier:(unsigned long long)arg3;

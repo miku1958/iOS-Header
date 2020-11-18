@@ -11,15 +11,21 @@
 }
 
 + (id)bestOutputSettingsPresetForTargetVideoSize:(CDStruct_912cb5d2)arg1;
++ (CDStruct_996ac03c)cleanApertureOfTrack:(id)arg1 oriented:(BOOL)arg2;
++ (id)cleanApertureVideoSettingsFor:(CDStruct_996ac03c)arg1 scale:(CDStruct_912cb5d2)arg2 videoSize:(CDStruct_912cb5d2)arg3;
++ (BOOL)compositionInstructions:(id)arg1 areEqualToCompositionInstructions:(id)arg2;
 + (CDStruct_e83c9415)conformRange:(CDStruct_e83c9415)arg1 inRange:(CDStruct_e83c9415)arg2;
 + (id)deepMutableCopyVideoComposition:(id)arg1;
 + (id)defaultVideoSettingsForAVAssetReader;
++ (CDStruct_912cb5d2)encodedPixelSizeOfTrack:(id)arg1 oriented:(BOOL)arg2;
 + (id)firstEnabledVideoTrackInAsset:(id)arg1 error:(out id *)arg2;
 + (id)metadataTrackWithStillImageDisplayTimeMarkerInLivePhotoAsset:(id)arg1;
 + (CDStruct_1b6d18a9)minimumFrameDurationForAsset:(id)arg1;
++ (CDStruct_1b6d18a9)minimumFrameDurationForAsset:(id)arg1 videoComposition:(id)arg2;
 + (CDStruct_1b6d18a9)minimumFrameDurationForAssetTrack:(id)arg1;
++ (CDStruct_912cb5d2)naturalSizeOfTrack:(id)arg1 oriented:(BOOL)arg2;
 + (id)newPixelBufferOfSize:(CDStruct_912cb5d2)arg1 format:(unsigned int)arg2;
-+ (BOOL)readFromReader:(id)arg1 andWriteToWriter:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 error:(out id *)arg4;
++ (BOOL)readFromReader:(id)arg1 andWriteToWriter:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 progress:(id)arg4 error:(out id *)arg5;
 + (void)readNextPixelBuffer:(id)arg1 output:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (void)readNextSampleBuffer:(id)arg1 output:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (CDStruct_1b6d18a9)readStillImageTimeFromVideoAsset:(id)arg1;
@@ -33,6 +39,7 @@
 + (id)videoCompositionDescription:(id)arg1;
 + (id)videoDescription:(id)arg1;
 + (long long)videoOrientationForAsset:(id)arg1 videoComposition:(id)arg2;
++ (long long)videoOrientationForAssetPreferredTransform:(struct CGAffineTransform)arg1;
 
 @end
 

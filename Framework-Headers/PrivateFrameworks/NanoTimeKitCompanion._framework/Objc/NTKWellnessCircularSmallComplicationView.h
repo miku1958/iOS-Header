@@ -15,12 +15,13 @@
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 - (void).cxx_destruct;
+- (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
+- (double)_overlapStrokeWidth;
 - (double)_ringDiameter;
 - (double)_ringGapWidth;
 - (double)_ringStrokeWidth;
-- (void)_setLayoutEmptyRingsNoDot;
+- (void)_setLayoutEmptyRings;
 - (void)_updateColors;
 - (void)_updateForTemplateChange;
 - (id)initWithFrame:(struct CGRect)arg1;

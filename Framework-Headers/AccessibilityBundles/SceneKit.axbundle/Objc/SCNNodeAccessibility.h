@@ -11,6 +11,7 @@
 }
 
 + (void)_accessibilityPerformValidations:(id)arg1;
++ (BOOL)_isSerializableAccessibilityElement;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (struct CGRect)_accessibilityConvertRect:(struct CGRect)arg1 toNode:(id)arg2;

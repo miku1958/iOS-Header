@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIViewController> _presentationViewController;
     struct RetainPtr<UIPopoverController> _presentationPopover;
     struct RetainPtr<UIDocumentMenuViewController> _documentMenuController;
+    struct RetainPtr<UIDocumentPickerViewController> _documentPickerController;
     int _mediaCaptureType;
     id<WKFileUploadPanelDelegate> _delegate;
 }
@@ -41,13 +42,12 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_adjustMediaCaptureType;
-- (id)_cameraButtonLabel;
+- (id)_cameraButtonLabelAllowingPhoto:(BOOL)arg1 allowingVideo:(BOOL)arg2;
 - (void)_cancel;
 - (void)_chooseFiles:(id)arg1 displayString:(id)arg2 iconImage:(id)arg3;
 - (void)_configureImagePicker:(id)arg1;
 - (void)_dismissDisplayAnimated:(BOOL)arg1;
 - (void)_dispatchDidDismiss;
-- (id)_documentPickerMenuMediaTypes;
 - (id)_mediaTypesForPickerSourceType:(long long)arg1;
 - (id)_photoLibraryButtonLabel;
 - (void)_presentFullscreenViewController:(id)arg1 animated:(BOOL)arg2;
@@ -62,11 +62,12 @@ __attribute__((visibility("hidden")))
 - (void)_uploadItemForJPEGRepresentationOfImage:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)_uploadItemFromMediaInfo:(id)arg1 successBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_willMultipleSelectionDelegateBeCalled;
+- (id)currentAvailableActionTitles;
 - (void)dealloc;
 - (void)dismiss;
 - (void)documentMenu:(id)arg1 didPickDocumentPicker:(id)arg2;
 - (void)documentMenuWasCancelled:(id)arg1;
-- (void)documentPicker:(id)arg1 didPickDocumentAtURL:(id)arg2;
+- (void)documentPicker:(id)arg1 didPickDocumentsAtURLs:(id)arg2;
 - (void)documentPickerWasCancelled:(id)arg1;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;

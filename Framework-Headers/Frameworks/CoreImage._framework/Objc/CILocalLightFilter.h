@@ -18,10 +18,12 @@ __attribute__((visibility("hidden")))
     NSNumber *inputLightMapWidth;
     NSNumber *inputLightMapHeight;
     NSNumber *inputLocalLight;
+    NSNumber *inputSmartShadows;
 }
 
 + (id)customAttributes;
 - (id)_polyKernel;
+- (id)_shadowKernel;
 - (id)outputImage;
 
 @end

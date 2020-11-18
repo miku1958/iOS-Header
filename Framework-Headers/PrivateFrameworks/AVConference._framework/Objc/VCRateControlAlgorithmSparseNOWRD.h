@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lastRateChangeCounter;
     unsigned int _remoteBandwidthEstimation;
     unsigned int _localBandwidthEstimation;
-    CDStruct_714379fe _owrdList;
+    CDStruct_55dce769 _owrdList;
     BOOL _isOWRDListReady;
     BOOL _isOWRDConstant;
     double _owrd;
@@ -87,6 +87,7 @@ __attribute__((visibility("hidden")))
     void *_logDump;
     void *_logBasebandDump;
     BOOL _isPeriodicLoggingEnabled;
+    double _packetLossRateVideo;
 }
 
 @property (readonly, nonatomic) unsigned int actualBitrate; // @synthesize actualBitrate=_actualBitrate;
@@ -100,6 +101,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int mostBurstLoss; // @synthesize mostBurstLoss=_mostBurstLoss;
 @property (readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
 @property (readonly, nonatomic) double packetLossRate; // @synthesize packetLossRate=_packetLossRate;
+@property (readonly, nonatomic) double packetLossRateVideo; // @synthesize packetLossRateVideo=_packetLossRateVideo;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) unsigned int rateChangeCounter; // @synthesize rateChangeCounter=_rateChangeCounter;
 @property (readonly, nonatomic) double roundTripTime; // @synthesize roundTripTime=_roundTripTime;
@@ -108,7 +110,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int totalPacketReceived; // @synthesize totalPacketReceived=_totalPacketReceived;
 
 - (void)calculateCongestionMetricsFromOWRD:(double)arg1 time:(double)arg2;
-- (double)calculateNOWRDWithDuration:(double)arg1;
 - (void)checkActualBitrates;
 - (void)checkBandwidthOvershoot;
 - (void)checkCongestionStatus;
@@ -118,8 +119,9 @@ __attribute__((visibility("hidden")))
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
 - (int)countDeviationChangeInTierWindow;
 - (void)dealloc;
-- (void)doRateControlWithBasebandStatistics:(CDStruct_48a7b5a5)arg1;
-- (BOOL)doRateControlWithStatistics:(CDStruct_48a7b5a5)arg1;
+- (BOOL)doRateControlWithBasebandStatistics:(CDStruct_b21f1e06)arg1;
+- (BOOL)doRateControlWithStatistics:(CDStruct_b21f1e06)arg1;
+- (BOOL)doRateControlWithVCRCStatistics:(CDStruct_b21f1e06)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(BOOL)arg2;
 - (double)getDoubleTimeFromTimestamp:(unsigned int)arg1 timestampTick:(unsigned int)arg2 wrapAroundCounter:(unsigned int)arg3;
@@ -127,7 +129,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)keepOvershootingRampDownBandwidth;
 - (void)logToDumpFilesWithString:(id)arg1;
 - (int)lossEventCount;
-- (BOOL)prepareOWRDList:(double)arg1 time:(double)arg2;
 - (void)printRateControlInfoToLogDump;
 - (int)rampDownTier;
 - (int)rampDownTierDueToBaseband;

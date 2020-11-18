@@ -24,7 +24,6 @@
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (id)initWithImageprintObservations:(id)arg1 clusteringDistanceThreshold:(float)arg2;
 - (id)initWithImageprintObservations:(id)arg1 clusteringDistanceThreshold:(float)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;

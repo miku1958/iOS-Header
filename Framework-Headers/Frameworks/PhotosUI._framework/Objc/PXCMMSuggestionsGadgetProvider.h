@@ -6,44 +6,35 @@
 
 #import <PhotosUICore/PXGadgetProvider.h>
 
-#import <PhotosUICore/PXCMMWorkflowCoordinatorDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 
-@class NSString, PXCMMSuggestionsDataSource, PXCMMSuggestionsDataSourceManager, PXCMMWorkflowCoordinator, UIColor;
-@protocol PXGadgetNavigating;
+@class NSString, PXCMMSuggestionsDataSource, PXCMMSuggestionsDataSourceManager;
+@protocol PXCMMWorkflowPresenting;
 
-@interface PXCMMSuggestionsGadgetProvider : PXGadgetProvider <PXCMMWorkflowCoordinatorDelegate, PXChangeObserver, PXSectionedDataSourceManagerObserver>
+@interface PXCMMSuggestionsGadgetProvider : PXGadgetProvider <PXChangeObserver, PXSectionedDataSourceManagerObserver>
 {
     PXCMMSuggestionsDataSource *_dataSource;
     BOOL _didGenerateGadgets;
-    PXCMMWorkflowCoordinator *_workflowCoordinator;
     PXCMMSuggestionsDataSourceManager *_dataSourceManager;
-    id<PXGadgetNavigating> _gadgetNavigator;
-    UIColor *_backgroundColor;
+    id<PXCMMWorkflowPresenting> _workflowPresenter;
 }
 
-@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) PXCMMSuggestionsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<PXGadgetNavigating> gadgetNavigator; // @synthesize gadgetNavigator=_gadgetNavigator;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<PXCMMWorkflowPresenting> workflowPresenter; // @synthesize workflowPresenter=_workflowPresenter;
 
-+ (id)new;
 - (void).cxx_destruct;
 - (id)_newGadgetForSuggestion:(id)arg1;
 - (void)_setDataSource:(id)arg1 changes:(id)arg2;
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
-- (id)initWithDataSourceManager:(id)arg1;
+- (id)initWithDataSourceManager:(id)arg1 workflowPresenter:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)presentQuickActionsForSuggestionGadget:(id)arg1;
-- (void)presentSuggestionGadget:(id)arg1 context:(id)arg2 animated:(BOOL)arg3;
-- (long long)shareOriginForSession:(id)arg1 workflowCoordinator:(id)arg2;
-- (void)workflowCoordinator:(id)arg1 workflowViewController:(id)arg2 didFinishSession:(id)arg3 withActivityState:(unsigned long long)arg4;
 
 @end
 

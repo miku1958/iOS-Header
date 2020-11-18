@@ -36,6 +36,7 @@
 @property (copy, nonatomic) NSString *originalFilename; // @dynamic originalFilename;
 @property (copy, nonatomic) NSString *originatingAssetID; // @dynamic originatingAssetID;
 @property (copy, nonatomic) NSString *relatedUUID; // @dynamic relatedUUID;
+@property (copy, nonatomic) NSString *spatialOverCaptureGroupIdentifier; // @dynamic spatialOverCaptureGroupIdentifier;
 @property (copy, nonatomic) NSNumber *thumbCompressedSize; // @dynamic thumbCompressedSize;
 @property (copy, nonatomic) NSNumber *thumbOffset; // @dynamic thumbOffset;
 @property (nonatomic) struct CGSize thumbPixSize; // @dynamic thumbPixSize;

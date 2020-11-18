@@ -13,16 +13,22 @@
 
 @interface _CDDevice : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _companion;
+    NSString *_deviceID;
     unsigned long long _identifier;
     NSString *_name;
     long long _deviceClass;
+    NSString *_model;
 }
 
+@property (readonly, nonatomic, getter=isCompanion) BOOL companion; // @synthesize companion=_companion;
 @property (nonatomic) long long deviceClass; // @synthesize deviceClass=_deviceClass;
-@property (nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
+@property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 
-+ (unsigned long long)getPlatformUUID;
++ (unsigned long long)identifierForDeviceID:(id)arg1;
 + (id)localDevice;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -31,8 +37,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithName:(id)arg1 deviceID:(id)arg2 deviceClass:(long long)arg3 model:(id)arg4 companion:(BOOL)arg5;
+- (id)initWithName:(id)arg1 deviceID:(id)arg2 model:(id)arg3 companion:(BOOL)arg4;
 - (id)initWithName:(id)arg1 identifier:(unsigned long long)arg2 deviceClass:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)matchesDeviceTypes:(unsigned long long)arg1;
 
 @end
 

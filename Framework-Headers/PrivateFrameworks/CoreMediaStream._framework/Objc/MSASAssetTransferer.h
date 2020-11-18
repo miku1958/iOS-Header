@@ -65,7 +65,6 @@
 - (void)_rereadPerformanceLoggingSetting;
 - (void)_sendDidIdleNotification;
 - (void)cancelCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)didFinishGettingAllAssets;
 - (void)didFinishPuttingAllAssets;
 - (id)initWithPersonID:(id)arg1;

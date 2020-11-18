@@ -11,21 +11,21 @@
 #import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 #import <PhotosUICore/PXUIViewBasicTile-Protocol.h>
 
-@class NSArray, NSString, PXCMMAssetsProgressListener, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMPosterBannerView, PXCMMViewModel, UIView;
-@protocol PXCMMBannerTileControllerDelegate, PXImportStatusManager;
+@class NSArray, NSString, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMPosterBannerView, PXCMMViewModel, PXMomentShareStatusPresentation, UIView;
+@protocol PXAssetImportStatusManager, PXCMMBannerTileControllerDelegate;
 
-@interface PXCMMBannerTileController : NSObject <PXChangeObserver, PXSectionedDataSourceManagerObserver, PXUIViewBasicTile, PXReusableObject>
+@interface PXCMMBannerTileController : NSObject <PXChangeObserver, PXSectionedDataSourceManagerObserver, PXReusableObject, PXUIViewBasicTile>
 {
     unsigned long long _activityType;
     unsigned long long _sourceType;
     PXCMMViewModel *_viewModel;
-    id<PXImportStatusManager> _importStatusManager;
-    NSArray *_displayNames;
-    PXCMMAssetsProgressListener *_assetsProgressListener;
+    id<PXAssetImportStatusManager> _importStatusManager;
+    NSArray *_localizedNames;
+    PXMomentShareStatusPresentation *_momentShareStatusPresentation;
     id<PXCMMBannerTileControllerDelegate> _delegate;
     PXCMMPosterBannerView *_bannerView;
-    PXCMMPeopleSuggestionsDataSourceManager *_peopleSuggestionsDataSourceManager;
     PXCMMPeopleSuggestionsMediaProvider *_peopleSuggestionsMediaProvider;
+    PXCMMPeopleSuggestionsDataSourceManager *_peopleSuggestionsDataSourceManager;
 }
 
 @property (strong, nonatomic) PXCMMPosterBannerView *bannerView; // @synthesize bannerView=_bannerView;
@@ -44,13 +44,13 @@
 - (void)_updateBannerActionButton;
 - (void)_updateContainsUnverifierPersons;
 - (void)_updateCounts;
-- (void)_updateDisplayNamesByViewModel;
 - (void)_updateLoadingPeopleSuggestions;
+- (void)_updateLocalizedNamesByViewModel;
 - (void)_updatePeopleSuggestionNames;
 - (void)becomeReusable;
 - (void)didApplyGeometry:(struct PXTileGeometry)arg1 withUserData:(id)arg2;
 - (id)init;
-- (id)initWithActivityType:(unsigned long long)arg1 sourceType:(unsigned long long)arg2 viewModel:(id)arg3 assetsProgressListener:(id)arg4 importStatusManager:(id)arg5;
+- (id)initWithActivityType:(unsigned long long)arg1 sourceType:(unsigned long long)arg2 viewModel:(id)arg3 momentShareStatusPresentation:(id)arg4 importStatusManager:(id)arg5;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForReuse;
 - (void)setPeopleSuggestionDataSourceManager:(id)arg1 mediaProvider:(id)arg2;

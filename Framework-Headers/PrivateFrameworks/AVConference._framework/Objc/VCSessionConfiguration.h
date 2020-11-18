@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     id _reportingHierarchyToken;
 }
 
-@property (readonly, nonatomic) BOOL isContinuity;
 @property (nonatomic) unsigned long long maxRemoteParticipants; // @synthesize maxRemoteParticipants=_maxRemoteParticipants;
 @property (strong, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
 @property (nonatomic) long long sessionMode; // @synthesize sessionMode=_sessionMode;

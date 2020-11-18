@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int isAmPm:1;
     } _datePickerContentViewFlags;
-    BOOL _isModern;
     UILabel *_titleLabel;
     double _titleLabelMaxX;
     long long _titleAlignment;
@@ -22,7 +21,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL isAmPm;
-@property (nonatomic) BOOL isModern; // @synthesize isModern=_isModern;
 @property (strong, nonatomic) _UIDatePickerMode *mode; // @synthesize mode=_mode;
 @property (nonatomic) long long titleAlignment; // @synthesize titleAlignment=_titleAlignment;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;

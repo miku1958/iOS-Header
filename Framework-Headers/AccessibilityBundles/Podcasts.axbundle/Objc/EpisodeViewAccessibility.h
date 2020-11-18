@@ -13,9 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityLabelForPlaybackState:(long long)arg1;
+- (id)_accessibilityLabelForPlaybackState:(BOOL)arg1;
 - (BOOL)_accessibilityPerformSummaryButton:(id)arg1;
+- (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilityUserTestingChildren;
+- (void)_axAddExtraButtonsToArray:(id)arg1;
 - (id)_axSummaryButton;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;

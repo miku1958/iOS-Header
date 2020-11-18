@@ -6,11 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
+@class NSData, NSDictionary, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
 
 @protocol _SFPBImage <NSObject>
 
 @property (strong, nonatomic) _SFPBAppIconImage *appIconImage;
+@property (strong, nonatomic) _SFPBCalendarImage *calendarImage;
 @property (strong, nonatomic) _SFPBContactImage *contactImage;
 @property (copy, nonatomic) NSString *contentType;
 @property (strong, nonatomic) _SFPBGraphicalFloat *cornerRadius;

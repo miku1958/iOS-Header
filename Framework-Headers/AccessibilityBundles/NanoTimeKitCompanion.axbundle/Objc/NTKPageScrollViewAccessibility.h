@@ -18,7 +18,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityGetCurrentPageView;
-- (id)_accessibilityMoveFocusToNextOpaqueElementForTechnology:(id)arg1 direction:(long long)arg2 searchType:(long long)arg3 range:(struct _NSRange)arg4;
+- (id)_accessibilityMoveFocusToNextOpaqueElementForTechnology:(id)arg1 direction:(long long)arg2 searchType:(long long)arg3 range:(struct _NSRange)arg4 shouldScrollToVisible:(BOOL)arg5;
 - (id)_accessibilityScrollStatus;
 - (void)_accessibilityScrollToIndex:(unsigned long long)arg1;
 - (id)_accessibilitySubviews;

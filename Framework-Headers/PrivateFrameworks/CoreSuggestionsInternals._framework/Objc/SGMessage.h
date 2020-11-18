@@ -23,9 +23,11 @@
     NSString *_domainIdentifier;
     NSArray *_attachments;
     NSArray *_accountHandles;
+    NSString *_accountType;
 }
 
 @property (copy, nonatomic) NSArray *accountHandles; // @synthesize accountHandles=_accountHandles;
+@property (copy, nonatomic) NSString *accountType; // @synthesize accountType=_accountType;
 @property (readonly, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;

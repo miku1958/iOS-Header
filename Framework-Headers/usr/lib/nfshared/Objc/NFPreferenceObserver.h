@@ -14,11 +14,9 @@
 @property (copy) CDUnknownBlockType callback; // @synthesize callback=_callback;
 
 - (void)dealloc;
-- (void)handlePreferencesChanged;
-- (void)handleProfilesChanged;
-- (void)start;
+- (void)handlePreferencesOrProfileChanged;
+- (void)start:(CDUnknownBlockType)arg1;
 - (void)stop;
-- (void)updateDiagnosticLogging;
 
 @end
 

@@ -35,7 +35,6 @@
 @property (copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;

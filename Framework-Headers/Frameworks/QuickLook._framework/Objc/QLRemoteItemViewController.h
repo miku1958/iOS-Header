@@ -31,8 +31,6 @@ __attribute__((visibility("hidden")))
     BOOL _readyToLoad;
     CDUnknownBlockType _readyToDisplay;
     CDUnknownBlockType _loadHandler;
-    BOOL _didBeginForwardingIsAppearingToHostRemoteViewController;
-    BOOL _didEndForwardingIsAppearingToHostRemoteViewController;
     QLRemotePreviewHostViewController *_remoteViewController;
 }
 
@@ -42,14 +40,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) QLRemotePreviewHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (readonly) Class superclass;
 
-+ (double)maxLoadingTimeForItem:(id)arg1;
-+ (Class)transformerClass;
 - (void).cxx_destruct;
 - (void)_loadRemoteViewControllerForContext:(id)arg1;
 - (void)_performLoadHandlerIfNeeded;
 - (void)_performSetUpWithRemoteViewController:(id)arg1 extension:(id)arg2 request:(id)arg3 hostContext:(id)arg4;
 - (void)_registerLoadingHandler:(CDUnknownBlockType)arg1;
-- (void)beginPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPinchToDismiss;
 - (BOOL)canShowNavBar;
@@ -57,7 +52,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canSwipeToDismiss;
 - (void)dealloc;
 - (void)dismissQuickLook;
-- (void)endPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1;
+- (void)forwardMessageToHostOfCustomViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)fullscreenBackgroundColor;
 - (void)getFrameWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
@@ -66,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)preloadViewControllerForContext:(id)arg1;
 - (void)prepareForDrawingPages:(struct _NSRange)arg1 ofSize:(struct CGSize)arg2;
-- (void)presentShareSheetWithPopoverTracker:(id)arg1 dismissCompletion:(CDUnknownBlockType)arg2;
+- (void)presentShareSheetWithPopoverTracker:(id)arg1 customSharedURL:(id)arg2 dismissCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)presenterShouldHandleLoadingView:(id)arg1 readyToDisplay:(CDUnknownBlockType)arg2;
 - (void)previewControllerDidUpdatePreferredContentSize:(id)arg1;
 - (void)previewControllerDidUpdateTitle:(id)arg1;
@@ -76,12 +71,10 @@ __attribute__((visibility("hidden")))
 - (void)previewWillAppear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
 - (id)printer;
+- (void)provideCurrentPageAndVisibleRectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setFullScreen:(BOOL)arg1;
-- (BOOL)shouldAutomaticallyForwardAppearanceMethods;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

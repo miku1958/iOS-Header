@@ -27,17 +27,21 @@
 @property (strong, nonatomic) NSURL *storeURL; // @synthesize storeURL=_storeURL;
 
 + (BOOL)isDataProtectionError:(id)arg1;
-+ (id)newManagedObjectModel;
++ (id)managedObjectModel;
++ (id)oldManagedObjectModel;
 + (id)standardStoreOptions;
 - (void).cxx_destruct;
 - (void)backupPersistentStore;
 - (id)initWithStoreURL:(id)arg1 storeType:(id)arg2 options:(id)arg3 mergePolicy:(id)arg4;
+- (id)initWithStoreURL:(id)arg1 storeType:(id)arg2 options:(id)arg3 mergePolicy:(id)arg4 managedObjectModel:(id)arg5;
 - (BOOL)isReadOnly;
 - (BOOL)isTooLowOnDiskSpace;
 - (BOOL)loadPersistentStore:(id *)arg1;
+- (BOOL)migrateFromOldDataModel;
 - (id)newBackgroundContext;
 - (void)setupPersistentStoreDescriptions;
 - (void)vacuumStore;
+- (void)vacuumStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

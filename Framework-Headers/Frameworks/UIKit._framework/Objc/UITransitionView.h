@@ -25,6 +25,8 @@
         unsigned int useViewControllerAppearanceCallbacks:1;
         unsigned int shouldRestoreFromViewAlpha:1;
         unsigned int shouldRestoreGroupOpacity:1;
+        unsigned int groupOpacityToRestoreForFromView:1;
+        unsigned int groupOpacityToRestoreForToView:1;
         unsigned int shouldRasterize:1;
         unsigned int enableRotationAfterTransition:1;
         unsigned int removeFromView:1;
@@ -34,19 +36,20 @@
     long long _animationTimingCurve;
 }
 
+@property (readonly, nonatomic) double _curlUpRevealedHeight;
 @property (nonatomic) long long animationTimingCurve; // @synthesize animationTimingCurve=_animationTimingCurve;
 @property (nonatomic) BOOL ignoreDirectTouchEvents; // @synthesize ignoreDirectTouchEvents=_ignoreDirectTouchEvents;
 @property (nonatomic) BOOL shouldNotifyDidCompleteImmediately;
 
 + (double)defaultDurationForTransition:(int)arg1;
 - (void).cxx_destruct;
-- (double)_curlUpRevealedHeight;
 - (void)_didCompleteTransition:(BOOL)arg1;
 - (void)_didStartTransition;
 - (BOOL)_isTransitioningFromFromView:(id)arg1;
+- (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (BOOL)_shouldDisableGroupOpacityOnAlphaTransitions;
 - (void)_startTransition:(int)arg1 withDuration:(double)arg2;
-- (void)_transitionDidStop:(id)arg1 finished:(id)arg2;
+- (void)_transitionDidStopFinished:(BOOL)arg1;
 - (id)delegate;
 - (double)durationForTransition:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -56,12 +59,17 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isTransitioning;
+- (void)layoutSubviews;
 - (void)notifyDidCompleteTransition:(id)arg1;
 - (BOOL)rasterizesOnTransition;
+- (void)safeAreaInsetsDidChange;
+- (void)setBounds:(struct CGRect)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setIgnoresInteractionEvents:(BOOL)arg1;
 - (void)setRasterizesOnTransition:(BOOL)arg1;
 - (id)toView;
+- (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)transition:(int)arg1 fromView:(id)arg2 toView:(id)arg3;
 - (BOOL)transition:(int)arg1 fromView:(id)arg2 toView:(id)arg3 removeFromView:(BOOL)arg4;
 - (BOOL)transition:(int)arg1 toView:(id)arg2;

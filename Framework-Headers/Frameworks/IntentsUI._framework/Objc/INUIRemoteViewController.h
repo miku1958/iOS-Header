@@ -46,15 +46,17 @@
 + (void)requestRemoteViewControllerWithRequestInfo:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_errorHandlingServiceViewControllerProxy;
 - (void)_queryRepresentedPropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateExtensionContextStateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 context:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)configureForParameters:(id)arg1 ofInteraction:(id)arg2 interactiveBehavior:(unsigned long long)arg3 context:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)configureWithInteraction:(id)arg1 context:(unsigned long long)arg2 errorHandlingCompletion:(CDUnknownBlockType)arg3;
+- (void)desiresInteractivity:(CDUnknownBlockType)arg1;
 - (id)disconnect;
 - (void)extensionHostContext:(id)arg1 wantsToHandleIntent:(id)arg2;
+- (void)extensionHostContextWillBeginEditing:(id)arg1;
 - (void)requestCancellation;
 - (void)serviceViewControllerDesiresConstrainedSize:(struct CGSize)arg1;
 - (void)setDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;

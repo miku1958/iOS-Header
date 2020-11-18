@@ -29,12 +29,15 @@
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
+- (void)Debug_updateGraph;
 - (void)_closeConnection;
 - (BOOL)_openConnectionIfNecessary;
-- (void)addOrUpdateSuggestionEntriesData:(id)arg1 sourceNameData:(id)arg2 deleteMissing:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)addOrUpdateSuggestionEntriesData:(id)arg1 sourceNameData:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)dealloc;
-- (void)deleteEntriesData:(id)arg1 sourceNameData:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)feedbackForContact:(id)arg1 action:(long long)arg2;
+- (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
+- (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (id)initWithDelegate:(id)arg1;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;

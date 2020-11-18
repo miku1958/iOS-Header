@@ -4,22 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/_UIStatusBarItem.h>
-
-@class _UIStatusBarStringView;
+#import <UIKitCore/_UIStatusBarNameItem.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarPersonNameItem : _UIStatusBarItem
+@interface _UIStatusBarPersonNameItem : _UIStatusBarNameItem
 {
-    _UIStatusBarStringView *_personNameView;
 }
 
-@property (strong, nonatomic) _UIStatusBarStringView *personNameView; // @synthesize personNameView=_personNameView;
-
-- (void).cxx_destruct;
-- (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
-- (id)dependentEntryKeys;
-- (id)viewForIdentifier:(id)arg1;
+- (id)nameEntryKey;
 
 @end
 

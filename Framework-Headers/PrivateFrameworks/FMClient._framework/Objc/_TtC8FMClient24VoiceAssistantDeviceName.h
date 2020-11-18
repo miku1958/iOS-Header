@@ -16,10 +16,10 @@
 }
 
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) NSString *deviceName; // @synthesize deviceName;
+@property (nonatomic, readonly) NSString *deviceName;
 @property (nonatomic, readonly) long long hash;
-@property (nonatomic, readonly) NSString *ownerFirstName; // @synthesize ownerFirstName;
-@property (nonatomic, readonly) NSString *ownerLastName; // @synthesize ownerLastName;
+@property (nonatomic, readonly) NSString *ownerFirstName;
+@property (nonatomic, readonly) NSString *ownerLastName;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

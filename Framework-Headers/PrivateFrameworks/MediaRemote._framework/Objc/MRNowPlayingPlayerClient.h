@@ -49,6 +49,8 @@
 @property (copy, nonatomic) NSArray *supportedCommands;
 
 - (void).cxx_destruct;
+- (void)_handePlaybackSessionMigrateRequest:(struct _MRPlaybackSessionProtobuf *)arg1 request:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_invokePlaybackSessionMigrateRequestOperations:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_onQueue_nowPlayingContentItem;
 - (void)_onQueue_sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
 - (void)addPendingRequest:(id)arg1;
@@ -60,7 +62,8 @@
 - (void)endSendingTransactions;
 - (id)initWithPlayerPath:(id)arg1;
 - (void)preProcessChangePlaybackRateCommandWithOptions:(id)arg1;
-- (void)preProcessCommand:(unsigned int)arg1 options:(id)arg2;
+- (unsigned int)resolveCommand:(unsigned int)arg1;
+- (id)resolveCommandOptions:(unsigned int)arg1 options:(id)arg2;
 - (void)restoreNowPlayingClientState;
 - (void)sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
 - (void)startCachingContentItemUpdatesForItem:(id)arg1 forPendingRequest:(id)arg2;

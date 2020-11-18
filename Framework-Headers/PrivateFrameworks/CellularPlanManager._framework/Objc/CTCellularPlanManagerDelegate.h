@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void)carrierInfoDidUpdate;
 - (void)localPlanInfoDidUpdate:(id)arg1;
+- (void)pendingTransferPlanInfoDidUpdate;
 - (void)planInfoDidUpdate;
 - (void)remoteProvisioningDidBecomeAvailable;
 

@@ -32,10 +32,12 @@
 @property (readonly, nonatomic) double tolerance; // @synthesize tolerance=_tolerance;
 @property (readonly, nonatomic) BOOL useCoreDuetPowerBudgeting; // @synthesize useCoreDuetPowerBudgeting=_useCoreDuetPowerBudgeting;
 
++ (void)checkInActivity:(id)arg1 codeBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (BOOL)_needsNetworkRequirement:(unsigned long long)arg1;
 - (id)debugDescription;
 - (id)description;
+- (id)init;
 - (id)initWithIdentifier:(id)arg1 repeat:(BOOL)arg2 shouldWakeDevice:(BOOL)arg3 useCoreDuetPowerBudgeting:(BOOL)arg4 runOnBattery:(BOOL)arg5 tolerance:(double)arg6 qualityOfService:(unsigned long long)arg7 networkRequirements:(unsigned long long)arg8;
 - (void)invalidate;
 - (double)remainingTime;

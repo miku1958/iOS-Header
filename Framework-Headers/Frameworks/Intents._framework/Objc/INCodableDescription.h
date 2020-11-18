@@ -6,37 +6,55 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INCodableCoding-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INSchema, NSDictionary, NSMutableDictionary, NSOrderedSet, NSString;
+@class INCodableLocalizationTable, INSchema, NSArray, NSDictionary, NSMutableDictionary, NSOrderedSet, NSString;
 
-@interface INCodableDescription : NSObject <NSSecureCoding>
+@interface INCodableDescription : NSObject <NSSecureCoding, INCodableCoding>
 {
     NSMutableDictionary *_attributesByName;
+    INCodableLocalizationTable *_localizationTable;
+    INCodableLocalizationTable *_customLocalizationTable;
     INSchema *_schema;
+    NSString *_intentDefinitionNamespace;
     NSString *_className;
     NSString *_typeName;
     NSDictionary *_attributes;
     NSOrderedSet *_displayOrderedAttributes;
-    NSString *_localizationTable;
 }
 
+@property (copy, nonatomic, setter=_setCustomLocalizationTable:) INCodableLocalizationTable *_customLocalizationTable; // @synthesize _customLocalizationTable;
+@property (copy, nonatomic, setter=_setLocalizationTable:) INCodableLocalizationTable *_localizationTable; // @synthesize _localizationTable;
 @property (copy, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (copy, nonatomic) NSString *className; // @synthesize className=_className;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSOrderedSet *displayOrderedAttributes; // @synthesize displayOrderedAttributes=_displayOrderedAttributes;
-@property (copy, nonatomic) NSString *localizationTable; // @synthesize localizationTable=_localizationTable;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *intentDefinitionNamespace; // @synthesize intentDefinitionNamespace=_intentDefinitionNamespace;
+@property (readonly, nonatomic) NSArray *referencedCodableEnums;
 @property (weak, nonatomic) INSchema *schema; // @synthesize schema=_schema;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *typeName; // @synthesize typeName=_typeName;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_dictionaryRepresentation;
+- (id)_attributeKeyPrefix;
+- (id)_attributesKeyPrefix;
+- (id)_ignoredAttributeTags;
+- (id)attributeByKeyPath:(id)arg1;
 - (id)attributeByName:(id)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
+- (id)dictionaryKeyForKeyPath:(id)arg1;
+- (id)dictionaryRepresentation;
+- (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)highestAttributeTag;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)keyPrefix;
+- (void)updateWithDictionary:(id)arg1;
 
 @end
 

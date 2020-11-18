@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (struct Message *)newImageDataMessageForDatabaseObject:(id)arg1;
 - (id)newUnarchiverWithDatabaseObject:(id)arg1;
 - (id)objectUUIDMap;
+- (void)resolveReferences;
 - (void)unarchiveObjectWithIdentifierAsync:(long long)arg1;
 - (BOOL)validateObjectIdentifierForObject:(id)arg1;
 

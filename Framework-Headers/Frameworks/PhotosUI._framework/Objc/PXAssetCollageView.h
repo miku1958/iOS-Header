@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSMutableDictionary, NSMutableIndexSet, PXRoundedCornerOverlayView, PXUIMediaProvider, UIColor;
+@class NSMutableDictionary, NSMutableIndexSet, PXLayoutPerformerOutput, PXRoundedCornerOverlayView, PXUIMediaProvider, UIColor;
 
 @interface PXAssetCollageView : UIView
 {
@@ -18,19 +18,24 @@
     double _cornerRadius;
     UIColor *_cornerBackgroundColor;
     NSMutableDictionary *_assets;
+    NSMutableDictionary *_assetViews;
     PXRoundedCornerOverlayView *_roundedCornerOverlayView;
     NSMutableIndexSet *_hiddenItemIndexes;
+    PXLayoutPerformerOutput *_layoutOutput;
 }
 
 @property (nonatomic) BOOL allowAnimatedImagePlayback; // @synthesize allowAnimatedImagePlayback=_allowAnimatedImagePlayback;
 @property (nonatomic) BOOL allowLoopPlayback; // @synthesize allowLoopPlayback=_allowLoopPlayback;
 @property (nonatomic) BOOL allowVideoPlayback; // @synthesize allowVideoPlayback=_allowVideoPlayback;
+@property (readonly, nonatomic) NSMutableDictionary *assetViews; // @synthesize assetViews=_assetViews;
 @property (readonly, nonatomic) NSMutableDictionary *assets; // @synthesize assets=_assets;
 @property (strong, nonatomic) UIColor *cornerBackgroundColor; // @synthesize cornerBackgroundColor=_cornerBackgroundColor;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, nonatomic) NSMutableIndexSet *hiddenItemIndexes; // @synthesize hiddenItemIndexes=_hiddenItemIndexes;
+@property (readonly, nonatomic) PXLayoutPerformerOutput *layoutOutput; // @synthesize layoutOutput=_layoutOutput;
 @property (readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (readonly, nonatomic) long long numberOfItems;
+@property (readonly, nonatomic) BOOL portraitBias;
 @property (readonly, nonatomic) PXRoundedCornerOverlayView *roundedCornerOverlayView; // @synthesize roundedCornerOverlayView=_roundedCornerOverlayView;
 @property (nonatomic) double spacing; // @synthesize spacing=_spacing;
 

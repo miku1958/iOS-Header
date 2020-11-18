@@ -34,7 +34,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType batteryHandler; // @synthesize batteryHandler=_batteryHandler;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<GEORoutePreloadSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<GEORoutePreloadSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long networkQuality; // @synthesize networkQuality=_networkQuality;

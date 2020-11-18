@@ -9,7 +9,7 @@
 #import <VectorKit/VKAnnotationTrackingCameraController-Protocol.h>
 #import <VectorKit/VKGesturingCameraController-Protocol.h>
 
-@class NSString, VKAnnotationTrackingCameraController, VKGestureCameraBehavior, VKTimedAnimation;
+@class NSString, VKAnnotationTrackingCameraController, VKCameraRegionRestriction, VKGestureCameraBehavior, VKTimedAnimation;
 @protocol VKTrackableAnnotation;
 
 __attribute__((visibility("hidden")))
@@ -24,16 +24,23 @@ __attribute__((visibility("hidden")))
     long long _annotationTrackingZoomStyle;
     long long _annotationTrackingHeadingAnimationDisplayRate;
     BOOL _isPitchIncreasing;
+    VKCameraRegionRestriction *_regionRestriction;
+    struct {
+        double min;
+        double max;
+    } _centerCoordinateDistanceRange;
 }
 
 @property (readonly, nonatomic, getter=isAnimatingToTrackAnnotation) BOOL animatingToTrackAnnotation;
 @property (nonatomic) long long annotationTrackingHeadingAnimationDisplayRate; // @synthesize annotationTrackingHeadingAnimationDisplayRate=_annotationTrackingHeadingAnimationDisplayRate;
 @property (nonatomic) long long annotationTrackingZoomStyle; // @synthesize annotationTrackingZoomStyle=_annotationTrackingZoomStyle;
+@property (nonatomic) CDStruct_c3b9c2ee centerCoordinateDistanceRange; // @synthesize centerCoordinateDistanceRange=_centerCoordinateDistanceRange;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isAnimatingToTrackAnnotation;
 @property (readonly, nonatomic) BOOL isTrackingHeading;
+@property (strong, nonatomic) VKCameraRegionRestriction *regionRestriction; // @synthesize regionRestriction=_regionRestriction;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<VKTrackableAnnotation> trackingAnnotation;
 @property (readonly, nonatomic, getter=isTrackingHeading) BOOL trackingHeading;
@@ -44,14 +51,16 @@ __attribute__((visibility("hidden")))
 - (double)durationToAnimateToMapRegion:(id)arg1;
 - (void)enter3DMode;
 - (void)exit3DMode;
-- (id)init;
+- (id)initWithMapDataAccess:(struct MapDataAccess *)arg1 animationRunner:(struct AnimationRunner *)arg2 runLoopController:(struct RunLoopController *)arg3 cameraDelegate:(id)arg4;
 - (BOOL)isAnimating;
 - (void)panWithOffset:(struct CGPoint)arg1 relativeToScreenPoint:(struct CGPoint)arg2 animated:(BOOL)arg3 duration:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)setCamera:(id)arg1;
 - (void)setCenterCoordinate3D:(CDStruct_071ac149)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4 duration:(double)arg5 animationStyle:(long long)arg6 timingCurve:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)setCenterCoordinateDistanceRange:(CDStruct_c3b9c2ee)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setEdgeInsets:(struct VKEdgeInsets)arg1;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3 duration:(double)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setRegionRestriction:(id)arg1 duration:(double)arg2 timingFunction:(CDUnknownBlockType)arg3;
 - (void)setYaw:(double)arg1 animated:(BOOL)arg2;
 - (BOOL)snapMapIfNecessary:(BOOL)arg1;
 - (void)startPanningAtPoint:(struct CGPoint)arg1 panAtStartPoint:(BOOL)arg2;
@@ -67,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)stopRotatingWithFocusPoint:(struct CGPoint)arg1;
 - (void)stopSnappingAnimations;
 - (void)stopTrackingAnnotation;
+- (BOOL)tapAtPoint:(struct CGPoint)arg1;
 - (long long)tileSize;
 - (void)transferGestureState:(id)arg1;
 - (void)updatePanWithTranslation:(struct CGPoint)arg1;

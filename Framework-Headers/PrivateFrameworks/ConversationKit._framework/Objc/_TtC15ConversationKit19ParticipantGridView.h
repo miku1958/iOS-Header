@@ -8,11 +8,11 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit19ParticipantGridView : UIView
 {
     MISSING_TYPE *participantViews;
     MISSING_TYPE *unfocusedParticipantOverlay;
+    MISSING_TYPE *organicLayoutConfiguration;
     MISSING_TYPE *currentlyFocusedParticipantIdentifier;
     MISSING_TYPE *mostRecentAnimationIndex;
     MISSING_TYPE *delegate;

@@ -6,22 +6,31 @@
 
 #import <objc/NSObject.h>
 
-#import <AVKit/AVInteractiveTransitionGestureTrackerDelegate-Protocol.h>
 #import <AVKit/AVTransitionDelegate-Protocol.h>
+#import <AVKit/AVTransitionDriverDelegate-Protocol.h>
 #import <AVKit/UIViewControllerAnimatedTransitioning-Protocol.h>
 #import <AVKit/UIViewControllerInteractiveTransitioning-Protocol.h>
 #import <AVKit/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class AVInteractiveTransitionGestureTracker, AVTransition, AVTransitionPresentationContext, NSString;
-@protocol AVTransitionControllerDelegate;
+@class AVDisplayLink, AVInteractiveTransitionGestureTracker, AVPresentationContext, AVPresentationController, AVTransition, CAMediaTimingFunction, NSString, UIView;
+@protocol AVTransitionControllerDelegate, AVTransitionDriver;
 
-@interface AVTransitionController : NSObject <AVInteractiveTransitionGestureTrackerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, AVTransitionDelegate, UIViewControllerTransitioningDelegate>
+__attribute__((visibility("hidden")))
+@interface AVTransitionController : NSObject <UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, AVTransitionDelegate, AVTransitionDriverDelegate, UIViewControllerTransitioningDelegate>
 {
-    AVTransitionPresentationContext *_presentationContext;
     id<AVTransitionControllerDelegate> _delegate;
+    id<AVTransitionDriver> _interactiveGestureTracker;
+    UIView *_interactionView;
     long long _state;
+    AVDisplayLink *_displayLink;
     AVTransition *_activeTransition;
     AVInteractiveTransitionGestureTracker *_gestureTracker;
+    UIView *_sourceView;
+    AVPresentationController *_presentationController;
+    CDUnknownBlockType _transitionDidBeginHandler;
+    CAMediaTimingFunction *_easeInFunction;
+    CAMediaTimingFunction *_easeOutFunction;
+    struct CGPoint _touchGravity;
 }
 
 @property (strong, nonatomic) AVTransition *activeTransition; // @synthesize activeTransition=_activeTransition;
@@ -30,36 +39,47 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AVTransitionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) AVDisplayLink *displayLink; // @synthesize displayLink=_displayLink;
+@property (strong, nonatomic) CAMediaTimingFunction *easeInFunction; // @synthesize easeInFunction=_easeInFunction;
+@property (strong, nonatomic) CAMediaTimingFunction *easeOutFunction; // @synthesize easeOutFunction=_easeOutFunction;
 @property (readonly, nonatomic) AVInteractiveTransitionGestureTracker *gestureTracker; // @synthesize gestureTracker=_gestureTracker;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) AVTransitionPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
+@property (weak, nonatomic) UIView *interactionView; // @synthesize interactionView=_interactionView;
+@property (strong, nonatomic) id<AVTransitionDriver> interactiveGestureTracker; // @synthesize interactiveGestureTracker=_interactiveGestureTracker;
+@property (readonly, weak, nonatomic) AVPresentationContext *presentationContext;
+@property (weak, nonatomic) AVPresentationController *presentationController; // @synthesize presentationController=_presentationController;
+@property (weak, nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (nonatomic) struct CGPoint touchGravity; // @synthesize touchGravity=_touchGravity;
+@property (copy, nonatomic) CDUnknownBlockType transitionDidBeginHandler; // @synthesize transitionDidBeginHandler=_transitionDidBeginHandler;
 @property (readonly, nonatomic) BOOL wantsInteractiveStart;
 
 - (void).cxx_destruct;
-- (void)_createActiveTransitionAndPresentationContextIfNeededForTransitionContext:(id)arg1;
-- (void)_recoverFromPresentationInStandaloneWindowIfNeeded:(id)arg1;
-- (void)addInteractiveGesturesToView:(id)arg1 additionalGesture:(id)arg2;
+- (void)_cancelTransition;
+- (void)_finishTransition;
+- (void)_fireDidBeginHandlerIfNeeded;
+- (void)_startObservingAnimatorProgress;
+- (void)addTransitionDriver:(id)arg1 toView:(id)arg2;
 - (void)animateTransition:(id)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)animationEnded:(BOOL)arg1;
-- (void)beginFullScreenDismissal:(CDUnknownBlockType)arg1;
+- (void)beginFullScreenDismissalOfViewController:(id)arg1 animated:(BOOL)arg2 isInteractive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)beginFullScreenPresentationOfViewController:(id)arg1 fromView:(id)arg2 isInteractive:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)gestureTracker:(id)arg1 didBeginTrackingGesture:(long long)arg2;
-- (void)gestureTracker:(id)arg1 didTrackPercentComplete:(double)arg2 translation:(struct CGPoint)arg3 rotation:(double)arg4 locationInWindow:(struct CGPoint)arg5;
-- (BOOL)gestureTracker:(id)arg1 gestureRecognizer:(id)arg2 shouldReceiveTouch:(id)arg3;
-- (void)gestureTrackerDidCancelTracking:(id)arg1;
-- (void)gestureTrackerDidFinishTracking:(id)arg1;
-- (BOOL)gestureTrackerShouldTrackPanToDismiss:(id)arg1;
-- (BOOL)gestureTrackerShouldTrackPinchToDismiss:(id)arg1;
-- (BOOL)gestureTrackerShouldTrackPinchToPresent:(id)arg1;
 - (id)interactionControllerForDismissal:(id)arg1;
 - (id)interactionControllerForPresentation:(id)arg1;
-- (void)presentedViewControllerWasForciblyDismissedWithoutAnimation;
+- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (void)startInteractiveTransition:(id)arg1;
+- (id)transitionBackgroundViewBackgroundColor:(id)arg1;
+- (void)transitionDriver:(id)arg1 didBeginTrackingTransitionInteraction:(long long)arg2 readyToProceedHandler:(CDUnknownBlockType)arg3;
+- (BOOL)transitionDriver:(id)arg1 gestureRecognizer:(id)arg2 shouldReceiveTouch:(id)arg3;
+- (BOOL)transitionDriver:(id)arg1 shouldDriveTransitionInteractionOfType:(long long)arg2;
+- (void)transitionDriverDidCancelInteraction:(id)arg1;
+- (void)transitionDriverDidContinueInteraction:(id)arg1;
+- (void)transitionDriverDidFinishInteraction:(id)arg1;
 - (double)transitionDuration:(id)arg1;
+- (id)transitionPresentedViewBackgroundColor:(id)arg1;
 - (void)transitionWillComplete:(id)arg1 success:(BOOL)arg2;
 
 @end

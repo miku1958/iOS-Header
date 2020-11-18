@@ -13,6 +13,7 @@
 - (NSString *)electrocardiogramOnboardingCountryCode;
 - (CDStruct_f6aba300)watchAtrialFibrillationDetectionVersion;
 - (NSString *)watchBuildType;
+- (NSString *)watchCompanionDevicePlatform;
 - (CDStruct_f6aba300)watchElectrocardiogramVersion;
 - (NSString *)watchModelNumber;
 - (NSString *)watchOSBuildVersion;

@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double topThreshold;
 @property (strong, nonatomic) VUIProductUberBackgroundView *uberBackgroundView; // @synthesize uberBackgroundView=_uberBackgroundView;
-@property (readonly, nonatomic) long long uberLayoutInterfaceStyle;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 @property (strong, nonatomic) UIView *whiteBackgroundView; // @synthesize whiteBackgroundView=_whiteBackgroundView;
 
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)preferredFocusEnvironments;
 - (void)setBannerOpacity:(double)arg1;
+- (void)setTransitionBannerOpacity:(double)arg1;
 - (void)setUberImageOffset:(double)arg1;
 - (void)setWhiteBannerOpacity:(double)arg1;
 - (void)viewDidLayoutSubviews;

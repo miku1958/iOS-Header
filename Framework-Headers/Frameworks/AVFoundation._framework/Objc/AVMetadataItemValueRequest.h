@@ -19,7 +19,6 @@
 - (id)dataType;
 - (void)dealloc;
 - (id)error;
-- (void)finalize;
 - (id)initWithMetadataItem:(id)arg1;
 - (void)respondWithError:(id)arg1;
 - (void)respondWithValue:(id)arg1;

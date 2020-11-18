@@ -18,12 +18,10 @@
 @property (strong, nonatomic) NSMutableArray *listeners; // @synthesize listeners=_listeners;
 @property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
 
-+ (BOOL)_isSchedulingRelatedNotification:(id)arg1 streamName:(id)arg2;
-+ (BOOL)_isSleepNotification:(id)arg1 streamName:(id)arg2;
-+ (BOOL)_isSyncNotification:(id)arg1 streamName:(id)arg2;
 + (double)_schedulingAssertionTimeout;
++ (double)defaultAssertionTimeOutForNotification:(id)arg1 type:(long long)arg2;
 - (void).cxx_destruct;
-- (void)_handleNotification:(id)arg1;
+- (void)_handleNotificationWithName:(id)arg1 type:(long long)arg2;
 - (void)_registerForAlarmNotifications;
 - (void)_registerForDarwinNotifications;
 - (void)_registerForDistributedNotifications;

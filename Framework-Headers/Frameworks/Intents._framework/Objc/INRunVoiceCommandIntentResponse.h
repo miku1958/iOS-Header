@@ -8,11 +8,10 @@
 
 #import <Intents/INRunVoiceCommandIntentResponseExport-Protocol.h>
 
-@class INArchivedObject, NSArray, NSDictionary, NSNumber, NSString, _INPBRunVoiceCommandIntentResponse;
+@class INArchivedObject, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface INRunVoiceCommandIntentResponse : INIntentResponse <INRunVoiceCommandIntentResponseExport>
 {
-    _INPBRunVoiceCommandIntentResponse *_responseMessagePBRepresentation;
 }
 
 @property (copy, nonatomic) NSString *appBundleId;
@@ -26,6 +25,7 @@
 @property (copy, nonatomic) NSNumber *interstitialDisabled;
 @property (copy, nonatomic) NSString *localizedAppName;
 @property (copy, nonatomic) NSDictionary *parameters;
+@property (copy, nonatomic) NSNumber *prefersExecutionOnCompanion;
 @property (copy, nonatomic) NSString *responseTemplate;
 @property (copy, nonatomic) NSArray *steps;
 @property (readonly) Class superclass;
@@ -40,11 +40,10 @@
 + (int)_errorCodeFromCode:(long long)arg1;
 + (int)_typeFromCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
+- (long long)_codeWithName:(id)arg1;
 - (id)_dictionaryRepresentation;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (long long)_intentResponseCode;
-- (id)_responseMessagePBRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

@@ -6,20 +6,17 @@
 
 #import <UIKitCore/_UISettings.h>
 
+__attribute__((visibility("hidden")))
 @interface _UIScreenEdgePanRecognizerEdgeSettings : _UISettings
 {
     double _hysteresis;
     double _edgeRegionSize;
     double _bottomEdgeRegionSize;
     double _edgeAngleWindow;
-    double _bottomEdgeAngleWindow;
     double _edgeAngleWindowDecayTime;
-    double _restrictedEdgeRegionTimeInterval;
-    double _restrictedEdgeRegionMinimumWeight;
     double _maximumSwipeDuration;
 }
 
-@property (nonatomic) double bottomEdgeAngleWindow; // @synthesize bottomEdgeAngleWindow=_bottomEdgeAngleWindow;
 @property (nonatomic) double bottomEdgeRegionSize; // @synthesize bottomEdgeRegionSize=_bottomEdgeRegionSize;
 @property (nonatomic) double edgeAngleWindow; // @synthesize edgeAngleWindow=_edgeAngleWindow;
 @property (nonatomic) double edgeAngleWindowDecayTime; // @synthesize edgeAngleWindowDecayTime=_edgeAngleWindowDecayTime;
@@ -27,8 +24,6 @@
 @property (nonatomic) double edgeRegionSize; // @synthesize edgeRegionSize=_edgeRegionSize;
 @property (nonatomic) double hysteresis; // @synthesize hysteresis=_hysteresis;
 @property (nonatomic) double maximumSwipeDuration; // @synthesize maximumSwipeDuration=_maximumSwipeDuration;
-@property (nonatomic) double restrictedEdgeRegionMinimumWeight; // @synthesize restrictedEdgeRegionMinimumWeight=_restrictedEdgeRegionMinimumWeight;
-@property (nonatomic) double restrictedEdgeRegionTimeInterval; // @synthesize restrictedEdgeRegionTimeInterval=_restrictedEdgeRegionTimeInterval;
 
 + (id)keyPathsForValuesAffectingEdgeAngleWindowDegreees;
 + (id)settingsControllerModule;

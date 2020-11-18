@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDSQLiteStatementCache, NSMutableArray, NSMutableDictionary, NSURL;
+@class HDSQLiteStatementCache, NSMutableArray, NSMutableDictionary, NSNumber, NSURL;
 @protocol HDSQLiteDatabaseDelegate;
 
 @interface HDSQLiteDatabase : NSObject
@@ -21,10 +21,9 @@
     NSMutableArray *_onCommitBlocks;
     NSMutableArray *_onRollbackBlocks;
     BOOL _writer;
-    BOOL _secureDeleteEnabled;
     BOOL _checkpointRequired;
-    NSURL *_fileURL;
     id<HDSQLiteDatabaseDelegate> _delegate;
+    NSURL *_fileURL;
     long long _cacheScope;
     HDSQLiteStatementCache *_statementCache;
 }
@@ -33,8 +32,8 @@
 @property (nonatomic) BOOL checkpointRequired; // @synthesize checkpointRequired=_checkpointRequired;
 @property (weak, nonatomic) id<HDSQLiteDatabaseDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (readonly, copy, nonatomic) NSNumber *lastInsertRowID;
 @property (readonly, nonatomic, getter=isOpen) BOOL open;
-@property (nonatomic) BOOL secureDeleteEnabled; // @synthesize secureDeleteEnabled=_secureDeleteEnabled;
 @property (readonly, nonatomic) HDSQLiteStatementCache *statementCache; // @synthesize statementCache=_statementCache;
 @property (readonly, nonatomic) long long statementCacheScope;
 @property (nonatomic, getter=isWriter) BOOL writer; // @synthesize writer=_writer;
@@ -90,7 +89,6 @@
 - (id)initWithDatabaseURL:(id)arg1 delegate:(id)arg2;
 - (BOOL)isDatabaseWithNameAttached:(id)arg1;
 - (BOOL)isProtectedDatabaseAttached;
-- (id)lastInsertRowID;
 - (void)onCommit:(CDUnknownBlockType)arg1 orRollback:(CDUnknownBlockType)arg2;
 - (int)openForReadingWithError:(id *)arg1;
 - (int)openWithError:(id *)arg1;

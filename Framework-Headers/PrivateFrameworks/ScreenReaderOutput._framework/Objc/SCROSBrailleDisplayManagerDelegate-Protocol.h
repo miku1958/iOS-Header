@@ -24,6 +24,7 @@
 - (void)handleBrailleKeypress:(NSArray *)arg1;
 - (void)handleBrailleReplaceTextRange:(struct _NSRange)arg1 withString:(NSString *)arg2 cursor:(unsigned long long)arg3;
 - (void)handleBrailleTableFailedToLoad:(NSString *)arg1;
+- (void)handleCopyStringToClipboard:(NSString *)arg1;
 - (void)handleDisplayModeChanged:(NSNumber *)arg1;
 - (void)handleFailedToLoadBluetoothDevice:(NSString *)arg1;
 - (void)handlePlayBorderHitSound;

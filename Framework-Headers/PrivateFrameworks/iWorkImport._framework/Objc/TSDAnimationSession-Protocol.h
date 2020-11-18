@@ -9,6 +9,7 @@
 @protocol TSDAnimationSession <NSObject>
 
 @property (readonly, nonatomic) BOOL isOffscreenPlayback;
+@property (nonatomic) BOOL shouldAllowBackgroundAlpha;
 @property (nonatomic) BOOL shouldDrawTexturesAsynchronously;
 @property (nonatomic) BOOL shouldForceTextureGeneration;
 @property (nonatomic) BOOL shouldUseSourceImage;

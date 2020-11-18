@@ -9,15 +9,15 @@
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/PLLocalUUIDConverter-Protocol.h>
 
-@class NSManagedObjectID, NSString, PHPhotoLibrary;
+@class NSManagedObjectID, NSString, PHObjectReference, PHPhotoLibrary;
 
 @interface PHObject : NSObject <PLLocalUUIDConverter, NSCopying>
 {
     BOOL _deleted;
     NSString *_uuid;
     NSManagedObjectID *_objectID;
-    PHPhotoLibrary *_photoLibrary;
     unsigned long long _propertyHint;
+    PHPhotoLibrary *_photoLibrary;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,12 +27,14 @@
 @property (readonly) id identifier;
 @property (readonly, copy, nonatomic) NSString *localIdentifier;
 @property (readonly) NSManagedObjectID *objectID; // @synthesize objectID=_objectID;
+@property (readonly, nonatomic) PHObjectReference *objectReference;
 @property (readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property unsigned long long propertyHint; // @synthesize propertyHint=_propertyHint;
 @property (readonly) Class superclass;
 @property (readonly, getter=isTransient) BOOL transient;
 @property (readonly) NSString *uuid; // @synthesize uuid=_uuid;
 
++ (void)assertAllObjects:(id)arg1 forSelector:(SEL)arg2 areOfType:(Class)arg3;
 + (id)authorizationAwareFetchResultWithOptions:(id)arg1 fetchBlock:(CDUnknownBlockType)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
 + (id)entityKeyMap;

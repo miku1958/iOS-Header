@@ -66,6 +66,7 @@
 @property (weak) id<PXPlacesMapControllerLoadingStateDelegate> stateDelegate; // @synthesize stateDelegate=_stateDelegate;
 @property (readonly) Class superclass;
 
++ (void)launchMapsAtCoordinate:(struct CLLocationCoordinate2D)arg1 withTitle:(id)arg2;
 - (void).cxx_destruct;
 - (double)_defaultAnimationDuration;
 - (CDStruct_02837cd9)_ensureMinimumSize:(CDStruct_02837cd9)arg1;
@@ -87,7 +88,6 @@
 - (void)focusOnGeotaggablesFromPipeline:(id)arg1 animated:(BOOL)arg2;
 - (void)focusOnGeotaggablesFromPipelineImmediately:(id)arg1;
 - (id)init;
-- (void)launchMapsAtCoordinate:(struct CLLocationCoordinate2D)arg1 withTitle:(id)arg2;
 - (void)loadView;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)mapContainerViewDidAppear;

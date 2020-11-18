@@ -20,13 +20,14 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText;
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;

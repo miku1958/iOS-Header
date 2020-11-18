@@ -11,7 +11,9 @@
 
 @interface PHImageCache : NSObject
 {
-    NSMutableDictionary *_cachesBySize;
+    NSMutableDictionary *_backingDictionary;
+    NSMutableDictionary *_uncommittedInserts;
+    NSMutableDictionary *_uncommittedDeletes;
     struct os_unfair_lock_s _lock;
     PHRecyclableObjectVendor *_entryVendor;
     id<PHImageCacheDelegate> _delegate;
@@ -20,14 +22,15 @@
 @property (weak, nonatomic) id<PHImageCacheDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (id)_cacheForSizeKey:(id)arg1 createIfNecessary:(BOOL)arg2;
+- (void)_didReceiveMemoryWarningNotification:(id)arg1;
 - (void)_removeEntry:(id)arg1;
+- (void)commitChangesWithQueueToProcessDeletes:(id)arg1;
 - (id)init;
-- (void)pinEntryForSize:(struct CGSize)arg1 assetUUID:(id)arg2 requestID:(int)arg3 postProcessingHandler:(CDUnknownBlockType)arg4;
-- (BOOL)populateEntryWithImage:(struct CGImage *)arg1 requestID:(int)arg2 forSize:(struct CGSize)arg3 assetUUID:(id)arg4;
-- (void)queryEntryForSize:(struct CGSize)arg1 assetUUID:(id)arg2 didWaitForInFlightRequest:(BOOL *)arg3 didFindImage:(BOOL *)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (BOOL)pinEntryForKey:(id)arg1 requestID:(int)arg2 inFlightRequestID:(int *)arg3;
+- (BOOL)populateEntryWithImage:(struct CGImage *)arg1 requestID:(int)arg2 forKey:(id)arg3 additionalInfo:(id)arg4;
+- (void)queryEntryForKey:(id)arg1 didWaitForInFlightRequest:(BOOL *)arg2 didFindImage:(BOOL *)arg3 entryIsValidBlock:(CDUnknownBlockType)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (void)removeAllEntries;
-- (void)removeEntriesForSize:(struct CGSize)arg1 assetUUIDs:(id)arg2;
+- (void)removeEntriesForKeys:(id)arg1;
 
 @end
 

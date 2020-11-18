@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _canceledOnProvisionalNavigation;
     BOOL _canceledOnCommittedNavigation;
+    BOOL _canceledOnApplicationBackground;
     BOOL _completionHandlerBlocksWebProcess;
     BOOL _alertControllerPresentsAsActionSheet;
     BOOL _shouldHideWebContent;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (copy, nonatomic) NSArray *additionalCancellationExemptions; // @synthesize additionalCancellationExemptions=_additionalCancellationExemptions;
 @property (nonatomic) BOOL alertControllerPresentsAsActionSheet; // @synthesize alertControllerPresentsAsActionSheet=_alertControllerPresentsAsActionSheet;
+@property (nonatomic) BOOL canceledOnApplicationBackground; // @synthesize canceledOnApplicationBackground=_canceledOnApplicationBackground;
 @property (nonatomic) BOOL canceledOnCommittedNavigation; // @synthesize canceledOnCommittedNavigation=_canceledOnCommittedNavigation;
 @property (nonatomic) BOOL canceledOnProvisionalNavigation; // @synthesize canceledOnProvisionalNavigation=_canceledOnProvisionalNavigation;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;

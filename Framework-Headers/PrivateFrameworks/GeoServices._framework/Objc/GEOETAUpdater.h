@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOApplicationAuditToken, GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSString, NSTimer;
+@class GEOApplicationAuditToken, GEOCommonOptions, GEOComposedRoute, GEOComposedRouteStep, GEOComposedWaypoint, GEOETATrafficUpdateRequest, GEOLocation, GEORouteAttributes, GEORouteMatch, NSData, NSString, NSTimer;
 @protocol GEOETAUpdaterDelegate;
 
 @interface GEOETAUpdater : NSObject
@@ -31,6 +31,8 @@
     NSData *_directionsResponseID;
     GEOCommonOptions *_commonOptions;
     GEOApplicationAuditToken *_auditToken;
+    GEOComposedRouteStep *_currentStepAtRequestStart;
+    double _percentageOfCurrentStepRemainingAtRequestStart;
 }
 
 @property (nonatomic) BOOL allowRequests; // @synthesize allowRequests=_allowRequests;
@@ -40,7 +42,7 @@
 @property (strong, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
 @property (strong, nonatomic) NSData *directionsResponseID; // @synthesize directionsResponseID=_directionsResponseID;
 @property (nonatomic) unsigned long long maxAlternateRoutesCount; // @synthesize maxAlternateRoutesCount=_maxAlternateRoutesCount;
-@property (readonly) BOOL requestInProgress;
+@property (readonly, nonatomic) BOOL requestInProgress;
 @property (nonatomic) double requestInterval; // @synthesize requestInterval=_requestInterval;
 @property (strong, nonatomic) NSString *requestingAppIdentifier; // @synthesize requestingAppIdentifier=_requestingAppIdentifier;
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
@@ -55,14 +57,14 @@
 - (void)_clearTimer;
 - (void)_continueUpdateRequests;
 - (double)_currentTime;
-- (int)_requestModeForRequest:(id)arg1;
-- (void)_sendRequest:(id)arg1 shouldCallWillSendCallback:(BOOL)arg2;
+- (void)_sendRequest:(id)arg1;
 - (BOOL)_shouldStartConditionalETARequest;
 - (void)_startConditionalConnectionETARequest;
 - (void)_startStateWaitingForBestTimeStart:(id)arg1;
+- (void)_trafficRequest:(id)arg1 finished:(id)arg2;
 - (BOOL)_updateETAResponse:(id)arg1 withRemainingDistanceFromRequest:(id)arg2;
+- (id)_updateOrCreateRequest:(id)arg1;
 - (void)_updateRequest:(id)arg1;
-- (void)_updateRequestModeForRequest:(id)arg1 withResponse:(id)arg2;
 - (BOOL)_updateRouteWithETATrafficUpdateResponse:(id)arg1;
 - (void)cancelRequest;
 - (id)currentStep;

@@ -10,6 +10,7 @@
 
 @interface BLTSectionInfoSyncCoordinator : NSObject
 {
+    unsigned long long _stateHandler;
     CDUnknownBlockType _infoProvider;
     NSMutableArray *_alertingSectionIDs;
     NSMutableDictionary *_alertingSectionState;
@@ -22,6 +23,8 @@
 @property (nonatomic) unsigned long long mostRecentIndex; // @synthesize mostRecentIndex=_mostRecentIndex;
 
 - (void).cxx_destruct;
+- (void)dealloc;
+- (id)description;
 - (id)effectiveSectionInfoForSectionIDIndex:(unsigned long long)arg1;
 - (id)initWithAlertingSectionIDs:(id)arg1 infoProvider:(CDUnknownBlockType)arg2;
 - (void)performSyncForSectionID:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;

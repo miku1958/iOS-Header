@@ -8,6 +8,7 @@
 
 @class NSBundle, NSString;
 
+__attribute__((visibility("hidden")))
 @interface SKUIExternalResourceImage : NSObject
 {
     BOOL _alwaysTemplate;

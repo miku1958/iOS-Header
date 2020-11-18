@@ -18,9 +18,11 @@
 @property (readonly, nonatomic) id suggestionsContactsObserver; // @synthesize suggestionsContactsObserver=_suggestionsContactsObserver;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *suggestionsServiceThrottleSemaphore; // @synthesize suggestionsServiceThrottleSemaphore=_suggestionsServiceThrottleSemaphore;
 
++ (BOOL)canUseSiriSuggestions;
 + (id)newestSuggestedContactForDestinationID:(id)arg1;
 + (id)sharedService;
-+ (void)suggestedNamesForDestinationID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (id)suggestedNamesForDestinationID:(id)arg1 onlySignificant:(BOOL)arg2 error:(id *)arg3;
++ (void)suggestedNamesForDestinationID:(id)arg1 onlySignificant:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)init;
 - (void)updateCacheWithDestinationIDs:(id)arg1 withGroup:(id)arg2;

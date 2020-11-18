@@ -6,31 +6,37 @@
 
 #import <Home/HFItem.h>
 
-@class HMHome, NSString;
+#import <Home/HFHomeKitItemProtocol-Protocol.h>
 
-@interface HFActionSetSuggestionItem : HFItem
+@class HMActionSet, HMHome, NSString;
+@protocol HFHomeKitObject, HFServiceLikeItem;
+
+@interface HFActionSetSuggestionItem : HFItem <HFHomeKitItemProtocol>
 {
+    BOOL _includeExistingActionSets;
+    BOOL _persistAddedSuggestions;
+    BOOL _hasEverHadValidSuggestion;
     HMHome *_home;
-    NSString *_builtInActionSetType;
+    HMActionSet *_actionSet;
+    HFItem<HFServiceLikeItem> *_serviceLikeItem;
 }
 
-@property (readonly, nonatomic) NSString *builtInActionSetType; // @synthesize builtInActionSetType=_builtInActionSetType;
+@property (readonly, nonatomic) HMActionSet *actionSet; // @synthesize actionSet=_actionSet;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasEverHadValidSuggestion; // @synthesize hasEverHadValidSuggestion=_hasEverHadValidSuggestion;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (nonatomic) BOOL includeExistingActionSets; // @synthesize includeExistingActionSets=_includeExistingActionSets;
+@property (nonatomic) BOOL persistAddedSuggestions; // @synthesize persistAddedSuggestions=_persistAddedSuggestions;
+@property (copy, nonatomic) HFItem<HFServiceLikeItem> *serviceLikeItem; // @synthesize serviceLikeItem=_serviceLikeItem;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_actionBuildersToSetLightbulbBrightness:(double)arg1;
-- (id)_actionBuildersToSetLightbulbColorWithPaletteColor:(id)arg1;
-- (id)_actionBuildersToSetPowerState:(BOOL)arg1 forServicesOfTypes:(id)arg2;
-- (id)_actionBuildersToSetTargetBlindsPositionOpen:(BOOL)arg1;
-- (id)_actionBuildersToSetTargetDoorState:(long long)arg1 forServicesOfTypes:(id)arg2;
-- (id)_actionBuildersToSetTargetLockState:(long long)arg1 forServicesOfTypes:(id)arg2;
-- (id)_actionBuildersToSetTargetSecuritySystemState:(long long)arg1;
-- (id)_actionSetBuilderForBuiltInActionSetType:(id)arg1 outDependentServiceTypes:(out id *)arg2;
-- (id)_builtInActionSetOfType:(id)arg1;
-- (id)_controlItemValueSourceForService:(id)arg1;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)init;
-- (id)initWithHome:(id)arg1 builtInActionSetType:(id)arg2;
+- (id)initWithHome:(id)arg1 actionSet:(id)arg2;
 
 @end
 

@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolbox/NSXPCListenerDelegate-Protocol.h>
+#import <AudioToolboxCore/NSXPCListenerDelegate-Protocol.h>
 
 @class NSString;
 
 @interface AudioComponentRegistrar : NSObject <NSXPCListenerDelegate>
 {
-    struct AudioComponentRegistrarImpl *mImpl;
+    struct AudioComponentRegistrarImpl *_impl;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) struct AudioComponentRegistrarImpl *impl; // @synthesize impl=_impl;
 @property (readonly) Class superclass;
 
 - (void)dealloc;

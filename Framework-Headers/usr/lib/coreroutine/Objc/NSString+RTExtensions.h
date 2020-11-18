@@ -10,9 +10,7 @@
 - (id)base64DecodedString;
 - (id)base64EncodedString;
 - (id)hmacSha1WithKey:(id)arg1;
-- (id)hmacSha256WithKey:(id)arg1;
 - (long long)levenshteinDistanceFromString:(id)arg1 withMaxCutOffDistance:(unsigned long long)arg2;
-- (id)sha256;
 - (id)stringByRemovingAllWhitespace;
 - (id)stringByRemovingAllWhitespaceAndPunctuation;
 @end

@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)actionByExpandingWithAction:(id)arg1;
 - (void)addFormula:(const struct TSCEFormula *)arg1;
 - (void)addFormulaIndex:(unsigned long long)arg1;
-- (id)changeDescriptorForTable:(id)arg1;
+- (id)cellRegionForTable:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateMergeFormulasUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithArchive:(const struct MergeOperationArchive *)arg1 unarchiver:(id)arg2;

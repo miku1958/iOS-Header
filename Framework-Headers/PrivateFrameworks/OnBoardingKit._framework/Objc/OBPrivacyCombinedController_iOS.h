@@ -7,38 +7,39 @@
 #import <OnBoardingKit/OBPrivacyCombinedController.h>
 
 #import <OnBoardingKit/OBNavigationBarTitleTransistor-Protocol.h>
-#import <OnBoardingKit/UIScrollViewDelegate-Protocol.h>
+#import <OnBoardingKit/UITableViewDataSource-Protocol.h>
+#import <OnBoardingKit/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSString, OBBuddyPaneHeaderView, OBPrivacyCombinedTableViewController, OBPrivacySplashController;
+@class NSArray, NSLayoutConstraint, NSString;
 
 __attribute__((visibility("hidden")))
-@interface OBPrivacyCombinedController_iOS : OBPrivacyCombinedController <OBNavigationBarTitleTransistor, UIScrollViewDelegate>
+@interface OBPrivacyCombinedController_iOS : OBPrivacyCombinedController <OBNavigationBarTitleTransistor, UITableViewDelegate, UITableViewDataSource>
 {
-    OBPrivacySplashController *_initialSplashController;
-    OBPrivacyCombinedTableViewController *_tableViewController;
-    OBBuddyPaneHeaderView *_headerView;
-    BOOL _didFirstLayout;
+    NSLayoutConstraint *_tableViewHeightConstraint;
     NSArray *_identifiers;
+    NSArray *_privacyFlows;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
+@property (strong) NSArray *privacyFlows; // @synthesize privacyFlows=_privacyFlows;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSLayoutConstraint *tableViewHeightConstraint; // @synthesize tableViewHeightConstraint=_tableViewHeightConstraint;
 
 - (void).cxx_destruct;
 - (id)initWithIdentifiers:(id)arg1;
-- (void)loadView;
-- (void)restoreNavigationBarAppearance;
-- (void)scrollViewDidScroll:(id)arg1;
-- (void)setCurrentNavigationBarDisplayState:(id)arg1;
-- (void)setDarkMode:(BOOL)arg1;
-- (void)updateBackgroundColor;
-- (void)updateNavigationBarAnimated:(BOOL)arg1;
+- (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)showPrivacyGateway:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 
 @end
 

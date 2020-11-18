@@ -14,11 +14,16 @@
 
 @property (readonly, nonatomic) NSString *accessoryTitle;
 @property (readonly, nonatomic) PHCollection *collection;
+@property (readonly, nonatomic, getter=isDraggable) BOOL draggable;
 @property (readonly, nonatomic, getter=isExpandable) BOOL expandable;
 @property (readonly, nonatomic, getter=isExpanded) BOOL expanded;
+@property (readonly, nonatomic) NSString *glyphImageName;
+@property (readonly, nonatomic, getter=isGroup) BOOL group;
 @property (readonly, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) NSString *imageName;
 @property (readonly, nonatomic) long long indentationLevel;
+@property (readonly, nonatomic, getter=isRemovable) BOOL removable;
+@property (readonly, nonatomic, getter=isRenamable) BOOL renamable;
+@property (readonly, nonatomic) id representedObject;
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSString *visualDescription;
 

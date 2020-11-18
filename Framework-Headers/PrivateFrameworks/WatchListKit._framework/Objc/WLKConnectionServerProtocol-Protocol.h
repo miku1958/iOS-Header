@@ -9,8 +9,11 @@
 @class NSDictionary, NSNumber, NSString, WLKPlaybackSummary;
 
 @protocol WLKConnectionServerProtocol <NSObject>
+- (void)clearOffers:(void (^)(NSError *))arg1;
 - (void)deletePlaybackActivityWithIdentifier:(NSString *)arg1 bundleID:(NSString *)arg2;
+- (void)endPlaybackSession:(NSString *)arg1;
 - (void)fetchApplications:(void (^)(NSDictionary *))arg1;
+- (void)fetchOffers:(BOOL)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchSettings:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)ping;
 - (void)postSettings:(NSDictionary *)arg1 replyHandler:(void (^)(BOOL, NSError *))arg2;
@@ -18,9 +21,12 @@
 - (void)readLocation:(void (^)(NSDictionary *))arg1;
 - (void)readSettingsStore:(void (^)(NSDictionary *))arg1;
 - (void)reportPlayback:(WLKPlaybackSummary *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)reportPlayback:(WLKPlaybackSummary *)arg1 sessionID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)requestConsentForBundleID:(NSString *)arg1 forceAuth:(BOOL)arg2 replyHandler:(void (^)(BOOL))arg3;
-- (void)requestPlaybackSummary:(void (^)(WLKPlaybackSummary *))arg1;
+- (void)requestDecoratedNowPlayingSummaries:(void (^)(NSDictionary *))arg1;
+- (void)requestNowPlayingSummary:(void (^)(WLKPlaybackSummary *))arg1;
 - (void)requestPlaybackSummaryForID:(NSNumber *)arg1 completion:(void (^)(WLKPlaybackSummary *))arg2;
+- (void)saveOffer:(NSDictionary *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)writeLocation:(NSDictionary *)arg1 replyHandler:(void (^)(BOOL))arg2;
 - (void)writeSettingsStore:(NSDictionary *)arg1 replyHandler:(void (^)(BOOL))arg2;
 @end

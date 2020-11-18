@@ -25,7 +25,7 @@
 - (id)initWithDeviceUniqueID:(id)arg1 cbuuid:(id)arg2 linkBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)invalidate;
 - (BOOL)isCommnatDiscoveryDone;
-- (void)processCommnatResponse:(CDStruct_c4cff10b *)arg1 arrivalTime:(double)arg2;
+- (void)processCommnatResponse:(CDStruct_12676517 *)arg1 arrivalTime:(double)arg2;
 - (void)sendCommnatRequest:(id)arg1 candidate:(id)arg2;
 - (void)startCommnatDiscoveryForHostCandidates:(id)arg1;
 

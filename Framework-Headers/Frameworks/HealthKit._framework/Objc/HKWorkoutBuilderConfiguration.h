@@ -11,6 +11,7 @@
 @interface HKWorkoutBuilderConfiguration : HKTaskConfiguration
 {
     BOOL _shouldCollectWorkoutEvents;
+    BOOL _requiresRecovery;
     HKDevice *_device;
     HKWorkoutConfiguration *_workoutConfiguration;
     unsigned long long _goalType;
@@ -22,6 +23,7 @@
 @property (copy, nonatomic) HKDevice *device; // @synthesize device=_device;
 @property (copy, nonatomic) HKQuantity *goal; // @synthesize goal=_goal;
 @property (nonatomic) unsigned long long goalType; // @synthesize goalType=_goalType;
+@property (nonatomic) BOOL requiresRecovery; // @synthesize requiresRecovery=_requiresRecovery;
 @property (nonatomic) BOOL shouldCollectWorkoutEvents; // @synthesize shouldCollectWorkoutEvents=_shouldCollectWorkoutEvents;
 @property (copy, nonatomic) HKWorkoutConfiguration *workoutConfiguration; // @synthesize workoutConfiguration=_workoutConfiguration;
 

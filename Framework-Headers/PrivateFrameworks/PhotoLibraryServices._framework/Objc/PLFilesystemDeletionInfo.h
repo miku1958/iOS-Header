@@ -20,17 +20,17 @@
     unsigned long long _timestamp;
 }
 
-@property (readonly, strong) NSString *directory; // @synthesize directory=_directory;
+@property (readonly) NSString *directory; // @synthesize directory=_directory;
 @property (strong) NSArray *fileURLs; // @synthesize fileURLs=_fileURLs;
-@property (readonly, strong) NSString *filename; // @synthesize filename=_filename;
-@property (readonly, strong) NSURL *objectIDURI; // @synthesize objectIDURI=_objectIDURI;
+@property (readonly) NSString *filename; // @synthesize filename=_filename;
+@property (readonly) NSURL *objectIDURI; // @synthesize objectIDURI=_objectIDURI;
 @property (strong) NSString *thumbnailIdentifier; // @synthesize thumbnailIdentifier=_thumbnailIdentifier;
 @property (readonly) unsigned long long thumbnailIndex; // @synthesize thumbnailIndex=_thumbnailIndex;
 @property (readonly) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
-@property (readonly, strong) NSString *uuid; // @synthesize uuid=_uuid;
+@property (readonly) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (id)deletionInfoWithAsset:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithObjectIDURI:(id)arg1 directory:(id)arg2 filename:(id)arg3 fileURLs:(id)arg4 thumbnailIndex:(unsigned long long)arg5 thumbnailIdentifier:(id)arg6 uuid:(id)arg7 timestamp:(unsigned long long)arg8;
 

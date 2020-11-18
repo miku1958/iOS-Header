@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSTCell, TSTCellMap;
+@class TSTCell, TSTCellMap, TSTConcurrentCellMap;
 
 @protocol TSTCellWillChangeProtocol
 - (void)willApplyBaseCellMap:(TSTCellMap *)arg1;
 - (void)willApplyCell:(TSTCell *)arg1 baseCellCoord:(struct TSUModelCellCoord)arg2;
+- (void)willApplyConcurrentCellMap:(TSTConcurrentCellMap *)arg1;
 - (void)willRemoveRows:(const vector_4dc5f307 *)arg1;
 @end
 

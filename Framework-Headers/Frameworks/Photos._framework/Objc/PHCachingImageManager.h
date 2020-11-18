@@ -6,25 +6,47 @@
 
 #import <Photos/PHImageManager.h>
 
-@interface PHCachingImageManager : PHImageManager
+#import <Photos/PHImageCacheDelegate-Protocol.h>
+
+@class NSMutableSet, NSObject, NSString, PHImageCache, PHPhotoLibrary;
+@protocol OS_dispatch_queue, OS_dispatch_source;
+
+@interface PHCachingImageManager : PHImageManager <PHImageCacheDelegate>
 {
+    NSMutableSet *_cachingRequestIDs;
+    struct os_unfair_lock_s _cachingLock;
+    PHImageCache *_imageCache;
+    BOOL _imageCacheCommitScheduled;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    PHPhotoLibrary *_photoLibrary;
+    NSObject<OS_dispatch_source> *_memoryEventSource;
     BOOL _allowsCachingHighQualityImages;
 }
 
 @property (nonatomic) BOOL allowsCachingHighQualityImages; // @synthesize allowsCachingHighQualityImages=_allowsCachingHighQualityImages;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-- (id)_fireCloudDownloadOfImageForAsset:(id)arg1 format:(int)arg2 optimalSourcePixelSize:(struct CGSize)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)_highPriorityRequestWaitGroup;
-- (id)_modernCachingImageManager;
-- (BOOL)canAvoidTouchingAssetsWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 options:(id)arg3 outBestFormat:(int *)arg4 outBestFormatIsTable:(BOOL *)arg5 outDegradedFormat:(int *)arg6 outDegradedFormatIsTable:(BOOL *)arg7;
-- (id)description;
++ (id)_chooseImageTableFormatForPreheatingFromFormats:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 returnBestTableRegardlessOfFit:(BOOL)arg4;
+- (void).cxx_destruct;
+- (id)_cacheFailReasonFromInfo:(id)arg1;
+- (BOOL)_cacheImageResult:(id)arg1 forRequest:(id)arg2;
+- (BOOL)_canPopulateCacheForResult:(id)arg1;
+- (void)_commitCacheChanges;
+- (void)_handleCachingImageRequestResult:(id)arg1 request:(id)arg2 context:(id)arg3;
+- (id)_imageTableForPreheatingDegradedOpportunisticRequestsWithPhotoLibrary:(id)arg1;
+- (void)_preheatImageTable:(id)arg1 forAssets:(id)arg2;
+- (void)_scheduleOrCommitCacheChangesIfNeeded;
+- (id)_tableFormats;
+- (void)additionalWorkForImageRequestCompletedWithResult:(id)arg1 request:(id)arg2 context:(id)arg3;
+- (void)imageCache:(id)arg1 didEvictCacheEntry:(id)arg2;
 - (id)init;
-- (int)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (void)mediaRequestContext:(id)arg1 isQueryingCacheForRequest:(id)arg2 didWait:(BOOL *)arg3 didFindImage:(BOOL *)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (void)startCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
-- (void)startCachingImagesForImageLoadingAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
 - (void)stopCachingImagesForAllAssets;
 - (void)stopCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
-- (void)stopCachingImagesForImageLoadingAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
 
 @end
 

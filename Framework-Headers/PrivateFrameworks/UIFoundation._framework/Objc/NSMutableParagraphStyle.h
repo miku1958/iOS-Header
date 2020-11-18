@@ -35,12 +35,14 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)removeTabStop:(id)arg1;
 - (void)setAllowsHangingPunctuation:(BOOL)arg1;
+- (void)setCompositionLanguage:(long long)arg1;
 - (void)setHeaderLevel:(long long)arg1;
 - (void)setLineBreakStrategy:(unsigned long long)arg1;
 - (void)setParagraphStyle:(id)arg1;
 - (void)setTextBlocks:(id)arg1;
 - (void)setTextLists:(id)arg1;
 - (void)setTighteningFactorForTruncation:(float)arg1;
+- (void)setUsesDefaultHyphenation:(BOOL)arg1;
 - (void)setUsesOpticalAlignment:(BOOL)arg1;
 
 @end

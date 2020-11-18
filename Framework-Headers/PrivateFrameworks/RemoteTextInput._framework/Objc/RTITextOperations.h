@@ -16,9 +16,14 @@
     TIKeyboardIntermediateText *_intermediateText;
     RTIStyledIntermediateText *_styledIntermediateText;
     NSDictionary *_attributedPlaceholders;
+    NSAttributedString *_textCheckingAnnotatedString;
     NSString *_textToAssert;
     SEL _editingActionSelector;
+    NSString *_textCheckingAnnotationToRemove;
     struct _NSRange _selectionRangeToAssert;
+    struct _NSRange _textCheckingAnnotationRange;
+    struct _NSRange _textCheckingReplacementRange;
+    struct _NSRange _textCheckingAnnotationRemovalRange;
 }
 
 @property (readonly, nonatomic) NSAttributedString *attributedInsertionText;
@@ -29,6 +34,11 @@
 @property (readonly, nonatomic) NSMutableDictionary *mutableAttributedPlaceholders;
 @property (nonatomic) struct _NSRange selectionRangeToAssert; // @synthesize selectionRangeToAssert=_selectionRangeToAssert;
 @property (strong, nonatomic) RTIStyledIntermediateText *styledIntermediateText; // @synthesize styledIntermediateText=_styledIntermediateText;
+@property (copy, nonatomic) NSAttributedString *textCheckingAnnotatedString; // @synthesize textCheckingAnnotatedString=_textCheckingAnnotatedString;
+@property (nonatomic) struct _NSRange textCheckingAnnotationRange; // @synthesize textCheckingAnnotationRange=_textCheckingAnnotationRange;
+@property (nonatomic) struct _NSRange textCheckingAnnotationRemovalRange; // @synthesize textCheckingAnnotationRemovalRange=_textCheckingAnnotationRemovalRange;
+@property (copy, nonatomic) NSString *textCheckingAnnotationToRemove; // @synthesize textCheckingAnnotationToRemove=_textCheckingAnnotationToRemove;
+@property (nonatomic) struct _NSRange textCheckingReplacementRange; // @synthesize textCheckingReplacementRange=_textCheckingReplacementRange;
 @property (copy, nonatomic) NSString *textToAssert; // @synthesize textToAssert=_textToAssert;
 
 + (BOOL)supportsSecureCoding;

@@ -15,6 +15,8 @@
 @property (copy, nonatomic) NSString *assetInfo;
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (strong, nonatomic) SAMPPodcast *podcastEpisode;
+@property (copy, nonatomic) NSString *requesterSharedUserId;
+@property (copy, nonatomic) NSString *sharedUserIdFromPlayableITunesAccount;
 @property (nonatomic) BOOL startPlaying;
 
 + (id)playPodcastEpisode;

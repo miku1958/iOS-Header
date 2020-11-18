@@ -44,7 +44,9 @@
 @property (readonly, nonatomic) struct sqlite3 *sqliteDB;
 @property (nonatomic) long long user_version;
 
++ (id)_findAllDBFilesForURL:(id)arg1 error:(id *)arg2;
 + (id)defaultPragmas;
++ (BOOL)renameAllDBFilesFrom:(id)arg1 to:(id)arg2;
 - (void).cxx_destruct;
 - (id)UUIDForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;
 - (BOOL)_bindParameter:(const char *)arg1 inStatement:(struct sqlite3_stmt *)arg2 error:(id *)arg3 withBinder:(CDUnknownBlockType)arg4;
@@ -94,11 +96,13 @@
 - (void)executeSync:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)getAllTables;
 - (id)getTablesLike:(id)arg1;
+- (id)init;
 - (id)initWithQueueName:(const char *)arg1 log:(id)arg2 databaseFileURL:(id)arg3 sqliteFlags:(int)arg4 pragmas:(id)arg5 setupBlock:(CDUnknownBlockType)arg6;
 - (id)initWithQueueName:(const char *)arg1 logFacility:(const char *)arg2 dbFilePath:(id)arg3 sqliteFlags:(int)arg4 pragmas:(id)arg5 setupBlock:(CDUnknownBlockType)arg6;
 - (long long)int64ForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;
 - (int)intForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;
 - (long long)lastInsertRowID;
+- (BOOL)moveExternalResourceAtURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 - (id)noCopyBlobForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;
 - (BOOL)prepareStatement:(const char *)arg1 forKey:(id)arg2;
 - (BOOL)registerVirtualTable:(id)arg1;

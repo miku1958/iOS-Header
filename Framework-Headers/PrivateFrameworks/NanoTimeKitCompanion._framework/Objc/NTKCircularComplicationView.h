@@ -17,6 +17,8 @@
     UIView *_platter;
     UIView *_highlightView;
     NSDate *_timeTravelDate;
+    UIColor *_computedForegroundColor;
+    UIColor *_computedPlatterColor;
     BOOL canUseCurvedText;
     BOOL _useRoundedFontDesign;
     BOOL _usesMediumLayout;
@@ -54,6 +56,10 @@
 + (id)mediumViewForComplicationType:(unsigned long long)arg1;
 + (id)viewForComplicationType:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)_computeForegroundColor;
+- (void)_computePlatterColor;
+- (id)_computedForegroundColor;
+- (id)_computedPlatterColor;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)_fontForDynamicFontSize:(long long)arg1;
 - (CDStruct_69ceb9b6)_layoutConstants;
@@ -61,9 +67,11 @@
 - (id)_newLabelSubviewWithFont:(id)arg1;
 - (void)_updateColorChange;
 - (void)_updateForTemplateChange;
+- (void)_updateForegroundColor;
 - (void)_updateImageViewColor:(id)arg1;
 - (void)_updateLabelViewColor:(id)arg1;
 - (void)_updateLabelsForFontChange;
+- (void)_updatePlatterColor;
 - (long long)_variableFontSizeForText:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

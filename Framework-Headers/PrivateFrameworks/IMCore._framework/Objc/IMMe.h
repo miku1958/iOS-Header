@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class IMHandle, IMPerson, NSArray, NSMutableArray, NSString;
+@class CNContact, IMHandle, IMPerson, NSArray, NSMutableArray, NSString;
 
 @interface IMMe : NSObject
 {
     IMPerson *_person;
+    CNContact *_cnContact;
     NSString *_abNickname;
     NSString *_abFirstName;
     NSString *_abFullName;
@@ -21,6 +22,7 @@
 }
 
 @property (readonly, nonatomic) IMHandle *bestIMHandle;
+@property (readonly, nonatomic) CNContact *cnContact; // @synthesize cnContact=_cnContact;
 @property (readonly, nonatomic) NSString *email;
 @property (readonly, nonatomic) NSArray *emails;
 @property (readonly, nonatomic) NSString *firstName;
@@ -32,7 +34,9 @@
 @property (readonly, nonatomic) IMPerson *person;
 
 + (id)fallbackUserName;
++ (id)firstNameFromFallbackUserName;
 + (id)imHandleForService:(id)arg1;
++ (id)lastNameFromFallbackUserName;
 + (id)me;
 - (void).cxx_destruct;
 - (id)_imHandlesWithIDs:(id)arg1 onAccount:(id)arg2;
@@ -47,6 +51,7 @@
 - (BOOL)removeIMHandle:(id)arg1;
 - (BOOL)removeLoginIMHandle:(id)arg1;
 - (void)resetABPerson;
+- (void)setCNContact:(id)arg1;
 - (void)setFirstName:(id)arg1 lastName:(id)arg2;
 - (void)setIMPerson:(id)arg1;
 

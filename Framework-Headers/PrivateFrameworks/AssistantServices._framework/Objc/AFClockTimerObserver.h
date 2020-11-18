@@ -40,7 +40,7 @@
 - (void)dealloc;
 - (void)firingTimerChanged:(id)arg1;
 - (void)firingTimerDismissed:(id)arg1;
-- (void)getNotifiedFiringTimerIDsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getFiringTimerIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getTimerSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidate;

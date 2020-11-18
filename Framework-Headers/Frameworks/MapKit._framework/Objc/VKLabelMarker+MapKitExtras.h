@@ -6,13 +6,33 @@
 
 #import <VectorKit/VKLabelMarker.h>
 
-@class MKMapItemIdentifier;
+#import <MapKit/GEOTransitArtworkDataSource-Protocol.h>
 
-@interface VKLabelMarker (MapKitExtras)
+@class MKMapItemIdentifier, NSString, UIView;
+@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
+@interface VKLabelMarker (MapKitExtras) <GEOTransitArtworkDataSource>
+
+@property (readonly, nonatomic) NSString *accessibilityText;
+@property (readonly, nonatomic) int artworkSourceType;
+@property (readonly, nonatomic) int artworkUseType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIView *detailCalloutAccessoryView;
 @property (readonly, nonatomic) MKMapItemIdentifier *flyoverTourIdentifier;
+@property (readonly, nonatomic) BOOL hasRoutingIncidentBadge;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<GEOTransitIconDataSource> iconDataSource;
+@property (readonly, nonatomic) id<GEOTransitShieldDataSource> iconFallbackShieldDataSource;
 @property (readonly, nonatomic) MKMapItemIdentifier *identifier;
+@property (strong, nonatomic) UIView *leftCalloutAccessoryView;
+@property (strong, nonatomic) UIView *rightCalloutAccessoryView;
+@property (readonly, nonatomic) id<GEOTransitShieldDataSource> shieldDataSource;
+@property (copy, nonatomic) NSString *subtitle;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressCallout;
+@property (readonly, nonatomic) id<GEOTransitTextDataSource> textDataSource;
+@property (readonly, nonatomic) NSString *title;
 
 - (id)_annotationTitle;
 @end

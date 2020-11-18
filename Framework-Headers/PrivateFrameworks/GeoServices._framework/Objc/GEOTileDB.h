@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOCountryConfiguration, GEOResourceManifestManager, GEOSQLiteDB, NSMutableDictionary, NSString, _GEOTileDBWriteQueue;
-@protocol OS_dispatch_queue;
+@class GEOCountryConfiguration, GEOResourceManifestManager, GEOSQLiteDB, NSMutableDictionary, NSString, NSURL, _GEOTileDBWriteQueue, geo_isolater;
 
 @interface GEOTileDB : NSObject
 {
@@ -18,7 +17,7 @@
     BOOL _tileDataSizeIsValid;
     GEOCountryConfiguration *_countryConfiguration;
     GEOResourceManifestManager *_manifestManager;
-    NSObject<OS_dispatch_queue> *_infrequentlyChangingMetadataQueue;
+    geo_isolater *_infrequentlyChangingMetadataIsolater;
     CDStruct_e4886f83 *_expirationRecords;
     unsigned long long _expirationRecordsCount;
     BOOL _preloading;
@@ -26,6 +25,8 @@
     NSString *_devicePostureCountry;
     NSString *_devicePostureRegion;
     NSMutableDictionary *_editionsMap;
+    NSURL *_baseDirectory;
+    NSURL *_externalDataDirectory;
 }
 
 @property (readonly, nonatomic) NSString *devicePostureCountry;
@@ -34,6 +35,7 @@
 - (void).cxx_destruct;
 - (void)_addDataOnDBQueueWithData:(id)arg1 key:(const struct _GEOTileKey *)arg2 tileSet:(unsigned int)arg3 ETag:(id)arg4 reason:(unsigned char)arg5;
 - (unsigned long long)_allTileDataSize;
+- (void)_cleanUpOrphanedExternalResources;
 - (void)_countryChanged:(id)arg1;
 - (BOOL)_dataForKeyOnDBQueue:(const struct _GEOTileKey *)arg1 reason:(unsigned char)arg2 callbackQueue:(id)arg3 dataHandler:(CDUnknownBlockType)arg4;
 - (void)_decrementCalculatedTileDataSize:(unsigned long long)arg1;
@@ -42,6 +44,7 @@
 - (void)_deleteTileSet:(unsigned int)arg1;
 - (void)_deviceLocked:(id)arg1;
 - (void)_editionUpdate:(id)arg1;
+- (void)_enumerateAllKeysOnQueueIncludingData:(BOOL)arg1 dataHandler:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
 - (void)_evictIfNecessary;
 - (void)_evictVeryOldTiles;
 - (void)_flushPendingWrites;
@@ -65,21 +68,25 @@
 - (void)addData:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 edition:(unsigned int)arg3 set:(unsigned int)arg4 provider:(unsigned int)arg5 etag:(id)arg6 reason:(unsigned char)arg7;
 - (void)addData:(id)arg1 forKey:(const struct _GEOTileKey *)arg2 edition:(unsigned int)arg3 set:(unsigned int)arg4 provider:(unsigned int)arg5 etag:(id)arg6 reason:(unsigned char)arg7 isIdenticalToExistingStaleData:(BOOL)arg8;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1;
+- (unsigned long long)calculateFreeableSizeSync;
 - (void)calculateFreeableSizeWithQueue:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)dataForKeys:(id)arg1 reason:(unsigned char)arg2 group:(id)arg3 callbackQueue:(id)arg4 dataHandler:(CDUnknownBlockType)arg5;
 - (void)deleteDataForKey:(const struct _GEOTileKey *)arg1;
 - (void)endPreloadSession;
+- (void)enumerateAllKeysIncludingData:(BOOL)arg1 onQueue:(id)arg2 group:(id)arg3 dataHandler:(CDUnknownBlockType)arg4;
 - (void)evaluateDevicePostureAgainstCurrentManifest:(id)arg1;
 - (void)evictVeryOldTilesWithGroup:(id)arg1;
 - (void)flushPendingWritesWithGroup:(id)arg1;
 - (void)getLastAccessTimestampForKey:(const struct _GEOTileKey *)arg1 callbackQueue:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)getStaleTileKeysUsedSince:(double)arg1 fromTileSets:(id)arg2 maxCount:(unsigned long long)arg3 maxTotalSize:(unsigned long long)arg4 queue:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (id)init;
-- (id)initWithDBFilePath:(id)arg1;
-- (id)initWithDBFilePath:(id)arg1 manifestManager:(id)arg2 countryConfiguration:(id)arg3 maximumDatabaseSize:(unsigned long long)arg4;
+- (id)initWithBaseDirectory:(id)arg1;
+- (id)initWithBaseDirectory:(id)arg1 manifestManager:(id)arg2 countryConfiguration:(id)arg3 maximumDatabaseSize:(unsigned long long)arg4;
 - (void)setExpirationRecords:(CDStruct_e4886f83 *)arg1 count:(unsigned long long)arg2;
 - (void)shrinkBySize:(unsigned long long)arg1 queue:(id)arg2 callback:(CDUnknownBlockType)arg3;
+- (unsigned long long)shrinkBySizeSync:(unsigned long long)arg1;
 - (void)shrinkToSize:(unsigned long long)arg1 queue:(id)arg2 finished:(CDUnknownBlockType)arg3;
+- (unsigned long long)shrinkToSizeSync:(unsigned long long)arg1;
 - (void)tearDown;
 
 @end

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoardServices/SBSAbstractApplicationService.h>
+#import <objc/NSObject.h>
 
-@interface SBSApplicationCarPlayService : SBSAbstractApplicationService
+@interface SBSApplicationCarPlayService : NSObject
 {
 }
 

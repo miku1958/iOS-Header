@@ -41,7 +41,6 @@
 - (void)dbQueueSetPersistentObject:(id)arg1 forKey:(id)arg2;
 - (void)dbQueueSetPersistentString:(id)arg1 forKey:(id)arg2;
 - (BOOL)dbQueueUpgradeFromDatabaseVersion:(int)arg1 currentVersion:(int)arg2;
-- (void)dealloc;
 - (void)deletePersistentValueWithKey:(id)arg1;
 - (void)endTransaction;
 - (id)initWithPersonID:(id)arg1 databasePath:(id)arg2 currentVersion:(int)arg3;

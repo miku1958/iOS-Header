@@ -37,6 +37,7 @@
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (nonatomic) BOOL useHistoricalHistogram; // @synthesize useHistoricalHistogram=_useHistoricalHistogram;
 
++ (BOOL)calendar:(id)arg1 isWeekendWithIntervalToWeekdayWeekendTransition:(double *)arg2 containingOrAfterDate:(id)arg3;
 + (id)predictionQueryForStream:(id)arg1 withPredicate:(id)arg2 withPredictionType:(unsigned long long)arg3;
 + (id)predictionQueryForStreams:(id)arg1 withPredicate:(id)arg2 withPredictionType:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
@@ -48,6 +49,7 @@
 - (int)computeSlotForDate:(id)arg1 relativeToDate:(id)arg2;
 - (int)computeSlotFromMidnightForDate:(id)arg1;
 - (id)constructTimelineWithObservations:(id)arg1 withFirstEventDate:(id)arg2 withHistogramInterval:(id)arg3 withPredictionStartDate:(id)arg4 durationSinceFirstEvent:(double)arg5;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)executeUsingCoreDataStorage:(id)arg1 error:(id *)arg2;
 - (void)handleEventPredictionWithEventStartDate:(id)arg1 eventEndDate:(id)arg2 predictionStartDate:(id)arg3 durationSinceFirstEvent:(double)arg4 calendar:(id)arg5 observations:(id)arg6 useWeights:(BOOL)arg7;

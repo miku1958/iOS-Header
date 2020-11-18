@@ -8,30 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDRelatedSearchSuggestion, NSString, PBUnknownFields;
+@class GEOPDRelatedSearchSuggestion, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDDisplayHeaderSubstitute : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_interpretedQuery;
     GEOPDRelatedSearchSuggestion *_relatedSearchSuggestion;
     int _substituteType;
     struct {
-        unsigned int substituteType:1;
-    } _has;
+        unsigned int has_substituteType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_interpretedQuery:1;
+        unsigned int read_relatedSearchSuggestion:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_interpretedQuery:1;
+        unsigned int wrote_relatedSearchSuggestion:1;
+        unsigned int wrote_substituteType:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasInterpretedQuery;
 @property (readonly, nonatomic) BOOL hasRelatedSearchSuggestion;
 @property (nonatomic) BOOL hasSubstituteType;
-@property (strong, nonatomic) NSString *interpretedQuery; // @synthesize interpretedQuery=_interpretedQuery;
-@property (strong, nonatomic) GEOPDRelatedSearchSuggestion *relatedSearchSuggestion; // @synthesize relatedSearchSuggestion=_relatedSearchSuggestion;
-@property (nonatomic) int substituteType; // @synthesize substituteType=_substituteType;
+@property (strong, nonatomic) NSString *interpretedQuery;
+@property (strong, nonatomic) GEOPDRelatedSearchSuggestion *relatedSearchSuggestion;
+@property (nonatomic) int substituteType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSubstituteType:(id)arg1;
+- (void)_readInterpretedQuery;
+- (void)_readRelatedSearchSuggestion;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)substituteTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

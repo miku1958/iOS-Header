@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithExternalDevice:(id)arg1;
 

@@ -29,6 +29,7 @@
 - (long long)discoveryMode;
 - (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initWithThrottlingEnabled:(BOOL)arg1;
 - (void)setDiscoveryMode:(long long)arg1;
 - (void)setPickedRoute:(id)arg1 withPassword:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

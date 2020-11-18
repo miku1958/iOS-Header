@@ -7,6 +7,12 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (FIUIBackupSupport)
++ (void)fu_backupAndSetBool:(BOOL)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetDouble:(double)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetFloat:(float)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetInteger:(long long)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetObject:(id)arg1 forKey:(id)arg2;
++ (void)fu_backupAndSetURL:(id)arg1 forKey:(id)arg2;
 + (void)fu_backupStandardUserDefaultsKey:(id)arg1;
 + (void)fu_backupStandardUserDefaultsKey:(id)arg1 useContainer:(BOOL)arg2;
 + (id)fu_npsManager;

@@ -13,6 +13,7 @@
 @class MFContactsSearchManager, NSArray, NSMutableArray, NSNumber, NSString, UITableView, UIView;
 @protocol SKUIGiftContactSearchDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftContactSearchController : NSObject <MFContactsSearchConsumer, UITableViewDataSource, UITableViewDelegate>
 {
     NSMutableArray *_autocompleteSearchResults;
@@ -40,6 +41,7 @@
 - (void)consumeAutocompleteSearchResults:(id)arg1 taskID:(id)arg2;
 - (void)dealloc;
 - (void)finishedSearchingForAutocompleteResults;
+- (void)makeChildLabelsSupportDarkMode:(id)arg1;
 - (void)resetSearch;
 - (void)searchForText:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

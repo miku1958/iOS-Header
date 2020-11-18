@@ -18,9 +18,11 @@
 @property (nonatomic) BOOL hasDestinationType;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasPreferredCallProvider;
+@property (nonatomic) BOOL hasRecordTypeForRedialing;
 @property (nonatomic) BOOL hasTtyType;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property (nonatomic) int preferredCallProvider;
+@property (nonatomic) int recordTypeForRedialing;
 @property (copy, nonatomic) NSArray *targetContacts;
 @property (readonly, nonatomic) unsigned long long targetContactsCount;
 @property (nonatomic) int ttyType;
@@ -30,6 +32,7 @@
 - (int)StringAsAudioRoute:(NSString *)arg1;
 - (int)StringAsDestinationType:(NSString *)arg1;
 - (int)StringAsPreferredCallProvider:(NSString *)arg1;
+- (int)StringAsRecordTypeForRedialing:(NSString *)arg1;
 - (int)StringAsTTYType:(NSString *)arg1;
 - (void)addContact:(_INPBDialingContact *)arg1;
 - (void)addTargetContacts:(_INPBDialingContact *)arg1;
@@ -39,6 +42,7 @@
 - (_INPBDialingContact *)contactAtIndex:(unsigned long long)arg1;
 - (NSString *)destinationTypeAsString:(int)arg1;
 - (NSString *)preferredCallProviderAsString:(int)arg1;
+- (NSString *)recordTypeForRedialingAsString:(int)arg1;
 - (_INPBDialingContact *)targetContactsAtIndex:(unsigned long long)arg1;
 - (NSString *)ttyTypeAsString:(int)arg1;
 @end

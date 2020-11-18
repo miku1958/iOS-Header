@@ -10,7 +10,7 @@
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/RadiosPreferencesDelegate-Protocol.h>
 
-@class AWDMailNetworkDiagnosticsReport, CXCallObserver, CoreTelephonyClient, MFObservable, NSLock, NSMutableArray, NSMutableSet, NSString, RadiosPreferences;
+@class AWDMailNetworkDiagnosticsReport, CXCallObserver, CoreTelephonyClient, EFObservable, NSLock, NSMutableArray, NSMutableSet, NSString, RadiosPreferences;
 @protocol OS_dispatch_queue;
 
 @interface MFNetworkController : NSObject <MFDiagnosticsGenerator, RadiosPreferencesDelegate, CXCallObserverDelegate>
@@ -32,25 +32,36 @@
     NSObject<OS_dispatch_queue> *_prefsQueue;
     int _symptomsToken;
     CoreTelephonyClient *_ctc;
-    int _dataIndicator;
     NSObject<OS_dispatch_queue> *_dataStatusQueue;
     BOOL _cellularDataAvailable;
     struct __SCNetworkReachability *_reachability;
     struct __SCDynamicStore *_store;
     struct __CFRunLoopSource *_store_source;
     CXCallObserver *_callObserver;
+    int _dataIndicator;
 }
 
 @property (readonly, nonatomic) AWDMailNetworkDiagnosticsReport *awdNetworkDiagnosticReport;
+@property (readonly) int dataIndicator; // @synthesize dataIndicator=_dataIndicator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) BOOL hasAlternateAdvice;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) MFObservable *networkObservable;
+@property (readonly) BOOL inAirplaneMode;
+@property (readonly) BOOL is3GConnection;
+@property (readonly) BOOL is4GConnection;
+@property (readonly) BOOL isDataAvailable;
+@property (readonly) BOOL isFatPipe;
+@property (readonly) BOOL isNetworkUp;
+@property (readonly) BOOL isOnWWAN;
+@property (readonly, nonatomic) EFObservable *networkObservable;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) MFObservable *wifiObservable;
+@property (readonly) long long transportType;
+@property (readonly, nonatomic) EFObservable *wifiObservable;
 
 + (id)networkAssertionWithIdentifier:(id)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_carrierBundleDidChange;
 - (void)_checkKeys:(id)arg1 forStore:(struct __SCDynamicStore *)arg2;
 - (void)_handleWiFiNotification:(unsigned int)arg1;
@@ -74,16 +85,8 @@
 - (int)dataStatus;
 - (void)dataStatus:(id)arg1 dataStatusInfo:(id)arg2;
 - (void)dealloc;
-- (BOOL)hasAlternateAdvice;
-- (BOOL)inAirplaneMode;
 - (id)init;
 - (void)invalidate;
-- (BOOL)is3GConnection;
-- (BOOL)is4GConnection;
-- (BOOL)isDataAvailable;
-- (BOOL)isFatPipe;
-- (BOOL)isNetworkUp;
-- (BOOL)isOnWWAN;
 - (void)preferredDataSimChanged:(id)arg1;
 - (void)removeBackgroundWifiClient:(id)arg1;
 - (void)removeNetworkObserver:(id)arg1;

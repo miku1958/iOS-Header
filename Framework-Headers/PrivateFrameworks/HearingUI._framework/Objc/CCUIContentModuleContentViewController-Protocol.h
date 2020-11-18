@@ -6,10 +6,14 @@
 
 #import <HearingUI/NSObject-Protocol.h>
 
+@class UIViewPropertyAnimator;
+
 @protocol CCUIContentModuleContentViewController <NSObject>
 
+@property (readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property (readonly, nonatomic) double preferredExpandedContentHeight;
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
+@property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
 
 
@@ -19,7 +23,7 @@
 - (void)controlCenterWillPresent;
 - (void)didTransitionToExpandedContentMode:(BOOL)arg1;
 - (void)dismissPresentedContentAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
-- (void)performTransitionWithCustomAnimator:(void (^)(void))arg1 completion:(void (^)(BOOL))arg2;
+- (void)displayWillTurnOff;
 - (BOOL)shouldBeginTransitionToExpandedContentModule;
 - (BOOL)shouldFinishTransitionToExpandedContentModule;
 - (void)willBecomeActive;

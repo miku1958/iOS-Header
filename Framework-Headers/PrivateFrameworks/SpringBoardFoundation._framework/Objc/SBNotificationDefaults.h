@@ -13,6 +13,7 @@
 }
 
 @property (readonly, nonatomic) BOOL alwaysPerformDefaultAction; // @dynamic alwaysPerformDefaultAction;
+@property (readonly, nonatomic) BOOL alwaysSpeakNotifications; // @dynamic alwaysSpeakNotifications;
 @property (strong, nonatomic) NSArray *displayIDsWithBadgingEnabled; // @dynamic displayIDsWithBadgingEnabled;
 @property (readonly, nonatomic) BOOL dontSuppressForPrivacyWhenUnlocked; // @dynamic dontSuppressForPrivacyWhenUnlocked;
 @property (readonly, nonatomic) NSArray *legacyAlarmList; // @dynamic legacyAlarmList;

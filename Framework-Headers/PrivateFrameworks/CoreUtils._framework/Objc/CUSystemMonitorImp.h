@@ -9,7 +9,7 @@
 #import <CoreUtils/CXCallObserverDelegate-Protocol.h>
 #import <CoreUtils/FMFSessionDelegate-Protocol.h>
 
-@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, NSArray, NSData, NSString;
+@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, NSArray, NSData, NSMutableArray, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     CXCallObserver *_callObserver;
     int _activeCallCount;
     int _connectedCallCount;
+    int _familyBuddyToken;
     BOOL _familyFailed;
     NSArray *_familyMembers;
     BOOL _familyObserving;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
     NSString *_primaryNetworkSignature;
     int _powerSourceToken;
     BOOL _powerUnlimited;
+    NSString *_primaryAppleID;
     BOOL _primaryAppleIDActive;
     BOOL _primaryAppleIDIsHSA2;
     int _primaryAppleIDNotifyToken;
@@ -57,6 +59,12 @@ __attribute__((visibility("hidden")))
     BOOL _screenOn;
     int _screenBlankedToken;
     BOOL _screenSaverActive;
+    BOOL _scChangesPending;
+    struct __SCDynamicStore *_scDynamicStore;
+    NSMutableArray *_scInitialKeys;
+    NSString *_scKeySystemName;
+    NSArray *_scNotificationKeys;
+    NSString *_systemName;
     CUWiFiManager *_wifiManager;
     unsigned int _wifiFlags;
     int _wifiState;
@@ -109,6 +117,10 @@ __attribute__((visibility("hidden")))
 - (void)_screenOnMonitorStop;
 - (void)_screenSaverMonitorStart;
 - (void)_screenSaverMonitorStop;
+- (void)_systemConfigChanged:(id)arg1 initial:(BOOL)arg2;
+- (void)_systemConfigSystemNameChanged:(BOOL)arg1;
+- (void)_systemConfigUpdateKeyPtr:(id *)arg1 name:(id)arg2 enabled:(BOOL)arg3 creator:(CDUnknownBlockType)arg4;
+- (void)_systemConfigUpdateNotifications;
 - (void)_update;
 - (void)_wifiMonitorStart;
 - (void)_wifiMonitorStateChanged:(BOOL)arg1;

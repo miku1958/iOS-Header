@@ -10,17 +10,19 @@
 
 @interface MPPlaceholderAVItem : MPAVItem
 {
+    BOOL _explicitTrack;
+    BOOL _likeStateEnabled;
+    BOOL _supportsLikedState;
     NSString *_album;
     NSString *_artist;
     double _durationFromExternalMetadata;
-    BOOL _explicitTrack;
-    BOOL _likeStateEnabled;
     NSString *_mainTitle;
-    BOOL _supportsLikedState;
+    CDUnknownBlockType _artworkCatalogBlock;
 }
 
 @property (strong, nonatomic) NSString *album; // @synthesize album=_album;
 @property (strong, nonatomic) NSString *artist; // @synthesize artist=_artist;
+@property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @synthesize artworkCatalogBlock=_artworkCatalogBlock;
 @property (nonatomic) double durationFromExternalMetadata; // @synthesize durationFromExternalMetadata=_durationFromExternalMetadata;
 @property (nonatomic, getter=isExplicitTrack) BOOL explicitTrack; // @synthesize explicitTrack=_explicitTrack;
 @property (nonatomic, getter=isLikedStateEnabled) BOOL likedStateEnabled; // @synthesize likedStateEnabled=_likeStateEnabled;
@@ -29,10 +31,9 @@
 
 + (BOOL)isPlaceholder;
 - (void).cxx_destruct;
+- (id)description;
 - (BOOL)isValidPlayerSubstituteForItem:(id)arg1;
 - (void)loadAssetAndPlayerItem;
-- (BOOL)supportsSettingCurrentTime;
-- (BOOL)supportsSkip;
 
 @end
 

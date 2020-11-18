@@ -15,6 +15,8 @@
 {
     BOOL _needsToResolveHierarchy;
     BOOL _isFPV2;
+    BOOL _canBeRestored;
+    NSString *_originalSourceIdentifier;
     FPItem *_fileProviderItem;
     NSString *_promptText;
     NSString *_sourceIdentifier;
@@ -22,17 +24,22 @@
     NSArray *_tags;
 }
 
+@property BOOL canBeRestored; // @synthesize canBeRestored=_canBeRestored;
 @property (strong) FPItem *fileProviderItem; // @synthesize fileProviderItem=_fileProviderItem;
 @property BOOL isFPV2; // @synthesize isFPV2=_isFPV2;
+@property (readonly) BOOL isRoot;
 @property BOOL needsToResolveHierarchy; // @synthesize needsToResolveHierarchy=_needsToResolveHierarchy;
+@property (copy) NSString *originalSourceIdentifier; // @synthesize originalSourceIdentifier=_originalSourceIdentifier;
 @property (copy) NSString *promptText; // @synthesize promptText=_promptText;
+@property (readonly) NSString *shortDescription;
 @property (copy) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
-@property (readonly, copy) NSArray *tags; // @synthesize tags=_tags;
+@property (copy) NSArray *tags; // @synthesize tags=_tags;
 @property (copy) NSString *title; // @synthesize title=_title;
 
 + (id)defaultLocation;
 + (id)defaultSaveLocation;
 + (id)emptyLocation;
++ (id)iCloudDriveLocation;
 + (id)recentDocumentsLocation;
 + (id)recentsLocation;
 + (id)searchLocation;
@@ -40,12 +47,16 @@
 + (BOOL)supportsSecureCoding;
 + (id)trashedItemsLocation;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSourceIdentifier:(id)arg1 fileProviderItem:(id)arg2;
 - (id)initWithTags:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)navigationItemTitleForConfiguration:(id)arg1;
+- (id)placeholderLocation;
 
 @end
 

@@ -23,10 +23,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)addDataConsumer:(id)arg1;
 - (long long)appendData:(id)arg1;
 - (id)data;
-- (void)dealloc;
 - (void)done;
 - (id)initWithMainConsumer:(id)arg1;
 

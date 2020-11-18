@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIFont, UITraitCollection;
+@class UIFont, UIImageSymbolConfiguration, UITraitCollection;
 
 __attribute__((visibility("hidden")))
 @interface SFNavigationBarMetrics : NSObject
@@ -22,7 +22,9 @@ __attribute__((visibility("hidden")))
     double _safariViewControllerBarHeight;
     double _safariSquishHeightQuantizationOffset;
     double _safariViewControllerSquishHeightQuantizationOffset;
-    BOOL _usesLargerBarMetrics;
+    double _statusBarHeight;
+    UIImageSymbolConfiguration *_accessoryImageSymbolConfiguration;
+    UIImageSymbolConfiguration *_squishedAccessoryImageSymbolConfiguration;
     double _accessibilityImageScale;
     double _urlOutlineCornerRadius;
     double _defaultBarHeight;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) double accessibilityImageScale; // @synthesize accessibilityImageScale=_accessibilityImageScale;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *accessoryImageSymbolConfiguration;
 @property (readonly, nonatomic) double defaultBarHeight; // @synthesize defaultBarHeight=_defaultBarHeight;
 @property (readonly, nonatomic) UIFont *defaultBoldFont;
 @property (readonly, nonatomic) UIFont *defaultLabelFont;
@@ -42,22 +45,22 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double minimumBarHeight; // @synthesize minimumBarHeight=_minimumBarHeight;
 @property (readonly, nonatomic) UIFont *narrowEditingLabelFont;
 @property (readonly, nonatomic) double narrowEditingScaleFactor;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *squishedAccessoryImageSymbolConfiguration;
 @property (readonly, nonatomic) double urlContainerTop; // @synthesize urlContainerTop=_urlContainerTop;
 @property (readonly, nonatomic) double urlLabelAccessoryItemSquishedVerticalOffset; // @synthesize urlLabelAccessoryItemSquishedVerticalOffset=_urlLabelAccessoryItemSquishedVerticalOffset;
 @property (readonly, nonatomic) double urlLabelAccessoryLockItemVerticalOffset; // @synthesize urlLabelAccessoryLockItemVerticalOffset=_urlLabelAccessoryLockItemVerticalOffset;
 @property (readonly, nonatomic) double urlLabelVerticalOffset; // @synthesize urlLabelVerticalOffset=_urlLabelVerticalOffset;
 @property (readonly, nonatomic) double urlOutlineCornerRadius; // @synthesize urlOutlineCornerRadius=_urlOutlineCornerRadius;
 @property (readonly, nonatomic) double urlOutlineHeight; // @synthesize urlOutlineHeight=_urlOutlineHeight;
-@property (readonly, nonatomic) BOOL usesLargerBarMetrics; // @synthesize usesLargerBarMetrics=_usesLargerBarMetrics;
 
 - (void).cxx_destruct;
 - (id)_contentSizeCategoryWithPreferredCategory:(id)arg1;
 - (void)_updateMetrics;
 - (double)barHeightWithBarMetricsCategory:(long long)arg1;
-- (void)forceUpdate;
 - (id)init;
 - (double)squishHeightQuantizationOffsetWithBarMetricsCategory:(long long)arg1;
 - (BOOL)updateForContentSizeCategory:(id)arg1;
+- (BOOL)updateForStatusBarHeight:(double)arg1;
 
 @end
 

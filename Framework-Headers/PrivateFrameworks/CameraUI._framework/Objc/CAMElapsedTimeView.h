@@ -6,42 +6,52 @@
 
 #import <UIKit/UIView.h>
 
-@class NSDate, NSTimer, UIImageView, UILabel;
+@class NSDate, NSString, NSTimer, UIImageView, UILabel;
 
 @interface CAMElapsedTimeView : UIView
 {
+    BOOL _usingBadgeAppearance;
     long long _layoutStyle;
+    long long _backgroundStyle;
+    NSString *_contentSizeCategory;
     UILabel *__timeLabel;
     UIImageView *__recordingImageView;
+    UIImageView *__backgroundView;
     NSTimer *__updateTimer;
     NSDate *__startTime;
 }
 
+@property (readonly, nonatomic) UIImageView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property (readonly, nonatomic) UIImageView *_recordingImageView; // @synthesize _recordingImageView=__recordingImageView;
 @property (readonly, nonatomic) NSDate *_startTime; // @synthesize _startTime=__startTime;
 @property (readonly, nonatomic) UILabel *_timeLabel; // @synthesize _timeLabel=__timeLabel;
 @property (readonly, nonatomic) NSTimer *_updateTimer; // @synthesize _updateTimer=__updateTimer;
+@property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
+@property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property (nonatomic, getter=isShowingBackground) BOOL showingBackground;
+@property (readonly, nonatomic) BOOL usingBadgeAppearance; // @synthesize usingBadgeAppearance=_usingBadgeAppearance;
 
 - (void).cxx_destruct;
 - (void)_beginRecordingAnimation;
-- (void)_commonCAMElapsedTimeViewInitializationWithLayoutStyle:(long long)arg1;
+- (void)_commonCAMElapsedTimeViewInitializationWithLayoutStyle:(long long)arg1 usingBadgeAppearance:(BOOL)arg2;
 - (void)_endRecordingAnimation;
 - (void)_setStartTime:(id)arg1;
+- (void)_updateBackgroundViewAnimated:(BOOL)arg1;
 - (void)_updateFont;
 - (void)_updateForTimer:(id)arg1;
 - (void)_updateText;
 - (void)dealloc;
 - (void)endTimer;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithBadgeAppearance;
 - (id)initWithLayoutStyle:(long long)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)resetTimer;
+- (void)setBackgroundStyle:(long long)arg1 animated:(BOOL)arg2;
+- (void)setShowingBackground:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)startTimer;
-- (void)updateToContentSize:(id)arg1;
 
 @end
 

@@ -18,11 +18,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *lastSearchQuery;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property (readonly, nonatomic) long long parsecQueryID;
 @property (readonly, nonatomic) NSString *safari_loggingDescription;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
 @property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
 @property (readonly) Class superclass;
 
 + (id)safari_sfSearchResultWithUniqueIdentifier;
+- (id)_firstCardSectionOfClass:(Class)arg1 ofCard:(id)arg2 outIndex:(unsigned long long *)arg3;
+- (id)safari_firstCardSectionOfClass:(Class)arg1;
+- (id)safari_firstInlineCardSectionOfClass:(Class)arg1;
+- (unsigned long long)safari_indexOfFirstInlineCardSectionOfClass:(Class)arg1;
 @end
 

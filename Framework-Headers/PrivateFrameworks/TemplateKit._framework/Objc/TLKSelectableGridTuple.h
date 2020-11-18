@@ -15,7 +15,7 @@
     double _size;
 }
 
-@property double size; // @synthesize size=_size;
+@property (nonatomic) double size; // @synthesize size=_size;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 

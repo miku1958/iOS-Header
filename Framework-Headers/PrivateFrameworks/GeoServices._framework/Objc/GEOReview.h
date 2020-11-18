@@ -8,39 +8,64 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOUser, NSString, PBUnknownFields;
+@class GEOUser, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOReview : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    double _reviewTime;
-    double _score;
     NSString *_languageCode;
+    double _reviewTime;
     GEOUser *_reviewer;
+    double _score;
     NSString *_snippet;
     NSString *_uid;
+    BOOL _isChinaSuppressed;
     struct {
-        unsigned int reviewTime:1;
-        unsigned int score:1;
-    } _has;
+        unsigned int has_reviewTime:1;
+        unsigned int has_score:1;
+        unsigned int has_isChinaSuppressed:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_languageCode:1;
+        unsigned int read_reviewer:1;
+        unsigned int read_snippet:1;
+        unsigned int read_uid:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_languageCode:1;
+        unsigned int wrote_reviewTime:1;
+        unsigned int wrote_reviewer:1;
+        unsigned int wrote_score:1;
+        unsigned int wrote_snippet:1;
+        unsigned int wrote_uid:1;
+        unsigned int wrote_isChinaSuppressed:1;
+    } _flags;
 }
 
+@property (nonatomic) BOOL hasIsChinaSuppressed;
 @property (readonly, nonatomic) BOOL hasLanguageCode;
 @property (nonatomic) BOOL hasReviewTime;
 @property (readonly, nonatomic) BOOL hasReviewer;
 @property (nonatomic) BOOL hasScore;
 @property (readonly, nonatomic) BOOL hasSnippet;
 @property (readonly, nonatomic) BOOL hasUid;
-@property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
-@property (nonatomic) double reviewTime; // @synthesize reviewTime=_reviewTime;
-@property (strong, nonatomic) GEOUser *reviewer; // @synthesize reviewer=_reviewer;
-@property (nonatomic) double score; // @synthesize score=_score;
-@property (strong, nonatomic) NSString *snippet; // @synthesize snippet=_snippet;
-@property (strong, nonatomic) NSString *uid; // @synthesize uid=_uid;
+@property (nonatomic) BOOL isChinaSuppressed;
+@property (strong, nonatomic) NSString *languageCode;
+@property (nonatomic) double reviewTime;
+@property (strong, nonatomic) GEOUser *reviewer;
+@property (nonatomic) double score;
+@property (strong, nonatomic) NSString *snippet;
+@property (strong, nonatomic) NSString *uid;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readLanguageCode;
+- (void)_readReviewer;
+- (void)_readSnippet;
+- (void)_readUid;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

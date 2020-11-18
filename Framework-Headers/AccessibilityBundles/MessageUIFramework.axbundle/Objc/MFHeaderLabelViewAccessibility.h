@@ -12,8 +12,8 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsScannerElement;
 - (id)accessibilityHint;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (BOOL)isAccessibilityElement;
 
 @end

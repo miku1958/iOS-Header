@@ -6,56 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectContext, NSPersistentStore, NSString;
+#import <AccountsDaemon/ACDDatabaseConnectionDelegate-Protocol.h>
+#import <AccountsDaemon/ACDDatabaseProtocol-Protocol.h>
 
-@interface ACDDatabase : NSObject
+@class NSDictionary, NSPersistentStoreCoordinator, NSString, NSURL;
+
+@interface ACDDatabase : NSObject <ACDDatabaseConnectionDelegate, ACDDatabaseProtocol>
 {
-    NSString *_path;
-    NSManagedObjectContext *_context;
-    NSPersistentStore *_store;
-    id _contextDidSaveNotificationObserver;
+    NSPersistentStoreCoordinator *_persistentStoreCoordinator;
+    NSDictionary *_storeOptions;
+    NSURL *_databaseURL;
 }
 
-@property (nonatomic) long long keychainVersion;
-@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext; // @dynamic managedObjectContext;
-@property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
-@property (nonatomic) long long version; // @dynamic version;
+@property (readonly, nonatomic) NSURL *databaseURL; // @synthesize databaseURL=_databaseURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (BOOL)_addPersistentStoreWithURL:(id)arg1 toStoreCoordinator:(id)arg2 withOptions:(id)arg3 error:(id *)arg4;
-+ (struct __CFString *)_copyRootPath;
-+ (BOOL)_isUnrecoverableDatabaseError:(id)arg1;
-+ (id)_managedObjectModel;
-+ (id)_optionsForOpeningPersistentStore;
-+ (void)_removePersistentStoreAtURL:(id)arg1 forStoreCoordinator:(id)arg2;
-+ (void)_replacePersistentStoreAtURL:(id)arg1 withCleanStoreForCoordinator:(id)arg2;
-+ (void)_resetPeristentStoreCoordinator;
-+ (id)_sharedPersistentCoordinatorForStoreAtPath:(id)arg1;
-+ (id)defaultPath;
++ (id)new;
 - (void).cxx_destruct;
-- (id)_accountPropertyWithKey:(id)arg1 owner:(id)arg2;
-- (BOOL)_createLocalBackupCopy:(id *)arg1;
-- (BOOL)_databaseFileExists;
-- (void)_handleManagedObjectContextDidSaveNotification:(id)arg1;
-- (id)_localBackupDirectoryPath;
-- (id)_localBackupDirectoryURL;
-- (id)_localBackupStorePath;
-- (void)_setupManagedObjectContext;
-- (id)_store;
-- (unsigned long long)countOfEntityNamed:(id)arg1 withPredicate:(id)arg2;
-- (void)dealloc;
-- (void)deleteAccountPropertyWithKey:(id)arg1 owner:(id)arg2;
-- (id)existingObjectWithURI:(id)arg1;
-- (id)fetchObjectsForEntityNamed:(id)arg1;
-- (id)fetchObjectsForEntityNamed:(id)arg1 withPredicate:(id)arg2;
-- (id)fetchObjectsForEntityNamed:(id)arg1 withPredicate:(id)arg2 sortDescriptor:(id)arg3;
-- (id)initWithDefaultPath;
-- (id)initWithPath:(id)arg1;
-- (id)initWithTimeMachineHomeFolderPath:(id)arg1;
-- (id)managedObjectIDForURI:(id)arg1;
-- (id)objectForObjectURI:(id)arg1;
-- (BOOL)saveWithError:(id *)arg1;
-- (BOOL)saveWithError:(id *)arg1 rollbackOnFailure:(BOOL)arg2;
-- (void)setAccountPropertyWithKey:(id)arg1 value:(id)arg2 owner:(id)arg3;
+- (id)_addPersistentStoreWithType:(id)arg1 configuration:(id)arg2 URL:(id)arg3 options:(id)arg4 error:(id *)arg5;
+- (id)_backupURL;
+- (BOOL)_performBackupToURL:(id)arg1 unverifiedBackupURL:(id)arg2 error:(id *)arg3;
+- (BOOL)_persistentStoreCoodinator_resetPersistentStoreCoordinatorWithError:(id *)arg1;
+- (BOOL)_shouldResetPersistentStoreAfterError:(id)arg1;
+- (id)_unverifiedBackupURL;
+- (BOOL)_validateDatabaseAtURL:(id)arg1 error:(id *)arg2;
+- (id)createConnection;
+- (void)databaseConnection:(id)arg1 encounteredUnrecoverableError:(id)arg2;
+- (id)init;
+- (id)initWithDatabaseURL:(id)arg1;
+- (id)initWithDatabaseURL:(id)arg1 storeOptions:(id)arg2;
+- (BOOL)performBackupReturningError:(id *)arg1;
+- (BOOL)resetReturningError:(id *)arg1;
+- (BOOL)restoreFromBackupReturningError:(id *)arg1;
 
 @end
 

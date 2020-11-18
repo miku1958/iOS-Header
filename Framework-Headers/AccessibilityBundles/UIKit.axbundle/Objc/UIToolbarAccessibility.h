@@ -12,13 +12,14 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityFuzzyHitTestElements;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityOnlyComparesByXAxis;
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
+- (long long)accessibilityContainerType;
 - (id)accessibilityIdentifier;
-- (unsigned long long)accessibilityTraits;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CoreML/NSSecureCoding-Protocol.h>
+
 @class MLFeatureValue;
 
-@protocol MLFeatureValueConstraint
+@protocol MLFeatureValueConstraint <NSSecureCoding>
 - (BOOL)isAllowedValue:(MLFeatureValue *)arg1 error:(id *)arg2;
 @end
 

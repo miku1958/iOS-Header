@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) double minViewportAspectRatio;
 @property (readonly, nonatomic) double minViewportWidth;
 @property (readonly, nonatomic) NSString *platform;
+@property (readonly, nonatomic) unsigned long long preferredColorScheme;
 @property (readonly, nonatomic) NSString *subscriptionStatus;
 @property (readonly, nonatomic) unsigned long long testing;
 @property (readonly, nonatomic) long long verticalSizeClass;

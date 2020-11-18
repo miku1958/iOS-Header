@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     struct InteractionInformationAtPosition _positionInformation;
     struct RetainPtr<NSString> _suggestedFilename;
     struct WeakObjCPtr<WKWebView> _webView;
+    struct RetainPtr<WKKeyboardScrollViewAnimator> _keyboardScrollingAnimator;
 }
 
 @property (readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
@@ -49,6 +50,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL web_isBackground;
 @property (readonly, nonatomic) NSString *web_suggestedFilename;
 
++ (BOOL)web_requiresCustomSnapshotting;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_URLWithPageIndex:(long long)arg1;
@@ -81,7 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)pdfHostViewController:(id)arg1 goToURL:(id)arg2;
 - (void)pdfHostViewController:(id)arg1 updatePageCount:(long long)arg2;
 - (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
-- (Optional_4d2ea4a9)positionInformationForActionSheetAssistant:(id)arg1;
+- (Optional_2b0652bb)positionInformationForActionSheetAssistant:(id)arg1;
 - (void)web_beginAnimatedResizeWithUpdates:(CDUnknownBlockType)arg1;
 - (void)web_computedContentInsetDidChange;
 - (void)web_countStringMatches:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
@@ -98,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (void)web_setFixedOverlayView:(id)arg1;
 - (void)web_setMinimumSize:(struct CGSize)arg1;
 - (void)web_setOverlaidAccessoryViewsInset:(struct CGSize)arg1;
+- (void)web_snapshotRectInContentViewCoordinates:(struct CGRect)arg1 snapshotWidth:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -28,6 +28,9 @@
     NSSet *_observedQuantityTypes;
     _HKDelayedOperation *_updateOperation;
     _HKDelayedOperation *_rebuildOperation;
+    struct unordered_map<long long, bool, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, bool>>> _isWatchSourceCache;
+    struct unordered_map<long long, bool, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, bool>>> _isConnectedGymSourceCache;
+    struct unordered_map<long long, bool, std::__1::hash<long long>, std::__1::equal_to<long long>, std::__1::allocator<std::__1::pair<const long long, bool>>> _isConnectedGymDeviceCache;
     NSObject<OS_dispatch_queue> *_queue;
     HDProfile *_profile;
     HDActivityCacheStatisticsBuilder *_targetDayStatisticsBuilder;
@@ -61,6 +64,10 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_dateIntervalsAreSet;
+- (void)_deregisterForSamplesAdded;
+- (long long)_isConnectedGymDeviceForDeviceIdentifier:(long long)arg1 error:(id *)arg2;
+- (long long)_isConnectedGymSourceForSourceIdentifier:(long long)arg1 error:(id *)arg2;
+- (long long)_isWatchSourceForSourceIdentifier:(long long)arg1 error:(id *)arg2;
 - (BOOL)_nonQuantitySampleRequiresWatchSource:(long long)arg1;
 - (id)_nonQuantitySamplesQueryStringWithSampleTypes:(id)arg1;
 - (id)_overallDateInterval;
@@ -71,10 +78,9 @@
 - (BOOL)_quantitySampleIsValidWithTypeCode:(long long)arg1 workoutSourceIdentifier:(long long)arg2 isWatchSource:(BOOL)arg3;
 - (id)_quantitySamplesQueryStringWithQuantityTypes:(id)arg1;
 - (BOOL)_quantityTypeRequiresWatchSource:(long long)arg1;
-- (void)_queue_deregisterForSamplesAdded;
-- (void)_queue_registerForSamplesAdded;
 - (BOOL)_readyToPrimeActivationLogEntries;
 - (BOOL)_readyToPrimeStatisticsBuilders;
+- (void)_registerForSamplesAdded;
 - (void)_resetEverything;
 - (void)_resetPreviousWatchActivationLogEntries;
 - (void)_resetStatisticsBuilders;
@@ -84,6 +90,7 @@
 - (id)activityCacheStatisticsBuilder:(id)arg1 sourceOrderForObjectType:(id)arg2;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1 observedQuantityTypes:(id)arg2 updateOperation:(id)arg3 rebuildOperation:(id)arg4 queue:(id)arg5;
+- (void)invalidate;
 - (void)pauseUpdates;
 - (void)resumeUpdates;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;

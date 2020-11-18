@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_textureMipLevels;
 }
 
+- (void).cxx_destruct;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)_setStructuredThemeStore:(id)arg1;
 - (id)_texturedImageWithKey:(id)arg1;

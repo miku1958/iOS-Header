@@ -8,15 +8,24 @@
 
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class HFNumberValueConstraints, NSString;
 
 @interface HMCharacteristicMetadata (HFDebugging) <HFStateDumpBuildable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL hf_isNumeric;
+@property (readonly, nonatomic) HFNumberValueConstraints *hf_numericValueConstraints;
 @property (readonly) Class superclass;
 
+- (id)hf_characteristicValueForPercentage:(double)arg1;
+- (BOOL)hf_isEqualToMetadata:(id)arg1;
+- (BOOL)hf_isInteger;
+- (BOOL)hf_isValidValue:(id)arg1;
+- (id)hf_normalizedValueForValue:(id)arg1;
+- (id)hf_percentageForCharacteristicValue:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_valueRoundedToNearestStepValue:(id)arg1;
 @end
 

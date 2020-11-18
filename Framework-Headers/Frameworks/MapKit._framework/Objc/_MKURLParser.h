@@ -6,46 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapURLParser, GEOURLExtraStorage, GEOUserSessionEntity, NSString;
+@class GEOMapURLParser, GEOMuninViewState, GEOURLCollectionStorage, GEOURLExtraStorage, GEOUserSessionEntity, MKMapCamera, NSString;
 
 @interface _MKURLParser : NSObject
 {
     GEOMapURLParser *parser;
 }
 
-@property (readonly) NSString *abAddressID;
-@property (readonly) NSString *abRecordID;
+@property (readonly, nonatomic) NSString *abAddressID;
+@property (readonly, nonatomic) NSString *abRecordID;
 @property (readonly) NSString *addressString;
-@property (readonly) double altitude;
-@property (readonly) struct CLLocationCoordinate2D centerCoordinate;
-@property (readonly) NSString *cnAddressIdentifier;
-@property (readonly) NSString *cnContactIdentifier;
-@property (readonly) NSString *contentProvider;
-@property (readonly) NSString *contentProviderID;
+@property (readonly, nonatomic) double altitude;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D centerCoordinate;
+@property (readonly, nonatomic) NSString *cnAddressIdentifier;
+@property (readonly, nonatomic) NSString *cnContactIdentifier;
+@property (readonly, nonatomic) GEOURLCollectionStorage *collectionStorage;
+@property (readonly, nonatomic) NSString *contentProvider;
+@property (readonly, nonatomic) NSString *contentProviderID;
 @property (readonly) NSString *directionsDestinationAddressString;
 @property (readonly) NSString *directionsSourceAddressString;
-@property (readonly) BOOL exactPositionSpecified;
-@property (readonly) GEOURLExtraStorage *extraStorage;
-@property (readonly) long long favoritesType;
+@property (readonly, nonatomic) BOOL exactPositionSpecified;
+@property (readonly, nonatomic) GEOURLExtraStorage *extraStorage;
+@property (readonly, nonatomic) long long favoritesType;
 @property (readonly) NSString *label;
-@property (readonly) unsigned long long lineMUID;
+@property (readonly, nonatomic) unsigned long long lineMUID;
 @property (readonly, copy) NSString *lineName;
-@property (readonly) unsigned long long mapType;
-@property (readonly) double roll;
-@property (readonly) double rotation;
-@property (readonly) struct CLLocationCoordinate2D searchCoordinate;
-@property (readonly) int searchProviderID;
+@property (readonly, nonatomic) MKMapCamera *mapCamera;
+@property (readonly, nonatomic) unsigned long long mapType;
+@property (readonly, nonatomic) GEOMuninViewState *muninViewState;
+@property (readonly, nonatomic) double roll;
+@property (readonly, nonatomic) double rotation;
+@property (readonly, nonatomic) struct CLLocationCoordinate2D searchCoordinate;
+@property (readonly, nonatomic) int searchProviderID;
 @property (readonly) NSString *searchQuery;
-@property (readonly) CDStruct_b7cb895d searchRegion;
-@property (readonly) unsigned long long searchUID;
-@property (readonly) CDStruct_c3b9c2ee span;
-@property (readonly) BOOL tester;
-@property (readonly) double tilt;
-@property (readonly) long long trackingMode;
-@property (readonly) BOOL trackingModeSpecified;
-@property (readonly) unsigned long long transportType;
+@property (readonly, nonatomic) CDStruct_b7cb895d searchRegion;
+@property (readonly, nonatomic) unsigned long long searchUID;
+@property (readonly) BOOL showCarDestinations;
+@property (readonly, nonatomic) CDStruct_c3b9c2ee span;
+@property (readonly, nonatomic) BOOL tester;
+@property (readonly, nonatomic) double tilt;
+@property (readonly, nonatomic) long long trackingMode;
+@property (readonly, nonatomic) BOOL trackingModeSpecified;
+@property (readonly, nonatomic) unsigned long long transportType;
 @property (readonly) GEOUserSessionEntity *userSessionEntity;
-@property (readonly) float zoomLevel;
+@property (readonly, nonatomic) float zoomLevel;
 
 + (BOOL)isValidMapURL:(id)arg1;
 - (void).cxx_destruct;

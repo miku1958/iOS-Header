@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
     unsigned long long m_accessibilityTraitsFromAncestor;
 }
 
-- (void)_accessibilityActivate;
+- (BOOL)_accessibilityActivate;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityArticleAncestor;
 - (struct CGPoint)_accessibilityConvertPointToViewSpace:(struct CGPoint)arg1;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityFieldsetAncestor;
@@ -29,11 +29,13 @@ __attribute__((visibility("hidden")))
 - (id)_accessibilityParentForSubview:(id)arg1;
 - (struct CGPath *)_accessibilityPath;
 - (id)_accessibilityPreviousElementsWithCount:(unsigned int)arg1;
+- (struct CGRect)_accessibilityRelativeFrame;
 - (struct CGPoint)_accessibilityScrollPosition;
 - (struct CGSize)_accessibilityScrollSize;
 - (BOOL)_accessibilityScrollToVisible;
 - (struct CGRect)_accessibilityScrollVisibleRect;
 - (struct _NSRange)_accessibilitySelectedTextRange;
+- (void)_accessibilitySetFocus:(BOOL)arg1;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (void)_accessibilitySetValue:(id)arg1;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityTableAncestor;
@@ -97,7 +99,6 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityDecrement;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;
-- (void)accessibilityElementDidBecomeFocused;
 - (id)accessibilityElementForRow:(long long)arg1 andColumn:(long long)arg2;
 - (struct CGRect)accessibilityElementRect;
 - (id)accessibilityExpandedTextValue;
@@ -112,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityIdentifier;
 - (void)accessibilityIncreaseSelection:(int)arg1;
 - (void)accessibilityIncrement;
+- (BOOL)accessibilityInsertText:(id)arg1;
 - (id)accessibilityInvalidStatus;
 - (BOOL)accessibilityIsAttachmentElement;
 - (BOOL)accessibilityIsComboBox;
@@ -145,11 +147,12 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityModifySelection:(int)arg1 increase:(BOOL)arg2;
 - (void)accessibilityMoveSelectionToMarker:(id)arg1;
 - (struct WebAccessibilityObjectWrapper *)accessibilityObjectForTextMarker:(id)arg1;
-- (BOOL)accessibilityPerformEscape;
 - (id)accessibilityPlaceholderValue;
 - (id)accessibilityPlatformMathSubscriptKey;
 - (id)accessibilityPlatformMathSuperscriptKey;
+- (id)accessibilityPopupValue;
 - (struct WebAccessibilityObjectWrapper *)accessibilityPostProcessHitTest:(struct CGPoint)arg1;
+- (BOOL)accessibilityReplaceRange:(struct _NSRange)arg1 withText:(id)arg2;
 - (BOOL)accessibilityRequired;
 - (id)accessibilityRoleDescription;
 - (unsigned long long)accessibilityRowCount;
@@ -172,8 +175,6 @@ __attribute__((visibility("hidden")))
 - (id)attributedStringForElement;
 - (id)attributedStringForRange:(struct _NSRange)arg1;
 - (BOOL)containsUnnaturallySegmentedChildren;
-- (struct CGPoint)convertPointToScreenSpace:(struct FloatPoint *)arg1;
-- (struct CGRect)convertRectToScreenSpace:(struct IntRect *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)detach;
@@ -184,7 +185,6 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)elementTextRange;
 - (id)elementsForRange:(struct _NSRange)arg1;
 - (void)enableAttributeCaching;
-- (BOOL)fileUploadButtonReturnsValueInTitle;
 - (struct CGRect)frameForTextMarkers:(id)arg1;
 - (long long)indexOfAccessibilityElement:(id)arg1;
 - (id)initWithAccessibilityObject:(struct AccessibilityObject *)arg1;

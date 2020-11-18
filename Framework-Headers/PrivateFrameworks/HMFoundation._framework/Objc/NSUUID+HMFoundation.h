@@ -6,8 +6,27 @@
 
 #import <Foundation/NSUUID.h>
 
-@interface NSUUID (HMFoundation)
+#import <HMFoundation/HMFObject-Protocol.h>
+
+@class NSArray, NSString;
+
+@interface NSUUID (HMFoundation) <HMFObject>
+
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *privateDescription;
+@property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
+@property (readonly) Class superclass;
+
++ (id)hmf_UUIDWithNamespace:(id)arg1 data:(id)arg2;
++ (id)hmf_zeroUUID;
++ (id)shortDescription;
++ (id)zeroUUID;
 - (BOOL)hmf_isEqualToUUID:(id)arg1;
 - (BOOL)hmf_isEqualToUUIDString:(id)arg1;
+- (id)initWithNamespace:(id)arg1 data:(id)arg2;
 @end
 

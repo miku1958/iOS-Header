@@ -4,21 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <QuartzCore/CAEAGLLayer.h>
+#import <QuartzCore/CALayer.h>
 
-@class NUGLContext, NUGLRenderbuffer;
+@class NUColorSpace, NUGLContext, NUPixelFormat;
+@protocol NUSurfaceStorage;
 
-@interface NUGLLayer : CAEAGLLayer
+@interface NUGLLayer : CALayer
 {
     NUGLContext *_context;
-    NUGLRenderbuffer *_buffer;
+    id<NUSurfaceStorage> _drawingStorage;
+    id<NUSurfaceStorage> _displayStorage;
+    NUPixelFormat *_pixelFormat;
+    NUColorSpace *_colorSpace;
 }
 
+@property (readonly, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+@property (readonly, nonatomic) NUPixelFormat *pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+
 - (void).cxx_destruct;
-- (void)_drawInBuffer:(id)arg1 context:(id)arg2;
+- (void)_drawInTexture:(id)arg1 context:(id)arg2;
+- (void)_ensureDrawingStorageOfSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
+- (void)_resetContents;
+- (void)_updateDisplay:(id)arg1;
+- (void)_updateDisplayWithIdentifier:(id)arg1;
+- (BOOL)contentsAreFlipped;
+- (void)dealloc;
 - (void)display;
 - (void)draw:(id)arg1;
 - (id)init;
+- (void)layerDidBecomeVisible:(BOOL)arg1;
 - (void)reset:(id)arg1;
 
 @end

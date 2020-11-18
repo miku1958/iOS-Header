@@ -6,9 +6,11 @@
 
 #import <MediaPlayer/MPRequest.h>
 
-@class MPCPlayerPath, MPPropertySet;
+#import <MediaPlaybackCore/MPCMediaRemoteMiddlewareMetadataOperationConfiguration-Protocol.h>
 
-@interface MPCPlayerRequest : MPRequest
+@class MPCPlayerPath, MPPropertySet, NSString;
+
+@interface MPCPlayerRequest : MPRequest <MPCMediaRemoteMiddlewareMetadataOperationConfiguration>
 {
     BOOL _disablePlaybackStateValidation;
     BOOL _disablePlaybackRateValidation;
@@ -16,21 +18,26 @@
     MPPropertySet *_playingItemProperties;
     MPPropertySet *_queueSectionProperties;
     MPPropertySet *_queueItemProperties;
+    NSString *_preferredFallbackItemRelationship;
     CDStruct_339ad95e _tracklistRange;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disablePlaybackRateValidation; // @synthesize disablePlaybackRateValidation=_disablePlaybackRateValidation;
 @property (nonatomic) BOOL disablePlaybackStateValidation; // @synthesize disablePlaybackStateValidation=_disablePlaybackStateValidation;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPCPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 @property (copy, nonatomic) MPPropertySet *playingItemProperties; // @synthesize playingItemProperties=_playingItemProperties;
+@property (copy, nonatomic) NSString *preferredFallbackItemRelationship; // @synthesize preferredFallbackItemRelationship=_preferredFallbackItemRelationship;
 @property (copy, nonatomic) MPPropertySet *queueItemProperties; // @synthesize queueItemProperties=_queueItemProperties;
 @property (copy, nonatomic) MPPropertySet *queueSectionProperties; // @synthesize queueSectionProperties=_queueSectionProperties;
+@property (readonly) Class superclass;
 @property (nonatomic) CDStruct_339ad95e tracklistRange; // @synthesize tracklistRange=_tracklistRange;
 
 + (Class)responseClass;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)init;
 - (id)middlewareClasses;
 

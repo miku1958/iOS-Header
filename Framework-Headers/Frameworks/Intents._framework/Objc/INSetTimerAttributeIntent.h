@@ -8,7 +8,7 @@
 
 #import <Intents/INSetTimerAttributeIntentExport-Protocol.h>
 
-@class INTimer, NSString;
+@class INSpeakableString, INTimer, NSString;
 
 @interface INSetTimerAttributeIntent : INIntent <INSetTimerAttributeIntentExport>
 {
@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) INTimer *targetTimer;
 @property (readonly, nonatomic) double toDuration;
+@property (readonly, copy, nonatomic) INSpeakableString *toLabel;
 
 - (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
@@ -29,12 +30,13 @@
 - (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
-- (id)initWithTargetTimer:(id)arg1 toDuration:(double)arg2;
+- (id)initWithTargetTimer:(id)arg1 toDuration:(double)arg2 toLabel:(id)arg3;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;
 - (void)setTargetTimer:(id)arg1;
 - (void)setToDuration:(double)arg1;
+- (void)setToLabel:(id)arg1;
 - (void)setVerb:(id)arg1;
 - (id)verb;
 

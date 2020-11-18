@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ISURLOperation, NSString, NSURL;
+@class ISURLOperation, NSString, NSURL, NSURLSessionDataTask, NSUUID;
 
 @interface IKLoadRecord : NSObject
 {
@@ -14,11 +14,15 @@
     NSURL *_URL;
     ISURLOperation *_opertaion;
     NSString *_scriptStr;
+    NSUUID *_requestID;
+    NSURLSessionDataTask *_dataTask;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (strong, nonatomic) NSURLSessionDataTask *dataTask; // @synthesize dataTask=_dataTask;
 @property (nonatomic) BOOL loadCompleted; // @synthesize loadCompleted=_loadCompleted;
 @property (strong, nonatomic) ISURLOperation *opertaion; // @synthesize opertaion=_opertaion;
+@property (strong, nonatomic) NSUUID *requestID; // @synthesize requestID=_requestID;
 @property (strong, nonatomic) NSString *scriptStr; // @synthesize scriptStr=_scriptStr;
 
 - (void).cxx_destruct;

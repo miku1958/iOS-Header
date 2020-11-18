@@ -15,6 +15,13 @@
 
 @property (nonatomic, getter=get_LastConfirmedSplashScreenVersionViewed, setter=set_LastConfirmedSplashScreenVersionViewed:) long long LastConfirmedSplashScreenVersionViewed;
 @property (nonatomic, getter=get_enableTravelAdvisoriesForAutomaticBehavior, setter=set_enableTravelAdvisoriesForAutomaticBehavior:) BOOL enableTravelAdvisoriesForAutomaticBehavior;
+@property (readonly) BOOL has_LastConfirmedSplashScreenVersionViewed;
+@property (readonly) BOOL has_enableTravelAdvisoriesForAutomaticBehavior;
+@property (readonly) BOOL has_kCalPreferredDaysToSyncKey;
+@property (readonly) BOOL has_kCalRemindersPreferredDaysToSyncKey;
+@property (readonly) BOOL has_sqlProfileLoggingEnabled;
+@property (readonly) BOOL has_suggestEventLocations;
+@property (readonly) BOOL has_suggestedLocationsTestMode;
 @property (nonatomic, getter=get_kCalPreferredDaysToSyncKey, setter=set_kCalPreferredDaysToSyncKey:) long long kCalPreferredDaysToSyncKey;
 @property (nonatomic, getter=get_kCalRemindersPreferredDaysToSyncKey, setter=set_kCalRemindersPreferredDaysToSyncKey:) long long kCalRemindersPreferredDaysToSyncKey;
 @property (nonatomic, getter=get_sqlProfileLoggingEnabled, setter=set_sqlProfileLoggingEnabled:) BOOL sqlProfileLoggingEnabled;
@@ -23,7 +30,11 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+- (void)_setVersion:(unsigned long long)arg1;
+- (unsigned long long)_version;
 - (id)init;
+- (void)migrateIfNeededWithOptions:(unsigned long long)arg1;
+- (BOOL)needsMigration;
 
 @end
 

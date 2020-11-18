@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCentralMessageDispatcher, HMDDevice, HMDHomeManager, HMDUser, HMDUserPresenceFeedRetryTimer, HMDUserPresenceRegion, HMDUserPresenceUpdateReason, HMUserPresenceAuthorization, HMUserPresenceCompute, NSDate, NSString, NSUUID;
+@class HMDDevice, HMDHomeManager, HMDMessageDispatcher, HMDUser, HMDUserPresenceFeedRetryTimer, HMDUserPresenceRegion, HMDUserPresenceUpdateReason, HMUserPresenceAuthorization, HMUserPresenceCompute, NSDate, NSString, NSUUID;
 @protocol HMDUserPresenceFeedSessionDelegate, OS_dispatch_queue;
 
 @interface HMDUserPresenceFeedSession : NSObject <HMFLogging, HMFTimerDelegate>
@@ -18,7 +18,7 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHomeManager *_homeManager;
     NSUUID *_targetUUID;
-    HMDCentralMessageDispatcher *_remoteMessageDispatcher;
+    HMDMessageDispatcher *_remoteMessageDispatcher;
     HMDDevice *_residentDevice;
     HMDUser *_user;
     HMUserPresenceAuthorization *_presenceAuthStatus;
@@ -39,7 +39,7 @@
 @property (readonly, nonatomic) HMUserPresenceCompute *presenceComputeStatus; // @synthesize presenceComputeStatus=_presenceComputeStatus;
 @property (readonly, nonatomic) HMDUserPresenceRegion *presenceRegionStatus; // @synthesize presenceRegionStatus=_presenceRegionStatus;
 @property (strong, nonatomic) HMDUserPresenceUpdateReason *reason; // @synthesize reason=_reason;
-@property (readonly, nonatomic) HMDCentralMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
+@property (readonly, nonatomic) HMDMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
 @property (readonly, nonatomic) HMDDevice *residentDevice; // @synthesize residentDevice=_residentDevice;
 @property (readonly, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly, nonatomic) NSDate *statusChangeDate; // @synthesize statusChangeDate=_statusChangeDate;

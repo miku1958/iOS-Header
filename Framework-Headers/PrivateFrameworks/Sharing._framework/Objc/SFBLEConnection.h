@@ -58,7 +58,6 @@
 - (void)addClient:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)init;
 - (id)initWithDevice:(id)arg1 acceptor:(BOOL)arg2;
 - (void)invalidate;
 - (BOOL)removeClient:(id)arg1;

@@ -43,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addNode:(id)arg1;
 - (void)addTemporarySmoothNodes;
-- (void)adjustGeometryForAlignToOrigin:(id)arg1;
 - (void)alignToOrigin;
 - (void)beginNewSubpath;
 - (id)bezierNodeUnderPoint:(struct CGPoint)arg1 withTransform:(struct CGAffineTransform)arg2 andTolerance:(double)arg3 returningType:(long long *)arg4;

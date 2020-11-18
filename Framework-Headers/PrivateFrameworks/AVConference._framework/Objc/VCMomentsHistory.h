@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     VCMomentsHistoryBuffer *_localAudioBuffer;
     VCMomentsHistoryBuffer *_remoteAudioBuffer;
     NSMutableDictionary *_completionHandlers;
+    NSMutableDictionary *_stillImageURLs;
     VideoAttributes *_remoteScreenAttributes;
     struct __CVPixelBufferPool *_bufferPool;
     struct __CVPixelBufferPool *_copyPool;
@@ -32,14 +33,22 @@ __attribute__((visibility("hidden")))
     int _captureWidth;
     BOOL _resize;
     BOOL _isFirstFrame;
+    int _imageType;
+    int videoPayload;
+    struct __CFAllocator *_audioSampleBufferAllocator;
+    int _videoCodec;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) int imageType; // @synthesize imageType=_imageType;
 @property (strong, nonatomic) VideoAttributes *remoteScreenAttributes; // @synthesize remoteScreenAttributes=_remoteScreenAttributes;
 @property (readonly) Class superclass;
+@property (nonatomic) int videoCodec; // @synthesize videoCodec=_videoCodec;
 
+- (id)_getActiveWriters;
+- (unsigned char)_mediaTypeForBuffer:(id)arg1;
 - (void)addLocalAudioSample:(struct opaqueVCAudioBufferList *)arg1 timestamp:(unsigned int)arg2;
 - (void)addLocalVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 cameraStatusBits:(unsigned char)arg2 timestamp:(unsigned int)arg3;
 - (void)addRemoteAudioSample:(struct opaqueVCAudioBufferList *)arg1 timestamp:(unsigned int)arg2;
@@ -50,11 +59,11 @@ __attribute__((visibility("hidden")))
 - (void)cleanupTransferSession;
 - (struct __CVBuffer *)copyBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)dealloc;
-- (void)endVideoRecording:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)endRecording:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)flushHistoryBuffers;
 - (id)getFilePathWithTransactionID:(id)arg1 type:(unsigned char)arg2;
 - (void)getLivePhotoWithTransactionID:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)getPhotoWithTransactionID:(id)arg1 Timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getPhotoWithTransactionID:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)handlePendingRequestSuccessWithSourceURL:(id)arg1;
 - (void)handlePendingRequestWithError:(id)arg1;
 - (void)handlePendingRequestsWithSourceURL:(id)arg1 error:(id)arg2;
@@ -66,15 +75,16 @@ __attribute__((visibility("hidden")))
 - (void)setCompeletionHandler:(CDUnknownBlockType)arg1 forTransactionID:(id)arg2;
 - (void)setFrameRate:(float)arg1;
 - (void)setupResizingSessionsWithVisibleRect:(struct CGRect)arg1 cameraStatusBit:(unsigned char)arg2;
-- (CDStruct_1b6d18a9)setupStillImageWithTimestamp:(unsigned int)arg1 transactionID:(id)arg2 visibleRect:(struct CGRect *)arg3 cameraStatusBit:(char *)arg4;
+- (CDStruct_1b6d18a9)setupStillImageWithTimestamp:(unsigned int)arg1 transactionID:(id)arg2 visibleRect:(struct CGRect *)arg3 cameraStatusBit:(char *)arg4 imageType:(int)arg5;
 - (void)setupWriterWithTransactionID:(id)arg1 filePath:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 visibleRect:(struct CGRect)arg4 cameraStatusBit:(unsigned char)arg5;
-- (void)startVideoRecording:(id)arg1 timestamp:(unsigned int)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)startRecording:(unsigned char)arg1 transactionID:(id)arg2 timestamp:(unsigned int)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)updateAudioBuffer:(id)arg1 WithSample:(struct opaqueCMSampleBuffer *)arg2 timestamp:(unsigned int)arg3;
 - (void)updateCaptureSizesWithFirstFrame:(struct opaqueCMSampleBuffer *)arg1;
 - (void)updateRemoteScreenAttributes:(id)arg1;
+- (void)updateResizeFlag;
 - (void)updateVideoBuffer:(struct __CVBuffer *)arg1 withPresentationTime:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3 timestamp:(unsigned int)arg4;
-- (BOOL)writeToFileWithTimestamp:(unsigned int)arg1 transactionID:(id)arg2 URL:(id *)arg3;
-- (BOOL)writeToLivePhotoToFileWithFrame:(struct __CVBuffer *)arg1 transactionID:(id)arg2 URL:(id *)arg3 cameraStatusBits:(unsigned char)arg4;
+- (BOOL)writeToFileWithTimestamp:(unsigned int)arg1 transactionID:(id)arg2 URL:(id *)arg3 imageType:(int)arg4;
+- (BOOL)writeToLivePhotoToFileWithFrame:(struct __CVBuffer *)arg1 transactionID:(id)arg2 URL:(id *)arg3 imageType:(int)arg4 cameraStatusBits:(unsigned char)arg5;
 
 @end
 

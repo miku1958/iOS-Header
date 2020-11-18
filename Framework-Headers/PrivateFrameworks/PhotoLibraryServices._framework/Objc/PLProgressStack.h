@@ -20,14 +20,14 @@
 
 @property (nonatomic) float currentMultiplier; // @synthesize currentMultiplier;
 @property (nonatomic) float currentTotal; // @synthesize currentTotal;
-@property (nonatomic) id delegate; // @synthesize delegate;
+@property (weak, nonatomic) id delegate; // @synthesize delegate;
 @property (strong, nonatomic) NSString *mediaPathString; // @synthesize mediaPathString;
 @property (strong, nonatomic) NSMutableArray *multipliers; // @synthesize multipliers;
 @property (nonatomic) BOOL notifyUsingAssetsdNotificationCenter; // @synthesize notifyUsingAssetsdNotificationCenter;
 
 + (id)unarchiveFromDictionary:(id)arg1;
+- (void).cxx_destruct;
 - (id)archiveToDictionary;
-- (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
 - (void)pop;
 - (void)popAndUpdate;

@@ -15,6 +15,7 @@
 @interface ARImageDetectionResultData : NSObject <ARResultData, NSCopying, NSSecureCoding>
 {
     BOOL _detectionOnly;
+    BOOL _predicted;
     BOOL _providesWorldTrackingCameraPose;
     ARCamera *_currentCamera;
     NSArray *_detectedImages;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSArray *detectedImages; // @synthesize detectedImages=_detectedImages;
 @property (nonatomic) BOOL detectionOnly; // @synthesize detectionOnly=_detectionOnly;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL predicted; // @synthesize predicted=_predicted;
 @property (nonatomic) BOOL providesWorldTrackingCameraPose; // @synthesize providesWorldTrackingCameraPose=_providesWorldTrackingCameraPose;
 @property (readonly) Class superclass;
 

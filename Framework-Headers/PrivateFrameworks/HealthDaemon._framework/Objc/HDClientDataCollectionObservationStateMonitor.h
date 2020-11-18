@@ -8,19 +8,19 @@
 
 #import <HealthDaemon/HDProcessStateObserver-Protocol.h>
 
-@class HDProfile, HDXPCClient, NSLock, NSString;
+@class HDHealthStoreClient, HDProfile, NSLock, NSString;
 @protocol HDClientDataCollectionObservationStateMonitorDelegate;
 
 @interface HDClientDataCollectionObservationStateMonitor : NSObject <HDProcessStateObserver>
 {
     NSLock *_lock;
     _Atomic BOOL _invalidated;
-    HDXPCClient *_client;
+    HDHealthStoreClient *_client;
     HDProfile *_profile;
     id<HDClientDataCollectionObservationStateMonitorDelegate> _delegate;
 }
 
-@property (readonly, nonatomic) HDXPCClient *client; // @synthesize client=_client;
+@property (readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HDClientDataCollectionObservationStateMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -33,7 +33,7 @@
 - (id)currentObserverState;
 - (void)dealloc;
 - (id)init;
-- (id)initWithClient:(id)arg1 profile:(id)arg2 delegate:(id)arg3;
+- (id)initWithClient:(id)arg1 delegate:(id)arg2;
 - (void)invalidate;
 - (void)processDidEnterBackground:(id)arg1;
 - (void)processDidEnterForeground:(id)arg1;

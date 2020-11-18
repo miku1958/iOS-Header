@@ -10,9 +10,11 @@
 
 @interface HUNamedWallpaperCell : UICollectionViewCell
 {
+    long long _contentMode;
     UIImageView *_imageView;
 }
 
+@property (nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (copy, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 

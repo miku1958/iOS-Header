@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface SCRCMathIdentifierExpression : SCRCMathSimpleExpression
 {
-    int _fontStyle;
+    long long _fontStyle;
 }
 
-@property (readonly, nonatomic) int fontStyle; // @synthesize fontStyle=_fontStyle;
+@property (readonly, nonatomic) long long fontStyle; // @synthesize fontStyle=_fontStyle;
 
 - (BOOL)_isPrime;
 - (BOOL)canFormWordStartingWithExpression:(id)arg1;
@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isNaturalSuperscript;
 - (BOOL)isNumber;
 - (id)mathMLString;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2;
-- (id)speakableDescriptionWithSpeakingStyle:(int)arg1 arePausesAllowed:(BOOL)arg2 isPartOfWord:(BOOL)arg3;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2;
+- (id)speakableDescriptionWithSpeakingStyle:(long long)arg1 arePausesAllowed:(BOOL)arg2 isPartOfWord:(BOOL)arg3;
 
 @end
 

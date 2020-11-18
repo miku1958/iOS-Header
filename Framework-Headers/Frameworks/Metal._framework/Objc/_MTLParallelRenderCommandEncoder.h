@@ -4,18 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
 #import <Metal/MTLParallelRenderCommandEncoder-Protocol.h>
 
 @class MTLRenderPassDescriptor, NSString, _MTLCommandBuffer;
 @protocol MTLCommandBuffer, MTLCommandQueue, MTLDevice;
 
-@interface _MTLParallelRenderCommandEncoder : NSObject <MTLParallelRenderCommandEncoder>
+@interface _MTLParallelRenderCommandEncoder : _MTLObjectWithLabel <MTLParallelRenderCommandEncoder>
 {
     id<MTLDevice> _device;
     id<MTLCommandQueue> _queue;
-    NSString *_label;
     unsigned long long _globalTraceObjectID;
     unsigned long long _labelTraceID;
     _MTLCommandBuffer<MTLCommandBuffer> *_commandBuffer;
@@ -34,7 +33,7 @@
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
 @property (readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property (readonly) unsigned long long hash;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (copy) NSString *label; // @dynamic label;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=getType) unsigned long long type; // @dynamic type;
 

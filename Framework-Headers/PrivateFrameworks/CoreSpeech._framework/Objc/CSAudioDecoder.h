@@ -20,7 +20,7 @@
 
 + (id)opusDecoder;
 - (void).cxx_destruct;
-- (void)addPackets:(id)arg1 remoteVAD:(id)arg2 timestamp:(unsigned long long)arg3;
+- (void)addPackets:(id)arg1 audioStreamHandleId:(unsigned long long)arg2 remoteVAD:(id)arg3 timestamp:(unsigned long long)arg4 receivedNumChannels:(unsigned int)arg5;
 - (id)initWithInASBD:(struct AudioStreamBasicDescription)arg1 outASBD:(struct AudioStreamBasicDescription)arg2;
 
 @end

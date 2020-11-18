@@ -8,7 +8,7 @@
 
 #import <FMFUI/FMFSessionDelegateInternal-Protocol.h>
 
-@class FMFHandle, NSArray, NSMutableDictionary, NSObject, NSString, UIAlertController;
+@class FMFHandle, NSArray, NSMutableDictionary, NSObject, NSSet, NSString, UIAlertController;
 @protocol OS_dispatch_queue;
 
 @interface FMFLocationSharingViewController : PSListController <FMFSessionDelegateInternal>
@@ -17,6 +17,10 @@
     BOOL _useFamilyCirclePhotos;
     BOOL _useFamilyCirclePhotosLoaded;
     BOOL _areSpecifiersLoaded;
+    BOOL _areMeDeviceInfoLoaded;
+    BOOL _isFindMyDeviceOn;
+    BOOL _meDeviceChangePending;
+    BOOL _isAccessibilitySize;
     NSArray *_followersSpecifiers;
     NSArray *_familySpecifiers;
     NSArray *_deviceSpecifiers;
@@ -28,9 +32,11 @@
     NSArray *_familyMembers;
     UIAlertController *_genericErrorAlert;
     NSObject<OS_dispatch_queue> *_specifiersQueue;
+    NSSet *_meDevices;
 }
 
 @property (strong, nonatomic) NSArray *allFollowersHandles; // @synthesize allFollowersHandles=_allFollowersHandles;
+@property (nonatomic) BOOL areMeDeviceInfoLoaded; // @synthesize areMeDeviceInfoLoaded=_areMeDeviceInfoLoaded;
 @property (nonatomic) BOOL areSpecifiersLoaded; // @synthesize areSpecifiersLoaded=_areSpecifiersLoaded;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,8 +49,12 @@
 @property (strong, nonatomic) UIAlertController *genericErrorAlert; // @synthesize genericErrorAlert=_genericErrorAlert;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *hashedFamilyDsids; // @synthesize hashedFamilyDsids=_hashedFamilyDsids;
+@property (nonatomic) BOOL isAccessibilitySize; // @synthesize isAccessibilitySize=_isAccessibilitySize;
+@property (nonatomic) BOOL isFindMyDeviceOn; // @synthesize isFindMyDeviceOn=_isFindMyDeviceOn;
 @property (nonatomic) BOOL isMyLocationEnabled; // @synthesize isMyLocationEnabled=_isMyLocationEnabled;
 @property (strong, nonatomic) FMFHandle *lastSelectedHandle; // @synthesize lastSelectedHandle=_lastSelectedHandle;
+@property (nonatomic) BOOL meDeviceChangePending; // @synthesize meDeviceChangePending=_meDeviceChangePending;
+@property (strong, nonatomic) NSSet *meDevices; // @synthesize meDevices=_meDevices;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *specifiersQueue; // @synthesize specifiersQueue=_specifiersQueue;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useFamilyCirclePhotos; // @synthesize useFamilyCirclePhotos=_useFamilyCirclePhotos;
@@ -52,6 +62,9 @@
 
 - (void).cxx_destruct;
 - (id)_defaultSpecifiers;
+- (void)_findMyDeviceSpecifierWasTapped:(id)arg1;
+- (id)_findMyDeviceSpecifiers;
+- (id)_findMyDeviceStatus:(id)arg1;
 - (id)_followerHandleWithHashedDSID:(id)arg1;
 - (BOOL)_isFamilyMemberAFollower:(id)arg1;
 - (BOOL)_isHandleAFollower:(id)arg1;
@@ -89,10 +102,13 @@
 - (void)reloadSpecifiersOnMainQueue;
 - (void)removeFollower:(id)arg1;
 - (id)reverseString:(id)arg1;
+- (void)saveActiveDeviceSelection;
 - (void)shareMyLocation:(id)arg1;
 - (id)sortedFollowersWithCombinedRecords:(id)arg1;
 - (id)specifiers;
 - (id)stringByKeepingCharacterSet:(id)arg1 inString:(id)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateFindMyDeviceStatus;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface CKDAssetBatch : NSObject
 {
     BOOL _isFailed;
+    BOOL _useMMCSEncryptionV2;
     NSMutableArray *_assetRecords;
     CKDAssetZone *_assetZone;
     NSData *_authPutRequest;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isFailed; // @synthesize isFailed=_isFailed;
 @property (readonly) unsigned int size;
 @property (readonly) unsigned int sizeUpperBound;
+@property (nonatomic) BOOL useMMCSEncryptionV2; // @synthesize useMMCSEncryptionV2=_useMMCSEncryptionV2;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;

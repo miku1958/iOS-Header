@@ -14,7 +14,7 @@
 {
 }
 
-@property (strong) TLKSelectableGridView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKSelectableGridView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

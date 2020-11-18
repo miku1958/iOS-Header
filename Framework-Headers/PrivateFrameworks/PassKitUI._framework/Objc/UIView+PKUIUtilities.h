@@ -16,9 +16,13 @@
 - (void)addTransformSpringWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 startTime:(double)arg4 timing:(id)arg5;
 - (void)addTranslationSpringWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 startTime:(double)arg4 timing:(id)arg5;
 - (void)addTranslationSpringWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 startTime:(double)arg4 velocity:(double)arg5 timing:(id)arg6;
+- (void)pk_applyAppearance:(id)arg1;
+- (id)pk_childrenForAppearance;
 - (struct CGRect)pkui_readableContentBoundsWithMargins:(struct UIEdgeInsets)arg1;
 - (BOOL)pkui_setBounds:(struct CGRect)arg1 position:(struct CGPoint)arg2 animated:(BOOL)arg3;
+- (void)pkui_setExcludedFromScreenCapture:(BOOL)arg1;
 - (BOOL)pkui_setFrame:(struct CGRect)arg1 animated:(BOOL)arg2;
+- (void)pkui_setMaskType:(unsigned long long)arg1;
 - (void)pkui_shakeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)pkui_smallShakeWithCompletion:(CDUnknownBlockType)arg1;
 - (id)pkui_translationAnimation;

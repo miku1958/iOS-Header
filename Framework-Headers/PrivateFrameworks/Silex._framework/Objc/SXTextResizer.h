@@ -10,15 +10,17 @@
 
 @interface SXTextResizer : NSObject
 {
+    BOOL _fontScalingEnabled;
     SXColumnLayout *_columnLayout;
     SXComponentTextStyle *_defaultTextStyle;
 }
 
-@property (strong, nonatomic) SXColumnLayout *columnLayout; // @synthesize columnLayout=_columnLayout;
-@property (strong, nonatomic) SXComponentTextStyle *defaultTextStyle; // @synthesize defaultTextStyle=_defaultTextStyle;
+@property (readonly, nonatomic) SXColumnLayout *columnLayout; // @synthesize columnLayout=_columnLayout;
+@property (readonly, nonatomic) SXComponentTextStyle *defaultTextStyle; // @synthesize defaultTextStyle=_defaultTextStyle;
+@property (readonly, nonatomic) BOOL fontScalingEnabled; // @synthesize fontScalingEnabled=_fontScalingEnabled;
 
 - (void).cxx_destruct;
-- (id)initWithColumnLayout:(id)arg1 andDefaultTextStyle:(id)arg2;
+- (id)initWithColumnLayout:(id)arg1 defaultTextStyle:(id)arg2 fontScalingEnabled:(BOOL)arg3;
 - (double)normalizedFontSizeForSize:(double)arg1;
 - (unsigned long long)resizeDropCapNumberOfLines:(long long)arg1;
 - (long long)resizeTextSize:(long long)arg1 fontResizingThreshold:(double)arg2 fontSizeConstant:(double)arg3 contentSizeCategory:(id)arg4 fontTextStyle:(id)arg5;

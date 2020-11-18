@@ -9,35 +9,44 @@
 #import <PhotoAnalysis/PFMulticasterDelegate-Protocol.h>
 #import <PhotoAnalysis/PFWeakContainerNilNotificationDelegate-Protocol.h>
 
-@class NSMutableSet, PFSerialQueue, PFWeakContainer, PGGraphUpdateManager, PGManager, PHAManager;
+@class NSConditionLock, NSMutableSet, PFSerialQueue, PFWeakContainer, PGGraphUpdateManager, PGManager, PHAManager;
 
 @interface PHAGraphManager : NSObject <PFMulticasterDelegate, PFWeakContainerNilNotificationDelegate>
 {
     struct PFDirectMessagingMulticaster *_clientMulticaster;
-    PGGraphUpdateManager *_updateManager;
     NSMutableSet *_clientsWantingUpdates;
+    long long _updateManagerSuspendCount;
     BOOL _rebuildInProgress;
     PFSerialQueue *_serializer;
     PGManager *_graphManager;
     PFWeakContainer *_graphMonitor;
+    NSConditionLock *_graphLoadedCondition;
+    PGGraphUpdateManager *_updateManager;
     PHAManager *_photoAnalysisManager;
 }
 
 @property (strong, nonatomic) PHAManager *photoAnalysisManager; // @synthesize photoAnalysisManager=_photoAnalysisManager;
+@property (readonly, nonatomic) PGGraphUpdateManager *updateManager; // @synthesize updateManager=_updateManager;
 
 - (void).cxx_destruct;
+- (void)_configureGraphManager;
 - (void)_graphBecameReady:(id)arg1;
+- (void)_performRebuildFullRebuild:(BOOL)arg1 withProgressBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_startListeningWithClient:(id)arg1;
+- (void)_startUpdateManager;
 - (void)_stopListeningWithClient:(id)arg1;
+- (void)_stopUpdateManager;
 - (void)dealloc;
 - (BOOL)graphNeedsRebuild;
 - (id)initWithManager:(id)arg1;
-- (BOOL)isGraphLoaded;
 - (id)loadGraph;
 - (void)multicasterHasNoReceivers:(id)arg1 invalidateBlock:(CDUnknownBlockType)arg2;
 - (void)performFullRebuildWithProgressBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)performLightWeightRebuildWithProgressBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)registerGraphClient:(id)arg1;
 - (void)shutdown;
+- (id)statusAsDictionary;
+- (void)suspendGraphUpdateAndPerformBlock:(CDUnknownBlockType)arg1;
 - (void)unloadGraph;
 - (void)unregisterGraphClient:(id)arg1;
 - (void)weakReferenceBecameNil:(id)arg1;

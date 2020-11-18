@@ -4,30 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKFaceView.h>
+#import <NanoTimeKitCompanion/NTKDigitalFaceView.h>
 
 #import <NanoTimeKitCompanion/NTKActivityFaceViewFactoryDelegate-Protocol.h>
 
-@class HKRingsView, NSDate, NSString, NTKActivityFaceViewFactory, NTKDigitalTimeLabel, NTKFaceViewTapControl, NTKPolygonCylinderView, UILabel, UIView;
+@class ARUIRingsView, NSDate, NSString, NTKActivityFaceViewFactory, NTKFaceViewTapControl, NTKPolygonCylinderView, UILabel, UIView;
 
-@interface NTKActivityDigitalFaceView : NTKFaceView <NTKActivityFaceViewFactoryDelegate>
+@interface NTKActivityDigitalFaceView : NTKDigitalFaceView <NTKActivityFaceViewFactoryDelegate>
 {
     NTKActivityFaceViewFactory *_faceViewFactory;
-    HKRingsView *_ringsView;
-    UILabel *_energyLabel;
-    UILabel *_briskMinutesLabel;
-    UILabel *_standHoursLabel;
+    ARUIRingsView *_ringsView;
+    UILabel *_moveLabel;
+    UILabel *_exerciseLabel;
+    UILabel *_standLabel;
     NTKFaceViewTapControl *_tapToLaunchButton;
     UIView *_timeLabelBackgroundView;
     NTKPolygonCylinderView *_densityEditingPolygonView;
     NSDate *_timeDensityEditingOverrideDate;
     struct RingLayout _currentRingLayout;
-    double _lastEnergyPercentage;
-    double _lastBriskPercentage;
-    double _lastSedentaryPercentage;
+    double _lastMovePercentage;
+    double _lastExercisePercentage;
+    double _lastStandPercentage;
     double _blinkerAndSecondsWidth;
-    long long _energyStringMetricWidth;
-    long long _briskStringMetricWidth;
+    long long _moveStringMetricWidth;
+    long long _exerciseStringMetricWidth;
     long long _standStringMetricWidth;
     BOOL _showSeconds;
     double _rightTimeViewInset;
@@ -39,7 +39,6 @@
 @property (nonatomic) double rightTimeViewInset; // @synthesize rightTimeViewInset=_rightTimeViewInset;
 @property (nonatomic) BOOL showSeconds; // @synthesize showSeconds=_showSeconds;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NTKDigitalTimeLabel *timeView; // @dynamic timeView;
 
 + (id)_newRingsView;
 + (void)_prewarmForDevice:(id)arg1;
@@ -50,6 +49,7 @@
 - (void)_applyCurrentEntryModelByFraction:(double)arg1 updateLabels:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_applyCurrentRingLayout;
 - (void)_applyEntryModel:(id)arg1 byFraction:(double)arg2 updateLabels:(BOOL)arg3 animated:(BOOL)arg4;
+- (void)_applyFrozen;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyShowsCanonicalContent;
@@ -64,6 +64,8 @@
 - (void)_configureForDetailEditing;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)_createActivityRelatedUIs;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (void)_enumerateActivityLabels:(CDUnknownBlockType)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
@@ -79,20 +81,21 @@
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (BOOL)_needsForegroundContainerView;
+- (id)_newActivitySubviewWithTextColor:(id)arg1;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_performWristRaiseAnimation;
 - (long long)_polygonIndexForAccuracy:(unsigned long long)arg1;
 - (void)_prepareForEditing;
 - (void)_prepareWristRaiseAnimation;
-- (void)_recenterTimeView;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (void)_removeActivityRelatedUIs;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
 - (double)_rightTimeViewInsetForEditMode:(long long)arg1;
 - (double)_ringAlphaForEditMode:(long long)arg1;
 - (struct CGPoint)_ringCenterForLayout:(struct RingLayout)arg1;
-- (id)_ringGroupController;
 - (void)_setActivityViewsAlpha:(double)arg1 animated:(BOOL)arg2;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (double)_timeAlphaForEditMode:(long long)arg1;
+- (unsigned long long)_timeLabelOptions;
 - (struct CGRect)_timeViewBackgroundRect;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateCurrentRingLayoutIfNecessary;
@@ -101,6 +104,9 @@
 - (void)applyEntryModelWithUnfilledRings:(id)arg1;
 - (void)dealloc;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+- (void)layoutSubviews;
+- (void)screenDidTurnOff;
+- (void)screenWillTurnOn;
 - (void)setDataMode:(long long)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (BOOL)slotUsesCurvedText:(id)arg1;

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)addType:(id)arg1;
+- (id)description;
 - (id)init;
 
 @end

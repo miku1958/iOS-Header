@@ -7,8 +7,26 @@
 #import <Photos/PHFace.h>
 
 #import <PhotoAnalysis/PFPhotosFaceRepresentation-Protocol.h>
+#import <PhotoAnalysis/PVFaceProtocol-Protocol.h>
 
-@interface PHFace (PFPhotosFaceRepresentation) <PFPhotosFaceRepresentation>
+@class NSData, NSString;
+
+@interface PHFace (PFPhotosFaceRepresentation) <PFPhotosFaceRepresentation, PVFaceProtocol>
+
+@property (readonly, nonatomic) unsigned short ageType;
+@property (readonly, nonatomic) double centerX;
+@property (readonly, nonatomic) double centerY;
+@property (readonly, nonatomic) long long clusterSequenceNumber;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSData *faceprintData;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *localIdentifier;
+@property (readonly, nonatomic) NSString *personLocalIdentifier;
+@property (nonatomic) long long qualityMeasure; // @dynamic qualityMeasure;
+@property (readonly, nonatomic) double size;
+@property (readonly) Class superclass;
+
 - (double)photosFaceRepresentationBlurScore;
 - (double)photosFaceRepresentationCenterX;
 - (double)photosFaceRepresentationCenterY;
@@ -17,7 +35,9 @@
 - (BOOL)photosFaceRepresentationIsLeftEyeClosed;
 - (BOOL)photosFaceRepresentationIsRightEyeClosed;
 - (id)photosFaceRepresentationLocalIdentifier;
+- (double)photosFaceRepresentationQuality;
 - (long long)photosFaceRepresentationQualityMeasure;
+- (double)photosFaceRepresentationRoll;
 - (double)photosFaceRepresentationSize;
 - (long long)photosFaceRepresentationSourceHeight;
 - (long long)photosFaceRepresentationSourceWidth;

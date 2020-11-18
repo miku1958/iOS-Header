@@ -28,7 +28,8 @@ __attribute__((visibility("hidden")))
 + (BOOL)isVisibleWithMapItem:(id)arg1;
 + (id)venueInfoContentsViewControllerWithMapItem:(id)arg1;
 - (void).cxx_destruct;
-- (void)infoCardThemeChanged:(id)arg1;
+- (BOOL)_canShowWhileLocked;
+- (void)infoCardThemeChanged;
 - (id)initWithVenueContents:(id)arg1;
 - (id)labelWithTitle:(id)arg1;
 - (id)rowWithLeftLabel:(id)arg1 rightLabel:(id)arg2;

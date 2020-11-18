@@ -9,11 +9,9 @@
 @interface IPAAutoRegistryEntry : NSObject
 {
     BOOL _persistable;
-    Class _autoCalculatorClass;
     Class _autoSettingsClass;
 }
 
-@property (strong, nonatomic) Class autoCalculatorClass; // @synthesize autoCalculatorClass=_autoCalculatorClass;
 @property (strong, nonatomic) Class autoSettingsClass; // @synthesize autoSettingsClass=_autoSettingsClass;
 @property (nonatomic) BOOL persistable; // @synthesize persistable=_persistable;
 

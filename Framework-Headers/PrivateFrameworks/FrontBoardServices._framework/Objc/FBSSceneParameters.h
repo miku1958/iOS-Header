@@ -15,9 +15,9 @@
 
 @interface FBSSceneParameters : NSObject <BSXPCCoding, NSCopying, NSMutableCopying, BSDescriptionProviding>
 {
-    FBSSceneSpecification *_specification;
     FBSSceneSettings *_settings;
     FBSSceneClientSettings *_clientSettings;
+    FBSSceneSpecification *_specification;
 }
 
 @property (copy, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;

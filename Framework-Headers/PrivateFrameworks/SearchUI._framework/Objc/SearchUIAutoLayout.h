@@ -36,6 +36,9 @@
 + (id)baselineAlignBottomView:(id)arg1 toTopView:(id)arg2 spacing:(double)arg3 isDynamic:(BOOL)arg4 forFont:(id)arg5 minimum:(BOOL)arg6 priority:(float)arg7;
 + (id)baselineAlignBottomView:(id)arg1 toTopView:(id)arg2 spacing:(double)arg3 minimum:(BOOL)arg4;
 + (id)baselineAlignBottomView:(id)arg1 toTopView:(id)arg2 spacing:(double)arg3 priority:(float)arg4;
++ (void)constrainViewHeightContainer:(id)arg1;
++ (void)constrainViewToContainer:(id)arg1;
++ (void)constrainViewWidthToContainer:(id)arg1;
 + (struct UIEdgeInsets)customBaselineInsets:(struct UIEdgeInsets)arg1 font:(id)arg2;
 + (struct UIEdgeInsets)customUnscaledBaselineInsets:(struct UIEdgeInsets)arg1 font:(id)arg2;
 + (double)deviceScaledRoundedValue:(double)arg1;

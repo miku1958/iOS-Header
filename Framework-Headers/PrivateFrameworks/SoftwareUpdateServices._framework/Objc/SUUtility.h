@@ -10,20 +10,25 @@
 {
 }
 
++ (long long)MADownloadErrorCodeToSUDownloadErrorCode:(long long)arg1;
 + (id)URLIfFileExists:(id)arg1;
 + (id)addToDate:(id)arg1 numberOfDays:(long long)arg2;
 + (BOOL)alarmSetBeforeDate:(id)arg1;
 + (long long)appDemoteableSpace;
 + (BOOL)appDemotionIsEnabled;
++ (id)appDemotionSettingQueue;
 + (void)assignError:(id *)arg1 withCode:(long long)arg2;
 + (void)assignError:(id *)arg1 withError:(id)arg2 translate:(BOOL)arg3;
 + (long long)cacheDelete:(id)arg1;
 + (BOOL)cellularDataIsEnabled;
++ (id)currentDeviceName;
 + (id)currentProductBuild;
 + (id)currentProductCategory;
 + (id)currentProductType;
 + (id)currentProductVersion;
 + (id)currentReleaseType;
++ (BOOL)currentReleaseTypeIsInternal;
++ (BOOL)deleteKeepAliveFile;
 + (long long)demoteApps:(unsigned long long)arg1 withError:(id *)arg2;
 + (unsigned long long)devicePadding:(id)arg1;
 + (void)enableAppDemotion:(BOOL)arg1;
@@ -39,8 +44,10 @@
 + (BOOL)hasEnoughDiskSpace:(unsigned long long)arg1 growth:(unsigned long long)arg2 deltaSpaceNeeded:(unsigned long long *)arg3 isAutoDownload:(BOOL)arg4;
 + (BOOL)hasEnoughDiskSpace:(unsigned long long)arg1 growth:(unsigned long long)arg2 deltaSpaceNeeded:(unsigned long long *)arg3 isAutoDownload:(BOOL)arg4 disableCDLevelFour:(BOOL)arg5 disableCDLevelThree:(BOOL)arg6 disableSiriDeletion:(BOOL)arg7 disableAppDemotion:(BOOL)arg8;
 + (BOOL)hasEnoughDiskSpace:(unsigned long long)arg1 growth:(unsigned long long)arg2 deltaSpaceNeeded:(unsigned long long *)arg3 isAutoDownload:(BOOL)arg4 includePurging:(BOOL)arg5;
++ (id)internalRecoveryStringForErrorCode:(long long)arg1;
 + (BOOL)isCellularDataCapable;
 + (BOOL)isDaemon;
++ (BOOL)isProductionFused;
 + (BOOL)isWiFiCapable;
 + (void)postAutoUpdateInformationalNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 + (void)postFailureNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4;
@@ -55,6 +62,7 @@
 + (id)translateError:(id)arg1;
 + (id)translateError:(id)arg1 withAddedUserInfo:(id)arg2;
 + (long long)translateErrorCodeFromError:(id)arg1;
++ (BOOL)writeKeepAliveFile;
 
 @end
 

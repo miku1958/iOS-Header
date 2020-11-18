@@ -6,13 +6,21 @@
 
 #import <CarPlaySupport/CPSButton.h>
 
+@class CPMapButton;
+
 @interface CPSMapButton : CPSButton
 {
+    CPMapButton *_mapButton;
 }
 
+@property (strong, nonatomic) CPMapButton *mapButton; // @synthesize mapButton=_mapButton;
+
 + (id)buttonWithCPMapButton:(id)arg1;
+- (void).cxx_destruct;
+- (void)_updateButtonImages;
 - (float)charge;
 - (void)setCharge:(float)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

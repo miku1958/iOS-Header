@@ -32,7 +32,9 @@ __attribute__((visibility("hidden")))
 - (void)setAlignment:(unsigned long long)arg1;
 - (void)setDataSize:(unsigned long long)arg1;
 - (void)setStructType:(id)arg1;
+- (void)setStructType:(id)arg1 doRetain:(BOOL)arg2;
 - (void)setVertexDescriptorBuffer:(BOOL)arg1;
+- (id)structType;
 
 @end
 

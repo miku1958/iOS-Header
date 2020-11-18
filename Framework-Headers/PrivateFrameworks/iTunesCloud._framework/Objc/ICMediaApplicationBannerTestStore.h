@@ -17,6 +17,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)_onQueueBannersForBundleIdentifier:(id)arg1 target:(id)arg2 error:(id *)arg3;
 - (BOOL)addBanner:(id)arg1 error:(id *)arg2;
 - (id)allBannersWithResult:(id *)arg1;
 - (id)bannerStorePropertyForKey:(id)arg1;
@@ -24,6 +25,7 @@
 - (id)init;
 - (BOOL)removeAllBannersWithResult:(id *)arg1;
 - (BOOL)removeBannerWithGUID:(id)arg1 error:(id *)arg2;
+- (BOOL)removeBannersForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)setBannerStoreProperty:(id)arg1 forKey:(id)arg2;
 
 @end

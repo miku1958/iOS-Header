@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long nextWidowPullsDownFromCharIndex;
 @property (readonly, nonatomic) struct _NSRange range;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL terminatedByBreak;
 
 - (void).cxx_destruct;
 - (id)initWithPageIndex:(unsigned long long)arg1 pageController:(id)arg2;

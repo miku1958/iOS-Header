@@ -31,12 +31,14 @@
 + (id)_attachmentDownloadErrorLocalizedString;
 + (BOOL)_attachmentIsViewable:(id)arg1;
 + (id)_cannotOpenAttachmentLocalizedString;
++ (id)_keyForAttachment:(id)arg1;
 + (id)_okLocalizedString;
 + (id)cellControllersForAttachments:(id)arg1 givenExistingControllers:(id)arg2 sourceIsManaged:(BOOL)arg3;
 - (void).cxx_destruct;
 - (void)_clearDownloadID;
 - (id)_downloadProgressStringWithDownloadedBytes:(id)arg1 outOfTotalBytes:(id)arg2;
-- (void)_presentPreviewOnMainThreadWithInfo:(id)arg1;
+- (void)_openExternalAttachmentURLInBrowser:(id)arg1;
+- (void)_presentPreviewAttachmentInPreviewWithInfo:(id)arg1;
 - (void)_presentPreviewWithURL:(id)arg1 filename:(id)arg2;
 - (void)cellSelected;
 - (id)documentInteractionControllerViewControllerForPreview:(id)arg1;

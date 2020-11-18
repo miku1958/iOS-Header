@@ -6,9 +6,12 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSDictionary, NSNumber, WKBrowsingContextHandle;
+@class NSDictionary, NSNumber, NSString, WKBrowsingContextHandle;
 
 @protocol SFReaderWebProcessControllerProtocol <NSObject>
+- (void)activateFont:(NSString *)arg1;
+- (void)checkReaderAvailability;
+- (void)collectArticleContent;
 - (void)collectReaderContentForMail;
 - (void)collectReadingListItemInfoWithBookmarkID:(NSNumber *)arg1;
 - (void)didCreateReaderPageContextHandle:(WKBrowsingContextHandle *)arg1;
@@ -19,6 +22,6 @@
 - (void)setConfiguration:(NSDictionary *)arg1;
 - (void)setInitalArticleScrollPositionAsDictionary:(NSDictionary *)arg1;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(NSDictionary *)arg2 isViewingArchive:(BOOL)arg3;
-- (void)willHideReader;
+- (void)setReaderIsActive:(BOOL)arg1;
 @end
 

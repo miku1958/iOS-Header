@@ -18,10 +18,12 @@
         unsigned int callDuration:1;
         unsigned int timeToEstablish:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     double _callDuration;
     double _timeToEstablish;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) double callDuration; // @synthesize callDuration=_callDuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,8 +33,11 @@
 @property (readonly) Class superclass;
 @property (nonatomic) double timeToEstablish; // @synthesize timeToEstablish=_timeToEstablish;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

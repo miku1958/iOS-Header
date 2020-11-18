@@ -14,40 +14,53 @@
 
 @interface _INPBSearchForNotebookItemsIntent : PBCodable <_INPBSearchForNotebookItemsIntent, NSSecureCoding, NSCopying>
 {
+    CDStruct_95bda58d _temporalEventTriggerTypes;
     struct {
         unsigned int dateSearchType:1;
+        unsigned int includeAllNoteContents:1;
         unsigned int itemType:1;
         unsigned int locationSearchType:1;
         unsigned int status:1;
+        unsigned int taskPriority:1;
     } _has;
+    BOOL _includeAllNoteContents;
+    BOOL __encodeLegacyGloryData;
     int _dateSearchType;
     int _itemType;
     int _locationSearchType;
     int _status;
+    int _taskPriority;
     NSString *_content;
     _INPBDateTimeRange *_dateTime;
+    _INPBDataString *_groupName;
     _INPBIntentMetadata *_intentMetadata;
     _INPBLocation *_location;
     NSString *_notebookItemIdentifier;
     _INPBDataString *_title;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *content; // @synthesize content=_content;
 @property (nonatomic) int dateSearchType; // @synthesize dateSearchType=_dateSearchType;
 @property (strong, nonatomic) _INPBDateTimeRange *dateTime; // @synthesize dateTime=_dateTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (nonatomic) BOOL hasDateSearchType;
 @property (readonly, nonatomic) BOOL hasDateTime;
+@property (readonly, nonatomic) BOOL hasGroupName;
+@property (nonatomic) BOOL hasIncludeAllNoteContents;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasItemType;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasLocationSearchType;
 @property (readonly, nonatomic) BOOL hasNotebookItemIdentifier;
 @property (nonatomic) BOOL hasStatus;
+@property (nonatomic) BOOL hasTaskPriority;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL includeAllNoteContents; // @synthesize includeAllNoteContents=_includeAllNoteContents;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (nonatomic) int itemType; // @synthesize itemType=_itemType;
 @property (strong, nonatomic) _INPBLocation *location; // @synthesize location=_location;
@@ -55,21 +68,36 @@
 @property (copy, nonatomic) NSString *notebookItemIdentifier; // @synthesize notebookItemIdentifier=_notebookItemIdentifier;
 @property (nonatomic) int status; // @synthesize status=_status;
 @property (readonly) Class superclass;
+@property (nonatomic) int taskPriority; // @synthesize taskPriority=_taskPriority;
+@property (readonly, nonatomic) int *temporalEventTriggerTypes;
+@property (readonly, nonatomic) unsigned long long temporalEventTriggerTypesCount;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsDateSearchType:(id)arg1;
 - (int)StringAsItemType:(id)arg1;
 - (int)StringAsLocationSearchType:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
+- (int)StringAsTaskPriority:(id)arg1;
+- (int)StringAsTemporalEventTriggerTypes:(id)arg1;
+- (void)addTemporalEventTriggerType:(int)arg1;
+- (void)clearTemporalEventTriggerTypes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dateSearchTypeAsString:(int)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)itemTypeAsString:(int)arg1;
 - (id)locationSearchTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setTemporalEventTriggerTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (id)statusAsString:(int)arg1;
+- (id)taskPriorityAsString:(int)arg1;
+- (int)temporalEventTriggerTypeAtIndex:(unsigned long long)arg1;
+- (id)temporalEventTriggerTypesAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

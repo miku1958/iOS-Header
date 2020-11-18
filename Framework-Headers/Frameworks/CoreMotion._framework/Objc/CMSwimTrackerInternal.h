@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMSwimTrackerInternal : NSObject
 {
     struct CLConnectionClient *fLocationdConnection;
     NSObject<OS_dispatch_queue> *fInternalQueue;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     BOOL fStartedUpdates;
     CDUnknownBlockType fHandler;
     unsigned long long fStrokeCountOffset;
@@ -24,10 +23,9 @@
 
 - (void)_handleUpdates:(id)arg1;
 - (void)_querySwimUpdatesFromRecord:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_resetOffsets;
 - (void)_startUpdatesFromRecord:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_startWatchdogCheckins;
 - (void)_stopUpdates;
-- (void)_stopWatchdogCheckins;
 - (void)_teardown;
 - (void)dealloc;
 - (id)init;

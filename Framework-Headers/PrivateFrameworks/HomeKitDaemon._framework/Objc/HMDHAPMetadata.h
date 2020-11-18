@@ -67,6 +67,7 @@
 + (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 + (id)initWithURL:(id)arg1 error:(id *)arg2;
 + (BOOL)isHomedVersionSupported:(id)arg1;
++ (BOOL)isServiceType:(id)arg1 compatibleWithAccessoryCategoryType:(id)arg2;
 + (id)legacyV3DataForCloud;
 + (id)legacyV3DataForIDS;
 + (void)prepareMetadata;
@@ -97,6 +98,7 @@
 - (BOOL)isSecondsDownCounterCharacteristicType:(id)arg1;
 - (BOOL)isStandardCharacteristicType:(id)arg1;
 - (BOOL)isStandardServiceType:(id)arg1;
+- (BOOL)isTargetCharacteristic:(id)arg1;
 - (id)mapCharacteristicValueType:(id)arg1;
 - (id)mapFromAssistantCharacteristicValue:(id)arg1 name:(id)arg2;
 - (id)mapFromAssistantServiceName:(id)arg1;
@@ -106,6 +108,7 @@
 - (id)mapToAssistantCharacteristicValue:(id)arg1 name:(id)arg2 getActionType:(BOOL)arg3;
 - (id)mapToAssistantServiceName:(id)arg1;
 - (id)mapToAssistantServiceSubtypeName:(id)arg1;
+- (id)mapToAssistantServiceSubtypeName:(id)arg1 accessoryCategory:(id)arg2;
 - (id)mapToAssistantUnitName:(id)arg1;
 - (id)mapWriteCharacteristicFromAssistantName:(id)arg1;
 - (void)parseAndSetAllowableSecuringWrites:(id)arg1;

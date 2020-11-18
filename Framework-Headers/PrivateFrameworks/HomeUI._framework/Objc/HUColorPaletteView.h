@@ -41,6 +41,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<HUQuickControlColorPaletteViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property (copy, nonatomic) HUQuickControlColorViewProfile *profile; // @synthesize profile=_profile;
+@property (nonatomic) unsigned long long reachabilityState;
 @property (strong, nonatomic) id secondaryValue;
 @property (strong, nonatomic) HFColorPaletteColor *selectedColor; // @synthesize selectedColor=_selectedColor;
 @property (strong, nonatomic) NSNumber *selectedColorBiasIndex; // @synthesize selectedColorBiasIndex=_selectedColorBiasIndex;

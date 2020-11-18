@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INCurrencyAmount, INPaymentMethod, INPerson, NSString;
 
-@interface INPaymentRecord : NSObject <INCacheableContainer, NSCopying, NSSecureCoding>
+@interface INPaymentRecord : NSObject <INCacheableContainer, INJSONSerializable, NSCopying, NSSecureCoding>
 {
     INPerson *_payee;
     INPerson *_payer;
@@ -25,8 +26,11 @@
 
 @property (readonly, copy, nonatomic) INCurrencyAmount *currencyAmount; // @synthesize currencyAmount=_currencyAmount;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) INCurrencyAmount *feeAmount; // @synthesize feeAmount=_feeAmount;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *note; // @synthesize note=_note;
 @property (readonly, copy, nonatomic) INPerson *payee; // @synthesize payee=_payee;
@@ -34,11 +38,14 @@
 @property (readonly, copy, nonatomic) INPaymentMethod *paymentMethod; // @synthesize paymentMethod=_paymentMethod;
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_intents_cacheableObjects;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

@@ -30,7 +30,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (strong, nonatomic) _CPSearchResultForFeedback *result; // @synthesize result=_result;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;

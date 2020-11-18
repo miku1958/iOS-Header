@@ -74,6 +74,7 @@
 @property (strong, nonatomic) NSDictionary *attributionInfo; // @synthesize attributionInfo=_attributionInfo;
 @property (nonatomic) unsigned long long averageTransferRate; // @synthesize averageTransferRate=_averageTransferRate;
 @property (readonly, nonatomic) BOOL canBeAccepted;
+@property (readonly, nonatomic) BOOL canMarkPurgable;
 @property (strong, nonatomic) NSString *cloudKitRecordID; // @synthesize cloudKitRecordID=_cloudKitRecordID;
 @property (strong, nonatomic) NSData *cloudKitServerChangeTokenBlob; // @synthesize cloudKitServerChangeTokenBlob=_cloudKitServerChangeTokenBlob;
 @property (nonatomic) long long cloudKitSyncState; // @synthesize cloudKitSyncState=_cloudKitSyncState;
@@ -89,12 +90,14 @@
 @property (nonatomic) unsigned short hfsFlags; // @synthesize hfsFlags=_hfsFlags;
 @property (nonatomic) unsigned int hfsType; // @synthesize hfsType=_hfsType;
 @property (nonatomic) BOOL hideAttachment; // @synthesize hideAttachment=_hideAttachment;
+@property (readonly, nonatomic) BOOL isAnimojiV2;
 @property (readonly, nonatomic) BOOL isAutoloopVideo;
 @property (nonatomic) BOOL isAuxImage; // @synthesize isAuxImage=_isAuxImage;
 @property (nonatomic) BOOL isAuxVideo; // @synthesize isAuxVideo=_isAuxVideo;
 @property (nonatomic) BOOL isContact; // @synthesize isContact=_isContact;
 @property (nonatomic) BOOL isDirectory; // @synthesize isDirectory=_isDirectory;
 @property (readonly, nonatomic) BOOL isFinished;
+@property (readonly, nonatomic) BOOL isHEVCWithAlphaVideo;
 @property (nonatomic) BOOL isIncoming; // @synthesize isIncoming=_isIncoming;
 @property (nonatomic) BOOL isLocation; // @synthesize isLocation=_isLocation;
 @property (readonly, nonatomic) BOOL isOpusAudioMessage;
@@ -123,6 +126,7 @@
 @property (strong, nonatomic) NSString *transferredFilename; // @synthesize transferredFilename=_transferredFilename;
 @property (strong, nonatomic) NSString *type; // @synthesize type=_utiType;
 @property (strong, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_localUserInfo;
+@property (readonly, nonatomic) BOOL wantsAlphaRemoved;
 @property (nonatomic, setter=setRegisteredAsStandalone:) BOOL wasRegisteredAsStandalone; // @synthesize wasRegisteredAsStandalone=_wasRegisteredAsStandalone;
 
 + (id)AuxGUIDFromFileTransferGUID:(id)arg1;
@@ -133,10 +137,13 @@
 - (void)_clear;
 - (id)_dictionaryRepresentation;
 - (id)_initWithGUID:(id)arg1 filename:(id)arg2 isDirectory:(BOOL)arg3 localURL:(id)arg4 account:(id)arg5 otherPerson:(id)arg6 totalBytes:(unsigned long long)arg7 hfsType:(unsigned int)arg8 hfsCreator:(unsigned int)arg9 hfsFlags:(unsigned short)arg10 isIncoming:(BOOL)arg11;
+- (BOOL)_isCloudKitEnabled;
+- (BOOL)_missingAttachmentCanBeDownloadedFromCloudKit;
 - (void)_setAccount:(id)arg1 otherPerson:(id)arg2;
 - (void)_setAveragedTransferRate:(unsigned long long)arg1 lastAveragedInterval:(double)arg2 lastAveragedBytes:(unsigned long long)arg3;
 - (void)_setCurrentBytes:(unsigned long long)arg1 totalBytes:(unsigned long long)arg2;
 - (void)_setDirectory:(BOOL)arg1 hfsType:(unsigned int)arg2 hfsCreator:(unsigned int)arg3 hfsFlags:(unsigned short)arg4;
+- (void)_swizzleTransferStateIfMissingAttachmentCanBeDownloadedFromCloudKit;
 - (BOOL)_updateWithDictionaryRepresentation:(id)arg1;
 - (void)dealloc;
 - (id)description;

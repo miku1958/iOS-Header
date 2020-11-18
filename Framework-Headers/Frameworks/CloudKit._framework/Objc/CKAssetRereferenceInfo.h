@@ -38,7 +38,7 @@
 - (void)clearRecordFetchProperties;
 - (id)description;
 - (id)initWithSourceZoneID:(id)arg1;
-- (BOOL)validateAndSetRecordFetchPropertiesWithAsset:(id)arg1 assetReference:(id)arg2;
+- (BOOL)validateAndSetRecordFetchPropertiesWithAsset:(id)arg1 assetReference:(id)arg2 useEncryption:(BOOL)arg3 useClearAssetEncryption:(BOOL)arg4;
 
 @end
 

@@ -16,8 +16,10 @@
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
+- (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

@@ -13,6 +13,7 @@
 + (id)_features;
 + (Class)_relevanceProviderClass;
 + (BOOL)_supportsHistoricProviders;
++ (BOOL)_wantsSeperateRelevanceQueue;
 - (BOOL)_isHistoricProvider:(id)arg1;
 - (float)_relevanceForHistoricProvider:(id)arg1;
 - (float)_relevanceForProvider:(id)arg1;

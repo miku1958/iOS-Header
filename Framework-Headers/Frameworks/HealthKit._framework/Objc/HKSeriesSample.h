@@ -8,7 +8,7 @@
 
 @interface HKSeriesSample : HKSample
 {
-    long long _count;
+    _Atomic unsigned int _count;
     BOOL _frozen;
 }
 
@@ -18,7 +18,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)_setCount:(unsigned long long)arg1;
 - (BOOL)_shouldNotifyOnInsert;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_validateSample;
 - (id)_valueDescription;
 - (void)encodeWithCoder:(id)arg1;

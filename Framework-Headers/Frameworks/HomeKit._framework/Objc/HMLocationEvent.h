@@ -9,16 +9,17 @@
 #import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSMutableCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
-#import <HomeKit/_HMLocationHandlerDelegate-Protocol.h>
 
-@class CLRegion;
+@class CLRegion, HMFLocationAuthorization;
 
-@interface HMLocationEvent : HMEvent <_HMLocationHandlerDelegate, NSSecureCoding, NSCopying, NSMutableCopying>
+@interface HMLocationEvent : HMEvent <NSSecureCoding, NSCopying, NSMutableCopying>
 {
     int _locationAuthorization;
     CLRegion *_region;
+    HMFLocationAuthorization *_authorization;
 }
 
+@property (readonly) HMFLocationAuthorization *authorization; // @synthesize authorization=_authorization;
 @property (nonatomic) int locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property (strong, nonatomic) CLRegion *region; // @synthesize region=_region;
 
@@ -26,13 +27,14 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 eventTrigger:(id)arg2;
+- (void)__locationAuthorizationUpdated:(id)arg1;
 - (void)_handleEventUpdatedNotification:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_retrieveLocationEvent;
 - (id)_serializeForAdd;
 - (void)_updateRegion:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)didUpdateAuthorization:(int)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDict:(id)arg1 region:(id)arg2;

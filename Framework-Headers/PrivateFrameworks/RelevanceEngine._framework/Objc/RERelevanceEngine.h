@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <RelevanceEngine/RELoggable-Protocol.h>
+#import <RelevanceEngine/REActivityTrackerDelegate-Protocol.h>
+#import <RelevanceEngine/RERelevanceEngineProperties-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, REDataSourceCatalog, REDataSourceManager, REEngineLocationManager, REFeatureMapGenerator, REFeatureSet, REFeatureTransmuter, RELiveElementCoordinator, REMLModelManager, RERelevanceEngineConfiguration, RERelevanceEngineLogger, RERelevanceEnginePreferences, RERelevanceEnginePreferencesController, RETrainingManager, _REEngineDefaults;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, REActivityTracker, REDataSourceCatalog, REDataSourceManager, REEngineLocationManager, REFeatureMapGenerator, REFeatureSet, REFeatureTransmuter, RELiveElementCoordinator, REMLModelManager, RERelevanceEngineConfiguration, RERelevanceEngineLogger, RERelevanceEnginePreferences, RERelevanceEnginePreferencesController, RETrainingManager, REUpNextScheduler, _REEngineDefaults;
 @protocol OS_dispatch_queue;
 
-@interface RERelevanceEngine : NSObject <RELoggable>
+@interface RERelevanceEngine : NSObject <RERelevanceEngineProperties, REActivityTrackerDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_callbackQueue;
     NSMutableArray *_subsystems;
     REFeatureSet *_rootFeatures;
     REFeatureSet *_mlFeatures;
@@ -29,6 +31,7 @@
     RERelevanceEnginePreferencesController *_preferenceController;
     REEngineLocationManager *_locationManager;
     RERelevanceEngineLogger *_logger;
+    REActivityTracker *_activityTracker;
     _REEngineDefaults *_defaults;
     NSMutableDictionary *_addedElementsByIdentifier;
     NSArray *_configurationSectionDescriptors;
@@ -36,11 +39,16 @@
     NSArray *_historicSectionDescriptors;
     NSDictionary *_inflectionFeatureValues;
     BOOL _running;
+    BOOL _updatedLoading;
+    BOOL _loading;
+    REUpNextScheduler *_loadingScheduler;
+    struct os_unfair_lock_s _activityTrackerLock;
     BOOL _automaticallyResumeEngine;
     RERelevanceEngineConfiguration *_configuration;
 }
 
 @property (nonatomic) BOOL automaticallyResumeEngine; // @synthesize automaticallyResumeEngine=_automaticallyResumeEngine;
+@property (readonly, nonatomic) RERelevanceEngineConfiguration *configuration;
 @property (readonly, nonatomic) RERelevanceEngineConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) RELiveElementCoordinator *coordinator;
 @property (readonly, nonatomic) REDataSourceCatalog *dataSourceCatalog;
@@ -58,10 +66,12 @@
 @property (readonly, nonatomic) REFeatureSet *mlFeatures;
 @property (readonly, nonatomic) REMLModelManager *modelManager;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) REFeatureSet *rootFeatures;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (readonly, nonatomic) NSArray *sectionDescriptors;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *subsystemQueue;
+@property (readonly, nonatomic) NSArray *subsystems;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) RETrainingManager *trainingManager;
 @property (readonly, nonatomic) BOOL wantsImmutableContent;
@@ -69,21 +79,29 @@
 + (void)prewarmWithConfiguration:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addSubsystem:(id)arg1;
+- (void)_callbackQueue_notifyLoadingState;
 - (void)_captureAndStoreDiagnosticLogs:(CDUnknownBlockType)arg1;
-- (id)_newLogFilePath;
 - (void)_queue_pauseSubsystem:(id)arg1;
 - (void)_queue_resumeSubsystem:(id)arg1;
 - (void)_removeSubsystem:(id)arg1;
-- (void)_validateSectionDescriptors:(id)arg1;
+- (void)activityTracker:(id)arg1 didBeginActivity:(id)arg2;
+- (void)activityTracker:(id)arg1 didEndActivity:(id)arg2;
 - (void)addElement:(id)arg1 section:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (void)addTrainingContext:(id)arg1;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
+- (void)beginActivity:(id)arg1 forObject:(id)arg2;
 - (void)dealloc;
 - (id)dictionaryFromElement:(id)arg1;
 - (id)elementAtPath:(id)arg1;
 - (id)elementFromDictionary:(id)arg1;
+- (id)elementRankerForSection:(id)arg1;
+- (void)endActivity:(id)arg1 forObject:(id)arg2;
+- (void)enumerateRankedContent:(CDUnknownBlockType)arg1;
+- (void)enumerateRankedContentInSection:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateSectionDescriptorsWithOptions:(unsigned long long)arg1 includeHistoric:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)featureProviderForElement:(id)arg1;
+- (id)featureProviderForElementAtPath:(id)arg1;
+- (void)gatherMetrics;
 - (id)historicSectionForSection:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithName:(id)arg1 configuration:(id)arg2;
@@ -94,11 +112,13 @@
 - (id)pathForElement:(id)arg1;
 - (void)pause;
 - (void)pauseForSimulation;
+- (id)predictionForElement:(id)arg1;
 - (id)predictionForElementAtPath:(id)arg1;
 - (void)removeElement:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)removePreferencesForObject:(id)arg1;
 - (void)removeTrainingContext:(id)arg1;
+- (void)resetModelWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resume;
 - (void)resumeFromSimulation;
 - (void)saveModelFile;
@@ -106,6 +126,7 @@
 - (void)setPreferences:(id)arg1 forObject:(id)arg2;
 - (void)storeDiagnosticLogs:(CDUnknownBlockType)arg1;
 - (void)storeDiagnosticLogsToFile:(CDUnknownBlockType)arg1;
+- (void)trainPendingEventsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)trainWithPendingEvents;
 
 @end

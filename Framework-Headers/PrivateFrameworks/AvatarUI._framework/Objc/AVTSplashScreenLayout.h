@@ -12,11 +12,13 @@
 @interface AVTSplashScreenLayout : NSObject
 {
     BOOL _wantsSecondaryVideo;
+    BOOL _constrainToContainer;
     BOOL _needsLayout;
     id<AVTSplashScreenLayoutDelegate> _delegate;
     unsigned long long _labelEdgePaddingStyle;
     NSString *_currentContentSizeCategory;
     struct CGSize _containerSize;
+    struct CGSize _unconstrainedContentSize;
     struct UIEdgeInsets _edgeInsets;
     struct CGRect _titleFrame;
     struct CGRect _subTitleFrame;
@@ -26,6 +28,7 @@
 }
 
 @property (nonatomic) struct CGRect buttonFrame; // @synthesize buttonFrame=_buttonFrame;
+@property (nonatomic) BOOL constrainToContainer; // @synthesize constrainToContainer=_constrainToContainer;
 @property (readonly, nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
 @property (copy, nonatomic) NSString *currentContentSizeCategory; // @synthesize currentContentSizeCategory=_currentContentSizeCategory;
 @property (weak, nonatomic) id<AVTSplashScreenLayoutDelegate> delegate; // @synthesize delegate=_delegate;
@@ -36,6 +39,7 @@
 @property (nonatomic) struct CGRect secondaryVideoFrame; // @synthesize secondaryVideoFrame=_secondaryVideoFrame;
 @property (nonatomic) struct CGRect subTitleFrame; // @synthesize subTitleFrame=_subTitleFrame;
 @property (nonatomic) struct CGRect titleFrame; // @synthesize titleFrame=_titleFrame;
+@property (readonly, nonatomic) struct CGSize unconstrainedContentSize; // @synthesize unconstrainedContentSize=_unconstrainedContentSize;
 @property (nonatomic) BOOL wantsSecondaryVideo; // @synthesize wantsSecondaryVideo=_wantsSecondaryVideo;
 
 + (unsigned long long)appropriateLabelEdgePaddingStyleForViewSize:(struct CGSize)arg1;
@@ -43,8 +47,11 @@
 + (id)buttonFont;
 + (struct CGRect)buttonFrameForString:(id)arg1 containerSize:(struct CGSize)arg2 edgeInsets:(struct UIEdgeInsets)arg3;
 + (double)defaultLabelEdgePaddingForLabelEdgePaddingStyle:(unsigned long long)arg1 contentSizeCategory:(id)arg2 numberOfLines:(long long)arg3;
++ (BOOL)isSmallScreen;
 + (struct CGRect)primaryVideoFrameForContentFrame:(struct CGRect)arg1 wantsSecondaryVideo:(BOOL)arg2;
++ (struct CGSize)primaryVideoSize;
 + (struct CGRect)secondaryVideoFrameForContentFrame:(struct CGRect)arg1;
++ (struct CGSize)secondaryVideoSize;
 + (id)subTitleFont;
 + (struct CGRect)subTitleFrameForString:(id)arg1 titleFrame:(struct CGRect)arg2 buttonFrame:(struct CGRect)arg3 wantsSecondaryVideo:(BOOL)arg4 containerSize:(struct CGSize)arg5 labelEdgePadding:(double)arg6;
 + (id)titleFont;

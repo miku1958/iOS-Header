@@ -7,10 +7,11 @@
 #import <Message/NSCopying-Protocol.h>
 #import <Message/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, NSURL;
 
 @protocol ECMailbox <NSCopying, NSObject>
 
+@property (readonly, nonatomic) NSURL *URL;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *persistentID;
 @property (readonly, nonatomic) long long type;

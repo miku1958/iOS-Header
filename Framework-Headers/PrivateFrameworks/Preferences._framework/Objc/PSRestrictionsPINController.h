@@ -23,7 +23,6 @@
 - (void)setPIN:(id)arg1;
 - (BOOL)simplePIN;
 - (id)stringsBundle;
-- (id)stringsTable;
 - (BOOL)validatePIN:(id)arg1;
 
 @end

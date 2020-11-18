@@ -9,16 +9,24 @@
 #import <DoNotDisturb/NSCopying-Protocol.h>
 #import <DoNotDisturb/NSSecureCoding-Protocol.h>
 
-@class DNDModeAssertion;
+@class DNDModeAssertion, DNDModeAssertionInvalidationDetails, DNDModeAssertionSource, NSDate;
 
 @interface DNDModeAssertionInvalidation : NSObject <NSCopying, NSSecureCoding>
 {
     DNDModeAssertion *_assertion;
+    NSDate *_invalidationDate;
+    DNDModeAssertionInvalidationDetails *_details;
+    DNDModeAssertionSource *_source;
     unsigned long long _reason;
+    unsigned long long _reasonOverride;
 }
 
 @property (readonly, copy, nonatomic) DNDModeAssertion *assertion; // @synthesize assertion=_assertion;
+@property (readonly, copy, nonatomic) DNDModeAssertionInvalidationDetails *details; // @synthesize details=_details;
+@property (readonly, copy, nonatomic) NSDate *invalidationDate; // @synthesize invalidationDate=_invalidationDate;
 @property (readonly, nonatomic) unsigned long long reason; // @synthesize reason=_reason;
+@property (readonly, nonatomic) unsigned long long reasonOverride; // @synthesize reasonOverride=_reasonOverride;
+@property (readonly, copy, nonatomic) DNDModeAssertionSource *source; // @synthesize source=_source;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -26,7 +34,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithAssertion:(id)arg1 reason:(unsigned long long)arg2;
+- (id)initWithAssertion:(id)arg1 invalidationDate:(id)arg2 details:(id)arg3 source:(id)arg4 reason:(unsigned long long)arg5 reasonOverride:(unsigned long long)arg6;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

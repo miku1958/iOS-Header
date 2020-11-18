@@ -16,7 +16,7 @@
 @property (readonly, nonatomic) unsigned long long capabilitiesOfCPU;
 @property (readonly, nonatomic) unsigned long long capabilitiesOfNetwork;
 @property (readonly, nonatomic) id controller;
-@property id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isAVInterfaceReady;
 @property (nonatomic) void *localVideoBackLayer;
 @property (nonatomic) void *localVideoLayer;
@@ -30,8 +30,8 @@
 @property (readonly, nonatomic) BOOL systemSupportsBackFacingCamera;
 @property (readonly, nonatomic) BOOL systemSupportsFrontFacingCamera;
 
-+ (id)alloc;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_avChatDealloc:(id)arg1;
 - (long long)_checkNetworkForChat:(id)arg1 requiresWifi:(BOOL)arg2;
 - (void)_conferenceEnded:(id)arg1;

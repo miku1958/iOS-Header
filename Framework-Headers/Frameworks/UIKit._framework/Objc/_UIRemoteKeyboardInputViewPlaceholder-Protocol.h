@@ -13,6 +13,7 @@
 @property (nonatomic) struct CGSize fixedSize;
 @property (readonly, strong) UIView *placeheldView;
 
+- (void)_isPlaceholderViewSelector;
 - (BOOL)refreshPlaceholder;
 @end
 

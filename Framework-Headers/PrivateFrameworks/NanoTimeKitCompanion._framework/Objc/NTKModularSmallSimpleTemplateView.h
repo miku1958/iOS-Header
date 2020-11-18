@@ -17,7 +17,6 @@
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (id)supportedTemplateClasses;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;

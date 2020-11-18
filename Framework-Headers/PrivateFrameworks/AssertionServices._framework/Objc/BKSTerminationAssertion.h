@@ -15,16 +15,16 @@
     BKSTerminationContext *_context;
 }
 
-@property (readonly, copy, nonatomic) BKSTerminationContext *context;
-@property (readonly, nonatomic) unsigned long long efficacy;
-@property (readonly, copy, nonatomic) NSString *targetBundleIdentifier;
+@property (readonly, copy, nonatomic) BKSTerminationContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) unsigned long long efficacy; // @synthesize efficacy=_efficacy;
+@property (readonly, copy, nonatomic) NSString *targetBundleIdentifier; // @synthesize targetBundleIdentifier=_bundleIdentifier;
 
-- (id)_clientQueue_createEvent;
-- (id)_clientQueue_destroyEvent;
-- (id)_clientQueue_updateEvent;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (unsigned long long)_bksErrorForRBSRequestError:(unsigned long long)arg1;
+- (BOOL)acquire;
 - (id)initWithBundleIdentifier:(id)arg1 efficacy:(unsigned long long)arg2 name:(id)arg3 context:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithBundleIdentifier:(id)arg1 efficacy:(unsigned long long)arg2 name:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)invalidate;
 
 @end
 

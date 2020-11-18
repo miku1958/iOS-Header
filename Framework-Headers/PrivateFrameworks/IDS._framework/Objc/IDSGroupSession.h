@@ -24,7 +24,6 @@
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3;
 - (id)initWithAccount:(id)arg1 options:(id)arg2;
 - (void)invalidate;
-- (void)joinGroupSession;
 - (void)joinWithOptions:(id)arg1;
 - (void)leaveGroupSession;
 - (void)requestActiveParticipants;
@@ -32,6 +31,7 @@
 - (void)setParticipantInfo:(id)arg1;
 - (void)setPreferences:(id)arg1;
 - (unsigned int)state;
+- (id)unicastParameterForParticipantID:(unsigned long long)arg1 dataMode:(long long)arg2 connectionIndex:(unsigned long long)arg3;
 - (void)updateMembers:(id)arg1 withContext:(id)arg2 triggeredLocally:(BOOL)arg3;
 - (void)updateParticipantData:(id)arg1 withContext:(id)arg2;
 

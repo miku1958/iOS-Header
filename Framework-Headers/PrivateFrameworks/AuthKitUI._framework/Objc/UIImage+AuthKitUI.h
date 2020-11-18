@@ -8,5 +8,7 @@
 
 @interface UIImage (AuthKitUI)
 + (id)ak_imageWithColor:(id)arg1;
++ (id)iconForData:(id)arg1 scale:(double)arg2;
+- (id)copyScaledToSize:(struct CGSize)arg1;
 @end
 

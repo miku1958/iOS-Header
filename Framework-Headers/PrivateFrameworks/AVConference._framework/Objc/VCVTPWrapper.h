@@ -11,8 +11,10 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)connectionContext;
 + (void)startVTP;
 + (void)stopVTP;
++ (id)targetQueue;
 
 @end
 

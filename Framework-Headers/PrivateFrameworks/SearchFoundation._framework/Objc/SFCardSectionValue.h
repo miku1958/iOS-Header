@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFCardSectionValue-Protocol.h>
 
-@class NSData, NSDictionary, NSString, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFlightCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFKeyValueDataCardSection, SFMapCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFNowPlayingCardSection, SFProductCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFStockChartCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWebCardSection;
+@class NSData, NSDictionary, NSString, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFCompactRowCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFlightCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFKeyValueDataCardSection, SFMapCardSection, SFMapPlaceCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMediaRemoteControlCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFNowPlayingCardSection, SFProductCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFStockChartCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWebCardSection;
 
 @interface SFCardSectionValue : NSObject <SFCardSectionValue, NSSecureCoding, NSCopying>
 {
@@ -50,12 +50,15 @@
     SFProductCardSection *_productCardSection;
     SFHorizontalScrollCardSection *_horizontalScrollCardSection;
     SFMediaRemoteControlCardSection *_mediaRemoteControlCardSection;
+    SFMapPlaceCardSection *_mapPlaceCardSection;
+    SFCompactRowCardSection *_compactRowCardSection;
 }
 
 @property (strong, nonatomic) SFActivityIndicatorCardSection *activityIndicatorCardSection; // @synthesize activityIndicatorCardSection=_activityIndicatorCardSection;
 @property (strong, nonatomic) SFAppLinkCardSection *appLinkCardSection; // @synthesize appLinkCardSection=_appLinkCardSection;
 @property (strong, nonatomic) SFAudioPlaybackCardSection *audioPlaybackCardSection; // @synthesize audioPlaybackCardSection=_audioPlaybackCardSection;
 @property (strong, nonatomic) SFButtonCardSection *buttonCardSection; // @synthesize buttonCardSection=_buttonCardSection;
+@property (strong, nonatomic) SFCompactRowCardSection *compactRowCardSection; // @synthesize compactRowCardSection=_compactRowCardSection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SFDescriptionCardSection *descriptionCardSection; // @synthesize descriptionCardSection=_descriptionCardSection;
@@ -69,6 +72,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SFKeyValueDataCardSection *keyValueDataCardSection; // @synthesize keyValueDataCardSection=_keyValueDataCardSection;
 @property (strong, nonatomic) SFMapCardSection *mapCardSection; // @synthesize mapCardSection=_mapCardSection;
+@property (strong, nonatomic) SFMapPlaceCardSection *mapPlaceCardSection; // @synthesize mapPlaceCardSection=_mapPlaceCardSection;
 @property (strong, nonatomic) SFMapsDetailedRowCardSection *mapsDetailedRowCardSection; // @synthesize mapsDetailedRowCardSection=_mapsDetailedRowCardSection;
 @property (strong, nonatomic) SFMediaInfoCardSection *mediaInfoCardSection; // @synthesize mediaInfoCardSection=_mediaInfoCardSection;
 @property (strong, nonatomic) SFMediaPlayerCardSection *mediaPlayerCardSection; // @synthesize mediaPlayerCardSection=_mediaPlayerCardSection;

@@ -17,13 +17,11 @@ __attribute__((visibility("hidden")))
     NSString *_fontName;
     double _fontSize;
     NSArray *_fontFeatures;
-    unsigned long long _fontNameSizeHash;
 }
 
 @property (readonly, nonatomic) BOOL bold; // @synthesize bold=_bold;
 @property (readonly, copy, nonatomic) NSArray *fontFeatures; // @synthesize fontFeatures=_fontFeatures;
 @property (readonly, nonatomic) NSString *fontName; // @synthesize fontName=_fontName;
-@property (readonly, nonatomic) unsigned long long fontNameSizeHash; // @synthesize fontNameSizeHash=_fontNameSizeHash;
 @property (readonly, nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (readonly, nonatomic) BOOL hasExtraFields; // @synthesize hasExtraFields=_hasExtraFields;
 @property (readonly, nonatomic) BOOL italic; // @synthesize italic=_italic;

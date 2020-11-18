@@ -10,7 +10,6 @@
 {
 }
 
-+ (void)initialize;
 + (id)sharedUserDefaults;
 - (id)codableObjectOfClass:(Class)arg1 forKey:(id)arg2;
 - (BOOL)setCodableObject:(id)arg1 forKey:(id)arg2 error:(id *)arg3;

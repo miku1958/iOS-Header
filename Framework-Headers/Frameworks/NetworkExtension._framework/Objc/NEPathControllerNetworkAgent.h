@@ -6,27 +6,30 @@
 
 #import <NetworkExtension/NENetworkAgent.h>
 
-@class NSString, NWInterface;
+@class NSMutableArray, NSString;
 
 @interface NEPathControllerNetworkAgent : NENetworkAgent
 {
+    BOOL updateClientsImmediately;
+    BOOL _isForcedAdvisory;
     BOOL _weakAdvisory;
     BOOL _noAdvisoryTimer;
     CDUnknownBlockType _internalAssertHandler;
     CDUnknownBlockType _internalUnassertHandler;
-    NWInterface *_advisoryInterface;
+    NSMutableArray *_predictedInterfaceArray;
+    NSMutableArray *_advisoryInterfaceArray;
     NSString *_advisoryAgentDomain;
     NSString *_advisoryAgentType;
-    NWInterface *_predictedInterface;
 }
 
 @property (strong) NSString *advisoryAgentDomain; // @synthesize advisoryAgentDomain=_advisoryAgentDomain;
 @property (strong) NSString *advisoryAgentType; // @synthesize advisoryAgentType=_advisoryAgentType;
-@property (strong) NWInterface *advisoryInterface; // @synthesize advisoryInterface=_advisoryInterface;
+@property (strong) NSMutableArray *advisoryInterfaceArray; // @synthesize advisoryInterfaceArray=_advisoryInterfaceArray;
 @property (copy) CDUnknownBlockType internalAssertHandler; // @synthesize internalAssertHandler=_internalAssertHandler;
 @property (copy) CDUnknownBlockType internalUnassertHandler; // @synthesize internalUnassertHandler=_internalUnassertHandler;
+@property (nonatomic) BOOL isForcedAdvisory; // @synthesize isForcedAdvisory=_isForcedAdvisory;
 @property BOOL noAdvisoryTimer; // @synthesize noAdvisoryTimer=_noAdvisoryTimer;
-@property (strong) NWInterface *predictedInterface; // @synthesize predictedInterface=_predictedInterface;
+@property (strong) NSMutableArray *predictedInterfaceArray; // @synthesize predictedInterfaceArray=_predictedInterfaceArray;
 @property BOOL weakAdvisory; // @synthesize weakAdvisory=_weakAdvisory;
 
 + (id)agentFromData:(id)arg1;
@@ -38,7 +41,9 @@
 - (id)initWithAdvisoryInterface:(id)arg1 advisoryMode:(unsigned long long)arg2;
 - (void)setAssertHandler:(CDUnknownBlockType)arg1;
 - (void)setUnassertHandler:(CDUnknownBlockType)arg1;
+- (void)setUpdateClientsImmediately:(BOOL)arg1;
 - (void)unassertAgentWithOptions:(id)arg1;
+- (BOOL)updateClientsImmediately;
 
 @end
 

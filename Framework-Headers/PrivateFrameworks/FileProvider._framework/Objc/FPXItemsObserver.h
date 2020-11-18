@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (copy) CDUnknownBlockType finishedBlock; // @synthesize finishedBlock=_finishedBlock;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong) NSData *syncAnchor; // @synthesize syncAnchor=_syncAnchor;
+@property (copy) NSData *syncAnchor; // @synthesize syncAnchor=_syncAnchor;
 
 - (void).cxx_destruct;
 - (void)didEnumerateItems:(id)arg1;

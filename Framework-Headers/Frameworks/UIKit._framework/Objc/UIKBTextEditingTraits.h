@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class UIResponder;
+
 @interface UIKBTextEditingTraits : NSObject
 {
     BOOL _canToggleBoldface;
@@ -20,6 +22,7 @@
     BOOL _isBold;
     BOOL _isItalicized;
     BOOL _isUnderlined;
+    UIResponder *_responder;
 }
 
 @property (readonly, nonatomic) BOOL canCopy; // @synthesize canCopy=_canCopy;
@@ -33,9 +36,11 @@
 @property (readonly, nonatomic) BOOL isBold; // @synthesize isBold=_isBold;
 @property (readonly, nonatomic) BOOL isItalicized; // @synthesize isItalicized=_isItalicized;
 @property (readonly, nonatomic) BOOL isUnderlined; // @synthesize isUnderlined=_isUnderlined;
+@property (readonly, weak, nonatomic) UIResponder *responder; // @synthesize responder=_responder;
 @property (readonly, nonatomic) BOOL supportStyling; // @synthesize supportStyling=_supportStyling;
 
 + (id)traitsWithResponder:(id)arg1 keyMaskFlags:(unsigned long long)arg2;
+- (void).cxx_destruct;
 - (id)initWithResponder:(id)arg1 keyMaskFlags:(unsigned long long)arg2;
 
 @end

@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDCentralMessageDispatcher, HMDDevice, HMFTimer, NSMapTable, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMDDevice, HMDMessageDispatcher, HMFTimer, NSMapTable, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDResidentCommunicationHandler : HMFObject <HMFLogging, HMFTimerDelegate>
@@ -20,7 +20,7 @@
     NSMapTable *_dispatchedReadRequests;
     HMFTimer *_multiReadCoalesceTimer;
     NSUUID *_homeUUID;
-    HMDCentralMessageDispatcher *_remoteDispatcher;
+    HMDMessageDispatcher *_remoteDispatcher;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,7 +32,7 @@
 @property (strong, nonatomic) HMFTimer *multiReadCoalesceTimer; // @synthesize multiReadCoalesceTimer=_multiReadCoalesceTimer;
 @property (readonly, nonatomic) NSMutableArray *pendingReadRequests; // @synthesize pendingReadRequests=_pendingReadRequests;
 @property (readonly, nonatomic) HMDDevice *preferredDevice;
-@property (readonly, weak, nonatomic) HMDCentralMessageDispatcher *remoteDispatcher; // @synthesize remoteDispatcher=_remoteDispatcher;
+@property (readonly, weak, nonatomic) HMDMessageDispatcher *remoteDispatcher; // @synthesize remoteDispatcher=_remoteDispatcher;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (NSKindOfAdditions)
+- (unsigned long long)_cfTypeID;
 - (BOOL)isNSArray__;
 - (BOOL)isNSCFConstantString__;
 - (BOOL)isNSData__;

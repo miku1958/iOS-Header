@@ -14,11 +14,20 @@ __attribute__((visibility("hidden")))
 @interface GEOPDRap : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    int _placecardRapButtonType;
+    struct {
+        unsigned int has_placecardRapButtonType:1;
+    } _flags;
 }
 
+@property (nonatomic) BOOL hasPlacecardRapButtonType;
+@property (nonatomic) int placecardRapButtonType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsPlacecardRapButtonType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -26,6 +35,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)placecardRapButtonTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -12,10 +12,12 @@
 
 @interface WKSnapshotConfiguration : NSObject <NSCopying>
 {
+    BOOL _afterScreenUpdates;
     NSNumber *_snapshotWidth;
     struct CGRect _rect;
 }
 
+@property (nonatomic) BOOL afterScreenUpdates; // @synthesize afterScreenUpdates=_afterScreenUpdates;
 @property (nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 @property (copy, nonatomic) NSNumber *snapshotWidth; // @synthesize snapshotWidth=_snapshotWidth;
 

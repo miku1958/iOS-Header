@@ -6,13 +6,14 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDDevice, HMDResidentMesh, NSMutableDictionary, NSMutableSet;
+@class HMDDevice, HMDResidentMesh, NSDictionary, NSMutableDictionary, NSMutableSet;
 
 @interface HMDResidentMeshMeshStorage : HMFObject
 {
     BOOL _enabled;
-    HMDResidentMesh *_owner;
     HMDDevice *_device;
+    NSDictionary *_metrics;
+    HMDResidentMesh *_owner;
     NSMutableSet *_accessoryUUIDs;
     unsigned long long _generationCount;
     NSMutableDictionary *_accessoryListWithLinkQuality;
@@ -20,9 +21,10 @@
 
 @property (strong, nonatomic) NSMutableDictionary *accessoryListWithLinkQuality; // @synthesize accessoryListWithLinkQuality=_accessoryListWithLinkQuality;
 @property (strong, nonatomic) NSMutableSet *accessoryUUIDs; // @synthesize accessoryUUIDs=_accessoryUUIDs;
-@property (strong, nonatomic) HMDDevice *device; // @synthesize device=_device;
+@property (readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) unsigned long long generationCount; // @synthesize generationCount=_generationCount;
+@property (strong, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property (weak, nonatomic) HMDResidentMesh *owner; // @synthesize owner=_owner;
 
 - (void).cxx_destruct;

@@ -8,6 +8,7 @@
 
 @class CAFilter, NSAttributedString, UIColor, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface SKUIItemOfferButtonProperties : NSObject
 {
     BOOL _hasBorderView;

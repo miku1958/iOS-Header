@@ -8,16 +8,18 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class PBDataReader, PBUnknownFields;
 
 @interface GEOTileGroup : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    CDStruct_9f2792e4 _attributionIndexs;
+    CDStruct_9f2792e4 _fontIndexs;
     struct GEOTileSetRegion *_hybridUnavailableRegions;
     unsigned long long _hybridUnavailableRegionsCount;
     unsigned long long _hybridUnavailableRegionsSpace;
-    CDStruct_9f2792e4 _attributionIndexs;
-    CDStruct_9f2792e4 _fontIndexs;
     CDStruct_9f2792e4 _iconIndexs;
     struct GEORegionalResourceIndex *_regionalResourceIndexs;
     unsigned long long _regionalResourceIndexsCount;
@@ -25,22 +27,52 @@
     CDStruct_9f2792e4 _resourceIndexs;
     CDStruct_9f2792e4 _styleSheetIndexs;
     CDStruct_9f2792e4 _textureIndexs;
-    CDStruct_9f2792e4 _xmlIndexs;
     struct GEOVersionedTileSet *_tileSets;
     unsigned long long _tileSetsCount;
     unsigned long long _tileSetsSpace;
+    CDStruct_9f2792e4 _xmlIndexs;
     unsigned int _identifier;
+    unsigned int _muninVersionIndex;
+    struct {
+        unsigned int has_muninVersionIndex:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_attributionIndexs:1;
+        unsigned int read_fontIndexs:1;
+        unsigned int read_hybridUnavailableRegions:1;
+        unsigned int read_iconIndexs:1;
+        unsigned int read_regionalResourceIndexs:1;
+        unsigned int read_resourceIndexs:1;
+        unsigned int read_styleSheetIndexs:1;
+        unsigned int read_textureIndexs:1;
+        unsigned int read_tileSets:1;
+        unsigned int read_xmlIndexs:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_attributionIndexs:1;
+        unsigned int wrote_fontIndexs:1;
+        unsigned int wrote_hybridUnavailableRegions:1;
+        unsigned int wrote_iconIndexs:1;
+        unsigned int wrote_regionalResourceIndexs:1;
+        unsigned int wrote_resourceIndexs:1;
+        unsigned int wrote_styleSheetIndexs:1;
+        unsigned int wrote_textureIndexs:1;
+        unsigned int wrote_tileSets:1;
+        unsigned int wrote_xmlIndexs:1;
+        unsigned int wrote_identifier:1;
+        unsigned int wrote_muninVersionIndex:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) unsigned int *attributionIndexs;
 @property (readonly, nonatomic) unsigned long long attributionIndexsCount;
 @property (readonly, nonatomic) unsigned int *fontIndexs;
 @property (readonly, nonatomic) unsigned long long fontIndexsCount;
+@property (nonatomic) BOOL hasMuninVersionIndex;
 @property (readonly, nonatomic) struct GEOTileSetRegion *hybridUnavailableRegions;
 @property (readonly, nonatomic) unsigned long long hybridUnavailableRegionsCount;
 @property (readonly, nonatomic) unsigned int *iconIndexs;
 @property (readonly, nonatomic) unsigned long long iconIndexsCount;
-@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned int identifier;
+@property (nonatomic) unsigned int muninVersionIndex;
 @property (readonly, nonatomic) struct GEORegionalResourceIndex *regionalResourceIndexs;
 @property (readonly, nonatomic) unsigned long long regionalResourceIndexsCount;
 @property (readonly, nonatomic) unsigned int *resourceIndexs;
@@ -55,7 +87,28 @@
 @property (readonly, nonatomic) unsigned int *xmlIndexs;
 @property (readonly, nonatomic) unsigned long long xmlIndexsCount;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAttributionIndex:(unsigned int)arg1;
+- (void)_addNoFlagsFontIndex:(unsigned int)arg1;
+- (void)_addNoFlagsHybridUnavailableRegion:(struct GEOTileSetRegion)arg1;
+- (void)_addNoFlagsIconIndex:(unsigned int)arg1;
+- (void)_addNoFlagsRegionalResourceIndex:(struct GEORegionalResourceIndex)arg1;
+- (void)_addNoFlagsResourceIndex:(unsigned int)arg1;
+- (void)_addNoFlagsStyleSheetIndex:(unsigned int)arg1;
+- (void)_addNoFlagsTextureIndex:(unsigned int)arg1;
+- (void)_addNoFlagsTileSet:(struct GEOVersionedTileSet)arg1;
+- (void)_addNoFlagsXmlIndex:(unsigned int)arg1;
+- (void)_readAttributionIndexs;
+- (void)_readFontIndexs;
+- (void)_readHybridUnavailableRegions;
+- (void)_readIconIndexs;
+- (void)_readRegionalResourceIndexs;
+- (void)_readResourceIndexs;
+- (void)_readStyleSheetIndexs;
+- (void)_readTextureIndexs;
+- (void)_readTileSets;
+- (void)_readXmlIndexs;
 - (void)addAttributionIndex:(unsigned int)arg1;
 - (void)addFontIndex:(unsigned int)arg1;
 - (void)addHybridUnavailableRegion:(struct GEOTileSetRegion)arg1;
@@ -76,6 +129,7 @@
 - (void)clearStyleSheetIndexs;
 - (void)clearTextureIndexs;
 - (void)clearTileSets;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearXmlIndexs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -88,6 +142,7 @@
 - (unsigned int)iconIndexAtIndex:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (struct GEORegionalResourceIndex)regionalResourceIndexAtIndex:(unsigned long long)arg1;
 - (unsigned int)resourceIndexAtIndex:(unsigned long long)arg1;

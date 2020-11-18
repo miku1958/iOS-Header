@@ -7,6 +7,7 @@
 #import <HealthKit/_HKActivityCacheIndexFilter.h>
 
 @interface _HKActivityCacheIndexFilter (ExtendedSQLitePredicate)
+- (id)_filterIgnoringActivityCacheIndexFilter;
 - (id)predicateWithProfile:(id)arg1;
 @end
 

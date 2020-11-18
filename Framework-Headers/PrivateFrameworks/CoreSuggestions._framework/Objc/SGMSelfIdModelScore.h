@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)trackEventWithScalar:(unsigned long long)arg1 model:(struct SGMSelfIdModelType_)arg2 result:(struct SGMTypeSafeBool_)arg3 supervision:(struct SGMSelfIdSupervisionType_)arg4;
+- (void)trackEventWithScalar:(unsigned long long)arg1 model:(struct SGMSelfIdModelType_)arg2 result:(struct SGMTypeSafeBool_)arg3 supervision:(struct SGMSelfIdSupervisionType_)arg4 extractionModelVersion:(unsigned long long)arg5;
 
 @end
 

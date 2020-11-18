@@ -18,17 +18,21 @@
         unsigned int audioRoute:1;
         unsigned int destinationType:1;
         unsigned int preferredCallProvider:1;
+        unsigned int recordTypeForRedialing:1;
         unsigned int ttyType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _audioRoute;
     int _destinationType;
     int _preferredCallProvider;
+    int _recordTypeForRedialing;
     int _ttyType;
     NSArray *_contacts;
     _INPBIntentMetadata *_intentMetadata;
     NSArray *_targetContacts;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
 @property (copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (readonly, nonatomic) unsigned long long contactsCount;
@@ -39,21 +43,25 @@
 @property (nonatomic) BOOL hasDestinationType;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasPreferredCallProvider;
+@property (nonatomic) BOOL hasRecordTypeForRedialing;
 @property (nonatomic) BOOL hasTtyType;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (nonatomic) int preferredCallProvider; // @synthesize preferredCallProvider=_preferredCallProvider;
+@property (nonatomic) int recordTypeForRedialing; // @synthesize recordTypeForRedialing=_recordTypeForRedialing;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *targetContacts; // @synthesize targetContacts=_targetContacts;
 @property (readonly, nonatomic) unsigned long long targetContactsCount;
 @property (nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 
 + (Class)contactType;
++ (BOOL)supportsSecureCoding;
 + (Class)targetContactsType;
 - (void).cxx_destruct;
 - (int)StringAsAudioRoute:(id)arg1;
 - (int)StringAsDestinationType:(id)arg1;
 - (int)StringAsPreferredCallProvider:(id)arg1;
+- (int)StringAsRecordTypeForRedialing:(id)arg1;
 - (int)StringAsTTYType:(id)arg1;
 - (void)addContact:(id)arg1;
 - (void)addTargetContacts:(id)arg1;
@@ -64,9 +72,12 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)destinationTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)preferredCallProviderAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)recordTypeForRedialingAsString:(int)arg1;
 - (id)targetContactsAtIndex:(unsigned long long)arg1;
 - (id)ttyTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

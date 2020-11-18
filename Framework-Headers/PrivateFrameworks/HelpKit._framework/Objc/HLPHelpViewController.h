@@ -83,6 +83,7 @@
 - (void)_setFullBookView:(BOOL)arg1;
 - (id)currentHelpTopicItemForTableOfContentViewController:(id)arg1;
 - (void)dealloc;
+- (id)deviceFamily;
 - (void)dismiss;
 - (void)displayHelpBookWithLocale:(id)arg1;
 - (void)helpTopicViewController:(id)arg1 failToLoadWithError:(id)arg2;

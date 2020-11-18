@@ -4,11 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
+
+struct CGPoint {
+    double x;
+    double y;
+};
+
+struct GCExtendedGamepadElementInitInfo {
+    BOOL _field1;
+    BOOL _field2;
+};
+
+struct GCExtendedGamepadInitWithControllerInitInfo {
+    BOOL _field1;
+    BOOL _field2;
+    BOOL _field3;
+    struct GCExtendedGamepadElementInitInfo _field4[16];
+};
 
 struct GCQuaternion {
     double x;
@@ -17,38 +36,33 @@ struct GCQuaternion {
     double w;
 };
 
-struct IOHIDEventData {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned char _field4;
-    unsigned char _field5[3];
-};
-
-struct __IOHIDEvent {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
-    unsigned long long _field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned int _field5;
-    char *_field6;
-    void *_field7;
-    void *_field8;
-    struct __CFArray *_field9;
-    struct __IOHIDEvent *_field10;
-    long long _field11;
-    long long _field12;
-    struct IOHIDEventData _field13[0];
-};
-
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    MISSING_TYPE *vector;
+} CDStruct_0e8a9a91;
 
 typedef struct {
     float _field1[4];
 } CDStruct_212a8bf9;
+
+typedef struct {
+    int _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    int _field5;
+    int _field6;
+    int _field7;
+    int _field8;
+    int _field9;
+    int _field10;
+    int _field11;
+    int _field12;
+    int _field13;
+    int _field14;
+    int _field15;
+} CDStruct_6ad99454;
 
 // Ambiguous groups
 typedef struct {

@@ -10,14 +10,14 @@
 
 @interface ICSParser : NSObject
 {
-    long long _options;
+    unsigned long long _options;
     ICSTokenizer *_lexer;
     NSData *_data;
 }
 
-@property (readonly) ICSTokenizer *lexer; // @synthesize lexer=_lexer;
+@property (readonly, nonatomic) ICSTokenizer *lexer; // @synthesize lexer=_lexer;
 
-+ (id)entitiesFromNSData:(id)arg1 options:(long long)arg2;
++ (id)entitiesFromNSData:(id)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (BOOL)createPropertyType:(int)arg1 component:(id)arg2 withName:(id)arg3;
 - (id)initWithData:(id)arg1 options:(unsigned long long)arg2;

@@ -6,17 +6,19 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class MPMediaLibrary, NSArray;
+@class MPMediaLibrary, MPModelObject, NSArray;
 
 @interface MPModelLibraryStoreIDsImportChangeRequestOperation : MPAsyncOperation
 {
     BOOL _shouldLibraryAdd;
     MPMediaLibrary *_mediaLibrary;
+    MPModelObject *_referralObject;
     NSArray *_storeIDs;
     CDUnknownBlockType _responseHandler;
 }
 
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
+@property (strong, nonatomic) MPModelObject *referralObject; // @synthesize referralObject=_referralObject;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 @property (nonatomic) BOOL shouldLibraryAdd; // @synthesize shouldLibraryAdd=_shouldLibraryAdd;
 @property (copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;

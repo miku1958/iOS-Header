@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_webView:(id)arg1 takeFocus:(long long)arg2;
 - (void)setActive:(BOOL)arg1;
 - (void)visibilityWillChangeForFindOnPageView:(id)arg1;
 

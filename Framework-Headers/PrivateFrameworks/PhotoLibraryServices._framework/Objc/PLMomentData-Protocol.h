@@ -7,27 +7,31 @@
 #import <PhotoLibraryServices/PLMomentProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSObject, NSOrderedSet, NSString;
-@protocol NSCopying, PLMomentAssetData, PLMomentListData;
+@class CLLocation, NSArray, NSDate, NSObject, NSOrderedSet, NSString;
+@protocol NSCopying, PLMomentAssetData, PLMomentListData, PLPhotosHighlightData;
 
 @protocol PLMomentData <PLMomentRefreshable, PLMomentProtocol>
 
+@property (nonatomic) float aggregationScore;
+@property (nonatomic) double approximateLatitude;
 @property (strong, nonatomic) CLLocation *approximateLocation;
+@property (nonatomic) double approximateLongitude;
 @property (strong, nonatomic) NSOrderedSet *assets;
 @property (readonly, strong, nonatomic) NSArray *batchedAssets;
 @property (nonatomic) int cachedCount;
+@property (nonatomic) int cachedPhotosCount;
+@property (nonatomic) int cachedVideosCount;
 @property (strong, nonatomic) NSDate *endDate;
-@property (nonatomic) short generationType;
+@property (readonly, nonatomic) id<PLPhotosHighlightData> highlight;
+@property (readonly, strong, nonatomic) NSDate *localEndDate;
+@property (readonly, strong, nonatomic) NSDate *localStartDate;
 @property (strong, nonatomic) id<PLMomentListData> megaMomentList;
+@property (nonatomic) unsigned short processedLocation;
 @property (strong, nonatomic) NSDate *representativeDate;
-@property (strong, nonatomic) NSData *reverseLocationData;
-@property (nonatomic) BOOL reverseLocationDataContainsLocation;
-@property (nonatomic) BOOL reverseLocationDataIsValid;
 @property (strong, nonatomic) NSDate *startDate;
-@property (readonly, strong, nonatomic) NSString *title;
+@property (nonatomic) int timeZoneOffset;
+@property (strong, nonatomic) NSString *title;
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *uniqueObjectID;
-@property (nonatomic) BOOL usedLocationsOfInterest;
-@property (strong, nonatomic) NSArray *userTitles;
 @property (strong, nonatomic) NSString *uuid;
 @property (strong, nonatomic) id<PLMomentListData> yearMomentList;
 

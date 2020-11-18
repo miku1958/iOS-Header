@@ -7,127 +7,108 @@
 #import <UIKit/UIViewController.h>
 
 #import <PhotosUI/PUSearchResultsFooterViewDelegate-Protocol.h>
-#import <PhotosUI/PUSearchResultsSectionedDataSourceChangeObserver-Protocol.h>
-#import <PhotosUI/PUTopResultDelegate-Protocol.h>
 #import <PhotosUI/PXOneUpPresentationDelegate-Protocol.h>
+#import <PhotosUI/PXSearchResultsLayoutDataSource-Protocol.h>
+#import <PhotosUI/PXSearchResultsSectionedDataSourceChangeObserver-Protocol.h>
 #import <PhotosUI/UISearchBarDelegate-Protocol.h>
 #import <PhotosUI/UISearchResultsUpdating-Protocol.h>
 #import <PhotosUI/UITableViewDataSource-Protocol.h>
 #import <PhotosUI/UITableViewDataSourcePrefetching-Protocol.h>
 #import <PhotosUI/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSObject, NSString, NSTimer, PHCachingImageManager, PLSearchMetadataStore, PSIDatabase, PUNavigationController, PUSearchResultsFooterView, PUSearchResultsSectionedDataSource, PUSearchResultsSuggestionsAggdLogHelper, PUSearchTopResultContentView, PXAssetReference, PXAssetsDataSourceManager, PXPhotoKitUIMediaProvider, PXPhotosDataSource, UILabel, UISearchController, UITableView, UITableViewCell;
-@protocol OS_dispatch_semaphore;
+@class NSIndexPath, NSString, PUSearchResultsFooterView, PXSearchAnalyticsSession, PXSearchLoggingUtility, PXSearchResultsOneUpViewModel, PXSearchResultsSectionedDataSourceManager, PXSearchResultsViewModel, UISearchController, UITableView;
 
-@interface PUSearchResultsViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UITableViewDelegate, PUSearchResultsSectionedDataSourceChangeObserver, PUSearchResultsFooterViewDelegate, PUTopResultDelegate, PXOneUpPresentationDelegate, UISearchResultsUpdating>
+@interface PUSearchResultsViewController : UIViewController <PXOneUpPresentationDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, UITableViewDelegate, PUSearchResultsFooterViewDelegate, PXSearchResultsLayoutDataSource, PXSearchResultsSectionedDataSourceChangeObserver, UISearchResultsUpdating>
 {
-    PXPhotoKitUIMediaProvider *_oneUpMediaProvider;
-    PXAssetsDataSourceManager *_oneUpDataSourceManager;
-    PXPhotosDataSource *_oneUpDataSource;
-    PXAssetReference *_oneUpInitialAssetReference;
-    BOOL _indexing;
+    BOOL _hasLimitedScreenSize;
     BOOL _aggdSearchSucceeded;
+    BOOL _shouldMergePendingChanges;
     UISearchController *_searchController;
-    NSObject<OS_dispatch_semaphore> *_searchIndexReadySemaphore;
-    PSIDatabase *_searchIndex;
-    PLSearchMetadataStore *_searchMetadataStore;
-    PUSearchResultsSectionedDataSource *_searchResultsDataSource;
-    PHCachingImageManager *_cachingImageManager;
-    NSString *_searchText;
-    NSArray *_representedObjects;
-    NSArray *_searchTokenRepresentedObjects;
+    CDUnknownBlockType _siriSearchCompletionHandler;
+    unsigned long long _nextAnalyticsSessionBeginType;
     PUSearchResultsFooterView *_tableFooterView;
-    PUSearchTopResultContentView *__topResultsContentView;
     UITableView *_searchResultsTableView;
-    UILabel *_axDummyTitleLabel;
-    UILabel *_axDummySubtitleLabel;
-    UITableViewCell *_axDummyCell;
-    NSTimer *_searchIndexStatusTimer;
-    PUNavigationController *_oneUpNavigationController;
-    NSIndexPath *_selectedTopAssetsResultTVIndexPath;
-    PUSearchResultsSuggestionsAggdLogHelper *_suggestionsAggdLogHelper;
+    NSIndexPath *_selectedTopAssetsResultIndexPath;
+    PXSearchResultsViewModel *_viewModel;
+    PXSearchLoggingUtility *_suggestionsAggdLogHelper;
+    PXSearchResultsOneUpViewModel *_oneUpViewModel;
+    PXSearchResultsSectionedDataSourceManager *_dataSourceManager;
+    PXSearchAnalyticsSession *_analyticsSession;
     CDUnknownBlockType _ppt_searchTestCompletionHandler;
 }
 
-@property (readonly, nonatomic) BOOL _shouldApplyReadabilityInset;
-@property (strong, nonatomic) PUSearchTopResultContentView *_topResultsContentView; // @synthesize _topResultsContentView=__topResultsContentView;
 @property (nonatomic) BOOL aggdSearchSucceeded; // @synthesize aggdSearchSucceeded=_aggdSearchSucceeded;
-@property (strong, nonatomic) UITableViewCell *axDummyCell; // @synthesize axDummyCell=_axDummyCell;
-@property (strong, nonatomic) UILabel *axDummySubtitleLabel; // @synthesize axDummySubtitleLabel=_axDummySubtitleLabel;
-@property (strong, nonatomic) UILabel *axDummyTitleLabel; // @synthesize axDummyTitleLabel=_axDummyTitleLabel;
-@property (strong, nonatomic) PHCachingImageManager *cachingImageManager; // @synthesize cachingImageManager=_cachingImageManager;
+@property (strong, nonatomic) PXSearchAnalyticsSession *analyticsSession; // @synthesize analyticsSession=_analyticsSession;
+@property (strong, nonatomic) PXSearchResultsSectionedDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasLimitedScreenSize; // @synthesize hasLimitedScreenSize=_hasLimitedScreenSize;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isIndexing) BOOL indexing; // @synthesize indexing=_indexing;
-@property (strong, nonatomic) PUNavigationController *oneUpNavigationController; // @synthesize oneUpNavigationController=_oneUpNavigationController;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long nextAnalyticsSessionBeginType; // @synthesize nextAnalyticsSessionBeginType=_nextAnalyticsSessionBeginType;
+@property (strong, nonatomic) PXSearchResultsOneUpViewModel *oneUpViewModel; // @synthesize oneUpViewModel=_oneUpViewModel;
 @property (copy, nonatomic) CDUnknownBlockType ppt_searchTestCompletionHandler; // @synthesize ppt_searchTestCompletionHandler=_ppt_searchTestCompletionHandler;
-@property (copy, nonatomic) NSArray *representedObjects; // @synthesize representedObjects=_representedObjects;
 @property (weak, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
-@property (strong, nonatomic) PSIDatabase *searchIndex; // @synthesize searchIndex=_searchIndex;
-@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *searchIndexReadySemaphore; // @synthesize searchIndexReadySemaphore=_searchIndexReadySemaphore;
-@property (strong, nonatomic) NSTimer *searchIndexStatusTimer; // @synthesize searchIndexStatusTimer=_searchIndexStatusTimer;
-@property (strong, nonatomic) PLSearchMetadataStore *searchMetadataStore; // @synthesize searchMetadataStore=_searchMetadataStore;
-@property (strong, nonatomic) PUSearchResultsSectionedDataSource *searchResultsDataSource; // @synthesize searchResultsDataSource=_searchResultsDataSource;
 @property (strong, nonatomic) UITableView *searchResultsTableView; // @synthesize searchResultsTableView=_searchResultsTableView;
-@property (copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
-@property (copy, nonatomic) NSArray *searchTokenRepresentedObjects; // @synthesize searchTokenRepresentedObjects=_searchTokenRepresentedObjects;
-@property (strong, nonatomic) NSIndexPath *selectedTopAssetsResultTVIndexPath; // @synthesize selectedTopAssetsResultTVIndexPath=_selectedTopAssetsResultTVIndexPath;
-@property (strong, nonatomic) PUSearchResultsSuggestionsAggdLogHelper *suggestionsAggdLogHelper; // @synthesize suggestionsAggdLogHelper=_suggestionsAggdLogHelper;
+@property (strong, nonatomic) NSIndexPath *selectedTopAssetsResultIndexPath; // @synthesize selectedTopAssetsResultIndexPath=_selectedTopAssetsResultIndexPath;
+@property (nonatomic) BOOL shouldMergePendingChanges; // @synthesize shouldMergePendingChanges=_shouldMergePendingChanges;
+@property (copy, nonatomic) CDUnknownBlockType siriSearchCompletionHandler; // @synthesize siriSearchCompletionHandler=_siriSearchCompletionHandler;
+@property (strong, nonatomic) PXSearchLoggingUtility *suggestionsAggdLogHelper; // @synthesize suggestionsAggdLogHelper=_suggestionsAggdLogHelper;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PUSearchResultsFooterView *tableFooterView; // @synthesize tableFooterView=_tableFooterView;
+@property (strong, nonatomic) PXSearchResultsViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
-+ (BOOL)_wantsFewerSuggestions;
-+ (id)gridViewControllerSpec;
++ (id)_gridViewControllerSpec;
++ (id)_newSearchResultsControllerWithSpec:(id)arg1 searchResults:(id)arg2 orAlbum:(struct NSObject *)arg3 title:(id)arg4 headerViewTitle:(id)arg5;
 + (id)preQuerySearchResultsLog;
 - (void).cxx_destruct;
-- (id)_axDummyCell;
-- (void)_configureCell:(id)arg1 inTableView:(id)arg2 atIndexAPath:(id)arg3;
-- (id)_configureContentViewForCell:(id)arg1;
-- (void)_configureContext:(id)arg1;
-- (id)_configureSuggestionsContentViewForCell:(id)arg1;
-- (void)_configureTopResultsCell:(id)arg1 atIndexPath:(id)arg2;
-- (id)_correctedIndexPathForIndexPath:(id)arg1;
-- (id)_defaultDateRangeFormatter;
-- (void)_getInfoForCellInTableView:(id)arg1 atIndexPath:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_getTitleForSearchResult:(id)arg1 outAttributedTitle:(id *)arg2 outSubtitle:(id *)arg3;
-- (BOOL)_hasSuggestions;
-- (id)_highlightedAttributedStringForString:(id)arg1 highlightedSubstring:(id)arg2;
-- (BOOL)_isWordEmbeddingsForIndexPath:(id)arg1;
-- (id)_localizedTitleForAssetCollection:(id)arg1 titleCategory:(long long *)arg2 dateRangeFormatter:(id)arg3;
-- (id)_noResultsSearchedString;
-- (unsigned long long)_numberOfSuggestions;
+- (id)_activeSearch;
+- (double)_availableContentWidth;
+- (id)_cellFromIdentifier:(id)arg1 inTableView:(id)arg2;
+- (double)_collectiveInterItemSpacing;
+- (id)_configureSearchResultsCellInTableView:(id)arg1 atIndexPath:(id)arg2;
+- (id)_configureSuggestionsCellInTableView:(id)arg1 atIndexPath:(id)arg2;
+- (id)_configureTopResultsCellInTableView:(id)arg1 atIndexPath:(id)arg2;
+- (id)_configureWordEmbeddingsCellInTableView:(id)arg1 atIndexPath:(id)arg2;
+- (id)_configureWordEmbeddingsTitleCellInTableView:(id)arg1 atIndexPath:(id)arg2;
+- (void)_endAnalyticsSession;
+- (void)_expandTableViewSection:(unsigned long long)arg1;
+- (double)_marginWidthTotal;
+- (void)_notifyAnalyticsInteractedWithCurrentSearch;
+- (void)_notifyAnalyticsOneUpTopAssets;
+- (void)_notifyAnalyticsSearchChanged;
+- (void)_notifyAnalyticsSearchResult:(id)arg1;
 - (void)_preferredContentSizeChanged:(id)arg1;
+- (void)_presentAlertControllerFromButton:(id)arg1;
 - (void)_pushDetailViewForPhotosWithUUIDs:(id)arg1 title:(id)arg2;
 - (void)_pushGridForAlbumWithUUID:(id)arg1;
 - (void)_pushGridForPhotosWithUUIDs:(id)arg1 title:(id)arg2 searchCategories:(unsigned long long)arg3 headerViewTitle:(id)arg4;
-- (void)_pushPersonDetailViewForPersonUUID:(id)arg1;
-- (void)_pushViewForCollectionWithUUID:(id)arg1;
+- (void)_pushPersonDetailViewForPerson:(id)arg1;
+- (void)_pushViewForCollectionWithUUID:(id)arg1 collectionClass:(Class)arg2;
 - (void)_pushViewForMemoryWithUUID:(id)arg1;
-- (void)_pushViewForTripSearchResult:(id)arg1;
 - (id)_regionOfInterestForAsset:(id)arg1;
-- (void)_resetPreheating;
-- (id)_resultTitleForCurrentSearch;
-- (long long)_rowForSuggestedSearchesRow;
-- (double)_rowHeightForCurrentFont;
+- (void)_registerNotificationsForAnalytics;
 - (BOOL)_rowShouldAllowTapForIndexPath:(id)arg1;
-- (void)_saveSearch;
 - (void)_selectSearchResult:(id)arg1;
 - (void)_selectSuggestionAtIndexPath:(id)arg1;
-- (BOOL)_shouldShowSuggestedSearchesRow;
-- (BOOL)_shouldShowSuggestionSection;
-- (id)_suggestionForIndexPath:(id)arg1;
-- (id)_thumbnailImageRequestOptions;
-- (id)_titleForHeaderButtonInSection:(long long)arg1;
-- (id)_topResultContentViewForIndexPath:(id)arg1;
-- (void)_updateIndexingProgressViewVisibility;
-- (void)_updateSearchResultsTable;
-- (unsigned long long)cornerMaskForCell:(id)arg1 inSection:(long long)arg2 inRow:(long long)arg3;
-- (void)dealloc;
+- (void)_setupResultsTableView;
+- (BOOL)_shouldApplyReadabilityInset;
+- (void)_showOneUpWithAssetCollection:(id)arg1 withInitialAsset:(id)arg2 atIndex:(unsigned long long)arg3;
+- (id)_thumbnailAssetsForIndexPaths:(id)arg1;
+- (void)_unregisterNotificationsForAnalytics;
+- (void)_updateIndexingProgressViewVisibility:(BOOL)arg1;
+- (id)dateRangeFormatter;
 - (void)didSelectSectionShowAllButton:(id)arg1;
 - (void)didSelectTapToRadarButton:(id)arg1;
+- (struct CGSize)imageSize;
+- (struct CGSize)imageViewSize;
 - (id)init;
-- (id)newSearchResultsControllerWithSpec:(id)arg1 searchResults:(id)arg2 orAlbum:(struct NSObject *)arg3 title:(id)arg4 headerViewTitle:(id)arg5;
+- (unsigned long long)maximumNumberOfThumbnailsPerRow;
+- (unsigned long long)maximumNumberSuggestionRows;
+- (unsigned long long)maximumNumberWordEmbeddingRows;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)oneUpPresentation:(id)arg1 regionOfInterestForAssetReference:(id)arg2;
 - (void)oneUpPresentation:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
@@ -136,29 +117,34 @@
 - (id)oneUpPresentationInitialAssetReference:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
 - (long long)oneUpPresentationOrigin:(id)arg1;
+- (void)ppt_expandAllSections;
+- (void)prepareDataSource;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarCancelButtonClicked:(id)arg1;
 - (void)searchBarSearchButtonClicked:(id)arg1;
-- (void)searchResultsDataSource:(id)arg1 didChangeThumbnailAssetsForSearchResult:(id)arg2;
+- (void)searchResultsDataSource:(id)arg1 didChangeThumbnailAssetsForSearchResult:(id)arg2 atIndexes:(id)arg3;
+- (void)searchResultsDataSource:(id)arg1 didChangeThumbnailAssetsForSearchResult:(id)arg2 topAssetsSectionExists:(BOOL)arg3;
 - (void)searchResultsDataSource:(id)arg1 didFetchAssetsForSearchResult:(id)arg2 indexPath:(id)arg3;
-- (void)searchResultsDataSourceHasPendingChanges:(id)arg1;
-- (void)showOneUpWithAssetCollection:(id)arg1 withInitialAsset:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)startMonitoringSearchIndexStatus;
-- (void)stopMonitoringSearchIndexStatus;
+- (void)searchResultsDataSourceHasPendingChanges:(id)arg1 shouldMergePendingChanges:(BOOL)arg2;
+- (void)shouldShowSearchResultsController:(BOOL)arg1;
 - (void)tableView:(id)arg1 cancelPrefetchingForRowsAtIndexPaths:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 prefetchRowsAtIndexPaths:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
-- (id)thumbnailAssetsForIndexPaths:(id)arg1;
-- (void)topResultContentView:(id)arg1 didSelectAssetIndex:(unsigned long long)arg2 inRect:(struct CGRect)arg3 withNumberOfImages:(unsigned long long)arg4;
+- (double)topAssetGridCustomWidthMargin;
+- (double)topAssetThumbnailInterItemSpacing;
+- (struct CGSize)topAssetThumbnailViewSize;
+- (void)topResultCell:(id)arg1 didSelectAssetIndex:(unsigned long long)arg2 inRect:(struct CGRect)arg3 withNumberOfImages:(unsigned long long)arg4;
 - (void)updateSearchResultsForSearchController:(id)arg1;
+- (void)updateSearchResultsTable;
+- (void)updateSearchResultsTableAtIndexPath:(id)arg1;
+- (void)updateSearchResultsTableTopAssetsSectionWithResult:(id)arg1;
 - (void)updateTableFooterViewFrame;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

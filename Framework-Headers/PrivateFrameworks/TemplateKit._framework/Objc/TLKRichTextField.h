@@ -6,19 +6,20 @@
 
 #import <TemplateKit/TLKStackView.h>
 
-#import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 #import <TemplateKit/TLKObservable-Protocol.h>
 #import <TemplateKit/TLKObserver-Protocol.h>
 
-@class NSString, TLKEmojiableVibrantLabel, TLKIconsView, TLKRichText, TLKRoundedCornerLabels, TLKStarsView, UIColor, UIFont;
+@class NSString, TLKIconsView, TLKLabel, TLKRichText, TLKRoundedCornerLabels, TLKStarsView, UIFont;
 @protocol TLKObserver;
 
-@interface TLKRichTextField : TLKStackView <NUIContainerStackViewDelegate, TLKObservable, TLKObserver>
+__attribute__((visibility("hidden")))
+@interface TLKRichTextField : TLKStackView <NUIContainerViewDelegate, TLKObservable, TLKObserver>
 {
     BOOL inBatchUpdate;
     id<TLKObserver> observer;
     TLKRichText *_richText;
-    TLKEmojiableVibrantLabel *_textLabel;
+    TLKLabel *_textLabel;
     TLKRoundedCornerLabels *_roundedCornerLabels;
     TLKStarsView *_starRatingView;
     TLKIconsView *_iconView;
@@ -26,26 +27,23 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) UIFont *font;
+@property (strong, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKIconsView *iconView; // @synthesize iconView=_iconView;
+@property (strong, nonatomic) TLKIconsView *iconView; // @synthesize iconView=_iconView;
 @property BOOL inBatchUpdate; // @synthesize inBatchUpdate;
 @property (weak) id<TLKObserver> observer; // @synthesize observer;
+@property (nonatomic) unsigned long long prominence;
 @property (strong, nonatomic) TLKRichText *richText; // @synthesize richText=_richText;
-@property (strong) TLKRoundedCornerLabels *roundedCornerLabels; // @synthesize roundedCornerLabels=_roundedCornerLabels;
-@property (strong) TLKStarsView *starRatingView; // @synthesize starRatingView=_starRatingView;
+@property (strong, nonatomic) TLKRoundedCornerLabels *roundedCornerLabels; // @synthesize roundedCornerLabels=_roundedCornerLabels;
+@property (strong, nonatomic) TLKStarsView *starRatingView; // @synthesize starRatingView=_starRatingView;
 @property (readonly) Class superclass;
-@property (readonly) UIColor *textColor;
-@property (strong) TLKEmojiableVibrantLabel *textLabel; // @synthesize textLabel=_textLabel;
+@property (strong, nonatomic) TLKLabel *textLabel; // @synthesize textLabel=_textLabel;
 
 - (void).cxx_destruct;
 - (id)attributedString;
-- (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (id)init;
-- (void)makeTertiary;
 - (void)propertiesDidChange;
-- (void)setStyle:(unsigned long long)arg1;
 - (void)updateIcons:(id)arg1;
 - (void)updateRoundedCornerLabels:(id)arg1;
 - (void)updateStarRating:(id)arg1;

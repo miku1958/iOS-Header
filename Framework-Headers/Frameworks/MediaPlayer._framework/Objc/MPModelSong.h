@@ -24,6 +24,7 @@
 @property (strong, nonatomic) MPModelComposer *composer; // @dynamic composer;
 @property (copy, nonatomic) NSString *copyrightText; // @dynamic copyrightText;
 @property (nonatomic) long long discNumber; // @dynamic discNumber;
+@property (readonly, copy, nonatomic) NSDate *downloadedDate; // @dynamic downloadedDate;
 @property (nonatomic) double duration; // @dynamic duration;
 @property (nonatomic, getter=isExplicitSong) BOOL explicitSong; // @dynamic explicitSong;
 @property (strong, nonatomic) MPGaplessInfo *gaplessInfo; // @dynamic gaplessInfo;
@@ -40,7 +41,6 @@
 @property (strong, nonatomic) MPModelFileAsset *localFileAsset; // @dynamic localFileAsset;
 @property (strong, nonatomic) MPModelLyrics *lyrics; // @dynamic lyrics;
 @property (strong, nonatomic) MPModelPlaybackPosition *playbackPosition; // @dynamic playbackPosition;
-@property (nonatomic) BOOL shouldExcludeFromShuffle; // @dynamic shouldExcludeFromShuffle;
 @property (nonatomic) BOOL shouldShowComposer; // @dynamic shouldShowComposer;
 @property (strong, nonatomic) MPModelStoreAsset *storeAsset; // @dynamic storeAsset;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
@@ -63,6 +63,7 @@
 + (id)__composer_KEY;
 + (id)__copyrightText_KEY;
 + (id)__discNumber_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__duration_KEY;
 + (id)__explicitSong_KEY;
 + (id)__gaplessInfo_KEY;
@@ -79,7 +80,6 @@
 + (id)__localFileAsset_KEY;
 + (id)__lyrics_KEY;
 + (id)__playbackPosition_KEY;
-+ (id)__shouldExcludeFromShuffle_KEY;
 + (id)__shouldShowComposer_KEY;
 + (id)__storeAsset_KEY;
 + (id)__title_KEY;

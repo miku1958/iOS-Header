@@ -26,6 +26,7 @@
 - (id)initWithStyle:(long long)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (void)reloadContentFromWebServices;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

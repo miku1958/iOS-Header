@@ -22,7 +22,9 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _callback;
     int _width;
     int _height;
-    struct OpaqueVTCompressionSession *_compressionSession;
+    BOOL _useVCP;
+    struct OpaqueVTCompressionSession *_vtCompressionSession;
+    void *_vcpCompressionSession;
     struct __CVPixelBufferPool *_pixelBufferPool;
     unsigned long long _mode;
     struct H264BitstreamParser _h264BitstreamParser;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)destroyCompressionSession;
 - (long long)encode:(id)arg1 codecSpecificInfo:(id)arg2 frameTypes:(id)arg3;
 - (void)frameWasEncoded:(int)arg1 flags:(unsigned int)arg2 sampleBuffer:(struct opaqueCMSampleBuffer *)arg3 codecSpecificInfo:(id)arg4 width:(int)arg5 height:(int)arg6 renderTimeMs:(long long)arg7 timestamp:(unsigned int)arg8 rotation:(long long)arg9;
+- (BOOL)hasCompressionSession;
 - (id)implementationName;
 - (id)initWithCodecInfo:(id)arg1 simulcastIndex:(int)arg2;
 - (unsigned int)pixelFormatOfFrame:(id)arg1;

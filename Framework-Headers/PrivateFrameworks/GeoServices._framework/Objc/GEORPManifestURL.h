@@ -8,20 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEORPManifestURL : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_urlName;
     NSString *_urlValue;
+    struct {
+        unsigned int read_urlName:1;
+        unsigned int read_urlValue:1;
+        unsigned int wrote_urlName:1;
+        unsigned int wrote_urlValue:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasUrlName;
 @property (readonly, nonatomic) BOOL hasUrlValue;
-@property (strong, nonatomic) NSString *urlName; // @synthesize urlName=_urlName;
-@property (strong, nonatomic) NSString *urlValue; // @synthesize urlValue=_urlValue;
+@property (strong, nonatomic) NSString *urlName;
+@property (strong, nonatomic) NSString *urlValue;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readUrlName;
+- (void)_readUrlValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -22,18 +22,18 @@
     id<PUUserTransformTileViewControllerDelegate> _delegate;
     PUAssetReference *_assetReference;
     PUUserTransformView *_userTransformView;
-    PUDisplayTileTransform *__displayTileTransform;
+    PUDisplayTileTransform *_displayTileTransform;
     NSString *__identifier;
     struct CGRect __untransformedContentFrame;
 }
 
-@property (strong, nonatomic, setter=_setDisplayTileTransform:) PUDisplayTileTransform *_displayTileTransform; // @synthesize _displayTileTransform=__displayTileTransform;
 @property (copy, nonatomic, setter=_setIdentifier:) NSString *_identifier; // @synthesize _identifier=__identifier;
 @property (nonatomic, setter=_setUntransformedContentFrame:) struct CGRect _untransformedContentFrame; // @synthesize _untransformedContentFrame=__untransformedContentFrame;
 @property (strong, nonatomic) PUAssetReference *assetReference; // @synthesize assetReference=_assetReference;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUUserTransformTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PUDisplayTileTransform *displayTileTransform; // @synthesize displayTileTransform=_displayTileTransform;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, setter=setUserInteractionEnabled:) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;

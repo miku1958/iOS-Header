@@ -10,38 +10,52 @@
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class AVPlayer, NSString, PUFilmstripView, PUPlayheadView, PXVideoScrubberController, UIImage, UIScrollView;
+@class AVPlayer, NSString, PUPlayheadView, PXVideoScrubberController, UIImage, UIScrollView;
+@protocol PHVideoScrubberFilmstripView, PHVideoScrubberFilmstripViewProvider, PHVideoScrubberViewInteractionDelegate;
 
 @interface PHVideoScrubberView : UIView <PXVideoScrubberControllerDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
 {
     unsigned long long _previousPlayState;
+    struct {
+        BOOL didBeginTouching;
+        BOOL didEndTouching;
+        BOOL willBeginDragging;
+        BOOL didEndDragging;
+        BOOL willBeginDecelerating;
+        BOOL didEndDecelerating;
+    } _interactionDelegateRespondsTo;
     BOOL __needsUpdateFilmStripView;
     BOOL __needsUpdateVideoScrubberController;
     AVPlayer *_player;
     double _estimatedDuration;
     UIImage *_placeholderThumbnail;
-    PUFilmstripView *__filmStripView;
+    UIScrollView *_scrollView;
+    id<PHVideoScrubberViewInteractionDelegate> _interactionDelegate;
+    id<PHVideoScrubberFilmstripViewProvider> _filmstripViewProvider;
+    UIView<PHVideoScrubberFilmstripView> *__filmStripView;
     PXVideoScrubberController *__videoScrubberController;
-    UIScrollView *__scrollView;
     PUPlayheadView *__playheadView;
 }
 
-@property (strong, nonatomic, setter=_setFilmStripView:) PUFilmstripView *_filmStripView; // @synthesize _filmStripView=__filmStripView;
+@property (strong, nonatomic, setter=_setFilmStripView:) UIView<PHVideoScrubberFilmstripView> *_filmStripView; // @synthesize _filmStripView=__filmStripView;
 @property (nonatomic, setter=_setNeedsUpdateFilmStripView:) BOOL _needsUpdateFilmStripView; // @synthesize _needsUpdateFilmStripView=__needsUpdateFilmStripView;
 @property (nonatomic, setter=_setNeedsUpdateVideoScrubberController:) BOOL _needsUpdateVideoScrubberController; // @synthesize _needsUpdateVideoScrubberController=__needsUpdateVideoScrubberController;
 @property (strong, nonatomic, setter=_setPlayheadView:) PUPlayheadView *_playheadView; // @synthesize _playheadView=__playheadView;
-@property (strong, nonatomic, setter=_setScrollView:) UIScrollView *_scrollView; // @synthesize _scrollView=__scrollView;
 @property (strong, nonatomic, setter=_setVideoScrubberController:) PXVideoScrubberController *_videoScrubberController; // @synthesize _videoScrubberController=__videoScrubberController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double estimatedDuration; // @synthesize estimatedDuration=_estimatedDuration;
+@property (weak, nonatomic) id<PHVideoScrubberFilmstripViewProvider> filmstripViewProvider; // @synthesize filmstripViewProvider=_filmstripViewProvider;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<PHVideoScrubberViewInteractionDelegate> interactionDelegate; // @synthesize interactionDelegate=_interactionDelegate;
 @property (strong, nonatomic) UIImage *placeholderThumbnail; // @synthesize placeholderThumbnail=_placeholderThumbnail;
 @property (strong, nonatomic) AVPlayer *player; // @synthesize player=_player;
+@property (strong, nonatomic, setter=_setScrollView:) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_currentAVAsset;
+- (id)_currentVideoComposition;
 - (void)_handleInteractionBegan;
 - (void)_handleInteractionEndedAndTogglePlayState:(BOOL)arg1;
 - (void)_handleLongPressGesture:(id)arg1;
@@ -53,6 +67,7 @@
 - (double)_lengthForDuration:(double)arg1;
 - (BOOL)_needsUpdate;
 - (BOOL)_playerIsPlaying;
+- (id)_scrollView;
 - (void)_updateFilmStripViewIfNeeded;
 - (void)_updateIfNeeded;
 - (void)_updatePlayheadFrame;
@@ -67,6 +82,8 @@
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDecelerating:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (double)videoScrubberController:(id)arg1 lengthForDuration:(double)arg2;
 - (void)videoScrubberControllerDidUpdate:(id)arg1;
 

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldPerformDefaultAction;
 - (BOOL)shouldShowStar;
 - (void)updateTransportButtons;
+- (void)updateValueWithPropertyItem:(id)arg1;
 
 @end
 

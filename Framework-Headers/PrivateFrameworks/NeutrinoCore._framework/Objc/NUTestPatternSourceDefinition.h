@@ -18,6 +18,7 @@
 - (id)generateSourceNodeWithIdentifier:(id)arg1 error:(out id *)arg2;
 - (id)init;
 - (id)initWithSize:(CDStruct_912cb5d2)arg1 orientation:(long long)arg2;
+- (long long)mediaType;
 
 @end
 

@@ -14,8 +14,8 @@
 
 + (Class)_configurationClass;
 - (id)_clickConfiguration;
-- (id)initWithStyle:(long long)arg1;
-- (id)initWithStyle:(long long)arg1 coordinateSpace:(id)arg2;
+- (void)dragged;
+- (id)initWithCoordinateSpace:(id)arg1;
 - (void)pressedDown;
 - (void)pressedUp;
 - (void)userInteractionCancelled;

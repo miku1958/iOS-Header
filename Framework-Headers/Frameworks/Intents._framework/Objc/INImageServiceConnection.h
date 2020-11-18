@@ -27,9 +27,12 @@
 + (id)sharedConnection;
 - (void).cxx_destruct;
 - (id)_localStorageCache;
+- (BOOL)accessBundleContentForBundleIdentifiers:(id)arg1 withBlock:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)availableSchemasWithError:(id *)arg1;
 - (BOOL)canLoadImageDataForImage:(id)arg1;
 - (BOOL)canStoreImage:(id)arg1;
 - (void)dealloc;
+- (id)fetchShareExtensionIntentForExtensionContextUUID:(id)arg1;
 - (id)init;
 - (id)loadDataImageFromImage:(id)arg1 scaledSize:(CDStruct_8caa76fc)arg2 error:(id *)arg3;
 - (void)loadDataImageFromImage:(id)arg1 usingPortableImageLoader:(id)arg2 scaledSize:(CDStruct_8caa76fc)arg3 completion:(CDUnknownBlockType)arg4;

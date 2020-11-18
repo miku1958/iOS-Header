@@ -6,11 +6,10 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@class DNDModeAssertion, DNDModeAssertionLifetime, NSArray;
+@class NSArray;
 @protocol DNDSLifetimeMonitor;
 
 @protocol DNDSLifetimeMonitorDataSource <NSObject>
-- (NSArray *)allModeAssertionsForLifetimeMonitor:(id<DNDSLifetimeMonitor>)arg1;
-- (DNDModeAssertionLifetime *)lifetimeMonitor:(id<DNDSLifetimeMonitor>)arg1 effectiveLifetimeForModeAssertion:(DNDModeAssertion *)arg2;
+- (NSArray *)lifetimeMonitor:(id<DNDSLifetimeMonitor>)arg1 modeAssertionsWithLifetimeClass:(Class)arg2;
 @end
 

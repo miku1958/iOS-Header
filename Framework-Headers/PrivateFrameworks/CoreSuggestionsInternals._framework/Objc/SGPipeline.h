@@ -13,13 +13,19 @@
     NSDictionary *_dissectorsAndDependencies;
 }
 
++ (void)_delayedResetCachesAndModels;
++ (void)_resetCachesAndModels;
 + (id)customPipeline:(id)arg1;
 + (id)dependencyClassesForDissectorClass:(Class)arg1;
 + (id)emptyPipeline;
 + (id)fullPipeline;
++ (void)initialize;
 + (id)parallelPipeline:(id)arg1;
++ (id)portraitTestingPipeline;
 + (id)quotedRegionPipeline;
 + (id)quotedRegionPipelineForIpsosTesting;
++ (id)remindersTestingPipeline;
++ (id)remindersTestingPipelineWithCustomReminderDissector:(id)arg1;
 + (id)retrainingPipeline;
 + (id)sharedBackgroundProcessingQueue;
 + (id)sharedBackgroundStorageQueue;
@@ -35,6 +41,7 @@
 - (void)dissectEntity:(id)arg1 andStore:(id)arg2;
 - (id)dissectOperations:(id)arg1;
 - (id)dissectOperations:(id)arg1 inContext:(id)arg2;
+- (id)dissectors;
 - (id)geocodeOperation:(id)arg1 withDependencies:(id)arg2;
 - (id)storeOperation:(id)arg1 spotlightBundleIdentifier:(id)arg2 spotlightUniqueIdentifier:(id)arg3 spotlightDomainIdentifier:(id)arg4 withStore:(id)arg5 dependencies:(id)arg6;
 - (id)storeOperation:(id)arg1 spotlightBundleIdentifier:(id)arg2 spotlightUniqueIdentifier:(id)arg3 spotlightDomainIdentifier:(id)arg4 withStore:(id)arg5 dependencies:(id)arg6 originalEnrichmentCount:(unsigned long long)arg7;

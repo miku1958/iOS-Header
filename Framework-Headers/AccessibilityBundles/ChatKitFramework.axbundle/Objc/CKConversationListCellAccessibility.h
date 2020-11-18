@@ -16,9 +16,9 @@
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
-- (id)_accessibilitySpeechInputLabel;
 - (id)_axFromString;
 - (id)accessibilityLabel;
+- (id)accessibilityUserInputLabels;
 - (BOOL)isAccessibilityElement;
 - (void)updateContentsForConversation:(id)arg1;
 

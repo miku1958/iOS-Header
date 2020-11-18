@@ -47,6 +47,8 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)more123KeyOffset;
 - (double)moreABCKeyFontSize;
 - (struct CGPoint)moreABCKeyOffset;
+- (double)moreABCKeyWideCellFontSize;
+- (struct CGPoint)moreABCKeyWideCellOffset;
 - (double)moreKeyFontSize;
 - (id)multitapCompleteKeyImageName;
 - (id)muttitapReverseKeyImageName;
@@ -72,6 +74,7 @@ __attribute__((visibility("hidden")))
 - (double)stringKeyFontSize;
 - (struct CGPoint)stringKeyOffset;
 - (struct CGPoint)undoKeyOffset;
+- (double)variantAnnotationTextFontSize;
 - (struct CGPoint)variantAnnotationTextOffset;
 - (struct UIEdgeInsets)variantDisplayFrameInsets;
 - (id)variantGeometriesForGeometry:(id)arg1 variantCount:(unsigned long long)arg2 rowLimit:(long long)arg3 annotationIndex:(unsigned long long)arg4;

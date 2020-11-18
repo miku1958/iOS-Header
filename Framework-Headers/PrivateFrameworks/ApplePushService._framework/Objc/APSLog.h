@@ -25,8 +25,10 @@
 + (id)pushHistory;
 + (BOOL)shouldPowerLogEvent:(id)arg1;
 + (id)stream;
++ (id)taskManager;
 + (id)telemetry;
 + (id)topicManager;
++ (id)ttlCollection;
 + (id)xpc;
 
 @end

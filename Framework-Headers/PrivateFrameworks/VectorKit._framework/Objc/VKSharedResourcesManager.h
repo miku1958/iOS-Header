@@ -6,25 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSMapTable;
+@class NSMapTable, VKSharedResources;
 
 __attribute__((visibility("hidden")))
 @interface VKSharedResourcesManager : NSObject
 {
     struct mutex _lock;
+    VKSharedResources *_sharedResources;
     NSMapTable *_tilegroupIdentifierToResources;
 }
 
-+ (void)addResourceUser:(id)arg1;
-+ (id)defaultManifestConfiguration;
-+ (void)removeResourceUser:(id)arg1;
++ (void)addResourceUser;
++ (void)removeResourceUser;
 + (id)sharedManager;
-+ (id)sharedResourcesForConfiguration:(id)arg1;
++ (id)sharedResources;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (BOOL)hasResoruces;
 - (id)init;
-- (id)resourcesForConfiguration:(id)arg1;
+- (id)resources;
 
 @end
 

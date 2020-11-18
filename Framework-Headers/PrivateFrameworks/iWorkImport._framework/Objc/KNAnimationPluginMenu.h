@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)directionForIndex:(unsigned long long)arg1;
 - (unsigned long long)indexForDirection:(unsigned long long)arg1;
 - (id)init;
+- (id)localizedStringForDirection:(unsigned long long)arg1;
 
 @end
 

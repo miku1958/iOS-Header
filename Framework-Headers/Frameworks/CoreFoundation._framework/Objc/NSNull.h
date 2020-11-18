@@ -17,6 +17,7 @@
 + (id)null;
 + (BOOL)supportsSecureCoding;
 - (unsigned long long)_cfTypeID;
+- (id)autorelease;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUActivity.h>
+#import <PhotosUICore/PXActivity.h>
 
-@class UIViewController;
+#import <PhotosUI/SBSUIWallpaperPreviewViewControllerDelegate-Protocol.h>
+
+@class NSString, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface PUWallpaperActivity : PUActivity
+@interface PUWallpaperActivity : PXActivity <SBSUIWallpaperPreviewViewControllerDelegate>
 {
     UIViewController *_wallpaperActivityViewController;
     BOOL __wallpaperModificationAllowed;
@@ -18,11 +20,16 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, setter=_setNeedsUpdateWallpaperModificationAllowed:) BOOL _needsUpdateWallpaperModificationAllowed; // @synthesize _needsUpdateWallpaperModificationAllowed=__needsUpdateWallpaperModificationAllowed;
 @property (nonatomic, getter=_isWallpaperModificationAllowed, setter=_setWallpaperModificationAllowed:) BOOL _wallpaperModificationAllowed; // @synthesize _wallpaperModificationAllowed=__wallpaperModificationAllowed;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (BOOL)_isCapabilityBasedActivity;
 - (void).cxx_destruct;
 - (id)_activityBundleImageConfiguration;
 - (id)_activityImageName;
+- (void)_fetchImageForWallPaperAsset:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (void)_handleSetWallpaperActionWithController:(id)arg1 locations:(long long)arg2;
 - (void)_restrictionsChanged:(id)arg1;
 - (void)_updateWallpaperModificationAllowedIfNeeded;
 - (id)activityTitle;
@@ -32,9 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (void)prepareWithActivityItems:(id)arg1;
-- (void)wallpaperImageViewController:(id)arg1 didSetWallpaperWithOptions:(id)arg2;
-- (void)wallpaperImageViewControllerDidCancel:(id)arg1;
-- (void)wallpaperImageViewControllerDidFinishSaving:(id)arg1;
+- (void)wallpaperPreviewViewControllerCancelButtonPressed:(id)arg1;
+- (void)wallpaperPreviewViewControllerSetButtonPressed:(id)arg1;
 
 @end
 

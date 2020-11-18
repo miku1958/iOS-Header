@@ -18,7 +18,7 @@
     double _executionTime;
 }
 
-@property (strong) NSError *error; // @synthesize error=_error;
+@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) double executionTime; // @synthesize executionTime=_executionTime;
 @property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly) NSString *type; // @synthesize type=_type;
@@ -29,6 +29,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 error:(id)arg2;
 
 @end
 

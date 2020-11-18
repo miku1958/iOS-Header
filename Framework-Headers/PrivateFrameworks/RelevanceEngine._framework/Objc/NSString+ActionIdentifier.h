@@ -6,13 +6,19 @@
 
 #import <Foundation/NSString.h>
 
+#import <RelevanceEngine/REContentEncodable-Protocol.h>
 #import <RelevanceEngine/REDonatedActionIdentifierProviding-Protocol.h>
 
-@interface NSString (ActionIdentifier) <REDonatedActionIdentifierProviding>
+@interface NSString (ActionIdentifier) <REDonatedActionIdentifierProviding, REContentEncodable>
 
+@property (readonly, nonatomic) NSString *contentEncodedString;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (unsigned long long)re_actionIdentifierHashValue;

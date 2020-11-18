@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long minValueGroupIndex; // @synthesize minValueGroupIndex=mMinValueGroupIndex;
 
 + (BOOL)hasErrorBarsForSeries:(id)arg1;
-+ (int)p_errorBarSettingForSeries:(id)arg1 useXAxis:(BOOL)arg2 axisID:(id)arg3;
++ (long long)p_errorBarSettingForSeries:(id)arg1 useXAxis:(BOOL)arg2 axisID:(id)arg3;
 - (void).cxx_destruct;
 - (void)clearParent;
 - (BOOL)hasErrorDataForAxisID:(id)arg1 valueIndex:(unsigned long long)arg2 chartVertical:(BOOL)arg3 barVertical:(BOOL *)arg4 unitValue:(struct CGPoint *)arg5 unitPositive:(struct CGPoint *)arg6 unitNegative:(struct CGPoint *)arg7;
@@ -49,8 +49,8 @@ __attribute__((visibility("hidden")))
 - (double *)p_createArrayOfSeriesValuesForAxisID:(id)arg1 count:(unsigned long long)arg2;
 - (double)p_customErrorForAxisID:(id)arg1 groupIndex:(unsigned long long)arg2 positive:(BOOL)arg3;
 - (BOOL)p_errorBarIsVerticalForAxisID:(id)arg1 chartVertical:(BOOL)arg2;
-- (int)p_errorBarSettingForAxisID:(id)arg1 value:(double)arg2 barType:(int)arg3;
-- (int)p_errorBarTypeForAxisID:(id)arg1;
+- (long long)p_errorBarSettingForAxisID:(id)arg1 value:(double)arg2 barType:(long long)arg3;
+- (long long)p_errorBarTypeForAxisID:(id)arg1;
 - (double)p_errorForValue:(double *)arg1 onAxisID:(id)arg2 groupIndex:(unsigned long long)arg3 positive:(BOOL)arg4;
 - (double)p_fixedErrorForAxisID:(id)arg1;
 - (struct CGPoint)p_getValuePointForGroup:(unsigned long long)arg1 inputAxisID:(id)arg2 outputAxisID:(id)arg3 barVertical:(BOOL)arg4;

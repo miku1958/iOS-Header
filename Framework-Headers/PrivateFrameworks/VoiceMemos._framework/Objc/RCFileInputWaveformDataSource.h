@@ -33,6 +33,7 @@
 - (void)saveGeneratedWaveformIfNecessary;
 - (void)setLoadingProgress:(float)arg1;
 - (BOOL)setPaused:(BOOL)arg1;
+- (BOOL)shouldMergeLiveWaveform;
 - (void)startLoading;
 - (id)synchronouslyApproximateWaveformSegmentsByReadingCurrentFileAheadTimeRange:(CDStruct_73a5d3ca)arg1;
 

@@ -19,8 +19,7 @@
 @property (readonly, nonatomic) BOOL isUserRequested;
 @property (readonly, nonatomic) BOOL shouldSend;
 
-- (void)dealloc;
-- (id)deferredOperation;
+- (void).cxx_destruct;
 - (unsigned long long)generationNumber;
 - (id)initWithMessage:(id)arg1 mailbox:(id)arg2;
 

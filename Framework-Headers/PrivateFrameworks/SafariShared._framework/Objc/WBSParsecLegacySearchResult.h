@@ -34,6 +34,7 @@
     MKMapItem *_mapItem;
     SFSearchResult *_sfSearchResultValue;
     NSString *_sectionBundleIdentifier;
+    long long _parsecQueryID;
 }
 
 @property (readonly, nonatomic) WBSParsecActionButton *actionButton; // @synthesize actionButton=_actionButton;
@@ -54,6 +55,7 @@
 @property (readonly, copy, nonatomic) NSString *mediaKind; // @synthesize mediaKind=_mediaKind;
 @property (readonly, nonatomic) unsigned long long minimumRankOfTopHitToSuppressResult; // @synthesize minimumRankOfTopHitToSuppressResult=_minimumRankOfTopHitToSuppressResult;
 @property (readonly, nonatomic) NSString *parsecDomainIdentifier;
+@property (nonatomic) long long parsecQueryID; // @synthesize parsecQueryID=_parsecQueryID;
 @property (readonly, copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property (readonly, copy, nonatomic) NSString *referrerForLoadingResult; // @synthesize referrerForLoadingResult=_referrerForLoadingResult;
 @property (copy, nonatomic) NSString *sectionBundleIdentifier; // @synthesize sectionBundleIdentifier=_sectionBundleIdentifier;

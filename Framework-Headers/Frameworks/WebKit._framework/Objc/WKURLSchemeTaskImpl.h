@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly) struct Object *_apiObject;
+@property (readonly, nonatomic) BOOL _requestOnlyIfCached;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

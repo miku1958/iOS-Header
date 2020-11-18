@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ASAsset, NSAttributedString, NSString;
+@class MAAsset, NSAttributedString, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UIDefinitionValue : NSObject
@@ -15,13 +15,13 @@ __attribute__((visibility("hidden")))
     NSString *_term;
     NSAttributedString *_definition;
     NSString *_longDefinition;
-    ASAsset *_rawAsset;
+    MAAsset *_rawAsset;
 }
 
 @property (readonly) NSAttributedString *definition; // @synthesize definition=_definition;
 @property (readonly) NSString *localizedDictionaryName; // @synthesize localizedDictionaryName=_localizedDictionaryName;
 @property (readonly) NSString *longDefinition; // @synthesize longDefinition=_longDefinition;
-@property (strong, nonatomic) ASAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
+@property (strong, nonatomic) MAAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
 @property (readonly) NSString *term; // @synthesize term=_term;
 
 - (void).cxx_destruct;

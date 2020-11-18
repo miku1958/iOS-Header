@@ -14,14 +14,15 @@
 {
     NSString *_problemId;
     int _statusCode;
-    CDStruct_bcb1eac0 _has;
+    CDStruct_ade9d5f7 _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasProblemId;
 @property (nonatomic) BOOL hasStatusCode;
-@property (strong, nonatomic) NSString *problemId; // @synthesize problemId=_problemId;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (strong, nonatomic) NSString *problemId;
+@property (nonatomic) int statusCode;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -31,6 +32,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

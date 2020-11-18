@@ -260,7 +260,7 @@
 - (id)shortDescription;
 - (BOOL)shouldVerifyHAPCharacteristic:(id)arg1;
 - (BOOL)shouldVerifyHAPService:(id)arg1;
-- (void)startPairingWithConsentRequired:(BOOL)arg1;
+- (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (BOOL)stopPairingWithError:(id *)arg1;
 - (void)tearDownSessionOnAuthCompletion;
 - (void)timerDidFire:(id)arg1;

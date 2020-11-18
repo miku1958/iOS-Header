@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)dependentLayouts;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (BOOL)descendersCannotClip;
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (id)initWithInfo:(id)arg1;
 - (void)insertChild:(id)arg1 above:(id)arg2;
@@ -66,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidatePath;
 - (void)invalidateSize;
 - (BOOL)isInvisibleAutosizingShape;
+- (id)layoutsForProvidingGuidesForChildLayouts;
 - (double)maxAutoGrowLineWidthForTextLayout:(id)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
 - (BOOL)p_hasVisibleContents;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;
 - (void)processChangedProperty:(int)arg1;
 - (void)processChanges:(id)arg1 forChangeSource:(id)arg2;
+- (BOOL)providesGuidesForChildLayouts;
 - (Class)repClassForTextLayout:(id)arg1;
 - (void)replaceChild:(id)arg1 with:(id)arg2;
 - (void)setChildren:(id)arg1;
@@ -83,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)textLayoutShouldLayoutVertically:(id)arg1;
 - (BOOL)textLayoutShouldWrapAroundExternalDrawables:(id)arg1;
 - (id)textWrapper;
+- (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
 - (void)updateChildrenFromInfo;
 - (int)verticalAlignmentForTextLayout:(id)arg1;
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;

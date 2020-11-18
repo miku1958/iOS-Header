@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext;
+@class AKAppleIDAuthenticationInAppContext, RUIStyle, UINavigationController;
 
 @protocol AKAppleIDAuthenticationInAppContextDelegate <NSObject>
 
@@ -16,5 +16,7 @@
 - (void)contextDidPresentLoginAlertController:(AKAppleIDAuthenticationInAppContext *)arg1;
 - (void)contextWillBeginPresentingSecondaryUI:(AKAppleIDAuthenticationInAppContext *)arg1;
 - (void)contextWillDismissLoginAlertController:(AKAppleIDAuthenticationInAppContext *)arg1;
+- (RUIStyle *)remoteUIStyle;
+- (void)willPresentModalNavigationController:(UINavigationController *)arg1;
 @end
 

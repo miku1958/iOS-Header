@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) SCNNode *lightingNode;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 
-+ (id)_pathForPuppetNamed:(id)arg1 inAvatarBundle:(BOOL)arg2;
++ (id)_scenePathForPuppetNamed:(id)arg1;
 + (id)animoji;
 + (id)animojiNamed:(id)arg1;
 + (id)animojiNames;
@@ -39,9 +39,11 @@
 - (BOOL)_decode:(id)arg1 error:(id *)arg2;
 - (void)_encode:(id)arg1;
 - (void)_load;
+- (id)arTechniqueName;
 - (id)avatarNode;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (BOOL)hasCustomARTechnique;
 - (void)loadIfNeeded;
 - (id)puppetState;
 - (void)setAvatarNode:(id)arg1;
@@ -49,6 +51,7 @@
 - (void)setPuppetState:(id)arg1;
 - (void)setUrl:(id)arg1;
 - (id)specializationSettings;
+- (id)stickerPhysicsStateIdentifier;
 - (void)update;
 - (id)url;
 

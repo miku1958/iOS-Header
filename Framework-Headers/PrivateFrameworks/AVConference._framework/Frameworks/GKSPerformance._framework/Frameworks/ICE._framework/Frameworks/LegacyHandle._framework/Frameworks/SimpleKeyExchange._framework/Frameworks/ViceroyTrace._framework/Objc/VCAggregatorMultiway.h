@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
     unsigned int _lastReportedUplinkBytesSent;
     double _sessionCreatedTime;
     BOOL _isFullsizeUI;
+    BOOL _isDuplicationEnabled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -84,6 +85,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithDelegate:(id)arg1;
 - (int)initialSettledBitrate;
 - (id)interfaceTypeIndicator;
+- (BOOL)isDuplicationChanged:(BOOL)arg1;
+- (BOOL)isParticipantLive:(id)arg1;
 - (BOOL)isVideoDegraded;
 - (BOOL)isWhitelistedEvent:(unsigned short)arg1;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;

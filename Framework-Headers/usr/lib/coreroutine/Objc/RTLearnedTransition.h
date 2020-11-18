@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <coreroutine/RTCoreDataTransformable-Protocol.h>
+#import <coreroutine/RTCoreDataReadable-Protocol.h>
+#import <coreroutine/RTCoreDataWritable-Protocol.h>
 
 @class NSDate, NSString, NSUUID;
 
-@interface RTLearnedTransition : NSObject <RTCoreDataTransformable>
+@interface RTLearnedTransition : NSObject <RTCoreDataReadable, RTCoreDataWritable>
 {
     NSUUID *_identifier;
     NSDate *_startDate;
@@ -35,11 +36,12 @@
 @property (readonly, nonatomic) NSUUID *visitIdentifierDestination; // @synthesize visitIdentifierDestination=_visitIdentifierDestination;
 @property (readonly, nonatomic) NSUUID *visitIdentifierOrigin; // @synthesize visitIdentifierOrigin=_visitIdentifierOrigin;
 
++ (id)createWithLearnedLocationOfInterestTransitionMO:(id)arg1;
++ (id)createWithLearnedTransitionMO:(id)arg1;
++ (id)createWithManagedObject:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1 startDate:(id)arg2 stopDate:(id)arg3 visitIdentifierOrigin:(id)arg4 visitIdentifierDestination:(id)arg5 creationDate:(id)arg6 expirationDate:(id)arg7 predominantMotionActivityType:(unsigned long long)arg8;
-- (id)initWithTransitionMO:(id)arg1;
-- (id)initWithlocationOfInterestTransitionMO:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)managedObjectWithContext:(id)arg1;
 

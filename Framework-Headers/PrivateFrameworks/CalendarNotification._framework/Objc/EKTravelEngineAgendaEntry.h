@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, CalGeocoder, EKTravelEngineHypothesis, EKTravelEngineOriginalEvent, EKTravelEngineThrottle, GEORouteHypothesizer, NSData, NSString;
-@protocol OS_dispatch_queue;
+@class CLLocation, CalGeocoder, EKTravelEngineHypothesis, EKTravelEngineOriginalEvent, EKTravelEngineThrottle, NSData, NSString;
+@protocol CALNRouteHypothesizer, CALNRouteHypothesizerProvider, OS_dispatch_queue;
 
 @interface EKTravelEngineAgendaEntry : NSObject
 {
@@ -21,7 +21,8 @@
     EKTravelEngineOriginalEvent *_originalEventInternal;
     EKTravelEngineThrottle *_throttle;
     CalGeocoder *_geocoder;
-    GEORouteHypothesizer *_hypothesizer;
+    id<CALNRouteHypothesizerProvider> _hypothesizerProvider;
+    id<CALNRouteHypothesizer> _hypothesizer;
     EKTravelEngineHypothesis *_latestHypothesis;
     CLLocation *_geoLocation;
     NSData *_mapKitHandle;
@@ -37,7 +38,8 @@
 @property (strong, nonatomic) CLLocation *geoLocation; // @synthesize geoLocation=_geoLocation;
 @property (nonatomic) BOOL geocodedEventEncountered; // @synthesize geocodedEventEncountered=_geocodedEventEncountered;
 @property (strong, nonatomic) CalGeocoder *geocoder; // @synthesize geocoder=_geocoder;
-@property (strong, nonatomic) GEORouteHypothesizer *hypothesizer; // @synthesize hypothesizer=_hypothesizer;
+@property (strong, nonatomic) id<CALNRouteHypothesizer> hypothesizer; // @synthesize hypothesizer=_hypothesizer;
+@property (readonly, nonatomic) id<CALNRouteHypothesizerProvider> hypothesizerProvider; // @synthesize hypothesizerProvider=_hypothesizerProvider;
 @property (nonatomic) BOOL hypothesizerSentAtLeastOneHypothesis; // @synthesize hypothesizerSentAtLeastOneHypothesis=_hypothesizerSentAtLeastOneHypothesis;
 @property (strong, nonatomic) EKTravelEngineHypothesis *latestHypothesis; // @synthesize latestHypothesis=_latestHypothesis;
 @property (strong, nonatomic) NSData *mapKitHandle; // @synthesize mapKitHandle=_mapKitHandle;
@@ -83,7 +85,7 @@
 - (void)dealloc;
 - (id)emissionHypothesisRefreshBTAJobName;
 - (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
-- (id)init;
+- (id)initWithRouteHypothesizerProvider:(id)arg1;
 - (void)removeBTAJobWithName:(id)arg1;
 - (void)requestHypothesisRefreshAtDate:(id)arg1;
 - (id)requestHypothesisRefreshBTAJobName;

@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (void)_callCompletionHandlersWithFinishState:(BOOL)arg1 progress:(float)arg2 error:(id)arg3;
+- (void)_downloadRemoteAssetItem:(id)arg1 withCloudStoreCoordinatorDelegate:(id)arg2 shouldWriteData:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_flushBundleCaches;
 - (BOOL)addRemoteAssetData:(id)arg1 forManifestItem:(id)arg2 error:(id *)arg3;
@@ -27,11 +28,14 @@
 - (BOOL)assetExistsLocally:(id)arg1;
 - (id)deviceSpecificItems;
 - (id)deviceSpecificItemsForScreenScale:(double)arg1 suffix:(id)arg2;
+- (void)downloadRemoteAssetItem:(id)arg1 withCloudStoreCoordinatorDelegate:(id)arg2 shouldWriteData:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithFileURL:(id)arg1 queue:(id)arg2;
 - (id)itemWithRelativePath:(id)arg1;
+- (id)pendingRemoteAssetsItems;
+- (id)pendingRemoteAssetsItemsForScreenScale:(double)arg1 suffix:(id)arg2;
 - (id)remoteAssetManifests;
 - (id)sha1HexFromRelativeManifestWithRelativePath:(id)arg1;
 

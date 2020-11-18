@@ -24,6 +24,7 @@
 + (id)oneToOneScalePolicy;
 - (id)init;
 - (id)initWithScale:(CDStruct_912cb5d2)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (CDStruct_912cb5d2)scaleForImageSize:(CDStruct_912cb5d2)arg1;
 
 @end

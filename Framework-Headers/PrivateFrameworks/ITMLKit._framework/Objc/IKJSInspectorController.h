@@ -8,7 +8,7 @@
 
 #import <ITMLKit/IKJSInspectorControllerDelegate-Protocol.h>
 
-@class IKAppContext, IKDOMDocument, IKJSInspectorCSSAgent, IKJSInspectorDOMAgent, IKJSInspectorNetworkAgent, IKJSInspectorPageAgent, IKJSInspectorStorageAgent, NSDate, NSMutableArray, NSString, RWIProtocolInspector;
+@class IKAppContext, IKDOMDocument, IKJSInspectorCSSAgent, IKJSInspectorDOMAgent, IKJSInspectorNetworkAgent, IKJSInspectorPageAgent, IKJSInspectorStorageAgent, NSDate, NSString, RWIProtocolInspector;
 @protocol IKJSInspectorControllerDelegate, IKNetworkRequestLoader;
 
 @interface IKJSInspectorController : NSObject <IKJSInspectorControllerDelegate>
@@ -19,14 +19,15 @@
         BOOL respondsToHighlightViewForElementWithManyIDs;
         BOOL respondsToCancelHighlightView;
     } _delegateFlags;
+    struct {
+        BOOL respondsToActiveDocument;
+    } _appFlags;
     IKAppContext *_appContext;
     id<IKJSInspectorControllerDelegate> _delegate;
     RWIProtocolInspector *_inspector;
     NSDate *_inspectorConnectDate;
     id<IKNetworkRequestLoader> _requestLoader;
     IKDOMDocument *_activeDocument;
-    NSString *_activeDocumentIdentifier;
-    NSMutableArray *_appDocumentStack;
     IKJSInspectorDOMAgent *_domAgent;
     IKJSInspectorNetworkAgent *_networkAgent;
     IKJSInspectorPageAgent *_pageAgent;
@@ -36,10 +37,8 @@
     id _inspectorDisconnectedToken;
 }
 
-@property (readonly, weak, nonatomic) IKDOMDocument *activeDocument; // @synthesize activeDocument=_activeDocument;
-@property (readonly, copy, nonatomic) NSString *activeDocumentIdentifier; // @synthesize activeDocumentIdentifier=_activeDocumentIdentifier;
+@property (weak, nonatomic) IKDOMDocument *activeDocument; // @synthesize activeDocument=_activeDocument;
 @property (readonly, weak) IKAppContext *appContext; // @synthesize appContext=_appContext;
-@property (readonly, nonatomic) NSMutableArray *appDocumentStack; // @synthesize appDocumentStack=_appDocumentStack;
 @property (readonly, weak, nonatomic) IKJSInspectorCSSAgent *cssAgent; // @synthesize cssAgent=_cssAgent;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<IKJSInspectorControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -58,6 +57,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_updateCurrentActiveDocument;
 - (void)appDocumentDidAppear:(id)arg1;
 - (void)appDocumentDidDisappear:(id)arg1;
 - (void)appDocumentDidLoad:(id)arg1;

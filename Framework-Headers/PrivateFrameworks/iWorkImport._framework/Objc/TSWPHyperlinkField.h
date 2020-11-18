@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *fullPath;
 @property (readonly, nonatomic) BOOL hasDisplayText;
 @property (readonly, nonatomic) TSWPSelection *highlightSelection;
-@property (readonly, nonatomic) BOOL isInGroupedShape;
 @property (readonly, nonatomic) long long scheme;
 @property (copy, nonatomic, setter=setURL:) NSURL *url;
 @property (readonly, nonatomic) NSString *urlPrefix;
@@ -46,6 +45,8 @@ __attribute__((visibility("hidden")))
 - (void)p_performHyperlinkSelector:(SEL)arg1 onStorage:(id)arg2;
 - (void)saveToArchive:(struct HyperlinkFieldArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (void)saveToHyperlinkArchive:(id)arg1;
+- (void)saveToUnsupportedHyperlinkArchive:(id)arg1;
 - (void)setUrlString:(id)arg1;
 - (int)smartFieldKind;
 - (id)urlString;

@@ -17,6 +17,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)alertControllerForAddingDestinationWithType:(unsigned long long)arg1 andProceed:(CDUnknownBlockType)arg2;
++ (id)alertControllerForAddingDestinationWithTypeString:(id)arg1 andProceed:(CDUnknownBlockType)arg2;
++ (id)alertControllerForAddingHomeWithProceed:(CDUnknownBlockType)arg1;
++ (id)alertControllerForAddingRoomWithProceed:(CDUnknownBlockType)arg1;
++ (id)alertControllerForAddingServiceGroupWithProceed:(CDUnknownBlockType)arg1;
++ (id)alertControllerForAddingZoneWithProceed:(CDUnknownBlockType)arg1;
++ (id)hu_alertControllerForAcknowledgementWithTitle:(id)arg1 message:(id)arg2;
++ (id)hu_alertControllerForUnimplementedFeature:(id)arg1;
++ (id)hu_alertControllerWithActivityIndicatorAndTitle:(id)arg1;
 - (id)hu_preloadContent;
 @end
 

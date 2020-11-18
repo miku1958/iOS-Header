@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)_startEditingFirstCell;
 - (void)cancel:(id)arg1;
 - (id)contactViewCache;
-- (id)defaultValueForPropertyCell:(id)arg1;
 - (void)done:(id)arg1;
 - (id)initWithContact:(id)arg1 propertyKey:(id)arg2 editNames:(BOOL)arg3;
 - (void)propertyCell:(id)arg1 didUpdateItem:(id)arg2 withNewLabel:(id)arg3;

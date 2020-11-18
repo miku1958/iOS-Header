@@ -57,6 +57,7 @@
 @property (readonly, nonatomic, getter=isVisible) BOOL visible;
 @property (readonly, nonatomic, getter=isVisibleAndFrontmost) BOOL visibleAndFrontmost;
 
+- (void).cxx_destruct;
 - (long long)ITunesStoreUIBarStyle;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;

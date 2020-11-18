@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_figAssetWriterAccessQueue;
     BOOL _startSessionCalled;
     AVAssetWriterFigAssetWriterNotificationHandler *_notificationHandler;
+    void *_callbackContextToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,9 +37,9 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveFigAssetWriterNotificationWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)endSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;
 - (id)figTrackReferences;
-- (void)finalize;
 - (void)finishWriting;
 - (void)finishWritingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)flush;
 - (id)initWithConfigurationState:(id)arg1;
 - (id)initWithConfigurationState:(id)arg1 error:(id *)arg2;
 - (void)startSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;

@@ -28,7 +28,7 @@
 - (void)_beginGraphOperation;
 - (void)_endGraphOperation;
 - (id)currentlyUnavailableError;
-- (id)fetchOptionsWithCurrentPhotoLibraryFromFetchOptions:(id)arg1;
+- (void)generateQuestionsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)generateSuggestionsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)graphUpdateDidStop;
 - (void)graphUpdateIsConsistent;
@@ -39,14 +39,14 @@
 - (void)operationDidFinish:(id)arg1;
 - (void)operationWillStart:(id)arg1;
 - (id)phaGraphManager;
-- (void)photoAnalysisGraphManager:(id)arg1 willShutdownGraph:(id)arg2;
 - (void)requestAssetCollectionsRelatedToAssetWithLocalIdentifier:(id)arg1 options:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)requestAssetSearchKeywordsForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 withOptions:(id)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)requestGraphSearchMetadataWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestSearchIndexKeywordsForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 withOptions:(id)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
-- (void)requestSearchInformationForTripUUIDs:(id)arg1 withOptions:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)requestSearchableAssetUUIDsBySocialGroupForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 isFullAnalysis:(BOOL)arg3 withOptions:(id)arg4 context:(id)arg5 reply:(CDUnknownBlockType)arg6;
 - (void)requestSynonymsDictionariesWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestZeroKeywordsWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)runCurationWithItems:(id)arg1 options:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (BOOL)wantsGraphUpdateNotifications;
 - (BOOL)wantsLiveGraphUpdates;
 

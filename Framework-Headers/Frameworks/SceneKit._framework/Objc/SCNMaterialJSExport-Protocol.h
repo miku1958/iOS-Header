@@ -14,6 +14,9 @@
 @property (readonly, nonatomic) SCNMaterialProperty *ambientOcclusion;
 @property (nonatomic) BOOL avoidsOverLighting;
 @property (nonatomic) long long blendMode;
+@property (readonly, nonatomic) SCNMaterialProperty *clearCoat;
+@property (readonly, nonatomic) SCNMaterialProperty *clearCoatNormal;
+@property (readonly, nonatomic) SCNMaterialProperty *clearCoatRoughness;
 @property (nonatomic) long long colorBufferWriteMask;
 @property (nonatomic) long long cullMode;
 @property (readonly, nonatomic) SCNMaterialProperty *diffuse;

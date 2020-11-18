@@ -10,17 +10,19 @@
 #import <AVConference/RTCPReportProvider-Protocol.h>
 #import <AVConference/VCConnectionChangedHandler-Protocol.h>
 #import <AVConference/VCMediaStreamNotification-Protocol.h>
+#import <AVConference/VCMomentTransportDelegate-Protocol.h>
 #import <AVConference/VCNetworkFeedbackControllerDelegate-Protocol.h>
 #import <AVConference/VCRateControlMediaControllerDelegate-Protocol.h>
 #import <AVConference/VCSecurityEventHandler-Protocol.h>
 #import <AVConference/VCSessionParticipantDelegate-Protocol.h>
 #import <AVConference/VCSessionParticipantStreamDelegate-Protocol.h>
+#import <AVConference/VCSessionStatsControllerDelegate-Protocol.h>
 
 @class AVCRateController, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionStatsController, VCTransportSession;
 @protocol OS_dispatch_queue, VCConnectionProtocol, VCSessionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCSession : NSObject <VCSessionParticipantStreamDelegate, AVCRateControllerDelegate, VCRateControlMediaControllerDelegate, VCMediaStreamNotification, RTCPReportProvider, VCSecurityEventHandler, VCSessionParticipantDelegate, VCNetworkFeedbackControllerDelegate, VCConnectionChangedHandler>
+@interface VCSession : NSObject <VCSessionParticipantStreamDelegate, AVCRateControllerDelegate, VCRateControlMediaControllerDelegate, VCMediaStreamNotification, RTCPReportProvider, VCSecurityEventHandler, VCSessionParticipantDelegate, VCNetworkFeedbackControllerDelegate, VCSessionStatsControllerDelegate, VCConnectionChangedHandler, VCMomentTransportDelegate>
 {
     unsigned int _state;
     NSObject<OS_dispatch_queue> *_sessionQueue;
@@ -95,8 +97,10 @@ __attribute__((visibility("hidden")))
 - (void)destroySessionMessaging;
 - (BOOL)detectSSRCCollision:(id)arg1 resetNeeded:(BOOL *)arg2;
 - (void)didReceiveCustomReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
+- (void)didReceiveMomentsRequest:(id)arg1;
 - (void)didReceiveRTCPPackets:(struct _RTCPPacketList *)arg1;
 - (void)didReceiveReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
+- (void)didReceivedSessionStatsAtTime:(double)arg1;
 - (void)dispatchedAddParticipantConfigurations:(id)arg1 processID:(int)arg2;
 - (void)dispatchedAddParticipantWithConfig:(id)arg1 processID:(int)arg2;
 - (void)dispatchedParticipant:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
@@ -116,10 +120,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)handleEncryptionInfoChange:(id)arg1;
 - (void)handleEncryptionInfoEvent:(id)arg1;
 - (void)handleMembershipChangeInfoEvent:(id)arg1;
-- (id)initWithIDSDestination:(id)arg1 configurationDict:(id)arg2 delegate:(id)arg3 processId:(int)arg4;
+- (id)initWithIDSDestination:(id)arg1 configurationDict:(id)arg2 negotiationData:(id)arg3 delegate:(id)arg4 processId:(int)arg5;
 - (void)mediaController:(void *)arg1 mediaSuggestionDidChange:(struct VCRateControlMediaSuggestion)arg2;
 - (void)mediaStateChangedForParticipant:(id)arg1;
 - (void)mediaStream:(id)arg1 didReceiveNewMasterKeyIndex:(id)arg2;
+- (void)moments:(id)arg1 shouldProcessRequest:(id)arg2 recipientID:(id)arg3;
 - (void)optInStreamWithIDSStreamIDs:(id)arg1;
 - (void)optOutStreamWithIDSStreamIDs:(id)arg1;
 - (id)participantForID:(id)arg1;
@@ -131,6 +136,8 @@ __attribute__((visibility("hidden")))
 - (void)registerReportingTask;
 - (void)removeDelegatesForRemoteParticipant:(id)arg1;
 - (void)removeParticipant:(id)arg1;
+- (void)reportingIntervalChanged:(double)arg1;
+- (void)reportingMomentsWithRequest:(id)arg1 recipientID:(id)arg2;
 - (void)reportingSessionDownlinkOptInEvent:(id)arg1 selectedMediaEntriesForParticipants:(id)arg2;
 - (void)reportingSessionParticipantEvent:(unsigned short)arg1 keyChangeReason:(id)arg2 newMKI:(id)arg3;
 - (void)reportingSessionParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2;
@@ -152,6 +159,7 @@ __attribute__((visibility("hidden")))
 - (void)setupAudioEnabledMessages;
 - (void)setupAudioPausedMessages;
 - (void)setupKeyFrameGenerationMessages;
+- (void)setupMomentsMessages;
 - (void)setupRateControllers;
 - (void)setupSymptomEnabledMessages;
 - (void)setupTransportSessionWithDestination:(id)arg1;
@@ -162,15 +170,16 @@ __attribute__((visibility("hidden")))
 - (void)start;
 - (void)startRateControllers;
 - (void)startSessionMessaging;
-- (void)stop;
 - (void)stopAllParticipants;
 - (void)stopSessionMessaging;
+- (void)stopWithError:(id)arg1;
 - (void)tearDown;
 - (void)unregisterMediaStreamNotificationDelegateForParticipant:(id)arg1;
 - (void)unregisterRemoteParticipantFromSession:(id)arg1;
 - (void)unregisterReportingTask;
 - (void)updateConfiguration:(id)arg1;
 - (void)updateLocalStreamConfiguration;
+- (void)updateNetworkFeedbackControllerReport:(CDStruct_4b4d87a1 *)arg1;
 - (void)updateParticipantConfigurations:(id)arg1;
 - (void)vcSessionParticipant:(id)arg1 audioEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)vcSessionParticipant:(id)arg1 audioPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
@@ -185,6 +194,7 @@ __attribute__((visibility("hidden")))
 - (void)vcSessionParticipant:(id)arg1 remoteVideoEnabledDidChange:(BOOL)arg2;
 - (void)vcSessionParticipant:(id)arg1 remoteVideoPausedDidChange:(BOOL)arg2;
 - (void)vcSessionParticipant:(id)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2;
+- (void)vcSessionParticipant:(id)arg1 spatialAudioSourceIDDidChange:(unsigned long long)arg2;
 - (void)vcSessionParticipant:(id)arg1 videoEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)vcSessionParticipant:(id)arg1 videoPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)vcSessionParticipantDidChangeActualNetworkBitrateAudio:(id)arg1;

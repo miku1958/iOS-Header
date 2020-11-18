@@ -19,6 +19,7 @@
 @property (readonly, nonatomic, getter=isMirroringSupported) BOOL mirroringSupported;
 @property (nonatomic) long long orientation;
 @property (readonly, nonatomic, getter=isOrientationSupported) BOOL orientationSupported;
+@property (readonly, nonatomic, getter=isPreviewing) BOOL previewing;
 @property (strong, nonatomic) AVCaptureSession *session;
 @property (copy) NSString *videoGravity;
 
@@ -38,15 +39,21 @@
 - (void)_updateDepthDataDeliverySupported;
 - (void)_updatePreviewTransforms;
 - (id)addConnection:(id)arg1 error:(id *)arg2;
+- (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)attachToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)bumpChangeSeed;
-- (BOOL)canAddConnectionForMediaType:(id)arg1;
+- (BOOL)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (struct CGPoint)captureDevicePointOfInterestForPoint:(struct CGPoint)arg1;
+- (struct CGAffineTransform)captureDeviceTransformForSensorSize:(struct CGSize)arg1 previewSize:(struct CGSize)arg2 sensorToPreviewVTScalingMode:(id)arg3;
 - (void)centerSublayer:(long long)arg1;
 - (int)changeSeed;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (void)detachFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
+- (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
+- (void)didUpdatePreviewFormatDescription:(struct opaqueCMFormatDescription *)arg1;
+- (void)didUpdatePreviewImageQueueSlot:(unsigned int)arg1 imageQueue:(id)arg2 rotationDegrees:(double)arg3 size:(struct CGSize)arg4;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (unsigned int)imageQueueSlot;
 - (id)init;
 - (id)initWithLayer:(id)arg1;
@@ -63,11 +70,13 @@
 - (void)layoutSublayers;
 - (struct CGRect)metadataOutputRectOfInterestForRect:(struct CGRect)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)performFigCaptureSessionOperationSafelyUsingBlock:(CDUnknownBlockType)arg1;
 - (struct CGPoint)pointForCaptureDevicePointOfInterest:(struct CGPoint)arg1;
 - (double)previewRotationDegrees;
 - (struct CGRect)rectForMetadataOutputRectOfInterest:(struct CGRect)arg1;
 - (void)removeConnection:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
+- (void)setCaptureDeviceTransformNeedsUpdate;
 - (void)setChromaNoiseReductionEnabled:(BOOL)arg1;
 - (void)setDepthDataDeliveryEnabled:(BOOL)arg1;
 - (void)setFilterRenderingEnabled:(BOOL)arg1;
@@ -79,6 +88,7 @@
 - (id)sinkID;
 - (id)transformedMetadataObjectForMetadataObject:(id)arg1;
 - (id)videoPreviewFilters;
+- (id)weakReference;
 
 @end
 

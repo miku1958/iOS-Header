@@ -14,9 +14,10 @@
 
 @interface HDHealthStoreEndpoint : NSObject <HDHealthStoreEndpointInterface, _HKXPCExportable>
 {
+    struct os_unfair_lock_s _lock;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
     HDDaemon *_daemon;
     HDXPCClient *_client;
-    NSObject<OS_dispatch_queue> *_queue;
     HDHealthStoreServer *_server;
 }
 
@@ -25,7 +26,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) HDHealthStoreServer *server; // @synthesize server=_server;
 @property (readonly) Class superclass;
 
@@ -33,6 +33,8 @@
 + (BOOL)_isDeviceSupportedWithBehavior:(id)arg1 error:(id *)arg2;
 + (id)endpointWithClient:(id)arg1 healthDaemon:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)_validateSourceBundleIdentifier:(id)arg1 error:(id *)arg2;
+- (void)connectionConfigured;
 - (void)connectionInvalidated;
 - (id)exportedInterface;
 - (id)initWithClient:(id)arg1 daemon:(id)arg2;

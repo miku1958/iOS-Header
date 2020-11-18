@@ -6,18 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMSensorRecorderInternal : NSObject
 {
     NSObject<OS_dispatch_queue> *fInternalQueue;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     struct CLConnectionClient *fLocationdConnection;
 }
 
 - (id)_newMetaUsingMessage:(const char *)arg1 withIdentifier:(unsigned long long)arg2 forType:(int)arg3;
-- (void)_startWatchdogCheckins;
-- (void)_stopWatchdogCheckins;
 - (void)dealloc;
 - (id)init;
 - (id)newDataByID:(unsigned long long)arg1 metaID:(unsigned long long)arg2 forType:(int)arg3;

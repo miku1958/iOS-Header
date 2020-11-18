@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class NSData, NSNumber, NSString;
+@class NSNumber, NSString;
 
 @interface QuickTypePFLTrainer : NSObject
 {
-    NSString *_seedModelPath;
-    NSData *_modelData;
-    void *_model;
     unsigned long long _batchSize;
     NSNumber *_learningRate;
     unsigned long long _maxSequenceLength;
@@ -24,13 +21,9 @@
 @property (readonly, nonatomic) unsigned long long maxSequenceLength; // @synthesize maxSequenceLength=_maxSequenceLength;
 @property (readonly, copy, nonatomic) NSString *updatedModelPath; // @synthesize updatedModelPath=_updatedModelPath;
 
-+ (float *)dumpMontreal:(void *)arg1 toFlatVectorWithDimension:(unsigned long long *)arg2;
 - (float *)copyWeightUpdates:(unsigned long long *)arg1;
-- (void)dealloc;
 - (id)evaluateOn:(id)arg1;
 - (id)initWithSeedModelPath:(id)arg1;
-- (void)loadPretrainedModel:(id)arg1;
-- (id)privatizeUsingGamma:(double)arg1 andNu:(double)arg2;
 - (void)reset;
 - (void)trainAndKeepInMemory:(id)arg1 forNEpochs:(unsigned long long)arg2;
 - (void)trainOn:(id)arg1 forNEpochs:(unsigned long long)arg2;

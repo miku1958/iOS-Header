@@ -21,6 +21,7 @@
 
 + (struct NSDictionary *)tagSetFromPreset:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyForPairedCategory:(long long)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithPreset:(id)arg1;

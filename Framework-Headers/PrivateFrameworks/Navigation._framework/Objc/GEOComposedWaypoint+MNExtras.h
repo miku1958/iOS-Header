@@ -10,6 +10,13 @@
 
 @property (readonly, nonatomic) int destinationType;
 
++ (id)appleParkWaypointFromAddress;
++ (id)appleParkWaypointFromLatLng;
++ (id)appleParkWaypointFromMuid;
+- (id)destinationInfo;
+- (id)humanDescription;
+- (id)humanDescriptionWithAddressAndLatLng;
+- (id)humanDescriptionWithLatLng;
 - (id)localeIdentifier;
 - (id)navAnnouncementAddress;
 - (id)navAnnouncementName;

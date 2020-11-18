@@ -6,18 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@protocol MTTimerManagerProviding;
+@protocol MTTimerManagerIntentSupport, MTTimerManagerProviding;
 
 @interface MTTimerIntentHandler : NSObject
 {
     id<MTTimerManagerProviding> _timerManagerProvider;
+    id<MTTimerManagerIntentSupport> _timerManager;
 }
 
+@property (strong, nonatomic) id<MTTimerManagerIntentSupport> timerManager; // @synthesize timerManager=_timerManager;
 @property (weak, nonatomic) id<MTTimerManagerProviding> timerManagerProvider; // @synthesize timerManagerProvider=_timerManagerProvider;
 
 - (void).cxx_destruct;
-- (id)_alternateTimersForTargetTimerState:(long long)arg1 inTimers:(id)arg2 allowedTimerStates:(id)arg3;
+- (id)_alternateTimersForTargetTimerState:(long long)arg1 type:(long long)arg2 inTimers:(id)arg3 allowedTimerStates:(id)arg4;
 - (void)_genericallyResolveTargetTimer:(id)arg1 multiple:(BOOL)arg2 allowedTimerStatesForFollowup:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_isDefaultTimer:(id)arg1;
 - (void)_matchTimersFromIntentsTimer:(id)arg1 excludeStoppedTimers:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_onlyUnnamedTimerInTimers:(id)arg1 forTargetTimer:(id)arg2 allowMultiple:(BOOL)arg3;
 - (id)_timerManager;

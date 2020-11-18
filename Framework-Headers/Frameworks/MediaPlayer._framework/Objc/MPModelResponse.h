@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) MPPropertySet *deferredItemProperties; // @synthesize deferredItemProperties=_deferredItemProperties;
 @property (strong, nonatomic) MPPropertySet *deferredSectionProperties; // @synthesize deferredSectionProperties=_deferredSectionProperties;
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, copy, nonatomic) MPModelRequest *request; // @synthesize request=_request;
 @property (copy, nonatomic) MPSectionedCollection *results; // @synthesize results=_results;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;

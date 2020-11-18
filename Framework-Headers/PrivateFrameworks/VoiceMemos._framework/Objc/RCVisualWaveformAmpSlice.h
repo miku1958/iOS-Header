@@ -6,36 +6,46 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, NSMutableSet;
+@class CALayer, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface RCVisualWaveformAmpSlice : NSObject
 {
-    NSMutableSet *_segments;
     double _visualAmplitudeHeight;
     double _interpolatingvisualAmplitudeHeight;
     double _interpolatingvisualAmplitudeHeightDiff;
     long long _interpolatingVisualAmplitudeHeightFrameCount;
-    BOOL _needsPathUpdate;
-    double _sliceIndex;
+    UIColor *_lastColor;
+    BOOL _hasProcessedSegments;
+    BOOL _hidden;
+    long long _sliceIndex;
     double _amplitude;
     long long _visualAmplitudeHeightInterpolatingFrames;
     CALayer *_sliceLayer;
+    unsigned long long _color;
 }
 
 @property (nonatomic) double amplitude; // @synthesize amplitude=_amplitude;
-@property (nonatomic) BOOL needsPathUpdate; // @synthesize needsPathUpdate=_needsPathUpdate;
-@property (readonly, nonatomic) BOOL segmentsAreRendered;
-@property (nonatomic) double sliceIndex; // @synthesize sliceIndex=_sliceIndex;
+@property (nonatomic) unsigned long long color; // @synthesize color=_color;
+@property (nonatomic) BOOL hasProcessedSegments; // @synthesize hasProcessedSegments=_hasProcessedSegments;
+@property (readonly, nonatomic) BOOL hasVisualAmplitudeInterpolatingFramesLeft;
+@property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
+@property (nonatomic) long long sliceIndex; // @synthesize sliceIndex=_sliceIndex;
 @property (strong, nonatomic) CALayer *sliceLayer; // @synthesize sliceLayer=_sliceLayer;
+@property (readonly, nonatomic) UIColor *uiColor;
+@property (readonly, nonatomic) UIColor *uiColorDimmed;
 @property (nonatomic) double visualAmplitudeHeight;
 @property (nonatomic) long long visualAmplitudeHeightInterpolatingFrames; // @synthesize visualAmplitudeHeightInterpolatingFrames=_visualAmplitudeHeightInterpolatingFrames;
 
++ (id)colorForSliceColor:(unsigned long long)arg1 dimmed:(BOOL)arg2;
++ (id)primaryColor;
++ (id)secondaryColor;
++ (void)setPrimaryColor:(id)arg1;
++ (void)setSecondaryColor:(id)arg1;
 - (void).cxx_destruct;
-- (void)addSegment:(id)arg1;
-- (void)clearSegments;
 - (id)init;
 - (id)initWithIndex:(double)arg1 amplitude:(double)arg2;
+- (void)setFrame:(struct CGRect)arg1;
 
 @end
 

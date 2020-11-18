@@ -10,28 +10,31 @@
 #import <AppleMediaServices/NSURLSessionDelegate-Protocol.h>
 #import <AppleMediaServices/NSURLSessionTaskDelegate-Protocol.h>
 
-@class AMSURLSecurityPolicy, NSOperationQueue, NSString, NSURLSession, NSURLSessionConfiguration;
+@class AMSURLDelegateProxy, AMSURLSecurityPolicy, NSOperationQueue, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol AMSRequestEncoding, AMSResponseDecoding, AMSURLHandling, NSURLSessionDelegate><AMSURLProtocolDelegate;
 
 @interface AMSURLSession : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate>
 {
+    BOOL _invalidated;
     id<AMSURLHandling> _protocolHandler;
     NSURLSessionConfiguration *_configuration;
-    id<NSURLSessionDelegate><AMSURLProtocolDelegate> _delegate;
     NSOperationQueue *_delegateQueue;
     id<AMSRequestEncoding> _requestEncoder;
     id<AMSResponseDecoding> _responseDecoder;
-    AMSURLSecurityPolicy *_securityPolicy;
     NSURLSession *_session;
+    AMSURLDelegateProxy *_delegateProxy;
+    AMSURLSecurityPolicy *_securityPolicy;
 }
 
 @property (readonly, nonatomic) NSURLSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<NSURLSessionDelegate><AMSURLProtocolDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<NSURLSessionDelegate><AMSURLProtocolDelegate> delegate;
+@property (strong, nonatomic) AMSURLDelegateProxy *delegateProxy; // @synthesize delegateProxy=_delegateProxy;
 @property (readonly, nonatomic) NSOperationQueue *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<AMSURLHandling> protocolHandler;
+@property (nonatomic) BOOL invalidated; // @synthesize invalidated=_invalidated;
+@property (strong, nonatomic) id<AMSURLHandling> protocolHandler; // @synthesize protocolHandler=_protocolHandler;
 @property (strong, nonatomic) id<AMSRequestEncoding> requestEncoder; // @synthesize requestEncoder=_requestEncoder;
 @property (strong, nonatomic) id<AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
 @property (strong, nonatomic) AMSURLSecurityPolicy *securityPolicy; // @synthesize securityPolicy=_securityPolicy;
@@ -49,18 +52,18 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_completeTask:(id)arg1 decodedObject:(id)arg2 error:(id)arg3;
 - (id)_createSharedDataForTask:(id)arg1 properties:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_handleURLAction:(id)arg1 task:(id)arg2 error:(id *)arg3;
-- (id)_prepareTaskWithRequest:(id)arg1 properties:(id)arg2;
+- (id)_handleURLAction:(id)arg1 task:(id)arg2 error:(id *)arg3;
+- (id)_prepareRequest:(id)arg1 properties:(id)arg2 error:(id *)arg3;
 - (void)_retryTask:(id)arg1 action:(id)arg2 error:(id *)arg3;
 - (id)dataTaskPromiseWithRequest:(id)arg1;
 - (id)dataTaskWithRequest:(id)arg1;
 - (id)dataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)finishTasksAndInvalidate;
-- (id)forwardingTargetForSelector:(SEL)arg1;
+- (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
 - (void)invalidateAndCancel;
-- (BOOL)respondsToSelector:(SEL)arg1;
 
 @end
 

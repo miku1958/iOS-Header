@@ -8,6 +8,7 @@
 
 @interface NSNumber (TSUAdditions)
 + (id)tsu_numberWithCGFloat:(double)arg1;
+- (void)appendJsonStringToString:(id)arg1;
 - (double)tsu_CGFloatValue;
 - (BOOL)tsu_isFloatingPointType;
 @end

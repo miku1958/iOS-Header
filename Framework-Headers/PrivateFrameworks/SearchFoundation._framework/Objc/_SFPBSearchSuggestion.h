@@ -24,6 +24,7 @@
     NSString *_bundleIdentifier;
     NSString *_fbr;
     NSString *_scopedSearchApplicationBundleIdentifier;
+    NSString *_utteranceText;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -42,6 +43,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *topicIdentifier; // @synthesize topicIdentifier=_topicIdentifier;
 @property (nonatomic) int type; // @synthesize type=_type;
+@property (copy, nonatomic) NSString *utteranceText; // @synthesize utteranceText=_utteranceText;
 
 - (void).cxx_destruct;
 - (void)addDuplicateSuggestions:(id)arg1;

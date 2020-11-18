@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (PLCrossFade)
+- (BOOL)pl_isScrollViewDelegateMethod:(SEL)arg1;
 - (void)pl_performCrossFadeIfNecessary;
 @end
 

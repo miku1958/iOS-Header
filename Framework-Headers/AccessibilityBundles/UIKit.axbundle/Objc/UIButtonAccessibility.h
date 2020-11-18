@@ -14,9 +14,15 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityAuditIssuesWithOptions:(id)arg1;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityImagePath;
 - (unsigned long long)_accessibilityNativeTraits;
+- (id)_accessibilityUserTestingChildren;
+- (BOOL)_axButtonTypeIsModernCircle;
+- (id)_contentForState:(unsigned long long)arg1;
+- (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
+- (id)accessibilityPath;
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

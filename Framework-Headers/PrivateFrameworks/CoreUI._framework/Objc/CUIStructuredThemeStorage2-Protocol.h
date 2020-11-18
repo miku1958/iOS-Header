@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CUICommonAssetStorage, CUINamedImageDescription, NSArray, NSDictionary, NSString;
+@class CUICommonAssetStorage, CUINamedImageDescription, CUINamedRenditionInfo, NSArray, NSDictionary, NSString;
 
 @protocol CUIStructuredThemeStorage2
 - (NSArray *)allImageNames;
@@ -12,12 +12,15 @@
 - (NSDictionary *)appearances;
 - (BOOL)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1;
 - (NSArray *)imagesWithName:(NSString *)arg1;
+- (unsigned short)localizationIdentifierForName:(NSString *)arg1;
+- (NSDictionary *)localizations;
 - (NSString *)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(NSString *)arg1;
 
 @optional
 - (void)insertCGImage:(struct CGImage *)arg1 withName:(NSString *)arg2 andDescription:(CUINamedImageDescription *)arg3;
 - (void)removeImageNamed:(NSString *)arg1 withDescription:(CUINamedImageDescription *)arg2;
+- (CUINamedRenditionInfo *)renditionInfoForIdentifier:(unsigned short)arg1;
 - (NSString *)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
 - (CUICommonAssetStorage *)themeStore;
 @end

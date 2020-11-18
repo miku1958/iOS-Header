@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) id<VCVideoReceiverDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
 @property (readonly) double lastReceivedVideoRTCPPacketTime; // @synthesize lastReceivedVideoRTCPPacketTime=_lastReceivedVideoRTCPPacketTime;
 @property (readonly) double lastReceivedVideoRTPPacketTime; // @synthesize lastReceivedVideoRTPPacketTime=_lastReceivedVideoRTPPacketTime;
 @property int remoteVideoOrientation; // @synthesize remoteVideoOrientation=_remoteVideoOrientation;
@@ -34,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (nonatomic) id<VCMediaStreamSyncSource> syncSource; // @synthesize syncSource=_syncSource;
 
-- (void)collectChannelMetrics:(CDStruct_1c8e0384 *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)pauseVideo;
 - (void)rtcpSendIntervalElapsed;

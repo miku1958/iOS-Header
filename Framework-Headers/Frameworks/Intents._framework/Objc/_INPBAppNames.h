@@ -15,12 +15,14 @@
 @interface _INPBAppNames : PBCodable <_INPBAppNames, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSString *_appName;
     NSString *_axSpokenName;
     NSString *_displayName;
     NSString *_spotlightName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *appName; // @synthesize appName=_appName;
 @property (copy, nonatomic) NSString *axSpokenName; // @synthesize axSpokenName=_axSpokenName;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,9 +36,12 @@
 @property (copy, nonatomic) NSString *spotlightName; // @synthesize spotlightName=_spotlightName;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

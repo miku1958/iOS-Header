@@ -13,26 +13,37 @@
     BOOL _isFromPhraseDictionary;
     BOOL _isFromTextChecker;
     BOOL _isSecureContentCandidate;
+    BOOL _continuousPathConversion;
+    BOOL _shouldAccept;
+    BOOL _shouldInsertSpaceAfterSelection;
     unsigned int _usageTrackingMask;
+    int _confidence;
     unsigned long long _wordOriginFeedbackID;
     TIProactiveTrigger *_proactiveTrigger;
     NSString *_responseKitCategory;
     NSString *_fromBundleId;
     unsigned long long _ageForConnectionsMetrics;
+    double _excessPathRatio;
     _ICPredictedItem *_proactivePredictedItem;
     NSString *_label;
 }
 
 @property (nonatomic) unsigned long long ageForConnectionsMetrics; // @synthesize ageForConnectionsMetrics=_ageForConnectionsMetrics;
+@property (nonatomic, getter=confidence) int confidence; // @synthesize confidence=_confidence;
+@property (nonatomic, getter=isContinuousPathConversion) BOOL continuousPathConversion; // @synthesize continuousPathConversion=_continuousPathConversion;
+@property (nonatomic) double excessPathRatio; // @synthesize excessPathRatio=_excessPathRatio;
 @property (copy, nonatomic) NSString *fromBundleId; // @synthesize fromBundleId=_fromBundleId;
 @property (nonatomic) BOOL isFromPhraseDictionary; // @synthesize isFromPhraseDictionary=_isFromPhraseDictionary;
 @property (nonatomic) BOOL isFromTextChecker; // @synthesize isFromTextChecker=_isFromTextChecker;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) _ICPredictedItem *proactivePredictedItem; // @synthesize proactivePredictedItem=_proactivePredictedItem;
+@property (nonatomic, getter=shouldAccept) BOOL shouldAccept; // @synthesize shouldAccept=_shouldAccept;
+@property (nonatomic, getter=shouldInsertSpaceAfterSelection) BOOL shouldInsertSpaceAfterSelection; // @synthesize shouldInsertSpaceAfterSelection=_shouldInsertSpaceAfterSelection;
 
 + (BOOL)supportsSecureCoding;
 + (int)type;
 - (void).cxx_destruct;
+- (id)candidateByReplacingWithCandidate:(id)arg1 input:(id)arg2 label:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

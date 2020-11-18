@@ -21,5 +21,6 @@
 - (BOOL)performSyncSession:(HDSyncSession *)arg1 error:(id *)arg2;
 - (void)resetAnchorsWithFailedChanges:(NSArray *)arg1 store:(id<HDSyncStore>)arg2;
 - (void)resetStore:(id<HDSyncStore>)arg1;
+- (long long)session:(HDSyncSession *)arg1 requiresSyncWithAnchors:(id<HDSyncAnchorMap>)arg2 error:(id *)arg3;
 @end
 

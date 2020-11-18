@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)format;
 - (unsigned long long)hash;
 - (id)initWithArchive:(const struct NumberCellValueArchive *)arg1 locale:(id)arg2;
+- (id)initWithDecimal:(const struct TSUDecimal *)arg1 locale:(id)arg2;
 - (id)initWithDouble:(double)arg1 locale:(id)arg2;
 - (id)initWithNumberValue:(struct TSCENumberValue *)arg1 locale:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

@@ -18,6 +18,8 @@
     BOOL _usesAppAudioSession;
     BOOL _configuresAppAudioSession;
     BOOL _allowedToRunInWindowedLayout;
+    BOOL _isMultiCamSession;
+    BOOL _xctestAuthorizedToStealDevice;
 }
 
 @property (nonatomic) BOOL allowedToRunInWindowedLayout; // @synthesize allowedToRunInWindowedLayout=_allowedToRunInWindowedLayout;
@@ -27,10 +29,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isMultiCamSession) BOOL multiCamSession; // @synthesize multiCamSession=_isMultiCamSession;
 @property (readonly, nonatomic) NSArray *sinkConfigurations;
 @property (readonly, nonatomic) NSArray *sourceConfigurations;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesAppAudioSession; // @synthesize usesAppAudioSession=_usesAppAudioSession;
+@property (nonatomic) BOOL xctestAuthorizedToStealDevice; // @synthesize xctestAuthorizedToStealDevice=_xctestAuthorizedToStealDevice;
 
 + (void)initialize;
 - (void)addConnectionConfiguration:(id)arg1;

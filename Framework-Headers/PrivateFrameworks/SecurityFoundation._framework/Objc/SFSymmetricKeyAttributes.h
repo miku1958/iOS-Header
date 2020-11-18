@@ -14,6 +14,7 @@
 @interface SFSymmetricKeyAttributes : NSObject <_SFKeyAttributes, SFKeychainItemAttributes>
 {
     id _symmetricKeyAttributesInternal;
+    NSString *persistentIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,7 +24,7 @@
 @property (readonly, copy, nonatomic) _SFKeySpecifier *keySpecifier;
 @property (copy, nonatomic) NSString *localizedDescription;
 @property (copy, nonatomic) NSString *localizedLabel;
-@property (readonly, copy, nonatomic) NSString *persistentIdentifier;
+@property (readonly, copy, nonatomic) NSString *persistentIdentifier; // @synthesize persistentIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

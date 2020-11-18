@@ -24,7 +24,6 @@
 + (id)renderContextPropertiesFromFigCompositor:(struct OpaqueFigVideoCompositor *)arg1;
 - (void)_willDeallocOrFinalize;
 - (void)dealloc;
-- (void)finalize;
 - (BOOL)hasEqualPropertiesToFigVideoCompositor:(struct OpaqueFigVideoCompositor *)arg1;
 - (id)initWithFigVideoCompositor:(struct OpaqueFigVideoCompositor *)arg1 clientRequiredPixelBufferAttributes:(id)arg2 videoComposition:(id)arg3 pixelBufferPool:(struct __CVPixelBufferPool *)arg4;
 - (BOOL)isBufferYCbCr:(struct __CVBuffer *)arg1;

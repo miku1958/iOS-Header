@@ -6,17 +6,63 @@
 
 #import <HomeKit/HMServiceGroup.h>
 
+#import <Home/HFFavoritable-Protocol.h>
+#import <Home/HFHomeKitObject-Protocol.h>
+#import <Home/HFHomeStatusVisible-Protocol.h>
+#import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
-@class NSString;
+@class HFServiceDescriptor, HFServiceNameComponents, HFUserNotificationServiceSettings, NSDate, NSString, NSUUID;
 
-@interface HMServiceGroup (HFDebugging) <HFStateDumpBuildable>
+@interface HMServiceGroup (HFDebugging) <HFStateDumpBuildable, HFHomeStatusVisible, HFFavoritable, HFHomeKitObject, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
+@property (readonly, copy, nonatomic) NSString *hf_displayName;
+@property (readonly, nonatomic) BOOL hf_hasSetFavorite;
+@property (readonly, nonatomic) BOOL hf_hasSetVisibleInHomeStatus;
+@property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_isSupported;
+@property (readonly, nonatomic) BOOL hf_isVisibleInHomeStatus;
+@property (readonly, nonatomic) HFServiceDescriptor *hf_serviceDescriptor;
+@property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
+@property (readonly, nonatomic) BOOL hf_supportsHomeStatus;
+@property (readonly, copy, nonatomic) HFUserNotificationServiceSettings *hf_userNotificationSettings;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
+- (id)_hf_allBulletinBoardNotifications;
+- (BOOL)hf_isValidObject;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_updateDateAdded:(id)arg1;
+- (id)hf_updateIsFavorite:(BOOL)arg1;
+- (id)hf_updateIsVisibleInHomeStatus:(BOOL)arg1;
+- (id)hf_updateUserNotificationSettings:(id)arg1;
 @end
 

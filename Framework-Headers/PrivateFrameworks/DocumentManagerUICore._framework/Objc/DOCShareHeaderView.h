@@ -4,50 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <AppSupportUI/NUIContainerStackView.h>
 
-@class DOCStackedThumbnailView, DOCTagsLineView, NSArray, NSLayoutConstraint, NSString, UIButton, UILabel;
+@class DOCStackedThumbnailView, DOCTagsLineView, DOCVisualEffectLabel, NSArray, NSString, NUIContainerGridView, UIButton;
 @protocol DOCTagViewDelegate;
 
-@interface DOCShareHeaderView : UIView
+@interface DOCShareHeaderView : NUIContainerStackView
 {
+    NUIContainerGridView *_infoGrid;
     NSArray *_tags;
     UIButton *_addTagButton;
-    UILabel *_displayNameLabel;
-    UILabel *_providerNameLabel;
+    id<DOCTagViewDelegate> _tagDelegate;
+    DOCVisualEffectLabel *_displayNameLabel;
+    DOCVisualEffectLabel *_providerNameLabel;
     DOCStackedThumbnailView *_thumbnailView;
     DOCTagsLineView *_tagsView;
-    NSArray *_addTagButtonIsNextToProviderNameConstraints;
-    NSArray *_addTagButtonIsNextToTagsConstraints;
-    NSArray *_addTagButtonIsHiddenConstraints;
-    NSArray *_hasTagsConstraints;
-    NSArray *_noTagsConstraints;
-    NSLayoutConstraint *_thumbnailWidthConstraint;
-    NSLayoutConstraint *_thumbnailHeightConstraint;
 }
 
 @property (readonly, nonatomic) UIButton *addTagButton; // @synthesize addTagButton=_addTagButton;
-@property (readonly, nonatomic) NSArray *addTagButtonIsHiddenConstraints; // @synthesize addTagButtonIsHiddenConstraints=_addTagButtonIsHiddenConstraints;
-@property (readonly, nonatomic) NSArray *addTagButtonIsNextToProviderNameConstraints; // @synthesize addTagButtonIsNextToProviderNameConstraints=_addTagButtonIsNextToProviderNameConstraints;
-@property (readonly, nonatomic) NSArray *addTagButtonIsNextToTagsConstraints; // @synthesize addTagButtonIsNextToTagsConstraints=_addTagButtonIsNextToTagsConstraints;
-@property (weak, nonatomic) id<DOCTagViewDelegate> delegate; // @dynamic delegate;
 @property (strong, nonatomic) NSString *displayName;
-@property (readonly, nonatomic) UILabel *displayNameLabel; // @synthesize displayNameLabel=_displayNameLabel;
-@property (readonly, nonatomic) NSArray *hasTagsConstraints; // @synthesize hasTagsConstraints=_hasTagsConstraints;
+@property (readonly, nonatomic) DOCVisualEffectLabel *displayNameLabel; // @synthesize displayNameLabel=_displayNameLabel;
 @property (strong, nonatomic) NSArray *items;
-@property (readonly, nonatomic) NSArray *noTagsConstraints; // @synthesize noTagsConstraints=_noTagsConstraints;
 @property (strong, nonatomic) NSString *providerName;
-@property (readonly, nonatomic) UILabel *providerNameLabel; // @synthesize providerNameLabel=_providerNameLabel;
+@property (readonly, nonatomic) DOCVisualEffectLabel *providerNameLabel; // @synthesize providerNameLabel=_providerNameLabel;
 @property (nonatomic) BOOL showAddTagButton;
+@property (weak, nonatomic) id<DOCTagViewDelegate> tagDelegate; // @synthesize tagDelegate=_tagDelegate;
 @property (strong, nonatomic) NSArray *tags; // @synthesize tags=_tags;
 @property (readonly, nonatomic) DOCTagsLineView *tagsView; // @synthesize tagsView=_tagsView;
-@property (readonly, nonatomic) NSLayoutConstraint *thumbnailHeightConstraint; // @synthesize thumbnailHeightConstraint=_thumbnailHeightConstraint;
 @property (readonly, nonatomic) DOCStackedThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
-@property (readonly, nonatomic) NSLayoutConstraint *thumbnailWidthConstraint; // @synthesize thumbnailWidthConstraint=_thumbnailWidthConstraint;
 
 - (void).cxx_destruct;
+- (id)delegate;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setDelegate:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateArrangedSubviews;
 - (void)updateThumbnailSize;
 
 @end

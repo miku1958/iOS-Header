@@ -40,6 +40,7 @@
 @property (readonly) double localFramerate;
 @property (nonatomic) void *localVideoLayer;
 @property (getter=isMicrophoneMuted) BOOL microphoneMuted;
+@property (readonly, nonatomic) long long outputAudioPowerSpectrumToken;
 @property (readonly, nonatomic) float outputMeterLevel;
 @property (getter=isOutputMeteringEnabled) BOOL outputMeteringEnabled; // @synthesize outputMeteringEnabled;
 @property (readonly) double remoteBitrate;

@@ -34,13 +34,16 @@
 + (id)placeServiceHoursWithMapItem:(id)arg1 type:(long long)arg2;
 + (id)titleString;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_contentSizeDidChange;
 - (void)_showAllHeaderButtonTapped;
 - (void)_updateServiceHourRows;
 - (void)captureCloseAnalytics;
 - (id)infoCardChildPossibleActions;
+- (id)infoCardChildUnactionableUIElements;
 - (id)initWithMapItem:(id)arg1 type:(long long)arg2;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 
 @end

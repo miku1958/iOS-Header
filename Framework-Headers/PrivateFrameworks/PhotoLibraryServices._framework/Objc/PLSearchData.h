@@ -16,5 +16,7 @@
 @property (strong, nonatomic) NSData *data; // @dynamic data;
 @property (nonatomic) BOOL valid; // @dynamic valid;
 
++ (id)entityName;
+
 @end
 

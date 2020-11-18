@@ -23,6 +23,9 @@
     NSObject<OS_dispatch_queue> *avConferencePreviewQueue;
     NSObject<OS_dispatch_queue> *avConferencePreviewNotificationQueue;
     BOOL _isPreviewRunning;
+    BOOL _zoomAvailable;
+    double _currentZoomFactor;
+    double _maxZoomFactor;
     NSString *_localCameraUID;
 }
 
@@ -36,9 +39,11 @@
 - (void)beginPreviewToPIPAnimation;
 - (void)cameraDidBecomeAvailableForUniqueID:(id)arg1;
 - (void)cameraDidBecomeInterruptedForForUniqueID:(id)arg1 reason:(long long)arg2;
+- (void)cameraZoomAvailabilityDidChange:(BOOL)arg1 currentZoomFactor:(double)arg2 maxZoomFactor:(double)arg3;
 - (void)clearAllStickers:(BOOL)arg1;
 - (void)connectLayer:(id)arg1 withSlot:(unsigned int)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (double)currentZoomFactor;
 - (void)dealloc;
 - (void)didChangeLocalScreenAttributes:(id)arg1;
 - (void)didChangeLocalVideoAttributes:(id)arg1;
@@ -53,18 +58,22 @@
 - (void)endPreviewToPIPAnimation;
 - (void)getSnapshot;
 - (id)init;
+- (BOOL)isCameraZoomAvailable;
 - (BOOL)isPreviewRunning;
 - (unsigned int)localCamera;
 - (id)localCameraUID;
 - (id)localScreenAttributesForVideoAttributes:(id)arg1;
 - (id)localVideoAttributes;
 - (id)localVideoLayer:(BOOL)arg1;
+- (double)maxZoomFactor;
 - (void)pausePreview;
 - (void)registerBlocksForDelegateNotifications;
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;
 - (void)setAnimoji:(id)arg1;
+- (void)setCameraZoomFactor:(double)arg1;
+- (void)setCameraZoomFactor:(double)arg1 withRate:(double)arg2;
 - (void)setLocalCamera:(unsigned int)arg1;
 - (void)setLocalCameraWithUID:(id)arg1;
 - (void)setLocalScreenAttributes:(id)arg1;

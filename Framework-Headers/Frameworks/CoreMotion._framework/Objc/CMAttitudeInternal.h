@@ -12,6 +12,7 @@
 }
 
 - (id)initWithQuaternion:(CDStruct_bf7dff04)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)setQuaternion:(CDStruct_bf7dff04)arg1;
 
 @end

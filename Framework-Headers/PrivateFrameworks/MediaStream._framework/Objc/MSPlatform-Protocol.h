@@ -22,7 +22,6 @@
 - (BOOL)policyMayDownload;
 - (BOOL)policyMayUpload;
 - (Class)publisherPluginClass;
-- (Class)sharingPluginClass;
 - (BOOL)shouldLogAtLevel:(int)arg1;
 - (NSDictionary *)socketOptions;
 - (Class)subscriberPluginClass;

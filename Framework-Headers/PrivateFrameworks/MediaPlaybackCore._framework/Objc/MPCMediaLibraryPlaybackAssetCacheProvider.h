@@ -20,9 +20,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_highQualityCachedAssetDestinationDirectory;
-+ (id)_lowQualityCachedAssetDestinationDirectory;
-+ (id)deviceLibraryProvider;
++ (id)_highQualityCachedAssetDestinationDirectoryForMediaLibrary:(id)arg1;
++ (id)_lowQualityCachedAssetDestinationDirectoryForMediaLibrary:(id)arg1;
++ (id)deviceLibraryProviderWithUserIdentity:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithMediaLibrary:(id)arg1;
 - (void)clearPlaybackAssetCacheFileAssetForGenericObject:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

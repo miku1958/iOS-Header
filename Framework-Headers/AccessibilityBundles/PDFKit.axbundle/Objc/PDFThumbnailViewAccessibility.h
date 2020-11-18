@@ -13,10 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityAnnouncementTimer;
-- (void)_accessibilitySetAnnouncementTimer:(id)arg1;
 - (id)_accessibilityUserTestingChildren;
 - (long long)_axCurrentPageNumber;
+- (id)_axIconsView;
 - (void)_axMoveOnePage:(BOOL)arg1;
 - (id)_axPageDescriptionForPage:(id)arg1;
 - (long long)_axPageNumberForPage:(id)arg1;
@@ -28,7 +27,6 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
-- (id)scrubbingAtFraction:(double)arg1 betweenIndexPath:(id)arg2 andIndexPath:(id)arg3 outDiscreteFraction:(double *)arg4;
 
 @end
 

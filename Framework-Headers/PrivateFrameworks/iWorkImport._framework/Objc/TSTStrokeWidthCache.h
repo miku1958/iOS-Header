@@ -9,18 +9,21 @@
 __attribute__((visibility("hidden")))
 @interface TSTStrokeWidthCache : NSObject
 {
-    unsigned int mCount;
-    struct _opaque_pthread_rwlock_t mLock;
-    vector_b67dfe3a mStrokeWidth;
+    struct vector<TSTStrokeWidthCacheEntry, std::__1::allocator<TSTStrokeWidthCacheEntry>> _indexToCacheEntriesMap;
+    struct _opaque_pthread_rwlock_t _rwlock;
 }
+
+@property (nonatomic) struct _opaque_pthread_rwlock_t rwlock; // @synthesize rwlock=_rwlock;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
-- (void)invalidate;
-- (void)setStrokeWidth:(double)arg1 forGridIndex:(unsigned int)arg2;
-- (double)strokeWidthForGridIndex:(unsigned int)arg1;
+- (void)lockForWriting;
+- (void)setCount:(unsigned int)arg1;
+- (double)strokeWidthForGridIndex:(unsigned int)arg1 inRange:(struct TSTSimpleRange)arg2;
+- (void)unlock;
+- (void)updateCacheForGridIndex:(unsigned int)arg1 withMergedStrokes:(id)arg2;
 
 @end
 

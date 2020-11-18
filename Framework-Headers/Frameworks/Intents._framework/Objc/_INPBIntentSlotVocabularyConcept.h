@@ -15,10 +15,12 @@
 @interface _INPBIntentSlotVocabularyConcept : PBCodable <_INPBIntentSlotVocabularyConcept, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSString *_identifier;
     NSArray *_synonyms;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIdentifier;
@@ -28,12 +30,15 @@
 @property (copy, nonatomic) NSArray *synonyms; // @synthesize synonyms=_synonyms;
 @property (readonly, nonatomic) unsigned long long synonymsCount;
 
++ (BOOL)supportsSecureCoding;
 + (Class)synonymsType;
 - (void).cxx_destruct;
 - (void)addSynonyms:(id)arg1;
 - (void)clearSynonyms;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)synonymsAtIndex:(unsigned long long)arg1;

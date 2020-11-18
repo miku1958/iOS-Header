@@ -29,6 +29,7 @@
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
+- (BOOL)canBecomeFocused;
 - (BOOL)isAccessibilityElement;
 
 @end

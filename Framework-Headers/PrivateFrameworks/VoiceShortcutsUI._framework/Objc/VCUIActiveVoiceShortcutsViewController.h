@@ -6,13 +6,11 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <VoiceShortcutsUI/VCUIDebugWorkflowViewControllerDelegate-Protocol.h>
-#import <VoiceShortcutsUI/VCUIEditVoiceShortcutViewControllerDelegate-Protocol.h>
-#import <VoiceShortcutsUI/VCUIGalleryViewControllerDelegate-Protocol.h>
+#import <VoiceShortcutsUI/VCUIShortcutViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UISearchController, VCUIVoiceShortcutCell, VCVoiceShortcutClient;
 
-@interface VCUIActiveVoiceShortcutsViewController : UITableViewController <VCUIGalleryViewControllerDelegate, VCUIEditVoiceShortcutViewControllerDelegate, VCUIDebugWorkflowViewControllerDelegate>
+@interface VCUIActiveVoiceShortcutsViewController : UITableViewController <VCUIShortcutViewControllerDelegate>
 {
     VCVoiceShortcutClient *_voiceShortcutClient;
     UISearchController *_searchController;
@@ -31,17 +29,13 @@
 
 + (void)initialize;
 - (void).cxx_destruct;
-- (void)createNewShortcut;
-- (void)debugWorkflowViewControllerDidFinish:(id)arg1;
 - (void)didTapCancel;
-- (void)editVoiceShortcutViewController:(id)arg1 didDeleteVoiceShortcut:(id)arg2;
-- (void)editVoiceShortcutViewController:(id)arg1 didSaveWithUpdatedVoiceShortcut:(id)arg2;
-- (void)editVoiceShortcutViewControllerDidCancel:(id)arg1;
-- (void)galleryViewControllerDidCancel:(id)arg1;
-- (void)galleryViewControllerDidFinish:(id)arg1;
 - (id)initWithVoiceShortcutClient:(id)arg1;
 - (void)launchExtensionToRunVoiceShortcut:(id)arg1;
 - (void)reloadVoiceShortcuts;
+- (void)shortcutViewController:(id)arg1 didDeleteShortcut:(id)arg2;
+- (void)shortcutViewController:(id)arg1 didSaveShortcut:(id)arg2;
+- (void)shortcutViewControllerDidCancel:(id)arg1;
 - (void)showConfirmationWithTitle:(id)arg1 message:(id)arg2 confirmationHandler:(CDUnknownBlockType)arg3;
 - (void)showHandleIntentResponse:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;

@@ -36,9 +36,7 @@
 - (id)_newImageView;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 cacheGroup:(id)arg3 variant:(long long)arg4 options:(unsigned long long)arg5 wallpaperSettingsProvider:(id)arg6;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 wallpaperVideo:(id)arg3 stillTimeInVideo:(double)arg4 variant:(long long)arg5 wallpaperSettingsProvider:(id)arg6;
+- (id)initWithFrame:(struct CGRect)arg1 configuration:(id)arg2 wallpaperVideo:(id)arg3 variant:(long long)arg4;
 - (id)irisGestureRecognizer;
 - (void)playerViewIsInteractingDidChange:(id)arg1;
 - (void)playerViewPlaybackStateDidChange:(id)arg1;

@@ -8,7 +8,7 @@
 
 @protocol NRXPCPairingDelegate
 - (void)xpcAbortPairingReason:(NSString *)arg1 withBlock:(void (^)(void))arg2;
-- (void)xpcActiveDeviceAssertions:(void (^)(NSUUID *, NSArray *))arg1;
+- (void)xpcActiveDeviceAssertions:(void (^)(NSDictionary *))arg1;
 - (void)xpcBeginDiscoveryWithBlock:(void (^)(void))arg1;
 - (void)xpcBeginMigrationWithCompletion:(void (^)(NSError *))arg1;
 - (void)xpcBeginMigrationWithDeviceID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
@@ -20,6 +20,7 @@
 - (void)xpcEndDiscoveryWithBlock:(void (^)(void))arg1;
 - (void)xpcEnterCompatibilityState:(unsigned short)arg1 withDeviceID:(NSUUID *)arg2;
 - (void)xpcFakePairedSyncIsCompleteWithCompletion:(void (^)(NSError *))arg1;
+- (void)xpcGetInitialSyncCompletedForPairingID:(NSUUID *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)xpcGetLastMigrationRequestPhoneNameWithCompletion:(void (^)(NSString *))arg1;
 - (void)xpcGetLastSwitchIndex:(void (^)(unsigned long long, NSError *))arg1;
 - (void)xpcGetMigrationCountForPairingID:(NSUUID *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
@@ -27,6 +28,8 @@
 - (void)xpcGizmoOOBAdvertiseAndPairWithName:(NSString *)arg1 operationHasBegun:(void (^)(NSError *))arg2;
 - (void)xpcGizmoPasscodeAdvertiseAndPairWithName:(NSString *)arg1 operationHasBegun:(void (^)(NSError *))arg2;
 - (void)xpcInvalidateSwitchAssertionWithIdentifier:(NSString *)arg1 block:(void (^)(NSError *))arg2;
+- (void)xpcIsAssertionActive:(NSString *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)xpcIsPhoneReadyToMigrateDevice:(NSUUID *)arg1 withCompletion:(void (^)(unsigned long long, NSError *))arg2;
 - (void)xpcKeepPhoneUnlockedInternalTestSPI:(void (^)(void))arg1;
 - (void)xpcNotifyActivationCompleted:(NSUUID *)arg1 withSuccess:(BOOL)arg2;
 - (void)xpcNotifyPasscode:(NSNumber *)arg1 withDeviceID:(NSUUID *)arg2;

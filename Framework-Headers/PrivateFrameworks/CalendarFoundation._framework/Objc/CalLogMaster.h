@@ -13,7 +13,6 @@
 {
     NSArray *_topLevelNodes;
     CalLogNode *_oslogNode;
-    CalLogNode *_aslNode;
     CalLogNode *_rootConfigurationNode;
     CalLogNode *_standardOutNode;
     CalLogNode *_userNotificationNode;
@@ -24,7 +23,6 @@
     BOOL _autoFlush;
 }
 
-@property (strong, nonatomic) CalLogNode *aslNode; // @synthesize aslNode=_aslNode;
 @property (nonatomic) BOOL autoFlush; // @synthesize autoFlush=_autoFlush;
 @property (nonatomic) BOOL hasValidNotificationRegistrationToken; // @synthesize hasValidNotificationRegistrationToken=_hasValidNotificationRegistrationToken;
 @property (nonatomic) int notificationRegistrationToken; // @synthesize notificationRegistrationToken=_notificationRegistrationToken;
@@ -36,7 +34,6 @@
 
 + (id)sharedLogMaster;
 - (void).cxx_destruct;
-- (void)configureASLNode;
 - (void)configureOSLogNode;
 - (void)configureRootConfigurationNode;
 - (void)configureStandardOutNode;

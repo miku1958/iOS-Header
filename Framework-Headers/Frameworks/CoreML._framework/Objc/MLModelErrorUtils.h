@@ -18,6 +18,8 @@
 + (id)errorWithCode:(long long)arg1 underlyingError:(id)arg2 string:(id)arg3;
 + (id)featureTypeErrorWithString:(id)arg1;
 + (id)genericErrorWithString:(id)arg1;
++ (id)parameterErrorWithUnderlyingError:(id)arg1 string:(id)arg2;
++ (id)updateErrorWithString:(id)arg1;
 
 @end
 

@@ -10,27 +10,28 @@
 
 @interface GEOURLCenterSpan : PBCodable <NSCopying>
 {
-    double _latitude;
     double _latitudeDelta;
-    double _longitude;
+    double _latitude;
     double _longitudeDelta;
+    double _longitude;
     struct {
-        unsigned int latitude:1;
-        unsigned int latitudeDelta:1;
-        unsigned int longitude:1;
-        unsigned int longitudeDelta:1;
-    } _has;
+        unsigned int has_latitudeDelta:1;
+        unsigned int has_latitude:1;
+        unsigned int has_longitudeDelta:1;
+        unsigned int has_longitude:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasLatitude;
 @property (nonatomic) BOOL hasLatitudeDelta;
 @property (nonatomic) BOOL hasLongitude;
 @property (nonatomic) BOOL hasLongitudeDelta;
-@property (nonatomic) double latitude; // @synthesize latitude=_latitude;
-@property (nonatomic) double latitudeDelta; // @synthesize latitudeDelta=_latitudeDelta;
-@property (nonatomic) double longitude; // @synthesize longitude=_longitude;
-@property (nonatomic) double longitudeDelta; // @synthesize longitudeDelta=_longitudeDelta;
+@property (nonatomic) double latitude;
+@property (nonatomic) double latitudeDelta;
+@property (nonatomic) double longitude;
+@property (nonatomic) double longitudeDelta;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +39,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

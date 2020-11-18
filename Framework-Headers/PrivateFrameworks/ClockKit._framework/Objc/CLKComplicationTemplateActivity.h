@@ -10,15 +10,15 @@
 {
     long long _family;
     BOOL _hideDots;
-    double _energyPercentComplete;
-    double _briskMinutesPercentComplete;
-    double _standHoursPercentComplete;
+    double _movePercentComplete;
+    double _exercisePercentComplete;
+    double _standPercentComplete;
 }
 
-@property (nonatomic) double briskMinutesPercentComplete; // @synthesize briskMinutesPercentComplete=_briskMinutesPercentComplete;
-@property (nonatomic) double energyPercentComplete; // @synthesize energyPercentComplete=_energyPercentComplete;
+@property (nonatomic) double exercisePercentComplete; // @synthesize exercisePercentComplete=_exercisePercentComplete;
 @property (nonatomic, getter=dotsAreHidden) BOOL hideDots; // @synthesize hideDots=_hideDots;
-@property (nonatomic) double standHoursPercentComplete; // @synthesize standHoursPercentComplete=_standHoursPercentComplete;
+@property (nonatomic) double movePercentComplete; // @synthesize movePercentComplete=_movePercentComplete;
+@property (nonatomic) double standPercentComplete; // @synthesize standPercentComplete=_standPercentComplete;
 
 + (id)activityTemplateWithFamily:(long long)arg1;
 - (void)_enumerateBOOLKeysWithBlock:(CDUnknownBlockType)arg1;

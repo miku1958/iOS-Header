@@ -25,6 +25,7 @@
     NSString *_representingBundlePath;
     NSString *_bundleIconName;
     unsigned long long _displayStyle;
+    NSString *_categoryIdentifier;
     NSString *_extensionIdentifier;
     NSArray *_actions;
     NSDictionary *_userInfo;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) NSData *_userInfoData;
 @property (copy) NSArray *actions; // @synthesize actions=_actions;
 @property (copy, nonatomic) NSString *bundleIconName; // @synthesize bundleIconName=_bundleIconName;
+@property (copy) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (copy, nonatomic) NSString *delegateMachServiceName; // @synthesize delegateMachServiceName=_delegateMachServiceName;
 @property unsigned long long displayStyle; // @synthesize displayStyle=_displayStyle;

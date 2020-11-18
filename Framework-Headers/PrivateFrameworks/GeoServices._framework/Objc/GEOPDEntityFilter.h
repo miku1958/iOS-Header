@@ -17,18 +17,20 @@ __attribute__((visibility("hidden")))
     BOOL _includeName;
     BOOL _includeSpokenNames;
     struct {
-        unsigned int includeName:1;
-        unsigned int includeSpokenNames:1;
-    } _has;
+        unsigned int has_includeName:1;
+        unsigned int has_includeSpokenNames:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIncludeName;
 @property (nonatomic) BOOL hasIncludeSpokenNames;
-@property (nonatomic) BOOL includeName; // @synthesize includeName=_includeName;
-@property (nonatomic) BOOL includeSpokenNames; // @synthesize includeSpokenNames=_includeSpokenNames;
+@property (nonatomic) BOOL includeName;
+@property (nonatomic) BOOL includeSpokenNames;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

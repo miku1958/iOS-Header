@@ -23,9 +23,9 @@
 
 + (id)notificationWithFullReload;
 + (id)notificationWithInsertedEntries:(id)arg1 updatedEntries:(id)arg2 deletedEntries:(id)arg3;
+- (void).cxx_destruct;
 - (id)_initWithFullReload;
 - (id)_initWithInsertedEntries:(id)arg1 updatedEntries:(id)arg2 deletedEntries:(id)arg3;
-- (void)dealloc;
 - (id)name;
 - (id)object;
 - (id)userInfo;

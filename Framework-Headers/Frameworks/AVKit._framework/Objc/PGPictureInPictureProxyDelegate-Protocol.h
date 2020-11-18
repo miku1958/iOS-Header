@@ -6,7 +6,7 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class NSError, PGPictureInPictureProxy;
+@class NSError, PGPictureInPictureProxy, UIWindow;
 
 @protocol PGPictureInPictureProxyDelegate <NSObject>
 
@@ -20,6 +20,7 @@
 - (long long)pictureInPictureProxyInterfaceOrientationForTransitionAnimation:(PGPictureInPictureProxy *)arg1;
 - (void)pictureInPictureProxyPictureInPictureInterruptionBegan:(PGPictureInPictureProxy *)arg1;
 - (void)pictureInPictureProxyPictureInPictureInterruptionEnded:(PGPictureInPictureProxy *)arg1;
+- (UIWindow *)pictureInPictureProxyViewControllerWindowForTransitionAnimation:(PGPictureInPictureProxy *)arg1;
 - (struct CGRect)pictureInPictureProxyViewFrameForTransitionAnimation:(PGPictureInPictureProxy *)arg1;
 @end
 

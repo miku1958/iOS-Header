@@ -19,9 +19,9 @@
 + (void)_handleInteractionDisablingTimeoutForPhotoBrowserToPhotoEditorTransition;
 + (void)_handleInteractionDisablingTimeoutForPhotoBrowserZoomTransition;
 + (void)_handleInteractionDisablingTimeoutForPhotoEditorComputingAutoEnhance;
-+ (void)_handleInteractionDisablingTimeoutForPhotoEditorLoadingImage;
 + (void)_handleInteractionDisablingTimeoutForPhotoEditorRevertingChanges;
 + (void)_handleInteractionDisablingTimeoutForPhotoEditorSavingChanges;
++ (void)_handleInteractionDisablingTimeoutForPhotoEditorSwitchingSource;
 + (void)_handleInteractionDisablingTimeoutForPhotoEditorToPhotoBrowserTransition;
 + (void)_handleInteractionDisablingTimeoutForPhotoEditorWaitingToDismiss;
 + (void)_handleInteractionDisablingTimeoutForSearchSelectResult;

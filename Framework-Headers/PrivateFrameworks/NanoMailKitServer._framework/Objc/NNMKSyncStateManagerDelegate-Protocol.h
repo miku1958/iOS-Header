@@ -15,5 +15,6 @@
 - (void)syncStateManagerDidChangePairedDevice:(id<NNMKSyncStateManager>)arg1;
 - (void)syncStateManagerDidInvalidateSyncSession:(id<NNMKSyncStateManager>)arg1 syncSessionIdentifier:(NSString *)arg2;
 - (void)syncStateManagerDidUnpair:(id<NNMKSyncStateManager>)arg1;
+- (BOOL)syncStateManagerShouldAddFavoriteSubsectionForMailboxId:(NSString *)arg1;
 @end
 

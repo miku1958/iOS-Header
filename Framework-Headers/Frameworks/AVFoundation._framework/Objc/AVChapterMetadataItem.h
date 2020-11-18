@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (CDStruct_1b6d18a9)duration;
 - (id)extendedLanguageTag;
 - (id)extraAttributes;
-- (void)finalize;
 - (id)init;
 - (id)key;
 - (id)keySpace;

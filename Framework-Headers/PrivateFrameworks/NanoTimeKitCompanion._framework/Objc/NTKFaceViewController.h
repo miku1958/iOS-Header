@@ -12,14 +12,17 @@
 #import <NanoTimeKitCompanion/NTKFaceEditViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKFaceViewDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKSensitiveUIStateObserver-Protocol.h>
 
-@class NSCache, NSDate, NSMutableDictionary, NSObject, NSString, NTKComplicationController, NTKComplicationDisplayWrapperView, NTKDelayedBlock, NTKFace, NTKFaceEditView, NTKFaceView, UIImageView, UIView;
+@class NSCache, NSDate, NSMutableDictionary, NSObject, NSString, NTKComplicationController, NTKComplicationDisplayWrapperView, NTKDelayedBlock, NTKFace, NTKFaceEditView, NTKFaceView, UIView;
 @protocol NTKClockStatusBarViewController, NTKFaceViewControllerDelegate, OS_dispatch_source;
 
-@interface NTKFaceViewController : UIViewController <NTKFaceEditViewDelegate, NTKComplicationPickerViewDataSource, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
+@interface NTKFaceViewController : UIViewController <NTKFaceEditViewDelegate, NTKComplicationPickerViewDataSource, NTKSensitiveUIStateObserver, NTKClockIconZoomAnimator, NTKClockHardwareInput, NTKFaceViewDelegate, NTKFaceObserver>
 {
     NTKFaceView *_faceView;
+    struct os_unfair_lock_s _normalComplicationControllersLock;
     NSMutableDictionary *_normalComplicationControllers;
+    struct os_unfair_lock_s _detachedComplicationControllersLock;
     NSMutableDictionary *_detachedComplicationControllers;
     NTKFaceEditView *_editView;
     BOOL _editingComplications;
@@ -28,12 +31,12 @@
     BOOL _frozen;
     BOOL _becomeLiveOnUnfreeze;
     NTKDelayedBlock *_delayedFreezeBlock;
-    UIImageView *_snapshotView;
     BOOL _readyToApplyConfiguration;
     BOOL _animatingVariant;
     BOOL _newValueWhileAnimating;
     unsigned long long _delayedAnimationValue;
     BOOL _deviceLocked;
+    BOOL _sensitiveUIHidden;
     UIView *_zoomingIconCircleView;
     UIView *_zoomingIconTimeView;
     UIView *_zoomingContainerView;
@@ -51,6 +54,7 @@
     BOOL _supressesNonSnapshotUI;
     BOOL _showsCanonicalContent;
     BOOL _showContentForUnadornedSnapshot;
+    BOOL _ignoreSnapshotImages;
     BOOL _showsLockedUI;
     id<NTKFaceViewControllerDelegate> _delegate;
     long long _dataMode;
@@ -66,6 +70,7 @@
 @property (readonly, nonatomic) NTKFace *face; // @synthesize face=_face;
 @property (readonly, nonatomic) NTKFaceView *faceView; // @synthesize faceView=_faceView;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreSnapshotImages; // @synthesize ignoreSnapshotImages=_ignoreSnapshotImages;
 @property (strong, nonatomic) NSDate *pauseDate; // @synthesize pauseDate=_pauseDate;
 @property (nonatomic) BOOL shouldShowSnapshot; // @synthesize shouldShowSnapshot=_shouldShowSnapshot;
 @property (nonatomic) BOOL showContentForUnadornedSnapshot; // @synthesize showContentForUnadornedSnapshot=_showContentForUnadornedSnapshot;
@@ -76,6 +81,7 @@
 @property (nonatomic) BOOL supressesNonSnapshotUI; // @synthesize supressesNonSnapshotUI=_supressesNonSnapshotUI;
 
 + (double)_complicationPickerAlphaForTransitionFraction:(double)arg1;
++ (id)_createNormalDisplayForComplicationController:(id)arg1 slot:(id)arg2 face:(id)arg3 faceView:(id)arg4;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)PPTCleanupLastComplication;
@@ -113,7 +119,6 @@
 - (id)_keylineLabelTextForOption:(id)arg1 customEditMode:(long long)arg2;
 - (void)_loadInitialComplicationVisibilityFromFace;
 - (id)_newNormalDisplayForComplicationController:(id)arg1 slot:(id)arg2;
-- (void)_populateFaceViewEditOptionsFromFace;
 - (void)_removeComplicationForSlot:(id)arg1;
 - (void)_removeDetachedComplicationForSlot:(id)arg1 andDisconnectDisplay:(BOOL)arg2;
 - (void)_removeNormalComplicationForSlot:(id)arg1 andDisconnectDisplay:(BOOL)arg2;
@@ -124,11 +129,11 @@
 - (void)_setupEditViewForCustomEditMode:(long long)arg1;
 - (void)_setupEditViewForHiddenComplications;
 - (void)_setupEditing;
-- (BOOL)_shouldHideUI;
+- (BOOL)_shouldHideFaceUI;
 - (BOOL)_shouldShowComplicationPickerForSlot:(id)arg1;
 - (void)_showStatusBarAfterWake;
 - (void)_tearDownEditing;
-- (void)_transitionFraction:(double)arg1 fromValue:(long long)arg2 toValue:(long long)arg3 forEditMode:(long long)arg4;
+- (void)_transitionFraction:(double)arg1 fromValue:(long long)arg2 toValue:(long long)arg3 forEditMode:(long long)arg4 slot:(id)arg5;
 - (id)_unadornedSnapshot;
 - (void)_updateComplicationLisaGesture;
 - (void)_updateFaceAndViewWithOption:(id)arg1 forMode:(long long)arg2 resourcePath:(id)arg3 slot:(id)arg4;
@@ -154,6 +159,7 @@
 - (void)editView:(id)arg1 didTapKeylineForKey:(id)arg2 editMode:(long long)arg3;
 - (void)editView:(id)arg1 keylineDidBreathe:(double)arg2 forKey:(id)arg3 editMode:(long long)arg4;
 - (void)editView:(id)arg1 keylineDidRubberBand:(double)arg2 forKey:(id)arg3 editMode:(long long)arg4;
+- (BOOL)editViewShouldShowPageDotsOnBottom:(id)arg1;
 - (void)editViewWillBeginScrolling:(id)arg1;
 - (void)enableSlowMode;
 - (void)enumerateComplicationControllersAndDisplaysWithBlock:(CDUnknownBlockType)arg1;
@@ -161,17 +167,20 @@
 - (void)faceConfigurationDidChange:(id)arg1;
 - (void)faceResourceDirectoryDidChange:(id)arg1;
 - (BOOL)faceView:(id)arg1 wantsToDismissPresentedViewControllerAnimated:(BOOL)arg2;
+- (id)faceViewAllVisibleComplicationsForCurrentConfiguration;
 - (id)faceViewComplicationAppIdentifierForSlot:(id)arg1;
 - (id)faceViewComplicationForSlot:(id)arg1;
 - (BOOL)faceViewComplicationIsEmptyForSlot:(id)arg1;
 - (id)faceViewComplicationSlots;
-- (void)faceViewDidChangeVerticalPaddingForStatusBar;
+- (id)faceViewComplicationSlotsHiddenByEditOption:(id)arg1;
+- (void)faceViewDidChangePaddingForStatusBar;
 - (void)faceViewDidChangeWantsStatusBarIconShadow;
 - (void)faceViewDidHideOrShowComplicationSlot;
-- (void)faceViewDidLayoutSubviews;
 - (void)faceViewDidReloadSnapshotContentViews;
 - (void)faceViewDidScrubToDate:(id)arg1 forced:(BOOL)arg2;
+- (id)faceViewEditOptionThatHidesAllComplications;
 - (void)faceViewRequestedLaunchFromRect:(struct CGRect)arg1;
+- (BOOL)faceViewShouldIgnoreSnapshotImages;
 - (void)faceViewUpdatedResourceDirectory:(id)arg1 wantsToTransferOwnership:(BOOL)arg2;
 - (void)faceViewWantsComplicationKeylineFramesReloaded;
 - (void)faceViewWantsCustomKeylineFramesReloadedForEditMode:(long long)arg1;
@@ -186,6 +195,7 @@
 - (void)freezeAfterDelay:(double)arg1;
 - (void)getComplicationController:(id *)arg1 andDisplay:(id *)arg2 forSlot:(id)arg3;
 - (void)handleOrdinaryScreenWake;
+- (void)handleScreenBlanked;
 - (void)handleWristRaiseScreenWake;
 - (void)hideFaceEditingUIAnimated:(BOOL)arg1;
 - (void)hideFaceEditingUIAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -198,7 +208,7 @@
 - (void)prepareForSnapshotting;
 - (void)prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)prepareWristRaiseAnimation;
-- (void)setNextRenderIsFirstAfterWake;
+- (void)sensitiveUIStateChanged;
 - (void)setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (BOOL)shouldLoadLiveFaceAtNextScreenOff;
 - (void)showEditingUIAnimated:(BOOL)arg1;

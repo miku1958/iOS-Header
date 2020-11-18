@@ -9,7 +9,7 @@
 #import <CameraUI/CAMNebulaDaemonTimelapseClientProtocol-Protocol.h>
 #import <CameraUI/CAMStillImageCaptureRequestDelegate-Protocol.h>
 
-@class CAMFocusResult, CAMLocationController, CAMMotionController, CAMNebulaDaemonProxyManager, CAMPersistenceController, CAMTimelapseState, CUCaptureController, NSCountedSet, NSDate, NSMutableSet, NSString;
+@class CAMCaptureGraphConfiguration, CAMFocusResult, CAMLocationController, CAMMotionController, CAMNebulaDaemonProxyManager, CAMPersistenceController, CAMStorageController, CAMTimelapseState, CUCaptureController, NSCountedSet, NSDate, NSMutableSet, NSString;
 @protocol CAMTimelapseControllerDelegate, OS_dispatch_source;
 
 @interface CAMTimelapseController : NSObject <CAMStillImageCaptureRequestDelegate, CAMNebulaDaemonTimelapseClientProtocol>
@@ -20,6 +20,7 @@
     BOOL __backendRecoveryNeeded;
     BOOL __previewStarted;
     BOOL __focusAndExposureAdjusted;
+    CAMCaptureGraphConfiguration *__graphConfigurationForCurrentState;
     id<CAMTimelapseControllerDelegate> _delegate;
     CAMFocusResult *_lastFocusResult;
     CAMTimelapseState *__state;
@@ -30,6 +31,7 @@
     CAMLocationController *__locationController;
     CAMMotionController *__motionController;
     CAMPersistenceController *__persistenceController;
+    CAMStorageController *__storageController;
     CAMNebulaDaemonProxyManager *__nebulaDaemonProxyManager;
 }
 
@@ -37,6 +39,7 @@
 @property (readonly, nonatomic) CUCaptureController *_captureController; // @synthesize _captureController=__captureController;
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *_captureTimer; // @synthesize _captureTimer=__captureTimer;
 @property (nonatomic, getter=_isFocusAndExposureAdjusted, setter=_setFocusAndExposureAdjusted:) BOOL _focusAndExposureAdjusted; // @synthesize _focusAndExposureAdjusted=__focusAndExposureAdjusted;
+@property (readonly, nonatomic, getter=_graphConfigurationForCurrentState) CAMCaptureGraphConfiguration *_graphConfigurationForCurrentState; // @synthesize _graphConfigurationForCurrentState=__graphConfigurationForCurrentState;
 @property (readonly, nonatomic) BOOL _ignoringTimerCallbacksForTearDown; // @synthesize _ignoringTimerCallbacksForTearDown=__ignoringTimerCallbacksForTearDown;
 @property (readonly, nonatomic) BOOL _ignoringTimerCallbacksWaitingForCaptureResponse; // @synthesize _ignoringTimerCallbacksWaitingForCaptureResponse=__ignoringTimerCallbacksWaitingForCaptureResponse;
 @property (readonly, nonatomic) NSCountedSet *_inFlightTimelapseUUIDs; // @synthesize _inFlightTimelapseUUIDs=__inFlightTimelapseUUIDs;
@@ -48,6 +51,7 @@
 @property (nonatomic, setter=_setPreviewStarted:) BOOL _previewStarted; // @synthesize _previewStarted=__previewStarted;
 @property (nonatomic, setter=_setShouldUpdateFocusAndExposureWhenContrastDetectionCompletes:) BOOL _shouldUpdateFocusAndExposureWhenContrastDetectionCompletes; // @synthesize _shouldUpdateFocusAndExposureWhenContrastDetectionCompletes=__shouldUpdateFocusAndExposureWhenContrastDetectionCompletes;
 @property (readonly, nonatomic) CAMTimelapseState *_state; // @synthesize _state=__state;
+@property (readonly, nonatomic) CAMStorageController *_storageController; // @synthesize _storageController=__storageController;
 @property (readonly, nonatomic) NSDate *captureStartTime;
 @property (readonly, nonatomic, getter=isCapturing) BOOL capturing;
 @property (readonly, copy) NSString *debugDescription;
@@ -66,6 +70,7 @@
 - (id)_createThumbnailImageFromPlaceholderResult:(id)arg1;
 - (void)_deviceStarted:(id)arg1;
 - (BOOL)_enqueueCaptureRequest;
+- (void)_invalidateCachedGraphConfiguration;
 - (void)_notifyAGGDForDidStopCapturingWithState:(id)arg1;
 - (void)_notifyInsufficientDiskSpaceForContinuingCapture;
 - (void)_notifyInsufficientDiskSpaceForStartingCaptureWithNeededBytes:(long long)arg1 availableBytes:(long long)arg2;
@@ -90,7 +95,7 @@
 - (void)dealloc;
 - (void)forceStopTimelapseCaptureWithReasons:(long long)arg1;
 - (id)init;
-- (id)initWithCaptureController:(id)arg1 locationController:(id)arg2 motionController:(id)arg3 persistenceController:(id)arg4 nebulaDaemonProxyManager:(id)arg5;
+- (id)initWithCaptureController:(id)arg1 locationController:(id)arg2 motionController:(id)arg3 persistenceController:(id)arg4 storageController:(id)arg5 nebulaDaemonProxyManager:(id)arg6;
 - (void)restoreConfiguration;
 - (BOOL)startCapturingWithCaptureDevice:(long long)arg1 captureSession:(unsigned short)arg2;
 - (void)stillImageRequestDidCompleteStillImageCapture:(id)arg1 withResponse:(id)arg2 error:(id)arg3;

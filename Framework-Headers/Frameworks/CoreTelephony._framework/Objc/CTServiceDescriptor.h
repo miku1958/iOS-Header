@@ -24,6 +24,7 @@
 
 + (id)descriptorWithSubscriptionContext:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)telephonyDescriptorWithInstance:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

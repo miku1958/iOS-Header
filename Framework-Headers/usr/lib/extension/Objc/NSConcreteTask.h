@@ -12,19 +12,16 @@
 __attribute__((visibility("hidden")))
 @interface NSConcreteTask : NSTask
 {
-    struct _opaque_pthread_mutex_t _lock;
+    struct os_unfair_lock_s _lock;
     NSMutableDictionary *_dictionary;
     CDUnknownBlockType _terminationHandler;
     NSObject<OS_dispatch_source> *_dsrc;
     NSPort *_tmpPort;
     long long _suspendCount;
     int _pid;
-    int _platformExitInfo;
-    BOOL _hasExeced;
-    BOOL _isRunning;
-    BOOL _hasPostedDeathNotification;
-    BOOL _terminationRun;
+    _Atomic unsigned long long __exitRunningInfo;
     BOOL _qos;
+    _Atomic BOOL _isSpawnedProcessDisclaimed;
 }
 
 - (long long)_platformExitInformation;
@@ -38,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)interrupt;
 - (BOOL)isRunning;
+- (BOOL)isSpawnedProcessDisclaimed;
 - (void)launch;
 - (BOOL)launchAndReturnError:(id *)arg1;
 - (id)launchPath;
@@ -52,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)setLaunchPath:(id)arg1;
 - (void)setPreferredArchitectures:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
+- (void)setSpawnedProcessDisclaimed:(BOOL)arg1;
 - (void)setStandardError:(id)arg1;
 - (void)setStandardInput:(id)arg1;
 - (void)setStandardOutput:(id)arg1;

@@ -38,6 +38,7 @@
 
 @property (readonly, nonatomic) unsigned int assertionIdentifier; // @synthesize assertionIdentifier=_assertionIdentifier;
 @property (readonly, nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
+@property (readonly, nonatomic) long long captureDevicePosition;
 @property (readonly, nonatomic) long long captureMode; // @synthesize captureMode=_captureMode;
 @property (readonly, nonatomic) long long captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property (readonly, nonatomic) BOOL capturedFromPhotoBooth; // @synthesize capturedFromPhotoBooth=_capturedFromPhotoBooth;
@@ -57,6 +58,9 @@
 @property (readonly, nonatomic) BOOL shouldDelayRemotePersistence; // @synthesize shouldDelayRemotePersistence=_shouldDelayRemotePersistence;
 @property (readonly, nonatomic) BOOL shouldExtractDiagnosticsFromMetadata; // @synthesize shouldExtractDiagnosticsFromMetadata=_shouldExtractDiagnosticsFromMetadata;
 @property (readonly, nonatomic) BOOL shouldPersistDiagnosticsToSidecar; // @synthesize shouldPersistDiagnosticsToSidecar=_shouldPersistDiagnosticsToSidecar;
+@property (readonly, nonatomic) BOOL shouldPersistToIncomingDirectory;
+@property (readonly, nonatomic) BOOL shouldProtectPersistence;
+@property (readonly, nonatomic) BOOL shouldProtectPersistenceForVideo;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long temporaryPersistenceOptions; // @synthesize temporaryPersistenceOptions=_temporaryPersistenceOptions;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
@@ -69,8 +73,6 @@
 - (id)init;
 - (id)initWithRequest:(id)arg1 distinctPersistence:(BOOL)arg2;
 - (id)initWithType:(long long)arg1;
-- (BOOL)shouldPersistToIncomingDirectory;
-- (BOOL)shouldProtectPersistence;
 
 @end
 

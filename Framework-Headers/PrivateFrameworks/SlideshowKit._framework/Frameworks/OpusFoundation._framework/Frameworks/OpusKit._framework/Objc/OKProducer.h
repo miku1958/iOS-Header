@@ -23,7 +23,6 @@
 @property (strong, nonatomic) OKProducerPlugin *plugin; // @synthesize plugin=_plugin;
 @property (strong, nonatomic) OKPresentation *presentation; // @synthesize presentation=_presentation;
 
-+ (id)guidelinesFromLegacyData:(id)arg1 withMediaURLs:(id)arg2 andMediaLookupDelegate:(id)arg3;
 + (void)setupJavascriptContext:(id)arg1;
 - (void)_continueLiveAuthoring;
 - (double)_continueLiveAuthoringDelay;

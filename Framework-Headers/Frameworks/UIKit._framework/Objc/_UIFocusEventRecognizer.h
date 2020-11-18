@@ -107,6 +107,8 @@ __attribute__((visibility("hidden")))
 - (struct CGVector)_joystickVelocityForHeading:(unsigned long long)arg1;
 - (void)_momentumHeartbeat:(id)arg1;
 - (BOOL)_moveInDirection:(unsigned long long)arg1;
+- (BOOL)_moveInDirection:(unsigned long long)arg1 withEvaluator:(CDUnknownBlockType)arg2;
+- (BOOL)_moveInDirection:(unsigned long long)arg1 withSearchInfo:(id)arg2;
 - (BOOL)_moveWithEvent:(id)arg1;
 - (void)_panGestureEnd:(id)arg1;
 - (void)_panGestureStart:(id)arg1;

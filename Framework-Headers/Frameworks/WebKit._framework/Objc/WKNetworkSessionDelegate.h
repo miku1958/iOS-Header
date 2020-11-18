@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <WebKit/NSURLSessionDataDelegate-Protocol.h>
+#import <WebKit/NSURLSessionWebSocketDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface WKNetworkSessionDelegate : NSObject <NSURLSessionDataDelegate>
+@interface WKNetworkSessionDelegate : NSObject <NSURLSessionDataDelegate, NSURLSessionWebSocketDelegate>
 {
     struct RefPtr<WebKit::NetworkSessionCocoa, WTF::DumbPtrTraits<WebKit::NetworkSessionCocoa>> _session;
     BOOL _withCredentials;
@@ -39,7 +40,10 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 needNewBodyStream:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)URLSession:(id)arg1 webSocketTask:(id)arg2 didCloseWithCode:(long long)arg3 reason:(id)arg4;
+- (void)URLSession:(id)arg1 webSocketTask:(id)arg2 didOpenWithProtocol:(id)arg3;
 - (struct NetworkDataTaskCocoa *)existingTask:(id)arg1;
+- (struct WebSocketTask *)existingWebSocketTask:(id)arg1;
 - (id)initWithNetworkSession:(struct NetworkSessionCocoa *)arg1 withCredentials:(BOOL)arg2;
 - (void)sessionInvalidated;
 

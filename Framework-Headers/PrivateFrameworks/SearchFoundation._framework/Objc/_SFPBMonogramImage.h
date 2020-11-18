@@ -13,6 +13,7 @@
 
 @interface _SFPBMonogramImage : PBCodable <_SFPBMonogramImage, NSSecureCoding>
 {
+    int _monogramStyle;
     NSString *_monogramLetters;
 }
 
@@ -21,6 +22,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *monogramLetters; // @synthesize monogramLetters=_monogramLetters;
+@property (nonatomic) int monogramStyle; // @synthesize monogramStyle=_monogramStyle;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

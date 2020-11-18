@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)layoutSubviewsOfHUD:(id)arg1;
+- (struct CGSize)minimumUnscaledSizeForHUD:(id)arg1 preferredLabelSize:(struct CGSize)arg2;
+- (struct CGSize)preferredSizeForLabelInHUD:(id)arg1 maximumWidth:(double)arg2;
 
 @end
 

@@ -19,6 +19,7 @@
 - (void)closeLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(CPLScopedIdentifier *)arg1 related:(BOOL)arg2 completionHandler:(void (^)(id, id, NSError *))arg3;
 - (void)compactFileCacheWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)connectWithCompletionHandler:(void (^)(void))arg1;
 - (void)deactivateLibraryWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)disableMingling;
 - (void)disableSynchronizationWithReason:(NSString *)arg1;
@@ -35,14 +36,17 @@
 - (void)getStatusForComponents:(NSArray *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)getStatusForRecordsWithScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)getStatusesForScopesWithIdentifiers:(NSArray *)arg1 includeStorages:(BOOL)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg4;
 - (void)getSystemBudgetsWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)noteClientIsBeginningSignificantWork;
 - (void)noteClientIsEndingSignificantWork;
 - (void)noteClientIsInBackground;
 - (void)noteClientIsInForeground;
 - (void)openLibraryWithClientLibraryBaseURL:(NSURL *)arg1 cloudLibraryStateStorageURL:(NSURL *)arg2 cloudLibraryResourceStorageURL:(NSURL *)arg3 libraryIdentifier:(NSString *)arg4 options:(unsigned long long)arg5 completionHandler:(void (^)(NSError *, NSDictionary *, unsigned long long, unsigned long long, unsigned long long, unsigned long long, unsigned long long, NSString *, NSString *, NSURL *))arg6;
+- (void)provideCloudResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResource *, unsigned long long))arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLLibraryInfo *, unsigned long long))arg2;
+- (void)provideRecordWithCloudScopeIdentifier:(CPLScopedIdentifier *)arg1 completionHandler:(void (^)(CPLRecordChange *, unsigned long long))arg2;
 - (void)publishMomentShare:(CPLMomentShare *)arg1 completionHandler:(void (^)(CPLMomentShare *, NSError *))arg2;
-- (void)publishResource:(CPLResource *)arg1 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg2;
 - (void)queryUserIdentitiesWithParticipants:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(BOOL, unsigned long long, NSError *))arg3;
 - (void)reportMiscInformation:(NSDictionary *)arg1;

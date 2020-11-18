@@ -12,7 +12,7 @@
 #import <CardKit/SFFeedbackListener-Protocol.h>
 
 @class CRKCardSectionViewConfiguration, CRKOverlayButton, INUIRemoteViewController, NSArray, NSString, UIView;
-@protocol CRCardSection, CRKCardSectionView, CRKCardSectionViewControllerDataSource, CRKCardSectionViewControllerDelegate;
+@protocol CRCardSection, CRKCardSectionView, CRKCardSectionViewControllerDelegate;
 
 @interface CRKCardSectionViewController : UIViewController <CRKCardSectionViewControllingDelegate, SFFeedbackListener, CRKFeedbackDelegate, CRKEventResponding>
 {
@@ -23,12 +23,10 @@
     NSArray *_extraCommands;
     INUIRemoteViewController *__remoteViewController;
     CRKCardSectionViewConfiguration *_viewConfiguration;
-    id<CRKCardSectionViewControllerDataSource> _dataSource;
 }
 
 @property (readonly, nonatomic) INUIRemoteViewController *_remoteViewController; // @synthesize _remoteViewController=__remoteViewController;
 @property (strong, nonatomic) id<CRCardSection> cardSection; // @synthesize cardSection=_cardSection;
-@property (weak, nonatomic) id<CRKCardSectionViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CRKCardSectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -42,7 +40,6 @@
 + (void)_registerWithCardKit;
 + (id)cardSectionClasses;
 + (id)cardSectionViewControllerForCardSection:(id)arg1;
-+ (id)cardSectionViewControllerForCardSection:(id)arg1 dataSource:(id)arg2;
 + (id)cardSectionViewControllerForViewConfiguration:(id)arg1;
 + (void)registerCardSectionViewController;
 - (void).cxx_destruct;
@@ -61,7 +58,6 @@
 - (id)_generateCardSectionViewAppearanceFeedback;
 - (BOOL)_hasCorrespondingSearchUIView;
 - (id)_initWithCardSection:(id)arg1;
-- (id)_initWithCardSection:(id)arg1 dataSource:(id)arg2;
 - (BOOL)_isIndicatingActivity;
 - (BOOL)_isLoadedWithIntentsUIView;
 - (void)_loadCardSectionView;

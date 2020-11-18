@@ -12,37 +12,38 @@
 
 @interface GEOLogMsgEventCommuteWindow : PBCodable <NSCopying>
 {
+    NSMutableArray *_predictedDestinations;
     double _startTime;
     unsigned int _duration;
     int _endReason;
     unsigned int _numberOfAlertingResponses;
     unsigned int _numberOfDoomRoutingRequests;
-    NSMutableArray *_predictedDestinations;
     unsigned int _predictedExitTime;
     struct {
-        unsigned int startTime:1;
-        unsigned int duration:1;
-        unsigned int endReason:1;
-        unsigned int numberOfAlertingResponses:1;
-        unsigned int numberOfDoomRoutingRequests:1;
-        unsigned int predictedExitTime:1;
-    } _has;
+        unsigned int has_startTime:1;
+        unsigned int has_duration:1;
+        unsigned int has_endReason:1;
+        unsigned int has_numberOfAlertingResponses:1;
+        unsigned int has_numberOfDoomRoutingRequests:1;
+        unsigned int has_predictedExitTime:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int duration; // @synthesize duration=_duration;
-@property (nonatomic) int endReason; // @synthesize endReason=_endReason;
+@property (nonatomic) unsigned int duration;
+@property (nonatomic) int endReason;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasEndReason;
 @property (nonatomic) BOOL hasNumberOfAlertingResponses;
 @property (nonatomic) BOOL hasNumberOfDoomRoutingRequests;
 @property (nonatomic) BOOL hasPredictedExitTime;
 @property (nonatomic) BOOL hasStartTime;
-@property (nonatomic) unsigned int numberOfAlertingResponses; // @synthesize numberOfAlertingResponses=_numberOfAlertingResponses;
-@property (nonatomic) unsigned int numberOfDoomRoutingRequests; // @synthesize numberOfDoomRoutingRequests=_numberOfDoomRoutingRequests;
-@property (strong, nonatomic) NSMutableArray *predictedDestinations; // @synthesize predictedDestinations=_predictedDestinations;
-@property (nonatomic) unsigned int predictedExitTime; // @synthesize predictedExitTime=_predictedExitTime;
-@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
+@property (nonatomic) unsigned int numberOfAlertingResponses;
+@property (nonatomic) unsigned int numberOfDoomRoutingRequests;
+@property (strong, nonatomic) NSMutableArray *predictedDestinations;
+@property (nonatomic) unsigned int predictedExitTime;
+@property (nonatomic) double startTime;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)predictedDestinationType;
 - (void).cxx_destruct;
 - (int)StringAsEndReason:(id)arg1;
@@ -58,6 +59,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)predictedDestinationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)predictedDestinationsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -6,42 +6,52 @@
 
 #import <objc/NSObject.h>
 
-@class BSSignal, NSString;
-@protocol BKSAssertionClientProtocol, OS_dispatch_queue;
+#import <AssertionServices/RBSAssertionObserving-Protocol.h>
 
-@interface BKSAssertion : NSObject
+@class NSMutableArray, NSString, RBSAssertion, RBSTarget;
+
+@interface BKSAssertion : NSObject <RBSAssertionObserving>
 {
-    BSSignal *_invalidationSignal;
-    BOOL _acquired;
-    NSString *_identifier;
-    NSString *_name;
-    CDUnknownBlockType _invalidationHandler;
+    RBSAssertion *_internalAssertion;
     CDUnknownBlockType _acquisitionHandler;
-    id<BKSAssertionClientProtocol> _client;
-    NSObject<OS_dispatch_queue> *_clientQueue;
+    CDUnknownBlockType _invalidationHandler;
+    RBSTarget *_target;
+    NSMutableArray *_attributes;
+    NSString *_name;
+    struct os_unfair_lock_s _lock;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler;
 @property (copy, nonatomic) NSString *name;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL valid;
 
-- (id)_clientQueue;
-- (BOOL)_clientQueue_acquireAssertion;
-- (BOOL)_clientQueue_acquired;
-- (id)_clientQueue_client;
-- (id)_clientQueue_createEvent;
-- (id)_clientQueue_destroyEvent;
-- (id)_clientQueue_identifier;
-- (void)_clientQueue_invalidate:(BOOL)arg1;
-- (id)_clientQueue_name;
-- (void)_clientQueue_updateAssertion;
-- (id)_clientQueue_updateEvent;
-- (id)_initWithClient:(id)arg1;
-- (id)_initWithClient:(id)arg1 name:(id)arg2;
-- (id)_initWithClient:(id)arg1 name:(id)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)_registerAssertionAndAcquire:(BOOL)arg1;
+- (void).cxx_destruct;
+- (void)_acquireAsynchronously;
+- (CDUnknownBlockType)_acquisitionHandler;
+- (id)_attributes;
+- (unsigned long long)_bksErrorForRBSAssertionError:(unsigned long long)arg1;
+- (id)_initWithName:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)_internalAssertion;
+- (void)_invalidateSynchronously:(BOOL)arg1;
+- (void)_lock:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)_lock_acquisitionHandler;
+- (id)_lock_attributes;
+- (id)_lock_internalAssertion;
+- (id)_lock_name;
+- (void)_lock_reaquireAssertion;
+- (void)_lock_setAttributes:(id)arg1;
+- (void)_lock_setInternalAssertion:(id)arg1;
+- (void)_lock_setName:(id)arg1;
+- (void)_setAttributes:(id)arg1;
+- (void)_setTarget:(id)arg1;
+- (id)_target;
 - (BOOL)acquire;
-- (void)assertionDidInvalidate;
+- (void)assertion:(id)arg1 didInvalidateWithError:(id)arg2;
+- (void)assertionWillInvalidate:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;

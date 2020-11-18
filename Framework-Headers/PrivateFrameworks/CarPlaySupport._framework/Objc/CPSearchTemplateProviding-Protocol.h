@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlaySupport/NSObject-Protocol.h>
+#import <CarPlaySupport/CPBaseTemplateProviding-Protocol.h>
 
-@protocol CPSearchTemplateProviding <NSObject>
+@protocol CPSearchTemplateProviding <CPBaseTemplateProviding>
 @end
 

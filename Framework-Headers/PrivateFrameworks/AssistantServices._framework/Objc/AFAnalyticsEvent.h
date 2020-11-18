@@ -26,11 +26,13 @@
 @property (readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (id)eventsReferenceTime;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)contextDataAsDictionary;
 - (id)contextDataAsProtobuf;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dateStamp;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

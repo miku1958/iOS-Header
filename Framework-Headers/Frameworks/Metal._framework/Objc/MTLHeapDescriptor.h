@@ -13,8 +13,11 @@
 }
 
 @property (nonatomic) unsigned long long cpuCacheMode; // @dynamic cpuCacheMode;
+@property (nonatomic) unsigned long long hazardTrackingMode; // @dynamic hazardTrackingMode;
+@property (nonatomic) unsigned long long resourceOptions; // @dynamic resourceOptions;
 @property (nonatomic) unsigned long long size; // @dynamic size;
 @property (nonatomic) unsigned long long storageMode; // @dynamic storageMode;
+@property (nonatomic) long long type; // @dynamic type;
 
 + (id)alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;

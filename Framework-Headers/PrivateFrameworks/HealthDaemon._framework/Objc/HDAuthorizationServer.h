@@ -6,25 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class HDClientAuthorizationOracle, HDProfile, HDXPCClient, NSMutableArray, NSUUID;
+@class HDHealthStoreClient, HDProfile, NSMutableArray, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HDAuthorizationServer : NSObject
 {
-    HDClientAuthorizationOracle *_authorizationOracle;
-    int _invalidated;
-    HDXPCClient *_client;
+    _Atomic BOOL _invalidated;
+    NSString *_sourceBundleIdentifier;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    HDHealthStoreClient *_client;
     NSMutableArray *_authorizationRequestIdentifiers;
     NSUUID *_transactionSessionIdentifier;
 }
 
 @property (strong, nonatomic) NSMutableArray *authorizationRequestIdentifiers; // @synthesize authorizationRequestIdentifiers=_authorizationRequestIdentifiers;
-@property (readonly) HDXPCClient *client; // @synthesize client=_client;
-@property (nonatomic) int invalidated; // @synthesize invalidated=_invalidated;
+@property (readonly, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, copy) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
 @property (strong, nonatomic) NSUUID *transactionSessionIdentifier; // @synthesize transactionSessionIdentifier=_transactionSessionIdentifier;
 
 - (void).cxx_destruct;
@@ -48,7 +48,7 @@
 - (void)handleAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 requestCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)handleAuthorizationRequestsWithPromptHandler:(CDUnknownBlockType)arg1 requestCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)handleObjectAuthorizationRequestsWithPromptHandler:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithClient:(id)arg1 profile:(id)arg2 queue:(id)arg3;
+- (id)initWithClient:(id)arg1 queue:(id)arg2;
 - (void)invalidate;
 - (BOOL)isAuthorizationStatusDeterminedForTypes:(id)arg1 error:(id *)arg2;
 - (void)performIfAuthorizedToDeleteObjectsWithTypes:(id)arg1 onQueue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 errorHandler:(CDUnknownBlockType)arg4;

@@ -23,10 +23,12 @@
 
 - (void).cxx_destruct;
 - (void)_clearState;
+- (BOOL)_enumerateLinesInCurrentEntryWithBlock:(CDUnknownBlockType)arg1;
 - (id)_getDataForCurrentEntryWithBufferingWithMaxSizeBytes:(unsigned long long)arg1;
 - (id)_getDataForCurrentEntryWithSize:(unsigned long long)arg1;
 - (void)_logError:(id)arg1;
 - (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
+- (BOOL)enumerateLinesInCurrentEntryWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (id)getDataForCurrentEntry;
 - (id)getDataForCurrentEntryWithMaxSizeBytes:(unsigned long long)arg1;
 - (id)initWithData:(id)arg1;

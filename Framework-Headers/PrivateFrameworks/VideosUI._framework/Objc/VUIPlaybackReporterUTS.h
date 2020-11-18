@@ -19,11 +19,12 @@
 - (void).cxx_destruct;
 - (double)_completionFudgeFactor;
 - (id)_createSessionForPlayer:(id)arg1;
+- (void)_endSession:(id)arg1;
 - (BOOL)_isTransitionValidForPlayer:(id)arg1 fromState:(id)arg2 toState:(id)arg3;
 - (void)_reportForPlayer:(id)arg1 playerState:(id)arg2 completionState:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_reportForSession:(id)arg1 state:(id)arg2 reason:(id)arg3;
 - (void)_reportLinearForPlayer:(id)arg1 playerState:(id)arg2 completionState:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (void)_reportSummary:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_reportSummary:(id)arg1 sessionID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_reportVODForPlayer:(id)arg1 playerState:(id)arg2 completionState:(unsigned long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)_wlkPlaybackRateForState:(id)arg1 player:(id)arg2;
 - (long long)_wlkPlaybackStateForState:(id)arg1;

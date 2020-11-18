@@ -13,6 +13,7 @@
 
 @property (nonatomic) double duration;
 @property (copy, nonatomic) INSpeakableString *label;
+@property (nonatomic) long long type;
 
 - (id)init;
 @end

@@ -14,10 +14,13 @@
     Class _agentClass;
     NSDictionary *_types;
     NSDictionary *_commands;
+    NSDictionary *_events;
 }
 
 @property (strong, nonatomic) Class agentClass; // @synthesize agentClass=_agentClass;
 @property (readonly, nonatomic) NSDictionary *commands; // @synthesize commands=_commands;
+@property (readonly, nonatomic) NSString *dispatcherClassString;
+@property (readonly, nonatomic) NSDictionary *events; // @synthesize events=_events;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSDictionary *types; // @synthesize types=_types;
 
@@ -28,6 +31,7 @@
 - (void).cxx_destruct;
 - (id)initWithDomainDictionary:(id)arg1 agentClass:(Class)arg2;
 - (BOOL)isValidForAgentWithError:(id *)arg1;
+- (BOOL)isValidForEventsWithError:(id *)arg1;
 - (BOOL)isValidForTypesWithError:(id *)arg1;
 - (BOOL)isValidWithError:(id *)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSURLRequest.h>
+#import <CFNetwork/NSURLRequest.h>
 
 @interface NSURLRequest (AuthKit)
 - (BOOL)ak_usesHTTPSScheme;

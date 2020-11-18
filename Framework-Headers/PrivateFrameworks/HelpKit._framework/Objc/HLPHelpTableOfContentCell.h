@@ -11,17 +11,17 @@
 @interface HLPHelpTableOfContentCell : UITableViewCell
 {
     NSLayoutConstraint *_arrowImageViewLeadingConstraint;
-    NSLayoutConstraint *_arrowImageViewWidthConstraint;
     NSLayoutConstraint *_sectionImageWidthConstraint;
     NSLayoutConstraint *_sectionImageLeadingConstraint;
     NSLayoutConstraint *_labelToArrowViewLeadingConstraint;
     BOOL _showFirstLevelIcon;
     BOOL _ignoreLevels;
     BOOL _closed;
+    BOOL _updateSeparatorInsetAutomatically;
     BOOL _RTL;
     HLPHelpItem *_helpItem;
-    UILabel *_nameLabel;
     UIImageView *_arrowImageView;
+    UILabel *_nameLabel;
     UIImageView *_sectionImageView;
     TPSURLSessionItem *_sectionImageURLSessionItem;
 }
@@ -35,6 +35,7 @@
 @property (strong, nonatomic) TPSURLSessionItem *sectionImageURLSessionItem; // @synthesize sectionImageURLSessionItem=_sectionImageURLSessionItem;
 @property (strong, nonatomic) UIImageView *sectionImageView; // @synthesize sectionImageView=_sectionImageView;
 @property (nonatomic) BOOL showFirstLevelIcon; // @synthesize showFirstLevelIcon=_showFirstLevelIcon;
+@property (nonatomic) BOOL updateSeparatorInsetAutomatically; // @synthesize updateSeparatorInsetAutomatically=_updateSeparatorInsetAutomatically;
 
 - (void).cxx_destruct;
 - (id)accessibilityLabel;

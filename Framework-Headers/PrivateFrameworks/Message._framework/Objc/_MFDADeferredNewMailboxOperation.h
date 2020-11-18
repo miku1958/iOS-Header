@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Message/MFOfflineCacheOperation.h>
-
-#import <Message/MFDADeferredFolderChangeOperation-Protocol.h>
+#import <Message/_MFOfflineCacheOperation.h>
 
 @class NSString;
 
-@interface _MFDADeferredNewMailboxOperation : MFOfflineCacheOperation <MFDADeferredFolderChangeOperation>
+@interface _MFDADeferredNewMailboxOperation : _MFOfflineCacheOperation
 {
     NSString *_displayName;
     NSString *_parentFolderID;
@@ -18,14 +16,11 @@
 }
 
 + (BOOL)supportsSecureCoding;
-- (void)applyToFolderMap:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)folderChangeResult;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDisplayName:(id)arg1 parentFolderID:(id)arg2 temporaryFolderID:(id)arg3;
-- (BOOL)performWithAccount:(id)arg1 offlineCache:(id)arg2;
+- (BOOL)translateToLocalActionWithConnection:(id)arg1;
 
 @end
 

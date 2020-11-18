@@ -26,7 +26,6 @@
 @property (copy, nonatomic) NWEndpoint *replacementEndpoint;
 @property (nonatomic) BOOL tfo;
 @property (nonatomic) BOOL tfoNoCookie;
-@property (nonatomic) BOOL useTFOHeuristics;
 
 - (void).cxx_destruct;
 - (void)appendProtocol:(id)arg1 atLevel:(int)arg2;
@@ -34,11 +33,13 @@
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (void)disableProtocol:(struct nw_protocol_identifier *)arg1;
+- (BOOL)fastOpenForceEnable;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCTransform:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)privateDescription;
+- (void)setFastOpenForceEnable:(BOOL)arg1;
 
 @end
 

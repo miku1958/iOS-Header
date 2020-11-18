@@ -16,6 +16,7 @@
 @property (copy, nonatomic) NSString *completedQuery;
 @property (copy, nonatomic) NSString *correctedQuery;
 @property (nonatomic) BOOL doNotFold;
+@property (copy, nonatomic) NSData *entityData;
 @property (copy, nonatomic) NSString *fbr;
 @property (nonatomic) unsigned long long hashedIdentifier;
 @property (copy, nonatomic) NSString *identifier;

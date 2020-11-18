@@ -18,7 +18,7 @@
 - (void)executeQuery:(PSIQuery *)arg1 resultsHandler:(void (^)(NSArray *))arg2;
 - (NSArray *)groupArraysFromGroupIdSets:(NSArray *)arg1 dateFilter:(PSIDateFilter *)arg2 progressBlock:(void (^)(double, BOOL *))arg3;
 - (const struct __CFSet *)groupIdsMatchingString:(NSString *)arg1 categories:(NSIndexSet *)arg2 textIsSearchable:(BOOL)arg3;
-- (PSIGroupResult *)groupResultWithDateFilter:(PSIDateFilter *)arg1;
+- (PSIGroupResult *)groupResultWithDateFilter:(PSIDateFilter *)arg1 datedTokens:(NSArray *)arg2;
 - (PSIGroup *)groupWithMatchingGroupId:(unsigned long long)arg1 dateFilter:(PSIDateFilter *)arg2;
 - (NSString *)meNodeIdentifier;
 - (NSArray *)suggestionWhitelistedScenes;

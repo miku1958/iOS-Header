@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthUI/NSSecureCoding-Protocol.h>
+
 @class HKWorkout, NSArray;
 
-@interface HKLocationReadings : NSObject
+@interface HKLocationReadings : NSObject <NSSecureCoding>
 {
     BOOL _isSmoothed;
     HKWorkout *_workout;
@@ -27,13 +29,16 @@
 @property (readonly, nonatomic) double topSpeed; // @synthesize topSpeed=_topSpeed;
 @property (readonly, nonatomic) HKWorkout *workout; // @synthesize workout=_workout;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_calculateSpeeds;
 - (void)_filterLocationsByActiveTimePeriod:(id)arg1;
 - (long long)count;
 - (id)debugDescription;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)firstObject;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithLocation:(id)arg1 workout:(id)arg2;
 - (id)initWithLocations:(id)arg1 workout:(id)arg2 isSmoothed:(BOOL)arg3;
 - (id)lastObject;

@@ -11,22 +11,31 @@
 @interface SBSAppDragLocalContext : NSObject
 {
     BOOL _cancelsViaScaleAndFade;
+    BOOL _sourceLocal;
     NSString *_applicationBundleIdentifier;
     NSSet *_launchActions;
-    NSURL *_launchURL;
     long long _startLocation;
+    NSString *_draggedSceneIdentifier;
+    NSURL *_launchURL;
     UIView *_portaledPreview;
 }
 
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property (nonatomic) BOOL cancelsViaScaleAndFade; // @synthesize cancelsViaScaleAndFade=_cancelsViaScaleAndFade;
+@property (copy, nonatomic) NSString *draggedSceneIdentifier; // @synthesize draggedSceneIdentifier=_draggedSceneIdentifier;
 @property (readonly, copy, nonatomic) NSSet *launchActions; // @synthesize launchActions=_launchActions;
 @property (copy, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
 @property (strong, nonatomic) UIView *portaledPreview; // @synthesize portaledPreview=_portaledPreview;
+@property (nonatomic, getter=isSourceLocal) BOOL sourceLocal; // @synthesize sourceLocal=_sourceLocal;
 @property (readonly, nonatomic) long long startLocation; // @synthesize startLocation=_startLocation;
 
 - (void).cxx_destruct;
+- (id)description;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithApplicationBundleIdentifier:(id)arg1 withLaunchActions:(id)arg2 startLocation:(long long)arg3;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

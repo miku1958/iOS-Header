@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/AUAudioUnitV2Bridge.h>
+#import <AudioToolboxCore/AUAudioUnitV2Bridge.h>
 
 __attribute__((visibility("hidden")))
 @interface AUHALOutputUnit : AUAudioUnitV2Bridge

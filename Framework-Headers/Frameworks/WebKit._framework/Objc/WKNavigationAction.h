@@ -24,12 +24,14 @@
 @property (readonly, nonatomic) BOOL _shouldOpenAppLinks;
 @property (readonly, nonatomic) BOOL _shouldOpenExternalSchemes;
 @property (readonly, nonatomic) BOOL _shouldOpenExternalURLs;
+@property (readonly, nonatomic) BOOL _shouldPerformDownload;
 @property (readonly, nonatomic) long long _syntheticClickType;
 @property (readonly, nonatomic, getter=_isUserInitiated) BOOL _userInitiated;
 @property (readonly, nonatomic) _WKUserInitiatedAction *_userInitiatedAction;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long modifierFlags;
 @property (readonly, nonatomic) long long navigationType;
 @property (readonly, copy, nonatomic) NSURLRequest *request;
 @property (readonly, copy, nonatomic) WKFrameInfo *sourceFrame;

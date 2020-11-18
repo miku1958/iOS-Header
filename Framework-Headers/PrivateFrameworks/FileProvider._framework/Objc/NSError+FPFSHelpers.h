@@ -12,6 +12,9 @@
 
 @property (readonly, nonatomic) NSURL *fp_collidingURL;
 
++ (id)fileProviderErrorForCollisionWithItem:(id)arg1;
++ (id)fileProviderErrorForNonExistentItemWithIdentifier:(id)arg1;
++ (id)fileProviderErrorForOutOfDateItem:(id)arg1;
 + (id)fp_errorForCollisionWithURL:(id)arg1;
 @end
 

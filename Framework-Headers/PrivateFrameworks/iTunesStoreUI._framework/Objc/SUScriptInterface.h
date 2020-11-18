@@ -50,6 +50,7 @@
 @property (readonly) NSString *actionTypeDismissWindows;
 @property (readonly) NSString *actionTypeReturnToLibrary;
 @property (readonly) SUScriptAppleAccountStore *appleAccountStore;
+@property (readonly, getter=isApplePayAvailable) id applePayAvailable;
 @property (readonly) SUScriptApplication *application;
 @property (readonly) id applicationAccessibilityEnabled;
 @property (readonly) SUScriptKeyValueStore *applicationLocalStorage;
@@ -106,6 +107,7 @@
 @property (readonly) NSString *tidState;
 @property (readonly) NSString *userAgent;
 @property (readonly) SUScriptViewController *viewController;
+@property (readonly, getter=isWalletAvailable) id walletAvailable;
 @property (strong) WebFrame *webFrame;
 @property (readonly) SUScriptWindow *window;
 
@@ -113,6 +115,7 @@
 + (long long)purchaseAnimationStyleFromString:(id)arg1;
 + (id)webScriptNameForKeyName:(id)arg1;
 + (id)webScriptNameForSelector:(SEL)arg1;
+- (void).cxx_destruct;
 - (id)DOMElementWithElement:(id)arg1;
 - (void)_accessibilityPostLayoutChange;
 - (id)_className;
@@ -291,6 +294,7 @@
 - (void)setTidHeaders:(id)arg1;
 - (void)setTidState:(id)arg1;
 - (void)setUserAgent:(id)arg1;
+- (void)setWalletAvailable:(id)arg1;
 - (void)setWindow:(id)arg1;
 - (id)shouldDisplayPrivacyLinkWithIdentifier:(id)arg1;
 - (BOOL)shouldRestrictContentOfSystem:(id)arg1 level:(id)arg2;

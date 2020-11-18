@@ -6,35 +6,34 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaViewContainer-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
-@interface SISchemaViewContainer : PBCodable <NSCopying>
+@interface SISchemaViewContainer : PBCodable <SISchemaViewContainer, NSSecureCoding>
 {
+    NSString *_viewID;
+    NSString *_snippetClass;
     NSString *_dialogIdentifier;
     NSString *_dialogPhase;
-    NSString *_snippetClass;
-    NSString *_viewID;
 }
 
-@property (strong, nonatomic) NSString *dialogIdentifier; // @synthesize dialogIdentifier=_dialogIdentifier;
-@property (strong, nonatomic) NSString *dialogPhase; // @synthesize dialogPhase=_dialogPhase;
-@property (readonly, nonatomic) BOOL hasDialogIdentifier;
-@property (readonly, nonatomic) BOOL hasDialogPhase;
-@property (readonly, nonatomic) BOOL hasSnippetClass;
-@property (readonly, nonatomic) BOOL hasViewID;
-@property (strong, nonatomic) NSString *snippetClass; // @synthesize snippetClass=_snippetClass;
-@property (strong, nonatomic) NSString *viewID; // @synthesize viewID=_viewID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *dialogIdentifier; // @synthesize dialogIdentifier=_dialogIdentifier;
+@property (copy, nonatomic) NSString *dialogPhase; // @synthesize dialogPhase=_dialogPhase;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *snippetClass; // @synthesize snippetClass=_snippetClass;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *viewID; // @synthesize viewID=_viewID;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

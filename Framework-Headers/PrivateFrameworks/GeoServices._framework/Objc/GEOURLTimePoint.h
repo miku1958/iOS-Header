@@ -12,14 +12,18 @@
 {
     double _time;
     int _type;
-    CDStruct_46f138b4 _has;
+    struct {
+        unsigned int has_time:1;
+        unsigned int has_type:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasTime;
 @property (nonatomic) BOOL hasType;
-@property (nonatomic) double time; // @synthesize time=_time;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) double time;
+@property (nonatomic) int type;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -28,6 +32,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

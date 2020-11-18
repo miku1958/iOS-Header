@@ -10,8 +10,10 @@
 
 @interface NSData (AppleMediaServices)
 
+@property (readonly, nonatomic) NSData *ams_SHA1;
 @property (readonly, nonatomic) NSData *ams_compressedData;
 @property (readonly, nonatomic) NSData *ams_decompressedData;
+@property (readonly, nonatomic) NSString *ams_hexAddressDescription;
 @property (readonly, nonatomic) NSString *ams_nvramDescription;
 
 + (id)_AESKeyForDataProtectionClass:(unsigned long long)arg1 error:(id *)arg2;

@@ -6,12 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@interface RTPersistenceMirroringPolicy : NSObject
+#import <coreroutine/NSCopying-Protocol.h>
+
+@class RTTokenBucket;
+
+@interface RTPersistenceMirroringPolicy : NSObject <NSCopying>
 {
+    long long _qualityOfService;
+    RTTokenBucket *_tokenBucket;
 }
 
 @property (readonly, nonatomic) BOOL allowsMirroringViaCellular;
+@property (readonly, nonatomic) BOOL mirroringOperationAllowed;
+@property (readonly, nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
+@property (strong, nonatomic) RTTokenBucket *tokenBucket; // @synthesize tokenBucket=_tokenBucket;
 
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)init;
+- (id)initWithQualityOfService:(long long)arg1;
+- (id)initWithQualityOfService:(long long)arg1 tokenBucket:(id)arg2;
+- (id)qualityOfServiceToString:(long long)arg1;
+- (double)timeIntervalUntilOperationAllowed;
 
 @end
 

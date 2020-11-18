@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double endTime;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *implicitAmbientAnimationEffectIdentifier;
 @property (readonly, nonatomic, getter=isImplicitAmbientAnimationInteractive) BOOL implicitAmbientAnimationInteractive;
 @property (strong, nonatomic) TSPData *importedAuxiliaryMovieData;
 @property (copy, nonatomic) NSString *importedAuxiliaryMovieDataOriginalFilename;
@@ -71,10 +72,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)canBeMediaPlaceholder;
 - (BOOL)canBeReplaced;
 - (BOOL)canChangeWrapType;
+- (BOOL)canCopyData;
 - (BOOL)canResetMediaSize;
 - (BOOL)containsProperty:(int)arg1;
 - (id)copyWithContext:(id)arg1;
 - (double)doubleValueForProperty:(int)arg1;
+- (int)elementKind;
 - (float)floatValueForProperty:(int)arg1;
 - (id)generateEmptyPosterImageForContext:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
@@ -107,6 +110,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct MovieArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setStyle:(id)arg1;
+- (BOOL)shouldShowInPrint;
 - (id)style;
 - (Class)styleClass;
 - (id)styleIdentifierTemplateForNewPreset;

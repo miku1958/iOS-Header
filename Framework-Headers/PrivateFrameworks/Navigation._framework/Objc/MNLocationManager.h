@@ -9,7 +9,7 @@
 #import <Navigation/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <Navigation/MNLocationProviderDelegate-Protocol.h>
 
-@class CLHeading, GEOLocationShifter, MNLocation, NSBundle, NSDate, NSError, NSHashTable, NSLock, NSString;
+@class CLHeading, CLInUseAssertion, GEOLocationShifter, MNLocation, NSBundle, NSDate, NSError, NSHashTable, NSLock, NSString;
 @protocol MNLocationProvider, MNLocationRecorder;
 
 @interface MNLocationManager : NSObject <GEOResourceManifestTileGroupObserver, MNLocationProviderDelegate>
@@ -17,20 +17,21 @@
     unsigned long long _locationProviderType;
     id<MNLocationProvider> _locationProvider;
     id<MNLocationRecorder> _locationRecorder;
-    NSString *_effectiveBundleIdentifier;
     NSBundle *_effectiveBundle;
+    NSString *_effectiveBundleIdentifier;
+    NSHashTable *_accessRequesters;
     NSHashTable *_locationObservers;
     NSHashTable *_locationListeners;
     NSHashTable *_headingObservers;
     NSLock *_observersLock;
     NSLock *_lastLocationLock;
     MNLocation *_lastLocation;
-    MNLocation *_lastGoodLocation;
     GEOLocationShifter *_locationShifter;
     double _lastLocationUpdateTime;
     double _lastLocationReportTime;
     double _locationUpdateStartTime;
     double _expectedGpsUpdateInterval;
+    CLInUseAssertion *_locationAssertion;
     CLHeading *_heading;
     NSDate *_lastUpdatedHeadingDate;
     BOOL _hasCustomDesiredAccuracy;
@@ -69,7 +70,9 @@
 
 + (id)sharedLocationManager;
 - (void).cxx_destruct;
-- (void)_locationProvider:(id)arg1 didUpdateLocation:(id)arg2;
+- (void)_clearLocationAssertion;
+- (void)_createLocationAssertion;
+- (BOOL)_hasLocationAssertion;
 - (void)_reportLocationFailureWithError:(id)arg1;
 - (void)_reportLocationReset;
 - (void)_reportLocationStatus:(SEL)arg1;
@@ -79,6 +82,7 @@
 - (void)_setTrackingHeading:(BOOL)arg1;
 - (void)_setTrackingLocation:(BOOL)arg1;
 - (void)_startLocationUpdateWithObserver:(id)arg1 desiredAccuracy:(double)arg2;
+- (void)_updateForNewLocation:(id)arg1 rawLocation:(id)arg2;
 - (void)addLocationListener:(id)arg1;
 - (void)dealloc;
 - (id)init;
@@ -99,7 +103,10 @@
 - (void)locationProviderDidResumeLocationUpdates:(id)arg1;
 - (BOOL)locationProviderShouldPauseLocationUpdates:(id)arg1;
 - (void)pushLocation:(id)arg1;
+- (void)removeLocationAccessFor:(id)arg1;
+- (void)removeLocationAccessForAll;
 - (void)removeLocationListener:(id)arg1;
+- (void)requestLocationAccessFor:(id)arg1;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)setLastLocation:(id)arg1;
 - (void)setLocationProviderType:(unsigned long long)arg1;

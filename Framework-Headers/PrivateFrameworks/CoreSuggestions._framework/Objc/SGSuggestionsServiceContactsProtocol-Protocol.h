@@ -28,8 +28,10 @@
 - (void)contactMatchesWithContactIdentifier:(NSString *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
 - (NSArray *)contactMatchesWithContactIdentifiers:(NSArray *)arg1 limitTo:(unsigned long long)arg2 error:(id *)arg3;
 - (void)contactMatchesWithContactIdentifiers:(NSArray *)arg1 limitTo:(unsigned long long)arg2 withCompletion:(void (^)(NSArray *, NSError *))arg3;
+- (NSArray *)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 error:(id *)arg4;
+- (NSArray *)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 onlySignificant:(BOOL)arg4 error:(id *)arg5;
+- (void)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 onlySignificant:(BOOL)arg4 withCompletion:(void (^)(NSArray *, NSError *))arg5;
 - (void)namesForDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
-- (void)namesForUnknownDetail:(NSString *)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 withCompletion:(void (^)(NSArray *, NSError *))arg4;
 - (SGOrigin *)originFromRecordId:(SGRecordId *)arg1 error:(id *)arg2;
 - (void)originFromRecordId:(SGRecordId *)arg1 withCompletion:(void (^)(SGOrigin *, NSError *))arg2;
 - (NSArray *)suggestContactMatchesWithFullTextSearch:(NSString *)arg1 limitTo:(unsigned long long)arg2 error:(id *)arg3;

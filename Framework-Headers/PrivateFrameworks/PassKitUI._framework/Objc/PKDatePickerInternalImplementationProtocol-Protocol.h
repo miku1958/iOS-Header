@@ -6,13 +6,13 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSDate;
+@class NSCalendar, NSDate, NSLocale;
 
 @protocol PKDatePickerInternalImplementationProtocol <NSObject>
 
 @property (strong, nonatomic) NSDate *date;
 
-- (id)initShowingDay:(BOOL)arg1 month:(BOOL)arg2 year:(BOOL)arg3 useDarkAppearance:(BOOL)arg4;
+- (id)initShowingDay:(BOOL)arg1 month:(BOOL)arg2 year:(BOOL)arg3 useDarkAppearance:(BOOL)arg4 locale:(NSLocale *)arg5 calendar:(NSCalendar *)arg6;
 - (void)prepareToDie;
 - (void)setDateValueChangedTarget:(id)arg1 action:(SEL)arg2;
 @end

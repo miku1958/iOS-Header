@@ -6,17 +6,24 @@
 
 #import <Foundation/NSURLSessionTask.h>
 
+#import <RemoteConfiguration/RCOperationIdentifying-Protocol.h>
 #import <RemoteConfiguration/RCOperationPrioritizing-Protocol.h>
 
 @class NSString;
 
-@interface NSURLSessionTask (RCOperationPrioritizingSupport) <RCOperationPrioritizing>
+@interface NSURLSessionTask (RCOperationPrioritizingSupport) <RCOperationPrioritizing, RCOperationIdentifying>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long relativePriority;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 
+- (id)longOperationDescription;
+- (id)shortOperationDescription;
 @end
 

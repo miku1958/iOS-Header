@@ -6,9 +6,11 @@
 
 #import <RelevanceEngine/REComparisonCondition.h>
 
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
+
 @class REFeature;
 
-@interface _REFeatureComparisonCondition : REComparisonCondition
+@interface _REFeatureComparisonCondition : REComparisonCondition <REAutomaticExportedInterface>
 {
     REFeature *_leftFeature;
     long long _relation;
@@ -27,7 +29,6 @@
 - (BOOL)_requiresTwoFeatures;
 - (BOOL)_validForRanking;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)initWithLeftFeature:(id)arg1 relation:(long long)arg2 rightFeature:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

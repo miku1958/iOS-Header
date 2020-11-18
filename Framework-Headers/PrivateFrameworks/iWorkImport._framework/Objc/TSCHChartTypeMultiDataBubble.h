@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (Class)presetImagerClass;
 - (Class)repClass;
+- (BOOL)supportsSeriesStroke;
 - (id)userInterfaceName;
 - (long long)userInterfaceTag;
 

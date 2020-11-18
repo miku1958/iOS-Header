@@ -6,19 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class _MFMailAccountProxySource;
+#import <MessageUI/MFMailAccountProxyGenerator-Protocol.h>
 
-@interface MFMailAccountProxyGenerator : NSObject
+@class NSString, _MFMailAccountProxySource;
+
+@interface MFMailAccountProxyGenerator : NSObject <MFMailAccountProxyGenerator>
 {
     _MFMailAccountProxySource *_proxySource;
     BOOL _allowsRestrictedAccounts;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
 - (id)accountProxyContainingEmailAddress:(id)arg1 includingInactive:(BOOL)arg2;
 - (id)accountProxyContainingEmailAddress:(id)arg1 includingInactive:(BOOL)arg2 originatingBundleID:(id)arg3 sourceAccountManagement:(int)arg4;
 - (id)activeAccountProxiesOriginatingBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (id)allAccountProxies;
-- (void)dealloc;
 - (id)defaultMailAccountProxyForDeliveryOriginatingBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (id)init;
 - (id)initWithAllowsRestrictedAccounts:(BOOL)arg1;

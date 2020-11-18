@@ -4,24 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Contacts/CNFetchRequest.h>
 
 #import <Contacts/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class CNChangeHistoryAnchor, NSArray, NSData, NSString;
 
-@interface CNChangeHistoryFetchRequest : NSObject <NSSecureCoding>
+@interface CNChangeHistoryFetchRequest : CNFetchRequest <NSSecureCoding>
 {
-    BOOL _unifyResults;
+    BOOL _shouldUnifyResults;
+    BOOL _mutableObjects;
     BOOL _includeGroupChanges;
+    BOOL _enforceClientIdentifier;
     BOOL _includeChangeAnchors;
+    BOOL _includeChangeIDs;
+    BOOL _includeExternalIDs;
+    BOOL _includeImagesChanged;
+    BOOL _includeLabeledValueChanges;
+    NSData *_startingToken;
+    NSArray *_additionalContactKeyDescriptors;
+    NSArray *_excludedTransactionAuthors;
     NSString *_clientIdentifier;
+    NSString *_containerIdentifier;
 }
 
+@property (copy, nonatomic) NSArray *additionalContactKeyDescriptors; // @synthesize additionalContactKeyDescriptors=_additionalContactKeyDescriptors;
 @property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (strong, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
+@property (readonly, nonatomic, getter=shouldEnforceClientIdentifer) BOOL enforceClientIdentifier; // @synthesize enforceClientIdentifier=_enforceClientIdentifier;
+@property (copy, nonatomic) NSArray *excludedTransactionAuthors; // @synthesize excludedTransactionAuthors=_excludedTransactionAuthors;
 @property (nonatomic) BOOL includeChangeAnchors; // @synthesize includeChangeAnchors=_includeChangeAnchors;
+@property (nonatomic) BOOL includeChangeIDs; // @synthesize includeChangeIDs=_includeChangeIDs;
+@property (nonatomic) BOOL includeExternalIDs; // @synthesize includeExternalIDs=_includeExternalIDs;
 @property (nonatomic) BOOL includeGroupChanges; // @synthesize includeGroupChanges=_includeGroupChanges;
-@property (nonatomic) BOOL unifyResults; // @synthesize unifyResults=_unifyResults;
+@property (nonatomic) BOOL includeImagesChanged; // @synthesize includeImagesChanged=_includeImagesChanged;
+@property (nonatomic) BOOL includeLabeledValueChanges; // @synthesize includeLabeledValueChanges=_includeLabeledValueChanges;
+@property (nonatomic) BOOL mutableObjects; // @synthesize mutableObjects=_mutableObjects;
+@property (nonatomic) BOOL shouldUnifyResults; // @synthesize shouldUnifyResults=_shouldUnifyResults;
+@property (readonly, nonatomic) CNChangeHistoryAnchor *startingAnchor;
+@property (copy, nonatomic) NSData *startingToken; // @synthesize startingToken=_startingToken;
+@property (nonatomic) BOOL unifyResults;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -29,6 +51,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithClientIdentifier:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithStartingAnchor:(id)arg1;
+- (void)setStartingAnchor:(id)arg1;
 
 @end
 

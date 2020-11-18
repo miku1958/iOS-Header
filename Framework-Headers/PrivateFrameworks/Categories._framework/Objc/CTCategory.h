@@ -14,6 +14,8 @@
 {
     NSString *_identifier;
     NSString *_bundleIdentifier;
+    NSString *_canonicalBundleIdentifier;
+    NSArray *_equivalentBundleIdentifiers;
     NSArray *_webDomains;
     NSString *_primaryWebDomain;
     NSString *_secondaryIdentifier;
@@ -21,6 +23,9 @@
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (copy, nonatomic) NSString *canonicalBundleIdentifier; // @synthesize canonicalBundleIdentifier=_canonicalBundleIdentifier;
+@property (readonly, copy, nonatomic) NSArray *equivalentBundleIdentifers;
+@property (readonly, copy, nonatomic) NSArray *equivalentBundleIdentifiers; // @synthesize equivalentBundleIdentifiers=_equivalentBundleIdentifiers;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSString *localizedName;
 @property (readonly, copy, nonatomic) NSString *primaryIdentifier;
@@ -31,30 +36,40 @@
 @property (readonly, copy, nonatomic) NSString *secondaryLocalizedName;
 @property (copy, nonatomic) NSArray *webDomains; // @synthesize webDomains=_webDomains;
 
-+ (id)_AppStoreIDToDHIDCategoriesMap;
-+ (id)_AppStoreToDHIDCategoriesMap;
 + (id)_DHIDtoPrimaryCategoriesMap;
 + (id)_DHToAppStoreCategoriesMap;
-+ (id)_getAssociatedDomainsForHostName:(id)arg1;
++ (id)_equivalentBundleIDsMapping;
++ (id)_equivalentBundleIDsMappingForWatchOSBundleID:(id)arg1;
++ (id)_getAssociatedDomainsForHostNames:(id)arg1;
 + (void)_getCategoryTypeForDomainName:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (id)_getequivalentBundleIdentifiers:(id)arg1;
 + (void)_identifierUsingContextKit:(id)arg1 response:(CDUnknownBlockType)arg2;
-+ (void)_lookupAppStoreUsing:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-+ (id)_lookupDHIDInInfoPlist:(id)arg1 key:(unsigned long long)arg2;
++ (void)_lookupAppStoreUsing:(id)arg1 platform:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 + (id)_newXpcConnection;
++ (id)_overrideEquivalentIdentifiers:(id)arg1 forBundleID:(id)arg2;
 + (id)_xpcConnection;
++ (id)canonicalBundleIdentifierFor:(id)arg1 platform:(id)arg2;
++ (void)categoryForBundleID:(id)arg1 platform:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 + (void)categoryForBundleID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (void)categoryForBundleIdentifiers:(id)arg1 platform:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 + (void)categoryForDomainName:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)categoryForDomainURL:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (id)equivalentIdentifiersForBundleID:(id)arg1;
 + (void)initialize;
++ (id)itemWith:(id)arg1 platform:(id)arg2 array:(id)arg3;
 + (id)localizedNameForIdentifier:(id)arg1;
 + (id)primaryLocalizedNameForIdentifier:(id)arg1;
++ (id)shortLocalizedNameForIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)systemAppCategoryIdentifierForBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (void)_ctCategoryCommonInitWithIdentifier:(id)arg1 webDomains:(id)arg2 bundleIdentifier:(id)arg3 primaryWebDomain:(id)arg4;
+- (void)_ctCategoryCommonInitWithIdentifier:(id)arg1 equivalentBundleIdentifiers:(id)arg2 webDomains:(id)arg3 bundleIdentifier:(id)arg4 primaryWebDomain:(id)arg5;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 equivalentBundleIdentifiers:(id)arg2 webDomains:(id)arg3 bundleIdentifier:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 equivalentBundleIdentifiers:(id)arg2 webDomains:(id)arg3 bundleIdentifier:(id)arg4 primaryWebDomain:(id)arg5;
 - (id)initWithIdentifier:(id)arg1 webDomains:(id)arg2 bundleIdentifier:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 webDomains:(id)arg2 bundleIdentifier:(id)arg3 primaryWebDomain:(id)arg4;
 - (BOOL)isEqual:(id)arg1;

@@ -18,8 +18,9 @@
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
-- (void)previewInteractionPresenterDidDismiss:(id)arg1;
-- (void)previewInteractionPresenterDidPresent:(id)arg1;
+- (id)accessibilityValue;
+- (void)clickInteractionPresenterDidDismiss:(id)arg1;
+- (void)clickInteractionPresenterDidPresent:(id)arg1;
 
 @end
 

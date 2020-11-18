@@ -15,7 +15,7 @@
 - (double)altitude;
 - (double)azimuth;
 - (id)initWithIdentifier:(unsigned long long)arg1 location:(struct CGPoint)arg2 pressure:(double)arg3 altitude:(double)arg4 azimuth:(double)arg5;
-- (unsigned long long)type;
+- (long long)type;
 
 @end
 

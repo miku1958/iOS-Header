@@ -10,6 +10,21 @@
 {
 }
 
++ (BOOL)extension:(id)arg1 conformsToUTTypes:(id)arg2;
++ (BOOL)isSupportedAudio:(id)arg1;
++ (BOOL)isSupportedAudioUTI:(id)arg1;
++ (BOOL)isSupportedImage:(id)arg1;
++ (BOOL)isSupportedImageUTI:(id)arg1;
++ (BOOL)isSupportedMovie:(id)arg1;
++ (BOOL)isSupportedMovieUTI:(id)arg1;
++ (unsigned char)mediaTypeForURL:(id)arg1;
++ (unsigned char)mediaTypeForUTI:(id)arg1;
++ (id)supportedAudioTypes;
++ (id)supportedImageTypes;
++ (id)supportedMovieTypes;
++ (id)supportedTypes;
++ (BOOL)url:(id)arg1 conformsToUTTypes:(id)arg2;
++ (BOOL)uti:(id)arg1 conformsToUTTypes:(id)arg2;
 - (BOOL)_pathExtension:(id)arg1 conformsToType:(struct __CFString *)arg2;
 - (BOOL)_validateImageSource:(struct CGImageSource *)arg1 error:(id *)arg2;
 - (BOOL)_validateLivePhotoResourceURLs:(id)arg1 error:(id *)arg2;

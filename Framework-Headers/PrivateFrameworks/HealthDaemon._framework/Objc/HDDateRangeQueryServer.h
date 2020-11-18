@@ -33,12 +33,11 @@
 - (void)_queue_start;
 - (id)_queue_timePeriodForType:(id)arg1;
 - (void)_queue_updateTimePeriodsForSampleTypes:(id)arg1;
-- (id)_sampleTypeFromNumber:(id)arg1;
 - (BOOL)_shouldListenForUpdates;
 - (BOOL)_shouldObserveAllSampleTypes;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (id)dateRangeClientProxy;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 

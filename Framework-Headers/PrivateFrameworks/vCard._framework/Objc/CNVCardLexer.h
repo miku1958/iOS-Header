@@ -20,6 +20,9 @@
     NSArray *_activeTokenSets;
 }
 
++ (id)returnDelimiterData;
++ (id)singleByteTokens;
++ (id)utf16Tokens;
 - (void).cxx_destruct;
 - (void)_applyNextStringInEncoding:(unsigned long long)arg1 quotedPrintable:(BOOL)arg2 stopTokens:(int)arg3 trim:(BOOL)arg4 maximumValueLength:(unsigned long long)arg5 intoString:(id)arg6;
 - (BOOL)advancePastEOL;

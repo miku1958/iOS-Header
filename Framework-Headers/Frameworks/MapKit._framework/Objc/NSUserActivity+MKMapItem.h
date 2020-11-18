@@ -12,5 +12,7 @@
 
 @property (strong, nonatomic) MKMapItem *mapItem;
 
+- (void)_mapkit_clearMapItemDonationFields;
+- (void)_mapkit_populateFieldsForDonationOfMapItem:(id)arg1;
 @end
 

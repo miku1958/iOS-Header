@@ -6,10 +6,13 @@
 
 #import <ContactsUI/NSObject-Protocol.h>
 
-@class NSString, UIView;
+@class NSString, UITraitCollection, UIView;
 @protocol CNContactQuickActionPresentation;
 
 @protocol CNContactQuickActionViewContainer <NSObject>
+
+@property (readonly, nonatomic) UITraitCollection *traitCollection;
+
 - (UIView<CNContactQuickActionPresentation> *)viewForActionType:(NSString *)arg1;
 @end
 

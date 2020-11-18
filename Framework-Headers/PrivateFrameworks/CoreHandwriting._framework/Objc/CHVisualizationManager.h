@@ -44,6 +44,7 @@
 + (id)availableVisualizationIdentifiers;
 + (id)localizedNameForRecognitionSessionStatusKey:(id)arg1;
 + (id)localizedNameForVisualizationIdentifier:(id)arg1;
++ (struct CGColor *)newColorForVisualizedItemAtIndex:(long long)arg1;
 + (BOOL)variableHeightForRecognitionSessionStatusKey:(id)arg1;
 - (void)_addVisualizationForIdentifier:(id)arg1;
 - (BOOL)_isActiveVisualizationForIdentifier:(id)arg1;
@@ -64,7 +65,6 @@
 - (void)visualization:(id)arg1 needsDisplayInRect:(struct CGRect)arg2;
 - (long long)visualizationIndexForStrokeGroup:(id)arg1;
 - (void)visualizationNeedsDisplay:(id)arg1;
-- (BOOL)wantsHighFrequencyNotifications;
 
 @end
 

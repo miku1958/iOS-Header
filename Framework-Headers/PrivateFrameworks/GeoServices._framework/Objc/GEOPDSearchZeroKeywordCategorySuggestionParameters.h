@@ -15,28 +15,34 @@ __attribute__((visibility("hidden")))
 {
     PBUnknownFields *_unknownFields;
     double _requestLocalTimestamp;
-    unsigned int _maxNumCategoriesPerEntry;
     GEOLatLng *_significantLocation;
+    unsigned int _maxNumCategoriesPerEntry;
     int _userPreferredTransportType;
+    BOOL _shouldMatchNoQueryStateSuggestions;
     struct {
-        unsigned int requestLocalTimestamp:1;
-        unsigned int maxNumCategoriesPerEntry:1;
-        unsigned int userPreferredTransportType:1;
-    } _has;
+        unsigned int has_requestLocalTimestamp:1;
+        unsigned int has_maxNumCategoriesPerEntry:1;
+        unsigned int has_userPreferredTransportType:1;
+        unsigned int has_shouldMatchNoQueryStateSuggestions:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMaxNumCategoriesPerEntry;
 @property (nonatomic) BOOL hasRequestLocalTimestamp;
+@property (nonatomic) BOOL hasShouldMatchNoQueryStateSuggestions;
 @property (readonly, nonatomic) BOOL hasSignificantLocation;
 @property (nonatomic) BOOL hasUserPreferredTransportType;
-@property (nonatomic) unsigned int maxNumCategoriesPerEntry; // @synthesize maxNumCategoriesPerEntry=_maxNumCategoriesPerEntry;
-@property (nonatomic) double requestLocalTimestamp; // @synthesize requestLocalTimestamp=_requestLocalTimestamp;
-@property (strong, nonatomic) GEOLatLng *significantLocation; // @synthesize significantLocation=_significantLocation;
+@property (nonatomic) unsigned int maxNumCategoriesPerEntry;
+@property (nonatomic) double requestLocalTimestamp;
+@property (nonatomic) BOOL shouldMatchNoQueryStateSuggestions;
+@property (strong, nonatomic) GEOLatLng *significantLocation;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (nonatomic) int userPreferredTransportType; // @synthesize userPreferredTransportType=_userPreferredTransportType;
+@property (nonatomic) int userPreferredTransportType;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsUserPreferredTransportType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)userPreferredTransportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

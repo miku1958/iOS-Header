@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <iTunesCloud/NSCopying-Protocol.h>
+#import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ICLibraryAuthServiceClientTokenIdentifier, NSString;
+@class ICLibraryAuthServiceClientTokenIdentifier, NSDate, NSString;
 
-@interface ICLibraryAuthServiceClientTokenResult : NSObject <NSCopying>
+@interface ICLibraryAuthServiceClientTokenResult : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_token;
     long long _generatedAtMillis;
@@ -19,14 +20,20 @@
     ICLibraryAuthServiceClientTokenIdentifier *_tokenIdentitifer;
 }
 
+@property (readonly, copy, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic) long long generatedAtMillis; // @synthesize generatedAtMillis=_generatedAtMillis;
+@property (readonly, nonatomic) BOOL isExpired;
 @property (readonly, nonatomic) long long lifespanMillis; // @synthesize lifespanMillis=_lifespanMillis;
 @property (readonly, nonatomic) long long timeToLiveMillis; // @synthesize timeToLiveMillis=_timeToLiveMillis;
 @property (readonly, copy, nonatomic) NSString *token; // @synthesize token=_token;
 @property (readonly, copy, nonatomic) ICLibraryAuthServiceClientTokenIdentifier *tokenIdentitifer; // @synthesize tokenIdentitifer=_tokenIdentitifer;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithResponseDictionary:(id)arg1;
 
 @end

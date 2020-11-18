@@ -12,8 +12,8 @@
 #import <CarPlay/CPMapClientTemplateDelegate-Protocol.h>
 #import <CarPlay/CPNavigationAlertUpdating-Protocol.h>
 
-@class CPBarButton, CPNavigationAlert, NSArray, NSMutableArray, NSMutableDictionary, NSString, UIColor;
-@protocol CPBannerProviding, CPMapTemplateDelegate, CPMapTemplateProviding;
+@class CPBarButton, CPNavigationAlert, NAFuture, NSArray, NSMutableDictionary, NSString, UIColor;
+@protocol CPBannerProviding, CPMapTemplateDelegate;
 
 @interface CPMapTemplate : CPTemplate <CPMapButtonDelegate, CPMapClientTemplateDelegate, CPBannerDelegate, CPNavigationAlertUpdating, CPBarButtonProviding>
 {
@@ -21,11 +21,11 @@
     BOOL _hidesButtonsWithNavigationBar;
     UIColor *_guidanceBackgroundColor;
     unsigned long long _tripEstimateStyle;
+    NSArray *_mapButtons;
     id<CPMapTemplateDelegate> _mapDelegate;
     CPNavigationAlert *_currentNavigationAlert;
     NSMutableDictionary *_postedBannerObjects;
     id<CPBannerProviding> _bannerProvider;
-    NSMutableArray *_internalMapButtons;
     NSArray *_tripPreviews;
 }
 
@@ -38,14 +38,13 @@
 @property (strong, nonatomic) UIColor *guidanceBackgroundColor; // @synthesize guidanceBackgroundColor=_guidanceBackgroundColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesButtonsWithNavigationBar; // @synthesize hidesButtonsWithNavigationBar=_hidesButtonsWithNavigationBar;
-@property (strong, nonatomic) NSMutableArray *internalMapButtons; // @synthesize internalMapButtons=_internalMapButtons;
 @property (strong, nonatomic) NSArray *leadingNavigationBarButtons;
-@property (strong, nonatomic) NSArray *mapButtons;
+@property (strong, nonatomic) NSArray *mapButtons; // @synthesize mapButtons=_mapButtons;
 @property (weak, nonatomic) id<CPMapTemplateDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
 @property (readonly, nonatomic, getter=isPanningInterfaceVisible) BOOL panningInterfaceVisible;
 @property (strong, nonatomic) NSMutableDictionary *postedBannerObjects; // @synthesize postedBannerObjects=_postedBannerObjects;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) id<CPMapTemplateProviding> templateProvider; // @dynamic templateProvider;
+@property (strong, nonatomic) NAFuture *templateProviderFuture; // @dynamic templateProviderFuture;
 @property (strong, nonatomic) NSArray *trailingNavigationBarButtons;
 @property (nonatomic) unsigned long long tripEstimateStyle; // @synthesize tripEstimateStyle=_tripEstimateStyle;
 @property (readonly, copy, nonatomic) NSArray *tripPreviews; // @synthesize tripPreviews=_tripPreviews;
@@ -85,7 +84,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)mapButton:(id)arg1 setFocusedImage:(id)arg2;
 - (BOOL)mapButton:(id)arg1 setHidden:(BOOL)arg2;
-- (BOOL)mapButton:(id)arg1 setImage:(id)arg2;
+- (BOOL)mapButton:(id)arg1 setImageSet:(id)arg2;
 - (void)presentNavigationAlert:(id)arg1 animated:(BOOL)arg2;
 - (void)previewTripIdentifier:(id)arg1 usingRouteIdentifier:(id)arg2;
 - (void)showPanningInterfaceAnimated:(BOOL)arg1;

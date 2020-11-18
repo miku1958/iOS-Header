@@ -14,6 +14,7 @@
 {
     NSMutableDictionary *_accountDefaults;
     NSString *_account;
+    long long _accountType;
     IMDService *_service;
     IMDServiceSession *_session;
     NSMutableDictionary *_myStatus;
@@ -28,6 +29,7 @@
 @property (readonly, strong, nonatomic) NSDictionary *accountDefaults; // @synthesize accountDefaults=_accountDefaults;
 @property (readonly, strong, nonatomic) NSString *accountID; // @synthesize accountID=_account;
 @property (readonly, strong, nonatomic) NSDictionary *accountInfoToPost;
+@property (readonly, nonatomic) long long accountType;
 @property (readonly, nonatomic) BOOL canMakeDowngradeRoutingChecks;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isDisabled;

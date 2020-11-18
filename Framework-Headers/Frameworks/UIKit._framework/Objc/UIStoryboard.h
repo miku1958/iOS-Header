@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSBundle, NSDictionary, NSMutableDictionary, NSString;
+@class NSBundle, NSDictionary, NSMutableDictionary, NSString, UIStoryboardSegueTemplate;
 
 @interface UIStoryboard : NSObject
 {
@@ -15,11 +15,19 @@
     NSDictionary *identifierToNibNameMap;
     NSDictionary *identifierToExternalStoryboardReferenceMap;
     NSString *designatedEntryPointIdentifier;
+    NSString *designatedMenuIdentifier;
     NSMutableDictionary *identifierToUINibMap;
+    UIStoryboardSegueTemplate *___currentStoryboardSegueTemplate;
+    CDUnknownBlockType ___currentStoryboardSegueCreator;
+    id ___currentSender;
 }
 
+@property (nonatomic) id __currentSender; // @synthesize __currentSender=___currentSender;
+@property (nonatomic) CDUnknownBlockType __currentStoryboardSegueCreator; // @synthesize __currentStoryboardSegueCreator=___currentStoryboardSegueCreator;
+@property (nonatomic) UIStoryboardSegueTemplate *__currentStoryboardSegueTemplate; // @synthesize __currentStoryboardSegueTemplate=___currentStoryboardSegueTemplate;
 @property (readonly, nonatomic) NSBundle *bundle; // @synthesize bundle;
 @property (readonly, nonatomic) NSString *designatedEntryPointIdentifier; // @synthesize designatedEntryPointIdentifier;
+@property (readonly, nonatomic) NSString *designatedMenuIdentifier; // @synthesize designatedMenuIdentifier;
 @property (readonly, nonatomic) NSDictionary *identifierToExternalStoryboardReferenceMap; // @synthesize identifierToExternalStoryboardReferenceMap;
 @property (readonly, nonatomic) NSDictionary *identifierToNibNameMap; // @synthesize identifierToNibNameMap;
 @property (readonly, nonatomic) NSMutableDictionary *identifierToUINibMap; // @synthesize identifierToUINibMap;
@@ -27,13 +35,19 @@
 @property (readonly, nonatomic) NSString *storyboardFileName; // @synthesize storyboardFileName;
 
 + (id)storyboardWithName:(id)arg1 bundle:(id)arg2;
+- (id)__reallyInstantiateViewControllerWithIdentifier:(id)arg1 creator:(CDUnknownBlockType)arg2 storyboardSegueTemplate:(id)arg3 sender:(id)arg4;
+- (id)_instantiateInitialMenu;
+- (id)_instantiateInitialViewControllerWithCreator:(CDUnknownBlockType)arg1 storyboardSegueTemplate:(id)arg2 sender:(id)arg3;
+- (id)_instantiateViewControllerReferencedByPlaceholderWithIdentifier:(id)arg1 storyboardSegueTemplate:(id)arg2 sender:(id)arg3;
+- (id)_instantiateViewControllerWithIdentifier:(id)arg1 creator:(CDUnknownBlockType)arg2 storyboardSegueTemplate:(id)arg3 sender:(id)arg4;
 - (BOOL)containsNibNamed:(id)arg1;
 - (void)dealloc;
 - (id)identifierForStringsFile;
-- (id)initWithBundle:(id)arg1 storyboardFileName:(id)arg2 identifierToNibNameMap:(id)arg3 identifierToExternalStoryboardReferenceMap:(id)arg4 designatedEntryPointIdentifier:(id)arg5;
+- (id)initWithBundle:(id)arg1 storyboardFileName:(id)arg2 identifierToNibNameMap:(id)arg3 identifierToExternalStoryboardReferenceMap:(id)arg4 designatedEntryPointIdentifier:(id)arg5 designatedMenuIdentifier:(id)arg6;
 - (id)instantiateInitialViewController;
-- (id)instantiateViewControllerReferencedByPlaceholderWithIdentifier:(id)arg1;
+- (id)instantiateInitialViewControllerWithCreator:(CDUnknownBlockType)arg1;
 - (id)instantiateViewControllerWithIdentifier:(id)arg1;
+- (id)instantiateViewControllerWithIdentifier:(id)arg1 creator:(CDUnknownBlockType)arg2;
 - (id)nibForStoryboardNibNamed:(id)arg1;
 - (id)nibForViewControllerWithIdentifier:(id)arg1;
 - (id)referencedStoryboardForExternalReferenceInfo:(id)arg1;

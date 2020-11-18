@@ -30,6 +30,7 @@
 - (void)getChangedStatusesWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)getMappedScopedIdentifiersForScopedIdentifiers:(NSArray *)arg1 inAreLocalIdentifiers:(BOOL)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)getStatusForRecordsWithScopedIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getStreamingURLForResource:(CPLResource *)arg1 intent:(unsigned long long)arg2 hints:(NSDictionary *)arg3 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg4;
 - (void)getSystemBudgetsWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)noteClientIsBeginningSignificantWork;
 - (void)noteClientIsEndingSignificantWork;
@@ -38,7 +39,6 @@
 - (void)noteClientReceivedNotificationOfServerChanges;
 - (void)openWithCompletionHandler:(void (^)(NSError *, NSString *, NSString *, NSURL *))arg1;
 - (void)publishMomentShare:(CPLMomentShare *)arg1 completionHandler:(void (^)(CPLMomentShare *, NSError *))arg2;
-- (void)publishResource:(CPLResource *)arg1 completionHandler:(void (^)(NSURL *, NSDate *, NSError *))arg2;
 - (void)queryUserIdentitiesWithParticipants:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(void (^)(BOOL, unsigned long long, NSError *))arg3;
 - (void)resetStatus;
@@ -50,6 +50,7 @@
 - (void)addInfoToLog:(NSString *)arg1;
 - (void)barrier;
 - (void)blockEngineElement:(NSString *)arg1;
+- (void)checkResourcesAreSafeToPrune:(NSArray *)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(void (^)(NSArray *, NSDictionary *))arg3;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(CPLScopedIdentifier *)arg1 related:(BOOL)arg2 completionHandler:(void (^)(id, id, NSError *))arg3;
 - (void)compactFileCacheWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)deleteResources:(NSArray *)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(void (^)(NSArray *, NSDictionary *))arg3;
@@ -59,6 +60,9 @@
 - (void)getStatusArrayForComponents:(NSArray *)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)getStatusForComponents:(NSArray *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
 - (void)getStatusesForScopesWithIdentifiers:(NSArray *)arg1 includeStorages:(BOOL)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)provideCloudResource:(CPLResource *)arg1 completionHandler:(void (^)(CPLResource *, unsigned long long))arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(CPLLibraryInfo *, unsigned long long))arg2;
+- (void)provideRecordWithCloudScopeIdentifier:(CPLScopedIdentifier *)arg1 completionHandler:(void (^)(CPLRecordChange *, unsigned long long))arg2;
 - (void)reportMiscInformation:(NSDictionary *)arg1;
 - (void)reportSetting:(NSString *)arg1 hasBeenSetToValue:(NSString *)arg2;
 - (void)resetCacheWithOption:(unsigned long long)arg1 reason:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;

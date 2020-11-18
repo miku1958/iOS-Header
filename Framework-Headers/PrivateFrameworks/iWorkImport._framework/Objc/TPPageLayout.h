@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
     int _inInvalidationClusterCount;
     BOOL _childTextLayoutsNeedInvalidationForExteriorWrap;
     BOOL _validating;
+    BOOL _overrideAllowFootnotes;
     NSMutableSet *_anchoredDrawableLayouts;
     TPiOSMarginAdjustLayout *_marginAdjustLayout;
     TSDFill *_backgroundFill;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
 @property (readonly, weak, nonatomic) TPBodyLayout *bodyLayout;
 @property (readonly, nonatomic) struct CGRect bodyRect;
+@property (readonly, nonatomic) BOOL canHavePreviousPageFootnotes;
 @property (readonly, nonatomic) id<NSFastEnumeration> childTextLayoutsForExteriorWrap;
 @property (readonly, nonatomic) unsigned long long columnCount;
 @property (readonly, nonatomic) BOOL columnsAreLeftToRight;
@@ -50,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TPiOSMarginAdjustLayout *marginAdjustLayout; // @synthesize marginAdjustLayout=_marginAdjustLayout;
 @property (readonly, nonatomic) BOOL marginsAreMirrored;
 @property (readonly, weak, nonatomic) id<TPMasterDrawableProvider> masterDrawableProvider;
+@property (nonatomic) BOOL overrideAllowFootnotes; // @synthesize overrideAllowFootnotes=_overrideAllowFootnotes;
 @property (readonly, nonatomic) unsigned long long pageCount;
 @property (readonly, nonatomic) unsigned long long pageIndex;
 @property (readonly, nonatomic) unsigned long long pageNumber;
@@ -72,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)dependentLayouts;
 - (id)dependentsOfTextLayout:(id)arg1;
+- (BOOL)descendersCannotClip;
 - (void)endResizeWrapInvalidationCluster;
 - (void)evacuateOldChildLayoutCache;
 - (id)existingAttachmentLayoutForInfo:(id)arg1;
@@ -94,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateSize;
 - (BOOL)isReadyForBodyLayout;
 - (BOOL)isRootLayoutForInspectorGeometry;
+- (BOOL)isRootLevelForInlineGeometry;
 - (id)layoutForChildInfo:(id)arg1;
 - (id)layoutsCausingWrapOnTextLayoutTarget:(id)arg1 ignoreIntersection:(BOOL)arg2;
 - (id)layoutsForChildInfo:(id)arg1;

@@ -8,13 +8,18 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
+@protocol OS_dispatch_queue;
+
 @interface MTLCommandQueueDescriptor : NSObject <NSCopying>
 {
 }
 
+@property (nonatomic) NSObject<OS_dispatch_queue> *commitQueue; // @dynamic commitQueue;
+@property (nonatomic) BOOL commitSynchronously; // @dynamic commitSynchronously;
+@property (nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @dynamic completionQueue;
+@property (nonatomic) BOOL disableCrossQueueHazardTracking; // @dynamic disableCrossQueueHazardTracking;
 @property (nonatomic) unsigned long long maxCommandBufferCount; // @dynamic maxCommandBufferCount;
-@property (nonatomic) unsigned long long qosClass; // @dynamic qosClass;
-@property (nonatomic) long long qosRelativePriority; // @dynamic qosRelativePriority;
+@property (nonatomic) unsigned long long qosLevel; // @dynamic qosLevel;
 
 + (id)alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;

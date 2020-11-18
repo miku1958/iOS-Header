@@ -10,16 +10,18 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (id)_accessibilityFuzzyHitTestElements;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (void)_dismissCustomizeSheet:(BOOL)arg1;
 - (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 - (void)beginCustomizingItems:(id)arg1;
 - (BOOL)shouldGroupAccessibilityChildren;
 

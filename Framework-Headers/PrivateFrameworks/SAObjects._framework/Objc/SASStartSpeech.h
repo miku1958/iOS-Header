@@ -15,6 +15,7 @@
 }
 
 @property (copy, nonatomic) NSString *aceId; // @dynamic aceId;
+@property (copy, nonatomic) NSString *audioDestination;
 @property (copy, nonatomic) NSString *audioSource;
 @property (nonatomic) BOOL clearContext;
 @property (nonatomic) int codec;

@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSArray *pictureItems; // @synthesize pictureItems=_pictureItems;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithPictureItemContainer:(id)arg1;
 - (id)initWithPictureItems:(id)arg1 allowFullScreenPhoto:(BOOL)arg2;
 

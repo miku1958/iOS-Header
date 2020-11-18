@@ -69,7 +69,6 @@
 + (id)supportedValueClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)__init;
 - (void)_fixupAccessorySetting;
 - (id)_fixupMergeStrategyConstraints;
 - (void)_handleAddConstraint:(id)arg1;
@@ -84,6 +83,7 @@
 - (void)_relayRequestMessageNoRemoteCheck:(id)arg1 targetAccessory:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_replaceConstraints:(id)arg1 additions:(id)arg2 removals:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_saveHomeConfiguration:(id)arg1;
+- (BOOL)_shouldBlockSettingUpdateMessage:(id)arg1;
 - (id)accessoryFromTarget;
 - (void)addConstraint:(id)arg1;
 - (BOOL)compareConstraints:(id)arg1;
@@ -99,6 +99,7 @@
 - (void)handleUpdateValue:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 name:(id)arg2;
 - (id)initWithModel:(id)arg1;
 - (BOOL)isConstraintMergeStrategyReflection;
 - (BOOL)isEqual:(id)arg1;
@@ -114,6 +115,7 @@
 - (void)setConstraints:(id)arg1;
 - (void)setValue:(id)arg1;
 - (void)settingUpdate:(id)arg1 didCompleteWithError:(id)arg2;
+- (BOOL)shouldEncodeForCoder:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;

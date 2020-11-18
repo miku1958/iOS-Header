@@ -27,6 +27,7 @@
     NSString *_bundleID;
     NSString *_bundleVersion;
     NSString *_shortBundleVersion;
+    long long _platform;
     GKGameInternal *_game;
     NSArray *_exchanges;
     unsigned int _turnNumber;
@@ -53,6 +54,7 @@
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 @property (nonatomic) unsigned char minPlayers; // @synthesize minPlayers=_minPlayers;
 @property (strong, nonatomic) NSArray *participants; // @synthesize participants=_participants;
+@property (nonatomic) long long platform; // @synthesize platform=_platform;
 @property (strong, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (strong, nonatomic) NSString *shortBundleVersion; // @synthesize shortBundleVersion=_shortBundleVersion;
 @property (nonatomic) unsigned int state; // @synthesize state=_state;

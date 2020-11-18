@@ -33,6 +33,7 @@
     BOOL _isAskingForTileIdentifierConverter;
     BOOL _isAskingForTransitionAnimationCoordinator;
     BOOL _animatesContent;
+    BOOL _autoplayTilesWaitForInput;
     id<PXAssetsSceneDelegate> _delegate;
     PXTilingController *_tilingController;
     PXMediaProvider *_mediaProvider;
@@ -43,11 +44,14 @@
     PXReusableObjectPool *_viewTileReusePool;
     PXAssetsDataSource *__dataSource;
     NSMutableArray *__anchors;
+    unsigned long long _autoplayBehavior;
 }
 
 @property (readonly, nonatomic) NSMutableArray *_anchors; // @synthesize _anchors=__anchors;
 @property (strong, nonatomic, setter=_setDataSource:) PXAssetsDataSource *_dataSource; // @synthesize _dataSource=__dataSource;
 @property (nonatomic) BOOL animatesContent; // @synthesize animatesContent=_animatesContent;
+@property (nonatomic) unsigned long long autoplayBehavior; // @synthesize autoplayBehavior=_autoplayBehavior;
+@property (nonatomic) BOOL autoplayTilesWaitForInput; // @synthesize autoplayTilesWaitForInput=_autoplayTilesWaitForInput;
 @property (readonly, nonatomic) PXAssetBadgeManager *badgeManager; // @synthesize badgeManager=_badgeManager;
 @property (readonly, nonatomic) PXAssetsTilingLayout *currentLayout;
 @property (readonly, nonatomic) PXAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;

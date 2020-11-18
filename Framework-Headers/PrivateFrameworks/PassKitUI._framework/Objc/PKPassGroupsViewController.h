@@ -21,17 +21,19 @@
 #import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPerformActionViewControllerDelegate-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
+#import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSTimer, PKAccountServiceAccountResolutionController, PKDiscoveryDataSource, PKDiscoveryGalleryView, PKGroupsController, PKPassGroupStackView, PKPaymentService, PKPeerPaymentAccountResolutionController, PKPeerPaymentService, _UIBackdropView;
+@class NSArray, NSMutableArray, NSString, NSTimer, PKAccountServiceAccountResolutionController, PKDiscoveryDataSource, PKDiscoveryGalleryView, PKGroupsController, PKPassGroupStackView, PKPaymentService, PKPeerPaymentAccountResolutionController, PKPeerPaymentService, _PKUIKVisibilityBackdropView;
 @protocol PKPassLibraryDataProvider;
 
-@interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPerformActionViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKDiscoveryDataSourceDelegate, PKPGSVFooterViewDelegate, PKPGSVSectionSubheaderDelegate, PKPGSVSectionHeaderViewDelegate, PKPassPersonalizationViewControllerDelegate>
+@interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPerformActionViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKAccountServiceAccountResolutionControllerDelegate, PKDiscoveryDataSourceDelegate, _PKUIKVisibilityBackdropViewDelegate, PKPGSVFooterViewDelegate, PKPGSVSectionSubheaderDelegate, PKPGSVSectionHeaderViewDelegate, PKPassPersonalizationViewControllerDelegate>
 {
-    long long _backdropStyle;
     long long _invalidationStatus;
     PKPassGroupStackView *_groupStackView;
-    _UIBackdropView *_headerBackground;
-    _UIBackdropView *_footerBackground;
+    _PKUIKVisibilityBackdropView *_headerBackground;
+    _PKUIKVisibilityBackdropView *_footerBackground;
+    double _headerBackgroundVisibility;
+    double _footerBackgroundVisibility;
     PKPaymentService *_paymentService;
     unsigned long long _modalCardIndex;
     long long _presentationState;
@@ -46,9 +48,6 @@
     BOOL _reloadingPasses;
     BOOL _backgroundMode;
     BOOL _inFailForward;
-    BOOL _updatingBackdropSettings;
-    CDStruct_6c46ada8 _headerBackgroundVisibility;
-    CDStruct_6c46ada8 _footerBackgroundVisibility;
     unsigned long long _instanceFooterSuppressionCounter;
     int _expressTransactionNotificationObserver;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
@@ -58,6 +57,7 @@
     PKDiscoveryDataSource *_discoveryDataSource;
     BOOL _inField;
     BOOL _handleFieldDetection;
+    BOOL _showingFieldDetectEducation;
     BOOL _welcomeStateEnabled;
     BOOL _externalModalPresentationAllowed;
     long long _style;
@@ -76,6 +76,7 @@
 @property (readonly) unsigned long long hash;
 @property BOOL passesAreOutdated; // @synthesize passesAreOutdated=_passesAreOutdated;
 @property (readonly, nonatomic) BOOL presentingPass;
+@property (getter=isShowingFieldDetectEducation) BOOL showingFieldDetectEducation; // @synthesize showingFieldDetectEducation=_showingFieldDetectEducation;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
@@ -87,13 +88,12 @@
 + (void)endTrackingAction;
 + (BOOL)isPerformingAction;
 - (void).cxx_destruct;
-- (void)_accessBackgroundStateForType:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)_accessibilitySettingsDidChange:(id)arg1;
 - (id)_appleCardUpsellAlertWithAccount:(id)arg1;
 - (void)_applyPresentationState;
 - (id)_barcodePassDetailsViewControllerForBarcodePass:(id)arg1;
 - (void)_beginSuppressingInstanceFooter;
 - (BOOL)_canPerformExternalModalPresentation;
+- (BOOL)_canShowWhileLocked;
 - (void)_clearPassViewedNotificationTimer;
 - (void)_endSuppressingInstanceFooterWithContext:(id)arg1;
 - (void)_handleChildViewControllerRequestingServiceMode:(id)arg1;
@@ -120,13 +120,10 @@
 - (void)_resetToRootAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_setupItemForExpressUpgradeMarket:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_startPassViewedNotificationTimer;
-- (void)_updateBackdropSettings;
-- (void)_updateBackgroundType:(long long)arg1 toVisibility:(double)arg2 animated:(BOOL)arg3;
 - (void)_updateFooterSuppressionAnimated:(BOOL)arg1;
 - (void)_updateFooterSuppressionWithContext:(id)arg1;
 - (void)_updatePeerPaymentAccount;
 - (void)_warnFailForward;
-- (void)accountServiceAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
 - (void)accountServiceAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)addSimulatorPassWithURL:(id)arg1;
 - (void)addVASPassWithIdentifier:(id)arg1;
@@ -243,6 +240,7 @@
 - (void)viewTapped:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (long long)visibilityBackdropView:(id)arg1 preferredStyleForTraitCollection:(id)arg2;
 
 @end
 

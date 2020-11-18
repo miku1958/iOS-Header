@@ -6,52 +6,70 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MPRemoteMediaPickerController, NSString, _UIAsyncInvocation;
-@protocol MPMediaPickerControllerDelegate;
+#import <MediaPlayer/MPClientMediaPickerController-Protocol.h>
+#import <MediaPlayer/MPMusicMediaPickerClientController-Protocol.h>
 
-@interface MPMediaPickerController : UIViewController
+@class MPMediaPickerConfiguration, NSString;
+@protocol MPMediaPickerControllerDelegate, MPMediaPickerRemoteViewLoader;
+
+@interface MPMediaPickerController : UIViewController <MPClientMediaPickerController, MPMusicMediaPickerClientController>
 {
-    _UIAsyncInvocation *_cancelRequest;
-    id _modalContext;
-    MPRemoteMediaPickerController *_remoteViewController;
-    BOOL _allowsPickingMultipleItems;
-    BOOL _showsCloudItems;
-    BOOL _showsItemsWithProtectedAssets;
-    BOOL _picksSingleCollectionEntity;
-    unsigned int _watchCompatibilityVersion;
-    unsigned long long _mediaTypes;
+    MPMediaPickerConfiguration *_configuration;
     id<MPMediaPickerControllerDelegate> _delegate;
-    NSString *_prompt;
+    id<MPMediaPickerRemoteViewLoader> _loader;
 }
 
 @property (nonatomic) BOOL allowsPickingMultipleItems;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPMediaPickerControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) unsigned long long mediaTypes; // @synthesize mediaTypes=_mediaTypes;
-@property (copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<MPMediaPickerRemoteViewLoader> loader; // @synthesize loader=_loader;
+@property (readonly, nonatomic) unsigned long long mediaTypes;
+@property (copy, nonatomic) NSString *prompt;
 @property (nonatomic) BOOL showsCloudItems;
 @property (nonatomic) BOOL showsItemsWithProtectedAssets;
+@property (readonly) Class superclass;
 
++ (void)load;
 + (void)preheatMediaPicker;
++ (BOOL)useNewPicker;
 - (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_forceDismissal;
 - (BOOL)_hasAddedRemoteView;
+- (long long)_keynote_preferredInterfaceOrientationForPresentation;
+- (unsigned long long)_keynote_supportedInterfaceOrientations;
+- (long long)_mediaPickerController_preferredInterfaceOrientationForPresentation;
+- (unsigned long long)_mediaPickerController_supportedInterfaceOrientations;
 - (void)_pickerDidCancel;
 - (void)_pickerDidPickItems:(id)arg1;
-- (void)_requestRemoteViewController;
+- (void)_pickerDidPickPlaybackArchive:(id)arg1;
+- (long long)_preferredModalPresentationStyle;
 - (void)_resetRemoteViewController;
-- (void)_sendSettingsToService;
-- (id)_serviceViewControllerProxy;
-- (void)dealloc;
+- (void)_sharedInit;
+- (void)_synchronizeSettings;
+- (id)configuration;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithConfiguration:(id)arg1;
 - (id)initWithMediaTypes:(unsigned long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initWithSupportedTypeIdentifiers:(id)arg1 selectionMode:(long long)arg2;
+- (long long)modalPresentationStyle;
+- (BOOL)pickingForExternalPlayer;
 - (BOOL)picksSingleCollectionEntity;
+- (long long)preferredInterfaceOrientationForPresentation;
 - (void)remoteMediaPickerDidCancel;
 - (void)remoteMediaPickerDidPickMediaItems:(id)arg1;
+- (void)remoteMediaPickerDidPickPlaybackArchive:(id)arg1;
+- (long long)selectionMode;
+- (void)setPickingForExternalPlayer:(BOOL)arg1;
 - (void)setPicksSingleCollectionEntity:(BOOL)arg1;
+- (void)setShowsCatalogContent:(BOOL)arg1;
 - (void)setWatchCompatibilityVersion:(unsigned int)arg1;
-- (void)viewDidAppear:(BOOL)arg1;
+- (BOOL)showsCatalogContent;
+- (unsigned long long)supportedInterfaceOrientations;
+- (id)typeIdentifiers;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (unsigned int)watchCompatibilityVersion;

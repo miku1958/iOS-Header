@@ -26,7 +26,6 @@
 - (id)_common_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 

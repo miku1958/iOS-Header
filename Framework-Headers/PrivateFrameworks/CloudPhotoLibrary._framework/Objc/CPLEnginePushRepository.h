@@ -47,6 +47,7 @@
 - (BOOL)deleteAllChangesWithError:(id *)arg1;
 - (BOOL)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
 - (BOOL)discardChangeWithScopedIdentifier:(id)arg1 error:(id *)arg2;
+- (unsigned long long)effectiveResourceSizeToUploadForUploadIdentifier:(id)arg1;
 - (BOOL)hasChangesInScopeWithIdentifier:(id)arg1;
 - (BOOL)hasChangesWithScopeFilter:(id)arg1;
 - (BOOL)hasSomeChangeWithScopedIdentifier:(id)arg1;
@@ -61,7 +62,7 @@
 - (BOOL)storeExtractedBatch:(id)arg1 error:(id *)arg2;
 - (id)storedExtractedBatch;
 - (void)updateApproximativeUploadRate:(double)arg1;
-- (void)updateTimingStatisticForKey:(id)arg1 duration:(double)arg2 recordCount:(unsigned long long)arg3 error:(BOOL)arg4;
+- (void)updateTimingStatisticForKey:(id)arg1 duration:(double)arg2 recordCount:(unsigned long long)arg3 error:(BOOL)arg4 cancelled:(BOOL)arg5;
 
 @end
 

@@ -12,6 +12,7 @@
 
 @interface NTPBFeedItem : PBCodable <NSCopying>
 {
+    long long _bodyTextLength;
     unsigned long long _contentType;
     unsigned long long _feedHalfLifeMilliseconds;
     double _globalUserFeedback;
@@ -26,15 +27,16 @@
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
     NSString *_sourceChannelID;
     NSMutableArray *_topicIDs;
-    BOOL _hasCoverArt;
     BOOL _hasThumbnail;
     BOOL _hasVideo;
     BOOL _isBundlePaid;
     BOOL _isExplicitContent;
+    BOOL _isFeatured;
     BOOL _isFromBlockedStorefront;
     BOOL _isHiddenFromAutoFavorites;
     BOOL _isPaid;
     struct {
+        unsigned int bodyTextLength:1;
         unsigned int contentType:1;
         unsigned int feedHalfLifeMilliseconds:1;
         unsigned int globalUserFeedback:1;
@@ -42,11 +44,11 @@
         unsigned int order:1;
         unsigned int publishDateMilliseconds:1;
         unsigned int publisherArticleVersion:1;
-        unsigned int hasCoverArt:1;
         unsigned int hasThumbnail:1;
         unsigned int hasVideo:1;
         unsigned int isBundlePaid:1;
         unsigned int isExplicitContent:1;
+        unsigned int isFeatured:1;
         unsigned int isFromBlockedStorefront:1;
         unsigned int isHiddenFromAutoFavorites:1;
         unsigned int isPaid:1;
@@ -54,23 +56,24 @@
 }
 
 @property (strong, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
+@property (nonatomic) long long bodyTextLength; // @synthesize bodyTextLength=_bodyTextLength;
 @property (strong, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
 @property (nonatomic) unsigned long long contentType; // @synthesize contentType=_contentType;
 @property (nonatomic) unsigned long long feedHalfLifeMilliseconds; // @synthesize feedHalfLifeMilliseconds=_feedHalfLifeMilliseconds;
 @property (strong, nonatomic) NSString *feedID; // @synthesize feedID=_feedID;
 @property (nonatomic) double globalUserFeedback; // @synthesize globalUserFeedback=_globalUserFeedback;
 @property (readonly, nonatomic) BOOL hasArticleID;
+@property (nonatomic) BOOL hasBodyTextLength;
 @property (readonly, nonatomic) BOOL hasClusterID;
 @property (nonatomic) BOOL hasContentType;
-@property (nonatomic) BOOL hasCoverArt; // @synthesize hasCoverArt=_hasCoverArt;
 @property (nonatomic) BOOL hasFeedHalfLifeMilliseconds;
 @property (readonly, nonatomic) BOOL hasFeedID;
 @property (nonatomic) BOOL hasGlobalUserFeedback;
-@property (nonatomic) BOOL hasHasCoverArt;
 @property (nonatomic) BOOL hasHasThumbnail;
 @property (nonatomic) BOOL hasHasVideo;
 @property (nonatomic) BOOL hasIsBundlePaid;
 @property (nonatomic) BOOL hasIsExplicitContent;
+@property (nonatomic) BOOL hasIsFeatured;
 @property (nonatomic) BOOL hasIsFromBlockedStorefront;
 @property (nonatomic) BOOL hasIsHiddenFromAutoFavorites;
 @property (nonatomic) BOOL hasIsPaid;
@@ -85,6 +88,7 @@
 @property (nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property (nonatomic) BOOL isBundlePaid; // @synthesize isBundlePaid=_isBundlePaid;
 @property (nonatomic) BOOL isExplicitContent; // @synthesize isExplicitContent=_isExplicitContent;
+@property (nonatomic) BOOL isFeatured; // @synthesize isFeatured=_isFeatured;
 @property (nonatomic) BOOL isFromBlockedStorefront; // @synthesize isFromBlockedStorefront=_isFromBlockedStorefront;
 @property (nonatomic) BOOL isHiddenFromAutoFavorites; // @synthesize isHiddenFromAutoFavorites=_isHiddenFromAutoFavorites;
 @property (nonatomic) BOOL isPaid; // @synthesize isPaid=_isPaid;

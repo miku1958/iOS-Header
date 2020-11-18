@@ -12,6 +12,7 @@
 
 @interface AXBDisplayFilterManager : NSObject <AXUIClientDelegate>
 {
+    struct __MADisplayFilter *_displayFilterFromLastUpdate;
     BOOL _softwareFiltersEnabled;
     BOOL _didEnableHWFilters;
     BOOL _invertColorsWasEnabled;
@@ -35,6 +36,7 @@
 
 + (void)disableAllFilters;
 + (void)initializeMonitor;
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)_allowSoftwareFilters;
 - (BOOL)_forceSoftwareFilters;
@@ -45,6 +47,8 @@
 - (void)_updateNotificationCache;
 - (void)_updateSettings:(id)arg1;
 - (void)dealloc;
+- (struct __MADisplayFilter *)displayFilterFromLastUpdate;
+- (void)setDisplayFilterFromLastUpdate:(struct __MADisplayFilter *)arg1;
 - (void)updateSettings;
 
 @end

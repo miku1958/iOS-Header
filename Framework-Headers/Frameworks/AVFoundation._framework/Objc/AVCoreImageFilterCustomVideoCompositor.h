@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)cancelAllPendingVideoCompositionRequests;
 - (void)dealloc;
 - (id)defaultCIContext;
-- (void)finalize;
 - (id)init;
 - (void)renderContextChanged:(id)arg1;
 - (void)startVideoCompositionRequest:(id)arg1;

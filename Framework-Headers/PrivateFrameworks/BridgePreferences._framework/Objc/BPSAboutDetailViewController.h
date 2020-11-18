@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BridgePreferences/BPSSetupPageViewController.h>
+#import <OnBoardingKit/OBTextWelcomeController.h>
 
-@class NSArray, NSMutableArray, NSString, UIImage, UIImageView, UILabel, UIScrollView, UIView;
+@class NSArray, NSString, UIImage;
 
-@interface BPSAboutDetailViewController : BPSSetupPageViewController
+@interface BPSAboutDetailViewController : OBTextWelcomeController
 {
     NSString *_headerString;
     NSString *_footerString;
@@ -16,29 +16,15 @@
     NSArray *_paragraphs;
     NSString *_titleString;
     UIImage *_headerGlyph;
-    UIScrollView *_scrollView;
-    UIImageView *_headerGlyphImageView;
-    UILabel *_headerLabel;
-    UILabel *_footerLabel;
-    NSMutableArray *_bulletLabels;
-    NSMutableArray *_paragraphLabels;
-    UIView *_lastViewInContentView;
     CDUnknownBlockType _onDismiss;
 }
 
-@property (strong, nonatomic) NSMutableArray *bulletLabels; // @synthesize bulletLabels=_bulletLabels;
 @property (strong, nonatomic) NSArray *bullets; // @synthesize bullets=_bullets;
-@property (strong, nonatomic) UILabel *footerLabel; // @synthesize footerLabel=_footerLabel;
 @property (strong, nonatomic) NSString *footerString; // @synthesize footerString=_footerString;
 @property (strong, nonatomic) UIImage *headerGlyph; // @synthesize headerGlyph=_headerGlyph;
-@property (strong, nonatomic) UIImageView *headerGlyphImageView; // @synthesize headerGlyphImageView=_headerGlyphImageView;
-@property (strong, nonatomic) UILabel *headerLabel; // @synthesize headerLabel=_headerLabel;
 @property (strong, nonatomic) NSString *headerString; // @synthesize headerString=_headerString;
-@property (strong, nonatomic) UIView *lastViewInContentView; // @synthesize lastViewInContentView=_lastViewInContentView;
 @property (copy, nonatomic) CDUnknownBlockType onDismiss; // @synthesize onDismiss=_onDismiss;
-@property (strong, nonatomic) NSMutableArray *paragraphLabels; // @synthesize paragraphLabels=_paragraphLabels;
 @property (strong, nonatomic) NSArray *paragraphs; // @synthesize paragraphs=_paragraphs;
-@property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
 
 - (void).cxx_destruct;
@@ -47,9 +33,7 @@
 - (id)init;
 - (void)presentWithController:(id)arg1;
 - (void)presentWithController:(id)arg1 onDismiss:(CDUnknownBlockType)arg2;
-- (unsigned long long)supportedInterfaceOrientations;
-- (void)viewDidLayoutSubviews;
-- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewDidLoad;
 
 @end
 

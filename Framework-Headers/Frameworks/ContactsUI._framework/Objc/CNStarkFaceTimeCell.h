@@ -6,33 +6,42 @@
 
 #import <ContactsUI/CNContactCell.h>
 
-@class CNTransportButton, NSDictionary, UILabel;
+#import <ContactsUI/CNStarkActionViewDelegate-Protocol.h>
+
+@class CNStarkActionView, NSDictionary, NSString, UILabel;
 @protocol CNPropertyCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CNStarkFaceTimeCell : CNContactCell
+@interface CNStarkFaceTimeCell : CNContactCell <CNStarkActionViewDelegate>
 {
     id<CNPropertyCellDelegate> _delegate;
     NSDictionary *_labelTextAttributes;
     UILabel *_faceTimeLabel;
-    CNTransportButton *_transportIcon;
+    CNStarkActionView *_actionView;
 }
 
+@property (readonly, nonatomic) CNStarkActionView *actionView; // @synthesize actionView=_actionView;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CNPropertyCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UILabel *faceTimeLabel; // @synthesize faceTimeLabel=_faceTimeLabel;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDictionary *labelTextAttributes; // @synthesize labelTextAttributes=_labelTextAttributes;
-@property (readonly, nonatomic) CNTransportButton *transportIcon; // @synthesize transportIcon=_transportIcon;
+@property (readonly) Class superclass;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_cnui_applyContactStyle;
+- (void)actionViewTapped:(id)arg1;
 - (id)constantConstraints;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)performDefaultAction;
-- (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)tintColorDidChange;
-- (void)transportButtonClicked:(id)arg1;
+- (void)setSeparatorStyle:(long long)arg1;
+- (BOOL)shouldShowStar;
+- (BOOL)supportsTintColorValue;
+- (void)updateTransportButtons;
+- (id)variableConstraints;
 
 @end
 

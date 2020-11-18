@@ -35,6 +35,7 @@
 + (id)documentStateWithContextBefore:(id)arg1 markedText:(id)arg2 selectedRange:(struct _NSRange)arg3 contextAfter:(id)arg4;
 + (id)documentStateWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
 + (BOOL)supportsSecureCoding;
++ (id)unboundedDocumentStateForTestingWithContextBefore:(id)arg1 selectedText:(id)arg2 contextAfter:(id)arg3;
 - (void).cxx_destruct;
 - (BOOL)deletingBackwardsWillRemoveText;
 - (id)description;
@@ -54,6 +55,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContextBefore:(id)arg1 markedText:(id)arg2 selectedText:(id)arg3 contextAfter:(id)arg4 selectedRangeInMarkedText:(struct _NSRange)arg5;
 - (id)initWithText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (id)initWithUnboundedContextBefore:(id)arg1 markedText:(id)arg2 selectedText:(id)arg3 unboundedContextAfter:(id)arg4 selectedRangeInMarkedText:(struct _NSRange)arg5;
 - (unsigned long long)inputIndexWithTerminatorPredicate:(CDUnknownBlockType)arg1;
 - (id)inputStemWithTerminatorPredicate:(CDUnknownBlockType)arg1;
 - (id)inputStringWithTerminatorPredicate:(CDUnknownBlockType)arg1;

@@ -20,6 +20,7 @@
 + (id)localAddress;
 - (void).cxx_destruct;
 - (id)attributeDescriptions;
+- (id)dataUsingEncoding:(unsigned long long)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

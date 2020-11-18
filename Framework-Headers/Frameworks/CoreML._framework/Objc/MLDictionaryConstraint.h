@@ -8,8 +8,9 @@
 
 #import <CoreML/MLFeatureValueConstraint-Protocol.h>
 #import <CoreML/NSCopying-Protocol.h>
+#import <CoreML/NSSecureCoding-Protocol.h>
 
-@interface MLDictionaryConstraint : NSObject <MLFeatureValueConstraint, NSCopying>
+@interface MLDictionaryConstraint : NSObject <MLFeatureValueConstraint, NSCopying, NSSecureCoding>
 {
     long long _keyType;
 }
@@ -18,8 +19,11 @@
 
 + (id)constraintWithInt64Keys;
 + (id)constraintWithStringKeys;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithKeyType:(long long)arg1;
 - (BOOL)isAllowedValue:(id)arg1 error:(id *)arg2;
 

@@ -16,10 +16,10 @@
     struct CGRect _frame;
 }
 
-@property double compressionResistance; // @synthesize compressionResistance=_compressionResistance;
+@property (nonatomic) double compressionResistance; // @synthesize compressionResistance=_compressionResistance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property struct CGRect frame; // @synthesize frame=_frame;
+@property (nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

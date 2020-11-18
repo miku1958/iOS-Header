@@ -33,7 +33,7 @@
 - (unsigned long long)calculateDominantLocationsWithOptions:(id)arg1;
 - (unsigned long long)calculateNumberOfImpossibleTransitions;
 - (unsigned long long)calculateNumberOfNearbyLOIs;
-- (unsigned int)calculateStateModelAvailabilityPrecisionRecallOnDate:(id)arg1 predictedLocations:(id)arg2;
+- (unsigned int)calculateStateModelAvailabilityPrecisionRecallOnDate:(id)arg1 predictedLocations:(id)arg2 isHighConfidenceOnly:(BOOL)arg3;
 - (void)collectMetricsWithIntervalSinceLastUpdate:(double)arg1;
 - (id)findClusterWithLocation:(id)arg1;
 - (id)getAllLOIsWithinDistance:(double)arg1 ofLocation:(id)arg2;
@@ -46,12 +46,11 @@
 - (id)getOOStClusterData:(double)arg1 predictionWindow:(double)arg2 numOfWeeks:(int)arg3 refLoc:(id)arg4;
 - (id)getPredictedExitDatesFromLocation:(id)arg1 onDate:(id)arg2;
 - (id)getPredictedLocationsOfInterestBetweenStartDate:(id)arg1 endDate:(id)arg2;
-- (id)getPredictedLocationsOfInterestOnDate:(id)arg1;
-- (long long)getRoutineModeFromLocation:(id)arg1;
+- (id)getPredictedLocationsOfInterestWithCriteria:(id)arg1;
 - (id)init;
 - (id)initWithLearnedLocationsOfInterest:(id)arg1 metricManager:(id)arg2 queue:(id)arg3;
-- (void)logStateModelAvailabilityMetricWithAvailability:(long long)arg1 precisionRecall:(unsigned int)arg2;
-- (void)logStateModelAvailabilityMetricWithIntervalSinceLastUpdate:(double)arg1;
+- (void)logStateModelAvailabilityMetricWithAvailability:(unsigned long long)arg1 precisionRecall:(unsigned int)arg2;
+- (void)logStateModelAvailabilityMetricWithIntervalSinceLastUpdate:(double)arg1 untilNow:(id)arg2;
 - (void)logStateModelConfidenceMetric;
 - (void)logStateModelDominantPlacesMetric;
 - (void)logStateModelEntryExitsStandardDeviations;

@@ -6,48 +6,47 @@
 
 #import <TemplateKit/TLKView.h>
 
-#import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
+#import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
 @class NSArray, NSString, TLKImage, TLKImageView, TLKKeyValueGridView, TLKStackView;
 
-@interface TLKKeyValueView : TLKView <NUIContainerStackViewDelegate>
+@interface TLKKeyValueView : TLKView <NUIContainerViewDelegate>
 {
-    BOOL _isInMeasurementPass;
     NSArray *_leadingTuples;
     NSArray *_trailingTuples;
     TLKImage *_image;
     TLKKeyValueGridView *_leadingGrid;
     TLKKeyValueGridView *_trailingGrid;
     TLKImageView *_imageView;
-    TLKStackView *_containerView;
+    double _lastMeasuredWidth;
 }
 
-@property (strong) TLKStackView *containerView; // @synthesize containerView=_containerView;
+@property (strong, nonatomic) TLKStackView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) TLKImage *image; // @synthesize image=_image;
-@property (strong) TLKImageView *imageView; // @synthesize imageView=_imageView;
-@property BOOL isInMeasurementPass; // @synthesize isInMeasurementPass=_isInMeasurementPass;
-@property (strong) TLKKeyValueGridView *leadingGrid; // @synthesize leadingGrid=_leadingGrid;
+@property (strong, nonatomic) TLKImageView *imageView; // @synthesize imageView=_imageView;
+@property (nonatomic) double lastMeasuredWidth; // @synthesize lastMeasuredWidth=_lastMeasuredWidth;
+@property (strong, nonatomic) TLKKeyValueGridView *leadingGrid; // @synthesize leadingGrid=_leadingGrid;
 @property (strong, nonatomic) NSArray *leadingTuples; // @synthesize leadingTuples=_leadingTuples;
 @property (readonly) Class superclass;
-@property (strong) TLKKeyValueGridView *trailingGrid; // @synthesize trailingGrid=_trailingGrid;
+@property (strong, nonatomic) TLKKeyValueGridView *trailingGrid; // @synthesize trailingGrid=_trailingGrid;
 @property (strong, nonatomic) NSArray *trailingTuples; // @synthesize trailingTuples=_trailingTuples;
 
 + (unsigned long long)visibleRowsInGrid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_reconfigureForCompressedState;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (BOOL)containerView:(id)arg1 shouldRestartMeasurementDueToCompressionInAxis:(long long)arg2 forReason:(long long)arg3;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (long long)currentStackViewDistribution;
-- (id)init;
-- (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (BOOL)leadingGridIsHidden;
 - (id)leadingTextKeyLabels;
 - (unsigned long long)numberOfVisibleRowsForLeadingGrid;
 - (unsigned long long)numberOfVisibleRowsForTrailingGrid;
 - (void)observedPropertiesChanged;
-- (void)styleDidChange:(unsigned long long)arg1;
+- (id)setupContentView;
 - (BOOL)trailingGridIsHidden;
 
 @end

@@ -6,28 +6,34 @@
 
 #import <PhotosUI/PUPhotosGridViewController.h>
 
+#import <PhotosUI/PUPhotoPickerFileSizeToolbarProviderDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoPickerSelectionHandler-Protocol.h>
 #import <PhotosUI/PUPhotoPickerServicesConsumer-Protocol.h>
 #import <PhotosUI/PUPhotoPickerTestSupportHandler-Protocol.h>
+#import <PhotosUI/PUPhotosGridViewSupplementalToolbarDataSource-Protocol.h>
 
-@class NSArray, NSString, PUUIImagePickerControllerHelper, UIBarButtonItem;
+@class NSArray, NSString, PUPhotoPickerFileSizeToolbarProvider, PUPhotoPickerResizeTaskDescriptor, PUSessionInfo, PUUIImagePickerControllerHelper, UIBarButtonItem;
 @protocol PUPhotoPicker;
 
 __attribute__((visibility("hidden")))
-@interface PUUIMomentsGridViewController : PUPhotosGridViewController <PUPhotoPickerServicesConsumer, PUPhotoPickerSelectionHandler, PUPhotoPickerTestSupportHandler>
+@interface PUUIMomentsGridViewController : PUPhotosGridViewController <PUPhotoPickerFileSizeToolbarProviderDelegate, PUPhotosGridViewSupplementalToolbarDataSource, PUPhotoPickerServicesConsumer, PUPhotoPickerSelectionHandler, PUPhotoPickerTestSupportHandler>
 {
     UIBarButtonItem *_imagePickerCancelButton;
-    UIBarButtonItem *_imagePickerMultipleSelectionDoneButton;
+    UIBarButtonItem *_imagePickerSelectionDoneButton;
     PUUIImagePickerControllerHelper *__imagePickerControllerHelper;
+    PUPhotoPickerFileSizeToolbarProvider *_fileSizePickerToolbarProvider;
     BOOL _didDisappear;
     id<PUPhotoPicker> _photoPicker;
     NSArray *__imagePickerMediaTypes;
     double _lastKnownWidth;
+    PUPhotoPickerResizeTaskDescriptor *_resizeTaskDescriptor;
     struct UIEdgeInsets _lastKnownSafeAreaInsets;
 }
 
 @property (readonly) PUUIImagePickerControllerHelper *_imagePickerControllerHelper;
 @property (copy, nonatomic, setter=_setImagePickerMediaTypes:) NSArray *_imagePickerMediaTypes; // @synthesize _imagePickerMediaTypes=__imagePickerMediaTypes;
+@property (readonly, nonatomic, getter=isAnyAssetDownloading) BOOL anyAssetDownloading;
+@property (readonly, nonatomic, getter=isAnyAssetSelected) BOOL anyAssetSelected; // @dynamic anyAssetSelected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didDisappear; // @synthesize didDisappear=_didDisappear;
@@ -36,11 +42,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double lastKnownWidth; // @synthesize lastKnownWidth=_lastKnownWidth;
 @property (weak, nonatomic) id<PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
 @property (readonly, nonatomic) BOOL referenceValuesDidChange;
+@property (strong, nonatomic) PUPhotoPickerResizeTaskDescriptor *resizeTaskDescriptor; // @synthesize resizeTaskDescriptor=_resizeTaskDescriptor;
+@property (readonly, nonatomic) NSArray *selectedAssets; // @dynamic selectedAssets;
+@property (readonly, nonatomic) PUSessionInfo *sessionInfo;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleImagePickerCancel:(id)arg1;
-- (void)_handleImagePickerMultipleSelectionDone:(id)arg1;
+- (void)_handleImagePickerMultipleSelectionDone;
+- (void)_handleImagePickerSelectionDone:(id)arg1;
+- (void)_handleImagePickerSingleSelectionDone;
 - (void)_scrollToBottomIfNeeded;
 - (void)_setTitle;
 - (BOOL)allowsPeeking;
@@ -52,17 +63,21 @@ __attribute__((visibility("hidden")))
 - (void)handleNavigateToAsset:(id)arg1 inContainer:(id)arg2;
 - (void)handleToggleSelectionOfItemAtIndexPath:(id)arg1;
 - (id)init;
+- (id)initWithModalPresentationStyle:(long long)arg1;
 - (id)initWithSpec:(id)arg1;
 - (BOOL)initiallyScrolledToBottom;
 - (void)loadView;
 - (id)newGridLayout;
 - (void)performPhotoPickerPreviewOfFirstAsset;
 - (void)performPhotoPickerSelection;
+- (void)photoPickerFileSizeToolbarProvider:(id)arg1 didSelectResizeTaskDescriptor:(id)arg2;
+- (void)photoPickerFileSizeToolbarProvider:(id)arg1 presentSizePickerViewController:(id)arg2;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;
 - (void)setPhotoPickerMediaTypes:(id)arg1;
 - (BOOL)shouldPerformAutomaticContentOffsetAdjustment;
 - (BOOL)shouldShowMenu;
+- (BOOL)updateSpec;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

@@ -9,15 +9,25 @@
 @interface SearchUISuggestionCardSectionTableCell : SearchUICardSectionTableCell
 {
     BOOL _sectionHasHeader;
+    int _actualSectionLocation;
 }
 
-@property BOOL sectionHasHeader; // @synthesize sectionHasHeader=_sectionHasHeader;
+@property int actualSectionLocation; // @synthesize actualSectionLocation=_actualSectionLocation;
+@property (nonatomic) BOOL sectionHasHeader; // @synthesize sectionHasHeader=_sectionHasHeader;
 
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (BOOL)_insetsBackground;
 - (BOOL)_isUsingOldStyleMultiselection;
 - (void)_setShouldHaveFullLengthBottomSeparator:(BOOL)arg1;
+- (void)_setShouldHaveFullLengthTopSeparator:(BOOL)arg1;
 - (BOOL)_showSeparatorAtTopOfSection;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (void)didMoveToWindow;
+- (BOOL)isDark;
+- (int)sectionLocation;
+- (void)setSectionLocation:(int)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldDrawBackgroundColor;
+- (BOOL)shouldDrawFullLengthSeparatorForSectionLocation:(int)arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
 
 @end
 

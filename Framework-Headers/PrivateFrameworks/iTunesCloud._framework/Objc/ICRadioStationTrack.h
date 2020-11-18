@@ -11,6 +11,7 @@
 @interface ICRadioStationTrack : NSObject
 {
     NSDictionary *_responseDictionary;
+    long long _responseVersion;
     NSDate *_expirationDate;
     ICRadioStationTrack *_parentTrack;
 }
@@ -32,7 +33,8 @@
 
 + (id)flattenedTracksWithTracks:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithResponseDictionary:(id)arg1 expirationDate:(id)arg2;
+- (id)_hlsAssetFromAssetDictionary:(id)arg1;
+- (id)initWithResponseDictionary:(id)arg1 responseVersion:(long long)arg2 expirationDate:(id)arg3;
 
 @end
 

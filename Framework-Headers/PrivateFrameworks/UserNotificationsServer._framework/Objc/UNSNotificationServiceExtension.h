@@ -11,13 +11,14 @@
 
 @interface UNSNotificationServiceExtension : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
     NSExtension *_extension;
     double _serviceTime;
     double _graceTime;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, nonatomic) LSPlugInKitProxy *proxy; // @dynamic proxy;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (void)_allowAccessToNotificationCenterForServiceExtensionWithIdentifier:(id)arg1;
 + (void)_disallowAccessToNotificationCenterForServiceExtensionWithIdentifier:(id)arg1;

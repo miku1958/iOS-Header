@@ -8,12 +8,13 @@
 
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKDevice, NSArray, NSNumber, NSString;
+@class AKAnisetteData, AKAnisetteProvisioningController, AKAttestationData, AKDevice, NSArray, NSNumber, NSString;
 @protocol AKAnisetteServiceProtocol;
 
 @interface AKAppleIDServerResourceLoadDelegate : NSObject <NSSecureCoding>
 {
     NSString *_altDSID;
+    AKAnisetteProvisioningController *_proxiedProvisioningController;
     BOOL _shouldSendEphemeralAuthHeader;
     BOOL _shouldSendICSCIntentHeader;
     BOOL _shouldSendLocalUserHasAppleIDLoginHeader;
@@ -30,16 +31,21 @@
     NSString *_identityToken;
     NSString *_proxyAppName;
     NSString *_clientAppName;
+    NSString *_appProvidedContext;
     NSNumber *_hasEmptyPasswordOverride;
     NSString *_securityUpgradeContext;
     NSString *_followupItems;
     AKDevice *_proxiedDevice;
+    NSString *_proxiedAltDSID;
+    NSString *_proxiedIdentityToken;
     id<AKAnisetteServiceProtocol> _anisetteDataProvider;
     AKAnisetteData *_proxiedDeviceAnisetteData;
+    AKAttestationData *_proxiedDeviceAttestationData;
 }
 
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (strong, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
+@property (copy, nonatomic) NSString *appProvidedContext; // @synthesize appProvidedContext=_appProvidedContext;
 @property (copy, nonatomic) NSString *clientAppName; // @synthesize clientAppName=_clientAppName;
 @property (copy, nonatomic) NSString *continuationToken; // @synthesize continuationToken=_continuationToken;
 @property (copy, nonatomic) NSString *followupItems; // @synthesize followupItems=_followupItems;
@@ -50,8 +56,11 @@
 @property (copy, nonatomic) NSString *passwordResetToken; // @synthesize passwordResetToken=_passwordResetToken;
 @property (copy, nonatomic) NSArray *phoneInformation; // @synthesize phoneInformation=_phoneInformation;
 @property (copy, nonatomic) NSString *phoneNumberCertificate; // @synthesize phoneNumberCertificate=_phoneNumberCertificate;
+@property (strong, nonatomic) NSString *proxiedAltDSID; // @synthesize proxiedAltDSID=_proxiedAltDSID;
 @property (strong, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
 @property (strong, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
+@property (strong, nonatomic) AKAttestationData *proxiedDeviceAttestationData; // @synthesize proxiedDeviceAttestationData=_proxiedDeviceAttestationData;
+@property (strong, nonatomic) NSString *proxiedIdentityToken; // @synthesize proxiedIdentityToken=_proxiedIdentityToken;
 @property (copy, nonatomic) NSString *proxyAppName; // @synthesize proxyAppName=_proxyAppName;
 @property (copy, nonatomic) NSString *securityUpgradeContext; // @synthesize securityUpgradeContext=_securityUpgradeContext;
 @property (copy, nonatomic) NSString *serviceToken; // @synthesize serviceToken=_serviceToken;
@@ -67,8 +76,10 @@
 + (unsigned long long)signalFromServerResponse:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_proxiedProvisioningController;
 - (void)_signRequest:(id)arg1;
 - (void)_signWithFeatureOptInHeaders:(id)arg1;
+- (void)_signWithProxiedDeviceHeaders:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAltDSID:(id)arg1 identityToken:(id)arg2;
 - (id)initWithCoder:(id)arg1;
@@ -79,6 +90,7 @@
 - (void)signRequest:(id)arg1;
 - (void)signRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)signRequestWithCommonHeaders:(id)arg1;
+- (id)signingController;
 
 @end
 

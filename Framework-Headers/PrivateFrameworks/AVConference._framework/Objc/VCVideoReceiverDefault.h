@@ -6,12 +6,14 @@
 
 #import <AVConference/VCVideoReceiverBase.h>
 
-@class VideoAttributes;
+@class VCDisplayLink, VCVideoStreamRateAdaptationFeedbackOnly, VideoAttributes;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoReceiverDefault : VCVideoReceiverBase
 {
+    struct tagVCVideoReceiverConfig _videoReceiverConfig;
     struct tagHANDLE *_videoReceiverHandle;
+    struct tagHANDLE *_videoTransmitterHandle;
     long long _streamToken;
     void *_controlInfoGenerator;
     unsigned int remoteFrameWidth;
@@ -21,19 +23,23 @@ __attribute__((visibility("hidden")))
     BOOL _shouldEnableFaceZoom;
     double _lastKeyFrameRequestTime;
     unsigned short _lastKeyFrameRequestStreamID;
+    VCVideoStreamRateAdaptationFeedbackOnly *_rateAdaptation;
+    VCDisplayLink *_displayLink;
 }
 
 @property (strong) VideoAttributes *remoteVideoAttributes; // @synthesize remoteVideoAttributes;
 @property (nonatomic) BOOL shouldEnableFaceZoom; // @synthesize shouldEnableFaceZoom=_shouldEnableFaceZoom;
 
-- (void)collectChannelMetrics:(CDStruct_1c8e0384 *)arg1 interval:(float)arg2;
+- (void)collectChannelMetrics:(CDStruct_3ab08b48 *)arg1 interval:(float)arg2;
 - (void)dealloc;
 - (void)didSwitchFromStreamID:(unsigned short)arg1 toStreamID:(unsigned short)arg2;
+- (void)displayLinkTick:(id)arg1;
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)handleKeyFrameRequestWithSizeAndFistMBs:(unsigned short *)arg1 count:(int)arg2 didReceiveRTCPFB:(BOOL)arg3 didReceiveFIR:(BOOL)arg4;
 - (void)handleRemoteFrame:(struct __CVBuffer *)arg1 timestamp:(CDStruct_1b6d18a9)arg2 cameraStatusBits:(unsigned char)arg3;
 - (void)handleRequestingKeyFrameGenerationWithStreamID:(unsigned short)arg1;
-- (id)initWithConfig:(struct tagVCVideoReceiverConfig *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 statisticsCollector:(id)arg4;
+- (id)initWithConfig:(struct tagVCVideoReceiverConfig *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 statisticsCollector:(id)arg4 transmitterHandle:(struct tagHANDLE *)arg5;
+- (unsigned int)lastDisplayedFrameRTPTimestamp;
 - (double)lastReceivedVideoRTCPPacketTime;
 - (double)lastReceivedVideoRTPPacketTime;
 - (void)pauseVideo;

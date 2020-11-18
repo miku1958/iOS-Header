@@ -6,40 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSMutableSet;
+@class NSArray, NSString;
 
 @interface NTKLabelCache : NSObject
 {
-    NSMutableDictionary *_atlases;
-    NSMutableSet *_preloadSet;
+    NSArray *_supportedLanguageCodes;
+    NSString *_currentLanguageCode;
 }
 
-+ (void)_purgeCache;
-+ (id)labelForDevice:(id)arg1 faceStyle:(long long)arg2 number:(unsigned long long)arg3 fontSize:(double)arg4 paddedWithZeros:(BOOL)arg5;
-+ (id)labelForDevice:(id)arg1 text:(id)arg2 font:(long long)arg3 modifier:(id)arg4 padWithZeroes:(BOOL)arg5 filter:(BOOL)arg6;
-+ (BOOL)localeChanged;
-+ (id)numeralsSetFromCurrentLocale;
-+ (void)primeForDevice:(id)arg1;
-+ (BOOL)setNumeralsSet:(id)arg1;
-+ (id)versionFilePath;
-+ (void)wipe;
++ (id)sharedCache;
 - (void).cxx_destruct;
-- (id)_currentImageSuffixesForDevice:(id)arg1;
-- (void)_exportTextureAtlasForDevice:(id)arg1 forFont:(long long)arg2 modifier:(id)arg3 values:(id)arg4 padWithZeroes:(BOOL)arg5 preload:(BOOL)arg6;
-- (void)_exportTextureAtlasForFaceStyle:(long long)arg1 forDevice:(id)arg2;
-- (id)_keyForLabelWithFont:(long long)arg1 fontSize:(double)arg2 padWithZeroes:(BOOL)arg3;
-- (id)_keyForLabelWithFont:(long long)arg1 modifier:(id)arg2 padWithZeroes:(BOOL)arg3;
-- (id)_labelForDevice:(id)arg1 faceStyle:(long long)arg2 number:(unsigned long long)arg3 fontSize:(double)arg4 paddedWithZeros:(BOOL)arg5;
-- (id)_labelForDevice:(id)arg1 text:(id)arg2 font:(long long)arg3 modifier:(id)arg4 padWithZeroes:(BOOL)arg5 filter:(BOOL)arg6;
-- (void)_loadAtlases;
+- (void)_legacy_removeOldAtlases;
+- (id)_loadTextureForDevice:(id)arg1 withName:(id)arg2;
 - (BOOL)_localeChanged;
 - (id)_nameForFaceStyle:(long long)arg1;
-- (void)_primeForDevice:(id)arg1 font:(long long)arg2 modifier:(id)arg3 values:(id)arg4 padWithZeroes:(BOOL)arg5 preload:(BOOL)arg6;
-- (id)_supportedImageSuffixesForDevice:(id)arg1;
-- (id)_textureForDevice:(id)arg1 text:(id)arg2 font:(long long)arg3 modifier:(id)arg4 padWithZeroes:(BOOL)arg5;
-- (void)checkVersion;
 - (void)dealloc;
+- (BOOL)forceLocaleUpdate;
 - (id)init;
+- (id)labelForDevice:(id)arg1 faceStyle:(long long)arg2 number:(unsigned long long)arg3 fontSize:(double)arg4 paddedWithZeros:(BOOL)arg5;
+- (id)labelForDevice:(id)arg1 text:(id)arg2 font:(long long)arg3 modifier:(id)arg4 padWithZeroes:(BOOL)arg5 filter:(BOOL)arg6;
+- (BOOL)setCurrentLanguageCode:(id)arg1;
 
 @end
 

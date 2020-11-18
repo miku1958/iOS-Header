@@ -84,11 +84,13 @@
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
 @property (readonly, nonatomic) UITextPosition *endOfDocument; // @dynamic endOfDocument;
 @property (readonly, nonatomic, getter=_fieldEditor) _MFAtomFieldEditor *fieldEditor;
+@property (nonatomic) struct UIEdgeInsets floatingKeyboardEdgeInsets;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (nonatomic) BOOL forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL forceFloatingKeyboard;
 @property (nonatomic) BOOL hasDefaultContents;
 @property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
@@ -129,6 +131,7 @@
 @property (nonatomic) long long selectionGranularity;
 @property (strong, nonatomic) UIColor *selectionHighlightColor;
 @property (nonatomic) int shortcutConversionType;
+@property (nonatomic) BOOL showDictationButton;
 @property (nonatomic) long long smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType;
 @property (nonatomic) long long smartQuotesType;
@@ -152,6 +155,7 @@
 @property (nonatomic) long long trailingViewMode; // @synthesize trailingViewMode=_trailingViewMode;
 @property (strong, nonatomic) UIColor *underlineColorForSpelling;
 @property (strong, nonatomic) UIColor *underlineColorForTextAlternatives;
+@property (nonatomic) BOOL useAutomaticEndpointing;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange;
 

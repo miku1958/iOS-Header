@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSNumber *interstitialDisabled;
 @property (copy, nonatomic) NSString *localizedAppName;
 @property (copy, nonatomic) NSDictionary *parameters;
+@property (copy, nonatomic) NSNumber *prefersExecutionOnCompanion;
 @property (copy, nonatomic) NSString *responseTemplate;
 @property (copy, nonatomic) NSArray *steps;
 @property (nonatomic) long long toggleState;

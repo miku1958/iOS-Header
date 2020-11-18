@@ -17,6 +17,7 @@
     struct {
         unsigned int phase:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _phase;
     NSArray *_additionalActionItems;
     _INPBRideCompletionStatus *_completionStatus;
@@ -34,6 +35,7 @@
     NSArray *_waypoints;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *additionalActionItems; // @synthesize additionalActionItems=_additionalActionItems;
 @property (readonly, nonatomic) unsigned long long additionalActionItemsCount;
 @property (strong, nonatomic) _INPBRideCompletionStatus *completionStatus; // @synthesize completionStatus=_completionStatus;
@@ -70,6 +72,7 @@
 @property (readonly, nonatomic) unsigned long long waypointsCount;
 
 + (Class)additionalActionItemsType;
++ (BOOL)supportsSecureCoding;
 + (Class)waypointsType;
 - (void).cxx_destruct;
 - (int)StringAsPhase:(id)arg1;
@@ -80,6 +83,8 @@
 - (void)clearWaypoints;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)phaseAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;

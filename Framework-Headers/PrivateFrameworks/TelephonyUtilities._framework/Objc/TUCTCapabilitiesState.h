@@ -7,12 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <TelephonyUtilities/NSCopying-Protocol.h>
-#import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 #import <TelephonyUtilities/TUPubliclyAccessibleCopying-Protocol.h>
+#import <TelephonyUtilities/TUSecureCoding-Protocol.h>
 
 @class NSData, NSString, NSURL, TUCTCapabilityInfo;
 
-@interface TUCTCapabilitiesState : NSObject <NSSecureCoding, NSCopying, TUPubliclyAccessibleCopying>
+@interface TUCTCapabilitiesState : NSObject <NSCopying, TUPubliclyAccessibleCopying, TUSecureCoding>
 {
     BOOL _provisioningURLInvalid;
     BOOL _supported;
@@ -45,11 +45,17 @@
 @property (nonatomic, getter=isSupported) BOOL supported; // @synthesize supported=_supported;
 
 + (BOOL)supportsSecureCoding;
++ (id)unarchivedObjectClasses;
++ (id)unarchivedObjectFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (id)archivedDataWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithCapabilityInfo:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidateProvisioningURL;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToCapabilitiesState:(id)arg1;
 - (id)publiclyAccessibleCopy;
 - (id)publiclyAccessibleCopyWithZone:(struct _NSZone *)arg1;
 

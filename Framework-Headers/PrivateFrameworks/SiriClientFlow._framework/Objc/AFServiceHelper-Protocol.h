@@ -16,5 +16,7 @@
 - (BOOL)isTimeoutSuspended;
 - (BOOL)openSensitiveURL:(NSURL *)arg1;
 - (AFPeerInfo *)peerInfoForCurrentCommand;
+- (void)prepareForAudioHandoffFailedWithCompletion:(void (^)(void))arg1;
+- (void)prepareForAudioHandoffWithCompletion:(void (^)(BOOL))arg1;
 @end
 

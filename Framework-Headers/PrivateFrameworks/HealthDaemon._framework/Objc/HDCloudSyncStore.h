@@ -15,7 +15,9 @@
 {
     long long _syncProvenance;
     long long _syncEpoch;
+    int _syncProtocolVersion;
     BOOL _canPush;
+    BOOL _syncTombstonesOnly;
     NSUUID *_storeIdentifier;
     NSString *_ownerIdentifier;
     NSString *_containerIdentifier;
@@ -38,13 +40,13 @@
 @property (readonly, copy, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property (readonly) Class superclass;
 @property (readonly) long long syncStoreType;
+@property (readonly, nonatomic) BOOL syncTombstonesOnly; // @synthesize syncTombstonesOnly=_syncTombstonesOnly;
 @property (strong, nonatomic) CKRecordZoneID *zoneID; // @synthesize zoneID=_zoneID;
 
 + (void)samplesDeletedInProfile:(id)arg1 byUser:(BOOL)arg2;
 + (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 error:(id *)arg6;
 + (id)syncStoreForProfile:(id)arg1 storeIdentifier:(id)arg2 syncCircleName:(id)arg3 ownerIdentifier:(id)arg4 containerIdentifier:(id)arg5 sharingIdentifier:(id)arg6 predicate:(id)arg7 error:(id *)arg8;
 - (void).cxx_destruct;
-- (id)_excludedSyncEntities;
 - (BOOL)canRecieveSyncObjectsForEntityClass:(Class)arg1;
 - (BOOL)clearAllSyncAnchorsWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,6 +59,7 @@
 - (BOOL)persistState:(id)arg1 error:(id *)arg2;
 - (id)persistedStateWithError:(id *)arg1;
 - (id)receivedSyncAnchorMapWithError:(id *)arg1;
+- (BOOL)replaceFrozenAnchorMap:(id)arg1 updateDate:(id)arg2 error:(id *)arg3;
 - (BOOL)replacePersistedAnchorMap:(id)arg1 error:(id *)arg2;
 - (BOOL)resetReceivedSyncAnchorMapWithError:(id *)arg1;
 - (void)setExpectedSequenceNumber:(long long)arg1 forSyncEntityClass:(Class)arg2;
@@ -68,6 +71,8 @@
 - (long long)syncProvenance;
 - (id)syncStoreDefaultSourceBundleIdentifier;
 - (id)syncStoreForEpoch:(long long)arg1;
+- (id)syncStoreForProtocolVersion:(int)arg1;
+- (id)syncStoreForTombstoneSyncOnly:(BOOL)arg1;
 - (id)syncStoreIdentifier;
 
 @end

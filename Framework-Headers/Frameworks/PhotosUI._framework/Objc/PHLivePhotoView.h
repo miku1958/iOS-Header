@@ -7,11 +7,12 @@
 #import <UIKit/UIView.h>
 
 #import <PhotosUI/ISChangeObserver-Protocol.h>
+#import <PhotosUI/PXLivePhotoView-Protocol.h>
 
 @class ISLivePhotoPlayer, ISLivePhotoUIView, ISPlayerItem, NSString, PHLivePhoto, UIGestureRecognizer;
 @protocol PHLivePhotoViewDelegate;
 
-@interface PHLivePhotoView : UIView <ISChangeObserver>
+@interface PHLivePhotoView : UIView <PXLivePhotoView, ISChangeObserver>
 {
     struct {
         BOOL respondsToWillBeginPlaybackWithStyle;
@@ -54,6 +55,7 @@
 @property (nonatomic) struct CGImage *overridePhoto;
 @property (strong, nonatomic) UIView *photoView; // @synthesize photoView=_photoView;
 @property (readonly, nonatomic) UIGestureRecognizer *playbackGestureRecognizer;
+@property (strong, nonatomic) ISLivePhotoPlayer *player;
 @property (strong, nonatomic) ISLivePhotoPlayer *player; // @synthesize player=_player;
 @property (strong, nonatomic) ISLivePhotoUIView *playerView; // @synthesize playerView=_playerView;
 @property (nonatomic) struct CGPoint scaleAnchorOffset; // @synthesize scaleAnchorOffset=_scaleAnchorOffset;

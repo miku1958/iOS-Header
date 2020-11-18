@@ -37,6 +37,7 @@
 - (id)initWithDescriptor:(id)arg1;
 - (id)initWithDescriptor:(id)arg1 client:(id)arg2;
 - (BOOL)refreshCarrierToken;
+- (id)typeAllocationCode;
 
 @end
 

@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (struct UIEdgeInsets)_concreteDefaultLayoutMargins;
+- (id)_headerFooterView;
 - (void)_updateConstraintsIfNeededWithViewForVariableChangeNotifications:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setBackgroundColor:(id)arg1;

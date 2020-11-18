@@ -47,7 +47,6 @@
 + (BOOL)isMemberOfClass:(Class)arg1;
 + (BOOL)isProxy;
 + (BOOL)isSubclassOfClass:(Class)arg1;
-+ (void)load;
 + (CDUnknownFunctionPointerType)methodForSelector:(SEL)arg1;
 + (id)methodSignatureForSelector:(SEL)arg1;
 + (id)mutableCopy;

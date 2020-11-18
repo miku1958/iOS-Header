@@ -8,7 +8,7 @@
 
 #import <Metal/MTLComputePipelineState-Protocol.h>
 
-@class MTLIndirectArgumentBufferEmulationData, NSString;
+@class MTLDebugInstrumentationData, MTLIndirectArgumentBufferEmulationData, NSString;
 @protocol MTLDevice;
 
 @interface _MTLComputePipelineState : NSObject <MTLComputePipelineState>
@@ -16,25 +16,29 @@
     NSString *_label;
     id<MTLDevice> _device;
     MTLIndirectArgumentBufferEmulationData *_iabEmulationData;
+    MTLDebugInstrumentationData *_debugInstrumentationData;
     BOOL _supportIndirectCommandBuffers;
-    unsigned long long _uniqueIdentifier;
+    unsigned long long _resourceIndex;
 }
 
 @property (strong, nonatomic) MTLIndirectArgumentBufferEmulationData *IABEmulationData; // @synthesize IABEmulationData=_iabEmulationData;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) MTLDebugInstrumentationData *debugInstrumentationData; // @synthesize debugInstrumentationData=_debugInstrumentationData;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *label; // @synthesize label=_label;
 @property (readonly) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
+@property (nonatomic) unsigned long long resourceIndex; // @synthesize resourceIndex=_resourceIndex;
 @property (readonly) unsigned long long staticThreadgroupMemoryLength; // @dynamic staticThreadgroupMemoryLength;
 @property (readonly) Class superclass;
+@property (readonly) BOOL supportIndirectCommandBuffers;
 @property (readonly) unsigned long long threadExecutionWidth; // @dynamic threadExecutionWidth;
 @property (readonly) unsigned long long uniqueIdentifier;
 
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
-- (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;
+- (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_da2e99ad)arg1;
 - (id)initWithDevice:(id)arg1 pipelineStateDescriptor:(id)arg2;
 
 @end

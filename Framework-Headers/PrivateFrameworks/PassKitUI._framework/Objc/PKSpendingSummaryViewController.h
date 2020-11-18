@@ -30,7 +30,6 @@
     BOOL _transitioningMode;
     BOOL _isScrolling;
     BOOL _isDragging;
-    BOOL _navigationBarOpaque;
     BOOL _hasPrefetchedLeft;
     BOOL _hasPrefetchedRight;
     UIBarButtonItem *_changeModeButton;
@@ -89,8 +88,6 @@
 - (id)initWithPaymentPass:(id)arg1 account:(id)arg2 fetcher:(id)arg3 weeks:(id)arg4 months:(id)arg5 type:(unsigned long long)arg6 unit:(unsigned long long)arg7 currentMonthTransactions:(id)arg8 upcomingScheduledPayments:(id)arg9;
 - (void)invalidatedSpendingSummaryOfType:(unsigned long long)arg1 startingWithDate:(id)arg2;
 - (void)invalidatedSummariesAvailable;
-- (double)pkui_preferredNavigationBarBackgroundOpacity;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

@@ -7,6 +7,10 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (CPLArchiver)
+- (id)cplQueryCursorDescription;
+- (id)cplQueryCursorSimpleDescription;
+- (id)cplSyncAnchorDescription;
+- (id)cplSyncAnchorSimpleDescription;
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
 @end

@@ -7,20 +7,18 @@
 #import <InstallCoordination/IXAppInstallCoordinator.h>
 
 #import <InstallCoordination/IXCoordinatorWithAppAssetPromise-Protocol.h>
-#import <InstallCoordination/IXCoordinatorWithAutoEnablingExtensionTypes-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithInstallOptions-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithUserDataPromise-Protocol.h>
 
 @class NSString;
 
-@interface IXRestoringAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithAppAssetPromise, IXCoordinatorWithInstallOptions, IXCoordinatorWithAutoEnablingExtensionTypes, IXCoordinatorWithUserDataPromise>
+@interface IXRestoringAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithAppAssetPromise, IXCoordinatorWithInstallOptions, IXCoordinatorWithUserDataPromise>
 {
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAppAssetPromise;
-@property (readonly, nonatomic) BOOL hasAutoEnabledExtensionTypes;
 @property (readonly, nonatomic) BOOL hasInstallOptions;
 @property (readonly, nonatomic) BOOL hasUserDataPromise;
 @property (readonly) unsigned long long hash;
@@ -29,16 +27,7 @@
 + (id)coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 createIfNotExisting:(BOOL)arg3 created:(BOOL *)arg4 error:(id *)arg5;
 + (void)enumerateCoordinatorsUsingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)enumerateCoordinatorsWithError:(id *)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (BOOL)appAssetPromiseHasBegunFulfillment:(BOOL *)arg1 error:(id *)arg2;
-- (unsigned long long)appAssetPromiseResponsibleClientWithError:(id *)arg1;
-- (id)appAssetPromiseWithError:(id *)arg1;
-- (BOOL)setAppAssetPromise:(id)arg1 error:(id *)arg2;
-- (BOOL)setAppAssetPromiseResponsibleClient:(unsigned long long)arg1 error:(id *)arg2;
-- (BOOL)setAutoEnabledExtensionTypes:(id)arg1 error:(id *)arg2;
-- (BOOL)setInstallOptions:(id)arg1 error:(id *)arg2;
-- (BOOL)setUserDataPromise:(id)arg1 error:(id *)arg2;
-- (id)userDataPromiseWithError:(id *)arg1;
-- (id)userDataRestoreShouldBegin:(BOOL *)arg1;
++ (id)existingCoordinatorForAppWithBundleID:(id)arg1 error:(id *)arg2;
 - (id)validInstallTypes;
 
 @end

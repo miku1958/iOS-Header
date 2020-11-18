@@ -15,7 +15,6 @@
 @interface HMDCloudDataSyncStateFilter : HMDMessageFilter <HMFMessageReceiver, HMFTimerDelegate>
 {
     BOOL _decryptionFailed;
-    BOOL _deviceSetupRunning;
     BOOL _keychainSyncEnabled;
     BOOL _keychainSyncRequiredPopShown;
     BOOL _iCloudSwitchRequiredPopShown;
@@ -28,7 +27,6 @@
     BOOL _resetConfigDisplayTimeHasElapsed;
     BOOL _keychainSyncPeerAvailable;
     BOOL _cloudDataSyncPeerAvailable;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSUUID *_uuid;
     HMFMessageDispatcher *_msgDispatcher;
     NSObject<OS_dispatch_source> *_popupTimer;
@@ -50,7 +48,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL decryptionFailed; // @synthesize decryptionFailed=_decryptionFailed;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL deviceSetupRunning; // @synthesize deviceSetupRunning=_deviceSetupRunning;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (nonatomic) BOOL iCloudAccountActive; // @synthesize iCloudAccountActive=_iCloudAccountActive;
@@ -66,7 +63,6 @@
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (nonatomic) BOOL networkConnectivityAvailable; // @synthesize networkConnectivityAvailable=_networkConnectivityAvailable;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *popupTimer; // @synthesize popupTimer=_popupTimer;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic) double remainingDataSyncPeriod; // @synthesize remainingDataSyncPeriod=_remainingDataSyncPeriod;
 @property (nonatomic) double remainingResetConfigDisplayPeriod; // @synthesize remainingResetConfigDisplayPeriod=_remainingResetConfigDisplayPeriod;
 @property (nonatomic) BOOL resetConfigDisplayTimeHasElapsed; // @synthesize resetConfigDisplayTimeHasElapsed=_resetConfigDisplayTimeHasElapsed;
@@ -77,9 +73,8 @@
 @property (nonatomic) long long totalHomes; // @synthesize totalHomes=_totalHomes;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
-+ (BOOL)isWhitelistedRemoteTransportMessage:(id)arg1;
++ (BOOL)isWhitelistedMessage:(id)arg1;
 - (void).cxx_destruct;
-- (void)__handleDeviceSetupRunningUpdated;
 - (void)_clearResetConfigDisplayTimer;
 - (BOOL)_cloudSyncinProgressCheck:(id)arg1 supressPopup:(BOOL)arg2 sendCanceledError:(BOOL *)arg3 dataSyncState:(unsigned long long *)arg4;
 - (void)_handleAccountStatusChanged:(id)arg1;

@@ -11,14 +11,13 @@
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSDate, NSDateFormatter, NSString, NTKAstronomyLocationDot, NTKAstronomyRotationModel, NTKAstronomyVistaView, NTKColoringLabel, NTKDateComplicationLabel, NTKDelayedBlock, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, UIImageView, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class MISSING_TYPE, NSArray, NSDate, NSDateFormatter, NSString, NTKAstronomyLocationDot, NTKAstronomyRotationModel, NTKAstronomyVistaView, NTKColoringLabel, NTKDateComplicationLabel, NTKDelayedBlock, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, UIImageView, UIPanGestureRecognizer, UITapGestureRecognizer, UIView;
 
 @interface NTKAstronomyFaceView : NTKDigitalFaceView <NTKTimeView, NTKAstronomyRotationModelObserver, NTKAstronomyVistaViewObserver, UIGestureRecognizerDelegate>
 {
     NTKDigitialUtilitarianFaceViewComplicationFactory *_faceViewComplicationFactory;
     NTKDigitalTimeLabelStyle *_digitalTimeLabelDefaultStyle;
     NTKDigitalTimeLabelStyle *_digitalTimeLabelSmallInUpperRightCornerStyle;
-    NTKDigitalTimeLabel *_digitalTimeLabel;
     struct CGPoint _digitalTimeLabelZoomEndingCenter;
     NTKAstronomyRotationModel *_rotationModel;
     struct CLLocationCoordinate2D _initialCoordinate;
@@ -49,6 +48,8 @@
     long long _animatingToViewMode;
     unsigned long long _vista;
     NSArray *_editingAnimations[3];
+    UIView *_borrowedCircleView;
+    UIView *_borrowedHandsView;
     unsigned int _isAnimatingViewMode:1;
     unsigned int _isContentLoaded:1;
     unsigned int _isLocationCurrent:1;
@@ -63,6 +64,7 @@
 
 - (void).cxx_destruct;
 - (void)_animateTransitionToViewMode:(long long)arg1;
+- (void)_animateTransitionToViewMode:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_applyDataMode;
 - (void)_applyDataModeAnimated:(BOOL)arg1;
 - (void)_applyFromVista:(unsigned long long)arg1 toVista:(unsigned long long)arg2 fraction:(double)arg3;
@@ -75,7 +77,6 @@
 - (void)_asyncUpdateTime;
 - (void)_becameActiveFace;
 - (void)_becameInactiveFace;
-- (void)_bringForegroundViewsToFront;
 - (BOOL)_canEnterInteractiveMode;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
@@ -86,7 +87,7 @@
 - (id)_date;
 - (id)_detachedComplicationDisplays;
 - (unsigned long long)_detentTypeForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (id)_digitalTimeLabelStyle:(long long)arg1;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (void)_disableCrown;
 - (void)_enableCrownForAstronomyVista:(unsigned long long)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
@@ -114,20 +115,23 @@
 - (void)_prepareForEditing;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_prepareWristRaiseAnimation;
-- (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
 - (void)_setAstronomyFaceViewModeDefault;
 - (void)_setAstronomyFaceViewModeInteractive;
 - (void)_setAstronomyFaceViewModeNonInteractive;
 - (void)_setAstronomyFaceViewModeSupplemental;
 - (void)_setIsAnimatingViewMode:(BOOL)arg1;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
+- (void)_setupAstronomyVistaView;
+- (BOOL)_shouldHandleHardwareEvents;
 - (BOOL)_shouldHideStatusBarForViewMode:(long long)arg1;
 - (void)_showLocationDotIfNeeded;
 - (void)_startClockUpdates;
 - (void)_stopClockUpdates;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
+- (unsigned long long)_timeLabelOptions;
+- (BOOL)_timeLabelUsesLegibility;
 - (void)_unloadSnapshotContentViews;
-- (void)_updateDigitalTimeLabelStylesForBounds:(struct CGRect)arg1;
 - (void)_updateLocaleAnimated:(BOOL)arg1;
 - (void)_updateLocation:(id)arg1 lastLocation:(id)arg2;
 - (void)_updateTimeAnimated:(BOOL)arg1;

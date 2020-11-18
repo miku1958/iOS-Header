@@ -20,10 +20,14 @@
     NSNumber *_hasSubscription;
     NSNumber *_eventsWereRemovedFromEventKit;
     NSString *_primaryICloudCalendarAccount;
+    NSNumber *_hasDeferredSync;
+    NSNumber *_hasDeferredProcessStateChanges;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType changeCallback; // @synthesize changeCallback=_changeCallback;
 @property (strong, nonatomic) NSNumber *eventsWereRemovedFromEventKit; // @synthesize eventsWereRemovedFromEventKit=_eventsWereRemovedFromEventKit;
+@property (strong, nonatomic) NSNumber *hasDeferredProcessStateChanges; // @synthesize hasDeferredProcessStateChanges=_hasDeferredProcessStateChanges;
+@property (strong, nonatomic) NSNumber *hasDeferredSync; // @synthesize hasDeferredSync=_hasDeferredSync;
 @property (strong, nonatomic) NSNumber *hasSubscription; // @synthesize hasSubscription=_hasSubscription;
 @property (strong, nonatomic) NSString *primaryICloudCalendarAccount; // @synthesize primaryICloudCalendarAccount=_primaryICloudCalendarAccount;
 @property (strong, nonatomic) NSData *salt; // @synthesize salt=_salt;

@@ -8,5 +8,7 @@
 
 @interface NSMutableArray (AppleMediaServices)
 - (void)ams_addNullableObject:(id)arg1;
+- (void)ams_addObjectsFromNullableArray:(id)arg1;
+- (void)ams_removeObjectsPassingTest:(CDUnknownBlockType)arg1;
 @end
 

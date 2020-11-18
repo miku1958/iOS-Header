@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSArray *indices; // @synthesize indices=_indices;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<HKGraphSeriesBlockCoordinateInfo> userInfo; // @synthesize userInfo=_userInfo;
-@property (nonatomic) NSDate *xValue; // @synthesize xValue=_xValue;
+@property (copy, nonatomic) NSDate *xValue; // @synthesize xValue=_xValue;
 
 - (void).cxx_destruct;
 - (id)allYValues;

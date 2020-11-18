@@ -21,6 +21,10 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)_createAdditionalPCS;
 - (BOOL)_decryptPCS;
+- (void)_decryptZonePCSInSharedDatabase;
+- (void)_decryptZonePCSUsingServiceIdentities;
+- (void)_fetchDepedentPCSInSharedDatabase;
+- (BOOL)_fetchDependentPCS;
 - (BOOL)_fetchPCSDataFromDatabase;
 - (BOOL)_fetchPCSDataFromServer;
 - (void)_handleDecryptedZonePCSData:(id)arg1 withError:(id)arg2;

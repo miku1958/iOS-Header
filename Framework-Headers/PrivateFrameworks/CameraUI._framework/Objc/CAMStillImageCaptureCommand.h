@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) CAMStillImageCaptureRequest *_request; // @synthesize _request=__request;
 
 - (void).cxx_destruct;
+- (void)_sanitizeCapturePhotoSettings:(id)arg1 withContext:(id)arg2;
 - (long long)_videoOrientationForCaptureOrientation:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

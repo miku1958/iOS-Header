@@ -54,10 +54,12 @@
 - (void)handleUpdatedPeerPaymentWebServiceContext:(id)arg1 account:(id)arg2;
 - (id)init;
 - (void)loadWebService;
+- (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
 - (void)sendPaymentOptionsDefaultsToWatch;
 - (void)sendWebServiceContextToWatch;
 - (void)setNewAuthRandom:(CDUnknownBlockType)arg1;
 - (void)showPaymentSetupForAppDisplayName:(id)arg1;
+- (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 
 @end
 

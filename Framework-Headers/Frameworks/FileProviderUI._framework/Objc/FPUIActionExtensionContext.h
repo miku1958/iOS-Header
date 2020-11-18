@@ -6,14 +6,16 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-@class NSString;
+@class NSString, NSURL;
 
 @interface FPUIActionExtensionContext : NSExtensionContext
 {
     NSString *_domainIdentifier;
+    NSURL *_initialURL;
 }
 
 @property (copy) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
+@property (copy) NSURL *initialURL; // @synthesize initialURL=_initialURL;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
@@ -21,6 +23,8 @@
 - (id)_remoteContext;
 - (void)cancelRequestWithError:(id)arg1;
 - (void)completeRequest;
+- (void)completeRequestWithUserInfo:(id)arg1;
+- (void)didEncounterError:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

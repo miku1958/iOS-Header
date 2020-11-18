@@ -8,24 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class GEOPDModuleOptions, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDModule : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
+    NSString *_debugDescription;
+    GEOPDModuleOptions *_options;
     int _type;
     struct {
-        unsigned int type:1;
-    } _has;
+        unsigned int has_type:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_debugDescription:1;
+        unsigned int read_options:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_debugDescription:1;
+        unsigned int wrote_options:1;
+        unsigned int wrote_type:1;
+    } _flags;
 }
 
+@property (strong, nonatomic) NSString *debugDescription;
+@property (readonly, nonatomic) BOOL hasDebugDescription;
+@property (readonly, nonatomic) BOOL hasOptions;
 @property (nonatomic) BOOL hasType;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (strong, nonatomic) GEOPDModuleOptions *options;
+@property (nonatomic) int type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (void)_readDebugDescription;
+- (void)_readOptions;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

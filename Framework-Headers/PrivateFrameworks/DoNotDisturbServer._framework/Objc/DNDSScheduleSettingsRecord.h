@@ -37,6 +37,7 @@
 
 + (id)_recordWithEncodedInfo:(id)arg1 error:(id *)arg2;
 + (id)migrateDictionaryRepresentation:(id)arg1 fromVersionNumber:(unsigned long long)arg2 toVersionNumber:(unsigned long long)arg3;
++ (id)newWithDictionaryRepresentation:(id)arg1;
 + (id)recordForLegacyBehaviorOverride:(id)arg1 lastUpdated:(id)arg2;
 - (void).cxx_destruct;
 - (id)_initWithLastUpdatedTimestamp:(id)arg1 scheduleEnabledSetting:(id)arg2 timePeriodStartTimeHour:(id)arg3 timePeriodStartTimeMinute:(id)arg4 timePeriodEndTimeHour:(id)arg5 timePeriodEndTimeMinute:(id)arg6 bedtimeBehaviorEnabledSetting:(id)arg7;
@@ -44,7 +45,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (id)init;
-- (id)initWithDictionaryRepresentation:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)legacyBehaviorOverride;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

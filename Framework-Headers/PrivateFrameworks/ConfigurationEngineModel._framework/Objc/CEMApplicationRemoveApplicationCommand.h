@@ -12,18 +12,18 @@
 
 @interface CEMApplicationRemoveApplicationCommand : CEMCommandBase <CEMRegisteredTypeProtocol>
 {
-    NSString *_payloadIdentifier;
+    NSString *_payloadBundleIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *payloadIdentifier; // @synthesize payloadIdentifier=_payloadIdentifier;
+@property (copy, nonatomic) NSString *payloadBundleIdentifier; // @synthesize payloadBundleIdentifier=_payloadBundleIdentifier;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withIdentifier:(id)arg2;
-+ (id)buildWithIdentifier:(id)arg1 withIdentifier:(id)arg2;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withBundleIdentifier:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withBundleIdentifier:(id)arg2;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;

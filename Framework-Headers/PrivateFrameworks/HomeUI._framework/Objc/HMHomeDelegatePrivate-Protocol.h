@@ -29,6 +29,11 @@
 - (void)home:(HMHome *)arg1 didUpdateMinimumMediaUserPrivilege:(long long)arg2;
 - (void)home:(HMHome *)arg1 didUpdateReprovisionStateForAccessory:(HMAccessory *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateStateForOutgoingInvitations:(NSArray *)arg2;
+- (void)homeDidEnableMultiUser:(HMHome *)arg1;
+- (void)homeDidSetHasAnyUserAcknowledgedCameraRecordingOnboarding:(HMHome *)arg1;
 - (void)homeDidUpdateApplicationData:(HMHome *)arg1;
+- (void)homeDidUpdateHomeLocationStatus:(HMHome *)arg1;
+- (void)homeDidUpdateNetworkRouterSupport:(HMHome *)arg1;
+- (void)homeDidUpdateProtectionMode:(HMHome *)arg1;
 @end
 

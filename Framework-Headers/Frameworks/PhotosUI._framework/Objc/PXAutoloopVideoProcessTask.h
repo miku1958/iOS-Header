@@ -6,18 +6,13 @@
 
 #import <PhotosUICore/PXAutoloopVideoTask.h>
 
-@class PXAutoloopVideoRecipe;
-
 @interface PXAutoloopVideoProcessTask : PXAutoloopVideoTask
 {
     BOOL _shouldExtractGateFeatures;
-    PXAutoloopVideoRecipe *_outputRecipe;
 }
 
-@property (strong) PXAutoloopVideoRecipe *outputRecipe; // @synthesize outputRecipe=_outputRecipe;
 @property (nonatomic) BOOL shouldExtractGateFeatures; // @synthesize shouldExtractGateFeatures=_shouldExtractGateFeatures;
 
-- (void).cxx_destruct;
 - (void)performTaskWithInput:(id)arg1;
 
 @end

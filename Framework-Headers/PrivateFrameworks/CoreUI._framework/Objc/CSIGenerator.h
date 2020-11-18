@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUIPSDGradient, CUIShapeEffectPreset, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSSet, NSString;
+@class CUIPSDGradient, CUIShapeEffectPreset, MDLAsset, MDLMesh, MDLSubmesh, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSSet, NSString;
 
 @interface CSIGenerator : NSObject
 {
@@ -27,10 +27,12 @@
     BOOL _allowsPaletteImageCompression;
     BOOL _allowsHevcCompression;
     BOOL _allowsDeepmapImageCompression;
+    BOOL _allowsDeepmap2ImageCompression;
     BOOL _optOutOfThinning;
     BOOL _preservedVectorRepresentation;
     BOOL _isFlippable;
     BOOL _isTintable;
+    long long _targetPlatform;
     short _colorSpaceID;
     short _layout;
     unsigned int _scaleFactor;
@@ -61,18 +63,39 @@
     NSString *_systemColorName;
     NSDictionary *_sizesByIndex;
     BOOL _clampMetrics;
+    NSString *_fontName;
+    double _fontSize;
+    double _maxPointSize;
+    double _minPointSize;
+    short _scalingStyle;
+    short _alignment;
     NSDictionary *_renditionProperties;
     int _objectVersion;
     CDStruct_14d5dc5e _transformation;
+    MDLAsset *_modelAsset;
+    NSMutableArray *_meshReferences;
+    MDLMesh *_modelMesh;
+    NSMutableArray *_submeshReferences;
+    MDLSubmesh *_modelSubmesh;
+    NSArray *_vectorSizes;
+    unsigned int _standardVectorSize;
+    float _baseline;
+    float _capHeight;
+    CDStruct_3c058996 _alignmentRectInsets;
 }
 
+@property (nonatomic) short alignment; // @synthesize alignment=_alignment;
+@property (nonatomic) CDStruct_3c058996 alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
+@property (nonatomic) BOOL allowsDeepmap2ImageCompression; // @synthesize allowsDeepmap2ImageCompression=_allowsDeepmap2ImageCompression;
 @property (nonatomic) BOOL allowsDeepmapImageCompression; // @synthesize allowsDeepmapImageCompression=_allowsDeepmapImageCompression;
 @property (nonatomic) BOOL allowsHevcCompression; // @synthesize allowsHevcCompression=_allowsHevcCompression;
 @property (nonatomic) BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
 @property (nonatomic) BOOL allowsOptimalRowbytesPacking; // @synthesize allowsOptimalRowbytesPacking=_allowsOptimalRowbytesPacking;
 @property (nonatomic) BOOL allowsPaletteImageCompression; // @synthesize allowsPaletteImageCompression=_allowsPaletteImageCompression;
 @property (nonatomic) struct CGRect alphaCroppedFrame; // @synthesize alphaCroppedFrame=_alphaCroppedFrame;
+@property (nonatomic) float baseline; // @synthesize baseline=_baseline;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
+@property (nonatomic) float capHeight; // @synthesize capHeight=_capHeight;
 @property (nonatomic) BOOL clampMetrics; // @synthesize clampMetrics=_clampMetrics;
 @property (copy, nonatomic) NSArray *colorComponents; // @synthesize colorComponents=_colorComponents;
 @property (nonatomic) short colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
@@ -82,13 +105,21 @@
 @property (strong, nonatomic) CUIShapeEffectPreset *effectPreset; // @synthesize effectPreset=_effectPreset;
 @property (nonatomic, getter=isExcludedFromContrastFilter) BOOL excludedFromContrastFilter; // @synthesize excludedFromContrastFilter=_isExcludedFromFilter;
 @property (nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
+@property (copy, nonatomic) NSString *fontName; // @synthesize fontName=_fontName;
+@property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (strong, nonatomic) CUIPSDGradient *gradient; // @synthesize gradient=_gradient;
 @property (nonatomic) BOOL isFlippable; // @synthesize isFlippable=_isFlippable;
 @property (nonatomic) BOOL isRenditionFPO; // @synthesize isRenditionFPO=_isFPOHint;
 @property (nonatomic) BOOL isTintable; // @synthesize isTintable=_isTintable;
 @property (nonatomic) BOOL isVectorBased; // @synthesize isVectorBased=_isVectorBased;
 @property (readonly, nonatomic) NSArray *layerReferences; // @synthesize layerReferences=_layerReferences;
+@property (nonatomic) double maxPointSize; // @synthesize maxPointSize=_maxPointSize;
+@property (readonly, nonatomic) NSArray *meshReferences; // @synthesize meshReferences=_meshReferences;
+@property (nonatomic) double minPointSize; // @synthesize minPointSize=_minPointSize;
 @property (readonly, nonatomic) NSArray *mipReferences; // @synthesize mipReferences=_mipReferences;
+@property (copy, nonatomic) MDLAsset *modelAsset; // @synthesize modelAsset=_modelAsset;
+@property (copy, nonatomic) MDLMesh *modelMesh; // @synthesize modelMesh=_modelMesh;
+@property (copy, nonatomic) MDLSubmesh *modelSubmesh; // @synthesize modelSubmesh=_modelSubmesh;
 @property (copy, nonatomic) NSDate *modtime; // @synthesize modtime=_modtime;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int objectVersion; // @synthesize objectVersion=_objectVersion;
@@ -100,14 +131,19 @@
 @property (nonatomic) BOOL preservedVectorRepresentation; // @synthesize preservedVectorRepresentation=_preservedVectorRepresentation;
 @property (copy, nonatomic) NSDictionary *renditionProperties; // @synthesize renditionProperties=_renditionProperties;
 @property (nonatomic) unsigned int scaleFactor; // @synthesize scaleFactor=_scaleFactor;
+@property (nonatomic) short scalingStyle; // @synthesize scalingStyle=_scalingStyle;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (copy, nonatomic) NSDictionary *sizesByIndex; // @synthesize sizesByIndex=_sizesByIndex;
+@property (nonatomic) unsigned int standardVectorSize; // @synthesize standardVectorSize=_standardVectorSize;
+@property (readonly, nonatomic) NSArray *submeshReferences; // @synthesize submeshReferences=_submeshReferences;
+@property long long targetPlatform;
 @property (nonatomic) long long templateRenderingMode; // @synthesize templateRenderingMode=_templateRenderingMode;
 @property (nonatomic) long long textureFormat; // @synthesize textureFormat=_textureFormat;
 @property (nonatomic) long long textureInterpretation; // @synthesize textureInterpretation=_textureInterpretation;
 @property (nonatomic) BOOL textureOpaque; // @synthesize textureOpaque=_textureOpaque;
 @property (nonatomic) CDStruct_14d5dc5e transformation; // @synthesize transformation=_transformation;
 @property (copy, nonatomic) NSString *utiType; // @synthesize utiType=_utiType;
+@property (copy, nonatomic) NSArray *vectorSizes; // @synthesize vectorSizes=_vectorSizes;
 
 + (int)fileEncoding;
 + (void)initialize;
@@ -118,9 +154,11 @@
 - (void)_updateCompressionInfoFor:(id)arg1;
 - (void)addBitmap:(id)arg1;
 - (void)addLayerReference:(id)arg1;
+- (void)addMeshReference:(id)arg1;
 - (void)addMetrics:(CDStruct_1ba92a5e)arg1;
 - (void)addMipReference:(id)arg1;
 - (void)addSliceRect:(struct CGRect)arg1;
+- (void)addSubmeshReference:(id)arg1;
 - (void)dealloc;
 - (void)formatCSIHeader:(struct _csiheader *)arg1;
 - (id)initWithCanvasSize:(struct CGSize)arg1 sliceCount:(unsigned int)arg2 layout:(short)arg3;
@@ -129,10 +167,14 @@
 - (id)initWithExternalReference:(id)arg1 tags:(id)arg2;
 - (id)initWithInternalReferenceRect:(struct CGRect)arg1 layout:(short)arg2;
 - (id)initWithLayerStackData:(id)arg1 withCanvasSize:(struct CGSize)arg2;
+- (id)initWithModelAsset:(id)arg1;
+- (id)initWithModelMesh:(id)arg1;
+- (id)initWithModelSubmesh:(id)arg1;
 - (id)initWithMultisizeImageSetNamed:(id)arg1 sizesByIndex:(id)arg2;
 - (id)initWithNameList:(id)arg1;
 - (id)initWithRawData:(id)arg1 pixelFormat:(unsigned int)arg2 layout:(short)arg3;
 - (id)initWithShapeEffectPreset:(id)arg1 forScaleFactor:(unsigned int)arg2;
+- (id)initWithTextStyleNamed:(id)arg1 fontName:(id)arg2 fontSize:(double)arg3 maxPointSize:(double)arg4 minPointSize:(double)arg5 scalingStyle:(short)arg6 alignment:(short)arg7;
 - (id)initWithTextureForPixelFormat:(long long)arg1;
 - (id)initWithTextureImageWithSize:(struct CGSize)arg1 forPixelFormat:(long long)arg2 cubeMap:(BOOL)arg3;
 - (id)rawData;
@@ -145,6 +187,7 @@
 - (unsigned long long)writeRawDataToData:(id)arg1;
 - (unsigned long long)writeRecognitionObjectToData:(id)arg1;
 - (unsigned long long)writeResourcesToData:(id)arg1;
+- (unsigned long long)writeTextStyleToData:(id)arg1;
 - (unsigned long long)writeTextureToData:(id)arg1;
 
 @end

@@ -8,7 +8,6 @@
 
 @class NSDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface PUSearchZeroKeywordBaseViewModel : NSObject
 {
     long long _itemType;
@@ -25,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)initForTesting;
 - (id)initWithType:(long long)arg1 title:(id)arg2 representedObject:(id)arg3 displayInfo:(id)arg4;
 
 @end

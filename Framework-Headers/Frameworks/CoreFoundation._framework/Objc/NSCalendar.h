@@ -50,11 +50,11 @@
 - (unsigned char)_addComponents:(double *)arg1:(unsigned long long)arg2:(const char *)arg3:(struct __va_list_tag [1])arg4;
 - (unsigned long long)_cfTypeID;
 - (unsigned char)_composeAbsoluteTime:(double *)arg1:(const char *)arg2:(struct __va_list_tag [1])arg3;
+- (id)_copyGregorianStartDate;
 - (id)_copyLocale;
 - (id)_copyTimeZone;
 - (unsigned char)_decomposeAbsoluteTime:(double)arg1:(const char *)arg2:(struct __va_list_tag [1])arg3;
 - (unsigned char)_diffComponents:(double)arg1:(double)arg2:(unsigned long long)arg3:(const char *)arg4:(struct __va_list_tag [1])arg5;
-- (id)_gregorianStartDate;
 - (CDStruct_912cb5d2)_maximumRangeOfUnit:(unsigned long long)arg1;
 - (CDStruct_912cb5d2)_minimumRangeOfUnit:(unsigned long long)arg1;
 - (long long)_ordinalityOfUnit:(unsigned long long)arg1 inUnit:(unsigned long long)arg2 forAT:(double)arg3;

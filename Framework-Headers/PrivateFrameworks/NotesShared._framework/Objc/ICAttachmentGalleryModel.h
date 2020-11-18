@@ -19,6 +19,7 @@
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)addSubAttachment:(id)arg1;
+- (id)additionalIndexableTextContentInNote;
 - (void)attachmentDidRefresh:(BOOL)arg1;
 - (BOOL)attachmentHasMergeableData;
 - (void)attachmentWillRefresh:(BOOL)arg1;
@@ -32,12 +33,17 @@
 - (unsigned long long)indexOfSubAttachmentWithIdentifier:(id)arg1;
 - (void)insertSubAttachment:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)mergeWithMergeableData:(id)arg1;
+- (long long)previewImageOrientation;
 - (id)previewImageTypeUTI;
+- (BOOL)providesStandaloneTitleForNote;
 - (void)removeSubAttachment:(id)arg1;
+- (id)searchableStringArray;
+- (id)searchableTextContent;
 - (short)sectionForSubAttachments;
 - (BOOL)shouldGeneratePreviewAfterChangeInSubAttachmentWithIdentifier:(id)arg1;
 - (BOOL)showThumbnailInNoteList;
 - (id)singleSubAttachmentAtIndex:(unsigned long long)arg1;
+- (id)standaloneTitleForNote;
 - (id)subAttachmentIdentifierAtIndex:(unsigned long long)arg1;
 - (id)subAttachmentIdentifiers;
 - (unsigned long long)subAttachmentsCount;

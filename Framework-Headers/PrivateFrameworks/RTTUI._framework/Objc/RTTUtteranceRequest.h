@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexPath, NSString;
+@class NSIndexPath, NSString, TUCall;
 
 @interface RTTUtteranceRequest : NSObject
 {
     unsigned long long _index;
     NSString *_string;
     NSIndexPath *_cellIndexPath;
+    TUCall *_call;
 }
 
+@property (strong, nonatomic) TUCall *call; // @synthesize call=_call;
 @property (weak, nonatomic) NSIndexPath *cellIndexPath; // @synthesize cellIndexPath=_cellIndexPath;
 @property (nonatomic) unsigned long long index; // @synthesize index=_index;
 @property (strong, nonatomic) NSString *string; // @synthesize string=_string;
 
-+ (id)utteranceRequestWithIndex:(unsigned long long)arg1 forString:(id)arg2 inCellPath:(id)arg3;
++ (id)utteranceRequestWithIndex:(unsigned long long)arg1 forString:(id)arg2 inCellPath:(id)arg3 call:(id)arg4;
 - (void).cxx_destruct;
 - (id)description;
 

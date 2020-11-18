@@ -6,13 +6,13 @@
 
 #import <PlatterKit/PLGlyphControl.h>
 
-#import <UserNotificationsUIKit/NCPreviewInteractionPresenterDelegate-Protocol.h>
+#import <UserNotificationsUIKit/NCClickInteractionPresenterDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class NCPreviewInteractionPresenter, NCToggleControlPair, NSString, UILabel;
+@class NCClickInteractionPresenter, NCToggleControlPair, NSString, UILabel;
 @protocol NCToggleControlDelegate;
 
-@interface NCToggleControl : PLGlyphControl <NCPreviewInteractionPresenterDelegate, PLContentSizeCategoryAdjusting>
+@interface NCToggleControl : PLGlyphControl <NCClickInteractionPresenterDelegate, PLContentSizeCategoryAdjusting>
 {
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _expanded;
@@ -24,7 +24,7 @@
     unsigned long long _toggleControlType;
     UILabel *_titleLabel;
     NCToggleControlPair *_managingPair;
-    NCPreviewInteractionPresenter *_previewInteractionPlatterPresenter;
+    NCClickInteractionPresenter *_previewInteractionPlatterPresenter;
     struct CGSize _cachedEffectiveMaxExpandedSize;
     struct CGSize _cachedEffectiveMaxUnexpandedSize;
 }
@@ -42,21 +42,20 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic, getter=_managingPair, setter=_setManagingPair:) NCToggleControlPair *managingPair; // @synthesize managingPair=_managingPair;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
-@property (strong, nonatomic, getter=_previewInteractionPlatterPresenter) NCPreviewInteractionPresenter *previewInteractionPlatterPresenter; // @synthesize previewInteractionPlatterPresenter=_previewInteractionPlatterPresenter;
+@property (strong, nonatomic, getter=_previewInteractionPlatterPresenter) NCClickInteractionPresenter *previewInteractionPlatterPresenter; // @synthesize previewInteractionPlatterPresenter=_previewInteractionPlatterPresenter;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic, getter=_titleLabel) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (readonly, nonatomic, getter=_toggleControlType) unsigned long long toggleControlType; // @synthesize toggleControlType=_toggleControlType;
 
 + (id)_labelFont:(BOOL)arg1;
-+ (id)dismissControlWithMaterialRecipe:(long long)arg1 backgroundMaterialOptions:(unsigned long long)arg2 overlayMaterialOptions:(unsigned long long)arg3;
++ (id)dismissControlWithMaterialRecipe:(long long)arg1;
 + (double)effectiveHeight:(BOOL)arg1;
 + (void)performWithDefaultExpansionAnimation:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-+ (id)showLessControlWithMaterialRecipe:(long long)arg1 backgroundMaterialOptions:(unsigned long long)arg2 overlayMaterialOptions:(unsigned long long)arg3;
++ (id)showLessControlWithMaterialRecipe:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_configureTitleLabelIfNecessaryWithTitle:(id)arg1;
 - (double)_cornerRadius;
-- (void)_darkerSystemColorsStatusDidChange:(id)arg1;
 - (struct CGSize)_effectiveExpandedSize;
 - (struct CGSize)_effectiveGlyphSize;
 - (double)_effectiveHeight;
@@ -66,23 +65,22 @@
 - (double)_effectiveValueForMinValue:(double)arg1 withFont:(id)arg2;
 - (void)_handleTouchUpInsideWithEvent:(id)arg1;
 - (id)_labelFont;
-- (void)_reduceTransparencyStatusDidChange:(id)arg1;
 - (void)_sendActionsForEvents:(unsigned long long)arg1 withEvent:(id)arg2;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1 whenExpanded:(BOOL)arg2;
 - (struct CGRect)_unexpandedFrame;
 - (void)_updateTitleLabelTextAttributes;
-- (void)_updateTitleLabelVibrantStyling;
+- (void)_updateTitleLabelVisualStyling;
 - (void)addTarget:(id)arg1 forPreviewInteractionPresentedContentWithAction:(SEL)arg2;
 - (BOOL)adjustForContentSizeCategoryChange;
-- (id)containerViewForPreviewInteractionPresenter:(id)arg1;
+- (void)clickInteractionPresenterDidBeginInteraction:(id)arg1;
+- (void)clickInteractionPresenterDidCommitToPresentation:(id)arg1;
+- (void)clickInteractionPresenterDidDismiss:(id)arg1;
+- (void)clickInteractionPresenterDidPresent:(id)arg1;
+- (BOOL)clickInteractionPresenterShouldBegin:(id)arg1;
+- (id)containerViewForClickInteractionPresenter:(id)arg1;
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)previewInteractionPresenterDidBeginInteraction:(id)arg1;
-- (void)previewInteractionPresenterDidCommitToPresentation:(id)arg1;
-- (void)previewInteractionPresenterDidDismiss:(id)arg1;
-- (void)previewInteractionPresenterDidPresent:(id)arg1;
-- (BOOL)previewInteractionPresenterShouldBegin:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

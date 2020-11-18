@@ -55,6 +55,7 @@
 - (id)_formatValue:(id)arg1;
 - (void)_generateWheelValues;
 - (void)_setupConstraints;
+- (void)_updateUIToReachable;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;

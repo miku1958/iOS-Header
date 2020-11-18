@@ -6,34 +6,36 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/GEOPListStateCapturing-Protocol.h>
 #import <GeoServices/GEOResourceManifestServerProxyDelegate-Protocol.h>
 
-@class GEOActiveTileGroup, GEOLocalizationRegionsInfo, GEOResourceManifestConfiguration, NSDictionary, NSHashTable, NSLock, NSMutableArray, NSSet, NSString;
+@class GEOActiveTileGroup, GEOLocalizationRegionsInfo, GEOResourceManifestConfiguration, NSDictionary, NSHashTable, NSMutableArray, NSSet, NSString;
 @protocol GEOResourceManifestServerProxy, OS_dispatch_source;
 
-@interface GEOResourceManifestManager : NSObject <GEOResourceManifestServerProxyDelegate>
+@interface GEOResourceManifestManager : NSObject <GEOPListStateCapturing, GEOResourceManifestServerProxyDelegate>
 {
     id<GEOResourceManifestServerProxy> _serverProxy;
     NSHashTable *_serverProxyObservers;
     GEOActiveTileGroup *_activeTileGroup;
-    NSLock *_activeTileGroupLock;
+    struct os_unfair_lock_s _activeTileGroupLock;
     NSDictionary *_resourceNamesToPaths;
     NSSet *_allResourceNames;
     NSSet *_allRegionalResourceNames;
     BOOL _needsToLoadTileGroupFromDisk;
     NSMutableArray *_tileGroupObservers;
-    NSLock *_tileGroupObserversLock;
-    NSLock *_closedCountLock;
+    struct os_unfair_recursive_lock_s _tileGroupObserversLock;
+    struct os_unfair_lock_s _closedCountLock;
     long long _closedCount;
     BOOL _constantlyChangeTileGroup;
+    double _constantlyChangeTileGroupInterval;
     GEOLocalizationRegionsInfo *_localizationRegionsInfo;
     NSMutableArray *_networkActivityHandlers;
     BOOL _isUpdatingManifest;
     BOOL _isLoadingResources;
-    NSLock *_resourceNamesToPathsLock;
+    struct os_unfair_lock_s _resourceNamesToPathsLock;
     GEOResourceManifestConfiguration *_configuration;
     NSObject<OS_dispatch_source> *_cachedResourceInfoPurgeTimer;
-    unsigned long long _handle;
+    unsigned long long _stateCaptureHandle;
 }
 
 @property (readonly, nonatomic) GEOActiveTileGroup *activeTileGroup;
@@ -44,6 +46,7 @@
 @property (readonly, nonatomic) id<GEOResourceManifestServerProxy> serverProxy; // @synthesize serverProxy=_serverProxy;
 @property (readonly) Class superclass;
 
++ (void)configureInProcessSingletonWithConfiguration:(id)arg1;
 + (void)disableServerConnection;
 + (id)modernManager;
 + (id)modernManagerForConfiguration:(id)arg1;
@@ -51,22 +54,17 @@
 + (void)setHiDPI:(BOOL)arg1;
 + (void)setServerProxyClass:(Class)arg1;
 + (id)sharedManager;
-+ (struct os_state_data_s *)stateDataForDictionary:(id)arg1 title:(id)arg2;
 + (void)useLocalProxy;
 + (void)useRemoteProxy;
 - (void).cxx_destruct;
 - (id)_activeTileSetForKey:(const struct _GEOTileKey *)arg1;
 - (void)_buildResourceNamesToPaths;
-- (id)_detailedDescriptionDictionaryRepresentationForTileGroup:(id)arg1;
 - (unsigned long long)_fromgeod_maximumZoomLevelForStyle:(int)arg1 scale:(int)arg2;
 - (id)_loadActiveTileGroupIfNecessary:(BOOL)arg1;
 - (void)_localeChanged:(id)arg1;
 - (void)_notifyObserversOfResourcesChange;
 - (void)_purgeCachedResourceInfo;
-- (void)_registerHandlerForStateCapture;
 - (void)_scheduleCachedResourceInfoPurgeTimer;
-- (struct os_state_data_s *)_stateCapture;
-- (void)_unregisterHandlerForStateCapture;
 - (void)activateResourceScale:(int)arg1;
 - (void)activateResourceScenario:(int)arg1;
 - (unsigned int)activeTileGroupIdentifier;
@@ -77,15 +75,14 @@
 - (id)allResourceNames;
 - (id)allResourcePaths;
 - (id)authToken;
-- (id)baseURLStringForTileKey:(const struct _GEOTileKey *)arg1;
 - (void)cancelCurrentManifestUpdate;
+- (id)captureStatePlistWithHints:(struct os_state_hints_s *)arg1;
 - (void)closeServerConnection;
 - (void)closeServerConnection:(BOOL)arg1;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
 - (id)detailedDescription;
-- (id)detailedDescriptionDictionaryRepresentation;
 - (void)devResourcesFolderDidChange;
 - (id)disputedBordersQueryItemsForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
 - (void)fakeTileGroupChange;
@@ -96,11 +93,13 @@
 - (id)initWithConfiguration:(id)arg1;
 - (BOOL)isAvailableForTileKey:(const struct _GEOTileKey *)arg1;
 - (BOOL)isDisputedBordersWhitelistedForTileKey:(const struct _GEOTileKey *)arg1 country:(id)arg2 region:(id)arg3;
+- (BOOL)isMuninEnabled;
 - (id)languageForTileKey:(const struct _GEOTileKey *)arg1;
 - (id)languageForTileKey:(const struct _GEOTileKey *)arg1 overrideLocale:(id)arg2;
-- (id)localizationURLStringIfNecessaryForTileKey:(const struct _GEOTileKey *)arg1 overrideLocale:(id)arg2;
+- (id)localizationURLStringIfNecessaryForActiveTileSet:(id)arg1 tileKey:(const struct _GEOTileKey *)arg2 overrideLocale:(id)arg3;
 - (int)mapMatchingTileSetStyle;
 - (unsigned int)mapMatchingZoomLevel;
+- (id)muninBucketURLForId:(unsigned short)arg1 lod:(unsigned char)arg2;
 - (void)openServerConnection;
 - (id)pathForResourceWithName:(id)arg1;
 - (void)removeDevResources;
@@ -115,7 +114,9 @@
 - (oneway void)serverProxyWillStartLoadingResources:(id)arg1;
 - (oneway void)serverProxyWillStartUpdatingResourceManifest:(id)arg1;
 - (void)setActiveTileGroupIdentifier:(unsigned int)arg1;
+- (void)setActiveTileGroupIdentifier:(unsigned int)arg1 updateType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setConstantlyChangeTileGroup:(BOOL)arg1;
+- (void)setConstantlyChangeTileGroupInterval:(double)arg1;
 - (void)setManifestToken:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startObservingDevResources;
 - (void)stopObservingDevResources;

@@ -16,6 +16,7 @@
     NSString *_visibleTransactionIdentifier;
     unsigned long long _state;
     NSString *_deviceIdentifier;
+    NSString *_regionIdentifier;
     NSString *_serviceProviderIdentifier;
     PKServiceProviderPurchaseData *_serviceProviderData;
     NSDate *_purchaseDate;
@@ -29,6 +30,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *partnerMetadata; // @synthesize partnerMetadata=_partnerMetadata;
 @property (copy, nonatomic) NSDate *purchaseDate; // @synthesize purchaseDate=_purchaseDate;
+@property (copy, nonatomic) NSString *regionIdentifier; // @synthesize regionIdentifier=_regionIdentifier;
 @property (copy, nonatomic) PKServiceProviderPurchaseData *serviceProviderData; // @synthesize serviceProviderData=_serviceProviderData;
 @property (copy, nonatomic) NSString *serviceProviderIdentifier; // @synthesize serviceProviderIdentifier=_serviceProviderIdentifier;
 @property (copy, nonatomic) NSString *signature; // @synthesize signature=_signature;

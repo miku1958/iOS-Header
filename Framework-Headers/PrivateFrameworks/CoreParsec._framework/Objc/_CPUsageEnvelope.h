@@ -9,18 +9,27 @@
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 #import <CoreParsec/_CPUsageEnvelope-Protocol.h>
 
-@class NSData, NSString, _CPImagesUsagePropensity, _CPNewsUsagePropensity, _CPSafariUsagePropensity, _CPSpotlightUsagePropensity, _CPUsageSinceLookback;
+@class NSData, NSString, _CPDeviceContext, _CPImagesUsagePropensity, _CPNewsUsagePropensity, _CPSafariUsagePropensity, _CPSpotlightUsagePropensity, _CPUsageSinceLookback;
 
 @interface _CPUsageEnvelope : PBCodable <_CPUsageEnvelope, NSSecureCoding>
 {
+    int _configuredLookbackTimeInDays;
+    int _totalSessions;
     _CPUsageSinceLookback *_usageSinceLookback;
     _CPSafariUsagePropensity *_safariUsagePropensity;
     _CPSpotlightUsagePropensity *_spotlightUsagePropensity;
     _CPImagesUsagePropensity *_imagesUsagePropensity;
     _CPNewsUsagePropensity *_newsUsagePropensity;
+    long long _collectionStartTimestamp;
+    long long _collectionEndTimestamp;
+    _CPDeviceContext *_context;
     unsigned long long _whichKind;
 }
 
+@property (nonatomic) long long collectionEndTimestamp; // @synthesize collectionEndTimestamp=_collectionEndTimestamp;
+@property (nonatomic) long long collectionStartTimestamp; // @synthesize collectionStartTimestamp=_collectionStartTimestamp;
+@property (nonatomic) int configuredLookbackTimeInDays; // @synthesize configuredLookbackTimeInDays=_configuredLookbackTimeInDays;
+@property (strong, nonatomic) _CPDeviceContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -30,16 +39,17 @@
 @property (strong, nonatomic) _CPSafariUsagePropensity *safariUsagePropensity; // @synthesize safariUsagePropensity=_safariUsagePropensity;
 @property (strong, nonatomic) _CPSpotlightUsagePropensity *spotlightUsagePropensity; // @synthesize spotlightUsagePropensity=_spotlightUsagePropensity;
 @property (readonly) Class superclass;
+@property (nonatomic) int totalSessions; // @synthesize totalSessions=_totalSessions;
 @property (strong, nonatomic) _CPUsageSinceLookback *usageSinceLookback; // @synthesize usageSinceLookback=_usageSinceLookback;
 @property (readonly, nonatomic) unsigned long long whichKind; // @synthesize whichKind=_whichKind;
 
 - (void).cxx_destruct;
+- (void)clearKind;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

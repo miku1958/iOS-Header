@@ -21,16 +21,21 @@
 @property (strong, nonatomic) QLExtensionManagerCache *thumbnailExtensionCache; // @synthesize thumbnailExtensionCache=_thumbnailExtensionCache;
 @property (strong, nonatomic) QLExtensionManagerCache *thumbnailHighMemoryExtensionCache; // @synthesize thumbnailHighMemoryExtensionCache=_thumbnailHighMemoryExtensionCache;
 
++ (void)_resetSharedManager;
++ (void)_setSharedManager:(id)arg1;
++ (BOOL)extension:(id)arg1 supportsExactType:(id)arg2;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_addQueryAttributesToExtensionQuery:(id)arg1 withContentType:(id)arg2 appBundleIdentifier:(id)arg3 extensionType:(unsigned long long)arg4 generationType:(unsigned long long)arg5;
+- (id)_applicationPathForBundleId:(id)arg1;
 - (id)_cachesForExtensionType:(unsigned long long)arg1;
 - (id)_extensionPointNameForExtensionType:(unsigned long long)arg1;
 - (void)_setupCache;
-- (BOOL)existsExtensionForContentType:(id)arg1 applicationBundleIdentifier:(id)arg2 extensionType:(unsigned long long)arg3 generationType:(unsigned long long)arg4;
-- (void)extensionContextForContentType:(id)arg1 appBundleIdentifier:(id)arg2 extensionPath:(id)arg3 extensionType:(unsigned long long)arg4 generationType:(unsigned long long)arg5 withCompletionHandler:(CDUnknownBlockType)arg6;
-- (id)extensionForContentType:(id)arg1 applicationBundleIdentifier:(id)arg2 extensionPath:(id)arg3 extensionType:(unsigned long long)arg4 generationType:(unsigned long long)arg5;
-- (id)qlExtensionForContentType:(id)arg1 applicationBundleIdentifier:(id)arg2 extensionPath:(id)arg3 extensionType:(unsigned long long)arg4 generationType:(unsigned long long)arg5;
+- (BOOL)existsExtensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 applicationBundleIdentifier:(id)arg3 extensionPath:(id)arg4 extensionType:(unsigned long long)arg5 generationType:(unsigned long long)arg6;
+- (BOOL)existsExtensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 applicationBundleIdentifier:(id)arg3 extensionType:(unsigned long long)arg4 generationType:(unsigned long long)arg5;
+- (void)extensionContextForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 appBundleIdentifier:(id)arg3 extensionPath:(id)arg4 extensionType:(unsigned long long)arg5 generationType:(unsigned long long)arg6 withCompletionHandler:(CDUnknownBlockType)arg7;
+- (id)extensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 applicationBundleIdentifier:(id)arg3 extensionPath:(id)arg4 extensionType:(unsigned long long)arg5 generationType:(unsigned long long)arg6;
+- (id)qlExtensionForContentType:(id)arg1 allowExtensionsForParentTypes:(BOOL)arg2 applicationBundleIdentifier:(id)arg3 extensionPath:(id)arg4 extensionType:(unsigned long long)arg5 generationType:(unsigned long long)arg6;
 
 @end
 

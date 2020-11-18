@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NTKUpNextElementDataSource *newsDataSourceProxy; // @synthesize newsDataSourceProxy=_newsDataSourceProxy;
 
 + (id)bundleIdentifier;
++ (unsigned long long)elementContentMode;
 + (Class)nanoNewsDataSourceClass;
 + (BOOL)wantsReloadForSignificantTimeChange;
 - (void).cxx_destruct;

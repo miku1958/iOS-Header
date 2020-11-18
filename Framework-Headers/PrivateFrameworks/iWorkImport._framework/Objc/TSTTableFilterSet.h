@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)absoluteRuleIndicesForColumn:(struct TSUModelColumnIndex)arg1 inTable:(id)arg2;
 - (void)addRules:(id)arg1 inFilter:(unsigned long long)arg2;
+- (BOOL)allowsRowInsertion;
 - (id)baseColumnIndicesForRulesInTable:(id)arg1;
 - (BOOL)containsFilterRulesInUIDForm;
 - (id)copyByRewritingFilterRulesToGeometricFormWithContext:(id)arg1 withTableInfo:(id)arg2;

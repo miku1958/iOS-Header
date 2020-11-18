@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSString, NTKCDetailTableViewCell, NTKCFaceDetailSectionHeaderView, NTKFace, UITableView;
+@class NSMutableArray, NSString, NTKCDetailTableViewCell, NTKCFaceDetailSectionHeaderView, NTKFace, UITableView, UIViewController;
+@protocol NTKCTableViewProviding;
 
 @interface NTKCFaceDetailSectionController : NSObject
 {
@@ -15,7 +16,7 @@
     long long _section;
     NSString *_titleForHeader;
     NTKFace *_face;
-    UITableView *_tableView;
+    UIViewController<NTKCTableViewProviding> *_tableViewController;
     NTKCDetailTableViewCell *_cell;
     NSMutableArray *_rows;
     NTKCFaceDetailSectionHeaderView *_headerView;
@@ -29,13 +30,15 @@
 @property (readonly, nonatomic) long long numberOfRows;
 @property (strong, nonatomic) NSMutableArray *rows; // @synthesize rows=_rows;
 @property (nonatomic) long long section; // @synthesize section=_section;
-@property (weak, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
+@property (readonly, weak, nonatomic) UITableView *tableView;
+@property (weak, nonatomic) UIViewController<NTKCTableViewProviding> *tableViewController; // @synthesize tableViewController=_tableViewController;
 @property (readonly, nonatomic) NSString *titleForHeader; // @synthesize titleForHeader=_titleForHeader;
 
 + (void)registerForTableView:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_canSelectRow:(long long)arg1;
 - (void)_commonInit;
+- (id)_groupName;
 - (double)_heightForSpacerRow;
 - (id)_newSectionHeader;
 - (id)_spacerRow;
@@ -46,7 +49,7 @@
 - (void)faceDidChangeResourceDirectory;
 - (double)heightForHeaderView;
 - (double)heightForRow:(long long)arg1;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3;
 
 @end
 

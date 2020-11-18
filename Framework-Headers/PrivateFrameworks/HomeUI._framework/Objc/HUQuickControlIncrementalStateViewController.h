@@ -19,6 +19,7 @@
 - (id)controlToViewValueTransformer;
 - (id)createInteractionCoordinator;
 - (id)createViewProfile;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

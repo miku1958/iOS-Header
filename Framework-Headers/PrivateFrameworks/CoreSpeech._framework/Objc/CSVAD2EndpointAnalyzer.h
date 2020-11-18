@@ -9,7 +9,7 @@
 #import <CoreSpeech/CSEndpointAnalyzerImpl-Protocol.h>
 
 @class NSDictionary, NSMutableData, NSString;
-@protocol CSEndpointAnalyzerDelegate, OS_dispatch_queue;
+@protocol CSEndpointAnalyzerDelegate, CSEndpointAnalyzerImplDelegate, OS_dispatch_queue;
 
 @interface CSVAD2EndpointAnalyzer : NSObject <CSEndpointAnalyzerImpl>
 {
@@ -74,6 +74,7 @@
 @property (strong, nonatomic) NSMutableData *floatSampleBuffer; // @synthesize floatSampleBuffer=_floatSampleBuffer;
 @property (nonatomic) unsigned int frameRate; // @synthesize frameRate=_frameRate;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<CSEndpointAnalyzerImplDelegate> implDelegate;
 @property (nonatomic) double interspeechWaitTime; // @synthesize interspeechWaitTime=_interspeechWaitTime;
 @property (nonatomic) BOOL isConfigured; // @synthesize isConfigured=_isConfigured;
 @property (readonly, nonatomic) double lastEndOfVoiceActivityTime;
@@ -108,7 +109,7 @@
 - (id)init;
 - (void)preheat;
 - (void)processAudioSamplesAsynchronously:(id)arg1;
-- (void)recordingStoppedForReason:(unsigned long long)arg1;
+- (void)recordingStoppedForReason:(long long)arg1;
 - (void)reset;
 - (void)resetForNewRequestWithSampleRate:(unsigned long long)arg1 recordContext:(id)arg2;
 

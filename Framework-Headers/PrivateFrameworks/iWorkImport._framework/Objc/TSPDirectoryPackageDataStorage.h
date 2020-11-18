@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)performReadWithAccessor:(CDUnknownBlockType)arg1;
 - (void)setGilligan_isRemote:(BOOL)arg1;
 - (void)setIsMissingData:(BOOL)arg1;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
 
 @end
 

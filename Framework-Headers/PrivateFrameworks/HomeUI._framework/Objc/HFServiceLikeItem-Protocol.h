@@ -5,12 +5,13 @@
 //
 
 #import <HomeUI/HFHomeKitItemProtocol-Protocol.h>
+#import <HomeUI/HFNamingComponentCreating-Protocol.h>
 #import <HomeUI/HFServiceVendor-Protocol.h>
 #import <HomeUI/NSCopying-Protocol.h>
 
 @protocol HFCharacteristicValueSource;
 
-@protocol HFServiceLikeItem <HFHomeKitItemProtocol, HFServiceVendor, NSCopying>
+@protocol HFServiceLikeItem <HFHomeKitItemProtocol, HFServiceVendor, NSCopying, HFNamingComponentCreating>
 
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource;
 

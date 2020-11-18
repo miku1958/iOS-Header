@@ -15,9 +15,9 @@
 + (BOOL)enumerateValuesWithProfile:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 + (id)foreignKeys;
 + (id)indices;
-+ (BOOL)insertSyncIdentifierWithProfile:(id)arg1 objectID:(long long)arg2 localSourceID:(long long)arg3 externalSyncObjectCode:(long long)arg4 syncIdentifier:(id)arg5 syncVersion:(id)arg6 deleted:(BOOL)arg7 errorOut:(id *)arg8;
-+ (BOOL)populateSyncInfoForProfile:(id)arg1 localSourceID:(long long)arg2 externalSyncObjectCode:(long long)arg3 syncIdentifier:(id)arg4 deleted:(BOOL)arg5 objectIDOut:(id *)arg6 errorOut:(id *)arg7;
-+ (BOOL)populateSyncInfoForProfile:(id)arg1 objectID:(long long)arg2 localSourceIDOut:(long long *)arg3 externalSyncObjectCodeOut:(long long *)arg4 syncIdentifierOut:(id *)arg5 syncVersionOut:(id *)arg6 deletedOut:(BOOL *)arg7 errorOut:(id *)arg8;
++ (BOOL)insertSyncIdentifierWithProfile:(id)arg1 database:(id)arg2 objectID:(long long)arg3 localSourceID:(long long)arg4 externalSyncObjectCode:(long long)arg5 syncIdentifier:(id)arg6 syncVersion:(id)arg7 deleted:(BOOL)arg8 errorOut:(id *)arg9;
++ (BOOL)populateSyncInfoForLocalSourceID:(long long)arg1 externalSyncObjectCode:(long long)arg2 syncIdentifier:(id)arg3 deleted:(BOOL)arg4 database:(id)arg5 objectIDOut:(id *)arg6 errorOut:(id *)arg7;
++ (BOOL)populateSyncInfoForObjectID:(long long)arg1 database:(id)arg2 localSourceIDOut:(long long *)arg3 externalSyncObjectCodeOut:(long long *)arg4 syncIdentifierOut:(id *)arg5 syncVersionOut:(id *)arg6 deletedOut:(BOOL *)arg7 errorOut:(id *)arg8;
 + (long long)protectionClass;
 
 @end

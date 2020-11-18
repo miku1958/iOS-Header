@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMMutableApplicationData-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
 @class HMApplicationData, HMFUnfairLock, HMHome, NSArray, NSString, NSUUID, _HMContext;
-@protocol OS_dispatch_queue;
 
-@interface HMRoom : NSObject <NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData>
+@interface HMRoom : NSObject <NSSecureCoding, HMObjectMerge, HMMutableApplicationData>
 {
     HMFUnfairLock *_lock;
     NSUUID *_uniqueIdentifier;
@@ -27,13 +25,12 @@
 
 @property (readonly, copy, nonatomic) NSArray *accessories;
 @property (readonly, nonatomic) HMApplicationData *applicationData;
+@property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -42,14 +39,11 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
-- (void)_handleRoomRenamedNotification:(id)arg1;
 - (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
-- (void)_registerNotificationHandlers;
 - (void)_unconfigure;
 - (void)_updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateRoomName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

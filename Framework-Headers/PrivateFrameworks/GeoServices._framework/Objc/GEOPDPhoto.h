@@ -8,27 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPhoto : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_photoId;
     NSMutableArray *_photoVersions;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_photoId:1;
+        unsigned int read_photoVersions:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_photoId:1;
+        unsigned int wrote_photoVersions:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasPhotoId;
-@property (strong, nonatomic) NSString *photoId; // @synthesize photoId=_photoId;
-@property (strong, nonatomic) NSMutableArray *photoVersions; // @synthesize photoVersions=_photoVersions;
+@property (strong, nonatomic) NSString *photoId;
+@property (strong, nonatomic) NSMutableArray *photoVersions;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)photoVersionType;
 + (id)photosForPlaceData:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsPhotoVersion:(id)arg1;
+- (void)_readPhotoId;
+- (void)_readPhotoVersions;
 - (void)addPhotoVersion:(id)arg1;
 - (id)bestURL;
 - (void)clearPhotoVersions;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)photoVersionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoVersionsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

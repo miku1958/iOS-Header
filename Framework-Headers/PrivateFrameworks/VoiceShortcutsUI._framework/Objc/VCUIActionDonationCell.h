@@ -7,13 +7,20 @@
 #import <UIKit/UITableViewCell.h>
 
 @class UIView;
+@protocol VCActionDonation;
 
 @interface VCUIActionDonationCell : UITableViewCell
 {
+    BOOL _showAppName;
+    BOOL _dimmingIneligibleForPrediction;
+    id<VCActionDonation> _donation;
     UIView *_cardView;
 }
 
 @property (weak, nonatomic) UIView *cardView; // @synthesize cardView=_cardView;
+@property (nonatomic) BOOL dimmingIneligibleForPrediction; // @synthesize dimmingIneligibleForPrediction=_dimmingIneligibleForPrediction;
+@property (weak, nonatomic) id<VCActionDonation> donation; // @synthesize donation=_donation;
+@property (nonatomic) BOOL showAppName; // @synthesize showAppName=_showAppName;
 
 + (id)preferredReuseIdentifier;
 - (void).cxx_destruct;
@@ -23,6 +30,8 @@
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateCardView;
 
 @end
 

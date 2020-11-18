@@ -10,6 +10,7 @@
 {
 }
 
++ (id)bestFaceForFaceDetectionRequest:(id)arg1 withRect:(struct CGRect)arg2;
 + (id)faceFromFaceCrop:(id)arg1 visionIntegration:(id)arg2 faceAlgorithmUmbrellaVersion:(unsigned int)arg3 createFaceTorsoprint:(BOOL)arg4 error:(id *)arg5;
 
 @end

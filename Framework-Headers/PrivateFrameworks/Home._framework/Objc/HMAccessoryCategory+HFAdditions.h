@@ -10,5 +10,6 @@
 
 @property (readonly, nonatomic) BOOL hf_isMediaAccessory;
 
+- (id)hf_compatibleServiceTypes;
 @end
 

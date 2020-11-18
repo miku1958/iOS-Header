@@ -7,39 +7,39 @@
 #import <UIKit/UIViewController.h>
 
 #import <ScreenTimeUI/BFFPasscodeInputViewDelegate-Protocol.h>
-#import <ScreenTimeUI/STIntroViewController-Protocol.h>
 
 @class NSString, STIntroductionModel;
 
-@interface STIntroPasscodeViewController : UIViewController <BFFPasscodeInputViewDelegate, STIntroViewController>
+__attribute__((visibility("hidden")))
+@interface STIntroPasscodeViewController : UIViewController <BFFPasscodeInputViewDelegate>
 {
     BOOL _numeric;
-    CDUnknownBlockType completionBlock;
     STIntroductionModel *_model;
-    unsigned long long _passcodeState;
+    CDUnknownBlockType _continueHandler;
+    long long _passcodeState;
     NSString *_initialPasscode;
     unsigned long long _numericLength;
 }
 
-@property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock;
+@property (readonly, copy) CDUnknownBlockType continueHandler; // @synthesize continueHandler=_continueHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong) NSString *initialPasscode; // @synthesize initialPasscode=_initialPasscode;
-@property (strong) STIntroductionModel *model; // @synthesize model=_model;
+@property (readonly) STIntroductionModel *model; // @synthesize model=_model;
 @property (getter=isNumeric) BOOL numeric; // @synthesize numeric=_numeric;
 @property unsigned long long numericLength; // @synthesize numericLength=_numericLength;
-@property unsigned long long passcodeState; // @synthesize passcodeState=_passcodeState;
+@property long long passcodeState; // @synthesize passcodeState=_passcodeState;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithIntroductionModel:(id)arg1;
+- (id)_passcodeView;
+- (id)initWithIntroductionModel:(id)arg1 continueHandler:(CDUnknownBlockType)arg2;
 - (void)loadView;
 - (void)nextButtonTapped;
 - (void)passcodeInput:(id)arg1 enteredPasscode:(id)arg2;
 - (id)passcodeInputView;
 - (void)passcodeTypeChanged:(BOOL)arg1;
-- (id)passcodeView;
 - (void)updatePasscodeType;
 - (void)userEnteredPasscode:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

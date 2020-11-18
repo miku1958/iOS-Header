@@ -11,6 +11,7 @@
 @protocol BLTBulletinDistributorSubscriberDeviceDelegate <NSObject>
 - (void)getWillNanoPresentNotificationForSectionID:(NSString *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)getWillNanoPresentNotificationForSectionID:(NSString *)arg1 subsectionIDs:(NSSet *)arg2 completion:(void (^)(BOOL))arg3;
+- (BOOL)isLocallyConnectedToRemote;
 - (void)sendBulletinSummary:(BLTPBBulletinSummary *)arg1;
 @end
 

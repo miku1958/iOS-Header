@@ -7,10 +7,20 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (FezAdditions)
+
+@property (readonly, nonatomic) unsigned short fileHFSFlags;
+@property (readonly, nonatomic) unsigned long long fileHFSResourceForkSize;
+
 + (id)dictionaryWithKeyArray:(id)arg1 defaultValue:(id)arg2;
 + (id)dictionaryWithPlistData:(id)arg1;
 - (id)__imDeepCopy;
+- (id)__imDictionaryByFilteringWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)__imIsMutable;
+- (id)_arrayForKey:(id)arg1;
+- (id)_dataForKey:(id)arg1;
+- (id)_dictionaryForKey:(id)arg1;
+- (id)_numberForKey:(id)arg1;
+- (id)_stringForKey:(id)arg1;
 - (id)dictionaryFromChanges:(id)arg1;
 - (id)keysOfChangedEntriesComparedTo:(id)arg1;
 - (id)plistData;

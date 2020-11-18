@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<MTLTexture> metalTexture;
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 @property (readonly, nonatomic) struct CGRect region;
+@property (readonly, nonatomic) struct __IOSurface *surface;
 
 - (void)dealloc;
 - (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(BOOL)arg3 bounds:(struct CGRect)arg4 context:(struct Context *)arg5;

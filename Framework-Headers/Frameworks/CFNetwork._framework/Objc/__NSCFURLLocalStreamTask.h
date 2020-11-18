@@ -6,18 +6,18 @@
 
 #import <CFNetwork/NSURLSessionStreamTask.h>
 
-@class NSData, NSDate, NSDictionary, NSError, NSMutableArray, NSObject, NSString, NSURLRequest, NSURLResponse, __NSURLSessionLocal;
+@class NSData, NSDictionary, NSError, NSMutableArray, NSObject, NSString, NSURLRequest, NSURLResponse, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFURLLocalStreamTask : NSURLSessionStreamTask
 {
-    NSObject<OS_dispatch_queue> *_workQueue;
     struct BaseSocketStreamClient *_socketStreamClient;
+    NSMutableArray *_extraWork;
+    int _connectionState;
+    NSObject<OS_dispatch_queue> *_workQueueForStreamTask;
     struct __CFReadStream *_readStream;
     struct __CFWriteStream *_writeStream;
     NSMutableArray *_pendingWork;
-    NSMutableArray *_extraWork;
     BOOL _doingWorkOnThisQueue;
     NSData *_readBuffer;
     BOOL _readSignaled;
@@ -30,9 +30,7 @@ __attribute__((visibility("hidden")))
     CDStruct_59046461 _writeError;
     long long _writeBufferAlreadyWrittenForNextWrite;
     NSMutableArray *_finalizationQueue;
-    int _connectionState;
     NSMutableArray *_afterConnectQueue;
-    __NSURLSessionLocal *_session;
     unsigned long long _taskIdentifier;
     long long _state;
     NSString *_taskDescription;
@@ -45,7 +43,6 @@ __attribute__((visibility("hidden")))
     NSURLRequest *_originalRequest;
     NSURLRequest *_currentRequest;
     NSURLResponse *_response;
-    NSDate *_earliestBeginDate;
     long long _countOfBytesClientExpectsToSend;
     long long _countOfBytesClientExpectsToReceive;
     long long _countOfBytesExpectedToSend;
@@ -54,23 +51,28 @@ __attribute__((visibility("hidden")))
     double _timeWindowDelay;
     double _timeWindowDuration;
     double startTime;
-    NSString *_ledBellyServiceIdentifier;
     long long _priorityValue;
     double _loadingPriorityValue;
     NSString *_boundInterfaceIdentifier;
     BOOL _disallowCellular;
+    int _allowsExpensiveOverride;
+    int _allowsConstrainedOverride;
+    int _allowsCellularOverride;
     int _networkServiceType;
     NSDictionary *_legacySocketStreamProperties;
     BOOL _betterRouteDiscovered;
     NSData *__TCPConnectionMetadata;
     NSData *__initialDataPayload;
     BOOL _didIssueCancel;
+    NSUUID *_uniqueIdentifier;
+    float priority;
 }
 
 @property (copy) NSData *_TCPConnectionMetadata; // @synthesize _TCPConnectionMetadata=__TCPConnectionMetadata;
 @property (readonly) BOOL _goneSecure; // @synthesize _goneSecure;
 @property (copy) NSData *_initialDataPayload; // @synthesize _initialDataPayload=__initialDataPayload;
 @property double _timeoutIntervalForResource; // @dynamic _timeoutIntervalForResource;
+@property (readonly, copy) NSUUID *_uniqueIdentifier; // @synthesize _uniqueIdentifier;
 @property long long countOfBytesClientExpectsToReceive; // @synthesize countOfBytesClientExpectsToReceive=_countOfBytesClientExpectsToReceive;
 @property long long countOfBytesClientExpectsToSend; // @synthesize countOfBytesClientExpectsToSend=_countOfBytesClientExpectsToSend;
 @property long long countOfBytesExpectedToReceive; // @synthesize countOfBytesExpectedToReceive=_countOfBytesExpectedToReceive;
@@ -78,7 +80,6 @@ __attribute__((visibility("hidden")))
 @property long long countOfBytesReceived; // @synthesize countOfBytesReceived=_countOfBytesReceived;
 @property long long countOfBytesSent; // @synthesize countOfBytesSent=_countOfBytesSent;
 @property (copy) NSURLRequest *currentRequest; // @synthesize currentRequest=_currentRequest;
-@property (copy) NSDate *earliestBeginDate; // @synthesize earliestBeginDate=_earliestBeginDate;
 @property (copy) NSError *error; // @synthesize error=_error;
 @property (copy) NSURLRequest *originalRequest; // @synthesize originalRequest=_originalRequest;
 @property (copy) NSURLResponse *response; // @synthesize response=_response;
@@ -86,15 +87,20 @@ __attribute__((visibility("hidden")))
 @property (copy) NSString *taskDescription; // @synthesize taskDescription=_taskDescription;
 @property unsigned long long taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 
+- (void)_adoptEffectiveConfiguration:(id)arg1;
+- (int)_allowsCellularOverride;
+- (int)_allowsConstrainedOverride;
+- (int)_allowsExpensiveOverride;
 - (id)_boundInterfaceIdentifier;
+- (BOOL)_cacheOnly;
 - (struct __CFDictionary *)_copySocketStreamProperties;
 - (BOOL)_disallowCellular;
+- (id)_effectiveConfiguration;
 - (long long)_expectedWorkload;
-- (id)_initCommonWithSession:(id)arg1 disavow:(CDUnknownBlockType)arg2;
+- (id)_initCommonWithGroup:(id)arg1 disavow:(CDUnknownBlockType)arg2;
 - (id)_initWithExistingTask:(id)arg1 disavow:(CDUnknownBlockType)arg2;
-- (id)_initWithSession:(id)arg1 disavow:(CDUnknownBlockType)arg2;
+- (id)_initWithTaskGroup:(id)arg1 disavow:(CDUnknownBlockType)arg2;
 - (void)_init_setupTimeoutTimer;
-- (id)_ledBellyServiceIdentifier;
 - (id)_legacySocketStreamProperties;
 - (int)_networkServiceType;
 - (void)_onSessionQueue_cleanupAndBreakCycles;
@@ -128,7 +134,6 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_unscheduleStreams;
 - (void)_onqueue_writeData:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_onqueue_writeStreamEvent:(unsigned long long)arg1;
-- (void)_reportTimingDataToAWD:(id)arg1;
 - (void)_task_onqueue_didFinish;
 - (void)_task_onqueue_didReceiveDispatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (double)_timeWindowDelay;
@@ -144,14 +149,18 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)describePending:(id)arg1;
 - (id)description;
-- (id)initWithHost:(id)arg1 port:(long long)arg2 session:(id)arg3 disavow:(CDUnknownBlockType)arg4;
-- (id)initWithNetService:(id)arg1 session:(id)arg2 disavow:(CDUnknownBlockType)arg3;
+- (id)initWithHost:(id)arg1 port:(long long)arg2 taskGroup:(id)arg3 disavow:(CDUnknownBlockType)arg4;
+- (id)initWithNetService:(id)arg1 taskGroup:(id)arg2 disavow:(CDUnknownBlockType)arg3;
+- (float)priority;
 - (void)readDataOfMinLength:(unsigned long long)arg1 maxLength:(unsigned long long)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)resume;
+- (void)setPriority:(float)arg1;
+- (void)set__allowsCellularOverride:(int)arg1;
+- (void)set_allowsConstrainedOverride:(int)arg1;
+- (void)set_allowsExpensiveOverride:(int)arg1;
 - (void)set_boundInterfaceIdentifier:(id)arg1;
 - (void)set_disallowCellular:(BOOL)arg1;
 - (void)set_expectedWorkload:(long long)arg1;
-- (void)set_ledBellyServiceIdentifier:(id)arg1;
 - (void)set_legacySocketStreamProperties:(id)arg1;
 - (void)set_networkServiceType:(int)arg1;
 - (void)set_timeWindowDelay:(double)arg1;
@@ -159,6 +168,7 @@ __attribute__((visibility("hidden")))
 - (void)startSecureConnection;
 - (void)stopSecureConnection;
 - (void)suspend;
+- (id)workQueue;
 - (void)writeData:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

@@ -11,8 +11,9 @@
 }
 
 + (id)dataFromError:(id)arg1;
-+ (id)dataFromPath:(id)arg1;
++ (id)dataFromPath:(id)arg1 makeBackwardCompatible:(BOOL)arg2;
 + (id)errorFromData:(id)arg1;
++ (id)hashArrayOfStrings:(id)arg1 lastHash:(id)arg2;
 + (id)hashData:(id)arg1 lastHash:(id)arg2;
 + (id)hashData:(id)arg1 lastHashData:(id)arg2;
 + (BOOL)isAppleInternalInstall;

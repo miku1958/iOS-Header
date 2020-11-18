@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (PRSRankingItemAdditions)
+- (id)mapNonEmpty:(CDUnknownBlockType)arg1;
 - (id)stringRepresentation;
 @end
 

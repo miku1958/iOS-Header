@@ -13,21 +13,23 @@
 
 @interface CSSearchQuery : NSObject <MDSearchQueryResultProcessor>
 {
+    unsigned long long _foundItemCount;
+    short _requestedAttributeCount;
+    short _attrInfo[9];
     BOOL _started;
     BOOL _finished;
     BOOL _cancelled;
-    BOOL _fetchesURLs;
     BOOL _gatherEnded;
-    unsigned long long _foundItemCount;
     BOOL _privateIndex;
+    BOOL _userFSIndex;
     CDUnknownBlockType _foundItemsHandler;
     CDUnknownBlockType _completionHandler;
-    NSArray *_resolvedFetchAttributes;
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_queryString;
     CSSearchQueryContext *_queryContext;
     NSMapTable *_liveIndexBundleIDToIndexItemIDMap;
     NSMapTable *_liveIndexBundleIDToBundleString;
+    NSMapTable *_liveIndexUserFSOIDTOIdentifierMap;
     CDUnknownBlockType _gatherEndedHandler;
     CDUnknownBlockType _changedItemsHandler;
     CDUnknownBlockType _removedItemsHandler;
@@ -36,6 +38,7 @@
     CDUnknownBlockType _countChangedHandler;
     CDUnknownBlockType _resolvedAttributeNamesHandler;
     CDUnknownBlockType _completionsHandler;
+    CDUnknownBlockType _foundItemHandler;
     NSString *_privateBundleID;
 }
 
@@ -48,10 +51,12 @@
 @property (readonly, nonatomic) NSArray *fetchAttributes;
 @property (copy) CDUnknownBlockType foundAttributesHandler; // @synthesize foundAttributesHandler=_foundAttributesHandler;
 @property (readonly) unsigned long long foundItemCount;
+@property (copy) CDUnknownBlockType foundItemHandler; // @synthesize foundItemHandler=_foundItemHandler;
 @property (copy) CDUnknownBlockType foundItemsHandler; // @synthesize foundItemsHandler=_foundItemsHandler;
 @property (copy) CDUnknownBlockType gatherEndedHandler; // @synthesize gatherEndedHandler=_gatherEndedHandler;
 @property (strong, nonatomic) NSMapTable *liveIndexBundleIDToBundleString; // @synthesize liveIndexBundleIDToBundleString=_liveIndexBundleIDToBundleString;
 @property (strong, nonatomic) NSMapTable *liveIndexBundleIDToIndexItemIDMap; // @synthesize liveIndexBundleIDToIndexItemIDMap=_liveIndexBundleIDToIndexItemIDMap;
+@property (strong, nonatomic) NSMapTable *liveIndexUserFSOIDTOIdentifierMap; // @synthesize liveIndexUserFSOIDTOIdentifierMap=_liveIndexUserFSOIDTOIdentifierMap;
 @property (strong, nonatomic) NSString *privateBundleID; // @synthesize privateBundleID=_privateBundleID;
 @property (nonatomic) BOOL privateIndex; // @synthesize privateIndex=_privateIndex;
 @property (copy) NSArray *protectionClasses;
@@ -60,13 +65,9 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (copy) CDUnknownBlockType removedItemsHandler; // @synthesize removedItemsHandler=_removedItemsHandler;
 @property (copy) CDUnknownBlockType resolvedAttributeNamesHandler; // @synthesize resolvedAttributeNamesHandler=_resolvedAttributeNamesHandler;
-@property (strong, nonatomic) NSArray *resolvedFetchAttributes; // @synthesize resolvedFetchAttributes=_resolvedFetchAttributes;
+@property (nonatomic) BOOL userFSIndex; // @synthesize userFSIndex=_userFSIndex;
 
-+ (id)_attributesForURLs;
 + (id)_makeQueryErrorWithErrorCode:(long long)arg1 description:(id)arg2 underlyingError:(id)arg3;
-+ (id)_makeUniqueFetchAttributesWithAttributes:(id)arg1;
-+ (id)_requiredAttributeSet;
-+ (id)_requiredAttributes;
 + (void)userEngagedWithUniqueIdentifier:(id)arg1 bundleId:(id)arg2 forUserQuery:(id)arg3 interactionType:(int)arg4;
 - (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1;
@@ -74,33 +75,42 @@
 - (id)bundleIDs;
 - (void)cancel;
 - (id)connection;
+- (id)copyCSSearchableItemWithValues:(id *)arg1 valueCount:(unsigned long long)arg2 attrKeys:(unsigned long long *)arg3 protectionClass:(id)arg4 mappingStrategy:(id)arg5 attrInfo:(short *)arg6 requestedAttributeCount:(unsigned long long)arg7 unpackInfo:(struct CSUnpackInfo)arg8 userFSDomain:(id)arg9;
+- (id)copyResultFromPlist:(id)arg1 protectionClass:(id)arg2;
 - (BOOL)counting;
-- (id)createCSSearchableItemWithOID:(long long)arg1 values:(id *)arg2 valueCount:(unsigned long long)arg3 protectionClass:(id)arg4 isTopHitQuery:(BOOL)arg5;
 - (double)currentTime;
 - (id)debugDescription;
 - (id)description;
 - (void)didFinishWithError:(id)arg1;
-- (void)didResolveFriendlyAttributeNames:(id)arg1;
+- (void)didResolveFriendlyAttributeNames:(id)arg1 fromFetchAttributes:(id)arg2;
 - (void)didReturnResults:(long long)arg1 resultsData:(id)arg2 oidData:(id)arg3 protectionClass:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)grouped;
+- (void)handleCompletion:(id)arg1;
+- (void)handleError:(id)arg1;
+- (void)handleFoundItems:(id)arg1;
 - (id)init;
 - (id)initWithQueryString:(id)arg1 attributes:(id)arg2;
 - (id)initWithQueryString:(id)arg1 context:(id)arg2;
 - (id)initWithQueryString:(id)arg1 options:(id)arg2;
 - (BOOL)internal;
+- (BOOL)isTopHitQuery;
 - (BOOL)live;
 - (id)options;
 - (void)processAttributesData:(id)arg1 update:(BOOL)arg2 protectionClass:(id)arg3;
-- (void)processCompletionsResultsData:(id)arg1 protectionClass:(id)arg2 isTopHitQuery:(BOOL)arg3;
-- (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3 isTopHitQuery:(BOOL)arg4;
+- (void)processCompletionsResultsData:(id)arg1 protectionClass:(id)arg2;
+- (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3;
 - (void)processRemoveResultsData:(id)arg1 protectionClass:(id)arg2;
-- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 items:(id)arg6 isTopHitQuery:(BOOL)arg7;
-- (id)processResultFromPlist:(id)arg1 protectionClass:(id)arg2 isTopHitQuery:(BOOL)arg3;
-- (void)processResultsData:(id)arg1 protectionClass:(id)arg2 isTopHitQuery:(BOOL)arg3;
+- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 items:(id)arg6;
+- (void)processResultsData:(id)arg1 protectionClass:(id)arg2;
 - (BOOL)removeLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
+- (BOOL)removeUserFSLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
+- (id)scopes;
 - (void)setBundleIDs:(id)arg1;
+- (void)setScopes:(id)arg1;
+- (void)setupFetchAttributesForSearch;
 - (void)start;
 - (void)updateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
+- (void)updateUserFSLiveOID:(long long)arg1 identifier:(id)arg2;
 - (void)userEngagedWithResult:(id)arg1 interactionType:(int)arg2;
 
 @end

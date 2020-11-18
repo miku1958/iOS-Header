@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)beginPIPToPreviewAnimation;
 - (void)beginPreviewToPIPAnimation;
 - (void)cameraDidBecomeAvailableForUniqueID:(id)arg1;
+- (void)cameraZoomAvailabilityDidChange:(BOOL)arg1;
 - (void)captureDevicesChanged:(id)arg1;
 - (void)didChangeLocalVideoAttributes:(id)arg1;
 - (void)didReceiveErrorFromCameraUniqueID:(id)arg1 error:(id)arg2;
@@ -50,6 +51,8 @@ __attribute__((visibility("hidden")))
 - (id)localScreenAttributesForVideoAttributes:(id)arg1;
 - (id)localVideoLayer:(BOOL)arg1;
 - (void)pausePreview;
+- (void)rampCameraZoomFactor:(double)arg1 withRate:(double)arg2;
+- (void)setCameraZoomFactor:(double)arg1;
 - (void)setLocalCameraWithUID:(id)arg1;
 - (void)setLocalScreenAttributes:(id)arg1;
 - (void)setLocalVideoLayer:(id)arg1 front:(BOOL)arg2;

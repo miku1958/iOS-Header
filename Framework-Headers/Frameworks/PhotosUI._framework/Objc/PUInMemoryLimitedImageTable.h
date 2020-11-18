@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUTemporaryImageTable.h>
+#import <PhotosUICore/PUTemporaryImageTable.h>
 
 @class NSCache;
 
-__attribute__((visibility("hidden")))
 @interface PUInMemoryLimitedImageTable : PUTemporaryImageTable
 {
     NSCache *_memoryCache;

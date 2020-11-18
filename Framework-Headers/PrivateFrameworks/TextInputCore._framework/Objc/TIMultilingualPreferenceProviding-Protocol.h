@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) TIInputMode *preferredSecondaryInputMode;
 @property (readonly, nonatomic) NSArray *userEnabledInputModes;
+@property (readonly, nonatomic) NSArray *userPreferredLanguages;
 
 @end
 

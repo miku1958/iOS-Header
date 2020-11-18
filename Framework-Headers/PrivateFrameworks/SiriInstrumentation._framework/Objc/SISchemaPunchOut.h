@@ -6,32 +6,34 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaPunchOut-Protocol.h>
 
-@class NSString, SISchemaViewContainer;
+@class NSData, NSString, SISchemaViewContainer;
 
-@interface SISchemaPunchOut : PBCodable <NSCopying>
+@interface SISchemaPunchOut : PBCodable <SISchemaPunchOut, NSSecureCoding>
 {
     NSString *_appID;
     NSString *_urlScheme;
     SISchemaViewContainer *_viewContainer;
+    NSData *_viewElementID;
 }
 
-@property (strong, nonatomic) NSString *appID; // @synthesize appID=_appID;
-@property (readonly, nonatomic) BOOL hasAppID;
-@property (readonly, nonatomic) BOOL hasUrlScheme;
-@property (readonly, nonatomic) BOOL hasViewContainer;
-@property (strong, nonatomic) NSString *urlScheme; // @synthesize urlScheme=_urlScheme;
+@property (copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *urlScheme; // @synthesize urlScheme=_urlScheme;
 @property (strong, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
+@property (copy, nonatomic) NSData *viewElementID; // @synthesize viewElementID=_viewElementID;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

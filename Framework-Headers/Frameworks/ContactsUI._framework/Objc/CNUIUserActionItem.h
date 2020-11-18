@@ -38,7 +38,6 @@
 + (id)_voiceItemWithLabel:(id)arg1 targetStringValue:(id)arg2 propertyKey:(id)arg3 userActivity:(id)arg4 bundleIdentifier:(id)arg5 group:(long long)arg6 options:(unsigned long long)arg7;
 + (id)actionItemForContactProperty:(id)arg1 actionType:(id)arg2 bundleIdentifier:(id)arg3;
 + (id)actionItemForContactProperty:(id)arg1 actionType:(id)arg2 bundleIdentifier:(id)arg3 callProviderManager:(id)arg4;
-+ (id)emailItemWithLabel:(id)arg1 targetHandle:(id)arg2 url:(id)arg3;
 + (id)emailItemWithLabel:(id)arg1 targetStringValue:(id)arg2 url:(id)arg3 bundleIdentifier:(id)arg4;
 + (id)emailItemWithLabel:(id)arg1 targetStringValue:(id)arg2 userActivity:(id)arg3 bundleIdentifier:(id)arg4;
 + (id)itemWithType:(id)arg1 contactProperty:(id)arg2 bundleIdentifier:(id)arg3 dialRequest:(id)arg4 group:(long long)arg5 options:(unsigned long long)arg6;
@@ -63,6 +62,7 @@
 + (id)voiceItemWithLabel:(id)arg1 targetStringValue:(id)arg2 propertyKey:(id)arg3 userActivity:(id)arg4 bundleIdentifier:(id)arg5 group:(long long)arg6 options:(unsigned long long)arg7;
 + (id)voiceItemWithLabel:(id)arg1 targetStringValue:(id)arg2 url:(id)arg3 bundleIdentifier:(id)arg4 group:(long long)arg5 options:(unsigned long long)arg6;
 + (id)voiceItemWithLabel:(id)arg1 targetStringValue:(id)arg2 userActivity:(id)arg3 bundleIdentifier:(id)arg4 group:(long long)arg5 options:(unsigned long long)arg6;
++ (id)workspace;
 - (void).cxx_destruct;
 - (void)associateWithRecentContactMetadata:(id)arg1;
 - (id)description;

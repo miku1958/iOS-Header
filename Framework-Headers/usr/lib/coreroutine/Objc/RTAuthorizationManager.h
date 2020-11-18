@@ -6,11 +6,10 @@
 
 #import <coreroutine/RTService.h>
 
-@class RTInvocationDispatcher, RTMetricManager, RTPlatform, RTUserSessionMonitor;
+@class RTInvocationDispatcher, RTPlatform, RTUserSessionMonitor;
 
 @interface RTAuthorizationManager : RTService
 {
-    RTMetricManager *_metricManager;
     BOOL _supported;
     BOOL _enabled;
     BOOL _ready;
@@ -29,18 +28,14 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)supportsNotificationName:(id)arg1;
 - (void).cxx_destruct;
-- (void)_fetchMagicalMomentsLocationUsageEnabled:(CDUnknownBlockType)arg1;
-- (void)_logRoutineEnabled:(BOOL)arg1;
 - (void)_setup;
 - (void)_shutdown;
 - (void)dealloc;
-- (void)fetchBBPluginSupportedWithHandler:(CDUnknownBlockType)arg1;
-- (void)fetchMagicalMomentsLocationUsageEnabled:(CDUnknownBlockType)arg1;
 - (void)fetchRoutineEnabledWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchRoutineSupportedWithHandler:(CDUnknownBlockType)arg1;
 - (void)handleAppResetChangeNotification;
 - (id)init;
-- (id)initWithMetricManager:(id)arg1 platform:(id)arg2 userSessionMonitor:(id)arg3;
+- (id)initWithPlatform:(id)arg1 userSessionMonitor:(id)arg2;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 - (BOOL)isCoreRoutineLocationClientEnabled;

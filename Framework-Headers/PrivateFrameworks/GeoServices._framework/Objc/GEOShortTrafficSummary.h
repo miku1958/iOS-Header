@@ -8,23 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, NSMutableArray;
+@class GEOFormattedString, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOShortTrafficSummary : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOFormattedString *_detail;
     NSMutableArray *_titles;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_detail:1;
+        unsigned int read_titles:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_detail:1;
+        unsigned int wrote_titles:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOFormattedString *detail; // @synthesize detail=_detail;
+@property (strong, nonatomic) GEOFormattedString *detail;
 @property (readonly, nonatomic) BOOL hasDetail;
-@property (strong, nonatomic) NSMutableArray *titles; // @synthesize titles=_titles;
+@property (strong, nonatomic) NSMutableArray *titles;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)titleType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsTitle:(id)arg1;
+- (void)_readDetail;
+- (void)_readTitles;
 - (void)addTitle:(id)arg1;
 - (void)clearTitles;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)titleAtIndex:(unsigned long long)arg1;
 - (unsigned long long)titlesCount;

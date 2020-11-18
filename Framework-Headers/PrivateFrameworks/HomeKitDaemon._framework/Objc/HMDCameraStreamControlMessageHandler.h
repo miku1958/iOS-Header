@@ -10,7 +10,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAccessory, HMDCameraResidentMessageHandler, HMDCameraSettingsControlManager, HMDCameraStreamManagerSession, HMDCameraStreamSnapshotHandler, HMDCameraSupportedConfigurationCache, HMDNotificationRegistration, HMDService, HMFNetMonitor, NSObject, NSString, NSUUID;
+@class HMDCameraResidentMessageHandler, HMDCameraSettingsControlManager, HMDCameraStreamManagerSession, HMDCameraStreamSnapshotHandler, HMDCameraSupportedConfigurationCache, HMDHAPAccessory, HMDNotificationRegistration, HMDService, HMFNetMonitor, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDCameraStreamControlMessageHandler : HMFObject <HMFTimerDelegate, HMDCameraStreamControlManagerDelegate, HMFLogging>
@@ -20,7 +20,7 @@
     HMDNotificationRegistration *_notificationRegistration;
     HMDCameraResidentMessageHandler *_residentMessageHandler;
     NSObject<OS_dispatch_queue> *_workQueue;
-    HMDAccessory *_accessory;
+    HMDHAPAccessory *_accessory;
     CDUnknownBlockType _messageSender;
     NSUUID *_uniqueIdentifier;
     NSUUID *_profileUniqueIdentifier;
@@ -30,7 +30,7 @@
     HMFNetMonitor *_networkMonitor;
 }
 
-@property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly, weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -72,6 +72,7 @@
 - (void)dealloc;
 - (void)handleAccessoryIsNotReachable:(id)arg1;
 - (void)handleActivePhoneCallEstablishedNotification:(id)arg1;
+- (void)handleCameraSettingsDidChangeNotification:(id)arg1;
 - (void)handleForegroundAppsNotification:(id)arg1;
 - (void)handleMessage:(id)arg1;
 - (id)initWithWorkQueue:(id)arg1 streamSnapshotHandler:(id)arg2 messageSender:(CDUnknownBlockType)arg3 accessory:(id)arg4 streamManagementService:(id)arg5 msgDispatcher:(id)arg6 profileUniqueIdentifier:(id)arg7 networkMonitor:(id)arg8 residentMessageHandler:(id)arg9;

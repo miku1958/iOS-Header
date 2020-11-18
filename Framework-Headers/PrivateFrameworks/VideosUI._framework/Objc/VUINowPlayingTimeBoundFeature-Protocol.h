@@ -10,7 +10,7 @@
 
 @property (readonly, nonatomic) double duration;
 @property (nonatomic, getter=isSkippable) BOOL skippable;
-@property (readonly, nonatomic) double startTime;
+@property (nonatomic) double startTime;
 
 @end
 

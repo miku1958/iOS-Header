@@ -6,31 +6,22 @@
 
 #import <NewsFeedLayout/NFLAbstractHeadlineProperties.h>
 
-@class UIColor;
-
 @interface NFLTrendingProperties : NFLAbstractHeadlineProperties
 {
-    UIColor *_bylineColor;
     double _bylineLineHeight;
 }
 
-@property (readonly, nonatomic) UIColor *bylineColor; // @synthesize bylineColor=_bylineColor;
 @property (readonly, nonatomic) double bylineLineHeight; // @synthesize bylineLineHeight=_bylineLineHeight;
 
-- (void).cxx_destruct;
 - (id)_bylineFontNameWithTemplate:(id)arg1;
 - (double)_bylineFontSize;
 - (double)_bylineTopOffsetWithTemplate:(id)arg1;
 - (double)_titleTopOffsetWithTemplate:(id)arg1;
-- (id)accessoryIconColor;
-- (id)accessoryTextColor;
 - (double)ageLabelToAccessoryLabelSpacingWithTemplate:(id)arg1;
 - (id)bylineFontColorWithTemplate:(id)arg1;
 - (id)bylineFontWithTemplate:(id)arg1;
-- (id)numberedCircleColor;
 - (double)numberedCircleTitleSpacingWithTemplate:(id)arg1;
 - (double)numberedCircleTopSpacingAboveLogoWithTemplate:(id)arg1;
-- (id)publisherLogoColor;
 - (double)publisherLogoToTitleSpacingWithTemplate:(id)arg1;
 - (double)spacingAboveArticle;
 - (id)titleFontNameWithTemplate:(id)arg1;

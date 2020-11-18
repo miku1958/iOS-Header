@@ -17,7 +17,6 @@
 
 @property (readonly) unsigned long long count;
 
-+ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)dictionary;
 + (id)dictionaryWithDictionary:(id)arg1;
@@ -31,6 +30,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)__apply:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2;
 - (BOOL)__getValue:(id *)arg1 forKey:(id)arg2;
+- (id)_cfMutableCopy;
 - (unsigned long long)_cfTypeID;
 - (id)allKeys;
 - (id)allKeysForObject:(id)arg1;

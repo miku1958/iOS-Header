@@ -6,19 +6,32 @@
 
 #import <GameController/GCControllerElement.h>
 
+@class NSString;
+
 @interface GCControllerButtonInput : GCControllerElement
 {
+    NSString *_descriptionName;
+    int _pressCounter;
+    BOOL _nonAnalog;
+    float _value;
+    CDUnknownBlockType _valueChangedHandler;
+    CDUnknownBlockType _pressedChangedHandler;
 }
 
+@property BOOL nonAnalog; // @synthesize nonAnalog=_nonAnalog;
 @property (readonly, nonatomic, getter=isPressed) BOOL pressed;
-@property (copy, nonatomic) CDUnknownBlockType pressedChangedHandler;
-@property (readonly, nonatomic) float value;
-@property (copy, nonatomic) CDUnknownBlockType valueChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType pressedChangedHandler; // @synthesize pressedChangedHandler=_pressedChangedHandler;
+@property (readonly, nonatomic) float value; // @synthesize value=_value;
+@property (copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
 
+- (void).cxx_destruct;
 - (BOOL)_setValue:(float)arg1;
 - (BOOL)_setValue:(float)arg1 queue:(id)arg2;
-- (BOOL)setHIDValue:(struct __IOHIDValue *)arg1;
-- (BOOL)setHIDValue:(struct __IOHIDValue *)arg1 queue:(id)arg2;
+- (id)description;
+- (int)getAndResetTimesPressed;
+- (id)initWithDescriptionName:(id)arg1;
+- (BOOL)isAnalog;
+- (void)setValue:(float)arg1;
 
 @end
 

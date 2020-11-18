@@ -4,20 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MFLibraryMessage, NSObject;
-@protocol MFMessageIterationFilter;
+@class MFLibraryMessage;
 
 @protocol MFSearchResultHandler
-- (void)beginResult:(unsigned int)arg1;
-- (void)endResult;
-- (void)setResultDateRecieved:(double)arg1;
-- (void)setResultSender:(char *)arg1;
-- (void)setResultSubject:(char *)arg1;
-- (void)setResultUnread:(BOOL)arg1;
-
-@optional
-- (NSObject<MFMessageIterationFilter> *)filter;
-- (void)handleMessage:(MFLibraryMessage *)arg1;
-- (void)setResultSummary:(char *)arg1;
+- (BOOL)handleMessage:(MFLibraryMessage *)arg1;
 @end
 

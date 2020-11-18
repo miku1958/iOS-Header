@@ -38,6 +38,7 @@
 + (id)testingIdentityStoreWithDatabasePath:(id)arg1;
 + (id)testingIdentityStoreWithSingleWriterService:(id)arg1;
 - (void).cxx_destruct;
+- (id)DSIDForUserIdentity:(id)arg1 outError:(id *)arg2;
 - (BOOL)_allowsDelegationForUserIdentity:(id)arg1;
 - (void)_delegateAccountStoreDidChangeNotification:(id)arg1;
 - (void)_dispatchDidChangeNotification:(BOOL)arg1 didDelegateAccountStoreChange:(BOOL)arg2;
@@ -53,7 +54,7 @@
 - (void)_registerForDelegateAccountStoreNotifications:(id)arg1;
 - (void)_reloadForExternalChange;
 - (void)_resetDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_saveIdentityProperties:(id)arg1 forUserIdentity:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_saveIdentityProperties:(id)arg1 andPostAccountChangeNotification:(BOOL)arg2 forUserIdentity:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_unregisterForDelegateAccountStoreNotifications:(id)arg1;
 - (void)_unsafe_deleteDelegateAccountStore;
 - (void)_updateDelegateAccountStoreUsingBlock:(CDUnknownBlockType)arg1;
@@ -67,6 +68,7 @@
 - (void)getPropertiesForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getVerificationContextForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;
+- (void)insertPropertiesForUserIdentity:(id)arg1 andPostAccountChangeNotification:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)insertPropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)insertPropertiesForUserIdentity:(id)arg1 usingBlock:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeAllDelegateTokensWithCompletionHandler:(CDUnknownBlockType)arg1;

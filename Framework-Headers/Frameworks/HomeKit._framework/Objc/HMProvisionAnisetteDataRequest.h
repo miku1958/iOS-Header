@@ -10,6 +10,7 @@
 
 @class NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface HMProvisionAnisetteDataRequest : HMRemoteLoginMessage <HMRemoteLoginMessageProtocol>
 {
 }
@@ -17,16 +18,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *messageName;
 @property (readonly, nonatomic) NSDictionary *messagePayload;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *xpcMessageName;
 
 + (id)messageName;
 + (id)objWithDict:(id)arg1;
 + (id)objWithMessage:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)xpcMessageName;
-- (id)messageName;
-- (id)xpcMessageName;
 
 @end
 

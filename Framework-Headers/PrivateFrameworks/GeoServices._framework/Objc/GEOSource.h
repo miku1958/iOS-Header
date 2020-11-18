@@ -8,23 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOSource : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_sourceId;
     NSString *_sourceName;
     NSString *_sourceVersion;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_sourceId:1;
+        unsigned int read_sourceName:1;
+        unsigned int read_sourceVersion:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_sourceId:1;
+        unsigned int wrote_sourceName:1;
+        unsigned int wrote_sourceVersion:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasSourceVersion;
-@property (strong, nonatomic) NSString *sourceId; // @synthesize sourceId=_sourceId;
-@property (strong, nonatomic) NSString *sourceName; // @synthesize sourceName=_sourceName;
-@property (strong, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
+@property (strong, nonatomic) NSString *sourceId;
+@property (strong, nonatomic) NSString *sourceName;
+@property (strong, nonatomic) NSString *sourceVersion;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readSourceId;
+- (void)_readSourceName;
+- (void)_readSourceVersion;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +50,7 @@
 - (id)initWithAttributionID:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

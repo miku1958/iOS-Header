@@ -49,6 +49,7 @@
 }
 
 @property (copy, nonatomic) id _photo; // @synthesize _photo=__photo;
+@property (readonly, weak, nonatomic) NSArray *allUserPersonas;
 @property (copy, nonatomic) NSString *alternateDSID; // @synthesize alternateDSID=_alternateDSID;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (nonatomic) unsigned long long dataQuota; // @synthesize dataQuota=_dataQuota;
@@ -99,6 +100,7 @@
 - (BOOL)isEqualToUser:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)setPropertiesFromUser:(id)arg1;
+- (id)userPersonaFromIdentityString:(id)arg1;
 
 @end
 

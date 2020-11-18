@@ -8,7 +8,7 @@
 
 #import <Notes/ICSearchIndexableNote-Protocol.h>
 
-@class NSData, NSDate, NSNumber, NSSet, NSString, NSURL, NoteBodyObject, NoteStoreObject;
+@class NSArray, NSData, NSDate, NSNumber, NSSet, NSString, NSURL, NoteBodyObject, NoteStoreObject;
 
 @interface NoteObject : NSManagedObject <ICSearchIndexableNote>
 {
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSNumber *containsCJK; // @dynamic containsCJK;
 @property (strong, nonatomic) NSString *content;
 @property (readonly, nonatomic) NSString *contentAsPlainText;
+@property (readonly, nonatomic) NSString *contentAsPlainTextPreservingNewlines;
 @property (strong, nonatomic) NSNumber *contentType; // @dynamic contentType;
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (readonly, copy) NSString *debugDescription;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) BOOL isModernNote;
 @property (nonatomic) BOOL isPlainText;
 @property (strong, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
+@property (readonly, nonatomic) NSArray *noteCellKeyPaths;
 @property (readonly, nonatomic) NSURL *noteId;
 @property (nonatomic) unsigned long long sequenceNumber;
 @property (strong, nonatomic) NSString *serverId; // @dynamic serverId;
@@ -50,32 +52,34 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 
-+ (BOOL)didChooseToMigrateNote:(id)arg1 context:(struct NoteContext *)arg2;
 - (id)accountName;
 - (id)authorsExcludingCurrentUser;
 - (BOOL)belongsToCollection:(id)arg1;
 - (BOOL)containsAttachments;
-- (id)contentAsPlainTextPreservingNewlines;
+- (id)contentIdentifier;
 - (id)contentInfoText;
 - (id)dataForTypeIdentifier:(id)arg1;
 - (id)dateForCurrentSortType;
 - (id)defaultTitleForEmptyNote;
 - (id)folderName;
+- (id)folderNameForNoteList;
 - (id)identifier;
-- (BOOL)ignoreInSearchIndexer;
 - (BOOL)isHiddenFromSearch;
+- (BOOL)isMovable;
 - (BOOL)isPasswordProtected;
+- (BOOL)isSharedReadOnly;
 - (BOOL)isSharedViaICloud;
+- (BOOL)isSharedViaICloudFolder;
 - (void)markForDeletion;
 - (id)noteAsPlainTextWithoutTitle;
 - (id)searchDomainIdentifier;
+- (id)searchIndexingIdentifier;
 - (BOOL)searchResultCanBeDeletedFromNoteContext;
 - (unsigned long long)searchResultType;
 - (unsigned long long)searchResultsSection;
-- (id)searchableContentKeyPaths;
 - (id)searchableItemAttributeSet;
-- (id)searchableItemIdentifier;
 - (id)trimmedTitle;
+- (id)userActivityContentAttributeSet;
 - (long long)visibilityTestingType;
 
 @end

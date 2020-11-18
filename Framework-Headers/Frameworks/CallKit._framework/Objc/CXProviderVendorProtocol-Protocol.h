@@ -4,12 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CallKit/CXAbstractProviderVendorProtocol-Protocol.h>
 #import <CallKit/CXAudioSessionActivationStateObserver-Protocol.h>
 
-@class CXAction, CXTransaction;
-
-@protocol CXProviderVendorProtocol <CXAudioSessionActivationStateObserver>
-- (oneway void)commitTransaction:(CXTransaction *)arg1;
-- (oneway void)handleActionTimeout:(CXAction *)arg1;
+@protocol CXProviderVendorProtocol <CXAbstractProviderVendorProtocol, CXAudioSessionActivationStateObserver>
 @end
 

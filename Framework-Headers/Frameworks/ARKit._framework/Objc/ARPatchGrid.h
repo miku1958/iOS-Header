@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPatchesVector:(vector_f87b304d)arg1 pivotAngle:(float)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

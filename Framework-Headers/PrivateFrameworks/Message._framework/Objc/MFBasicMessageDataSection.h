@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSString *partName; // @synthesize partName=_partName;
 @property (nonatomic, getter=isPartial) BOOL partial; // @synthesize partial=_partial;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)setData:(id)arg1;
 
 @end

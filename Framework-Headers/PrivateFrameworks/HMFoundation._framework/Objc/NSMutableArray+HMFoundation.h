@@ -7,6 +7,10 @@
 #import <Foundation/NSMutableArray.h>
 
 @interface NSMutableArray (HMFoundation)
+- (id)hmf_dequeue;
+- (void)hmf_enqueue:(id)arg1;
+- (void)hmf_enqueueMultiple:(id)arg1;
+- (id)hmf_maybeDequeue;
 - (void)hmf_removeFirstObject;
 @end
 

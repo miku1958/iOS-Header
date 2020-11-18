@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFMediaValueSource-Protocol.h>
 
 @class HFItemBuilder, HMActionSet, NSString;
 @protocol HFActionSetBuilderProtocol, HFActionSetValueSourceDelegate, HFCharacteristicOperationContextProviding;
 
-@interface HFActionSetValueSource : NSObject <HFCharacteristicValueSource>
+@interface HFActionSetValueSource : NSObject <HFCharacteristicValueSource, HFMediaValueSource>
 {
     HFItemBuilder<HFActionSetBuilderProtocol> *_actionSetBuilder;
     HMActionSet *_actionSet;
@@ -31,17 +32,24 @@
 - (void).cxx_destruct;
 - (id)_actionForCharacteristic:(id)arg1;
 - (id)_existingActionBuilderForCharacteristic:(id)arg1;
+- (id)_existingActionBuilderForProfile:(id)arg1;
 - (BOOL)_isCurrentStateCharacteristic:(id)arg1;
 - (id)_targetValueForCharacteristic:(id)arg1;
 - (id)_valueForCurrentStateCharacteristic:(id)arg1;
 - (void)beginTransactionWithReason:(id)arg1 readPolicy:(id)arg2 logger:(id)arg3;
+- (id)cachedPlaybackStateWriteErrorForRouteID:(id)arg1;
 - (id)cachedValueForCharacteristic:(id)arg1;
 - (void)commitTransactionWithReason:(id)arg1;
+- (BOOL)hasPendingWritesForRouteID:(id)arg1;
 - (id)initWithActionSet:(id)arg1;
 - (id)initWithActionSetBuilder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (long long)lastPlaybackStateForProfileForRouteID:(id)arg1;
+- (id)mediaProfileContainerForRouteID:(id)arg1;
+- (void)mediaValueUpdated:(id)arg1 playbackState:(long long)arg2 playbackArchive:(id)arg3;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
+- (id)writePlaybackState:(long long)arg1 playbackArchive:(id)arg2 forRouteID:(id)arg3;
 - (id)writeValuesForCharacteristics:(id)arg1;
 
 @end

@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface IKDataBinding : NSObject
 {
+    NSDictionary *_entriesByKey;
     NSMutableSet *_unresolvedKeys;
     struct NSDictionary *_keyValues;
     NSSet *_dataBoundKeys;
@@ -21,11 +22,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSSet *unresolvedKeys;
 
 - (void).cxx_destruct;
-- (void)appendKeyValues:(struct NSDictionary *)arg1;
-- (id)initWithKeyValues:(struct NSDictionary *)arg1;
+- (id)dataBoundKeysWithAnyOfAttributes:(unsigned long long)arg1;
+- (id)initWithEntries:(id)arg1;
+- (id)keysWithAnyOfAttributes:(unsigned long long)arg1;
 - (void)markResolvedForKey:(id)arg1;
 - (void)setNeedsResolutionForAllKeys;
 - (void)setNeedsResolutionForKey:(id)arg1;
+- (id)unresolvedKeysWithAnyOfAttributes:(unsigned long long)arg1;
 
 @end
 

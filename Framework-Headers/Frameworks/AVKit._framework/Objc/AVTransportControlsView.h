@@ -8,9 +8,10 @@
 
 #import <AVKit/AVScrubberDelegate-Protocol.h>
 
-@class AVBackdropView, AVButton, AVLabel, AVPlaybackControlsRoutePickerView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, NSArray, NSLayoutConstraint, NSString, NSTimer, UILabel, UIView, _UIVisualEffectBackdropView;
+@class AVBackdropView, AVButton, AVLabel, AVPlaybackControlsRoutePickerView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, NSArray, NSLayoutConstraint, NSString, NSTimer, UILabel, UIView;
 @protocol AVTransportControlsViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface AVTransportControlsView : AVView <AVScrubberDelegate>
 {
     BOOL _doubleRowLayoutEnabled;
@@ -19,6 +20,7 @@
     BOOL _liveStreamingControlsIncludeScrubber;
     BOOL _collapsed;
     BOOL _included;
+    BOOL _removed;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
     BOOL _backdropViewNeedsLayout;
@@ -36,7 +38,7 @@
     AVButton *_startRightwardContentTransitionButton;
     AVPlaybackControlsRoutePickerView *_routePickerView;
     AVButton *_mediaSelectionButton;
-    NSArray *_customButtons;
+    NSArray *_customItems;
     UIView *_customContentTransitioningInfoPanel;
     AVBackdropView *_backdropView;
     AVBackdropView *_detachedExtraContentBackdropView;
@@ -48,17 +50,16 @@
     UILabel *_scrubInstructionsLabel;
     UILabel *_scrubInstructionsBackdropLabel;
     NSTimer *_scrubInstructionsTimer;
-    _UIVisualEffectBackdropView *_captureView;
     struct CGSize _extrinsicContentSize;
 }
 
 @property (readonly, nonatomic) AVBackdropView *backdropView; // @synthesize backdropView=_backdropView;
 @property (nonatomic) BOOL backdropViewNeedsLayout; // @synthesize backdropViewNeedsLayout=_backdropViewNeedsLayout;
-@property (readonly, nonatomic) _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
+@property (readonly, nonatomic) BOOL canShowScrubInstructions;
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
-@property (copy, nonatomic) NSArray *customButtons; // @synthesize customButtons=_customButtons;
 @property (strong, nonatomic) UIView *customContentTransitioningInfoPanel; // @synthesize customContentTransitioningInfoPanel=_customContentTransitioningInfoPanel;
+@property (copy, nonatomic) NSArray *customItems; // @synthesize customItems=_customItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AVTransportControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -77,6 +78,7 @@
 @property (nonatomic) BOOL liveStreamingControlsIncludeScrubber; // @synthesize liveStreamingControlsIncludeScrubber=_liveStreamingControlsIncludeScrubber;
 @property (readonly, nonatomic) AVButton *mediaSelectionButton; // @synthesize mediaSelectionButton=_mediaSelectionButton;
 @property (readonly, nonatomic) double minimumRequiredWidth; // @synthesize minimumRequiredWidth=_minimumRequiredWidth;
+@property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (readonly, nonatomic) AVPlaybackControlsRoutePickerView *routePickerView; // @synthesize routePickerView=_routePickerView;
 @property (readonly, nonatomic) UILabel *scrubInstructionsBackdropLabel; // @synthesize scrubInstructionsBackdropLabel=_scrubInstructionsBackdropLabel;
 @property (readonly, nonatomic) UILabel *scrubInstructionsLabel; // @synthesize scrubInstructionsLabel=_scrubInstructionsLabel;
@@ -106,7 +108,7 @@
 - (void)_updateScrubInstructionsLabelsText;
 - (void)beginScrubbing:(id)arg1;
 - (void)endScrubbing:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2 captureView:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)scrubberSlowKnobMovementDetected:(id)arg1;

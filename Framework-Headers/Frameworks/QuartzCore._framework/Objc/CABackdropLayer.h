@@ -21,11 +21,13 @@
 @property BOOL disablesOccludedBackdropBlurs; // @synthesize disablesOccludedBackdropBlurs=_disablesOccludedBackdropBlurs;
 @property (getter=isEnabled) BOOL enabled;
 @property (copy) NSString *groupName;
+@property BOOL ignoresScreenClip;
 @property double marginWidth;
 @property BOOL reducesCaptureBitDepth;
 @property double scale;
 @property double statisticsInterval;
 @property (copy) NSString *statisticsType;
+@property BOOL tracksLuma;
 @property BOOL usesGlobalGroupNamespace;
 @property double zoom;
 

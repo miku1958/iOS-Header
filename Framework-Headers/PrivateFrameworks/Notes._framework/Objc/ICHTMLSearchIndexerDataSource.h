@@ -10,14 +10,12 @@
 {
 }
 
-- (id)allIndexableObjectIdentifiersByObjectID;
+- (id)allIndexableObjectIDsInReversedReindexingOrder;
 - (void)contextWillSave:(id)arg1;
 - (id)dataSourceIdentifier;
-- (id)indexableObjectIDsMatchingPredicate:(id)arg1;
-- (id)indexableObjectIDsWithIdentifiers:(id)arg1;
-- (id)indexableObjectsMatchingPredicate:(id)arg1 context:(id)arg2;
+- (id)indexableObjectIDsMatchingPredicate:(id)arg1 sortByReversedReindexingOrder:(BOOL)arg2;
+- (unsigned long long)indexingPriority;
 - (id)newManagedObjectContext;
-- (id)objectForSearchableItemIdentifier:(id)arg1 context:(id)arg2;
 - (id)persistentStoreCoordinator;
 
 @end

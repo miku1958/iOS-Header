@@ -8,23 +8,22 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CLKDevice, EAGLContext, NSString, NTKCharacterDisplayLink, NTKCharacterFrameBuffer, NTKCharacterRenderer, NTKCharacterResourceLoader;
+@class CLKDevice, CLKUIQuadView, NSString, NTKCharacterQuad, NTKCharacterRenderer, NTKCharacterResourceLoader;
 
 @interface NTKCharacterTimeView : UIView <NTKTimeView>
 {
     CLKDevice *_device;
     NTKCharacterResourceLoader *_loader;
-    EAGLContext *_context;
-    NTKCharacterDisplayLink *_displayLink;
+    NTKCharacterQuad *_characterQuad;
+    CLKUIQuadView *_characterQuadView;
+    NTKCharacterRenderer *_renderers[2];
+    NTKCharacterRenderer *_renderer;
+    unsigned long long _character;
     unsigned int _isRenderOneFrameRequested:1;
     unsigned int _isAnimating:1;
     unsigned int _isBackgrounded:1;
     unsigned int _renderWasIgnored:1;
     unsigned int _layoutWasIgnored:1;
-    unsigned long long _character;
-    NTKCharacterFrameBuffer *_framebuffer;
-    NTKCharacterRenderer *_renderers[2];
-    NTKCharacterRenderer *_renderer;
     BOOL _frozen;
 }
 
@@ -32,16 +31,15 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFrozen) BOOL frozen; // @synthesize frozen=_frozen;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) CLKUIQuadView *quadView;
 @property (readonly) Class superclass;
 
-+ (Class)layerClass;
 - (void).cxx_destruct;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_didEnterBackground;
 - (void)_endScrubbing;
 - (void)_layoutRenderer;
-- (void)_render;
 - (void)_renderOneFrame;
 - (void)_startAnimation;
 - (void)_stopAnimation;
@@ -55,7 +53,7 @@
 - (void)layoutSubviews;
 - (void)prepareToZoom;
 - (void)renderOneFrame;
-- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1 inGroup:(id)arg2;
 - (void)scrubToDate:(id)arg1;
 - (void)setAnimationFrameInterval:(long long)arg1;
 - (void)setCharacter:(unsigned long long)arg1;
@@ -67,7 +65,6 @@
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setTimeOffset:(double)arg1;
 - (void)setZoomFraction:(double)arg1 diameter:(double)arg2;
-- (void)speakTime;
 - (void)startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end

@@ -16,7 +16,7 @@
     MISSING_TYPE *endpoint;
     MISSING_TYPE *statusCodeHandlers;
     MISSING_TYPE *statusCodeHandlerQueue;
-    MISSING_TYPE *session.storage;
+    MISSING_TYPE *$__lazy_storage_$_session;
 }
 
 - (void).cxx_destruct;

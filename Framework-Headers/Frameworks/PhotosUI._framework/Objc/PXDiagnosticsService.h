@@ -11,26 +11,27 @@
 @interface PXDiagnosticsService : NSObject
 {
     BOOL _canProvideConsoleDescription;
-    BOOL _canProvideContextualViewController;
     BOOL _canProvideSettingsViewController;
+    BOOL _canPerformAction;
     NSArray *_itemProviders;
-    NSString *_title;
     NSString *_consoleDescription;
     UIViewController *_settingsViewController;
 }
 
+@property (readonly, nonatomic) BOOL canPerformAction; // @synthesize canPerformAction=_canPerformAction;
 @property (readonly, nonatomic) BOOL canProvideConsoleDescription; // @synthesize canProvideConsoleDescription=_canProvideConsoleDescription;
-@property (readonly, nonatomic) BOOL canProvideContextualViewController; // @synthesize canProvideContextualViewController=_canProvideContextualViewController;
+@property (readonly, nonatomic) BOOL canProvideContextualViewController;
 @property (readonly, nonatomic) BOOL canProvideSettingsViewController; // @synthesize canProvideSettingsViewController=_canProvideSettingsViewController;
 @property (readonly, nonatomic) NSString *consoleDescription; // @synthesize consoleDescription=_consoleDescription;
 @property (readonly, nonatomic) UIViewController *contextualViewController;
 @property (readonly, copy, nonatomic) NSArray *itemProviders; // @synthesize itemProviders=_itemProviders;
 @property (readonly, nonatomic) UIViewController *settingsViewController; // @synthesize settingsViewController=_settingsViewController;
-@property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithItemProviders:(id)arg1;
+- (void)performAction;
 
 @end
 

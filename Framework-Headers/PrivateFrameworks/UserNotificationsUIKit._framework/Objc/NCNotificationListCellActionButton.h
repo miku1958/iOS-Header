@@ -6,67 +6,53 @@
 
 #import <UIKit/UIControl.h>
 
-#import <UserNotificationsUIKit/NCMaterialsAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/MTMaterialGrouping-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class BSUIFontProvider, MTMaterialView, NCNotificationAction, NSString, UILabel, UIView;
+@class BSUIFontProvider, MTMaterialView, NCNotificationAction, NSString, UILabel;
 
-@interface NCNotificationListCellActionButton : UIControl <PLContentSizeCategoryAdjusting, NCMaterialsAdjusting>
+@interface NCNotificationListCellActionButton : UIControl <PLContentSizeCategoryAdjusting, MTMaterialGrouping>
 {
     BOOL _adjustsFontForContentSizeCategory;
     NSString *_preferredContentSizeCategory;
+    NSString *_materialGroupNameBase;
     NCNotificationAction *_notificationAction;
     NSString *_title;
-    NSString *_backgroundGroupName;
+    long long _backgroundMaterialRecipe;
     BSUIFontProvider *_fontProvider;
     UILabel *_titleLabel;
-    long long _materialRecipe;
-    unsigned long long _backgroundMaterialOptions;
-    unsigned long long _overlayMaterialOptions;
     MTMaterialView *_backgroundView;
-    MTMaterialView *_backgroundOverlayView;
-    UIView *_backgroundHighlightView;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-@property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
-@property (strong, nonatomic) UIView *backgroundHighlightView; // @synthesize backgroundHighlightView=_backgroundHighlightView;
-@property (nonatomic) unsigned long long backgroundMaterialOptions; // @synthesize backgroundMaterialOptions=_backgroundMaterialOptions;
-@property (strong, nonatomic) MTMaterialView *backgroundOverlayView; // @synthesize backgroundOverlayView=_backgroundOverlayView;
+@property (nonatomic) long long backgroundMaterialRecipe; // @synthesize backgroundMaterialRecipe=_backgroundMaterialRecipe;
 @property (strong, nonatomic) MTMaterialView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic, getter=_fontProvider, setter=_setFontProvider:) BSUIFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) long long materialRecipe; // @synthesize materialRecipe=_materialRecipe;
+@property (copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
 @property (strong, nonatomic) NCNotificationAction *notificationAction; // @synthesize notificationAction=_notificationAction;
-@property (nonatomic) unsigned long long overlayMaterialOptions; // @synthesize overlayMaterialOptions=_overlayMaterialOptions;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
-- (void)_configureBackgroundHighlightViewIfNecessary;
-- (void)_configureBackgroundOverlayViewIfNecessary;
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureTitleLabelEffects;
 - (void)_configureTitleLabelIfNecessary;
 - (void)_highlightButton:(id)arg1;
-- (void)_layoutBackgroundHighlightView;
-- (void)_layoutBackgroundOverlayView;
 - (void)_layoutBackgroundView;
 - (void)_layoutTitleLabel;
 - (void)_unHighlightButton:(id)arg1;
 - (void)_updateTitleLabelFont;
 - (long long)_wordCountForText:(id)arg1;
-- (void)adjustForChangeInMaterialRecipe:(long long)arg1 backgroundMaterialOptions:(unsigned long long)arg2 overlayMaterialOptions:(unsigned long long)arg3;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 - (void)willMoveToSuperview:(id)arg1;
 
 @end

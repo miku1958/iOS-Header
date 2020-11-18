@@ -6,8 +6,152 @@
 
 #import <HomeKit/HMHome.h>
 
-@interface HMHome (HFUserHandleAdditions)
+#import <Home/HFCharacteristicValueReader-Protocol.h>
+#import <Home/HFCharacteristicValueWriter-Protocol.h>
+#import <Home/HFReorderableHomeKitObject-Protocol.h>
+#import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFWallaperHost-Protocol.h>
+
+@class NSArray, NSDate, NSNumber, NSObject, NSString, NSUUID, UIImage;
+@protocol OS_dispatch_source;
+
+@interface HMHome (HFUserHandleAdditions) <HFStateDumpBuildable, HFCharacteristicValueReader, HFCharacteristicValueWriter, HFWallaperHost, HFReorderableHomeKitObject>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
+@property (readonly, copy, nonatomic) NSString *hf_displayName;
+@property (readonly, nonatomic) BOOL hf_isAbleToAddTrigger;
+@property (readonly, nonatomic) BOOL hf_userIsAllowedToCreateTrigger;
+@property (readonly, copy, nonatomic) NSArray *hf_userNotificationServiceTopics;
+@property (readonly, nonatomic) UIImage *hf_wallpaperImage;
+@property (strong, nonatomic) NSNumber *homepodLanguageSettingSyncCompleteCheckCount; // @dynamic homepodLanguageSettingSyncCompleteCheckCount;
+@property (strong, nonatomic) NSObject<OS_dispatch_source> *homepodLanguageSettingSyncCompleteTimer; // @dynamic homepodLanguageSettingSyncCompleteTimer;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+
++ (id)_hf_appDataKeyForColorPaletteOfType:(unsigned long long)arg1;
++ (id)_hf_groupedServiceTypeTopics;
++ (id)_hf_standaloneTopicNameForPrimaryServiceType:(id)arg1;
++ (BOOL)hf_prefersAutoSynthesizedDescription;
+- (id)_hf_accessoryTopics;
+- (BOOL)_seedGated_hasSecureRecordingCameras;
+- (id)accessoriesSupportingSoftwareUpdate;
+- (id)availableSoftwareUpdates;
+- (id)hf_accessControlDescriptor;
+- (id)hf_accessoriesMatchingCategoryType:(id)arg1;
+- (id)hf_accessoriesRequiringManualWiFiReconfiguration;
+- (id)hf_accessoryForSymptomsHandler:(id)arg1;
+- (id)hf_accessoryProfilesWithClass:(Class)arg1;
+- (id)hf_accessoryWithDeviceIdentifier:(id)arg1;
+- (id)hf_accessoryWithIdentifier:(id)arg1;
+- (id)hf_actionSetWithUUID:(id)arg1;
+- (id)hf_activeRooms;
+- (id)hf_allAccessoryProfiles;
+- (id)hf_allBridgeAccessories;
+- (id)hf_allCameraProfiles;
+- (id)hf_allHomePodProfiles;
+- (id)hf_allMediaProfiles;
+- (id)hf_allNetworkConfigurationProfiles;
+- (id)hf_allNetworkRouterProfiles;
+- (id)hf_allNonAdminUsers;
+- (id)hf_allNonEmptyActionSets;
+- (id)hf_allObjectsAffectedByServiceTopic:(id)arg1;
+- (id)hf_allProgrammableSwitchAccessories;
+- (id)hf_allRooms;
+- (id)hf_allServices;
+- (id)hf_allTargetControlAccessories;
+- (id)hf_allUsersIncludingCurrentUser;
+- (id)hf_allVisibleServices;
+- (id)hf_appleTVs;
+- (id)hf_cameraProfileWithIdentifier:(id)arg1;
+- (id)hf_cameraProfilesAffectedByServiceTopic:(id)arg1;
+- (BOOL)hf_cameraRecordingHasBeenOnboarded;
+- (id)hf_characteristicValueManager;
+- (id)hf_colorPalette;
+- (id)hf_colorPaletteOfType:(unsigned long long)arg1;
+- (BOOL)hf_currentUserIsAdministrator;
+- (BOOL)hf_currentUserIsOwner;
+- (unsigned long long)hf_favoriteCameraCountExcludingHomeKitObjects:(id)arg1;
+- (unsigned long long)hf_favoriteServiceLikeObjectCountExcludingHomeKitObjects:(id)arg1;
 - (id)hf_handleForUser:(id)arg1;
+- (BOOL)hf_hasAcceptedTermsAndConditionsForHomePodVersion:(id)arg1;
+- (BOOL)hf_hasAppleTVs;
+- (BOOL)hf_hasAutomatableServices;
+- (BOOL)hf_hasCameraRecordingResident;
+- (BOOL)hf_hasHomePods;
+- (BOOL)hf_hasMediaAccessories;
+- (BOOL)hf_hasSecureRecordingCameras;
+- (id)hf_home;
+- (BOOL)hf_homeHasMigratedIntoHomeApp;
+- (BOOL)hf_homeHasMigratedServicesToAccessories;
+- (id)hf_homePods;
+- (BOOL)hf_isCurrentLocationHome;
+- (BOOL)hf_isMediaAccessoryProfileValid:(id)arg1;
+- (BOOL)hf_isNetworkProtectionEnabled;
+- (BOOL)hf_isNetworkProtectionSupportedForAccessories;
+- (BOOL)hf_isNetworkProtectionSupportedForHome;
+- (BOOL)hf_isNetworkRouterSupported;
+- (BOOL)hf_isPresenceAuthorizedForUser:(id)arg1;
+- (BOOL)hf_isUserAtHome;
+- (id)hf_localizedDescriptionForNetworkProtectionSupport;
+- (id)hf_markTermsAndConditionsAsAcceptedForHomePodWithLicenseAgreementVersion:(id)arg1;
+- (id)hf_mediaAccessories;
+- (id)hf_mediaProfileContainerForSymptomsHandler:(id)arg1;
+- (id)hf_mediaSystemForAccessory:(id)arg1;
+- (id)hf_mediaSystemForSymptomsHandler:(id)arg1;
+- (id)hf_notesApplicationData;
+- (unsigned long long)hf_numberOfHomePods;
+- (id)hf_personalRequestAccessories;
+- (id)hf_primaryResidentDevice;
+- (unsigned long long)hf_remoteAccessState;
+- (id)hf_reorderableActionSetsList;
+- (id)hf_reorderableCamerasList;
+- (id)hf_reorderableRoomsList;
+- (id)hf_reorderableServicesList;
+- (id)hf_resetAllNetworkConfigurationProfiles;
+- (id)hf_roomWithIdentifier:(id)arg1;
+- (id)hf_roomWithName:(id)arg1;
+- (id)hf_selectedRoom;
+- (id)hf_serviceGroupsForService:(id)arg1;
+- (id)hf_serviceWithIdentifier:(id)arg1;
+- (id)hf_servicesAffectedByServiceTopic:(id)arg1;
+- (void)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;
+- (id)hf_setHomeHasMigratedServicesToAccessories:(BOOL)arg1;
+- (id)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:(BOOL)arg1;
+- (id)hf_setNotesApplicationData:(id)arg1;
+- (void)hf_setSelectedRoom:(id)arg1;
+- (BOOL)hf_shouldDefaultFavoriteForHomeKitObject:(id)arg1 excludingHomeKitObjects:(id)arg2;
+- (void)hf_startReprovisioningAccessory:(id)arg1;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (BOOL)hf_supportsMediaActions;
+- (BOOL)hf_supportsPerUserRemoteAccess;
+- (BOOL)hf_supportsRemoteAccessRestrictions;
+- (BOOL)hf_supportsSharedEventAutomation;
+- (id)hf_tvViewingProfilesAccessories;
+- (id)hf_unitaryCameraProfile;
+- (id)hf_updateAccessControlDescriptor:(id)arg1;
+- (id)hf_updateAutomaticSoftwareUpdateEnabled:(BOOL)arg1;
+- (id)hf_updateColorPalette:(id)arg1;
+- (id)hf_updateColorPalette:(id)arg1 type:(unsigned long long)arg2;
+- (id)hf_updateDateAdded:(id)arg1;
+- (id)hf_updateNetworkProtection:(long long)arg1;
+- (id)hf_updateWallpaperImage:(id)arg1;
+- (BOOL)hf_userCanCreateTrigger;
 - (id)hf_userForHandle:(id)arg1;
+- (id)hf_userNotificationTopicForCameraProfile:(id)arg1;
+- (id)hf_userNotificationTopicForObject:(id)arg1;
+- (id)hf_userNotificationTopicForService:(id)arg1;
+- (id)hf_visibleAccessories;
+- (id)hf_zoneWithIdentifier:(id)arg1;
 @end
 

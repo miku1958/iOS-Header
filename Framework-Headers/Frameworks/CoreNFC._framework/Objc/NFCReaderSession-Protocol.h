@@ -15,5 +15,6 @@
 
 - (void)beginSession;
 - (void)invalidateSession;
+- (void)invalidateSessionWithErrorMessage:(NSString *)arg1;
 @end
 

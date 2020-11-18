@@ -16,26 +16,20 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, getter=isEducationMode) BOOL educationMode;
+@property (readonly, getter=isEphemeral) BOOL ephemeral;
 @property (readonly) unsigned long long hash;
 @property (readonly, getter=isHomeEnabled) BOOL homeEnabled;
-@property (getter=isKeychainSyncEnabled) BOOL keychainSyncEnabled;
+@property (readonly, getter=isKeychainSyncEnabled) BOOL keychainSyncEnabled;
+@property (readonly, getter=isManaged) BOOL managed;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
 + (id)sharedSettings;
 + (BOOL)supportsCloudSettings;
-- (void)__migrateHomePreferences;
-- (void)__registerForKeychainChangeNotifications;
-- (void)__synchronize;
-- (void)__updateHomeEnabled:(BOOL)arg1 userInitiated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_notifyClientsOfUpdatedHomeState:(BOOL)arg1 userInitiated:(BOOL)arg2;
-- (void)_notifyClientsOfUpdatedKeychainSyncState:(BOOL)arg1;
 - (id)attributeDescriptions;
-- (void)dealloc;
-- (void)enableHome:(BOOL)arg1 userInitiated:(BOOL)arg2;
-- (id)init;
 - (void)synchronize;
-- (void)updateHomeEnabled:(BOOL)arg1 userInitiated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updateHomeEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -16,7 +16,6 @@
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContents:(id)arg1;

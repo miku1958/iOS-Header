@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)eventTrackByReplacingSegmentAfterTime:(double)arg1 withEventTrack:(id)arg2;
-- (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 type:(id)arg2 events:(id)arg3;
 - (void)loadFromArchive:(const struct RecordingEventTrackArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;

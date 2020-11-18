@@ -9,7 +9,7 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, PKAccount, PKBusinessChatController, PKPaymentPass, PKPaymentService, PKPaymentTransaction, PKPaymentTransactionCellController, UIBarButtonItem, UIImageView, UIView;
+@class NSString, PKAccount, PKBusinessChatController, PKPaymentPass, PKPaymentService, PKPaymentTransaction, PKPaymentTransactionCellController, UIBarButtonItem, UIImageView, UITableViewHeaderFooterView;
 
 @interface PKReportIssueViewController : PKSectionTableViewController <PKPaymentServiceDelegate, UITextViewDelegate>
 {
@@ -33,7 +33,7 @@
     BOOL _canPerformDispute;
     BOOL _canPerformOther;
     BOOL _canPerformIncorrectMerchant;
-    UIView *_footerView;
+    UITableViewHeaderFooterView *_footerView;
     UIImageView *_logoView;
 }
 
@@ -61,22 +61,23 @@
 - (void)_reportIssueToMaps;
 - (void)_resetMapsMerchantAndBrandWithIssueReportIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)_rowIndexForIssueType:(long long)arg1;
+- (id)_statementName;
 - (id)_statementNameCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_submitButtonTapped:(id)arg1;
 - (id)_transactionCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateFooterPlacement;
 - (void)_updateNavigationButtons;
 - (id)initWithTransaction:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 detailViewStyle:(long long)arg4;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)scrollViewDidScroll:(id)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)textViewDidChange:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

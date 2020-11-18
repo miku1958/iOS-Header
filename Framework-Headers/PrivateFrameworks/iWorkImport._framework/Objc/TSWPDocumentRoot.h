@@ -8,13 +8,14 @@
 
 #import <iWorkImport/TSWPObjectIndex-Protocol.h>
 
-@class EQKitEnvironment, NSUUID, TSULocale;
+@class EQKitEnvironment, NSMutableSet, NSUUID, TSULocale;
 @protocol TSWPTOCController;
 
 __attribute__((visibility("hidden")))
 @interface TSWPDocumentRoot : TSKDocumentRoot <TSWPObjectIndex>
 {
     NSUUID *_uuid;
+    NSMutableSet *_ignoredWords;
     BOOL _didRemoveMissingAttachments;
     id<TSWPTOCController> _tocController;
 }
@@ -22,12 +23,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isChangeTrackingEnabled) BOOL changeTrackingEnabled;
 @property (nonatomic) BOOL didRemoveMissingAttachments; // @synthesize didRemoveMissingAttachments=_didRemoveMissingAttachments;
 @property (readonly, nonatomic) EQKitEnvironment *equationEnvironment;
+@property (nonatomic) BOOL laysOutBodyVertically;
 @property (readonly, nonatomic) double stickyCommentScaleMultiplier;
 @property (readonly, nonatomic) BOOL supportHeaderFooterParagraphAlignmentInInspectors;
 @property (readonly, nonatomic) id<TSWPTOCController> tocController; // @synthesize tocController=_tocController;
 @property (readonly, nonatomic) TSULocale *typesettingLocale;
 
 - (void).cxx_destruct;
+- (void)addIgnoredWord:(id)arg1;
 - (double)bodyWidth;
 - (BOOL)cellCommentsAllowedOnInfo:(id)arg1;
 - (id)changeSessionManagerForModel:(id)arg1;
@@ -39,12 +42,19 @@ __attribute__((visibility("hidden")))
 - (id)documentTSWPFontObjects;
 - (id)flowInfoContainer;
 - (void)fontUpdatedForStyleClient:(id)arg1;
+- (int)fullyJustifiedAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
 - (BOOL)has_30356142_build;
 - (const struct __CFLocale *)hyphenationLocale;
+- (id)ignoredWords;
 - (BOOL)isDrawableOnPageMaster:(id)arg1;
+- (BOOL)isIgnoringWord:(id)arg1;
+- (BOOL)isMasterInfo:(id)arg1;
+- (BOOL)isSectionModel:(id)arg1;
 - (int)naturalAlignmentAtCharIndex:(unsigned long long)arg1 inTextStorage:(id)arg2;
 - (id)p_fontsInStylesheetUsingBlock:(CDUnknownBlockType)arg1;
+- (void)removeIgnoredWord:(id)arg1;
 - (BOOL)shouldHyphenate;
+- (BOOL)textIsVerticalInStorage:(id)arg1 atCharIndex:(unsigned long long)arg2;
 - (id)unavailableDocumentFonts;
 - (BOOL)useLigatures;
 - (BOOL)validatedLoadFromUnarchiver:(id)arg1;

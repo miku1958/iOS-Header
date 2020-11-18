@@ -113,6 +113,7 @@
 @property (readonly, nonatomic) unsigned long long whichContained_Feedback; // @synthesize whichContained_Feedback=_whichContained_Feedback;
 
 - (void).cxx_destruct;
+- (void)clearContained_Feedback;
 - (id)dictionaryRepresentation;
 - (id)initWithCodable:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
@@ -120,7 +121,6 @@
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

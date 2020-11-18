@@ -22,6 +22,7 @@
     BOOL _autoPlayEnabled;
     BOOL _shouldResume;
     BOOL _shouldResumeAfterLoad;
+    BOOL _paused;
     SXImageResource *_imageResource;
     id<SXImageViewDelegate> _delegate;
     SXAnimatedImage *_animatedImage;
@@ -70,7 +71,7 @@
 @property (strong, nonatomic) NSMapTable *interestTable; // @synthesize interestTable=_interestTable;
 @property (nonatomic) BOOL isScrubbing; // @synthesize isScrubbing=_isScrubbing;
 @property (nonatomic) long long loadingIndicatorStyle;
-@property (readonly, nonatomic) BOOL paused;
+@property (nonatomic) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) unsigned long long playCount; // @synthesize playCount=_playCount;
 @property (nonatomic) struct CGSize preferredImageSize; // @synthesize preferredImageSize=_preferredImageSize;
 @property (weak, nonatomic) UIImage *preferredQualityImage; // @synthesize preferredQualityImage=_preferredQualityImage;

@@ -15,6 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_axLabelsVisible;
+- (struct CGPoint)accessibilityActivationPoint;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

@@ -15,22 +15,23 @@
     double _oldCoverage;
     int _tileSetStateType;
     struct {
-        unsigned int durationInOldState:1;
-        unsigned int newCoverage:1;
-        unsigned int oldCoverage:1;
-        unsigned int tileSetStateType:1;
-    } _has;
+        unsigned int has_durationInOldState:1;
+        unsigned int has_newCoverage:1;
+        unsigned int has_oldCoverage:1;
+        unsigned int has_tileSetStateType:1;
+    } _flags;
 }
 
-@property (nonatomic) double durationInOldState; // @synthesize durationInOldState=_durationInOldState;
+@property (nonatomic) double durationInOldState;
 @property (nonatomic) BOOL hasDurationInOldState;
 @property (nonatomic) BOOL hasNewCoverage;
 @property (nonatomic) BOOL hasOldCoverage;
 @property (nonatomic) BOOL hasTileSetStateType;
-@property (nonatomic) double newCoverage; // @synthesize newCoverage=_newCoverage;
-@property (nonatomic) double oldCoverage; // @synthesize oldCoverage=_oldCoverage;
-@property (nonatomic) int tileSetStateType; // @synthesize tileSetStateType=_tileSetStateType;
+@property (nonatomic) double newCoverage;
+@property (nonatomic) double oldCoverage;
+@property (nonatomic) int tileSetStateType;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsTileSetStateType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -39,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)tileSetStateTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

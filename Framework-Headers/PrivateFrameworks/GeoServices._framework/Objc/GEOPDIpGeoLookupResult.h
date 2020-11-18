@@ -8,36 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSString, PBUnknownFields;
+@class GEOLatLng, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDIpGeoLookupResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_countryCode;
     NSString *_ipAddress;
     GEOLatLng *_location;
-    int _status;
     NSString *_timeZome;
+    int _status;
     struct {
-        unsigned int status:1;
-    } _has;
+        unsigned int has_status:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_countryCode:1;
+        unsigned int read_ipAddress:1;
+        unsigned int read_location:1;
+        unsigned int read_timeZome:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_countryCode:1;
+        unsigned int wrote_ipAddress:1;
+        unsigned int wrote_location:1;
+        unsigned int wrote_timeZome:1;
+        unsigned int wrote_status:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (strong, nonatomic) NSString *countryCode;
 @property (readonly, nonatomic) BOOL hasCountryCode;
 @property (readonly, nonatomic) BOOL hasIpAddress;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) BOOL hasTimeZome;
-@property (strong, nonatomic) NSString *ipAddress; // @synthesize ipAddress=_ipAddress;
-@property (strong, nonatomic) GEOLatLng *location; // @synthesize location=_location;
-@property (nonatomic) int status; // @synthesize status=_status;
-@property (strong, nonatomic) NSString *timeZome; // @synthesize timeZome=_timeZome;
+@property (strong, nonatomic) NSString *ipAddress;
+@property (strong, nonatomic) GEOLatLng *location;
+@property (nonatomic) int status;
+@property (strong, nonatomic) NSString *timeZome;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
+- (void)_readCountryCode;
+- (void)_readIpAddress;
+- (void)_readLocation;
+- (void)_readTimeZome;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -45,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

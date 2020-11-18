@@ -16,6 +16,7 @@
 
 + (id)_disjointSetsByAddingSet:(id)arg1 toSets:(id)arg2;
 + (void)applyFacesChangesFromAssetChange:(id)arg1 toAsset:(id)arg2 inSyncContext:(id)arg3;
+- (void).cxx_destruct;
 - (id)_applyAssetChange:(id)arg1 toExistingFaces:(id)arg2 withPolicy:(long long)arg3;
 - (void)_applyDimensionAndStateFromFaceReference:(id)arg1 toDetectedFace:(id)arg2;
 - (void)_applyPersonFromFaceReference:(id)arg1 toDetectedFace:(id)arg2;

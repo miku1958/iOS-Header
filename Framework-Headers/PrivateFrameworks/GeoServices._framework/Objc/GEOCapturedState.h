@@ -16,7 +16,6 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly) const char *decoderType;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSData *stateData;

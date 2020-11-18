@@ -80,6 +80,7 @@
 - (void).cxx_destruct;
 - (void)_cleanup;
 - (void)_reportError:(id)arg1 label:(id)arg2;
+- (void)_reportProgress:(unsigned int)arg1 info:(id)arg2;
 - (void)_run;
 - (int)_runBasicConfig;
 - (void)_runBasicConfigRequest;

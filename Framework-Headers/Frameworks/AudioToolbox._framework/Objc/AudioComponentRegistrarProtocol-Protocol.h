@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol AudioComponentRegistrarProtocol
+- (void)canRegisterComponent:(NSDictionary *)arg1 reply:(void (^)(BOOL))arg2;
 - (void)getComponentList:(NSString *)arg1 linkedSDKVersion:(int)arg2 includeExtensions:(BOOL)arg3 reply:(void (^)(NSData *, NSData *, NSArray *, BOOL))arg4;
 @end
 

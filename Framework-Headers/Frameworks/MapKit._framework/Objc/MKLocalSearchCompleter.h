@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, NSArray, NSString, NSTimer;
-@protocol GEOMapServiceCompletionTicket, MKAutocompleteAnalyticsProvider, MKLocalSearchCompleterDelegate, MKLocationManagerOperation;
+@class CLLocation, GEOClientRankingModel, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
+@protocol MKAutocompleteAnalyticsProvider, MKLocalSearchCompleterDelegate, MKLocationManagerOperation;
 
 @interface MKLocalSearchCompleter : NSObject
 {
     NSString *_queryFragment;
     CDStruct_b7cb895d _region;
     GEOSearchCategory *_categoryFilter;
+    NSArray *_filters;
     GEORetainedSearchMetadata *_retainedSearchMetadata;
     id<MKLocalSearchCompleterDelegate> _delegate;
     id _context;
     NSString *_identifier;
-    long long _filterType;
     long long _listType;
     double _timeSinceLastInBoundingRegion;
     CLLocation *_deviceLocation;
@@ -27,20 +27,33 @@
     BOOL _dirty;
     BOOL _resultsAreCurrent;
     NSArray *_results;
+    NSArray *_sections;
+    GEOClientRankingModel *_clientRankingModel;
     GEOSortPriorityMapping *_sortPriorityMapping;
     NSTimer *_timer;
-    id<GEOMapServiceCompletionTicket> _ticket;
     int _source;
     id<MKLocationManagerOperation> _singleLocationUpdate;
     GEOMapServiceTraits *_traits;
+    unsigned long long _maxNumberOfConcurrentRequests;
+    NSMutableArray *_inFlightTickets;
+    NSMutableArray *_pendingTickets;
     BOOL _shouldDisplayNoResults;
+    BOOL _autocompleteTopSectionIsQuerySuggestions;
+    BOOL _showAutocompleteClientSource;
     BOOL _shouldPreloadTransitInfo;
+    long long _filterType;
+    unsigned long long _resultTypes;
+    MKPointOfInterestFilter *_pointOfInterestFilter;
     id<MKAutocompleteAnalyticsProvider> _analyticsProvider;
+    MKLocalSearchCompletion *_tappedQuerySuggestionCompletion;
+    long long _privateFilterType;
 }
 
 @property (strong, nonatomic) id<MKAutocompleteAnalyticsProvider> analyticsProvider; // @synthesize analyticsProvider=_analyticsProvider;
+@property (readonly, nonatomic, getter=_autocompleteTopSectionIsQuerySuggestions) BOOL autocompleteTopSectionIsQuerySuggestions; // @synthesize autocompleteTopSectionIsQuerySuggestions=_autocompleteTopSectionIsQuerySuggestions;
 @property (nonatomic) CDStruct_b7cb895d boundingRegion;
 @property (strong, nonatomic) GEOSearchCategory *categoryFilter; // @synthesize categoryFilter=_categoryFilter;
+@property (readonly, nonatomic, getter=_clientRankingModel) GEOClientRankingModel *clientRankingModel; // @synthesize clientRankingModel=_clientRankingModel;
 @property (weak, nonatomic) id context; // @synthesize context=_context;
 @property (weak, nonatomic) id<MKLocalSearchCompleterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) CLLocation *deviceLocation; // @synthesize deviceLocation=_deviceLocation;
@@ -50,27 +63,36 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long listType; // @synthesize listType=_listType;
 @property (nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
+@property (copy, nonatomic) MKPointOfInterestFilter *pointOfInterestFilter; // @synthesize pointOfInterestFilter=_pointOfInterestFilter;
+@property (nonatomic, getter=_privateFilterType, setter=_setPrivateFilterType:) long long privateFilterType; // @synthesize privateFilterType=_privateFilterType;
 @property (copy, nonatomic) NSString *queryFragment; // @synthesize queryFragment=_queryFragment;
 @property (nonatomic) CDStruct_b7cb895d region; // @synthesize region=_region;
+@property (nonatomic) unsigned long long resultTypes; // @synthesize resultTypes=_resultTypes;
 @property (readonly, nonatomic) NSArray *results;
 @property (strong, nonatomic) GEORetainedSearchMetadata *retainedSearchMetadata; // @synthesize retainedSearchMetadata=_retainedSearchMetadata;
 @property (readonly, nonatomic, getter=isSearching) BOOL searching;
+@property (readonly, nonatomic, getter=_sections) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly, nonatomic, getter=_shouldDisplayNoResults) BOOL shouldDisplayNoResults; // @synthesize shouldDisplayNoResults=_shouldDisplayNoResults;
 @property (nonatomic, getter=_shouldPreloadTransitInfo, setter=_setShouldPreloadTransitInfo:) BOOL shouldPreloadTransitInfo; // @synthesize shouldPreloadTransitInfo=_shouldPreloadTransitInfo;
+@property (readonly, nonatomic, getter=_showAutocompleteClientSource) BOOL showAutocompleteClientSource; // @synthesize showAutocompleteClientSource=_showAutocompleteClientSource;
 @property (readonly, nonatomic, getter=_sortPriorityMapping) GEOSortPriorityMapping *sortPriorityMapping; // @synthesize sortPriorityMapping=_sortPriorityMapping;
+@property (strong, nonatomic, getter=_tappedQuerySuggestionCompletion, setter=_setTappedQuerySuggestionCompletion:) MKLocalSearchCompletion *tappedQuerySuggestionCompletion; // @synthesize tappedQuerySuggestionCompletion=_tappedQuerySuggestionCompletion;
 @property (nonatomic) double timeSinceLastInBoundingRegion; // @synthesize timeSinceLastInBoundingRegion=_timeSinceLastInBoundingRegion;
 @property (strong, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
 
 - (void).cxx_destruct;
 - (void)_cancelTimer;
+- (id)_completionTicketForFilterTypeWithTraits:(id)arg1;
+- (id)_completionTicketForPrivateFilterType:(long long)arg1 traits:(id)arg2;
 - (void)_fireRequest;
 - (void)_handleCompletion:(id)arg1 shouldDisplayNoResults:(BOOL)arg2 forTicket:(id)arg3;
 - (void)_handleError:(id)arg1 forTicket:(id)arg2;
 - (void)_markDirty;
 - (void)_markDirtyAndScheduleRequestWithTimeToNextRequest:(double)arg1;
-- (void)_notifyDelegatesWithResults:(id)arg1 shouldDisplayNoResults:(BOOL)arg2 ticket:(id)arg3;
+- (void)_notifyDelegatesWithResults:(id)arg1 sections:(id)arg2 shouldDisplayNoResults:(BOOL)arg3 ticket:(id)arg4;
 - (void)_schedulePendingRequest;
 - (void)_scheduleRequestWithTimeToNextRequest:(double)arg1;
+- (void)_updateFilters;
 - (void)cancel;
 - (void)dealloc;
 - (id)init;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKitCore/NSUndoTextOperation.h>
+#import <UIKitCore/_UIUndoTextOperation.h>
 
 @class NSMutableAttributedString;
 
 __attribute__((visibility("hidden")))
-@interface _UITextUndoOperationTyping : NSUndoTextOperation
+@interface _UITextUndoOperationTyping : _UIUndoTextOperation
 {
     struct _NSRange _replacementRange;
     NSMutableAttributedString *_attributedString;

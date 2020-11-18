@@ -9,8 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarRoundedCornerView : _UIStatusBarPersistentAnimationView
 {
+    double _cornerRadius;
 }
 
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 
 @end

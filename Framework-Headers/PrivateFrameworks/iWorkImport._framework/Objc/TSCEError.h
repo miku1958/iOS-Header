@@ -157,6 +157,7 @@ __attribute__((visibility("hidden")))
 + (void)raiseUnionInsideIntersectionError;
 + (void)raiseUnitsNotAllowedErrorForFunctionName:(id)arg1 argumentNumber:(int)arg2;
 + (void)raiseUnkownFunctionErrorForString:(id)arg1;
++ (void)raiseUnsupportedFeatureError;
 + (void)raiseUnsupportedFunctionError;
 + (void)raiseUnsupportedR1C1StyleError;
 + (void)raiseValueErrorForFunctionName:(id)arg1;
@@ -196,6 +197,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isNotReadyError;
 - (BOOL)isOfType:(id)arg1;
 - (BOOL)isSyntaxError;
+- (BOOL)isUnsupportedFeatureError;
 - (BOOL)isUnsupportedFunctionError;
 - (int)nativeType;
 - (struct TSCENumberValue *)number;

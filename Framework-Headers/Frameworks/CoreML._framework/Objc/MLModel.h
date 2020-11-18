@@ -40,8 +40,10 @@
 - (id)initWithInterface:(id)arg1 metadata:(id)arg2 configuration:(id)arg3;
 - (id)initWithName:(id)arg1 inputDescription:(id)arg2 outputDescription:(id)arg3 orderedInputFeatureNames:(id)arg4 orderedOutputFeatureNames:(id)arg5 configuration:(id)arg6;
 - (id)objectBoundingBoxOutputDescription;
+- (id)parameterValueForKey:(id)arg1 error:(id *)arg2;
 - (id)predictionFromFeatures:(id)arg1 error:(id *)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)predictionsFromBatch:(id)arg1 error:(id *)arg2;
 - (id)predictionsFromBatch:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)vectorizeInput:(id)arg1 error:(id *)arg2;
 - (id)visionFeaturePrintInfo;

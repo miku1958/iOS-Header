@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface TLKArrangementItem : NSObject <NUIArrangementItem>
 {
     struct CGSize _size;
@@ -18,7 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property struct CGSize size; // @synthesize size=_size;
+@property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly) Class superclass;
 
 - (float)contentCompressionResistancePriorityForAxis:(long long)arg1;

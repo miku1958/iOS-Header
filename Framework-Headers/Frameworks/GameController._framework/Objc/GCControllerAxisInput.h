@@ -10,21 +10,26 @@
 
 @interface GCControllerAxisInput : GCControllerElement
 {
+    BOOL _flipped;
+    float _value;
+    CDUnknownBlockType _valueChangedHandler;
+    GCControllerButtonInput *_positive;
+    GCControllerButtonInput *_negative;
 }
 
-@property (readonly, nonatomic, getter=isDigital) BOOL digital;
-@property (readonly, nonatomic, getter=isFlipped) BOOL flipped;
-@property (readonly, nonatomic) GCControllerButtonInput *negative;
-@property (readonly, nonatomic) GCControllerButtonInput *positive;
-@property (readonly, nonatomic) float value;
-@property (copy, nonatomic) CDUnknownBlockType valueChangedHandler;
+@property (nonatomic, getter=isFlipped) BOOL flipped; // @synthesize flipped=_flipped;
+@property (strong, nonatomic) GCControllerButtonInput *negative; // @synthesize negative=_negative;
+@property (strong, nonatomic) GCControllerButtonInput *positive; // @synthesize positive=_positive;
+@property (nonatomic) float value; // @synthesize value=_value;
+@property (copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
 
+- (void).cxx_destruct;
 - (BOOL)_setValue:(float)arg1;
 - (BOOL)_setValue:(float)arg1 queue:(id)arg2;
 - (id)description;
+- (int)getAndResetTimesPressed;
+- (id)initWithCollection:(id)arg1 flipped:(BOOL)arg2;
 - (BOOL)isAnalog;
-- (BOOL)setHIDValue:(struct __IOHIDValue *)arg1;
-- (BOOL)setHIDValue:(struct __IOHIDValue *)arg1 queue:(id)arg2;
 
 @end
 

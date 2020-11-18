@@ -31,6 +31,8 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_resetBridgeTokensForResponse:(id)arg1 bridgeDelegateToken:(id)arg2;
+- (id)_translationApplicationObjectForPidNumber:(id)arg1;
+- (CDUnknownBlockType)attributedStringConversionBlock;
 - (void)enableAccessibility;
 - (id)frontmostApplicationWithDisplayId:(unsigned int)arg1 bridgeDelegateToken:(id)arg2;
 - (void)handleNotification:(unsigned long long)arg1 data:(id)arg2 associatedObject:(id)arg3;
@@ -48,8 +50,10 @@
 - (id)processMultipleAttributeRequest:(id)arg1;
 - (void)processPlatformNotification:(unsigned long long)arg1 data:(id)arg2;
 - (id)processSetAttribute:(id)arg1;
+- (id)processSupportedActions:(id)arg1;
 - (id)processTranslatorRequest:(id)arg1;
 - (id)sendTranslatorRequest:(id)arg1;
+- (id)translationApplicationObject;
 - (id)translationApplicationObjectForPid:(int)arg1;
 
 @end

@@ -6,12 +6,13 @@
 
 #import <PhotoFoundation/PFTaggedPointer.h>
 
+#import <PhotoLibraryServices/PLChooserKeyProperties-Protocol.h>
 #import <PhotoLibraryServices/PLResourceDataStoreKey-Protocol.h>
 #import <PhotoLibraryServices/PLTableThumbResourceKey-Protocol.h>
 
 @class NSString;
 
-@interface PLTaggedPointerDataStoreKey : PFTaggedPointer <PLResourceDataStoreKey, PLTableThumbResourceKey>
+@interface PLTaggedPointerDataStoreKey : PFTaggedPointer <PLResourceDataStoreKey, PLTableThumbResourceKey, PLChooserKeyProperties>
 {
 }
 
@@ -20,14 +21,22 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)keyWithKeyStruct:(const void *)arg1 keyLength:(unsigned long long)arg2 forStoreID:(unsigned int)arg3;
++ (id)keyWithKeyStruct:(const void *)arg1 keyLength:(unsigned long long)arg2 forStoreClassID:(unsigned int)arg3 inLibraryWithID:(id)arg4;
+- (id)_heapAllocatedRepresentationInLibraryWithID:(id)arg1;
 - (id)descriptionForAssetID:(id)arg1;
 - (id)fileURLForAssetID:(id)arg1;
 - (id)initWithKeyStruct:(const void *)arg1;
-- (BOOL)isValid;
+- (BOOL)isDerivative;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToKey:(id)arg1;
 - (id)keyData;
-- (struct CGImage *)newTableThumbImage;
+- (unsigned int)recipeIDForAssetID:(id)arg1;
 - (BOOL)representsSquareResource;
+- (unsigned int)resourceType;
+- (unsigned int)resourceVersion;
+- (void)tableType:(unsigned int *)arg1 index:(int *)arg2;
+- (id)uniformTypeIdentifier;
+- (id)validateForAssetID:(id)arg1 resourceIdentity:(id)arg2;
 
 @end
 

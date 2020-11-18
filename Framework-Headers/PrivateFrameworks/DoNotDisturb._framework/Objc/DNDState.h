@@ -13,15 +13,15 @@
 
 @interface DNDState : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _active;
-    BOOL _willSuppressInterruptions;
+    unsigned long long _suppressionState;
     NSArray *_activeModeAssertionMetadata;
 }
 
-@property (readonly, nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (readonly, nonatomic, getter=isActive) BOOL active; // @dynamic active;
 @property (readonly, copy, nonatomic) NSArray *activeModeAssertionMetadata; // @synthesize activeModeAssertionMetadata=_activeModeAssertionMetadata;
 @property (readonly, copy, nonatomic) NSArray *activeModeIdentifiers; // @dynamic activeModeIdentifiers;
-@property (readonly, nonatomic) BOOL willSuppressInterruptions; // @synthesize willSuppressInterruptions=_willSuppressInterruptions;
+@property (readonly, nonatomic) unsigned long long suppressionState; // @synthesize suppressionState=_suppressionState;
+@property (readonly, nonatomic) BOOL willSuppressInterruptions; // @dynamic willSuppressInterruptions;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -29,8 +29,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithActive:(BOOL)arg1 willSuppressInterruptions:(BOOL)arg2 activeModeAssertionMetadata:(id)arg3;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSuppressionState:(unsigned long long)arg1 activeModeAssertionMetadata:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

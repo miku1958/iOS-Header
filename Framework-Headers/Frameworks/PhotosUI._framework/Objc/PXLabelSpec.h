@@ -41,6 +41,8 @@
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 
++ (id)px_headerSubtitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
++ (id)px_headerTitleLabelSpecForZoomLevel:(long long)arg1 featureSpec:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

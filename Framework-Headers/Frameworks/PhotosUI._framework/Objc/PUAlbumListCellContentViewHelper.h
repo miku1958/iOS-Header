@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)_prepareStackView:(id)arg1 forCollection:(id)arg2 withStackCount:(long long)arg3 withCustomEmptyPlaceHolderImage:(id)arg4;
 - (void)_recalculateAlbumCellSize;
 - (void)_updateAlbumListCellContentViewForPeopleAlbum:(id)arg1;
+- (void)_updateAlbumListCellContentViewForPlacesAlbum:(id)arg1;
 - (void)_updateStackView:(id)arg1 forAssets:(id)arg2 collection:(id)arg3 withCustomEmptyPlaceholderImage:(id)arg4;
 - (void)_updateStackView:(id)arg1 forAssets:(id)arg2 memoriesCollection:(id)arg3 memories:(id)arg4 withCustomEmptyPlaceholderImage:(id)arg5;
 - (void)_updateStackView:(id)arg1 forFaces:(id)arg2 inCollection:(id)arg3 withCustomEmptyPlaceholderImage:(id)arg4;

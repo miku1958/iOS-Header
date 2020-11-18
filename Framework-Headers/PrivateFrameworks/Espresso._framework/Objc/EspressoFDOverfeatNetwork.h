@@ -58,8 +58,8 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)autoResizeForAspectRatio:(float)arg1 useLowPriorityMode:(BOOL)arg2 gpuPriority:(int)arg3;
-- (void)autoSetupNetBaseName:(id)arg1 weights:(id)arg2 scaleConfig:(int)arg3 setupMode:(int)arg4 computePath:(int)arg5 autoAspectRatio:(float)arg6 forceReset:(BOOL)arg7 useLowPriorityMode:(BOOL)arg8 gpuPriority:(int)arg9;
+- (void)autoResizeForAspectRatio:(float)arg1 useLowPriorityMode:(BOOL)arg2 gpuPriority:(unsigned int)arg3;
+- (void)autoSetupNetBaseName:(id)arg1 weights:(id)arg2 scaleConfig:(int)arg3 setupMode:(int)arg4 computePath:(int)arg5 autoAspectRatio:(float)arg6 forceReset:(BOOL)arg7 useLowPriorityMode:(BOOL)arg8 gpuPriority:(unsigned int)arg9;
 - (shared_ptr_dc6ac1b7)boxBlobForScale:(int)arg1;
 - (shared_ptr_d082c67d)cpu_net:(int)arg1;
 - (void)dealloc;
@@ -77,14 +77,17 @@
 - (void)processBlobNoRotation:(const shared_ptr_5e9c0076 *)arg1 tex:(id)arg2 doBGRA2RGBA:(BOOL)arg3;
 - (void)processPyramid:(shared_ptr_7fb9d9f9)arg1;
 - (void)processPyramid:(shared_ptr_7fb9d9f9)arg1 gpu_resizer:(id)arg2;
+- (void)processVimageNoRotation:(const struct vImage_Buffer *)arg1 tex:(id)arg2 doBGRA2RGBA:(BOOL)arg3;
 - (void)reset;
 - (shared_ptr_7fb9d9f9)resizerAtIndex:(int)arg1;
 - (int)resizerCount;
 - (void)retile_and_forward_espresso_gpu_network_at_index:(int)arg1 net:(const shared_ptr_d082c67d *)arg2 pyr:(const shared_ptr_7fb9d9f9 *)arg3;
 - (void)retile_and_forward_espresso_network_at_index:(int)arg1 net:(const shared_ptr_d082c67d *)arg2 pyr:(const shared_ptr_7fb9d9f9 *)arg3;
 - (void)retryLoadingCaffeNet:(shared_ptr_d082c67d *)arg1 name:(id)arg2 weights:(id)arg3 context:(shared_ptr_ae8b808b)arg4 cp:(int)arg5;
+- (void)setContextCpu:(id)arg1;
+- (void)setContextMetal:(id)arg1;
 - (void)setup_retile;
-- (void)storeDataForPruning:(shared_ptr_86ba3c2c)arg1 prob:(float)arg2;
+- (void)storeDataForPruning:(shared_ptr_acd4b298)arg1 prob:(float)arg2;
 - (struct net_strides_configuration)strideConfiguration;
 - (void)wipeLayersMemory;
 

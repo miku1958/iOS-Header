@@ -19,12 +19,12 @@
 }
 
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) NSString *deviceClass; // @synthesize deviceClass;
-@property (nonatomic, readonly) NSString *deviceName; // @synthesize deviceName;
-@property (nonatomic, readonly) NSString *ownerDsid; // @synthesize ownerDsid;
-@property (nonatomic, readonly) NSString *ownerName; // @synthesize ownerName;
-@property (nonatomic, readonly) NSString *productName; // @synthesize productName;
-@property (nonatomic, readonly) NSString *productType; // @synthesize productType;
+@property (nonatomic, readonly) NSString *deviceClass;
+@property (nonatomic, readonly) NSString *deviceName;
+@property (nonatomic, readonly) NSString *ownerDsid;
+@property (nonatomic, readonly) NSString *ownerName;
+@property (nonatomic, readonly) NSString *productName;
+@property (nonatomic, readonly) NSString *productType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

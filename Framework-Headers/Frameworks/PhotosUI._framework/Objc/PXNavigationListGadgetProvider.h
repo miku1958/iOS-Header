@@ -6,20 +6,20 @@
 
 #import <PhotosUICore/PXGadgetProvider.h>
 
-#import <PhotosUICore/PXNavigationListDataSourceManagerObserver-Protocol.h>
+#import <PhotosUICore/PXNavigationListDataSectionManagerObserver-Protocol.h>
 
-@class NSString, PXExtendedTraitCollection, PXNavigationListDataSourceManager;
+@class NSString, PXExtendedTraitCollection, PXNavigationListDataSectionManager;
 
-@interface PXNavigationListGadgetProvider : PXGadgetProvider <PXNavigationListDataSourceManagerObserver>
+@interface PXNavigationListGadgetProvider : PXGadgetProvider <PXNavigationListDataSectionManagerObserver>
 {
     BOOL _shouldShowNavigationListOnIpad;
     BOOL _isPresentedInPicker;
     unsigned long long _type;
     PXExtendedTraitCollection *_traitCollection;
-    PXNavigationListDataSourceManager *_dataSourceManager;
+    PXNavigationListDataSectionManager *_dataSourceManager;
 }
 
-@property (strong, nonatomic) PXNavigationListDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
+@property (strong, nonatomic) PXNavigationListDataSectionManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

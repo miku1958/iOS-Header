@@ -10,12 +10,12 @@
 
 @interface PLCloudFeedEntriesManager : NSObject
 {
-    PLPhotoLibrary *__library;
+    PLPhotoLibrary *_library;
 }
 
-@property (readonly, strong, nonatomic) PLPhotoLibrary *_library; // @synthesize _library=__library;
+@property (readonly, nonatomic) PLPhotoLibrary *library; // @synthesize library=_library;
 
-+ (id)sharedManager;
+- (void).cxx_destruct;
 - (void)_addAsset:(id)arg1 toEntry:(id)arg2;
 - (id)_albumCreatedEntryForSharedAlbum:(id)arg1;
 - (CDUnknownBlockType)_assetSortingComparator;
@@ -56,8 +56,7 @@
 - (BOOL)_tryMergingComment:(id)arg1 withEntry:(id)arg2;
 - (BOOL)_wasAssetPublishedBeforeSubscription:(id)arg1;
 - (BOOL)_wasCommentPublishedBeforeSubscription:(id)arg1;
-- (void)dealloc;
-- (id)init;
+- (id)initWithPhotoLibrary:(id)arg1;
 - (void)processAlbumUpdates:(id)arg1 assetInserts:(id)arg2 assetUpdates:(id)arg3 commentInserts:(id)arg4 invitationRecordUpdates:(id)arg5 deletionEntries:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)rebuildAllEntries:(CDUnknownBlockType)arg1;
 

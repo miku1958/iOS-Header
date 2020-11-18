@@ -12,7 +12,11 @@
 __attribute__((visibility("hidden")))
 @interface PUFilmstripMediaProvider : PUMediaProvider
 {
-    NSObject<OS_dispatch_queue> *_generationQueue;
+    NSObject<OS_dispatch_queue> *_ivarQueue;
+    NSObject<OS_dispatch_queue> *_imageGenerationQueue;
+    NSMutableDictionary *_ivarQueue_resultsByRequestNumber;
+    NSMutableDictionary *_ivarQueue_completionHandlersByRequestNumber;
+    NSMutableArray *_ivarQueue_pendingResults;
     BOOL _deliversImagesInOrder;
     AVAsset *_asset;
     AVVideoComposition *_videoComposition;
@@ -20,18 +24,12 @@ __attribute__((visibility("hidden")))
     UIImage *_placeholderImage;
     AVAssetImageGenerator *__imageGenerator;
     long long __requestNumber;
-    NSMutableDictionary *__completionHandlersByRequestNumber;
     NSCache *__imageCache;
-    NSMutableArray *__pendingResults;
-    NSMutableDictionary *__resultsByRequestNumber;
 }
 
-@property (strong, nonatomic, setter=_setCompletionHandlersByRequestNumber:) NSMutableDictionary *_completionHandlersByRequestNumber; // @synthesize _completionHandlersByRequestNumber=__completionHandlersByRequestNumber;
 @property (strong, nonatomic, setter=_setImageCache:) NSCache *_imageCache; // @synthesize _imageCache=__imageCache;
 @property (strong, nonatomic, setter=_setImageGenerator:) AVAssetImageGenerator *_imageGenerator; // @synthesize _imageGenerator=__imageGenerator;
-@property (strong, nonatomic, setter=_setPendingResults:) NSMutableArray *_pendingResults; // @synthesize _pendingResults=__pendingResults;
 @property (nonatomic, setter=_setRequestNumber:) long long _requestNumber; // @synthesize _requestNumber=__requestNumber;
-@property (strong, nonatomic, setter=_setResultsByRequestNumber:) NSMutableDictionary *_resultsByRequestNumber; // @synthesize _resultsByRequestNumber=__resultsByRequestNumber;
 @property (readonly, nonatomic) AVAsset *asset; // @synthesize asset=_asset;
 @property (nonatomic) BOOL deliversImagesInOrder; // @synthesize deliversImagesInOrder=_deliversImagesInOrder;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
@@ -42,8 +40,11 @@ __attribute__((visibility("hidden")))
 - (void)_deliverPendingResults;
 - (void)_deliverPlaceholderImage;
 - (void)_deliverResult:(id)arg1;
-- (void)_didGenerateImage:(struct CGImage *)arg1 error:(id)arg2 requestedTime:(CDStruct_1b6d18a9)arg3 actualTime:(CDStruct_1b6d18a9)arg4 forResult:(id)arg5;
+- (void)_didGenerateImage:(id)arg1 error:(id)arg2 requestedTime:(CDStruct_1b6d18a9)arg3 actualTime:(CDStruct_1b6d18a9)arg4 generatorResult:(long long)arg5 forResult:(id)arg6;
 - (void)_generateImageForResult:(id)arg1;
+- (void)_handleSourceTimeLoadedForAsset:(id)arg1 time:(double)arg2 targetSize:(struct CGSize)arg3 contentMode:(long long)arg4 requestNumber:(long long)arg5;
+- (void)_performIvarRead:(CDUnknownBlockType)arg1;
+- (void)_performIvarWrite:(CDUnknownBlockType)arg1;
 - (void)cancelAllRequests;
 - (void)cancelImageRequest:(int)arg1;
 - (void)dealloc;

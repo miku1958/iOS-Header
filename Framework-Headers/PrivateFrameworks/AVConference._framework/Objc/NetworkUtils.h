@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (int)connectedSocketWithIPAddress:(id)arg1 srcPort:(short)arg2 error:(id *)arg3;
++ (id)encryptionInfoForKey:(unsigned long long)arg1;
 + (id)newEncryptionInfoWithMasterKeyIndex:(id)arg1;
 + (id)newRTPSocketDictionary:(BOOL)arg1 rtpSourcePort:(short)arg2;
 + (id)securityKeyMaterialWithMasterKeyIndex:(id)arg1;

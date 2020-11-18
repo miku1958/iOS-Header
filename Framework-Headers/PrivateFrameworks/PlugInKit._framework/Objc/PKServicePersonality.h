@@ -41,6 +41,7 @@
 - (void)beginUsingPlugIn:(id)arg1 ready:(CDUnknownBlockType)arg2;
 - (id)defaultPrincipalObject;
 - (id)findProtocol:(id)arg1;
+- (void)hostHasControl;
 - (id)initWithConnection:(id)arg1;
 - (void)prefsObjectForKey:(id)arg1 inPlugIn:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (void)prefsSetObject:(id)arg1 forKey:(id)arg2 inPlugIn:(id)arg3 result:(CDUnknownBlockType)arg4;

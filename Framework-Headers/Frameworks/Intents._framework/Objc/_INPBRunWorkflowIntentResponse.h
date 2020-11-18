@@ -16,25 +16,31 @@
 {
     struct {
         unsigned int continueRunning:1;
+        unsigned int requestsIntentExecution:1;
         unsigned int waitingForResume:1;
     } _has;
     BOOL _continueRunning;
+    BOOL _requestsIntentExecution;
     BOOL _waitingForResume;
+    BOOL __encodeLegacyGloryData;
     NSArray *_steps;
     _INPBArchivedObject *_underlyingIntent;
     _INPBArchivedObject *_underlyingIntentResponse;
     NSString *_utterance;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL continueRunning; // @synthesize continueRunning=_continueRunning;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasContinueRunning;
+@property (nonatomic) BOOL hasRequestsIntentExecution;
 @property (readonly, nonatomic) BOOL hasUnderlyingIntent;
 @property (readonly, nonatomic) BOOL hasUnderlyingIntentResponse;
 @property (readonly, nonatomic) BOOL hasUtterance;
 @property (nonatomic) BOOL hasWaitingForResume;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL requestsIntentExecution; // @synthesize requestsIntentExecution=_requestsIntentExecution;
 @property (copy, nonatomic) NSArray *steps; // @synthesize steps=_steps;
 @property (readonly, nonatomic) unsigned long long stepsCount;
 @property (readonly) Class superclass;
@@ -44,11 +50,14 @@
 @property (nonatomic) BOOL waitingForResume; // @synthesize waitingForResume=_waitingForResume;
 
 + (Class)stepType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addStep:(id)arg1;
 - (void)clearSteps;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)stepAtIndex:(unsigned long long)arg1;

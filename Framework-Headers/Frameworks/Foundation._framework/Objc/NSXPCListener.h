@@ -14,14 +14,14 @@
     void *_xconnection;
     NSObject<OS_dispatch_queue> *_userQueue;
     void *reserved0;
-    id<NSXPCListenerDelegate> _delegate;
+    id _delegate;
     NSString *_serviceName;
     unsigned long long _state;
     id _reserved1;
     id _reserved2;
 }
 
-@property id<NSXPCListenerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<NSXPCListenerDelegate> delegate;
 @property (readonly, strong) NSXPCListenerEndpoint *endpoint;
 
 + (id)_UUID;

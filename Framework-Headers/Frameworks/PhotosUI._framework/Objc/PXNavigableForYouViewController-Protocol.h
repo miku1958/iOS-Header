@@ -4,17 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUICore/PXNavigableGadgetViewController-Protocol.h>
-
 @class NSString, PXMemoriesFeedUIViewController, UIViewController;
 
-@protocol PXNavigableForYouViewController <PXNavigableGadgetViewController>
+@protocol PXNavigableForYouViewController
 - (UIViewController *)navigateToDetailsForMemoryWithLocalIdentifier:(NSString *)arg1;
-- (void)navigateToInvitationCMMWithUUID:(NSString *)arg1 animated:(BOOL)arg2;
-- (void)navigateToRevealTheMostRecentMemoryAnimated:(BOOL)arg1;
-- (void)navigateToSharedAlbumInviteWithUUID:(NSString *)arg1 animated:(BOOL)arg2;
-- (void)navigateToSharedAlbumInvitesAnimated:(BOOL)arg1;
 - (PXMemoriesFeedUIViewController *)navigateToShowAllMemoriesFeedAnimated:(BOOL)arg1;
-- (void)navigateToSuggestedCMMWithUUID:(NSString *)arg1 animated:(BOOL)arg2;
 @end
 

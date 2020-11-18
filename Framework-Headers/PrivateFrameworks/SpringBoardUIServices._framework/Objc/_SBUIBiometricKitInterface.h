@@ -48,6 +48,7 @@
 - (id)createPresenceDetectOperationsWithError:(id *)arg1;
 - (void)dealloc;
 - (BOOL)enableBackgroundFingerDetection:(BOOL)arg1 error:(id *)arg2;
+- (void)forceBioLockout;
 - (BOOL)hasEnrolledIdentities;
 - (id)init;
 - (BOOL)isFingerOn;

@@ -16,21 +16,29 @@
         BOOL layoutReferenceSize;
         BOOL traitCollection;
         BOOL layoutSizeClass;
+        BOOL layoutDirection;
         BOOL layoutOrientation;
+        BOOL contentSizeCategory;
         BOOL displayScale;
         BOOL safeAreaInsets;
         BOOL layoutMargins;
         BOOL userInterfaceIdiom;
         BOOL userInterfaceFeature;
+        BOOL userInterfaceStyle;
+        BOOL userInterfaceLevel;
     } _needsUpdateFlags;
     BOOL _enabled;
     struct NSObject *_traitCollection;
     long long _layoutSizeClass;
     long long _layoutSizeSubclass;
     long long _layoutOrientation;
+    long long _layoutDirection;
+    long long _contentSizeCategory;
     long long _userInterfaceIdiom;
     long long _userInterfaceFeature;
     double _displayScale;
+    long long _userInterfaceStyle;
+    long long _userInterfaceLevel;
     struct NSObject *_viewController;
     struct CGSize _layoutReferenceSize;
     struct CGSize __viewSize;
@@ -41,8 +49,10 @@
 
 @property (nonatomic, setter=_setPendingViewTransitionSize:) struct CGSize _pendingViewTransitionSize; // @synthesize _pendingViewTransitionSize=__pendingViewTransitionSize;
 @property (nonatomic, setter=_setViewSize:) struct CGSize _viewSize; // @synthesize _viewSize=__viewSize;
+@property (nonatomic) long long contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (nonatomic, setter=_setDisplayScale:) double displayScale; // @synthesize displayScale=_displayScale;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (nonatomic, setter=_setLayoutOrientation:) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property (nonatomic, setter=_setLayoutReferenceSize:) struct CGSize layoutReferenceSize; // @synthesize layoutReferenceSize=_layoutReferenceSize;
@@ -52,19 +62,27 @@
 @property (strong, nonatomic, setter=_setTraitCollection:) NSObject<PXAnonymousTraitCollection> *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (nonatomic, setter=_setUserInterfaceFeature:) long long userInterfaceFeature; // @synthesize userInterfaceFeature=_userInterfaceFeature;
 @property (nonatomic, setter=_setUserInterfaceIdiom:) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
+@property (nonatomic, setter=_setUserInterfaceLevel:) long long userInterfaceLevel; // @synthesize userInterfaceLevel=_userInterfaceLevel;
+@property (nonatomic, setter=_setUserInterfaceStyle:) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
 @property (readonly, weak, nonatomic) NSObject<PXAnonymousViewController> *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
+- (void)_invalidateContentSizeCategory;
+- (void)_invalidateLayoutDirection;
 - (void)_invalidateLayoutOrientation;
 - (void)_invalidateLayoutReferenceSize;
 - (void)_invalidateLayoutSizeClass;
 - (void)_invalidateUserInterfaceFeature;
 - (void)_invalidateUserInterfaceIdiom;
+- (void)_invalidateUserInterfaceLevel;
+- (void)_invalidateUserInterfaceStyle;
 - (void)_invalidateViewSize;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;
+- (void)_updateContentSizeCategoryIfNeeded;
 - (void)_updateDisplayScaleIfNeeded;
 - (void)_updateIfNeeded;
+- (void)_updateLayoutDirectionIfNeeded;
 - (void)_updateLayoutMarginsIfNeeded;
 - (void)_updateLayoutOrientationIfNeeded;
 - (void)_updateLayoutReferenceSizeIfNeeded;
@@ -73,14 +91,20 @@
 - (void)_updateTraitCollectionIfNeeded;
 - (void)_updateUserInterfaceFeatureIfNeeded;
 - (void)_updateUserInterfaceIdiomIfNeeded;
+- (void)_updateUserInterfaceLevelIfNeeded;
+- (void)_updateUserInterfaceStyleIfNeeded;
 - (void)_updateViewSizeIfNeeded;
 - (void)_viewWillLayoutSubviews;
 - (struct NSObject *)createTraitCollection;
 - (void)dealloc;
 - (void)didPerformChanges;
 - (double)displayScaleFromTraitCollection:(struct NSObject *)arg1;
+- (void)getContentSizeCategory:(out long long *)arg1;
+- (void)getLayoutDirection:(out long long *)arg1;
 - (void)getSizeClass:(out long long *)arg1 sizeSubclass:(out long long *)arg2;
 - (void)getUserInterfaceIdiom:(out long long *)arg1;
+- (void)getUserInterfaceLevel:(out long long *)arg1;
+- (void)getUserInterfaceStyle:(out long long *)arg1;
 - (id)init;
 - (id)initWithViewController:(struct NSObject *)arg1;
 - (void)invalidateDisplayScale;
@@ -101,7 +125,6 @@
 - (void)viewControllerViewWillAppear;
 - (void)viewControllerViewWillLayoutSubviews;
 - (void)viewControllerViewWillTransitionToSize:(struct CGSize)arg1;
-- (struct CGSize)viewSize;
 
 @end
 

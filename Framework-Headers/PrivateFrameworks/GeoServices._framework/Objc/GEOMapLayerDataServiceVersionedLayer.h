@@ -8,21 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapLayerDataServiceLayer, GEOMapLayerDataServiceVersion;
+@class GEOMapLayerDataServiceLayer, GEOMapLayerDataServiceVersion, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOMapLayerDataServiceVersionedLayer : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOMapLayerDataServiceLayer *_layer;
     GEOMapLayerDataServiceVersion *_version;
+    struct {
+        unsigned int read_layer:1;
+        unsigned int read_version:1;
+        unsigned int wrote_layer:1;
+        unsigned int wrote_version:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasLayer;
 @property (readonly, nonatomic) BOOL hasVersion;
-@property (strong, nonatomic) GEOMapLayerDataServiceLayer *layer; // @synthesize layer=_layer;
-@property (strong, nonatomic) GEOMapLayerDataServiceVersion *version; // @synthesize version=_version;
+@property (strong, nonatomic) GEOMapLayerDataServiceLayer *layer;
+@property (strong, nonatomic) GEOMapLayerDataServiceVersion *version;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readLayer;
+- (void)_readVersion;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

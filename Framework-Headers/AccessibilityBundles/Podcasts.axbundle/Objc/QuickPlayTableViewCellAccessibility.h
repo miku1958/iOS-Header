@@ -19,6 +19,7 @@
 - (id)_axContextActionButton;
 - (id)_axEmbeddedView;
 - (id)_axPlayButton;
+- (id)_axSubscribeButton;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

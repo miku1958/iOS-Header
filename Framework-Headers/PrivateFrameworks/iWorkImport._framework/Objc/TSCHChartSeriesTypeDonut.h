@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)inspectorLocalizedValueLabelsTabName;
 - (int)legendBadgeType;
 - (id)seriesFillLabelUIString;
+- (id)userInterfaceName;
 
 @end
 

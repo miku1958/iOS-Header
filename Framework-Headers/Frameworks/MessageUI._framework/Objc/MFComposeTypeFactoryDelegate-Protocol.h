@@ -6,31 +6,31 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class MFFuture, MFMailAccountProxy, MFMailAccountProxyGenerator, MFMutableMessageHeaders, NSArray, NSString, UIView;
-@protocol MFComposeBodyField;
+@class EFFuture, MFMailAccountProxy, MFMutableMessageHeaders, NSArray, NSString, UIView;
+@protocol MFComposeBodyField, MFMailAccountProxyGenerator;
 
 @protocol MFComposeTypeFactoryDelegate <NSObject>
-- (MFMailAccountProxyGenerator *)accountProxyGenerator;
+- (id<MFMailAccountProxyGenerator>)accountProxyGenerator;
 - (NSArray *)attachments;
 - (NSArray *)bccRecipients;
 - (UIView<MFComposeBodyField> *)bodyField;
 - (NSArray *)ccRecipients;
-- (BOOL)hasAnyHiddenTrailingEmptyQuote;
 - (MFMutableMessageHeaders *)savedHeaders;
 - (MFMailAccountProxy *)sendingAccountProxy;
 - (NSString *)sendingEmailAddress;
 - (void)setBccRecipients:(NSArray *)arg1;
 - (void)setCcRecipients:(NSArray *)arg1;
 - (void)setSavedHeaders:(MFMutableMessageHeaders *)arg1;
-- (void)setSendingEmailAddress:(NSString *)arg1 addIfNotPresent:(BOOL)arg2;
+- (void)setSendingEmailAddress:(NSString *)arg1;
 - (void)setSubject:(NSString *)arg1;
 - (void)setToRecipients:(NSArray *)arg1;
-- (MFFuture *)shouldCreateRichTextRepresentation;
+- (EFFuture *)shouldCreateRichTextRepresentation;
 - (NSString *)subject;
 - (NSArray *)toRecipients;
 
 @optional
 - (void)addSignature:(BOOL)arg1;
 - (void)contentDidChange;
+- (unsigned long long)contentVariationIndex;
 @end
 

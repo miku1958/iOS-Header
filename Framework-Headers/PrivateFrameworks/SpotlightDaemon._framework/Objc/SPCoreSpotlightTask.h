@@ -44,6 +44,7 @@
 + (id)_makeBundleQueryStringForQueryContext:(id)arg1;
 + (id)_makeDisabledBundlesQueryStringForQueryContext:(id)arg1;
 + (id)_makeFilterQueryStringForQueryContext:(id)arg1;
++ (id)_makePrefsQueryStringWithBundleIDs:(id)arg1;
 + (struct __SIQuery *)_makeSIQueryWithQueryString:(id)arg1 queryContext:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)addJob:(id)arg1;

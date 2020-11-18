@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary;
+@class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface AKConfiguration : NSObject
@@ -16,14 +16,17 @@
     NSObject<OS_dispatch_queue> *_settingsQueue;
 }
 
-@property (copy, nonatomic) NSDate *lastCheckInAttemptDate;
-@property (copy, nonatomic) NSDate *lastCheckInSuccessDate;
 @property (nonatomic) unsigned long long lastKnownIDMSEnvironment;
 @property (nonatomic) long long shouldAddHSA2CreateHeader;
+@property (nonatomic) long long shouldAllowDemoMode;
 @property (nonatomic) long long shouldAllowExperimentalMode;
 @property (nonatomic) long long shouldAllowPhoneNumberAccounts;
+@property (nonatomic) long long shouldAllowTestApplication;
+@property (nonatomic) long long shouldAutocycleAppsInTiburon;
+@property (nonatomic) long long shouldAutocycleAppsInWebTakeover;
 @property (nonatomic) long long shouldDisablePETs;
 @property (nonatomic) long long shouldDisablePiggybacking;
+@property (nonatomic) long long shouldEnableTestAccountMode;
 @property (nonatomic) long long shouldFakeAuthSuccess;
 @property (nonatomic) long long shouldSuppressHSA2Suggestions;
 @property (nonatomic) long long shouldSuppressModalSheetsInMacBuddy;

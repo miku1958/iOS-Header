@@ -27,8 +27,10 @@
 @property BOOL initialized; // @synthesize initialized=_initialized;
 @property (strong) PHMediaFormatConversionManager *mediaFormatConversionManager; // @synthesize mediaFormatConversionManager=_mediaFormatConversionManager;
 @property (strong) PFMediaCapabilities *peerMediaCapabilities; // @synthesize peerMediaCapabilities=_peerMediaCapabilities;
+@property (readonly, nonatomic) BOOL peerSupportsAdjustmentBaseResources;
+@property (readonly, nonatomic) BOOL peerSupportsTranscodeChoice;
+@property (readonly, nonatomic) BOOL penultimateIsPublic;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) BOOL supportsTranscodeChoice;
 @property (strong) NSURL *temporaryDirectoryURL; // @synthesize temporaryDirectoryURL=_temporaryDirectoryURL;
 
 - (void).cxx_destruct;
@@ -37,6 +39,7 @@
 - (id)convertedAssetLivePhotoPairingIdentifierForOriginalIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)effectivePeerMediaCapabilites;
+- (BOOL)generatePosterFrameExportForVideoURL:(id)arg1 outputData:(id *)arg2 maximumSize:(struct CGSize)arg3 error:(id *)arg4;
 - (id)init;
 - (void)invalidate;
 - (id)requestForOriginalAtPath:(id)arg1 isVideo:(BOOL)arg2 imageDimensions:(struct CGSize)arg3 originalPairingIdentifier:(id)arg4;

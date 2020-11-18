@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_layoutContentUnavailableView;
 - (BOOL)contentAreaContainsPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (struct CGRect)contentBoundsInCoordinateSpace:(id)arg1;

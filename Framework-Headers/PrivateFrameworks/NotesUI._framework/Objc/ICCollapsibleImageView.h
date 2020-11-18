@@ -10,7 +10,6 @@
 
 @interface ICCollapsibleImageView : ICCollapsibleBaseView
 {
-    BOOL _shouldEnableLetterpressIfSupported;
     struct UIImage *_image;
     struct UIColor *_tintColor;
     struct UIImageView *_imageView;
@@ -18,11 +17,9 @@
 
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
-@property (nonatomic) BOOL shouldEnableLetterpressIfSupported; // @synthesize shouldEnableLetterpressIfSupported=_shouldEnableLetterpressIfSupported;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
 - (void).cxx_destruct;
-- (void)enableLetterpressIfSupported;
 - (void)performSetup;
 
 @end

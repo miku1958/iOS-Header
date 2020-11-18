@@ -10,7 +10,7 @@
 
 @interface MAAssetQuery : NSObject
 {
-    BOOL _augmentState;
+    BOOL _doNotBlockBeforeFirstUnlock;
     NSDate *_postedDate;
     NSMutableArray *_queryParams;
     NSString *_assetType;
@@ -22,7 +22,7 @@
 
 @property (readonly, nonatomic) NSSet *assetIds; // @synthesize assetIds=_assetIds;
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
-@property (readonly, nonatomic) BOOL augmentState; // @synthesize augmentState=_augmentState;
+@property (nonatomic) BOOL doNotBlockBeforeFirstUnlock; // @synthesize doNotBlockBeforeFirstUnlock=_doNotBlockBeforeFirstUnlock;
 @property (readonly, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
 @property (readonly, nonatomic) NSDate *postedDate; // @synthesize postedDate=_postedDate;
 @property (readonly, nonatomic) NSMutableArray *queryParams; // @synthesize queryParams=_queryParams;
@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) long long returnTypes; // @synthesize returnTypes=_returnTypes;
 
 - (long long)addKeyValueArray:(id)arg1 with:(id)arg2;
+- (long long)addKeyValueNull:(id)arg1;
 - (long long)addKeyValuePair:(id)arg1 with:(id)arg2;
 - (void)augmentResultsWithState:(BOOL)arg1;
 - (void)dealloc;

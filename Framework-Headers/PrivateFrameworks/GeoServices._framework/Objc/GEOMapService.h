@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSCache, NSLock;
+@class NSArray, NSCache;
 @protocol NSCacheDelegate;
 
 @interface GEOMapService : NSObject
 {
-    NSLock *_preferredLanguagesLock;
+    struct os_unfair_lock_s _preferredLanguagesLock;
     NSArray *_preferredLanguages;
     int _overriddenResultProviderID;
     int _additionalEnabledMarketsChangedToken;
@@ -24,6 +24,7 @@
 + (id)sharedService;
 - (void).cxx_destruct;
 - (id)_cl_ticketForForwardGeocodeAddressDictionary:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
+- (id)_cl_ticketForForwardGeocodePostalAddress:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)_cl_ticketForForwardGeocodeString:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)_cl_ticketForReverseGeocodeLocation:(id)arg1 traits:(id)arg2;
 - (void)_countryCodeChanged:(id)arg1;
@@ -39,7 +40,7 @@
 - (id)_searchable_ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 floor:(int)arg2 includeEntryPoints:(BOOL)arg3 shiftLocationsIfNeeded:(BOOL)arg4 preserveOriginalLocation:(BOOL)arg5 traits:(id)arg6;
 - (id)_searchable_ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 includeEntryPoints:(BOOL)arg2 shiftLocationsIfNeeded:(BOOL)arg3 preserveOriginalLocation:(BOOL)arg4 traits:(id)arg5;
 - (void)_sendInvalidateDataToSiriAndParSec;
-- (id)_ticketForAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 categoryFilter:(id)arg4 retainedSearch:(id)arg5;
+- (id)_ticketForAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 filters:(id)arg4 retainedSearch:(id)arg5 tappedQuerySuggestion:(id)arg6;
 - (id)_ticketForBatchReverseGeocodeLocations:(id)arg1 shiftLocationsIfNeeded:(BOOL)arg2 additionalPlaceTypes:(int *)arg3 additionalPlaceTypesCount:(unsigned int)arg4 traits:(id)arg5;
 - (id)_ticketForRefreshingHandle:(id)arg1 traits:(id)arg2;
 - (void)dealloc;
@@ -63,13 +64,17 @@
 - (id)ticketForBatchReverseGeocodeLocations:(id)arg1 shiftLocationsIfNeeded:(BOOL)arg2 traits:(id)arg3;
 - (id)ticketForBrandLookupWithIMessageUid:(id)arg1 traits:(id)arg2;
 - (id)ticketForCanonicalLocationSearchQueryString:(id)arg1 traits:(id)arg2;
-- (id)ticketForCategoryListWithTraits:(id)arg1;
+- (id)ticketForCategoryListWithTraits:(id)arg1 isFromNoQueryState:(BOOL)arg2;
 - (id)ticketForDFRCategoryListWithTraits:(id)arg1;
 - (id)ticketForDatasetCheckWithTraits:(id)arg1;
 - (id)ticketForExternalBusinessID:(id)arg1 contentProvider:(id)arg2 traits:(id)arg3;
 - (id)ticketForExternalTransitStationCodes:(id)arg1 sourceID:(id)arg2 transactionDate:(id)arg3 transactionLocation:(id)arg4 traits:(id)arg5;
+- (id)ticketForFeedbackRequest:(id)arg1 traits:(id)arg2;
+- (id)ticketForFeedbackRequestData:(id)arg1 traits:(id)arg2;
+- (id)ticketForFeedbackRequestParameters:(id)arg1 placeForProblemContext:(id)arg2 userCredentials:(id)arg3 pushToken:(id)arg4 allowContactBackAtEmailAddress:(id)arg5 traits:(id)arg6;
 - (id)ticketForForwardGeocodeAddress:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)ticketForForwardGeocodeAddressDictionary:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
+- (id)ticketForForwardGeocodePostalAddress:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)ticketForForwardGeocodeString:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)ticketForFreshBusinessClaimComponentWithIdentifier:(id)arg1 resultProviderID:(int)arg2 traits:(id)arg3;
 - (id)ticketForFreshComponents:(id)arg1 identifier:(id)arg2 resultProviderID:(int)arg3 contentProvider:(id)arg4 traits:(id)arg5;
@@ -79,9 +84,9 @@
 - (id)ticketForIdentifiers:(id)arg1 resultProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4;
 - (id)ticketForIdentifiers:(id)arg1 traits:(id)arg2;
 - (id)ticketForInterleavedAutoCompletePoiAddressOnly:(id)arg1 traits:(id)arg2;
-- (id)ticketForInterleavedAutoCompleteSearchFragment:(id)arg1 traits:(id)arg2;
-- (id)ticketForInterleavedAutoCompleteWithBrowseSearchFragment:(id)arg1 categoryFilter:(id)arg2 retainedSearch:(id)arg3 traits:(id)arg4;
-- (id)ticketForInterleavedInstantSearchFragment:(id)arg1 traits:(id)arg2;
+- (id)ticketForInterleavedAutoCompleteSearchFragment:(id)arg1 filters:(id)arg2 traits:(id)arg3;
+- (id)ticketForInterleavedAutoCompleteWithBrowseSearchFragment:(id)arg1 filters:(id)arg2 retainedSearch:(id)arg3 tappedQuerySuggestion:(id)arg4 traits:(id)arg5;
+- (id)ticketForInterleavedInstantSearchFragment:(id)arg1 filters:(id)arg2 traits:(id)arg3;
 - (id)ticketForInterleavedLocalitiesAndLandmarksSearchFragment:(id)arg1 traits:(id)arg2;
 - (id)ticketForMUIDs:(id)arg1 includeETA:(BOOL)arg2 traits:(id)arg3;
 - (id)ticketForMUIDs:(id)arg1 resultProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4;
@@ -101,33 +106,48 @@
 - (id)ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 includeETA:(BOOL)arg2 shiftLocationsIfNeeded:(BOOL)arg3 traits:(id)arg4;
 - (id)ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 includeEntryPoints:(BOOL)arg2 shiftLocationsIfNeeded:(BOOL)arg3 preserveOriginalLocation:(BOOL)arg4 traits:(id)arg5;
 - (id)ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 includeEntryPoints:(BOOL)arg2 shiftLocationsIfNeeded:(BOOL)arg3 traits:(id)arg4;
+- (id)ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 shiftLocationsIfNeeded:(BOOL)arg2 preserveOriginalLocation:(BOOL)arg3 traits:(id)arg4;
 - (id)ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 shiftLocationsIfNeeded:(BOOL)arg2 traits:(id)arg3;
 - (id)ticketForSearchAlongRouteWithCategory:(id)arg1 zilchData:(id)arg2 sessionState:(id)arg3 routeId:(id)arg4 maxResults:(unsigned int)arg5 traits:(id)arg6;
-- (id)ticketForSearchCategory:(id)arg1 searchString:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)ticketForSearchCategory:(id)arg1 venueIdentifier:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)ticketForSearchFieldPlaceholderWithTraits:(id)arg1;
 - (id)ticketForSearchPoisForBrandMUID:(unsigned long long)arg1 traits:(id)arg2;
+- (id)ticketForSearchPoisForCollectionMUID:(unsigned long long)arg1 traits:(id)arg2;
 - (id)ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 maxResults:(unsigned int)arg3 includeETA:(BOOL)arg4 traits:(id)arg5;
 - (id)ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (id)ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 relatedSearchSuggestion:(id)arg3 retainedSearch:(id)arg4 maxResults:(unsigned int)arg5 traits:(id)arg6;
 - (id)ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 retainedSearch:(id)arg3 maxResults:(unsigned int)arg4 suppressResultsRequiringAttribution:(BOOL)arg5 traits:(id)arg6;
 - (id)ticketForSearchQuery:(id)arg1 completionItem:(id)arg2 retainedSearch:(id)arg3 maxResults:(unsigned int)arg4 traits:(id)arg5;
-- (id)ticketForSectionedAutoCompleteSearchFragment:(id)arg1 traits:(id)arg2;
-- (id)ticketForSectionedInstantSearchFragment:(id)arg1 traits:(id)arg2;
+- (id)ticketForSearchQuery:(id)arg1 filters:(id)arg2 completionItem:(id)arg3 retainedSearch:(id)arg4 maxResults:(unsigned int)arg5 suppressResultsRequiringAttribution:(BOOL)arg6 traits:(id)arg7;
+- (id)ticketForSearchQuery:(id)arg1 filters:(id)arg2 maxResults:(unsigned int)arg3 suppressResultsRequiringAttribution:(BOOL)arg4 traits:(id)arg5;
+- (id)ticketForSearchQuery:(id)arg1 filters:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
+- (id)ticketForSectionedAutoCompleteSearchFragment:(id)arg1 filters:(id)arg2 traits:(id)arg3;
+- (id)ticketForSectionedInstantSearchFragment:(id)arg1 filters:(id)arg2 traits:(id)arg3;
 - (id)ticketForSectionedLocalitiesAndLandmarksSearchFragment:(id)arg1 traits:(id)arg2;
 - (id)ticketForSpatialEventLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)ticketForSpatialLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)ticketForSpatialPlaceLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)ticketForSpotlightCategoryListWithTraits:(id)arg1;
+- (id)ticketForTransitDeparturesAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 traits:(id)arg4;
 - (id)ticketForTransitIdentifiers:(id)arg1 endDateForPlacecardSchedulesForThisBatch:(id)arg2 traits:(id)arg3;
 - (id)ticketForTransitLines:(id)arg1 withTraits:(id)arg2;
+- (id)ticketForTransitScheduleAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 traits:(id)arg4;
+- (id)ticketForTransitTripDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 traits:(id)arg4;
+- (id)ticketForTransitTripIdentifiers:(id)arg1 traits:(id)arg2;
 - (id)ticketForURLQuery:(id)arg1 identifier:(id)arg2 resultProviderId:(int)arg3 contentProvider:(id)arg4 maxResults:(unsigned int)arg5 traits:(id)arg6;
+- (id)ticketForUpdatedTransitScheduleDetailsAtStation:(unsigned long long)arg1 line:(unsigned long long)arg2 referenceTripID:(unsigned long long)arg3 traits:(id)arg4;
 - (id)ticketForVendorSpecificPlaceRefinementRequestParameters:(id)arg1 traits:(id)arg2;
+- (id)ticketForWiFiQualityLocationServiceRequest:(id)arg1;
+- (id)ticketForWiFiQualityNetworkServiceRequest:(id)arg1;
+- (id)ticketForWiFiQualityTileLoadForKey:(id)arg1 eTag:(id)arg2;
 - (id)ticketForWifiFingerprintWithLocations:(id)arg1 wifiAccessPoints:(id)arg2 maxLabels:(unsigned int)arg3 entryTime:(unsigned long long)arg4 exitTime:(unsigned long long)arg5 traits:(id)arg6;
 - (id)ticketForWifiFingerprintWithLocations:(id)arg1 wifiAccessPoints:(id)arg2 maxLabels:(unsigned int)arg3 traits:(id)arg4;
 - (id)ticketforCategory:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (void)trackMapItem:(id)arg1;
 - (void)trackSerializedPlaceData:(id)arg1;
+- (double)wiFiQualitySearchRadiusMeters;
+- (long long)wiFiQualitySearchZoomLevel;
+- (double)wiFiQualitySmallSearchRadiusMeters;
 
 @end
 

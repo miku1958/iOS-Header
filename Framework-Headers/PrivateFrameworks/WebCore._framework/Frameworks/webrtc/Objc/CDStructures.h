@@ -306,12 +306,6 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
-struct dummy_type {
-    struct empty_struct data[44];
-};
-
-struct empty_struct;
-
 struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
     struct __tree<std::__1::__value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, std::__1::basic_string<char>>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
@@ -325,77 +319,77 @@ struct map<std::__1::basic_string<char>, std::__1::basic_string<char>, std::__1:
 };
 
 struct optional<double> {
-    BOOL _field1;
     union {
-        struct dummy_type _field1;
+        char _field1;
         double _field2;
-    } _field2;
+    } _field1;
+    BOOL _field2;
 };
 
 struct optional<int> {
-    BOOL engaged_;
-    CDUnion_1bb239ac ;
+    CDUnion_81a57ede ;
+    BOOL __engaged_;
 };
 
 struct optional<unsigned int> {
-    BOOL engaged_;
     union {
-        struct dummy_type dummy_;
-        unsigned int data_;
+        char __null_state_;
+        unsigned int __val_;
     } ;
+    BOOL __engaged_;
 };
 
 struct optional<webrtc::ColorSpace> {
-    BOOL _field1;
     union {
-        struct dummy_type _field1;
+        char _field1;
         struct ColorSpace _field2;
-    } _field2;
+    } _field1;
+    BOOL _field2;
 };
 
 struct optional<webrtc::DtxStatus> {
-    BOOL _field1;
-    CDUnion_1bb239ac _field2;
+    CDUnion_81a57ede _field1;
+    BOOL _field2;
 };
 
 struct optional<webrtc::HdrMetadata> {
-    BOOL _field1;
     union {
-        struct dummy_type _field1;
+        char _field1;
         struct HdrMetadata _field2;
-    } _field2;
+    } _field1;
+    BOOL _field2;
 };
 
 struct optional<webrtc::PpsParser::PpsState> {
-    BOOL engaged_;
     union {
-        struct dummy_type dummy_;
-        struct PpsState data_;
+        char __null_state_;
+        struct PpsState __val_;
     } ;
+    BOOL __engaged_;
 };
 
 struct optional<webrtc::RtpFecParameters> {
-    BOOL _field1;
     union {
-        struct dummy_type _field1;
+        char _field1;
         struct RtpFecParameters _field2;
-    } _field2;
+    } _field1;
+    BOOL _field2;
 };
 
 struct optional<webrtc::RtpRtxParameters> {
-    BOOL _field1;
     union {
-        struct dummy_type _field1;
+        char _field1;
         struct RtpRtxParameters _field2;
-    } _field2;
+    } _field1;
+    BOOL _field2;
 };
 
 struct optional<webrtc::SpsParser::SpsState> {
-    BOOL engaged_;
     union {
-        struct dummy_type dummy_;
-        struct SpsState data_;
+        char __null_state_;
+        struct SpsState __val_;
     } ;
+    BOOL __engaged_;
 };
 
 struct scoped_refptr<webrtc::I420BufferInterface> {
@@ -508,7 +502,7 @@ union VideoCodecUnion {
 #pragma mark Typedef'd Unions
 
 typedef union {
-    struct dummy_type dummy_;
-    int data_;
-} CDUnion_1bb239ac;
+    char __null_state_;
+    int __val_;
+} CDUnion_81a57ede;
 

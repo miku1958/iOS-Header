@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)enumerateFlyoverRegions:(CDUnknownBlockType)arg1;
+- (id)init;
 - (id)initWithData:(id)arg1;
 - (id)initWithFlyoverRegions:(id)arg1;
 - (struct GEOFlyoverRegion *)regionForID:(unsigned int)arg1;

@@ -6,30 +6,34 @@
 
 #import <objc/NSObject.h>
 
-@protocol CNScheduler, CNUILikenessRendering, CNUIPRLikenessResolver;
+@protocol CNSchedulerProvider, CNUILikenessRendering, CNUIPRLikenessResolver;
 
 @interface CNAvatarImageRenderer : NSObject
 {
     id<CNUIPRLikenessResolver> _resolver;
     id<CNUILikenessRendering> _renderer;
-    id<CNScheduler> _backgroundScheduler;
+    id<CNSchedulerProvider> _schedulerProvider;
 }
 
-@property (readonly, nonatomic) id<CNScheduler> backgroundScheduler; // @synthesize backgroundScheduler=_backgroundScheduler;
 @property (readonly, nonatomic) id<CNUILikenessRendering> renderer; // @synthesize renderer=_renderer;
 @property (readonly, nonatomic) id<CNUIPRLikenessResolver> resolver; // @synthesize resolver=_resolver;
+@property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
+- (id)avatarImageForContacts:(id)arg1 scope:(id)arg2;
 - (id)init;
 - (id)initWithSettings:(id)arg1;
 - (id)loadingPlaceholderImageProvider;
 - (id)placeholderImageProvider;
 - (id)renderAvatarsForContacts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)renderAvatarsForContacts:(id)arg1 scope:(id)arg2 imageHandler:(CDUnknownBlockType)arg3;
+- (id)renderAvatarsForContacts:(id)arg1 scope:(id)arg2 placeholder:(BOOL)arg3 workScheduler:(id)arg4 imageHandler:(CDUnknownBlockType)arg5;
+- (id)renderMonogramForContact:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
+- (id)renderMonogramForString:(id)arg1 color:(id)arg2 scope:(id)arg3 prohibitedSources:(long long)arg4;
 - (id)renderMonogramForString:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)renderMonogramForString:(id)arg1 scope:(id)arg2 imageHandler:(CDUnknownBlockType)arg3;
-- (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2;
+- (id)renderedLikenessesForContacts:(id)arg1 scope:(id)arg2 placeholder:(BOOL)arg3 workScheduler:(id)arg4;
 - (id)renderedMonogramObservableForString:(id)arg1 scope:(id)arg2;
 - (id)runScopeBasedImageObservable:(CDUnknownBlockType)arg1 scope:(id)arg2 imageHandler:(CDUnknownBlockType)arg3;
 

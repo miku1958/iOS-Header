@@ -10,16 +10,21 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBCustomObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface _INPBCustomObject : PBCodable <_INPBCustomObject, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
+    NSArray *_alternatives;
     NSString *_displayString;
     NSString *_identifier;
     NSString *_pronunciationHint;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (copy, nonatomic) NSArray *alternatives; // @synthesize alternatives=_alternatives;
+@property (readonly, nonatomic) unsigned long long alternativesCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
@@ -31,9 +36,16 @@
 @property (copy, nonatomic) NSString *pronunciationHint; // @synthesize pronunciationHint=_pronunciationHint;
 @property (readonly) Class superclass;
 
++ (Class)alternativeType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)addAlternative:(id)arg1;
+- (id)alternativeAtIndex:(unsigned long long)arg1;
+- (void)clearAlternatives;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

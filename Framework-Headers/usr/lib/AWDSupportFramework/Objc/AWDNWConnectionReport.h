@@ -8,7 +8,7 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class AWDNWL2Report, NSMutableArray, NSString;
 
 @interface AWDNWConnectionReport : PBCodable <NSCopying>
 {
@@ -56,6 +56,7 @@
     NSString *_connectionUUID;
     int _failureReason;
     int _firstAddressFamily;
+    AWDNWL2Report *_l2Report;
     NSString *_processName;
     int _stackLevel;
     int _tlsVersion;
@@ -66,7 +67,11 @@
     BOOL _ipv4Available;
     BOOL _ipv6Available;
     BOOL _isDaemon;
+    BOOL _isPathConstrained;
+    BOOL _isPathExpensive;
     BOOL _multipathConfigured;
+    BOOL _prohibitsConstrained;
+    BOOL _prohibitsExpensive;
     BOOL _resolutionRequired;
     BOOL _synthesizedExtraIPv6Address;
     BOOL _synthesizedIPv6Address;
@@ -74,6 +79,7 @@
     BOOL _tfoConfigured;
     BOOL _tfoUsed;
     BOOL _tlsConfigured;
+    BOOL _tlsHandshakeTimedOut;
     BOOL _tlsVersionTimeout;
     BOOL _triggeredPath;
     BOOL _usedFallback;
@@ -130,7 +136,11 @@
         unsigned int ipv4Available:1;
         unsigned int ipv6Available:1;
         unsigned int isDaemon:1;
+        unsigned int isPathConstrained:1;
+        unsigned int isPathExpensive:1;
         unsigned int multipathConfigured:1;
+        unsigned int prohibitsConstrained:1;
+        unsigned int prohibitsExpensive:1;
         unsigned int resolutionRequired:1;
         unsigned int synthesizedExtraIPv6Address:1;
         unsigned int synthesizedIPv6Address:1;
@@ -138,6 +148,7 @@
         unsigned int tfoConfigured:1;
         unsigned int tfoUsed:1;
         unsigned int tlsConfigured:1;
+        unsigned int tlsHandshakeTimedOut:1;
         unsigned int tlsVersionTimeout:1;
         unsigned int triggeredPath:1;
         unsigned int usedFallback:1;
@@ -199,6 +210,9 @@
 @property (nonatomic) BOOL hasIpv6Available;
 @property (nonatomic) BOOL hasIpv6DNSServerCount;
 @property (nonatomic) BOOL hasIsDaemon;
+@property (nonatomic) BOOL hasIsPathConstrained;
+@property (nonatomic) BOOL hasIsPathExpensive;
+@property (readonly, nonatomic) BOOL hasL2Report;
 @property (nonatomic) BOOL hasMultipathBytesInCell;
 @property (nonatomic) BOOL hasMultipathBytesInInitial;
 @property (nonatomic) BOOL hasMultipathBytesInWiFi;
@@ -211,6 +225,8 @@
 @property (nonatomic) BOOL hasPacketsOut;
 @property (nonatomic) BOOL hasPathTriggerMilliseconds;
 @property (readonly, nonatomic) BOOL hasProcessName;
+@property (nonatomic) BOOL hasProhibitsConstrained;
+@property (nonatomic) BOOL hasProhibitsExpensive;
 @property (nonatomic) BOOL hasProxyMilliseconds;
 @property (nonatomic) BOOL hasRTTvariance;
 @property (nonatomic) BOOL hasResolutionMilliseconds;
@@ -226,6 +242,7 @@
 @property (nonatomic) BOOL hasTfoUsed;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTlsConfigured;
+@property (nonatomic) BOOL hasTlsHandshakeTimedOut;
 @property (nonatomic) BOOL hasTlsMilliseconds;
 @property (nonatomic) BOOL hasTlsVersion;
 @property (nonatomic) BOOL hasTlsVersionTimeout;
@@ -241,6 +258,9 @@
 @property (nonatomic) BOOL ipv6Available; // @synthesize ipv6Available=_ipv6Available;
 @property (nonatomic) unsigned long long ipv6DNSServerCount; // @synthesize ipv6DNSServerCount=_ipv6DNSServerCount;
 @property (nonatomic) BOOL isDaemon; // @synthesize isDaemon=_isDaemon;
+@property (nonatomic) BOOL isPathConstrained; // @synthesize isPathConstrained=_isPathConstrained;
+@property (nonatomic) BOOL isPathExpensive; // @synthesize isPathExpensive=_isPathExpensive;
+@property (strong, nonatomic) AWDNWL2Report *l2Report; // @synthesize l2Report=_l2Report;
 @property (nonatomic) unsigned long long multipathBytesInCell; // @synthesize multipathBytesInCell=_multipathBytesInCell;
 @property (nonatomic) unsigned long long multipathBytesInInitial; // @synthesize multipathBytesInInitial=_multipathBytesInInitial;
 @property (nonatomic) unsigned long long multipathBytesInWiFi; // @synthesize multipathBytesInWiFi=_multipathBytesInWiFi;
@@ -253,6 +273,8 @@
 @property (nonatomic) unsigned long long packetsOut; // @synthesize packetsOut=_packetsOut;
 @property (nonatomic) unsigned long long pathTriggerMilliseconds; // @synthesize pathTriggerMilliseconds=_pathTriggerMilliseconds;
 @property (strong, nonatomic) NSString *processName; // @synthesize processName=_processName;
+@property (nonatomic) BOOL prohibitsConstrained; // @synthesize prohibitsConstrained=_prohibitsConstrained;
+@property (nonatomic) BOOL prohibitsExpensive; // @synthesize prohibitsExpensive=_prohibitsExpensive;
 @property (nonatomic) unsigned long long proxyMilliseconds; // @synthesize proxyMilliseconds=_proxyMilliseconds;
 @property (nonatomic) unsigned long long rTTvariance; // @synthesize rTTvariance=_rTTvariance;
 @property (nonatomic) unsigned long long resolutionMilliseconds; // @synthesize resolutionMilliseconds=_resolutionMilliseconds;
@@ -268,6 +290,7 @@
 @property (nonatomic) BOOL tfoUsed; // @synthesize tfoUsed=_tfoUsed;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) BOOL tlsConfigured; // @synthesize tlsConfigured=_tlsConfigured;
+@property (nonatomic) BOOL tlsHandshakeTimedOut; // @synthesize tlsHandshakeTimedOut=_tlsHandshakeTimedOut;
 @property (nonatomic) unsigned long long tlsMilliseconds; // @synthesize tlsMilliseconds=_tlsMilliseconds;
 @property (nonatomic) int tlsVersion; // @synthesize tlsVersion=_tlsVersion;
 @property (nonatomic) BOOL tlsVersionTimeout; // @synthesize tlsVersionTimeout=_tlsVersionTimeout;

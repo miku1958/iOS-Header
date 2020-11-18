@@ -30,6 +30,7 @@
 - (void)_axTapback;
 - (id)accessibilityCustomActions;
 - (id)accessibilityDropPointDescriptors;
+- (id)accessibilityTextualContext;
 - (BOOL)isAccessibilityElement;
 
 @end

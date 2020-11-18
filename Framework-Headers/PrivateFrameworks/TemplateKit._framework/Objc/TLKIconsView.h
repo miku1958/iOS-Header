@@ -8,14 +8,15 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface TLKIconsView : TLKStackView
 {
     NSMutableArray *_imageViews;
-    unsigned long long _style;
+    unsigned long long _prominence;
 }
 
 @property (strong, nonatomic) NSMutableArray *imageViews; // @synthesize imageViews=_imageViews;
-@property (nonatomic) unsigned long long style; // @synthesize style=_style;
+@property (nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 
 - (void).cxx_destruct;
 - (id)init;

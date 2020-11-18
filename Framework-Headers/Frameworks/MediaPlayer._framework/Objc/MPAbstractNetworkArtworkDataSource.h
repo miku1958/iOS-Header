@@ -14,6 +14,7 @@
 
 @interface MPAbstractNetworkArtworkDataSource : NSObject <NSURLSessionDataDelegate, MPArtworkDataSource>
 {
+    BOOL _usesFallbackCache;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSCache *_fallbackArtworkRepresentationCache;
@@ -33,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *pendingRequestToCompletionHandlers; // @synthesize pendingRequestToCompletionHandlers=_pendingRequestToCompletionHandlers;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL usesFallbackCache; // @synthesize usesFallbackCache=_usesFallbackCache;
 
 + (void)_applyURLCachePolicy:(unsigned long long)arg1 cacheDiskPath:(id)arg2 toConfiguration:(id)arg3;
 - (void).cxx_destruct;

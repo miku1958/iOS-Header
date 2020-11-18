@@ -4,14 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PersonalizationPortrait/PPRecordLoadingDelegate.h>
 
-@class NSDate, NSString;
-
-@interface PPNamedEntityRecordLoadingDelegate : NSObject
+@interface PPNamedEntityRecordLoadingDelegate : PPRecordLoadingDelegate
 {
-    NSString *_name;
-    NSDate *_loadEntitiesDetectedSince;
     CDUnknownBlockType _namedEntityRecordsSetup;
     CDUnknownBlockType _namedEntityRecordsHandler;
     CDUnknownBlockType _namedEntityRecordsCompletion;
@@ -21,8 +17,6 @@
     CDUnknownBlockType _resetNamedEntityRecordData;
 }
 
-@property (strong, nonatomic) NSDate *loadEntitiesDetectedSince; // @synthesize loadEntitiesDetectedSince=_loadEntitiesDetectedSince;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) CDUnknownBlockType namedEntityRecordsCompletion; // @synthesize namedEntityRecordsCompletion=_namedEntityRecordsCompletion;
 @property (copy, nonatomic) CDUnknownBlockType namedEntityRecordsHandler; // @synthesize namedEntityRecordsHandler=_namedEntityRecordsHandler;
 @property (copy, nonatomic) CDUnknownBlockType namedEntityRecordsSetup; // @synthesize namedEntityRecordsSetup=_namedEntityRecordsSetup;
@@ -34,6 +28,13 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithName:(id)arg1;
+- (void)recentRecordLoadingCompletion;
+- (unsigned char)recentRecordLoadingHandler:(id)arg1;
+- (unsigned char)recentRecordLoadingSetup;
+- (void)recordLoadingCompletion;
+- (unsigned char)recordLoadingHandler:(id)arg1;
+- (unsigned char)recordLoadingSetup;
+- (void)resetRecordData;
 
 @end
 

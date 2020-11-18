@@ -9,11 +9,11 @@
 #import <SearchUI/CNActionViewDelegate-Protocol.h>
 #import <SearchUI/CNContactInlineActionsViewControllerDelegate-Protocol.h>
 #import <SearchUI/CNUIObjectViewControllerDelegate-Protocol.h>
-#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
 @class CNContactInlineActionsViewController, NSData, NSString, NSURL, UIView;
 
-@interface SearchUIInlineActionsViewController : SearchUIAccessoryViewController <CNContactInlineActionsViewControllerDelegate, CNUIObjectViewControllerDelegate, CNActionViewDelegate, NUIContainerStackViewDelegate>
+@interface SearchUIInlineActionsViewController : SearchUIAccessoryViewController <CNContactInlineActionsViewControllerDelegate, CNUIObjectViewControllerDelegate, CNActionViewDelegate, NUIContainerViewDelegate>
 {
     CNContactInlineActionsViewController *_inlineActionsViewController;
     UIView *_messageButton;
@@ -27,27 +27,28 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) UIView *directionsButton; // @synthesize directionsButton=_directionsButton;
+@property (strong, nonatomic) UIView *directionsButton; // @synthesize directionsButton=_directionsButton;
 @property (readonly) unsigned long long hash;
-@property (strong) CNContactInlineActionsViewController *inlineActionsViewController; // @synthesize inlineActionsViewController=_inlineActionsViewController;
-@property double latitude; // @synthesize latitude=_latitude;
-@property double longitude; // @synthesize longitude=_longitude;
-@property (strong) NSData *mapsData; // @synthesize mapsData=_mapsData;
-@property (strong) UIView *messageButton; // @synthesize messageButton=_messageButton;
-@property (strong) NSURL *messageURL; // @synthesize messageURL=_messageURL;
-@property (strong) NSString *name; // @synthesize name=_name;
+@property (strong, nonatomic) CNContactInlineActionsViewController *inlineActionsViewController; // @synthesize inlineActionsViewController=_inlineActionsViewController;
+@property (nonatomic) double latitude; // @synthesize latitude=_latitude;
+@property (nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property (strong, nonatomic) NSData *mapsData; // @synthesize mapsData=_mapsData;
+@property (strong, nonatomic) UIView *messageButton; // @synthesize messageButton=_messageButton;
+@property (strong, nonatomic) NSURL *messageURL; // @synthesize messageURL=_messageURL;
+@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 
 + (id)directionsButtonImage;
-+ (BOOL)supportsResult:(id)arg1;
++ (BOOL)supportsRowModel:(id)arg1;
 - (void).cxx_destruct;
 - (void)contactInlineActionsViewController:(id)arg1 willPerformActionOfType:(id)arg2;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)didPressActionView:(id)arg1 longPress:(BOOL)arg2;
 - (id)hostingViewControllerForController:(id)arg1;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
-- (void)updateWithContact:(id)arg1;
-- (void)updateWithResult:(id)arg1;
+- (id)setupView;
+- (unsigned long long)type;
+- (void)updateWithContacts:(id)arg1;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

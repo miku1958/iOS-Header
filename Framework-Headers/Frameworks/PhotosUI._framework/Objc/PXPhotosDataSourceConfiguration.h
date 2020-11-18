@@ -39,6 +39,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithAssetFetchResult:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithCollectionListFetchResult:(id)arg1 options:(unsigned long long)arg2;
 
 @end

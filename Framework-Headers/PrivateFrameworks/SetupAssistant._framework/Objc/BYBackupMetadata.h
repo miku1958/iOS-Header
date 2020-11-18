@@ -10,9 +10,9 @@
 
 @class NSData;
 
-__attribute__((visibility("hidden")))
 @interface BYBackupMetadata : PBCodable <NSCopying>
 {
+    long long _userInterfaceStyleMode;
     unsigned int _appAnalyticsOptIn;
     unsigned int _deviceAnalyticsOptIn;
     unsigned int _homeButtonHapticKind;
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _screenTimeEnabled;
     BOOL _siriOptIn;
     struct {
+        unsigned int userInterfaceStyleMode:1;
         unsigned int appAnalyticsOptIn:1;
         unsigned int deviceAnalyticsOptIn:1;
         unsigned int homeButtonHapticKind:1;
@@ -52,11 +53,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasNanoRegistryData;
 @property (nonatomic) BOOL hasScreenTimeEnabled;
 @property (nonatomic) BOOL hasSiriOptIn;
+@property (nonatomic) BOOL hasUserInterfaceStyleMode;
 @property (nonatomic) unsigned int homeButtonHapticKind; // @synthesize homeButtonHapticKind=_homeButtonHapticKind;
 @property (nonatomic) BOOL locationServicesOptIn; // @synthesize locationServicesOptIn=_locationServicesOptIn;
 @property (strong, nonatomic) NSData *nanoRegistryData; // @synthesize nanoRegistryData=_nanoRegistryData;
 @property (nonatomic) BOOL screenTimeEnabled; // @synthesize screenTimeEnabled=_screenTimeEnabled;
 @property (nonatomic) BOOL siriOptIn; // @synthesize siriOptIn=_siriOptIn;
+@property (nonatomic) long long userInterfaceStyleMode; // @synthesize userInterfaceStyleMode=_userInterfaceStyleMode;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 
 - (void).cxx_destruct;

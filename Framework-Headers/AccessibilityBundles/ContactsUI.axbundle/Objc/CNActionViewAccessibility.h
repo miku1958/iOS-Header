@@ -19,7 +19,9 @@
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
 - (BOOL)isAccessibilityElement;
+- (void)setTitle:(id)arg1;
 
 @end
 

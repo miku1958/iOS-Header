@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
 @interface TSDImageFill : TSDFill <TSDMixing, TSSPresetSource, NSCopying, NSMutableCopying>
 {
     TSPData *mImageData;
-    int mTechnique;
+    unsigned long long mTechnique;
     TSUColor *mTintColor;
     TSDImageFillCachedImage *mStandardSizeTintedImage;
     TSDImageFillCachedImage *mHalfSizeTintedImage;
     TSDImageFillCachedImage *mQuarterSizeTintedImage;
     TSUColor *mReferenceColor;
+    TSUColor *mCachedReferenceColor;
+    BOOL mShouldSkipFurtherAttemptsToCalculateReferenceColor;
     struct CGSize mFillSize;
     BOOL mHasIndicatedInterestInProvider;
     NSObject<OS_dispatch_queue> *mTempRenderLock;
@@ -32,14 +34,16 @@ __attribute__((visibility("hidden")))
     long long mTempRenderCount;
 }
 
+@property (readonly, nonatomic) BOOL canCopyData;
 @property (readonly, nonatomic) struct CGSize fillSize; // @synthesize fillSize=mFillSize;
 @property (readonly, strong, nonatomic) TSPData *imageData; // @synthesize imageData=mImageData;
 @property (nonatomic, setter=p_setFillSize:) struct CGSize p_fillSize;
 @property (strong, nonatomic, setter=p_setImageData:) TSPData *p_imageData;
-@property (nonatomic, setter=p_setTechnique:) int p_technique;
+@property (nonatomic, setter=p_setTechnique:) unsigned long long p_technique;
 @property (strong, nonatomic, setter=p_setTintColor:) TSUColor *p_tintColor;
 @property (readonly, nonatomic) double scale;
-@property (nonatomic) int technique; // @synthesize technique=mTechnique;
+@property (readonly, nonatomic) TSUColor *storedReferenceColor;
+@property (nonatomic) unsigned long long technique; // @synthesize technique=mTechnique;
 @property (readonly, copy, nonatomic) TSUColor *tintColor; // @synthesize tintColor=mTintColor;
 
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
@@ -54,37 +58,44 @@ __attribute__((visibility("hidden")))
 - (void)drawFillInContext:(struct CGContext *)arg1 rect:(struct CGRect)arg2 clippingToPath:(struct CGPath *)arg3;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (BOOL)drawsInOneStep;
-- (int)fillType;
+- (long long)fillType;
 - (void)flushImageCache;
 - (unsigned long long)hash;
 - (void)i_commonInit;
+- (void)i_setStoredReferenceColor:(id)arg1;
+- (void)i_updateStoredReferenceColorIfNeeded;
 - (id)imageDataAtFillSize;
+- (id)initForUnarchiving;
 - (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithImageData:(id)arg1 technique:(int)arg2 tintColor:(id)arg3 size:(struct CGSize)arg4;
+- (id)initWithImageData:(id)arg1 technique:(unsigned long long)arg2 tintColor:(id)arg3 size:(struct CGSize)arg4;
+- (id)initWithImageData:(id)arg1 technique:(unsigned long long)arg2 tintColor:(id)arg3 size:(struct CGSize)arg4 referenceColor:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isOpaque;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)p_cachedImageForSize:(struct CGSize)arg1 inContext:(struct CGContext *)arg2 orContentsScaleProvider:(id)arg3;
+- (id)p_calculateReferenceColor;
 - (void)p_clearTintedImageCache;
 - (void)p_drawBitmapImage:(struct CGImage *)arg1 withOrientation:(long long)arg2 inContext:(struct CGContext *)arg3 bounds:(struct CGRect)arg4;
 - (void)p_drawPDFWithProvider:(id)arg1 inContext:(struct CGContext *)arg2 bounds:(struct CGRect)arg3;
 - (struct CGRect)p_drawnRectForImageSize:(struct CGSize)arg1 destRect:(struct CGRect)arg2 inContext:(struct CGContext *)arg3;
 - (id)p_halfSizeCachedImage;
+- (struct CGSize)p_imageDataNaturalSize;
 - (void)p_paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2 rectForFill:(struct CGRect)arg3;
 - (id)p_quarterSizeCachedImage;
 - (void)p_setFillSizeForApplicationData;
 - (BOOL)p_shouldApplyTintedImage;
-- (BOOL)p_shouldPersistFillSizeForData:(id)arg1;
 - (struct CGSize)p_sizeOfFillImageForDestRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (id)p_standardSizeCachedImage;
 - (id)p_tintedImageWithScale:(double)arg1;
+- (void)p_updateCachedReferenceColorIfNeeded;
 - (id)p_validatedImageProvider;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(BOOL)arg4;
 - (id)presetKind;
 - (id)referenceColor;
+- (id)referenceColorForFontArchiving;
 - (struct CGSize)renderedImageSizeForObjectSize:(struct CGSize)arg1;
 - (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
 - (BOOL)tsch_hasAllResources;

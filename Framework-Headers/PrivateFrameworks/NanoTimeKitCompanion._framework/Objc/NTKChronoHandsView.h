@@ -10,6 +10,8 @@
 
 @interface NTKChronoHandsView : NTKAnalogHandsView
 {
+    BOOL _isChronoAnimationRunning;
+    BOOL _minuteHandUsesManualTime;
     unsigned long long _timeScale;
     NTKChronoPalette *_palette;
     NTKHandView *_chronoSecondHandView;
@@ -22,6 +24,7 @@
 @property (readonly, nonatomic) NTKHandView *chronoFlybackSecondHandView; // @synthesize chronoFlybackSecondHandView=_chronoFlybackSecondHandView;
 @property (readonly, nonatomic) NTKHandView *chronoMinuteHandView; // @synthesize chronoMinuteHandView=_chronoMinuteHandView;
 @property (readonly, nonatomic) NTKHandView *chronoSecondHandView; // @synthesize chronoSecondHandView=_chronoSecondHandView;
+@property (nonatomic) BOOL minuteHandUsesManualTime; // @synthesize minuteHandUsesManualTime=_minuteHandUsesManualTime;
 @property (strong, nonatomic) NTKChronoPalette *palette; // @synthesize palette=_palette;
 @property (nonatomic) unsigned long long timeScale; // @synthesize timeScale=_timeScale;
 

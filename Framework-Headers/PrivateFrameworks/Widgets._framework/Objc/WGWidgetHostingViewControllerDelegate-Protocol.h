@@ -10,11 +10,14 @@
 
 @protocol WGWidgetHostingViewControllerDelegate <NSObject>
 - (struct CGSize)maxSizeForWidget:(WGWidgetHostingViewController *)arg1 forDisplayMode:(long long)arg2;
+- (void)registerWidgetForRefreshEvents:(WGWidgetHostingViewController *)arg1;
+- (void)unregisterWidgetForRefreshEvents:(WGWidgetHostingViewController *)arg1;
 
 @optional
 - (long long)activeLayoutModeForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)brokenViewDidAppearForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)contentAvailabilityDidChangeForWidget:(WGWidgetHostingViewController *)arg1;
+- (struct UIEdgeInsets)layoutMarginForWidget:(WGWidgetHostingViewController *)arg1;
 - (BOOL)managingContainerIsVisibleForWidget:(WGWidgetHostingViewController *)arg1;
 - (struct UIEdgeInsets)marginInsetsForWidget:(WGWidgetHostingViewController *)arg1;
 - (void)remoteViewControllerDidConnectForWidget:(WGWidgetHostingViewController *)arg1;

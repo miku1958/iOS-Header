@@ -9,7 +9,7 @@
 #import <SafariShared/WBSHistoryLoader-Protocol.h>
 #import <SafariShared/WBSHistoryStore-Protocol.h>
 
-@class NSArray, NSCountedSet, NSData, NSDate, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, NSTimer, NSURL, WBSHistoryCrypto, WBSPeriodicActivityScheduler, WBSSQLiteDatabase, WBSSQLiteStatementCache;
+@class NSArray, NSCountedSet, NSData, NSDate, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, NSTimer, NSURL, WBSHistoryCrypto, WBSHistoryTagDatabaseController, WBSPeriodicActivityScheduler, WBSSQLiteDatabase, WBSSQLiteStatementCache;
 @protocol OS_dispatch_queue, WBSHistoryStoreDelegate;
 
 @interface WBSHistorySQLiteStore : NSObject <WBSHistoryStore, WBSHistoryLoader>
@@ -45,7 +45,9 @@
     BOOL _writeLastMaintenanceDateOnNextWrite;
     BOOL _checkpointWriteAheadLogOnNextWrite;
     WBSPeriodicActivityScheduler *_maintenanceScheduler;
+    WBSHistoryTagDatabaseController *_tagController;
     BOOL _pushNotificationsAreInitialized;
+    BOOL _syncsWithManateeContainer;
     id<WBSHistoryStoreDelegate> _delegate;
     double _historyAgeLimit;
     WBSSQLiteDatabase *_database;
@@ -68,6 +70,7 @@
 @property (readonly, nonatomic) NSData *salt;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;
+@property (nonatomic) BOOL syncsWithManateeContainer; // @synthesize syncsWithManateeContainer=_syncsWithManateeContainer;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -75,14 +78,17 @@
 - (unsigned long long)_cachedNumberOfDevicesInSyncCircleOnDatabaseQueue;
 - (BOOL)_checkDatabaseIntegrity;
 - (void)_checkpointWriteAheadLog;
+- (Class)_classForHistoryTagType:(unsigned long long)arg1;
 - (void)_clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 addingTombstone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_clearHistoryVisitsMatchingURLHash:(id)arg1 salt:(id)arg2 afterDate:(id)arg3 beforeDate:(id)arg4 addingTombstone:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_clearHistoryVisitsMatchingURLString:(id)arg1 afterDate:(id)arg2 beforeDate:(id)arg3 addingTombstone:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_convertTombstoneWithGenerationToSecureFormat:(long long)arg1;
+- (id)_createHistoryTagsWithIdentifiers:(id)arg1 titles:(id)arg2 type:(unsigned long long)arg3 level:(long long)arg4 error:(id *)arg5;
 - (long long)_currentGeneration;
 - (id)_deletionPlanForDeletionOfVisits:(id)arg1;
 - (void)_enforceAgeAndItemCountLimits:(CDUnknownBlockType)arg1;
 - (void)_expireOldVisits;
+- (id)_fetchHistoryTagsWithPredicate:(id)arg1 error:(id *)arg2;
 - (void)_finishLoadingOnMainThread;
 - (void)_finishLoadingOnMainThreadIfNeeded;
 - (void)_incrementCurrentGeneration;
@@ -100,11 +106,13 @@
 - (int)_migrateToCurrentSchemaVersionIfNeeded;
 - (void)_openDatabase:(id)arg1 andCheckIntegrity:(BOOL)arg2;
 - (void)_performMaintenance:(CDUnknownBlockType)arg1;
+- (BOOL)_populateHistoryItemsInHistoryTopicTag:(id)arg1 fromStartDate:(id)arg2 toEndDate:(id)arg3 error:(id *)arg4;
 - (void)_processPendingDeletes;
 - (void)_processPendingVisitDeletes;
 - (void)_processPendingWrites;
 - (void)_pruneTombstonesOnDatabaseQueueWithEndDatePriorToDate:(id)arg1;
 - (void)_recomputeDerivedVisitCountScores;
+- (void)_registerHistoryTagFrecencyScoringFunction;
 - (void)_removeVisitsProvidedByBlockInvokedOnDatabaseQueue:(CDUnknownBlockType)arg1 addingTombstone:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_scheduleMaintenance;
 - (void)_scheduleWrite;
@@ -114,6 +122,7 @@
 - (int)_setOrigin:(long long)arg1 forVisitsFromOrigin:(long long)arg2;
 - (BOOL)_shouldEmitLegacyTombstones;
 - (BOOL)_shouldMigrateFromPropertyListWhenLoadingDatabase:(id)arg1;
+- (id)_tagsWithIdentifiers:(id)arg1 titles:(id)arg2 ofType:(unsigned long long)arg3 level:(long long)arg4 creatingIfNeeded:(BOOL)arg5 createdTags:(id *)arg6 error:(id *)arg7;
 - (id)_tombstonesNeedingSync;
 - (void)_updateDatabaseAfterSuccessfulSyncWithGeneration:(long long)arg1 convertTombstonesToSecureFormat:(BOOL)arg2;
 - (void)_updateGenerationForVisits:(id)arg1;
@@ -129,6 +138,7 @@
 - (void)_writeTimerFired;
 - (void)addOrUpdateItemsOnDatabaseQueue:(id)arg1;
 - (id)allVisitsForItemsOnDatabaseQueue:(id)arg1;
+- (void)assignHistoryItem:(id)arg1 toTopicTags:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)checkIfLocalVisitExistsInAnyOfItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)clearHistoryVisitsAddedAfterDate:(id)arg1 beforeDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)clearHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -138,6 +148,8 @@
 - (void)enumeratePriorVisitsInRedirectChainOnDatabaseQueue:(id)arg1 items:(id)arg2 enumerationBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateSubsequentVisitsInRedirectChainOnDatabaseQueue:(id)arg1 items:(id)arg2 enumerationBlock:(CDUnknownBlockType)arg3;
 - (id)existingItemFromVisitRow:(id)arg1;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)fetchTopicsFromStartDate:(id)arg1 toEndDate:(id)arg2 limit:(unsigned long long)arg3 minimumItemCount:(unsigned long long)arg4 sortOrder:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)getAllTombstonesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getServerChangeTokenDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getVisitsAndTombstonesNeedingSyncWithVisitSyncWindow:(double)arg1 completion:(CDUnknownBlockType)arg2;
@@ -156,8 +168,11 @@
 - (void)resetCloudHistoryDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setLastSeenDate:(id)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (void)setServerChangeTokenData:(id)arg1;
+- (void)setTitle:(id)arg1 ofTag:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startLoading;
+- (void)tagsWithIdentifiers:(id)arg1 type:(unsigned long long)arg2 level:(long long)arg3 creatingIfNecessary:(BOOL)arg4 withTitles:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)updateHistoryAfterSuccessfulPersistedLongLivedSaveOperationWithGeneration:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)vacuumHistoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)visitForItem:(id)arg1 row:(id)arg2;
 - (id)visitForRow:(id)arg1;
 - (void)visitIdentifiersMatchingExistingVisits:(id)arg1 populateAssociatedVisits:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

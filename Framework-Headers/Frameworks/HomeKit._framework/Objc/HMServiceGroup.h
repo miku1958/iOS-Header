@@ -28,6 +28,7 @@
 }
 
 @property (readonly, nonatomic) HMApplicationData *applicationData;
+@property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) HMMutableArray *currentServices; // @synthesize currentServices=_currentServices;
 @property (readonly, copy) NSString *debugDescription;

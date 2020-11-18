@@ -6,17 +6,31 @@
 
 #import <MapKit/MKOverlayPathRenderer.h>
 
-@class MKPolygon;
+@class MKPolygon, VKVectorOverlayPolygonGroup;
 
 @interface MKPolygonRenderer : MKOverlayPathRenderer
 {
+    VKVectorOverlayPolygonGroup *_vectorData;
 }
 
 @property (readonly, nonatomic) MKPolygon *polygon;
 
++ (Class)_mapkitLeafClass;
+- (void).cxx_destruct;
+- (BOOL)_canProvideVectorGeometry;
+- (void)_updateRenderColors;
+- (id)_vectorGeometry;
 - (void)createPath;
 - (void)fillPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (id)initWithPolygon:(id)arg1;
+- (BOOL)overlayCanProvideVectorData:(id)arg1;
+- (void)setAlpha:(double)arg1;
+- (void)setFillColor:(id)arg1;
+- (void)setLineJoin:(int)arg1;
+- (void)setLineWidth:(double)arg1;
+- (void)setMiterLimit:(double)arg1;
+- (void)setStrokeColor:(id)arg1;
+- (id)vectorDataForOverlay:(id)arg1;
 
 @end
 

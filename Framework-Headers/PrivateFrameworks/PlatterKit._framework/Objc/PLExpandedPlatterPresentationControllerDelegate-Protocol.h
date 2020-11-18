@@ -6,16 +6,16 @@
 
 #import <PlatterKit/NSObject-Protocol.h>
 
-@class BSAnimationSettings, UIPresentationController, UIWindow;
-@protocol PLExpandedPlatterPresentationController, PLKeyboardHomeAffordanceAssertion, UIViewSpringAnimationBehaviorDescribing;
+@class BSAnimationSettings, PLExpandedPlatterPresentationController, UIWindow;
+@protocol PLKeyboardHomeAffordanceAssertion, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol PLExpandedPlatterPresentationControllerDelegate <NSObject>
 
 @optional
-- (id<PLKeyboardHomeAffordanceAssertion>)expandedPlatterPresentationController:(UIPresentationController<PLExpandedPlatterPresentationController> *)arg1 keyboardAssertionForGestureWindow:(UIWindow *)arg2;
-- (BOOL)expandedPlatterPresentationControllerShouldAllowKeyboardOnAppearance:(UIPresentationController<PLExpandedPlatterPresentationController> *)arg1;
-- (BSAnimationSettings *)hideHomeAffordanceAnimationSettingsForExpandedPlatterPresentationController:(UIPresentationController<PLExpandedPlatterPresentationController> *)arg1;
-- (id<UIViewSpringAnimationBehaviorDescribing>)settleHomeAffordanceAnimationBehaviorDescriptionForExpandedPlatterPresentationController:(UIPresentationController<PLExpandedPlatterPresentationController> *)arg1;
-- (BSAnimationSettings *)unhideHomeAffordanceAnimationSettingsForExpandedPlatterPresentationController:(UIPresentationController<PLExpandedPlatterPresentationController> *)arg1;
+- (id<PLKeyboardHomeAffordanceAssertion>)expandedPlatterPresentationController:(PLExpandedPlatterPresentationController *)arg1 keyboardAssertionForGestureWindow:(UIWindow *)arg2;
+- (BOOL)expandedPlatterPresentationControllerShouldAllowKeyboardOnAppearance:(PLExpandedPlatterPresentationController *)arg1;
+- (BSAnimationSettings *)hideHomeAffordanceAnimationSettingsForExpandedPlatterPresentationController:(PLExpandedPlatterPresentationController *)arg1;
+- (id<UIViewSpringAnimationBehaviorDescribing>)settleHomeAffordanceAnimationBehaviorDescriptionForExpandedPlatterPresentationController:(PLExpandedPlatterPresentationController *)arg1;
+- (BSAnimationSettings *)unhideHomeAffordanceAnimationSettingsForExpandedPlatterPresentationController:(PLExpandedPlatterPresentationController *)arg1;
 @end
 

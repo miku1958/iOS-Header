@@ -10,9 +10,6 @@
 
 @interface PKSpendingSummaryChartBarView : UIView
 {
-    UIView *_container;
-    UIView *_barSubcontainer;
-    UIView *_placeholderSubcontainer;
     UIImageView *_bar;
     UIImageView *_placeholder;
     UIImage *_image;
@@ -33,9 +30,11 @@
 
 - (void).cxx_destruct;
 - (void)_callCompletion;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_generateImageForSummary:(id)arg1 barHeight:(double)arg2 maximumHeight:(double)arg3 synchronous:(BOOL)arg4;
 - (void)_updateImageWithImage:(id)arg1;
 - (void)_updatePlaceholder;
+- (void)_updatePlaceholderImage;
 - (void)configureWithSummary:(id)arg1 maximumHeight:(double)arg2 barHeight:(double)arg3 synchronous:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSUserDefaults;
+@class NSString, NSUserDefaults;
 
 @interface VSSpeechInternalSettings : NSObject
 {
@@ -15,24 +15,28 @@
     NSUserDefaults *_internalDefaults;
 }
 
+@property (nonatomic) float defaultVolume;
 @property (nonatomic) BOOL disableAssetCleaning;
 @property (nonatomic) BOOL disableCache;
-@property (nonatomic) BOOL disableNewBackend;
-@property (nonatomic) BOOL disableServerTimeoutFallback;
+@property (nonatomic) BOOL disableDeviceRacing;
+@property (nonatomic) BOOL disableOsprey;
+@property (nonatomic) BOOL disableOspreyStreaming;
+@property (nonatomic) BOOL disableServerTTS;
 @property (nonatomic) BOOL enableAudioDump;
-@property (nonatomic) BOOL enableHomePodSimulation;
 @property (nonatomic) BOOL enableLocalVoices;
 @property (nonatomic) BOOL forceServerTTS;
 @property (readonly, nonatomic) BOOL internalBuild; // @synthesize internalBuild=_internalBuild;
 @property (strong, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property (nonatomic) BOOL isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
+@property (strong, nonatomic) NSString *ospreyEndpointURL;
 @property (nonatomic) float serverTTSTimeout;
+@property (nonatomic) float streamBufferDuration;
+@property (nonatomic) BOOL useBetaVoice;
+@property (nonatomic) BOOL whisper;
 
 + (id)standardInstance;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)init;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 
 @end
 

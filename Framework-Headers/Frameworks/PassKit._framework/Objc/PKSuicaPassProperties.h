@@ -24,8 +24,11 @@
 @property (readonly, copy, nonatomic) NSDecimalNumber *transitBalance; // @dynamic transitBalance;
 @property (readonly, copy, nonatomic) NSString *transitBalanceCurrencyCode; // @dynamic transitBalanceCurrencyCode;
 
++ (Class)equalityClass;
 + (id)passPropertiesForPass:(id)arg1;
 - (id)_initWithProperties:(id)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -21,6 +21,7 @@
     NSUUID *agentUUID;
     NSString *agentDescription;
     NSUUID *_internalUUID;
+    NSString *_name;
     CDUnknownBlockType _internalStartHandler;
     NSString *_configurationName;
 }
@@ -35,12 +36,15 @@
 @property (copy) NSUUID *internalUUID; // @synthesize internalUUID=_internalUUID;
 @property (nonatomic, getter=isKernelActivated) BOOL kernelActivated; // @synthesize kernelActivated;
 @property int lastStatus; // @synthesize lastStatus=_lastStatus;
+@property (strong) NSString *name; // @synthesize name=_name;
 @property (nonatomic, getter=isNetworkProvider) BOOL networkProvider;
 @property (nonatomic, getter=isNexusProvider) BOOL nexusProvider;
 @property (nonatomic) BOOL requiresAssert;
 @property (readonly) int sessionType;
 @property (nonatomic, getter=isSpecificUseOnly) BOOL specificUseOnly;
 @property (nonatomic) BOOL supportsBrowseRequests;
+@property (nonatomic) BOOL supportsResolveRequests;
+@property (nonatomic) BOOL updateClientsImmediately;
 @property (nonatomic, getter=isUserActivated) BOOL userActivated; // @synthesize userActivated;
 @property (nonatomic, getter=isVoluntary) BOOL voluntary; // @synthesize voluntary;
 
@@ -49,7 +53,8 @@
 + (id)agentType;
 - (void).cxx_destruct;
 - (id)copyAgentData;
-- (id)initWithConfigUUID:(id)arg1 sessionType:(int)arg2;
+- (id)initWithConfigUUID:(id)arg1 sessionType:(int)arg2 name:(id)arg3;
+- (BOOL)matchesFileHandle:(id)arg1;
 - (void)setStartHandler:(CDUnknownBlockType)arg1;
 - (BOOL)startAgentWithOptions:(id)arg1;
 

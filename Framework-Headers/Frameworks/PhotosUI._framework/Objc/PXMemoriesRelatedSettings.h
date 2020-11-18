@@ -13,26 +13,34 @@
     BOOL _enableMemoriesLivingOnFeedback;
     BOOL _enableManualRefreshUI;
     BOOL _fakePeopleProximity;
-    BOOL _enableMemoryBlurryHeader;
+    BOOL _recoverBlacklistedMemories;
+    BOOL _useUnifiedFont;
+    BOOL _showMemoryTitleLayer;
+    BOOL _enableIPadWideHeader;
     double _refreshPhotoKitTimeout;
     double _widgetRefreshTimeInterval;
     long long _minimumNumberOfCuratedAssetsForInterestingMoments;
     long long _minimumNumberOfCuratedAssetsForMemories;
     long long _minimumNumberOfCuratedAssetsForMovieHeader;
     unsigned long long _deleteBehavior;
+    long long _subtitleFontSize;
 }
 
 @property (nonatomic) unsigned long long deleteBehavior; // @synthesize deleteBehavior=_deleteBehavior;
 @property (nonatomic) BOOL enableFeedbackComboUI; // @synthesize enableFeedbackComboUI=_enableFeedbackComboUI;
 @property (nonatomic) BOOL enableFeedbackUI; // @synthesize enableFeedbackUI=_enableFeedbackUI;
+@property (nonatomic) BOOL enableIPadWideHeader; // @synthesize enableIPadWideHeader=_enableIPadWideHeader;
 @property (nonatomic) BOOL enableManualRefreshUI; // @synthesize enableManualRefreshUI=_enableManualRefreshUI;
 @property (nonatomic) BOOL enableMemoriesLivingOnFeedback; // @synthesize enableMemoriesLivingOnFeedback=_enableMemoriesLivingOnFeedback;
-@property (nonatomic) BOOL enableMemoryBlurryHeader; // @synthesize enableMemoryBlurryHeader=_enableMemoryBlurryHeader;
 @property (nonatomic) BOOL fakePeopleProximity; // @synthesize fakePeopleProximity=_fakePeopleProximity;
 @property (nonatomic) long long minimumNumberOfCuratedAssetsForInterestingMoments; // @synthesize minimumNumberOfCuratedAssetsForInterestingMoments=_minimumNumberOfCuratedAssetsForInterestingMoments;
 @property (nonatomic) long long minimumNumberOfCuratedAssetsForMemories; // @synthesize minimumNumberOfCuratedAssetsForMemories=_minimumNumberOfCuratedAssetsForMemories;
 @property (nonatomic) long long minimumNumberOfCuratedAssetsForMovieHeader; // @synthesize minimumNumberOfCuratedAssetsForMovieHeader=_minimumNumberOfCuratedAssetsForMovieHeader;
+@property (nonatomic) BOOL recoverBlacklistedMemories; // @synthesize recoverBlacklistedMemories=_recoverBlacklistedMemories;
 @property (nonatomic) double refreshPhotoKitTimeout; // @synthesize refreshPhotoKitTimeout=_refreshPhotoKitTimeout;
+@property (nonatomic) BOOL showMemoryTitleLayer; // @synthesize showMemoryTitleLayer=_showMemoryTitleLayer;
+@property (nonatomic) long long subtitleFontSize; // @synthesize subtitleFontSize=_subtitleFontSize;
+@property (nonatomic) BOOL useUnifiedFont; // @synthesize useUnifiedFont=_useUnifiedFont;
 @property (nonatomic) double widgetRefreshTimeInterval; // @synthesize widgetRefreshTimeInterval=_widgetRefreshTimeInterval;
 
 + (void)_presentAlertForMemoriesGenerationResult:(id)arg1 error:(id)arg2 inModuleController:(id)arg3;

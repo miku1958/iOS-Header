@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthDaemon/_HDAWDAction-Protocol.h>
+#import <HealthDaemon/HDPeriodicActivityDelegate-Protocol.h>
 
-@class HDAssertion, HDProfile, NSDate, NSString;
+@class HDAssertion, HDPeriodicActivity, HDProfile, NSDate, NSString;
 @protocol OS_dispatch_queue;
 
-@interface _HDAWDPeriodicAction : NSObject <_HDAWDAction>
+@interface _HDAWDPeriodicAction : NSObject <HDPeriodicActivityDelegate>
 {
-    const char *_taskName;
     NSString *_waitingToRunKey;
     NSString *_lastSubmissionAttemptKey;
     NSString *_intervalCounterKey;
@@ -28,10 +27,12 @@
     NSObject<OS_dispatch_queue> *_queue;
     HDAssertion *_preparedDatabaseAccessibilityAssertion;
     CDUnknownBlockType _block;
+    HDPeriodicActivity *_periodicActivity;
     long long _waitingToRun;
     NSDate *_lastSubmissionAttemptDate;
     long long _intervalCounter;
     NSDate *_lastProcessedDate;
+    NSString *_taskName;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -41,12 +42,12 @@
 @property (readonly, nonatomic) NSDate *lastProcessedDate;
 @property (readonly, nonatomic) NSDate *lastSubmissionAttemptDate;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *taskName; // @synthesize taskName=_taskName;
 @property (readonly, nonatomic) long long waitingToRun; // @synthesize waitingToRun=_waitingToRun;
 
 - (void).cxx_destruct;
 - (void)_beginWaitingToRun;
 - (void)_loadState;
-- (void)_performActivity:(id)arg1;
 - (void)_queue_prepareAccessibilityAssertionIfNeeded;
 - (void)_queue_registerActivity;
 - (void)_queue_setIntervalCounter:(long long)arg1;
@@ -57,14 +58,15 @@
 - (BOOL)_runBlockWithAccessibilityAssertion:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (BOOL)doForced;
-- (void)doIfWaiting;
 - (void)doIfWaitingOnMaintenanceQueueWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithTaskName:(char *)arg1 keyPrefix:(id)arg2 xpcInterval:(long long)arg3 xpcGraceInterval:(long long)arg4 requiresClassB:(BOOL)arg5 intervalMultiple:(long long)arg6 maximumAttemptCount:(long long)arg7 minimumDelayBetweenAttempts:(double)arg8 profile:(id)arg9 block:(CDUnknownBlockType)arg10;
+- (BOOL)doIfWaitingWithError:(id *)arg1;
+- (id)initWithTaskName:(id)arg1 keyPrefix:(id)arg2 xpcInterval:(long long)arg3 xpcGraceInterval:(long long)arg4 requiresClassB:(BOOL)arg5 intervalMultiple:(long long)arg6 maximumAttemptCount:(long long)arg7 minimumDelayBetweenAttempts:(double)arg8 profile:(id)arg9 block:(CDUnknownBlockType)arg10;
+- (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
 - (void)reset;
 - (void)setLastProcessedDate:(id)arg1;
 - (void)start;
 - (void)stop;
-- (id)taskName;
 
 @end
 

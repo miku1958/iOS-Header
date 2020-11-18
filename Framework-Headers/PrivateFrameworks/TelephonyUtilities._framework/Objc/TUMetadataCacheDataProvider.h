@@ -12,18 +12,20 @@
 @interface TUMetadataCacheDataProvider : NSObject
 {
     id<TUMetadataCacheDataProviderDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_concurrentQueue;
+    NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_providerCache;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
 @property (weak, nonatomic) id<TUMetadataCacheDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, nonatomic) NSMutableDictionary *providerCache; // @synthesize providerCache=_providerCache;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
++ (id)classIdentifier;
 - (void).cxx_destruct;
 - (id)description;
 - (id)init;
+- (id)initWithQueue:(id)arg1;
 - (id)metadataForDestinationID:(id)arg1;
 - (void)refresh;
 - (void)setObject:(id)arg1 forDestinationID:(id)arg2;

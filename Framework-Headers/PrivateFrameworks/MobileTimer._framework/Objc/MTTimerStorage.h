@@ -10,7 +10,7 @@
 #import <MobileTimer/MTTimerSchedulerDelegate-Protocol.h>
 #import <MobileTimer/MTTimerStorage-Protocol.h>
 
-@class MTTimer, MTTimerMigrator, MTTimerScheduler, NSArray, NSDate, NSMutableArray, NSPointerArray, NSString;
+@class MTObserverStore, MTTimer, MTTimerMigrator, MTTimerScheduler, NSArray, NSDate, NSMutableArray, NSString;
 @protocol MTPersistence, NAScheduler;
 
 @interface MTTimerStorage : NSObject <MTTimerSchedulerDelegate, MTAgentDiagnosticDelegate, MTTimerStorage>
@@ -21,7 +21,7 @@
     CDUnknownBlockType _currentDateProvider;
     MTTimerMigrator *_migrator;
     id<NAScheduler> _serializer;
-    NSPointerArray *_observers;
+    MTObserverStore *_observers;
     id<MTPersistence> _persistence;
 }
 
@@ -32,7 +32,7 @@
 @property (copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (strong, nonatomic) MTTimerMigrator *migrator; // @synthesize migrator=_migrator;
 @property (readonly, nonatomic) MTTimer *nextTimer;
-@property (strong, nonatomic) NSPointerArray *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) MTObserverStore *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) NSMutableArray *orderedTimers; // @synthesize orderedTimers=_orderedTimers;
 @property (strong, nonatomic) id<MTPersistence> persistence; // @synthesize persistence=_persistence;
 @property (weak, nonatomic) MTTimerScheduler *scheduler; // @synthesize scheduler=_scheduler;
@@ -67,13 +67,15 @@
 - (id)_queue_timerMatchingTimerIdentifier:(id)arg1;
 - (id)_queue_updateTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)addTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
+- (void)dealloc;
 - (void)dismissTimerWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (id)gatherDiagnostics;
 - (void)getTimersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleF5Reset;
+- (void)handleMigrationFinish;
 - (id)init;
 - (id)initWithPersistence:(id)arg1;
-- (id)initWithPersistence:(id)arg1 migrator:(id)arg2 scheduler:(id)arg3 currentDateProvider:(CDUnknownBlockType)arg4;
+- (id)initWithPersistence:(id)arg1 migrator:(id)arg2 serializer:(id)arg3 callbackScheduler:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
 - (void)loadTimers;
 - (void)loadTimersSync;
 - (void)printDiagnostics;

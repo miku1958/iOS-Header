@@ -8,7 +8,7 @@
 
 #import <NanoPassKit/NSSecureCoding-Protocol.h>
 
-@class NSData, NSNumber, NSString;
+@class NSData, NSDictionary, NSNumber, NSString;
 
 @interface NPKPassSyncStateItem : NSObject <NSSecureCoding>
 {
@@ -16,8 +16,10 @@
     NSString *_serialNumber;
     NSNumber *_sequenceCounter;
     NSData *_manifestHash;
+    NSDictionary *_manifest;
 }
 
+@property (strong, nonatomic) NSDictionary *manifest; // @synthesize manifest=_manifest;
 @property (strong, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
 @property (strong, nonatomic) NSString *passTypeIdentifier; // @synthesize passTypeIdentifier=_passTypeIdentifier;
 @property (strong, nonatomic) NSNumber *sequenceCounter; // @synthesize sequenceCounter=_sequenceCounter;
@@ -31,11 +33,12 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPass:(id)arg1;
-- (id)initWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2 sequenceCounter:(id)arg3 manifestHash:(id)arg4;
+- (id)initWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2 sequenceCounter:(id)arg3 manifestHash:(id)arg4 manifest:(id)arg5;
 - (id)initWithProtoSyncStateItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPassSyncStateItem:(id)arg1;
 - (id)protoSyncStateItem;
+- (id)shortDescription;
 
 @end
 

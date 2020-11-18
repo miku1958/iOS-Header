@@ -6,12 +6,14 @@
 
 #import <ContactsAutocomplete/NSObject-Protocol.h>
 
+@class NSArray;
 @protocol CNAutocompleteSearch;
 
 @protocol CNAutocompleteSearchProvider <NSObject>
 - (id<CNAutocompleteSearch>)calendarServerSearch;
 - (id<CNAutocompleteSearch>)directoryServerSearch;
 - (id<CNAutocompleteSearch>)duetSearch;
+- (NSArray *)localExtensionSearches;
 - (id<CNAutocompleteSearch>)localSearch;
 - (id<CNAutocompleteSearch>)recentsSearch;
 - (id<CNAutocompleteSearch>)suggestionsSearch;

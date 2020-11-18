@@ -15,16 +15,18 @@
     PBUnknownFields *_unknownFields;
     NSString *_dataSetDescription;
     unsigned int _identifier;
-    CDStruct_1dc6d826 _has;
+    CDStruct_7c00b98a _flags;
 }
 
-@property (strong, nonatomic) NSString *dataSetDescription; // @synthesize dataSetDescription=_dataSetDescription;
+@property (strong, nonatomic) NSString *dataSetDescription;
 @property (readonly, nonatomic) BOOL hasDataSetDescription;
 @property (nonatomic) BOOL hasIdentifier;
-@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned int identifier;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +34,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

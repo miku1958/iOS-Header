@@ -48,7 +48,6 @@
     NSMutableArray *_notificationQueue;
     struct __CFPhoneNumber *_phoneNumberRef;
     NSString *_formattedNumber;
-    BOOL _hasCheckedPhoneNumber;
     unsigned long long _status;
     unsigned long long _prevStatus;
     unsigned long long _capabilities;
@@ -62,6 +61,7 @@
     BOOL _isAnonymous;
     BOOL _beingTornDown;
     BOOL _hasCheckedCardMap;
+    BOOL _hasCheckedPhoneNumber;
     long long _priority;
     int _addressBookIdentifier;
     int _notificationQueueCount;
@@ -176,6 +176,7 @@
 + (void)validHandlesForPersons:(id)arg1 useExtendedAsyncLookup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)_IDWithTrimmedServer;
+- (id)__imcnContactWithKeys:(id)arg1;
 - (id)_abPersonCreateIfNeeded;
 - (id)_bestChatSibling;
 - (id)_cachedPerson;
@@ -184,8 +185,12 @@
 - (void)_clearABPersonLookup;
 - (void)_clearABProperties;
 - (void)_clearStatusMessageURLCache;
+- (id)_contactID;
 - (void)_contactStoreDidChange:(id)arg1;
 - (void)_createPhoneNumberRefIfNeeded;
+- (id)_displayNameWithContact:(id)arg1;
+- (id)_displayNameWithNicknameIfAvailable;
+- (id)_fallbackCNContactWithAllKeys;
 - (void)_fetchBusinessInfo;
 - (void)_fetchMapItemBannerImageDataForMapItem:(id)arg1;
 - (void)_fetchMapItemImageDataForMapItem:(id)arg1;
@@ -228,6 +233,7 @@
 - (id)bestIMHandleForService:(id)arg1;
 - (id)chatSiblingsArray;
 - (void)clearABPerson;
+- (id)cnContactWithKeys:(id)arg1;
 - (long long)compareAccountNames:(id)arg1;
 - (long long)compareFirstNames:(id)arg1;
 - (long long)compareIDs:(id)arg1;
@@ -303,6 +309,7 @@
 - (void)statusChanged:(unsigned long long)arg1;
 - (void)statusChanged:(unsigned long long)arg1 message:(id)arg2;
 - (void)statusMessageChanged:(id)arg1;
+- (void)updateCNContact:(id)arg1;
 
 @end
 

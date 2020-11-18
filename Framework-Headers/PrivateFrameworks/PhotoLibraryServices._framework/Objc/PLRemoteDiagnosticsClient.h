@@ -22,6 +22,7 @@
 
 + (id)_connectionForListenerEndpoint:(id)arg1;
 + (id)diagnosticsAgentWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 
 @end
 

@@ -29,8 +29,8 @@
 + (id)type;
 - (id)_debugDictionary;
 - (unsigned long long)_effectiveEventType;
-- (void)_playAtTime:(double)arg1 engine:(id)arg2;
 - (id)_playableProtocol;
+- (void)_playedAtTime:(double)arg1 engine:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (id)init;

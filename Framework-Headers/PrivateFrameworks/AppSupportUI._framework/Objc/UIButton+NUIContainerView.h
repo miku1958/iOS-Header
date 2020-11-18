@@ -7,9 +7,7 @@
 #import <UIKit/UIButton.h>
 
 @interface UIButton (NUIContainerView)
-- (long long)_nui_isUIButtonType;
-- (struct UIEdgeInsets)_nui_rectInsetsForBaseline;
-- (double)effectiveBaselineOffsetFromBottom;
-- (double)effectiveFirstBaselineOffsetFromTop;
+- (CDStruct_c3b9c2ee)_nui_additionalInsetsForBaselines;
+- (long long)_nui_baselineViewType;
 @end
 

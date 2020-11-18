@@ -26,6 +26,7 @@
 @property (readonly, copy, nonatomic) NSDate *date; // @dynamic date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL downloading;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) BOOL editing;
 @property (readonly, nonatomic) BOOL evicted;
@@ -40,6 +41,7 @@
 @property (readonly, copy, nonatomic) NSString *path;
 @property (readonly, nonatomic) BOOL pendingRestore;
 @property (readonly, nonatomic) BOOL playable;
+@property (nonatomic) BOOL recordedOnWatch;
 @property (nonatomic) long long recordingID;
 @property (nonatomic) long long revisionID; // @synthesize revisionID;
 @property (readonly, copy, nonatomic) CSSearchableItem *searchableItem;
@@ -56,7 +58,6 @@
 + (id)savedRecordingURIForSearchableItemIdentifier:(id)arg1;
 + (id)searchableItemIdentifierForSavedRecordingURI:(id)arg1;
 - (void).cxx_destruct;
-- (id)_activityURLCreateIfNecessary:(BOOL)arg1;
 - (id)_labelAllowingEmptyString:(BOOL)arg1;
 - (void)_validatePath;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
@@ -68,6 +69,7 @@
 - (id)label;
 - (long long)labelPreset;
 - (void)setCustomLabel:(id)arg1;
+- (void)setDownloading:(BOOL)arg1;
 - (void)setDuration:(double)arg1;
 - (void)setEditing:(BOOL)arg1;
 - (void)setEvictionDate:(id)arg1;

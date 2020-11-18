@@ -8,41 +8,85 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAutocompleteResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned int _retainSearchTime;
+    NSMutableArray *_clientRankingFeatureMetadatas;
     NSMutableArray *_sections;
     NSMutableArray *_sortPriorityMappings;
+    unsigned int _retainSearchTime;
     BOOL _enableRap;
+    BOOL _isNoResultFromNegativeCache;
+    BOOL _isTopSectionTypeQuery;
+    BOOL _shouldDifferentiateClientAndServerResults;
     BOOL _shouldDisplayNoResults;
     struct {
-        unsigned int retainSearchTime:1;
-        unsigned int enableRap:1;
-        unsigned int shouldDisplayNoResults:1;
-    } _has;
+        unsigned int has_retainSearchTime:1;
+        unsigned int has_enableRap:1;
+        unsigned int has_isNoResultFromNegativeCache:1;
+        unsigned int has_isTopSectionTypeQuery:1;
+        unsigned int has_shouldDifferentiateClientAndServerResults:1;
+        unsigned int has_shouldDisplayNoResults:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_clientRankingFeatureMetadatas:1;
+        unsigned int read_sections:1;
+        unsigned int read_sortPriorityMappings:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_clientRankingFeatureMetadatas:1;
+        unsigned int wrote_sections:1;
+        unsigned int wrote_sortPriorityMappings:1;
+        unsigned int wrote_retainSearchTime:1;
+        unsigned int wrote_enableRap:1;
+        unsigned int wrote_isNoResultFromNegativeCache:1;
+        unsigned int wrote_isTopSectionTypeQuery:1;
+        unsigned int wrote_shouldDifferentiateClientAndServerResults:1;
+        unsigned int wrote_shouldDisplayNoResults:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL enableRap; // @synthesize enableRap=_enableRap;
+@property (strong, nonatomic) NSMutableArray *clientRankingFeatureMetadatas;
+@property (nonatomic) BOOL enableRap;
 @property (nonatomic) BOOL hasEnableRap;
+@property (nonatomic) BOOL hasIsNoResultFromNegativeCache;
+@property (nonatomic) BOOL hasIsTopSectionTypeQuery;
 @property (nonatomic) BOOL hasRetainSearchTime;
+@property (nonatomic) BOOL hasShouldDifferentiateClientAndServerResults;
 @property (nonatomic) BOOL hasShouldDisplayNoResults;
-@property (nonatomic) unsigned int retainSearchTime; // @synthesize retainSearchTime=_retainSearchTime;
-@property (strong, nonatomic) NSMutableArray *sections; // @synthesize sections=_sections;
-@property (nonatomic) BOOL shouldDisplayNoResults; // @synthesize shouldDisplayNoResults=_shouldDisplayNoResults;
-@property (strong, nonatomic) NSMutableArray *sortPriorityMappings; // @synthesize sortPriorityMappings=_sortPriorityMappings;
+@property (nonatomic) BOOL isNoResultFromNegativeCache;
+@property (nonatomic) BOOL isTopSectionTypeQuery;
+@property (nonatomic) unsigned int retainSearchTime;
+@property (strong, nonatomic) NSMutableArray *sections;
+@property (nonatomic) BOOL shouldDifferentiateClientAndServerResults;
+@property (nonatomic) BOOL shouldDisplayNoResults;
+@property (strong, nonatomic) NSMutableArray *sortPriorityMappings;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)clientRankingFeatureMetadataType;
++ (BOOL)isValid:(id)arg1;
 + (Class)sectionsType;
 + (Class)sortPriorityMappingType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsClientRankingFeatureMetadata:(id)arg1;
+- (void)_addNoFlagsSections:(id)arg1;
+- (void)_addNoFlagsSortPriorityMapping:(id)arg1;
+- (void)_readClientRankingFeatureMetadatas;
+- (void)_readSections;
+- (void)_readSortPriorityMappings;
+- (void)addClientRankingFeatureMetadata:(id)arg1;
 - (void)addSections:(id)arg1;
 - (void)addSortPriorityMapping:(id)arg1;
+- (void)clearClientRankingFeatureMetadatas;
 - (void)clearSections;
+- (void)clearSensitiveFields;
 - (void)clearSortPriorityMappings;
+- (void)clearUnknownFields:(BOOL)arg1;
+- (id)clientRankingFeatureMetadataAtIndex:(unsigned long long)arg1;
+- (unsigned long long)clientRankingFeatureMetadatasCount;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -50,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)sectionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionsCount;

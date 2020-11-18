@@ -27,6 +27,7 @@
 @property (readonly, copy, nonatomic) NSString *itemKind;
 @property (readonly, nonatomic) long long numberOfUserRatings;
 @property (readonly, nonatomic) long long numberOfUserRatingsForCurrentVersion;
+@property (readonly, copy, nonatomic) NSString *offerName;
 @property (readonly, copy, nonatomic) NSArray *offers;
 @property (readonly, copy, nonatomic) NSURL *productPageURL;
 @property (readonly, nonatomic) float userRating;

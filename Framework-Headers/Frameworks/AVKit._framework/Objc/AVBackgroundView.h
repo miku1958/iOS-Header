@@ -11,15 +11,18 @@
 @interface AVBackgroundView : UIView
 {
     BOOL _automaticallyDrawsRoundedCorners;
+    BOOL _circular;
     AVBackdropView *_backdropView;
 }
 
 @property (nonatomic) BOOL automaticallyDrawsRoundedCorners; // @synthesize automaticallyDrawsRoundedCorners=_automaticallyDrawsRoundedCorners;
 @property (strong, nonatomic) AVBackdropView *backdropView; // @synthesize backdropView=_backdropView;
+@property (nonatomic, getter=isCircular) BOOL circular; // @synthesize circular=_circular;
 
 - (void).cxx_destruct;
 - (void)_ensureOrRemoveBackdropView;
 - (BOOL)_isContainedInOverlappingBackgroundView;
+- (void)_updateBackdropShape;
 - (void)addSubview:(id)arg1 applyingMaterialStyle:(long long)arg2 tintEffectStyle:(long long)arg3;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;

@@ -15,7 +15,6 @@
 @interface IPAEditDescription : NSObject <IPAEditOperationOrdering, NSCopying, NSFastEnumeration>
 {
     NSArray *_operations;
-    long long _editSource;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -45,13 +44,12 @@
 - (id)descriptionByReplacingOperation:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)descriptionWithOperations:(id)arg1;
 - (id)descriptionWithOperationsUpToUUID:(id)arg1;
-- (long long)editSource;
 - (unsigned long long)firstIndexOfOperationWithIdentifier:(id)arg1;
 - (id)firstOperationWithIdentifier:(id)arg1;
 - (void)forEachImmutableOperation:(CDUnknownBlockType)arg1;
 - (unsigned long long)indexOfOperationWithUUID:(id)arg1;
 - (id)init;
-- (id)initWithOperations:(id)arg1 editSource:(long long)arg2;
+- (id)initWithOperations:(id)arg1;
 - (unsigned long long)insertIndexForOperationWithIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDescription:(id)arg1;

@@ -6,23 +6,36 @@
 
 #import <Photos/PHAssetCollection.h>
 
-@class NSData, NSDate;
+@class NSDate, NSString;
 
 @interface PHMoment : PHAssetCollection
 {
-    NSData *_reverseLocationData;
-    BOOL _reverseLocationDataIsValid;
-    BOOL _reverseLocationDataContainsLocation;
-    short _generationType;
+    unsigned short _processedLocation;
+    int _timeZoneOffset;
+    float _aggregationScore;
     NSDate *_representativeDate;
     NSDate *_modificationDate;
+    NSString *_subtitle;
+    double _approximateLatitude;
+    double _approximateLongitude;
 }
 
-@property (readonly, nonatomic) short generationType; // @synthesize generationType=_generationType;
+@property (readonly, nonatomic) float aggregationScore; // @synthesize aggregationScore=_aggregationScore;
+@property (readonly, nonatomic) double approximateLatitude; // @synthesize approximateLatitude=_approximateLatitude;
+@property (readonly, nonatomic) double approximateLongitude; // @synthesize approximateLongitude=_approximateLongitude;
+@property (readonly, nonatomic) NSDate *localEndDate;
+@property (readonly, nonatomic) NSDate *localStartDate;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
+@property (nonatomic) unsigned short processedLocation; // @synthesize processedLocation=_processedLocation;
+@property (readonly, nonatomic) NSString *processedLocationTypeString;
 @property (readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
+@property (readonly, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly, nonatomic) int timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
 
++ (id)_fetchMomentUUIDByAssetUUIDForAssetUUIDs:(id)arg1 photoLibrary:(id)arg2;
 + (id)entityKeyMap;
++ (id)fetchMomentUUIDByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
++ (id)fetchMomentUUIDByAssetUUIDForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
@@ -31,17 +44,15 @@
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
 - (void)_cacheLocationWithCoordinate:(struct CLLocationCoordinate2D)arg1;
-- (void)_decodeTitlesIfNeeded;
 - (BOOL)canPerformEditOperation:(long long)arg1;
 - (BOOL)canShowAvalancheStacks;
 - (Class)changeRequestClass;
 - (BOOL)collectionHasFixedOrder;
 - (id)description;
-- (BOOL)hasLocalizedTitle;
 - (BOOL)hasLocationInfo;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
-- (BOOL)isMeaningful;
 - (id)localizedLocationNames;
+- (id)localizedSubtitle;
 - (id)localizedTitle;
 
 @end

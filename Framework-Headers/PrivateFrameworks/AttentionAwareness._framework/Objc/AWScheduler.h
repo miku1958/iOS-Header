@@ -6,43 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <AttentionAwareness/AWScheduler-Protocol.h>
-#import <AttentionAwareness/NSXPCListenerDelegate-Protocol.h>
-
-@class AWAttentionSampler, NSMutableArray, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class AWAttentionSampler, NSMutableArray;
+@protocol AWSchedulerObserver, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
-@interface AWScheduler : NSObject <AWScheduler, NSXPCListenerDelegate>
+@interface AWScheduler : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_timer;
     NSMutableArray *_clients;
     AWAttentionSampler *_attentionSampler;
-    AWAttentionSampler *_unitTestSampler;
+    id<AWSchedulerObserver> _observer;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) AWAttentionSampler *attentionSampler; // @synthesize attentionSampler=_attentionSampler;
+@property (weak, nonatomic) id<AWSchedulerObserver> observer; // @synthesize observer=_observer;
 
 + (id)sharedScheduler;
++ (id)sharedUnitTestScheduler;
 - (void).cxx_destruct;
-- (void)addClient:(id)arg1 clientConfig:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)addClient:(id)arg1;
 - (void)armEvents;
-- (void)createUnitTestSampler;
-- (void)getDebugPreferences:(CDUnknownBlockType)arg1;
-- (void)getSupportedEventsWithReply:(CDUnknownBlockType)arg1;
-- (void)getUnitTestSamplerWithReply:(CDUnknownBlockType)arg1;
-- (id)init;
-- (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (void)outputPowerLogWithReply:(CDUnknownBlockType)arg1;
-- (void)processHIDEvent:(unsigned long long)arg1 timestamp:(unsigned long long)arg2;
-- (void)removeClientsForConnection:(id)arg1;
+- (id)description;
+- (id)initForUnitTest:(BOOL)arg1;
+- (void)processHIDEvent:(struct __IOHIDEvent *)arg1 mask:(unsigned long long)arg2 timestamp:(unsigned long long)arg3;
+- (void)reevaluate;
 - (void)removeInvalidClients;
 - (void)removeInvalidClientsWithConnection:(id)arg1;
-- (void)setDebugPreference:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setSmartCoverClosed:(BOOL)arg1;
 
 @end

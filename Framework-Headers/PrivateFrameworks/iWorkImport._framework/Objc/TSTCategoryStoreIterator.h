@@ -101,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (id)tempSummaryCell;
 - (void)terminate;
 - (void)updateCellData:(id)arg1;
+- (void)updateFormulaForCellData:(id)arg1;
 
 @end
 

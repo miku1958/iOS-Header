@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString;
+@class NSArray, NSNumber;
 
 @interface FTUserConfiguration : NSObject
 {
@@ -16,7 +16,7 @@
 @property (nonatomic) BOOL allowAnyNetwork;
 @property (nonatomic) BOOL cellularFaceTimeEnabled;
 @property (nonatomic) BOOL isDeviceInDualPhoneIdentityMode;
-@property (copy, nonatomic) NSString *selectedPhoneNumberRegistrationSubscriptionLabel;
+@property (copy, nonatomic) NSArray *selectedPhoneNumberRegistrationSubscriptionLabels;
 @property (readonly, copy, nonatomic) NSNumber *selectedPhoneNumberRegistrationSubscriptionNumber;
 
 + (id)sharedInstance;
@@ -25,6 +25,7 @@
 - (void)dealloc;
 - (id)init;
 - (BOOL)nonBluetoothAllowedForBundleId:(id)arg1;
+- (void)silentlySetSelectedPhoneNumberRegistrationSubscriptionLabels:(id)arg1;
 - (BOOL)wifiAllowedForBundleId:(id)arg1;
 
 @end

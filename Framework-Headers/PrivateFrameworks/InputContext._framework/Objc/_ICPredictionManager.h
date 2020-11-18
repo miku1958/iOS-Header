@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <InputContext/_ICFeedbackAccepting-Protocol.h>
 #import <InputContext/_ICPredictionManaging-Protocol.h>
 
 @class NSArray, NSString, _ICResultCache;
 
-@interface _ICPredictionManager : NSObject <_ICPredictionManaging>
+@interface _ICPredictionManager : NSObject <_ICPredictionManaging, _ICFeedbackAccepting>
 {
     NSArray *_predictionSources;
     _ICResultCache *_cache;
@@ -28,6 +29,7 @@
 - (id)initWithPredictionSources:(id)arg1;
 - (id)lastCachedResultWithInitialCharacters:(id)arg1;
 - (void)predictedItemSelected:(id)arg1;
+- (void)provideFeedbackForString:(id)arg1 type:(unsigned char)arg2 style:(unsigned char)arg3;
 - (void)reset;
 - (id)searchForMeCardEmailAddresses;
 - (id)searchForMeCardRegions;

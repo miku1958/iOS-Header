@@ -30,6 +30,7 @@
 @property (nonatomic, getter=isUtteranceUserInteractionEnabled) BOOL utteranceUserInteractionEnabled; // @synthesize utteranceUserInteractionEnabled=_utteranceUserInteractionEnabled;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (double)desiredHeight;
 - (double)desiredTopPaddingBelowController:(id)arg1;
 - (void)siriDidDeactivate;

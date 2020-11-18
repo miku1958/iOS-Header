@@ -6,16 +6,26 @@
 
 #import <UIKit/UIScrollView.h>
 
+#import <VoiceMemos/UIGestureRecognizerDelegate-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface RCWaveformScrollView : UIScrollView
+@interface RCWaveformScrollView : UIScrollView <UIGestureRecognizerDelegate>
 {
     unsigned long long _ignoreContentOffsetChangesCount;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)beginIgnoringContentOffsetChanges;
 - (struct CGPoint)contentOffsetInPresentationLayer:(BOOL)arg1;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromView:(id)arg2 usingCurrentAnimatedPosition:(BOOL)arg3;
 - (void)endIgnoringContentOffsetChanges;
+- (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (void)setContentOffset:(struct CGPoint)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 

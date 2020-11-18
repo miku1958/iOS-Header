@@ -6,33 +6,75 @@
 
 #import <FileProvider/FPOperation.h>
 
-@class FPItemManager, FPStitchingSession, NSDictionary, NSString;
+#import <FileProvider/NSProgressReporting-Protocol.h>
 
-@interface FPActionOperation : FPOperation
+@class FPItem, FPItemManager, FPService, FPStitchingSession, NSArray, NSDictionary, NSProgress, NSString;
+@protocol FPXOperationService;
+
+@interface FPActionOperation : FPOperation <NSProgressReporting>
 {
-    NSDictionary *_itemsByProviderAndDomain;
+    NSDictionary *_itemsByDomainID;
     NSString *_providerIdentifier;
     BOOL _multiProviders;
-    CDUnknownBlockType _closeRemoteService;
-    unsigned long long *_logSection;
-    CDUnknownBlockType _actionCompletionBlock;
-    FPItemManager *_itemManager;
+    unsigned long long _logSection;
     FPStitchingSession *_stitcher;
+    unsigned long long _attemptedRecoveryCount;
+    BOOL _finishAfterPreflight;
+    BOOL _skipPreflight;
+    BOOL _setupRemoteOperationService;
+    BOOL _haveErrorRecovery;
+    BOOL _havePreflight;
+    BOOL _haveStitching;
+    CDUnknownBlockType _placeholdersCreationBlock;
+    CDUnknownBlockType _actionCompletionBlock;
+    NSProgress *_progress;
+    CDUnknownBlockType _errorRecoveryHandler;
+    FPItemManager *_itemManager;
+    FPService<FPXOperationService> *_remoteService;
+    NSString *_action;
+    NSArray *_sourceItemsToPreflight;
+    FPItem *_destinationItemToPreflight;
 }
 
+@property (copy, nonatomic) NSString *action; // @synthesize action=_action;
 @property (copy, nonatomic) CDUnknownBlockType actionCompletionBlock; // @synthesize actionCompletionBlock=_actionCompletionBlock;
-@property (copy, nonatomic) FPItemManager *itemManager; // @synthesize itemManager=_itemManager;
-@property (copy, nonatomic) FPStitchingSession *stitcher; // @synthesize stitcher=_stitcher;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) FPItem *destinationItemToPreflight; // @synthesize destinationItemToPreflight=_destinationItemToPreflight;
+@property (copy, nonatomic) CDUnknownBlockType errorRecoveryHandler; // @synthesize errorRecoveryHandler=_errorRecoveryHandler;
+@property (nonatomic) BOOL finishAfterPreflight; // @synthesize finishAfterPreflight=_finishAfterPreflight;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL haveErrorRecovery; // @synthesize haveErrorRecovery=_haveErrorRecovery;
+@property (nonatomic) BOOL havePreflight; // @synthesize havePreflight=_havePreflight;
+@property (nonatomic) BOOL haveStitching; // @synthesize haveStitching=_haveStitching;
+@property (strong, nonatomic) FPItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property (copy, nonatomic) CDUnknownBlockType placeholdersCreationBlock; // @synthesize placeholdersCreationBlock=_placeholdersCreationBlock;
+@property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
+@property (strong, nonatomic) FPService<FPXOperationService> *remoteService; // @synthesize remoteService=_remoteService;
+@property (readonly, nonatomic) id<FPXOperationService> remoteServiceProxy;
+@property (nonatomic) BOOL setupRemoteOperationService; // @synthesize setupRemoteOperationService=_setupRemoteOperationService;
+@property (nonatomic) BOOL skipPreflight; // @synthesize skipPreflight=_skipPreflight;
+@property (copy, nonatomic) NSArray *sourceItemsToPreflight; // @synthesize sourceItemsToPreflight=_sourceItemsToPreflight;
+@property (readonly, nonatomic) FPStitchingSession *stitcher;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_dispatchToSubOperations;
+- (void)_preflightAndRun;
+- (void)_runUserInteractionsPreflight:(CDUnknownBlockType)arg1;
+- (void)actionMain;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
-- (id)initWithItemsOfDifferentProviders:(id)arg1;
-- (id)initWithProvider:(id)arg1;
+- (id)initWithItemsOfDifferentProviders:(id)arg1 action:(id)arg2;
+- (id)initWithProvider:(id)arg1 action:(id)arg2;
 - (void)main;
-- (void)mainWithExtensionProxy:(id)arg1;
+- (id)operationDescription;
+- (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presendNotifications;
 - (id)replicateForItems:(id)arg1;
+- (void)resetStitcher;
+- (void)subclassPreflightWithCompletion:(CDUnknownBlockType)arg1;
+- (void)tryRecoveringFromError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)tryRecoveringFromPreflightErrors:(id)arg1 recoveryHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

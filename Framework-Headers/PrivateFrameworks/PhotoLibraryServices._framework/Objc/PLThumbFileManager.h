@@ -4,40 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <AssetsLibraryServices/PLThumbFileManagerCore.h>
 
-#import <PhotoLibraryServices/PLThumbPersistenceManager-Protocol.h>
-
-@class NSString;
-
-@interface PLThumbFileManager : NSObject <PLThumbPersistenceManager>
+@interface PLThumbFileManager : PLThumbFileManagerCore
 {
-    BOOL _readOnly;
-    int _shortSideLengthInPixels;
-    NSString *_path;
-    NSString *_filename;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isReadOnly;
-@property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
-@property (readonly) Class superclass;
-
-+ (void)deleteAllEntriesWithIdentifier:(id)arg1 basePath:(id)arg2;
-- (id)_debugDescription;
 - (BOOL)_writeImage:(id)arg1 forThumbIdentifier:(id)arg2;
-- (id)beginThumbnailSafePropertyUpdatesOnAsset:(id)arg1;
 - (struct CGImage *)createImageWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 decodeSession:(void *)arg3;
-- (void)dealloc;
-- (void)endThumbnailSafePropertyUpdatesOnAsset:(id)arg1 withToken:(id)arg2;
-- (id)imageDataWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 dataOffset:(int *)arg8;
-- (id)initWithBaseDirectory:(id)arg1 filename:(id)arg2 shortSideLengthInPixels:(int)arg3 readOnly:(BOOL)arg4;
-- (void)setImageForEntry:(id)arg1 withIdentifier:(id)arg2 orIndex:(unsigned long long)arg3 photoUUID:(id)arg4 options:(id)arg5;
-- (id)thumbnailPathForThumbIdentifier:(id)arg1;
-- (BOOL)usesThumbIdentifiers;
-- (BOOL)validateData:(id)arg1 withToken:(id)arg2;
+- (BOOL)setImageForEntry:(id)arg1 withIdentifier:(id)arg2 orIndex:(unsigned long long)arg3 photoUUID:(id)arg4 options:(id)arg5;
 
 @end
 

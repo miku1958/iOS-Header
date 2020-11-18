@@ -8,11 +8,11 @@
 
 @class NSMutableString, NSString, NSTextCheckingResult;
 
+__attribute__((visibility("hidden")))
 @interface PRTypologyCorrection : NSObject
 {
     NSString *_misspelling;
     struct _NSRange _misspelledRange;
-    NSString *_stringToCheck;
     NSTextCheckingResult *_correctionResult;
     NSMutableString *_logs;
     double _openTime;
@@ -26,7 +26,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)initWithString:(id)arg1 range:(struct _NSRange)arg2 inString:(id)arg3;
+- (id)initWithString:(id)arg1 range:(struct _NSRange)arg2;
 
 @end
 

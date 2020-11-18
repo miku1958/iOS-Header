@@ -8,6 +8,7 @@
 
 @protocol ISLivePhotoPlaybackBehaviorDelegate;
 
+__attribute__((visibility("hidden")))
 @interface ISLivePhotoPlaybackBehavior : ISBehavior
 {
     struct {
@@ -15,6 +16,8 @@
         BOOL respondsToDidBeginPlaying;
     } _delegateFlags;
     BOOL _immediatelyShowsPhotoWhenPlaybackEnds;
+    BOOL _hasBlurryTransition;
+    BOOL _isTransitioningToPhoto;
     BOOL __videoReadyToPlay;
     BOOL __preparing;
     double _photoTransitionDuration;
@@ -29,12 +32,15 @@
 @property (nonatomic, setter=_setReadyToPlayPlaybackID:) long long _readyToPlayPlaybackID; // @synthesize _readyToPlayPlaybackID=__readyToPlayPlaybackID;
 @property (nonatomic, getter=_isVideoReadyToPlay, setter=_setVideoReadyToPlay:) BOOL _videoReadyToPlay; // @synthesize _videoReadyToPlay=__videoReadyToPlay;
 @property (weak, nonatomic) id<ISLivePhotoPlaybackBehaviorDelegate> delegate; // @dynamic delegate;
+@property (readonly, nonatomic) BOOL hasBlurryTransition; // @synthesize hasBlurryTransition=_hasBlurryTransition;
 @property (readonly, nonatomic) BOOL immediatelyShowsPhotoWhenPlaybackEnds; // @synthesize immediatelyShowsPhotoWhenPlaybackEnds=_immediatelyShowsPhotoWhenPlaybackEnds;
+@property (readonly, nonatomic) BOOL isTransitioningToPhoto; // @synthesize isTransitioningToPhoto=_isTransitioningToPhoto;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 keyTime; // @synthesize keyTime=_keyTime;
 @property (readonly, nonatomic) double photoTransitionDuration; // @synthesize photoTransitionDuration=_photoTransitionDuration;
 @property (readonly, nonatomic) CDStruct_e83c9415 playbackTimeRange; // @synthesize playbackTimeRange=_playbackTimeRange;
 
 - (void)_didFinishPreparing;
+- (void)_handleDidFinish;
 - (void)_handleDidFinishPreroll;
 - (void)_handleDidSeekToBeginning;
 - (void)_prepareVideoForPlaybackIfNeeded;
@@ -44,7 +50,7 @@
 - (void)_transitionToVideoWithPlaybackID:(long long)arg1;
 - (void)activeDidChange;
 - (long long)behaviorType;
-- (id)initWithInitialLayoutInfo:(id)arg1 keyTime:(CDStruct_1b6d18a9)arg2 playbackTimeRange:(CDStruct_e83c9415)arg3 photoTransitionDuration:(double)arg4 immediatelyShowsPhotoWhenPlaybackEnds:(BOOL)arg5;
+- (id)initWithInitialLayoutInfo:(id)arg1 keyTime:(CDStruct_1b6d18a9)arg2 playbackTimeRange:(CDStruct_e83c9415)arg3 photoTransitionDuration:(double)arg4 immediatelyShowsPhotoWhenPlaybackEnds:(BOOL)arg5 hasBlurryTransition:(BOOL)arg6;
 - (void)startPlayback;
 - (void)videoDidPlayToEnd;
 - (void)videoWillPlayToEnd;

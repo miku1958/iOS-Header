@@ -25,11 +25,11 @@
 
 - (void).cxx_destruct;
 - (void)_done:(id)arg1;
-- (void)_setupNavigationItemWithTitle:(id)arg1 isPresented:(BOOL)arg2;
 - (void)dealloc;
 - (id)initForPrivacyPresented:(BOOL)arg1 webService:(id)arg2;
 - (void)loadView;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

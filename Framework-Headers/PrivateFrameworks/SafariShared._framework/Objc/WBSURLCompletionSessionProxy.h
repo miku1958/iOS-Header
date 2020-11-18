@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)_completionSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getBestMatchesForTypedString:(id)arg1 limit:(unsigned long long)arg2 forQueryID:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (void)userDidSelectCompletionMatch:(id)arg1 forTypedString:(id)arg2;
 

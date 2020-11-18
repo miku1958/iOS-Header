@@ -16,6 +16,7 @@
     BOOL _enabled;
     BOOL _headingEnabled;
     BOOL __monitoringLocation;
+    BOOL __didRequestLocation;
     CLLocation *_currentLocation;
     CLHeading *_currentHeading;
     NSObject<OS_dispatch_queue> *__authorizationQueue;
@@ -24,6 +25,7 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_authorizationQueue; // @synthesize _authorizationQueue=__authorizationQueue;
+@property (nonatomic, setter=_setDidRequestLocation:) BOOL _didRequestLocation; // @synthesize _didRequestLocation=__didRequestLocation;
 @property (readonly, nonatomic) NSMutableArray *_enqueuedAssetsWaitingForLocation; // @synthesize _enqueuedAssetsWaitingForLocation=__enqueuedAssetsWaitingForLocation;
 @property (readonly, nonatomic) CLLocationManager *_locationManager; // @synthesize _locationManager=__locationManager;
 @property (readonly, nonatomic, getter=_isMonitoringLocation) BOOL _monitoringLocation; // @synthesize _monitoringLocation=__monitoringLocation;
@@ -41,6 +43,7 @@
 + (id)locationMetadataForLocation:(id)arg1 heading:(id)arg2 device:(long long)arg3;
 - (void).cxx_destruct;
 - (void)_authorizeOrStartLocationManager;
+- (void)_resetDidRequestLocation;
 - (void)_startMonitoringLocationUpdates;
 - (void)_stopMonitoringLocationUpdates;
 - (void)_updateAssetsWaitingOnLocation;

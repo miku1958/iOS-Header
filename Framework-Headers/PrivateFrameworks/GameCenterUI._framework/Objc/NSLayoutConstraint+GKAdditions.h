@@ -7,6 +7,7 @@
 #import <Foundation/NSLayoutConstraint.h>
 
 @interface NSLayoutConstraint (GKAdditions)
++ (id)_gkBaselineConstraintsForViewsFontsLeadings:(id)arg1 superview:(id)arg2 options:(long long)arg3;
 + (id)_gkConstraintForView:(id)arg1 baselineAlignedUnderView:(id)arg2 offsetBy:(double)arg3;
 + (id)_gkConstraintForView:(id)arg1 centeredXInView:(id)arg2;
 + (id)_gkConstraintForView:(id)arg1 centeredYInView:(id)arg2;
@@ -21,5 +22,7 @@
 + (id)_gkConstraintsForViews:(id)arg1 alignedByAttribute:(long long)arg2;
 + (id)_gkConstraintsForViews:(id)arg1 contiguouslyLaidOutVertically:(BOOL)arg2 overlap:(double)arg3 withinView:(id)arg4 insets:(struct UIEdgeInsets)arg5;
 + (id)_gkConstraintsForViews:(id)arg1 contiguouslyLaidOutVertically:(BOOL)arg2 overlap:(double)arg3 withinView:(id)arg4 insets:(struct UIEdgeInsets)arg5 applyOrthogonalConstraints:(BOOL)arg6;
++ (void)_gkInstallEdgeConstraintsForView:(id)arg1 containedWithinParentView:(id)arg2;
++ (void)_gkInstallEdgeConstraintsForView:(id)arg1 containedWithinParentView:(id)arg2 margin:(double)arg3;
 @end
 

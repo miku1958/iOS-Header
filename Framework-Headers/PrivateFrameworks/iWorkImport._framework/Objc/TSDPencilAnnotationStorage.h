@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSKPencilAnnotationStorage-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSString, PKDrawing, TSKPKDrawing, TSPData, TSUColor, TSUImage;
+@class NSArray, NSData, NSDate, NSString, PKDrawing, TSKPKDrawing, TSPData, TSUBezierPath, TSUColor, TSUImage;
 @protocol TSKPencilAnnotationStorage;
 
 __attribute__((visibility("hidden")))
@@ -28,13 +28,15 @@ __attribute__((visibility("hidden")))
     TSKPKDrawing *_drawing;
     PKDrawing *_drawingForTextRecognition;
     TSPData *_encodedDrawingTSPData;
+    TSPData *_legacyEncodedDrawingTSPData;
     NSArray *_subStorages;
     id<TSKPencilAnnotationStorage> _parentStorage;
     double _pencilAnnotationDrawingScale;
-    struct CGSize _rasterizedImageSize;
     struct CGPoint _markupOffset;
     struct CGSize _originalAttachedSize;
     struct CGRect _unscaledBoundsOfStrokes;
+    struct CGRect _strokePointsFrame;
+    struct CGRect _renderedFrame;
 }
 
 @property (nonatomic) long long attachedLocation; // @synthesize attachedLocation=_attachedLocation;
@@ -51,7 +53,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isCalloutLine;
 @property (readonly, nonatomic) BOOL isCalloutMarginAnnotation;
 @property (readonly, nonatomic) BOOL isCalloutParentStorage;
-@property (readonly, nonatomic) BOOL isStretchableParagraphAnnotation;
+@property (readonly, nonatomic) NSData *legacyEncodedDrawing;
+@property (readonly, nonatomic) TSPData *legacyEncodedDrawingTSPData; // @synthesize legacyEncodedDrawingTSPData=_legacyEncodedDrawingTSPData;
 @property (nonatomic) struct CGPoint markupOffset; // @synthesize markupOffset=_markupOffset;
 @property (readonly, nonatomic) BOOL needsTextRecognition;
 @property (nonatomic) struct CGSize originalAttachedSize; // @synthesize originalAttachedSize=_originalAttachedSize;
@@ -61,19 +64,26 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double pencilAnnotationDrawingScale; // @synthesize pencilAnnotationDrawingScale=_pencilAnnotationDrawingScale;
 @property (nonatomic) double percentOfPAContainedInParentRep; // @synthesize percentOfPAContainedInParentRep=_percentOfPAContainedInParentRep;
 @property (readonly, nonatomic) TSUImage *rasterizedImage;
-@property (readonly, nonatomic) struct CGSize rasterizedImageSize; // @synthesize rasterizedImageSize=_rasterizedImageSize;
 @property (readonly, nonatomic) TSPData *rasterizedImageTSPData; // @synthesize rasterizedImageTSPData=_rasterizedImageTSPData;
+@property (nonatomic) struct CGRect renderedFrame; // @synthesize renderedFrame=_renderedFrame;
+@property (readonly, nonatomic) BOOL shouldInvertStretchAxis;
+@property (readonly, nonatomic) BOOL shouldResizeInOneDirection;
 @property (readonly, nonatomic) BOOL shouldResizeWithAnchor;
 @property (readonly, nonatomic) BOOL shouldShowAnchorRect;
 @property (readonly, nonatomic) BOOL shouldSplitAcrossAnchorRects;
+@property (readonly, nonatomic) BOOL shouldUseHeadTail;
+@property (nonatomic) struct CGRect strokePointsFrame; // @synthesize strokePointsFrame=_strokePointsFrame;
 @property (strong, nonatomic) NSArray *subStorages; // @synthesize subStorages=_subStorages;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long textBaselinesTouchedCount; // @synthesize textBaselinesTouchedCount=_textBaselinesTouchedCount;
 @property (readonly, nonatomic) long long toolType; // @synthesize toolType=_toolType;
 @property (nonatomic) struct CGRect unscaledBoundsOfStrokes; // @synthesize unscaledBoundsOfStrokes=_unscaledBoundsOfStrokes;
-@property (readonly, nonatomic) struct CGPath *unscaledPath;
+@property (readonly, nonatomic) TSUBezierPath *unscaledPath;
+@property (readonly, nonatomic) struct CGRect unscaledRenderedFrame;
+@property (readonly, nonatomic) struct CGRect unscaledStrokePointsFrame;
 @property (nonatomic) unsigned long long visibleStrokesCount; // @synthesize visibleStrokesCount=_visibleStrokesCount;
 
++ (id)p_rasterizedTSPDataForPencilAnnotationImage:(id)arg1 context:(id)arg2;
 - (void).cxx_destruct;
 - (struct CGRect)convertStrokeRectToUnscaledCanvas:(struct CGRect)arg1;
 - (struct CGPoint)convertStrokeToUnscaledCanvasPoint:(struct CGPoint)arg1;
@@ -84,13 +94,13 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initFromSOSWithContext:(id)arg1 markupOffset:(struct CGPoint)arg2 rasterizedImageTSPData:(id)arg3 attachedLocation:(long long)arg4 attachedType:(long long)arg5 encodedDrawing:(id)arg6 path:(struct CGPath *)arg7 unscaledBoundsOfStrokes:(struct CGRect)arg8 originalAttachedSize:(struct CGSize)arg9 percentOfPAContainedInParentRep:(double)arg10 textBaselinesTouchedCount:(unsigned long long)arg11 visibleStrokesCount:(unsigned long long)arg12 penColor:(id)arg13 toolType:(long long)arg14 compoundAnnotationType:(long long)arg15 subStorages:(id)arg16 creationDate:(id)arg17 pencilAnnotationDrawingScale:(double)arg18;
+- (id)initFromSOSWithContext:(id)arg1 markupOffset:(struct CGPoint)arg2 rasterizedImageTSPData:(id)arg3 attachedLocation:(long long)arg4 attachedType:(long long)arg5 encodedDrawing:(id)arg6 legacyEncodedDrawing:(id)arg7 path:(struct CGPath *)arg8 unscaledBoundsOfStrokes:(struct CGRect)arg9 originalAttachedSize:(struct CGSize)arg10 percentOfPAContainedInParentRep:(double)arg11 textBaselinesTouchedCount:(unsigned long long)arg12 visibleStrokesCount:(unsigned long long)arg13 penColor:(id)arg14 toolType:(long long)arg15 compoundAnnotationType:(long long)arg16 subStorages:(id)arg17 creationDate:(id)arg18 pencilAnnotationDrawingScale:(double)arg19 strokePointsFrame:(struct CGRect)arg20 renderedFrame:(struct CGRect)arg21;
 - (id)initWithContext:(id)arg1 drawing:(id)arg2 markupOffset:(struct CGPoint)arg3 rasterizedImage:(id)arg4 attachedLocation:(long long)arg5 attachedType:(long long)arg6 path:(struct CGPath *)arg7 unscaledBoundsOfStrokes:(struct CGRect)arg8 originalAttachedSize:(struct CGSize)arg9 percentOfPAContainedInParentRep:(double)arg10 textBaselinesTouchedCount:(unsigned long long)arg11 visibleStrokesCount:(unsigned long long)arg12 penColor:(id)arg13 toolType:(long long)arg14 compoundAnnotationType:(long long)arg15 subStorages:(id)arg16 creationDate:(id)arg17 pencilAnnotationDrawingScale:(double)arg18;
-- (id)initWithContext:(id)arg1 drawing:(id)arg2 markupOffset:(struct CGPoint)arg3 rasterizedImageTSPData:(id)arg4 attachedLocation:(long long)arg5 attachedType:(long long)arg6 encodedDrawing:(id)arg7 path:(struct CGPath *)arg8 unscaledBoundsOfStrokes:(struct CGRect)arg9 originalAttachedSize:(struct CGSize)arg10 percentOfPAContainedInParentRep:(double)arg11 textBaselinesTouchedCount:(unsigned long long)arg12 visibleStrokesCount:(unsigned long long)arg13 penColor:(id)arg14 toolType:(long long)arg15 compoundAnnotationType:(long long)arg16 subStorages:(id)arg17 creationDate:(id)arg18 pencilAnnotationDrawingScale:(double)arg19;
+- (id)initWithContext:(id)arg1 drawing:(id)arg2 markupOffset:(struct CGPoint)arg3 rasterizedImageTSPData:(id)arg4 attachedLocation:(long long)arg5 attachedType:(long long)arg6 encodedDrawing:(id)arg7 legacyEncodedDrawing:(id)arg8 path:(struct CGPath *)arg9 unscaledBoundsOfStrokes:(struct CGRect)arg10 originalAttachedSize:(struct CGSize)arg11 percentOfPAContainedInParentRep:(double)arg12 textBaselinesTouchedCount:(unsigned long long)arg13 visibleStrokesCount:(unsigned long long)arg14 penColor:(id)arg15 toolType:(long long)arg16 compoundAnnotationType:(long long)arg17 subStorages:(id)arg18 creationDate:(id)arg19 pencilAnnotationDrawingScale:(double)arg20 strokePointsFrame:(struct CGRect)arg21 renderedFrame:(struct CGRect)arg22;
 - (void)initializeTextRecognition;
+- (BOOL)isStretchableParagraphAnnotation;
 - (void)loadFromArchive:(const struct PencilAnnotationStorageArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (id)p_drawingFromLegacyEncodedData:(id)arg1 pencilAnnotationDrawingScale:(double)arg2;
 - (BOOL)p_isSubStorage;
 - (void)saveToArchiver:(id)arg1;
 

@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (CPLArchiver)
+- (id)cplDeepCopy;
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
 @end

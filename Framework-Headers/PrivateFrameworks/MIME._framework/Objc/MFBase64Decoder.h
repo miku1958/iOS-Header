@@ -23,9 +23,9 @@
 @property (readonly, nonatomic) unsigned long long unconverted; // @synthesize unconverted=_validBytes;
 
 + (BOOL)isValidBase64:(id)arg1;
+- (void).cxx_destruct;
 - (unsigned long long)_decodeBytes:(const char *)arg1 end:(const char *)arg2 into:(char *)arg3 length:(unsigned long long)arg4 startingAt:(unsigned long long)arg5 outEncodedOffset:(unsigned long long *)arg6;
 - (long long)appendData:(id)arg1;
-- (void)dealloc;
 - (void)done;
 - (id)initWithConsumers:(id)arg1;
 

@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (MSArrayUtilities)
+- (id)MSDSPAssetCollectionWithMasterFileHash:(id)arg1;
 - (id)MSDeepCopy;
 - (id)MSDeepCopyWithZone:(struct _NSZone *)arg1;
 - (id)MSMutableDeepCopy;

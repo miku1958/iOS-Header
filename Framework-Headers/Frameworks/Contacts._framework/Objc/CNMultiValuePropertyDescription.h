@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) BOOL isMultiValue;
 @property (readonly, nonatomic) BOOL isSingleValue;
 @property (readonly, nonatomic) Class labeledValueClass;
+@property (readonly, nonatomic) NSArray *managedLabels;
 @property (readonly, nonatomic) CDUnknownBlockType plistTransform;
 @property (readonly, nonatomic) NSArray *standardLabels;
 @property (readonly, nonatomic) Class valueClass;
@@ -39,6 +40,8 @@
 - (BOOL)isEqualIgnoringIdentifiersForContact:(id)arg1 other:(id)arg2;
 - (BOOL)isValidMultiValueValue:(id)arg1 error:(id *)arg2;
 - (BOOL)isValidValue:(id)arg1 error:(id *)arg2;
+- (id)localizedStringForLabel:(id)arg1;
+- (id)standardLabelsWithOptions:(unsigned long long)arg1;
 - (id)stringForIndexingForContact:(id)arg1;
 - (id)valueWithResetIdentifiers:(id)arg1;
 

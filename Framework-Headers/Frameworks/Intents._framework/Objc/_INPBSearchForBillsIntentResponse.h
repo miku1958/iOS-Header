@@ -15,9 +15,11 @@
 @interface _INPBSearchForBillsIntentResponse : PBCodable <_INPBSearchForBillsIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_bills;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *bills; // @synthesize bills=_bills;
 @property (readonly, nonatomic) unsigned long long billsCount;
 @property (readonly, copy) NSString *debugDescription;
@@ -26,12 +28,15 @@
 @property (readonly) Class superclass;
 
 + (Class)billsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addBills:(id)arg1;
 - (id)billsAtIndex:(unsigned long long)arg1;
 - (void)clearBills;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

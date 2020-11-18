@@ -6,24 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INApplicationContextProviding-Protocol.h>
 #import <Intents/INIntentHandlerProvidingPrivate-Protocol.h>
 #import <Intents/NSExtensionRequestHandling-Protocol.h>
 
-@class NSString;
+@class INExtensionContext, NSString;
 
-@interface _INExtension : NSObject <NSExtensionRequestHandling, INIntentHandlerProvidingPrivate, INApplicationContextProviding>
+@interface _INExtension : NSObject <NSExtensionRequestHandling, INIntentHandlerProvidingPrivate>
 {
+    INExtensionContext *_extensionContext;
 }
 
+@property (readonly, nonatomic) INExtensionContext *_extensionContext; // @synthesize _extensionContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)beginRequestWithExtensionContext:(id)arg1;
-- (id)currentApplicationContext;
 - (id)handlerForIntent:(id)arg1;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class EKCalendarItem, EKStructuredLocation, EKUILocationSearchModel, NSError;
+@class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSError;
 
 @protocol EKUILocationSearchModelDelegate
 - (EKCalendarItem *)calendarItemForSearchModel:(EKUILocationSearchModel *)arg1;
@@ -16,5 +16,6 @@
 - (void)locationSearchModel:(EKUILocationSearchModel *)arg1 selectedLocation:(EKStructuredLocation *)arg2 withError:(NSError *)arg3;
 - (void)mapSearchUpdated:(EKUILocationSearchModel *)arg1;
 - (void)recentsSearchUpdated:(EKUILocationSearchModel *)arg1;
+- (BOOL)shouldIncludeConferenceRoom:(EKUIConferenceRoom *)arg1;
 @end
 

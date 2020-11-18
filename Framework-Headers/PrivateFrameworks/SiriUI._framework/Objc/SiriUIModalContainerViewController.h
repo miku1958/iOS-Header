@@ -18,6 +18,7 @@
 @property (weak, nonatomic) id<SiriUIModalContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForStatusBarHidden;
 - (id)childViewControllerForStatusBarStyle;

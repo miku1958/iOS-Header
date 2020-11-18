@@ -8,6 +8,7 @@
 
 @class AVCaptureDevice, AVCaptureSessionConfiguration, AVRunLoopCondition, AVWeakReference, FigCaptureSessionConfiguration, NSError, NSHashTable, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVCaptureSessionInternal : NSObject
 {
     AVWeakReference *weakReference;
@@ -39,6 +40,7 @@
     BOOL adjustingVideoDeviceHDREnabled;
     BOOL resetVideoZoomFactorAndMinMaxFrameDurations;
     BOOL authorizedToUseCameraInMultipleForegroundAppLayout;
+    BOOL xctestAuthorizedToStealDevice;
 }
 
 @end

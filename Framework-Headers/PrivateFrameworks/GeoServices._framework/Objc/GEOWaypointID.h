@@ -8,30 +8,46 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOStructuredAddress, NSMutableArray, NSString, PBUnknownFields;
+@class GEOLatLng, GEOStructuredAddress, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOWaypointID : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned long long _muid;
-    unsigned long long _resultProviderId;
-    int _addressGeocodeAccuracyHint;
     GEOStructuredAddress *_addressHint;
     NSMutableArray *_formattedAddressLineHints;
     GEOLatLng *_locationHint;
+    unsigned long long _muid;
     NSString *_placeNameHint;
+    unsigned long long _resultProviderId;
+    int _addressGeocodeAccuracyHint;
     int _placeTypeHint;
     struct {
-        unsigned int muid:1;
-        unsigned int resultProviderId:1;
-        unsigned int addressGeocodeAccuracyHint:1;
-        unsigned int placeTypeHint:1;
-    } _has;
+        unsigned int has_muid:1;
+        unsigned int has_resultProviderId:1;
+        unsigned int has_addressGeocodeAccuracyHint:1;
+        unsigned int has_placeTypeHint:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_addressHint:1;
+        unsigned int read_formattedAddressLineHints:1;
+        unsigned int read_locationHint:1;
+        unsigned int read_placeNameHint:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_addressHint:1;
+        unsigned int wrote_formattedAddressLineHints:1;
+        unsigned int wrote_locationHint:1;
+        unsigned int wrote_muid:1;
+        unsigned int wrote_placeNameHint:1;
+        unsigned int wrote_resultProviderId:1;
+        unsigned int wrote_addressGeocodeAccuracyHint:1;
+        unsigned int wrote_placeTypeHint:1;
+    } _flags;
 }
 
-@property (nonatomic) int addressGeocodeAccuracyHint; // @synthesize addressGeocodeAccuracyHint=_addressGeocodeAccuracyHint;
-@property (strong, nonatomic) GEOStructuredAddress *addressHint; // @synthesize addressHint=_addressHint;
-@property (strong, nonatomic) NSMutableArray *formattedAddressLineHints; // @synthesize formattedAddressLineHints=_formattedAddressLineHints;
+@property (nonatomic) int addressGeocodeAccuracyHint;
+@property (strong, nonatomic) GEOStructuredAddress *addressHint;
+@property (strong, nonatomic) NSMutableArray *formattedAddressLineHints;
 @property (nonatomic) BOOL hasAddressGeocodeAccuracyHint;
 @property (readonly, nonatomic) BOOL hasAddressHint;
 @property (readonly, nonatomic) BOOL hasLocationHint;
@@ -39,20 +55,27 @@
 @property (readonly, nonatomic) BOOL hasPlaceNameHint;
 @property (nonatomic) BOOL hasPlaceTypeHint;
 @property (nonatomic) BOOL hasResultProviderId;
-@property (strong, nonatomic) GEOLatLng *locationHint; // @synthesize locationHint=_locationHint;
-@property (nonatomic) unsigned long long muid; // @synthesize muid=_muid;
-@property (strong, nonatomic) NSString *placeNameHint; // @synthesize placeNameHint=_placeNameHint;
-@property (nonatomic) int placeTypeHint; // @synthesize placeTypeHint=_placeTypeHint;
-@property (nonatomic) unsigned long long resultProviderId; // @synthesize resultProviderId=_resultProviderId;
+@property (strong, nonatomic) GEOLatLng *locationHint;
+@property (nonatomic) unsigned long long muid;
+@property (strong, nonatomic) NSString *placeNameHint;
+@property (nonatomic) int placeTypeHint;
+@property (nonatomic) unsigned long long resultProviderId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)formattedAddressLineHintType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsAddressGeocodeAccuracyHint:(id)arg1;
 - (int)StringAsPlaceTypeHint:(id)arg1;
+- (void)_addNoFlagsFormattedAddressLineHint:(id)arg1;
+- (void)_readAddressHint;
+- (void)_readFormattedAddressLineHints;
+- (void)_readLocationHint;
+- (void)_readPlaceNameHint;
 - (void)addFormattedAddressLineHint:(id)arg1;
 - (id)addressGeocodeAccuracyHintAsString:(int)arg1;
 - (void)clearFormattedAddressLineHints;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -63,6 +86,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeTypeHintAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

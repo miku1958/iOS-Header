@@ -6,7 +6,7 @@
 
 #import <IMDaemonCore/IMDCKAbstractSyncController.h>
 
-@class CKOperationConfiguration, CKRecordID, IMDCKDatabaseManager, IMDRecordZoneManager, NSDate, NSError, NSNumber, NSObject;
+@class CKRecordID, IMDCKDatabaseManager, IMDRecordZoneManager, NSDate, NSError, NSNumber, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface IMDCKExitManager : IMDCKAbstractSyncController
@@ -15,7 +15,6 @@
     NSDate *_exitRecordDate;
     NSError *_errorFetchingExitDate;
     CKRecordID *_exitRecordID;
-    CKOperationConfiguration *_exitConfigurtation;
     NSNumber *_saltZoneCreatedOverride;
     NSNumber *_subscriptionCreatedOverride;
     NSObject<OS_dispatch_queue> *_ckQueue;
@@ -26,7 +25,6 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
 @property (strong, nonatomic) IMDCKDatabaseManager *databaseManager; // @synthesize databaseManager=_databaseManager;
 @property (strong, nonatomic) NSError *errorFetchingExitDate; // @synthesize errorFetchingExitDate=_errorFetchingExitDate;
-@property (strong, nonatomic) CKOperationConfiguration *exitConfigurtation; // @synthesize exitConfigurtation=_exitConfigurtation;
 @property (strong, nonatomic) NSDate *exitRecordDate; // @synthesize exitRecordDate=_exitRecordDate;
 @property (strong, nonatomic) CKRecordID *exitRecordID; // @synthesize exitRecordID=_exitRecordID;
 @property (nonatomic) BOOL fetchedExitDateOnLaunch; // @synthesize fetchedExitDateOnLaunch=_fetchedExitDateOnLaunch;
@@ -51,6 +49,8 @@
 - (id)analyticZoneRecordID;
 - (void)dealloc;
 - (void)deleteExitRecordWithCompletion:(CDUnknownBlockType)arg1;
+- (long long)derivedQualityOfService;
+- (id)exitConfiguration;
 - (void)exitRecordDateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleNotificationForSubscriptionID:(id)arg1;
 - (id)init;

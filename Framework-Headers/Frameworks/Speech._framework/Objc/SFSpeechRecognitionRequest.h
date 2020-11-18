@@ -32,6 +32,7 @@
 @property (copy, nonatomic) NSArray *contextualStrings; // @synthesize contextualStrings=_contextualStrings;
 @property (nonatomic) BOOL detectMultipleUtterances; // @synthesize detectMultipleUtterances=_detectMultipleUtterances;
 @property (copy, nonatomic) NSString *interactionIdentifier; // @synthesize interactionIdentifier=_interactionIdentifier;
+@property (nonatomic) BOOL requiresOnDeviceRecognition;
 @property (nonatomic) BOOL shouldReportPartialResults; // @synthesize shouldReportPartialResults=_shouldReportPartialResults;
 @property (nonatomic) long long taskHint; // @synthesize taskHint=_taskHint;
 

@@ -17,6 +17,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (BOOL)_af_isSameDayAsDate:(id)arg1;
 - (void)af_enumerateDigestibleChunksWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (BOOL)af_isToday;
+- (BOOL)af_isTomorrow;
 @end
 

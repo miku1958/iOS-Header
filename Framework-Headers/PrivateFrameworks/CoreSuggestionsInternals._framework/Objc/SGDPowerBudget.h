@@ -28,6 +28,7 @@
 - (void)dealloc;
 - (void)doDiscretionaryWork:(CDUnknownBlockType)arg1 orElse:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)throttlingState;
 
 @end
 

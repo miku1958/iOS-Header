@@ -18,6 +18,7 @@
     id<INPortableImageLoaderHelping> _helper;
 }
 
+@property (copy, nonatomic, setter=_setHelperClassName:) NSString *_helperClassName; // @synthesize _helperClassName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

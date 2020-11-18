@@ -21,13 +21,13 @@
 + (id)newTurnBasedContextWithPreviousTurnID:(struct NSUUID *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)createNextTurnBasedContext;
 - (void)emitInstrumentation:(id)arg1;
 - (void)emitInstrumentation:(id)arg1 machAbsoluteTime:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTurnIdentifier:(struct NSUUID *)arg1;
+- (id)nextTurnBasedContext;
 
 @end
 

@@ -23,7 +23,7 @@
 @property (nonatomic, getter=isAccessiblityConstraintsEnabled) BOOL accessiblityConstraintsEnabled; // @synthesize accessiblityConstraintsEnabled=_accessiblityConstraintsEnabled;
 @property (nonatomic, getter=isConstraintsLoaded) BOOL constraintsLoaded; // @synthesize constraintsLoaded=_constraintsLoaded;
 @property (strong, nonatomic) UIColor *foregroundColor;
-@property (readonly, nonatomic) UIView *foregroundView; // @synthesize foregroundView=_foregroundView;
+@property (strong, nonatomic) UIView *foregroundView; // @synthesize foregroundView=_foregroundView;
 @property (readonly, nonatomic) NSLayoutConstraint *foregroundViewBottomAnchorLayoutConstraint; // @synthesize foregroundViewBottomAnchorLayoutConstraint=_foregroundViewBottomAnchorLayoutConstraint;
 @property (readonly, nonatomic) NSLayoutConstraint *foregroundViewLeadingAnchorLayoutConstraint; // @synthesize foregroundViewLeadingAnchorLayoutConstraint=_foregroundViewLeadingAnchorLayoutConstraint;
 @property (nonatomic, getter=isForegroundViewLoaded) BOOL foregroundViewLoaded; // @synthesize foregroundViewLoaded=_foregroundViewLoaded;
@@ -42,7 +42,6 @@
 - (void)layoutSubviews;
 - (void)loadConstraints;
 - (void)loadContentView;
-- (void)setForegroundView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)unloadConstraints;
 - (void)updateConstraints;

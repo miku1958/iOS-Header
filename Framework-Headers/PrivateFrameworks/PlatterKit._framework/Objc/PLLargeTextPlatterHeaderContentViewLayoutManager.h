@@ -14,6 +14,7 @@
     NSStringDrawingContext *_drawingContext;
 }
 
++ (double)contentBaselineToBoundsBottomWithFont:(id)arg1 boundsWidth:(double)arg2 scale:(double)arg3;
 - (void).cxx_destruct;
 - (double)_dateLabelBaselineOffset;
 - (struct CGRect)_dateLabelBoundsForSize:(struct CGSize)arg1;

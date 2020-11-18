@@ -8,7 +8,7 @@
 
 #import <Network/NWPrettyDescription-Protocol.h>
 
-@class NSString, NWInterface;
+@class NSString;
 @protocol OS_nw_browse_descriptor;
 
 @interface NWBrowseDescriptor : NSObject <NWPrettyDescription>
@@ -16,7 +16,8 @@
     NSObject<OS_nw_browse_descriptor> *_internalDescriptor;
 }
 
-@property (strong, nonatomic) NWInterface *interface;
+@property (readonly, nonatomic) NSString *bonjourServiceDomain;
+@property (readonly, nonatomic) NSString *bonjourServiceType;
 @property (strong, nonatomic) NSObject<OS_nw_browse_descriptor> *internalDescriptor; // @synthesize internalDescriptor=_internalDescriptor;
 @property (readonly, copy, nonatomic) NSString *privateDescription;
 

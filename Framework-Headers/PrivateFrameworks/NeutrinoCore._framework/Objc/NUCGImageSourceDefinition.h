@@ -17,6 +17,7 @@
 - (id)generateSourceNodeWithIdentifier:(id)arg1 error:(out id *)arg2;
 - (id)init;
 - (id)initWithCGImageSource:(struct CGImageSource *)arg1;
+- (long long)mediaType;
 
 @end
 

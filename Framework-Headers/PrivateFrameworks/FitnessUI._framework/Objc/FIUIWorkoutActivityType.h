@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isCategorizedOtherWorkout;
 @property (readonly, nonatomic) BOOL isIndoor;
+@property (readonly, nonatomic) BOOL isWaterLockActivity;
 @property (readonly, nonatomic) HKQuantity *lapLength;
 @property (readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) long long swimmingLocationType;
@@ -31,10 +32,14 @@
 + (id)activityTypeWithHKWorkoutActivityTypeIdentifier:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
 + (id)activityTypeWithHKWorkoutActivityTypeIdentifier:(unsigned long long)arg1 isIndoor:(BOOL)arg2 metadata:(id)arg3;
 + (id)activityTypeWithWorkout:(id)arg1;
++ (id)defaultActivityTypesWithIsWheelchairUser:(BOOL)arg1 isSwimmingSupported:(BOOL)arg2;
 + (unsigned long long)mapWheelchairUserActivityType:(unsigned long long)arg1 isWheelchairUser:(BOOL)arg2;
++ (id)optimizedActivityTypesWithIsWheelchairUser:(BOOL)arg1 isSwimmingSupported:(BOOL)arg2;
 + (id)possibleActivityTypesForIdentifier:(unsigned long long)arg1 locationType:(long long)arg2 swimmingLocationType:(long long)arg3 wheelchairUser:(BOOL)arg4;
-+ (id)supportedActivityTypesWithIsWheelchairUser:(BOOL)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)swimmingOptimizedActivityTypes;
++ (id)swimmingOtherActivityTypes;
++ (id)unsupportedActivityTypesWithIsWheelchairUser:(BOOL)arg1 isSwimmingSupported:(BOOL)arg2;
 + (id)wheelchairActivityTypes;
 - (void).cxx_destruct;
 - (id)activityTypeByAddingLapLength:(double)arg1;

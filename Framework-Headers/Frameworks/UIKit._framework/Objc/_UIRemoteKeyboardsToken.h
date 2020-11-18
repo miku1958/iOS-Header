@@ -6,13 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface _UIRemoteKeyboardsToken : NSObject
 {
     int _identifier;
+    NSString *canvasIdentifier;
 }
 
+@property (copy, nonatomic) NSString *canvasIdentifier; // @synthesize canvasIdentifier;
+
 + (id)uniqueToken;
+- (void)dealloc;
+- (id)description;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 

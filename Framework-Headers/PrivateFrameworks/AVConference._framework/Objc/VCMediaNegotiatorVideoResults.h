@@ -17,13 +17,19 @@ __attribute__((visibility("hidden")))
     VCVideoRuleCollections *_videoRuleCollections;
     NSMutableDictionary *_featureStrings;
     NSMutableDictionary *_parameterSets;
+    unsigned int _customVideoWidth;
+    unsigned int _customVideoHeight;
+    unsigned int _tilesPerFrame;
 }
 
+@property (nonatomic) unsigned int customVideoHeight; // @synthesize customVideoHeight=_customVideoHeight;
+@property (nonatomic) unsigned int customVideoWidth; // @synthesize customVideoWidth=_customVideoWidth;
 @property (strong, nonatomic) NSDictionary *featureStrings; // @synthesize featureStrings=_featureStrings;
 @property (nonatomic) BOOL isRTCPFBEnabled; // @synthesize isRTCPFBEnabled=_isRTCPFBEnabled;
 @property (nonatomic) BOOL isSupported; // @synthesize isSupported=_isSupported;
 @property (strong, nonatomic) NSDictionary *parameterSets; // @synthesize parameterSets=_parameterSets;
 @property (nonatomic) unsigned int remoteSSRC; // @synthesize remoteSSRC=_remoteSSRC;
+@property (nonatomic) unsigned int tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
 @property (readonly, nonatomic) VCVideoRuleCollections *videoRuleCollections; // @synthesize videoRuleCollections=_videoRuleCollections;
 
 - (void)addFeatureString:(id)arg1 key:(id)arg2;

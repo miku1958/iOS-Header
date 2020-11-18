@@ -28,7 +28,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly, nonatomic) BOOL requiresQueryId;
 @property (strong, nonatomic) _CPResultSectionForFeedback *section; // @synthesize section=_section;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;

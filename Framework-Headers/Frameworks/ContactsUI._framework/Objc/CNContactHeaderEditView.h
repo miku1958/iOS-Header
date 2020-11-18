@@ -6,56 +6,40 @@
 
 #import <ContactsUI/CNContactHeaderView.h>
 
-#import <ContactsUI/CNPropertyGroupItemDelegate-Protocol.h>
-#import <ContactsUI/UITableViewDataSource-Protocol.h>
-#import <ContactsUI/UITableViewDelegate-Protocol.h>
+@class NSLayoutConstraint, UIButton;
 
-@class NSArray, NSLayoutConstraint, NSString, UITableView;
-@protocol CNPropertyCellDelegate;
-
-@interface CNContactHeaderEditView : CNContactHeaderView <UITableViewDelegate, UITableViewDataSource, CNPropertyGroupItemDelegate>
+@interface CNContactHeaderEditView : CNContactHeaderView
 {
-    UITableView *_editingTable;
-    BOOL _pinToReadableContentGuide;
     BOOL _allowsEditPhoto;
-    NSArray *_editingGroups;
-    id<CNPropertyCellDelegate> _namePropertyDelegate;
-    NSLayoutConstraint *_tableToTrailingEdgeConstraint;
-    NSLayoutConstraint *_tableToTrailingReadableGuideConstraint;
+    UIButton *_editButton;
+    NSLayoutConstraint *_editButtonHeightConstraint;
+    struct CGSize _maxButtonSize;
 }
 
 @property (nonatomic) BOOL allowsEditPhoto; // @synthesize allowsEditPhoto=_allowsEditPhoto;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSArray *editingGroups; // @synthesize editingGroups=_editingGroups;
-@property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<CNPropertyCellDelegate> namePropertyDelegate; // @synthesize namePropertyDelegate=_namePropertyDelegate;
-@property (nonatomic) BOOL pinToReadableContentGuide; // @synthesize pinToReadableContentGuide=_pinToReadableContentGuide;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSLayoutConstraint *tableToTrailingEdgeConstraint; // @synthesize tableToTrailingEdgeConstraint=_tableToTrailingEdgeConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *tableToTrailingReadableGuideConstraint; // @synthesize tableToTrailingReadableGuideConstraint=_tableToTrailingReadableGuideConstraint;
+@property (strong, nonatomic) UIButton *editButton; // @synthesize editButton=_editButton;
+@property (strong, nonatomic) NSLayoutConstraint *editButtonHeightConstraint; // @synthesize editButtonHeightConstraint=_editButtonHeightConstraint;
+@property (nonatomic) struct CGSize maxButtonSize; // @synthesize maxButtonSize=_maxButtonSize;
 
-+ (id)contactHeaderViewWithContact:(id)arg1 editingGroups:(id)arg2 shouldAllowTakePhotoAction:(BOOL)arg3 delegate:(id)arg4;
-+ (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3;
++ (id)contactHeaderViewWithContact:(id)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 monogramOnly:(BOOL)arg3 delegate:(id)arg4;
++ (id)contactHeaderViewWithContact:(id)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 showingNavBar:(BOOL)arg3 monogramOnly:(BOOL)arg4 delegate:(id)arg5;
++ (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3 monogramOnly:(BOOL)arg4;
 - (void).cxx_destruct;
-- (id)_phoneticNameForValue:(id)arg1 property:(id)arg2;
-- (BOOL)becomeFirstResponder;
+- (void)calculateLabelSizesIfNeeded;
+- (void)editButtonPressed;
 - (BOOL)hasPhoto;
-- (id)initWithContact:(id)arg1 editingGroups:(id)arg2 frame:(struct CGRect)arg3 shouldAllowTakePhotoAction:(BOOL)arg4 delegate:(id)arg5;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 shouldAllowTakePhotoAction:(BOOL)arg3 delegate:(id)arg4 showingNavBar:(BOOL)arg5 monogramOnly:(BOOL)arg6;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 shouldAllowTakePhotoAction:(BOOL)arg3 monogramOnly:(BOOL)arg4 delegate:(id)arg5;
+- (double)maxHeight;
 - (BOOL)photoIsModified;
-- (void)propertyItem:(id)arg1 willChangeValue:(id)arg2;
-- (void)reloadDataPreservingChanges:(BOOL)arg1;
 - (void)saveContactPhoto;
-- (id)selectEditingGroupAtIndex:(unsigned long long)arg1;
-- (void)setBackgroundColor:(id)arg1;
-- (void)setEditingGroups:(id)arg1 withUpdate:(BOOL)arg2;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (void)setAllowsEditPhoto:(BOOL)arg1 preservingChanges:(BOOL)arg2;
 - (void)updateConstraints;
+- (void)updateContactWithEditedPropertyItem:(id)arg1;
+- (void)updateEditButtonTitle;
 - (void)updateFontSizes;
+- (void)updateSizeDependentAttributes;
+- (void)updateWithContacts:(id)arg1;
 
 @end
 

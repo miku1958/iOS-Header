@@ -38,6 +38,7 @@
 
 + (CDUnknownBlockType)defaultItemComparator;
 + (id)filterSections:(id)arg1 toDisplayedItems:(id)arg2;
++ (CDUnknownBlockType)itemResultManualSortComparator;
 + (id)na_identity;
 - (void).cxx_destruct;
 - (id)_createCopyMutable:(BOOL)arg1;

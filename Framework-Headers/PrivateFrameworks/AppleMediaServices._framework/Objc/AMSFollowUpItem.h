@@ -47,6 +47,7 @@
 - (id)generateItem;
 - (id)initWithFollowUpItem:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 account:(id)arg2 priority:(long long)arg3;
+- (id)postMetricsWithBag:(id)arg1;
 - (id)postMetricsWithBagContract:(id)arg1;
 - (BOOL)shouldOverwriteItem:(id)arg1;
 

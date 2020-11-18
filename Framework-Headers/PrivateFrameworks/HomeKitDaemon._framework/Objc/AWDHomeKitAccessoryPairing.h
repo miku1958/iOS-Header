@@ -14,42 +14,58 @@
 {
     unsigned long long _timestamp;
     int _certified;
+    int _credentialType;
     unsigned int _duration;
     int _errorCode;
     unsigned int _retryCount;
     int _transportType;
     AWDHomeKitVendorInformation *_vendorDetails;
     BOOL _isAdd;
+    BOOL _isAddWithOwnershipProof;
     BOOL _isAddedViaWAC;
+    BOOL _isNetworkRouterAdd;
+    BOOL _isNetworkRouterReplace;
     BOOL _isSecureWAC;
     struct {
         unsigned int timestamp:1;
         unsigned int certified:1;
+        unsigned int credentialType:1;
         unsigned int duration:1;
         unsigned int errorCode:1;
         unsigned int retryCount:1;
         unsigned int transportType:1;
         unsigned int isAdd:1;
+        unsigned int isAddWithOwnershipProof:1;
         unsigned int isAddedViaWAC:1;
+        unsigned int isNetworkRouterAdd:1;
+        unsigned int isNetworkRouterReplace:1;
         unsigned int isSecureWAC:1;
     } _has;
 }
 
 @property (nonatomic) int certified; // @synthesize certified=_certified;
+@property (nonatomic) int credentialType; // @synthesize credentialType=_credentialType;
 @property (nonatomic) unsigned int duration; // @synthesize duration=_duration;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
 @property (nonatomic) BOOL hasCertified;
+@property (nonatomic) BOOL hasCredentialType;
 @property (nonatomic) BOOL hasDuration;
 @property (nonatomic) BOOL hasErrorCode;
 @property (nonatomic) BOOL hasIsAdd;
+@property (nonatomic) BOOL hasIsAddWithOwnershipProof;
 @property (nonatomic) BOOL hasIsAddedViaWAC;
+@property (nonatomic) BOOL hasIsNetworkRouterAdd;
+@property (nonatomic) BOOL hasIsNetworkRouterReplace;
 @property (nonatomic) BOOL hasIsSecureWAC;
 @property (nonatomic) BOOL hasRetryCount;
 @property (nonatomic) BOOL hasTimestamp;
 @property (nonatomic) BOOL hasTransportType;
 @property (readonly, nonatomic) BOOL hasVendorDetails;
 @property (nonatomic) BOOL isAdd; // @synthesize isAdd=_isAdd;
+@property (nonatomic) BOOL isAddWithOwnershipProof; // @synthesize isAddWithOwnershipProof=_isAddWithOwnershipProof;
 @property (nonatomic) BOOL isAddedViaWAC; // @synthesize isAddedViaWAC=_isAddedViaWAC;
+@property (nonatomic) BOOL isNetworkRouterAdd; // @synthesize isNetworkRouterAdd=_isNetworkRouterAdd;
+@property (nonatomic) BOOL isNetworkRouterReplace; // @synthesize isNetworkRouterReplace=_isNetworkRouterReplace;
 @property (nonatomic) BOOL isSecureWAC; // @synthesize isSecureWAC=_isSecureWAC;
 @property (nonatomic) unsigned int retryCount; // @synthesize retryCount=_retryCount;
 @property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
@@ -58,10 +74,12 @@
 
 - (void).cxx_destruct;
 - (int)StringAsCertified:(id)arg1;
+- (int)StringAsCredentialType:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (id)certifiedAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)credentialTypeAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

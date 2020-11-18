@@ -78,6 +78,7 @@
 - (BOOL)distillCustomColors;
 - (BOOL)distillCustomFontSizes;
 - (BOOL)distillCustomFonts;
+- (BOOL)distillLocalizationss;
 - (BOOL)distillNamedElements;
 - (BOOL)distillRenditions;
 - (BOOL)distillThemeAppearances;

@@ -6,9 +6,24 @@
 
 #import <UIKit/UIViewController.h>
 
-@interface UIViewController (HUPresentation)
+#import <HomeUI/HUItemPresentationContainer-Protocol.h>
+
+@class HFItem, NSString;
+
+@interface UIViewController (HUPresentation) <HUItemPresentationContainer>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HFItem *hu_presentedItem;
+@property (readonly, nonatomic) HFItem *hu_topmostPresentedItem;
+@property (readonly) Class superclass;
+
+- (id)hu_delegateForModalPresentation;
 - (id)hu_dismissViewControllerAnimated:(BOOL)arg1;
 - (id)hu_performDismissalRequest:(id)arg1;
 - (id)hu_performPresentationRequest:(id)arg1;
+- (id)hu_pocketedContainerViewController;
+- (id)hu_presentPreloadableViewController:(id)arg1 animated:(BOOL)arg2;
 @end
 

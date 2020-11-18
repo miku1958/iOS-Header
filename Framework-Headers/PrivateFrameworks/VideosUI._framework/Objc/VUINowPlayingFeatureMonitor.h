@@ -64,11 +64,10 @@ __attribute__((visibility("hidden")))
 - (id)_activeFeatures;
 - (void)_addObservedToken:(id)arg1 forFeature:(id)arg2;
 - (void)_addTimeObservingForFeature:(id)arg1 withStartTime:(double)arg2 andHandler:(CDUnknownBlockType)arg3;
-- (void)_cancelFeatureTimersIfNeeded;
 - (void)_cancelTimerForFeature:(id)arg1;
 - (void)_cleanUpEverything;
 - (void)_cleanupFeature:(id)arg1;
-- (void)_deactivateFeature:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_deactivateFeature:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_hasActiveFeaturesInArray:(id)arg1;
 - (BOOL)_hasAnyActiveFeature;
 - (BOOL)_isElapsedTimeWithinFeatureTimeWindow:(id)arg1;
@@ -97,16 +96,18 @@ __attribute__((visibility("hidden")))
 - (void)_startObservingElapsedTime;
 - (id)_timeBoundFeatures;
 - (void)_unregisterPlaybackStateNotification;
+- (void)_updateBoundaryObserverForFeature:(id)arg1 change:(id)arg2;
 - (id)activeFeatureForType:(unsigned long long)arg1;
 - (void)addFeature:(id)arg1;
 - (void)addFeature:(id)arg1 withDependencyToPreferredFeatures:(id)arg2;
+- (void)deactivateFeature:(id)arg1 animated:(BOOL)arg2;
 - (void)dealloc;
 - (void)enableUIMode:(long long)arg1 enabled:(BOOL)arg2;
-- (void)evaluateFeature:(id)arg1;
 - (id)featuresForType:(unsigned long long)arg1;
 - (id)init;
 - (BOOL)mediaPlaybackManager:(id)arg1 shouldEnableUIModeImplicitly:(long long)arg2;
 - (void)mediaPlaybackManager:(id)arg1 shouldHideUI:(BOOL)arg2 animated:(BOOL)arg3 animations:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeFeature:(id)arg1;
 - (void)removeFeaturesMatching:(id)arg1;
 

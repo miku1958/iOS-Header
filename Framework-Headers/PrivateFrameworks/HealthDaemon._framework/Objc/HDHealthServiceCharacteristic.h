@@ -40,6 +40,7 @@
 - (void).cxx_destruct;
 - (id)_init;
 - (id)getBinaryValueWithError:(id *)arg1;
+- (void)unitTest_setUpdateTime:(id)arg1;
 
 @end
 

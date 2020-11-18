@@ -4,9 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
-
 @protocol RKPolarityDataProvider
-- (struct __LSMMap *)polarityMapForLanguageID:(NSString *)arg1;
 @end
 

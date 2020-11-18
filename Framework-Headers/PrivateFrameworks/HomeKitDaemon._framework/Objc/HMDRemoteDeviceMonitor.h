@@ -11,33 +11,32 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class HMDAccountRegistry, HMFNetMonitor, HMFTimer, IDSService, NSArray, NSMapTable, NSObject, NSString;
-@protocol HMDRemoteDeviceMonitorDelegate, OS_dispatch_queue;
+@class HMDAccountRegistry, HMFNetMonitor, HMFTimer, IDSService, NSArray, NSMapTable, NSObject, NSOperationQueue, NSString;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDRemoteDeviceMonitor : HMFObject <HMFLogging, HMFNetMonitorDelegate, HMFTimerDelegate, IDSServiceDelegate>
 {
+    id<HMFLocking> _lock;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSOperationQueue *_operationQueue;
     NSMapTable *_devices;
     BOOL _reachable;
-    id<HMDRemoteDeviceMonitorDelegate> _delegate;
+    BOOL _started;
     HMDAccountRegistry *_accountRegistry;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     IDSService *_service;
     HMFNetMonitor *_netMonitor;
     HMFTimer *_deviceHealthTimer;
 }
 
 @property (readonly, nonatomic) HMDAccountRegistry *accountRegistry; // @synthesize accountRegistry=_accountRegistry;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<HMDRemoteDeviceMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) HMFTimer *deviceHealthTimer; // @synthesize deviceHealthTimer=_deviceHealthTimer;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMFNetMonitor *netMonitor; // @synthesize netMonitor=_netMonitor;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (readonly, nonatomic) IDSService *service; // @synthesize service=_service;
+@property (readonly, getter=isStarted) BOOL started; // @synthesize started=_started;
 @property (readonly) Class superclass;
 @property (readonly) NSArray *unreachableDevices;
 
@@ -48,10 +47,10 @@
 - (void)_handleGlobalReachabilityChange;
 - (void)_sendPingToDevice:(id)arg1;
 - (void)_startActivelyMonitoringDevice:(id)arg1;
+- (void)_startMonitoringDevice:(id)arg1;
 - (void)_stopActivelyMonitoringDevice:(id)arg1;
 - (void)confirmDevice:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (id)deviceInformationForDevice:(id)arg1;
 - (id)devices;
 - (id)dumpState;
 - (void)handleAccountRemoved:(id)arg1;
@@ -64,9 +63,10 @@
 - (void)networkMonitorIsReachable:(id)arg1;
 - (void)networkMonitorIsUnreachable:(id)arg1;
 - (void)notifyDeviceReachabilityChange:(BOOL)arg1 forDevice:(id)arg2;
-- (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5 context:(id)arg6;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
+- (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
 - (void)setReachable:(BOOL)arg1;
+- (void)setStarted:(BOOL)arg1;
 - (void)start;
 - (void)startMonitoringDevice:(id)arg1;
 - (void)stopMonitoringDevice:(id)arg1;

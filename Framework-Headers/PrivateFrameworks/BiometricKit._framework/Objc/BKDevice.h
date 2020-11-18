@@ -30,6 +30,7 @@
 - (id)createPresenceDetectOperationWithError:(id *)arg1;
 - (BOOL)dropAllUnlockTokensWithError:(id *)arg1;
 - (id)effectiveProtectedConfigurationForUser:(unsigned int)arg1 error:(id *)arg2;
+- (BOOL)extendedBioLockoutState:(long long *)arg1 forUser:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)forceBioLockoutForAllUsersWithError:(id *)arg1;
 - (BOOL)forceBioLockoutForUser:(unsigned int)arg1 error:(id *)arg2;
 - (BOOL)forceBioLockoutIfLockedForUser:(unsigned int)arg1 error:(id *)arg2;

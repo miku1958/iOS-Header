@@ -8,14 +8,14 @@
 
 #import <HMFoundation/NSNetServiceBrowserDelegate-Protocol.h>
 
-@class HMFUnfairLock, NSArray, NSHashTable, NSNetServiceBrowser, NSObject, NSString;
+@class HMFUnfairLock, NSArray, NSHashTable, NSMutableOrderedSet, NSNetServiceBrowser, NSObject, NSString;
 @protocol HMFNetServiceBrowserDelegate, OS_dispatch_queue;
 
 @interface HMFNetServiceBrowser : HMFObject <NSNetServiceBrowserDelegate>
 {
     HMFUnfairLock *_lock;
-    NSHashTable *_cachedNetServices;
-    BOOL _shouldCache;
+    NSHashTable *_netServices;
+    NSMutableOrderedSet *_cachedNetServices;
     BOOL _browsing;
     id<HMFNetServiceBrowserDelegate> _delegate;
     NSString *_domain;
@@ -36,7 +36,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSNetServiceBrowser *internal; // @synthesize internal=_internal;
 @property (readonly, copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
-@property (nonatomic) BOOL shouldCache; // @synthesize shouldCache=_shouldCache;
+@property (nonatomic) BOOL shouldCache;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
@@ -55,7 +55,6 @@
 - (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2 moreComing:(BOOL)arg3;
 - (void)netServiceBrowserDidStopSearch:(id)arg1;
 - (void)netServiceBrowserWillSearch:(id)arg1;
-- (void)removeNetServiceFromCache:(id)arg1;
 - (id)shortDescription;
 - (void)startBrowsingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopBrowsing;

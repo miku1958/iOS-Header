@@ -14,13 +14,17 @@ __attribute__((visibility("hidden")))
     TSKFormat *_format;
 }
 
-@property (readonly, nonatomic) TSKFormat *format; // @synthesize format=_format;
-
++ (id)objectWithFormat:(id)arg1 refCount:(unsigned int)arg2;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 key:(unsigned int)arg2 archiver:(id)arg3;
+- (unsigned long long)estimateByteSize;
+- (id)format;
 - (unsigned long long)hash;
 - (id)initObjectWithFormat:(id)arg1 refCount:(unsigned int)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)p_setUpFormat:(id)arg1;
 
 @end
 

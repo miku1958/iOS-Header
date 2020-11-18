@@ -49,6 +49,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isInMainScope;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
+- (id)redactedDescription;
 - (id)safeFilename;
 
 @end

@@ -25,13 +25,13 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (struct CGSize)dimensions;
 - (float)estimatedDataRate;
-- (void)finalize;
 - (id)formatDescriptions;
 - (unsigned long long)hash;
 - (BOOL)isEnabled;
 - (BOOL)isEqual:(id)arg1;
 - (id)mediaType;
 - (struct CGSize)naturalSize;
+- (float)peakDataRate;
 - (struct CGAffineTransform)preferredTransform;
 - (CDStruct_1b6d18a9)samplePresentationTimeForTrackTime:(CDStruct_1b6d18a9)arg1;
 - (CDStruct_e83c9415)timeRange;

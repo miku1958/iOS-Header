@@ -12,6 +12,7 @@
 + (id)mt_intentForAlarmDisable:(id)arg1;
 + (id)mt_intentForAlarmEnable:(id)arg1;
 + (id)mt_intentForAlarmUpdate:(id)arg1;
++ (id)mt_nanoAlarmBundleIDForAlarm:(id)arg1;
 - (id)mt_initWithAlarm:(id)arg1 verb:(id)arg2;
 @end
 

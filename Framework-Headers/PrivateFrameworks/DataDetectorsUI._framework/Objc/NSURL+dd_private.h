@@ -7,10 +7,19 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (dd_private)
++ (id)dd_URLWithPotentiallyInvalidURLString:(id)arg1;
+- (id)dd_emailFromFacetimeScheme;
 - (id)dd_emailFromMailtoScheme;
+- (id)dd_emailFromValidSchemes:(id)arg1;
+- (id)dd_formattedPhoneNumber;
+- (id)dd_handleFromFacetimeSchemeFilteringForEmail:(BOOL)arg1;
 - (BOOL)dd_isAnySimpleTelephonyScheme;
 - (BOOL)dd_isMaps:(BOOL)arg1;
+- (BOOL)dd_isMaps:(BOOL)arg1 isDirections:(BOOL *)arg2;
+- (id)dd_phoneNumberFromFacetimeScheme;
 - (id)dd_phoneNumberFromTelScheme;
 - (id)dd_phoneNumberFromTelSchemeAndExtractBody:(id *)arg1;
+- (id)dd_phoneNumberFromValidSchemes:(id)arg1;
+- (id)dd_rdarLinkFromTelScheme;
 @end
 

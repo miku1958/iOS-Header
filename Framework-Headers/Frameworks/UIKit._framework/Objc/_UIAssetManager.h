@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUICatalog, CUIMutableCatalog, NSBundle, NSMapTable, NSString, UITraitCollection, _UICache;
+@class CUICatalog, CUIMutableCatalog, NSBundle, NSDictionary, NSMapTable, NSString, UITraitCollection, _UICache;
 
 @interface _UIAssetManager : NSObject
 {
@@ -20,19 +20,24 @@
     long long _preferredLayoutDirectionTrait;
     NSBundle *_bundle;
     NSMapTable *_assetMap;
+    NSDictionary *_systemSymbolNameAliases;
     CUIMutableCatalog *_runtimeCatalog;
     struct os_unfair_lock_s _runtimeCatalogCreationLock;
     UITraitCollection *_preferredTraitCollection;
-    BOOL _isStarkAssetManager;
-    BOOL _isStandaloneAssetManager;
     struct os_unfair_lock_s _assetMapLock;
-    BOOL _managingUIKitAssets;
+    struct {
+        unsigned int isStarkAssetManager:1;
+        unsigned int isStandaloneAssetManager:1;
+        unsigned int isUIKitAssetsManager:1;
+        unsigned int isCoreGlyphsManager:1;
+    } _assetManagerFlags;
     _UIAssetManager *_nextAssetManager;
 }
 
 @property (readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property (readonly, nonatomic) NSString *carFileName;
-@property (readonly, nonatomic, getter=_managingUIKitAssets) BOOL managingUIKitAssets; // @synthesize managingUIKitAssets=_managingUIKitAssets;
+@property (readonly, nonatomic, getter=_managingCoreGlyphs) BOOL managingCoreGlyphs;
+@property (readonly, nonatomic, getter=_managingUIKitAssets) BOOL managingUIKitAssets;
 @property (strong, nonatomic) _UIAssetManager *nextAssetManager; // @synthesize nextAssetManager=_nextAssetManager;
 @property (nonatomic) double preferredScale; // @synthesize preferredScale=_preferredScale;
 @property (strong, nonatomic) UITraitCollection *preferredTraitCollection; // @synthesize preferredTraitCollection=_preferredTraitCollection;
@@ -55,33 +60,45 @@
 + (id)sharedRuntimeAssetMap;
 + (id)sharedRuntimeCatalog;
 + (BOOL)validStackImageFile:(id)arg1;
-- (id)_assetForName:(id)arg1 shouldCreateWhenNotPresent:(BOOL)arg2;
+- (id)_allImageNames;
+- (id)_appearanceNames;
+- (id)_assetForName:(id)arg1;
 - (id)_assetFromMapForName:(id)arg1;
 - (id)_assetFromMapForName:(id)arg1 lock:(BOOL)arg2;
 - (id)_catalog;
 - (void)_clearCachedResources;
 - (void)_clearCachedResources:(id)arg1;
+- (id)_defaultAppearanceNames;
 - (void)_disconnectImageAssets;
+- (BOOL)_hasMultipleAppearances;
+- (BOOL)_imageBelongsToCoreGlyphs:(id)arg1;
 - (BOOL)_imageBelongsToUIKit:(id)arg1;
+- (BOOL)_imageIsSystemImage:(id)arg1;
 - (id)_initWithName:(id)arg1 inBundle:(id)arg2 idiom:(long long)arg3 lock:(BOOL)arg4 allowMissingCatalog:(BOOL)arg5;
 - (id)_insertAssetIntoMap:(id)arg1 forName:(id)arg2;
 - (id)_insertAssetIntoMap:(id)arg1 forName:(id)arg2 lock:(BOOL)arg3;
+- (BOOL)_isSystemAssetManager;
+- (id)_lookUpObjectForTraitCollection:(id)arg1 withAccessorWithAppearanceName:(CDUnknownBlockType)arg2;
 - (void)_performBlockWithAssetLock:(CDUnknownBlockType)arg1;
 - (id)_starkAssetManager;
+- (id)_symbolNameAliasForName:(id)arg1;
+- (id)_translateAppearanceNameToNative:(id)arg1;
 - (id)colorNamed:(id)arg1 withTraitCollection:(id)arg2;
 - (id)dataNamed:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)disableCacheFlushing;
 - (id)imageNamed:(id)arg1;
+- (id)imageNamed:(id)arg1 configuration:(id)arg2;
+- (id)imageNamed:(id)arg1 configuration:(id)arg2 cachingOptions:(unsigned long long)arg3 attachCatalogImage:(BOOL)arg4;
 - (id)imageNamed:(id)arg1 idiom:(long long)arg2;
 - (id)imageNamed:(id)arg1 idiom:(long long)arg2 subtype:(unsigned long long)arg3;
-- (id)imageNamed:(id)arg1 scale:(double)arg2 gamut:(long long)arg3 layoutDirection:(long long)arg4 idiom:(long long)arg5 userInterfaceStyle:(long long)arg6 subtype:(unsigned long long)arg7 cachingOptions:(unsigned long long)arg8 sizeClassPair:(CDStruct_d58201db)arg9 attachCatalogImage:(BOOL)arg10;
 - (id)imageNamed:(id)arg1 scale:(double)arg2 idiom:(long long)arg3 subtype:(unsigned long long)arg4;
 - (id)imageNamed:(id)arg1 withTrait:(id)arg2;
 - (id)initManagerWithoutCatalogWithName:(id)arg1;
 - (id)initWithName:(id)arg1 inBundle:(id)arg2 idiom:(long long)arg3;
 - (id)initWithURL:(id)arg1 idiom:(long long)arg2 error:(id *)arg3;
+- (id)resolvedColorNamed:(id)arg1 withTraitCollection:(id)arg2;
 - (id)stackImageWithContentsOfFile:(id)arg1 forTraitCollection:(id)arg2;
 - (id)stackImageWithData:(id)arg1 forTraitCollection:(id)arg2;
 

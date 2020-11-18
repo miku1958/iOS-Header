@@ -10,7 +10,8 @@
 {
 }
 
-- (BOOL)optOutOfCoordination;
+- (unsigned long long)coordinationType;
+- (BOOL)hasDisplayedCriticalBulletins;
 
 @end
 

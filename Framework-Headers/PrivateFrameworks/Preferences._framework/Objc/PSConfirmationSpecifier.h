@@ -14,8 +14,10 @@
     NSString *_prompt;
     NSString *_okButton;
     NSString *_cancelButton;
+    NSString *_alternateButton;
 }
 
+@property (strong, nonatomic) NSString *alternateButton; // @synthesize alternateButton=_alternateButton;
 @property (strong, nonatomic) NSString *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (strong, nonatomic) NSString *okButton; // @synthesize okButton=_okButton;
 @property (strong, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
@@ -24,6 +26,7 @@
 + (id)preferenceSpecifierNamed:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4 detail:(Class)arg5 cell:(long long)arg6 edit:(Class)arg7;
 + (id)specifierWithSpecifier:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)isAlternateDestructive;
 - (BOOL)isDestructive;
 - (BOOL)isEqualToSpecifier:(id)arg1;
 - (void)setupWithDictionary:(id)arg1;

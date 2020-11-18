@@ -13,7 +13,6 @@
 @interface CalDAVServerVersion : NSObject <NSCopying>
 {
     BOOL _supportsTimeRangeFilter;
-    BOOL _supportsTodoTimeRangeFilter;
     BOOL _supportsTimeRangeFilterWithoutEndDate;
     BOOL _supportsTimeRangeFilterOnInbox;
     BOOL _supportsAutoSchedule;
@@ -45,7 +44,9 @@
 
 @property (nonatomic) BOOL alwaysSupportsFreebusyOnOutbox; // @synthesize alwaysSupportsFreebusyOnOutbox=_alwaysSupportsFreebusyOnOutbox;
 @property (strong, nonatomic) NSSet *complianceClasses; // @synthesize complianceClasses=_complianceClasses;
+@property (readonly, nonatomic) BOOL requiresOpeningAttachmentAsLink;
 @property (copy, nonatomic) NSString *serverHeader; // @synthesize serverHeader=_serverHeader;
+@property (readonly, nonatomic) BOOL shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars;
 @property (copy, nonatomic) NSString *supportedCalendarComponentSets; // @synthesize supportedCalendarComponentSets=_supportedCalendarComponentSets;
 @property (nonatomic) BOOL supportsAutoSchedule; // @synthesize supportsAutoSchedule=_supportsAutoSchedule;
 @property (nonatomic) BOOL supportsCalendarAudit; // @synthesize supportsCalendarAudit=_supportsCalendarAudit;
@@ -70,7 +71,6 @@
 @property (nonatomic) BOOL supportsTimeRangeFilter; // @synthesize supportsTimeRangeFilter=_supportsTimeRangeFilter;
 @property (nonatomic) BOOL supportsTimeRangeFilterOnInbox; // @synthesize supportsTimeRangeFilterOnInbox=_supportsTimeRangeFilterOnInbox;
 @property (nonatomic) BOOL supportsTimeRangeFilterWithoutEndDate; // @synthesize supportsTimeRangeFilterWithoutEndDate=_supportsTimeRangeFilterWithoutEndDate;
-@property (nonatomic) BOOL supportsTodoTimeRangeFilter; // @synthesize supportsTodoTimeRangeFilter=_supportsTodoTimeRangeFilter;
 @property (readonly, nonatomic) NSString *type;
 @property (nonatomic) double version; // @synthesize version=_version;
 

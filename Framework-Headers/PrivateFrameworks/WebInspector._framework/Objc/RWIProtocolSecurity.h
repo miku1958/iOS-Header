@@ -6,13 +6,14 @@
 
 #import <WebInspector/RWIProtocolJSONObject.h>
 
-@class RWIProtocolSecurityCertificate;
+@class RWIProtocolSecurityCertificate, RWIProtocolSecurityConnection;
 
 @interface RWIProtocolSecurity : RWIProtocolJSONObject
 {
 }
 
 @property (strong, nonatomic) RWIProtocolSecurityCertificate *certificate;
+@property (strong, nonatomic) RWIProtocolSecurityConnection *connection;
 
 
 @end

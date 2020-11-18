@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)addAxisAnnotation:(id)arg1 forSeries:(id)arg2 textColor:(id)arg3 modelCoordinate:(id)arg4;
-- (BOOL)applyAnnotationForSeries:(id)arg1 commonAxes:(id)arg2;
+- (long long)applyAnnotationForSeries:(id)arg1 commonAxes:(id)arg2;
 - (void)clearAxisAnnotations;
 - (id)init;
 - (void)startAnnotationSequence;

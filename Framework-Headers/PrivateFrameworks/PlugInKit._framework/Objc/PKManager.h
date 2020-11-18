@@ -16,19 +16,26 @@
 @property (strong) PKDaemonClient *client; // @synthesize client=_client;
 
 + (id)defaultManager;
++ (id)managerForUser:(unsigned int)arg1;
 - (void).cxx_destruct;
 - (id)containingAppForExtensionProperties:(id)arg1;
 - (id)containingAppForPlugInConnectedTo:(id)arg1;
 - (id)containingAppForPlugInWithPid:(int)arg1;
 - (void)forceHoldPlugIn:(id)arg1 result:(CDUnknownBlockType)arg2;
+- (id)forceHoldPlugIn:(id)arg1 withError:(id *)arg2;
 - (void)holdPlugInsInApplication:(id)arg1 result:(CDUnknownBlockType)arg2;
+- (id)holdPlugInsInApplication:(id)arg1 withError:(id *)arg2;
 - (void)holdRequest:(id)arg1 flags:(unsigned long long)arg2 result:(CDUnknownBlockType)arg3;
 - (id)informationForPlugInWithPid:(int)arg1;
 - (id)initForService:(const char *)arg1;
+- (id)initForUser:(unsigned int)arg1;
 - (void)registerPlugInAtURL:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)registerPlugInsInBundle:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)releaseHold:(id)arg1;
+- (void)releaseHold:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (BOOL)releaseHold:(id)arg1 withError:(id *)arg2;
 - (void)terminatePlugInsInApplication:(id)arg1 options:(long long)arg2 result:(CDUnknownBlockType)arg3;
+- (id)terminatePlugInsInApplication:(id)arg1 options:(long long)arg2 withError:(id *)arg3;
 - (void)unregisterPlugInAtURL:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)unregisterPlugInsInBundle:(id)arg1 result:(CDUnknownBlockType)arg2;
 - (void)updateExtensionStatesForPlugIns:(id)arg1 result:(CDUnknownBlockType)arg2;

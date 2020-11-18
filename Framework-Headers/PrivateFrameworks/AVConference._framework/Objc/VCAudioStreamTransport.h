@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
 @interface VCAudioStreamTransport : VCMediaStreamTransport <WRMClientDelegate>
 {
     WRMClient *_wrmClient;
-    struct tagWRMMetricsInfo _wrmInfo;
+    struct _VCAudioStreamTransportRealtimeContext _realtimeContext;
 }
+
+@property (readonly, nonatomic) void *realtimeContext;
 
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 handle:(struct tagHANDLE *)arg2 callId:(unsigned int)arg3 localSSRC:(unsigned int)arg4;
@@ -23,13 +25,13 @@ __attribute__((visibility("hidden")))
 - (void)onRTCPPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
 - (void)onStart;
 - (void)onStop;
-- (void)reportWRMMetrics:(const CDStruct_0db8e210 *)arg1;
+- (void)reportWRMMetrics:(const CDStruct_dea828ac *)arg1;
+- (void)setPreWarmState:(BOOL)arg1;
 - (void)setWRMCallId:(unsigned int)arg1;
 - (void)setWRMMetricConfig:(CDStruct_69d7cc99 *)arg1;
-- (void)setWRMNotification:(CDStruct_d2860d30 *)arg1;
+- (void)setWRMNotification:(CDStruct_0693755d *)arg1;
 - (void)startWRM;
 - (void)stopWRM;
-- (void)submitWRMReportWithJitterBufferMetrics:(struct tagVCJitterBufferWRMReportingMetrics *)arg1;
 
 @end
 

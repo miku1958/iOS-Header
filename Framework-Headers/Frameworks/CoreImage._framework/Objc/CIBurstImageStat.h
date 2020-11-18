@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
     int _version;
     NSString *imageId;
     NSMutableArray *faceStatArray;
+    struct __IOSurface *_fullsizeJpegData;
     struct CGRect facesRoiRect;
 }
 
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property BOOL exclude; // @synthesize exclude;
 @property NSMutableArray *faceStatArray; // @synthesize faceStatArray;
 @property struct CGRect facesRoiRect; // @synthesize facesRoiRect;
+@property struct __IOSurface *fullsizeJpegData; // @synthesize fullsizeJpegData=_fullsizeJpegData;
 @property int fullsizeJpegSize; // @synthesize fullsizeJpegSize=_fullsizeJpegSize;
 @property BOOL hasRegistrationData; // @synthesize hasRegistrationData;
 @property NSString *imageId; // @synthesize imageId;

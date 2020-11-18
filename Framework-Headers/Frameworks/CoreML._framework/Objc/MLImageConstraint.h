@@ -8,10 +8,11 @@
 
 #import <CoreML/MLFeatureValueConstraint-Protocol.h>
 #import <CoreML/NSCopying-Protocol.h>
+#import <CoreML/NSSecureCoding-Protocol.h>
 
 @class MLImageSizeConstraint;
 
-@interface MLImageConstraint : NSObject <MLFeatureValueConstraint, NSCopying>
+@interface MLImageConstraint : NSObject <MLFeatureValueConstraint, NSCopying, NSSecureCoding>
 {
     long long _pixelsHigh;
     long long _pixelsWide;
@@ -33,10 +34,13 @@
 + (id)constraintWithPixelsWide:(long long)arg1 pixelsHigh:(long long)arg2 pixelType:(unsigned long long)arg3 sizeConstraint:(id)arg4;
 + (unsigned long long)imagePixelTypeFromOSType:(unsigned int)arg1;
 + (BOOL)osType:(unsigned int)arg1 isAcceptedForPixelType:(unsigned long long)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_stringForAllowedOSTypes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithPixelsWide:(long long)arg1 pixelsHigh:(long long)arg2 pixelType:(unsigned long long)arg3 sizeConstraint:(id)arg4;
 - (BOOL)isAllowedValue:(id)arg1 error:(id *)arg2;
 

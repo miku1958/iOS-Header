@@ -12,6 +12,7 @@
 
 @property (readonly, copy, nonatomic) NSString *safari_normalizedVersion;
 
++ (id)safari_safariApplicationPlatformBundleIdentifier;
 + (id)safari_safariCoreBundle;
 @end
 

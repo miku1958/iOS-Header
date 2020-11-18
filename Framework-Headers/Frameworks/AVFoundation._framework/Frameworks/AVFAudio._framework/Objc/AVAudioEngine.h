@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioFormat, AVAudioInputNode, AVAudioMixerNode, AVAudioOutputNode;
+@class AVAudioFormat, AVAudioInputNode, AVAudioMixerNode, AVAudioOutputNode, NSSet;
 
 @interface AVAudioEngine : NSObject
 {
     void *_impl;
 }
 
+@property (readonly, copy) NSSet *attachedNodes;
 @property (nonatomic, getter=isAutoShutdownEnabled) BOOL autoShutdownEnabled;
 @property (readonly, nonatomic) AVAudioInputNode *inputNode;
 @property (readonly, nonatomic) BOOL isInManualRenderingMode;

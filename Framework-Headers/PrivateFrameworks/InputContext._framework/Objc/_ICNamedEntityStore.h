@@ -25,7 +25,7 @@
 + (id)tokenize:(id)arg1;
 - (void).cxx_destruct;
 - (void)addEntity:(id)arg1 isDurable:(BOOL)arg2;
-- (void)addEntry:(id)arg1 tokenizedNewEntity:(id)arg2;
+- (void)addEntry:(id)arg1 tokenizedNewEntity:(id)arg2 source:(unsigned char)arg3 type:(unsigned char)arg4;
 - (BOOL)areStringCharactersWhitelisted:(id)arg1;
 - (struct USet *)exemplarSetForSupportedLocales;
 - (id)filterWord:(id)arg1;
@@ -34,8 +34,11 @@
 - (BOOL)isValidNamedEntity:(id)arg1 explanation:(id *)arg2;
 - (void)reloadRecents;
 - (void)removeAllEntries;
-- (void)removeEntry:(id)arg1 tokenizedNewEntity:(id)arg2;
+- (void)removeEntriesBySource:(unsigned char)arg1;
+- (void)removeEntry:(id)arg1;
+- (void)removeEntry:(id)arg1 source:(unsigned char)arg2;
 - (void)updateQueue:(id)arg1 newEntity:(id)arg2;
+- (void)updateQueueFromString:(id)arg1 newEntity:(id)arg2;
 
 @end
 

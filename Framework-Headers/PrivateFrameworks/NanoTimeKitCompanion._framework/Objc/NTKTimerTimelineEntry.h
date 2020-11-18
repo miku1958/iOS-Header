@@ -21,22 +21,28 @@
 + (id)_circularSmallImageProvider;
 + (id)_cornerSmallImageProvider;
 + (id)_extraLargeImageProvider;
++ (id)_modularRectangularImageProvider;
 + (id)_modularSmallImageProvider;
 + (id)_utilitarianSmallImageProvider;
 + (id)companionModel;
-- (id)_gaugeProviderForTimeAtState:(unsigned long long)arg1;
+- (id)_countdownTextProvider;
+- (id)_gaugeProviderForTimeAtState:(unsigned long long)arg1 tintColor:(id)arg2;
+- (id)_headerTextProviderForTimeAtState:(unsigned long long)arg1;
 - (id)_newCircularMediumTemplate;
 - (id)_newCircularSmallTemplate;
 - (id)_newExtraLargeTemplate;
 - (id)_newLargeFlatUtilityTemplate;
 - (id)_newLargeModularTemplate;
 - (id)_newSignatureCornerGaugeImageTemplate;
+- (id)_newSignatureRectangular;
+- (id)_newSimpleTextTemplate;
 - (id)_newSmallFlatUtilityTemplate;
 - (id)_newSmallModularTemplate;
-- (id)_relativeDateGaugeProviderForTimeInterval:(double)arg1 fullDuration:(double)arg2 paused:(BOOL)arg3;
-- (id)_relativeDateTextProviderForTimeInterval:(double)arg1 paused:(BOOL)arg2;
+- (id)_relativeDateGaugeProviderForTimeInterval:(double)arg1 fullDuration:(double)arg2 paused:(BOOL)arg3 tintColor:(id)arg4;
+- (id)_relativeDateTextProviderForTimeInterval:(double)arg1 paused:(BOOL)arg2 twoDigitMinuteZeroPadding:(BOOL)arg3;
 - (id)_textProviderForTimeAtState:(unsigned long long)arg1;
 - (id)_textProviderForTimeAtState:(unsigned long long)arg1 withUnknownText:(id)arg2;
+- (id)_textProviderForTimeAtState:(unsigned long long)arg1 withUnknownText:(id)arg2 twoDigitMinuteZeroPadding:(BOOL)arg3;
 - (id)templateForComplicationFamily:(long long)arg1;
 
 @end

@@ -8,27 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, NSString, PBUnknownFields;
+@class GEOMapRegion, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPopularNearbySearchResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapRegion *_displayMapRegion;
     NSString *_sectionHeader;
     BOOL _isChainResultSet;
-    CDStruct_5984ff81 _has;
+    struct {
+        unsigned int has_isChainResultSet:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_displayMapRegion:1;
+        unsigned int read_sectionHeader:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_displayMapRegion:1;
+        unsigned int wrote_sectionHeader:1;
+        unsigned int wrote_isChainResultSet:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
+@property (strong, nonatomic) GEOMapRegion *displayMapRegion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
 @property (nonatomic) BOOL hasIsChainResultSet;
 @property (readonly, nonatomic) BOOL hasSectionHeader;
-@property (nonatomic) BOOL isChainResultSet; // @synthesize isChainResultSet=_isChainResultSet;
-@property (strong, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
+@property (nonatomic) BOOL isChainResultSet;
+@property (strong, nonatomic) NSString *sectionHeader;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDisplayMapRegion;
+- (void)_readSectionHeader;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

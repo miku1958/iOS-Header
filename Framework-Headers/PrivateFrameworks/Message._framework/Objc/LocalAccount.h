@@ -27,6 +27,7 @@
 - (id)displayName;
 - (id)initWithLibrary:(id)arg1 persistentAccount:(id)arg2;
 - (BOOL)isActive;
+- (BOOL)isLocalAccount;
 - (id)legacySQLExpressionToMatchAllMailboxes;
 - (id)mailboxPathExtension;
 - (id)mailboxUidForFileSystemPath:(id)arg1;
@@ -44,7 +45,7 @@
 - (BOOL)supportsPurge;
 - (id)transientDraftsFolder;
 - (id)transientDraftsFolderShouldCreate:(BOOL)arg1;
-- (id)uniqueId;
+- (id)uniqueID;
 
 @end
 

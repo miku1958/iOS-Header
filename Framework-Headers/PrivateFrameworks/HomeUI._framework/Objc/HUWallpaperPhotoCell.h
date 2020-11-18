@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class NSString, UIActivityIndicatorView, UIButton, UIImage, UIImageView, UIView;
+@class CAShapeLayer, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UIImage, UIImageView, UILabel, UIStackView, UIView;
 @protocol HUWallpaperPhotoCellDelegate;
 
 @interface HUWallpaperPhotoCell : UICollectionViewCell
@@ -17,31 +17,42 @@
     BOOL _showBorder;
     NSString *_assetIdentifier;
     double _cornerRadius;
+    long long _contentMode;
     id<HUWallpaperPhotoCellDelegate> _delegate;
     UIImageView *_imageView;
     UIActivityIndicatorView *_spinnerView;
     UIView *_selectionOverlayView;
     UIButton *_deleteButton;
+    UILabel *_choosePhotoLabel;
+    UIStackView *_stackView;
+    CAShapeLayer *_borderLayer;
+    NSLayoutConstraint *_imageWidthConstraint;
 }
 
 @property (copy, nonatomic) NSString *assetIdentifier; // @synthesize assetIdentifier=_assetIdentifier;
+@property (strong, nonatomic) CAShapeLayer *borderLayer; // @synthesize borderLayer=_borderLayer;
 @property (nonatomic) BOOL busy; // @synthesize busy=_busy;
+@property (strong, nonatomic) UILabel *choosePhotoLabel; // @synthesize choosePhotoLabel=_choosePhotoLabel;
+@property (nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (weak, nonatomic) id<HUWallpaperPhotoCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIButton *deleteButton; // @synthesize deleteButton=_deleteButton;
 @property (nonatomic) BOOL empty; // @synthesize empty=_empty;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) NSLayoutConstraint *imageWidthConstraint; // @synthesize imageWidthConstraint=_imageWidthConstraint;
 @property (nonatomic) BOOL removable; // @synthesize removable=_removable;
 @property (strong, nonatomic) UIView *selectionOverlayView; // @synthesize selectionOverlayView=_selectionOverlayView;
 @property (nonatomic) BOOL showBorder; // @synthesize showBorder=_showBorder;
 @property (strong, nonatomic) UIActivityIndicatorView *spinnerView; // @synthesize spinnerView=_spinnerView;
+@property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 
 - (void).cxx_destruct;
 - (void)deleteButtonPressed;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)showBorder:(BOOL)arg1 animated:(BOOL)arg2;

@@ -13,9 +13,11 @@
 @interface RERelevanceProviderManagerUpdate : NSObject <NSCopying>
 {
     RERelevanceProvider *_provider;
+    CDUnknownBlockType _completion;
 }
 
 @property (readonly, nonatomic) BOOL allProviders;
+@property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (readonly, nonatomic) RERelevanceProvider *provider;
 
 + (id)immediateUpdateForAllProviders;

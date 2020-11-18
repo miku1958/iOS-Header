@@ -11,11 +11,8 @@
 @protocol HKClinicalBrandable <NSObject>
 
 @property (readonly, copy, nonatomic) HKClinicalBrand *brand;
-@property (readonly, nonatomic, getter=hasMultipleLocations) BOOL multiple;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, copy, nonatomic) NSString *title;
 
-
-@optional
 @end
 

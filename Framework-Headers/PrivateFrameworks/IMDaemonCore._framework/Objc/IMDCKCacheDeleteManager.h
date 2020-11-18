@@ -11,6 +11,7 @@
     BOOL _alreadyCapturedErrorWithAutoBugCapture;
     BOOL _allowsWritingToDisk;
     BOOL _deviceLowOnDiskSpace;
+    BOOL _isUsingCentralizedModel;
     BOOL _isUpdatingAttachmentFileSizes;
 }
 
@@ -18,13 +19,16 @@
 @property (nonatomic) BOOL alreadyCapturedErrorWithAutoBugCapture; // @synthesize alreadyCapturedErrorWithAutoBugCapture=_alreadyCapturedErrorWithAutoBugCapture;
 @property (nonatomic, getter=isDeviceLowOnDiskSpace) BOOL deviceLowOnDiskSpace; // @synthesize deviceLowOnDiskSpace=_deviceLowOnDiskSpace;
 @property BOOL isUpdatingAttachmentFileSizes; // @synthesize isUpdatingAttachmentFileSizes=_isUpdatingAttachmentFileSizes;
+@property (nonatomic) BOOL isUsingCentralizedModel; // @synthesize isUsingCentralizedModel=_isUsingCentralizedModel;
 
 + (id)sharedInstance;
+- (void)__wrapperAroundCacheDeletePurgeNotificationCallback:(id)arg1;
 - (id)__wrapperAroundCacheDeletePurgeableCallback:(id)arg1 urgency:(int)arg2;
 - (id)__wrapperAroundCacheDeletePurgingCallback:(id)arg1 urgency:(int)arg2;
 - (id)_cacheDeleteRequestCacheableSpaceGuidanceWithID:(id)arg1 diskVolume:(id)arg2 urgency:(int)arg3 requestedSize:(unsigned long long)arg4;
 - (void)_cacheDeleteSetUp;
 - (id)_ckUtilitiesSharedInstance;
+- (struct _IMDAttachmentRecordStruct *)_copyRecordRef:(id)arg1;
 - (long long)_deleteAttachmentsAndReturnBytesDeleted:(int)arg1;
 - (long long)_deleteFilesOnDiskAndUpdateTransfers:(id)arg1;
 - (BOOL)_deviceConditionsAllowsAttachmentFileSizeUpdateForActivity:(id)arg1;
@@ -41,11 +45,13 @@
 - (id)createDictionaryForNotDeletingAnyAttachments:(id)arg1 urgency:(int)arg2;
 - (id)deleteAttachmentsAndReturnBytesDeleted:(id)arg1 urgency:(int)arg2;
 - (id)init;
+- (BOOL)isUsingCentralizeCacheDelete;
 - (void)metricAttachmentsToPurge:(long long)arg1;
 - (long long)purgeAttachments:(long long)arg1;
 - (long long)purgeableAttachmentSize;
 - (void)registerWithCacheDelete;
 - (id)reportAvailableSpaceToBeDeleted:(id)arg1 urgency:(int)arg2;
+- (void)resetAttachmentWatermark;
 - (BOOL)shouldDownloadAssetsOfSize:(unsigned long long)arg1 refreshCachedValue:(BOOL)arg2;
 - (void)updateAttachmentFileSizesWithActivity:(id)arg1;
 

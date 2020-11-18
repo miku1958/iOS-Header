@@ -93,7 +93,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasExplodableSeriesElements;
 - (BOOL)hasFixedFrameRatio;
 - (id)imageWithPreset:(id)arg1 target:(int)arg2 imageSize:(struct CGSize)arg3 imageScale:(double)arg4 swatchFrame:(struct CGRect)arg5 documentRoot:(id)arg6 shouldCache:(BOOL *)arg7;
-- (BOOL)includeValueLabelPositionOff;
 - (id)init;
 - (id)initWithFeatureClass:(Class)arg1;
 - (BOOL)isHorizontal;
@@ -136,6 +135,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)suppliesFinalTextures;
 - (id)supportedAxisScales;
 - (id)supportedSeriesTypes;
+- (BOOL)supportsAxisLabelAngle;
 - (BOOL)supportsAxisLabelsOrientation;
 - (BOOL)supportsAxisLine;
 - (BOOL)supportsBackgroundFill;
@@ -186,7 +186,7 @@ __attribute__((visibility("hidden")))
 - (id)userInterfaceName;
 - (id)userInterfaceNameForPlaceTitleAtCenter:(BOOL)arg1;
 - (long long)userInterfaceTag;
-- (Class)valueAxisClassForID:(id)arg1 scale:(int)arg2;
+- (Class)valueAxisClassForID:(id)arg1 scale:(long long)arg2;
 - (id)valueAxisIDs;
 - (double)valueAxisTitleRotation;
 

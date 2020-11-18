@@ -9,20 +9,20 @@
 #import <UserNotificationsUIKit/NCLongLookDefaultPresentationControllerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationCustomContentDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationLongLookViewDelegate-Protocol.h>
+#import <UserNotificationsUIKit/PLClickPresentationInteractionPresentable-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterDismissing-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterPresentable-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterPresentationControllerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/PLExpandedPlatterPresentationViewDelegate-Protocol.h>
-#import <UserNotificationsUIKit/PLPreviewInteractionPresentable-Protocol.h>
 
 @class NCLongLookTransitioningDelegate, NSString, UIView;
-@protocol PLExpandedPlatterDismissing, PLPreviewInteractionPresenting;
+@protocol PLClickPresentationInteractionPresenting, PLExpandedPlatterDismissing;
 
-@interface NCNotificationLongLookViewController : NCNotificationViewController <NCNotificationLongLookViewDelegate, PLExpandedPlatterPresentationControllerDelegate, NCLongLookDefaultPresentationControllerDelegate, NCNotificationCustomContentDelegate, PLPreviewInteractionPresentable, PLExpandedPlatterPresentable, PLExpandedPlatterPresentationViewDelegate, PLExpandedPlatterDismissing>
+@interface NCNotificationLongLookViewController : NCNotificationViewController <NCNotificationLongLookViewDelegate, PLExpandedPlatterPresentationControllerDelegate, NCLongLookDefaultPresentationControllerDelegate, NCNotificationCustomContentDelegate, PLClickPresentationInteractionPresentable, PLExpandedPlatterPresentable, PLExpandedPlatterPresentationViewDelegate, PLExpandedPlatterDismissing>
 {
     NCLongLookTransitioningDelegate *_longLookTransitionDelegate;
     id _cancelTouchesToken;
-    id<PLPreviewInteractionPresenting> _presenter;
+    id<PLClickPresentationInteractionPresenting> _presenter;
     id<PLExpandedPlatterDismissing> _dismisser;
     CDUnknownBlockType _notificationTapBlock;
 }
@@ -32,13 +32,14 @@
 @property (weak, nonatomic) id<PLExpandedPlatterDismissing> dismisser; // @synthesize dismisser=_dismisser;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic, getter=_notificationTapBlock, setter=_setNotificationTapBlock:) CDUnknownBlockType notificationTapBlock; // @synthesize notificationTapBlock=_notificationTapBlock;
-@property (weak, nonatomic) id<PLPreviewInteractionPresenting> presenter; // @synthesize presenter=_presenter;
+@property (weak, nonatomic) id<PLClickPresentationInteractionPresenting> presenter; // @synthesize presenter=_presenter;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIView *viewForTouchContinuation;
 @property (readonly, nonatomic) UIView *viewWithContent;
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_expandedPlatterPresentationViewLoadingIfNecessary:(BOOL)arg1;
 - (id)_expandedPlatterPresentationViewScrollView;
 - (id)_extensionIdentifier;
@@ -50,6 +51,11 @@
 - (id)_longLookViewIfLoaded;
 - (id)_longLookViewLoadingIfNecessary;
 - (id)_longLookViewScrollView;
+- (unsigned long long)_maximumNumberOfPrimaryLargeTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfPrimaryTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfSecondaryLargeTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfSecondaryTextLinesForProvidedStaticContent;
+- (unsigned long long)_maximumNumberOfTextLinesForProvidedStaticContentWithDefaultNumber:(unsigned long long)arg1 isPrimary:(BOOL)arg2 isLarge:(BOOL)arg3;
 - (void)_notificationViewControllerViewDidLoad;
 - (struct CGSize)_preferredCustomContentSizeForSize:(struct CGSize)arg1 parentContentContainerBounds:(struct CGRect)arg2;
 - (id)_presentedLongLookViewController;
@@ -75,13 +81,16 @@
 - (struct CGRect)expandedPlatterPresentationController:(id)arg1 frameForTransitionViewInPresentationSuperview:(id)arg2;
 - (id)expandedPlatterPresentationController:(id)arg1 keyboardAssertionForGestureWindow:(id)arg2;
 - (BOOL)expandedPlatterPresentationControllerShouldAllowKeyboardOnAppearance:(id)arg1;
+- (BOOL)expandedPlatterPresentationControllerShouldProvideBackground:(id)arg1;
 - (id)expandedPlatterViewForPresentationView:(id)arg1;
 - (id)hideHomeAffordanceAnimationSettingsForExpandedPlatterPresentationController:(id)arg1;
 - (BOOL)isContentExtensionVisible:(id)arg1;
 - (BOOL)isLookStyleLongLook;
 - (void)loadView;
+- (BOOL)notificationLongLookView:(id)arg1 tapGestureRecognizerShouldReceiveTouch:(id)arg2;
 - (void)notificationLongLookView:(id)arg1 willInteractWithURL:(id)arg2;
-- (void)presentLongLookAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)playMedia;
+- (void)presentLongLookAnimated:(BOOL)arg1 trigger:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)preserveInputViews;
 - (BOOL)resignFirstResponder;
 - (BOOL)restoreInputViews;

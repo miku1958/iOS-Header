@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class GEOResourceManifestConfiguration, NSBundle;
+@class NSBundle;
 
 @interface VKResourceManager : NSObject
 {
-    GEOResourceManifestConfiguration *_manifestConfiguration;
     NSBundle *_vkBundle;
 }
 
 - (id)_localNameForResourceName:(id)arg1;
 - (id)dataForResourceWithName:(id)arg1;
 - (void)dealloc;
-- (id)initWithConfiguration:(id)arg1;
+- (id)init;
 - (BOOL)isDevResourceWithName:(id)arg1;
 - (id)pathForResourceWithName:(id)arg1;
 

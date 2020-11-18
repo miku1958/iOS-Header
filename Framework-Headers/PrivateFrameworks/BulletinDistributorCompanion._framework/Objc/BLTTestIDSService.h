@@ -39,7 +39,6 @@
 - (void)_callDelegateActionForProtobuf:(id)arg1 delegate:(id)arg2 identifier:(id)arg3 type:(unsigned short)arg4 isResponse:(BOOL)arg5;
 - (void)_handleProtobuf:(id)arg1 identifier:(id)arg2 sendDelay:(unsigned long long)arg3;
 - (id)_lightsAndSirensRequestForProtobuf:(id)arg1;
-- (unsigned long long)_nextSequenceNumber;
 - (unsigned long long)_randomResponseDelay;
 - (unsigned long long)_randomSendDelay;
 - (unsigned long long)_randomValueBetweenMin:(unsigned long long)arg1 max:(unsigned long long)arg2;

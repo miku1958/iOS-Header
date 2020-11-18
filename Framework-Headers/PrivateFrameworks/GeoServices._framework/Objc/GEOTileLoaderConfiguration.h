@@ -13,7 +13,6 @@
 @interface GEOTileLoaderConfiguration : NSObject <NSCopying>
 {
     Class _serverProxyClass;
-    BOOL _trackUsage;
     unsigned long long _memoryCacheCountLimit;
     unsigned long long _memoryCacheCostLimit;
     NSString *_diskCacheLocation;
@@ -27,7 +26,6 @@
 @property (nonatomic) unsigned long long memoryCacheCostLimit; // @synthesize memoryCacheCostLimit=_memoryCacheCostLimit;
 @property (nonatomic) unsigned long long memoryCacheCountLimit; // @synthesize memoryCacheCountLimit=_memoryCacheCountLimit;
 @property (nonatomic) Class serverProxyClass; // @synthesize serverProxyClass=_serverProxyClass;
-@property (nonatomic) BOOL trackUsage; // @synthesize trackUsage=_trackUsage;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

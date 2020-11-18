@@ -26,10 +26,10 @@
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (id)_complicationsCompanionForegroundColor;
 - (void)_customizeVideoPlayerOnSetup;
-- (id)_editOptionThatHidesAllComplications;
 - (id)_swatchImageForColor:(unsigned long long)arg1 andDialShape:(unsigned long long)arg2;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_updateDialSize;
+- (BOOL)_wantsConstantSpeedZoom;
 - (id)imageForEditOption:(id)arg1;
 - (void)reloadDataSources;
 - (void)setupDataSources;

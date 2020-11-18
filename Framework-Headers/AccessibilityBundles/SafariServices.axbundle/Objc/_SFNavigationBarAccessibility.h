@@ -22,7 +22,7 @@
 - (void)_axUpdateTextFields;
 - (void)_axUpdateURLValue;
 - (void)_compressedBarTapped;
-- (void)_readerButtonTapped:(id)arg1;
+- (void)_formatToggleButtonTapped:(id)arg1;
 - (void)_updateNotSecureWarningsVisibility;
 - (void)_updateReaderButtonVisibilityAnimated:(BOOL)arg1 showAvailabilityText:(BOOL)arg2 adjustURLLabels:(BOOL)arg3;
 - (void)_updateShowsLockIcon;

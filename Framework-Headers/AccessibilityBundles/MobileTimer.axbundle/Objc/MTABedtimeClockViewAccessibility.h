@@ -18,6 +18,7 @@
 - (void)_setAXSleepAdjuster:(id)arg1;
 - (void)_setAXWakeAdjuster:(id)arg1;
 - (id)accessibilityElements;
+- (id)accessibilityPath;
 - (void)dragMoved:(id)arg1;
 
 @end

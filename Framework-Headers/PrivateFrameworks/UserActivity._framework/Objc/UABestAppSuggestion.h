@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <UserActivity/NSSecureCoding-Protocol.h>
+
 @class NSDate, NSDictionary, NSString, NSUUID;
 
-@interface UABestAppSuggestion : NSObject
+@interface UABestAppSuggestion : NSObject <NSSecureCoding>
 {
+    BOOL _isActive;
     unsigned long long _type;
     NSUUID *_uniqueIdentifier;
     NSDictionary *_options;
@@ -21,12 +24,15 @@
     NSString *_originatingDeviceIdentifier;
     NSString *_originatingDeviceName;
     NSString *_originatingDeviceType;
+    NSDate *_lastActiveTime;
 }
 
 @property (copy) NSString *activityType; // @synthesize activityType=_activityType;
 @property (readonly, copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly) double confidence; // @synthesize confidence=_confidence;
 @property (readonly, copy) NSString *dynamicIdentifier; // @synthesize dynamicIdentifier=_dynamicIdentifier;
+@property (readonly) BOOL isActive; // @synthesize isActive=_isActive;
+@property (readonly, copy) NSDate *lastActiveTime; // @synthesize lastActiveTime=_lastActiveTime;
 @property (readonly, copy) NSDate *lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
 @property (readonly, copy) NSDictionary *options; // @synthesize options=_options;
 @property (readonly, copy) NSString *originatingDeviceIdentifier; // @synthesize originatingDeviceIdentifier=_originatingDeviceIdentifier;
@@ -41,8 +47,10 @@
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBundleIdentifier:(id)arg1 uuid:(id)arg2 activityType:(id)arg3 dynamicIdentifier:(id)arg4 lastUpdateTime:(id)arg5 type:(unsigned long long)arg6 deviceName:(id)arg7 deviceIdentifier:(id)arg8 deviceType:(id)arg9 options:(id)arg10;
+- (id)initWithBundleIdentifier:(id)arg1 uuid:(id)arg2 activityType:(id)arg3 dynamicIdentifier:(id)arg4 lastUpdateTime:(id)arg5 lastActiveTime:(id)arg6 type:(unsigned long long)arg7 deviceName:(id)arg8 deviceIdentifier:(id)arg9 deviceType:(id)arg10 options:(id)arg11 isActive:(BOOL)arg12;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -7,10 +7,11 @@
 #import <VoiceMemos/RCWaveformDataSource.h>
 
 #import <VoiceMemos/AVCaptureAudioDataOutputSampleBufferDelegate-Protocol.h>
+#import <VoiceMemos/RCWaveformDataSourceObserver-Protocol.h>
 
-@class NSArray, NSString, RCComposition, RCCompositionFragment, RCMutableComposition, RCMutableCompositionFragment, RCWaveform;
+@class NSArray, NSString, RCComposition, RCCompositionFragment, RCCompositionWaveformDataSource, RCMutableComposition, RCMutableCompositionFragment, RCWaveform;
 
-@interface RCCaptureInputWaveformDataSource : RCWaveformDataSource <AVCaptureAudioDataOutputSampleBufferDelegate>
+@interface RCCaptureInputWaveformDataSource : RCWaveformDataSource <AVCaptureAudioDataOutputSampleBufferDelegate, RCWaveformDataSourceObserver>
 {
     double captureDelta;
     BOOL _overdub;
@@ -20,6 +21,7 @@
     RCComposition *_destinationComposition;
     RCCompositionFragment *_destinationFragment;
     RCWaveform *_baseWaveform;
+    RCCompositionWaveformDataSource *_baseWaveformDataSource;
     double _updatedCapturedFragmentDuration;
     double _finalCapturedFragmentDuration;
     double _captureInsertionTimeInComposition;
@@ -28,6 +30,7 @@
 }
 
 @property (readonly, nonatomic) RCWaveform *baseWaveform; // @synthesize baseWaveform=_baseWaveform;
+@property (readonly, nonatomic) RCCompositionWaveformDataSource *baseWaveformDataSource; // @synthesize baseWaveformDataSource=_baseWaveformDataSource;
 @property (readonly, nonatomic) BOOL canUpdateCaptureComposition; // @synthesize canUpdateCaptureComposition=_canUpdateCaptureComposition;
 @property (readonly, nonatomic) NSArray *captureInitialDecomposedFragments; // @synthesize captureInitialDecomposedFragments=_captureInitialDecomposedFragments;
 @property (readonly, nonatomic) double captureInsertionDurationInComposition; // @synthesize captureInsertionDurationInComposition=_captureInsertionDurationInComposition;
@@ -56,6 +59,7 @@
 - (BOOL)appendAveragePowerLevelsByDigestingAudioPCMBuffer:(id)arg1;
 - (BOOL)appendAveragePowerLevelsByDigestingCapturedSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)appendAveragePowerLevelsByDigestingWaveformSegment:(id)arg1;
+- (void)cancelLoading;
 - (double)duration;
 - (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 finalizedFragmentDuration:(double)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -70,8 +74,12 @@
 - (void)updateCapturedDelta:(double)arg1;
 - (BOOL)waitUntilFinished;
 - (BOOL)waitUntilFinishedWithFinalizedDestinationFragmentDuration:(double)arg1;
+- (void)waveformDataSource:(id)arg1 didLoadWaveformSegment:(id)arg2;
+- (void)waveformDataSourceDidFinishLoading:(id)arg1;
+- (void)waveformDataSourceRequiresUpdate:(id)arg1;
 - (void)waveformGeneratorDidFinishLoading:(id)arg1 error:(id)arg2;
 - (id)waveformSegmentsInTimeRange:(CDStruct_73a5d3ca)arg1;
+- (id)waveformSegmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1;
 
 @end
 

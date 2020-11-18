@@ -11,13 +11,13 @@
 
 @protocol HMRemoteLoginMessageProtocol <NSObject, NSSecureCoding>
 
+@property (readonly, copy, nonatomic) NSString *messageName;
 @property (readonly, nonatomic) NSDictionary *messagePayload;
+@property (readonly, copy, nonatomic) NSString *xpcMessageName;
 
 + (NSString *)messageName;
 + (id)objWithDict:(NSDictionary *)arg1;
 + (id)objWithMessage:(HMFMessage *)arg1;
 + (NSString *)xpcMessageName;
-- (NSString *)messageName;
-- (NSString *)xpcMessageName;
 @end
 

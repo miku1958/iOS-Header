@@ -40,11 +40,13 @@
 - (BOOL)checkValidityAndCollectErrors:(id)arg1;
 - (id)copyLegacyDictionary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initFromLegacyDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSigningIdentifier:(id)arg1;
+- (BOOL)matchesProcessWithAuditToken:(id)arg1;
 - (BOOL)overlapsWithRule:(id)arg1;
 - (BOOL)signingIdentifierAllowed:(id)arg1 domainsRequired:(out BOOL *)arg2;
 

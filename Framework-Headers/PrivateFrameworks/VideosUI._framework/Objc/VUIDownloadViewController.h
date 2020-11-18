@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)_configureAlertControllerForIndexPath:(id)arg1;
 - (void)_editToggled;
 - (void)_exitEditingMode;
+- (void)_updateMediaEntitiesWithNewDownloads:(id)arg1;
 - (void)downloadCellDidRequestCancelDownload:(id)arg1;
 - (void)downloadManager:(id)arg1 downloadedFetchDidFinishWithEntities:(id)arg2;
 - (void)downloadManager:(id)arg1 downloadsDidChange:(id)arg2;

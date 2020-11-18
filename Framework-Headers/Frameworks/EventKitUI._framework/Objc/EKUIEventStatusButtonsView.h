@@ -24,12 +24,12 @@
     BOOL _shouldUseVerticalLayout;
     id<EKUIEventStatusButtonsViewDelegate> _delegate;
     long long _selectedAction;
-    double _buttonsCharge;
     long long _textSizeMode;
+    struct UIEdgeInsets _buttonsTouchInsets;
 }
 
 @property (strong, nonatomic) NSArray *actions; // @synthesize actions=_actions;
-@property (nonatomic) double buttonsCharge; // @synthesize buttonsCharge=_buttonsCharge;
+@property (nonatomic) struct UIEdgeInsets buttonsTouchInsets; // @synthesize buttonsTouchInsets=_buttonsTouchInsets;
 @property (readonly, nonatomic) UIButton *centerButton;
 @property (weak, nonatomic) id<EKUIEventStatusButtonsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL disableButtonHighlights; // @synthesize disableButtonHighlights=_disableButtonHighlights;
@@ -38,12 +38,13 @@
 @property (nonatomic) BOOL shouldUseVerticalLayout; // @synthesize shouldUseVerticalLayout=_shouldUseVerticalLayout;
 @property (nonatomic) long long textSizeMode; // @synthesize textSizeMode=_textSizeMode;
 
-+ (id)logHandle;
++ (id)buttonTitleForAction:(long long)arg1 orb:(BOOL)arg2;
++ (id)imageForAction:(long long)arg1 selected:(BOOL)arg2;
++ (BOOL)isActionDestructive:(long long)arg1;
 - (void).cxx_destruct;
 - (long long)_actionForButton:(id)arg1;
 - (id)_buttonForAction:(long long)arg1;
 - (long long)_buttonIndexForAction:(long long)arg1;
-- (id)_buttonTitleForAction:(long long)arg1;
 - (double)_defaultFontSizeForButtons;
 - (id)_fontWithSize:(double)arg1 selected:(BOOL)arg2;
 - (id)_horizontalConstraintStringForMiddleButtonsStartingAt:(unsigned long long)arg1 endingAt:(unsigned long long)arg2 resultingViews:(id)arg3;

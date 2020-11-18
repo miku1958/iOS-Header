@@ -17,5 +17,8 @@
 - (void)microControllerWithUDID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(BOOL)arg5;
 - (void)removeController:(GCController *)arg1;
 - (void)replyConnectedHosts:(NSArray *)arg1;
+
+@optional
+- (void)addControllerForAppStoreRemote:(GCController *)arg1;
 @end
 

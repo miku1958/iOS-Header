@@ -49,6 +49,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_isValidRow:(long long)arg1;
+- (id)actionsForRow:(id)arg1;
 - (void)availabilitySearcherChangedState:(long long)arg1;
 - (BOOL)canEditRow:(id)arg1;
 - (BOOL)canSelectRow:(id)arg1;

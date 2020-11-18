@@ -10,15 +10,17 @@
 
 @interface AREnvironmentTexturingTechnique : ARTechnique
 {
+    BOOL _wantsHDREnvironmentTextures;
     BOOL _networkIntialized;
     AREnvironmentProbeManager *_probeManager;
 }
 
 @property BOOL networkIntialized; // @synthesize networkIntialized=_networkIntialized;
 @property (strong) AREnvironmentProbeManager *probeManager; // @synthesize probeManager=_probeManager;
+@property (readonly) BOOL wantsHDREnvironmentTextures; // @synthesize wantsHDREnvironmentTextures=_wantsHDREnvironmentTextures;
 
 - (void).cxx_destruct;
-- (id)initWithOptions:(long long)arg1;
+- (id)initWithOptions:(long long)arg1 wantsHDREnvironmentTextures:(BOOL)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)prepare;
 - (id)processData:(id)arg1;

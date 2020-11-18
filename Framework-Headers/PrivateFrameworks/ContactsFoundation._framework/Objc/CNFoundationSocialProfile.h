@@ -26,8 +26,8 @@
 @property (readonly, copy) NSString *username; // @synthesize username=_username;
 
 + (id)emptySocialProfile;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithUrlString:(id)arg1 username:(id)arg2 userIdentifier:(id)arg3 service:(id)arg4 displayName:(id)arg5;

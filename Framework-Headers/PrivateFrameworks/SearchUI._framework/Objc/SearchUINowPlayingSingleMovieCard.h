@@ -13,10 +13,10 @@
     SFPunchout *_punchout;
 }
 
-@property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
+@property (strong, nonatomic) SFPunchout *punchout; // @synthesize punchout=_punchout;
 
 - (void).cxx_destruct;
-- (id)initWithMovie:(id)arg1 style:(unsigned long long)arg2;
+- (id)initWithMovie:(id)arg1;
 - (void)tapOnMovie:(id)arg1;
 
 @end

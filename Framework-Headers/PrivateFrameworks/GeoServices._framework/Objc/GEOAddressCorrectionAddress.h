@@ -8,20 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSString;
+@class GEOLocation, NSString, PBDataReader;
 
 @interface GEOAddressCorrectionAddress : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_addressID;
     GEOLocation *_addressLocation;
+    struct {
+        unsigned int read_addressID:1;
+        unsigned int read_addressLocation:1;
+        unsigned int wrote_addressID:1;
+        unsigned int wrote_addressLocation:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *addressID; // @synthesize addressID=_addressID;
-@property (strong, nonatomic) GEOLocation *addressLocation; // @synthesize addressLocation=_addressLocation;
+@property (strong, nonatomic) NSString *addressID;
+@property (strong, nonatomic) GEOLocation *addressLocation;
 @property (readonly, nonatomic) BOOL hasAddressID;
 @property (readonly, nonatomic) BOOL hasAddressLocation;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readAddressID;
+- (void)_readAddressLocation;
+- (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,6 +41,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

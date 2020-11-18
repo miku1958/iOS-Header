@@ -16,6 +16,7 @@
 + (id)addFamilyMemberV2URL;
 + (id)familyInviteSentV2URL;
 + (id)familyMemberDetailsUIV2URL;
++ (id)familyRepairURL;
 + (id)fetchFamilyInviteV2URL;
 + (id)getFamilyInvitationsUIURL;
 + (id)initiateFamilyV2URL;

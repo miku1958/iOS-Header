@@ -58,7 +58,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) float rightPadding; // @synthesize rightPadding=_rightPadding;
 @property (nonatomic) float textBaseline; // @synthesize textBaseline=_textBaseline;
 
-- (struct CGSize)_imageSizeWithTextureAtlases:(id)arg1;
 - (void)addLayer:(CDStruct_e9f6a06b)arg1;
 - (void)clearLayers;
 - (void)copyTo:(id)arg1;
@@ -70,7 +69,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (CDStruct_e9f6a06b)layerAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
-- (struct CGImage *)newImageWithBackgroundColor:(struct CGColor *)arg1 borderColor:(struct CGColor *)arg2 textureAtlases:(id)arg3 contentScale:(double)arg4;
 - (BOOL)readFrom:(id)arg1;
 - (void)setLayers:(CDStruct_e9f6a06b *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

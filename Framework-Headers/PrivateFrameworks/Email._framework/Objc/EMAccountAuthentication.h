@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@protocol EMAccountFactory;
+@protocol EDAccountFactory;
 
 @interface EMAccountAuthentication : NSObject
 {
-    id<EMAccountFactory> _accountFactory;
+    id<EDAccountFactory> _accountFactory;
 }
 
-@property (readonly, nonatomic) id<EMAccountFactory> accountFactory; // @synthesize accountFactory=_accountFactory;
+@property (readonly, nonatomic) id<EDAccountFactory> accountFactory; // @synthesize accountFactory=_accountFactory;
 
 + (id)log;
 - (void).cxx_destruct;

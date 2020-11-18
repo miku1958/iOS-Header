@@ -8,7 +8,7 @@
 
 #import <CoreDAV/CoreDAVSubmittable-Protocol.h>
 
-@class CoreDAVErrorItem, CoreDAVRequestLogger, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableDictionary, NSString, NSURL, NSURLConnection, NSURLRequest;
+@class CoreDAVErrorItem, CoreDAVRequestLogger, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableDictionary, NSRunLoop, NSString, NSURL, NSURLConnection, NSURLRequest;
 @protocol CoreDAVAccountInfoProvider, CoreDAVResponseBodyParser, CoreDAVTaskDelegate, CoreDAVTaskManager;
 
 @interface CoreDAVTask : NSObject <CoreDAVSubmittable>
@@ -57,6 +57,8 @@
     BOOL _haveParsedFakeResponseData;
     CoreDAVErrorItem *_forbiddenErrorItem;
     NSString *_uniqueID;
+    BOOL _ignoresGuardianRestrictions;
+    BOOL _totalBytesWasProcessedAsAbnormallyLarge;
 }
 
 @property (weak, nonatomic) id<CoreDAVAccountInfoProvider> accountInfoProvider; // @synthesize accountInfoProvider=_accountInfoProvider;
@@ -70,6 +72,7 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic, getter=isFinished) BOOL finished;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoresGuardianRestrictions; // @synthesize ignoresGuardianRestrictions=_ignoresGuardianRestrictions;
 @property (copy, nonatomic) CDUnknownBlockType requestProgressBlock; // @synthesize requestProgressBlock=_requestProgressBlock;
 @property (strong, nonatomic) NSDictionary *requestProperties; // @synthesize requestProperties=_requestProperties;
 @property (strong, nonatomic) id<CoreDAVResponseBodyParser> responseBodyParser; // @synthesize responseBodyParser=_responseBodyParser;
@@ -80,7 +83,9 @@
 @property (weak, nonatomic) id<CoreDAVTaskManager> taskManager; // @synthesize taskManager=_taskManager;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property (nonatomic) unsigned long long totalBytesReceived; // @synthesize totalBytesReceived=_totalBytesReceived;
+@property BOOL totalBytesWasProcessedAsAbnormallyLarge; // @synthesize totalBytesWasProcessedAsAbnormallyLarge=_totalBytesWasProcessedAsAbnormallyLarge;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
+@property (readonly, nonatomic) NSRunLoop *workRunLoop;
 
 + (id)stringFromDepth:(int)arg1;
 + (unsigned int)uniqueQueryID;
@@ -95,7 +100,6 @@
 - (BOOL)_handleUnauthorizedAccessError:(id)arg1;
 - (BOOL)_includeGeneralHeaders;
 - (void)_logSantizedRequest:(id)arg1 withTaskID:(id)arg2;
-- (id)_osLogDescription;
 - (id)_requestForLogging;
 - (void)_sendTimeSpentInNetworkingToProvider;
 - (BOOL)_shouldCreateCredentialForBasicOrDigestAuthChallenge:(id)arg1;
@@ -128,6 +132,7 @@
 - (long long)numDownloadedElements;
 - (void)overrideRequestHeader:(id)arg1 withValue:(id)arg2;
 - (void)performCoreDAVTask;
+- (id)redactedDescription;
 - (void)reportStatusWithError:(id)arg1;
 - (id)requestBody;
 - (id)requestBodyStream;

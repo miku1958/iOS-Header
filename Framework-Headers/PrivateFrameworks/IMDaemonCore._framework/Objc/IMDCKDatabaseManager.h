@@ -15,23 +15,31 @@
     CKContainer *_manateeContainer;
     CKContainer *_nonHSA2ManateeContainer;
     IMDCKMockDatabase *_mockDatabase;
+    CKContainer *_nickNameContainer;
 }
 
 @property (readonly, nonatomic) CKContainer *manateeContainer; // @synthesize manateeContainer=_manateeContainer;
 @property (readonly, nonatomic) IMDCKMockDatabase *mockDatabase; // @synthesize mockDatabase=_mockDatabase;
+@property (readonly, nonatomic) CKContainer *nickNameContainer; // @synthesize nickNameContainer=_nickNameContainer;
 @property (readonly, nonatomic) CKContainer *nonHSA2ManateeContainer; // @synthesize nonHSA2ManateeContainer=_nonHSA2ManateeContainer;
 @property (readonly, nonatomic) CKContainer *stingRayContainer; // @synthesize stingRayContainer=_stingRayContainer;
 @property (readonly, nonatomic) CKContainer *truthContainer;
 @property (nonatomic) BOOL useStingRay; // @synthesize useStingRay=_useStingRay;
 
 + (id)sharedInstance;
+- (id)_nickNameContainer;
+- (id)_nickNameContainerIdentifier;
+- (BOOL)_serverSaysToUseOldContainer;
 - (BOOL)_useMockCloudKit;
 - (void)dealloc;
+- (void)fetchCurrentUserForNicknameContainer:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)manateeDataBase;
+- (id)nickNamePublicDatabase;
 - (id)nonHSA2ManateeDatabase;
 - (id)stingRayDatabase;
 - (id)truthDatabase;
+- (id)truthPublicDatabase;
 
 @end
 

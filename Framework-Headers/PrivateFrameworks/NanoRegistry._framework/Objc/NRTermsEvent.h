@@ -46,6 +46,7 @@
 - (void)setPresentationLocation:(int)arg1;
 - (void)setPresentationReason:(id)arg1;
 - (void)setTermsText:(id)arg1;
+- (id)termsText;
 - (void)updateEventDate;
 
 @end

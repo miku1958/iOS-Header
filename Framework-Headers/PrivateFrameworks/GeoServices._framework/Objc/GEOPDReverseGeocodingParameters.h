@@ -8,38 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDReverseGeocodingParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_extendedLocations;
     NSMutableArray *_locations;
     int _placeTypeLimit;
     BOOL _preserveOriginalLocation;
     struct {
-        unsigned int placeTypeLimit:1;
-        unsigned int preserveOriginalLocation:1;
-    } _has;
+        unsigned int has_placeTypeLimit:1;
+        unsigned int has_preserveOriginalLocation:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_extendedLocations:1;
+        unsigned int read_locations:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_extendedLocations:1;
+        unsigned int wrote_locations:1;
+        unsigned int wrote_placeTypeLimit:1;
+        unsigned int wrote_preserveOriginalLocation:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *extendedLocations; // @synthesize extendedLocations=_extendedLocations;
+@property (strong, nonatomic) NSMutableArray *extendedLocations;
 @property (nonatomic) BOOL hasPlaceTypeLimit;
 @property (nonatomic) BOOL hasPreserveOriginalLocation;
-@property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
-@property (nonatomic) int placeTypeLimit; // @synthesize placeTypeLimit=_placeTypeLimit;
-@property (nonatomic) BOOL preserveOriginalLocation; // @synthesize preserveOriginalLocation=_preserveOriginalLocation;
+@property (strong, nonatomic) NSMutableArray *locations;
+@property (nonatomic) int placeTypeLimit;
+@property (nonatomic) BOOL preserveOriginalLocation;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)extendedLocationType;
++ (BOOL)isValid:(id)arg1;
 + (Class)locationType;
 - (void).cxx_destruct;
 - (int)StringAsPlaceTypeLimit:(id)arg1;
+- (void)_addNoFlagsExtendedLocation:(id)arg1;
+- (void)_addNoFlagsLocation:(id)arg1;
+- (void)_readExtendedLocations;
+- (void)_readLocations;
 - (void)addExtendedLocation:(id)arg1;
 - (void)addLocation:(id)arg1;
 - (void)clearExtendedLocations;
 - (void)clearLocations;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -52,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)locationsCount;
 - (void)mergeFrom:(id)arg1;
 - (id)placeTypeLimitAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

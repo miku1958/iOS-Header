@@ -14,6 +14,7 @@
     unsigned long long _configurationState;
 }
 
+@property (readonly, getter=isBlocked) BOOL blocked;
 @property unsigned long long configurationState; // @synthesize configurationState=_configurationState;
 @property (readonly) HMDDevice *device; // @synthesize device=_device;
 

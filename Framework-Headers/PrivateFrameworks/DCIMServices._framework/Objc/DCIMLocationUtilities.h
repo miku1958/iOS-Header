@@ -11,6 +11,8 @@
 }
 
 + (id)_sharedGPSDateAndTimestampFormatter;
++ (struct CLLocationCoordinate2D)locationCoordinate2DFromAVAsset:(id)arg1;
++ (id)locationFromAVAsset:(id)arg1 timestampIfMissing:(id)arg2;
 + (id)locationFromImageProperties:(id)arg1;
 + (id)locationFromImageProperties:(id)arg1 timestampIfMissing:(id)arg2;
 

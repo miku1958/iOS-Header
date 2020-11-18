@@ -6,7 +6,7 @@
 
 #import <iWorkImport/TSTTableDataObject.h>
 
-@class TSTRichTextPayload, TSWPStorage;
+@class TSTRichTextPayload;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableDataRichText : TSTTableDataObject
@@ -14,13 +14,16 @@ __attribute__((visibility("hidden")))
     TSTRichTextPayload *_payload;
 }
 
-@property (readonly, nonatomic) TSWPStorage *richTextStorage;
-
++ (id)objectWithRichTextPayload:(id)arg1 refCount:(unsigned int)arg2;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeToArchive:(struct TableDataList_ListEntry *)arg1 key:(unsigned int)arg2 archiver:(id)arg3;
+- (unsigned long long)estimateByteSize;
 - (unsigned long long)hash;
 - (id)initObjectWithRichTextPayload:(id)arg1 refCount:(unsigned int)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (void)loadFromArchive:(const struct TableDataList_ListEntry *)arg1 unarchiver:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)richTextStorage;
 
 @end
 

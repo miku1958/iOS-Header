@@ -15,6 +15,7 @@
     UIViewPropertyAnimator *_animator;
 }
 
+@property (readonly, nonatomic) BOOL animated;
 @property (strong, nonatomic) UIViewPropertyAnimator *animator; // @synthesize animator=_animator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

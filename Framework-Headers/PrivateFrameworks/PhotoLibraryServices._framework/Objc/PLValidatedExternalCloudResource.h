@@ -10,26 +10,34 @@
 
 @interface PLValidatedExternalCloudResource : PLValidatedExternalResource
 {
+    short _remoteAvailability;
     short _cloudLocalState;
     short _prefetchCount;
-    NSDate *_dateCreated;
-    NSString *_itemIdentifier;
+    unsigned long long _cplType;
+    unsigned long long _sourceCplType;
+    NSDate *_masterDateCreated;
     NSDate *_lastOnDemandDownloadDate;
     NSDate *_lastPrefetchDate;
     NSDate *_prunedAt;
+    NSString *_fingerprint;
 }
 
 @property (nonatomic) short cloudLocalState; // @synthesize cloudLocalState=_cloudLocalState;
-@property (strong, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
-@property (strong, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (nonatomic) unsigned long long cplType; // @synthesize cplType=_cplType;
+@property (strong, nonatomic) NSString *fingerprint; // @synthesize fingerprint=_fingerprint;
 @property (strong, nonatomic) NSDate *lastOnDemandDownloadDate; // @synthesize lastOnDemandDownloadDate=_lastOnDemandDownloadDate;
 @property (strong, nonatomic) NSDate *lastPrefetchDate; // @synthesize lastPrefetchDate=_lastPrefetchDate;
+@property (strong, nonatomic) NSDate *masterDateCreated; // @synthesize masterDateCreated=_masterDateCreated;
 @property (nonatomic) short prefetchCount; // @synthesize prefetchCount=_prefetchCount;
 @property (strong, nonatomic) NSDate *prunedAt; // @synthesize prunedAt=_prunedAt;
+@property (nonatomic) short remoteAvailability; // @synthesize remoteAvailability=_remoteAvailability;
+@property (nonatomic) unsigned long long sourceCplType; // @synthesize sourceCplType=_sourceCplType;
 
 - (void).cxx_destruct;
-- (id)initWithCloudAttributes:(id)arg1;
+- (unsigned long long)cplTypeWithAssetID:(id)arg1;
 - (id)initWithCloudResource:(id)arg1;
+- (id)initWithInternalResource:(id)arg1;
+- (BOOL)isEqualToValidatedExternalResource:(id)arg1;
 
 @end
 

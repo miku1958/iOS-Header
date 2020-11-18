@@ -38,6 +38,7 @@
 - (void)setDisableContinuousAnimation:(BOOL)arg1;
 - (void)setIconSize:(unsigned long long)arg1;
 - (void)setVibrancyEffect:(id)arg1;
+- (BOOL)shouldFlipForRTL;
 - (void)updateWithIconDescriptor:(id)arg1 displayStyle:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (BOOL)wantsManagedVibrancyEffect;
 

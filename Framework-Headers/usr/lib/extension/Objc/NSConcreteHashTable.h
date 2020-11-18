@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (void)addObject:(id)arg1;
 - (id)allObjects;
 - (void)assign:(unsigned long long)arg1 key:(const void *)arg2;
-- (Class)classForCoder;
 - (id)copy;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;

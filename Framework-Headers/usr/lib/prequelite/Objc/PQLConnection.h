@@ -31,29 +31,36 @@
     struct cache_s *_preparedStatements;
     NSObject<OS_dispatch_source> *_stmtCacheSource;
     NSMutableArray *_stmtCacheCleanupQueue;
+    long long _changesOverride;
     NSObject<OS_dispatch_queue> *_targetQueue;
     BOOL _traced;
     BOOL _crashIfUsedAfterClose;
+    BOOL _shouldUseWALJournalMode;
     int _batchTransactionType;
     NSString *_label;
     NSURL *_url;
     CDUnknownBlockType _lockedHandler;
+    CDUnknownBlockType _busyHandler;
     CDUnknownBlockType _autoRollbackHandler;
     CDUnknownBlockType _sqliteErrorHandler;
     CDUnknownBlockType _preFlushHook;
     CDUnknownBlockType _postFlushHook;
     CDUnknownBlockType _profilingHook;
+    CDUnknownBlockType _willBeginBatchingHook;
+    CDUnknownBlockType _didFinishBatchingHook;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSError *_lastError;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType autoRollbackHandler; // @synthesize autoRollbackHandler=_autoRollbackHandler;
 @property (nonatomic) int batchTransactionType; // @synthesize batchTransactionType=_batchTransactionType;
+@property (copy, nonatomic) CDUnknownBlockType busyHandler; // @synthesize busyHandler=_busyHandler;
 @property (readonly, nonatomic) long long changes;
 @property (nonatomic) BOOL crashIfUsedAfterClose; // @synthesize crashIfUsedAfterClose=_crashIfUsedAfterClose;
 @property (readonly, nonatomic) double currentOperationDuration;
 @property (readonly, nonatomic) struct sqlite3 *dbHandle; // @synthesize dbHandle=_db;
 @property (readonly, copy) NSString *debugDescription;
+@property (copy, nonatomic) CDUnknownBlockType didFinishBatchingHook; // @synthesize didFinishBatchingHook=_didFinishBatchingHook;
 @property (readonly, nonatomic) BOOL isBatchSuspended;
 @property (readonly, nonatomic) BOOL isInBatch;
 @property (readonly, nonatomic) BOOL isInTransaction;
@@ -65,11 +72,13 @@
 @property (copy, nonatomic) CDUnknownBlockType preFlushHook; // @synthesize preFlushHook=_preFlushHook;
 @property (copy, nonatomic) CDUnknownBlockType profilingHook; // @synthesize profilingHook=_profilingHook;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (nonatomic) BOOL shouldUseWALJournalMode; // @synthesize shouldUseWALJournalMode=_shouldUseWALJournalMode;
 @property (copy, nonatomic) CDUnknownBlockType sqliteErrorHandler; // @synthesize sqliteErrorHandler=_sqliteErrorHandler;
 @property (nonatomic) unsigned long long statementCacheMaxCount;
 @property (nonatomic) unsigned long long synchronousMode;
 @property (nonatomic, getter=isTraced) BOOL traced; // @synthesize traced=_traced;
 @property (readonly, copy, nonatomic) NSURL *url; // @synthesize url=_url;
+@property (copy, nonatomic) CDUnknownBlockType willBeginBatchingHook; // @synthesize willBeginBatchingHook=_willBeginBatchingHook;
 
 + (void)initialize;
 - (void).cxx_destruct;
@@ -80,9 +89,11 @@
 - (void)_createCacheIfNeeded;
 - (id)_description:(BOOL)arg1;
 - (BOOL)_execute:(id)arg1 mustSucceed:(BOOL)arg2 bindings:(struct __va_list_tag [1])arg3;
+- (BOOL)_executeStmt:(id)arg1 mustSucceed:(BOOL)arg2;
 - (void)_fireFlushNotifications;
 - (BOOL)_fullSync;
 - (BOOL)_incrementalVacuum:(unsigned long long)arg1;
+- (id)_newStatementForBuilder:(CDUnknownBlockType)arg1;
 - (id)_newStatementForFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
 - (BOOL)_performWithFlags:(unsigned int)arg1 action:(CDUnknownBlockType)arg2 whenFlushed:(CDUnknownBlockType)arg3;
 - (void)_resetState;
@@ -98,6 +109,7 @@
 - (BOOL)execute:(id)arg1;
 - (BOOL)execute:(id)arg1 args:(struct __va_list_tag [1])arg2;
 - (BOOL)executeRaw:(id)arg1;
+- (BOOL)executeSwift:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)fetch:(id)arg1;
 - (id)fetch:(id)arg1 args:(struct __va_list_tag [1])arg2;
 - (id)fetchObject:(CDUnknownBlockType)arg1 sql:(id)arg2;
@@ -106,6 +118,9 @@
 - (id)fetchObjectOfClass:(Class)arg1 initializer:(SEL)arg2 sql:(id)arg3 args:(struct __va_list_tag [1])arg4;
 - (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2;
 - (id)fetchObjectOfClass:(Class)arg1 sql:(id)arg2 args:(struct __va_list_tag [1])arg3;
+- (id)fetchObjectOfClassSwift:(Class)arg1 query:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)fetchObjectSwift:(CDUnknownBlockType)arg1 query:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (id)fetchSwift:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)flush;
 - (void)forceBatchStart;
 - (void)groupInBatch:(CDUnknownBlockType)arg1;

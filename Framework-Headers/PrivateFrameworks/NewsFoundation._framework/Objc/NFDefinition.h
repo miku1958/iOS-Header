@@ -11,6 +11,8 @@
 
 @interface NFDefinition : NSObject
 {
+    id<NFDefinitionContainer> _privateAccessContainer;
+    id<NFDefinitionContainer> _privateAccessWeakContainer;
     BOOL _canBeOverridden;
     BOOL _canBeNil;
     unsigned long long _source;
@@ -20,7 +22,6 @@
     unsigned long long _scope;
     CDUnknownBlockType _validationBlock;
     CDUnknownBlockType _configurationBlock;
-    id<NFDefinitionContainer> _privateAccessContainer;
 }
 
 @property (nonatomic) BOOL canBeNil; // @synthesize canBeNil=_canBeNil;
@@ -28,7 +29,6 @@
 @property (strong, nonatomic) Class cls; // @synthesize cls=_cls;
 @property (copy, nonatomic) CDUnknownBlockType configurationBlock; // @synthesize configurationBlock=_configurationBlock;
 @property (copy, nonatomic) CDUnknownBlockType factory; // @synthesize factory=_factory;
-@property (strong, nonatomic) id<NFDefinitionContainer> privateAccessContainer; // @synthesize privateAccessContainer=_privateAccessContainer;
 @property (strong, nonatomic) Protocol *protocol; // @synthesize protocol=_protocol;
 @property (nonatomic) unsigned long long scope; // @synthesize scope=_scope;
 @property (nonatomic) unsigned long long source; // @synthesize source=_source;
@@ -42,8 +42,10 @@
 - (id)initWithClass:(Class)arg1 factory:(CDUnknownBlockType)arg2;
 - (id)initWithProtocol:(id)arg1 factory:(CDUnknownBlockType)arg2;
 - (id)initWithUnsafeFactory:(CDUnknownBlockType)arg1;
+- (id)privateAccessContainer;
 - (id)withConfiguration:(CDUnknownBlockType)arg1;
 - (id)withPrivateAccessInContainer:(id)arg1;
+- (id)withPrivateAccessInWeakContainer:(id)arg1;
 - (id)withValidation:(CDUnknownBlockType)arg1;
 
 @end

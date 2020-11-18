@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_flushCompletionBlocks;
 - (void)addFailureBlock:(CDUnknownBlockType)arg1;
 - (void)addFailureBlock:(CDUnknownBlockType)arg1 scheduler:(id)arg2;
@@ -35,7 +36,6 @@
 - (BOOL)cancel;
 - (CDUnknownBlockType)completionHandlerAdapter;
 - (CDUnknownBlockType)completionHandlerAdapterWithDefaultValue:(id)arg1;
-- (void)dealloc;
 - (void)didCancel;
 - (CDUnknownBlockType)errorOnlyCompletionHandlerAdapter;
 - (BOOL)finishWithError:(id)arg1;

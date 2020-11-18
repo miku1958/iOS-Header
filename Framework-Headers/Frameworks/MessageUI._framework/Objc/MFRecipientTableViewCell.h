@@ -47,8 +47,8 @@
 + (id)identifier;
 + (id)labelDetailStringAttributes;
 + (id)regularTitleStringAttributes;
+- (void).cxx_destruct;
 - (void)animateSnapshotOfLabel:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)recipient;
 - (void)setBackgroundColor:(id)arg1;

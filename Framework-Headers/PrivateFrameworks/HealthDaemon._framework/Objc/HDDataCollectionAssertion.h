@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSSet *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observerState:(id)arg3 dataCollectionManager:(id)arg4;
 
 @end

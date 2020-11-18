@@ -6,28 +6,48 @@
 
 #import <PhotosUICore/PXAssetsDataSourceManager.h>
 
+#import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 
-@class NSString, PXPhotosDataSource;
+@class NSNumber, NSString, PXPhotoKitAssetsDataSource, PXPhotosDataSource;
+@protocol PXPhotosDataSourceProvider;
 
-@interface PXPhotoKitAssetsDataSourceManager : PXAssetsDataSourceManager <PXPhotosDataSourceChangeObserver>
+@interface PXPhotoKitAssetsDataSourceManager : PXAssetsDataSourceManager <PXPhotosDataSourceChangeObserver, PXMutableAssetsDataSourceManager>
 {
     PXPhotosDataSource *_photosDataSource;
+    NSNumber *_backgroundFetchOriginSection;
+    id<PXPhotosDataSourceProvider> _photosDataSourceProvider;
 }
 
+@property (nonatomic) long long backgroundFetchOriginSection;
+@property (readonly, nonatomic) PXPhotoKitAssetsDataSource *dataSource; // @dynamic dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
+@property (strong, nonatomic) PXPhotosDataSource *photosDataSource;
+@property (strong, nonatomic) id<PXPhotosDataSourceProvider> photosDataSourceProvider; // @synthesize photosDataSourceProvider=_photosDataSourceProvider;
 @property (readonly) Class superclass;
 
++ (id)dataSourceManagerForAssetCollection:(id)arg1;
 + (id)dataSourceManagerWithAsset:(id)arg1;
 - (void).cxx_destruct;
+- (id)_createAssetsDataSourceWithPhotosDataSource:(id)arg1 withChange:(id)arg2;
+- (void)_ensurePhotosDataSource;
+- (id)createInitialDataSource;
 - (void)dealloc;
+- (BOOL)forceAccurateSection:(long long)arg1 andSectionsBeforeAndAfter:(long long)arg2;
+- (BOOL)forceAccurateSectionsIfNeeded:(id)arg1;
 - (id)init;
 - (id)initWithPhotosDataSource:(id)arg1;
+- (id)initWithPhotosDataSourceProvider:(id)arg1;
+- (id)pauseChangeDeliveryWithTimeout:(double)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
+- (void)photosDataSourceDidFinishBackgroundFetching:(id)arg1;
 - (id)photosDataSourceInterestingAssetReferences:(id)arg1;
+- (void)resumeChangeDeliveryAndBackgroundLoading:(id)arg1;
+- (void)setCurationEnabled:(BOOL)arg1 forAssetCollection:(id)arg2;
+- (void)setPhotosDataSource:(id)arg1 publishIntermediateEmptySnapshot:(BOOL)arg2;
+- (void)startBackgroundFetchIfNeeded;
 - (void)updateWithPhotosDataSource:(id)arg1 andDataSourceChange:(id)arg2;
 
 @end

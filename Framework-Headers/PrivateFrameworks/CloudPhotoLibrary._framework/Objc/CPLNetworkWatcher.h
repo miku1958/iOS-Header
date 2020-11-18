@@ -6,29 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol CPLNetworkWatcherDelegate, OS_dispatch_queue;
+@class CPLNetworkState, NSString;
+@protocol CPLNetworkWatcherDelegate, OS_dispatch_queue, OS_nw_path_monitor;
 
 @interface CPLNetworkWatcher : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
-    struct __SCNetworkReachability *_reachability;
-    unsigned int _reachabilityFlags;
-    unsigned long long _networkState;
+    NSObject<OS_nw_path_monitor> *_monitor;
+    NSString *_endPoint;
+    CPLNetworkState *_networkState;
     id<CPLNetworkWatcherDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<CPLNetworkWatcherDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSString *endPoint;
-@property (readonly, nonatomic) unsigned long long networkState; // @synthesize networkState=_networkState;
+@property (readonly, nonatomic) NSString *endPoint; // @synthesize endPoint=_endPoint;
+@property (readonly, nonatomic) CPLNetworkState *networkState; // @synthesize networkState=_networkState;
 
-+ (id)_descriptionForNetworkState:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (const char *)_reachabilityEndPoint;
-- (void)_reachabilityFlagsDidChange:(unsigned int)arg1;
-- (void)_setupReachability;
-- (void)_teardownReachability;
-- (void)_updateState:(unsigned long long)arg1;
 - (id)initWithQueue:(id)arg1;
 - (void)start;
 - (void)stop;

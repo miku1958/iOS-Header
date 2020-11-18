@@ -13,7 +13,7 @@
 }
 
 @property (strong, nonatomic) NSOrderedSet *entryAssets; // @dynamic entryAssets;
-@property (readonly, nonatomic) NSMutableOrderedSet *mutableEntryAssets;
+@property (readonly, weak, nonatomic) NSMutableOrderedSet *mutableEntryAssets;
 
 + (id)entityName;
 - (BOOL)shouldBeRemovedFromPhotoLibrary:(id)arg1;

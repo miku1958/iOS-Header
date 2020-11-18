@@ -16,6 +16,7 @@
 
 + (void)ensureHandlerSetup;
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)_enqueueIMAVChatForNetworkActivation:(id)arg1;
 - (void)_handleIncomingAVChatForNotification:(id)arg1;
 - (void)_handleIncomingWithAccount:(id)arg1 fromHandle:(id)arg2 conference:(id)arg3 properites:(id)arg4;
@@ -33,7 +34,6 @@
 - (void)account:(id)arg1 relay:(id)arg2 handleCancel:(id)arg3 fromPerson:(id)arg4;
 - (void)account:(id)arg1 relay:(id)arg2 handleInitate:(id)arg3 fromPerson:(id)arg4;
 - (void)account:(id)arg1 relay:(id)arg2 handleUpdate:(id)arg3 fromPerson:(id)arg4;
-- (void)dealloc;
 - (void)pendingACRequestComplete;
 - (void)pendingVCRequestComplete;
 - (void)persistentProperty:(id)arg1 changedTo:(id)arg2 from:(id)arg3;

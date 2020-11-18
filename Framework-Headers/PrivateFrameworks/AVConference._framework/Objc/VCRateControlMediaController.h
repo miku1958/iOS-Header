@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _isBasebandFlushing;
     BOOL _isAudioStall;
     BOOL _isInThrottlingMode;
+    BOOL _allowVideoStop;
     int _audioFractionTier;
     double _lastAudioFractionChangeTime;
     double _lastAudioEnoughRateTime;
@@ -63,6 +64,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) unsigned int afrcRemoteEstimatedBandwidth; // @synthesize afrcRemoteEstimatedBandwidth=_afrcRemoteEstimatedBandwidth;
+@property (nonatomic) BOOL allowVideoStop; // @synthesize allowVideoStop=_allowVideoStop;
 @property (nonatomic) int audioFractionTier; // @synthesize audioFractionTier=_audioFractionTier;
 @property (nonatomic) unsigned int audioSendingBitrate; // @synthesize audioSendingBitrate=_audioSendingBitrate;
 @property (nonatomic) int basebandFlushCount; // @synthesize basebandFlushCount=_basebandFlushCount;
@@ -86,7 +88,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 @property (nonatomic) unsigned int videoSendingBitrate; // @synthesize videoSendingBitrate=_videoSendingBitrate;
 
-- (void)computePacketLossWithTimestamp:(unsigned short)arg1 totalRemoteReceivedPackets:(unsigned int)arg2 packetBurstLoss:(unsigned int)arg3 packetLossRate:(double *)arg4 mostBurstLoss:(unsigned int *)arg5;
+- (void)computePacketLossWithRemoteInfo:(struct VCRCMediaPLPFromRemoteInfo *)arg1;
 - (void)dealloc;
 - (void)decreaseFlushCount:(int)arg1;
 - (BOOL)didMediaGetFlushedWithPayloadType:(unsigned char)arg1 transactionID:(unsigned short)arg2 packetDropped:(unsigned short)arg3 sequenceNumberArray:(unsigned short *)arg4;
@@ -102,11 +104,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)rampDownAudioFraction;
 - (BOOL)rampUpAudioFraction;
 - (void)recordVideoRefreshFrameWithTimestamp:(unsigned int)arg1 payloadType:(unsigned char)arg2 packetCount:(unsigned int)arg3 isKeyFrame:(BOOL)arg4;
+- (void)resetAFRCVideoSendingBitrate;
 - (void)resumeVideoByVCRateControl;
 - (void)scheduleProbingSequenceAtTime:(double)arg1;
 - (void)scheduleProbingSequenceWithFrameSize:(unsigned int)arg1 paddingBytes:(unsigned int)arg2 isProbingSequenceScheduled:(BOOL *)arg3;
 - (void)stopVideoByVCRateControl;
-- (void)updateBasebandSuggestionWithStatistics:(CDStruct_48a7b5a5)arg1;
+- (void)updateBasebandSuggestionWithStatistics:(CDStruct_b21f1e06)arg1;
 - (void)updateLargeFrameSizeWithBandwidth:(unsigned int)arg1;
 - (void)updateProbingLargeFrameSizeCap;
 

@@ -15,39 +15,36 @@
 {
     NSMutableArray *_elements;
     FBSDisplayConfiguration *_displayConfiguration;
-    long long _displayType;
-    long long _backlightLevel;
     long long _interfaceOrientation;
-    struct CGRect _bounds;
-    struct CGRect _referenceBounds;
+    long long _backlightLevel;
     NSDate *_timestamp;
 }
 
-@property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
+@property (readonly, nonatomic) struct CGRect bounds; // @dynamic bounds;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayBacklightLevel; // @synthesize displayBacklightLevel=_backlightLevel;
 @property (strong, nonatomic) FBSDisplayConfiguration *displayConfiguration; // @synthesize displayConfiguration=_displayConfiguration;
-@property (nonatomic) long long displayType; // @synthesize displayType=_displayType;
-@property (copy, nonatomic) NSArray *elements; // @synthesize elements=_elements;
+@property (readonly, copy, nonatomic) NSArray *elements; // @synthesize elements=_elements;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
-@property (readonly, nonatomic) struct CGRect referenceBounds; // @synthesize referenceBounds=_referenceBounds;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
 - (void).cxx_destruct;
 - (id)_initWithElements:(id)arg1;
 - (void)_sortElements;
-- (void)addElement:(id)arg1;
+- (id)addElement:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)display;
+- (long long)displayType;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (void)finalizeLayout;
 - (id)init;
 - (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (struct CGRect)referenceBounds;
 - (void)removeElement:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

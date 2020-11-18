@@ -23,6 +23,7 @@
 @property (weak, nonatomic) id<TKVibrationRecorderViewControllerDelegate> vibrationRecorderViewControllerDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)canBeShownFromSuspendedState;
 - (void)dealloc;
 - (id)initWithVibratorController:(id)arg1;

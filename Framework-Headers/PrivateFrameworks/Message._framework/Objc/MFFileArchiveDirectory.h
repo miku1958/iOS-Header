@@ -29,9 +29,9 @@
 + (struct _NSRange)_rangeOfCentralDirectory:(long long)arg1;
 + (id)archiveDirectory;
 + (struct _NSRange)rangeOfCentralDirectoryInData:(id)arg1;
+- (void).cxx_destruct;
 - (void)_scrubContentDirectory;
 - (id)archiveEntries;
-- (void)dealloc;
 - (id)description;
 - (BOOL)inputWithData:(id)arg1;
 - (BOOL)inputWithURL:(id)arg1;

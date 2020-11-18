@@ -8,51 +8,74 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, PBUnknownFields;
+@class NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOResource : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOTileSetRegion *_regions;
     unsigned long long _regionsCount;
     unsigned long long _regionsSpace;
     NSData *_checksum;
-    int _connectionType;
     NSString *_filename;
     NSMutableArray *_filters;
+    int _connectionType;
     unsigned int _preferWiFiAllowedStaleThreshold;
     int _resourceType;
     struct {
-        unsigned int connectionType:1;
-        unsigned int preferWiFiAllowedStaleThreshold:1;
-        unsigned int resourceType:1;
-    } _has;
+        unsigned int has_connectionType:1;
+        unsigned int has_preferWiFiAllowedStaleThreshold:1;
+        unsigned int has_resourceType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_regions:1;
+        unsigned int read_checksum:1;
+        unsigned int read_filename:1;
+        unsigned int read_filters:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_regions:1;
+        unsigned int wrote_checksum:1;
+        unsigned int wrote_filename:1;
+        unsigned int wrote_filters:1;
+        unsigned int wrote_connectionType:1;
+        unsigned int wrote_preferWiFiAllowedStaleThreshold:1;
+        unsigned int wrote_resourceType:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSData *checksum; // @synthesize checksum=_checksum;
-@property (nonatomic) int connectionType; // @synthesize connectionType=_connectionType;
-@property (strong, nonatomic) NSString *filename; // @synthesize filename=_filename;
-@property (strong, nonatomic) NSMutableArray *filters; // @synthesize filters=_filters;
+@property (strong, nonatomic) NSData *checksum;
+@property (nonatomic) int connectionType;
+@property (strong, nonatomic) NSString *filename;
+@property (strong, nonatomic) NSMutableArray *filters;
 @property (readonly, nonatomic) BOOL hasChecksum;
 @property (nonatomic) BOOL hasConnectionType;
 @property (readonly, nonatomic) BOOL hasFilename;
 @property (nonatomic) BOOL hasPreferWiFiAllowedStaleThreshold;
 @property (nonatomic) BOOL hasResourceType;
-@property (nonatomic) unsigned int preferWiFiAllowedStaleThreshold; // @synthesize preferWiFiAllowedStaleThreshold=_preferWiFiAllowedStaleThreshold;
+@property (nonatomic) unsigned int preferWiFiAllowedStaleThreshold;
 @property (readonly, nonatomic) struct GEOTileSetRegion *regions;
 @property (readonly, nonatomic) unsigned long long regionsCount;
-@property (nonatomic) int resourceType; // @synthesize resourceType=_resourceType;
+@property (nonatomic) int resourceType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)filterType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsConnectionType:(id)arg1;
 - (int)StringAsResourceType:(id)arg1;
+- (void)_addNoFlagsFilter:(id)arg1;
+- (void)_addNoFlagsRegion:(struct GEOTileSetRegion)arg1;
 - (BOOL)_geo_isRelevantForScales:(id)arg1 scenarios:(id)arg2;
+- (void)_readChecksum;
+- (void)_readFilename;
+- (void)_readFilters;
+- (void)_readRegions;
 - (void)addFilter:(id)arg1;
 - (void)addRegion:(struct GEOTileSetRegion)arg1;
 - (void)clearFilters;
 - (void)clearRegions;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (id)connectionTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -64,6 +87,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (struct GEOTileSetRegion)regionAtIndex:(unsigned long long)arg1;
 - (id)resourceTypeAsString:(int)arg1;

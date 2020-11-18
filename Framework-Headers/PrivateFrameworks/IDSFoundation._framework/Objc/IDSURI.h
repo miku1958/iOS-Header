@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *prefixedURI; // @synthesize prefixedURI=_prefixedURI;
 @property (readonly, nonatomic) NSString *unprefixedURI;
 
++ (id)URIWithPrefixedURI:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

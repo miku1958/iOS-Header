@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldFindEdgeBehind;
 - (id)_tileFinderForMap:(id)arg1 center:(CDStruct_c3b9c2ee)arg2 radius:(double)arg3;
 - (void)dealloc;
-- (id)initWithMap:(id)arg1 roadFeature:(CDStruct_a2ef2718 *)arg2 shouldFlip:(BOOL)arg3;
+- (id)initWithMap:(id)arg1 roadFeature:(CDStruct_c8b5ad3f *)arg2 shouldFlip:(BOOL)arg3;
 
 @end
 

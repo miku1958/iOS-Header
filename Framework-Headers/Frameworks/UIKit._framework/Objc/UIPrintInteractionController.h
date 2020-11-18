@@ -12,7 +12,7 @@
 @interface UIPrintInteractionController : NSObject
 {
     BOOL _hidesNumberOfCopies;
-    BOOL _isManagedContent;
+    BOOL _isContentManaged;
     CDUnknownBlockType _completionHandler;
     unsigned long long _backgroundTaskIdentifier;
     NSObject<OS_dispatch_queue> *_previewQueue;
@@ -31,7 +31,7 @@
 }
 
 @property (weak, nonatomic) id<UIPrintInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) BOOL isManagedContent; // @synthesize isManagedContent=_isManagedContent;
+@property (nonatomic) BOOL isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property (readonly, nonatomic) long long pageCount;
 @property (strong, nonatomic) NSArray *pageRanges;
 @property (strong, nonatomic) UIPrintPaper *paper;
@@ -76,11 +76,12 @@
 - (double)_getCutLengthFromDelegateForPaper:(id)arg1;
 - (id)_init;
 - (void)_manualPrintPage;
-- (id)_newPDFPreviewURLWithPath:(id)arg1 isManagedContent:(BOOL)arg2;
+- (id)_newPDFPreviewURLWithPath:(id)arg1 isContentManaged:(BOOL)arg2;
 - (struct CGContext *)_newSaveContext:(id)arg1 withMediaRect:(struct CGRect)arg2;
 - (id)_paperForContentType:(long long)arg1;
 - (id)_paperForPDFItem:(id)arg1 withDuplexMode:(long long)arg2;
 - (void)_preparePrintInfo;
+- (BOOL)_presentAnimated:(BOOL)arg1 hostingScene:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_printItem:(id)arg1;
 - (struct CGSize)_printItemContentSize;
 - (void)_printPage;
@@ -105,6 +106,7 @@
 - (BOOL)presentFromRect:(struct CGRect)arg1 inView:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)printToPrinter:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)savePDFToURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)savePDFToURL:(id)arg1 showProgress:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

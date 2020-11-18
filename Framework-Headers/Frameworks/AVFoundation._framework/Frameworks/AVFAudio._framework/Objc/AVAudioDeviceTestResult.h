@@ -15,17 +15,21 @@
     long long _inputID;
     long long _outputID;
     NSData *_data;
+    double _sampleRate;
+    double _correlationValue;
 }
 
+@property (nonatomic) double correlationValue; // @synthesize correlationValue=_correlationValue;
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
 @property (nonatomic) long long inputID; // @synthesize inputID=_inputID;
 @property (nonatomic) long long outputID; // @synthesize outputID=_outputID;
+@property (nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithData:(id)arg1 inputID:(long long)arg2 outputID:(long long)arg3;
+- (id)initWithData:(id)arg1 inputID:(long long)arg2 outputID:(long long)arg3 sampleRate:(double)arg4 correlationValue:(double)arg5;
 
 @end
 

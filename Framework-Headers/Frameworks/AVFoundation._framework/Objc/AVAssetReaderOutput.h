@@ -40,7 +40,6 @@
 - (struct opaqueCMSampleBuffer *)copyNextSampleBuffer;
 - (id)currentTimeRanges;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)markConfigurationAsFinal;
 - (BOOL)maximizePowerEfficiency;

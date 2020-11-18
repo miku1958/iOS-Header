@@ -14,7 +14,10 @@ __attribute__((visibility("hidden")))
     BOOL _reverseShadow;
     UIButton *_button;
     NSDictionary *_cachedDefaultAttributes;
+    BOOL _fontIsDefaultForIdiom;
 }
+
+@property (readonly, nonatomic) BOOL _fontIsDefaultForIdiom; // @synthesize _fontIsDefaultForIdiom;
 
 + (id)_defaultAttributes;
 - (void).cxx_destruct;
@@ -22,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)_initWithFrame:(struct CGRect)arg1 button:(id)arg2;
 - (void)_invalidateCachedDefaultAttributes;
 - (double)_paddingForBaselineSpacingFromEdge:(int)arg1 toNeighborEdge:(int)arg2;
+- (void)_setFont:(id)arg1 isDefaultForIdiom:(BOOL)arg2;
 - (void)_setMinimumFontSize:(double)arg1;
 - (void)_setWantsAutolayout;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;

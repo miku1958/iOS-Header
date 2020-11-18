@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     _UIButtonBarLayout *_representativeLayout;
     BOOL _compact;
     BOOL _useGroupSizing;
+    BOOL _suppressSpacing;
     UIBarButtonItemGroup *_group;
     UILayoutGuide *_groupSizeGuide;
     CDUnknownBlockType _itemViewGenerator;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIBarButtonItemGroup *group; // @synthesize group=_group;
 @property (readonly, nonatomic) UILayoutGuide *groupSizeGuide; // @synthesize groupSizeGuide=_groupSizeGuide;
 @property (copy, nonatomic) CDUnknownBlockType itemViewGenerator; // @synthesize itemViewGenerator=_itemViewGenerator;
+@property (nonatomic) BOOL suppressSpacing; // @synthesize suppressSpacing=_suppressSpacing;
 @property (nonatomic) BOOL useGroupSizing; // @synthesize useGroupSizing=_useGroupSizing;
 
 - (void).cxx_destruct;
@@ -40,8 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)_iterateConfiguredLayouts:(CDUnknownBlockType)arg1;
 - (id)_newLayoutForBarButtonItem:(id)arg1 useGroupSizing:(BOOL)arg2;
 - (id)_representativeLayout;
-- (void)_updateGroupSizing;
 - (id)description;
+- (void)dirtyLayoutForPlainAppearanceChange:(BOOL)arg1 doneAppearanceChanged:(BOOL)arg2;
 - (id)initWithLayoutMetrics:(id)arg1;
 - (id)initWithLayoutMetrics:(id)arg1 barButtonItemGroup:(id)arg2;
 - (id)layoutForBarButtonItem:(id)arg1;

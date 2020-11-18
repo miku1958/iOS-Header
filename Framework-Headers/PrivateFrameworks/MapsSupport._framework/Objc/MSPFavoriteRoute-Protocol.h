@@ -9,8 +9,10 @@
 @class GEOComposedWaypoint;
 
 @protocol MSPFavoriteRoute <MSPFavorite>
-- (GEOComposedWaypoint *)endWaypoint;
-- (GEOComposedWaypoint *)startWaypoint;
-- (int)transportType;
+
+@property (readonly, nonatomic) GEOComposedWaypoint *endWaypoint;
+@property (readonly, nonatomic) GEOComposedWaypoint *startWaypoint;
+@property (readonly, nonatomic) int transportType;
+
 @end
 

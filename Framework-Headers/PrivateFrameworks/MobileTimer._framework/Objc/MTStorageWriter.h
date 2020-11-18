@@ -6,15 +6,17 @@
 
 #import <Foundation/NSCoder.h>
 
-#import <MobileTimer/MTCoder-Protocol.h>
+#import <MobileTimer/MTSerializer-Protocol.h>
 
 @class NSMutableArray;
 
-@interface MTStorageWriter : NSCoder <MTCoder>
+@interface MTStorageWriter : NSCoder <MTSerializer>
 {
     NSMutableArray *_stack;
 }
 
+@property (readonly, nonatomic) NSCoder *mtCoder;
+@property (readonly, nonatomic) unsigned long long mtType;
 @property (strong, nonatomic) NSMutableArray *stack; // @synthesize stack=_stack;
 
 - (void).cxx_destruct;
@@ -32,9 +34,6 @@
 - (void)encodeObject:(id)arg1 forKey:(id)arg2;
 - (id)encodedDictionary;
 - (id)init;
-- (BOOL)mt_isReadingFromPersistence;
-- (BOOL)mt_isWritingToPersistence;
-- (BOOL)mt_isWritingToStorage;
 
 @end
 

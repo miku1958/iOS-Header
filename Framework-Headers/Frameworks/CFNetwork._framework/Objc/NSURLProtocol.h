@@ -20,6 +20,7 @@
 
 + (id)_makeRequestCanonicalByMakingRequestURLCanonical:(id)arg1;
 + (Class)_protocolClassForRequest:(id)arg1;
++ (Class)_protocolClassForRequest:(id)arg1 skipAppSSO:(BOOL)arg2;
 + (BOOL)canInitWithRequest:(id)arg1;
 + (BOOL)canInitWithTask:(id)arg1;
 + (id)canonicalRequestForRequest:(id)arg1;
@@ -31,6 +32,7 @@
 + (void)setProperty:(id)arg1 forKey:(id)arg2 inRequest:(id)arg3;
 + (void)unregisterClass:(Class)arg1;
 - (void)dealloc;
+- (id)init;
 - (id)initWithRequest:(id)arg1 cachedResponse:(id)arg2 client:(id)arg3;
 - (id)initWithTask:(id)arg1 cachedResponse:(id)arg2 client:(id)arg3;
 - (void)startLoading;

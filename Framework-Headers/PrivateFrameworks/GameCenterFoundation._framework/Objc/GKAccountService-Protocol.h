@@ -6,10 +6,16 @@
 
 #import <GameCenterFoundation/NSObject-Protocol.h>
 
+@class NSString;
+
 @protocol GKAccountService <NSObject>
 - (oneway void)authenticatePlayerWithExistingCredentialsWithHandler:(void (^)(GKAuthenticateResponse *, NSError *))arg1;
 - (oneway void)authenticationWasCancelled;
 - (oneway void)generateIdentityVerificationSignatureWithHandler:(void (^)(NSDictionary *, NSError *))arg1;
+- (oneway void)getLastPersonalizationVersionDisplayedForSignedInPlayerWithHandler:(void (^)(NSString *, NSError *))arg1;
+- (oneway void)getLastPrivacyNoticeVersionDisplayedForSignedInPlayerWithHandler:(void (^)(unsigned long long, NSError *))arg1;
 - (oneway void)resetCredentialsWithHandler:(void (^)(NSError *))arg1;
+- (oneway void)setLastPersonalizationVersionDisplayedForSignedInPlayer:(NSString *)arg1;
+- (oneway void)setLastPrivacyNoticeVersionDisplayedForSignedInPlayer:(unsigned long long)arg1;
 @end
 

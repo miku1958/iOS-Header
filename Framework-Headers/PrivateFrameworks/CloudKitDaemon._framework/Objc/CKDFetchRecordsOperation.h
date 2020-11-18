@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _useCachedEtags;
     BOOL _useRecordCache;
     BOOL _forcePCSDecrypt;
+    BOOL _skipDecryption;
     BOOL _shouldFetchAssetContent;
     BOOL _shouldFetchAssetContentInMemory;
     NSArray *_fullRecordsToFetch;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
     CKDRecordCache *_cache;
     NSMutableArray *_recordIDsToRefetch;
     NSMutableDictionary *_keyOrErrorForHostname;
+    NSMutableArray *_shareRecordsToUpdate;
     NSDictionary *_webSharingIdentityDataByRecordID;
 }
 
@@ -64,8 +66,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *recordIDsToRefetch; // @synthesize recordIDsToRefetch=_recordIDsToRefetch;
 @property (strong, nonatomic) NSDictionary *recordIDsToVersionETags; // @synthesize recordIDsToVersionETags=_recordIDsToVersionETags;
 @property (nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
+@property (strong, nonatomic) NSMutableArray *shareRecordsToUpdate; // @synthesize shareRecordsToUpdate=_shareRecordsToUpdate;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
 @property (nonatomic) BOOL shouldFetchAssetContentInMemory; // @synthesize shouldFetchAssetContentInMemory=_shouldFetchAssetContentInMemory;
+@property (nonatomic) BOOL skipDecryption; // @synthesize skipDecryption=_skipDecryption;
 @property (nonatomic) BOOL useCachedEtags; // @synthesize useCachedEtags=_useCachedEtags;
 @property (nonatomic) BOOL useRecordCache; // @synthesize useRecordCache=_useRecordCache;
 @property (strong, nonatomic) NSDictionary *webSharingIdentityDataByRecordID; // @synthesize webSharingIdentityDataByRecordID=_webSharingIdentityDataByRecordID;
@@ -73,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_addDownloadTaskForRecord:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)_continueHandleFetchedRecord:(id)arg1 recordID:(id)arg2;
+- (void)_decryptPropertiesIfNeededForRecord:(id)arg1 record:(id)arg2;
 - (void)_decryptPropertiesOnRecord:(id)arg1 recordID:(id)arg2;
 - (void)_didDownloadAssetsWithError:(id)arg1;
 - (void)_downloadAssets;
@@ -81,8 +86,11 @@ __attribute__((visibility("hidden")))
 - (void)_finishAllDownloadTasksWithError:(id)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_handleRecordFetch:(id)arg1 recordID:(id)arg2 etagMatched:(BOOL)arg3 responseCode:(id)arg4;
+- (void)_handleSharePCSPrepForShare:(id)arg1 recordID:(id)arg2;
 - (int)_prepareAsset:(id)arg1 record:(id)arg2 recordKey:(id)arg3 assetTransferOptions:(id)arg4;
+- (void)_saveUpdatedShareRecords;
 - (id)activityCreate;
+- (id)desiredIndexedListKeys;
 - (id)errorForRecordID:(id)arg1;
 - (void)fetchRecordsWithIDs:(id)arg1 andFullRecords:(id)arg2;
 - (void)finishWithError:(id)arg1;

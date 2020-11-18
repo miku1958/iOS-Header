@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (readonly, nonatomic) unsigned long long ignoreDocumentGutter; // @dynamic ignoreDocumentGutter;
 @property (readonly, nonatomic) unsigned long long ignoreDocumentMargin; // @dynamic ignoreDocumentMargin;
+@property (readonly, nonatomic) unsigned long long ignoreViewportPadding; // @dynamic ignoreViewportPadding;
 @property (readonly, nonatomic) id<SXEdgeSpacing> margin; // @dynamic margin;
 @property (readonly, nonatomic) struct _SXConvertibleValue maximumContentWidth; // @dynamic maximumContentWidth;
 @property (readonly, nonatomic) struct _SXConvertibleValue maximumWidth; // @dynamic maximumWidth;
@@ -39,6 +40,7 @@
 - (unsigned long long)horizontalContentAlignmentWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)ignoreDocumentGutterWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)ignoreDocumentMarginWithValue:(id)arg1 withType:(int)arg2;
+- (unsigned long long)ignoreViewportPaddingWithValue:(id)arg1 withType:(int)arg2;
 - (id)paddingWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)sideForValue:(id)arg1 withType:(int)arg2;
 

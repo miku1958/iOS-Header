@@ -36,9 +36,12 @@
 
 - (void)beginUsing:(void (^)(NSError *))arg1;
 - (BOOL)beginUsingWithError:(id *)arg1;
+- (void)beginUsingWithSubsystemOptions:(struct NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
+- (BOOL)beginUsingWithSubsystemOptions:(struct NSDictionary *)arg1 error:(id *)arg2;
 - (id<PKPlugIn>)createInstanceWithUUID:(NSUUID *)arg1;
 - (NSUserDefaults *)defaults;
 - (void)endUsing:(void (^)(NSError *))arg1;
+- (BOOL)endUsingWithError:(id *)arg1;
 - (void)localizedInfoDictionaryForKeys:(NSArray *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setHostPrincipal:(id)arg1 withProtocol:(Protocol *)arg2;
 - (void)setReplyQueue:(NSObject<OS_dispatch_queue> *)arg1;

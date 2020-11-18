@@ -6,18 +6,22 @@
 
 #import <UIKit/UIView.h>
 
-@class MediaControlsContainerView, MediaControlsTimeControl, MediaControlsTransportStackView;
+@class MediaControlsContainerView, MediaControlsSeparatorView, MediaControlsTimeControl, MediaControlsTransportStackView;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsParentContainerView : UIView
 {
     long long _style;
     long long _selectedMode;
     MediaControlsContainerView *_containerView;
     UIView *_routingView;
+    MediaControlsSeparatorView *_topDividerView;
+    MediaControlsSeparatorView *_bottomDividerView;
     UIView *_mediaControlsRoutingPickerView;
     long long _routingViewControllerAnimationCount;
 }
 
+@property (strong, nonatomic) MediaControlsSeparatorView *bottomDividerView; // @synthesize bottomDividerView=_bottomDividerView;
 @property (strong, nonatomic) MediaControlsContainerView *containerView; // @synthesize containerView=_containerView;
 @property (strong, nonatomic) UIView *mediaControlsRoutingPickerView; // @synthesize mediaControlsRoutingPickerView=_mediaControlsRoutingPickerView;
 @property (strong, nonatomic) UIView *routingView; // @synthesize routingView=_routingView;
@@ -25,6 +29,7 @@
 @property (nonatomic) long long selectedMode; // @synthesize selectedMode=_selectedMode;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) MediaControlsTimeControl *timeControl;
+@property (strong, nonatomic) MediaControlsSeparatorView *topDividerView; // @synthesize topDividerView=_topDividerView;
 @property (strong, nonatomic) MediaControlsTransportStackView *transportStackView;
 
 - (void).cxx_destruct;

@@ -21,10 +21,15 @@
 @property (strong) id<AFServiceHelper> serviceHelper; // @synthesize serviceHelper=_serviceHelper;
 
 - (void).cxx_destruct;
+- (void)_executeRemoteCommand:(id)arg1 peerInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)cancelOperationsForRequestID:(id)arg1;
 - (void)executeCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)executeCommand:(id)arg1 peerInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithClientLiteWithConnectionName:(id)arg1;
 - (id)initWithServiceHelper:(id)arg1 withConnectionName:(id)arg2;
+- (void)rebootScripter;
+- (void)resetScriptExecutorCache;
+- (void)runMaintenanceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)warmUpWithSignal:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

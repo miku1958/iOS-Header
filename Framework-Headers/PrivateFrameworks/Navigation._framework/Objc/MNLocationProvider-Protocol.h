@@ -26,6 +26,7 @@
 @property (nonatomic, getter=isLocationServicesPreferencesDialogEnabled) BOOL locationServicesPreferencesDialogEnabled;
 @property (nonatomic) BOOL matchInfoEnabled;
 @property (readonly, nonatomic) double timeScale;
+@property (readonly, nonatomic) unsigned long long traceVersion;
 @property (readonly, nonatomic) BOOL usesCLMapCorrection;
 
 - (void)requestWhenInUseAuthorization;
@@ -39,5 +40,9 @@
 - (void)stopUpdatingLocation;
 - (void)stopUpdatingVehicleHeading;
 - (void)stopUpdatingVehicleSpeed;
+
+@optional
+- (id)initWithEffectiveBundle:(NSBundle *)arg1;
+- (id)initWithEffectiveBundleIdentifier:(NSString *)arg1;
 @end
 

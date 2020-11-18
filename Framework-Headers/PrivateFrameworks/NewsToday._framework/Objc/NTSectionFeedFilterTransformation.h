@@ -26,7 +26,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithTodayData:(id)arg1 readArticlesFilterMethod:(int)arg2 seenArticlesFilterMethod:(int)arg3 minimumTimeSinceFirstSeenToFilter:(double)arg4 supplementalFeedFilterOptions:(long long)arg5 embedsLimit:(unsigned long long)arg6 otherArticleIDs:(id)arg7 otherClusterIDs:(id)arg8 filterDate:(id)arg9;
+- (id)initWithTodayData:(id)arg1 configurationManager:(id)arg2 readArticlesFilterMethod:(int)arg3 seenArticlesFilterMethod:(int)arg4 minimumTimeSinceFirstSeenToFilter:(double)arg5 supplementalFeedFilterOptions:(long long)arg6 embedsLimit:(unsigned long long)arg7 otherArticleIDs:(id)arg8 otherClusterIDs:(id)arg9 filterDate:(id)arg10;
 - (id)transformFeedItems:(id)arg1;
 
 @end

@@ -39,10 +39,11 @@
 - (void)continuityDidStartTrackingPeer:(id)arg1 error:(id)arg2;
 - (void)continuityDidStartTrackingPeer:(id)arg1 forType:(long long)arg2 error:(id)arg3;
 - (void)continuityDidStopAdvertisingOfType:(long long)arg1;
+- (void)continuityDidStopAdvertisingOfType:(long long)arg1 withError:(id)arg2;
 - (void)continuityDidStopScanningForType:(long long)arg1;
 - (void)continuityDidStopTrackingPeer:(id)arg1;
 - (void)continuityDidStopTrackingPeer:(id)arg1 forType:(long long)arg2;
-- (void)continuityDidUpdateState:(long long)arg1;
+- (void)continuityDidUpdateStateToState:(long long)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 delegateContext:(id)arg3;
 - (void)startAdvertisingOfType:(long long)arg1 withData:(id)arg2 withOptions:(id)arg3;

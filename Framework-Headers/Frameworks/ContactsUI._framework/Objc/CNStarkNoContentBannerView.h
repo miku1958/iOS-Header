@@ -6,22 +6,46 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UILabel;
+@class NSMutableArray, NSString, UIButton, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CNStarkNoContentBannerView : UIView
 {
+    BOOL _siriButtonEnabled;
+    BOOL _siriButtonSelected;
     UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
+    UIButton *_siriButton;
+    NSMutableArray *_constraintsForTitleLabel;
+    NSMutableArray *_constraintsForTitleLabelAndSiriButton;
 }
 
-@property (strong) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property (strong, nonatomic) NSString *subtitleString;
+@property (strong) NSMutableArray *constraintsForTitleLabel; // @synthesize constraintsForTitleLabel=_constraintsForTitleLabel;
+@property (strong) NSMutableArray *constraintsForTitleLabelAndSiriButton; // @synthesize constraintsForTitleLabelAndSiriButton=_constraintsForTitleLabelAndSiriButton;
+@property (strong) UIButton *siriButton; // @synthesize siriButton=_siriButton;
+@property (nonatomic) BOOL siriButtonEnabled; // @synthesize siriButtonEnabled=_siriButtonEnabled;
+@property (nonatomic) BOOL siriButtonSelected; // @synthesize siriButtonSelected=_siriButtonSelected;
 @property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) NSString *titleString;
 
 - (void).cxx_destruct;
+- (BOOL)canBecomeFocused;
+- (void)choose;
+- (void)clickGestureDidUpdate:(id)arg1;
+- (void)deselect;
+- (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)select;
+- (void)setupClickGestureRecognizer;
+- (void)setupConstraintsForTitleLabelAndSiriButton;
+- (void)setupConstraintsforTitleLabel;
+- (void)setupSiriButton;
+- (void)setupTitleLabel;
+- (void)siriButtonTapped:(id)arg1;
+- (void)siriButtonTouchDown:(id)arg1;
+- (void)siriButtonTouchUp:(id)arg1;
+- (void)stateUpdated;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateConstraints;
 
 @end
 

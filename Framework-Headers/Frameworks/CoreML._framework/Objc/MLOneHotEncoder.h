@@ -25,7 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) MLModelInterface *interface;
 @property (readonly) MLModelMetadata *metadata;
-@property (readonly, nonatomic) MLModelDescription *modelDescription;
+@property (strong, nonatomic) MLModelDescription *modelDescription;
 @property (readonly, nonatomic) BOOL ouputSparse; // @synthesize ouputSparse=_ouputSparse;
 @property (readonly) Class superclass;
 

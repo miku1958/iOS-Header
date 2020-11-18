@@ -11,12 +11,11 @@
 }
 
 + (id)serviceFacilityIdentifier;
+- (id)applicationShortcutItemsOfTypes:(unsigned long long)arg1 forBundleIdentifier:(id)arg2;
+- (void)deleteSnapshotsForApplicationIdentifier:(id)arg1;
 - (void)fetchApplicationShortcutItemsOfTypes:(unsigned long long)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)fetchCarApplicationInformationForBundleIdentifier:(id)arg1 inVehicle:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)fetchIconStateForVehicleId:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)fetchWhitePointAdaptivityStyleForDisplayId:(unsigned int)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)resetIconStateForVehicleId:(id)arg1;
-- (void)setIconState:(id)arg1 hiddenIcons:(id)arg2 forVehicleId:(id)arg3;
+- (void)triggerShowAllWindowsForApplicationBundleIdentifier:(id)arg1;
 - (void)updateDynamicApplicationShortcutItems:(id)arg1 bundleIdentifier:(id)arg2;
 
 @end

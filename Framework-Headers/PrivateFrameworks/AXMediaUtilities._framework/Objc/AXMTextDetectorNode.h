@@ -8,33 +8,27 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMTextLayoutManager, FKTextDetector;
+@class AXMTextLayoutManager, NSArray;
 
 @interface AXMTextDetectorNode : AXMEvaluationNode <NSSecureCoding>
 {
-    FKTextDetector *_textDetector;
     AXMTextLayoutManager *_textLayoutManager;
-    BOOL _detectDiacritics;
-    BOOL _returnSubFeatures;
-    BOOL _minimizeFalsePositives;
-    unsigned long long _detectionFlavor;
-    double _minimumCharacterHeight;
+    NSArray *_recognitionLanguages;
+    NSArray *_customWords;
 }
 
-@property (nonatomic) BOOL detectDiacritics; // @synthesize detectDiacritics=_detectDiacritics;
-@property (nonatomic) unsigned long long detectionFlavor; // @synthesize detectionFlavor=_detectionFlavor;
-@property (nonatomic) BOOL minimizeFalsePositives; // @synthesize minimizeFalsePositives=_minimizeFalsePositives;
-@property (nonatomic) double minimumCharacterHeight; // @synthesize minimumCharacterHeight=_minimumCharacterHeight;
-@property (nonatomic) BOOL returnSubFeatures; // @synthesize returnSubFeatures=_returnSubFeatures;
+@property (copy, nonatomic) NSArray *customWords; // @synthesize customWords=_customWords;
+@property (copy, nonatomic) NSArray *recognitionLanguages; // @synthesize recognitionLanguages=_recognitionLanguages;
 
++ (long long)_vnRequestTextRecognitionLevelForAXMTextRecognitionLevel:(unsigned long long)arg1;
 + (BOOL)isSupported;
-+ (id)supportedDetectionLanguages;
++ (id)supportedRecognitionLanguagesForFlavor:(unsigned long long)arg1 textRecognitionLevel:(unsigned long long)arg2 error:(id *)arg3;
 + (BOOL)supportsSecureCoding;
 + (id)title;
 - (void).cxx_destruct;
-- (void)_evaluateWithFutharkFlavor:(id)arg1;
-- (void)_evaluateWithVisionFlavor:(id)arg1;
-- (id)_visionTextDetectionOptionForLangauge:(id)arg1;
+- (void)_evaluateByDetectingTextRectangles:(id)arg1 textDetectionOptions:(id)arg2;
+- (void)_evaluateByRecognizingText:(id)arg1 textDetectionOptions:(id)arg2;
+- (id)_visionTextDetectionOptionForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluate:(id)arg1;
 - (void)freeResources;

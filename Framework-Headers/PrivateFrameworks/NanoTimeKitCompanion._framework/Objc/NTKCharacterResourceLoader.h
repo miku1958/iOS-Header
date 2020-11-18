@@ -6,42 +6,64 @@
 
 #import <objc/NSObject.h>
 
-@class CLKDevice, CLKUIMmapFile, EAGLContext, NSBundle, NSMutableArray, NSMutableDictionary;
+@class CLKDevice, CLKUIMmapFile, NSBundle, NSMutableArray, NSMutableDictionary;
+@protocol MTLBuffer, MTLDevice, MTLRenderPipelineState;
 
 @interface NTKCharacterResourceLoader : NSObject
 {
-    CLKDevice *_device;
-    EAGLContext *_context;
+    CLKDevice *_clkDevice;
     NSBundle *_bundle;
+    id<MTLDevice> _mtlDevice;
     unsigned long long _clients;
     CLKUIMmapFile *_commonBankLatn;
     CLKUIMmapFile *_commonBankArab;
     CLKUIMmapFile *_commonBankDeva;
     CLKUIMmapFile *_minnieBank;
     CLKUIMmapFile *_mickeyBank;
-    struct NTKCharacterPrograms _programs;
+    id<MTLRenderPipelineState> _renderPipelines[4];
+    unsigned long long _viewMtlPixelFormat;
     NSMutableDictionary *_mapping;
     NSMutableArray *_array;
     NSMutableArray *_arrayByLocale[3];
+    id<MTLBuffer> _mtlBuffer;
+    unsigned long long _bufferOffsetBackground;
+    unsigned long long _bufferOffsetBody;
+    unsigned long long _bufferOffsetFoot;
+    unsigned long long _bufferOffsetArm;
+    unsigned long long _bufferOffsetHand;
+    unsigned long long _bufferOffsetHead;
+    unsigned long long _bufferOffsetSkirt;
+    unsigned long long _bufferOffsetFlower;
 }
 
-@property (readonly, nonatomic) EAGLContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) unsigned long long bufferOffsetArm; // @synthesize bufferOffsetArm=_bufferOffsetArm;
+@property (readonly, nonatomic) unsigned long long bufferOffsetBackground; // @synthesize bufferOffsetBackground=_bufferOffsetBackground;
+@property (readonly, nonatomic) unsigned long long bufferOffsetBody; // @synthesize bufferOffsetBody=_bufferOffsetBody;
+@property (readonly, nonatomic) unsigned long long bufferOffsetFlower; // @synthesize bufferOffsetFlower=_bufferOffsetFlower;
+@property (readonly, nonatomic) unsigned long long bufferOffsetFoot; // @synthesize bufferOffsetFoot=_bufferOffsetFoot;
+@property (readonly, nonatomic) unsigned long long bufferOffsetHand; // @synthesize bufferOffsetHand=_bufferOffsetHand;
+@property (readonly, nonatomic) unsigned long long bufferOffsetHead; // @synthesize bufferOffsetHead=_bufferOffsetHead;
+@property (readonly, nonatomic) unsigned long long bufferOffsetSkirt; // @synthesize bufferOffsetSkirt=_bufferOffsetSkirt;
+@property (readonly, nonatomic) id<MTLBuffer> mtlBuffer; // @synthesize mtlBuffer=_mtlBuffer;
 
 + (void)_deallocInstanceForDevice:(id)arg1;
-+ (id)sharedInstanceForDevice:(id)arg1;
++ (id)sharedInstanceForDevice:(id)arg1 withPixelFormat:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (void)_asyncDeallocInstance;
 - (id)_loadBank:(id)arg1 toArrays:(unsigned long long)arg2 allowNewKeys:(BOOL)arg3;
+- (void)_loadMTLBufferData;
 - (void)_loadPrograms;
 - (void)_loadTextures;
+- (void)_setupPipelineForType:(unsigned long long)arg1 vertex:(id)arg2 fragment:(id)arg3 blending:(BOOL)arg4 inLibrary:(id)arg5;
 - (void)addClient;
-- (void)bindProgram:(unsigned long long)arg1;
-- (void)bindTexture:(id)arg1;
 - (void)dealloc;
-- (id)initForDevice:(id)arg1;
+- (id)getMTLTexture:(id)arg1;
+- (id)getPipelineForProgramType:(unsigned long long)arg1;
+- (id)initForDevice:(id)arg1 withPixelFormat:(unsigned long long)arg2;
 - (void)localeChanged;
+- (id)mtlTextureWithName:(id)arg1;
+- (id)mtlTextureWithName:(id)arg1 prefix:(id)arg2;
 - (void)prime;
-- (unsigned int)programUniformLocation:(unsigned long long)arg1 uniform:(int)arg2;
 - (void)removeClient;
 - (id)textureWithName:(id)arg1;
 - (id)textureWithName:(id)arg1 prefix:(id)arg2;

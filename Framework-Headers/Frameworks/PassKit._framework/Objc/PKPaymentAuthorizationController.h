@@ -31,6 +31,7 @@
 + (BOOL)canMakePayments;
 + (BOOL)canMakePaymentsUsingNetworks:(id)arg1;
 + (BOOL)canMakePaymentsUsingNetworks:(id)arg1 capabilities:(unsigned long long)arg2;
++ (void)paymentServicesMerchantURLForAPIType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)dismissWithCompletion:(CDUnknownBlockType)arg1;

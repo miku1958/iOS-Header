@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class KCAESGCMDuplexSession, KCSRPServerContext, NSData, NSString;
+@class KCAESGCMDuplexSession, KCSRPServerContext, NSData, NSMutableDictionary, NSString, OTControl, OTJoiningConfiguration;
 @protocol KCJoiningAcceptCircleDelegate, KCJoiningAcceptSecretDelegate;
 
 @interface KCJoiningAcceptSession : NSObject
@@ -20,11 +20,19 @@
     KCAESGCMDuplexSession *_session;
     NSData *_startMessage;
     NSString *_piggy_uuid;
+    NSData *_octagon;
+    OTJoiningConfiguration *_joiningConfiguration;
+    OTControl *_otControl;
+    NSMutableDictionary *_defaults;
 }
 
 @property (readonly) NSObject<KCJoiningAcceptCircleDelegate> *circleDelegate; // @synthesize circleDelegate=_circleDelegate;
 @property (readonly) KCSRPServerContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) NSMutableDictionary *defaults; // @synthesize defaults=_defaults;
 @property (readonly) unsigned long long dsid; // @synthesize dsid=_dsid;
+@property (strong, nonatomic) OTJoiningConfiguration *joiningConfiguration; // @synthesize joiningConfiguration=_joiningConfiguration;
+@property (strong) NSData *octagon; // @synthesize octagon=_octagon;
+@property (strong, nonatomic) OTControl *otControl; // @synthesize otControl=_otControl;
 @property (strong) NSString *piggy_uuid; // @synthesize piggy_uuid=_piggy_uuid;
 @property int piggy_version; // @synthesize piggy_version=_piggy_version;
 @property (readonly) NSObject<KCJoiningAcceptSecretDelegate> *secretDelegate; // @synthesize secretDelegate=_secretDelegate;
@@ -35,6 +43,7 @@
 + (id)sessionWithInitialMessage:(id)arg1 secretDelegate:(id)arg2 circleDelegate:(id)arg3 dsid:(unsigned long long)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
 - (id)copyChallengeMessage:(id *)arg1;
+- (id)createPairingMessageFromJoiningMessage:(id)arg1 error:(id *)arg2;
 - (id)description;
 - (id)initWithSecretDelegate:(id)arg1 circleDelegate:(id)arg2 dsid:(unsigned long long)arg3 rng:(struct ccrng_state *)arg4 error:(id *)arg5;
 - (BOOL)isDone;
@@ -42,7 +51,11 @@
 - (id)processInitialMessage:(id)arg1 error:(id *)arg2;
 - (id)processMessage:(id)arg1 error:(id *)arg2;
 - (id)processResponse:(id)arg1 error:(id *)arg2;
+- (id)processSOSApplication:(id)arg1 error:(id *)arg2;
+- (void)setConfiguration:(id)arg1;
+- (void)setControlObject:(id)arg1;
 - (BOOL)setupSession:(id *)arg1;
+- (BOOL)shouldAcceptOctagonRequests;
 - (id)stateString;
 
 @end

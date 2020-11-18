@@ -14,7 +14,6 @@
 
 @property (readonly, nonatomic) UIColor *fadeColor; // @dynamic fadeColor;
 
-+ (id)typeString;
 - (Class)handlerClass;
 - (BOOL)userControllable;
 

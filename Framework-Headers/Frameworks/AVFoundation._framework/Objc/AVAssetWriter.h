@@ -10,6 +10,7 @@
 #import <AVFoundation/AVWeakObservable-Protocol.h>
 
 @class AVAssetWriterHelper, AVAssetWriterInternal, NSArray, NSError, NSString, NSURL;
+@protocol AVAssetWriterDelegate;
 
 @interface AVAssetWriter : NSObject <AVWeakObservable, AVKeyPathDependencyHost>
 {
@@ -18,6 +19,7 @@
 
 @property (readonly, nonatomic) NSArray *availableMediaTypes;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak) id<AVAssetWriterDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSURL *directoryForTemporaryFiles;
 @property (readonly) NSError *error;
@@ -35,6 +37,7 @@
 + (id)assetWriterWithURL:(id)arg1 fileType:(id)arg2 error:(id *)arg3;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)initialize;
+- (BOOL)_initInternalObject;
 - (BOOL)_setHelper:(id)arg1 ifCurrentHelper:(id)arg2;
 - (BOOL)_setHelper:(id)arg1 ifCurrentHelper:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_supportsSampleReferencesReturningError:(id *)arg1;
@@ -49,11 +52,12 @@
 - (void)dealloc;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
 - (void)endSessionAtSourceTime:(CDStruct_1b6d18a9)arg1;
-- (void)finalize;
 - (BOOL)finishWriting;
 - (id)finishWritingDelegate;
 - (void)finishWritingWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)flush;
 - (id)init;
+- (id)initWithFileType:(id)arg1 error:(id *)arg2;
 - (id)initWithURL:(id)arg1 fileType:(id)arg2 error:(id *)arg3;
 - (id)inputGroups;
 - (CDStruct_1b6d18a9)movieFragmentInterval;

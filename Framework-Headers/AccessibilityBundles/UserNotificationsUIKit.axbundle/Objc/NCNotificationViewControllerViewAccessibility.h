@@ -13,10 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityScroll:(long long)arg1;
-- (unsigned long long)accessibilityTraits;
 
 @end
 

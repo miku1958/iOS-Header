@@ -27,6 +27,8 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_initializeAsEmptySectionedCollection;
+- (id)allItems;
+- (id)allSections;
 - (id)changeDetailsToSectionedCollection:(id)arg1 isEqualBlock:(CDUnknownBlockType)arg2 isUpdatedBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;

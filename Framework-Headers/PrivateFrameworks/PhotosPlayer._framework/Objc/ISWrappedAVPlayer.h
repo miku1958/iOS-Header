@@ -6,7 +6,7 @@
 
 #import <PhotosPlayer/ISObservable.h>
 
-@class AVPlayer, AVPlayerItem, AVQueuePlayer, AVVideoComposition, ISWrappedAVAudioSession, NSArray, NSError, NSMutableDictionary, NSObject;
+@class AVPlayer, AVPlayerItem, AVVideoComposition, ISWrappedAVAudioSession, NSArray, NSError, NSMutableDictionary, NSObject;
 @protocol ISWrappedAVPlayerDelegate, OS_dispatch_queue;
 
 @interface ISWrappedAVPlayer : ISObservable
@@ -16,13 +16,13 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     AVPlayer *_playerQueue_avPlayer;
     ISWrappedAVAudioSession *_playerQueue_wrappedAudioSession;
-    AVQueuePlayer *_playerQueue_avQueuePlayer;
     id _playerQueue_playerItemDidPlayToEndObserver;
     AVPlayerItem *_ivarQueue_currentItem;
     long long _ivarQueue_status;
     NSError *_ivarQueue_error;
     float _ivarQueue_rate;
     float _ivarQueue_volume;
+    CDStruct_e83c9415 _ivarQueue_loopTimeRange;
     BOOL _ivarQueue_loopingEnabled;
     BOOL _ivarQueue_audioEnabled;
     long long _ivarQueue_itemStatus;
@@ -41,6 +41,7 @@
 }
 
 @property (weak) id<ISWrappedAVPlayerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (getter=isLoopingEnabled) BOOL loopingEnabled;
 
 + (id)observedAVPIKeysAndContexts;
 + (id)observedAVPKeys;
@@ -55,7 +56,6 @@
 - (void)_performPlayerTransaction:(CDUnknownBlockType)arg1;
 - (void)_playerItemDidPlayToEnd:(id)arg1;
 - (id)_playerQueue_avPlayer;
-- (id)_playerQueue_avQueuePlayer;
 - (void)_playerQueue_startObservingPlayerItem:(id)arg1;
 - (void)_playerQueue_stopObservingPlayerItem:(id)arg1;
 - (void)_playerQueue_updatePlayerItemAudioTracksEnabled;
@@ -77,13 +77,12 @@
 - (id)error;
 - (id)init;
 - (BOOL)isAudioEnabled;
-- (BOOL)isLoopingEnabled;
 - (CDStruct_1b6d18a9)itemForwardPlaybackEndTime;
+- (CDStruct_e83c9415)loopTimeRange;
 - (id)mutableChangeObject;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause;
 - (void)playToTime:(CDStruct_1b6d18a9)arg1 withInitialRate:(float)arg2 overDuration:(double)arg3 progressHandler:(CDUnknownBlockType)arg4;
-- (void)prepareForReuseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prerollAtRate:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (float)rate;
 - (void)removeTimeObserver:(id)arg1;
@@ -96,7 +95,7 @@
 - (void)setDimensionsOfReservedVideoMemory:(struct CGSize)arg1;
 - (void)setItemBlendsVideoFrames:(BOOL)arg1;
 - (void)setItemForwardEndPlaybackTime:(CDStruct_1b6d18a9)arg1;
-- (void)setLoopingEnabled:(BOOL)arg1;
+- (void)setLoopTimeRange:(CDStruct_e83c9415)arg1;
 - (void)setLoopingEnabled:(BOOL)arg1 withTemplateItem:(id)arg2;
 - (void)setRate:(float)arg1;
 - (void)setRate:(float)arg1 time:(CDStruct_1b6d18a9)arg2 atHostTime:(CDStruct_1b6d18a9)arg3;

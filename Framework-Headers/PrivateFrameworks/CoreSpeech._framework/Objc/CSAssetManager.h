@@ -11,22 +11,25 @@
 #import <CoreSpeech/CSSpeechEndpointAssetMetaUpdateMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerAssetMetaUpdateMonitorDelegate-Protocol.h>
 
-@class CSPolicy, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class CSAssetDownloadingOption, CSPolicy, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CSAssetManager : NSObject <CSVoiceTriggerAssetMetaUpdateMonitorDelegate, CSSpeechEndpointAssetMetaUpdateMonitorDelegate, CSAssetControllerDelegate, CSLanguageCodeUpdateMonitorDelegate>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     CSPolicy *_enablePolicy;
     NSString *_currentLanguageCode;
+    CSAssetDownloadingOption *_downloadingOption;
     NSMutableDictionary *_observers;
-    BOOL _daemonRunningMode;
+    NSObject<OS_dispatch_source> *_downloadTimer;
+    long long _downloadTimerCount;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, nonatomic) NSString *currentLanguageCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
@@ -36,19 +39,23 @@
 - (void)CSSpeechEndpointAssetMetaUpdateMonitor:(id)arg1 didReceiveNewSpeechEndpointAssetMetaData:(BOOL)arg2;
 - (void)CSVoiceTriggerAssetMetaUpdateMonitor:(id)arg1 didReceiveNewVoiceTriggerAssetMetaData:(BOOL)arg2;
 - (BOOL)_canFetchRemoteAsset:(unsigned long long)arg1;
+- (void)_createPeriodicalDownloadTimer;
 - (void)_fetchRemoteMetaData;
+- (void)_startPeriodicalDownload;
+- (void)_stopPeriodicalDownload;
 - (void)addObserver:(id)arg1 forAssetType:(unsigned long long)arg2;
+- (id)allInstalledAssetsOfType:(unsigned long long)arg1 language:(id)arg2;
 - (id)assetForCurrentLanguageOfType:(unsigned long long)arg1;
 - (void)assetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)assetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)assetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithDaemonMode:(BOOL)arg1;
+- (id)initWithDownloadOption:(id)arg1;
 - (id)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1;
 - (void)installedAssetForCurrentLanguageOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void)installedAssetOfType:(unsigned long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeObserver:(id)arg1 forAssetType:(unsigned long long)arg2;
-- (void)setDaemonRunningMode:(BOOL)arg1;
+- (void)setAssetDownloadingOption:(id)arg1;
 
 @end
 

@@ -20,14 +20,14 @@
 + (void)initialize;
 - (id)_inputForConnection:(id)arg1;
 - (id)_recommendedAudioOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 fileType:(id)arg3;
-- (id)_recommendedVideoOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodec:(id)arg3;
+- (id)_recommendedVideoOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodec:(id)arg3 isIris:(BOOL)arg4;
 - (id)addConnection:(id)arg1 error:(id *)arg2;
 - (BOOL)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
 - (BOOL)appliesOrientationWithPhysicalRotationForConnection:(id)arg1;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)attachToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)bumpChangeSeed;
-- (BOOL)canAddConnectionForMediaType:(id)arg1;
+- (BOOL)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (int)changeSeed;
 - (id)connectionMediaTypes;
 - (id)connectionWithMediaType:(id)arg1;
@@ -35,16 +35,16 @@
 - (void)detachFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (id)firstEnabledConnectionForMediaType:(id)arg1;
+- (void)handleChangedActiveFormat:(id)arg1 forDevice:(id)arg2;
 - (void)handleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (BOOL)hasRequiredOutputFormatForConnection:(id)arg1;
 - (id)initSubclass;
 - (id)liveConnections;
 - (struct CGRect)metadataOutputRectOfInterestForRect:(struct CGRect)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct CGSize)outputSizeForSourceFormat:(id)arg1;
 - (void)performBlockOnSessionNotifyingThread:(CDUnknownBlockType)arg1;
 - (void)performFigCaptureSessionOperationSafelyUsingBlock:(CDUnknownBlockType)arg1;
-- (id)recommendedOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodecType:(id)arg3 fileType:(id)arg4;
+- (id)recommendedOutputSettingsForConnection:(id)arg1 sourceSettings:(id)arg2 videoCodecType:(id)arg3 fileType:(id)arg4 isIris:(BOOL)arg5;
 - (struct CGRect)rectForMetadataOutputRectOfInterest:(struct CGRect)arg1;
 - (void)removeConnection:(id)arg1;
 - (unsigned int)requiredOutputFormatForConnection:(id)arg1;
@@ -55,6 +55,7 @@
 - (id)sinkID;
 - (id)transformedMetadataObjectForMetadataObject:(id)arg1 connection:(id)arg2;
 - (void)updateMetadataTransformForSourceFormat:(id)arg1;
+- (BOOL)updateVideoSettingsForConnection:(id)arg1;
 
 @end
 

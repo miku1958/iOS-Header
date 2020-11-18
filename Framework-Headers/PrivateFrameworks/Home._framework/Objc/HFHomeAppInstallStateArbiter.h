@@ -8,7 +8,7 @@
 
 #import <Home/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class NAFuture, NSHashTable, NSString;
+@class NAFuture, NSHashTable, NSString, NSURL;
 
 @interface HFHomeAppInstallStateArbiter : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSURL *homeAppBundleURL;
 @property (strong, nonatomic) NAFuture *homeAppInstalledFuture; // @synthesize homeAppInstalledFuture=_homeAppInstalledFuture;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly) Class superclass;

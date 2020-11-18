@@ -11,6 +11,6 @@
 - (void)getAvailableOutputDevicesWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)getDevicePresenceDetectedWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)getDiscoveryModeWithCompletion:(void (^)(unsigned int, NSError *))arg1;
-- (void)setDiscoveryMode:(unsigned int)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)setDiscoveryMode:(unsigned int)arg1 enableThrottling:(BOOL)arg2 withCompletion:(void (^)(NSError *))arg3;
 @end
 

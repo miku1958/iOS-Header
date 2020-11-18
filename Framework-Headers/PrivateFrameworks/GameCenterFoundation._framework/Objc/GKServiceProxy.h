@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class GKDaemonProxy, GKPlayerInternal, GKThreadsafeDictionary, NSDictionary;
+@protocol GKAccountService, GKAccountServicePrivate, GKAnalyticsService, GKAnalyticsServicePrivate, GKBulletinService, GKBulletinServicePrivate, GKChallengeService, GKChallengeServicePrivate, GKFriendService, GKFriendServicePrivate, GKGameService, GKGameServicePrivate, GKGameSessionService, GKGameSessionServicePrivate, GKGameStatService, GKGameStatServicePrivate, GKMultiplayerService, GKMultiplayerServicePrivate, GKProfileService, GKProfileServicePrivate, GKTournamentService, GKTournamentServicePrivate, GKTurnBasedService, GKTurnBasedServicePrivate, GKUtilityService, GKUtilityServicePrivate;
 
 @interface GKServiceProxy : NSObject
 {
@@ -17,46 +18,48 @@
     GKPlayerInternal *_localPlayer;
 }
 
+@property (readonly) id<GKAccountService> accountService;
+@property (readonly) id<GKAccountServicePrivate> accountServicePrivate;
+@property (readonly) id<GKAnalyticsService> analyticsService;
+@property (readonly) id<GKAnalyticsServicePrivate> analyticsServicePrivate;
 @property (strong) GKDaemonProxy *baseProxy; // @synthesize baseProxy=_baseProxy;
+@property (readonly) id<GKBulletinService> bulletinService;
+@property (readonly) id<GKBulletinServicePrivate> bulletinServicePrivate;
+@property (readonly) id<GKChallengeService> challengeService;
+@property (readonly) id<GKChallengeServicePrivate> challengeServicePrivate;
+@property (readonly) id<GKFriendService> friendService;
+@property (readonly) id<GKFriendServicePrivate> friendServicePrivate;
+@property (readonly) id<GKGameService> gameService;
+@property (readonly) id<GKGameServicePrivate> gameServicePrivate;
+@property (readonly) id<GKGameSessionService> gameSessionService;
+@property (readonly) id<GKGameSessionServicePrivate> gameSessionServicePrivate;
+@property (readonly) id<GKGameStatService> gameStatService;
+@property (readonly) id<GKGameStatServicePrivate> gameStatServicePrivate;
 @property (strong) GKPlayerInternal *localPlayer; // @synthesize localPlayer=_localPlayer;
+@property (readonly) id<GKMultiplayerService> multiplayerService;
+@property (readonly) id<GKMultiplayerServicePrivate> multiplayerServicePrivate;
 @property (strong) GKThreadsafeDictionary *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
+@property (readonly) id<GKProfileService> profileService;
+@property (readonly) id<GKProfileServicePrivate> profileServicePrivate;
 @property unsigned int serviceGeneration; // @synthesize serviceGeneration=_serviceGeneration;
 @property (strong) NSDictionary *serviceLookup; // @synthesize serviceLookup=_serviceLookup;
+@property (readonly) id<GKTournamentService> tournamentService;
+@property (readonly) id<GKTournamentServicePrivate> tournamentServicePrivate;
+@property (readonly) id<GKTurnBasedService> turnBasedService;
+@property (readonly) id<GKTurnBasedServicePrivate> turnBasedServicePrivate;
+@property (readonly) id<GKUtilityService> utilityService;
+@property (readonly) id<GKUtilityServicePrivate> utilityServicePrivate;
 
-- (id)accountService;
-- (id)accountServicePrivate;
 - (void)addService:(id)arg1 forProtocol:(id)arg2 toLookup:(id)arg3;
-- (id)analyticsService;
-- (id)analyticsServicePrivate;
 - (void)buildServiceLookup;
 - (void)buildServiceLookupIfNeccessary;
-- (id)bulletinService;
-- (id)bulletinServicePrivate;
-- (id)challengeService;
-- (id)challengeServicePrivate;
 - (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
-- (id)friendService;
-- (id)friendServicePrivate;
-- (id)gameService;
-- (id)gameServicePrivate;
-- (id)gameSessionService;
-- (id)gameSessionServicePrivate;
-- (id)gameStatService;
-- (id)gameStatServicePrivate;
 - (id)initWithPlayer:(id)arg1;
 - (id)methodSignatureForProtocol:(id)arg1 selector:(SEL)arg2;
 - (id)methodSignatureForSelector:(SEL)arg1;
-- (id)multiplayerService;
-- (id)multiplayerServicePrivate;
-- (id)profileService;
-- (id)profileServicePrivate;
 - (void)replyToDuplicatesForRequest:(id)arg1 withInvocation:(id)arg2 queue:(id)arg3;
 - (id)requestIdentifierForInvocation:(id)arg1;
-- (id)turnBasedService;
-- (id)turnBasedServicePrivate;
-- (id)utilityService;
-- (id)utilityServicePrivate;
 
 @end
 

@@ -31,33 +31,27 @@
     UILabel *_sixAMHourLabel;
     UILabel *_noonHourLabel;
     UILabel *_sixPMHourLabel;
-    NSArray *_moveGraphData;
-    NSArray *_exerciseGraphData;
-    NSArray *_standGraphData;
 }
-
-@property (strong, nonatomic) NSArray *exerciseGraphData; // @synthesize exerciseGraphData=_exerciseGraphData;
-@property (strong, nonatomic) NSArray *moveGraphData; // @synthesize moveGraphData=_moveGraphData;
-@property (strong, nonatomic) NSArray *standGraphData; // @synthesize standGraphData=_standGraphData;
 
 - (void).cxx_destruct;
 - (void)_createHourFormatter;
 - (void)_currentLocaleChangeOccurred;
 - (void)_drawChartsBarsInContext:(struct CGContext *)arg1 lineNumber:(unsigned long long)arg2 xPosition:(double)arg3;
 - (double)_exercisePointRelativeHeightForValue:(double)arg1;
-- (void)_generateChartPoints;
 - (id)_generateChartPointsForQuantityStatisticsInfo:(id)arg1 withUnit:(id)arg2 accumulateFractionalValues:(BOOL)arg3;
-- (void)_generateExerciseChartPoints;
-- (void)_generateMoveChartPoints;
-- (void)_generateStandChartPointsForStandHourInfo:(id)arg1;
+- (id)_generateStandChartPointsForStandHourInfo:(id)arg1;
 - (id)_keyForDate:(id)arg1;
 - (double)_movePointRelativeHeightForValue:(double)arg1;
 - (void)_registerForNotifications;
+- (id)_timeStringByRemovingSpacesFromTimeString:(id)arg1;
 - (void)_updateHourLabelsText;
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
+- (void)setExerciseGraphData:(id)arg1;
+- (void)setMoveGraphData:(id)arg1;
+- (void)setStandGraphData:(id)arg1;
 
 @end
 

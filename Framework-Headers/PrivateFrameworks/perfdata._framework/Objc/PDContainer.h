@@ -20,12 +20,14 @@
     NSString *_primaryMetricFilter;
     NSString *_generator;
     NSDictionary *_variables;
+    NSDictionary *_labels;
     NSMutableDictionary *_perfdata;
 }
 
 @property (strong, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) NSMutableDictionary *extensions; // @synthesize extensions=_extensions;
 @property (strong, nonatomic) NSString *generator; // @synthesize generator=_generator;
+@property (strong, nonatomic) NSDictionary *labels; // @synthesize labels=_labels;
 @property (nonatomic) BOOL largerBetter; // @synthesize largerBetter=_largerBetter;
 @property (readonly, nonatomic) unsigned long long measurementCount;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;

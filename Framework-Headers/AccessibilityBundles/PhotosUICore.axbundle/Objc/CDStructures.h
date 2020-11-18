@@ -41,3 +41,12 @@ struct PXTileIdentifier {
     unsigned long long _field2[10];
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    long long _field1;
+    int _field2;
+    unsigned int _field3;
+    long long _field4;
+} CDStruct_198678f7;
+

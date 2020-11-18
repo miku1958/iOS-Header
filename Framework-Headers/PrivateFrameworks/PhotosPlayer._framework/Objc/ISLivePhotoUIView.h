@@ -8,28 +8,23 @@
 
 #import <PhotosPlayer/ISChangeObserver-Protocol.h>
 #import <PhotosPlayer/UIGestureRecognizerDelegate-Protocol.h>
-#import <PhotosPlayer/UIInteractionProgressObserver-Protocol.h>
 
-@class ISLivePhotoPlaybackFilter, ISLivePhotoPlayer, NSString, UIGestureRecognizer, UIImpactFeedbackGenerator, UILabel, UIPreviewForceInteractionProgress;
+@class ISLivePhotoPlayer, ISTouchLivePhotoPlaybackFilter, NSString, UIGestureRecognizer, UIImpactFeedbackGenerator, UILabel;
 
-@interface ISLivePhotoUIView : ISBasePlayerUIView <UIInteractionProgressObserver, UIGestureRecognizerDelegate, ISChangeObserver>
+@interface ISLivePhotoUIView : ISBasePlayerUIView <UIGestureRecognizerDelegate, ISChangeObserver>
 {
     UIImpactFeedbackGenerator *_feedbackGenerator;
     BOOL __playingVitality;
-    BOOL __useForceTouch;
     UIGestureRecognizer *_playbackGestureRecognizer;
-    ISLivePhotoPlaybackFilter *__playbackFilter;
-    UIPreviewForceInteractionProgress *__interactionProgress;
+    ISTouchLivePhotoPlaybackFilter *__playbackFilter;
     UILabel *__overlayLabel;
     long long __overlayDismissalID;
 }
 
-@property (readonly, nonatomic) UIPreviewForceInteractionProgress *_interactionProgress; // @synthesize _interactionProgress=__interactionProgress;
 @property (nonatomic, setter=_setOverlayDismissalID:) long long _overlayDismissalID; // @synthesize _overlayDismissalID=__overlayDismissalID;
 @property (readonly, nonatomic) UILabel *_overlayLabel; // @synthesize _overlayLabel=__overlayLabel;
-@property (strong, nonatomic, setter=_setPlaybackFilter:) ISLivePhotoPlaybackFilter *_playbackFilter; // @synthesize _playbackFilter=__playbackFilter;
+@property (strong, nonatomic, setter=_setPlaybackFilter:) ISTouchLivePhotoPlaybackFilter *_playbackFilter; // @synthesize _playbackFilter=__playbackFilter;
 @property (nonatomic, setter=_setPlayingVitality:) BOOL _playingVitality; // @synthesize _playingVitality=__playingVitality;
-@property (nonatomic, setter=_setUseForceTouch:) BOOL _useForceTouch; // @synthesize _useForceTouch=__useForceTouch;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -41,11 +36,9 @@
 - (void)_ISLivePhotoUIViewCommonInitialization;
 - (void)_dismissOverlayLabel:(long long)arg1;
 - (void)_handlePlaybackRecognizer:(id)arg1;
-- (Class)_playbackFilterClass;
 - (void)_playerDidChangeHinting;
 - (void)_playerDidChangePlaybackStyle;
 - (void)_showOverlayLabel;
-- (void)_updateForceInteractionProgress;
 - (void)_updateGestureRecognizerParameters;
 - (void)_updatePlaybackFilter;
 - (void)_updatePlaybackFilterInput;
@@ -55,12 +48,8 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)interactionProgress:(id)arg1 didEnd:(BOOL)arg2;
-- (void)interactionProgressDidUpdate:(id)arg1;
 - (id)livePhotoPlayer;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

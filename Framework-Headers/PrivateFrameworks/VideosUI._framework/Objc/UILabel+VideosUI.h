@@ -7,6 +7,10 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (VideosUI)
+- (long long)_textAlignmentFromElementAlignment:(unsigned long long)arg1;
+- (void)configureForIKTextElement:(id)arg1 fontDescriptor:(id)arg2 textStyle:(id)arg3;
+- (void)configureForIKTextElement:(id)arg1 fontDescriptor:(id)arg2 textStyle:(id)arg3 capitalize:(BOOL)arg4;
+- (void)configureForIKTextElement:(id)arg1 fontDescriptor:(id)arg2 textStyle:(id)arg3 capitalize:(BOOL)arg4 overrideWithTraitCollection:(id)arg5;
 - (double)vui_heightToBaseline;
 @end
 

@@ -6,7 +6,7 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSData, NSError, NSString;
+@class NSData, NSError, NSString, NSURL;
 
 @interface CKCodeFunctionInvokeOperation : CKDatabaseOperation
 {
@@ -17,10 +17,12 @@
     NSString *_serviceName;
     NSString *_functionName;
     NSData *_serializedRequest;
+    NSURL *_explicitBaseURL;
     NSData *_serializedResponse;
     NSError *_responseError;
 }
 
+@property (copy, nonatomic) NSURL *explicitBaseURL; // @synthesize explicitBaseURL=_explicitBaseURL;
 @property (copy, nonatomic) CDUnknownBlockType functionInvokeCompletionBlock; // @synthesize functionInvokeCompletionBlock=_functionInvokeCompletionBlock;
 @property (copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property (nonatomic) BOOL local; // @synthesize local=_local;
@@ -41,6 +43,8 @@
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3;
 - (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 local:(BOOL)arg4;
+- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedRequest:(id)arg3;
+- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedRequest:(id)arg3 local:(BOOL)arg4;
 - (void)performCKOperation;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface CSAsset : NSObject
 {
@@ -46,8 +46,12 @@
 @property (readonly, nonatomic) NSString *configVersion; // @synthesize configVersion=_configVersion;
 @property (readonly, nonatomic) NSDictionary *dictionary;
 @property (readonly, nonatomic) NSString *hashFromResourcePath;
+@property (readonly, nonatomic) NSString *languageDetectorConfigFile;
+@property (readonly, nonatomic) NSArray *languageDetectorSupportedLocale;
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
 @property (readonly, nonatomic) NSString *resourcePath; // @synthesize resourcePath=_resourcePath;
+@property (readonly, nonatomic) NSString *spgConfigFile;
+@property (readonly, nonatomic) NSString *startOfSpeechDetectorConfigFile;
 
 + (id)assetForAssetType:(unsigned long long)arg1 resourcePath:(id)arg2 configVersion:(id)arg3;
 + (id)defaultFallBackAssetForHearst;
@@ -59,8 +63,10 @@
 - (id)_decodeJson:(id)arg1;
 - (id)_sha1:(id)arg1;
 - (id)_sha256:(id)arg1;
+- (id)configFilepathForDictationOrigin:(unsigned long long)arg1;
 - (BOOL)containsCategory:(id)arg1;
 - (BOOL)containsKey:(id)arg1 category:(id)arg2;
+- (id)createRTModelWithLocale:(id)arg1;
 - (id)description;
 - (BOOL)getBoolForKey:(id)arg1 category:(id)arg2 default:(BOOL)arg3;
 - (id)getNumberForKey:(id)arg1 category:(id)arg2 default:(id)arg3;

@@ -26,6 +26,7 @@
 - (void)_indexItemWithIdentifier:(id)arg1 bundleID:(id)arg2 startDate:(id)arg3 pc:(id)arg4;
 - (void)didEngageResultWithRankingItem:(id)arg1 startDate:(id)arg2 protectionClass:(id)arg3;
 - (void)fetchBundleRenderAndEngagementInfo;
+- (void)fetchBundleRenderAndEngagementInfo:(id)arg1;
 - (id)fetchResults;
 - (id)getSyntheticTestRankingItem;
 - (id)getSyntheticTestRankingItemsForStressTest;

@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithItemList:(id)arg1;
 - (id)initWithTitle:(id)arg1 items:(id)arg2;
 

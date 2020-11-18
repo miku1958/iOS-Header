@@ -12,6 +12,7 @@
 
 @interface ASCodableCloudKitWorkout : PBCodable <NSCopying>
 {
+    long long _amm;
     double _duration;
     double _goalInCanonicalUnit;
     long long _goalType;
@@ -26,6 +27,7 @@
     BOOL _isIndoorWorkout;
     BOOL _isWatchWorkout;
     struct {
+        unsigned int amm:1;
         unsigned int duration:1;
         unsigned int goalInCanonicalUnit:1;
         unsigned int goalType:1;
@@ -38,12 +40,14 @@
     } _has;
 }
 
+@property (nonatomic) long long amm; // @synthesize amm=_amm;
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) NSString *deviceManufacturer; // @synthesize deviceManufacturer=_deviceManufacturer;
 @property (strong, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic) double goalInCanonicalUnit; // @synthesize goalInCanonicalUnit=_goalInCanonicalUnit;
 @property (nonatomic) long long goalType; // @synthesize goalType=_goalType;
+@property (nonatomic) BOOL hasAmm;
 @property (readonly, nonatomic) BOOL hasBundleID;
 @property (readonly, nonatomic) BOOL hasDeviceManufacturer;
 @property (readonly, nonatomic) BOOL hasDeviceModel;
@@ -71,6 +75,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (BOOL)isAmm;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

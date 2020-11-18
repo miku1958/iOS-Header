@@ -8,16 +8,15 @@
 
 #import <VoiceShortcutClient/VCActionDonation-Protocol.h>
 
-@class NSData, NSDate, NSString, NSUserActivity;
+@class INShortcut, NSDate, NSString, NSUserActivity;
 
 @interface VCUserActivityDonation : NSObject <VCActionDonation>
 {
     NSString *_identifier;
     NSString *_sourceAppIdentifier;
     NSDate *_date;
-    NSData *_keyImageData;
+    INShortcut *_shortcut;
     NSDate *_endDate;
-    NSUserActivity *_userActivity;
 }
 
 @property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
@@ -27,7 +26,7 @@
 @property (readonly, copy, nonatomic) NSString *fullDescription;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSData *keyImageData; // @synthesize keyImageData=_keyImageData;
+@property (readonly, nonatomic) INShortcut *shortcut; // @synthesize shortcut=_shortcut;
 @property (readonly, copy, nonatomic) NSString *sourceAppIdentifier; // @synthesize sourceAppIdentifier=_sourceAppIdentifier;
 @property (readonly, copy, nonatomic) NSString *sourceAppIdentifierForDisplay;
 @property (readonly, copy, nonatomic) NSString *sourceAppIdentifierForLaunching;
@@ -36,11 +35,10 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) id uniqueProperty;
-@property (readonly, nonatomic) NSUserActivity *userActivity; // @synthesize userActivity=_userActivity;
+@property (readonly, nonatomic) NSUserActivity *userActivity;
 
 + (id)timestampDateFormatter;
 - (void).cxx_destruct;
-- (void)createActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)dateString;
 - (id)initWithEvent:(id)arg1;
 - (id)initWithUserActivity:(id)arg1 identifier:(id)arg2 sourceAppIdentifier:(id)arg3 date:(id)arg4;

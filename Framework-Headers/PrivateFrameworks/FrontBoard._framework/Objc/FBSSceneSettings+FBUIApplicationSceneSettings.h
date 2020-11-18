@@ -7,10 +7,6 @@
 #import <FrontBoardServices/FBSSceneSettings.h>
 
 @interface FBSSceneSettings (FBUIApplicationSceneSettings)
-
-@property (readonly, nonatomic, getter=isEffectivelyBackgrounded) BOOL effectivelyBackgrounded;
-@property (readonly, nonatomic, getter=fb_isUnderLock) BOOL fb_underLock;
-
 - (id)fb_fallbackSpecification;
 @end
 

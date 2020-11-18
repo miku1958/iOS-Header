@@ -17,7 +17,7 @@
 
 + (id)actionWithBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (void)performWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)performWithStatusBar:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

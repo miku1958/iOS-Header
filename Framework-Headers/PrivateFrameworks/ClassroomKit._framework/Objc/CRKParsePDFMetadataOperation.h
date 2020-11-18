@@ -20,8 +20,11 @@
 @property (readonly, nonatomic) BOOL parseImage; // @synthesize parseImage=_parseImage;
 
 - (void).cxx_destruct;
+- (id)fileName;
 - (id)initWithPDFBook:(id)arg1 filePath:(id)arg2 parseImage:(BOOL)arg3;
 - (void)main;
+- (id)titleFromDictionaryRef:(struct CGPDFDictionary *)arg1;
+- (void)updateTitleWithDictionaryRef:(struct CGPDFDictionary *)arg1;
 
 @end
 

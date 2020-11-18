@@ -6,14 +6,15 @@
 
 #import <NanoTimeKitCompanion/NTKAnalogFaceView.h>
 
+#import <NanoTimeKitCompanion/CLKMonochromeFilterProvider-Protocol.h>
 #import <NanoTimeKitCompanion/NTKRichComplicationBezelViewDelegate-Protocol.h>
 
-@class NSString, NTKWhistlerAnalogColorPalette, NTKWhistlerAnalogDialView, NTKWhistlerAnalogFaceViewComplicationFactory;
+@class NSString, NTKCircularAnalogDialView, NTKWhistlerAnalogColorPalette, NTKWhistlerAnalogFaceViewComplicationFactory;
 
-@interface NTKWhistlerAnalogFaceView : NTKAnalogFaceView <NTKRichComplicationBezelViewDelegate>
+@interface NTKWhistlerAnalogFaceView : NTKAnalogFaceView <NTKRichComplicationBezelViewDelegate, CLKMonochromeFilterProvider>
 {
     NTKWhistlerAnalogFaceViewComplicationFactory *_faceViewComplicationFactory;
-    NTKWhistlerAnalogDialView *_dialView;
+    NTKCircularAnalogDialView *_dialView;
     NTKWhistlerAnalogColorPalette *_colorPalette;
     double _bezelLabelCurvedRadius;
     unsigned long long _color;
@@ -28,6 +29,7 @@
 @property (readonly) Class superclass;
 
 + (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
++ (double)curvedRadiusForDevice:(id)arg1 dark:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_additonalViewsToApplyDesaturationDuringComplicationEditing;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -42,15 +44,13 @@
 - (id)_bezelTextColorForEditMode:(long long)arg1 color:(unsigned long long)arg2;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
-- (double)_complicationAlphaForEditMode:(long long)arg1;
 - (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_configureReusableTimeView:(id)arg1;
+- (void)_configureTimeView:(id)arg1;
 - (void)_configureUIOnColorChange;
 - (double)_contentAlphaForEditMode:(long long)arg1;
 - (double)_contentScaleForEditMode:(long long)arg1;
-- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (id)_customEditOptionContainerViewForSlot:(id)arg1;
 - (double)_dialTextBackgroundAlphaForEditMode:(long long)arg1;
 - (long long)_editMode;
@@ -69,9 +69,11 @@
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
+- (id)_pickerMaskForSlot:(id)arg1;
+- (id)_platterTextColorForEditMode:(long long)arg1 color:(unsigned long long)arg2;
 - (void)_prepareForEditing;
-- (void)_prepareTimeViewForReuse:(id)arg1;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
+- (void)_reorderSwitcherSnapshotView;
 - (long long)_richComplicationViewThemeFromFaceColor:(unsigned long long)arg1;
 - (void)_setupDialView;
 - (BOOL)_supportsTimeScrubbing;
@@ -80,10 +82,15 @@
 - (double)_verticalPaddingForStatusBar;
 - (BOOL)_wantsDimWithDesaturationFilterDuringComplicationEditing;
 - (void)applyToForegroundZoomFraction:(double)arg1 faceScale:(double)arg2;
-- (BOOL)complicationDisplayWrapperView:(id)arg1 shouldStartCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(BOOL)arg4;
-- (void)complicationDisplayWrapperView:(id)arg1 startCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(BOOL)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (void)bezelViewDidBecomeInteractive:(id)arg1;
+- (void)bezelViewDidEndInteractive:(id)arg1;
+- (id)colorForView:(id)arg1 accented:(BOOL)arg2;
+- (void)complicationDisplayWrapperView:(id)arg1 updateCustomDataAnimationFromEarlierView:(id)arg2 laterView:(id)arg3 isForward:(BOOL)arg4 animationType:(unsigned long long)arg5 animationDuration:(double)arg6 animationFraction:(float)arg7;
 - (void)didUpdateBezelTextForRichComplicationBezelView:(id)arg1;
+- (id)filterForView:(id)arg1 style:(long long)arg2;
+- (id)filterForView:(id)arg1 style:(long long)arg2 fraction:(double)arg3;
 - (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+- (BOOL)viewShouldIgnoreTwoPieceImage:(id)arg1;
 
 @end
 

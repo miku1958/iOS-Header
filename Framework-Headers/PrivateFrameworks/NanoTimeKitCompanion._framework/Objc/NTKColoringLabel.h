@@ -10,7 +10,8 @@
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravelState-Protocol.h>
 
-@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSParagraphStyle, NSString, UIColor, UIFont, _NTKColorManager;
+@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSParagraphStyle, NSString, UIColor, UIFont, UIView, _NTKColorManager;
+@protocol CLKMonochromeFilterProvider;
 
 @interface NTKColoringLabel : NTKLegibilityLabel <NTKColoringView, CLKUILabel, NTKTimeTravelState>
 {
@@ -20,9 +21,14 @@
     struct NSNumber *_updateToken;
     BOOL _updatedAfterTimeTravelStateChange;
     CLKFont *_preTimeTravelFont;
+    BOOL _monochromeSnapshot;
+    double _previousFraction;
+    NSAttributedString *_originalString;
+    UIView *_snapshot;
     BOOL _inTimeTravel;
     BOOL _uppercase;
     BOOL _usesTextProviderTintColoring;
+    BOOL _isTextTruncated;
     BOOL _cachedSizeIsValid;
     BOOL _cachedOpticalEdgeInsetsIsValid;
     BOOL _usesTextProviderSize;
@@ -35,6 +41,8 @@
     double _tracking;
     CDUnknownBlockType _nowProvider;
     CDUnknownBlockType _needsResizeHandler;
+    long long _twoToneStyleInMonochrome;
+    id<CLKMonochromeFilterProvider> _filterProvider;
     struct CGSize _cachedSingleLineSize;
     struct UIEdgeInsets _cachedOpticalEdgeInsets;
 }
@@ -49,9 +57,11 @@
 @property (readonly, nonatomic) UIColor *contentColor; // @dynamic contentColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<CLKMonochromeFilterProvider> filterProvider; // @synthesize filterProvider=_filterProvider;
 @property (strong, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inTimeTravel; // @synthesize inTimeTravel=_inTimeTravel;
+@property (readonly, nonatomic) BOOL isTextTruncated; // @synthesize isTextTruncated=_isTextTruncated;
 @property (nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
 @property (copy, nonatomic) CDUnknownBlockType needsResizeHandler; // @synthesize needsResizeHandler=_needsResizeHandler;
 @property (copy, nonatomic) CDUnknownBlockType nowProvider; // @synthesize nowProvider=_nowProvider;
@@ -67,6 +77,7 @@
 @property (strong, nonatomic) CLKFont *textProviderFont; // @synthesize textProviderFont=_textProviderFont;
 @property (strong, nonatomic) CLKFont *textProviderSmallCapsBaseFont; // @synthesize textProviderSmallCapsBaseFont=_textProviderSmallCapsBaseFont;
 @property (nonatomic) double tracking; // @synthesize tracking=_tracking;
+@property (nonatomic) long long twoToneStyleInMonochrome; // @synthesize twoToneStyleInMonochrome=_twoToneStyleInMonochrome;
 @property (nonatomic) BOOL uppercase; // @synthesize uppercase=_uppercase;
 @property (nonatomic) BOOL usesLegibility; // @dynamic usesLegibility;
 @property (nonatomic) BOOL usesTextProviderSize; // @synthesize usesTextProviderSize=_usesTextProviderSize;
@@ -79,8 +90,13 @@
 - (id)_font;
 - (id)_fontWithMonospaceNumbers:(id)arg1;
 - (void)_requeryTextProviderAndNotify:(BOOL)arg1;
+- (void)_setAnimationAlpha:(double)arg1;
+- (void)_setUpSnapshot;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
+- (void)_transitionTwoToneLabelToMonochromeWithFraction:(double)arg1;
 - (void)_updateDynamicTracking;
+- (void)_updateTwoToneLabelMonochromeColor;
+- (void)editingDidEnd;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
@@ -92,9 +108,10 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setNumberOfLines:(long long)arg1;
 - (void)setShadowOffset:(struct CGSize)arg1;
-- (void)setusesTextProviderTintColoring:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;
+- (void)transitionToMonochromeWithFraction:(double)arg1 style:(long long)arg2;
+- (void)updateMonochromeColorWithStyle:(long long)arg1;
 - (BOOL)usesLegibility:(BOOL)arg1;
 - (double)widthForMaxWidth:(double)arg1;
 - (double)widthForMaxWidth:(double)arg1 withFont:(id)arg2;

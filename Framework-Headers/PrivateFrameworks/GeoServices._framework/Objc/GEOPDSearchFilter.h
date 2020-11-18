@@ -8,26 +8,55 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDBrandFilter, GEOPDCategoryFilter, GEOPDSearchVenueFilter, PBUnknownFields;
+@class GEOPDBrandFilter, GEOPDCategoryFilter, GEOPDPoiIconCategoryFilter, GEOPDSearchVenueFilter, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchFilter : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOPDBrandFilter *_brandFilter;
     GEOPDCategoryFilter *_categoryFilter;
+    GEOPDPoiIconCategoryFilter *_poiIconCategoryFilter;
     GEOPDSearchVenueFilter *_venueFilter;
+    int _searchIntentFilter;
+    struct {
+        unsigned int has_searchIntentFilter:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_brandFilter:1;
+        unsigned int read_categoryFilter:1;
+        unsigned int read_poiIconCategoryFilter:1;
+        unsigned int read_venueFilter:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_brandFilter:1;
+        unsigned int wrote_categoryFilter:1;
+        unsigned int wrote_poiIconCategoryFilter:1;
+        unsigned int wrote_venueFilter:1;
+        unsigned int wrote_searchIntentFilter:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDBrandFilter *brandFilter; // @synthesize brandFilter=_brandFilter;
-@property (strong, nonatomic) GEOPDCategoryFilter *categoryFilter; // @synthesize categoryFilter=_categoryFilter;
+@property (strong, nonatomic) GEOPDBrandFilter *brandFilter;
+@property (strong, nonatomic) GEOPDCategoryFilter *categoryFilter;
 @property (readonly, nonatomic) BOOL hasBrandFilter;
 @property (readonly, nonatomic) BOOL hasCategoryFilter;
+@property (readonly, nonatomic) BOOL hasPoiIconCategoryFilter;
+@property (nonatomic) BOOL hasSearchIntentFilter;
 @property (readonly, nonatomic) BOOL hasVenueFilter;
+@property (strong, nonatomic) GEOPDPoiIconCategoryFilter *poiIconCategoryFilter;
+@property (nonatomic) int searchIntentFilter;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDSearchVenueFilter *venueFilter; // @synthesize venueFilter=_venueFilter;
+@property (strong, nonatomic) GEOPDSearchVenueFilter *venueFilter;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsSearchIntentFilter:(id)arg1;
+- (void)_readBrandFilter;
+- (void)_readCategoryFilter;
+- (void)_readPoiIconCategoryFilter;
+- (void)_readVenueFilter;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,7 +64,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)searchIntentFilterAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

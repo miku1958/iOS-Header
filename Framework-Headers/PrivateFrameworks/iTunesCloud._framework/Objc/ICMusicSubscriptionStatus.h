@@ -43,6 +43,7 @@
 @property (readonly, nonatomic) long long carrierBundlingErrorCode; // @synthesize carrierBundlingErrorCode=_carrierBundlingErrorCode;
 @property (readonly, nonatomic) long long carrierBundlingStatusType; // @synthesize carrierBundlingStatusType=_carrierBundlingStatusType;
 @property (readonly, copy, nonatomic) NSString *cellularOperatorName; // @synthesize cellularOperatorName=_cellularOperatorName;
+@property (readonly, nonatomic, getter=isCloudMusicServiceEnabled) BOOL cloudMusicServiceEnabled;
 @property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic, getter=isDiscoveryModeEligible) BOOL discoveryModeEligible; // @synthesize discoveryModeEligible=_isDiscoveryModeEligible;
 @property (readonly, nonatomic, getter=isEligibleForFreeTrial) BOOL eligibleForFreeTrial; // @synthesize eligibleForFreeTrial=_isEligibleForFreeTrial;

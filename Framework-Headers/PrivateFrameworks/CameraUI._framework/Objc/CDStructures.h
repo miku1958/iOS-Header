@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -130,15 +132,33 @@ struct statfs {
     char _field13[16];
     char _field14[1024];
     char _field15[1024];
-    unsigned int _field16[8];
+    unsigned int _field16;
+    unsigned int _field17[7];
 };
 
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    int _field1;
-    int _field2;
-} CDStruct_1ef3fb1f;
+    MISSING_TYPE *_field1[4];
+} CDStruct_f1db2b5e;
+
+typedef struct {
+    double r;
+    double g;
+    double b;
+    double a;
+} CDStruct_e17a5956;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+} CDStruct_869f9c67;
+
+typedef struct {
+    int width;
+    int height;
+} CDStruct_79c71658;
 
 typedef struct {
     long long value;
@@ -146,6 +166,24 @@ typedef struct {
     unsigned int flags;
     long long epoch;
 } CDStruct_1b6d18a9;
+
+typedef struct {
+    long long smallTickCount;
+    long long largeTickCount;
+    double smallTickLength;
+    double largeTickLength;
+} CDStruct_8ae1ff66;
+
+typedef struct {
+    long long tapBehavior;
+    long long longPressBehavior;
+    long long dragRightBehavior;
+    long long dragLeftBehavior;
+    BOOL allowsLockButton;
+    long long ringStyle;
+    long long stopColor;
+    long long idleColor;
+} CDStruct_41c1ae05;
 
 typedef struct {
     double _field1;
@@ -159,8 +197,39 @@ typedef struct {
 } CDStruct_f31c9284;
 
 typedef struct {
+    struct CGPoint point;
+    double time;
+    BOOL isWithinShutterButton;
+    BOOL isWithinLockButton;
+} CDStruct_299b3d1e;
+
+typedef struct {
+    struct CGPoint position;
+    double size;
+    CDStruct_e17a5956 color;
+    double power;
+} CDStruct_361c14a1;
+
+typedef struct {
     struct CGPoint _field1;
     struct CGPoint _field2;
     double _field3;
 } CDStruct_9c823225;
+
+typedef struct {
+    struct CGRect _field1;
+    struct CGPoint _field2;
+    struct CGAffineTransform _field3;
+} CDStruct_d54ccef3;
+
+// Ambiguous groups
+typedef struct {
+    double _field1;
+    double _field2;
+} CDStruct_c3b9c2ee;
+
+typedef struct {
+    double minimumDuration;
+    double maximumDuration;
+} CDStruct_c534d91b;
 

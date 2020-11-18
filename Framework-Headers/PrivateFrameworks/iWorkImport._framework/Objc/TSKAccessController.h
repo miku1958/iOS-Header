@@ -60,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)p_asyncPerformBlockOnPrimaryThread:(CDUnknownBlockType)arg1;
 - (void)p_blockPrimaryThread;
 - (void)p_blockPrimaryThreadForWrite;
+- (void)p_decrementCountForReaderAtIndex:(unsigned int)arg1 releasingRealLock:(BOOL)arg2;
 - (void)p_dequeueWrite;
 - (void)p_didAcquireReadLock;
 - (void)p_didAcquireWriteLock;

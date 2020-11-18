@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class NSURL;
 @protocol BCSAction;
 
 __attribute__((visibility("hidden")))
@@ -14,12 +15,13 @@ __attribute__((visibility("hidden")))
     id<BCSAction> _action;
 }
 
-+ (id)NFCCodeSectionIcon;
-+ (id)QRCodeSectionIcon;
+@property (readonly, copy, nonatomic) NSURL *imageURL;
+
++ (id)nfcIcon;
++ (id)qrCodeIcon;
 - (void).cxx_destruct;
-- (id)_notificationIconDataForApp:(id)arg1 constraints:(id)arg2;
-- (id)_notificationIconDataForImage:(struct CGImage *)arg1 constraints:(id)arg2;
-- (id)imageDataForConstraints:(id)arg1;
+- (id)_notificationIconBaseURL;
+- (id)_notificationIconDataURLForApp:(id)arg1 scale:(float)arg2;
 - (id)initWithAction:(id)arg1;
 
 @end

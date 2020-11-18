@@ -5,7 +5,7 @@
 //
 
 @protocol PLTableThumbResourceKey
-- (struct CGImage *)newTableThumbImage;
 - (BOOL)representsSquareResource;
+- (void)tableType:(unsigned int *)arg1 index:(int *)arg2;
 @end
 

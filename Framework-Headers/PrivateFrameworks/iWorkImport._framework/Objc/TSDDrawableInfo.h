@@ -7,6 +7,7 @@
 #import <iWorkImport/TSPObject.h>
 
 #import <iWorkImport/TSDChangeableInfo-Protocol.h>
+#import <iWorkImport/TSDLockableInfo-Protocol.h>
 #import <iWorkImport/TSDScrollingAwareChangeSource-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 #import <iWorkImport/TSKSearchable-Protocol.h>
@@ -16,7 +17,7 @@
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSDDrawableInfo : TSPObject <TSDChangeableInfo, TSKDocumentObject, TSKTransformableObject, TSKSearchable, TSDScrollingAwareChangeSource>
+@interface TSDDrawableInfo : TSPObject <TSDChangeableInfo, TSDLockableInfo, TSKDocumentObject, TSKTransformableObject, TSKSearchable, TSDScrollingAwareChangeSource>
 {
     TSDInfoGeometry *mGeometry;
     NSObject<TSDContainerInfo> *mParentInfo;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL canAnchor;
 @property (readonly, nonatomic) BOOL canAspectRatioLockBeChangedByUser;
 @property (readonly, nonatomic) BOOL canChangeWrapType;
+@property (readonly, nonatomic) BOOL canCopyData;
 @property (readonly, nonatomic) BOOL canSizeBeChangedIncrementally;
 @property (strong, nonatomic) TSDDrawableComment *comment;
 @property (readonly, nonatomic) TSDGroupInfo *containingGroup;
@@ -62,6 +64,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isLockable) BOOL lockable;
 @property (nonatomic, getter=isLocked) BOOL locked; // @synthesize locked=mLocked;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
+@property (readonly, nonatomic) unsigned long long maxInlineNestingDepth;
 @property (readonly, nonatomic) BOOL needsDownload;
 @property (readonly, nonatomic) NSData *originalPDFDataForCopy;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @synthesize owningAttachment=mOwningAttachment;
@@ -71,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *presetKind;
 @property (readonly, nonatomic) BOOL requiresStagesBuildingInReverse;
 @property (readonly, nonatomic) BOOL shouldBeIgnoredWhenCopying;
+@property (readonly, nonatomic) BOOL shouldShowInPrint;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL suppliesFinalTextures;
 @property (readonly, nonatomic) BOOL supportsAttachedComments;
@@ -81,10 +85,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL wantsPositionFixedWhenCopying;
 @property (readonly, nonatomic) BOOL willRenderContentViaImager;
 
-+ (BOOL)canPartition;
++ (BOOL)canPartitionForPrinting;
++ (BOOL)canPartitionInline;
 + (Class)classForUnarchiver:(id)arg1;
 + (BOOL)needsObjectUUID;
-+ (void)setShouldPartitionByDefault:(BOOL)arg1;
++ (void)setShouldPartitionForPrinting:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 dynamicallyDraggedLayout:(id)arg2;
@@ -95,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (void)coalesceChanges:(id)arg1;
 - (struct CGAffineTransform)computeFullTransform;
 - (struct CGAffineTransform)computeLayoutFullTransform;
+- (BOOL)containsDisallowedDrawableElementKind:(unsigned int)arg1;
 - (id)copyWithContext:(id)arg1;
 - (id)descriptionForPasteboard;
 - (id)descriptionForPasteboardWithSource:(id)arg1;

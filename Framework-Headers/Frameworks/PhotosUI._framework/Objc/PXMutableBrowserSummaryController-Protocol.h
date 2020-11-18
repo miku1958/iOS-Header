@@ -13,6 +13,8 @@
 @property (copy, nonatomic) NSDictionary *defaultAttributes;
 @property (copy, nonatomic) NSDictionary *emphasizedAttributes;
 @property (copy, nonatomic) NSDictionary *selectionAttributes;
+@property (nonatomic) BOOL shouldShowLocationNames;
+@property (nonatomic) BOOL shouldUseAbbreviatedDates;
 @property (nonatomic) BOOL shouldUseNavigationTitle;
 @property (nonatomic) BOOL shouldUseSubtitles;
 

@@ -12,7 +12,6 @@
 
 + (void)safari_dateFromNTPServerWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)safari_dateOfMidnightNumberOfDaysAgo:(long long)arg1;
-+ (double)safari_oneDayInSeconds;
 - (id)_safari_stringWithDashSeparatorWithDateFormatter:(id)arg1;
 - (BOOL)safari_isInSameDayAsDate:(id)arg1;
 - (BOOL)safari_isInToday;

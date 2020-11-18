@@ -14,8 +14,8 @@
     NSString *_immutable;
 }
 
+- (void).cxx_destruct;
 - (void)appendString:(id)arg1;
-- (void)dealloc;
 - (id)string;
 
 @end

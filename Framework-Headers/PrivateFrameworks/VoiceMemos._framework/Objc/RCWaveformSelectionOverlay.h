@@ -38,6 +38,7 @@
     BOOL _overviewTrimHandleStyle;
     BOOL _playBarOnly;
     BOOL _isOverView;
+    BOOL _changeAXValue;
     id<RCWaveformSelectionOverlayDelegate> _delegate;
     double _selectedTimeRangeMinimumDuration;
     double _selectedTimeRangeMaximumDuration;
@@ -60,6 +61,7 @@
 @property (nonatomic) double axSegment; // @synthesize axSegment=_axSegment;
 @property (nonatomic) BOOL barMatchesKnobRadius; // @synthesize barMatchesKnobRadius=_barMatchesKnobRadius;
 @property (readonly, nonatomic) long long beginTimeIndicatorSelectionAffinity;
+@property (nonatomic) BOOL changeAXValue; // @synthesize changeAXValue=_changeAXValue;
 @property (readonly, nonatomic) double currentTimeIndicatorCoordinate;
 @property (weak, nonatomic) id<RCWaveformSelectionOverlayDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isEditingEnabled) BOOL editingEnabled; // @synthesize editingEnabled=_editingEnabled;
@@ -67,6 +69,7 @@
 @property (nonatomic) BOOL enableTimeTrackingInView; // @synthesize enableTimeTrackingInView=_enableTimeTrackingInView;
 @property (readonly, nonatomic) long long endTimeIndicatorSelectionAffinity;
 @property (nonatomic) BOOL insertMode; // @synthesize insertMode=_insertMode;
+@property (readonly, nonatomic) BOOL isCurrentlyTracking;
 @property (nonatomic) BOOL isOverView; // @synthesize isOverView=_isOverView;
 @property (nonatomic) BOOL isRecording; // @synthesize isRecording=_isRecording;
 @property (nonatomic) double knobWidthMultiplier; // @synthesize knobWidthMultiplier=_knobWidthMultiplier;

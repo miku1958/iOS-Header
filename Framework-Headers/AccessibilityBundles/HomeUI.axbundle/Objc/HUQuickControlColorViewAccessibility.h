@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFirstQuickControlElementForFocus;
-- (void)_switchButtonTapped:(id)arg1;
+- (void)_updateColorPicker;
 - (id)accessibilityElements;
 - (id)accessibilitySelectedSwatch;
 

@@ -8,34 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 @interface GEORPCorrectedField : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_correctedValue;
-    int _field;
     NSString *_fieldName;
     NSString *_originalValue;
+    int _field;
     BOOL _isMarkedIncorrect;
     struct {
-        unsigned int field:1;
-        unsigned int isMarkedIncorrect:1;
-    } _has;
+        unsigned int has_field:1;
+        unsigned int has_isMarkedIncorrect:1;
+        unsigned int read_correctedValue:1;
+        unsigned int read_fieldName:1;
+        unsigned int read_originalValue:1;
+        unsigned int wrote_correctedValue:1;
+        unsigned int wrote_fieldName:1;
+        unsigned int wrote_originalValue:1;
+        unsigned int wrote_field:1;
+        unsigned int wrote_isMarkedIncorrect:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *correctedValue; // @synthesize correctedValue=_correctedValue;
-@property (nonatomic) int field; // @synthesize field=_field;
-@property (strong, nonatomic) NSString *fieldName; // @synthesize fieldName=_fieldName;
+@property (strong, nonatomic) NSString *correctedValue;
+@property (nonatomic) int field;
+@property (strong, nonatomic) NSString *fieldName;
 @property (readonly, nonatomic) BOOL hasCorrectedValue;
 @property (nonatomic) BOOL hasField;
 @property (readonly, nonatomic) BOOL hasFieldName;
 @property (nonatomic) BOOL hasIsMarkedIncorrect;
 @property (readonly, nonatomic) BOOL hasOriginalValue;
-@property (nonatomic) BOOL isMarkedIncorrect; // @synthesize isMarkedIncorrect=_isMarkedIncorrect;
-@property (strong, nonatomic) NSString *originalValue; // @synthesize originalValue=_originalValue;
+@property (nonatomic) BOOL isMarkedIncorrect;
+@property (strong, nonatomic) NSString *originalValue;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsField:(id)arg1;
+- (void)_readCorrectedValue;
+- (void)_readFieldName;
+- (void)_readOriginalValue;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +58,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

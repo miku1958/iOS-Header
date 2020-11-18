@@ -12,8 +12,8 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (long long)accessibilityContainerType;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 
 @end
 

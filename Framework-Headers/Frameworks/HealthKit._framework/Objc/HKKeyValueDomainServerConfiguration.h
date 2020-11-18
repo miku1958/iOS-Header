@@ -15,7 +15,7 @@
 }
 
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
-@property (readonly, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
+@property (readonly, copy, nonatomic) NSString *domainName; // @synthesize domainName=_domainName;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

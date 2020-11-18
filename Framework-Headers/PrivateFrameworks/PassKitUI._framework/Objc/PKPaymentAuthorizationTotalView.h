@@ -17,6 +17,11 @@
     NSLayoutConstraint *_leftMarginConstraint;
     NSLayoutConstraint *_rightMarginConstraint;
     NSLayoutConstraint *_labelBaselineConstraint;
+    NSLayoutConstraint *_valueBaselineConstraint;
+    NSLayoutConstraint *_labelValueRelationConstraint;
+    NSLayoutConstraint *_valueBaselineLargeTextConstraint;
+    NSLayoutConstraint *_labelValueRelationLargeTextConstraint;
+    NSLayoutConstraint *_rightMarginLargeTextConstraint;
     BOOL _isPendingTotal;
     BOOL _processing;
     BOOL _showsBoldValueText;

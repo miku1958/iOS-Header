@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 
 - (void)_collectUncollectables_invokedFromDeallocAndFinalize;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithRequestQueue:(id)arg1 requestBlock:(CDUnknownBlockType)arg2;
 - (void)requestMediaDataIfNecessary;

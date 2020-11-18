@@ -11,6 +11,7 @@
 @interface NTKCFaceDetailComplicationCell : NTKCDetailTableViewCell
 {
     BOOL _dateSlot;
+    BOOL _isRichSlot;
     BOOL _active;
     BOOL _enabled;
     NSString *_slot;
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NTKComplication *complication; // @synthesize complication=_complication;
 @property (readonly, nonatomic) BOOL dateSlot; // @synthesize dateSlot=_dateSlot;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
+@property (readonly, nonatomic) BOOL isRichSlot; // @synthesize isRichSlot=_isRichSlot;
 @property (readonly, nonatomic) NSString *slot; // @synthesize slot=_slot;
 
 + (id)reuseIdentifier;
@@ -28,9 +30,11 @@
 - (id)_activeColor;
 - (id)_disabledColor;
 - (id)_inactiveColor;
+- (id)_traitCollectionAdjustedIfNeeded;
 - (void)_updateDetailText;
+- (void)_updateLabelFonts;
 - (void)_updateState;
-- (id)initWithSlot:(id)arg1 dateSlot:(BOOL)arg2 inFace:(id)arg3;
+- (id)initWithSlot:(id)arg1 dateSlot:(BOOL)arg2 isRichSlot:(BOOL)arg3 inFace:(id)arg4;
 - (double)rowHeight;
 
 @end

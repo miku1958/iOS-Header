@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <CameraUI/CAMApertureButtonDelegate-Protocol.h>
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
+#import <CameraUI/CEKApertureButtonDelegate-Protocol.h>
 
-@class CAMApertureButton, CAMCreativeCameraButton, CAMExpandableMenuButton, CAMFlashButton, CAMFlipButton, CAMHDRButton, CAMImageWell, CAMLivePhotoButton, CAMModeDial, CAMTimerButton, CAMUtilityBar, CUShutterButton, PUReviewScreenDoneButton, UIButton;
+@class CAMCreativeCameraButton, CAMExpandableMenuButton, CAMFlashButton, CAMFlipButton, CAMHDRButton, CAMImageWell, CAMLivePhotoButton, CAMModeDial, CAMTimerButton, CAMUtilityBar, CEKApertureButton, CUShutterButton, PUReviewScreenDoneButton, UIButton;
 @protocol CAMControlVisibilityUpdateDelegate;
 
-@interface CAMBottomBar : UIView <CAMExpandableMenuButtonDelegate, CAMApertureButtonDelegate>
+@interface CAMBottomBar : UIView <CAMExpandableMenuButtonDelegate, CEKApertureButtonDelegate>
 {
     long long _layoutStyle;
     long long _backgroundStyle;
@@ -30,7 +30,7 @@
     CAMHDRButton *_HDRButton;
     CAMTimerButton *_timerButton;
     CAMLivePhotoButton *_livePhotoButton;
-    CAMApertureButton *_apertureButton;
+    CEKApertureButton *_apertureButton;
     CAMUtilityBar *_utilityBar;
     double _utilityBarExtensionDistance;
     CAMExpandableMenuButton *__expandedMenuButton;
@@ -38,7 +38,7 @@
 
 @property (strong, nonatomic) CAMHDRButton *HDRButton; // @synthesize HDRButton=_HDRButton;
 @property (strong, nonatomic, setter=_setExpandedMenuButton:) CAMExpandableMenuButton *_expandedMenuButton; // @synthesize _expandedMenuButton=__expandedMenuButton;
-@property (strong, nonatomic) CAMApertureButton *apertureButton; // @synthesize apertureButton=_apertureButton;
+@property (strong, nonatomic) CEKApertureButton *apertureButton; // @synthesize apertureButton=_apertureButton;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) CAMCreativeCameraButton *creativeCameraButton; // @synthesize creativeCameraButton=_creativeCameraButton;
@@ -79,7 +79,7 @@
 - (void)_updateCreativeCameraButtonTappableEdgeInsets;
 - (void)_updateFlipButtonTappableEdgeInsets;
 - (void)_updateImageWellTappableEdgeInsets;
-- (void)apertureButtonNeedsLayout:(id)arg1;
+- (void)apertureButtonNeedsLayout:(id)arg1 animated:(BOOL)arg2;
 - (void)collapseMenuButton:(id)arg1 animated:(BOOL)arg2;
 - (struct CGRect)collapsedFrameForMenuButton:(id)arg1;
 - (void)expandMenuButton:(id)arg1 animated:(BOOL)arg2;

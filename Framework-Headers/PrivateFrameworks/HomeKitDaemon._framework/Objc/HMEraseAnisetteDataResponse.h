@@ -19,8 +19,10 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didSucceed; // @synthesize didSucceed=_didSucceed;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *messageName;
 @property (readonly, nonatomic) NSDictionary *messagePayload;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *xpcMessageName;
 
 + (id)messageName;
 + (id)objWithDict:(id)arg1;
@@ -29,8 +31,6 @@
 + (id)xpcMessageName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)messageName;
-- (id)xpcMessageName;
 
 @end
 

@@ -11,10 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)_loadAccountImage;
-- (void)_restrictionsDidChange:(id)arg1;
+- (void)_accountStoreDidChange:(id)arg1;
 - (void)_setup;
+- (void)_setupAccountImageView;
 - (void)_updateAccountButtonVisibility:(BOOL)arg1;
+- (void)_updateAccountImage;
 - (id)initWithButtonLayout:(id)arg1 interfaceStyle:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

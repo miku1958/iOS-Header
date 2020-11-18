@@ -43,6 +43,7 @@
 - (void)_accessibilityDidExitRecordingMode;
 - (void)_accessibilityDidExitReplayMode;
 - (void)_accessibilityMakeAnnouncementWithStringForLocalizationIdentifier:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancelButtonInAlertTapped:(id)arg1;
 - (void)_cancelButtonTapped:(id)arg1;
 - (void)_cleanUpVibrationNameAlertController;

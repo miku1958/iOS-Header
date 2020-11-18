@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
     BOOL __useSmoothingTransitionCoordinator;
     BOOL __snapToExpandedItem;
     BOOL __isHandlingScrollViewWillEndDragging;
+    BOOL _currentDragBeganOnContent;
     PUBrowsingSession *_browsingSession;
     long long _type;
     id<PUScrubberViewDelegate> _delegate;
@@ -78,6 +79,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setUseSmoothingTransitionCoordinator:) BOOL _useSmoothingTransitionCoordinator; // @synthesize _useSmoothingTransitionCoordinator=__useSmoothingTransitionCoordinator;
 @property (strong, nonatomic, setter=_setVideoScrubberController:) PXVideoScrubberController *_videoScrubberController; // @synthesize _videoScrubberController=__videoScrubberController;
 @property (strong, nonatomic) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
+@property (nonatomic) BOOL currentDragBeganOnContent; // @synthesize currentDragBeganOnContent=_currentDragBeganOnContent;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUScrubberViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

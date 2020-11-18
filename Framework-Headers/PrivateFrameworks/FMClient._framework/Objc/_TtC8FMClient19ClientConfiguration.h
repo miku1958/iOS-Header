@@ -19,7 +19,7 @@
 
 @property (nonatomic, readonly) NSString *description;
 @property (nonatomic, readonly) BOOL deviceNameSyncEnabled; // @synthesize deviceNameSyncEnabled;
-@property (nonatomic, readonly) NSDateComponents *deviceNameSyncInterval; // @synthesize deviceNameSyncInterval;
+@property (nonatomic, readonly) NSDateComponents *deviceNameSyncInterval;
 @property (nonatomic, readonly) double nearbyScanDuration; // @synthesize nearbyScanDuration;
 @property (nonatomic, readonly) BOOL nearbyScanEnabled; // @synthesize nearbyScanEnabled;
 @property (nonatomic, readonly) BOOL nearbyScanWhileAuthenticated; // @synthesize nearbyScanWhileAuthenticated;

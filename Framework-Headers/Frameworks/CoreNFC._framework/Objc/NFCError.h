@@ -6,6 +6,7 @@
 
 #import <Foundation/NSError.h>
 
+__attribute__((visibility("hidden")))
 @interface NFCError : NSError
 {
 }

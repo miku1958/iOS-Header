@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class CSSearchableIndex, CSTopHitSearchQuery, NSDate, NSMutableArray;
+@class CSSearchQuery, CSSearchableIndex, CSTopHitSearchQuery, NSDate, NSMutableArray;
 @protocol OS_dispatch_queue;
 
 @interface PSCoreSpotlightIndexer : NSObject
 {
+    BOOL _skipManifests;
     CSSearchableIndex *_prefsSearchableIndex;
     NSObject<OS_dispatch_queue> *_spotlightIndexQueue;
     CSTopHitSearchQuery *_searchQuery;
+    CSSearchQuery *_hasItemsQuery;
     NSMutableArray *_indexFromControllerLog;
 }
 
+@property (strong, nonatomic) CSSearchQuery *hasItemsQuery; // @synthesize hasItemsQuery=_hasItemsQuery;
 @property (strong, nonatomic) NSMutableArray *indexFromControllerLog; // @synthesize indexFromControllerLog=_indexFromControllerLog;
 @property (readonly, nonatomic) NSDate *lastIndexDate;
 @property (readonly, nonatomic) BOOL needsIndex;
 @property (strong, nonatomic) CSSearchableIndex *prefsSearchableIndex; // @synthesize prefsSearchableIndex=_prefsSearchableIndex;
 @property (strong, nonatomic) CSTopHitSearchQuery *searchQuery; // @synthesize searchQuery=_searchQuery;
+@property (nonatomic) BOOL skipManifests; // @synthesize skipManifests=_skipManifests;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *spotlightIndexQueue; // @synthesize spotlightIndexQueue=_spotlightIndexQueue;
 
 + (id)searchIndexIdentifier;
@@ -29,35 +33,44 @@
 + (char *)spotlightIndexQueueIdentifier;
 - (void).cxx_destruct;
 - (id)_bundleForSpecifier:(id)arg1 parentBundle:(id)arg2;
-- (id)_childSpecifiersForSpecifier:(id)arg1 bundle:(id)arg2 childBundleToUpdate:(id *)arg3;
 - (void)_deleteSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)_descriptionForSpecifierName:(id)arg1 withParentSpecifierNames:(id)arg2;
-- (id)_indexItemForSpecifier:(id)arg1 category:(id)arg2 keywords:(id)arg3 url:(id)arg4 description:(id)arg5;
-- (id)_indexItemsFromManifestForSpecifier:(id)arg1 bundle:(id)arg2;
+- (void)_indexChunkOfSearchableItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_indexSearchableItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_indexSpecifierForURL:(id)arg1 specifiers:(id)arg2 bundle:(id)arg3 withURLPrefix:(id)arg4 waitForCompletion:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
-- (id)_indexSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 parentSpecifierNames:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)_keyValueDictionaryForURL:(id)arg1;
 - (id)_rankingHintScoreForURL:(id)arg1;
-- (void)_reIndexNonRootSpecifier:(id)arg1 parentSpecifiers:(id)arg2 bundle:(id)arg3 category:(id)arg4 baseURL:(id)arg5 withURLPrefix:(id)arg6 waitForCompletion:(BOOL)arg7 completion:(CDUnknownBlockType)arg8;
-- (void)_reIndexRootSpecifier:(id)arg1 childSpecifiers:(id)arg2 parentSpecifierNames:(id)arg3 bundle:(id)arg4 childBundle:(id)arg5 category:(id)arg6 baseURL:(id)arg7 withURLPrefix:(id)arg8 waitForCompletion:(BOOL)arg9 completion:(CDUnknownBlockType)arg10;
 - (id)_specifiersForSpecifier:(id)arg1 bundle:(id)arg2 parentBundle:(id)arg3;
 - (id)_specifiersPlistPathForSpecifier:(id)arg1 bundle:(id)arg2 parentBundle:(id)arg3;
 - (id)_urlForSpecifier:(id)arg1 identifier:(id)arg2 category:(id)arg3 childCategory:(id *)arg4 prefix:(id)arg5 path:(id *)arg6 baseURL:(id)arg7 shouldLinkToRow:(BOOL)arg8;
 - (id)_urlsFromManifestForSpecifier:(id)arg1 bundle:(id)arg2;
 - (id)blacklistedControllers;
 - (BOOL)controllerIsBlacklisted:(id)arg1;
+- (id)csSearchableItemsFromSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 parentSpecifierNames:(id)arg6;
 - (void)deleteIndexWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)deleteIndexWithDomainIdentifiers:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)deleteSpecifiers:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)descriptionForCSSearchableItem:(id)arg1;
 - (id)descriptionForCSSearchableItems:(id)arg1;
+- (void)hasfirstPartyIndexItems:(CDUnknownBlockType)arg1;
+- (void)indexManifestBundlesAtURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)indexManifestBundlesAtURLs:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)indexSpecifiers:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)indexSpecifiersWithURLs:(id)arg1 topLevelSpecifiers:(id)arg2 bundle:(id)arg3 withURLPrefix:(id)arg4 waitForCompletion:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)indexThirdPartyAppsWithPrefix:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)lastIndexBuild;
 - (id)lastIndexLanguage;
+- (id)manifestFromSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 parentSpecifierNames:(id)arg6;
+- (id)manifestsFromDirectory:(id)arg1;
+- (void)performYukonManifestMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reindexSpecifiersIfNeeded:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 setHasIndexed:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)searchableFirstPartyItemClassIdentifier;
 - (id)searchableItemAttributeSetClassIdenfitier;
 - (id)searchableItemClassIdentifier;
+- (id)searchableItemForSpecifier:(id)arg1 bundleID:(id)arg2 category:(id)arg3 keywords:(id)arg4 url:(id)arg5 description:(id)arg6;
+- (id)searchableItemsFromManifest:(id)arg1 specifier:(id)arg2 bundle:(id)arg3;
+- (id)searchableItemsFromManifestsForSpecifier:(id)arg1 bundle:(id)arg2;
+- (id)searchableItemsFromSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 parentSpecifierNames:(id)arg6;
+- (id)searchableThirdPartyItemClassIdentifier;
+- (void)setHasIndexed;
 - (void)setLastIndexBuild:(id)arg1;
 - (void)setLastIndexDate:(id)arg1;
 - (void)setLastIndexLanguage:(id)arg1;

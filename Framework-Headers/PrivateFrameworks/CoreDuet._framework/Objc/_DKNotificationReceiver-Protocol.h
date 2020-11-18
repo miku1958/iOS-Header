@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreDuet/_DKMonitor-Protocol.h>
+#import <CoreDuet/_DKMonitoring-Protocol.h>
 
 @class NSDictionary;
 
-@protocol _DKNotificationReceiver <_DKMonitor>
+@protocol _DKNotificationReceiver <_DKMonitoring>
 - (void)receiveNotificationEvent:(NSDictionary *)arg1;
 @end
 

@@ -8,39 +8,58 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAddress : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    int _knownAccuracy;
     NSMutableArray *_localizedAddress;
     NSMutableArray *_spokenNavigationAddress;
     NSMutableArray *_spokenStructuredAddress;
+    int _knownAccuracy;
     struct {
-        unsigned int knownAccuracy:1;
-    } _has;
+        unsigned int has_knownAccuracy:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_localizedAddress:1;
+        unsigned int read_spokenNavigationAddress:1;
+        unsigned int read_spokenStructuredAddress:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_localizedAddress:1;
+        unsigned int wrote_spokenNavigationAddress:1;
+        unsigned int wrote_spokenStructuredAddress:1;
+        unsigned int wrote_knownAccuracy:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasKnownAccuracy;
-@property (nonatomic) int knownAccuracy; // @synthesize knownAccuracy=_knownAccuracy;
-@property (strong, nonatomic) NSMutableArray *localizedAddress; // @synthesize localizedAddress=_localizedAddress;
-@property (strong, nonatomic) NSMutableArray *spokenNavigationAddress; // @synthesize spokenNavigationAddress=_spokenNavigationAddress;
-@property (strong, nonatomic) NSMutableArray *spokenStructuredAddress; // @synthesize spokenStructuredAddress=_spokenStructuredAddress;
+@property (nonatomic) int knownAccuracy;
+@property (strong, nonatomic) NSMutableArray *localizedAddress;
+@property (strong, nonatomic) NSMutableArray *spokenNavigationAddress;
+@property (strong, nonatomic) NSMutableArray *spokenStructuredAddress;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)localizedAddressType;
 + (Class)spokenNavigationAddressType;
 + (Class)spokenStructuredAddressType;
 - (void).cxx_destruct;
 - (int)StringAsKnownAccuracy:(id)arg1;
+- (void)_addNoFlagsLocalizedAddress:(id)arg1;
+- (void)_addNoFlagsSpokenNavigationAddress:(id)arg1;
+- (void)_addNoFlagsSpokenStructuredAddress:(id)arg1;
+- (void)_readLocalizedAddress;
+- (void)_readSpokenNavigationAddress;
+- (void)_readSpokenStructuredAddress;
 - (void)addLocalizedAddress:(id)arg1;
 - (void)addSpokenNavigationAddress:(id)arg1;
 - (void)addSpokenStructuredAddress:(id)arg1;
 - (void)clearLocalizedAddress;
 - (void)clearSpokenNavigationAddress;
 - (void)clearSpokenStructuredAddress;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -51,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedAddressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedAddressCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)spokenNavigationAddressAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spokenNavigationAddressCount;

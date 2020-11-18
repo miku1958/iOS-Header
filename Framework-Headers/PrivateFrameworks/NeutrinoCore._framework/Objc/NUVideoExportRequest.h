@@ -6,20 +6,24 @@
 
 #import <NeutrinoCore/NUExportRequest.h>
 
-@class NSArray, NSDictionary, NUColorSpace;
+@class NSArray, NSDictionary, NSProgress, NUColorSpace;
 
 @interface NUVideoExportRequest : NUExportRequest
 {
     BOOL _requiresVideoComposition;
     NSDictionary *_outputSettings;
     NSArray *_metadata;
+    NSProgress *_progress;
+    double _bitRateMultiplicationFactor;
     NUColorSpace *_cachedColorSpace;
 }
 
+@property (nonatomic) double bitRateMultiplicationFactor; // @synthesize bitRateMultiplicationFactor=_bitRateMultiplicationFactor;
 @property (strong) NUColorSpace *cachedColorSpace; // @synthesize cachedColorSpace=_cachedColorSpace;
 @property (readonly) NUColorSpace *colorSpace;
 @property (copy) NSArray *metadata; // @synthesize metadata=_metadata;
 @property (copy) NSDictionary *outputSettings; // @synthesize outputSettings=_outputSettings;
+@property (strong) NSProgress *progress; // @synthesize progress=_progress;
 @property (nonatomic) BOOL requiresVideoComposition; // @synthesize requiresVideoComposition=_requiresVideoComposition;
 
 - (void).cxx_destruct;
@@ -28,6 +32,7 @@
 - (long long)mediaComponentType;
 - (id)newRenderJob;
 - (void)submit:(CDUnknownBlockType)arg1;
+- (void)submitWithProgress:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

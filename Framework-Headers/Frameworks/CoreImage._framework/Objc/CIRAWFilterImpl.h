@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputHueMagCB;
     NSNumber *inputHueMagBM;
     CIFilter *inputLinearSpaceFilter;
+    NSNumber *inputEnableEDRMode;
 }
 
 @property (readonly, strong) NSArray *filters;
@@ -79,6 +80,7 @@ __attribute__((visibility("hidden")))
 + (id)filterWithImageURL:(id)arg1 options:(id)arg2;
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)optionKeys;
++ (id)supportedRawCameraModels;
 - (id)RAWFiltersValueForKeyPath:(id)arg1;
 - (id)activeKeys;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -89,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultInputBaselineExposureAmount;
 - (id)defaultInputBiasAmount;
 - (id)defaultInputColorNoiseReductionAmount;
+- (id)defaultInputEnableEDRMode;
 - (id)defaultInputEnableVendorLensCorrection;
 - (id)defaultInputHueMagBMAmount;
 - (id)defaultInputHueMagCBAmount;
@@ -144,6 +147,7 @@ __attribute__((visibility("hidden")))
 - (void)setInputDisableGamutMap:(id)arg1;
 - (void)setInputDraftMode:(id)arg1;
 - (void)setInputEV:(id)arg1;
+- (void)setInputEnableEDRMode:(id)arg1;
 - (void)setInputEnableNoiseTracking:(id)arg1;
 - (void)setInputEnableSharpening:(id)arg1;
 - (void)setInputEnableVendorLensCorrection:(id)arg1;

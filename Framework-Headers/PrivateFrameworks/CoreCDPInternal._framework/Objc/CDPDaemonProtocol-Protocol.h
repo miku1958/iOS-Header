@@ -8,6 +8,7 @@
 @protocol CDPAuthProviderInternal, CDPStateUIProviderInternal;
 
 @protocol CDPDaemonProtocol
+- (void)attemptToEscrowPreRecord:(NSString *)arg1 context:(CDPContext *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)clearFollowUpWithContext:(CDPFollowUpContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)deleteRecoveryKeyWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)finishOfflineLocalSecretChangeWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;

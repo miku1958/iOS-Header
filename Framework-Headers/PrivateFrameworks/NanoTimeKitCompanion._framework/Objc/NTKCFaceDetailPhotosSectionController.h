@@ -45,13 +45,14 @@
 - (void)_customizeActionRow:(id)arg1 withEditOption:(id)arg2;
 - (BOOL)_handleDidSelectActionRowForOption:(id)arg1;
 - (BOOL)_handleDidSelectOption:(id)arg1;
+- (id)_overrideTextForOption:(id)arg1;
 - (void)_setPhotos:(id)arg1;
 - (void)_updatePhotosSection;
 - (BOOL)canAddFace;
 - (void)customPhotosControllerDidFinish:(id)arg1;
 - (void)faceDidChange;
 - (void)faceDidChangeResourceDirectory;
-- (id)initWithTableView:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5 externalAssets:(id)arg6;
+- (id)initWithTableViewController:(id)arg1 face:(id)arg2 inGallery:(BOOL)arg3 editOptionCollection:(id)arg4 faceView:(id)arg5 externalAssets:(id)arg6;
 - (void)saveChangesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setSelectedOptions:(id)arg1;
 

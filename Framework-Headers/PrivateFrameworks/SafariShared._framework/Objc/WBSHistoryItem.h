@@ -53,6 +53,7 @@
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 @property (readonly, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
+@property (readonly, copy, nonatomic) NSString *userVisibleHostOrFallbackURLString;
 @property (readonly, nonatomic) NSString *userVisibleURLString; // @synthesize userVisibleURLString=_userVisibleURLString;
 @property (readonly, nonatomic) unsigned long long visitCount;
 @property (readonly, nonatomic) unsigned long long visitCountScore; // @synthesize visitCountScore=_visitCountScore;
@@ -75,6 +76,7 @@
 - (void)_padDailyCountsForNewVisitAtTime:(double)arg1 indexOfNewVisit:(int *)arg2;
 - (void)_wasVisitedOnSynchronizationQueue:(id)arg1;
 - (BOOL)addAutocompleteTrigger:(id)arg1;
+- (void)addExistingVisit:(id)arg1;
 - (void)addRedirectSourceItemFromSynchronizationQueue:(id)arg1;
 - (void)clearVisitsPendingWriteToDataStoreFromSynchronizationQueue;
 - (id)initWithSQLiteRow:(id)arg1;

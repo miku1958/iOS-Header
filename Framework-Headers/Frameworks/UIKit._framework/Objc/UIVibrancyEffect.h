@@ -13,11 +13,19 @@
     _UIVibrancyEffectImpl *_impl;
 }
 
+@property (readonly, nonatomic, getter=_vibrancyStyle) long long _vibrancyStyle;
+
 + (id)_darkVibrantEffectWithLightenColor:(id)arg1 dodgeColor:(id)arg2 compositingColor:(id)arg3;
++ (id)_effectForBlurEffect:(id)arg1 vibrancyStyle:(long long)arg2;
++ (id)_effectWithStyle:(long long)arg1 ignoreSimpleVibrancy:(BOOL)arg2;
 + (id)_lightVibrantEffectWithDarkenColor:(id)arg1 burnColor:(id)arg2 compositingColor:(id)arg3;
 + (id)_vibrancyEntryWithType:(id)arg1 inputColor1:(id)arg2 inputColor2:(id)arg3 inputReversed:(BOOL)arg4;
++ (id)_vibrantEffectForLightMaterial:(id)arg1 darkMaterial:(id)arg2 vibrancyStyle:(long long)arg3;
++ (id)_vibrantEffectWithCAColorMatrix:(struct CAColorMatrix)arg1 alpha:(double)arg2;
++ (id)_vibrantShadowEffect;
 + (id)darkVibrantEffectWithDodgeColor:(id)arg1 lightenColor:(id)arg2 compositingColor:(id)arg3;
 + (id)effectForBlurEffect:(id)arg1;
++ (id)effectForBlurEffect:(id)arg1 style:(long long)arg2;
 + (id)lightVibrantEffectWithBurnColor:(id)arg1 darkenColor:(id)arg2 compositingColor:(id)arg3;
 + (BOOL)supportsSecureCoding;
 + (id)vibrantEffectWithCompositingMode:(long long)arg1 compositingColor:(id)arg2;
@@ -27,19 +35,20 @@
 - (id)_initWithImplementation:(id)arg1;
 - (BOOL)_isATVStyle;
 - (BOOL)_isAutomaticStyle;
-- (BOOL)_needsUpdateForOption:(id)arg1;
-- (BOOL)_needsUpdateForTransitionFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
+- (BOOL)_needsUpdateForTransitionFromEnvironment:(id)arg1 toEnvironment:(id)arg2 usage:(long long)arg3;
 - (id)_reduceTransparencyEffectConfig;
-- (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
+- (void)_updateEffectDescriptor:(id)arg1 forEnvironment:(id)arg2 usage:(long long)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)effectConfig;
-- (id)effectConfigForOptions:(id)arg1;
 - (id)effectConfigForQuality:(long long)arg1;
+- (id)effectConfigForReducedTransperancy:(BOOL)arg1;
 - (id)effectForUserInterfaceStyle:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

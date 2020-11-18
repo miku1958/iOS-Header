@@ -4,43 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <PhotosUICore/PXNavigationListItem-Protocol.h>
+#import <PhotosUICore/PXNavigationListItem.h>
 
 @class NSString, PHCollectionList;
 
-@interface PXNavigationListCollectionListItem : NSObject <PXNavigationListItem>
+@interface PXNavigationListCollectionListItem : PXNavigationListItem
 {
-    long long m_previousItemCount;
-    NSString *m_formattedCount;
+    BOOL _draggable;
+    BOOL _renamable;
+    BOOL _expandable;
     BOOL _expanded;
+    NSString *_glyphImageName;
     PHCollectionList *_collection;
-    long long _itemCount;
     long long _indentationLevel;
 }
 
-@property (readonly, nonatomic) NSString *accessoryTitle;
 @property (readonly, nonatomic) PHCollectionList *collection; // @synthesize collection=_collection;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isExpandable) BOOL expandable;
 @property (nonatomic, getter=isExpanded) BOOL expanded; // @synthesize expanded=_expanded;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) NSString *imageName;
 @property (nonatomic) long long indentationLevel; // @synthesize indentationLevel=_indentationLevel;
-@property (readonly, nonatomic) long long itemCount; // @synthesize itemCount=_itemCount;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *title;
-@property (readonly, nonatomic) NSString *visualDescription;
 
 - (void).cxx_destruct;
 - (const struct __CFString *)aggregateDictionaryKey;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)glyphImageName;
 - (id)initWithCollectionList:(id)arg1 itemCount:(long long)arg2;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToNavigationListCollectionListItem:(id)arg1;
+- (BOOL)isDraggable;
+- (BOOL)isExpandable;
+- (BOOL)isRenamable;
+- (id)representedObject;
 - (id)viewControllerForCollectionWithGridPresentation:(id)arg1;
 
 @end

@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class GEOMapServiceTraits, NSDictionary;
+@class GEODataRequestThrottlerToken, GEOMapServiceTraits, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface GEOAbstractTicket : NSObject
 {
     GEOMapServiceTraits *_traits;
     unsigned long long _cachePolicy;
     NSDictionary *_responseUserInfo;
     BOOL _cancelled;
+    GEODataRequestThrottlerToken *_throttlerToken;
 }
 
 @property (nonatomic) unsigned long long cachePolicy; // @synthesize cachePolicy=_cachePolicy;
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)init;
 - (id)initWithTraits:(id)arg1;
+- (void)setThrottlerToken:(id)arg1;
 
 @end
 

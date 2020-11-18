@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSSet *visits; // @dynamic visits;
 
 + (id)fetchRequest;
++ (id)fetchRequestSortedByCreation;
 + (id)managedObjectWithPlace:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)managedObjectWithPlace:(id)arg1 managedObject:(id)arg2 inManagedObjectContext:(id)arg3;
 - (void)didSave;

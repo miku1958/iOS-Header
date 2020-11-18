@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)assertOwner;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (void)lock;
+- (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)unlock;
 
 @end

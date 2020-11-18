@@ -7,17 +7,20 @@
 #import <UIKit/UIViewController.h>
 
 #import <ContactsUI/CNContactPickerContentDelegate-Protocol.h>
+#import <ContactsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class CNContact, NSArray, NSPredicate, NSString, UINavigationController;
+@class CNContact, FAFamilyMember, NSArray, NSPredicate, NSString, UINavigationController, _UIRemoteViewController;
 @protocol CNContactPickerContentViewController, CNContactPickerDelegate;
 
-@interface CNContactPickerViewController : UIViewController <CNContactPickerContentDelegate>
+@interface CNContactPickerViewController : UIViewController <CNContactPickerContentDelegate, _UIRemoteViewControllerContaining>
 {
     BOOL _ignoreViewWillBePresented;
     BOOL _hidesSearchableSources;
     BOOL _onlyRealContacts;
+    BOOL _ignoresParentalRestrictions;
     BOOL _allowsEditing;
     BOOL _allowsCancel;
+    BOOL _allowsDeletion;
     BOOL _hidesPromptInLandscape;
     BOOL _defaultViewControllerVisible;
     BOOL _autocloses;
@@ -28,15 +31,19 @@
     NSPredicate *_predicateForSelectionOfProperty;
     UIViewController<CNContactPickerContentViewController> *_viewController;
     CNContact *_scrollContact;
+    FAFamilyMember *_familyMember;
     long long _mode;
     long long _behavior;
     long long _cardActions;
+    NSArray *_prohibitedPropertyKeys;
     NSString *_prompt;
     NSString *_bannerTitle;
     NSString *_bannerValue;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (nonatomic) BOOL allowsCancel; // @synthesize allowsCancel=_allowsCancel;
+@property (nonatomic) BOOL allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property (nonatomic) BOOL autocloses; // @synthesize autocloses=_autocloses;
 @property (copy, nonatomic) NSString *bannerTitle; // @synthesize bannerTitle=_bannerTitle;
@@ -48,15 +55,18 @@
 @property (weak, nonatomic) id<CNContactPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *displayedPropertyKeys; // @synthesize displayedPropertyKeys=_displayedPropertyKeys;
+@property (strong, nonatomic) FAFamilyMember *familyMember; // @synthesize familyMember=_familyMember;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesPromptInLandscape; // @synthesize hidesPromptInLandscape=_hidesPromptInLandscape;
 @property (nonatomic) BOOL hidesSearchableSources; // @synthesize hidesSearchableSources=_hidesSearchableSources;
+@property (nonatomic) BOOL ignoresParentalRestrictions; // @synthesize ignoresParentalRestrictions=_ignoresParentalRestrictions;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) UINavigationController *navigationController;
 @property (nonatomic) BOOL onlyRealContacts; // @synthesize onlyRealContacts=_onlyRealContacts;
 @property (copy, nonatomic) NSPredicate *predicateForEnablingContact; // @synthesize predicateForEnablingContact=_predicateForEnablingContact;
 @property (copy, nonatomic) NSPredicate *predicateForSelectionOfContact; // @synthesize predicateForSelectionOfContact=_predicateForSelectionOfContact;
 @property (copy, nonatomic) NSPredicate *predicateForSelectionOfProperty; // @synthesize predicateForSelectionOfProperty=_predicateForSelectionOfProperty;
+@property (strong, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property (copy, nonatomic) NSString *prompt; // @synthesize prompt=_prompt;
 @property (strong, nonatomic) CNContact *scrollContact; // @synthesize scrollContact=_scrollContact;
 @property (readonly) Class superclass;
@@ -77,6 +87,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)invalidateSelectionAnimated:(BOOL)arg1;
 - (void)pickerDidCancel;
+- (void)pickerDidSelectAddNewContact;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)popToDefaultViewController:(BOOL)arg1;

@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class CSIndexConnection, CSIndexingQueue, NSMutableArray, NSString;
+@class CSIndexConnection, CSIndexingQueue, NSMutableArray, NSNumber, NSString;
 @protocol CSSearchableIndexDelegate, OS_dispatch_queue;
 
 @interface CSSearchableIndex : NSObject
 {
     CSIndexingQueue *_activityQueue;
     BOOL _batchOpen;
-    int _awakeNotifyToken;
-    int _indexID;
     id<CSSearchableIndexDelegate> _indexDelegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSString *_name;
@@ -23,10 +21,10 @@
     NSMutableArray *_batchedItemsToIndex;
     NSMutableArray *_batchedItemIdentifiersToDelete;
     long long _options;
+    NSNumber *_indexID;
 }
 
 @property (readonly, nonatomic) CSIndexingQueue *activityQueue;
-@property (nonatomic) int awakeNotifyToken; // @synthesize awakeNotifyToken=_awakeNotifyToken;
 @property (nonatomic) BOOL batchOpen; // @synthesize batchOpen=_batchOpen;
 @property (strong, nonatomic) NSMutableArray *batchedItemIdentifiersToDelete; // @synthesize batchedItemIdentifiersToDelete=_batchedItemIdentifiersToDelete;
 @property (strong, nonatomic) NSMutableArray *batchedItemsToIndex; // @synthesize batchedItemsToIndex=_batchedItemsToIndex;
@@ -34,7 +32,7 @@
 @property (readonly) CSIndexConnection *connection;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (weak) id<CSSearchableIndexDelegate> indexDelegate; // @synthesize indexDelegate=_indexDelegate;
-@property (readonly, nonatomic) int indexID; // @synthesize indexID=_indexID;
+@property (readonly, nonatomic) NSNumber *indexID; // @synthesize indexID=_indexID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (copy, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
@@ -52,23 +50,23 @@
 + (id)mainBundleID;
 + (id)mainBundleLocalizedString;
 + (void)notifyIndexDelegates;
++ (void)volumeMountedAtURL:(id)arg1 withOptions:(id)arg2;
 - (void).cxx_destruct;
-- (void)_cancelAwakeNotifyToken;
 - (void)_changeStateOfSearchableItemsWithUIDs:(id)arg1 toState:(long long)arg2 forUser:(unsigned int)arg3 forBundleID:(id)arg4 forUTIType:(id)arg5;
-- (void)_checkInWithIndexDelegate:(id)arg1 reason:(id)arg2;
 - (void)_commonInit;
+- (void)_delegateCheckIn:(id)arg1;
 - (void)_deleleActionsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_deleteActionsBeforeTime:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_indexActivities:(id)arg1 flush:(BOOL)arg2;
 - (id)_initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3 options:(long long)arg4;
 - (void)_issueCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_issueNonLaunchingCommand:(id)arg1;
 - (id)_itemsBySanitizingItemsForSpotlight:(id)arg1;
 - (void)_makeActivityQueueIfNecessary;
-- (void)_performIndexJob:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
-- (void)_registerAwakeNotifyToken;
+- (void)_setFPAttributes:(id)arg1;
 - (void)_setMailMessageAttributes:(id)arg1;
 - (void)_slowFetchAttributes:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 identifiers:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_standardizeItems:(id)arg1;
+- (long long)_standardizeItems:(id)arg1;
 - (BOOL)_supportsBatching;
 - (id)_validateClientState:(id)arg1;
 - (id)_validateOperation;
@@ -116,8 +114,7 @@
 - (id)initWithName:(id)arg1 protectionClass:(id)arg2;
 - (id)initWithName:(id)arg1 protectionClass:(id)arg2 bundleIdentifier:(id)arg3;
 - (void)performDataMigrationWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)performIndexJob:(id)arg1;
-- (void)performIndexJob:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
+- (void)performIndexJob:(id)arg1 protectionClass:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
 - (void)provideDataForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)provideFileURLForBundle:(id)arg1 identifier:(id)arg2 type:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)requestQueue;

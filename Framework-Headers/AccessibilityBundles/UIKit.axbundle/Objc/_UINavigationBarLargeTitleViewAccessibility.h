@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_setupTitle;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 
 @end

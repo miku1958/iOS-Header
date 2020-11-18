@@ -23,6 +23,7 @@
 + (id)semanticDateWithKeyPath:(id)arg1 date:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

@@ -6,18 +6,18 @@
 
 #import <SpringBoardServices/SBSAbstractSystemService.h>
 
-@class NSMutableArray;
+@class BSMutableIntegerMap;
 
 @interface SBSHardwareButtonService : SBSAbstractSystemService
 {
-    NSMutableArray *_consumers;
-    struct SBSHardwareButtonServiceButtonConfiguration _homeButtonConfiguration;
-    struct SBSHardwareButtonServiceButtonConfiguration _lockButtonConfiguration;
+    BSMutableIntegerMap *_consumersPerKind;
+    BSMutableIntegerMap *_buttonConfigurationsPerKind;
+    BSMutableIntegerMap *_requestHIDAssertionsPerKind;
 }
 
-@property (strong, nonatomic) NSMutableArray *consumers; // @synthesize consumers=_consumers;
-@property (nonatomic) struct SBSHardwareButtonServiceButtonConfiguration homeButtonConfiguration; // @synthesize homeButtonConfiguration=_homeButtonConfiguration;
-@property (nonatomic) struct SBSHardwareButtonServiceButtonConfiguration lockButtonConfiguration; // @synthesize lockButtonConfiguration=_lockButtonConfiguration;
+@property (strong, nonatomic) BSMutableIntegerMap *buttonConfigurationsPerKind; // @synthesize buttonConfigurationsPerKind=_buttonConfigurationsPerKind;
+@property (strong, nonatomic) BSMutableIntegerMap *consumersPerKind; // @synthesize consumersPerKind=_consumersPerKind;
+@property (strong, nonatomic) BSMutableIntegerMap *requestHIDAssertionsPerKind; // @synthesize requestHIDAssertionsPerKind=_requestHIDAssertionsPerKind;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
@@ -25,14 +25,16 @@
 - (void)_mainQueue_handleButtonPressMessage:(long long)arg1 forButtonKind:(long long)arg2 priority:(long long)arg3;
 - (void)_resetEventMaskForButtonKind:(long long)arg1;
 - (void)_setApplicationClientEventMask:(unsigned long long)arg1 buttonKind:(long long)arg2 priority:(long long)arg3;
-- (id)_viableConsumerForEvent:(long long)arg1 priority:(long long)arg2;
+- (id)_viableConsumerForButtonKind:(long long)arg1 event:(long long)arg2 priority:(long long)arg3;
 - (void)acquireHomeHardwareButtonHintSuppressionAssertionForReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)beginConsumingPressesForButtonKind:(long long)arg1 eventConsumer:(id)arg2 priority:(long long)arg3;
 - (void)consumerInfoWillInvalidate:(id)arg1;
+- (id)deferHIDEventsForButtonKind:(long long)arg1 toToken:(id)arg2;
 - (id)description;
 - (void)fetchHapticTypeForButtonKind:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handleButtonPressMessage:(long long)arg1 forButtonKind:(long long)arg2 priority:(long long)arg3;
 - (void)setHapticType:(long long)arg1 forButtonKind:(long long)arg2;
+- (long long)toggleStateForButtonKind:(long long)arg1;
 
 @end
 

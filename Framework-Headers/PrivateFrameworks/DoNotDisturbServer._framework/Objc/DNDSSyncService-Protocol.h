@@ -6,13 +6,14 @@
 
 #import <DoNotDisturbServer/NSObject-Protocol.h>
 
-@protocol DNDSSyncRecord, DNDSSyncServiceUpdateListener;
+@class NSDictionary;
+@protocol DNDSSyncServiceDelegate;
 
 @protocol DNDSSyncService <NSObject>
-- (void)addUpdateListener:(id<DNDSSyncServiceUpdateListener>)arg1;
-- (id)initWithRecordClass:(Class)arg1 versionNumber:(unsigned long long)arg2;
-- (void)removeUpdateListener:(id<DNDSSyncServiceUpdateListener>)arg1;
+
+@property (weak, nonatomic) id<DNDSSyncServiceDelegate> delegate;
+
 - (void)resume;
-- (void)sendRecordToRemotes:(id<DNDSSyncRecord>)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
+- (void)sendMessage:(NSDictionary *)arg1 withVersionNumber:(unsigned long long)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 @end
 

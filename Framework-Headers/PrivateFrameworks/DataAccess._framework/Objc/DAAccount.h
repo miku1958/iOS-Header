@@ -59,6 +59,7 @@
 @property (nonatomic) long long port;
 @property (copy, nonatomic) NSString *principalPath;
 @property (copy, nonatomic) NSURL *principalURL;
+@property (readonly, nonatomic) NSString *publicDescription;
 @property (readonly, nonatomic) NSString *scheduleIdentifier;
 @property (readonly, copy, nonatomic) NSString *scheme;
 @property (readonly, nonatomic) NSSet *serverComplianceClasses;
@@ -79,6 +80,7 @@
 @property (nonatomic) BOOL wasUserInitiated; // @synthesize wasUserInitiated=_wasUserInitiated;
 
 + (id)_leafAccountTypes;
++ (id)_leafAccountTypesToCheckForEquality;
 + (id)daAccountSubclassWithBackingAccountInfo:(id)arg1;
 + (id)oneshotListOfAccountIDs;
 + (void)reacquireClientRestrictions:(id)arg1;
@@ -90,8 +92,9 @@
 - (void)_reallyCancelSearchQuery:(id)arg1;
 - (void)_reallyPerformSearchQuery:(id)arg1;
 - (BOOL)_reallySearchQueriesRunning;
+- (void)_refreshCredential;
 - (void)_setPersistentUUID:(id)arg1;
-- (void)_webLoginRequestedAtURL:(id)arg1 reasonString:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)_webLoginRequestedAtURL:(id)arg1 reasonString:(id)arg2 inQueue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (BOOL)accountBoolPropertyForKey:(id)arg1;
 - (BOOL)accountContainsEmailAddress:(id)arg1;
 - (void)accountDidChangeFromOldAccountInfo:(id)arg1;
@@ -99,22 +102,28 @@
 - (int)accountIntPropertyForKey:(id)arg1;
 - (id)accountPropertyForKey:(id)arg1;
 - (id)accountTypeIdentifier;
+- (id)accountsProviderWithDBHelper:(id)arg1;
 - (void)addToCoreDAVLoggingDelegates;
 - (id)addUsernameToURL:(id)arg1;
 - (id)additionalHeaderValues;
 - (BOOL)autodiscoverAccountConfigurationWithConsumer:(id)arg1;
 - (id)beginDownloadingAttachmentWithUUID:(id)arg1 consumer:(id)arg2;
+- (BOOL)canSaveWithAccountProvider:(CDUnknownBlockType)arg1;
 - (void)cancelAllSearchQueries;
 - (void)cancelCalendarAvailabilityRequestWithID:(id)arg1;
 - (void)cancelCalendarDirectorySearchWithID:(id)arg1;
 - (void)cancelDownloadingInstance:(id)arg1 error:(id)arg2;
+- (void)cancelGrantedDelegatesListRequestWithID:(id)arg1;
 - (void)cancelSearchQuery:(id)arg1;
 - (void)cancelShareResponseInstance:(id)arg1 error:(id)arg2;
+- (void)cancelUpdateGrantedDelegatePermissionRequestWithID:(id)arg1;
 - (void)checkValidityOnAccountStore:(id)arg1 withConsumer:(id)arg2;
+- (void)checkValidityOnAccountStore:(id)arg1 withConsumer:(id)arg2 inQueue:(id)arg3;
 - (void)cleanupAccountFiles;
 - (void)clientTokenRequestedByServer;
 - (id)consumerForTask:(id)arg1;
 - (id)contactsFolders;
+- (id)containerProviderWithDBHelper:(id)arg1;
 - (struct __CFURLStorageSession *)copyStorageSession;
 - (id)customConnectionProperties;
 - (id)dataclassProperties;
@@ -131,7 +140,7 @@
 - (id)displayName;
 - (id)domainOnly;
 - (id)draftsFolder;
-- (void)dropAssertionsAndRenewCredentialsWithHandler:(CDUnknownBlockType)arg1;
+- (void)dropAssertionsAndRenewCredentialsInQueue:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)enabledForAnyDADataclasses:(long long)arg1;
 - (BOOL)enabledForDADataclass:(long long)arg1;
 - (id)eventsFolders;
@@ -140,7 +149,6 @@
 - (id)getAppleIDSession;
 - (BOOL)getFetchingAutomaticallyState;
 - (id)getPendingQueryQueue;
-- (void)getRootFolderWithConsumer:(id)arg1;
 - (BOOL)handleCertificateError:(id)arg1;
 - (BOOL)handleTrustChallenge:(id)arg1;
 - (BOOL)handleTrustChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -152,16 +160,17 @@
 - (void)ingestBackingAccountInfoProperties;
 - (id)initWithBackingAccountInfo:(id)arg1;
 - (BOOL)isActiveSyncAccount;
-- (BOOL)isBookmarkDAVAccount;
 - (BOOL)isCalDAVAccount;
 - (BOOL)isCalDAVChildAccount;
 - (BOOL)isCardDAVAccount;
+- (BOOL)isDelegateAccount;
 - (BOOL)isDisabled;
 - (BOOL)isEnabledForDataclass:(id)arg1;
 - (BOOL)isEqualToAccount:(id)arg1;
 - (BOOL)isGoogleAccount;
 - (BOOL)isHotmailAccount;
 - (BOOL)isLDAPAccount;
+- (BOOL)isOofSupported;
 - (BOOL)isSubscribedCalendarAccount;
 - (id)localizedIdenticalAccountFailureMessage;
 - (id)localizedInvalidPasswordMessage;
@@ -175,7 +184,9 @@
 - (id)passwordWithExpected:(BOOL)arg1;
 - (id)performCalendarDirectorySearchForTerms:(id)arg1 recordTypes:(id)arg2 resultLimit:(unsigned long long)arg3 consumer:(id)arg4;
 - (void)performSearchQuery:(id)arg1;
+- (void)performUsingAccountPersona:(CDUnknownBlockType)arg1;
 - (long long)portFromDataclassPropertiesForDataclass:(id)arg1;
+- (BOOL)preflightSaveWithAccountProvider:(CDUnknownBlockType)arg1;
 - (id)protocolVersion;
 - (BOOL)reattemptInvitationLinkageForMetaData:(id)arg1 inFolderWithId:(id)arg2;
 - (void)reload;
@@ -187,6 +198,7 @@
 - (void)removeXpcActivity;
 - (id)reportShareRequestAsJunkForCalendar:(id)arg1 consumer:(id)arg2;
 - (id)requestCalendarAvailabilityForStartDate:(id)arg1 endDate:(id)arg2 ignoredEventID:(id)arg3 addresses:(id)arg4 consumer:(id)arg5;
+- (id)requestGrantedDelegatesListWithConsumer:(id)arg1;
 - (void)resetAccountID;
 - (BOOL)resetCertWarnings;
 - (void)resetStatusReport;
@@ -223,7 +235,6 @@
 - (int)supportsMailboxSearch;
 - (void)suspendMonitoringFoldersWithIDs:(id)arg1;
 - (id)syncStoreIdentifier;
-- (void)synchronizeBookmarkTreeWithConsumer:(id)arg1 hasRemoteChanges:(BOOL)arg2;
 - (void)synchronizeContactsFolder:(id)arg1 previousTag:(id)arg2 previousSyncToken:(id)arg3 actions:(id)arg4 highestIdContext:(id)arg5 isInitialUberSync:(BOOL)arg6 isResyncAfterConnectionFailed:(BOOL)arg7 previousTagIsSuspect:(BOOL)arg8 moreLocalChangesAvailable:(BOOL)arg9 consumer:(id)arg10;
 - (void)synchronizeEventsFolder:(id)arg1 previousTag:(id)arg2 actions:(id)arg3 highestIdContext:(id)arg4 isInitialUberSync:(BOOL)arg5 isResyncAfterConnectionFailed:(BOOL)arg6 moreLocalChangesAvailable:(BOOL)arg7 consumer:(id)arg8;
 - (void)synchronizeNotesFolder:(id)arg1 noteContext:(id)arg2 previousTag:(id)arg3 actions:(id)arg4 changeSet:(id)arg5 notesToDeleteAfterSync:(id)arg6 isInitialUberSync:(BOOL)arg7 isResyncAfterConnectionFailed:(BOOL)arg8 moreLocalChangesAvailable:(BOOL)arg9 consumer:(id)arg10;
@@ -233,12 +244,13 @@
 - (int)toDosNumberOfPastDaysToSync;
 - (id)unactionableICSRepresentationForMetaData:(id)arg1 inFolderWithId:(id)arg2 outSummary:(id *)arg3;
 - (void)updateExistingAccountProperties;
+- (id)updateGrantedDelegatePermission:(id)arg1 consumer:(id)arg2;
 - (void)updateOofSettingsWithParams:(id)arg1 consumer:(id)arg2;
 - (BOOL)upgradeAccount;
 - (id)urlFromDataclassPropertiesForDataclass:(id)arg1;
 - (BOOL)useSSLFromDataclassPropertiesForDataclass:(id)arg1;
 - (id)usernameWithoutDomain;
-- (void)webLoginRequestedAtURL:(id)arg1 reasonString:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)webLoginRequestedAtURL:(id)arg1 reasonString:(id)arg2 inQueue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 
 @end
 

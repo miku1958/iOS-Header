@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class CNiOSAddressBook, CNiOSAddressBookDataMapper;
+@class CNContainerCache, CNiOSAddressBook, CNiOSAddressBookDataMapper, NSData;
 
 @interface CNContactStore : NSObject
 {
+    CNContainerCache *_containerCache;
 }
 
 @property (readonly, nonatomic) CNiOSAddressBook *addressBook;
-@property (readonly, nonatomic) BOOL hasMultipleGroupsOrAccounts;
+@property (strong, nonatomic) CNContainerCache *containerCache; // @synthesize containerCache=_containerCache;
+@property (readonly, copy, nonatomic) NSData *currentHistoryToken;
 @property (readonly, nonatomic) CNiOSAddressBookDataMapper *iOSMapper;
 
 + (id)_contactStoreForPublicAddressBook:(void *)arg1;
++ (id)allLabelsForPropertyWithKey:(id)arg1;
 + (long long)authorizationStatusForEntityType:(long long)arg1;
 + (id)contactIdentifierFromInternalIdentifier:(id)arg1;
 + (id)contactStoreForPublicAddressBook:(void *)arg1;
@@ -24,13 +27,18 @@
 + (BOOL)eraseAllDataAtURL:(id)arg1 error:(id *)arg2;
 + (void)initialize;
 + (id)internalIdentifierFromContactIdentifier:(id)arg1;
++ (BOOL)isAccessRestrictedForEntityType:(long long)arg1;
++ (BOOL)isXPCDataMapperStore:(id)arg1;
 + (id)standardLabelsForPropertyWithKey:(id)arg1;
++ (id)standardLabelsForPropertyWithKey:(id)arg1 options:(unsigned long long)arg2;
 + (Class)storeClassWithIdentifier:(id)arg1;
++ (id)storeForFamilyMember:(id)arg1;
 + (id)storeIdentifier;
 + (id)storeIdentifierFromContactIdentifier:(id)arg1;
 + (id)storeInfoClasses;
 + (id)storeWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 + (id)storeWithOptions:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (id)_contactFromPersonID:(int)arg1 keysToFetch:(id)arg2;
 - (id)_contactFromPublicABPerson:(void *)arg1 keysToFetch:(id)arg2;
 - (id)_crossPlatformUnifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
@@ -43,6 +51,7 @@
 - (int)_publicMultiValueIdentifierFromLabeledValue:(id)arg1;
 - (id)_unifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (id)authorizedKeysForContactKeys:(id)arg1;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
 - (id)contactCountForFetchRequest:(id)arg1 error:(id *)arg2;
@@ -53,34 +62,48 @@
 - (id)contactFromPersonID:(int)arg1;
 - (id)contactFromPersonID:(int)arg1 keysToFetch:(id)arg2;
 - (id)contactFromPublicABPerson:(void *)arg1 keysToFetch:(id)arg2;
+- (id)contactFromPublicPersonID:(int)arg1 keysToFetch:(id)arg2;
 - (id)contactIdentifierFromPersonID:(int)arg1;
+- (id)contactIdentifierFromPublicPersonID:(int)arg1;
 - (id)contactIdentifierWithMatchingDictionary:(id)arg1;
 - (id)contactWithMatchingDictionary:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)contactsMatchingPropertiesOfContact:(id)arg1 unifyResults:(BOOL)arg2 keysToFetch:(id)arg3 error:(id *)arg4;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (id)countForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)defaultContainerIdentifier;
 - (id)descriptorForRequiredKeysForMatchingDictionary;
 - (BOOL)enumerateContactsAndMatchInfoWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateContactsWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (BOOL)enumerateNonUnifiedContactsWithFetchRequest:(id)arg1 error:(id *)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)enumeratorForChangeHistoryFetchRequest:(id)arg1 error:(id *)arg2;
+- (id)enumeratorForContactFetchRequest:(id)arg1 error:(id *)arg2;
+- (BOOL)executeChangeHistoryClearRequest:(id)arg1 error:(id *)arg2;
 - (id)executeFetchRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)executeFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
-- (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 error:(id *)arg3;
+- (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 authorizationContext:(id)arg3 error:(id *)arg4;
 - (id)groupWithIdentifier:(id)arg1 error:(id *)arg2;
 - (id)groupsMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (BOOL)hasAccountFirstSyncCompleted;
+- (BOOL)hasMultipleGroupsOrAccounts;
 - (id)identifierWithError:(id *)arg1;
+- (id)individualContactCountWithError:(id *)arg1;
 - (id)init;
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithEnvironment:(id)arg1 options:(unsigned long long)arg2 managedConfiguration:(id)arg3;
 - (id)labeledValueFromMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
 - (id)labeledValueFromPublicMultiValueIdentifier:(int)arg1 contact:(id)arg2 key:(id)arg3;
+- (id)latestConsumedChangeHistoryAnchorForClientIdentifier:(id)arg1 error:(id *)arg2;
+- (id)legacyTetheredSyncComputerAnchor;
+- (id)legacyTetheredSyncDeviceAnchor;
 - (id)mainContactStore;
 - (id)matchingDictionaryForContact:(id)arg1;
 - (id)meContactIdentifiers:(id *)arg1;
 - (id)membersOfGroupWithIdentifier:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
+- (BOOL)moveContacts:(id)arg1 fromContainer:(id)arg2 toContainer:(id)arg3 error:(id *)arg4;
 - (int)multiValueIdentifierFromLabeledValue:(id)arg1;
 - (id)originForSuggestion:(id)arg1 error:(id *)arg2;
 - (void *)personFromContact:(id)arg1;
@@ -88,12 +111,20 @@
 - (void *)publicABPersonFromContact:(id)arg1 publicAddressBook:(const void **)arg2;
 - (int)publicMultiValueIdentifierFromLabeledValue:(id)arg1;
 - (BOOL)registerChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)registerChangeHistoryClientIdentifier:(id)arg1 forContainerIdentifier:(id)arg2 error:(id *)arg3;
 - (void)reindexSearchableItemsWithIdentifiers:(id)arg1;
 - (id)requestAccessForEntityType:(long long)arg1;
 - (void)requestAccessForEntityType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestAuthorization:(long long)arg1 entityType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)resetSortDataIfNeededWithError:(id *)arg1;
+- (int)saveSequenceCount;
+- (id)sectionListOffsetsForSortOrder:(long long)arg1 error:(id *)arg2;
 - (id)serverSearchContainersMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (BOOL)setBestMeIfNeededForGivenName:(id)arg1 familyName:(id)arg2 email:(id)arg3 error:(id *)arg4;
+- (BOOL)setDefaultAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)setDefaultContainer:(id)arg1 forAccount:(id)arg2 error:(id *)arg3;
+- (void)setLegacyTetheredSyncComputerAnchor:(id)arg1;
+- (void)setLegacyTetheredSyncDeviceAnchor:(id)arg1;
 - (BOOL)setMeContact:(id)arg1 error:(id *)arg2;
 - (BOOL)setMeContact:(id)arg1 forContainer:(id)arg2 error:(id *)arg3;
 - (id)subgroupsOfGroupWithIdentifier:(id)arg1 error:(id *)arg2;
@@ -106,8 +137,10 @@
 - (id)unifiedMeContactMatchingEmailAddresses:(id)arg1 keysToFetch:(id)arg2 error:(id *)arg3;
 - (id)unifiedMeContactWithKeysToFetch:(id)arg1 error:(id *)arg2;
 - (BOOL)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)unregisterChangeHistoryClientIdentifier:(id)arg1 forContainerIdentifier:(id)arg2 error:(id *)arg3;
 - (id)usedLabelsForPropertyWithKey:(id)arg1 error:(id *)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
+- (BOOL)verifyChangeHistoryForClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)verifyIndexWithError:(id *)arg1;
 
 @end

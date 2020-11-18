@@ -65,6 +65,7 @@
     struct {
         NSTimer *timer;
         struct CGPoint location;
+        long long modifierFlags;
         BOOL isBlocked;
         BOOL isCancelled;
         BOOL isOnWebThread;
@@ -117,7 +118,6 @@
     unsigned int _needsScrollNotifications:1;
     unsigned int _loadsSynchronously:1;
     unsigned int _mouseDown:1;
-    unsigned int _usePreTimberlineTransparencyBehavior:1;
     unsigned int _geolocationDialogAllowed:1;
     unsigned int _usingMinimalTilesDuringLoading:1;
     unsigned int _sheetsCount:2;
@@ -216,10 +216,12 @@
 @property (nonatomic) BOOL enablesReturnKeyOnNonWhiteSpaceContent;
 @property (readonly, nonatomic) UITextPosition *endOfDocument;
 @property (nonatomic) struct CGRect exposedScrollViewRect; // @synthesize exposedScrollViewRect=_exposedScrollViewRect;
+@property (nonatomic) struct UIEdgeInsets floatingKeyboardEdgeInsets;
 @property (nonatomic) BOOL forceDefaultDictationInfo;
 @property (nonatomic) long long forceDictationKeyboardType;
 @property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
+@property (nonatomic) BOOL forceFloatingKeyboard;
 @property (nonatomic) BOOL hasDefaultContents;
 @property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
@@ -263,6 +265,7 @@
 @property (nonatomic) BOOL shouldAutoscroll;
 @property (nonatomic) BOOL shouldIgnoreCustomViewport;
 @property (nonatomic) BOOL shouldOnlyRecognizeGesturesOnActiveElements;
+@property (nonatomic) BOOL showDictationButton;
 @property (nonatomic) BOOL sizeUpdatesSuspended;
 @property (nonatomic) long long smartDashesType; // @dynamic smartDashesType;
 @property (nonatomic) long long smartInsertDeleteType; // @dynamic smartInsertDeleteType;
@@ -284,6 +287,7 @@
 @property (readonly, nonatomic) id<UITextInputTokenizer> tokenizer;
 @property (strong, nonatomic) UIColor *underlineColorForSpelling;
 @property (strong, nonatomic) UIColor *underlineColorForTextAlternatives;
+@property (nonatomic) BOOL useAutomaticEndpointing;
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange;
 @property (readonly, nonatomic) BOOL wantsMinimalUI; // @synthesize wantsMinimalUI=_wantsMinimalUI;
@@ -296,7 +300,6 @@
 + (void)initialize;
 + (Class)layerClass;
 + (id)standardTextViewPreferences;
-- (id)URL;
 - (void)_WAKViewSizeDidChange:(id)arg1;
 - (SEL)_actionForLongPressOnElement:(id)arg1;
 - (void)_addShortcut:(id)arg1;
@@ -332,6 +335,7 @@
 - (void)_doubleTapRecognized:(id)arg1;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
+- (BOOL)_dragInteraction:(id)arg1 sessionSupportsSystemDrag:(id)arg2;
 - (void)_drawPDFPagesForPage:(unsigned long long)arg1 withPaginationInfo:(id)arg2;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (void)_editableSelectionLayoutChangedByScrolling:(BOOL)arg1;
@@ -388,7 +392,7 @@
 - (void)_renderUnbufferedInContext:(struct CGContext *)arg1;
 - (void)_resetForNewPage;
 - (void)_resetFormDataForFrame:(id)arg1;
-- (void)_resetInteractionWithLocation:(struct CGPoint)arg1;
+- (void)_resetInteractionWithLocation:(struct CGPoint)arg1 modifierFlags:(long long)arg2;
 - (void)_resetShowingTextStyle:(id)arg1;
 - (void)_reshapePlugInViews;
 - (id)_responderForBecomeFirstResponder;
@@ -540,7 +544,7 @@
 - (int)documentType;
 - (struct CGRect)doubleTapRect;
 - (BOOL)doubleTapRectIsReplaced;
-- (CDStruct_57d825b2)doubleTapScalesForSize:(struct CGSize)arg1;
+- (CDStruct_39925896)doubleTapScalesForSize:(struct CGSize)arg1;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
@@ -581,6 +585,8 @@
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (long long)getPasteboardChangeCount;
 - (long long)getPasteboardItemsCount;
+- (BOOL)handleKeyAppCommandForCurrentEvent;
+- (BOOL)handleKeyTextCommandForCurrentEvent;
 - (void)handleKeyWebEvent:(id)arg1;
 - (BOOL)hasContent;
 - (BOOL)hasDrawnTiles;
@@ -647,6 +653,7 @@
 - (double)minimumScaleForSize:(struct CGSize)arg1;
 - (BOOL)mouseEventsChangeSelection;
 - (BOOL)needsScrollNotifications;
+- (id)newMouseEvent:(int)arg1;
 - (struct CGImage *)newSnapshotWithRect:(struct CGRect)arg1;
 - (id)nextUnperturbedDictationResultBoundaryFromPosition:(id)arg1;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
@@ -766,7 +773,6 @@
 - (void)setTileUpdatesDisabled:(BOOL)arg1;
 - (void)setTilingArea:(int)arg1;
 - (void)setUpdatesScrollView:(BOOL)arg1;
-- (void)setUsePreTimberlineTransparencyBehavior;
 - (void)setUserStyleSheet:(id)arg1;
 - (void)setViewportSize:(struct CGSize)arg1 forDocumentTypes:(int)arg2;
 - (BOOL)shouldSelectionAssistantReceiveDoubleTapAtPoint:(struct CGPoint)arg1 forScale:(double)arg2;
@@ -801,6 +807,7 @@
 - (void)unmarkText;
 - (void)updateDragCaretIfPossible;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
+- (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1 velocity:(struct CGPoint)arg2;
 - (void)updateInteractionElements;
 - (BOOL)updateKeyboardStateOnResponderChanges;
 - (void)updateSelection;

@@ -8,19 +8,20 @@
 
 #import <PersistentConnection/PCInterfaceUsabilityMonitorProtocol-Protocol.h>
 
-@class CUTWeakReference, NSMutableArray, NSString;
-@protocol OS_dispatch_queue, PCInterfaceUsabilityMonitorDelegate;
+@class CUTWeakReference, NSMutableArray, NSRecursiveLock, NSString;
+@protocol OS_dispatch_queue, OS_nw_interface, OS_nw_parameters, OS_nw_path_evaluator, PCInterfaceUsabilityMonitorDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PCInterfaceUsabilityMonitor : NSObject <PCInterfaceUsabilityMonitorProtocol>
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSObject<OS_dispatch_queue> *_ivarQueue;
     long long _interfaceIdentifier;
-    NSString *_interfaceName;
     CUTWeakReference *_delegateReference;
-    void *_reachability;
-    BOOL _isInternetReachable;
+    NSObject<OS_nw_parameters> *_pathParameters;
+    NSObject<OS_nw_path_evaluator> *_evaluator;
+    NSObject<OS_nw_interface> *_lastInterface;
+    NSObject<OS_nw_interface> *_lastDelegateInterface;
+    BOOL _isPathSatisfied;
     void *_dynamicStore;
     struct __CFRunLoopSource *_linkQualitySource;
     struct __CFString *_lqKey;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _thresholdOffTransitionCount;
     double _trackedTimeInterval;
     NSMutableArray *_offTransitions;
+    NSRecursiveLock *_recursiveLock;
 }
 
 @property (readonly, nonatomic) int currentRAT;
@@ -55,25 +57,23 @@ __attribute__((visibility("hidden")))
 + (BOOL)isPoorLinkQuality:(int)arg1;
 + (id)stringForLinkQuality:(int)arg1;
 - (void).cxx_destruct;
-- (void)_callDelegateOnIvarQueueWithBlock:(CDUnknownBlockType)arg1;
-- (void)_createLinkQualityMonitor;
-- (void)_createLinkQualityMonitorOnIvarQueue;
-- (void)_createReachabilityMonitor;
-- (void)_createReachabilityMonitorOnIvarQueue;
+- (void)_callDelegateWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_createLinkQualityMonitor:(BOOL)arg1;
+- (void)_createPathEvaluator;
 - (void)_dynamicStoreCallback:(id)arg1;
-- (void)_dynamicStoreCallbackOnIvarQueue:(id)arg1;
-- (void)_flushStaleTransitionsOnIvarQueue;
-- (BOOL)_isInterfaceHistoricallyUsableOnIvarQueue;
-- (BOOL)_isInterfaceUsableOnIvarQueue;
-- (void)_processLinkQualityUpdateOnIvarQueueWithUpdatedLinkQuality:(int)arg1;
-- (void)_reachabilityCallback:(unsigned int)arg1;
-- (void)_reachabilityCallbackOnIvarQueue:(unsigned int)arg1;
-- (void)_unscheduleLinkQualityMonitorOnIvarQueue;
-- (void)_unscheduleReachabilityMonitorOnIvarQueue;
-- (void)_updateOffTransitionsForLinkQualityChangeOnIvarQueue;
+- (void)_dynamicStoreCallbackForKeys:(id)arg1;
+- (void)_flushStaleTransitions;
+- (BOOL)_isInterfaceHistoricallyUsable;
+- (BOOL)_isInterfaceUsable;
+- (void)_pathUpdate:(id)arg1;
+- (void)_processLinkQualityUpdateWithChangedKey:(id)arg1 updatedLinkQuality:(int)arg2;
+- (void)_unscheduleLinkQualityMonitor;
+- (void)_unschedulePathEvaluator;
+- (void)_updateOffTransitionsForLinkQualityChange;
+- (id)currentInterfaceName;
 - (void)dealloc;
 - (id)init;
-- (id)initWithInterfaceName:(id)arg1 interfaceIdentifier:(long long)arg2 delegateQueue:(id)arg3;
+- (id)initWithInterfaceIdentifier:(long long)arg1 delegateQueue:(id)arg2;
 - (void)setThresholdOffTransitionCount:(unsigned long long)arg1;
 - (void)setTrackUsability:(BOOL)arg1;
 - (void)setTrackedTimeInterval:(double)arg1;

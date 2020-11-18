@@ -12,23 +12,25 @@
 
 @interface MapsSuggestionsServerSideFilter : MapsSuggestionsBaseFilter <MapsSuggestionsFilter>
 {
-    BOOL _enableMapsSuggestionsEntryTypeUnknown;
-    BOOL _enableMapsSuggestionsEntryTypeHome;
-    BOOL _enableMapsSuggestionsEntryTypeWork;
-    BOOL _enableMapsSuggestionsEntryTypeCalendarEvent;
-    BOOL _enableMapsSuggestionsEntryTypeFrequentLocation;
-    BOOL _enableMapsSuggestionsEntryTypeRecentHistory;
-    BOOL _enableMapsSuggestionsEntryTypeFavoritePlace;
-    BOOL _enableMapsSuggestionsEntryTypeParkedCar;
-    BOOL _enableMapsSuggestionsEntryTypeRestaurantReservation;
-    BOOL _enableMapsSuggestionsEntryTypeRidesharing;
-    BOOL _enableMapsSuggestionsEntryTypeCarPlayLowEnergy;
-    BOOL _enableMapsSuggestionsEntryTypeResumeRoute;
-    BOOL _enableMapsSuggestionsEntryTypeAppConnection;
-    BOOL _enableMapsSuggestionsEntryTypeHotel;
-    BOOL _enableMapsSuggestionsEntryTypeCarRental;
-    BOOL _enableMapsSuggestionsEntryTypeTravelFlight;
-    BOOL _enableMapsSuggestionsEntryTypeTicketedEvent;
+    BOOL _enabledEntryTypeUnknown;
+    BOOL _enabledEntryTypeHome;
+    BOOL _enabledEntryTypeWork;
+    BOOL _enabledEntryTypeCalendarEvent;
+    BOOL _enabledEntryTypeFrequentLocation;
+    BOOL _enabledEntryTypeRecentHistory;
+    BOOL _enabledEntryTypeFavoritePlace;
+    BOOL _enabledEntryTypeParkedCar;
+    BOOL _enabledEntryTypeRestaurantReservation;
+    BOOL _enabledEntryTypeRidesharing;
+    BOOL _enabledEntryTypeCarPlayLowEnergy;
+    BOOL _enabledEntryTypeResumeRoute;
+    BOOL _enabledEntryTypeAppConnection;
+    BOOL _enabledEntryTypeHotel;
+    BOOL _enabledEntryTypeCarRental;
+    BOOL _enabledEntryTypeTravelFlight;
+    BOOL _enabledEntryTypeTicketedEvent;
+    BOOL _enabledEntryTypePortrait;
+    BOOL _enabledEntryTypeUserPlace;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -44,6 +44,7 @@
 - (id)init;
 - (id)invalidURLSchemes;
 - (BOOL)openURL:(id)arg1;
+- (BOOL)openURL:(id)arg1 sourceDocumentRoot:(id)arg2;
 - (id)previewImageForType:(id)arg1;
 - (BOOL)shouldGenerateGuidesForOffscreenLayouts;
 - (BOOL)shouldRenderContactShadow;

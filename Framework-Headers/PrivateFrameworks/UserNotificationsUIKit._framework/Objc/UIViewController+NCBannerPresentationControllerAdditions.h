@@ -7,7 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (NCBannerPresentationControllerAdditions)
+
+@property (nonatomic, setter=setNCTransitionAnimationState:) long long ncTransitionAnimationState; // @dynamic ncTransitionAnimationState;
+
 - (id)nc_bannerPresentationController;
+- (id)nc_presentationContextDefiningViewController;
+- (id)nc_presentationControllerIfPresented;
 - (id)nc_presentingBannerPresentationController;
 @end
 

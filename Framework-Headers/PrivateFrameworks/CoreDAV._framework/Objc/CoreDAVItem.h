@@ -44,6 +44,7 @@
 - (void)parserFoundPayload:(id)arg1;
 - (void)parserFoundUnrecognizedElement:(id)arg1;
 - (void)parserSuggestsBaseURL:(id)arg1;
+- (long long)payloadAsNSInteger;
 - (id)payloadAsString;
 - (void)setPayloadAsString:(id)arg1;
 - (BOOL)validate;

@@ -15,20 +15,22 @@
     BOOL _testingConditionEnabled;
     NSString *_contentSizeCategory;
     unsigned long long _presentationMode;
+    double _contentScaleFactor;
     struct CGSize _canvasSize;
 }
 
 @property (nonatomic) struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
+@property (nonatomic) double contentScaleFactor; // @synthesize contentScaleFactor=_contentScaleFactor;
 @property (strong, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
 @property (nonatomic) BOOL enableViewportDebugging; // @synthesize enableViewportDebugging=_enableViewportDebugging;
 @property (nonatomic) BOOL fadeInComponents; // @synthesize fadeInComponents=_fadeInComponents;
-@property (readonly, nonatomic) BOOL fadeWhenTransitioning;
 @property (nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property (nonatomic) BOOL testingConditionEnabled; // @synthesize testingConditionEnabled=_testingConditionEnabled;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (BOOL)isEqual:(id)arg1;
 
 @end

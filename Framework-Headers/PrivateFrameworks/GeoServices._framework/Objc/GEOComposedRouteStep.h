@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/NSSecureCoding-Protocol.h>
+
 @class GEOComposedRoute, GEOComposedRouteLeg, GEOComposedTransitTripRouteStep, GEOInstructionSet, GEOPBTransitStop, GEOStep, GEOTransitStep, NSArray, NSString;
 @protocol GEOTransitArtworkDataSource;
 
-@interface GEOComposedRouteStep : NSObject
+@interface GEOComposedRouteStep : NSObject <NSSecureCoding>
 {
     GEOComposedRoute *_composedRoute;
     GEOStep *_geoStep;
@@ -19,15 +21,17 @@
     struct _NSRange _maneuverPointRange;
     NSString *_maneuverRoadOrExitName;
     NSString *_maneuverRoadName;
+    unsigned int _actualDistance;
     long long _routeLegType;
 }
 
+@property (nonatomic) unsigned int actualDistance; // @synthesize actualDistance=_actualDistance;
 @property (readonly, nonatomic) GEOComposedTransitTripRouteStep *closestLogicalBoardOrAlightStep;
 @property (weak, nonatomic) GEOComposedRoute *composedRoute; // @synthesize composedRoute=_composedRoute;
 @property (readonly, nonatomic) unsigned int distance;
 @property (readonly, nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
 @property (readonly, nonatomic) unsigned int duration;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee endGeoCoordinate;
+@property (readonly, nonatomic) CDStruct_39925896 endGeoCoordinate;
 @property (readonly, nonatomic) unsigned int endPointIndex;
 @property (readonly, nonatomic) GEOPBTransitStop *endingStop;
 @property (readonly, nonatomic) GEOStep *geoStep; // @synthesize geoStep=_geoStep;
@@ -60,7 +64,7 @@
 @property (readonly, nonatomic) BOOL shouldCreateFerryProgressionGroup;
 @property (readonly, nonatomic) BOOL shouldCreateTransferGroup;
 @property (readonly, nonatomic) BOOL shouldCreateTripProgressionGroup;
-@property (readonly, nonatomic) CDStruct_c3b9c2ee startGeoCoordinate;
+@property (readonly, nonatomic) CDStruct_39925896 startGeoCoordinate;
 @property (readonly, nonatomic) unsigned int startPointIndex;
 @property (readonly, nonatomic) unsigned int startTime;
 @property (readonly, nonatomic) GEOPBTransitStop *startingStop;
@@ -70,11 +74,14 @@
 @property (readonly, nonatomic) GEOTransitStep *transitStep;
 @property (readonly, nonatomic) int transportType;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_MapsCarPlay_isEqual:(id)arg1;
 - (BOOL)_belongsToTransferGroup;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)firstNameOrBranch;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithComposedRoute:(id)arg1 GEOStep:(id)arg2 routeLegType:(long long)arg3 stepIndex:(unsigned long long)arg4 pointRange:(struct _NSRange)arg5 maneuverPointRange:(struct _NSRange)arg6;
 - (id)initWithComposedRoute:(id)arg1 routeLegType:(long long)arg2 stepIndex:(unsigned long long)arg3 pointRange:(struct _NSRange)arg4;
 - (int)maneuver;

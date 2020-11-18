@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_iCloudTeardownStack;
     BOOL _preventImageConversionOnOpen;
     id<TSULogContext> _logContext;
+    BOOL _shouldMeasureNegativelyTrackedTextCorrectly;
     BOOL _isFindActive;
+    BOOL _documentCurrentlyImporting;
     TSKAccessController *_accessController;
     TSKSelectionDispatcher *_selectionDispatcher;
     TSKPasteboardController *_pasteboardController;
@@ -46,6 +48,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<TSKDocumentRootDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) TSULocale *documentCreationLocale; // @synthesize documentCreationLocale=_documentCreationLocale;
+@property (nonatomic, getter=isDocumentCurrentlyImporting) BOOL documentCurrentlyImporting; // @synthesize documentCurrentlyImporting=_documentCurrentlyImporting;
 @property (readonly, nonatomic) NSString *documentLanguage;
 @property (readonly, nonatomic) TSULocale *documentLocale; // @synthesize documentLocale=_documentLocale;
 @property (readonly, nonatomic) TSKDocumentSupport *documentSupport; // @synthesize documentSupport=_documentSupport;
@@ -62,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long maxMediaItemFileSize;
 @property (strong, nonatomic) TSKPasteboardController *pasteboardController; // @synthesize pasteboardController=_pasteboardController;
 @property (readonly, nonatomic) TSKSelectionDispatcher *selectionDispatcher; // @synthesize selectionDispatcher=_selectionDispatcher;
+@property (nonatomic) BOOL shouldMeasureNegativelyTrackedTextCorrectly; // @synthesize shouldMeasureNegativelyTrackedTextCorrectly=_shouldMeasureNegativelyTrackedTextCorrectly;
 @property (nonatomic) BOOL shouldPreventImageConversionOnOpen;
 @property (readonly, nonatomic) TSSStylesheet *stylesheet;
 @property (readonly) Class superclass;
@@ -76,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (long long)addObserverForICloudTeardownSuspendingCollaboration:(BOOL)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)addObserverForICloudTeardownWithBlock:(CDUnknownBlockType)arg1;
 - (void)backgroundDocumentDidLoad;
+- (void)blockForRecalcWithTimeout:(double)arg1;
 - (id)calculationEngine;
 - (id)commandForRemovingCommentsFromDrawables:(id)arg1 context:(id)arg2;
 - (id)commandForUpdatingAfterInsertingDrawables:(id)arg1 context:(id)arg2;

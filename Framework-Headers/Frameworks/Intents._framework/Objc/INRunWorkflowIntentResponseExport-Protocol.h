@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) long long code;
 @property (copy, nonatomic) NSNumber *continueRunning;
+@property (copy, nonatomic) NSNumber *requestsIntentExecution;
 @property (copy, nonatomic) NSArray *steps;
 @property (copy, nonatomic) INArchivedObject *underlyingIntent;
 @property (copy, nonatomic) INArchivedObject *underlyingIntentResponse;

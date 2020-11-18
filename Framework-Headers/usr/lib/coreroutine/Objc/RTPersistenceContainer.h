@@ -34,6 +34,7 @@
 - (id)initWithName:(id)arg1 model:(id)arg2 configurations:(id)arg3;
 - (id)persistenceContext;
 - (void)persistenceContextWithHandler:(CDUnknownBlockType)arg1;
+- (id)persistenceContextWithOptions:(long long)arg1;
 - (void)resumePersistenceStores;
 - (void)setupPersistenceStores;
 - (void)suspendPersistenceStores;

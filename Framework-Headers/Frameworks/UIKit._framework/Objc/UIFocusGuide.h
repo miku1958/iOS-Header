@@ -6,14 +6,15 @@
 
 #import <UIKitCore/UILayoutGuide.h>
 
+#import <UIKitCore/UIFocusItem-Protocol.h>
 #import <UIKitCore/_UIFocusGuideRegionDelegate-Protocol.h>
 #import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 #import <UIKitCore/_UILegacyFocusRegion-Protocol.h>
 
 @class NSArray, NSString, UIView;
-@protocol UIFocusEnvironment, UIFocusItemContainer;
+@protocol UIFocusEnvironment, UIFocusItem, UIFocusItemContainer;
 
-@interface UIFocusGuide : UILayoutGuide <_UILegacyFocusRegion, _UIFocusRegionContainer, _UIFocusGuideRegionDelegate>
+@interface UIFocusGuide : UILayoutGuide <UIFocusItem, _UILegacyFocusRegion, _UIFocusRegionContainer, _UIFocusGuideRegionDelegate>
 {
     BOOL _didSetPreferredFocusedEnvironments;
     BOOL _enabled;
@@ -22,13 +23,17 @@
     NSArray *_preferredFocusEnvironments;
 }
 
+@property (nonatomic) BOOL areChildrenFocused;
 @property (nonatomic, getter=_automaticallyDisableWhenIntersectingFocus, setter=_setAutomaticallyDisableWhenIntersectingFocus:) BOOL automaticallyDisableWhenIntersectingFocus; // @synthesize automaticallyDisableWhenIntersectingFocus=_automaticallyDisableWhenIntersectingFocus;
 @property (nonatomic, getter=_automaticallyPreferOwningView, setter=_setAutomaticallyPreferOwningView:) BOOL automaticallyPreferOwningView; // @synthesize automaticallyPreferOwningView=_automaticallyPreferOwningView;
+@property (readonly, nonatomic) BOOL canBecomeFocused;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
+@property (readonly, nonatomic) id<UIFocusItem> focusItemForSorting;
+@property (readonly, nonatomic) struct CGRect frame;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
 @property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
@@ -54,7 +59,6 @@
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
 - (BOOL)_uili_isFocusGuide;
-- (BOOL)canBecomeFocused;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)focusGuideRegion:(id)arg1 preferredFocusEnvironmentsForMovementRequest:(id)arg2;

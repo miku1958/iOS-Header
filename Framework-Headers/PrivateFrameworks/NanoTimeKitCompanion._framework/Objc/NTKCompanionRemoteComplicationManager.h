@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKComplicationCollectionObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKRemoteComplicationProvider-Protocol.h>
 
-@class NRDevice, NSDictionary, NSMutableDictionary, NSString, NTKComplicationCollection;
+@class CLKDevice, NSDictionary, NSMutableDictionary, NSString, NTKComplicationCollection;
 @protocol OS_dispatch_queue;
 
 @interface NTKCompanionRemoteComplicationManager : NSObject <NTKComplicationCollectionObserver, NTKRemoteComplicationProvider>
@@ -17,13 +17,13 @@
     NTKComplicationCollection *_remoteComplications;
     NSDictionary *_installedComplications;
     NSMutableDictionary *_syncedComplications;
-    NRDevice *_device;
+    CLKDevice *_device;
     NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;
+@property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *installedComplications; // @synthesize installedComplications=_installedComplications;
 @property (strong, nonatomic) NTKComplicationCollection *remoteComplications; // @synthesize remoteComplications=_remoteComplications;
@@ -37,6 +37,7 @@
 - (void)_appStartedInstall;
 - (void)_fetchInstalledApps;
 - (void)_load;
+- (void)_queue_reloadApps;
 - (void)_reloadApps;
 - (id)_safeComplications;
 - (id)_safeInstalledComplications;

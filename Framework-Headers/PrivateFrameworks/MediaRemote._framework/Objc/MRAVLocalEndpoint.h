@@ -30,28 +30,30 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_localizeOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_ouputDevicesForOutputDeviceUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_outputContextDevicesDidChangeNotification:(id)arg1;
 - (void)_reloadOutputDevicesFromContext;
-- (void)addOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)canModifyGroupMembership;
+- (void)connectToExternalDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)connectionType;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithOutputContext:(id)arg1;
-- (id)initWithOutputContext:(id)arg1 wantsUpdates:(BOOL)arg2;
 - (id)initWithOutputDevices:(id)arg1;
 - (BOOL)isProxyGroupPlayer;
+- (struct _MROriginProtobuf *)origin;
 - (void)outputContextDataSource:(id)arg1 didAddOutputDevice:(id)arg2;
 - (void)outputContextDataSource:(id)arg1 didRemoveOutputDevice:(id)arg2;
 - (void)outputContextDataSource:(id)arg1 outputDevice:(id)arg2 didChangeVolume:(float)arg3;
 - (void)outputContextDataSource:(id)arg1 outputDevice:(id)arg2 didChangeVolumeControlCapabilities:(unsigned int)arg3;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)personalOutputDevices;
 - (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)removeOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)uniqueIdentifier;
 - (void)volumeControlCapabilitiesForOutputDevice:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

@@ -27,5 +27,9 @@
 - (BOOL)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 shouldBeginPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 willBeginPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
 - (void)presentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1 willEndPresentationWithContext:(HUQuickControlPresentationContext *)arg2;
+- (void)presentationCoordinatorDidCancelDismissalTransition:(HUQuickControlPresentationCoordinator *)arg1;
+- (BOOL)presentationCoordinatorShouldDisablePullToUnlockSettings:(HUQuickControlPresentationCoordinator *)arg1;
+- (BOOL)presentationCoordinatorShouldProvideCancellationFeedback:(HUQuickControlPresentationCoordinator *)arg1;
+- (void)presentationCoordinatorWillBeginDismissalTransition:(HUQuickControlPresentationCoordinator *)arg1;
 @end
 

@@ -40,6 +40,7 @@
     NSString *_locationCode;
     NSString *_languageCode;
     NSString *_alarms;
+    long long _maxAttendees;
 }
 
 @property (strong, nonatomic) NSString *alarms; // @synthesize alarms=_alarms;
@@ -70,6 +71,7 @@
 @property (readonly, nonatomic) BOOL isTaskContainer;
 @property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (strong, nonatomic) NSString *locationCode; // @synthesize locationCode=_locationCode;
+@property (nonatomic) long long maxAttendees; // @synthesize maxAttendees=_maxAttendees;
 @property (nonatomic) BOOL overrideSupportsFreebusy; // @synthesize overrideSupportsFreebusy=_overrideSupportsFreebusy;
 @property (strong, nonatomic) NSURL *prePublishURL; // @synthesize prePublishURL=_prePublishURL;
 @property (strong, nonatomic) NSURL *publishURL; // @synthesize publishURL=_publishURL;

@@ -4,50 +4,51 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSPContainedObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
-@interface TSTTableTileRowInfo : TSPContainedObject
+@interface TSTTableTileRowInfo : NSObject
 {
-    struct __CFData *_storageBuffer;
-    unsigned short _storageOffsets[255];
-    unsigned short _bufferSize;
-    struct __CFData *_storageBufferPreBNC;
-    unsigned short _storageOffsetsPreBNC[255];
-    unsigned short _bufferSizePreBNC;
-    unsigned short _maxTileColumnIndex;
-    BOOL _maxTileColumnIndexValid;
+    struct TSTTableTileRowBuffer _currentData;
+    struct TSTTableTileRowBuffer _preBNCData;
+    unsigned short _maxColumnIndex;
+    BOOL _maxColumnIndexValid;
     unsigned char _storageVersion;
-    unsigned short _cellCount;
+    struct os_unfair_lock_s _unfairLock;
     unsigned int _tileRowIndex;
+    unsigned long long _cellCount;
 }
 
 @property (readonly, nonatomic) BOOL bncStorageBufferExists;
-@property (readonly, nonatomic) unsigned short cellCount; // @synthesize cellCount=_cellCount;
-@property (readonly, nonatomic) unsigned short maxTileColumnIndex;
+@property (readonly, nonatomic) unsigned long long cellCount; // @synthesize cellCount=_cellCount;
+@property (readonly, nonatomic) unsigned short maxColumnIndex;
 @property (nonatomic) unsigned int tileRowIndex; // @synthesize tileRowIndex=_tileRowIndex;
 
++ (id)rowInfoFromArchive:(const struct TileRowInfo *)arg1;
++ (id)rowInfoWithTileRowIndex:(unsigned int)arg1;
 - (void)_insertCell:(id)arg1 atIndex:(unsigned short)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
-- (void)_invalidateMaxTileColumnIndex;
-- (void)_recalculateMaxTileColumnIndex;
+- (void)_recalculateMaxColumnIndex;
 - (void)_removeCellAtIndex:(unsigned short)arg1;
 - (void)_replaceCellAtIndex:(unsigned short)arg1 withCell:(id)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
+- (vector_73284f0b)accumulateCurrentCellsConcurrentlyAtColumns:(vector_5e7df3d8 *)arg1 usingCellCreationBlock:(CDUnknownBlockType)arg2;
 - (unsigned short)cellIndexAtOrAfterIndex:(unsigned short)arg1;
 - (unsigned short)cellIndexAtOrBeforeIndex:(unsigned short)arg1;
 - (struct TSTCellStorage *)cellStorageRefAtIndex:(unsigned short)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)encodeToArchive:(struct TileRowInfo *)arg1 archiver:(id)arg2;
 - (void)enumerateStoragesInColumnRange:(struct _NSRange)arg1 getPreBNC:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateStoragesInColumnRange:(struct _NSRange)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)initWithArchive:(const struct TileRowInfo *)arg1 owner:(id)arg2;
-- (id)initWithOwner:(id)arg1 tileRowIndex:(unsigned int)arg2;
+- (id)initFromArchive:(const struct TileRowInfo *)arg1;
+- (id)initWithTileRowIndex:(unsigned int)arg1;
 - (void)insertColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
+- (void)lockForConcurrentAccess;
 - (void)moveColumnsFromIndex:(unsigned short)arg1 toIndex:(unsigned short)arg2 count:(unsigned int)arg3;
 - (struct TSTCellStorage *)preBNCStorageRefAtIndex:(unsigned short)arg1;
 - (void)removeColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
-- (void)saveToArchive:(struct TileRowInfo *)arg1 archiver:(id)arg2;
 - (BOOL)searchCellStorageRefAtColumnIndex:(unsigned short)arg1 searchMask:(unsigned long long)arg2;
-- (void)setCell:(id)arg1 atIndex:(unsigned short)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
+- (long long)setCell:(id)arg1 atIndex:(unsigned short)arg2 formatKeys:(CDStruct_c8ca99d5 *)arg3;
+- (void)unlockForConcurrentAccess;
 - (void)validate;
 - (BOOL)validateWithResult:(id *)arg1;
 

@@ -19,7 +19,7 @@
     NSObject<OS_dispatch_queue> *_queue;
     HKActivitySummary *_queue_currentActivitySummary;
     HKCurrentActivityCacheQuery *_queue_currentActivityCacheQuery;
-    NSArray *_queue_currentMoveChartData;
+    NSArray *_queue_currentActiveEnergyChartData;
     NSArray *_queue_currentExerciseChartData;
     NSArray *_queue_currentStandChartData;
     NSObject<OS_dispatch_queue> *_subscriber_queue;
@@ -32,13 +32,14 @@
 - (void).cxx_destruct;
 - (void)_broadcastCurrentEntryUpdate:(id)arg1 toSubscriber:(id)arg2;
 - (void)_broadcastCurrentEntryUpdateToSubscribers:(id)arg1;
+- (id)_currentActivitySummaryQueryCollectionIntervalsOverride;
 - (void)_handleTimeChange;
 - (BOOL)_loadingStateForActivitySummary:(id)arg1;
 - (void)_queue_restartQueriesIfQueryInUse:(id)arg1;
-- (void)_queue_restartQueriesPreservingHisoricalData:(BOOL)arg1;
+- (void)_queue_restartQueriesPreservingExistingGoals:(BOOL)arg1;
 - (void)_queue_startQueries;
-- (void)_queue_stopQueriesPreservingHistoricalData:(BOOL)arg1;
-- (void)_queue_updateChartStatisticsWithMoveStatistics:(id)arg1 exerciseStatistics:(id)arg2 standHourStatistics:(id)arg3;
+- (void)_queue_stopQueriesPreservingExistingGoals:(BOOL)arg1;
+- (void)_queue_updateChartStatisticsWithStatisticsQueryResult:(id)arg1;
 - (void)_queue_updateCurrentActivitySummaryWithSummary:(id)arg1;
 - (id)_queue_wellnessEntryModelFromCurrentActivitySummary;
 - (void)addSubscriber:(id)arg1;

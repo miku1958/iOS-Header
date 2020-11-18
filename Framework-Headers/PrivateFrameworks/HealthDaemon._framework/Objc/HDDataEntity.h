@@ -21,6 +21,7 @@
 
 + (struct _HDDeleteObjectDataDefn)_deleteInfoForObjectWithUUID:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (Class)_deletedEntityClass;
++ (Class)_entityClassForDeletion;
 + (id)_insertBaseDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 error:(id *)arg4;
 + (BOOL)_insertDataObject:(id)arg1 insertionContext:(id)arg2 provenanceEntityID:(long long)arg3 profile:(id)arg4 database:(id)arg5 insertedEntityID:(id *)arg6 error:(id *)arg7;
 + (id)_insertDataObject:(id)arg1 withProvenanceID:(id)arg2 inDatabase:(id)arg3 error:(id *)arg4;
@@ -36,7 +37,6 @@
 + (Class)baseDataEntityClass;
 + (id)codableObjectsFromObjectCollection:(id)arg1;
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
-+ (id)columnNameForSortIdentifier:(id)arg1;
 + (id)columnNamesForTimeOffset;
 + (long long)countOfObjectsWithPredicate:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (id)dataEntityForObject:(id)arg1 profile:(id)arg2 error:(id *)arg3;
@@ -49,25 +49,28 @@
 + (id)entityEnumeratorWithProfile:(id)arg1;
 + (BOOL)enumerateAssociatedObjectsForIdentifier:(long long)arg1 inDatabase:(id)arg2 error:(id *)arg3 associatedObjectHandler:(CDUnknownBlockType)arg4;
 + (id)foreignKeys;
-+ (BOOL)generateSyncObjectsForSession:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 error:(id *)arg6 handler:(CDUnknownBlockType)arg7;
++ (BOOL)generateSyncObjectsForSession:(id)arg1 predicate:(id)arg2 syncAnchorRange:(struct HDSyncAnchorRange)arg3 maxEncodedBytesPerMessage:(long long)arg4 profile:(id)arg5 messageHandler:(id)arg6 error:(id *)arg7;
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id *)arg5;
 + (void)insertDataObjects:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (BOOL)isBackedByTable;
++ (BOOL)isConcreteEntity;
 + (id)joinClausesForProperty:(id)arg1;
 + (BOOL)journalObjects:(id)arg1 insertionContext:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)mergeDataObject:(id)arg1 provenance:(id)arg2 profile:(id)arg3 database:(id)arg4 error:(id *)arg5 insertHandler:(CDUnknownBlockType)arg6;
 + (CDUnknownBlockType)objectInsertionFilterForProfile:(id)arg1;
 + (id)objectWithID:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)objectWithUUID:(id)arg1 encodingOptions:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)orderingTermForSortDescriptor:(id)arg1;
 + (BOOL)participatesInInsertion;
 + (id)predicateForObjectsFromAppleWatchSources:(BOOL)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)predicateForObjectsFromLocalSourceWithBundleIdentifier:(id)arg1 profile:(id)arg2 error:(id *)arg3;
++ (id)predicateForObjectsWithSourcePredicate:(id)arg1 matchSource:(BOOL)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)predicateMatchingPreferredEntityTypeIfRequiredWithPredicate:(id)arg1;
 + (long long)preferredEntityType;
 + (id)propertyForSyncProvenance;
 + (long long)protectionClass;
 + (BOOL)requiresSampleTypePredicate;
-+ (long long)shouldInsertObject:(id)arg1 sourceID:(id)arg2 profile:(id)arg3 objectToReplace:(id *)arg4 objectID:(id *)arg5 error:(id *)arg6;
++ (long long)shouldInsertObject:(id)arg1 sourceID:(id)arg2 profile:(id)arg3 database:(id)arg4 objectToReplace:(id *)arg5 objectID:(id *)arg6 error:(id *)arg7;
 + (id)sourceIDForObjectID:(id)arg1 type:(long long)arg2 profile:(id)arg3 errorOut:(id *)arg4;
 + (id)sourceIDsForObjectsOfType:(long long)arg1 profile:(id)arg2 predicate:(id)arg3 error:(id *)arg4;
 + (BOOL)supportsObjectMerging;

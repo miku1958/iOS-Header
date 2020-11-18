@@ -12,18 +12,19 @@
 
 @interface GEONavigationTransitStopSummary : PBCodable <NSCopying>
 {
-    unsigned long long _stopID;
     GEOLatLng *_coordinate;
+    unsigned long long _stopID;
     struct {
-        unsigned int stopID:1;
-    } _has;
+        unsigned int has_stopID:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOLatLng *coordinate; // @synthesize coordinate=_coordinate;
+@property (strong, nonatomic) GEOLatLng *coordinate;
 @property (readonly, nonatomic) BOOL hasCoordinate;
 @property (nonatomic) BOOL hasStopID;
-@property (nonatomic) unsigned long long stopID; // @synthesize stopID=_stopID;
+@property (nonatomic) unsigned long long stopID;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -33,6 +34,7 @@
 - (id)initWithTransitStop:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

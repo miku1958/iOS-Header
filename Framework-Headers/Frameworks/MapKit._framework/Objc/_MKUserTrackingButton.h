@@ -61,6 +61,7 @@
 - (void)_updateForState:(long long)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateForMiniBarState:(BOOL)arg1;
 
 @end

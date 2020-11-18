@@ -14,7 +14,7 @@
 
 @interface HKSeriesBuilder : NSObject <_HKXPCExportable, HKSeriesBuilderClientInterface>
 {
-    long long _state;
+    _Atomic int _state;
     HKTaskServerProxyProvider *_proxyProvider;
     NSUUID *_identifier;
     HKSeriesBuilderConfiguration *_configuration;
@@ -28,10 +28,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) HKTaskServerProxyProvider *proxyProvider; // @synthesize proxyProvider=_proxyProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
-@property (nonatomic) long long state;
+@property long long state;
 @property (readonly, nonatomic) HKHealthStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 
@@ -39,6 +39,7 @@
 + (void)configureClientInterface:(id)arg1;
 + (void)configureServerInterface:(id)arg1;
 + (id)serverInterface;
++ (id)taskServerIdentifier;
 - (void).cxx_destruct;
 - (id)_initWithHealthStore:(id)arg1 identifier:(id)arg2 configuration:(id)arg3;
 - (void)_resourceQueue_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;

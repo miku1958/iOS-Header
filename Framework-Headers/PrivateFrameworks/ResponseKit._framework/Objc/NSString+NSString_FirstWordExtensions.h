@@ -7,6 +7,11 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (NSString_FirstWordExtensions)
+
+@property (readonly) NSString *stringByEscapingXMLEntities;
+@property (readonly) NSString *stringByUnescapingXMLEntities;
+
+- (BOOL)consistsOfCharactersFromSet:(id)arg1 options:(unsigned long long)arg2;
 - (id)lowercaseFirstWordString;
 - (id)uppercaseFirstWordString;
 @end

@@ -12,12 +12,14 @@
 {
 }
 
-@property (readonly, nonatomic) NSDictionary *pidToContextIdsDictionary;
+@property (readonly, nonatomic) NSDictionary *pidToContextInfoDictionary;
 @property (readonly, nonatomic) NSArray *processIds;
 @property (readonly, nonatomic) NSArray *secureModeViolations;
 
+- (id)_initWithPidToContextInfoDictionary:(struct NSDictionary *)arg1;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (id)initWithPidToContextIdsDictionary:(id)arg1;
+- (id)initWithSecureModeViolations:(id)arg1;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 
 @end

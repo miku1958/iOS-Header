@@ -15,7 +15,6 @@
 + (BOOL)supportsNotificationName:(id)arg1;
 - (void)_fetchCarKitConnectedStateWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCarKitConnectedStateWithHandler:(CDUnknownBlockType)arg1;
-- (BOOL)interestedInDeviceType:(id)arg1;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
 

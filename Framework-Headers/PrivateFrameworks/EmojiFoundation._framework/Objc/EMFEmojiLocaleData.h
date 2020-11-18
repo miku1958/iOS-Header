@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)cfCompareFlagsFromNSOptions:(unsigned long long)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)emojiTokensForOptions:(unsigned long long)arg1 presentationStyle:(int)arg2;
 - (id)emojiTokensForText:(id)arg1 phoneticReading:(id)arg2 options:(unsigned long long)arg3 searchType:(int)arg4 includePrefixMatches:(BOOL)arg5;
 - (void)enumerateSearchResultsInText:(id)arg1 range:(struct _NSRange)arg2 options:(unsigned long long)arg3 searchType:(int)arg4 usingBlock:(CDUnknownBlockType)arg5;

@@ -15,8 +15,6 @@ __attribute__((visibility("hidden")))
     struct _opaque_pthread_mutex_t _lock;
 }
 
-+ (id)__new:(struct __CFString *)arg1 cache:(BOOL)arg2;
-+ (id)__new:(struct __CFString *)arg1 data:(struct __CFData *)arg2;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)initialize;

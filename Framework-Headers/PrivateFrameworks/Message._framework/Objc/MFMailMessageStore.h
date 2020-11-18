@@ -34,28 +34,23 @@
 }
 
 + (Class)classForMimePart;
-+ (id)copyMessages:(id)arg1 toMailbox:(id)arg2 markAsRead:(BOOL)arg3 deleteOriginals:(BOOL)arg4 isDeletion:(BOOL)arg5;
 + (BOOL)createEmptyStoreForPath:(id)arg1;
 + (BOOL)createEmptyStoreIfNeededForPath:(id)arg1;
 + (Class)headersClass;
 + (BOOL)storeAtPathIsWritable:(id)arg1;
-- (id)_defaultRouterDestination;
+- (void).cxx_destruct;
 - (id)_fetchHeaderDataForMessage:(id)arg1 downloadIfNecessary:(BOOL)arg2;
 - (void)_flushAllMessageData;
 - (void)_rebuildTableOfContentsSynchronously;
-- (void)_setFlagsForMessages:(id)arg1;
 - (id)_setOrGetBody:(id)arg1 forMessage:(id)arg2 updateFlags:(BOOL)arg3;
 - (BOOL)_shouldChangeComponentMessageFlags;
 - (BOOL)_shouldChangeComponentMessageFlagsForMessage:(id)arg1;
-- (BOOL)_updateFlagForMessage:(id)arg1 key:(id)arg2 value:(BOOL)arg3;
+- (BOOL)_updateFlagForMessage:(id)arg1 key:(id)arg2 value:(id)arg3;
 - (id)account;
 - (void)allMessageFlagsDidChange:(id)arg1;
 - (unsigned long long)allNonDeletedCountIncludingServerSearch:(BOOL)arg1 andThreadSearch:(BOOL)arg2;
 - (BOOL)allowsAppend;
 - (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2;
-- (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2 newMessageIDs:(id)arg3;
-- (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2 newMessageIDs:(id)arg3 newMessages:(id)arg4;
-- (unsigned long long)appendMessages:(id)arg1 unsuccessfulOnes:(id)arg2 newMessageIDs:(id)arg3 newMessages:(id)arg4 flagsToSet:(id)arg5;
 - (int)archiveDestination;
 - (BOOL)canCompact;
 - (BOOL)canFetchMessageIDs;
@@ -68,10 +63,9 @@
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2;
 - (id)copyMessagesWithRemoteIDs:(id)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
 - (id)copyOfAllMessages;
-- (id)copyOfAllMessagesForBodyLoadingFromRowID:(unsigned int)arg1 limit:(unsigned int)arg2;
+- (id)copyOfAllMessagesForBodyLoadingFromRowID:(long long)arg1 limit:(unsigned int)arg2;
 - (id)copyOfAllMessagesWithOptions:(unsigned int)arg1;
 - (id)copyOfMessagesInRange:(struct _NSRange)arg1;
-- (void)dealloc;
 - (void)deleteMessages:(id)arg1 moveToTrash:(BOOL)arg2;
 - (void)deleteMessagesOlderThanNumberOfDays:(int)arg1 compact:(BOOL)arg2;
 - (void)deletedCount:(unsigned long long *)arg1 andSize:(unsigned long long *)arg2;
@@ -87,7 +81,6 @@
 - (long long)fetchNumMessages:(unsigned long long)arg1 preservingUID:(id)arg2 options:(unsigned long long)arg3;
 - (unsigned long long)fetchWindow;
 - (unsigned long long)fetchWindowCap;
-- (id)finishRoutingMessages:(id)arg1 routed:(id)arg2;
 - (unsigned long long)growFetchWindow;
 - (BOOL)hasCachedDataForMimePart:(id)arg1;
 - (BOOL)hasMessageForAccount:(id)arg1;
@@ -124,7 +117,6 @@
 - (unsigned long long)serverUnreadCount;
 - (unsigned long long)serverUnreadOnlyOnServerCount;
 - (void)setFlag:(id)arg1 state:(BOOL)arg2 forMessages:(id)arg3;
-- (void)setFlagForAllMessages:(id)arg1 state:(BOOL)arg2;
 - (void)setFlagsCancelled:(id)arg1 forMessages:(id)arg2;
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;
 - (id)setFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
@@ -136,7 +128,6 @@
 - (BOOL)shouldDeleteInPlace;
 - (BOOL)shouldDownloadBodyDataForMessage:(id)arg1;
 - (BOOL)shouldGrowFetchWindow;
-- (BOOL)shouldSetSummaryForMessage:(id)arg1;
 - (id)status;
 - (id)storeData:(id)arg1 forMimePart:(id)arg2 isComplete:(BOOL)arg3;
 - (id)storePathRelativeToAccount;
@@ -149,9 +140,7 @@
 - (id)uniqueRemoteIDsForMessages:(id)arg1;
 - (unsigned long long)unreadCount;
 - (unsigned long long)unreadCountMatchingCriterion:(id)arg1;
-- (void)updateMessages:(id)arg1 updateNumberOfAttachments:(BOOL)arg2;
 - (void)updateServerUnreadCountClosingConnection:(BOOL)arg1;
-- (id)willSetFlagsFromDictionary:(id)arg1 forMessages:(id)arg2;
 - (void)writeUpdatedMessageDataToDisk;
 
 @end

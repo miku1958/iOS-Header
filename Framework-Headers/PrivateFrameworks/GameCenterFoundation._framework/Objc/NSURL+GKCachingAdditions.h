@@ -7,6 +7,11 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (GKCachingAdditions)
+- (BOOL)_gkIsSecure;
+- (BOOL)_gkIsValidServerURL;
+- (id)_gkQueryDictionary;
+- (id)_gkURLByAddingQueryParameters:(id)arg1;
+- (id)_gkURLByReplacingSchemeWithScheme:(id)arg1;
 - (id)cacheKeyRepresentation;
 @end
 

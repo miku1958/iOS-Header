@@ -8,7 +8,10 @@
 
 @interface HROnboardingInlineExpandedContentView : UIView
 {
+    long long _currentUserInterfaceStyle;
 }
+
+@property (nonatomic) long long currentUserInterfaceStyle; // @synthesize currentUserInterfaceStyle=_currentUserInterfaceStyle;
 
 + (id)_bodyFont;
 + (double)_bodyFontDistance;

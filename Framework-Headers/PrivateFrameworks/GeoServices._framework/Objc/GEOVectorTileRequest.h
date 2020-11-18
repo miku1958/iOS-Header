@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ProtocolBuffer/PBRequest.h>
+#import <ProtocolBuffer/PBCodable.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
-@interface GEOVectorTileRequest : PBRequest <NSCopying>
+@interface GEOVectorTileRequest : PBCodable <NSCopying>
 {
-    unsigned long long _lineId;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_accessKey;
     NSString *_countryCode;
     NSString *_languageCode;
+    unsigned long long _lineId;
     float _latitudeHint;
     float _longitudeHint;
     unsigned int _scale;
@@ -27,23 +29,46 @@ __attribute__((visibility("hidden")))
     unsigned int _y;
     unsigned int _z;
     BOOL _preflight;
+    BOOL _venuesPreflight;
+    BOOL _vloc;
     struct {
-        unsigned int lineId:1;
-        unsigned int latitudeHint:1;
-        unsigned int longitudeHint:1;
-        unsigned int scale:1;
-        unsigned int size:1;
-        unsigned int style:1;
-        unsigned int version:1;
-        unsigned int x:1;
-        unsigned int y:1;
-        unsigned int z:1;
-        unsigned int preflight:1;
-    } _has;
+        unsigned int has_lineId:1;
+        unsigned int has_latitudeHint:1;
+        unsigned int has_longitudeHint:1;
+        unsigned int has_scale:1;
+        unsigned int has_size:1;
+        unsigned int has_style:1;
+        unsigned int has_version:1;
+        unsigned int has_x:1;
+        unsigned int has_y:1;
+        unsigned int has_z:1;
+        unsigned int has_preflight:1;
+        unsigned int has_venuesPreflight:1;
+        unsigned int has_vloc:1;
+        unsigned int read_accessKey:1;
+        unsigned int read_countryCode:1;
+        unsigned int read_languageCode:1;
+        unsigned int wrote_accessKey:1;
+        unsigned int wrote_countryCode:1;
+        unsigned int wrote_languageCode:1;
+        unsigned int wrote_lineId:1;
+        unsigned int wrote_latitudeHint:1;
+        unsigned int wrote_longitudeHint:1;
+        unsigned int wrote_scale:1;
+        unsigned int wrote_size:1;
+        unsigned int wrote_style:1;
+        unsigned int wrote_version:1;
+        unsigned int wrote_x:1;
+        unsigned int wrote_y:1;
+        unsigned int wrote_z:1;
+        unsigned int wrote_preflight:1;
+        unsigned int wrote_venuesPreflight:1;
+        unsigned int wrote_vloc:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *accessKey; // @synthesize accessKey=_accessKey;
-@property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (strong, nonatomic) NSString *accessKey;
+@property (strong, nonatomic) NSString *countryCode;
 @property (readonly, nonatomic) BOOL hasAccessKey;
 @property (readonly, nonatomic) BOOL hasCountryCode;
 @property (readonly, nonatomic) BOOL hasLanguageCode;
@@ -54,24 +79,32 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasScale;
 @property (nonatomic) BOOL hasSize;
 @property (nonatomic) BOOL hasStyle;
+@property (nonatomic) BOOL hasVenuesPreflight;
 @property (nonatomic) BOOL hasVersion;
+@property (nonatomic) BOOL hasVloc;
 @property (nonatomic) BOOL hasX;
 @property (nonatomic) BOOL hasY;
 @property (nonatomic) BOOL hasZ;
-@property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
-@property (nonatomic) float latitudeHint; // @synthesize latitudeHint=_latitudeHint;
-@property (nonatomic) unsigned long long lineId; // @synthesize lineId=_lineId;
-@property (nonatomic) float longitudeHint; // @synthesize longitudeHint=_longitudeHint;
-@property (nonatomic) BOOL preflight; // @synthesize preflight=_preflight;
-@property (nonatomic) unsigned int scale; // @synthesize scale=_scale;
-@property (nonatomic) unsigned int size; // @synthesize size=_size;
-@property (nonatomic) unsigned int style; // @synthesize style=_style;
-@property (nonatomic) unsigned int version; // @synthesize version=_version;
-@property (nonatomic) unsigned int x; // @synthesize x=_x;
-@property (nonatomic) unsigned int y; // @synthesize y=_y;
-@property (nonatomic) unsigned int z; // @synthesize z=_z;
+@property (strong, nonatomic) NSString *languageCode;
+@property (nonatomic) float latitudeHint;
+@property (nonatomic) unsigned long long lineId;
+@property (nonatomic) float longitudeHint;
+@property (nonatomic) BOOL preflight;
+@property (nonatomic) unsigned int scale;
+@property (nonatomic) unsigned int size;
+@property (nonatomic) unsigned int style;
+@property (nonatomic) BOOL venuesPreflight;
+@property (nonatomic) unsigned int version;
+@property (nonatomic) BOOL vloc;
+@property (nonatomic) unsigned int x;
+@property (nonatomic) unsigned int y;
+@property (nonatomic) unsigned int z;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readAccessKey;
+- (void)_readCountryCode;
+- (void)_readLanguageCode;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -79,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

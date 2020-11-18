@@ -32,9 +32,11 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int visionAlgorithmUmbrellaVersion; // @synthesize visionAlgorithmUmbrellaVersion=_visionAlgorithmUmbrellaVersion;
 
++ (id)analysisLog;
 + (CDUnknownBlockType)assetResourceLargestToSmallestComparator;
 + (CDUnknownBlockType)assetResourceSmallestToLargestComparator;
 + (id)defaultImageCreationOptions;
++ (void)disableANEForRequest:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_checkForDarkWakeStateTransition;
@@ -65,10 +67,8 @@
 - (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (BOOL)processAsset:(id)arg1 error:(id *)arg2;
 - (void)shutdown;
-- (BOOL)startAcknowledgeDeletionsJob:(id)arg1 error:(id *)arg2;
 - (BOOL)startAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)startup;
-- (BOOL)stopAcknowledgeDeletionsJob:(id)arg1 error:(id *)arg2;
 - (BOOL)stopAnalysisJob:(id)arg1 error:(id *)arg2;
 - (BOOL)supportsCoalescingResults;
 - (void)visionServiceAssetsProcessingOperation:(id)arg1 didExecuteToCompletion:(BOOL)arg2;

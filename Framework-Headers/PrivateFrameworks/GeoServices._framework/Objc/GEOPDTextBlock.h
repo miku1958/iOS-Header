@@ -8,24 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTextBlock : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_text;
     NSString *_title;
+    CDStruct_3e4cc335 _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasText;
 @property (readonly, nonatomic) BOOL hasTitle;
-@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSString *text;
+@property (strong, nonatomic) NSString *title;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (id)textBlockForPlaceData:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readText;
+- (void)_readTitle;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

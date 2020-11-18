@@ -12,11 +12,11 @@
 {
 }
 
-@property (strong) NUIContainerStackView *contentView; // @dynamic contentView;
-@property (strong) SFMediaInfoCardSection *section; // @dynamic section;
+@property (strong, nonatomic) NUIContainerStackView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) SFMediaInfoCardSection *section; // @dynamic section;
 
 + (id)dragTitleForCardSection:(id)arg1;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (id)setupContentView;
 
 @end

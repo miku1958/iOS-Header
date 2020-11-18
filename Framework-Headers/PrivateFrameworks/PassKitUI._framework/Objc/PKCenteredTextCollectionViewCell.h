@@ -11,10 +11,9 @@
 @interface PKCenteredTextCollectionViewCell : PKDashboardCollectionViewCell
 {
     UILabel *_titleLabel;
-    NSString *_title;
 }
 
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;

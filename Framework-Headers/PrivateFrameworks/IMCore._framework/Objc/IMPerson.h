@@ -59,6 +59,7 @@
 - (void)_abPersonChanged:(id)arg1;
 - (id)allHandlesForProperty:(id)arg1;
 - (void)appendID:(id)arg1 toProperty:(id)arg2;
+- (id)cnContactWithKeys:(id)arg1;
 - (BOOL)containsHandle:(id)arg1 forServiceProperty:(id)arg2;
 - (void)dealloc;
 - (id)description;
@@ -68,12 +69,14 @@
 - (id)idsAddresses;
 - (id)init;
 - (id)initWithABRecordID:(int)arg1;
+- (id)initWithContact:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToIMPerson:(id)arg1;
 - (void)save;
 - (void)setFirstName:(id)arg1 lastName:(id)arg2;
 - (void)setValues:(id)arg1 forIMProperty:(id)arg2;
 - (void)setValues:(id)arg1 forProperty:(id)arg2;
+- (void)updateCNContact:(id)arg1;
 - (id)valuesForIMProperty:(id)arg1;
 - (id)valuesForProperty:(id)arg1;
 

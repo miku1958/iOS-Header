@@ -11,15 +11,21 @@
 }
 
 + (void)applyRowBoundedSizingToImageView:(id)arg1;
++ (double)bestScaleForView:(id)arg1;
++ (double)ceilingValue:(double)arg1 inView:(id)arg2;
++ (double)deviceScaledFlooredValue:(double)arg1;
++ (struct CGRect)deviceScaledRoundedRect:(struct CGRect)arg1;
 + (double)deviceScaledRoundedValue:(double)arg1;
++ (double)flooredValue:(double)arg1 inView:(id)arg2;
 + (struct CGSize)idealImageSizeWithSize:(struct CGSize)arg1 fittingSize:(struct CGSize)arg2;
 + (BOOL)isSuperLargeAccessibilitySize;
 + (BOOL)isWideScreen;
 + (struct CGSize)maxThumbnailSize;
 + (void)requireIntrinsicSizeForView:(id)arg1;
 + (void)requireIntrinsicSizeForView:(id)arg1 withPriority:(float)arg2;
++ (double)roundedValue:(double)arg1 inView:(id)arg2;
 + (double)scaledValueForValue:(double)arg1 withFont:(id)arg2;
-+ (void)setDynamicBaslineAlignmentsForLabel:(id)arg1 top:(double)arg2 bottom:(double)arg3;
++ (void)setDynamicBaselineAlignmentsForLabel:(id)arg1 top:(double)arg2 bottom:(double)arg3;
 
 @end
 

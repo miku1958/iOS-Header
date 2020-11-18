@@ -8,28 +8,41 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOResource, PBUnknownFields;
+@class GEOResource, PBDataReader, PBUnknownFields;
 
 @interface GEOStaleResource : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    double _originalTimestamp;
     GEOResource *_desiredResource;
     GEOResource *_fallbackResource;
+    double _originalTimestamp;
     struct {
-        unsigned int originalTimestamp:1;
-    } _has;
+        unsigned int has_originalTimestamp:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_desiredResource:1;
+        unsigned int read_fallbackResource:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_desiredResource:1;
+        unsigned int wrote_fallbackResource:1;
+        unsigned int wrote_originalTimestamp:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOResource *desiredResource; // @synthesize desiredResource=_desiredResource;
-@property (strong, nonatomic) GEOResource *fallbackResource; // @synthesize fallbackResource=_fallbackResource;
+@property (strong, nonatomic) GEOResource *desiredResource;
+@property (strong, nonatomic) GEOResource *fallbackResource;
 @property (readonly, nonatomic) BOOL hasDesiredResource;
 @property (readonly, nonatomic) BOOL hasFallbackResource;
 @property (nonatomic) BOOL hasOriginalTimestamp;
-@property (nonatomic) double originalTimestamp; // @synthesize originalTimestamp=_originalTimestamp;
+@property (nonatomic) double originalTimestamp;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDesiredResource;
+- (void)_readFallbackResource;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +50,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

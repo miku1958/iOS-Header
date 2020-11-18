@@ -8,14 +8,17 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class NSData;
+@class CKDPCodeFunctionInvokeResponseAttestationResponse, NSData;
 
 __attribute__((visibility("hidden")))
 @interface CKDPCodeFunctionInvokeResponse : PBCodable <NSCopying>
 {
+    CKDPCodeFunctionInvokeResponseAttestationResponse *_attestationResponse;
     NSData *_serializedResult;
 }
 
+@property (strong, nonatomic) CKDPCodeFunctionInvokeResponseAttestationResponse *attestationResponse; // @synthesize attestationResponse=_attestationResponse;
+@property (readonly, nonatomic) BOOL hasAttestationResponse;
 @property (readonly, nonatomic) BOOL hasSerializedResult;
 @property (strong, nonatomic) NSData *serializedResult; // @synthesize serializedResult=_serializedResult;
 

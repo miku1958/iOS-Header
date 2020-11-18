@@ -6,17 +6,20 @@
 
 #import <RelevanceEngine/REPredictor.h>
 
+#import <RelevanceEngine/REAppUsagePredictorProperties-Protocol.h>
+
 @class RETimeline;
 
-@interface REAppUsagePredictor : REPredictor
+@interface REAppUsagePredictor : REPredictor <REAppUsagePredictorProperties>
 {
     RETimeline *_timeline;
 }
 
+@property (readonly, nonatomic) RETimeline *timeline;
+
 + (id)supportedFeatures;
 + (double)updateInterval;
 - (void).cxx_destruct;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (id)featureValueForFeature:(id)arg1 element:(id)arg2 engine:(id)arg3 trainingContext:(id)arg4;
 - (void)update;
 

@@ -6,12 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@interface MSFileCompression : NSObject
+#import <MailSupport/EFLoggable-Protocol.h>
+
+@class NSString;
+
+@interface MSFileCompression : NSObject <EFLoggable>
 {
 }
 
-+ (BOOL)compressDirectory:(id)arg1 compressInPlace:(BOOL)arg2 shouldCancel:(CDUnknownBlockType)arg3 error:(id *)arg4;
-+ (BOOL)compressFile:(id)arg1 compressInPlace:(BOOL)arg2 error:(id *)arg3;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (BOOL)compressDirectory:(id)arg1 shouldCancel:(CDUnknownBlockType)arg2 error:(id *)arg3;
++ (BOOL)compressFile:(id)arg1 error:(id *)arg2;
 + (id)log;
 
 @end

@@ -6,24 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
-@protocol OS_dispatch_queue, OS_xpc_object;
+#import <AssertionServices/RBSServiceDelegate-Protocol.h>
 
-@interface BKSWorkspace : NSObject
+@class NSString;
+
+@interface BKSWorkspace : NSObject <RBSServiceDelegate>
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_xpc_object> *_listenerConnection;
-    NSMutableSet *_hostConnections;
-    NSMutableSet *_clientConnections;
 }
 
-+ (id)sharedConnection;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)sharedInstance;
-+ (id)sharedQueue;
-- (void)_queue_handleClientMessage:(id)arg1;
-- (void)_queue_handleConnectToHostMessage:(id)arg1;
-- (void)_queue_handleServerMessage:(id)arg1;
 - (id)init;
+- (void)service:(id)arg1 didLoseInheritances:(id)arg2;
+- (void)service:(id)arg1 didReceiveInheritances:(id)arg2;
 
 @end
 

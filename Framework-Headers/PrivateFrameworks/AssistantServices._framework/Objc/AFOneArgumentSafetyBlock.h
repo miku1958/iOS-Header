@@ -8,6 +8,7 @@
 
 @interface AFOneArgumentSafetyBlock : NSObject
 {
+    struct atomic_flag _hasInvoked;
     CDUnknownBlockType _block;
     id _defaultValue;
 }
@@ -16,7 +17,7 @@
 - (void)dealloc;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1 defaultValue:(id)arg2;
-- (void)invokeWithValue:(id)arg1;
+- (BOOL)invokeWithValue:(id)arg1;
 
 @end
 

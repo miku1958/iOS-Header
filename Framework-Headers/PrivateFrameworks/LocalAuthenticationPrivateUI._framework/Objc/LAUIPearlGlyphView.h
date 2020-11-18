@@ -11,6 +11,7 @@
 
 @interface LAUIPearlGlyphView : UIView
 {
+    BOOL _inApplicationContext;
     BOOL _hideFace;
     BOOL _paused;
     BOOL _feedbackEnabled;
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL feedbackEnabled; // @synthesize feedbackEnabled=_feedbackEnabled;
 @property (readonly, nonatomic) UIColor *finishedColor; // @synthesize finishedColor=_finishedColor;
 @property (readonly, nonatomic) BOOL hideFace; // @synthesize hideFace=_hideFace;
+@property (nonatomic) BOOL inApplicationContext; // @synthesize inApplicationContext=_inApplicationContext;
 @property (nonatomic) CDStruct_14d5dc5e modelTransform; // @synthesize modelTransform=_modelTransform;
 @property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;

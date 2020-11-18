@@ -13,21 +13,21 @@
 @interface GEOPhotoInfo : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    int _size;
     NSString *_url;
-    struct {
-        unsigned int size:1;
-    } _has;
+    int _size;
+    CDStruct_3f61e687 _flags;
 }
 
 @property (nonatomic) BOOL hasSize;
 @property (readonly, nonatomic) BOOL hasUrl;
-@property (nonatomic) int size; // @synthesize size=_size;
+@property (nonatomic) int size;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
+@property (strong, nonatomic) NSString *url;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSize:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +36,7 @@
 - (id)initWithPlaceDataPhotoContent:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)sizeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

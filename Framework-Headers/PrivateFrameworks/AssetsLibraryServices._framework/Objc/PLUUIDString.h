@@ -13,6 +13,7 @@
 }
 
 + (id)UUIDString;
++ (BOOL)parseUUIDString:(id)arg1 uuidBuffer:(char *)arg2;
 - (const char *)UTF8String;
 - (CDStruct_bd2f613f)UUIDBytes;
 - (id)UUIDData;

@@ -6,31 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID;
-
 @interface _HDWorkoutCondenserBufferDatum : NSObject
 {
+    unsigned char _UUIDBytes[16];
     BOOL _isSeries;
     double _startTime;
     double _endTime;
     double _value;
-    NSUUID *_UUID;
 }
 
-@property (readonly, copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (readonly, nonatomic) double endTime; // @synthesize endTime=_endTime;
 @property (readonly, nonatomic) BOOL isSeries; // @synthesize isSeries=_isSeries;
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly, nonatomic) double value; // @synthesize value=_value;
 
-- (void).cxx_destruct;
-- (long long)compare:(id)arg1;
 - (id)description;
-- (unsigned long long)hash;
 - (id)init;
-- (id)initWithStartTime:(double)arg1 endTime:(double)arg2 value:(double)arg3 UUID:(id)arg4 series:(BOOL)arg5;
-- (BOOL)isEqual:(id)arg1;
-- (id)preferredDatum:(id)arg1;
+- (id)initWithStartTime:(double)arg1 endTime:(double)arg2 value:(double)arg3 UUIDBytes:(unsigned char [16])arg4 series:(BOOL)arg5;
+- (BOOL)shouldReplaceDatum:(id)arg1;
 
 @end
 

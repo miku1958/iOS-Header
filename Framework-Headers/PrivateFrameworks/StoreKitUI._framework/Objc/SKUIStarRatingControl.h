@@ -8,6 +8,7 @@
 
 @class UIImage, UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIStarRatingControl : UIControl
 {
     long long _previousUserRating;
@@ -25,6 +26,10 @@
 @property (nonatomic) long long userRating; // @synthesize userRating=_userRating;
 
 - (void).cxx_destruct;
+- (unsigned long long)_firstStar;
+- (BOOL)_isRTL;
+- (unsigned long long)_lastStar;
+- (unsigned long long)_ratingForUIDirection:(unsigned long long)arg1;
 - (double)_unfilledStarsMinX;
 - (double)_unfilledStarsWidth;
 - (void)_updateUserRatingWithTouch:(id)arg1;

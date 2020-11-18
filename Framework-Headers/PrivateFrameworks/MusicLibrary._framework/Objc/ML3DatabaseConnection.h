@@ -81,7 +81,7 @@
 - (id)_internalExecuteQuery:(id)arg1 withParameters:(id)arg2 limitProperty:(id)arg3 limitValue:(long long)arg4;
 - (BOOL)_internalExecuteUpdate:(id)arg1 withParameters:(id)arg2 error:(id *)arg3;
 - (void)_internalLogQuery:(id)arg1 withParameters:(id)arg2 limitProperty:(id)arg3 limitValue:(long long)arg4;
-- (BOOL)_isSharedMediaLibraryDatabase;
+- (BOOL)_isDeviceMediaLibraryDatabase;
 - (void)_logCurrentError;
 - (void)_logCurrentErrorWhilePerformingStatementOperation:(id)arg1 statement:(id)arg2;
 - (void)_logCurrentErrorWhilePerformingStatementOperation:(id)arg1 statementSQL:(id)arg2;

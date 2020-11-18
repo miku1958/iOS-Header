@@ -10,6 +10,7 @@
 
 @interface PHAssetMediaAnalysisProperties : PHAssetPropertySet
 {
+    short _audioClassification;
     float _blurrinessScore;
     float _exposureScore;
     float _autoplaySuggestionScore;
@@ -19,12 +20,15 @@
     unsigned long long _mediaAnalysisVersion;
     unsigned long long _faceCount;
     CDStruct_1b6d18a9 _bestKeyFrameTime;
+    struct CGRect _bestPlaybackRect;
     CDStruct_e83c9415 _bestVideoTimeRange;
 }
 
 @property (readonly, nonatomic) float activityScore; // @synthesize activityScore=_activityScore;
+@property (readonly, nonatomic) short audioClassification; // @synthesize audioClassification=_audioClassification;
 @property (readonly, nonatomic) float autoplaySuggestionScore; // @synthesize autoplaySuggestionScore=_autoplaySuggestionScore;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 bestKeyFrameTime; // @synthesize bestKeyFrameTime=_bestKeyFrameTime;
+@property (readonly, nonatomic) struct CGRect bestPlaybackRect; // @synthesize bestPlaybackRect=_bestPlaybackRect;
 @property (readonly, nonatomic) CDStruct_e83c9415 bestVideoTimeRange; // @synthesize bestVideoTimeRange=_bestVideoTimeRange;
 @property (readonly, nonatomic) float blurrinessScore; // @synthesize blurrinessScore=_blurrinessScore;
 @property (readonly, nonatomic) float exposureScore; // @synthesize exposureScore=_exposureScore;

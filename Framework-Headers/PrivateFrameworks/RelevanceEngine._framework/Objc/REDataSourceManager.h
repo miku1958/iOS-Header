@@ -6,12 +6,12 @@
 
 #import <RelevanceEngine/RERelevanceEngineSubsystem.h>
 
-#import <RelevanceEngine/RELoggable-Protocol.h>
+#import <RelevanceEngine/REDataSourceManagerProperties-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSSet, NSString, REConcurrentDictionary, REDataSourceLoader;
+@class NSArray, NSDictionary, NSMutableArray, NSSet, REConcurrentDictionary, REDataSourceLoader;
 @protocol REDataSourceManagerObserver;
 
-@interface REDataSourceManager : RERelevanceEngineSubsystem <RELoggable>
+@interface REDataSourceManager : RERelevanceEngineSubsystem <REDataSourceManagerProperties>
 {
     NSMutableArray *_dataSourceControllers;
     unsigned long long _dataSourceState;
@@ -20,8 +20,10 @@
     NSDictionary *_identifierDataSourceMap;
     NSDictionary *_identifierApplicationIdentifierMap;
     NSDictionary *_identifierOperatingSystemVersionMap;
+    NSDictionary *_unmanagedDataSourcesMap;
     NSSet *_elementGroupSupportingConfigurations;
     REConcurrentDictionary *_elementGroupMap;
+    BOOL _ignoreAppInstallation;
     BOOL _completedFirstElementLoad;
     REDataSourceLoader *_loader;
     NSSet *_availableDataSourceIdentifiers;
@@ -34,12 +36,11 @@
 @property (readonly, nonatomic, getter=hasCompletedFirstElementLoad) BOOL completedFirstElementLoad; // @synthesize completedFirstElementLoad=_completedFirstElementLoad;
 @property (strong) NSSet *currentDataSourceIdentifiers; // @synthesize currentDataSourceIdentifiers=_currentDataSourceIdentifiers;
 @property (strong) NSArray *currentDataSources; // @synthesize currentDataSources=_currentDataSources;
-@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) NSArray *dataSourceControllers;
 @property (readonly, weak, nonatomic) id<REDataSourceManagerObserver> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *disabledDataSources;
 @property (readonly, nonatomic) REDataSourceLoader *loader; // @synthesize loader=_loader;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSSet *unrestirctedDataSourceIdentifiers;
 
 + (BOOL)_isPrioritizedDataSourceClass:(Class)arg1;
 + (id)_prioritizedDataSourceClasses;
@@ -52,7 +53,6 @@
 - (void)_queue_updateAvailableDataSourceIdentifiers;
 - (void)_updatePreferences;
 - (Class)classForDataSourceIdentifier:(id)arg1;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)elementGroupForIdentifier:(id)arg1;
 - (void)enumerateElementDataSourceControllers:(CDUnknownBlockType)arg1;

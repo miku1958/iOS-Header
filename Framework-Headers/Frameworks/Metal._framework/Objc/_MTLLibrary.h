@@ -4,37 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
 #import <Metal/MTLLibrarySPI-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class NSArray, NSData, NSMutableDictionary, NSString;
 @protocol MTLDevice;
 
-@interface _MTLLibrary : NSObject <MTLLibrarySPI>
+@interface _MTLLibrary : _MTLObjectWithLabel <MTLLibrarySPI>
 {
-    NSString *_label;
     id<MTLDevice> _device;
-    NSArray *_functionNames;
-    NSArray *_externFunctionNames;
     struct MTLLibraryData *_libraryData;
     NSMutableDictionary *_functionDictionary;
     struct MTLLibraryContainer *_cacheEntry;
-    struct MTLPipelineCollection *_pipelineCollection;
 }
 
 @property (readonly) struct MTLLibraryContainer *cacheEntry; // @synthesize cacheEntry=_cacheEntry;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
-@property (readonly, strong) NSArray *externFunctionNames; // @synthesize externFunctionNames=_externFunctionNames;
+@property (readonly, strong) NSArray *externFunctionNames; // @dynamic externFunctionNames;
 @property (readonly, strong, nonatomic) NSMutableDictionary *functionDictionary; // @synthesize functionDictionary=_functionDictionary;
-@property (readonly, strong) NSArray *functionNames; // @synthesize functionNames=_functionNames;
+@property (readonly, strong) NSArray *functionNames; // @dynamic functionNames;
 @property (readonly) unsigned long long hash;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (copy) NSString *label; // @dynamic label;
 @property (readonly) struct MTLLibraryData *libraryData; // @synthesize libraryData=_libraryData;
+@property (readonly, copy) NSData *libraryDataContents;
 @property (copy) NSString *overrideTriple; // @dynamic overrideTriple;
-@property struct MTLPipelineCollection *pipelineCollection; // @synthesize pipelineCollection=_pipelineCollection;
 @property (readonly) Class superclass;
 
 - (void)dealloc;

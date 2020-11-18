@@ -9,6 +9,7 @@
 @protocol CTXPCServiceCarrierBundleInterface
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 getAttachApnSettingsWithCompletion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)context:(CTXPCServiceSubscriptionContext *)arg1 modifyAttachApnSettings:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)copyBundleIdentifier:(CTXPCServiceSubscriptionContext *)arg1 bundleType:(CTBundle *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)copyBundleVersion:(CTXPCServiceSubscriptionContext *)arg1 bundleType:(CTBundle *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)copyCarrierBookmarks:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)copyCarrierBundleLocation:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

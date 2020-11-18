@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HomeKit/HMSettings.h>
 
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
@@ -12,7 +12,7 @@
 @class HMAccessory, HMAccessorySettingGroup, HMFUnfairLock, NSString, NSUUID, _HMContext;
 @protocol HMAccessorySettingsContainer, HMAccessorySettingsDelegate, HMControllable;
 
-@interface HMAccessorySettings : NSObject <HMFLogging, HMObjectMerge>
+@interface HMAccessorySettings : HMSettings <HMFLogging, HMObjectMerge>
 {
     HMFUnfairLock *_lock;
     id<HMAccessorySettingsContainer> _settingsContainer;

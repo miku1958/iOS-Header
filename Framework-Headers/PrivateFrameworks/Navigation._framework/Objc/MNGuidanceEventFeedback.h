@@ -8,7 +8,7 @@
 
 #import <Navigation/NSCopying-Protocol.h>
 
-@class NSData, NSString, NSUUID;
+@class NSData, NSMutableArray, NSString, NSUUID;
 
 @interface MNGuidanceEventFeedback : PBCodable <NSCopying>
 {
@@ -21,6 +21,7 @@
     unsigned int _enrouteNoticeIndex;
     NSString *_eventDescription;
     unsigned int _eventIndex;
+    NSMutableArray *_junctionViewImageIDs;
     NSData *_routeID;
     unsigned int _selectedPrimaryStringIndex;
     unsigned int _selectedSecondaryStringIndex;
@@ -69,6 +70,7 @@
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasUniqueIDstring;
 @property (nonatomic) BOOL hasVehicleSpeed;
+@property (strong, nonatomic) NSMutableArray *junctionViewImageIDs; // @synthesize junctionViewImageIDs=_junctionViewImageIDs;
 @property (nonatomic) double maneuverTime; // @synthesize maneuverTime=_maneuverTime;
 @property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) unsigned int selectedPrimaryStringIndex; // @synthesize selectedPrimaryStringIndex=_selectedPrimaryStringIndex;
@@ -83,8 +85,11 @@
 @property (strong, nonatomic) NSString *uniqueIDstring; // @synthesize uniqueIDstring=_uniqueIDstring;
 @property (nonatomic) double vehicleSpeed; // @synthesize vehicleSpeed=_vehicleSpeed;
 
++ (Class)junctionViewImageIDType;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (void)addJunctionViewImageID:(id)arg1;
+- (void)clearJunctionViewImageIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -92,6 +97,8 @@
 - (unsigned long long)hash;
 - (id)initWithEvent:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)junctionViewImageIDAtIndex:(unsigned long long)arg1;
+- (unsigned long long)junctionViewImageIDsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;

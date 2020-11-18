@@ -31,13 +31,15 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_applyOptions:(id)arg1;
+- (struct UIImage *)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
+- (struct UIImage *)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3 useACopy:(BOOL)arg4;
 - (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
 - (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
 - (struct UIImage *)animatedImageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (struct UIImage *)imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (id)init;
 - (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
-- (void)setupAvatarWithOptions:(id)arg1;
+- (void)setupAvatarWithOptions:(id)arg1 useACopy:(BOOL)arg2;
 
 @end
 

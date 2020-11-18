@@ -50,12 +50,14 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addAccessory:(id)arg1;
+- (void)configure;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleRemovedAccessory:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUser:(id)arg1;
+- (id)initWithUser:(id)arg1 accessories:(id)arg2 enabled:(BOOL)arg3;
 - (id)initWithUser:(id)arg1 model:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;

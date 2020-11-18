@@ -23,12 +23,26 @@
     NSString *_accountPersistentUUID;
     NSData *_certificatePersistentID;
     BOOL _syncDefaultFoldersOnly;
+    NSNumber *_enableMailNum;
+    NSNumber *_enableContactsNum;
+    NSNumber *_enableCalendarsNum;
+    NSNumber *_enableRemindersNum;
+    NSNumber *_enableNotesNum;
+    NSNumber *_enableMailUserOverridableNum;
+    NSNumber *_enableContactsUserOverridableNum;
+    NSNumber *_enableCalendarsUserOverridableNum;
+    NSNumber *_enableRemindersUserOverridableNum;
+    NSNumber *_enableNotesUserOverridableNum;
     NSNumber *_useSSL;
     NSNumber *_useOAuth;
+    NSString *_OAuthSignInURL;
+    NSString *_OAuthTokenRequestURL;
     NSDictionary *_communicationServiceRules;
     NSNumber *_syncDefaultFoldersOnlyNum;
 }
 
+@property (strong, nonatomic) NSString *OAuthSignInURL; // @synthesize OAuthSignInURL=_OAuthSignInURL;
+@property (strong, nonatomic) NSString *OAuthTokenRequestURL; // @synthesize OAuthTokenRequestURL=_OAuthTokenRequestURL;
 @property (readonly, strong, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (copy, nonatomic) NSString *accountPersistentUUID; // @synthesize accountPersistentUUID=_accountPersistentUUID;
 @property (strong, nonatomic) NSData *certificatePersistentID; // @synthesize certificatePersistentID=_certificatePersistentID;
@@ -38,6 +52,16 @@
 @property (readonly, strong, nonatomic) NSData *embeddedCertificate; // @synthesize embeddedCertificate=_embeddedCertificate;
 @property (readonly, strong, nonatomic) NSString *embeddedCertificateName; // @synthesize embeddedCertificateName=_embeddedCertificateName;
 @property (copy, nonatomic) NSString *embeddedCertificatePassword; // @synthesize embeddedCertificatePassword=_embeddedCertificatePassword;
+@property (readonly, nonatomic) BOOL enableCalendars;
+@property (readonly, nonatomic) BOOL enableCalendarsUserOverridable;
+@property (readonly, nonatomic) BOOL enableContacts;
+@property (readonly, nonatomic) BOOL enableContactsUserOverridable;
+@property (readonly, nonatomic) BOOL enableMail;
+@property (readonly, nonatomic) BOOL enableMailUserOverridable;
+@property (readonly, nonatomic) BOOL enableNotes;
+@property (readonly, nonatomic) BOOL enableNotesUserOverridable;
+@property (readonly, nonatomic) BOOL enableReminders;
+@property (readonly, nonatomic) BOOL enableRemindersUserOverridable;
 @property (readonly, nonatomic) BOOL hasCertificate;
 @property (readonly, strong, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property (readonly, strong, nonatomic) NSNumber *mailNumberOfPastDaysToSync; // @synthesize mailNumberOfPastDaysToSync=_mailNumberOfPastDaysToSync;

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (int)legendBadgeType;
 - (BOOL)supportsSymbolDrawing;
 - (BOOL)supportsSymbolFillForSymbolType:(int)arg1;
+- (id)userInterfaceName;
 - (unsigned long long)valueDimensions;
 
 @end

@@ -20,16 +20,17 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *wordDocumentTypes;
 
 + (id)sharedDelegate;
-- (BOOL)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2;
+- (BOOL)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(BOOL)arg3;
 - (id)appChartPropertyOverrides;
 - (id)applicationDisplayName;
 - (id)applicationName;
-- (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
+- (id)applicationTemplateVariantsForLocale:(id)arg1;
 - (unsigned long long)applicationType;
 - (id)bladerunnerContainerIdentifier;
 - (id)cloudKitContainerIdentifier;
+- (id)cloudKitSyncContainerIdentifier;
 - (id)createCompatibilityDelegate;
-- (void)customizeHyperlinkViewController:(id)arg1;
+- (void)customizeHyperlinkViewController:(id)arg1 documentRoot:(id)arg2;
 - (void)dealloc;
 - (Class)documentRootClass;
 - (id)documentTypeDisplayName;
@@ -40,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)nativeDocumentType;
 - (id)nativeSFFDocumentType;
-- (BOOL)openURL:(id)arg1 withDocumentRoot:(id)arg2;
 - (void)p_inputMethodsChanged:(id)arg1;
 - (void)p_localeChanged:(id)arg1;
 - (id)previewImageNameForEncryptedNativeDocument;
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)registerSOSClassTypeMappings;
 - (id)sharedAlertMessageWithUserName:(id)arg1;
 - (id)sharedReadOnlyAlertMessageWithUserName:(id)arg1;
+- (id)stringForApplePencilDoubleTapSettingsDescription;
 - (id)stringForApplicationUpdateError;
 - (id)stringForBoxCollaborationOptInMessage;
 - (id)stringForChangePasswordWhileConnectingAlertMessage;
@@ -78,6 +79,8 @@ __attribute__((visibility("hidden")))
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
+- (id)stringForMoveInlineToFloatingButtonTitle;
+- (id)stringForMoveInlineToFloatingButtonToolTip;
 - (id)stringForNoItemsSyncingListItem;
 - (id)stringForOwnerHasCollabEnabledMessage;
 - (id)stringForOwnerHasCollabEnabledTitle;
@@ -95,7 +98,6 @@ __attribute__((visibility("hidden")))
 - (id)stringForUserActivityTitleForFilename:(id)arg1;
 - (id)strokeWidthsForFreehandDrawingToolType:(unsigned long long)arg1;
 - (BOOL)supportsAutosizingTextboxes;
-- (BOOL)supportsInlineNativeEquationObjects;
 - (BOOL)supportsLinkedTextBoxes;
 - (BOOL)supportsRTL;
 - (BOOL)tableHeaderInspectorShowsRepeatHeaderRowsSwitch;

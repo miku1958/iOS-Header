@@ -31,6 +31,7 @@
 - (void)_serviceUIStatusDidChange:(id)arg1 onlyProgressDidChange:(BOOL)arg2;
 - (id)init;
 - (id)initWithCPLService:(id)arg1;
+- (BOOL)performDefaultHandlerForAction:(long long)arg1;
 
 @end
 

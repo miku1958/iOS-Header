@@ -35,7 +35,7 @@
 - (id)_computeNCCMapFromImage:(id)arg1 toImage:(id)arg2 scale:(double)arg3;
 - (id)_fuseImage:(id)arg1 withGuideImage:(id)arg2 weightImage:(id)arg3 maskImage:(id)arg4;
 - (id)_refineMaskImage:(id)arg1 guideImage:(id)arg2 scale:(double)arg3;
-- (id)alignImage:(id)arg1 transform:(CDStruct_d80e62f2)arg2 extent:(struct CGRect)arg3;
+- (id)alignImage:(id)arg1 transform:(CDStruct_8e0628e6)arg2 extent:(struct CGRect)arg3;
 - (id)outputImage;
 
 @end

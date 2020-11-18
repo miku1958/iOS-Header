@@ -8,7 +8,7 @@
 
 #import <ITMLKit/IKJSDataObserving-Protocol.h>
 
-@class IKAppContext, IKDOMElement, IKDataBinding, IKJSDataItem, NSDictionary, NSMutableArray, NSString, _IKDOMMutationRules;
+@class IKAppContext, IKDOMElement, IKDataBinding, IKJSDataItem, NSDictionary, NSMutableArray, NSString, _IKDOMMutationRuleSet;
 @protocol IKDOMBindingStrategy;
 
 __attribute__((visibility("hidden")))
@@ -23,15 +23,15 @@ __attribute__((visibility("hidden")))
         BOOL hasDidResolveKeys;
     } _strategyFlags;
     NSMutableArray *_scheduledUpdaters;
-    BOOL _shouldResolveData;
     IKAppContext *_appContext;
     IKDOMElement *_domElement;
     IKDOMBindingController *_parent;
     IKDataBinding *_binding;
     IKJSDataItem *_dataItem;
     id<IKDOMBindingStrategy> _strategy;
-    _IKDOMMutationRules *_mutationRules;
-    NSDictionary *_prototypesByType;
+    _IKDOMMutationRuleSet *_mutationRuleSet;
+    NSDictionary *_prototypeGroupsByType;
+    unsigned long long _resolutionTarget;
 }
 
 @property (readonly, weak, nonatomic) IKAppContext *appContext; // @synthesize appContext=_appContext;
@@ -41,15 +41,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) IKDOMElement *domElement; // @synthesize domElement=_domElement;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) _IKDOMMutationRules *mutationRules; // @synthesize mutationRules=_mutationRules;
+@property (readonly, nonatomic) _IKDOMMutationRuleSet *mutationRuleSet; // @synthesize mutationRuleSet=_mutationRuleSet;
 @property (readonly, weak, nonatomic) IKDOMBindingController *parent; // @synthesize parent=_parent;
-@property (readonly, nonatomic) NSDictionary *prototypesByType; // @synthesize prototypesByType=_prototypesByType;
-@property (readonly, nonatomic) BOOL shouldResolveData; // @synthesize shouldResolveData=_shouldResolveData;
+@property (readonly, nonatomic) NSDictionary *prototypeGroupsByType; // @synthesize prototypeGroupsByType=_prototypeGroupsByType;
+@property (readonly, nonatomic) unsigned long long resolutionTarget; // @synthesize resolutionTarget=_resolutionTarget;
 @property (readonly, nonatomic) id<IKDOMBindingStrategy> strategy; // @synthesize strategy=_strategy;
 @property (readonly) Class superclass;
 
 + (id)_parsedMutationRulesForDOMElement:(id)arg1;
-+ (id)_prototypesByTypeForDOMElement:(id)arg1;
++ (id)_prototypeGroupsByTypeForDOMElement:(id)arg1;
 + (id)domBindingControllerForDOMElement:(id)arg1;
 + (id)instantiateDOMElementForItem:(id)arg1 withPrototype:(id)arg2 parentDOMElement:(id)arg3 existingDOMElement:(id)arg4;
 + (id)parsedBindingForDOMElement:(id)arg1;
@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_resolveBinding;
 - (void)dataObservable:(id)arg1 didChangePropertyPathWithString:(id)arg2 extraInfo:(id)arg3;
 - (void)dealloc;
-- (id)findPrototypeForType:(id)arg1;
+- (id)findPrototypeForDataItem:(id)arg1;
 - (id)initWithDOMElement:(id)arg1;
 - (void)scheduleUpdateUsingPreUpdate:(CDUnknownBlockType)arg1 update:(CDUnknownBlockType)arg2;
 

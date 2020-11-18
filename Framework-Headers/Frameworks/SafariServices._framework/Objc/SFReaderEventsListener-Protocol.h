@@ -10,9 +10,11 @@
 
 @protocol SFReaderEventsListener <NSObject>
 - (void)contentDidBecomeReadyWithDetectedLanguage:(NSString *)arg1;
+- (void)didCollectArticleContent:(NSDictionary *)arg1;
 - (void)didCollectReaderContentForMail:(NSString *)arg1;
 - (void)didCollectReadingListItemInfo:(NSDictionary *)arg1 bookmarkID:(NSNumber *)arg2;
 - (void)didDetermineReaderAvailability:(BOOL)arg1 dueToSameDocumentNavigation:(BOOL)arg2;
+- (void)didDetermineReaderAvailabilityForDynamicCheck:(BOOL)arg1;
 - (void)didPrepareReaderContentForPrinting:(_WKFrameHandle *)arg1;
 - (void)didSetReaderConfiguration:(NSDictionary *)arg1;
 - (void)readerTextWasExtracted:(NSString *)arg1 withMetadata:(NSDictionary *)arg2 wasDeterminingAvailabilility:(BOOL)arg3;

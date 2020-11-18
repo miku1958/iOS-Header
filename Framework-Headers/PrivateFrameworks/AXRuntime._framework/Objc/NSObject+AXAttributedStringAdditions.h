@@ -8,6 +8,10 @@
 
 @interface NSObject (AXAttributedStringAdditions)
 - (id)_accessibilityAttributedLocalizedString;
+- (id)_axDictionaryKeyReplacementRepresentation;
+- (id)_axReconstitutedRepresentationForDictionaryKeyReplacement;
+- (id)_axRecursivelyPropertyListCoercedRepresentationWithError:(id *)arg1;
+- (id)_axRecursivelyReconstitutedRepresentationFromPropertyListWithError:(id *)arg1;
 - (void)_setAccessibilityAttributedLocalizedString:(id)arg1;
 - (BOOL)isAXAttributedString;
 @end

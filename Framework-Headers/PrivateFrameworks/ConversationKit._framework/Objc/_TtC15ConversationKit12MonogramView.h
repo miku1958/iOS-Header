@@ -8,11 +8,11 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit12MonogramView : UIView
 {
     MISSING_TYPE *lastSizeForFont;
     MISSING_TYPE *font;
+    MISSING_TYPE *colorStyle;
     MISSING_TYPE *text;
 }
 

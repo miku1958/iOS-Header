@@ -14,7 +14,6 @@
     NSObject<OS_dispatch_queue> *_localAuthenticationQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     CDUnknownBlockType _completionHandler;
-    LAContext *_inProgressContext;
     LAContext *_completedContext;
     NSData *_completedCredential;
     NSError *_completedError;
@@ -25,7 +24,6 @@
 @property (strong, nonatomic) NSData *completedCredential; // @synthesize completedCredential=_completedCredential;
 @property (strong, nonatomic) NSError *completedError; // @synthesize completedError=_completedError;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (strong, nonatomic) LAContext *inProgressContext; // @synthesize inProgressContext=_inProgressContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *localAuthenticationQueue; // @synthesize localAuthenticationQueue=_localAuthenticationQueue;
 
 - (void).cxx_destruct;

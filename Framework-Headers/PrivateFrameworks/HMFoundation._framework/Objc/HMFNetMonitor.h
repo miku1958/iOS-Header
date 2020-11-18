@@ -8,42 +8,31 @@
 
 #import <HMFoundation/HMFLogging-Protocol.h>
 
-@class HMFNetAddress, HMFUnfairLock, NSObject, NSString;
-@protocol HMFNetMonitorDelegate, OS_dispatch_queue;
+@class HMFNetAddress, NSString;
+@protocol HMFLocking, HMFNetMonitorDelegate;
 
 @interface HMFNetMonitor : HMFObject <HMFLogging>
 {
-    HMFUnfairLock *_lock;
+    id<HMFLocking> _lock;
     BOOL _reachable;
-    unsigned int _currentNetworkFlags;
     id<HMFNetMonitorDelegate> _delegate;
     HMFNetAddress *_netAddress;
-    NSObject<OS_dispatch_queue> *_queue;
-    struct __SCNetworkReachability *_networkReachabilityRef;
 }
 
-@property (nonatomic) unsigned int currentNetworkFlags; // @synthesize currentNetworkFlags=_currentNetworkFlags;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMFNetMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) HMFNetAddress *netAddress; // @synthesize netAddress=_netAddress;
-@property (readonly, nonatomic) struct __SCNetworkReachability *networkReachabilityRef; // @synthesize networkReachabilityRef=_networkReachabilityRef;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) unsigned long long reachabilityPath;
-@property (readonly, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
+@property (getter=isReachable) BOOL reachable;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)attributeDescriptions;
-- (void)dealloc;
-- (void)handleNetworkReachabilityChange:(unsigned int)arg1;
 - (id)init;
 - (id)initWithNetAddress:(id)arg1;
-- (id)logIdentifier;
-- (void)setReachable:(BOOL)arg1;
-- (id)shortDescription;
+- (id)initWithNetService:(id)arg1;
 
 @end
 

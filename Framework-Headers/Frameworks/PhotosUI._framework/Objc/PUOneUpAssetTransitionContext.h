@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PUOneUpAssetTransitionInfo, UIView;
+@class PUAssetTransitionInfo, UIView;
 
 @interface PUOneUpAssetTransitionContext : NSObject
 {
@@ -14,18 +14,23 @@
     UIView *_containerView;
     UIView *_fromView;
     UIView *_snapshotView;
-    PUOneUpAssetTransitionInfo *_transitionInfo;
+    PUAssetTransitionInfo *_transitionInfo;
+    PUAssetTransitionInfo *_trailingAssetTransitionInfo;
+    PUAssetTransitionInfo *_leadingAssetTransitionInfo;
     CDUnknownBlockType _animationBlock;
 }
 
 @property (copy, nonatomic, setter=_setAnimationBlock:) CDUnknownBlockType animationBlock; // @synthesize animationBlock=_animationBlock;
 @property (strong, nonatomic, setter=_setContainerView:) UIView *containerView; // @synthesize containerView=_containerView;
 @property (strong, nonatomic, setter=_setFromView:) UIView *fromView; // @synthesize fromView=_fromView;
+@property (strong, nonatomic, setter=_setLeadingAssetTransitionInfo:) PUAssetTransitionInfo *leadingAssetTransitionInfo; // @synthesize leadingAssetTransitionInfo=_leadingAssetTransitionInfo;
 @property (nonatomic, setter=_setShouldHideBackground:) BOOL shouldHideBackground; // @synthesize shouldHideBackground=_shouldHideBackground;
 @property (strong, nonatomic, setter=_setSnapshotView:) UIView *snapshotView; // @synthesize snapshotView=_snapshotView;
-@property (strong, nonatomic, setter=_setTransitionInfo:) PUOneUpAssetTransitionInfo *transitionInfo; // @synthesize transitionInfo=_transitionInfo;
+@property (strong, nonatomic, setter=_setTrailingAssetTransitionInfo:) PUAssetTransitionInfo *trailingAssetTransitionInfo; // @synthesize trailingAssetTransitionInfo=_trailingAssetTransitionInfo;
+@property (strong, nonatomic, setter=_setTransitionInfo:) PUAssetTransitionInfo *transitionInfo; // @synthesize transitionInfo=_transitionInfo;
 
 + (id)oneUpAssetTransitionContextWithContainerView:(id)arg1 fromView:(id)arg2 snapshotView:(id)arg3 transitionInfo:(id)arg4;
++ (id)oneUpAssetTransitionContextWithContainerView:(id)arg1 fromView:(id)arg2 snapshotView:(id)arg3 transitionInfo:(id)arg4 trailingAssetTransitionInfo:(id)arg5 leadingAssetTransitionInfo:(id)arg6;
 - (void).cxx_destruct;
 - (id)oneUpTransitionContextWithAnimationBlock:(CDUnknownBlockType)arg1;
 - (id)oneUpTransitionContextWithContextShouldHideBackground:(BOOL)arg1;

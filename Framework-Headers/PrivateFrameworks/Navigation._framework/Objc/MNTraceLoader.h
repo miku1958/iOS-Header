@@ -25,11 +25,12 @@
 - (BOOL)_loadETAUpdatesTable;
 - (BOOL)_loadInfoTable;
 - (BOOL)_loadLocationsTable;
+- (BOOL)_loadMiscInfo;
 - (BOOL)_loadMotionDataTable;
 - (BOOL)_loadRouteSelectionsTable;
-- (BOOL)_loadSignificantEventsTable;
 - (BOOL)_loadTraceVersion;
 - (BOOL)_loadVehicleDataTable;
+- (BOOL)_tableExists:(id)arg1;
 - (BOOL)_updateTraceFromVersion:(unsigned long long)arg1 outError:(id *)arg2;
 - (id)loadTraceWithPath:(id)arg1 outError:(id *)arg2;
 

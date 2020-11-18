@@ -32,10 +32,12 @@
 - (id)_recipientFromAttendee:(id)arg1;
 - (BOOL)editItemShouldBeAskedForInjectableViewController;
 - (id)initWithFrame:(struct CGRect)arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
+- (BOOL)isModalInPresentation;
 - (BOOL)prefersToBePresentedFromUINavigationController;
 - (BOOL)presentModally;
 - (void)setSearchAccountID:(id)arg1;
 - (BOOL)validateAllowingAlert:(BOOL)arg1;
+- (BOOL)validateEmailWithString:(id)arg1;
 - (void)viewDidLoad;
 
 @end

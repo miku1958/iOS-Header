@@ -17,21 +17,22 @@
     BOOL _eventuallyVisible;
     BOOL _initiallyVisible;
     struct {
-        unsigned int tappingCount:1;
-        unsigned int eventuallyVisible:1;
-        unsigned int initiallyVisible:1;
-    } _has;
+        unsigned int has_tappingCount:1;
+        unsigned int has_eventuallyVisible:1;
+        unsigned int has_initiallyVisible:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL eventuallyVisible; // @synthesize eventuallyVisible=_eventuallyVisible;
+@property (nonatomic) BOOL eventuallyVisible;
 @property (nonatomic) BOOL hasEventuallyVisible;
 @property (nonatomic) BOOL hasInitiallyVisible;
 @property (readonly, nonatomic) BOOL hasSuggestionString;
 @property (nonatomic) BOOL hasTappingCount;
-@property (nonatomic) BOOL initiallyVisible; // @synthesize initiallyVisible=_initiallyVisible;
-@property (strong, nonatomic) NSString *suggestionString; // @synthesize suggestionString=_suggestionString;
-@property (nonatomic) int tappingCount; // @synthesize tappingCount=_tappingCount;
+@property (nonatomic) BOOL initiallyVisible;
+@property (strong, nonatomic) NSString *suggestionString;
+@property (nonatomic) int tappingCount;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -40,6 +41,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

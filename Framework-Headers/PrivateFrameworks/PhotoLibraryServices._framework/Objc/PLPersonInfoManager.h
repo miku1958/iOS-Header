@@ -6,24 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, PLLazyObject, PLPhotoLibraryPathManager;
 
 @interface PLPersonInfoManager : NSObject
 {
     NSMutableDictionary *_personDictsForPersonID;
-    NSString *_plistPath;
+    PLPhotoLibraryPathManager *_pathManager;
+    PLLazyObject *_lazyAssetsdClient;
 }
 
-+ (id)sharedManager;
+- (void).cxx_destruct;
 - (void)_loadDictionariesIfNeeded;
+- (id)assetsdClient;
 - (void)clearCacheForPersonID:(id)arg1;
-- (void)dealloc;
 - (void)deleteEmailsAndPhonesForInvitationRecordGUID:(id)arg1;
 - (id)emailForPersonID:(id)arg1;
 - (id)emailsForInvitationRecordGUID:(id)arg1;
 - (id)firstNameForPersonID:(id)arg1;
 - (id)fullNameForPersonID:(id)arg1;
-- (id)init;
+- (id)initWithPathManager:(id)arg1 lazyAssetsdClient:(id)arg2;
 - (id)lastNameForPersonID:(id)arg1;
 - (id)personInfoForPersonID:(id)arg1;
 - (id)phonesForInvitationRecordGUID:(id)arg1;

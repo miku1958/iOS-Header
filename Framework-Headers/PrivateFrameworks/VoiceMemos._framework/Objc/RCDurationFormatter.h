@@ -26,7 +26,6 @@
 - (void)_onQueueReloadLocalizedFormatStrings;
 - (id)_onQueueStringFromDuration:(double)arg1 byReplacingDigitsWithDigit:(long long)arg2 style:(long long)arg3;
 - (id)_onQueueStringFromDuration:(double)arg1 style:(long long)arg2;
-- (void)dealloc;
 - (id)init;
 - (void)reloadLocalizedFormatStrings;
 - (id)stringFromDuration:(double)arg1 replacingDigitsWithDigit:(unsigned long long)arg2 style:(long long)arg3;

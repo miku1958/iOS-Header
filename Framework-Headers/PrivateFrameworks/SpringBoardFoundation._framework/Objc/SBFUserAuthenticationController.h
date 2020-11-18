@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoardFoundation/SBFAuthenticationAssertionProviding-Protocol.h>
 #import <SpringBoardFoundation/SBFAuthenticationStatusProvider-Protocol.h>
 #import <SpringBoardFoundation/SBFMobileKeyBagObserver-Protocol.h>
 #import <SpringBoardFoundation/SBFPasscodeFieldChangeObserver-Protocol.h>
 #import <SpringBoardFoundation/SBFUserAuthenticationModelDelegate-Protocol.h>
 
-@class NSDate, NSHashTable, NSMutableArray, NSString, PCPersistentTimer, SBFAuthenticationAssertion, SBFAuthenticationAssertionManager, SBFMobileKeyBag, SBFMobileKeyBagState;
+@class NSDate, NSHashTable, NSMutableArray, NSString, PCPersistentTimer, SBFAuthenticationAssertion, SBFAuthenticationAssertionManager, SBFMobileKeyBag, SBFMobileKeyBagState, SBFSecureDisplayCoordinator;
 @protocol SBFAuthenticationPolicy, SBFUserAuthenticationModel;
 
-@interface SBFUserAuthenticationController : NSObject <SBFMobileKeyBagObserver, SBFUserAuthenticationModelDelegate, SBFAuthenticationStatusProvider, SBFPasscodeFieldChangeObserver>
+@interface SBFUserAuthenticationController : NSObject <SBFMobileKeyBagObserver, SBFUserAuthenticationModelDelegate, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFPasscodeFieldChangeObserver>
 {
     SBFMobileKeyBag *_keybag;
     NSMutableArray *_responders;
@@ -29,13 +30,14 @@
     struct __CFRunLoopObserver *_runLoopObserver;
     PCPersistentTimer *_unblockTimer;
     long long _cachedAuthFlag;
-    BOOL _inSecureMode;
+    SBFSecureDisplayCoordinator *_secureDisplayCoordinator;
     SBFMobileKeyBagState *_cachedExtendedState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL inSecureDisplayMode;
 @property (readonly, nonatomic) NSDate *lastRevokedAuthenticationDate; // @synthesize lastRevokedAuthenticationDate=_lastRevokedAuthenticationDate;
 @property (strong, nonatomic, getter=_policy, setter=_setPolicy:) id<SBFAuthenticationPolicy> policy; // @synthesize policy=_policy;
 @property (readonly) Class superclass;
@@ -75,7 +77,6 @@
 - (void)_scheduleUnblockTimer;
 - (void)_setAuthState:(long long)arg1;
 - (void)_setModel:(id)arg1;
-- (void)_setSecureMode:(BOOL)arg1 postNotification:(BOOL)arg2;
 - (void)_setupPolicy:(id)arg1;
 - (void)_setup_runLoopObserverIfNecessary;
 - (BOOL)_shouldRevokeAuthenticationNow;

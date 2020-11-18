@@ -8,34 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapRegion, PBUnknownFields;
+@class GEOMapRegion, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDBounds : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     GEOMapRegion *_displayMapRegion;
     GEOMapRegion *_mapRegion;
     float _maxZoom;
     float _minZoom;
     struct {
-        unsigned int maxZoom:1;
-        unsigned int minZoom:1;
-    } _has;
+        unsigned int has_maxZoom:1;
+        unsigned int has_minZoom:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_displayMapRegion:1;
+        unsigned int read_mapRegion:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_displayMapRegion:1;
+        unsigned int wrote_mapRegion:1;
+        unsigned int wrote_maxZoom:1;
+        unsigned int wrote_minZoom:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOMapRegion *displayMapRegion; // @synthesize displayMapRegion=_displayMapRegion;
+@property (strong, nonatomic) GEOMapRegion *displayMapRegion;
 @property (readonly, nonatomic) BOOL hasDisplayMapRegion;
 @property (readonly, nonatomic) BOOL hasMapRegion;
 @property (nonatomic) BOOL hasMaxZoom;
 @property (nonatomic) BOOL hasMinZoom;
-@property (strong, nonatomic) GEOMapRegion *mapRegion; // @synthesize mapRegion=_mapRegion;
-@property (nonatomic) float maxZoom; // @synthesize maxZoom=_maxZoom;
-@property (nonatomic) float minZoom; // @synthesize minZoom=_minZoom;
+@property (strong, nonatomic) GEOMapRegion *mapRegion;
+@property (nonatomic) float maxZoom;
+@property (nonatomic) float minZoom;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)boundsInfoForPlaceData:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDisplayMapRegion;
+- (void)_readMapRegion;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

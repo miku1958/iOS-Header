@@ -11,6 +11,8 @@
 }
 
 + (id)asset;
++ (void)downloadMetadataWithCompletion:(CDUnknownBlockType)arg1;
++ (id)localeAsset;
 + (id)notificationQueue;
 
 @end

@@ -6,10 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, NSArray, NSMutableArray, NSMutableSet, NSString, _MRNowPlayingPlayerPathProtobuf;
+@class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, NSArray, NSMutableArray, NSMutableSet, _MRNowPlayingPlayerPathProtobuf;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface MRMediaRemoteServiceClient : NSObject
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
@@ -17,7 +16,6 @@ __attribute__((visibility("hidden")))
     MRAVRoutingClientController *_routingClientController;
     _MRNowPlayingPlayerPathProtobuf *_activePlayerPath;
     int _notifyRestoreClientStateForLaunch;
-    NSString *_preparedBundleID;
     NSMutableSet *_playerPathInvalidationHandlers;
     MRNotificationServiceClient *_notificationService;
     MRMediaRemoteService *_service;
@@ -35,11 +33,13 @@ __attribute__((visibility("hidden")))
 + (id)sharedServiceClient;
 - (void).cxx_destruct;
 - (void)_callInvalidationHandler:(id)arg1;
+- (void)_initializeConnection;
 - (void)_onQueue_processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
 - (void)_onQueue_setActivePlayerPath:(id)arg1;
 - (void)_processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
 - (id)addPlayerPathInvalidationHandler:(id)arg1;
 - (void)dealloc;
+- (id)debugDescription;
 - (void)fetchPickableRoutesWithCategory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (BOOL)isOriginRegistered:(id)arg1;

@@ -37,6 +37,8 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (BOOL)supportsSecureCoding;
+- (struct __CFDateComponents *)_dateComponents;
+- (id)_initWithCFDateComponents:(struct __CFDateComponents *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

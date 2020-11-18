@@ -23,8 +23,11 @@
 @property (readonly) BOOL HTTPShouldHandleCookies;
 @property (readonly) BOOL HTTPShouldUsePipelining;
 @property (readonly, copy) NSURL *URL;
+@property (readonly) struct URLRequest *_inner;
 @property (readonly, copy) NSDictionary *allHTTPHeaderFields;
 @property (readonly) BOOL allowsCellularAccess;
+@property (readonly) BOOL allowsConstrainedNetworkAccess;
+@property (readonly) BOOL allowsExpensiveNetworkAccess;
 @property (readonly) unsigned long long cachePolicy;
 @property (readonly, copy) NSURL *mainDocumentURL;
 @property (readonly) unsigned long long networkServiceType;
@@ -44,12 +47,14 @@
 - (id)HTTPExtraCookies;
 - (id)HTTPReferrer;
 - (id)HTTPUserAgent;
-- (struct _CFURLRequest *)_CFURLRequest;
+- (id)_CFURLRequest;
 - (BOOL)_URLHasScheme:(id)arg1;
 - (id)_allHTTPHeaderFieldsAsArrays;
+- (id)_bodyParts;
 - (id)_copyReplacingURLWithURL:(id)arg1;
 - (BOOL)_ignoreHSTS;
-- (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
+- (id)_initWithCFURLRequest:(id)arg1;
+- (id)_initWithInternal:(id)arg1;
 - (BOOL)_isIdempotent;
 - (BOOL)_isSafeRequestForBackgroundDownload;
 - (double)_payloadTransmissionTimeout;
@@ -63,6 +68,7 @@
 - (double)_timeWindowDelay;
 - (double)_timeWindowDuration;
 - (id)boundInterfaceIdentifier;
+- (const struct __CFURL *)cfURL;
 - (id)contentDispositionEncodingFallbackArray;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

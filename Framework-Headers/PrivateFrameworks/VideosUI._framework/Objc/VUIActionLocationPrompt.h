@@ -6,14 +6,18 @@
 
 #import <VideosUI/VUIAction.h>
 
+@class NSDictionary;
+
 __attribute__((visibility("hidden")))
 @interface VUIActionLocationPrompt : VUIAction
 {
     BOOL _geoLocationEnforced;
     CDUnknownBlockType _completionHandler;
+    NSDictionary *_dialogMetrics;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong, nonatomic) NSDictionary *dialogMetrics; // @synthesize dialogMetrics=_dialogMetrics;
 @property (nonatomic) BOOL geoLocationEnforced; // @synthesize geoLocationEnforced=_geoLocationEnforced;
 
 - (void).cxx_destruct;

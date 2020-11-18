@@ -6,25 +6,32 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INCodableCoding-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class INCodableLocalizationTable, NSString;
 
-@interface INParameterCombination : NSObject <NSSecureCoding>
+@interface INParameterCombination : NSObject <NSSecureCoding, INCodableCoding>
 {
     BOOL _primary;
     BOOL _supportsBackgroundExecution;
+    INCodableLocalizationTable *_localizationTable;
     NSString *_titleFormatString;
     NSString *_titleFormatStringLocID;
     NSString *_subtitleFormatString;
     NSString *_subtitleFormatStringLocID;
-    NSString *_localizationTable;
 }
 
-@property (copy, nonatomic) NSString *localizationTable; // @synthesize localizationTable=_localizationTable;
+@property (copy, nonatomic, setter=_setLocalizationTable:) INCodableLocalizationTable *_localizationTable; // @synthesize _localizationTable;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *localizedSubtitleFormatString;
+@property (readonly, copy, nonatomic) NSString *localizedTitleFormatString;
 @property (nonatomic, getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
 @property (copy, nonatomic) NSString *subtitleFormatString; // @synthesize subtitleFormatString=_subtitleFormatString;
 @property (copy, nonatomic) NSString *subtitleFormatStringLocID; // @synthesize subtitleFormatStringLocID=_subtitleFormatStringLocID;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsBackgroundExecution; // @synthesize supportsBackgroundExecution=_supportsBackgroundExecution;
 @property (copy, nonatomic) NSString *titleFormatString; // @synthesize titleFormatString=_titleFormatString;
 @property (copy, nonatomic) NSString *titleFormatStringLocID; // @synthesize titleFormatStringLocID=_titleFormatStringLocID;
@@ -32,10 +39,16 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
+- (id)dictionaryKeyForKeyPath:(id)arg1;
+- (id)dictionaryRepresentation;
+- (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)keyPrefix;
+- (id)localizedSubtitleFormatStringForLanguage:(id)arg1;
+- (id)localizedTitleFormatStringForLanguage:(id)arg1;
+- (void)updateWithDictionary:(id)arg1;
 
 @end
 

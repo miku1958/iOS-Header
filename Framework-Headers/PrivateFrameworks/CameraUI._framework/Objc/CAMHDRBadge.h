@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <DCIMServices/CAMBadgeTextView.h>
+#import <CameraEditKit/CEKBadgeTextView.h>
 
-@interface CAMHDRBadge : CAMBadgeTextView
+@interface CAMHDRBadge : CEKBadgeTextView
 {
 }
 

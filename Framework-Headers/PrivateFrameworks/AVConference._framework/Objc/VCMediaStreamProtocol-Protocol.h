@@ -27,7 +27,7 @@
 - (void)setRtpTimeOutInterval:(double)arg1;
 - (void)setStreamDirection:(long long)arg1;
 - (NSDictionary *)setupRTPWithIDSDestination:(NSString *)arg1 error:(id *)arg2;
-- (NSDictionary *)setupRTPWithSockets:(NSObject<OS_xpc_object> *)arg1 error:(id *)arg2;
+- (NSDictionary *)setupRTPWithSocketDictionary:(NSObject<OS_xpc_object> *)arg1 error:(id *)arg2;
 - (long long)streamDirection;
 @end
 

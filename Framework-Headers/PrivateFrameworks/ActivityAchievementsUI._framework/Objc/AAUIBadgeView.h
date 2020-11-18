@@ -8,8 +8,8 @@
 
 #import <ActivityAchievementsUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AAUIBadge, AAUIBadgeModelConfiguration, GLKTextureInfo, NSAttributedString, NSDictionary, NSString, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
-@protocol AAUIBadgeViewDelegate;
+@class AAUIBadge, AAUIBadgeModelConfiguration, GLKTextureInfo, NSAttributedString, NSDictionary, NSObject, NSString, UIImage, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
+@protocol AAUIBadgeViewDelegate, OS_dispatch_queue;
 
 @interface AAUIBadgeView : HKGLView <UIGestureRecognizerDelegate>
 {
@@ -54,6 +54,7 @@
     AAUIBadgeModelConfiguration *_configuration;
     CDUnknownBlockType _shortenedBadgeBacksideStringProvider;
     id<AAUIBadgeViewDelegate> _badgeDelegate;
+    NSObject<OS_dispatch_queue> *_pauseByNotificationQueueOverride;
 }
 
 @property (weak, nonatomic) id<AAUIBadgeViewDelegate> badgeDelegate; // @synthesize badgeDelegate=_badgeDelegate;
@@ -61,6 +62,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *pauseByNotificationQueueOverride; // @synthesize pauseByNotificationQueueOverride=_pauseByNotificationQueueOverride;
 @property (copy, nonatomic) CDUnknownBlockType shortenedBadgeBacksideStringProvider; // @synthesize shortenedBadgeBacksideStringProvider=_shortenedBadgeBacksideStringProvider;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL verticalPanningDisabled; // @synthesize verticalPanningDisabled=_verticalPanningDisabled;
@@ -89,6 +91,7 @@
 - (void)_longPressInternalOnly:(id)arg1;
 - (float)_normalizeAngle:(float)arg1;
 - (void)_panned:(id)arg1;
+- (void)_pauseByNotification:(id)arg1;
 - (void)_setBackTextureNeedsRegeneration;
 - (void)_spin360Degrees;
 - (void)_tapped:(id)arg1;

@@ -12,10 +12,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)bookmarkableStringFromDocumentURL:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)didUpdateAlternateContentsDocumentForDocumentAtURL:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)fetchAlternateContentsURLForDocumentURL:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)didUpdateAlternateContentsDocumentForSandboxedURL:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)fetchAlternateContentsURLForSandboxedURL:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)initialize;
-+ (void)setAlternateContentsURL:(id)arg1 onDocumentURL:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)setAlternateContentsURL:(id)arg1 onSandboxedURL:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 
 @end

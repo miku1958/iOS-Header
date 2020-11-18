@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface NSURLResponseInternal : NSObject
 {
-    struct _CFURLResponse *response;
+    struct URLResponse _response;
 }
 
+@property (readonly) struct URLResponse *_inner; // @dynamic _inner;
+
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithURLResponse:(struct _CFURLResponse *)arg1;
+- (id)init;
 
 @end
 

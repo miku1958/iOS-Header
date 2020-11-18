@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FileProvider/FPActionOperation.h>
+#import <FileProvider/FPTransformOperation.h>
 
 @class NSArray;
 
-@interface FPSetTagsOperation : FPActionOperation
+@interface FPSetTagsOperation : FPTransformOperation
 {
-    NSArray *_items;
     NSArray *_tagsLists;
 }
 
 - (void).cxx_destruct;
+- (id)fp_prettyDescription;
 - (id)initWithItems:(id)arg1 tagsLists:(id)arg2;
-- (void)mainWithExtensionProxy:(id)arg1;
-- (void)presendNotifications;
 - (id)replicateForItems:(id)arg1;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
 
 @end
 

@@ -6,12 +6,13 @@
 
 #import <CoreHAP/HAPAccessoryServerBrowser.h>
 
+#import <CoreHAP/HAPWACAccessoryBrowserDelegate-Protocol.h>
 #import <CoreHAP/HMFTimerDelegate-Protocol.h>
 
-@class HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
+@class HAPWACAccessoryBrowser, HMFTimer, NSArray, NSMutableSet, NSObject, NSString;
 @protocol HAPAccessoryServerBrowserDelegate, OS_dispatch_queue;
 
-@interface HAPAccessoryServerBrowserIP : HAPAccessoryServerBrowser <HMFTimerDelegate>
+@interface HAPAccessoryServerBrowserIP : HAPAccessoryServerBrowser <HMFTimerDelegate, HAPWACAccessoryBrowserDelegate>
 {
     struct BonjourBrowser *_bonjourBrowser;
     NSArray *_scanResults;
@@ -20,6 +21,7 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSMutableSet *_pendingBonjourEvents;
     HMFTimer *_bonjourEventTimer;
+    HAPWACAccessoryBrowser *_hapWACBrowser;
 }
 
 @property (strong, nonatomic) HMFTimer *bonjourEventTimer; // @synthesize bonjourEventTimer=_bonjourEventTimer;
@@ -28,6 +30,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableSet *discoveredAccessoryServers; // @synthesize discoveredAccessoryServers=_discoveredAccessoryServers;
+@property (strong, nonatomic) HAPWACAccessoryBrowser *hapWACBrowser; // @synthesize hapWACBrowser=_hapWACBrowser;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *pendingBonjourEvents; // @synthesize pendingBonjourEvents=_pendingBonjourEvents;
 @property (copy, nonatomic) NSArray *scanResults; // @synthesize scanResults=_scanResults;
@@ -41,31 +44,35 @@
 - (int)_initializeAndStartBonjourBrowser;
 - (void)_invalidateAccessoryServers:(BOOL)arg1;
 - (void)_invalidateAndRemoveAccessoryServer:(id)arg1;
-- (void)_matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_pendBonjourEvent:(id)arg1;
 - (void)_pendBonjourRemoveEvent:(id)arg1;
-- (void)_processPendingBonjourEvent:(id)arg1;
+- (int)_processPendingBonjourEvent:(id)arg1;
 - (int)_purgePendingBonjourEvents:(id)arg1 withProcessing:(BOOL)arg2;
 - (int)_server:(id *)arg1 forBonjourDevice:(id)arg2;
+- (void)_server:(id *)arg1 forHAPWACAccessory:(id)arg2;
 - (void)_setReachability:(BOOL)arg1 forServer:(id)arg2;
 - (void)_timerDidExpire:(id)arg1;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
 - (id)initWithQueue:(id)arg1;
 - (long long)linkType;
-- (void)matchAccessoryServerWithSetupID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)mergeScanResults:(id)arg1;
+- (void)matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)notifyDelegatesOfWACCompletionWithIdentifier:(id)arg1 error:(id)arg2;
 - (void)processPendingBonjourRemoveEvents:(id)arg1;
+- (id)serverWithIdentifier:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)startDiscoveringAccessoryServers;
-- (void)startDiscoveringWACAccessoryServerWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)startDiscoveringAirPlayAccessoriesWithDelegate:(id)arg1;
+- (void)startDiscoveringWACAccessoryServerWithIdentifier:(id)arg1;
 - (void)startDiscoveringWACAccessoryServers;
-- (void)startWACScanWithIdentifier:(id)arg1;
 - (void)stopDiscoveringAccessoryServers;
-- (void)stopDiscoveringWACAccessoryServers;
-- (void)stopWACScan;
+- (void)stopDiscoveringWACAccessoryServersWithInvalidation:(BOOL)arg1;
 - (void)timerDidFire:(id)arg1;
-- (void)updateWACAccessoryServerAgeOut:(long long)arg1;
+- (id)visible2Pt4Networks;
+- (id)wacBrowser;
+- (void)wacBrowser:(id)arg1 didFindHAPWACAccessory:(id)arg2;
+- (void)wacBrowser:(id)arg1 didFindUnconfiguredPairedHAPWACAccessory:(id)arg2;
+- (void)wacBrowser:(id)arg1 didRemoveHAPWACAccessory:(id)arg2;
 
 @end
 

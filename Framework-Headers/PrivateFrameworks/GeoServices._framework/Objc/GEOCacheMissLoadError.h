@@ -12,22 +12,23 @@
 
 @interface GEOCacheMissLoadError : PBCodable <NSCopying>
 {
+    NSString *_errorDomain;
     unsigned int _count;
     int _errorCode;
-    NSString *_errorDomain;
     struct {
-        unsigned int count:1;
-        unsigned int errorCode:1;
-    } _has;
+        unsigned int has_count:1;
+        unsigned int has_errorCode:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int count; // @synthesize count=_count;
-@property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
-@property (strong, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
+@property (nonatomic) unsigned int count;
+@property (nonatomic) int errorCode;
+@property (strong, nonatomic) NSString *errorDomain;
 @property (nonatomic) BOOL hasCount;
 @property (nonatomic) BOOL hasErrorCode;
 @property (readonly, nonatomic) BOOL hasErrorDomain;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -36,6 +37,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

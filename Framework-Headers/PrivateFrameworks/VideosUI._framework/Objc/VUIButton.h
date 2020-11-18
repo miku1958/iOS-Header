@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUILabelTopMarginCalculationProtocol-Protocol.h>
 
-@class IKViewElement, UIView, VUIButtonLayout, VUILabel, _TVImageView;
+@class IKViewElement, UILargeContentViewerInteraction, UIView, VUIButtonLayout, VUILabel, _TVImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUIButton : UIControl <VUILabelTopMarginCalculationProtocol>
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     IKViewElement *_viewElement;
     CDUnknownBlockType _selectActionHandler;
     UIView *_backdropView;
+    UILargeContentViewerInteraction *_largeContentViewerInteraction;
     _TVImageView *_imagesViewDefaultState;
     _TVImageView *_imagesViewHighlightedState;
     _TVImageView *_backgroundImagesViewDefaultState;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) _TVImageView *imagesViewDefaultState; // @synthesize imagesViewDefaultState=_imagesViewDefaultState;
 @property (strong, nonatomic) _TVImageView *imagesViewHighlightedState; // @synthesize imagesViewHighlightedState=_imagesViewHighlightedState;
+@property (strong, nonatomic) UILargeContentViewerInteraction *largeContentViewerInteraction; // @synthesize largeContentViewerInteraction=_largeContentViewerInteraction;
 @property (strong, nonatomic) VUIButtonLayout *layout; // @synthesize layout=_layout;
 @property (copy, nonatomic) CDUnknownBlockType selectActionHandler; // @synthesize selectActionHandler=_selectActionHandler;
 @property (copy, nonatomic) VUILabel *textContentView; // @synthesize textContentView=_textContentView;
@@ -48,11 +50,16 @@ __attribute__((visibility("hidden")))
 - (BOOL)_hasImage;
 - (BOOL)_hasTitle;
 - (struct CGSize)_imageSizeThatFits:(struct CGSize)arg1;
+- (void)_updateBackgroundColor;
 - (void)_updateLayout;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (id)largeContentImage;
+- (id)largeContentTitle;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (BOOL)scalesLargeContentImage;
 - (void)setBackgroundImage:(id)arg1 state:(unsigned long long)arg2;
 - (void)setCornerRadius:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
@@ -61,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithElement:(id)arg1;
 
 @end

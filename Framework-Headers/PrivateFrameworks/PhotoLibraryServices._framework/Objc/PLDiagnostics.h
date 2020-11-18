@@ -10,19 +10,19 @@
 {
 }
 
-+ (id)_memoriesRelatedOutputPathBaseDirectory;
++ (id)_memoriesRelatedOutputPathBaseDirectoryWithPathManager:(id)arg1;
 + (unsigned long long)addOSStateHandlerWithTitle:(id)arg1 queue:(id)arg2 propertyListHandler:(CDUnknownBlockType)arg3;
 + (void)collectCollectionsStatWithLibraryContext:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)collectMomentsStatWithLibraryContext:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)collectYearsStatWithLibraryContext:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-+ (id)createOrEmptyMemoriesRelatedSnapshotOutputFolder;
++ (id)createOrEmptyMemoriesRelatedSnapshotOutputFolderWithPathManager:(id)arg1;
 + (id)diagnosticsURLs;
 + (void)enumerateDiagnosticsURLsIncludingPropertyiesForKeys:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)excludingNameExpression;
 + (void)fileRadarUserNotificationWithHeader:(id)arg1 message:(id)arg2 radarTitle:(id)arg3 radarDescription:(id)arg4;
 + (id)logDirectoryURL;
 + (id)matchingNameExpression;
-+ (id)memoriesAndRelatedDiagnosticsOutputURL;
++ (id)memoriesAndRelatedDiagnosticsOutputURLWithPathManager:(id)arg1;
 + (BOOL)shouldSuppressRadarUserNotificationWithMessage:(id)arg1 radarTitle:(id)arg2;
 + (void)tapToRadarWithTitle:(id)arg1 description:(id)arg2;
 

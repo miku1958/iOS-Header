@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic, setter=___setNSXPCRemoteObjectProxy:) id ___nsxpc_remoteObjectProxy; // @synthesize ___nsxpc_remoteObjectProxy=____nsxpc_remoteObjectProxy;
 
+- (void).cxx_destruct;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (void)dealloc;
 - (void)forwardInvocation:(id)arg1;

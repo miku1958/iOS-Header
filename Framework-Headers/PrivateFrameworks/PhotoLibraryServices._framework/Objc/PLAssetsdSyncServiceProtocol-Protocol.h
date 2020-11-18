@@ -6,6 +6,10 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
+@class NSArray, NSString;
+
 @protocol PLAssetsdSyncServiceProtocol <NSObject>
+- (void)finalizeOTARestoreRecreatingAlbums:(BOOL)arg1;
+- (void)updateRestoredAssetWithUUID:(NSString *)arg1 paths:(NSArray *)arg2 fixAddedDate:(BOOL)arg3;
 @end
 

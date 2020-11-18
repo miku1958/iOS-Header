@@ -6,11 +6,12 @@
 
 #import <PersonalizationPortrait/PPNamedEntityStore.h>
 
-@class NSDate, NSMapTable;
+@class NSDate, PPClientFeedbackHelper, PPRecordMonitoringHelper;
 
 @interface PPXPCNamedEntityStore : PPNamedEntityStore
 {
-    NSMapTable *_recordLoadingDelegates;
+    PPRecordMonitoringHelper *_monitoringHelper;
+    PPClientFeedbackHelper *_clientFeedbackHelper;
     NSDate *_lastCallDate;
 }
 
@@ -18,21 +19,20 @@
 - (id)_getLastCallDate;
 - (id)_init;
 - (void)_loadNamedEntityRecordsWithDelegate:(id)arg1;
-- (void)_resetNamedEntityRecordsWithDelegate:(id)arg1;
+- (CDUnknownBlockType)_recordGenerator;
 - (void)_sendChangesToDelegates;
-- (void)_sendResetToDelegates;
+- (void)_sendResetToAllDelegates;
 - (void)_setLastCallDate;
-- (BOOL)clearWithError:(id *)arg1;
-- (BOOL)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 documentIds:(id)arg2 error:(id *)arg3;
-- (BOOL)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 error:(id *)arg2;
-- (BOOL)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThan:(id)arg3 error:(id *)arg4;
-- (BOOL)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupIds:(id)arg2 error:(id *)arg3;
-- (BOOL)donateLocationNamedEntities:(id)arg1 bundleId:(id)arg2 error:(id *)arg3;
+- (BOOL)clearWithError:(id *)arg1 deletedCount:(unsigned long long *)arg2;
+- (id)clientIdentifier;
+- (BOOL)cloudSyncWithError:(id *)arg1;
+- (BOOL)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 deletedCount:(unsigned long long *)arg2 error:(id *)arg3;
+- (BOOL)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 documentIds:(id)arg2 deletedCount:(unsigned long long *)arg3 error:(id *)arg4;
+- (BOOL)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupId:(id)arg2 olderThan:(id)arg3 deletedCount:(unsigned long long *)arg4 error:(id *)arg5;
+- (BOOL)deleteAllNamedEntitiesFromSourcesWithBundleId:(id)arg1 groupIds:(id)arg2 deletedCount:(unsigned long long *)arg3 error:(id *)arg4;
+- (BOOL)donateLocationNamedEntities:(id)arg1 bundleId:(id)arg2 groupId:(id)arg3 error:(id *)arg4;
 - (BOOL)donateMapItem:(id)arg1 forPlaceName:(id)arg2 error:(id *)arg3;
-- (BOOL)donateNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 decayRate:(double)arg5 error:(id *)arg6;
-- (void)feedbackEngagedNamedEntities:(id)arg1;
-- (void)feedbackNamedEntitiesOverallEngagement:(id)arg1;
-- (void)feedbackUsedNamedEntities:(id)arg1;
+- (BOOL)donateNamedEntities:(id)arg1 source:(id)arg2 algorithm:(unsigned long long)arg3 cloudSync:(BOOL)arg4 sentimentScore:(double)arg5 error:(id *)arg6;
 - (BOOL)flushDonationsWithError:(id *)arg1;
 - (BOOL)iterNamedEntityRecordsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)iterRankedNamedEntitiesWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
@@ -40,8 +40,10 @@
 - (id)mapItemForPlaceName:(id)arg1 error:(id *)arg2;
 - (id)namedEntityRecordsWithQuery:(id)arg1 error:(id *)arg2;
 - (id)rankedNamedEntitiesWithQuery:(id)arg1 error:(id *)arg2;
+- (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)removeMapItemForPlaceName:(id)arg1 error:(id *)arg2;
 - (BOOL)removeMapItemsBeforeCutoffDate:(id)arg1 error:(id *)arg2;
+- (void)setClientIdentifier:(id)arg1;
 
 @end
 

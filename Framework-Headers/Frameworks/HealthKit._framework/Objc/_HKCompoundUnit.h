@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)unitWithBaseUnits:(id)arg1;
 - (void).cxx_destruct;
 - (id)_baseUnits;
-- (id)_computeBaseUnitReductionAndProportionalSize:(out double *)arg1 withCycleSet:(id)arg2;
+- (id)_computeBaseUnitReductionAndProportionalSize:(double *)arg1 withCycleSet:(id)arg2;
 - (id)_initWithBaseUnits:(id)arg1;
 - (id)dimension;
 - (void)encodeWithCoder:(id)arg1;

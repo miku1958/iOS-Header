@@ -48,7 +48,6 @@
 - (id)init;
 - (id)itemProviderAtIndex:(unsigned long long)arg1;
 - (id)pasteboardTypes;
-- (id)pasteboardTypesByFidelityForItemAtIndex:(unsigned long long)arg1;
 - (void)stageRegistrationList:(id)arg1;
 - (id)takeRegistrationList;
 - (id)typeIdentifiersToLoad:(id)arg1;

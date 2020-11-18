@@ -9,7 +9,7 @@
 #import <BulletinBoard/NSCopying-Protocol.h>
 #import <BulletinBoard/NSSecureCoding-Protocol.h>
 
-@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBColor, BBContent, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimeZone;
+@class BBAccessoryIcon, BBAction, BBAttachmentMetadata, BBColor, BBContent, BBImage, BBSectionIcon, BBSound, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSTimeZone;
 
 @interface BBBulletin : NSObject <NSCopying, NSSecureCoding>
 {
@@ -21,6 +21,8 @@
     BOOL _wantsFullscreenPresentation;
     BOOL _ignoresQuietMode;
     BOOL _ignoresDowntime;
+    BOOL _preemptsPresentedAlert;
+    BOOL _preemptsSTAR;
     BOOL _expiresOnPublisherDeath;
     BOOL _usesExternalSync;
     BOOL _loading;
@@ -33,7 +35,6 @@
     NSString *_categoryID;
     NSString *_threadID;
     NSArray *_peopleIDs;
-    long long _addressBookRecordID;
     long long _sectionSubtype;
     NSArray *_intentIDs;
     unsigned long long _counter;
@@ -49,6 +50,7 @@
     long long _dateFormatStyle;
     NSTimeZone *_timeZone;
     BBAccessoryIcon *_accessoryIconMask;
+    BBImage *_accessoryImage;
     BBSound *_sound;
     BBAttachmentMetadata *_primaryAttachment;
     NSArray *_additionalAttachments;
@@ -75,15 +77,17 @@
 }
 
 @property (strong, nonatomic) BBAccessoryIcon *accessoryIconMask; // @synthesize accessoryIconMask=_accessoryIconMask;
+@property (strong, nonatomic) BBImage *accessoryImage; // @synthesize accessoryImage=_accessoryImage;
 @property (copy, nonatomic) BBAction *acknowledgeAction;
 @property (strong, nonatomic) NSMutableDictionary *actions; // @synthesize actions=_actions;
 @property (copy, nonatomic) NSArray *additionalAttachments; // @synthesize additionalAttachments=_additionalAttachments;
-@property (nonatomic) long long addressBookRecordID; // @synthesize addressBookRecordID=_addressBookRecordID;
 @property (readonly, nonatomic) NSSet *alertSuppressionAppIDs;
 @property (copy, nonatomic) NSSet *alertSuppressionAppIDs_deprecated; // @synthesize alertSuppressionAppIDs_deprecated;
 @property (copy, nonatomic) NSSet *alertSuppressionContexts; // @synthesize alertSuppressionContexts=_alertSuppressionContexts;
 @property (readonly, nonatomic) BOOL allowsAddingToLockScreenWhenUnlocked;
 @property (readonly, nonatomic) BOOL allowsAutomaticRemovalFromLockScreen;
+@property (readonly, nonatomic) BOOL allowsPersistentBannersInCarPlay;
+@property (readonly, nonatomic) BOOL allowsSupplementaryActionsInCarPlay;
 @property (copy, nonatomic) BBAction *alternateAction;
 @property (readonly, nonatomic) NSString *alternateActionLabel;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
@@ -117,6 +121,7 @@
 @property (nonatomic) BOOL hasPrivateContent; // @dynamic hasPrivateContent;
 @property (copy, nonatomic) NSString *header; // @synthesize header=_header;
 @property (readonly, nonatomic) NSString *hiddenPreviewsBodyPlaceholder;
+@property (readonly, nonatomic) BOOL hideDismissActionInCarPlay;
 @property (readonly, nonatomic) long long iPodOutAlertType;
 @property (strong, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL ignoresDowntime; // @synthesize ignoresDowntime=_ignoresDowntime;
@@ -133,8 +138,10 @@
 @property (readonly, nonatomic) BOOL orderSectionUsingRecencyDate;
 @property (copy, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;
 @property (copy, nonatomic) NSArray *peopleIDs; // @synthesize peopleIDs=_peopleIDs;
+@property (readonly, nonatomic) BOOL playsMediaWhenRaised;
 @property (readonly, nonatomic) BOOL playsSoundForModify;
-@property (readonly, nonatomic) BOOL preemptsPresentedAlert;
+@property (nonatomic) BOOL preemptsPresentedAlert; // @synthesize preemptsPresentedAlert=_preemptsPresentedAlert;
+@property (nonatomic) BOOL preemptsSTAR; // @synthesize preemptsSTAR=_preemptsSTAR;
 @property (readonly, nonatomic) BOOL preservesUnlockActionCase;
 @property (nonatomic) BOOL preventAutomaticRemovalFromLockScreen; // @synthesize preventAutomaticRemovalFromLockScreen=_preventAutomaticRemovalFromLockScreen;
 @property (readonly, nonatomic) BOOL preventLock;
@@ -154,7 +161,6 @@
 @property (readonly, nonatomic) NSString *secondaryContentRemoteViewControllerClassName;
 @property (copy, nonatomic) NSString *section;
 @property (readonly, nonatomic) NSString *sectionDisplayName;
-@property (readonly, nonatomic) BOOL sectionDisplaysCriticalBulletins;
 @property (copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property (readonly, nonatomic) BBSectionIcon *sectionIcon;
 @property (nonatomic) long long sectionSubtype; // @synthesize sectionSubtype=_sectionSubtype;
@@ -173,6 +179,7 @@
 @property (copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
 @property (nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property (strong, nonatomic) NSMutableDictionary *supplementaryActionsByLayout; // @synthesize supplementaryActionsByLayout=_supplementaryActionsByLayout;
+@property (readonly, nonatomic) BOOL suppressDelayForForwardedBulletins;
 @property (readonly, nonatomic) BOOL suppressesAlertsWhenAppIsActive;
 @property (readonly, nonatomic) BOOL suppressesMessageForPrivacy;
 @property (readonly, nonatomic) BOOL suppressesTitle;

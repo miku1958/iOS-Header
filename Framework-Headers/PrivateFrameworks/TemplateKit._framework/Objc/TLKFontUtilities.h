@@ -10,14 +10,20 @@
 {
 }
 
++ (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
++ (id)attributedStringForFormattedText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5;
++ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 coloredRanges:(id)arg5 nonColoredRanges:(id)arg6 rangesForNonTemplateImageAttachments:(id)arg7 font:(id)arg8;
++ (id)attributedStringForRichText:(id)arg1 appearance:(id)arg2 prominence:(unsigned long long)arg3 alignment:(long long)arg4 font:(id)arg5;
 + (id)boldBodyFont;
 + (id)boldCaptionFont;
 + (id)boldFootnoteFont;
 + (id)captionFont;
-+ (id)colorWithRed:(unsigned long long)arg1 green:(unsigned long long)arg2 blue:(unsigned long long)arg3;
 + (id)fontWithTextStyle:(id)arg1 isShort:(BOOL)arg2 isBold:(BOOL)arg3;
 + (id)footnoteFont;
++ (id)horizontalAppNameFont;
 + (void)initialize;
++ (id)preferredFontDescriptorWithTextStyle:(id)arg1 addingSymbolicTraits:(unsigned int)arg2;
++ (id)preferredFontForTextStyle:(id)arg1;
 + (id)shortBodyFont;
 + (id)shortFootnoteFont;
 + (id)shortSubheadBoldFont;
@@ -26,8 +32,6 @@
 + (id)shortTitle2Font;
 + (id)subheadBoldFont;
 + (id)subheadFont;
-+ (id)textColorForColor:(long long)arg1 style:(unsigned long long)arg2;
-+ (id)textColorForStyle:(unsigned long long)arg1;
 + (id)thinFontOfSize:(double)arg1 grade:(unsigned long long)arg2;
 
 @end

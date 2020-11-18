@@ -15,7 +15,6 @@
     PSIGroup *_group;
     NSArray *_assetIds;
     NSArray *_collectionIds;
-    NSArray *_tripIds;
 }
 
 @property (strong, nonatomic) NSArray *assetIds; // @synthesize assetIds=_assetIds;
@@ -23,9 +22,8 @@
 @property (strong, nonatomic) PSIGroup *group; // @synthesize group=_group;
 @property (strong, nonatomic) NSValue *rangeMatchingToken; // @synthesize rangeMatchingToken=_rangeMatchingToken;
 @property (strong, nonatomic) PSIQueryToken *searchToken; // @synthesize searchToken=_searchToken;
-@property (strong, nonatomic) NSArray *tripIds; // @synthesize tripIds=_tripIds;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)reset;
 
 @end

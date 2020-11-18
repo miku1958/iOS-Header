@@ -6,11 +6,11 @@
 
 #import <SearchUI/SearchUICardSectionView.h>
 
-#import <SearchUI/NUIContainerBoxViewDelegate-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
 @class NSString, TLKSplitHeaderView;
 
-@interface SearchUIScoreSummaryCardSectionView : SearchUICardSectionView <NUIContainerBoxViewDelegate>
+@interface SearchUIScoreSummaryCardSectionView : SearchUICardSectionView <NUIContainerViewDelegate>
 {
     TLKSplitHeaderView *_splitHeaderView;
 }
@@ -18,7 +18,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKSplitHeaderView *splitHeaderView; // @synthesize splitHeaderView=_splitHeaderView;
+@property (strong, nonatomic) TLKSplitHeaderView *splitHeaderView; // @synthesize splitHeaderView=_splitHeaderView;
 @property (readonly) Class superclass;
 
 + (id)dragTitleForCardSection:(id)arg1;

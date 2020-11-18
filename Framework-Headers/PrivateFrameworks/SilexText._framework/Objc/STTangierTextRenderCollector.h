@@ -33,7 +33,7 @@
 - (id)flowLayoutForComponentIdentifier:(id)arg1;
 - (id)infoForStorage:(id)arg1 selection:(id)arg2;
 - (id)init;
-- (id)itemWithIdentifier:(id)arg1 storage:(id)arg2 inItems:(id)arg3;
+- (id)itemWithIdentifier:(id)arg1 storage:(id)arg2 directLayerHost:(id)arg3 inItems:(id)arg4;
 - (void)storeItem:(id)arg1 forFlowName:(id)arg2;
 - (BOOL)tangierTextRepAllowsSelection:(id)arg1;
 

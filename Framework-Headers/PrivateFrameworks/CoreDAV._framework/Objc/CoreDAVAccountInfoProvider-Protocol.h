@@ -6,8 +6,8 @@
 
 #import <CoreDAV/NSObject-Protocol.h>
 
-@class AKAppleIDSession, CoreDAVTask, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSURLAuthenticationChallenge, NSURLConnection, NSURLProtectionSpace;
-@protocol CoreDAVClientCertificateInfoProvider, CoreDAVOAuthInfoProvider;
+@class AKAppleIDSession, CoreDAVTask, NSData, NSDictionary, NSError, NSObject, NSSet, NSString, NSURL, NSURLAuthenticationChallenge, NSURLConnection, NSURLProtectionSpace;
+@protocol CoreDAVClientCertificateInfoProvider, CoreDAVOAuthInfoProvider, OS_dispatch_queue;
 
 @protocol CoreDAVAccountInfoProvider <NSObject>
 - (NSString *)accountID;
@@ -56,6 +56,6 @@
 - (BOOL)shouldTryRenewingCredential;
 - (BOOL)shouldTurnModalOnBadPassword;
 - (BOOL)shouldUseOpportunisticSockets;
-- (void)webLoginRequestedAtURL:(NSURL *)arg1 reasonString:(NSString *)arg2 completionBlock:(void (^)(int))arg3;
+- (void)webLoginRequestedAtURL:(NSURL *)arg1 reasonString:(NSString *)arg2 inQueue:(NSObject<OS_dispatch_queue> *)arg3 completionBlock:(void (^)(int))arg4;
 @end
 

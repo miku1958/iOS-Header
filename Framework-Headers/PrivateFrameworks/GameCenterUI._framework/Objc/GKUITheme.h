@@ -32,6 +32,7 @@
 - (id)achievementsDefaultIcon;
 - (id)achievementsNotStartedIcon;
 - (id)addPlayerButtonImage;
+- (id)avatarSourceWithDimension:(long long)arg1;
 - (id)bubbleAccept;
 - (id)bubbleChallenges;
 - (id)bubbleDecline;
@@ -52,7 +53,10 @@
 - (id)eventIconImage;
 - (id)imageNamed:(id)arg1;
 - (id)init;
+- (id)messagesInviteBackgroundImage;
+- (id)monogramSourceWithDimension:(long long)arg1;
 - (id)navbarActionButtonIcon;
+- (id)placeholderSourceWithDimension:(long long)arg1;
 - (id)playerPickerSelectedImage;
 - (id)playerPickerUnselectedImage;
 - (id)removePlayerButtonImage;

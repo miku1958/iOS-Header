@@ -14,25 +14,27 @@ __attribute__((visibility("hidden")))
 @interface GEOPDNearbySearchParameters : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    GEOPDViewportInfo *_viewportInfo;
     unsigned int _maxResults;
     int _sortOrder;
-    GEOPDViewportInfo *_viewportInfo;
     struct {
-        unsigned int maxResults:1;
-        unsigned int sortOrder:1;
-    } _has;
+        unsigned int has_maxResults:1;
+        unsigned int has_sortOrder:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMaxResults;
 @property (nonatomic) BOOL hasSortOrder;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
-@property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
-@property (nonatomic) int sortOrder; // @synthesize sortOrder=_sortOrder;
+@property (nonatomic) unsigned int maxResults;
+@property (nonatomic) int sortOrder;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsSortOrder:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)sortOrderAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

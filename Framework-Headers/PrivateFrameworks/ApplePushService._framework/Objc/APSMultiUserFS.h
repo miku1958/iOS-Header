@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL isMultiUser; // @synthesize isMultiUser=_isMultiUser;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)initWithIsMultiUserMode:(BOOL)arg1;
 - (id)systemPath;
 

@@ -8,29 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEODestinationInfo : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     BOOL _hasDisplayAddress;
     BOOL _hasDisplayName;
     BOOL _hasSpokenAddress;
     BOOL _hasSpokenName;
     struct {
-        unsigned int hasDisplayAddress:1;
-        unsigned int hasDisplayName:1;
-        unsigned int hasSpokenAddress:1;
-        unsigned int hasSpokenName:1;
-    } _has;
+        unsigned int has_hasDisplayAddress:1;
+        unsigned int has_hasDisplayName:1;
+        unsigned int has_hasSpokenAddress:1;
+        unsigned int has_hasSpokenName:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL hasDisplayAddress; // @synthesize hasDisplayAddress=_hasDisplayAddress;
-@property (nonatomic) BOOL hasDisplayName; // @synthesize hasDisplayName=_hasDisplayName;
+@property (nonatomic) BOOL hasDisplayAddress;
+@property (nonatomic) BOOL hasDisplayName;
 @property (nonatomic) BOOL hasHasDisplayAddress;
 @property (nonatomic) BOOL hasHasDisplayName;
 @property (nonatomic) BOOL hasHasSpokenAddress;
 @property (nonatomic) BOOL hasHasSpokenName;
-@property (nonatomic) BOOL hasSpokenAddress; // @synthesize hasSpokenAddress=_hasSpokenAddress;
-@property (nonatomic) BOOL hasSpokenName; // @synthesize hasSpokenName=_hasSpokenName;
+@property (nonatomic) BOOL hasSpokenAddress;
+@property (nonatomic) BOOL hasSpokenName;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
+- (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

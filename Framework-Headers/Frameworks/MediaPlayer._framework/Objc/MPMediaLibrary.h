@@ -8,7 +8,7 @@
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache;
+@class ICUserIdentity, ML3MusicLibrary, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSPointerArray, NSString, NSURL, QueryCriteriaResultsCache;
 @protocol MPMediaLibraryDataProviderPrivate, OS_dispatch_queue;
 
 @interface MPMediaLibrary : NSObject <NSSecureCoding>
@@ -80,30 +80,47 @@
     unsigned char _originalCellNetworkFlags;
     unsigned char _originalWiFiNetworkFlags;
     id __MLCoreStorage;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    ICUserIdentity *_userIdentity;
 }
 
-@property (strong, nonatomic) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
+@property (strong, nonatomic, setter=_setMLCoreStorage:) id _MLCoreStorage; // @synthesize _MLCoreStorage=__MLCoreStorage;
 @property (readonly, nonatomic) shared_ptr_0f3dbfb3 _MediaLibrary_coreLibrary;
 @property (readonly, nonatomic) NSString *_syncValidity;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
 @property (readonly, nonatomic) NSDate *lastModifiedDate;
 @property (readonly, nonatomic) ML3MusicLibrary *ml3Library;
 @property (readonly, nonatomic) NSURL *protectedContentSupportStorageURL;
 @property (nonatomic) long long removalReason;
+@property (copy, nonatomic) NSNumber *sagaAccountID;
+@property (nonatomic) long long sagaDatabaseUserVersion;
+@property (copy, nonatomic) NSDate *sagaLastItemPlayDataUploadDate;
+@property (copy, nonatomic) NSDate *sagaLastLibraryUpdateTime;
+@property (copy, nonatomic) NSDate *sagaLastPlaylistPlayDataUploadDate;
+@property (copy, nonatomic) NSDate *sagaLastSubscribedContainersUpdateTime;
+@property (nonatomic) long long sagaOnDiskDatabaseRevision;
+@property (copy, nonatomic) NSString *storefrontIdentifier;
+@property (readonly, copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 
++ (id)_deviceMediaLibraryWithUserIdentity:(id)arg1 isSingletonLibrary:(BOOL)arg2 createIfRequired:(BOOL)arg3;
 + (void)_endDiscoveringMediaLibrariesIfAllowed;
 + (id)_libraryDataProviders;
 + (id)_libraryForDataProvider:(id)arg1;
 + (id)_mediaLibraries;
++ (void)_postNotificationName:(id)arg1 library:(id)arg2;
++ (void)_postNotificationName:(id)arg1 library:(id)arg2 userInfo:(id)arg3;
 + (void)addLibraryDataProvider:(id)arg1;
 + (long long)authorizationStatus;
 + (void)beginDiscoveringMediaLibraries;
 + (BOOL)companionDeviceActiveStoreAccountIsSubscriber;
 + (id)defaultMediaLibrary;
 + (id)deviceMediaLibrary;
++ (id)deviceMediaLibraryWithUserIdentity:(id)arg1;
 + (void)endDiscoveringMediaLibraries;
 + (void)initialize;
 + (BOOL)isLibraryServerDisabled;
 + (id)libraryDataProviders;
++ (void)libraryPathDidChangeForDataProvider:(id)arg1;
 + (id)mediaLibraries;
 + (id)mediaLibraryWithUniqueIdentifier:(id)arg1;
 + (void)postEntitiesAddedOrRemovedNotificationForLibraryDataProvider:(id)arg1;
@@ -123,6 +140,7 @@
 + (void)validatePermissionsExpiryWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)URLForHomeSharingRequest:(id)arg1;
+- (void)_activeUserDidChangeForDeviceMediaLibrary:(id)arg1;
 - (void)_canShowCloudTracksDidChangeNotification:(id)arg1;
 - (BOOL)_checkHasContent:(BOOL *)arg1 determined:(BOOL *)arg2 mediaType:(unsigned long long)arg3 queryHasEntitiesBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_checkHasContent:(BOOL *)arg1 determined:(BOOL *)arg2 queryHasEntitiesBlock:(CDUnknownBlockType)arg3;
@@ -140,12 +158,14 @@
 - (BOOL)_hasCollectionsForQueryCriteria:(id)arg1;
 - (BOOL)_hasItemsForQueryCriteria:(id)arg1;
 - (id)_initWithLibraryDataProvider:(id)arg1;
+- (id)_initWithUserIdentity:(id)arg1 isSingletonLibrary:(BOOL)arg2;
 - (id)_itemPersistentIdentifiersForQueryCriteria:(id)arg1;
 - (id)_itemsForQueryCriteria:(id)arg1;
 - (unsigned long long)_persistentIDForAssetURL:(id)arg1;
 - (void)_reloadLibraryForContentsChangeWithNotificationInfo:(id)arg1;
 - (void)_reloadLibraryForDynamicPropertyChangeWithNotificationInfo:(id)arg1;
 - (void)_reloadLibraryForInvisiblePropertyChangeWithNotificationInfo:(id)arg1;
+- (void)_reloadLibraryForPathChange;
 - (void)_reloadLibraryForRestrictionsChange;
 - (void)_removeConnectionAssertion:(id)arg1;
 - (void)_scheduleLibraryChangeNotificationPostingBlock:(CDUnknownBlockType)arg1;
@@ -162,11 +182,15 @@
 - (id)addPlaylistWithName:(id)arg1 activeGeniusPlaylist:(BOOL)arg2;
 - (void)addStoreItem:(long long)arg1 andAddTracksToCloudLibrary:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)addStoreItemIDs:(id)arg1 andAddTracksToCloudLibrary:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)addStoreItemIDs:(id)arg1 referralObject:(id)arg2 andAddTracksToCloudLibrary:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)addTracksToMyLibrary:(id)arg1;
 - (id)additionalLibraryFilterPredicates;
 - (id)artworkDataSource;
 - (void)beginGeneratingLibraryChangeNotifications;
 - (void)clearLocationPropertiesOfItem:(id)arg1;
+- (void)clearSagaCloudAccountID;
+- (void)clearSagaLastItemPlayDataUploadDate;
+- (void)clearSagaLastPlaylistPlayDataUploadDate;
 - (long long)cloudFilteringType;
 - (BOOL)collectionExistsContainedWithinPersistentIDs:(const unsigned long long *)arg1 count:(unsigned long long)arg2 groupingType:(long long)arg3 existentPID:(unsigned long long *)arg4;
 - (BOOL)collectionExistsContainedWithinSyncIDs:(id)arg1 groupingType:(long long)arg2 existentPID:(unsigned long long *)arg3;
@@ -198,8 +222,8 @@
 - (id)entityWithMultiverseIdentifier:(id)arg1;
 - (id)entityWithPersistentID:(long long)arg1 entityType:(long long)arg2;
 - (id)entityWithSpotlightIdentifier:(id)arg1;
-- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(int)arg2 inUsersLibrary:(BOOL)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(int)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(long long)arg2 inUsersLibrary:(BOOL)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)errorResolverForItem:(id)arg1;
 - (unsigned long long)filterAvailableContentGroups:(unsigned long long)arg1 withOptions:(unsigned long long)arg2;
@@ -239,8 +263,10 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isCurrentThreadInTransaction;
+- (BOOL)isDeviceLibrary;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGeniusEnabled;
+- (BOOL)isHomeSharingLibrary;
 - (BOOL)isValidAssetURL:(id)arg1;
 - (BOOL)itemExistsInDatabaseWithPersistentID:(unsigned long long)arg1;
 - (BOOL)itemExistsWithPersistentID:(unsigned long long)arg1;

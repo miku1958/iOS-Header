@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaPlaybackCore/MPMediaRemoteEntityArtworkGenerator-Protocol.h>
 #import <MediaPlaybackCore/MSVLRUDictionaryDelegate-Protocol.h>
 
 @class MPCFuture, MPCPlayerPath, MSVLRUDictionary, NSMapTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol MPArtworkDataSource, MPCSupportedCommands, OS_dispatch_queue;
 
-@interface MPCMediaRemoteController : NSObject <MSVLRUDictionaryDelegate>
+@interface MPCMediaRemoteController : NSObject <MSVLRUDictionaryDelegate, MPMediaRemoteEntityArtworkGenerator>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
@@ -66,9 +67,11 @@
 + (void)_sendRemoteCommand:(unsigned int)arg1 playbackIntent:(id)arg2 options:(id)arg3 toPlayerPath:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (BOOL)_shouldRegisterForNotifications;
 + (id)controllerForPlayerPath:(id)arg1;
++ (id)mediaRemoteReplyQueue;
 + (void)sendCommand:(unsigned int)arg1 options:(id)arg2 toPlayerPath:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)_contentItemArtworkChangedNotification:(id)arg1;
+- (id)_createExportableArtworkPropertiesForContentItem:(id)arg1;
 - (id)_init;
 - (id)_legacyCommands;
 - (id)_onQueue_identifiersForRange:(struct _MSVSignedRange)arg1;
@@ -85,6 +88,7 @@
 - (void)_playbackQueueContentItemsChangedNotification:(id)arg1;
 - (void)_playbackStateDidChangeNotification:(id)arg1;
 - (void)_supportedCommandsDidChangedNotification:(id)arg1;
+- (CDUnknownBlockType)artworkCatalogBlockForContentItem:(id)arg1;
 - (long long)contentItemArtworkCacheStateForArtworkIdentifier:(id)arg1 size:(struct CGSize)arg2;
 - (id)contentItemArtworkForContentItemIdentifier:(id)arg1 artworkIdentifier:(id)arg2 size:(struct CGSize)arg3;
 - (long long)contentItemCacheStateForIdentifier:(id)arg1;

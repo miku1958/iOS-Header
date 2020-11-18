@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+#import <IMDaemonCore/IDSAccountDelegate-Protocol.h>
 
-@interface IMDAccountController : NSObject
+@class NSArray, NSDictionary, NSMutableDictionary, NSSet, NSString;
+
+@interface IMDAccountController : NSObject <IDSAccountDelegate>
 {
     NSMutableDictionary *_accounts;
     NSMutableDictionary *_activeAccounts;
+    NSSet *_operationalAccountsCache;
     BOOL _isLoading;
     BOOL _isFirstLoad;
 }
@@ -21,15 +24,24 @@
 @property (readonly, nonatomic) NSArray *activeSessions;
 @property (readonly, nonatomic) NSArray *connectedAccounts;
 @property (readonly, nonatomic) NSArray *connectingAccounts;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isLoading; // @synthesize isLoading=_isLoading;
 @property (readonly, nonatomic) NSDictionary *loadOldStatusStore;
+@property (readonly) Class superclass;
 
 + (id)sharedAccountController;
 + (id)sharedInstance;
 - (void)_checkPowerAssertion;
 - (void)_daemonWillShutdown:(id)arg1;
 - (BOOL)_isAccountActive:(id)arg1 forService:(id)arg2;
+- (BOOL)_isOperationalForAccount:(id)arg1;
+- (id)_nicknameController;
+- (id)_operationalAccounts;
+- (void)_rebuildOperationalAccountsCache;
 - (id)_superFormatFromAIML:(id)arg1;
+- (void)account:(id)arg1 isActiveChanged:(BOOL)arg2;
 - (id)accountForAccountID:(id)arg1;
 - (id)accountForIDSAccountUniqueID:(id)arg1;
 - (id)accountsForLoginID:(id)arg1 onService:(id)arg2;

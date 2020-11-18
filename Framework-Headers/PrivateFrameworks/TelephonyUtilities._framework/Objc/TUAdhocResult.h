@@ -26,7 +26,6 @@
 @property (readonly) NSString *displayName;
 @property (readonly) NSArray *handles;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *idsCanonicalDestination;
 @property (readonly) NSArray *idsCanonicalDestinations;
 @property (readonly) NSString *isoCountryCode;
 @property (readonly) long long mostRecentCallType;

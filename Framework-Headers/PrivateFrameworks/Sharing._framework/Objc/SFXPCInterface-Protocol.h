@@ -16,6 +16,15 @@
 - (void)deviceDiscoveryFoundDevice:(SFDevice *)arg1;
 - (void)deviceDiscoveryLostDevice:(SFDevice *)arg1;
 - (void)deviceDiscoveryScanStateChanged:(long long)arg1;
+- (void)proximityClientDeviceDidUntriggerHandler:(NSString *)arg1;
+- (void)proximityClientDeviceEnteredImmediate:(NSString *)arg1;
+- (void)proximityClientDeviceEnteredNearby:(NSString *)arg1;
+- (void)proximityClientDeviceExitedImmediate:(NSString *)arg1;
+- (void)proximityClientDeviceExitedNearby:(NSString *)arg1;
+- (void)proximityClientDeviceUpdated:(NSString *)arg1 rssi:(long long)arg2 state:(long long)arg3;
+- (void)proximityClientDeviceWasDismissedHandler:(NSString *)arg1 reason:(long long)arg2;
+- (void)proximityClientDeviceWasSelectedHandler:(NSString *)arg1;
+- (void)proximityClientDeviceWillTriggerHandler:(NSString *)arg1;
 - (void)remoteInteractionSessionRemoteTextEvent:(NSDictionary *)arg1;
 - (void)remoteInteractionSessionTextSessionDidBegin:(SFRemoteTextSessionInfo *)arg1;
 - (void)remoteInteractionSessionTextSessionDidChange:(SFRemoteTextSessionInfo *)arg1;
@@ -32,6 +41,8 @@
 - (void)sessionReceivedFrameType:(unsigned char)arg1 data:(NSData *)arg2;
 - (void)sessionReceivedRequest:(SFRequestMessage *)arg1;
 - (void)sessionReceivedResponse:(SFResponseMessage *)arg1;
+- (void)shareAudioProgressEvent:(int)arg1 info:(NSDictionary *)arg2;
+- (void)userNotificationDictionaryResponse:(NSDictionary *)arg1;
 - (void)userNotificationError:(NSError *)arg1;
 - (void)userNotificationResponse:(int)arg1;
 - (void)userNotificationTextResponse:(NSString *)arg1;

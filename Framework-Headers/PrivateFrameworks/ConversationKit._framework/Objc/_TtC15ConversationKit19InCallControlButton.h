@@ -8,17 +8,19 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit19InCallControlButton : UIControl
 {
+    MISSING_TYPE *discBackgroundEffectView;
+    MISSING_TYPE *discBackgroundFlatView;
     MISSING_TYPE *imageView;
-    MISSING_TYPE *toggledConstraints;
     MISSING_TYPE *paragraphStyle;
+    MISSING_TYPE *isUsingVisualEffects;
     MISSING_TYPE *style;
     MISSING_TYPE *label;
     MISSING_TYPE *discView;
     MISSING_TYPE *image;
     MISSING_TYPE *colorConfiguration;
+    MISSING_TYPE *contentAlpha;
 }
 
 @property (nonatomic) BOOL highlighted;

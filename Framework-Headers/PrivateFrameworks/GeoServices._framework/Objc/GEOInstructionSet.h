@@ -6,13 +6,17 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
+#import <GeoServices/GEOComposedRouteStepTransitInstructionMerging-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEODrivingWalkingInstruction, GEODrivingWalkingSpokenInstruction, GEOFormattedString, GEOGenericInstruction, GEOTransitListInstruction, GEOTransitSignInstruction;
+@class GEODrivingWalkingInstruction, GEODrivingWalkingSpokenInstruction, GEOFormattedString, GEOGenericInstruction, GEOTransitListInstruction, GEOTransitSignInstruction, NSString, PBDataReader, PBUnknownFields;
 @protocol GEOServerFormattedString;
 
-@interface GEOInstructionSet : PBCodable <NSCopying>
+@interface GEOInstructionSet : PBCodable <GEOComposedRouteStepTransitInstructionMerging, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOFormattedString *_countStopsText;
     GEOFormattedString *_departureBar;
     GEODrivingWalkingInstruction *_drivingWalkingListInstruction;
@@ -21,35 +25,82 @@
     GEOGenericInstruction *_genericInstruction;
     GEOTransitListInstruction *_transitListInstruction;
     GEOTransitSignInstruction *_transitSignInstruction;
+    int _departureBarStyle;
+    struct {
+        unsigned int has_departureBarStyle:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_countStopsText:1;
+        unsigned int read_departureBar:1;
+        unsigned int read_drivingWalkingListInstruction:1;
+        unsigned int read_drivingWalkingSignInstruction:1;
+        unsigned int read_drivingWalkingSpokenInstruction:1;
+        unsigned int read_genericInstruction:1;
+        unsigned int read_transitListInstruction:1;
+        unsigned int read_transitSignInstruction:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_countStopsText:1;
+        unsigned int wrote_departureBar:1;
+        unsigned int wrote_drivingWalkingListInstruction:1;
+        unsigned int wrote_drivingWalkingSignInstruction:1;
+        unsigned int wrote_drivingWalkingSpokenInstruction:1;
+        unsigned int wrote_genericInstruction:1;
+        unsigned int wrote_transitListInstruction:1;
+        unsigned int wrote_transitSignInstruction:1;
+        unsigned int wrote_departureBarStyle:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) id<GEOServerFormattedString> countStopsFormattedString;
-@property (strong, nonatomic) GEOFormattedString *countStopsText; // @synthesize countStopsText=_countStopsText;
-@property (strong, nonatomic) GEOFormattedString *departureBar; // @synthesize departureBar=_departureBar;
+@property (strong, nonatomic) GEOFormattedString *countStopsText;
+@property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) GEOFormattedString *departureBar;
+@property (readonly, nonatomic) long long departureBarFormatStyle;
 @property (readonly, nonatomic) id<GEOServerFormattedString> departureBarFormattedString;
-@property (strong, nonatomic) GEODrivingWalkingInstruction *drivingWalkingListInstruction; // @synthesize drivingWalkingListInstruction=_drivingWalkingListInstruction;
-@property (strong, nonatomic) GEODrivingWalkingInstruction *drivingWalkingSignInstruction; // @synthesize drivingWalkingSignInstruction=_drivingWalkingSignInstruction;
-@property (strong, nonatomic) GEODrivingWalkingSpokenInstruction *drivingWalkingSpokenInstruction; // @synthesize drivingWalkingSpokenInstruction=_drivingWalkingSpokenInstruction;
-@property (strong, nonatomic) GEOGenericInstruction *genericInstruction; // @synthesize genericInstruction=_genericInstruction;
+@property (nonatomic) int departureBarStyle;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) GEODrivingWalkingInstruction *drivingWalkingListInstruction;
+@property (strong, nonatomic) GEODrivingWalkingInstruction *drivingWalkingSignInstruction;
+@property (strong, nonatomic) GEODrivingWalkingSpokenInstruction *drivingWalkingSpokenInstruction;
+@property (readonly, nonatomic) id<GEOServerFormattedString> expandableListFormattedString;
+@property (strong, nonatomic) GEOGenericInstruction *genericInstruction;
 @property (readonly, nonatomic) BOOL hasCountStopsText;
 @property (readonly, nonatomic) BOOL hasDepartureBar;
+@property (nonatomic) BOOL hasDepartureBarStyle;
 @property (readonly, nonatomic) BOOL hasDrivingWalkingListInstruction;
 @property (readonly, nonatomic) BOOL hasDrivingWalkingSignInstruction;
 @property (readonly, nonatomic) BOOL hasDrivingWalkingSpokenInstruction;
 @property (readonly, nonatomic) BOOL hasGenericInstruction;
 @property (readonly, nonatomic) BOOL hasTransitListInstruction;
 @property (readonly, nonatomic) BOOL hasTransitSignInstruction;
-@property (strong, nonatomic) GEOTransitListInstruction *transitListInstruction; // @synthesize transitListInstruction=_transitListInstruction;
-@property (strong, nonatomic) GEOTransitSignInstruction *transitSignInstruction; // @synthesize transitSignInstruction=_transitSignInstruction;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL hideTimeInstructionsIfCollapsed;
+@property (readonly, nonatomic) id<GEOServerFormattedString> primaryTimeFormattedString;
+@property (readonly, nonatomic) id<GEOServerFormattedString> secondaryTimeFormattedString;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) GEOTransitListInstruction *transitListInstruction;
+@property (strong, nonatomic) GEOTransitSignInstruction *transitSignInstruction;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsDepartureBarStyle:(id)arg1;
+- (void)_readCountStopsText;
+- (void)_readDepartureBar;
+- (void)_readDrivingWalkingListInstruction;
+- (void)_readDrivingWalkingSignInstruction;
+- (void)_readDrivingWalkingSpokenInstruction;
+- (void)_readGenericInstruction;
+- (void)_readTransitListInstruction;
+- (void)_readTransitSignInstruction;
+- (void)_transit_prepareForDeepMergeFrom:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (id)departureBarStyleAsString:(int)arg1;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

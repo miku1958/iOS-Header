@@ -15,8 +15,8 @@
     BOOL _includeHidden;
 }
 
+- (void).cxx_destruct;
 - (id)_initWithMailbox:(id)arg1 includeHiddenChildren:(BOOL)arg2;
-- (void)dealloc;
 - (id)nextObject;
 
 @end

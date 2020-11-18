@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)computeRedundancyInfo;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_48a7b5a5)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
 
 @end
 

@@ -11,17 +11,19 @@
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSAnimationSettings, BSMutableSettings, BSProcessHandle, FBSceneUpdateContext, NSSet, NSString;
+@class BKSAnimationFenceHandle, BSAnimationSettings, BSMutableSettings, BSProcessHandle, FBSceneUpdateContext, FBWatchdogTransitionContext, NSSet, NSString;
 
 @interface FBSSceneTransitionContext : NSObject <BSXPCCoding, BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
+    FBSceneUpdateContext *_updateContext;
+    FBWatchdogTransitionContext *_watchdogTransitionContext;
+    BOOL _allowCPUThrottling;
     BSAnimationSettings *_animationSettings;
     BKSAnimationFenceHandle *_animationFence;
     NSSet *_actions;
     BSProcessHandle *_originatingProcess;
     BSMutableSettings *_otherSettings;
     BSMutableSettings *_transientLocalClientSettings;
-    FBSceneUpdateContext *_updateContext;
 }
 
 @property (copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
@@ -32,10 +34,12 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BSProcessHandle *originatingProcess; // @synthesize originatingProcess=_originatingProcess;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) FBSceneUpdateContext *updateContext; // @synthesize updateContext=_updateContext;
+@property (strong, nonatomic) FBSceneUpdateContext *updateContext; // @dynamic updateContext;
+@property (strong, nonatomic) FBWatchdogTransitionContext *watchdogTransitionContext; // @dynamic watchdogTransitionContext;
 
 + (id)transitionContext;
 - (void).cxx_destruct;
+- (BOOL)_isEmpty;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

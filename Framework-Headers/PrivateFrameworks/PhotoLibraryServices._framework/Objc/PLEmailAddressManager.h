@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, PLLazyObject, PLPhotoLibraryPathManager;
 
 @interface PLEmailAddressManager : NSObject
 {
     NSMutableDictionary *_keysForEmails;
     NSMutableDictionary *_emailsForKey;
     int _maxKey;
-    NSString *_plistPath;
+    PLPhotoLibraryPathManager *_pathManager;
+    PLLazyObject *_lazyAssetsdClient;
 }
 
-+ (id)sharedManager;
+- (void).cxx_destruct;
 - (void)_loadDictionariesIfNeeded;
-- (void)dealloc;
+- (id)assetsdClient;
 - (id)emailAddressForKey:(id)arg1;
+- (id)initWithPathManager:(id)arg1 lazyAssetsdClient:(id)arg2;
 - (id)keyForEmailAddress:(id)arg1;
+- (id)plistPath;
 
 @end
 

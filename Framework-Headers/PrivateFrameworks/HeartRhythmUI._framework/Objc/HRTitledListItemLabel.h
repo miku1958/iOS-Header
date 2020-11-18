@@ -12,9 +12,11 @@
 {
     HRListItemLabel *_listItemLabel;
     UILabel *_bodyLabel;
+    long long _currentUserInterfaceStyle;
 }
 
 @property (strong, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
+@property (nonatomic) long long currentUserInterfaceStyle; // @synthesize currentUserInterfaceStyle=_currentUserInterfaceStyle;
 @property (strong, nonatomic) HRListItemLabel *listItemLabel; // @synthesize listItemLabel=_listItemLabel;
 
 - (void).cxx_destruct;
@@ -23,7 +25,9 @@
 - (double)_listItemLabelToBody;
 - (void)_setUpConstraints;
 - (void)_setUpUI;
+- (void)_updateCurrentUserInterfaceStyleIfNeeded;
 - (id)initWithView:(id)arg1 size:(struct CGSize)arg2 title:(id)arg3 body:(id)arg4;
+- (void)layoutSubviews;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

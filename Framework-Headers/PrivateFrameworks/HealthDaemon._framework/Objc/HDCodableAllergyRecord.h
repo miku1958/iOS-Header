@@ -21,6 +21,7 @@
     NSData *_onsetDate;
     HDCodableAllergyReactionList *_reactions;
     NSData *_recordedDate;
+    HDCodableMedicalCoding *_statusCoding;
 }
 
 @property (strong, nonatomic) HDCodableMedicalCodingList *allergyCodings; // @synthesize allergyCodings=_allergyCodings;
@@ -36,12 +37,14 @@
 @property (readonly, nonatomic) BOOL hasOnsetDate;
 @property (readonly, nonatomic) BOOL hasReactions;
 @property (readonly, nonatomic) BOOL hasRecordedDate;
+@property (readonly, nonatomic) BOOL hasStatusCoding;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSData *lastOccurenceDate; // @synthesize lastOccurenceDate=_lastOccurenceDate;
 @property (strong, nonatomic) HDCodableMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 @property (strong, nonatomic) NSData *onsetDate; // @synthesize onsetDate=_onsetDate;
 @property (strong, nonatomic) HDCodableAllergyReactionList *reactions; // @synthesize reactions=_reactions;
 @property (strong, nonatomic) NSData *recordedDate; // @synthesize recordedDate=_recordedDate;
+@property (strong, nonatomic) HDCodableMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

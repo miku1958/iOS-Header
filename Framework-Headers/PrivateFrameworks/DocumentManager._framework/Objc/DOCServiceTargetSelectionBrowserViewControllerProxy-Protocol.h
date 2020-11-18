@@ -10,5 +10,6 @@
 - (void)displayExportedURLWrappers;
 - (void)displayItems:(NSArray *)arg1;
 - (void)displayURLs:(NSArray *)arg1;
+- (void)setDirectoryURLToReveal:(NSArray *)arg1;
 @end
 

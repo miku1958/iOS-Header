@@ -50,6 +50,7 @@
 @property (strong, nonatomic) ADWebView *webView; // @synthesize webView=_webView;
 @property (readonly, nonatomic) struct CGRect webViewFrame;
 
+- (void).cxx_destruct;
 - (void)_dismissButtonTapped;
 - (void)_dismissKeyboard;
 - (void)_dismissWithSystemEvent:(int)arg1;
@@ -78,6 +79,9 @@
 - (void)webProcessPlugInDidCreateBrowserContextController;
 - (void)webProcessPlugInWillDestroyBrowserContextController;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
+- (void)webViewWebContentProcessDidTerminate:(id)arg1;
 
 @end
 

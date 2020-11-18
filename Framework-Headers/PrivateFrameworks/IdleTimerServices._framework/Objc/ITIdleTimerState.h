@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
-@protocol BSInvalidatable, OS_dispatch_queue;
+@class ITIdleTimerStateModel;
+@protocol ITIdleTimerStateRequestHandling;
 
 @interface ITIdleTimerState : NSObject
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
-    NSHashTable *_idleTimerDisableAssertions;
-    id<BSInvalidatable> _stateCaptureAssertion;
+    struct os_unfair_lock_s _accessLock;
+    ITIdleTimerStateModel *_model;
+    id<ITIdleTimerStateRequestHandling> _requestHandler;
 }
 
 + (BOOL)isIdleTimerServiceAvailable;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_addStateCaptureHandler;
 - (id)_init;
-- (id)_queue_newAssertionToDisableIdleTimerForReason:(id)arg1;
-- (void)dealloc;
+- (id)_initWithModel:(id)arg1;
+- (BOOL)isIdleTimerServiceAvailable;
 - (id)newAssertionToDisableIdleTimerForReason:(id)arg1;
+- (id)newIdleTimerAssertionWithConfiguration:(id)arg1 forReason:(id)arg2;
 
 @end
 

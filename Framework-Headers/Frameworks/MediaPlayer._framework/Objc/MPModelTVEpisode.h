@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType artworkCatalogBlock; // @dynamic artworkCatalogBlock;
 @property (copy, nonatomic) NSString *descriptionText; // @dynamic descriptionText;
+@property (readonly, copy, nonatomic) NSDate *downloadedDate; // @dynamic downloadedDate;
 @property (nonatomic) double duration; // @dynamic duration;
 @property (nonatomic) long long episodeNumber; // @dynamic episodeNumber;
 @property (nonatomic) long long episodeType; // @dynamic episodeType;
@@ -36,6 +37,7 @@
 
 + (id)__artworkCatalogBlock_KEY;
 + (id)__descriptionText_KEY;
++ (id)__downloadedDate_KEY;
 + (id)__duration_KEY;
 + (id)__episodeNumber_KEY;
 + (id)__episodeTypeDisplayName_KEY;

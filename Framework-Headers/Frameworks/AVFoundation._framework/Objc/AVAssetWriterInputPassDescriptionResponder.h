@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_hasStoppedResponding;
 - (void)_releaseAndClearCallbackBlock_invokeOnSerializationQueue;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithCallbackQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)respondToNewPassDescription:(id)arg1;

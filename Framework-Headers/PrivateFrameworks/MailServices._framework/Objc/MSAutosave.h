@@ -6,17 +6,29 @@
 
 #import <MailServices/MSXPCService.h>
 
+@class NSHashTable;
+
 @interface MSAutosave : MSXPCService
 {
+    NSHashTable *_activeAutosaveSessions;
 }
 
+@property (strong, nonatomic) NSHashTable *activeAutosaveSessions; // @synthesize activeAutosaveSessions=_activeAutosaveSessions;
+
 + (id)autosave;
++ (id)log;
+- (void).cxx_destruct;
+- (void)_getRemoteAutosaveSessionForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleInterruptedConnection;
 - (id)_timeout;
-- (void)autosaveMessageData:(id)arg1 withIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)autosaveMessageData:(id)arg1 replacingIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)autosaveSessionForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)autosavedMessageDataWithIdentifier:(id)arg1 error:(id *)arg2;
+- (void)getIdleAutosaves:(CDUnknownBlockType)arg1;
 - (BOOL)hasAutosavedMessageWithIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithRemoteObjectInterface:(id)arg1;
+- (id)newConnectionForInterface:(id)arg1;
 - (void)removeAutosavedMessageWithIdentifier:(id)arg1;
 
 @end

@@ -16,6 +16,7 @@
     UIViewPropertyAnimator *_fadeOutAnimator;
 }
 
+@property (readonly, nonatomic) BOOL animated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIViewPropertyAnimator *fadeInAnimator; // @synthesize fadeInAnimator=_fadeInAnimator;

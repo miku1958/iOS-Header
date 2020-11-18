@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)setupViewWithStyle:(unsigned long long)arg1;
+- (id)setupView;
 
 @end
 

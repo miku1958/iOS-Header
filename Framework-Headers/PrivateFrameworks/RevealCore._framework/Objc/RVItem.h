@@ -24,6 +24,8 @@
     NSString *_clientIdentifier;
     id _clientHints;
     long long _selectionType;
+    NSString *_leadingText;
+    NSString *_trailingText;
 }
 
 @property (strong, nonatomic) id clientHints; // @synthesize clientHints=_clientHints;
@@ -32,25 +34,33 @@
 @property (readonly, nonatomic) NSString *contactPropertyValue; // @synthesize contactPropertyValue=_contactPropertyValue;
 @property (readonly, nonatomic) DDScannerResult *ddResult; // @synthesize ddResult=_ddResult;
 @property (readonly, nonatomic) struct _NSRange highlightRange; // @synthesize highlightRange=_highlightRange;
+@property (strong, nonatomic) NSString *leadingText; // @synthesize leadingText=_leadingText;
 @property (readonly, nonatomic) long long normalizedType; // @synthesize normalizedType=_normalizedType;
 @property (readonly, nonatomic) NSURL *normalizedURL;
 @property (readonly, nonatomic) long long selectionType; // @synthesize selectionType=_selectionType;
 @property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
 @property (readonly, nonatomic) NSString *textSearchContext;
+@property (strong, nonatomic) NSString *trailingText; // @synthesize trailingText=_trailingText;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)commonInitWithText:(id)arg1 selectedRange:(struct _NSRange)arg2 customURLParser:(CDUnknownBlockType)arg3 lookup:(BOOL)arg4;
+- (id)constrainContextSubstring:(id)arg1 range:(struct _NSRange)arg2 leading:(BOOL)arg3;
 - (void)encodeWithCoder:(id)arg1;
+- (id)getClientHintKey:(id)arg1 ofType:(Class)arg2;
 - (id)initEmpty;
 - (id)initWithClientIdentifier:(id)arg1 rangeInContext:(struct _NSRange)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContactProperty:(long long)arg1 value:(id)arg2 rangeInContext:(struct _NSRange)arg3;
 - (id)initWithDDResult:(id)arg1;
+- (id)initWithText:(id)arg1 clickedIndex:(unsigned long long)arg2 selectionRanges:(id)arg3 shouldUpdateSelection:(BOOL *)arg4;
 - (id)initWithText:(id)arg1 selectedRange:(struct _NSRange)arg2;
+- (id)initWithText:(id)arg1 selectedRange:(struct _NSRange)arg2 customURLParser:(CDUnknownBlockType)arg3;
 - (id)initWithURL:(id)arg1 rangeInContext:(struct _NSRange)arg2;
 - (void)normalize;
+- (void)normalizeWithParser:(CDUnknownBlockType)arg1 lookupOnly:(BOOL)arg2;
 - (struct _NSRange)textSearchRange;
 
 @end

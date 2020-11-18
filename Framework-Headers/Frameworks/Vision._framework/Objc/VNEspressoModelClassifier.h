@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     NSSet *_blacklistedIdentifiers;
 }
 
++ (id)classifierResourceTypesToNamesForRevision:(unsigned long long)arg1;
 + (void)convertRelationships:(id)arg1 toStdRelationships:(vector_153622dc *)arg2;
 + (shared_ptr_047f28ed)createClassifierWithDescriptor:(shared_ptr_b26ea6de)arg1 classifierAbsolutePath:(const char *)arg2 computePlatform:(int)arg3 computePath:(int)arg4 labelsFilename:(const char *)arg5 options:(struct Options)arg6;
 + (shared_ptr_b26ea6de)createDescriprorProcessorWithModelPath:(const char *)arg1 nBatch:(int)arg2 computePlatform:(int)arg3 computePath:(int)arg4 options:(struct Options)arg5;
@@ -26,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_calculateImageDescriptors:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 canceller:(id)arg4 descriptorBuffer:(shared_ptr_0a6daad2 *)arg5 debugIntermediatesDumpPath:(id)arg6 outputDebugDictionary:(id)arg7 error:(id *)arg8;
 - (id)blacklistedIdentifiers;
-- (id)calculateImageDescriptorsWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)calculateImageDescriptors:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 canceller:(id)arg4 error:(id *)arg5;
 - (BOOL)completeInitializationAndReturnError:(id *)arg1;
 - (id)getLabels;
 

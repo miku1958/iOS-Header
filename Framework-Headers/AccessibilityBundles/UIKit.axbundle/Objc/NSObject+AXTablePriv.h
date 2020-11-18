@@ -7,6 +7,10 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (AXTablePriv)
+- (BOOL)__accessibilityRespondsToTextInput;
 - (long long)_accessibilityScrollPositionForCellOverride:(long long)arg1;
+- (void)_accessibilitySetTextSelection:(struct _NSRange)arg1;
+- (long long)_emojiCompare:(id)arg1;
+- (void)accessibilityClearInternalData;
 @end
 

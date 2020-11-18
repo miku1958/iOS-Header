@@ -19,6 +19,7 @@
 - (void)addObjectsFromOrderedSet:(id)arg1;
 - (void)addObjectsFromOrderedSet:(id)arg1 range:(struct _NSRange)arg2;
 - (void)addObjectsFromSet:(id)arg1;
+- (id)arrayByAddingObjectsFromArray:(id)arg1;
 - (void)exchangeObjectAtIndex:(unsigned long long)arg1 withObjectAtIndex:(unsigned long long)arg2;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithObjects:(const id *)arg1 count:(unsigned long long)arg2;

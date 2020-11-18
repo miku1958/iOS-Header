@@ -8,7 +8,6 @@
 
 @class GEOComposedGuidanceEvent, MNGuidanceEventManager, NSMutableArray;
 
-__attribute__((visibility("hidden")))
 @interface MNAnnouncementPlanEvent : NSObject
 {
     BOOL _includeInPlan;
@@ -16,9 +15,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _variantIndex;
     double _triggerDistance;
     MNGuidanceEventManager *_manager;
-    NSMutableArray *_announcementDurations;
     double _distance;
     double _speed;
+    NSMutableArray *_announcementDurations;
 }
 
 @property (strong, nonatomic) NSMutableArray *announcementDurations; // @synthesize announcementDurations=_announcementDurations;

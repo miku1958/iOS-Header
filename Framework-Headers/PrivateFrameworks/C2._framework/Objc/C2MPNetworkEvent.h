@@ -42,12 +42,15 @@ __attribute__((visibility("hidden")))
     NSString *_networkRequestUri;
     unsigned int _networkResponseHeaderSize;
     NSString *_networkTaskDescription;
+    NSString *_optionsDiscretionaryNetworkBehavior;
+    NSString *_optionsDuetPreClearedMode;
     NSString *_optionsQualityOfService;
     NSString *_optionsSourceApplicationBundleIdentifier;
     NSString *_optionsSourceApplicationSecondaryIdentifier;
     unsigned int _optionsTimeoutIntervalForRequest;
     unsigned int _optionsTimeoutIntervalForResource;
     BOOL _networkConnectionReused;
+    BOOL _networkIsDiscretionary;
     BOOL _optionsAllowExpensiveAccess;
     BOOL _optionsAllowPowerNapScheduling;
     BOOL _optionsAppleIdContext;
@@ -79,6 +82,7 @@ __attribute__((visibility("hidden")))
         unsigned int optionsTimeoutIntervalForRequest:1;
         unsigned int optionsTimeoutIntervalForResource:1;
         unsigned int networkConnectionReused:1;
+        unsigned int networkIsDiscretionary:1;
         unsigned int optionsAllowExpensiveAccess:1;
         unsigned int optionsAllowPowerNapScheduling:1;
         unsigned int optionsAppleIdContext:1;
@@ -93,6 +97,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasNetworkFatalError;
 @property (readonly, nonatomic) BOOL hasNetworkHostname;
 @property (readonly, nonatomic) BOOL hasNetworkInterfaceIdentifier;
+@property (nonatomic) BOOL hasNetworkIsDiscretionary;
 @property (nonatomic) BOOL hasNetworkPreviousAttemptCount;
 @property (readonly, nonatomic) BOOL hasNetworkProtocolName;
 @property (readonly, nonatomic) BOOL hasNetworkRemoteAddresssAndPort;
@@ -106,6 +111,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasOptionsAllowExpensiveAccess;
 @property (nonatomic) BOOL hasOptionsAllowPowerNapScheduling;
 @property (nonatomic) BOOL hasOptionsAppleIdContext;
+@property (readonly, nonatomic) BOOL hasOptionsDiscretionaryNetworkBehavior;
+@property (readonly, nonatomic) BOOL hasOptionsDuetPreClearedMode;
 @property (nonatomic) BOOL hasOptionsOutOfProcess;
 @property (nonatomic) BOOL hasOptionsOutOfProcessForceDiscretionary;
 @property (readonly, nonatomic) BOOL hasOptionsQualityOfService;
@@ -134,6 +141,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) C2MPError *networkFatalError; // @synthesize networkFatalError=_networkFatalError;
 @property (strong, nonatomic) NSString *networkHostname; // @synthesize networkHostname=_networkHostname;
 @property (strong, nonatomic) NSString *networkInterfaceIdentifier; // @synthesize networkInterfaceIdentifier=_networkInterfaceIdentifier;
+@property (nonatomic) BOOL networkIsDiscretionary; // @synthesize networkIsDiscretionary=_networkIsDiscretionary;
 @property (nonatomic) unsigned int networkPreviousAttemptCount; // @synthesize networkPreviousAttemptCount=_networkPreviousAttemptCount;
 @property (strong, nonatomic) NSString *networkProtocolName; // @synthesize networkProtocolName=_networkProtocolName;
 @property (strong, nonatomic) NSString *networkRemoteAddresssAndPort; // @synthesize networkRemoteAddresssAndPort=_networkRemoteAddresssAndPort;
@@ -147,6 +155,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL optionsAllowExpensiveAccess; // @synthesize optionsAllowExpensiveAccess=_optionsAllowExpensiveAccess;
 @property (nonatomic) BOOL optionsAllowPowerNapScheduling; // @synthesize optionsAllowPowerNapScheduling=_optionsAllowPowerNapScheduling;
 @property (nonatomic) BOOL optionsAppleIdContext; // @synthesize optionsAppleIdContext=_optionsAppleIdContext;
+@property (strong, nonatomic) NSString *optionsDiscretionaryNetworkBehavior; // @synthesize optionsDiscretionaryNetworkBehavior=_optionsDiscretionaryNetworkBehavior;
+@property (strong, nonatomic) NSString *optionsDuetPreClearedMode; // @synthesize optionsDuetPreClearedMode=_optionsDuetPreClearedMode;
 @property (nonatomic) BOOL optionsOutOfProcess; // @synthesize optionsOutOfProcess=_optionsOutOfProcess;
 @property (nonatomic) BOOL optionsOutOfProcessForceDiscretionary; // @synthesize optionsOutOfProcessForceDiscretionary=_optionsOutOfProcessForceDiscretionary;
 @property (strong, nonatomic) NSString *optionsQualityOfService; // @synthesize optionsQualityOfService=_optionsQualityOfService;

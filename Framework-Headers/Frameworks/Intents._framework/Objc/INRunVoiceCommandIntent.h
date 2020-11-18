@@ -8,7 +8,7 @@
 
 #import <Intents/INRunVoiceCommandIntentExport-Protocol.h>
 
-@class INSpeakableString, INVoiceCommandDeviceInformation, NSString;
+@class INIntentExecutionResult, INSpeakableString, INVoiceCommandDeviceInformation, NSString;
 
 @interface INRunVoiceCommandIntent : INIntent <INRunVoiceCommandIntentExport>
 {
@@ -16,8 +16,10 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) INIntentExecutionResult *executionResult;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) INVoiceCommandDeviceInformation *originDevice;
+@property (readonly, copy, nonatomic) NSString *previousIntentIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) INSpeakableString *voiceCommand;
 
@@ -28,10 +30,14 @@
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithVoiceCommand:(id)arg1 originDevice:(id)arg2;
+- (id)initWithVoiceCommand:(id)arg1 originDevice:(id)arg2 executionResult:(id)arg3;
+- (id)initWithVoiceCommand:(id)arg1 originDevice:(id)arg2 executionResult:(id)arg3 previousIntentIdentifier:(id)arg4;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
+- (void)setExecutionResult:(id)arg1;
 - (void)setOriginDevice:(id)arg1;
 - (void)setParametersByName:(id)arg1;
+- (void)setPreviousIntentIdentifier:(id)arg1;
 - (void)setVerb:(id)arg1;
 - (void)setVoiceCommand:(id)arg1;
 - (id)verb;

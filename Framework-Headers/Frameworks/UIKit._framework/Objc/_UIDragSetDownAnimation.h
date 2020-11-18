@@ -6,41 +6,39 @@
 
 #import <objc/NSObject.h>
 
-@class CADisplayLink, NSArray, UIViewPropertyAnimator, _UIDragSetDownAnimationWindow;
-@protocol _UIDraggingItemVisualTarget;
+#import <UIKitCore/_UIDragSetDownItemAnimationDelegate-Protocol.h>
 
-@interface _UIDragSetDownAnimation : NSObject
+@class CADisplayLink, NSArray, NSString, UIViewPropertyAnimator, UIWindow, _UIDragSetDownAnimationWindow;
+
+@interface _UIDragSetDownAnimation : NSObject <_UIDragSetDownItemAnimationDelegate>
 {
-    long long _state;
-    NSArray *_animationItems;
+    NSArray *_itemAnimations;
     CDUnknownBlockType _completion;
-    BOOL _forSource;
-    id<_UIDraggingItemVisualTarget> _defaultVisualTarget;
+    BOOL _hasBegun;
     _UIDragSetDownAnimationWindow *_window;
-    BOOL _shouldHideWindowOnCompletion;
     CADisplayLink *_displayLink;
     UIViewPropertyAnimator *_remainingItemsPropertyAnimator;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) UIWindow *window;
 
 + (CDUnknownBlockType)defaultDropAnimationForPlatterView:(id)arg1;
 + (CDUnknownBlockType)defaultMultiItemAnimationForPlatterView:(id)arg1;
 + (id)defaultSetDownPropertyAnimator;
 + (CDUnknownBlockType)defaultSingleItemAnimationForPlatterView:(id)arg1;
 - (void).cxx_destruct;
-- (void)_allAnimationItemsDone;
-- (void)_animationItemDone:(id)arg1;
-- (void)_animationItemReachedTarget:(id)arg1;
-- (void)_beginFadeOutForAnimationItem:(id)arg1;
-- (void)_configureAnimationItem:(id)arg1 forDroppedItem:(id)arg2 crossfadingToTargetedPreview:(id)arg3;
-- (void)_configureSystemDefaultAnimationForItem:(id)arg1 droppedItem:(id)arg2 isCancel:(BOOL)arg3;
-- (struct CGRect)_legacy_configureAnimationItem:(id)arg1 withInternalItem:(id)arg2 forDroppedItem:(id)arg3;
-- (void)_setCenterAndVelocityOfAnimationItem:(id)arg1 fromDroppedItem:(id)arg2;
-- (id)_viewForImageComponents:(id)arg1 crossfadingToLocalImageComponents:(id)arg2 totalComponentFrame:(struct CGRect)arg3 preview:(id)arg4 inView:(id)arg5;
-- (id)_viewForImageComponents:(id)arg1 totalComponentFrame:(struct CGRect)arg2 preview:(id)arg3 inView:(id)arg4;
+- (void)_allItemAnimationsCompleted;
 - (void)begin;
-- (void)displayLinkFired:(id)arg1;
-- (id)initWithVisibleDroppedItems:(id)arg1 items:(id)arg2 forSource:(BOOL)arg3 defaultVisualTarget:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)takeUpdatedVisibleDroppedItems:(id)arg1;
+- (id)initWithVisibleDroppedItems:(id)arg1 items:(id)arg2 forSource:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)itemAnimationCompleted:(id)arg1;
+- (void)itemAnimationReachedTarget:(id)arg1;
+- (void)updateInFlightAnimationTick:(id)arg1;
+- (void)updateTargetedDragPreview:(id)arg1 forDragItem:(id)arg2;
+- (void)updateVisibleDroppedItems:(id)arg1;
 
 @end
 

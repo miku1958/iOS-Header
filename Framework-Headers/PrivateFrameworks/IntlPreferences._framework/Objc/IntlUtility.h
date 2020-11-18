@@ -10,13 +10,13 @@
 
 @interface IntlUtility : NSObject
 {
-    void *mDisplayLanguageCachePtr;
-    int mDisplayLanguageCacheUsed;
     NSMutableArray *mBidiLanguagesArray;
     NSMutableArray *mBidiTestedLanguagesArray;
 }
 
 + (int)UDisplayContextForIUDisplayNameContext:(unsigned long long)arg1;
++ (id)_proposedOverrideLanguageFromLanguage:(id)arg1 forLocalizations:(id)arg2 preferredLanguages:(id)arg3 regionCode:(id)arg4;
++ (void)_setPreferredLanguage:(id)arg1 forBundleID:(id)arg2;
 + (id)alternateContinentOfRegion:(id)arg1;
 + (id)baseLanguageIdentifierFromIdentifier:(id)arg1;
 + (id)baseSystemLanguages;
@@ -41,11 +41,14 @@
 + (id)numberingSystemsForLocaleID:(id)arg1;
 + (id)numberingSystemsFromArray:(id)arg1 forLocaleID:(id)arg2;
 + (id)parentLocaleIdentifierForIdentifier:(id)arg1;
++ (id)preferredLanguageForBundleID:(id)arg1;
 + (id)preferredLanguagesForRegion:(id)arg1;
 + (id)preferredLanguagesForRegionWithoutFiltering:(id)arg1;
 + (id)preferredLanguagesFromLanguages:(id)arg1 byAddingFallbacksForRegion:(id)arg2;
 + (id)preferredLunarCalendarForLocaleID:(id)arg1;
 + (id)restrictedCountryCodes;
++ (void)setPreferredLanguage:(id)arg1 forBundleID:(id)arg2;
++ (void)setPreferredLanguage:(id)arg1 forBundleID:(id)arg2 andRelaunchWithCompletion:(CDUnknownBlockType)arg3;
 + (void)setYearlessYear:(id)arg1 forCalendar:(id)arg2;
 + (id)sharedIntlUtility;
 + (id)shortDisplayNameForNumberingSystemWithIdentifier:(id)arg1 localeIdentifier:(id)arg2;
@@ -53,6 +56,7 @@
 + (id)supportedCalendars;
 + (BOOL)upgradeAppleLanguagesFrom:(id)arg1 to:(id)arg2;
 + (long long)yearlessYearForMonth:(long long)arg1 withCalendar:(id)arg2;
+- (void).cxx_destruct;
 - (id)ICUdisplayNameForLanguage:(id)arg1 capitalization:(struct ULocaleDisplayNames *)arg2;
 - (BOOL)canRenderLanguage:(id)arg1;
 - (id)displayNameForDialect:(id)arg1 context:(unsigned long long)arg2 displayLanguage:(id)arg3;

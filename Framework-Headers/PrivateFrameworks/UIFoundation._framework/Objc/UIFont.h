@@ -36,6 +36,11 @@
 + (id)_opticalBoldSystemFontOfSize:(double)arg1;
 + (id)_opticalSystemFontOfSize:(double)arg1;
 + (double)_pointSize:(double)arg1 scaledLikeTextStyle:(id)arg2 maximumPointSize:(double)arg3 compatibleWithTraitCollection:(id)arg4;
++ (double)_pointSize:(double)arg1 scaledLikeTextStyle:(id)arg2 maximumPointSize:(double)arg3 compatibleWithTraitCollection:(id)arg4 roundSize:(BOOL)arg5;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 compatibleWithTraitCollection:(id)arg4;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5;
++ (id)_preferredFontForTextStyle:(id)arg1 design:(id)arg2 variant:(long long)arg3 maximumContentSizeCategory:(id)arg4 compatibleWithTraitCollection:(id)arg5 pointSize:(double)arg6 pointSizeForScaling:(double)arg7;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumPointSize:(double)arg2 compatibleWithTraitCollection:(id)arg3;
@@ -64,6 +69,7 @@
 + (id)italicSystemFontOfSize:(double)arg1;
 + (double)labelFontSize;
 + (id)monospacedDigitSystemFontOfSize:(double)arg1 weight:(double)arg2;
++ (id)monospacedSystemFontOfSize:(double)arg1 weight:(double)arg2;
 + (id)preferredFontForTextStyle:(id)arg1;
 + (id)preferredFontForTextStyle:(id)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)preferredFontForUsage:(id)arg1;
@@ -77,8 +83,8 @@
 + (double)systemFontSize;
 + (id)userFontOfSize:(double)arg1;
 - (struct __CTFont *)CTFont;
+- (BOOL)__isSystemFont;
 - (id)_alternateSystemFonts;
-- (void)_applyToCGContext:(struct CGContext *)arg1 graphicsContext:(id)arg2;
 - (double)_ascenderDeltaForBehavior:(long long)arg1;
 - (struct CGFont *)_backingCGSFont;
 - (double)_baseLineHeightForFont:(BOOL)arg1;
@@ -94,15 +100,18 @@
 - (BOOL)_hasColorGlyphs;
 - (BOOL)_isDefaultFace;
 - (BOOL)_isHiraginoFont;
+- (BOOL)_isUIFont;
 - (id)_kernOverride;
 - (double)_leading;
 - (double)_scaledValueForValue:(double)arg1;
 - (struct CGAffineTransform)_textMatrixTransformForContext:(id)arg1;
 - (double)_totalAdvancementForNativeGlyphs:(const unsigned short *)arg1 count:(long long)arg2;
 - (struct CGSize)advancementForGlyph:(unsigned short)arg1;
+- (void)applyToGraphicsContext:(id)arg1;
 - (id)bestMatchingFontForCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2 attributes:(id)arg3 actualCoveredLength:(unsigned long long *)arg4;
 - (struct CGRect)boundingRectForFont;
 - (Class)classForCoder;
+- (Class)classForKeyedArchiver;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)coveredCharacterSet;
 - (id)description;
@@ -114,6 +123,7 @@
 - (unsigned long long)getCaretPositions:(double *)arg1 forGlyph:(unsigned int)arg2 maximumLength:(unsigned long long)arg3;
 - (void)getVerticalOriginTranslations:(struct CGSize *)arg1 forCGGlyphs:(const unsigned short *)arg2 count:(unsigned long long)arg3;
 - (unsigned short)glyphWithName:(id)arg1;
+- (id)htmlMarkupDescription;
 - (unsigned int)hyphenGlyphForLocale:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFamilyName:(id)arg1 traits:(int)arg2 size:(double)arg3;
@@ -133,6 +143,7 @@
 - (id)screenFontWithRenderingMode:(unsigned long long)arg1;
 - (void)setInContext:(struct CGContext *)arg1;
 - (int)traits;
+- (double)underlinePosition;
 - (double)underlineThickness;
 - (id)verticalFont;
 

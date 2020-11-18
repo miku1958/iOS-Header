@@ -11,6 +11,7 @@
 @property (readonly) BOOL includeCalendarServers;
 @property (readonly) BOOL includeContacts;
 @property (readonly) BOOL includeDirectoryServers;
+@property (readonly) BOOL includeLocalExtensions;
 @property (readonly) BOOL includePredictions;
 @property (readonly) BOOL includeRecents;
 @property (readonly) BOOL includeSuggestions;

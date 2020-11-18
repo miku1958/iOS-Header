@@ -18,6 +18,9 @@
 - (id)_createLabelViewWithFont:(id)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (void)_updateTextProvider;
+- (id)init;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

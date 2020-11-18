@@ -13,7 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityAsyncObserveAVPlayerIfNeeded;
 - (void)_advanceCurrentItemAccordingToFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1;
+- (id)init;
+- (void)willChangeValueForKey:(id)arg1;
 
 @end
 

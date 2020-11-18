@@ -8,16 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSString, PBUnknownFields;
+@class NSData, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOMapItemStorageUserValues : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_name;
     NSString *_phoneNumber;
     NSData *_timeZoneData;
     NSString *_timeZoneName;
     NSString *_url;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_name:1;
+        unsigned int read_phoneNumber:1;
+        unsigned int read_timeZoneData:1;
+        unsigned int read_timeZoneName:1;
+        unsigned int read_url:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_phoneNumber:1;
+        unsigned int wrote_timeZoneData:1;
+        unsigned int wrote_timeZoneName:1;
+        unsigned int wrote_url:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasName;
@@ -25,14 +41,21 @@
 @property (readonly, nonatomic) BOOL hasTimeZoneData;
 @property (readonly, nonatomic) BOOL hasTimeZoneName;
 @property (readonly, nonatomic) BOOL hasUrl;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
-@property (strong, nonatomic) NSData *timeZoneData; // @synthesize timeZoneData=_timeZoneData;
-@property (strong, nonatomic) NSString *timeZoneName; // @synthesize timeZoneName=_timeZoneName;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *phoneNumber;
+@property (strong, nonatomic) NSData *timeZoneData;
+@property (strong, nonatomic) NSString *timeZoneName;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
+@property (strong, nonatomic) NSString *url;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readName;
+- (void)_readPhoneNumber;
+- (void)_readTimeZoneData;
+- (void)_readTimeZoneName;
+- (void)_readUrl;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -40,6 +63,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

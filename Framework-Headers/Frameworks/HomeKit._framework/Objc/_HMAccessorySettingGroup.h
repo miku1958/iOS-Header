@@ -14,6 +14,7 @@
 @class HMAccessorySettings, HMFUnfairLock, NSArray, NSMutableSet, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue, _HMAccesorySettingGroupDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _HMAccessorySettingGroup : NSObject <HMFLogging, HMFMessageReceiver, NSSecureCoding, HMFMerging>
 {
     HMFUnfairLock *_lock;
@@ -46,11 +47,6 @@
 + (id)supportedSettingsClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_handleAddedGroup:(id)arg1;
-- (void)_handleAddedSetting:(id)arg1;
-- (void)_handleRemovedGroup:(id)arg1;
-- (void)_handleRemovedSetting:(id)arg1;
-- (void)_registerNotificationHandlers;
 - (void)addGroup:(id)arg1;
 - (void)addGroup:(id)arg1 toGroup:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addSetting:(id)arg1;

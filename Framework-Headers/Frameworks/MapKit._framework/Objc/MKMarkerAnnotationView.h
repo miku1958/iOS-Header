@@ -21,9 +21,8 @@
     UIView *_contentMaskView;
     GEOFeatureStyleAttributes *_customStyleAttributes;
     MKWalletMerchantStylingInfo *_walletMerchantStylingInfo;
+    BOOL _isObserving;
     BOOL _animatesWhenAdded;
-    long long _titleVisibility;
-    long long _subtitleVisibility;
     UIColor *_markerTintColor;
     UIColor *_glyphTintColor;
     NSString *_glyphText;
@@ -43,15 +42,17 @@
 @property (strong, nonatomic) UIView *selectedContentView;
 @property (copy, nonatomic) UIImage *selectedGlyphImage; // @synthesize selectedGlyphImage=_selectedGlyphImage;
 @property (strong, nonatomic, getter=_styleAttributes, setter=_setStyleAttributes:) GEOFeatureStyleAttributes *styleAttributes; // @synthesize styleAttributes=_customStyleAttributes;
-@property (nonatomic) long long subtitleVisibility; // @synthesize subtitleVisibility=_subtitleVisibility;
-@property (nonatomic) long long titleVisibility; // @synthesize titleVisibility=_titleVisibility;
+@property (nonatomic) long long subtitleVisibility; // @dynamic subtitleVisibility;
+@property (nonatomic) long long titleVisibility; // @dynamic titleVisibility;
 @property (strong, nonatomic, getter=_walletMerchantStylingInfo, setter=_setWalletMerchantStylingInfo:) MKWalletMerchantStylingInfo *walletMerchantStylingInfo;
 
 + (float)_defaultDisplayPriority;
++ (Class)_mapkitLeafClass;
 - (void).cxx_destruct;
 - (void)_configureAnimated:(BOOL)arg1 fromState:(long long)arg2 toState:(long long)arg3;
 - (void)_configureViewsForState:(long long)arg1 usesCallout:(BOOL)arg2;
 - (long long)_currentMarkerState;
+- (struct UIEdgeInsets)_defaultCollisionAlignmentRectInsets;
 - (void)_didDragWithVelocity:(struct CGPoint)arg1;
 - (id)_effectiveGlyphImageForState:(long long)arg1 isSystemProvided:(BOOL *)arg2;
 - (id)_effectiveGlyphText;
@@ -61,7 +62,6 @@
 - (id)_effectiveMarkerTintColorForState:(long long)arg1;
 - (double)_effectiveShadowAlphaForState:(long long)arg1;
 - (id)_effectiveSubtitlesIsCollidable:(BOOL *)arg1;
-- (id)_effectiveTitleIsCollidable:(BOOL *)arg1;
 - (BOOL)_hasDataRequiringCallout;
 - (void)_setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setupNormalViewsIfNeeded;
@@ -73,7 +73,7 @@
 - (void)_updateContentForState:(long long)arg1 forceUpdate:(BOOL)arg2;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (BOOL)canShowCallout;
-- (void)configureCustomFeature:(id)arg1;
+- (void)dealloc;
 - (id)initWithAnnotation:(id)arg1 reuseIdentifier:(id)arg2;
 - (BOOL)isProvidingCustomFeature;
 - (void)layoutSublayersOfLayer:(id)arg1;
@@ -86,6 +86,7 @@
 - (void)setDragState:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (BOOL)updateCalloutViewIfNeededAnimated:(BOOL)arg1;
 
 @end
 

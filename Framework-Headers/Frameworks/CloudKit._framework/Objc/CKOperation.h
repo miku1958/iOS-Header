@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CKEventMetric, CKOperationConfiguration, CKOperationGroup, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationMetrics, CKPlaceholderOperation, CKTimeLogger, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class CKDiscretionaryOptions, CKEventMetric, CKOperationConfiguration, CKOperationGroup, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationMetrics, CKPlaceholderOperation, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity, OS_os_transaction, OS_voucher;
 
 @interface CKOperation : NSOperation
@@ -16,6 +16,7 @@
     NSObject<OS_os_activity> *_osActivity;
     BOOL _isOutstandingOperation;
     BOOL _usesBackgroundSession;
+    BOOL _runningDiscretionaryOperation;
     BOOL _isFinished;
     BOOL _isFinishingOnCallbackQueue;
     BOOL _clouddConnectionInterrupted;
@@ -28,17 +29,20 @@
     CKOperationGroup *_group;
     NSString *_operationID;
     NSObject<OS_dispatch_source> *_timeoutSource;
-    NSError *_cancelError;
     NSMutableArray *_savedRequestUUIDs;
     NSMutableDictionary *_savedResponseHTTPHeadersByRequestUUID;
     NSMutableDictionary *_savedW3CNavigationTimingByRequestUUID;
     CKEventMetric *_operationMetric;
+    struct _xpc_activity_eligibility_changed_handler_s *_xpcActivityEligibilityChangedHandler;
+    unsigned long long _duetPreClearedMode;
+    unsigned long long _discretionaryWhenBackgroundedState;
+    unsigned long long _systemScheduler;
+    NSError *_cancelError;
     CKPlaceholderOperation *_placeholderOperation;
     NSError *_error;
     NSString *_sectionID;
     NSString *_parentSectionID;
     id _context;
-    CKTimeLogger *_timeLogger;
     CKOperationMetrics *_metrics;
     NSString *_deviceIdentifier;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
@@ -54,6 +58,9 @@
 @property (copy, nonatomic) CKOperationConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) id context; // @synthesize context=_context;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (readonly, nonatomic) CKDiscretionaryOptions *discretionaryOptions;
+@property (nonatomic) unsigned long long discretionaryWhenBackgroundedState; // @synthesize discretionaryWhenBackgroundedState=_discretionaryWhenBackgroundedState;
+@property (nonatomic) unsigned long long duetPreClearedMode; // @synthesize duetPreClearedMode=_duetPreClearedMode;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSString *flowControlKey;
 @property (strong, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
@@ -75,16 +82,18 @@
 @property (readonly, nonatomic) NSArray *requestUUIDs;
 @property (readonly, nonatomic) CKOperationConfiguration *resolvedConfiguration; // @synthesize resolvedConfiguration=_resolvedConfiguration;
 @property (readonly, nonatomic) NSDictionary *responseHTTPHeadersByRequestUUID;
+@property (nonatomic) BOOL runningDiscretionaryOperation; // @synthesize runningDiscretionaryOperation=_runningDiscretionaryOperation;
 @property (strong, nonatomic) NSMutableArray *savedRequestUUIDs; // @synthesize savedRequestUUIDs=_savedRequestUUIDs;
 @property (strong, nonatomic) NSMutableDictionary *savedResponseHTTPHeadersByRequestUUID; // @synthesize savedResponseHTTPHeadersByRequestUUID=_savedResponseHTTPHeadersByRequestUUID;
 @property (strong, nonatomic) NSMutableDictionary *savedW3CNavigationTimingByRequestUUID; // @synthesize savedW3CNavigationTimingByRequestUUID=_savedW3CNavigationTimingByRequestUUID;
 @property (strong, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
-@property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
+@property (nonatomic) unsigned long long systemScheduler; // @synthesize systemScheduler=_systemScheduler;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timeoutSource; // @synthesize timeoutSource=_timeoutSource;
 @property (nonatomic) BOOL usesBackgroundSession; // @synthesize usesBackgroundSession=_usesBackgroundSession;
 @property (readonly, nonatomic) NSDictionary *w3cNavigationTimingByRequestUUID;
+@property (nonatomic) struct _xpc_activity_eligibility_changed_handler_s *xpcActivityEligibilityChangedHandler; // @synthesize xpcActivityEligibilityChangedHandler=_xpcActivityEligibilityChangedHandler;
 
 - (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
@@ -107,6 +116,7 @@
 - (id)activityCreate;
 - (BOOL)allowsCellularAccess;
 - (void)cancel;
+- (void)cancelWithError:(id)arg1;
 - (void)cancelWithUnderlyingError:(id)arg1;
 - (id)container;
 - (id)daemon;

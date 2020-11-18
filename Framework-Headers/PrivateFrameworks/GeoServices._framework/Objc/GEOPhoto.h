@@ -8,29 +8,45 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOPhoto : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_photoInfos;
-    int _photoType;
     NSString *_uid;
-    CDStruct_86c1f53f _has;
+    int _photoType;
+    struct {
+        unsigned int has_photoType:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_photoInfos:1;
+        unsigned int read_uid:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_photoInfos:1;
+        unsigned int wrote_uid:1;
+        unsigned int wrote_photoType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasPhotoType;
 @property (readonly, nonatomic) BOOL hasUid;
-@property (strong, nonatomic) NSMutableArray *photoInfos; // @synthesize photoInfos=_photoInfos;
-@property (nonatomic) int photoType; // @synthesize photoType=_photoType;
-@property (strong, nonatomic) NSString *uid; // @synthesize uid=_uid;
+@property (strong, nonatomic) NSMutableArray *photoInfos;
+@property (nonatomic) int photoType;
+@property (strong, nonatomic) NSString *uid;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)photoInfoType;
 - (void).cxx_destruct;
 - (int)StringAsPhotoType:(id)arg1;
+- (void)_addNoFlagsPhotoInfo:(id)arg1;
+- (void)_readPhotoInfos;
+- (void)_readUid;
 - (void)addPhotoInfo:(id)arg1;
 - (void)clearPhotoInfos;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +58,7 @@
 - (id)photoInfoAtIndex:(unsigned long long)arg1;
 - (unsigned long long)photoInfosCount;
 - (id)photoTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

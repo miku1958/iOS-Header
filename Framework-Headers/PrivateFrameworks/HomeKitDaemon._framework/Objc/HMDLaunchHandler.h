@@ -6,22 +6,29 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSMutableSet, NSObject;
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
+@class NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDLaunchHandler : HMFObject
+@interface HMDLaunchHandler : HMFObject <HMFLogging>
 {
     NSObject<OS_dispatch_queue> *_handlerQueue;
     NSMutableSet *_registeredRelaunchClients;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableSet *registeredRelaunchClients; // @synthesize registeredRelaunchClients=_registeredRelaunchClients;
+@property (readonly) Class superclass;
 
 + (BOOL)_fileExistsAtPath:(id)arg1;
 + (BOOL)_removeFileAtPath:(id)arg1 error:(id *)arg2;
 + (int)_setJetsamPriorityUsingCommand:(int)arg1;
 + (BOOL)_writeDictionary:(id)arg1 toFileURL:(id)arg2 error:(id *)arg3;
++ (id)logCategory;
 + (id)relaunchPlistPath;
 + (id)sharedHandler;
 - (void).cxx_destruct;

@@ -22,8 +22,8 @@
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 
 + (id)lifetimeDetailsForEvent:(id)arg1 relativeToDate:(id)arg2;
-+ (id)lifetimeDetailsForLocationOfInterest:(id)arg1 placemark:(id)arg2;
 + (id)lifetimeDetailsForOneHour;
++ (id)lifetimeDetailsForPlaceInference:(id)arg1;
 + (id)lifetimeDetailsUntilEvening;
 + (id)lifetimeDetailsUntilMorning;
 - (void).cxx_destruct;

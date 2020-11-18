@@ -6,7 +6,7 @@
 
 #import <ARKit/ARImageBasedTechnique.h>
 
-@class ARWorldTrackingErrorData, ARWorldTrackingOptions, ARWorldTrackingPoseData, ARWorldTrackingReferenceAnchorData, NSDictionary, NSHashTable, NSObject;
+@class ARTrackedRaycastPostProcessor, ARWorldTrackingErrorData, ARWorldTrackingOptions, ARWorldTrackingPoseData, NSHashTable, NSMutableSet, NSObject;
 @protocol OS_dispatch_semaphore;
 
 @interface ARWorldTrackingTechnique : ARImageBasedTechnique
@@ -17,33 +17,41 @@
     long long _vioHandleState;
     NSObject<OS_dispatch_semaphore> *_vioHandleStateSemaphore;
     NSObject<OS_dispatch_semaphore> *_vioObjectDetectionSemaphore;
-    ARWorldTrackingReferenceAnchorData *_anchorData;
     ARWorldTrackingErrorData *_errorData;
     ARWorldTrackingPoseData *_cachedPoseData;
+    double _lastPoseMetaDataTimestamp;
     long long _reinitializationAttempts;
     long long _reinitializationAttemptsAtInitialization;
     double _lastRelocalizationTimestamp;
     double _lastQualityKeyframeTimestamp;
-    long long _previousKeyframeCount;
+    int _previousKeyframeCount;
     double _lastPoseTrackingMapTimestamp;
     double _lastMajorRelocalizationTimestamp;
-    double _lastPoseMajorRelocalizationTimestamp;
+    double _originTimestamp;
     BOOL _relocalizingAfterSensorDataDrop;
-    BOOL _didRelocalize;
     BOOL _didClearMap;
+    BOOL _hasQualityKeyframe;
     NSObject<OS_dispatch_semaphore> *_resultSemaphore;
     double _minVergenceAngleCosine;
     double _resultLatency;
     BOOL _allowPoseGraphUpdates;
-    NSDictionary *_objectDetectionOptions;
+    NSMutableSet *_anchorsReceived;
+    NSMutableSet *_participantAnchors;
+    BOOL _participantAnchorsEnabled;
     ARWorldTrackingOptions *_mutableOptions;
+    unsigned long long _vioSessionIdentifier;
+    ARTrackedRaycastPostProcessor *_trackedRaycastPostProcessor;
+    CDStruct_14d5dc5e _referenceOriginTransform;
 }
 
 @property (strong) ARWorldTrackingOptions *mutableOptions; // @synthesize mutableOptions=_mutableOptions;
 @property (readonly, copy, nonatomic) ARWorldTrackingOptions *options;
+@property CDStruct_14d5dc5e referenceOriginTransform; // @synthesize referenceOriginTransform=_referenceOriginTransform;
+@property (strong) ARTrackedRaycastPostProcessor *trackedRaycastPostProcessor; // @synthesize trackedRaycastPostProcessor=_trackedRaycastPostProcessor;
+@property (readonly) unsigned long long vioSessionIdentifier; // @synthesize vioSessionIdentifier=_vioSessionIdentifier;
 
 + (BOOL)isSupported;
-+ (BOOL)supportsVideoResolution:(struct CGSize)arg1;
++ (BOOL)supportsVideoResolution:(struct CGSize)arg1 forDeviceType:(id)arg2;
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
 - (void)addReferenceAnchors:(id)arg1;
@@ -52,13 +60,18 @@
 - (id)getObservers;
 - (id)init;
 - (id)initWithOptions:(id)arg1;
+- (void)invalidateAllRaycasts;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadSurfaceData:(id)arg1;
+- (void)pushCollaborationData:(id)arg1;
+- (id)raycast:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)removeReferenceAnchors:(id)arg1;
-- (id)serializeMapData;
+- (id)serializeMapData:(BOOL)arg1;
 - (id)serializeSurfaceData;
-- (BOOL)setupObjectDetection:(id)arg1;
+- (void)stopAllRaycasts;
+- (void)stopRaycast:(id)arg1;
+- (id)trackedRaycast:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
 - (long long)vioHandleState;
 
 @end

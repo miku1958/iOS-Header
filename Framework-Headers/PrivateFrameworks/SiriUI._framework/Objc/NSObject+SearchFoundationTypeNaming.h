@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (SearchFoundationTypeNaming)
+- (void)_siriui_applyUserInfoDictionary:(id)arg1;
 - (id)_siriui_protobufTypeName;
 @end
 

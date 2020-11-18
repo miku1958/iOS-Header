@@ -30,7 +30,6 @@
 + (id)nameObjectSeparator;
 + (id)succinctDescriptionForObject:(id)arg1;
 - (void).cxx_destruct;
-- (id)_activeComponentString;
 - (void)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4;
 - (void)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4 objectTransformer:(CDUnknownBlockType)arg5;
 - (void)appendArraySection:(id)arg1 withName:(id)arg2 skipIfEmpty:(BOOL)arg3;
@@ -56,6 +55,7 @@
 - (id)appendKeys:(id)arg1;
 - (id)appendObject:(id)arg1 withName:(id)arg2;
 - (id)appendObject:(id)arg1 withName:(id)arg2 skipIfNil:(BOOL)arg3;
+- (id)appendObjectWithName:(id)arg1 formatBlock:(CDUnknownBlockType)arg2;
 - (id)appendObjectsAndNames:(id)arg1;
 - (id)appendObjectsAndNames:(id)arg1 args:(struct __va_list_tag [1])arg2;
 - (id)appendPoint:(struct CGPoint)arg1 withName:(id)arg2;

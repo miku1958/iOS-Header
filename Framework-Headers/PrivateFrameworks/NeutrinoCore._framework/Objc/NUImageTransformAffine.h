@@ -22,6 +22,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToGeometryTransformAffine:(id)arg1;
 - (void)nu_updateDigest:(id)arg1;
+- (id)transformByRotateZ:(double)arg1;
+- (id)transformByScaleX:(double)arg1 scaleY:(double)arg2;
+- (id)transformByTranslateX:(double)arg1 translateY:(double)arg2;
 - (struct CGPoint)transformPoint:(struct CGPoint)arg1;
 
 @end

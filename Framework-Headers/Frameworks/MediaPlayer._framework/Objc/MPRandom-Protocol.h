@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol MPRandom
+#import <MediaPlayer/NSSecureCoding-Protocol.h>
+
+@protocol MPRandom <NSSecureCoding>
 - (unsigned long long)nextIntWithUpperBound:(unsigned long long)arg1;
 @end
 

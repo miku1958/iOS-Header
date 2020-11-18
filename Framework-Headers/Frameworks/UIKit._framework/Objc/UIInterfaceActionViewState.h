@@ -8,7 +8,7 @@
 
 #import <UIKitCore/NSCopying-Protocol.h>
 
-@class UIColor, UIInterfaceAction;
+@class UIInterfaceAction;
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionViewState : UIInterfaceActionVisualStyleViewState <NSCopying>
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     UIInterfaceAction *_action;
     id _actionViewStateContext;
     unsigned long long _visualCornerPosition;
-    UIColor *_legacyPresentationTintColor;
 }
 
 @property (readonly, nonatomic) UIInterfaceAction *action; // @synthesize action=_action;
@@ -29,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isHighlighted; // @synthesize isHighlighted=_isHighlighted;
 @property (readonly, nonatomic) BOOL isPreferred; // @synthesize isPreferred=_isPreferred;
 @property (readonly, nonatomic) BOOL isPressed; // @synthesize isPressed=_isPressed;
-@property (readonly, nonatomic) UIColor *legacyPresentationTintColor; // @synthesize legacyPresentationTintColor=_legacyPresentationTintColor;
 @property (readonly, nonatomic) unsigned long long visualCornerPosition; // @synthesize visualCornerPosition=_visualCornerPosition;
 
 + (id)_nullViewStateForActionType:(long long)arg1;
@@ -43,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (void)_collectStateFromAction:(id)arg1;
 - (void)_collectStateFromActionRepresentationView:(id)arg1;
 - (void)_collectStateFromActionViewState:(id)arg1;
-- (id)_legacyPresentationTintColorForActionRepresentationDescendantView:(id)arg1;
 - (BOOL)_stateEqualToActionViewState:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithPropertiesFromActionRepresentationView:(id)arg1 groupView:(id)arg2 action:(id)arg3;

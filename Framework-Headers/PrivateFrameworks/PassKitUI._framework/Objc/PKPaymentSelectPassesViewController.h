@@ -36,8 +36,6 @@
 - (id)initWithPaymentPasses:(id)arg1 context:(long long)arg2 delegate:(id)arg3 peerPaymentAccount:(id)arg4;
 - (id)initWithStyle:(long long)arg1 context:(long long)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)setHeaderViewTitle:(id)arg1 subtitle:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

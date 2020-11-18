@@ -35,6 +35,7 @@
 @property (nonatomic) BOOL isDisplayingAd; // @synthesize isDisplayingAd=_isDisplayingAd;
 @property (nonatomic) BOOL isOnScreen; // @synthesize isOnScreen=_isOnScreen;
 @property (readonly, nonatomic) BOOL pageable;
+@property (readonly, nonatomic, getter=isSelectable) BOOL selectable;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long tileInfoType;
 @property (readonly, nonatomic) NSArray *underlyingFeedElements;

@@ -17,16 +17,19 @@
     NSString *_plmn;
     NSString *_imsi;
     NSString *_phoneNumber;
+    NSString *_phoneNumberOnSIM;
 }
 
 @property (strong, nonatomic) NSString *imsi; // @synthesize imsi=_imsi;
 @property (nonatomic) BOOL isReady; // @synthesize isReady=_isReady;
 @property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (strong, nonatomic) NSString *phoneNumberOnSIM; // @synthesize phoneNumberOnSIM=_phoneNumberOnSIM;
 @property (strong, nonatomic) NSString *plmn; // @synthesize plmn=_plmn;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

@@ -56,8 +56,11 @@
 + (id)subtract;
 + (id)vividLight;
 - (id)applyWithForeground:(id)arg1 background:(id)arg2;
+- (id)applyWithForeground:(id)arg1 background:(id)arg2 colorSpace:(struct CGColorSpace *)arg3;
+- (BOOL)clearForegroundPreservesBackground;
 - (id)initWithString:(id)arg1;
 - (id)initWithString:(id)arg1 extentType:(int)arg2;
+- (void)setClearForegroundPreservesBackground:(BOOL)arg1;
 
 @end
 

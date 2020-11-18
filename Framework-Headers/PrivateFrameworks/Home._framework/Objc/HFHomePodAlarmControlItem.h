@@ -6,7 +6,7 @@
 
 #import <Home/HFControlItem.h>
 
-@class HFMediaProfileContainerSettingsValueManager;
+@class HFHomeKitSettingsValueManager;
 @protocol HFMediaProfileContainer;
 
 @interface HFHomePodAlarmControlItem : HFControlItem
@@ -15,7 +15,7 @@
 }
 
 @property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
-@property (readonly, nonatomic) HFMediaProfileContainerSettingsValueManager *valueManager;
+@property (readonly, nonatomic) HFHomeKitSettingsValueManager *valueManager;
 
 + (Class)valueClass;
 - (void).cxx_destruct;

@@ -29,6 +29,7 @@
 - (oneway void)setRemoteVideoPresentationStateForCallWithUniqueProxyIdentifier:(NSString *)arg1 presentationState:(int)arg2;
 - (oneway void)setTTYType:(int)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
 - (oneway void)setUplinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(NSString *)arg2;
+- (oneway void)shouldSuppressInCallStatusBar:(BOOL)arg1;
 - (oneway void)swapCalls;
 - (oneway void)ungroupCallWithUniqueProxyIdentifier:(NSString *)arg1;
 - (oneway void)unholdCallWithUniqueProxyIdentifier:(NSString *)arg1;

@@ -6,43 +6,41 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUI/NSCacheDelegate-Protocol.h>
-
-@class NSCache, NSMutableDictionary, NSString, PXPlacesSearchProvider;
+@class NSCache, NSMutableDictionary, NSTimer, PXPlacesSearchProvider;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchHomeThumbnailManager : NSObject <NSCacheDelegate>
+@interface PUSearchHomeThumbnailManager : NSObject
 {
     NSCache *_cache;
     NSMutableDictionary *_metadataPlist;
     NSObject<OS_dispatch_queue> *_metadataQueue;
     PXPlacesSearchProvider *_placesProvider;
+    NSTimer *_diskTimer;
+    NSMutableDictionary *_thumbnailsToWrite;
 }
 
 @property (strong, nonatomic) NSCache *cache; // @synthesize cache=_cache;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSTimer *diskTimer; // @synthesize diskTimer=_diskTimer;
 @property (strong, nonatomic) NSMutableDictionary *metadataPlist; // @synthesize metadataPlist=_metadataPlist;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metadataQueue; // @synthesize metadataQueue=_metadataQueue;
 @property (strong, nonatomic) PXPlacesSearchProvider *placesProvider; // @synthesize placesProvider=_placesProvider;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) NSMutableDictionary *thumbnailsToWrite; // @synthesize thumbnailsToWrite=_thumbnailsToWrite;
 
 + (id)_filePathForHash:(id)arg1;
 + (id)_filePathForMetadataPlist;
 + (id)_thumbnailFilePath;
 - (void).cxx_destruct;
 - (void)_createThumbnailDirectoryIfNeeded;
-- (void)_fetchImageForLocation:(id)arg1 size:(struct CGSize)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_hashForKeyString:(id)arg1;
+- (void)_fetchImageForLocation:(id)arg1 size:(struct CGSize)arg2 traitCollection:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_hashStringForKey:(id)arg1 size:(struct CGSize)arg2 interfaceStyle:(long long)arg3 displayScale:(double)arg4;
 - (id)_imageForHomeZeroKeywordWithMapImage:(id)arg1;
+- (void)_setInMemoryAndPersistToDiskThumbnail:(id)arg1 forHashString:(id)arg2;
+- (void)_setInMemoryThumbnail:(id)arg1 forHashString:(id)arg2;
 - (void)_setMetadataDate:(id)arg1 forKey:(id)arg2;
-- (void)_setThumbnail:(id)arg1 forKey:(id)arg2;
 - (void)_writeMetadataPlistToDisk;
-- (void)cache:(id)arg1 willEvictObject:(id)arg2;
 - (id)init;
-- (void)thumbnailForKey:(id)arg1 type:(long long)arg2 withSize:(struct CGSize)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)thumbnailForKey:(id)arg1 type:(long long)arg2 traitCollection:(id)arg3 withSize:(struct CGSize)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

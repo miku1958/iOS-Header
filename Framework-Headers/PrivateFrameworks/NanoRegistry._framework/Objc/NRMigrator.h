@@ -31,6 +31,7 @@
 - (id)compressMigrationProtobuf:(id)arg1;
 - (id)devicesFromMigrationConsentRequestData:(id)arg1;
 - (void)enterPreMigrationMode;
+- (void)isPhoneReadyToMigrateDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)lastMigrationRequestPhoneName;
 - (id)migrationConsentRequestData;
 - (id)packMigrationProtobufs:(id)arg1;

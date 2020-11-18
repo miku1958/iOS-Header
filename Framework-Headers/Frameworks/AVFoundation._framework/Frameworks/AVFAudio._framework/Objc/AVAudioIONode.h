@@ -12,14 +12,16 @@
 
 @property (readonly, nonatomic) struct OpaqueAudioComponentInstance *audioUnit;
 @property (readonly, nonatomic) double presentationLatency;
+@property (readonly, nonatomic, getter=isVoiceProcessingEnabled) BOOL voiceProcessingEnabled;
 
 - (void)didAttachToEngine:(id)arg1;
-- (void)didDetachFromEngine:(id)arg1;
+- (void)didDetachFromEngine:(id)arg1 error:(id *)arg2;
 - (BOOL)enableManualRenderingMode:(long long)arg1 isInput:(BOOL)arg2;
-- (BOOL)enableRealtimeRenderingModeWithIOUnit:(struct AVAudioIOUnit *)arg1 isInput:(BOOL)arg2;
+- (BOOL)enableRealtimeRenderingModeWithIOUnit:(struct AVAudioIOUnit *)arg1 isInput:(BOOL)arg2 forceIOUnitReset:(BOOL)arg3;
 - (id)initWithIOUnit:(struct AVAudioIOUnit *)arg1 isInput:(BOOL)arg2;
 - (BOOL)isInManualRenderingMode;
 - (long long)manualRenderingMode;
+- (BOOL)setVoiceProcessingEnabled:(BOOL)arg1 error:(id *)arg2;
 
 @end
 

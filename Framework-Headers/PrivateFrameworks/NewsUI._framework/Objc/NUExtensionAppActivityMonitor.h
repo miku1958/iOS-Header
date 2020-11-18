@@ -6,17 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/FCAppActivityMonitor-Protocol.h>
-#import <NewsUI/SXAppStateMonitor-Protocol.h>
+#import <NewsUI/NUAppActivityMonitor-Protocol.h>
 
 @class NSHashTable, NSMutableSet, NSNotificationCenter, NSString;
 
-@interface NUExtensionAppActivityMonitor : NSObject <FCAppActivityMonitor, SXAppStateMonitor>
+@interface NUExtensionAppActivityMonitor : NSObject <NUAppActivityMonitor>
 {
     NSNotificationCenter *_notificationCenter;
     NSHashTable *_observers;
     NSMutableSet *_foregroundObserverBlocks;
     NSMutableSet *_backgroundObserverBlocks;
+    NSMutableSet *_windowForegroundObserverBlocks;
+    NSMutableSet *_windowBackgroundObserverBlocks;
 }
 
 @property (readonly, nonatomic) NSMutableSet *backgroundObserverBlocks; // @synthesize backgroundObserverBlocks=_backgroundObserverBlocks;
@@ -27,6 +28,8 @@
 @property (readonly, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSMutableSet *windowBackgroundObserverBlocks; // @synthesize windowBackgroundObserverBlocks=_windowBackgroundObserverBlocks;
+@property (readonly, nonatomic) NSMutableSet *windowForegroundObserverBlocks; // @synthesize windowForegroundObserverBlocks=_windowForegroundObserverBlocks;
 
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
@@ -37,6 +40,8 @@
 - (void)performOnApplicationDidBecomeActive:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationDidEnterBackground:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationWillEnterForeground:(CDUnknownBlockType)arg1;
+- (void)performOnApplicationWindowDidBecomeBackground:(CDUnknownBlockType)arg1;
+- (void)performOnApplicationWindowDidBecomeForeground:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 
 @end

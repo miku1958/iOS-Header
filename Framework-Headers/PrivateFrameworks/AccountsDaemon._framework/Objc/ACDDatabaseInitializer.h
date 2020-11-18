@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class ACDDatabase, NSArray;
+@class ACDDatabaseConnection, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface ACDDatabaseInitializer : NSObject
 {
-    ACDDatabase *_database;
+    ACDDatabaseConnection *_databaseConnection;
     NSArray *_dataclasses;
     NSArray *_accountTypes;
     NSArray *_accounts;
     NSArray *_accessKeys;
 }
 
++ (id)new;
 - (void).cxx_destruct;
 - (id)_accessKeyWithName:(id)arg1;
 - (id)_accessKeys;
@@ -125,6 +127,7 @@
 - (void)_removeMessagesFromAOLSupportedDataclasses;
 - (void)_removeMessagesFromGoogleSupportedDataclasses;
 - (void)_removeMessengerFromYahooSupportedDataclasses;
+- (void)_removeRedundantDataclasses;
 - (id)_resultsForEntityNamed:(id)arg1;
 - (void)_setCloudKitAllowsMultipleAccounts;
 - (void)_setCloudKitCredentialType;
@@ -148,9 +151,9 @@
 - (void)_updateVimeoCredentialTypeToOAuth;
 - (void)_updateWeiboAccountTypeIfNecessary;
 - (void)_upgradeLinkedInAccountType;
-- (id)initWithDatabase:(id)arg1;
-- (void)insertAllDefaultContent;
-- (void)updateDefaultContent;
+- (id)init;
+- (id)initWithDatabaseConnection:(id)arg1;
+- (BOOL)updateDefaultContentIfNecessary:(id *)arg1;
 
 @end
 

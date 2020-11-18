@@ -14,6 +14,8 @@
 
 @property (copy, nonatomic) NSString *episodePlaybackOrder;
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
+@property (copy, nonatomic) NSString *requesterSharedUserId;
+@property (copy, nonatomic) NSString *sharedUserIdFromPlayableITunesAccount;
 @property (nonatomic) BOOL startPlaying;
 
 + (id)playPodcasts;

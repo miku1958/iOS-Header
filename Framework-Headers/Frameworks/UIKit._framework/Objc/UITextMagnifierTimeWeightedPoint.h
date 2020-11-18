@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
 
 - (void)addPoint:(struct CGPoint)arg1;
 - (void)clearHistory;
+- (struct CGPoint)diffFromLastPoint;
 - (struct CGSize)displacementInInterval:(double)arg1;
 - (struct CGSize)displacementInInterval:(double)arg1 priorTo:(double)arg2;
 - (float)distanceCoveredInInterval:(double)arg1;
 - (float)distanceCoveredInInterval:(double)arg1 priorTo:(double)arg2;
 - (BOOL)historyCovers:(double)arg1;
+- (BOOL)isPlacedCarefully;
 
 @end
 

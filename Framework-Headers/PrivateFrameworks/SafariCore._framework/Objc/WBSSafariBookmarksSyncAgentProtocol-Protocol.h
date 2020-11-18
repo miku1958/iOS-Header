@@ -14,12 +14,13 @@
 - (void)deleteCloudTabCloseRequestsWithUUIDStrings:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)deleteDevicesWithUUIDStrings:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)fetchRemoteMigrationStateWithCompletionHandler:(void (^)(long long, NSString *, NSError *))arg1;
-- (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(void (^)(NSArray *, NSArray *))arg1;
+- (void)fetchSyncedCloudTabDevicesAndCloseRequestsWithCompletionHandler:(void (^)(NSArray *, NSArray *, NSError *))arg1;
 - (void)fetchUserIdentityWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
+- (void)getCloudTabDevicesWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)observeRemoteMigrationStateForSecondaryMigration;
 - (void)registerForPushNotificationsIfNeeded;
 - (void)saveCloudTabCloseRequestWithDictionaryRepresentation:(NSDictionary *)arg1 closeRequestUUIDString:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)saveTabsForCurrentDeviceWithDictionaryRepresentation:(NSDictionary *)arg1 deviceUUIDString:(NSString *)arg2;
+- (void)saveTabsForCurrentDeviceWithDictionaryRepresentation:(NSDictionary *)arg1 deviceUUIDString:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)setUsesOpportunisticPushTopic:(BOOL)arg1;
 - (void)userAccountDidChange:(long long)arg1;
 - (void)userDidUpdateBookmarkDatabase;

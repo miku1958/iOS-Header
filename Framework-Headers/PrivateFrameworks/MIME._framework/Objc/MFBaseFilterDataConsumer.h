@@ -25,8 +25,8 @@
 
 + (id)filterWithConsumer:(id)arg1;
 + (id)filterWithConsumers:(id)arg1;
+- (void).cxx_destruct;
 - (long long)appendData:(id)arg1;
-- (void)dealloc;
 - (void)done;
 - (id)initWithConsumer:(id)arg1;
 - (id)initWithConsumers:(id)arg1;

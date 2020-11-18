@@ -6,30 +6,43 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FPStitchingSession : NSObject
 {
+    NSMutableDictionary *_stitchedFields;
     NSMutableDictionary *_originalItems;
     NSMutableDictionary *_stitchedItems;
     NSMutableDictionary *_stitchedPlaceholders;
     NSMutableDictionary *_deletedItems;
     BOOL _started;
+    BOOL _finished;
+    CDUnknownBlockType _placeholdersCreationBlock;
 }
 
+@property (readonly, nonatomic) BOOL isActive;
+@property (readonly, nonatomic) NSArray *placeholderItems;
+@property (copy, nonatomic) CDUnknownBlockType placeholdersCreationBlock; // @synthesize placeholdersCreationBlock=_placeholdersCreationBlock;
+@property (readonly, nonatomic) NSDictionary *stitchedFieldsAndItemsByItemIDs;
+
 - (void).cxx_destruct;
-- (void)attachProgress:(id)arg1 toPlaceholder:(id)arg2;
-- (id)createPlaceholderWithCopyOfExistingItem:(id)arg1 lastUsageUpdatePolicy:(unsigned long long)arg2 underParent:(id)arg3 inProvider:(id)arg4;
-- (id)createPlaceholderWithName:(id)arg1 isFolder:(BOOL)arg2 contentAccessDate:(id)arg3 underParent:(id)arg4 inProvider:(id)arg5;
+- (void)associateItem:(id)arg1 withPlaceholderID:(id)arg2;
+- (id)createArchivePlaceholderForItem:(id)arg1 underParent:(id)arg2 inProviderDomainID:(id)arg3;
+- (id)createGenericArchivePlaceholderUnderParent:(id)arg1 inProviderDomainID:(id)arg2;
+- (id)createPlaceholderWithCopyOfExistingItem:(id)arg1 lastUsageUpdatePolicy:(unsigned long long)arg2 underParent:(id)arg3 inProviderDomainID:(id)arg4;
+- (id)createPlaceholderWithName:(id)arg1 isFolder:(BOOL)arg2 contentAccessDate:(id)arg3 underParent:(id)arg4 inProviderDomainID:(id)arg5;
+- (id)createPlaceholderWithName:(id)arg1 typeIdentifier:(id)arg2 contentAccessDate:(id)arg3 underParent:(id)arg4 inProviderDomainID:(id)arg5;
+- (void)dealloc;
 - (void)deleteItems:(id)arg1;
+- (void)finish;
+- (void)finishWithItem:(id)arg1 error:(id)arg2;
+- (void)finishWithItems:(id)arg1 error:(id)arg2;
 - (void)flush;
 - (id)init;
-- (void)operationCompletedWithItem:(id)arg1 error:(id)arg2;
-- (void)operationCompletedWithItems:(id)arg1 error:(id)arg2;
-- (void)replacePlaceholderWith:(id)arg1;
+- (id)itemWithPlaceholderID:(id)arg1;
+- (void)replacePlaceholderWithID:(id)arg1 withItem:(id)arg2;
 - (void)start;
-- (void)stop;
 - (void)transformItems:(id)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end

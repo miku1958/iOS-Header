@@ -13,7 +13,7 @@
     NSCache *_imageCache;
 }
 
-@property (strong) NSCache *imageCache; // @synthesize imageCache=_imageCache;
+@property (strong, nonatomic) NSCache *imageCache; // @synthesize imageCache=_imageCache;
 
 + (id)sharedCache;
 - (void).cxx_destruct;

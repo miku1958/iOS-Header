@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, PLManagedAlbum, UIViewController;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, PLManagedAlbum, PLPhotoLibrary, UIViewController;
 @protocol PUVideoTrimQueueControllerDelegate;
 
 @interface PUVideoTrimQueueController : NSObject
@@ -23,9 +23,11 @@
         unsigned int hasDidFinish:1;
         unsigned int hasDidCancel:1;
     } _delegateFlags;
+    PLPhotoLibrary *_photoLibrary;
     id<PUVideoTrimQueueControllerDelegate> _delegate;
     NSArray *_videosSources;
     NSDictionary *_videosSourcesSharingInfo;
+    NSDictionary *_customExportsInfo;
     PLManagedAlbum *_album;
     NSString *_albumName;
     NSArray *_recipients;
@@ -35,6 +37,7 @@
 @property (readonly, nonatomic) PLManagedAlbum *album; // @synthesize album=_album;
 @property (strong, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
 @property (strong, nonatomic) NSString *commentText; // @synthesize commentText=_commentText;
+@property (readonly, nonatomic) NSDictionary *customExportsInfo; // @synthesize customExportsInfo=_customExportsInfo;
 @property (weak, nonatomic) id<PUVideoTrimQueueControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (readonly, nonatomic) NSDictionary *trimmedVideoInfo; // @synthesize trimmedVideoInfo=_trimmedVideoInfo;
@@ -42,6 +45,9 @@
 @property (readonly, nonatomic) NSDictionary *videosSourcesSharingInfo; // @synthesize videosSourcesSharingInfo=_videosSourcesSharingInfo;
 
 + (BOOL)areVideoSourcesStreamShareSources:(id)arg1;
++ (double)durationFromVideoAtURL:(id)arg1;
++ (id)photoLibraryFromSources:(id)arg1 album:(id)arg2;
++ (id)videoInfoKeyForSource:(id)arg1;
 - (void).cxx_destruct;
 - (void)_dequeueTrimmingControl;
 - (void)_sendDidFinish;
@@ -49,10 +55,11 @@
 - (void)_showTrimViewControllerForSource:(id)arg1;
 - (void)_trimVideoSource:(id)arg1;
 - (id)_videoTooLongAlertController;
+- (id)alternateSourceToUseIfNeededFromSource:(id)arg1;
 - (void)cleanupResources;
 - (void)editVideoViewController:(id)arg1 didTrimVideoWithOptions:(id)arg2;
 - (void)editVideoViewControllerDidCancel:(id)arg1;
-- (id)initWithViewController:(id)arg1 videoSources:(id)arg2 videoSourcesSharingInfo:(id)arg3 album:(id)arg4;
+- (id)initWithViewController:(id)arg1 photoLibrary:(id)arg2 videoSources:(id)arg3 videoSourcesSharingInfo:(id)arg4 customExportsInfo:(id)arg5 album:(id)arg6;
 - (void)start;
 
 @end

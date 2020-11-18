@@ -8,29 +8,47 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDVendorIDLink : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _reservationTypes;
     NSString *_externalItemId;
     NSString *_vendorId;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_reservationTypes:1;
+        unsigned int read_externalItemId:1;
+        unsigned int read_vendorId:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_reservationTypes:1;
+        unsigned int wrote_externalItemId:1;
+        unsigned int wrote_vendorId:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *externalItemId; // @synthesize externalItemId=_externalItemId;
+@property (strong, nonatomic) NSString *externalItemId;
 @property (readonly, nonatomic) BOOL hasExternalItemId;
 @property (readonly, nonatomic) BOOL hasVendorId;
 @property (readonly, nonatomic) int *reservationTypes;
 @property (readonly, nonatomic) unsigned long long reservationTypesCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *vendorId; // @synthesize vendorId=_vendorId;
+@property (strong, nonatomic) NSString *vendorId;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsReservationTypes:(id)arg1;
+- (void)_addNoFlagsReservationType:(int)arg1;
+- (void)_readExternalItemId;
+- (void)_readReservationTypes;
+- (void)_readVendorId;
 - (void)addReservationType:(int)arg1;
 - (void)clearReservationTypes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -39,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)reservationTypeAtIndex:(unsigned long long)arg1;
 - (id)reservationTypesAsString:(int)arg1;

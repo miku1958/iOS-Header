@@ -7,6 +7,7 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (BSTimeUtilities)
+- (id)bs_dateByAddingDays:(long long)arg1;
 - (BOOL)isAfterDate:(id)arg1;
 - (BOOL)isBeforeDate:(id)arg1;
 @end

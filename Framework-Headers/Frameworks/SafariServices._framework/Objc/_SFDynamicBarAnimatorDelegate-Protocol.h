@@ -9,7 +9,7 @@
 @class _SFDynamicBarAnimator;
 
 @protocol _SFDynamicBarAnimatorDelegate <NSObject>
-- (BOOL)dynamicBarAnimator:(_SFDynamicBarAnimator *)arg1 canHideBarsByDraggingWithOffset:(double)arg2;
+- (BOOL)dynamicBarAnimator:(_SFDynamicBarAnimator *)arg1 canTransitionToState:(long long)arg2 byDraggingWithOffset:(double)arg3;
 - (double)dynamicBarAnimator:(_SFDynamicBarAnimator *)arg1 minimumTopBarHeightForOffset:(double)arg2;
 - (void)dynamicBarAnimatorOutputsDidChange:(_SFDynamicBarAnimator *)arg1;
 - (void)dynamicBarAnimatorWillEnterSteadyState:(_SFDynamicBarAnimator *)arg1;

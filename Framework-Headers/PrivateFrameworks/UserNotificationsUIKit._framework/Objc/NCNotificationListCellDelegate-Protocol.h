@@ -19,5 +19,9 @@
 - (void)notificationListCellRequestsPresentingManagementView:(NCNotificationListCell *)arg1 withPresentingView:(UIView *)arg2 completion:(void (^)(BOOL))arg3;
 - (NCNotificationSectionSettings *)notificationListCellRequestsSectionSettings:(NCNotificationListCell *)arg1 sectionIdentifier:(NSString *)arg2;
 - (void)willTearDownNotificationListCell:(NCNotificationListCell *)arg1;
+
+@optional
+- (void)notificationListCell:(NCNotificationListCell *)arg1 didMoveToNewXPosition:(double)arg2;
+- (BOOL)notificationListCellShouldPerformClipping:(NCNotificationListCell *)arg1;
 @end
 

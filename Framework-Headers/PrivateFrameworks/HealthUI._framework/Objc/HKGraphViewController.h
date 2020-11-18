@@ -37,6 +37,7 @@
 - (void)graphView:(id)arg1 didUpdateVisibleValueRange:(id)arg2 changeContext:(long long)arg3;
 - (void)graphView:(id)arg1 didUpdateYAxisWidth:(double)arg2 toWidth:(double)arg3;
 - (id)graphView:(id)arg1 graphSeriesForZoom:(long long)arg2 stackOffset:(long long)arg3;
+- (void)graphView:(id)arg1 startupTime:(long long)arg2;
 - (void)graphViewDidBeginSelection:(id)arg1;
 - (void)graphViewDidEndSelection:(id)arg1;
 - (void)graphViewDidTapYAxis:(id)arg1;

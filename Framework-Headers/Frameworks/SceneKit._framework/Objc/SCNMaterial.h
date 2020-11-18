@@ -29,6 +29,9 @@
     SCNMaterialProperty *_metalness;
     SCNMaterialProperty *_roughness;
     SCNMaterialProperty *_displacement;
+    SCNMaterialProperty *_clearCoat;
+    SCNMaterialProperty *_clearCoatRoughness;
+    SCNMaterialProperty *_clearCoatNormal;
     SCNOrderedDictionary *_animations;
     NSMutableDictionary *_bindings;
     NSString *_name;
@@ -58,6 +61,9 @@
 @property (readonly, nonatomic) SCNMaterialProperty *ambientOcclusion;
 @property (readonly) NSArray *animationKeys;
 @property (nonatomic) long long blendMode;
+@property (readonly, nonatomic) SCNMaterialProperty *clearCoat;
+@property (readonly, nonatomic) SCNMaterialProperty *clearCoatNormal;
+@property (readonly, nonatomic) SCNMaterialProperty *clearCoatRoughness;
 @property (nonatomic) long long colorBufferWriteMask;
 @property (nonatomic) long long cullMode;
 @property (readonly, copy) NSString *debugDescription;

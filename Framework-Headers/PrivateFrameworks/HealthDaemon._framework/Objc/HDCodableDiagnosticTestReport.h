@@ -20,7 +20,7 @@
     HDCodableMedicalRecord *_medicalRecord;
     NSString *_panelName;
     HDCodableFHIRIdentifierList *_results;
-    HDCodableMedicalCoding *_status;
+    HDCodableMedicalCoding *_statusCoding;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,13 +35,13 @@
 @property (readonly, nonatomic) BOOL hasMedicalRecord;
 @property (readonly, nonatomic) BOOL hasPanelName;
 @property (readonly, nonatomic) BOOL hasResults;
-@property (readonly, nonatomic) BOOL hasStatus;
+@property (readonly, nonatomic) BOOL hasStatusCoding;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSData *issueDate; // @synthesize issueDate=_issueDate;
 @property (strong, nonatomic) HDCodableMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 @property (strong, nonatomic) NSString *panelName; // @synthesize panelName=_panelName;
 @property (strong, nonatomic) HDCodableFHIRIdentifierList *results; // @synthesize results=_results;
-@property (strong, nonatomic) HDCodableMedicalCoding *status; // @synthesize status=_status;
+@property (strong, nonatomic) HDCodableMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

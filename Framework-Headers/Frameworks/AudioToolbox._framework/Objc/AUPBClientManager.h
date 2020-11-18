@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioToolbox/AUPBInspecting-Protocol.h>
-#import <AudioToolbox/AUPBRegistrarListening-Protocol.h>
+#import <AudioToolboxCore/AUPBInspecting-Protocol.h>
+#import <AudioToolboxCore/AUPBRegistrarListening-Protocol.h>
 
 @class NSMutableArray, NSString, NSXPCConnection;
 @protocol AUPBRegistrarHosting, OS_dispatch_queue;
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *mTouchServersQueue;
     int mNotifyToken;
     BOOL mValidToken;
+    BOOL mConnectionAcknowledged;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSAttributedString, NSData, NSDictionary, NSMutableArray, NSMutableAttributedString, SCROBrailleChunk, SCROBrailleLineVirtualStatus;
-@protocol SCROBrailleDriverProtocol;
+#import <ScreenReaderOutput/BRLTBrailleStateManagerDelegate-Protocol.h>
+#import <ScreenReaderOutput/BRLTBrailleTranslationDelegateProtocol-Protocol.h>
 
-@interface SCROBrailleLine : NSObject
+@class BRLTBrailleStateManager, NSAttributedString, NSData, NSMutableArray, NSMutableAttributedString, NSString, SCROBrailleFormatter, SCROBrailleLineVirtualStatus;
+@protocol BRLTBrailleStateManagerDelegate, SCROBrailleDriverProtocol;
+
+@interface SCROBrailleLine : NSObject <BRLTBrailleTranslationDelegateProtocol, BRLTBrailleStateManagerDelegate>
 {
     id<SCROBrailleDriverProtocol> _brailleDriver;
     long long _size;
@@ -21,6 +24,7 @@
     long long _masterStatusCellIndex;
     long long _iBeamLocation;
     long long _focusLocation;
+    struct _NSRange _focusRange;
     struct _NSRange _selectionRange;
     int _displayMode;
     int _lineFocus;
@@ -45,29 +49,32 @@
     long long _firstToken;
     long long _lastToken;
     SCROBrailleLineVirtualStatus *_virtualStatus;
+    BRLTBrailleStateManager *_stateManager;
+    SCROBrailleFormatter *_brailleFormatter;
     BOOL _wordWrapEnabled;
-    BOOL _isKeyboardHelpOn;
+    BOOL _isSingleLetterInputOn;
+    BOOL _isTextSearchModeOn;
+    BOOL _editableFieldInterruptedByAlert;
     unsigned long long _generationID;
-    SCROBrailleChunk *_editingChunk;
-    SCROBrailleChunk *_chunkPendingTranslation;
-    NSArray *_chunkArray;
-    NSDictionary *_chunkDictionary;
+    id<BRLTBrailleStateManagerDelegate> _translationDelegate;
     NSMutableArray *_pendingBrailleStringDictionaries;
 }
 
-@property (strong, nonatomic) NSArray *chunkArray; // @synthesize chunkArray=_chunkArray;
-@property (strong, nonatomic) NSDictionary *chunkDictionary; // @synthesize chunkDictionary=_chunkDictionary;
-@property (weak, nonatomic) SCROBrailleChunk *chunkPendingTranslation; // @synthesize chunkPendingTranslation=_chunkPendingTranslation;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL displayEnabled; // @synthesize displayEnabled=_displayEnabled;
-@property (weak, nonatomic) SCROBrailleChunk *editingChunk; // @synthesize editingChunk=_editingChunk;
+@property (nonatomic) BOOL editableFieldInterruptedByAlert; // @synthesize editableFieldInterruptedByAlert=_editableFieldInterruptedByAlert;
 @property (readonly, nonatomic) NSAttributedString *editingString;
 @property (nonatomic) unsigned long long generationID; // @synthesize generationID=_generationID;
 @property (readonly, nonatomic) BOOL hasEdits;
-@property (nonatomic) BOOL isKeyboardHelpOn; // @synthesize isKeyboardHelpOn=_isKeyboardHelpOn;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isSingleLetterInputOn; // @synthesize isSingleLetterInputOn=_isSingleLetterInputOn;
+@property (nonatomic) BOOL isTextSearchModeOn; // @synthesize isTextSearchModeOn=_isTextSearchModeOn;
 @property (nonatomic) long long lineOffset; // @synthesize lineOffset=_lineOffset;
 @property (readonly, nonatomic) BOOL needsDisplayFlush; // @synthesize needsDisplayFlush=_needsDisplayFlush;
 @property (strong, nonatomic) NSMutableArray *pendingBrailleStringDictionaries; // @synthesize pendingBrailleStringDictionaries=_pendingBrailleStringDictionaries;
-@property (readonly, nonatomic) BOOL shouldTranslateNow;
+@property (readonly) Class superclass;
+@property (weak, nonatomic) id<BRLTBrailleStateManagerDelegate> translationDelegate; // @synthesize translationDelegate=_translationDelegate;
 @property (readonly, nonatomic) BOOL wantsEdits;
 @property (nonatomic) BOOL wordWrapEnabled; // @synthesize wordWrapEnabled=_wordWrapEnabled;
 
@@ -75,56 +82,57 @@
 - (void).cxx_destruct;
 - (BOOL)_allowInset;
 - (BOOL)_blink:(BOOL)arg1;
-- (id)_chunkAfterEditingChunk;
-- (id)_chunkAtLineBufferIndex:(unsigned long long)arg1;
-- (id)_chunkBeforeEditingChunk;
-- (id)_chunkBeforeEditingChunkInEnumerator:(id)arg1;
-- (unsigned long long)_chunkIndexForLineBufferIndex:(unsigned long long)arg1;
-- (unsigned long long)_cursorOffset;
-- (void)_didMoveToChunk:(id)arg1;
+- (BOOL)_deleteAtCursorSilently:(BOOL)arg1;
 - (id)_dotDescriptionForBrailleString:(id)arg1;
 - (void)_flush;
 - (void)_flushRealStatus;
+- (BOOL)_forwardDeleteAtCursorSilently:(BOOL)arg1;
 - (long long)_indexOfWhitespaceAfterIBeam:(long long)arg1 inLine:(id)arg2;
 - (long long)_indexOfWhitespaceBeforeIBeam:(long long)arg1 inLine:(id)arg2;
-- (unsigned long long)_lengthPrecedingChunkPendingTranslation;
-- (BOOL)_moveToBrailleIndex:(unsigned long long)arg1;
+- (BOOL)_insertBrailleStringAtCursor:(id)arg1 modifiers:(id)arg2 silently:(BOOL)arg3;
 - (BOOL)_setMainCells:(const char *)arg1 length:(long long)arg2;
 - (id)_spokenStringForBrailleString:(id)arg1 isDelete:(BOOL)arg2 speakLiterally:(out BOOL *)arg3;
 - (id)_translatedTextForPrefixBraille:(id)arg1 printBraille:(id)arg2 contracted:(BOOL)arg3;
 - (id)_translatedTextInIsolationForBraille:(id)arg1 contracted:(BOOL)arg2;
 - (id)_trimCommonPrefixWithString:(id)arg1 fromString:(id)arg2;
 - (void)_updateOffsets;
-- (void)addAttributedPaddingToLineBuffer:(id)arg1 chunkWithIndex:(unsigned long long)arg2;
-- (void)addAttributedStringToLineBuffer:(id)arg1 fromChunkWithIndex:(unsigned long long)arg2 brailleOffset:(unsigned long long)arg3;
+- (void)addAttributedPaddingToLineBuffer:(id)arg1;
+- (void)addAttributedStringToLineBuffer:(id)arg1 brailleOffset:(unsigned long long)arg2;
 - (BOOL)anyUnread;
 - (id)appToken;
 - (void)blinker;
+- (void)brailleDisplayDeletedCharacter:(id)arg1;
+- (void)brailleDisplayInsertedCharacter:(id)arg1;
+- (void)brailleDisplayStringDidChange:(id)arg1 brailleSelection:(struct _NSRange)arg2;
 - (unsigned long long)bufferIndexForRouterIndex:(unsigned long long)arg1;
 - (BOOL)canPanLeft;
 - (BOOL)canPanRight;
 - (BOOL)currentUnread;
 - (void)dealloc;
-- (BOOL)deleteAtCursorShouldTranslate:(out BOOL *)arg1 deletedText:(id *)arg2;
-- (id)description;
+- (BOOL)deleteAtCursor;
+- (void)didInsertScriptString:(id)arg1;
 - (void)discardEdits;
 - (BOOL)display;
 - (int)displayMode;
+- (void)enumerateWordsBetweenCharacters:(id)arg1 text:(id)arg2 inRange:(struct _NSRange)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (long long)firstToken;
-- (BOOL)forwardDeleteAtCursorShouldTranslate:(out BOOL *)arg1;
+- (BOOL)forwardDeleteAtCursor;
 - (BOOL)getStatusRouterIndex:(long long *)arg1 forRawIndex:(long long)arg2;
 - (id)initWithDriver:(id)arg1 mainSize:(long long)arg2 statusSize:(long long)arg3;
 - (BOOL)insertBrailleStringAtCursor:(id)arg1 modifiers:(id)arg2;
 - (long long)lastToken;
 - (int)lineFocus;
-- (long long)locationForIndex:(long long)arg1;
 - (long long)masterStatusCellIndex;
 - (BOOL)moveCursorLeft;
 - (BOOL)moveCursorRight;
-- (BOOL)moveCursorToRouterIndex:(unsigned long long)arg1 didLeaveEditingContext:(out BOOL *)arg2 forwardToScreenReader:(out BOOL *)arg3;
+- (BOOL)moveCursorToRouterIndex:(unsigned long long)arg1 forwardToScreenReader:(out BOOL *)arg2;
 - (id)newLineDescriptor;
+- (id)newLineDescriptorWithoutPadding;
 - (BOOL)panLeft;
 - (BOOL)panRight;
+- (id)printBrailleForText:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 textPositionsRange:(struct _NSRange)arg4 locations:(id *)arg5;
+- (void)replaceScriptStringRange:(struct _NSRange)arg1 withScriptString:(id)arg2 cursorLocation:(unsigned long long)arg3;
+- (void)scriptSelectionDidChange:(struct _NSRange)arg1;
 - (void)setAnyUnread:(BOOL)arg1;
 - (void)setAppToken:(id)arg1;
 - (void)setCurrentUnread:(BOOL)arg1;
@@ -140,10 +148,11 @@
 - (BOOL)showDotsSevenAndEight;
 - (id)spokenStringForDeletedBrailleString:(id)arg1 speakLiterally:(out BOOL *)arg2;
 - (id)spokenStringForInsertedBrailleString:(id)arg1 speakLiterally:(out BOOL *)arg2;
-- (unsigned long long)textCursorIndex;
+- (id)textForPrintBraille:(id)arg1 language:(id)arg2 mode:(unsigned long long)arg3 locations:(id *)arg4;
 - (struct _NSRange)textRangeForBrailleRange:(struct _NSRange)arg1;
 - (long long)tokenForRouterIndex:(long long *)arg1 location:(long long *)arg2 appToken:(id *)arg3;
-- (id)translatedTextForBraille:(out id *)arg1 replacingTextInRange:(out struct _NSRange *)arg2 cursor:(out unsigned long long *)arg3;
+- (void)translate;
+- (id)translatedBrailleForTableIdentifier:(id)arg1;
 
 @end
 

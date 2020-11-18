@@ -37,7 +37,7 @@
 @property (readonly, nonatomic) NSArray *accessories;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (strong, nonatomic) HMFTimer *auditSettingsTimer; // @synthesize auditSettingsTimer=_auditSettingsTimer;
-@property (strong, nonatomic) NSArray *components; // @synthesize components=_components;
+@property (copy, nonatomic) NSArray *components; // @synthesize components=_components;
 @property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -49,7 +49,7 @@
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) HMDAccessorySettingGroup *rootSettings; // @synthesize rootSettings=_rootSettings;
 @property (readonly) Class superclass;
@@ -75,6 +75,7 @@
 - (id)_mergeSetting:(id)arg1 item:(id)arg2 groupMetadata:(id)arg3;
 - (void)_notifyClientsOfUpdatedRootSettings:(id)arg1;
 - (void)_registerForMessages;
+- (void)_registerForNotifications;
 - (void)_setupSettings:(id)arg1;
 - (void)_transactionMediaSystemUpdated:(id)arg1 message:(id)arg2;
 - (void)_updateAppData:(id)arg1;
@@ -94,7 +95,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)fixupAccessorySetting;
 - (void)handleAddedRootSettingsModel:(id)arg1 message:(id)arg2;
-- (void)handleHomeDataFetchedNotification:(id)arg1;
+- (void)handleHomeCloudZoneReadyNotification:(id)arg1;
 - (void)handleRemovedAccessory:(id)arg1;
 - (void)handleRemovedRootSettingsModel:(id)arg1 message:(id)arg2;
 - (id)init;

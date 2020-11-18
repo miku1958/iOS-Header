@@ -6,12 +6,13 @@
 
 #import <GeoServices/NSProgressReporting-Protocol.h>
 
-@class GEOActiveTileGroup, NSDictionary, NSObject;
+@class GEOActiveTileGroup, GEOActiveTileGroupMigrationTaskOptions, NSDictionary, NSObject;
 @protocol NSObject, OS_dispatch_queue;
 
 @protocol GEOActiveTileGroupMigrationTask <NSProgressReporting>
 
-@property (readonly) long long estimatedWeight;
+@property (readonly, nonatomic) long long estimatedWeight;
+@property (strong, nonatomic) GEOActiveTileGroupMigrationTaskOptions *options;
 @property (strong, nonatomic) id<NSObject> transaction;
 
 - (void)cancel;

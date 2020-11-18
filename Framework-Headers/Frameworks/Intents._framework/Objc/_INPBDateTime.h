@@ -17,12 +17,14 @@
     struct {
         unsigned int calendarSystem:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _calendarSystem;
     _INPBLocalDate *_date;
     _INPBLocalTime *_time;
     NSString *_timeZoneID;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int calendarSystem; // @synthesize calendarSystem=_calendarSystem;
 @property (strong, nonatomic) _INPBLocalDate *date; // @synthesize date=_date;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,11 +38,14 @@
 @property (strong, nonatomic) _INPBLocalTime *time; // @synthesize time=_time;
 @property (copy, nonatomic) NSString *timeZoneID; // @synthesize timeZoneID=_timeZoneID;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsCalendarSystem:(id)arg1;
 - (id)calendarSystemAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

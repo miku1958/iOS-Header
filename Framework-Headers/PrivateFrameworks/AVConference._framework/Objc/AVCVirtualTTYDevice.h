@@ -16,7 +16,7 @@
     BOOL _isStarted;
 }
 
-@property (nonatomic) id<AVCVirtualTTYDeviceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) id<AVCVirtualTTYDeviceDelegate> delegate;
 
 - (void)dealloc;
 - (void)deregisterBlocksForDelegateNotifications;

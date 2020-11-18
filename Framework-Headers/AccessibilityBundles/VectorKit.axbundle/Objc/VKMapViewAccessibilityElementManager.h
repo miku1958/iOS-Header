@@ -8,17 +8,27 @@
 
 #import "VKMapViewAccessibilityElementDataSource-Protocol.h"
 
-@class NSArray, NSString;
-@protocol OS_dispatch_queue;
+@class AXVKExplorationVertexElement, NSArray, NSMutableArray, NSString, VKExplorationAccessibilityElement, VKMapView;
+@protocol OS_dispatch_queue, VKMapViewAccessibilityElementManagerDelegate;
 
 @interface VKMapViewAccessibilityElementManager : NSObject <VKMapViewAccessibilityElementDataSource>
 {
     BOOL _updating;
+    float _explorationZoomLevel;
+    id<VKMapViewAccessibilityElementManagerDelegate> _delegate;
+    long long _explorationState;
+    long long _verbosityLevel;
+    AXVKExplorationVertexElement *_currentExplorationVertex;
+    NSMutableArray *_lastExplorationVertices;
+    VKExplorationAccessibilityElement *_currentExplorationElement;
+    NSMutableArray *_neighborExplorationElements;
     NSArray *_accessibilityElements;
     long long _orientation;
     double _yaw;
     NSObject<OS_dispatch_queue> *_properties_queue;
     NSObject<OS_dispatch_queue> *_updates_queue;
+    VKMapView *_currentMapView;
+    struct CGPoint _explorationLastTouchPoint;
     CDStruct_2c43369c _center;
     CDStruct_aca18c62 _bounds;
 }
@@ -26,18 +36,28 @@
 @property (strong, nonatomic) NSArray *accessibilityElements; // @synthesize accessibilityElements=_accessibilityElements;
 @property (nonatomic) CDStruct_aca18c62 bounds; // @synthesize bounds=_bounds;
 @property (nonatomic) CDStruct_2c43369c center; // @synthesize center=_center;
+@property (strong, nonatomic) VKExplorationAccessibilityElement *currentExplorationElement; // @synthesize currentExplorationElement=_currentExplorationElement;
+@property (strong, nonatomic) AXVKExplorationVertexElement *currentExplorationVertex; // @synthesize currentExplorationVertex=_currentExplorationVertex;
+@property (weak, nonatomic) VKMapView *currentMapView; // @synthesize currentMapView=_currentMapView;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<VKMapViewAccessibilityElementManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct CGPoint explorationLastTouchPoint; // @synthesize explorationLastTouchPoint=_explorationLastTouchPoint;
+@property (nonatomic) long long explorationState; // @synthesize explorationState=_explorationState;
+@property (nonatomic) float explorationZoomLevel; // @synthesize explorationZoomLevel=_explorationZoomLevel;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableArray *lastExplorationVertices; // @synthesize lastExplorationVertices=_lastExplorationVertices;
+@property (strong, nonatomic) NSMutableArray *neighborExplorationElements; // @synthesize neighborExplorationElements=_neighborExplorationElements;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *properties_queue; // @synthesize properties_queue=_properties_queue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *updates_queue; // @synthesize updates_queue=_updates_queue;
 @property (nonatomic, getter=isUpdating) BOOL updating; // @synthesize updating=_updating;
+@property (nonatomic) long long verbosityLevel; // @synthesize verbosityLevel=_verbosityLevel;
 @property (nonatomic) double yaw; // @synthesize yaw=_yaw;
 
 - (void).cxx_destruct;
-- (id)_accessibilityElementsForMapView:(id)arg1 mapViewBounds:(CDStruct_aca18c62)arg2 visibleLabels:(id)arg3 visibleTiles:(id)arg4;
+- (id)_accessibilityElementsForMapView:(id)arg1 mapViewBounds:(CDStruct_aca18c62)arg2 visibleLabels:(id)arg3 visibleTiles:(id)arg4 existingElements:(id)arg5;
 - (CDStruct_aca18c62)_boundsForMapView:(id)arg1;
 - (CDStruct_2c43369c)_centerForMapView:(id)arg1;
 - (void)_consolidateAccessibilityElements:(id)arg1;
@@ -54,11 +74,36 @@
 - (void)_sortAccessibilityElements:(id)arg1 mapView:(id)arg2;
 - (double)_yawForMapView:(id)arg1;
 - (float)_zoomForMapView:(id)arg1;
+- (double)accessibilityAngleWithThreePointsFirst:(struct CGPoint)arg1 second:(struct CGPoint)arg2 third:(struct CGPoint)arg3 inRadians:(BOOL)arg4;
+- (double)accessibilityDistanceBetweenPoint:(struct CGPoint)arg1 andPoint:(struct CGPoint)arg2 onRoad:(id)arg3;
 - (id)accessibilityElementsForMapView:(id)arg1;
+- (void)accessibilityMapsExplorationBacktrack;
+- (void)accessibilityMapsExplorationBeginFromCurrentLocation;
+- (void)accessibilityMapsExplorationBeginFromLocationCoordinate:(CDStruct_2c43369c)arg1;
+- (void)accessibilityMapsExplorationBeginFromPoint:(struct CGPoint)arg1 withRoad:(id)arg2;
+- (void)accessibilityMapsExplorationBeginFromRoad:(id)arg1;
+- (id)accessibilityMapsExplorationChangeVerbosityIncreasing:(BOOL)arg1;
+- (void)accessibilityMapsExplorationContinueWithVertex:(id)arg1;
+- (void)accessibilityMapsExplorationContinueWithVertex:(id)arg1 fromVertex:(id)arg2;
+- (void)accessibilityMapsExplorationContinueWithVertexIndex:(unsigned long long)arg1;
+- (id)accessibilityMapsExplorationCurrentIntersectionDescription;
+- (id)accessibilityMapsExplorationCurrentRoadsWithAngles;
+- (id)accessibilityMapsExplorationDescriptionForAdjacentPOIs:(id)arg1;
+- (void)accessibilityMapsExplorationEnd;
+- (id)accessibilityMapsExplorationStringForElement:(id)arg1 withRelativeAngle:(double)arg2;
+- (id)accessibilityVisiblePOIsBetweenPoint:(struct CGPoint)arg1 andPoint:(struct CGPoint)arg2 onRoad:(id)arg3;
+- (void)addNeighborsAsRelevantFeaturesForVertex:(id)arg1;
+- (struct CGPoint)adjacentPointToPoint:(struct CGPoint)arg1 withOtherPoint:(struct CGPoint)arg2 onRoad:(id)arg3;
 - (CDStruct_aca18c62)boundsForMapView:(id)arg1;
 - (CDStruct_2c43369c)centerForMapView:(id)arg1;
+- (void)computeVertex:(id)arg1;
+- (id)edgeBetweenVertex:(id)arg1 andVertex:(id)arg2;
+- (BOOL)hitPointHasMapAncestor:(struct CGPoint)arg1 inWindow:(id)arg2;
 - (id)init;
 - (long long)orientationForMapView:(id)arg1;
+- (id)roadElementForFeatureWrapper:(id)arg1;
+- (BOOL)roadHasMapAncestor:(id)arg1 inWindow:(id)arg2;
+- (id)roadsForVertex:(id)arg1;
 - (void)updateAccessibilityElementsForMapView:(id)arg1;
 - (void)updateAccessibilityElementsForMapView:(id)arg1 isRetry:(BOOL)arg2;
 - (double)yawForMapView:(id)arg1;

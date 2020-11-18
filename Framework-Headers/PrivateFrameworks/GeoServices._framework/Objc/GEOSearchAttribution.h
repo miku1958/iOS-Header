@@ -8,27 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOSearchAttribution : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_attributionURLs;
     NSString *_sourceIdentifier;
     unsigned int _sourceVersion;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_attributionURLs:1;
+        unsigned int read_sourceIdentifier:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_attributionURLs:1;
+        unsigned int wrote_sourceIdentifier:1;
+        unsigned int wrote_sourceVersion:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *attributionURLs; // @synthesize attributionURLs=_attributionURLs;
-@property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
-@property (nonatomic) unsigned int sourceVersion; // @synthesize sourceVersion=_sourceVersion;
+@property (strong, nonatomic) NSMutableArray *attributionURLs;
+@property (strong, nonatomic) NSString *sourceIdentifier;
+@property (nonatomic) unsigned int sourceVersion;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)attributionURLsType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsAttributionURLs:(id)arg1;
+- (void)_readAttributionURLs;
+- (void)_readSourceIdentifier;
 - (void)addAttributionURLs:(id)arg1;
 - (id)attributionURLsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)attributionURLsCount;
 - (void)clearAttributionURLs;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +52,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

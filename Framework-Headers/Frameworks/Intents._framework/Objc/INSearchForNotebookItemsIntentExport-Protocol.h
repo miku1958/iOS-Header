@@ -14,11 +14,15 @@
 @property (copy, nonatomic) NSString *content;
 @property (nonatomic) long long dateSearchType;
 @property (copy, nonatomic) INDateComponentsRange *dateTime;
+@property (copy, nonatomic) INSpeakableString *groupName;
+@property (nonatomic) BOOL includeAllNoteContents;
 @property (nonatomic) long long itemType;
 @property (copy, nonatomic) CLPlacemark *location;
 @property (nonatomic) long long locationSearchType;
 @property (copy, nonatomic) NSString *notebookItemIdentifier;
 @property (nonatomic) long long status;
+@property (nonatomic) long long taskPriority;
+@property (nonatomic) unsigned long long temporalEventTriggerTypes;
 @property (copy, nonatomic) INSpeakableString *title;
 
 - (id)init;

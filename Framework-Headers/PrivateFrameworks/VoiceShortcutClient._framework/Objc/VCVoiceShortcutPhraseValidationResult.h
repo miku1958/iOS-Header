@@ -17,7 +17,7 @@
     NSError *_validationError;
 }
 
-@property (strong, nonatomic) NSString *phrase; // @synthesize phrase=_phrase;
+@property (readonly, copy, nonatomic) NSString *phrase; // @synthesize phrase=_phrase;
 @property (strong, nonatomic) NSError *validationError; // @synthesize validationError=_validationError;
 @property (nonatomic) long long validationState; // @synthesize validationState=_validationState;
 

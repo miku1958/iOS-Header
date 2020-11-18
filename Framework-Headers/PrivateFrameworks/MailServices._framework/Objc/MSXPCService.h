@@ -20,6 +20,7 @@
 
 + (id)remoteProxyForXPCInterface:(id)arg1 connectionErrorHandler:(CDUnknownBlockType)arg2;
 + (id)remoteProxyForXPCInterface:(id)arg1 shouldLaunchMobileMail:(BOOL)arg2 connectionErrorHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (id)connection;
 - (void)dealloc;
 - (id)init;

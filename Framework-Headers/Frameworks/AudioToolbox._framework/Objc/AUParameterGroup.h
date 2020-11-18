@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/AUParameterNode.h>
+#import <AudioToolboxCore/AUParameterNode.h>
 
-#import <AudioToolbox/NSSecureCoding-Protocol.h>
+#import <AudioToolboxCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableDictionary;
 

@@ -12,14 +12,14 @@ __attribute__((visibility("hidden")))
 @interface URLTarget : NSObject
 {
     unsigned int _applicationState;
-    NSString *_bundleId;
+    NSString *_bundleID;
     long long _defaultIndex;
     NSString *_normalScheme;
     NSString *_secureScheme;
 }
 
 @property (nonatomic) unsigned int applicationState; // @synthesize applicationState=_applicationState;
-@property (strong, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (nonatomic) long long defaultIndex; // @synthesize defaultIndex=_defaultIndex;
 @property (strong, nonatomic) NSString *normalScheme; // @synthesize normalScheme=_normalScheme;
 @property (strong, nonatomic) NSString *secureScheme; // @synthesize secureScheme=_secureScheme;

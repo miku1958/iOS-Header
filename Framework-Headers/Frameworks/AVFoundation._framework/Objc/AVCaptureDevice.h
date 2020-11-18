@@ -16,11 +16,10 @@
     NSString *_manufacturer;
     NSArray *_linkedDevices;
     NSArray *_inputSources;
-    AVCaptureDeviceInputSource *_activeInputSource;
 }
 
 @property (strong, nonatomic) AVCaptureDeviceFormat *activeFormat;
-@property (strong, nonatomic) AVCaptureDeviceInputSource *activeInputSource; // @synthesize activeInputSource=_activeInputSource;
+@property (strong, nonatomic) AVCaptureDeviceInputSource *activeInputSource;
 @property (nonatomic) CDStruct_1b6d18a9 activeVideoMaxFrameDuration;
 @property (nonatomic) CDStruct_1b6d18a9 activeVideoMinFrameDuration;
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
@@ -47,12 +46,15 @@
 + (id)deviceWithUniqueID:(id)arg1;
 + (id)devices;
 + (id)devicesWithMediaType:(id)arg1;
++ (id)extrinsicMatrixFromDevice:(id)arg1 toDevice:(id)arg2;
 + (void)initialize;
 + (void)requestAccessForMediaType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)AVVideoSettingsForSessionPreset:(id)arg1;
 - (float)ISO;
 - (float)ISODigitalThreshold;
 - (void)_checkTCCAccess;
+- (id)_digitalFlashExposureTimes;
+- (long long)_digitalFlashStatus;
 - (BOOL)_isDepthDataDeliveryEnabled;
 - (BOOL)_isFlashScene;
 - (BOOL)_isHighDynamicRangeScene;
@@ -77,17 +79,22 @@
 - (id)availableBoxedMetadataFormatDescriptions;
 - (id)bravoCameraSelectionBehavior;
 - (BOOL)cachesFigCaptureSourceConfigurationChanges;
+- (id)cameraPoseMatrix;
 - (void)cancelVideoZoomRamp;
 - (CDStruct_b2fbf00d)chromaticityValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1;
 - (void)close;
+- (id)constituentDeviceWithDeviceType:(id)arg1;
+- (id)constituentDevices;
 - (void)dealloc;
+- (id)debugDescription;
 - (id)description;
 - (struct OpaqueCMClock *)deviceClock;
-- (long long)deviceSourceOrigin;
 - (id)deviceType;
 - (CDStruct_d6531dd4)deviceWhiteBalanceGains;
 - (CDStruct_d6531dd4)deviceWhiteBalanceGainsForChromaticityValues:(CDStruct_b2fbf00d)arg1;
 - (CDStruct_d6531dd4)deviceWhiteBalanceGainsForTemperatureAndTintValues:(CDStruct_b2fbf00d)arg1;
+- (long long)digitalFlashMode;
+- (id)digitalFlashSceneForPhotoOutput;
 - (double)dualCameraSwitchOverVideoZoomFactor;
 - (CDStruct_1b6d18a9)exposureDuration;
 - (long long)exposureMode;
@@ -107,6 +114,7 @@
 - (BOOL)hasMediaType:(id)arg1;
 - (BOOL)hasTorch;
 - (BOOL)hevcAllowBFramesForHighCTUCount;
+- (BOOL)hevcAllowBFramesForHighCTUCountAndHighResolution;
 - (int)hevcTurboModeVersion;
 - (long long)imageControlMode;
 - (id)initSubclass;
@@ -119,6 +127,7 @@
 - (BOOL)isAutoRedEyeReductionSupported;
 - (BOOL)isBuiltInStereoAudioCaptureSupported;
 - (BOOL)isCameraIntrinsicMatrixDeliverySupported;
+- (BOOL)isConstituentPhotoCalibrationDataSupported;
 - (BOOL)isExposureModeSupported:(long long)arg1;
 - (BOOL)isExposurePointOfInterestSupported;
 - (BOOL)isEyeClosedDetectionSupported;
@@ -132,8 +141,11 @@
 - (BOOL)isFlashSceneDetectedForPhotoOutput;
 - (BOOL)isFocusModeSupported:(long long)arg1;
 - (BOOL)isFocusPointOfInterestSupported;
-- (BOOL)isHDRSupported;
+- (BOOL)isGeometricDistortionCorrectionEnabled;
+- (BOOL)isGeometricDistortionCorrectionSupported;
+- (BOOL)isGlobalToneMappingEnabled;
 - (BOOL)isHEIFSupported;
+- (BOOL)isHEVCMemoryUsageMinimizationSupported;
 - (BOOL)isHEVCPreferred;
 - (BOOL)isHEVCRelaxedAverageBitRateTargetSupported;
 - (BOOL)isHEVCSupported;
@@ -149,12 +161,14 @@
 - (BOOL)isLowLightBoostSupported;
 - (BOOL)isLowLightVideoCaptureEnabled;
 - (BOOL)isMachineReadableCodeDetectionSupported;
+- (BOOL)isNonDestructiveCropEnabled;
 - (BOOL)isOpen;
 - (BOOL)isRampingVideoZoom;
 - (BOOL)isRawStillImageCaptureSupported;
 - (BOOL)isSmileDetectionSupported;
 - (BOOL)isSmoothAutoFocusEnabled;
 - (BOOL)isSmoothAutoFocusSupported;
+- (BOOL)isSpatialOverCaptureEnabled;
 - (BOOL)isSubjectAreaChangeMonitoringEnabled;
 - (BOOL)isTorchActive;
 - (BOOL)isTorchAvailable;
@@ -162,6 +176,7 @@
 - (BOOL)isVideoHDREnabled;
 - (BOOL)isVideoHDRSuspended;
 - (BOOL)isVideoStabilizationSupported;
+- (BOOL)isVirtualDevice;
 - (BOOL)isWhiteBalanceModeSupported:(long long)arg1;
 - (BOOL)isWideColorSupported;
 - (float)lensAperture;
@@ -176,11 +191,14 @@
 - (float)minExposureTargetBias;
 - (int)minMacroblocksForHighProfileAbove30fps;
 - (int)minMacroblocksForHighProfileUpTo30fps;
+- (long long)nonDestructiveCropAspectRatio;
 - (BOOL)open:(id *)arg1;
 - (long long)position;
+- (int)powerConsumptionAt30FPSForOISMode:(int)arg1;
 - (BOOL)providesStortorgetMetadata;
 - (void)rampExponentiallyToVideoZoomFactor:(float)arg1 withDuration:(double)arg2;
 - (void)rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2;
+- (void)resetVideoMinFrameDurationOverrideForOwner:(id)arg1;
 - (void)setActiveColorSpace:(long long)arg1;
 - (void)setActiveDepthDataFormat:(id)arg1;
 - (void)setActiveDepthDataMinFrameDuration:(CDStruct_1b6d18a9)arg1;
@@ -191,6 +209,7 @@
 - (void)setAutomaticallyEnablesLowLightBoostWhenAvailable:(BOOL)arg1;
 - (void)setBravoCameraSelectionBehavior:(id)arg1;
 - (void)setCachesFigCaptureSourceConfigurationChanges:(BOOL)arg1;
+- (void)setDigitalFlashMode:(long long)arg1;
 - (void)setExposureMode:(long long)arg1;
 - (void)setExposureModeCustomWithDuration:(CDStruct_1b6d18a9)arg1 ISO:(float)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setExposurePointOfInterest:(struct CGPoint)arg1;
@@ -202,17 +221,23 @@
 - (void)setFocusMode:(long long)arg1;
 - (void)setFocusModeLockedWithLensPosition:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setFocusPointOfInterest:(struct CGPoint)arg1;
+- (void)setGeometricDistortionCorrectionEnabled:(BOOL)arg1;
+- (void)setGlobalToneMappingEnabled:(BOOL)arg1;
 - (void)setHighDynamicRangeSceneDetectionEnabled:(BOOL)arg1;
 - (void)setImageControlMode:(long long)arg1;
 - (void)setLowLightVideoCaptureEnabled:(BOOL)arg1;
+- (void)setNonDestructiveCropAspectRatio:(long long)arg1;
+- (void)setNonDestructiveCropEnabled:(BOOL)arg1;
 - (void)setProvidesStortorgetMetadata:(BOOL)arg1;
 - (void)setSmileDetectionEnabled:(BOOL)arg1;
 - (void)setSmoothAutoFocusEnabled:(BOOL)arg1;
+- (void)setSpatialOverCaptureEnabled:(BOOL)arg1;
 - (void)setSubjectAreaChangeMonitoringEnabled:(BOOL)arg1;
 - (void)setTorchMode:(long long)arg1;
 - (BOOL)setTorchModeOnWithLevel:(float)arg1 error:(id *)arg2;
 - (void)setVideoHDREnabled:(BOOL)arg1;
 - (void)setVideoHDRSuspended:(BOOL)arg1;
+- (void)setVideoMinFrameDurationOverride:(CDStruct_1b6d18a9)arg1 forOwner:(id)arg2;
 - (void)setVideoZoomFactor:(double)arg1;
 - (void)setWhiteBalanceMode:(long long)arg1;
 - (void)setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -222,6 +247,7 @@
 - (void)stopUsingDevice;
 - (id)supportedMetadataObjectIdentifiers;
 - (BOOL)supportsAVCaptureSessionPreset:(id)arg1;
+- (BOOL)supportsMultiCamCaptureWithDevice:(id)arg1;
 - (id)systemPressureState;
 - (CDStruct_b2fbf00d)temperatureAndTintValuesForDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1;
 - (float)torchLevel;
@@ -229,6 +255,7 @@
 - (void)unlockForConfiguration;
 - (BOOL)usesQuantizationScalingMatrix_H264_Steep_16_48;
 - (double)videoZoomFactor;
+- (id)virtualDeviceSwitchOverVideoZoomFactors;
 - (long long)whiteBalanceMode;
 
 @end

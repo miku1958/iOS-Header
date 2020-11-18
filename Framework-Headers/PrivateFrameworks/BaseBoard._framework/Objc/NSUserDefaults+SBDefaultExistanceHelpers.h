@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (SBDefaultExistanceHelpers)
+- (BOOL)bs_defaultExists:(id)arg1;
 - (id)bs_domain;
 - (void)bs_setDomain:(id)arg1;
 @end

@@ -29,7 +29,6 @@ __attribute__((visibility("hidden")))
 - (void)requestDidParseJSONObject:(id)arg1;
 - (BOOL)requiresConfiguration;
 - (BOOL)requiresDeviceID;
-- (BOOL)requiresSignature;
 - (long long)serverType;
 - (id)url;
 - (BOOL)usesCloudKitAuthToken;

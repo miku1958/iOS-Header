@@ -32,6 +32,7 @@
 - (double)_cappedValueForTimeInterval:(double)arg1;
 - (struct UIOffset)_dotInsets;
 - (struct CGSize)_dotSize;
+- (id)_dotTintColor;
 - (struct CGRect)_frameForDotAtTimeInterval:(double)arg1 duration:(double)arg2;
 - (id)_resizableDotImage;
 - (void)_updateHorizontalConstraintsOfDotForCurrentVibrationComponent:(id)arg1 withFrame:(struct CGRect)arg2;

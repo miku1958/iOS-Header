@@ -6,36 +6,51 @@
 
 #import <objc/NSObject.h>
 
-@class HDAssertion, HDProfile;
+#import <HealthDaemon/HDContentProtectionObserver-Protocol.h>
+#import <HealthDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
+#import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+
+@class HDAssertion, HDProfile, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDCloudSyncManager : NSObject
+@interface HDCloudSyncManager : NSObject <HDContentProtectionObserver, HDDatabaseProtectedDataObserver, HDHealthDaemonReadyObserver>
 {
     HDAssertion *_preparedDatabaseAccessibilityAssertion;
+    BOOL _supportsRebase;
     BOOL _shouldResync;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     long long _inProgressSyncCount;
 }
 
+@property (readonly) long long bytesPerChangeRecordAssetThreshold;
+@property (readonly) long long bytesPerChangeRecordAssetThresholdHardLimit;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long inProgressSyncCount; // @synthesize inProgressSyncCount=_inProgressSyncCount;
 @property (strong) HDAssertion *preparedDatabaseAccessibilityAssertion; // @synthesize preparedDatabaseAccessibilityAssertion=_preparedDatabaseAccessibilityAssertion;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL shouldResync; // @synthesize shouldResync=_shouldResync;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsRebase; // @synthesize supportsRebase=_supportsRebase;
 
 + (void)_containerIdentifiersWithEncryptionSupportEnabled:(BOOL)arg1 accountManateeEnabled:(BOOL)arg2 internalSettingManateeEnabled:(BOOL)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)_addFinalProgressUpdateWithTaskTree:(id)arg1 progress:(id)arg2;
-- (void)_cloudSyncRepositoriesForProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_containerIdentifiersForCurrentAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_containerWithIdentifier:(id)arg1 error:(id *)arg2;
-- (BOOL)_isAccountManateeEnabled;
-- (id)_primaryiCloudAccountAltDSID;
-- (unsigned long long)_primaryiCloudAccountSecurityLevel;
+- (void)_primaryContainerIdentifiersForCurrentAccountWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queue_considerStartingBackstopSyncForThreshold:(double)arg1;
+- (void)_queue_updateAccessibilityAssertion;
+- (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
+- (void)daemonReady:(id)arg1;
+- (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)disableAndDeleteAllSyncDataWithTaskTree:(id)arg1;
 - (void)disableSyncLocallyWithTaskTree:(id)arg1;
+- (void)fetchCloudKitEmailAddressWithCompletion:(CDUnknownBlockType)arg1;
 - (id)fetchDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)fetchSyncStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithProfile:(id)arg1;
@@ -48,6 +63,7 @@
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3;
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3 permitResync:(BOOL)arg4;
+- (void)unitTest_setSupportsRebase:(BOOL)arg1;
 
 @end
 

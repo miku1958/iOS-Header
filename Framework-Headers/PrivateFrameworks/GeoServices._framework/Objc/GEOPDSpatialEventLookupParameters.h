@@ -8,42 +8,58 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, PBUnknownFields;
+@class GEOLatLng, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSpatialEventLookupParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _categoryFilters;
-    struct GEOPDTimeRange _timeRange;
     GEOLatLng *_center;
+    struct GEOPDTimeRange _timeRange;
     int _count;
     int _radius;
     struct {
-        unsigned int timeRange:1;
-        unsigned int count:1;
-        unsigned int radius:1;
-    } _has;
+        unsigned int has_timeRange:1;
+        unsigned int has_count:1;
+        unsigned int has_radius:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_categoryFilters:1;
+        unsigned int read_center:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_categoryFilters:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_timeRange:1;
+        unsigned int wrote_count:1;
+        unsigned int wrote_radius:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *categoryFilters;
 @property (readonly, nonatomic) unsigned long long categoryFiltersCount;
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
-@property (nonatomic) int count; // @synthesize count=_count;
+@property (strong, nonatomic) GEOLatLng *center;
+@property (nonatomic) int count;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (nonatomic) BOOL hasCount;
 @property (nonatomic) BOOL hasRadius;
 @property (nonatomic) BOOL hasTimeRange;
-@property (nonatomic) int radius; // @synthesize radius=_radius;
-@property (nonatomic) struct GEOPDTimeRange timeRange; // @synthesize timeRange=_timeRange;
+@property (nonatomic) int radius;
+@property (nonatomic) struct GEOPDTimeRange timeRange;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCategoryFilters:(id)arg1;
+- (void)_addNoFlagsCategoryFilter:(int)arg1;
+- (void)_readCategoryFilters;
+- (void)_readCenter;
 - (void)addCategoryFilter:(int)arg1;
 - (int)categoryFilterAtIndex:(unsigned long long)arg1;
 - (id)categoryFiltersAsString:(int)arg1;
 - (void)clearCategoryFilters;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -52,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setCategoryFilters:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

@@ -29,7 +29,6 @@
 - (void)_handleCompletionWithSuccess:(BOOL)arg1;
 - (void)_saveUserEnterredInfo;
 - (BOOL)_validateRecipientsToAdd:(id)arg1;
-- (void)composeRecipientViewControllerRecipientContainerViewDidResize:(id)arg1 fromFrame:(struct CGRect)arg2 toFrame:(struct CGRect)arg3;
 - (struct CGSize)contentSizeForViewInPopover;
 - (void)dealloc;
 - (id)init;

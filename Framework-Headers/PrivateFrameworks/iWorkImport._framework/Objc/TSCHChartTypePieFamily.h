@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
 
 - (id)animationDeliveryStylesForFilter:(id)arg1;
 - (BOOL)explosionAffectsChartBodyBounds;
-- (BOOL)includeValueLabelPositionOff;
 - (id)init;
 - (BOOL)layoutFrameShouldEncloseInfoGeometry;
 - (struct CGSize)mungeBodySize:(struct CGSize)arg1;
 - (Class)repClass;
 - (BOOL)shouldChangeExplosionWithPreviousChartType:(id)arg1 chartInfo:(id)arg2 seriesList:(id)arg3;
+- (BOOL)supportsAxisLabelAngle;
 
 @end
 

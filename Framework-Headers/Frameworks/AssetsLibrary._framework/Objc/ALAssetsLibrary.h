@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) ALAssetsLibraryPrivate *internal; // @synthesize internal=_internal;
 
++ (id)_albumsInLibrary:(id)arg1;
 + (struct CGImage *)_aspectRatioThumbnailForAssetURL:(id)arg1;
 + (long long)_estimatedOutputFileLengthForVideoFilePath:(id)arg1 metadata:(id)arg2 exportPreset:(id)arg3 exportProperties:(id)arg4;
 + (long long)_estimatedOutputFileLengthForVideoURL:(id)arg1 fallbackFilePath:(id)arg2 exportPreset:(id)arg3 exportProperties:(id)arg4;
@@ -31,7 +32,6 @@
 - (void)_addGroupForAlbum:(struct NSObject *)arg1 ofType:(unsigned long long)arg2 toArray:(id)arg3;
 - (void)_addGroupListForContainerList:(id)arg1 ofType:(unsigned long long)arg2 toArray:(id)arg3;
 - (id)_copyGroupForURL:(id)arg1;
-- (BOOL)_libraryIsAvailable;
 - (void)_performBlock:(CDUnknownBlockType)arg1;
 - (void)_performBlockAndWait:(CDUnknownBlockType)arg1;
 - (void)_writeImageToSavedPhotosAlbum:(struct CGImage *)arg1 orientation:(long long)arg2 imageData:(id)arg3 metadata:(id)arg4 internalProperties:(id)arg5 completionBlock:(CDUnknownBlockType)arg6;
@@ -40,10 +40,8 @@
 - (void)assetForURL:(id)arg1 resultBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (id)assetsGroupsRelatedToAssetsGroup:(id)arg1;
 - (void)dealloc;
-- (void)deleteAssetForURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateGroupsWithTypes:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)groupForURL:(id)arg1 resultBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
-- (BOOL)hasCompletedRestorePostProcessing;
 - (id)init;
 - (BOOL)isValid;
 - (id)publicErrorForPrivateDomain:(id)arg1 withPrivateCode:(long long)arg2;

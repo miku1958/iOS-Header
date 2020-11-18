@@ -13,7 +13,6 @@
 
 @property (readonly, nonatomic) NSString *contentExtensionIdentifier;
 @property (weak, nonatomic) id<NCNotificationCustomContentDelegate> delegate;
-@property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (readonly, copy, nonatomic) NSString *title;
 
 - (BOOL)allowManualDismiss;
@@ -27,8 +26,7 @@
 
 @optional
 - (id)cancelTouches;
-- (void)loadAudioAccessoryView;
-- (void)playAudioMessage;
+- (void)playMedia;
 - (void)preserveInputViews;
 - (BOOL)restoreInputViews;
 @end

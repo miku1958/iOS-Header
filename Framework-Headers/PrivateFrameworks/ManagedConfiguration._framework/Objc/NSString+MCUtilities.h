@@ -9,12 +9,14 @@
 @interface NSString (MCUtilities)
 + (id)MCMakeUUID;
 - (id)MCAppendDeviceName;
+- (id)MCAppendGreenteaSuffix;
 - (unsigned int)MCHash;
 - (id)MCHashedFilenameWithExtension:(id)arg1;
 - (id)MCHashedFilenameWithPrefix:(id)arg1 extension:(id)arg2;
 - (id)MCHashedIdentifier;
 - (id)MCOldStyleSafeFilenameHash;
 - (id)MCOldStyleSafeFilenameHashWithExtension:(id)arg1;
+- (id)MCRemoveAppExternalVersionIDParameter;
 - (id)MCSHA256DigestWithPasscodeSalt;
 - (id)MCSHA256DigestWithSalt:(id)arg1;
 @end

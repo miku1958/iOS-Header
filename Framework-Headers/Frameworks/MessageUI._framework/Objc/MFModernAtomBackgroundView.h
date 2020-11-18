@@ -13,22 +13,22 @@
     UIView *_selectedView;
     unsigned long long _selectionStyle;
     UIView *_separatorView;
-    MFModernAtomView *_hostAtomView;
     int _separatorStyle;
     BOOL _selected;
     double _scalingFactor;
+    MFModernAtomView *_hostAtomView;
 }
 
-@property (nonatomic) MFModernAtomView *hostAtomView; // @synthesize hostAtomView=_hostAtomView;
+@property (weak, nonatomic) MFModernAtomView *hostAtomView; // @synthesize hostAtomView=_hostAtomView;
 @property (nonatomic) double scalingFactor; // @synthesize scalingFactor=_scalingFactor;
 @property (readonly, nonatomic) UIView *selectedView; // @synthesize selectedView=_selectedView;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (readonly, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 
+- (void).cxx_destruct;
 - (struct UIEdgeInsets)_backgroundBleedArea;
 - (id)_chevronImage;
 - (void)_setSelectionStyle:(unsigned long long)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidateIntrinsicContentSize;
 - (BOOL)isSelected;

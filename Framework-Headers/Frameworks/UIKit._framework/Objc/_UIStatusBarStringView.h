@@ -30,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *originalText; // @synthesize originalText=_originalText;
 @property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (readonly, nonatomic) BOOL prefersBaselineAlignment;
 @property (nonatomic) BOOL showsAlternateText; // @synthesize showsAlternateText=_showsAlternateText;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL wantsCrossfade;

@@ -7,7 +7,7 @@
 #import <ContactsUICore/NSObject-Protocol.h>
 
 @class CNContactStore, CNUIIDSContactPropertyResolver;
-@protocol CNCapabilities, CNLSApplicationWorkspace, CNMCProfileConnection, CNSchedulerProvider, CNTUCallProviderManager, CNUIDefaultUserActionFetcher, CNUIUserActionDiscoveringEnvironment;
+@protocol CNCapabilities, CNLSApplicationWorkspace, CNMCProfileConnection, CNSchedulerProvider, CNTUCallProviderManager, CNUIDefaultUserActionFetcher, CNUIRTTUtilities, CNUIUserActionDiscoveringEnvironment, CNUIUserActionTargetDiscovering;
 
 @protocol CNUIUserActionDiscoveringEnvironment <NSObject>
 
@@ -20,6 +20,8 @@
 @property (readonly, nonatomic) CNUIIDSContactPropertyResolver *idsContactPropertyResolver;
 @property (readonly, nonatomic) id<CNMCProfileConnection> profileConnection;
 @property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider;
+@property (readonly, nonatomic) id<CNUIUserActionTargetDiscovering> targetDiscoveringHelper;
+@property (readonly, nonatomic) id<CNUIRTTUtilities> ttyUtilities;
 
 - (id<CNUIUserActionDiscoveringEnvironment>)copyWithContactStore:(CNContactStore *)arg1;
 @end

@@ -7,6 +7,8 @@
 #import <UIKit/_UINavigationControllerPalette.h>
 
 @interface _UINavigationControllerPalette (rdar27259889)
+- (void)SKUI_beginHidingPaletteShadow;
+- (void)SKUI_endHidingPaletteShadow;
 - (void)resetBackgroundConstraints;
 @end
 

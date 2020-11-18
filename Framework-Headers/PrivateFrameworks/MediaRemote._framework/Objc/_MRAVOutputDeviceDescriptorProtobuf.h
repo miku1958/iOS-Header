@@ -13,6 +13,7 @@
 @interface _MRAVOutputDeviceDescriptorProtobuf : PBCodable <NSCopying>
 {
     float _batteryLevel;
+    NSString *_bluetoothID;
     int _deviceSubType;
     int _deviceType;
     NSString *_firmwareVersion;
@@ -81,6 +82,7 @@
 }
 
 @property (nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
+@property (strong, nonatomic) NSString *bluetoothID; // @synthesize bluetoothID=_bluetoothID;
 @property (nonatomic) BOOL canAccessAppleMusic; // @synthesize canAccessAppleMusic=_canAccessAppleMusic;
 @property (nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
 @property (nonatomic) BOOL canAccessiCloudMusicLibrary; // @synthesize canAccessiCloudMusicLibrary=_canAccessiCloudMusicLibrary;
@@ -93,6 +95,7 @@
 @property (nonatomic) BOOL groupContainsGroupLeader; // @synthesize groupContainsGroupLeader=_groupContainsGroupLeader;
 @property (strong, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (nonatomic) BOOL hasBatteryLevel;
+@property (readonly, nonatomic) BOOL hasBluetoothID;
 @property (nonatomic) BOOL hasCanAccessAppleMusic;
 @property (nonatomic) BOOL hasCanAccessRemoteAssets;
 @property (nonatomic) BOOL hasCanAccessiCloudMusicLibrary;

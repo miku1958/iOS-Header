@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)completeInitializationAndReturnError:(id *)arg1;
 - (BOOL)initImageDescriptorBuffer:(id)arg1 descriptorBuffer:(shared_ptr_0a6daad2 *)arg2 error:(id *)arg3;
 - (BOOL)isSceneprinterCompatibleWithSceneprinterCreatedWithOptions:(id)arg1 error:(id *)arg2;
+- (id)labelOperationPointsForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 
 @end

@@ -45,27 +45,36 @@
     NSNumber *_boxedAllowsAutomaticRemovalFromLockScreen;
     NSNumber *_boxedAllowsAddingToLockScreenWhenUnlocked;
     NSNumber *_boxedPrioritizeAtTopOfLockScreen;
-    NSNumber *_boxedPreemptsPresentedAlert;
     NSNumber *_boxedRevealsAdditionalContentOnPresentation;
     NSNumber *_boxedPrivacySettings;
     NSNumber *_boxedShouldDismissBulletinWhenClosed;
+    NSNumber *_boxedAllowsPersistentBannersInCarPlay;
+    NSNumber *_boxedAllowsSupplementaryActionsInCarPlay;
+    NSNumber *_boxedPlaysMediaWhenRaised;
+    NSNumber *_boxedSuppressDelayForForwardedBulletins;
+    NSNumber *_boxedHideDismissActionInCarPlay;
 }
 
 @property (strong, nonatomic) NSSet *alertSuppressionAppIDs;
 @property (nonatomic) BOOL allowsAddingToLockScreenWhenUnlocked;
 @property (nonatomic) BOOL allowsAutomaticRemovalFromLockScreen;
+@property (nonatomic) BOOL allowsPersistentBannersInCarPlay;
+@property (nonatomic) BOOL allowsSupplementaryActionsInCarPlay;
 @property (copy, nonatomic) NSString *alternateActionLabel; // @synthesize alternateActionLabel=_alternateActionLabel;
 @property (copy, nonatomic) NSString *bannerAccessoryRemoteServiceBundleIdentifier; // @synthesize bannerAccessoryRemoteServiceBundleIdentifier=_bannerAccessoryRemoteServiceBundleIdentifier;
 @property (copy, nonatomic) NSString *bannerAccessoryRemoteViewControllerClassName; // @synthesize bannerAccessoryRemoteViewControllerClassName=_bannerAccessoryRemoteViewControllerClassName;
 @property (strong, nonatomic) NSNumber *boxedAllowsAddingToLockScreenWhenUnlocked; // @synthesize boxedAllowsAddingToLockScreenWhenUnlocked=_boxedAllowsAddingToLockScreenWhenUnlocked;
 @property (strong, nonatomic) NSNumber *boxedAllowsAutomaticRemovalFromLockScreen; // @synthesize boxedAllowsAutomaticRemovalFromLockScreen=_boxedAllowsAutomaticRemovalFromLockScreen;
+@property (strong, nonatomic) NSNumber *boxedAllowsPersistentBannersInCarPlay; // @synthesize boxedAllowsPersistentBannersInCarPlay=_boxedAllowsPersistentBannersInCarPlay;
+@property (strong, nonatomic) NSNumber *boxedAllowsSupplementaryActionsInCarPlay; // @synthesize boxedAllowsSupplementaryActionsInCarPlay=_boxedAllowsSupplementaryActionsInCarPlay;
 @property (strong, nonatomic) NSNumber *boxedCanBeSilencedByMenuButtonPress; // @synthesize boxedCanBeSilencedByMenuButtonPress=_boxedCanBeSilencedByMenuButtonPress;
 @property (strong, nonatomic) NSNumber *boxedCoalescesWhenLocked; // @synthesize boxedCoalescesWhenLocked=_boxedCoalescesWhenLocked;
+@property (strong, nonatomic) NSNumber *boxedHideDismissActionInCarPlay; // @synthesize boxedHideDismissActionInCarPlay=_boxedHideDismissActionInCarPlay;
 @property (strong, nonatomic) NSNumber *boxedIPodOutAlertType; // @synthesize boxedIPodOutAlertType=_boxedIPodOutAlertType;
 @property (strong, nonatomic) NSNumber *boxedIgnoresQuietMode; // @synthesize boxedIgnoresQuietMode=_boxedIgnoresQuietMode;
 @property (strong, nonatomic) NSNumber *boxedInertWhenLocked; // @synthesize boxedInertWhenLocked=_boxedInertWhenLocked;
+@property (strong, nonatomic) NSNumber *boxedPlaysMediaWhenRaised; // @synthesize boxedPlaysMediaWhenRaised=_boxedPlaysMediaWhenRaised;
 @property (strong, nonatomic) NSNumber *boxedPlaysSoundForModify; // @synthesize boxedPlaysSoundForModify=_boxedPlaysSoundForModify;
-@property (strong, nonatomic) NSNumber *boxedPreemptsPresentedAlert; // @synthesize boxedPreemptsPresentedAlert=_boxedPreemptsPresentedAlert;
 @property (strong, nonatomic) NSNumber *boxedPreservesUnlockActionCase; // @synthesize boxedPreservesUnlockActionCase=_boxedPreservesUnlockActionCase;
 @property (strong, nonatomic) NSNumber *boxedPreventLock; // @synthesize boxedPreventLock=_boxedPreventLock;
 @property (strong, nonatomic) NSNumber *boxedPrioritizeAtTopOfLockScreen; // @synthesize boxedPrioritizeAtTopOfLockScreen=_boxedPrioritizeAtTopOfLockScreen;
@@ -76,6 +85,7 @@
 @property (strong, nonatomic) NSNumber *boxedShowsContactPhoto; // @synthesize boxedShowsContactPhoto=_boxedShowsContactPhoto;
 @property (strong, nonatomic) NSNumber *boxedShowsUnreadIndicatorForNoticesFeed; // @synthesize boxedShowsUnreadIndicatorForNoticesFeed=_boxedShowsUnreadIndicatorForNoticesFeed;
 @property (strong, nonatomic) NSNumber *boxedSubtypePriority; // @synthesize boxedSubtypePriority=_boxedSubtypePriority;
+@property (strong, nonatomic) NSNumber *boxedSuppressDelayForForwardedBulletins; // @synthesize boxedSuppressDelayForForwardedBulletins=_boxedSuppressDelayForForwardedBulletins;
 @property (strong, nonatomic) NSNumber *boxedSuppressesAlertsWhenAppIsActive; // @synthesize boxedSuppressesAlertsWhenAppIsActive=_boxedSuppressesAlertsWhenAppIsActive;
 @property (strong, nonatomic) NSNumber *boxedSuppressesTitle; // @synthesize boxedSuppressesTitle=_boxedSuppressesTitle;
 @property (strong, nonatomic) NSNumber *boxedVisuallyIndicatesWhenDateIsInFuture; // @synthesize boxedVisuallyIndicatesWhenDateIsInFuture=_boxedVisuallyIndicatesWhenDateIsInFuture;
@@ -85,10 +95,12 @@
 @property (copy, nonatomic) NSString *fullAlternateActionLabel; // @synthesize fullAlternateActionLabel=_fullAlternateActionLabel;
 @property (copy, nonatomic) NSString *fullUnlockActionLabel; // @synthesize fullUnlockActionLabel=_fullUnlockActionLabel;
 @property (copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @synthesize hiddenPreviewsBodyPlaceholder=_hiddenPreviewsBodyPlaceholder;
+@property (nonatomic) BOOL hideDismissActionInCarPlay;
 @property (nonatomic) long long iPodOutAlertType;
 @property (nonatomic) BOOL ignoresQuietMode;
 @property (nonatomic) BOOL inertWhenLocked;
 @property (copy, nonatomic) NSString *missedBannerDescriptionFormat; // @synthesize missedBannerDescriptionFormat=_missedBannerDescriptionFormat;
+@property (nonatomic) BOOL playsMediaWhenRaised;
 @property (nonatomic) BOOL playsSoundForModify;
 @property (nonatomic) BOOL preemptsPresentedAlert;
 @property (nonatomic) BOOL preservesUnlockActionCase;
@@ -105,6 +117,7 @@
 @property (nonatomic) BOOL showsUnreadIndicatorForNoticesFeed;
 @property (nonatomic) unsigned long long subtypePriority;
 @property (copy, nonatomic) NSString *subtypeSummaryFormat; // @synthesize subtypeSummaryFormat=_subtypeSummaryFormat;
+@property (nonatomic) BOOL suppressDelayForForwardedBulletins;
 @property (nonatomic) BOOL suppressesAlertsWhenAppIsActive;
 @property (nonatomic) BOOL suppressesTitle;
 @property (strong, nonatomic) BBColor *tintColor; // @synthesize tintColor=_tintColor;

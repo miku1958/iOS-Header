@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitServices/UISApplicationStateServerDelegate-Protocol.h>
+#import <UIKitServices/BSServiceConnectionListenerDelegate-Protocol.h>
+#import <UIKitServices/UISApplicationStateXPCServerInterface-Protocol.h>
 
-@class FBSSerialQueue, NSString, UISApplicationStateServer;
+@class BSServiceConnectionListener, FBSSerialQueue, NSString;
 @protocol UISApplicationStateServiceDelegate;
 
-@interface UISApplicationStateService : NSObject <UISApplicationStateServerDelegate>
+@interface UISApplicationStateService : NSObject <BSServiceConnectionListenerDelegate, UISApplicationStateXPCServerInterface>
 {
-    UISApplicationStateServer *_server;
-    id<UISApplicationStateServiceDelegate> _delegate;
+    BSServiceConnectionListener *_listener;
     FBSSerialQueue *_calloutQueue;
+    id<UISApplicationStateServiceDelegate> _delegate;
     struct {
         unsigned int delegateDataSourceForApplicationBundleIdentifier:1;
     } _delegateFlags;
@@ -29,15 +30,19 @@
 
 - (void).cxx_destruct;
 - (id)_dataSourceForApplicationBundleIdentifier:(id)arg1;
-- (BOOL)_isClientAuthorized:(id)arg1 forApplicationBundleIdentifier:(id)arg2;
-- (id)client:(id)arg1 getBadgeValueForApplication:(id)arg2;
-- (double)client:(id)arg1 getNextWakeIntervalSinceReferenceDateForApplication:(id)arg2;
-- (BOOL)client:(id)arg1 getUsesBackgroundNetworkForApplication:(id)arg2;
-- (void)client:(id)arg1 setBadgeValue:(id)arg2 forApplication:(id)arg3;
-- (void)client:(id)arg1 setMinimumBackgroundFetchInterval:(double)arg2 forApplication:(id)arg3;
-- (void)client:(id)arg1 setNextWakeIntervalSinceReferenceDate:(double)arg2 forApplication:(id)arg3;
-- (void)client:(id)arg1 setUsesBackgroundNetwork:(BOOL)arg2 forApplication:(id)arg3;
+- (BOOL)_isCurrentConnectionAuthorizedForApplicationBundleIdentifier:(id)arg1 description:(id)arg2;
+- (BOOL)_isCurrentConnectionAuthorizedForApplicationBundleIdentifier:(id)arg1 description:(id)arg2 legacyEntitlement:(id)arg3;
+- (id)_operatingBundleIdentifier;
+- (void)badgeValueWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
 - (id)initWithCalloutQueue:(id)arg1;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (void)nextWakeIntervalSinceReferenceDateWithCompletion:(CDUnknownBlockType)arg1;
+- (oneway void)setBadgeValue:(id)arg1;
+- (oneway void)setMinimumBackgroundFetchInterval:(id)arg1;
+- (oneway void)setNextWakeIntervalSinceReferenceDate:(id)arg1;
+- (oneway void)setUsesBackgroundNetwork:(id)arg1;
+- (void)usesBackgroundNetworkWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

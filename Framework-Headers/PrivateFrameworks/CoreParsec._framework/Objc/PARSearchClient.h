@@ -8,7 +8,7 @@
 
 #import <CoreParsec/PARClientXPC-Protocol.h>
 
-@class NSMutableArray, NSString, NSXPCConnection, NSXPCListenerEndpoint, PARImageLoader, PARSessionConfiguration, QueryIdMapper;
+@class NSMutableArray, NSString, NSXPCConnection, NSXPCListenerEndpoint, PARImageLoader, PARSessionConfiguration;
 @protocol OS_dispatch_queue, PARDaemonXPC;
 
 @interface PARSearchClient : NSObject <PARClientXPC>
@@ -17,8 +17,6 @@
     NSMutableArray *_sessions;
     NSObject<OS_dispatch_queue> *_queue;
     _Atomic BOOL _configured;
-    NSObject<OS_dispatch_queue> *_idQueue;
-    QueryIdMapper *_idMapper;
     PARSessionConfiguration *_configuration;
     NSXPCConnection *_connection;
     PARImageLoader *_imageLoader;
@@ -38,7 +36,6 @@
 + (id)sharedClient;
 - (void).cxx_destruct;
 - (void)_invalidateConnection;
-- (unsigned long long)_queryId:(unsigned long long)arg1 forObject:(id)arg2;
 - (void)addCompletion:(id)arg1 forInput:(id)arg2;
 - (void)addSession:(id)arg1;
 - (void)bag:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -49,6 +46,7 @@
 - (void)didDeleteResource:(id)arg1;
 - (void)didDownloadResource:(id)arg1;
 - (void)fileHandleAndAttributesForResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)forceFetchBag:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getImageMap:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithConnection:(id)arg1;

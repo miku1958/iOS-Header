@@ -13,9 +13,11 @@
 + (id)_cardEligibilityStatusForCountryCode:(id)arg1;
 + (id)_currentIdentifier;
 + (id)_paymentServicesMerchantURLPromise;
++ (id)_shouldAttemptApplePayWithCountryCode:(id)arg1 paymentNetworks:(id)arg2;
 + (void)clearAutoEnrollmentIdentifier;
 + (BOOL)isBiometricACLUpgradeRequired;
 + (id)paymentServicesMerchantURL;
++ (BOOL)shouldAttemptApplePayClassicWithCountryCode:(id)arg1 paymentNetworks:(id)arg2;
 + (BOOL)shouldAttemptAutoEnrollment;
 + (BOOL)shouldAttemptAutoEnrollmentWithCountryCode:(id)arg1;
 + (BOOL)shouldUseAutoEnrollmentWithPercentage:(double)arg1 sessionDuration:(double)arg2;

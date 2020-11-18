@@ -8,28 +8,51 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class NSData, NSMutableArray, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOTFCompactRoadSpeeds : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     CDStruct_5df41632 _geoIds;
+    NSData *_openlr;
+    NSMutableArray *_predictedSpeeds;
     int _color;
     float _confidence;
     unsigned int _decayTimeWindowInMinutes;
     float _endOffset;
-    NSData *_openlr;
-    NSMutableArray *_predictedSpeeds;
     unsigned int _speedKph;
     float _startOffset;
     BOOL _hidden;
-    CDStruct_c254c6af _has;
+    struct {
+        unsigned int has_color:1;
+        unsigned int has_confidence:1;
+        unsigned int has_decayTimeWindowInMinutes:1;
+        unsigned int has_endOffset:1;
+        unsigned int has_speedKph:1;
+        unsigned int has_startOffset:1;
+        unsigned int has_hidden:1;
+        unsigned int read_geoIds:1;
+        unsigned int read_openlr:1;
+        unsigned int read_predictedSpeeds:1;
+        unsigned int wrote_geoIds:1;
+        unsigned int wrote_openlr:1;
+        unsigned int wrote_predictedSpeeds:1;
+        unsigned int wrote_color:1;
+        unsigned int wrote_confidence:1;
+        unsigned int wrote_decayTimeWindowInMinutes:1;
+        unsigned int wrote_endOffset:1;
+        unsigned int wrote_speedKph:1;
+        unsigned int wrote_startOffset:1;
+        unsigned int wrote_hidden:1;
+    } _flags;
 }
 
-@property (nonatomic) int color; // @synthesize color=_color;
-@property (nonatomic) float confidence; // @synthesize confidence=_confidence;
-@property (nonatomic) unsigned int decayTimeWindowInMinutes; // @synthesize decayTimeWindowInMinutes=_decayTimeWindowInMinutes;
-@property (nonatomic) float endOffset; // @synthesize endOffset=_endOffset;
+@property (nonatomic) int color;
+@property (nonatomic) float confidence;
+@property (nonatomic) unsigned int decayTimeWindowInMinutes;
+@property (nonatomic) float endOffset;
 @property (readonly, nonatomic) long long *geoIds;
 @property (readonly, nonatomic) unsigned long long geoIdsCount;
 @property (nonatomic) BOOL hasColor;
@@ -40,15 +63,21 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasOpenlr;
 @property (nonatomic) BOOL hasSpeedKph;
 @property (nonatomic) BOOL hasStartOffset;
-@property (nonatomic) BOOL hidden; // @synthesize hidden=_hidden;
-@property (strong, nonatomic) NSData *openlr; // @synthesize openlr=_openlr;
-@property (strong, nonatomic) NSMutableArray *predictedSpeeds; // @synthesize predictedSpeeds=_predictedSpeeds;
-@property (nonatomic) unsigned int speedKph; // @synthesize speedKph=_speedKph;
-@property (nonatomic) float startOffset; // @synthesize startOffset=_startOffset;
+@property (nonatomic) BOOL hidden;
+@property (strong, nonatomic) NSData *openlr;
+@property (strong, nonatomic) NSMutableArray *predictedSpeeds;
+@property (nonatomic) unsigned int speedKph;
+@property (nonatomic) float startOffset;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)predictedSpeedType;
 - (void).cxx_destruct;
 - (int)StringAsColor:(id)arg1;
+- (void)_addNoFlagsGeoIds:(long long)arg1;
+- (void)_addNoFlagsPredictedSpeed:(id)arg1;
+- (void)_readGeoIds;
+- (void)_readOpenlr;
+- (void)_readPredictedSpeeds;
 - (void)addGeoIds:(long long)arg1;
 - (void)addPredictedSpeed:(id)arg1;
 - (void)clearGeoIds;
@@ -65,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)predictedSpeedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)predictedSpeedsCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setGeoIds:(long long *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

@@ -8,21 +8,37 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOAlert : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSString *_content;
     NSString *_title;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_content:1;
+        unsigned int read_title:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_content:1;
+        unsigned int wrote_title:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *content; // @synthesize content=_content;
+@property (strong, nonatomic) NSString *content;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (readonly, nonatomic) BOOL hasTitle;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSString *title;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readContent;
+- (void)_readTitle;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -19,16 +19,20 @@
 @property (nonatomic) double minimumConfidence; // @synthesize minimumConfidence=_minimumConfidence;
 @property (nonatomic) unsigned long long priority; // @synthesize priority=_priority;
 
++ (void)configureForRunningOnANEIfPossibleWithRequest:(id)arg1;
 + (unsigned long long)defaultPriority;
++ (BOOL)isANEDeviceAvailable;
 + (BOOL)supportsSecureCoding;
 - (id)_diagnosticNameForRequests:(id)arg1 diagnostics:(id)arg2;
 - (void)boostEffectivePriority;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluate:(id)arg1;
+- (BOOL)evaluateRequests:(id)arg1 withContext:(id)arg2 requestHandlerOptions:(id)arg3 error:(id *)arg4;
 - (id)initWithCoder:(id)arg1;
 - (void)nodeInitialize;
 - (void)resetEffectivePriority;
 - (BOOL)shouldEvaluate:(id)arg1;
+- (BOOL)validateVisionKitSoftLinkSymbols;
 
 @end
 

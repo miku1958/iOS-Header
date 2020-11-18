@@ -25,6 +25,7 @@
 - (void)deleteBackward:(unsigned long long)arg1;
 - (void)deleteForward:(unsigned long long)arg1;
 - (void)deleteHandwritingStrokes:(id)arg1;
+- (void)deleteTextBackward:(id)arg1;
 - (id)initWithKeyboardState:(id)arg1;
 - (void)insertText:(id)arg1;
 - (void)insertTextAfterSelection:(id)arg1;

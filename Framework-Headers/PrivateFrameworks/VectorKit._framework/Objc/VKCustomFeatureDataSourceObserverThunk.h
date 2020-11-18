@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)clearObserver;
 - (void)dataSource:(id)arg1 didChangeSceneID:(unsigned char)arg2;
 - (void)dataSource:(id)arg1 didChangeSceneState:(unsigned char)arg2;
-- (void)dataSource:(id)arg1 featuresDidChangeForRect:(CDStruct_90e2a262)arg2;
+- (void)dataSource:(id)arg1 featuresDidChangeForRect:(CDStruct_02837cd9)arg2;
 - (void)dealloc;
 - (id)initWithDataSource:(id)arg1 observer:(struct LabelCustomFeatureProvider *)arg2;
 

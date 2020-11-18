@@ -8,7 +8,7 @@
 
 #import <HealthUI/NSCopying-Protocol.h>
 
-@class HKDisplayCategory, HKDisplayTypeChartingRules, HKObjectType, HKSampleType, HKValueRange, NSAttributedString, NSDictionary, NSPredicate, NSSet, NSString, UIImage;
+@class HKDisplayCategory, HKDisplayTypeChartingRules, HKObjectType, HKSampleType, HKValueRange, NSArray, NSAttributedString, NSDictionary, NSPredicate, NSSet, NSString, UIImage;
 
 @interface HKDisplayType : NSObject <NSCopying>
 {
@@ -29,18 +29,21 @@
     NSString *_healthKitLocalizationTableNameOverride;
     NSString *_listIconImageNameOverride;
     UIImage *_listIconOverride;
+    NSString *_detailImageName;
+    UIImage *_detailImage;
     BOOL _summaryAttributionHasLink;
     BOOL _showAllDataHierarchically;
     BOOL _shouldDisplayUnitStringOnYAxis;
     BOOL _disallowsSourceReordering;
     BOOL _excludeFromDataTypeSearch;
+    BOOL _useSecondsWhenDisplayingDuration;
     BOOL _shouldUseSingleSecondaryValue;
     BOOL __wheelchairUser;
     long long _displayTypeIdentifier;
     long long _categoryIdentifier;
+    NSArray *_secondaryCategoryIdentifiers;
     double _scalarValue;
     NSDictionary *_unitNameKeyOverrides;
-    UIImage *_detailImage;
     NSAttributedString *_attributedSummaryAttribution;
     HKDisplayTypeChartingRules *_chartingRules;
     unsigned long long _statisticsMergeStrategy;
@@ -57,10 +60,11 @@
 @property (readonly, nonatomic) NSString *cautionaryText;
 @property (readonly, nonatomic) HKDisplayTypeChartingRules *chartingRules; // @synthesize chartingRules=_chartingRules;
 @property (strong, nonatomic) HKValueRange *defaultAxisRangeOverride; // @synthesize defaultAxisRangeOverride=_defaultAxisRangeOverride;
-@property (readonly, nonatomic) UIImage *detailImage; // @synthesize detailImage=_detailImage;
+@property (readonly, nonatomic) UIImage *detailImage;
 @property (readonly, nonatomic) BOOL disallowsSourceReordering; // @synthesize disallowsSourceReordering=_disallowsSourceReordering;
 @property (readonly, nonatomic) HKDisplayCategory *displayCategory;
 @property (readonly, nonatomic) NSString *displayName;
+@property (readonly, copy, nonatomic) NSString *displayNameKey; // @synthesize displayNameKey=_displayNameKey;
 @property (readonly, nonatomic) UIImage *displayTypeIcon;
 @property (readonly, nonatomic) long long displayTypeIdentifier; // @synthesize displayTypeIdentifier=_displayTypeIdentifier;
 @property (readonly, nonatomic) NSString *embeddedDisplayName;
@@ -80,6 +84,8 @@
 @property (readonly, nonatomic) unsigned long long roundingMode;
 @property (readonly, nonatomic) HKSampleType *sampleType;
 @property (readonly, nonatomic) double scalarValue; // @synthesize scalarValue=_scalarValue;
+@property (readonly, nonatomic) NSArray *secondaryCategoryIdentifiers; // @synthesize secondaryCategoryIdentifiers=_secondaryCategoryIdentifiers;
+@property (readonly, nonatomic) NSArray *secondaryDisplayCategories;
 @property (readonly, nonatomic) UIImage *shareIcon;
 @property (readonly, nonatomic) NSString *shortenedDisplayName;
 @property (nonatomic) BOOL shouldDisplayUnitStringOnYAxis; // @synthesize shouldDisplayUnitStringOnYAxis=_shouldDisplayUnitStringOnYAxis;
@@ -95,12 +101,14 @@
 @property (readonly, nonatomic) UIImage *unitIcon;
 @property (readonly, nonatomic) NSDictionary *unitNameKeyOverrides; // @synthesize unitNameKeyOverrides=_unitNameKeyOverrides;
 @property (readonly, nonatomic) BOOL unitPreferencesRequireChangeConfirmation;
+@property (readonly, nonatomic) BOOL useSecondsWhenDisplayingDuration; // @synthesize useSecondsWhenDisplayingDuration=_useSecondsWhenDisplayingDuration;
 
 - (void).cxx_destruct;
 - (void)_applyChartingProperties:(id)arg1;
 - (void)_applyScalarValue:(id)arg1;
 - (void)_applySummaryAndAttributionPropertiesWithDictionary:(id)arg1;
 - (void)_applyTextualPropertiesWithDictionary:(id)arg1 displayNameKey:(id)arg2;
+- (id)_audioExposureHistogramDataSourceForAudioExposureTypeIdentifier:(id)arg1 withHealthStore:(id)arg2;
 - (id)_bloodPressureDataSourceWithHealthStore:(id)arg1;
 - (CDUnknownBlockType)_bloodPressureUserInfoBlock;
 - (id)_countDataSourceWithHealthStore:(id)arg1;
@@ -108,7 +116,6 @@
 - (id)_dataSourceForQuantityType:(id)arg1 timeScope:(long long)arg2 unitController:(id)arg3 healthStore:(id)arg4;
 - (id)_dataSourceForTimeScope:(long long)arg1 dataCacheController:(id)arg2;
 - (id)_dataSourceForWorkoutsWithTimeScope:(long long)arg1 healthStore:(id)arg2;
-- (id)_dimensionForChartAxisWithUnitController:(id)arg1;
 - (id)_generateBarSeriesWithFillStyle:(id)arg1;
 - (id)_generateBloodPressureSeriesWithColor:(id)arg1;
 - (id)_generateDailySleepSeriesWithColor:(id)arg1;
@@ -135,6 +142,12 @@
 - (CDUnknownBlockType)_singleValueUserInfoBlockWithUnitController:(id)arg1 displayType:(id)arg2 statisticsOption:(unsigned long long)arg3;
 - (id)_stackedDataSourceForCategoryType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
 - (id)_statFormatterItemOptionsForQuantityType:(id)arg1 timeScope:(long long)arg2;
+- (BOOL)_supportsDayTimeScope;
+- (BOOL)_supportsFiveYearTimeScope;
+- (BOOL)_supportsHourTimeScope;
+- (BOOL)_supportsMonthTimeScope;
+- (BOOL)_supportsWeekTimeScope;
+- (BOOL)_supportsYearTimeScope;
 - (id)_timePeriodDataSourceForSampleType:(id)arg1 timeScope:(long long)arg2 healthStore:(id)arg3;
 - (id)_timePeriodDisplayPrefix;
 - (id)adjustedValueForClientValue:(id)arg1;
@@ -149,13 +162,17 @@
 - (unsigned long long)hk_chartCalendarUnitForTimeScope:(long long)arg1;
 - (id)hk_customSeriesPointIntervalComponentsForTimeScope:(long long)arg1;
 - (id)hk_dashboardChartBoundStringFromValue:(id)arg1 defaultNumberFormatter:(id)arg2 unitController:(id)arg3;
+- (id)hk_dimensionForChartAxisWithUnitController:(id)arg1;
 - (id)hk_enumeratedValueLabels;
 - (id)hk_interactiveChartAxisStringFromValue:(id)arg1 defaultNumberFormatter:(id)arg2 unitController:(id)arg3;
+- (unsigned long long)hk_interactiveChartOptions;
 - (BOOL)hk_interactiveChartsDataSourceDependsOnTimeScope;
 - (id)hk_interactiveChartsDataSourceForTimeScope:(long long)arg1 healthStore:(id)arg2 unitController:(id)arg3;
 - (id)hk_interactiveChartsFormatterForTimeScope:(long long)arg1;
+- (BOOL)hk_isSupportedTimeScope:(long long)arg1;
 - (id)hk_numberFormatterForUnit:(id)arg1;
 - (id)hk_numberFormatterForUnit:(id)arg1 formattingContext:(long long)arg2;
+- (long long)hk_stackedChartSectionsCountForTimeScope:(long long)arg1;
 - (id)hk_standardSeriesForTimeScope:(long long)arg1 displayCategory:(id)arg2 unitController:(id)arg3 dataCacheController:(id)arg4 displayCategoryController:(id)arg5;
 - (CDUnknownBlockType)hk_startOfDayTransform;
 - (id)hk_valueFormatterForUnit:(id)arg1;
@@ -164,6 +181,7 @@
 - (id)init;
 - (id)initFromDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)listIconOverride;
 - (unsigned long long)presentationOptionsForTimeScope:(long long)arg1;
 - (id)unitDisplayNameKeyOverrideForUnit:(id)arg1;
 - (id)unitNameForValue:(id)arg1 unitPreferenceController:(id)arg2;

@@ -25,6 +25,7 @@
 - (float)floatForKey:(id)arg1;
 - (id)init;
 - (id)objectForKey:(id)arg1;
+- (id)objectForKey:(id)arg1 defaultValue:(id)arg2;
 - (void)setFloat:(float)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 

@@ -9,12 +9,9 @@
 @protocol TSDModelContainer
 
 @property (readonly, nonatomic) NSArray *containedModels;
-@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 
 - (void)insertContainedModel:(TSPObject *)arg1 atIndex:(unsigned long long)arg2;
 - (void)moveModel:(TSPObject *)arg1 toIndex:(unsigned long long)arg2;
 - (void)removeContainedModel:(TSPObject *)arg1;
-
-@optional
 @end
 

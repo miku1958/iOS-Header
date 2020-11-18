@@ -29,13 +29,13 @@
 @property (strong, nonatomic) UIFont *publisherTextFont; // @synthesize publisherTextFont=_publisherTextFont;
 @property (nonatomic) struct CGRect publisherTextFrame; // @synthesize publisherTextFrame=_publisherTextFrame;
 @property (nonatomic) long long publisherTextNumberOfLines; // @synthesize publisherTextNumberOfLines=_publisherTextNumberOfLines;
-@property (strong, nonatomic) NSParagraphStyle *publisherTextParagraphStyle; // @synthesize publisherTextParagraphStyle=_publisherTextParagraphStyle;
+@property (readonly, nonatomic) NSParagraphStyle *publisherTextParagraphStyle; // @synthesize publisherTextParagraphStyle=_publisherTextParagraphStyle;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (strong, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
 @property (nonatomic) double titleFontSize; // @synthesize titleFontSize=_titleFontSize;
 @property (nonatomic) struct CGRect titleFrame; // @synthesize titleFrame=_titleFrame;
 @property (nonatomic) long long titleNumberOfLines; // @synthesize titleNumberOfLines=_titleNumberOfLines;
-@property (strong, nonatomic) NSParagraphStyle *titleParagraphStyle; // @synthesize titleParagraphStyle=_titleParagraphStyle;
+@property (readonly, nonatomic) NSParagraphStyle *titleParagraphStyle; // @synthesize titleParagraphStyle=_titleParagraphStyle;
 
 + (id)layoutAttributesForCellWithIndexPath:(id)arg1 feedSettings:(id)arg2;
 + (struct CGSize)publisherLogoSizeFeedSettings:(id)arg1;

@@ -8,25 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOTransitSegmentArtworkSet : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     CDStruct_9f2792e4 _artworkIndexs;
     NSMutableArray *_clusters;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_artworkIndexs:1;
+        unsigned int read_clusters:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_artworkIndexs:1;
+        unsigned int wrote_clusters:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) unsigned int *artworkIndexs;
 @property (readonly, nonatomic) unsigned long long artworkIndexsCount;
-@property (strong, nonatomic) NSMutableArray *clusters; // @synthesize clusters=_clusters;
+@property (strong, nonatomic) NSMutableArray *clusters;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)clusterType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsArtworkIndex:(unsigned int)arg1;
+- (void)_addNoFlagsCluster:(id)arg1;
+- (void)_readArtworkIndexs;
+- (void)_readClusters;
 - (void)addArtworkIndex:(unsigned int)arg1;
 - (void)addCluster:(id)arg1;
 - (unsigned int)artworkIndexAtIndex:(unsigned long long)arg1;
 - (void)clearArtworkIndexs;
 - (void)clearClusters;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (id)clusterAtIndex:(unsigned long long)arg1;
 - (unsigned long long)clustersCount;
 - (void)copyTo:(id)arg1;
@@ -37,6 +55,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

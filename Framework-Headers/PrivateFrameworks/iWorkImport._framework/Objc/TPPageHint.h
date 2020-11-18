@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSSet *_startingPartitionedAttachments;
     NSObject<TSWPTopicNumberHints> *_topicNumbers;
     NSDictionary *_flowTopicNumbers;
+    BOOL _hasForcedFootnotes;
 }
 
 @property (strong, nonatomic) TSUNoCopyDictionary *anchoredDrawablePositions; // @synthesize anchoredDrawablePositions=_anchoredDrawablePositions;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<TSDHint> firstChildHint;
 @property (nonatomic) struct _NSRange footnoteAutoNumberRange; // @synthesize footnoteAutoNumberRange=_footnoteAutoNumberRange;
 @property (nonatomic) struct _NSRange footnoteLayoutRange; // @synthesize footnoteLayoutRange=_footnoteLayoutRange;
+@property (nonatomic) BOOL hasForcedFootnotes; // @synthesize hasForcedFootnotes=_hasForcedFootnotes;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<TSDHint> lastChildHint;
 @property (readonly, nonatomic) BOOL lastLineIsEmptyAndHasListLabel;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct _NSRange range;
 @property (strong, nonatomic) NSSet *startingPartitionedAttachments; // @synthesize startingPartitionedAttachments=_startingPartitionedAttachments;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL terminatedByBreak;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *topicNumbers;
 
 - (void).cxx_destruct;

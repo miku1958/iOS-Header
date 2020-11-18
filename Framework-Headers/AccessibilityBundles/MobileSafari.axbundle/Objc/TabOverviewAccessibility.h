@@ -22,7 +22,7 @@
 - (void)_dismissWithItemAtCurrentDecelerationFactor:(id)arg1;
 - (BOOL)_isClosingLastItem;
 - (BOOL)accessibilityScroll:(long long)arg1;
-- (id)initWithFrame:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityOpaqueElementProvider;
 - (void)layoutSubviews;
 - (BOOL)shouldGroupAccessibilityChildren;

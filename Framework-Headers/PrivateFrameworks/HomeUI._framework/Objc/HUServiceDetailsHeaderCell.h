@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
-@class HFItem, HUGridServiceCell, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UIStackView, UITextView;
+@class HFItem, NSArray, NSLayoutConstraint, NSString, UIActivityIndicatorView, UIButton, UILabel, UIStackView, UITextView;
 @protocol HUResizableCellDelegate;
 
 @interface HUServiceDetailsHeaderCell : UITableViewCell <HUCellProtocol>
@@ -17,7 +17,6 @@
     id<HUResizableCellDelegate> _resizingDelegate;
     UIButton *_actionButton;
     UITextView *_messageTextView;
-    HUGridServiceCell *_serviceCell;
     NSArray *_hiddenMessageTextViewConstraints;
     NSArray *_visibleMessageTextViewConstraints;
     UIStackView *_titleSpinnerStackView;
@@ -39,7 +38,6 @@
 @property (strong, nonatomic) NSLayoutConstraint *messageBottomConstraint; // @synthesize messageBottomConstraint=_messageBottomConstraint;
 @property (strong, nonatomic) UITextView *messageTextView; // @synthesize messageTextView=_messageTextView;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate; // @synthesize resizingDelegate=_resizingDelegate;
-@property (strong, nonatomic) HUGridServiceCell *serviceCell; // @synthesize serviceCell=_serviceCell;
 @property (strong, nonatomic) NSLayoutConstraint *spinnerBottomConstraint; // @synthesize spinnerBottomConstraint=_spinnerBottomConstraint;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -50,7 +48,6 @@
 - (void).cxx_destruct;
 - (void)_configureConstraints;
 - (id)_hiddenMessageTextViewConstraints;
-- (BOOL)_shouldShowServiceCell;
 - (void)_updateErrorLabelConstraints;
 - (void)_updateRequiredHeightIfNeeded;
 - (id)_visibleMessageTextViewConstraints;

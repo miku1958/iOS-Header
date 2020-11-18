@@ -12,9 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (id)immutablePlaceholder;
 + (void)initialize;
-+ (id)mutablePlaceholder;
 - (unsigned long long)count;
 - (void)dealloc;
 - (unsigned long long)indexOfObject:(id)arg1;

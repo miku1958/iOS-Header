@@ -21,6 +21,7 @@
 @property (copy, nonatomic) HFCroppedWallpaperInfo *cropInfo; // @synthesize cropInfo=_cropInfo;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (struct CGSize)contentSizeForWallpaper;
 + (id)customWallpaperWithAssetIdentifier:(id)arg1;
 + (struct CGSize)size;
 - (void).cxx_destruct;

@@ -64,7 +64,7 @@
 - (id)removeAttribute:(id)arg1 ifInconsistentAtLocation:(unsigned long long)arg2 inTextStorage:(id)arg3 forNewTypingAttributes:(id)arg4;
 - (void)removeLetterpressInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)resetGuessedFontSizes;
-- (id)strippedTypingAttributesForEmptyParagraph:(id)arg1 atTheEndOfDocument:(BOOL)arg2 isTyping:(BOOL)arg3;
+- (id)strippedTypingAttributesAtStartOfParagraph:(id)arg1 atTheEndOfDocument:(BOOL)arg2 isTyping:(BOOL)arg3;
 - (void)styleFontInAttributedString:(id)arg1 inRange:(struct _NSRange)arg2 contentSizeCategory:(id)arg3;
 - (void)styleFontInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)styleForModelAttributes:(id)arg1;
@@ -78,6 +78,8 @@
 - (id)titleAttributes;
 - (id)titleAttributesWithContentSizeCategory:(id)arg1;
 - (id)typingAttributesForRange:(struct _NSRange)arg1 forSelectionChange:(BOOL)arg2 currentTypingAttributes:(id)arg3 inTextStorage:(id)arg4;
+- (id)typingAttributesForRange:(struct _NSRange)arg1 forSelectionChange:(BOOL)arg2 forSettingTextStyle:(BOOL)arg3 currentTypingAttributes:(id)arg4 inTextStorage:(id)arg5;
+- (id)typingAttributesForSettingTextStyleForRange:(struct _NSRange)arg1 currentTypingAttributes:(id)arg2 inTextStorage:(id)arg3;
 
 @end
 

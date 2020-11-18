@@ -4,20 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotoLibraryServices/PLAbstractLibraryServicesManagerService.h>
 
 #import <PhotoLibraryServices/PLAssetsdResourceInternalServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PLAssetsdResourceInternalService : NSObject <PLAssetsdResourceInternalServiceProtocol>
+@interface PLAssetsdResourceInternalService : PLAbstractLibraryServicesManagerService <PLAssetsdResourceInternalServiceProtocol>
 {
+    NSString *_trustedCallerBundleID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (void)asynchronousMasterThumbnailForAssetUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)batchSaveAssetJobs:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)initWithLibraryServicesManager:(id)arg1 trustedCallerBundleID:(id)arg2;
+- (void)prepareRevertToOriginalWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)purgeExpiredOutboundSharingAssetsWithReply:(CDUnknownBlockType)arg1;
 
 @end
 

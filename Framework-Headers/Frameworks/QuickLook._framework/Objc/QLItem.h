@@ -8,12 +8,12 @@
 
 #import <QuickLook/NSSecureCoding-Protocol.h>
 #import <QuickLook/QLPreviewItemPrivateProtocol-Protocol.h>
-#import <QuickLook/QLSExtensionThumbnailItem-Protocol.h>
+#import <QuickLook/QLTExtensionThumbnailItem-Protocol.h>
 
-@class FPItem, FPSandboxingURLWrapper, NSData, NSDictionary, NSItemProvider, NSNumber, NSString, NSURL, NSUUID, QLItemFetcher, QLUTIAnalyzer, UIColor, UIDocumentInteractionController;
+@class FPItem, FPSandboxingURLWrapper, NSData, NSDictionary, NSItemProvider, NSNumber, NSString, NSURL, NSUUID, QLItemFetcher, QLPreviewItemEditedCopy, QLUTIAnalyzer, UIColor;
 @protocol QLItemThumbnailGeneratorProtocolInternal, QLPreviewItemDataProvider, QLPreviewItemPrivateProtocol;
 
-@interface QLItem : NSObject <QLSExtensionThumbnailItem, QLPreviewItemPrivateProtocol, NSSecureCoding>
+@interface QLItem : NSObject <QLTExtensionThumbnailItem, QLPreviewItemPrivateProtocol, NSSecureCoding>
 {
     long long _editedFileExtensionHandle;
     BOOL _useAVPlayerViewController;
@@ -22,14 +22,15 @@
     BOOL _wantsPreviewInDebugViewController;
     BOOL _isPromisedItem;
     BOOL _canBeEdited;
+    BOOL _canHandleEditedCopy;
+    BOOL _originalContentWasUpdated;
     BOOL _canBeShared;
     BOOL _hasDeterminedShouldUseExtensionPreview;
     BOOL _shouldUseExtensionPreview;
     BOOL _hasDeterminedShouldUseExtensionThumbnail;
     BOOL _shouldUseExtensionThumbnail;
+    BOOL _needsAccessToExternalResources;
     NSNumber *_previewItemProviderProgress;
-    NSURL *_editedFileURL;
-    NSDictionary *_previewOptions;
     FPItem *_fpItem;
     id<QLPreviewItemPrivateProtocol> _originalPreviewItem;
     NSURL *_previewItemURL;
@@ -39,7 +40,6 @@
     NSString *_spotlightQueryString;
     NSString *_searchableItemApplicationBundleIdentifier;
     NSString *_relativePath;
-    UIDocumentInteractionController *_archiveController;
     NSItemProvider *_previewItemProvider;
     NSNumber *_itemSize;
     QLItemFetcher *_fetcher;
@@ -48,29 +48,35 @@
     NSString *_previewItemContentType;
     UIColor *_backgroundColorOverride;
     NSString *_previewItemTitle;
+    QLPreviewItemEditedCopy *_editedCopy;
+    QLPreviewItemEditedCopy *_lastSavedEditedCopy;
     NSString *_password;
     NSUUID *_uuid;
     unsigned long long _previewItemType;
-    unsigned long long _thumbnailItemType;
     long long _processIdentifier;
+    long long _editingMode;
     unsigned long long _editedFileBehavior;
     FPSandboxingURLWrapper *_sandboxingURLWrapper;
+    NSDictionary *_clientPreviewOptions;
 }
 
 @property (readonly) NSString *MIMEType;
 @property (strong, nonatomic) QLUTIAnalyzer *UTIAnalyzer; // @synthesize UTIAnalyzer=_UTIAnalyzer;
-@property (strong) UIDocumentInteractionController *archiveController; // @synthesize archiveController=_archiveController;
 @property (readonly) double autoPlaybackPosition;
 @property (strong, nonatomic) UIColor *backgroundColorOverride; // @synthesize backgroundColorOverride=_backgroundColorOverride;
 @property (nonatomic) BOOL canBeEdited; // @synthesize canBeEdited=_canBeEdited;
 @property (nonatomic) BOOL canBeShared; // @synthesize canBeShared=_canBeShared;
+@property (nonatomic) BOOL canHandleEditedCopy; // @synthesize canHandleEditedCopy=_canHandleEditedCopy;
+@property (copy, nonatomic) NSDictionary *clientPreviewOptions; // @synthesize clientPreviewOptions=_clientPreviewOptions;
 @property (readonly, copy, nonatomic) NSString *contentType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) QLPreviewItemEditedCopy *editedCopy; // @synthesize editedCopy=_editedCopy;
 @property (nonatomic) unsigned long long editedFileBehavior; // @synthesize editedFileBehavior=_editedFileBehavior;
-@property (strong, nonatomic) NSURL *editedFileURL; // @synthesize editedFileURL=_editedFileURL;
+@property (readonly, nonatomic) NSURL *editedFileURL;
+@property (nonatomic) long long editingMode; // @synthesize editingMode=_editingMode;
 @property (strong, nonatomic) QLItemFetcher *fetcher; // @synthesize fetcher=_fetcher;
 @property (strong) FPItem *fpItem; // @synthesize fpItem=_fpItem;
 @property (nonatomic) BOOL hasDeterminedShouldUseExtensionPreview; // @dynamic hasDeterminedShouldUseExtensionPreview;
@@ -81,6 +87,10 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isPromisedItem; // @synthesize isPromisedItem=_isPromisedItem;
 @property (strong, nonatomic) NSNumber *itemSize; // @synthesize itemSize=_itemSize;
+@property (strong, nonatomic) QLPreviewItemEditedCopy *lastSavedEditedCopy; // @synthesize lastSavedEditedCopy=_lastSavedEditedCopy;
+@property BOOL needsAccessToExternalResources;
+@property BOOL needsAccessToExternalResources; // @synthesize needsAccessToExternalResources=_needsAccessToExternalResources;
+@property (nonatomic) BOOL originalContentWasUpdated; // @synthesize originalContentWasUpdated=_originalContentWasUpdated;
 @property (strong, nonatomic) id<QLPreviewItemPrivateProtocol> originalPreviewItem; // @synthesize originalPreviewItem=_originalPreviewItem;
 @property (strong) NSString *password; // @synthesize password=_password;
 @property (strong, nonatomic) NSString *previewItemContentType; // @synthesize previewItemContentType=_previewItemContentType;
@@ -92,7 +102,7 @@
 @property (nonatomic) unsigned long long previewItemType; // @synthesize previewItemType=_previewItemType;
 @property (strong, nonatomic) NSURL *previewItemURL; // @synthesize previewItemURL=_previewItemURL;
 @property (readonly) NSURL *previewItemURLForDisplay;
-@property (copy, nonatomic) NSDictionary *previewOptions; // @synthesize previewOptions=_previewOptions;
+@property (copy, nonatomic) NSDictionary *previewOptions;
 @property long long processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property (strong) NSString *relativePath; // @synthesize relativePath=_relativePath;
 @property (strong, nonatomic) FPSandboxingURLWrapper *sandboxingURLWrapper; // @synthesize sandboxingURLWrapper=_sandboxingURLWrapper;
@@ -106,7 +116,6 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<QLItemThumbnailGeneratorProtocolInternal> thumbnailGenerator; // @synthesize thumbnailGenerator=_thumbnailGenerator;
-@property (nonatomic) unsigned long long thumbnailItemType; // @synthesize thumbnailItemType=_thumbnailItemType;
 @property BOOL useAVPlayerViewController; // @synthesize useAVPlayerViewController=_useAVPlayerViewController;
 @property (nonatomic) BOOL useFullPDFTransition; // @synthesize useFullPDFTransition=_useFullPDFTransition;
 @property (nonatomic) BOOL useLoadingTimeout; // @synthesize useLoadingTimeout=_useLoadingTimeout;
@@ -114,20 +123,22 @@
 @property (readonly) BOOL wantsDefaultMediaPlayer;
 @property BOOL wantsPreviewInDebugViewController; // @synthesize wantsPreviewInDebugViewController=_wantsPreviewInDebugViewController;
 
-+ (id)_allPreviewClasses;
-+ (id)_newEditedFileURLForItem:(id)arg1;
-+ (unsigned long long)_previewItemTypeForPreviewClass:(Class)arg1;
++ (BOOL)contentTypeConformsToRTFD:(id)arg1;
 + (id)contentTypesToPreviewTypes;
++ (id)customExtensionCommunicationEncodedClasses;
 + (id)encodedClasses;
 + (id)itemWithPreviewItem:(id)arg1;
-+ (id)previewOptionEncodedClasses;
++ (id)rtfContentTypes;
 + (BOOL)shouldUseRemoteCollection:(id)arg1;
 + (id)supportedContentTypes;
 + (BOOL)supportsSecureCoding;
++ (id)webContentTypes;
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (unsigned long long)_getPreviewItemType;
-- (unsigned long long)_getThumbnailItemType;
+- (void)_removeEditedCopyIfExists;
+- (unsigned long long)_uncachedExtensionPreviewItemType;
+- (unsigned long long)_uncachedPreviewItemType;
 - (BOOL)canBePreviewed;
 - (BOOL)canBePrintedWithCustomPrinter;
 - (id)createPreviewContext;
@@ -140,7 +151,6 @@
 - (id)initWithDataProvider:(id)arg1 contentType:(id)arg2 previewTitle:(id)arg3;
 - (id)initWithFPItem:(id)arg1;
 - (id)initWithPreviewItemProvider:(id)arg1 contentType:(id)arg2 previewTitle:(id)arg3 fileSize:(id)arg4;
-- (id)initWithRelativePath:(id)arg1 archiveController:(id)arg2;
 - (id)initWithSearchableItemUniqueIdentifier:(id)arg1 applicationBundleIdentifier:(id)arg2;
 - (id)initWithSearchableItemUniqueIdentifier:(id)arg1 queryString:(id)arg2 applicationBundleIdentifier:(id)arg3 previewTitle:(id)arg4;
 - (id)initWithURL:(id)arg1;
@@ -149,15 +159,18 @@
 - (id)internalCopy;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isStandardQuickLookType;
+- (double)maxLoadingTime;
 - (unsigned long long)maximumNumberOfCachedPreviews;
 - (void)prepareSaveURL:(CDUnknownBlockType)arg1;
 - (void)prepareShareableURL:(CDUnknownBlockType)arg1;
-- (Class)previewItemViewControllerClass;
+- (id)previewItemPrintingViewControllerClassName;
+- (id)previewItemViewControllerClassName;
 - (struct CGSize)previewSizeForItemViewControllerSize:(struct CGSize)arg1;
 - (void)provideURLWrapper:(CDUnknownBlockType)arg1;
 - (id)saveURL;
-- (void)setEditedFileURL:(id)arg1 withSandboxExtension:(id)arg2;
 - (id)shareableURL;
+- (BOOL)shouldUseRemoteViewController;
+- (Class)transformerClass;
 - (BOOL)useExtensionPreview;
 - (BOOL)useExtensionThumbnail;
 

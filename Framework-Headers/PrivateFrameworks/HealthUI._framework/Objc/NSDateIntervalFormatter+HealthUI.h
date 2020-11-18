@@ -10,10 +10,12 @@
 + (id)hk_dateTimeDateIntervalFormatter;
 + (id)hk_dayIntervalFormatter;
 + (id)hk_hourDateIntervalFormatter;
++ (id)hk_hourDateIntervalWithDateFormatter;
 + (id)hk_hourMinuteOnlyDateIntervalFormatter;
 + (id)hk_hourOnlyDateIntervalFormatter;
 + (id)hk_monthDayYearIntervalFormatter;
 + (id)hk_monthIntervalFormatter;
++ (id)hk_monthYearIntervalFormatter;
 + (id)hk_sleepListDateIntervalFormatter;
 + (id)hk_yearIntervalFormatter;
 @end

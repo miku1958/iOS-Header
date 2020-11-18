@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)groupsFromABGroups:(struct __CFArray *)arg1;
 + (void)initialize;
 + (id)numberFromIntegerABBytes:(char *)arg1 length:(unsigned long long)arg2;
++ (id)os_log;
 + (CDUnknownBlockType)personToContactTransformWithKeysToFetch:(id)arg1 mutable:(BOOL)arg2;
 + (const struct __CFSet *)requiredABPropertyIDSetForKeysToFetch:(id)arg1;
 + (id)stringFromABBytes:(char *)arg1 length:(unsigned long long)arg2;

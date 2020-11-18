@@ -8,18 +8,19 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDApplicationInfo, NSArray, NSHashTable, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class HMDApplicationInfo, HMFLocationAuthorization, NSArray, NSHashTable, NSObject, NSString;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDProcessInfo : HMFObject <HMFLogging>
 {
+    id<HMFLocking> _lock;
     BOOL _viewService;
     int _pid;
     unsigned long long _state;
     HMDApplicationInfo *_appInfo;
+    HMFLocationAuthorization *_locationAuthorization;
     NSArray *_runningReasons;
     NSObject<OS_dispatch_queue> *_xpcQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSHashTable *_connectionProxies;
 }
 
@@ -31,8 +32,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isForegrounded) BOOL foreground;
 @property (readonly) unsigned long long hash;
+@property (readonly) HMFLocationAuthorization *locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSArray *runningReasons; // @synthesize runningReasons=_runningReasons;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;

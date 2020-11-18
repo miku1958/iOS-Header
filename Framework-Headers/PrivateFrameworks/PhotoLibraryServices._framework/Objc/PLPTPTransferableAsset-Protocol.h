@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) int avalanchePickType;
 @property (readonly, copy, nonatomic) NSString *avalancheUUID;
+@property (readonly, nonatomic) BOOL cloudPhotoLibraryEnabled;
 @property (readonly, copy, nonatomic) NSDate *dateCreated;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) int embeddedThumbnailOffset;
@@ -39,13 +40,21 @@
 @property (readonly, copy, nonatomic) NSString *pathForDiagnosticFile;
 @property (readonly, copy, nonatomic) NSString *pathForFullsizeRenderImageFile;
 @property (readonly, copy, nonatomic) NSString *pathForFullsizeRenderVideoFile;
+@property (readonly, copy, nonatomic) NSString *pathForOriginalAdjustmentFile;
 @property (readonly, copy, nonatomic) NSString *pathForOriginalFile;
+@property (readonly, copy, nonatomic) NSString *pathForPenultimateFullsizeRenderImageFile;
+@property (readonly, copy, nonatomic) NSString *pathForPenultimateFullsizeRenderVideoFile;
+@property (readonly, copy, nonatomic) NSString *pathForSpatialOverCaptureContentFile;
+@property (readonly, copy, nonatomic) NSString *pathForVideoComplementSpatialOverCaptureContentFile;
 @property (readonly, strong, nonatomic) id<PLPTPTransferableAdditionalAssetAttributes> ptpAdditionalAttributes;
 @property (readonly, nonatomic) unsigned long long ptpCloudMasterOriginalFileSize;
 @property (readonly, nonatomic) id<PLPTPTransferableSidecarFile> ptpPhotoIrisSidecar;
 @property (readonly, strong, nonatomic) NSSet *ptpSidecarFiles;
 @property (readonly, nonatomic) short savedAssetType;
+@property (readonly, nonatomic) long long snowplowTrashedState;
+@property (readonly, nonatomic) struct CGSize spatialOverCaptureSize;
 @property (readonly, strong, nonatomic) id uuid;
+@property (readonly, nonatomic) struct CGSize videoComplementSpatialOverCaptureSize;
 @property (readonly, nonatomic) long long width;
 
 @end

@@ -78,6 +78,7 @@
 @property (readonly, nonatomic) CPLStatus *syncStatus;
 @property (copy, nonatomic) NSString *userOverride; // @synthesize userOverride=_userOverride;
 
++ (id)descriptionForProvideContentResult:(unsigned long long)arg1;
 + (id)platformImplementationProtocol;
 + (id)stateDescriptionForState:(unsigned long long)arg1;
 + (void)useCloudPhotoDaemonImplementation;
@@ -110,9 +111,8 @@
 - (void)blockEngineElement:(id)arg1;
 - (void)boostPriorityForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)checkHasBackgroundDownloadOperationsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)checkResourcesAreSafeToPrune:(id)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)closeWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)cloudCacheGetDescriptionForRecordWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)cloudCacheGetDescriptionForRecordWithIdentifier:(id)arg1 related:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cloudCacheGetDescriptionForRecordWithScopedIdentifier:(id)arg1 related:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)compactFileCacheWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -131,7 +131,6 @@
 - (void)fetchMomentShareFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)forceSynchronizingScopeWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getChangedStatusesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)getCloudCacheForRecordWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getCloudCacheForRecordWithScopedIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getCloudIdentifiersForLocalIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getCloudScopedIdentifiersForLocalScopedIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -145,6 +144,7 @@
 - (void)getStatusForRecordsWithIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getStatusForRecordsWithScopedIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getStatusesForScopesWithIdentifiers:(id)arg1 includeStorages:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getStreamingURLForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initForManagement;
 - (id)initWithClientLibraryBaseURL:(id)arg1 cloudLibraryStateStorageURL:(id)arg2 cloudLibraryResourceStorageURL:(id)arg3 libraryIdentifier:(id)arg4;
@@ -155,6 +155,9 @@
 - (void)noteClientIsInForeground;
 - (void)noteClientReceivedNotificationOfServerChanges;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)provideCloudResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideLibraryInfoForScopeWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)provideRecordWithCloudScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)publishResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)queryUserIdentitiesWithParticipants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

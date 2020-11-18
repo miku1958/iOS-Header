@@ -6,22 +6,22 @@
 
 #import <Foundation/NSOperation.h>
 
-@class AVAsset, AVVideoComposition, NSDictionary, NSError, NSNumber, NSProgress, NSURL, PLPhotoEditModel, UIImage;
+@class AVAsset, AVVideoComposition, NSDictionary, NSError, NSNumber, NSProgress, NSURL, PICompositionController, PLLivePhotoEditSource, UIImage;
 
 @interface PXAssetVariationRenderingOperation : NSOperation
 {
     BOOL _renderAllResources;
     BOOL _succeeded;
     long long _variationType;
-    NSURL *_inputImageURL;
-    NSURL *_inputVideoURL;
+    PLLivePhotoEditSource *_editSource;
+    PLLivePhotoEditSource *_overcaptureEditSource;
     NSDictionary *_analysisResult;
-    PLPhotoEditModel *_baseEditModel;
+    PICompositionController *_baseCompositionController;
     CDUnknownBlockType _startHandler;
     NSURL *_outputImageURL;
     UIImage *_outputImage;
     NSURL *_outputVideoURL;
-    PLPhotoEditModel *_adjustedEditModel;
+    PICompositionController *_adjustedCompositionController;
     AVAsset *_outputAVAsset;
     AVVideoComposition *_outputVideoComposition;
     NSProgress *_progress;
@@ -30,18 +30,18 @@
     struct CGSize _targetSize;
 }
 
-@property (readonly, copy, nonatomic) PLPhotoEditModel *adjustedEditModel; // @synthesize adjustedEditModel=_adjustedEditModel;
+@property (readonly, copy, nonatomic) PICompositionController *adjustedCompositionController; // @synthesize adjustedCompositionController=_adjustedCompositionController;
 @property (readonly, copy, nonatomic) NSDictionary *analysisResult; // @synthesize analysisResult=_analysisResult;
-@property (readonly, copy, nonatomic) PLPhotoEditModel *baseEditModel; // @synthesize baseEditModel=_baseEditModel;
+@property (readonly, copy, nonatomic) PICompositionController *baseCompositionController; // @synthesize baseCompositionController=_baseCompositionController;
 @property (readonly, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic) PLLivePhotoEditSource *editSource; // @synthesize editSource=_editSource;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, nonatomic) NSURL *inputImageURL; // @synthesize inputImageURL=_inputImageURL;
-@property (readonly, nonatomic) NSURL *inputVideoURL; // @synthesize inputVideoURL=_inputVideoURL;
 @property (readonly, nonatomic) AVAsset *outputAVAsset; // @synthesize outputAVAsset=_outputAVAsset;
 @property (readonly, nonatomic) UIImage *outputImage; // @synthesize outputImage=_outputImage;
 @property (readonly, nonatomic) NSURL *outputImageURL; // @synthesize outputImageURL=_outputImageURL;
 @property (readonly, nonatomic) AVVideoComposition *outputVideoComposition; // @synthesize outputVideoComposition=_outputVideoComposition;
 @property (readonly, nonatomic) NSURL *outputVideoURL; // @synthesize outputVideoURL=_outputVideoURL;
+@property (readonly, nonatomic) PLLivePhotoEditSource *overcaptureEditSource; // @synthesize overcaptureEditSource=_overcaptureEditSource;
 @property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) BOOL renderAllResources; // @synthesize renderAllResources=_renderAllResources;
 @property (copy, nonatomic) CDUnknownBlockType startHandler; // @synthesize startHandler=_startHandler;
@@ -54,7 +54,7 @@
 - (void)_timeout;
 - (void)cancel;
 - (id)init;
-- (id)initWithInputImageURL:(id)arg1 inputVideoURL:(id)arg2 variationType:(long long)arg3 analysisResult:(id)arg4 baseEditModel:(id)arg5 outputImageURL:(id)arg6 outputVideoURL:(id)arg7 targetSize:(struct CGSize)arg8 renderAllResources:(BOOL)arg9;
+- (id)initWithEditSource:(id)arg1 overcaptureEditSource:(id)arg2 variationType:(long long)arg3 analysisResult:(id)arg4 baseCompositionController:(id)arg5 outputImageURL:(id)arg6 outputVideoURL:(id)arg7 targetSize:(struct CGSize)arg8 renderAllResources:(BOOL)arg9;
 - (void)main;
 
 @end

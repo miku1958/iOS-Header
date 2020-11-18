@@ -16,11 +16,11 @@
 @property (nonatomic) BOOL alertInviteeDeclines;
 @property (nonatomic) BOOL alwaysSetArrivedAndSettledForReminders;
 @property (readonly) BOOL bypassSplashScreen;
-@property (strong, nonatomic) NSArray *deselectedCalendarIdentifiers;
-@property (strong, nonatomic) NSArray *deselectedCalendarSyncHashes;
+@property (readonly, nonatomic) NSArray *deselectedCalendarIdentifiers;
+@property (readonly, nonatomic) NSArray *deselectedCalendarSyncHashes;
+@property (readonly, nonatomic) NSArray *deselectedCalendarSyncIdentifiers;
 @property (nonatomic) unsigned long long lastConfirmedSplashScreenVersion;
 @property (nonatomic) BOOL refiringReminderAlarmsEnabled;
-@property (nonatomic) BOOL remindMeAboutThisInCalendarWidgetEnabled;
 @property (strong, nonatomic) NSArray *selectedCalendarIdentifiers;
 @property (nonatomic) BOOL showDeclinedEvents;
 @property (nonatomic) double travelEngineThrottlePeriod;
@@ -29,7 +29,12 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+- (void)_setDeselectedCalendarIdentifiers:(id)arg1;
+- (void)_setDeselectedCalendarSyncHashes:(id)arg1;
+- (void)_setDeselectedCalendarSyncIdentifiers:(id)arg1;
+- (void)_setDeselectedCalendars_iOS:(id)arg1;
 - (id)init;
+- (void)setDeselectedCalendars:(id)arg1;
 
 @end
 

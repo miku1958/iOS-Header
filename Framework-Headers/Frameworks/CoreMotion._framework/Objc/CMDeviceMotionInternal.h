@@ -21,12 +21,14 @@
     BOOL fDoingYawCorrection;
     BOOL fDoingBiasEstimation;
     float fHeading;
+    float fHeadingAccuracy;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithDeviceMotion:(CDStruct_981b33bd)arg1;
-- (void)setDeviceMotion:(CDStruct_981b33bd)arg1;
+- (id)initWithDeviceMotion:(CDStruct_981b33bd)arg1 internal:(CDStruct_37a3040a)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (void)setDeviceMotion:(CDStruct_981b33bd)arg1 internal:(CDStruct_37a3040a)arg2;
 
 @end
 

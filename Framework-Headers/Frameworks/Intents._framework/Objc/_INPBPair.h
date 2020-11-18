@@ -18,6 +18,7 @@
         unsigned int repeated:1;
     } _has;
     BOOL _repeated;
+    BOOL __encodeLegacyGloryData;
     NSString *_key;
     NSArray *_pairCurrencyAmountValues;
     NSArray *_pairCustomObjects;
@@ -34,6 +35,7 @@
     NSArray *_pairUrlValues;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasKey;
@@ -82,6 +84,7 @@
 + (Class)pairStringValueType;
 + (Class)pairTemperatureValueType;
 + (Class)pairUrlValueType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addPairCurrencyAmountValue:(id)arg1;
 - (void)addPairCustomObject:(id)arg1;
@@ -111,6 +114,8 @@
 - (void)clearPairUrlValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)pairCurrencyAmountValueAtIndex:(unsigned long long)arg1;
 - (id)pairCustomObjectAtIndex:(unsigned long long)arg1;

@@ -19,6 +19,7 @@
 @property (readonly, getter=isFlashEnabled) BOOL flashEnabled;
 @property (readonly) CDStruct_79c71658 livePhotoMovieDimensions;
 @property (readonly) CDStruct_79c71658 photoDimensions;
+@property (readonly) CDStruct_e83c9415 photoProcessingTimeRange;
 @property (readonly) CDStruct_79c71658 portraitEffectsMatteDimensions;
 @property (readonly) CDStruct_79c71658 previewDimensions;
 @property (readonly) CDStruct_79c71658 rawEmbeddedThumbnailDimensions;
@@ -26,12 +27,15 @@
 @property (readonly, getter=isRedEyeReductionEnabled) BOOL redEyeReductionEnabled;
 @property (readonly, getter=isStillImageStabilizationEnabled) BOOL stillImageStabilizationEnabled;
 @property (readonly) long long uniqueID;
+@property (readonly, getter=isVirtualDeviceFusionEnabled) BOOL virtualDeviceFusionEnabled;
 
-+ (id)resolvedSettingsWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 embeddedThumbnailDimensions:(CDStruct_79c71658)arg5 rawEmbeddedThumbnailDimensions:(CDStruct_79c71658)arg6 livePhotoMovieEnabled:(BOOL)arg7 livePhotoMovieDimensions:(CDStruct_79c71658)arg8 portraitEffectsMatteDimensions:(CDStruct_79c71658)arg9 turboModeEnabled:(BOOL)arg10 flashEnabled:(BOOL)arg11 redEyeReductionEnabled:(BOOL)arg12 HDREnabled:(BOOL)arg13 adjustedPhotoFiltersEnabled:(BOOL)arg14 EV0PhotoDeliveryEnabled:(BOOL)arg15 stillImageStabilizationEnabled:(BOOL)arg16 dualCameraFusionEnabled:(BOOL)arg17 squareCropEnabled:(BOOL)arg18 photoManifest:(id)arg19;
-- (id)_initWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 embeddedThumbnailDimensions:(CDStruct_79c71658)arg5 rawEmbeddedThumbnailDimensions:(CDStruct_79c71658)arg6 livePhotoMovieEnabled:(BOOL)arg7 livePhotoMovieDimensions:(CDStruct_79c71658)arg8 portraitEffectsMatteDimensions:(CDStruct_79c71658)arg9 turboModeEnabled:(BOOL)arg10 flashEnabled:(BOOL)arg11 redEyeReductionEnabled:(BOOL)arg12 HDREnabled:(BOOL)arg13 adjustedPhotoFiltersEnabled:(BOOL)arg14 EV0PhotoDeliveryEnabled:(BOOL)arg15 stillImageStabilizationEnabled:(BOOL)arg16 dualCameraFusionEnabled:(BOOL)arg17 squareCropEnabled:(BOOL)arg18 photoManifest:(id)arg19;
++ (id)resolvedSettingsWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 embeddedThumbnailDimensions:(CDStruct_79c71658)arg5 rawEmbeddedThumbnailDimensions:(CDStruct_79c71658)arg6 livePhotoMovieEnabled:(BOOL)arg7 livePhotoMovieDimensions:(CDStruct_79c71658)arg8 portraitEffectsMatteDimensions:(CDStruct_79c71658)arg9 hairSegmentationMatteDimensions:(CDStruct_79c71658)arg10 skinSegmentationMatteDimensions:(CDStruct_79c71658)arg11 teethSegmentationMatteDimensions:(CDStruct_79c71658)arg12 spatialOverCapturePhotoDimensions:(CDStruct_79c71658)arg13 turboModeEnabled:(BOOL)arg14 flashEnabled:(BOOL)arg15 redEyeReductionEnabled:(BOOL)arg16 HDREnabled:(BOOL)arg17 adjustedPhotoFiltersEnabled:(BOOL)arg18 EV0PhotoDeliveryEnabled:(BOOL)arg19 stillImageStabilizationEnabled:(BOOL)arg20 virtualDeviceFusionEnabled:(BOOL)arg21 squareCropEnabled:(BOOL)arg22 deferredPhotoProxyDimensions:(CDStruct_79c71658)arg23 photoProcessingTimeRange:(CDStruct_e83c9415)arg24 photoManifest:(id)arg25;
+- (id)_initWithUniqueID:(long long)arg1 photoDimensions:(CDStruct_79c71658)arg2 rawPhotoDimensions:(CDStruct_79c71658)arg3 previewDimensions:(CDStruct_79c71658)arg4 embeddedThumbnailDimensions:(CDStruct_79c71658)arg5 rawEmbeddedThumbnailDimensions:(CDStruct_79c71658)arg6 livePhotoMovieEnabled:(BOOL)arg7 livePhotoMovieDimensions:(CDStruct_79c71658)arg8 portraitEffectsMatteDimensions:(CDStruct_79c71658)arg9 hairSegmentationMatteDimensions:(CDStruct_79c71658)arg10 skinSegmentationMatteDimensions:(CDStruct_79c71658)arg11 teethSegmentationMatteDimensions:(CDStruct_79c71658)arg12 spatialOverCapturePhotoDimensions:(CDStruct_79c71658)arg13 turboModeEnabled:(BOOL)arg14 flashEnabled:(BOOL)arg15 redEyeReductionEnabled:(BOOL)arg16 HDREnabled:(BOOL)arg17 adjustedPhotoFiltersEnabled:(BOOL)arg18 EV0PhotoDeliveryEnabled:(BOOL)arg19 stillImageStabilizationEnabled:(BOOL)arg20 virtualDeviceFusionEnabled:(BOOL)arg21 squareCropEnabled:(BOOL)arg22 deferredPhotoProxyDimensions:(CDStruct_79c71658)arg23 photoProcessingTimeRange:(CDStruct_e83c9415)arg24 photoManifest:(id)arg25;
 - (void)dealloc;
 - (id)debugDescription;
+- (CDStruct_79c71658)deferredPhotoProxyDimensions;
 - (id)description;
+- (CDStruct_79c71658)dimensionsForSemanticSegmentationMatteOfType:(id)arg1;
 - (BOOL)isAdjustedPhotoFilterRenderingEnabled;
 - (BOOL)isEV0PhotoDeliveryEnabled;
 - (BOOL)isHDREnabled;
@@ -39,6 +43,7 @@
 - (BOOL)isTurboModeEnabled;
 - (BOOL)livePhotoMovieEnabled;
 - (id)photoManifest;
+- (CDStruct_79c71658)spatialOverCapturePhotoDimensions;
 
 @end
 

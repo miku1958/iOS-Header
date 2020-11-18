@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)currentCell;
 - (const struct TSTCellUID *)currentCellUID;
 - (id)initWithCellMap:(id)arg1;

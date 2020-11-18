@@ -29,6 +29,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContact:(id)arg1 matchinfoData:(id)arg2 tokens:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMatchedDetails:(id)arg1;
 - (id)matchedDetailsForToken:(id)arg1;
 - (id)tokensForDetail:(id)arg1;

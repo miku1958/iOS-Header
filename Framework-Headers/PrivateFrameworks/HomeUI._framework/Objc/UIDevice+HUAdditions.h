@@ -7,6 +7,6 @@
 #import <UIKit/UIDevice.h>
 
 @interface UIDevice (HUAdditions)
-+ (id)hu_modelSpecificLocalizedStringKeyWithGreenTeaForKey:(id)arg1;
++ (id)hu_modelAndNetworkLocalizedStringKeyForKey:(id)arg1;
 @end
 

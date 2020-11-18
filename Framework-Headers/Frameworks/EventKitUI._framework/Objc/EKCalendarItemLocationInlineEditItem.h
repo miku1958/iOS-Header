@@ -11,20 +11,14 @@
 #import <EventKitUI/EKEventDetailPredictedLocationCellDelegate-Protocol.h>
 #import <EventKitUI/UITextFieldDelegate-Protocol.h>
 
-@class EKEventDetailPredictedLocationCell, EKParticipant, EKRequestAvailabilityOperation, EKUILocationEditItemCell, NSArray, NSString, UITableViewCell, UIView;
+@class NSMutableArray, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface EKCalendarItemLocationInlineEditItem : EKCalendarItemEditItem <UITextFieldDelegate, EKEditItemViewControllerDelegate, EKEventDetailPredictedLocationCellDelegate, EKCalendarItemInlineEditItem>
 {
-    UITableViewCell *_nonConferenceLocationCell;
-    EKUILocationEditItemCell *_conferenceLocationCell;
-    EKEventDetailPredictedLocationCell *_suggestedLocationCell;
+    NSMutableArray *_locationsAndCells;
     BOOL _sourceSupportsAvailabilityRequests;
-    UIView *_clearButtonView;
-    EKRequestAvailabilityOperation *_availabilityRequest;
-    NSArray *_availabilitySpansForLocation;
-    EKParticipant *_conferenceRoom;
-    long long _conferenceRoomAvailabilityType;
+    NSMutableDictionary *_conferenceRoomInfos;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,18 +27,21 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)_locationPlaceholder;
++ (id)conferenceRoomNameForLocation:(id)arg1;
 - (void).cxx_destruct;
-- (void)_clearButtonTapped;
-- (id)_clearButtonView;
+- (void)_clearButtonTapped:(id)arg1;
+- (id)_clearButtonView:(unsigned long long)arg1;
+- (void)_clearLocation:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_contentSizeCategoryChanged:(id)arg1;
 - (id)_makeCell:(unsigned long long)arg1;
-- (void)_refreshConferenceRoomCell;
-- (void)_setNewStructuredLocation:(id)arg1;
-- (BOOL)_showConferenceLocationCell;
-- (BOOL)_showSuggestedLocationCell;
+- (void)_refreshConferenceRoomCell:(id)arg1;
+- (BOOL)_showConferenceLocation:(id)arg1;
+- (BOOL)_showSuggestedLocation:(id)arg1;
+- (void)_updateAuxiliaryLocationsForNewLocation:(id)arg1;
 - (void)_updateAvailabilityInformation;
-- (void)_updateLocationWithConferenceRoom:(id)arg1;
-- (void)_updateLocationWithStructuredLocation:(id)arg1;
+- (void)_updateCalendarItemLocation;
+- (void)_updateLocation:(id)arg1 withConferenceRoom:(id)arg2;
+- (void)_updateLocation:(id)arg1 withStructuredLocation:(id)arg2;
 - (void)addStylingToCell:(id)arg1 forSubitemAtIndex:(unsigned long long)arg2;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
@@ -55,11 +52,14 @@ __attribute__((visibility("hidden")))
 - (void)eventDetailPredictedLocationCellAcceptedPrediction:(id)arg1 disambiguatedLocation:(id)arg2;
 - (void)eventDetailPredictedLocationCellRejectedPrediction:(id)arg1;
 - (BOOL)forceRefreshStartAndEndDatesOnSave;
+- (BOOL)forceTableReloadOnSave;
 - (id)init;
 - (BOOL)isInline;
 - (BOOL)isSaveable;
 - (BOOL)isSubitemAtIndexSaveable:(unsigned long long)arg1;
+- (id)locationCellPairForCell:(id)arg1;
 - (unsigned long long)numberOfSubitems;
+- (id)participantForConferenceRoomName:(id)arg1;
 - (void)refreshFromCalendarItemAndStore;
 - (void)reset;
 - (BOOL)saveAndDismissWithForce:(BOOL)arg1;

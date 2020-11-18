@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) NSArray *assetsForOneUp;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy, nonatomic) NSString *inboxModelTitle;
+@property (readonly, nonatomic) long long inboxModelType;
 @property (readonly, nonatomic) NSString *keyCommentGUID;
 @property (readonly, nonatomic) NSArray *leftPreviewItems;
 @property (readonly, nonatomic) NSString *ownerEmail;
@@ -22,7 +23,6 @@
 @property (readonly, nonatomic) NSString *ownerLastName;
 @property (nonatomic, getter=isSeen) BOOL seen;
 @property (readonly, copy, nonatomic) NSArray *senderNames;
-@property (readonly, nonatomic) long long type;
 @property (readonly, nonatomic) BOOL userIsSender;
 
 

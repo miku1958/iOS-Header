@@ -18,6 +18,7 @@
     NSMutableDictionary *_uniformData;
     NSString *_source;
     NSString *_fileName;
+    BOOL _isPrecompiledMetal;
     NSString *_compileLog;
     BOOL _programDirty;
     BOOL _programWithTransformDirty;
@@ -41,6 +42,7 @@
 @property (copy) NSString *source;
 @property (copy) NSArray *uniforms;
 
++ (id)precompiledMetalShaderWithFile:(id)arg1 uniforms:(id)arg2;
 + (id)shader;
 + (id)shaderWithFileNamed:(id)arg1;
 + (id)shaderWithSource:(id)arg1;
@@ -56,7 +58,9 @@
 - (id)_generateMetalSource;
 - (id)_getLegacyUniformData;
 - (id)_getMetalFragmentFunctionName;
+- (id)_getMetalFragmentShaderSource;
 - (id)_getMetalVertexOutDefinition;
+- (id)_getMetalVertexShaderSource:(BOOL)arg1;
 - (id)_getShaderCompilationLog;
 - (shared_ptr_394c00aa)_makeBackingProgramWithImplementation:(long long)arg1;
 - (void)_removeTargetNode:(id)arg1;

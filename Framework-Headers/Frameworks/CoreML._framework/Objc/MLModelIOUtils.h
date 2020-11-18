@@ -25,6 +25,7 @@
 + (BOOL)serializeMetadataAndInterfaceFromSpecification:(struct _MLModelSpecification *)arg1 archive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
 + (id)serializeSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
 + (BOOL)serializeVersionInfo:(id)arg1 archive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
++ (id)trainingInputDescriptionFromInterface:(struct _MLModelDescriptionSpecification *)arg1;
 + (id)versionForSerializedSpecification:(struct _MLModelSpecification *)arg1 options:(id)arg2 error:(id *)arg3;
 
 @end

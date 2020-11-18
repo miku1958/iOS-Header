@@ -6,32 +6,24 @@
 
 #import <AppSupportUI/NUIContainerStackView.h>
 
-#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
-
-@class NSString, SFCardSection, SearchUICardSectionRowModel, UIView;
+@class SFCardSection, SearchUICardSectionRowModel, UIView, UIViewController;
 @protocol SearchUIFeedbackDelegate;
 
-@interface SearchUICardSectionView : NUIContainerStackView <NUIContainerStackViewDelegate>
+@interface SearchUICardSectionView : NUIContainerStackView
 {
-    BOOL _spansFullWidth;
-    unsigned long long _style;
-    id<SearchUIFeedbackDelegate> _feedbackDelegate;
     UIView *_contentView;
     SearchUICardSectionRowModel *_rowModel;
+    UIViewController *_embeddedViewController;
+    id<SearchUIFeedbackDelegate> _feedbackDelegate;
     UIView *_chevronView;
 }
 
-@property (strong) UIView *chevronView; // @synthesize chevronView=_chevronView;
-@property (strong) UIView *contentView; // @synthesize contentView=_contentView;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (weak) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIView *chevronView; // @synthesize chevronView=_chevronView;
+@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly) UIViewController *embeddedViewController; // @synthesize embeddedViewController=_embeddedViewController;
+@property (weak, nonatomic) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property (strong, nonatomic) SearchUICardSectionRowModel *rowModel; // @synthesize rowModel=_rowModel;
 @property (readonly, nonatomic) SFCardSection *section;
-@property (readonly) BOOL spansFullWidth; // @synthesize spansFullWidth=_spansFullWidth;
-@property unsigned long long style; // @synthesize style=_style;
-@property (readonly) Class superclass;
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
@@ -40,12 +32,16 @@
 + (int)separatorStyleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (id)description;
 - (void)didInvalidateSizeAnimate:(BOOL)arg1;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (void)didMoveToWindow;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (void)openPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (void)presentViewController:(id)arg1;
 - (id)sendFeedbackForPunchout:(id)arg1 triggerEvent:(unsigned long long)arg2;
 - (id)setupContentView;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateWithRowModel:(id)arg1;
 

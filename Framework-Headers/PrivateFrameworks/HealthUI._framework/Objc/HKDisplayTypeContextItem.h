@@ -11,10 +11,10 @@
 @interface HKDisplayTypeContextItem : NSObject
 {
     BOOL _infoHidden;
-    long long _heartType;
     NSString *_title;
     NSString *_unit;
     NSString *_value;
+    NSString *_valueContext;
     NSAttributedString *_attributedValue;
     NSString *_dateString;
     HKUIMetricColors *_metricColors;
@@ -23,16 +23,18 @@
 
 @property (copy, nonatomic) NSAttributedString *attributedValue; // @synthesize attributedValue=_attributedValue;
 @property (copy, nonatomic) NSString *dateString; // @synthesize dateString=_dateString;
-@property (nonatomic) long long heartType; // @synthesize heartType=_heartType;
 @property (nonatomic) BOOL infoHidden; // @synthesize infoHidden=_infoHidden;
 @property (strong, nonatomic) HKUIMetricColors *metricColors; // @synthesize metricColors=_metricColors;
 @property (strong, nonatomic) HKUIMetricColors *selectedMetricColors; // @synthesize selectedMetricColors=_selectedMetricColors;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *unit; // @synthesize unit=_unit;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;
+@property (copy, nonatomic) NSString *valueContext; // @synthesize valueContext=_valueContext;
 
 - (void).cxx_destruct;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToContextItem:(id)arg1;
 
 @end
 

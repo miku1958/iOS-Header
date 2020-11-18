@@ -6,22 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class IMMessagePartChatItem, NSArray, NSString, NSURL, UIColor;
-@protocol IMFullScreenEffectDelegate;
+@class NSArray, NSString, NSURL, UIColor;
 
 @interface IMFullScreenEffect : NSObject
 {
     BOOL _triggeredByResponseKit;
-    BOOL _soundEffectHasHapticTrack;
+    id _triggeredByObject;
     NSString *_identifier;
-    IMMessagePartChatItem *_triggeringChatItem;
-    id<IMFullScreenEffectDelegate> _delegate;
     NSArray *_messageFilters;
     NSURL *_soundEffectFileURL;
+    unsigned long long _messageOrientation;
+    id _delegate;
 }
 
 @property (readonly, nonatomic) UIColor *backgroundColor;
-@property (weak, nonatomic) id<IMFullScreenEffectDelegate> delegate; // @synthesize delegate=_delegate;
+@property id delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) BOOL effectIsDark;
 @property (readonly, nonatomic) Class effectViewClass;
@@ -29,24 +28,19 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) unsigned long long layerCount;
 @property (readonly, nonatomic) NSArray *messageFilters; // @synthesize messageFilters=_messageFilters;
+@property (nonatomic) unsigned long long messageOrientation; // @synthesize messageOrientation=_messageOrientation;
 @property (readonly, nonatomic) BOOL shouldDrawOverNavigationBar;
 @property (readonly, nonatomic) NSURL *soundEffectFileURL; // @synthesize soundEffectFileURL=_soundEffectFileURL;
-@property (readonly, nonatomic) BOOL soundEffectHasHapticTrack; // @synthesize soundEffectHasHapticTrack=_soundEffectHasHapticTrack;
+@property (readonly, nonatomic) BOOL soundEffectHasHapticTrack;
+@property (weak, nonatomic) id triggeredByObject; // @synthesize triggeredByObject=_triggeredByObject;
 @property (nonatomic) BOOL triggeredByResponseKit; // @synthesize triggeredByResponseKit=_triggeredByResponseKit;
-@property (copy, nonatomic) IMMessagePartChatItem *triggeringChatItem; // @synthesize triggeringChatItem=_triggeringChatItem;
 
 + (id)_monochromeDimmingFilterWithType:(long long)arg1;
 + (id)bigEmojiFilter;
 + (id)stickerFilter;
 + (id)tapBackFilter;
 - (void).cxx_destruct;
-- (void)_didPrepareSoundEffect;
-- (void)applyMessageFiltersToCells:(id)arg1;
-- (void)applyMessageFiltersToTriggeringCell:(id)arg1;
-- (void)clearMessageFiltersFromCells:(id)arg1;
-- (void)playSoundEffect;
 - (void)prepareSoundEffect;
-- (void)stopSoundEffect;
 
 @end
 

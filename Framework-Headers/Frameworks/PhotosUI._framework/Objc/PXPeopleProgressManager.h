@@ -6,23 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSTimer;
-@protocol PXPeopleProgressDataSource;
+@class NSTimer, PXPeopleProgressDataSource;
 
 @interface PXPeopleProgressManager : NSObject
 {
     BOOL _monitoringProgress;
     BOOL _processingComplete;
-    id<PXPeopleProgressDataSource> _dataSource;
+    PXPeopleProgressDataSource *_dataSource;
     double _updateInterval;
     double _progress;
     unsigned long long _processingStatus;
     NSTimer *_statusTimer;
 }
 
-@property (strong, nonatomic) id<PXPeopleProgressDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (strong, nonatomic) PXPeopleProgressDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly) BOOL featureUnlocked;
-@property (readonly) BOOL hasFaceProcessingTodo;
 @property (nonatomic, getter=isMonitoringProgress) BOOL monitoringProgress; // @synthesize monitoringProgress=_monitoringProgress;
 @property (readonly) BOOL processingComplete; // @synthesize processingComplete=_processingComplete;
 @property (nonatomic) unsigned long long processingStatus; // @synthesize processingStatus=_processingStatus;

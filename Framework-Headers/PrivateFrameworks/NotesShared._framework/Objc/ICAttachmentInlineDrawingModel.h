@@ -16,9 +16,13 @@
 - (BOOL)canConvertToHTMLForSharing;
 - (id)correctedHardlinkURLFileExtensionForExtention:(id)arg1;
 - (BOOL)hasPreviews;
+- (BOOL)preferLocalPreviewImages;
+- (BOOL)previewsSupportMultipleAppearances;
 - (BOOL)providesStandaloneTitleForNote;
 - (id)searchableTextContentInNote;
 - (BOOL)shouldShowInContentInfoText;
+- (BOOL)shouldSyncPreviewImageToCloud:(id)arg1;
+- (BOOL)showThumbnailInNoteList;
 - (id)standaloneTitleForNote;
 
 @end

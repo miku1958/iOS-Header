@@ -6,17 +6,23 @@
 
 #import <UIKit/UIControl.h>
 
-@class NSString, UIImageView, UILabel, UIView;
+@class CAMZoomFactorLabel, NSString, UIImageView, UIView;
 @protocol CAMZoomButtonDelegate;
 
 @interface CAMZoomButton : UIControl
 {
+    BOOL _shouldHideBackground;
+    BOOL _overPlatter;
+    BOOL _abbreviateAndEnlargeText;
     id<CAMZoomButtonDelegate> _delegate;
+    long long _contentType;
     double _zoomFactor;
+    long long _zoomSymbol;
     long long _orientation;
     NSString *_contentSizeCategory;
     UIView *__contentContainerView;
-    UILabel *__zoomFactorLabel;
+    CAMZoomFactorLabel *__zoomFactorLabel;
+    UIImageView *__zoomSymbolView;
     UIImageView *__circleImageView;
     UIImageView *__backgroundImageView;
     struct UIEdgeInsets _tappableEdgeInsets;
@@ -26,27 +32,38 @@
 @property (readonly, nonatomic) UIImageView *_backgroundImageView; // @synthesize _backgroundImageView=__backgroundImageView;
 @property (readonly, nonatomic) UIImageView *_circleImageView; // @synthesize _circleImageView=__circleImageView;
 @property (readonly, nonatomic) UIView *_contentContainerView; // @synthesize _contentContainerView=__contentContainerView;
-@property (readonly, nonatomic) UILabel *_zoomFactorLabel; // @synthesize _zoomFactorLabel=__zoomFactorLabel;
+@property (readonly, nonatomic) CAMZoomFactorLabel *_zoomFactorLabel; // @synthesize _zoomFactorLabel=__zoomFactorLabel;
+@property (readonly, nonatomic) UIImageView *_zoomSymbolView; // @synthesize _zoomSymbolView=__zoomSymbolView;
+@property (nonatomic) BOOL abbreviateAndEnlargeText; // @synthesize abbreviateAndEnlargeText=_abbreviateAndEnlargeText;
 @property (copy, nonatomic) NSString *contentSizeCategory; // @synthesize contentSizeCategory=_contentSizeCategory;
+@property (nonatomic) long long contentType; // @synthesize contentType=_contentType;
 @property (weak, nonatomic) id<CAMZoomButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, setter=_setHighlightingTransform:) struct CGAffineTransform highlightingTransform; // @synthesize highlightingTransform=_highlightingTransform;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
+@property (nonatomic, getter=isOverPlatter) BOOL overPlatter; // @synthesize overPlatter=_overPlatter;
+@property (nonatomic) BOOL shouldHideBackground; // @synthesize shouldHideBackground=_shouldHideBackground;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 @property (nonatomic) double zoomFactor; // @synthesize zoomFactor=_zoomFactor;
+@property (nonatomic) long long zoomSymbol; // @synthesize zoomSymbol=_zoomSymbol;
 
 + (BOOL)_shouldUseLargeButtonSizeForContentSize:(id)arg1;
++ (BOOL)_useOutline;
 + (double)circleDiameterForContentSize:(id)arg1;
 + (double)fontSizeForContentSize:(id)arg1;
-+ (id)textForZoomFactor:(double)arg1;
++ (id)textForZoomFactor:(double)arg1 showZoomFactorSymbol:(BOOL)arg2;
++ (id)textForZoomFactor:(double)arg1 showZoomFactorSymbol:(BOOL)arg2 useLeadingZero:(BOOL)arg3;
 - (void).cxx_destruct;
 - (double)_backgroundImageDiameterForContentSize:(id)arg1;
 - (double)_circleLineWidthForContentSize:(id)arg1;
 - (void)_commonCAMZoomButtonInitialization;
 - (id)_createBackgroundImageForContentSize:(id)arg1;
 - (id)_createCircleImageForContentSize:(id)arg1;
+- (void)_createZoomSymbolViewIfNecessary;
 - (struct CGAffineTransform)_highlightingTransformForHighlighted:(BOOL)arg1;
+- (id)_imageForZoomSymbol:(long long)arg1;
 - (void)_performHighlightAnimation;
 - (struct CGAffineTransform)_targetTransformForHighlighted:(BOOL)arg1 orientation:(long long)arg2;
+- (void)_updateBackgroundImageViewAlpha;
 - (void)_updateForContentSize;
 - (void)_updateZoomFactorLabel;
 - (struct UIEdgeInsets)alignmentRectInsets;
@@ -54,8 +71,11 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)setContentType:(long long)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
+- (void)setShouldHideBackground:(BOOL)arg1 animationDuration:(double)arg2;
+- (void)setZoomSymbol:(long long)arg1 animated:(BOOL)arg2;
 - (void)tintColorDidChange;
 
 @end

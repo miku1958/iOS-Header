@@ -12,30 +12,31 @@
 
 @interface GEOLogMsgEventGridDuration : PBCodable <NSCopying>
 {
+    NSMutableArray *_endStateErrorReasons;
     int _displayType;
     unsigned int _durationMs;
     int _endState;
-    NSMutableArray *_endStateErrorReasons;
     int _previousState;
     struct {
-        unsigned int displayType:1;
-        unsigned int durationMs:1;
-        unsigned int endState:1;
-        unsigned int previousState:1;
-    } _has;
+        unsigned int has_displayType:1;
+        unsigned int has_durationMs:1;
+        unsigned int has_endState:1;
+        unsigned int has_previousState:1;
+    } _flags;
 }
 
-@property (nonatomic) int displayType; // @synthesize displayType=_displayType;
-@property (nonatomic) unsigned int durationMs; // @synthesize durationMs=_durationMs;
-@property (nonatomic) int endState; // @synthesize endState=_endState;
-@property (strong, nonatomic) NSMutableArray *endStateErrorReasons; // @synthesize endStateErrorReasons=_endStateErrorReasons;
+@property (nonatomic) int displayType;
+@property (nonatomic) unsigned int durationMs;
+@property (nonatomic) int endState;
+@property (strong, nonatomic) NSMutableArray *endStateErrorReasons;
 @property (nonatomic) BOOL hasDisplayType;
 @property (nonatomic) BOOL hasDurationMs;
 @property (nonatomic) BOOL hasEndState;
 @property (nonatomic) BOOL hasPreviousState;
-@property (nonatomic) int previousState; // @synthesize previousState=_previousState;
+@property (nonatomic) int previousState;
 
 + (Class)endStateErrorReasonType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsDisplayType:(id)arg1;
 - (int)StringAsEndState:(id)arg1;
@@ -54,6 +55,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)previousStateAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

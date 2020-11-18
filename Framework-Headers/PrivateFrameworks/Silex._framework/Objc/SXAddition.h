@@ -6,22 +6,11 @@
 
 #import <Silex/SXJSONObject.h>
 
-#import <Silex/SXClassFactoryProtocol-Protocol.h>
-
-@class NSString;
-
-@interface SXAddition : SXJSONObject <SXClassFactoryProtocol>
+@interface SXAddition : SXJSONObject
 {
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct _NSRange range; // @dynamic range;
-@property (readonly) Class superclass;
-
-+ (void)initializeObject;
-+ (id)typeString;
 
 @end
 

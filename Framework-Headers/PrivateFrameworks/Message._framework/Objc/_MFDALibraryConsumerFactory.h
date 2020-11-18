@@ -23,8 +23,8 @@
 @property (strong, nonatomic) MFMessage *message; // @synthesize message=_message;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)dataConsumerForPart:(id)arg1;
-- (void)dealloc;
 
 @end
 

@@ -12,7 +12,10 @@
 
 @property (strong, nonatomic) UIView *accessoryView;
 @property (strong, nonatomic) NSArray *interfaceActions;
-@property (nonatomic) unsigned long long messageNumberOfLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryTextLines;
 @property (copy, nonatomic) NSString *primarySubtitleText;
 @property (copy, nonatomic) NSString *primaryText;
 @property (copy, nonatomic) NSString *secondaryText;

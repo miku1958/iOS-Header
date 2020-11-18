@@ -20,8 +20,8 @@
 - (void)_setTranscribedTitle:(id)arg1 strokeIdentifiers:(id)arg2;
 - (void)dealloc;
 - (id)debugName;
+- (id)initWithRecognitionSession:(id)arg1;
 - (void)q_updateQueryResult;
-- (BOOL)wantsHighFrequencyNotifications;
 
 @end
 

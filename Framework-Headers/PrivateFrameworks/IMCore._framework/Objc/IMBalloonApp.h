@@ -45,6 +45,7 @@
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isBetaPlugin; // @synthesize isBetaPlugin=_isBetaPlugin;
 @property (nonatomic) BOOL isEnabled;
+@property (nonatomic) BOOL isEnabledUnremovableApp;
 @property (nonatomic) BOOL isLaunchProhibited; // @synthesize isLaunchProhibited=_isLaunchProhibited;
 @property (readonly, nonatomic) BOOL isStickerPackOnly; // @synthesize isStickerPackOnly=_isStickerPackOnly;
 @property (strong, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
@@ -55,6 +56,7 @@
 @property (nonatomic) BOOL shouldBalloonHideAppIcon; // @synthesize shouldBalloonHideAppIcon=_shouldBalloonHideAppIcon;
 @property (nonatomic) BOOL shouldHideAppSwitcher; // @synthesize shouldHideAppSwitcher=_shouldHideAppSwitcher;
 @property (nonatomic) BOOL showInBrowser; // @synthesize showInBrowser=_showInBrowser;
+@property (readonly, nonatomic) BOOL showableInBrowser;
 @property (readonly, nonatomic) NSString *version; // @synthesize version=_version;
 
 + (void)_setUnremovableDisabledApps:(id)arg1;
@@ -66,9 +68,7 @@
 + (unsigned long long)presentationContextsForInfoPlistArray:(id)arg1 isStickerPackOnly:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)_loadBundle;
-- (id)extensionConnection;
 - (id)initWithPluginBundle:(id)arg1 appBundle:(id)arg2;
-- (id)proxyWithErrorHandle:(CDUnknownBlockType)arg1;
 
 @end
 

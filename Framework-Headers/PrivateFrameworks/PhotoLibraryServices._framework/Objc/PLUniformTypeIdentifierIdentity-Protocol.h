@@ -12,8 +12,10 @@
 
 @property (readonly, nonatomic) BOOL conformsToImage;
 @property (readonly, nonatomic) BOOL conformsToMovie;
+@property (readonly, nonatomic) BOOL conformsToRawImage;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, nonatomic, getter=isPrimaryFormat) BOOL primaryFormat;
+@property (readonly, nonatomic) BOOL isPlayableVideo;
+@property (readonly, nonatomic, getter=isPrimaryImageFormat) BOOL primaryImageFormat;
 
 @end
 

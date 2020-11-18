@@ -8,7 +8,6 @@
 
 @class MNNavigationAudioSession, NSBundle, NSHashTable, NSLocale, NSString;
 
-__attribute__((visibility("hidden")))
 @interface MNVoiceController : NSObject
 {
     MNNavigationAudioSession *_activeNavigationSession;
@@ -16,7 +15,6 @@ __attribute__((visibility("hidden")))
     NSString *_currentLanguage;
     NSLocale *_currentLocale;
     NSBundle *_spokenBundle;
-    NSString *_uiLanguage;
     BOOL _isPersistentConnectionOpen;
     long long _audioSessionState;
     NSHashTable *_observers;
@@ -27,18 +25,18 @@ __attribute__((visibility("hidden")))
     BOOL _deviceMuted;
 }
 
-@property (strong, nonatomic) MNNavigationAudioSession *activeNavigationSession; // @synthesize activeNavigationSession=_activeNavigationSession;
+@property (strong) MNNavigationAudioSession *activeNavigationSession; // @synthesize activeNavigationSession=_activeNavigationSession;
 @property (readonly, nonatomic) NSString *currentVoiceLanguage;
 @property (readonly, nonatomic) NSLocale *currentVoiceLocale;
 @property (readonly, nonatomic) BOOL deviceMuted; // @synthesize deviceMuted=_deviceMuted;
 @property (readonly, nonatomic) BOOL speechMuted;
 
-+ (id)_uiLanguage;
 + (id)defaultVoiceLanguageWithSource:(long long *)arg1;
 + (id)localizedStringForKey:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_defaultsDidChange;
+- (double)_estimateDurationToSpeak:(id)arg1;
 - (id)_localizedStringForKey:(id)arg1;
 - (void)_setGender;
 - (void)_setMaintainInactivePersistentConnection:(BOOL)arg1;
@@ -49,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (double)durationToSpeak:(id)arg1;
 - (void)endAnnounce;
+- (void)exactDurationToSpeak:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (BOOL)isPlayingAudio;
 - (BOOL)isSpeaking;

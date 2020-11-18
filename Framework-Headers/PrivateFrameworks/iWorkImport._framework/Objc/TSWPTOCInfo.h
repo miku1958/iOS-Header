@@ -31,11 +31,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=setTOCSettings:) TSWPTOCSettings *tocSettings; // @synthesize tocSettings=_tocSettings;
 @property (readonly, nonatomic) NSArray *visibleTOCEntries;
 
-+ (BOOL)canPartition;
++ (BOOL)canPartitionInline;
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (id)containedStorageFormattedUsingParagraphStyle:(id)arg1;
+- (id)containedStorageFormattedUsingParagraphStyles;
 - (id)copyWithContext:(id)arg1;
 - (Class)editorClass;
 - (int)elementKind;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)saveTOCInfoMessage:(struct TOCInfoArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (BOOL)supportsAttachedComments;
+- (BOOL)textIsVertical;
 - (id)textualEquivalent;
 - (BOOL)wantsPositionFixedWhenCopying;
 

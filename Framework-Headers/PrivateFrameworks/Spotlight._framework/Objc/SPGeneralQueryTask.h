@@ -43,7 +43,7 @@
 - (id)resultWithIdentifier:(id)arg1 title:(id)arg2 url:(id)arg3 bundleIdentifier:(id)arg4;
 - (void)searchDaemonLocalSuggestionsData:(id)arg1 lexicon:(struct _LXLexicon *)arg2 tokenizer:(struct __CFStringTokenizer *)arg3 currentLocaleRef:(struct __CFLocale *)arg4;
 - (void)searchDaemonQuery:(id)arg1 encounteredError:(id)arg2;
-- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(BOOL)arg3 complete:(BOOL)arg4 finished:(BOOL)arg5 delayed:(BOOL)arg6 delayedTopHit:(BOOL)arg7 blendingDuration:(double)arg8 geoEntityString:(id)arg9;
+- (void)searchDaemonQuery:(id)arg1 gotResultSet:(id)arg2 replace:(BOOL)arg3 complete:(BOOL)arg4 finished:(BOOL)arg5 delayed:(BOOL)arg6 delayedTopHit:(BOOL)arg7 unchanged:(BOOL)arg8 blendingDuration:(double)arg9 geoEntityString:(id)arg10 supportedAppScopes:(id)arg11;
 - (void)searchDaemonRankingLog:(id)arg1;
 - (void)searchDaemonSuggestionsArray:(id)arg1;
 - (id)searchString;

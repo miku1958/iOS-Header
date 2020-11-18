@@ -8,12 +8,12 @@
 #import <VectorKit/VKPuckAnimatorDelegate-Protocol.h>
 
 @class VKSceneConfiguration, VKScreenCanvas;
-@protocol VKInteractiveMap><VKMapDataAccess;
+@protocol VKInteractiveMap;
 
 @protocol VKNavigationCameraController <VKCameraController, VKPuckAnimatorDelegate>
 
 @property (nonatomic) VKSceneConfiguration *sceneConfiguration;
-@property (nonatomic) VKScreenCanvas<VKInteractiveMap><VKMapDataAccess> *screenCanvas;
+@property (nonatomic) VKScreenCanvas<VKInteractiveMap> *screenCanvas;
 @property (nonatomic) double zoomScale;
 
 - (void)startWithPounce:(BOOL)arg1 startLocation:(CDStruct_c3b9c2ee)arg2 startCourse:(double)arg3 pounceCompletionHandler:(void (^)(BOOL))arg4;

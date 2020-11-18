@@ -7,24 +7,26 @@
 #import <objc/NSObject.h>
 
 @class DNDSSyncSettings, NPSDomainAccessor;
-@protocol DNDSSyncSettingsProviderDelegate;
+@protocol DNDSSyncSettingsProviderDelegate, OS_dispatch_queue;
 
 @interface DNDSSyncSettingsProvider : NSObject
 {
+    NSObject<OS_dispatch_queue> *_queue;
     NPSDomainAccessor *_accessor;
     DNDSSyncSettings *_syncSettings;
     id<DNDSSyncSettingsProviderDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<DNDSSyncSettingsProviderDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy, nonatomic) DNDSSyncSettings *syncSettings; // @synthesize syncSettings=_syncSettings;
+@property (copy) DNDSSyncSettings *syncSettings; // @synthesize syncSettings=_syncSettings;
 
 - (void).cxx_destruct;
 - (void)_beginMonitoringForChanges;
 - (void)_endMonitoringForChanges;
+- (void)_queue_updateSyncPreferences;
 - (void)_updateSyncPreferences;
 - (void)dealloc;
-- (id)init;
+- (id)initWithQueue:(id)arg1;
 
 @end
 

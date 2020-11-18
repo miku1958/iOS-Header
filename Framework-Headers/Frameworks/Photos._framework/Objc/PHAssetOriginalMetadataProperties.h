@@ -6,7 +6,7 @@
 
 #import <Photos/PHAssetPropertySet.h>
 
-@class NSString;
+@class NSString, NSTimeZone;
 
 @interface PHAssetOriginalMetadataProperties : PHAssetPropertySet
 {
@@ -16,6 +16,8 @@
     long long _originalWidth;
     NSString *_originalFilename;
     unsigned long long _originalFilesize;
+    NSTimeZone *_timeZone;
+    long long _timeZoneOffset;
 }
 
 @property (readonly, nonatomic) NSString *originalAssetsUUID; // @synthesize originalAssetsUUID=_originalAssetsUUID;
@@ -24,6 +26,8 @@
 @property (readonly, nonatomic) unsigned long long originalFilesize; // @synthesize originalFilesize=_originalFilesize;
 @property (readonly, nonatomic) long long originalHeight; // @synthesize originalHeight=_originalHeight;
 @property (readonly, nonatomic) long long originalWidth; // @synthesize originalWidth=_originalWidth;
+@property (readonly, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
+@property (readonly, nonatomic) long long timeZoneOffset; // @synthesize timeZoneOffset=_timeZoneOffset;
 
 + (id)propertiesToFetch;
 + (id)propertySetName;

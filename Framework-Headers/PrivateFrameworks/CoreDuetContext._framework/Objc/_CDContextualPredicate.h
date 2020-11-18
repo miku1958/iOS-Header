@@ -9,21 +9,27 @@
 #import <CoreDuetContext/NSCopying-Protocol.h>
 #import <CoreDuetContext/NSSecureCoding-Protocol.h>
 
-@class NSPredicate, NSSet;
+@class NSOrderedSet, NSPredicate, NSSet;
 
 @interface _CDContextualPredicate : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _evaluateOnEveryKeyPathUpdate;
     NSSet *_keyPaths;
     NSPredicate *_predicate;
     NSPredicate *_predicateForPreviousState;
     double _minimumDurationInPreviousState;
+    NSOrderedSet *_timeBasedPredicateEvaluationIntervals;
+    NSSet *_circularLocationRegions;
 }
 
+@property (strong, nonatomic) NSSet *circularLocationRegions; // @synthesize circularLocationRegions=_circularLocationRegions;
+@property (nonatomic) BOOL evaluateOnEveryKeyPathUpdate; // @synthesize evaluateOnEveryKeyPathUpdate=_evaluateOnEveryKeyPathUpdate;
 @property (readonly, nonatomic) BOOL firesOnAnyChange;
 @property (copy, nonatomic) NSSet *keyPaths; // @synthesize keyPaths=_keyPaths;
 @property (nonatomic) double minimumDurationInPreviousState; // @synthesize minimumDurationInPreviousState=_minimumDurationInPreviousState;
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (strong, nonatomic) NSPredicate *predicateForPreviousState; // @synthesize predicateForPreviousState=_predicateForPreviousState;
+@property (strong, nonatomic) NSOrderedSet *timeBasedPredicateEvaluationIntervals; // @synthesize timeBasedPredicateEvaluationIntervals=_timeBasedPredicateEvaluationIntervals;
 
 + (id)andPredicateWithSubpredicates:(id)arg1;
 + (id)contextualPredicateForKeyPaths:(id)arg1 withPredicate:(id)arg2;
@@ -44,6 +50,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)evaluateWithObject:(id)arg1;
 - (unsigned long long)hash;
+- (id)initForChangeAtKeyPath:(id)arg1;
+- (id)initForChangeAtKeyPath:(id)arg1 equalToValue:(id)arg2;
+- (id)initForChangeAtKeyPaths:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

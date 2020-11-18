@@ -13,15 +13,14 @@
 @interface FIAPResult : NSObject <NSSecureCoding>
 {
     NSArray *_historicalDataRequests;
-    NSArray *_entities;
     NSError *_error;
 }
 
-@property (readonly, nonatomic) NSArray *entities; // @synthesize entities=_entities;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSArray *historicalDataRequests; // @synthesize historicalDataRequests=_historicalDataRequests;
 
-+ (id)resultWithEntities:(id)arg1 historicalDataRequests:(id)arg2 error:(id)arg3;
++ (id)new;
++ (id)resultWithHistoricalDataRequests:(id)arg1 error:(id)arg2;
 + (id)success;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -29,8 +28,9 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEntities:(id)arg1 historicalDataRequests:(id)arg2 error:(id)arg3;
+- (id)initWithHistoricalDataRequests:(id)arg1 error:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToResult:(id)arg1;
 

@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface CNPair : NSObject
+#import <ContactsFoundation/NSSecureCoding-Protocol.h>
+
+@interface CNPair : NSObject <NSSecureCoding>
 {
     id _first;
     id _second;
@@ -16,9 +18,12 @@
 @property (readonly) id second; // @synthesize second=_second;
 
 + (id)pairWithFirst:(id)arg1 second:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

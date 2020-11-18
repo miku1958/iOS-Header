@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)parentVenueInfoWithPlaceItem:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (id)parentIdentifiers;
 
 @end

@@ -6,9 +6,11 @@
 
 #import <Foundation/NSProxy.h>
 
-@class IMMessageContext, IMRemoteObjectBroadcaster, NSArray, Protocol;
+#import <IMFoundation/IDSSendXPCProtocol-Protocol.h>
 
-@interface Broadcaster : NSProxy
+@class IMMessageContext, IMRemoteObjectBroadcaster, NSArray, NSString, Protocol;
+
+@interface Broadcaster : NSProxy <IDSSendXPCProtocol>
 {
     NSArray *_targets;
     IMRemoteObjectBroadcaster *_parent;
@@ -19,6 +21,10 @@
 }
 
 @property (nonatomic) int curXPCMessagePriority; // @synthesize curXPCMessagePriority=_curXPCMessagePriority;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)dealloc;
 - (void)forwardInvocation:(id)arg1;

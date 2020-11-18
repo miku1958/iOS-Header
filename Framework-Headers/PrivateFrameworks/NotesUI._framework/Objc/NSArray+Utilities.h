@@ -7,6 +7,6 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (Utilities)
-- (id)dictionaryByHashingContentWithFunction:(CDUnknownBlockType)arg1;
+- (id)ic_dictionaryByHashingContentWithFunction:(CDUnknownBlockType)arg1;
 @end
 

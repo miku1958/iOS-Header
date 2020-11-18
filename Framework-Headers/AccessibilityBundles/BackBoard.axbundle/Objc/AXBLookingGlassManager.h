@@ -11,8 +11,11 @@
 }
 
 + (void)initializeMonitor;
-- (void)_updateLookingGlassServiceUI;
++ (void)showLookingGlassMenu;
+- (void)_showLookingGlassMenu;
+- (void)_updateLookingGlassServicesIfNeeded;
 - (id)init;
+- (void)unused;
 
 @end
 

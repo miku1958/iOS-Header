@@ -6,44 +6,24 @@
 
 #import <SearchUI/SearchUICardSectionView.h>
 
-#import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
-#import <SearchUI/SearchUIFeedbackDelegate-Protocol.h>
-#import <SearchUI/TLKDetailsViewDelegate-Protocol.h>
+#import <SearchUI/SearchUIDetailedViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, SearchUIAccessoryViewController, SearchUIImageView, TLKDetailsView, TLKStackView, UIButton;
+@class NSString, SearchUIDetailedRowModel, SearchUIDetailedView;
 
-@interface SearchUIDetailedRowCardSectionView : SearchUICardSectionView <NUIContainerStackViewDelegate, TLKDetailsViewDelegate, SearchUIFeedbackDelegate>
+@interface SearchUIDetailedRowCardSectionView : SearchUICardSectionView <SearchUIDetailedViewDelegate>
 {
-    SearchUIImageView *_thumbnailView;
-    UIButton *_buttonView;
-    TLKDetailsView *_detailsView;
-    TLKStackView *_innerStackView;
-    NSMutableDictionary *_accessoryViewControllers;
-    SearchUIAccessoryViewController *_accessoryViewControllerForSection;
 }
 
-@property (strong) SearchUIAccessoryViewController *accessoryViewControllerForSection; // @synthesize accessoryViewControllerForSection=_accessoryViewControllerForSection;
-@property (strong) NSMutableDictionary *accessoryViewControllers; // @synthesize accessoryViewControllers=_accessoryViewControllers;
-@property (strong) UIButton *buttonView; // @synthesize buttonView=_buttonView;
-@property (strong) TLKStackView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) SearchUIDetailedView *contentView; // @dynamic contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) TLKDetailsView *detailsView; // @synthesize detailsView=_detailsView;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKStackView *innerStackView; // @synthesize innerStackView=_innerStackView;
+@property (strong, nonatomic) SearchUIDetailedRowModel *rowModel; // @dynamic rowModel;
 @property (readonly) Class superclass;
-@property (strong) SearchUIImageView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 
-+ (void)addViewIfNecessary:(id)arg1 toStackView:(id)arg2 removeFromStackView:(id)arg3;
-+ (id)dragSubtitleForCardSection:(id)arg1;
-+ (id)dragTitleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
-- (void).cxx_destruct;
-- (BOOL)arrangedViewMustCenter:(id)arg1;
-- (void)buttonPressed;
-- (long long)containerStackView:(id)arg1 alignmentForArrangedSubview:(id)arg2;
-- (void)didEngageActionItem:(id)arg1 actionPerformed:(BOOL)arg2;
 - (void)footnoteButtonPressed;
+- (void)setFeedbackDelegate:(id)arg1;
 - (id)setupContentView;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateWithRowModel:(id)arg1;

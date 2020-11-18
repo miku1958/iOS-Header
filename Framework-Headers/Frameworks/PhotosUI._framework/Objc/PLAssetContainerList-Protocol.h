@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSObject-Protocol.h>
-#import <PhotosUI/PLDiagnosticsProvider-Protocol.h>
+#import <PhotosUICore/NSObject-Protocol.h>
+#import <PhotosUICore/PLDiagnosticsProvider-Protocol.h>
 
 @class NSManagedObjectContext, NSOrderedSet, NSString, PLPhotoLibrary;
 

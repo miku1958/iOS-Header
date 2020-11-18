@@ -11,6 +11,6 @@
 
 @protocol SXFontAttributesConstructor <NSObject>
 - (id<SXFontAttributes>)fontAttributesForFontDescriptions:(NSArray *)arg1;
-- (NSString *)fontNameForAttributes:(id<SXFontAttributes>)arg1;
+- (NSString *)fontNameForAttributes:(id<SXFontAttributes>)arg1 size:(long long)arg2;
 @end
 

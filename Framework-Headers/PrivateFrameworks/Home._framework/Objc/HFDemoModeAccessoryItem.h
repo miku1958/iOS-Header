@@ -11,7 +11,7 @@
 #import <Home/HFServiceLikeBuilderCreating-Protocol.h>
 #import <Home/HFServiceLikeItem-Protocol.h>
 
-@class HMAccessory, NSDictionary, NSString;
+@class HMAccessory, NSDictionary, NSSet, NSString;
 @protocol HFCharacteristicValueSource, HFHomeKitObject;
 
 @interface HFDemoModeAccessoryItem : HFItem <HFServiceLikeItem, HFServiceLikeBuilderCreating, HFItemBuilderItem, HFGroupableItemProtocol>
@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
 @property (readonly, nonatomic) BOOL isItemGroup;
 @property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
+@property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource;
 
@@ -42,8 +43,8 @@
 - (id)initWithAccessory:(id)arg1;
 - (BOOL)isMediaSystemDemoType;
 - (id)mediaProfileContainer;
+- (id)namingComponentForHomeKitObject;
 - (id)serviceLikeBuilderInHome:(id)arg1;
-- (id)services;
 
 @end
 

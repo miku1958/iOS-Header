@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AVConference/NSObject-Protocol.h>
+#import <AVConference/VCBasebandCodecNotifications-Protocol.h>
 
 @class VCAudioIO;
 
-@protocol VCAudioIODelegate <NSObject>
+@protocol VCAudioIODelegate <VCBasebandCodecNotifications>
 - (void)didResumeAudioIO:(VCAudioIO *)arg1;
 - (void)didSuspendAudioIO:(VCAudioIO *)arg1;
+
+@optional
+- (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 @end
 

@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

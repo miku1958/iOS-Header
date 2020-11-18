@@ -31,6 +31,7 @@
 + (id)cloudVerifyAccountSyncOperationWithBlock:(CDUnknownBlockType)arg1;
 + (id)cloudZoneFetchSyncOperation:(id)arg1 cloudConflict:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
 + (id)cloudZonePushSyncOperation:(id)arg1 block:(CDUnknownBlockType)arg2;
++ (id)queryDatabaseOperationWithBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)_initWithOperationType:(unsigned long long)arg1 options:(id)arg2 syncBlock:(CDUnknownBlockType)arg3;
 - (id)description;

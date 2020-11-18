@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSURLSessionTaskDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSURLSession, NSURLSessionConfiguration;
+@class ACAccountStore, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSSet, NSString, NSURLSession, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
 @interface PKWebService : NSObject <NSURLSessionTaskDelegate>
@@ -27,17 +27,14 @@
     NSSet *_sensitiveKeys;
 }
 
-@property (readonly) ACAccount *account;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) ACAccount *primaryAppleAccount;
 @property (readonly) NSURLSessionConfiguration *sessionConfiguration;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *webServiceSessionMarker;
 
 + (id)_sharedCookieStorage;
-+ (id)account;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -18,6 +18,8 @@
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
 - (void)layoutSubviews;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

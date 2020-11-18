@@ -18,6 +18,7 @@
     VSOptional *_optionalIdentityProviderDisplayName;
     VSOptional *_identityProviderID;
     NSString *_username;
+    NSString *_preferredAppID;
     VSOptional *_authenticationToken;
 }
 
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) VSOptional *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
 @property (strong, nonatomic) VSOptional *keychainItem;
 @property (strong, nonatomic) VSOptional *optionalIdentityProviderDisplayName; // @synthesize optionalIdentityProviderDisplayName=_optionalIdentityProviderDisplayName;
+@property (copy, nonatomic) NSString *preferredAppID; // @synthesize preferredAppID=_preferredAppID;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 + (BOOL)supportsSecureCoding;

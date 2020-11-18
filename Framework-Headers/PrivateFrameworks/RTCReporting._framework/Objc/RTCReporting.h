@@ -33,6 +33,7 @@
 
 + (id)getPersistentIdentifierForDNU:(BOOL)arg1;
 + (id)newHierarchyTokenFromParentToken:(id)arg1;
++ (id)newSecureHierarchyTokenFromParentToken:(id)arg1;
 + (void)regeneratePersistentIdentifierForDNU:(BOOL)arg1;
 + (BOOL)sendOneMessageWithSessionInfo:(id)arg1 userInfo:(id)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4 payload:(id)arg5 error:(id *)arg6;
 - (void)_myPeriodicTask:(unsigned short)arg1 type:(unsigned short)arg2 intervalMultiplier:(int)arg3 updateTimeout:(unsigned long long)arg4;

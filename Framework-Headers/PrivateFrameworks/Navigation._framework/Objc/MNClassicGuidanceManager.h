@@ -81,7 +81,7 @@ __attribute__((visibility("hidden")))
 - (double)_distanceForSign;
 - (double)_durationOfLastAnnouncement;
 - (double)_estimateTimeToSpeakExecutionAnnouncement;
-- (id)_getClosestStepWithNameForProceedToRoute:(CDStruct_2c43369c)arg1 routeMatch:(id)arg2;
+- (id)_getClosestStepWithNameForProceedToRoute:(CDStruct_c3b9c2ee)arg1 routeMatch:(id)arg2;
 - (id)_getStepAtIndex:(unsigned long long)arg1;
 - (id)_getStepAtIndex:(unsigned long long)arg1 clampIndexToRange:(BOOL)arg2;
 - (BOOL)_hasCurrentRoadNameChangedForLocation:(id)arg1;
@@ -106,9 +106,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)_updateGuidanceStateWithLocation:(id)arg1 withMatch:(id)arg2 withNavigatorState:(int)arg3 stepChanged:(BOOL *)arg4;
 - (void)_updatePrepareForNextStep;
 - (id)_updateValidateRouteMatchForLocation:(id)arg1;
+- (void)addInjectedEvent:(id)arg1;
 - (void)dealloc;
 - (id)initWithNavigationSession:(id)arg1 proceedToRoute:(BOOL)arg2 allowMidRouteStart:(BOOL)arg3;
-- (CDStruct_2c43369c)maneuverStepCoordinate;
+- (CDStruct_c3b9c2ee)maneuverStepCoordinate;
 - (BOOL)repeatLastGuidanceAnnouncement:(id)arg1;
 - (void)stop;
 - (double)timeSinceLastAnnouncement;
@@ -117,7 +118,7 @@ __attribute__((visibility("hidden")))
 - (void)updateForReroute:(id)arg1;
 - (void)updateForReturnToRoute;
 - (void)updateGuidanceForLocation:(id)arg1 navigatorState:(int)arg2;
-- (void)updateGuidanceForProceedToRouteAtLocation:(CDStruct_2c43369c)arg1 routeMatch:(id)arg2 remainingTime:(double)arg3 distanceUntilDestination:(double)arg4;
+- (void)updateGuidanceForProceedToRouteAtLocation:(CDStruct_c3b9c2ee)arg1 routeMatch:(id)arg2 remainingTime:(double)arg3 distanceUntilDestination:(double)arg4;
 
 @end
 

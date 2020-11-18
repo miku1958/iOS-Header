@@ -6,14 +6,16 @@
 
 #import <HomeKitDaemon/HMDRemoteMessageDestination.h>
 
-@class HMDAccountHandle;
+@class HMDAccountHandle, NSDictionary;
 
 @interface HMDRemoteAccountHandleMessageDestination : HMDRemoteMessageDestination
 {
     BOOL _multicast;
     HMDAccountHandle *_handle;
+    NSDictionary *_deviceCapabilities;
 }
 
+@property (readonly, copy) NSDictionary *deviceCapabilities; // @synthesize deviceCapabilities=_deviceCapabilities;
 @property (readonly, copy) HMDAccountHandle *handle; // @synthesize handle=_handle;
 @property (readonly, getter=isMulticast) BOOL multicast; // @synthesize multicast=_multicast;
 
@@ -25,6 +27,7 @@
 - (unsigned long long)hash;
 - (id)initWithTarget:(id)arg1;
 - (id)initWithTarget:(id)arg1 handle:(id)arg2 multicast:(BOOL)arg3;
+- (id)initWithTarget:(id)arg1 handle:(id)arg2 multicast:(BOOL)arg3 deviceCapabilities:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)remoteDestinationString;
 - (id)shortDescription;

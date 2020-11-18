@@ -15,18 +15,16 @@
     MPMediaLibraryEntityTranslationContext *_entityTranslationContext;
     vector_bbba3654 _allowedItemPersistentIDs;
     struct map<long long, unsigned long, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, unsigned long>>> _allowedItemPersistentIDToItemQueryResultsIndexMap;
-    BOOL _contentItemIDPredetermined;
     MPModelLibraryRequest *_request;
-    NSDictionary *_indexPathToContentItemIDMap;
+    NSDictionary *_indexPathToContainerUniqueIDMap;
     shared_ptr_8b9a1f72 _itemIdentifierQueryResults;
     shared_ptr_274c5e8b _itemQueryResults;
 }
 
-@property (nonatomic, getter=isContentItemIDPredetermined) BOOL contentItemIDPredetermined; // @synthesize contentItemIDPredetermined=_contentItemIDPredetermined;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSDictionary *indexPathToContentItemIDMap; // @synthesize indexPathToContentItemIDMap=_indexPathToContentItemIDMap;
+@property (strong, nonatomic) NSDictionary *indexPathToContainerUniqueIDMap; // @synthesize indexPathToContainerUniqueIDMap=_indexPathToContainerUniqueIDMap;
 @property (readonly, nonatomic) shared_ptr_8b9a1f72 itemIdentifierQueryResults; // @synthesize itemIdentifierQueryResults=_itemIdentifierQueryResults;
 @property (readonly, nonatomic) shared_ptr_274c5e8b itemQueryResults; // @synthesize itemQueryResults=_itemQueryResults;
 @property (readonly, nonatomic) MPModelLibraryRequest *request; // @synthesize request=_request;
@@ -36,9 +34,7 @@
 - (void).cxx_destruct;
 - (unsigned long long)_adjustedGlobalIndexForIndexPath:(id)arg1;
 - (BOOL)_allowedEntityIdentifiersContainsAllPersistentIDs;
-- (id)_buildIndexPathToContentItemIDMapFromItemQueryResults:(shared_ptr_274c5e8b)arg1;
-- (id)_contentItemIDForItemPersistentID:(long long)arg1 atIndexPath:(id)arg2;
-- (id)_contentItemIDForItemPersistentID:(long long)arg1 withOccurrenceCount:(long long)arg2;
+- (id)_buildIndexPathToContainerUniqueIDMapFromItemQueryResults:(shared_ptr_274c5e8b)arg1;
 - (void)_populateIndexMap;
 - (BOOL)_usesSections;
 - (BOOL)hasSameContentAsDataSource:(id)arg1;

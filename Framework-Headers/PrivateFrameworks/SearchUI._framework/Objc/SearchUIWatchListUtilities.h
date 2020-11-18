@@ -15,7 +15,7 @@
 }
 
 @property (nonatomic) BOOL isWatchListed; // @synthesize isWatchListed=_isWatchListed;
-@property (strong) NSString *watchListIdentifier; // @synthesize watchListIdentifier=_watchListIdentifier;
+@property (strong, nonatomic) NSString *watchListIdentifier; // @synthesize watchListIdentifier=_watchListIdentifier;
 
 + (void)generateWatchListReponseForWatchListIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;

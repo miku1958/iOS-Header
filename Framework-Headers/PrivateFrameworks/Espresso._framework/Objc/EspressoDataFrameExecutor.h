@@ -12,19 +12,23 @@
 {
     struct vector<void *, std::__1::allocator<void *>> pointers_to_free;
     struct vector<__CVBuffer *, std::__1::allocator<__CVBuffer *>> pixelbuffers_to_release;
+    int _use_cvpixelbuffer;
     NSArray *_outputMatchingBuffers;
 }
 
 @property (strong) NSArray *outputMatchingBuffers; // @synthesize outputMatchingBuffers=_outputMatchingBuffers;
+@property (nonatomic) int use_cvpixelbuffer; // @synthesize use_cvpixelbuffer=_use_cvpixelbuffer;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (int)bindInputsFromFrame:(id)arg1 toNetwork:(CDStruct_2bc666a5)arg2;
 - (int)bindOutputsFromFrame:(id)arg1 toNetwork:(CDStruct_2bc666a5)arg2;
+- (int)bindOutputsFromFrame:(id)arg1 toNetwork:(CDStruct_2bc666a5)arg2 executionStatus:(int)arg3;
 - (int)bindOutputsFromFrame:(id)arg1 toNetwork:(CDStruct_2bc666a5)arg2 referenceNetwork:(CDStruct_2bc666a5)arg3;
 - (void)dealloc;
 - (void)freeTemporaryResources;
 - (BOOL)useCVPixelBuffers;
+- (BOOL)useCVPixelBuffersForOutputs:(BOOL)arg1;
 
 @end
 

@@ -13,9 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityTitleLabel;
 - (id)_axAggregateTitleDateElement;
 - (void)_axSetAggregateTitleDateElement:(id)arg1;
+- (void)_configureUtilityButton;
 - (id)accessibilityElements;
 - (BOOL)isAccessibilityElement;
 - (void)setDate:(id)arg1;

@@ -50,6 +50,7 @@
 - (void)_queryDaemonWithStartingTokenValue:(unsigned long long)arg1 currentTokenValue:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)_queryDataAsyncForce:(BOOL)arg1 ifNeededWithBlock:(CDUnknownBlockType)arg2;
 - (void)_queryDataAsyncIfNeededWithBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_shouldWaitForData;
 - (void)_wipeRegistryWith:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)addDiffIndexObserverWithWriteBlock:(CDUnknownBlockType)arg1;
 - (BOOL)daemonIdle;
@@ -60,6 +61,7 @@
 - (void)invalidate;
 - (void)removeDiffIndexObserver:(id)arg1;
 - (void)setCollection:(id)arg1;
+- (void)syncGrabRegistryWithReadBlock:(CDUnknownBlockType)arg1;
 
 @end
 

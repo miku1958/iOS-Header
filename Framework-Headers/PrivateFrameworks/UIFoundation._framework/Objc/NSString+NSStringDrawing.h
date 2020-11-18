@@ -21,8 +21,15 @@
 + (long long)typesetterBehavior;
 + (BOOL)usesFontLeading;
 + (BOOL)usesScreenFonts;
+- (struct CGSize)_sizeWithSize:(struct CGSize)arg1 attributes:(id)arg2;
+- (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2 attributes:(id)arg3;
+- (struct CGRect)boundingRectWithSize:(struct CGSize)arg1 options:(long long)arg2 attributes:(id)arg3 context:(id)arg4;
 - (void)drawAtPoint:(struct CGPoint)arg1 withAttributes:(id)arg2;
 - (void)drawInRect:(struct CGRect)arg1 withAttributes:(id)arg2;
+- (void)drawWithRect:(struct CGRect)arg1 options:(long long)arg2 attributes:(id)arg3;
+- (void)drawWithRect:(struct CGRect)arg1 options:(long long)arg2 attributes:(id)arg3 context:(id)arg4;
+- (BOOL)hasColorGlyphsInRange:(struct _NSRange)arg1 attributes:(id)arg2;
 - (struct CGSize)sizeWithAttributes:(id)arg1;
+- (id)stringByStrippingLeadingAndTrailingWhitespaceAndQuotes;
 @end
 

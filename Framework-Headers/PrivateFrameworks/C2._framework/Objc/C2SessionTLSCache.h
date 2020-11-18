@@ -29,6 +29,7 @@
 - (id)_createSessionWithTLSPinning:(BOOL)arg1;
 - (id)init;
 - (id)sessionForOptions:(id)arg1;
+- (id)underlyingDelegateQueue;
 
 @end
 

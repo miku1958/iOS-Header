@@ -8,27 +8,35 @@
 
 #import <ARKit/NSCopying-Protocol.h>
 
-@class ARImageSensorSettings, ARWorldMap, NSDictionary, NSString;
+@class ARImageSensorSettings, ARWorldMap, NSDictionary, NSMutableDictionary, NSString;
+@protocol OS_dispatch_semaphore;
 
 @interface ARWorldTrackingOptions : NSObject <NSCopying>
 {
+    NSObject<OS_dispatch_semaphore> *_activeVideoFormatsSemaphore;
     BOOL _relocalizationEnabled;
     BOOL _deterministicMode;
     BOOL _mlModelEnabled;
     BOOL _deliverRawSceneUnderstandingResults;
+    BOOL _collaborationEnabled;
     ARImageSensorSettings *_imageSensorSettings;
+    ARImageSensorSettings *_imageSensorSettingsForSuperWide;
     NSString *_deviceModel;
     ARWorldMap *_initialWorldMap;
     NSString *_slamConfiguration;
     unsigned long long _planeDetection;
     double _minVergenceAngle;
+    NSMutableDictionary *_activeVideoFormatsMap;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *activeVideoFormatsMap; // @synthesize activeVideoFormatsMap=_activeVideoFormatsMap;
+@property (nonatomic, getter=isCollaborationEnabled) BOOL collaborationEnabled; // @synthesize collaborationEnabled=_collaborationEnabled;
 @property (nonatomic) BOOL deliverRawSceneUnderstandingResults; // @synthesize deliverRawSceneUnderstandingResults=_deliverRawSceneUnderstandingResults;
 @property (nonatomic) BOOL deterministicMode; // @synthesize deterministicMode=_deterministicMode;
 @property (copy, nonatomic) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
 @property (readonly, nonatomic) NSDictionary *dictionary;
 @property (copy, nonatomic) ARImageSensorSettings *imageSensorSettings; // @synthesize imageSensorSettings=_imageSensorSettings;
+@property (copy, nonatomic) ARImageSensorSettings *imageSensorSettingsForSuperWide; // @synthesize imageSensorSettingsForSuperWide=_imageSensorSettingsForSuperWide;
 @property (copy, nonatomic) ARWorldMap *initialWorldMap; // @synthesize initialWorldMap=_initialWorldMap;
 @property (nonatomic) double minVergenceAngle; // @synthesize minVergenceAngle=_minVergenceAngle;
 @property (nonatomic) BOOL mlModelEnabled; // @synthesize mlModelEnabled=_mlModelEnabled;
@@ -37,9 +45,13 @@
 @property (copy, nonatomic) NSString *slamConfiguration; // @synthesize slamConfiguration=_slamConfiguration;
 
 - (void).cxx_destruct;
+- (unsigned int)cameraIdForCaptureDeviceType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
+- (id)initWithImageSensorSettings:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)shouldUseSuperWide;
+- (void)updateCameraMap;
 
 @end
 

@@ -37,6 +37,7 @@
 - (BOOL)participantsForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (BOOL)refreshIDStatusForDestination:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (BOOL)refreshIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
+- (BOOL)refreshIDStatusForDestinations:(id)arg1 service:(id)arg2 listenerID:(id)arg3 queue:(id)arg4 errorCompletionBlock:(CDUnknownBlockType)arg5;
 - (void)removeDelegate:(id)arg1;
 - (void)removeDelegate:(id)arg1 forService:(id)arg2 listenerID:(id)arg3;
 - (BOOL)removeListenerID:(id)arg1 forService:(id)arg2;

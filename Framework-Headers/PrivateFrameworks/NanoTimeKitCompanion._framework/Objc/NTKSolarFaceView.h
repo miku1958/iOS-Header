@@ -10,14 +10,13 @@
 #import <NanoTimeKitCompanion/PUICCrownInputSequencerDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSDateFormatter, NSDictionary, NSMutableSet, NSString, NSTimer, NTKBezierPathView, NTKColorCurve, NTKComplicationController, NTKDateComplicationLabel, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, NTKFloatCurve, NTKLayoutRule, NTKSolarDiskView, NTKSolarPath, NTKSolarTimeModel, UIImageView, UILabel, UITapGestureRecognizer, UIView;
+@class NSDateFormatter, NSDictionary, NSMutableSet, NSString, NSTimer, NTKBezierPathView, NTKColorCurve, NTKComplicationController, NTKDateComplicationLabel, NTKDigitalTimeLabelStyle, NTKDigitialUtilitarianFaceViewComplicationFactory, NTKFloatCurve, NTKLayoutRule, NTKSolarDiskView, NTKSolarPath, NTKSolarTimeModel, UIImageView, UILabel, UITapGestureRecognizer, UIView;
 
 @interface NTKSolarFaceView : NTKDigitalFaceView <NTKTimeView, PUICCrownInputSequencerDelegate, UIGestureRecognizerDelegate>
 {
     NTKDigitialUtilitarianFaceViewComplicationFactory *_faceViewComplicationFactory;
     NTKColorCurve *_preNoonComplicationColorCurve;
     NTKColorCurve *_postNoonComplicationColorCurve;
-    NTKDigitalTimeLabel *_digitalTimeLabel;
     NTKDigitalTimeLabelStyle *_digitalTimeLabelDefaultStyle;
     NTKDigitalTimeLabelStyle *_digitalTimeLabelSmallInUpperRightCornerStyle;
     UIView *_solarContentView;
@@ -46,6 +45,7 @@
     NTKSolarPath *_solarPath;
     UITapGestureRecognizer *_viewModeTapGesture;
     long long _previousViewMode;
+    long long _nextViewMode;
     struct NSNumber *_clockTimerToken;
     NTKComplicationController *_dateComplicationController;
     NTKDateComplicationLabel *_dateComplicationLabel;
@@ -80,14 +80,13 @@
 - (void).cxx_destruct;
 - (void)_adjustUIForBoundsChange;
 - (void)_animateSolarDiskFromPercentage:(double)arg1 toPercentage:(double)arg2 reason:(id)arg3;
-- (void)_animateSolarDiskToRestPercentageIfNeeded;
+- (void)_animateSolarDiskToRestPercentageIfNeededForViewMode:(long long)arg1;
 - (void)_applyDataMode;
 - (void)_applyShowContentForUnadornedSnapshot;
 - (void)_asyncUpdateLocale;
 - (void)_becameActiveFace;
 - (void)_becameInactiveFace;
 - (void)_beginAnimatingForReason:(id)arg1;
-- (void)_bringForegroundViewsToFront;
 - (void)_buttonPressTimerFired;
 - (BOOL)_canEnterInteractiveMode;
 - (void)_cleanupAfterEditing;
@@ -100,7 +99,7 @@
 - (id)_createSolarBezierPath;
 - (id)_createWaypointView;
 - (id)_detachedComplicationDisplays;
-- (id)_digitalTimeLabelStyleForViewMode:(long long)arg1;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (void)_disableCrown;
 - (void)_enableCrown;
 - (void)_endAnimatingForReason:(id)arg1;
@@ -118,7 +117,6 @@
 - (void)_layoutLegacyDateComplication;
 - (void)_layoutSolarDiskViewForViewMode:(long long)arg1;
 - (void)_layoutSolarPathAndContainerForViewMode:(long long)arg1;
-- (void)_layoutTimeLabelForViewMode:(long long)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
@@ -132,30 +130,33 @@
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_setSolarBezierPath:(id)arg1 animated:(BOOL)arg2;
 - (void)_setViewMode:(long long)arg1 animated:(BOOL)arg2;
+- (void)_setViewMode:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
+- (void)_setupViews;
 - (void)_sharedLocationManagerUpdatedLocation:(id)arg1 error:(id)arg2;
+- (BOOL)_shouldHandleHardwareEvents;
 - (double)_solarDiskIdealizedDatePercentage;
 - (void)_solarDiskPercentageChanged:(double)arg1;
 - (double)_solarDiskRestPercentage;
 - (BOOL)_solarPathRequiresUpdateForChangedLocation:(id)arg1;
 - (void)_startClockUpdates;
 - (void)_stopClockUpdates;
+- (unsigned long long)_timeLabelOptions;
 - (void)_timeZoneChanged:(id)arg1;
 - (void)_transitionToViewMode:(long long)arg1;
 - (void)_unloadSnapshotContentViews;
+- (void)_unloadViews;
 - (void)_updateColorCurves;
 - (void)_updateComplicationColorWithPercentage:(double)arg1;
-- (void)_updateDigitalTimeLabelStylesForBounds:(struct CGRect)arg1;
 - (void)_updateLocale;
 - (void)_updateSolarDiskHaloViewPosition;
 - (void)_updateSolarHaloWithPercentage:(double)arg1;
 - (void)_updateSolarHorizonGradientAlphaWithPercentage:(double)arg1;
 - (void)_updateSolarHorizonGradientAlphaWithSolarDiskCenter:(struct CGPoint)arg1;
 - (void)_updateSolarHorizonGradientColorWithPercentage:(double)arg1;
-- (void)_updateSolarPathForChangedDate:(id)arg1;
+- (void)_updateSolarPathForChangedDate:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateSolarPathForChangedLocation:(id)arg1;
-- (void)_updateTimeScrubbingContent;
-- (void)_updateToViewMode:(long long)arg1;
+- (void)_updateTimeScrubbingContentForViewMode:(long long)arg1;
 - (void)_updateWaypointLabelForCrownMovement;
 - (void)_updateWaypoints;
 - (BOOL)_usesCustomZoom;

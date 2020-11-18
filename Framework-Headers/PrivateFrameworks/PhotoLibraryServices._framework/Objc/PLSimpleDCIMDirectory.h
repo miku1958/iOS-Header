@@ -25,17 +25,17 @@
 }
 
 @property (readonly, strong, nonatomic) NSURL *currentSubDirectory;
-@property (readonly, strong) NSURL *directoryURL; // @synthesize directoryURL=_baseURL;
+@property (readonly) NSURL *directoryURL; // @synthesize directoryURL=_baseURL;
 @property BOOL representsCameraRoll; // @synthesize representsCameraRoll=_representsCameraRoll;
 
 + (id)cameraRollPlistName;
 + (id)cloudPlistName;
 + (id)migrateOldPlistToNewPlist:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)_ensureDirectoryExists:(id)arg1;
 - (void)_loadUserInfoLastDirectoryNumber:(id *)arg1 lastFileNumber:(id *)arg2;
 - (void)_saveUserInfo;
 - (id)availableFileNameNumbersInDirNumber:(unsigned long long)arg1;
-- (void)dealloc;
 - (struct _NSRange)fileNameNumberRangeForDirNumber:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithDirectoryURL:(id)arg1 subDirectorySuffix:(id)arg2 perDirectoryLimit:(unsigned long long)arg3 userInfoPath:(id)arg4;

@@ -13,6 +13,7 @@
 
 @interface AVTAvatarRecordCacheableResource : NSObject <AVTCacheableResource>
 {
+    BOOL _includeAvatarData;
     id<AVTAvatarRecord> _record;
     AVTUIEnvironment *_environment;
 }
@@ -21,14 +22,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AVTUIEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL includeAvatarData; // @synthesize includeAvatarData=_includeAvatarData;
 @property (readonly, nonatomic) id<AVTAvatarRecord> record; // @synthesize record=_record;
 @property (readonly) Class superclass;
 
++ (id)persistentIdentifierForRecordData:(id)arg1;
 + (id)persistentIdentifierPrefixForRecordWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)costForScope:(id)arg1;
 - (id)identifierForScope:(id)arg1;
-- (id)initWithAvatarRecord:(id)arg1 environment:(id)arg2;
+- (id)initWithAvatarRecord:(id)arg1 includeAvatarData:(BOOL)arg2 environment:(id)arg3;
 - (id)persistentIdentifierForScope:(id)arg1;
 - (BOOL)requiresEncryption;
 - (id)tokenForObservingChangesWithHandler:(CDUnknownBlockType)arg1;

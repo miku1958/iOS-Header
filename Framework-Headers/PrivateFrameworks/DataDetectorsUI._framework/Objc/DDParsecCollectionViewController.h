@@ -9,16 +9,17 @@
 #import <DataDetectorsUI/DDParsecHostVCInterface-Protocol.h>
 #import <DataDetectorsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <DataDetectorsUI/UINavigationControllerDelegate-Protocol.h>
+#import <DataDetectorsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class DDParsecRemoteCollectionViewController, DDScannerResult, NSArray, NSDictionary, NSString, UITapGestureRecognizer, UIVisualEffectView;
+@class DDParsecRemoteCollectionViewController, DDScannerResult, NSArray, NSDictionary, NSString, UITapGestureRecognizer, _UIRemoteViewController;
 @protocol DDParsecCollectionDelegate;
 
-@interface DDParsecCollectionViewController : UINavigationController <DDParsecHostVCInterface, UINavigationControllerDelegate, UIAdaptivePresentationControllerDelegate>
+@interface DDParsecCollectionViewController : UINavigationController <DDParsecHostVCInterface, UINavigationControllerDelegate, UIAdaptivePresentationControllerDelegate, _UIRemoteViewControllerContaining>
 {
     DDParsecRemoteCollectionViewController *_remoteViewController;
     BOOL _previewMode;
     BOOL _sheetMode;
-    UIVisualEffectView *_blurView;
+    BOOL _needsBackground;
     NSString *_queryString;
     struct _NSRange _queryRange;
     DDScannerResult *_result;
@@ -33,6 +34,7 @@
     id<DDParsecCollectionDelegate> _parsecDelegate;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (copy) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -43,11 +45,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_blurEffect;
-- (id)_blurEffectWithTraitCollection:(id)arg1;
+- (BOOL)_allowsStylingSheetsAsCards;
 - (void)_interactionEnded;
 - (void)_updatePreferredContentSize;
-- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)appDidEnterBackground;
 - (void)appWillEnterForeground;
 - (void)doneButtonPressed:(id)arg1;
@@ -62,6 +62,7 @@
 - (void)openTrailerPunchout:(id)arg1;
 - (void)presentRemoteCollection:(id)arg1;
 - (void)presentationController:(id)arg1 willPresentWithAdaptiveStyle:(long long)arg2 transitionCoordinator:(id)arg3;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)previewActionItems;
 - (void)replaceControllerWithController:(id)arg1;
 - (void)setPreviewMode:(BOOL)arg1;
@@ -74,7 +75,6 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
-- (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

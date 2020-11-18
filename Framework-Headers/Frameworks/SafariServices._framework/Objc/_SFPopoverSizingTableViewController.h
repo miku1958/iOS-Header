@@ -13,18 +13,24 @@
     UIBlurEffect *_backgroundBlurEffect;
     BOOL _didUpdateTranslucentAppearanceAtLeastOnce;
     BOOL _didHaveTranslucentAppearance;
+    double _preferredContentWidth;
 }
 
-@property (readonly, nonatomic) UIBlurEffect *backgroundBlurEffect;
 @property (readonly, nonatomic) BOOL hasTranslucentAppearance;
+@property (readonly, nonatomic) long long maximumNumberOfRows;
+@property (readonly, nonatomic) long long minimumNumberOfRows;
+@property (nonatomic) double preferredContentWidth; // @synthesize preferredContentWidth=_preferredContentWidth;
 
 + (void)initialize;
 + (id)tableViewCellForSizeEstimation;
 - (void).cxx_destruct;
+- (id)_backgroundBlurEffect;
 - (BOOL)_needsTranslucentAppearanceUpdate;
 - (void)_updateTranslucentAppearanceIfNeeded;
 - (id)backgroundColorUsingTranslucentAppearance:(BOOL)arg1;
+- (void)cancelPopoverKeyPressed;
 - (void)didMoveToParentViewController:(id)arg1;
+- (id)keyCommands;
 - (struct CGSize)preferredContentSize;
 - (double)tableViewSpacingForExtraSeparators:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
@@ -33,6 +39,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)willMoveToParentViewController:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

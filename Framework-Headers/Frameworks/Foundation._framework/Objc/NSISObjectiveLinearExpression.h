@@ -11,26 +11,37 @@
 @interface NSISObjectiveLinearExpression : NSObject
 {
     NSISEngine *_engine;
-    struct __CFDictionary *_priorityMap;
-    struct __CFArray *_variablesSortedByPriorityVectors;
-    struct __CFData *_constant;
+    struct {
+        struct {
+            CDStruct_183601bc **values;
+            int count;
+            unsigned int capacity;
+        } heap;
+        CDStruct_183601bc *values;
+        unsigned int count;
+        unsigned int tombstones;
+        unsigned int size;
+        unsigned short grow_shift;
+    } _priorityMap;
+    CDStruct_f13cc9bb _constant;
 }
 
 - (void)addExpression:(CDStruct_9ac54d62 *)arg1 priority:(double)arg2 times:(double)arg3 processVarNewToReceiver:(CDUnknownBlockType)arg4 processVarDroppedFromReceiver:(CDUnknownBlockType)arg5;
 - (void)addVar:(CDStruct_fcd6c539)arg1 priority:(double)arg2 times:(double)arg3;
 - (void)addVar:(CDStruct_fcd6c539)arg1 priority:(double)arg2 times:(double)arg3 processVarNewToReceiver:(CDUnknownBlockType)arg4 processVarDroppedFromReceiver:(CDUnknownBlockType)arg5;
 - (void)addVariable:(id)arg1 priority:(double)arg2 times:(double)arg3;
+- (void)cleanupForReuse;
 - (BOOL)constantTermIsZero;
 - (void)dealloc;
 - (id)description;
 - (void)enumerateVars:(CDUnknownBlockType)arg1;
 - (void)incrementConstantWithPriority:(double)arg1 value:(double)arg2;
-- (void)incrementConstantWithPriorityVector:(struct __CFData *)arg1 timesScalarCoefficient:(double)arg2;
+- (void)incrementConstantWithPriorityVector:(CDStruct_f13cc9bb *)arg1 timesScalarCoefficient:(double)arg2;
 - (id)init;
 - (id)initWithEngine:(id)arg1;
 - (id)initWithLinearExpression:(CDStruct_9ac54d62 *)arg1 priority:(double)arg2 engine:(id)arg3;
 - (void)leadingPriority:(double *)arg1 andValue:(double *)arg2 forVar:(CDStruct_fcd6c539)arg3;
-- (struct __CFData *)priorityVectorForVar:(CDStruct_fcd6c539)arg1;
+- (CDStruct_f13cc9bb *)priorityVectorForVar:(CDStruct_fcd6c539)arg1;
 - (void)removeVar:(CDStruct_fcd6c539)arg1;
 - (void)removeVariable:(id)arg1;
 - (void)replaceVar:(CDStruct_fcd6c539)arg1 withExpression:(CDStruct_9ac54d62 *)arg2 processVarNewToReceiver:(CDUnknownBlockType)arg3 processVarDroppedFromReceiver:(CDUnknownBlockType)arg4;
@@ -39,7 +50,7 @@
 - (void)replaceVariable:(id)arg1 withExpression:(id)arg2 processVariableNewToReceiver:(CDUnknownBlockType)arg3 processVariableDroppedFromReceiver:(CDUnknownBlockType)arg4;
 - (BOOL)restrictedVarWithCoefficientOfLargestNegativeMagnitudeOutVar:(CDStruct_fcd6c539 *)arg1;
 - (id)restrictedVariableWithCoefficientOfLargestNegativeMagnitude;
-- (void)setPriorityVector:(struct __CFData *)arg1 forKnownAbsentVar:(CDStruct_fcd6c539)arg2;
+- (void)setPriorityVector:(CDStruct_f13cc9bb *)arg1 forKnownAbsentVar:(CDStruct_fcd6c539)arg2;
 - (int)valueRestrictionForVar:(CDStruct_fcd6c539)arg1;
 - (unsigned long long)variableCount;
 - (void)verifyInternalIntegrity;

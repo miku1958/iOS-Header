@@ -41,16 +41,17 @@
 - (void).cxx_destruct;
 - (id)_mapPersonClustersToFaceGroups:(id)arg1;
 - (id)_mapPersonClustersToPersons:(id)arg1;
-- (id)_representativeFaceObservationForPerson:(id)arg1;
-- (id)_representativeFaceObservationForPerson:(id)arg1 inAssetCollections:(id)arg2;
+- (id)_representativeFaceObservationForPerson:(id)arg1 ageType:(unsigned short *)arg2;
+- (id)_representativeFaceObservationForPerson:(id)arg1 ageType:(unsigned short *)arg2 inAssetCollections:(id)arg3;
 - (long long)assetsOverlapBetweenPerson:(id)arg1 andPerson:(id)arg2;
 - (long long)assetsOverlapBetweenPersonAssetIdentifiers:(id)arg1 andPersonAssetIdentifiers:(id)arg2;
 - (void)clearCaches;
-- (float)distanceBetweenPerson:(id)arg1 andPerson:(id)arg2 useCommonMoments:(BOOL)arg3 updateBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
-- (float)distanceWithOverlapCheckBetweenPerson:(id)arg1 andPerson:(id)arg2 useCommonMoments:(BOOL)arg3 updateBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
+- (float)distanceBetweenPerson:(id)arg1 andPerson:(id)arg2 useCommonMoments:(BOOL)arg3 minAgeType:(unsigned short *)arg4 updateBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
+- (float)distanceWithOverlapCheckBetweenPerson:(id)arg1 andPerson:(id)arg2 useCommonMoments:(BOOL)arg3 minAgeType:(unsigned short *)arg4 updateBlock:(CDUnknownBlockType)arg5 error:(id *)arg6;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (void)invalidateCachesForPerson:(id)arg1;
 - (void)mergePersons:(id)arg1 withPerson:(id)arg2;
+- (unsigned short)minAgeTypeForFaceAgeType:(unsigned short)arg1 andFaceAgeType:(unsigned short)arg2;
 - (unsigned long long)numberOfAssetsInCommonBetweenPerson:(id)arg1 andPerson:(id)arg2;
 - (unsigned long long)numberOfAssetsInCommonBetweenPersonAssetIdentifiers:(id)arg1 andPersonAssetIdentifiers:(id)arg2;
 - (unsigned long long)numberOfMomentsInCommonBetweenPerson:(id)arg1 andPerson:(id)arg2;
@@ -78,12 +79,11 @@
 - (id)pv_fetchPersonsInMoment:(id)arg1;
 - (id)pv_fetchPersonsWithLocalIdentifiers:(id)arg1;
 - (id)pv_fetchPersonsWithType:(unsigned long long)arg1;
-- (BOOL)pv_isLibraryBeingSynchronized;
 - (id)pv_lastAssetDate;
 - (unsigned long long)pv_numberOfFacesWithFaceprints;
 - (BOOL)pv_performChangesAndWait:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)pv_persistentStorageDirectoryURL;
-- (id)representativeFaceObservationForFaces:(id)arg1 inPerson:(id)arg2;
+- (id)representativeFaceObservationForFaces:(id)arg1 ageType:(unsigned short *)arg2 inPerson:(id)arg3;
 
 @end
 

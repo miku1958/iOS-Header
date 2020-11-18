@@ -12,6 +12,7 @@
 {
     BOOL _prependSystemVersionToTitle;
     BOOL _appendStandardDisclaimerToDescription;
+    BOOL _appendSysdiagnoseHowTo;
     NSString *_title;
     NSString *_radarDescription;
     long long _component;
@@ -21,6 +22,7 @@
 }
 
 @property (nonatomic) BOOL appendStandardDisclaimerToDescription; // @synthesize appendStandardDisclaimerToDescription=_appendStandardDisclaimerToDescription;
+@property (nonatomic) BOOL appendSysdiagnoseHowTo; // @synthesize appendSysdiagnoseHowTo=_appendSysdiagnoseHowTo;
 @property (nonatomic) long long classification; // @synthesize classification=_classification;
 @property (nonatomic) long long component; // @synthesize component=_component;
 @property (copy, nonatomic) NSArray *extensionIdentifiers; // @synthesize extensionIdentifiers=_extensionIdentifiers;

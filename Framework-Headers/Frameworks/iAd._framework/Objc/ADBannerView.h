@@ -14,7 +14,6 @@
 
 @interface ADBannerView : UIView <ADAdRecipient, ADDimmerViewDelegate>
 {
-    id<ADBannerViewDelegate> _weakDelegate;
     id<ADBannerViewInternalDelegate> _weakInternalDelegate;
     BOOL _displayed;
     BOOL _reUsed;
@@ -55,6 +54,7 @@
     NSDate *_loadEndTime;
     double _adDataLoadTime;
     double _bannerLoadTime;
+    id<ADBannerViewDelegate> _weakDelegate;
     struct CGSize _portraitSize;
     struct CGSize _landscapeSize;
 }
@@ -106,6 +106,7 @@
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
 @property (nonatomic) int slotPosition; // @synthesize slotPosition=_slotPosition;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) id<ADBannerViewDelegate> weakDelegate; // @synthesize weakDelegate=_weakDelegate;
 @property (copy, nonatomic) NSDate *webLoadStartTime; // @synthesize webLoadStartTime=_webLoadStartTime;
 
 + (struct CGRect)_adWindowBounds;
@@ -116,6 +117,7 @@
 + (BOOL)requiresConstraintBasedLayout;
 + (void)setServerURL:(id)arg1;
 + (struct CGSize)sizeFromBannerContentSizeIdentifier:(id)arg1;
+- (void).cxx_destruct;
 - (id)_accessibilityUserTestingElementAttributes;
 - (void)_commonInit;
 - (void)_forwardErrorToDelegate:(id)arg1;
@@ -130,7 +132,6 @@
 - (void)_setInSecondConstraintsPass:(BOOL)arg1;
 - (void)_updateHighlight:(id)arg1;
 - (int)action;
-- (id)adPrivacyDetailsAttributes;
 - (void)adlibManagedVideoAdDidCompletePlay:(int)arg1;
 - (void)adlibManagedVideoAdDidImpress;
 - (void)adlibManagedVideoAdDidPausePlay;
@@ -197,10 +198,6 @@
 - (id)publicImpressionAttributes;
 - (void)registerVideoPlayerForAdAnalytics:(id)arg1;
 - (void)removeCreativeView;
-- (void)reportAdPrivacySheetDidAppear;
-- (void)reportAdPrivacySheetDidDisappear;
-- (void)reportAdPrivacySheetDidLinkOut;
-- (void)reportAdPrivacySheetDidRender;
 - (void)reportNativeClickEvent;
 - (id)requiredContentSizeIdentifiers;
 - (BOOL)requiresMRAID;

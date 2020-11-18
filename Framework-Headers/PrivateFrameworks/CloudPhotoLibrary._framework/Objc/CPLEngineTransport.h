@@ -44,7 +44,7 @@
 - (id)createGroupForInitialDownload;
 - (id)createGroupForInitialUpload;
 - (id)createGroupForLibraryStateCheck;
-- (id)createGroupForMovieStreaming;
+- (id)createGroupForMovieStreamingWithIntent:(unsigned long long)arg1;
 - (id)createGroupForPrefetch;
 - (id)createGroupForPruningCheck;
 - (id)createGroupForPublishingMomentShare;
@@ -62,11 +62,13 @@
 - (id)fetchScopeListChangesForScopeListSyncAnchor:(struct NSData *)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)fetchTaskForMomentShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)fetchTransportScopeForScope:(id)arg1 transportScope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)findPersistedInitialSyncSession:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)getCurrentSyncAnchorWithTransportScope:(id)arg1 scope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getLibraryInfoAndStateWithTransportScope:(id)arg1 scope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getPushEnvironmentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)getStreamingURLTaskForResource:(id)arg1 intent:(unsigned long long)arg2 hints:(id)arg3 transportScope:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)inMemoryDownloadTaskForResource:(id)arg1 transportScope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithEngineLibrary:(id)arg1;
@@ -79,7 +81,6 @@
 - (id)queryUserIdentitiesTaskForParticipants:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)rampingRequestTaskForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)resourceCheckTaskForResources:(id)arg1 transportScopes:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)resourcePublishTaskForResource:(id)arg1 transportScope:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)resourcesDownloadTaskWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)scopeNameForTransportScope:(id)arg1;
 - (id)sendFeedbackTaskForMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

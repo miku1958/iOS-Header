@@ -9,7 +9,7 @@
 #import <MapKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <MapKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIActivityIndicatorView, UIImageView, UILabel, UINavigationBar, UINavigationItem, UIScrollView, UIVisualEffectView;
+@class NSArray, NSMutableArray, NSString, UIActivityIndicatorView, UILabel, UINavigationBar, UINavigationItem, UIScrollView, UIVisualEffectView;
 @protocol MKPlacePhotosViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,15 +21,12 @@ __attribute__((visibility("hidden")))
     UILabel *_pageInfoLabel;
     UIActivityIndicatorView *_activityIndicator;
     NSMutableArray *_singlePhotoArray;
-    UIVisualEffectView *_topView;
     UINavigationBar *_navBar;
     UIView *_bottomView;
     UIVisualEffectView *_bottomEffectView;
-    UIImageView *_gradientView;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UILabel *_licenseLabel;
-    NSLayoutConstraint *_statusBarHeightConstraint;
     int _actualPage;
     UINavigationItem *_navItem;
     unsigned long long _textDisplayedForPage;
@@ -67,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (void)stopActivityIndicator;
 - (void)toggleNavBar;
 - (void)updateDetails;
-- (void)updateStatusBarConstraint;
 - (void)updateTextForPage:(unsigned long long)arg1;
 - (void)willEnterForeground:(id)arg1;
 - (double)xPositionForPhotoAtIndex:(unsigned long long)arg1 numberOfPhotos:(unsigned long long)arg2 pageWidth:(double)arg3;

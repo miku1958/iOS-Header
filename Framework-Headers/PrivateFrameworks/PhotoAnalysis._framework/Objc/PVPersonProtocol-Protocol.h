@@ -6,11 +6,12 @@
 
 #import <PhotoAnalysis/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol PVFaceProtocol, PVFetchResultProtocol;
 
 @protocol PVPersonProtocol <NSObject>
 
+@property (readonly, nonatomic) NSString *anonymizedName;
 @property (readonly, nonatomic) unsigned long long faceCount;
 @property (readonly, nonatomic) BOOL favorite;
 @property (readonly, nonatomic) BOOL hidden;
@@ -18,9 +19,9 @@
 @property (strong, nonatomic) id<PVFaceProtocol> keyFace;
 @property (readonly, nonatomic) NSString *localIdentifier;
 @property (nonatomic) long long manualOrder;
-@property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long verifiedType;
 
+- (NSArray *)personLocalIdentifiers;
 - (void)pv_addMergeCandidatePersons:(id<PVFetchResultProtocol>)arg1;
 @end
 

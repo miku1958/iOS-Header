@@ -6,7 +6,7 @@
 
 #import <UserNotificationsUIKit/NSObject-Protocol.h>
 
-@class BBAttachmentMetadata, BBBulletin, BBObserver, BBSectionInfo, BBSectionParameters, BBThumbnailSizeConstraints, NSData, NSSet, NSString, UIImage;
+@class BBAttachmentMetadata, BBBulletin, BBGlobalSettings, BBObserver, BBSectionInfo, BBSectionParameters, BBThumbnailSizeConstraints, NSData, NSSet, NSString, UIImage;
 
 @protocol BBObserverDelegate <NSObject>
 
@@ -31,6 +31,7 @@
 - (void)observer:(BBObserver *)arg1 removeSection:(NSString *)arg2;
 - (BBThumbnailSizeConstraints *)observer:(BBObserver *)arg1 thumbnailSizeConstraintsForAttachment:(BBAttachmentMetadata *)arg2 bulletin:(BBBulletin *)arg3;
 - (BBThumbnailSizeConstraints *)observer:(BBObserver *)arg1 thumbnailSizeConstraintsForAttachmentType:(long long)arg2;
+- (void)observer:(BBObserver *)arg1 updateGlobalSettings:(BBGlobalSettings *)arg2;
 - (void)observer:(BBObserver *)arg1 updateSectionInfo:(BBSectionInfo *)arg2;
 - (BOOL)observerShouldFetchAttachmentImageBeforeBulletinDelivery:(BBObserver *)arg1;
 - (BOOL)observerShouldFetchAttachmentSizeBeforeBulletinDelivery:(BBObserver *)arg1;

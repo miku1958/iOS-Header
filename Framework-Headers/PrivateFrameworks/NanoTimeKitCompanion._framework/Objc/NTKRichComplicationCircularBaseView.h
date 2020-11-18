@@ -12,17 +12,22 @@
 {
     double _editingRotationInDegree;
     UIView *_contentView;
+    UIView *_framingView;
     long long _position;
 }
 
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, nonatomic) UIView *framingView; // @synthesize framingView=_framingView;
 @property (nonatomic) long long position; // @synthesize position=_position;
 
 + (id)keylineImageWithFilled:(BOOL)arg1 forDevice:(id)arg2;
++ (id)keylineImageWithFilled:(BOOL)arg1 wide:(BOOL)arg2 expanded:(BOOL)arg3 forDevice:(id)arg4;
 + (id)keylineViewForDevice:(id)arg1;
++ (id)keylineViewForDevice:(id)arg1 wide:(BOOL)arg2 expanded:(BOOL)arg3;
++ (id)layoutRuleForState:(long long)arg1 viewCenterInFaceBounds:(struct CGPoint)arg2 position:(long long)arg3 editingAdjustment:(long long)arg4 wide:(BOOL)arg5 forDevice:(id)arg6;
 + (id)layoutRuleForState:(long long)arg1 viewCenterInFaceBounds:(struct CGPoint)arg2 position:(long long)arg3 forDevice:(id)arg4;
-+ (void)startDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 + (struct CGAffineTransform)transformForState:(long long)arg1;
++ (void)updateCustomDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 isForward:(BOOL)arg3 animationType:(unsigned long long)arg4 animationDuration:(double)arg5 animationFraction:(float)arg6;
 + (id)viewWithLegacyComplicationType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_adjustFontSizeForLabel:(id)arg1 fontWeight:(double)arg2 possibleMaxWidths:(id)arg3 possibleFontSizes:(id)arg4;

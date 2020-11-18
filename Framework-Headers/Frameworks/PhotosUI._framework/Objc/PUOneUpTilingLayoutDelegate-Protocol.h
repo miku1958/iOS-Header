@@ -15,7 +15,7 @@
 - (struct CGPoint)layout:(PUOneUpTilingLayout *)arg1 accessoryOffsetForItemAtIndexPath:(NSIndexPath *)arg2;
 - (double)layout:(PUOneUpTilingLayout *)arg1 aspectRatioForItemAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGSize)layout:(PUOneUpTilingLayout *)arg1 assetExplorerReviewScreenBadgeSizeForItemAtIndexPath:(NSIndexPath *)arg2;
-- (struct CGSize)layout:(PUOneUpTilingLayout *)arg1 badgeSizeForItemAtIndexPath:(NSIndexPath *)arg2;
+- (struct CGSize)layout:(PUOneUpTilingLayout *)arg1 badgeSizeForItemAtIndexPath:(NSIndexPath *)arg2 contentWidth:(double)arg3;
 - (struct CGPoint)layout:(PUOneUpTilingLayout *)arg1 contentOffsetForItemAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)layout:(PUOneUpTilingLayout *)arg1 disableInitialZoomToFillForItemAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGSize)layout:(PUOneUpTilingLayout *)arg1 loadingIndicatorSizeForItemAtIndexPath:(NSIndexPath *)arg2;

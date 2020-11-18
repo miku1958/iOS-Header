@@ -308,7 +308,7 @@ struct PolygonObstacle {
 };
 
 struct PolylinePathway {
-    CDUnknownFunctionPointerType *_vptr$PolylinePathway;
+    CDUnknownFunctionPointerType *_vptr$Pathway;
     int pointCount;
     struct Vec3 *points;
     float radius;

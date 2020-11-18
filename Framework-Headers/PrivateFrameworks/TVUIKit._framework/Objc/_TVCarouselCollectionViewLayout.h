@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewFlowLayout.h>
+#import <UIKit/UICollectionViewLayout.h>
 
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
-@interface _TVCarouselCollectionViewLayout : UICollectionViewFlowLayout
+@interface _TVCarouselCollectionViewLayout : UICollectionViewLayout
 {
     NSDictionary *_layoutAttributesByIndexPath;
+    double _minimumInteritemSpacing;
+    struct CGSize _itemSize;
 }
+
+@property (nonatomic) struct CGSize itemSize; // @synthesize itemSize=_itemSize;
+@property (nonatomic) double minimumInteritemSpacing; // @synthesize minimumInteritemSpacing=_minimumInteritemSpacing;
 
 - (void).cxx_destruct;
 - (long long)_expectedNumberOfCells;

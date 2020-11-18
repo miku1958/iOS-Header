@@ -31,6 +31,7 @@
 @property BOOL zeroPadsFractionDigits; // @synthesize zeroPadsFractionDigits=_zeroPadsFractionDigits;
 
 + (id)stringFromByteCount:(long long)arg1 countStyle:(long long)arg2;
++ (id)stringFromMeasurement:(id)arg1 countStyle:(long long)arg2;
 - (BOOL)_mayDecorateAttributedStringForObjectValue:(id)arg1;
 - (unsigned long long)_options;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -41,6 +42,7 @@
 - (BOOL)isPartialStringValid:(id *)arg1 proposedSelectedRange:(struct _NSRange *)arg2 originalString:(id)arg3 originalSelectedRange:(struct _NSRange)arg4 errorDescription:(id *)arg5;
 - (id)stringForObjectValue:(id)arg1;
 - (id)stringFromByteCount:(long long)arg1;
+- (id)stringFromMeasurement:(id)arg1;
 
 @end
 

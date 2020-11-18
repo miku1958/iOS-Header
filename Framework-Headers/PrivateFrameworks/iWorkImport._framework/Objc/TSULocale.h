@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSCache, NSLocale, NSLock, NSMutableArray, NSMutableDictionary, NSString, NSTimeZone, TSUDateParserLibrary;
+@class NSArray, NSCache, NSLocale, NSLock, NSMutableArray, NSMutableDictionary, NSString, NSTimeZone, TSUDateParserLibrary, TSULocaleStructuredDictionary;
 
 __attribute__((visibility("hidden")))
 @interface TSULocale : NSObject
@@ -17,6 +17,11 @@ __attribute__((visibility("hidden")))
     NSString *_localeIdentifier;
     NSString *_documentLanguageIdentifier;
     BOOL _isAutoUpdating;
+    TSULocaleStructuredDictionary *_harmonizedNumberFormatterSymbols;
+    NSMutableDictionary *_currencyCodeToSymbolMap;
+    NSMutableDictionary *_currencyCodeToHalfWidthSymbolMap;
+    struct os_unfair_lock_s _currencySymbolToCodeLock;
+    NSMutableDictionary *_currencySymbolToCodeCache;
     NSString *_currencyCode;
     NSString *_decimalSeparator;
     NSString *_currencyDecimalSeparator;
@@ -24,6 +29,8 @@ __attribute__((visibility("hidden")))
     NSString *_currencyGroupingSeparator;
     NSString *_listSeparator;
     NSString *_percentSymbol;
+    NSString *_minusSign;
+    NSString *_plusSign;
     long long _dateComponentOrdering;
     NSArray *_monthSymbols;
     NSArray *_standaloneMonthSymbols;
@@ -33,6 +40,7 @@ __attribute__((visibility("hidden")))
     NSArray *_shortStandaloneMonthSymbols;
     NSArray *_shortWeekdaySymbols;
     NSArray *_shortStandaloneWeekdaySymbols;
+    struct TSUNumberOrDateLexer _numberOrDateLexer;
     struct _opaque_pthread_mutex_t _formattersMutex;
     NSMutableArray *_numberFormatters;
     NSMutableArray *_scientificNumberFormatters;
@@ -45,6 +53,7 @@ __attribute__((visibility("hidden")))
     NSString *_activeCurrencyCode;
     NSString *_activeNoMinusSignCurrencyCode;
     unsigned long long _groupingSize;
+    unsigned long long _secondaryGroupingSize;
     NSLock *_localeSpecificStorageLock;
     NSMutableDictionary *_localeSpecificStorage;
     NSCache *_cachedLocalizedStrings;
@@ -74,9 +83,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSString *listSeparator; // @synthesize listSeparator=_listSeparator;
 @property (readonly) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (readonly) NSString *minusSign; // @synthesize minusSign=_minusSign;
 @property (readonly) NSArray *monthSymbols; // @synthesize monthSymbols=_monthSymbols;
+@property (readonly, nonatomic) const struct TSUNumberOrDateLexer *numberOrDateLexer;
 @property (readonly) NSString *percentSymbol; // @synthesize percentSymbol=_percentSymbol;
+@property (readonly) NSString *plusSign; // @synthesize plusSign=_plusSign;
 @property (readonly) NSString *pmString; // @synthesize pmString=_pmString;
+@property (readonly) unsigned long long secondaryGroupingSize; // @synthesize secondaryGroupingSize=_secondaryGroupingSize;
 @property (readonly) NSArray *shortMonthSymbols; // @synthesize shortMonthSymbols=_shortMonthSymbols;
 @property (readonly) NSArray *shortStandaloneMonthSymbols; // @synthesize shortStandaloneMonthSymbols=_shortStandaloneMonthSymbols;
 @property (readonly) NSArray *shortStandaloneWeekdaySymbols; // @synthesize shortStandaloneWeekdaySymbols=_shortStandaloneWeekdaySymbols;
@@ -92,15 +105,20 @@ __attribute__((visibility("hidden")))
 + (id)allSupportedTier3Languages;
 + (id)applicationLocale;
 + (unsigned long long)autoupdatingCurrentLocaleChangeCount;
++ (id)availableCurrencyCodes;
 + (id)cacheKeyForLocale:(id)arg1;
 + (id)canonicalizeLocaleIdentifier:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageAndRegionOnly:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageAndScriptOnly:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageOnly:(id)arg1;
 + (id)canonicalizeLocaleIdentifierWithLanguageScriptAndRegionOnly:(id)arg1;
++ (id)currencySymbolForCurrencyCode:(id)arg1;
 + (id)currentLocale;
++ (id)currentLocaleCurrencyCode;
 + (id)deducedScriptForLocale:(id)arg1;
++ (unsigned short)defaultDecimalPlacesForCurrencyCode:(id)arg1;
 + (id)displayNameForCode:(id)arg1 ofType:(id)arg2 displayStandalone:(BOOL)arg3;
++ (id)displayNameForCurrencyCode:(id)arg1;
 + (void)initialize;
 + (id)localeForLocaleIdentifier:(id)arg1 documentLanguageIdentifier:(id)arg2;
 + (id)localeIDWithDefaultRegionCode:(id)arg1;
@@ -111,6 +129,9 @@ __attribute__((visibility("hidden")))
 + (void)saveLocaleForReuse:(id)arg1;
 + (void)setLocalizedStringBundle:(struct __CFBundle *)arg1;
 + (id)simplifiedDisplayNameForLocaleID:(id)arg1 displayStandalone:(BOOL)arg2;
++ (id)userVisibleCurrencyCodes;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundle:(struct __CFBundle *)arg4;
 - (id)URLForResource:(id)arg1 withExtension:(id)arg2 subdirectory:(id)arg3 inBundleWithURL:(id)arg4;
@@ -120,11 +141,16 @@ __attribute__((visibility("hidden")))
 - (struct __CFNumberFormatter *)checkoutNumberFormatter;
 - (struct __CFNumberFormatter *)checkoutScientificNumberFormatter;
 - (id)copyWithDocumentLanguageIdentifier:(id)arg1;
+- (struct __CFNumberFormatter *)createHarmonizedCFNumberFormatterOfStyle:(long long)arg1;
+- (id)currencyCodeForCurrencySymbol:(id)arg1;
+- (id)currencySymbolForCurrencyCode:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)displayLanguageNameWithStandalone:(BOOL)arg1;
+- (id)displayNameForCurrencyCode:(id)arg1;
 - (id)functionLocalizationDictionary;
 - (id)functionNameForLocalizedString:(id)arg1;
+- (id)halfWidthCurrencySymbolForCurrencyCode:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithLocale:(id)arg1 documentLanguageIdentifier:(id)arg2;
 - (id)initWithLocale:(id)arg1 documentLanguageIdentifier:(id)arg2 useAutoupdating:(BOOL)arg3;
@@ -159,6 +185,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedTrueStrings;
 - (id)localizedTypeStringForArgumentType:(int)arg1;
 - (id)numberFormatterStringFromDouble:(double)arg1 withFormat:(id)arg2 useDecimalPlaces:(BOOL)arg3 minDecimalPlaces:(unsigned short)arg4 decimalPlaces:(unsigned short)arg5 showThousandsSeparator:(BOOL)arg6 currencyCode:(id)arg7 suppressMinusSign:(BOOL)arg8;
+- (void)resetFromCFNumberFormatter;
 - (void)returnNumberFormatter:(struct __CFNumberFormatter *)arg1;
 - (void)returnScientificNumberFormatter:(struct __CFNumberFormatter *)arg1;
 - (void)setLocaleSpecificStorage:(id)arg1 forKey:(id)arg2;

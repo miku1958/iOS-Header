@@ -73,9 +73,12 @@
 + (id)clientPackageDatabaseDirectory;
 + (void)destroyClientPackageWithDatabaseBasePath:(id)arg1 UUID:(id)arg2;
 + (void)gcPackagesInDirectory:(id)arg1 dbInUseBlock:(CDUnknownBlockType)arg2;
-+ (id)packageInDaemonWithBundleIdentifier:(id)arg1 error:(id *)arg2;
++ (id)packageInClientWithBasePath:(id)arg1 error:(id *)arg2;
++ (id)packageInDaemonWithBasePath:(id)arg1 error:(id *)arg2;
++ (id)packageProcessBasePath;
 + (id)packageWithError:(id *)arg1;
 + (id)packageWithPackage:(id)arg1 error:(id *)arg2;
++ (id)stagingPathSuffixForCloudKitCachesDirectoryWithBundleIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)CKDescriptionPropertiesWithPublic:(BOOL)arg1 private:(BOOL)arg2 shouldExpand:(BOOL)arg3;
@@ -92,6 +95,7 @@
 - (void)addSection:(id)arg1;
 - (void)beginTransaction;
 - (BOOL)claimOwnershipWithError:(id *)arg1;
+- (id)clonedPackageInDaemonWithBasePath:(id)arg1 filesDuplicatedIntoDirectory:(id)arg2 error:(id *)arg3;
 - (void)close;
 - (void)dealloc;
 - (double)earliestUploadReceiptExpiration;
@@ -113,6 +117,7 @@
 - (void)releaseDB;
 - (void)releaseDBWithRemove:(BOOL)arg1;
 - (void)removeDB;
+- (BOOL)removeDBAndDeleteFilesWithError:(id *)arg1;
 - (id)sectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionCount;
 - (BOOL)setArchiverInfo:(id)arg1 error:(id *)arg2;

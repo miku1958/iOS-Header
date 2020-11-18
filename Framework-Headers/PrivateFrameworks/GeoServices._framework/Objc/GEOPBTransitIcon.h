@@ -9,41 +9,47 @@
 #import <GeoServices/GEOTransitIconDataSource-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class GEOStyleAttributes, NSString, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPBTransitIcon : PBCodable <GEOTransitIconDataSource, NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    GEOStyleAttributes *_styleAttributes;
     unsigned int _cartoId;
     unsigned int _transitTypeEnumValue;
     struct {
-        unsigned int cartoId:1;
-        unsigned int transitTypeEnumValue:1;
-    } _has;
+        unsigned int has_cartoId:1;
+        unsigned int has_transitTypeEnumValue:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) unsigned int cartoID;
-@property (nonatomic) unsigned int cartoId; // @synthesize cartoId=_cartoId;
+@property (nonatomic) unsigned int cartoId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned int defaultTransitType;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasCartoId;
+@property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (nonatomic) BOOL hasTransitTypeEnumValue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned int iconAttributeKey;
 @property (readonly, nonatomic) unsigned int iconAttributeValue;
-@property (readonly, nonatomic) long long iconType;
+@property (readonly, nonatomic) int iconType;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned int transitTypeEnumValue; // @synthesize transitTypeEnumValue=_transitTypeEnumValue;
+@property (nonatomic) unsigned int transitTypeEnumValue;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

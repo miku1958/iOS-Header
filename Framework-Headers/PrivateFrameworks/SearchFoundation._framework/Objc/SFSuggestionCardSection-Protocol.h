@@ -23,6 +23,7 @@
 @property (copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (strong, nonatomic) SFRichText *suggestionText;
+@property (nonatomic) int suggestionType;
 @property (copy, nonatomic) NSString *type;
 
 @end

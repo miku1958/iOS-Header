@@ -30,6 +30,7 @@
 - (void)invalidate;
 - (void)resume;
 - (void)sendMessage:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
+- (void)sendMessage:(id)arg1 syncReplyHandler:(CDUnknownBlockType)arg2;
 
 @end
 

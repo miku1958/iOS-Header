@@ -28,9 +28,11 @@
 - (struct _NSRange)_stringRange;
 - (id)_substringWithRange:(struct _NSRange)arg1;
 - (void)addGlobalTag:(id)arg1;
+- (void)addReplacementTag:(id)arg1 withToken:(id)arg2 range:(struct _NSRange)arg3;
 - (void)addTag:(id)arg1 withToken:(id)arg2 range:(struct _NSRange)arg3;
 - (id)attributesAtIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)debugDescription;
+- (id)description;
 - (BOOL)hasGlobalTag:(id)arg1;
 - (id)initWithAttributedString:(id)arg1;
 - (id)initWithString:(id)arg1;

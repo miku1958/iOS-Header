@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsLineConnectionStyle;
 - (BOOL)supportsLineTypeNone;
 - (BOOL)supportsSymbolDrawing;
+- (id)userInterfaceName;
 
 @end
 

@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     struct __CTParagraphStyle *_coreTextParagraphStyle;
     NSMapTable *_styleCache;
     NSMapTable *_scalePercentStyleCaches;
+    BOOL _allowsMissingPropertiesWithNoParentStyleForUpgrade;
 }
 
 @property (readonly, nonatomic) BOOL allowAsBookmarkSuggestionStyle;
+@property (nonatomic) BOOL allowsMissingPropertiesWithNoParentStyleForUpgrade; // @synthesize allowsMissingPropertiesWithNoParentStyleForUpgrade=_allowsMissingPropertiesWithNoParentStyleForUpgrade;
 @property (readonly, nonatomic) NSString *presetKind;
 @property (readonly, nonatomic) BOOL showInSuggestedBookmarksList;
 
@@ -48,10 +50,12 @@ __attribute__((visibility("hidden")))
 - (id)boxedValueForProperty:(int)arg1 oldBoxedValue:(id)arg2 transformedByTransform:(struct CGAffineTransform)arg3;
 - (void)clearStyleCaches;
 - (void)dealloc;
+- (id)fallbackFontColorWhenUnableToReadCharacterFillColor;
 - (struct __CTFont *)findCachedFontForCharacterStyle:(id)arg1 scalePercent:(unsigned long long)arg2;
 - (id)followingParagraphStyle;
 - (id)fullPropertyMap;
 - (id)getTypesetterAttributes:(id)arg1 scalePercent:(unsigned long long)arg2 isRightToLeft:(BOOL)arg3;
+- (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(BOOL)arg4;
 - (id)initialListStyle;
 - (void)loadFromArchive:(const struct ParagraphStyleArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -67,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct ParagraphStyleArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (void)setInitialListStyle:(id)arg1;
+- (void)setOverridePropertyMap:(id)arg1;
 - (id)styleSummary;
 - (BOOL)transformsFontSizes;
 - (void)willModify;

@@ -17,5 +17,6 @@
 - (void)handleOperationProgress:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)handleOperationStatistics:(NSDictionary *)arg1 forOperationWithID:(NSString *)arg2;
 - (void)openFileWithOpenInfo:(CKFileOpenInfo *)arg1 reply:(void (^)(CKFileOpenResult *, NSError *))arg2;
+- (void)readBytesOfInMemoryAssetContentWithUUID:(NSString *)arg1 offset:(unsigned long long)arg2 length:(unsigned long long)arg3 reply:(void (^)(NSData *, NSError *))arg4;
 @end
 

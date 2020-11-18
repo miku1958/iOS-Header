@@ -16,12 +16,13 @@
 }
 
 @property (readonly, nonatomic) PXSectionedChangeDetailsRepository *changeHistory; // @synthesize changeHistory=_changeHistory;
-@property (readonly, nonatomic) PXSectionedDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, nonatomic) PXSectionedDataSource *dataSource;
 
 - (void).cxx_destruct;
 - (void)_reevaluateWaitingConditions;
 - (void)_setDataSource:(id)arg1;
 - (void)_waitingConditionDidTimeout:(id)arg1;
+- (id)changeDetailsFromDataSource:(id)arg1 toDataSource:(id)arg2;
 - (id)createInitialDataSource;
 - (void)didPublishChanges;
 - (id)init;

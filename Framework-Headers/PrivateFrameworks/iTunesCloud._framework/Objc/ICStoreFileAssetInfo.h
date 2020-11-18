@@ -32,6 +32,7 @@
 @property (copy, nonatomic) NSData *md5; // @synthesize md5=_md5;
 @property (copy, nonatomic) ICStoreFinanceItemMetadata *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) long long protectionType;
+@property (readonly, copy, nonatomic) NSDictionary *responseDictionary;
 
 - (void).cxx_destruct;
 - (id)_metadataDictionary;

@@ -7,6 +7,7 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (GKCollectionUtils)
+- (id)_gkDescriptionWithChildren:(int)arg1;
 - (id)_gkDistinctValuesForKeyPath:(id)arg1;
 - (id)_gkMapDictionaryWithKeyPath:(id)arg1;
 - (id)_gkMapDictionaryWithKeyPath:(id)arg1 valueKeyPath:(id)arg2;

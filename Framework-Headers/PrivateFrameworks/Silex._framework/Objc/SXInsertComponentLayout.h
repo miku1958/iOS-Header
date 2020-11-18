@@ -19,6 +19,7 @@
     id<SXEdgeSpacing> _margin;
     unsigned long long _horizontalContentAlignment;
     id<SXEdgeSpacing> _padding;
+    unsigned long long _ignoreViewportPadding;
     struct _NSRange _columnRange;
     struct _SXConvertibleValue _minimumHeight;
     struct _SXConvertibleValue _maximumContentWidth;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) unsigned long long ignoreDocumentGutter; // @synthesize ignoreDocumentGutter=_ignoreDocumentGutter;
 @property (nonatomic) unsigned long long ignoreDocumentMargin; // @synthesize ignoreDocumentMargin=_ignoreDocumentMargin;
+@property (readonly, nonatomic) unsigned long long ignoreViewportPadding; // @synthesize ignoreViewportPadding=_ignoreViewportPadding;
 @property (strong, nonatomic) id<SXEdgeSpacing> margin; // @synthesize margin=_margin;
 @property (readonly, nonatomic) struct _SXConvertibleValue maximumContentWidth; // @synthesize maximumContentWidth=_maximumContentWidth;
 @property (readonly, nonatomic) struct _SXConvertibleValue maximumWidth;

@@ -32,14 +32,12 @@
 @property (readonly, nonatomic) PXExtendedTraitCollection *extendedTraitCollection; // @synthesize extendedTraitCollection=_extendedTraitCollection;
 @property (nonatomic) BOOL hasGeneratedGadgets; // @synthesize hasGeneratedGadgets=_hasGeneratedGadgets;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) const struct __CFString *seeAllAccessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *seeAllAccessoryButtonTitle;
 @property (readonly, nonatomic) BOOL shouldShowSeeAllAccessoryButton;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (Class)_albumGadgetClassForCollection:(id)arg1;
-- (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (id)_newGadgetForCollection:(id)arg1;
 - (void)_reconfigureGadgets;
 - (void)_updateDataSourceWithChangeDetails:(id)arg1;

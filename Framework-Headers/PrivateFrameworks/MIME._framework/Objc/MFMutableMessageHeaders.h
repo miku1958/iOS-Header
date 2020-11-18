@@ -6,22 +6,28 @@
 
 #import <MIME/MFMessageHeaders.h>
 
-@class NSMutableArray, NSMutableDictionary;
+#import <MIME/ECMutableMessageHeaders-Protocol.h>
 
-@interface MFMutableMessageHeaders : MFMessageHeaders
+@class NSMutableArray, NSMutableDictionary, NSString;
+
+@interface MFMutableMessageHeaders : MFMessageHeaders <ECMutableMessageHeaders>
 {
     NSMutableDictionary *_headersAdded;
     NSMutableArray *_headersRemoved;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
 - (void)_appendAddedHeaderKey:(id)arg1 value:(id)arg2 toData:(id)arg3;
 - (void)_appendHeaderKey:(id)arg1 value:(id)arg2 toData:(id)arg3;
 - (id)_copyHeaderValueForKey:(id)arg1;
 - (id)_copyHeaderValueForKey:(id)arg1 offset:(unsigned long long *)arg2 decoded:(BOOL)arg3;
 - (id)_headerValueForKey:(id)arg1;
 - (id)allHeaderKeys;
-- (void)dealloc;
-- (id)description;
 - (id)encodedHeaders;
 - (id)firstHeaderForKey:(id)arg1;
 - (BOOL)hasHeaderForKey:(id)arg1;
@@ -32,6 +38,7 @@
 - (void)setAddressList:(id)arg1 forKey:(id)arg2;
 - (void)setAddressListForBcc:(id)arg1;
 - (void)setAddressListForCc:(id)arg1;
+- (void)setAddressListForReplyTo:(id)arg1;
 - (void)setAddressListForSender:(id)arg1;
 - (void)setAddressListForTo:(id)arg1;
 - (void)setHeader:(id)arg1 forKey:(id)arg2;

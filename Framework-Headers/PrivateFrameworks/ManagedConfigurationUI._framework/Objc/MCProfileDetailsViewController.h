@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _showTitleIfOnlyOneSection;
     BOOL _viewControllerCanPop;
     int _mode;
+    double _tableViewBottomInset;
     MCUIProfile *_UIProfile;
     NSArray *_sections;
 }
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (nonatomic) BOOL showTitleIfOnlyOneSection; // @synthesize showTitleIfOnlyOneSection=_showTitleIfOnlyOneSection;
 @property (readonly) Class superclass;
+@property (nonatomic) double tableViewBottomInset; // @synthesize tableViewBottomInset=_tableViewBottomInset;
 @property (nonatomic) BOOL viewControllerCanPop; // @synthesize viewControllerCanPop=_viewControllerCanPop;
 
 - (void).cxx_destruct;
@@ -45,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (void)viewDidAppear:(BOOL)arg1;

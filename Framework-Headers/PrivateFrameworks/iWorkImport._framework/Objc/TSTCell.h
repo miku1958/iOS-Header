@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     double _valueDouble;
     unsigned int _valueID;
     NSObject *_valueObject;
-    struct TSCEDecimal _valueBigNumber;
+    struct TSUDecimal _valueBigNumber;
     unsigned char _conditionalStyleAppliedRule;
     unsigned short _explicitFormatFlags;
     unsigned short _cellFlags;
@@ -68,7 +68,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned char conditionalStyleAppliedRule; // @synthesize conditionalStyleAppliedRule=_conditionalStyleAppliedRule;
 @property (nonatomic) unsigned int conditionalStyleID; // @synthesize conditionalStyleID=_conditionalStyleID;
 @property (nonatomic) unsigned int controlCellSpecID; // @synthesize controlCellSpecID=_controlCellSpecID;
-@property (nonatomic) struct TSCEDecimal currencyDecimalValue;
+@property (nonatomic) struct TSUDecimal currencyDecimalValue;
 @property (nonatomic) double currencyDoubleValue;
 @property (readonly, nonatomic) TSKFormat *currencyFormat; // @synthesize currencyFormat=_currencyFormat;
 @property (nonatomic) unsigned int currencyFormatID; // @synthesize currencyFormatID=_currencyFormatID;
@@ -126,7 +126,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isEmptyForDataStore;
 @property (readonly, nonatomic) BOOL isMostRecentlyExplicitPercent;
 @property (strong, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
-@property (nonatomic) struct TSCEDecimal numberDecimalValue;
+@property (nonatomic) struct TSUDecimal numberDecimalValue;
 @property (nonatomic) double numberDoubleValue;
 @property (readonly, nonatomic) TSKFormat *numberFormat; // @synthesize numberFormat=_numberFormat;
 @property (nonatomic) unsigned int numberFormatID; // @synthesize numberFormatID=_numberFormatID;
@@ -143,6 +143,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int textFormatID; // @synthesize textFormatID=_textFormatID;
 @property (strong, nonatomic) TSWPParagraphStyle *textStyle; // @synthesize textStyle=_textStyle;
 @property (nonatomic) unsigned int textStyleID; // @synthesize textStyleID=_textStyleID;
+@property (readonly, nonatomic) struct TSUDecimal underlyingDecimalValue;
 @property (readonly, nonatomic) double underlyingDoubleValue;
 @property (readonly, nonatomic) BOOL valueIsNumberOrTime;
 @property (readonly, nonatomic) BOOL valueIsStringOrNumber;
@@ -175,6 +176,10 @@ __attribute__((visibility("hidden")))
 - (void)clearFormatOfType:(int)arg1;
 - (void)clearStrokes;
 - (void)clearValue;
+- (BOOL)coerceCellToFormatTypeUsingSpares:(int)arg1;
+- (BOOL)coerceTextCellToBestNumberFormatUsingLimitedParsing:(BOOL)arg1;
+- (BOOL)coerceToBaseFormat:(id)arg1;
+- (BOOL)coerceToFormatType:(int)arg1;
 - (void)copyAllFormatsToCell:(id)arg1;
 - (void)copyJustStrokesToCell:(id)arg1;
 - (void)copyJustStyleAndStrokesToCell:(id)arg1;
@@ -208,10 +213,13 @@ __attribute__((visibility("hidden")))
 - (void)processCustomFormatsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)removeControlCellSpec;
 - (id)reorganizeValueForSorting;
+- (void)replaceContentWithParsableString:(id)arg1 tableInfo:(id)arg2 cellID:(struct TSUCellCoord)arg3 flags:(unsigned long long)arg4 outControlWasRemoved:(BOOL *)arg5;
 - (void)setCellSpec:(id)arg1 clearingID:(BOOL)arg2;
 - (void)setCellStyle:(id)arg1 clearingID:(BOOL)arg2;
 - (void)setCommentStorage:(id)arg1 clearingID:(BOOL)arg2;
 - (void)setConditionalStyle:(id)arg1 clearingID:(BOOL)arg2;
+- (void)setCurrencyDecimalValue:(struct TSUDecimal)arg1 roundToDoublePrecision:(BOOL)arg2;
+- (void)setCurrencyOrNumberDecimalValue:(const struct TSUDecimal *)arg1;
 - (void)setCurrencyOrNumberDoubleValue:(double)arg1;
 - (void)setCurrentFormat:(id)arg1 flags:(unsigned short)arg2;
 - (void)setCurrentFormat:(id)arg1 isExplicit:(BOOL)arg2;
@@ -223,6 +231,7 @@ __attribute__((visibility("hidden")))
 - (void)setFormulaByRef:(const struct TSCEFormula *)arg1;
 - (void)setFormulaSyntaxError:(id)arg1 clearingID:(BOOL)arg2;
 - (void)setImportWarningSet:(id)arg1 clearingID:(BOOL)arg2;
+- (void)setNumberDecimalValue:(struct TSUDecimal)arg1 roundToDoublePrecision:(BOOL)arg2;
 - (void)setProvidedValueTypeBeforeUpgrade;
 - (void)setRichTextValue:(id)arg1 clearingID:(BOOL)arg2 convertToPlaintextIfPossible:(BOOL)arg3;
 - (void)setRichTextValueWithoutPlaintextCollapse:(id)arg1;

@@ -17,12 +17,12 @@
     GEOTileKeyMap *_cachedData;
     GEOTileKeyMap *_priorities;
     GEOTileKeyMap *_signpostIDs;
+    GEOTileKeyMap *_createTimes;
     GEOTileKeyMap *_additionalInfos;
     NSString *_bundleIdentifier;
     NSString *_bundleVersion;
     GEOApplicationAuditToken *_auditToken;
-    BOOL _requireWiFi;
-    BOOL _requirePowerPluggedIn;
+    unsigned long long _constraints;
     NSString *_backgroundSessionIdentifier;
     BOOL _shouldParticipateInBalancer;
     unsigned char _loadReason;
@@ -35,13 +35,13 @@
 @property (readonly, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (readonly, nonatomic) GEOTileKeyMap *cachedData; // @synthesize cachedData=_cachedData;
 @property (readonly, nonatomic) GEOTileKeyMap *cachedEtags; // @synthesize cachedEtags=_cachedEtags;
+@property (readonly, nonatomic) unsigned long long constraints; // @synthesize constraints=_constraints;
+@property (readonly, nonatomic) GEOTileKeyMap *createTimes; // @synthesize createTimes=_createTimes;
 @property (readonly, nonatomic) GEOTileKeyList *keyList; // @synthesize keyList=_keyList;
 @property (readonly, nonatomic) unsigned char loadReason; // @synthesize loadReason=_loadReason;
 @property (readonly, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly, nonatomic) GEOResourceManifestConfiguration *manifestConfiguration; // @synthesize manifestConfiguration=_manifestConfiguration;
 @property (readonly, nonatomic) GEOTileKeyMap *priorities; // @synthesize priorities=_priorities;
-@property (readonly, nonatomic) BOOL requirePowerPluggedIn; // @synthesize requirePowerPluggedIn=_requirePowerPluggedIn;
-@property (readonly, nonatomic) BOOL requireWiFi; // @synthesize requireWiFi=_requireWiFi;
 @property (readonly, nonatomic) BOOL shouldParticipateInBalancer; // @synthesize shouldParticipateInBalancer=_shouldParticipateInBalancer;
 @property (readonly, nonatomic) GEOTileKeyMap *signpostIDs; // @synthesize signpostIDs=_signpostIDs;
 
@@ -49,7 +49,7 @@
 - (id)description;
 - (id)init;
 - (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3;
-- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 cachedEtags:(id)arg4 cachedData:(id)arg5 priorities:(id)arg6 signpostIDs:(id)arg7 additionalInfos:(id)arg8 bundleIdentifier:(id)arg9 bundleVersion:(id)arg10 auditToken:(id)arg11 requireWiFi:(BOOL)arg12 requirePowerPluggedIn:(BOOL)arg13 backgroundSessionIdentifier:(id)arg14 shouldParticipateInBalancer:(BOOL)arg15 reason:(unsigned char)arg16;
+- (id)initWithKeyList:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 cachedEtags:(id)arg4 cachedData:(id)arg5 priorities:(id)arg6 signpostIDs:(id)arg7 createTimes:(id)arg8 additionalInfos:(id)arg9 bundleIdentifier:(id)arg10 bundleVersion:(id)arg11 auditToken:(id)arg12 constraints:(unsigned long long)arg13 backgroundSessionIdentifier:(id)arg14 shouldParticipateInBalancer:(BOOL)arg15 reason:(unsigned char)arg16;
 
 @end
 

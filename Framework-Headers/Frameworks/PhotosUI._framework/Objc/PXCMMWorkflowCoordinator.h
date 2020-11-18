@@ -9,11 +9,12 @@
 #import <PhotosUICore/PXCMMActionControllerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXCMMViewControllerDelegate-Protocol.h>
+#import <PhotosUICore/PXCMMWorkflowPresenting-Protocol.h>
 
 @class NSString, PXCMMViewController, UINavigationController;
 @protocol PXCMMWorkflowCoordinatorDelegate;
 
-@interface PXCMMWorkflowCoordinator : NSObject <PXCMMViewControllerDelegate, PXCMMActionPerformerDelegate, PXCMMActionControllerDelegate>
+@interface PXCMMWorkflowCoordinator : NSObject <PXCMMViewControllerDelegate, PXCMMActionPerformerDelegate, PXCMMActionControllerDelegate, PXCMMWorkflowPresenting>
 {
     UINavigationController *_navigationController;
     PXCMMViewController *_rootWorkflowViewController;
@@ -58,6 +59,7 @@
 - (void)completeMyMomentViewController:(id)arg1 showPhotoPickerForSession:(id)arg2;
 - (void)didCancelCompleteMyMomentViewController:(id)arg1;
 - (void)startPreloadingTasksForCompleteMyMomentViewController:(id)arg1;
+- (struct NSObject *)workflowViewControllerWithContext:(id)arg1;
 - (id)workflowViewControllerWithContext:(id)arg1 embedInNavigationControllerOfClass:(Class)arg2;
 
 @end

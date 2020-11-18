@@ -8,25 +8,40 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDVenueLabel, NSMutableArray, PBUnknownFields;
+@class GEOPDVenueLabel, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDFilterElementInfo : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_filterIds;
     GEOPDVenueLabel *_label;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_filterIds:1;
+        unsigned int read_label:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_filterIds:1;
+        unsigned int wrote_label:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *filterIds; // @synthesize filterIds=_filterIds;
+@property (strong, nonatomic) NSMutableArray *filterIds;
 @property (readonly, nonatomic) BOOL hasLabel;
-@property (strong, nonatomic) GEOPDVenueLabel *label; // @synthesize label=_label;
+@property (strong, nonatomic) GEOPDVenueLabel *label;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)filterIdType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsFilterId:(id)arg1;
+- (void)_readFilterIds;
+- (void)_readLabel;
 - (void)addFilterId:(id)arg1;
 - (void)clearFilterIds;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

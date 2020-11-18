@@ -6,11 +6,11 @@
 
 #import <RelevanceEngine/RERelevanceEngineSubsystem.h>
 
-#import <RelevanceEngine/RELoggable-Protocol.h>
+#import <RelevanceEngine/REEngineLocationManagerProperties-Protocol.h>
 
-@class CLLocation, NSString, RELocationManager, REObserverStore;
+@class CLLocation, RELocationManager, REObserverStore;
 
-@interface REEngineLocationManager : RERelevanceEngineSubsystem <RELoggable>
+@interface REEngineLocationManager : RERelevanceEngineSubsystem <REEngineLocationManagerProperties>
 {
     RELocationManager *_locationManager;
     RELocationManager *_simulatedLocationManager;
@@ -21,11 +21,9 @@
 }
 
 @property (strong, nonatomic) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong) CLLocation *location; // @synthesize location=_location;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) RELocationManager *locationManager;
+@property (readonly, nonatomic) BOOL monitoringLocation;
 
 - (void).cxx_destruct;
 - (void)_beginMonitoringLocationForManager:(id)arg1;
@@ -37,7 +35,6 @@
 - (void)_updateLocationStatus;
 - (BOOL)_wantsLocation;
 - (void)addObserver:(id)arg1;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithRelevanceEngine:(id)arg1 locationManager:(id)arg2;
 - (void)pause;

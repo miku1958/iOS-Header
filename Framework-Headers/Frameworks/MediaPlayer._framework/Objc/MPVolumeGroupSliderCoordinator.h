@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (void)_addControlEventsForVolumeSlider:(id)arg1;
 - (void)_addControlEventsForVolumeSliders:(id)arg1;
+- (id)_findExistingVolumeSlider:(id)arg1;
 - (float)_maxOptimisticValue;
 - (void)_removeControlEventsForVolumeSlider:(id)arg1;
 - (void)_removeControlEventsForVolumeSliders:(id)arg1;

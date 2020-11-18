@@ -4,23 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CTXPCServiceSubscriptionContext;
+@class CTXPCServiceSubscriptionContext, NSString;
 
 @protocol CTXPCServiceDataInterface
 - (void)getActiveConnections:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getConnectionAvailability:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(CTDataConnectionAvailabilityStatus *, NSError *))arg3;
 - (void)getConnectionState:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(CTDataConnectionStatus *, NSError *))arg3;
+- (void)getCurrentDataServiceDescriptor:(void (^)(CTServiceDescriptor *, NSError *))arg1;
 - (void)getCurrentDataSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
 - (void)getDataStatus:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(CTDataStatus *, NSError *))arg2;
 - (void)getInternationalDataAccessStatus:(void (^)(BOOL, NSError *))arg1;
 - (void)getNATTKeepAliveOverCell:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(unsigned int, NSError *))arg2;
 - (void)getPacketContextCount:(void (^)(unsigned int))arg1;
+- (void)getPreferredDataServiceDescriptor:(void (^)(CTServiceDescriptor *, NSError *))arg1;
 - (void)getPreferredDataSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
-- (void)getSupportDynamicDataSimSwitchOnBBCall:(void (^)(BOOL, NSError *))arg1;
+- (void)getSupportDynamicDataSimSwitch:(void (^)(BOOL, NSError *))arg1;
 - (void)isTetheringEditingSupported:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)resetAPNSettings:(void (^)(NSError *))arg1;
 - (void)setInternationalDataAccessStatus:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setPacketContextActiveByServiceType:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 active:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
-- (void)setSupportDynamicDataSimSwitchOnBBCall:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
+- (void)setSupportDynamicDataSimSwitch:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
+- (void)setSupportDynamicDataSimSwitch:(BOOL)arg1 forIccid:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

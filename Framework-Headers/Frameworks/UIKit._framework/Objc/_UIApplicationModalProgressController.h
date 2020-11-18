@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSProgress, NSString, NSTimer, UIAlertController, UIWindow, _UIProgressView;
+@class NSProgress, NSString, NSTimer, UIAlertController, UIWindow, UIWindowScene, _UIProgressView;
 
 __attribute__((visibility("hidden")))
 @interface _UIApplicationModalProgressController : NSObject
 {
     BOOL _disableButtonAction;
     _UIProgressView *_progressView;
+    UIWindowScene *_weakScene;
     double _displayDelaySeconds;
     UIWindow *_window;
     UIAlertController *_alertController;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSProgress *urlProgress; // @synthesize urlProgress=_urlProgress;
 @property (strong, nonatomic, getter=_window, setter=_setWindow:) UIWindow *window; // @synthesize window=_window;
 
++ (id)instanceForScene:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_callAndClearDismissalHandlerWasDismissedByUser:(BOOL)arg1;

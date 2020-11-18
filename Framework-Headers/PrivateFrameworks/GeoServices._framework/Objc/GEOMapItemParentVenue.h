@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) unsigned long long businessID; // @synthesize businessID=_businessID;
 @property (readonly, nonatomic) int featureType; // @synthesize featureType=_featureType;
 
+- (id)init;
 - (id)initWithBusinessID:(unsigned long long)arg1 featureType:(int)arg2;
 - (id)initWithLocatedInsideInfo:(id)arg1;
 

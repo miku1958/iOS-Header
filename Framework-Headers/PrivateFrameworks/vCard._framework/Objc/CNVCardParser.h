@@ -44,6 +44,7 @@
     NSData *_imageData;
     NSString *_imageGroup;
     NSString *_imageReference;
+    unsigned long long _startingPositionOfCurrentProperty;
     NSArray *_itemParameters;
     NSString *_grouping;
     unsigned long long _encoding;
@@ -132,6 +133,7 @@
 - (BOOL)parse_X_AIM;
 - (BOOL)parse_X_AIM_ID;
 - (BOOL)parse_X_ALTBDAY;
+- (BOOL)parse_X_APPLE_GUARDIAN_WHITELISTED;
 - (BOOL)parse_X_APPLE_LIKENESS_SERVICE_IDENTIFIER;
 - (BOOL)parse_X_APPLE_LIKENESS_SOURCE;
 - (BOOL)parse_X_APPLE_SUBADMINISTRATIVEAREA;
@@ -170,6 +172,7 @@
 - (void)reportValues;
 - (id)resultsWithFactory:(id)arg1;
 - (id)typeParameters;
+- (id)unparsedStringForCurrentProperty;
 - (id)validCountryCodes;
 - (BOOL)valueIsEmpty:(id)arg1;
 

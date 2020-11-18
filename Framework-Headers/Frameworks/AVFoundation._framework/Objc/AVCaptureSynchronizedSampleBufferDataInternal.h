@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface AVCaptureSynchronizedSampleBufferDataInternal : NSObject
 {
     struct opaqueCMSampleBuffer *sampleBuffer;
@@ -13,6 +14,7 @@
     long long droppedReason;
     BOOL hasCorrespondingDepthData;
     BOOL hasCorrespondingVisionData;
+    int constituentDeviceCaptureID;
 }
 
 @end

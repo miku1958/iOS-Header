@@ -8,8 +8,8 @@
 
 #import <ContactsUI/CNContactDataSource-Protocol.h>
 
-@class CNContact, CNContactFilter, CNContactFormatter, CNContactStore, CNContactStoreFilter, CNContactStoreSnapshot, CNManagedConfiguration, CNiOSAddressBook, NSArray, NSDictionary, NSString;
-@protocol CNContactDataSourceDelegate, OS_dispatch_queue;
+@class CNContact, CNContactFilter, CNContactFormatter, CNContactStore, CNContactStoreFilter, CNContactStoreSnapshot, CNManagedConfiguration, NSArray, NSDictionary, NSString;
+@protocol CNContactDataSourceDelegate, CNScheduler, OS_dispatch_queue;
 
 @interface CNContactStoreDataSource : NSObject <CNContactDataSource>
 {
@@ -17,6 +17,7 @@
     NSDictionary *_sectionHeadersDictionary;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _loadingSnapshot;
+    id<CNScheduler> _mainThreadScheduler;
     BOOL _fetchUnified;
     BOOL _meContactNeedsUpdate;
     CNContactFormatter *contactFormatter;
@@ -26,10 +27,9 @@
     CNManagedConfiguration *_managedConfiguration;
     NSArray *_keysToFetch;
     CNContact *_meContact;
+    NSDictionary *_localizedSectionIndices;
 }
 
-@property (readonly, nonatomic) unsigned int abSortOrder;
-@property (readonly, nonatomic) CNiOSAddressBook *addressBook;
 @property (readonly, nonatomic) BOOL canReload;
 @property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter;
 @property (readonly, nonatomic) NSDictionary *contactMatchInfos;
@@ -47,7 +47,7 @@
 @property (readonly, nonatomic) NSArray *indexSectionsArray;
 @property (strong, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
 @property (readonly, nonatomic) NSDictionary *localizedSectionHeaders;
-@property (readonly, nonatomic) NSDictionary *localizedSectionIndices;
+@property (readonly, nonatomic) NSDictionary *localizedSectionIndices; // @synthesize localizedSectionIndices=_localizedSectionIndices;
 @property (strong, nonatomic) CNManagedConfiguration *managedConfiguration; // @synthesize managedConfiguration=_managedConfiguration;
 @property (copy, nonatomic) CNContact *meContact; // @synthesize meContact=_meContact;
 @property (nonatomic) BOOL meContactNeedsUpdate; // @synthesize meContactNeedsUpdate=_meContactNeedsUpdate;

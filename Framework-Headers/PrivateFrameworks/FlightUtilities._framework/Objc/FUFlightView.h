@@ -10,7 +10,7 @@
 #import <FlightUtilities/UIPageViewControllerDataSource-Protocol.h>
 #import <FlightUtilities/UIPageViewControllerDelegate-Protocol.h>
 
-@class FUFLightTrack, FUPlaneTrackerAnnotationView, MKMapView, NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIPageControl, UIPageViewController, UIScrollView, UIVisualEffectView;
+@class FUFLightTrack, FUPlaneTrackerAnnotationView, MKMapView, NSArray, NSLayoutConstraint, NSMutableArray, NSString, TLKProminenceView, UIPageControl, UIPageViewController, UIScrollView, UIVisualEffectView;
 @protocol FUFlightViewDelegate;
 
 @interface FUFlightView : UIView <UIPageViewControllerDelegate, UIPageViewControllerDataSource, FUFlightInfoViewProtocol>
@@ -22,6 +22,7 @@
     UIPageViewController *_pageViewController;
     UIScrollView *_pageViewContainer;
     BOOL _spotlightMode;
+    BOOL _landscapeMode;
     NSLayoutConstraint *_pageControllerHeightConstraint;
     NSArray *_allLegs;
     unsigned long long _displayStyle;
@@ -31,8 +32,8 @@
     long long _currentFocus;
     MKMapView *_mapView;
     UIVisualEffectView *_backBlurView;
-    UIView *_borderLineViewLandscape;
-    UIView *_borderLineViewPortrait;
+    TLKProminenceView *_borderLineViewLandscape;
+    TLKProminenceView *_borderLineViewPortrait;
     UIPageControl *_pageControl;
     NSLayoutConstraint *_pageContainerHeightConstraint;
     NSLayoutConstraint *_lanscapeConstraint1;
@@ -51,8 +52,8 @@
 }
 
 @property (weak, nonatomic) UIVisualEffectView *backBlurView; // @synthesize backBlurView=_backBlurView;
-@property (weak, nonatomic) UIView *borderLineViewLandscape; // @synthesize borderLineViewLandscape=_borderLineViewLandscape;
-@property (weak, nonatomic) UIView *borderLineViewPortrait; // @synthesize borderLineViewPortrait=_borderLineViewPortrait;
+@property (weak, nonatomic) TLKProminenceView *borderLineViewLandscape; // @synthesize borderLineViewLandscape=_borderLineViewLandscape;
+@property (weak, nonatomic) TLKProminenceView *borderLineViewPortrait; // @synthesize borderLineViewPortrait=_borderLineViewPortrait;
 @property (strong, nonatomic) NSLayoutConstraint *bottomMapConstraint; // @synthesize bottomMapConstraint=_bottomMapConstraint;
 @property (nonatomic) long long currentFocus; // @synthesize currentFocus=_currentFocus;
 @property (readonly, copy) NSString *debugDescription;
@@ -80,6 +81,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (unsigned long long)absoluteLegIndex;
 - (void)addTrack:(id)arg1;
 - (id)allLegs;
@@ -90,6 +92,7 @@
 - (id)currentFlight;
 - (id)currentLeg;
 - (id)departureCamera;
+- (void)didMoveToWindow;
 - (void)fitMap:(BOOL)arg1;
 - (id)flightCamera;
 - (id)flightForLeg:(id)arg1;
@@ -100,6 +103,7 @@
 - (BOOL)landscapeModeForTraits:(id)arg1;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
+- (BOOL)mapOnly;
 - (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;
 - (id)mapView:(id)arg1 rendererForOverlay:(id)arg2;
 - (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
@@ -115,12 +119,14 @@
 - (void)showError;
 - (void)showInfo;
 - (void)showLoading;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBorderLines;
 - (void)updateConstraints;
+- (void)updateMapAppearance;
 - (void)updateMapArcs;
 - (void)updateMapCamera;
-- (void)updateOrienationConstraints;
+- (void)updateOrientationConstraints;
 - (void)updatePageControllerScrolling;
 
 @end

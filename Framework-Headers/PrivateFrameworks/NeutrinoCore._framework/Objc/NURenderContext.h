@@ -6,31 +6,47 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSPointerArray, NURenderNode;
+@class NSArray, NSMutableArray, NSPointerArray, NURenderNode;
 @protocol OS_dispatch_queue;
 
 @interface NURenderContext : NSObject
 {
     NSPointerArray *_jobs;
+    NSMutableArray *_rateLimitedJobs;
     NSObject<OS_dispatch_queue> *_queue;
+    BOOL _shouldCoalesceUpdates;
+    double _minimumRenderInterval;
+    long long _purpose;
     NURenderNode *_lastPrepareNode;
     NURenderNode *_lastRenderNode;
+    unsigned long long _nextRenderTime;
 }
 
 @property (readonly) long long jobCount;
 @property (readonly) NSArray *jobs;
 @property (strong) NURenderNode *lastPrepareNode; // @synthesize lastPrepareNode=_lastPrepareNode;
 @property (strong) NURenderNode *lastRenderNode; // @synthesize lastRenderNode=_lastRenderNode;
+@property double minimumRenderInterval; // @synthesize minimumRenderInterval=_minimumRenderInterval;
+@property unsigned long long nextRenderTime; // @synthesize nextRenderTime=_nextRenderTime;
+@property (readonly, nonatomic) long long purpose; // @synthesize purpose=_purpose;
+@property (nonatomic) BOOL shouldCoalesceUpdates; // @synthesize shouldCoalesceUpdates=_shouldCoalesceUpdates;
 
 - (void).cxx_destruct;
 - (void)_cancelAllJobs;
+- (id)_dequeueRateLimitedJob;
+- (void)_enqueueRateLimitedJob:(id)arg1;
 - (void)_jobFinished:(id)arg1;
 - (void)_removeJob:(id)arg1;
 - (void)addJob:(id)arg1;
 - (void)cancelAllJobs;
 - (void)cancelAllRequests;
+- (id)debugDescription;
+- (id)dequeueRateLimitedJob;
+- (void)enqueueRateLimitedJob:(id)arg1;
 - (id)init;
+- (id)initWithPurpose:(long long)arg1;
 - (void)removeJob:(id)arg1;
+- (void)updateNextRenderTimeFromTime:(unsigned long long)arg1;
 
 @end
 

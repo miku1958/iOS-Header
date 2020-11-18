@@ -7,15 +7,14 @@
 #import <UIKit/UIView.h>
 
 #import <UserNotificationsUIKit/NCAuxiliaryOptionsSupporting-Protocol.h>
-#import <UserNotificationsUIKit/NCMaterialsAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class BSUIFontProvider, MTMaterialView, NSArray, NSString, NSStringDrawingContext, UILabel;
+@class BSUIFontProvider, NSArray, NSString, NSStringDrawingContext, UILabel;
 
-@interface NCAuxiliaryOptionsView : UIView <NCAuxiliaryOptionsSupporting, PLContentSizeCategoryAdjusting, NCMaterialsAdjusting>
+@interface NCAuxiliaryOptionsView : UIView <NCAuxiliaryOptionsSupporting, PLContentSizeCategoryAdjusting>
 {
     UILabel *_optionsSummaryLabel;
-    MTMaterialView *_overlayView;
+    UIView *_overlayView;
     double _widthForCachedLayoutInfo;
     unsigned long long _cachedSummaryLabelNumberOfLines;
     double _cachedSummaryLabelHeight;
@@ -24,8 +23,6 @@
     BOOL _adjustsFontForContentSizeCategory;
     NSArray *_optionButtons;
     BSUIFontProvider *_fontProvider;
-    long long _materialRecipe;
-    unsigned long long _materialOptions;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
@@ -34,8 +31,6 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) BSUIFontProvider *fontProvider; // @synthesize fontProvider=_fontProvider;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) unsigned long long materialOptions; // @synthesize materialOptions=_materialOptions;
-@property (readonly, nonatomic) long long materialRecipe; // @synthesize materialRecipe=_materialRecipe;
 @property (nonatomic) unsigned long long numberOfOptionButtons;
 @property (readonly, nonatomic) NSArray *optionButtons; // @synthesize optionButtons=_optionButtons;
 @property (copy, nonatomic) NSString *optionsSummaryText;
@@ -58,12 +53,8 @@
 - (unsigned long long)_summaryLabelNumberOfLinesForBoundsSize:(struct CGSize)arg1;
 - (void)_updateTextAttributesForOptionButton:(id)arg1;
 - (void)_updateTextAttributesForOptionsSummaryLabel;
-- (void)adjustForChangeInMaterialRecipe:(long long)arg1 backgroundMaterialOptions:(unsigned long long)arg2 overlayMaterialOptions:(unsigned long long)arg3;
 - (BOOL)adjustForContentSizeCategoryChange;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
 - (void)layoutSubviews;
-- (void)nc_performDeferredActionsIfNeeded;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

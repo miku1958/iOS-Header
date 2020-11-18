@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) BOOL needsDownload;
 @property (readonly, nonatomic) unsigned char packageIdentifier;
 @property (readonly, nonatomic) NSString *packageLocator;
+@property (readonly, nonatomic) struct CGSize pixelSize;
 @property (readonly, nonatomic) BOOL readOnly;
 
 - (AVAsset *)AVAssetWithOptions:(NSDictionary *)arg1 forData:(TSPData *)arg2;
@@ -33,7 +34,7 @@
 - (struct CGDataProvider *)newCGDataProvider;
 - (struct CGImageSource *)newCGImageSource;
 - (void)performIOChannelReadWithAccessor:(void (^)(id<TSUReadChannel>))arg1;
-- (TSPDataStorageWriteResult *)writeData:(TSPData *)arg1 toPackageWriter:(TSPPackageWriter *)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(NSString *)arg4;
+- (TSPDataStorageWriteResult *)writeData:(TSPData *)arg1 toPackageWriter:(TSPPackageWriter *)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(NSString *)arg4 error:(id *)arg5;
 
 @optional
 - (void)addDownloadObserver:(id)arg1 forData:(TSPData *)arg2 options:(unsigned long long)arg3 completionHandler:(void (^)(id, TSPData *, long long, NSDictionary *))arg4;

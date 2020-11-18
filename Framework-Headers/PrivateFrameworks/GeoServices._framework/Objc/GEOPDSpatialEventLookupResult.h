@@ -16,19 +16,21 @@ __attribute__((visibility("hidden")))
     PBUnknownFields *_unknownFields;
     NSMutableArray *_events;
     int _statusCode;
-    CDStruct_bcb1eac0 _has;
+    CDStruct_ade9d5f7 _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *events; // @synthesize events=_events;
+@property (strong, nonatomic) NSMutableArray *events;
 @property (nonatomic) BOOL hasStatusCode;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (nonatomic) int statusCode;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)eventType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)addEvent:(id)arg1;
 - (void)clearEvents;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

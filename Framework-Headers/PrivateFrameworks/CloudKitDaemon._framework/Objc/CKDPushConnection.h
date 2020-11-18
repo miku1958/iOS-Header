@@ -6,41 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class APSConnection, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@class APSConnection, NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CKDPushConnection : NSObject
 {
-    BOOL _darkWakeEnabled;
     NSString *_apsEnvironmentString;
     APSConnection *_apsConnection;
     NSObject<OS_dispatch_queue> *_queue;
-    NSMapTable *_callbacks;
-    NSMutableDictionary *_topicsToWaitingAppContainerTuples;
-    NSMutableSet *_topicsAwaitingPublicToken;
+    NSMutableArray *_completionBlocks;
 }
 
 @property (strong, nonatomic) APSConnection *apsConnection; // @synthesize apsConnection=_apsConnection;
 @property (strong, nonatomic, setter=setAPSEnvironmentString:) NSString *apsEnvironmentString; // @synthesize apsEnvironmentString=_apsEnvironmentString;
-@property (strong, nonatomic) NSMapTable *callbacks; // @synthesize callbacks=_callbacks;
-@property (nonatomic) BOOL darkWakeEnabled; // @synthesize darkWakeEnabled=_darkWakeEnabled;
+@property (strong, nonatomic) NSMutableArray *completionBlocks; // @synthesize completionBlocks=_completionBlocks;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) NSMutableSet *topicsAwaitingPublicToken; // @synthesize topicsAwaitingPublicToken=_topicsAwaitingPublicToken;
-@property (strong, nonatomic) NSMutableDictionary *topicsToWaitingAppContainerTuples; // @synthesize topicsToWaitingAppContainerTuples=_topicsToWaitingAppContainerTuples;
 
-+ (id)sharedConnectionForAPSEnvironmentString:(id)arg1 darkWakeEnabled:(BOOL)arg2;
++ (id)sharedConnectionForAPSEnvironmentString:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addWaitingAppContainerTuple:(id)arg1 forTopic:(id)arg2;
-- (void)_removeWaitingAppContainerTuplesForTopic:(id)arg1;
-- (id)_waitingAppContainerTuplesForTopic:(id)arg1;
 - (void)connection:(id)arg1 didChangeConnectedStatus:(BOOL)arg2;
 - (void)connection:(id)arg1 didReceivePublicToken:(id)arg2;
-- (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (void)connectionDidReconnect:(id)arg1;
 - (void)dealloc;
-- (id)initWithEnvironment:(id)arg1 darkWakeEnabled:(BOOL)arg2;
-- (void)requestTokenForAppContainerTuple:(id)arg1;
-- (void)revokeTokenForAppContainerTuple:(id)arg1;
+- (void)getToken:(CDUnknownBlockType)arg1;
+- (id)initWithEnvironment:(id)arg1;
 
 @end
 

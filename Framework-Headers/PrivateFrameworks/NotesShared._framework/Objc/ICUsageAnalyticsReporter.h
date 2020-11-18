@@ -16,7 +16,6 @@
 - (void)incrementCountForKey:(id)arg1;
 - (void)incrementCountForKey:(id)arg1 withSignature:(id)arg2;
 - (void)logChecklistLengthFromTrackedToDoParagraphs:(id)arg1;
-- (void)logDocCamFilterUsageForFilterType:(short)arg1;
 
 @end
 

@@ -7,12 +7,20 @@
 #import <ITMLKit/IKAssetElement.h>
 
 @interface IKAssetElement (VUIIKPlaylistElementToMediaItemsMapper)
+- (BOOL)videos_disableLocalAsset;
+- (id)videos_fpsCertificateURL;
+- (id)videos_fpsKeyServerURL;
+- (id)videos_persistentID;
+- (id)videos_rentalAdamIDString;
+- (id)videos_resumeTime;
 - (id)vui_contentRatingRank;
+- (BOOL)vui_disableLocalAsset;
 - (BOOL)vui_disableResumeMenu;
 - (id)vui_fpsCertificateURL;
 - (id)vui_fpsKeyServerURL;
 - (id)vui_hlsPlaylistURL;
 - (id)vui_launchPlaybackURL;
+- (id)vui_persistentID;
 - (id)vui_rentalAdamIDString;
 - (id)vui_resumeTime;
 - (id)vui_scrubVideoURL;

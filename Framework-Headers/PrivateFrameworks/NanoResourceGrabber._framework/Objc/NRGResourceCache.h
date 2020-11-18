@@ -11,6 +11,7 @@
 }
 
 + (id)cacheDirPathForAppBundleID:(id)arg1 withPairedDeviceStorePath:(id)arg2;
++ (id)cacheDirPathForPairedDevice;
 + (id)cacheDirPathForPairedDeviceStorePath:(id)arg1;
 + (id)cachePathForIconVariant:(int)arg1 inBundleID:(id)arg2 withPairedDeviceStorePath:(id)arg3;
 + (void)createCachePathIfNecessaryWithPairedDeviceStorePath:(id)arg1;

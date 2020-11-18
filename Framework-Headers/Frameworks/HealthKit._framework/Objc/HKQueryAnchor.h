@@ -17,8 +17,11 @@
 @property (nonatomic, getter=_rowid, setter=_setRowid:) long long rowid; // @synthesize rowid=_rowid;
 
 + (id)_anchorWithRowid:(long long)arg1;
++ (id)_anchorWithRowidValue:(long long)arg1;
 + (id)anchorFromValue:(unsigned long long)arg1;
++ (id)latestAnchor;
 + (BOOL)supportsSecureCoding;
+- (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

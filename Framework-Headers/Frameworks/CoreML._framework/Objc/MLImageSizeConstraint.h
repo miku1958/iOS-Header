@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreML/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSOrderedSet;
 
-@interface MLImageSizeConstraint : NSObject
+@interface MLImageSizeConstraint : NSObject <NSSecureCoding>
 {
     long long _type;
     NSOrderedSet *_imageSizeSet;
@@ -25,9 +27,12 @@
 + (id)closestImageSizeInArray:(id)arg1 toImageSize:(id)arg2 preferDownScaling:(BOOL)arg3;
 + (id)closestImageSizeInPixelsWideRange:(struct _NSRange)arg1 pixelsHighRange:(struct _NSRange)arg2 toImageSize:(id)arg3 preferInputAspectRatio:(BOOL)arg4;
 + (unsigned long long)locationClosestTo:(unsigned long long)arg1 inRange:(struct _NSRange)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)allowedImageSizeClosestToPixelsWide:(long long)arg1 pixelsHigh:(long long)arg2 preferDownScaling:(BOOL)arg3 preferInputAspectRatio:(BOOL)arg4;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initUnspecified;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithEnumeratedImageSizes:(id)arg1;
 - (id)initWithPixelsWideRange:(struct _NSRange)arg1 pixelsHighRange:(struct _NSRange)arg2;
 - (BOOL)isAllowedImageSize:(id)arg1 error:(id *)arg2;

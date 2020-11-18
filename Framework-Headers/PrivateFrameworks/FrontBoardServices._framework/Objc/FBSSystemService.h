@@ -6,24 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class FBSSystemAppProxy;
+@class FBSOpenApplicationService, FBSSystemAppProxy;
 
 @interface FBSSystemService : NSObject
 {
     FBSSystemAppProxy *_systemAppProxy;
+    FBSOpenApplicationService *_defaultOpenApplicationService;
 }
 
 + (id)clientCallbackQueue;
 + (id)sharedService;
 - (void).cxx_destruct;
-- (void)_openApplication:(id)arg1 withOptions:(id)arg2 clientHandle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)badgeValueForBundleID:(id)arg1;
 - (BOOL)canOpenApplication:(id)arg1 reason:(long long *)arg2;
 - (void)cleanupClientPort:(unsigned int)arg1;
 - (unsigned int)createClientPort;
 - (void)dataResetWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)deleteAllSnapshotsForApplication:(id)arg1;
+- (void)dealloc;
 - (id)init;
+- (id)initWithEndpoint:(id)arg1;
 - (BOOL)isPasscodeLockedOrBlocked;
 - (void)openApplication:(id)arg1 options:(id)arg2 clientPort:(unsigned int)arg3 withResult:(CDUnknownBlockType)arg4;
 - (void)openApplication:(id)arg1 options:(id)arg2 withResult:(CDUnknownBlockType)arg3;
@@ -33,6 +34,8 @@
 - (void)reboot;
 - (void)sendActions:(id)arg1 withResult:(CDUnknownBlockType)arg2;
 - (void)setBadgeValue:(id)arg1 forBundleID:(id)arg2;
+- (void)setKeyboardFocusApplicationPID:(int)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setKeyboardFocusApplicationPID:(int)arg1 deferringToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setKeyboardFocusApplicationWithBundleID:(id)arg1 pid:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)shutdown;
 - (void)shutdownWithOptions:(id)arg1;

@@ -45,9 +45,11 @@
 @property (nonatomic, weak) id<CNKStagingAreaViewControllerDelegate> stagingAreaDelegate; // @synthesize stagingAreaDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)didTapJoinButton;
 - (void)didTapLeaveButton;
 - (void)didTapSwapLocalParticipantCamera;
+- (void)hideEffectsBrowser;
 - (id)initWithActiveCall:(id)arg1;
 - (id)initWithActiveCall:(id)arg1 hasJoined:(BOOL)arg2;
 - (id)initWithCoder:(id)arg1;

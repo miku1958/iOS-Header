@@ -13,9 +13,12 @@
     UILabel *_environmentLabel;
 }
 
++ (id)_leftBarButtonItemWithImage:(id)arg1;
 + (id)applePayBarButtonItem;
 + (id)cardOnFileBarButtonItemForRequestor:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didUpdateInterfaceStyle;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 

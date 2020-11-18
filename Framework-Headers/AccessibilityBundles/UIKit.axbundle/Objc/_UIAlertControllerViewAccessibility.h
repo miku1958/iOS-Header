@@ -13,16 +13,17 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsAlertContainer;
+- (unsigned long long)_accessibilityAutomationType;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_prepareDetailMessageLabel;
 - (void)_prepareMesssageLabel;
 - (void)_prepareTitleLabel;
+- (long long)accessibilityContainerType;
 - (id)accessibilityHeaderElements;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
-- (BOOL)accessisibilityViewIsModal;
+- (BOOL)accessibilityViewIsModal;
 
 @end
 

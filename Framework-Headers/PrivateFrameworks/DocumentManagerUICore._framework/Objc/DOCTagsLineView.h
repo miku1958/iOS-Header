@@ -6,30 +6,30 @@
 
 #import <UIKit/UIView.h>
 
-@class DOCTagIconView, DOCTagView, DOCVisualEffectLabel, NSArray, UIStackView;
+@class DOCTagDotView, DOCTagView, DOCVisualEffectLabel, NSArray, NUIContainerStackView;
 @protocol DOCTagViewDelegate;
 
 @interface DOCTagsLineView : UIView
 {
     NSArray *_tags;
     id<DOCTagViewDelegate> _delegate;
-    UIStackView *_stackView;
+    NUIContainerStackView *_stackView;
     DOCTagView *_tag1View;
     DOCTagView *_tag2View;
-    UIStackView *_dotsView;
-    DOCTagIconView *_dot1View;
-    DOCTagIconView *_dot2View;
-    DOCTagIconView *_dot3View;
+    NUIContainerStackView *_dotsView;
+    DOCTagDotView *_dot1View;
+    DOCTagDotView *_dot2View;
+    DOCTagDotView *_dot3View;
     DOCVisualEffectLabel *_tagSummaryLabel;
     NSArray *_tagWidthConstraints;
 }
 
 @property (weak, nonatomic) id<DOCTagViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) DOCTagIconView *dot1View; // @synthesize dot1View=_dot1View;
-@property (readonly, nonatomic) DOCTagIconView *dot2View; // @synthesize dot2View=_dot2View;
-@property (readonly, nonatomic) DOCTagIconView *dot3View; // @synthesize dot3View=_dot3View;
-@property (readonly, nonatomic) UIStackView *dotsView; // @synthesize dotsView=_dotsView;
-@property (readonly, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
+@property (readonly, nonatomic) DOCTagDotView *dot1View; // @synthesize dot1View=_dot1View;
+@property (readonly, nonatomic) DOCTagDotView *dot2View; // @synthesize dot2View=_dot2View;
+@property (readonly, nonatomic) DOCTagDotView *dot3View; // @synthesize dot3View=_dot3View;
+@property (readonly, nonatomic) NUIContainerStackView *dotsView; // @synthesize dotsView=_dotsView;
+@property (readonly, nonatomic) NUIContainerStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly, nonatomic) DOCTagView *tag1View; // @synthesize tag1View=_tag1View;
 @property (readonly, nonatomic) DOCTagView *tag2View; // @synthesize tag2View=_tag2View;
 @property (readonly, nonatomic) DOCVisualEffectLabel *tagSummaryLabel; // @synthesize tagSummaryLabel=_tagSummaryLabel;
@@ -44,14 +44,17 @@
 - (id)createDotView;
 - (id)createTagSummaryLabel;
 - (id)createTagView;
+- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 - (void)layoutTags;
 - (double)maxTagWidth;
+- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateMaxTagWidth;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
-- (id)widthConstraintForDotView:(id)arg1;
 
 @end
 

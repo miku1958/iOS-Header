@@ -21,7 +21,8 @@
     NSMutableArray *_destinationsToQuery;
     NSTimer *_nextQueryTimer;
     NSDate *_timeOfDeath;
-    id _negativeTTLCache;
+    id _rateLimiter;
+    CUTWeakReference *_parent;
     int _numberOfQueriesDone;
     BOOL _isDead;
 }
@@ -32,13 +33,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_calloutToDelegateWithResult:(id)arg1 error:(id)arg2;
 - (void)_invalidateNextQueryTimer;
 - (void)_nextQuery:(id)arg1;
 - (void)_scheduleNextQuery:(double)arg1;
 - (void)dealloc;
-- (id)initWithService:(id)arg1 delegate:(id)arg2 queue:(id)arg3;
+- (id)initWithService:(id)arg1 delegate:(id)arg2 queue:(id)arg3 parent:(id)arg4;
 - (void)invalidate;
 - (void)setDestinations:(id)arg1;
+- (BOOL)underLimit;
 
 @end
 

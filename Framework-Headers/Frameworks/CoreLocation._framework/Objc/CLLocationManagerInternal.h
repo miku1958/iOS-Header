@@ -6,27 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocationManagerStateTracker, NSMutableSet, NSString;
+@class CLLocationManager, CLLocationManagerStateTracker, CLSilo, CLTimer, NSMutableSet, NSString;
 @protocol CLLocationManagerDelegate;
 
 @interface CLLocationManagerInternal : NSObject
 {
     struct __CLClient *fClient;
     id<CLLocationManagerDelegate> fDelegate;
+    CLLocationManager *fManager;
     CLLocationManagerStateTracker *fState;
-    CDStruct_05ee51d2 fLocation;
+    CDStruct_0f4838e9 fLocation;
     NSString *fLocationEventType;
-    struct __CFRunLoopTimer *fLocationRequestTimer;
+    CLTimer *fLocationRequestTimer;
     double fLocationRequestTimeout;
-    struct __CFRunLoopTimer *fRangingRequestTimer;
+    CLTimer *fRangingRequestTimer;
     double fLastRangingRequestTimeout;
     unsigned long long fLastRangingRequestMachTime;
     int fHeadingOrientation;
     NSMutableSet *fRangedRegions;
+    NSMutableSet *fRangedConstraints;
+    CDUnknownBlockType fPlaceInferenceHandler;
+    unsigned long long fFidelityPolicy;
+    CLSilo *fSilo;
 }
 
+@property (weak, nonatomic) id<CLLocationManagerDelegate> delegate; // @synthesize delegate=fDelegate;
+@property (weak, nonatomic) CLLocationManager *manager; // @synthesize manager=fManager;
+@property (readonly, nonatomic) NSMutableSet *rangedConstraints; // @synthesize rangedConstraints=fRangedConstraints;
 @property (readonly, nonatomic) NSMutableSet *rangedRegions; // @synthesize rangedRegions=fRangedRegions;
 
+- (void).cxx_destruct;
 - (int)PausesLocationUpdatesAutomatically;
 - (BOOL)allowsBackgroundLocationUpdates;
 - (void)cancelLingeringRangingRequest;
@@ -34,7 +43,8 @@
 - (void)cancelRangingRequest;
 - (void)dealloc;
 - (BOOL)hasLingeringRangingRequest;
-- (id)initWithInfo:(id)arg1 bundleIdentifier:(id)arg2 bundle:(id)arg3;
+- (id)initWithInfo:(id)arg1 bundleIdentifier:(id)arg2 bundle:(id)arg3 delegate:(id)arg4 silo:(id)arg5;
+- (void)invalidate;
 - (void)performCourtesyPromptIfNeeded;
 - (void)setAllowsBackgroundLocationUpdates:(BOOL)arg1;
 - (void)setPausesLocationUpdatesAutomatically:(int)arg1;

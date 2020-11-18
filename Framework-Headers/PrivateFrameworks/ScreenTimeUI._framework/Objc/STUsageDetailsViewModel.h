@@ -8,35 +8,45 @@
 
 @class NSArray, NSDate, NSString, STUsageReport;
 
+__attribute__((visibility("hidden")))
 @interface STUsageDetailsViewModel : NSObject
 {
     BOOL _localDevice;
     BOOL _hasAggregateUsageData;
-    unsigned long long _selectedTimePeriod;
+    unsigned long long _selectedWeek;
+    STUsageReport *_selectedWeekUsageReport;
+    NSArray *_weekUsageReports;
+    unsigned long long _selectedDay;
+    STUsageReport *_selectedDayUsageReport;
+    NSArray *_dayUsageReportByWeekdays;
     NSString *_selectedItemDisplayName;
     NSDate *_lastUpdatedDate;
-    STUsageReport *_todayUsageReport;
-    STUsageReport *_weekUsageReport;
     NSArray *_rawUsageItems;
 }
 
+@property (copy) NSArray *dayUsageReportByWeekdays; // @synthesize dayUsageReportByWeekdays=_dayUsageReportByWeekdays;
 @property BOOL hasAggregateUsageData; // @synthesize hasAggregateUsageData=_hasAggregateUsageData;
 @property (readonly, nonatomic) BOOL hasUsageData;
-@property (strong, nonatomic) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
+@property (copy) NSDate *lastUpdatedDate; // @synthesize lastUpdatedDate=_lastUpdatedDate;
 @property (getter=isLocalDevice) BOOL localDevice; // @synthesize localDevice=_localDevice;
-@property (readonly, copy, nonatomic) NSArray *rawUsageItems; // @synthesize rawUsageItems=_rawUsageItems;
-@property (copy, nonatomic) NSString *selectedItemDisplayName; // @synthesize selectedItemDisplayName=_selectedItemDisplayName;
-@property unsigned long long selectedTimePeriod; // @synthesize selectedTimePeriod=_selectedTimePeriod;
-@property (readonly, nonatomic) STUsageReport *selectedUsageReport;
-@property (strong, nonatomic) STUsageReport *todayUsageReport; // @synthesize todayUsageReport=_todayUsageReport;
-@property (strong, nonatomic) STUsageReport *weekUsageReport; // @synthesize weekUsageReport=_weekUsageReport;
+@property (copy) NSArray *rawUsageItems; // @synthesize rawUsageItems=_rawUsageItems;
+@property (nonatomic) unsigned long long selectedDay; // @synthesize selectedDay=_selectedDay;
+@property (strong) STUsageReport *selectedDayUsageReport; // @synthesize selectedDayUsageReport=_selectedDayUsageReport;
+@property (copy) NSString *selectedItemDisplayName; // @synthesize selectedItemDisplayName=_selectedItemDisplayName;
+@property (readonly) STUsageReport *selectedUsageReport;
+@property (nonatomic) unsigned long long selectedWeek; // @synthesize selectedWeek=_selectedWeek;
+@property (strong) STUsageReport *selectedWeekUsageReport; // @synthesize selectedWeekUsageReport=_selectedWeekUsageReport;
+@property (copy) NSArray *weekUsageReports; // @synthesize weekUsageReports=_weekUsageReports;
 
++ (void)_enumerateDayReportStartDatesWithStartOfWeek:(id)arg1 ascending:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
++ (void)_enumerateWeeklyReportStartDatesWithReferenceDate:(id)arg1 ascending:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
 + (id)keyPathsForValuesAffectingHasUsageData;
 + (id)keyPathsForValuesAffectingSelectedUsageReport;
 - (void).cxx_destruct;
-- (void)_setRawUsageItems:(id)arg1 lastUpdatedDate:(id)arg2 firstPickupOnReferenceDate:(id)arg3 referenceDate:(id)arg4;
 - (id)init;
-- (void)setRawUsageItems:(id)arg1 lastUpdatedDate:(id)arg2;
+- (void)selectToday;
+- (void)setSelectedWeek:(unsigned long long)arg1 selectedDay:(unsigned long long)arg2;
+- (void)setWeekReportUsageItems:(id)arg1 weekStartDate:(id)arg2 lastUpdatedDate:(id)arg3;
 
 @end
 

@@ -9,6 +9,7 @@
 #import <NeutrinoCore/NUColorSamplerResult-Protocol.h>
 
 @class NSString;
+@protocol NURenderStatistics;
 
 @interface _NUColorSamplerResult : _NURenderResult <NUColorSamplerResult>
 {
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property CDStruct_912cb5d2 point; // @synthesize point=_point;
+@property (readonly) id<NURenderStatistics> statistics;
 @property (readonly) Class superclass;
 
 - (void)dealloc;

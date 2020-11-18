@@ -20,13 +20,18 @@ __attribute__((visibility("hidden")))
     struct os_trace_blob_s *_ob;
     struct os_trace_blob_s *_ob_pub;
     struct os_trace_blob_s *_ob_priv;
+    unsigned char _privacy_level;
+    struct os_trace_blob_s _ob_mask;
+    char _maskbuf[128];
     unsigned long long _maxsz;
     unsigned short _written;
     unsigned short _offset;
     BOOL _truncated;
+    BOOL _initialized;
+    BOOL _mask;
 }
 
-- (void)_setFlags:(unsigned char)arg1;
+- (void)_initBlob;
 - (void)appendBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (void)setPublic;
 - (void)setTruncated;

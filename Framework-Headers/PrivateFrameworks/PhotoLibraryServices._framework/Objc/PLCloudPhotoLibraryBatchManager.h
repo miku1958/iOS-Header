@@ -17,6 +17,7 @@
     unsigned long long _resourceBudget;
 }
 
+- (void).cxx_destruct;
 - (void)addRecord:(id)arg1;
 - (void)addRecord:(id)arg1 ignoreBatchSize:(BOOL)arg2;
 - (long long)currentBatchCount;

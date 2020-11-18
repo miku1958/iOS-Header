@@ -35,7 +35,7 @@
 + (id)unitFromString:(id)arg1;
 - (void).cxx_destruct;
 - (id)_baseUnits;
-- (id)_computeBaseUnitReductionAndProportionalSize:(out double *)arg1 withCycleSet:(id)arg2;
+- (id)_computeBaseUnitReductionAndProportionalSize:(double *)arg1 withCycleSet:(id)arg2;
 - (id)_initWithUnitString:(id)arg1 proportionalSize:(double)arg2 scaleOffset:(double)arg3;
 - (id)_unitByPrefixing:(id)arg1 withConversionConstant:(id)arg2;
 - (id)awakeAfterUsingCoder:(id)arg1;

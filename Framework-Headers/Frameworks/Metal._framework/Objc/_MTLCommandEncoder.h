@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
 @class NSString, _MTLCommandBuffer;
 @protocol MTLCommandBuffer, MTLDevice;
 
-@interface _MTLCommandEncoder : NSObject
+@interface _MTLCommandEncoder : _MTLObjectWithLabel
 {
     id<MTLDevice> _device;
-    NSString *_label;
     _MTLCommandBuffer<MTLCommandBuffer> *_commandBuffer;
     unsigned long long _numThisEncoder;
     unsigned long long _globalTraceObjectID;
@@ -21,8 +20,8 @@
 
 @property (readonly, nonatomic) id<MTLDevice> device;
 @property (readonly) unsigned long long dispatchType; // @dynamic dispatchType;
-@property (nonatomic, getter=globalTraceObjectID) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (readonly, nonatomic) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
+@property (copy) NSString *label; // @dynamic label;
 @property (nonatomic) unsigned long long numThisEncoder; // @synthesize numThisEncoder=_numThisEncoder;
 @property (readonly, nonatomic, getter=getType) unsigned long long type;
 

@@ -38,7 +38,7 @@
 - (id)genericModelObjectWithRequestedProperties:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMultiverseIdentifier:(id)arg1;
+- (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
 - (void)invalidateCachedProperties;
 - (BOOL)isEqual:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;

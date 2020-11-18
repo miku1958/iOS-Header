@@ -31,7 +31,6 @@
 
 + (id)_requiredCapabilitiesForInfoDictionary:(id)arg1;
 + (id)_supportedDeviceFamiliesForBundleInfoDictionary:(id)arg1;
-+ (unsigned long long)_visibilityPreferenceForBundleInfoDictionary:(id)arg1;
 + (id)metadataForBundleAtURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithModuleIdentifier:(id)arg1 supportedDeviceFamilies:(id)arg2 requiredDeviceCapabilities:(id)arg3 associatedBundleIdentifier:(id)arg4 associatedBundleMinimumVersion:(id)arg5 visibilityPreference:(unsigned long long)arg6 moduleBundleURL:(id)arg7;

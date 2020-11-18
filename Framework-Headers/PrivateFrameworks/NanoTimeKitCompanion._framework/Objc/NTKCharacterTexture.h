@@ -6,17 +6,22 @@
 
 #import <objc/NSObject.h>
 
+@protocol MTLTexture;
+
 @interface NTKCharacterTexture : NSObject
 {
     unsigned int _gid;
     const void *_data;
     int _length;
+    id<MTLTexture> _mtlTexture;
 }
 
 @property (readonly, nonatomic) const void *data; // @synthesize data=_data;
 @property (nonatomic) unsigned int gid; // @synthesize gid=_gid;
 @property (readonly, nonatomic) int length; // @synthesize length=_length;
+@property (strong, nonatomic) id<MTLTexture> mtlTexture; // @synthesize mtlTexture=_mtlTexture;
 
+- (void).cxx_destruct;
 - (id)initWithData:(const void *)arg1 length:(int)arg2;
 
 @end

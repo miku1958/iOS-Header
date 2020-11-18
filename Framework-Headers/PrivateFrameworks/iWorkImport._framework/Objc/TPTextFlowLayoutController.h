@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)p_flowsOnPage:(id)arg1 textBoxes:(inout id)arg2;
 - (id)p_flowsOnPageIndex:(unsigned long long)arg1;
 - (id)p_layoutMgrForFlow:(id)arg1;
-- (id)p_orderedTextBoxesForFlow:(id)arg1 textBoxes:(id)arg2 onPageIndex:(unsigned long long)arg3;
+- (id)p_orderedTextBoxesForFlow:(id)arg1 textBoxes:(id)arg2;
 - (id)p_previousTextBoxForTarget:(id)arg1;
 - (void)p_setLayoutMgr:(id)arg1 forFlow:(id)arg2;
 - (unsigned long long)pageIndexNeedingLayoutPreviousToPageIndex:(unsigned long long)arg1;

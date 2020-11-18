@@ -19,6 +19,7 @@
     long long mConnectionAttempt;
     BOOL mConnecting;
     BOOL _connected;
+    BOOL _userExpectsReconnect;
     long long _maxConnectionAttempts;
 }
 
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long maxConnectionAttempts; // @synthesize maxConnectionAttempts=_maxConnectionAttempts;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL userExpectsReconnect; // @synthesize userExpectsReconnect=_userExpectsReconnect;
 
 + (void)fetchResourceFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)setActiveStudentIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

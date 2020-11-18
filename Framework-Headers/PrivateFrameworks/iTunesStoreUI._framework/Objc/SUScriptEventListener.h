@@ -20,7 +20,7 @@
 @property (copy) NSString *name; // @synthesize name=_name;
 @property BOOL shouldUseCapture; // @synthesize shouldUseCapture=_useCapture;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

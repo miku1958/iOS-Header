@@ -42,6 +42,7 @@
 + (double)_defaultHysteresis;
 + (void)_setPanGestureRecognizersEnabled:(BOOL)arg1;
 + (BOOL)_shouldDefaultToTouches;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_activeTouches;
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
@@ -79,6 +80,7 @@
 - (BOOL)_shouldTryToBeginWithEvent:(id)arg1;
 - (BOOL)_touchesExceedAllowableSeparation;
 - (void)_touchesListChangedFrom:(id)arg1 to:(id)arg2;
+- (double)_translationDistanceInSceneInSelfAxis:(struct CGPoint)arg1;
 - (void)_updateDigitizerLocationWithEvent:(id)arg1;
 - (BOOL)_updateMovingTouchesArraySavingOldArray:(id *)arg1;
 - (void)_willBeginAfterSatisfyingFailureRequirements;

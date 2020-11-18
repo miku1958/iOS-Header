@@ -12,8 +12,10 @@
 {
     CALayer *_videoLayer;
     BOOL _shouldResizeVideoLayer;
+    BOOL _isForScrubbingOnly;
 }
 
+@property (nonatomic, getter=isForScrubbingOnly) BOOL forScrubbingOnly; // @synthesize forScrubbingOnly=_isForScrubbingOnly;
 @property (nonatomic) BOOL shouldResizeVideoLayer; // @synthesize shouldResizeVideoLayer=_shouldResizeVideoLayer;
 @property (strong, nonatomic) CALayer *videoLayer; // @synthesize videoLayer=_videoLayer;
 

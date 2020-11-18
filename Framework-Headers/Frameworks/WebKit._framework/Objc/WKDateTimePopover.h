@@ -8,7 +8,7 @@
 
 #import <WebKit/WKFormControl-Protocol.h>
 
-@class WKContentView;
+@class NSString, WKContentView;
 
 __attribute__((visibility("hidden")))
 @interface WKDateTimePopover : WKFormRotatingAccessoryPopover <WKFormControl>
@@ -16,6 +16,8 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<WKDateTimePopoverViewController> _viewController;
     WKContentView *_view;
 }
+
+@property (readonly, nonatomic) NSString *calendarType;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBPunchout, _SFPBRichText;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBImage, _SFPBPunchout, _SFPBRichText;
 
 @protocol _SFPBButtonCardSection <NSObject>
 
@@ -19,6 +19,7 @@
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
 @property (nonatomic) int separatorStyle;
+@property (strong, nonatomic) _SFPBImage *thumbnail;
 @property (strong, nonatomic) _SFPBRichText *title;
 @property (copy, nonatomic) NSString *type;
 

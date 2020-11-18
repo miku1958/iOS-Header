@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 + (id)bezierPath;
 + (id)bezierPathWithCGPath:(struct CGPath *)arg1;
 + (id)bezierPathWithConvexHullOfPoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2;
++ (id)bezierPathWithDefaultsForErrorCases;
 + (id)bezierPathWithOvalInRect:(struct CGRect)arg1;
 + (id)bezierPathWithRect:(struct CGRect)arg1;
 + (id)bezierPathWithRoundedRect:(struct CGRect)arg1 cornerRadius:(double)arg2;
@@ -173,6 +174,7 @@ __attribute__((visibility("hidden")))
 - (double)curvatureAt:(double)arg1;
 - (double)curvatureAt:(double)arg1 fromElement:(long long)arg2;
 - (void)curveToPoint:(struct CGPoint)arg1 controlPoint1:(struct CGPoint)arg2 controlPoint2:(struct CGPoint)arg3;
+- (void)curveToPoint:(struct CGPoint)arg1 controlPoint:(struct CGPoint)arg2;
 - (void)dealloc;
 - (id)description;
 - (double)distanceToPoint:(struct CGPoint)arg1 elementIndex:(unsigned long long *)arg2 tValue:(double *)arg3 threshold:(double)arg4 findClosestMatch:(BOOL)arg5;
@@ -223,11 +225,13 @@ __attribute__((visibility("hidden")))
 - (id)p_aliasedPathInContext:(struct CGContext *)arg1 viewScale:(float)arg2 effectiveStrokeWidth:(float)arg3;
 - (id)p_bezierPathByRemovingRedundantElementAndSubregionsSmallerThanThreshold:(double)arg1;
 - (id)p_copyWithPointsInRange:(struct _NSRange)arg1 countingSubpaths:(unsigned long long *)arg2;
+- (id)p_elementCountForSubpaths;
 - (id)p_pathBySplittingAtPointGuaranteedToBeOnPath:(struct CGPoint)arg1 controlPointDistanceEqual:(BOOL)arg2 elementIndex:(long long)arg3 parametricValue:(double)arg4;
 - (id)pathByCreatingHoleInPathAtPoint:(struct CGPoint)arg1 withDiameter:(CDUnknownBlockType)arg2 andThreshold:(double)arg3 updatingPatternOffsetsBySubpath:(id)arg4;
 - (id)pathByNormalizingClosedPathToRemoveSelfIntersections;
 - (id)pathBySplittingAtPointOnPath:(struct CGPoint)arg1 controlPointDistanceEqual:(BOOL)arg2;
 - (id)pathByWobblingByUpTo:(double)arg1 subdivisions:(unsigned long long)arg2;
+- (id)pathSplitAtSubpathBoundariesWithSoftElementLimit:(unsigned long long)arg1 hardElementLimit:(unsigned long long)arg2;
 - (struct CGPoint)pointAlongPathAtPercentage:(double)arg1;
 - (struct CGPoint)pointAlongPathAtPercentage:(double)arg1 withFlattenedPath:(id)arg2 andLength:(double *)arg3 atStartIndex:(unsigned long long *)arg4;
 - (struct CGPoint)pointAt:(double)arg1;
@@ -237,6 +241,7 @@ __attribute__((visibility("hidden")))
 - (void)recursiveSubdivideOntoPath:(id)arg1 withScaling:(CDStruct_c3b9c2ee)arg2 inElementRange:(struct _NSRange)arg3 into:(id)arg4;
 - (void)recursiveSubdivideOntoPath:(id)arg1 withScaling:(CDStruct_c3b9c2ee)arg2 into:(id)arg3;
 - (void)relativeCurveToPoint:(struct CGPoint)arg1 controlPoint1:(struct CGPoint)arg2 controlPoint2:(struct CGPoint)arg3;
+- (void)relativeCurveToPoint:(struct CGPoint)arg1 controlPoint:(struct CGPoint)arg2;
 - (void)relativeLineToPoint:(struct CGPoint)arg1;
 - (void)relativeMoveToPoint:(struct CGPoint)arg1;
 - (void)removeAllPoints;

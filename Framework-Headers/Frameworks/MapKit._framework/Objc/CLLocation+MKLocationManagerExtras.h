@@ -10,5 +10,6 @@
 
 @property (readonly, nonatomic) int _mapkit_source;
 
++ (double)_mapkit_timeToExpire;
 @end
 

@@ -8,15 +8,15 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
-#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDHome, HMFMessageDispatcher, HMFTimer, NSArray, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMDHome, HMFMessageDispatcher, NSArray, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDAssistantCommandHelper : HMFObject <HMFMessageReceiver, HMFTimerDelegate, HMFLogging>
+@interface HMDAssistantCommandHelper : HMFObject <HMFMessageReceiver, HMFLogging>
 {
     BOOL _executingActionSet;
     CDUnknownBlockType _responseHandler;
+    CDUnknownBlockType _mediaResponseHandler;
     NSUUID *_messageId;
     HMDHome *_home;
     NSObject<OS_dispatch_queue> *_queue;
@@ -24,16 +24,19 @@
     NSUUID *_uuid;
     NSMutableArray *_responses;
     unsigned long long _numErrors;
-    HMFTimer *_actionTimer;
     NSArray *_requests;
+    NSArray *_mediaRequests;
+    NSMutableArray *_mediaResponses;
 }
 
-@property (strong, nonatomic) HMFTimer *actionTimer; // @synthesize actionTimer=_actionTimer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL executingActionSet; // @synthesize executingActionSet=_executingActionSet;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (strong, nonatomic) NSArray *mediaRequests; // @synthesize mediaRequests=_mediaRequests;
+@property (copy, nonatomic) CDUnknownBlockType mediaResponseHandler; // @synthesize mediaResponseHandler=_mediaResponseHandler;
+@property (strong, nonatomic) NSMutableArray *mediaResponses; // @synthesize mediaResponses=_mediaResponses;
 @property (strong, nonatomic) NSUUID *messageId; // @synthesize messageId=_messageId;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
@@ -48,21 +51,19 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_handleAccessoryCharacteristicsChangedNotification:(id)arg1;
+- (void)__handleAccessoryCharacteristicsChangedNotification:(id)arg1;
 - (void)_register;
 - (void)_reportOperationStartedForAccessory:(id)arg1;
 - (void)_reportResponses;
-- (void)_resetActionTimer;
-- (void)_startActionSetTimer;
-- (void)_startActionTimerWithTimeInterval:(double)arg1;
-- (void)_startReadWriteActionTimer;
+- (void)_reportResponsesForMediaRequests;
 - (void)addActionSetRequest:(id)arg1 actionSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)addMediaWriteRequests:(id)arg1 withRequestProperty:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addReadRequests:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addWriteRequests:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)initWithQueue:(id)arg1 msgDispatcher:(id)arg2;
 - (void)removeResponses:(id)arg1;
-- (void)timerDidFire:(id)arg1;
+- (void)timeoutAndReportResults;
 
 @end
 

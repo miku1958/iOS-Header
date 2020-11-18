@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL observingAttachment; // @synthesize observingAttachment=_observingAttachment;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
++ (id)sharedDrawingController;
 - (void).cxx_destruct;
 - (void)attachmentIsDeallocating:(id)arg1;
 - (BOOL)canSaveURL;
@@ -28,13 +29,14 @@
 - (id)initWithAttachment:(id)arg1;
 - (BOOL)mergeWithMergeableData:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (BOOL)preferLocalPreviewImages;
 - (long long)previewImageOrientation;
 - (struct CGAffineTransform)previewImageOrientationTransform;
 - (id)previewImageURL;
 - (id)previewItemTitle;
 - (id)previewItemURL;
+- (BOOL)previewsSupportMultipleAppearances;
 - (id)saveURL;
-- (id)sharedDrawingController;
 - (BOOL)shouldSyncPreviewImageToCloud:(id)arg1;
 - (BOOL)showThumbnailInNoteList;
 - (void)startObservingAttachment;

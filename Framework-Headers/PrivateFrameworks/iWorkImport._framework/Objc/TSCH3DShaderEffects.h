@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSSet;
+#import <iWorkImport/NSCopying-Protocol.h>
+
+@class NSArray, NSMutableDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface TSCH3DShaderEffects : NSObject
+@interface TSCH3DShaderEffects : NSObject <NSCopying>
 {
-    NSMutableArray *mSections[4];
+    NSMutableDictionary *mSections;
     NSArray *mCacheList;
 }
 
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)addEffectsFromArray:(id)arg1;
 - (void)addEffectsFromArray:(id)arg1 toSection:(int)arg2;
 - (void)addVariables:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)effects;

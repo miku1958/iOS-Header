@@ -8,28 +8,45 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlaceRequest, GEOPDPlaceResponse, NSString;
+@class GEOPDPlaceRequest, GEOPDPlaceResponse, NSString, PBDataReader;
 
 @interface GEORPPlaceInfo : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOPDPlaceRequest *_placeRequest;
     GEOPDPlaceResponse *_placeResponse;
     NSString *_sourceApplication;
     NSString *_sourceUrl;
+    struct {
+        unsigned int read_placeRequest:1;
+        unsigned int read_placeResponse:1;
+        unsigned int read_sourceApplication:1;
+        unsigned int read_sourceUrl:1;
+        unsigned int wrote_placeRequest:1;
+        unsigned int wrote_placeResponse:1;
+        unsigned int wrote_sourceApplication:1;
+        unsigned int wrote_sourceUrl:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasPlaceRequest;
 @property (readonly, nonatomic) BOOL hasPlaceResponse;
 @property (readonly, nonatomic) BOOL hasSourceApplication;
 @property (readonly, nonatomic) BOOL hasSourceUrl;
-@property (strong, nonatomic) GEOPDPlaceRequest *placeRequest; // @synthesize placeRequest=_placeRequest;
-@property (strong, nonatomic) GEOPDPlaceResponse *placeResponse; // @synthesize placeResponse=_placeResponse;
-@property (strong, nonatomic) NSString *sourceApplication; // @synthesize sourceApplication=_sourceApplication;
-@property (strong, nonatomic) NSString *sourceUrl; // @synthesize sourceUrl=_sourceUrl;
+@property (strong, nonatomic) GEOPDPlaceRequest *placeRequest;
+@property (strong, nonatomic) GEOPDPlaceResponse *placeResponse;
+@property (strong, nonatomic) NSString *sourceApplication;
+@property (strong, nonatomic) NSString *sourceUrl;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)_clearLocationsFromPlaceRequest;
 - (void)_clearLocationsFromPlaceResponse;
+- (void)_readPlaceRequest;
+- (void)_readPlaceResponse;
+- (void)_readSourceApplication;
+- (void)_readSourceUrl;
 - (void)clearLocations;
 - (void)clearSessionId;
 - (void)copyTo:(id)arg1;
@@ -39,6 +56,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

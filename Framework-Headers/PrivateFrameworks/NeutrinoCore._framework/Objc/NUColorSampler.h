@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <NeutrinoCore/NUTimeBased-Protocol.h>
+
 @class NSString, NUColorSpace, NUComposition, NUImageDataRequest;
 @protocol OS_dispatch_queue;
 
-@interface NUColorSampler : NSObject
+@interface NUColorSampler : NSObject <NUTimeBased>
 {
     BOOL _shouldCoalesceUpdates;
     NUComposition *_composition;
@@ -22,14 +24,20 @@
 
 @property (strong, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (copy, nonatomic) NUComposition *composition; // @synthesize composition=_composition;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NUImageDataRequest *request; // @synthesize request=_request;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *responseQueue; // @synthesize responseQueue=_responseQueue;
 @property (nonatomic) long long sampleRadius; // @synthesize sampleRadius=_sampleRadius;
 @property (nonatomic) BOOL shouldCoalesceUpdates; // @synthesize shouldCoalesceUpdates=_shouldCoalesceUpdates;
+@property (readonly) Class superclass;
+@property (nonatomic) CDStruct_1b6d18a9 time;
 
 - (void).cxx_destruct;
 - (id)_pipelineFilters;
+- (void)cancel;
 - (void)configureRequest:(id)arg1 forSamplingAtPoint:(CDStruct_912cb5d2)arg2;
 - (id)initWithComposition:(id)arg1;
 - (id)initWithComposition:(id)arg1 responseQueue:(id)arg2;

@@ -26,6 +26,7 @@
 @property (weak, nonatomic) id<SiriUIVideoPlayerViewControllerDelegate> videoPlayerControllerDelegate; // @synthesize videoPlayerControllerDelegate=_videoPlayerControllerDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_playbackDidFinish:(id)arg1;
 - (void)_registerObservers;
 - (void)_removeObservers;

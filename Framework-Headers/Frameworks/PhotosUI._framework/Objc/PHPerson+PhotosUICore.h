@@ -6,11 +6,28 @@
 
 #import <Photos/PHPerson.h>
 
-@interface PHPerson (PhotosUICore)
-+ (id)_px_titleStringForPeople:(id)arg1 singlePersonFallback:(id)arg2 groupFallback:(id)arg3;
-+ (id)px_memoryTitleStringFromPeople:(id)arg1;
-+ (id)px_slideshowTitleStringForPeople:(id)arg1;
-+ (id)px_titleStringForPeople:(id)arg1;
-- (id)px_displayName;
+#import <PhotosUICore/PXPerson-Protocol.h>
+
+@class NSDate, NSString;
+
+@interface PHPerson (PhotosUICore) <PXPerson>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) BOOL isPersonModel;
+@property (readonly) BOOL isVerified;
+@property (readonly) NSString *name;
+@property (readonly) unsigned long long numberOfAssets;
+@property (readonly) NSString *px_displayName;
+@property (readonly) NSDate *px_keyPhotoDate;
+@property (readonly) NSString *px_localIdentifier;
+@property (readonly) NSString *px_localizedName;
+@property (readonly) Class superclass;
+
++ (id)px_fetchPersonsForSuggestion:(id)arg1 options:(id)arg2;
++ (void)px_loadRepresentativeFacesForPersons:(id)arg1;
++ (id)px_localizedNameFromContact:(id)arg1;
+- (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 style:(unsigned long long)arg3 cacheResult:(BOOL)arg4 boundFaceRect:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 @end
 

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotoLibraryServices/PLAbstractLibraryServicesManagerService.h>
 
 #import <PhotoLibraryServices/PLAssetsdNotificationServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PLAssetsdNotificationService : NSObject <PLAssetsdNotificationServiceProtocol>
+@interface PLAssetsdNotificationService : PLAbstractLibraryServicesManagerService <PLAssetsdNotificationServiceProtocol>
 {
 }
 
@@ -18,6 +18,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+
+- (void)noteGoingToExpireCMMsAlertWithCMMUUIDs:(id)arg1 thumbnailImageData:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4;
+- (void)noteInterestingMemoryAlertViewedWithUUID:(id)arg1;
+- (void)noteInterestingMemoryAlertWithMemoryUUID:(id)arg1 notificationDeliveryDate:(id)arg2;
+- (void)noteSuggestedCMMAlertViewedWithCMMUUID:(id)arg1;
+- (void)noteSuggestedCMMAlertWithCMMUUID:(id)arg1 notificationDeliveryDate:(id)arg2;
+- (void)reportAsJunkPhotoStreamInvitationForAlbumWithCloudGUID:(id)arg1;
+- (void)respondToPhotoStreamInvitationWithAlbumCloudGUID:(id)arg1 acceptInvitation:(BOOL)arg2;
+- (void)userViewedNotificationWithAlbumCloudGUID:(id)arg1;
 
 @end
 

@@ -27,11 +27,11 @@ __attribute__((visibility("hidden")))
 + (id)sharedReachabilityMonitor;
 - (void).cxx_destruct;
 - (void)_accountDidChange;
+- (BOOL)_isCellularAllowedForBR;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
-- (BOOL)isCellularAllowedForBR;
 - (BOOL)isNetworkReachableForBundle:(id)arg1;
 - (void)removeObserver:(id)arg1;
 

@@ -9,17 +9,23 @@
 #import <Search/SFFeedbackListener-Protocol.h>
 
 @class NSString;
+@protocol OS_dispatch_queue, SFFeedbackListener;
 
 @interface SPFeedbackManager : NSObject <SFFeedbackListener>
 {
+    NSObject<SFFeedbackListener> *_feedbackListener;
+    NSObject<OS_dispatch_queue> *_feedbackQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSObject<SFFeedbackListener> *feedbackListener; // @synthesize feedbackListener=_feedbackListener;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *feedbackQueue; // @synthesize feedbackQueue=_feedbackQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)sharedManager;
+- (void).cxx_destruct;
 - (void)_sendFeedback:(id)arg1 type:(long long)arg2;
 - (void)_sendFeedback:(id)arg1 type:(long long)arg2 queryId:(unsigned long long)arg3;
 - (void)cardViewDidAppear:(id)arg1;
@@ -37,6 +43,7 @@
 - (void)didReceiveResultsAfterTimeout:(id)arg1;
 - (void)didReportUserResponseFeedback:(id)arg1;
 - (void)didStartSearch:(id)arg1;
+- (id)init;
 - (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)searchViewDidAppear:(id)arg1;

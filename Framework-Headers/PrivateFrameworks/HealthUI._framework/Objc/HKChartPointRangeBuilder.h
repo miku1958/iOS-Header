@@ -6,8 +6,6 @@
 
 #import <objc/NSObject.h>
 
-@class HKValueRange;
-
 @interface HKChartPointRangeBuilder : NSObject
 {
     double _uMax;
@@ -22,13 +20,13 @@
 @property (nonatomic) double maximumMax; // @synthesize maximumMax=_maximumMax;
 @property (nonatomic) double minimumMin; // @synthesize minimumMin=_minimumMin;
 @property (nonatomic) long long numChartPoints; // @synthesize numChartPoints=_numChartPoints;
-@property (readonly, nonatomic) HKValueRange *suggestedValueRange;
 @property (nonatomic) double uMax; // @synthesize uMax=_uMax;
 @property (nonatomic) double uMin; // @synthesize uMin=_uMin;
 @property (nonatomic) double vMax; // @synthesize vMax=_vMax;
 @property (nonatomic) double vMin; // @synthesize vMin=_vMin;
 
 - (id)init;
+- (id)suggestedValueRangeWithRounding:(BOOL)arg1;
 - (void)visitChartPoint:(id)arg1;
 
 @end

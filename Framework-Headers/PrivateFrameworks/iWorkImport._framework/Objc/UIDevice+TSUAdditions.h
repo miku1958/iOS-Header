@@ -8,5 +8,9 @@
 
 @interface UIDevice (TSUAdditions)
 + (id)platformString;
++ (BOOL)tsk_landscapePhoneUI;
++ (BOOL)tsk_padUI;
++ (BOOL)tsk_phoneDevice;
++ (BOOL)tsk_phoneUI;
 @end
 

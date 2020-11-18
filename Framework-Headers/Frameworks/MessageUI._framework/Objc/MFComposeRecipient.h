@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <MessageUI/NSCopying-Protocol.h>
+#import <MessageUI/NSItemProviderReading-Protocol.h>
+#import <MessageUI/NSItemProviderWriting-Protocol.h>
 #import <MessageUI/NSSecureCoding-Protocol.h>
-#import <MessageUI/UIItemProviderReading-Protocol.h>
-#import <MessageUI/UIItemProviderWriting-Protocol.h>
 
 @class CNAutocompleteResult, CNContact, MFComposeRecipientOriginContext, NSArray, NSString;
 
-@interface MFComposeRecipient : NSObject <UIItemProviderReading, UIItemProviderWriting, NSCopying, NSSecureCoding>
+@interface MFComposeRecipient : NSObject <NSItemProviderReading, NSItemProviderWriting, NSCopying, NSSecureCoding>
 {
     void *_record;
     int _recordID;
@@ -42,19 +42,19 @@
 @property (readonly, nonatomic) NSString *commentedAddress; // @dynamic commentedAddress;
 @property (readonly, nonatomic) NSString *compositeName; // @dynamic compositeName;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-@property (strong, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
+@property (copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDirectoryServerResult;
 @property (readonly, nonatomic) BOOL isGroup;
 @property (readonly, nonatomic) BOOL isSuggestedRecipient;
 @property (readonly, nonatomic) unsigned long long kind; // @synthesize kind=_kind;
-@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
+@property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) NSString *normalizedAddress; // @dynamic normalizedAddress;
-@property (readonly, nonatomic) MFComposeRecipientOriginContext *originContext; // @synthesize originContext=_originContext;
+@property (strong, nonatomic) MFComposeRecipientOriginContext *originContext; // @synthesize originContext=_originContext;
 @property (readonly, nonatomic) NSString *placeholderName; // @dynamic placeholderName;
 @property (readonly, nonatomic, getter=isRemovableFromSearchResults) BOOL removableFromSearchResults;
 @property (readonly, nonatomic) NSString *shortName; // @dynamic shortName;
@@ -62,8 +62,8 @@
 @property (nonatomic) unsigned long long sourceType; // @synthesize sourceType=_sourceType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uncommentedAddress; // @dynamic uncommentedAddress;
-@property (strong, nonatomic) NSString *unlocalizedLabel; // @synthesize unlocalizedLabel=_unlocalizedLabel;
-@property (strong, nonatomic) NSString *valueIdentifier; // @synthesize valueIdentifier=_valueIdentifier;
+@property (copy, nonatomic) NSString *unlocalizedLabel; // @synthesize unlocalizedLabel=_unlocalizedLabel;
+@property (copy, nonatomic) NSString *valueIdentifier; // @synthesize valueIdentifier=_valueIdentifier;
 @property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
 + (id)_requiredKeyDescriptors;
@@ -76,12 +76,12 @@
 + (id)recipientWithRecord:(void *)arg1 recordID:(int)arg2 property:(int)arg3 identifier:(int)arg4;
 + (BOOL)supportsSecureCoding;
 + (id)writableTypeIdentifiersForItemProvider;
+- (void).cxx_destruct;
 - (id)_unformattedAddress;
 - (id)children;
 - (id)childrenWithCompleteMatches;
 - (id)completelyMatchedAttributedStrings;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (int)identifier;
 - (id)init;
@@ -96,7 +96,6 @@
 - (void *)record;
 - (int)recordID;
 - (void)setIdentifier:(int)arg1;
-- (void)setOriginContext:(id)arg1;
 - (void)setRecord:(void *)arg1 recordID:(int)arg2 identifier:(int)arg3;
 - (id)sortedChildren;
 - (BOOL)wasCompleteMatch;

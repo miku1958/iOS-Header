@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)directoryAttributes;
 - (id)fileAttributes;
+- (BOOL)isEnumeratingDirectoryPostOrder;
 - (unsigned long long)level;
 - (id)nextObject;
 - (void)skipDescendants;

@@ -20,6 +20,7 @@
 - (struct CGRect)_explanationLabelFrameForBoundsWidth:(double)arg1 withHeadlineLabelFrame:(struct CGRect)arg2;
 - (struct CGRect)_headlineLabelFrameForBoundsWidth:(double)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (id)initWithReuseIdentifier:(id)arg1 forTodayView:(BOOL)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

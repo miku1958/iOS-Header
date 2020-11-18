@@ -14,6 +14,7 @@
     BOOL _isFromViewSet;
     UIView *_toView;
     UIView *_fromView;
+    BOOL __isDeferred;
     UIViewController *_fromViewController;
     UIViewController *_toViewController;
     struct CGRect _fromStartFrame;
@@ -22,6 +23,7 @@
     struct CGRect _toStartFrame;
 }
 
+@property (nonatomic, setter=_setIsDeferred:) BOOL _isDeferred; // @synthesize _isDeferred=__isDeferred;
 @property (nonatomic, setter=_setFromEndFrame:) struct CGRect fromEndFrame; // @synthesize fromEndFrame=_fromEndFrame;
 @property (nonatomic, setter=_setFromStartFrame:) struct CGRect fromStartFrame; // @synthesize fromStartFrame=_fromStartFrame;
 @property (strong, nonatomic, getter=_fromView, setter=_setFromView:) UIView *fromView;

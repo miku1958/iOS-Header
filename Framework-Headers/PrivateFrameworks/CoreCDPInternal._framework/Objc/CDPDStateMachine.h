@@ -46,6 +46,7 @@
 - (void)_handlePreflightError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleRecoveryResetRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleiCDPStatusCheckError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_isICloudKeychainDisabledByManagementProfile;
 - (void)_performInteractivelyAuthenticatedRepair:(CDUnknownBlockType)arg1;
 - (void)_postRecoveryEnableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_predicateForRecordUpgradeCheck;

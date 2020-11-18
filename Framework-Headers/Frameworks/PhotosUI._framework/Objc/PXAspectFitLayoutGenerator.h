@@ -18,7 +18,7 @@
     double _currentRowFinalHeight;
 }
 
-@property (readonly, copy, nonatomic) PXAspectFitLayoutMetrics *metrics; // @dynamic metrics;
+@property (copy, nonatomic) PXAspectFitLayoutMetrics *metrics; // @dynamic metrics;
 
 - (void)_computeGeometriesIfNeeded;
 - (void)_fillRowFromIndex:(long long *)arg1 withCount:(long long)arg2;
@@ -29,7 +29,6 @@
 - (void)dealloc;
 - (struct CGSize)estimatedSize;
 - (void)getGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2 withKind:(long long)arg3;
-- (id)init;
 - (id)initWithMetrics:(id)arg1;
 - (void)invalidate;
 - (struct CGSize)size;

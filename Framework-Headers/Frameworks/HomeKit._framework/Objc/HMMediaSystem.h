@@ -64,7 +64,6 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
-- (void)_handleAppDataUpdatedNotification:(id)arg1;
 - (void)_handleRootSettingsUpdated:(id)arg1;
 - (void)_handleSystemUpdatedNotification:(id)arg1;
 - (void)_invalidate;

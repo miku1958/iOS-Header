@@ -10,14 +10,15 @@
 
 @interface EKCalendarNotificationReference : NSObject
 {
-    EKObjectID *_objectID;
     NSDate *_date;
     EKEventStore *_eventStore;
     EKCalendarNotification *_notification;
     int _type;
+    EKObjectID *_objectID;
 }
 
 @property (readonly, nonatomic) EKCalendarNotification *notification;
+@property (readonly, nonatomic) EKObjectID *objectID; // @synthesize objectID=_objectID;
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
 
 - (void).cxx_destruct;

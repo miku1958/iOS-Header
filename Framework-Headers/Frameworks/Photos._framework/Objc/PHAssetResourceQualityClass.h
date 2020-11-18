@@ -39,6 +39,8 @@
 - (id)description;
 - (id)initWithCPLResourceType:(unsigned long long)arg1;
 - (id)initWithThumbnailFormat:(id)arg1;
+- (void)preheatDataForThumbnailIndexes:(id)arg1 inLibrary:(id)arg2;
+- (id)tableThumbnailDataForAsset:(id)arg1 dataSpecification:(struct PHAssetResourceTableDataSpecification *)arg2;
 
 @end
 

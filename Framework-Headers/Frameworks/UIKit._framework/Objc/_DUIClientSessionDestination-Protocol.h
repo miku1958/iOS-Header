@@ -9,7 +9,7 @@
 @class BKSAnimationFenceHandle, NSArray, NSXPCListenerEndpoint, PBItemCollection;
 
 @protocol _DUIClientSessionDestination <_DUIClientSessionCommon>
-- (oneway void)addedItemsWithDetails:(NSArray *)arg1 itemCollection:(PBItemCollection *)arg2;
+- (oneway void)addedItemCollection:(PBItemCollection *)arg1;
 - (oneway void)dragEnded;
 - (oneway void)handOffDroppedItems:(NSArray *)arg1 withFence:(BKSAnimationFenceHandle *)arg2;
 - (oneway void)performDropWithItemCollection:(PBItemCollection *)arg1 dataProviderEndpoint:(NSXPCListenerEndpoint *)arg2 visibleDroppedItems:(NSArray *)arg3 reply:(void (^)(void))arg4;

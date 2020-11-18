@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
-#import <FrontBoardServices/FBSSceneLayerDelegate-Protocol.h>
 #import <FrontBoardServices/FBSSceneUpdaterDelegate-Protocol.h>
 
-@class FBSSceneClientSettings, FBSSceneSettings, NSArray, NSString;
+@class FBSSceneClientSettings, FBSSceneIdentityToken, FBSSceneSettings, FBSSceneSpecification, NSString;
 @protocol FBSSceneDelegate;
 
-@interface FBSScene : NSObject <FBSSceneUpdaterDelegate, FBSSceneLayerDelegate, BSDescriptionProviding>
+@interface FBSScene : NSObject <FBSSceneUpdaterDelegate, BSDescriptionProviding>
 {
 }
 
@@ -23,14 +22,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) NSArray *layers;
+@property (readonly, nonatomic) FBSSceneIdentityToken *identityToken;
 @property (readonly, nonatomic) FBSSceneSettings *settings;
+@property (readonly, nonatomic) FBSSceneSpecification *specification;
 @property (readonly) Class superclass;
 
-- (void)_didCreateWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_callOutQueue_agent_didCreateWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_callOutQueue_agent_willDestroyWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_hasAgent;
 - (id)_init;
-- (void)_willDestroyWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)attachContext:(id)arg1;
 - (void)attachLayer:(id)arg1;
 - (void)attachSceneContext:(id)arg1;
@@ -45,12 +45,9 @@
 - (id)init;
 - (id)initWithCallOutQueue:(id)arg1 identifier:(id)arg2 parameters:(id)arg3;
 - (id)initWithQueue:(id)arg1 identifier:(id)arg2 display:(id)arg3 settings:(id)arg4 clientSettings:(id)arg5;
-- (void)invalidate;
 - (BOOL)invalidateSnapshotWithContext:(id)arg1;
+- (id)layers;
 - (BOOL)performSnapshotWithContext:(id)arg1;
-- (void)sceneLayerDidInvalidate:(id)arg1;
-- (void)sceneLayerDidUpdate:(id)arg1;
-- (BOOL)sceneLayerShouldObserveUpdates:(id)arg1;
 - (void)sendActions:(id)arg1;
 - (id)snapshotRequest;
 - (id)succinctDescription;

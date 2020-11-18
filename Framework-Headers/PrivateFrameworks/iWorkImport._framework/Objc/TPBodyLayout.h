@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     TPFootnoteHeightMeasurer *_footnoteHeightMeasurer;
     NSMutableArray *_anchoredDrawablesForRelayout;
     NSMutableSet *_inlineDrawableLayouts;
+    NSMutableSet *_markedHiddenInlineDrawableLayouts;
 }
 
 @property (readonly, nonatomic) struct CGPoint anchorPoint;
@@ -68,29 +69,37 @@ __attribute__((visibility("hidden")))
 - (void)addAttachmentLayout:(id)arg1;
 - (struct CGPoint)anchoredAttachmentPositionFromLayoutPosition:(struct CGPoint)arg1;
 - (struct CGPoint)calculatePointFromSearchReference:(id)arg1;
+- (BOOL)canHaveFootnotesFromPreviousTarget:(id)arg1;
 - (struct CGPoint)capturedInfoPositionForAttachment;
+- (BOOL)childLayoutIsCurrentlyHiddenWhileManipulating:(id)arg1;
+- (void)clearHiddenInlineDrawableLayoutMarks;
 - (id)columnMetricsForCharIndex:(unsigned long long)arg1 outRange:(struct _NSRange *)arg2;
 - (id)computeLayoutGeometry;
 - (id)containedPencilAnnotations;
 - (BOOL)containsStartOfPencilAnnotation:(id)arg1;
+- (BOOL)containsStartOfRange:(struct _NSRange)arg1;
 - (double)contentBlockHeight;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
+- (BOOL)descendersCannotClip;
 - (BOOL)excludeFromNearestVisibleRectSearchForSelectionPath:(id)arg1;
 - (id)existingAttachmentLayoutForInfo:(id)arg1;
 - (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
+- (id)interiorClippingPath;
 - (BOOL)invalidateForPageCountChange;
 - (void)invalidateSize;
 - (BOOL)isFootnoteContainerOnSamePageAsTarget:(id)arg1;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
 - (struct CGPoint)layoutPositionFromAnchoredAttachmentPosition:(struct CGPoint)arg1;
+- (void)markHiddenInlineDrawableLayout:(id)arg1;
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
 - (BOOL)needsInflation;
 - (void)p_addLayoutIfAttached:(id)arg1;
 - (void)p_killDrawableLayouts:(id)arg1;
 - (struct CGRect)p_rectForSelection:(id)arg1 useParagraphModeRects:(BOOL)arg2;
 - (id)p_validatedLayoutForDrawable:(id)arg1 inContainingLayout:(id)arg2;
+- (id)pageAnchorDetailsForPencilAnnotationAtSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (void)parentWillChangeTo:(id)arg1;
 - (BOOL)processWidowAndInflation;
 - (struct CGRect)rectForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
@@ -106,7 +115,9 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsInflation;
 - (BOOL)shouldProvideSizingGuides;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
-- (id)unscaledAnchorRectsForPencilAnnotationSelectionPath:(id)arg1 attachedType:(long long)arg2;
+- (double)textScaleForChild:(id)arg1;
+- (void)unregisterFromLayoutController;
+- (id)unscaledContentRectsToAvoidPencilAnnotationOverlap;
 - (void)updateStartCharIndexWithDirtyRanges:(id)arg1;
 - (void)validate;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;

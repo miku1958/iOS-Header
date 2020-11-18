@@ -6,7 +6,7 @@
 
 #import <SpringBoardUIServices/SBUIInteractionForwardingView.h>
 
-@class NSLayoutConstraint, NSString, PKGlyphView, SBUIButton, SBUIPasscodePillButton, UILabel, UILayoutGuide;
+@class NSLayoutConstraint, NSString, PKGlyphView, SBUIButton, SBUIPasscodePillButton, UIButton, UILabel, UILayoutGuide;
 @protocol SBUIPasscodeBiometricAuthenticationViewDelegate, SBUIPasscodeBiometricAuthenticationViewLayoutDelegate;
 
 @interface SBUIPasscodeBiometricAuthenticationView : SBUIInteractionForwardingView
@@ -25,6 +25,7 @@
     PKGlyphView *_touchIDGlyphView;
     SBUIButton *_emergencyCallButton;
     SBUIButton *_cancelButton;
+    UIButton *_backgroundCancelButton;
     UILabel *_touchIDReasonLabel;
     UILabel *_faceIDLabel;
     UILabel *_faceIDReasonLabel;
@@ -34,6 +35,7 @@
 }
 
 @property (nonatomic) BOOL ancillaryButtonsVisible; // @synthesize ancillaryButtonsVisible=_ancillaryButtonsVisible;
+@property (strong, nonatomic) UIButton *backgroundCancelButton; // @synthesize backgroundCancelButton=_backgroundCancelButton;
 @property (strong, nonatomic) SBUIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (weak, nonatomic) id<SBUIPasscodeBiometricAuthenticationViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) SBUIButton *emergencyCallButton; // @synthesize emergencyCallButton=_emergencyCallButton;
@@ -58,13 +60,13 @@
 
 - (void).cxx_destruct;
 - (void)_cancelButtonHit;
-- (void)_createConstraints;
-- (void)_createSubviews;
 - (void)_emergencyCallButtonHit;
 - (void)_layoutAuthReasonLabel:(id)arg1;
 - (double)_leadingForFaceIDReason;
 - (void)_noteContentSizeCategoryDidChange;
 - (void)_setFaceIDReasonLine2:(id)arg1;
+- (void)_updateConstraints;
+- (void)_updateSubviews;
 - (void)_usePasscodeButtonHit;
 - (id)initWithFrame:(struct CGRect)arg1 layoutDelegate:(id)arg2;
 - (void)layoutSubviews;

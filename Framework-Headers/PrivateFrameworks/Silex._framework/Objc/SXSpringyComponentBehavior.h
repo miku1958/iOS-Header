@@ -14,7 +14,6 @@
 @property (readonly, nonatomic) double delta; // @dynamic delta;
 @property (readonly, nonatomic) double frequency; // @dynamic frequency;
 
-+ (id)typeString;
 - (Class)handlerClassForComponent:(id)arg1;
 
 @end

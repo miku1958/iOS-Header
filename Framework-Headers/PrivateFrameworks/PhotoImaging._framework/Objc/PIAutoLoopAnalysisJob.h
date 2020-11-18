@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)analysisRequest;
+- (id)cacheKey;
 - (BOOL)prepare:(out id *)arg1;
 - (BOOL)render:(out id *)arg1;
 - (id)result;

@@ -8,41 +8,68 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOSearchAttributionSource : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     CDStruct_95bda58d _attributionRequirements;
     NSMutableArray *_attributionApps;
     NSMutableArray *_localizedAttributions;
     NSString *_sourceIdentifier;
-    unsigned int _sourceVersion;
     NSMutableArray *_supportedComponentActions;
     NSString *_webBaseActionURL;
+    unsigned int _sourceVersion;
     BOOL _enforceAppStore;
     struct {
-        unsigned int enforceAppStore:1;
-    } _has;
+        unsigned int has_enforceAppStore:1;
+        unsigned int read_attributionRequirements:1;
+        unsigned int read_attributionApps:1;
+        unsigned int read_localizedAttributions:1;
+        unsigned int read_sourceIdentifier:1;
+        unsigned int read_supportedComponentActions:1;
+        unsigned int read_webBaseActionURL:1;
+        unsigned int wrote_attributionRequirements:1;
+        unsigned int wrote_attributionApps:1;
+        unsigned int wrote_localizedAttributions:1;
+        unsigned int wrote_sourceIdentifier:1;
+        unsigned int wrote_supportedComponentActions:1;
+        unsigned int wrote_webBaseActionURL:1;
+        unsigned int wrote_sourceVersion:1;
+        unsigned int wrote_enforceAppStore:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *attributionApps; // @synthesize attributionApps=_attributionApps;
+@property (strong, nonatomic) NSMutableArray *attributionApps;
 @property (readonly, nonatomic) int *attributionRequirements;
 @property (readonly, nonatomic) unsigned long long attributionRequirementsCount;
-@property (nonatomic) BOOL enforceAppStore; // @synthesize enforceAppStore=_enforceAppStore;
+@property (nonatomic) BOOL enforceAppStore;
 @property (nonatomic) BOOL hasEnforceAppStore;
 @property (readonly, nonatomic) BOOL hasWebBaseActionURL;
-@property (strong, nonatomic) NSMutableArray *localizedAttributions; // @synthesize localizedAttributions=_localizedAttributions;
-@property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
-@property (nonatomic) unsigned int sourceVersion; // @synthesize sourceVersion=_sourceVersion;
-@property (strong, nonatomic) NSMutableArray *supportedComponentActions; // @synthesize supportedComponentActions=_supportedComponentActions;
-@property (strong, nonatomic) NSString *webBaseActionURL; // @synthesize webBaseActionURL=_webBaseActionURL;
+@property (strong, nonatomic) NSMutableArray *localizedAttributions;
+@property (strong, nonatomic) NSString *sourceIdentifier;
+@property (nonatomic) unsigned int sourceVersion;
+@property (strong, nonatomic) NSMutableArray *supportedComponentActions;
+@property (strong, nonatomic) NSString *webBaseActionURL;
 
 + (Class)attributionAppsType;
++ (BOOL)isValid:(id)arg1;
 + (Class)localizedAttributionType;
 + (Class)supportedComponentActionsType;
 - (void).cxx_destruct;
 - (int)StringAsAttributionRequirements:(id)arg1;
+- (void)_addNoFlagsAttributionApps:(id)arg1;
+- (void)_addNoFlagsAttributionRequirements:(int)arg1;
+- (void)_addNoFlagsLocalizedAttribution:(id)arg1;
+- (void)_addNoFlagsSupportedComponentActions:(id)arg1;
+- (void)_readAttributionApps;
+- (void)_readAttributionRequirements;
+- (void)_readLocalizedAttributions;
+- (void)_readSourceIdentifier;
+- (void)_readSupportedComponentActions;
+- (void)_readWebBaseActionURL;
 - (void)addAttributionApps:(id)arg1;
 - (void)addAttributionRequirements:(int)arg1;
 - (void)addLocalizedAttribution:(id)arg1;
@@ -67,6 +94,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedAttributionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedAttributionsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAttributionRequirements:(int *)arg1 count:(unsigned long long)arg2;
 - (id)supportedComponentActionsAtIndex:(unsigned long long)arg1;

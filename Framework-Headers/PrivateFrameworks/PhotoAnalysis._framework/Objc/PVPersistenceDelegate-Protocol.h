@@ -17,7 +17,7 @@
 - (NSMutableArray *)allAlgorithmicFaceGroups:(id *)arg1;
 - (NSArray *)allPersons:(id *)arg1;
 - (NSString *)associateFace:(PVFace *)arg1 withFaceCrop:(PVFaceCrop *)arg2 error:(id *)arg3;
-- (void)buildPersonsWithFaceClusterer:(id<PVFaceClusteringProtocol>)arg1 keyFaceUpdateBlock:(void (^)(NSArray *))arg2 canceler:(PVCanceler *)arg3 context:(PVContext *)arg4;
+- (void)buildPersonsWithFaceClusterer:(id<PVFaceClusteringProtocol>)arg1 keyFaceUpdateBlock:(void (^)(NSArray *))arg2 canceler:(PVCanceler *)arg3 context:(PVContext *)arg4 extendTimeoutBlock:(void (^)(void))arg5;
 - (BOOL)cleanupGroupedFacesWithClusterSequenceNumberSetToZeroWithCanceler:(PVCanceler *)arg1 error:(id *)arg2;
 - (BOOL)cleanupUngroupedFacesWithNonZeroClusterSequenceNumbersWithCanceler:(PVCanceler *)arg1 error:(id *)arg2;
 - (BOOL)clearDirtyStateOnFaceCrops:(NSArray *)arg1 error:(id *)arg2;
@@ -35,7 +35,7 @@
 - (NSSet *)faceLocalIdentifiersInFaceGroupWithLocalIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (NSDictionary *)faceprintsByFaceLocalIdentifiers:(NSArray *)arg1 version:(unsigned int)arg2 error:(id *)arg3;
 - (NSSet *)facesAlgorithmicallyGroupedWithFacesWithClusterSequenceNumbers:(NSSet *)arg1 includeSingletons:(BOOL)arg2 error:(id *)arg3;
-- (NSArray *)facesForClusteringWithLocalIdentifiers:(NSArray *)arg1 faceprintVersion:(unsigned int)arg2 excludeClustered:(BOOL)arg3;
+- (NSArray *)facesForClusteringWithLocalIdentifiers:(NSArray *)arg1 faceprintVersion:(unsigned int)arg2 excludeClustered:(BOOL)arg3 groupingIdentifiers:(NSMutableArray *)arg4;
 - (NSSet *)facesForFaceLocalIdentifiers:(NSArray *)arg1 error:(id *)arg2;
 - (NSArray *)facesForPersonWithLocalIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (NSArray *)facesFromAsset:(PHAsset *)arg1;

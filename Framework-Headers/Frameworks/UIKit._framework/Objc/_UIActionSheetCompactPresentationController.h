@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)presentationTransitionWillBegin;
 - (BOOL)shouldPresentInFullscreen;
-- (BOOL)shouldRemovePresentersView;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

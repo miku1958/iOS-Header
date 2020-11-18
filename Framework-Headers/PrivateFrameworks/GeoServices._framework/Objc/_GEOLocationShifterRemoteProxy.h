@@ -20,9 +20,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)flushDiskCache;
 - (id)init;
 - (BOOL)isLocationShiftEnabled;
 - (BOOL)isLocationShiftRequiredForCoordinate:(CDStruct_c3b9c2ee)arg1;

@@ -37,17 +37,14 @@
 - (id)_defaultSettings;
 - (long long)behavior;
 - (double)endTimeOffset;
-- (double)maximumDeceleration;
 - (double)maximumDelayBeforePlayback;
-- (long long)maximumNumberOfFrames;
-- (double)maximumRate;
+- (double)minimumColorAdjustedPhotoTransitionDuration;
 - (double)minimumDurationForColorMismatch;
+- (double)minimumPhotoTransitionDuration;
 - (double)minimumVisibilityFactor;
 - (double)playbackRate;
 - (double)postDuration;
 - (double)preDuration;
-- (double)relativeEnd;
-- (double)relativeStart;
 - (void)setDefaultValues;
 
 @end

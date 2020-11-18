@@ -9,6 +9,7 @@
 @interface HKWorkout (FitnessUI)
 + (BOOL)_isHeartRateSupportedInPowerSettingsForActivityType:(unsigned long long)arg1;
 + (BOOL)_isHeartRateSupportedInPrivacySettings;
++ (BOOL)fiui_activitySupportsMetricType:(unsigned long long)arg1 activityType:(id)arg2;
 + (unsigned long long)fiui_associatedMetricForGoalType:(unsigned long long)arg1;
 + (BOOL)fiui_isHeartRateSupportedForActivityType:(unsigned long long)arg1 isIndoor:(BOOL)arg2;
 + (BOOL)fiui_shouldTrackPaceWithOdometerForActivityType:(unsigned long long)arg1;
@@ -39,5 +40,6 @@
 - (long long)fiui_swimmingLocationType;
 - (id)fiui_totalDistance;
 - (double)fiui_totalStepCount;
+- (id)fiui_workoutSplitsForUserPreferredDistanceUnit:(id)arg1;
 @end
 

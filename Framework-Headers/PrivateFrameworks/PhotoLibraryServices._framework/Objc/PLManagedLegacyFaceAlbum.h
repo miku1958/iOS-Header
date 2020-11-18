@@ -13,9 +13,7 @@
 @property (nonatomic) short keyAssetFaceIdentifier; // @dynamic keyAssetFaceIdentifier;
 @property (nonatomic) int keyAssetFaceThumbnailIndex; // @dynamic keyAssetFaceThumbnailIndex;
 
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 
 @end
 

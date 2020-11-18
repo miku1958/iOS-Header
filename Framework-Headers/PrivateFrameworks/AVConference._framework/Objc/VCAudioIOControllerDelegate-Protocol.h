@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AVConference/NSObject-Protocol.h>
+#import <AVConference/VCBasebandCodecNotifications-Protocol.h>
 
 @class NSError;
 
-@protocol VCAudioIOControllerDelegate <NSObject>
+@protocol VCAudioIOControllerDelegate <VCBasebandCodecNotifications>
 - (void)controllerFormatChanged:(struct AudioStreamBasicDescription)arg1;
 - (void)didResume;
 - (void)didStart:(BOOL)arg1 error:(NSError *)arg2;
 - (void)didStop:(BOOL)arg1 error:(NSError *)arg2;
 - (void)didSuspend;
+- (void)spatialAudioSourceIDChanged:(unsigned long long)arg1;
 @end
 

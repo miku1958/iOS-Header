@@ -21,15 +21,13 @@
 - (id)_remoteObjectProxy;
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_unblockPendingQueries;
-- (void)feedbackEngagedNamedEntities:(id)arg1;
-- (void)feedbackNamedEntitiesOverallEngagement:(id)arg1;
-- (void)feedbackUsedNamedEntities:(id)arg1;
 - (id)init;
 - (id)mapItemForPlaceName:(id)arg1 error:(id *)arg2;
 - (void)namedEntityBatch:(id)arg1 isLast:(BOOL)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)namedEntityRecordBatch:(id)arg1 isLast:(BOOL)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (BOOL)namedEntityRecordsWithQuery:(id)arg1 error:(id *)arg2 handleBatch:(CDUnknownBlockType)arg3;
 - (BOOL)rankedNamedEntitiesWithQuery:(id)arg1 error:(id *)arg2 handleBatch:(CDUnknownBlockType)arg3;
+- (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

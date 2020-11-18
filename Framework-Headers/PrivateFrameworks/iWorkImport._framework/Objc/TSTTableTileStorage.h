@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
 - (void)_shiftRowsDownAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
 - (void)_shiftRowsUpAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
 - (void)_spliceRows:(id)arg1 atIndex:(unsigned int)arg2;
-- (void)_swapRowsAtIndex:(unsigned int)arg1 andIndex:(unsigned int)arg2;
 - (id)_tileForID:(unsigned long long)arg1 createIfMissing:(BOOL)arg2;
 - (void)_upgradeFromTileIDMap:(vector_ceceab0b *)arg1 referenceMap:(unordered_map_52392278 *)arg2;
 - (id)_yankRowAtIndex:(unsigned int)arg1;
@@ -58,6 +57,8 @@ __attribute__((visibility("hidden")))
 - (multimap_0345fd13)makeStorageMap;
 - (void)moveColumnIndexRange:(struct _NSRange)arg1 toIndex:(unsigned short)arg2;
 - (void)moveRowIndexRange:(struct _NSRange)arg1 toIndex:(unsigned int)arg2;
+- (void)prepareToApplyConcurrentCellMap:(id)arg1;
+- (void)pruneTileForRowIndex:(unsigned int)arg1;
 - (void)removeColumnsAtIndex:(unsigned short)arg1 count:(unsigned int)arg2;
 - (void)removeRowsAtIndex:(unsigned int)arg1 count:(unsigned int)arg2;
 - (void)reset;

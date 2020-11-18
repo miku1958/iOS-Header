@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithTextColor:(id)arg1 textAlignment:(long long)arg2;
+- (id)initWithTextAlignment:(long long)arg1;
 - (id)messageLargeFont;
 - (id)messageSmallFont;
 - (id)styleTextAsMessage:(id)arg1 boundingSize:(struct CGSize)arg2;

@@ -18,7 +18,7 @@
 
 @property (readonly, nonatomic) NSArray *actionCommands;
 @property (readonly, nonatomic) id<SFCardSection> backingCardSection;
-@property (copy, nonatomic) NSString *cardSectionIdentifier; // @synthesize cardSectionIdentifier=_cardSectionIdentifier;
+@property (strong, nonatomic) NSString *cardSectionIdentifier; // @synthesize cardSectionIdentifier=_cardSectionIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasNextCard;

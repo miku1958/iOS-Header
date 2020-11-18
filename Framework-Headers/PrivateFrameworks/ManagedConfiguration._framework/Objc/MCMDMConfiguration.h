@@ -11,20 +11,25 @@
 
 @interface MCMDMConfiguration : NSObject
 {
+    BOOL _isUserEnrollment;
     BOOL _memberQueueUseDevelopmentAPNS;
     BOOL _memberQueueSignMessage;
     int _memberQueueAccessRights;
-    NSObject<OS_dispatch_queue> *_memberQueue;
     NSString *_memberQueueManagingProfileIdentifier;
+    NSDictionary *_memberQueueOrganizationInfo;
+    NSURL *_memberQueueServerURL;
+    NSString *_personaID;
+    NSString *_easEnrollmentID;
+    NSObject<OS_dispatch_queue> *_memberQueue;
     struct __SecIdentity *_memberQueueIdentity;
     NSString *_memberQueueTopic;
-    NSURL *_memberQueueServerURL;
     NSURL *_memberQueueCheckInURL;
-    NSDictionary *_memberQueueOrganizationInfo;
     NSDictionary *_memberQueueMDMOptions;
     NSString *_memberQueuePushMagic;
 }
 
+@property (strong, nonatomic) NSString *easEnrollmentID; // @synthesize easEnrollmentID=_easEnrollmentID;
+@property (nonatomic) BOOL isUserEnrollment; // @synthesize isUserEnrollment=_isUserEnrollment;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *memberQueue; // @synthesize memberQueue=_memberQueue;
 @property (nonatomic) int memberQueueAccessRights; // @synthesize memberQueueAccessRights=_memberQueueAccessRights;
 @property (strong, nonatomic) NSURL *memberQueueCheckInURL; // @synthesize memberQueueCheckInURL=_memberQueueCheckInURL;
@@ -37,6 +42,7 @@
 @property (nonatomic) BOOL memberQueueSignMessage; // @synthesize memberQueueSignMessage=_memberQueueSignMessage;
 @property (strong, nonatomic) NSString *memberQueueTopic; // @synthesize memberQueueTopic=_memberQueueTopic;
 @property (nonatomic) BOOL memberQueueUseDevelopmentAPNS; // @synthesize memberQueueUseDevelopmentAPNS=_memberQueueUseDevelopmentAPNS;
+@property (strong, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
 
 + (id)sharedConfiguration;
 - (void).cxx_destruct;

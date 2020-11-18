@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
 #import <Metal/MTLArgumentEncoder-Protocol.h>
 
 @class NSString, _MTLIndirectArgumentBufferLayout;
 @protocol MTLDevice;
 
-@interface _MTLIndirectArgumentEncoder : NSObject <MTLArgumentEncoder>
+@interface _MTLIndirectArgumentEncoder : _MTLObjectWithLabel <MTLArgumentEncoder>
 {
     id<MTLDevice> _device;
-    NSString *_label;
     _MTLIndirectArgumentBufferLayout *_layout;
 }
 
@@ -24,7 +23,7 @@
 @property (readonly, nonatomic) id<MTLDevice> device;
 @property (readonly) unsigned long long encodedLength; // @dynamic encodedLength;
 @property (readonly) unsigned long long hash;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (copy) NSString *label; // @dynamic label;
 @property (readonly, nonatomic) _MTLIndirectArgumentBufferLayout *layout; // @synthesize layout=_layout;
 @property (readonly) Class superclass;
 
@@ -32,7 +31,6 @@
 - (void)dealloc;
 - (id)initWithLayout:(id)arg1 device:(id)arg2;
 - (id)newArgumentEncoderForBufferAtIndex:(unsigned long long)arg1;
-- (id)newIndirectArgumentEncoderForBufferAtIndex:(unsigned long long)arg1;
 - (void)setArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
 - (void)setArgumentBuffer:(id)arg1 startOffset:(unsigned long long)arg2 arrayElement:(unsigned long long)arg3;
 - (void)setBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
@@ -40,7 +38,6 @@
 - (void)setComputePipelineState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setComputePipelineStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setIndirectArgumentBuffer:(id)arg1 offset:(unsigned long long)arg2;
-- (void)setIndirectArgumentBuffer:(id)arg1 startOffset:(unsigned long long)arg2 arrayElement:(unsigned long long)arg3;
 - (void)setIndirectCommandBuffer:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setIndirectCommandBuffers:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setRenderPipelineState:(id)arg1 atIndex:(unsigned long long)arg2;

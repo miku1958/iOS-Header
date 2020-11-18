@@ -13,5 +13,8 @@
 - (int)dragManager:(CKBrowserDragManager *)arg1 dropAreaForDragTarget:(CKBrowserDragControllerTarget *)arg2;
 - (void)dragManagerDidBeginDragging:(CKBrowserDragManager *)arg1;
 - (void)dragManagerDidEndDragging:(CKBrowserDragManager *)arg1;
+
+@optional
+- (void)dragManager:(CKBrowserDragManager *)arg1 overrideDropPointForTarget:(CKBrowserDragControllerTarget *)arg2 completion:(void (^)(struct CGPoint))arg3;
 @end
 

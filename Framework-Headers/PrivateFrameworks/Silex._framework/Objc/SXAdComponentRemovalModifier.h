@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)modifyDOM:(id)arg1 context:(id)arg2;
+- (void)modifyDOM:(id)arg1 context:(id)arg2;
 - (void)removeAdComponentsEmbeddedWithinContainer:(id)arg1 childComponents:(id)arg2;
 
 @end

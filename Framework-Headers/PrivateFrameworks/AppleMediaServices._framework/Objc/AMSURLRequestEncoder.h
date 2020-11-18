@@ -6,53 +6,73 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
+#import <AppleMediaServices/AMSBagConsumer_Project-Protocol.h>
 #import <AppleMediaServices/AMSRequestEncoding-Protocol.h>
 
-@class ACAccount, AMSProcessInfo, NSDictionary, NSString;
-@protocol AMSResponseDecoding, AMSURLBagContract, OS_dispatch_queue;
+@class ACAccount, AMSKeychainOptions, AMSProcessInfo, NSDictionary, NSString, NSURLSessionTask;
+@protocol AMSBagProtocol, AMSResponseDecoding, AMSURLBagContract, OS_dispatch_queue;
 
-@interface AMSURLRequestEncoder : NSObject <AMSRequestEncoding>
+@interface AMSURLRequestEncoder : NSObject <AMSBagConsumer_Project, AMSBagConsumer, AMSRequestEncoding>
 {
     BOOL _compressRequestBody;
+    BOOL _disableResponseDecoding;
     BOOL _includeClientVersions;
+    BOOL _shouldSetCookiesFromResponse;
+    BOOL _shouldSetStorefrontFromResponse;
     BOOL _urlKnownToBeTrusted;
-    BOOL _disableAccountMediaTypeComponent;
     ACAccount *_account;
     NSDictionary *_additionalMetrics;
     long long _anisetteType;
-    id<AMSURLBagContract> _bagContract;
+    id<AMSBagProtocol> _bag;
     AMSProcessInfo *_clientInfo;
-    long long _dataEncoding;
     long long _dialogOptions;
+    AMSKeychainOptions *_keychainOptions;
     NSString *_logUUID;
     long long _mescalType;
+    long long _requestEncoding;
     id<AMSResponseDecoding> _responseDecoder;
+    id<AMSURLBagContract> _bagContract;
     NSObject<OS_dispatch_queue> *_internalQueue;
+    long long _encodeCount;
+    NSURLSessionTask *_parentTask;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) NSDictionary *additionalMetrics; // @synthesize additionalMetrics=_additionalMetrics;
 @property (nonatomic) long long anisetteType; // @synthesize anisetteType=_anisetteType;
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) id<AMSURLBagContract> bagContract; // @synthesize bagContract=_bagContract;
 @property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (nonatomic) BOOL compressRequestBody; // @synthesize compressRequestBody=_compressRequestBody;
-@property (nonatomic) long long dataEncoding; // @synthesize dataEncoding=_dataEncoding;
+@property (nonatomic) long long dataEncoding;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long dialogOptions; // @synthesize dialogOptions=_dialogOptions;
-@property (nonatomic) BOOL disableAccountMediaTypeComponent; // @synthesize disableAccountMediaTypeComponent=_disableAccountMediaTypeComponent;
+@property (nonatomic) BOOL disableResponseDecoding; // @synthesize disableResponseDecoding=_disableResponseDecoding;
+@property (nonatomic) long long encodeCount; // @synthesize encodeCount=_encodeCount;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeClientVersions; // @synthesize includeClientVersions=_includeClientVersions;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *internalQueue; // @synthesize internalQueue=_internalQueue;
+@property (strong, nonatomic) AMSKeychainOptions *keychainOptions; // @synthesize keychainOptions=_keychainOptions;
 @property (strong, nonatomic) NSString *logUUID; // @synthesize logUUID=_logUUID;
 @property (nonatomic) long long mescalType; // @synthesize mescalType=_mescalType;
+@property (strong, nonatomic) NSURLSessionTask *parentTask; // @synthesize parentTask=_parentTask;
+@property (nonatomic) long long requestEncoding; // @synthesize requestEncoding=_requestEncoding;
 @property (strong, nonatomic) id<AMSResponseDecoding> responseDecoder; // @synthesize responseDecoder=_responseDecoder;
+@property (nonatomic) BOOL shouldSetCookiesFromResponse; // @synthesize shouldSetCookiesFromResponse=_shouldSetCookiesFromResponse;
+@property (nonatomic) BOOL shouldSetStorefrontFromResponse; // @synthesize shouldSetStorefrontFromResponse=_shouldSetStorefrontFromResponse;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL urlKnownToBeTrusted; // @synthesize urlKnownToBeTrusted=_urlKnownToBeTrusted;
 
++ (void)addRequiredBagKeysToAggregator:(id)arg1;
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
 - (void).cxx_destruct;
 - (id)_methodStringFromMethod:(long long)arg1;
 - (id)init;
+- (id)initWithBag:(id)arg1;
 - (id)initWithBagContract:(id)arg1;
 - (id)requestByEncodingRequest:(id)arg1 parameters:(id)arg2;
 - (id)requestByEncodingRequest:(id)arg1 parameters:(id)arg2 error:(id *)arg3;

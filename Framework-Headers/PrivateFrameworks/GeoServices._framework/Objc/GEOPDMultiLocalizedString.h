@@ -17,14 +17,16 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_localizedStrings;
 }
 
-@property (strong, nonatomic) NSMutableArray *localizedStrings; // @synthesize localizedStrings=_localizedStrings;
+@property (strong, nonatomic) NSMutableArray *localizedStrings;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)localizedStringType;
 - (void).cxx_destruct;
 - (void)addLocalizedString:(id)arg1;
 - (id)bestLocalizedName;
 - (void)clearLocalizedStrings;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -34,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedStringAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedStringsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

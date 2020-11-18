@@ -13,7 +13,7 @@
     struct _LayoutContext _context;
 }
 
-@property (readonly, copy, nonatomic) PXMemoriesFeedWidgetLayoutMetrics *metrics; // @dynamic metrics;
+@property (copy, nonatomic) PXMemoriesFeedWidgetLayoutMetrics *metrics; // @dynamic metrics;
 
 - (struct CGSize)estimatedSize;
 - (id)geometryKinds;

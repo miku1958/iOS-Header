@@ -10,14 +10,14 @@
 #import <MapsSupport/NSCopying-Protocol.h>
 
 @class MSPTransitStorageIcon, MSPTransitStorageShield, NSString, PBUnknownFields;
-@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource;
+@protocol GEOTransitIconDataSource, GEOTransitShieldDataSource, GEOTransitTextDataSource;
 
 @interface MSPTransitStorageArtwork : PBCodable <GEOTransitArtworkDataSource, NSCopying>
 {
     PBUnknownFields *_unknownFields;
     NSString *_accessibilityText;
-    long long _artworkSourceType;
-    long long _artworkUseType;
+    int _artworkSourceType;
+    int _artworkUseType;
     MSPTransitStorageIcon *_icon;
     MSPTransitStorageShield *_iconFallbackShield;
     MSPTransitStorageShield *_shield;
@@ -31,10 +31,10 @@
 
 @property (readonly, nonatomic) NSString *accessibilityText;
 @property (strong, nonatomic) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
-@property (readonly, nonatomic) long long artworkSourceType;
-@property (nonatomic) long long artworkSourceType; // @synthesize artworkSourceType=_artworkSourceType;
-@property (readonly, nonatomic) long long artworkUseType;
-@property (nonatomic) long long artworkUseType; // @synthesize artworkUseType=_artworkUseType;
+@property (readonly, nonatomic) int artworkSourceType;
+@property (nonatomic) int artworkSourceType; // @synthesize artworkSourceType=_artworkSourceType;
+@property (readonly, nonatomic) int artworkUseType;
+@property (nonatomic) int artworkUseType; // @synthesize artworkUseType=_artworkUseType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAccessibilityText;
@@ -54,13 +54,14 @@
 @property (strong, nonatomic) MSPTransitStorageShield *shield; // @synthesize shield=_shield;
 @property (readonly, nonatomic) id<GEOTransitShieldDataSource> shieldDataSource;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<GEOTransitTextDataSource> textDataSource;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
-- (long long)StringAsArtworkSourceType:(id)arg1;
-- (long long)StringAsArtworkUseType:(id)arg1;
-- (id)artworkSourceTypeAsString:(long long)arg1;
-- (id)artworkUseTypeAsString:(long long)arg1;
+- (int)StringAsArtworkSourceType:(id)arg1;
+- (int)StringAsArtworkUseType:(id)arg1;
+- (id)artworkSourceTypeAsString:(int)arg1;
+- (id)artworkUseTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;

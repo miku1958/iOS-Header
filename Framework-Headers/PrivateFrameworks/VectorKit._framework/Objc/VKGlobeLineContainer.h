@@ -6,54 +6,48 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKPolylineGroupOverlayObserver-Protocol.h>
-#import <VectorKit/VKPolylineObserver-Protocol.h>
-
-@class NSMutableArray, NSMutableSet, NSString, VKPolylineOverlay;
+@class VKPolylineOverlay;
 @protocol VKGlobeLineContainerDelegate, VKRouteMatchedAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
-@interface VKGlobeLineContainer : NSObject <VKPolylineGroupOverlayObserver, VKPolylineObserver>
+@interface VKGlobeLineContainer : NSObject
 {
     id<VKRouteMatchedAnnotationPresentation> _routeLineSplitAnnotation;
     id<VKGlobeLineContainerDelegate> _delegate;
-    NSMutableArray *_overlays;
-    struct GlobeView *_globeView;
+    set_f5697f57 _overlays;
+    set_f5697f57 _persistentOverlays;
+    set_f5697f57 _nonPersistentOverlays;
+    struct RouteRenderLayer *_routeRenderLayer;
     struct map<VKPolylineOverlay *, std::__1::weak_ptr<altitude::RouteLineData>, std::__1::less<VKPolylineOverlay *>, std::__1::allocator<std::__1::pair<VKPolylineOverlay *const, std::__1::weak_ptr<altitude::RouteLineData>>>> _polylinesToRoutes;
     VKPolylineOverlay *_selectedPolyline;
-    NSMutableSet *_persistentOverlays;
     struct VKGlobeRouteSplit *_routeSplit;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<VKGlobeLineContainerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<VKRouteMatchedAnnotationPresentation> routeLineSplitAnnotation;
-@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_addOverlay:(id)arg1;
 - (void)_recreateLinesIfNeeded;
+- (void)_removeOverlay:(id)arg1;
 - (void)_updateRouteSplit;
 - (void)addLine:(id)arg1;
-- (void)addOverlay:(id)arg1;
+- (void)addNonPersistentOverlay:(id)arg1;
 - (void)addPersistentOverlay:(id)arg1;
 - (void)clearLineSelection;
 - (void)dealloc;
 - (float)halfWidthForLine:(id)arg1 styleZ:(float)arg2;
-- (id)initWithGlobeView:(struct GlobeView *)arg1 stylesheet:(shared_ptr_a3c46825)arg2;
+- (BOOL)hasNonPersistentOverlay:(id *)arg1;
+- (BOOL)hasPersistentOverlay:(id *)arg1;
+- (id)initWithRouteRenderLayer:(struct RouteRenderLayer *)arg1;
+- (const set_f5697f57 *)nonPersistentOverlays;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)overlays;
-- (id)persistentOverlays;
-- (void)polyline:(id)arg1 selectedSections:(id)arg2 deselectedSections:(id)arg3;
-- (void)polylineGroup:(id)arg1 didAddPolyline:(id)arg2;
-- (void)polylineGroup:(id)arg1 didRemovePolyline:(id)arg2;
-- (void)polylineGroup:(id)arg1 didSelectPolyline:(id)arg2;
+- (const set_f5697f57 *)overlays;
+- (const set_f5697f57 *)persistentOverlays;
 - (void)removeLine:(id)arg1;
-- (void)removeOverlay:(id)arg1;
+- (void)removeNonPersistentOverlay:(id)arg1;
 - (void)removePersistentOverlay:(id)arg1;
-- (void)setNeedsLayoutForPolyline:(id)arg1;
 - (void)setSelected:(id)arg1 selected:(BOOL)arg2;
 - (void)update;
 

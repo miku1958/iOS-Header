@@ -9,17 +9,20 @@
 #import <HomeUI/HUWallpaperPhotoCellDelegate-Protocol.h>
 #import <HomeUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <HomeUI/UIDropInteractionDelegate-Protocol.h>
+#import <HomeUI/UIImagePickerControllerDelegate-Protocol.h>
+#import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 
-@class HFWallpaper, HUWallpaperPhotoCell, NSArray, NSIndexPath, NSMutableDictionary, NSString, UICollectionViewFlowLayout, UIDropInteraction, UIImage;
+@class HFWallpaper, HUWallpaperPhotoCell, NSArray, NSIndexPath, NSMutableDictionary, NSString, UICollectionViewFlowLayout, UIDropInteraction, UIImage, UIImagePickerController;
 @protocol HUWallpaperPickerInlineViewControllerDelegate;
 
-@interface HUWallpaperPickerInlineViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, HUWallpaperPhotoCellDelegate, UIDropInteractionDelegate>
+@interface HUWallpaperPickerInlineViewController : UICollectionViewController <UICollectionViewDelegateFlowLayout, HUWallpaperPhotoCellDelegate, UIDropInteractionDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     NSArray *_namedWallpapers;
     double _preferedHeight;
     UIImage *_originalCustomImage;
     id<HUWallpaperPickerInlineViewControllerDelegate> _delegate;
     NSMutableDictionary *_imageCache;
+    UIImagePickerController *_imagePicker;
     HUWallpaperPhotoCell *_customWallpaperCell;
     UICollectionViewFlowLayout *_flowLayout;
     HFWallpaper *_customWallpaper;
@@ -38,11 +41,12 @@
 @property (strong, nonatomic) UICollectionViewFlowLayout *flowLayout; // @synthesize flowLayout=_flowLayout;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
+@property (strong, nonatomic) UIImagePickerController *imagePicker; // @synthesize imagePicker=_imagePicker;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (strong, nonatomic) NSArray *namedWallpapers; // @synthesize namedWallpapers=_namedWallpapers;
 @property (readonly) unsigned long long numberOfWallpapers;
 @property (nonatomic) unsigned long long numberOfWallpapersFittingInWidth; // @synthesize numberOfWallpapersFittingInWidth=_numberOfWallpapersFittingInWidth;
-@property (nonatomic) UIImage *originalCustomImage; // @synthesize originalCustomImage=_originalCustomImage;
+@property (strong, nonatomic) UIImage *originalCustomImage; // @synthesize originalCustomImage=_originalCustomImage;
 @property (readonly, nonatomic) double preferedHeight; // @synthesize preferedHeight=_preferedHeight;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) HFWallpaper *selectedWallpaper;
@@ -58,6 +62,7 @@
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
+- (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (id)init;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (struct CGSize)preferredContentSize;

@@ -28,6 +28,7 @@
     struct UIEdgeInsets _cachedOpticalEdgeInsets;
     BOOL _cachedOpticalEdgeInsetsIsValid;
     BOOL _showSeconds;
+    UIColor *_textColor;
     BOOL _animationsPaused;
     BOOL _showsBlinker;
     BOOL _showsNumbers;

@@ -15,15 +15,16 @@
     long long _appErrorCode;
     NSString *_appErrorDomain;
     struct {
-        unsigned int appErrorCode:1;
-    } _has;
+        unsigned int has_appErrorCode:1;
+    } _flags;
 }
 
-@property (nonatomic) long long appErrorCode; // @synthesize appErrorCode=_appErrorCode;
-@property (strong, nonatomic) NSString *appErrorDomain; // @synthesize appErrorDomain=_appErrorDomain;
+@property (nonatomic) long long appErrorCode;
+@property (strong, nonatomic) NSString *appErrorDomain;
 @property (nonatomic) BOOL hasAppErrorCode;
 @property (readonly, nonatomic) BOOL hasAppErrorDomain;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -32,6 +33,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

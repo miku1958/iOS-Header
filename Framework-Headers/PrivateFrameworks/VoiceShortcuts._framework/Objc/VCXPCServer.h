@@ -6,31 +6,43 @@
 
 #import <objc/NSObject.h>
 
+#import <VoiceShortcuts/NSXPCConnectionDelegate-Protocol.h>
 #import <VoiceShortcuts/NSXPCListenerDelegate-Protocol.h>
 
-@class NSString, NSXPCListener, NSXPCListenerEndpoint, VCVoiceShortcutManager;
+@class NSString, NSXPCListener, NSXPCListenerEndpoint, VCCoreDuetListener, VCVoiceShortcutManager, WFTriggerManager;
+@protocol VCDatabaseProvider, VCSyncDataEndpoint;
 
-@interface VCXPCServer : NSObject <NSXPCListenerDelegate>
+@interface VCXPCServer : NSObject <NSXPCListenerDelegate, NSXPCConnectionDelegate>
 {
     BOOL _skipEntitlementsCheck;
-    VCVoiceShortcutManager *_manager;
+    struct os_unfair_lock_s _migrationLock;
+    VCCoreDuetListener *_coreDuetListener;
+    VCVoiceShortcutManager *_voiceShortcutManager;
+    WFTriggerManager *_triggerManager;
     NSXPCListener *_xpcListener;
+    id<VCDatabaseProvider> _databaseProvider;
+    id<VCSyncDataEndpoint> _syncDataEndpoint;
 }
 
+@property (readonly, nonatomic) VCCoreDuetListener *coreDuetListener; // @synthesize coreDuetListener=_coreDuetListener;
+@property (readonly, nonatomic) id<VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSXPCListenerEndpoint *endpoint;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) VCVoiceShortcutManager *manager; // @synthesize manager=_manager;
+@property (readonly, nonatomic) struct os_unfair_lock_s migrationLock; // @synthesize migrationLock=_migrationLock;
 @property (readonly, nonatomic) BOOL skipEntitlementsCheck; // @synthesize skipEntitlementsCheck=_skipEntitlementsCheck;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) id<VCSyncDataEndpoint> syncDataEndpoint; // @synthesize syncDataEndpoint=_syncDataEndpoint;
+@property (readonly, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
+@property (readonly, nonatomic) VCVoiceShortcutManager *voiceShortcutManager; // @synthesize voiceShortcutManager=_voiceShortcutManager;
 @property (readonly, nonatomic) NSXPCListener *xpcListener; // @synthesize xpcListener=_xpcListener;
 
-+ (void)initialize;
 - (void).cxx_destruct;
-- (id)init;
-- (id)initWithAnonymousListenerUseEphemeralStore:(BOOL)arg1;
-- (id)initWithListener:(id)arg1 useEphemeralStore:(BOOL)arg2;
+- (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
+- (id)initWithDatabaseProvider:(id)arg1 coreDuetListener:(id)arg2 syncDataEndpoint:(id)arg3;
+- (id)initWithUnsecuredAnonymousListenerAndDatabaseProvider:(id)arg1;
+- (id)initWithXPCListener:(id)arg1 databaseProvider:(id)arg2 coreDuetListener:(id)arg3 syncDataEndpoint:(id)arg4;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 
 @end

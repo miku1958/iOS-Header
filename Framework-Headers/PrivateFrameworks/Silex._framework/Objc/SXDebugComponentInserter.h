@@ -24,9 +24,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)componentInsertForMarker:(id)arg1 layoutProvider:(id)arg2;
+- (id)componentInsertForMarker:(id)arg1 DOMObjectProvider:(id)arg2 layoutProvider:(id)arg3;
 - (id)conditionsForDOMObjectProvider:(id)arg1;
-- (BOOL)validateMarker:(id)arg1 remainingMarkerCount:(unsigned long long)arg2 layoutProvider:(id)arg3;
+- (BOOL)validateMarker:(id)arg1 DOMObjectProvider:(id)arg2 layoutProvider:(id)arg3;
 
 @end
 

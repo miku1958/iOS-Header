@@ -6,71 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSManagedObjectContext, NSPersistentContainer;
+@class NSManagedObjectContext, NSPersistentContainer, VCRealmDataStore;
 @protocol OS_dispatch_queue;
 
 @interface VCCoreDataStore : NSObject
 {
+    VCRealmDataStore *_realmDataStore;
     NSPersistentContainer *_container;
     NSManagedObjectContext *_context;
     NSManagedObjectContext *_suggestionsContext;
     NSObject<OS_dispatch_queue> *_callbackQueue;
-    NSObject<OS_dispatch_queue> *_indexingQueue;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) NSPersistentContainer *container; // @synthesize container=_container;
 @property (strong, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *indexingQueue; // @synthesize indexingQueue=_indexingQueue;
+@property (readonly, nonatomic) VCRealmDataStore *realmDataStore; // @synthesize realmDataStore=_realmDataStore;
 @property (strong, nonatomic) NSManagedObjectContext *suggestionsContext; // @synthesize suggestionsContext=_suggestionsContext;
 
-+ (BOOL)destroyPersistentStoreInDirectory:(id)arg1 error:(id *)arg2;
-+ (void)initialize;
-+ (BOOL)persistentStoreExistsInDirectory:(id)arg1;
++ (BOOL)destroyPersistentStore:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (id)activeManagedObjectWithVoiceShortcutIdentifier:(id)arg1 accessSpecifier:(id)arg2 error:(id *)arg3;
-- (id)activeManagedObjectsMatchingPredicate:(id)arg1 accessSpecifier:(id)arg2 error:(id *)arg3;
-- (id)activeManagedObjectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 accessSpecifier:(id)arg3 error:(id *)arg4;
-- (void)addVoiceShortcut:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)applyChangeSet:(struct NSOrderedSet *)arg1 fromSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)deleteAllSyncedData:(id *)arg1;
-- (void)deleteShortcutSuggestionsKeepingApps:(id)arg1;
-- (void)deleteVoiceShortcutWithIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)describeSyncStateIncludingDeleted:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)existingSyncStateOfManagedObject:(id)arg1 forSyncServiceWithIdentifier:(id)arg2;
-- (id)existingVoiceShortcutWithPhrase:(id)arg1 accessSpecifier:(id)arg2 error:(id *)arg3;
-- (void)getAppsWithVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getNumberOfVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deleteShortcutSuggestionsFromApps:(id)arg1;
+- (void)deleteStaleShortcutSuggestions;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getUnsyncedChangesForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getVoiceShortcutWithIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getVoiceShortcutWithPhrase:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getVoiceShortcutsForAppsWithBundleIdentifiers:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getVoiceShortcutsMatchingPredicate:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithEphemeralStore:(id *)arg1;
-- (id)initWithPersistenceType:(unsigned long long)arg1 databaseFileURL:(id)arg2 error:(id *)arg3;
-- (id)initWithPersistentStoreInDirectory:(id)arg1 error:(id *)arg2;
-- (BOOL)isPhraseUsable:(id)arg1 error:(id *)arg2;
+- (id)initWithPersistentStoreDescription:(id)arg1 realmDataStore:(id)arg2 error:(id *)arg3;
 - (BOOL)loadPersistentStoreWithDescription:(id)arg1 error:(id *)arg2;
-- (id)managedObjectFromAddingVoiceShortcut:(id)arg1 accessSpecifier:(id)arg2 error:(id *)arg3;
-- (id)managedObjectsMatchingPredicate:(id)arg1 error:(id *)arg2;
-- (id)managedObjectsMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 error:(id *)arg3;
-- (id)markAsDeletedVoiceShortcutWithIdentifier:(id)arg1 accessSpecifier:(id)arg2 error:(id *)arg3;
-- (void)markChangesAsSynced:(struct NSOrderedSet *)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)markManagedObject:(id)arg1 asSynced:(BOOL)arg2 withSyncServiceWithIdentifier:(id)arg3 syncMetadata:(id)arg4;
-- (BOOL)markManagedObjectAsDeleted:(id)arg1 error:(id *)arg2;
-- (void)markManagedObjectAsUnsynced:(id)arg1;
-- (void)removeSyncStateForChanges:(id)arg1 withSyncServiceWithIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)removeSyncStateForSyncServiceWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)resetPersistentStore:(id *)arg1;
 - (BOOL)saveContext:(id)arg1 orRollback:(id *)arg2;
 - (BOOL)saveContextOrRollback:(id *)arg1;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)syncStateOfManagedObject:(id)arg1 forSyncServiceWithIdentifier:(id)arg2;
-- (void)updateVoiceShortcutWithIdentifier:(id)arg1 phrase:(id)arg2 workflow:(id)arg3 accessSpecifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)validatePhrases:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

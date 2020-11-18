@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotoLibraryServices/PLAbstractLibraryServicesManagerService.h>
 
 #import <PhotoLibraryServices/PLAssetsdDiagnosticsServiceProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PLAssetsdDiagnosticsService : NSObject <PLAssetsdDiagnosticsServiceProtocol>
+@interface PLAssetsdDiagnosticsService : PLAbstractLibraryServicesManagerService <PLAssetsdDiagnosticsServiceProtocol>
 {
 }
 
@@ -18,6 +18,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+
+- (void)dumpPhotoAnalysisStatusWithReply:(CDUnknownBlockType)arg1;
+- (void)dumpStatusIncludingDaemon:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getPhotosXPCEndpointWithReply:(CDUnknownBlockType)arg1;
+- (void)incompleteRestoreProcessesWithReply:(CDUnknownBlockType)arg1;
+- (void)initializeSharedMemoryForDeferredLogs:(id)arg1;
+- (void)setPhotosXPCEndpoint:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 
 @end
 

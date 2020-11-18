@@ -6,9 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class MRAVOutputDevice, MRExternalDevice, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf;
+@class MRAVOutputDevice, MRExternalDevice, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf, _MROriginProtobuf;
 
-__attribute__((visibility("hidden")))
 @interface MRAVEndpoint : NSObject
 {
     NSMutableArray *_pendingConnectionHandlers;
@@ -32,8 +31,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isLocalEndpoint) BOOL localEndpoint;
 @property (strong, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) unsigned long long logicalOutputDeviceCount;
+@property (readonly, nonatomic) _MROriginProtobuf *origin;
 @property (readonly, nonatomic) NSArray *outputDeviceUIDs;
 @property (readonly, nonatomic) NSArray *outputDevices;
+@property (readonly, nonatomic) NSArray *personalOutputDevices;
 @property (nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer; // @synthesize proxyGroupPlayer=_proxyGroupPlayer;
 @property (readonly, nonatomic) NSString *shortDescription;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -45,23 +46,30 @@ __attribute__((visibility("hidden")))
 - (void)_callAllCompletionHandlersWithError:(id)arg1;
 - (void)_externalDeviceConnectionStateDidChangeNotification:(id)arg1;
 - (id)_init;
+- (id)_initiatorStringWithInitiator:(id)arg1 uid:(id)arg2;
+- (void)_prepareToMigrateToEndpoint:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_requestSharedAudioPresentationOutputContextModificationWithAddingDevices:(id)arg1 removingDevices:(id)arg2 settingDevices:(id)arg3 replyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)addOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)canMigrateToEndpoint:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connectToExternalDeviceWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)containsOutputDevice:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (BOOL)effectivelyEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isVolumeControlAvailable;
+- (void)migrateToEndpoint:(id)arg1 request:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)migrateToLogicalOutputDevice:(id)arg1 request:(id)arg2 initiator:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)migrateToOrAddOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)migrateToOrSetOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)migrateToOutputDevice:(id)arg1 request:(id)arg2 initiator:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)outputDeviceUIDsMatchingPredicate:(CDUnknownBlockType)arg1;
 - (void)outputDeviceVolume:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)outputDevicesMatchingPredicate:(CDUnknownBlockType)arg1;
 - (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)removeOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scheduleEndpointOutputDevicesDidChangeNotification;
 - (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)setOutputDevices:(id)arg1 withReplyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)volumeControlCapabilitiesForOutputDevice:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

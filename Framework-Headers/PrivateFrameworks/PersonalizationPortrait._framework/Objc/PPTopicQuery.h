@@ -9,12 +9,15 @@
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSSet;
+@class NSDate, NSSet, NSString;
 
 @interface PPTopicQuery : NSObject <NSCopying, NSSecureCoding>
 {
-    BOOL _overrideDecayRate;
     BOOL _scoreWithBiases;
+    BOOL _scoreWithStrictFiltering;
+    BOOL _excludeWithoutSentiment;
+    BOOL _scoreWithCalibration;
+    BOOL _orderByIdentifier;
     unsigned long long _limit;
     NSDate *_fromDate;
     NSDate *_toDate;
@@ -24,26 +27,43 @@
     unsigned long long _deviceFilter;
     double _decayRate;
     NSSet *_matchingTopicIds;
+    unsigned long long _minimumComponentCount;
+    NSSet *_matchingAlgorithms;
+    NSSet *_excludingAlgorithms;
+    NSString *_matchingTopicTrie;
 }
 
 @property (nonatomic) double decayRate; // @synthesize decayRate=_decayRate;
 @property (nonatomic) unsigned long long deviceFilter; // @synthesize deviceFilter=_deviceFilter;
+@property (nonatomic) BOOL excludeWithoutSentiment; // @synthesize excludeWithoutSentiment=_excludeWithoutSentiment;
+@property (strong, nonatomic) NSSet *excludingAlgorithms; // @synthesize excludingAlgorithms=_excludingAlgorithms;
 @property (strong, nonatomic) NSSet *excludingSourceBundleIds; // @synthesize excludingSourceBundleIds=_excludingSourceBundleIds;
 @property (strong, nonatomic) NSDate *fromDate; // @synthesize fromDate=_fromDate;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
+@property (strong, nonatomic) NSSet *matchingAlgorithms; // @synthesize matchingAlgorithms=_matchingAlgorithms;
 @property (strong, nonatomic) NSSet *matchingSourceBundleIds; // @synthesize matchingSourceBundleIds=_matchingSourceBundleIds;
 @property (strong, nonatomic) NSSet *matchingTopicIds; // @synthesize matchingTopicIds=_matchingTopicIds;
-@property (nonatomic) BOOL overrideDecayRate; // @synthesize overrideDecayRate=_overrideDecayRate;
+@property (strong, nonatomic) NSString *matchingTopicTrie; // @synthesize matchingTopicTrie=_matchingTopicTrie;
+@property (nonatomic) unsigned long long minimumComponentCount; // @synthesize minimumComponentCount=_minimumComponentCount;
+@property (nonatomic) BOOL orderByIdentifier; // @synthesize orderByIdentifier=_orderByIdentifier;
+@property (nonatomic) BOOL overrideDecayRate;
 @property (nonatomic) BOOL scoreWithBiases; // @synthesize scoreWithBiases=_scoreWithBiases;
+@property (nonatomic) BOOL scoreWithCalibration; // @synthesize scoreWithCalibration=_scoreWithCalibration;
+@property (nonatomic) BOOL scoreWithStrictFiltering; // @synthesize scoreWithStrictFiltering=_scoreWithStrictFiltering;
 @property (strong, nonatomic) NSDate *scoringDate; // @synthesize scoringDate=_scoringDate;
 @property (strong, nonatomic) NSDate *toDate; // @synthesize toDate=_toDate;
 
++ (id)_algorithmsDescription:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)customizedDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToTopicQuery:(id)arg1;
 
 @end
 

@@ -14,23 +14,25 @@ __attribute__((visibility("hidden")))
 @interface GEOPDExternalAction : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    int _componentType;
     NSMutableArray *_externalActionDetails;
+    int _componentType;
     struct {
-        unsigned int componentType:1;
-    } _has;
+        unsigned int has_componentType:1;
+    } _flags;
 }
 
-@property (nonatomic) int componentType; // @synthesize componentType=_componentType;
-@property (strong, nonatomic) NSMutableArray *externalActionDetails; // @synthesize externalActionDetails=_externalActionDetails;
+@property (nonatomic) int componentType;
+@property (strong, nonatomic) NSMutableArray *externalActionDetails;
 @property (nonatomic) BOOL hasComponentType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)externalActionDetailType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsComponentType:(id)arg1;
 - (void)addExternalActionDetail:(id)arg1;
 - (void)clearExternalActionDetails;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (id)componentTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

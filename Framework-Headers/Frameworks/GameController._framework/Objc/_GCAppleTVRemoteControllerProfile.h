@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameController/_GCMicroGamepad.h>
+#import <GameController/GCMicroGamepad.h>
 
 #import <GameController/DigitizerValueChangedDelegate-Protocol.h>
 #import <GameController/_GCACHomeButtonDelegate-Protocol.h>
 
-@class GCControllerDirectionPad, GCMotion, NSDate, NSString, _GCACHomeButton;
+@class GCControllerDirectionPad, NSDate, NSString, _GCACHomeButton;
 
-@interface _GCAppleTVRemoteControllerProfile : _GCMicroGamepad <_GCACHomeButtonDelegate, DigitizerValueChangedDelegate>
+@interface _GCAppleTVRemoteControllerProfile : GCMicroGamepad <_GCACHomeButtonDelegate, DigitizerValueChangedDelegate>
 {
     _GCACHomeButton *_acHome;
-    GCMotion *_motion;
     double _windowX;
     double _windowY;
     double _windowSize;
@@ -48,9 +47,7 @@
 - (void)initCommon:(id)arg1;
 - (id)initWithController:(id)arg1;
 - (id)initWithController:(id)arg1 dpadFlippedY:(BOOL)arg2;
-- (id)inputForElement:(struct __IOHIDElement *)arg1;
 - (id)menuButton;
-- (id)motion;
 - (id)name;
 - (BOOL)ownershipClaimingElementsZero;
 - (void)processOrientationData:(id)arg1;
@@ -58,7 +55,6 @@
 - (void)setAllowsRotation:(BOOL)arg1;
 - (void)setDpad:(id)arg1 x:(double)arg2 y:(double)arg3 timestamp:(unsigned long long)arg4 forceSkipDpadRotation:(BOOL)arg5;
 - (void)setPlayerIndex:(long long)arg1;
-- (void)set_motion:(id)arg1;
 - (void)toggleSuspendResume;
 
 @end

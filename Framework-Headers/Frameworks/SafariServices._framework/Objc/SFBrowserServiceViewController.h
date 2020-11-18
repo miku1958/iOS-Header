@@ -43,10 +43,12 @@ __attribute__((visibility("hidden")))
 - (id)_applicationPayloadForOpeningInSafari;
 - (void)_closeDatabasesOnBackgroundingOrDismissal;
 - (void)_didLoadWebView;
+- (void)_didResolveDestinationURL:(id)arg1 pendingAppLinkCheck:(BOOL)arg2;
 - (void)_dismiss;
 - (BOOL)_ensureWebsiteDataStoreURL:(id)arg1 cookieStoreURL:(id)arg2;
 - (void)_fetchActivityViewControllerInfoForURL:(id)arg1 title:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_getSafariDataSharingModeWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_hostAppBundleId;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
 - (BOOL)_notifyInitialLoadDidFinish:(BOOL)arg1;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldReloadImmediatelyAfterPageLoadError;
 - (void)_updateRemoteSwipeGestureState;
 - (id)_webDataStoreRootURL;
+- (id)_websiteDataStoreURL;
 - (void)_willAppearInRemoteViewController;
 - (void)browserViewDidReceiveTouchEvent:(id)arg1;
 - (id)bundleIdentifierForProfileInstallation;
@@ -74,8 +77,10 @@ __attribute__((visibility("hidden")))
 - (void)safariActivity:(id)arg1 didFinish:(BOOL)arg2;
 - (void)setDismissButtonStyle:(long long)arg1;
 - (void)setIsRunningTransitionAnimation:(BOOL)arg1;
+- (void)startResolveRedirectionForURL:(id)arg1;
 - (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets)arg1 horizontalInsets:(struct UIEdgeInsets)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)webViewController:(id)arg1 didChangeFullScreen:(BOOL)arg2;
 - (void)webViewController:(id)arg1 didFinishDocumentLoadForNavigation:(id)arg2;

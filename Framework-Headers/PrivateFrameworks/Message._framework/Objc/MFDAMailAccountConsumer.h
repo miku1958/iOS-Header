@@ -17,8 +17,8 @@
     BOOL _alwaysReportFailures;
 }
 
+- (void).cxx_destruct;
 - (void)actionFailed:(long long)arg1 forTask:(id)arg2 error:(id)arg3;
-- (void)dealloc;
 - (id)init;
 - (id)initWithAlwaysReportFailures:(BOOL)arg1;
 - (void)setDone:(BOOL)arg1;

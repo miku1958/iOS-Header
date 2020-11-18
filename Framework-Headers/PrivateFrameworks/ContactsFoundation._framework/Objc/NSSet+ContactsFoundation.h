@@ -8,6 +8,7 @@
 
 @interface NSSet (ContactsFoundation)
 - (BOOL)_cn_any:(CDUnknownBlockType)arg1;
+- (id)_cn_filter:(CDUnknownBlockType)arg1;
 - (id)_cn_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)_cn_indexBy:(CDUnknownBlockType)arg1;
 - (id)_cn_map:(CDUnknownBlockType)arg1;

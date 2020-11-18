@@ -8,7 +8,8 @@
 
 #import <UIKitCore/_UIRemoteViewController_ViewControllerOperatorInterface-Protocol.h>
 
-@class BKSTouchDeliveryPolicyAssertion, FBSDisplayIdentity, NSArray, NSError, NSString, UIAlertView, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
+@class BKSTouchDeliveryPolicyAssertion, FBSDisplayIdentity, NSArray, NSError, NSString, UIAlertController, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
+@protocol BSInvalidatable;
 
 @interface _UIRemoteViewController : UIViewController <_UIRemoteViewController_ViewControllerOperatorInterface>
 {
@@ -23,6 +24,8 @@
     unsigned int _serviceAccessibilityServerPort;
     unsigned long long _serviceRegisteredScrollToTopViewCount;
     int _applicationDeactivationReason;
+    BOOL _systemAppIsLocked;
+    BOOL _observesLockNotifications;
     id _viewControllerOperatorProxy;
     _UIAsyncInvocation *_viewControllerOperatorHalfDisconnectionInvocation;
     id _textEffectsOperatorProxy;
@@ -44,11 +47,14 @@
     long long _preferredStatusBarStyle;
     int _preferredStatusBarVisibility;
     long long _preferredStatusBarUpdateAnimation;
+    id<BSInvalidatable> _eventFocusDeferralToken;
     BOOL _isFocusDeferred;
     NSString *_deferredDisplayUUID;
     unsigned int _deferredContextID;
     BOOL _focusWasDeferredBeforeDeactivation;
     BOOL _focusWasDeferredBeforeResignKey;
+    CDUnknownBlockType _contextDidAttachFocusDeferralAction;
+    CDUnknownBlockType _contextDidDetachFocusDeferralAction;
     NSArray *_allowedNotifications;
     NSArray *_sizeTrackingConstraints;
     BOOL _sizeTrackingViewShouldTranslateAutoResizeMaskIntoConstraints;
@@ -56,9 +62,7 @@
     struct CGSize _serviceScreenSize;
     BOOL _alreadySentFence;
     UIView *_viewServiceTouchInterdictionView;
-    UIAlertView *_proxiedEditAlertView;
-    long long _undoButtonIndex;
-    long long _redoButtonIndex;
+    UIAlertController *_proxiedEditAlertController;
     long long _proxiedEditAlertToken;
     long long _preferredAdaptivityStyle;
     unsigned long long _preferredScreenEdgesDeferringSystemGestures;
@@ -107,6 +111,7 @@
 - (void)__showServiceForType:(long long)arg1 withContext:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (void)__trampolineButtonPressData:(id)arg1 canceled:(BOOL)arg2;
 - (void)__updateDeferralPropertiesForScreen:(id)arg1;
+- (void)__viewServiceCompleteInteractiveSheetTransitionInHost:(BOOL)arg1 immediately:(BOOL)arg2 offset:(double)arg3 duration:(double)arg4 timingCurve:(id)arg5;
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidUnregisterScrollToTopView;
@@ -115,38 +120,40 @@
 - (void)__viewServiceDidUpdatePreferredUserInterfaceStyle:(long long)arg1;
 - (void)__viewServiceDidUpdatePreferredWhitePointAdaptationStyle:(long long)arg1 animationSettings:(id)arg2;
 - (void)__viewServiceDidUpdatePrefersHomeIndicatorAutoHidden:(BOOL)arg1;
-- (void)__viewServiceDidUpdateTintColor:(id)arg1 duration:(double)arg2;
 - (void)__viewServiceInstrinsicContentSizeDidChange:(struct CGSize)arg1 fence:(id)arg2;
 - (void)__viewServicePopoverDidChangeContentSize:(struct CGSize)arg1 animated:(BOOL)arg2 fence:(id)arg3 withReplyHandler:(CDUnknownBlockType)arg4;
 - (void)__viewServicePopoverDidSetUseToolbarShine:(BOOL)arg1;
 - (void)__viewServicePreferredContentSizeDidChange:(struct CGSize)arg1 fence:(id)arg2;
+- (void)__viewServiceStartInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
+- (void)__viewServiceUpdateInteractiveSheetTransitionInHostWithProgress:(double)arg1 offset:(double)arg2;
 - (void)__willChangeToIdiom:(long long)arg1 onScreen:(id)arg2;
 - (id)_addAutoAllowedNotifications:(id)arg1;
 - (void)_appearanceInvocationsDidChange:(id)arg1;
 - (id)_appearanceSource;
-- (void)_applicationDidAddDeactivationReason:(id)arg1;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationDidFinishSuspendSnapshot:(id)arg1;
+- (void)_applicationWillAddDeactivationReason:(id)arg1;
 - (void)_applicationWillDeactivate:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_awakeWithConnectionInfo:(id)arg1;
 - (void)_cancelProxiedEditAlertViewAnimated:(BOOL)arg1;
 - (id)_cancelTouchesForCurrentEventInHostedContent;
-- (id)_clientDeferralProperties;
-- (BOOL)_customizesForPresentationInPopover;
+- (id)_clientDeferralTarget;
+- (void)_configureFocusDeferralForEnteringBackground;
+- (void)_configureFocusDeferralForEnteringForeground;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_didRotateFromInterfaceOrientation:(long long)arg1 forwardToChildControllers:(BOOL)arg2 skipSelf:(BOOL)arg3;
+- (void)_endNoPresentingViewControllerAlertController:(id)arg1;
 - (id)_fenceForSynchronizedDrawing;
 - (void)_firstResponderDidChange:(id)arg1;
-- (id)_hostDeferralProperties;
+- (id)_hostDeferralPredicate;
 - (void)_hostDidEnterBackground:(id)arg1;
 - (void)_hostWillEnterForeground:(id)arg1;
 - (BOOL)_ignoreAppSupportedOrientations;
 - (id)_initWithViewServiceBundleIdentifier:(id)arg1;
 - (void)_initializeAccessibilityPortInformation;
 - (BOOL)_isDeallocating;
-- (BOOL)_needsDocumentManagerWorkaround;
 - (BOOL)_needsUnderflowPropertyUpdate;
 - (void)_noteWindowState:(BOOL)arg1;
 - (int)_preferredStatusBarVisibility;
@@ -161,25 +168,30 @@
 - (BOOL)_serviceHasScrollToTopView;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1 andLeftMargin:(double)arg2 rightMargin:(double)arg3;
 - (void)_setDeferred:(BOOL)arg1 forDisplayUUID:(id)arg2;
+- (void)_setSecurityModeForViewsLayer;
+- (void)_setSheetConfiguration:(id)arg1;
+- (id)_sheetPresentationController;
 - (BOOL)_shouldDeferEventsForFocusOnScreen:(id)arg1;
 - (void)_snapshotAndRemoveTextEffectsRemoteView;
 - (void)_statusBarHeightDidChange:(id)arg1;
 - (void)_statusBarOrientationDidChange:(id)arg1;
+- (void)_systemApplicationDidUnlock:(id)arg1;
+- (void)_systemApplicationWillLock:(id)arg1;
 - (void)_terminateUnconditionallyThen:(CDUnknownBlockType)arg1;
 - (id)_terminateWithError:(id)arg1;
 - (void)_traitCollectionDidChange:(id)arg1;
 - (BOOL)_tryRetain;
 - (void)_uirvc_windowBecameKey:(id)arg1;
 - (void)_uirvc_windowResignedKey:(id)arg1;
+- (void)_updateLockStatusHostingVisibility;
 - (void)_updateTintColor;
 - (void)_updateTouchGrabbingView;
 - (void)_updateUnderflowProperties;
 - (void)_willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 forwardToChildControllers:(BOOL)arg3 skipSelf:(BOOL)arg4;
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
 - (void)_willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2 forwardToChildControllers:(BOOL)arg3 skipSelf:(BOOL)arg4;
-- (void)alertView:(id)arg1 clickedButtonAtIndex:(long long)arg2;
-- (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
-- (void)alertViewCancel:(id)arg1;
+- (void)_windowDidAttachContext:(id)arg1;
+- (void)_windowDidDetachContext:(id)arg1;
 - (id)allowedNotifications;
 - (id)autorelease;
 - (BOOL)canBecomeFirstResponder;
@@ -191,6 +203,7 @@
 - (BOOL)inheritsSecurity;
 - (struct CGSize)intrinsicContentSizeForServiceSize:(struct CGSize)arg1;
 - (void)loadView;
+- (BOOL)observesLockNotifications;
 - (unsigned long long)preferredScreenEdgesDeferringSystemGestures;
 - (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
@@ -206,6 +219,7 @@
 - (id)serviceViewControllerProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)setAllowedNotifications:(id)arg1;
 - (void)setInheritsSecurity:(BOOL)arg1;
+- (void)setObservesLockNotifications:(BOOL)arg1;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (BOOL)shouldPropagateAppearanceCustomizations;
 - (unsigned long long)supportedInterfaceOrientations;

@@ -8,18 +8,32 @@
 
 #import <FileProvider/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSError, NSString;
 
 @interface NSFileProviderDomain : NSObject <NSSecureCoding>
 {
+    BOOL _disconnected;
+    BOOL _hidden;
+    BOOL _containsPhotos;
+    BOOL _isEnterpriseDomain;
     NSString *_identifier;
     NSString *_displayName;
     NSString *_pathRelativeToDocumentStorage;
+    NSString *_symLinkName;
+    NSError *_error;
+    NSString *_personaIdentifier;
 }
 
+@property (nonatomic) BOOL containsPhotos; // @synthesize containsPhotos=_containsPhotos;
+@property (getter=isDisconnected) BOOL disconnected; // @synthesize disconnected=_disconnected;
 @property (readonly, copy) NSString *displayName; // @synthesize displayName=_displayName;
+@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL isEnterpriseDomain; // @synthesize isEnterpriseDomain=_isEnterpriseDomain;
 @property (readonly, copy) NSString *pathRelativeToDocumentStorage; // @synthesize pathRelativeToDocumentStorage=_pathRelativeToDocumentStorage;
+@property (strong, nonatomic) NSString *personaIdentifier; // @synthesize personaIdentifier=_personaIdentifier;
+@property (copy, nonatomic) NSString *symLinkName; // @synthesize symLinkName=_symLinkName;
 
 + (id)domainFromPlistDictionary:(id)arg1 identifier:(id)arg2;
 + (BOOL)supportsSecureCoding;
@@ -28,7 +42,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 displayName:(id)arg2 pathRelativeToDocumentStorage:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 displayName:(id)arg2 pathRelativeToDocumentStorage:(id)arg3 hidden:(BOOL)arg4;
 - (id)plistDictionary;
+- (id)sharedAccountStore;
 
 @end
 

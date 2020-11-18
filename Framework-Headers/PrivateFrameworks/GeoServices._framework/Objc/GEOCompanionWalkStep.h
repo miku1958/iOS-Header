@@ -9,18 +9,20 @@
 #import <GeoServices/GEOCompanionManeuverStep-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOCompanionWalkStep : PBCodable <GEOCompanionManeuverStep, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     struct GEOJunctionElement *_junctionElements;
     unsigned long long _junctionElementsCount;
     unsigned long long _junctionElementsSpace;
-    int _junctionType;
     NSMutableArray *_maneuverNames;
-    int _maneuverType;
     NSMutableArray *_signposts;
-    CDStruct_efbf2325 _has;
+    int _junctionType;
+    int _maneuverType;
+    CDStruct_6da46726 _flags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,21 +37,28 @@
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (nonatomic) int junctionType;
-@property (nonatomic) int junctionType; // @synthesize junctionType=_junctionType;
+@property (nonatomic) int junctionType;
 @property (strong, nonatomic) NSMutableArray *maneuverNames;
-@property (strong, nonatomic) NSMutableArray *maneuverNames; // @synthesize maneuverNames=_maneuverNames;
+@property (strong, nonatomic) NSMutableArray *maneuverNames;
 @property (nonatomic) int maneuverType;
-@property (nonatomic) int maneuverType; // @synthesize maneuverType=_maneuverType;
+@property (nonatomic) int maneuverType;
 @property (strong, nonatomic) NSMutableArray *signposts;
-@property (strong, nonatomic) NSMutableArray *signposts; // @synthesize signposts=_signposts;
+@property (strong, nonatomic) NSMutableArray *signposts;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) int transportType;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)maneuverNameType;
 + (Class)signpostType;
 - (void).cxx_destruct;
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;
+- (void)_addNoFlagsJunctionElement:(struct GEOJunctionElement)arg1;
+- (void)_addNoFlagsManeuverName:(id)arg1;
+- (void)_addNoFlagsSignpost:(id)arg1;
+- (void)_readJunctionElements;
+- (void)_readManeuverNames;
+- (void)_readSignposts;
 - (void)addJunctionElement:(struct GEOJunctionElement)arg1;
 - (void)addManeuverName:(id)arg1;
 - (void)addSignpost:(id)arg1;
@@ -67,6 +76,7 @@
 - (unsigned long long)maneuverNamesCount;
 - (id)maneuverTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setJunctionElements:(struct GEOJunctionElement *)arg1 count:(unsigned long long)arg2;
 - (id)signpostAtIndex:(unsigned long long)arg1;

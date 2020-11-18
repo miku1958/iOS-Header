@@ -8,21 +8,21 @@
 
 #import <ContactsUI/CNUIIDSHandle-Protocol.h>
 
-@class CNPropertyGroupItem, CNUIContactPropertyIDSHandle, NSString;
+@class CNContactProperty, CNUIContactPropertyIDSHandle, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNUIPropertyGroupItemIDSHandle : NSObject <CNUIIDSHandle>
 {
-    CNPropertyGroupItem *_propertyGroupItem;
+    CNContactProperty *_contactProperty;
     CNUIContactPropertyIDSHandle *_contactPropertyHandle;
 }
 
 @property (readonly, copy, nonatomic) NSString *_cnui_IDSIDRepresentation;
+@property (readonly, copy, nonatomic) CNContactProperty *contactProperty; // @synthesize contactProperty=_contactProperty;
 @property (readonly, nonatomic) CNUIContactPropertyIDSHandle *contactPropertyHandle; // @synthesize contactPropertyHandle=_contactPropertyHandle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) CNPropertyGroupItem *propertyGroupItem; // @synthesize propertyGroupItem=_propertyGroupItem;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsPropertyGroupItem:(id)arg1;

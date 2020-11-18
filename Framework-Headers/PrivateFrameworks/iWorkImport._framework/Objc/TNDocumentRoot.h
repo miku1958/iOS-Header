@@ -9,7 +9,7 @@
 #import <iWorkImport/TSTFormsSheetProvider-Protocol.h>
 #import <iWorkImport/TSTResolverContainerNameProvider-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TNDocumentViewController, TNTheme, TNUIState, TSKTreeNode, TSSStylesheet;
+@class NSArray, NSMutableArray, NSString, TNDocumentViewController, TNHyperlinkController, TNTheme, TNUIState, TSKTreeNode, TSSStylesheet;
 
 __attribute__((visibility("hidden")))
 @interface TNDocumentRoot : TSADocumentRoot <TSTResolverContainerNameProvider, TSTFormsSheetProvider>
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     TNTheme *_theme;
     TSKTreeNode *_sidebarOrder;
     TNUIState *_uiState;
+    TNHyperlinkController *_tn_hyperlinkController;
     NSMutableArray *_mutableSheets;
     TSSStylesheet *_stylesheet;
 }
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long tableCount;
 @property (readonly, nonatomic) TNTheme *theme; // @synthesize theme=_theme;
+@property (strong, nonatomic) TNHyperlinkController *tn_hyperlinkController; // @synthesize tn_hyperlinkController=_tn_hyperlinkController;
 @property (strong, nonatomic) TNUIState *uiState; // @synthesize uiState=_uiState;
 @property (readonly, nonatomic) TNDocumentViewController *viewController; // @dynamic viewController;
 
@@ -82,7 +84,7 @@ __attribute__((visibility("hidden")))
 - (void)performDeferredUpgradeImportOperationsOnNewThreadForCharts:(id)arg1;
 - (void)performDeferredUpgradeImportOperationsRequiringCalcEngine;
 - (BOOL)prepareAndValidateSidecarViewStateRootWithVersionUUIDMismatch:(id)arg1 sidecarDocumentRevision:(id)arg2 originalDocumentViewStateRoot:(id)arg3;
-- (void)prepareNewDocumentWithTemplateBundle:(id)arg1 documentLocale:(id)arg2;
+- (void)prepareNewDocumentWithTemplateIdentifier:(id)arg1 bundle:(id)arg2 documentLocale:(id)arg3;
 - (id)previewImageForSize:(struct CGSize)arg1;
 - (void)removeAllSheets;
 - (void)removeSheet:(id)arg1;

@@ -35,7 +35,7 @@
 - (void)_queue_removeAllData;
 - (void)_queue_removeDonation:(id)arg1;
 - (void)_queue_storeDonation:(id)arg1;
-- (void)_refreshAllDonations;
+- (void)_refreshAllDonations:(id)arg1;
 - (void)dealloc;
 - (void)donationActionStoreReceivedDonation:(id)arg1 isNewDonation:(BOOL)arg2;
 - (void)donationActionStoreRemoveAllDonations;

@@ -15,19 +15,15 @@ __attribute__((visibility("hidden")))
 @interface UITableViewRowData : NSObject <NSCopying>
 {
     id<UITable_RowDataSource> _tableView;
+    UITableViewHeaderFooterView *_headerFooterViewUsedForMeasurements;
+    double _tableViewWidth;
     long long _numSections;
+    BOOL _estimatesHeights;
     long long _sectionRowDataCapacity;
     id *_sectionRowData;
-    UITableViewHeaderFooterView *_headerFooterViewUsedForMeasurements;
-    double _minimumRowHeight;
-    double _rowSpacing;
-    double _tableViewWidth;
     double _tableHeaderHeight;
     double _tableFooterHeight;
     double _heightForTableHeaderViewHiding;
-    double _tableTopPadding;
-    double _tableBottomPadding;
-    double _tableSidePadding;
     struct {
         unsigned int tableHeaderHeightValid:1;
         unsigned int tableFooterHeightValid:1;
@@ -35,6 +31,11 @@ __attribute__((visibility("hidden")))
         unsigned int usesVariableMargins:1;
         unsigned int pinsTableHeaderView:1;
     } _rowDataFlags;
+    double _minimumRowHeight;
+    double _rowSpacing;
+    double _tableTopPadding;
+    double _tableBottomPadding;
+    double _tableSidePadding;
     NSIndexPath *_gapIndexPath;
     NSIndexPath *_reorderedIndexPath;
     NSIndexPath *_draggedIndexPath;
@@ -66,6 +67,7 @@ __attribute__((visibility("hidden")))
 - (void)_assertValidIndexPath:(id)arg1 allowEmptySection:(BOOL)arg2;
 - (double)_dropTargetGapHeightForIndexPath:(id)arg1;
 - (void)_ensureSectionOffsetIsValidForSection:(long long)arg1;
+- (id)_indexPathsBelowIndexPath:(id)arg1;
 - (id)_nextIndexPathOrSectionHeader:(id)arg1;
 - (id)_previousIndexPathOrSectionHeader:(id)arg1;
 - (long long)_sectionForPoint:(struct CGPoint)arg1 beginningWithSection:(long long)arg2 numberOfSections:(long long)arg3;
@@ -131,6 +133,8 @@ __attribute__((visibility("hidden")))
 - (int)sectionLocationForReorderedRow:(long long)arg1 inSection:(long long)arg2;
 - (int)sectionLocationForRow:(long long)arg1 inSection:(long long)arg2;
 - (struct _NSRange)sectionsInRect:(struct CGRect)arg1;
+- (void)setHeight:(double)arg1 forFooterInSection:(long long)arg2;
+- (void)setHeight:(double)arg1 forHeaderInSection:(long long)arg2;
 - (void)setHeight:(double)arg1 forRowAtIndexPath:(id)arg2;
 - (void)setHeightForTableHeaderViewHiding:(double)arg1;
 - (BOOL)shouldStripHeaderTopPaddingForSection:(long long)arg1;

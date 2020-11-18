@@ -6,15 +6,15 @@
 
 #import <PhotosUICore/PXPhotosDataSource.h>
 
-@class PUImportAssetsDataSource;
+@class PXImportAssetsDataSource;
 
 __attribute__((visibility("hidden")))
 @interface PUImportFakePhotosDataSource : PXPhotosDataSource
 {
-    PUImportAssetsDataSource *_importDataSource;
+    PXImportAssetsDataSource *_importDataSource;
 }
 
-@property (strong, nonatomic) PUImportAssetsDataSource *importDataSource; // @synthesize importDataSource=_importDataSource;
+@property (strong, nonatomic) PXImportAssetsDataSource *importDataSource; // @synthesize importDataSource=_importDataSource;
 
 - (void).cxx_destruct;
 - (id)initWithImportDataSource:(id)arg1;

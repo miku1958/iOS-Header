@@ -15,21 +15,34 @@
 {
     CBXpcConnection *_connection;
     CBPairingAgent *_pairingAgent;
+    BOOL _tccComplete;
     long long _state;
+    long long _authorization;
     NSData *_advertisingAddress;
+    NSString *_localAddressString;
+    NSString *_localName;
 }
 
 @property (copy, nonatomic) NSData *advertisingAddress; // @synthesize advertisingAddress=_advertisingAddress;
+@property (nonatomic) long long authorization; // @synthesize authorization=_authorization;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSString *localAddressString; // @synthesize localAddressString=_localAddressString;
+@property (readonly) NSString *localName; // @synthesize localName=_localName;
 @property (readonly, strong, nonatomic) CBPairingAgent *sharedPairingAgent; // @dynamic sharedPairingAgent;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL tccComplete; // @synthesize tccComplete=_tccComplete;
 
 - (void).cxx_destruct;
+- (void)_handleAdvertisingAddressChanged:(id)arg1;
 - (void)closeL2CAPChannelForPeerUUID:(id)arg1 withPsm:(unsigned short)arg2;
 - (void)dealloc;
+- (void)doneWithTCC;
+- (void)extractLocalDeviceStatesDictionary:(id)arg1;
+- (unsigned int)getAppSDKVersion;
+- (void)handleLocalDeviceStateUpdatedMsg:(id)arg1;
 - (void)handleMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handlePairingAgentMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)handleStateUpdatedMsg:(id)arg1;
@@ -37,6 +50,7 @@
 - (BOOL)isMsgAllowedAlways:(unsigned short)arg1;
 - (BOOL)isMsgAllowedWhenOff:(unsigned short)arg1;
 - (id)peerWithInfo:(id)arg1;
+- (void)performTCCCheck:(id)arg1;
 - (BOOL)sendDebugMsg:(unsigned short)arg1 args:(id)arg2;
 - (id)sendDebugSyncMsg:(unsigned short)arg1 args:(id)arg2;
 - (BOOL)sendMsg:(unsigned short)arg1 args:(id)arg2;

@@ -46,6 +46,7 @@
 - (void)_invalidateLayerPromise;
 - (void)_updateContentLayer;
 - (void)_updateLayerPromiseIfNeeded;
+- (struct CGRect)contentBounds;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

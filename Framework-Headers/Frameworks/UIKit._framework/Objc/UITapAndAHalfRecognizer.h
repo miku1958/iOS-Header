@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (struct CGPoint)translationInWindowCoordinates;
 
 @end
 

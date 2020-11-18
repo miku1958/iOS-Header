@@ -6,7 +6,7 @@
 
 #import <AvatarUI/NSObject-Protocol.h>
 
-@class AVTAttributeCollectionViewCell, UIView;
+@class AVTAttributeCollectionViewCell, AVTCoreModelRowDisplayCondition, UIView;
 @protocol AVTAvatarAttributeEditorControllerSubSelectionDelegate, AVTAvatarAttributeEditorSection, AVTAvatarAttributeEditorSectionItem, AVTAvatarAttributeEditorSectionItemPrefetching;
 
 @protocol AVTAvatarAttributeEditorSectionController <NSObject>
@@ -21,6 +21,7 @@
 - (void)didSelectItemAtIndex:(long long)arg1 cell:(AVTAttributeCollectionViewCell *)arg2;
 - (void)didUnhighlightItemAtIndex:(long long)arg1 cell:(AVTAttributeCollectionViewCell *)arg2 completionBlock:(void (^)(BOOL))arg3;
 - (struct UIEdgeInsets)edgeInsetsFittingSize:(struct CGSize)arg1;
+- (BOOL)evaluateDisplayCondition:(AVTCoreModelRowDisplayCondition *)arg1;
 - (unsigned long long)indexForItem:(id<AVTAvatarAttributeEditorSectionItem>)arg1;
 - (void)invalidateLayoutForNewContainerSize:(struct CGSize)arg1;
 - (long long)numberOfItems;

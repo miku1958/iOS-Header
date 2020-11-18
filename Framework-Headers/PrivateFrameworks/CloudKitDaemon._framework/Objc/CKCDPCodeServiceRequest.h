@@ -8,14 +8,16 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKCDPCodeServiceRequestAccountConfig, CKCDPCodeServiceRequestRequestContext, NSData, NSMutableArray, NSString;
+@class CKCDPCodeServiceRequestAccountConfig, CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions, CKCDPCodeServiceRequestProtectedCloudComputeMetadata, CKCDPCodeServiceRequestRequestContext, NSData, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKCDPCodeServiceRequest : PBRequest <NSCopying>
 {
     CKCDPCodeServiceRequestAccountConfig *_accountConfig;
+    CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions *_assetAuthorizeGetRequestOptions;
     NSMutableArray *_clientConfigs;
     NSString *_functionName;
+    CKCDPCodeServiceRequestProtectedCloudComputeMetadata *_protectedCloudComputeMetadata;
     CKCDPCodeServiceRequestRequestContext *_requestContext;
     int _serializationFormat;
     NSData *_serializedParameters;
@@ -26,14 +28,18 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) CKCDPCodeServiceRequestAccountConfig *accountConfig; // @synthesize accountConfig=_accountConfig;
+@property (strong, nonatomic) CKCDPCodeServiceRequestAssetAuthorizeGetRequestOptions *assetAuthorizeGetRequestOptions; // @synthesize assetAuthorizeGetRequestOptions=_assetAuthorizeGetRequestOptions;
 @property (strong, nonatomic) NSMutableArray *clientConfigs; // @synthesize clientConfigs=_clientConfigs;
 @property (strong, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property (readonly, nonatomic) BOOL hasAccountConfig;
+@property (readonly, nonatomic) BOOL hasAssetAuthorizeGetRequestOptions;
 @property (readonly, nonatomic) BOOL hasFunctionName;
+@property (readonly, nonatomic) BOOL hasProtectedCloudComputeMetadata;
 @property (readonly, nonatomic) BOOL hasRequestContext;
 @property (nonatomic) BOOL hasSerializationFormat;
 @property (readonly, nonatomic) BOOL hasSerializedParameters;
 @property (readonly, nonatomic) BOOL hasServiceName;
+@property (strong, nonatomic) CKCDPCodeServiceRequestProtectedCloudComputeMetadata *protectedCloudComputeMetadata; // @synthesize protectedCloudComputeMetadata=_protectedCloudComputeMetadata;
 @property (strong, nonatomic) CKCDPCodeServiceRequestRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property (nonatomic) int serializationFormat; // @synthesize serializationFormat=_serializationFormat;
 @property (strong, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;

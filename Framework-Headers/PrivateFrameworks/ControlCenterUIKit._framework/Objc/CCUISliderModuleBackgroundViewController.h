@@ -8,12 +8,13 @@
 
 #import <ControlCenterUIKit/CCUIContentModuleBackgroundViewController-Protocol.h>
 
-@class CCUICAPackageView, NSString, UIImageView;
+@class CCUICAPackageView, MTVisualStylingProvider, NSString, UIImageView;
 
 @interface CCUISliderModuleBackgroundViewController : UIViewController <CCUIContentModuleBackgroundViewController>
 {
     UIImageView *_headerImageView;
     CCUICAPackageView *_packageView;
+    MTVisualStylingProvider *_visualStylingProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,11 +24,13 @@
 
 - (void).cxx_destruct;
 - (struct CGPoint)_headerCenterForBounds:(struct CGRect)arg1;
+- (void)_updateHeaderGlyphVisualStyling;
 - (struct CGRect)effectiveContentFrameForContainerFrame:(struct CGRect)arg1;
 - (void)setGlyphImage:(id)arg1;
 - (void)setGlyphPackageDescription:(id)arg1;
 - (void)setGlyphState:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)viewWillLayoutSubviews;
 
 @end

@@ -15,10 +15,12 @@
 @interface _INPBHomeContent : PBCodable <_INPBHomeContent, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     NSArray *_actions;
     _INPBHomeFilter *_filter;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (readonly, nonatomic) unsigned long long actionsCount;
 @property (readonly, copy) NSString *debugDescription;
@@ -29,12 +31,15 @@
 @property (readonly) Class superclass;
 
 + (Class)actionsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)actionsAtIndex:(unsigned long long)arg1;
 - (void)addActions:(id)arg1;
 - (void)clearActions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

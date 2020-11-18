@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_resetGestureRecognizer;
 - (void)clearTimer;
+- (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)secondDelayElapsed:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)startTimer;

@@ -4,25 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MessageUI/MFAtomTextView.h>
+#import <UIKit/UISearchTextField.h>
 
-@class NSString, SearchUIResultViewController;
+@class SearchUIResultsViewController;
 
-@interface SearchUISearchField : MFAtomTextView
+@interface SearchUISearchField : UISearchTextField
 {
-    SearchUIResultViewController *_resultViewController;
+    SearchUIResultsViewController *_resultsViewController;
 }
 
-@property (weak) SearchUIResultViewController *resultViewController; // @synthesize resultViewController=_resultViewController;
-@property (readonly) NSString *searchText;
+@property (weak) SearchUIResultsViewController *resultsViewController; // @synthesize resultsViewController=_resultsViewController;
 
 - (void).cxx_destruct;
-- (struct _NSRange)_markedTextNSRange;
-- (struct CGSize)intrinsicContentSize;
 - (id)nextResponder;
-- (void)setText:(id)arg1;
-- (id)text;
-- (id)textFromMarkedTextRange:(struct _NSRange)arg1 markedTextReplacement:(id)arg2;
 
 @end
 

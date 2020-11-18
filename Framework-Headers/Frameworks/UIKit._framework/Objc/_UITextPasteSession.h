@@ -6,39 +6,42 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UITextPasteSession-Protocol.h>
+#import <UIKitCore/UITextDropPasteSession-Protocol.h>
 
-@class NSAttributedString, NSString, UITextPasteController, UITextPasteCoordinator, UITextRange;
+@class NSArray, NSAttributedString, NSString, UITextPasteController, UITextPasteCoordinator, UITextRange;
 @protocol UITextPasteSessionDelegate, _UITextPasteProgressSupport;
 
 __attribute__((visibility("hidden")))
-@interface _UITextPasteSession : NSObject <UITextPasteSession>
+@interface _UITextPasteSession : NSObject <UITextDropPasteSession>
 {
-    BOOL _pastingBlocked;
+    BOOL _animating;
     id<UITextPasteSessionDelegate> _delegate;
     UITextPasteController *_controller;
     UITextPasteCoordinator *_coordinator;
     UITextRange *_range;
     id<_UITextPasteProgressSupport> _progressSupport;
     NSAttributedString *_pasteResult;
+    NSArray *_originalItems;
+    UITextRange *_hiddenRange;
 }
 
+@property (readonly, nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 @property (weak, nonatomic) UITextPasteController *controller; // @synthesize controller=_controller;
 @property (strong, nonatomic) UITextPasteCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UITextPasteSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UITextRange *hiddenRange; // @synthesize hiddenRange=_hiddenRange;
+@property (copy, nonatomic) NSArray *originalItems; // @synthesize originalItems=_originalItems;
 @property (strong, nonatomic) NSAttributedString *pasteResult; // @synthesize pasteResult=_pasteResult;
-@property (nonatomic, getter=isPastingBlocked) BOOL pastingBlocked; // @synthesize pastingBlocked=_pastingBlocked;
 @property (strong, nonatomic) id<_UITextPasteProgressSupport> progressSupport; // @synthesize progressSupport=_progressSupport;
 @property (strong, nonatomic) UITextRange *range; // @synthesize range=_range;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)finishPastingIfUnblocked;
-- (void)finishPastingIfUnblockedWithAnimator:(id)arg1;
-- (void)pasteWithAnimator:(id)arg1;
+- (void)animationCompleted;
+- (void)animationStarted;
 - (id)positionedPasteResult;
 
 @end

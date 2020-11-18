@@ -8,13 +8,12 @@
 
 #import <MapKit/MKETAProviderObserver-Protocol.h>
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
-#import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 #import <MapKit/_MKStackViewDelegate-Protocol.h>
 
-@class MKPlaceSectionRowView, NSArray, NSLayoutConstraint, NSString, NSURL, UIImageView, UILayoutGuide, UIView, _MKDataHeaderModel, _MKLocalizedHoursBuilder, _MKTokenAttributedString, _MKUILabel;
+@class MKMaskContentView, MKPlaceSectionRowView, NSArray, NSLayoutConstraint, NSString, NSURL, UIImageView, UILayoutGuide, UIView, _MKDataHeaderModel, _MKLocalizedHoursBuilder, _MKTokenAttributedString, _MKUILabel;
 @protocol GEOTransitLineItem, MKPlaceCardHeaderViewControllerDelegate, _MKPlaceItem;
 
-@interface MKPlaceCardHeaderViewController : MKPlaceSectionViewController <_MKStackViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol, MKETAProviderObserver>
+@interface MKPlaceCardHeaderViewController : MKPlaceSectionViewController <_MKStackViewDelegate, MKModuleViewControllerProtocol, MKETAProviderObserver>
 {
     unsigned long long _layout;
     MKPlaceSectionRowView *_titleSectionView;
@@ -24,6 +23,7 @@
     _MKUILabel *_firstLabel;
     _MKUILabel *_secondLabel;
     _MKUILabel *_secondaryNameLabel;
+    MKMaskContentView *_contentMaskView;
     _MKUILabel *_thirdLabel;
     UIView *_thirdDisplayedLabel;
     NSArray *_constraints;
@@ -37,7 +37,6 @@
     _MKTokenAttributedString *_priceToken;
     _MKTokenAttributedString *_categoryToken;
     _MKTokenAttributedString *_openStateToken;
-    _MKTokenAttributedString *_hoursToken;
     _MKTokenAttributedString *_userLocationToken;
     _MKTokenAttributedString *_venueToken;
     _MKTokenAttributedString *_verifiedToken;
@@ -68,14 +67,15 @@
 + (double)minimalModeHeight;
 - (void).cxx_destruct;
 - (void)ETAProviderUpdated:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_commonInit;
 - (void)_contentSizeDidChange;
+- (void)_contentSizeDidChangeNotificationHandler;
 - (void)_createViews;
 - (id)_currentTitle;
 - (BOOL)_hasSecondaryName;
 - (BOOL)_isLikelyToShowDistance;
 - (void)_loadLogo;
-- (id)_localizedHours;
 - (BOOL)_mapItemShouldDisplayDistance:(id)arg1;
 - (id)_openStateString;
 - (id)_reviewLabelText;
@@ -84,7 +84,7 @@
 - (id)_verifiedText;
 - (void)animateSecondLabelWithPercentage:(double)arg1;
 - (void)hideTitle:(BOOL)arg1;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithLineItem:(id)arg1 layout:(unsigned long long)arg2;
 - (id)initWithPlaceItem:(id)arg1 layout:(unsigned long long)arg2;
 - (id)newLabel;
@@ -94,6 +94,7 @@
 - (id)titleFont;
 - (void)updateContent;
 - (void)updateHeaderTitle;
+- (void)updateMaskAlpha:(double)arg1 onHeight:(double)arg2 withOffset:(double)arg3;
 - (void)updateViews;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

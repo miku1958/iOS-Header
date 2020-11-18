@@ -13,7 +13,7 @@
 }
 
 @property (strong, nonatomic) PLCloudFeedCommentsEntry *cloudFeedCommentEntry; // @dynamic cloudFeedCommentEntry;
-@property (readonly, nonatomic) PLCloudFeedCommentsEntry *cloudFeedEntry;
+@property (readonly, weak, nonatomic) PLCloudFeedCommentsEntry *cloudFeedEntry;
 @property (strong, nonatomic) PLCloudFeedCommentsEntry *cloudFeedLikeCommentEntry; // @dynamic cloudFeedLikeCommentEntry;
 @property (strong, nonatomic) NSString *cloudGUID; // @dynamic cloudGUID;
 @property (strong, nonatomic) NSDate *commentClientDate; // @dynamic commentClientDate;
@@ -21,11 +21,11 @@
 @property (strong, nonatomic) NSString *commentText; // @dynamic commentText;
 @property (strong, nonatomic) NSString *commentType; // @dynamic commentType;
 @property (strong, nonatomic) PLManagedAsset *commentedAsset; // @dynamic commentedAsset;
-@property (readonly, nonatomic) NSString *commenterEmail;
-@property (readonly, nonatomic) NSString *commenterFirstName;
-@property (readonly, nonatomic) NSString *commenterFullName;
+@property (readonly, weak, nonatomic) NSString *commenterEmail;
+@property (readonly, weak, nonatomic) NSString *commenterFirstName;
+@property (readonly, weak, nonatomic) NSString *commenterFullName;
 @property (strong, nonatomic) NSString *commenterHashedPersonID; // @dynamic commenterHashedPersonID;
-@property (readonly, nonatomic) NSString *commenterLastName;
+@property (readonly, weak, nonatomic) NSString *commenterLastName;
 @property (strong, nonatomic) NSNumber *isBatchComment; // @dynamic isBatchComment;
 @property (strong, nonatomic) NSNumber *isCaption; // @dynamic isCaption;
 @property (strong, nonatomic) NSNumber *isDeletable; // @dynamic isDeletable;
@@ -36,7 +36,6 @@
 
 + (id)cloudSharedCommentWithGUID:(id)arg1 inLibrary:(id)arg2;
 + (id)cloudSharedCommentWithGUIDs:(id)arg1 inLibrary:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertNewCommentIntoAsset:(id)arg1 commentDate:(id)arg2 withText:(id)arg3 isLike:(BOOL)arg4 isMyComment:(BOOL)arg5 inLibrary:(id)arg6;
 - (BOOL)_isInterestingToUser;
@@ -44,7 +43,6 @@
 - (void)awakeFromInsert;
 - (BOOL)canBeDeletedByUser;
 - (id)commenterDisplayName;
-- (void)dealloc;
 - (id)init;
 - (BOOL)isInterestingForAlbumsSorting;
 - (void)prepareForDeletion;

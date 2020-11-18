@@ -45,12 +45,18 @@ __attribute__((visibility("hidden")))
     NSArray *_supportedNumRedundantPayload;
     BOOL _sendActiveVoiceOnly;
     BOOL _currentDTXEnable;
+    unsigned char _mediaControlInfoVersion;
+    BOOL _alwaysOnAudioRedundancyEnabled;
+    BOOL _cellularAllowRedLowBitratesEnabled;
+    BOOL _wifiAllowRedLowBitratesEnabled;
 }
 
 @property (nonatomic) struct tagHANDLE *afrcHandle; // @synthesize afrcHandle=_afrcHandle;
 @property (nonatomic) BOOL allowAudioSwitching; // @synthesize allowAudioSwitching=_allowAudioSwitching;
+@property (nonatomic) BOOL alwaysOnAudioRedundancyEnabled; // @synthesize alwaysOnAudioRedundancyEnabled=_alwaysOnAudioRedundancyEnabled;
 @property (strong, nonatomic) NSMutableArray *audioPayloads; // @synthesize audioPayloads=_audioPayloads;
 @property (nonatomic) int bundlingScheme; // @synthesize bundlingScheme=_bundlingScheme;
+@property (nonatomic) BOOL cellularAllowRedLowBitratesEnabled; // @synthesize cellularAllowRedLowBitratesEnabled=_cellularAllowRedLowBitratesEnabled;
 @property (strong, nonatomic) VCAudioPayload *chosenAudioPayload; // @synthesize chosenAudioPayload=_chosenAudioPayload;
 @property (strong, nonatomic) VCAudioPayload *chosenDTXPayload; // @synthesize chosenDTXPayload=_chosenDTXPayload;
 @property (nonatomic) int chosenRedPayloadType; // @synthesize chosenRedPayloadType=_chosenRedPayloadType;
@@ -61,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct AudioStreamBasicDescription inputFormat; // @synthesize inputFormat=_inputFormat;
 @property (nonatomic) BOOL isUseCaseWatchContinuity; // @synthesize isUseCaseWatchContinuity=_isUseCaseWatchContinuity;
 @property (nonatomic) unsigned int maxIDSStreamIdCount; // @synthesize maxIDSStreamIdCount=_maxIDSStreamIdCount;
+@property (nonatomic) unsigned char mediaControlInfoVersion; // @synthesize mediaControlInfoVersion=_mediaControlInfoVersion;
 @property (nonatomic) struct tagHANDLE *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property (nonatomic) BOOL needsPacketThread; // @synthesize needsPacketThread=_needsPacketThread;
 @property (nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
@@ -81,6 +88,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL transmitROC; // @synthesize transmitROC=_transmitROC;
 @property (strong, nonatomic) VCTransportSession *transportSession; // @synthesize transportSession=_transportSession;
 @property (nonatomic) BOOL useRateControl; // @synthesize useRateControl=_useRateControl;
+@property (nonatomic) BOOL wifiAllowRedLowBitratesEnabled; // @synthesize wifiAllowRedLowBitratesEnabled=_wifiAllowRedLowBitratesEnabled;
 
 - (void)dealloc;
 - (id)description;

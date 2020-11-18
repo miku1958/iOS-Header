@@ -24,7 +24,6 @@
 - (void)dealloc;
 - (id)description;
 - (id)extendedLogData;
-- (void)finalize;
 - (id)init;
 - (id)initWithLogArray:(id)arg1;
 

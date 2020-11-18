@@ -12,9 +12,9 @@
 {
 }
 
-@property (strong) TLKStackView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKStackView *contentView; // @dynamic contentView;
 
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (id)setupContentView;
 
 @end

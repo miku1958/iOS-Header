@@ -6,10 +6,11 @@
 
 #import <VisualVoicemail/VMAccountManagerXPCClient-Protocol.h>
 #import <VisualVoicemail/VMGreetingManagerXPCClient-Protocol.h>
+#import <VisualVoicemail/VMMessageManagerXPCClient-Protocol.h>
 
 @class NSOrderedSet, VMVoicemailCapabilities;
 
-@protocol VMClientXPCProtocol <VMAccountManagerXPCClient, VMGreetingManagerXPCClient>
+@protocol VMClientXPCProtocol <VMAccountManagerXPCClient, VMGreetingManagerXPCClient, VMMessageManagerXPCClient>
 - (void)setCapabilities:(VMVoicemailCapabilities *)arg1;
 - (void)setOnline:(BOOL)arg1;
 - (void)setStorageUsage:(unsigned long long)arg1;

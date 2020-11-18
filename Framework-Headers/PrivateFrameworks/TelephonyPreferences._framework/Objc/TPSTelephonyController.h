@@ -4,45 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <TelephonyPreferences/TPSController.h>
 
 #import <TelephonyPreferences/CoreTelephonyClientDelegate-Protocol.h>
 
-@class CoreTelephonyClient, NSDictionary, NSMapTable, NSOrderedSet, NSString;
+@class CTXPCServiceSubscriptionInfo, CoreTelephonyClient, NSDictionary, NSObject, NSOrderedSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface TPSTelephonyController : NSObject <CoreTelephonyClientDelegate>
+@interface TPSTelephonyController : TPSController <CoreTelephonyClientDelegate>
 {
     struct os_unfair_lock_s _accessorLock;
-    struct os_unfair_lock_s _delegateLock;
+    NSOrderedSet *_activeSubscriptions;
+    CTXPCServiceSubscriptionInfo *_subscriptionInfo;
     NSOrderedSet *_subscriptions;
     NSDictionary *_systemCapabilities;
     CoreTelephonyClient *_telephonyClient;
-    NSMapTable *_delegateToQueue;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
 }
 
 @property (nonatomic) struct os_unfair_lock_s accessorLock; // @synthesize accessorLock=_accessorLock;
+@property (copy, nonatomic) NSOrderedSet *activeSubscriptions; // @synthesize activeSubscriptions=_activeSubscriptions;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) struct os_unfair_lock_s delegateLock; // @synthesize delegateLock=_delegateLock;
-@property (readonly, nonatomic) NSMapTable *delegateToQueue; // @synthesize delegateToQueue=_delegateToQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
+@property (strong, nonatomic) CTXPCServiceSubscriptionInfo *subscriptionInfo; // @synthesize subscriptionInfo=_subscriptionInfo;
 @property (copy, nonatomic) NSOrderedSet *subscriptions; // @synthesize subscriptions=_subscriptions;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *systemCapabilities; // @synthesize systemCapabilities=_systemCapabilities;
 @property (readonly, nonatomic) CoreTelephonyClient *telephonyClient; // @synthesize telephonyClient=_telephonyClient;
 
 - (void).cxx_destruct;
-- (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)context:(id)arg1 capabilitiesChanged:(id)arg2;
-- (id)fetchSubscriptions;
+- (id)fetchSubscriptionInfo;
 - (id)fetchSystemCapabilitiesForSubscriptions:(id)arg1;
 - (id)init;
 - (void)performAtomicAccessorBlock:(CDUnknownBlockType)arg1;
-- (void)performAtomicDelegateBlock:(CDUnknownBlockType)arg1;
-- (void)removeDelegate:(id)arg1;
 - (void)subscriptionInfoDidChange;
 - (BOOL)supportsCellularNetworkSelectionForSubscriptionContext:(id)arg1;
 - (BOOL)supportsSystemCapabilityCallForwardingForSubscriptionContext:(id)arg1;

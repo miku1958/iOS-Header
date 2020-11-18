@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)animation;
++ (id)glExport;
 + (id)interactiveCanvas;
 + (id)sharegroupPool;
 - (BOOL)canBeCreatedFromOtherThread;
+- (BOOL)forceGL;
 - (BOOL)hasInterestForDiscreteGraphics;
 - (BOOL)isOneShot;
 - (BOOL)mustRunOnMainThread;

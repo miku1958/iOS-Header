@@ -11,7 +11,7 @@
 
 @protocol GEORoutePreloadSession <NSObject>
 
-@property (weak) id<GEORoutePreloadSessionDelegate> delegate;
+@property (weak, nonatomic) id<GEORoutePreloadSessionDelegate> delegate;
 @property (nonatomic) unsigned long long networkQuality;
 @property (readonly, nonatomic) NSObject<OS_os_log> *preloaderLog;
 @property (readonly, nonatomic) GEOComposedRoute *route;

@@ -112,6 +112,7 @@
 - (BOOL)_resetCompleteSyncStateIncludingIDMappingWithCause:(id)arg1 scope:(id)arg2 error:(id *)arg3;
 - (BOOL)_resetCompleteSyncStateWithCause:(id)arg1 scope:(id)arg2 error:(id *)arg3;
 - (id)_resetEventsDescriptions;
+- (id)_resetEventsJSON;
 - (BOOL)_resetGlobalStateWithError:(id *)arg1;
 - (BOOL)_resetLocalSyncStateWithCause:(id)arg1 scope:(id)arg2 date:(id)arg3 error:(id *)arg4;
 - (BOOL)_resetSyncAnchorWithCause:(id)arg1 scope:(id)arg2 error:(id *)arg3;
@@ -134,10 +135,12 @@
 - (id)componentName;
 - (id)createNewLibraryVersion;
 - (void)dealloc;
+- (id)derivativesFilter;
 - (void)dropUnacknowledgedBatch;
 - (BOOL)forceApplyPendingChangeSessionUpdateWithError:(id *)arg1;
 - (void)getStatusDictionaryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)hasPendingChangeSessionUpdate;
 - (id)initWithEngineLibrary:(id)arg1;
 - (BOOL)isClientInSyncWithClientCache;
 - (BOOL)isFeatureDisabled:(id)arg1;
@@ -145,6 +148,7 @@
 - (id)lastQuarantineCountReportDate;
 - (unsigned long long)libraryOptions;
 - (id)libraryVersion;
+- (id)localResourceForCloudResource:(id)arg1 recordClass:(Class *)arg2;
 - (void)noteInvalidRecordScopedIdentifiersInPushSession:(id)arg1;
 - (void)noteOtherResetEvent:(id)arg1 cause:(id)arg2;
 - (void)noteResetSyncFinished;
@@ -163,6 +167,7 @@
 - (BOOL)setShouldUpdateDisabledFeaturesWithError:(id *)arg1;
 - (BOOL)storeChangeSessionUpdate:(id)arg1 error:(id *)arg2;
 - (BOOL)storeClientIsInSyncWithClientCacheWithError:(id *)arg1;
+- (BOOL)storeDerivativesFilter:(id)arg1 error:(id *)arg2;
 - (BOOL)storeLastQuarantineCountReportDate:(id)arg1 error:(id *)arg2;
 - (BOOL)storeLibraryVersion:(id)arg1 withError:(id *)arg2;
 - (BOOL)storeUserIdentifier:(id)arg1 error:(id *)arg2;
@@ -170,6 +175,7 @@
 - (BOOL)updateDisabledFeatures:(id)arg1 didReset:(BOOL *)arg2 error:(id *)arg3;
 - (BOOL)updateLibraryOptions:(unsigned long long)arg1 error:(id *)arg2;
 - (id)userIdentifier;
+- (void)wipeStoreAtNextOpeningWithReason:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)writeTransactionDidFail;
 - (void)writeTransactionDidSucceed;
 

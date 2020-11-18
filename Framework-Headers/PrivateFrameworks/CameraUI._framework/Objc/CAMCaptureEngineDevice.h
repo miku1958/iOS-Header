@@ -6,40 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class AVCaptureDevice, AVCaptureDeviceFormat, AVCaptureDeviceInput, CAMCaptureEngine, CAMMemoizationCache, NSString;
+@class AVCaptureDevice, AVCaptureDeviceFormat, AVCaptureDeviceInput, CAMCaptureEngine, CAMMemoizationCache;
 
 @interface CAMCaptureEngineDevice : NSObject
 {
     AVCaptureDeviceInput *_captureDeviceInput;
-    AVCaptureDeviceFormat *_stillImageDeviceFormat;
     AVCaptureDevice *_captureDevice;
     CAMCaptureEngine *__captureEngine;
     CAMMemoizationCache *__videoDeviceFormatForVideoConfiguration;
     CAMMemoizationCache *__videoSessionPresetForVideoConfiguration;
-    AVCaptureDeviceFormat *__panoramaDeviceFormat;
+    AVCaptureDeviceFormat *__cachedPanoramaDeviceFormat;
+    AVCaptureDeviceFormat *__cachedPortraitDeviceFormat;
 }
 
+@property (readonly, nonatomic) AVCaptureDeviceFormat *_cachedPanoramaDeviceFormat; // @synthesize _cachedPanoramaDeviceFormat=__cachedPanoramaDeviceFormat;
+@property (readonly, nonatomic) AVCaptureDeviceFormat *_cachedPortraitDeviceFormat; // @synthesize _cachedPortraitDeviceFormat=__cachedPortraitDeviceFormat;
 @property (readonly, weak, nonatomic) CAMCaptureEngine *_captureEngine; // @synthesize _captureEngine=__captureEngine;
-@property (readonly, nonatomic) AVCaptureDeviceFormat *_panoramaDeviceFormat; // @synthesize _panoramaDeviceFormat=__panoramaDeviceFormat;
 @property (readonly, nonatomic) CAMMemoizationCache *_videoDeviceFormatForVideoConfiguration; // @synthesize _videoDeviceFormatForVideoConfiguration=__videoDeviceFormatForVideoConfiguration;
 @property (readonly, nonatomic) CAMMemoizationCache *_videoSessionPresetForVideoConfiguration; // @synthesize _videoSessionPresetForVideoConfiguration=__videoSessionPresetForVideoConfiguration;
 @property (readonly, nonatomic) AVCaptureDevice *captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (readonly, nonatomic) AVCaptureDeviceInput *captureDeviceInput; // @synthesize captureDeviceInput=_captureDeviceInput;
-@property (readonly, nonatomic) AVCaptureDeviceFormat *portraitModeDeviceFormat;
-@property (readonly, nonatomic) NSString *portraitModeSessionPreset;
-@property (readonly, nonatomic) AVCaptureDeviceFormat *stillImageDeviceFormat; // @synthesize stillImageDeviceFormat=_stillImageDeviceFormat;
-@property (readonly, nonatomic) NSString *stillImageSessionPreset;
-@property (readonly, nonatomic) AVCaptureDeviceFormat *timelapseDeviceFormat;
-@property (readonly, nonatomic) NSString *timelapseSessionPreset;
 
 - (void).cxx_destruct;
+- (id)_highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)_highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
 - (id)_keyForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
-- (id)init;
+- (id)_panoramaDeviceFormatForConfiguration:(id)arg1;
+- (id)_portraitModeDeviceFormat;
+- (id)_portraitModeSessionPreset;
+- (id)_timelapseSessionPreset;
 - (id)initWithEngine:(id)arg1 captureDevice:(id)arg2;
-- (id)panoramaDeviceFormatForConfiguration:(id)arg1;
-- (id)panoramaSessionPresetForConfiguration:(id)arg1;
 - (id)videoDeviceFormatForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
 - (id)videoDevicePresetForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
 

@@ -6,32 +6,39 @@
 
 #import <IconServices/ISIcon.h>
 
-@class LSResourceProxy;
+@class LSResourceProxy, NSArray;
 
 __attribute__((visibility("hidden")))
 @interface ISIconIOS : ISIcon
 {
+    NSArray *_decorations;
     LSResourceProxy *_resourceProxy;
 }
 
+@property (copy, nonatomic) NSArray *decorations; // @synthesize decorations=_decorations;
 @property (strong) LSResourceProxy *resourceProxy; // @synthesize resourceProxy=_resourceProxy;
 
 + (id)backgroundQueue;
 - (void).cxx_destruct;
 - (struct CGImage *)CGImageForImageDescriptor:(id)arg1;
 - (double)_aspectRatio;
+- (id)_imageForSymbolImageDescriptor:(id)arg1;
+- (id)_initTransparent;
 - (id)_prepareImageForImageDescriptor:(id)arg1;
-- (BOOL)_shouldInvalidate;
+- (void)_prepareImageForSymbolImageDescriptor:(id)arg1;
 - (void)getCGImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getImageForImageDescriptor:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)hash;
+- (id)imageForDescriptor:(id)arg1;
 - (id)imageForImageDescriptor:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithResourceProxy:(id)arg1;
+- (id)initWithResourceProxy:(id)arg1 decorations:(id)arg2;
 - (id)initWithType:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToIcon:(id)arg1;
+- (void)prepareImagesForDescriptors:(id)arg1;
 - (void)prepareImagesForImageDescriptors:(id)arg1;
 - (int)variantForSize:(struct CGSize)arg1 scale:(double)arg2 options:(unsigned long long)arg3;
 

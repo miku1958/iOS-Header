@@ -15,6 +15,7 @@
 {
     BOOL _cleanUp_running;
     BOOL _testBehavior_disableAutomaticCleanup;
+    NSObject<OS_dispatch_queue> *_underlyingDelegateQueue;
     NSObject<OS_dispatch_queue> *_sessionCreation_queue;
     NSObject<OS_dispatch_queue> *_cleanUp_queue;
     C2RoutingTable *_routingTable;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) C2SessionTLSCache *sessionTLSCache; // @synthesize sessionTLSCache=_sessionTLSCache;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL testBehavior_disableAutomaticCleanup; // @synthesize testBehavior_disableAutomaticCleanup=_testBehavior_disableAutomaticCleanup;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *underlyingDelegateQueue; // @synthesize underlyingDelegateQueue=_underlyingDelegateQueue;
 @property (strong, nonatomic) NSMapTable *useCountByObject; // @synthesize useCountByObject=_useCountByObject;
 
 - (void).cxx_destruct;

@@ -7,23 +7,14 @@
 #import <NotesShared/ICAttachmentWebModel.h>
 
 @interface ICAttachmentWebModel (PreviewGeneration)
-+ (id)sharedWKProcessPool;
-- (void)didCancelPreviewGeneratorOperation;
-- (void)downloadWebIcons:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchMetadataFromURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (struct UIImage *)genericBrickThumbnailWithSize:(struct CGSize)arg1 scale:(double)arg2;
 - (BOOL)generateAsynchronousPreviews;
-- (void)generatePreviewsInOperation:(id)arg1;
+- (BOOL)generatePreviewsInOperation:(id)arg1;
+- (CDUnknownBlockType)genericBrickLargeThumbnailCreator;
+- (CDUnknownBlockType)genericBrickThumbnailCreator;
+- (CDUnknownBlockType)genericListThumbnailCreator;
 - (BOOL)needToGeneratePreviews;
-- (void)parseWebQueryResults:(id)arg1 title:(id *)arg2 description:(id *)arg3 webIcons:(id *)arg4;
-- (id)rootURLFromURL:(id)arg1;
-- (void)saveWebIcons:(id)arg1;
-- (void)setWebView:(id)arg1;
-- (id)standardWebIconsForURL:(id)arg1;
-- (void)updateFromWebQueryResults:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updatePreviewsWithWebIcons:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)saveLPImage:(id)arg1;
 - (void)updateTitle:(id)arg1 andDescription:(id)arg2;
-- (void)userContentController:(id)arg1 didReceiveScriptMessage:(id)arg2;
-- (id)webView;
-- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 @end
 

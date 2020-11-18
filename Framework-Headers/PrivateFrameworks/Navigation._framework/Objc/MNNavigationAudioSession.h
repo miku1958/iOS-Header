@@ -38,11 +38,12 @@ __attribute__((visibility("hidden")))
 + (id)sessionOfType:(unsigned long long)arg1 language:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_beepIfNecessaryWithShortPromptType:(unsigned long long)arg1 textToSpeak:(id)arg2;
-- (BOOL)_headphonesAreInUse;
+- (BOOL)_deviceSettingsAllowSpeech;
 - (BOOL)_isVoiceGuidanceEnabled;
 - (void)beginSession;
 - (void)clearAllAnnouncements;
 - (void)endSession;
+- (BOOL)isSpeaking;
 - (void)prepareToAnnounce;
 - (void)speak:(id)arg1 shortPromptType:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)speak:(id)arg1 shortPromptType:(unsigned long long)arg2 ignorePromptStyle:(BOOL)arg3 minimumRequiredLevel:(unsigned long long)arg4 completionBlock:(CDUnknownBlockType)arg5;

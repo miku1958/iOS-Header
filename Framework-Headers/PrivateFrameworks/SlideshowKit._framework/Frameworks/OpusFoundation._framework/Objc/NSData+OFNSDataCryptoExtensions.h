@@ -11,9 +11,13 @@
 + (id)AES128GenerateVerifierWithPassword:(id)arg1;
 - (id)AES128DecryptWithPassword:(id)arg1;
 - (id)AES128EncryptWithPassword:(id)arg1;
+- (id)dictionaryFromNode:(struct _xmlNode *)arg1 parentResult:(id)arg2 isParentContent:(BOOL)arg3;
 - (id)hexaStringRepresentation;
 - (id)hmacSha1Hash:(id)arg1;
 - (id)md5Hash;
+- (id)searchDataByXPathQuery:(struct _xmlDoc *)arg1 query:(id)arg2;
+- (id)searchHTMLContentByXPathQuery:(id)arg1;
 - (id)sha1Hash;
+- (id)stringWithEncoding:(unsigned long long)arg1;
 @end
 

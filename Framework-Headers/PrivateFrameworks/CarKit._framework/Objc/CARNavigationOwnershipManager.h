@@ -25,6 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSString *lastNavigatingBundleIdentifier;
 @property (readonly, nonatomic) unsigned long long owner;
 @property (nonatomic) BOOL ownershipRequested; // @synthesize ownershipRequested=_ownershipRequested;
 @property (readonly) Class superclass;

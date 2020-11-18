@@ -39,7 +39,6 @@
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
-- (id)initWithContentsOfMappedFile:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)initWithData:(id)arg1;

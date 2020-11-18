@@ -37,7 +37,7 @@
 @property (readonly, nonatomic, getter=isEndEvent) BOOL endEvent; // @synthesize endEvent=_endEvent;
 @property (weak, nonatomic) HMDEventTrigger *eventTrigger; // @synthesize eventTrigger=_eventTrigger;
 @property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSString *logString; // @synthesize logString=_logString;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;

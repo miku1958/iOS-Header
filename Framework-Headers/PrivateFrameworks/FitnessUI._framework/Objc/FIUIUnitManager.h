@@ -24,7 +24,6 @@
 - (void)_storePreferredUnitsInDefaults:(id)arg1;
 - (void)_updatePreferredUnits;
 - (void)_userPreferencesDidChange:(id)arg1;
-- (void)dealloc;
 - (double)distanceInDistanceUnit:(unsigned long long)arg1 forDistanceInMeters:(double)arg2;
 - (double)distanceInMetersForDistanceInUserUnit:(double)arg1 distanceType:(unsigned long long)arg2;
 - (double)distanceInUserDistanceUnitForDistanceInMeters:(double)arg1 distanceType:(unsigned long long)arg2;

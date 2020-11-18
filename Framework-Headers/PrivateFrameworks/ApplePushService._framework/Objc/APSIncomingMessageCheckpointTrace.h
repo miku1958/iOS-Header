@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) CUTCheckpointRange *sendToClient; // @synthesize sendToClient=_sendToClient;
 @property (readonly, nonatomic) CUTCheckpointRange *storeInMessageStore; // @synthesize storeInMessageStore=_storeInMessageStore;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 name:(id)arg3 uniqueIdentifier:(id)arg4;
 

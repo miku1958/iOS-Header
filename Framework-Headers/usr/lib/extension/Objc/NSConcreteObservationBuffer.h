@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     BOOL _automaticallyEmitsObjects;
 }
 
-+ (void)initialize;
 - (void)_alreadyOnQueueEmitAllObjects;
 - (void)_alreadyOnQueueEmitObject;
 - (void)_mergeChanges;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CAMStillImageCaptureResult, NSDate, NSDictionary, NSError, NSString, NSURL;
+@class CAMStillImageCaptureResult, NSData, NSDate, NSDictionary, NSError, NSString, NSURL;
 
 @interface CAMStillImageLocalPersistenceResult : NSObject
 {
@@ -21,9 +21,12 @@
     NSString *_uniformTypeIdentifier;
     long long _imageOrientation;
     NSDictionary *_metadata;
+    NSData *_adjustmentsData;
+    NSURL *_localPrivateMetadataFileURL;
     NSError *_error;
 }
 
+@property (readonly, nonatomic) NSData *adjustmentsData; // @synthesize adjustmentsData=_adjustmentsData;
 @property (readonly, nonatomic) CAMStillImageCaptureResult *captureResult; // @synthesize captureResult=_captureResult;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
@@ -34,11 +37,12 @@
 @property (readonly, copy, nonatomic) NSString *localDiagnosticsPath; // @synthesize localDiagnosticsPath=_localDiagnosticsPath;
 @property (readonly, copy, nonatomic) NSString *localFilteredPreviewPath; // @synthesize localFilteredPreviewPath=_localFilteredPreviewPath;
 @property (readonly, copy, nonatomic) NSString *localPersistenceUUID; // @synthesize localPersistenceUUID=_localPersistenceUUID;
+@property (readonly, copy, nonatomic) NSURL *localPrivateMetadataFileURL; // @synthesize localPrivateMetadataFileURL=_localPrivateMetadataFileURL;
 @property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly, copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 
 - (void).cxx_destruct;
-- (id)initWithCaptureResult:(id)arg1 atURL:(id)arg2 linkedURL:(id)arg3 localAdjustmentsURL:(id)arg4 diagnosticsPath:(id)arg5 filteredPreviewPath:(id)arg6 withUUID:(id)arg7 creationDate:(id)arg8 uniformTypeIdentifier:(id)arg9 orientation:(long long)arg10 metadata:(id)arg11 error:(id)arg12;
+- (id)initWithCaptureResult:(id)arg1 atURL:(id)arg2 linkedURL:(id)arg3 localAdjustmentsURL:(id)arg4 diagnosticsPath:(id)arg5 filteredPreviewPath:(id)arg6 withUUID:(id)arg7 creationDate:(id)arg8 uniformTypeIdentifier:(id)arg9 orientation:(long long)arg10 metadata:(id)arg11 adjustmentsData:(id)arg12 localPrivateMetadataFileURL:(id)arg13 error:(id)arg14;
 
 @end
 

@@ -77,6 +77,7 @@
 - (void)dismissSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissServerProvidedUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentBiometricOrPasscodeValidationForAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentKeepUsingUIForAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentNativeRecoveryUIWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

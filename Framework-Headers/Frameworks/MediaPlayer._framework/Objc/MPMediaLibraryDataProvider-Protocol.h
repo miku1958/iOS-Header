@@ -34,7 +34,7 @@
 - (void)connectWithAuthenticationData:(NSData *)arg1 completionBlock:(void (^)(BOOL, NSError *))arg2 progressHandler:(void (^)(float))arg3;
 - (void)disconnect;
 - (void)enumerateCollectionIdentifiersForQueryCriteria:(MPMediaQueryCriteria *)arg1 ordered:(BOOL)arg2 cancelBlock:(BOOL (^)(void))arg3 usingBlock:(void (^)(long long, NSDictionary *, BOOL *))arg4;
-- (void)enumerateEntityChangesAfterSyncAnchor:(NSString *)arg1 maximumRevisionType:(int)arg2 inUsersLibrary:(BOOL)arg3 itemBlock:(void (^)(long long, NSString *, int, BOOL *))arg4 collectionBlock:(void (^)(long long, long long, NSString *, int, BOOL *))arg5;
+- (void)enumerateEntityChangesAfterSyncAnchor:(NSString *)arg1 maximumRevisionType:(long long)arg2 inUsersLibrary:(BOOL)arg3 itemBlock:(void (^)(long long, NSString *, long long, BOOL *))arg4 collectionBlock:(void (^)(long long, long long, NSString *, long long, BOOL *))arg5;
 - (void)enumerateItemIdentifiersForQueryCriteria:(MPMediaQueryCriteria *)arg1 ordered:(BOOL)arg2 cancelBlock:(BOOL (^)(void))arg3 usingBlock:(void (^)(long long, BOOL *))arg4;
 - (void)setLibraryContainerFilterPredicatesWithCloudFilteringType:(long long)arg1 additionalFilterPredicates:(NSArray *)arg2;
 - (void)setLibraryEntityFilterPredicatesWithCloudFilteringType:(long long)arg1 additionalFilterPredicates:(NSArray *)arg2;

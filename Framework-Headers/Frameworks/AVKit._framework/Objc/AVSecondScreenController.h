@@ -8,10 +8,10 @@
 
 @class AVObservationController, NSMutableOrderedSet;
 
+__attribute__((visibility("hidden")))
 @interface AVSecondScreenController : NSObject
 {
     BOOL _allowsUpdatingActiveConnection;
-    BOOL _hasApplicationBecomeActiveAtLeastOnce;
     AVObservationController *_observationController;
     NSMutableOrderedSet *_secondScreens;
     NSMutableOrderedSet *_connections;
@@ -19,12 +19,9 @@
 
 @property (nonatomic) BOOL allowsUpdatingActiveConnection; // @synthesize allowsUpdatingActiveConnection=_allowsUpdatingActiveConnection;
 @property (readonly, nonatomic) NSMutableOrderedSet *connections; // @synthesize connections=_connections;
-@property (nonatomic) BOOL hasApplicationBecomeActiveAtLeastOnce; // @synthesize hasApplicationBecomeActiveAtLeastOnce=_hasApplicationBecomeActiveAtLeastOnce;
 @property (readonly, nonatomic) AVObservationController *observationController; // @synthesize observationController=_observationController;
 @property (readonly, nonatomic) NSMutableOrderedSet *secondScreens; // @synthesize secondScreens=_secondScreens;
 
-+ (void)handleApplicationDidBecomeActiveNotification;
-+ (void)load;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_connectionForPlayer:(id)arg1;

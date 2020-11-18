@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_faultInRealHeightsOfNeededElements;
 - (id)_imageViewForView:(id)arg1;
 - (BOOL)_isReloadSectionUpdate;
+- (void)_reallocateAndComputeNewGlobalRowMapWithActualNewGlobalRowCount:(long long)arg1;
 - (void)_setupAnimationForReorderingRow;
 - (void)_setupAnimationForTableFooter;
 - (void)_setupAnimationForTableHeader;

@@ -8,6 +8,8 @@
 
 @interface NSDictionary (Utilities)
 - (id)JSONString;
+- (id)deepCopy;
 - (id)nullToNilObjectForKey:(id)arg1;
+- (id)removingKeys:(id)arg1;
 @end
 

@@ -14,12 +14,14 @@
 
 @interface SBSRemoteAlertPresentationTarget : NSObject <BSDescriptionProviding, BSXPCCoding, NSSecureCoding>
 {
+    BOOL _shouldDismissOnUILock;
     BSProcessHandle *_targetProcess;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldDismissOnUILock; // @synthesize shouldDismissOnUILock=_shouldDismissOnUILock;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BSProcessHandle *targetProcess; // @synthesize targetProcess=_targetProcess;
 

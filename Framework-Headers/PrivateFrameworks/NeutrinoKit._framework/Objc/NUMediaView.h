@@ -9,8 +9,8 @@
 #import <NeutrinoKit/NUAVPlayerControllerDelegate-Protocol.h>
 #import <NeutrinoKit/NUAVPlayerViewDelegate-Protocol.h>
 
-@class NSArray, NSString, NUAVPlayerController, NUAVPlayerView, NUComposition, NUMediaViewRenderer, NURenderView, NUScrollView;
-@protocol NUMediaViewDelegate;
+@class NSArray, NSString, NUAVPlayerController, NUAVPlayerView, NUCoalescer, NUComposition, NUMediaViewRenderer, NURenderView, NUScrollView;
+@protocol NUMediaPlayer, NUMediaViewDelegate;
 
 @interface NUMediaView : UIView <NUAVPlayerControllerDelegate, NUAVPlayerViewDelegate>
 {
@@ -31,11 +31,14 @@
         BOOL hasIsReadyForVideoPlayback;
         BOOL hasDidStartPreparingVideo;
         BOOL hasDidFinishPreparingVideo;
+        BOOL hasWillBeginLivePhotoPlayback;
+        BOOL hasDidEndLivePhotoPlayback;
     } _delegateFlags;
+    NUCoalescer *_renderCoalescer;
     BOOL _loopsVideo;
     long long _transitionCount;
+    struct CGSize _transitionTargetSize;
     BOOL _centerContent;
-    BOOL _muted;
     BOOL _videoPlayerVisible;
     BOOL _debugEnabled;
     BOOL _scrollUpdatesSuppressed;
@@ -60,8 +63,9 @@
 @property (nonatomic) BOOL loopsVideoPlayback;
 @property (nonatomic) double maximumZoomScale;
 @property (nonatomic) double minimumZoomScale;
-@property (nonatomic, getter=isMuted) BOOL muted; // @synthesize muted=_muted;
+@property (nonatomic, getter=isMuted) BOOL muted;
 @property (nonatomic) NSArray *pipelineFilters;
+@property (readonly) id<NUMediaPlayer> player;
 @property (nonatomic) BOOL scrollUpdatesSuppressed; // @synthesize scrollUpdatesSuppressed=_scrollUpdatesSuppressed;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled;
@@ -78,6 +82,9 @@
 - (struct CGSize)_imageSize;
 - (id)_layerRecursiveDescription;
 - (id)_livePhotoView;
+- (void)_livephotoPlaybackDidEnd;
+- (void)_livephotoPlaybackWillBegin;
+- (void)_releaseAVObjects;
 - (id)_renderView;
 - (id)_renderer;
 - (void)_rendererDidCreateAVPlayerController:(id)arg1;
@@ -89,12 +96,14 @@
 - (void)_setLayerFilters:(id)arg1;
 - (void)_setPipelineFilters:(id)arg1 shouldUpdateContent:(BOOL)arg2;
 - (void)_setupViews;
-- (void)_startLoopPlayback;
-- (void)_stopLoopPlayback;
+- (void)_startVideoPlayback;
+- (void)_stopVideoPlayback;
 - (void)_transitionToInsets:(struct UIEdgeInsets)arg1;
 - (void)_updateContentInsets;
 - (void)_updateRenderContent;
+- (void)_updateRenderContentCoalesced:(BOOL)arg1;
 - (void)_updateVideoPlayerAlpha;
+- (id)_videoPlayerController;
 - (id)_videoPlayerView;
 - (id)_videoPlayerViewWithoutControls;
 - (id)_viewRecursiveDescription;
@@ -120,6 +129,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)setZoomScaleToFit;
+- (id)snapshotImage;
 - (id)viewForZoomingInScrollView:(id)arg1;
 - (void)waitForRender;
 

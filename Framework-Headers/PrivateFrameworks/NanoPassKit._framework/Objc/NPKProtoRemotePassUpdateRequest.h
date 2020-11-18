@@ -16,11 +16,11 @@
     NSString *_passID;
     NSData *_updateRequestData;
     BOOL _cancelUpdate;
-    BOOL _requestAuthoriztion;
+    BOOL _requestAuthorization;
     BOOL _shouldNotifyUser;
     struct {
         unsigned int cancelUpdate:1;
-        unsigned int requestAuthoriztion:1;
+        unsigned int requestAuthorization:1;
         unsigned int shouldNotifyUser:1;
     } _has;
 }
@@ -28,12 +28,12 @@
 @property (nonatomic) BOOL cancelUpdate; // @synthesize cancelUpdate=_cancelUpdate;
 @property (nonatomic) BOOL hasCancelUpdate;
 @property (readonly, nonatomic) BOOL hasPass;
-@property (nonatomic) BOOL hasRequestAuthoriztion;
+@property (nonatomic) BOOL hasRequestAuthorization;
 @property (nonatomic) BOOL hasShouldNotifyUser;
 @property (readonly, nonatomic) BOOL hasUpdateRequestData;
 @property (strong, nonatomic) NPKProtoPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) NSString *passID; // @synthesize passID=_passID;
-@property (nonatomic) BOOL requestAuthoriztion; // @synthesize requestAuthoriztion=_requestAuthoriztion;
+@property (nonatomic) BOOL requestAuthorization; // @synthesize requestAuthorization=_requestAuthorization;
 @property (nonatomic) BOOL shouldNotifyUser; // @synthesize shouldNotifyUser=_shouldNotifyUser;
 @property (strong, nonatomic) NSData *updateRequestData; // @synthesize updateRequestData=_updateRequestData;
 

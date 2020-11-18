@@ -38,7 +38,7 @@
     unsigned long long _featureIdentifier;
     long long _paymentSetupContext;
     long long _paymentFrequency;
-    long long _frequencyDay;
+    long long _scheduledDay;
     long long _paymentPreset;
     PKCurrencyAmount *_amount;
     NSArray *_automaticPayments;
@@ -52,13 +52,13 @@
 @property (weak, nonatomic) id<PKAccountAutomaticPaymentsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
-@property (nonatomic) long long frequencyDay; // @synthesize frequencyDay=_frequencyDay;
 @property (strong, nonatomic) NSArray *fundingSources; // @synthesize fundingSources=_fundingSources;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *paymentDate; // @synthesize paymentDate=_paymentDate;
 @property (nonatomic) long long paymentFrequency; // @synthesize paymentFrequency=_paymentFrequency;
 @property (nonatomic) long long paymentPreset; // @synthesize paymentPreset=_paymentPreset;
 @property (readonly, nonatomic) long long paymentSetupContext; // @synthesize paymentSetupContext=_paymentSetupContext;
+@property (nonatomic) long long scheduledDay; // @synthesize scheduledDay=_scheduledDay;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -69,6 +69,7 @@
 - (void)_performPaymentRequest:(id)arg1;
 - (void)_resetPaymentConfiguration;
 - (id)_schedulePaymentRequest;
+- (id)alertControllerForScheduledDate:(id)arg1;
 - (BOOL)canPerformScheduleAutomaticPaymentsWithPreset:(long long)arg1 frequency:(long long)arg2 amount:(id)arg3 paymentDate:(id)arg4;
 - (id)initWithAccountService:(id)arg1 paymentWebService:(id)arg2 account:(id)arg3 context:(long long)arg4;
 - (long long)minimumPaymentDayForPreset:(long long)arg1;

@@ -30,6 +30,7 @@
 @property (strong, nonatomic) NSDate *locateStartTime; // @synthesize locateStartTime=_locateStartTime;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (readonly, nonatomic) BOOL locationAuthorizationDenied;
+@property (readonly, nonatomic) BOOL locationAuthorizationDetermined;
 @property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (strong, nonatomic) NSTimer *locationUpdateTimer; // @synthesize locationUpdateTimer=_locationUpdateTimer;
 @property (readonly) Class superclass;
@@ -45,6 +46,7 @@
 - (id)init;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)startUpdatingCurrentLocationWithForegroundAssertionForBundleIdentifier:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;
 - (void)startUpdatingCurrentLocationWithHandler:(CDUnknownBlockType)arg1;
 
 @end

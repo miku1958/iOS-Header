@@ -8,26 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFormattedString, GEOPlaceFormattedString;
+@class GEOFormattedString, GEOPlaceFormattedString, PBDataReader, PBUnknownFields;
 
 @interface GEOAlertNonRecommendedRouteText : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     GEOPlaceFormattedString *_body;
     GEOFormattedString *_responseAlertPrimary;
     GEOFormattedString *_responseAlertSecondary;
     GEOPlaceFormattedString *_title;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_body:1;
+        unsigned int read_responseAlertPrimary:1;
+        unsigned int read_responseAlertSecondary:1;
+        unsigned int read_title:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_body:1;
+        unsigned int wrote_responseAlertPrimary:1;
+        unsigned int wrote_responseAlertSecondary:1;
+        unsigned int wrote_title:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPlaceFormattedString *body; // @synthesize body=_body;
+@property (strong, nonatomic) GEOPlaceFormattedString *body;
 @property (readonly, nonatomic) BOOL hasBody;
 @property (readonly, nonatomic) BOOL hasResponseAlertPrimary;
 @property (readonly, nonatomic) BOOL hasResponseAlertSecondary;
 @property (readonly, nonatomic) BOOL hasTitle;
-@property (strong, nonatomic) GEOFormattedString *responseAlertPrimary; // @synthesize responseAlertPrimary=_responseAlertPrimary;
-@property (strong, nonatomic) GEOFormattedString *responseAlertSecondary; // @synthesize responseAlertSecondary=_responseAlertSecondary;
-@property (strong, nonatomic) GEOPlaceFormattedString *title; // @synthesize title=_title;
+@property (strong, nonatomic) GEOFormattedString *responseAlertPrimary;
+@property (strong, nonatomic) GEOFormattedString *responseAlertSecondary;
+@property (strong, nonatomic) GEOPlaceFormattedString *title;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readBody;
+- (void)_readResponseAlertPrimary;
+- (void)_readResponseAlertSecondary;
+- (void)_readTitle;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +57,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -40,10 +40,26 @@
     NSArray *_clientCertificates;
     NSDictionary *_connectionProperties;
     BOOL _shouldHandleCookies;
-    CDStruct_dca542ad _flags;
+    NSString *_apsRelayTopic;
+    unsigned long long _nwActivityDomain;
+    unsigned long long _nwActivityLabel;
+    struct {
+        unsigned int ignoresResponse:1;
+        unsigned int loading:1;
+        unsigned int needsCancel:1;
+        unsigned int responseStatusSet:1;
+        unsigned int parsedResponseHeader:1;
+        unsigned int delegateDidReceiveResponse:1;
+        unsigned int delegateDidFinish:1;
+        unsigned int delegateDidCancel:1;
+        unsigned int delegateDidFailWithError:1;
+        unsigned int paused:1;
+        unsigned int resuming:1;
+    } _flags;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (copy, nonatomic) NSString *apsRelayTopic; // @synthesize apsRelayTopic=_apsRelayTopic;
 @property (strong, nonatomic) NSArray *clientCertificates; // @synthesize clientCertificates=_clientCertificates;
 @property (strong, nonatomic) NSURLSessionTask *currentTask; // @synthesize currentTask=_currentTask;
 @property (readonly, copy) NSString *debugDescription;
@@ -57,6 +73,8 @@
 @property (strong, nonatomic) NSString *logRequestToFile; // @synthesize logRequestToFile=_logRequestToFile;
 @property (strong, nonatomic) NSString *logResponseToFile; // @synthesize logResponseToFile=_logResponseToFile;
 @property BOOL needsCancel;
+@property (nonatomic) unsigned long long nwActivityDomain; // @synthesize nwActivityDomain=_nwActivityDomain;
+@property (nonatomic) unsigned long long nwActivityLabel; // @synthesize nwActivityLabel=_nwActivityLabel;
 @property (readonly, nonatomic) unsigned long long requestResponseTime;
 @property (readonly, nonatomic) NSArray *requests;
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;

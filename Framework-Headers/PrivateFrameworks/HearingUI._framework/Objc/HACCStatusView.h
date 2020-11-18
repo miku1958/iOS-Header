@@ -42,6 +42,7 @@
 - (BOOL)enabled;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
+- (id)liveListenImageName:(id)arg1;
 - (void)updateConstraints;
 - (void)updateValue;
 

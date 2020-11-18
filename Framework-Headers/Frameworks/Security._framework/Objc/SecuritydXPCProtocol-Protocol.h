@@ -14,5 +14,7 @@
 - (void)secItemDigest:(NSString *)arg1 accessGroup:(NSString *)arg2 complete:(void (^)(NSArray *, NSError *))arg3;
 - (void)secItemFetchCurrentItemAcrossAllDevices:(NSString *)arg1 identifier:(NSString *)arg2 viewHint:(NSString *)arg3 fetchCloudValue:(BOOL)arg4 complete:(void (^)(NSData *, NSError *))arg5;
 - (void)secItemSetCurrentItemAcrossAllDevices:(NSData *)arg1 newCurrentItemHash:(NSData *)arg2 accessGroup:(NSString *)arg3 identifier:(NSString *)arg4 viewHint:(NSString *)arg5 oldCurrentItemReference:(NSData *)arg6 oldCurrentItemHash:(NSData *)arg7 complete:(void (^)(NSError *))arg8;
+- (void)secItemVerifyBackupIntegrity:(BOOL)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)secKeychainDeleteMultiuser:(NSData *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 @end
 

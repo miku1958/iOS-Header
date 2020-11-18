@@ -10,7 +10,6 @@
 
 @class NSString, QLPreviewScrollView, UITapGestureRecognizer, UIView;
 
-__attribute__((visibility("hidden")))
 @interface QLScrollableContentItemViewController : QLItemViewController <QLPreviewScrollViewZoomDelegate>
 {
     QLPreviewScrollView *_scrollView;
@@ -43,10 +42,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)previewScrollViewShouldResizeContentBasedOnPeripheryInsets:(id)arg1;
 - (void)previewScrollViewWillBeginZooming:(id)arg1;
 - (void)previewWillAppear:(BOOL)arg1;
-- (id)registeredKeyCommands;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldLayoutContentBasedOnPeripheryInsets;
+- (BOOL)supportsScrollingUpAndDownUsingKeyCommands;
 - (void)transitionWillFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willBeginZooming;

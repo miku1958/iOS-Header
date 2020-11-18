@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet;
+@class NSMutableDictionary, NSMutableSet;
 @protocol OS_dispatch_queue;
 
 @interface CDMonitorManager : NSObject
 {
-    NSArray *_monitorManagers;
     NSMutableDictionary *_monitors;
     NSMutableSet *_lazyMonitorNames;
     CDUnknownBlockType _generalInstantHandler;
@@ -24,12 +23,11 @@
     NSObject<OS_dispatch_queue> *_monitorWorkQueue;
 }
 
-+ (id)monitorManagerForEventStreams:(id)arg1;
++ (id)monitorManagerForEventStreams:(id)arg1 domain:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (void)_addMonitor:(id)arg1 forStreamName:(id)arg2;
 - (id)_allMonitors;
 - (id)_allStreamNames;
-- (id)_createMonitorManagers;
 - (id)_currentEventForStreamName:(id)arg1;
 - (BOOL)_hasMonitorForStreamName:(id)arg1;
 - (id)_lastUpdateForStreamName:(id)arg1;
@@ -46,10 +44,10 @@
 - (void)deliverNotificationEvent:(id)arg1;
 - (void)handleShutdownNotification;
 - (BOOL)hasMonitor:(id)arg1;
-- (id)init;
-- (id)initWithEventStreams:(id)arg1;
+- (id)initWithEventStreams:(id)arg1 domain:(unsigned long long)arg2;
 - (id)lastUpdate;
 - (id)lastUpdateForStream:(id)arg1;
+- (void)loadMonitorManagers;
 - (void)populateCurrentValueForStreamName:(id)arg1;
 - (void)removeMonitor:(id)arg1;
 - (void)setHistoricalDeletingHandler:(CDUnknownBlockType)arg1;

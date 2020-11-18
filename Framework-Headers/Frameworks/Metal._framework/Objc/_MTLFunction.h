@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Metal/_MTLObjectWithLabel.h>
 
 #import <Metal/MTLFunctionSPI-Protocol.h>
 
-@class MTLType, NSArray, NSDictionary, NSString;
+@class MTLType, NSArray, NSData, NSDictionary, NSObject, NSString;
 @protocol MTLDevice, OS_dispatch_data;
 
-@interface _MTLFunction : NSObject <MTLFunctionSPI>
+@interface _MTLFunction : _MTLObjectWithLabel <MTLFunctionSPI>
 {
     id<MTLDevice> _device;
     unsigned long long _functionType;
@@ -21,7 +21,6 @@
     NSArray *_vertexAttributes;
     NSArray *_functionConstants;
     NSDictionary *_functionConstantDictionary;
-    NSString *_label;
     MTLType *_returnType;
     NSArray *_arguments;
     NSString *_unpackedFilePath;
@@ -29,7 +28,7 @@
 
 @property NSArray *arguments; // @dynamic arguments;
 @property (readonly) unsigned long long bitCodeOffset; // @dynamic bitCodeOffset;
-@property (readonly) unsigned char bitcodeType; // @dynamic bitcodeType;
+@property (nonatomic) unsigned char bitcodeType; // @dynamic bitcodeType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
@@ -39,13 +38,14 @@
 @property (readonly) NSObject<OS_dispatch_data> *functionInputs; // @dynamic functionInputs;
 @property (readonly) unsigned long long functionType; // @synthesize functionType=_functionType;
 @property (readonly) unsigned long long hash;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (copy) NSString *label; // @dynamic label;
 @property (readonly) struct MTLLibraryData *libraryData; // @synthesize libraryData=_libraryData;
 @property long long lineNumber; // @dynamic lineNumber;
 @property (readonly) NSString *name; // @synthesize name=_name;
 @property (readonly) BOOL needsFunctionConstantValues; // @dynamic needsFunctionConstantValues;
 @property (readonly) long long patchControlPointCount; // @dynamic patchControlPointCount;
 @property (readonly) unsigned long long patchType; // @dynamic patchType;
+@property NSData *pluginData; // @dynamic pluginData;
 @property (readonly) unsigned long long renderTargetArrayIndexType; // @dynamic renderTargetArrayIndexType;
 @property MTLType *returnType; // @dynamic returnType;
 @property (readonly) NSArray *stageInputAttributes; // @dynamic stageInputAttributes;
@@ -59,12 +59,11 @@
 - (id)bitcodeData;
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
+- (unsigned int)functionRef;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 device:(id)arg4;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
-- (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
-- (id)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
-- (id)newSerializedVertexDataWithVertexDescriptor:(id)arg1;
+- (id)newFunctionWithPluginData:(id)arg1 bitcodeType:(unsigned char)arg2;
 - (id)reflectionWithOptions:(unsigned long long)arg1;
 - (void)reflectionWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setVendorPrivate:(id)arg1;

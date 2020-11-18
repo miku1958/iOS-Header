@@ -11,7 +11,6 @@
 @protocol CCUIContentModuleTopLevelGestureProvider <NSObject>
 
 @property (readonly, nonatomic) NSArray *topLevelBlockingGestureRecognizers;
-@property (readonly, nonatomic) NSArray *topLevelGestureRecognizers;
 
 
 @optional

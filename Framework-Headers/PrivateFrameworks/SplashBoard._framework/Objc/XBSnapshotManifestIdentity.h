@@ -18,6 +18,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *defaultGroupIdentifier;
 @property (readonly, copy, nonatomic) id<XBSnapshotManifestStore> store; // @synthesize store=_store;
 
 + (id)identityWithBundleIdentifier:(id)arg1 store:(id)arg2;

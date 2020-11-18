@@ -15,7 +15,6 @@
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_configureContentSubviews;

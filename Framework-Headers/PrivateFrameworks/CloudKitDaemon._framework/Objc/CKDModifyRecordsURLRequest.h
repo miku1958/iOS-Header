@@ -12,15 +12,18 @@ __attribute__((visibility("hidden")))
 @interface CKDModifyRecordsURLRequest : CKDURLRequest
 {
     BOOL _atomic;
+    BOOL _markAsParticipantNeedsNewInvitationToken;
     BOOL _oplock;
     BOOL _sendAllFields;
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
     NSDictionary *_pluginFieldsForRecordDeletesByID;
+    NSArray *_userPublicKeys;
     CDUnknownBlockType _recordPostedBlock;
     NSArray *_records;
     NSArray *_recordIDsToDelete;
     NSData *_clientChangeTokenData;
+    NSDictionary *_requestedFieldsByRecordID;
     NSMutableDictionary *_recordIDByRequestID;
     NSMutableDictionary *_recordByRequestID;
 }
@@ -28,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL atomic; // @synthesize atomic=_atomic;
 @property (strong, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
+@property (nonatomic) BOOL markAsParticipantNeedsNewInvitationToken; // @synthesize markAsParticipantNeedsNewInvitationToken=_markAsParticipantNeedsNewInvitationToken;
 @property (nonatomic) BOOL oplock; // @synthesize oplock=_oplock;
 @property (strong, nonatomic) NSDictionary *pluginFieldsForRecordDeletesByID; // @synthesize pluginFieldsForRecordDeletesByID=_pluginFieldsForRecordDeletesByID;
 @property (strong, nonatomic) NSMutableDictionary *recordByRequestID; // @synthesize recordByRequestID=_recordByRequestID;
@@ -36,12 +40,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *recordIDsToDeleteToEtags; // @synthesize recordIDsToDeleteToEtags=_recordIDsToDeleteToEtags;
 @property (copy, nonatomic) CDUnknownBlockType recordPostedBlock; // @synthesize recordPostedBlock=_recordPostedBlock;
 @property (strong, nonatomic) NSArray *records; // @synthesize records=_records;
+@property (strong, nonatomic) NSDictionary *requestedFieldsByRecordID; // @synthesize requestedFieldsByRecordID=_requestedFieldsByRecordID;
 @property (nonatomic) BOOL sendAllFields; // @synthesize sendAllFields=_sendAllFields;
+@property (strong, nonatomic) NSArray *userPublicKeys; // @synthesize userPublicKeys=_userPublicKeys;
 
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
-- (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 oplock:(BOOL)arg3 sendAllFields:(BOOL)arg4 clientChangeTokenData:(id)arg5;
+- (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 oplock:(BOOL)arg3 sendAllFields:(BOOL)arg4 clientChangeTokenData:(id)arg5 requestedFieldsByRecordId:(id)arg6;
 - (int)isolationLevel;
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;

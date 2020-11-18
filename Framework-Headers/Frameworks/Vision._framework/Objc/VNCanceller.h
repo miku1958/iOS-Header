@@ -14,10 +14,9 @@
 }
 
 - (void).cxx_destruct;
+- (void)_releaseSignallingBlock;
 - (id)init;
-- (void)releaseSignallingBlock;
-- (void)resetAndPerformBlock:(CDUnknownBlockType)arg1 usingSignallingBlock:(CDUnknownBlockType)arg2;
-- (void)resetWithSignallingBlock:(CDUnknownBlockType)arg1;
+- (void)reset;
 - (void)signalCancellation;
 - (BOOL)tryToPerformBlock:(CDUnknownBlockType)arg1 usingSignallingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)wasSignalled;

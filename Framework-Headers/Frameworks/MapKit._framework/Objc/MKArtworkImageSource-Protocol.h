@@ -9,7 +9,7 @@
 @class UIImage;
 
 @protocol MKArtworkImageSource <NSObject>
-- (UIImage *)badgeImageToDisplayWithScreenScale:(double)arg1;
-- (UIImage *)imageToDisplayWithScreenScale:(double)arg1;
+- (UIImage *)badgeImageToDisplayWithScreenScale:(double)arg1 nightMode:(BOOL)arg2;
+- (UIImage *)imageToDisplayWithScreenScale:(double)arg1 nightMode:(BOOL)arg2;
 @end
 

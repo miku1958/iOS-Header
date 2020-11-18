@@ -43,21 +43,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *minusSign;
 @property (readonly, nonatomic) NSString *plusSign;
 
-+ (id)availableCurrencyCodes;
 + (struct __CFNumberFormatter *)createHarmonizedCFNumberFormatterWithLocale:(id)arg1 style:(long long)arg2;
 + (id)currencyDecimalSeparatorForLocale:(id)arg1;
 + (id)currencyGroupingSeparatorForLocale:(id)arg1;
 + (id)currencySymbolForCurrencyCode:(id)arg1;
 + (id)currencySymbolForCurrencyCode:(id)arg1 locale:(id)arg2;
-+ (id)currentLocaleCurrencyCode;
-+ (id)currentLocaleCurrencyDecimalSeparator;
-+ (id)currentLocaleDecimalSeparator;
 + (id)decimalSeparatorForLocale:(id)arg1;
 + (id)defaultCurrencyCodeForLocale:(id)arg1;
-+ (unsigned short)defaultDecimalPlacesForCurrencyCode:(id)arg1;
 + (id)defaultFormatStringForValueType:(int)arg1;
 + (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(int)arg2;
-+ (id)displayNameForCurrencyCode:(id)arg1;
 + (void)formatString:(id)arg1 replaceOccurencesOfUnescapedString:(id)arg2 withString:(id)arg3;
 + (id)formatString:(id)arg1 transformedForNegativeStyle:(int)arg2;
 + (id)formatterForLocale:(id)arg1;
@@ -72,7 +66,6 @@ __attribute__((visibility("hidden")))
 + (int)positionOfSymbol:(id)arg1 inNumberFormatSubpattern:(id)arg2;
 + (id)stringBySubstitutingCharactersCFNumberFormatterDoesntUnderstand:(id)arg1;
 + (void)unlock;
-+ (id)userVisibleCurrencyCodes;
 - (void).cxx_destruct;
 - (id)currencyCode;
 - (id)currencyDecimalSeparator;
@@ -84,7 +77,6 @@ __attribute__((visibility("hidden")))
 - (id)decimalSeparator;
 - (id)defaultFormatStringForValueType:(int)arg1;
 - (id)defaultFormatStringForValueType:(int)arg1 negativeStyle:(int)arg2;
-- (id)displayNameForCurrencyCode:(id)arg1;
 - (BOOL)fractionFromString:(id)arg1 value:(double *)arg2;
 - (id)groupingSeparator;
 - (unsigned long long)groupingSize;

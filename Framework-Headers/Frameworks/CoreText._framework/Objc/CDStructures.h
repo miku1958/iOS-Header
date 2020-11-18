@@ -52,46 +52,6 @@ struct StrikeMetrics {
     BOOL _field7;
 };
 
-struct TAtomicPtr<CGFont *> {
-    _Atomic struct CGFont *_field1;
-};
-
-struct TAtomicPtr<TTraitsValues *> {
-    _Atomic struct TTraitsValues *_field1;
-};
-
-struct TAtomicPtr<__CFDictionary *> {
-    _Atomic struct __CFDictionary *_field1;
-};
-
-struct TAtomicPtr<const TBMPDataCache *> {
-    _Atomic struct TBMPDataCache *_field1;
-};
-
-struct TAtomicPtr<const __CFArray *> {
-    _Atomic struct __CFArray *__a_;
-};
-
-struct TAtomicPtr<const __CFCharacterSet *> {
-    _Atomic struct __CFCharacterSet *_field1;
-};
-
-struct TAtomicPtr<const __CFData *> {
-    _Atomic struct __CFData *_field1;
-};
-
-struct TAtomicPtr<const __CFSet *> {
-    _Atomic struct __CFSet *__a_;
-};
-
-struct TAtomicPtr<const __CFURL *> {
-    _Atomic struct __CFURL *_field1;
-};
-
-struct TAtomicPtr<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> {
-    _Atomic struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>> *_field1;
-};
-
 struct TBMPDataCache;
 
 struct TBaseFont {
@@ -110,75 +70,94 @@ struct TBaseFont {
     struct TCFRef<CGFont *> _field13;
     struct TUnfairLock _field14;
     struct TCFRef<__CFDictionary *> _field15;
-    struct TCFRef<const __CFArray *> _field16[6];
-    struct TCFRef<const __CFCharacterSet *> _field17[6];
+    struct TCFRef<const __CFArray *> _field16[2];
+    struct TCFRef<const __CFCharacterSet *> _field17[2];
     struct atomic<unsigned int> _field18;
     struct atomic<unsigned int> _field19;
     struct atomic<unsigned int> _field20;
     unsigned int _field21;
     struct TCFRef<const __CFCharacterSet *> _field22;
     struct atomic<long> _field23;
-    struct TAtomicPtr<const TBMPDataCache *> _field24;
-    struct TAtomicPtr<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> _field25;
-    struct TUnfairLock _field26;
-    struct pair<const unsigned short *, const unsigned short *> _field27;
-    struct TAtomicPtr<TTraitsValues *> _field28;
-    struct StrikeMetrics _field29;
-    struct atomic<unsigned int> _field30;
+    struct atomic<const TBMPDataCache *> _field24;
+    struct atomic<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> _field25;
+    struct atomic<unsigned short> _field26;
+    struct TUnfairLock _field27;
+    struct pair<const unsigned short *, const unsigned short *> _field28;
+    struct atomic<TTraitsValues *> _field29;
+    struct StrikeMetrics _field30;
     struct atomic<unsigned int> _field31;
-    struct atomic<CTFontFormat> _field32;
-    struct TUnfairLock _field33;
-    struct TInlineVector<TCFRef<const __CFData *>, 4> _field34;
-    struct array<TCFRef<__CFDictionary *>, 7> _field35;
+    struct atomic<unsigned int> _field32;
+    struct atomic<CTFontFormat> _field33;
+    struct TUnfairLock _field34;
+    struct array<std::__1::unordered_map<unsigned int, OTL::Lookup, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OTL::Lookup>>>, 2> _field35;
+    struct atomic<unsigned short> _field36;
+    struct TUnfairLock _field37;
+    struct TInlineVector<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 1> _field38;
+    struct TInlineVector<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 4> _field39;
+    struct array<TCFRef<__CFDictionary *>, 7> _field40;
 };
 
 struct TCFRef<CGFont *> {
-    struct TAtomicPtr<CGFont *> _field1;
+    struct atomic<CGFont *> _field1;
 };
 
 struct TCFRef<__CFDictionary *> {
-    struct TAtomicPtr<__CFDictionary *> _field1;
+    struct atomic<__CFDictionary *> _field1;
 };
 
 struct TCFRef<const __CFArray *> {
-    struct TAtomicPtr<const __CFArray *> fRef;
+    struct atomic<const __CFArray *> fRef;
 };
 
 struct TCFRef<const __CFCharacterSet *> {
-    struct TAtomicPtr<const __CFCharacterSet *> _field1;
+    struct atomic<const __CFCharacterSet *> _field1;
 };
 
 struct TCFRef<const __CFData *> {
-    struct TAtomicPtr<const __CFData *> _field1;
+    struct atomic<const __CFData *> _field1;
 };
 
 struct TCFRef<const __CFSet *> {
-    struct TAtomicPtr<const __CFSet *> fRef;
+    struct atomic<const __CFSet *> fRef;
 };
 
 struct TCFRef<const __CFURL *> {
-    struct TAtomicPtr<const __CFURL *> _field1;
+    struct atomic<const __CFURL *> _field1;
 };
 
-struct TInlineBufferAllocator<TCFRef<const __CFData *>, 4> {
+struct TInlineBufferAllocator<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 1> {
     struct type _field1;
-    struct TCFRef<const __CFData *> *_field2;
+    struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>> *_field2;
 };
 
-struct TInlineVector<TCFRef<const __CFData *>, 4> {
-    struct TCFRef<const __CFData *> *_field1;
-    struct TCFRef<const __CFData *> *_field2;
-    struct __compressed_pair<TCFRef<const __CFData *>*, TInlineBufferAllocator<TCFRef<const __CFData *>, 4>> {
-        struct TCFRef<const __CFData *> *_field1;
-        struct TInlineBufferAllocator<TCFRef<const __CFData *>, 4> _field2;
+struct TInlineBufferAllocator<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 4> {
+    struct type _field1;
+    struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>> *_field2;
+};
+
+struct TInlineVector<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 1> {
+    struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>> *_field1;
+    struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>> *_field2;
+    struct __compressed_pair<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>*, TInlineBufferAllocator<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 1>> {
+        struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>> *_field1;
+        struct TInlineBufferAllocator<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 1> _field2;
+    } _field3;
+};
+
+struct TInlineVector<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 4> {
+    struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>> *_field1;
+    struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>> *_field2;
+    struct __compressed_pair<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>*, TInlineBufferAllocator<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 4>> {
+        struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>> *_field1;
+        struct TInlineBufferAllocator<std::__1::unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>, 4> _field2;
     } _field3;
 };
 
 struct TTraitsValues {
-    unsigned int fSymbolic;
-    double fWeight;
-    double fWidth;
-    double fSlant;
+    unsigned int _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct TUnfairLock {
@@ -190,12 +169,60 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*> *_field1;
+};
+
 struct array<TCFRef<__CFDictionary *>, 7> {
     struct TCFRef<__CFDictionary *> _field1[7];
 };
 
+struct array<std::__1::unordered_map<unsigned int, OTL::Lookup, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OTL::Lookup>>>, 2> {
+    struct unordered_map<unsigned int, OTL::Lookup, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OTL::Lookup>>> _field1[2];
+};
+
+struct atomic<CGFont *> {
+    _Atomic struct CGFont *_field1;
+};
+
 struct atomic<CTFontFormat> {
     _Atomic unsigned int _field1;
+};
+
+struct atomic<TTraitsValues *> {
+    _Atomic struct TTraitsValues *_field1;
+};
+
+struct atomic<__CFDictionary *> {
+    _Atomic struct __CFDictionary *_field1;
+};
+
+struct atomic<const TBMPDataCache *> {
+    _Atomic struct TBMPDataCache *_field1;
+};
+
+struct atomic<const __CFArray *> {
+    _Atomic struct __CFArray *__a_;
+};
+
+struct atomic<const __CFCharacterSet *> {
+    _Atomic struct __CFCharacterSet *_field1;
+};
+
+struct atomic<const __CFData *> {
+    _Atomic struct __CFData *_field1;
+};
+
+struct atomic<const __CFSet *> {
+    _Atomic struct __CFSet *__a_;
+};
+
+struct atomic<const __CFURL *> {
+    _Atomic struct __CFURL *_field1;
+};
+
+struct atomic<const std::__1::unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>*> {
+    _Atomic struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>> *_field1;
 };
 
 struct atomic<int> {
@@ -210,6 +237,10 @@ struct atomic<unsigned int> {
     _Atomic unsigned int _field1;
 };
 
+struct atomic<unsigned short> {
+    _Atomic unsigned short _field1;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -220,7 +251,35 @@ struct pair<const unsigned short *, const unsigned short *> {
 };
 
 struct type {
-    unsigned char __lx[224];
+    unsigned char __lx[16];
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>*>> {
+                unsigned long long _field1;
+            } _field1;
+        } _field2;
+    } _field1;
+};
+
+struct unique_ptr<unsigned short const[], std::__1::default_delete<unsigned short const[]>>;
+
+struct unordered_map<unsigned int, OTL::Lookup, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, OTL::Lookup>>> {
+    struct __hash_table<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, OTL::Lookup>, std::__1::hash<unsigned int>, true>, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, OTL::Lookup>, std::__1::equal_to<unsigned int>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned int, OTL::Lookup>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, OTL::Lookup>, void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, OTL::Lookup>, std::__1::hash<unsigned int>, true>> {
+            unsigned long long _field1;
+        } _field3;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, OTL::Lookup>, std::__1::equal_to<unsigned int>, true>> {
+            float _field1;
+        } _field4;
+    } _field1;
 };
 
 struct unordered_map<unsigned short, unsigned short, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, unsigned short>>>;

@@ -22,9 +22,9 @@
 @property (readonly) Class superclass;
 
 + (id)sharedController;
+- (void).cxx_destruct;
 - (void)addDiagnosticsGenerator:(id)arg1;
 - (id)copyDiagnosticInformation;
-- (void)dealloc;
 - (id)init;
 - (void)removeDiagnosticsGenerator:(id)arg1;
 

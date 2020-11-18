@@ -11,9 +11,7 @@
 @interface NPKProtoDumpLogsResponse : PBCodable <NSCopying>
 {
     BOOL _success;
-    struct {
-        unsigned int success:1;
-    } _has;
+    CDStruct_f2ecb737 _has;
 }
 
 @property (nonatomic) BOOL hasSuccess;

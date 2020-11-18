@@ -16,10 +16,11 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSString *href;
 
++ (Class)classForUnarchiver:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)allowsPasteAsSmartField;
-- (id)bookmarkHyperlinkForUnarchiving;
 - (id)copyWithContext:(id)arg1;
+- (id)initFromSmartField:(id)arg1 href:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (int)smartFieldKind;

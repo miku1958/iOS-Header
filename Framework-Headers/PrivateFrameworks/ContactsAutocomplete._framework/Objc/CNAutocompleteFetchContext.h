@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <ContactsAutocomplete/NSCopying-Protocol.h>
+#import <ContactsAutocomplete/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDate, NSString;
 
-@interface CNAutocompleteFetchContext : NSObject <NSCopying>
+@interface CNAutocompleteFetchContext : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _predictsBasedOnOutgoingInteraction;
     NSString *_sendingAddress;
@@ -35,10 +36,13 @@
 @property (copy) NSString *sendingAddressAccountIdentifier; // @synthesize sendingAddressAccountIdentifier=_sendingAddressAccountIdentifier;
 @property (copy) NSString *title; // @synthesize title=_title;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid:(id *)arg1;
 

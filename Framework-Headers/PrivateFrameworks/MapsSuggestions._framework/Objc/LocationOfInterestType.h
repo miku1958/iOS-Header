@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) long long labelType; // @synthesize labelType=_labelType;
 
 - (void).cxx_destruct;
+- (id)debugDescription;
 - (id)initWithContactAddressType:(int)arg1 customLabel:(id)arg2;
 - (id)initWithLabelType:(long long)arg1;
 - (id)initWithLabelType:(long long)arg1 customLabel:(id)arg2;

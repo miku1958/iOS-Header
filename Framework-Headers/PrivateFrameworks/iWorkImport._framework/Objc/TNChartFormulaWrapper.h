@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)formulaByBakingValuesWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
 - (id)formulaByProcessingArgumentsWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)formulaByRewriting:(BOOL)arg1 withCalcEngine:(id)arg2 andHostUID:(const UUIDData_5fbc143e *)arg3;
+- (id)formulaByTrimmingCategoryLabels:(unsigned long long)arg1 plotByRow:(BOOL)arg2 calcEngine:(id)arg3 inChart:(UUIDData_5fbc143e *)arg4;
 - (BOOL)formulaIsEqualTo:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCopyOfTSCEFormula:(const struct TSCEFormula *)arg1;

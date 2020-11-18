@@ -8,5 +8,6 @@
 
 @interface NSURL (RemoteUIAdditions)
 - (BOOL)rui_isSupportedNativeURL;
+- (BOOL)rui_isSupportedSafariURL;
 @end
 

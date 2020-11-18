@@ -65,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareToEndSession;
 - (BOOL)prepareToFinishWritingReturningError:(id *)arg1;
 - (void)requestMediaDataWhenReadyOnQueue:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)stopRequestingMediaData;
 - (void)transitionAssetWriterAndAllInputsToFailedStatusWithError:(id)arg1;
 - (id)transitionToAndReturnTerminalHelperWithTerminalStatus:(long long)arg1;
 

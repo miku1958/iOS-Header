@@ -16,5 +16,12 @@
 @property (readonly, nonatomic, getter=_mapkit_isCLLocationUnknown) BOOL _mapkit_CLLocationUnknown;
 @property (readonly, strong, nonatomic) NSURL *_mapkit_locationErrorSettingsURL;
 
++ (id)_errorWithExtensionServiceError:(long long)arg1;
+- (long long)_mapkit_directionsErrorCode;
+- (id)_mapkit_error;
+- (id)_mapkit_errorWithDirectionsError:(id)arg1;
+- (BOOL)_mapkit_isDirectionsError;
+- (id)_mapkit_transitIncident;
+- (long long)_mapkit_underlyingGEOError;
 @end
 

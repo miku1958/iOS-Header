@@ -50,7 +50,6 @@ __attribute__((visibility("hidden")))
 - (void)enumerateAppDictionary:(id)arg1 error:(id)arg2;
 - (void)enumerateInstalledAppsWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchDiskUsageForIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)fetchInstalledAppsWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchInstalledDeveloperAppsWithMountPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAppMetadataForApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
@@ -62,12 +61,16 @@ __attribute__((visibility("hidden")))
 - (void)registerSafeHarborAtPath:(id)arg1 forIdentifier:(id)arg2 ofType:(long long)arg3 withOptions:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)removeSafeHarborForIdentifier:(id)arg1 ofType:(long long)arg2 withOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)reportProgress:(id)arg1;
+- (void)setSystemAppMigrationComplete:(CDUnknownBlockType)arg1;
 - (void)snapshotWKAppInCompanionAppID:(id)arg1 toURL:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)systemAppMigratorHasCompleted:(CDUnknownBlockType)arg1;
 - (void)uninstallIdentifiers:(id)arg1 withOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updatePlaceholderMetadataForApp:(id)arg1 installType:(unsigned long long)arg2 failureReason:(unsigned long long)arg3 underlyingError:(id)arg4 failureSource:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)updateSinfForLSWithIdentifier:(id)arg1 withOptions:(id)arg2 sinfData:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)updateSystemAppStateForIdentifier:(id)arg1 appState:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateiTunesMetadataForLSWithIdentifier:(id)arg1 options:(id)arg2 plistData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)waitForSystemAppMigratorToComplete:(CDUnknownBlockType)arg1;
+- (void)waitForSystemAppMigratorWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

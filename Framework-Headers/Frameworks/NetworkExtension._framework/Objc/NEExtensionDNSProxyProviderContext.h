@@ -20,7 +20,7 @@
 @property (readonly) Class superclass;
 
 + (id)_extensionAuxiliaryVendorProtocol;
-- (void)setInitialFlowDivertControlSocket:(id)arg1 extraValidation:(BOOL)arg2;
+- (id)extensionPoint;
 - (void)setSystemDNSSettings:(id)arg1;
 
 @end

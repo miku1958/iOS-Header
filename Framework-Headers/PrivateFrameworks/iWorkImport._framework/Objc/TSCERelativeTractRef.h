@@ -63,12 +63,14 @@ __attribute__((visibility("hidden")))
 - (void)removeRelativeColumnRange:(const struct TSUIndexRange *)arg1;
 - (void)removeRelativeRowRange:(const struct TSUIndexRange *)arg1;
 - (void)removeRowRange:(const struct TSUIndexRange *)arg1;
+- (void)repairSpanningColumnSetting;
+- (void)repairSpanningRowSetting;
 - (const struct TSUIndexSet *)rows;
 - (void)setColumns:(const struct TSUIndexSet *)arg1;
 - (void)setRelativeColumns:(const struct TSUIndexSet *)arg1;
 - (void)setRelativeRows:(const struct TSUIndexSet *)arg1;
 - (void)setRows:(const struct TSUIndexSet *)arg1;
-- (void)verifySpanningSettings;
+- (BOOL)verifySpanningSettings;
 
 @end
 

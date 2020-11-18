@@ -11,8 +11,10 @@
 @interface MCNetworkUsageRulesPayload : MCPayload
 {
     NSArray *_applicationRules;
+    NSArray *_SIMRules;
 }
 
+@property (copy, nonatomic) NSArray *SIMRules; // @synthesize SIMRules=_SIMRules;
 @property (copy, nonatomic) NSArray *applicationRules; // @synthesize applicationRules=_applicationRules;
 
 + (id)localizedPluralForm;

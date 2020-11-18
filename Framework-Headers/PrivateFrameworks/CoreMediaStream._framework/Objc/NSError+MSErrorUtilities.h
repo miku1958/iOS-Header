@@ -7,10 +7,17 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (MSErrorUtilities)
++ (id)MMCSErrorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3;
 + (id)MSErrorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3;
 + (id)MSErrorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3 suggestion:(id)arg4;
 + (id)MSErrorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3 underlyingError:(id)arg4;
 + (id)MSErrorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3 underlyingError:(id)arg4 additionalUserInfo:(id)arg5;
+- (int)MMCSErrorType;
+- (BOOL)MMCSIsAuthorizationError;
+- (BOOL)MMCSIsCancelError;
+- (BOOL)MMCSIsFatalError;
+- (BOOL)MMCSIsNetworkConditionsError;
+- (id)MMCSRetryAfterDate;
 - (BOOL)MSASStateMachineIsCanceledError;
 - (BOOL)MSCanBeIgnored;
 - (BOOL)MSContainsErrorWithDomain:(id)arg1 code:(long long)arg2;
@@ -26,6 +33,7 @@
 - (id)MSMakePrimaryError;
 - (BOOL)MSNeedsBackoff;
 - (id)MSVerboseDescription;
+- (void)_MMCSApplyBlock:(CDUnknownBlockType)arg1;
 - (void)_MSApplyBlock:(CDUnknownBlockType)arg1;
 - (id)_MSVerboseDescriptionRecursionCount:(int)arg1;
 @end

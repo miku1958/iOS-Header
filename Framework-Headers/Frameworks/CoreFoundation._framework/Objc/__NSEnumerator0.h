@@ -11,11 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)new;
 + (id)sharedInstance;
-- (id)_init;
 - (id)autorelease;
 - (id)init;
 - (id)nextObject;

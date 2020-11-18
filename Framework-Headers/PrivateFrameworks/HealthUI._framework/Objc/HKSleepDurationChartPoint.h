@@ -23,13 +23,13 @@
 @property (nonatomic) double asleepValue; // @synthesize asleepValue=_asleepValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSNumber *goalValue; // @synthesize goalValue=_goalValue;
+@property (copy, nonatomic) NSNumber *goalValue; // @synthesize goalValue=_goalValue;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) double inBedValue; // @synthesize inBedValue=_inBedValue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HKSleepChartPointUserInfo *userInfo; // @synthesize userInfo=_userInfo;
-@property (strong, nonatomic) NSDate *xValue; // @synthesize xValue=_xValue;
+@property (copy, nonatomic) NSDate *xValue; // @synthesize xValue=_xValue;
 
 - (void).cxx_destruct;
 - (id)allYValues;

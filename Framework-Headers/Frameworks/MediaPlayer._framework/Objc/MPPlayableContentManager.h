@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class AVExternalDevice, MPPlayableContentManagerContext, NSArray, NSMutableSet, NSOperationQueue;
+#import <MediaPlayer/CARSessionObserving-Protocol.h>
+
+@class CARSessionStatus, MPPlayableContentManagerContext, NSArray, NSMutableSet, NSOperationQueue, NSString;
 @protocol MPPlayableContentDataSource, MPPlayableContentDelegate, OS_dispatch_queue;
 
-@interface MPPlayableContentManager : NSObject
+@interface MPPlayableContentManager : NSObject <CARSessionObserving>
 {
     NSMutableSet *_mutatedContentItems;
     NSMutableSet *_contentItemIdentifiersSentToMediaRemote;
@@ -17,7 +19,7 @@
     NSOperationQueue *_artworkUpdateQueue;
     BOOL _coalescingUpdates;
     BOOL _scheduledSupportedAPIsChange;
-    AVExternalDevice *_externalDevice;
+    CARSessionStatus *_currentSessionStatus;
     id<MPPlayableContentDataSource> _dataSource;
     id<MPPlayableContentDelegate> _delegate;
     MPPlayableContentManagerContext *_context;
@@ -26,8 +28,12 @@
 
 @property (strong, nonatomic) MPPlayableContentManagerContext *context; // @synthesize context=_context;
 @property (weak, nonatomic) id<MPPlayableContentDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MPPlayableContentDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *nowPlayingIdentifiers; // @synthesize nowPlayingIdentifiers=_nowPlayingIdentifiers;
+@property (readonly) Class superclass;
 
 + (BOOL)_deviceIsCarplayCapable;
 + (id)sharedContentManager;
@@ -56,6 +62,8 @@
 - (void)endUpdates;
 - (id)init;
 - (void)reloadData;
+- (void)sessionDidConnect:(id)arg1;
+- (void)sessionDidDisconnect:(id)arg1;
 
 @end
 

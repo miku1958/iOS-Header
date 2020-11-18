@@ -8,16 +8,20 @@
 
 #import <ContextKit/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class CKContextClient, NSDictionary, NSNumber, NSString;
 
 @interface CKContextRequest : NSObject <NSSecureCoding>
 {
+    CKContextClient *_client;
     BOOL _textIsRaw;
     BOOL _includeHigherLevelTopics;
     BOOL _prepareOnly;
     BOOL _debug;
     BOOL _dontSkip;
     BOOL _timing;
+    BOOL _incPending;
+    int _overrideConstellationMinCount;
+    int _overrideConstellationMinWeight;
     unsigned int _topk;
     NSString *_text;
     NSString *_title;
@@ -26,6 +30,8 @@
     NSString *_contentAuthor;
     NSString *_url;
     NSString *_languageTag;
+    NSDictionary *_itemIds;
+    long long _maxConstellationTopics;
     NSNumber *_overrideBlendAlpha;
     NSNumber *_overrideBlendBeta;
     NSNumber *_overrideBlendGamma;
@@ -37,11 +43,16 @@
 @property (strong, nonatomic, setter=setContentKeywords:) NSString *contentKeywords; // @synthesize contentKeywords=_contentKeywords;
 @property (nonatomic) BOOL debug; // @synthesize debug=_debug;
 @property (nonatomic) BOOL dontSkip; // @synthesize dontSkip=_dontSkip;
+@property (nonatomic) BOOL incPending; // @synthesize incPending=_incPending;
 @property (nonatomic) BOOL includeHigherLevelTopics; // @synthesize includeHigherLevelTopics=_includeHigherLevelTopics;
+@property (strong, nonatomic) NSDictionary *itemIds; // @synthesize itemIds=_itemIds;
 @property (strong, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
+@property (nonatomic) long long maxConstellationTopics; // @synthesize maxConstellationTopics=_maxConstellationTopics;
 @property (strong, nonatomic) NSNumber *overrideBlendAlpha; // @synthesize overrideBlendAlpha=_overrideBlendAlpha;
 @property (strong, nonatomic) NSNumber *overrideBlendBeta; // @synthesize overrideBlendBeta=_overrideBlendBeta;
 @property (strong, nonatomic) NSNumber *overrideBlendGamma; // @synthesize overrideBlendGamma=_overrideBlendGamma;
+@property (nonatomic) int overrideConstellationMinCount; // @synthesize overrideConstellationMinCount=_overrideConstellationMinCount;
+@property (nonatomic) int overrideConstellationMinWeight; // @synthesize overrideConstellationMinWeight=_overrideConstellationMinWeight;
 @property (nonatomic) BOOL prepareOnly; // @synthesize prepareOnly=_prepareOnly;
 @property (strong, nonatomic, setter=setText:) NSString *text; // @synthesize text=_text;
 @property (nonatomic) BOOL textIsRaw; // @synthesize textIsRaw=_textIsRaw;
@@ -57,13 +68,16 @@
 + (void)findResultsForText:(id)arg1 languageTag:(id)arg2 requestType:(unsigned long long)arg3 withReply:(CDUnknownBlockType)arg4;
 + (void)findResultsForText:(id)arg1 languageTag:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 + (void)findResultsForText:(id)arg1 withReply:(CDUnknownBlockType)arg2;
++ (id)frameworkStartDate;
 + (void)initialize;
 + (void)logEngagementForResponseId:(id)arg1 result:(id)arg2 rank:(unsigned long long)arg3 inputLength:(unsigned long long)arg4 completionLength:(unsigned long long)arg5 requestType:(unsigned long long)arg6 logType:(unsigned long long)arg7;
 + (void)logResultsShownForResponseId:(id)arg1 shown:(unsigned long long)arg2 couldHaveShown:(unsigned long long)arg3 serverOverride:(BOOL)arg4 inputLength:(unsigned long long)arg5 requestType:(unsigned long long)arg6 logType:(unsigned long long)arg7;
 + (void)logTransactionSuccessfulForResponseId:(id)arg1 inputLength:(unsigned long long)arg2 completionLength:(unsigned long long)arg3 requestType:(unsigned long long)arg4 logType:(unsigned long long)arg5;
++ (id)new;
 + (BOOL)pingService;
 + (void)portraitBlacklistWithReply:(CDUnknownBlockType)arg1;
 + (void)prepareRequestForText:(id)arg1 withReply:(CDUnknownBlockType)arg2;
++ (id)requestServiceSemaphore;
 + (id)requestWithText:(id)arg1;
 + (void)runOffMainThread:(CDUnknownBlockType)arg1;
 + (void)setDefaultRequestType:(unsigned long long)arg1;
@@ -79,6 +93,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)execute;
 - (void)executeWithReply:(CDUnknownBlockType)arg1;
+- (id)init;
 - (id)initForClient:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithText:(id)arg1;

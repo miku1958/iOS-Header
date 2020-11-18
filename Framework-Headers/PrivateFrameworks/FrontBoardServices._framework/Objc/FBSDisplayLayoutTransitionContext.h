@@ -9,24 +9,26 @@
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 
-@class NSString;
+@class NSOrderedSet, NSSet, NSString;
 
 @interface FBSDisplayLayoutTransitionContext : NSObject <BSXPCCoding, BSDescriptionProviding>
 {
-    NSString *_transitionReason;
+    NSOrderedSet *_transitionReasons;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *transitionReason; // @synthesize transitionReason=_transitionReason;
+@property (readonly, copy, nonatomic) NSString *transitionReason; // @dynamic transitionReason;
+@property (readonly, copy, nonatomic) NSSet *transitionReasons;
 
 - (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
+- (void)setTransitionReasons:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

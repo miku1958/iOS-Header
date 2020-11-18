@@ -14,33 +14,35 @@ __attribute__((visibility("hidden")))
 @interface GEOPDETA : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    GEORouteTrafficDetail *_routeTrafficDetail;
     unsigned int _distance;
     unsigned int _historicTravelTime;
-    GEORouteTrafficDetail *_routeTrafficDetail;
     unsigned int _time;
     int _transportType;
     struct {
-        unsigned int distance:1;
-        unsigned int historicTravelTime:1;
-        unsigned int time:1;
-        unsigned int transportType:1;
-    } _has;
+        unsigned int has_distance:1;
+        unsigned int has_historicTravelTime:1;
+        unsigned int has_time:1;
+        unsigned int has_transportType:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int distance; // @synthesize distance=_distance;
+@property (nonatomic) unsigned int distance;
 @property (nonatomic) BOOL hasDistance;
 @property (nonatomic) BOOL hasHistoricTravelTime;
 @property (readonly, nonatomic) BOOL hasRouteTrafficDetail;
 @property (nonatomic) BOOL hasTime;
 @property (nonatomic) BOOL hasTransportType;
-@property (nonatomic) unsigned int historicTravelTime; // @synthesize historicTravelTime=_historicTravelTime;
-@property (strong, nonatomic) GEORouteTrafficDetail *routeTrafficDetail; // @synthesize routeTrafficDetail=_routeTrafficDetail;
-@property (nonatomic) unsigned int time; // @synthesize time=_time;
-@property (nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property (nonatomic) unsigned int historicTravelTime;
+@property (strong, nonatomic) GEORouteTrafficDetail *routeTrafficDetail;
+@property (nonatomic) unsigned int time;
+@property (nonatomic) int transportType;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -6,10 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class AKBitmapFIFO, AKController, CHBoxcarFilterPointFIFO, CHPointStrokeFIFO, CHQuadCurvePointFIFO, MISSING_TYPE, UIColor;
+#import <AnnotationKit/CHPointFIFODrawingTarget-Protocol.h>
+
+@class AKBitmapFIFO, AKController, CHBoxcarFilterPointFIFO, CHPointStrokeFIFO, CHQuadCurvePointFIFO, MISSING_TYPE, NSString, UIColor;
 @protocol AKSmoothPathViewDelegate;
 
-@interface AKSmoothPathView : UIView
+@interface AKSmoothPathView : UIView <CHPointFIFODrawingTarget>
 {
     double _cachedEffectiveStrokeWidthInModel;
     double _cachedModelToViewScale;
@@ -43,9 +45,12 @@
 @property double cachedModelToViewScale; // @synthesize cachedModelToViewScale=_cachedModelToViewScale;
 @property (weak) AKController *controller; // @synthesize controller=_controller;
 @property double currentWeight; // @synthesize currentWeight=_currentWeight;
+@property (readonly, copy) NSString *debugDescription;
 @property (strong) id<AKSmoothPathViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property BOOL disableSingleDotSpecialCase; // @synthesize disableSingleDotSpecialCase=_disableSingleDotSpecialCase;
 @property (nonatomic) BOOL hasShadow; // @synthesize hasShadow=_hasShadow;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CHQuadCurvePointFIFO *interpolatingFIFO; // @synthesize interpolatingFIFO=_interpolatingFIFO;
 @property BOOL isAddingPointWithoutSmoothing; // @synthesize isAddingPointWithoutSmoothing=_isAddingPointWithoutSmoothing;
 @property (nonatomic) double maxPressure; // @synthesize maxPressure=_maxPressure;
@@ -62,6 +67,7 @@
 @property (strong, nonatomic) UIColor *strokeColor; // @synthesize strokeColor=_strokeColor;
 @property (strong, nonatomic) CHPointStrokeFIFO *strokeFIFO; // @synthesize strokeFIFO=_strokeFIFO;
 @property (nonatomic) double strokeWidth; // @synthesize strokeWidth=_strokeWidth;
+@property (readonly) Class superclass;
 
 + (id)newSmoothPathViewForCurrentPlatformWithController:(id)arg1;
 - (void).cxx_destruct;

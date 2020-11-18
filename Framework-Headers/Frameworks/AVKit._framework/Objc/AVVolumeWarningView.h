@@ -8,13 +8,14 @@
 
 @class UIViewPropertyAnimator;
 
+__attribute__((visibility("hidden")))
 @interface AVVolumeWarningView : UIView
 {
     BOOL _stopping;
     UIViewPropertyAnimator *_animator;
 }
 
-@property (weak, nonatomic) UIViewPropertyAnimator *animator; // @synthesize animator=_animator;
+@property (strong, nonatomic) UIViewPropertyAnimator *animator; // @synthesize animator=_animator;
 @property (nonatomic, getter=isStopping) BOOL stopping; // @synthesize stopping=_stopping;
 
 - (void).cxx_destruct;

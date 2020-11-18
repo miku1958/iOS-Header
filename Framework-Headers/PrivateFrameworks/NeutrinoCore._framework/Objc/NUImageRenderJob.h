@@ -33,11 +33,10 @@
 - (BOOL)complete:(out id *)arg1;
 - (BOOL)copyStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toImage:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4;
 - (id)extentPolicy;
-- (id)imageAccumulationNodeWithImageSize:(CDStruct_912cb5d2)arg1 tileSize:(CDStruct_912cb5d2)arg2 format:(id)arg3 colorSpace:(id)arg4;
+- (id)imageAccumulationNodeWithImageSize:(CDStruct_912cb5d2)arg1 tileSize:(CDStruct_912cb5d2)arg2 borderSize:(CDStruct_912cb5d2)arg3 format:(id)arg4 colorSpace:(id)arg5;
 - (id)imageRequest;
 - (id)initWithImageRequest:(id)arg1;
 - (id)initWithRequest:(id)arg1;
-- (id)newRenderPipelineStateForEvaluationMode:(long long)arg1;
 - (BOOL)prepare:(out id *)arg1;
 - (BOOL)render:(out id *)arg1;
 - (id)scalePolicy;

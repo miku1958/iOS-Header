@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/SFTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFColor, SFImage;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFColor, SFImage, SFRichText;
 
 @protocol SFRichTitleCardSection <SFTitleCardSection>
 
@@ -39,6 +39,7 @@
 @property (strong, nonatomic) SFImage *reviewGlyph;
 @property (nonatomic) BOOL reviewNewLine;
 @property (copy, nonatomic) NSString *reviewText;
+@property (strong, nonatomic) SFRichText *richSubtitle;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *subtitle;
 @property (nonatomic) BOOL thumbnailCropCircle;

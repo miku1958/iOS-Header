@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NeutrinoCore/NURenderNode.h>
+#import <NeutrinoCore/NUTransformNode.h>
 
-@interface NUTrimNode : NURenderNode
+@interface NUTrimNode : NUTransformNode
 {
     CDStruct_e83c9415 _range;
 }
 
 @property (readonly) CDStruct_e83c9415 range; // @synthesize range=_range;
 
-+ (CDStruct_e83c9415)conformRange:(CDStruct_e83c9415)arg1 inRange:(CDStruct_e83c9415)arg2;
 - (id)_evaluateImage:(out id *)arg1;
 - (id)_evaluateVideo:(out id *)arg1;
+- (id)_evaluateVideoComposition:(out id *)arg1;
 - (id)_evaluateVideoProperties:(out id *)arg1;
+- (id)_transformWithError:(out id *)arg1;
 - (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
 - (id)initWithTimeRange:(CDStruct_e83c9415)arg1 input:(id)arg2;
 - (BOOL)requiresVideoComposition;

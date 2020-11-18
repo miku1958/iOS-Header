@@ -8,50 +8,68 @@
 
 #import <MobileTimer/DNDModeAssertionUpdateListener-Protocol.h>
 #import <MobileTimer/MTAgentDiagnosticDelegate-Protocol.h>
+#import <MobileTimer/MTBedtimeDNDStateMachineDelegate-Protocol.h>
+#import <MobileTimer/MTBedtimeDNDStateMachineInfoProvider-Protocol.h>
 #import <MobileTimer/MTSleepObserver-Protocol.h>
 #import <MobileTimer/MTTimeObserver-Protocol.h>
 
-@class DNDModeAssertionService, MTSleepMonitor, NSString;
-@protocol MTAlarmStorage;
+@class DNDModeAssertionService, MTAlarm, MTBedtimeDNDStateMachine, MTSleepCoordinator, NSDate, NSString;
+@protocol MTAlarmStorage, NAScheduler;
 
-@interface MTBedtimeDNDMonitor : NSObject <DNDModeAssertionUpdateListener, MTSleepObserver, MTTimeObserver, MTAgentDiagnosticDelegate>
+@interface MTBedtimeDNDMonitor : NSObject <DNDModeAssertionUpdateListener, MTBedtimeDNDStateMachineInfoProvider, MTBedtimeDNDStateMachineDelegate, MTSleepObserver, MTTimeObserver, MTAgentDiagnosticDelegate>
 {
     id<MTAlarmStorage> _alarmStorage;
-    MTSleepMonitor *_sleepMonitor;
+    MTSleepCoordinator *_sleepCoordinator;
     CDUnknownBlockType _currentDateProvider;
+    MTBedtimeDNDStateMachine *_stateMachine;
     DNDModeAssertionService *_assertionService;
+    id<NAScheduler> _serializer;
 }
 
 @property (strong, nonatomic) id<MTAlarmStorage> alarmStorage; // @synthesize alarmStorage=_alarmStorage;
 @property (strong, nonatomic) DNDModeAssertionService *assertionService; // @synthesize assertionService=_assertionService;
+@property (readonly, nonatomic) NSDate *currentDate;
 @property (copy, nonatomic) CDUnknownBlockType currentDateProvider; // @synthesize currentDateProvider=_currentDateProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MTSleepMonitor *sleepMonitor; // @synthesize sleepMonitor=_sleepMonitor;
+@property (readonly, nonatomic) BOOL inUserDefinedSleepWindow;
+@property (readonly, nonatomic) NSDate *keepOffUntilDate;
+@property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
+@property (readonly, nonatomic) MTAlarm *sleepAlarm;
+@property (weak, nonatomic) MTSleepCoordinator *sleepCoordinator; // @synthesize sleepCoordinator=_sleepCoordinator;
+@property (strong, nonatomic) MTBedtimeDNDStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_checkDNDForAlarm:(id)arg1;
-- (void)_checkDNDForAlarm:(id)arg1 delay:(double)arg2;
-- (void)checkDND;
+- (unsigned long long)bedtimeDNDTimeoutMinutes;
+- (BOOL)bedtimeDoNotDisturb:(id *)arg1;
 - (void)dealloc;
-- (void)disengageDND;
-- (void)engageDNDUntilDate:(id)arg1;
 - (id)gatherDiagnostics;
-- (void)handleManualDNDInvalidation;
-- (id)initWithAlarmStorage:(id)arg1 sleepMonitor:(id)arg2;
-- (id)initWithAlarmStorage:(id)arg1 sleepMonitor:(id)arg2 currentDateProvider:(CDUnknownBlockType)arg3;
+- (id)initWithAlarmStorage:(id)arg1 sleepCoordinator:(id)arg2;
+- (id)initWithAlarmStorage:(id)arg1 sleepCoordinator:(id)arg2 currentDateProvider:(CDUnknownBlockType)arg3;
+- (BOOL)isBedtimeDNDEnabled:(BOOL *)arg1;
+- (BOOL)isBedtimeDNDEnabled:(BOOL *)arg1 error:(id *)arg2;
+- (BOOL)isEnabled;
 - (void)modeAssertionService:(id)arg1 didReceiveModeAssertionInvalidation:(id)arg2;
 - (void)printDiagnostics;
-- (void)sleepMonitor:(id)arg1 bedtimeReminderDidFire:(id)arg2 sleepAlarm:(id)arg3;
-- (void)sleepMonitor:(id)arg1 bedtimeReminderWasConfirmed:(id)arg2 sleepAlarm:(id)arg3;
-- (void)sleepMonitor:(id)arg1 bedtimeWasReached:(id)arg2 sleepAlarm:(id)arg3;
-- (void)sleepMonitor:(id)arg1 sleepAlarmDidChange:(id)arg2;
-- (void)sleepMonitor:(id)arg1 wakeUpAlarmDidFire:(id)arg2 sleepAlarm:(id)arg3;
-- (void)sleepMonitor:(id)arg1 wakeUpAlarmWasDismissed:(id)arg2 sleepAlarm:(id)arg3;
-- (void)sleepMonitor:(id)arg1 wakeUpAlarmWasSnoozed:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepCoordinator:(id)arg1 bedtimeReminderDidFire:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepCoordinator:(id)arg1 bedtimeReminderWasConfirmed:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepCoordinator:(id)arg1 bedtimeWasReached:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepCoordinator:(id)arg1 sleepAlarmDidChange:(id)arg2;
+- (void)sleepCoordinator:(id)arg1 userWentToBed:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepCoordinator:(id)arg1 userWokeUp:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepCoordinator:(id)arg1 wakeUpAlarmDidFire:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepCoordinator:(id)arg1 wakeUpAlarmWasSnoozed:(id)arg2 sleepAlarm:(id)arg3;
+- (BOOL)stateMachine:(id)arg1 disengageBedtimeDNDUserRequested:(BOOL)arg2;
+- (BOOL)stateMachine:(id)arg1 engageBedtimeDNDUntilDate:(id)arg2 userEngaged:(BOOL)arg3;
+- (void)stateMachine:(id)arg1 keepBedtimeDNDOffUntilDate:(id)arg2;
+- (void)stateMachine:(id)arg1 scheduleUpdateForSecondsFromNow:(double)arg2;
+- (void)stateMachineClearKeepBedtimeDNDOff:(id)arg1;
 - (void)timeListener:(id)arg1 didDetectSignificantTimeChangeWithCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)updateMonitorState;
+- (void)userDisengagedBedtimeDND;
+- (void)userDisengagedBedtimeDNDOnDate:(id)arg1;
 
 @end
 

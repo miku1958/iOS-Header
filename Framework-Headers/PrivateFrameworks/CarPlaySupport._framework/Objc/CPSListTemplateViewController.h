@@ -9,7 +9,7 @@
 #import <CarPlaySupport/CPListTemplateProviding-Protocol.h>
 #import <CarPlaySupport/UITableViewDelegate-Protocol.h>
 
-@class CPListTemplate, CPSSectionedDataSource, NSIndexPath, NSString, NSTimer, UIActivityIndicatorView;
+@class CPListTemplate, CPSSectionedDataSource, CPSTableView, NSIndexPath, NSString, NSTimer, UIActivityIndicatorView;
 
 @interface CPSListTemplateViewController : CPSBaseTemplateViewController <UITableViewDelegate, CPListTemplateProviding>
 {
@@ -20,6 +20,7 @@
     unsigned long long _spinnerState;
     NSTimer *_spinnerStartTimer;
     NSTimer *_spinnerTimeoutTimer;
+    CPSTableView *_tableView;
 }
 
 @property (copy, nonatomic) NSIndexPath *currentSpinningIndexPath; // @synthesize currentSpinningIndexPath=_currentSpinningIndexPath;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSTimer *spinnerTimeoutTimer; // @synthesize spinnerTimeoutTimer=_spinnerTimeoutTimer;
 @property (strong, nonatomic) UIActivityIndicatorView *spinnerView; // @synthesize spinnerView=_spinnerView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) CPSTableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
 - (void)_addSpinnerToIndexPath:(id)arg1;
@@ -42,15 +44,14 @@
 - (void)_scheduleLoadingSpinnerForIndexPath:(id)arg1;
 - (void)_startSpinnerTimerFired:(id)arg1 indexPath:(id)arg2;
 - (void)_timeoutSpinnerFired:(id)arg1 indexPath:(id)arg2;
+- (void)_viewDidLoad;
 - (id)initWithListTemplate:(id)arg1 templateDelegate:(id)arg2;
-- (void)loadView;
 - (void)setButton:(id)arg1 enabled:(BOOL)arg2;
 - (void)setButton:(id)arg1 hidden:(BOOL)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayHeaderView:(id)arg2 forSection:(long long)arg3;
 - (void)updateSections:(id)arg1;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

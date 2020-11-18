@@ -17,9 +17,9 @@
     NCNotificationContentView *_notificationContentView;
     NCNotificationGrabberView *_grabberView;
     NCAuxiliaryOptionsView *_auxiliaryOptionsView;
-    BOOL _mainOverlayLayoutValid;
-    BOOL _defersAnimatedUpdates;
+    BOOL _notificationContentViewHidden;
     BOOL _banner;
+    BOOL _grabberVisible;
 }
 
 @property (strong, nonatomic) UIView *accessoryView;
@@ -30,16 +30,20 @@
 @property (nonatomic, getter=isDateAllDay) BOOL dateAllDay;
 @property (nonatomic) long long dateFormatStyle;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) BOOL defersAnimatedUpdates; // @synthesize defersAnimatedUpdates=_defersAnimatedUpdates;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic, getter=_fontProvider, setter=_setFontProvider:) BSUIFontProvider *fontProvider;
-@property (readonly, nonatomic, getter=_grabberView) NCNotificationGrabberView *grabberView;
+@property (nonatomic, getter=_isGrabberVisible, setter=_setGrabberVisible:) BOOL grabberVisible;
+@property (nonatomic, getter=_isGrabberVisible, setter=_setGrabberVisible:) BOOL grabberVisible; // @synthesize grabberVisible=_grabberVisible;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *iconButtons;
 @property (copy, nonatomic) NSArray *icons;
 @property (strong, nonatomic) NSArray *interfaceActions;
-@property (nonatomic) unsigned long long messageNumberOfLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfPrimaryTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryLargeTextLines;
+@property (nonatomic) unsigned long long maximumNumberOfSecondaryTextLines;
 @property (readonly, nonatomic, getter=_notificationContentView) NCNotificationContentView *notificationContentView;
+@property (nonatomic, getter=isNotificationContentViewHidden) BOOL notificationContentViewHidden; // @synthesize notificationContentViewHidden=_notificationContentViewHidden;
 @property (nonatomic) unsigned long long numberOfOptionButtons;
 @property (readonly, nonatomic) NSArray *optionButtons;
 @property (copy, nonatomic) NSString *optionsSummaryText;
@@ -54,7 +58,6 @@
 @property (copy, nonatomic) NSString *title;
 @property (readonly, nonatomic) UIButton *utilityButton;
 
-+ (unsigned long long)_optionsForMainOverlayForRecipe:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_configureAuxiliaryOptionsViewIfNecessary;
 - (void)_configureCustomContentView;
@@ -62,16 +65,11 @@
 - (void)_configureNotificationContentViewIfNecessary;
 - (void)_layoutAuxiliaryOptionsView;
 - (void)_layoutGrabber;
-- (void)_layoutMainOverlay;
 - (void)_layoutNotificationContentView;
 - (id)_newNotificationContentView;
-- (unsigned long long)_optionsForMainOverlay;
-- (BOOL)_shouldShowGrabber;
 - (struct CGSize)_sizeThatFitsContentWithSize:(struct CGSize)arg1 withAuxiliaryOptionsViewVisible:(BOOL)arg2;
 - (BOOL)adjustForContentSizeCategoryChange;
-- (id)initWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
 - (void)layoutSubviews;
-- (void)nc_performDeferredActionsIfNeeded;
 - (void)setBackgroundView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;

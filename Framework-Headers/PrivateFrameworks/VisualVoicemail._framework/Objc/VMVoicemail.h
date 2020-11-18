@@ -29,23 +29,29 @@
     unsigned long long _flags;
 }
 
+@property (readonly, nonatomic, getter=isBlocked) BOOL blocked;
 @property (nonatomic, getter=isBlocked) BOOL blocked;
 @property (copy, nonatomic) NSString *callbackDestinationID; // @synthesize callbackDestinationID=_callbackDestinationID;
 @property (copy, nonatomic) NSString *callbackISOCountryCode; // @synthesize callbackISOCountryCode=_callbackISOCountryCode;
 @property (readonly, nonatomic) NSString *callbackNumber;
 @property (readonly, copy, nonatomic) NSData *data;
+@property (readonly, nonatomic, getter=isDataAvailable) BOOL dataAvailable;
 @property (nonatomic, getter=isDataAvailable) BOOL dataAvailable;
 @property (readonly, nonatomic) NSString *dataPath;
 @property (strong, nonatomic) NSURL *dataURL; // @synthesize dataURL=_dataURL;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, nonatomic, getter=isDeleted) BOOL deleted;
 @property (nonatomic, getter=isDeleted) BOOL deleted;
+@property (readonly, nonatomic, getter=isDetached) BOOL detached;
 @property (nonatomic, getter=isDetached) BOOL detached;
+@property (readonly, nonatomic, getter=isDownloading) BOOL downloading;
 @property (nonatomic, getter=isDownloading) BOOL downloading;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic) unsigned long long flags;
 @property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) BOOL hasCallbackNumber;
 @property (nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) long long mailboxType;
 @property (nonatomic, getter=isRead) BOOL read;
 @property (copy, nonatomic) NSString *receiverDestinationID; // @synthesize receiverDestinationID=_receiverDestinationID;
 @property (copy, nonatomic) NSString *receiverISOCountryCode; // @synthesize receiverISOCountryCode=_receiverISOCountryCode;
@@ -53,15 +59,19 @@
 @property (readonly, nonatomic) NSString *sender;
 @property (copy, nonatomic) NSString *senderDestinationID; // @synthesize senderDestinationID=_senderDestinationID;
 @property (copy, nonatomic) NSString *senderISOCountryCode; // @synthesize senderISOCountryCode=_senderISOCountryCode;
+@property (readonly, nonatomic, getter=isTemporary) BOOL temporary;
 @property (nonatomic, getter=isTemporary) BOOL temporary;
 @property (readonly, nonatomic) VMVoicemailTranscript *transcript;
 @property (nonatomic, getter=isTranscriptionAvailable) BOOL transcriptionAvailable;
 @property (readonly, nonatomic, getter=isTranscriptionRated) BOOL transcriptionRated;
 @property (readonly, nonatomic) unsigned long long transcriptionState;
 @property (strong, nonatomic) NSURL *transcriptionURL; // @synthesize transcriptionURL=_transcriptionURL;
+@property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
 @property (nonatomic, getter=isTrashed) BOOL trashed;
 @property (readonly, nonatomic, getter=isUnread) BOOL unread;
 
++ (unsigned long long)flagsByApplyingMailboxType:(long long)arg1 toFlags:(unsigned long long)arg2;
++ (long long)mailboxTypeForFlags:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)contactUsingContactStore:(id)arg1;
@@ -86,6 +96,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMessage:(id)arg1;
 - (BOOL)isTranscribing;
+- (id)mailboxTypeDescription;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)setFlag:(unsigned long long)arg1 enabled:(BOOL)arg2;
 - (BOOL)wasTranscriptionAttempted;

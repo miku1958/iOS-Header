@@ -6,20 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
 
-@interface SGDataDetectorMatch : NSObject
+@class NSDate, NSString, NSTimeZone;
+
+@interface SGDataDetectorMatch : NSObject <NSSecureCoding>
 {
+    BOOL _allDay;
     unsigned int _matchType;
     int _parsecDomain;
     NSString *_valueString;
     NSString *_labelString;
     NSString *_parsecWikidataQid;
+    NSDate *_detectedDate;
+    NSTimeZone *_detectedTimeZone;
     struct _NSRange _range;
     struct _NSRange _labelRange;
     struct _NSRange _valueRange;
 }
 
+@property (readonly, nonatomic) BOOL allDay; // @synthesize allDay=_allDay;
+@property (readonly, nonatomic) NSDate *detectedDate; // @synthesize detectedDate=_detectedDate;
+@property (readonly, nonatomic) NSTimeZone *detectedTimeZone; // @synthesize detectedTimeZone=_detectedTimeZone;
 @property (readonly, nonatomic) struct _NSRange labelRange; // @synthesize labelRange=_labelRange;
 @property (readonly, nonatomic) NSString *labelString; // @synthesize labelString=_labelString;
 @property (readonly, nonatomic) unsigned int matchType; // @synthesize matchType=_matchType;
@@ -29,10 +37,17 @@
 @property (readonly, nonatomic) struct _NSRange valueRange; // @synthesize valueRange=_valueRange;
 @property (readonly, nonatomic) NSString *valueString; // @synthesize valueString=_valueString;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithDetectedDate:(id)arg1 detectedTimeZone:(id)arg2 matchType:(unsigned int)arg3 range:(struct _NSRange)arg4 labelRange:(struct _NSRange)arg5 labelString:(id)arg6 valueRange:(struct _NSRange)arg7 valueString:(id)arg8 allDay:(BOOL)arg9;
 - (id)initWithLookupHintInDomain:(int)arg1 range:(struct _NSRange)arg2 labelRange:(struct _NSRange)arg3 labelString:(id)arg4 valueRange:(struct _NSRange)arg5 valueString:(id)arg6 qid:(id)arg7;
 - (id)initWithMatchType:(unsigned int)arg1 range:(struct _NSRange)arg2 labelRange:(struct _NSRange)arg3 labelString:(id)arg4 valueRange:(struct _NSRange)arg5 valueString:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToDataDetectorMatch:(id)arg1;
 
 @end
 

@@ -22,6 +22,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) BOOL isTelevisionAccessoryCategory;
+@property (readonly) BOOL isWiFiRouterAccessoryCategory;
 @property (readonly, copy, nonatomic) NSString *localizedDescription;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;

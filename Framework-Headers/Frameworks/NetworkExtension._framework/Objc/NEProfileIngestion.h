@@ -41,6 +41,7 @@
 - (id)getCertificatesForConfigurationWithIdentifier:(id)arg1;
 - (id)initWithName:(id)arg1;
 - (id)initWithNameAndType:(id)arg1 payloadType:(id)arg2;
+- (BOOL)isAutoCreatedRule:(id)arg1;
 - (BOOL)isInstalled:(id)arg1;
 - (BOOL)loadConfigurationsForceReloadFromDisk;
 - (BOOL)loadConfigurationsWithRefreshOption:(BOOL)arg1;

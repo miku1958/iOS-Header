@@ -8,30 +8,44 @@
 
 @class NSString, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface HUQuickControlStepperSegmentView : UIView
 {
-    BOOL _highlighted;
+    BOOL _isSegmentViewHighlighted;
     NSString *_title;
     unsigned long long _segmentLocation;
     double _cornerRadius;
+    unsigned long long _reachabilityState;
     UIView *_highlightedOverlayView;
     UILabel *_titleLabel;
+    unsigned long long _style;
+    unsigned long long _orientation;
+    unsigned long long _controlSize;
 }
 
+@property (nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) UIView *highlightedOverlayView; // @synthesize highlightedOverlayView=_highlightedOverlayView;
+@property (nonatomic) BOOL isSegmentViewHighlighted; // @synthesize isSegmentViewHighlighted=_isSegmentViewHighlighted;
+@property (nonatomic) unsigned long long orientation; // @synthesize orientation=_orientation;
+@property (nonatomic) unsigned long long reachabilityState; // @synthesize reachabilityState=_reachabilityState;
 @property (nonatomic) unsigned long long segmentLocation; // @synthesize segmentLocation=_segmentLocation;
+@property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
-- (void)_createHighlightedOverlayViewIfNecessary;
+- (void)_contentSizeCategoryDidChange;
 - (void)_createTitleLabelIfNecessary;
-- (void)_updateCornerMask;
+- (void)_updateTitleFont;
 - (void)_updateTitleFontSize;
+- (void)_updateTitleTextColor;
+- (void)_updateUIHighlightedOverlayView;
+- (void)dealloc;
+- (id)initWithStyle:(unsigned long long)arg1 orientation:(unsigned long long)arg2 controlSize:(unsigned long long)arg3;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setTintColor:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

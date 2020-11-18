@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) TSDBezierPath *bezierPath;
 
+- (double)TSD_valueAtPercent:(double)arg1;
 - (double)solveForTime:(double)arg1;
 @end
 

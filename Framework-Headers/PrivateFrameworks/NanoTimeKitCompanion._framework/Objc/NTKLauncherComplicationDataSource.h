@@ -11,7 +11,8 @@
 }
 
 + (BOOL)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2 forDevice:(id)arg3;
-- (void)_addBackgroundColor:(id)arg1 toTemplate:(id)arg2;
+- (void)_addBackgroundColorToTemplate:(id)arg1;
+- (id)_appBackgroundColor;
 - (id)_appTintColor;
 - (id)_appTitle;
 - (id)_circularTemplateMedium:(BOOL)arg1;

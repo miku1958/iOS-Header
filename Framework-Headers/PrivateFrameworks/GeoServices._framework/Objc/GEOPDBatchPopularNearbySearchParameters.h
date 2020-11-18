@@ -8,35 +8,50 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo, NSMutableArray, PBUnknownFields;
+@class GEOPDViewportInfo, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDBatchPopularNearbySearchParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _requestLocalTimestamp;
-    unsigned int _maxResults;
     NSMutableArray *_suggestionEntryMetadatas;
     GEOPDViewportInfo *_viewportInfo;
+    unsigned int _maxResults;
     struct {
-        unsigned int requestLocalTimestamp:1;
-        unsigned int maxResults:1;
-    } _has;
+        unsigned int has_requestLocalTimestamp:1;
+        unsigned int has_maxResults:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_suggestionEntryMetadatas:1;
+        unsigned int read_viewportInfo:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_requestLocalTimestamp:1;
+        unsigned int wrote_suggestionEntryMetadatas:1;
+        unsigned int wrote_viewportInfo:1;
+        unsigned int wrote_maxResults:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMaxResults;
 @property (nonatomic) BOOL hasRequestLocalTimestamp;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
-@property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
-@property (nonatomic) double requestLocalTimestamp; // @synthesize requestLocalTimestamp=_requestLocalTimestamp;
-@property (strong, nonatomic) NSMutableArray *suggestionEntryMetadatas; // @synthesize suggestionEntryMetadatas=_suggestionEntryMetadatas;
+@property (nonatomic) unsigned int maxResults;
+@property (nonatomic) double requestLocalTimestamp;
+@property (strong, nonatomic) NSMutableArray *suggestionEntryMetadatas;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)suggestionEntryMetadataType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsSuggestionEntryMetadata:(id)arg1;
+- (void)_readSuggestionEntryMetadatas;
+- (void)_readViewportInfo;
 - (void)addSuggestionEntryMetadata:(id)arg1;
 - (void)clearSuggestionEntryMetadatas;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)suggestionEntryMetadataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)suggestionEntryMetadatasCount;

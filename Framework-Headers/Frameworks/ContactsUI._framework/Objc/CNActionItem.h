@@ -6,27 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol CNActionViewTemplateImage;
+@class NSString, UIImage;
 
 @interface CNActionItem : NSObject
 {
     BOOL _disabled;
     NSString *_type;
+    UIImage *_image;
     NSString *_title;
-    id<CNActionViewTemplateImage> _templateImage;
 }
 
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
-@property (readonly, nonatomic) id<CNActionViewTemplateImage> templateImage; // @synthesize templateImage=_templateImage;
+@property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (readonly, nonatomic) NSString *type; // @synthesize type=_type;
 
-+ (id)actionItemWithImage:(id)arg1 type:(id)arg2;
-+ (id)actionItemWithTemplateImage:(id)arg1 type:(id)arg2;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithTemplateImage:(id)arg1 type:(id)arg2;
+- (id)initWithImage:(id)arg1 type:(id)arg2;
 
 @end
 

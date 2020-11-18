@@ -25,6 +25,7 @@
 - (void)linksTo:(id)arg1 matchType:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)linksTo:(id)arg1 matchType:(long long)arg2 error:(id *)arg3;
 - (void)removeValueForKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)removeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setValuesForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unlinkTo:(id)arg1 withPredicate:(id)arg2 ignoreWeights:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -14,7 +14,7 @@
 - (double)waveformSelectionOverlay:(RCWaveformSelectionOverlay *)arg1 timeForOffset:(double)arg2;
 - (void)waveformSelectionOverlay:(RCWaveformSelectionOverlay *)arg1 willBeginTrackingSelectionBeginTime:(BOOL)arg2 endTime:(BOOL)arg3 assetCurrentTime:(BOOL)arg4;
 - (double)waveformSelectionOverlay:(RCWaveformSelectionOverlay *)arg1 willChangeAssetCurrentTime:(double)arg2 isTracking:(BOOL)arg3;
-- (CDStruct_73a5d3ca)waveformSelectionOverlay:(RCWaveformSelectionOverlay *)arg1 willChangeSelectedTimeRange:(CDStruct_73a5d3ca)arg2 isTracking:(BOOL)arg3;
+- (CDStruct_73a5d3ca)waveformSelectionOverlay:(RCWaveformSelectionOverlay *)arg1 willChangeSelectedTimeRange:(CDStruct_73a5d3ca)arg2 isTrackingMin:(BOOL)arg3 isTrackingMax:(BOOL)arg4;
 - (double)waveformSelectionOverlayGetCurrentTime:(RCWaveformSelectionOverlay *)arg1;
 @end
 

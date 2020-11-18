@@ -14,32 +14,32 @@ __attribute__((visibility("hidden")))
 @interface GEOPDComponent : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
-    double _timestampFirstSeen;
     GEOPDAttribution *_attribution;
-    int _cacheControl;
     GEOPDSource *_source;
+    double _timestampFirstSeen;
+    NSMutableArray *_values;
+    NSMutableArray *_versionDomains;
+    int _cacheControl;
     int _startIndex;
     int _status;
     unsigned int _ttl;
     int _type;
-    NSMutableArray *_values;
     int _valuesAvailable;
     unsigned int _version;
-    NSMutableArray *_versionDomains;
     struct {
-        unsigned int timestampFirstSeen:1;
-        unsigned int cacheControl:1;
-        unsigned int startIndex:1;
-        unsigned int status:1;
-        unsigned int ttl:1;
-        unsigned int type:1;
-        unsigned int valuesAvailable:1;
-        unsigned int version:1;
-    } _has;
+        unsigned int has_timestampFirstSeen:1;
+        unsigned int has_cacheControl:1;
+        unsigned int has_startIndex:1;
+        unsigned int has_status:1;
+        unsigned int has_ttl:1;
+        unsigned int has_type:1;
+        unsigned int has_valuesAvailable:1;
+        unsigned int has_version:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOPDAttribution *attribution; // @synthesize attribution=_attribution;
-@property (nonatomic) int cacheControl; // @synthesize cacheControl=_cacheControl;
+@property (strong, nonatomic) GEOPDAttribution *attribution;
+@property (nonatomic) int cacheControl;
 @property (readonly, nonatomic) BOOL hasAttribution;
 @property (nonatomic) BOOL hasCacheControl;
 @property (readonly, nonatomic) BOOL hasSource;
@@ -50,18 +50,19 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) BOOL hasValuesAvailable;
 @property (nonatomic) BOOL hasVersion;
-@property (strong, nonatomic) GEOPDSource *source; // @synthesize source=_source;
-@property (nonatomic) int startIndex; // @synthesize startIndex=_startIndex;
-@property (nonatomic) int status; // @synthesize status=_status;
+@property (strong, nonatomic) GEOPDSource *source;
+@property (nonatomic) int startIndex;
+@property (nonatomic) int status;
 @property (nonatomic) double timestampFirstSeen;
-@property (nonatomic) unsigned int ttl; // @synthesize ttl=_ttl;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) unsigned int ttl;
+@property (nonatomic) int type;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *values; // @synthesize values=_values;
-@property (nonatomic) int valuesAvailable; // @synthesize valuesAvailable=_valuesAvailable;
-@property (nonatomic) unsigned int version; // @synthesize version=_version;
-@property (strong, nonatomic) NSMutableArray *versionDomains; // @synthesize versionDomains=_versionDomains;
+@property (strong, nonatomic) NSMutableArray *values;
+@property (nonatomic) int valuesAvailable;
+@property (nonatomic) unsigned int version;
+@property (strong, nonatomic) NSMutableArray *versionDomains;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)valueType;
 + (Class)versionDomainType;
 - (void).cxx_destruct;
@@ -71,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)addValue:(id)arg1;
 - (void)addVersionDomain:(id)arg1;
 - (id)cacheControlAsString:(int)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearValues;
 - (void)clearVersionDomains;
 - (void)copyTo:(id)arg1;
@@ -80,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
 - (BOOL)statusCodeIsValid;

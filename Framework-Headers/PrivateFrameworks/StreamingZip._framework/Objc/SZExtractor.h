@@ -52,9 +52,11 @@
 - (void).cxx_destruct;
 - (void)_invalidateObject;
 - (BOOL)_isValidObject;
+- (void)_prepareForExtractionSynchronously:(BOOL)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_prepareForLocalExtraction:(CDUnknownBlockType)arg1;
-- (void)_prepareForRemoteExtraction:(CDUnknownBlockType)arg1;
+- (void)_prepareForRemoteExtractionSynchronously:(BOOL)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_setUpWithPath:(id)arg1 options:(id)arg2;
+- (void)_suspendStreamWithCompletionBlockSynchronously:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_synchronouslyPrepareForExtractionAtOffset:(unsigned long long *)arg1;
 - (BOOL)consumeExtractedDataIfNeeded;
 - (id)copyWithZone:(struct _NSZone *)arg1;

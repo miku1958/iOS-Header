@@ -21,6 +21,7 @@
 @property (nonatomic, getter=isCriticalAlert) BOOL criticalAlert; // @dynamic criticalAlert;
 @property (strong, nonatomic) NCNotificationAction *defaultAction; // @dynamic defaultAction;
 @property (copy, nonatomic) NSString *highestPrioritySubSectionIdentifier; // @dynamic highestPrioritySubSectionIdentifier;
+@property (copy, nonatomic) NSArray *intentIdentifiers; // @dynamic intentIdentifiers;
 @property (nonatomic) BOOL isCollapsedNotification; // @dynamic isCollapsedNotification;
 @property (copy, nonatomic) NSString *notificationIdentifier; // @dynamic notificationIdentifier;
 @property (strong, nonatomic) NCNotificationOptions *options; // @dynamic options;

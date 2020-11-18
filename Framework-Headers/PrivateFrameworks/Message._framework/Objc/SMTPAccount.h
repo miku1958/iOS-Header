@@ -28,6 +28,7 @@
 + (id)newDefaultInstance;
 + (void)registerAppleServiceDeliveryHostname:(id)arg1;
 + (id)saslProfileName;
+- (void).cxx_destruct;
 - (id)_defaultSettingsWithPort:(unsigned int)arg1 useSSL:(BOOL)arg2 directSSL:(BOOL)arg3;
 - (BOOL)_isAppleServiceDeliveryHostname:(id)arg1;
 - (BOOL)_shouldTryDirectSSLConnectionOnPort:(unsigned int)arg1;

@@ -11,7 +11,6 @@
     BOOL wideColorSpace;
 }
 
-+ (id)typeString;
 - (BOOL)wideColorSpace;
 
 @end

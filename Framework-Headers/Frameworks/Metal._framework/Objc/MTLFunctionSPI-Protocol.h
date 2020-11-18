@@ -7,7 +7,7 @@
 #import <Metal/MTLFunction-Protocol.h>
 
 @class MTLFunctionReflection, MTLType, NSArray, NSData, NSString;
-@protocol MTLIndirectArgumentEncoder;
+@protocol MTLFunction;
 
 @protocol MTLFunctionSPI <MTLFunction>
 
@@ -20,8 +20,7 @@
 
 - (const CDStruct_41a22ec7 *)bitCodeHash;
 - (NSData *)bitcodeData;
-- (id<MTLIndirectArgumentEncoder>)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1;
-- (id<MTLIndirectArgumentEncoder>)newIndirectArgumentEncoderWithBufferIndex:(unsigned long long)arg1 reflection:(id *)arg2;
+- (id<MTLFunction>)newFunctionWithPluginData:(NSData *)arg1 bitcodeType:(unsigned char)arg2;
 - (MTLFunctionReflection *)reflectionWithOptions:(unsigned long long)arg1;
 - (void)reflectionWithOptions:(unsigned long long)arg1 completionHandler:(void (^)(MTLFunctionReflection *))arg2;
 @end

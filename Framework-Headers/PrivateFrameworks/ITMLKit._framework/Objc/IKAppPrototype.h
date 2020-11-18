@@ -6,23 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class IKDOMPrototype, IKViewElement, NSIndexSet, NSMutableIndexSet;
+@class IKAppPrototypeIdentifier, IKDOMPrototype, NSDictionary, NSIndexSet, NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
 @interface IKAppPrototype : NSObject
 {
     NSMutableIndexSet *_usageIndexes;
+    IKAppPrototypeIdentifier *_identifier;
     IKDOMPrototype *_prototype;
-    IKViewElement *_viewElement;
+    NSDictionary *_groupingValues;
 }
 
+@property (readonly, copy, nonatomic) NSDictionary *groupingValues; // @synthesize groupingValues=_groupingValues;
+@property (readonly, nonatomic) IKAppPrototypeIdentifier *identifier; // @synthesize identifier=_identifier;
 @property (readonly, weak, nonatomic) IKDOMPrototype *prototype; // @synthesize prototype=_prototype;
 @property (readonly, copy, nonatomic) NSIndexSet *usageIndexes;
-@property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 - (void).cxx_destruct;
+- (id)_sparseObjectFromObject:(id)arg1 usingPropertyPaths:(id)arg2;
 - (void)addUsageForIndex:(long long)arg1;
-- (id)initWithPrototype:(id)arg1;
+- (void)dsepm_setViewElement:(id)arg1;
+- (id)dsepm_viewElement;
+- (id)initWithPrototype:(id)arg1 dataItem:(id)arg2;
 - (void)removeUsageForIndex:(long long)arg1;
 - (void)updateUsageIndexesWithChangeSet:(id)arg1;
 

@@ -6,13 +6,14 @@
 
 #import <PassKitUI/PKSectionTableViewController.h>
 
+#import <PassKitUI/CNContactViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentContactResolverDelegate-Protocol.h>
 
 @class NSArray, NSDateFormatter, NSString, NSTimeZone, PKPaymentPass, PKPaymentTransaction, PKPaymentTransactionCellController, PKPaymentTransactionDetailHeaderView, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentStatusResponse, PKTransactionDetailBottomContainer, UIImage;
 @protocol PKPaymentDataProvider;
 
-@interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <PKPeerPaymentContactResolverDelegate, PKPaymentDataProviderDelegate>
+@interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <PKPeerPaymentContactResolverDelegate, PKPaymentDataProviderDelegate, CNContactViewControllerDelegate>
 {
     long long _detailViewStyle;
     BOOL _showRawName;
@@ -67,6 +68,7 @@
 - (id)_amountDetailsCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (unsigned long long)_amountDetailsRowForIndex:(unsigned long long)arg1;
 - (BOOL)_amountDetailsRowIsEnabled:(unsigned long long)arg1;
+- (void)_applyAmountDetailSeparatorInsetForTableView:(id)arg1 cell:(id)arg2;
 - (id)_debugDetailCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (id)_fraudRiskCellForTableView:(id)arg1;
 - (void)_handlePeerPaymentDisplayableError:(id)arg1 withPeerPaymentController:(id)arg2;
@@ -93,19 +95,18 @@
 - (void)_tableView:(id)arg1 didSelectMechantAddressAtIndexPath:(id)arg2;
 - (void)_tableView:(id)arg1 didSelectPeerPaymentAction:(id)arg2 atIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 willDisplayAmountDetailsCell:(id)arg2 atIndexPath:(id)arg3;
-- (id)_titleValueCellWithTitle:(id)arg1 value:(id)arg2;
 - (BOOL)_transactionHasNonZeroSecondaryFundingSourceAmount;
 - (id)_transactionIdentifierCellForTableView:(id)arg1;
 - (id)_transactionStatusString;
 - (void)_updatePeerPaymentTransactionStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateTableHeaderHeight;
+- (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
+- (BOOL)contactViewController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
 - (void)contactsDidChangeForContactResolver:(id)arg1;
 - (id)formattedBalanceAdjustmentAmountWithTransitDescriptors;
 - (id)initWithTransaction:(id)arg1 paymentPass:(id)arg2 contactResolver:(id)arg3 peerPaymentController:(id)arg4 paymentServiceDataProvider:(id)arg5 detailViewStyle:(long long)arg6 allowTransactionLinks:(BOOL)arg7;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setTransaction:(id)arg1;
 - (BOOL)shouldMapSection:(unsigned long long)arg1;

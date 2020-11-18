@@ -19,10 +19,12 @@
 - (BOOL)_accessibilityUIViewCanPerformEscapeAction;
 - (void)_axAddCustomActionWithName:(id)arg1 gesture:(unsigned long long)arg2 toArray:(id)arg3;
 - (BOOL)_axPerformGestureForAction:(id)arg1;
+- (BOOL)_isTransparentFocusRegion;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (BOOL)accessibilityPerformEscape;
+- (BOOL)accessibilityScroll:(long long)arg1;
 - (id)actionsForFloatingAppNubView;
 - (id)actionsForPinnedAppNubView;
 - (id)actionsForSideAppDivider;

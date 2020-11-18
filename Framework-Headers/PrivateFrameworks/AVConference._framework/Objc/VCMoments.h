@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     unsigned char _mode;
     NSObject<OS_dispatch_queue> *delegateNotificationQueue;
     int _currentActiveRequestsCount;
-    BOOL _isClientRegistered;
+    BOOL _isActive;
     VideoAttributes *_remoteScreenAttributes;
     NSMutableSet *_requests;
     BOOL _lastRequest;
@@ -32,12 +32,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isClientRegistered; // @synthesize isClientRegistered=_isClientRegistered;
+@property (nonatomic) int imageType;
+@property (readonly, nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
 @property (strong, nonatomic) VideoAttributes *remoteScreenAttributes; // @synthesize remoteScreenAttributes=_remoteScreenAttributes;
 @property (readonly) Class superclass;
+@property (nonatomic) int videoCodec;
 
 + (unsigned long long)deviceFreeDiskSpace;
 + (BOOL)deviceHasSufficientFreeSpace;
++ (unsigned long long)fileSize:(id)arg1;
+- (void)_generateRequest:(unsigned char)arg1 requestState:(unsigned char)arg2 transactionID:(id)arg3 timestamp:(unsigned int)arg4;
 - (void)addLocalAudioSample:(struct opaqueVCAudioBufferList *)arg1 timestamp:(unsigned int)arg2;
 - (void)addLocalVideoSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 cameraStatusBits:(unsigned char)arg2 timestamp:(unsigned int)arg3;
 - (void)addRemoteAudioSample:(struct opaqueVCAudioBufferList *)arg1 timestamp:(unsigned int)arg2;
@@ -56,15 +60,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)processClientRequest:(id)arg1 error:(id *)arg2;
 - (void)processRemoteLivePhotoRequest:(id)arg1;
 - (void)processRemotePhotoRequest:(id)arg1;
-- (void)processRemoteVideoRequest:(id)arg1;
+- (void)processRemoteRequest:(id)arg1 withMediaType:(unsigned char)arg2;
 - (void)processRequest:(id)arg1;
 - (void)registerClient;
 - (void)setFrameRate:(float)arg1;
 - (void)setMomentsDelegate:(id)arg1;
 - (void)setTransportDelegate:(id)arg1;
 - (id)transportDelegate;
+- (void)updateActiveStatus;
 - (void)updateRemoteScreenAttributes:(id)arg1;
 - (void)updateVCMomentsMode;
+- (BOOL)validateIncomingRequest:(id)arg1;
 - (BOOL)validateNumberOfRequestsWithError:(id *)arg1;
 
 @end

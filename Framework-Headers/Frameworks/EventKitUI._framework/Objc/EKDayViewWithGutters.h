@@ -12,6 +12,7 @@
 {
     EKDayAllDayView *_leftAllDayView;
     EKDayAllDayView *_rightAllDayView;
+    long long _targetSizeClass;
     UIView *_leftGutter;
     UIView *_rightGutter;
     EKDayView *_dayView;
@@ -27,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)_createAllDayView;
-- (id)initWithFrame:(struct CGRect)arg1 dayView:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 dayView:(id)arg2 sizeClass:(long long)arg3;
 
 @end
 

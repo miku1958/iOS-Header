@@ -10,15 +10,12 @@
 
 @interface HMFMutableNetService : HMFNetService
 {
-    unsigned long long _port;
-    BOOL _publishing;
     CDUnknownBlockType _publishBlock;
 }
 
-@property (copy, nonatomic) NSDictionary *TXTRecord; // @dynamic TXTRecord;
-@property (nonatomic) unsigned long long port; // @synthesize port=_port;
+@property (copy) NSDictionary *TXTRecord; // @dynamic TXTRecord;
+@property unsigned long long port; // @dynamic port;
 @property (copy, nonatomic) CDUnknownBlockType publishBlock; // @synthesize publishBlock=_publishBlock;
-@property (getter=isPublishing) BOOL publishing; // @synthesize publishing=_publishing;
 
 - (void).cxx_destruct;
 - (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3 port:(unsigned long long)arg4;

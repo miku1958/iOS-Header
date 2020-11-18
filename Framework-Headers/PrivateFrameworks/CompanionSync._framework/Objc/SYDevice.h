@@ -22,15 +22,19 @@
     NSDate *_lastActiveDate;
     BOOL _hasCachedNearby;
     BOOL _cachedIsNearby;
+    BOOL _hasCachedConnected;
+    BOOL _cachedConnected;
     long long _state;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
+@property (nonatomic) BOOL cachedConnected; // @synthesize cachedConnected=_cachedConnected;
 @property (nonatomic) BOOL cachedIsNearby; // @synthesize cachedIsNearby=_cachedIsNearby;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (readonly, nonatomic) long long deviceCode;
+@property (nonatomic) BOOL hasCachedConnected; // @synthesize hasCachedConnected=_hasCachedConnected;
 @property (nonatomic) BOOL hasCachedNearby; // @synthesize hasCachedNearby=_hasCachedNearby;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDate *lastActiveDate; // @synthesize lastActiveDate=_lastActiveDate;

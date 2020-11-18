@@ -24,6 +24,7 @@
 - (id)dataFromImage:(id)arg1;
 - (id)fileExtension;
 - (id)imageFromData:(id)arg1 error:(id *)arg2;
+- (id)imageFromURL:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)initWithCompressionQuality:(double)arg1;
 

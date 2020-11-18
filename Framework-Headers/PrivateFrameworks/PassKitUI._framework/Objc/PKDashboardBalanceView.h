@@ -6,7 +6,7 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class NSString, UIButton, UILabel;
+@class NSString, PKContinuousButton, UILabel;
 
 @interface PKDashboardBalanceView : PKDashboardCollectionViewCell
 {
@@ -15,7 +15,7 @@
     UILabel *_detailLabel;
     UILabel *_availableCreditLabel;
     NSString *_title;
-    UIButton *_actionButton;
+    PKContinuousButton *_actionButton;
     BOOL _topUpEnabled;
     NSString *_balance;
     NSString *_availableCredit;
@@ -25,7 +25,7 @@
 
 @property (copy, nonatomic) NSString *availableCredit; // @synthesize availableCredit=_availableCredit;
 @property (copy, nonatomic) NSString *balance; // @synthesize balance=_balance;
-@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) CDUnknownBlockType topUpAction; // @synthesize topUpAction=_topUpAction;
 @property (nonatomic) BOOL topUpEnabled; // @synthesize topUpEnabled=_topUpEnabled;
 @property (copy, nonatomic) NSString *topUpTitle; // @synthesize topUpTitle=_topUpTitle;
@@ -37,7 +37,6 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)resetFonts;
-- (void)setTitle:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

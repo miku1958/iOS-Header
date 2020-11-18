@@ -13,7 +13,7 @@
 }
 
 @property (strong, nonatomic) NSString *calendarAlarmPath; // @dynamic calendarAlarmPath;
-@property (readonly, nonatomic) BOOL playSoundOnBasebandReset; // @dynamic playSoundOnBasebandReset;
+@property (readonly, nonatomic) BOOL debugEUVolumeLimit; // @dynamic debugEUVolumeLimit;
 @property (readonly, nonatomic) BOOL playSoundOnDeviceWake; // @dynamic playSoundOnDeviceWake;
 @property (nonatomic, getter=isRingerMuted) BOOL ringerMuted; // @dynamic ringerMuted;
 @property (readonly, nonatomic) BOOL vibrateWhenRinging; // @dynamic vibrateWhenRinging;

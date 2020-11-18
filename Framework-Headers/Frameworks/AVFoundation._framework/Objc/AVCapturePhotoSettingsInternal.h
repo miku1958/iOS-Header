@@ -8,6 +8,7 @@
 
 @class NSArray, NSDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVCapturePhotoSettingsInternal : NSObject
 {
     NSDictionary *format;
@@ -17,11 +18,13 @@
     long long uniqueID;
     long long flashMode;
     BOOL autoRedEyeReductionEnabled;
+    long long digitalFlashMode;
     long long HDRMode;
     BOOL EV0PhotoDeliveryEnabled;
-    BOOL autoStillImageStabilizationEnabled;
-    BOOL autoDualCameraFusionEnabled;
-    BOOL dualCameraDualPhotoDeliveryEnabled;
+    long long photoQualityPrioritization;
+    BOOL photoQualityPrioritizationIsSetByClient;
+    BOOL autoVirtualDeviceFusionEnabled;
+    NSArray *virtualDeviceConstituentPhotoDeliveryEnabledDevices;
     BOOL highResolutionPhotoEnabled;
     BOOL depthDataDeliveryEnabled;
     BOOL embedsDepthDataInPhoto;
@@ -29,6 +32,8 @@
     BOOL cameraCalibrationDataDeliveryEnabled;
     BOOL portraitEffectsMatteDeliveryEnabled;
     BOOL embedsPortraitEffectsMatteInPhoto;
+    NSArray *enabledSemanticSegmentationMatteTypes;
+    BOOL embedsSemanticSegmentationMattesInPhoto;
     NSDictionary *metadata;
     NSURL *livePhotoMovieFileURL;
     NSURL *livePhotoMovieFileURLForOriginalPhoto;
@@ -45,6 +50,23 @@
     NSArray *adjustedPhotoFilters;
     unsigned int shutterSound;
     unsigned long long userInitiatedPhotoRequestTime;
+    BOOL autoDeferredProcessingEnabled;
+    NSURL *HEICSFileURL;
+    NSURL *videoFileURL;
+    NSDictionary *videoFormat;
+    NSArray *videoFileMetadata;
+    BOOL autoSpatialOverCaptureEnabled;
+    NSDictionary *spatialOverCaptureMetadata;
+    NSURL *spatialOverCaptureLivePhotoMovieFileURL;
+    NSArray *spatialOverCaptureLivePhotoMovieMetadata;
+    NSString *spatialOverCaptureLivePhotoContentIdentifier;
+    NSString *spatialOverCaptureGroupIdentifier;
+    NSDictionary *spatialOverCaptureMetadataForOriginalPhoto;
+    NSURL *spatialOverCaptureLivePhotoMovieFileURLForOriginalPhoto;
+    NSArray *spatialOverCaptureLivePhotoMovieMetadataForOriginalPhoto;
+    NSString *spatialOverCaptureLivePhotoContentIdentifierForOriginalPhoto;
+    NSString *spatialOverCaptureGroupIdentifierForOriginalPhoto;
+    BOOL processedPhotoZoomWithoutUpscalingEnabled;
     NSString *livePhotoContentIdentifier;
     NSString *livePhotoContentIdentifierForOriginalPhoto;
 }

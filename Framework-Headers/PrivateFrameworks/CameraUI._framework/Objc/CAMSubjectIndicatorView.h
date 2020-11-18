@@ -18,6 +18,7 @@
 @property (nonatomic, getter=isPulsing) BOOL pulsing;
 
 + (struct CGSize)_fixedSubjectIndicatorSizeForReferenceBounds:(struct CGSize)arg1;
++ (struct CGSize)fixedSize;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

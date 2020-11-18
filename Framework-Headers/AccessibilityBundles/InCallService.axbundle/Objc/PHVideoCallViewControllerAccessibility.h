@@ -22,6 +22,7 @@
 - (long long)_axDevicePosition;
 - (void)_refreshStatusBarAndPIPAnimated:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
+- (void)autoFadeOutBottomBar;
 - (void)loadView;
 - (void)setControlsState:(long long)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)toggleLocalCameraType;

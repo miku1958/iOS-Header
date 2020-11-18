@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/NSExtensionRequestHandling-Protocol.h>
+#import <AudioToolboxCore/NSExtensionRequestHandling-Protocol.h>
 
 @class AUAudioUnit;
 

@@ -91,6 +91,7 @@ __attribute__((visibility("hidden")))
 - (struct TSTCellUID)cellUIDforBaseCellCoord:(const struct TSUModelCellCoord *)arg1;
 - (id)cellValueFromCell:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2;
 - (int)cellValueTypeAtCellID:(struct TSUViewCellCoord)arg1;
+- (id)characterFillAtCellID:(struct TSUViewCellCoord)arg1 optionalCell:(id)arg2;
 - (BOOL)checkMapsAndAssert:(BOOL)arg1;
 - (struct TSUChromeCellCoord)chromeCellCoordForBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (struct TSUChromeCellCoord)chromeCellCoordForViewCellCoord:(struct TSUViewCellCoord)arg1;
@@ -122,7 +123,6 @@ __attribute__((visibility("hidden")))
 - (void)enumerateMergesIntersectingCellRegion:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (struct TSUViewCellRect)expandCellRangeToCoverMergedCells:(struct TSUViewCellRect)arg1;
 - (id)expandCellRegionToCoverMergedCells:(id)arg1;
-- (id)fontColorAtCellID:(struct TSUViewCellCoord)arg1 optionalCell:(id)arg2;
 - (void)forceGroupingChangeReset;
 - (struct TSCEFormula *)formulaAtCellID:(struct TSUViewCellCoord)arg1;
 - (int)getCell:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2;

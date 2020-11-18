@@ -54,8 +54,8 @@ __attribute__((visibility("hidden")))
 - (id)_createImageViewForTimestamp:(id)arg1 isSummaryThumbnail:(BOOL)arg2;
 - (void)_reallyReloadData;
 - (void)_setOverlayViewIsZoomed:(BOOL)arg1 minValue:(float)arg2 maxValue:(float)arg3;
-- (void)_unzoomAnimation:(id)arg1 didFinish:(id)arg2 context:(id)arg3;
-- (void)_zoomAnimation:(id)arg1 didFinish:(id)arg2 context:(id)arg3;
+- (void)_unzoomAnimationDidFinish;
+- (void)_zoomAnimationDidFinish;
 - (void)animateFillFramesAway;
 - (void)clear;
 - (id)initWithFrame:(struct CGRect)arg1;

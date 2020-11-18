@@ -18,17 +18,23 @@ __attribute__((visibility("hidden")))
     id<CNUINavigationListViewDelegate> _navigationListViewDelegate;
     UILongPressGestureRecognizer *_selectionGestureRecognizer;
     UIGestureRecognizer *_additionalSelectionGestureRecognizer;
+    UIGestureRecognizer *_pressGestureRecognizer;
     NSIndexPath *_trackedElementIndexPath;
     UISelectionFeedbackGenerator *_retargetBehavior;
     _CNUINavigationListViewPermissiveGestureRecognizerDelegate *_selectionGestureRecognizerDelegate;
+    struct CGPoint _gestureStartLocation;
+    struct CGPoint _gestureStartLocationInWindow;
 }
 
 @property (strong, nonatomic) UIGestureRecognizer *additionalSelectionGestureRecognizer; // @synthesize additionalSelectionGestureRecognizer=_additionalSelectionGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct CGPoint gestureStartLocation; // @synthesize gestureStartLocation=_gestureStartLocation;
+@property (nonatomic) struct CGPoint gestureStartLocationInWindow; // @synthesize gestureStartLocationInWindow=_gestureStartLocationInWindow;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<CNUINavigationListViewDataSource> navigationListViewDataSource; // @synthesize navigationListViewDataSource=_navigationListViewDataSource;
 @property (weak, nonatomic) id<CNUINavigationListViewDelegate> navigationListViewDelegate; // @synthesize navigationListViewDelegate=_navigationListViewDelegate;
+@property (strong, nonatomic) UIGestureRecognizer *pressGestureRecognizer; // @synthesize pressGestureRecognizer=_pressGestureRecognizer;
 @property (strong, nonatomic) UISelectionFeedbackGenerator *retargetBehavior; // @synthesize retargetBehavior=_retargetBehavior;
 @property (strong, nonatomic) UILongPressGestureRecognizer *selectionGestureRecognizer; // @synthesize selectionGestureRecognizer=_selectionGestureRecognizer;
 @property (strong, nonatomic) _CNUINavigationListViewPermissiveGestureRecognizerDelegate *selectionGestureRecognizerDelegate; // @synthesize selectionGestureRecognizerDelegate=_selectionGestureRecognizerDelegate;
@@ -43,9 +49,11 @@ __attribute__((visibility("hidden")))
 - (id)disclosureNavigationListViewCellForRowAtIndexPath:(id)arg1;
 - (id)elementAtLocation:(struct CGPoint)arg1;
 - (void)handlePanGestureRecognizerUpdate:(id)arg1;
+- (void)handlePressSelection;
 - (void)handleSelectionGestureRecognizerUpdate:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 - (BOOL)location:(struct CGPoint)arg1 isInAccessoryControlTouchArea:(id)arg2;
+- (void)notifyDelegateWithSelectionEventAtIndexPath:(id)arg1;
 - (void)notifyDelegateWithSelectionEventAtPoint:(struct CGPoint)arg1 trackedElementIndexPath:(id)arg2;
 - (void)startTrackingElementAtIndexPath:(id)arg1;
 - (void)startTrackingSelectionFromGestureRecognizer:(id)arg1;

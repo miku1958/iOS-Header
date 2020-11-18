@@ -4,20 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ClassroomKit/CRKKeyValuePair.h>
 
-@interface CRKTableKeyValuePair : NSObject
+@interface CRKTableKeyValuePair : CRKKeyValuePair
 {
-    id _key;
-    id _value;
 }
 
-@property (readonly, nonatomic) id key; // @synthesize key=_key;
-@property (readonly, nonatomic) id value; // @synthesize value=_value;
-
 + (id)pairWithKey:(id)arg1 value:(id)arg2;
-- (void).cxx_destruct;
-- (id)initWithKey:(id)arg1 value:(id)arg2;
 
 @end
 

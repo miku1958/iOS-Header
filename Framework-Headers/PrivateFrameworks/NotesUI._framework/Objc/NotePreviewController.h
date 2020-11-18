@@ -6,14 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <NotesUI/ICNotePreviewing-Protocol.h>
 #import <NotesUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, NoteContentLayer, NoteObject, NotesBackgroundView;
+@class ICSearchResult, NSString, NoteContentLayer, NoteObject, NotesBackgroundView;
 
-@interface NotePreviewController : UIViewController <UITextViewDelegate>
+@interface NotePreviewController : UIViewController <UITextViewDelegate, ICNotePreviewing>
 {
-    NoteObject *_note;
     NoteContentLayer *_contentLayer;
+    NoteObject *_note;
+    ICSearchResult *_searchResult;
 }
 
 @property (readonly, nonatomic) NotesBackgroundView *backgroundView;
@@ -22,12 +24,19 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NoteObject *note; // @synthesize note=_note;
+@property (strong, nonatomic) ICSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)setupHTMLNotePreview;
-- (void)setupHTMLNotePreviewWithFrame:(struct CGRect)arg1;
-- (void)viewDidLoad;
+- (void)applicationDidBecomeActive:(id)arg1;
+- (id)attachmentContentIDs;
+- (void)dealloc;
+- (id)initWithNote:(id)arg1;
+- (id)initWithNote:(id)arg1 searchResult:(id)arg2;
+- (void)setupPreview;
+- (void)setupPreviewWithInitialFrame:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateForceLightContentIfNecessary;
 
 @end
 

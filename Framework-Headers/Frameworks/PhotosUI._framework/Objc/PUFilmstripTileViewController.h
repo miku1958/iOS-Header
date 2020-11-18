@@ -7,11 +7,12 @@
 #import <PhotosUI/PUImageTileViewController.h>
 
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PUBrowsingVideoPlayerTimeObserver-Protocol.h>
 
 @class NSString, PUFilmstripWrapperView;
 
 __attribute__((visibility("hidden")))
-@interface PUFilmstripTileViewController : PUImageTileViewController <PUAssetViewModelChangeObserver>
+@interface PUFilmstripTileViewController : PUImageTileViewController <PUAssetViewModelChangeObserver, PUBrowsingVideoPlayerTimeObserver>
 {
     BOOL __isExpanded;
     PUFilmstripWrapperView *__wrapperView;
@@ -35,6 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)didChangeVisibleRect;
 - (id)loadView;
 - (void)setAssetViewModel:(id)arg1;
+- (void)videoPlayer:(id)arg1 currentTimeDidChange:(CDStruct_1b6d18a9)arg2;
+- (void)videoPlayer:(id)arg1 desiredSeekTimeDidChange:(CDStruct_1b6d18a9)arg2;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 - (BOOL)wantsVisibleRectChanges;
 

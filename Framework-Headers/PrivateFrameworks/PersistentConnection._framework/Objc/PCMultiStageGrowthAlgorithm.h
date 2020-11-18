@@ -31,6 +31,12 @@ __attribute__((visibility("hidden")))
     NSObject<OS_os_log> *_logObject;
     BOOL _isServerOriginatedKeepAlive;
     BOOL _minimumIntervalFallbackEnabled;
+    int _lastKeepAliveAlgorithmMode;
+    int _currentKeepAliveAlgorithmMode;
+    double _serverStatsMinKeepAliveInterval;
+    double _serverStatsMaxKeepAliveInterval;
+    double _serverStatsExpectedKeepAliveInterval;
+    BOOL _usingServerStatsAggressively;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *cacheInfo;
@@ -45,22 +51,30 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double maximumKeepAliveInterval; // @synthesize maximumKeepAliveInterval=_maximumKeepAliveInterval;
 @property (nonatomic) BOOL minimumIntervalFallbackEnabled; // @synthesize minimumIntervalFallbackEnabled=_minimumIntervalFallbackEnabled;
 @property (nonatomic) double minimumKeepAliveInterval; // @synthesize minimumKeepAliveInterval=_minimumKeepAliveInterval;
+@property (nonatomic) double serverStatsExpectedKeepAliveInterval; // @synthesize serverStatsExpectedKeepAliveInterval=_serverStatsExpectedKeepAliveInterval;
+@property (nonatomic) double serverStatsMaxKeepAliveInterval; // @synthesize serverStatsMaxKeepAliveInterval=_serverStatsMaxKeepAliveInterval;
+@property (nonatomic) double serverStatsMinKeepAliveInterval; // @synthesize serverStatsMinKeepAliveInterval=_serverStatsMinKeepAliveInterval;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL usingServerStatsAggressively; // @synthesize usingServerStatsAggressively=_usingServerStatsAggressively;
 
 + (void)_loadDefaultValue:(double *)arg1 forKey:(struct __CFString *)arg2;
 + (void)_loadDefaults;
 - (void).cxx_destruct;
+- (void)_adjustGrowthAlgorithmMode;
 - (void)_fallbackToLastSuccessfulKeepAliveInterval;
 - (void)_processBackoffAction:(int)arg1;
 - (void)_processInitialGrowthAction:(int)arg1;
+- (void)_processInitialShrinkAction:(int)arg1;
 - (void)_processMinimumIntervalFallbackStateAction:(int)arg1;
 - (void)_processRefinedGrowthAction:(int)arg1;
+- (void)_processRefinedShrinkAction:(int)arg1;
 - (void)_processSteadyStateAction:(int)arg1;
 - (void)_resetAlgorithmToInterval:(double)arg1;
 - (void)_resetAlgorithmToInterval:(double)arg1 stage:(int)arg2;
 - (void)_setCurrentKeepAliveInterval:(double)arg1;
 - (double)_steadyStateTimeout;
 - (id)_stringForAction:(int)arg1;
+- (id)_stringForMode:(int)arg1;
 - (id)_stringForStage:(int)arg1;
 - (id)initWithCacheInfo:(id)arg1 loggingIdentifier:(id)arg2 algorithmName:(id)arg3;
 - (void)processNextAction:(int)arg1;

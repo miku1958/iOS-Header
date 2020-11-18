@@ -11,8 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)immutablePlaceholder;
-+ (void)initialize;
 - (id)__initWithName:(id)arg1 cache:(BOOL)arg2;
 - (id)__initWithName:(id)arg1 data:(id)arg2 cache:(BOOL)arg3;
 - (id)abbreviationForDate:(id)arg1;

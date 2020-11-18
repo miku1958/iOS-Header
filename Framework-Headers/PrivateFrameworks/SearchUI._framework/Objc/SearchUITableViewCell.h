@@ -8,58 +8,61 @@
 
 #import <SearchUI/SearchUIKeyboardableNavigationProtocol-Protocol.h>
 
-@class NSArray, NSString, SearchUIDragSource, SearchUIDropTarget, UIView, UIViewController;
-@protocol SearchUIFeedbackDelegateInternal, SearchUIResultShortLook, SearchUIRowModel;
+@class NSArray, NSString, SearchUIDragSource, SearchUIRowModel, UIView, UIViewController;
+@protocol SearchUIFeedbackDelegateInternal, SearchUIResultShortLook;
 
 @interface SearchUITableViewCell : UITableViewCell <SearchUIKeyboardableNavigationProtocol>
 {
     BOOL _isExpanded;
-    id<SearchUIRowModel> _rowModel;
-    unsigned long long _style;
+    SearchUIRowModel *_rowModel;
+    UIView *_platterView;
     id<SearchUIFeedbackDelegateInternal> _delegate;
     UIView *_sizingContainer;
     SearchUIDragSource *_dragSource;
-    SearchUIDropTarget *_dropTarget;
     UIViewController<SearchUIResultShortLook> *_shortLookViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<SearchUIFeedbackDelegateInternal> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SearchUIFeedbackDelegateInternal> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong) SearchUIDragSource *dragSource; // @synthesize dragSource=_dragSource;
-@property (strong) SearchUIDropTarget *dropTarget; // @synthesize dropTarget=_dropTarget;
+@property (strong, nonatomic) SearchUIDragSource *dragSource; // @synthesize dragSource=_dragSource;
 @property (readonly) unsigned long long hash;
-@property BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
-@property (strong) id<SearchUIRowModel> rowModel; // @synthesize rowModel=_rowModel;
-@property (weak) UIViewController<SearchUIResultShortLook> *shortLookViewController; // @synthesize shortLookViewController=_shortLookViewController;
-@property (strong) UIView *sizingContainer; // @synthesize sizingContainer=_sizingContainer;
-@property unsigned long long style; // @synthesize style=_style;
+@property (nonatomic) BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
+@property (strong, nonatomic) UIView *platterView; // @synthesize platterView=_platterView;
+@property (strong, nonatomic) SearchUIRowModel *rowModel; // @synthesize rowModel=_rowModel;
+@property (weak, nonatomic) UIViewController<SearchUIResultShortLook> *shortLookViewController; // @synthesize shortLookViewController=_shortLookViewController;
+@property (readonly) BOOL shouldDrawBackgroundColor;
+@property (strong, nonatomic) UIView *sizingContainer; // @synthesize sizingContainer=_sizingContainer;
 @property (readonly) Class superclass;
 @property (readonly) NSArray *visibleResults;
 
-+ (BOOL)canCellExpandWithResults:(id)arg1;
-+ (id)cellViewForRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-+ (id)convertResultIfNecessary:(id)arg1;
++ (BOOL)canCellExpandWithResults:(id)arg1 forView:(id)arg2;
++ (id)cellViewForRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 + (double)distanceToTopOfAppIconsForMultiResultCell;
 + (id)reuseIdentifierForResult:(id)arg1;
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_setSeparatorBackdropOverlayBlendMode:(long long)arg1;
+- (void)_setSeparatorDrawsInVibrantLightMode:(BOOL)arg1;
+- (void)_updateHighlightColorsForView:(id)arg1 highlighted:(BOOL)arg2;
 - (BOOL)canSetupKeyboardHandler;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-- (id)initWithStyle:(unsigned long long)arg1;
+- (void)didMoveToWindow;
+- (id)init;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isExpandable;
 - (void)layoutSubviews;
+- (BOOL)navigateKeyboardDown;
 - (BOOL)navigateKeyboardLeft;
 - (BOOL)navigateKeyboardRight;
+- (BOOL)navigateKeyboardUp;
 - (void)removeKeyboardHandler;
 - (void)returnKeyPressed;
-- (void)roundNecessaryCornersForView:(id)arg1;
-- (void)setSectionLocation:(int)arg1 animated:(BOOL)arg2;
 - (void)setupKeyboardHandler;
-- (BOOL)shouldHideBottomSeparator;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (BOOL)supportsRecycling;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)tlk_updateForAppearance:(id)arg1;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateExpanded:(BOOL)arg1;
 - (void)updateWithResult:(id)arg1;

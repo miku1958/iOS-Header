@@ -28,6 +28,7 @@
 + (id)defaultSeparatorColor;
 + (double)preferredHeight;
 + (double)separatorHeight;
+- (void).cxx_destruct;
 - (id)_automationID;
 - (id)_baseAttributes;
 - (BOOL)_canBecomeFirstResponder;
@@ -36,7 +37,6 @@
 - (id)_highlightedBackgroundView;
 - (struct UIEdgeInsets)_recipientViewEdgeInsets;
 - (BOOL)_shouldEmbedLabelInTextView;
-- (void)dealloc;
 - (void)handleTouchesEnded;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)labelColor;

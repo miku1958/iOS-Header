@@ -23,7 +23,6 @@
 @property (readonly, nonatomic) NSDictionary *mathDictionary; // @synthesize mathDictionary=_mathDictionary;
 @property (readonly) Class superclass;
 
-+ (id)_uiaxBundle;
 - (void).cxx_destruct;
 - (void)_doneButtonTapped;
 - (id)_htmlString;

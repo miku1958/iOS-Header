@@ -8,20 +8,24 @@
 
 #import <PhotosUICore/NSCopying-Protocol.h>
 
-@class NSIndexSet, PXLayoutMetrics;
+@class NSIndexSet, NSString, PXLayoutMetrics;
 
 @interface PXLayoutGenerator : NSObject <NSCopying>
 {
     PXLayoutMetrics *_metrics;
     unsigned long long _itemCount;
+    unsigned long long _keyItemIndex;
     CDUnknownBlockType _itemLayoutInfoBlock;
 }
 
+@property (readonly, nonatomic) struct _PXCornerSpriteIndexes cornerSpriteIndexes;
+@property (readonly, nonatomic) NSString *diagnosticDescription;
 @property (readonly, nonatomic) struct CGSize estimatedSize;
 @property (readonly, nonatomic) NSIndexSet *geometryKinds;
 @property (nonatomic) unsigned long long itemCount; // @synthesize itemCount=_itemCount;
 @property (copy, nonatomic) CDUnknownBlockType itemLayoutInfoBlock; // @synthesize itemLayoutInfoBlock=_itemLayoutInfoBlock;
-@property (readonly, copy, nonatomic) PXLayoutMetrics *metrics; // @synthesize metrics=_metrics;
+@property (nonatomic) unsigned long long keyItemIndex; // @synthesize keyItemIndex=_keyItemIndex;
+@property (copy, nonatomic) PXLayoutMetrics *metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) struct CGSize size;
 
 - (void).cxx_destruct;

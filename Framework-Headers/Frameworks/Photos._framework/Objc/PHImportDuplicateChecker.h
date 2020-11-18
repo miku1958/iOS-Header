@@ -39,7 +39,7 @@
 + (id)dateWithDate:(id)arg1;
 + (id)doneWithDuplicateCheckerForLibrary:(id)arg1 forClient:(id)arg2;
 + (id)duplicateCheckerForClient:(id)arg1 andLibrary:(id)arg2;
-+ (id)fetchAssetsFromLibrary:(id)arg1 withPredicates:(id)arg2 ofType:(unsigned long long)arg3;
++ (id)fetchAssetsFromLibrary:(id)arg1 withPredicates:(id)arg2;
 + (void)initialize;
 + (void)removeLibrary:(id)arg1;
 - (void).cxx_destruct;

@@ -13,7 +13,5 @@
 - (void)passAdded:(PKPass *)arg1;
 - (void)passRemoved:(PKPass *)arg1;
 - (void)passUpdated:(PKPass *)arg1;
-- (void)removingPassesOfType:(unsigned long long)arg1 didFinishWithSuccess:(BOOL)arg2;
-- (void)removingPassesOfType:(unsigned long long)arg1 didUpdateWithProgress:(double)arg2;
 @end
 

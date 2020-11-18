@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ProactiveSupport/_PASCFBurstTrie.h>
 
 #import <CoreSuggestionsInternals/SGJSBurstTrieExports-Protocol.h>
 
-@interface SGJSBurstTrie : NSObject <SGJSBurstTrieExports>
+@interface SGJSBurstTrie : _PASCFBurstTrie <SGJSBurstTrieExports>
 {
-    struct _CFBurstTrie *_trie;
 }
 
-- (void)dealloc;
-- (id)init;
-- (id)initWithPath:(id)arg1;
 - (unsigned int)lookup:(id)arg1;
 
 @end

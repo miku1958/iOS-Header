@@ -14,6 +14,7 @@
 
 @interface PKPaymentProvisioningController : NSObject <CLLocationManagerDelegate, PKPaymentWebServiceDelegate>
 {
+    BOOL _preflightCompleted;
     NSMutableSet *_tasks;
     NSTimer *_descriptionTimer;
     NSMutableArray *_associatedCredentials;
@@ -60,6 +61,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *localizedProgressDescription; // @synthesize localizedProgressDescription=_localizedProgressDescription;
 @property (readonly, nonatomic) NSArray *moreInfoItems; // @synthesize moreInfoItems=_moreInfoItems;
+@property (readonly, nonatomic, getter=isPasscodeUpgradeRequired) BOOL passcodeUpgradeRequired;
 @property (readonly, nonatomic) PKPaymentSetupProductModel *paymentSetupProductModel; // @synthesize paymentSetupProductModel=_paymentSetupProductModel;
 @property (readonly, copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (readonly, nonatomic) PKPaymentPass *provisionedPass; // @synthesize provisionedPass=_provisionedPass;
@@ -84,6 +86,7 @@
 - (id)_doesDisplayableErrorConstitutePreflightFailure:(id)arg1;
 - (void)_downloadMoreInfoItemURLs:(id)arg1 withMetadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_downloadRemoteAssetsForPaymentPass:(id)arg1 paymentCredential:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_endRequiringUpgradedPasscodeIfNecessary;
 - (id)_fetchOrCreateProductsForIdentifier:(unsigned long long)arg1;
 - (id)_filterPaymentSetupProducts:(id)arg1;
 - (void)_handleProvisioningError:(id)arg1 forRequest:(id)arg2;
@@ -107,6 +110,7 @@
 - (void)_setState:(long long)arg1 notify:(BOOL)arg2;
 - (void)_setupAccountCredentialForProvisioning:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startLocationSearchWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(BOOL)arg1;
 - (void)_updateCredentialWithPaymentPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateCredentialWithPaymentPassAssets:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateLocalizedProgressAndInvalidateTimer;
@@ -117,6 +121,7 @@
 - (id)associatedCredentialsForDefaultBehaviour;
 - (void)browsableBankAppsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)declineTerms;
 - (id)displayableErrorForError:(id)arg1;
 - (id)displayableErrorForProvisioningError:(id)arg1;
 - (BOOL)hasCreditPaymentPass;
@@ -128,9 +133,12 @@
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)noteProvisioningUserInterfaceDidAppear;
 - (void)noteProvisioningUserInterfaceDidDisappear;
+- (void)passcodeUpgradeCompleted:(BOOL)arg1;
 - (id)passesWithPaymentMethodType:(unsigned long long)arg1;
 - (void)paymentWebService:(id)arg1 didCompleteTSMConnectionForTaskID:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 didQueueTSMConnectionForTaskID:(unsigned long long)arg2;
+- (void)performDeviceCheckInIfNeeded:(CDUnknownBlockType)arg1;
+- (void)preflightPasscodeUpgradeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)provisioningUserInterfaceIsVisible;
 - (void)registerDevice:(CDUnknownBlockType)arg1;
@@ -149,11 +157,12 @@
 - (void)resolveRequirementsUsingProduct:(id)arg1;
 - (void)resolveRequirementsUsingProvisioningMethodMetadata:(id)arg1;
 - (void)retrieveAccountCredentials:(CDUnknownBlockType)arg1;
-- (void)retrieveAllAvaialbleCredentials:(CDUnknownBlockType)arg1;
+- (void)retrieveAllAvailableCredentials:(CDUnknownBlockType)arg1;
 - (void)retrieveRemoteCredentials:(CDUnknownBlockType)arg1;
 - (void)setupAccountCredentialForProvisioning:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setupFeatures:(CDUnknownBlockType)arg1;
 - (void)setupProductForProvisioning:(id)arg1 includePurchases:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)skipPasscodeUpgrade;
 - (id)supportedFeatureIdentifierStrings;
 - (void)updatePaymentSetupProductModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateRemoteCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

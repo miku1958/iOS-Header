@@ -6,7 +6,7 @@
 
 #import <SAObjects/SADomainCommand.h>
 
-@class NSArray, NSNumber;
+@class NSArray, NSNumber, NSString;
 
 @interface SAMPLoadPredefinedQueue : SADomainCommand
 {
@@ -15,6 +15,8 @@
 @property (nonatomic) BOOL dryRun;
 @property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (nonatomic) int mediaItemType;
+@property (copy, nonatomic) NSString *requesterSharedUserId;
+@property (copy, nonatomic) NSString *sharedUserIdFromPlayableMusicAccount;
 @property (nonatomic) BOOL shouldShuffle;
 @property (copy, nonatomic) NSNumber *startPlaying;
 

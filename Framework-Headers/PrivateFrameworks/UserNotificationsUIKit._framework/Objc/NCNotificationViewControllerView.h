@@ -8,16 +8,14 @@
 
 #import <UserNotificationsUIKit/PLContentSizeManaging-Protocol.h>
 
-@class NSArray, NSString, PLPlatterView;
+@class NSString, PLPlatterView;
 
 @interface NCNotificationViewControllerView : UIView <PLContentSizeManaging>
 {
-    NSArray *_stackedPlatters;
+    UIView *_stackDimmingView;
     PLPlatterView *_contentView;
-    unsigned long long _coalescedNotificationCount;
 }
 
-@property (nonatomic) unsigned long long coalescedNotificationCount; // @synthesize coalescedNotificationCount=_coalescedNotificationCount;
 @property (weak, nonatomic) PLPlatterView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -25,15 +23,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_configureStackedPlatters;
-- (BOOL)_isCoalescedNotificationBundle;
-- (void)_layoutStackedPlatters;
-- (unsigned long long)_stackedPlatterCount;
-- (unsigned long long)_stackedPlatterCountCoalescedNotificationCount:(unsigned long long)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_updateStackDimmingVisualStyling;
+- (void)configureStackDimmingForTransform:(struct CGAffineTransform)arg1;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
+- (void)invalidateStackedPlattersRecipe;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
 

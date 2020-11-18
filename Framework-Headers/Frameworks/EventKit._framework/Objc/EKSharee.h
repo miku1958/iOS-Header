@@ -17,7 +17,7 @@
 
 @property (readonly, nonatomic) NSString *UUID;
 @property (copy, nonatomic) NSString *address;
-@property (readonly, nonatomic) NSPredicate *contactPredicate;
+@property (readonly, nonatomic) NSPredicate *contactPredicate; // @dynamic contactPredicate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *emailAddress;

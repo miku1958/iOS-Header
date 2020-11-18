@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     struct CGAffineTransform mLayoutToImageTransform;
     struct CGAffineTransform mLayoutToMaskTransform;
     BOOL mMaskIntersectsImage;
+    struct CGSize mLastParentLimitedSize;
     unsigned long long mHasAlpha;
     TSDLayoutGeometry *mBaseImageLayoutGeometry;
     TSDInfoGeometry *mDynamicInfoGeometry;
@@ -57,11 +58,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)isInvisible;
 - (id)layoutGeometryFromInfo;
 - (void)offsetGeometryBy:(struct CGPoint)arg1;
-- (void)p_calculateClampModelValuesAndPerformBlock:(CDUnknownBlockType)arg1;
+- (void)p_calculateClampModelValuesWithAdditionalTransform:(struct CGAffineTransform)arg1 andPerformBlock:(CDUnknownBlockType)arg2;
 - (void)p_createDynamicCopies;
 - (void)p_destroyDynamicCopies;
 - (void)p_setDynamicInfoGeometry:(id)arg1;
 - (struct CGRect)pathBoundsWithoutStroke;
+- (double)scaleForInlineClampingUnrotatedSize:(struct CGSize)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (struct CGSize)sizeOfFrameRectIncludingCoverage;
 - (id)smartPathSource;
 - (BOOL)supportsRotation;

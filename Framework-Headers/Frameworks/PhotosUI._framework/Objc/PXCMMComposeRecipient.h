@@ -22,8 +22,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *diagnosticDictionary;
-@property (readonly, copy, nonatomic) NSString *displayName;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) id<PXCMMPersonSuggestion> personSuggestion; // @synthesize personSuggestion=_personSuggestion;
 @property (readonly, nonatomic) PXRecipient *recipient; // @synthesize recipient=_recipient;
 @property (readonly) Class superclass;

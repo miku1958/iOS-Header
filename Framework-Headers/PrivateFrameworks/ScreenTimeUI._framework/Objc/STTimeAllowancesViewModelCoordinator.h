@@ -6,46 +6,39 @@
 
 #import <objc/NSObject.h>
 
-#import <ScreenTimeUI/RMGroupFetchedResultsControllerDelegate-Protocol.h>
+#import <ScreenTimeUI/STGroupFetchedResultsControllerDelegate-Protocol.h>
 #import <ScreenTimeUI/STTimeAllowancesViewModelCoordinator-Protocol.h>
 
-@class NSManagedObjectID, NSNumber, NSString, RMAskForTimeClient, RMGroupFetchedResultsController, STTimeAllowancesViewModel;
-@protocol RMPersistenceControllerProtocol;
+@class NSManagedObjectID, NSNumber, NSString, STAskForTimeClient, STGroupFetchedResultsController, STTimeAllowancesViewModel;
+@protocol STPersistenceControllerProtocol;
 
-@interface STTimeAllowancesViewModelCoordinator : NSObject <RMGroupFetchedResultsControllerDelegate, STTimeAllowancesViewModelCoordinator>
+__attribute__((visibility("hidden")))
+@interface STTimeAllowancesViewModelCoordinator : NSObject <STGroupFetchedResultsControllerDelegate, STTimeAllowancesViewModelCoordinator>
 {
     STTimeAllowancesViewModel *_viewModel;
     NSString *_organizationIdentifier;
     NSNumber *_userDSID;
-    id<RMPersistenceControllerProtocol> _persistenceController;
-    RMAskForTimeClient *_askForTimeClient;
-    RMGroupFetchedResultsController *_groupFetchResultsController;
+    id<STPersistenceControllerProtocol> _persistenceController;
+    STAskForTimeClient *_askForTimeClient;
+    STGroupFetchedResultsController *_groupFetchResultsController;
     NSManagedObjectID *_userObjectID;
 }
 
-@property (readonly, nonatomic) RMAskForTimeClient *askForTimeClient; // @synthesize askForTimeClient=_askForTimeClient;
+@property (readonly, nonatomic) STAskForTimeClient *askForTimeClient; // @synthesize askForTimeClient=_askForTimeClient;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) RMGroupFetchedResultsController *groupFetchResultsController; // @synthesize groupFetchResultsController=_groupFetchResultsController;
+@property (readonly, nonatomic) STGroupFetchedResultsController *groupFetchResultsController; // @synthesize groupFetchResultsController=_groupFetchResultsController;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
-@property (readonly, nonatomic) id<RMPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
+@property (readonly, nonatomic) id<STPersistenceControllerProtocol> persistenceController; // @synthesize persistenceController=_persistenceController;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 @property (copy, nonatomic) NSManagedObjectID *userObjectID; // @synthesize userObjectID=_userObjectID;
 @property (readonly) STTimeAllowancesViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 - (void).cxx_destruct;
-- (id)_alwaysAllowActivationIdentifier;
-- (id)_alwaysAllowConfigurationIdentifier;
-- (id)_bedtimeActivationIdentifier;
-- (id)_bedtimeConfigurationIdentifier;
-- (id)_budgetConfigurationIdentifier;
-- (void)_deleteActivationWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_iCloudAccountPredicate;
-- (BOOL)_isPersonalOrganization;
-- (void)_registerForPersistenceStoreNotifications;
-- (void)_saveActivationDictionary:(id)arg1 configurationDictionaries:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_registerForPersistentStoreNotifications;
 - (void)deleteAllowance:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)groupResultsController:(id)arg1 didChangeResultsForRequest:(id)arg2 objectID:(id)arg3 changeType:(unsigned long long)arg4;
 - (id)initWithPersistenceController:(id)arg1 organizationIdentifier:(id)arg2 userDSID:(id)arg3;

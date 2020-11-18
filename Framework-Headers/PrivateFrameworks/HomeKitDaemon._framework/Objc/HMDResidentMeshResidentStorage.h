@@ -8,7 +8,7 @@
 
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDDevice, HMDResidentMesh, HMFTimer, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class HMDDevice, HMDResidentMesh, HMFTimer, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface HMDResidentMeshResidentStorage : HMFObject <HMFTimerDelegate>
 {
@@ -16,6 +16,8 @@
     HMDDevice *_resident;
     NSMutableSet *_accessoryUUIDs;
     NSSet *_lastSentAccessoryUUIDs;
+    NSMutableDictionary *_metrics;
+    NSDictionary *_lastSentMetrics;
     HMFTimer *_transmitTimer;
     NSMutableDictionary *_accessoryListWithLinkQuality;
 }
@@ -26,6 +28,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSSet *lastSentAccessoryUUIDs; // @synthesize lastSentAccessoryUUIDs=_lastSentAccessoryUUIDs;
+@property (strong, nonatomic) NSDictionary *lastSentMetrics; // @synthesize lastSentMetrics=_lastSentMetrics;
+@property (strong, nonatomic) NSMutableDictionary *metrics; // @synthesize metrics=_metrics;
 @property (weak, nonatomic) HMDResidentMesh *owner; // @synthesize owner=_owner;
 @property (weak, nonatomic) HMDDevice *resident; // @synthesize resident=_resident;
 @property (readonly) Class superclass;
@@ -36,6 +40,7 @@
 - (BOOL)_addAccessoryWithLinkQuality:(id)arg1 toList:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_buildPayload;
 - (void)_removeAccessory:(id)arg1 activateTimer:(BOOL)arg2;
+- (BOOL)_residentDidChange;
 - (void)_transmitAfter:(double)arg1;
 - (void)_transmitStatus:(BOOL)arg1;
 - (id)initWithResident:(id)arg1 owner:(id)arg2;

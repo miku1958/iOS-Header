@@ -8,29 +8,31 @@
 
 #import <SpringBoardServices/BSDescriptionProviding-Protocol.h>
 #import <SpringBoardServices/BSXPCCoding-Protocol.h>
+#import <SpringBoardServices/NSCopying-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface SBSRemoteAlertDefinition : NSObject <BSXPCCoding, BSDescriptionProviding>
+@interface SBSRemoteAlertDefinition : NSObject <BSXPCCoding, BSDescriptionProviding, NSCopying>
 {
+    BOOL _forCarPlay;
     NSString *_serviceName;
-    NSString *_vcClassName;
+    NSString *_viewControllerClassName;
     NSDictionary *_userInfo;
     NSString *_impersonatedCarPlayAppIdentifier;
-    BOOL _forCarPlay;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isForCarPlay) BOOL forCarPlay; // @synthesize forCarPlay=_forCarPlay;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *impersonatedCarPlayAppIdentifier; // @synthesize impersonatedCarPlayAppIdentifier=_impersonatedCarPlayAppIdentifier;
-@property (readonly, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
+@property (copy, nonatomic) NSString *impersonatedCarPlayAppIdentifier; // @synthesize impersonatedCarPlayAppIdentifier=_impersonatedCarPlayAppIdentifier;
+@property (readonly, copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
-@property (readonly, nonatomic) NSString *viewControllerClassName; // @synthesize viewControllerClassName=_vcClassName;
+@property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (readonly, copy, nonatomic) NSString *viewControllerClassName; // @synthesize viewControllerClassName=_viewControllerClassName;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

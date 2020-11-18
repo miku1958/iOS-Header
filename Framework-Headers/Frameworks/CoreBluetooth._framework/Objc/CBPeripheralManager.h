@@ -25,6 +25,8 @@
         unsigned int didPublishL2CAPChannel:1;
         unsigned int didUnpublishL2CAPChannel:1;
         unsigned int didOpenL2CAPChannel:1;
+        unsigned int didStopAdvertisingWithError:1;
+        unsigned int didUpdateANCSAuthorization:1;
     } _delegateFlags;
     BOOL _isAdvertising;
     BOOL _readyForUpdates;
@@ -53,14 +55,17 @@
 @property (readonly, nonatomic) BOOL waitingForReady; // @synthesize waitingForReady=_waitingForReady;
 
 + (long long)authorizationStatus;
++ (BOOL)supportsFeatures:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)addService:(id)arg1;
+- (id)centralWithIdentifier:(id)arg1;
 - (id)centralWithInfo:(id)arg1;
 - (void)dealloc;
 - (void)forEachCentral:(CDUnknownBlockType)arg1;
 - (void)handleAdvertisingAddressChanged:(id)arg1;
 - (void)handleAdvertisingStarted:(id)arg1;
 - (void)handleAdvertisingStopped:(id)arg1;
+- (void)handleCentralDidUpdateANCSAuthorization:(id)arg1;
 - (void)handleConnectionParametersUpdated:(id)arg1;
 - (void)handleGetAttributeValue:(id)arg1;
 - (void)handleL2CAPChannelClosed:(id)arg1;
@@ -75,6 +80,7 @@
 - (void)handleServiceAdded:(id)arg1;
 - (void)handleSetAttributeValues:(id)arg1;
 - (void)handleSolicitedServicesFound:(id)arg1;
+- (void)handleSupportedFeatures:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (id)initWithDelegate:(id)arg1 queue:(id)arg2 options:(id)arg3;

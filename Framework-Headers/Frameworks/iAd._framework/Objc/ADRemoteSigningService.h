@@ -16,10 +16,11 @@
 }
 
 @property (nonatomic) BOOL didLeaveGroup; // @synthesize didLeaveGroup=_didLeaveGroup;
-@property (nonatomic) NSObject<OS_dispatch_group> *signingGroup; // @synthesize signingGroup=_signingGroup;
-@property (nonatomic) NSObject<OS_dispatch_queue> *signingQueue; // @synthesize signingQueue=_signingQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_group> *signingGroup; // @synthesize signingGroup=_signingGroup;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *signingQueue; // @synthesize signingQueue=_signingQueue;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)init;
 - (id)signedCredentialForRequest:(id)arg1 withPersistence:(unsigned long long)arg2;
 

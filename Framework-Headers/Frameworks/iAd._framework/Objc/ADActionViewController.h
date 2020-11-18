@@ -12,11 +12,11 @@
 
 @interface ADActionViewController : UIViewController <ADActionViewControllerInterface>
 {
-    ADAdSpace *_adSpace;
     BOOL _readyForPresentation;
+    ADAdSpace *_adSpace;
 }
 
-@property (weak, nonatomic) ADAdSpace *adSpace;
+@property (weak, nonatomic) ADAdSpace *adSpace; // @synthesize adSpace=_adSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,10 +25,10 @@
 
 + (void)cancelRequestForActionViewControllerForAdSpaceController:(id)arg1;
 + (void)requestActionViewControllerForAdSpace:(id)arg1;
+- (void).cxx_destruct;
 - (void)_remote_viewControllerCreatedForAdSpaceControllerWithIdentifier:(id)arg1;
 - (void)clientApplicationCancelledAction;
 - (void)clientApplicationDidEnterBackground;
-- (void)dealloc;
 - (void)didSetAdSpace;
 - (void)dismiss;
 - (void)loadView;

@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_handleRecordChanges:(id)arg1;
+- (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
 - (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
 - (int)operationType;

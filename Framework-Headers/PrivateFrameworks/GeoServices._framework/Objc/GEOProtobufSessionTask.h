@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEODataSessionTaskDelegate-Protocol.h>
 
-@class GEOClientMetrics, GEOProtobufSession, NSError, NSString, PBCodable;
+@class GEOApplicationAuditToken, GEOClientMetrics, GEODataRequestThrottlerToken, GEOProtobufSession, NSError, NSString, PBCodable;
 @protocol GEODataSessionTask, GEOProtobufSessionTaskDelegate, OS_dispatch_queue;
 
 @interface GEOProtobufSessionTask : NSObject <GEODataSessionTaskDelegate>
@@ -22,8 +22,10 @@
     PBCodable *_response;
     unsigned long long _taskIdentifier;
     unsigned int _requestTypeCode;
-    int _requestKind;
+    CDStruct_d1a7ebee _requestKind;
+    GEOApplicationAuditToken *_auditToken;
     BOOL _completedAsCancelled;
+    GEODataRequestThrottlerToken *_throttleToken;
 }
 
 @property (readonly, nonatomic) GEOClientMetrics *clientMetrics;
@@ -38,10 +40,13 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long incomingPayloadSize;
+@property (readonly, nonatomic) BOOL mptcpNegotiated;
 @property (readonly, nonatomic) unsigned long long outgoingPayloadSize;
+@property (readonly, nonatomic) BOOL receivedRNFNotification;
 @property (readonly, nonatomic) NSString *remoteAddressAndPort;
-@property (readonly, nonatomic) int requestKind;
+@property (readonly, nonatomic) CDStruct_d1a7ebee requestKind;
 @property (readonly, nonatomic) unsigned int requestTypeCode; // @synthesize requestTypeCode=_requestTypeCode;
+@property (readonly, nonatomic) unsigned long long requestedMultipathServiceType;
 @property (readonly, nonatomic) PBCodable *response;
 @property (strong, nonatomic) PBCodable *response; // @synthesize response=_response;
 @property (readonly, nonatomic) Class responseClass; // @synthesize responseClass=_responseClass;
@@ -58,7 +63,7 @@
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
 - (void)dataSession:(id)arg1 willSendRequest:(id)arg2 forTask:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
-- (id)initWithSession:(id)arg1 taskIdentifier:(unsigned long long)arg2 requestTypeCode:(unsigned int)arg3 responseClass:(Class)arg4 delegate:(id)arg5 delegateQueue:(id)arg6 requestKind:(int)arg7;
+- (id)initWithSession:(id)arg1 taskIdentifier:(unsigned long long)arg2 requestTypeCode:(unsigned int)arg3 responseClass:(Class)arg4 delegate:(id)arg5 delegateQueue:(id)arg6 requestKind:(CDStruct_d1a7ebee)arg7 auditToken:(id)arg8 throttleToken:(id)arg9;
 - (id)parseInnerProtobufFromData:(id)arg1;
 - (BOOL)parsePreambleWithReader:(id)arg1;
 - (BOOL)parseProtocolVersionWithReader:(id)arg1;

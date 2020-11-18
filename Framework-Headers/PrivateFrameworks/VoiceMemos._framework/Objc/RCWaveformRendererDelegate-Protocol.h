@@ -7,14 +7,16 @@
 #import <VoiceMemos/NSObject-Protocol.h>
 
 @class RCWaveformRenderer;
+@protocol RCTimeController;
 
 @protocol RCWaveformRendererDelegate <NSObject>
 
+@property (readonly, nonatomic) id<RCTimeController> activeTimeController;
 @property (nonatomic) double currentTime;
+@property (nonatomic) double desiredTimeDeltaForVisibleTimeRange;
 
 - (double)duration;
+- (BOOL)isZooming;
 - (void)waveformRenderer:(RCWaveformRenderer *)arg1 contentWidthDidChange:(double)arg2;
-- (void)waveformRendererContentDidFinishLoading:(RCWaveformRenderer *)arg1;
-- (void)waveformRendererDidSynchronizeToDisplayLink:(RCWaveformRenderer *)arg1;
 @end
 

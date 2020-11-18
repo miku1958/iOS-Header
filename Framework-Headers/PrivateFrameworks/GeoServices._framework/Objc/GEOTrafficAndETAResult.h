@@ -12,10 +12,14 @@
 {
     BOOL _isSuccess;
     double _seconds;
+    double _aggressiveTravelTime;
+    double _conservativeTravelTime;
     NSString *_shortTrafficString;
     NSString *_longTrafficString;
 }
 
+@property (nonatomic) double aggressiveTravelTime; // @synthesize aggressiveTravelTime=_aggressiveTravelTime;
+@property (nonatomic) double conservativeTravelTime; // @synthesize conservativeTravelTime=_conservativeTravelTime;
 @property (nonatomic) BOOL isSuccess; // @synthesize isSuccess=_isSuccess;
 @property (copy, nonatomic) NSString *longTrafficString; // @synthesize longTrafficString=_longTrafficString;
 @property (nonatomic) double seconds; // @synthesize seconds=_seconds;

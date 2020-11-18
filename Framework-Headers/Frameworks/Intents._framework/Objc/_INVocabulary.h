@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 - (void)_THROW_EXCEPTION_FOR_ATTEMPT_TO_PROVIDE_VOCABULARY_OF_TYPE_THAT_APP_DOES_NOT_HANDLE_:(id)arg1;
 - (void)_THROW_EXCEPTION_FOR_INVALID_VOCABULARY_TYPE_;
-- (void)_THROW_EXCEPTION_FOR_WATCH_OS_AND_TV_OS_UNAVAILABLE_;
+- (void)_THROW_EXCEPTION_FOR_TV_OS_UNAVAILABLE_;
 - (id)_validator;
 - (id)init;
 - (void)removeAllVocabularyStrings;

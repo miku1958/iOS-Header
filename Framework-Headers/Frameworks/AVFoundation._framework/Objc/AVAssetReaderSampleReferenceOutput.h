@@ -21,7 +21,6 @@
 - (BOOL)_trimsSampleDurations;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (id)init;
 - (id)initWithTrack:(id)arg1;
 - (id)mediaType;

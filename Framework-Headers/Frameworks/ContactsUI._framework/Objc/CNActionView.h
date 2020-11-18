@@ -9,7 +9,7 @@
 #import <ContactsUI/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSArray, NSString, UIFont, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UITapGestureRecognizer;
-@protocol CNActionViewDelegate, CNActionViewTemplateImage;
+@protocol CNActionViewDelegate;
 
 @interface CNActionView : UIView <UIGestureRecognizerDelegate>
 {
@@ -27,7 +27,6 @@
     UITapGestureRecognizer *_tapGestureRecognizer;
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     UILongPressGestureRecognizer *_highlightGestureRecognizer;
-    id<CNActionViewTemplateImage> _templateImage;
     UIFont *_titleFont;
 }
 
@@ -46,7 +45,6 @@
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
-@property (strong, nonatomic) id<CNActionViewTemplateImage> templateImage; // @synthesize templateImage=_templateImage;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;

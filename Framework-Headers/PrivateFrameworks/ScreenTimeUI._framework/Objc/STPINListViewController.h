@@ -8,21 +8,19 @@
 
 #import <ScreenTimeUI/STRestrictionsPINControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, PSSpecifier;
+@class NSObject, NSString;
 @protocol STRootViewModelCoordinator;
 
 @interface STPINListViewController : STListViewController <STRestrictionsPINControllerDelegate>
 {
     NSObject<STRootViewModelCoordinator> *_coordinator;
     id _showingPinTarget;
-    PSSpecifier *_showingPinSpecifier;
 }
 
 @property (strong, nonatomic) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PSSpecifier *showingPinSpecifier; // @synthesize showingPinSpecifier=_showingPinSpecifier;
 @property (strong, nonatomic) id showingPinTarget; // @synthesize showingPinTarget=_showingPinTarget;
 @property (readonly) Class superclass;
 
@@ -35,10 +33,10 @@
 - (void)didCancelEnteringPIN;
 - (id)init;
 - (id)initWithRootViewModelCoordinator:(id)arg1;
-- (void)restoreSpecifierTarget;
 - (BOOL)shouldDeferPushForSpecifierID:(id)arg1;
 - (BOOL)shouldShowPINSheetForSpecifier:(id)arg1;
 - (void)showPINSheet:(id)arg1;
+- (void)showPINSheet:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (BOOL)validatePIN:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

@@ -9,41 +9,63 @@
 #import <LocalAuthentication/LAContextCallbackXPC-Protocol.h>
 #import <LocalAuthentication/LAContextXPC-Protocol.h>
 
-@class LACachedExternalizedContext, NSData, NSError, NSMutableArray, NSXPCConnection;
-@protocol LAContextXPC, LAUIDelegate, OS_dispatch_queue;
+@class LACachedExternalizedContext, NSData, NSError, NSMutableArray, NSNumber, NSString, NSUUID, NSXPCConnection;
+@protocol LAContextXPC, LAUIDelegate;
 
 __attribute__((visibility("hidden")))
 @interface LAClient : NSObject <LAContextXPC, LAContextCallbackXPC>
 {
-    id<LAContextXPC> _remoteContext;
-    NSXPCConnection *_serverConnection;
-    NSError *_permanentError;
-    NSData *_existingContext;
-    NSMutableArray *_callInvalidationBlocks;
     BOOL _shouldRecoverConnection;
-    LACachedExternalizedContext *_cachedExternalizedContext;
-    NSObject<OS_dispatch_queue> *_uncork_queue;
+    BOOL _synchronous;
     id<LAUIDelegate> _uiDelegate;
+    NSUUID *_uuid;
+    NSXPCConnection *_serverConnection;
+    NSObject<LAContextXPC> *_remoteContext;
+    NSObject<LAContextXPC> *_synchronousRemoteContext;
+    NSMutableArray *_invalidations;
+    LACachedExternalizedContext *_cachedExternalizedContext;
+    NSError *_permanentError;
+    NSNumber *_userSession;
+    NSData *_existingContext;
 }
 
+@property (strong) LACachedExternalizedContext *cachedExternalizedContext; // @synthesize cachedExternalizedContext=_cachedExternalizedContext;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSData *existingContext; // @synthesize existingContext=_existingContext;
 @property (readonly, nonatomic) NSData *externalizedContext;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableArray *invalidations; // @synthesize invalidations=_invalidations;
+@property (strong) NSError *permanentError; // @synthesize permanentError=_permanentError;
+@property (strong, nonatomic) NSObject<LAContextXPC> *remoteContext; // @synthesize remoteContext=_remoteContext;
+@property (readonly, nonatomic) NSXPCConnection *serverConnection; // @synthesize serverConnection=_serverConnection;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL synchronous; // @synthesize synchronous=_synchronous;
+@property (readonly, nonatomic) NSObject<LAContextXPC> *synchronousRemoteContext; // @synthesize synchronousRemoteContext=_synchronousRemoteContext;
 @property (weak, nonatomic) id<LAUIDelegate> uiDelegate; // @synthesize uiDelegate=_uiDelegate;
+@property (readonly, nonatomic) NSNumber *userSession; // @synthesize userSession=_userSession;
+@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (void)_performInvalidationBlocks:(id)arg1;
 + (id)_queue;
 + (id)_recoveryQueue;
++ (id)createConnection:(const unsigned int *)arg1 legacyService:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)_checkIdResultForTCC:(id)arg1 error:(id)arg2 retryBlock:(CDUnknownBlockType)arg3 finally:(CDUnknownBlockType)arg4;
+- (void)_connectToServerWithRecovery:(BOOL)arg1 userSession:(const unsigned int *)arg2 legacyService:(BOOL)arg3;
+- (void)_handleConnectionResult:(id)arg1 uuid:(id)arg2 error:(id)arg3;
 - (void)_performCallBool:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
 - (void)_performCallId:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
-- (void)_performCallIdCore:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
+- (void)_performSyncCallBool:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
+- (void)_performSyncCallId:(CDUnknownBlockType)arg1 finally:(CDUnknownBlockType)arg2;
 - (void)_recoverConnection;
 - (void)_scheduleRecovery;
 - (void)_serializedInvalidateWithMessage:(id)arg1;
 - (BOOL)_setPermanentError:(id)arg1;
+- (void)_synchronousRemoteObjectProxy:(const unsigned int *)arg1 performCall:(CDUnknownBlockType)arg2;
 - (id)_updateOptions:(id)arg1;
+- (void)allowTransferToProcess:(int)arg1 receiverAuditTokenData:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)authMethodWithReply:(CDUnknownBlockType)arg1;
-- (void)connectToServerWithInterruptionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)evaluateACL:(id)arg1 operation:(id)arg2 options:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)evaluateACL:(id)arg1 operation:(id)arg2 options:(id)arg3 uiDelegate:(id)arg4 reply:(CDUnknownBlockType)arg5;
@@ -52,7 +74,10 @@ __attribute__((visibility("hidden")))
 - (void)externalizedContextWithReply:(CDUnknownBlockType)arg1;
 - (void)failProcessedEvent:(long long)arg1 failureError:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithExistingContext:(id)arg1;
+- (id)initWithExistingContext:(id)arg1 userSession:(unsigned int *)arg2;
+- (id)initWithUUID:(id)arg1 token:(id)arg2 senderAuditTokenData:(id)arg3;
 - (void)invalidateWithMessage:(id)arg1;
+- (void)invalidateWithReply:(CDUnknownBlockType)arg1;
 - (void)invalidatedWithError:(id)arg1;
 - (void)isCredentialSet:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)notifyEvent:(long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -67,7 +92,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)setServerPropertyForOption:(long long)arg1 value:(id)arg2 error:(id *)arg3;
 - (void)setServerPropertyForOption:(long long)arg1 value:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setShowingCoachingHint:(BOOL)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)synchronousExternalizedContextWithError:(id *)arg1;
 - (void)tccPreflightWithService:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)tokenForTransferToUnknownProcess:(CDUnknownBlockType)arg1;
 
 @end
 

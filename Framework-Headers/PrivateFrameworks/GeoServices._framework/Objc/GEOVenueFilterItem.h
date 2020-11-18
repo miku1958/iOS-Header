@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) id<GEOVenueLabel> label; // @synthesize label=_label;
 
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithFilterElementInfo:(id)arg1;
 - (id)initWithLabel:(id)arg1 filterID:(id)arg2;
 

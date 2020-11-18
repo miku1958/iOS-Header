@@ -6,19 +6,30 @@
 
 #import <UIKit/__UIScrollViewAccessibility_super.h>
 
-@interface UIScrollViewAccessibility : __UIScrollViewAccessibility_super
+#import <UIKit/AXScrollIndicatorDelegate-Protocol.h>
+
+@class NSString;
+
+@interface UIScrollViewAccessibility : __UIScrollViewAccessibility_super <AXScrollIndicatorDelegate>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityCanHandleContentPullDown;
 - (struct CGRect)_accessibilityContentFrame;
 - (struct UIEdgeInsets)_accessibilityContentInset;
 - (struct CGPoint)_accessibilityContentOffset;
 - (BOOL)_accessibilityContentOffsetForScrollDirection:(int)arg1 newContentOffset:(struct CGPoint *)arg2 distanceMultiplier:(double)arg3;
 - (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2;
+- (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2 forVerticalDirection:(BOOL)arg3;
 - (void)_accessibilityCurrentPage:(long long *)arg1 totalPages:(long long *)arg2 type:(int)arg3;
 - (id)_accessibilityDelegateScrollStatus;
 - (id)_accessibilityFindRefreshControl;
@@ -27,7 +38,9 @@
 - (id)_accessibilityHorizontalScrollBarElement;
 - (BOOL)_accessibilityIsScannerGroup;
 - (BOOL)_accessibilityIsScrollAncestor;
+- (BOOL)_accessibilityIsSortPriorityContainer;
 - (id)_accessibilityLastOpaqueElement;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (struct UIEdgeInsets)_accessibilityNavigationControllerInset;
 - (long long)_accessibilityPageCount;
 - (long long)_accessibilityPageIndex;
@@ -60,34 +73,60 @@
 - (struct CGPoint)_accessibilityVisibleScrollArea:(BOOL)arg1;
 - (void)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(BOOL)arg2;
 - (double)_accessibilityZoomScale;
+- (void)_adjustScrollerIndicators:(BOOL)arg1 alwaysShowingThem:(BOOL)arg2;
 - (void)_announceDelayedStatus;
 - (double)_axAllowedPagingOverlap;
+- (void)_axAnnotateScrollBars;
+- (void)_axAnnounceScrubForDirection:(long long)arg1;
+- (struct CGPoint)_axContentOffsetForAddedProgress:(double)arg1 inDirection:(long long)arg2;
 - (id)_axHorizontalScrollBar;
+- (id)_axHorizontalScrollIndicator;
+- (id)_axLastScrubAnnouncementDate;
+- (double)_axProgressForDirection:(long long)arg1;
 - (BOOL)_axScrollViewPagingEnabled;
 - (void)_axSetHorizontalScrollBar:(id)arg1;
+- (void)_axSetLastScrubAnnouncementDate:(id)arg1;
 - (void)_axSetVerticalScrollBar:(id)arg1;
 - (BOOL)_axShouldScrollToAlignWithPage;
+- (BOOL)_axShowsHorizontalScrollBar;
+- (BOOL)_axShowsVerticalScrollBar;
 - (id)_axVerticalScrollBar;
+- (id)_axVerticalScrollIndicator;
+- (void)_didEndDirectManipulationWithScrubbingDirection:(long long)arg1;
 - (void)_handleScrollViewPullDown;
+- (void)_hideScrollIndicators;
 - (void)_manipulateWithRefreshControl:(id)arg1;
+- (struct CGPoint)_newScrollOffsetForScrubReturningAnimated:(BOOL *)arg1;
 - (void)_notifyDidScroll;
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(BOOL)arg2;
+- (void)_scrollViewDidEndDeceleratingForDelegate;
 - (id)_staticScrollBar;
+- (void)accessibilityApplyScrollContent:(struct CGPoint)arg1 sendScrollStatus:(BOOL)arg2 animateWithDuration:(double)arg3;
+- (void)accessibilityApplyScrollContent:(struct CGPoint)arg1 sendScrollStatus:(BOOL)arg2 animateWithDuration:(double)arg3 animationCurve:(int)arg4;
 - (void)accessibilityApplyScrollContent:(struct CGPoint)arg1 sendScrollStatus:(BOOL)arg2 animated:(BOOL)arg3;
 - (long long)accessibilityContainerType;
 - (struct CGRect)accessibilityFrame;
+- (struct CGRect)accessibilityFrameForScrollIndicator:(id)arg1;
+- (long long)accessibilityNumberOfPagesForScrollIndicator:(id)arg1;
+- (id)accessibilityPath;
+- (double)accessibilityProgressForScrollIndicator:(id)arg1;
 - (BOOL)accessibilityScrollDownPage;
 - (BOOL)accessibilityScrollDownPageSupported;
+- (void)accessibilityScrollIndicator:(id)arg1 addProgress:(double)arg2;
+- (void)accessibilityScrollIndicator:(id)arg1 didBecomeFocused:(BOOL)arg2;
 - (BOOL)accessibilityScrollLeftPage;
 - (BOOL)accessibilityScrollLeftPageSupported;
 - (BOOL)accessibilityScrollRightPage;
 - (BOOL)accessibilityScrollRightPageSupported;
 - (BOOL)accessibilityScrollUpPage;
 - (BOOL)accessibilityScrollUpPageSupported;
+- (BOOL)accessibilityShouldEnableScrollIndicator:(id)arg1;
 - (struct CGPoint)accessibilityValidateScrollContentOffset:(struct CGPoint)arg1;
 - (void)accessibilityZoomInAtPoint:(struct CGPoint)arg1;
 - (void)accessibilityZoomOutAtPoint:(struct CGPoint)arg1;
+- (BOOL)canBecomeFocused;
+- (id)preferredFocusEnvironments;
 
 @end
 

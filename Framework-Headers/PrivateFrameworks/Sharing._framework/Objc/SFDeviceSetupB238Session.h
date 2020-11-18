@@ -69,8 +69,13 @@
     unsigned int _pairSetupFlags;
     int _pairSetupState;
     double _pairSetupSecs;
+    int _recognizeVoiceEnabled;
+    int _recognizeVoiceState;
+    int _recognizeVoiceStepState;
     int _personalRequestsState;
     int _personalRequestsChoice;
+    BOOL _siriForEveryoneAnswered;
+    int _siriForEveryoneState;
     int _termsState;
     BOOL _termsAgreed;
     int _shareSettingsState;
@@ -109,6 +114,8 @@
     double _homeKitSetupSecs;
     NSString *_homeKitSelectedRoomName;
     BOOL _hasExistingHomePod;
+    int _multiUserEnableState;
+    int _multiUserEnableStepState;
     int _finishState;
     unsigned long long _finishStartTicks;
     double _finishSecs;
@@ -117,6 +124,9 @@
     double _totalSecs;
     BOOL _prefBonjourTest;
     BOOL _prefForceSiriGreeting;
+    BOOL _prefLEDPasscodeEnabled;
+    BOOL _prefMultiUser;
+    BOOL _hasMultipleUsers;
     BOOL _liveOn;
     BOOL _pauseAfterPreAuth;
     unsigned char _stereoCounterpartColor;
@@ -153,6 +163,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (readonly, nonatomic) BOOL hasMultipleUsers; // @synthesize hasMultipleUsers=_hasMultipleUsers;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL liveOn; // @synthesize liveOn=_liveOn;
 @property (nonatomic) BOOL pauseAfterPreAuth; // @synthesize pauseAfterPreAuth=_pauseAfterPreAuth;
@@ -189,6 +200,7 @@
 - (void)_cleanup;
 - (void)_cleanupSession;
 - (void)_handlePeerEvent:(id)arg1 flags:(unsigned int)arg2;
+- (id)_homeKitFindSettingsWithKeyPath:(id)arg1 group:(id)arg2;
 - (void)_homeKitUpdateiCloudSwitchState:(BOOL)arg1;
 - (void)_invalidate;
 - (void)_logMetrics;
@@ -223,6 +235,7 @@
 - (int)_runPreflightiTunes;
 - (int)_runSFSessionStart;
 - (int)_runShareSettings;
+- (int)_runSiriForEveryone;
 - (int)_runSiriLanguage;
 - (int)_runSiriPasscode;
 - (void)_runSiriPasscodeInitRequest;
@@ -252,13 +265,16 @@
 - (void)homeiCloudEnable;
 - (id)init;
 - (void)invalidate;
+- (void)ledPasscodeMatched;
 - (void)locationEnable:(BOOL)arg1;
 - (void)pairSetupTryPIN:(id)arg1;
 - (void)personalRequestsEnabled:(BOOL)arg1;
 - (void)playAudioPasscodeAgain;
 - (void)preflight;
+- (void)recognizeVoiceAnswered:(BOOL)arg1;
 - (void)shareSettingsAgreed;
 - (void)siriEnable;
+- (void)siriForEveryoneAnswered;
 - (void)siriLanguagePicked:(long long)arg1;
 - (void)skipAudioPasscode;
 - (void)skipiTunesSignIn;

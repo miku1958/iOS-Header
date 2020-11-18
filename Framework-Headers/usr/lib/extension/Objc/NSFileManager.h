@@ -126,6 +126,7 @@
 - (id)stringWithFileSystemRepresentation:(const char *)arg1 length:(unsigned long long)arg2;
 - (id)subpathsAtPath:(id)arg1;
 - (id)subpathsOfDirectoryAtPath:(id)arg1 error:(id *)arg2;
+- (void)synchronouslyGetFileProviderServicesForItemAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)trashItemAtURL:(id)arg1 resultingItemURL:(id *)arg2 error:(id *)arg3;
 
 @end

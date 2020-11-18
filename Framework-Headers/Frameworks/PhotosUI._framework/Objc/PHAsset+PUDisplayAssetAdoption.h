@@ -16,9 +16,11 @@
 @property (readonly, nonatomic) double aspectRatio;
 @property (readonly, nonatomic) BOOL canPlayLoopingVideo;
 @property (readonly, nonatomic) BOOL canPlayPhotoIris;
+@property (readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) BOOL cloudPhotoLibraryEnabled;
 @property (readonly, nonatomic, getter=isContentAdjustmentAllowed) BOOL contentAdjustmentAllowed;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) unsigned long long deferredLogInfo;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
@@ -33,6 +35,7 @@
 @property (readonly, nonatomic, getter=isLivePhoto) BOOL livePhoto;
 @property (readonly, nonatomic, getter=isLivePhotoVisibilityAdjustmentAllowed) BOOL livePhotoVisibilityAdjustmentAllowed;
 @property (readonly, nonatomic) unsigned long long livePhotoVisibilityState;
+@property (readonly, nonatomic) NSDate *localCreationDate;
 @property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;
@@ -50,12 +53,19 @@
 @property (readonly, nonatomic) unsigned long long pixelWidth;
 @property (readonly, nonatomic) long long playbackStyle;
 @property (readonly, nonatomic) long long playbackVariation;
+@property (readonly, nonatomic) unsigned long long reframeVariation;
 @property (readonly, nonatomic, getter=isResourceDownloadPossible) BOOL resourceDownloadPossible;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isTrimmableType) BOOL trimmableType;
 @property (readonly, nonatomic) NSString *uniformTypeIdentifier;
 @property (readonly, nonatomic) NSString *uuid;
+@property (readonly, nonatomic) CDStruct_1b6d18a9 videoKeyFrameSourceTime;
 @property (readonly, nonatomic) PFVideoAVObjectBuilder *videoObjectBuilder;
 
++ (long long)_pu_mediaTypeForAssets:(id)arg1;
++ (long long)pu_commonMediaTypeForPhotoCount:(long long)arg1 videoCount:(long long)arg2 otherCount:(long long)arg3;
++ (id)pu_typeStringForAssets:(id)arg1;
++ (id)pu_typeStringForMediaType:(long long)arg1;
 - (unsigned long long)isContentEqualTo:(id)arg1;
 @end
 

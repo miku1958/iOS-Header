@@ -12,6 +12,8 @@
 {
 }
 
+@property (copy, nonatomic) NSString *bagProfile; // @dynamic bagProfile;
+@property (copy, nonatomic) NSString *bagProfileVersion; // @dynamic bagProfileVersion;
 @property (copy, nonatomic) NSString *clientIdentifier; // @dynamic clientIdentifier;
 @property (copy, nonatomic) NSString *clientVersion; // @dynamic clientVersion;
 @property (copy, nonatomic) NSString *processName; // @dynamic processName;

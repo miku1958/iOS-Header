@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_popoverHostingWindow;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
-- (id)_presentedViewControllerForSizeClassPair:(CDStruct_d58201db)arg1;
+- (id)_presentedViewControllerForSizeClassPair:(CDStruct_912cb5d2)arg1;
 - (void)_transitionFromDidEnd;
 - (void)_transitionFromWillBegin;
 - (void)_transitionToDidEnd;

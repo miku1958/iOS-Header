@@ -37,7 +37,7 @@
 - (void)session:(VCCallSession *)arg1 remoteCallingModeChanged:(unsigned int)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(VCCallSession *)arg1 remoteMediaStalled:(BOOL)arg2;
 - (void)session:(VCCallSession *)arg1 sendRelayResponse:(NSDictionary *)arg2;
-- (void)session:(VCCallSession *)arg1 setMomentsCapabilities:(int)arg2;
+- (void)session:(VCCallSession *)arg1 setMomentsCapabilities:(int)arg2 imageType:(int)arg3 videoCodec:(int)arg4;
 - (void)session:(VCCallSession *)arg1 setRemoteBasebandCodecType:(unsigned int)arg2 sampleRate:(double)arg3;
 - (void)session:(VCCallSession *)arg1 startAudioWithFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo *)arg2 internalFormat:(struct AudioStreamBasicDescription)arg3 internalSamplesPerFrame:(unsigned int)arg4 completionHandler:(void (^)(BOOL, NSError *))arg5;
 - (BOOL)session:(VCCallSession *)arg1 startVideoReceive:(id *)arg2;

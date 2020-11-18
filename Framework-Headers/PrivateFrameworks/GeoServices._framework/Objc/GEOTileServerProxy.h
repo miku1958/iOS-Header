@@ -19,24 +19,25 @@
 }
 
 @property (readonly, weak, nonatomic) id<GEOTileServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 
 - (void).cxx_destruct;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1 exclusive:(BOOL)arg2;
 - (void)calculateFreeableSize;
-- (void)cancel:(const struct _GEOTileKey *)arg1;
+- (unsigned long long)calculateFreeableSizeSync;
+- (void)cancel:(const struct _GEOTileKey *)arg1 batchID:(int)arg2;
 - (void)close;
 - (void)dealloc;
 - (void)endPreloadSession;
 - (void)flushPendingWrites;
-- (void)generateRequestedFromTileLoaderBeginSignpost:(unsigned long long)arg1;
+- (void)generateRequestedFromTileLoaderBeginSignpost:(unsigned long long)arg1 tileKey:(const struct _GEOTileKey *)arg2 options:(unsigned long long)arg3;
 - (void)generateRequestedFromTileLoaderEndSignpost:(unsigned long long)arg1;
 - (id)initWithCacheLocation:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 delegateQueue:(id)arg4 delegate:(id)arg5;
-- (void)loadTiles:(id)arg1 priorities:(const unsigned int *)arg2 hasAdditionalInfos:(const BOOL *)arg3 additionalInfos:(const CDStruct_58878026 *)arg4 signpostIDs:(const unsigned long long *)arg5 reason:(unsigned char)arg6 options:(unsigned long long)arg7 client:(id)arg8;
+- (void)loadTiles:(id)arg1 batchID:(int)arg2 priorities:(const unsigned int *)arg3 hasAdditionalInfos:(const BOOL *)arg4 additionalInfos:(const struct GEOTileLoaderAdditionalInfo *)arg5 signpostIDs:(const unsigned long long *)arg6 createTimes:(const double *)arg7 reason:(unsigned char)arg8 options:(unsigned long long)arg9 client:(id)arg10;
 - (void)open;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
-- (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;
+- (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2 batchID:(int)arg3;
 - (void)shrinkDiskCacheToSize:(unsigned long long)arg1;
+- (unsigned long long)shrinkDiskCacheToSizeSync:(unsigned long long)arg1;
 - (BOOL)skipNetworkForKeysWhenPreloading:(id)arg1;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <CloudServices/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSDictionary, NSError, NSString, SESWrapper;
+@class EscrowPrerecord, NSData, NSDate, NSDictionary, NSError, NSString, SESWrapper;
 @protocol OS_dispatch_queue;
 
 @interface SecureBackup : NSObject <NSSecureCoding>
@@ -26,6 +26,7 @@
     BOOL _usesMultipleiCSC;
     BOOL _usesRandomPassphrase;
     BOOL _usesRecoveryKey;
+    BOOL _suppressServerFiltering;
     NSString *_appleID;
     NSString *_authToken;
     NSDate *_backOffDate;
@@ -55,6 +56,8 @@
     NSError *_error;
     NSString *_activityLabel;
     NSString *_activityUUID;
+    NSString *_hsa2CachedPrerecordUUID;
+    EscrowPrerecord *_prerecord;
     SESWrapper *_ses;
 }
 
@@ -77,6 +80,7 @@
 @property (strong, nonatomic) NSDictionary *escrowRecord; // @synthesize escrowRecord=_escrowRecord;
 @property (nonatomic) BOOL fmipRecovery; // @synthesize fmipRecovery=_fmipRecovery;
 @property (copy, nonatomic) NSString *fmipUUID; // @synthesize fmipUUID=_fmipUUID;
+@property (copy, nonatomic) NSString *hsa2CachedPrerecordUUID; // @synthesize hsa2CachedPrerecordUUID=_hsa2CachedPrerecordUUID;
 @property (copy, nonatomic) NSString *iCloudEnv; // @synthesize iCloudEnv=_iCloudEnv;
 @property (strong, nonatomic) NSData *iCloudIdentityData; // @synthesize iCloudIdentityData=_iCloudIdentityData;
 @property (copy, nonatomic) NSString *iCloudPassword; // @synthesize iCloudPassword=_iCloudPassword;
@@ -87,6 +91,7 @@
 @property (strong, nonatomic) NSDictionary *metadataHash; // @synthesize metadataHash=_metadataHash;
 @property (copy, nonatomic) NSString *oldEMCSCred; // @synthesize oldEMCSCred=_oldEMCSCred;
 @property (copy, nonatomic) NSString *passphrase; // @synthesize passphrase=_passphrase;
+@property (strong, nonatomic) EscrowPrerecord *prerecord; // @synthesize prerecord=_prerecord;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (copy, nonatomic) NSString *recordID; // @synthesize recordID=_recordID;
 @property (copy, nonatomic) NSString *recoveryKey; // @synthesize recoveryKey=_recoveryKey;
@@ -94,6 +99,7 @@
 @property (nonatomic) BOOL silent; // @synthesize silent=_silent;
 @property (copy, nonatomic) NSString *smsTarget; // @synthesize smsTarget=_smsTarget;
 @property (nonatomic) BOOL stingray; // @synthesize stingray=_stingray;
+@property (nonatomic) BOOL suppressServerFiltering; // @synthesize suppressServerFiltering=_suppressServerFiltering;
 @property (nonatomic) BOOL synchronize; // @synthesize synchronize=_synchronize;
 @property (nonatomic) BOOL useCachedPassphrase; // @synthesize useCachedPassphrase=_useCachedPassphrase;
 @property (nonatomic) BOOL useRecoveryPET; // @synthesize useRecoveryPET=_useRecoveryPET;
@@ -102,6 +108,9 @@
 @property (nonatomic) BOOL usesRecoveryKey; // @synthesize usesRecoveryKey=_usesRecoveryKey;
 @property (copy, nonatomic) NSString *verificationToken; // @synthesize verificationToken=_verificationToken;
 
++ (id)_ClassCreateSecureBackupConcurrentConnection;
++ (unsigned int)daemonPasscodeRequestOpinion:(id *)arg1;
++ (unsigned int)needPasscodeForHSA2EscrowRecordUpdate:(id *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_CreateSecureBackupConnection;
@@ -109,6 +118,8 @@
 - (void)backOffDateWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)backupWithInfo:(id)arg1;
 - (void)backupWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)beginHSA2PasscodeRequest:(BOOL)arg1 error:(id *)arg2;
+- (id)beginHSA2PasscodeRequest:(BOOL)arg1 uuid:(id)arg2 error:(id *)arg3;
 - (void)cachePassphrase;
 - (void)cachePassphraseWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)cachePassphraseWithInfo:(id)arg1;
@@ -137,8 +148,10 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUserActivityLabel:(id)arg1;
-- (void)notificationOccurred:(id)arg1;
+- (void)notificationInfo:(CDUnknownBlockType)arg1;
 - (void)populateWithInfo:(id)arg1;
+- (void)prepareHSA2EscrowRecordContents:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)recoverRecordContents:(CDUnknownBlockType)arg1;
 - (id)recoverWithError:(id *)arg1;
 - (void)recoverWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)recoverWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
@@ -148,6 +161,7 @@
 - (void)setBackOffDateWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)srpInitNonce;
 - (id)srpRecoveryBlobFromSRPInitResponse:(id)arg1;
+- (void)srpRecoveryUpdateDSID:(id)arg1 recoveryPassphrase:(id)arg2;
 - (id)startSMSChallengeWithError:(id *)arg1;
 - (void)startSMSChallengeWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)startSMSChallengeWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;

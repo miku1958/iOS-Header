@@ -13,6 +13,7 @@
 @interface SFMutableResultSection : SFResultSection <NSCopying>
 {
     BOOL _doNotFold;
+    BOOL _pinToTop;
     BOOL _serialized;
     BOOL _isGlanceCategory;
     int _source;
@@ -27,6 +28,7 @@
 @property (nonatomic) unsigned int domain; // @synthesize domain=_domain;
 @property (strong, nonatomic) NSArray *hiddenExtResults; // @synthesize hiddenExtResults=_hiddenExtResults;
 @property (nonatomic) BOOL isGlanceCategory; // @synthesize isGlanceCategory=_isGlanceCategory;
+@property BOOL pinToTop; // @synthesize pinToTop=_pinToTop;
 @property (strong, nonatomic) NSMutableOrderedSet *resultSet; // @synthesize resultSet=_resultSet;
 @property (strong, nonatomic) NSString *resultSetIdentifier; // @synthesize resultSetIdentifier=_resultSetIdentifier;
 @property (nonatomic) BOOL serialized; // @synthesize serialized=_serialized;
@@ -52,6 +54,7 @@
 - (void)removeResults:(id)arg1;
 - (void)removeResultsAtIndex:(unsigned long long)arg1;
 - (void)removeResultsInArray:(id)arg1;
+- (void)removeResultsInRange:(struct _NSRange)arg1;
 - (void)replaceResultsAtIndex:(unsigned long long)arg1 withResults:(id)arg2;
 - (id)results;
 - (id)resultsAtIndex:(unsigned long long)arg1;

@@ -14,11 +14,11 @@
     CLLocation *_currentLocation;
     CLLocation *_anyLocation;
     unsigned long long _vista;
+    BOOL _listeningForNotifications;
 }
 
 + (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (BOOL)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
-+ (Class)richComplicationDisplayViewClassForType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void).cxx_destruct;
 - (id)_currentTimelineEntryWithIdealizedDate:(BOOL)arg1;
 - (void)_handleLocationUpdate:(id)arg1 anyLocation:(id)arg2;
@@ -36,6 +36,7 @@
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void)pause;
 - (void)resume;
+- (Class)richComplicationDisplayViewClassForDevice:(id)arg1;
 - (BOOL)supportsTapAction;
 - (unsigned long long)timelineAnimationBehavior;
 

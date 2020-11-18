@@ -4,29 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CommonUtilities/CUTUnsafePromise.h>
 
-@class CUTImplicitPromise, CUTResult;
-@protocol OS_dispatch_group, OS_dispatch_queue;
-
-@interface CUTPromise : NSObject
+@interface CUTPromise : CUTUnsafePromise
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_group> *_group;
-    BOOL _done;
-    CUTResult *_result;
 }
 
-@property (nonatomic) BOOL done; // @synthesize done=_done;
-@property (strong, nonatomic) NSObject<OS_dispatch_group> *group; // @synthesize group=_group;
-@property (readonly, nonatomic) CUTImplicitPromise *implicitPromise;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) CUTResult *result; // @synthesize result=_result;
-
-- (void).cxx_destruct;
-- (void)_fulfillWithResult:(id)arg1;
-- (id)_initWithQueue:(id)arg1;
++ (id)all:(id)arg1;
++ (id)failedPromiseWithError:(id)arg1;
++ (id)fulfilledPromiseWithValue:(id)arg1;
 - (void)registerResultBlock:(CDUnknownBlockType)arg1;
+- (id)then:(CDUnknownBlockType)arg1;
 
 @end
 

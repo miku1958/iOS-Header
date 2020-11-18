@@ -22,20 +22,20 @@ __attribute__((visibility("hidden")))
     unsigned int _minDepartureFrequency;
     BOOL _isEstimated;
     struct {
-        unsigned int displayDepartureFrequency:1;
-        unsigned int earliestDepartureTime:1;
-        unsigned int latestDepartureTime:1;
-        unsigned int maxDepartureFrequency:1;
-        unsigned int minDepartureFrequency:1;
-        unsigned int isEstimated:1;
-    } _has;
+        unsigned int has_displayDepartureFrequency:1;
+        unsigned int has_earliestDepartureTime:1;
+        unsigned int has_latestDepartureTime:1;
+        unsigned int has_maxDepartureFrequency:1;
+        unsigned int has_minDepartureFrequency:1;
+        unsigned int has_isEstimated:1;
+    } _flags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned int displayDepartureFrequency; // @synthesize displayDepartureFrequency=_displayDepartureFrequency;
+@property (nonatomic) unsigned int displayDepartureFrequency;
 @property (readonly, nonatomic) long long displayFrequency;
-@property (nonatomic) unsigned int earliestDepartureTime; // @synthesize earliestDepartureTime=_earliestDepartureTime;
+@property (nonatomic) unsigned int earliestDepartureTime;
 @property (readonly, nonatomic) NSDate *firstTimeInFrequency;
 @property (readonly, nonatomic) double frequencyForSorting;
 @property (readonly, nonatomic) long long frequencyType;
@@ -47,23 +47,26 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasMinDepartureFrequency;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isEstimate;
-@property (nonatomic) BOOL isEstimated; // @synthesize isEstimated=_isEstimated;
+@property (nonatomic) BOOL isEstimated;
 @property (readonly, nonatomic) NSDate *lastTimeInFrequency;
-@property (nonatomic) unsigned int latestDepartureTime; // @synthesize latestDepartureTime=_latestDepartureTime;
-@property (nonatomic) unsigned int maxDepartureFrequency; // @synthesize maxDepartureFrequency=_maxDepartureFrequency;
+@property (nonatomic) unsigned int latestDepartureTime;
+@property (nonatomic) unsigned int maxDepartureFrequency;
 @property (readonly, nonatomic) long long maxFrequency;
-@property (nonatomic) unsigned int minDepartureFrequency; // @synthesize minDepartureFrequency=_minDepartureFrequency;
+@property (nonatomic) unsigned int minDepartureFrequency;
 @property (readonly, nonatomic) long long minFrequency;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidAtDate:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

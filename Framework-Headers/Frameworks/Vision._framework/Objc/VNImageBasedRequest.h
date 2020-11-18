@@ -26,7 +26,6 @@
 - (id)_faceObservationsForRegionOfInterestContainingFaceObservations:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (BOOL)getOptionalValidatedInputFaceObservations:(id *)arg1 clippedToRegionOfInterest:(BOOL)arg2 error:(id *)arg3;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)isFullCoverageRegionOfInterest;
 - (struct CGRect)regionOfInterestNonIntegralPixelRectForWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
 - (struct CGRect)regionOfInterestPixelRectForWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;

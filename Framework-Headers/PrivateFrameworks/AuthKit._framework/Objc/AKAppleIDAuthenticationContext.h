@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <AuthKit/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
+#import <AuthKit/AKAuthenticationContext-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
 @class AKAnisetteData, AKDevice, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
 @protocol AKAnisetteServiceProtocol, OS_dispatch_queue;
 
-@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, NSSecureCoding>
+@interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, AKAuthenticationContext, NSSecureCoding>
 {
     NSString *_generatedCode;
     NSNumber *_latitude;
@@ -61,6 +62,9 @@
     unsigned long long _capabilityForUIDisplay;
     NSString *_shortLivedToken;
     NSString *_message;
+    AKAnisetteData *_companionDeviceAnisetteData;
+    AKAnisetteData *_proxiedDeviceAnisetteData;
+    NSString *_appProvidedContext;
     NSString *_username;
     long long _serviceType;
     NSString *_reason;
@@ -71,6 +75,7 @@
     NSString *_altDSID;
     NSDictionary *_httpHeadersForRemoteUI;
     id _clientInfo;
+    NSDictionary *_appProvidedData;
     NSString *_title;
     NSString *_helpAnchor;
     NSString *_helpBook;
@@ -80,8 +85,6 @@
     NSNumber *_hasEmptyPassword;
     NSSet *_desiredInternalTokens;
     NSString *_securityUpgradeContext;
-    AKAnisetteData *_proxiedDeviceAnisetteData;
-    AKAnisetteData *_companionDeviceAnisetteData;
     NSString *_displayString;
     NSString *_displayTitle;
 }
@@ -104,14 +107,19 @@
 @property (copy, nonatomic, setter=_setShortLivedToken:) NSString *_shortLivedToken; // @synthesize _shortLivedToken;
 @property (nonatomic) BOOL _shouldSendGrandSlamTokensForRemoteUI; // @synthesize _shouldSendGrandSlamTokensForRemoteUI;
 @property (nonatomic) BOOL _shouldSendIdentityTokenForRemoteUI; // @synthesize _shouldSendIdentityTokenForRemoteUI;
-@property (readonly, nonatomic) BOOL _shouldSkipInitialReachabilityCheck; // @synthesize _shouldSkipInitialReachabilityCheck;
+@property (nonatomic) BOOL _shouldSkipInitialReachabilityCheck; // @synthesize _shouldSkipInitialReachabilityCheck;
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (strong, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property (nonatomic) BOOL anticipateEscrowAttempt; // @synthesize anticipateEscrowAttempt=_anticipateEscrowAttempt;
+@property (copy, nonatomic) NSString *appProvidedContext; // @synthesize appProvidedContext=_appProvidedContext;
+@property (copy, nonatomic) NSDictionary *appProvidedData; // @synthesize appProvidedData=_appProvidedData;
 @property (nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
 @property (strong, nonatomic) id clientInfo; // @synthesize clientInfo=_clientInfo;
-@property (copy, nonatomic) AKDevice *companionDevice;
+@property (copy, nonatomic) AKDevice *companionDevice; // @synthesize companionDevice=_companionDevice;
 @property (strong, nonatomic) AKAnisetteData *companionDeviceAnisetteData; // @synthesize companionDeviceAnisetteData=_companionDeviceAnisetteData;
+@property (readonly, nonatomic, getter=isContextEligibleForBiometricOrPasscodeAuth) BOOL contextEligibleForBiometricOrPasscodeAuth;
+@property (readonly, nonatomic, getter=isContextEligibleForSilentAuth) BOOL contextEligibleForSilentAuth;
+@property (readonly, nonatomic, getter=isContextEligibleForSilentAuthCoercion) BOOL contextEligibleForSilentAuthCoercion;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *defaultButtonString; // @synthesize defaultButtonString=_defaultButtonString;
 @property (readonly, copy) NSString *description;
@@ -139,7 +147,7 @@
 @property (nonatomic) BOOL needsNewAppleID; // @synthesize needsNewAppleID=_needsNewAppleID;
 @property (nonatomic) BOOL needsPasswordChange; // @synthesize needsPasswordChange=_needsPasswordChange;
 @property (nonatomic) BOOL needsRepair; // @synthesize needsRepair=_needsRepair;
-@property (copy, nonatomic) AKDevice *proxiedDevice;
+@property (copy, nonatomic) AKDevice *proxiedDevice; // @synthesize proxiedDevice=_proxiedDevice;
 @property (strong, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (copy, nonatomic) NSString *securityUpgradeContext; // @synthesize securityUpgradeContext=_securityUpgradeContext;
@@ -163,6 +171,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_appendBlameIfRequiredTo:(id)arg1;
 - (void)_handleSecondFactorCodeEntry;
 - (id)_initWithIdentifier:(id)arg1;
 - (BOOL)_localUserHasEmptyPassword;
@@ -178,7 +187,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContext:(id)arg1;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentBiometricOrPasscodeValidationForAppleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentSecondFactorAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;

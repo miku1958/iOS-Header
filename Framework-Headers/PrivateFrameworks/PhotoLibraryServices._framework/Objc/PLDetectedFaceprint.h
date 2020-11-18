@@ -16,9 +16,7 @@
 @property (strong, nonatomic) PLDetectedFace *face; // @dynamic face;
 @property (nonatomic) int faceprintVersion; // @dynamic faceprintVersion;
 
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 
 @end
 

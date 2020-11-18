@@ -12,13 +12,17 @@
 
 @interface CAMFlipButton : UIButton <CAMAccessibilityHUDImageProvider>
 {
+    BOOL __useCTMAppearance;
     long long _layoutStyle;
     long long _orientation;
     UIImageView *__imageView;
+    UIImageView *__circleBackgroundView;
     struct UIEdgeInsets _tappableEdgeInsets;
 }
 
+@property (strong, nonatomic) UIImageView *_circleBackgroundView; // @synthesize _circleBackgroundView=__circleBackgroundView;
 @property (readonly, nonatomic) UIImageView *_imageView; // @synthesize _imageView=__imageView;
+@property (readonly, nonatomic) BOOL _useCTMAppearance; // @synthesize _useCTMAppearance=__useCTMAppearance;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,9 +31,10 @@
 @property (readonly) Class superclass;
 @property (nonatomic) struct UIEdgeInsets tappableEdgeInsets; // @synthesize tappableEdgeInsets=_tappableEdgeInsets;
 
++ (id)flipButtonOverContent;
 + (id)flipButtonWithLayoutStyle:(long long)arg1;
 - (void).cxx_destruct;
-- (void)_commonCAMFlipButtonInitializationWithStyle:(long long)arg1;
+- (void)_commonCAMFlipButtonInitializationWithStyle:(long long)arg1 overContent:(BOOL)arg2;
 - (void)_updateImages;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)imageForAccessibilityHUD;

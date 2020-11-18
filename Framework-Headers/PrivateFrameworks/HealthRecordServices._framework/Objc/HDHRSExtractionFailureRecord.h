@@ -18,6 +18,7 @@
 }
 
 @property (readonly, nonatomic) long long failureCode; // @synthesize failureCode=_failureCode;
+@property (readonly, copy, nonatomic) NSString *internalDisplaySafeDescription;
 @property (readonly, copy, nonatomic) NSString *propertyName; // @synthesize propertyName=_propertyName;
 @property (readonly, copy, nonatomic) NSString *resourceKeyPath; // @synthesize resourceKeyPath=_resourceKeyPath;
 

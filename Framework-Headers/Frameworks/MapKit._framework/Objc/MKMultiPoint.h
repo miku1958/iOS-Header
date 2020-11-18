@@ -6,17 +6,27 @@
 
 #import <MapKit/MKShape.h>
 
-@interface MKMultiPoint : MKShape
+#import <MapKit/MKGeoJSONObject-Protocol.h>
+
+@class NSString;
+
+@interface MKMultiPoint : MKShape <MKGeoJSONObject>
 {
     CDStruct_c3b9c2ee *_points;
     unsigned long long _pointCount;
     CDStruct_02837cd9 _boundingRect;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long pointCount; // @synthesize pointCount=_pointCount;
+@property (readonly) Class superclass;
 
 - (void)_assignPoints:(CDStruct_c3b9c2ee *)arg1 count:(unsigned long long)arg2;
 - (void)_calculateBounds;
+- (id)_initWithGeoJSONObject:(id)arg1 error:(id *)arg2;
+- (void)_pointsDidChange;
 - (void)_setBounds:(CDStruct_02837cd9)arg1;
 - (void)_setCoordinates:(const struct CLLocationCoordinate2D *)arg1 count:(unsigned long long)arg2;
 - (void)_setPoints:(const CDStruct_c3b9c2ee *)arg1 count:(unsigned long long)arg2;
@@ -24,7 +34,9 @@
 - (CDStruct_02837cd9)boundingMapRect;
 - (struct CLLocationCoordinate2D)coordinate;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (void)getCoordinates:(struct CLLocationCoordinate2D *)arg1 range:(struct _NSRange)arg2;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)intersectsMapRect:(CDStruct_02837cd9)arg1;
 - (CDStruct_c3b9c2ee *)points;
 

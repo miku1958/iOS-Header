@@ -6,56 +6,49 @@
 
 #import <SearchUI/SearchUICardSectionView.h>
 
-#import <SearchUI/MKMapViewDelegate-Protocol.h>
+#import <SearchUI/NUIContainerViewDelegate-Protocol.h>
 
-@class CLGeocoder, CLPlacemark, MKMapView, MKPinAnnotationView, NSString, SFMapCardSection, UIButton, UILabel;
+@class CLPlacemark, MKMapSnapshotter, MKPinAnnotationView, NSString, SFMapCardSection, TLKImageView, TLKLabel, TLKStackView, UITapGestureRecognizer;
 
-@interface SearchUIMapCardSectionView : SearchUICardSectionView <MKMapViewDelegate>
+@interface SearchUIMapCardSectionView : SearchUICardSectionView <NUIContainerViewDelegate>
 {
-    BOOL _needsToNotifyDelegateOfLocationUpdate;
-    MKMapView *_mapView;
-    UILabel *_footnoteDescriptorLabel;
-    UILabel *_footnoteLabel;
+    TLKLabel *_footnoteDescriptorLabel;
+    TLKLabel *_footnoteLabel;
     MKPinAnnotationView *_pinAnnotationView;
-    UIButton *_mapButton;
+    UITapGestureRecognizer *_tapRecognizer;
     CLPlacemark *_currentPlacemark;
-    CLGeocoder *_geocoder;
+    TLKStackView *_labelsStackView;
+    TLKImageView *_snapshotView;
+    MKMapSnapshotter *_mapSnapshotter;
 }
 
 @property (strong, nonatomic) CLPlacemark *currentPlacemark; // @synthesize currentPlacemark=_currentPlacemark;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) UILabel *footnoteDescriptorLabel; // @synthesize footnoteDescriptorLabel=_footnoteDescriptorLabel;
-@property (strong, nonatomic) UILabel *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
-@property (strong, nonatomic) CLGeocoder *geocoder; // @synthesize geocoder=_geocoder;
+@property (strong, nonatomic) TLKLabel *footnoteDescriptorLabel; // @synthesize footnoteDescriptorLabel=_footnoteDescriptorLabel;
+@property (strong, nonatomic) TLKLabel *footnoteLabel; // @synthesize footnoteLabel=_footnoteLabel;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIButton *mapButton; // @synthesize mapButton=_mapButton;
-@property (strong, nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
-@property (nonatomic) BOOL needsToNotifyDelegateOfLocationUpdate; // @synthesize needsToNotifyDelegateOfLocationUpdate=_needsToNotifyDelegateOfLocationUpdate;
+@property (strong, nonatomic) TLKStackView *labelsStackView; // @synthesize labelsStackView=_labelsStackView;
+@property (strong, nonatomic) MKMapSnapshotter *mapSnapshotter; // @synthesize mapSnapshotter=_mapSnapshotter;
 @property (strong, nonatomic) MKPinAnnotationView *pinAnnotationView; // @synthesize pinAnnotationView=_pinAnnotationView;
 @property (readonly, nonatomic) SFMapCardSection *section; // @dynamic section;
+@property (strong, nonatomic) TLKImageView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 
-+ (id)_postalAddressFromAddressBookDictionaryAddress:(id)arg1;
++ (id)_postalAddressFromPlacemark:(id)arg1;
++ (BOOL)supportsRecyclingForCardSection:(id)arg1;
 - (void).cxx_destruct;
 - (id)_clLocationFromSFLatLng:(id)arg1;
-- (id)_configuredFootnoteDescriptorLabel;
-- (id)_configuredFootnoteLabel;
-- (id)_configuredLabel;
-- (void)_mapButtonPressed:(id)arg1;
-- (void)_notifyDelegateOfLocationUpdateIfNeededWithPlacemark:(id)arg1;
-- (BOOL)_pinShouldFloat;
+- (void)_mapButtonPressed;
 - (id)_uiColorFromSFColor:(id)arg1;
-- (double)desiredHeight;
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-- (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
-- (void)mapView:(id)arg1 regionDidChangeAnimated:(BOOL)arg2;
-- (id)mapView:(id)arg1 viewForAnnotation:(id)arg2;
-- (void)prepareForDismissal;
-- (void)reloadData;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
+- (void)_updateSnapshot:(struct CGSize)arg1;
+- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
+- (void)dealloc;
+- (void)sendMapFeedbackWithTriggerEvent:(unsigned long long)arg1 placemarkData:(id)arg2;
+- (id)setupContentView;
+- (void)updateMapAppearance;
+- (void)updateWithRowModel:(id)arg1;
 
 @end
 

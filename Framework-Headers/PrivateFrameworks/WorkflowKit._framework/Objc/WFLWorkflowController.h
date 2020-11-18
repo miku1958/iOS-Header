@@ -6,47 +6,52 @@
 
 #import <objc/NSObject.h>
 
-@class INVoiceCommandDeviceInformation, NSProgress, WFLActionImplementation, WFLWorkflow;
+#import <WorkflowKit/WFSiriUserInterface-Protocol.h>
+#import <WorkflowKit/WFWorkflowControllerDelegate-Protocol.h>
+
+@class INIntentResponse, NSArray, NSProgress, NSString, WFWorkflow, WFWorkflowController;
 @protocol WFLWorkflowControllerDelegate;
 
-@interface WFLWorkflowController : NSObject
+@interface WFLWorkflowController : NSObject <WFWorkflowControllerDelegate, WFSiriUserInterface>
 {
-    BOOL _running;
+    NSArray *_airPlayRouteIDs;
     id<WFLWorkflowControllerDelegate> _delegate;
-    WFLWorkflow *_workflow;
-    NSProgress *_progress;
     long long _executionContext;
-    INVoiceCommandDeviceInformation *_originDeviceInformation;
-    unsigned long long _currentActionIndex;
-    WFLActionImplementation *_currentActionImplementation;
-    WFLActionImplementation *_previousActionImplementation;
+    WFWorkflowController *_controller;
+    INIntentResponse *_lastIntentResponse;
 }
 
-@property (strong, nonatomic) WFLActionImplementation *currentActionImplementation; // @synthesize currentActionImplementation=_currentActionImplementation;
-@property (nonatomic) unsigned long long currentActionIndex; // @synthesize currentActionIndex=_currentActionIndex;
+@property (readonly, copy, nonatomic) NSArray *airPlayRouteIDs; // @synthesize airPlayRouteIDs=_airPlayRouteIDs;
+@property (readonly, nonatomic) WFWorkflowController *controller; // @synthesize controller=_controller;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFLWorkflowControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long executionContext; // @synthesize executionContext=_executionContext;
-@property (strong, nonatomic) INVoiceCommandDeviceInformation *originDeviceInformation; // @synthesize originDeviceInformation=_originDeviceInformation;
-@property (strong, nonatomic) WFLActionImplementation *previousActionImplementation; // @synthesize previousActionImplementation=_previousActionImplementation;
-@property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
-@property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
-@property (readonly, nonatomic) WFLWorkflow *workflow; // @synthesize workflow=_workflow;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) INIntentResponse *lastIntentResponse; // @synthesize lastIntentResponse=_lastIntentResponse;
+@property (readonly, nonatomic) NSProgress *progress;
+@property (readonly, nonatomic, getter=isRunning) BOOL running;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) WFWorkflow *workflow;
 
-+ (void)initialize;
 - (void).cxx_destruct;
-- (id)createImplementationForAction:(id)arg1;
-- (void)dealloc;
+- (void)configureIntent:(id)arg1;
+- (BOOL)executeIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithWorkflow:(id)arg1;
 - (void)launchAppWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)openInteractionInApp:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)openUserActivity:(id)arg1 bundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)presentAlert:(id)arg1;
 - (void)runWithInput:(id)arg1;
-- (void)stepWithInput:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)showInteractionIfNeeded:(id)arg1 requiringConfirmation:(BOOL)arg2 requiringAuthentication:(BOOL)arg3 executionStage:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)speakText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stop;
-- (id)userInterfaceForRunningAction:(id)arg1;
-- (void)workflowControllerDidFinishRunningAction:(id)arg1;
-- (void)workflowControllerDidFinishRunningWithOutput:(id)arg1;
-- (void)workflowControllerDidStopWithError:(id)arg1;
-- (void)workflowControllerWillRun;
-- (void)workflowControllerWillRunAction:(id)arg1 withInput:(id)arg2 proceedHandler:(CDUnknownBlockType)arg3;
+- (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(BOOL)arg3;
+- (void)workflowController:(id)arg1 didRunAction:(id)arg2;
+- (void)workflowController:(id)arg1 prepareToRunAction:(id)arg2 withInput:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)workflowController:(id)arg1 userInterfaceForAction:(id)arg2;
+- (void)workflowControllerWillRun:(id)arg1;
 
 @end
 

@@ -7,6 +7,14 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (Additions)
+- (BOOL)_pl_any:(CDUnknownBlockType)arg1;
+- (id)_pl_filter:(CDUnknownBlockType)arg1;
+- (id)_pl_firstObjectPassingTest:(CDUnknownBlockType)arg1;
+- (id)_pl_flatMap:(CDUnknownBlockType)arg1;
+- (id)_pl_groupBy:(CDUnknownBlockType)arg1;
+- (id)_pl_indexBy:(CDUnknownBlockType)arg1;
+- (id)_pl_map:(CDUnknownBlockType)arg1;
+- (id)_pl_prettyDescriptionWithIndent:(long long)arg1;
 - (id)pl_arrayOfUniqueObjectsNotInOrderedSet:(id)arg1;
 - (unsigned long long)pl_countOfObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (unsigned long long)pl_indexOfFirstObjectInRange:(struct _NSRange)arg1 passingTest:(CDUnknownBlockType)arg2;

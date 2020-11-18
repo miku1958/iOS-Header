@@ -6,15 +6,15 @@
 
 #import <iWorkImport/TSPObject.h>
 
-@protocol TSCEFormulaOwning;
+@protocol TSCECalculationEngineRegistration, TSCEFormulaOwning;
 
 __attribute__((visibility("hidden")))
 @interface TSCEFormulaOwnerDependencies : TSPObject
 {
     BOOL _isRegisteredWithCalcEngine;
     unsigned short _formulaOwnerId;
-    unsigned short _ownerKind;
     id<TSCEFormulaOwning> _formulaOwner;
+    id<TSCECalculationEngineRegistration> _calcEngineRegistrationObject;
     struct TSCECellDependencies *_cellDependencies;
     struct TSCERangeDependencies *_rangeDependencies;
     struct TSCESpanningDependencies *_spanningColumnDependencies;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     struct TSCESubFormulaOwnerID _subOwnerID;
 }
 
+@property (strong, nonatomic) id<TSCECalculationEngineRegistration> calcEngineRegistrationObject; // @synthesize calcEngineRegistrationObject=_calcEngineRegistrationObject;
 @property (readonly, nonatomic) struct TSCECellDependencies *cellDependencies; // @synthesize cellDependencies=_cellDependencies;
 @property (nonatomic) struct TSCEDependencyTracker *dependencyTracker;
 @property (readonly, nonatomic) struct TSCERefErrors *errors; // @synthesize errors=_errors;
@@ -33,7 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned short formulaOwnerId; // @synthesize formulaOwnerId=_formulaOwnerId;
 @property (readonly, nonatomic) UUIDData_5fbc143e formulaOwnerUid; // @synthesize formulaOwnerUid=_formulaOwnerUid;
 @property (nonatomic) BOOL isRegisteredWithCalcEngine; // @synthesize isRegisteredWithCalcEngine=_isRegisteredWithCalcEngine;
-@property (readonly, nonatomic) unsigned short ownerKind; // @synthesize ownerKind=_ownerKind;
+@property (readonly, nonatomic) unsigned short ownerKind;
 @property (readonly, nonatomic) struct TSCERangeDependencies *rangeDependencies; // @synthesize rangeDependencies=_rangeDependencies;
 @property (readonly, nonatomic) struct TSCESpanningDependencies *spanningColumnDependencies; // @synthesize spanningColumnDependencies=_spanningColumnDependencies;
 @property (readonly, nonatomic) struct TSCESpanningDependencies *spanningRowDependencies; // @synthesize spanningRowDependencies=_spanningRowDependencies;

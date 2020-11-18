@@ -23,11 +23,12 @@
 @property (strong, nonatomic) ADDimmerView *dimmerView; // @synthesize dimmerView=_dimmerView;
 @property (nonatomic) struct CGRect dismissButtonRect; // @synthesize dismissButtonRect=_dismissButtonRect;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) ADInterstitialAd *interstitialAd;
+@property (weak, nonatomic) ADInterstitialAd *interstitialAd; // @synthesize interstitialAd=_interstitialAd;
 @property (strong, nonatomic) ADPrivacyMarker *privacyMarker; // @synthesize privacyMarker=_privacyMarker;
 @property (readonly) Class superclass;
 
 + (BOOL)requiresConstraintBasedLayout;
+- (void).cxx_destruct;
 - (void)_privacyButtonWasTapped;
 - (void)dealloc;
 - (void)didMoveToWindow;

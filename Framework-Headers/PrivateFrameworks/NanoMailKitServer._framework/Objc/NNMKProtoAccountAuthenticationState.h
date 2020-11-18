@@ -13,16 +13,22 @@
 @interface NNMKProtoAccountAuthenticationState : PBCodable <NSCopying>
 {
     NSString *_accountId;
+    NSString *_displayName;
     unsigned int _standaloneState;
+    NSString *_subsectionId;
     struct {
         unsigned int standaloneState:1;
     } _has;
 }
 
 @property (strong, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
+@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) BOOL hasAccountId;
+@property (readonly, nonatomic) BOOL hasDisplayName;
 @property (nonatomic) BOOL hasStandaloneState;
+@property (readonly, nonatomic) BOOL hasSubsectionId;
 @property (nonatomic) unsigned int standaloneState; // @synthesize standaloneState=_standaloneState;
+@property (strong, nonatomic) NSString *subsectionId; // @synthesize subsectionId=_subsectionId;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

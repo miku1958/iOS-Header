@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolbox/NSObject-Protocol.h>
+#import <AudioToolboxCore/NSObject-Protocol.h>
 
 @class NSXPCConnection, NSXPCListener;
 

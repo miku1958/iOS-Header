@@ -40,6 +40,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

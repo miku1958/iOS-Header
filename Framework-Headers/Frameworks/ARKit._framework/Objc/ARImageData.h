@@ -16,19 +16,24 @@
 @interface ARImageData : NSObject <ARDictionaryCoding, ARSensorData, NSCopying, NSSecureCoding>
 {
     BOOL _mirrored;
+    BOOL _secondary;
     float _exposureTargetOffset;
     float _temperature;
+    float _signalToNoiseRatio;
+    float _ISO;
     double _timestamp;
     NSDate *_captureDate;
     double _currentCaptureTimestamp;
     struct __CVBuffer *_pixelBuffer;
     unsigned long long _lensType;
     double _exposureDuration;
+    long long _deviceOrientation;
     ARFaceData *_faceData;
     AVDepthData *_depthData;
     double _depthDataTimestamp;
     struct __CVBuffer *_visionData;
     long long _cameraPosition;
+    NSString *_cameraType;
     long long _captureFramesPerSecond;
     struct CGSize _imageResolution;
     MISSING_TYPE *_tangentialDistortion;
@@ -36,8 +41,10 @@
     CDStruct_8e0628e6 _cameraIntrinsics;
 }
 
+@property (nonatomic) float ISO; // @synthesize ISO=_ISO;
 @property (nonatomic) CDStruct_8e0628e6 cameraIntrinsics; // @synthesize cameraIntrinsics=_cameraIntrinsics;
 @property (nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
+@property (strong, nonatomic) NSString *cameraType; // @synthesize cameraType=_cameraType;
 @property (copy, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property (nonatomic) long long captureFramesPerSecond; // @synthesize captureFramesPerSecond=_captureFramesPerSecond;
 @property (nonatomic) double currentCaptureTimestamp; // @synthesize currentCaptureTimestamp=_currentCaptureTimestamp;
@@ -45,6 +52,7 @@
 @property (strong, nonatomic) AVDepthData *depthData; // @synthesize depthData=_depthData;
 @property (nonatomic) double depthDataTimestamp; // @synthesize depthDataTimestamp=_depthDataTimestamp;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
 @property (nonatomic) double exposureDuration; // @synthesize exposureDuration=_exposureDuration;
 @property (nonatomic) float exposureTargetOffset; // @synthesize exposureTargetOffset=_exposureTargetOffset;
 @property (strong, nonatomic) ARFaceData *faceData; // @synthesize faceData=_faceData;
@@ -55,6 +63,8 @@
 @property (readonly, nonatomic) ARImageData *originalImage;
 @property (nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 @property (nonatomic) MISSING_TYPE *radialDistortion; // @synthesize radialDistortion=_radialDistortion;
+@property (nonatomic, getter=isSecondary) BOOL secondary; // @synthesize secondary=_secondary;
+@property (nonatomic) float signalToNoiseRatio; // @synthesize signalToNoiseRatio=_signalToNoiseRatio;
 @property (readonly) Class superclass;
 @property (nonatomic) MISSING_TYPE *tangentialDistortion; // @synthesize tangentialDistortion=_tangentialDistortion;
 @property (nonatomic) float temperature; // @synthesize temperature=_temperature;
@@ -71,8 +81,10 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithImageData:(id)arg1;
+- (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 captureFramePerSecond:(long long)arg2 captureDevice:(id)arg3 captureSession:(id)arg4 timestamp:(CDStruct_1b6d18a9)arg5 intrinsics:(CDStruct_8e0628e6)arg6 exif:(id)arg7;
 - (id)initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 captureFramePerSecond:(long long)arg2 captureDevice:(id)arg3 captureSession:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)matchesPixelBufferPointerRecursively:(void *)arg1;
 
 @end
 

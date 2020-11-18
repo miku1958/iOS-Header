@@ -6,22 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-#import <PlatterKit/MTVibrantStylingProviderObserving-Protocol.h>
-#import <PlatterKit/MTVibrantStylingRequiring-Protocol.h>
+#import <PlatterKit/MTVisualStylingRequiring-Protocol.h>
 #import <PlatterKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class BSUIEmojiLabelView, BSUIFontProvider, MTVibrantStylingProvider, NSMutableDictionary, NSString, NSStringDrawingContext, UIImage, UIImageView, UILabel;
+@class BSUIEmojiLabelView, BSUIFontProvider, MTVisualStylingProvider, NSArray, NSMutableDictionary, NSString, NSStringDrawingContext, UIImage, UIImageView, UILabel;
 
-@interface PLSummaryContentView : UIView <MTVibrantStylingProviderObserving, MTVibrantStylingRequiring, PLContentSizeCategoryAdjusting>
+@interface PLSummaryContentView : UIView <MTVisualStylingRequiring, PLContentSizeCategoryAdjusting>
 {
     struct UIEdgeInsets _contentInsets;
     UIView *_contentView;
     UIImageView *_thumbnailImageView;
     NSMutableDictionary *_widthToFontToStringToMeasuredNumLines;
     NSStringDrawingContext *_drawingContext;
+    MTVisualStylingProvider *_visualStylingProvider;
     BOOL _adjustsFontForContentSizeCategory;
     UILabel *_secondaryLabel;
-    MTVibrantStylingProvider *_vibrantStylingProvider;
     NSString *_preferredContentSizeCategory;
     UIView *_accessoryView;
     BSUIFontProvider *_fontProvider;
@@ -42,13 +41,13 @@
 @property (strong, nonatomic, getter=_primarySubtitleLabel, setter=_setPrimarySubtitleLabel:) UILabel *primarySubtitleLabel; // @synthesize primarySubtitleLabel=_primarySubtitleLabel;
 @property (strong, nonatomic) NSString *primarySubtitleText;
 @property (strong, nonatomic) NSString *primaryText;
+@property (readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
 @property (readonly, nonatomic, getter=_secondaryLabel) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
 @property (strong, nonatomic) NSString *secondaryText;
 @property (strong, nonatomic, getter=_summaryLabel, setter=_setSummaryLabel:) BSUIEmojiLabelView *summaryLabel; // @synthesize summaryLabel=_summaryLabel;
 @property (strong, nonatomic) NSString *summaryText;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *thumbnail;
-@property (strong, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider; // @synthesize vibrantStylingProvider=_vibrantStylingProvider;
 
 - (void).cxx_destruct;
 - (unsigned long long)_cachedNumberOfMeasuredLinesForText:(id)arg1 withFont:(id)arg2 forWidth:(double)arg3;
@@ -105,9 +104,10 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;
 - (void)layoutSubviews;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)vibrantStylingDidChangeForProvider:(id)arg1;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end
 

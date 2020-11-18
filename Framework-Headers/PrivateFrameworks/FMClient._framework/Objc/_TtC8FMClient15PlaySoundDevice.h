@@ -19,9 +19,9 @@
 
 @property (nonatomic, readonly) NSString *debugDescription;
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) NSString *locality; // @synthesize locality;
+@property (nonatomic, readonly) NSString *locality;
 @property (nonatomic, readonly) BOOL safetyWarningConfirmed; // @synthesize safetyWarningConfirmed;
-@property (nonatomic, readonly) NSString *serverId; // @synthesize serverId;
+@property (nonatomic, readonly) NSString *serverId;
 
 + (id)PlaySoundDeviceLocalityLocal;
 + (id)PlaySoundDeviceLocalityRemote;

@@ -20,6 +20,7 @@
     NSString *_subject;
     NSString *_body;
     NSString *_referenceMessageId;
+    NSString *_standaloneReferenceMessageId;
 }
 
 @property (strong, nonatomic) NSString *body; // @synthesize body=_body;
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL includeAttachments; // @synthesize includeAttachments=_includeAttachments;
 @property (strong, nonatomic) NSString *referenceMessageId; // @synthesize referenceMessageId=_referenceMessageId;
 @property (nonatomic) unsigned long long sendingType; // @synthesize sendingType=_sendingType;
+@property (strong, nonatomic) NSString *standaloneReferenceMessageId; // @synthesize standaloneReferenceMessageId=_standaloneReferenceMessageId;
 @property (strong, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (strong, nonatomic) NSArray *to; // @synthesize to=_to;
 

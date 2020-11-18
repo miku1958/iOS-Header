@@ -24,6 +24,8 @@
 - (id)description;
 - (void)startRoutingSessionForHighConfidenceExternalDestinationIfPresentWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)startRoutingSessionWithOutputDeviceDescriptions:(id)arg1 error:(id *)arg2;
+- (BOOL)startSuppressingLikelyDestinationsUntilNextPlayEventAndReturnError:(id *)arg1;
+- (BOOL)stopSuppressingLikelyDestinationsAndReturnError:(id *)arg1;
 - (void)updateCurrentRoutingSessionFromLikelyDestinationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

@@ -10,9 +10,13 @@
 
 @interface ASDCreatePlaceholdersRequestOptions : ASDRequestOptions
 {
+    BOOL _completeDataPromise;
+    BOOL _createAsMobileBackup;
     NSArray *_items;
 }
 
+@property (nonatomic) BOOL completeDataPromise; // @synthesize completeDataPromise=_completeDataPromise;
+@property (nonatomic) BOOL createAsMobileBackup; // @synthesize createAsMobileBackup=_createAsMobileBackup;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 
 + (BOOL)supportsSecureCoding;

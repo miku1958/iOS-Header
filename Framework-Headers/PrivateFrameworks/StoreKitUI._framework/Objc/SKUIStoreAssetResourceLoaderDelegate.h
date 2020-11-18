@@ -10,6 +10,7 @@
 
 @class NSOperationQueue, NSString, NSURL, SKUIClientContext;
 
+__attribute__((visibility("hidden")))
 @interface SKUIStoreAssetResourceLoaderDelegate : NSObject <AVAssetResourceLoaderDelegate>
 {
     BOOL _isITunesStream;

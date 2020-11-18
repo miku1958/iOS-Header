@@ -28,6 +28,7 @@
     BOOL _isFavorite;
     BOOL _accessoryViewVisible;
     BOOL _isInEditMode;
+    BOOL _toggleCTM;
     BOOL __needsUpdateVideoPlayers;
     id<PUDisplayAsset> _asset;
     PUModelTileTransform *_modelTileTransform;
@@ -87,6 +88,7 @@
 @property (strong, nonatomic) NSProgress *saveProgress; // @synthesize saveProgress=_saveProgress;
 @property (readonly, nonatomic) long long saveState; // @synthesize saveState=_saveState;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL toggleCTM; // @synthesize toggleCTM=_toggleCTM;
 @property (readonly, nonatomic) PUBrowsingVideoPlayer *videoPlayer;
 
 - (void).cxx_destruct;

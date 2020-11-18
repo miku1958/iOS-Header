@@ -53,7 +53,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long buildCount;
 @property (copy, nonatomic) NSSet *builds;
 @property (readonly, nonatomic) NSArray *buildsGroupedByDeliveryGroup;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) NSArray *containedModels;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned long long deliveryGroupCount;
@@ -62,12 +62,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSUMutablePointerSet *drawablesWithInvalidatedGhosts;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText;
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
+@property (readonly, nonatomic) BOOL hasBackgroundAlpha;
 @property (readonly, nonatomic) BOOL hasFreeformTextPlaceholders;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inDocument; // @synthesize inDocument=_inDocument;
 @property (readonly, nonatomic) NSArray *infosToDisplay;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, nonatomic) BOOL isMasterSlide;
+@property (readonly, nonatomic) BOOL isTopmostContainerInfo;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (strong, nonatomic) KNObjectPlaceholderInfo *objectPlaceholder; // @synthesize objectPlaceholder=_objectPlaceholder;
 @property (readonly, nonatomic, getter=isObjectVisible) BOOL objectVisible;
@@ -82,7 +85,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) KNSlideStyle *style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsBuilds;
-@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 @property (strong, nonatomic) KNTitlePlaceholderInfo *titlePlaceholder; // @synthesize titlePlaceholder=_titlePlaceholder;
 @property (readonly, nonatomic, getter=isTitleVisible) BOOL titleVisible;
 @property (strong, nonatomic) KNTransition *transition; // @synthesize transition=_transition;
@@ -216,7 +218,6 @@ __attribute__((visibility("hidden")))
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)saveToArchive:(struct SlideArchive *)arg1 archiver:(id)arg2;
 - (void)setBuildChunks:(id)arg1 generateIdentifiers:(BOOL)arg2;
-- (void)setChildInfos:(id)arg1;
 - (void)setChildInfosWithoutDOLC:(id)arg1;
 - (void)setInfo:(id)arg1 forSageTag:(id)arg2;
 - (void)setPrimitiveGeometry:(id)arg1;

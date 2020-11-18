@@ -21,7 +21,7 @@
     id<PXPhotoRecipientViewControllerDelegate> _delegate;
     NSString *_fieldLabel;
     long long _maxRecipients;
-    NSString *_initialNameToQuery;
+    NSString *_initialLocalizedNameToQuery;
     CNContactPickerViewController *_contactPickerViewController;
     PXSearchRecipientController *_searchRecipientController;
     PXRecipientSearchDataSourceManager *_searchDataSourceManager;
@@ -36,7 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *fieldLabel; // @synthesize fieldLabel=_fieldLabel;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *initialNameToQuery; // @synthesize initialNameToQuery=_initialNameToQuery;
+@property (strong, nonatomic) NSString *initialLocalizedNameToQuery; // @synthesize initialLocalizedNameToQuery=_initialLocalizedNameToQuery;
 @property (strong, nonatomic) NSArray *layoutConstraints; // @synthesize layoutConstraints=_layoutConstraints;
 @property (nonatomic) long long maxRecipients; // @synthesize maxRecipients=_maxRecipients;
 @property (readonly, nonatomic) PXRecipientSearchDataSourceManager *searchDataSourceManager; // @synthesize searchDataSourceManager=_searchDataSourceManager;
@@ -61,7 +61,7 @@
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithInitialNameToQuery:(id)arg1;
+- (id)initWithInitialLocalizedNameToQuery:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;

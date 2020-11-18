@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (double)duration;
 - (id)initWithItems:(id)arg1 type:(unsigned long long)arg2;
 - (id)typeDescription;
 

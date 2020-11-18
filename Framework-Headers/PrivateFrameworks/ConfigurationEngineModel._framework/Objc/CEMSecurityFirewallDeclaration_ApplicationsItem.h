@@ -10,16 +10,18 @@
 
 @interface CEMSecurityFirewallDeclaration_ApplicationsItem : CEMPayloadBase
 {
-    NSString *_payloadBundleID;
+    NSString *_payloadApplication;
     NSNumber *_payloadAllowed;
+    NSString *_payloadBundleID;
 }
 
 @property (copy, nonatomic) NSNumber *payloadAllowed; // @synthesize payloadAllowed=_payloadAllowed;
+@property (copy, nonatomic) NSString *payloadApplication; // @synthesize payloadApplication=_payloadApplication;
 @property (copy, nonatomic) NSString *payloadBundleID; // @synthesize payloadBundleID=_payloadBundleID;
 
 + (id)allowedPayloadKeys;
-+ (id)buildRequiredOnlyWithBundleID:(id)arg1 withAllowed:(id)arg2;
-+ (id)buildWithBundleID:(id)arg1 withAllowed:(id)arg2;
++ (id)buildRequiredOnlyWithApplication:(id)arg1 withAllowed:(id)arg2 withBundleID:(id)arg3;
++ (id)buildWithApplication:(id)arg1 withAllowed:(id)arg2 withBundleID:(id)arg3;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)loadPayload:(id)arg1 error:(id *)arg2;

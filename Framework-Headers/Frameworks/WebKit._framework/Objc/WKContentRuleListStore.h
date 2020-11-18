@@ -21,7 +21,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)_registerPathAsUnsafeToMemoryMapForTesting:(id)arg1;
 + (id)defaultStore;
 + (id)defaultStoreWithLegacyFilename;
 + (id)storeWithURL:(id)arg1;

@@ -14,7 +14,7 @@
 @interface PKAccountAutomaticPaymentsDateViewController : PKSectionTableViewController <PKAddBankAccountInformationViewControllerDelegate, PKMonthDayCollectionViewControllerDelegate>
 {
     NSDate *_date;
-    long long _frequencyDay;
+    long long _scheduledDay;
     PKAccountAutomaticPaymentsController *_controller;
     PKAccount *_account;
     unsigned long long _featureIdentifier;
@@ -40,6 +40,7 @@
 - (long long)_frequency;
 - (void)_handleNext:(id)arg1;
 - (void)_handlePresentPayment;
+- (void)_performPresentPayment;
 - (BOOL)_shouldShowCollectionView;
 - (void)_updateNextButtonEnabledIfNecessary;
 - (void)addBankAccountInformationViewController:(id)arg1 didAddFundingSource:(id)arg2;
@@ -57,6 +58,7 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

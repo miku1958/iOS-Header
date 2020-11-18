@@ -69,7 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)handleActiveConnectionChange:(id)arg1;
 - (void)handleAlarmForTimeStamp:(unsigned int)arg1;
 - (BOOL)handleRemoteVideoAttributesChange:(struct __CVBuffer *)arg1;
-- (id)initWithRTP:(struct tagHANDLE *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5;
+- (id)initWithRTP:(struct tagHANDLE *)arg1 delegate:(id)arg2 reportingAgent:(struct opaqueRTCReporting *)arg3 dumpID:(unsigned int)arg4 reportingParentID:(int)arg5 statisticsCollector:(id)arg6;
 - (void *)networkReceivePackets;
 - (void)pauseVideo;
 - (void)processReceptionReportBlock:(struct tagRTCP_RRB *)arg1 arrivalNTPTime:(union tagNTP)arg2;
@@ -77,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (int)processVideoRTP;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;
 - (void)rtcpSendIntervalElapsed;
-- (int)scheduleDecodeForFrameWithBuffer:(char *)arg1 size:(unsigned long long)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 showFrame:(BOOL)arg5;
+- (int)scheduleDecodeForFrameWithBuffer:(struct VCVideoReceiverSampleBuffer_t *)arg1 timestamp:(unsigned int)arg2 hostTime:(double)arg3 showFrame:(BOOL)arg4;
 - (void)scheduleDecodeForTimestamp:(unsigned int)arg1;
 - (void)scheduleVideoDecode:(unsigned int *)arg1 schedule_n:(int)arg2;
 - (void)setEnableCVO:(BOOL)arg1 cvoExtensionID:(unsigned long long)arg2;

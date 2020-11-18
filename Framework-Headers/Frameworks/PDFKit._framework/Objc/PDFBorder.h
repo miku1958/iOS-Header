@@ -22,8 +22,12 @@
 @property (nonatomic) long long style;
 
 - (void).cxx_destruct;
+- (BOOL)_isRectangular;
+- (void)_setDashFromArray:(struct CGPDFArray *)arg1;
+- (void)_setStyleFromDictionary:(struct CGPDFDictionary *)arg1;
+- (void)_updateDashPatternRaw;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)createDictionaryRef;
+- (const struct __CFDictionary *)createDictionaryRef;
 - (unsigned int)dashCountRaw;
 - (const double *)dashPatternRaw;
 - (void)dealloc;
@@ -35,13 +39,9 @@
 - (id)init;
 - (id)initWithAnnotationDictionary:(struct CGPDFDictionary *)arg1 forPage:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isRectangular;
 - (void)setAnnotation:(id)arg1;
 - (BOOL)setBorderCharacteristicsFromArray:(struct CGPDFArray *)arg1;
-- (void)setDashFromArray:(struct CGPDFArray *)arg1;
-- (void)setDashPatternRaw;
 - (void)setHorizontalCornerRadius:(double)arg1;
-- (void)setStyleFromDictionary:(struct CGPDFDictionary *)arg1;
 - (void)setVerticalCornerRadius:(double)arg1;
 - (void)updateCornerBorderStyle;
 - (double)verticalCornerRadius;

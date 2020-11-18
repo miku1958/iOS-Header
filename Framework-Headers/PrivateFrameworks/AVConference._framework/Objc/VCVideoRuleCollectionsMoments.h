@@ -9,10 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface VCVideoRuleCollectionsMoments : NSObject
 {
+    BOOL _isHEIFAndHEVCFormatEnabled;
 }
 
 + (id)sharedInstance;
 - (int)getMomentsCapabilities;
+- (id)getMomentsImageTypes;
+- (id)getMomentsVideoCodecs;
+- (id)init;
 
 @end
 

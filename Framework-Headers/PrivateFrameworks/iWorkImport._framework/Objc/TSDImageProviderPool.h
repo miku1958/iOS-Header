@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface TSDImageProviderPool : NSObject <TSPDataCullingListener>
 {
-    TSUPointerKeyDictionary *mImageDataToImageProviderMap;
+    TSUPointerKeyDictionary *mImageDataUniqueIdentifierToImageProviderMap;
     unsigned long long mOpenFileDescriptorLimit;
     BOOL mHaveRaisedFileDescriptorLimit;
 }
@@ -32,12 +32,12 @@ __attribute__((visibility("hidden")))
 - (id)autorelease;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)didReplaceContentsOfData:(id)arg1;
+- (void)didReplaceContentsOfDataWithUniqueIdentifier:(id)arg1 flags:(unsigned long long)arg2;
 - (void)flushImageProviders;
 - (void)flushProvidersToFreeMemoryIfNecessaryExcludingProvider:(id)arg1;
 - (id)init;
 - (BOOL)isBitmapData:(id)arg1;
-- (void)p_clearCacheForData:(id)arg1;
+- (void)p_clearCacheForDataUniqueIdentifier:(id)arg1 flags:(unsigned long long)arg2;
 - (void)p_didReceiveMemoryWarning:(id)arg1;
 - (unsigned long long)p_estimatedSizeOfAllProviders;
 - (void)p_flushRandomImageProvidersExcludingProvider:(id)arg1;
@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)retainCount;
 - (id)temporaryProviderForData:(id)arg1 shouldValidate:(BOOL)arg2;
 - (void)willCloseDocumentContext:(id)arg1;
-- (void)willCullData:(id)arg1;
+- (void)willCullDataWithUniqueIdentifier:(id)arg1 flags:(unsigned long long)arg2;
 
 @end
 

@@ -43,9 +43,10 @@
 - (id)characterStyleFromAttributes:(id)arg1 context:(id)arg2;
 - (id)cleanString:(id)arg1;
 - (id)description;
-- (id)fontDescriptionsForTextStyle:(id)arg1 defaultTextStyles:(id)arg2;
-- (id)fontFaceForTextStyle:(id)arg1 defaultTextStyle:(id)arg2 fontDescriptions:(id)arg3;
-- (id)initWithString:(id)arg1 defaults:(id)arg2 smartFieldFactory:(id)arg3 dataSource:(id)arg4 documentLanguageProvider:(id)arg5 fontAttributesConstructor:(id)arg6;
+- (id)fontDescriptionsForTextStyleFontDescription:(id)arg1 defaultTextStyleFontDesciptions:(id)arg2;
+- (id)fontFaceForTextStyleFontDescription:(id)arg1 defaultTextStyleFontDescription:(id)arg2 fontAttributes:(id)arg3 fontSize:(long long)arg4;
+- (long long)fontSizeForTextStyle:(id)arg1;
+- (id)initWithString:(id)arg1 smartFieldFactory:(id)arg2 dataSource:(id)arg3 documentLanguageProvider:(id)arg4 fontAttributesConstructor:(id)arg5;
 - (int)listLabelTypeForListType:(unsigned long long)arg1;
 - (int)listNumberTypeForListType:(unsigned long long)arg1;
 - (unsigned int)paragraphAlignmentForTextAlignment:(long long)arg1;
@@ -53,6 +54,8 @@
 - (id)randomColorWithAlpha:(double)arg1;
 - (struct _NSRange)rangeForRange:(struct _NSRange)arg1;
 - (struct _NSRange)rangeInBounds:(struct _NSRange)arg1 maxLength:(unsigned long long)arg2;
+- (long long)scaledFontSizeForFontSize:(long long)arg1;
+- (void)transform:(id)arg1 forTextStyle:(id)arg2 range:(struct _NSRange)arg3;
 
 @end
 

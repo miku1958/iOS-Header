@@ -9,7 +9,7 @@
 #import <GeoServices/GEOETAUpdaterDelegate-Protocol.h>
 #import <GeoServices/GEORouteHypothesizerUpdaterDelegate-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOETARoute, GEOETAUpdater, GEOLocation, GEOLocationShifter, GEORoute, GEORouteAttributes, GEORouteHypothesisOld, GEORouteHypothesizerUpdater, NSData, NSDate, NSString;
+@class GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequestFeedback, GEOETARoute, GEOETAUpdater, GEOLocation, GEOLocationShifter, GEORouteAttributes, GEORouteHypothesisOld, GEORouteHypothesizerUpdater, NSData, NSDate, NSString;
 @protocol GEORouteHypothesizerDelegate;
 
 @interface GEORouteHypothesizerOld : NSObject <GEORouteHypothesizerUpdaterDelegate, GEOETAUpdaterDelegate>
@@ -33,7 +33,6 @@
     GEOETARoute *_baselineETARoute;
     GEORouteAttributes *_routeAttributes;
     GEORouteHypothesizerUpdater *_updater;
-    GEORoute *_existingRoute;
     NSData *_usualRouteData;
 }
 
@@ -68,7 +67,6 @@
 - (void)etaUpdaterReceivedInvalidRoute:(id)arg1 newRoute:(id)arg2 incidentsOnRoute:(id)arg3 incidentsOffRoute:(id)arg4;
 - (id)etaUpdaterRoutesForETATrafficUpdateRequest:(id)arg1;
 - (void)etaUpdaterUpdatedETA:(id)arg1;
-- (id)initWithExistingRoute:(id)arg1 source:(id)arg2 destination:(id)arg3 etaUpdater:(id)arg4;
 - (id)initWithSource:(id)arg1 toDestination:(id)arg2 arrivalDate:(id)arg3 usualRouteData:(id)arg4;
 - (id)initWithSource:(id)arg1 toDestination:(id)arg2 departureDate:(id)arg3 usualRouteData:(id)arg4;
 - (void)routeHypothesizerUpdater:(id)arg1 receivedNewRoute:(id)arg2 request:(id)arg3 response:(id)arg4;

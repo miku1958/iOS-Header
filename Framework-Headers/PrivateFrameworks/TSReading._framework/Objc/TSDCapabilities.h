@@ -23,7 +23,10 @@
 @property (readonly, nonatomic) long long renderer; // @synthesize renderer=_renderer;
 
 + (id)currentCapabilities;
++ (id)currentCapabilitiesOverride;
++ (void)setCurrentCapabilitiesOverride:(id)arg1;
 - (id)init;
+- (struct CGSize)maximumHardcodedTextureSize;
 - (void)p_setupDevice;
 - (void)p_setupPlatform;
 

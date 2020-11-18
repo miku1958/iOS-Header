@@ -40,12 +40,12 @@
 @property (nonatomic) BOOL twoDigitMinuteZeroPadding; // @synthesize twoDigitMinuteZeroPadding=_twoDigitMinuteZeroPadding;
 @property (nonatomic) BOOL wantsSubseconds; // @synthesize wantsSubseconds=_wantsSubseconds;
 
++ (BOOL)_configureFormatter:(id)arg1 fallbackIndex:(unsigned long long)arg2 style:(long long)arg3;
 + (BOOL)supportsSecureCoding;
 + (id)textProviderWithDate:(id)arg1 style:(long long)arg2 units:(unsigned long long)arg3;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
 - (id)_componentsForDate:(id)arg1 visibleUnits:(unsigned long long *)arg2;
-- (BOOL)_configureFormatterForFallbackIndex:(unsigned long long)arg1;
 - (void)_configureFormatterForTimerStyle;
 - (void)_endSession;
 - (id)_initWithJSONObjectRepresentation:(id)arg1;
@@ -60,6 +60,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (void)finalize;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

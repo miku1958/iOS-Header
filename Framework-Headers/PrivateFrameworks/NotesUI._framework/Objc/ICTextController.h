@@ -17,19 +17,23 @@
     BOOL _isConvertingTables;
     BOOL _shouldMergeNoteAfterScrolling;
     BOOL _isAutoListInsertionDisabled;
+    BOOL _fullTextStylingRefreshScheduled;
     ICNote *_note;
     ICAttachmentInsertionController *_attachmentInsertionController;
     NSMutableDictionary *_trackedToDoParagraphs;
     NSMutableArray *_trackedRangesForAddedExtraNewlines;
+    unsigned long long _overrideAppearanceType;
     unsigned long long _pauseMergeForScrollingCounter;
 }
 
 @property (nonatomic) BOOL alwaysHighlightAuthorEdits; // @synthesize alwaysHighlightAuthorEdits=_alwaysHighlightAuthorEdits;
 @property (weak, nonatomic) ICAttachmentInsertionController *attachmentInsertionController; // @synthesize attachmentInsertionController=_attachmentInsertionController;
 @property (nonatomic) BOOL disableAddingExtraLinesIfNeeded; // @synthesize disableAddingExtraLinesIfNeeded=_disableAddingExtraLinesIfNeeded;
+@property (nonatomic) BOOL fullTextStylingRefreshScheduled; // @synthesize fullTextStylingRefreshScheduled=_fullTextStylingRefreshScheduled;
 @property (nonatomic) BOOL isAutoListInsertionDisabled; // @synthesize isAutoListInsertionDisabled=_isAutoListInsertionDisabled;
 @property (nonatomic) BOOL isConvertingTables; // @synthesize isConvertingTables=_isConvertingTables;
 @property (weak, nonatomic) ICNote *note; // @synthesize note=_note;
+@property (nonatomic) unsigned long long overrideAppearanceType; // @synthesize overrideAppearanceType=_overrideAppearanceType;
 @property (nonatomic) unsigned long long pauseMergeForScrollingCounter; // @synthesize pauseMergeForScrollingCounter=_pauseMergeForScrollingCounter;
 @property (nonatomic) BOOL shouldMergeNoteAfterScrolling; // @synthesize shouldMergeNoteAfterScrolling=_shouldMergeNoteAfterScrolling;
 @property (nonatomic) BOOL trackAddedExtraNewlineRanges; // @synthesize trackAddedExtraNewlineRanges=_trackAddedExtraNewlineRanges;
@@ -40,7 +44,6 @@
 + (id)attributedStringToPasteWithAdaptedParagraphStyles:(id)arg1 pasteRange:(struct _NSRange)arg2 textStorage:(id)arg3;
 + (double)extraBulletWidthForNumberedListWithMaxItemNumber:(id)arg1 textFont:(struct UIFont *)arg2;
 + (double)extraWidthNeededForStyle:(id)arg1 range:(struct _NSRange)arg2 attributedString:(id)arg3 textView:(struct UITextView *)arg4;
-+ (void)filterAttachmentsForPrintingInAttributedString:(id)arg1;
 + (double)indentForStyle:(id)arg1 range:(struct _NSRange)arg2 attributedString:(id)arg3 textView:(struct UITextView *)arg4;
 + (id)removeBeginningListStyleIfNecessaryForAttributedString:(id)arg1 fromTextStorage:(id)arg2 andRange:(struct _NSRange)arg3;
 + (BOOL)shouldRetainFirstListStyleForFilteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2;
@@ -51,6 +54,7 @@
 - (BOOL)attachmentsExistInRange:(struct _NSRange)arg1 textStorage:(id)arg2;
 - (BOOL)canChangeStyleForSelectedRanges:(id)arg1 inTextStorage:(id)arg2;
 - (BOOL)canIndentTextView:(struct UITextView *)arg1 byDelta:(long long)arg2;
+- (BOOL)canIndentTextView:(struct UITextView *)arg1 byDelta:(long long)arg2 forRanges:(id)arg3;
 - (struct _NSRange)cleanupTextStorage:(id)arg1 afterProcessingEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4 changeInLengthAfterCleanup:(long long *)arg5;
 - (BOOL)containsOnlyStyle:(unsigned int)arg1 inRange:(struct _NSRange)arg2 inTextStorage:(id)arg3;
 - (void)convertNSTablesToICTables:(id)arg1 pasteboardTypes:(id)arg2 filterPastedAttributes:(BOOL)arg3 isReadingSelectionFromPasteboard:(BOOL)arg4;
@@ -59,6 +63,7 @@
 - (BOOL)deleteBackwardForSpecialCasesInTextView:(struct UITextView *)arg1;
 - (BOOL)deleteWordBackwardForSpecialCasesInTextView:(struct UITextView *)arg1;
 - (void)fadeTextHighlightInTextStorage:(id)arg1;
+- (void)filterAttachmentsForPrintingInAttributedString:(id)arg1;
 - (struct _NSRange)firstParagraphForSetListStyleRange:(struct _NSRange)arg1 inTextStorage:(id)arg2;
 - (void)fixModelAttributesInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)fixTextStorage:(id)arg1 afterProcessingEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4;
@@ -89,19 +94,24 @@
 - (void)resetTrackedToDoParagraphs;
 - (struct UIFont *)scaleFont:(struct UIFont *)arg1 withScale:(double)arg2;
 - (void)scaleFontPointSize:(double)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;
-- (void)setDone:(BOOL)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;
+- (BOOL)setDone:(BOOL)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;
 - (void)setHighlightAuthorEdits:(BOOL)arg1 forRange:(struct _NSRange)arg2 inTextStorage:(id)arg3;
 - (void)setNote:(id)arg1 stylingTextUsingSeparateTextStorageForRendering:(BOOL)arg2 withLayoutManager:(id)arg3;
+- (void)setNote:(id)arg1 stylingTextUsingSeparateTextStorageForRendering:(BOOL)arg2 withLayoutManager:(id)arg3 firstVisibleCharLocation:(unsigned long long)arg4;
 - (void)setParagraphWritingDirectionInRange:(struct _NSRange)arg1 toDirection:(long long)arg2 inTextView:(struct UITextView *)arg3;
+- (void)setSelectionToIndex:(unsigned long long)arg1 onTextView:(struct UITextView *)arg2;
 - (long long)setTextStyle:(unsigned int)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;
 - (long long)setTextStyle:(unsigned int)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3 inTextView:(struct UITextView *)arg4;
 - (long long)setTextStyle:(unsigned int)arg1 removeExtraStyling:(BOOL)arg2 range:(struct _NSRange)arg3 inTextStorage:(id)arg4;
 - (long long)setTextStyle:(unsigned int)arg1 removeExtraStyling:(BOOL)arg2 range:(struct _NSRange)arg3 inTextStorage:(id)arg4 inTextView:(struct UITextView *)arg5;
 - (void)setTypingAttributesForUndo:(id)arg1;
 - (void)setTypingTextStyle:(unsigned int)arg1 textView:(struct UITextView *)arg2;
+- (BOOL)shouldHighlightStyleAsLink:(unsigned int)arg1;
+- (void)styleDataDetectorTypesForPreviewInTextStorage:(id)arg1;
 - (void)styleListsAndIndentsInAttributedString:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)superscriptDelta:(long long)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;
 - (void)superscriptUpdate:(CDUnknownBlockType)arg1 range:(struct _NSRange)arg2 inTextStorage:(id)arg3;
+- (void)targetedRefreshTextStylingForTextStorage:(id)arg1 withTextController:(id)arg2 firstVisibleCharLocation:(unsigned long long)arg3;
 - (id)todoForRange:(struct _NSRange)arg1 inTextStorage:(id)arg2;
 - (void)trackExtraNewLineRangeIfNecessary:(struct _NSRange)arg1;
 - (void)uniqueParagraphStylesInTextStorage:(id)arg1 inRange:(struct _NSRange)arg2;

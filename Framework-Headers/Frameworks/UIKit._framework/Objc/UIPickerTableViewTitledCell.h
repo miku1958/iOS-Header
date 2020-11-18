@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 {
     UILabel *_titleLabel;
     BOOL _isAttributed;
-    BOOL _usesModernStyle;
     UIColor *_textColor;
 }
 
@@ -25,7 +24,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_canBeReusedInPickerView;
 - (void)_setIsCenterCell:(BOOL)arg1 shouldModifyAlphaOfView:(BOOL)arg2;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 isModern:(BOOL)arg3 textColor:(id)arg4 forceTextAlignmentCentered:(BOOL)arg5;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 textColor:(id)arg3 forceTextAlignmentCentered:(BOOL)arg4;
 - (void)prepareForReuse;
 
 @end

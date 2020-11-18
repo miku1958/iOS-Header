@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface FPXSpotlightIndexer : NSObject <CSSearchableIndexDelegate>
 {
     NSString *_indexName;
+    NSString *_domainID;
     NSString *_providerIdentifier;
     CSSearchableIndex *_index;
     NSObject<OS_dispatch_queue> *_queue;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
     BOOL _isCanceled;
     id<NSFileProviderEnumerator> _vendorEnumerator;
     NSObject<OS_dispatch_semaphore> *_clientStateSemaphore;
+    BOOL _indexing;
     FPXDomainContext *_domainContext;
 }
 
@@ -33,23 +35,31 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak) FPXDomainContext *domainContext; // @synthesize domainContext=_domainContext;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
+@property (nonatomic, getter=isIndexing) BOOL indexing; // @synthesize indexing=_indexing;
 @property (readonly, nonatomic) NSData *lastIndexState; // @synthesize lastIndexState=_lastIndexState;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 @property (readonly) id<NSFileProviderEnumerator> vendorEnumerator; // @synthesize vendorEnumerator=_vendorEnumerator;
 
 - (void).cxx_destruct;
+- (id)_fetchClientStateIfNeeded;
+- (void)_fetchCurrentIndexingAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_indexOneBatchFromAnchor:(id)arg1 toAnchor:(id)arg2 updatedItems:(id)arg3 deletedItems:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_indexOneBatchWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidate;
-- (void)_learnNewIndexState:(id)arg1;
 - (void)dealloc;
-- (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)dropIndexAndInvalidateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)dropIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)deleteSearchableItemsWithSpotlightDomainIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dropIndexAndInvalidateWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dropIndexInQueue:(id)arg1 reason:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)dropIndexWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dumpStateTo:(id)arg1;
+- (void)fetchCurrentIndexingAnchorWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)indexOneBatchFromAnchor:(id)arg1 toAnchor:(id)arg2 updatedItems:(id)arg3 deletedItems:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)indexOneBatchWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithIndexName:(id)arg1 context:(id)arg2;
+- (id)initWithIndexName:(id)arg1 domainID:(id)arg2 context:(id)arg3;
 - (void)invalidate;
+- (void)invalidateAsync;
+- (void)learnNewIndexState:(id)arg1;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
 

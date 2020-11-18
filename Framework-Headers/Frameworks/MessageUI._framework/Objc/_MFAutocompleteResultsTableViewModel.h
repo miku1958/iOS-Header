@@ -17,8 +17,8 @@
 @property (readonly, nonatomic) unsigned long long numberOfNonEmptySections;
 @property (nonatomic) unsigned long long numberOfSections; // @synthesize numberOfSections=_numberOfSections;
 
-- (CDStruct_0f015c83)computeDiffForModel:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)computeDiffForModel:(id)arg1;
 - (void)enumerateSections:(CDUnknownBlockType)arg1;
 - (id)initWithNumberOfSections:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;

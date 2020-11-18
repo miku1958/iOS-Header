@@ -16,6 +16,7 @@
 {
     CDStruct_95bda58d _attributes;
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBStringList *_content;
     _INPBStringList *_conversationIdentifier;
     _INPBDateTimeRange *_dateTimeRange;
@@ -29,6 +30,7 @@
     _INPBDataStringList *_speakableGroupName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, nonatomic) int *attributes;
 @property (readonly, nonatomic) unsigned long long attributesCount;
 @property (strong, nonatomic) _INPBStringList *content; // @synthesize content=_content;
@@ -58,6 +60,7 @@
 @property (strong, nonatomic) _INPBDataStringList *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsAttributes:(id)arg1;
 - (void)addAttribute:(int)arg1;
@@ -65,7 +68,10 @@
 - (id)attributesAsString:(int)arg1;
 - (void)clearAttributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAttributes:(int *)arg1 count:(unsigned long long)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreMotion/CLIntersiloService.h>
+#import <LocationSupport/CLIntersiloService.h>
 
 #import <CoreMotion/CLNotifierServiceProtocol-Protocol.h>
 

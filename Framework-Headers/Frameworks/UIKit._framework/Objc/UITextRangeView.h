@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSArray, NSMutableArray, UIResponder, UISelectionGrabber, UITextSelectionView, UITouch;
+@class NSArray, NSMutableArray, UIResponder, UISelectionGrabber, UITextGestureTuning, UITextSelectionView, UITouch;
 @protocol UITextInput;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSArray *m_rects;
     NSMutableArray *m_rectViews;
     UITouch *m_activeTouch;
+    struct CGPoint m_initialPoint;
     struct CGRect m_startEdge;
     struct CGRect m_endEdge;
     struct CGPoint m_basePoint;
@@ -30,9 +31,11 @@ __attribute__((visibility("hidden")))
     UIView *m_rectContainerView;
     UISelectionGrabber *m_startGrabber;
     UISelectionGrabber *m_endGrabber;
+    UITextGestureTuning *m_gestureTuning;
     BOOL m_animateUpdate;
     BOOL m_baseIsStart;
     BOOL m_commandsWereShowing;
+    BOOL m_willBeginMagnifying;
     BOOL m_inGesture;
     BOOL m_magnifying;
     BOOL m_scrolling;
@@ -59,6 +62,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint initialBasePoint; // @synthesize initialBasePoint=m_initialBasePoint;
 @property (nonatomic) double initialDistance; // @synthesize initialDistance=m_initialDistance;
 @property (nonatomic) struct CGPoint initialExtentPoint; // @synthesize initialExtentPoint=m_initialExtentPoint;
+@property (nonatomic) struct CGPoint initialPoint; // @synthesize initialPoint=m_initialPoint;
 @property (nonatomic) BOOL inputViewIsChanging; // @synthesize inputViewIsChanging=m_inputViewIsChanging;
 @property (nonatomic) BOOL isClearingRange; // @synthesize isClearingRange=m_isClearingRange;
 @property (nonatomic) BOOL isScrolling; // @synthesize isScrolling=m_scrolling;
@@ -72,13 +76,19 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect startEdge; // @synthesize startEdge=m_startEdge;
 @property (strong, nonatomic) UISelectionGrabber *startGrabber; // @synthesize startGrabber=m_startGrabber;
 @property (nonatomic) struct CGPoint touchOffset; // @synthesize touchOffset=m_touchOffset;
+@property (nonatomic) BOOL willBeginMagnifying; // @synthesize willBeginMagnifying=m_willBeginMagnifying;
 
 - (void).cxx_destruct;
+- (void)_createGestureTuningIfNecessary;
 - (struct CGRect)_endEdgeHitRect;
 - (BOOL)_endIsHorizontal;
+- (BOOL)_gestureRecognizerShouldReceiveTouch:(id)arg1;
 - (struct CGRect)_selectionClipRect;
 - (struct CGRect)_startEdgeHitRect;
 - (BOOL)_startIsHorizontal;
+- (void)animateHighlighterDelayedFadeInOnLayer:(id)arg1;
+- (void)animateHighlighterExpanderAnimation;
+- (void)animateHighlighterExpanderOnLayer:(id)arg1 withOffset:(struct CGPoint)arg2;
 - (struct CGPoint)applyTouchOffset:(struct CGPoint)arg1;
 - (void)beginMagnifying;
 - (void)cancelDelayedActions;
@@ -87,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)didRotate;
 - (void)didScroll;
 - (void)doneMagnifying;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 selectionView:(id)arg2;
 - (void)inputViewDidChange;
 - (void)inputViewWillChange;
@@ -105,6 +116,7 @@ __attribute__((visibility("hidden")))
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
+- (void)updateAfterEffectiveModeChange;
 - (void)updateBaseAndExtentPointsFromEdges;
 - (void)updateBaseIsStartWithDocumentPoint:(struct CGPoint)arg1;
 - (void)updateDots;

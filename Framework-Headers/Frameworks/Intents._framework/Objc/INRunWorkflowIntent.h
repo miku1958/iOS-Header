@@ -8,7 +8,7 @@
 
 #import <Intents/INRunWorkflowIntentExport-Protocol.h>
 
-@class INSpeakableString, NSString;
+@class INArchivedObject, INSpeakableString, NSString;
 
 @interface INRunWorkflowIntent : INIntent <INRunWorkflowIntentExport>
 {
@@ -17,9 +17,11 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) INArchivedObject *stepIntentResponse;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) INSpeakableString *workflow;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
 - (long long)_intentCategory;
 - (id)_metadata;

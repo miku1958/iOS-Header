@@ -13,6 +13,7 @@
 
 @interface HUWallpaperThumbnailCell : UITableViewCell <UIDropInteractionDelegate>
 {
+    long long _contentMode;
     id<HUWallpaperThumbnailCellDelegate> _delegate;
     UIImageView *_imageThumbnailView;
     NSLayoutConstraint *_imageWidthConstraint;
@@ -21,6 +22,7 @@
     struct CGSize _imageSize;
 }
 
+@property (nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUWallpaperThumbnailCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

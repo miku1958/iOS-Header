@@ -23,6 +23,7 @@
     PHFetchResult *_fetchResult;
     PHFetchResult *_curatedFetchResult;
     PHFetchResult *_keyAssetsFetchResult;
+    long long _keyAssetIndex;
 }
 
 @property (strong, nonatomic) PHFetchResult *curatedFetchResult; // @synthesize curatedFetchResult=_curatedFetchResult;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) NSSet *includedOids; // @synthesize includedOids=_includedOids;
 @property (readonly, nonatomic) NSPredicate *inclusionPredicate;
 @property (readonly, nonatomic) BOOL isCurated;
+@property (nonatomic) long long keyAssetIndex; // @synthesize keyAssetIndex=_keyAssetIndex;
 @property (strong, nonatomic) PHFetchResult *keyAssetsFetchResult; // @synthesize keyAssetsFetchResult=_keyAssetsFetchResult;
 @property (nonatomic) BOOL preloadAssetTypeCounts; // @synthesize preloadAssetTypeCounts=_preloadAssetTypeCounts;
 @property (readonly, nonatomic) BOOL reverseSortOrder; // @synthesize reverseSortOrder=_reverseSortOrder;
@@ -43,11 +45,13 @@
 - (id)_exposedFetchResultBeforeFiltering;
 - (void)_invalidateFilteredFetchResult;
 - (void)_invalidateInclusionPredicate;
+- (void)_invalidateKeyAssetIndex;
 - (void)_setIncludeOids:(id)arg1;
 - (void)_updateFilteredFetchResultIfNeeded;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)excludeOids:(id)arg1;
 - (void)includeOids:(id)arg1;
+- (id)init;
 - (void)invalidateFetchResultAssetCache;
 - (void)setFetchResult:(id)arg1;
 - (void)setFetchResult:(id)arg1 reverseSortOrder:(BOOL)arg2;

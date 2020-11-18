@@ -6,22 +6,24 @@
 
 #import <HealthDaemon/HDJournalableOperation.h>
 
-@class NSArray, NSUUID;
+@class HKQuantitySample, NSArray, NSUUID;
 
 @interface HDInsertValuesToQuantitySampleSeriesOperation : HDJournalableOperation
 {
-    NSUUID *_seriesIdentifier;
+    NSUUID *_legacySeriesIdentifier;
+    BOOL _didAwakeFromJournal;
+    HKQuantitySample *_series;
     NSArray *_values;
 }
 
-@property (readonly, copy, nonatomic) NSUUID *seriesIdentifier; // @synthesize seriesIdentifier=_seriesIdentifier;
+@property (readonly, copy, nonatomic) HKQuantitySample *series; // @synthesize series=_series;
 @property (readonly, copy, nonatomic) NSArray *values; // @synthesize values=_values;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSeriesIdentifier:(id)arg1 values:(id)arg2;
+- (id)initWithSeries:(id)arg1 values:(id)arg2;
 - (BOOL)performWithProfile:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 
 @end

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SetupAssistantUI/BFFSplashController.h>
+#import <OnBoardingKit/OBWelcomeController.h>
 
 @protocol STSetupAssistantViewControllerDelegate;
 
-@interface STSetupAssistantViewController : BFFSplashController
+@interface STSetupAssistantViewController : OBWelcomeController
 {
     BOOL _hasRestrictionsPasscode;
     id<STSetupAssistantViewControllerDelegate> _delegate;
@@ -16,11 +16,13 @@
 }
 
 @property (weak) id<STSetupAssistantViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property BOOL hasRestrictionsPasscode; // @synthesize hasRestrictionsPasscode=_hasRestrictionsPasscode;
-@property long long state; // @synthesize state=_state;
+@property (readonly) BOOL hasRestrictionsPasscode; // @synthesize hasRestrictionsPasscode=_hasRestrictionsPasscode;
+@property (readonly) long long state; // @synthesize state=_state;
 
++ (id)new;
 - (void).cxx_destruct;
-- (BOOL)hasRestrictions;
+- (void)_continue:(id)arg1;
+- (void)_setUpLater:(id)arg1;
 - (id)init;
 - (id)initWithScreenTimeState:(long long)arg1 passcode:(BOOL)arg2;
 - (void)viewDidLoad;

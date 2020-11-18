@@ -8,6 +8,7 @@
 
 @class MISSING_TYPE;
 
+__attribute__((visibility("hidden")))
 @interface GKRotateNoiseModifier : GKNoiseModifier
 {
     MISSING_TYPE *_radians;

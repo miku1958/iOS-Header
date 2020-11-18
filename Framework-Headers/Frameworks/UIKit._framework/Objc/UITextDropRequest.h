@@ -7,22 +7,25 @@
 #import <objc/NSObject.h>
 
 #import <UIKitCore/UITextDropRequest-Protocol.h>
+#import <UIKitCore/UITextDropRequest_Private-Protocol.h>
 
-@class NSString, UITextDropProposal, UITextPosition;
+@class NSString, UITextDropProposal, UITextPosition, UITextRange;
 @protocol UIDropSession;
 
 __attribute__((visibility("hidden")))
-@interface UITextDropRequest : NSObject <UITextDropRequest>
+@interface UITextDropRequest : NSObject <UITextDropRequest_Private, UITextDropRequest>
 {
     BOOL _sameView;
     id<UIDropSession> _dropSession;
     UITextPosition *_dropPosition;
+    UITextRange *_dropRange;
     UITextDropProposal *_suggestedProposal;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UITextPosition *dropPosition; // @synthesize dropPosition=_dropPosition;
+@property (readonly, nonatomic) UITextRange *dropRange; // @synthesize dropRange=_dropRange;
 @property (readonly, nonatomic) id<UIDropSession> dropSession; // @synthesize dropSession=_dropSession;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isSameView) BOOL sameView; // @synthesize sameView=_sameView;
@@ -30,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithPosition:(id)arg1 inSession:(id)arg2;
+- (id)initWithPosition:(id)arg1 range:(id)arg2 inSession:(id)arg3;
 
 @end
 

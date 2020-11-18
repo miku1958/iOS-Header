@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (BOOL)_accessibilityIsScannerElement;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
+- (BOOL)accessibilityRespondsToUserInteraction;
 
 @end
 

@@ -15,8 +15,8 @@
 
 @property (readonly, nonatomic) NSMutableArray *completionBlocks; // @synthesize completionBlocks=_completionBlocks;
 
+- (void).cxx_destruct;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
-- (void)dealloc;
 - (id)init;
 
 @end

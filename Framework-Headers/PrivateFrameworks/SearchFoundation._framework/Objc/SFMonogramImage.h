@@ -14,6 +14,10 @@
 
 @interface SFMonogramImage : SFImage <SFMonogramImage, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int monogramStyle:1;
+    } _has;
+    int _monogramStyle;
     NSString *_monogramLetters;
 }
 
@@ -29,6 +33,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *keyColor;
 @property (copy, nonatomic) NSString *monogramLetters; // @synthesize monogramLetters=_monogramLetters;
+@property (nonatomic) int monogramStyle; // @synthesize monogramStyle=_monogramStyle;
 @property (nonatomic) double scale;
 @property (nonatomic) BOOL shouldCropToCircle;
 @property (nonatomic) struct CGSize size;
@@ -39,8 +44,10 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasMonogramStyle;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

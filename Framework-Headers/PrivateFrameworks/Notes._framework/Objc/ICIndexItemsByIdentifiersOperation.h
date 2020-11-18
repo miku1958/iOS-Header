@@ -10,16 +10,15 @@
 
 @interface ICIndexItemsByIdentifiersOperation : ICIndexItemsOperation
 {
-    NSArray *_identifiersToIndex;
+    NSArray *_objectIDURIsToIndex;
 }
 
-@property (copy, nonatomic) NSArray *identifiersToIndex; // @synthesize identifiersToIndex=_identifiersToIndex;
+@property (copy, nonatomic) NSArray *objectIDURIsToIndex; // @synthesize objectIDURIsToIndex=_objectIDURIsToIndex;
 
 - (void).cxx_destruct;
 - (id)initWithSearchableIndex:(id)arg1 dataSources:(id)arg2;
-- (id)initWithSearchableIndex:(id)arg1 dataSources:(id)arg2 identifiersToIndex:(id)arg3;
-- (id)objectIDsToIndexFromDataSource:(id)arg1;
-- (id)searchableItemIdentifiersToDeleteFromDataSource:(id)arg1;
+- (id)initWithSearchableIndex:(id)arg1 dataSources:(id)arg2 objectIDURIsToIndex:(id)arg3;
+- (void)main;
 
 @end
 

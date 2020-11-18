@@ -18,6 +18,7 @@
 @property (readonly) Class superclass;
 
 + (id)createWithCodable:(id)arg1;
++ (Class)hd_dataEntityClass;
 - (BOOL)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;
 @end

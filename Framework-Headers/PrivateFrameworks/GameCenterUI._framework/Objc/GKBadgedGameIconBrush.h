@@ -13,8 +13,8 @@
 
 @property (strong, nonatomic) GKThemeBrush *badgeBrush; // @synthesize badgeBrush=_badgeBrush;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)drawInRect:(struct CGRect)arg1 withContext:(struct CGContext *)arg2 input:(id)arg3;
 - (id)init;
 - (double)scaleForInput:(id)arg1;

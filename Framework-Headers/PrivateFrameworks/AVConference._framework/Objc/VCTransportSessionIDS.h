@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _requireEncryptionInfo;
     VCIDSSessionInfoSynchronizer *_sessionInfoSynchronizer;
     BOOL _isIDSDCEventUsageErrorReported;
+    BOOL _isWiFiAssistActive;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -59,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)setDefaultLink:(id)arg1;
 - (void)setPiggybackBlobPreference;
 - (void)setQuickRelayServerProvider:(int)arg1;
+- (void)setWiFiAssist:(BOOL)arg1;
 - (void)start;
 - (void)stop;
 - (void)updateParticipantGenerationCounter:(unsigned char)arg1;

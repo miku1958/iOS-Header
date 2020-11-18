@@ -17,6 +17,7 @@
 @property (strong, nonatomic) ICTableVersionedDocument *tableDocument; // @synthesize tableDocument=_tableDocument;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
++ (id)tableFromAttributedString:(id)arg1 managedObjectContext:(id)arg2;
 - (void).cxx_destruct;
 - (void)attachmentAwakeFromFetch;
 - (void)attachmentDidRefresh:(BOOL)arg1;
@@ -32,8 +33,9 @@
 - (BOOL)providesTextContentInNote;
 - (void)regenerateTextContentInNote;
 - (id)searchableTextContentInNote;
+- (id)stringsAtRow:(unsigned long long)arg1;
 - (id)textContentInNote;
-- (void)updateAttachmentByMergingWithTableDoc:(id)arg1;
+- (void)updateAttachmentByMergingWithTableData:(id)arg1;
 - (void)willMarkAttachmentForDeletion;
 - (void)writeMergeableData;
 

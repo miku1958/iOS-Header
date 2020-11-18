@@ -9,18 +9,19 @@
 #import <NewsUI/SXResourceDataSource-Protocol.h>
 
 @class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSOperationQueue, NSString, NUANFAssetLoader, SXContext;
-@protocol NUArticleResourceURLTranslator, SXHost;
+@protocol FCHeadlineProviding, NUArticleResourceURLTranslator, SXHost;
 
 @interface NUANFContextLoader : NSObject <SXResourceDataSource>
 {
     SXContext *_context;
+    NUANFAssetLoader *_assetLoader;
     FCFlintManifest *_flintManifest;
     FCFlintResourceManager *_flintResourceManager;
     id<SXHost> _host;
     id<NUArticleResourceURLTranslator> _resourceURLTranslator;
-    NUANFAssetLoader *_assetLoader;
     FCAsyncOnceOperation *_asyncOnceOperation;
     NSOperationQueue *_imageDecodingQueue;
+    id<FCHeadlineProviding> _headline;
 }
 
 @property (strong, nonatomic) NUANFAssetLoader *assetLoader; // @synthesize assetLoader=_assetLoader;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) FCFlintManifest *flintManifest; // @synthesize flintManifest=_flintManifest;
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
 @property (readonly, nonatomic) NSOperationQueue *imageDecodingQueue; // @synthesize imageDecodingQueue=_imageDecodingQueue;
 @property (readonly, nonatomic) id<NUArticleResourceURLTranslator> resourceURLTranslator; // @synthesize resourceURLTranslator=_resourceURLTranslator;
@@ -39,7 +41,7 @@
 - (void).cxx_destruct;
 - (id)asyncLoadContextOnceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fileURLForURL:(id)arg1 onCompletion:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
-- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4;
+- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4 headline:(id)arg5;
 - (id)loadContextWithCompletion:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)loadImagesForImageRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)translateURL:(id)arg1;

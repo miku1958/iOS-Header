@@ -23,5 +23,8 @@
 - (void)graphViewSizeChanged:(HKGraphView *)arg1;
 - (UIColor *)seriesSelectionLineColorForGraphView:(HKGraphView *)arg1;
 - (long long)stackCountForGraphView:(HKGraphView *)arg1;
+
+@optional
+- (void)graphView:(HKGraphView *)arg1 startupTime:(long long)arg2;
 @end
 

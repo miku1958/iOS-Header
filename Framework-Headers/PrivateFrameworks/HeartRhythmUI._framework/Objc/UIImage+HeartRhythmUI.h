@@ -9,7 +9,6 @@
 @interface UIImage (HeartRhythmUI)
 + (id)hrui_ECGAppIconImage;
 + (id)hrui_ECGOnboardingWristImage;
-+ (id)hrui_appleWatchSetupCompleteImage;
 + (id)hrui_atrialFibrillationDetectionIllustrationImage;
 + (id)hrui_cannotDoImage;
 + (id)hrui_fingerCrownImage;

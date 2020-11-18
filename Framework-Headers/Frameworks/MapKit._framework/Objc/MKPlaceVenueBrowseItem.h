@@ -20,8 +20,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) GEOSearchCategory *searchCategory; // @synthesize searchCategory=_searchCategory;
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (id)browseItemWithCategory:(id)arg1;
-+ (id)imageWithSearchCategory:(id)arg1;
++ (id)browseItemWithCategory:(id)arg1 nightMode:(BOOL)arg2;
++ (id)imageWithSearchCategory:(id)arg1 nightMode:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 searchCategory:(id)arg3;
 

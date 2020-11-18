@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _UIViewControllerTransitionCoordinator : NSObject <UIViewControllerTransitionCoordinator>
 {
     _UIViewControllerTransitionContext *__mainContext;
+    NSMutableArray *__systemAlongsideAnimations;
     NSMutableArray *__alongsideAnimations;
     NSMutableArray *__alongsideAnimationViews;
     NSMutableArray *__alongsideCompletions;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setAlongsideCompletions:) NSMutableArray *_alongsideCompletions; // @synthesize _alongsideCompletions=__alongsideCompletions;
 @property (strong, nonatomic, setter=_setInteractiveChangeHandlers:) NSMutableArray *_interactiveChangeHandlers; // @synthesize _interactiveChangeHandlers=__interactiveChangeHandlers;
 @property (nonatomic, setter=_setMainContext:) _UIViewControllerTransitionContext *_mainContext; // @synthesize _mainContext=__mainContext;
+@property (strong, nonatomic, setter=_setSystemAlongsideAnimations:) NSMutableArray *_systemAlongsideAnimations; // @synthesize _systemAlongsideAnimations=__systemAlongsideAnimations;
 @property (readonly, nonatomic, getter=isAnimated) BOOL animated;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (readonly, nonatomic) long long completionCurve;
@@ -45,9 +47,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_alongsideAnimations:(BOOL)arg1;
 - (id)_alongsideCompletions:(BOOL)arg1;
-- (BOOL)_animateAlongsideTransitionInView:(id)arg1 systemCompletion:(BOOL)arg2 animation:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_animateAlongsideTransitionInView:(id)arg1 systemAnimation:(BOOL)arg2 systemCompletion:(BOOL)arg3 animation:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_applyBlocks:(id)arg1 releaseBlocks:(CDUnknownBlockType)arg2;
 - (id)_interactiveChangeHandlers:(BOOL)arg1;
+- (id)_systemAlongsideAnimations:(BOOL)arg1;
 - (struct CGAffineTransform)affineTransform;
 - (BOOL)animateAlongsideTransition:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)animateAlongsideTransitionInView:(id)arg1 animation:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

@@ -35,7 +35,7 @@
 - (long long)numberOfAccessoriesWithAvailableUpdates:(id)arg1;
 - (long long)numberOfAccessoriesWithAvailableUpdatesInHome:(id)arg1;
 - (id)presentLicensesIfNeededForSoftwareUpdate:(id)arg1 home:(id)arg2 presentationDelegate:(id)arg3;
-- (id)startSilentBackgroundCheckForHome:(id)arg1;
+- (void)startSilentBackgroundCheckForHome:(id)arg1;
 - (id)startUpdateForAccessory:(id)arg1 update:(id)arg2 presentationDelegate:(id)arg3;
 - (id)startUpdatesForAccessories:(id)arg1 presentationDelegate:(id)arg2;
 - (id)startUpdatesForAllAccessoriesInHome:(id)arg1 presentationDelegate:(id)arg2;

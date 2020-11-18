@@ -19,6 +19,7 @@
 - (void)activatePhysicalCardWithIdentifier:(NSString *)arg1 activationCode:(NSString *)arg2 completion:(void (^)(long long))arg3;
 - (void)beginPhysicalCardAction:(PKPhysicalCardAction *)arg1 onPhysicalCardWithIdentifier:(NSString *)arg2 forAccountWithIdentifier:(NSString *)arg3 deviceMetadata:(PKPaymentDeviceMetadata *)arg4 completion:(void (^)(PKApplePayTrustSignatureRequest *, PKAccountWebServicePhysicalCardActionRequest *, NSSet *, PKAccount *, NSError *))arg5;
 - (void)beginPhysicalCardRequestWithOrder:(PKPhysicalCardOrder *)arg1 forAccountWithIdentifier:(NSString *)arg2 deviceMetadata:(PKPaymentDeviceMetadata *)arg3 completion:(void (^)(PKApplePayTrustSignatureRequest *, PKAccountWebServiceRequestPhysicalCardRequest *, PKPhysicalCard *, PKAccount *, NSError *))arg4;
+- (void)billPaymentSelectedSuggestedAmountDataEventsForAccountIdentifier:(NSString *)arg1 withStartDate:(NSDate *)arg2 endDate:(NSDate *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)billPaymentSelectedSuggestedAmountDataEventsForAccountIdentifier:(NSString *)arg1 withStatementIdentifier:(NSString *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
 - (void)cardCredentialsForVirtualCard:(PKVirtualCard *)arg1 authorization:(NSData *)arg2 completion:(void (^)(PKVirtualCardCredentials *, NSError *))arg3;
 - (void)completePhysicalCardActionRequest:(PKAccountWebServicePhysicalCardActionRequest *)arg1 withSignature:(PKApplePayTrustSignature *)arg2 completion:(void (^)(NSSet *, PKAccount *, NSError *))arg3;
@@ -41,7 +42,7 @@
 - (void)performAccountAction:(PKAccountAction *)arg1 withAccountIdentifier:(NSString *)arg2 completion:(void (^)(PKAccount *, NSError *))arg3;
 - (void)performVirtualCardAction:(long long)arg1 forVirtualCardIdentifier:(NSString *)arg2 forAccountIdentifier:(NSString *)arg3 completion:(void (^)(PKVirtualCard *, PKAccount *, NSError *))arg4;
 - (void)preferencesForAccountWithIdentifier:(NSString *)arg1 completion:(void (^)(PKAccountPreferences *, NSError *))arg2;
-- (void)scheduledPaymentsWithAccountIdentifier:(NSString *)arg1 includeFailedRecurringPayments:(BOOL)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)scheduledPaymentsWithAccountIdentifier:(NSString *)arg1 includeFailedRecurringPayments:(BOOL)arg2 allowFetchFromServer:(BOOL)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 - (void)termsWithIdentifier:(NSString *)arg1 accepted:(BOOL)arg2 withAccountIdentifier:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)updateAccountWithIdentifier:(NSString *)arg1 extended:(BOOL)arg2 completion:(void (^)(PKAccount *, NSError *))arg3;
 - (void)updateAccountsWithCompletion:(void (^)(NSArray *, NSError *))arg1;

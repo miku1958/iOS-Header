@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     struct __CFDictionary *_pixelAspectRatioDict;
     struct __CFDictionary *_cleanApertureDict;
     CDStruct_79c71658 _destinationPixelBufferDimensions;
+    struct OpaqueFigSimpleMutex *_bufferPoollInitMutex;
     NSObject<OS_dispatch_queue> *_pixelBufferPoolQ;
     struct __CVPixelBufferPool *_pixelBufferPool;
     AVVideoComposition *_videoComposition;
@@ -35,7 +36,6 @@ __attribute__((visibility("hidden")))
 
 - (void)_willDeallocOrFinalize;
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

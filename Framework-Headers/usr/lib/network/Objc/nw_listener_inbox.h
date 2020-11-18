@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_endpoint> *_local_endpoint;
     NSObject<OS_nw_interface> *_interface;
     NSObject<OS_nw_parameters> *_parameters;
+    unsigned int _suspended:1;
 }
 
 @property (readonly, nonatomic) NSObject<OS_nw_interface> *interface; // @synthesize interface=_interface;
@@ -23,6 +24,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)cancel;
 - (id)initWithDelegate:(id)arg1;
+- (BOOL)isSuspended;
+- (BOOL)resume;
+- (id)start;
+- (BOOL)suspend;
 
 @end
 

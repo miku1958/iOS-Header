@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (ICSWriter)
+- (BOOL)ICSContainsArray:(id)arg1;
 - (void)_ICSParametersAppendingToString:(id)arg1;
 - (void)_ICSStringWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;
 - (void)_ICSStringsForPropertyValuesWithOptions:(unsigned long long)arg1 appendingToString:(id)arg2;

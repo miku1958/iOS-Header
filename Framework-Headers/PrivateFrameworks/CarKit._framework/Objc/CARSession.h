@@ -6,50 +6,56 @@
 
 #import <objc/NSObject.h>
 
-#import <CarKit/CARSessionCommandDelegate-Protocol.h>
+@class CARInputDeviceManager, CARObserverHashTable, CARSessionConfiguration, NSDictionary, NSNumber, NSString;
 
-@class CARInputDeviceManager, CARSessionConfiguration, NSArray, NSDictionary, NSNumber, NSString;
-
-@interface CARSession : NSObject <CARSessionCommandDelegate>
+@interface CARSession : NSObject
 {
     struct OpaqueFigEndpoint *_endpoint;
+    BOOL _isPaired;
     BOOL _authenticated;
     CARSessionConfiguration *_configuration;
     NSDictionary *_APEndPointInfo;
+    NSString *_sourceVersion;
     CARInputDeviceManager *_inputDeviceManager;
-    NSArray *_screenInfo;
-    NSArray *_screenIDs;
+    CARObserverHashTable *_observers;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *APEndPointInfo; // @synthesize APEndPointInfo=_APEndPointInfo;
 @property (readonly, nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (readonly, nonatomic) CARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSNumber *electronicTollCollectionAvailable;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CARInputDeviceManager *inputDeviceManager; // @synthesize inputDeviceManager=_inputDeviceManager;
+@property (readonly, nonatomic) BOOL isPaired; // @synthesize isPaired=_isPaired;
 @property (readonly, copy, nonatomic) NSNumber *limitUserInterfaces;
 @property (readonly, copy, nonatomic) NSNumber *nightMode;
-@property (copy, nonatomic) NSArray *screenIDs; // @synthesize screenIDs=_screenIDs;
-@property (copy, nonatomic) NSArray *screenInfo; // @synthesize screenInfo=_screenInfo;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) CARObserverHashTable *observers; // @synthesize observers=_observers;
+@property (readonly, copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
 
 - (void).cxx_destruct;
 - (id)MFiCertificateSerialNumber;
 - (id)_endpointValueForKey:(struct __CFString *)arg1;
 - (void)_fetchAuthenticationStatus;
+- (id)_fig_safe_description;
+- (void)_newObserverAdded:(id)arg1;
+- (void)_updateConfiguration;
+- (void)addObserver:(id)arg1;
 - (id)borrowScreenForClient:(id)arg1 reason:(id)arg2;
+- (BOOL)carOwnsMainAudio;
+- (BOOL)carOwnsScreen;
+- (id)description;
 - (struct OpaqueFigEndpoint *)endpoint;
 - (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
+- (id)lastNavigatingBundleIdentifier;
 - (unsigned long long)navigationOwner;
-- (BOOL)ownsScreen;
 - (BOOL)recognizingSpeech;
 - (void)releaseTurnByTurnOwnership;
+- (void)removeObserver:(id)arg1;
 - (void)requestCarUI;
 - (void)requestCarUIForURL:(id)arg1;
 - (void)requestTurnByTurnOwnership;
 - (void)sendCommand:(id)arg1 withParameters:(id)arg2;
+- (void)setInputMode:(unsigned long long)arg1 forInputDevice:(id)arg2;
+- (id)systemNightMode;
 - (void)takeScreenForClient:(id)arg1 reason:(id)arg2;
 - (void)takeScreenForConnection;
 

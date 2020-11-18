@@ -30,11 +30,13 @@
     BOOL _searchParticipants;
     BOOL _searchLocations;
     BOOL _searchAttendees;
+    BOOL _shouldMatchLocationsOnlyForEventSearch;
 }
 
 @property BOOL searchAttendees; // @synthesize searchAttendees=_searchAttendees;
 @property BOOL searchLocations; // @synthesize searchLocations=_searchLocations;
 @property BOOL searchParticipants; // @synthesize searchParticipants=_searchParticipants;
+@property BOOL shouldMatchLocationsOnlyForEventSearch; // @synthesize shouldMatchLocationsOnlyForEventSearch=_shouldMatchLocationsOnlyForEventSearch;
 
 - (void).cxx_destruct;
 - (void)_addMatchedEventIds:(struct __CFArray *)arg1;

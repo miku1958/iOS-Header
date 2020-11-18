@@ -21,6 +21,7 @@
     int _changedNotifyToken;
     NSString *_pluginType;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_outerQueue;
     NSDictionary *_currentIndex;
     NSObject<OS_dispatch_queue> *_changedQueue;
     CDUnknownBlockType _changedHandler;
@@ -52,11 +53,12 @@
 @property BOOL isVPNPublicAPI; // @synthesize isVPNPublicAPI=_isVPNPublicAPI;
 @property (strong) NSMutableDictionary *loadedConfigurations; // @synthesize loadedConfigurations=_loadedConfigurations;
 @property (strong) NSMutableDictionary *loadedIndex; // @synthesize loadedIndex=_loadedIndex;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *outerQueue; // @synthesize outerQueue=_outerQueue;
 @property (readonly) NSString *pluginType; // @synthesize pluginType=_pluginType;
 @property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) NSUUID *userUUID; // @synthesize userUUID=_userUUID;
 
-+ (long long)configuration:(id)arg1 overlapsWithOtherConfiguration:(id)arg2;
++ (long long)configuration:(id)arg1 overlapsWithOtherConfiguration:(id)arg2 sameTypeCount:(unsigned long long *)arg3;
 + (BOOL)configurationIsEnabled:(id)arg1;
 + (void)disableConfiguration:(id)arg1 onDemandOnly:(BOOL)arg2;
 + (id)sharedManager;
@@ -73,13 +75,13 @@
 - (void)didLoadConfiguration:(id)arg1;
 - (void)didLoadConfiguration:(id)arg1 withSignature:(id)arg2;
 - (id)errorWithCode:(long long)arg1 specifics:(id)arg2;
-- (void)fetchCarrierBundleNATKeepAliveIntervalOverCell:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchClientListenerWithBundleID:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchUpgradeInfoForPluginType:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)filterIndexWithFilter:(id)arg1;
 - (void)getCurrentIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)handleApplicationsRemoved:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)handleFileRemovedWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)getCurrentUserUUIDForConfigurationID:(id)arg1 fromIndex:(id)arg2;
+- (void)handleApplicationsRemoved:(id)arg1 completionQueue:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)handleFileRemovedWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handlePluginTypesRemoved:(id)arg1 configuration:(id)arg2 vpn:(id)arg3 updateSCPreferences:(struct __SCPreferences *)arg4;
 - (id)init;
 - (id)initForAllUsers;
@@ -93,7 +95,7 @@
 - (id)makeMutableCopyOfIndex:(id)arg1;
 - (void)notifyChanges;
 - (void)postChangeNotification;
-- (void)postChangeNotificationWithGeneration:(long long)arg1 andFlags:(unsigned long long)arg2;
+- (void)postChangeNotificationWithGeneration:(long long)arg1 andFlags:(unsigned long long)arg2 onlyIfChanged:(BOOL)arg3;
 - (void)postGeneration;
 - (id)readIndexFromDiskWithError:(id *)arg1;
 - (void)registerForChangeNotifications;
@@ -108,7 +110,7 @@
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)setChangedQueue:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
 - (void)showObsoleteAppAlert;
-- (void)syncWithSystemConfigurationWithAppNameCallback:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)syncConfigurationsWithSC:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)triggerLocalAuthenticationForConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateSCPreferencesSignatureOnDisk;
 - (void)upgradeLegacyPluginConfigurationsWithUpgradeInfo:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;

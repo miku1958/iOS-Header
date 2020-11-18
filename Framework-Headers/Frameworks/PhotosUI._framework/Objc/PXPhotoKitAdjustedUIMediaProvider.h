@@ -28,7 +28,7 @@
 
 + (void)clearCachedRenders;
 - (void).cxx_destruct;
-- (void)_handleRequestCompletedWithID:(long long)arg1;
+- (void)_handleRequestCompletedWithID:(long long)arg1 info:(id)arg2;
 - (long long)_nextRequestID;
 - (void)_removeRequestforID:(long long)arg1;
 - (id)cachedImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2;

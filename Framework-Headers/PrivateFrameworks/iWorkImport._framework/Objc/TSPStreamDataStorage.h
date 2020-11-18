@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL needsDownload;
 @property (readonly, nonatomic) unsigned char packageIdentifier;
 @property (readonly, nonatomic) NSString *packageLocator;
+@property (readonly, nonatomic) struct CGSize pixelSize;
 @property (readonly, nonatomic) BOOL readOnly;
 @property (readonly) Class superclass;
 
@@ -43,7 +44,7 @@ __attribute__((visibility("hidden")))
 - (struct CGDataProvider *)newCGDataProvider;
 - (struct CGImageSource *)newCGImageSource;
 - (void)performIOChannelReadWithAccessor:(CDUnknownBlockType)arg1;
-- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4;
+- (id)writeData:(id)arg1 toPackageWriter:(id)arg2 infoMessage:(struct DataInfo *)arg3 preferredFilename:(id)arg4 error:(id *)arg5;
 
 @end
 

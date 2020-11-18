@@ -26,11 +26,13 @@ __attribute__((visibility("hidden")))
 - (id)legalChartLabelPositions;
 - (int)legendBadgeType;
 - (id)propertiesForReferenceColors;
+- (int)seriesStrokeProperty;
 - (id)supportedValueLabelsAxisCombinations;
 - (BOOL)supportsFillSetFill;
 - (BOOL)supportsLineConnectionStyle;
 - (BOOL)supportsSeriesStroke;
 - (BOOL)supportsSymbolTypeEditing;
+- (id)userInterfaceName;
 - (unsigned long long)valueDimensions;
 
 @end

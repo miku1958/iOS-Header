@@ -8,28 +8,47 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOMiniCard, NSString;
+@class GEOLatLng, GEOMiniCard, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOTrafficCamera : PBCodable <NSCopying>
 {
-    double _speedThreshold;
-    unsigned int _cameraPriority;
-    unsigned int _highlightDistance;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSString *_identifier;
     GEOMiniCard *_infoCard;
     GEOLatLng *_position;
     NSString *_speedLimitText;
+    double _speedThreshold;
     GEOMiniCard *_speedingCard;
+    unsigned int _cameraPriority;
+    unsigned int _highlightDistance;
     int _type;
     struct {
-        unsigned int speedThreshold:1;
-        unsigned int cameraPriority:1;
-        unsigned int highlightDistance:1;
-        unsigned int type:1;
-    } _has;
+        unsigned int has_speedThreshold:1;
+        unsigned int has_cameraPriority:1;
+        unsigned int has_highlightDistance:1;
+        unsigned int has_type:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_identifier:1;
+        unsigned int read_infoCard:1;
+        unsigned int read_position:1;
+        unsigned int read_speedLimitText:1;
+        unsigned int read_speedingCard:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_identifier:1;
+        unsigned int wrote_infoCard:1;
+        unsigned int wrote_position:1;
+        unsigned int wrote_speedLimitText:1;
+        unsigned int wrote_speedThreshold:1;
+        unsigned int wrote_speedingCard:1;
+        unsigned int wrote_cameraPriority:1;
+        unsigned int wrote_highlightDistance:1;
+        unsigned int wrote_type:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int cameraPriority; // @synthesize cameraPriority=_cameraPriority;
+@property (nonatomic) unsigned int cameraPriority;
 @property (nonatomic) BOOL hasCameraPriority;
 @property (nonatomic) BOOL hasHighlightDistance;
 @property (readonly, nonatomic) BOOL hasIdentifier;
@@ -39,17 +58,25 @@
 @property (nonatomic) BOOL hasSpeedThreshold;
 @property (readonly, nonatomic) BOOL hasSpeedingCard;
 @property (nonatomic) BOOL hasType;
-@property (nonatomic) unsigned int highlightDistance; // @synthesize highlightDistance=_highlightDistance;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) GEOMiniCard *infoCard; // @synthesize infoCard=_infoCard;
-@property (strong, nonatomic) GEOLatLng *position; // @synthesize position=_position;
-@property (strong, nonatomic) NSString *speedLimitText; // @synthesize speedLimitText=_speedLimitText;
-@property (nonatomic) double speedThreshold; // @synthesize speedThreshold=_speedThreshold;
-@property (strong, nonatomic) GEOMiniCard *speedingCard; // @synthesize speedingCard=_speedingCard;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) unsigned int highlightDistance;
+@property (strong, nonatomic) NSString *identifier;
+@property (strong, nonatomic) GEOMiniCard *infoCard;
+@property (strong, nonatomic) GEOLatLng *position;
+@property (strong, nonatomic) NSString *speedLimitText;
+@property (nonatomic) double speedThreshold;
+@property (strong, nonatomic) GEOMiniCard *speedingCard;
+@property (nonatomic) int type;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (void)_readIdentifier;
+- (void)_readInfoCard;
+- (void)_readPosition;
+- (void)_readSpeedLimitText;
+- (void)_readSpeedingCard;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -57,6 +84,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

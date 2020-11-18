@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <AccountNotification/ANCachedDictionaryRepresentationProtocol-Protocol.h>
 #import <AccountNotification/NSSecureCoding-Protocol.h>
 
 @class ANNotificationAction, NSDate, NSDictionary, NSString;
 
-@interface ANAccountNotification : NSObject <NSSecureCoding>
+@interface ANAccountNotification : NSObject <NSSecureCoding, ANCachedDictionaryRepresentationProtocol>
 {
     NSString *_identifier;
     NSString *_accountTypeID;
@@ -18,10 +19,8 @@
     NSString *_message;
     NSDate *_date;
     NSString *_activateButtonTitle;
-    NSString *_dismissButtonTitle;
     ANNotificationAction *_activateAction;
     ANNotificationAction *_dismissAction;
-    ANNotificationAction *_clearAction;
     NSDictionary *_userInfo;
     NSString *_eventIdentifier;
     long long _destinations;
@@ -33,24 +32,27 @@
 @property (strong, nonatomic) ANNotificationAction *activateAction; // @synthesize activateAction=_activateAction;
 @property (copy, nonatomic) NSString *activateButtonTitle; // @synthesize activateButtonTitle=_activateButtonTitle;
 @property (copy, nonatomic) NSString *callbackMachService; // @synthesize callbackMachService=_callbackMachService;
-@property (strong, nonatomic) ANNotificationAction *clearAction; // @synthesize clearAction=_clearAction;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long destinations; // @synthesize destinations=_destinations;
 @property (strong, nonatomic) ANNotificationAction *dismissAction; // @synthesize dismissAction=_dismissAction;
-@property (copy, nonatomic) NSString *dismissButtonTitle; // @synthesize dismissButtonTitle=_dismissButtonTitle;
 @property (copy, nonatomic) NSString *eventIdentifier; // @synthesize eventIdentifier=_eventIdentifier;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (nonatomic) long long sectionSubtype; // @synthesize sectionSubtype=_sectionSubtype;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initForAccountWithType:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithManagedObject:(id)arg1;
 
 @end

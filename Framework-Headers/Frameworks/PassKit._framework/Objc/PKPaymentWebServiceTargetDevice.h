@@ -19,6 +19,10 @@
     BOOL _provisioningAssertionActive;
     PKAssertion *_verificationAssertion;
     BOOL _verificationAssertionActive;
+    PKAssertion *_requiringUpgradedPasscodeAssertion;
+    BOOL _requiringUpgradedPasscodeAssertionActive;
+    PKAssertion *_activePasscodeUpgradeFlowAssertion;
+    BOOL _activePasscodeUpgradeFlowAssertionActive;
     PKPassUpgradeController *_passUpgradeController;
 }
 
@@ -47,11 +51,15 @@
 - (id)deviceRegion;
 - (id)deviceVersion;
 - (void)downloadAllPaymentPassesForPaymentWebService:(id)arg1;
+- (void)endRequiringUpgradedPasscodeIfNecessary;
+- (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)felicaSecureElementIsAvailable;
 - (id)init;
 - (unsigned long long)maximumPaymentCards;
 - (void)noteForegroundVerificationObserverActive:(BOOL)arg1;
+- (void)notePasscodeUpgradeFlowDidEnd;
+- (void)notePasscodeUpgradeFlowWillBeginWithCompletion:(CDUnknownBlockType)arg1;
 - (void)noteProvisioningDidBegin;
 - (void)noteProvisioningDidEnd;
 - (void)noteProvisioningUserInterfaceDidAppear;
@@ -95,6 +103,7 @@
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (void)signatureForAuthToken:(id)arg1 webService:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
+- (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(BOOL)arg1;
 - (id)supportedFeatureIdentifiersWithPaymentWebService:(id)arg1;
 - (BOOL)supportsAutomaticPassPresentation;
 - (BOOL)supportsCredentialType:(long long)arg1;

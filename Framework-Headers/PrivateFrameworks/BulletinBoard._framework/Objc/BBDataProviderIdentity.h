@@ -12,7 +12,7 @@
 
 @interface BBDataProviderIdentity : NSObject <NSSecureCoding>
 {
-    CDStruct_c9fbfe45 _traits;
+    CDStruct_0e6e99aa _traits;
     NSString *_sectionIdentifier;
     NSString *_universalSectionIdentifier;
     BBSectionInfo *_defaultSectionInfo;
@@ -24,8 +24,8 @@
     NSDictionary *_subsectionDisplayNames;
     NSString *_sortKey;
     NSString *_parentSectionIdentifier;
-    NSDictionary *_filterDisplayNames;
     BOOL _syncsBulletinDismissal;
+    NSDictionary *_filterDisplayNames;
 }
 
 @property (copy, nonatomic) BBSectionInfo *defaultSectionInfo; // @synthesize defaultSectionInfo=_defaultSectionInfo;
@@ -40,7 +40,7 @@
 @property (copy, nonatomic) NSString *sortKey; // @synthesize sortKey=_sortKey;
 @property (copy, nonatomic) NSDictionary *subsectionDisplayNames; // @synthesize subsectionDisplayNames=_subsectionDisplayNames;
 @property (readonly, nonatomic) BOOL syncsBulletinDismissal; // @synthesize syncsBulletinDismissal=_syncsBulletinDismissal;
-@property (readonly, nonatomic) CDStruct_c9fbfe45 traits; // @synthesize traits=_traits;
+@property (readonly, nonatomic) CDStruct_0e6e99aa traits; // @synthesize traits=_traits;
 @property (copy, nonatomic) NSString *universalSectionIdentifier; // @synthesize universalSectionIdentifier=_universalSectionIdentifier;
 
 + (id)identityForDataProvider:(id)arg1;

@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double earliestValidDate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *recordQueue; // @synthesize recordQueue=_recordQueue;
 
-+ (void)_evictPCSSQLCachesForAppContainerTuples:(id)arg1;
++ (void)_evictPCSSQLCachesForAppContainerAccountTuples:(id)arg1;
 + (void)evictPCSSQLCachesForKnownClientContexts;
 + (id)globalPCSSQLCacheEvictionQueue;
 + (id)pathForContext:(id)arg1;

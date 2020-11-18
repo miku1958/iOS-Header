@@ -8,22 +8,29 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOTransitLeg : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _restrictedToSectionIndexs;
     int _sectionOptionIndex;
     struct {
-        unsigned int sectionOptionIndex:1;
-    } _has;
+        unsigned int has_sectionOptionIndex:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasSectionOptionIndex;
 @property (readonly, nonatomic) int *restrictedToSectionIndexs;
 @property (readonly, nonatomic) unsigned long long restrictedToSectionIndexsCount;
-@property (nonatomic) int sectionOptionIndex; // @synthesize sectionOptionIndex=_sectionOptionIndex;
+@property (nonatomic) int sectionOptionIndex;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
+- (void).cxx_destruct;
 - (void)addRestrictedToSectionIndex:(int)arg1;
 - (void)clearRestrictedToSectionIndexs;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -32,6 +39,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)restrictedToSectionIndexAtIndex:(unsigned long long)arg1;
 - (void)setRestrictedToSectionIndexs:(int *)arg1 count:(unsigned long long)arg2;

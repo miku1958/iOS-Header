@@ -8,31 +8,47 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, PBDataReader, PBUnknownFields;
 
 @interface GEOOriginalRoute : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     NSData *_originalDirectionsResponseID;
-    int _originalRoutePurpose;
     NSData *_routeHandle;
+    int _originalRoutePurpose;
     unsigned int _routeIndex;
     struct {
-        unsigned int originalRoutePurpose:1;
-        unsigned int routeIndex:1;
-    } _has;
+        unsigned int has_originalRoutePurpose:1;
+        unsigned int has_routeIndex:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_originalDirectionsResponseID:1;
+        unsigned int read_routeHandle:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_originalDirectionsResponseID:1;
+        unsigned int wrote_routeHandle:1;
+        unsigned int wrote_originalRoutePurpose:1;
+        unsigned int wrote_routeIndex:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasOriginalDirectionsResponseID;
 @property (nonatomic) BOOL hasOriginalRoutePurpose;
 @property (readonly, nonatomic) BOOL hasRouteHandle;
 @property (nonatomic) BOOL hasRouteIndex;
-@property (strong, nonatomic) NSData *originalDirectionsResponseID; // @synthesize originalDirectionsResponseID=_originalDirectionsResponseID;
-@property (nonatomic) int originalRoutePurpose; // @synthesize originalRoutePurpose=_originalRoutePurpose;
-@property (strong, nonatomic) NSData *routeHandle; // @synthesize routeHandle=_routeHandle;
-@property (nonatomic) unsigned int routeIndex; // @synthesize routeIndex=_routeIndex;
+@property (strong, nonatomic) NSData *originalDirectionsResponseID;
+@property (nonatomic) int originalRoutePurpose;
+@property (strong, nonatomic) NSData *routeHandle;
+@property (nonatomic) unsigned int routeIndex;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsOriginalRoutePurpose:(id)arg1;
+- (void)_readOriginalDirectionsResponseID;
+- (void)_readRouteHandle;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -41,6 +57,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)originalRoutePurposeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

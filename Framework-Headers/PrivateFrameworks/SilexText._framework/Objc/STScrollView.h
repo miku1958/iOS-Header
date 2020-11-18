@@ -31,7 +31,6 @@
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)shouldOccludeAccessibilityElement:(id)arg1;
-- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 
 @end
 

@@ -33,5 +33,7 @@
 - (void)updatePageLayerEffectForID:(NSUUID *)arg1;
 - (void)updatePageLayerEffects;
 - (unsigned long long)visibilityDelegateIndex;
+- (void)willEndStartLiveResize;
+- (void)willStartLiveResize;
 @end
 

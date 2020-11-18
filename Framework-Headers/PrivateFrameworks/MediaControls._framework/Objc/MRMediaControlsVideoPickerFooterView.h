@@ -6,14 +6,17 @@
 
 #import <MediaPlayer/MPButton.h>
 
-@class UILabel;
+@class MTVisualStylingProvider, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface MRMediaControlsVideoPickerFooterView : MPButton
 {
+    MTVisualStylingProvider *_visualStylingProvider;
     UILabel *_customTitleLabel;
 }
 
 @property (strong, nonatomic) UILabel *customTitleLabel; // @synthesize customTitleLabel=_customTitleLabel;
+@property (strong, nonatomic) MTVisualStylingProvider *visualStylingProvider; // @synthesize visualStylingProvider=_visualStylingProvider;
 
 - (void).cxx_destruct;
 - (void)_updateStyle;

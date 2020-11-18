@@ -24,8 +24,10 @@
     NSString *_localizedVideoTitle;
     NSArray *_attributeNames;
     NSArray *_supportedAuthenticationSchemes;
+    NSString *_accountProviderAuthenticationToken;
 }
 
+@property (copy, nonatomic) NSString *accountProviderAuthenticationToken; // @synthesize accountProviderAuthenticationToken=_accountProviderAuthenticationToken;
 @property (copy, nonatomic) NSArray *attributeNames; // @synthesize attributeNames=_attributeNames;
 @property (copy, nonatomic) NSString *channelIdentifier; // @synthesize channelIdentifier=_channelIdentifier;
 @property (copy, nonatomic) NSArray *featuredAccountProviderIdentifiers; // @synthesize featuredAccountProviderIdentifiers=_featuredAccountProviderIdentifiers;

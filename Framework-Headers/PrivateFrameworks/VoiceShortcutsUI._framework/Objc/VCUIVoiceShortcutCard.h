@@ -21,7 +21,6 @@
 @property (readonly, nonatomic) NSArray *sectionCommands; // @synthesize sectionCommands=_sectionCommands;
 @property (readonly, nonatomic) NSString *shortcutIdentifier; // @synthesize shortcutIdentifier=_shortcutIdentifier;
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (BOOL)asynchronous;
 - (id)cardIdentifier;

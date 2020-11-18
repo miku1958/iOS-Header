@@ -6,11 +6,12 @@
 
 #import <HomeKit/HMApplicationData-Protocol.h>
 
-@class HMApplicationData;
+@class HMApplicationData, NSUUID;
 
 @protocol HMMutableApplicationData <HMApplicationData>
 
 @property (strong, nonatomic) HMApplicationData *applicationData;
+@property (readonly, copy) NSUUID *applicationDataIdentifier;
 
 @end
 

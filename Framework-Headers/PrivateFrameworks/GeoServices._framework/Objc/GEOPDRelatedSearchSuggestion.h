@@ -8,26 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData, NSString, PBUnknownFields;
+@class NSData, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDRelatedSearchSuggestion : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_displayString;
     NSString *_searchBarDisplayToken;
     NSData *_suggestionEntryMetadata;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_displayString:1;
+        unsigned int read_searchBarDisplayToken:1;
+        unsigned int read_suggestionEntryMetadata:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_displayString:1;
+        unsigned int wrote_searchBarDisplayToken:1;
+        unsigned int wrote_suggestionEntryMetadata:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
+@property (strong, nonatomic) NSString *displayString;
 @property (readonly, nonatomic) BOOL hasDisplayString;
 @property (readonly, nonatomic) BOOL hasSearchBarDisplayToken;
 @property (readonly, nonatomic) BOOL hasSuggestionEntryMetadata;
-@property (strong, nonatomic) NSString *searchBarDisplayToken; // @synthesize searchBarDisplayToken=_searchBarDisplayToken;
-@property (strong, nonatomic) NSData *suggestionEntryMetadata; // @synthesize suggestionEntryMetadata=_suggestionEntryMetadata;
+@property (strong, nonatomic) NSString *searchBarDisplayToken;
+@property (strong, nonatomic) NSData *suggestionEntryMetadata;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDisplayString;
+- (void)_readSearchBarDisplayToken;
+- (void)_readSuggestionEntryMetadata;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -25,6 +25,8 @@ __attribute__((visibility("hidden")))
     struct nw_hash_table *associations;
     unsigned int is_local_domain:1;
     unsigned int parent_is_proxy:1;
+    unsigned int description_used:1;
+    unsigned int logging_description_used:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,9 +34,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) const char *domainForPolicy;
 @property (readonly, nonatomic) const char *getDescription;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) const char *hostname;
 @property (readonly, nonatomic) unsigned short port;
+@property (nonatomic) unsigned short priority;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int type;
+@property (nonatomic) unsigned short weight;
 
 - (void).cxx_destruct;
 - (id)copyDictionary;

@@ -15,7 +15,6 @@
     NWPath *_defaultPath;
     NWPathEvaluator *_defaultPathEvaluator;
     NEExtensionProviderContext *_context;
-    NSString *_deviceIdentifier;
     NSString *_appName;
 }
 
@@ -25,12 +24,12 @@
 @property (strong) NWPath *defaultPath; // @synthesize defaultPath=_defaultPath;
 @property (strong) NWPathEvaluator *defaultPathEvaluator; // @synthesize defaultPathEvaluator=_defaultPathEvaluator;
 @property (readonly, copy) NSString *description;
-@property (strong) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (BOOL)isNEProviderBundle:(id)arg1 forExtensionPoint:(id)arg2;
 + (BOOL)isRunningInProvider;
++ (void)startSystemExtensionMode;
 - (void).cxx_destruct;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (id)createTCPConnectionToEndpoint:(id)arg1 enableTFO:(BOOL)arg2 initialData:(id)arg3 enableMultipath:(BOOL)arg4 enableTLS:(BOOL)arg5 TLSParameters:(id)arg6 delegate:(id)arg7;
@@ -40,6 +39,7 @@
 - (void)dealloc;
 - (void)displayMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
+- (id)initAllowUnentitled:(BOOL)arg1;
 - (void)observerHelperHandler:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)setdefaultPathObserver:(id)arg1;
 - (void)sleepWithCompletionHandler:(CDUnknownBlockType)arg1;

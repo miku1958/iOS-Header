@@ -41,7 +41,6 @@
 @property (strong, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 
 + (id)alertControllerForUnableReason:(unsigned long long)arg1 action:(id)arg2 displayableError:(id)arg3 addCardActionHandler:(CDUnknownBlockType)arg4;
-+ (id)navigationBarBackgroundColor;
 - (void).cxx_destruct;
 - (id)_actionViewForPass:(id)arg1 action:(id)arg2;
 - (void)_canPerformPaymentWithCompletion:(CDUnknownBlockType)arg1;
@@ -61,13 +60,13 @@
 - (void)paymentAuthorizationCoordinator:(id)arg1 didAuthorizePurchase:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)paymentAuthorizationCoordinatorDidFinish:(id)arg1;
 - (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)setRightBarButtonEnabled:(BOOL)arg1;
 - (void)shakeCard;
 - (void)updateFirstResponder;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

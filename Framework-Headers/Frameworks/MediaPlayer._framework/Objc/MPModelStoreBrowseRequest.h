@@ -15,6 +15,7 @@
     long long _domain;
     long long _filteringPolicy;
     MPModelStoreBrowseResponse *_previousResponse;
+    long long _requestEndpoint;
 }
 
 @property (nonatomic) long long domain; // @synthesize domain=_domain;
@@ -22,6 +23,7 @@
 @property (copy, nonatomic) NSURL *loadAdditionalContentURL; // @synthesize loadAdditionalContentURL=_loadAdditionalContentURL;
 @property (strong, nonatomic) MPModelStoreBrowseResponse *previousResponse; // @synthesize previousResponse=_previousResponse;
 @property (strong, nonatomic) MPModelStoreBrowseResponse *previousRetrievedNestedResponse; // @synthesize previousRetrievedNestedResponse=_previousRetrievedNestedResponse;
+@property (nonatomic) long long requestEndpoint; // @synthesize requestEndpoint=_requestEndpoint;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;

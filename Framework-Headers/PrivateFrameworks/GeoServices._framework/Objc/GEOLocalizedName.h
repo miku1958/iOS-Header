@@ -8,21 +8,35 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOLocalizedName : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_languageCode;
-    NSString *_name;
-    unsigned int _nameRank;
     NSString *_nameType;
+    NSString *_name;
     NSString *_phoneticName;
+    unsigned int _nameRank;
     BOOL _isDefault;
     struct {
-        unsigned int nameRank:1;
-        unsigned int isDefault:1;
-    } _has;
+        unsigned int has_nameRank:1;
+        unsigned int has_isDefault:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_languageCode:1;
+        unsigned int read_nameType:1;
+        unsigned int read_name:1;
+        unsigned int read_phoneticName:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_languageCode:1;
+        unsigned int wrote_nameType:1;
+        unsigned int wrote_name:1;
+        unsigned int wrote_phoneticName:1;
+        unsigned int wrote_nameRank:1;
+        unsigned int wrote_isDefault:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsDefault;
@@ -31,15 +45,21 @@
 @property (nonatomic) BOOL hasNameRank;
 @property (readonly, nonatomic) BOOL hasNameType;
 @property (readonly, nonatomic) BOOL hasPhoneticName;
-@property (nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
-@property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) unsigned int nameRank; // @synthesize nameRank=_nameRank;
-@property (strong, nonatomic) NSString *nameType; // @synthesize nameType=_nameType;
-@property (strong, nonatomic) NSString *phoneticName; // @synthesize phoneticName=_phoneticName;
+@property (nonatomic) BOOL isDefault;
+@property (strong, nonatomic) NSString *languageCode;
+@property (strong, nonatomic) NSString *name;
+@property (nonatomic) unsigned int nameRank;
+@property (strong, nonatomic) NSString *nameType;
+@property (strong, nonatomic) NSString *phoneticName;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readLanguageCode;
+- (void)_readName;
+- (void)_readNameType;
+- (void)_readPhoneticName;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,6 +68,7 @@
 - (id)initWithPlaceDataLocalizedString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -8,23 +8,27 @@
 
 #import <SpotlightServices/SSDataCollectible-Protocol.h>
 
-@class MISSING_TYPE, NSArray, NSData, NSMapTable, NSMutableArray, NSString, PRSL2FeatureVector, PRSRankingSpanCalculator;
+@class MISSING_TYPE, NSArray, NSData, NSMutableArray, NSString, PRSL2FeatureVector, PRSRankingSpanCalculator;
 
 @interface PRSRankingItem : NSObject <SSDataCollectible>
 {
+    BOOL _isInternal;
     BOOL _eligibleForDemotion;
-    BOOL _needsDemotion;
+    BOOL _shouldHideUnderShowMore;
+    BOOL _matchedQueryTerms;
+    unsigned char _bundleIDType;
     BOOL _isPrepared;
     float _rawScore;
     float _feedbackScore;
     float _score;
+    float _withinBundleScore;
     NSString *_identifier;
     NSString *_sectionBundleIdentifier;
     PRSL2FeatureVector *_L2FeatureVector;
     NSData *_serverFeaturesJSON;
     double _mostRecentUsedDate;
     double _closestUpComingDate;
-    NSMapTable *_attributes;
+    // Error: parsing type: '^{?=[2Q]TT[0^v]}', name: _attributes
     PRSRankingSpanCalculator *_spanCalculator;
     NSMutableArray *_matchedSenders;
     NSMutableArray *_matchedVipSenders;
@@ -32,14 +36,18 @@
     NSArray *_emailAddresses;
     unsigned long long _importantPropertiesPrefixMatched;
     unsigned long long _importantPropertiesWordMatched;
-    unsigned long long _playCount;
-    struct ranking_index_score_t _indexScore;
+    NSString *_contentType;
+    MISSING_TYPE *_indexScore;
     MISSING_TYPE *_inputToModelScore;
 }
 
 @property (strong, nonatomic) PRSL2FeatureVector *L2FeatureVector; // @synthesize L2FeatureVector=_L2FeatureVector;
-@property (strong, nonatomic) NSMapTable *attributes; // @synthesize attributes=_attributes;
+// Error parsing type for property attributes:
+// Property attributes: T^{?=[2Q]TT[0^v]},N,V_attributes
+
+@property (nonatomic) unsigned char bundleIDType; // @synthesize bundleIDType=_bundleIDType;
 @property (nonatomic) double closestUpComingDate; // @synthesize closestUpComingDate=_closestUpComingDate;
+@property (strong, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL eligibleForDemotion; // @synthesize eligibleForDemotion=_eligibleForDemotion;
@@ -49,51 +57,59 @@
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long importantPropertiesPrefixMatched; // @synthesize importantPropertiesPrefixMatched=_importantPropertiesPrefixMatched;
 @property (nonatomic) unsigned long long importantPropertiesWordMatched; // @synthesize importantPropertiesWordMatched=_importantPropertiesWordMatched;
-@property (nonatomic) struct ranking_index_score_t indexScore; // @synthesize indexScore=_indexScore;
+@property (nonatomic) MISSING_TYPE *indexScore; // @synthesize indexScore=_indexScore;
 @property (nonatomic) MISSING_TYPE *inputToModelScore; // @synthesize inputToModelScore=_inputToModelScore;
 @property (nonatomic) BOOL isPrepared; // @synthesize isPrepared=_isPrepared;
+@property (nonatomic) BOOL matchedQueryTerms; // @synthesize matchedQueryTerms=_matchedQueryTerms;
 @property (strong, nonatomic) NSMutableArray *matchedRecipients; // @synthesize matchedRecipients=_matchedRecipients;
 @property (strong, nonatomic) NSMutableArray *matchedSenders; // @synthesize matchedSenders=_matchedSenders;
 @property (strong, nonatomic) NSMutableArray *matchedVipSenders; // @synthesize matchedVipSenders=_matchedVipSenders;
 @property (nonatomic) double mostRecentUsedDate; // @synthesize mostRecentUsedDate=_mostRecentUsedDate;
-@property (nonatomic) BOOL needsDemotion; // @synthesize needsDemotion=_needsDemotion;
-@property (nonatomic) unsigned long long playCount; // @synthesize playCount=_playCount;
 @property (nonatomic) float rawScore; // @synthesize rawScore=_rawScore;
 @property (nonatomic) float score; // @synthesize score=_score;
 @property (strong, nonatomic) NSString *sectionBundleIdentifier; // @synthesize sectionBundleIdentifier=_sectionBundleIdentifier;
 @property (strong, nonatomic) NSData *serverFeaturesJSON; // @synthesize serverFeaturesJSON=_serverFeaturesJSON;
+@property (nonatomic) BOOL shouldHideUnderShowMore; // @synthesize shouldHideUnderShowMore=_shouldHideUnderShowMore;
 @property (strong, nonatomic) PRSRankingSpanCalculator *spanCalculator; // @synthesize spanCalculator=_spanCalculator;
 @property (readonly) Class superclass;
+@property (nonatomic) float withinBundleScore; // @synthesize withinBundleScore=_withinBundleScore;
 
 + (id)deviceClass;
 + (unsigned short)featureFromVirtualIdx:(unsigned long long)arg1;
++ (unsigned long long)indexOfShortcutBit;
 + (void)initialize;
 + (id)rankingDescriptorForBundleFeature:(unsigned long long)arg1;
 + (id)requiredAttributes;
 + (id)requiredContactAttributes;
++ (int *)requiredContactAttributesIndexes;
 + (id)requiredMailAttributes;
 + (id)requiredOtherAttributes;
++ (id)requiredSMSAttributes;
 + (id)requiredTextFeatureAttributes;
++ (int *)requiredTextFeatureAttributesIndexes;
 - (void).cxx_destruct;
-- (long long)compare:(id)arg1;
-- (long long)compareWithDates:(id)arg1;
+- (long long)compare:(id)arg1 currentTime:(double)arg2;
+- (long long)compareWithDates:(id)arg1 currentTime:(double)arg2;
 - (id)dataCollectionBundle;
 - (void)dealloc;
 - (id)dedupeIdentifier;
 - (BOOL)didMatchRankingDescriptor:(id)arg1;
+- (id)displayName;
 - (void)inferDateBinsFromDates:(id)arg1 intoBins:(int *)arg2;
-- (id)initWithAttributes:(id)arg1;
+-     // Error parsing type: @24@0:8^{?=[2Q]TT[0^v]}16, name: initWithAttrs:
 - (id)interestingDate;
 - (id)likelyDisplayTitle;
 - (id)moreRecentDateFromDate1:(id)arg1 date2:(id)arg2;
-- (long long)passesRecencyTest;
-- (void)populateBundleSpecificFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
-- (void)populateContactFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
+- (long long)passesRecencyTestWithCurrentTime:(double)arg1;
+- (void)populateBundleSpecificFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2;
+- (void)populateContactFeatures:(struct PRSL2FeatureScoreInfo *)arg1 currentTime:(double)arg2;
 - (void)populateCrossAttributeDerivedFeaturesWithContext:(struct prs_feature_population_ctx_t *)arg1 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg2;
-- (void)populateFeaturesWithEvaluator:(id)arg1 updatingBundleFeatures:(float *)arg2 withContext:(struct prs_feature_population_ctx_t *)arg3 keyboardLanguage:(id)arg4 isCJK:(BOOL)arg5;
+- (void)populateFeaturesWithEvaluator:(id)arg1 updatingBundleFeatures:(float *)arg2 withContext:(struct prs_feature_population_ctx_t *)arg3 keyboardLanguage:(id)arg4 isCJK:(BOOL)arg5 currentTime:(double)arg6;
 - (void)populateMailFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
 - (void)populateOtherFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
+- (void)populateSMSFeatures:(struct PRSL2FeatureScoreInfo *)arg1;
 - (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(float (*)[0])arg2 propertyIndex:(unsigned long long)arg3 withEvaluator:(id)arg4 withContext:(struct prs_feature_population_ctx_t *)arg5 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg6 propertyCanFuzzyMatch:(BOOL)arg7 keyboardLanguage:(id)arg8 isCJK:(BOOL)arg9;
+- (long long)recencyTestForVisibilityWithCurrentTime:(double)arg1;
 - (BOOL)serializeToJSON:(void *)arg1 valuesOnly:(BOOL)arg2;
 - (void)updateAccumulatedBundleFeatures:(float *)arg1 values:(float *)arg2 feature:(unsigned long long)arg3;
 - (void)updateBundleFeatures:(float *)arg1 withArrValues:(float (*)[0])arg2 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg3;

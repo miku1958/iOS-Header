@@ -19,6 +19,7 @@
 
 @property (nonatomic) double distanceBetweenTitleBaselineAndSubtitleBaseline; // @synthesize distanceBetweenTitleBaselineAndSubtitleBaseline=_distanceBetweenTitleBaselineAndSubtitleBaseline;
 @property (nonatomic) double interLabelSpacing; // @synthesize interLabelSpacing=_interLabelSpacing;
+@property (readonly, nonatomic) double maximumTitleSubtitleHeight;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (strong, nonatomic) PXLabelSpec *subtitleLabelSpec; // @synthesize subtitleLabelSpec=_subtitleLabelSpec;
 @property (strong, nonatomic) PXLabelSpec *titleLabelSpec; // @synthesize titleLabelSpec=_titleLabelSpec;

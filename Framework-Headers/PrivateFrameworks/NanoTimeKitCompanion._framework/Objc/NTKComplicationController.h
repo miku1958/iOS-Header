@@ -70,12 +70,13 @@
 - (id)complicationApplicationIdentifier;
 - (void)deactivate;
 - (void)dealloc;
-- (void)didTouchDown;
-- (void)didTouchUpInside;
+- (void)didTouchDownInView:(id)arg1;
+- (void)didTouchUpInsideView:(id)arg1;
 - (void)enumerateDisplayWrappersWithBlock:(CDUnknownBlockType)arg1;
 - (void)handleFaceDefaultsChanged;
 - (BOOL)hasTapAction;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
+- (void)notifyDelegateOnTimelineChange;
 - (void)performBackgroundDataRefresh;
 - (void)performTapAction;
 - (void)removeDisplayWrapper:(id)arg1;

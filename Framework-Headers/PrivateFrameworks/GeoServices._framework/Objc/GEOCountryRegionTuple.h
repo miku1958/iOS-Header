@@ -8,22 +8,36 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOCountryRegionTuple : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSString *_countryCode;
     NSString *_region;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_countryCode:1;
+        unsigned int read_region:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_countryCode:1;
+        unsigned int wrote_region:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (strong, nonatomic) NSString *countryCode;
 @property (readonly, nonatomic) BOOL hasCountryCode;
 @property (readonly, nonatomic) BOOL hasRegion;
-@property (strong, nonatomic) NSString *region; // @synthesize region=_region;
+@property (strong, nonatomic) NSString *region;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readCountryCode;
+- (void)_readRegion;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -31,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -20,7 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)fetchDataForAttachment:(id)arg1 consumer:(id)arg2 progress:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)fetchLocalDataForAttachment:(id)arg1;
 - (id)initWithDecryptedMessage:(id)arg1;

@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <WebKit/WKApplicationStateTrackingView.h>
 
 #import <WebKit/ASVThumbnailViewDelegate-Protocol.h>
 #import <WebKit/QLPreviewItemDataProvider-Protocol.h>
 #import <WebKit/WKWebViewContentProvider-Protocol.h>
 
-@class NSData, NSString, WKWebView;
+@class NSData, NSString, UIView, WKWebView;
 
 __attribute__((visibility("hidden")))
-@interface WKSystemPreviewView : UIView <ASVThumbnailViewDelegate, WKWebViewContentProvider, QLPreviewItemDataProvider>
+@interface WKSystemPreviewView : WKApplicationStateTrackingView <ASVThumbnailViewDelegate, WKWebViewContentProvider, QLPreviewItemDataProvider>
 {
     struct RetainPtr<NSItemProvider> _itemProvider;
     struct RetainPtr<NSData> _data;
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL web_isBackground;
 @property (readonly, nonatomic) NSString *web_suggestedFilename;
 
++ (BOOL)web_requiresCustomSnapshotting;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_layoutThumbnailView;

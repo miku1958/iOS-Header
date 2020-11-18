@@ -106,6 +106,7 @@
 - (void)drawVertexArray:(unsigned int)arg1 range:(struct _NSRange)arg2;
 - (void)enableVertexArrayAtIndex:(unsigned long long)arg1;
 - (void)execute:(CDUnknownBlockType)arg1;
+- (void)finish;
 - (void)generateBuffer:(id)arg1;
 - (void)generateFramebuffer:(id)arg1;
 - (void)generatePipeline:(id)arg1;

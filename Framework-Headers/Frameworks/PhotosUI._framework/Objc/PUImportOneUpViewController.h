@@ -7,8 +7,6 @@
 #import <UIKit/UIViewController.h>
 
 #import <PhotosUI/PUImportActionCoordinatorDelegate-Protocol.h>
-#import <PhotosUI/PUImportAssetsDataSourceManagerObserver-Protocol.h>
-#import <PhotosUI/PUImportControllerNotificationsReceiver-Protocol.h>
 #import <PhotosUI/PUImportOneUpCellDisplayDelegate-Protocol.h>
 #import <PhotosUI/PUImportOneUpScrubberCellDisplayDelegate-Protocol.h>
 #import <PhotosUI/PUImportOneUpTransitioning-Protocol.h>
@@ -16,15 +14,17 @@
 #import <PhotosUI/PUReviewScrubberDelegate-Protocol.h>
 #import <PhotosUI/PUSelectableAssetCollectionViewLayoutDelegate-Protocol.h>
 #import <PhotosUI/PXChangeObserver-Protocol.h>
+#import <PhotosUI/PXImportAssetsDataSourceManagerObserver-Protocol.h>
+#import <PhotosUI/PXImportControllerNotificationsReceiver-Protocol.h>
 #import <PhotosUI/UICollectionViewDataSource-Protocol.h>
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSIndexPath, NSMutableArray, NSMutableSet, NSString, PFCoalescer, PLDateRangeFormatter, PLRoundProgressView, PUImportActionCoordinator, PUImportAssetsDataSource, PUImportAssetsDataSourceManager, PUImportChangeDetailsCollectionViewHelper, PUImportController, PUImportOneUpViewControllerSpecManager, PUReviewScrubber, PUSelectableAssetCollectionViewLayout, PXAssetReference, PXMediaProvider, PXNavigationTitleView, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer;
+@class NSIndexPath, NSMutableArray, NSMutableSet, NSString, PFCoalescer, PLDateRangeFormatter, PLRoundProgressView, PUImportActionCoordinator, PUImportChangeDetailsCollectionViewHelper, PUImportOneUpViewControllerSpecManager, PUReviewScrubber, PUSelectableAssetCollectionViewLayout, PXAssetReference, PXImportAssetsDataSource, PXImportAssetsDataSourceManager, PXImportController, PXMediaProvider, PXNavigationTitleView, UIBarButtonItem, UICollectionView, UICollectionViewLayout, UITapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
-@interface PUImportOneUpViewController : UIViewController <PUImportActionCoordinatorDelegate, PUImportAssetsDataSourceManagerObserver, PUImportControllerNotificationsReceiver, PUImportOneUpCellDisplayDelegate, PUImportOneUpScrubberCellDisplayDelegate, PUSelectableAssetCollectionViewLayoutDelegate, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PXChangeObserver, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUImportOneUpTransitioning>
+@interface PUImportOneUpViewController : UIViewController <PUImportActionCoordinatorDelegate, PXImportAssetsDataSourceManagerObserver, PXImportControllerNotificationsReceiver, PUImportOneUpCellDisplayDelegate, PUImportOneUpScrubberCellDisplayDelegate, PUSelectableAssetCollectionViewLayoutDelegate, PUReviewScrubberDataSource, PUReviewScrubberDelegate, PXChangeObserver, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUImportOneUpTransitioning>
 {
     BOOL _isCommitingPreview;
     BOOL _performingDataSourceChange;
@@ -36,11 +36,11 @@ __attribute__((visibility("hidden")))
     PUReviewScrubber *_reviewScrubber;
     PXAssetReference *_startingAssetReference;
     PUImportOneUpViewControllerSpecManager *_specManager;
-    PUImportController *_importController;
+    PXImportController *_importController;
     unsigned long long _presentationFilter;
-    PUImportAssetsDataSourceManager *_importDataSourceManager;
-    PUImportAssetsDataSource *_importDataSource;
-    PUImportAssetsDataSource *_pendingDataSource;
+    PXImportAssetsDataSourceManager *_importDataSourceManager;
+    PXImportAssetsDataSource *_importDataSource;
+    PXImportAssetsDataSource *_pendingDataSource;
     PUImportChangeDetailsCollectionViewHelper *_changeDetailsHelper;
     PXMediaProvider *_mediaProvider;
     UICollectionView *_collectionView;
@@ -80,9 +80,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasPerformedNavigationToStartingAsset; // @synthesize hasPerformedNavigationToStartingAsset=_hasPerformedNavigationToStartingAsset;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIBarButtonItem *importBarButtonItem; // @synthesize importBarButtonItem=_importBarButtonItem;
-@property (strong, nonatomic) PUImportController *importController; // @synthesize importController=_importController;
-@property (strong, nonatomic) PUImportAssetsDataSource *importDataSource; // @synthesize importDataSource=_importDataSource;
-@property (strong, nonatomic) PUImportAssetsDataSourceManager *importDataSourceManager; // @synthesize importDataSourceManager=_importDataSourceManager;
+@property (strong, nonatomic) PXImportController *importController; // @synthesize importController=_importController;
+@property (strong, nonatomic) PXImportAssetsDataSource *importDataSource; // @synthesize importDataSource=_importDataSource;
+@property (strong, nonatomic) PXImportAssetsDataSourceManager *importDataSourceManager; // @synthesize importDataSourceManager=_importDataSourceManager;
 @property (readonly, nonatomic) NSIndexPath *inFlightReferenceIndexPath; // @synthesize inFlightReferenceIndexPath=_inFlightReferenceIndexPath;
 @property (nonatomic) BOOL isCommitingPreview; // @synthesize isCommitingPreview=_isCommitingPreview;
 @property (strong, nonatomic) NSMutableArray *itemsNeedingRelayout; // @synthesize itemsNeedingRelayout=_itemsNeedingRelayout;
@@ -90,7 +90,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL loadLargeThumbnailsInCustomOrder; // @synthesize loadLargeThumbnailsInCustomOrder=_loadLargeThumbnailsInCustomOrder;
 @property (strong, nonatomic) PXMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (readonly, nonatomic) PXNavigationTitleView *navigationTitleView; // @synthesize navigationTitleView=_navigationTitleView;
-@property (strong, nonatomic) PUImportAssetsDataSource *pendingDataSource; // @synthesize pendingDataSource=_pendingDataSource;
+@property (strong, nonatomic) PXImportAssetsDataSource *pendingDataSource; // @synthesize pendingDataSource=_pendingDataSource;
 @property (nonatomic) BOOL performingDataSourceChange; // @synthesize performingDataSourceChange=_performingDataSourceChange;
 @property (nonatomic) unsigned long long presentationFilter; // @synthesize presentationFilter=_presentationFilter;
 @property (readonly, nonatomic) UIBarButtonItem *progressButtonItem; // @synthesize progressButtonItem=_progressButtonItem;
@@ -154,7 +154,7 @@ __attribute__((visibility("hidden")))
 - (void)handleNewDataSource:(id)arg1;
 - (struct CGRect)imageRectFromPhotoView:(id)arg1;
 - (id)importAssetAtIndexPath:(id)arg1;
-- (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3 context:(id)arg4;
+- (void)importControllerProgressDidChange:(id)arg1 completedItemCount:(id)arg2 totalItemCount:(id)arg3;
 - (id)importDestinationForActionCoordinator:(id)arg1;
 - (void)importOneUpCell:(id)arg1 didRequestCancellationOfThumbnailRequestWithID:(long long)arg2;
 - (void)importOneUpCell:(id)arg1 requestedBadgeUpdateForImportItem:(id)arg2;
@@ -186,7 +186,7 @@ __attribute__((visibility("hidden")))
 - (void)reviewScrubber:(id)arg1 willDisplayCell:(id)arg2 atIndexPath:(id)arg3;
 - (void)reviewScrubberDidScrub:(id)arg1;
 - (void)reviewScrubberDidSelectItemAtIndexPath:(id)arg1;
-- (int)reviewScrubberImageFormat;
+- (unsigned short)reviewScrubberImageFormat;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;

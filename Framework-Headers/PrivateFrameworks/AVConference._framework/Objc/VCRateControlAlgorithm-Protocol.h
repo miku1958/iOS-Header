@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) unsigned int mostBurstLoss;
 @property (readonly, nonatomic) double owrd;
 @property (readonly, nonatomic) double packetLossRate;
+@property (readonly, nonatomic) double packetLossRateVideo;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) unsigned int rateChangeCounter;
 @property (readonly, nonatomic) double roundTripTime;
@@ -25,8 +26,7 @@
 @property (readonly, nonatomic) unsigned int totalPacketReceived;
 
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
-- (void)doRateControlWithBasebandStatistics:(CDStruct_48a7b5a5)arg1;
-- (BOOL)doRateControlWithStatistics:(CDStruct_48a7b5a5)arg1;
+- (BOOL)doRateControlWithStatistics:(CDStruct_b21f1e06)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(BOOL)arg2;
 @end

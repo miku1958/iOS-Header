@@ -10,19 +10,18 @@
 
 @interface MCUIBundleController : PSBundleController
 {
-    BOOL _isForPairedDevice;
     PSListController *_parentController;
     PSSpecifier *_specifier;
     NPSDomainAccessor *_nanoDomainAccessor;
 }
 
-@property (nonatomic) BOOL isForPairedDevice; // @synthesize isForPairedDevice=_isForPairedDevice;
 @property (strong, nonatomic) NPSDomainAccessor *nanoDomainAccessor; // @synthesize nanoDomainAccessor=_nanoDomainAccessor;
 @property (nonatomic) unsigned long long nanoProfileCount;
 @property (weak, nonatomic) PSListController *parentController; // @synthesize parentController=_parentController;
 @property (strong, nonatomic) PSSpecifier *specifier; // @synthesize specifier=_specifier;
 
 + (id)configurationProfiles;
++ (BOOL)isForPairedDevice;
 + (id)provisioningProfiles;
 + (id)provisioningProfilesWithValidityCheck:(BOOL)arg1;
 + (id)sharedInstance;

@@ -10,5 +10,9 @@
 {
 }
 
+- (void)cleanupForStoreDemoMode;
+- (BOOL)hasCompletedMomentAnalysis:(BOOL *)arg1 error:(id *)arg2;
+- (BOOL)hasCompletedRestorePostProcessing:(BOOL *)arg1 error:(id *)arg2;
+
 @end
 

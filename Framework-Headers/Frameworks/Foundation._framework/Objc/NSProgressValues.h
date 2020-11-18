@@ -8,14 +8,14 @@
 
 #import <Foundation/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary, NSString, _NSProgressFraction;
+@class NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface NSProgressValues : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_userInfo;
-    _NSProgressFraction *_selfFraction;
-    _NSProgressFraction *_childFraction;
+    struct _NSProgressFraction _selfFraction;
+    struct _NSProgressFraction _childFraction;
     double _remoteFractionCompleted;
     NSString *_localizedDescription;
     NSString *_localizedAdditionalDescription;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isFinished;
 - (BOOL)isIndeterminate;
-- (id)overallFraction;
+- (struct _NSProgressFraction)overallFraction;
 - (void)setCompletedUnitCount:(long long)arg1;
 - (void)setFinished:(BOOL)arg1;
 - (void)setFractionCompleted:(double)arg1;

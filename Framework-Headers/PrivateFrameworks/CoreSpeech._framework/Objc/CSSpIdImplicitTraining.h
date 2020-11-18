@@ -6,44 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CSBiometricMatchMonitor, CSGestureMonitor, NSDictionary, NSURL;
-@protocol CSAudioFileWriter, OS_dispatch_queue;
-
 @interface CSSpIdImplicitTraining : NSObject
 {
-    unsigned long long _triggerEndMachTime;
-    unsigned long long _triggerStartMachTime;
-    unsigned long long _extraSamplesAtBegining;
-    unsigned long long _numSamplesAdded;
-    unsigned long long _discardedPaylodSamples;
-    BOOL _implicitRecordingInProgress;
-    NSURL *_lastCachedUtterance;
-    id<CSAudioFileWriter> _uttLogger;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSDictionary *_recordingContext;
-    NSDictionary *_voiceTriggerEventInfo;
-    CSBiometricMatchMonitor *_biometricMonitor;
-    CSGestureMonitor *_gestureMonitor;
 }
 
-@property (strong, nonatomic) CSBiometricMatchMonitor *biometricMonitor; // @synthesize biometricMonitor=_biometricMonitor;
-@property (strong, nonatomic) CSGestureMonitor *gestureMonitor; // @synthesize gestureMonitor=_gestureMonitor;
-@property (strong, nonatomic) NSURL *lastCachedUtterance; // @synthesize lastCachedUtterance=_lastCachedUtterance;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) NSDictionary *recordingContext; // @synthesize recordingContext=_recordingContext;
-@property (strong, nonatomic) id<CSAudioFileWriter> uttLogger; // @synthesize uttLogger=_uttLogger;
-@property (strong, nonatomic) NSDictionary *voiceTriggerEventInfo; // @synthesize voiceTriggerEventInfo=_voiceTriggerEventInfo;
-
 + (id)sharedInstance;
-- (void).cxx_destruct;
-- (unsigned long long)_getBiometricMatchResultForTriggerTimeStamp:(unsigned long long)arg1;
-- (unsigned long long)_getNumberOfWavFilesAt:(id)arg1;
-- (BOOL)_isUtteranceHandheld;
-- (id)init;
 - (void)processAudioChunk:(id)arg1;
+- (void)processImplicitTrainingUtterance:(id)arg1 forVoiceProfileId:(id)arg2 withMetaInfo:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)processImplicitTrainingUtterance:(id)arg1 forVoiceProfileId:(id)arg2 withRecordDeviceInfo:(id)arg3 withRecordCtxt:(id)arg4 withVoiceTriggerCtxt:(id)arg5 withOtherCtxt:(id)arg6 withCompletion:(CDUnknownBlockType)arg7;
-- (void)processImplicitTrainingUtteranceWithVoiceTriggerEventInfo:(id)arg1;
 - (void)recordingStoppedForReason:(long long)arg1;
+- (void)setRecordingContext:(id)arg1;
+- (void)startRecordingImplicitTrainingUtteranceWithVoiceTriggerEventInfo:(id)arg1;
 
 @end
 

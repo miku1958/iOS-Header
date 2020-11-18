@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)capImageWithHeight:(double)arg1 leadingLineCap:(int)arg2 trailingLineCap:(int)arg3;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setUsageItems:(id)arg1 animated:(BOOL)arg2;
 - (void)updateConstraints;

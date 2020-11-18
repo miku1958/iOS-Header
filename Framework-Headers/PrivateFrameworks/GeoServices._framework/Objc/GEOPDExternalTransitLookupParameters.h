@@ -8,34 +8,52 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSMutableArray, NSString, PBUnknownFields;
+@class GEOLocation, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDExternalTransitLookupParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    double _transactionTimestamp;
     NSMutableArray *_externalTransitStationCodes;
     NSString *_sourceId;
     GEOLocation *_transactionLocation;
+    double _transactionTimestamp;
     struct {
-        unsigned int transactionTimestamp:1;
-    } _has;
+        unsigned int has_transactionTimestamp:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_externalTransitStationCodes:1;
+        unsigned int read_sourceId:1;
+        unsigned int read_transactionLocation:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_externalTransitStationCodes:1;
+        unsigned int wrote_sourceId:1;
+        unsigned int wrote_transactionLocation:1;
+        unsigned int wrote_transactionTimestamp:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *externalTransitStationCodes; // @synthesize externalTransitStationCodes=_externalTransitStationCodes;
+@property (strong, nonatomic) NSMutableArray *externalTransitStationCodes;
 @property (readonly, nonatomic) BOOL hasSourceId;
 @property (readonly, nonatomic) BOOL hasTransactionLocation;
 @property (nonatomic) BOOL hasTransactionTimestamp;
-@property (strong, nonatomic) NSString *sourceId; // @synthesize sourceId=_sourceId;
-@property (strong, nonatomic) GEOLocation *transactionLocation; // @synthesize transactionLocation=_transactionLocation;
-@property (nonatomic) double transactionTimestamp; // @synthesize transactionTimestamp=_transactionTimestamp;
+@property (strong, nonatomic) NSString *sourceId;
+@property (strong, nonatomic) GEOLocation *transactionLocation;
+@property (nonatomic) double transactionTimestamp;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)externalTransitStationCodeType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsExternalTransitStationCode:(id)arg1;
+- (void)_readExternalTransitStationCodes;
+- (void)_readSourceId;
+- (void)_readTransactionLocation;
 - (void)addExternalTransitStationCode:(id)arg1;
 - (void)clearExternalTransitStationCodes;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -45,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

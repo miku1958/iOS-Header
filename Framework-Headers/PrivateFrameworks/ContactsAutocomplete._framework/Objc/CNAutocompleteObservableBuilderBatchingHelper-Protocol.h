@@ -16,6 +16,7 @@
 - (void)addCoreRecentsObservable:(CNObservable *)arg1;
 - (void)addDirectoryServerObservable:(CNObservable *)arg1;
 - (void)addDuetObservable:(CNObservable *)arg1;
+- (void)addLocalExtensionObservable:(CNObservable *)arg1;
 - (void)addSuggestionsObservable:(CNObservable *)arg1;
 - (void)addSupplementalObservable:(CNObservable *)arg1;
 - (BOOL)batchAtIndexIncludesServer:(unsigned long long)arg1;

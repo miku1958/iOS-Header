@@ -79,7 +79,7 @@
 @property (nonatomic, getter=isUniversal) BOOL universal; // @synthesize universal=_universal;
 
 + (id)_basicAnimationWithKeyPath:(id)arg1;
-+ (id)_cachedImageForAttributedTitle:(id)arg1 titleStyle:(long long)arg2 size:(struct CGSize)arg3 fillStyle:(long long)arg4 universal:(BOOL)arg5 tintColor:(id)arg6;
++ (id)_cachedImageForAttributedTitle:(id)arg1 titleStyle:(long long)arg2 size:(struct CGSize)arg3 fillStyle:(long long)arg4 universal:(BOOL)arg5 tintColor:(id)arg6 interfaceStyle:(long long)arg7;
 + (id)_defaultTitleAttributes;
 + (id)_imageForAttributedTitle:(id)arg1 titleStyle:(long long)arg2 size:(struct CGSize)arg3 fillStyle:(long long)arg4 universal:(BOOL)arg5 tintColor:(id)arg6;
 + (id)_imageForProgressType:(long long)arg1;

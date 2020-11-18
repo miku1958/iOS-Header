@@ -7,6 +7,8 @@
 #import <UIKit/UILabel.h>
 
 @interface UILabel (HKAdditions)
++ (id)_hkecg_bodyLabel;
++ (id)_hkecg_heartRateLabel;
 + (id)hk_fontAdjustingLabel;
 @end
 

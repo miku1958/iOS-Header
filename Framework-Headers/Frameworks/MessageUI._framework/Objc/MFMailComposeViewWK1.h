@@ -14,6 +14,7 @@
     MFComposeTextContentView *_textView;
 }
 
+- (void).cxx_destruct;
 - (void)_adjustScrollerContentSize;
 - (void)_adjustScrollerForBottomView;
 - (void)_beginBlockingBodyScroll;

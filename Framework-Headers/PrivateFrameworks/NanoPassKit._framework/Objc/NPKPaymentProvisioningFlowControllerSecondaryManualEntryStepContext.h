@@ -6,9 +6,20 @@
 
 #import <NanoPassKit/NPKPaymentProvisioningFlowControllerManualEntryStepContext.h>
 
+@class PKPaymentCredential;
+
 @interface NPKPaymentProvisioningFlowControllerSecondaryManualEntryStepContext : NPKPaymentProvisioningFlowControllerManualEntryStepContext
 {
+    BOOL _allowsAddingDifferentCard;
+    PKPaymentCredential *_credential;
 }
+
+@property (nonatomic) BOOL allowsAddingDifferentCard; // @synthesize allowsAddingDifferentCard=_allowsAddingDifferentCard;
+@property (strong, nonatomic) PKPaymentCredential *credential; // @synthesize credential=_credential;
+
+- (void).cxx_destruct;
+- (id)description;
+- (id)initWithRequestContext:(id)arg1;
 
 @end
 

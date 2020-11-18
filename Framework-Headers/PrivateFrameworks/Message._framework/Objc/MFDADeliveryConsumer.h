@@ -23,8 +23,8 @@
 @property (strong, nonatomic) MFError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;
 
+- (void).cxx_destruct;
 - (void)actionFailed:(long long)arg1 forTask:(id)arg2 error:(id)arg3;
-- (void)dealloc;
 - (void)messageDidSendWithContext:(id)arg1 sentBytesCount:(unsigned long long)arg2 receivedBytesCount:(unsigned long long)arg3;
 
 @end

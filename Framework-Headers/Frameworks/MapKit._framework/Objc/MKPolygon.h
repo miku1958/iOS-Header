@@ -6,25 +6,34 @@
 
 #import <MapKit/MKMultiPoint.h>
 
+#import <MapKit/MKGeoJSONObject-Protocol.h>
 #import <MapKit/MKOverlay-Protocol.h>
+#import <MapKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface MKPolygon : MKMultiPoint <MKOverlay>
+@interface MKPolygon : MKMultiPoint <MKGeoJSONObject, NSSecureCoding, MKOverlay>
 {
     struct CLLocationCoordinate2D _centroid;
     NSArray *_interiorPolygons;
     BOOL _isDefinitelyConvex;
+    struct GEOOnce_s _determinedSimple;
+    BOOL _simple;
 }
 
 @property (nonatomic) BOOL _isDefinitelyConvex; // @synthesize _isDefinitelyConvex;
 @property (readonly, nonatomic) CDStruct_02837cd9 boundingMapRect;
 @property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly) NSArray *interiorPolygons; // @synthesize interiorPolygons=_interiorPolygons;
+@property (readonly, nonatomic, getter=_isSimple) BOOL simple; // @synthesize simple=_simple;
 @property (readonly, copy, nonatomic) NSString *subtitle;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title;
 
@@ -34,7 +43,15 @@
 + (id)polygonWithCoordinates:(const struct CLLocationCoordinate2D *)arg1 count:(unsigned long long)arg2 interiorPolygons:(id)arg3;
 + (id)polygonWithPoints:(const CDStruct_c3b9c2ee *)arg1 count:(unsigned long long)arg2;
 + (id)polygonWithPoints:(const CDStruct_c3b9c2ee *)arg1 count:(unsigned long long)arg2 interiorPolygons:(id)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_calculateBounds;
+- (void)_determineSimple;
+- (id)_initWithGeoJSONCoordinateArrays:(id)arg1 error:(id *)arg2;
+- (id)_initWithGeoJSONObject:(id)arg1 error:(id *)arg2;
+- (id)_initWithPointsNoCopy:(CDStruct_c3b9c2ee *)arg1 count:(unsigned long long)arg2 interiorPolygons:(id)arg3;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)intersectsMapRect:(CDStruct_02837cd9)arg1;
 
 @end

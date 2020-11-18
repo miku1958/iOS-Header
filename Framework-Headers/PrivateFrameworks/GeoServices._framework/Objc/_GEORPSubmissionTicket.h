@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     BOOL _started;
 }
 
+@property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)cancel;
+- (CDStruct_d1a7ebee)dataRequestKind;
 - (id)initWithProblem:(id)arg1 placeForProblemContext:(id)arg2 userCredentials:(id)arg3 pushToken:(id)arg4 allowContactBackAtEmailAddress:(id)arg5 traits:(id)arg6;
 - (id)initWithResubmissionData:(id)arg1 traits:(id)arg2;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;

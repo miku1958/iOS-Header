@@ -9,8 +9,7 @@
 #import <GeoServices/GEOETAUpdaterDelegate-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOETARoute, GEOETAUpdater, GEOLocation, GEOMapRegion, GEOMapServiceTraits, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesizerAnalyticsStore, GEORouteMatch, NSDate, NSMutableArray, NSString;
-@protocol GEOTTLTraceRecorder, OS_dispatch_queue;
+@class GEOCommonOptions, GEOComposedRoute, GEOComposedWaypoint, GEODirectionsRequest, GEODirectionsRequestFeedback, GEOETARoute, GEOETAUpdater, GEOLocation, GEOMapRegion, GEOMapServiceTraits, GEORouteAttributes, GEORouteHypothesis, GEORouteHypothesizerAnalyticsStore, GEORouteMatch, NSDate, NSMutableArray, NSString, geo_isolater;
 
 @interface GEORouteHypothesisMonitor : NSObject <GEOETAUpdaterDelegate, NSSecureCoding>
 {
@@ -31,7 +30,7 @@
     GEOMapServiceTraits *_traits;
     GEORouteHypothesizerAnalyticsStore *_analyticsStore;
     GEOComposedRoute *_route;
-    NSObject<OS_dispatch_queue> *_requestIsolationQueue;
+    geo_isolater *_requestIsolater;
     GEODirectionsRequest *_currentRequest;
     BOOL _needReroute;
     NSMutableArray *_rerouteEntries;
@@ -42,7 +41,6 @@
     double _travelScore;
     GEOMapRegion *_arrivalMapRegion;
     NSString *_traceName;
-    id<GEOTTLTraceRecorder> _traceRecorder;
 }
 
 @property (readonly, nonatomic) NSDate *arrivalDate; // @synthesize arrivalDate=_arrivalDate;
@@ -62,10 +60,8 @@
 + (id)monitorWithSource:(id)arg1 toDestination:(id)arg2 transportType:(int)arg3 arrivalDate:(id)arg4 traceName:(id)arg5 traits:(id)arg6;
 + (id)serverFormattedStringFormatter;
 + (void)setServerFormattedStringFormatter:(id)arg1;
-+ (void)setTTLTraceRecorderFactory:(id)arg1;
 + (void)setUserPreferencesProvider:(id)arg1;
 + (BOOL)supportsSecureCoding;
-+ (id)ttlTraceRecorderFactory;
 + (id)userPreferencesProvider;
 - (void).cxx_destruct;
 - (void)_commonInit;
@@ -77,7 +73,6 @@
 - (BOOL)_isNavigatingToDestination;
 - (void)_recalculateETAWithRouteMatch:(id)arg1;
 - (void)_recievedRouteResponse:(id)arg1 forLocation:(id)arg2 isReroute:(BOOL)arg3;
-- (void)_recordTraceForEvent:(long long)arg1 parameters:(id)arg2;
 - (void)_requestNewRouteFromLocation:(id)arg1 usualRouteData:(id)arg2;
 - (void)_routeRequestFailed:(id)arg1;
 - (void)_showDebugAlert;

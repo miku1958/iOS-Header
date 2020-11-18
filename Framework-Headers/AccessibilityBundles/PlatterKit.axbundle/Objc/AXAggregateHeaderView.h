@@ -20,8 +20,10 @@
 @property (readonly, nonatomic) id titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_accessibilitySupplementaryFooterViews;
 - (BOOL)_axIsHeaderViewActionable;
 - (BOOL)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

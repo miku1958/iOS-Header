@@ -14,7 +14,6 @@
 
 @property (readonly, nonatomic) NSString *phoneNumber; // @dynamic phoneNumber;
 
-+ (id)typeString;
 - (id)action;
 
 @end

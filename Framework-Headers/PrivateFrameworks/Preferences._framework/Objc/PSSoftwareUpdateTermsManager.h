@@ -46,6 +46,7 @@
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;
 - (void)remoteUIControllerDidDismiss:(id)arg1;
 - (void)showLoadingSpinnerViewController;
+- (id)versionFromLicenseText:(id)arg1;
 
 @end
 

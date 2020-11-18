@@ -29,7 +29,7 @@
 @property (readonly, strong, nonatomic) NSString *_prettyDescription;
 @property (readonly, strong, nonatomic) NSString *_typeDescription;
 @property (readonly, nonatomic) short albumListType;
-@property (readonly, strong, nonatomic) NSMutableOrderedSet *albums;
+@property (readonly, nonatomic) NSMutableOrderedSet *albums;
 @property (readonly, nonatomic) unsigned long long albumsCount;
 @property (readonly, copy, nonatomic) CDUnknownBlockType albumsSortingComparator;
 @property (strong, nonatomic) PLManagedAlbumList *backingAlbumList; // @synthesize backingAlbumList;
@@ -41,9 +41,9 @@
 @property (nonatomic) int filter; // @synthesize filter;
 @property (readonly, copy, nonatomic) NSIndexSet *filteredIndexes;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) PLIndexMapper *indexMapper;
+@property (readonly, nonatomic) PLIndexMapper *indexMapper;
 @property (readonly, nonatomic) BOOL isFolder;
-@property (readonly, strong, nonatomic) PLPhotoLibrary *photoLibrary;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
@@ -61,7 +61,6 @@
 - (Class)derivedChangeNotificationClass;
 - (void)enumerateDerivedAlbumLists:(CDUnknownBlockType)arg1;
 - (id)filteredAlbumsAtIndexes:(id)arg1;
-- (void)getFilteredAlbums:(id *)arg1 range:(struct _NSRange)arg2;
 - (BOOL)hasAtLeastOneAlbum;
 - (id)identifier;
 - (unsigned long long)indexInFilteredAlbumsOfObject:(id)arg1;

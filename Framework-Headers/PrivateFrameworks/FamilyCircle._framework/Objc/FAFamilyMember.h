@@ -16,7 +16,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long age;
-@property (readonly, copy, nonatomic) NSNumber *altDSID;
+@property (readonly, copy, nonatomic) NSString *altDSID;
 @property (readonly, copy, nonatomic) NSString *appleID;
 @property (readonly, copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, copy, nonatomic) NSNumber *dsid;

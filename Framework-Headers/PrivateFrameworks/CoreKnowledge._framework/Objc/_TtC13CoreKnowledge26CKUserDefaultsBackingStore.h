@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreKnowledge/CKAbstractBackingStore.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC13CoreKnowledge26CKUserDefaultsBackingStore : CKAbstractBackingStore
+@interface _TtC13CoreKnowledge26CKUserDefaultsBackingStore : _TtCs12_SwiftObject
 {
     MISSING_TYPE *kv;
 }
-
-- (void).cxx_destruct;
-- (id)init;
 
 @end
 

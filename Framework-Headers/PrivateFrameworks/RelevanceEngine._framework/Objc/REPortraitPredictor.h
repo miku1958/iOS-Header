@@ -6,20 +6,23 @@
 
 #import <RelevanceEngine/REPredictor.h>
 
-@class NSMutableDictionary, PPNamedEntityStore;
+#import <RelevanceEngine/REPortraitPredictorProperties-Protocol.h>
 
-@interface REPortraitPredictor : REPredictor
+@class NSDictionary, NSMutableDictionary, PPNamedEntityStore;
+
+@interface REPortraitPredictor : REPredictor <REPortraitPredictorProperties>
 {
     PPNamedEntityStore *_namedEntityStore;
     NSMutableDictionary *_namedEntityScores;
 }
 
+@property (readonly, nonatomic) NSDictionary *namedEntityScores;
+
 + (double)updateInterval;
 - (void).cxx_destruct;
+- (id)_init;
 - (void)_loadStoreIfNeeded;
-- (void)collectLoggableState:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)init;
 - (void)update;
 - (float)userAffinityToContent:(id)arg1;
 

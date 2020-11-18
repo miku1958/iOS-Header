@@ -15,6 +15,7 @@
     HUGridLayoutOptions *_layoutOptions;
     HUWallpaperView *_wallpaperView;
     HFWallpaperSlice *_blurredWallpaperSlice;
+    NSMutableDictionary *_indexPathsByItems;
     NSMutableDictionary *_overrideAttributesByIndexPath;
     NSHashTable *_childGridLayouts;
     HUGridFlowLayout *_parentGridLayout;
@@ -25,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableDictionary *indexPathsByItems; // @synthesize indexPathsByItems=_indexPathsByItems;
 @property (strong, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (readonly, nonatomic) NSMutableDictionary *overrideAttributesByIndexPath; // @synthesize overrideAttributesByIndexPath=_overrideAttributesByIndexPath;
 @property (weak, nonatomic) HUGridFlowLayout *parentGridLayout; // @synthesize parentGridLayout=_parentGridLayout;
@@ -35,9 +37,9 @@
 - (void).cxx_destruct;
 - (id)_modifiedLayoutAttributesForAttributes:(id)arg1;
 - (void)_updateContainingGridLayout;
-- (void)applyOverrideAttributes:(id)arg1 toItemAtIndexPath:(id)arg2;
-- (void)clearAllOverrideAttributes;
-- (void)clearOverrideAttributesForItemAtIndexPath:(id)arg1;
+- (void)applyOverrideAttributes:(id)arg1 toItem:(id)arg2 atIndexPath:(id)arg3;
+- (void)clearAllOverrideAttributesForItems:(id)arg1;
+- (void)clearOverrideAttributesForItem:(id)arg1 atIndexPath:(id)arg2;
 - (id)init;
 - (void)invalidateLayout;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;

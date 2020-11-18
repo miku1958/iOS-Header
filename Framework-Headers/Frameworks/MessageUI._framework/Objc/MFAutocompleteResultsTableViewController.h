@@ -29,14 +29,13 @@
 @property (strong, nonatomic) UIColor *cellBackgroundColor; // @synthesize cellBackgroundColor=_cellBackgroundColor;
 @property (readonly, nonatomic) NSArray *contactRecipients; // @synthesize contactRecipients=_searchResults;
 @property (nonatomic, getter=isDeferringTableViewUpdates) BOOL deferTableViewUpdates; // @synthesize deferTableViewUpdates=_deferTableViewUpdates;
-@property (nonatomic) id<MFAutocompleteResultsTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MFAutocompleteResultsTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSArray *directoryServerRecipients; // @synthesize directoryServerRecipients=_serverSearchResults;
 @property (nonatomic) BOOL shouldDimIrrelevantInformation; // @synthesize shouldDimIrrelevantInformation=_shouldDimIrrelevantInformation;
 @property (nonatomic) BOOL shouldHighlightCompleteMatches; // @synthesize shouldHighlightCompleteMatches=_shouldHighlightCompleteMatches;
 @property (readonly, nonatomic) NSArray *suggestedRecipients; // @synthesize suggestedRecipients=_suggestedSearchResults;
 
-+ (id)cellBackgroundColorForInlineDisplay;
-+ (id)cellBackgroundColorForPopoverDisplay;
+- (void).cxx_destruct;
 - (id)_combinedResults;
 - (id)_flattenedIndexPaths;
 - (id)_indexPathForRecipient:(id)arg1;

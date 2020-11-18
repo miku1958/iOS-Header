@@ -11,5 +11,6 @@
 + (id)displayReadingFromMecabraCandidate:(void *)arg1;
 + (id)mecabraCandidateWithCandidateRef:(const void *)arg1 autoconvertedCandidates:(id)arg2;
 - (id)initWithMecabraCandidate:(const void *)arg1;
+- (id)initWithMecabraCandidate:(const void *)arg1 cursorMovement:(long long)arg2;
 @end
 

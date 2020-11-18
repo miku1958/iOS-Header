@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HAPBTLECentralManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class CUBLEAdvertiser, HAPBTLECentralManager, HMDHAPAccessory, HMFTimer, HMFUnfairLock, NSArray, NSObject, NSString;
+@class CUBLEAdvertiser, HAPBTLECentralManager, HMDAccessoryQueues, HMDHAPAccessory, HMFTimer, HMFUnfairLock, NSArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDBTLEAdvertiser : HMFObject <HAPBTLECentralManagerDelegate, HMFTimerDelegate>
@@ -17,9 +17,9 @@
     NSObject<OS_dispatch_queue> *workQueue;
     CUBLEAdvertiser *leAdvertiser;
     HMFTimer *advertisementTimer;
-    HMFTimer *waitForReachableTimer;
     HMDHAPAccessory *accessory;
     HAPBTLECentralManager *centralManager;
+    HMDAccessoryQueues *powerOnQueues;
     HMFUnfairLock *_lock;
 }
 
@@ -32,25 +32,28 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CUBLEAdvertiser *leAdvertiser; // @synthesize leAdvertiser;
 @property (strong, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property (strong, nonatomic) HMDAccessoryQueues *powerOnQueues; // @synthesize powerOnQueues;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) HMFTimer *waitForReachableTimer; // @synthesize waitForReachableTimer;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue;
 
 + (id)sharedAdvertiser;
 - (void).cxx_destruct;
 - (void)_advertisementTimeout;
 - (void)_cancelOn:(id)arg1;
-- (void)_completePendingPowerOnRequest;
+- (void)_clearAdvertiser;
+- (void)_completePendingPowerOnRequest:(id)arg1;
+- (void)_flushQueue:(id)arg1;
+- (void)_flushQueues;
+- (void)_startAdvertising;
 - (void)_stopAdvertisement:(id)arg1;
-- (void)_wirelessReachabilityTimeout;
 - (void)cancelOn:(id)arg1;
 - (void)didUpdateBTLEState:(long long)arg1;
 - (id)init;
 - (BOOL)isAdvertisingForAccessory:(id)arg1;
-- (void)powerOn:(id)arg1 macAddress:(id)arg2;
+- (void)powerOn:(id)arg1;
 - (void)stopAdvertisement:(id)arg1;
 - (void)timerDidFire:(id)arg1;
 

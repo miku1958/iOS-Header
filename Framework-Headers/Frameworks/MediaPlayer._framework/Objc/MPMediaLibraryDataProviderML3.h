@@ -7,17 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <MediaPlayer/MPMediaLibraryDataProviderPrivate-Protocol.h>
+#import <MediaPlayer/MPUserIdentityConsuming-Protocol.h>
 
-@class ML3MusicLibrary, MPMediaEntityCache, NSArray, NSOperationQueue, NSSet, NSString;
+@class ICUserIdentity, ML3MusicLibrary, MPMediaEntityCache, MPMediaLibrary, NSArray, NSOperationQueue, NSSet, NSString;
 @protocol MPArtworkDataSource, OS_dispatch_queue, OS_dispatch_source;
 
-@interface MPMediaLibraryDataProviderML3 : NSObject <MPMediaLibraryDataProviderPrivate>
+@interface MPMediaLibraryDataProviderML3 : NSObject <MPMediaLibraryDataProviderPrivate, MPUserIdentityConsuming>
 {
     NSObject<OS_dispatch_queue> *_backgroundTaskQueue;
+    NSObject<OS_dispatch_queue> *_cloudUpdateQueue;
     unsigned long long _backgroundTask;
     unsigned long long _backgroundTaskCount;
     BOOL _hasScheduledEventPosting;
-    int _refreshState;
+    long long _refreshState;
     NSString *_uniqueIdentifier;
     NSOperationQueue *_setValuesWidthLimitedQueue;
     NSObject<OS_dispatch_queue> *_entitiesAddedOrRemovedNotificationQueue;
@@ -25,8 +27,11 @@
     ML3MusicLibrary *_library;
     MPMediaEntityCache *_entityCache;
     id<MPArtworkDataSource> _artworkDataSource;
+    ICUserIdentity *_userIdentity;
+    MPMediaLibrary *_mediaLibrary;
 }
 
+@property (readonly, copy, nonatomic) NSString *accountDSID;
 @property (readonly, nonatomic) id<MPArtworkDataSource> artworkDataSource; // @synthesize artworkDataSource=_artworkDataSource;
 @property (readonly, nonatomic) id<MPArtworkDataSource> completeMyCollectionArtworkDataSource;
 @property (readonly, nonatomic) NSString *databasePath;
@@ -37,6 +42,7 @@
 @property (readonly, nonatomic) BOOL isGeniusEnabled;
 @property (strong, nonatomic) ML3MusicLibrary *library; // @synthesize library=_library;
 @property (readonly, nonatomic) NSArray *localizedSectionIndexTitles;
+@property (weak, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long playbackHistoryPlaylistPersistentID;
 @property (readonly, nonatomic) NSArray *preferredAudioLanguages;
@@ -46,6 +52,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *syncValidity;
 @property (readonly, nonatomic) NSString *uniqueIdentifier;
+@property (copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 
 + (id)_unadjustedValueForItemDateWithDefaultValue:(id)arg1;
 + (id)_unadjustedValueForItemPropertyRatingWithDefaultValue:(id)arg1;
@@ -53,10 +60,12 @@
 + (id)_unadjustedValueForItemPropertyVolumeNormalizationWithDefaultValue:(id)arg1;
 + (id)_unadjustedValueForItemTimeWithDefaultValue:(id)arg1;
 + (id)_unadjustedValueForMPProperty:(id)arg1 withDefaultValue:(id)arg2;
++ (id)onDiskProviders;
 - (void).cxx_destruct;
 - (id)ML3SystemFilterPredicatesWithGroupingType:(long long)arg1 cloudTrackFilteringType:(long long)arg2 subscriptionFilteringOptions:(long long)arg3 additionalFilterPredicates:(id)arg4;
 - (void)_addGlobalPlaylistsToLibraryDatabase:(id)arg1 asLibraryOwned:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_adjustedItemDateOfEntity:(id)arg1 withDefaultValue:(id)arg2;
+- (id)_adjustedItemNonnullDateOfEntity:(id)arg1 withDefaultValue:(id)arg2;
 - (id)_adjustedItemPropertyAssetURLOfEntity:(id)arg1 withDefaultValue:(id)arg2;
 - (id)_adjustedItemPropertyChapterArtworkTimesOfEntity:(id)arg1 withDefaultValue:(id)arg2;
 - (id)_adjustedItemPropertyChaptersOfEntity:(id)arg1 withDefaultValue:(id)arg2;
@@ -78,11 +87,12 @@
 - (BOOL)_dataProviderSupportsEntityChangeTracking;
 - (void)_displayValuesDidChange:(id)arg1;
 - (void)_dynamicPropertiesDidChange:(id)arg1;
-- (void)_importStoreItemElements:(id)arg1 andAddTracksToCloudLibrary:(BOOL)arg2 usingCloudAdamID:(long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)_importStoreItemElements:(id)arg1 withReferralObject:(id)arg2 andAddTracksToCloudLibrary:(BOOL)arg3 usingCloudAdamID:(long long)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)_invisiblePropertiesDidChange:(id)arg1;
 - (void)_libraryCloudLibraryAvailabilityDidChange:(id)arg1;
 - (void)_libraryContentsDidChange:(id)arg1;
 - (void)_libraryEntitiesAddedOrRemoved:(id)arg1;
+- (void)_libraryPathDidChange:(id)arg1;
 - (void)_libraryUIDDidChange:(id)arg1;
 - (void)_loadProperties:(id)arg1 ofEntityWithIdentifier:(long long)arg2 ML3EntityClass:(Class)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_loadValueForAggregateFunction:(id)arg1 entityClass:(Class)arg2 property:(id)arg3 query:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
@@ -112,7 +122,7 @@
 - (BOOL)deleteDatabaseProperty:(id)arg1;
 - (BOOL)deleteItemsWithIdentifiers:(long long *)arg1 count:(unsigned long long)arg2;
 - (void)enumerateCollectionIdentifiersForQueryCriteria:(id)arg1 ordered:(BOOL)arg2 cancelBlock:(CDUnknownBlockType)arg3 usingBlock:(CDUnknownBlockType)arg4;
-- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(int)arg2 inUsersLibrary:(BOOL)arg3 itemBlock:(CDUnknownBlockType)arg4 collectionBlock:(CDUnknownBlockType)arg5;
+- (void)enumerateEntityChangesAfterSyncAnchor:(id)arg1 maximumRevisionType:(long long)arg2 inUsersLibrary:(BOOL)arg3 itemBlock:(CDUnknownBlockType)arg4 collectionBlock:(CDUnknownBlockType)arg5;
 - (void)enumerateItemIdentifiersForQueryCriteria:(id)arg1 ordered:(BOOL)arg2 cancelBlock:(CDUnknownBlockType)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (BOOL)hasGeniusMixes;
 - (BOOL)hasMediaOfType:(unsigned long long)arg1;

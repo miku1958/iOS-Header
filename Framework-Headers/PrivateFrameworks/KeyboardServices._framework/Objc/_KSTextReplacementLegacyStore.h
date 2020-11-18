@@ -23,6 +23,7 @@
     BOOL _shouldUpdateTheCache;
     BOOL _ubiquityStoreLoaded;
     BOOL _shouldDisableCaching;
+    NSString *_cacheFilePath;
     NSPersistentStoreCoordinator *_persistentStoreCoordinator;
     NSManagedObjectContext *_managedObjectContext;
     NSPersistentStore *_persistentStore;
@@ -32,11 +33,10 @@
     NSURL *_baseURL;
     NSDate *_persistentStoreDidLoadTime;
     NSDate *_ubiquityStoreLoadStartTime;
-    NSString *_cacheFilePath;
 }
 
 @property (strong, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
-@property (strong, nonatomic) NSString *cacheFilePath; // @synthesize cacheFilePath=_cacheFilePath;
+@property (copy, nonatomic) NSString *cacheFilePath; // @synthesize cacheFilePath=_cacheFilePath;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didScheduleCacheUpdate; // @synthesize didScheduleCacheUpdate=_didScheduleCacheUpdate;

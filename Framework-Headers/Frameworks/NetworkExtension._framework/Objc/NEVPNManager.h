@@ -37,7 +37,7 @@
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (id)init;
-- (id)initWithGrade:(long long)arg1 connection:(id)arg2;
+- (id)initWithGrade:(long long)arg1 connection:(id)arg2 tunnelType:(long long)arg3;
 - (BOOL)isProtocolTypeValid:(long long)arg1;
 - (void)loadFromPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeFromPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;

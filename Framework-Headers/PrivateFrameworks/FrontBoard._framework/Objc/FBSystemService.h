@@ -6,52 +6,65 @@
 
 #import <objc/NSObject.h>
 
-@class FBSSerialQueue, FBServiceFacilityServer;
-@protocol FBSystemServiceDelegate;
+#import <FrontBoard/BSServiceConnectionListenerDelegate-Protocol.h>
+#import <FrontBoard/FBSOpenApplicationServiceServerInterface-Protocol.h>
 
-@interface FBSystemService : NSObject
+@class BSServiceConnectionListener, FBSSerialQueue, FBServiceFacilityServer, NSString;
+@protocol FBSApplicationInfoProvider, FBSystemServiceDelegate;
+
+@interface FBSystemService : NSObject <BSServiceConnectionListenerDelegate, FBSOpenApplicationServiceServerInterface>
 {
     FBSSerialQueue *_queue;
+    BSServiceConnectionListener *_legacyOpenServiceListener;
     int _pendingExit;
+    id<FBSApplicationInfoProvider> _lock_defaultInfoProvider;
+    struct os_unfair_lock_s _defaultInfoProviderLock;
     id<FBSystemServiceDelegate> _delegate;
     FBServiceFacilityServer *_server;
 }
 
+@property (readonly, nonatomic) id<FBSApplicationInfoProvider> _applicationInfoProvider;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FBSystemServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, getter=isPendingExit) BOOL pendingExit;
 @property (readonly, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) FBServiceFacilityServer *server; // @synthesize server=_server;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_activateApplication:(id)arg1 requestID:(unsigned int)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 withResult:(CDUnknownBlockType)arg6;
+- (void)_activateApplication:(id)arg1 requestID:(id)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 withResult:(CDUnknownBlockType)arg6;
 - (BOOL)_isTrustedRequestToOpenApplication:(id)arg1 options:(id)arg2 source:(id)arg3 originalSource:(id)arg4;
 - (BOOL)_isWhitelistedLaunchSuspendedApp:(id)arg1;
 - (unsigned long long)_mapShutdownOptionsToOptions:(id)arg1;
 - (void)_performExitTasksForRelaunch:(BOOL)arg1;
-- (void)_reallyActivateApplication:(id)arg1 requestID:(unsigned int)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 isTrusted:(BOOL)arg6 sequenceNumber:(unsigned long long)arg7 cacheGUID:(id)arg8 ourSequenceNumber:(unsigned long long)arg9 ourCacheGUID:(id)arg10 withResult:(CDUnknownBlockType)arg11;
+- (void)_reallyActivateApplication:(id)arg1 requestID:(id)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 isTrusted:(BOOL)arg6 sequenceNumber:(unsigned long long)arg7 cacheGUID:(id)arg8 ourSequenceNumber:(unsigned long long)arg9 ourCacheGUID:(id)arg10 withResult:(CDUnknownBlockType)arg11;
 - (BOOL)_requireEntitlementToOpenURL:(id)arg1 options:(id)arg2;
+- (void)_setInfoProvider;
 - (BOOL)_shouldPendRequestForClientSequenceNumber:(unsigned long long)arg1 clientCacheGUID:(id)arg2 ourSequenceNumber:(unsigned long long)arg3 ourCacheGUID:(id)arg4;
-- (void)_shutdownWithFBSOptions:(id)arg1;
-- (void)_terminateProcess:(id)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)activateApplication:(id)arg1 requestID:(unsigned int)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 withResult:(CDUnknownBlockType)arg6;
-- (void)canActivateApplication:(id)arg1 source:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (void)dataReset:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_terminateProcesses:(id)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)activateApplication:(id)arg1 requestID:(id)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 withResult:(CDUnknownBlockType)arg6;
+- (void)canOpenApplication:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)exitAndRelaunch:(BOOL)arg1;
 - (void)exitAndRelaunch:(BOOL)arg1 withOptions:(unsigned long long)arg2;
 - (void)handleActions:(id)arg1 source:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 - (id)initWithQueue:(id)arg1;
 - (void)isPasscodeLockedOrBlockedWithResult:(CDUnknownBlockType)arg1;
+- (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (oneway void)openApplication:(id)arg1 withOptions:(id)arg2 originator:(id)arg3 requestID:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)prepareDisplaysForExit;
 - (void)prepareForExitAndRelaunch:(BOOL)arg1;
 - (void)setPendingExit:(BOOL)arg1;
 - (void)setSystemIdleSleepDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)shutdownAndReboot:(BOOL)arg1;
+- (void)shutdownUsingOptions:(id)arg1;
 - (void)shutdownWithOptions:(unsigned long long)arg1;
 - (void)shutdownWithOptions:(unsigned long long)arg1 forSource:(long long)arg2;
+- (void)shutdownWithOptions:(id)arg1 origin:(id)arg2;
 - (void)terminateApplication:(id)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 source:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)terminateApplicationGroup:(long long)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 source:(id)arg5;
 - (void)terminateApplicationGroup:(long long)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 source:(id)arg5 completion:(CDUnknownBlockType)arg6;
 
 @end

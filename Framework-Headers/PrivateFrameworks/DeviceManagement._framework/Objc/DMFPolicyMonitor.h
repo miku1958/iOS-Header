@@ -11,30 +11,25 @@
 
 @interface DMFPolicyMonitor : NSObject
 {
-    int _keyBagFirstUnlockNotificationToken;
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_registrationCallbackQueue;
     NSMutableDictionary *_notificationTokensByPolicyMonitorIdentifier;
-    NSMutableDictionary *_policyTypesByRegistrationIdentifier;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *notificationTokensByPolicyMonitorIdentifier; // @synthesize notificationTokensByPolicyMonitorIdentifier=_notificationTokensByPolicyMonitorIdentifier;
-@property (readonly, nonatomic) NSMutableDictionary *policyTypesByRegistrationIdentifier; // @synthesize policyTypesByRegistrationIdentifier=_policyTypesByRegistrationIdentifier;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *registrationCallbackQueue; // @synthesize registrationCallbackQueue=_registrationCallbackQueue;
 @property (readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 + (id)policyMonitor;
 + (id)remoteInterface;
 - (void).cxx_destruct;
-- (void)_notifyClientsOfApplicationsChange:(id)arg1;
-- (void)_notifyClientsOfCategoryChange:(id)arg1;
-- (void)_notifyClientsOfChange:(id)arg1;
 - (void)addRegistration:(id)arg1 forPolicyMonitorIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithXPCConnection:(id)arg1;
 - (void)invalidatePolicyMonitor:(id)arg1;
 - (void)requestPoliciesForTypes:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)requestPoliciesForTypes:(id)arg1 withError:(id *)arg2;
 
 @end
 

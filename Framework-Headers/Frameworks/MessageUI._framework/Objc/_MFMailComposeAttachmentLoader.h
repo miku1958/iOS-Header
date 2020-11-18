@@ -17,7 +17,7 @@
     CDUnknownBlockType _completionBlock;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMessage:(id)arg1 content:(id)arg2 isDraft:(BOOL)arg3 didLoadBestAlternative:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)loadAttachments;
 

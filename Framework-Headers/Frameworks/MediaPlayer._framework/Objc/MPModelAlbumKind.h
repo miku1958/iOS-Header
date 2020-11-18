@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) MPModelSongKind *songKind; // @synthesize songKind=_songKind;
 @property (readonly, nonatomic) unsigned long long variants; // @synthesize variants=_variants;
 
++ (id)identityKind;
 + (id)kindWithVariants:(unsigned long long)arg1 songKind:(id)arg2 options:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

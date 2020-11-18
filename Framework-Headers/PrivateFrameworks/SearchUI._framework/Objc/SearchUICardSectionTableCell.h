@@ -13,9 +13,10 @@
 }
 
 @property (readonly) SearchUICardSectionView *cardSectionView;
-@property (strong) SearchUICardSectionView *sizingContainer; // @dynamic sizingContainer;
+@property (strong, nonatomic) SearchUICardSectionView *sizingContainer; // @dynamic sizingContainer;
 
-- (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
+- (id)initWithRowModel:(id)arg1 feedbackDelegate:(id)arg2;
+- (void)setDelegate:(id)arg1;
 - (void)updateChevronVisible:(BOOL)arg1 leaveSpaceForChevron:(BOOL)arg2;
 - (void)updateWithRowModel:(id)arg1;
 

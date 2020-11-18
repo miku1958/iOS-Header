@@ -13,7 +13,7 @@
 + (id)supportedServiceTypes;
 - (id)_childValveServiceFilter;
 - (id)_subclass_updateWithOptions:(id)arg1;
-- (BOOL)containsActionableCharacteristics;
+- (BOOL)containsActions;
 - (id)createControlItems;
 - (id)currentStateActionBuildersForHome:(id)arg1;
 - (id)servicesToReadForCharacteristicType:(id)arg1;

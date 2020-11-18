@@ -6,28 +6,31 @@
 
 #import <UIKit/UIView.h>
 
-@class NSLayoutConstraint, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString, UIImageView, UILabel;
+@class NSLayoutConstraint, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSString, UIImage, UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface STDashedVerticalDivider : UIView
 {
+    BOOL _selected;
     NSString *_labelText;
     NSLayoutXAxisAnchor *_dashedLineCenterXAnchor;
-    NSLayoutYAxisAnchor *_labelLastBaselineAnchor;
+    NSLayoutYAxisAnchor *_labelTopAnchor;
     UIImageView *_dashedLine;
     UILabel *_label;
     NSLayoutConstraint *_labelLeftConstraint;
 }
 
 @property (strong, nonatomic) UIImageView *dashedLine; // @synthesize dashedLine=_dashedLine;
-@property (readonly, copy, nonatomic) NSLayoutXAxisAnchor *dashedLineCenterXAnchor; // @synthesize dashedLineCenterXAnchor=_dashedLineCenterXAnchor;
+@property (readonly) NSLayoutXAxisAnchor *dashedLineCenterXAnchor; // @synthesize dashedLineCenterXAnchor=_dashedLineCenterXAnchor;
+@property (readonly) UIImage *dashedLineImage;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
-@property (readonly, copy, nonatomic) NSLayoutYAxisAnchor *labelLastBaselineAnchor; // @synthesize labelLastBaselineAnchor=_labelLastBaselineAnchor;
 @property (strong, nonatomic) NSLayoutConstraint *labelLeftConstraint; // @synthesize labelLeftConstraint=_labelLeftConstraint;
 @property (copy, nonatomic) NSString *labelText; // @synthesize labelText=_labelText;
+@property (readonly) NSLayoutYAxisAnchor *labelTopAnchor; // @synthesize labelTopAnchor=_labelTopAnchor;
+@property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 
-+ (id)dashedLineImage;
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithTintColor:(id)arg1;
 
 @end
 

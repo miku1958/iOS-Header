@@ -66,6 +66,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long selectionType; // @synthesize selectionType=_selectionType;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (Class)archivedSelectionClass;
 + (id)selectionWithTableInfo:(id)arg1 cellID:(struct TSUCellCoord)arg2;

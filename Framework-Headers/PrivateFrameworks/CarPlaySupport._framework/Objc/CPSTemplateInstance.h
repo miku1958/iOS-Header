@@ -13,7 +13,7 @@
 #import <CarPlaySupport/NSXPCListenerDelegate-Protocol.h>
 #import <CarPlaySupport/UINavigationControllerDelegate-Protocol.h>
 
-@class CPSApplicationStateMonitor, CPSBannerSource, CPSMapTemplateViewController, CPSOverlayViewController, FBScene, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener;
+@class CPSApplicationStateMonitor, CPSBannerSourceProxy, CPSMapTemplateViewController, CPSOverlayViewController, FBScene, NSMutableDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener;
 @protocol CPSTemplateInstanceDelegate, CPTemplateServiceClientInterface;
 
 @interface CPSTemplateInstance : NSObject <NSXPCListenerDelegate, CPTemplateProviding, UINavigationControllerDelegate, CPSTemplateViewControllerDelegate, CPSSafeAreaDelegate, CPBannerDelegate>
@@ -24,7 +24,7 @@
     FBScene *_scene;
     NSXPCListener *_listener;
     NSMutableDictionary *_identifierToViewControllerDictionary;
-    CPSBannerSource *_bannerSource;
+    CPSBannerSourceProxy *_bannerSourceProxy;
     CPSMapTemplateViewController *_rootMapController;
     id<CPTemplateServiceClientInterface> _remoteObjectProxy;
     CPSApplicationStateMonitor *_applicationStateMonitor;
@@ -34,7 +34,7 @@
 
 @property (copy, nonatomic) NSUUID *actionSheetIdentifier; // @synthesize actionSheetIdentifier=_actionSheetIdentifier;
 @property (strong, nonatomic) CPSApplicationStateMonitor *applicationStateMonitor; // @synthesize applicationStateMonitor=_applicationStateMonitor;
-@property (strong, nonatomic) CPSBannerSource *bannerSource; // @synthesize bannerSource=_bannerSource;
+@property (strong, nonatomic) CPSBannerSourceProxy *bannerSourceProxy; // @synthesize bannerSourceProxy=_bannerSourceProxy;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<CPSTemplateInstanceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -62,6 +62,7 @@
 - (void)getTemplatesWithReply:(CDUnknownBlockType)arg1;
 - (void)getTopTemplateWithReply:(CDUnknownBlockType)arg1;
 - (id)initWithSceneIdentifier:(id)arg1 delegate:(id)arg2;
+- (id)initWithWindowScene:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)popTemplateAnimated:(id)arg1;
@@ -69,17 +70,13 @@
 - (void)popToTemplate:(id)arg1 animated:(id)arg2;
 - (void)presentActionSheetTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3;
 - (void)presentAlertTemplate:(id)arg1 withProxyDelegate:(id)arg2;
-- (void)presentVoiceTemplate:(id)arg1 animated:(id)arg2;
-- (void)pushGridTemplate:(id)arg1 animated:(id)arg2 presentationStyle:(unsigned long long)arg3;
-- (void)pushListTemplate:(id)arg1 animated:(id)arg2 presentationStyle:(unsigned long long)arg3;
-- (void)pushMapTemplate:(id)arg1 animated:(id)arg2 presentationStyle:(unsigned long long)arg3;
-- (void)pushSearchTemplate:(id)arg1 animated:(id)arg2 presentationStyle:(unsigned long long)arg3;
+- (void)presentVoiceTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)pushGridTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)pushListTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)pushMapTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)pushSearchTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)requestBannerProviderWithReply:(CDUnknownBlockType)arg1;
-- (void)requestGridTemplateProviderForInterface:(id)arg1 withProxyDelegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)requestListTemplateProviderForTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)requestMapTemplateProviderForTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)requestSearchTemplateProviderForTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)requestVoiceControlProviderForTemplate:(id)arg1 withProxyDelegate:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setHostPrefersDarkUserInterfaceStyle:(BOOL)arg1;
 - (void)templateViewControllerDidDismiss:(id)arg1;
 - (void)templateViewControllerDidPop:(id)arg1;
 - (void)updateInterestingInsets:(struct UIEdgeInsets)arg1;

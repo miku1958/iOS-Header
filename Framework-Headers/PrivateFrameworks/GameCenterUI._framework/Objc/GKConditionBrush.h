@@ -19,8 +19,8 @@
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (strong, nonatomic) GKBrush *yesBrush; // @synthesize yesBrush=_yesBrush;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)drawInRect:(struct CGRect)arg1 withContext:(struct CGContext *)arg2 input:(id)arg3;
 - (struct CGSize)sizeForInput:(id)arg1;
 

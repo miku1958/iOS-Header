@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class EKEventStore, NSArray, NSDate, NSMutableSet, NSTimer, PCPersistentTimer;
+@class EKEventStore, EKTimedEventStorePurger, NSArray, NSDate, NSMutableArray, NSTimer, PCPersistentTimer;
 @protocol OS_dispatch_queue;
 
 @interface _EKNotificationMonitor : NSObject
 {
-    EKEventStore *_eventStore;
     CDUnknownBlockType _eventStoreGetter;
     BOOL _running;
     PCPersistentTimer *_timer;
@@ -20,41 +19,45 @@
     BOOL _pendingChanges;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_timerQueue;
-    NSArray *_eventNotificationReferences;
-    NSArray *_reminderNotificationReferences;
+    double _lastChangedTimestamp;
+    BOOL _changedIDsValid;
+    NSMutableArray *_changedIDs;
+    int _ignoreSyncTimer;
     BOOL _initialCheck;
     BOOL _shouldInstallPersistentTimer;
     BOOL _useSyncIdleTimer;
-    BOOL _loadRecentlyRepliedNotifications;
     BOOL _registerForDarwinNotifications;
-    long long _notificationTypes;
-    NSMutableSet *_alertedNotificationsThatFailedToMarkAlerted;
-    BOOL _allowedToMarkAlerted;
+    BOOL _filteredByShowsNotificationsFlag;
+    BOOL _computeChangedNotificationSet;
+    BOOL _automaticallyFaultNotifications;
+    NSArray *_notificationReferences;
     NSObject<OS_dispatch_queue> *_notificationQueue;
+    EKTimedEventStorePurger *_eventStorePurger;
+    EKEventStore *_eventStore;
 }
 
-@property (nonatomic) BOOL allowedToMarkAlerted; // @synthesize allowedToMarkAlerted=_allowedToMarkAlerted;
-@property (readonly, nonatomic) unsigned long long eventNotificationCount;
-@property (readonly, nonatomic) NSArray *eventNotificationReferences;
+@property (readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
+@property (readonly, nonatomic) EKTimedEventStorePurger *eventStorePurger; // @synthesize eventStorePurger=_eventStorePurger;
 @property (readonly, nonatomic) unsigned long long notificationCount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *notificationQueue; // @synthesize notificationQueue=_notificationQueue;
-@property (readonly, nonatomic) NSArray *notificationReferences;
-@property (readonly, nonatomic) NSArray *reminderNotificationReferences;
+@property (readonly, nonatomic) NSArray *notificationReferences; // @synthesize notificationReferences=_notificationReferences;
 
 + (id)logHandle;
 + (id)requestedDarwinNotifications;
 - (void).cxx_destruct;
+- (void)_addRemovedOrAddedObjectIDsTo:(id)arg1 oldNotifications:(id)arg2 newNotifications:(id)arg3;
 - (void)_alertPrefChanged;
 - (void)_databaseChanged;
 - (id)_eventStore;
+- (void)_eventStoreChanged;
+- (void)_eventStoreChangedNotification:(id)arg1;
 - (id)_fetchEventNotificationReferencesFromEventStore:(id)arg1;
-- (void)_killSyncTimer;
+- (id)_initWithOptions:(long long)arg1 eventStore:(id)arg2 eventStoreGetter:(CDUnknownBlockType)arg3;
+- (void)_killSyncTimer:(id)arg1;
 - (void)_notificationCountChangedExternally;
-- (void)_notifyForUnalertedNotifications:(id)arg1;
-- (unsigned long long)_reminderNotificationCount;
 - (void)_resetSyncTimer;
 - (void)_resetTimer;
-- (void)_syncDidEnd;
+- (void)_syncDidEnd:(id)arg1;
 - (void)_syncDidStart;
 - (void)_syncTimerFired:(id)arg1;
 - (void)_timerFired;
@@ -64,13 +67,13 @@
 - (void)dealloc;
 - (void)handleDarwinNotification:(id)arg1;
 - (id)init;
-- (id)initByHandlingOnlyEvents:(BOOL)arg1 eventStore:(id)arg2;
-- (id)initByHandlingTypes:(long long)arg1 bulletinBoardWithEventStoreGetter:(CDUnknownBlockType)arg2;
+- (id)initWithOptions:(long long)arg1;
+- (id)initWithOptions:(long long)arg1 eventStore:(id)arg2;
+- (id)initWithOptions:(long long)arg1 eventStoreGetter:(CDUnknownBlockType)arg2;
 - (void)killTimer;
 - (void)start;
 - (void)stop;
-- (BOOL)wantsEvents;
-- (BOOL)wantsReminders;
+- (void)trackChangesInEventStore;
 
 @end
 

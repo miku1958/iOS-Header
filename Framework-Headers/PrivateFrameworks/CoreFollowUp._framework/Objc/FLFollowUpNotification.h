@@ -14,6 +14,7 @@
 {
     NSString *_title;
     NSString *_informativeText;
+    NSDate *_creationDate;
     FLFollowUpAction *_activateAction;
     FLFollowUpAction *_clearAction;
     NSString *_unlockActionLabel;
@@ -23,7 +24,6 @@
     unsigned long long _sqlID;
     NSDate *_previousNotificationActionDate;
     FLFollowUpAction *_dismissAction;
-    NSDate *_creationDate;
 }
 
 @property (strong, nonatomic) FLFollowUpAction *activateAction; // @synthesize activateAction=_activateAction;

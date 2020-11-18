@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKUIRemoteViewController.h>
+#import <GameCenterUI/GKExtensionRemoteViewController.h>
 
 #import <GameCenterUI/GKAuthenticateHostProtocol-Protocol.h>
 
 @class GKGame, GKHostedAuthenticateViewController, NSString;
 
-@interface GKAuthenticateHostViewController : GKUIRemoteViewController <GKAuthenticateHostProtocol>
+@interface GKAuthenticateHostViewController : GKExtensionRemoteViewController <GKAuthenticateHostProtocol>
 {
     GKHostedAuthenticateViewController *_delegateWeak;
 }
@@ -24,10 +24,12 @@
 
 + (id)authenticateExtension;
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
+- (void)applicationWillTerminate:(id)arg1;
 - (void)dealloc;
 - (void)extensionIsCanceling;
 - (void)extensionIsFinishing;
 - (void)messageFromExtension:(id)arg1;
+- (void)viewDidLoad;
 
 @end
 

@@ -36,11 +36,14 @@
 - (id)init;
 - (id)initAsPrivateContainer;
 - (id)initWithAssemblies:(id)arg1;
+- (id)initWithBundleAssemblies:(id)arg1;
+- (id)initWithBundleAssemblies:(id)arg1 assemblies:(id)arg2;
 - (id)initWithFrameworkAssemblies:(id)arg1;
 - (id)initWithFrameworkAssemblies:(id)arg1 assemblies:(id)arg2;
-- (id)register:(id)arg1 name:(id)arg2 createDefinitionBlock:(CDUnknownBlockType)arg3;
+- (id)register:(id)arg1 createDefinitionBlock:(CDUnknownBlockType)arg2;
 - (id)registerClass:(Class)arg1 factory:(CDUnknownBlockType)arg2;
 - (id)registerClass:(Class)arg1 name:(id)arg2 factory:(CDUnknownBlockType)arg3;
+- (id)registerKey:(id)arg1 factory:(CDUnknownBlockType)arg2;
 - (id)registerProtocol:(id)arg1 factory:(CDUnknownBlockType)arg2;
 - (id)registerProtocol:(id)arg1 name:(id)arg2 factory:(CDUnknownBlockType)arg3;
 - (id)unsafeRegisterForKey:(id)arg1 name:(id)arg2 factory:(CDUnknownBlockType)arg3;

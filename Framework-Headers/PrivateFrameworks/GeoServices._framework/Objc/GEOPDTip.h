@@ -8,35 +8,52 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDUser, NSMutableArray, NSString, PBUnknownFields;
+@class GEOPDUser, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDTip : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    double _tipTime;
     NSMutableArray *_snippets;
     NSString *_tipId;
+    double _tipTime;
     GEOPDUser *_tipster;
     struct {
-        unsigned int tipTime:1;
-    } _has;
+        unsigned int has_tipTime:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_snippets:1;
+        unsigned int read_tipId:1;
+        unsigned int read_tipster:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_snippets:1;
+        unsigned int wrote_tipId:1;
+        unsigned int wrote_tipTime:1;
+        unsigned int wrote_tipster:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasTipId;
 @property (nonatomic) BOOL hasTipTime;
 @property (readonly, nonatomic) BOOL hasTipster;
-@property (strong, nonatomic) NSMutableArray *snippets; // @synthesize snippets=_snippets;
-@property (strong, nonatomic) NSString *tipId; // @synthesize tipId=_tipId;
-@property (nonatomic) double tipTime; // @synthesize tipTime=_tipTime;
-@property (strong, nonatomic) GEOPDUser *tipster; // @synthesize tipster=_tipster;
+@property (strong, nonatomic) NSMutableArray *snippets;
+@property (strong, nonatomic) NSString *tipId;
+@property (nonatomic) double tipTime;
+@property (strong, nonatomic) GEOPDUser *tipster;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)snippetType;
 + (id)tipsForPlaceData:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsSnippet:(id)arg1;
+- (void)_readSnippets;
+- (void)_readTipId;
+- (void)_readTipster;
 - (void)addSnippet:(id)arg1;
 - (void)clearSnippets;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)snippetAtIndex:(unsigned long long)arg1;
 - (unsigned long long)snippetsCount;

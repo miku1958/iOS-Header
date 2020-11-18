@@ -6,31 +6,45 @@
 
 #import <objc/NSObject.h>
 
-#import <WatchListKit/WLKBulletinClient-Protocol.h>
+#import <WatchListKit/UNUserNotificationCenterDelegate-Protocol.h>
+#import <WatchListKit/UNUserNotificationCenterDelegatePrivate-Protocol.h>
 #import <WatchListKit/WLKNotificationsImpl-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class NSString;
 @protocol WLKNotificationCenterDelegate;
 
-@interface WLKNotificationsImpl_iOS : NSObject <WLKBulletinClient, WLKNotificationsImpl>
+@interface WLKNotificationsImpl_iOS : NSObject <UNUserNotificationCenterDelegate, UNUserNotificationCenterDelegatePrivate, WLKNotificationsImpl>
 {
+    BOOL _topicsAreInitialized;
     id<WLKNotificationCenterDelegate> delegate;
-    NSXPCConnection *_connection;
 }
 
-@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WLKNotificationCenterDelegate> delegate; // @synthesize delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL topicsAreInitialized; // @synthesize topicsAreInitialized=_topicsAreInitialized;
 
 + (id)_JSONDictForResponse:(id)arg1;
 - (void).cxx_destruct;
+- (unsigned long long)_authOptions;
+- (id)_displayNameForSubsectionID:(id)arg1;
+- (void)_fetchTopics:(CDUnknownBlockType)arg1;
+- (void)_initializeTopics;
+- (void)_networkReachabilityDidChangeNotification:(id)arg1;
+- (id)_notificationCenter;
+- (id)_topicIdentifierForCategory:(long long)arg1;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isCategoryEnabledByUser:(long long)arg1;
 - (void)post:(id)arg1 title:(id)arg2 body:(id)arg3 options:(id)arg4;
-- (void)receivedBulletinResponse:(id)arg1;
+- (void)setBadgeNumber:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)setBadgeString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)userNotificationCenter:(id)arg1 didChangeSettings:(id)arg2;
+- (void)userNotificationCenter:(id)arg1 didOpenApplicationForResponse:(id)arg2;
+- (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

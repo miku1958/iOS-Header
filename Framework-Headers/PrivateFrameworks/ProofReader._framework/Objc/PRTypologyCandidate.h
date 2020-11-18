@@ -8,11 +8,11 @@
 
 @class NSString, NSTextCheckingResult;
 
+__attribute__((visibility("hidden")))
 @interface PRTypologyCandidate : NSObject
 {
     NSString *_candidateString;
     struct _NSRange _selectedRange;
-    NSString *_stringToCheck;
     NSTextCheckingResult *_result;
     double _openTime;
     double _closeTime;
@@ -24,7 +24,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)initWithString:(id)arg1 range:(struct _NSRange)arg2 inString:(id)arg3;
+- (id)initWithString:(id)arg1 range:(struct _NSRange)arg2;
 
 @end
 

@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isExportSupportedForType:(id)arg1 exporterOptions:(id)arg2 documentRoot:(id)arg3;
 - (BOOL)isSageDocumentType:(id)arg1;
 - (BOOL)isTCMessageExceptionErrorDomain:(id)arg1;
+- (BOOL)isTextOnlyType:(id)arg1;
 - (id)needNewerVersionIndexXmlContentString;
 - (id)nestedDocumentFilename;
 - (id)newExportableDocumentTypesForFlag:(unsigned long long)arg1;

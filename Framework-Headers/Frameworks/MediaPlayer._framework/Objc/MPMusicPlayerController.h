@@ -27,11 +27,13 @@
     MPMediaItem *_pendingNowPlayingItem;
     NSObject<OS_dispatch_queue> *_pendingPrepareCalloutQueue;
     BOOL _legacyClient;
+    NSString *_clientIdentifier;
     MPMusicPlayerQueueDescriptor *_queueDescriptor;
     MPVolumeController *_volumeController;
     MPRequestResponseController *_requestController;
 }
 
+@property (readonly, copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (nonatomic) float currentPlaybackRate;
 @property (nonatomic) double currentPlaybackTime;
 @property (readonly, copy) NSString *debugDescription;
@@ -58,7 +60,7 @@
 + (id)supportedProperties;
 + (id)systemMusicPlayer;
 - (void).cxx_destruct;
-- (id)_init;
+- (id)_initWithClientIdentifier:(id)arg1;
 - (id)_mediaItemFromSong:(id)arg1;
 - (void)_preflightRequestIfNeeded;
 - (void)_queueDidChangeWithResponse:(id)arg1;
@@ -72,6 +74,7 @@
 - (void)didFinishLoadingRequestForController:(id)arg1;
 - (void)endGeneratingPlaybackNotifications;
 - (void)endSeeking;
+- (id)initWithClientIdentifier:(id)arg1;
 - (BOOL)isGeniusAvailable;
 - (BOOL)isGeniusAvailableForSeedItems:(id)arg1;
 - (BOOL)isNowPlayingItemFromGeniusMix;

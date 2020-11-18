@@ -23,6 +23,7 @@
 - (void)_handleNotification:(id)arg1 payload:(id)arg2;
 - (void)_signalInvalidationOfPropagatedContentsIfNecessary;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
+- (BOOL)canAddConnection:(id)arg1 failureReason:(id *)arg2;
 - (id)connectionMediaTypes;
 - (void)dealloc;
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;

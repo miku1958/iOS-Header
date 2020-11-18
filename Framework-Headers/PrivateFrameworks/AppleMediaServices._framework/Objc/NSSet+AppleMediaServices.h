@@ -7,6 +7,8 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (AppleMediaServices)
++ (id)ams_JSONClasses;
++ (id)ams_PLISTClasses;
 - (id)ams_filterUsingTest:(CDUnknownBlockType)arg1;
 - (id)ams_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)ams_mapWithTransform:(CDUnknownBlockType)arg1;

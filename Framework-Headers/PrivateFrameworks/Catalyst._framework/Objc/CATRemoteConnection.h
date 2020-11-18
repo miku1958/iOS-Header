@@ -28,6 +28,7 @@
     NSString *_name;
     double _connectionTimeoutInterval;
     CATRemoteConnectionSocketOptions *_socketOptions;
+    NSArray *_customTrustEvaluationPolicies;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
     unsigned long long _bufferSize;
@@ -35,6 +36,7 @@
 
 @property (nonatomic) unsigned long long bufferSize; // @synthesize bufferSize=_bufferSize;
 @property (nonatomic) double connectionTimeoutInterval; // @synthesize connectionTimeoutInterval=_connectionTimeoutInterval;
+@property (copy, nonatomic) NSArray *customTrustEvaluationPolicies; // @synthesize customTrustEvaluationPolicies=_customTrustEvaluationPolicies;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CATRemoteConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -51,6 +53,7 @@
 + (void)createConnectionPairWithConnection:(id *)arg1 andConnection:(id *)arg2 bufferSize:(unsigned long long)arg3;
 - (void).cxx_destruct;
 - (void)_stream:(id)arg1 handleEvent:(unsigned long long)arg2;
+- (int)applyCustomEvaluationPoliciesToTrust:(struct __SecTrust *)arg1;
 - (void)close;
 - (void)configureStreamSocketOptions;
 - (void)connectionDidInterruptWithError:(id)arg1;

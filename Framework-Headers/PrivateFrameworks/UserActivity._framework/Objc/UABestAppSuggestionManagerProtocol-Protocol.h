@@ -10,7 +10,7 @@
 
 @protocol UABestAppSuggestionManagerProtocol <NSObject>
 - (void)doConnected;
-- (void)doDetermineBestAppSuggestionWithCompletionHandler:(void (^)(NSUUID *, unsigned long long, NSString *, NSString *, NSDate *, double, NSString *, NSString *, NSString *))arg1;
+- (void)doDetermineBestAppSuggestionWithCompletionHandler:(void (^)(NSArray *, NSDate *, double))arg1;
 - (void)doDetermineBestAppSuggestions:(long long)arg1 completionHandler:(void (^)(NSArray *, NSError *))arg2;
 - (void)doLaunchFollowUp:(NSUUID *)arg1 interactionType:(unsigned long long)arg2 cancelled:(BOOL)arg3;
 - (void)doQueueFetchOfPayloadForBestAppSuggestion:(NSUUID *)arg1 completionHandler:(void (^)(NSError *))arg2;
@@ -18,5 +18,6 @@
 - (void)doRemoveBestAppSuggestion:(NSUUID *)arg1 options:(NSDictionary *)arg2;
 - (void)doStartBestAppSuggestion:(double)arg1;
 - (void)doUnregisterForBestAppChangeNotification;
+- (void)fetchAllNearbyAppSuggestions:(void (^)(BOOL))arg1;
 @end
 

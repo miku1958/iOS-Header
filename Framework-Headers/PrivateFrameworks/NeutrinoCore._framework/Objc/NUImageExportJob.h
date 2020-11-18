@@ -20,7 +20,6 @@
 - (id)imageExportRequest;
 - (id)initWithExportRequest:(id)arg1;
 - (id)initWithImageExportRequest:(id)arg1;
-- (id)newRenderPipelineStateForEvaluationMode:(long long)arg1;
 - (BOOL)render:(out id *)arg1;
 - (id)result;
 - (BOOL)wantsOutputGeometry;

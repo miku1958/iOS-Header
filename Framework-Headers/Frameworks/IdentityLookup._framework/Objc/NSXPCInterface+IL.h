@@ -7,6 +7,10 @@
 #import <Foundation/NSXPCInterface.h>
 
 @interface NSXPCInterface (IL)
++ (id)il_classificationUIExtensionHostInterface;
++ (id)il_classificationUIExtensionVendorInterface;
++ (id)il_messageFilterExtensionHostInterface;
++ (id)il_messageFilterExtensionVendorInterface;
 + (id)il_messageFilterHostInterface;
 @end
 

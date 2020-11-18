@@ -13,10 +13,10 @@ __attribute__((visibility("hidden")))
 {
     BOOL _hasCustomFormatsToPaste;
     TSTTableInfo *_tableInfo;
-    unordered_map_7f472e10 _cellUIDMap;
+    map_cd95b0b7 _cellUIDMap;
 }
 
-@property (readonly, nonatomic) unordered_map_7f472e10 *cellUIDMap; // @synthesize cellUIDMap=_cellUIDMap;
+@property (readonly, nonatomic) map_cd95b0b7 *cellUIDMap; // @synthesize cellUIDMap=_cellUIDMap;
 @property (nonatomic) BOOL hasCustomFormatsToPaste; // @synthesize hasCustomFormatsToPaste=_hasCustomFormatsToPaste;
 @property (readonly, weak, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
 

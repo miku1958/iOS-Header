@@ -14,6 +14,7 @@
     BOOL _supportsLockScreen;
     BOOL _supportsNotificationCenter;
     BOOL _supportsCarPlay;
+    BOOL _supportsSpoken;
     BOOL _modalAlertStyle;
     BOOL _alwaysShowPreviews;
     BOOL _providesAppNotificationSettings;
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL supportsLockScreen; // @synthesize supportsLockScreen=_supportsLockScreen;
 @property (nonatomic) BOOL supportsNotificationCenter; // @synthesize supportsNotificationCenter=_supportsNotificationCenter;
 @property (nonatomic) BOOL supportsSounds; // @synthesize supportsSounds=_supportsSounds;
+@property (nonatomic) BOOL supportsSpoken; // @synthesize supportsSpoken=_supportsSpoken;
 
 + (id)notificationSourceSettingsDescriptionFromDictionary:(id)arg1;
 - (id)description;

@@ -40,6 +40,7 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
 - (id)_pendingActionWithUUID:(id)arg1;
+- (void)_performAction:(id)arg1;
 - (void)_performDelegateCallback:(CDUnknownBlockType)arg1;
 - (void)_updatePendingTransactions;
 - (void)actionCompleted:(id)arg1;

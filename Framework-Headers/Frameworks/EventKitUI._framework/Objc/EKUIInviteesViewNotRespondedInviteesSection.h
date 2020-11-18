@@ -17,6 +17,7 @@
     CDUnknownBlockType _participantTapped;
     CDUnknownBlockType _participantRemoved;
     CDUnknownBlockType _addInviteesTapped;
+    CDUnknownBlockType _participantSetRole;
     NSMutableArray *_participants;
     EKEvent *_event;
     NSString *_cachedInviteeCellReuseIdentifier;
@@ -43,6 +44,7 @@
 @property (strong, nonatomic) NSMutableDictionary *participantAddressesToAvailabilityType; // @synthesize participantAddressesToAvailabilityType=_participantAddressesToAvailabilityType;
 @property (strong, nonatomic) NSMutableDictionary *participantAddressesToParticipantIndex; // @synthesize participantAddressesToParticipantIndex=_participantAddressesToParticipantIndex;
 @property (copy, nonatomic) CDUnknownBlockType participantRemoved; // @synthesize participantRemoved=_participantRemoved;
+@property (copy, nonatomic) CDUnknownBlockType participantSetRole; // @synthesize participantSetRole=_participantSetRole;
 @property (copy, nonatomic) CDUnknownBlockType participantTapped; // @synthesize participantTapped=_participantTapped;
 @property (strong, nonatomic) NSMutableArray *participants; // @synthesize participants=_participants;
 @property (nonatomic) unsigned long long reuseIdentifierVersion; // @synthesize reuseIdentifierVersion=_reuseIdentifierVersion;
@@ -65,6 +67,7 @@
 - (void)_setParticipantIndex:(id)arg1 forParticipantAddress:(id)arg2;
 - (void)_updateCell:(id)arg1 forParticipantAtIndex:(long long)arg2 animated:(BOOL)arg3;
 - (void)_updateCellForParticipantWithAddress:(id)arg1;
+- (id)actionsForRow:(id)arg1;
 - (BOOL)canEditRow:(id)arg1;
 - (BOOL)canSelectRow:(id)arg1;
 - (void)cancelOutstandingOperations;

@@ -21,7 +21,10 @@
 @property (strong, nonatomic) RTInvocationDispatcher *dispatcher; // @synthesize dispatcher=_dispatcher;
 @property (strong, nonatomic) RTPersistenceManager *persistenceManager; // @synthesize persistenceManager=_persistenceManager;
 
++ (id)availabilityToString:(unsigned long long)arg1;
++ (id)contextTypeToString:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)_fetchReadableObjectsOfType:(Class)arg1 fetchRequest:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_onPersistenceManagerNotification:(id)arg1;
 - (void)_performBlock:(CDUnknownBlockType)arg1 contextType:(unsigned long long)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (void)_purgePredating:(id)arg1 predicateMappings:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -29,9 +32,12 @@
 - (void)_setup;
 - (void)_setupContextsHandler:(CDUnknownBlockType)arg1;
 - (void)_shutdown;
-- (void)_storeTransformableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_updateTransformableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_storeWritableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_updateWritableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)enumerateType:(Class)arg1 fetchRequest:(id)arg2 enumerationBlock:(CDUnknownBlockType)arg3;
 - (void)executeDeleteRequests:(id)arg1 context:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchAvailabilityWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchReadableObjectsOfType:(Class)arg1 fetchRequest:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithPersistenceManager:(id)arg1;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
@@ -39,8 +45,8 @@
 - (void)onPersistenceManagerNotification:(id)arg1;
 - (void)purgePredating:(id)arg1 predicateMappings:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)removeAll:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)storeTransformableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)updateTransformableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)storeWritableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)updateWritableObjects:(id)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end
 

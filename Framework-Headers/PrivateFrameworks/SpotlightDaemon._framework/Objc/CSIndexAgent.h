@@ -18,8 +18,8 @@
 @property (strong, nonatomic) NSMutableDictionary *indexConnections; // @synthesize indexConnections=_indexConnections;
 @property (strong, nonatomic) id<MDIndexer> indexer; // @synthesize indexer=_indexer;
 
-+ (id)indexAgent;
-+ (void)initialize;
++ (id)indexAgent:(BOOL)arg1;
++ (id)indexDelegateAgent;
 - (void).cxx_destruct;
 - (BOOL)addClientConnectionIfAllowedForConfiguration:(id)arg1;
 - (BOOL)addClientConnectionIfAllowedForConnection:(id)arg1;

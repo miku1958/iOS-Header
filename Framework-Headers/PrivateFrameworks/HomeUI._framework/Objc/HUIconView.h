@@ -15,6 +15,7 @@
 {
     BOOL _disableContinuousAnimation;
     UIVisualEffect *_vibrancyEffect;
+    long long _contentMode;
     unsigned long long _iconSize;
     unsigned long long _displayContext;
     unsigned long long _displayStyle;
@@ -22,6 +23,7 @@
     HUIconContentView *_currentIconContentView;
 }
 
+@property (nonatomic) long long contentMode; // @synthesize contentMode=_contentMode;
 @property (strong, nonatomic) HUIconContentView *currentIconContentView; // @synthesize currentIconContentView=_currentIconContentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -41,6 +43,7 @@
 - (id)contentContainerView;
 - (void)iconContentView:(id)arg1 didChangeAspectRatio:(double)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 contentMode:(long long)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

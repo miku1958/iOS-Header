@@ -6,47 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKObserverQuery, NSMutableSet;
-@protocol MTAlarmStorage, NAScheduler;
+@class HKHealthStore, HKObserverQuery, MTObserverStore;
+@protocol NAScheduler;
 
 @interface MTSleepMetrics : NSObject
 {
     id<NAScheduler> _serializer;
-    id<MTAlarmStorage> _alarmStorage;
     HKHealthStore *_healthStore;
     HKObserverQuery *_healthObserver;
-    NSMutableSet *_sleepDataObservers;
+    MTObserverStore *_sleepDataObservers;
 }
 
-@property (strong, nonatomic) id<MTAlarmStorage> alarmStorage; // @synthesize alarmStorage=_alarmStorage;
 @property (strong, nonatomic) HKObserverQuery *healthObserver; // @synthesize healthObserver=_healthObserver;
-@property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
+@property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
-@property (strong, nonatomic) NSMutableSet *sleepDataObservers; // @synthesize sleepDataObservers=_sleepDataObservers;
+@property (strong, nonatomic) MTObserverStore *sleepDataObservers; // @synthesize sleepDataObservers=_sleepDataObservers;
 
 + (id)_sharedPublicMetrics;
-+ (id)inBedSampleWithInterval:(id)arg1 metadata:(id)arg2;
++ (id)_sourcePredicate:(unsigned long long)arg1;
++ (id)lastSleepDay;
++ (id)lastSleepDayRequestAuthorization:(BOOL)arg1;
++ (id)lastSleepDayRequestAuthorization:(BOOL)arg1 dataSource:(unsigned long long)arg2;
 + (void)registerSleepDataObserver:(id)arg1;
 + (id)sleepDataForPastWeek;
++ (id)sleepDataForPastWeekRequestAuthorization:(BOOL)arg1;
++ (id)sleepDataForPastWeekRequestAuthorization:(BOOL)arg1 dataSource:(unsigned long long)arg2;
 + (id)sleepDataForRange:(id)arg1;
-+ (id)sleepDataForRange:(id)arg1 intervalComponents:(id)arg2;
++ (id)sleepDaysForRange:(id)arg1;
++ (id)sleepDaysForRange:(id)arg1 requestAuthorization:(BOOL)arg2;
++ (id)sleepDaysForRange:(id)arg1 requestAuthorization:(BOOL)arg2 dataSource:(unsigned long long)arg3;
 + (void)unregisterSleepDataObserver:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)_queue_hasUnprocessedIntervals;
-- (void)_queue_setUnprocessedInBedIntervals:(id)arg1;
-- (id)_queue_unprocessedInBedIntervals;
-- (void)_saveTimeInBedSampleToHealthStore;
-- (void)deviceFirstUnlocked;
-- (id)initWithAlarmStorage:(id)arg1;
-- (void)logUserWentToBed:(id)arg1;
-- (void)logUserWokeUp:(id)arg1;
+- (void)_executeSleepQuery:(id)arg1 requestAuthorization:(BOOL)arg2 future:(id)arg3;
+- (id)init;
 - (void)registerSleepDataObserver:(id)arg1;
-- (void)saveTimeInBed;
-- (id)sleepDataForPastWeek;
+- (id)sleepDataForPastWeekRequestAuthorization:(BOOL)arg1 dataSource:(unsigned long long)arg2;
 - (id)sleepDataForRange:(id)arg1;
-- (id)sleepDataForRange:(id)arg1 intervalComponents:(id)arg2;
-- (void)sleepMonitor:(id)arg1 bedtimeReminderWasConfirmed:(id)arg2 sleepAlarm:(id)arg3;
-- (void)sleepMonitor:(id)arg1 wakeUpAlarmWasDismissed:(id)arg2 sleepAlarm:(id)arg3;
+- (id)sleepDataForRange:(id)arg1 intervalComponents:(id)arg2 requestAuthorization:(BOOL)arg3 dataSource:(unsigned long long)arg4;
+- (id)sleepDataForRange:(id)arg1 requestAuthorization:(BOOL)arg2 dataSource:(unsigned long long)arg3;
+- (id)sleepDaysForRange:(id)arg1 requestAuthorization:(BOOL)arg2 dataSource:(unsigned long long)arg3;
 - (void)unregisterSleepDataObserver:(id)arg1;
 
 @end

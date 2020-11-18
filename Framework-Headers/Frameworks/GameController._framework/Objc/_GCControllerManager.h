@@ -8,7 +8,7 @@
 
 #import <GameController/GameControllerClientProtocol-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, NSThread, NSTimer, NSXPCConnection;
+@class GCController, NSMutableArray, NSMutableDictionary, NSString, NSThread, NSTimer, NSXPCConnection;
 @protocol GameControllerDaemon, OS_dispatch_queue;
 
 @interface _GCControllerManager : NSObject <GameControllerClientProtocol>
@@ -30,7 +30,9 @@
     long long _currentMediaRemoteInputMode;
     struct __IOHIDEventSystemClient *_hidSystemClient;
     NSObject<OS_dispatch_queue> *_hidSystemClientQueue;
+    BOOL _shouldMonitorBackgroundEvents;
     BOOL _isAppInBackground;
+    GCController *_firstMicroGamepad;
     NSThread *_hidInputThread;
     struct __CFRunLoop *_hidInputThreadRunLoop;
     struct __CFRunLoopSource *_hidThreadRunLoopSource;
@@ -41,6 +43,7 @@
 @property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *controllersQueue; // @synthesize controllersQueue=_controllersQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (weak, nonatomic) GCController *firstMicroGamepad; // @synthesize firstMicroGamepad=_firstMicroGamepad;
 @property (readonly) unsigned long long hash;
 @property (readonly, strong, nonatomic) NSThread *hidInputThread; // @synthesize hidInputThread=_hidInputThread;
 @property (readonly, nonatomic) struct __CFRunLoop *hidInputThreadRunLoop; // @synthesize hidInputThreadRunLoop=_hidInputThreadRunLoop;
@@ -53,38 +56,49 @@
 @property (strong, nonatomic) id<GameControllerDaemon> remote; // @synthesize remote=_remote;
 @property (readonly) Class superclass;
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)CBApplicationDidBecomeActive;
 - (void)CBApplicationWillResignActive;
 - (void)addConnectedDevices;
 - (void)addController:(id)arg1;
+- (void)addControllerForAppStoreRemote:(id)arg1;
 - (void)addControllerWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (void)async_HIDBlock:(CDUnknownBlockType)arg1;
+- (BOOL)combineSiriRemoteHIDDevicesWithNewController:(id)arg1 existingController:(id)arg2;
 - (void)controller:(id)arg1 setValue:(float)arg2 forElement:(int)arg3;
 - (void)controllerWithUDID:(unsigned long long)arg1 setData:(id)arg2;
 - (void)controllerWithUDID:(unsigned long long)arg1 setValue0:(float)arg2 setValue1:(float)arg3 setValue2:(float)arg4 setValue3:(float)arg5 forElement:(int)arg6;
 - (void)controllerWithUDID:(unsigned long long)arg1 setValue:(float)arg2 forElement:(int)arg3;
 - (id)controllers;
 - (void)dealloc;
-- (id)firstMicroGamepad;
 - (id)init;
 - (BOOL)isExistingController:(id)arg1;
 - (BOOL)isPhysicalB239:(id)arg1;
 - (void)launchHIDInputThread;
+- (void)logController:(id)arg1;
 - (void)microControllerWithDigitizerX:(float)arg1 withY:(float)arg2 withTimeStamp:(unsigned long long)arg3 touchDown:(BOOL)arg4;
 - (void)microControllerWithUDID:(unsigned long long)arg1 setDigitizerX:(float)arg2 digitizerY:(float)arg3 withTimeStamp:(unsigned long long)arg4 touchDown:(BOOL)arg5;
 - (void)open;
+- (void)publishController:(id)arg1;
+- (void)removeCoalescedControllerComponent:(id)arg1;
 - (void)removeController:(id)arg1;
+- (void)removeController:(id)arg1 registryID:(id)arg2;
 - (void)removeControllerWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (void)replyConnectedHosts:(id)arg1;
 - (void)requestConnectedHostsWithHandler:(CDUnknownBlockType)arg1;
+- (BOOL)shouldStoreController:(id)arg1;
+- (void)starSessionDidEnd;
+- (void)starSessionWillBegin;
 - (void)startHIDDeviceMonitor;
 - (void)startHIDEventMonitor;
 - (void)startIdleWatchTimer;
 - (void)stopHIDDeviceMonitor;
 - (void)stopHIDEventMonitor;
+- (void)storeController:(id)arg1;
 - (void)threadHIDInputOffMain:(id)arg1;
 - (void)threadHIDInputOnMain:(id)arg1;
+- (void)unpublishController:(id)arg1;
 - (void)updateControllerWithEvent:(struct __IOHIDEvent *)arg1;
 - (void)updateIdleTimer:(id)arg1;
 

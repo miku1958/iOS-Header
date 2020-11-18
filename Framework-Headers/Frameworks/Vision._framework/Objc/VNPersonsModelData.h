@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 @interface VNPersonsModelData : NSObject <VNPersonsModelDataSource, VNPersonsModelFaceModelDataProvider>
 {
     unsigned long long _maximumIdentities;
+    unsigned long long _faceprintRequestRevision;
     NSMutableArray *_personUniqueIdentifiers;
     NSMutableDictionary *_personUniqueIdentifierToSerialNumberMapping;
     NSMutableDictionary *_serialNumberToFaceObservationsMapping;
@@ -27,8 +28,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VNPersonsModelDataDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long faceprintRequestRevision; // @synthesize faceprintRequestRevision=_faceprintRequestRevision;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSDate *lastModificationDate;
+@property (readonly, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -40,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeExistingFaceObservations:(id)arg1 fromPersonWithUniqueIdentifier:(id)arg2;
 - (void)_removePersonWithUniqueIdentifier:(id)arg1;
 - (id)_requestNewIdentitySerialNumberAndReturnError:(id *)arg1;
-- (id)_uniqueFaceObservationsWithRegistrationState:(BOOL)arg1 forFaceObservations:(id)arg2 ofPersonWithUniqueIdentifier:(id)arg3 error:(id *)arg4;
+- (id)_uniqueFaceObservationsWithRegistrationState:(BOOL)arg1 forFaceObservations:(id)arg2 withExpectedFaceprintRequestRevision:(unsigned long long)arg3 ofPersonWithUniqueIdentifier:(id)arg4 error:(id *)arg5;
 - (BOOL)addFaceObservations:(id)arg1 toPersonWithUniqueIdentifier:(id)arg2 error:(id *)arg3;
 - (id)faceModelFaceObservationAtIndex:(unsigned long long)arg1 forPersonAtIndex:(unsigned long long)arg2;
 - (unsigned long long)faceModelIndexOfPersonWithUniqueIdentifier:(id)arg1;

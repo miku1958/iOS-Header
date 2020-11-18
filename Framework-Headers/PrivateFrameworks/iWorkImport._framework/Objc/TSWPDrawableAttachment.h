@@ -43,8 +43,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDrawable;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHTMLWrap;
+- (BOOL)isHorizontallyCentered;
 - (BOOL)isPartitioned;
 - (BOOL)isSearchable;
+- (BOOL)isVerticallyCentered;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)loadMessage:(const struct DrawableAttachmentArchive *)arg1 fromUnarchiver:(id)arg2;
 - (BOOL)needsUpdateForStyleChangeToStorage:(id)arg1 charIndex:(unsigned long long)arg2;
@@ -62,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
+- (void)willBeRemovedFromDocumentRoot:(id)arg1 storage:(id)arg2;
 
 @end
 

@@ -18,11 +18,14 @@
 @property (readonly) Class superclass;
 
 - (id)deltaSince:(id)arg1 in:(id)arg2;
+- (id)dictionaryFromQueryComponents;
 - (void)encodeWithCRCoder:(id)arg1;
 - (id)initWithCRCoder:(id)arg1;
 - (void)mergeWith:(id)arg1;
 - (void)realizeLocalChangesIn:(id)arg1;
 - (void)setDocument:(id)arg1;
+- (id)stringByDecodingURLFormat;
+- (id)stringByEncodingURLFormat;
 - (id)tombstone;
 - (void)walkGraph:(CDUnknownBlockType)arg1;
 @end

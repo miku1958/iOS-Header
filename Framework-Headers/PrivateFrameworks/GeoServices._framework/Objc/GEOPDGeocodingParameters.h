@@ -8,30 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo, GEOStructuredAddress, NSString, PBUnknownFields;
+@class GEOPDViewportInfo, GEOStructuredAddress, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDGeocodingParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    unsigned int _maxResults;
     NSString *_queryString;
     GEOStructuredAddress *_structuredAddress;
     GEOPDViewportInfo *_viewportInfo;
-    CDStruct_4f8569d5 _has;
+    unsigned int _maxResults;
+    struct {
+        unsigned int has_maxResults:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_queryString:1;
+        unsigned int read_structuredAddress:1;
+        unsigned int read_viewportInfo:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_queryString:1;
+        unsigned int wrote_structuredAddress:1;
+        unsigned int wrote_viewportInfo:1;
+        unsigned int wrote_maxResults:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasMaxResults;
 @property (readonly, nonatomic) BOOL hasQueryString;
 @property (readonly, nonatomic) BOOL hasStructuredAddress;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
-@property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
-@property (strong, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
-@property (strong, nonatomic) GEOStructuredAddress *structuredAddress; // @synthesize structuredAddress=_structuredAddress;
+@property (nonatomic) unsigned int maxResults;
+@property (strong, nonatomic) NSString *queryString;
+@property (strong, nonatomic) GEOStructuredAddress *structuredAddress;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readQueryString;
+- (void)_readStructuredAddress;
+- (void)_readViewportInfo;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -42,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithForwardGeocodeAddressString:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

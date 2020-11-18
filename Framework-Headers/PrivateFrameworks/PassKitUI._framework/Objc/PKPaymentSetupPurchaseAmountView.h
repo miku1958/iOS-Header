@@ -14,6 +14,7 @@
 
 @interface PKPaymentSetupPurchaseAmountView : UIView <PKEnterCurrencyAmountViewDelegate, PKNumberPadSuggestionsViewDelegate>
 {
+    BOOL _transferButtonEnabled;
     BOOL _displayingBalanceErrorMessage;
     BOOL _showTransferButton;
     id<PKPaymentSetupPurchaseAmountViewDelegate> _delegate;
@@ -59,6 +60,7 @@
 @property (strong, nonatomic) PKNumberPadSuggestionsView *suggestionView; // @synthesize suggestionView=_suggestionView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIButton *transferBalanceButton; // @synthesize transferBalanceButton=_transferBalanceButton;
+@property (nonatomic, getter=isTransferButtonEnabled) BOOL transferButtonEnabled;
 
 - (void).cxx_destruct;
 - (void)_createConstraints;

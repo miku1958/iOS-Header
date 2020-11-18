@@ -8,28 +8,44 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSearchZeroKeywordCategorySuggestionResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_categorys;
     NSMutableArray *_zeroKeywordEntrys;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_categorys:1;
+        unsigned int read_zeroKeywordEntrys:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_categorys:1;
+        unsigned int wrote_zeroKeywordEntrys:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *categorys; // @synthesize categorys=_categorys;
+@property (strong, nonatomic) NSMutableArray *categorys;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *zeroKeywordEntrys; // @synthesize zeroKeywordEntrys=_zeroKeywordEntrys;
+@property (strong, nonatomic) NSMutableArray *zeroKeywordEntrys;
 
 + (Class)categoryType;
++ (BOOL)isValid:(id)arg1;
 + (Class)zeroKeywordEntryType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsCategory:(id)arg1;
+- (void)_addNoFlagsZeroKeywordEntry:(id)arg1;
+- (void)_readCategorys;
+- (void)_readZeroKeywordEntrys;
 - (void)addCategory:(id)arg1;
 - (void)addZeroKeywordEntry:(id)arg1;
 - (id)categoryAtIndex:(unsigned long long)arg1;
 - (unsigned long long)categorysCount;
 - (void)clearCategorys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearZeroKeywordEntrys;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -38,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 - (id)zeroKeywordEntryAtIndex:(unsigned long long)arg1;

@@ -14,6 +14,7 @@
 
 + (id)new;
 + (id)supportedVideoFormats;
++ (BOOL)supportsFrameSemantics:(unsigned long long)arg1;
 - (id)description;
 - (id)init;
 

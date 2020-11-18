@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
         BOOL respondsToTilingView;
         BOOL respondsToDesignatedTileController;
     } _delegateFlags;
+    BOOL _isHandlingDismissalInteraction;
     BOOL __needsUpdateGestureRecognizers;
     id<PUInteractiveDismissalControllerDelegate> _delegate;
     UIViewController *__viewController;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setViewHostingGestureRecognizers:) UIView *_viewHostingGestureRecognizers; // @synthesize _viewHostingGestureRecognizers=__viewHostingGestureRecognizers;
 @property (weak, nonatomic) id<PUInteractiveDismissalControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) PUTileController *designatedTileController;
+@property (readonly, nonatomic) BOOL isHandlingDismissalInteraction; // @synthesize isHandlingDismissalInteraction=_isHandlingDismissalInteraction;
 @property (readonly, nonatomic) PUTilingView *tilingView;
 @property (readonly, nonatomic) id<PUTilingViewControllerTransition> tilingViewControllerTransition;
 

@@ -10,15 +10,16 @@
 
 @interface CAContext : NSObject
 {
-    float _desiredDynamicRange;
 }
 
+@property (copy) NSString *annotation; // @dynamic annotation;
 @property BOOL colorMatchUntaggedContent; // @dynamic colorMatchUntaggedContent;
 @property struct CGColorSpace *colorSpace; // @dynamic colorSpace;
 @property unsigned int commitPriority; // @dynamic commitPriority;
 @property (copy) NSString *contentsFormat; // @dynamic contentsFormat;
 @property (readonly) unsigned int contextId; // @dynamic contextId;
-@property float desiredDynamicRange; // @synthesize desiredDynamicRange=_desiredDynamicRange;
+@property float desiredDynamicRange; // @dynamic desiredDynamicRange;
+@property (readonly) unsigned int displayId; // @dynamic displayId;
 @property (strong) CALayer *layer; // @dynamic layer;
 @property float level; // @dynamic level;
 @property (readonly) NSDictionary *options; // @dynamic options;

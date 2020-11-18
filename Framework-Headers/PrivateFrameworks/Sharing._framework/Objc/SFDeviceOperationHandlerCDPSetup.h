@@ -17,6 +17,7 @@
     CDPStateController *_cdpController;
     BOOL _invalidateCalled;
     CDUnknownBlockType _responseHandler;
+    BOOL _failIfCDPNotEnabled;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     SFSession *_sfSession;
 }
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (nonatomic) BOOL failIfCDPNotEnabled; // @synthesize failIfCDPNotEnabled=_failIfCDPNotEnabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SFSession *sfSession; // @synthesize sfSession=_sfSession;
 @property (readonly) Class superclass;
@@ -37,8 +39,6 @@
 - (void)cdpContext:(id)arg1 promptForInteractiveAuthenticationWithCompletion:(CDUnknownBlockType)arg2;
 - (void)cdpContext:(id)arg1 promptForLocalSecretWithHandler:(id)arg2;
 - (void)cdpContext:(id)arg1 promptForRemoteSecretWithDevices:(id)arg2 offeringRemoteApproval:(BOOL)arg3 validator:(id)arg4;
-- (void)cdpContext:(id)arg1 promptToInformUserOfAccountLockOutWithCompletion:(CDUnknownBlockType)arg2;
-- (void)cdpContext:(id)arg1 promptToInformUserOfAccountUnlockWithCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
 

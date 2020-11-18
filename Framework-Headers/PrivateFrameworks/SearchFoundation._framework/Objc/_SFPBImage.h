@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBImage-Protocol.h>
 
-@class NSData, NSString, _SFPBAppIconImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
+@class NSData, NSString, _SFPBAppIconImage, _SFPBCalendarImage, _SFPBContactImage, _SFPBGraphicalFloat, _SFPBLocalImage, _SFPBMediaArtworkImage, _SFPBMonogramImage, _SFPBPointSize, _SFPBURLImage;
 
 @interface _SFPBImage : PBCodable <_SFPBImage, NSSecureCoding>
 {
@@ -30,9 +30,11 @@
     _SFPBLocalImage *_localImage;
     _SFPBAppIconImage *_appIconImage;
     _SFPBMediaArtworkImage *_mediaArtworkImage;
+    _SFPBCalendarImage *_calendarImage;
 }
 
 @property (strong, nonatomic) _SFPBAppIconImage *appIconImage; // @synthesize appIconImage=_appIconImage;
+@property (strong, nonatomic) _SFPBCalendarImage *calendarImage; // @synthesize calendarImage=_calendarImage;
 @property (strong, nonatomic) _SFPBContactImage *contactImage; // @synthesize contactImage=_contactImage;
 @property (copy, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
 @property (strong, nonatomic) _SFPBGraphicalFloat *cornerRadius; // @synthesize cornerRadius=_cornerRadius;
@@ -60,7 +62,6 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;
 - (id)initWithJSON:(id)arg1;
-- (id)initWithSFImage:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

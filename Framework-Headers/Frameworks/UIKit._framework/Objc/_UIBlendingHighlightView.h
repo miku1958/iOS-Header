@@ -25,7 +25,11 @@
 
 + (id)_blendingPressedView;
 + (id)_blendingSeparatorView;
++ (BOOL)isBorderView;
 - (void).cxx_destruct;
+- (struct UIEdgeInsets)_effectiveNonDirectionalContentInsets;
+- (void)_enumerateAllBlendingViewsWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateBlendingBorderViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (id)initWithCompositingBurnColor:(id)arg1 plusDColor:(id)arg2;
 - (id)initWithTopLevelFilters:(id)arg1 compositingColors:(id)arg2 compositingFilterModes:(id)arg3;

@@ -15,11 +15,9 @@
     NSMutableArray *_diagnosticProviders;
 }
 
-+ (BOOL)collectArchiveSinceDate:(id)arg1 path:(id)arg2 error:(id *)arg3;
 + (id)crashReports;
 + (BOOL)createArchiveSourceURL:(id)arg1 destinationURL:(id)arg2 error:(id *)arg3;
 + (id)createDiagnosticsURLWithError:(id *)arg1;
-+ (void)rolloverSnapshots;
 + (id)stringFromDateWithFormat;
 - (void).cxx_destruct;
 - (id)_collectBackupWithError:(id *)arg1;
@@ -33,7 +31,6 @@
 - (id)init;
 - (id)initWithDefaultsManager:(id)arg1 platform:(id)arg2;
 - (void)logProcessDiagnosticInformation;
-- (void)takeSnapshotSinceDate:(id)arg1 description:(id)arg2 handler:(CDUnknownBlockType)arg3;
 
 @end
 

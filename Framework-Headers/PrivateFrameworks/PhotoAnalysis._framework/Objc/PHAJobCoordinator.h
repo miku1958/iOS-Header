@@ -12,17 +12,20 @@
 #import <PhotoAnalysis/PHAJobCoalescerDelegate-Protocol.h>
 #import <PhotoAnalysis/PHAJobConstraintsObserverDelegate-Protocol.h>
 #import <PhotoAnalysis/PHAWorkerJobDelegate-Protocol.h>
-#import <PhotoAnalysis/PLPhotoAnalysisJobServiceProtocol-Protocol.h>
 
 @class NSDictionary, NSMutableArray, NSMutableSet, NSString, PHAActivityGovernor, PHADirtyChangeCoalescer, PHAJobCoalescer, PHAJobConstraints, PHAJobConstraintsObserver, PHAJobGenerator, PHAManager, PHAWorkerHealthMonitor, PHAWorkerJob, PHAWorkerWarmer;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, PHAJobCoordinatorDelegate;
 
-@interface PHAJobCoordinator : NSObject <PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate, PHADirtyChangeCoalescerDelegate, PHAActivityGovernorDelegate, PHAGraphManagerClientMessagesReceiver, PLPhotoAnalysisJobServiceProtocol>
+@interface PHAJobCoordinator : NSObject <PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate, PHADirtyChangeCoalescerDelegate, PHAActivityGovernorDelegate, PHAGraphManagerClientMessagesReceiver>
 {
     _Atomic int _pendingAsyncTasksCount;
+    _Atomic unsigned long long _processingQOS;
     BOOL _graphUpdateNeeded;
+    NSDictionary *_cachedWorkersByType;
+    struct os_unfair_lock_s _workersByTypeLock;
     BOOL _newConstraintsPending;
     BOOL _shouldIgnoreConstraintChanges;
+    PHAJobConstraints *_currentConstraints;
     PHAWorkerWarmer *_warmer;
     PHAJobCoalescer *_jobCoalescer;
     PHADirtyChangeCoalescer *_dirtyCoalescer;
@@ -31,12 +34,10 @@
     id<PHAJobCoordinatorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_maintenanceTimer;
-    NSDictionary *_workersByType;
     PHAWorkerHealthMonitor *_healthMonitor;
     PHAActivityGovernor *_activityGovernor;
     PHAJobGenerator *_jobGenerator;
     PHAManager *_manager;
-    PHAJobConstraints *_currentConstraints;
     PHAWorkerJob *_currentForegroundJob;
     NSMutableArray *_waitingForegroundJobs;
     PHAWorkerJob *_currentBackgroundJob;
@@ -73,7 +74,6 @@
 @property (readonly, nonatomic) NSMutableArray *waitingForegroundJobs; // @synthesize waitingForegroundJobs=_waitingForegroundJobs;
 @property (readonly, nonatomic) PHAWorkerWarmer *warmer; // @synthesize warmer=_warmer;
 @property (strong, nonatomic) NSMutableSet *workerTypesServicedForUserFG; // @synthesize workerTypesServicedForUserFG=_workerTypesServicedForUserFG;
-@property (readonly, nonatomic) NSDictionary *workersByType; // @synthesize workersByType=_workersByType;
 
 - (void).cxx_destruct;
 - (void)_cleanupStuckAnalysisState;
@@ -95,6 +95,7 @@
 - (id)_nextAdditionalJobForWorkerTypeObj:(id)arg1 scenario:(unsigned long long)arg2;
 - (void)_scheduleNextJob;
 - (id)_workerForJob:(id)arg1;
+- (void)addWorker:(id)arg1;
 - (void)coalescer:(id)arg1 didCoalesce:(id)arg2;
 - (void)dealloc;
 - (void)didFinishJob:(id)arg1;
@@ -115,9 +116,10 @@
 - (id)photoLibrary;
 - (void)processJobs;
 - (void)scheduleAssetForOnDemandAnalysisWithUUID:(id)arg1 workerType:(short)arg2 workerFlags:(int)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
-- (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (id)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2;
 - (void)shutdown;
 - (id)statusAsDictionary;
+- (id)workersByType;
 
 @end
 

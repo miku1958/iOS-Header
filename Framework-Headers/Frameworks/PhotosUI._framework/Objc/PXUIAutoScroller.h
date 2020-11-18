@@ -10,10 +10,10 @@
 
 @interface PXUIAutoScroller : PXAutoScroller
 {
-    CADisplayLink *__displayLink;
+    CADisplayLink *_displayLink;
 }
 
-@property (strong, nonatomic, setter=_setDisplayLink:) CADisplayLink *_displayLink; // @synthesize _displayLink=__displayLink;
+@property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;
 
 - (void).cxx_destruct;
 - (void)_handleDisplayLink:(id)arg1;

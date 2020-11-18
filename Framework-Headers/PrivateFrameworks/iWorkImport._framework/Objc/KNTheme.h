@@ -7,6 +7,7 @@
 #import <iWorkImport/TSATheme.h>
 
 #import <iWorkImport/KNSlideCollection-Protocol.h>
+#import <iWorkImport/TSDModelContainer-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 #import <iWorkImport/TSKTransformableObject-Protocol.h>
 #import <iWorkImport/TSSPresetSource-Protocol.h>
@@ -15,7 +16,7 @@
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface KNTheme : TSATheme <KNSlideCollection, TSSPresetSource, TSKTransformableObject, TSKDocumentObject>
+@interface KNTheme : TSATheme <KNSlideCollection, TSSPresetSource, TSKTransformableObject, TSKDocumentObject, TSDModelContainer>
 {
     NSString *_UUID;
     NSArray *_masters;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSString *UUID;
 @property (strong, nonatomic) NSArray *classicThemeRecords; // @synthesize classicThemeRecords=_classicThemeRecords;
+@property (readonly, nonatomic) NSArray *containedModels;
 @property (readonly, nonatomic) double cornerRadius;
 @property (copy, nonatomic) NSDictionary *customEffectTimingCurves;
 @property (readonly, copy) NSString *debugDescription;
@@ -38,8 +40,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSWPParagraphStyle *defaultPresenterNotesParagraphStyle;
 @property (readonly, nonatomic) KNSlideNode *defaultSlideNodeForNewSelection;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSArray *displayedSlideNodes;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *masters;
+@property (readonly, nonatomic) NSArray *slideNodes;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGSize thumbnailSize;
 
@@ -48,6 +52,7 @@ __attribute__((visibility("hidden")))
 + (id)generateUUID;
 + (void)initialize;
 + (id)nativeThemeNameFromTheme:(id)arg1;
++ (BOOL)needsObjectUUID;
 + (id)presetKinds;
 + (void)registerPresetSourceClasses;
 + (id)themeNameForCustomOrUnknownTheme;
@@ -70,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (id)i_findDefaultMasterDuringArchiving;
 - (unsigned long long)indexOfSlideNode:(id)arg1;
 - (id)initWithContext:(id)arg1 documentStylesheet:(id)arg2;
+- (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertMasterSlideNode:(id)arg1 withThumbnails:(id)arg2 atIndex:(unsigned long long)arg3 dolcContext:(id)arg4;
 - (void)invalidateSlideNameCache;
 - (void)loadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
@@ -79,24 +85,26 @@ __attribute__((visibility("hidden")))
 - (id)mappedMasterForThemeChangeForMaster:(id)arg1;
 - (id)masterWithName:(id)arg1;
 - (id)modelPathComponentForChild:(id)arg1;
+- (void)moveModel:(id)arg1 toIndex:(unsigned long long)arg2;
 - (id)nameForMasterCopyWithName:(id)arg1;
 - (id)orderedSlideNodesInSelection:(id)arg1;
 - (void)p_cacheSlideNodes;
 - (id)p_findDefaultMasterWithoutLoadingSlides;
-- (id)p_findSecondMaster;
+- (id)p_findFallbackDefaultMaster;
 - (id)p_mappedMasterForMaster:(id)arg1 scoringHeuristic:(CDUnknownBlockType)arg2;
 - (int)p_matchScoreForMaster:(id)arg1 toMaster:(id)arg2;
 - (id)p_nameByIncrementingCounterAfterStringToAppend:(id)arg1 forOriginalName:(id)arg2 testForExistingName:(CDUnknownBlockType)arg3;
-- (void)p_selectSecondMasterAsDefault;
+- (void)p_selectFallbackMasterAsDefault;
 - (void)p_setDefaultMasterSlideNode:(id)arg1;
 - (void)removeAllClassicThemeRecords;
 - (void)removeAllMasters;
+- (void)removeContainedModel:(id)arg1;
 - (void)removeCustomTimingCurveWithName:(id)arg1;
 - (void)removeMasterSlideNode:(id)arg1;
 - (void)resolveDefaultMaster;
 - (void)saveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)selectSecondMasterAsDefault;
+- (void)selectFallbackMasterAsDefault;
 - (void)setCustomTimingCurve:(id)arg1 forName:(id)arg2;
 - (id)slideNamesMatchingPrefix:(id)arg1;
 - (id)slideNodeForFormulaReferenceName:(id)arg1 caseSensitive:(BOOL)arg2;

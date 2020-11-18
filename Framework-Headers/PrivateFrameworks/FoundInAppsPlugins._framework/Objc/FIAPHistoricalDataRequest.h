@@ -35,6 +35,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPersonHandle:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (id)initWithRequestId:(unsigned long long)arg1 pluginIdentifier:(id)arg2 personHandle:(id)arg3 startDate:(id)arg4 endDate:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToHistoricalDataRequest:(id)arg1;
 - (void)setPluginIdentifier:(id)arg1;

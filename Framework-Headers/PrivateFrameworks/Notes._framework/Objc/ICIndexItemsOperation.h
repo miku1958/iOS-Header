@@ -22,15 +22,13 @@
 @property (strong, nonatomic) CSSearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;
 
 - (void).cxx_destruct;
-- (void)deleteAllItems;
 - (void)deleteItems;
 - (void)indexItems;
 - (id)init;
 - (id)initWithSearchableIndex:(id)arg1 dataSources:(id)arg2;
 - (void)main;
+- (id)objectIDURIsToDeleteFromDataSource:(id)arg1;
 - (id)objectIDsToIndexFromDataSource:(id)arg1;
-- (id)searchableItemIdentifiersToDeleteFromDataSource:(id)arg1;
-- (BOOL)shouldDeleteAllItemsBeforeIndexing;
 
 @end
 

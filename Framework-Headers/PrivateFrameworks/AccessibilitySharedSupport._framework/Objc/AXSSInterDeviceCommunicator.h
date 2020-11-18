@@ -35,12 +35,12 @@
     AXSSInterDeviceSecurityHelper *_securityHelper;
 }
 
-@property (nonatomic) id<AXSSInterDeviceActionReceiver> actionReceiver; // @synthesize actionReceiver=_actionReceiver;
+@property (weak, nonatomic) id<AXSSInterDeviceActionReceiver> actionReceiver; // @synthesize actionReceiver=_actionReceiver;
 @property (strong, nonatomic) MCNearbyServiceAdvertiser *advertiser; // @synthesize advertiser=_advertiser;
 @property (strong, nonatomic) NSMutableArray *availableDevices; // @synthesize availableDevices=_availableDevices;
 @property (strong, nonatomic) MCNearbyServiceBrowser *browser; // @synthesize browser=_browser;
 @property (readonly, nonatomic) BOOL canSearch;
-@property (nonatomic) id<AXSSInterDeviceConnectionListener> connectionListener; // @synthesize connectionListener=_connectionListener;
+@property (weak, nonatomic) id<AXSSInterDeviceConnectionListener> connectionListener; // @synthesize connectionListener=_connectionListener;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableDictionary *deviceTypesByPeerID; // @synthesize deviceTypesByPeerID=_deviceTypesByPeerID;
@@ -53,7 +53,7 @@
 @property (readonly, nonatomic) MCPeerID *localPeerID; // @synthesize localPeerID=_localPeerID;
 @property (strong, nonatomic) MCPeerID *master; // @synthesize master=_master;
 @property (nonatomic) unsigned long long numberOfBurstPacketsRemaining; // @synthesize numberOfBurstPacketsRemaining=_numberOfBurstPacketsRemaining;
-@property (nonatomic) id<AXSSInterDeviceSearchObserver> searchObserver; // @synthesize searchObserver=_searchObserver;
+@property (weak, nonatomic) id<AXSSInterDeviceSearchObserver> searchObserver; // @synthesize searchObserver=_searchObserver;
 @property (readonly, nonatomic) NSArray *searchResults;
 @property (strong, nonatomic) AXSSInterDeviceSecurityHelper *securityHelper; // @synthesize securityHelper=_securityHelper;
 @property (readonly, nonatomic) IDSService *service; // @synthesize service=_service;

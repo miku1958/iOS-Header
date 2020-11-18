@@ -24,6 +24,7 @@
     BOOL _adjustYAxisForLabels;
     BOOL _animatingDuringAutoscale;
     BOOL _primarySeriesForAutoscale;
+    BOOL _wantsRoundingDuringYRangeExpansion;
     HKGraphSeriesDataSource *_dataSource;
     NSArray *_titleLegendEntries;
     NSArray *_detailLegendEntries;
@@ -60,6 +61,7 @@
 @property (nonatomic) BOOL primarySeriesForAutoscale; // @synthesize primarySeriesForAutoscale=_primarySeriesForAutoscale;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *titleLegendEntries; // @synthesize titleLegendEntries=_titleLegendEntries;
+@property (nonatomic) BOOL wantsRoundingDuringYRangeExpansion; // @synthesize wantsRoundingDuringYRangeExpansion=_wantsRoundingDuringYRangeExpansion;
 @property (copy, nonatomic) HKAxis *yAxis; // @synthesize yAxis=_yAxis;
 @property (weak, nonatomic) id<HKAxisAccessoryViewDelegate> yAxisAccessoryViewDelegate; // @synthesize yAxisAccessoryViewDelegate=_yAxisAccessoryViewDelegate;
 
@@ -76,9 +78,11 @@
 - (id)_expandYRange:(id)arg1 withXRange:(id)arg2 dateZoom:(long long)arg3 chartRect:(struct CGRect)arg4;
 - (void)_setDirtyWithNewData:(BOOL)arg1;
 - (id)_visibleXValueRangeWithAxis:(id)arg1 chartRect:(struct CGRect)arg2 contentOffset:(struct CGPoint)arg3 zoomScale:(double)arg4;
+- (struct CGRect)adjustRect:(struct CGRect)arg1 forFont:(id)arg2;
 - (void)autoscaleYAxisIfNecessaryWithValueRange:(id)arg1 yAxisRange:(id)arg2 xAxis:(id)arg3 dateZoom:(long long)arg4 chartRect:(struct CGRect)arg5;
 - (void)autoscaleYAxisWithValueRange:(id)arg1 yAxisRange:(id)arg2 xAxis:(id)arg3 dateZoom:(long long)arg4 chartRect:(struct CGRect)arg5 animated:(BOOL)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)autoscaleYAxisWithYAxisRange:(id)arg1 chartRect:(struct CGRect)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)backgroundRectFromStringRect:(struct CGRect)arg1 forFont:(id)arg2;
 - (BOOL)blockCoordinate:(id)arg1 greaterThan:(id)arg2;
 - (BOOL)blockCoordinate:(id)arg1 lessThan:(id)arg2;
 - (BOOL)blockCoordinateIsVisibleInsideOfChartRect:(struct CGRect)arg1 blockCoordinate:(id)arg2;
@@ -87,21 +91,29 @@
 - (BOOL)configureYAxisAccessoryViewForDateRange:(id)arg1 timeScope:(long long)arg2;
 - (BOOL)containsCoordinatesInChartRect:(struct CGRect)arg1 xAxis:(id)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 xAxisTransform:(struct CGAffineTransform)arg5;
 - (struct CGAffineTransform)coordinateTransformForChartRect:(struct CGRect)arg1 xAxisTransform:(struct CGAffineTransform)arg2;
+- (struct CGAffineTransform)coordinateTransformFromXAxisTransform:(struct CGAffineTransform)arg1 chartRect:(struct CGRect)arg2;
 - (id)coordinatesForBlock:(id)arg1 blockPath:(CDStruct_6ca94699)arg2 xAxis:(id)arg3 yAxis:(id)arg4;
 - (void)dataSourceDidUpdateCache:(id)arg1;
 - (void)dealloc;
 - (void)deselectPath;
 - (double)distanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (double)distanceFromTouchPoint:(struct CGPoint)arg1 inChartRect:(struct CGRect)arg2 xAxis:(id)arg3 zoomScale:(double)arg4 contentOffset:(struct CGPoint)arg5 xAxisTransform:(struct CGAffineTransform)arg6;
+- (void)drawOverlayInContext:(struct CGContext *)arg1 seriesOverlayData:(id)arg2;
+- (void)drawRoundedRect:(struct CGRect)arg1 color:(id)arg2 context:(struct CGContext *)arg3;
 - (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
-- (void)drawWithChartRect:(struct CGRect)arg1 xAxis:(id)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 zoomLevelConfiguration:(id)arg5 xAxisTransform:(struct CGAffineTransform)arg6 inContext:(struct CGContext *)arg7 secondaryRenderContext:(id)arg8;
+- (void)drawWithChartRect:(struct CGRect)arg1 seriesCoordinates:(id)arg2 zoomLevelConfiguration:(id)arg3 coordinateTransform:(struct CGAffineTransform)arg4 inContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
 - (void)enumerateCoordinatesInChartRect:(struct CGRect)arg1 xAxis:(id)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 xAxisTransform:(struct CGAffineTransform)arg5 roundToViewScale:(BOOL)arg6 exclusionOptions:(long long)arg7 block:(CDUnknownBlockType)arg8;
 - (id)findVisibleBlockCoordinatesForChartRect:(struct CGRect)arg1 xAxis:(id)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4 xAxisTransform:(struct CGAffineTransform)arg5;
 - (id)init;
 - (BOOL)isHighlighted;
+- (void)layoutOverlayInteractiveViews:(id)arg1 seriesOverlayData:(id)arg2 overlayRect:(struct CGRect)arg3;
 - (id)marginsForYAxis:(id)arg1 chartRect:(struct CGRect)arg2;
+- (id)overlayIdentifier;
+- (id)overlayInteractiveViewsWithDelegate:(id)arg1;
+- (long long)overlayType;
 - (void)selectPathsinPathRange:(CDStruct_f3788345)arg1 coordinateRange:(id)arg2;
 - (CDStruct_f3788345)selectedPathRange;
+- (id)seriesCoordinatesWithXAxis:(id)arg1 chartRect:(struct CGRect)arg2 zoomScale:(double)arg3 contentOffset:(struct CGPoint)arg4;
 - (BOOL)shouldInvertAxis;
 - (BOOL)supportsMultiTouchSelection;
 - (BOOL)untransformedChartPointsForTimeScope:(long long)arg1 range:(id)arg2 completion:(CDUnknownBlockType)arg3;

@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 
++ (id)phoneNumber:(id)arg1 label:(id)arg2 extractionInfo:(id)arg3 recordId:(id)arg4;
 + (id)phoneNumber:(id)arg1 label:(id)arg2 extractionType:(unsigned long long)arg3 recordId:(id)arg4;
 + (id)phoneNumber:(id)arg1 label:(id)arg2 extractionType:(unsigned long long)arg3 recordId:(id)arg4 origin:(id)arg5;
 + (BOOL)supportsSecureCoding;
@@ -23,7 +24,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithPhoneNumber:(id)arg1 label:(id)arg2 extractionType:(unsigned long long)arg3 recordId:(id)arg4;
+- (id)initWithPhoneNumber:(id)arg1 label:(id)arg2 extractionInfo:(id)arg3 recordId:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPhoneNumber:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <CloudPhotoLibrary/CPLEngineScopedTask.h>
 
-@class CPLEngineTransport, CPLFeatureVersionHistory, CPLLibraryInfo, CPLLibraryState, NSObject;
+@class CPLEngineTransport, CPLFeatureVersionHistory, CPLLibraryInfo, CPLLibraryState, NSObject, NSString;
 @protocol CPLEngineTransportDownloadBatchTask, CPLEngineTransportGetCurrentSyncAnchorTask, CPLEngineTransportGroup, CPLEngineTransportQueryTask, OS_dispatch_queue;
 
 @interface CPLPullFromTransportScopeTask : CPLEngineScopedTask
@@ -32,7 +32,13 @@
     CPLLibraryInfo *_initialLibraryInfo;
     CPLLibraryState *_initialLibraryState;
     id<CPLEngineTransportGetCurrentSyncAnchorTask> _fetchInitialSyncAnchorTask;
+    NSObject<OS_dispatch_queue> *_notifyQueue;
+    BOOL _didNotifySchedulerPullQueueIsFullOnce;
+    BOOL _needsToNotifySchedulerPullQueueIsFull;
+    NSString *_phaseDescription;
 }
+
+@property (copy) NSString *phaseDescription; // @synthesize phaseDescription=_phaseDescription;
 
 - (void).cxx_destruct;
 - (void)_cancelAllTasks;
@@ -48,12 +54,15 @@
 - (void)_launchNextQueryTask;
 - (void)_launchPullTasksAndDisableQueries:(BOOL)arg1;
 - (void)_launchQueryForClass:(Class)arg1 cursor:(id)arg2;
+- (void)_notifySchedulerPullQueueIsFull;
+- (void)_notifySchedulerPullQueueIsFullNowIfNecessary;
+- (void)_reallyNotifySchedulerPullQueueIsFull;
 - (void)_storeInitialSyncAnchorIfNecessaryInTransaction:(id)arg1;
 - (unsigned long long)_totalAssetCountForScope;
 - (void)_updateLastFeatureVersionAndRelaunchFetchChangesFromSyncAnchor:(struct NSData *)arg1;
 - (void)cancel;
 - (BOOL)checkScopeIsValidInTransaction:(id)arg1;
-- (id)initWithEngineLibrary:(id)arg1 clientCacheIdentifier:(id)arg2 scope:(id)arg3 transportScope:(id)arg4;
+- (id)initWithEngineLibrary:(id)arg1 session:(id)arg2 clientCacheIdentifier:(id)arg3 scope:(id)arg4 transportScope:(id)arg5;
 - (void)launch;
 - (void)taskDidFinishWithError:(id)arg1;
 - (id)taskIdentifier;

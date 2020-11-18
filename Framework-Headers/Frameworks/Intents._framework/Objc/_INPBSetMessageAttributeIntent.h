@@ -17,11 +17,13 @@
     struct {
         unsigned int attribute:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _attribute;
     NSArray *_identifiers;
     _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int attribute; // @synthesize attribute=_attribute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,6 +35,7 @@
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsAttribute:(id)arg1;
 - (void)addIdentifier:(id)arg1;
@@ -40,7 +43,9 @@
 - (void)clearIdentifiers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
 - (id)identifierAtIndex:(unsigned long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

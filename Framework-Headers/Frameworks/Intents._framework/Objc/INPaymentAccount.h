@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INJSONSerializable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INBalanceAmount, INSpeakableString, NSString;
 
-@interface INPaymentAccount : NSObject <NSCopying, NSSecureCoding>
+@interface INPaymentAccount : NSObject <INJSONSerializable, NSCopying, NSSecureCoding>
 {
     INSpeakableString *_nickname;
     NSString *_accountNumber;
@@ -24,19 +25,23 @@
 @property (readonly, copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
 @property (readonly, nonatomic) long long accountType; // @synthesize accountType=_accountType;
 @property (readonly, copy, nonatomic) INBalanceAmount *balance; // @synthesize balance=_balance;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) INSpeakableString *nickname; // @synthesize nickname=_nickname;
 @property (readonly, copy, nonatomic) INSpeakableString *organizationName; // @synthesize organizationName=_organizationName;
 @property (readonly, copy, nonatomic) INBalanceAmount *secondaryBalance; // @synthesize secondaryBalance=_secondaryBalance;
+@property (readonly) Class superclass;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNickname:(id)arg1 number:(id)arg2 accountType:(long long)arg3 organizationName:(id)arg4;
 - (id)initWithNickname:(id)arg1 number:(id)arg2 accountType:(long long)arg3 organizationName:(id)arg4 balance:(id)arg5 secondaryBalance:(id)arg6;

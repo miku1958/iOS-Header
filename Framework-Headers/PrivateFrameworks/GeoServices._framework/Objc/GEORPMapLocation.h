@@ -8,29 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOPDViewportInfo, NSData;
+@class GEOLatLng, GEOPDViewportInfo, NSData, NSString, PBDataReader;
 
 @interface GEORPMapLocation : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOLatLng *_coordinate;
     NSData *_image;
+    NSString *_mapScreenshotId;
     GEOPDViewportInfo *_viewportInfo;
     float _zoomLevel;
     struct {
-        unsigned int zoomLevel:1;
-    } _has;
+        unsigned int has_zoomLevel:1;
+        unsigned int read_coordinate:1;
+        unsigned int read_image:1;
+        unsigned int read_mapScreenshotId:1;
+        unsigned int read_viewportInfo:1;
+        unsigned int wrote_coordinate:1;
+        unsigned int wrote_image:1;
+        unsigned int wrote_mapScreenshotId:1;
+        unsigned int wrote_viewportInfo:1;
+        unsigned int wrote_zoomLevel:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOLatLng *coordinate; // @synthesize coordinate=_coordinate;
+@property (strong, nonatomic) GEOLatLng *coordinate;
 @property (readonly, nonatomic) BOOL hasCoordinate;
 @property (readonly, nonatomic) BOOL hasImage;
+@property (readonly, nonatomic) BOOL hasMapScreenshotId;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
 @property (nonatomic) BOOL hasZoomLevel;
-@property (strong, nonatomic) NSData *image; // @synthesize image=_image;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
-@property (nonatomic) float zoomLevel; // @synthesize zoomLevel=_zoomLevel;
+@property (strong, nonatomic) NSData *image;
+@property (strong, nonatomic) NSString *mapScreenshotId;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
+@property (nonatomic) float zoomLevel;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readCoordinate;
+- (void)_readImage;
+- (void)_readMapScreenshotId;
+- (void)_readViewportInfo;
 - (void)_setMapMode:(int)arg1 region:(id)arg2;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -39,6 +58,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -12,6 +12,7 @@
 
 @property (copy, nonatomic) NSString *customLabel;
 @property (copy, nonatomic) NSDate *date;
+@property (nonatomic) BOOL downloading;
 @property (nonatomic) double duration;
 @property (nonatomic) BOOL editing;
 @property (copy, nonatomic) NSDate *evictionDate;
@@ -21,6 +22,7 @@
 @property (copy, nonatomic) NSString *path;
 @property (nonatomic) BOOL pendingRestore;
 @property (nonatomic) BOOL playable;
+@property (nonatomic) BOOL recordedOnWatch;
 @property (nonatomic) BOOL synced;
 @property (copy, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *uniqueID;

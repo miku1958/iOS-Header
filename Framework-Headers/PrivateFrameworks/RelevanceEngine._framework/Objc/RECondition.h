@@ -7,18 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <RelevanceEngine/NSCopying-Protocol.h>
-#import <RelevanceEngine/REIndentedDescription-Protocol.h>
+#import <RelevanceEngine/REAutomaticExportedInterface-Protocol.h>
 
-@class NSString;
-
-@interface RECondition : NSObject <REIndentedDescription, NSCopying>
+@interface RECondition : NSObject <REAutomaticExportedInterface, NSCopying>
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (id)andConditions:(id)arg1;
 + (id)conditionForFeature:(id)arg1 hasBoolValue:(BOOL)arg2;
@@ -27,20 +20,24 @@
 + (id)conditionForFeature:(id)arg1 relation:(long long)arg2 feature:(id)arg3;
 + (id)conditionForFeature:(id)arg1 relation:(long long)arg2 floatValue:(float)arg3;
 + (id)conditionForFeature:(id)arg1 relation:(long long)arg2 integerValue:(long long)arg3;
++ (id)conditionForProbabilityForInteraction:(id)arg1 relation:(long long)arg2 feature:(id)arg3;
++ (id)conditionForProbabilityForInteraction:(id)arg1 relation:(long long)arg2 floatValue:(float)arg3;
++ (id)conditionForProbabilityWithRelation:(long long)arg1 floatValue:(float)arg2;
 + (id)conditionHasValueForFeature:(id)arg1;
 + (id)falseCondition;
 + (id)notCondition:(id)arg1;
 + (id)orConditions:(id)arg1;
 + (id)trueCondition;
-- (BOOL)_acceptsFeatureMap:(id)arg1;
+- (BOOL)_acceptsFeatureMap:(id)arg1 predictionSet:(id)arg2 explanation:(id *)arg3;
 - (BOOL)_acceptsLeftFeatureMap:(id)arg1 rightFeatureMap:(id)arg2;
 - (id)_dependentFeatures;
 - (id)_inflectionFeatureValuePairs;
+- (BOOL)_needsProbability;
 - (id)_notCondition;
 - (BOOL)_requiresTwoFeatures;
 - (BOOL)_validForRanking;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionWithIndent:(unsigned long long)arg1;
+- (id)description;
 
 @end
 

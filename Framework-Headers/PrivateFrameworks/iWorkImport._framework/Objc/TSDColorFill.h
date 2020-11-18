@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (BOOL)drawsInOneStep;
-- (int)fillType;
+- (long long)fillType;
 - (id)grayscaleColor;
 - (unsigned long long)hash;
 - (id)initWithArchive:(const struct FillArchive *)arg1 unarchiver:(id)arg2;

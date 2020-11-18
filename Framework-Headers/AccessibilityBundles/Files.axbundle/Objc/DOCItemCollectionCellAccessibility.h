@@ -13,12 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityFileProviderController;
+- (id)_accessibilityItemCollectionViewController;
 - (BOOL)_accessibilityPerformDocumentAction:(id)arg1;
 - (id)_axAttrTitle;
 - (id)accessibilityCustomActions;
 - (id)accessibilityIdentifier;
 - (BOOL)accessibilityScrollToVisible;
+- (unsigned long long)accessibilityTraits;
 
 @end
 

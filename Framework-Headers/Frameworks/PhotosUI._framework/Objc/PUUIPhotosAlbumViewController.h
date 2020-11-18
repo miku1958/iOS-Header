@@ -6,29 +6,35 @@
 
 #import <PhotosUI/PUPhotosAlbumViewController.h>
 
+#import <PhotosUI/PUPhotoPickerFileSizeToolbarProviderDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoPickerSelectionHandler-Protocol.h>
 #import <PhotosUI/PUPhotoPickerServicesConsumer-Protocol.h>
+#import <PhotosUI/PUPhotosGridViewSupplementalToolbarDataSource-Protocol.h>
 
-@class NSArray, NSString, PUUIImagePickerControllerHelper, UIBarButtonItem;
+@class NSArray, NSString, PUPhotoPickerFileSizeToolbarProvider, PUPhotoPickerResizeTaskDescriptor, PUSessionInfo, PUUIImagePickerControllerHelper, UIBarButtonItem;
 @protocol PUPhotoPicker;
 
 __attribute__((visibility("hidden")))
-@interface PUUIPhotosAlbumViewController : PUPhotosAlbumViewController <PUPhotoPickerServicesConsumer, PUPhotoPickerSelectionHandler>
+@interface PUUIPhotosAlbumViewController : PUPhotosAlbumViewController <PUPhotoPickerFileSizeToolbarProviderDelegate, PUPhotosGridViewSupplementalToolbarDataSource, PUPhotoPickerServicesConsumer, PUPhotoPickerSelectionHandler>
 {
     UIBarButtonItem *_imagePickerCancelButton;
-    UIBarButtonItem *_imagePickerMultipleSelectionDoneButton;
+    UIBarButtonItem *_imagePickerSelectionDoneButton;
     PUUIImagePickerControllerHelper *__imagePickerControllerHelper;
+    PUPhotoPickerFileSizeToolbarProvider *_fileSizePickerToolbarProvider;
     BOOL _didDisappear;
     int __albumFilter;
     id<PUPhotoPicker> _photoPicker;
     NSArray *__imagePickerMediaTypes;
     double _lastKnownWidth;
+    PUPhotoPickerResizeTaskDescriptor *_resizeTaskDescriptor;
     struct UIEdgeInsets _lastKnownSafeAreaInsets;
 }
 
 @property (nonatomic, setter=_setAlbumFilter:) int _albumFilter; // @synthesize _albumFilter=__albumFilter;
 @property (readonly) PUUIImagePickerControllerHelper *_imagePickerControllerHelper;
 @property (copy, nonatomic, setter=_setImagePickerMediaTypes:) NSArray *_imagePickerMediaTypes; // @synthesize _imagePickerMediaTypes=__imagePickerMediaTypes;
+@property (readonly, nonatomic, getter=isAnyAssetDownloading) BOOL anyAssetDownloading;
+@property (readonly, nonatomic, getter=isAnyAssetSelected) BOOL anyAssetSelected; // @dynamic anyAssetSelected;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didDisappear; // @synthesize didDisappear=_didDisappear;
@@ -37,11 +43,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double lastKnownWidth; // @synthesize lastKnownWidth=_lastKnownWidth;
 @property (weak, nonatomic) id<PUPhotoPicker> photoPicker; // @synthesize photoPicker=_photoPicker;
 @property (readonly, nonatomic) BOOL referenceValuesDidChange;
+@property (strong, nonatomic) PUPhotoPickerResizeTaskDescriptor *resizeTaskDescriptor; // @synthesize resizeTaskDescriptor=_resizeTaskDescriptor;
+@property (readonly, nonatomic) NSArray *selectedAssets; // @dynamic selectedAssets;
+@property (readonly, nonatomic) PUSessionInfo *sessionInfo;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_handleImagePickerCancel:(id)arg1;
-- (void)_handleImagePickerMultipleSelectionDone:(id)arg1;
+- (void)_handleImagePickerMultipleSelectionDone;
+- (void)_handleImagePickerSelectionDone:(id)arg1;
+- (void)_handleImagePickerSingleSelectionDone;
 - (void)_scrollToBottomIfNeeded;
 - (BOOL)allowsPeeking;
 - (BOOL)canBeginStackCollapseTransition;
@@ -56,6 +67,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithSpec:(id)arg1;
 - (void)loadView;
 - (void)performPhotoPickerSelection;
+- (void)photoPickerFileSizeToolbarProvider:(id)arg1 didSelectResizeTaskDescriptor:(id)arg2;
+- (void)photoPickerFileSizeToolbarProvider:(id)arg1 presentSizePickerViewController:(id)arg2;
 - (BOOL)pu_wantsNavigationBarVisible;
 - (void)setAlbum:(id)arg1 existingFetchResult:(id)arg2;
 - (void)setPhotoPickerMediaTypes:(id)arg1;

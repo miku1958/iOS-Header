@@ -11,7 +11,7 @@
 #import <CalendarDaemon/DatabaseChangeHandling-Protocol.h>
 #import <CalendarDaemon/NSXPCListenerDelegate-Protocol.h>
 
-@class BirthdayCalendarManager, CDBDataProtectionObserver, LocalAttachmentCleanUpSupport, NSArray, NSLock, NSMutableSet, NSString, NSXPCListener;
+@class CDBDataProtectionObserver, NSArray, NSLock, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
 @interface CADServer : NSObject <NSXPCListenerDelegate, ClientConnectionDelegate, DatabaseChangeHandling, CalActivatable>
@@ -21,19 +21,18 @@
     NSXPCListener *_NSXPCListener;
     NSObject<OS_xpc_object> *_xpcConnection;
     NSObject<OS_dispatch_queue> *_xpcQueue;
-    BirthdayCalendarManager *_birthdayManager;
-    LocalAttachmentCleanUpSupport *_localAttachmentCleanupManager;
     NSMutableSet *_clientConnections;
     NSLock *_connectionLock;
-    unsigned long long _birthdayManagerGeneration;
     NSArray *_signalSensors;
     BOOL _active;
     CDBDataProtectionObserver *_dataProtectionObserver;
     NSArray *_modules;
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSObject<OS_dispatch_queue> *_alarmQueue;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *alarmQueue; // @synthesize alarmQueue=_alarmQueue;
 @property (strong, nonatomic) CDBDataProtectionObserver *dataProtectionObserver; // @synthesize dataProtectionObserver=_dataProtectionObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -51,13 +50,18 @@
 - (void)_handleDatabaseChanged;
 - (void)_handleXPCConnection:(id)arg1;
 - (void)_protectedDataDidBecomeAvailable;
+- (void)_registerActivityWithIdentifier:(const char *)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_registerForAlarmEvents;
+- (void)_registerForAnalyticsCollection;
+- (void)_registerForAttachmentCleanup;
+- (void)_registerForBackgroundTaskAgentJobs;
+- (void)_registerForChangeTableCleanup;
 - (void)_registerForDatabaseCleanup;
 - (void)_registerForIdleChangeTrackingClientCleanup;
 - (void)_registerForNotifications;
 - (void)_registerMaintenanceActivities;
 - (void)_setUpSignalHandlers;
 - (void)_startBirthdayManager;
-- (void)_stopBirthdayManager;
 - (void)_tearDownSignalHandlers;
 - (BOOL)_trimAndExtendOccurrenceCache;
 - (void)_updateOccurrenceCacheTimeZone;

@@ -7,13 +7,14 @@
 #import <iWorkImport/KNBuildRenderer.h>
 
 #import <iWorkImport/KNAmbientBuildRenderer-Protocol.h>
+#import <iWorkImport/KNAnimationMovieHost-Protocol.h>
 #import <iWorkImport/TSKMediaPlayerControllerDelegate-Protocol.h>
 
-@class CALayer, NSObject, NSString, TSUWeakReference;
+@class CALayer, NSObject, NSString, TSDMovieInfo, TSUWeakReference;
 @protocol NSCopying, TSKLayerMediaPlayerController, TSKMediaPlayerController;
 
 __attribute__((visibility("hidden")))
-@interface KNMovieRenderer : KNBuildRenderer <TSKMediaPlayerControllerDelegate, KNAmbientBuildRenderer>
+@interface KNMovieRenderer : KNBuildRenderer <TSKMediaPlayerControllerDelegate, KNAmbientBuildRenderer, KNAnimationMovieHost>
 {
     NSObject<TSKLayerMediaPlayerController> *_playerController;
     CALayer *_videoLayer;
@@ -41,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAmbientBuildStarted;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) TSDMovieInfo *movieInfo;
 @property (readonly, nonatomic) NSObject<NSCopying> *movieTimelineMovieIdentifier;
 @property (readonly, nonatomic) CALayer *offscreenVideoLayer;
 @property (readonly, nonatomic) NSObject<TSKMediaPlayerController> *playerController; // @synthesize playerController=_playerController;

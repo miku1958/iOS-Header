@@ -10,12 +10,11 @@
 #import <PassKitUI/PKEditTableViewControllerCachingDelegate-Protocol.h>
 #import <PassKitUI/PKGroupDelegate-Protocol.h>
 #import <PassKitUI/PKGroupsControllerDelegate-Protocol.h>
-#import <PassKitUI/UIViewControllerPreviewingDelegate-Protocol.h>
+#import <PassKitUI/_UIContextMenuInteractionDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, PKGroup, PKGroupsController, PKPass, UITableView;
-@protocol UIViewControllerPreviewing;
 
-@interface PKEditGroupsViewController : PKEditTableViewController <PKGroupsControllerDelegate, PKGroupDelegate, PKEditTableViewControllerCachingDelegate, PKEditGroupViewControllerDelegate, UIViewControllerPreviewingDelegate>
+@interface PKEditGroupsViewController : PKEditTableViewController <PKGroupsControllerDelegate, PKGroupDelegate, PKEditTableViewControllerCachingDelegate, PKEditGroupViewControllerDelegate, _UIContextMenuInteractionDelegate>
 {
     BOOL _editingMode;
     PKGroupsController *_groupsController;
@@ -23,7 +22,6 @@
     PKGroup *_viewingGroup;
     PKGroup *_deletingGroup;
     UITableView *_tableView;
-    id<UIViewControllerPreviewing> _previewingContext;
     NSMutableArray *_actions;
     struct CGSize _imageSizeNeeded;
 }
@@ -36,6 +34,9 @@
 - (void).cxx_destruct;
 - (void)_showNoPassesViewIfNoGroupsToShow;
 - (void)configureCell:(id)arg1 atIndexPath:(id)arg2 withGroup:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 actionsForMenuAtLocation:(struct CGPoint)arg2 withSuggestedActions:(id)arg3;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
+- (BOOL)contextMenuInteractionShouldBegin:(id)arg1;
 - (void)group:(id)arg1 didInsertPass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didMovePassFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didRemovePass:(id)arg2 atIndex:(unsigned long long)arg3;
@@ -52,8 +53,7 @@
 - (id)passAtIndexPath:(id)arg1;
 - (BOOL)passExistsWithUniqueIdentifier:(id)arg1;
 - (void)prefetchItemsAtIndexPaths:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
+- (BOOL)shouldShowPreviewForRowAtIndexPath:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;

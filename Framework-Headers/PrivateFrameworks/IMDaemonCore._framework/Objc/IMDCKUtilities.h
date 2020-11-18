@@ -40,6 +40,7 @@
 
 + (id)im_AKSecurityLevelKey;
 + (id)logHandle;
++ (id)restoreFailuresDirectory;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (BOOL)CKPartialError:(id)arg1 hasErrorCode:(id)arg2;
@@ -63,7 +64,9 @@
 - (BOOL)_isCKErrorPartialFailure:(id)arg1;
 - (BOOL)_isInExitState;
 - (BOOL)_isLogDumpAllowed;
+- (BOOL)_isRunningInAutomation;
 - (BOOL)_isSyncingPausedOverride;
+- (void)_metricForPCSReportManateeStatusWithReason:(id)arg1 linkedFunction:(CDUnknownFunctionPointerType)arg2 timeoutInSec:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (long long)_mininimumServerBagClientValue;
 - (unsigned long long)_mocEnabledStateFromAccountStatus:(long long)arg1;
 - (BOOL)_mocFeatureEnabled;
@@ -127,6 +130,7 @@
 - (BOOL)iCloudAccountMatchesiMessageAccount;
 - (id)init;
 - (id)initWithServerBag:(id)arg1 lockDownmanager:(id)arg2 deviceSupport:(id)arg3 imDefaults:(id)arg4;
+- (id)internalQueue;
 - (BOOL)isCKPartialError:(id)arg1;
 - (void)isFirstSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)isLocalCachedSaltPresent;
@@ -139,14 +143,14 @@
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3 isInitialSync:(BOOL)arg4 requirePreviousPrompt:(BOOL)arg5 willSendBlock:(CDUnknownBlockType)arg6;
 - (void)logDumpAndSendMessageTo:(id)arg1 forHours:(int)arg2 reason:(id)arg3 requirePreviousPrompt:(BOOL)arg4 willSendBlock:(CDUnknownBlockType)arg5;
+- (BOOL)logDumpIsExpected;
 - (BOOL)logDumpIsNecessaryAfterSync;
 - (id)logHandle;
 - (void)logToPowerLogForLogDumpGUID:(id)arg1 logDumpCompleted:(BOOL)arg2 logDumpSucceeded:(BOOL)arg3 logDumpSendingCompleted:(BOOL)arg4 logDumpSendingSucceeded:(BOOL)arg5 reason:(id)arg6;
 - (unsigned long long)messageDatabaseSize;
-- (id)metricForPCSReportManateeStatusWithReason:(id)arg1;
+- (void)metricForPCSReportManateeStatusWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)newfilteredArrayRemovingCKRecordDupes:(id)arg1;
 - (id)newfilteredArrayRemovingCKRecordIDDupes:(id)arg1;
-- (void)noteAllSyncedItemsPriorToSync;
 - (long long)overrideNumberOfChatsToFetch;
 - (long long)overrideNumberOfChatsToWrite;
 - (void)postSyncStateToCloudKit:(id)arg1;
@@ -177,6 +181,8 @@
 - (BOOL)shouldRepairAccountWithDeviceAccountSecurityLevel:(unsigned long long)arg1 serverAccountStatus:(long long)arg2;
 - (BOOL)shouldSyncToSRContainer;
 - (BOOL)shouldUseDevContainer;
+- (BOOL)shouldUseDevNickNameContainer;
+- (BOOL)signedIntoiCloudAndiMessageAndiCloudAccountMatchesiMessageAccount;
 - (void)submitPCSReportManateeStatuMetricWithPrefix:(id)arg1 andReason:(id)arg2;
 - (id)syncFailureMetricString:(id)arg1 isRecoverable:(BOOL)arg2 error:(id)arg3;
 - (void)syncStateWillUpdate:(id)arg1;

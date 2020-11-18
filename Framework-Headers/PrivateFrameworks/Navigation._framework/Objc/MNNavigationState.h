@@ -6,69 +6,36 @@
 
 #import <objc/NSObject.h>
 
-#import <Navigation/MNNavigationStateInterface-Protocol.h>
+@class MNNavigationStateManager, MNNavigationTraceManager;
 
-@class MNNavigationStateManager, MNNavigationTraceManager, NSString;
-
-__attribute__((visibility("hidden")))
-@interface MNNavigationState : NSObject <MNNavigationStateInterface>
+@interface MNNavigationState : NSObject
 {
     double _locationUpdateInterval;
     double _suggestionUpdateFrequency;
     MNNavigationStateManager *_stateManager;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long desiredLocationProviderType;
-@property (readonly, nonatomic) unsigned long long desiredResourcePolicy;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double locationUpdateInterval; // @synthesize locationUpdateInterval=_locationUpdateInterval;
 @property (readonly, nonatomic) BOOL requiresHighMemoryThreshold;
+@property (readonly, nonatomic) BOOL requiresLocationAccess;
+@property (readonly, nonatomic) BOOL shouldClearStoredRoutes;
 @property (readonly, weak, nonatomic) MNNavigationStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property (readonly, nonatomic) double suggestionUpdateFrequency; // @synthesize suggestionUpdateFrequency=_suggestionUpdateFrequency;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) MNNavigationTraceManager *traceManager;
-@property (readonly, nonatomic) long long type;
+@property (readonly, nonatomic) unsigned long long type;
 
 - (void).cxx_destruct;
-- (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
-- (void)addCommuteDestinationSuggestion:(id)arg1;
-- (void)changeSettings:(id)arg1;
-- (void)confirmDestination:(id)arg1;
+- (BOOL)_isSelectorValidForForwarding:(SEL)arg1;
 - (void)dealloc;
 - (void)enterState;
+- (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (id)initWithStateManager:(id)arg1;
-- (void)interfaceHashesWithHandler:(CDUnknownBlockType)arg1;
 - (void)leaveState;
-- (void)prepareNavigationWithRouteDetails:(id)arg1;
-- (void)recordTraceBookmarkAtCurrentPositionWthScreenshotData:(id)arg1;
-- (void)repeatCurrentGuidanceWithReply:(CDUnknownBlockType)arg1;
-- (void)repeatCurrentTrafficAlertWithReply:(CDUnknownBlockType)arg1;
-- (void)resumeOriginalDestination;
-- (void)setCurrentAudioOutputSetting:(id)arg1;
-- (void)setDisplayedStepIndex:(unsigned long long)arg1;
-- (void)setFullGuidanceMode:(BOOL)arg1;
-- (void)setGuidancePromptsEnabled:(BOOL)arg1;
-- (void)setHFPPreference:(BOOL)arg1 forSetting:(id)arg2;
-- (void)setHeadingOrientation:(int)arg1;
-- (void)setIsConnectedToCarplay:(BOOL)arg1;
-- (void)setRideIndex:(unsigned long long)arg1 forLegIndex:(unsigned long long)arg2;
-- (void)setTraceIsPlaying:(BOOL)arg1;
-- (void)setTracePlaybackSpeed:(double)arg1;
-- (void)setTracePosition:(double)arg1;
-- (void)startNavigationForRouteDetails:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)startPredictingDestinationsWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopCurrentGuidancePrompt;
-- (void)stopNavigation;
-- (void)stopPredictingDestinations;
-- (void)switchToRouteWithDetails:(id)arg1;
-- (void)updateDestination:(id)arg1;
-- (void)updateMapsActive:(BOOL)arg1;
-- (void)updateVehicleDetected:(BOOL)arg1;
-- (void)updateWithLocation:(id)arg1;
-- (void)vibrateForPrompt:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
+- (id)methodSignatureForSelector:(SEL)arg1;
+- (void)preEnterState;
+- (BOOL)respondsToSelector:(SEL)arg1;
 
 @end
 

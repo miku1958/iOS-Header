@@ -137,6 +137,7 @@
 - (BOOL)handleDeletePassRequestWithPass:(id)arg1 forViewController:(id)arg2;
 - (void)hideTitleView;
 - (void)infoTapped:(id)arg1;
+- (id)init;
 - (id)initWithPassGroupView:(id)arg1 groupViewReceiver:(id)arg2 context:(id)arg3;
 - (void)insertGroupView;
 - (id)interactionControllerForPresentation:(id)arg1;

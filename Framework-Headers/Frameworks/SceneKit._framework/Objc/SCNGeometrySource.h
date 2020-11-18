@@ -9,6 +9,7 @@
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
+@protocol MTLBuffer;
 
 @interface SCNGeometrySource : NSObject <NSSecureCoding>
 {
@@ -21,6 +22,9 @@
     long long _dataOffset;
     long long _dataStride;
     unsigned char _mkSemantic;
+    id<MTLBuffer> _mtlBuffer;
+    long long _mtlVertexFormat;
+    BOOL _encodeDataAsHalf;
 }
 
 @property (readonly, nonatomic) long long bytesPerComponent;
@@ -33,9 +37,11 @@
 @property (readonly, nonatomic) long long vectorCount;
 
 + (id)_geometrySourceWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 componentType:(short)arg4 componentCount:(unsigned long long)arg5 dataOffset:(long long)arg6 dataStride:(long long)arg7;
++ (id)_geometrySourceWithSource:(id)arg1 vertexFormat:(unsigned long long)arg2;
 + (id)dataByConvertingDoublesToFloats:(const double *)arg1 count:(long long)arg2;
 + (id)dataWithPointArray:(const struct CGPoint *)arg1 count:(long long)arg2 bytesPerComponent:(long long *)arg3;
 + (id)dataWithVector3Array:(const struct SCNVector3 *)arg1 count:(long long)arg2 bytesPerComponent:(long long *)arg3;
++ (id)geometrySourceWithBuffer:(id)arg1 vertexFormat:(unsigned long long)arg2 semantic:(id)arg3 vertexCount:(long long)arg4 dataOffset:(long long)arg5 dataStride:(long long)arg6;
 + (id)geometrySourceWithColorComponents:(const float *)arg1 count:(long long)arg2 hasAlpha:(BOOL)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)geometrySourceWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 floatComponents:(BOOL)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8;
 + (id)geometrySourceWithMDLVertexAttribute:(id)arg1 mesh:(id)arg2;
@@ -47,11 +53,14 @@
 - (const void *)__CFObject;
 - (void)_clearC3DCache;
 - (short)_componentType;
+- (BOOL)_encodeDataAsHalf;
 - (void)_printData;
+- (id)_uninterleaveData:(id)arg1 count:(unsigned long long)arg2 srcOffset:(unsigned long long)arg3 srcStride:(unsigned long long)arg4 dstStride:(unsigned long long)arg5;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithBuffer:(id)arg1 vertexFormat:(unsigned long long)arg2 semantic:(id)arg3 vertexCount:(long long)arg4 dataOffset:(long long)arg5 dataStride:(long long)arg6;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 componentType:(short)arg4 componentCount:(unsigned long long)arg5 dataOffset:(long long)arg6 dataStride:(long long)arg7;
 - (id)initWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 floatComponents:(BOOL)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8;
@@ -61,6 +70,7 @@
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
 - (void)setMkSemantic:(id)arg1;
+- (void)set_encodeDataAsHalf:(BOOL)arg1;
 
 @end
 

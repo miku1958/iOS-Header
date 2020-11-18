@@ -12,6 +12,8 @@
 {
     NSMapTable *_delayedMomentAssetDeletions;
     NSMutableArray *_delayedMomentAssetUpdates;
+    NSMutableSet *_delayedHighlightAssetUpdates;
+    NSMutableSet *_delayedHighlightMomentUpdates;
     NSMutableSet *_delayedCloudFeedDeletionEntries;
     NSMutableArray *_delayedCloudFeedAlbumUpdates;
     NSMutableArray *_delayedCloudFeedAssetInserts;
@@ -22,30 +24,40 @@
     NSMutableArray *_delayedDupeAnalysisCloudInserts;
     NSMutableSet *_delayedAssetsForFileSystemPersistency;
     NSMutableDictionary *_delayedSearchIndexUpdateUUIDs;
-    NSMutableSet *_delayedAlbumCountUpdates;
+    NSMutableSet *_delayedAlbumCountsAndDateRangeUpdates;
     NSMutableDictionary *_delayedWorkerTypesToAnalyzeByAssetUUID;
-    BOOL _needsUpdateUnverifiedFaceCountThreshold;
     PLClientServerTransaction *_clientTransaction;
 }
 
-@property (readonly, strong, nonatomic) PLClientServerTransaction *clientTransaction; // @synthesize clientTransaction=_clientTransaction;
+@property (readonly, nonatomic) PLClientServerTransaction *clientTransaction; // @synthesize clientTransaction=_clientTransaction;
 
-+ (void)delayedAlbumCountUpdatesFromChangeHubEvent:(id)arg1 countUpdates:(id *)arg2;
-+ (void)delayedAssetsForFileSystemPersistencyUpdatesFromChangeHubEvent:(id)arg1 assetUpdates:(id *)arg2;
-+ (void)delayedCloudFeedDataFromChangeHubEvent:(id)arg1 albumUpdates:(id *)arg2 assetInserts:(id *)arg3 assetUpdates:(id *)arg4 commentInserts:(id *)arg5 invitationRecordUpdates:(id *)arg6 deletionEntries:(id *)arg7;
-+ (void)delayedDupeAnalysisDataFromChangeHubEvent:(id)arg1 normalInserts:(id *)arg2 cloudInserts:(id *)arg3;
-+ (void)delayedMomentDataFromChangeHubEvent:(id)arg1 insertsAndUpdates:(id *)arg2 deletes:(id *)arg3;
-+ (void)delayedSearchIndexUpdatesFromChangeHubEvent:(id)arg1 updates:(id *)arg2;
+- (void).cxx_destruct;
+- (void)_popAlbumCountChangesIntoDetail:(id)arg1;
+- (void)_popAssetsForAnalysisChangesIntoDetail:(id)arg1;
+- (void)_popAssetsForFilesystemPersistencyChangesIntoDetail:(id)arg1;
+- (void)_popCloudFeedChangesIntoDetail:(id)arg1;
+- (void)_popDelayedAlbumCountsAndDateRangeUpdates:(id *)arg1;
+- (void)_popDelayedAssetsForAnalysis:(id *)arg1;
+- (void)_popDelayedAssetsForFilesystemPersistencyUpdates:(id *)arg1;
+- (void)_popDelayedCloudFeedAlbumUpdates:(id *)arg1 assetInserts:(id *)arg2 assetUpdates:(id *)arg3 commentInserts:(id *)arg4 invitationRecordUpdates:(id *)arg5 deletionEntries:(id *)arg6;
+- (void)_popDelayedDupeAnalysisNormalInserts:(id *)arg1 cloudInserts:(id *)arg2;
+- (void)_popDelayedMomentInsertsAndUpdates:(id *)arg1 deletes:(id *)arg2 updatedAssetIDsForHighlights:(id *)arg3 updatedMomentIDsForHighlights:(id *)arg4;
+- (void)_popDelayedSearchIndexUpdates:(id *)arg1;
+- (void)_popDupeAnalysisChangesIntoDetail:(id)arg1;
+- (void)_popMomentChangesIntoDetail:(id)arg1;
+- (void)_popSearchIndexChangesIntoDetail:(id)arg1;
 - (void)_recordAlbumUUIDForSearchIndexUpdate:(id)arg1 isInsert:(BOOL)arg2;
 - (void)_recordAssetForSearchIndexUpdate:(id)arg1;
 - (void)_recordAssetUUIDForSearchIndexUpdate:(id)arg1 isInsert:(BOOL)arg2;
-- (void)_recordDelayedAlbumCountUpdate:(id)arg1;
+- (void)_recordDelayedAlbumCountsAndDateRangeUpdate:(id)arg1;
 - (void)_recordDelayedCloudFeedAlbumUpdate:(id)arg1;
 - (void)_recordDelayedCloudFeedAssetInsert:(id)arg1;
 - (void)_recordDelayedCloudFeedAssetUpdate:(id)arg1;
 - (void)_recordDelayedCloudFeedCommentInsert:(id)arg1;
 - (void)_recordDelayedCloudFeedDeletionEntries:(id)arg1;
 - (void)_recordDelayedCloudFeedInvitationRecordUpdate:(id)arg1;
+- (void)_recordDelayedHighlightAssetUpdates:(id)arg1;
+- (void)_recordDelayedHighlightMomentUpdates:(id)arg1;
 - (void)_recordDelayedMomentAssetDeletionsDictionary:(id)arg1 forKey:(id)arg2;
 - (void)_recordDelayedMomentAssetUpdates:(id)arg1;
 - (void)_recordDetectedFaceUUIDInsertForSearchIndexUpdate:(id)arg1;
@@ -54,29 +66,17 @@
 - (void)_recordNormalAssetForDupeAnalysis:(id)arg1;
 - (void)_recordPersonUUIDInsertForSearchIndexUpdate:(id)arg1;
 - (void)_recordStreamAssetForDupeAnalysis:(id)arg1;
-- (void)appendDelayedAlbumCountUpdatesToXPCMessage:(id)arg1;
-- (void)appendDelayedAssetsForFileSystemPersistencyUpdate:(id)arg1;
-- (void)appendDelayedCloudFeedDataToXPCMessage:(id)arg1;
-- (void)appendDelayedDupeAnalysisToXPCMessage:(id)arg1;
-- (void)appendDelayedMomentDataToXPCMessage:(id)arg1;
-- (void)appendDelayedSearchIndexUpdatesToXPCMessage:(id)arg1;
-- (void)dealloc;
-- (void)forceAlbumCountUpdate:(id)arg1;
+- (void)forceAlbumCountsAndDateRangeUpdate:(id)arg1;
 - (id)initWithClientTransaction:(id)arg1;
 - (void)persistDelayedActionsScope:(id)arg1;
-- (void)popDelayedAlbumCountUpdates:(id *)arg1;
-- (void)popDelayedAssetsForAnalysis:(id *)arg1;
-- (void)popDelayedAssetsForFilesystemPersistencyUpdates:(id *)arg1;
-- (void)popDelayedCloudFeedAlbumUpdates:(id *)arg1 assetInserts:(id *)arg2 assetUpdates:(id *)arg3 commentInserts:(id *)arg4 invitationRecordUpdates:(id *)arg5 deletionEntries:(id *)arg6;
-- (void)popDelayedDupeAnalysisNormalInserts:(id *)arg1 cloudInserts:(id *)arg2;
-- (void)popDelayedMomentInsertsAndUpdates:(id *)arg1 deletes:(id *)arg2;
-- (void)popDelayedSearchIndexUpdates:(id *)arg1;
-- (BOOL)popNeedsUdpateUnverifiedFaceCountThreshold;
+- (id)popDelayedSaveActionsDetail;
+- (void)recordAdditionalAssetAttributesForMomentUpdate:(id)arg1;
 - (void)recordAdditionalAssetAttributesForSearchIndexUpdate:(id)arg1;
-- (void)recordAlbumCountUpdate:(id)arg1;
+- (void)recordAlbumCountsAndDateRangeUpdate:(id)arg1;
 - (void)recordAlbumForCloudFeedUpdate:(id)arg1;
 - (void)recordAlbumForSearchIndexUpdate:(id)arg1;
-- (void)recordAssetForAlbumCountUpdate:(id)arg1;
+- (void)recordAssetDescriptionForSearchIndexUpdate:(id)arg1;
+- (void)recordAssetForAlbumCountsAndDateRangeUpdate:(id)arg1;
 - (void)recordAssetForAnalysis:(id)arg1 workerFlags:(int)arg2 workerType:(short)arg3;
 - (void)recordAssetForCloudFeedUpdate:(id)arg1;
 - (void)recordAssetForDupeAnalysis:(id)arg1;
@@ -87,7 +87,7 @@
 - (void)recordDetectedFaceForSearchIndexUpdate:(id)arg1;
 - (void)recordInvitationRecordForCloudFeedUpdate:(id)arg1;
 - (void)recordMemoryForSearchIndexUpdate:(id)arg1;
-- (void)recordNeedsUpdateUnverifiedFaceCountThreshold;
+- (void)recordMomentForHighlightUpdate:(id)arg1;
 - (void)recordPersonForSearchIndexUpdate:(id)arg1;
 
 @end

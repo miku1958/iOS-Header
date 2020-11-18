@@ -6,24 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <VectorKit/NSSecureCoding-Protocol.h>
+
 @protocol VKCustomFeatureDataSource;
 
-@interface VKCustomFeature : NSObject
+@interface VKCustomFeature : NSObject <NSSecureCoding>
 {
     shared_ptr_e9082761 _feature;
     id<VKCustomFeatureDataSource> _dataSource;
 }
 
++ (CDStruct_071ac149)muninFeatureLocationForItemCoordinate:(CDStruct_c3b9c2ee)arg1 viewPosition:(CDStruct_071ac149)arg2 groundAltitude:(double)arg3;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_initInternalFeatureWithCoordinate:(CDStruct_c3b9c2ee)arg1;
-- (id)_initWithCoordinate:(CDStruct_c3b9c2ee)arg1 isInjected:(BOOL)arg2;
+- (id)_initWithCoordinate:(CDStruct_071ac149)arg1 isInjected:(BOOL)arg2;
 - (unsigned long long)businessID;
 - (id)dataSource;
+- (void)encodeWithCoder:(id)arg1;
 - (shared_ptr_e9082761 *)feature;
 - (unsigned long long)featureID;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (id)initWithCoordinate:(CDStruct_c3b9c2ee)arg1 elevation:(double)arg2;
 - (BOOL)isInjectedFeature;
 - (void)setAnnotationText:(id)arg1 locale:(id)arg2;
 - (void)setBusinessID:(unsigned long long)arg1;

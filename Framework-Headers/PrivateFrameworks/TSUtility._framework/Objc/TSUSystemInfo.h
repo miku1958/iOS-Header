@@ -11,7 +11,6 @@
 }
 
 + (id)macAddress;
-+ (id)operatingSystemName;
 + (id)processorName;
 + (id)systemVersion;
 

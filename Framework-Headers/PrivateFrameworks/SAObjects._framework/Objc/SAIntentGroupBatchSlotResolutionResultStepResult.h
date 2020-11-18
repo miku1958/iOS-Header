@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *jsonEncodedSlotResolutionResult;
 @property (copy, nonatomic) NSString *keyPath;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *typeName;

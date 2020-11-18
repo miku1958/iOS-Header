@@ -14,9 +14,9 @@
     NSMutableSet *_allTargets;
 }
 
+- (void).cxx_destruct;
 - (BOOL)addActivityTarget:(id)arg1;
 - (id)allTargets;
-- (void)dealloc;
 - (id)displayName;
 - (id)primaryTarget;
 - (BOOL)removeActivityTarget:(id)arg1;

@@ -7,6 +7,10 @@
 #import <Intents/INSendMessageIntent.h>
 
 @interface INSendMessageIntent (_CDSpotlightRecorderAdditions)
+- (id)cd_derivedIntentIdentifier;
+- (id)cd_groupName;
+- (long long)cd_interactionMechanism;
+- (id)cd_recipients;
 - (BOOL)cd_saveToPeopleStore;
 @end
 

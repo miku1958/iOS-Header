@@ -27,9 +27,9 @@
 + (id)_supportedNonSecureServices;
 + (id)_supportedSecureServices;
 + (id)_targetCurrentCharacteristicTypeMap;
-+ (void)archive;
 + (id)bulletinSupportedCharacteristicsForService:(id)arg1;
 + (id)characteristicTupleKeyFromServiceContextID:(id)arg1 currentType:(id)arg2;
++ (id)generateActionURLForHomeUUID:(id)arg1 cameraUUID:(id)arg2;
 + (BOOL)isBulletinSupportedForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 + (BOOL)isBulletinSupportedForNonSecureCharacteristicType:(id)arg1 serviceType:(id)arg2;
 + (BOOL)isCriticalNonSecureServiceType:(id)arg1;
@@ -47,13 +47,17 @@
 - (id)_requestWithRecordID:(id)arg1;
 - (BOOL)_shouldPostBulletinOnCurrentValueChangeForCharacteristic:(id)arg1;
 - (void)_updateCharacteristicTupleFor:(id)arg1 withCurrentType:(id)arg2 changedByThisDevice:(BOOL)arg3;
+- (void)archive;
 - (void)configureHomeManager:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fetchNotificationUUIDsForClipBulletinWithIndentifier:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)insertBulletinForIncomingInvitation:(id)arg1;
 - (id)insertBulletinForSecureTrigger:(id)arg1;
 - (void)insertBulletinsForChangedCharacteristics:(id)arg1 changedByThisDevice:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)insertCameraAccessModeChangedBulletin:(id)arg1;
+- (void)insertCameraSignificantEventBulletin:(id)arg1;
 - (void)insertImageBulletinsForChangedCharacteristics:(id)arg1 snapshotData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)isTargetCharacteristic:(id)arg1 matchCurrentCharacteristic:(id)arg2;
 - (void)refreshHomeBadgeNumber;

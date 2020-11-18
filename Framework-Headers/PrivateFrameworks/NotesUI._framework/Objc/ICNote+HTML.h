@@ -6,12 +6,24 @@
 
 #import <NotesShared/ICNote.h>
 
+@class ICCollaborationColorManager, NSArray, PKInk, TTTextStorage;
+
 @interface ICNote (HTML)
+
+@property (readonly, nonatomic) NSArray *attachmentActivityItemsForSharing;
+@property (readonly, strong, nonatomic) ICCollaborationColorManager *collaborationColorManager;
+@property (nonatomic, getter=isHandwritingRecognitionEnabled) BOOL handwritingRecognitionEnabled;
+@property (readonly, nonatomic) long long primaryWritingDirection;
+@property (copy, nonatomic) PKInk *selectedInk;
+@property (readonly, nonatomic) TTTextStorage *textStorage;
+@property (readonly, nonatomic) TTTextStorage *textStorageWithoutCreating;
+
 + (id)attributedStringFromHTMLString:(id)arg1;
 + (id)attributedStringFromHTMLString:(id)arg1 baseURL:(id)arg2 readerDelegate:(id)arg3;
 + (id)attributedStringFromHTMLString:(id)arg1 readerDelegate:(id)arg2;
 + (void)fixDashedListsInAttributedString:(id)arg1;
 + (void)fixFontsInAttributedString:(id)arg1;
++ (void)fixTextColorsInAttributedString:(id)arg1;
 + (void)fixUnwantedCharactersInAttributedString:(id)arg1;
 + (id)hexStringForColor:(struct UIColor *)arg1;
 + (id)htmlObjectAttributesForAttachmentWithContentID:(id)arg1;
@@ -22,9 +34,48 @@
 + (id)mutableAttributedStringFromHTMLString:(id)arg1 readerDelegate:(id)arg2;
 + (id)tagDictionariesForAttributes:(id)arg1 attachmentConversionHandler:(CDUnknownBlockType)arg2;
 + (id)tagDictionaryForWrapperAroundParagraphStyle:(id)arg1;
+- (void)announceAccessibilitySelectionChangedByMerge;
+- (void)announceAccessibilitySelectionChangedByMergeWithSavedSelections:(id)arg1 beforeMergeTimestamp:(id)arg2;
+- (id)attachmentActivityItemsForSharingForRange:(struct _NSRange)arg1;
+- (id)attachmentFromInlineDrawingAttachment:(id)arg1;
+- (id)attachmentFromLegacyAttachmentFileWrapper:(id)arg1;
+- (id)attachmentFromObject:(id)arg1 createIfNecessary:(BOOL)arg2;
+- (id)attachmentFromRemoteFileWrapper:(id)arg1;
+- (id)attachmentFromStandardFileWrapper:(id)arg1;
+- (id)attachmentFromTableData:(id)arg1;
+- (id)checklistStyleAccessibilityDescriptionForRange:(struct _NSRange)arg1;
+- (void)createMissingAttachmentsInTextStorage;
+- (id)dataForTypeIdentifier:(id)arg1;
+- (void)didMergeNoteDocument:(id)arg1 withUserInfo:(id)arg2;
+- (void)fetchThumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 cache:(id)arg3 appearanceInfo:(id)arg4 cacheKey:(id)arg5 processingBlock:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7;
+- (void)filterAttachmentsInTextStorage:(id)arg1 range:(struct _NSRange)arg2;
 - (id)htmlString;
 - (id)htmlStringWithAttachmentConversionHandler:(CDUnknownBlockType)arg1;
 - (id)htmlStringWithAttachments:(BOOL)arg1;
 - (id)htmlStringWithHTMLAttachments;
+- (id)noteActivityItemsForSharingWithNoteExporter:(id)arg1;
+- (void)noteDidReplaceDocument;
+- (void)noteDidSaveAndClearDecryptedData;
+- (void)noteWillTurnIntoFault;
+- (void)notifyTextViewsNoteDidMerge;
+- (void)notifyTextViewsNoteWillMerge;
+- (void)save;
+- (void)saveAfterDelay;
+- (BOOL)shouldReleaseTextStorageWhenTurningIntoFault;
+- (void)textStorage:(id)arg1 didProcessEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4;
+- (void)textStorage:(id)arg1 willProcessEditing:(unsigned long long)arg2 range:(struct _NSRange)arg3 changeInLength:(long long)arg4;
+- (void)textStorageDidChange:(id)arg1;
+- (void)textStorageDidPerformUndo:(id)arg1;
+- (void)textStorageWillChange:(id)arg1;
+- (void)textStorageWillProcessEditing:(id)arg1;
+- (id)thumbnailImageCacheKeyWithItemSize:(struct CGSize)arg1 appearanceType:(unsigned long long)arg2;
+- (struct UIImage *)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(BOOL)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(BOOL *)arg6 isMovie:(BOOL *)arg7 movieDuration:(CDStruct_1b6d18a9 *)arg8;
+- (struct UIImage *)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 appearanceType:(unsigned long long)arg3 requireAppearance:(BOOL)arg4 imageScaling:(unsigned long long *)arg5 showAsFileIcon:(BOOL *)arg6 isMovie:(BOOL *)arg7 movieDuration:(CDStruct_1b6d18a9 *)arg8 attachment:(id *)arg9;
+- (id)uiAttributedString;
+- (void)updateModificationDateAndChangeCount;
+- (void)updateModificationDateAndChangeCountAndSaveAfterDelay;
+- (void)updateModificationDateAndChangeCountAndSaveImmediately;
+- (void)updatePKDrawingsWithHandwritingRecognitionEnabled:(BOOL)arg1;
+- (void)willMergeNoteDocument:(id)arg1 withUserInfo:(id)arg2;
 @end
 

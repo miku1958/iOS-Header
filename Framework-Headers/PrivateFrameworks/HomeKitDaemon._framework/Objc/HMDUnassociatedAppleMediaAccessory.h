@@ -24,9 +24,9 @@
 @property (readonly, copy) NSString *description;
 @property (strong) HMDDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
-@property (strong) NSString *model; // @synthesize model=_model;
-@property (strong) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
-@property (strong) HMFSoftwareVersion *softwareVersion; // @synthesize softwareVersion=_softwareVersion;
+@property (copy) NSString *model; // @synthesize model=_model;
+@property (copy) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
+@property (copy) HMFSoftwareVersion *softwareVersion; // @synthesize softwareVersion=_softwareVersion;
 @property (readonly) Class superclass;
 
 + (id)logCategory;

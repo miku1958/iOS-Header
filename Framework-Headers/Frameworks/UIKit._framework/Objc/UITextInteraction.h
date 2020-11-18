@@ -9,7 +9,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 #import <UIKitCore/UIInteraction-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, UIResponder, UITextInteractionInputDelegate, UIView;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, UILongPressGestureRecognizer, UIResponder, UITextInteractionInputDelegate, UIView, _UIStatesFeedbackGenerator;
 @protocol UITextInput, UITextInteractionDelegate, UITextInteraction_AssistantDelegate;
 
 @interface UITextInteraction : NSObject <UIGestureRecognizerDelegate, UIInteraction>
@@ -19,7 +19,9 @@
     NSMutableArray *_gestures;
     NSMutableDictionary *_gestureMap;
     BOOL _inGesture;
-    long long _textInteractionSet;
+    long long _textInteractionMode;
+    UILongPressGestureRecognizer *_customHighlighterGesture;
+    _UIStatesFeedbackGenerator *_feedbackBehaviour;
     id<UITextInteractionDelegate> _delegate;
     UIResponder<UITextInput> *_textInput;
     UIView *_view;
@@ -27,11 +29,13 @@
     id<UITextInteraction_AssistantDelegate> _assistantDelegate;
 }
 
+@property (strong, nonatomic) UILongPressGestureRecognizer *_customHighlighterGesture; // @synthesize _customHighlighterGesture;
 @property (weak, nonatomic) id<UITextInteraction_AssistantDelegate> assistantDelegate; // @synthesize assistantDelegate=_assistantDelegate;
 @property (readonly, nonatomic) NSArray *children; // @synthesize children=_children;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UITextInteractionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _UIStatesFeedbackGenerator *feedbackBehaviour; // @synthesize feedbackBehaviour=_feedbackBehaviour;
 @property (readonly, nonatomic) NSDictionary *gestureMap; // @synthesize gestureMap=_gestureMap;
 @property (readonly, nonatomic) NSArray *gestures; // @synthesize gestures=_gestures;
 @property (readonly, nonatomic) NSArray *gesturesForFailureRequirements;
@@ -42,21 +46,35 @@
 @property (readonly, weak) UITextInteraction *root;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) UIResponder<UITextInput> *textInput; // @synthesize textInput=_textInput;
-@property (readonly, nonatomic) long long textInteractionSet; // @synthesize textInteractionSet=_textInteractionSet;
+@property (readonly, nonatomic) long long textInteractionMode; // @synthesize textInteractionMode=_textInteractionMode;
+@property (readonly, nonatomic) long long textInteractionSet;
 @property (weak, nonatomic) UIView *view; // @synthesize view=_view;
 
++ (id)textInteractionForMode:(long long)arg1;
 + (id)textInteractionsForSet:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_applyTransientState:(id)arg1;
+- (void)_callDelegateWillMoveTextRangeExtentAtPoint:(struct CGPoint)arg1;
+- (void)_cancelRecognizerWithName:(id)arg1;
+- (void)_cleanUpFeedbackForGesture;
+- (void)_createFeedbackIfNecessary;
+- (void)_performGestureType:(long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3;
+- (void)_performGestureType:(long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4;
 - (void)_performPreemtiveLayoutToEnsureNoMoreLayoutWhileSelecting:(id)arg1;
-- (void)_resetForLink;
+- (void)_playFeedbackForCursorMovement;
+- (void)_prepareFeedbackForGesture;
+- (void)_setLinkInteractionSession:(id)arg1;
 - (BOOL)_shouldObscureTextInput;
 - (id)_textInput;
+- (id)_transientState;
 - (void)addChild:(id)arg1;
 - (void)addGestureRecognizer:(id)arg1 withName:(id)arg2;
-- (void)cancelInteractionWithLink;
+- (void)cancelLinkInteractionSession;
 - (BOOL)containerChangesSelectionOnOneFingerTap;
+- (BOOL)currentSelectionContainsPoint:(struct CGPoint)arg1;
 - (id)defaultDoubleTapRecognizerWithAction:(SEL)arg1;
 - (id)defaultTapRecognizerWithAction:(SEL)arg1;
+- (id)defaultTripleTapRecognizerWithAction:(SEL)arg1;
 - (void)didMoveToView:(id)arg1;
 - (void)disableClearsOnInsertion;
 - (double)distanceBetweenPoint:(struct CGPoint)arg1 andRects:(id)arg2;
@@ -70,18 +88,14 @@
 - (id)interactionWithGestureForName:(id)arg1;
 - (BOOL)interaction_gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)interaction_gestureRecognizerShouldBegin:(id)arg1;
-- (BOOL)isInteractingWithLink;
-- (id)linkInteractionView;
+- (id)linkInteractionSession;
 - (id)rangeWithTextAlternatives:(id *)arg1 atPosition:(id)arg2;
 - (id)recognizerForName:(id)arg1;
 - (void)removeChild:(id)arg1;
 - (void)removeGestureRecognizerWithName:(id)arg1;
-- (void)resetForLink;
 - (BOOL)selection:(id)arg1 containsPoint:(struct CGPoint)arg2;
 - (BOOL)shouldAllowWithTouchTypes:(id)arg1 atPoint:(struct CGPoint)arg2 toBegin:(BOOL)arg3;
 - (BOOL)shouldHandleFormGestureAtLocation:(struct CGPoint)arg1;
-- (BOOL)shouldIgnoreLinkGestures;
-- (BOOL)tapOnLinkWithGesture:(id)arg1;
 - (void)turnOffDrawsAsAtomIfPlainStyleAtom;
 - (void)willMoveToView:(id)arg1;
 

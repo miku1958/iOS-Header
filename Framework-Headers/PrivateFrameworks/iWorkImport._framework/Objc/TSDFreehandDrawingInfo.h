@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (int)elementKind;
 - (id)infosToObserveForAttachedInfo;
 - (id)initWithSpacerShapeAndContext:(id)arg1 geometry:(id)arg2;
+- (BOOL)isEffectivelyEmpty;
 - (BOOL)isFreehandDrawing;
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct GroupArchive *)arg1 unarchiver:(id)arg2 upgradeDOLC:(BOOL)arg3;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (Class)repClass;
 - (void)saveToArchive:(struct GroupArchive *)arg1 archiver:(id)arg2;
 - (void)setFreehandDrawingSpacerShape:(id)arg1;
+- (BOOL)shouldHaveFakeShapeInfoForPersistingEmptyGroup;
 - (id)tsaxTypeDescription;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

@@ -6,17 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@interface VNFaceLandmarkRegion : NSObject
+#import <Vision/NSCopying-Protocol.h>
+#import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNRequestRevisionProviding-Protocol.h>
+
+@interface VNFaceLandmarkRegion : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding>
 {
     struct CGRect _faceBoundingBox;
     unsigned long long _pointCount;
+    unsigned long long _requestRevision;
 }
 
+@property struct CGRect faceBoundingBox; // @synthesize faceBoundingBox=_faceBoundingBox;
 @property unsigned long long pointCount; // @synthesize pointCount=_pointCount;
+@property (readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
 
-- (struct CGRect)faceBoundingBox;
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithFaceBoundingBox:(struct CGRect)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1 faceBoundingBox:(struct CGRect)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -15,7 +15,6 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityMainWindow;
 - (BOOL)_accessibilitySoftwareKeyboardActive;
-- (void)_chatItemsDidChange:(id)arg1;
 
 @end
 

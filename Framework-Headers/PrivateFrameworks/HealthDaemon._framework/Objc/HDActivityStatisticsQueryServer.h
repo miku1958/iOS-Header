@@ -13,7 +13,6 @@
 @interface HDActivityStatisticsQueryServer : HDQueryServer <HDDataObserver>
 {
     HKStatisticsCollection *_statisticsCollection;
-    BOOL _deliveredInitialResults;
     BOOL _deliversUpdates;
     _HKDelayedOperation *_updateOperation;
     _HKDelayedOperation *_resetOperation;
@@ -34,16 +33,16 @@
 - (void).cxx_destruct;
 - (id)_allObservedQuantityTypes;
 - (void)_createDataSourceIfNecessary;
-- (void)_queue_deliverActivityMoveStatistics:(id)arg1 exerciseStatistics:(id)arg2 standHoursInfo:(id)arg3 workouts:(id)arg4;
 - (void)_queue_deliverError:(id)arg1;
+- (void)_queue_deliverResult:(id)arg1;
 - (void)_queue_deliverUpdates;
+- (void)_queue_didDeactivate;
 - (BOOL)_queue_queryIsRunning;
+- (id)_queue_queryResultFromDataSourceWithError:(id *)arg1;
 - (void)_queue_reset;
 - (void)_queue_start;
 - (void)_queue_stop;
-- (BOOL)_queue_updateDataSourceWithMoveStatistics:(id *)arg1 exerciseStatistics:(id *)arg2 standInfo:(id *)arg3 workoutInfoOut:(id *)arg4 error:(id *)arg5;
-- (BOOL)_shouldListenForUpdates;
-- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 
 @end
 

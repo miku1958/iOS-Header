@@ -6,21 +6,19 @@
 
 #import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
 
-@class NTKColoringLabel;
+@class NTKDateRichComplicationFullColorImageView;
 
 @interface NTKDateRichComplicationCircularView : NTKRichComplicationCircularBaseView
 {
-    NTKColoringLabel *_weekdayLabel;
-    NTKColoringLabel *_dayLabel;
+    NTKDateRichComplicationFullColorImageView *_dateView;
 }
 
 - (void).cxx_destruct;
-- (id)_newLabelSubviewWithFont:(id)arg1;
-- (void)_timeChanged:(id)arg1;
-- (void)_updateDate;
-- (void)dealloc;
+- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
 - (void)layoutSubviews;
+- (void)transitionToMonochromeWithFraction:(double)arg1;
+- (void)updateMonochromeColor;
 
 @end
 

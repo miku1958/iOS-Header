@@ -28,12 +28,12 @@
 @property (readonly, strong, nonatomic) NSIndexSet *updatedFilteredIndexes;
 
 + (id)notificationForDerivedObject:(id)arg1 priorChangeState:(id)arg2 forBackingObjectNotification:(id)arg3;
+- (void).cxx_destruct;
 - (id)_changedObjects;
 - (id)_diffDescription;
 - (BOOL)_getOldSet:(id *)arg1 newSet:(id *)arg2;
 - (id)albumList;
 - (BOOL)countDidChange;
-- (void)dealloc;
 - (id)init;
 - (id)initWithFilteredAlbumList:(id)arg1 albumListChangeNotification:(id)arg2;
 - (id)object;

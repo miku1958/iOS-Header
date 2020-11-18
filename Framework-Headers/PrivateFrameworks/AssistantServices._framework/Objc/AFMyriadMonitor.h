@@ -8,19 +8,24 @@
 
 #import <AssistantServices/AFNotifyObserverDelegate-Protocol.h>
 
-@class AFNotifyObserver, NSMutableArray, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class AFNotifyObserver, AFQueue, AFWatchdogTimer, NSString;
+@protocol OS_dispatch_queue;
 
 @interface AFMyriadMonitor : NSObject <AFNotifyObserverDelegate>
 {
     long long _state;
-    NSObject<OS_dispatch_source> *_timer;
-    struct __CFNotificationCenter *_center;
+    AFWatchdogTimer *_timer;
     NSObject<OS_dispatch_queue> *_myriadMonitorQueue;
-    NSMutableArray *_completions;
+    AFQueue *_completions;
+    AFNotifyObserver *_beginObserver;
     AFNotifyObserver *_wonObserver;
     AFNotifyObserver *_lostObserver;
-    AFNotifyObserver *_beganObserver;
+    AFNotifyObserver *_repostedWonObserver;
+    double _myriadEventMonitorTimeout;
+    BOOL _isRegisteredForMyriadEventNotification;
+    BOOL _ignoreMyriadEvents;
+    BOOL _didRequestCurrentDecisionResult;
+    BOOL _ignoreRepostMyriadNotification;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,18 +33,27 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)clear;
 + (id)sharedMonitor;
-+ (void)waitForMyriadDecisionWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (void)_clear;
+- (void)_dequeueBlocksWithSignal:(long long)arg1;
+- (void)_deregisterFromMyriadEventNotifications;
+- (void)_deregisterFromRepostedDecisionResultsObservers;
+- (void)_fetchCurrentMyraidDecision;
 - (void)_flushCompletions:(BOOL)arg1;
-- (void)addCompletion:(CDUnknownBlockType)arg1;
-- (void)clear;
+- (void)_ignoreRepostMyriadNotification:(BOOL)arg1;
+- (id)_myriadStateToString:(long long)arg1;
+- (void)_registerForMyriadEvents;
+- (void)_resultSeenWithValue:(BOOL)arg1;
+- (void)_setDecisionIsPending;
 - (void)dealloc;
+- (void)dequeueBlocksWaitingForMyriadDecision;
+- (void)ignoreMyriadEvents:(BOOL)arg1;
 - (id)init;
 - (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;
-- (void)resultSeenWithValue:(BOOL)arg1;
-- (void)setDecisionIsPending;
+- (void)startMonitoringWithTimeoutInterval:(double)arg1;
+- (void)stopMonitoring;
+- (void)waitForMyriadDecisionWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

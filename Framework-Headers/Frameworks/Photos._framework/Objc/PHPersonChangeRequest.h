@@ -4,24 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHChangeRequest.h>
 
 #import <Photos/PHInsertChangeRequest-Protocol.h>
 #import <Photos/PHUpdateChangeRequest-Protocol.h>
 
-@class NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableSet, NSString, PHChangeRequestHelper, PHObjectPlaceholder, PHPerson, PHRelationshipChangeRequestHelper;
+@class NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableSet, NSString, PHObjectPlaceholder, PHPerson, PHRelationshipChangeRequestHelper;
 
-@interface PHPersonChangeRequest : NSObject <PHInsertChangeRequest, PHUpdateChangeRequest>
+@interface PHPersonChangeRequest : PHChangeRequest <PHInsertChangeRequest, PHUpdateChangeRequest>
 {
-    BOOL _clientEntitled;
-    NSString *_clientName;
-    int _clientProcessID;
     NSMutableArray *_personUUIDsToMerge;
     NSString *_nominalMergeTargetUUID;
     NSMutableSet *_faceUUIDsRequiringFaceCropGeneration;
     NSMutableSet *_rejectedMergeCandidatePersonUUIDs;
     NSMutableSet *_graphDedupePersonUUIDs;
-    PHChangeRequestHelper *_helper;
     PHPerson *_targetPerson;
     NSString *_identifier;
     PHRelationshipChangeRequestHelper *_facesHelper;
@@ -31,19 +27,21 @@
     PHRelationshipChangeRequestHelper *_invalidMergeCandidatesHelper;
 }
 
-@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled; // @synthesize clientEntitled=_clientEntitled;
-@property (readonly, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
-@property (readonly, nonatomic) int clientProcessID; // @synthesize clientProcessID=_clientProcessID;
+@property (nonatomic) unsigned short ageType;
+@property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
+@property (readonly, nonatomic) NSString *clientName;
+@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (copy, nonatomic) NSDictionary *contactMatchingDictionary;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayName;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *facesHelper; // @synthesize facesHelper=_facesHelper;
+@property (nonatomic) unsigned short genderType;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isInPersonNamingModel) BOOL inPersonNamingModel;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *invalidMergeCandidatesHelper; // @synthesize invalidMergeCandidatesHelper=_invalidMergeCandidatesHelper;
+@property (readonly) BOOL isNewRequest;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *keyFaceHelper; // @synthesize keyFaceHelper=_keyFaceHelper;
 @property (nonatomic) short keyFacePickSource;
 @property (readonly, nonatomic) NSString *managedEntityName;
@@ -51,15 +49,14 @@
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *mergeCandidatesHelper; // @synthesize mergeCandidatesHelper=_mergeCandidatesHelper;
 @property (readonly, getter=isMutated) BOOL mutated;
 @property (copy, nonatomic) NSString *name;
-@property (readonly, getter=isNew) BOOL new;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (copy, nonatomic) NSString *personUri;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedPerson;
+@property (nonatomic) long long questionType;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *rejectedFacesHelper; // @synthesize rejectedFacesHelper=_rejectedFacesHelper;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PHPerson *targetPerson; // @synthesize targetPerson=_targetPerson;
 @property (nonatomic) long long type;
-@property (readonly, nonatomic) NSString *uuid;
 @property (nonatomic, getter=isVerified) BOOL verified;
 @property (nonatomic) long long verifiedType;
 
@@ -76,7 +73,6 @@
 - (id)_existentFaceObjectIDs;
 - (id)_existentInvalidMergeCandidateObjectIDs;
 - (id)_existentMergeCandidateObjectIDs;
-- (id)_existentObjectIDsUsingQuery:(id)arg1;
 - (id)_existentRejectedFaceObjectIDs;
 - (BOOL)_hasMutationForVerifiedType:(int *)arg1;
 - (id)_mutableFaceObjectIDsAndUUIDs;
@@ -96,16 +92,13 @@
 - (void)addMergeCandidatePersons:(id)arg1;
 - (void)addRejectedFaces:(id)arg1;
 - (void)addRejectedFaces:(id)arg1 forCluster:(BOOL)arg2;
-- (BOOL)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id *)arg3;
-- (BOOL)applyMutationsToManagedObject:(id)arg1 error:(id *)arg2;
+- (BOOL)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
-- (void)didMutate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
-- (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
+- (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
 - (void)mergePersons:(id)arg1;
-- (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
 - (id)personUUID;
 - (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
@@ -116,8 +109,8 @@
 - (void)setKeyFace:(id)arg1;
 - (void)setKeyFace:(id)arg1 forCluster:(BOOL)arg2;
 - (void)setKeyFaceForUserPick:(id)arg1;
+- (void)setKeyFaceForUserPick:(id)arg1 forCluster:(BOOL)arg2;
 - (void)setPersonUUID:(id)arg1;
-- (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 
 @end

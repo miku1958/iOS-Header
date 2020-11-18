@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_postPurchaseNotification:(id)arg1 error:(id)arg2;
 - (void)_postSubscriptionNotificationWithChannelName:(id)arg1 buyParams:(id)arg2 error:(id)arg3;
 - (void)_postTransactionDidStartNotificationWithBuyParams:(id)arg1;
+- (void)_recordLog:(id)arg1 withBuyParams:(id)arg2;
 - (void)_startPurchaseFlowForOffer:(id)arg1 playWhenDone:(BOOL)arg2 appContext:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_startSubscribeFlowForOffer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithActionRef:(id)arg1 contextData:(id)arg2 appContext:(id)arg3;

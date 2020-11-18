@@ -28,9 +28,9 @@
     unsigned long long _currentNumberOfColumns;
 }
 
-@property (readonly, nonatomic) const struct __CFString *accessoryButtonEventTrackerKey;
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
 @property (readonly, nonatomic) unsigned long long accessoryButtonType;
+@property (readonly, nonatomic) Class collectionViewItemClass;
 @property (nonatomic) unsigned long long currentNumberOfColumns; // @synthesize currentNumberOfColumns=_currentNumberOfColumns;
 @property (strong, nonatomic) id<PXUIViewControllerZoomTransitionEndPoint> currentTransitionEndPoint; // @synthesize currentTransitionEndPoint=_currentTransitionEndPoint;
 @property (nonatomic) long long currentVisibility; // @synthesize currentVisibility=_currentVisibility;
@@ -61,6 +61,7 @@
 - (long long)_columnSpanForRowType:(unsigned long long)arg1;
 - (void)_configureMetricsForMultiRow:(id)arg1 dataSourceRange:(struct _NSRange)arg2;
 - (void)_configureMetricsForSingleRow:(id)arg1 dataSourceRange:(struct _NSRange)arg2;
+- (void)_contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)_dismissIfNeeded;
 - (void)_fillViewControllerEntryForRowType:(unsigned long long)arg1;
 - (struct CGRect)_frameForRowType:(unsigned long long)arg1 inRect:(struct CGRect)arg2;
@@ -81,10 +82,11 @@
 - (id)initWithDataSourceManager:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (BOOL)px_canPerformZoomTransitionWithDetailViewController:(id)arg1;
+- (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)px_endPointForTransition:(id)arg1;
 - (id)showAllMemoriesFeedAnimated:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (void)userDidSelectAccessoryButton:(id)arg1;
+- (void)userDidSelectAccessoryButton:(struct NSObject *)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;
 

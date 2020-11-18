@@ -9,18 +9,23 @@
 #import <UserNotifications/NSCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
 
-@class NSDate, UNNotificationRequest;
+@class NSArray, NSDate, NSString, UNNotificationRequest;
 
 @interface UNNotification : NSObject <NSCopying, NSSecureCoding>
 {
     NSDate *_date;
     UNNotificationRequest *_request;
+    NSString *_sourceIdentifier;
+    NSArray *_intentIdentifiers;
 }
 
 @property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, copy, nonatomic) NSArray *intentIdentifiers; // @synthesize intentIdentifiers=_intentIdentifiers;
 @property (readonly, copy, nonatomic) UNNotificationRequest *request; // @synthesize request=_request;
+@property (readonly, copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 
 + (id)notificationWithRequest:(id)arg1 date:(id)arg2;
++ (id)notificationWithRequest:(id)arg1 date:(id)arg2 sourceIdentifier:(id)arg3 intentIdentifiers:(id)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -28,7 +33,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithNotificationRequest:(id)arg1 date:(id)arg2;
+- (id)initWithNotificationRequest:(id)arg1 date:(id)arg2 sourceIdentifier:(id)arg3 intentIdentifiers:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

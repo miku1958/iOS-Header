@@ -51,9 +51,11 @@
 - (id)initWithProfile:(id)arg1;
 - (void)postCompanionUserNotificationOfType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postNotificationWithIdentifier:(id)arg1 content:(id)arg2 trigger:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)postNotificationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)receivedCompanionUserNotificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerWithUserNotificationCenter;
+- (void)removeDeliveredNotificationsWithIdentifiers:(id)arg1;
 - (void)removeNotificationObserver:(id)arg1;
 - (void)setBadge:(id)arg1 forDomain:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 

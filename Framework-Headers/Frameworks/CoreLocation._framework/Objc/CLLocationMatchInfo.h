@@ -18,7 +18,7 @@
 
 @property (readonly, nonatomic) struct CLLocationCoordinate2D matchCoordinate;
 @property (readonly, nonatomic) double matchCourse;
-@property (readonly, nonatomic) NSData *matchDataArray;
+@property (readonly, copy, nonatomic) NSData *matchDataArray;
 @property (readonly, nonatomic) int matchFormOfWay;
 @property (readonly, nonatomic) long long matchQuality;
 @property (readonly, nonatomic) int matchRoadClass;

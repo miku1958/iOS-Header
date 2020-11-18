@@ -7,18 +7,15 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class HMDApplicationMonitor, HMFMessageDispatcher, LSApplicationWorkspace, NSMutableDictionary, NSObject, NSString, NSUUID;
+@class HMDApplicationMonitor, LSApplicationWorkspace, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HMDApplicationRegistry : HMFObject <HMFMessageReceiver, LSApplicationWorkspaceObserverProtocol, HMFLogging>
+@interface HMDApplicationRegistry : HMFObject <LSApplicationWorkspaceObserverProtocol, HMFLogging>
 {
     HMDApplicationMonitor *_monitor;
     NSObject<OS_dispatch_queue> *_xpcQueue;
-    NSUUID *_uuid;
-    HMFMessageDispatcher *_messageDispatcher;
     LSApplicationWorkspace *_appWorkspace;
     NSMutableDictionary *_applications;
 }
@@ -28,12 +25,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
-@property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (strong, nonatomic) HMDApplicationMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *xpcQueue; // @synthesize xpcQueue=_xpcQueue;
 
 + (id)logCategory;
@@ -44,7 +37,7 @@
 - (void)dealloc;
 - (id)ignoredForegroundAppBundleIdentifiers;
 - (id)init;
-- (id)initWithMessageDispatcher:(id)arg1 xpcQueue:(id)arg2;
+- (id)initQueue:(id)arg1;
 - (void)processTerminated:(id)arg1;
 - (void)startMonitoringConnection:(id)arg1;
 - (void)stopMonitoringConnection:(id)arg1;

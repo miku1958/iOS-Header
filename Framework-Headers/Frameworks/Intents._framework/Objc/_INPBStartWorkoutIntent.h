@@ -20,6 +20,7 @@
         unsigned int workoutLocationType:1;
     } _has;
     BOOL _isOpenEnded;
+    BOOL __encodeLegacyGloryData;
     int _workoutGoalUnitType;
     int _workoutLocationType;
     _INPBDouble *_goalValue;
@@ -27,6 +28,7 @@
     _INPBDataString *_workoutName;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDouble *goalValue; // @synthesize goalValue=_goalValue;
@@ -44,11 +46,14 @@
 @property (nonatomic) int workoutLocationType; // @synthesize workoutLocationType=_workoutLocationType;
 @property (strong, nonatomic) _INPBDataString *workoutName; // @synthesize workoutName=_workoutName;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsWorkoutGoalUnitType:(id)arg1;
 - (int)StringAsWorkoutLocationType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)workoutGoalUnitTypeAsString:(int)arg1;

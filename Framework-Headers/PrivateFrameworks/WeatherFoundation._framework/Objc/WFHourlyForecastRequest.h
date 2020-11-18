@@ -6,10 +6,16 @@
 
 #import <WeatherFoundation/WFAggregateForecastRequest.h>
 
+@class NSLocale;
+
 @interface WFHourlyForecastRequest : WFAggregateForecastRequest
 {
+    NSLocale *_locale;
 }
 
+@property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
+
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithLocation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startWithService:(id)arg1;

@@ -6,26 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableArray, NSMutableDictionary;
 
 @interface CLKUIResourceManager : NSObject
 {
     NSMutableDictionary *_recentProvidersForUuid;
     NSMutableDictionary *_atlasesByUuid;
     NSMutableDictionary *_providersByKey;
+    unsigned long long _memoryUsed;
+    NSMutableArray *_textureLoaderQueues;
 }
 
 + (id)sharedInstance;
-+ (id)sharedMetalInstance;
 - (void).cxx_destruct;
+- (id)_fetchOldestAtlas;
 - (id)_newAtlasForUuid:(id)arg1;
 - (void)_purgeAllUnconditionally;
 - (void)_purgeAtlases:(id)arg1;
+- (id)borrowTextureLoadingQueue;
 - (void)dealloc;
 - (id)delegateForUuid:(id)arg1;
+- (BOOL)ensureMemoryAvailable:(unsigned long long)arg1;
 - (id)init;
+- (BOOL)memoryIsAvailable:(unsigned long long)arg1;
+- (void)notifyAtlas:(id)arg1 willChangeToMemoryCost:(unsigned long long)arg2;
 - (void)purge:(id)arg1;
 - (void)purgeAllUnused;
+- (void)returnTextureLoadingQueue:(id)arg1;
 - (id)textureForUuid:(id)arg1 delegate:(id)arg2 rect: /* Error: Ran out of types for this method. */;
 
 @end

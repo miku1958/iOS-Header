@@ -19,8 +19,8 @@
 }
 
 @property (strong) NSData *attributeDERData; // @synthesize attributeDERData=_attributeDERData;
-@property (readonly) MSOID *attributeType; // @synthesize attributeType=_attributeType;
-@property (readonly) NSArray *attributeValues; // @synthesize attributeValues=_attributeValues;
+@property (readonly, strong) MSOID *attributeType; // @synthesize attributeType=_attributeType;
+@property (readonly, strong) NSArray *attributeValues; // @synthesize attributeValues=_attributeValues;
 @property struct Attribute *encodedAttribute; // @synthesize encodedAttribute=_encodedAttribute;
 
 + (id)decodeAttribute:(struct Attribute *)arg1 error:(id *)arg2;

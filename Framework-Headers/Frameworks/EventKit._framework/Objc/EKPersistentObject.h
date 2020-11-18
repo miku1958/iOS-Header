@@ -38,6 +38,7 @@
 
 + (id)_relationForKey:(id)arg1;
 + (BOOL)_shouldRetainPropertyForKey:(id)arg1;
++ (Class)alternateUniverseClass;
 + (id)defaultPropertiesToLoad;
 + (Class)frozenClass;
 + (Class)meltedClass;
@@ -81,8 +82,10 @@
 - (id)dump;
 - (id)existingMeltedObject;
 - (BOOL)existsInStore;
+- (Class)frozenClass;
 - (struct EKPersistentObject *)frozenObject;
 - (id)init;
+- (id)initWithAlternateUniverseObject:(struct EKPersistentObject *)arg1 inEventStore:(id)arg2 withUpdatedChildObjects:(id)arg3;
 - (id)initWithObject:(id)arg1;
 - (BOOL)isCompletelyEqual:(id)arg1;
 - (BOOL)isDirty;

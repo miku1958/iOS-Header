@@ -8,29 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSource : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    int _resultProviderId;
     NSString *_sourceId;
     NSString *_version;
+    int _resultProviderId;
     struct {
-        unsigned int resultProviderId:1;
-    } _has;
+        unsigned int has_resultProviderId:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_sourceId:1;
+        unsigned int read_version:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_sourceId:1;
+        unsigned int wrote_version:1;
+        unsigned int wrote_resultProviderId:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasResultProviderId;
 @property (readonly, nonatomic) BOOL hasSourceId;
 @property (readonly, nonatomic) BOOL hasVersion;
-@property (nonatomic) int resultProviderId; // @synthesize resultProviderId=_resultProviderId;
-@property (strong, nonatomic) NSString *sourceId; // @synthesize sourceId=_sourceId;
+@property (nonatomic) int resultProviderId;
+@property (strong, nonatomic) NSString *sourceId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *version; // @synthesize version=_version;
+@property (strong, nonatomic) NSString *version;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readSourceId;
+- (void)_readVersion;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

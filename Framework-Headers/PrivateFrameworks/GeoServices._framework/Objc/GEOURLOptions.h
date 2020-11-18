@@ -9,35 +9,52 @@
 #import <GeoServices/GEOURLSerializable-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOURLCamera, GEOURLCenterSpan, GEOURLRouteHandle, GEOURLTimePoint, NSString;
+@class GEOURLCamera, GEOURLCenterSpan, GEOURLRouteHandle, GEOURLTimePoint, NSString, PBDataReader;
 
 @interface GEOURLOptions : PBCodable <GEOURLSerializable, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOURLCamera *_camera;
     GEOURLCenterSpan *_centerSpan;
-    int _mapType;
     NSString *_referralIdentifier;
     GEOURLRouteHandle *_routeHandle;
     GEOURLTimePoint *_timePoint;
+    int _mapType;
     int _transportType;
     int _userTrackingMode;
     BOOL _connectedToCar;
     BOOL _enableTraffic;
     struct {
-        unsigned int mapType:1;
-        unsigned int transportType:1;
-        unsigned int userTrackingMode:1;
-        unsigned int connectedToCar:1;
-        unsigned int enableTraffic:1;
-    } _has;
+        unsigned int has_mapType:1;
+        unsigned int has_transportType:1;
+        unsigned int has_userTrackingMode:1;
+        unsigned int has_connectedToCar:1;
+        unsigned int has_enableTraffic:1;
+        unsigned int read_camera:1;
+        unsigned int read_centerSpan:1;
+        unsigned int read_referralIdentifier:1;
+        unsigned int read_routeHandle:1;
+        unsigned int read_timePoint:1;
+        unsigned int wrote_camera:1;
+        unsigned int wrote_centerSpan:1;
+        unsigned int wrote_referralIdentifier:1;
+        unsigned int wrote_routeHandle:1;
+        unsigned int wrote_timePoint:1;
+        unsigned int wrote_mapType:1;
+        unsigned int wrote_transportType:1;
+        unsigned int wrote_userTrackingMode:1;
+        unsigned int wrote_connectedToCar:1;
+        unsigned int wrote_enableTraffic:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOURLCamera *camera; // @synthesize camera=_camera;
-@property (strong, nonatomic) GEOURLCenterSpan *centerSpan; // @synthesize centerSpan=_centerSpan;
-@property (nonatomic) BOOL connectedToCar; // @synthesize connectedToCar=_connectedToCar;
+@property (strong, nonatomic) GEOURLCamera *camera;
+@property (strong, nonatomic) GEOURLCenterSpan *centerSpan;
+@property (nonatomic) BOOL connectedToCar;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL enableTraffic; // @synthesize enableTraffic=_enableTraffic;
+@property (nonatomic) BOOL enableTraffic;
 @property (readonly, nonatomic) BOOL hasCamera;
 @property (readonly, nonatomic) BOOL hasCenterSpan;
 @property (nonatomic) BOOL hasConnectedToCar;
@@ -49,18 +66,24 @@
 @property (nonatomic) BOOL hasTransportType;
 @property (nonatomic) BOOL hasUserTrackingMode;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) int mapType; // @synthesize mapType=_mapType;
-@property (strong, nonatomic) NSString *referralIdentifier; // @synthesize referralIdentifier=_referralIdentifier;
-@property (strong, nonatomic) GEOURLRouteHandle *routeHandle; // @synthesize routeHandle=_routeHandle;
+@property (nonatomic) int mapType;
+@property (strong, nonatomic) NSString *referralIdentifier;
+@property (strong, nonatomic) GEOURLRouteHandle *routeHandle;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) GEOURLTimePoint *timePoint; // @synthesize timePoint=_timePoint;
-@property (nonatomic) int transportType; // @synthesize transportType=_transportType;
-@property (nonatomic) int userTrackingMode; // @synthesize userTrackingMode=_userTrackingMode;
+@property (strong, nonatomic) GEOURLTimePoint *timePoint;
+@property (nonatomic) int transportType;
+@property (nonatomic) int userTrackingMode;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsMapType:(id)arg1;
 - (int)StringAsTransportType:(id)arg1;
 - (int)StringAsUserTrackingMode:(id)arg1;
+- (void)_readCamera;
+- (void)_readCenterSpan;
+- (void)_readReferralIdentifier;
+- (void)_readRouteHandle;
+- (void)_readTimePoint;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
@@ -68,6 +91,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transportTypeAsString:(int)arg1;
 - (id)urlRepresentation;

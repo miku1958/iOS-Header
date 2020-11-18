@@ -6,22 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <EventKitUI/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
+#import <EventKitUI/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <EventKitUI/CNContactPickerDelegate-Protocol.h>
-#import <EventKitUI/MFAutocompleteResultsTableViewControllerDelegate-Protocol.h>
-#import <EventKitUI/MFComposeRecipientTextViewDelegate-Protocol.h>
-#import <EventKitUI/MFContactsSearchConsumer-Protocol.h>
 
-@class CNAutocompleteFetchContext, EKEvent, MFAutocompleteResultsTableViewController, MFComposeRecipientTextView, MFContactsSearchManager, MFSearchShadowView, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
+@class CNAutocompleteFetchContext, CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, CNComposeRecipientTextView, EKEvent, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSNumber, NSOperationQueue, NSString, UIKeyboard, UIScrollView, UITableView;
 @protocol EKEventAttendeePickerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeePicker : UIViewController <MFContactsSearchConsumer, MFComposeRecipientTextViewDelegate, MFAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate>
+@interface EKEventAttendeePicker : UIViewController <CNComposeRecipientTextViewDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNContactPickerDelegate>
 {
     NSArray *_recipients;
-    MFComposeRecipientTextView *_composeRecipientView;
+    CNComposeRecipientTextView *_composeRecipientView;
     UIScrollView *_recipientScrollView;
     UITableView *_searchResultsView;
-    MFSearchShadowView *_shadowView;
     BOOL _showingSearchField;
     UIKeyboard *_keyboard;
     NSNumber *_lastSearchId;
@@ -35,10 +33,11 @@ __attribute__((visibility("hidden")))
     BOOL _suppressAvailabilityRequests;
     NSDate *_overriddenEventStartDate;
     NSDate *_overriddenEventEndDate;
-    MFContactsSearchManager *_searchManager;
+    CNAutocompleteSearchManager *_searchManager;
     NSMutableArray *_searchResults;
-    MFAutocompleteResultsTableViewController *_autocompleteTableViewController;
+    CNAutocompleteResultsTableViewController *_autocompleteTableViewController;
     CNAutocompleteFetchContext *_fetchContext;
+    BOOL _hasChanges;
     NSString *_searchAccountID;
     id<EKEventAttendeePickerDelegate> _addressValidationDelegate;
 }
@@ -47,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *addresses;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasChanges; // @synthesize hasChanges=_hasChanges;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *recipients;
 @property (readonly, nonatomic) NSString *remainingText;
@@ -70,7 +70,6 @@ __attribute__((visibility("hidden")))
 - (id)_searchResultsView;
 - (void)_setAtomPresentationOption:(unsigned long long)arg1 forRecipient:(id)arg2;
 - (void)_setRecipientsOnComposeView;
-- (id)_shadowView;
 - (void)_showSearchResultsView;
 - (void)_updateFetchContextChosenAddresses;
 - (BOOL)_zeroKeyworkSearchEnabled;
@@ -96,13 +95,15 @@ __attribute__((visibility("hidden")))
 - (void)finishedSearchingForAutocompleteResults;
 - (void)finishedSearchingForCorecipients;
 - (void)finishedTaskWithID:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 event:(id)arg2 calendar:(id)arg3 overriddenEventStartDate:(id)arg4 overriddenEventEndDate:(id)arg5;
 - (void)loadView;
 - (id)peoplePickerPrompt;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (BOOL)recipientViewShouldIgnoreFirstResponderChanges:(id)arg1;
+- (void)scrollComposeViewToEnd;
 - (void)searchForCorecipients;
 - (void)searchWithText:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

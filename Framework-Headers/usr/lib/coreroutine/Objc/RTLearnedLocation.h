@@ -19,12 +19,15 @@
 @property (readonly, nonatomic) unsigned long long dataPointCount; // @synthesize dataPointCount=_dataPointCount;
 @property (readonly, nonatomic) RTLocation *location; // @synthesize location=_location;
 
++ (double)confidenceFromDataPointCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithLocation:(id)arg1 dataPointCount:(unsigned long long)arg2;
 - (id)initWithLocation:(id)arg1 dataPointCount:(unsigned long long)arg2 confidence:(double)arg3;
 - (id)initWithLocationOfInterest:(id)arg1;
+- (id)initWithMapItem:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) BOOL isUserRequested;
 @property (readonly, nonatomic) BOOL shouldSend;
 
+- (void).cxx_destruct;
 - (id)deferredOperation;
 - (unsigned long long)generationNumber;
 - (unsigned long long)hash;

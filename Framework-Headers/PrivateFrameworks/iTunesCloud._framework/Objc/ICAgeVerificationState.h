@@ -8,11 +8,12 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class ICAgeVerifier, NSError, NSURL;
+@class ICAgeVerifier, ICUserIdentity, NSError, NSURL;
 
 @interface ICAgeVerificationState : NSObject <NSCopying>
 {
     long long _status;
+    ICUserIdentity *_userIdentity;
     long long _treatment;
     NSURL *_verificationURL;
     NSError *_error;
@@ -25,18 +26,23 @@
 @property (readonly, nonatomic, getter=isExplicitContentAllowed) BOOL explicitContentAllowed;
 @property (readonly, nonatomic) long long status; // @synthesize status=_status;
 @property (readonly, nonatomic) long long treatment; // @synthesize treatment=_treatment;
+@property (readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 @property (readonly, copy, nonatomic) NSURL *verificationURL; // @synthesize verificationURL=_verificationURL;
 
-+ (id)ageVerificationStateNotRequired;
-+ (id)ageVerificationStateNotRequiredWithError:(id)arg1;
-+ (id)ageVerificationStateNotRequiredWithTreatment:(long long)arg1;
-+ (id)ageVerificationStateNotRequiredWithTreatment:(long long)arg1 verificationURL:(id)arg2;
++ (id)_stateFromDictionaryRepresentation:(id)arg1 DSID:(id)arg2;
++ (id)ageVerificationStateNotRequiredForUserIdentity:(id)arg1;
++ (id)ageVerificationStateNotRequiredForUserIdentity:(id)arg1 withError:(id)arg2;
++ (id)ageVerificationStateNotRequiredForUserIdentity:(id)arg1 withTreatment:(long long)arg2;
++ (id)ageVerificationStateNotRequiredForUserIdentity:(id)arg1 withTreatment:(long long)arg2 verificationURL:(id)arg3;
++ (id)cachedStateForDSID:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithStatus:(long long)arg1 treatment:(long long)arg2 verificationURL:(id)arg3 error:(id)arg4;
+- (id)_dictionaryRepresentationWithDSID:(id)arg1;
+- (id)_initWithUserIdentity:(id)arg1 status:(long long)arg2 treatment:(long long)arg3 verificationURL:(id)arg4 error:(id)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithAgeVerifier:(id)arg1 treatment:(long long)arg2 verificationURL:(id)arg3;
+- (id)initWithUserIdentity:(id)arg1 ageVerifier:(id)arg2 treatment:(long long)arg3 verificationURL:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (void)saveToUserDefaults;
 
 @end
 

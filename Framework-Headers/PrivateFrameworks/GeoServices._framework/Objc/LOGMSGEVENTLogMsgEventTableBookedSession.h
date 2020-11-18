@@ -8,20 +8,32 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface LOGMSGEVENTLogMsgEventTableBookedSession : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_bookedTableSessionId;
     NSMutableArray *_bookedTables;
+    struct {
+        unsigned int read_bookedTableSessionId:1;
+        unsigned int read_bookedTables:1;
+        unsigned int wrote_bookedTableSessionId:1;
+        unsigned int wrote_bookedTables:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *bookedTableSessionId; // @synthesize bookedTableSessionId=_bookedTableSessionId;
-@property (strong, nonatomic) NSMutableArray *bookedTables; // @synthesize bookedTables=_bookedTables;
+@property (strong, nonatomic) NSString *bookedTableSessionId;
+@property (strong, nonatomic) NSMutableArray *bookedTables;
 @property (readonly, nonatomic) BOOL hasBookedTableSessionId;
 
 + (Class)bookedTableType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsBookedTable:(id)arg1;
+- (void)_readBookedTableSessionId;
+- (void)_readBookedTables;
 - (void)addBookedTable:(id)arg1;
 - (id)bookedTableAtIndex:(unsigned long long)arg1;
 - (unsigned long long)bookedTablesCount;
@@ -33,6 +45,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

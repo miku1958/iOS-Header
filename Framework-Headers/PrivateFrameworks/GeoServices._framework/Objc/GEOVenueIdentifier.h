@@ -34,6 +34,7 @@
 + (id)componentIdentifiersFromVenueIdentifiers:(id)arg1;
 + (unsigned long long)venueIdFromVenueIdentifiers:(id)arg1;
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithVenueID:(unsigned long long)arg1;
 - (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2;
 - (id)initWithVenueID:(unsigned long long)arg1 businessID:(unsigned long long)arg2 componentIdentifiers:(id)arg3;

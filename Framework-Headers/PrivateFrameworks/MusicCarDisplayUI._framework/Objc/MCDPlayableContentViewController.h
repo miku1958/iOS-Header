@@ -8,7 +8,7 @@
 
 #import <MusicCarDisplayUI/UINavigationControllerDelegate-Protocol.h>
 
-@class MCDPCContainer, MCDPCModel, NSArray, NSString;
+@class MCDPCContainer, MCDPCModel, NSArray, NSOperationQueue, NSString;
 
 @interface MCDPlayableContentViewController : UINavigationController <UINavigationControllerDelegate>
 {
@@ -19,12 +19,14 @@
     BOOL _hasSectionedContent;
     BOOL _hasLoaded;
     NSString *_bundleID;
+    NSOperationQueue *_modelInvalidationQueue;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSOperationQueue *modelInvalidationQueue; // @synthesize modelInvalidationQueue=_modelInvalidationQueue;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -34,7 +36,6 @@
 - (void)_nowPlayingIdentifiersChanged:(id)arg1;
 - (void)_populateStack;
 - (void)_setupView;
-- (void)_updateStackForPlaying:(BOOL)arg1;
 - (id)currentStack;
 - (id)initWithBundleID:(id)arg1;
 - (id)initWithBundleID:(id)arg1 stack:(id)arg2;

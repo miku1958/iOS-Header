@@ -51,13 +51,13 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithMultiwayConfig:(id)arg1;
+- (id)initWithStreamConfig:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)newAudioRuleCollectionWithAudioRuleCollection:(id)arg1;
+- (id)newMultiwayAudioStream;
 - (void)printWithLogFile:(void *)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setPayloadFlagsWithAudioRuleCollection:(id)arg1;
+- (void)setPayloadFlagsWithPayloads:(id)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

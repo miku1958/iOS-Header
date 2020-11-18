@@ -30,14 +30,14 @@
 - (void)addMediaItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)artworkCatalog;
 - (id)artworkCatalogsWithMaximumCount:(unsigned long long)arg1;
-- (BOOL)canPlayUsingNetworkType:(long long)arg1;
 - (unsigned long long)count;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)existsInLibrary;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMultiverseIdentifier:(id)arg1;
+- (id)initWithMultiverseIdentifier:(id)arg1 library:(id)arg2;
 - (id)initWithPersistentID:(unsigned long long)arg1;
+- (id)initWithPersistentID:(unsigned long long)arg1 mediaLibrary:(id)arg2;
 - (BOOL)isCloudMix;
 - (BOOL)isEqual:(id)arg1;
 - (id)items;

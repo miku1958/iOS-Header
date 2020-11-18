@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) int functionIndex; // @synthesize functionIndex=mFunctionIndex;
 
++ (BOOL)storageExceedsMaxFormulaLength:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(BOOL)arg2;
 - (id)nodesToCheckForBareArgumentPlaceholders;

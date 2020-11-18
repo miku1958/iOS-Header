@@ -9,34 +9,39 @@
 #import <GeoServices/GEOServerFormatTokenPriceValue-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, PBUnknownFields;
 
 @interface GEOPrice : PBCodable <GEOServerFormatTokenPriceValue, NSCopying>
 {
-    float _amount;
+    PBUnknownFields *_unknownFields;
     NSString *_currencyCode;
+    float _amount;
     struct {
-        unsigned int amount:1;
-    } _has;
+        unsigned int has_amount:1;
+    } _flags;
 }
 
-@property (nonatomic) float amount; // @synthesize amount=_amount;
+@property (nonatomic) float amount;
 @property (readonly, nonatomic) NSString *currencyCode; // @dynamic currencyCode;
-@property (strong, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property (strong, nonatomic) NSString *currencyCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAmount;
 @property (readonly, nonatomic) BOOL hasCurrencyCode;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (readonly, nonatomic) double value;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

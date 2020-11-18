@@ -6,20 +6,9 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardFoundation/SBFProceduralWallpaper-Protocol.h>
-
-@class NSString;
-@protocol SBFProceduralWallpaperDelegate;
-
-@interface SBFProceduralWallpaper : UIView <SBFProceduralWallpaper>
+@interface SBFProceduralWallpaper : UIView
 {
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SBFProceduralWallpaperDelegate> delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (id)identifier;
 - (void)setAnimating:(BOOL)arg1;

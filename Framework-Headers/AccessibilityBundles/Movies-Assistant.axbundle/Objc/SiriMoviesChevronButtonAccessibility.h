@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityProxyChevronButton;
-- (id)_getShowtimeLabelForType:(long long)arg1;
 - (id)accessibilityLabel;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;

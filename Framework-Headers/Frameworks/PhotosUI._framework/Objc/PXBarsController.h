@@ -36,6 +36,7 @@
 - (void)_updateBarsIfNeeded;
 - (id)barButtonItemForIdentifier:(id)arg1;
 - (id)init;
+- (void)invalidateBarButtonItemWithIdentifier:(id)arg1;
 - (void)invalidateBars;
 - (void)updateBars;
 - (void)updateIfNeeded;

@@ -33,6 +33,7 @@
     struct CGSize _viewportSize;
     struct CGSize __targetSize;
     struct CGRect _desiredContentsRect;
+    struct CGRect _cropRect;
     struct CGRect _contentsRect;
 }
 
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) id<PXDisplayAsset> asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
 @property (readonly, nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
+@property (readonly, nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGRect desiredContentsRect; // @synthesize desiredContentsRect=_desiredContentsRect;
@@ -81,6 +83,7 @@
 - (void)setAsset:(id)arg1;
 - (void)setContentSize:(struct CGSize)arg1;
 - (void)setContentsRect:(struct CGRect)arg1;
+- (void)setCropRect:(struct CGRect)arg1;
 - (void)setDesiredContentsRect:(struct CGRect)arg1;
 - (void)setMaximumRequestSize:(struct CGSize)arg1;
 - (void)setMediaProvider:(id)arg1;

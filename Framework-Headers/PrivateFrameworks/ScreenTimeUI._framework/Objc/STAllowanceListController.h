@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Preferences/PSListController.h>
+#import <ScreenTimeUI/STPINListViewController.h>
 
 #import <ScreenTimeUI/STAllowanceDetailListControllerDelegate-Protocol.h>
-#import <ScreenTimeUI/STAllowanceSetupListControllerDelegate-Protocol.h>
 
-@class NSArray, NSObject, NSString;
+@class NSArray, NSObject, NSString, PSSpecifier;
 @protocol STRootViewModelCoordinator;
 
-@interface STAllowanceListController : PSListController <STAllowanceDetailListControllerDelegate, STAllowanceSetupListControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface STAllowanceListController : STPINListViewController <STAllowanceDetailListControllerDelegate>
 {
     NSObject<STRootViewModelCoordinator> *_coordinator;
     NSArray *_allowanceSpecifiers;
+    PSSpecifier *_enableAllAllowancesSpecifier;
 }
 
 @property (copy) NSArray *allowanceSpecifiers; // @synthesize allowanceSpecifiers=_allowanceSpecifiers;
 @property (strong, nonatomic) NSObject<STRootViewModelCoordinator> *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong) PSSpecifier *enableAllAllowancesSpecifier; // @synthesize enableAllAllowancesSpecifier=_enableAllAllowancesSpecifier;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL shouldShowCompatibilityAlert;
 @property (readonly) Class superclass;
@@ -32,19 +34,22 @@
 - (void)_allowancesDidChange;
 - (void)_setAllAllowancesEnabled:(id)arg1 specifier:(id)arg2;
 - (void)_showAllowanceDetailController:(id)arg1;
+- (void)_showConfirmDeletionView:(id)arg1;
 - (id)_specifierForAllowance:(id)arg1;
 - (id)_subtitleTextForAllowance:(id)arg1;
 - (void)addAllowance:(id)arg1;
 - (void)allowanceDetailController:(id)arg1 didDeleteAllowance:(id)arg2;
 - (void)allowanceDetailController:(id)arg1 didSaveAllowance:(id)arg2;
-- (void)allowanceSetupListController:(id)arg1 didSelectAllowanceIdentifiers:(id)arg2;
-- (void)allowanceSetupListControllerDidCancel:(id)arg1;
 - (BOOL)canBeShownFromSuspendedState;
+- (void)confirmDeletion:(id)arg1;
 - (void)dealloc;
+- (void)deleteAllowance:(id)arg1;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)showStoreDemoAlert;
 - (id)specifiers;
+- (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
+- (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

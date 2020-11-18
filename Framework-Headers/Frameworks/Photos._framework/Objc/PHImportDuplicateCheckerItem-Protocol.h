@@ -6,7 +6,7 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@class IPAMetadata, NSDate, NSMutableDictionary, NSSet, NSString, NSURL;
+@class IPAMetadata, NSArray, NSDate, NSMutableDictionary, NSSet, NSString, NSURL, PHPhotoLibrary;
 @protocol PHImportDuplicateCheckerItem;
 
 @protocol PHImportDuplicateCheckerItem <NSObject>
@@ -30,7 +30,7 @@
 @property (readonly) id uuid;
 @property (readonly) id<PHImportDuplicateCheckerItem> videoComplement;
 
-- (NSSet *)duplicateAssetsForLibrary:(NSString *)arg1;
+- (NSArray *)duplicateAssetsForLibrary:(PHPhotoLibrary *)arg1;
 - (void)loadMetadataSync;
 - (void)setDuplicates:(NSSet *)arg1 forLibrary:(NSString *)arg2;
 @end

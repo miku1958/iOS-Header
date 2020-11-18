@@ -14,27 +14,30 @@
 {
     CHDrawing *_inputDrawing;
     NSArray *_inputDrawingCutPoints;
+    NSDictionary *_languageFitnessByLocale;
     NSArray *_inputStrokeIdentifiers;
-    NSDictionary *__recognitionResultsByLocale;
-    NSDictionary *__languageFitnessByLocale;
+    NSDictionary *_recognitionResultsByLocale;
+    NSDictionary *_errorsByLocale;
 }
 
-@property (readonly, copy, nonatomic) NSDictionary *_languageFitnessByLocale; // @synthesize _languageFitnessByLocale=__languageFitnessByLocale;
-@property (readonly, copy, nonatomic) NSDictionary *_recognitionResultsByLocale; // @synthesize _recognitionResultsByLocale=__recognitionResultsByLocale;
+@property (readonly, copy, nonatomic) NSDictionary *errorsByLocale; // @synthesize errorsByLocale=_errorsByLocale;
 @property (readonly, strong, nonatomic) CHDrawing *inputDrawing;
 @property (readonly, copy, nonatomic) NSArray *inputDrawingCutPoints;
 @property (readonly, copy, nonatomic) NSArray *inputStrokeIdentifiers; // @synthesize inputStrokeIdentifiers=_inputStrokeIdentifiers;
+@property (readonly, copy, nonatomic) NSDictionary *languageFitnessByLocale;
+@property (readonly, copy, nonatomic) NSDictionary *recognitionResultsByLocale; // @synthesize recognitionResultsByLocale=_recognitionResultsByLocale;
 
-+ (id)sortedLocales:(id)arg1 byLanguageFitness:(id)arg2;
++ (id)filteredResultsByLocale:(id)arg1 usingLanguageFitness:(id)arg2;
++ (id)sortedLocales:(id)arg1 usingLanguageFitness:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)highConfidenceTextForSessionResult:(id)arg1 rejectionRate:(double *)arg2;
+- (id)highConfidenceTextForSessionResult:(id)arg1 rejectionRate:(double *)arg2 doesContainUnfilteredMultiLocaleResults:(BOOL *)arg3;
 - (id)init;
-- (id)initWithResultsByLocale:(id)arg1 languageFitnessByLocale:(id)arg2 inputStrokeIdentifiers:(id)arg3;
-- (id)initWithResultsByLocale:(id)arg1 languageFitnessByLocale:(id)arg2 inputStrokeIdentifiers:(id)arg3 inputDrawing:(id)arg4 inputDrawingCutPoints:(id)arg5;
-- (float)languageFitnessForLocale:(id)arg1;
-- (id)recognitionResultsForLocale:(id)arg1;
+- (id)initWithResultsByLocale:(id)arg1 errorsByLocale:(id)arg2 languageFitnessByLocale:(id)arg3 inputStrokeIdentifiers:(id)arg4;
+- (id)initWithResultsByLocale:(id)arg1 errorsByLocale:(id)arg2 languageFitnessByLocale:(id)arg3 inputStrokeIdentifiers:(id)arg4 inputDrawing:(id)arg5 inputDrawingCutPoints:(id)arg6;
+- (double)languageFitnessForLocale:(id)arg1;
+- (id)localesSortedByLanguageFitness:(id)arg1;
 
 @end
 

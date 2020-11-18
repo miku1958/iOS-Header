@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *invalidBaselineConstraints;
 @property (nonatomic) BOOL layoutFillsCanvas;
 @property (nonatomic) BOOL layoutUsesCanvasMarginsWhenFilling;
 @property (readonly) Class superclass;
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)_alignmentPropertySource;
 - (long long)_attributeForConstraintGroupName:(id)arg1;
 - (long long)_axisForSpanningLayoutGuide;
+- (id)_baselineDependentConstraints;
 - (BOOL)_canvasConnectionConstraintsNeedUpdatePass;
 - (void)_clearAllConstraintsArrays;
 - (BOOL)_hasStaleConfiguration;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (long long)_layoutRelationForCanvasConnectionForAttribute:(long long)arg1;
 - (void)_removeConstraintGroupsAsNecessary;
 - (void)_removeIndividualConstraintsAsNecessary;
+- (BOOL)_requiresNotificationForHasBaselinePropertyChanges;
 - (void)_setUpConstraintForItem:(id)arg1 referenceItem:(id)arg2 attribute:(long long)arg3 inConstraintsTable:(id)arg4;
 - (BOOL)_spanningGuideConstraintsNeedUpdate;
 - (void)_updateArrangementConstraints;

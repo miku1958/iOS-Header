@@ -6,15 +6,16 @@
 
 #import <MapsSuggestions/MapsSuggestionsBaseSource.h>
 
-#import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
+#import <MapsSuggestions/MapsSuggestionsPreloadableSource-Protocol.h>
 
-@class EKEventStore, MapsSuggestionsCanKicker, MapsSuggestionsNetworkRequester, NSMutableDictionary, NSObject, NSSet, NSString;
+@class EKCalendarVisibilityManager, EKEventStore, MapsSuggestionsCanKicker, MapsSuggestionsNetworkRequester, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol MapsSuggestionsSourceDelegate, OS_dispatch_queue;
 
-@interface MapsSuggestionsCalendarSource : MapsSuggestionsBaseSource <MapsSuggestionsSource>
+@interface MapsSuggestionsCalendarSource : MapsSuggestionsBaseSource <MapsSuggestionsPreloadableSource>
 {
     BOOL _suspended;
     EKEventStore *_eventStore;
+    EKCalendarVisibilityManager *_calVisibilityManager;
     NSObject<OS_dispatch_queue> *_fimQueue;
     NSMutableDictionary *_handleToGEOMapItemMapping;
     NSString *_siriFoundThisString;
@@ -23,6 +24,7 @@
     MapsSuggestionsCanKicker *_changedNotificationCanKicker;
 }
 
+@property (strong, nonatomic) EKCalendarVisibilityManager *calVisibilityManager; // @synthesize calVisibilityManager=_calVisibilityManager;
 @property (strong, nonatomic) MapsSuggestionsCanKicker *changedNotificationCanKicker; // @synthesize changedNotificationCanKicker=_changedNotificationCanKicker;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MapsSuggestionsSourceDelegate> delegate;
@@ -48,9 +50,9 @@
 - (BOOL)_addTicketedEventFieldsToEntry:(id)arg1 fromSchemaOrgDictionary:(id)arg2 event:(id)arg3;
 - (BOOL)_addTravelFlightFieldsToEntry:(id)arg1 fromSchemaOrgDictionary:(id)arg2 event:(id)arg3;
 - (void)_callUpdateSuggestionEntries;
-- (void)_createEntriesFromEventsAndUpdateSuggestions:(id)arg1 currentLocation:(id)arg2;
+- (BOOL)_createEntriesWithinPeriod:(struct NSDateInterval *)arg1 location:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (long long)_entryTypeFromSchema:(id)arg1;
-- (id)_predicate;
+- (id)_predicateForPeriod:(struct NSDateInterval *)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)dealloc;
 - (void)eventStoreDidChange:(id)arg1;
@@ -58,8 +60,7 @@
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
-- (id)suggestionSubtitleForReservationStatus:(id)arg1 name:(id)arg2 event:(id)arg3;
-- (id)suggestionTitleForReservationStatus:(id)arg1 name:(id)arg2;
+- (BOOL)suggestionsEntriesAtLocation:(id)arg1 period:(struct NSDateInterval *)arg2 handler:(CDUnknownBlockType)arg3;
 - (double)updateSuggestionEntries;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, PHImageManager, PLEditSource, PLPhotoEditModel, PXPhotoKitEditSourceLoader;
+@class NSError, PHImageManager, PICompositionController, PLEditSource, PXPhotoKitEditSourceLoader;
 @protocol OS_dispatch_queue, PXPhotoKitAdjustedDisplayAsset;
 
 @interface _PXPhotoKitAdjustedUIMediaRequest : NSObject
@@ -19,12 +19,12 @@
     PHImageManager *_imageManager;
     PLEditSource *_editSource;
     NSError *_loadError;
-    PLPhotoEditModel *_baseEditModel;
+    PICompositionController *_baseCompositionController;
     double _progress;
 }
 
 @property (readonly, nonatomic) id<PXPhotoKitAdjustedDisplayAsset> asset; // @synthesize asset=_asset;
-@property (strong, nonatomic) PLPhotoEditModel *baseEditModel; // @synthesize baseEditModel=_baseEditModel;
+@property (strong, nonatomic) PICompositionController *baseCompositionController; // @synthesize baseCompositionController=_baseCompositionController;
 @property (nonatomic) BOOL delayRenders; // @synthesize delayRenders=_delayRenders;
 @property (strong, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 @property (readonly, nonatomic) PHImageManager *imageManager; // @synthesize imageManager=_imageManager;

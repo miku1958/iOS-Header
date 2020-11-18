@@ -12,6 +12,7 @@
 
 @interface HUViewControllerTableViewCell : UITableViewCell <HUViewControllerCell>
 {
+    BOOL _ignoreRounding;
     UIViewController *_viewController;
     UIViewController *_parentViewController;
 }
@@ -19,6 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreRounding; // @synthesize ignoreRounding=_ignoreRounding;
 @property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;

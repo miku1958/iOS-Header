@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
 - (id)_doubleBezeledImageWithExteriorShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 interiorShadowRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 fillRed:(double)arg9 green:(double)arg10 blue:(double)arg11 alpha:(double)arg12;
 - (void)_flipImageOrientationHorizontally;
 - (id)_imageScaledToProportion:(double)arg1 interpolationQuality:(int)arg2;
-- (id)_imageWithStylePresets:(id)arg1 withTintColor:(id)arg2;
+- (id)_imageWithStylePresets:(id)arg1 tintColor:(id)arg2 traitCollection:(id)arg3;
 - (id)_initWithOtherImage:(id)arg1;
+- (BOOL)_isPDFVector;
 - (BOOL)_isResizable;
+- (BOOL)_isSVGVector;
 - (BOOL)_isTiledWhenStretchedToSize:(struct CGSize)arg1;
 - (void)_setAlignmentRectInsets:(struct UIEdgeInsets)arg1;
 - (void)_setAlwaysStretches:(BOOL)arg1;

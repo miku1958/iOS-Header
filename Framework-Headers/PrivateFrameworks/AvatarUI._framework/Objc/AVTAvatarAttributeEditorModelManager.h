@@ -31,14 +31,17 @@
 @property (readonly, nonatomic) AVTPresetResourceLoader *resourceLoader; // @synthesize resourceLoader=_resourceLoader;
 
 - (void).cxx_destruct;
-- (id)buildUIModelWithCurrentlySelectedCategory:(id)arg1;
+- (id)buildInitialEditorState;
+- (id)buildUIModelWithCurrentEditorDataSource:(id)arg1 forCategoryAtIndex:(unsigned long long)arg2;
 - (void)cancelAllPreloading;
 - (void)cancelPreloadForSectionItemIndexPath:(id)arg1;
 - (void)dealloc;
 - (id)initWithAvatarRecord:(id)arg1 coreModel:(id)arg2 imageProvider:(id)arg3 resourceLoader:(id)arg4 environment:(id)arg5;
 - (void)preLoadCategory:(id)arg1;
 - (void)preloadSectionItem:(id)arg1 atIndexPath:(id)arg2;
+- (void)updateAvatarBySelectingHeaderPickerItem:(id)arg1 animated:(BOOL)arg2;
 - (void)updateAvatarBySelectingSectionItem:(id)arg1 animated:(BOOL)arg2;
+- (void)updateAvatarWithAvatarUpdater:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
 
 @end
 

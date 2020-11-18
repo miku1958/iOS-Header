@@ -23,6 +23,9 @@
         unsigned int implementsInsertElement:1;
         unsigned int implementsMoveElement:1;
         unsigned int implementsIndexPathVisibility:1;
+        unsigned int implementsBeginRelevanceUpdate:1;
+        unsigned int implementsFinishedRelevanceUpdate:1;
+        unsigned int implementsIdentifierBasedReloadElement:1;
     } _delegateCallbacks;
     NSArray *_hiddenIndices;
     NSMutableSet *_hiddenBundleIdentifiers;
@@ -61,6 +64,7 @@
 - (id)_controllerIndexPathForEngineIndexPath:(id)arg1;
 - (id)_elementAtIndexPath:(id)arg1;
 - (id)_engineIndexPathForControllerIndexPath:(id)arg1;
+- (void)_enumerateEngineElementsInSection:(unsigned long long)arg1 withOptions:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_enumerateEngineElementsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (long long)_indexForSection:(id)arg1;
 - (id)_indexPathForElementWithIdentifier:(id)arg1;
@@ -95,6 +99,7 @@
 - (id)metadataForElementWithIdentifier:(id)arg1;
 - (unsigned long long)numberOfItemsInSectionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfSections;
+- (id)predictedContentForSectionAtIndex:(unsigned long long)arg1 atDate:(id)arg2 limit:(long long)arg3;
 - (id)predictionForElementAtIndexPath:(id)arg1;
 - (void)relevanceEngine:(id)arg1 didInsertElement:(id)arg2 atPath:(id)arg3;
 - (void)relevanceEngine:(id)arg1 didMoveElement:(id)arg2 fromPath:(id)arg3 toPath:(id)arg4;
@@ -102,6 +107,8 @@
 - (void)relevanceEngine:(id)arg1 didRemoveElement:(id)arg2 atPath:(id)arg3;
 - (BOOL)relevanceEngine:(id)arg1 isElementAtPathVisible:(id)arg2;
 - (void)relevanceEngine:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)relevanceEngineDidBeginUpdatingRelevance:(id)arg1;
+- (void)relevanceEngineDidFinishUpdatingRelevance:(id)arg1;
 - (void)resignCurrent;
 - (void)setDataSource:(id)arg1 enabled:(BOOL)arg2;
 

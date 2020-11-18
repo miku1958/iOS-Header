@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE, _TtC15ConversationKit19InCallControlButton;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit41InCallControlsAddParticipantTableViewCell : UITableViewCell
 {
     MISSING_TYPE *titleLabel;

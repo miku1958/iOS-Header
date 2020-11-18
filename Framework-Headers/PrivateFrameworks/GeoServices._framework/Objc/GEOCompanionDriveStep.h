@@ -9,35 +9,52 @@
 #import <GeoServices/GEOCompanionManeuverStep-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEONameInfo, NSMutableArray, NSString;
+@class GEONameInfo, NSMutableArray, NSString, PBDataReader;
 
 @interface GEOCompanionDriveStep : PBCodable <GEOCompanionManeuverStep, NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     struct GEOJunctionElement *_junctionElements;
     unsigned long long _junctionElementsCount;
     unsigned long long _junctionElementsSpace;
-    int _drivingSide;
     GEONameInfo *_exitNumber;
-    int _junctionType;
     NSMutableArray *_maneuverNames;
-    int _maneuverType;
     NSString *_shield;
-    int _shieldType;
     NSMutableArray *_signposts;
+    int _drivingSide;
+    int _junctionType;
+    int _maneuverType;
+    int _shieldType;
     BOOL _toFreeway;
     struct {
-        unsigned int drivingSide:1;
-        unsigned int junctionType:1;
-        unsigned int maneuverType:1;
-        unsigned int shieldType:1;
-        unsigned int toFreeway:1;
-    } _has;
+        unsigned int has_drivingSide:1;
+        unsigned int has_junctionType:1;
+        unsigned int has_maneuverType:1;
+        unsigned int has_shieldType:1;
+        unsigned int has_toFreeway:1;
+        unsigned int read_junctionElements:1;
+        unsigned int read_exitNumber:1;
+        unsigned int read_maneuverNames:1;
+        unsigned int read_shield:1;
+        unsigned int read_signposts:1;
+        unsigned int wrote_junctionElements:1;
+        unsigned int wrote_exitNumber:1;
+        unsigned int wrote_maneuverNames:1;
+        unsigned int wrote_shield:1;
+        unsigned int wrote_signposts:1;
+        unsigned int wrote_drivingSide:1;
+        unsigned int wrote_junctionType:1;
+        unsigned int wrote_maneuverType:1;
+        unsigned int wrote_shieldType:1;
+        unsigned int wrote_toFreeway:1;
+    } _flags;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) int drivingSide; // @synthesize drivingSide=_drivingSide;
-@property (strong, nonatomic) GEONameInfo *exitNumber; // @synthesize exitNumber=_exitNumber;
+@property (nonatomic) int drivingSide;
+@property (strong, nonatomic) GEONameInfo *exitNumber;
 @property (nonatomic) BOOL hasDrivingSide;
 @property (readonly, nonatomic) BOOL hasExitNumber;
 @property (nonatomic) BOOL hasJunctionType;
@@ -53,25 +70,34 @@
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (readonly, nonatomic) unsigned long long junctionElementsCount;
 @property (nonatomic) int junctionType;
-@property (nonatomic) int junctionType; // @synthesize junctionType=_junctionType;
+@property (nonatomic) int junctionType;
 @property (strong, nonatomic) NSMutableArray *maneuverNames;
-@property (strong, nonatomic) NSMutableArray *maneuverNames; // @synthesize maneuverNames=_maneuverNames;
+@property (strong, nonatomic) NSMutableArray *maneuverNames;
 @property (nonatomic) int maneuverType;
-@property (nonatomic) int maneuverType; // @synthesize maneuverType=_maneuverType;
-@property (strong, nonatomic) NSString *shield; // @synthesize shield=_shield;
-@property (nonatomic) int shieldType; // @synthesize shieldType=_shieldType;
+@property (nonatomic) int maneuverType;
+@property (strong, nonatomic) NSString *shield;
+@property (nonatomic) int shieldType;
 @property (strong, nonatomic) NSMutableArray *signposts;
-@property (strong, nonatomic) NSMutableArray *signposts; // @synthesize signposts=_signposts;
+@property (strong, nonatomic) NSMutableArray *signposts;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL toFreeway; // @synthesize toFreeway=_toFreeway;
+@property (nonatomic) BOOL toFreeway;
 @property (readonly, nonatomic) int transportType;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)maneuverNameType;
 + (Class)signpostType;
 - (void).cxx_destruct;
 - (int)StringAsDrivingSide:(id)arg1;
 - (int)StringAsJunctionType:(id)arg1;
 - (int)StringAsManeuverType:(id)arg1;
+- (void)_addNoFlagsJunctionElement:(struct GEOJunctionElement)arg1;
+- (void)_addNoFlagsManeuverName:(id)arg1;
+- (void)_addNoFlagsSignpost:(id)arg1;
+- (void)_readExitNumber;
+- (void)_readJunctionElements;
+- (void)_readManeuverNames;
+- (void)_readShield;
+- (void)_readSignposts;
 - (void)addJunctionElement:(struct GEOJunctionElement)arg1;
 - (void)addManeuverName:(id)arg1;
 - (void)addSignpost:(id)arg1;
@@ -90,6 +116,7 @@
 - (unsigned long long)maneuverNamesCount;
 - (id)maneuverTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setJunctionElements:(struct GEOJunctionElement *)arg1 count:(unsigned long long)arg2;
 - (id)signpostAtIndex:(unsigned long long)arg1;

@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDOperation.h>
 
-@class NSMutableArray, NSMutableDictionary, NSSet;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchShareMetadataOperation : CKDOperation
@@ -19,18 +19,22 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_shareURLsToFetch;
     NSMutableDictionary *_shareTokenMetadatasToFetchByURL;
     NSSet *_rootRecordDesiredKeysSet;
+    NSDictionary *_shareInvitationTokensByShareURL;
 }
 
 @property (nonatomic) BOOL clientWillDisplaySystemAcceptPrompt; // @synthesize clientWillDisplaySystemAcceptPrompt=_clientWillDisplaySystemAcceptPrompt;
 @property (nonatomic) BOOL errorOnOON; // @synthesize errorOnOON=_errorOnOON;
 @property (nonatomic) BOOL forceDSRefetch; // @synthesize forceDSRefetch=_forceDSRefetch;
 @property (strong, nonatomic) NSSet *rootRecordDesiredKeysSet; // @synthesize rootRecordDesiredKeysSet=_rootRecordDesiredKeysSet;
+@property (strong, nonatomic) NSDictionary *shareInvitationTokensByShareURL; // @synthesize shareInvitationTokensByShareURL=_shareInvitationTokensByShareURL;
 @property (copy, nonatomic) CDUnknownBlockType shareMetadataFetchedBlock; // @synthesize shareMetadataFetchedBlock=_shareMetadataFetchedBlock;
 @property (strong, nonatomic) NSMutableDictionary *shareTokenMetadatasToFetchByURL; // @synthesize shareTokenMetadatasToFetchByURL=_shareTokenMetadatasToFetchByURL;
 @property (strong, nonatomic) NSMutableArray *shareURLsToFetch; // @synthesize shareURLsToFetch=_shareURLsToFetch;
 @property (nonatomic) BOOL shouldFetchRootRecord; // @synthesize shouldFetchRootRecord=_shouldFetchRootRecord;
 
 - (void).cxx_destruct;
+- (void)_continueHandlingFetchedShareMetadata:(id)arg1 shareURL:(id)arg2;
+- (BOOL)_currentUserIsOONForShareMetadata:(id)arg1;
 - (id)_decodeProtectedFullToken:(id)arg1 tokenMetadata:(id)arg2;
 - (void)_decryptRootRecordsForShareURL:(id)arg1 withMetadata:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchShortTokenMetadata;

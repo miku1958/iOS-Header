@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
+#import <FrontBoardServices/BSDebugDescriptionProviding-Protocol.h>
+#import <FrontBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class BSSettings, NSSet, NSString;
+@class BSSettings, NSOrderedSet, NSSet, NSString;
 
-@interface FBSSceneClientSettings : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
+@interface FBSSceneClientSettings : NSObject <BSDebugDescriptionProviding, BSXPCSecureCoding, NSCopying, NSMutableCopying>
 {
+    NSOrderedSet *_layers;
     double _preferredLevel;
     long long _preferredInterfaceOrientation;
     NSSet *_occlusions;
@@ -24,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSOrderedSet *layers; // @synthesize layers=_layers;
 @property (readonly, copy, nonatomic) NSSet *occlusions; // @synthesize occlusions=_occlusions;
 @property (readonly, nonatomic) long long preferredInterfaceOrientation; // @synthesize preferredInterfaceOrientation=_preferredInterfaceOrientation;
 @property (readonly, nonatomic) double preferredLevel; // @synthesize preferredLevel=_preferredLevel;
@@ -32,12 +35,17 @@
 
 + (BOOL)_isMutable;
 + (id)settings;
++ (BOOL)supportsBSXPCSecureCoding;
 - (void).cxx_destruct;
+- (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 debug:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)debugDescriptionWithMultilinePrefix:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (void)encodeWithBSXPCCoder:(id)arg1;
 - (id)init;
+- (id)initWithBSXPCCoder:(id)arg1;
 - (id)initWithSettings:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;

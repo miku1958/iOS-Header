@@ -117,7 +117,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSTCellWillChangeDistributor *cellWillChangeDistributor;
 @property (readonly, nonatomic) TSTConcurrentMutableCellUIDSet *cellsToInvalidateAfterRecalc;
 @property (readonly, nonatomic) TSTConcurrentMutableCellUIDSet *cellsToInvalidateNonoverflowingAfterRecalc;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) TSTColumnRowUIDMap *columnRowUIDMap; // @synthesize columnRowUIDMap=_columnRowUIDMap;
 @property (readonly, strong, nonatomic) NSArray *columnWidths;
 @property (readonly, nonatomic) TSTConditionalStyleFormulaOwner *conditionalStyleFormulaOwner;
@@ -147,6 +147,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSWPParagraphStyle *footerRowTextStyle;
 @property (readonly, nonatomic) TSDFill *footerRowsFill;
 @property (nonatomic) long long formulaCoordSpace; // @synthesize formulaCoordSpace=_formulaCoordSpace;
+@property (nonatomic) UUIDData_5fbc143e fromGroupByUID;
 @property (strong, nonatomic) TSCECoordMapper *fromTableCoordMapperForPasteboard; // @synthesize fromTableCoordMapperForPasteboard=_fromTableCoordMapperForPasteboard;
 @property (nonatomic) UUIDData_5fbc143e fromTableUID;
 @property (copy, nonatomic) TSDInfoGeometry *geometry; // @dynamic geometry;
@@ -183,6 +184,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSCEOwnerUidMapper *identityOwnerUIDMapper;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
 @property (nonatomic) BOOL isCopyContainingCategoryColumn; // @synthesize isCopyContainingCategoryColumn=_isCopyContainingCategoryColumn;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (strong, nonatomic) TSTCellStyle *labelLevel1CellStyle;
 @property (strong, nonatomic) TSWPParagraphStyle *labelLevel1TextStyle;
 @property (strong, nonatomic) TSTCellStyle *labelLevel2CellStyle;
@@ -264,7 +266,8 @@ __attribute__((visibility("hidden")))
 
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3 reservedCount:(unsigned long long)arg4;
-+ (BOOL)canPartition;
++ (BOOL)canPartitionForPrinting;
++ (BOOL)canPartitionInline;
 + (struct TSUCellRect)cellRangeForTableArea:(unsigned long long)arg1 givenTableSize:(CDStruct_c0454aff)arg2 numberOfHeaderRows:(unsigned int)arg3 numberOfFooterRows:(unsigned int)arg4 numberOfHeaderColumns:(unsigned int)arg5;
 + (void)ensureAllTablesAreRegisteredInDocumentRoot:(id)arg1;
 + (id)geometryForPrototypeIndex:(long long)arg1 withCanvasPoint:(struct CGPoint)arg2;
@@ -302,6 +305,7 @@ __attribute__((visibility("hidden")))
 - (id)applyCellDiffMap:(id)arg1 migrationHelper:(id)arg2 updateProperties:(id)arg3;
 - (void)applyCellMap:(id)arg1 outPrunedCellMap:(id)arg2 outInverseCellMap:(id)arg3 options:(unsigned long long)arg4 stylesContainer:(id)arg5;
 - (id)applyCollapseExpandState:(id)arg1 outUndoState:(id *)arg2;
+- (id)applyConcurrentCellMapToBaseTable:(id)arg1 options:(unsigned long long)arg2 requestPruneMap:(BOOL)arg3 stylesContainer:(id)arg4;
 - (void)applyGroupingColumns:(id)arg1;
 - (void)applyWritingDirection:(int)arg1 toCell:(id)arg2 cellID:(struct TSUCellCoord)arg3;
 - (void)assertCollaborationConvergence;
@@ -355,6 +359,7 @@ __attribute__((visibility("hidden")))
 - (id)cellValueFromCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (int)cellValueTypeAtCellID:(struct TSUCellCoord)arg1;
 - (id)changeDescriptorsForReorganizingFromRowUids:(const vector_4dc5f307 *)arg1 toRowUids:(const vector_4dc5f307 *)arg2;
+- (id)characterFillAtCellID:(struct TSUCellCoord)arg1 optionalCell:(id)arg2;
 - (BOOL)checkState;
 - (id)childEnumerator;
 - (void)chooseUniqueNameInContainer:(id)arg1 forPaste:(BOOL)arg2;
@@ -365,6 +370,7 @@ __attribute__((visibility("hidden")))
 - (id)chromeLabelForRow:(unsigned int)arg1;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 animationFilter:(id)arg2;
 - (void)clearCommentHostingMapForCommentStorage:(id)arg1;
+- (void)clearFromGroupByUID;
 - (void)clearFromTableUID;
 - (void)clearPartitioner;
 - (id)collapseSummaryGroupUIDs:(id)arg1;
@@ -406,6 +412,8 @@ __attribute__((visibility("hidden")))
 - (int)elementKind;
 - (void)enableFilterSet:(BOOL)arg1;
 - (void)enumerateAllAnnotationsInModelWithHitBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateCellStringsForRows:(unsigned int)arg1 rowCount:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateCellStringsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMergesIntersectingCellRegion:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (struct TSUCellRect)expandCellRangeToCoverMergedCells:(struct TSUCellRect)arg1;
 - (id)expandCellRegionToCoverMergedCells:(id)arg1;
@@ -414,10 +422,10 @@ __attribute__((visibility("hidden")))
 - (id)fillForRow:(unsigned int)arg1;
 - (void)filterSetUpdated;
 - (BOOL)findChartableRangesFromTableRange:(struct TSCERangeCoordinate)arg1 getBodyRange:(out struct TSCERangeCoordinate *)arg2 headerColumnRange:(out struct TSCERangeCoordinate *)arg3 headerRowRange:(out struct TSCERangeCoordinate *)arg4;
-- (void)flattenGroupValuesIfNeededForCell:(id)arg1 cellID:(struct TSUCellCoord)arg2 summaryAndLabelRows:(id)arg3 categoryColumns:(id)arg4;
+- (void)flattenGroupValuesIfNeededForCell:(id)arg1 viewCellCoord:(struct TSUViewCellCoord)arg2 summaryAndLabelRows:(id)arg3 categoryColumns:(id)arg4;
 - (float)floatValueForProperty:(int)arg1;
-- (id)fontColorAtCellID:(struct TSUCellCoord)arg1 optionalCell:(id)arg2;
 - (struct TSCEFormula *)formulaAtCellID:(struct TSUCellCoord)arg1;
+- (id)formulaOwner;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (id)geometryForRTLTableWithGeometry:(id)arg1;
 - (int)getCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
@@ -436,6 +444,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasCellID:(struct TSUCellCoord)arg1;
 - (BOOL)hasCommentAtCellID:(struct TSUCellCoord)arg1;
 - (BOOL)hasDeferredImportActions;
+- (BOOL)hasFilterRulesAffectingInsertRows;
 - (BOOL)hasFilterRulesInBaseColumns:(id)arg1;
 - (BOOL)hasFormulaAtCellID:(struct TSUCellCoord)arg1;
 - (BOOL)hasFormulas;
@@ -468,6 +477,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)indexOfVisibleRowAfterRowAtIndex:(unsigned int)arg1;
 - (unsigned int)indexOfVisibleRowBeforeAndIncludingRowAtIndex:(unsigned int)arg1;
 - (unsigned int)indexOfVisibleRowBeforeRowAtIndex:(unsigned int)arg1;
+- (id)indexesForBodyAndFooterRows;
 - (id)indexesForBodyColumns;
 - (id)indexesForBodyRows;
 - (id)indexesForBodyRowsInGroupWithRowAtIndex:(unsigned int)arg1;
@@ -584,6 +594,7 @@ __attribute__((visibility("hidden")))
 - (id)newCell;
 - (void)notifyAboutStructuredTextImportState;
 - (void)notifyTableOfNewResults;
+- (struct TSUModelRowIndex)numberOfBaseBodyRows;
 - (unsigned int)numberOfCategoryColumns;
 - (unsigned int)numberOfCategoryLevels;
 - (unsigned long long)numberOfCells;
@@ -597,6 +608,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)numberOfUserHiddenRows;
 - (unsigned int)numberOfUserHiddenRowsInCellRange:(struct TSUCellRect)arg1;
 - (unsigned int)numberOfUserVisibleBodyRows;
+- (unsigned int)numberOfVisibleBaseBodyRows;
 - (unsigned int)numberOfVisibleBodyColumns;
 - (unsigned int)numberOfVisibleBodyRows;
 - (id)objectForProperty:(int)arg1;
@@ -626,7 +638,8 @@ __attribute__((visibility("hidden")))
 - (void)performReadForOneOffFormulaEvaluation:(id)arg1 forCellCoord:(struct TSUCellCoord)arg2;
 - (id)populatedCategoryGroupLevelsInColumn:(unsigned short)arg1;
 - (void)postCommentNotificationForStorage:(id)arg1 atCellID:(struct TSUCellCoord)arg2 notificationKey:(id)arg3;
-- (void)prepareForPasteWithSourceOffset:(struct TSUColumnRowOffset)arg1;
+- (void)prepareForPasteWithSourceOffset:(struct TSUColumnRowOffset)arg1 bakeFormulas:(BOOL)arg2;
+- (void)prepareToApplyConcurrentCellMap:(id)arg1;
 - (id)presetKind;
 - (void)processDeferredImportActions;
 - (id)processRowsWithPendingGroupingChangesAndReturnAffectedCellRegion;

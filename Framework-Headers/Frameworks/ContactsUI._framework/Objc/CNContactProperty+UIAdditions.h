@@ -7,6 +7,8 @@
 #import <Contacts/CNContactProperty.h>
 
 @interface CNContactProperty (UIAdditions)
++ (id)phoneticPropertiesMap;
+- (id)phoneticProperty;
 - (id)property;
 @end
 

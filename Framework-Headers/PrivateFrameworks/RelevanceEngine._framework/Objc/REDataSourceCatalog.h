@@ -20,6 +20,7 @@
 }
 
 @property (readonly, nonatomic) NSSet *dataSourceIdentifiers;
+@property (readonly, nonatomic) NSSet *unrestrictedDataSourceIdentifiers;
 
 - (void).cxx_destruct;
 - (void)_applicationsStatesDidChange;

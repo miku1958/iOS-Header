@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithOrganizationName:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

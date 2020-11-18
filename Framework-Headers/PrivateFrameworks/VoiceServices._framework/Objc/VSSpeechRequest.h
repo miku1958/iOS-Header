@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <VoiceServices/NSCopying-Protocol.h>
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
 @class NSAttributedString, NSDictionary, NSString, NSURL;
 
-@interface VSSpeechRequest : NSObject <NSSecureCoding>
+@interface VSSpeechRequest : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _shouldCache;
     BOOL _disableCompactVoiceFallback;
@@ -34,12 +35,13 @@
     NSURL *_resourceListURL;
     NSURL *_resourceSearchPathURL;
     NSAttributedString *_attributedText;
-    NSString *_voiceName;
+    NSString *_utterance;
     NSString *_clientBundleIdentifier;
     unsigned long long _requestCreatedTimestamp;
     CDUnknownBlockType _stopHandler;
     CDUnknownBlockType _pauseHandler;
     long long _pointer;
+    NSString *_voiceName;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedText; // @synthesize attributedText=_attributedText;
@@ -67,6 +69,7 @@
 @property (copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) BOOL useCustomVoice; // @synthesize useCustomVoice=_useCustomVoice;
+@property (copy, nonatomic) NSString *utterance; // @synthesize utterance=_utterance;
 @property (copy, nonatomic) NSString *voiceName; // @synthesize voiceName=_voiceName;
 @property (nonatomic) long long voiceType; // @synthesize voiceType=_voiceType;
 @property (nonatomic) double volume; // @synthesize volume=_volume;
@@ -74,6 +77,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)contextInfoString;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

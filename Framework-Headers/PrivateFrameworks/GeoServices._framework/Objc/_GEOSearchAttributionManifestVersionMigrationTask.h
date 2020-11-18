@@ -8,8 +8,8 @@
 
 #import <GeoServices/GEOActiveTileGroupMigrationTask-Protocol.h>
 
-@class GEOActiveTileGroup, GEOReportedProgress, GEOSearchAttributionManifest, GEOSearchAttributionManifestVersionMigrator, NSProgress, NSString, NSURL, NSURLSession, NSURLSessionDataTask;
-@protocol NSObject, OS_dispatch_queue;
+@class GEOActiveTileGroup, GEOActiveTileGroupMigrationTaskOptions, GEOReportedProgress, GEOSearchAttributionManifest, GEOSearchAttributionManifestVersionMigrator, NSProgress, NSString, NSURL, NSURLSession, NSURLSessionDataTask;
+@protocol GEORequestCounterTicket, NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _GEOSearchAttributionManifestVersionMigrationTask : NSObject <GEOActiveTileGroupMigrationTask>
@@ -24,14 +24,17 @@ __attribute__((visibility("hidden")))
     GEOReportedProgress *_progress;
     NSURLSession *_urlSession;
     NSURLSessionDataTask *_downloadTask;
+    id<GEORequestCounterTicket> _requestCounterTicket;
     GEOSearchAttributionManifest *_attributionManifest;
     id<NSObject> _transaction;
+    GEOActiveTileGroupMigrationTaskOptions *_options;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) long long estimatedWeight;
+@property (readonly, nonatomic) long long estimatedWeight;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) GEOActiveTileGroupMigrationTaskOptions *options; // @synthesize options=_options;
 @property (readonly) NSProgress *progress;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<NSObject> transaction; // @synthesize transaction=_transaction;

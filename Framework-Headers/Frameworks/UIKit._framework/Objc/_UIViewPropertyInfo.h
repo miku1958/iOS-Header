@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/NSCopying-Protocol.h>
+
 @protocol UIVectorOperatable;
 
 __attribute__((visibility("hidden")))
-@interface _UIViewPropertyInfo : NSObject
+@interface _UIViewPropertyInfo : NSObject <NSCopying>
 {
     id<UIVectorOperatable> _previousValue;
     id<UIVectorOperatable> _value;
@@ -20,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (id)viewPropertyInfoWithValue:(id)arg1 previousValue:(id)arg2;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

@@ -6,7 +6,18 @@
 
 #import <Foundation/NSUserDefaults.h>
 
+@class NSArray;
+
 @interface NSUserDefaults (HKFeatureAvailability)
+
+@property (nonatomic, getter=hk_atrialFibrillationSetupModalViewHasBeenPresented, setter=hk_setAtrialFibrillationSetupModalViewPresented:) BOOL hk_atrialFibrillationSetupModalViewPresented;
+@property (strong, nonatomic, setter=hk_setDemoResultKeys:) NSArray *hk_demoResultKeys;
+@property (nonatomic, getter=hk_electrocardiogramSetupModalViewHasBeenPresented, setter=hk_setElectrocardiogramSetupModalViewPresented:) BOOL hk_electrocardiogramSetupModalViewPresented;
+@property (readonly, nonatomic) BOOL hk_hfeModeEnabled;
+
 + (id)hk_featureAvailabilityUserDefaults;
++ (id)hk_heartRhythmDefaults;
+- (BOOL)hk_keyExists:(id)arg1;
+- (void)hk_removeObjectsForKeysWithPrefix:(id)arg1;
 @end
 

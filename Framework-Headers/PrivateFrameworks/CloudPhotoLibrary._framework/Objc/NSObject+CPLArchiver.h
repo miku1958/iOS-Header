@@ -7,7 +7,28 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (CPLArchiver)
++ (void)_addPropertyAttributeMapToPropertyMapLocked:(id)arg1;
++ (id)_cplPropertyAttributeMap;
 + (Class)classForStoredClassName:(id)arg1 forCPLArchiver:(id)arg2;
++ (id)cplAdditionalSecureClassesForProperty:(id)arg1;
++ (id)cplAllPropertyNames;
++ (void)cplDumpProperties;
++ (BOOL)cplShouldIgnorePropertyForCoding:(id)arg1;
++ (BOOL)cplShouldIgnorePropertyForEquality:(id)arg1;
+- (void)_cplCopyProperties:(id)arg1 fromOtherObject:(id)arg2 withCopyBlock:(CDUnknownBlockType)arg3;
+- (void)cplCopyProperties:(id)arg1 fromObject:(id)arg2 withCopyBlock:(CDUnknownBlockType)arg3;
+- (void)cplCopyPropertiesFromObject:(id)arg1 withCopyBlock:(CDUnknownBlockType)arg2;
+- (void)cplDecodePropertiesFromCoder:(id)arg1;
+- (id)cplDeepCopy;
+- (void)cplEncodePropertiesWithCoder:(id)arg1;
+- (id)cplFullDescription;
+- (unsigned long long)cplHash;
+- (BOOL)cplIsEqual:(id)arg1;
+- (BOOL)cplIsEqual:(id)arg1 withEqualityBlock:(CDUnknownBlockType)arg2;
+- (BOOL)cplProperties:(id)arg1 areEqualToPropertiesOf:(id)arg2 differingProperty:(id *)arg3 withEqualityBlock:(CDUnknownBlockType)arg4;
+- (BOOL)cplProperties:(id)arg1 areEqualToPropertiesOf:(id)arg2 withEqualityBlock:(CDUnknownBlockType)arg3;
+- (unsigned long long)cplSpecialHash;
+- (BOOL)cplSpecialIsEqual:(id)arg1;
 - (id)initWithCPLArchiver:(id)arg1;
 - (id)plistArchiveWithCPLArchiver:(id)arg1;
 - (id)storedClassNameForCPLArchiver:(id)arg1;

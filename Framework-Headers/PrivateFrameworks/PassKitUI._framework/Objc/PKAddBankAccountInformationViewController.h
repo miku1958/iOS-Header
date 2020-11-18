@@ -82,8 +82,6 @@
 - (void)next:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (BOOL)pkui_disablesAutomaticDismissalUponEnteringBackground;
-- (id)pkui_navigationBarTintColor;
-- (BOOL)pkui_prefersNavigationBarShadowHidden;
 - (void)setHeaderViewTitle:(id)arg1 subtitle:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
@@ -93,7 +91,6 @@
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 

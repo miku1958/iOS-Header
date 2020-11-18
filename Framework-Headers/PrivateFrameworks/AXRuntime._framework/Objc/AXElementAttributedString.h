@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)_isSerializableAccessibilityElement;
 - (void)dealloc;
 
 @end

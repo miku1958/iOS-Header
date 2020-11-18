@@ -14,20 +14,26 @@
 {
     PBUnknownFields *_unknownFields;
     BOOL _concatenatingFormatStringsSupported;
+    BOOL _styleSupported;
     BOOL _timestampFormatPatternSupported;
     struct {
-        unsigned int concatenatingFormatStringsSupported:1;
-        unsigned int timestampFormatPatternSupported:1;
-    } _has;
+        unsigned int has_concatenatingFormatStringsSupported:1;
+        unsigned int has_styleSupported:1;
+        unsigned int has_timestampFormatPatternSupported:1;
+    } _flags;
 }
 
-@property (nonatomic) BOOL concatenatingFormatStringsSupported; // @synthesize concatenatingFormatStringsSupported=_concatenatingFormatStringsSupported;
+@property (nonatomic) BOOL concatenatingFormatStringsSupported;
 @property (nonatomic) BOOL hasConcatenatingFormatStringsSupported;
+@property (nonatomic) BOOL hasStyleSupported;
 @property (nonatomic) BOOL hasTimestampFormatPatternSupported;
-@property (nonatomic) BOOL timestampFormatPatternSupported; // @synthesize timestampFormatPatternSupported=_timestampFormatPatternSupported;
+@property (nonatomic) BOOL styleSupported;
+@property (nonatomic) BOOL timestampFormatPatternSupported;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +41,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

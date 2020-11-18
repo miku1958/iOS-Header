@@ -6,7 +6,7 @@
 
 #import <FamilyCircleUI/NSObject-Protocol.h>
 
-@class AAUIAccountManager, NSArray, NSDictionary;
+@class AIDAAccountManager, NSArray, NSDictionary;
 @protocol AAUISpecifierProviderDelegate;
 
 @protocol AAUISpecifierProvider <NSObject>
@@ -14,7 +14,7 @@
 @property (weak, nonatomic) id<AAUISpecifierProviderDelegate> delegate;
 @property (copy, nonatomic) NSArray *specifiers;
 
-- (id)initWithAccountManager:(AAUIAccountManager *)arg1;
+- (id)initWithAccountManager:(AIDAAccountManager *)arg1;
 
 @optional
 - (BOOL)handleURL:(NSDictionary *)arg1;

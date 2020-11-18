@@ -14,10 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (BOOL)_allowCustomActionHintSpeakOverride;
-- (id)_locationView;
-- (id)accessibilityCustomRotors;
+- (void)_axAnnotateLocationViewsIfNeeded;
 - (id)accessibilityLabel;
+- (void)addLocation:(id)arg1;
 - (BOOL)isAccessibilityElement;
 
 @end

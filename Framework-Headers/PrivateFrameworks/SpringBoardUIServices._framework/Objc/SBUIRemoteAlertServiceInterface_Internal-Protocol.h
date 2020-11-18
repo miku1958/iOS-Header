@@ -8,6 +8,10 @@
 
 @protocol SBUIRemoteAlertServiceInterface_Internal <SBUIRemoteAlertServiceInterface>
 - (void)sb_becomeFirstResponder;
+- (void)sb_dismissForAlertAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
+- (void)sb_presentForAlertAnimated:(BOOL)arg1 completion:(void (^)(void))arg2;
+- (void)sb_preserveInputViewsAnimated:(BOOL)arg1;
 - (void)sb_resignFirstResponder;
+- (void)sb_restoreInputViewsAnimated:(BOOL)arg1;
 @end
 

@@ -24,13 +24,15 @@
 - (id)candidatesBasedOnCommaDelimiterIndex:(unsigned long long)arg1 sequenceSize:(unsigned long long)arg2;
 - (id)candidatesBasedOnFormatSequence:(id)arg1;
 - (id)candidatesOfSize:(unsigned long long)arg1 constraints:(unsigned long long)arg2 compoundsConstraints:(id)arg3 labelsContraints:(id)arg4;
-- (id)coumpoundsFromName:(id)arg1;
+- (id)compoundsFromName:(id)arg1;
+- (id)compoundsFromName:(id)arg1 includeSpaceAsDelimiter:(BOOL)arg2;
 - (void)dealloc;
 - (double)emissionProbability:(id)arg1 hiddenState:(unsigned long long)arg2 isOOV:(BOOL *)arg3;
 - (unsigned long long)extractMetricForType:(unsigned long long)arg1;
 - (BOOL)formCompoundFamilyName:(id)arg1;
 - (BOOL)formCompoundGivenName:(id)arg1;
 - (unsigned long long)frequencyForName:(id)arg1 type:(unsigned long long)arg2;
+- (unsigned long long)genderMajorityForGivenName:(id)arg1;
 - (id)hiddenStatesFromObservationSequence:(id)arg1;
 - (id)initWithHMMProbabilities:(CDStruct_a720a2d7)arg1 nameComponentsDate:(id)arg2;
 - (BOOL)isCoupleName:(id)arg1;
@@ -39,6 +41,7 @@
 - (BOOL)isLinkingToken:(id)arg1;
 - (BOOL)isParticle:(id)arg1;
 - (struct _CFBurstTrie *)nameFrequencyTrieRef;
+- (unsigned long long)payloadForName:(id)arg1 type:(unsigned long long)arg2;
 - (id)probabilityForHiddenSequence:(id)arg1 knowingObservationSequence:(id)arg2 boost:(unsigned long long)arg3;
 - (double)startProbability:(id)arg1;
 - (double)stateTransitionProbabilityFrom:(id)arg1 to:(id)arg2;

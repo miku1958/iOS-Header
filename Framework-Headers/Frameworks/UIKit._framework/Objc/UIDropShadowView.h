@@ -6,28 +6,38 @@
 
 #import <UIKitCore/UIView.h>
 
-@class NSDictionary;
+@class NSArray, _UIGrabber;
 
 __attribute__((visibility("hidden")))
 @interface UIDropShadowView : UIView
 {
-    UIView *_backgroundImage;
-    NSDictionary *_preservedLayerValues;
     BOOL _masksTopCornersOnly;
-    double _cornerRadius;
+    BOOL _supportsShadowAndGrabber;
     UIView *_contentView;
+    UIView *_overlayView;
+    long long _independentCorners;
+    UIView *_firstCornerClippingDescendant;
+    NSArray *_cornerClippingDescendants;
+    _UIGrabber *_grabber;
+    struct UIRectCornerRadii _environmentMatchingCornerRadii;
 }
 
-@property (weak, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, nonatomic) NSArray *cornerClippingDescendants; // @synthesize cornerClippingDescendants=_cornerClippingDescendants;
+@property (readonly, nonatomic) UIView *deepestClippingView;
+@property (nonatomic) struct UIRectCornerRadii environmentMatchingCornerRadii; // @synthesize environmentMatchingCornerRadii=_environmentMatchingCornerRadii;
+@property (readonly, weak, nonatomic) UIView *firstCornerClippingDescendant; // @synthesize firstCornerClippingDescendant=_firstCornerClippingDescendant;
+@property (readonly, nonatomic) _UIGrabber *grabber; // @synthesize grabber=_grabber;
+@property (readonly, nonatomic) long long independentCorners; // @synthesize independentCorners=_independentCorners;
 @property (nonatomic) BOOL masksTopCornersOnly; // @synthesize masksTopCornersOnly=_masksTopCornersOnly;
+@property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
+@property (readonly, nonatomic) BOOL supportsShadowAndGrabber; // @synthesize supportsShadowAndGrabber=_supportsShadowAndGrabber;
 
 - (void).cxx_destruct;
 - (void)didFinishRotation;
-- (id)init;
-- (void)setBounds:(struct CGRect)arg1;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)updateShadowPath;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 independentCorners:(long long)arg2 supportsShadowAndGrabber:(BOOL)arg3 stylesSheetsAsCards:(BOOL)arg4;
+- (void)setGrabberAlpha:(double)arg1;
 - (void)willBeginRotationWithOriginalBounds:(struct CGRect)arg1 newBounds:(struct CGRect)arg2;
 
 @end

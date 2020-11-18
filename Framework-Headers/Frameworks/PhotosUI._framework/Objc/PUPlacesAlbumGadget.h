@@ -6,20 +6,19 @@
 
 #import <PhotosUI/PUAlbumGadget.h>
 
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 #import <PhotosUI/PXPlacesSnapshotFactoryDelegate-Protocol.h>
 
-@class NSString, PUAlbumListCellContentView, PXPlacesAlbumCoverProvider, UIImage;
+@class NSString, PUAlbumListCellContentView, PXPlacesAlbumCoverProvider;
 
 __attribute__((visibility("hidden")))
-@interface PUPlacesAlbumGadget : PUAlbumGadget <PXPlacesSnapshotFactoryDelegate>
+@interface PUPlacesAlbumGadget : PUAlbumGadget <PXPlacesSnapshotFactoryDelegate, PXChangeObserver>
 {
     PUAlbumListCellContentView *_albumListCellContentView;
     NSString *_title;
     PXPlacesAlbumCoverProvider *_placesAlbumCoverProvider;
-    UIImage *_currentSnapshotImage;
 }
 
-@property (strong, nonatomic) UIImage *currentSnapshotImage; // @synthesize currentSnapshotImage=_currentSnapshotImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,10 +26,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_extendedTraitCollectionDidChange:(unsigned long long)arg1;
 - (void)_updateImageInContentView:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateSubtitleInContentView:(id)arg1 animated:(BOOL)arg2;
 - (id)albumListCellContentView;
 - (id)initWithCollection:(id)arg1 albumGadgetDelegate:(id)arg2;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)placesSnapshotCountDidChange;
 - (void)placesSnapshotDidChange;
 - (id)title;

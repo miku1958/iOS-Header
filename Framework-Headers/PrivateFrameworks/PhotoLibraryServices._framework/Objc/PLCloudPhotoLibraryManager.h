@@ -9,16 +9,15 @@
 #import <PhotoLibraryServices/CPLLibraryManagerDelegate-Protocol.h>
 #import <PhotoLibraryServices/CPLResourceProgressDelegate-Protocol.h>
 #import <PhotoLibraryServices/CPLStatusDelegate-Protocol.h>
-#import <PhotoLibraryServices/PLBatterySaverWatcherDelegate-Protocol.h>
 #import <PhotoLibraryServices/PLCloudChangeTrackerDelegate-Protocol.h>
 #import <PhotoLibraryServices/PLCloudPersistentHistoryMigratorContext-Protocol.h>
 #import <PhotoLibraryServices/PLCloudUserSessionHandling-Protocol.h>
 #import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class CPLLibraryManager, NSDate, NSMutableDictionary, NSNumber, NSString, PFCoalescer, PLBatterySaverWatcher, PLCloudBatchDownloader, PLCloudBatchUploader, PLCloudInMemoryTaskManager, PLCloudPhotoLibraryUploadTracker, PLCloudPhotoLibraryUserSwitchHandler, PLCloudResourceManager, PLCloudTaskManager, PLForegroundMonitor, PLPhotoLibrary;
+@class CPLLibraryManager, NSDate, NSMutableDictionary, NSNumber, NSString, PFCoalescer, PLCacheDeleteSupport, PLCloudBatchDownloader, PLCloudBatchUploader, PLCloudInMemoryTaskManager, PLCloudPhotoLibraryUploadTracker, PLCloudPhotoLibraryUserSwitchHandler, PLCloudResourceManager, PLCloudTaskManager, PLForegroundMonitor, PLLibraryServicesManager, PLPhotoLibrary, PLPhotoLibraryPathManager;
 @protocol OS_dispatch_queue, OS_dispatch_source, PLCloudChangeTracker;
 
-@interface PLCloudPhotoLibraryManager : NSObject <PLCloudChangeTrackerDelegate, PLCloudPersistentHistoryMigratorContext, CPLResourceProgressDelegate, CPLLibraryManagerDelegate, PLForegroundMonitorDelegate, PLBatterySaverWatcherDelegate, PLCloudUserSessionHandling, CPLStatusDelegate>
+@interface PLCloudPhotoLibraryManager : NSObject <PLCloudChangeTrackerDelegate, PLCloudPersistentHistoryMigratorContext, CPLResourceProgressDelegate, CPLLibraryManagerDelegate, PLForegroundMonitorDelegate, PLCloudUserSessionHandling, CPLStatusDelegate>
 {
     PLCloudBatchUploader *_uploader;
     PLCloudBatchDownloader *_downloader;
@@ -26,19 +25,14 @@
     BOOL _wasRebuild;
     BOOL _hasAttemptedMigration;
     NSObject<OS_dispatch_queue> *_isolationQueue;
-    PLBatterySaverWatcher *_batterySaverWatcher;
     PLForegroundMonitor *_foregroundMonitor;
-    BOOL _processingChange;
     unsigned long long _mode;
     BOOL _checkEnableStateOnIdle;
     BOOL _icplEnabled;
     BOOL _pushOnIdle;
     BOOL _pullOnIdle;
     BOOL _modeChangePending;
-    PLPhotoLibrary *_photoLibrary;
     CPLLibraryManager *_cplLibrary;
-    BOOL _stopped;
-    BOOL _needSoftReset;
     int _pauseRequest;
     short _pauseReason;
     PLCloudTaskManager *_taskManager;
@@ -58,7 +52,10 @@
     PLCloudPhotoLibraryUploadTracker *_uploadTracker;
     NSMutableDictionary *_placeholderAssetAvailabilityHandlers;
     struct os_unfair_lock_s _placeholderAssetAvailabilityHandlersLock;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     PLCloudPhotoLibraryUserSwitchHandler *_switchHandler;
+    PLCacheDeleteSupport *_cacheDeleteSupport;
+    PLLibraryServicesManager *_libraryServicesManager;
     NSNumber *__numberOfPhotosToPush;
     NSNumber *__numberOfVideosToPush;
     NSNumber *__numberOfOtherItemsToPush;
@@ -75,34 +72,35 @@
 @property (strong, nonatomic, setter=_setNumberOfPhotosToPush:) NSNumber *_numberOfPhotosToPush; // @synthesize _numberOfPhotosToPush=__numberOfPhotosToPush;
 @property (strong, nonatomic, setter=_setNumberOfVideosDownloaded:) NSNumber *_numberOfVideosDownloaded; // @synthesize _numberOfVideosDownloaded=__numberOfVideosDownloaded;
 @property (strong, nonatomic, setter=_setNumberOfVideosToPush:) NSNumber *_numberOfVideosToPush; // @synthesize _numberOfVideosToPush=__numberOfVideosToPush;
+@property (readonly, nonatomic, getter=isCloudPhotoLibraryEnabled) BOOL cloudPhotoLibraryEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL inResetSync;
+@property (readonly, weak, nonatomic) PLLibraryServicesManager *libraryServicesManager; // @synthesize libraryServicesManager=_libraryServicesManager;
+@property (readonly, nonatomic) PLPhotoLibraryPathManager *pathManager;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long totalNumberOfUnpushedMasters;
 @property (readonly, nonatomic) unsigned long long totalNumberOfUploadedMasters;
 @property (readonly, nonatomic) unsigned long long totalSizeOfUnpushedOriginals;
 @property (readonly, nonatomic) unsigned long long totalUploadedOriginalSize;
 
-+ (BOOL)_hasItemToDownload;
-+ (id)_readPListWithFilename:(id)arg1;
-+ (id)_serialQueue;
-+ (void)_setToDownloadCountsForImages:(unsigned long long)arg1 videos:(unsigned long long)arg2;
-+ (void)_writeDict:(id)arg1 withFilename:(id)arg2;
 + (id)descriptionForResourceType:(unsigned long long)arg1;
-+ (void)getDownloadPhotoCount:(unsigned long long *)arg1 downloadVideoCount:(unsigned long long *)arg2;
 + (BOOL)needResetSyncErrorType:(id)arg1;
-+ (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_assetResourceForAsset:(id)arg1 resourceType:(unsigned long long)arg2 masterResourceOnly:(BOOL)arg3 isPhoto:(BOOL *)arg4;
 - (id)_calculateUnpauseTimeForPauseTime:(id)arg1;
-- (BOOL)_canExternallyTransitionToNewLibraryModeIgnoringPause:(BOOL)arg1 ignoringBatterySaver:(BOOL)arg2;
+- (BOOL)_canExternallyTransitionToNewLibraryModeIgnoringPause:(BOOL)arg1;
+- (void)_checkAndMarkPurgeableResourcesIfSafe:(id)arg1 checkServerIfNecessary:(BOOL)arg2 urgency:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_checkEnableState;
 - (void)_checkForPushedMasters;
 - (void)_checkForWorkInProgress;
+- (void)_clearPurgeableResourcesMatchingPredicate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_constructUnpauseTimerFrom:(id)arg1 to:(id)arg2;
+- (void)_createDeletionRecordsIfNecessary;
 - (id)_debugNameForMode:(unsigned long long)arg1;
+- (void)_disableiCPL;
 - (void)_doPause;
 - (void)_doResetSync:(long long)arg1;
 - (void)_doUnpause;
@@ -113,9 +111,12 @@
 - (void)_fixMasterStatusIn:(id)arg1;
 - (void)_handleAccountFlagsChangeIfNecessary;
 - (void)_handleFinalizeSessionError:(id)arg1 commitError:(id)arg2 uploadBatchContainer:(id)arg3 needResetSync:(BOOL)arg4 forTransaction:(id)arg5;
+- (void)_handleModeTransistionAfterDisableiCPL;
 - (void)_handleOptimizeSettingChange;
+- (void)_handleOptimizeSettingChangeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_hasAvalancheIncomingWork;
 - (BOOL)_hasIncomingWorkFileMarker;
+- (BOOL)_hasItemToDownload;
 - (void)_initializeMasterAndSizeCalculation;
 - (unsigned long long)_inq_numberOfOtherItemsToDownload;
 - (unsigned long long)_inq_numberOfOtherItemsToUpload;
@@ -123,26 +124,29 @@
 - (unsigned long long)_inq_numberOfPhotosToUpload;
 - (unsigned long long)_inq_numberOfVideosToDownload;
 - (unsigned long long)_inq_numberOfVideosToUpload;
-- (BOOL)_isColorAwareResource:(unsigned long long)arg1 adjustedResource:(BOOL)arg2;
+- (BOOL)_isAssetsdNotReadyToAnswer;
+- (BOOL)_isPausedForDownloadRequestHighPriority:(BOOL)arg1;
 - (void)_linkFileFrom:(id)arg1 to:(id)arg2;
-- (id)_localResourcesForCPLResource:(id)arg1;
+- (void)_markPurgeableResourcesMatchingPredicate:(id)arg1 urgency:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_markResourceObjectIDsAsPurgeable:(id)arg1 urgency:(long long)arg2;
 - (void)_migrateFromChangeHubToCoreDataIfNecessary;
 - (void)_openCPLLibrary;
 - (void)_pause;
 - (short)_placeHolderKindFromCPLResourceType:(unsigned long long)arg1;
-- (void)_processColorSpaceForAsset:(id)arg1 resourceURL:(id)arg2 resourceType:(unsigned long long)arg3 isAdjustedResource:(BOOL)arg4;
 - (void)_processNextTransaction;
 - (void)_processUploadBatch;
 - (void)_processUploadBatchWithStartupFailureCount:(unsigned long long)arg1;
 - (void)_promptForCameraCaptureSettingChangeWithReason:(int)arg1;
+- (void)_reportOptimizeSettingChangeWithCompltionhandler:(CDUnknownBlockType)arg1;
 - (void)_repushVideoAssetsMetadata;
-- (void)_repushVideoAssetsMetadataIfNecessary;
 - (void)_resetCPLLibrary;
+- (void)_resetCacheDeleteSupport;
 - (void)_runAsyncOnIsolationQueueWithTransaction:(id)arg1 afterDelay:(double)arg2 block:(CDUnknownBlockType)arg3;
 - (void)_runAsyncOnIsolationQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_runOneTimeMigrationStepsIfNecessary;
+- (void)_runOneTimeMigrationStepsWithoutiCPLIfNecessary;
 - (void)_runSyncOnIsolationQueueWithBlock:(CDUnknownBlockType)arg1;
-- (void)_sendOptimizeFeedbackIfNecessary;
+- (void)_setToDownloadCountsForImages:(unsigned long long)arg1 videos:(unsigned long long)arg2;
 - (void)_setupPLCPLPlist;
 - (BOOL)_setupTimerForUnpause;
 - (void)_startWorkInProgressTimer;
@@ -152,13 +156,13 @@
 - (void)_transitionToState:(unsigned long long)arg1;
 - (void)_unpause;
 - (void)_updateAsset:(id)arg1 withImageFileURL:(id)arg2;
+- (void)_updateLocalStaleResourceWithCPLResource:(id)arg1;
 - (void)_updatePendingResetSyncDate;
 - (void)_updateThumbnailDataForAsset:(id)arg1 withImageFileURL:(id)arg2;
 - (void)_updateTransferCounts;
 - (void)_updateWithCPLResource:(id)arg1 isHighPriority:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_uploadFullPhotoLibraryToCloud;
 - (void)acceptCPLMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)batterySaverModeDidChange;
 - (void)beginsSignificantWorkWithResourcesSize:(unsigned long long)arg1;
 - (void)boostPriorityForMomentShareWithScopeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)callPlaceholderAssetAvailabilityHandlerForAssetUUID:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
@@ -169,26 +173,25 @@
 - (id)cplStatus;
 - (void)dealloc;
 - (void)deleteResources:(id)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)disableiCPL;
-- (void)doSoftResetSync;
+- (void)disableiCPLWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)downloadAsset:(id)arg1 resourceType:(unsigned long long)arg2 masterResourceOnly:(BOOL)arg3 highPriority:(BOOL)arg4 clientBundleID:(id)arg5 proposedTaskIdentifier:(id)arg6 taskDidBeginHandler:(CDUnknownBlockType)arg7 progressBlock:(CDUnknownBlockType)arg8 completionHandler:(CDUnknownBlockType)arg9;
 - (void)downloadResource:(id)arg1 highPriority:(BOOL)arg2 clientBundleID:(id)arg3 proposedTaskIdentifier:(id)arg4 taskDidBeginHandler:(CDUnknownBlockType)arg5 progressBlock:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)downloadResourceInMemoryForAsset:(id)arg1 resourceType:(unsigned long long)arg2 masterResourceOnly:(BOOL)arg3 proposedTaskIdentifier:(id)arg4 taskDidBeginHandler:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)dumpStatusIncludingDaemon:(BOOL)arg1;
-- (void)enableiCPL;
+- (void)dumpStatusIncludingDaemon:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)enableiCPLWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)endUserSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)endsSignificantWork;
 - (void)fetchAdjustmentDataForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)fetchEventsFromChangeTracker;
 - (void)fetchMomentShareFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)fetchPublicURLForAsset:(id)arg1 resourceType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)forceSyncMomentShareWithScopeIdentifier:(id)arg1;
 - (void)foregroundMonitor:(id)arg1 changedStateToForeground:(BOOL)arg2 forBundleIdentifier:(id)arg3;
 - (id)getCPLState;
+- (void)getStreamingURLForAsset:(id)arg1 resourceType:(unsigned long long)arg2 intent:(unsigned long long)arg3 hints:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)init;
+- (id)initWithLibraryServicesManager:(id)arg1;
+- (void)invalidate;
 - (BOOL)isConnectedToChangeTracker;
-- (BOOL)isPausedForDownloadRequestHighPriority:(BOOL)arg1;
 - (BOOL)isResourceTransferTaskAliveWithTaskWithIdentifier:(id)arg1;
 - (id)lastKnownCloudVersionFromDisk;
 - (void)libraryManager:(id)arg1 backgroundDownloadDidFailForResource:(id)arg2;
@@ -197,6 +200,7 @@
 - (void)libraryManager:(id)arg1 downloadDidProgress:(float)arg2 forResourceTransferTask:(id)arg3;
 - (void)libraryManager:(id)arg1 downloadDidStartForResourceTransferTask:(id)arg2;
 - (void)libraryManager:(id)arg1 inMemoryDownloadDidFinishForResourceTransferTask:(id)arg2 data:(id)arg3 withError:(id)arg4;
+- (void)libraryManager:(id)arg1 provideLocalResource:(id)arg2 recordClass:(Class)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)libraryManager:(id)arg1 uploadDidFinishForResourceTransferTask:(id)arg2 withError:(id)arg3;
 - (void)libraryManager:(id)arg1 uploadDidProgress:(float)arg2 forResourceTransferTask:(id)arg3;
 - (void)libraryManager:(id)arg1 uploadDidStartForResourceTransferTask:(id)arg2;
@@ -204,7 +208,6 @@
 - (void)libraryManagerHasChangesToPull:(id)arg1;
 - (void)libraryManagerHasStatusChanges:(id)arg1;
 - (void)libraryManagerStatusDidChange:(id)arg1;
-- (id)localEventFromEvent:(id)arg1;
 - (BOOL)overrideSystemBudgetsForSyncSession:(BOOL)arg1 forSystemBudgets:(unsigned long long)arg2;
 - (void)processDownloadBatchWithSession:(id)arg1;
 - (void)publishCPLMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

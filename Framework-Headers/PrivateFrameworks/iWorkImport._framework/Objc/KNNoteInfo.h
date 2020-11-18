@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _shrinkTextForPrinting;
     NSObject<TSDContainerInfo> *parentInfo;
     TSWPStorage *_containedStorage;
+    unsigned long long _initialCharacterIndexForExporting;
     struct CGRect _frameForPrinting;
 }
 
@@ -28,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
 @property (readonly, nonatomic) BOOL autoListRecognition;
 @property (readonly, nonatomic) BOOL autoListTermination;
-@property (readonly, nonatomic) NSArray *childInfos;
+@property (readonly, copy, nonatomic) NSArray *childInfos;
 @property (strong, nonatomic) TSWPStorage *containedStorage; // @synthesize containedStorage=_containedStorage;
 @property (readonly, nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,7 +38,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect frameForPrinting; // @synthesize frameForPrinting=_frameForPrinting;
 @property (copy, nonatomic) TSDInfoGeometry *geometry;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long initialCharacterIndexForExporting; // @synthesize initialCharacterIndexForExporting=_initialCharacterIndexForExporting;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;

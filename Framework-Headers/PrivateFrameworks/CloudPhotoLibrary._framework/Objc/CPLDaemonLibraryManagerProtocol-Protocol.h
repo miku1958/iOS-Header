@@ -14,6 +14,7 @@
 - (void)beginPullSessionWithKnownLibraryVersion:(NSString *)arg1 context:(CPLChangeSessionContext *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)beginPushSessionWithKnownLibraryVersion:(NSString *)arg1 context:(CPLChangeSessionContext *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)boostPriorityForScopeWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)checkResourcesAreSafeToPrune:(NSArray *)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(void (^)(NSArray *, NSDictionary *))arg3;
 - (void)commitChangeBatch:(CPLChangeBatch *)arg1 withCompletionHandler:(void (^)(NSError *, unsigned long long, CPLPushChangeTasks *, NSString *))arg2;
 - (void)deleteResources:(NSArray *)arg1 checkServerIfNecessary:(BOOL)arg2 completionHandler:(void (^)(NSArray *, NSDictionary *))arg3;
 - (void)disableMainScopeWithCompletionHandler:(void (^)(NSError *))arg1;

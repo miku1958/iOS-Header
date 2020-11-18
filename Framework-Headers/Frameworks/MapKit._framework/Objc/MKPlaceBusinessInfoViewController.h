@@ -27,9 +27,13 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)mapItemHasBusinessInfoToDisplay:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
+- (id)_imageForApplePay;
+- (id)_stringForAmenity:(int)arg1;
 - (void)_updateBusinessInfo;
+- (id)infoCardChildPossibleActions;
 - (id)infoCardChildUnactionableUIElements;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (void)viewDidLoad;
 
 @end

@@ -33,6 +33,7 @@
 - (void)handleKeyboardWillShow:(id)arg1;
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
+- (void)reapplyInsets;
 - (void)startAutoResizing;
 - (void)stopAutoResizing;
 

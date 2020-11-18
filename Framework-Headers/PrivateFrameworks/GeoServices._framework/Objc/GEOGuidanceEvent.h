@@ -8,42 +8,66 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOSignGuidance, GEOSpokenGuidance, GEOVisualLaneGuidance;
+@class GEOJunctionView, GEOSignGuidance, GEOSpokenGuidance, GEOVisualLaneGuidance, PBDataReader, PBUnknownFields;
 
 @interface GEOGuidanceEvent : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
+    GEOJunctionView *_junctionView;
+    GEOVisualLaneGuidance *_laneGuidance;
     double _maxSpeed;
     double _minSpeed;
+    GEOSignGuidance *_signGuidance;
+    GEOSpokenGuidance *_spokenGuidance;
     int _distanceZilchIndex;
     int _endValidDistance;
     int _eventType;
     unsigned int _identifier;
-    GEOVisualLaneGuidance *_laneGuidance;
     int _offsetForDistanceString;
-    GEOSignGuidance *_signGuidance;
-    GEOSpokenGuidance *_spokenGuidance;
     int _startValidDistance;
     BOOL _sticky;
     struct {
-        unsigned int maxSpeed:1;
-        unsigned int minSpeed:1;
-        unsigned int distanceZilchIndex:1;
-        unsigned int endValidDistance:1;
-        unsigned int eventType:1;
-        unsigned int identifier:1;
-        unsigned int offsetForDistanceString:1;
-        unsigned int startValidDistance:1;
-        unsigned int sticky:1;
-    } _has;
+        unsigned int has_maxSpeed:1;
+        unsigned int has_minSpeed:1;
+        unsigned int has_distanceZilchIndex:1;
+        unsigned int has_endValidDistance:1;
+        unsigned int has_eventType:1;
+        unsigned int has_identifier:1;
+        unsigned int has_offsetForDistanceString:1;
+        unsigned int has_startValidDistance:1;
+        unsigned int has_sticky:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_junctionView:1;
+        unsigned int read_laneGuidance:1;
+        unsigned int read_signGuidance:1;
+        unsigned int read_spokenGuidance:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_junctionView:1;
+        unsigned int wrote_laneGuidance:1;
+        unsigned int wrote_maxSpeed:1;
+        unsigned int wrote_minSpeed:1;
+        unsigned int wrote_signGuidance:1;
+        unsigned int wrote_spokenGuidance:1;
+        unsigned int wrote_distanceZilchIndex:1;
+        unsigned int wrote_endValidDistance:1;
+        unsigned int wrote_eventType:1;
+        unsigned int wrote_identifier:1;
+        unsigned int wrote_offsetForDistanceString:1;
+        unsigned int wrote_startValidDistance:1;
+        unsigned int wrote_sticky:1;
+    } _flags;
 }
 
-@property (nonatomic) int distanceZilchIndex; // @synthesize distanceZilchIndex=_distanceZilchIndex;
-@property (nonatomic) int endValidDistance; // @synthesize endValidDistance=_endValidDistance;
-@property (nonatomic) int eventType; // @synthesize eventType=_eventType;
+@property (nonatomic) int distanceZilchIndex;
+@property (nonatomic) int endValidDistance;
+@property (nonatomic) int eventType;
 @property (nonatomic) BOOL hasDistanceZilchIndex;
 @property (nonatomic) BOOL hasEndValidDistance;
 @property (nonatomic) BOOL hasEventType;
 @property (nonatomic) BOOL hasIdentifier;
+@property (readonly, nonatomic) BOOL hasJunctionView;
 @property (readonly, nonatomic) BOOL hasLaneGuidance;
 @property (nonatomic) BOOL hasMaxSpeed;
 @property (nonatomic) BOOL hasMinSpeed;
@@ -52,18 +76,26 @@
 @property (readonly, nonatomic) BOOL hasSpokenGuidance;
 @property (nonatomic) BOOL hasStartValidDistance;
 @property (nonatomic) BOOL hasSticky;
-@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) GEOVisualLaneGuidance *laneGuidance; // @synthesize laneGuidance=_laneGuidance;
-@property (nonatomic) double maxSpeed; // @synthesize maxSpeed=_maxSpeed;
-@property (nonatomic) double minSpeed; // @synthesize minSpeed=_minSpeed;
-@property (nonatomic) int offsetForDistanceString; // @synthesize offsetForDistanceString=_offsetForDistanceString;
-@property (strong, nonatomic) GEOSignGuidance *signGuidance; // @synthesize signGuidance=_signGuidance;
-@property (strong, nonatomic) GEOSpokenGuidance *spokenGuidance; // @synthesize spokenGuidance=_spokenGuidance;
-@property (nonatomic) int startValidDistance; // @synthesize startValidDistance=_startValidDistance;
-@property (nonatomic) BOOL sticky; // @synthesize sticky=_sticky;
+@property (nonatomic) unsigned int identifier;
+@property (strong, nonatomic) GEOJunctionView *junctionView;
+@property (strong, nonatomic) GEOVisualLaneGuidance *laneGuidance;
+@property (nonatomic) double maxSpeed;
+@property (nonatomic) double minSpeed;
+@property (nonatomic) int offsetForDistanceString;
+@property (strong, nonatomic) GEOSignGuidance *signGuidance;
+@property (strong, nonatomic) GEOSpokenGuidance *spokenGuidance;
+@property (nonatomic) int startValidDistance;
+@property (nonatomic) BOOL sticky;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsEventType:(id)arg1;
+- (void)_readJunctionView;
+- (void)_readLaneGuidance;
+- (void)_readSignGuidance;
+- (void)_readSpokenGuidance;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -72,6 +104,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

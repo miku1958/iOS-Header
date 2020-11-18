@@ -6,16 +6,16 @@
 
 #import <UIKit/UIScrollView.h>
 
-@class MFComposeHeaderView, MFComposeSubjectView;
+@class MFComposeSubjectView, MFMailComposeHeaderView;
 
 @interface _MFMailComposePlaceholderView : UIScrollView
 {
-    MFComposeHeaderView *_toField;
-    MFComposeHeaderView *_multiView;
+    MFMailComposeHeaderView *_toField;
+    MFMailComposeHeaderView *_multiView;
     MFComposeSubjectView *_subjectView;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setSubject:(id)arg1;

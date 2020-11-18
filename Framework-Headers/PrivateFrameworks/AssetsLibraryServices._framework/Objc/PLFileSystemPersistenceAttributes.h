@@ -13,6 +13,7 @@
     NSDictionary *_attributes;
 }
 
+- (void).cxx_destruct;
 - (id)UUIDStringForKey:(id)arg1;
 - (id)dataForKey:(id)arg1;
 - (void)dealloc;

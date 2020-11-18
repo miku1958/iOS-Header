@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSString, PLMutablePTPAsset, PLPTPAsset;
+@class NSArray, NSMutableArray, NSString, PLMutablePTPAsset, PLSpatialOverCaptureInformation;
 @protocol PLFileManager, PLPTPConversionSupport, PLPTPTransferableAsset;
 
 @interface PLPTPAssetBuilder : NSObject
@@ -16,13 +16,19 @@
     id<PLFileManager> _fileManager;
     NSString *_filenameForPTP;
     PLMutablePTPAsset *_currentPtpAsset;
-    PLPTPAsset *_commonPtpAsset;
-    PLPTPAsset *_originalPtpAsset;
+    PLMutablePTPAsset *_commonPtpAsset;
+    PLMutablePTPAsset *_originalPtpAsset;
     NSArray *_sidecarPtpAssets;
-    PLPTPAsset *_diagnosticPtpAsset;
-    PLPTPAsset *_originalAdjustmentPtpAsset;
-    PLPTPAsset *_fullSizeRenderImagePtpAsset;
-    PLPTPAsset *_fullSizeRenderVideoPtpAsset;
+    PLMutablePTPAsset *_diagnosticPtpAsset;
+    PLMutablePTPAsset *_adjustmentPtpAsset;
+    PLMutablePTPAsset *_fullSizeRenderImagePtpAsset;
+    PLMutablePTPAsset *_fullSizeRenderVideoPtpAsset;
+    PLMutablePTPAsset *_spatialOverCaptureImagePtpAsset;
+    PLMutablePTPAsset *_spatialOverCaptureVideoComplementPtpAsset;
+    PLMutablePTPAsset *_originalAdjustmentPtpAsset;
+    PLSpatialOverCaptureInformation *_cachedSpatialOverCaptureInformation;
+    PLMutablePTPAsset *_penultimateImagePtpAsset;
+    PLMutablePTPAsset *_penultimateVideoPtpAsset;
     NSMutableArray *_convertedAssets;
     BOOL _irisSidecarRequiresFormatConversion;
 }
@@ -31,6 +37,7 @@
 + (id)pictureTransferProtocolAssetsForAsset:(id)arg1 withConversionSupport:(id)arg2;
 - (void).cxx_destruct;
 - (id)_assetForSidecar:(id)arg1 sidecarPath:(id)arg2 irisSidecarPath:(id)arg3;
+- (void)_buildAdjustmentAsset;
 - (void)_buildBurst;
 - (void)_buildCommonAsset;
 - (void)_buildDeletedFlag;
@@ -45,13 +52,14 @@
 - (void)_buildImageDimensions;
 - (void)_buildModificationAndCreationDate;
 - (void)_buildOrientation;
-- (void)_buildOriginalAdjustmentAsset;
 - (BOOL)_buildOriginalAsset;
 - (void)_buildOriginatingAssetID;
 - (void)_buildPhotoKey;
 - (void)_buildRelatedUUID;
 - (void)_buildSidecarAssets;
 - (void)_buildSlowMo;
+- (void)_buildSpatialOverCaptureGroupIdentifier;
+- (void)_buildSpatialOverCaptureLivePhotoPairingIdentifier;
 - (void)_buildThumbnailDimensions;
 - (void)_buildThumbnailOffsetAndLength;
 - (void)_buildTimelapse;
@@ -61,10 +69,18 @@
 - (void)_updateAsset:(id)arg1 withConversionResult:(id)arg2;
 - (void)_updateAssetForTranscodeChoice:(id)arg1 withConversionResult:(id)arg2;
 - (void)_updateOriginalAssetFormatConversionFromVideoComplement;
+- (void)buildOriginalAdjustmentPtpAsset;
+- (void)buildPenultimateImagePtpAsset;
+- (void)buildPenultimateVideoPtpAsset;
+- (void)buildSpatialOverCaptureContentPtpAsset;
+- (void)buildSpatialOverCaptureVideoComplementPtpAsset;
+- (BOOL)hasSpatialOverCaptureContent;
 - (id)initWithAsset:(id)arg1 conversionSupport:(id)arg2;
 - (id)initWithAsset:(id)arg1 conversionSupport:(id)arg2 fileManager:(id)arg3;
 - (id)pictureTransferProtocolAssets;
+- (id)spatialOverCaptureInformation;
 - (void)updateAssetForFormatConversion:(id)arg1 isVideo:(BOOL)arg2 isRender:(BOOL)arg3 forceLegacyConversion:(BOOL)arg4;
+- (void)updateSiblingAssetTypesOnMutablePTPAssets:(id)arg1;
 
 @end
 

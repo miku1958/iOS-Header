@@ -14,36 +14,37 @@
 {
     BOOL _allowanceEnabled;
     BOOL _shouldAllowEditing;
-    unsigned long long _allowanceType;
+    NSArray *_bundleIdentifiers;
+    NSArray *_webDomains;
+    NSArray *_categoryIdentifiers;
     NSString *_identifier;
-    NSArray *_budgetedIdentifiers;
-    unsigned long long _behaviorOption;
+    unsigned long long _behaviorType;
     NSDateComponents *_time;
     NSDictionary *_timeByDay;
 }
 
 @property BOOL allowanceEnabled; // @synthesize allowanceEnabled=_allowanceEnabled;
-@property (nonatomic) unsigned long long allowanceType; // @synthesize allowanceType=_allowanceType;
-@property (nonatomic) unsigned long long behaviorOption; // @synthesize behaviorOption=_behaviorOption;
-@property (copy, nonatomic) NSArray *budgetedIdentifiers; // @synthesize budgetedIdentifiers=_budgetedIdentifiers;
+@property (nonatomic) unsigned long long behaviorType; // @synthesize behaviorType=_behaviorType;
+@property (copy) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
+@property (copy) NSArray *categoryIdentifiers; // @synthesize categoryIdentifiers=_categoryIdentifiers;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) NSString *scheduleText;
 @property (nonatomic) BOOL shouldAllowEditing; // @synthesize shouldAllowEditing=_shouldAllowEditing;
 @property (copy, nonatomic) NSDateComponents *time; // @synthesize time=_time;
 @property (copy, nonatomic) NSDictionary *timeByDay; // @synthesize timeByDay=_timeByDay;
 @property (readonly, nonatomic) double timeToday;
+@property (copy) NSArray *webDomains; // @synthesize webDomains=_webDomains;
 
-+ (unsigned long long)allowanceTypeForUsageItemType:(unsigned long long)arg1;
-+ (unsigned long long)allowanceTypeForUsageLimitType:(id)arg1;
 + (id)dateComponentsForDuration:(double)arg1;
-+ (id)displayNameForAllowance:(id)arg1;
 + (double)timeIntervalForAllowanceDateComponents:(id)arg1;
-+ (id)usageLimitTypeForAllowanceType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)defaultBudgetTime;
 - (id)defaultTimeByDay;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithBlueprint:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

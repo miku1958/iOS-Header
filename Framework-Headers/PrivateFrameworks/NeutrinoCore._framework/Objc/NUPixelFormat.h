@@ -10,18 +10,21 @@
 
 @interface NUPixelFormat : NSObject
 {
+    BOOL _extendedRange;
     int _CIFormat;
+    unsigned int _CVPixelFormat;
     long long _bytesPerPixel;
     NSString *_name;
-    unsigned int _CVPixelFormat;
 }
 
 @property (readonly, nonatomic) int CIFormat; // @synthesize CIFormat=_CIFormat;
 @property (readonly, nonatomic) unsigned int CVPixelFormat; // @synthesize CVPixelFormat=_CVPixelFormat;
 @property (readonly, nonatomic) long long bytesPerPixel; // @synthesize bytesPerPixel=_bytesPerPixel;
+@property (readonly, nonatomic) BOOL extendedRange; // @synthesize extendedRange=_extendedRange;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 
 + (id)A16;
++ (id)A2RGB10;
 + (id)ARGB8;
 + (id)BGRA8;
 + (id)I8;
@@ -31,7 +34,6 @@
 + (id)RGBAf;
 + (id)RGBAh;
 + (id)XRSRGB10;
-+ (id)XRSRGB10_A8;
 + (id)pixelFormatForCIFormat:(int)arg1;
 + (id)pixelFormatForCVPixelFormat:(unsigned int)arg1;
 + (id)sRGBA8;

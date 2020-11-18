@@ -10,7 +10,7 @@
 #import <SpringBoardFoundation/NSCopying-Protocol.h>
 #import <SpringBoardFoundation/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, UIColor;
+@class NSDictionary, NSString, NSURL, SBFGradient, UIColor;
 
 @interface SBFWallpaperDefaultConfiguration : NSObject <NSCopying, BSDescriptionProviding, NSSecureCoding>
 {
@@ -21,6 +21,7 @@
     NSDictionary *_proceduralWallpaperOptions;
     UIColor *_wallpaperColor;
     NSString *_wallpaperColorName;
+    SBFGradient *_wallpaperGradient;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,6 +34,7 @@
 @property (readonly, copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property (readonly, copy, nonatomic) UIColor *wallpaperColor; // @synthesize wallpaperColor=_wallpaperColor;
 @property (readonly, copy, nonatomic) NSString *wallpaperColorName; // @synthesize wallpaperColorName=_wallpaperColorName;
+@property (readonly, copy, nonatomic) SBFGradient *wallpaperGradient; // @synthesize wallpaperGradient=_wallpaperGradient;
 @property (readonly, nonatomic) long long wallpaperType; // @synthesize wallpaperType=_wallpaperType;
 
 + (BOOL)supportsSecureCoding;
@@ -44,6 +46,7 @@
 - (id)init;
 - (id)initColorWithColor:(id)arg1;
 - (id)initColorWithColorName:(id)arg1;
+- (id)initGradientWithGradient:(id)arg1;
 - (id)initProceduralWithIdentifier:(id)arg1 options:(id)arg2;
 - (id)initStaticWithImageURL:(id)arg1;
 - (id)initVideoWithStaticImageURL:(id)arg1 videoURL:(id)arg2;

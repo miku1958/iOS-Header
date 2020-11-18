@@ -31,10 +31,10 @@
 @property unsigned int preferredEncoding; // @synthesize preferredEncoding=_preferredEncoding;
 @property (getter=isVisuallyEmpty) BOOL visuallyEmpty; // @synthesize visuallyEmpty=_visuallyEmpty;
 
+- (void).cxx_destruct;
 - (id)_initWithMimePart:(id)arg1 htmlData:(id)arg2;
 - (id)attachmentForURL:(id)arg1;
 - (id)attachmentsInDocument;
-- (void)dealloc;
 - (id)fileWrapper;
 - (id)init;
 - (id)initWithMimeBody:(id)arg1;

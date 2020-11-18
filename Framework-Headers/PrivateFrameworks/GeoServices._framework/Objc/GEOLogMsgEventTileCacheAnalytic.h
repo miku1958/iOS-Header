@@ -8,20 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCacheHit, GEOCacheMiss;
+@class GEOCacheHit, GEOCacheMiss, PBDataReader;
 
 @interface GEOLogMsgEventTileCacheAnalytic : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOCacheHit *_cacheHit;
     GEOCacheMiss *_cacheMiss;
+    struct {
+        unsigned int read_cacheHit:1;
+        unsigned int read_cacheMiss:1;
+        unsigned int wrote_cacheHit:1;
+        unsigned int wrote_cacheMiss:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOCacheHit *cacheHit; // @synthesize cacheHit=_cacheHit;
-@property (strong, nonatomic) GEOCacheMiss *cacheMiss; // @synthesize cacheMiss=_cacheMiss;
+@property (strong, nonatomic) GEOCacheHit *cacheHit;
+@property (strong, nonatomic) GEOCacheMiss *cacheMiss;
 @property (readonly, nonatomic) BOOL hasCacheHit;
 @property (readonly, nonatomic) BOOL hasCacheMiss;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readCacheHit;
+- (void)_readCacheMiss;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

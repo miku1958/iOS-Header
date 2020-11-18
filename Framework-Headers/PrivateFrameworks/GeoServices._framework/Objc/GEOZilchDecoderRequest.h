@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_finishedDecodingWithPath:(Path_7b702847)arg1;
+- (void)_finishedDecodingWithPath:(Path_7969893c)arg1;
 - (void)cancel;
 - (void)decodeWithPathHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)initWithDecoder:(id)arg1 message:(shared_ptr_27244a92)arg2;

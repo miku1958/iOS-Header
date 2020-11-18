@@ -5,20 +5,16 @@
 //
 
 #import <Photos/NSObject-Protocol.h>
+#import <Photos/_PLThumbnailLoadingAsset-Protocol.h>
 
-@class NSManagedObjectID, NSString, NSURL, PLManagedAsset, PLPhotoLibrary;
+@class NSString, NSURL, PLManagedAsset, PLPhotoLibrary;
 
-@protocol _PLImageLoadingAsset <NSObject>
+@protocol _PLImageLoadingAsset <_PLThumbnailLoadingAsset, NSObject>
 - (double)aspectRatio;
 - (NSURL *)assetsLibraryURL;
-- (long long)cloudPlaceholderKind;
 - (long long)cloudSharedAssetPlaceholderKind;
-- (BOOL)complete;
 - (NSString *)debugFilename;
 - (double)duration;
-- (unsigned long long)effectiveThumbnailIndex;
-- (NSURL *)fileURLForFullsizeRenderImage;
-- (NSURL *)fileURLForFullsizeRenderVideo;
 - (void)generateLargeThumbnailFileIfNecessary;
 - (BOOL)hasAdjustments;
 - (BOOL)hasLegacyAdjustments;
@@ -40,24 +36,13 @@
 - (short)kindSubtype;
 - (unsigned long long)localResourcesState;
 - (PLManagedAsset *)managedAssetForPhotoLibrary:(PLPhotoLibrary *)arg1;
-- (NSManagedObjectID *)objectID;
 - (int)orientation;
-- (NSString *)originalFileName;
+- (NSString *)originalFilename;
 - (long long)originalImageOrientation;
 - (struct CGSize)originalImageSize;
 - (NSString *)pathForAdjustmentDataFile;
 - (NSString *)pathForAdjustmentFile;
-- (NSString *)pathForFullsizeRenderImageFile;
-- (NSString *)pathForLargeThumbnailFile;
-- (NSString *)pathForMediumThumbnailFile;
-- (NSString *)pathForNonAdjustedFullsizeImageFile;
 - (NSString *)pathForOriginalFile;
-- (NSString *)pathForPenultimateFullsizeRenderImageFile;
-- (NSString *)pathForPenultimateFullsizeRenderVideoFile;
-- (NSString *)pathForSRGBLargeThumbnailFile;
-- (NSString *)pathForSubstandardFullsizeRenderImageFile;
-- (NSString *)pathForVideoPreviewFile;
-- (PLPhotoLibrary *)pl_photoLibrary;
 - (short)savedAssetType;
 - (NSString *)thumbnailIdentifier;
 - (NSString *)uniformTypeIdentifier;

@@ -22,9 +22,9 @@
 @property (nonatomic) BOOL shouldResizeCurrentProgress; // @synthesize shouldResizeCurrentProgress=_shouldResizeCurrentProgress;
 
 - (void).cxx_destruct;
-- (void)_setProgressViewColor:(BOOL)arg1;
 - (id)init;
 - (void)layoutSubviews;
+- (void)setProgressViewHighlighted:(BOOL)arg1;
 
 @end
 

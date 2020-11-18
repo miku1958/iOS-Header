@@ -8,7 +8,7 @@
 
 #import <RelevanceEngine/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 
 @interface REFeatureValue : NSObject <NSCopying>
 {
@@ -17,16 +17,21 @@
 @property (readonly, nonatomic) BOOL boolValue;
 @property (readonly, nonatomic) double doubleValue;
 @property (readonly, nonatomic) unsigned long long int64Value;
+@property (readonly, nonatomic) NSSet *setValue;
 @property (readonly, copy, nonatomic) NSString *stringValue;
 @property (readonly, nonatomic) unsigned long long type;
 
 + (id)featureValueWithBool:(BOOL)arg1;
++ (id)featureValueWithDictionary:(id)arg1;
 + (id)featureValueWithDouble:(double)arg1;
 + (id)featureValueWithInt64:(long long)arg1;
++ (id)featureValueWithSet:(id)arg1;
 + (id)featureValueWithString:(id)arg1;
 + (id)nullValueForFeature:(id)arg1;
+- (unsigned long long)_integralFeatureValue;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)dictionaryEncoding;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 

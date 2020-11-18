@@ -6,19 +6,33 @@
 
 #import <AppConduit/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSUUID;
+@class MIInstallOptions, NSArray, NSData, NSDictionary, NSError, NSSet, NSString, NSURL, NSUUID;
 
 @protocol ACXDeviceConnectionProtocol <NSObject>
+- (void)acknowledgeTestFlightInstallBegunForApp:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)activeComplicationsForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)applicationIsInstalledOnAnyPairedDeviceWithBundleID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)applicationIsInstalledOnAnyPairedDeviceWithCompanionBundleID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)applicationIsInstalledOnDeviceWithPairingID:(NSUUID *)arg1 withBundleID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)applicationIsInstalledOnDeviceWithPairingID:(NSUUID *)arg1 withCompanionBundleID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)cancelPendingInstallations;
 - (void)cancelUpdatePendingForCompanionApp:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)disableObservers;
 - (void)enableObservers;
+- (void)fetchApplicationDatabaseSyncInformationForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSUUID *, unsigned long long, NSError *))arg2;
 - (void)fetchApplicationWithContainingApplicationBundleID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchInfoForApplicationWithBundleID:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
+- (void)fetchInstallableSystemAppBundleIDsForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchInstallableSystemAppWithBundleID:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(ACXRemoteApplication *, NSError *))arg3;
 - (void)fetchInstalledApplicationsForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchInstalledCompatibleApplicationsForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchInstalledComplicationsForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)fetchInstalledWatchAppBundleIDsForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchInstalledWatchAppWithBundleID:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(ACXRemoteApplication *, NSError *))arg3;
+- (void)fetchLocalizedValuesFromAllDevicesForInfoPlistKeys:(NSSet *)arg1 forAppWithBundleID:(NSString *)arg2 fetchingFirstMatchingLocalizationInList:(NSArray *)arg3 completion:(void (^)(NSDictionary *, NSError *))arg4;
+- (void)fetchLocallyAvailableApplicationWithContainingApplicationBundleID:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(ACXApplication *, NSError *))arg3;
+- (void)fetchLocallyAvailableWatchAppBundleIDsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)fetchLocallyAvailableWatchAppWithBundleID:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 options:(unsigned long long)arg3 completion:(void (^)(ACXApplication *, NSError *))arg4;
 - (void)fetchProvisioningProfilesForApplicationWithBundleID:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchProvisioningProfilesForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchWatchAppBundleIDForCompanionAppBundleID:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
@@ -26,11 +40,14 @@
 - (void)getAlwaysInstallForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(BOOL))arg2;
 - (void)installAllApplications;
 - (void)installApplication:(NSString *)arg1 withProvisioningProfileInfo:(NSDictionary *)arg2 forTestFlight:(BOOL)arg3 onDeviceWithPairingID:(NSUUID *)arg4 completion:(void (^)(long long, NSError *))arg5;
+- (void)installApplicationAtURL:(NSURL *)arg1 onDeviceWithPairingID:(NSUUID *)arg2 installOptions:(MIInstallOptions *)arg3 size:(long long)arg4 completion:(void (^)(long long, NSError *))arg5;
 - (void)installProvisioningProfileWithData:(NSData *)arg1 onDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)installRequestFailedForApp:(NSString *)arg1 forDeviceWithPairingID:(NSUUID *)arg2 failureReason:(NSError *)arg3 wasUserInitiated:(BOOL)arg4 completion:(void (^)(NSError *))arg5;
 - (void)removeApplication:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(long long))arg3;
 - (void)removeProvisioningProfileWithID:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)retryPendingAppInstallationsOnDeviceWithPairingID:(NSUUID *)arg1;
 - (void)setUpdatePendingForCompanionApp:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
-- (void)updatePreferencesForApplicationWithIdentifier:(NSString *)arg1 preferences:(NSDictionary *)arg2 forDeviceWithPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
+- (void)systemAppIsInstallableOnDeviceWithPairingID:(NSUUID *)arg1 withBundleID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)updatePreferencesForApplicationWithIdentifier:(NSString *)arg1 preferences:(NSDictionary *)arg2 writingToPreferencesLocation:(unsigned long long)arg3 forDeviceWithPairingID:(NSUUID *)arg4 options:(unsigned long long)arg5 completion:(void (^)(NSError *))arg6;
 @end
 

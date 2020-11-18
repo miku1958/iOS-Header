@@ -12,9 +12,11 @@
 + (id)hk_oneDay;
 + (id)hk_oneWeek;
 - (id)_hk_dateByAddingFilteredInterval:(long long)arg1 toDate:(id)arg2;
+- (long long)hk_ageWithCurrentDate:(id)arg1;
 - (double)hk_approximateDuration;
 - (id)hk_dateByAddingInterval:(long long)arg1 toDate:(id)arg2;
 - (long long)hk_maxComponentValue;
+- (id)hk_negativeComponents;
 - (id)hk_populatedCalendarGregorianCalendarDefault;
 - (id)hk_translateDateComponentsToCalendar:(id)arg1 calendarUnits:(unsigned long long)arg2;
 @end

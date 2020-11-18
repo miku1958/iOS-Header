@@ -16,11 +16,10 @@
 }
 
 @property (copy, nonatomic) NSDate *ageVerificationExpirationDate;
-@property (copy, nonatomic) NSString *authServiceClientToken;
-@property (copy, nonatomic) NSNumber *authServiceClientTokenDSID;
-@property (copy, nonatomic) NSDate *authServiceClientTokenExpiration;
+@property (copy, nonatomic) NSDictionary *authServiceClientTokenCache;
 @property (readonly, copy, nonatomic) NSNumber *authServiceClientTokenTimeToLive;
 @property (nonatomic) BOOL bypassBagSanityChecks; // @synthesize bypassBagSanityChecks=_bypassBagSanityChecks;
+@property (copy, nonatomic) NSDictionary *cachedMusicUserTokens;
 @property (copy, nonatomic) NSDictionary *cachedSubscriptionStatus;
 @property (copy, nonatomic) NSString *cloudMediaLibraryUID;
 @property (copy, nonatomic) NSString *defaultStoreFront;
@@ -29,13 +28,17 @@
 @property (nonatomic, getter=isExplicitContentAllowedForCurrentYear) BOOL explicitContentAllowedForCurrentYear;
 @property (nonatomic, getter=isExplicitContentAllowedForExpirationYear) BOOL explicitContentAllowedForExpirationYear;
 @property (readonly, copy, nonatomic) NSNumber *fairPlayDeviceTypeOverride;
+@property (nonatomic, getter=isGrazingPathEnabled) BOOL grazingPathEnabled;
 @property (readonly, copy, nonatomic) NSString *hardwarePlatformOverride;
 @property (nonatomic) BOOL ignoreExtendedCertificateValidation;
 @property (readonly, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property (copy, nonatomic) NSNumber *lastActiveAccountDSID;
+@property (copy, nonatomic) NSDate *lastAllowedInteractiveAuthenticationTime;
 @property (nonatomic) double lastAuthenticationDialogResponseTime;
 @property (copy, nonatomic) NSDictionary *lastCookieHeadersForRevokingMusicUserTokens;
+@property (copy, nonatomic) NSDictionary *lastKnownUserAgeVerificationState;
 @property (copy, nonatomic) NSDictionary *mediaLibraryAccessApplicationIdentifiersWithTCCAcceptanceDates;
+@property (readonly, copy, nonatomic) NSNumber *networkTypeOverride;
 @property (readonly, copy, nonatomic) NSString *productPlatformOverride;
 @property (readonly, copy, nonatomic) NSString *productVersionOverride;
 @property (copy, nonatomic) NSDictionary *pushNotificationState;

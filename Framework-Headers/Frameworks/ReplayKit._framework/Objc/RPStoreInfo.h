@@ -15,9 +15,11 @@
     NSString *_author;
     NSString *_itemURL;
     NSArray *_categories;
+    NSArray *_artworkDictionary;
 }
 
 @property (strong, nonatomic) NSString *appName; // @synthesize appName=_appName;
+@property (strong, nonatomic) NSArray *artworkDictionary; // @synthesize artworkDictionary=_artworkDictionary;
 @property (strong, nonatomic) NSString *author; // @synthesize author=_author;
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) NSArray *categories; // @synthesize categories=_categories;

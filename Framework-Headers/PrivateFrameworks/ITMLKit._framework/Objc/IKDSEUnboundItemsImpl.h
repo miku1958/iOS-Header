@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSDictionary *indexTitles;
 @property (copy, nonatomic) NSArray *itemElements; // @synthesize itemElements=_itemElements;
 @property (strong, nonatomic) IKChangeSet *itemsChangeSet; // @synthesize itemsChangeSet=_itemsChangeSet;
+@property (readonly, nonatomic) NSArray *masterPrototypes;
 @property (readonly, nonatomic) NSArray *prototypes;
 @property (readonly, copy, nonatomic) NSArray *proxiedItemElements;
 @property (readonly) Class superclass;

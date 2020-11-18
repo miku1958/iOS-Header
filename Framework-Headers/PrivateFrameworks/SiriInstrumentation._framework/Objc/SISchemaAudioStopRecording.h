@@ -6,28 +6,27 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaAudioStopRecording-Protocol.h>
 
-@interface SISchemaAudioStopRecording : PBCodable <NSCopying>
+@class NSData, NSString;
+
+@interface SISchemaAudioStopRecording : PBCodable <SISchemaAudioStopRecording, NSSecureCoding>
 {
     int _endpointType;
-    struct {
-        unsigned int endpointType:1;
-    } _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int endpointType; // @synthesize endpointType=_endpointType;
-@property (nonatomic) BOOL hasEndpointType;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (readonly) Class superclass;
 
-- (int)StringAsEndpointType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (id)endpointTypeAsString:(int)arg1;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

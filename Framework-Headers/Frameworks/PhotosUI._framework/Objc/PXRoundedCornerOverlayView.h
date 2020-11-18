@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) UIColor *overlayColor; // @synthesize overlayColor=_overlayColor;
 
 - (void).cxx_destruct;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (void)_invalidateImage;
 - (BOOL)_needsUpdate;
 - (void)_setNeedsUpdate;

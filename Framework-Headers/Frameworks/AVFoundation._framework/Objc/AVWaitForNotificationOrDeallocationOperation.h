@@ -36,7 +36,6 @@
 - (void)_waitUntilFinishedIfNeeded;
 - (void)cancel;
 - (void)dealloc;
-- (void)finalize;
 - (id)initWithObject:(id)arg1 notificationNames:(id)arg2;
 - (void)main;
 - (void)monitoredObjectHasDeparted;

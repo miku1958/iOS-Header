@@ -10,8 +10,7 @@
 {
 }
 
-+ (void)load;
-- (void)_dispose;
+- (void)dealloc;
 
 @end
 

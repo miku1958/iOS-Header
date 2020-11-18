@@ -8,14 +8,19 @@
 
 #import <PhotosUICore/NSCopying-Protocol.h>
 
+@class NSString;
+
 @interface PXLayoutMetrics : NSObject <NSCopying>
 {
     struct CGSize _referenceSize;
 }
 
+@property (readonly, nonatomic) NSString *diagnosticDescription;
 @property (nonatomic) struct CGSize referenceSize; // @synthesize referenceSize=_referenceSize;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -13,52 +13,39 @@
 
 @interface _CPSafariUsagePropensity : PBCodable <_CPSafariUsagePropensity, NSSecureCoding>
 {
-    int _configuredLookbackTimeInDays;
-    float _localTopGoto;
-    float _localTopTap;
-    float _localOtherTap;
-    float _parsecTopGoto;
-    float _parsecTopTap;
-    float _parsecOtherTap;
-    float _competitorTopGoto;
-    float _competitorTopTap;
-    float _competitorCompletion;
-    float _competitorRecentSearch;
+    float _localGoto;
+    float _localTap;
+    float _parsecGoto;
+    float _parsecTap;
+    float _thirdPartyGoto;
+    float _thirdPartyTap;
+    float _thirdPartyCompletionOrRecentSearch;
+    float _goToSite;
     float _other;
     int _totalEngagements;
-    int _totalSessions;
-    long long _collectionStartTimestamp;
-    long long _collectionEndTimestamp;
 }
 
-@property (nonatomic) long long collectionEndTimestamp; // @synthesize collectionEndTimestamp=_collectionEndTimestamp;
-@property (nonatomic) long long collectionStartTimestamp; // @synthesize collectionStartTimestamp=_collectionStartTimestamp;
-@property (nonatomic) float competitorCompletion; // @synthesize competitorCompletion=_competitorCompletion;
-@property (nonatomic) float competitorRecentSearch; // @synthesize competitorRecentSearch=_competitorRecentSearch;
-@property (nonatomic) float competitorTopGoto; // @synthesize competitorTopGoto=_competitorTopGoto;
-@property (nonatomic) float competitorTopTap; // @synthesize competitorTopTap=_competitorTopTap;
-@property (nonatomic) int configuredLookbackTimeInDays; // @synthesize configuredLookbackTimeInDays=_configuredLookbackTimeInDays;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) float goToSite; // @synthesize goToSite=_goToSite;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (nonatomic) float localOtherTap; // @synthesize localOtherTap=_localOtherTap;
-@property (nonatomic) float localTopGoto; // @synthesize localTopGoto=_localTopGoto;
-@property (nonatomic) float localTopTap; // @synthesize localTopTap=_localTopTap;
+@property (nonatomic) float localGoto; // @synthesize localGoto=_localGoto;
+@property (nonatomic) float localTap; // @synthesize localTap=_localTap;
 @property (nonatomic) float other; // @synthesize other=_other;
-@property (nonatomic) float parsecOtherTap; // @synthesize parsecOtherTap=_parsecOtherTap;
-@property (nonatomic) float parsecTopGoto; // @synthesize parsecTopGoto=_parsecTopGoto;
-@property (nonatomic) float parsecTopTap; // @synthesize parsecTopTap=_parsecTopTap;
+@property (nonatomic) float parsecGoto; // @synthesize parsecGoto=_parsecGoto;
+@property (nonatomic) float parsecTap; // @synthesize parsecTap=_parsecTap;
 @property (readonly) Class superclass;
+@property (nonatomic) float thirdPartyCompletionOrRecentSearch; // @synthesize thirdPartyCompletionOrRecentSearch=_thirdPartyCompletionOrRecentSearch;
+@property (nonatomic) float thirdPartyGoto; // @synthesize thirdPartyGoto=_thirdPartyGoto;
+@property (nonatomic) float thirdPartyTap; // @synthesize thirdPartyTap=_thirdPartyTap;
 @property (nonatomic) int totalEngagements; // @synthesize totalEngagements=_totalEngagements;
-@property (nonatomic) int totalSessions; // @synthesize totalSessions=_totalSessions;
 
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (BOOL)requiresQueryId;
 - (void)writeTo:(id)arg1;
 
 @end

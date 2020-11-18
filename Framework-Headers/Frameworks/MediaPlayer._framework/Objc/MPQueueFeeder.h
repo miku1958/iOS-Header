@@ -6,118 +6,35 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaPlayer/MPQueueBehaviorManaging-Protocol.h>
-#import <MediaPlayer/NSSecureCoding-Protocol.h>
+@class MPModelPlayEvent, MPQueueFeederIdentifierRegistry, NSData, NSDictionary, NSString;
 
-@class MPModelPlayEvent, MSVMutableBidirectionalDictionary, NSData, NSDictionary, NSMutableDictionary, NSString;
-@protocol MPQueueFeederDelegate;
-
-@interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSSecureCoding>
+@interface MPQueueFeeder : NSObject
 {
-    long long _repeatType;
-    long long _shuffleType;
-    NSMutableDictionary *_nextStartTimes;
-    MSVMutableBidirectionalDictionary *_exportableItemIDs;
-    BOOL _requiresQueueChangeVerification;
-    id<MPQueueFeederDelegate> _delegate;
-    unsigned long long _state;
+    MPQueueFeederIdentifierRegistry *_identifierRegistry;
+    NSString *_uniqueIdentifier;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
     NSString *_siriReferenceIdentifier;
     NSDictionary *_siriWHAMetricsInfo;
-    NSString *_playbackContextUniqueIdentifier;
-    long long _activeShuffleType;
-    NSString *_uniqueIdentifier;
     MPModelPlayEvent *_modelPlayEvent;
-    CDStruct_dcf4dde6 _skipLimit;
 }
 
-@property (nonatomic) long long activeShuffleType; // @synthesize activeShuffleType=_activeShuffleType;
-@property (readonly, nonatomic) BOOL allowsQueueResetWhenReachingEnd;
-@property (readonly, nonatomic) BOOL allowsUserVisibleUpcomingItems;
-@property (readonly, nonatomic) BOOL canReorder;
-@property (readonly, nonatomic) BOOL canSeek;
-@property (readonly, nonatomic) BOOL canSkipToPreviousItem;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<MPQueueFeederDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) Class itemClass;
-@property (readonly, nonatomic) unsigned long long itemCount;
+@property (strong, nonatomic) MPQueueFeederIdentifierRegistry *identifierRegistry; // @synthesize identifierRegistry=_identifierRegistry;
 @property (readonly, nonatomic) MPModelPlayEvent *modelPlayEvent; // @synthesize modelPlayEvent=_modelPlayEvent;
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
-@property (copy, nonatomic) NSString *playbackContextUniqueIdentifier; // @synthesize playbackContextUniqueIdentifier=_playbackContextUniqueIdentifier;
-@property (readonly, nonatomic) long long playbackMode;
-@property (readonly, nonatomic) BOOL playerPreparesItemsForPlaybackAsynchronously;
-@property (readonly, nonatomic) long long realRepeatType;
-@property (readonly, nonatomic) long long realShuffleType;
-@property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
-@property (nonatomic) BOOL requiresQueueChangeVerification; // @synthesize requiresQueueChangeVerification=_requiresQueueChangeVerification;
-@property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (copy, nonatomic) NSString *siriReferenceIdentifier; // @synthesize siriReferenceIdentifier=_siriReferenceIdentifier;
 @property (copy, nonatomic) NSDictionary *siriWHAMetricsInfo; // @synthesize siriWHAMetricsInfo=_siriWHAMetricsInfo;
-@property (nonatomic) CDStruct_dcf4dde6 skipLimit; // @synthesize skipLimit=_skipLimit;
-@property (nonatomic) unsigned long long state; // @synthesize state=_state;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property (readonly, nonatomic) BOOL userCanChangeShuffleAndRepeatType;
 
-+ (BOOL)supportsSecureCoding;
-+ (BOOL)supportsStateRestoration;
 - (void).cxx_destruct;
-- (BOOL)_canPurgeNextStartTimes;
-- (id)_itemForIndex:(long long)arg1 queueIdentifier:(id)arg2;
 - (void)applyVolumeNormalizationForItem:(id)arg1;
-- (id)audioSessionModeForItemAtIndex:(unsigned long long)arg1;
-- (BOOL)canSkipItem:(id)arg1;
-- (BOOL)canSkipToPreviousItemForItem:(id)arg1;
-- (id)contentItemIDAtIndex:(long long)arg1;
-- (id)contentItemIDForQueueItemID:(id)arg1;
-- (void)contentsDidChangeWithPreferredStartIndex:(unsigned long long)arg1;
-- (void)contentsDidChangeWithPreferredStartIndex:(unsigned long long)arg1 error:(id)arg2;
-- (void)contentsDidChangeWithReplacementPlaybackContext:(id)arg1;
-- (id)copyRawItemAtIndex:(unsigned long long)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (id)errorResolverForItem:(id)arg1;
-- (void)generateContentIDForItem:(id)arg1;
-- (BOOL)hasItemForIndex:(unsigned long long)arg1;
-- (BOOL)hasValidItemAtIndex:(unsigned long long)arg1;
-- (id)identifierAtIndex:(unsigned long long)arg1;
-- (long long)indexForItemID:(id)arg1;
-- (unsigned long long)indexOfItemWithIdentifier:(id)arg1;
-- (unsigned long long)indexOfMediaItem:(id)arg1;
+- (void)getRepresentativeMetadataForPlaybackContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
-- (unsigned long long)initialPlaybackQueueDepthForStartingIndex:(unsigned long long)arg1;
-- (void)invalidateAssets;
-- (void)invalidateRealRepeatType;
-- (void)invalidateRealShuffleType;
-- (BOOL)isPlaceholderItemForQueueIdentifier:(id)arg1;
-- (id)itemForIdentifier:(id)arg1;
-- (id)itemForIndex:(unsigned long long)arg1;
-- (id)itemForItemID:(id)arg1;
-- (id)itemIDAtIndex:(long long)arg1;
-- (long long)itemTypeForIndex:(unsigned long long)arg1;
-- (id)localizedAttributedPositionInPlaylistStringForItem:(id)arg1 withRegularTextAttributes:(id)arg2 emphasizedTextAttributes:(id)arg3;
-- (id)localizedPositionInPlaylistString:(id)arg1;
-- (id)mediaItemAtIndex:(unsigned long long)arg1;
-- (id)mediaItemForIdentifier:(id)arg1;
-- (id)metadataItemForIdentifier:(id)arg1;
-- (id)pathAtIndex:(unsigned long long)arg1;
-- (id)playbackInfoForIdentifier:(id)arg1;
-- (void)player:(id)arg1 currentItemDidChangeToItem:(id)arg2;
-- (void)player:(id)arg1 currentItemWillChangeFromItem:(id)arg2;
-- (BOOL)player:(id)arg1 shouldContinuePlaybackForNetworkType:(long long)arg2 returningError:(id *)arg3;
-- (id)preferredLanguages;
-- (id)queueIdentifierForItemID:(id)arg1;
-- (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)reloadWithPlaybackContext:(id)arg1 requireFinalTracklist:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)restoreState:(CDUnknownBlockType)arg1;
-- (void)setNextStartTime:(double)arg1 forIndentifier:(id)arg2;
-- (BOOL)shouldBeginPlaybackOfItem:(id)arg1 error:(id *)arg2;
-- (BOOL)shouldReuseQueueFeederForPlaybackContext:(id)arg1;
-- (void)shuffleItemsWithAnchor:(unsigned long long *)arg1;
+- (id)playbackInfoForItem:(id)arg1;
+- (id)supplementalPlaybackContext;
+- (long long)supplementalPlaybackContextBehavior;
 
 @end
 

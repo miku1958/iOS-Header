@@ -20,14 +20,14 @@
 }
 
 @property (readonly) NSArray *allSuggestions;
-@property BOOL changingState; // @synthesize changingState=_changingState;
+@property (nonatomic) BOOL changingState; // @synthesize changingState=_changingState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL locationsAvailable; // @synthesize locationsAvailable=_locationsAvailable;
-@property (strong) NSHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
-@property (strong) NSMutableDictionary *suggestionsStorage; // @synthesize suggestionsStorage=_suggestionsStorage;
+@property (strong, nonatomic) NSMutableDictionary *suggestionsStorage; // @synthesize suggestionsStorage=_suggestionsStorage;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

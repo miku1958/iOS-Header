@@ -15,6 +15,7 @@
 
 - (id)px_indexSetAdjustedForDeletions:(id)arg1;
 - (id)px_indexSetAdjustedForInsertions:(id)arg1;
+- (id)px_indexesInRange:(struct _NSRange)arg1;
 - (id)px_intersectionWithIndexSet:(id)arg1;
 @end
 

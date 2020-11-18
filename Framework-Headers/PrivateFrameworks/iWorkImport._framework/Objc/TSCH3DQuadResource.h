@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (id)normalized4D;
 + (id)normalizedCenteredCube;
 + (id)normalizedCube;
++ (id)resourceForBox2:(box_80622335)arg1;
 
 @end
 

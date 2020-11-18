@@ -20,6 +20,8 @@
 - (id)defaultFolder;
 - (id)emailAddress;
 - (id)folders;
+- (BOOL)isManaged;
+- (id)localizedAttachmentsNotSupportedReason;
 - (id)objectIdentifier;
 - (BOOL)supportsAttachments;
 @end

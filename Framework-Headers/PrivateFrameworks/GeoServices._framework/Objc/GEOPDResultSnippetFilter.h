@@ -14,25 +14,46 @@ __attribute__((visibility("hidden")))
 @interface GEOPDResultSnippetFilter : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _supportedChildActions;
+    int _maxChildItems;
     int _maxChildPlaces;
+    BOOL _supportChildItems;
     struct {
-        unsigned int maxChildPlaces:1;
-    } _has;
+        unsigned int has_maxChildItems:1;
+        unsigned int has_maxChildPlaces:1;
+        unsigned int has_supportChildItems:1;
+    } _flags;
 }
 
+@property (nonatomic) BOOL hasMaxChildItems;
 @property (nonatomic) BOOL hasMaxChildPlaces;
-@property (nonatomic) int maxChildPlaces; // @synthesize maxChildPlaces=_maxChildPlaces;
+@property (nonatomic) BOOL hasSupportChildItems;
+@property (nonatomic) int maxChildItems;
+@property (nonatomic) int maxChildPlaces;
+@property (nonatomic) BOOL supportChildItems;
+@property (readonly, nonatomic) int *supportedChildActions;
+@property (readonly, nonatomic) unsigned long long supportedChildActionsCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsSupportedChildActions:(id)arg1;
+- (void)addSupportedChildAction:(int)arg1;
+- (void)clearSupportedChildActions;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setSupportedChildActions:(int *)arg1 count:(unsigned long long)arg2;
+- (int)supportedChildActionAtIndex:(unsigned long long)arg1;
+- (id)supportedChildActionsAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

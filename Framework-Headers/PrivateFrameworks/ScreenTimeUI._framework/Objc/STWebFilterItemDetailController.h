@@ -9,6 +9,7 @@
 @class NSString, STRestrictionItem, STWebFilterDetailController;
 @protocol STContentPrivacyViewModelCoordinator;
 
+__attribute__((visibility("hidden")))
 @interface STWebFilterItemDetailController : PSListController
 {
     BOOL _isNamedSite;

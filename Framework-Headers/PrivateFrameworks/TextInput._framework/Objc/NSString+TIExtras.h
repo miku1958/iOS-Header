@@ -49,6 +49,7 @@
 - (BOOL)_contentsExclusivelyInCharacterSet:(struct USet *)arg1;
 - (unsigned long long)_editDistanceFrom:(id)arg1;
 - (BOOL)_endsSentence;
+- (BOOL)_endsWithHalfwidth;
 - (void)_enumerateLongCharactersInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (unsigned short)_firstChar;
 - (id)_firstGrapheme;

@@ -29,8 +29,8 @@
 @property (readonly, nonatomic) BOOL serverSupportsVision;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)assetAdjustmentStateForCloudIdentifier:(id)arg1;
-- (void)dealloc;
 - (void)deleteFaces:(id)arg1;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (id)makeFace;

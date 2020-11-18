@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <AccountsDaemon/ACDAccountStoreProtocol-Protocol.h>
+#import <AccountsDaemon/ACRemoteAccountStoreProtocol-Protocol.h>
 
 @class ACDAccountStore, NSString;
 
-@interface ACDAccountStoreFilter : NSObject <ACDAccountStoreProtocol>
+__attribute__((visibility("hidden")))
+@interface ACDAccountStoreFilter : NSObject <ACRemoteAccountStoreProtocol>
 {
     ACDAccountStore *_backingAccountStore;
 }
 
-@property (strong, nonatomic) ACDAccountStore *backingAccountStore; // @synthesize backingAccountStore=_backingAccountStore;
+@property (readonly, nonatomic) ACDAccountStore *backingAccountStore; // @synthesize backingAccountStore=_backingAccountStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)_whiteList;
++ (id)new;
 - (void).cxx_destruct;
 - (BOOL)_accessGrantedForBundleID:(id)arg1 onAccountTypeID:(id)arg2;
 - (BOOL)_accessGrantedForClient:(id)arg1 onAccountTypeID:(id)arg2;
@@ -64,6 +66,8 @@
 - (void)enabledDataclassesForAccountWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)grantedPermissionsForAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)handleURL:(id)arg1;
+- (id)init;
+- (id)initWithBackingAccountStore:(id)arg1;
 - (void)insertAccountType:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)insertCredentialItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)isPerformingDataclassActionsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -89,6 +93,7 @@
 - (void)saveAccount:(id)arg1 verify:(BOOL)arg2 dataclassActions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)saveAccount:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)saveCredentialItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)scheduleBackupIfNonexistent:(CDUnknownBlockType)arg1;
 - (void)setClientBundleID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setNotificationsEnabled:(BOOL)arg1;

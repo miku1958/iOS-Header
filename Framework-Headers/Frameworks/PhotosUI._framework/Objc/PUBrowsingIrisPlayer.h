@@ -28,7 +28,6 @@
     BOOL _activated;
     BOOL _playing;
     int __livePhotoRequestID;
-    int __currentFrameCuratorRequstID;
     ISLivePhotoPlayer *_player;
     CDUnknownBlockType durationChangeHandler;
     CDUnknownBlockType statusChangeHandler;
@@ -47,7 +46,6 @@
     CDStruct_1b6d18a9 _scrubbingPhotoTime;
 }
 
-@property (nonatomic, setter=_setCurrentFrameCuratorRequestID:) int _currentFrameCuratorRequstID; // @synthesize _currentFrameCuratorRequstID=__currentFrameCuratorRequstID;
 @property (nonatomic, setter=_setCurrentUnloadRequestId:) long long _currentUnloadRequestId; // @synthesize _currentUnloadRequestId=__currentUnloadRequestId;
 @property (strong, nonatomic, setter=_setLivePhoto:) PHLivePhoto *_livePhoto; // @synthesize _livePhoto=__livePhoto;
 @property (strong, nonatomic) NSMutableSet *_livePhotoLoadingDisablingReasons; // @synthesize _livePhotoLoadingDisablingReasons=__livePhotoLoadingDisablingReasons;

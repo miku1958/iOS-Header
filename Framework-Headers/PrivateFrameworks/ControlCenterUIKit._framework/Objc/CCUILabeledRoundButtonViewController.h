@@ -41,6 +41,7 @@
 @property (nonatomic) BOOL useLightStyle; // @synthesize useLightStyle=_useLightStyle;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)buttonTapped:(id)arg1;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2 useLightStyle:(BOOL)arg3;

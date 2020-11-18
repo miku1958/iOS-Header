@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)chunkedBuildsIncludeInterceptValues;
 - (id)g_genericToSpecificPropertyMapMixedColumn;
 - (id)genericToSpecificPropertyMap;
+- (id)userInterfaceName;
 
 @end
 

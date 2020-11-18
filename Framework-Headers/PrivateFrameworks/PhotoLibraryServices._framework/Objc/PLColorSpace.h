@@ -4,30 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreData/NSManagedObject.h>
+#import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLColorSpaceIdentity-Protocol.h>
+@class NSString;
 
-@class NSSet, NSString;
-
-@interface PLColorSpace : NSManagedObject <PLColorSpaceIdentity>
+@interface PLColorSpace : NSObject
 {
+    NSString *_colorSpaceName;
 }
 
-@property (copy, nonatomic) NSString *colorSpaceName; // @dynamic colorSpaceName;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSSet *resources; // @dynamic resources;
-@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *colorSpaceName; // @synthesize colorSpaceName=_colorSpaceName;
 
-+ (id)colorSpaceFromName:(id)arg1 createIfMissing:(BOOL)arg2 context:(id)arg3;
-+ (id)commonColorSpace_displaySpace_inContext:(id)arg1;
-+ (id)commonColorSpace_sRGB_inContext:(id)arg1;
-+ (id)commonColorSpace_unspecified_inContext:(id)arg1;
-+ (id)entityInManagedObjectContext:(id)arg1;
-+ (id)entityName;
-- (BOOL)supportsCloudUpload;
++ (id)colorSpaceFromName:(id)arg1;
++ (id)commonColorSpace_displaySpace;
++ (id)commonColorSpace_sRGB;
++ (id)commonColorSpace_unspecified;
+- (void).cxx_destruct;
+- (unsigned long long)hash;
+- (id)initWithName:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

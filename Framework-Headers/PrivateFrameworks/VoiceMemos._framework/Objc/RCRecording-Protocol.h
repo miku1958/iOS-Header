@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) AVAsset *avAsset;
 @property (readonly, copy, nonatomic) NSString *customLabel;
 @property (readonly, copy, nonatomic) NSDate *date;
+@property (readonly, nonatomic) BOOL downloading;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) BOOL editing;
 @property (readonly, nonatomic) BOOL evicted;
@@ -26,6 +27,7 @@
 @property (readonly, copy, nonatomic) NSString *path;
 @property (readonly, nonatomic) BOOL pendingRestore;
 @property (readonly, nonatomic) BOOL playable;
+@property (nonatomic) BOOL recordedOnWatch;
 @property (readonly, nonatomic) BOOL synced;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSString *titleDisallowingEmptyString;

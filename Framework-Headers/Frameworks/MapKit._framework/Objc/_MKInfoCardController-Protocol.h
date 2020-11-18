@@ -18,5 +18,6 @@
 
 + (double)headerHeightInMinimalMode;
 - (void)hideTitle:(BOOL)arg1;
+- (void)updateMaskAlpha:(double)arg1 onHeight:(double)arg2 withOffset:(double)arg3;
 @end
 

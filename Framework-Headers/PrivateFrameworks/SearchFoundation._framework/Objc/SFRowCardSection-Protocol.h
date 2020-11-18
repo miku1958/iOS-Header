@@ -25,11 +25,9 @@
 @property (copy, nonatomic) NSNumber *keyWeight;
 @property (strong, nonatomic) SFRichText *leadingSubtitle;
 @property (strong, nonatomic) SFRichText *leadingText;
-@property (copy, nonatomic) NSString *leftText;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
-@property (copy, nonatomic) NSString *rightText;
 @property (nonatomic) int separatorStyle;
 @property (strong, nonatomic) SFRichText *trailingSubtitle;
 @property (strong, nonatomic) SFRichText *trailingText;

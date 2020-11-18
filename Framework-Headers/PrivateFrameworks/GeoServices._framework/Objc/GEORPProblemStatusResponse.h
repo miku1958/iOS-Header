@@ -14,13 +14,14 @@
 {
     NSMutableArray *_problemStatus;
     int _statusCode;
-    CDStruct_bcb1eac0 _has;
+    CDStruct_ade9d5f7 _flags;
 }
 
 @property (nonatomic) BOOL hasStatusCode;
-@property (strong, nonatomic) NSMutableArray *problemStatus; // @synthesize problemStatus=_problemStatus;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (strong, nonatomic) NSMutableArray *problemStatus;
+@property (nonatomic) int statusCode;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)problemStatusType;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
@@ -35,6 +36,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)problemStatusAtIndex:(unsigned long long)arg1;
 - (unsigned long long)problemStatusCount;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

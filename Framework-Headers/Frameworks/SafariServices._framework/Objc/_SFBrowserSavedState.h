@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, SFBrowserStateSQLiteStore;
+@class NSArray, NSCountedSet, NSMutableArray, SFBrowserStateSQLiteStore;
 
 @interface _SFBrowserSavedState : NSObject
 {
-    NSArray *_browserControllerUUIDs;
     SFBrowserStateSQLiteStore *_browserStateSQLiteStore;
     NSMutableArray *_recentlyClosedTabs;
     BOOL _checkPointWriteAheadLogOnNextUpdate;
+    NSCountedSet *_tabCountByWindowUUID;
+    BOOL _haveLoadedRecentlyClosedTabs;
     BOOL _secureDeleteEnabled;
+    NSArray *_browserWindows;
 }
 
-@property (copy, nonatomic) NSArray *browserControllerUUIDs;
+@property (copy, nonatomic) NSArray *browserWindows; // @synthesize browserWindows=_browserWindows;
 @property (strong, nonatomic) NSArray *recentlyClosedTabs; // @synthesize recentlyClosedTabs=_recentlyClosedTabs;
 @property (nonatomic) BOOL secureDeleteEnabled; // @synthesize secureDeleteEnabled=_secureDeleteEnabled;
 
@@ -26,23 +28,32 @@
 + (id)sharedBrowserSavedState;
 - (void).cxx_destruct;
 - (void)_checkPointWriteAheadLogIfNeeded;
+- (void)_historyItemsWereRemoved:(id)arg1;
+- (void)_notifyThatRecentlyClosedTabsWereRemoved:(id)arg1;
 - (void)_readBrowserControllersSavedState;
+- (void)_readRecentlyClosedTabsStateIfNecessary;
+- (void)_removeRecentlyClosedTabStateData:(id)arg1;
 - (BOOL)activeDocumentIsValidForBrowserControllerWithUUID:(id)arg1;
-- (void)addRecentlyClosedTabWithData:(id)arg1;
+- (void)addRecentlyClosedTabs:(id)arg1;
 - (void)clearAllSavedStatesAndCloseDatabase;
+- (void)clearAllSavedStatesClosingDatabase:(BOOL)arg1;
 - (void)clearRecentlyClosedTabs;
 - (void)dealloc;
 - (id)initWithDatabaseURL:(id)arg1;
+- (id)initWithDefaultBrowserStateDatabase;
 - (id)initWithInMemoryDatabase;
+- (void)loadSessionStateDataAndRemoveRecentlyClosedTab:(id)arg1;
 - (id)readSavedSessionStateDataForTabWithUUID:(id)arg1;
-- (void)removeRecentlyClosedTabWithData:(id)arg1;
+- (void)removeRecentlyClosedTabWithStateData:(id)arg1;
 - (void)removeTabStateWithTabData:(id)arg1;
 - (void)removeTabsStateForBrowserControllerWithUUID:(id)arg1 andRemoveWindow:(BOOL)arg2;
 - (void)saveTabStateData:(id)arg1;
 - (void)saveTabsState:(id)arg1 forBrowserControllerWithUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)savedTabsStateForBrowserControllerWithUUID:(id)arg1;
 - (void)setActiveDocumentIsValid:(BOOL)arg1 forBrowserControllerWithUUID:(id)arg2;
+- (id)tabStateDataForUUID:(id)arg1;
 - (void)updateBrowserWindowState:(id)arg1 tabs:(id)arg2;
+- (void)updateSceneID:(id)arg1;
 
 @end
 

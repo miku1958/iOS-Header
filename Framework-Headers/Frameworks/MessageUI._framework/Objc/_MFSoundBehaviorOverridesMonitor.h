@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DNDEventBehaviorResolutionService, MFFuture;
+@class DNDEventBehaviorResolutionService, EFFuture;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
 {
     DNDEventBehaviorResolutionService *_dndBehaviorResolutionService;
     NSObject<OS_dispatch_queue> *_dndBehaviorResolutionServiceQueue;
-    MFFuture *_behaviorOverrideTypes;
+    EFFuture *_behaviorOverrideTypes;
 }
 
-@property (readonly) MFFuture *behaviorOverrideTypes; // @synthesize behaviorOverrideTypes=_behaviorOverrideTypes;
+@property (readonly) EFFuture *behaviorOverrideTypes; // @synthesize behaviorOverrideTypes=_behaviorOverrideTypes;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

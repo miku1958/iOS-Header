@@ -10,18 +10,29 @@
 
 @interface MCAppLayerVPNPayload : MCVPNPayloadBase
 {
+    BOOL _restrictDomains;
     NSString *_VPNUUID;
     NSArray *_SafariDomains;
+    NSArray *_SMBDomains;
+    NSArray *_mailDomains;
+    NSArray *_calendarDomains;
+    NSArray *_contactsDomains;
 }
 
+@property (strong, nonatomic) NSArray *SMBDomains; // @synthesize SMBDomains=_SMBDomains;
 @property (strong, nonatomic) NSArray *SafariDomains; // @synthesize SafariDomains=_SafariDomains;
 @property (strong, nonatomic) NSString *VPNUUID; // @synthesize VPNUUID=_VPNUUID;
+@property (strong, nonatomic) NSArray *calendarDomains; // @synthesize calendarDomains=_calendarDomains;
+@property (strong, nonatomic) NSArray *contactsDomains; // @synthesize contactsDomains=_contactsDomains;
+@property (strong, nonatomic) NSArray *mailDomains; // @synthesize mailDomains=_mailDomains;
+@property (readonly, nonatomic) BOOL restrictDomains; // @synthesize restrictDomains=_restrictDomains;
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)typeStrings;
 - (void).cxx_destruct;
 - (id)description;
+- (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;

@@ -13,18 +13,26 @@
     NSString *_alias;
     NSString *_displayName;
     IMAccount *_account;
+    long long _givenAliasType;
+    BOOL _selectedDeviceAlias;
+    NSString *_deviceAliasIdentifier;
 }
 
 @property (strong, nonatomic) IMAccount *account; // @synthesize account=_account;
 @property (copy, nonatomic) NSString *alias; // @synthesize alias=_alias;
+@property (nonatomic) NSString *deviceAliasIdentifier; // @synthesize deviceAliasIdentifier=_deviceAliasIdentifier;
 @property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (nonatomic) long long givenAliasType; // @synthesize givenAliasType=_givenAliasType;
 @property (readonly, strong, nonatomic) NSString *identifier; // @dynamic identifier;
+@property (nonatomic, getter=isSelectedDeviceAlias) BOOL selectedDeviceAlias; // @synthesize selectedDeviceAlias=_selectedDeviceAlias;
 @property (readonly, nonatomic) long long type; // @dynamic type;
 
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithAccount:(id)arg1 alias:(id)arg2;
+- (id)initWithAlias:(id)arg1 type:(long long)arg2 selected:(BOOL)arg3 deviceAliasIdentifier:(id)arg4;
+- (BOOL)isDeviceAlias;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLocalPhoneNumberAlias;
 - (BOOL)isPhoneNumberAliasOnPhoneNumberAccount;

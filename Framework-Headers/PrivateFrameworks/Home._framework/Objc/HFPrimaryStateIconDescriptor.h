@@ -12,7 +12,9 @@
 
 @interface HFPrimaryStateIconDescriptor : NSObject <HFIconDescriptor>
 {
+    BOOL _shouldForceLTR;
     NSString *_identifier;
+    NSString *_imageIdentifier;
     long long _primaryState;
 }
 
@@ -20,11 +22,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSString *imageIdentifier; // @synthesize imageIdentifier=_imageIdentifier;
 @property (readonly, nonatomic) long long primaryState; // @synthesize primaryState=_primaryState;
+@property (readonly, nonatomic) BOOL shouldForceLTR; // @synthesize shouldForceLTR=_shouldForceLTR;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)iconDescriptorByMergingWithIconDescriptor:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 imageIdentifier:(id)arg2 primaryState:(long long)arg3;
 - (id)initWithIdentifier:(id)arg1 primaryState:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 

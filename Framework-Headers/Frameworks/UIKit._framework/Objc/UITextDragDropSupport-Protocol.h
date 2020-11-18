@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) UIDropInteraction *dropInteraction;
 
 - (BOOL)accessibilityCanDrag;
+- (void)invalidateDropCaret;
 - (void)notifyTextInteraction;
 @end
 

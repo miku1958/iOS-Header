@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) NSString *UUID;
 @property (copy, nonatomic) NSString *comment;
-@property (readonly, nonatomic) NSPredicate *contactPredicate;
+@property (readonly, nonatomic) NSPredicate *contactPredicate; // @dynamic contactPredicate;
 @property (readonly, nonatomic, getter=isCurrentUser) BOOL currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

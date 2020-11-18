@@ -13,14 +13,17 @@
     unsigned long long _skipsAllowed;
     unsigned long long _type;
     BOOL _autoUpdateEnabled;
+    BOOL _useDarkBoot;
 }
 
 @property (readonly, nonatomic) BOOL autoUpdateEnabled; // @synthesize autoUpdateEnabled=_autoUpdateEnabled;
 @property (nonatomic) unsigned long long skipsAllowed; // @synthesize skipsAllowed=_skipsAllowed;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) BOOL useDarkBoot; // @synthesize useDarkBoot=_useDarkBoot;
 
 + (BOOL)supportsSecureCoding;
 - (void)_setAutoUpdateEnabled:(BOOL)arg1;
+- (void)_setDarkBoolEnabled:(BOOL)arg1;
 - (void)_setType:(unsigned long long)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

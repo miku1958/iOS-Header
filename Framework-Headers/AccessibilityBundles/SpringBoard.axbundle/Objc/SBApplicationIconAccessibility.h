@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityBundleIdentifier;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 
 @end
 

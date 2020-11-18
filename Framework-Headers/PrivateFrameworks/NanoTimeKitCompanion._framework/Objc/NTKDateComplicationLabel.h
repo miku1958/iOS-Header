@@ -21,6 +21,8 @@
     struct CGSize _cachedSize;
     struct _NSRange _dayTextRange;
     BOOL _cachedSizeIsValid;
+    UIColor *_textColor;
+    UIColor *_computedTextColor;
     BOOL canUseCurvedText;
     BOOL _usesLegibility;
     BOOL _legibilityHidden;
@@ -59,6 +61,7 @@
 - (void).cxx_destruct;
 - (void)_applyAccentColorAttributes;
 - (id)_attributedStringAccentingNumbersInString:(id)arg1;
+- (void)_computeTextColor;
 - (double)_cornerRadius;
 - (double)_firstLineBaselineOffsetFromBoundsTop;
 - (struct CGSize)_highlightInset;
@@ -66,6 +69,7 @@
 - (double)_legibtilityShadowRadius;
 - (void)_setFont:(id)arg1;
 - (void)_setText:(id)arg1;
+- (void)_updateTextColor;
 - (id)initWithSizeStyle:(long long)arg1 accentType:(long long)arg2 forDevice:(id)arg3;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

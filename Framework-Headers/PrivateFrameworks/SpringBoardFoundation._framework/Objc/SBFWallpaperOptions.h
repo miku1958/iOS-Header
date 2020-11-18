@@ -22,6 +22,8 @@
     double _parallaxFactor;
     double _zoomScale;
     double _stillTimeInVideo;
+    long long _wallpaperMode;
+    long long _wallpaperStatus;
     struct CGRect _cropRect;
 }
 
@@ -39,10 +41,13 @@
 @property (nonatomic) double stillTimeInVideo; // @synthesize stillTimeInVideo=_stillTimeInVideo;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsCropping; // @synthesize supportsCropping=_supportsCropping;
+@property (nonatomic) long long wallpaperMode; // @synthesize wallpaperMode=_wallpaperMode;
+@property (nonatomic) long long wallpaperStatus; // @synthesize wallpaperStatus=_wallpaperStatus;
 @property (nonatomic) double zoomScale; // @synthesize zoomScale=_zoomScale;
 
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6;
 + (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8;
++ (id)optionsWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct CGSize)bestWallpaperSizeForWallpaperSize:(struct CGSize)arg1 wallpaperScale:(double)arg2 deviceType:(long long)arg3 imageScale:(double)arg4;
@@ -53,7 +58,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfURL:(id)arg1;
-- (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8;
+- (id)initWithName:(id)arg1 parallaxFactor:(double)arg2 zoomScale:(double)arg3 supportsCropping:(BOOL)arg4 cropRect:(struct CGRect)arg5 portrait:(BOOL)arg6 hasVideo:(BOOL)arg7 stillTimeInVideo:(double)arg8 wallpaperMode:(long long)arg9 wallpaperStatus:(long long)arg10;
 - (id)initWithPersistentDataRepresentation:(id)arg1;
 - (id)initWithStream:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

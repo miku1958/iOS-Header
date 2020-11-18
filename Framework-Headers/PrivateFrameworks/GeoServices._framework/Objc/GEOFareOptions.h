@@ -8,22 +8,29 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+@class PBUnknownFields;
+
 @interface GEOFareOptions : PBCodable <NSCopying>
 {
+    PBUnknownFields *_unknownFields;
     int _paymentType;
     int _preferredSurchargeType;
     struct {
-        unsigned int paymentType:1;
-        unsigned int preferredSurchargeType:1;
-    } _has;
+        unsigned int has_paymentType:1;
+        unsigned int has_preferredSurchargeType:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasPaymentType;
 @property (nonatomic) BOOL hasPreferredSurchargeType;
-@property (nonatomic) int paymentType; // @synthesize paymentType=_paymentType;
-@property (nonatomic) int preferredSurchargeType; // @synthesize preferredSurchargeType=_preferredSurchargeType;
+@property (nonatomic) int paymentType;
+@property (nonatomic) int preferredSurchargeType;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
+- (void).cxx_destruct;
 - (int)StringAsPaymentType:(id)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -32,6 +39,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)paymentTypeAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

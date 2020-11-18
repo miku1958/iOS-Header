@@ -17,32 +17,25 @@
 {
     NSString *_type;
     NSString *_identifier;
-    BOOL _hole;
+    NSString *_prototypeIdentifier;
 }
 
 @property (readonly, nonatomic) NSDictionary *dataDictionary;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic, getter=isHole) BOOL hole; // @synthesize hole=_hole;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *prototypeIdentifier; // @synthesize prototypeIdentifier=_prototypeIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *type;
 
-+ (id)makeHoleDataItem;
 - (void).cxx_destruct;
 - (id)asPrivateIKJSDataItem;
-- (id)getPropertyPath:(id)arg1;
 - (id)init;
 - (id)initConstructor:(id)arg1:(id)arg2;
 - (id)initWithType:(id)arg1;
 - (id)initWithType:(id)arg1 identifier:(id)arg2;
-- (id)initWithValue:(id)arg1 internal:(BOOL)arg2;
-- (void)resetValueForPropertyPath:(id)arg1;
-- (void)setPropertyPath:(id)arg1:(id)arg2;
-- (void)setValue:(id)arg1 forPropertyPath:(id)arg2;
-- (void)touchPropertyPath:(id)arg1;
-- (id)valueForPropertyPath:(id)arg1 boxed:(BOOL)arg2;
+- (id)initWithValue:(id)arg1;
 
 @end
 

@@ -8,19 +8,22 @@
 
 #import <Intents/INSetTaskAttributeIntentExport-Protocol.h>
 
-@class INSpatialEventTrigger, INTask, INTemporalEventTrigger, NSString;
+@class INContactEventTrigger, INSpatialEventTrigger, INSpeakableString, INTask, INTemporalEventTrigger, NSString;
 
 @interface INSetTaskAttributeIntent : INIntent <INSetTaskAttributeIntentExport>
 {
 }
 
+@property (copy, nonatomic) INContactEventTrigger *contactEventTrigger;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long priority;
 @property (readonly, copy, nonatomic) INSpatialEventTrigger *spatialEventTrigger;
 @property (readonly, nonatomic) long long status;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) INTask *targetTask;
+@property (readonly, copy, nonatomic) INSpeakableString *taskTitle;
 @property (readonly, copy, nonatomic) INTemporalEventTrigger *temporalEventTrigger;
 
 - (id)_categoryVerb;
@@ -32,12 +35,15 @@
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithTargetTask:(id)arg1 status:(long long)arg2 spatialEventTrigger:(id)arg3 temporalEventTrigger:(id)arg4;
+- (id)initWithTargetTask:(id)arg1 taskTitle:(id)arg2 status:(long long)arg3 priority:(long long)arg4 spatialEventTrigger:(id)arg5 temporalEventTrigger:(id)arg6;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;
+- (void)setPriority:(long long)arg1;
 - (void)setSpatialEventTrigger:(id)arg1;
 - (void)setStatus:(long long)arg1;
 - (void)setTargetTask:(id)arg1;
+- (void)setTaskTitle:(id)arg1;
 - (void)setTemporalEventTrigger:(id)arg1;
 - (void)setVerb:(id)arg1;
 - (id)verb;

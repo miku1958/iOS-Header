@@ -6,54 +6,50 @@
 
 #import <objc/NSObject.h>
 
+#import <VoiceShortcutClient/INVCVoiceShortcut-Protocol.h>
 #import <VoiceShortcutClient/NSSecureCoding-Protocol.h>
 
-@class INImage, NSData, NSDate, NSString, WFLWorkflow;
+@class INImage, INShortcut, NSDate, NSString, WFWorkflow;
 
-@interface VCVoiceShortcut : NSObject <NSSecureCoding>
+@interface VCVoiceShortcut : NSObject <INVCVoiceShortcut, NSSecureCoding>
 {
     NSString *_identifier;
     NSString *_phrase;
-    NSString *_associatedAppBundleIdentifier;
-    NSDate *_dateCreated;
-    NSDate *_dateLastModified;
-    WFLWorkflow *_workflow;
-    INImage *_keyImage;
     NSString *_shortcutName;
     NSString *_shortcutDescription;
-    NSData *_serializedWorkflowData;
-    NSData *_keyImageData;
+    NSString *_associatedAppBundleIdentifier;
+    INImage *_keyImage;
+    INShortcut *_shortcut;
+    NSDate *_dateCreated;
+    NSDate *_dateLastModified;
     unsigned long long _cachedBlacklistStatus;
 }
 
-@property (copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *associatedAppBundleIdentifier; // @synthesize associatedAppBundleIdentifier=_associatedAppBundleIdentifier;
 @property (nonatomic) unsigned long long cachedBlacklistStatus; // @synthesize cachedBlacklistStatus=_cachedBlacklistStatus;
-@property (strong, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
-@property (strong, nonatomic) NSDate *dateLastModified; // @synthesize dateLastModified=_dateLastModified;
+@property (readonly, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (readonly, nonatomic) NSDate *dateLastModified; // @synthesize dateLastModified=_dateLastModified;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasBeenModified;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) INImage *keyImage; // @synthesize keyImage=_keyImage;
-@property (strong, nonatomic) NSData *keyImageData; // @synthesize keyImageData=_keyImageData;
-@property (copy, nonatomic) NSString *phrase; // @synthesize phrase=_phrase;
-@property (strong, nonatomic) NSData *serializedWorkflowData; // @synthesize serializedWorkflowData=_serializedWorkflowData;
-@property (copy, nonatomic) NSString *shortcutDescription; // @synthesize shortcutDescription=_shortcutDescription;
-@property (copy, nonatomic) NSString *shortcutName; // @synthesize shortcutName=_shortcutName;
-@property (strong, nonatomic) WFLWorkflow *workflow; // @synthesize workflow=_workflow;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) INImage *keyImage; // @synthesize keyImage=_keyImage;
+@property (readonly, copy, nonatomic) NSString *phrase; // @synthesize phrase=_phrase;
+@property (readonly, nonatomic) INShortcut *shortcut; // @synthesize shortcut=_shortcut;
+@property (readonly, copy, nonatomic) NSString *shortcutDescription; // @synthesize shortcutDescription=_shortcutDescription;
+@property (readonly, copy, nonatomic) NSString *shortcutName; // @synthesize shortcutName=_shortcutName;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) WFWorkflow *workflow;
 
 + (void)initialize;
-+ (BOOL)isValidVoiceShortcut:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_handleIntentActionIfExists;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 phrase:(id)arg2 shortcutName:(id)arg3 shortcutDescription:(id)arg4 associatedAppBundleIdentifier:(id)arg5 dateCreated:(id)arg6 dateLastModified:(id)arg7 serializedWorkflowData:(id)arg8 keyImageData:(id)arg9 error:(id *)arg10;
-- (id)initWithPhrase:(id)arg1 workflow:(id)arg2 error:(id *)arg3;
+- (id)initWithIdentifier:(id)arg1 phrase:(id)arg2 shortcutName:(id)arg3 shortcutDescription:(id)arg4 associatedAppBundleIdentifier:(id)arg5 dateCreated:(id)arg6 dateLastModified:(id)arg7 shortcut:(id)arg8 keyImageData:(id)arg9 error:(id *)arg10;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isValid:(id *)arg1;
 
 @end
 

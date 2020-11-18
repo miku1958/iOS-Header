@@ -4,44 +4,50 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HMFoundation/HMFObject.h>
+#import <HomeKitDaemon/HMDAction.h>
 
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDActionSet, HMDCharacteristic, NSString, NSUUID;
+@class HMDCharacteristic, NSDictionary, NSString;
 
-@interface HMDCharacteristicWriteAction : HMFObject <NSSecureCoding, HMDBackingStoreObjectProtocol>
+@interface HMDCharacteristicWriteAction : HMDAction <NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
-    NSUUID *_uuid;
-    HMDActionSet *_actionSet;
     HMDCharacteristic *_characteristic;
     id _targetValue;
+    NSDictionary *_actionInformation;
+    NSString *_dumpState;
 }
 
-@property (readonly, weak, nonatomic) HMDActionSet *actionSet; // @synthesize actionSet=_actionSet;
+@property (readonly, nonatomic) NSDictionary *actionInformation; // @synthesize actionInformation=_actionInformation;
 @property (readonly, weak, nonatomic) HMDCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *dumpState; // @synthesize dumpState=_dumpState;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) id targetValue; // @synthesize targetValue=_targetValue;
-@property (readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
++ (id)actionWithDictionaryRepresentation:(id)arg1 home:(id)arg2;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_processWriteActionModelUpdated:(id)arg1 message:(id)arg2;
-- (id)actionInformation;
-- (id)dumpState;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)entitlementsForNotification;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 characteristic:(id)arg2 targetValue:(id)arg3 actionSet:(id)arg4;
+- (BOOL)isActionForCharacteristic:(id)arg1;
 - (BOOL)isSecureAction;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)replaceCharacteristic:(id)arg1;
+- (BOOL)requiresDeviceUnlock;
+- (id)stateDump;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (unsigned long long)type;
 
 @end
 

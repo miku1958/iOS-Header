@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INParameter-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
-#import <Intents/NSObject-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
-@interface INParameter : NSObject <INParameter, NSObject, NSSecureCoding, NSCopying>
+@interface INParameter : NSObject <NSSecureCoding, NSCopying>
 {
     NSMutableDictionary *_indexesForSubKeyPaths;
     Class _parameterClass;
@@ -22,14 +20,8 @@
 
 @property (strong, nonatomic) NSMutableDictionary *_indexesForSubKeyPaths; // @synthesize _indexesForSubKeyPaths;
 @property (readonly, copy, nonatomic) NSString *_subscriptedKeyPath;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) Class parameterClass; // @synthesize parameterClass=_parameterClass;
 @property (copy, nonatomic) NSString *parameterKeyPath; // @synthesize parameterKeyPath=_parameterKeyPath;
-@property (readonly, nonatomic) id parameterValue;
-@property (readonly, nonatomic) id parameterizedObject;
-@property (readonly) Class superclass;
 
 + (id)parameterForClass:(Class)arg1 keyPath:(id)arg2;
 + (BOOL)supportsSecureCoding;
@@ -40,13 +32,17 @@
 - (void)_setIndexesForKeyPathWithSubscripts:(id)arg1;
 - (id)_valueOfObject:(id)arg1 forRemainingKeyPath:(id)arg2 inFullyQualifiedKeyPath:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (unsigned long long)indexForSubKeyPath:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToParameter:(id)arg1;
+- (id)parameterValue;
+- (id)parameterizedObject;
 - (void)setIndex:(unsigned long long)arg1 forSubKeyPath:(id)arg2;
 
 @end

@@ -21,7 +21,7 @@
 @property (readonly, nonatomic) short owningCategory; // @synthesize owningCategory=_owningCategory;
 @property (readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithText:(id)arg1 identifier:(id)arg2 category:(short)arg3 owningCategory:(short)arg4;
 

@@ -16,10 +16,10 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdateCardGrabberValueAndSpeak:(BOOL)arg1;
 - (void)_axAnnotateTableView;
-- (BOOL)_axCollapseCard:(id)arg1;
-- (BOOL)_axExpandCard:(id)arg1;
+- (BOOL)_axCollapseCard;
+- (BOOL)_axExpandCard;
+- (void)dealloc;
 - (void)setCurrentDataSource:(id)arg1;
-- (void)setShowResultsView:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

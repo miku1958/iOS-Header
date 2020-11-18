@@ -18,6 +18,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *displayLanguage;
 @property (readonly, nonatomic) BOOL hasKnownAccuracy;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int knownAccuracy;

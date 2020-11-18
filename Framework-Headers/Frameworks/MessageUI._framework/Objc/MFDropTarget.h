@@ -34,7 +34,7 @@
 @property (strong, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
+@property (weak, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
 
 - (void).cxx_destruct;
 - (BOOL)_delegateCanDropItemsWithDropSession:(id)arg1;

@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *name; // @dynamic name;
 @property (nonatomic) long long qualityOfService; // @dynamic qualityOfService;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @dynamic responseHandler;
+@property (nonatomic) double timeout; // @dynamic timeout;
 @property (weak, nonatomic) HMFMessageTransport *transport; // @dynamic transport;
 @property (copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;
 

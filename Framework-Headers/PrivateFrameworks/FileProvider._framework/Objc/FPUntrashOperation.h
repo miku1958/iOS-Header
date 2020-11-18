@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FileProvider/FPActionOperation.h>
+#import <FileProvider/FPTransformOperation.h>
 
-@class FPItem, NSArray;
+@class FPItem;
 
-@interface FPUntrashOperation : FPActionOperation
+@interface FPUntrashOperation : FPTransformOperation
 {
-    NSArray *_items;
     FPItem *_restoreDirectory;
     CDUnknownBlockType _untrashCompletionBlock;
 }
@@ -18,11 +17,12 @@
 @property (copy, nonatomic) CDUnknownBlockType untrashCompletionBlock; // @synthesize untrashCompletionBlock=_untrashCompletionBlock;
 
 - (void).cxx_destruct;
-- (void)finishWithResult:(id)arg1 error:(id)arg2;
+- (id)fp_prettyDescription;
 - (id)initWithItems:(id)arg1 restoreDirectory:(id)arg2;
-- (void)mainWithExtensionProxy:(id)arg1;
+- (void)postStitchingFinishWithResult:(id)arg1 error:(id)arg2;
 - (void)presendNotifications;
 - (id)replicateForItems:(id)arg1;
+- (unsigned long long)transformItem:(id)arg1 atIndex:(unsigned long long)arg2;
 
 @end
 

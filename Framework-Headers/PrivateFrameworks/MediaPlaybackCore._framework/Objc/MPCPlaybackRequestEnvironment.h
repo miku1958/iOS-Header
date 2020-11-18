@@ -29,7 +29,10 @@
 @property (readonly, copy, nonatomic) MPCPrivateListeningStateSource *privateListeningStateSource; // @synthesize privateListeningStateSource=_privateListeningStateSource;
 @property (readonly, copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
+@property (readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 
++ (id)activeAccountRequestEnvironment;
++ (id)requestEnvironmentWithUserIdentity:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_copyWithPlaybackRequestEnvironmentClass:(Class)arg1;
@@ -38,6 +41,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUserIdentity:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

@@ -71,7 +71,7 @@
 - (id)_installedTones;
 - (unsigned long long)_installedTonesSize;
 - (void)_loadAlertToneInfo;
-- (void)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
+- (BOOL)_loadITunesRingtoneInfoPlistAtPath:(id)arg1;
 - (void)_loadToneIdentifierAliasMap;
 - (id)_localizedNameOfToneWithIdentifier:(id)arg1;
 - (int)_lockManifestAtPath:(id)arg1;
@@ -87,6 +87,8 @@
 - (long long)_removeOrphanedManifestEntriesReturningFilePathsForFoundOrphans:(id *)arg1;
 - (id)_removeOrphanedPlistEntriesInManifestAtPath:(id)arg1 mediaDirectory:(id)arg2;
 - (BOOL)_removeToneFromManifestAtPath:(id)arg1 fileName:(id)arg2;
+- (BOOL)_removeToneWithIdentifier:(id)arg1;
+- (BOOL)_removeToneWithIdentifier:(id)arg1 orSyncIdentifier:(id)arg2;
 - (BOOL)_removeToneWithSyncIdentifier:(id)arg1;
 - (BOOL)_removeTonesFromManifestAtPath:(id)arg1 fileNames:(id)arg2 shouldSkipReload:(BOOL)arg3 alreadyLockedManifest:(BOOL)arg4 removedEntries:(id *)arg5;
 - (void)_setCurrentOverridePolicy:(long long)arg1 forAlertType:(long long)arg2;

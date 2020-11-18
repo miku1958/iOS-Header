@@ -12,6 +12,7 @@
 - (void)enabledSiri:(IDSProtobuf *)arg1;
 - (void)gotSiriState:(IDSProtobuf *)arg1;
 - (void)handleActivationData:(IDSProtobuf *)arg1;
+- (void)handleRenameDeviceRequest:(IDSProtobuf *)arg1;
 - (void)handleWarrantySentinelRequest:(IDSProtobuf *)arg1;
 - (void)popToControllerType:(IDSProtobuf *)arg1;
 - (void)pushControllerType:(IDSProtobuf *)arg1;

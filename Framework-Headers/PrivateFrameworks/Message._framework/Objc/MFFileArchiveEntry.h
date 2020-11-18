@@ -25,15 +25,12 @@
 @property (strong) NSString *path; // @synthesize path=_path;
 @property long long uncompressedSize; // @synthesize uncompressedSize=_uncompressedSize;
 
-+ (id)_inflateError:(int)arg1;
 + (id)archiveEntry;
 + (id)archiveEntryWithCentralHeader:(struct CentralHeader *)arg1 archiveData:(id)arg2;
+- (void).cxx_destruct;
 - (long long)compressedSize;
-- (void)dealloc;
 - (id)description;
 - (id)fileName;
-- (id)inflate;
-- (void)inflateWithWriter:(CDUnknownBlockType)arg1;
 - (id)initWithContents:(id)arg1 path:(id)arg2;
 - (id)initWithDirectoryPath:(id)arg1;
 - (void)merge:(id)arg1;

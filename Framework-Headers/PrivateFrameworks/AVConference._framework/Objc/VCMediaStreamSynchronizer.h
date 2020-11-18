@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     int _sourceRTPTimestampWraps;
     int _sourceState;
     NSObject<OS_dispatch_queue> *_mediaStreamSynchronizerQueue;
-    struct tagHANDLE *_hSoundPlayer;
+    struct tagHANDLE *_videoPlayerHandle;
     CDUnknownBlockType _destinationHandler;
 }
 
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 
 + (long long)differenceBetweenRtpTimestamp:(unsigned int)arg1 rtpTimestamp:(unsigned int)arg2;
 - (CDStruct_1b6d18a9)calculatePlayoutTimeWithRTPTimestamp:(unsigned int)arg1;
-- (void)callDestinationAlarmHandlerWithTimestamp:(unsigned int)arg1 pending:(int)arg2 behind:(double)arg3;
+- (void)callDestinationAlarmHandlerWithTimestamp:(unsigned int)arg1 isClosing:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithSourceSampleRate:(unsigned int)arg1 destinationSampleRate:(unsigned int)arg2;
 - (void)scheduleDestinationPlaybackWithRTPTimestamp:(unsigned int)arg1;

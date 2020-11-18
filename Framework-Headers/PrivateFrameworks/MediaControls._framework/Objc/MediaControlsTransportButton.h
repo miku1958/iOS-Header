@@ -8,6 +8,7 @@
 
 @class MPCPlayerCommandRequest;
 
+__attribute__((visibility("hidden")))
 @interface MediaControlsTransportButton : MPButton
 {
     BOOL _shouldPresentActionSheet;
@@ -15,23 +16,15 @@
     MPCPlayerCommandRequest *_touchUpInsideCommandRequest;
     MPCPlayerCommandRequest *_holdBeginCommandRequest;
     MPCPlayerCommandRequest *_holdEndCommandRequest;
-    double _scaleFactor;
-    struct CGAffineTransform _highlightTransform;
 }
 
-@property (nonatomic) struct CGAffineTransform highlightTransform; // @synthesize highlightTransform=_highlightTransform;
 @property (strong, nonatomic) MPCPlayerCommandRequest *holdBeginCommandRequest; // @synthesize holdBeginCommandRequest=_holdBeginCommandRequest;
 @property (strong, nonatomic) MPCPlayerCommandRequest *holdEndCommandRequest; // @synthesize holdEndCommandRequest=_holdEndCommandRequest;
 @property (readonly, nonatomic, getter=isPerformingHighlightAnimation) BOOL performingHighlightAnimation; // @synthesize performingHighlightAnimation=_performingHighlightAnimation;
-@property (nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (nonatomic) BOOL shouldPresentActionSheet; // @synthesize shouldPresentActionSheet=_shouldPresentActionSheet;
 @property (strong, nonatomic) MPCPlayerCommandRequest *touchUpInsideCommandRequest; // @synthesize touchUpInsideCommandRequest=_touchUpInsideCommandRequest;
 
 - (void).cxx_destruct;
-- (void)_layoutImageView;
-- (void)beginHighlight;
-- (void)endHighlight;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 
 @end

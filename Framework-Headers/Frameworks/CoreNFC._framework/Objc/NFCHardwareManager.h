@@ -9,12 +9,14 @@
 #import <CoreNFC/NFCHardwareManagerCallbacks-Protocol.h>
 #import <CoreNFC/NFCSessionCallbacks-Protocol.h>
 
-@class NFCSession, NSArray, NSMutableArray, NSString;
+@class NFCSession, NSArray, NSMutableArray, NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface NFCHardwareManager : NSObject <NFCSessionCallbacks, NFCHardwareManagerCallbacks>
 {
     NSMutableArray *_delegates;
     NFCSession *_xpcSession;
+    NSMutableDictionary *_queuedReaderSessions;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,10 +29,12 @@
 - (void)addNFCHardwareManagerCallbacksListener:(id)arg1;
 - (BOOL)areFeaturesSupported:(unsigned long long)arg1 outError:(id *)arg2;
 - (void)dealloc;
+- (void)dequeueReaderSession:(id)arg1;
 - (void)didInvalidate;
+- (id)getReaderSessionWithKey:(id)arg1;
 - (void)hardwareFailedToLoad;
 - (id)init;
-- (void)queueReaderSession:(id)arg1 showSharingUI:(unsigned long long)arg2 scanText:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)queueReaderSession:(id)arg1 showSharingUI:(unsigned long long)arg2 coreNFCSessionType:(unsigned long long)arg3 scanText:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)removeNFCHardwareManagerCallbacksListener:(id)arg1;
 
 @end

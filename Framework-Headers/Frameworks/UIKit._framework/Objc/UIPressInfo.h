@@ -10,6 +10,7 @@ __attribute__((visibility("hidden")))
 @interface UIPressInfo : NSObject
 {
     BOOL _longClick;
+    unsigned int _contextID;
     double _timestamp;
     long long _phase;
     long long _type;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) unsigned long long clickCount; // @synthesize clickCount=_clickCount;
+@property (nonatomic) unsigned int contextID; // @synthesize contextID=_contextID;
 @property (nonatomic) double force; // @synthesize force=_force;
 @property (nonatomic) unsigned long long gameControllerComponent; // @synthesize gameControllerComponent=_gameControllerComponent;
 @property (nonatomic, getter=isLongClick) BOOL longClick; // @synthesize longClick=_longClick;
@@ -28,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)_keyboardPressInfoForType:(long long)arg1 isKeyDown:(BOOL)arg2 timestamp:(double)arg3;
++ (id)_keyboardPressInfoForType:(long long)arg1 isKeyDown:(BOOL)arg2 timestamp:(double)arg3 contextID:(unsigned int)arg4;
 - (id)_sourceDescription;
 - (id)description;
 - (id)init;

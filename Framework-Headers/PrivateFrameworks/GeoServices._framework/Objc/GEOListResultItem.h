@@ -17,28 +17,29 @@
     BOOL _eventuallyVisible;
     BOOL _initiallyVisible;
     struct {
-        unsigned int businessId:1;
-        unsigned int latency:1;
-        unsigned int resultType:1;
-        unsigned int tappedCount:1;
-        unsigned int eventuallyVisible:1;
-        unsigned int initiallyVisible:1;
-    } _has;
+        unsigned int has_businessId:1;
+        unsigned int has_latency:1;
+        unsigned int has_resultType:1;
+        unsigned int has_tappedCount:1;
+        unsigned int has_eventuallyVisible:1;
+        unsigned int has_initiallyVisible:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned long long businessId; // @synthesize businessId=_businessId;
-@property (nonatomic) BOOL eventuallyVisible; // @synthesize eventuallyVisible=_eventuallyVisible;
+@property (nonatomic) unsigned long long businessId;
+@property (nonatomic) BOOL eventuallyVisible;
 @property (nonatomic) BOOL hasBusinessId;
 @property (nonatomic) BOOL hasEventuallyVisible;
 @property (nonatomic) BOOL hasInitiallyVisible;
 @property (nonatomic) BOOL hasLatency;
 @property (nonatomic) BOOL hasResultType;
 @property (nonatomic) BOOL hasTappedCount;
-@property (nonatomic) BOOL initiallyVisible; // @synthesize initiallyVisible=_initiallyVisible;
-@property (nonatomic) long long latency; // @synthesize latency=_latency;
-@property (nonatomic) int resultType; // @synthesize resultType=_resultType;
-@property (nonatomic) int tappedCount; // @synthesize tappedCount=_tappedCount;
+@property (nonatomic) BOOL initiallyVisible;
+@property (nonatomic) long long latency;
+@property (nonatomic) int resultType;
+@property (nonatomic) int tappedCount;
 
++ (BOOL)isValid:(id)arg1;
 - (int)StringAsResultType:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -47,6 +48,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resultTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

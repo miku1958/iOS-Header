@@ -8,6 +8,7 @@
 
 @class SKUIImageView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIStyledImageButton : UIControl
 {
     BOOL _didInitialHighlightForTouch;

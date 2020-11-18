@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <PersonalizationPortraitInternals/PPFeedbackAccepting-Protocol.h>
+
 @class NSArray, NSDate, NSString;
 
-@protocol PPEventServerProtocol
+@protocol PPEventServerProtocol <PPFeedbackAccepting>
 - (void)eventHighlightsFrom:(NSDate *)arg1 to:(NSDate *)arg2 options:(int)arg3 queryId:(unsigned long long)arg4;
 - (void)eventNameRecordsForClient:(NSString *)arg1 queryId:(unsigned long long)arg2;
 - (void)interactionSummaryMetricsWithQueryId:(unsigned long long)arg1;

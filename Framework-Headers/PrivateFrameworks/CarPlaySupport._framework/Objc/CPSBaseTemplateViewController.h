@@ -11,13 +11,14 @@
 #import <CarPlaySupport/CPSButtonDelegate-Protocol.h>
 #import <CarPlaySupport/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CPTemplate, NSString, UITapGestureRecognizer;
+@class CPTemplate, NAFuture, NSString, UITapGestureRecognizer;
 @protocol CPSTemplateViewControllerDelegate, CPTemplateDelegate;
 
 @interface CPSBaseTemplateViewController : UIViewController <CPSButtonDelegate, UIGestureRecognizerDelegate, CPBaseTemplateProviding, CPSBaseTemplateViewController>
 {
     BOOL _isPopping;
     BOOL _didDisappear;
+    NAFuture *_templateProviderFuture;
     CPTemplate *_associatedTemplate;
     id<CPTemplateDelegate> _templateDelegate;
     id<CPSTemplateViewControllerDelegate> _viewControllerDelegate;
@@ -33,16 +34,19 @@
 @property (nonatomic) BOOL isPopping; // @synthesize isPopping=_isPopping;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<CPTemplateDelegate> templateDelegate; // @synthesize templateDelegate=_templateDelegate;
+@property (readonly, nonatomic) NAFuture *templateProviderFuture; // @synthesize templateProviderFuture=_templateProviderFuture;
 @property (weak, nonatomic) id<CPSTemplateViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
 
 - (void).cxx_destruct;
 - (void)_addGestureRecognizerIfNecessary;
 - (void)_backGestureFired:(id)arg1;
 - (id)_barButtonItemForIdentifier:(id)arg1;
+- (void)_cleanup;
 - (void)_cps_viewControllerWasPopped;
 - (void)_dismissTemplateViewController;
 - (void)_updateLeadingBarButtons;
 - (void)_updateTrailingBarButtons;
+- (void)_viewDidLoad;
 - (void)didSelectButton:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceivePress:(id)arg2;
 - (id)initWithTemplate:(id)arg1 templateDelegate:(id)arg2;

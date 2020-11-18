@@ -6,9 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@class AVObservationController, AVPlayerController;
+@class AVObservationController, AVPlayerController, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVNowPlayingInfoController : NSObject
 {
     id _playerControllerCurrentTimeJumpedObserver;
@@ -18,11 +19,13 @@
     AVObservationController *_keyValueObservationController;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     BOOL _requiresLinearPlayback;
+    NSString *_overrideParentApplicationDisplayIdentifier;
     AVPlayerController *_playerController;
     AVPlayerController *_playerControllerToActivateAfterDelay;
 }
 
 @property (nonatomic, getter=isEnabled) BOOL enabled;
+@property (copy, nonatomic) NSString *overrideParentApplicationDisplayIdentifier; // @synthesize overrideParentApplicationDisplayIdentifier=_overrideParentApplicationDisplayIdentifier;
 @property (strong, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property (weak, nonatomic) AVPlayerController *playerControllerToActivateAfterDelay; // @synthesize playerControllerToActivateAfterDelay=_playerControllerToActivateAfterDelay;
 @property (nonatomic) BOOL requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
@@ -40,7 +43,7 @@
 - (id)_makeCommandsAndStatesDictionaryForPlayerController:(id)arg1;
 - (id)_makeNowPlayingInfo;
 - (void)_setNowPlayingInfoNeedsUpdate;
-- (void)_updateNowPlayingInfo:(id)arg1 commandsAndStates:(id)arg2 playbackState:(unsigned int)arg3;
+- (void)_updateNowPlayingInfo:(id)arg1 commandsAndStates:(id)arg2;
 - (void)_updateNowPlayingInfoIfNeeded;
 - (void)_updateRegisteredRemoteCommandEnabledStatesWithCommandsAndStates:(id)arg1;
 - (void)dealloc;

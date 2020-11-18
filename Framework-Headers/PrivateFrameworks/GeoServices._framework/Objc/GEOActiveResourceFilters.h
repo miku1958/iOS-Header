@@ -22,9 +22,11 @@
 @property (readonly, nonatomic) unsigned long long filtersCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (void)addFilter:(struct GEOActiveResourceFilter)arg1;
 - (void)clearFilters;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -34,6 +36,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setFilters:(struct GEOActiveResourceFilter *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

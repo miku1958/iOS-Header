@@ -6,13 +6,12 @@
 
 #import <HomeKitDaemon/HMDCameraIDSDeviceConnection.h>
 
-#import <HomeKitDaemon/HMDCameraPowerAssertionProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDCameraRemoteStreamSenderProtocol-Protocol.h>
 
-@class AVCPacketRelay, HMDCameraSessionID, HMFOSTransaction, NSNumber, NSObject, NSString;
+@class AVCPacketRelay, HMFOSTransaction, NSNumber, NSObject, NSString;
 @protocol HMDCameraIDSDeviceConnectionSenderDelegate, OS_dispatch_queue;
 
-@interface HMDCameraIDSDeviceConnectionSender : HMDCameraIDSDeviceConnection <HMDCameraRemoteStreamSenderProtocol, HMDCameraPowerAssertionProtocol>
+@interface HMDCameraIDSDeviceConnectionSender : HMDCameraIDSDeviceConnection <HMDCameraRemoteStreamSenderProtocol>
 {
     id<HMDCameraIDSDeviceConnectionSenderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -31,7 +30,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSNumber *mtu;
 @property (strong, nonatomic) HMFOSTransaction *packetRelayTransaction; // @synthesize packetRelayTransaction=_packetRelayTransaction;
-@property (readonly, nonatomic) HMDCameraSessionID *sessionID;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) AVCPacketRelay *videoPacketRelay; // @synthesize videoPacketRelay=_videoPacketRelay;
 

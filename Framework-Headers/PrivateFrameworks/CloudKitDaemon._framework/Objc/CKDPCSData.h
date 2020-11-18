@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudKitDaemon/NSCopying-Protocol.h>
 #import <CloudKitDaemon/NSSecureCoding-Protocol.h>
 #import <CloudKitDaemon/PQLValuable-Protocol.h>
 
@@ -13,7 +14,7 @@
 @protocol NSSecureCoding;
 
 __attribute__((visibility("hidden")))
-@interface CKDPCSData : NSObject <PQLValuable, NSSecureCoding>
+@interface CKDPCSData : NSObject <PQLValuable, NSSecureCoding, NSCopying>
 {
     struct _OpaquePCSShareProtection *_pcs;
     NSString *_etag;
@@ -32,10 +33,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
-+ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

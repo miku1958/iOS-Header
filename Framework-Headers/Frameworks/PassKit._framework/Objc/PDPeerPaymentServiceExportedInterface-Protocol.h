@@ -23,6 +23,7 @@
 - (void)presentRegistrationFlowWithAccount:(PKPeerPaymentAccount *)arg1 amount:(PKCurrencyAmount *)arg2 state:(unsigned long long)arg3 senderAddress:(NSString *)arg4 orientation:(NSNumber *)arg5 completion:(void (^)(BOOL))arg6;
 - (void)receivedPeerPaymentMessageData:(NSData *)arg1 handler:(void (^)(void))arg2;
 - (void)registerDeviceWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)registerDeviceWithForceReregister:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)registrationStatusWithCompletion:(void (^)(unsigned long long))arg1;
 - (void)resetApplePayManateeViewWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)setLastUsedAlternateFundingSourcePassUniqueIdentifier:(NSString *)arg1 handler:(void (^)(void))arg2;

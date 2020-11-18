@@ -9,32 +9,27 @@
 #import <IMAssistantCore/IMAssistantINMessageConverterPersonProvider-Protocol.h>
 #import <IMAssistantCore/IMAssistantIdentifiableIntentHandler-Protocol.h>
 
-@class CNContactStore, IMChatRegistry, NSArray, NSString;
+@class NSArray, NSString;
+@protocol IMAssistantMessageHandlerDataSource;
 
 @interface IMAssistantMessageHandler : NSObject <IMAssistantINMessageConverterPersonProvider, IMAssistantIdentifiableIntentHandler>
 {
-    CNContactStore *_contactStore;
+    id<IMAssistantMessageHandlerDataSource> _messageHandlerDataSource;
     NSArray *_keysToFetch;
     NSString *_intentIdentifier;
-    IMChatRegistry *_chatRegistry;
 }
 
-@property (strong, nonatomic) IMChatRegistry *chatRegistry; // @synthesize chatRegistry=_chatRegistry;
-@property (readonly, nonatomic) CNContactStore *contactStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *intentIdentifier;
-@property (readonly, nonatomic) NSArray *keysToFetch;
+@property (copy, nonatomic) NSString *intentIdentifier; // @synthesize intentIdentifier=_intentIdentifier;
+@property (strong, nonatomic) NSArray *keysToFetch; // @synthesize keysToFetch=_keysToFetch;
+@property (strong, nonatomic) id<IMAssistantMessageHandlerDataSource> messageHandlerDataSource; // @synthesize messageHandlerDataSource=_messageHandlerDataSource;
 @property (readonly) Class superclass;
 
 + (id)connectToIMDaemonController;
-+ (void)contactStoreDidChange:(id)arg1;
-+ (id)handleToContactIdentifierCache;
-+ (void)registerForContactStoreChangeNotifications;
-+ (id)spiHandleToPersonCache;
 - (void).cxx_destruct;
-- (id)_initWithContactStore:(id)arg1 keysToFetch:(id)arg2 intentIdentifier:(id)arg3;
+- (id)_initWithDataSource:(id)arg1 contactKeysToFetch:(id)arg2 intentIdentifier:(id)arg3;
 - (id)contactIdentifiersForParticipantsInChat:(id)arg1;
 - (id)contactIdentifiersMatchingHandle:(id)arg1;
 - (id)contactIdentifiersMatchingHandleID:(id)arg1;
@@ -44,11 +39,13 @@
 - (id)contactsMatchingINPerson:(id)arg1;
 - (id)contactsMatchingPredicate:(id)arg1 forPerson:(id)arg2;
 - (void)forceTriggerResumeNotification;
-- (id)initWithContactStore:(id)arg1 intentIdentifier:(id)arg2;
-- (id)initWithContactStore:(id)arg1 keysToFetch:(id)arg2 intentIdentifier:(id)arg3;
+- (id)initWithDataSource:(id)arg1 intentIdentifier:(id)arg2;
+- (id)initWithDataSource:(id)arg1 keysToFetch:(id)arg2 intentIdentifier:(id)arg3;
 - (id)initWithIntentIdentifier:(id)arg1;
 - (id)meContactIdentifier;
 - (id)personFromSPIHandle:(id)arg1;
+- (id)personFromSPIHandle:(id)arg1 contact:(id)arg2;
+- (id)unifiedContactIdentifierForContactIdentifier:(id)arg1;
 
 @end
 

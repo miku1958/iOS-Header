@@ -19,9 +19,11 @@
         unsigned int isHomePodInUltimateMode:1;
     } _has;
     BOOL _isHomePodInUltimateMode;
+    BOOL __encodeLegacyGloryData;
     int _deviceIdiom;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int deviceIdiom; // @synthesize deviceIdiom=_deviceIdiom;
@@ -31,10 +33,13 @@
 @property (nonatomic) BOOL isHomePodInUltimateMode; // @synthesize isHomePodInUltimateMode=_isHomePodInUltimateMode;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (int)StringAsDeviceIdiom:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)deviceIdiomAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

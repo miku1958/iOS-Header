@@ -8,35 +8,54 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOFareOptions;
+@class GEOFareOptions, PBDataReader, PBUnknownFields;
 
 @interface GEOTransitOptions : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _avoidedModes;
     GEOFareOptions *_fareOptions;
     int _prioritization;
+    int _routingBehavior;
     struct {
-        unsigned int prioritization:1;
-    } _has;
+        unsigned int has_prioritization:1;
+        unsigned int has_routingBehavior:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_avoidedModes:1;
+        unsigned int read_fareOptions:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_avoidedModes:1;
+        unsigned int wrote_fareOptions:1;
+        unsigned int wrote_prioritization:1;
+        unsigned int wrote_routingBehavior:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) int *avoidedModes;
 @property (readonly, nonatomic) unsigned long long avoidedModesCount;
-@property (strong, nonatomic) GEOFareOptions *fareOptions; // @synthesize fareOptions=_fareOptions;
+@property (strong, nonatomic) GEOFareOptions *fareOptions;
 @property (readonly, nonatomic) BOOL hasFareOptions;
 @property (nonatomic) BOOL hasPrioritization;
-@property (readonly, nonatomic) BOOL hasSurchargeOption;
-@property (nonatomic) int prioritization; // @synthesize prioritization=_prioritization;
-@property (nonatomic) BOOL showICFares;
-@property (nonatomic) int surchargeOption;
+@property (nonatomic) BOOL hasRoutingBehavior;
+@property (nonatomic) int prioritization;
+@property (nonatomic) int routingBehavior;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsAvoidedModes:(id)arg1;
 - (int)StringAsPrioritization:(id)arg1;
+- (int)StringAsRoutingBehavior:(id)arg1;
+- (void)_addNoFlagsAvoidedMode:(int)arg1;
+- (void)_readAvoidedModes;
+- (void)_readFareOptions;
 - (void)addAvoidedMode:(int)arg1;
 - (int)avoidedModeAtIndex:(unsigned long long)arg1;
 - (id)avoidedModesAsString:(int)arg1;
 - (void)clearAvoidedModes;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -46,7 +65,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)prioritizationAsString:(int)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)routingBehaviorAsString:(int)arg1;
 - (void)setAvoidedModes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;
 

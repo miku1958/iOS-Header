@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) NSError *error;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *inputOperations; // @synthesize inputOperations=_inputOperations;
-@property (readonly, nonatomic) NSArray *inputsProtocols;
+@property (readonly, nonatomic) NSArray *inputProtocols;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (readonly, nonatomic) NSArray *invalidationObservers; // @synthesize invalidationObservers=_invalidationObservers;
 @property (strong, nonatomic) MPCPlaybackEngineMiddleware *middleware; // @synthesize middleware=_middleware;

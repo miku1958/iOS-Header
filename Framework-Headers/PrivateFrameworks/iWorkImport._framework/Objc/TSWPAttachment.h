@@ -26,8 +26,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isAnchored;
 @property (readonly, nonatomic) BOOL isAttachedToBodyText;
 @property (readonly, nonatomic) BOOL isDrawable;
+@property (readonly, nonatomic) BOOL isHorizontallyCentered;
 @property (readonly, nonatomic) BOOL isPartitioned;
 @property (readonly, nonatomic) BOOL isSearchable;
+@property (readonly, nonatomic) BOOL isVerticallyCentered;
 @property (weak, nonatomic) TSWPStorage *parentStorage; // @synthesize parentStorage=_parentStorage;
 @property (readonly, nonatomic) Class positionerClass;
 @property (readonly, nonatomic) BOOL specifiesEnabledKnobMask;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (unsigned long long)attributeArrayKind;
++ (id)mostSpecificAttachmentFromInfo:(id)arg1;
 - (void).cxx_destruct;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)changesWithPageCount;
@@ -44,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)findCharIndex;
 - (void)infoChanged;
 - (id)initWithContext:(id)arg1;
+- (void)invalidateSize;
 - (BOOL)isEqual:(id)arg1;
 - (void)migrateStyleWithDocumentRoot:(id)arg1;
 - (id)objectsForStyleMigrating;

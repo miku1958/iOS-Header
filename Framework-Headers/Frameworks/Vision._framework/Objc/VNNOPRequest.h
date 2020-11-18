@@ -20,6 +20,8 @@
 - (struct CGSize)_actualSizeForDesiredSize:(id)arg1 ofSourceImageWidth:(unsigned long long)arg2 height:(unsigned long long)arg3;
 - (struct __CVBuffer *)_createScaledImagePixelBufferFromCropRect:(struct CGRect)arg1 ofImageBuffer:(id)arg2 inPixelFormat:(unsigned int)arg3 forDetectorInputImageSize:(struct CGSize)arg4 usingAnisotropicScaling:(BOOL)arg5 options:(id)arg6 error:(id *)arg7;
 - (struct __CVBuffer *)_createScaledImagePixelBufferFromImageBuffer:(id)arg1 inPixelFormat:(unsigned int)arg2 forDetectorInputImageSize:(struct CGSize)arg3 usingAnisotropicScaling:(BOOL)arg4 options:(id)arg5 error:(id *)arg6;
+- (BOOL)_performNOPForRevision:(unsigned long long)arg1 inContext:(id)arg2 detectorCompletionSemaphore:(id)arg3 error:(id *)arg4;
+- (BOOL)hasCancellationHook;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (id)supportedImageSizeSet;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;

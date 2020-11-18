@@ -94,6 +94,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_cameraRollCollectionListFetchResult;
 - (void)_cancelDelayedStopCaptureSession;
 - (void)_ensureCameraRollViewController;
 - (void)_invalidateTransientAssets;

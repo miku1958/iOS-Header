@@ -76,6 +76,7 @@
 @property (strong, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
 @property (nonatomic) BOOL isCloudKitArchived; // @synthesize isCloudKitArchived=_isCloudKitArchived;
 @property (readonly, nonatomic) BOOL isPersonalizable;
+@property (readonly, nonatomic) BOOL isValid;
 @property (nonatomic) BOOL liveRenderedBackground; // @synthesize liveRenderedBackground=_liveRenderedBackground;
 @property (readonly, nonatomic) PKPassLiveRenderedImageSet *liveRenderedImageSet;
 @property (readonly, nonatomic) PKLiveRenderedShaderSet *liveRenderedShaderSet;
@@ -100,6 +101,7 @@
 @property (readonly, nonatomic) PKPassPersonalization *personalization;
 @property (readonly, nonatomic) PKImage *personalizationLogoImage;
 @property (readonly, nonatomic) NSString *pluralLocalizedName;
+@property (readonly, nonatomic) PKImage *rawIcon;
 @property (copy, nonatomic) NSDate *relevantDate; // @synthesize relevantDate=_relevantDate;
 @property (nonatomic, getter=isRemotePass) BOOL remotePass; // @synthesize remotePass=_remotePass;
 @property (nonatomic, getter=isRevoked) BOOL revoked; // @synthesize revoked=_revoked;

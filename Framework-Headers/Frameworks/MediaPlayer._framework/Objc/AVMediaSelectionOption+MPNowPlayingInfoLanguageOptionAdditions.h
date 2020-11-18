@@ -7,6 +7,10 @@
 #import <AVFoundation/AVMediaSelectionOption.h>
 
 @interface AVMediaSelectionOption (MPNowPlayingInfoLanguageOptionAdditions)
+
+@property (readonly, nonatomic) BOOL mpIsOnlyAC3;
+@property (readonly, nonatomic) BOOL mpIsSDH;
+
 - (id)_languageOptionIdentifier;
 - (id)makeNowPlayingInfoLanguageOption;
 @end

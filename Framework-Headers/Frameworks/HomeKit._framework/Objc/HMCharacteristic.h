@@ -9,7 +9,7 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMCharacteristicMetadata, HMFUnfairLock, HMService, NSArray, NSDate, NSNumber, NSString, NSUUID, _HMContext;
+@class HMCharacteristicMetadata, HMFUnfairLock, HMService, NSArray, NSDate, NSDictionary, NSNumber, NSString, NSUUID, _HMContext;
 
 @interface HMCharacteristic : NSObject <NSSecureCoding, HMObjectMerge>
 {
@@ -44,6 +44,7 @@
 @property (copy, nonatomic) NSDate *notificationEnabledTime; // @synthesize notificationEnabledTime=_notificationEnabledTime;
 @property (copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
 @property (nonatomic) BOOL requiresDeviceUnlock; // @synthesize requiresDeviceUnlock=_requiresDeviceUnlock;
+@property (readonly, copy) NSDictionary *serializedDictionaryRepresentation;
 @property (weak, nonatomic) HMService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -52,6 +53,8 @@
 
 + (id)__localizedDescriptionForCharacteristicType:(id)arg1;
 + (id)_characteristicTypeAsString:(id)arg1;
++ (id)characteristicWithCharacteristicReference:(id)arg1 home:(id)arg2;
++ (id)characteristicWithSerializedDictionaryRepresentation:(id)arg1 home:(id)arg2;
 + (id)localizedDescriptionForCharacteristicType:(id)arg1;
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;

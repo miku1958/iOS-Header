@@ -5,11 +5,10 @@
 //
 
 #import <AVFoundation/NSObject-Protocol.h>
-#import <AVFoundation/NSSecureCoding-Protocol.h>
 
 @class AVOutputContext, AVOutputContextCommunicationChannel, AVOutputDevice, NSArray, NSDictionary, NSString;
 
-@protocol AVOutputContextImpl <NSObject, NSSecureCoding>
+@protocol AVOutputContextImpl <NSObject>
 
 @property (readonly, nonatomic) NSString *ID;
 @property (readonly, copy, nonatomic) NSString *associatedAudioDeviceID;
@@ -20,6 +19,7 @@
 @property (readonly) NSArray *outputDevices;
 @property (weak) AVOutputContext *parentOutputContext;
 @property (readonly) BOOL providesControlForAllVolumeFeatures;
+@property (readonly) BOOL supportsMultipleBluetoothOutputDevices;
 @property (readonly) BOOL supportsMultipleOutputDevices;
 @property (readonly) float volume;
 
@@ -27,7 +27,7 @@
 + (id)iTunesAudioContext;
 + (BOOL)outputContextExistsWithRemoteOutputDevice;
 + (id)outputContextImplForControllingOutputDeviceGroupWithID:(NSString *)arg1 options:(NSDictionary *)arg2;
-+ (id)outputContextImplForID:(NSString *)arg1;
++ (id)outputContextImplForID:(NSString *)arg1 type:(NSString *)arg2;
 + (id)platformDependentScreenOrVideoContext;
 + (void)resetOutputDeviceForAllOutputContexts;
 + (id)sharedAudioPresentationOutputContext;
@@ -38,9 +38,8 @@
 - (AVOutputContextCommunicationChannel *)openCommunicationChannelWithOptions:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)outputContextDidChangeApplicationProcessID:(AVOutputContext *)arg1;
 - (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(void (^)(NSError *))arg1;
-- (void)removeOutputDevice:(AVOutputDevice *)arg1;
+- (void)removeOutputDevice:(AVOutputDevice *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(AVOutputContextDestinationChange *))arg3;
 - (void)setOutputDevice:(AVOutputDevice *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(AVOutputContextDestinationChange *))arg3;
-- (void)setOutputDevices:(NSArray *)arg1;
 - (void)setOutputDevices:(NSArray *)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(AVOutputContextDestinationChange *))arg3;
 - (void)setVolume:(float)arg1;
 @end

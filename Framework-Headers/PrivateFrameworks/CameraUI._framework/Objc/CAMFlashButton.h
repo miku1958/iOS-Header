@@ -28,8 +28,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isUnavailable) BOOL unavailable; // @synthesize unavailable=_unavailable;
 
-+ (long long)flashModeForTorchMode:(long long)arg1;
-+ (long long)torchModeForFlashMode:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_commonCAMFlashButtonInitialization;
 - (id)_currentGlyphImageForAccessibilityHUD:(BOOL)arg1;

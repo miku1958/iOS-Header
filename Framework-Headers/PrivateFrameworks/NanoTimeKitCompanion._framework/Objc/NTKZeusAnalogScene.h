@@ -10,7 +10,6 @@
 
 @interface NTKZeusAnalogScene : NTKAnalogScene
 {
-    NSCalendar *_calendar;
     NSDate *_overrideDate;
     SKNode *_fontContainerNodes[2];
     NSArray *_fontHourNodes[2];
@@ -19,7 +18,7 @@
     SKSpriteNode *_logo2Node;
     SKNode *_multicolorContainerNode;
     SKSpriteNode *_multicolorBackground;
-    SKSpriteNode *_multicolorSplit[4];
+    SKSpriteNode *_multicolorSplit[5];
     double _previousCorrectionTime;
     double _currentTime;
     double _startSplitRotation;
@@ -32,9 +31,11 @@
     BOOL _isStatusIconVisible;
     double _bleedZRotation;
     BOOL _scrubbing;
+    NSCalendar *_calendar;
 }
 
 @property (nonatomic) double backgroundAlpha;
+@property (readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (nonatomic, getter=isScrubbing) BOOL scrubbing; // @synthesize scrubbing=_scrubbing;
 
 - (void).cxx_destruct;
@@ -68,6 +69,7 @@
 - (id)initWithSize:(struct CGSize)arg1 forDevice:(id)arg2;
 - (void)setAdjustsForStatusBarIcon:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
+- (void)setOverrideDate:(id)arg1 hourRadians:(double)arg2 minuteRadians:(double)arg3 secondRadians:(double)arg4;
 - (void)startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)update:(double)arg1;
 

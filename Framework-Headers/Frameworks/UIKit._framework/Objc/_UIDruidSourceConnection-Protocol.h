@@ -6,7 +6,7 @@
 
 #import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSSet, NSXPCListenerEndpoint, PBItemCollection, _DUITouchRoutingPolicy;
+@class NSArray, PBItemCollection, UIDraggingBeginningSessionConfiguration;
 
 @protocol _UIDruidSourceConnection <NSObject>
 
@@ -14,16 +14,14 @@
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (copy, nonatomic) CDUnknownBlockType dataTransferFinishedBlock;
 @property (copy, nonatomic) CDUnknownBlockType dragCompletionBlock;
+@property (copy, nonatomic) CDUnknownBlockType dragPreviewProviderBlock;
 @property (copy, nonatomic) CDUnknownBlockType handOffCancelledItemsBlock;
-@property (copy, nonatomic) CDUnknownBlockType itemDetailProviderBlock;
-@property (copy, nonatomic) CDUnknownBlockType itemImageProviderBlock;
-@property (copy, nonatomic) CDUnknownBlockType itemUpdateBlock;
 
 - (PBItemCollection *)addItems:(NSArray *)arg1 withOldItemCollection:(PBItemCollection *)arg2;
-- (void)beginDragWithTouches:(NSSet *)arg1 touchRoutingPolicy:(_DUITouchRoutingPolicy *)arg2 items:(NSArray *)arg3 sourceDataOwner:(long long)arg4 accessibilityEndpoint:(NSXPCListenerEndpoint *)arg5 centroid:(struct CGPoint)arg6 completion:(void (^)(unsigned int, PBItemCollection *))arg7;
+- (void)beginDragWithConfiguration:(UIDraggingBeginningSessionConfiguration *)arg1 completion:(void (^)(unsigned int, PBItemCollection *))arg2;
 - (void)cancelDrag;
 - (void)dirtyItems:(NSArray *)arg1;
 - (void)dragDidExitApp;
-- (void)takeOperationMasksInsideApp:(unsigned long long)arg1 outsideApp:(unsigned long long)arg2 prefersFullSizePreview:(BOOL)arg3;
+- (void)takeInsideAppSourceOperationMask:(unsigned long long)arg1 outsideAppSourceOperationMask:(unsigned long long)arg2 prefersFullSizePreview:(BOOL)arg3;
 @end
 

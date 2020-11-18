@@ -16,11 +16,13 @@
     long long _leadingCellThumbnailSizePreset;
     long long _nonLeadingCellThumbnailSizePreset;
     long long _qualityOfService;
+    double _scale;
     double _slotsLimit;
     long long _sourceNameImageSizePreset;
     NSString *_assetsDirectoryFileURLString;
     unsigned int _dynamicThumbnailSizePresetMinimumHeightInPixels;
     unsigned int _dynamicThumbnailSizePresetMinimumWidthInPixels;
+    NSString *_keyboardInputMode;
     NTPBSectionSlotCostInfo *_nonVideoSectionSlotCostInfo;
     NTPBSectionSlotCostInfo *_videoSectionSlotCostInfo;
     BOOL _allowLeadingCell;
@@ -36,6 +38,7 @@
         unsigned int leadingCellThumbnailSizePreset:1;
         unsigned int nonLeadingCellThumbnailSizePreset:1;
         unsigned int qualityOfService:1;
+        unsigned int scale:1;
         unsigned int slotsLimit:1;
         unsigned int sourceNameImageSizePreset:1;
         unsigned int dynamicThumbnailSizePresetMinimumHeightInPixels:1;
@@ -67,6 +70,7 @@
 @property (nonatomic) BOOL hasDynamicThumbnailSizePresetMinimumWidthInPixels;
 @property (nonatomic) BOOL hasEmbedsLimit;
 @property (nonatomic) BOOL hasFetchWidgetConfig;
+@property (readonly, nonatomic) BOOL hasKeyboardInputMode;
 @property (nonatomic) BOOL hasLeadingCellThumbnailSizePreset;
 @property (nonatomic) BOOL hasNonLeadingCellThumbnailSizePreset;
 @property (readonly, nonatomic) BOOL hasNonVideoSectionSlotCostInfo;
@@ -75,9 +79,11 @@
 @property (nonatomic) BOOL hasQualityOfService;
 @property (nonatomic) BOOL hasRespectsWidgetSlotsLimit;
 @property (nonatomic) BOOL hasRespectsWidgetVisibleSectionsPerQueueLimit;
+@property (nonatomic) BOOL hasScale;
 @property (nonatomic) BOOL hasSlotsLimit;
 @property (nonatomic) BOOL hasSourceNameImageSizePreset;
 @property (readonly, nonatomic) BOOL hasVideoSectionSlotCostInfo;
+@property (strong, nonatomic) NSString *keyboardInputMode; // @synthesize keyboardInputMode=_keyboardInputMode;
 @property (nonatomic) long long leadingCellThumbnailSizePreset; // @synthesize leadingCellThumbnailSizePreset=_leadingCellThumbnailSizePreset;
 @property (nonatomic) long long nonLeadingCellThumbnailSizePreset; // @synthesize nonLeadingCellThumbnailSizePreset=_nonLeadingCellThumbnailSizePreset;
 @property (strong, nonatomic) NTPBSectionSlotCostInfo *nonVideoSectionSlotCostInfo; // @synthesize nonVideoSectionSlotCostInfo=_nonVideoSectionSlotCostInfo;
@@ -86,6 +92,7 @@
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (nonatomic) BOOL respectsWidgetSlotsLimit; // @synthesize respectsWidgetSlotsLimit=_respectsWidgetSlotsLimit;
 @property (nonatomic) BOOL respectsWidgetVisibleSectionsPerQueueLimit; // @synthesize respectsWidgetVisibleSectionsPerQueueLimit=_respectsWidgetVisibleSectionsPerQueueLimit;
+@property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) double slotsLimit; // @synthesize slotsLimit=_slotsLimit;
 @property (nonatomic) long long sourceNameImageSizePreset; // @synthesize sourceNameImageSizePreset=_sourceNameImageSizePreset;
 @property (strong, nonatomic) NTPBSectionSlotCostInfo *videoSectionSlotCostInfo; // @synthesize videoSectionSlotCostInfo=_videoSectionSlotCostInfo;

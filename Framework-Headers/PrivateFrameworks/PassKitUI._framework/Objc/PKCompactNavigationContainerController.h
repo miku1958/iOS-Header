@@ -16,6 +16,8 @@
 
 @interface PKCompactNavigationContainerController : UIViewController <UIViewControllerTransitioningDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate, PKContentContainerObserver>
 {
+    BOOL _hasExplicitlyDefinedSupportedInterfaceOrientations;
+    unsigned long long _explicitlyDefinedSupportedInterfaceOrientations;
     UIViewController *_presentationContextVC;
     CDStruct_47050b7f _topVCInfo;
     struct CGRect _statusBarFrame;
@@ -46,6 +48,7 @@
 + (id)dimmingColor;
 - (void).cxx_destruct;
 - (id)_backgroundColor;
+- (BOOL)_canShowWhileLocked;
 - (CDStruct_47050b7f)_infoForViewController:(id)arg1;
 - (struct CGSize)_navigationControllerSizeForChildViewControllerInfo:(CDStruct_47050b7f)arg1 withCurrentInfo:(CDStruct_47050b7f)arg2;
 - (struct CGRect)_targetNavigationControllerFrameForInfo:(CDStruct_47050b7f)arg1;
@@ -73,8 +76,11 @@
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (struct CGSize)navigationControllerSizeForChildViewControllerPreferredContentSize:(struct CGSize)arg1 isRoot:(BOOL)arg2;
+- (long long)preferredUserInterfaceStyle;
 - (void)setExclusionRect:(struct CGRect)arg1 withCoordinateSpace:(id)arg2;
+- (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
 - (void)statusBarFrameWillChange:(id)arg1;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)tapGestureRecognized:(id)arg1;
 - (BOOL)updateChildViewControllerSizeAnimated:(BOOL)arg1;
 - (void)viewDidLoad;

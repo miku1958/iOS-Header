@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOComposedRoute, NSArray, NSDate, NSDictionary, NSMutableArray;
+@class GEOComposedRoute, GEODirectionsRequest, GEODirectionsResponse, GEORouteAttributes, NSArray, NSDate, NSDictionary, NSMutableArray;
 
 @interface GEOTraceRouteSimulator : NSObject
 {
@@ -15,6 +15,10 @@
     double _verticalAccuracy;
     NSDate *_startTime;
     GEOComposedRoute *_route;
+    GEODirectionsRequest *_request;
+    GEODirectionsResponse *_response;
+    GEORouteAttributes *_routeAttributes;
+    unsigned int _routeIndex;
     CDStruct_2c43369c _walkingStart;
     CDStruct_2c43369c _walkingEnd;
     CDStruct_2c43369c _origin;
@@ -33,7 +37,11 @@
 @property (strong, nonatomic) NSMutableArray *mutableLocations; // @synthesize mutableLocations=_mutableLocations;
 @property (nonatomic) CDStruct_c3b9c2ee origin; // @synthesize origin=_origin;
 @property (readonly, nonatomic) NSDictionary *pointTimestamps; // @synthesize pointTimestamps=_pointTimestamps;
+@property (readonly, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
+@property (readonly, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
+@property (readonly, nonatomic) GEORouteAttributes *routeAttributes; // @synthesize routeAttributes=_routeAttributes;
+@property (readonly, nonatomic) unsigned int routeIndex; // @synthesize routeIndex=_routeIndex;
 @property (strong, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property (nonatomic) double verticalAccuracy; // @synthesize verticalAccuracy=_verticalAccuracy;
 @property (nonatomic) CDStruct_c3b9c2ee walkingEnd; // @synthesize walkingEnd=_walkingEnd;
@@ -44,7 +52,8 @@
 - (double)estimateDuration;
 - (void)generateLocations;
 - (void)generateLocationsWithSpeedOverride:(double)arg1;
-- (id)initWithRoute:(id)arg1;
+- (id)initWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 routeIndex:(unsigned int)arg5;
+- (id)initWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 routeIndex:(unsigned int)arg5 locations:(id)arg6;
 - (void)simulateWalkingFrom:(CDStruct_c3b9c2ee)arg1 to:(CDStruct_c3b9c2ee)arg2;
 
 @end

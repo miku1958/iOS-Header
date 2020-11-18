@@ -49,8 +49,8 @@
 + (id)cupImperialUnit;
 + (id)cupUSUnit;
 + (id)dayUnit;
++ (id)decibelAWeightedSoundPressureLevelUnit;
 + (id)decibelHearingLevelUnit;
-+ (id)decibelSPLUnit;
 + (id)degreeCelsiusUnit;
 + (id)degreeFahrenheitUnit;
 + (long long)energyFormatterUnitFromUnit:(id)arg1;
@@ -108,8 +108,8 @@
 + (id)yardUnit;
 - (void).cxx_destruct;
 - (id)_baseUnitReduction;
-- (id)_baseUnitReductionAndProportionalSize:(out double *)arg1 withCycleSet:(id)arg2;
-- (id)_computeBaseUnitReductionAndProportionalSize:(out double *)arg1 withCycleSet:(id)arg2;
+- (id)_baseUnitReductionAndProportionalSize:(double *)arg1 withCycleSet:(id)arg2;
+- (id)_computeBaseUnitReductionAndProportionalSize:(double *)arg1 withCycleSet:(id)arg2;
 - (double)_convertFromBaseUnit:(double)arg1;
 - (double)_convertToBaseUnit:(double)arg1;
 - (id)_dimensionReduction;

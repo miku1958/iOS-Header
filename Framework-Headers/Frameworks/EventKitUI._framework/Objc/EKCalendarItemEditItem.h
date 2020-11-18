@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (void)notifySubitemDidSave:(unsigned long long)arg1;
 - (void)notifyTextChanged;
 - (unsigned long long)numberOfSubitems;
+- (void)prepareForReload;
 - (void)refreshFromCalendarItemAndStore;
 - (BOOL)requiresReconfigurationOnSave;
 - (void)reset;
@@ -75,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)setCalendarItem:(id)arg1 store:(id)arg2;
 - (BOOL)shouldAppearWithVisibility:(int)arg1;
 - (BOOL)shouldPinKeyboard;
+- (id)trailingSwipeActionsConfigurationForRowAtIndex:(long long)arg1;
 - (BOOL)usesDetailViewControllerForSubitem:(unsigned long long)arg1;
 - (id)viewForActionSheet;
 

@@ -8,6 +8,8 @@
 
 @interface NSObject (WebNSObjectExtras)
 + (id)_webkit_invokeOnMainThread;
++ (BOOL)isKeyExcludedFromWebScript:(const char *)arg1;
++ (BOOL)isSelectorExcludedFromWebScript:(SEL)arg1;
 - (id)_webkit_invokeOnMainThread;
 @end
 

@@ -13,6 +13,7 @@
     NSObject<OS_dispatch_queue> *_writerQueue;
 }
 
++ (void)clearAllAttributesForFileAtUrl:(id)arg1;
 + (id)filesystemPersistenceBatchItemForFileAtURL:(id)arg1;
 + (void)performBlockOnWriterQueue:(CDUnknownBlockType)arg1;
 + (void)persistData:(id)arg1 forKey:(id)arg2 fileURL:(id)arg3;
@@ -23,9 +24,9 @@
 + (id)persistedAttributesForFileAtURL:(id)arg1;
 + (id)persistedAttributesForFileAtURL:(id)arg1 exists:(BOOL *)arg2;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_backgroundWriteData:(id)arg1 toFileAtURL:(id)arg2;
 - (void)_performOnWriterQueueWithIdentifier:(const char *)arg1 block:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (id)init;
 
 @end

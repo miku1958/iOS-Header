@@ -6,36 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <IDS/IDSDaemonListenerProtocol-Protocol.h>
+@class CUTWeakReference, NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID;
 
-@class CUTWeakReference, NSArray, NSData, NSDate, NSDictionary, NSInputStream, NSOutputStream, NSString, NSUUID;
-@protocol OS_dispatch_queue;
-
-@interface _IDSDevice : NSObject <IDSDaemonListenerProtocol>
+@interface _IDSDevice : NSObject
 {
     NSDictionary *_info;
-    NSString *_serviceToken;
     CUTWeakReference *_account;
-    int _socket;
+    CUTWeakReference *_serviceReference;
     int _nearbyToken;
     BOOL _nearby;
     BOOL _connected;
     BOOL _immutableCloudConnected;
     BOOL _cloudConnected;
-    CDUnknownBlockType _openSocketCompletionHandler;
-    NSObject<OS_dispatch_queue> *_openSocketCompletionHandlerQueue;
-    NSString *_openSocketCompletionHandlerID;
-    NSInputStream *_inputStreamForSocket;
-    NSOutputStream *_outputStreamForSocket;
 }
 
 @property (readonly, nonatomic, getter=isCloudConnected) BOOL cloudConnected;
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceColor;
 @property (readonly, nonatomic) NSString *enclosureColor;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *identities;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isDefaultPairedDevice;
@@ -57,7 +45,6 @@
 @property (readonly, nonatomic) NSData *pushToken;
 @property (readonly, nonatomic) NSString *service;
 @property (readonly, nonatomic) unsigned long long serviceMinCompatibilityVersion;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsApplePay;
 @property (readonly, nonatomic) BOOL supportsHandoff;
 @property (readonly, nonatomic) BOOL supportsMMSRelay;
@@ -71,20 +58,14 @@
 - (void).cxx_destruct;
 - (void)_addIdentity:(id)arg1;
 - (void)_cloudConnectedStateChanged;
-- (void)_connect;
 - (void)_connectedStateChanged;
 - (void)_nearbyStateChanged;
 - (void)_setAccount:(id)arg1;
-- (void)closeSocket:(int)arg1;
-- (void)closeSocketForDomain:(id)arg1;
-- (void)closeStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;
+- (void)_setService:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)fullDescription;
 - (id)initWithDictionary:(id)arg1;
-- (void)openSocketWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
-- (void)setStreamPairWithInputStream:(id)arg1 outputStream:(id)arg2;
-- (int)socketForDomain:(id)arg1;
-- (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 
 @end
 

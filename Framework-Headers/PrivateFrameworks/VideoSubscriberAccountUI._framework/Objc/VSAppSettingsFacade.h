@@ -10,12 +10,13 @@
 
 @interface VSAppSettingsFacade : NSObject
 {
+    BOOL _hasChannelApps;
     BOOL _needsUpdateApps;
     BOOL _needsPresentationOfMVPDAppInstallPromptIfAvailable;
     int _registrationToken;
     VSIdentityProvider *_identityProvider;
     NSArray *_decidedApps;
-    NSArray *_voucherApps;
+    NSArray *_availableApps;
     NSOperationQueue *_privateQueue;
     NSOperation *_currentPresentationOperation;
     VSPersistentStorage *_storage;
@@ -28,9 +29,11 @@
     UIViewController *_mvpdInstallPromptPresentingViewController;
 }
 
+@property (copy, nonatomic) NSArray *availableApps; // @synthesize availableApps=_availableApps;
 @property (strong, nonatomic) NSOperation *currentPresentationOperation; // @synthesize currentPresentationOperation=_currentPresentationOperation;
 @property (copy, nonatomic) NSArray *decidedApps; // @synthesize decidedApps=_decidedApps;
 @property (copy, nonatomic) NSArray *featuredAdamIDs; // @synthesize featuredAdamIDs=_featuredAdamIDs;
+@property (nonatomic) BOOL hasChannelApps; // @synthesize hasChannelApps=_hasChannelApps;
 @property (strong, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
 @property (copy, nonatomic) VSOptional *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
 @property (copy, nonatomic) NSArray *knownAppBundles; // @synthesize knownAppBundles=_knownAppBundles;
@@ -43,7 +46,6 @@
 @property (strong, nonatomic) VSRestrictionsCenter *restrictionsCenter; // @synthesize restrictionsCenter=_restrictionsCenter;
 @property (strong, nonatomic) VSPersistentStorage *storage; // @synthesize storage=_storage;
 @property (copy, nonatomic) NSArray *unredeemedVouchers; // @synthesize unredeemedVouchers=_unredeemedVouchers;
-@property (copy, nonatomic) NSArray *voucherApps; // @synthesize voucherApps=_voucherApps;
 
 - (void).cxx_destruct;
 - (id)_fetchOperationForAdamIDs:(id)arg1;

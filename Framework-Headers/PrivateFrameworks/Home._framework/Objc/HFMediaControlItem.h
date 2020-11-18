@@ -8,17 +8,21 @@
 
 #import <Home/HFTogglableControlItem-Protocol.h>
 
-@class NSString;
-@protocol HFMediaValueSource;
+@class HFMediaActionSetting, NSString;
+@protocol HFMediaProfileContainer, HFMediaValueSource;
 
 @interface HFMediaControlItem : HFControlItem <HFTogglableControlItem>
 {
     id<HFMediaValueSource> _mediaValueSource;
+    id<HFMediaProfileContainer> _mediaProfileContainer;
+    HFMediaActionSetting *_mediaActionSetting;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HFMediaActionSetting *mediaActionSetting; // @synthesize mediaActionSetting=_mediaActionSetting;
+@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer; // @synthesize mediaProfileContainer=_mediaProfileContainer;
 @property (readonly, nonatomic) id<HFMediaValueSource> mediaValueSource; // @synthesize mediaValueSource=_mediaValueSource;
 @property (readonly) Class superclass;
 
@@ -27,12 +31,14 @@
 - (id)characteristicValuesForValue:(id)arg1;
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
-- (id)initWithValueSource:(id)arg1 displayResults:(id)arg2;
+- (id)initWithValueSource:(id)arg1 mediaProfileContainer:(id)arg2 displayResults:(id)arg3;
+- (long long)mapToHMMediaPlaybackState:(long long)arg1;
 - (id)normalizedValueForValue:(id)arg1;
 - (id)readValueAndPopulateStandardResults;
 - (long long)sortPriority;
 - (id)togglePrimaryState;
 - (id)toggleValue;
+- (long long)toggledSceneStateFromPrimaryState:(long long)arg1;
 - (id)valueForCharacteristicValues:(id)arg1;
 - (id)writePrimaryState:(long long)arg1;
 - (id)writeValue:(id)arg1;

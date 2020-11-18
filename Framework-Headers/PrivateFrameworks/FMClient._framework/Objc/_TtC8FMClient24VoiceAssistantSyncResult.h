@@ -14,9 +14,9 @@
     MISSING_TYPE *anchor;
 }
 
-@property (nonatomic, readonly) NSString *anchor; // @synthesize anchor;
+@property (nonatomic, readonly) NSString *anchor;
 @property (nonatomic, readonly) NSString *description;
-@property (nonatomic, readonly) NSSet *devices; // @synthesize devices;
+@property (nonatomic, readonly) NSSet *devices;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

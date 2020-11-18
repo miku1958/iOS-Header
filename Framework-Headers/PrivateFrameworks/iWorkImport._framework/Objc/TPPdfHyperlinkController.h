@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)URLWithDestinationName:(id)arg1;
++ (id)destinationFromSectionURL:(id)arg1;
 + (id)footnoteMarkNameForIndex:(unsigned long long)arg1;
 + (id)footnoteRefNameForIndex:(unsigned long long)arg1;
 - (struct CGRect)canvasRect;

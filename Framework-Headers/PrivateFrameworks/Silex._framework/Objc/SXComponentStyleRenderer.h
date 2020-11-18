@@ -9,7 +9,7 @@
 #import <Silex/SXComponentStyleRenderer-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSString, SXComponentView, SXGradientFillView, SXImageFillView, SXRepeatableImageFillView, SXVideoFillView, SXViewport, UIView;
+@class NSString, SXComponentView, SXGradientFillView, SXImageFillView, SXLayer, SXRepeatableImageFillView, SXShapeLayer, SXVideoFillView, SXViewport;
 @protocol SXComponentStyle, SXGradientFactory, SXImageFillViewFactory, SXRepeatableImageFillViewFactory, SXVideoFillViewFactory;
 
 @interface SXComponentStyleRenderer : NSObject <SXViewportChangeListener, SXComponentStyleRenderer>
@@ -22,16 +22,20 @@
     id<SXGradientFactory> _gradientFactory;
     id<SXRepeatableImageFillViewFactory> _repeatableImageFillViewFactory;
     SXComponentView *_componentView;
-    UIView *_backgroundView;
     SXGradientFillView *_gradientFillView;
     SXImageFillView *_imageFillView;
     SXVideoFillView *_videoFillView;
     SXRepeatableImageFillView *_repeatableImageFillView;
-    UIView *_borderContainerView;
+    SXLayer *_shadowLayer;
+    SXShapeLayer *_borderLayer;
+    SXShapeLayer *_topBorderLayer;
+    SXShapeLayer *_rightBorderLayer;
+    SXShapeLayer *_bottomBorderLayer;
+    SXShapeLayer *_leftBorderLayer;
 }
 
-@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property (strong, nonatomic) UIView *borderContainerView; // @synthesize borderContainerView=_borderContainerView;
+@property (strong, nonatomic) SXShapeLayer *borderLayer; // @synthesize borderLayer=_borderLayer;
+@property (strong, nonatomic) SXShapeLayer *bottomBorderLayer; // @synthesize bottomBorderLayer=_bottomBorderLayer;
 @property (readonly, nonatomic) id<SXComponentStyle> componentStyle; // @synthesize componentStyle=_componentStyle;
 @property (readonly, weak, nonatomic) SXComponentView *componentView; // @synthesize componentView=_componentView;
 @property (readonly, copy) NSString *debugDescription;
@@ -42,9 +46,13 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SXImageFillView *imageFillView; // @synthesize imageFillView=_imageFillView;
 @property (readonly, nonatomic) id<SXImageFillViewFactory> imageFillViewFactory; // @synthesize imageFillViewFactory=_imageFillViewFactory;
+@property (strong, nonatomic) SXShapeLayer *leftBorderLayer; // @synthesize leftBorderLayer=_leftBorderLayer;
 @property (strong, nonatomic) SXRepeatableImageFillView *repeatableImageFillView; // @synthesize repeatableImageFillView=_repeatableImageFillView;
 @property (readonly, nonatomic) id<SXRepeatableImageFillViewFactory> repeatableImageFillViewFactory; // @synthesize repeatableImageFillViewFactory=_repeatableImageFillViewFactory;
+@property (strong, nonatomic) SXShapeLayer *rightBorderLayer; // @synthesize rightBorderLayer=_rightBorderLayer;
+@property (strong, nonatomic) SXLayer *shadowLayer; // @synthesize shadowLayer=_shadowLayer;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) SXShapeLayer *topBorderLayer; // @synthesize topBorderLayer=_topBorderLayer;
 @property (strong, nonatomic) SXVideoFillView *videoFillView; // @synthesize videoFillView=_videoFillView;
 @property (readonly, nonatomic) id<SXVideoFillViewFactory> videoFillViewFactory; // @synthesize videoFillViewFactory=_videoFillViewFactory;
 @property (readonly, nonatomic) SXViewport *viewport; // @synthesize viewport=_viewport;
@@ -53,19 +61,21 @@
 - (void)applyBackgroundColor:(id)arg1;
 - (void)applyBorder:(id)arg1;
 - (void)applyComponentStyle;
-- (void)applyCornerRadius:(double)arg1 cornerMask:(unsigned long long)arg2 onView:(id)arg3;
+- (void)applyCornerRadius:(double)arg1 cornerMask:(unsigned long long)arg2 curve:(id)arg3 onView:(id)arg4;
 - (void)applyFill:(id)arg1;
 - (void)applyMask:(id)arg1;
 - (void)applyOpacity:(double)arg1;
+- (void)applyShadow:(id)arg1;
+- (void)applyStrokeStyle:(id)arg1 borderLayer:(id)arg2 path:(id)arg3 lineWidth:(double)arg4;
 - (void)componentVisiblityStateDidChange:(long long)arg1;
 - (void)dealloc;
 - (id)gradientViewForFill:(id)arg1;
 - (id)imageViewForFill:(id)arg1;
 - (id)initWithComponentStyle:(id)arg1 viewport:(id)arg2 imageFillViewFactory:(id)arg3 videoFillViewFactory:(id)arg4 gradientViewFactory:(id)arg5 repeatableImageFillViewFactory:(id)arg6;
-- (void)prepareBackgroundColor:(id)arg1;
 - (void)prepareBorder:(id)arg1;
 - (void)prepareFill:(id)arg1;
 - (void)prepareForComponentView:(id)arg1;
+- (void)prepareShadow:(id)arg1;
 - (id)repeatableImageFillViewForFill:(id)arg1;
 - (id)videoPlayerViewForFill:(id)arg1;
 - (id)viewForFill:(id)arg1;

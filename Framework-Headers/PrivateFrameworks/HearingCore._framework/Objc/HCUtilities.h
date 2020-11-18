@@ -18,8 +18,11 @@
 + (BOOL)deviceIsPhone;
 + (BOOL)deviceIsPod;
 + (BOOL)deviceIsSmallPhone;
++ (BOOL)deviceIsWatch;
 + (BOOL)isInternalInstall;
 + (id)messagePayloadFromDictionary:(id)arg1 andIdentifier:(unsigned long long)arg2;
++ (BOOL)supportsLEA2;
++ (BOOL)watchSupportsPairingHearingAids;
 
 @end
 

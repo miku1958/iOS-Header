@@ -24,6 +24,7 @@
 + (id)videoComposition;
 + (id)videoCompositionWithAsset:(id)arg1 applyingCIFiltersWithHandler:(CDUnknownBlockType)arg2;
 + (id)videoCompositionWithPropertiesOfAsset:(id)arg1;
++ (id)videoCompositionWithPropertiesOfAsset:(id)arg1 prototypeInstruction:(id)arg2;
 + (id)videoCompositionWithPropertiesOfAsset:(id)arg1 videoGravity:(id)arg2;
 - (id)builtInCompositorName;
 - (id)colorPrimaries;

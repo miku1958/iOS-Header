@@ -16,9 +16,11 @@
     NSSet *_extensions;
     NSMutableOrderedSet *_observers;
     BOOL _errorEncounteredDuringLastExtensionDiscovery;
+    NSSet *_extensionsSync;
 }
 
 @property (readonly, nonatomic) NSSet *extensions;
+@property (readonly, nonatomic) NSSet *extensionsSync; // @synthesize extensionsSync=_extensionsSync;
 @property (readonly, nonatomic) NSExtension *primaryExtension;
 @property (readonly, nonatomic) NSExtension *primaryExtensionSync;
 

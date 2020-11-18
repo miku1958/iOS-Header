@@ -25,8 +25,8 @@
 
 + (BOOL)isSupported;
 - (void).cxx_destruct;
-- (BOOL)canHandleRequest:(id)arg1 options:(id)arg2;
-- (void)handleRequest:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)canHandleRequest:(id)arg1;
+- (void)handleRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)speechSynthesizer:(id)arg1 didCancelSpeechUtterance:(id)arg2;
 - (void)speechSynthesizer:(id)arg1 didContinueSpeechUtterance:(id)arg2;

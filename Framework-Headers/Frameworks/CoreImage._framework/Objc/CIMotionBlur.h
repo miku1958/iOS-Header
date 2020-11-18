@@ -4,21 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreImage/CILinearBlur.h>
+#import <CoreImage/CIFilter.h>
 
-@class NSNumber;
+@class CIImage, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CIMotionBlur : CILinearBlur
+@interface CIMotionBlur : CIFilter
 {
+    CIImage *inputImage;
+    NSNumber *inputRadius;
     NSNumber *inputAngle;
 }
 
 @property (strong, nonatomic) NSNumber *inputAngle; // @synthesize inputAngle;
+@property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
+@property (strong, nonatomic) NSNumber *inputRadius; // @synthesize inputRadius;
 
 + (id)customAttributes;
-- (id)_blur:(id)arg1 pass:(int)arg2 weightsFactor:(float)arg3;
+- (id)_blur:(id)arg1 pass:(int)arg2 weightsFactor:(float)arg3 legacyExtent:(struct CGRect *)arg4;
+- (BOOL)_isIdentity;
 - (id)_kernel;
+- (id)outputImage;
 
 @end
 

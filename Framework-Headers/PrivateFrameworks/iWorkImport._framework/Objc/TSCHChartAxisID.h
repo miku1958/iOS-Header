@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debuggingName;
 - (id)description;
+- (id)displayNameWithOrdinal:(BOOL)arg1;
 - (unsigned long long)hash;
 - (id)initWithArchive:(const struct ChartAxisIDArchive *)arg1;
 - (id)initWithType:(int)arg1 ordinal:(unsigned long long)arg2;

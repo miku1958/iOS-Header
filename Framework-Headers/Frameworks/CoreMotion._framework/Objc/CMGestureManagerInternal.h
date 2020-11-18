@@ -6,23 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMGestureManagerInternal : NSObject
 {
     int fPriority;
     struct CLConnectionClient *fLocationdConnection;
     CDUnknownBlockType fGestureHandler;
-    NSObject<OS_dispatch_source> *fWatchDogTimer;
     NSObject<OS_dispatch_queue> *fPrivateQueue;
 }
 
 - (void)dealloc;
 - (id)initWithPriority:(int)arg1;
 - (void)startGestureUpdatesWithHandlerPrivate:(CDUnknownBlockType)arg1;
-- (void)startWatchdogCheckinsPrivate;
 - (void)stopGestureUpdatesPrivate;
-- (void)stopWatchdogCheckinsPrivate;
 
 @end
 

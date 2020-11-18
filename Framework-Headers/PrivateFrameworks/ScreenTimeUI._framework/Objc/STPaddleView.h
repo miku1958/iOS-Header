@@ -6,26 +6,32 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, UILabel;
+@class NSDateFormatter, NSDateIntervalFormatter, STUsageReportGraphDataPoint, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface STPaddleView : UIView
 {
-    NSArray *_usageItems;
+    STUsageReportGraphDataPoint *_dataPoint;
     UIView *_backgroundView;
     UILabel *_dayLabel;
     UILabel *_dateTimeLabel;
     UILabel *_usageLabel;
+    NSDateIntervalFormatter *_hourIntervalDateFormatter;
+    NSDateFormatter *_weekdayDateFormatter;
+    NSDateFormatter *_monthDateFormatter;
 }
 
-@property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property (readonly, nonatomic) UILabel *dateTimeLabel; // @synthesize dateTimeLabel=_dateTimeLabel;
-@property (readonly, nonatomic) UILabel *dayLabel; // @synthesize dayLabel=_dayLabel;
-@property (copy, nonatomic) NSArray *usageItems; // @synthesize usageItems=_usageItems;
-@property (readonly, nonatomic) UILabel *usageLabel; // @synthesize usageLabel=_usageLabel;
+@property (readonly) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) STUsageReportGraphDataPoint *dataPoint; // @synthesize dataPoint=_dataPoint;
+@property (readonly) UILabel *dateTimeLabel; // @synthesize dateTimeLabel=_dateTimeLabel;
+@property (readonly) UILabel *dayLabel; // @synthesize dayLabel=_dayLabel;
+@property (readonly) NSDateIntervalFormatter *hourIntervalDateFormatter; // @synthesize hourIntervalDateFormatter=_hourIntervalDateFormatter;
+@property (readonly) NSDateFormatter *monthDateFormatter; // @synthesize monthDateFormatter=_monthDateFormatter;
+@property (readonly) UILabel *usageLabel; // @synthesize usageLabel=_usageLabel;
+@property (readonly) NSDateFormatter *weekdayDateFormatter; // @synthesize weekdayDateFormatter=_weekdayDateFormatter;
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)setDataPoint:(id)arg1;
 
 @end
 

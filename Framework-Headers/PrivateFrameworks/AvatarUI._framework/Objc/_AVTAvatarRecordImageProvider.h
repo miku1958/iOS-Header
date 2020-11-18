@@ -36,11 +36,12 @@
 
 + (void)makePersistentImageCache:(out id *)arg1 volatileImageCache:(out id *)arg2 withEnvironment:(id)arg3;
 - (void).cxx_destruct;
-- (CDUnknownBlockType)_providerForAvatar:(id)arg1 scope:(id)arg2;
+- (CDUnknownBlockType)_providerForAvatar:(id)arg1 forRecord:(id)arg2 scope:(id)arg3 usingCache:(BOOL)arg4;
 - (CDUnknownBlockType)_providerForRecord:(id)arg1 scope:(id)arg2;
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 allowPreFlight:(BOOL)arg3 environment:(id)arg4;
 - (id)initWithPersistentCache:(id)arg1 volatileCache:(id)arg2 renderingQueue:(id)arg3 callbackQueue:(id)arg4 configurationRenderer:(id)arg5 avatarRenderer:(id)arg6 allowPreFlight:(BOOL)arg7 environment:(id)arg8;
+- (CDUnknownBlockType)providerForAvatar:(id)arg1 forRecord:(id)arg2 scope:(id)arg3 usingCache:(BOOL)arg4;
 - (CDUnknownBlockType)providerForRecord:(id)arg1 scope:(id)arg2;
 
 @end

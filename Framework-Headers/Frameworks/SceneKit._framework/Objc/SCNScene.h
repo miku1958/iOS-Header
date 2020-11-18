@@ -24,6 +24,10 @@
     double _fogEndDistance;
     double _fogDensityExponent;
     id _fogColor;
+    BOOL _wantsScreenSpaceReflection;
+    long long _screenSpaceReflectionSampleCount;
+    double _screenSpaceReflectionMaxRayDistance;
+    double _screenSpaceReflectionStride;
     BOOL _paused;
     NSURL *_sourceURL;
     BOOL _pausedForEditing;
@@ -40,6 +44,10 @@
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (readonly, nonatomic) SCNPhysicsWorld *physicsWorld;
 @property (readonly, nonatomic) SCNNode *rootNode;
+@property (nonatomic) double screenSpaceReflectionMaximumDistance;
+@property (nonatomic) long long screenSpaceReflectionSampleCount;
+@property (nonatomic) double screenSpaceReflectionStride;
+@property (nonatomic) BOOL wantsScreenSpaceReflection;
 
 + (id)_indexPathForNode:(id)arg1;
 + (BOOL)canImportFileExtension:(id)arg1;
@@ -107,6 +115,7 @@
 - (id)scene;
 - (struct __C3DScene *)sceneRef;
 - (id)sceneSource;
+- (double)screenSpaceReflectionDepthThreshold;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (void)setEndTime:(double)arg1;
 - (void)setFrameRate:(double)arg1;
@@ -115,6 +124,7 @@
 - (void)setRootNode:(id)arg1;
 - (void)setRootNode:(id)arg1 forLayer:(int)arg2;
 - (void)setSceneSource:(id)arg1;
+- (void)setScreenSpaceReflectionDepthThreshold:(double)arg1;
 - (void)setStartTime:(double)arg1;
 - (void)setUpAxis:(struct SCNVector3)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
@@ -125,6 +135,7 @@
 - (id)valueForUndefinedKey:(id)arg1;
 - (BOOL)writeToURL:(id)arg1 options:(id)arg2;
 - (BOOL)writeToURL:(id)arg1 options:(id)arg2 delegate:(id)arg3 progressHandler:(CDUnknownBlockType)arg4;
+- (BOOL)writeToURLWithUSDKit:(id)arg1;
 
 @end
 

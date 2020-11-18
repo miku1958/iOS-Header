@@ -7,18 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <GeoServices/GEOExperimentServerProxy-Protocol.h>
+#import <GeoServices/GEOPListStateCapturing-Protocol.h>
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 
-@class GEOABAssignmentRequest, GEOABAssignmentResponse, NSLock, NSString;
+@class GEOABAssignmentRequest, GEOABAssignmentResponse, GEOXPCActivity, NSString;
 @protocol GEOExperimentServerProxyDelegate;
 
-@interface GEOExperimentServerLocalProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOExperimentServerProxy>
+@interface GEOExperimentServerLocalProxy : NSObject <GEOResourceManifestTileGroupObserver, GEOPListStateCapturing, GEOExperimentServerProxy>
 {
     id<GEOExperimentServerProxyDelegate> _delegate;
     GEOABAssignmentResponse *_experimentsInfo;
-    NSLock *_experimentsInfoLock;
+    struct os_unfair_lock_s _experimentsInfoLock;
     GEOABAssignmentRequest *_currentRequest;
-    NSLock *_currentRequestLock;
+    struct os_unfair_lock_s _currentRequestLock;
+    GEOXPCActivity *_activity;
+    unsigned long long _stateCaptureHandle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,13 +39,15 @@
 - (void)_debug_setQuerySubstring:(id)arg1 forExperimentType:(long long)arg2 dispatcherRequestType:(int)arg3;
 - (void)_deleteExperimentInfoFromDisk;
 - (void)_executeRefreshWithinTime:(double)arg1;
-- (void)_invalidateTileCache:(BOOL)arg1 placesCache:(BOOL)arg2;
 - (void)_loadExperimentsConfiguration:(CDUnknownBlockType)arg1;
-- (BOOL)_removeOldExperimentsInfoIfNecessary;
+- (void)_notifyExperimentsInfoChanged:(id)arg1 current:(id)arg2;
+- (BOOL)_removeOldExperimentsInfoIfNecessary:(BOOL)arg1;
 - (void)_setupRefreshActivity;
 - (void)_updateIfNecessary;
 - (void)_writeExperimentInfoToDisk:(id)arg1;
 - (void)abAssignUUIDWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)abAssignUUIDWithSyncCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)captureStatePlistWithHints:(struct os_state_hints_s *)arg1;
 - (void)dealloc;
 - (void)forceUpdate;
 - (id)initWithDelegate:(id)arg1;

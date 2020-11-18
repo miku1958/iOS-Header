@@ -19,11 +19,15 @@
 @property (nonatomic) unsigned long long messageServiceType; // @synthesize messageServiceType=_messageServiceType;
 @property (nonatomic) unsigned long long messageStatus; // @synthesize messageStatus=_messageStatus;
 @property (strong, nonatomic) NSString *messageText; // @synthesize messageText=_messageText;
-@property (strong) CKTextBalloonView *textBalloonView; // @synthesize textBalloonView=_textBalloonView;
+@property (strong, nonatomic) CKTextBalloonView *textBalloonView; // @synthesize textBalloonView=_textBalloonView;
 
 - (void).cxx_destruct;
-- (id)init;
+- (void)_dynamicUserInterfaceTraitDidChange;
+- (void)didMoveToWindow;
 - (void)observedPropertiesChanged;
+- (id)setupContentView;
+- (void)tlk_updateForAppearance:(id)arg1;
+- (BOOL)usesDefaultInsets;
 
 @end
 

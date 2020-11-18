@@ -22,7 +22,6 @@
 - (void)_willDeallocOrFinalize;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)finalize;
 - (void)finishWithError:(id)arg1;
 - (void)finishWithImage:(id)arg1 context:(id)arg2;
 - (id)initUsingCompositingRequest:(id)arg1 sourceFrame:(struct __CVBuffer *)arg2 cancellationTest:(CDUnknownBlockType)arg3 defaultCIContextProvider:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;

@@ -84,6 +84,7 @@
 - (void)rollback;
 - (id)select:(id)arg1 from:(id)arg2;
 - (id)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4;
+- (id)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4 orderBy:(id)arg5;
 - (void)select:(id)arg1 from:(id)arg2 where:(id)arg3 bindings:(id)arg4 orderBy:(id)arg5 limit:(id)arg6 block:(CDUnknownBlockType)arg7;
 - (id)selectAllFrom:(id)arg1 where:(id)arg2 bindings:(id)arg3;
 - (id)selectAllObjectsOfClass:(Class)arg1;
@@ -99,6 +100,7 @@
 - (id)statementForSQL:(id)arg1;
 - (void)update:(id)arg1 set:(id)arg2 where:(id)arg3 bindings:(id)arg4 limit:(id)arg5;
 - (void)updateAllObjectsOfClass:(Class)arg1 set:(id)arg2 where:(id)arg3 bindings:(id)arg4;
+- (long long)upsertInto:(id)arg1 values:(id)arg2 onConflict:(id)arg3 doUpdate:(id)arg4 where:(id)arg5;
 - (void)vacuum;
 
 @end

@@ -15,9 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axCombinedElements;
 - (void)_setAXCombinedElements:(id)arg1;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
-- (unsigned long long)accessibilityTraits;
 
 @end
 

@@ -14,6 +14,7 @@
 + (id)hk_gregorianCalendarWithUTCTimeZone;
 - (double)_hk_cachedLengthOfUnitForUnitStartDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
 - (long long)_hk_cachedValueSinceTimeZoneDependentReferenceDateForUnitStartDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
+- (id)hk_activitySummaryDateComponentsFromDate:(id)arg1;
 - (id)hk_dateByAddingDays:(unsigned long long)arg1 toDate:(id)arg2;
 - (id)hk_dateByShiftingFromGregorianCalendarWithUTCTimeZone:(id)arg1;
 - (id)hk_dateByShiftingToGregorianCalendarWithUTCTimeZone:(id)arg1;
@@ -32,7 +33,6 @@
 - (id)hk_nearestStartOfDayForDate:(id)arg1;
 - (id)hk_nearestStartOfMonthForDate:(id)arg1;
 - (id)hk_nearestStartOfWeekWithFirstWeekDay:(long long)arg1 date:(id)arg2;
-- (id)hk_startOfBedditSleepDayForDate:(id)arg1;
 - (id)hk_startOfDateByAddingDays:(long long)arg1 toDate:(id)arg2;
 - (id)hk_startOfDateBySubtractingDays:(long long)arg1 fromDate:(id)arg2;
 - (id)hk_startOfFitnessWeekBeforeDate:(id)arg1;
@@ -40,7 +40,6 @@
 - (id)hk_startOfMinuteForDate:(id)arg1 moduloMinutes:(long long)arg2 addingModuloCount:(long long)arg3;
 - (id)hk_startOfMonthForDate:(id)arg1;
 - (id)hk_startOfMonthForDate:(id)arg1 addingMonths:(long long)arg2;
-- (id)hk_startOfSleepDayForDate:(id)arg1;
 - (id)hk_startOfUnitForDate:(id)arg1 calendarUnit:(unsigned long long)arg2;
 - (id)hk_startOfWeekWithFirstWeekday:(long long)arg1 beforeDate:(id)arg2 addingWeeks:(long long)arg3;
 - (id)hk_startOfYearForDate:(id)arg1 addingYears:(long long)arg2;

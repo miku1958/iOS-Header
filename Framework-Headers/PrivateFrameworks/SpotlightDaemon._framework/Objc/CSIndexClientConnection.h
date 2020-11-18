@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class CSClientConnectionConfiguration, MDSearchableIndexService;
+@class MDSearchableIndexService, SDConnectionConfiguration;
 
 @interface CSIndexClientConnection : NSObject
 {
     BOOL _quotaDisabled;
-    CSClientConnectionConfiguration *_configuration;
+    SDConnectionConfiguration *_configuration;
     MDSearchableIndexService *_service;
 }
 
-@property (readonly, nonatomic) CSClientConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) SDConnectionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) BOOL quotaDisabled; // @synthesize quotaDisabled=_quotaDisabled;
 @property (readonly, nonatomic) MDSearchableIndexService *service; // @synthesize service=_service;
 

@@ -7,7 +7,8 @@
 #import <iWorkImport/NSObject-Protocol.h>
 #import <iWorkImport/TSPCopying-Protocol.h>
 
-@class NSArray, NSData, NSDate, PKDrawing, TSKPKDrawing, TSPData, TSUColor, TSUImage;
+@class NSArray, NSData, NSDate, PKDrawing, TSKPKDrawing, TSPData, TSUBezierPath, TSUColor, TSUImage;
+@protocol TSKPencilAnnotationStorage;
 
 @protocol TSKPencilAnnotationStorage <NSObject, TSPCopying>
 
@@ -21,24 +22,29 @@
 @property (readonly, nonatomic) BOOL isCalloutLine;
 @property (readonly, nonatomic) BOOL isCalloutMarginAnnotation;
 @property (readonly, nonatomic) BOOL isCalloutParentStorage;
-@property (readonly, nonatomic) BOOL isStretchableParagraphAnnotation;
+@property (readonly, nonatomic) NSData *legacyEncodedDrawing;
 @property (readonly, nonatomic) struct CGPoint markupOffset;
 @property (readonly, nonatomic) BOOL needsTextRecognition;
 @property (readonly, nonatomic) struct CGSize originalAttachedSize;
+@property (readonly, weak, nonatomic) id<TSKPencilAnnotationStorage> parentStorage;
 @property (readonly, nonatomic) struct CGPath *path;
 @property (readonly, nonatomic) TSUColor *penColor;
 @property (readonly, nonatomic) double percentOfPAContainedInParentRep;
 @property (readonly, nonatomic) TSUImage *rasterizedImage;
-@property (readonly, nonatomic) struct CGSize rasterizedImageSize;
 @property (readonly, nonatomic) TSPData *rasterizedImageTSPData;
+@property (readonly, nonatomic) BOOL shouldInvertStretchAxis;
+@property (readonly, nonatomic) BOOL shouldResizeInOneDirection;
 @property (readonly, nonatomic) BOOL shouldResizeWithAnchor;
 @property (readonly, nonatomic) BOOL shouldShowAnchorRect;
 @property (readonly, nonatomic) BOOL shouldSplitAcrossAnchorRects;
+@property (readonly, nonatomic) BOOL shouldUseHeadTail;
 @property (readonly, nonatomic) NSArray *subStorages;
 @property (readonly, nonatomic) unsigned long long textBaselinesTouchedCount;
 @property (readonly, nonatomic) long long toolType;
 @property (readonly, nonatomic) struct CGRect unscaledBoundsOfStrokes;
-@property (readonly, nonatomic) struct CGPath *unscaledPath;
+@property (readonly, nonatomic) TSUBezierPath *unscaledPath;
+@property (readonly, nonatomic) struct CGRect unscaledRenderedFrame;
+@property (readonly, nonatomic) struct CGRect unscaledStrokePointsFrame;
 @property (readonly, nonatomic) unsigned long long visibleStrokesCount;
 
 - (struct CGRect)convertStrokeRectToUnscaledCanvas:(struct CGRect)arg1;

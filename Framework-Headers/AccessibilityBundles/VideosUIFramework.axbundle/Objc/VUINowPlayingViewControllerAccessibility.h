@@ -23,8 +23,8 @@
 - (void)_accessibilitySetExtendHUDVisibilityTimerStorage:(id)arg1;
 - (void)_accessibilitySetIsExtendingHUDVisibility:(BOOL)arg1;
 - (void)_accessibilitySuperShowNowPlayingHud:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_showNowPlayingHud:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)dealloc;
+- (void)showNowPlayingHud:(BOOL)arg1 animated:(BOOL)arg2;
 
 @end
 

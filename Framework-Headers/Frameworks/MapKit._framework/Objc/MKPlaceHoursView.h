@@ -6,14 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-@class GEOBusinessHours, NSArray, NSDictionary, NSLayoutAnchor, NSLayoutConstraint, _MKLocalizedHoursBuilder, _MKUILabel;
+@class GEOBusinessHours, NSArray, NSDictionary, NSLayoutConstraint, _MKLocalizedHoursBuilder, _MKUILabel;
+@protocol MKPlaceHoursViewDelegate;
 
+__attribute__((visibility("hidden")))
 @interface MKPlaceHoursView : UIView
 {
     NSArray *_labels;
     _MKUILabel *_topLabel;
-    _MKUILabel *_topDayLabel;
-    _MKUILabel *_bottomLabel;
+    _MKUILabel *_topMessageLabel;
+    _MKUILabel *_topDayOrHourLabel;
+    _MKUILabel *_bottomMessageLabel;
     _MKUILabel *_collapsableOpenStateLabel;
     NSLayoutConstraint *_baselineToTop;
     NSArray *_baselineToBaselineConstraints;
@@ -24,25 +27,28 @@
     _MKLocalizedHoursBuilder *_hoursBuilder;
     NSDictionary *_formattedHoursData;
     GEOBusinessHours *_businessHours;
-    NSLayoutAnchor *_topLabelLastBaselineAnchor;
+    id<MKPlaceHoursViewDelegate> _hoursDelegate;
 }
 
 @property (strong, nonatomic) GEOBusinessHours *businessHours; // @synthesize businessHours=_businessHours;
 @property (strong, nonatomic) NSDictionary *formattedHoursData; // @synthesize formattedHoursData=_formattedHoursData;
 @property (strong, nonatomic) _MKLocalizedHoursBuilder *hoursBuilder; // @synthesize hoursBuilder=_hoursBuilder;
+@property (weak, nonatomic) id<MKPlaceHoursViewDelegate> hoursDelegate; // @synthesize hoursDelegate=_hoursDelegate;
 @property (nonatomic) unsigned long long placeHoursViewOptions; // @synthesize placeHoursViewOptions=_placeHoursViewOptions;
-@property (strong, nonatomic) NSLayoutAnchor *topLabelLastBaselineAnchor; // @synthesize topLabelLastBaselineAnchor=_topLabelLastBaselineAnchor;
+@property (readonly, nonatomic) _MKUILabel *topLabel;
 
 - (void).cxx_destruct;
 - (void)_collapseAllLabelsFromOptions;
 - (void)_commonInit;
 - (void)_contentSizeDidChange;
+- (BOOL)_shouldCollapseTopMessageLabel;
 - (id)_standardLabel;
 - (void)_updateHoursView;
 - (void)_updateOptionsForCollapsingToSingleLineAndColor;
 - (void)applyRulesForTopAndBottomLabel;
-- (void)infoCardThemeChanged:(id)arg1;
+- (void)infoCardThemeChanged;
 - (id)initWithBusinessHours:(id)arg1;
+- (void)setTopLabel:(id)arg1;
 - (BOOL)wantsDefaultClipping;
 
 @end

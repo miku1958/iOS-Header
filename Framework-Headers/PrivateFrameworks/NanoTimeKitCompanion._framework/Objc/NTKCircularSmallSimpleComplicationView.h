@@ -22,7 +22,6 @@
 
 + (double)_imageScaleForTemplate:(id)arg1 forDevice:(id)arg2;
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (void)load;
 + (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
 - (double)_baselineOffsetForDynamicSize:(long long)arg1;

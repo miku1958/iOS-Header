@@ -8,24 +8,38 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPlaceRequest, GEOPDPlaceResponse, GEOPlaceSearchRequest, GEOPlaceSearchResponse, NSString;
+@class GEOPDPlaceRequest, GEOPDPlaceResponse, GEOPlaceSearchRequest, GEOPlaceSearchResponse, NSString, PBDataReader;
 
 @interface GEORPCorrectedSearch : PBCodable <NSCopying>
 {
-    unsigned int _correctedSearchResultIndex;
-    unsigned int _originalSearchResultIndex;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEOPDPlaceRequest *_placeRequest;
     GEOPDPlaceResponse *_placeResponse;
     GEOPlaceSearchRequest *_placeSearchRequest;
     GEOPlaceSearchResponse *_placeSearchResponse;
     NSString *_preferredSearchDisplayLocation;
+    unsigned int _correctedSearchResultIndex;
+    unsigned int _originalSearchResultIndex;
     struct {
-        unsigned int correctedSearchResultIndex:1;
-        unsigned int originalSearchResultIndex:1;
-    } _has;
+        unsigned int has_correctedSearchResultIndex:1;
+        unsigned int has_originalSearchResultIndex:1;
+        unsigned int read_placeRequest:1;
+        unsigned int read_placeResponse:1;
+        unsigned int read_placeSearchRequest:1;
+        unsigned int read_placeSearchResponse:1;
+        unsigned int read_preferredSearchDisplayLocation:1;
+        unsigned int wrote_placeRequest:1;
+        unsigned int wrote_placeResponse:1;
+        unsigned int wrote_placeSearchRequest:1;
+        unsigned int wrote_placeSearchResponse:1;
+        unsigned int wrote_preferredSearchDisplayLocation:1;
+        unsigned int wrote_correctedSearchResultIndex:1;
+        unsigned int wrote_originalSearchResultIndex:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int correctedSearchResultIndex; // @synthesize correctedSearchResultIndex=_correctedSearchResultIndex;
+@property (nonatomic) unsigned int correctedSearchResultIndex;
 @property (nonatomic) BOOL hasCorrectedSearchResultIndex;
 @property (nonatomic) BOOL hasOriginalSearchResultIndex;
 @property (readonly, nonatomic) BOOL hasPlaceRequest;
@@ -33,14 +47,20 @@
 @property (readonly, nonatomic) BOOL hasPlaceSearchRequest;
 @property (readonly, nonatomic) BOOL hasPlaceSearchResponse;
 @property (readonly, nonatomic) BOOL hasPreferredSearchDisplayLocation;
-@property (nonatomic) unsigned int originalSearchResultIndex; // @synthesize originalSearchResultIndex=_originalSearchResultIndex;
-@property (strong, nonatomic) GEOPDPlaceRequest *placeRequest; // @synthesize placeRequest=_placeRequest;
-@property (strong, nonatomic) GEOPDPlaceResponse *placeResponse; // @synthesize placeResponse=_placeResponse;
-@property (strong, nonatomic) GEOPlaceSearchRequest *placeSearchRequest; // @synthesize placeSearchRequest=_placeSearchRequest;
-@property (strong, nonatomic) GEOPlaceSearchResponse *placeSearchResponse; // @synthesize placeSearchResponse=_placeSearchResponse;
-@property (strong, nonatomic) NSString *preferredSearchDisplayLocation; // @synthesize preferredSearchDisplayLocation=_preferredSearchDisplayLocation;
+@property (nonatomic) unsigned int originalSearchResultIndex;
+@property (strong, nonatomic) GEOPDPlaceRequest *placeRequest;
+@property (strong, nonatomic) GEOPDPlaceResponse *placeResponse;
+@property (strong, nonatomic) GEOPlaceSearchRequest *placeSearchRequest;
+@property (strong, nonatomic) GEOPlaceSearchResponse *placeSearchResponse;
+@property (strong, nonatomic) NSString *preferredSearchDisplayLocation;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readPlaceRequest;
+- (void)_readPlaceResponse;
+- (void)_readPlaceSearchRequest;
+- (void)_readPlaceSearchResponse;
+- (void)_readPreferredSearchDisplayLocation;
 - (BOOL)containsReportableData;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -49,6 +69,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

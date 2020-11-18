@@ -56,6 +56,8 @@ __attribute__((visibility("hidden")))
 - (id)cellStyleOfRowAtIndex:(struct TSUModelRowIndex)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfSummaryLabelRowAtLevel:(unsigned char)arg1 isDefault:(out BOOL *)arg2;
 - (id)cellStyleOfSummaryRowAtLevel:(unsigned char)arg1 isDefault:(out BOOL *)arg2;
+- (id)characterFillAtCellCoord:(struct TSUModelCellCoord)arg1 optionalCell:(id)arg2;
+- (void)copyPasteboardCustomFormatsFromTableModel:(id)arg1;
 - (id)currentState;
 - (id)defaultCellStyleForCellCoord:(struct TSUModelCellCoord)arg1;
 - (id)defaultTextStyleForCellCoord:(struct TSUModelCellCoord)arg1;
@@ -67,7 +69,6 @@ __attribute__((visibility("hidden")))
 - (void)didRemoveRowUID:(const UUIDData_5fbc143e *)arg1 fromGroup:(id)arg2;
 - (void)endOfGroupingChangesBatch;
 - (void)enumerateDataStoreCellsWithBlock:(CDUnknownBlockType)arg1;
-- (id)fontColorAtCellCoord:(struct TSUModelCellCoord)arg1 optionalCell:(id)arg2;
 - (id)formatAtCellCoord:(struct TSUModelCellCoord)arg1 formatIsExplicitOut:(BOOL *)arg2;
 - (struct TSCEFormula *)formulaAtCellCoord:(struct TSUModelCellCoord)arg1;
 - (int)getCell:(id)arg1 atCellCoord:(struct TSUModelCellCoord)arg2;
@@ -79,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (double)labelRowHeightAtCategoryLevel:(unsigned char)arg1;
 - (unsigned long long)labelRowVisibilityAtCategoryLevel:(unsigned char)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)makePasteboardCustomFormatList;
 - (id)metadataForRowIndex:(struct TSUModelRowIndex)arg1 hidingAction:(unsigned char)arg2;
 - (id)newCell;
 - (unsigned long long)numberOfPopulatedCells;

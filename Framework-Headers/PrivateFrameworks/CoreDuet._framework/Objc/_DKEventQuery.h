@@ -6,12 +6,13 @@
 
 #import <CoreDuet/_DKQuery.h>
 
+#import <CoreDuet/NSCopying-Protocol.h>
 #import <CoreDuet/_DKExecutableQuery-Protocol.h>
 
-@class NSArray, NSObject, NSPredicate;
+@class NSArray, NSObject, NSPredicate, NSSet;
 @protocol OS_dispatch_queue;
 
-@interface _DKEventQuery : _DKQuery <_DKExecutableQuery>
+@interface _DKEventQuery : _DKQuery <_DKExecutableQuery, NSCopying>
 {
     NSObject<OS_dispatch_queue> *_defaultQueue;
     BOOL _readMetadata;
@@ -21,12 +22,14 @@
     NSArray *_sortDescriptors;
     unsigned long long _limit;
     unsigned long long _offset;
+    NSSet *_deviceIDs;
     long long _resultType;
     NSArray *_groupByProperties;
     CDUnknownBlockType _resultsHandler;
 }
 
 @property BOOL deduplicateValues; // @synthesize deduplicateValues=_deduplicateValues;
+@property (strong) NSSet *deviceIDs; // @synthesize deviceIDs=_deviceIDs;
 @property (strong) NSArray *eventStreams; // @synthesize eventStreams=_eventStreams;
 @property (strong) NSArray *groupByProperties; // @synthesize groupByProperties=_groupByProperties;
 @property unsigned long long limit; // @synthesize limit=_limit;
@@ -40,11 +43,13 @@
 + (id)eventQueryWithPredicate:(id)arg1 eventStreams:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 sortDescriptors:(id)arg5;
 + (id)eventQueryWithPredicate:(id)arg1 eventStreams:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 sortDescriptors:(id)arg5 resultHandler:(CDUnknownBlockType)arg6;
 + (id)expressionForEventDuration;
++ (void)load;
 + (id)predicateForEventsOfMaximumDuration:(double)arg1;
 + (id)predicateForEventsOfMinimumDuration:(double)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)constructFetchRequestPredicate;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)executeUsingCoreDataStorage:(id)arg1 error:(id *)arg2;

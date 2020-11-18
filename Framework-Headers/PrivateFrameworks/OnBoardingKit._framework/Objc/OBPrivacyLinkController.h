@@ -12,11 +12,13 @@
 {
     NSArray *_bundles;
     NSArray *_bundleIdentifiers;
+    BOOL _didOverrideShowUnifiedAbout;
     BOOL _presentedViewControllerShouldUseDarkMode;
     BOOL _displayIcon;
     BOOL _displayLargeIcon;
     BOOL _displayCaptionText;
     BOOL _allowsOpeningSafari;
+    BOOL _showsLinkToUnifiedAbout;
     NSString *_displayLanguage;
     unsigned long long _displayDeviceType;
 }
@@ -31,6 +33,7 @@
 @property BOOL displayLargeIcon; // @synthesize displayLargeIcon=_displayLargeIcon;
 @property (readonly) OBPrivacyFlow *flow;
 @property (nonatomic) BOOL presentedViewControllerShouldUseDarkMode; // @synthesize presentedViewControllerShouldUseDarkMode=_presentedViewControllerShouldUseDarkMode;
+@property (nonatomic) BOOL showsLinkToUnifiedAbout; // @synthesize showsLinkToUnifiedAbout=_showsLinkToUnifiedAbout;
 
 + (Class)_platformSpecificClass;
 + (id)linkWithBundleIdentifier:(id)arg1;

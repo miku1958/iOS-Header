@@ -11,7 +11,6 @@
 @class NSFileHandle, NSInputStream, NSObject, NSString;
 @protocol OS_dispatch_io, OS_dispatch_queue, OS_dispatch_semaphore;
 
-__attribute__((visibility("hidden")))
 @interface __NSCFBackgroundDataTask : __NSCFBackgroundSessionTask <NSStreamDelegate>
 {
     NSInputStream *_requestBodyStream;
@@ -46,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_willBeRetried;
 - (void)_onqueue_willSendRequestForEstablishedConnection:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (id)initWithSession:(id)arg1 remoteSession:(id)arg2 request:(id)arg3 ident:(unsigned long long)arg4;
+- (id)initWithOriginalRequest:(id)arg1 ident:(unsigned long long)arg2 taskGroup:(id)arg3;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (void)readFromStream;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;

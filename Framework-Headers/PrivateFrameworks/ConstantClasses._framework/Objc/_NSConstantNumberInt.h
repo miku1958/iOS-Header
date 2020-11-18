@@ -10,7 +10,6 @@
 {
 }
 
-+ (void)load;
 - (BOOL)boolValue;
 - (BOOL)charValue;
 - (CDStruct_5fe7aead)decimalValue;

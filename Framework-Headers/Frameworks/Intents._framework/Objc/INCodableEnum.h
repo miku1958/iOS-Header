@@ -6,31 +6,49 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INCodableCoding-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class INCodableLocalizationTable, NSArray, NSString;
 
-@interface INCodableEnum : NSObject <NSSecureCoding, NSCopying>
+@interface INCodableEnum : NSObject <NSSecureCoding, NSCopying, INCodableCoding>
 {
+    INCodableLocalizationTable *_localizationTable;
     NSString *_name;
+    NSString *_displayName;
+    NSString *_displayNameID;
+    NSString *_enumNamespace;
     long long _type;
     NSArray *_values;
 }
 
+@property (copy, nonatomic, setter=_setLocalizationTable:) INCodableLocalizationTable *_localizationTable; // @synthesize _localizationTable;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (readonly, copy, nonatomic) NSString *displayNameID; // @synthesize displayNameID=_displayNameID;
+@property (copy, nonatomic, setter=_setEnumNamespace:) NSString *enumNamespace; // @synthesize enumNamespace=_enumNamespace;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *localizedDisplayName;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, copy, nonatomic) NSArray *values; // @synthesize values=_values;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_dictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dictionaryKeyForKeyPath:(id)arg1;
+- (id)dictionaryRepresentation;
+- (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithName:(id)arg1 type:(long long)arg2 values:(id)arg3;
+- (id)initWithName:(id)arg1 displayName:(id)arg2 displayNameID:(id)arg3 enumNamespace:(id)arg4 type:(long long)arg5 values:(id)arg6 localizationTable:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
+- (id)keyPrefix;
+- (id)localizedDisplayNameForLanguage:(id)arg1;
+- (void)updateWithDictionary:(id)arg1;
 
 @end
 

@@ -15,6 +15,7 @@
     long long _direction;
     unsigned long long _txPayloadType;
     unsigned long long _rxPayloadType;
+    unsigned int _localSSRC;
     unsigned int _remoteSSRC;
     NSString *_cName;
     BOOL _rateAdaptationEnabled;
@@ -42,6 +43,7 @@
 @property (copy, nonatomic) NSString *cName; // @synthesize cName=_cName;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (strong, nonatomic) AVCNetworkAddress *localAddress; // @synthesize localAddress=_localAddress;
+@property (nonatomic) unsigned int localSSRC; // @synthesize localSSRC=_localSSRC;
 @property (nonatomic, getter=isRateAdaptationEnabled) BOOL rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
 @property (strong, nonatomic) NSData *receiveMasterKey; // @synthesize receiveMasterKey=_receiveMasterKey;
 @property (nonatomic) unsigned long long recommendedMTU; // @synthesize recommendedMTU=_recommendedMTU;

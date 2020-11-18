@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSDictionary *ALSUserPreferences; // @dynamic ALSUserPreferences;
 @property (nonatomic) int brightnessCurve; // @dynamic brightnessCurve;
 @property (nonatomic, getter=isDigitizerSignpostsEnabled) BOOL digitizerSignpostsEnabled; // @dynamic digitizerSignpostsEnabled;
+@property (nonatomic) BOOL digitizerVisualizeHitTestRegions; // @dynamic digitizerVisualizeHitTestRegions;
+@property (nonatomic) BOOL digitizerVisualizeTouches; // @dynamic digitizerVisualizeTouches;
 @property (nonatomic) BOOL disableCAOverscan; // @dynamic disableCAOverscan;
 @property (nonatomic) BOOL disableCAScaling; // @dynamic disableCAScaling;
 @property (nonatomic) BOOL disableCAYUV; // @dynamic disableCAYUV;
@@ -35,6 +37,7 @@
 @property (nonatomic) BOOL ignoreAccelerometerAndOrientationEvents; // @dynamic ignoreAccelerometerAndOrientationEvents;
 @property (nonatomic) BOOL ignoreTetheringPreferences; // @dynamic ignoreTetheringPreferences;
 @property (weak, nonatomic) NSArray *loggingTypesEnabled; // @dynamic loggingTypesEnabled;
+@property (nonatomic) BOOL showBuildNumber; // @dynamic showBuildNumber;
 @property (nonatomic) BOOL simulatePhoneButton; // @dynamic simulatePhoneButton;
 @property (nonatomic, getter=isSteveNoteOverscanEnabled) BOOL steveNoteOverscanEnabled; // @dynamic steveNoteOverscanEnabled;
 @property (nonatomic, getter=isSteveNoteRotationEnabled) BOOL steveNoteRotationEnabled; // @dynamic steveNoteRotationEnabled;

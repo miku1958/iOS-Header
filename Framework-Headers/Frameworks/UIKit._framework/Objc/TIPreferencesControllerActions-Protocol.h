@@ -11,6 +11,8 @@
 @protocol TIPreferencesControllerActions <NSObject>
 
 @property (nonatomic) BOOL automaticMinimizationEnabled;
+@property (nonatomic) unsigned long long floatingKeyboardDockedEdge;
+@property (nonatomic) struct CGPoint floatingKeyboardPosition;
 @property (copy, nonatomic) NSArray *inputModeSelectionSequence;
 @property (nonatomic) struct CGPoint keyboardPosition;
 @property (nonatomic) BOOL keyboardShownByTouch;
@@ -19,6 +21,7 @@
 - (void)didTriggerOneTimeAction:(NSString *)arg1;
 - (BOOL)oneTimeActionCompleted:(NSString *)arg1;
 - (void)updateDidPerformFirstReachableKeyboardInteraction;
+- (void)updateEnableProKeyboard:(BOOL)arg1;
 - (void)updateEnabledDictationLanguages:(NSDictionary *)arg1;
 - (void)updateKeyboardHandBias:(NSString *)arg1;
 - (void)updateKeyboardIsFloating:(BOOL)arg1;

@@ -7,19 +7,29 @@
 #import <UIKitCore/UIView.h>
 
 #import <UIKitCore/UIAccessibilityContentSizeCategoryImageAdjusting-Protocol.h>
+#import <UIKitCore/UIAccessibilityContentSizeCategoryImageAdjustingInternal-Protocol.h>
+#import <UIKitCore/_UIImageContentEffect-Protocol.h>
+#import <UIKitCore/_UIImageContentLayoutTarget-Protocol.h>
 
-@class NSArray, NSString, UIColor, UIImage, UILayoutGuide, UITraitCollection, _UIStackedImageContainerView;
+@class NSArray, NSString, UIColor, UIImage, UIImageSymbolConfiguration, UILayoutGuide, UITraitCollection, _UIStackedImageContainerView;
 
-@interface UIImageView : UIView <UIAccessibilityContentSizeCategoryImageAdjusting>
+@interface UIImageView : UIView <UIAccessibilityContentSizeCategoryImageAdjusting, UIAccessibilityContentSizeCategoryImageAdjustingInternal, _UIImageContentLayoutTarget, _UIImageContentEffect>
 {
     id _storage;
     struct UIEdgeInsets _cachedEdgeInsetsForEffects;
     UITraitCollection *_lastResolvedTraitCollection;
     long long _lastResolvedLayoutDirectionTrait;
+    double _previousBaselineOffsetFromBottom;
+    double _previousFirstBaselineOffsetFromTop;
+    struct {
+        unsigned int canDrawContentIsValid:1;
+        unsigned int canDrawContent:1;
+    } _imageViewFlags;
     BOOL _templateSettingsAreInvalid;
     BOOL _edgeInsetsForEffectsAreValid;
     BOOL _adjustsImageWhenAncestorFocused;
     BOOL _masksFocusEffectToContents;
+    BOOL __symbolImagesIgnoreAccessibilitySizes;
     BOOL __animatesContents;
     UILayoutGuide *_focusedFrameGuide;
 }
@@ -28,29 +38,48 @@
 @property (nonatomic, setter=_setDefaultRenderingMode:) long long _defaultRenderingMode;
 @property (readonly, nonatomic) struct UIEdgeInsets _edgeInsetsForEffects;
 @property (nonatomic, setter=_setEdgeInsetsForEffectsAreValid:) BOOL _edgeInsetsForEffectsAreValid; // @synthesize _edgeInsetsForEffectsAreValid;
+@property (readonly, nonatomic) BOOL _hasContentGravity;
 @property (readonly, nonatomic) _UIStackedImageContainerView *_layeredImageContainer;
 @property (nonatomic, setter=_setLayeredImageCornerRadius:) double _layeredImageCornerRadius;
+@property (readonly, nonatomic) BOOL _layoutShouldFlipHorizontalOrientations;
 @property (nonatomic, setter=_setMasksTemplateImages:) BOOL _masksTemplateImages;
+@property (nonatomic, setter=_setSymbolImagesIgnoreAccessibilitySizes:) BOOL _symbolImagesIgnoreAccessibilitySizes; // @synthesize _symbolImagesIgnoreAccessibilitySizes=__symbolImagesIgnoreAccessibilitySizes;
 @property (nonatomic, setter=_setTemplateImageRenderingEffects:) unsigned long long _templateImageRenderingEffects;
 @property (readonly, nonatomic) BOOL _templateSettingsAreInvalid; // @synthesize _templateSettingsAreInvalid;
+@property (nonatomic) BOOL adjustsImageSizeForAccessibilityContentSizeCategory;
 @property (nonatomic) BOOL adjustsImageSizeForAccessibilityContentSizeCategory;
 @property (nonatomic) BOOL adjustsImageWhenAncestorFocused; // @synthesize adjustsImageWhenAncestorFocused=_adjustsImageWhenAncestorFocused;
 @property (readonly, nonatomic, getter=isAnimating) BOOL animating;
 @property (nonatomic) double animationDuration;
 @property (copy, nonatomic) NSArray *animationImages;
 @property (nonatomic) long long animationRepeatCount;
+@property (readonly, nonatomic) struct CGRect bounds;
+@property (readonly, nonatomic) long long contentMode; // @dynamic contentMode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) int drawMode;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned int drawMode;
 @property (readonly) UILayoutGuide *focusedFrameGuide; // @synthesize focusedFrameGuide=_focusedFrameGuide;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (copy, nonatomic) NSArray *highlightedAnimationImages;
 @property (strong, nonatomic) UIImage *highlightedImage;
 @property (strong, nonatomic) UIImage *image;
+@property (readonly) UILayoutGuide *imageContentGuide;
 @property (nonatomic) BOOL masksFocusEffectToContents; // @synthesize masksFocusEffectToContents=_masksFocusEffectToContents;
 @property (readonly, nonatomic) UIView *overlayContentView;
+@property (readonly, nonatomic) double preferredContentScaleFactor;
+@property (strong, nonatomic) UIImageSymbolConfiguration *preferredSymbolConfiguration;
+@property (readonly, nonatomic) long long semanticContentAttribute;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) UIImageSymbolConfiguration *symbolConfiguration;
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @dynamic userInteractionEnabled;
 
@@ -59,6 +88,8 @@
 - (id)_adaptiveImageForImage:(id)arg1 assignedImage:(id)arg2 currentImage:(id)arg3 hasAdapted:(BOOL *)arg4;
 - (void)_ancestorWillUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_applySettingsForLegibilityStyle:(long long)arg1;
+- (double)_baselineOffsetFromBottom;
+- (void)_baselineOffsetParametersDidChangeHasBaselinePropertyChanged:(BOOL)arg1;
 - (id)_cachedPretiledImageForImage:(id)arg1;
 - (BOOL)_canDrawContent;
 - (id)_checkHighlightedImageForAdaptation:(id)arg1 hadAdapted:(BOOL *)arg2;
@@ -74,26 +105,41 @@
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (BOOL)_displayImageAsLayered:(id)arg1;
 - (void)_drawImageEffectsForImage:(id)arg1 inRect:(struct CGRect)arg2 suppressColor:(BOOL)arg3;
+- (id)_effectForRenderingSource:(id)arg1;
 - (id)_effectiveTintColorWithImage:(id)arg1;
 - (id)_existingOverlayView;
+- (double)_firstBaselineOffsetFromTop;
 - (id)_generateBackdropMaskImage;
 - (BOOL)_getDrawModeCompositeOperation:(int *)arg1 whiteComponent:(double *)arg2 drawingAlpha:(double *)arg3;
+- (BOOL)_hasBaseline;
+- (id)_imageContentGuideAllowingCreation:(BOOL)arg1;
+- (void)_imageContentParametersDidChange;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (void)_invalidateImageLayouts;
 - (void)_invalidateTemplateSettings;
+- (BOOL)_isHasBaselinePropertyChangeable;
+- (id)_layoutForImage:(id)arg1;
 - (BOOL)_needsImageEffectsForImage:(id)arg1;
 - (BOOL)_needsImageEffectsForImage:(id)arg1 suppressColorizing:(BOOL)arg2;
+- (id)_overridingSymbolConfiguration;
 - (BOOL)_recomputePretilingState;
-- (void)_resolveImageForTrait:(id)arg1;
+- (id)_renditionForSource:(id)arg1 size:(struct CGSize)arg2 withCGImageProvider:(CDUnknownBlockType)arg3 lazy:(BOOL)arg4;
+- (BOOL)_resolveImageForTrait:(id)arg1;
+- (BOOL)_resolveImageForTrait:(id)arg1 previouslyDisplayedImage:(id)arg2;
+- (double)_scaleFactorForImage;
 - (void)_setDecompressingImage:(id)arg1 forType:(unsigned long long)arg2;
 - (BOOL)_setImageViewContents:(id)arg1;
+- (BOOL)_setImageViewContentsForAnimatedImage:(id)arg1;
 - (void)_setLayeredImageContainer:(id)arg1;
 - (void)_setOverlayContentView:(id)arg1;
+- (void)_setOverridingSymbolConfiguration:(id)arg1;
 - (void)_setViewGeometry:(struct CGRect)arg1 forMetric:(int)arg2;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (BOOL)_shouldDrawImage:(id)arg1;
 - (BOOL)_shouldTreatImageAsTemplate:(id)arg1;
+- (id)_symbolConfigurationForImage:(id)arg1;
 - (void)_teardownLayeredImage;
 - (void)_templateSettingsDidChange;
+- (void)_updateContentsMultiplyColorAndSwizzleFromLayout:(id)arg1;
 - (void)_updateImageViewForOldImage:(id)arg1 newImage:(id)arg2;
 - (void)_updateLayeredImageIsFocusedWithFocusedView:(id)arg1 focusAnimationCoordinator:(id)arg2;
 - (void)_updateMasking;
@@ -114,11 +160,16 @@
 - (id)initWithImage:(id)arg1 highlightedImage:(id)arg2;
 - (BOOL)isAccessibilityElementByDefault;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
+- (id)largeContentImage;
 - (void)layoutSubviews;
+- (id)midlineGuide;
+- (BOOL)scalesLargeContentImage;
 - (void)setAnimating:(BOOL)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCGImageRef:(struct CGImage *)arg1;
+- (void)setContentCompressionResistancePriority:(float)arg1 forAxis:(long long)arg2;
+- (void)setContentMode:(long long)arg1;
 - (void)setContentScaleFactor:(double)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;

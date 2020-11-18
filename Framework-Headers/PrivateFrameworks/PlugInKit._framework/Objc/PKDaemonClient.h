@@ -32,9 +32,10 @@
 - (void)findPlugInByUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)holdPlugins:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithServiceName:(const char *)arg1;
-- (void)matchPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)initWithServiceName:(const char *)arg1 user:(unsigned int)arg2;
+- (void)matchPlugIns:(id)arg1 flags:(unsigned long long)arg2 uuid:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)readyPlugIns:(id)arg1 synchronously:(BOOL)arg2 flags:(unsigned long long)arg3 environment:(id)arg4 reply:(CDUnknownBlockType)arg5;
-- (void)releaseHold:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)releaseHold:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)removePlugIns:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)request:(const char *)arg1;
 - (id)request:(const char *)arg1 paths:(id)arg2;

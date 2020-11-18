@@ -20,7 +20,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isHorizontal; // @synthesize isHorizontal=_isHorizontal;
 
 + (id)activeRangedMagnifier;
++ (Class)renderClass;
 + (id)sharedRangedMagnifier;
+- (struct CGPoint)adjustMagnificationPoint:(struct CGPoint)arg1;
 - (void)beginMagnifyingTarget:(id)arg1 text:(id)arg2 magnificationPoint:(struct CGPoint)arg3 offset:(struct CGPoint)arg4 animated:(BOOL)arg5;
 - (struct CGRect)caretRectClosestToPoint:(struct CGPoint)arg1;
 - (struct CGPoint)clipPoint:(struct CGPoint)arg1 inRect:(struct CGRect)arg2;
@@ -28,18 +30,13 @@ __attribute__((visibility("hidden")))
 - (int)horizontalMovementAtTime:(double)arg1;
 - (id)initWithFrame;
 - (double)offsetFromMagnificationPoint;
-- (void)remove;
-- (void)setAutoscrollDirections:(int)arg1;
 - (void)setMagnificationPoint:(struct CGPoint)arg1;
-- (struct CGPoint)snappedPoint:(struct CGPoint)arg1;
 - (void)stopMagnifying:(BOOL)arg1;
 - (BOOL)terminalPointPlacedCarefully;
-- (void)updateFrame;
+- (void)updateFrameAndOffset;
 - (BOOL)wasPlacedCarefullyAtTime:(double)arg1;
 - (void)zoomDownAnimation;
-- (void)zoomDownAnimationDidStop:(id)arg1 finished:(id)arg2;
 - (void)zoomUpAnimation;
-- (void)zoomUpAnimationDidStop:(id)arg1 finished:(id)arg2;
 
 @end
 

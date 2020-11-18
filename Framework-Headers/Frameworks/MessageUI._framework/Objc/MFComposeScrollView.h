@@ -19,9 +19,9 @@
 @property (nonatomic) BOOL shouldScrollToFirstResponder; // @synthesize shouldScrollToFirstResponder=_shouldScrollToFirstResponder;
 @property (nonatomic) BOOL subviewsDisabled; // @synthesize subviewsDisabled=_subviewsDisabled;
 
+- (void).cxx_destruct;
 - (BOOL)_scrollsToMakeFirstResponderVisible;
 - (void)beginBlockingScroll;
-- (void)dealloc;
 - (void)didAddSubview:(id)arg1;
 - (void)disableSubview:(id)arg1;
 - (void)enableSubview:(id)arg1;

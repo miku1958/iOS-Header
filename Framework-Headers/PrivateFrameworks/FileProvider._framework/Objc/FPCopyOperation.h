@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FileProvider/FPTransferOperation.h>
+#import <FileProvider/FPMoveOperation.h>
 
-@interface FPCopyOperation : FPTransferOperation
+@interface FPCopyOperation : FPMoveOperation
 {
 }
 
-- (id)initWithItems:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithNamesAndSourceURLs:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithSourceURLs:(id)arg1 destinationFolder:(id)arg2;
-- (id)initWithSourceURLsAndNames:(id)arg1 destinationFolder:(id)arg2;
+- (BOOL)byCopy;
+- (unsigned long long)defaultLastUsedDatePolicy;
 
 @end
 

@@ -13,6 +13,7 @@
     BOOL _atomic;
     BOOL _shouldReportRecordsInFlight;
     BOOL _shouldOnlySaveAssetContent;
+    BOOL _markAsParticipantNeedsNewInvitationToken;
     CDUnknownBlockType _perRecordProgressBlock;
     CDUnknownBlockType _perRecordCompletionBlock;
     CDUnknownBlockType _modifyRecordsCompletionBlock;
@@ -30,14 +31,19 @@
     NSDictionary *_recordIDsToDeleteToEtags;
     NSDictionary *_conflictLosersToResolveByRecordID;
     NSDictionary *_pluginFieldsForRecordDeletesByID;
+    NSDictionary *_assetUUIDToExpectedProperties;
+    NSDictionary *_packageUUIDToExpectedProperties;
 }
 
+@property (copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property (strong, nonatomic) NSMutableDictionary *assetsByRecordIDAndRecordKey; // @synthesize assetsByRecordIDAndRecordKey=_assetsByRecordIDAndRecordKey;
 @property (nonatomic) BOOL atomic; // @synthesize atomic=_atomic;
 @property (copy, nonatomic) NSData *clientChangeTokenData; // @synthesize clientChangeTokenData=_clientChangeTokenData;
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (strong, nonatomic) NSMutableArray *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
+@property (nonatomic) BOOL markAsParticipantNeedsNewInvitationToken; // @synthesize markAsParticipantNeedsNewInvitationToken=_markAsParticipantNeedsNewInvitationToken;
 @property (copy, nonatomic) CDUnknownBlockType modifyRecordsCompletionBlock; // @synthesize modifyRecordsCompletionBlock=_modifyRecordsCompletionBlock;
+@property (copy, nonatomic) NSDictionary *packageUUIDToExpectedProperties; // @synthesize packageUUIDToExpectedProperties=_packageUUIDToExpectedProperties;
 @property (strong, nonatomic) NSMutableSet *packagesToDestroy; // @synthesize packagesToDestroy=_packagesToDestroy;
 @property (copy, nonatomic) CDUnknownBlockType perRecordCompletionBlock; // @synthesize perRecordCompletionBlock=_perRecordCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType perRecordProgressBlock; // @synthesize perRecordProgressBlock=_perRecordProgressBlock;
@@ -60,6 +66,7 @@
 - (void)_trackAssetsToUpload;
 - (id)activityCreate;
 - (BOOL)claimPackagesInRecord:(id)arg1 error:(id *)arg2;
+- (void)copyStreamingAssetServerFieldsFromServerRecord:(id)arg1 toRecord:(id)arg2;
 - (void)destroyPackages:(id)arg1;
 - (void)destroyPackagesInRecords:(id)arg1;
 - (void)fillFromOperationInfo:(id)arg1;

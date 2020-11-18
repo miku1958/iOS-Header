@@ -6,23 +6,27 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-@class ACAccount, AMSAuthenticateOptions, NSNumber, NSString;
+@class ACAccount, AMSAuthenticateOptions, NSNumber, NSString, NSUUID;
 
 @interface AMSAuthenticateTask : AMSTask
 {
+    AMSAuthenticateOptions *_options;
     NSString *_password;
+    NSString *_multiUserToken;
     NSString *_rawPassword;
     NSString *_altDSID;
     NSNumber *_DSID;
+    NSUUID *_homeIdentifier;
     NSString *_username;
     ACAccount *_authenticatedAccount;
-    AMSAuthenticateOptions *_options;
 }
 
 @property (strong, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
 @property (strong, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (strong, nonatomic) ACAccount *authenticatedAccount; // @synthesize authenticatedAccount=_authenticatedAccount;
-@property (strong, nonatomic) AMSAuthenticateOptions *options; // @synthesize options=_options;
+@property (strong, nonatomic) NSUUID *homeIdentifier; // @synthesize homeIdentifier=_homeIdentifier;
+@property (strong, nonatomic) NSString *multiUserToken; // @synthesize multiUserToken=_multiUserToken;
+@property (readonly, nonatomic) AMSAuthenticateOptions *options; // @synthesize options=_options;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (strong, nonatomic) NSString *rawPassword; // @synthesize rawPassword=_rawPassword;
 @property (strong, nonatomic) NSString *username; // @synthesize username=_username;
@@ -32,12 +36,16 @@
 - (id)_accountStoreForAuthentication;
 - (id)_createVerifyCredentialOptionsWithCredentialSource:(unsigned long long)arg1;
 - (id)_performAuthenticationUsingAccount:(id)arg1 credentialSource:(unsigned long long)arg2 error:(id *)arg3;
-- (BOOL)_shouldPerformInProcessAuthKitUpdateForAccount:(id)arg1;
 - (id)_updateAccountWithAuthKit:(id)arg1 error:(id *)arg2;
 - (void)_updateAccountWithProvidedInformation:(id)arg1;
+- (id)homeID;
+- (id)homeUserID;
 - (id)init;
 - (id)initWithAccount:(id)arg1 options:(id)arg2;
+- (id)initWithRequest:(id)arg1;
 - (id)performAuthentication;
+- (void)setHomeID:(id)arg1;
+- (void)setHomeUserID:(id)arg1;
 
 @end
 

@@ -6,9 +6,10 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, MNLocation;
+@class GEOComposedRoute, GEOComposedWaypoint, MNLocation, NSDictionary;
 
 @protocol MNGuidanceManager <NSObject>
+- (void)addInjectedEvent:(NSDictionary *)arg1;
 - (BOOL)repeatLastGuidanceAnnouncement:(MNLocation *)arg1;
 - (void)stop;
 - (double)timeSinceLastAnnouncement;

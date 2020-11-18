@@ -12,13 +12,15 @@ __attribute__((visibility("hidden")))
 @interface _HKAnchoredObjectQueryServerConfiguration : HKQueryServerConfiguration
 {
     BOOL _includeDeletedObjects;
+    BOOL _includeAutomaticTimeZones;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
     double _collectionInterval;
 }
 
-@property (strong, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
+@property (copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
 @property (nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
+@property (nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
 @property (nonatomic) BOOL includeDeletedObjects; // @synthesize includeDeletedObjects=_includeDeletedObjects;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAEAGLLayer, MISSING_TYPE, NSData, NSMapTable, NSMutableDictionary, NSObject, SKDisplayLink, SKScene, SKTransition;
+@class CAEAGLLayer, CAMetalLayer, MISSING_TYPE, NSData, NSMapTable, NSMutableDictionary, NSObject, SKDisplayLink, SKScene, SKTransition;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, SKViewDelegate;
 
 @interface SKView : UIView
@@ -23,6 +23,7 @@
     unsigned int _colorRenderBuffer;
     unsigned int _depthStencilRenderBuffer;
     struct shared_ptr<jet_fence> _renderFence;
+    CAMetalLayer *_metalLayer;
     CAEAGLLayer *_eaglLayer;
     BOOL _needsInitialUpdate;
     BOOL _didRunOnce;
@@ -111,6 +112,7 @@
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_renderContent;
 - (void)_renderSynchronouslyForTime:(double)arg1 preRender:(CDUnknownBlockType)arg2 postRender:(CDUnknownBlockType)arg3;
+- (void)_renderSynchronouslyForTime:(double)arg1 preRender:(CDUnknownBlockType)arg2 postRender:(CDUnknownBlockType)arg3 withMTLScheduleHandler:(CDUnknownBlockType)arg4;
 - (void)_renderToIOSurfaceID:(unsigned int)arg1 scaleFactor:(float)arg2 asynchronous:(BOOL)arg3 preRender:(CDUnknownBlockType)arg4 postRender:(CDUnknownBlockType)arg5;
 - (void)_renderToIOSurfaceID:(unsigned int)arg1 scaleFactor:(float)arg2 asynchronous:(BOOL)arg3 waitOnFence:(BOOL)arg4 preRender:(CDUnknownBlockType)arg5 postRender:(CDUnknownBlockType)arg6;
 - (BOOL)_renderUpdateEnabled;

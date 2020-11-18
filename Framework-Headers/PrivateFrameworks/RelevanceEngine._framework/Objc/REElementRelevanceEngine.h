@@ -6,26 +6,31 @@
 
 #import <RelevanceEngine/RERelevanceEngineSubsystem.h>
 
+#import <RelevanceEngine/REElementRelevanceEngineProperties-Protocol.h>
+#import <RelevanceEngine/REFeatureTransformerInvalidationDelegate-Protocol.h>
+#import <RelevanceEngine/REMLModelManagerDataStore-Protocol.h>
 #import <RelevanceEngine/REMLModelManagerObserver-Protocol.h>
 #import <RelevanceEngine/REPredictorObserver-Protocol.h>
 #import <RelevanceEngine/RERelevanceProviderEnvironmentDelegate-Protocol.h>
 #import <RelevanceEngine/RESectionDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSString, REDataSourceManager, REFeatureTransmuter, REKeyMultiValueMap, REPredictorManager, RERelevanceProviderEnvironment, REUpNextScheduler;
+@class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSString, REDataSourceManager, REFeatureSet, REFeatureTransmuter, REKeyMultiValueMap, REPredictorManager, RERelevanceProviderEnvironment, REUpNextScheduler;
 @protocol OS_dispatch_queue, REElementRelevanceEngineDelegate;
 
-@interface REElementRelevanceEngine : RERelevanceEngineSubsystem <RESectionDelegate, RERelevanceProviderEnvironmentDelegate, REMLModelManagerObserver, REPredictorObserver>
+@interface REElementRelevanceEngine : RERelevanceEngineSubsystem <RESectionDelegate, RERelevanceProviderEnvironmentDelegate, REMLModelManagerObserver, REPredictorObserver, REElementRelevanceEngineProperties, REFeatureTransformerInvalidationDelegate, REMLModelManagerDataStore>
 {
     NSMutableSet *_elementsNeedingRelevanceUpdate;
     NSMutableDictionary *_sections;
     NSMutableDictionary *_predictedElements;
     NSMapTable *_relevanceProviderElementMap;
     REKeyMultiValueMap *_identifierElementIdentifierMap;
+    REFeatureSet *_persistenceFeatures;
     REPredictorManager *_predictorManager;
     RERelevanceProviderEnvironment *_providerEnvironment;
     REDataSourceManager *_dataSourceManager;
     REFeatureTransmuter *_featureTransmuter;
     REUpNextScheduler *_scheduler;
+    REUpNextScheduler *_predictorUpdatedScheduler;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _deviceIsLocked;
     BOOL _ignoreDeviceLockState;
@@ -36,7 +41,10 @@
 @property (weak, nonatomic) id<REElementRelevanceEngineDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) REPredictorManager *predictorManager;
+@property (readonly, nonatomic) RERelevanceProviderEnvironment *providerEnvironment;
 @property (readonly, nonatomic) NSArray *sections;
+@property (readonly, nonatomic) NSDictionary *sectionsMap;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -45,6 +53,7 @@
 - (id)_elementIdentifierForIdentifier:(id)arg1;
 - (BOOL)_elementIsFullyLoaded:(id)arg1;
 - (void)_enumerateAndGenerateSectionComparators:(CDUnknownBlockType)arg1;
+- (id)_generateFeatureMapForElement:(id)arg1;
 - (id)_identifierForElementIdentifier:(id)arg1;
 - (void)_onqueue_async:(CDUnknownBlockType)arg1;
 - (void)_performUpdatesToDelegate:(CDUnknownBlockType)arg1;
@@ -52,17 +61,26 @@
 - (id)_queue_featureMapForElementWithId:(id)arg1 trainingContext:(id)arg2;
 - (void)_queue_scheduleRelevanceUpdateForElement:(id)arg1;
 - (void)_queue_updateElementRelevance;
+- (void)_updateStateBasedOnPredictor;
 - (void)addElement:(id)arg1 section:(id)arg2;
+- (id)dataStoreKey;
 - (void)dealloc;
 - (id)elementAtPath:(id)arg1;
+- (id)elementRankerForSection:(id)arg1;
 - (id)featureMapForElement:(id)arg1 trainingContext:(id)arg2;
 - (id)featureMapForPredictedElement:(id)arg1 trainingContext:(id)arg2;
+- (id)featureProviderForElement:(id)arg1;
+- (void)featureTransformerDidInvalidate:(id)arg1;
 - (id)initWithRelevanceEngine:(id)arg1;
+- (BOOL)modelManager:(id)arg1 loadDataStoreFromURL:(id)arg2 error:(id *)arg3;
+- (BOOL)modelManager:(id)arg1 saveDataStoreToURL:(id)arg2 error:(id *)arg3;
 - (void)modelManagerDidUpdateModel:(id)arg1;
 - (unsigned long long)numberOfElementsInSection:(id)arg1;
 - (id)pathForElement:(id)arg1;
 - (void)pause;
 - (id)predictionForElement:(id)arg1;
+- (void)predictor:(id)arg1 didBeginActivity:(id)arg2;
+- (void)predictor:(id)arg1 didFinishActivity:(id)arg2;
 - (void)predictorDidUpdate:(id)arg1;
 - (void)refreshContent;
 - (void)relevanceEnvironment:(id)arg1 didUpdateRelevanceProvider:(id)arg2;

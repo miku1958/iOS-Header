@@ -13,24 +13,26 @@
 @interface GEOAbAssignInfo : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    NSString *_abAssignId;
     unsigned long long _createdAtTimestamp;
     unsigned long long _relativeTimestamp;
-    NSString *_abAssignId;
     struct {
-        unsigned int createdAtTimestamp:1;
-        unsigned int relativeTimestamp:1;
-    } _has;
+        unsigned int has_createdAtTimestamp:1;
+        unsigned int has_relativeTimestamp:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *abAssignId; // @synthesize abAssignId=_abAssignId;
+@property (strong, nonatomic) NSString *abAssignId;
 @property (nonatomic) unsigned long long createdAtTimestamp;
 @property (readonly, nonatomic) BOOL hasAbAssignId;
 @property (nonatomic) BOOL hasCreatedAtTimestamp;
 @property (nonatomic) BOOL hasRelativeTimestamp;
-@property (nonatomic) unsigned long long relativeTimestamp; // @synthesize relativeTimestamp=_relativeTimestamp;
+@property (nonatomic) unsigned long long relativeTimestamp;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -39,6 +41,7 @@
 - (id)initWithAbAssignId:(id)arg1 createdAtDate:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)refreshRelativeTimeStamp;
 - (void)refreshRelativeTimeStampWithEventTime:(double)arg1;

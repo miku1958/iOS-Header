@@ -8,34 +8,48 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOComposedWaypoint, NSString;
+@class GEOComposedWaypoint, NSString, PBDataReader;
 
 @interface GEONavigationRouteSummary : PBCodable <NSCopying>
 {
-    double _travelTime;
-    GEOComposedWaypoint *_destination;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_destinationName;
+    GEOComposedWaypoint *_destination;
     GEOComposedWaypoint *_origin;
+    double _travelTime;
     int _transportType;
     struct {
-        unsigned int travelTime:1;
-        unsigned int transportType:1;
-    } _has;
+        unsigned int has_travelTime:1;
+        unsigned int has_transportType:1;
+        unsigned int read_destinationName:1;
+        unsigned int read_destination:1;
+        unsigned int read_origin:1;
+        unsigned int wrote_destinationName:1;
+        unsigned int wrote_destination:1;
+        unsigned int wrote_origin:1;
+        unsigned int wrote_travelTime:1;
+        unsigned int wrote_transportType:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
-@property (strong, nonatomic) NSString *destinationName; // @synthesize destinationName=_destinationName;
+@property (strong, nonatomic) GEOComposedWaypoint *destination;
+@property (strong, nonatomic) NSString *destinationName;
 @property (readonly, nonatomic) BOOL hasDestination;
 @property (readonly, nonatomic) BOOL hasDestinationName;
 @property (readonly, nonatomic) BOOL hasOrigin;
 @property (nonatomic) BOOL hasTransportType;
 @property (nonatomic) BOOL hasTravelTime;
-@property (strong, nonatomic) GEOComposedWaypoint *origin; // @synthesize origin=_origin;
-@property (nonatomic) int transportType; // @synthesize transportType=_transportType;
-@property (nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
+@property (strong, nonatomic) GEOComposedWaypoint *origin;
+@property (nonatomic) int transportType;
+@property (nonatomic) double travelTime;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
+- (void)_readDestination;
+- (void)_readDestinationName;
+- (void)_readOrigin;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +58,7 @@
 - (id)initWithRoute:(id)arg1 destinationName:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setRoute:(id)arg1;
 - (id)transportTypeAsString:(int)arg1;

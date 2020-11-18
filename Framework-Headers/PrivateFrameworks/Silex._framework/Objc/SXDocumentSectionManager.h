@@ -32,10 +32,11 @@
 @property (readonly, nonatomic) NSMutableSet *visibleViewControllers; // @synthesize visibleViewControllers=_visibleViewControllers;
 
 - (void).cxx_destruct;
-- (void)applySectionBlueprint:(id)arg1 identifier:(id)arg2 offset:(struct CGPoint)arg3 width:(double)arg4;
+- (void)applySectionBlueprint:(id)arg1 identifier:(id)arg2 offset:(struct CGPoint)arg3 size:(struct CGSize)arg4;
 - (void)endImpressions;
-- (double)heightForBlueprint:(id)arg1 width:(double)arg2 traitCollection:(id)arg3;
+- (double)heightForBlueprint:(id)arg1 canvasSize:(struct CGSize)arg2 traitCollection:(id)arg3;
 - (id)initWithSectionHosting:(id)arg1 viewport:(id)arg2 appStateMonitor:(id)arg3;
+- (void)performDisappearanceTransitionForVisibleViewControllers;
 - (void)updateViewControllerVisibility;
 - (id)view;
 - (id)viewController;

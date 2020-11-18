@@ -7,13 +7,13 @@
 #import <UIKitCore/UIViewController.h>
 
 #import <UIKitCore/UIInputViewControllerNeedSceneSize-Protocol.h>
-#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSString, UIView, _SFPasswordViewController;
+@class NSString, _SFPasswordViewController;
+@protocol BSInvalidatable;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardHiddenViewController : UIViewController <UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate, UIInputViewControllerNeedSceneSize>
+@interface UIKeyboardHiddenViewController : UIViewController <UIViewControllerTransitioningDelegate, UIInputViewControllerNeedSceneSize>
 {
     _SFPasswordViewController *_autofillVC;
     BOOL _presentedAutofill;
@@ -21,7 +21,8 @@ __attribute__((visibility("hidden")))
     BOOL _isFocusDeferred;
     unsigned int _deferredContextID;
     NSString *_deferredDisplayUUID;
-    UIView *_sourceView;
+    id<BSInvalidatable> _eventFocusDeferralToken;
+    BOOL _processingSceneDidChange;
 }
 
 @property (strong, nonatomic) _SFPasswordViewController *autofillVC; // @synthesize autofillVC=_autofillVC;
@@ -29,34 +30,27 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL presentedAutofill; // @synthesize presentedAutofill=_presentedAutofill;
-@property (nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (readonly) Class superclass;
 
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationWillDeactivate:(id)arg1;
-- (id)_clientDeferralProperties;
-- (id)_deferredPropertiesForClientContext:(unsigned int)arg1;
+- (id)_deferredTargetForClientContext:(unsigned int)arg1;
 - (void)_deviceWillLock:(id)arg1;
 - (BOOL)_formSheetObeysContentContainerSize;
-- (id)_hostDeferralProperties;
 - (void)_localAuthenticationUIDismissed;
 - (void)_localAuthenticationUIPresented;
 - (void)_sceneDidChange;
 - (void)_setDeferred:(BOOL)arg1 forDisplayUUID:(id)arg2;
 - (void)_willChangeToFirstResponder:(id)arg1;
-- (long long)customModalPresentationStyle;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)passwordViewControllerDidFinish:(id)arg1;
-- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
-- (void)prepareForPopoverPresentation:(id)arg1;
 - (void)presentAutofillVCWithAnimation:(BOOL)arg1;
 - (void)presentSelfWithAnimation:(BOOL)arg1;
 - (void)presentViewController:(BOOL)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (BOOL)shouldPresentAsPopover;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

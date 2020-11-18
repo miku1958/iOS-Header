@@ -37,6 +37,7 @@
 - (void)_remoteProxy:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)addEarnedInstance:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addTemplate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)availableMobileAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connectionInvalidated;
 - (id)exportedInterface;
 - (void)fetchAchievementWithTemplateUniqueName:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -52,6 +53,7 @@
 - (void)removeAllTemplatesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeEarnedInstance:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeTemplate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)runMonthlyChallengesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setActivityChallengeAssetsServerURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

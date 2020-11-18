@@ -8,27 +8,46 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, GEOPlaceSearchRequest, NSMutableArray, PBUnknownFields;
+@class GEOLocation, GEOPlaceSearchRequest, NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOWaypoint : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_entryPoints;
     GEOLocation *_location;
     GEOPlaceSearchRequest *_placeSearchRequest;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_entryPoints:1;
+        unsigned int read_location:1;
+        unsigned int read_placeSearchRequest:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_entryPoints:1;
+        unsigned int wrote_location:1;
+        unsigned int wrote_placeSearchRequest:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *entryPoints; // @synthesize entryPoints=_entryPoints;
+@property (strong, nonatomic) NSMutableArray *entryPoints;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (readonly, nonatomic) BOOL hasPlaceSearchRequest;
-@property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
-@property (strong, nonatomic) GEOPlaceSearchRequest *placeSearchRequest; // @synthesize placeSearchRequest=_placeSearchRequest;
+@property (strong, nonatomic) GEOLocation *location;
+@property (strong, nonatomic) GEOPlaceSearchRequest *placeSearchRequest;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)entryPointType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsEntryPoint:(id)arg1;
+- (void)_readEntryPoints;
+- (void)_readLocation;
+- (void)_readPlaceSearchRequest;
 - (void)addEntryPoint:(id)arg1;
 - (void)clearEntryPoints;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -38,6 +57,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

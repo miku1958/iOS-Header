@@ -27,6 +27,7 @@
 - (BOOL)finishWithTransaction:(id)arg1 error:(id *)arg2;
 - (id)hasFailedInTransaction:(id)arg1 error:(id *)arg2;
 - (BOOL)insertWorkoutEvent:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
+- (id)latestActivityDateInTransaction:(id)arg1 error:(id *)arg2;
 - (id)requestedTargetStateWithTransaction:(id)arg1 error:(id *)arg2;
 - (BOOL)setAssociatedBuilder:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (BOOL)setClientApplicationIdentifier:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
@@ -41,6 +42,8 @@
 - (id)sourceWithTransaction:(id)arg1 error:(id *)arg2;
 - (id)startDateInTransaction:(id)arg1 error:(id *)arg2;
 - (id)stateWithTransaction:(id)arg1 error:(id *)arg2;
+- (BOOL)updateLatestActivityDate:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
+- (BOOL)updateLatestActivityDateWithTransaction:(id)arg1 error:(id *)arg2;
 - (id)workoutConfigurationWithTransaction:(id)arg1 error:(id *)arg2;
 - (id)workoutEventsInTransaction:(id)arg1 error:(id *)arg2;
 

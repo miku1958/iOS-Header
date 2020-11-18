@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_createLayerRenderBuffer;
+- (void)_createTexture;
 - (void)_deleteLayerRenderBuffer;
 - (void)dealloc;
 - (void)didEnterBackground;

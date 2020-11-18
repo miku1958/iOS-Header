@@ -8,11 +8,11 @@
 
 @interface MRAVLightweightReconnaissanceSession : NSObject
 {
-    id _endpointCallbackToken;
 }
 
-- (void).cxx_destruct;
-- (void)searchForOutputDeviceUID:(id)arg1 timeout:(double)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)searchEndpointsForOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchForLogicalOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchForOutputDeviceUID:(id)arg1 timeout:(double)arg2 reason:(id)arg3 queue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

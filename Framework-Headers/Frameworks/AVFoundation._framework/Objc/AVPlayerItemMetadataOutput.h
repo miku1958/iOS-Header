@@ -26,7 +26,6 @@
 - (void)_pushTimedMetadataGroups:(id)arg1 fromPlayerItemTrack:(id)arg2;
 - (void)_signalFlush;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithIdentifiers:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;

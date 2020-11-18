@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSDAnimationSession-Protocol.h>
 
-@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNShow, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMetalLayer, TSKAccessController;
+@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNShow, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMPSImageConversionStorage, TSDMetalLayer, TSKAccessController, TSULRUCache;
 @protocol MTLDevice, TSDCanvasDelegate, TSKAccessControllerReadTicket;
 
 __attribute__((visibility("hidden")))
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldAutomaticallyPlayMovies;
     BOOL _shouldDrawTexturesAsynchronously;
     BOOL _shouldForceTextureGeneration;
+    BOOL _shouldAllowBackgroundAlpha;
     BOOL _shouldNotBakeActionTextures;
     BOOL _shouldPreferCARenderer;
     BOOL _shouldShowVideoReflectionsAndMasks;
@@ -40,7 +41,6 @@ __attribute__((visibility("hidden")))
     BOOL _shouldSkipBuilds;
     BOOL _shouldRespectSkippedSlides;
     BOOL _shouldAlwaysLoop;
-    BOOL _shouldPreserveTransparency;
     BOOL _shouldExcludeFloatingComments;
     id<TSKAccessControllerReadTicket> _accessControllerReadTicket;
     KNSlideNode *_alternateNextSlideNode;
@@ -56,9 +56,11 @@ __attribute__((visibility("hidden")))
     CALayer *_rootLayer;
     id<MTLDevice> _metalDevice;
     TSDMetalLayer *_sharedMetalLayer;
+    TSDMPSImageConversionStorage *_mpsImageConversionStorage;
     KNShow *_show;
     NSArray *_slideNodesWithinPlayableRange;
     TSDGLLayer *_sharedGLLayer;
+    TSULRUCache *_movieAssetCache;
     NSMutableArray *_animationDurationArray;
     NSMutableArray *_eventDurationArray;
     NSMutableArray *_workDurationArray;
@@ -95,11 +97,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isShowLayerVisible; // @synthesize isShowLayerVisible=_isShowLayerVisible;
 @property (readonly, nonatomic) BOOL isWideGamut;
 @property (readonly, nonatomic) id<MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
+@property (readonly, nonatomic) TSULRUCache *movieAssetCache; // @synthesize movieAssetCache=_movieAssetCache;
+@property (readonly, nonatomic) TSDMPSImageConversionStorage *mpsImageConversionStorage; // @synthesize mpsImageConversionStorage=_mpsImageConversionStorage;
 @property (nonatomic) long long playMode; // @synthesize playMode=_playMode;
 @property (readonly, nonatomic) NSArray *playableSlideNodes;
 @property (readonly, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property (strong, nonatomic) TSDGLLayer *sharedGLLayer; // @synthesize sharedGLLayer=_sharedGLLayer;
 @property (strong, nonatomic) TSDMetalLayer *sharedMetalLayer; // @synthesize sharedMetalLayer=_sharedMetalLayer;
+@property (nonatomic) BOOL shouldAllowBackgroundAlpha; // @synthesize shouldAllowBackgroundAlpha=_shouldAllowBackgroundAlpha;
 @property (nonatomic) BOOL shouldAlwaysLoop; // @synthesize shouldAlwaysLoop=_shouldAlwaysLoop;
 @property (nonatomic) BOOL shouldAlwaysSetCurrentGLContextWhenDrawing; // @synthesize shouldAlwaysSetCurrentGLContextWhenDrawing=_shouldAlwaysSetCurrentGLContextWhenDrawing;
 @property (nonatomic) BOOL shouldAnimateNullTransitions; // @synthesize shouldAnimateNullTransitions=_shouldAnimateNullTransitions;
@@ -110,7 +115,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldForceTextureGeneration; // @synthesize shouldForceTextureGeneration=_shouldForceTextureGeneration;
 @property (nonatomic) BOOL shouldNotBakeActionTextures; // @synthesize shouldNotBakeActionTextures=_shouldNotBakeActionTextures;
 @property (nonatomic) BOOL shouldPreferCARenderer; // @synthesize shouldPreferCARenderer=_shouldPreferCARenderer;
-@property (nonatomic) BOOL shouldPreserveTransparency; // @synthesize shouldPreserveTransparency=_shouldPreserveTransparency;
 @property (nonatomic) BOOL shouldRespectSkippedSlides; // @synthesize shouldRespectSkippedSlides=_shouldRespectSkippedSlides;
 @property (readonly, nonatomic) BOOL shouldShowInstructionalText;
 @property (nonatomic) BOOL shouldShowVideoReflectionsAndMasks; // @synthesize shouldShowVideoReflectionsAndMasks=_shouldShowVideoReflectionsAndMasks;

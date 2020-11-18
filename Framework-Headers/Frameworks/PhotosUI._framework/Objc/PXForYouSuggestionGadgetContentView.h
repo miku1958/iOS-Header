@@ -74,6 +74,7 @@
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_handleChangedAsset:(id)arg1;
 - (void)_updateAssetView;
+- (void)_updateAssetViewAnimatedContentEnabled;
 - (void)_updateAssetViewPlaceholderFilters;
 - (void)_updateBadgeContents;
 - (void)_updateBadgeViews;
@@ -85,6 +86,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)photoLibraryDidChangeOnMainQueue:(id)arg1;
+- (id)previewAssetView;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -17,13 +17,15 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_keys;
 }
 
-@property (strong, nonatomic) NSMutableArray *keys; // @synthesize keys=_keys;
+@property (strong, nonatomic) NSMutableArray *keys;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)keyType;
 - (void).cxx_destruct;
 - (void)addKey:(id)arg1;
 - (void)clearKeys;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)keyAtIndex:(unsigned long long)arg1;
 - (unsigned long long)keysCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

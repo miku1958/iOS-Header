@@ -6,12 +6,13 @@
 
 #import <HealthKit/HKMedicalRecord.h>
 
+#import <HealthKit/HKConceptIndexable-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKConditionRecordType, HKInspectableValue, HKMedicalCoding, HKMedicalDate, NSArray, NSString;
+@class HKConcept, HKConditionRecordType, HKInspectableValue, HKMedicalCoding, HKMedicalDate, NSArray, NSLocale, NSString, NSUUID;
 
-@interface HKConditionRecord : HKMedicalRecord <NSSecureCoding, NSCopying>
+@interface HKConditionRecord : HKMedicalRecord <HKConceptIndexable, NSSecureCoding, NSCopying>
 {
     NSArray *_conditionCodings;
     NSArray *_categoryCodings;
@@ -23,28 +24,49 @@
     HKMedicalCoding *_verificationStatusCoding;
     NSArray *_severityCodings;
     NSArray *_bodySitesCodings;
+    HKConcept *_condition;
+    HKConcept *_category;
+    HKConcept *_clinicalStatus;
+    HKConcept *_verificationStatus;
+    HKConcept *_severity;
+    NSArray *_bodySites;
 }
 
+@property (readonly) NSUUID *UUID;
 @property (readonly, copy) HKInspectableValue *abatement;
 @property (readonly, copy) NSString *asserter;
+@property (readonly, copy) NSArray *bodySites;
 @property (readonly, copy) NSArray *bodySitesCodings;
+@property (readonly, copy) HKConcept *category;
 @property (readonly, copy) NSArray *categoryCodings;
+@property (readonly, copy) HKConcept *clinicalStatus;
 @property (readonly, copy) HKMedicalCoding *clinicalStatusCoding;
+@property (readonly, copy) HKConcept *condition;
 @property (readonly, copy) NSArray *conditionCodings;
 @property (readonly, copy) HKConditionRecordType *conditionRecordType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSLocale *locale;
 @property (readonly, copy) HKInspectableValue *onset;
 @property (readonly, copy) HKMedicalDate *recordedDate;
+@property (readonly, copy) HKConcept *severity;
 @property (readonly, copy) NSArray *severityCodings;
+@property (readonly) Class superclass;
+@property (readonly, copy) HKConcept *verificationStatus;
 @property (readonly, copy) HKMedicalCoding *verificationStatusCoding;
 
 + (BOOL)_isConcreteObjectClass;
++ (id)_newConditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 conditionCodings:(id)arg11 categoryCodings:(id)arg12 asserter:(id)arg13 abatement:(id)arg14 onset:(id)arg15 recordedDate:(id)arg16 clinicalStatusCoding:(id)arg17 verificationStatusCoding:(id)arg18 severityCodings:(id)arg19 bodySitesCodings:(id)arg20 config:(CDUnknownBlockType)arg21;
 + (id)bodySitesCodingsPreferredSystems;
++ (id)cachedConceptRelationshipKeyPaths;
 + (id)categoryCodingsPreferredSystems;
 + (id)clinicalStatusCodingPreferredSystems;
 + (id)conditionCodingsPreferredSystems;
-+ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 conditionCodings:(id)arg9 categoryCodings:(id)arg10 asserter:(id)arg11 abatement:(id)arg12 onset:(id)arg13 recordedDate:(id)arg14 clinicalStatusCoding:(id)arg15 verificationStatusCoding:(id)arg16 severityCodings:(id)arg17 bodySitesCodings:(id)arg18;
-+ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 conditionCodings:(id)arg10 categoryCodings:(id)arg11 asserter:(id)arg12 abatement:(id)arg13 onset:(id)arg14 recordedDate:(id)arg15 clinicalStatusCoding:(id)arg16 verificationStatusCoding:(id)arg17 severityCodings:(id)arg18 bodySitesCodings:(id)arg19;
++ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 conditionCodings:(id)arg10 categoryCodings:(id)arg11 asserter:(id)arg12 abatement:(id)arg13 onset:(id)arg14 recordedDate:(id)arg15 clinicalStatusCoding:(id)arg16 verificationStatusCoding:(id)arg17 severityCodings:(id)arg18 bodySitesCodings:(id)arg19;
++ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 locale:(id)arg6 extractionVersion:(long long)arg7 device:(id)arg8 metadata:(id)arg9 sortDate:(id)arg10 conditionCodings:(id)arg11 categoryCodings:(id)arg12 asserter:(id)arg13 abatement:(id)arg14 onset:(id)arg15 recordedDate:(id)arg16 clinicalStatusCoding:(id)arg17 verificationStatusCoding:(id)arg18 severityCodings:(id)arg19 bodySitesCodings:(id)arg20;
 + (id)defaultDisplayString;
++ (id)indexableConceptKeyPaths;
 + (id)severityCodingsPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
@@ -52,21 +74,36 @@
 - (void).cxx_destruct;
 - (void)_setAbatement:(id)arg1;
 - (void)_setAsserter:(id)arg1;
+- (void)_setBodySites:(id)arg1;
 - (void)_setBodySitesCodings:(id)arg1;
+- (void)_setCategory:(id)arg1;
 - (void)_setCategoryCodings:(id)arg1;
+- (void)_setClinicalStatus:(id)arg1;
 - (void)_setClinicalStatusCoding:(id)arg1;
+- (void)_setCondition:(id)arg1;
 - (void)_setConditionCodings:(id)arg1;
 - (void)_setOnset:(id)arg1;
 - (void)_setRecordedDate:(id)arg1;
+- (void)_setSeverity:(id)arg1;
 - (void)_setSeverityCodings:(id)arg1;
+- (void)_setVerificationStatus:(id)arg1;
 - (void)_setVerificationStatusCoding:(id)arg1;
-- (id)_validateConfiguration;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)bodySitesCodingsCollection;
+- (id)bodySitesCodingsContexts;
 - (id)bodySitesCodingsTasks;
+- (id)categoryCodingsCollection;
+- (id)categoryCodingsContext;
 - (id)categoryCodingsTasks;
+- (id)clinicalStatusCodingCollection;
+- (id)clinicalStatusCodingContext;
 - (id)clinicalStatusCodingTasks;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
+- (id)conditionCodingsCollection;
+- (id)conditionCodingsContext;
 - (id)conditionCodingsTasks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)indexKeywords;
 - (id)init;
@@ -74,7 +111,11 @@
 - (BOOL)isEquivalent:(id)arg1;
 - (id)medicalRecordCodings;
 - (id)medicalRecordPreferredSystems;
+- (id)severityCodingsCollection;
+- (id)severityCodingsContext;
 - (id)severityCodingsTasks;
+- (id)verificationStatusCodingCollection;
+- (id)verificationStatusCodingContext;
 - (id)verificationStatusCodingTasks;
 
 @end

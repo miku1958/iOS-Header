@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_axIsSelected:(id)arg1;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;

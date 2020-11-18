@@ -19,6 +19,7 @@
     NSString *_part;
     BOOL _partial;
     BOOL _incomplete;
+    BOOL _relaxDataProtection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,11 +27,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (long long)appendData:(id)arg1;
 - (id)data;
-- (void)dealloc;
 - (void)done;
-- (id)initWithLibrary:(id)arg1 message:(id)arg2 part:(id)arg3 partial:(BOOL)arg4 incomplete:(BOOL)arg5 compressionQueue:(id)arg6;
+- (id)initWithLibrary:(id)arg1 message:(id)arg2 part:(id)arg3 partial:(BOOL)arg4 incomplete:(BOOL)arg5 relaxDataProtection:(BOOL)arg6 compressionQueue:(id)arg7;
 - (id)pathForStorage;
 
 @end

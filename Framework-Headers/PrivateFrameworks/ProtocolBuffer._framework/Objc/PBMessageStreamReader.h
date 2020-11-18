@@ -15,8 +15,8 @@
     unsigned long long _position;
 }
 
-@property Class classOfNextMessage; // @synthesize classOfNextMessage=_classOfNextMessage;
-@property (readonly) unsigned long long position; // @synthesize position=_position;
+@property (nonatomic) Class classOfNextMessage; // @synthesize classOfNextMessage=_classOfNextMessage;
+@property (readonly, nonatomic) unsigned long long position; // @synthesize position=_position;
 
 - (void)dealloc;
 - (id)initWithStream:(id)arg1;

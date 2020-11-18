@@ -51,7 +51,7 @@ __attribute__((visibility("hidden")))
 - (double)beginDataValueForSeries:(id)arg1 groupIndex:(unsigned long long)arg2 valueAxisID:(id)arg3;
 - (double)beginValueForSeries:(unsigned long long)arg1 index:(unsigned long long)arg2 unitSpaceIntercept:(double)arg3 relativelyPositive:(BOOL)arg4 valueAxis:(id)arg5;
 - (BOOL)canUseEstimatedValueLabelsDrawingRect;
-- (id)cdeFillForSeries:(id)arg1 size:(struct CGSize)arg2;
+- (id)cdeFillForSeries:(id)arg1;
 - (BOOL)chunkedBuildsIncludeInterceptValues;
 - (id)coordinateAxisForSeries:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (id)seriesFillLabelUIString;
 - (unsigned long long)seriesIndexForDrawing:(id)arg1;
 - (id)seriesRendererClasses;
+- (int)seriesStrokeProperty;
 - (int)specificFillSetFillProperty;
 - (id)supportedSymbols;
 - (id)supportedValueLabelsAxisCombinations;

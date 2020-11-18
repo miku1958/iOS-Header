@@ -25,10 +25,12 @@
 - (void).cxx_destruct;
 - (id)_accessibilityAbsoluteValue;
 - (double)_accessibilityAllowedGeometryOverlap;
+- (unsigned long long)_accessibilityAutomationType;
 - (BOOL)_accessibilityBackingElementIsValid;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilityCanBecomeNativeFocused;
 - (BOOL)_accessibilityCanPerformEscapeAction;
+- (id)_accessibilityCapturedImages;
 - (struct CGRect)_accessibilityChargedLineBoundsForRange:(struct _NSRange)arg1;
 - (long long)_accessibilityCompareElement:(id)arg1 toElement:(id)arg2;
 - (void)_accessibilityCopy;
@@ -43,7 +45,6 @@
 - (BOOL)_accessibilityIsAwayAlertElement;
 - (BOOL)_accessibilityIsInTableCell;
 - (BOOL)_accessibilityIsOutsideParentBounds;
-- (BOOL)_accessibilityIsScannerElement;
 - (BOOL)_accessibilityIsScannerGroup;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityIsTableCell;
@@ -53,6 +54,7 @@
 - (void)_accessibilityPaste;
 - (id)_accessibilityProxyView;
 - (struct _NSRange)_accessibilityRangeForLineNumberAndColumn:(id)arg1;
+- (void)_accessibilityRedo;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (long long)_accessibilityScannerActivateBehavior;
 - (unsigned long long)_accessibilityScanningBehaviorTraits;
@@ -68,6 +70,7 @@
 - (id)_accessibilityTableViewCellContentSubviews;
 - (id)_accessibilityTextOperations;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (void)_accessibilityUndo;
 - (id)_accessibilityUserTestingChildren;
 - (long long)_accessibilityUserTestingChildrenCount;
 - (BOOL)_accessibilityUserTestingIsCancelButton;
@@ -101,9 +104,11 @@
 - (id)accessibilityLocalizedStringTableName;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityPerformMagicTap;
+- (BOOL)accessibilityRespondsToUserInteraction;
 - (struct _NSRange)accessibilityRowRange;
 - (BOOL)accessibilityScrollToVisibleWithChild:(id)arg1;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
 - (id)accessibilityValue;
 - (void)dealloc;
 - (id)description;

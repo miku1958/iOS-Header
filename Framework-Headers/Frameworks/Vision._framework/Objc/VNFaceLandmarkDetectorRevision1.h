@@ -11,17 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface VNFaceLandmarkDetectorRevision1 : VNFaceLandmarkDetector
 {
-    struct shared_ptr<vision::mod::LandmarkDetector> mFaceLandmarkAlgorithmImpl;
-    struct shared_ptr<vision::mod::LandmarkDetector> mFaceLandmarkMouthRefinerImpl;
-    struct shared_ptr<vision::mod::LandmarkDetector> mFaceLandmarkRightEyeRefinerImpl;
-    struct shared_ptr<vision::mod::LandmarkDetector> mFaceLandmarkLeftEyeRefinerImpl;
+    struct shared_ptr<vision::mod::LandmarkDetectorERT> mFaceLandmarkAlgorithmImpl;
+    struct shared_ptr<vision::mod::LandmarkDetectorERT> mFaceLandmarkMouthRefinerImpl;
+    struct shared_ptr<vision::mod::LandmarkDetectorERT> mFaceLandmarkRightEyeRefinerImpl;
+    struct shared_ptr<vision::mod::LandmarkDetectorERT> mFaceLandmarkLeftEyeRefinerImpl;
     BOOL modelFilesWereMemmapped;
     id<VNModelFile> mCoreLandmarkModelFileHandle;
     id<VNModelFile> mLandmarkRefinerModelFileHandle;
 }
 
 + (id)configurationOptionKeysForDetectorKey;
-+ (void)dumpDebugIntermediatesWithImageBuffer:(id)arg1 lumaIntermediate:(struct __CVBuffer *)arg2 alignedBBoxInLumaIntermediateCoordinates:(struct _Geometry2D_rect2D_)arg3 meanShapeInLumaIntermediate:(const vector_09a306ff *)arg4 landmarkPointsInLumaIntermediate:(const vector_09a306ff *)arg5;
++ (void)dumpDebugIntermediatesWithImageBuffer:(id)arg1 lumaIntermediate:(struct __CVBuffer *)arg2 alignedBBoxInLumaIntermediateCoordinates:(struct _Geometry2D_rect2D_)arg3 meanShapeInLumaIntermediate:(const vector_f48c7054 *)arg4 landmarkPointsInLumaIntermediate:(const vector_f48c7054 *)arg5;
 + (BOOL)shouldDumpDebugIntermediates;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)cascadeStepCountLoaded;
 - (BOOL)completeInitializationAndReturnError:(id *)arg1;
 - (void)dealloc;
+- (BOOL)loadRefinersAndReturnError:(id *)arg1;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 
 @end

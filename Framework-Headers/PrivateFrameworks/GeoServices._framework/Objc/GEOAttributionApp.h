@@ -8,34 +8,47 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOAttributionApp : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_appBundleIdentifier;
     NSMutableArray *_handledSchemes;
     int _restaurantReservationExtensionSupport;
     BOOL _supportsRestaurantQueueing;
     BOOL _supportsRestaurantReservations;
     struct {
-        unsigned int restaurantReservationExtensionSupport:1;
-        unsigned int supportsRestaurantQueueing:1;
-        unsigned int supportsRestaurantReservations:1;
-    } _has;
+        unsigned int has_restaurantReservationExtensionSupport:1;
+        unsigned int has_supportsRestaurantQueueing:1;
+        unsigned int has_supportsRestaurantReservations:1;
+        unsigned int read_appBundleIdentifier:1;
+        unsigned int read_handledSchemes:1;
+        unsigned int wrote_appBundleIdentifier:1;
+        unsigned int wrote_handledSchemes:1;
+        unsigned int wrote_restaurantReservationExtensionSupport:1;
+        unsigned int wrote_supportsRestaurantQueueing:1;
+        unsigned int wrote_supportsRestaurantReservations:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
-@property (strong, nonatomic) NSMutableArray *handledSchemes; // @synthesize handledSchemes=_handledSchemes;
+@property (strong, nonatomic) NSString *appBundleIdentifier;
+@property (strong, nonatomic) NSMutableArray *handledSchemes;
 @property (nonatomic) BOOL hasRestaurantReservationExtensionSupport;
 @property (nonatomic) BOOL hasSupportsRestaurantQueueing;
 @property (nonatomic) BOOL hasSupportsRestaurantReservations;
-@property (nonatomic) int restaurantReservationExtensionSupport; // @synthesize restaurantReservationExtensionSupport=_restaurantReservationExtensionSupport;
-@property (nonatomic) BOOL supportsRestaurantQueueing; // @synthesize supportsRestaurantQueueing=_supportsRestaurantQueueing;
-@property (nonatomic) BOOL supportsRestaurantReservations; // @synthesize supportsRestaurantReservations=_supportsRestaurantReservations;
+@property (nonatomic) int restaurantReservationExtensionSupport;
+@property (nonatomic) BOOL supportsRestaurantQueueing;
+@property (nonatomic) BOOL supportsRestaurantReservations;
 
 + (Class)handledSchemesType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsRestaurantReservationExtensionSupport:(id)arg1;
+- (void)_addNoFlagsHandledSchemes:(id)arg1;
+- (void)_readAppBundleIdentifier;
+- (void)_readHandledSchemes;
 - (void)addHandledSchemes:(id)arg1;
 - (void)clearHandledSchemes;
 - (void)copyTo:(id)arg1;
@@ -47,6 +60,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)restaurantReservationExtensionSupportAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -26,7 +26,6 @@
 - (void)_pushAttributedStrings:(id)arg1 andSampleBuffers:(id)arg2 atItemTime:(CDStruct_1b6d18a9)arg3;
 - (void)_signalFlush;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)initWithDependencyFactory:(id)arg1 mediaSubtypesForNativeRepresentation:(id)arg2;
 - (id)initWithMediaSubtypesForNativeRepresentation:(id)arg1;

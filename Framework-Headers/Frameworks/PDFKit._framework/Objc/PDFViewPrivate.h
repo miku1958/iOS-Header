@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray, PDFAKOverlayAdaptor, PDFAnnotation, PDFCoachMarkManager, PDFDocument, PDFDocumentViewController, PDFPage, PDFPanGestureRecognizer, PDFPasswordViewController, PDFRenderingProperties, PDFScrollView, PDFSelection, PDFTimer, PDFViewController, PDFViewLayout, UIDragInteraction, UILongPressGestureRecognizer, UISwipeGestureRecognizer, UITapGestureRecognizer;
-@protocol PDFViewDelegate, PDFViewPopupManager;
+@class NSArray, NSDictionary, NSMutableArray, PDFAKOverlayAdaptor, PDFAnnotation, PDFCoachMarkManager, PDFDocument, PDFDocumentViewController, PDFPage, PDFPasswordViewController, PDFRenderingProperties, PDFScrollView, PDFSelection, PDFTimer, PDFViewController, PDFViewLayout, UIDragInteraction, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@protocol PDFViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface PDFViewPrivate : NSObject
@@ -29,14 +29,12 @@ __attribute__((visibility("hidden")))
     long long displayMode;
     long long displayDirection;
     PDFViewLayout *viewLayout;
-    BOOL scrollingChangesPages;
     BOOL displaysAsBook;
     BOOL displaysRTL;
     PDFRenderingProperties *renderingProperties;
     unsigned long long lastVerticalScrollDirection;
     unsigned long long lastHorizontalScrollDirection;
     BOOL displaysBookmarksForPages;
-    unsigned long long scrollEntry;
     unsigned long long currentPageIndex;
     unsigned long long firstVisiblePage;
     unsigned long long lastVisiblePage;
@@ -48,23 +46,22 @@ __attribute__((visibility("hidden")))
     NSArray *highlights;
     PDFCoachMarkManager *coachMarkManager;
     PDFPasswordViewController *passwordViewController;
-    NSObject<PDFViewPopupManager> *popupManager;
     PDFAnnotation *currentTextWidget;
     PDFAKOverlayAdaptor *akOverlayAdaptor;
-    BOOL enableSelectionDrawing;
     BOOL showsScrollIndicators;
+    BOOL dataDetectorsEnabled;
     BOOL debugDrawCGPDFNodeLayer[11];
     BOOL wantsForceUpdate;
     double blockingWaitDuration;
+    unsigned long long activeMarkupStyle;
     UILongPressGestureRecognizer *longPressGestureRecognizer;
-    PDFPanGestureRecognizer *panGestureRecognizer;
     UITapGestureRecognizer *tapGestureRecognizer;
-    UISwipeGestureRecognizer *swipeGestureRecognizer;
-    BOOL needsRotationZoomFix;
-    PDFDocumentViewController *documentViewController;
+    UITapGestureRecognizer *doubleTapGestureRecognizer;
     BOOL isUsingPageViewController;
+    PDFDocumentViewController *documentViewController;
     NSDictionary *pageViewControllerOptions;
     UIDragInteraction *dragInteraction;
+    struct UIEdgeInsets savedSafeAreaInsets;
     double horizontalScaleFactorBeforeRotation;
     struct CGPoint documentViewCenterBeforeRotation;
     struct CGRect extensionViewBoundsInDocument;

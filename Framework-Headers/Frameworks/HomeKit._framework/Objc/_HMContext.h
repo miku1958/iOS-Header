@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)contextWithName:(id)arg1;
++ (id)contextWithName:(id)arg1 delegateCaller:(id)arg2;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithName:(id)arg1 pendingRequests:(id)arg2 delegateCaller:(id)arg3 messageDispatcher:(id)arg4;

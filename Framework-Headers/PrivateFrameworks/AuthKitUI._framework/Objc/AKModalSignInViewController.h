@@ -10,28 +10,38 @@
 #import <AuthKitUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKRoundedButton, NSString, UILabel, UITextField, UIView;
+@class AKRoundedButton, NSString, UIColor, UILabel, UITextField, UIView;
 
 @interface AKModalSignInViewController : AKBaseSignInViewController <AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate, UITextFieldDelegate>
 {
+    BOOL _hideTitle;
     UILabel *_titleLabel;
     UILabel *_bodyLabel;
     UITextField *_passwordField;
     AKRoundedButton *_signInButton;
     UIView *_containerView;
+    UIColor *_backgroundColor;
+    NSString *_customBodyText;
+    NSString *_customButtonTitle;
 }
 
+@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (strong, nonatomic) NSString *customBodyText; // @synthesize customBodyText=_customBodyText;
+@property (strong, nonatomic) NSString *customButtonTitle; // @synthesize customButtonTitle=_customButtonTitle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideTitle; // @synthesize hideTitle=_hideTitle;
 @property (strong, nonatomic) UITextField *passwordField; // @synthesize passwordField=_passwordField;
 @property (strong, nonatomic) AKRoundedButton *signInButton; // @synthesize signInButton=_signInButton;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_bodyText;
+- (id)_buttonTitle;
 - (void)_createViews;
 - (void)_hidebusyWorkUI;
 - (BOOL)_isSignInAllowed;
@@ -50,7 +60,9 @@
 - (id)init;
 - (BOOL)resignFirstResponder;
 - (BOOL)textFieldShouldReturn:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

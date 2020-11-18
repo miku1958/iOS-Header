@@ -27,21 +27,20 @@
     CDUnknownBlockType _onWillSpeakRangeCallback;
     CDUnknownBlockType _onSpeechStartCallback;
     BOOL _ignoreCustomSubstitutions;
+    BOOL _synthesizeSilently;
     BOOL _useMonarchStyleSpeechRate;
-    unsigned int _audioQueueFlags;
     NSString *_voiceIdentifier;
     long long _state;
+    CDUnknownBlockType _audioBufferCallback;
     NSAttributedString *_attributedString;
-    NSString *_IPAPhonemes;
     long long _wordCallbackPostProcessedOffset;
     NSString *_finalSpokenString;
     NSString *_processedString;
     NSMutableArray *_emojiRangeReplacements;
 }
 
-@property (copy, nonatomic) NSString *IPAPhonemes; // @synthesize IPAPhonemes=_IPAPhonemes;
 @property (copy, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
-@property (nonatomic) unsigned int audioQueueFlags; // @synthesize audioQueueFlags=_audioQueueFlags;
+@property (copy, nonatomic) CDUnknownBlockType audioBufferCallback; // @synthesize audioBufferCallback=_audioBufferCallback;
 @property (nonatomic) BOOL cannotInterrupt; // @synthesize cannotInterrupt=_cannotInterrupt;
 @property (copy, nonatomic) CDUnknownBlockType completionCallback; // @synthesize completionCallback=_completionCallback;
 @property (strong, nonatomic) NSMutableArray *emojiRangeReplacements; // @synthesize emojiRangeReplacements=_emojiRangeReplacements;
@@ -62,6 +61,7 @@
 @property (nonatomic) double speakingRate; // @synthesize speakingRate=_speakingRate;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;
+@property (nonatomic) BOOL synthesizeSilently; // @synthesize synthesizeSilently=_synthesizeSilently;
 @property (nonatomic) BOOL useMonarchStyleSpeechRate; // @synthesize useMonarchStyleSpeechRate=_useMonarchStyleSpeechRate;
 @property (strong, nonatomic) NSString *voiceIdentifier; // @synthesize voiceIdentifier=_voiceIdentifier;
 @property (nonatomic) double volume; // @synthesize volume=_volume;
@@ -69,6 +69,7 @@
 
 + (id)actionWithAttributedString:(id)arg1 shouldQueue:(BOOL)arg2;
 + (id)actionWithString:(id)arg1 shouldQueue:(BOOL)arg2;
++ (void)test_setUseMaxSpeechRate:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)_detectLanguageFromContent;
 - (id)description;

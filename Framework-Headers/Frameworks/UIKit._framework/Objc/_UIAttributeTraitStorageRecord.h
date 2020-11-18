@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id value; // @synthesize value=_value;
 
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTraitCollection:(id)arg1 value:(id)arg2;

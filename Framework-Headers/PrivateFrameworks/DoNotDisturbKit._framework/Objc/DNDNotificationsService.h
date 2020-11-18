@@ -21,6 +21,7 @@
     DNDSettingsService *_notificationsSettingsService;
     BOOL _doNotDisturbActive;
     BOOL _basicActive;
+    BOOL _sleepActive;
     BOOL _bedtimeActive;
     BOOL _drivingActive;
     BOOL _workoutActive;
@@ -38,7 +39,6 @@
 
 + (void)initialize;
 - (void).cxx_destruct;
-- (id)_attachmentForIdentifier:(id)arg1;
 - (void)_handleSignificantTimeChange;
 - (void)_queue_postOrRemoveNotificationWithUpdatedBehavior:(BOOL)arg1 significantTimeChange:(BOOL)arg2;
 - (id)initWithClientIdentifier:(id)arg1;

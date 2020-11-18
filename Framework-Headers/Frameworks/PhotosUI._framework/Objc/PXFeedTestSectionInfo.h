@@ -6,19 +6,24 @@
 
 #import <PhotosUICore/PXFeedSectionInfo.h>
 
+@class PLPhotoLibrary;
+
 @interface PXFeedTestSectionInfo : PXFeedSectionInfo
 {
+    PLPhotoLibrary *_photoLibrary;
     long long _countOfItems;
 }
 
-@property (nonatomic) long long countOfItems; // @synthesize countOfItems=_countOfItems;
+@property (readonly, nonatomic) long long countOfItems; // @synthesize countOfItems=_countOfItems;
 
+- (void).cxx_destruct;
 - (id)albumTitle;
 - (id)captionForItemAtIndex:(long long)arg1;
 - (id)date;
-- (id)init;
+- (id)initWithPhotoLibrary:(id)arg1;
 - (BOOL)isLoaded;
 - (long long)numberOfItems;
+- (id)photoLibrary;
 - (long long)sectionType;
 
 @end

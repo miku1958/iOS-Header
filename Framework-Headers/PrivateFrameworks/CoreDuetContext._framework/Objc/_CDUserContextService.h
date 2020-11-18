@@ -7,43 +7,80 @@
 #import <objc/NSObject.h>
 
 #import <CoreDuetContext/NSXPCListenerDelegate-Protocol.h>
+#import <CoreDuetContext/_CDXPCEventPublisherDelegate-Protocol.h>
 
-@class NSMutableSet, NSString, NSXPCListener, _CDInMemoryUserContext;
+@class NSMutableDictionary, NSMutableSet, NSString, NSXPCListener, _CDInMemoryUserContext, _CDXPCEventPublisher;
 @protocol _CDContextPersisting;
 
-@interface _CDUserContextService : NSObject <NSXPCListenerDelegate>
+@interface _CDUserContextService : NSObject <NSXPCListenerDelegate, _CDXPCEventPublisherDelegate>
 {
+    BOOL _remoteDevicesHaveBeenActivated;
     id<_CDContextPersisting> _persistence;
     _CDInMemoryUserContext *_userContext;
     NSMutableSet *_clients;
     NSXPCListener *_listener;
     NSMutableSet *_openRegistrations;
     NSMutableSet *_firedRegistrations;
+    NSMutableDictionary *_firedRegistrationInfos;
+    _CDXPCEventPublisher *_mdcsEventPublisher;
+    _CDXPCEventPublisher *_notificationEventPublisher;
+    NSMutableDictionary *_mdcsEventSubscribersByToken;
+    NSMutableDictionary *_notificationEventSubscribersByToken;
+    NSMutableDictionary *_notificationEventSubscribersByClientIdentifier;
+    NSMutableDictionary *_remoteDevicesByDeviceID;
 }
 
 @property (strong, nonatomic) NSMutableSet *clients; // @synthesize clients=_clients;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableDictionary *firedRegistrationInfos; // @synthesize firedRegistrationInfos=_firedRegistrationInfos;
 @property (strong, nonatomic) NSMutableSet *firedRegistrations; // @synthesize firedRegistrations=_firedRegistrations;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
+@property (strong, nonatomic) _CDXPCEventPublisher *mdcsEventPublisher; // @synthesize mdcsEventPublisher=_mdcsEventPublisher;
+@property (strong, nonatomic) NSMutableDictionary *mdcsEventSubscribersByToken; // @synthesize mdcsEventSubscribersByToken=_mdcsEventSubscribersByToken;
+@property (strong, nonatomic) _CDXPCEventPublisher *notificationEventPublisher; // @synthesize notificationEventPublisher=_notificationEventPublisher;
+@property (strong, nonatomic) NSMutableDictionary *notificationEventSubscribersByClientIdentifier; // @synthesize notificationEventSubscribersByClientIdentifier=_notificationEventSubscribersByClientIdentifier;
+@property (strong, nonatomic) NSMutableDictionary *notificationEventSubscribersByToken; // @synthesize notificationEventSubscribersByToken=_notificationEventSubscribersByToken;
 @property (strong, nonatomic) NSMutableSet *openRegistrations; // @synthesize openRegistrations=_openRegistrations;
 @property (strong, nonatomic) id<_CDContextPersisting> persistence; // @synthesize persistence=_persistence;
+@property (readonly, nonatomic) NSMutableDictionary *remoteDevicesByDeviceID; // @synthesize remoteDevicesByDeviceID=_remoteDevicesByDeviceID;
+@property (nonatomic) BOOL remoteDevicesHaveBeenActivated; // @synthesize remoteDevicesHaveBeenActivated=_remoteDevicesHaveBeenActivated;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _CDInMemoryUserContext *userContext; // @synthesize userContext=_userContext;
 
++ (id)sharedInstanceWithPersistence:(id)arg1;
 + (id)sharedInstanceWithSharedMemoryStore:(id)arg1;
 - (void).cxx_destruct;
 - (void)addOpenRegistration:(id)arg1;
+- (void)addProxyWithSourceDeviceUUID:(id)arg1;
+- (void)addSubscriber:(id)arg1;
 - (void)clientWasInterrupted:(id)arg1;
 - (void)deleteSavedData;
-- (void)informClientOfFiredRegistration:(id)arg1;
+- (void)fetchProxySourceDeviceUUIDFromSubscriber:(id)arg1;
+- (void)informClientOfFiredRegistration:(id)arg1 info:(id)arg2;
+- (id)initWithListener:(id)arg1 withPersistence:(id)arg2 withStorage:(id)arg3 withStore:(id)arg4;
 - (id)initWithListener:(id)arg1 withStorage:(id)arg2 withStore:(id)arg3;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
-- (id)obtainFiredRegistrationMatchingRegistration:(id)arg1;
+- (id)obtainFiredRegistrationMatchingRegistration:(id)arg1 info:(id *)arg2;
+- (id)proxySourceDeviceUUIDForUserID:(unsigned int)arg1;
 - (void)regenerateState;
 - (void)removeOpenRegistration:(id)arg1;
+- (void)removeSubscriberWithToken:(unsigned long long)arg1 streamName:(id)arg2;
+- (void)removeTokenForUserID:(unsigned int)arg1;
+- (void)requestActivateDevicesFromAllSubscribersWithHandler:(CDUnknownBlockType)arg1;
+- (void)requestActivateDevicesFromSubscriber:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)sendEvent:(id)arg1 toClient:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)sendEvent:(id)arg1 toClient:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
+- (void)sendEvent:(id)arg1 toProxy:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)sendEvent:(id)arg1 toProxy:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
+- (BOOL)setMappingObject:(id)arg1 forContextualKeyPath:(id)arg2;
+- (void)setProxySourceDeviceUUID:(id)arg1 forUserID:(unsigned int)arg2;
+- (void)setToken:(unsigned long long)arg1 forUserID:(unsigned int)arg2;
 - (void)start;
+- (id)subscriberForSourceDeviceUUID:(id)arg1;
+- (id)subscribersForClientIdentifier:(id)arg1;
+- (unsigned long long)tokenForSourceDeviceUUID:(id)arg1;
 
 @end
 

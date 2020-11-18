@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     NSString *_name;
 }
 
-@property (readonly) NSString *columnDefinitions;
-@property (readonly) struct sqlite3_module *module;
-@property (readonly) NSString *name; // @synthesize name=_name;
-@property (readonly) unsigned long long rowCount;
+@property (readonly, nonatomic) NSString *columnDefinitions;
+@property (readonly, nonatomic) struct sqlite3_module *module;
+@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) unsigned long long rowCount;
 
 - (void).cxx_destruct;
 - (void)fetchValueForContext:(struct sqlite3_context *)arg1 row:(unsigned long long)arg2 column:(unsigned long long)arg3;

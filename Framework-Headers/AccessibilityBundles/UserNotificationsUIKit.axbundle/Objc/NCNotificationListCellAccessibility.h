@@ -24,13 +24,13 @@
 - (id)_axLookView;
 - (id)_axNCNotificationViewController;
 - (BOOL)_axPerformNotificationCustomAction:(id)arg1;
-- (id)accessibilitHint;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 
 @end

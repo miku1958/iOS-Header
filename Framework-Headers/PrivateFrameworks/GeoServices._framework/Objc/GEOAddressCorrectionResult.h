@@ -8,21 +8,34 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSString, PBDataReader;
 
 @interface GEOAddressCorrectionResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_addressID;
     NSMutableArray *_significantLocations;
+    struct {
+        unsigned int read_addressID:1;
+        unsigned int read_significantLocations:1;
+        unsigned int wrote_addressID:1;
+        unsigned int wrote_significantLocations:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSString *addressID; // @synthesize addressID=_addressID;
+@property (strong, nonatomic) NSString *addressID;
 @property (readonly, nonatomic) BOOL hasAddressID;
-@property (strong, nonatomic) NSMutableArray *significantLocations; // @synthesize significantLocations=_significantLocations;
+@property (strong, nonatomic) NSMutableArray *significantLocations;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)significantLocationType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsSignificantLocation:(id)arg1;
+- (void)_readAddressID;
+- (void)_readSignificantLocations;
 - (void)addSignificantLocation:(id)arg1;
+- (void)clearSensitiveFields;
 - (void)clearSignificantLocations;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -31,6 +44,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)significantLocationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)significantLocationsCount;

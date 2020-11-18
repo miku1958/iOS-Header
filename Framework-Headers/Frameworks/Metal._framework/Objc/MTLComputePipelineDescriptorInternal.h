@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)label;
 - (unsigned long long)maxTotalThreadsPerThreadgroup;
 - (id)newSerializedComputeData;
+- (id)newSerializedComputeDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)pipelineLibrary;
 - (void)reset;
 - (unsigned long long)resourceIndex;
@@ -38,8 +39,10 @@ __attribute__((visibility("hidden")))
 - (void)setPipelineLibrary:(id)arg1;
 - (void)setResourceIndex:(unsigned long long)arg1;
 - (void)setStageInputDescriptor:(id)arg1;
+- (void)setSupportIndirectCommandBuffers:(BOOL)arg1;
 - (void)setThreadGroupSizeIsMultipleOfThreadExecutionWidth:(BOOL)arg1;
 - (id)stageInputDescriptor;
+- (BOOL)supportIndirectCommandBuffers;
 - (BOOL)threadGroupSizeIsMultipleOfThreadExecutionWidth;
 - (void)validateWithDevice:(id)arg1;
 

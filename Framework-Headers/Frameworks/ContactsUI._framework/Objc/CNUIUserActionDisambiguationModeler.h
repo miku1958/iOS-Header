@@ -32,14 +32,13 @@
 - (id)discoverActionsForContact:(id)arg1 actionType:(id)arg2;
 - (id)discoverActionsForContact:(id)arg1 actionType:(id)arg2 trackingChanges:(BOOL)arg3;
 - (id)init;
-- (id)initWithDiscoveringEnvironment:(id)arg1 usingPerAppDiscoveringHelper:(BOOL)arg2;
+- (id)initWithDiscoveringEnvironment:(id)arg1;
 - (id)initWithTargetDiscoveringHelper:(id)arg1 rankingHelper:(id)arg2 defaultActionFetcher:(id)arg3 discoveringEnvironment:(id)arg4;
 - (id)modelsWithContact:(id)arg1 actionType:(id)arg2;
 - (id)modelsWithDefaultAction:(id)arg1 actions:(id)arg2 recentActions:(id)arg3 directoryServiceActions:(id)arg4 foundOnDeviceActions:(id)arg5 sorts:(BOOL)arg6 throttles:(BOOL)arg7;
 - (id)recentActionsFromActions:(id)arg1;
 - (id)schedulerProvider;
 - (void)setContactStore:(id)arg1;
-- (id)sharedTargetDiscoveringHelper:(id)arg1;
 - (id)sortActionsOnModel:(id)arg1;
 - (id)targetsChangedObservableForActionType:(id)arg1;
 - (id)thirdPartyActionsForContactProperty:(id)arg1;

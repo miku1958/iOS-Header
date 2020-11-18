@@ -101,6 +101,7 @@
 - (void)setSubtitle:(id)arg1 forItemAtIndex:(long long)arg2;
 - (void)setTitle:(id)arg1 forItemAtIndex:(long long)arg2;
 - (void)setTitleFontName:(id)arg1 forItemAtIndex:(long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (BOOL)wouldCoverAllItemsInStackView:(id)arg1;
 
 @end

@@ -8,39 +8,60 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOTimezone, PBUnknownFields;
+@class GEOLatLng, GEOPDBasemapRegionMetadata, GEOTimezone, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPlaceInfo : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     double _area;
+    GEOPDBasemapRegionMetadata *_basemapRegionMetadata;
     GEOLatLng *_center;
-    int _knownAccuracy;
     GEOTimezone *_timezone;
+    int _knownAccuracy;
     BOOL _isApproximateCenter;
     struct {
-        unsigned int area:1;
-        unsigned int knownAccuracy:1;
-        unsigned int isApproximateCenter:1;
-    } _has;
+        unsigned int has_area:1;
+        unsigned int has_knownAccuracy:1;
+        unsigned int has_isApproximateCenter:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_basemapRegionMetadata:1;
+        unsigned int read_center:1;
+        unsigned int read_timezone:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_area:1;
+        unsigned int wrote_basemapRegionMetadata:1;
+        unsigned int wrote_center:1;
+        unsigned int wrote_timezone:1;
+        unsigned int wrote_knownAccuracy:1;
+        unsigned int wrote_isApproximateCenter:1;
+    } _flags;
 }
 
-@property (nonatomic) double area; // @synthesize area=_area;
-@property (strong, nonatomic) GEOLatLng *center; // @synthesize center=_center;
+@property (nonatomic) double area;
+@property (strong, nonatomic) GEOPDBasemapRegionMetadata *basemapRegionMetadata;
+@property (strong, nonatomic) GEOLatLng *center;
 @property (nonatomic) BOOL hasArea;
+@property (readonly, nonatomic) BOOL hasBasemapRegionMetadata;
 @property (readonly, nonatomic) BOOL hasCenter;
 @property (nonatomic) BOOL hasIsApproximateCenter;
 @property (nonatomic) BOOL hasKnownAccuracy;
 @property (readonly, nonatomic) BOOL hasTimezone;
-@property (nonatomic) BOOL isApproximateCenter; // @synthesize isApproximateCenter=_isApproximateCenter;
-@property (nonatomic) int knownAccuracy; // @synthesize knownAccuracy=_knownAccuracy;
-@property (strong, nonatomic) GEOTimezone *timezone; // @synthesize timezone=_timezone;
+@property (nonatomic) BOOL isApproximateCenter;
+@property (nonatomic) int knownAccuracy;
+@property (strong, nonatomic) GEOTimezone *timezone;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (id)placeInfoForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsKnownAccuracy:(id)arg1;
+- (void)_readBasemapRegionMetadata;
+- (void)_readCenter;
+- (void)_readTimezone;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -49,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (id)knownAccuracyAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

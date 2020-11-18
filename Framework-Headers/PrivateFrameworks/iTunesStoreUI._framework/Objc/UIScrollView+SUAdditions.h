@@ -7,6 +7,9 @@
 #import <UIKit/UIScrollView.h>
 
 @interface UIScrollView (SUAdditions)
+- (void)_testingScrollStep;
+- (void)runScrollTest:(id)arg1 withDelta:(float)arg2 forIterations:(int)arg3;
+- (void)scrollBy:(float)arg1 forIterations:(int)arg2;
 - (void)setTopExtensionViewColor:(id)arg1;
 - (id)topExtensionViewColor;
 @end

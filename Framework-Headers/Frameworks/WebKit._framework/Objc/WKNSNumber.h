@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
         struct ObjectStorage<API::Number<bool, API::Object::Type::Boolean>> _boolean;
         struct ObjectStorage<API::Number<double, API::Object::Type::Double>> _double;
         struct ObjectStorage<API::Number<unsigned long long, API::Object::Type::UInt64>> _uint64;
+        struct ObjectStorage<API::Number<long long, API::Object::Type::Int64>> _int64;
     } _number;
 }
 
@@ -32,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (double)doubleValue;
 - (void)getValue:(void *)arg1;
+- (long long)longLongValue;
 - (const char *)objCType;
 - (unsigned long long)unsignedLongLongValue;
 

@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreML/NSSecureCoding-Protocol.h>
+
 @class MLFeatureDescription, NSDictionary, NSOrderedSet, NSString;
 
-@interface MLModelInterface : NSObject
+@interface MLModelInterface : NSObject <NSSecureCoding>
 {
     NSDictionary *_inputDescription;
     NSDictionary *_outputDescription;
     NSString *_predictedFeatureName;
     NSString *_predictedProbabilitiesName;
+    NSDictionary *_trainingInputDescription;
     NSOrderedSet *_inputFeatureNames;
     NSOrderedSet *_outputFeatureNames;
 }
@@ -27,13 +30,18 @@
 @property (readonly) NSString *predictedFeatureName; // @synthesize predictedFeatureName=_predictedFeatureName;
 @property (readonly) NSString *predictedProbabilitiesName; // @synthesize predictedProbabilitiesName=_predictedProbabilitiesName;
 @property (readonly) MLFeatureDescription *predictedValueFeatureDescription;
+@property (readonly) NSDictionary *trainingInputDescription; // @synthesize trainingInputDescription=_trainingInputDescription;
 @property (readonly, getter=isValidClassifierInterface) BOOL validClassifierInterface;
 @property (readonly, getter=isValidRegressorInterface) BOOL validRegressorInterface;
 
 + (id)modelInterfaceWithInputDescription:(id)arg1 orderedInputFeatureNames:(id)arg2 outputDescription:(id)arg3 orderedOutputFeatureNames:(id)arg4 predictedFeatureName:(id)arg5 predictedProbabilitiesName:(id)arg6;
++ (id)modelInterfaceWithInputDescription:(id)arg1 orderedInputFeatureNames:(id)arg2 outputDescription:(id)arg3 orderedOutputFeatureNames:(id)arg4 predictedFeatureName:(id)arg5 predictedProbabilitiesName:(id)arg6 trainingInputDescription:(id)arg7;
++ (BOOL)supportsSecureCoding;
 + (BOOL)validateSingleFeatureInDescription:(id)arg1 withSet:(id)arg2;
 - (void).cxx_destruct;
-- (id)initWithInputDescription:(id)arg1 outputDescription:(id)arg2 orderedInputFeatureNames:(id)arg3 orderedOutputFeatureNames:(id)arg4 predictedFeatureName:(id)arg5 predictedProbabilitiesName:(id)arg6;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithInputDescription:(id)arg1 outputDescription:(id)arg2 orderedInputFeatureNames:(id)arg3 orderedOutputFeatureNames:(id)arg4 predictedFeatureName:(id)arg5 predictedProbabilitiesName:(id)arg6 trainingInputDescription:(id)arg7;
 - (id)initWithInterfaceFormat:(struct _MLModelDescriptionSpecification *)arg1 error:(id *)arg2;
 - (id)initWithSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
 - (BOOL)validateClassifierInterfaceWithError:(id *)arg1;

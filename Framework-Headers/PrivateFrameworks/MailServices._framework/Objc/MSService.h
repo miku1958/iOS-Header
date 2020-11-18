@@ -20,6 +20,7 @@
 
 @property (readonly, getter=isCanceled) BOOL canceled;
 
+- (void).cxx_destruct;
 - (void)_callServicesMethod:(id)arg1 arguments:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)_callServicesMethod:(id)arg1 arguments:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (id)_connection;

@@ -17,6 +17,7 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityUserInputLabels;
 - (BOOL)isAccessibilityElement;
 
 @end

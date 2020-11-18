@@ -6,75 +6,70 @@
 
 #import <UIKit/UIView.h>
 
-#import <PlatterKit/MTMaterialSettingsObserving-Protocol.h>
+#import <PlatterKit/MTMaterialGrouping-Protocol.h>
+#import <PlatterKit/MTVisualStylingRequiring-Protocol.h>
 #import <PlatterKit/PLPlatter-Protocol.h>
 #import <PlatterKit/PLPlatterInternal-Protocol.h>
 
-@class MTMaterialView, MTVibrantStylingProvider, NSString, UIImageView;
+@class MTMaterialShadowView, MTMaterialView, NSArray, NSBundle, NSDictionary, NSMutableDictionary, NSString, PLShadowView;
 
-@interface PLPlatterView : UIView <MTMaterialSettingsObserving, PLPlatterInternal, PLPlatter>
+@interface PLPlatterView : UIView <PLPlatterInternal, PLPlatter, MTVisualStylingRequiring, MTMaterialGrouping>
 {
-    long long _recipe;
-    unsigned long long _options;
-    UIImageView *_shadowView;
+    PLShadowView *_shadowView;
     UIView *_customContentView;
-    BOOL _hasShadow;
+    BOOL _recipeDynamic;
+    NSMutableDictionary *_categoriesToProviders;
+    NSDictionary *_recipeNamesByTraitCollection;
+    NSBundle *_recipeBundle;
     BOOL _backgroundBlurred;
     BOOL _usesBackgroundView;
+    NSString *_materialGroupNameBase;
     UIView *_backgroundView;
+    long long _materialRecipe;
     double _cornerRadius;
-    MTMaterialView *_mainOverlayView;
+    CDStruct_b48b9fb5 _shadowAttributes;
 }
 
 @property (nonatomic, getter=isBackgroundBlurred) BOOL backgroundBlurred; // @synthesize backgroundBlurred=_backgroundBlurred;
+@property (readonly, nonatomic) MTMaterialShadowView *backgroundMaterialShadowView;
 @property (readonly, nonatomic) MTMaterialView *backgroundMaterialView;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic) double cornerRadius;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, nonatomic) UIView *customContentView; // @synthesize customContentView=_customContentView;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSString *groupName;
-@property (nonatomic) BOOL hasShadow; // @synthesize hasShadow=_hasShadow;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hasShadow;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
-@property (readonly, nonatomic) MTMaterialView *mainOverlayView;
-@property (strong, nonatomic) MTMaterialView *mainOverlayView; // @synthesize mainOverlayView=_mainOverlayView;
-@property (readonly, nonatomic) unsigned long long options;
-@property (readonly, nonatomic) long long recipe;
-@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *materialGroupNameBase; // @synthesize materialGroupNameBase=_materialGroupNameBase;
+@property (nonatomic) long long materialRecipe; // @synthesize materialRecipe=_materialRecipe;
+@property (nonatomic, getter=isRecipeDynamic) BOOL recipeDynamic;
+@property (readonly, copy, nonatomic) NSArray *requiredVisualStyleCategories;
+@property (nonatomic) CDStruct_b48b9fb5 shadowAttributes; // @synthesize shadowAttributes=_shadowAttributes;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesBackgroundView; // @synthesize usesBackgroundView=_usesBackgroundView;
-@property (readonly, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider;
 
-+ (struct CGRect)_shadowImage:(id)arg1 frameForPlatterViewBounds:(struct CGRect)arg2;
-+ (id)_shadowImageMask;
 - (void).cxx_destruct;
 - (void)_configureBackgroundView:(id)arg1;
 - (void)_configureBackgroundViewIfNecessary;
 - (void)_configureCustomContentView;
 - (void)_configureCustomContentViewIfNecessary;
-- (void)_configureMainOverlayView;
-- (void)_configureMainOverlayViewIfNecessary;
-- (void)_configureShadowView;
 - (void)_configureShadowViewIfNecessary;
-- (void)_layoutMainOverlay;
+- (id)_initWithRecipe:(long long)arg1 orRecipeNamesByTraitCollection:(id)arg2 inBundle:(id)arg3;
+- (BOOL)_isMaterialViewSufficientlySpecified;
+- (void)_layoutShadowView;
 - (id)_newDefaultBackgroundView;
-- (unsigned long long)_optionsForBackgroundWithBlur:(BOOL)arg1;
-- (unsigned long long)_optionsForMainOverlay;
 - (void)_willRemoveCustomContent:(id)arg1;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
+- (id)initWithRecipe:(long long)arg1;
+- (id)initWithRecipeNamesByTraitCollection:(id)arg1 inBundle:(id)arg2;
 - (void)layoutSubviews;
-- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)setVisualStylingProvider:(id)arg1 forCategory:(long long)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
-- (void)updateWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
+- (id)visualStylingProviderForCategory:(long long)arg1;
 
 @end
 

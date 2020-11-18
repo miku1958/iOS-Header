@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
     unsigned long long _stepIndex;
     BOOL _checkOnRouteLabelsAlignment;
     BOOL _disableTileParseForOneLayout;
-    NSMutableSet *_tiles;
-    NSMutableSet *_pendingTiles;
+    unordered_set_975bb0ed _tiles;
+    unordered_set_975bb0ed _pendingTiles;
     NSMutableArray *_junctions;
     VKLabelNavRoadGraph *_roadGraph;
-    vector_1ad5c848 _activeSigns;
+    vector_e3e87145 _activeSigns;
     NSMutableArray *_fadingLabels;
     NSMutableDictionary *_visibleLabelsByName;
     NSMutableArray *_visibleLabels;
@@ -47,6 +47,8 @@ __attribute__((visibility("hidden")))
     NSString *_currentShieldGroup;
     BOOL _checkIfRouteSubrangeChanged;
     BOOL _useRouteSubrange;
+    BOOL _regenerateRoadSigns;
+    BOOL _isStylesheetAnimating;
     struct PolylineCoordinate _routeSubrangeStart;
     struct PolylineCoordinate _routeSubrangeEnd;
     struct VKLabelNavArtworkCache *_artworkCache;
@@ -57,11 +59,12 @@ __attribute__((visibility("hidden")))
     BOOL _debugEnableShieldsOnRouteLine;
     shared_ptr_a3c46825 _styleManager;
     BOOL _shouldLabelOppositeCarriageways;
-    vector_83fb13fb _externalCollisionLabelsForLayout;
+    vector_7c356ace _externalCollisionLabelsForLayout;
     BOOL _hasPendingTilesInSnappingRegion;
+    BOOL _needsDebugConsoleClear;
 }
 
-@property (readonly, nonatomic) const vector_1ad5c848 *activeSigns; // @synthesize activeSigns=_activeSigns;
+@property (readonly, nonatomic) const vector_e3e87145 *activeSigns; // @synthesize activeSigns=_activeSigns;
 @property (nonatomic) struct VKLabelNavArtworkCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 @property (strong, nonatomic) NSString *currentLocationText; // @synthesize currentLocationText=_currentLocationText;
 @property (strong, nonatomic) NSString *currentRoadName; // @synthesize currentRoadName=_currentRoadName;
@@ -77,12 +80,12 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)_addJunctionsForTile:(id)arg1;
+- (BOOL)_addJunctionsForTile:(const shared_ptr_702c344d *)arg1;
 - (void)_addLabelsAtJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxLabelsToAdd:(unsigned long long)arg3;
 - (void)_addLabelsForJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxLabelsToAdd:(unsigned long long)arg3 useAllJunctions:(BOOL)arg4 placeShieldsFrontToBack:(BOOL)arg5;
 - (BOOL)_collideLabel:(id)arg1 activeLabel:(id)arg2 labelsToRemove:(id)arg3;
 - (void)_createOrUpdateLabelForRoad:(id)arg1 isShield:(BOOL)arg2 navContext:(struct NavContext *)arg3;
-- (BOOL)_findRouteOverlappingJunctionFrom:(long long)arg1 routeJunctions:(vector_34e67f61 *)arg2 lookBackward:(BOOL)arg3 firstOverlap:(long long *)arg4 secondOverlap:(long long *)arg5;
+- (BOOL)_findRouteOverlappingJunctionFrom:(long long)arg1 routeJunctions:(vector_397bdcab *)arg2 lookBackward:(BOOL)arg3 firstOverlap:(long long *)arg4 secondOverlap:(long long *)arg5;
 - (void)_generateCurrentRoadSignWithContext:(struct NavContext *)arg1;
 - (void)_initalizeCurrentRoadInfo;
 - (void)_refreshGuidanceRoadNames;
@@ -99,12 +102,18 @@ __attribute__((visibility("hidden")))
 - (void)clearSceneIsMemoryWarning:(BOOL)arg1;
 - (unsigned char)computeRoutePositionForPOIAtPixel:(const Matrix_8746f91e *)arg1 currentPosition:(unsigned char)arg2 context:(struct NavContext *)arg3;
 - (void)dealloc;
-- (void)grabTilesFromScene:(id)arg1;
+- (void)debugDraw:(id)arg1 overlayConsole:(struct DebugConsole *)arg2 navContext:(struct NavContext *)arg3;
+- (void)grabTilesFromScene:(const struct SceneContext *)arg1;
 - (id)init;
 - (BOOL)isNavMode;
-- (void)layoutWithNavContext:(struct NavContext *)arg1 externalCollisionLabels:(const vector_83fb13fb *)arg2;
+- (void)layoutWithNavContext:(struct NavContext *)arg1 externalCollisionLabels:(const vector_7c356ace *)arg2;
+- (BOOL)needsDebugDraw;
 - (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext *)arg3;
+- (void)setMaxVisibleRoadsigns:(unsigned int)arg1;
 - (void)setStyleManager:(shared_ptr_a3c46825)arg1;
+- (void)styleManagerDidChange:(BOOL)arg1;
+- (void)styleManagerDidFinishAnimating;
+- (void)styleManagerDidStartAnimating;
 
 @end
 

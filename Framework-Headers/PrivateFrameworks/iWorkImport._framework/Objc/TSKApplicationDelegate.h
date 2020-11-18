@@ -26,8 +26,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *availableLanguages; // @synthesize availableLanguages=_availableLanguages;
 @property (readonly, nonatomic) NSString *bladerunnerContainerIdentifier;
 @property (readonly, nonatomic) NSString *cloudKitContainerIdentifier;
+@property (readonly, nonatomic) NSString *cloudKitSyncContainerIdentifier;
 @property (strong, nonatomic) id<TSKCompatibilityDelegate> compatibilityDelegate; // @synthesize compatibilityDelegate=_compatibilityDelegate;
-@property (nonatomic) long long defaultPresetWhenConvertingToPlayableOnAllDevices;
+@property (readonly, nonatomic) long long defaultPresetWhenConvertingToPlayableOnAllDevices;
+@property (nonatomic) long long defaultPresetWhenConvertingToPlayableOnAllDevicesPreference;
 @property (readonly, nonatomic) BOOL designModeEnabled;
 @property (readonly, nonatomic) NSString *documentTypeDisplayName;
 @property (readonly, nonatomic) NSString *documentTypeDisplayNameForSharingInvitation;
@@ -44,9 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL performanceModeEnabled;
 @property (nonatomic) BOOL shouldOptimizeForiOSOnInsert;
 @property (readonly, nonatomic) unsigned long long smallOperationStorageSize;
-@property (readonly, nonatomic) BOOL supportsCanvasNativeEquationObjects;
 @property (readonly, nonatomic) BOOL supportsFreehandAnimationUI;
-@property (readonly, nonatomic) BOOL supportsInlineNativeEquationObjects;
 @property (readonly, nonatomic) BOOL supportsLinkedTextBoxes;
 @property (readonly, nonatomic) BOOL supportsPastingIntoGroups;
 @property (readonly, nonatomic) BOOL tableCellInspectorShowsNaturalAlignment;
@@ -67,9 +67,8 @@ __attribute__((visibility("hidden")))
 - (void)collectAppLaunchAnalyticsWithLogger:(id)arg1;
 - (void)collectDocumentCreationAnalyticsWithLogger:(id)arg1;
 - (id)createCompatibilityDelegate;
-- (void)customizeHyperlinkViewController:(id)arg1;
-- (void)dealloc;
-- (id)defaultHyperlinkURL;
+- (void)customizeHyperlinkViewController:(id)arg1 documentRoot:(id)arg2;
+- (id)defaultHyperlinkURLWithDocumentRoot:(id)arg1;
 - (void)donateAddBodyRowAtBottomIntentWithInfo:(id)arg1;
 - (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 - (id)init;
@@ -77,7 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)logAppLaunchAnalytics;
 - (void)logDocumentCreationWithImportState:(BOOL)arg1;
 - (BOOL)openURL:(id)arg1;
-- (BOOL)openURL:(id)arg1 withDocumentRoot:(id)arg2;
+- (BOOL)openURL:(id)arg1 displayAlertOnError:(BOOL)arg2;
 - (unsigned long long)operationStoragePruningThresholdWithDocumentRoot:(id)arg1;
 - (id)previewImageForType:(id)arg1;
 - (void)setAppTextDefaults:(id)arg1 passphraseVerifier:(id)arg2;

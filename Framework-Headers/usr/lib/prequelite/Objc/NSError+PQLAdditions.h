@@ -6,13 +6,26 @@
 
 #import <Foundation/NSError.h>
 
-@interface NSError (PQLAdditions)
+#import <prequelite/PQLValuable-Protocol.h>
+
+@class NSString;
+
+@interface NSError (PQLAdditions) <PQLValuable>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)errorForDB:(struct sqlite3 *)arg1;
 + (id)errorForDB:(struct sqlite3 *)arg1 SQL:(id)arg2;
 + (id)errorForDB:(struct sqlite3 *)arg1 stmt:(struct sqlite3_stmt *)arg2;
 + (id)errorWithSqliteCode:(int)arg1 andMessage:(id)arg2;
++ (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
++ (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 - (long long)extendedSqliteCode;
 - (BOOL)isSqliteErrorCode:(long long)arg1;
+- (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 - (id)sqliteStatement;
 @end
 

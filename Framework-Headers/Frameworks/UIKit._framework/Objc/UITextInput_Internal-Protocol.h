@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSAttributedString, NSString, UIColor, UIFont, UIPhraseBoundaryGestureRecognizer, UIResponder, UITextInputArrowKeyHistory, UITextPosition, UITextRange, UIView;
+@class NSAttributedString, NSString, UIColor, UIFont, UIResponder, UITextInputArrowKeyHistory, UITextPosition, UITextRange, UIView;
 @protocol UITextInput, UITextInputPrivate;
 
 @protocol UITextInput_Internal
@@ -22,6 +22,7 @@
 - (void)_deleteByWord;
 - (void)_deleteForwardAndNotify:(BOOL)arg1;
 - (void)_deleteToEndOfLine;
+- (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
 - (void)_expandSelectionToBackwardDeletionCluster;
 - (void)_expandSelectionToStartOfWordBeforeCaretSelection;
@@ -49,9 +50,7 @@
 - (UITextInputArrowKeyHistory *)_moveToStartOfParagraph:(BOOL)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
 - (UITextInputArrowKeyHistory *)_moveToStartOfWord:(BOOL)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
 - (UITextInputArrowKeyHistory *)_moveUp:(BOOL)arg1 withHistory:(UITextInputArrowKeyHistory *)arg2;
-- (UIPhraseBoundaryGestureRecognizer *)_newPhraseBoundaryGestureRecognizer;
 - (struct _NSRange)_nsrangeForTextRange:(UITextRange *)arg1;
-- (void)_phraseBoundaryGesture:(UIPhraseBoundaryGestureRecognizer *)arg1;
 - (UITextPosition *)_positionAtStartOfWords:(unsigned long long)arg1 beforePosition:(UITextPosition *)arg2;
 - (UITextPosition *)_positionFromPosition:(UITextPosition *)arg1 inDirection:(long long)arg2 offset:(long long)arg3 withAffinityDownstream:(BOOL)arg4;
 - (UITextPosition *)_positionFromPosition:(UITextPosition *)arg1 pastTextUnit:(long long)arg2 inDirection:(long long)arg3;
@@ -63,6 +62,7 @@
 - (UITextRange *)_rangeOfLineEnclosingPosition:(UITextPosition *)arg1;
 - (UITextRange *)_rangeOfParagraphEnclosingPosition:(UITextPosition *)arg1;
 - (UITextRange *)_rangeOfSentenceEnclosingPosition:(UITextPosition *)arg1;
+- (UITextRange *)_rangeOfSmartSelectionIncludingRange:(UITextRange *)arg1;
 - (UITextRange *)_rangeOfText:(NSString *)arg1 endingAtPosition:(UITextPosition *)arg2;
 - (UITextRange *)_rangeOfTextUnit:(long long)arg1 enclosingPosition:(UITextPosition *)arg2;
 - (UITextRange *)_rangeSpanningTextUnit:(long long)arg1 andPosition:(UITextPosition *)arg2;
@@ -86,6 +86,7 @@
 - (BOOL)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(NSString *)arg2 checkAutocorrection:(BOOL)arg3;
 - (UIColor *)_textColorForCaretSelection;
 - (UITextRange *)_textRangeFromNSRange:(struct _NSRange)arg1;
+- (void)_transpose;
 - (void)_unmarkText;
 - (BOOL)_usesAsynchronousProtocol;
 - (NSString *)_wordContainingCaretSelection;

@@ -16,6 +16,7 @@
 - (BOOL)addLarvalSA:(id)arg1;
 - (BOOL)addSA:(id)arg1;
 - (void)dealloc;
+- (id)description;
 - (id)initWithName:(id)arg1 delegate:(id)arg2;
 - (id)initWithName:(id)arg1 delegate:(id)arg2 pfkeySocket:(int)arg3;
 - (void)invalidate;

@@ -41,6 +41,7 @@
 
 + (id)describeProminentFeature:(unsigned long long)arg1;
 + (id)eventHighlightWithEKEvent:(id)arg1 score:(double)arg2 prominentFeature:(unsigned long long)arg3 features:(id)arg4 isExtraordinary:(BOOL)arg5;
++ (id)eventHighlightWithEvent:(id)arg1 score:(double)arg2 prominentFeature:(unsigned long long)arg3 features:(id)arg4 isExtraordinary:(BOOL)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

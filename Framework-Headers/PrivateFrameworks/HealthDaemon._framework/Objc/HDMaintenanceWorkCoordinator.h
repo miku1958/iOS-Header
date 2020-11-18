@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
+- (void)cancelAllOperations;
 - (void)enqueueMaintenanceOperation:(id)arg1;
 - (id)init;
 - (id)takeMaintenanceSuspensionAssertionForOwner:(id)arg1;

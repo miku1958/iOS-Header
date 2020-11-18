@@ -12,16 +12,16 @@
 @interface CKDPrivacyManager : NSObject
 {
     NSObject<OS_dispatch_queue> *_privacyManagerQueue;
-    NSMutableSet *_requests;
+    NSMutableSet *_operations;
 }
 
+@property (strong, nonatomic) NSMutableSet *operations; // @synthesize operations=_operations;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *privacyManagerQueue; // @synthesize privacyManagerQueue=_privacyManagerQueue;
-@property (strong, nonatomic) NSMutableSet *requests; // @synthesize requests=_requests;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_init;
-- (void)_resetPrivacySettingsForAppContainerTuple:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_resetPrivacySettingsForAppContainerAccountTuple:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)resetPrivacySettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 

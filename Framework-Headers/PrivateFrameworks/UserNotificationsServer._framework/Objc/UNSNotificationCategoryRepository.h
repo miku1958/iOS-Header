@@ -26,8 +26,10 @@
 - (void)addObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)allBundleIdentifiers;
 - (id)categoriesForBundleIdentifier:(id)arg1;
+- (id)categoryWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2;
+- (void)contentProtectionStateChangedForFirstUnlock:(BOOL)arg1;
 - (id)initWithDataStoreRepository:(id)arg1 observable:(id)arg2;
-- (id)initWithDirectory:(id)arg1;
+- (id)initWithDirectory:(id)arg1 librarian:(id)arg2 repositoryProtectionStrategy:(id)arg3;
 - (void)notificationSourcesDidUninstall:(id)arg1;
 - (void)performMigration;
 - (void)removeObserver:(id)arg1 forBundleIdentifier:(id)arg2;

@@ -9,7 +9,8 @@
 #import <MapKit/NSCopying-Protocol.h>
 #import <MapKit/NSSecureCoding-Protocol.h>
 
-@class MKMapCamera, NSArray;
+@class MKMapCamera, MKPointOfInterestFilter, NSArray, UITraitCollection, VKRouteContext;
+@protocol VKRouteOverlay;
 
 @interface MKMapSnapshotOptions : NSObject <NSSecureCoding, NSCopying>
 {
@@ -18,17 +19,22 @@
     CDStruct_b7cb895d _region;
     unsigned long long _mapType;
     int _mode;
-    BOOL _showsPointsOfInterest;
     BOOL _showsPointLabels;
     BOOL _showsBuildings;
     BOOL _showsNightMode;
+    BOOL _showsAppleLogo;
     BOOL _rendersInBackground;
     BOOL _useSnapshotService;
     struct CGSize _size;
-    double _scale;
+    UITraitCollection *_traitCollection;
+    struct UIEdgeInsets _edgeInsets;
+    unsigned long long _signpostId;
+    VKRouteContext *_routeContext;
+    id<VKRouteOverlay> _routeOverlay;
     BOOL _usingRect;
     BOOL _showsVenues;
     unsigned char _searchResultsType;
+    MKPointOfInterestFilter *_pointOfInterestFilter;
     NSArray *_annotationViews;
     NSArray *_customFeatureAnnotations;
 }
@@ -36,23 +42,31 @@
 @property (copy, nonatomic) NSArray *annotationViews; // @synthesize annotationViews=_annotationViews;
 @property (copy, nonatomic) MKMapCamera *camera; // @synthesize camera=_camera;
 @property (copy, nonatomic, getter=_customFeatureAnnotations, setter=_setCustomFeatureAnnotations:) NSArray *customFeatureAnnotations; // @synthesize customFeatureAnnotations=_customFeatureAnnotations;
+@property (nonatomic, getter=_edgeInsets, setter=_setEdgeInsets:) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
 @property (nonatomic) CDStruct_02837cd9 mapRect; // @synthesize mapRect=_mapRect;
 @property (nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
+@property (copy, nonatomic) MKPointOfInterestFilter *pointOfInterestFilter; // @synthesize pointOfInterestFilter=_pointOfInterestFilter;
 @property (nonatomic) CDStruct_b7cb895d region; // @synthesize region=_region;
 @property (nonatomic, getter=_rendersInBackground, setter=_setRendersInBackground:) BOOL rendersInBackground; // @synthesize rendersInBackground=_rendersInBackground;
-@property (nonatomic) double scale; // @synthesize scale=_scale;
+@property (strong, nonatomic, getter=_routeContext, setter=_setRouteContext:) VKRouteContext *routeContext; // @synthesize routeContext=_routeContext;
+@property (strong, nonatomic, getter=_routeOverlay, setter=_setRouteOverlay:) id<VKRouteOverlay> routeOverlay; // @synthesize routeOverlay=_routeOverlay;
+@property (nonatomic) double scale;
 @property (nonatomic, getter=_searchResultsType, setter=_setSearchResultsType:) unsigned char searchResultsType; // @synthesize searchResultsType=_searchResultsType;
+@property (nonatomic, getter=_showsAppleLogo, setter=_setShowsAppleLogo:) BOOL showsAppleLogo; // @synthesize showsAppleLogo=_showsAppleLogo;
 @property (nonatomic) BOOL showsBuildings; // @synthesize showsBuildings=_showsBuildings;
 @property (nonatomic, getter=_showsNightMode, setter=_setShowsNightMode:) BOOL showsNightMode; // @synthesize showsNightMode=_showsNightMode;
 @property (nonatomic, getter=_showsPointLabels, setter=_setShowsPointLabels:) BOOL showsPointLabels; // @synthesize showsPointLabels=_showsPointLabels;
-@property (nonatomic) BOOL showsPointsOfInterest; // @synthesize showsPointsOfInterest=_showsPointsOfInterest;
+@property (nonatomic) BOOL showsPointsOfInterest; // @dynamic showsPointsOfInterest;
 @property (nonatomic, getter=_showsVenues, setter=_setShowsVenues:) BOOL showsVenues; // @synthesize showsVenues=_showsVenues;
+@property (nonatomic) unsigned long long signpostId; // @synthesize signpostId=_signpostId;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (copy, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (nonatomic, getter=_useSnapshotService, setter=_setUseSnapshotService:) BOOL useSnapshotService; // @synthesize useSnapshotService=_useSnapshotService;
 @property (readonly, nonatomic) BOOL usingRect; // @synthesize usingRect=_usingRect;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_updateShouldUseSnapshotService;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

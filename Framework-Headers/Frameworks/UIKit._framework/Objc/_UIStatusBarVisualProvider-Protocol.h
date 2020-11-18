@@ -13,11 +13,11 @@
 
 @property (readonly, nonatomic) BOOL canFixupDisplayItemAttributes;
 @property (weak, nonatomic) _UIStatusBar *statusBar;
-@property (readonly, nonatomic) _UIStatusBarStyleAttributes *styleAttributes;
 
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
 - (NSArray *)orderedDisplayItemPlacementsInRegionWithIdentifier:(NSString *)arg1;
 - (NSArray *)setupInContainerView:(UIView *)arg1;
+- (_UIStatusBarStyleAttributes *)styleAttributesForStyle:(long long)arg1;
 
 @optional
 - (void)actionable:(id<_UIStatusBarActionable>)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;

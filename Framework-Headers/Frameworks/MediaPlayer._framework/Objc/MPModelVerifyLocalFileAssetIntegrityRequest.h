@@ -20,6 +20,7 @@
 + (id)_operationQueue;
 - (void).cxx_destruct;
 - (id)initWithFileAsset:(id)arg1 sourceItemIdentifiers:(id)arg2;
+- (id)mediaLibraryForItemIdentifiers:(id)arg1;
 - (void)performWithResponseHandler:(CDUnknownBlockType)arg1;
 
 @end

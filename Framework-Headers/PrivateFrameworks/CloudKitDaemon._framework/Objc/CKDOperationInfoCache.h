@@ -6,42 +6,42 @@
 
 #import <CloudKit/CKSQLite.h>
 
-@class NSMapTable, NSObject;
+@class NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface CKDOperationInfoCache : CKSQLite
 {
     NSObject<OS_dispatch_queue> *_cacheQueue;
     NSObject<OS_dispatch_queue> *_cacheDelegateQueue;
-    NSMapTable *_delegatesByOperationID;
+    NSMutableDictionary *_delegateWrappersByOperationID;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cacheDelegateQueue; // @synthesize cacheDelegateQueue=_cacheDelegateQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *cacheQueue; // @synthesize cacheQueue=_cacheQueue;
-@property (strong, nonatomic) NSMapTable *delegatesByOperationID; // @synthesize delegatesByOperationID=_delegatesByOperationID;
+@property (strong, nonatomic) NSMutableDictionary *delegateWrappersByOperationID; // @synthesize delegateWrappersByOperationID=_delegateWrappersByOperationID;
 
 + (id)dbFileName;
 + (id)sharedCache;
 - (void).cxx_destruct;
+- (id)_initWithCacheDir:(id)arg1;
 - (id)_lockedResultForOperationWithID:(id)arg1;
-- (void)_lockedSetOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerTuple:(id)arg3;
+- (void)_lockedSetOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerTuple:(id)arg3 accountID:(id)arg4;
 - (void)_lockedSetOperationResult:(id)arg1 forOperationID:(id)arg2;
 - (void)_locked_enumerateCallbackArgumentsForOperationWithID:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_locked_operationInfoForID:(id)arg1;
-- (id)allOutstandingOperationIDsForAppContainerTuple:(id)arg1;
+- (id)allOutstandingOperationIDsForAppContainerTuple:(id)arg1 accountID:(id)arg2;
 - (void)deleteAllInfoForOperationWithID:(id)arg1;
 - (void)enumerateCallbackArgumentsForOperationWithID:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)expungeWithCurrentAccountIdentifier:(id)arg1 forceRemove:(BOOL)arg2;
-- (id)init;
+- (void)expungeOperationInfoForDeletedAccountID:(id)arg1;
 - (id)operationInfoMetadataForOperationWithID:(id)arg1;
 - (id)outstandingOperationInfosForIDs:(id)arg1;
 - (void)registerAttemptForOperationWithID:(id)arg1;
 - (void)registerCacheEvictionActivity;
 - (void)registerDelegate:(id)arg1 forOperationWithID:(id)arg2;
-- (void)registerOperationAndSetResult:(id)arg1 forOperationInfo:(id)arg2 appContainerTuple:(id)arg3;
+- (void)registerOperationAndSetResult:(id)arg1 forOperationInfo:(id)arg2 appContainerTuple:(id)arg3 accountID:(id)arg4;
 - (id)resultForOperationWithID:(id)arg1;
 - (id)resumableOperationInfosByAppContainerTuplesWithProgressPurged:(BOOL)arg1;
-- (void)setOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerTuple:(id)arg3;
+- (void)setOperationInfo:(id)arg1 forOperationID:(id)arg2 appContainerTuple:(id)arg3 accountID:(id)arg4;
 - (void)setOperationResult:(id)arg1 forOperationID:(id)arg2;
 - (void)setProgressCallbackArguments:(id)arg1 forOperationID:(id)arg2;
 - (void)unregisterDelegate:(id)arg1 forOperationWithID:(id)arg2;

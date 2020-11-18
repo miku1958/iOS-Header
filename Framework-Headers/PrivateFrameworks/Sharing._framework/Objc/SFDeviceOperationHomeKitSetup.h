@@ -34,6 +34,7 @@
     BOOL _configuredStereoPair;
     BOOL _personalRequestsDone;
     BOOL _hasHomePod;
+    BOOL _hasMultipleUsers;
     BOOL _keyExchangeOnly;
     BOOL _pauseAfterUserInput;
     BOOL _personalRequestsEnabled;
@@ -61,6 +62,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (readonly, nonatomic) BOOL hasHomePod; // @synthesize hasHomePod=_hasHomePod;
+@property (readonly, nonatomic) BOOL hasMultipleUsers; // @synthesize hasMultipleUsers=_hasMultipleUsers;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *homeKitSelectedHome; // @synthesize homeKitSelectedHome=_homeKitSelectedHome;
 @property (readonly, copy, nonatomic) NSString *homeKitSelectedRoomName; // @synthesize homeKitSelectedRoomName=_homeKitSelectedRoomName;
@@ -102,7 +104,7 @@
 - (void)_runPersonalRequestsStart;
 - (void)_startTimeout:(double)arg1;
 - (void)_updateAccount;
-- (void)_updateHomeHasHomePod;
+- (void)_updateHomeStats;
 - (void)accessoryBrowser:(id)arg1 didFindNewAccessory:(id)arg2;
 - (void)accessoryBrowser:(id)arg1 didRemoveNewAccessory:(id)arg2;
 - (void)activate;

@@ -6,6 +6,8 @@
 
 #import <UIFoundation/NSATSTypesetter.h>
 
+@class __NSImmutableTextStorage;
+
 @interface NSSingleLineTypesetter : NSATSTypesetter
 {
     double _lineWidth;
@@ -13,12 +15,8 @@
     unsigned short *_glyphs;
     long long *_props;
     unsigned long long *_charIndexes;
-    struct {
-        unsigned int _usesScreenFonts:1;
-        unsigned int _syncAlignmentToDirection:1;
-        unsigned int _mirrorsTextAlignment:1;
-        unsigned int _reserved:29;
-    } _slFlags;
+    CDStruct_1f053566 _slFlags;
+    __NSImmutableTextStorage *_textStorage;
 }
 
 + (BOOL)_validateAttributes:(id)arg1 measuringOnly:(BOOL)arg2;
@@ -26,11 +24,14 @@
 + (id)singleLineTypesetter;
 - (BOOL)_allowsEllipsisGlyphSubstitution;
 - (BOOL)_mirrorsTextAlignment;
+- (id)_textContainerForAttachmentProtocol;
+- (id)_textStorageForAttachmentProtocol;
 - (BOOL)_usesScreenFonts;
 - (id)attributedString;
 - (struct _NSRange)characterRangeForGlyphRange:(struct _NSRange)arg1 actualGlyphRange:(struct _NSRange *)arg2;
 - (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(BOOL)arg3 hasStrongRight:(BOOL)arg4 maximumWidth:(double)arg5;
 - (id)createRenderingContextForCharacterRange:(struct _NSRange)arg1 typesetterBehavior:(long long)arg2 usesScreenFonts:(BOOL)arg3 hasStrongRight:(BOOL)arg4 syncDirection:(BOOL)arg5 mirrorsTextAlignment:(BOOL)arg6 maximumWidth:(double)arg7;
+- (void)dealloc;
 - (void)deleteGlyphsInRange:(struct _NSRange)arg1;
 - (void)done;
 - (unsigned long long)getGlyphsInRange:(struct _NSRange)arg1 glyphs:(unsigned short *)arg2 properties:(long long *)arg3 characterIndexes:(unsigned long long *)arg4 bidiLevels:(char *)arg5;

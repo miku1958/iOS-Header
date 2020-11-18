@@ -7,6 +7,8 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (NSEmailAddressArray)
+- (id)mf_dictionaryWithMessagesSortedByStore;
+- (id)mf_diffWithArray:(id)arg1;
 - (id)mf_displayEmailAddressList;
 - (id)mf_uncommentedAddressList;
 @end

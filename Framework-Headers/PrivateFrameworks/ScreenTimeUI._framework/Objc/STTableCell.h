@@ -6,21 +6,27 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class NSArray, UILayoutGuide;
+@class NSArray, NSMutableArray, UILayoutGuide, UIViewController;
 
+__attribute__((visibility("hidden")))
 @interface STTableCell : PSTableCell
 {
     UILayoutGuide *_contentLayoutGuide;
+    NSMutableArray *_childViewControllers;
+    UIViewController *_parentViewController;
     NSArray *_rtlContentLayoutGuideConstraints;
 }
 
+@property (readonly) NSMutableArray *childViewControllers; // @synthesize childViewControllers=_childViewControllers;
 @property (readonly, nonatomic) UILayoutGuide *contentLayoutGuide; // @synthesize contentLayoutGuide=_contentLayoutGuide;
+@property (weak) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (copy, nonatomic) NSArray *rtlContentLayoutGuideConstraints; // @synthesize rtlContentLayoutGuideConstraints=_rtlContentLayoutGuideConstraints;
 
 - (void).cxx_destruct;
 - (BOOL)canReload;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
 - (void)layoutSubviews;
+- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

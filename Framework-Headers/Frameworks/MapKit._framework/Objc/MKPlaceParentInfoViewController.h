@@ -10,62 +10,52 @@
 #import <MapKit/MKStackingViewControllerFixedHeightAware-Protocol.h>
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
-@class MKMapItem, MKPlaceSectionRowView, NSLayoutConstraint, NSString, NSTextAttachment, UIImage, UIImageView, UILabel;
-@protocol MKPlaceParentInfoViewControllerDelegate;
+@class MKMapItem, MKPlaceSectionRowView, NSLayoutConstraint, NSString, UIButton, UILabel, UIStackView;
+@protocol MKPlaceParentInfoViewControllerDelegate, _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceParentInfoViewController : MKPlaceSectionViewController <MKModuleViewControllerProtocol, _MKInfoCardChildViewControllerAnalyticsDelegate, MKStackingViewControllerFixedHeightAware>
 {
     MKPlaceSectionRowView *_sectionRow;
-    NSTextAttachment *_attachment;
+    UILabel *_titleLabel;
+    UIButton *_nameButton;
+    UIStackView *_stackView;
     BOOL _resizableViewsDisabled;
-    BOOL _accessibilityMode;
     id<MKPlaceParentInfoViewControllerDelegate> _delegate;
-    NSLayoutConstraint *_topConstraint;
-    NSLayoutConstraint *_leadingLayoutGuideConstraint;
-    NSLayoutConstraint *_bottomConstraint;
-    NSLayoutConstraint *_baselineConstraint;
+    id<_MKInfoCardAnalyticsDelegate> _analyticsDelegate;
+    NSLayoutConstraint *_topToBaselineConstraint;
+    NSLayoutConstraint *_baselineToBottomConstraint;
     MKMapItem *_childMapItem;
     MKMapItem *_parentMapItem;
-    UILabel *_titleLabel;
-    UILabel *_subtitleLabel;
-    UIImageView *_iconImageView;
-    UIImage *_iconImage;
 }
 
-@property (nonatomic) BOOL accessibilityMode; // @synthesize accessibilityMode=_accessibilityMode;
-@property (strong, nonatomic) NSLayoutConstraint *baselineConstraint; // @synthesize baselineConstraint=_baselineConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
+@property (weak, nonatomic) id<_MKInfoCardAnalyticsDelegate> analyticsDelegate; // @synthesize analyticsDelegate=_analyticsDelegate;
+@property (strong, nonatomic) NSLayoutConstraint *baselineToBottomConstraint; // @synthesize baselineToBottomConstraint=_baselineToBottomConstraint;
 @property (strong, nonatomic) MKMapItem *childMapItem; // @synthesize childMapItem=_childMapItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MKPlaceParentInfoViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
-@property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
-@property (strong, nonatomic) NSLayoutConstraint *leadingLayoutGuideConstraint; // @synthesize leadingLayoutGuideConstraint=_leadingLayoutGuideConstraint;
 @property (strong, nonatomic) MKMapItem *parentMapItem; // @synthesize parentMapItem=_parentMapItem;
 @property (nonatomic) BOOL resizableViewsDisabled; // @synthesize resizableViewsDisabled=_resizableViewsDisabled;
-@property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (strong, nonatomic) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *topToBaselineConstraint; // @synthesize topToBaselineConstraint=_topToBaselineConstraint;
 
 + (id)parentInfoWithPlaceItem:(id)arg1;
 - (void).cxx_destruct;
+- (void)_buttonTapped:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_contentSizeDidChange;
-- (id)_titleAttributedString;
-- (void)addConstraints;
+- (void)_updateFont;
 - (void)fetchParentItem;
+- (id)font;
 - (id)infoCardChildPossibleActions;
-- (void)infoCardThemeChanged:(id)arg1;
+- (id)infoCardChildUnactionableUIElements;
+- (void)infoCardThemeChanged;
 - (id)initWithChild:(id)arg1;
 - (id)parentIdentifiers;
-- (void)sectionView:(id)arg1 didSelectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)setupData;
 - (void)showData;
-- (void)updateAccessibilityMode;
-- (void)updateConstraintsValue;
 - (void)updateLabelsColor;
 - (id)venueTitleForMapItem:(id)arg1;
 - (void)viewDidLoad;

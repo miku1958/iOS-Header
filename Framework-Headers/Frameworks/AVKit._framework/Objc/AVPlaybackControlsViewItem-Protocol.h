@@ -14,6 +14,7 @@
 @property (nonatomic) BOOL hasAlternateAppearance;
 @property (nonatomic) BOOL hasFullScreenAppearance;
 @property (nonatomic, getter=isIncluded) BOOL included;
+@property (nonatomic, getter=isRemoved) BOOL removed;
 
 @end
 

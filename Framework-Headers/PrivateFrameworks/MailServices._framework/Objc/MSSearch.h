@@ -17,7 +17,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<MSSearchDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<MSSearchDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -26,6 +26,7 @@
 + (id)findMessageData:(id)arg1 matchingCriterion:(id)arg2 shouldFetch:(BOOL)arg3 onServer:(BOOL)arg4 delegate:(id)arg5;
 + (id)findMessageData:(id)arg1 matchingCriterion:(id)arg2 shouldFetch:(BOOL)arg3 onServer:(BOOL)arg4 onlyInboxes:(BOOL)arg5 delegate:(id)arg6;
 + (void)setUnitTestingResultsArray:(id)arg1;
+- (void).cxx_destruct;
 - (void)_delegateDidFindResults:(id)arg1;
 - (void)_delegateDidFinishWithError:(id)arg1;
 - (void)_findMessageData:(id)arg1 matchingCriterion:(id)arg2 options:(unsigned long long)arg3;
@@ -34,7 +35,6 @@
 - (id)_initWithDelegate:(id)arg1;
 - (BOOL)_unitTestsAreEnabled;
 - (void)cancel;
-- (void)dealloc;
 - (void)foundResults:(id)arg1 error:(id)arg2;
 - (id)initWithRemoteObjectInterface:(id)arg1;
 - (id)newConnectionForInterface:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ASAsset, NSAttributedString, NSDictionary, NSString;
+@class MAAsset, NSAttributedString, NSDictionary, NSString;
 
 @interface DUDefinitionValue : NSObject
 {
@@ -15,7 +15,7 @@
     NSDictionary *_definitionElements;
     NSString *_localizedDictionaryName;
     NSString *_term;
-    ASAsset *_rawAsset;
+    MAAsset *_rawAsset;
     struct __CFArray *_foundRecordRefs;
 }
 
@@ -24,7 +24,7 @@
 @property struct __CFArray *foundRecordRefs; // @synthesize foundRecordRefs=_foundRecordRefs;
 @property (readonly) NSString *localizedDictionaryName; // @synthesize localizedDictionaryName=_localizedDictionaryName;
 @property (readonly) NSString *longDefinition; // @synthesize longDefinition=_longDefinition;
-@property (strong, nonatomic) ASAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
+@property (strong, nonatomic) MAAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
 @property (readonly) NSString *term; // @synthesize term=_term;
 
 - (void).cxx_destruct;

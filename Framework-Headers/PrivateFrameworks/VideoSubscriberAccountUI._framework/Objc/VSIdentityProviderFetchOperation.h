@@ -12,6 +12,7 @@
 {
     BOOL _fetchFromStoreOnly;
     NSString *_identityProviderID;
+    NSString *_identityProviderUniqueID;
     VSAuditToken *_auditToken;
     VSOptional *_result;
     NSOperationQueue *_privateQueue;
@@ -20,6 +21,7 @@
 @property (copy, nonatomic) VSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (nonatomic) BOOL fetchFromStoreOnly; // @synthesize fetchFromStoreOnly=_fetchFromStoreOnly;
 @property (copy, nonatomic) NSString *identityProviderID; // @synthesize identityProviderID=_identityProviderID;
+@property (readonly, copy, nonatomic) NSString *identityProviderUniqueID; // @synthesize identityProviderUniqueID=_identityProviderUniqueID;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
 @property (strong, nonatomic) VSOptional *result; // @synthesize result=_result;
 
@@ -29,6 +31,7 @@
 - (void)executionDidBegin;
 - (id)init;
 - (id)initWithIdentityProviderID:(id)arg1;
+- (id)initWithIdentityProviderUniqueID:(id)arg1;
 
 @end
 

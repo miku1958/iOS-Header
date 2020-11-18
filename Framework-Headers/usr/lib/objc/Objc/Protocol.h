@@ -10,7 +10,6 @@
 {
 }
 
-+ (void)load;
 - (BOOL)conformsTo:(id)arg1;
 - (struct objc_method_description *)descriptionForClassMethod:(SEL)arg1;
 - (struct objc_method_description *)descriptionForInstanceMethod:(SEL)arg1;

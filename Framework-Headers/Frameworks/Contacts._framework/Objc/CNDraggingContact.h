@@ -20,6 +20,7 @@
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 
 + (id)availableDataRepresentationTypes;
++ (id)os_log;
 - (void).cxx_destruct;
 - (void)cleanupFileURLRepresentation;
 - (id)dataRepresentationForType:(id)arg1;

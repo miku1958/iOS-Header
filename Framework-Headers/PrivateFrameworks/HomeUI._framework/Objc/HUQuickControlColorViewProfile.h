@@ -12,9 +12,11 @@
 {
     BOOL _supportsRGBColor;
     id<HFColorProfile> _colorProfile;
+    unsigned long long _mode;
 }
 
 @property (strong, nonatomic) id<HFColorProfile> colorProfile; // @synthesize colorProfile=_colorProfile;
+@property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (nonatomic) BOOL supportsRGBColor; // @synthesize supportsRGBColor=_supportsRGBColor;
 
 - (void).cxx_destruct;

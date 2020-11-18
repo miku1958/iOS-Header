@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithController:(id)arg1;
+- (id)initWithController:(id)arg1 deviceProvider:(id)arg2;
 
 @end
 

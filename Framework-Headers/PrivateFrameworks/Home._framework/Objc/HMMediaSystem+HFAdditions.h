@@ -6,14 +6,76 @@
 
 #import <HomeKit/HMMediaSystem.h>
 
-@class NSSet;
+#import <Home/HFHomeKitObject-Protocol.h>
+#import <Home/HFMediaProfileContainer-Protocol.h>
 
-@interface HMMediaSystem (HFAdditions)
+@class HFHomeKitSettingsAdapterManager, HFHomeKitSettingsValueManager, HFServiceNameComponents, HMAccessory, HMAccessorySettings, HMHome, HMMediaSession, HMRoom, HMSymptomsHandler, NSDate, NSSet, NSString, NSUUID;
+@protocol HFHomeKitObject, HFMediaValueSource, HMMediaObjectDelegate;
 
+@interface HMMediaSystem (HFAdditions) <HFHomeKitObject, HFMediaProfileContainer>
+
+@property (readonly, nonatomic) NSSet *accessories;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak) id<HMMediaObjectDelegate> delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasValidSettings;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HMAccessory *hf_backingAccessory;
+@property (readonly, copy, nonatomic) NSString *hf_categoryLocalizedDescription;
+@property (readonly, copy, nonatomic) NSDate *hf_dateAdded;
+@property (readonly, nonatomic) NSSet *hf_dependentHomeKitObjectsForDownstreamItems;
+@property (readonly, copy, nonatomic) NSSet *hf_deviceIdentifiers;
+@property (readonly, copy, nonatomic) NSString *hf_displayName;
 @property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
+@property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms; // @dynamic hf_fakeDebugSymptoms;
 @property (readonly, nonatomic) BOOL hf_fakeStereoPairGeneralSymptom;
 @property (readonly, nonatomic) BOOL hf_fakeStereoPairNotFoundSymptom;
 @property (readonly, nonatomic) BOOL hf_fakeStereoPairVersionMismatchSymptom;
+@property (readonly, nonatomic) BOOL hf_hasSetFavorite;
+@property (readonly, nonatomic) HMHome *hf_home;
+@property (readonly, nonatomic) BOOL hf_isAccessorySettingsReachable;
+@property (readonly, nonatomic) BOOL hf_isAppleMusicReachable;
+@property (readonly, nonatomic) BOOL hf_isCurrentAccessory;
+@property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_isReachable;
+@property (readonly, copy, nonatomic) NSString *hf_mediaRouteIdentifier;
+@property (readonly, nonatomic) id<HFMediaValueSource> hf_mediaValueSource;
+@property (readonly, weak, nonatomic) HMRoom *hf_parentRoom;
+@property (readonly, nonatomic) NSString *hf_prettyDescription;
+@property (readonly, nonatomic) HFServiceNameComponents *hf_serviceNameComponents;
+@property (readonly, nonatomic) HFHomeKitSettingsAdapterManager *hf_settingsAdapterManager;
+@property (readonly, nonatomic) HFHomeKitSettingsValueManager *hf_settingsValueManager;
+@property (readonly, nonatomic) BOOL hf_shouldShowInFavorites;
+@property (readonly, nonatomic) BOOL hf_showsAudioSettings;
+@property (readonly, nonatomic) BOOL hf_supportsMediaSystem;
+@property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
+@property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (readonly, nonatomic) BOOL isContainedWithinItemGroup;
+@property (readonly, nonatomic) BOOL isItemGroup;
+@property (readonly, copy) HMMediaSession *mediaSession;
+@property (readonly, nonatomic) unsigned long long numberOfItemsContainedWithinGroup;
+@property (readonly) HMAccessorySettings *settings;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, copy) NSSet *symptoms;
+@property (readonly, nonatomic) HMSymptomsHandler *symptomsHandler;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
+- (id)hf_accessoryForRole:(id)arg1;
+- (id)hf_appleMusicCurrentLoggedInAccount;
+- (id)hf_appleMusicCurrentLoggedInAccountDSID;
+- (BOOL)hf_fake8021xNetworkSymptom;
+- (id)hf_fetchLog:(id)arg1 timeout:(double)arg2;
+- (id)hf_fetchLogListWithTimeout:(double)arg1;
+- (id)hf_idsDeviceIdentifierWithError:(id *)arg1;
+- (BOOL)hf_isValidObject;
+- (id)hf_roleForAccessory:(id)arg1;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_updateDateAdded:(id)arg1;
+- (id)hf_updateIsFavorite:(BOOL)arg1;
 @end
 

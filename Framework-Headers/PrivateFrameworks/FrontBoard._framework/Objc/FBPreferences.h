@@ -4,21 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <FrontBoardServices/BSAbstractDefaultDomain.h>
 
-@protocol OS_dispatch_queue;
-
-@interface FBPreferences : NSObject
+@interface FBPreferences : BSAbstractDefaultDomain
 {
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
+@property (readonly, nonatomic) BOOL defaultShellShouldTerminateClientsOnDisconnect; // @dynamic defaultShellShouldTerminateClientsOnDisconnect;
+@property (readonly, nonatomic) BOOL disableXPCServicesEndpointHack; // @dynamic disableXPCServicesEndpointHack;
+
 + (id)sharedInstance;
-- (void).cxx_destruct;
-- (void)_queue_reload;
-- (id)description;
-- (id)init;
-- (void)reload;
+- (void)_bindAndRegisterDefaults;
+- (id)_init;
 
 @end
 

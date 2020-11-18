@@ -6,10 +6,9 @@
 
 #import <PhotoLibraryServices/PLTemporaryImageTable.h>
 
-__attribute__((visibility("hidden")))
 @interface PUTemporaryImageTable : PLTemporaryImageTable
 {
-    int _indexCounter;
+    _Atomic int _indexCounter;
 }
 
 - (int)nextCacheIndex;

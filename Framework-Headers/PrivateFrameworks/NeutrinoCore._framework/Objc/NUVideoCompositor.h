@@ -8,13 +8,15 @@
 
 #import <NeutrinoCore/AVVideoCompositing-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface NUVideoCompositor : NSObject <AVVideoCompositing>
 {
-    BOOL _shouldCancelAllRequests;
+    _Atomic unsigned long long _requestCounter;
     NSObject<OS_dispatch_queue> *_renderingQueue;
+    NSMutableSet *_inFlightRequests;
+    struct os_unfair_lock_s _inFlightRequestsLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +34,7 @@
 - (id)init;
 - (void)renderContextChanged:(id)arg1;
 - (void)startVideoCompositionRequest:(id)arg1;
+- (BOOL)testAndSetVideoCompositionRequestFinished:(id)arg1;
 - (id)videoFramesFromRequest:(id)arg1;
 
 @end

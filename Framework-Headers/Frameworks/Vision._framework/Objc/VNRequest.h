@@ -10,32 +10,29 @@
 #import <Vision/VNSequencedRequestSupporting-Protocol.h>
 #import <Vision/VNWarningRecorder-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, VNProcessingDevice, VNRequestConfiguration, VNWarningRecorder;
+@class NSArray, NSDictionary, NSString, VNCanceller, VNProcessingDevice, VNRequestConfiguration, VNWarningRecorder;
 @protocol MTLDevice, OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface VNRequest : NSObject <VNWarningRecorder, VNSequencedRequestSupporting, NSCopying>
 {
-    NSString *_requestName;
     CDUnknownBlockType _completionHandler;
     VNRequestConfiguration *_configuration;
     NSDictionary *_options;
     VNWarningRecorder *_warningRecorder;
+    VNCanceller *_canceller;
+    BOOL _cancellationTriggered;
     NSObject<OS_dispatch_semaphore> *_cancellationSemaphore;
     NSObject<OS_dispatch_queue> *_cancellationQueue;
     unsigned long long _revision;
-    BOOL _dumpIntermediateImages;
-    BOOL _cancellationTriggered;
     NSArray *_results;
 }
 
 @property (strong) NSObject<OS_dispatch_semaphore> *cancellationSemaphore; // @synthesize cancellationSemaphore=_cancellationSemaphore;
-@property BOOL cancellationTriggered; // @synthesize cancellationTriggered=_cancellationTriggered;
+@property (readonly) BOOL cancellationTriggered;
 @property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long detectionLevel;
-@property (nonatomic) BOOL disallowsGPUUse;
-@property (nonatomic) BOOL dumpIntermediateImages;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long metalContextPriority;
 @property (nonatomic) unsigned long long modelFileBackingStore;
@@ -43,7 +40,6 @@
 @property (nonatomic) BOOL preferBackgroundProcessing;
 @property (strong, nonatomic) id<MTLDevice> preferredMetalContext;
 @property (copy, nonatomic) VNProcessingDevice *processingDevice;
-@property (readonly, copy, nonatomic) NSString *requestName; // @synthesize requestName=_requestName;
 @property (readonly, copy, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (nonatomic) unsigned long long revision; // @synthesize revision=_revision;
 @property (readonly) Class superclass;
@@ -58,6 +54,7 @@
 + (BOOL)defaultRequestInstanceWarmUpPerformer:(id)arg1 error:(id *)arg2;
 + (unsigned long long)defaultRevision;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (id)descriptionForPrivateRevision:(unsigned long long)arg1;
 + (BOOL)getDoubleValue:(double *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (BOOL)getDoubleValue:(double *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(double)arg4 error:(id *)arg5;
 + (BOOL)getFloatValue:(float *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
@@ -69,18 +66,20 @@
 + (void)initialize;
 + (id)newConfigurationInstance;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
-+ (id)requestWithName:(id)arg1 options:(id)arg2;
-+ (id)requestWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (unsigned long long)resolvedRevisionForRevision:(unsigned long long)arg1;
 + (const CDStruct_7d93034e *)revisionAvailability;
 + (id)supportedRevisions;
++ (BOOL)supportsPrivateRevision:(unsigned long long)arg1;
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)_defaultProcessingDevice;
+- (void)_setResolvedRevision:(unsigned long long)arg1;
 - (void)_updateProcessingDeviceOption;
 - (BOOL)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (void)cancel;
+- (BOOL)cancellationTriggeredAndReturnError:(id *)arg1;
+- (id)cancellerAndReturnError:(id *)arg1;
 - (unsigned long long)compatibleRevisionForDependentRequest:(id)arg1;
 - (id)configuration;
 - (void)copyStateOfRequest:(id)arg1;
@@ -89,7 +88,6 @@
 - (BOOL)hasCancellationHook;
 - (id)init;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalCancelInContext:(id)arg1 error:(id *)arg2;
 - (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
@@ -101,6 +99,7 @@
 - (unsigned long long)resolvedRevision;
 - (CDUnknownBlockType)resultsSortingComparator;
 - (id)sequencedRequestPreviousObservationsKey;
+- (BOOL)setPrivateRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (void)setResults:(id)arg1;
 - (void)setSortedResults:(id)arg1;
 - (void)setValue:(id)arg1 forPrivateOption:(id)arg2;

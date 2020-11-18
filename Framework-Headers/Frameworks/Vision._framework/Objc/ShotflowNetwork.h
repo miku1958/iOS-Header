@@ -6,32 +6,56 @@
 
 #import <objc/NSObject.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface ShotflowNetwork : NSObject
 {
+    CDStruct_2bc666a5 _espressoNetwork;
     void *_espressoPlan;
     void *_espressoContext;
-    CDStruct_2bc666a5 _espressoNetwork;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _logitsPosOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _logitsNegOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _offsetsOutputs;
+    struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _objectnessOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _rollOutputs;
     struct vector<std::__1::shared_ptr<espresso_buffer_t>, std::__1::allocator<std::__1::shared_ptr<espresso_buffer_t>>> _yawOutputs;
     unsigned long long _currentNetworkWidth;
     unsigned long long _currentNetworkHeight;
-    float _defaultBoxSizes[6][2][2];
+    BOOL _releaseEspressoContext;
+    BOOL _releaseEspressoPlan;
+    BOOL isAnchorSquare[10];
+    NSArray *_filterThreshold;
+    float _defaultBoxSizes[6][10][2];
     float _threshold;
+    unsigned long long _preferredSmallSide;
 }
 
-@property (readonly, nonatomic) unsigned long long preferredSmallSide;
+@property (readonly, nonatomic) unsigned long long preferredSmallSide; // @synthesize preferredSmallSide=_preferredSmallSide;
 @property (nonatomic) float threshold; // @synthesize threshold=_threshold;
 
++ (const vector_7584168e *)defaultBoxesSides;
++ (BOOL)inputBGR;
++ (tuple_8621cb4d)inputBiasRGB;
++ (float)inputImageAspectRatio;
++ (float)inputImageMaxDimension;
++ (float)inputImageMinDimension;
++ (id)inputLayerName;
++ (float)inputScale;
++ (float)nonSquareRollDefault;
++ (float)nonSquareYawDefault;
++ (unsigned long long)numberBinsRoll;
++ (unsigned long long)numberBinsYaw;
++ (id)processingDeviceDetectorWithEspressoNetwork:(CDStruct_2bc666a5)arg1 espressoPlan:(void *)arg2 threshold:(float)arg3;
 + (id)processingDeviceNetworkWithModelPath:(id)arg1 threshold:(float)arg2 preferredDeviceID:(int)arg3 engineID:(int)arg4 storageType:(int)arg5;
++ (const vector_7584168e *)strides;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)initWithEspressoNetwork:(CDStruct_2bc666a5)arg1 espressoPlan:(void *)arg2 threshold:(float)arg3;
 - (id)initWithModelPath:(id)arg1 espressoEngineID:(int)arg2 espressoDeviceID:(int)arg3 espressoStorageType:(int)arg4 threshold:(float)arg5;
-- (id)processCIImage:(id)arg1;
+- (void)initializeBuffers;
+- (void)initializeEspressoResourcesWithModelPath:(id)arg1 espressoEngineID:(int)arg2 espressoDeviceID:(int)arg3 espressoStorageType:(int)arg4;
 - (id)processVImage:(struct vImage_Buffer)arg1 inputIsBGR:(BOOL)arg2;
 - (id)resizeAndProcessVImage:(struct vImage_Buffer)arg1 inputIsBGR:(BOOL)arg2;
 - (void)runNetwork:(struct vImage_Buffer)arg1 inputIsBGR:(BOOL)arg2;

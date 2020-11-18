@@ -13,16 +13,17 @@
     unsigned int _currentTabIndex;
     unsigned int _numberOfTabsOpen;
     struct {
-        unsigned int currentTabIndex:1;
-        unsigned int numberOfTabsOpen:1;
-    } _has;
+        unsigned int has_currentTabIndex:1;
+        unsigned int has_numberOfTabsOpen:1;
+    } _flags;
 }
 
-@property (nonatomic) unsigned int currentTabIndex; // @synthesize currentTabIndex=_currentTabIndex;
+@property (nonatomic) unsigned int currentTabIndex;
 @property (nonatomic) BOOL hasCurrentTabIndex;
 @property (nonatomic) BOOL hasNumberOfTabsOpen;
-@property (nonatomic) unsigned int numberOfTabsOpen; // @synthesize numberOfTabsOpen=_numberOfTabsOpen;
+@property (nonatomic) unsigned int numberOfTabsOpen;
 
++ (BOOL)isValid:(id)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +31,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

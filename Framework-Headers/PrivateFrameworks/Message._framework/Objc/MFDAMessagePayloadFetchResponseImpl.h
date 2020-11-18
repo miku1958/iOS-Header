@@ -17,8 +17,8 @@
     NSData *data;
 }
 
+- (void).cxx_destruct;
 - (id)data;
-- (void)dealloc;
 - (id)initWithData:(id)arg1 streaming:(BOOL)arg2 streamingDone:(BOOL)arg3;
 - (BOOL)streaming;
 - (BOOL)streamingDone;

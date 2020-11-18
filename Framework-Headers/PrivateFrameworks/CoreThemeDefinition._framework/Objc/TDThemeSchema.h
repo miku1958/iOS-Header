@@ -15,10 +15,12 @@
 
 + (BOOL)loadThemeConstantsForEntity:(id)arg1 inContext:(id)arg2;
 - (void)_addSchemaPartDefinitionsForStandardElement:(const CDStruct_e3362728 *)arg1 withElement:(id)arg2;
+- (void)_loadConstantForEntity:(id)arg1 withDescriptor:(const struct _themeconstant *)arg2;
 - (BOOL)_renditionKey:(const struct _renditionkeytoken *)arg1 isEqualToKeyIgnoringLook:(const struct _renditionkeytoken *)arg2;
 - (void)_sanityCheckColorNamesAndUpdateIfNecessary;
 - (void)_sanityCheckEffectRenditionsAndUpdateIfNecessary;
 - (void)_sanityCheckMetafontSizeSelectorsAndUpdateIfNecessary;
+- (void)_sanityCheckMicaRenditionsAndUpdateIfNecessary;
 - (void)_sanityCheckObjectsWithEntityName:(id)arg1 globalDescriptor:(void *)arg2 matchIdentifierOnly:(BOOL)arg3;
 - (void)_sanityCheckSchemaAssets;
 - (void)_sanityCheckSchemaCategoriesAndUpdateIfNecessary;
@@ -31,6 +33,8 @@
 - (void)loadColorNames;
 - (void)loadColorStatuses;
 - (void)loadEffectConstants;
+- (void)loadGlyphSizeConstants;
+- (void)loadGlyphWeightConstants;
 - (void)loadIterationTypes;
 - (void)loadMetafontSelectors;
 - (void)loadMetafontSizes;
@@ -42,7 +46,6 @@
 - (void)loadTemplateRenderingModeConstants;
 - (void)loadTexturePixelFormats;
 - (void)loadThemeCompressionTypes;
-- (void)loadThemeDefaultLook;
 - (void)loadThemeDeploymentTargets;
 - (void)loadThemeDirections;
 - (void)loadThemeDisplayGamuts;
@@ -58,7 +61,6 @@
 - (void)loadThemeTextureInterpretations;
 - (void)loadThemeUISizeClasses;
 - (void)loadThemeValues;
-- (void)loadZeroCodeArtworkInfo;
 - (void)resetThemeConstants;
 - (void)sanityCheckAndUpdateDocumentIfNecessary;
 

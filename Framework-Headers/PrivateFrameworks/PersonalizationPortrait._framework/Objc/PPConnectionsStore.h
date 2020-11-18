@@ -6,13 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@interface PPConnectionsStore : NSObject
+#import <PersonalizationPortrait/PPClientStore-Protocol.h>
+#import <PersonalizationPortrait/PPFeedbackAccepting-Protocol.h>
+
+@class NSString, PPClientFeedbackHelper;
+
+@interface PPConnectionsStore : NSObject <PPFeedbackAccepting, PPClientStore>
 {
+    PPClientFeedbackHelper *_clientFeedbackHelper;
 }
 
+@property (strong, nonatomic) NSString *clientIdentifier; // @dynamic clientIdentifier;
+
+- (void).cxx_destruct;
+- (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)init;
 - (BOOL)iterRecentLocationDonationsSinceDate:(id)arg1 client:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
+- (BOOL)iterRecentLocationsForConsumer:(unsigned long long)arg1 criteria:(id)arg2 limit:(unsigned long long)arg3 client:(id)arg4 error:(id *)arg5 block:(CDUnknownBlockType)arg6;
 - (BOOL)iterRecentLocationsForConsumer:(unsigned long long)arg1 criteria:(id)arg2 limit:(unsigned long long)arg3 explanationSet:(id)arg4 client:(id)arg5 error:(id *)arg6 block:(CDUnknownBlockType)arg7;
+- (void)registerFeedback:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <MessageUI/MFMailCompositionAdditionalDonating-Protocol.h>
+#import <MessageUI/MFMailCompositionShareSheetRecipients-Protocol.h>
 
-@class MFAttachmentCompositionContext, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString, UIView;
+@class EMMessage, MFAttachmentComposeManager, MFAttachmentCompositionContext, MFAttachmentManager, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString, UIView;
 @protocol MFComposeBodyField;
 
-@interface _MFMailCompositionContext : NSObject <MFMailCompositionAdditionalDonating>
+@interface _MFMailCompositionContext : NSObject <MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
 {
     NSString *_sendingAddress;
     NSString *_subject;
@@ -21,32 +22,40 @@
     NSString *_messageBody;
     int _composeType;
     NSString *_autosaveIdentifier;
-    MFMailMessage *_originalMessage;
+    MFMailMessage *_legacyMessage;
+    EMMessage *_originalMessage;
     NSString *_attachmentToMarkupContentID;
     id _originalContent;
     MFMessageLoadingContext *_loadingContext;
     BOOL _loadRest;
     BOOL _includeAttachments;
+    BOOL _includeAttachmentsWhenAdding;
     BOOL _showKeyboardImmediately;
     BOOL _showContentImmediately;
     MFAttachmentCompositionContext *_attachmentContext;
+    MFAttachmentComposeManager *_attachmentManager;
     NSMutableArray *_deferredAttachments;
     BOOL _registeredForDraw;
     BOOL _usingDefaultAccount;
     BOOL _prefersFirstLineSelection;
     int _sourceAccountManagement;
+    NSString *_shareSheetSessionID;
     NSArray *_UTITypes;
     NSArray *_photoIDs;
     NSArray *_cloudPhotoIDs;
     NSArray *_contentText;
     NSArray *_contentURLs;
     unsigned long long _caretPosition;
+    NSArray *_contentVariations;
+    unsigned long long _defaultContentVariationIndex;
+    NSString *_contentVariationAttachmentCID;
     NSString *_originatingBundleID;
     UIView<MFComposeBodyField> *_bodyField;
 }
 
 @property (copy, nonatomic) NSArray *UTITypes; // @synthesize UTITypes=_UTITypes;
 @property (readonly, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
+@property (readonly, nonatomic) MFAttachmentManager *attachmentManager;
 @property (strong, nonatomic) NSString *attachmentToMarkupContentID; // @synthesize attachmentToMarkupContentID=_attachmentToMarkupContentID;
 @property (readonly, nonatomic) NSString *autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
 @property (copy, nonatomic) NSArray *bccRecipients; // @synthesize bccRecipients=_bccRecipients;
@@ -57,16 +66,22 @@
 @property (readonly, nonatomic) int composeType; // @synthesize composeType=_composeType;
 @property (copy, nonatomic) NSArray *contentText; // @synthesize contentText=_contentText;
 @property (copy, nonatomic) NSArray *contentURLs; // @synthesize contentURLs=_contentURLs;
+@property (strong, nonatomic) NSString *contentVariationAttachmentCID; // @synthesize contentVariationAttachmentCID=_contentVariationAttachmentCID;
+@property (copy, nonatomic) NSArray *contentVariations; // @synthesize contentVariations=_contentVariations;
 @property (readonly, nonatomic) NSString *contextID;
+@property (nonatomic) unsigned long long defaultContentVariationIndex; // @synthesize defaultContentVariationIndex=_defaultContentVariationIndex;
 @property (nonatomic) BOOL includeAttachments; // @synthesize includeAttachments=_includeAttachments;
+@property (nonatomic) BOOL includeAttachmentsWhenAdding; // @synthesize includeAttachmentsWhenAdding=_includeAttachmentsWhenAdding;
+@property (readonly, nonatomic) MFMailMessage *legacyMessage; // @synthesize legacyMessage=_legacyMessage;
 @property (nonatomic) BOOL loadRest; // @synthesize loadRest=_loadRest;
 @property (strong, nonatomic) MFMessageLoadingContext *loadingContext; // @synthesize loadingContext=_loadingContext;
 @property (strong, nonatomic) id originalContent; // @synthesize originalContent=_originalContent;
-@property (readonly, nonatomic) MFMailMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
+@property (readonly, nonatomic) EMMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
 @property (copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
 @property (copy, nonatomic) NSArray *photoIDs; // @synthesize photoIDs=_photoIDs;
 @property (nonatomic) BOOL prefersFirstLineSelection; // @synthesize prefersFirstLineSelection=_prefersFirstLineSelection;
 @property (copy, nonatomic) NSString *sendingAddress; // @synthesize sendingAddress=_sendingAddress;
+@property (copy, nonatomic) NSString *shareSheetSessionID; // @synthesize shareSheetSessionID=_shareSheetSessionID;
 @property (nonatomic) BOOL showContentImmediately; // @synthesize showContentImmediately=_showContentImmediately;
 @property (nonatomic) BOOL showKeyboardImmediately; // @synthesize showKeyboardImmediately=_showKeyboardImmediately;
 @property (nonatomic) int sourceAccountManagement; // @synthesize sourceAccountManagement=_sourceAccountManagement;
@@ -74,36 +89,38 @@
 @property (copy, nonatomic) NSArray *toRecipients; // @synthesize toRecipients=_toRecipients;
 @property (nonatomic) BOOL usingDefaultAccount; // @synthesize usingDefaultAccount=_usingDefaultAccount;
 
-- (void)_contextRegisterForDrawNotification;
-- (void)_contextUnregisterForDrawNotification;
++ (id)log;
++ (id)processMessageBody:(id)arg1 asHTML:(BOOL)arg2;
+- (void).cxx_destruct;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4;
 - (id)attachments;
-- (void)contextDidDraw:(id)arg1;
 - (void)dealloc;
 - (BOOL)hasDuetDonationContext;
 - (id)init;
-- (id)initDraftRestoreOfMessage:(id)arg1;
-- (id)initForwardOfMessage:(id)arg1;
-- (id)initOutboxRestoreOfMessage:(id)arg1;
+- (id)initDraftRestoreOfMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initForwardOfMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initOutboxRestoreOfMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initRecoveredAutosavedMessageWithIdentifier:(id)arg1;
-- (id)initReplyAllToMessage:(id)arg1;
-- (id)initReplyToMessage:(id)arg1;
-- (id)initSendAgainDraftOfMessage:(id)arg1;
+- (id)initReplyAllToMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initReplyToMessage:(id)arg1 legacyMessage:(id)arg2;
+- (id)initSendAgainDraftOfMessage:(id)arg1 legacyMessage:(id)arg2;
 - (id)initWithComposeType:(int)arg1;
 - (id)initWithComposeType:(int)arg1 RFC822Data:(id)arg2;
-- (id)initWithComposeType:(int)arg1 originalMessage:(id)arg2;
+- (id)initWithComposeType:(int)arg1 originalMessage:(id)arg2 legacyMessage:(id)arg3;
 - (id)initWithHandoffActivityPayload:(id)arg1;
 - (id)initWithURL:(id)arg1;
-- (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3;
+- (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3 legacyMessage:(id)arg4;
 - (void)insertAttachmentWithData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
 - (void)insertAttachmentWithURL:(id)arg1;
+- (void)insertDeferredAttachmentsIntoBodyField:(id)arg1;
 - (id)messageBody;
 - (void)recordPasteboardAttachmentsForURLs:(id)arg1;
 - (void)recordUndoAttachmentsForURLs:(id)arg1;
 - (void)removeAttachment:(id)arg1;
 - (void)setMessageBody:(id)arg1 isHTML:(BOOL)arg2;
 - (void)switchToReplyAllWithDelegate:(id)arg1;
+- (void)switchToReplyWithDelegate:(id)arg1;
 
 @end
 

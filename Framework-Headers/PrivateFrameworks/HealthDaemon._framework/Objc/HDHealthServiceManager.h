@@ -83,6 +83,7 @@
 - (unsigned long long)connectHealthService:(id)arg1 sessionHandler:(CDUnknownBlockType)arg2 dataHandler:(CDUnknownBlockType)arg3 characteristicsHandler:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (unsigned long long)connectHealthService:(id)arg1 sessionHandler:(CDUnknownBlockType)arg2 dataHandler:(CDUnknownBlockType)arg3 error:(id *)arg4;
 - (void)dataReceived:(id)arg1 deviceEntity:(id)arg2;
+- (void)dealloc;
 - (void)disconnectHealthService:(unsigned long long)arg1;
 - (unsigned long long)discoverHealthServicesWithType:(long long)arg1 timeout:(unsigned long long)arg2 alwaysNotify:(BOOL)arg3 handler:(CDUnknownBlockType)arg4 error:(id *)arg5;
 - (void)discoveredCharacteristics:(id)arg1 forDevice:(id)arg2 service:(id)arg3;
@@ -98,9 +99,9 @@
 - (void)pairingAgent:(id)arg1 peerDidRequestPairing:(id)arg2 type:(long long)arg3 passkey:(id)arg4;
 - (void)pairingAgent:(id)arg1 peerDidUnpair:(id)arg2;
 - (void)performOperation:(id)arg1 onSession:(unsigned long long)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)removeAllDisconnectedPeripherals;
 - (void)removeConnectingPeripheralsWithError:(id)arg1;
 - (void)resetOOBState;
+- (void)retrieveAndRemoveDisconnectedPeripherals;
 - (id)retrieveOOBData:(id *)arg1;
 - (id)reviewSavedHealthServiceSessionsWithError:(id *)arg1;
 - (void)sendBluetoothStatusUpdatesForServer:(id)arg1 updateHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;

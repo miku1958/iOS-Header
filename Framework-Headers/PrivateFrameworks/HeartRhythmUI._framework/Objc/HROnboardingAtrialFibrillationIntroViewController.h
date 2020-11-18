@@ -56,7 +56,6 @@
 - (id)_footnoteFont;
 - (double)_footnoteLeading;
 - (id)_footnoteTextStyle;
-- (double)_learnMoreButtonLastBaselineToContinueButton;
 - (double)_learnMoreContentViewLastBaselineToContinueButton;
 - (void)_presentFeatureAlertWithMessage:(id)arg1;
 - (void)_setStackedButtonViewAsFooterView;
@@ -67,6 +66,7 @@
 - (id)_titleFontTextStyle;
 - (double)_titleLastBaselineToBodyFirstBaseline;
 - (void)_updateViewsForContentExpansionState:(BOOL)arg1;
+- (double)_viewLastBaselineToContinueButton;
 - (id)bodyString;
 - (id)buttonTitleString;
 - (id)deviceNotSupportedBodyString;

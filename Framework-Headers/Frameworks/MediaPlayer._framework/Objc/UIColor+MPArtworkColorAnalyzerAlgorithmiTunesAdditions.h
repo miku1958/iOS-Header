@@ -7,7 +7,11 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (MPArtworkColorAnalyzerAlgorithmiTunesAdditions)
+
+@property (readonly, nonatomic) double MP_lightness;
+
 + (id)colorWithITColor:(struct ITColor)arg1;
 - (struct ITColor)ITColor;
+- (BOOL)MP_isArtworkColorAnalyzerLightColorForAlgorithm:(long long)arg1;
 @end
 

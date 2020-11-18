@@ -14,6 +14,7 @@
     UIColor *_minimumTintUsedForTrackImageColor;
 }
 
+- (void).cxx_destruct;
 - (void)_availableRoutesDidChangeNotification:(id)arg1;
 - (id)_newVolumeWarningView;
 - (id)_trackImageWithTintColor:(id)arg1;

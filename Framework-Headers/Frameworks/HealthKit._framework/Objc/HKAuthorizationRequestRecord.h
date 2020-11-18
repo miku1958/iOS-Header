@@ -8,18 +8,18 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSSet, NSString, NSUUID;
+@class HKSource, NSSet, NSUUID;
 
 @interface HKAuthorizationRequestRecord : NSObject <NSSecureCoding>
 {
-    NSString *_appBundleIdentifier;
+    HKSource *_source;
     NSUUID *_sessionIdentifier;
     NSSet *_typesRequiringShareAuthorization;
     NSSet *_typesRequiringReadAuthorization;
 }
 
-@property (readonly, copy, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (readonly, copy, nonatomic) HKSource *source; // @synthesize source=_source;
 @property (readonly, copy, nonatomic) NSSet *typesRequiringReadAuthorization; // @synthesize typesRequiringReadAuthorization=_typesRequiringReadAuthorization;
 @property (readonly, copy, nonatomic) NSSet *typesRequiringShareAuthorization; // @synthesize typesRequiringShareAuthorization=_typesRequiringShareAuthorization;
 
@@ -28,8 +28,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initForApp:(id)arg1 session:(id)arg2 readTypes:(id)arg3 writeTypes:(id)arg4;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSource:(id)arg1 session:(id)arg2 readTypes:(id)arg3 writeTypes:(id)arg4;
 
 @end
 

@@ -11,9 +11,9 @@
 
 @interface GEOComposedTransitTripRouteLeg : GEOComposedTransitBaseRouteLeg
 {
-    GEOComposedTransitTripRouteStep *_boardStep;
-    GEOComposedTransitTripRouteStep *_alightStep;
-    GEOComposedTransitTripRouteStep *_blockTransferStep;
+    unsigned long long _boardStepIndex;
+    unsigned long long _alightStepIndex;
+    unsigned long long _blockTransferStepIndex;
     unsigned long long _numberOfTransitStops;
     unsigned long long _selectedRideOptionIndex;
     NSArray *_actionSheetDescriptions;
@@ -23,8 +23,8 @@
     NSArray *_alightNotifications;
 }
 
-@property (readonly, nonatomic) GEOComposedTransitTripRouteStep *alightStep; // @synthesize alightStep=_alightStep;
-@property (readonly, nonatomic) GEOComposedTransitTripRouteStep *boardStep; // @synthesize boardStep=_boardStep;
+@property (readonly, nonatomic) GEOComposedTransitTripRouteStep *alightStep;
+@property (readonly, nonatomic) GEOComposedTransitTripRouteStep *boardStep;
 @property (readonly, nonatomic) double departureFrequencyMax;
 @property (readonly, nonatomic) double departureFrequencyMin;
 @property (readonly, nonatomic) NSDate *departureTime;
@@ -39,13 +39,16 @@
 @property (readonly, nonatomic) NSArray *transitLineOptions; // @synthesize transitLineOptions=_transitLineOptions;
 @property (readonly, nonatomic) id<GEOTransitSystem> transitSystem;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_cacheStepData;
 - (BOOL)_needsStepData;
 - (id)actionSheetArtworkForRideOption:(unsigned long long)arg1;
 - (id)actionSheetDescriptionForRideOption:(unsigned long long)arg1;
 - (id)blockTransferStep;
-- (id)initWithComposedRoute:(id)arg1 tripIndex:(unsigned long long)arg2 stepRange:(struct _NSRange)arg3 transitStepRange:(struct _NSRange)arg4 pointRange:(struct _NSRange)arg5;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithComposedRoute:(id)arg1 decoderData:(id)arg2 tripIndex:(unsigned long long)arg3 stepRange:(struct _NSRange)arg4 transitStepRange:(struct _NSRange)arg5 pointRange:(struct _NSRange)arg6;
 - (unsigned long long)numberOfTransitStops;
 - (id)routeDetailsPrimaryArtworkForRideOption:(unsigned long long)arg1;
 - (id)transitLineForRideOption:(unsigned long long)arg1;

@@ -4,15 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Intents/INCodableDescription.h>
+#import <Intents/INRootCodableDescription.h>
 
+#import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class INCodableAttribute, NSString;
 
-@interface INIntentCodableDescription : INCodableDescription <NSSecureCoding>
+@interface INIntentCodableDescription : INRootCodableDescription <NSSecureCoding, NSCopying>
 {
     BOOL _userConfirmationRequired;
+    BOOL _configurable;
+    BOOL _eligibleForSuggestions;
+    NSString *_inputAttributeName;
+    NSString *_keyAttributeName;
     NSString *_title;
     NSString *_titleLocID;
     NSString *_descriptiveText;
@@ -22,10 +27,18 @@
     NSString *_verb;
 }
 
+@property (copy, nonatomic, setter=_setInputAttributeName:) NSString *_inputAttributeName; // @synthesize _inputAttributeName;
+@property (copy, nonatomic, setter=_setKeyAttributeName:) NSString *_keyAttributeName; // @synthesize _keyAttributeName;
+@property (nonatomic, getter=isConfigurable) BOOL configurable; // @synthesize configurable=_configurable;
 @property (copy, nonatomic) NSString *defaultImageName; // @synthesize defaultImageName=_defaultImageName;
 @property (copy, nonatomic) NSString *descriptiveText; // @synthesize descriptiveText=_descriptiveText;
 @property (copy, nonatomic) NSString *descriptiveTextLocID; // @synthesize descriptiveTextLocID=_descriptiveTextLocID;
+@property (nonatomic, getter=isEligibleForSuggestions) BOOL eligibleForSuggestions; // @synthesize eligibleForSuggestions=_eligibleForSuggestions;
+@property (readonly, nonatomic) INCodableAttribute *inputAttribute;
 @property (nonatomic) long long intentCategory; // @synthesize intentCategory=_intentCategory;
+@property (readonly, nonatomic) INCodableAttribute *keyAttribute;
+@property (readonly, copy, nonatomic) NSString *localizedDescriptiveText;
+@property (readonly, copy, nonatomic) NSString *localizedTitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *titleLocID; // @synthesize titleLocID=_titleLocID;
 @property (nonatomic) BOOL userConfirmationRequired; // @synthesize userConfirmationRequired=_userConfirmationRequired;
@@ -33,10 +46,20 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_dictionaryRepresentation;
+- (id)_attributeKeyPrefix;
+- (id)_attributesKeyPrefix;
+- (id)_ignoredAttributeTags;
+- (void)_updateWithIntentCodableDescription:(id)arg1;
 - (id)attributes;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dictionaryRepresentationForLanguage:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)keyPrefix;
+- (id)localizedDescriptiveTextForLanguage:(id)arg1;
+- (id)localizedTitleForLanguage:(id)arg1;
+- (id)resolvableParameterCombinationsWithParameterCombinations:(id)arg1;
+- (void)updateWithDictionary:(id)arg1;
 
 @end
 

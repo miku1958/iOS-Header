@@ -11,35 +11,49 @@
 @protocol _INPBHomeFilter <NSObject>
 
 @property (strong, nonatomic) _INPBDataString *accessory;
+@property (nonatomic) int deviceType;
 @property (copy, nonatomic) NSArray *entityIdentifiers;
 @property (readonly, nonatomic) unsigned long long entityIdentifiersCount;
+@property (strong, nonatomic) _INPBDataString *entityName;
 @property (nonatomic) int entityType;
 @property (strong, nonatomic) _INPBDataString *group;
 @property (readonly, nonatomic) BOOL hasAccessory;
+@property (nonatomic) BOOL hasDeviceType;
+@property (readonly, nonatomic) BOOL hasEntityName;
 @property (nonatomic) BOOL hasEntityType;
 @property (readonly, nonatomic) BOOL hasGroup;
 @property (readonly, nonatomic) BOOL hasHome;
-@property (readonly, nonatomic) BOOL hasHomeZone;
+@property (nonatomic) BOOL hasIsExcludeFilter;
+@property (readonly, nonatomic) BOOL hasOuterDeviceName;
+@property (nonatomic) BOOL hasOuterDeviceType;
 @property (readonly, nonatomic) BOOL hasRoom;
 @property (readonly, nonatomic) BOOL hasScene;
 @property (readonly, nonatomic) BOOL hasService;
 @property (nonatomic) BOOL hasServiceType;
 @property (nonatomic) BOOL hasSubServiceType;
+@property (readonly, nonatomic) BOOL hasZone;
 @property (strong, nonatomic) _INPBDataString *home;
-@property (strong, nonatomic) _INPBDataString *homeZone;
+@property (nonatomic) BOOL isExcludeFilter;
+@property (strong, nonatomic) _INPBDataString *outerDeviceName;
+@property (nonatomic) int outerDeviceType;
 @property (strong, nonatomic) _INPBDataString *room;
 @property (strong, nonatomic) _INPBDataString *scene;
 @property (strong, nonatomic) _INPBDataString *service;
 @property (nonatomic) int serviceType;
 @property (nonatomic) int subServiceType;
+@property (strong, nonatomic) _INPBDataString *zone;
 
+- (int)StringAsDeviceType:(NSString *)arg1;
 - (int)StringAsEntityType:(NSString *)arg1;
+- (int)StringAsOuterDeviceType:(NSString *)arg1;
 - (int)StringAsServiceType:(NSString *)arg1;
 - (int)StringAsSubServiceType:(NSString *)arg1;
 - (void)addEntityIdentifiers:(NSString *)arg1;
 - (void)clearEntityIdentifiers;
+- (NSString *)deviceTypeAsString:(int)arg1;
 - (NSString *)entityIdentifiersAtIndex:(unsigned long long)arg1;
 - (NSString *)entityTypeAsString:(int)arg1;
+- (NSString *)outerDeviceTypeAsString:(int)arg1;
 - (NSString *)serviceTypeAsString:(int)arg1;
 - (NSString *)subServiceTypeAsString:(int)arg1;
 @end

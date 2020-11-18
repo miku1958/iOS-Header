@@ -4,8 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class SGSqlEntityStore;
+
 @protocol SGExternalEnrichment
 - (void)flushWrites;
-- (void)write;
+- (void)writeWithEntityStore:(SGSqlEntityStore *)arg1;
 @end
 

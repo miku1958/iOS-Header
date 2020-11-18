@@ -52,6 +52,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedEngine;
+- (void).cxx_destruct;
 - (void)_enablePolicyEngineWithReason:(id)arg1;
 - (void)adServingDaemonDidIdleDisablePolicyEngine;
 - (void)bannerView:(id)arg1 didFailToReceiveAdWithError:(id)arg2;
@@ -61,7 +62,6 @@
 - (void)bannerViewWillLoadAd:(id)arg1;
 - (BOOL)canPresentSharedInterstitialAdWithResultMessage:(id *)arg1;
 - (BOOL)claimSharedMediaPlayerVideoAdWithError:(id *)arg1;
-- (void)dealloc;
 - (void)disablePolicyEngine;
 - (void)enablePolicyEngine;
 - (void)finishedPresentingSharedInterstitialAd;

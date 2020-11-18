@@ -64,6 +64,7 @@
 - (void)_reloadFolderInfoForced:(BOOL)arg1;
 - (void)_removeActionsForTextFields;
 - (void)_returnWasPressedInTextField:(id)arg1;
+- (void)_saveBookmarkKeyPressed;
 - (void)_saveButtonPressed;
 - (void)_setFolderPickerExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)_titleCell;
@@ -77,14 +78,17 @@
 - (BOOL)bookmarkInfoViewControllerShouldUseTranslucentAppearance:(id)arg1;
 - (void)bookmarkTextEntryTableViewController:(id)arg1 dismissedWithText:(id)arg2;
 - (BOOL)bookmarkTextEntryTableViewControllerShouldUseTranslucentAppearance:(id)arg1;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (BOOL)canSaveChanges;
 - (void)cancel;
+- (void)cancelPopoverKeyPressed;
 - (void)dealloc;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (BOOL)hasTranslucentAppearance;
 - (id)initWithBookmark:(id)arg1 childBookmarks:(id)arg2 inCollection:(id)arg3 addingBookmark:(BOOL)arg4 toFavorites:(BOOL)arg5 willBeDisplayedModally:(BOOL)arg6;
 - (id)initWithBookmark:(id)arg1 inCollection:(id)arg2 addingBookmark:(BOOL)arg3;
 - (BOOL)isEditingField;
+- (id)keyCommands;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)reloadData;

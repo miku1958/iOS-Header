@@ -10,7 +10,9 @@
 {
 }
 
++ (Class)alternateUniverseClass;
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)relations;
 - (id)UUID;
 - (id)absoluteDate;

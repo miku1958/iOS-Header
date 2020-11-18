@@ -15,6 +15,7 @@
 @interface _INPBAppBundleInfo : PBCodable <_INPBAppBundleInfo, NSSecureCoding, NSCopying>
 {
     struct _has;
+    BOOL __encodeLegacyGloryData;
     _INPBAppId *_appId;
     _INPBBuildId *_buildId;
     NSArray *_intentSupports;
@@ -22,6 +23,7 @@
     NSArray *_supportedPlatforms;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBAppId *appId; // @synthesize appId=_appId;
 @property (strong, nonatomic) _INPBBuildId *buildId; // @synthesize buildId=_buildId;
 @property (readonly, copy) NSString *debugDescription;
@@ -40,6 +42,7 @@
 + (Class)intentSupportType;
 + (Class)localizedProjectsType;
 + (Class)supportedPlatformsType;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addIntentSupport:(id)arg1;
 - (void)addLocalizedProjects:(id)arg1;
@@ -49,6 +52,8 @@
 - (void)clearSupportedPlatforms;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)intentSupportAtIndex:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedProjectsAtIndex:(unsigned long long)arg1;

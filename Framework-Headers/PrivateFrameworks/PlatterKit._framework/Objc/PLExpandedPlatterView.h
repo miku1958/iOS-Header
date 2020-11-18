@@ -17,9 +17,11 @@
 
 @interface PLExpandedPlatterView : UIView <UIGestureRecognizerDelegate, UIScrollViewDelegate, PLExpandedPlatter, PLTitled, PLContentSizeCategoryAdjusting>
 {
+    UIView *_headerBackgroundView;
+    UIView *_headerKeyLineView;
+    UIView *_headerTintView;
     PLPlatterHeaderContentView *_headerContentView;
-    UIView *_headerDivider;
-    UIView *_contentView;
+    UIView *_scrollViewContentView;
     UIView *_topRubberbandingView;
     UIView *_customContentView;
     MTMaterialView *_actionsBackgroundView;
@@ -69,37 +71,47 @@
 - (void).cxx_destruct;
 - (struct CGSize)_actionsSizeThatFits:(struct CGSize)arg1 includingPadding:(BOOL)arg2;
 - (struct CGRect)_actionsViewFrame;
-- (struct CGRect)_boundsInsetFromDismissControlIfNecessary;
+- (struct CGRect)_boundsInsetHorizontallyFromDismissControlIfNecessary;
 - (void)_configureActionViewIfNecessaryWithActions:(id)arg1;
 - (void)_configureActionsBackgroundViewIfNecessaryWithActions:(id)arg1;
-- (void)_configureContentViewIfNecessary;
 - (void)_configureCustomContentView;
 - (void)_configureCustomContentViewIfNecessary;
 - (void)_configureDismissControlIfNecessary;
-- (void)_configureHeaderContentViewIfNecessary;
+- (void)_configureHeaderBackgroundDefaultIfNecessary;
+- (void)_configureHeaderBackgroundForReduceTransparencyIfNecessary;
+- (void)_configureHeaderViewsIfNecessary;
 - (void)_configureMainContentViewIfNecessary;
+- (void)_configureScrollViewContentViewIfNecessary;
 - (void)_configureScrollViewIfNecessary;
 - (struct CGSize)_contentSizeThatFitsContentWithSizeExcludingActions:(struct CGSize)arg1;
-- (struct CGRect)_contentViewFrame;
 - (struct CGSize)_contentViewSize;
 - (struct UIEdgeInsets)_dismissControlTotalOutset;
+- (struct CGRect)_effectiveMainContentViewFrame;
 - (struct CGSize)_flexibleAreaSizeForBounds:(struct CGRect)arg1;
+- (double)_headerKeyLineAlphaForContentOffset;
 - (void)_layoutActionsView;
-- (void)_layoutContentView;
 - (void)_layoutCustomContentView;
 - (void)_layoutDismissControl;
 - (void)_layoutHeader;
 - (void)_layoutMainContentView;
 - (void)_layoutMainContentViewIfNecessary;
 - (void)_layoutScrollView;
+- (void)_layoutScrollViewContentView;
 - (void)_layoutTopRubberbandingView;
+- (struct CGRect)_mainContentViewFrame;
+- (void)_reduceTransparencyDidChange:(id)arg1;
+- (struct UIEdgeInsets)_scrollViewContentInset;
+- (struct CGRect)_scrollViewContentViewFrame;
 - (struct CGSize)_sizeThatFitsContentExcludingActionsWithSize:(struct CGSize)arg1;
+- (void)_updateHeaderKeyLineAlphaIfNecessary;
 - (struct CGSize)actionsSizeThatFits:(struct CGSize)arg1;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (struct CGSize)contentSizeExcludingActions;
 - (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
+- (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (struct CGRect)frameForPlatterFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGRect)platterFrameForFrame:(struct CGRect)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
@@ -110,7 +122,6 @@
 - (struct CGSize)sizeExcludingActions;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

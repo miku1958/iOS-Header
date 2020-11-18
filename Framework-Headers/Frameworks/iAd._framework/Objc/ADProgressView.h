@@ -19,7 +19,7 @@
 @property (strong, nonatomic) UILabel *remainingTimeLabel; // @synthesize remainingTimeLabel=_remainingTimeLabel;
 @property (strong, nonatomic) ADPrerollSlider *slider; // @synthesize slider=_slider;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setElapsedTime:(double)arg1 totalTime:(double)arg2;

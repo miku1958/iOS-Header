@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) long long preferredStartingPosition; // @dynamic preferredStartingPosition;
 
-+ (id)typeString;
 - (Class)handlerClass;
 - (long long)preferredStartingPositionWithValue:(id)arg1 withType:(int)arg2;
 

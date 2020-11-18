@@ -8,8 +8,8 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol MapsSuggestionsLocationUpdater, MapsSuggestionsStrategy;
+@class MapsSuggestionsContacts, MapsSuggestionsRoutine, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@protocol MapsSuggestionsLocationUpdater, MapsSuggestionsNetworkRequester, MapsSuggestionsRoutineRequester, MapsSuggestionsShortcutStorage, MapsSuggestionsShortcutSuggestor, MapsSuggestionsStrategy;
 
 @interface MapsSuggestionsEngineBuilder : NSObject <MapsSuggestionsObject>
 {
@@ -27,8 +27,15 @@
     struct NSMutableArray *_excludeImprovers;
     struct NSMutableArray *_excludeDedupers;
     struct NSMutableDictionary *_titleFormatters;
+    id<MapsSuggestionsNetworkRequester> _networkRequester;
+    id<MapsSuggestionsRoutineRequester> _routineRequester;
+    MapsSuggestionsRoutine *_routine;
+    MapsSuggestionsContacts *_contacts;
+    id<MapsSuggestionsShortcutStorage> _shortcutStorage;
+    id<MapsSuggestionsShortcutSuggestor> _shortcutSuggestor;
 }
 
+@property (strong, nonatomic) MapsSuggestionsContacts *contacts; // @synthesize contacts=_contacts;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *excludeDedupers; // @synthesize excludeDedupers=_excludeDedupers;
@@ -43,6 +50,11 @@
 @property (strong, nonatomic) NSMutableSet *includePreFilters; // @synthesize includePreFilters=_includePreFilters;
 @property (strong, nonatomic) id<MapsSuggestionsLocationUpdater> locationUpdater; // @synthesize locationUpdater=_locationUpdater;
 @property (nonatomic) long long managerStyle; // @synthesize managerStyle=_managerStyle;
+@property (strong, nonatomic) id<MapsSuggestionsNetworkRequester> networkRequester; // @synthesize networkRequester=_networkRequester;
+@property (strong, nonatomic) MapsSuggestionsRoutine *routine; // @synthesize routine=_routine;
+@property (strong, nonatomic) id<MapsSuggestionsRoutineRequester> routineRequester; // @synthesize routineRequester=_routineRequester;
+@property (strong, nonatomic) id<MapsSuggestionsShortcutStorage> shortcutStorage; // @synthesize shortcutStorage=_shortcutStorage;
+@property (strong, nonatomic) id<MapsSuggestionsShortcutSuggestor> shortcutSuggestor; // @synthesize shortcutSuggestor=_shortcutSuggestor;
 @property (strong, nonatomic) NSMutableArray *sourceClasses; // @synthesize sourceClasses=_sourceClasses;
 @property (strong, nonatomic) id<MapsSuggestionsStrategy> strategy; // @synthesize strategy=_strategy;
 @property (readonly) Class superclass;
@@ -59,6 +71,7 @@
 - (void).cxx_destruct;
 - (id)build;
 - (id)withDedupers:(id)arg1;
+- (id)withFavorites;
 - (id)withImprovers:(id)arg1;
 - (id)withLocationUpdater:(id)arg1;
 - (id)withManagerStyle:(long long)arg1;

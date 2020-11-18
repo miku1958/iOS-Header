@@ -7,7 +7,7 @@
 #import <ToneLibrary/TLToneManager.h>
 
 @interface TLToneManager (BulletinBoard)
-- (BOOL)_bb_isToneEnabledForAlertType:(long long)arg1 topic:(id)arg2;
+- (BOOL)bb_isToneEnabledForAlertType:(long long)arg1 topic:(id)arg2;
 - (BOOL)bb_isToneEnabledForSectionInfo:(id)arg1;
 @end
 

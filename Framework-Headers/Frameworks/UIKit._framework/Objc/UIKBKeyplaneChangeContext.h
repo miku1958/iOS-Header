@@ -13,9 +13,11 @@ __attribute__((visibility("hidden")))
     BOOL _splitWidthsChanged;
     BOOL _selfSizingChanged;
     BOOL _updateAssistantView;
+    BOOL _isSecureTextEntry;
     struct CGSize _size;
 }
 
+@property (nonatomic) BOOL isSecureTextEntry; // @synthesize isSecureTextEntry=_isSecureTextEntry;
 @property (nonatomic) BOOL selfSizingChanged; // @synthesize selfSizingChanged=_selfSizingChanged;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) BOOL sizeDidChange; // @synthesize sizeDidChange=_sizeDidChange;

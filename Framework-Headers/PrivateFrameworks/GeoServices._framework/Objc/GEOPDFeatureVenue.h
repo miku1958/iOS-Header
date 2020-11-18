@@ -8,32 +8,51 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDVenueContainer, NSMutableArray, PBUnknownFields;
+@class GEOPDVenueContainer, NSMutableArray, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDFeatureVenue : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSMutableArray *_buildings;
     NSMutableArray *_levels;
     GEOPDVenueContainer *_venueContainer;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_buildings:1;
+        unsigned int read_levels:1;
+        unsigned int read_venueContainer:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_buildings:1;
+        unsigned int wrote_levels:1;
+        unsigned int wrote_venueContainer:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSMutableArray *buildings; // @synthesize buildings=_buildings;
+@property (strong, nonatomic) NSMutableArray *buildings;
 @property (readonly, nonatomic) BOOL hasVenueContainer;
-@property (strong, nonatomic) NSMutableArray *levels; // @synthesize levels=_levels;
+@property (strong, nonatomic) NSMutableArray *levels;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDVenueContainer *venueContainer; // @synthesize venueContainer=_venueContainer;
+@property (strong, nonatomic) GEOPDVenueContainer *venueContainer;
 
 + (Class)buildingType;
++ (BOOL)isValid:(id)arg1;
 + (Class)levelType;
 - (void).cxx_destruct;
+- (void)_addNoFlagsBuilding:(id)arg1;
+- (void)_addNoFlagsLevel:(id)arg1;
+- (void)_readBuildings;
+- (void)_readLevels;
+- (void)_readVenueContainer;
 - (void)addBuilding:(id)arg1;
 - (void)addLevel:(id)arg1;
 - (id)buildingAtIndex:(unsigned long long)arg1;
 - (unsigned long long)buildingsCount;
 - (void)clearBuildings;
 - (void)clearLevels;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -43,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (id)levelAtIndex:(unsigned long long)arg1;
 - (unsigned long long)levelsCount;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     TSTTableDataList *_commentStorageDataList;
     TSTTableDataList *_importWarningSetDataList;
     TSTTableDataList *_preBNCFormatDataList;
+    BOOL _foundABadDatalistKey;
     BOOL _upgrading;
     BOOL _cellCountValid;
     unsigned char _storageVersionPreBNC;
@@ -83,7 +84,9 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_needToUpgradeCellStorage;
+- (vector_73284f0b)accumulateCurrentCellsConcurrentlyInRow:(struct TSUModelRowIndex)arg1 rowInfo:(id)arg2 atColumns:(vector_5e7df3d8 *)arg3 usingCellCreationBlock:(CDUnknownBlockType)arg4;
 - (id)addPasteboardCustomFormat:(id)arg1 toDocument:(id)arg2 updatingPasteboardFormat:(BOOL)arg3;
+- (void)addPasteboardCustomFormatFromCell:(id)arg1;
 - (id)allRichTextStorages;
 - (void)assertIsNotIterating;
 - (BOOL)auditDatalistDuplicationReturningResult:(id *)arg1;
@@ -111,6 +114,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithOwner:(id)arg1;
 - (void)decrementCellCountsAtCellID:(struct TSUCellCoord)arg1;
 - (void)decrementColumnCellCount:(unsigned short)arg1 byAmount:(unsigned long long)arg2;
+- (void)didApplyConcurrentCellMap:(id)arg1;
 - (void)endIteration;
 - (void)enumerateCellStoragesInRange:(struct TSUCellRect)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateCellStoragesRowByRowToMaxID:(struct TSUCellCoord)arg1 getPreBNC:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
@@ -121,6 +125,7 @@ __attribute__((visibility("hidden")))
 - (id)formulaDataList;
 - (id)formulaErrorDataList;
 - (id)formulaSpecAtCellID:(struct TSUCellCoord)arg1;
+- (id)formulaSpecForStorageRef:(struct TSTCellStorage *)arg1;
 - (BOOL)getCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (BOOL)hasFormulaAtCellID:(struct TSUCellCoord)arg1;
 - (double)heightOfRowAtIndex:(unsigned int)arg1;
@@ -151,9 +156,13 @@ __attribute__((visibility("hidden")))
 - (id)p_pasteboardCustomFormatMap;
 - (id)p_populatedMultipleChoiceListFormat:(id)arg1;
 - (CDStruct_c8ca99d5)p_preBNCKeysForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
+- (CDStruct_c8ca99d5)p_preBNCKeysForCell:(id)arg1 oldPreBNCStorageRef:(CDStruct_106f10ff *)arg2 callWillModify:(BOOL)arg3;
+- (void)p_stashBadKey:(unsigned long long)arg1 forList:(id)arg2;
 - (void)p_updateNumberOfPopulatedCells;
+- (CDStruct_c8ca99d5)p_updatePreBNCDataListsForCurrentFormat:(id)arg1 numberFormat:(id)arg2 currencyFormat:(id)arg3 dateFormat:(id)arg4 durationFormat:(id)arg5 baseFormat:(id)arg6 customFormat:(id)arg7 stepperSliderFormat:(id)arg8 mcListFormat:(id)arg9 oldPreBNCStorageRef:(CDStruct_106f10ff *)arg10 callWillModify:(BOOL)arg11;
 - (id)populatedCustomFormat:(id)arg1 value:(double)arg2;
 - (id)preBNCFormatDataList;
+- (void)prepareToApplyConcurrentCellMap:(id)arg1;
 - (void)reassignPasteboardCustomFormatKeys;
 - (void)removeColumns:(struct _NSRange)arg1;
 - (void)removeRows:(struct _NSRange)arg1;
@@ -169,6 +178,7 @@ __attribute__((visibility("hidden")))
 - (void)setCellMap:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormulas:(BOOL)arg5 skipDirtyingNonFormulaCells:(BOOL)arg6 doRichTextDOLC:(BOOL)arg7;
 - (void)setCellStyle:(id)arg1 ofColumnAtIndex:(unsigned short)arg2;
 - (void)setCellStyle:(id)arg1 ofRowAtIndex:(unsigned int)arg2;
+- (void)setCellsConcurrently:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3 conditionalStyleOwner:(id)arg4 ignoreFormula:(BOOL)arg5 clearImportWarnings:(BOOL)arg6;
 - (void)setHeight:(double)arg1 ofRowAtIndex:(unsigned int)arg2;
 - (void)setHidingState:(unsigned char)arg1 ofColumnAtIndex:(unsigned short)arg2;
 - (void)setHidingState:(unsigned char)arg1 ofRowAtIndex:(unsigned int)arg2;
@@ -186,6 +196,7 @@ __attribute__((visibility("hidden")))
 - (id)textStyleOfColumnAtIndex:(unsigned short)arg1;
 - (id)textStyleOfRowAtIndex:(unsigned int)arg1;
 - (void)updateColumnHeaderAtIndex:(unsigned short)arg1 fromMetadata:(id)arg2;
+- (void)updateDataListsConcurrentlyWithConcurrentCellMap:(id)arg1 clearImportWarnings:(BOOL)arg2;
 - (void)updateHeaderStorageStylesWithBlock:(CDUnknownBlockType)arg1;
 - (void)updateRowHeaderAtIndex:(unsigned int)arg1 fromMetadata:(id)arg2;
 - (void)upgradeCellFormatsU2_0;

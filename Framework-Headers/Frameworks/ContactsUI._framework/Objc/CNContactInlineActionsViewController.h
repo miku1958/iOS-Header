@@ -11,7 +11,7 @@
 #import <ContactsUI/CNUIObjectViewController-Protocol.h>
 #import <ContactsUI/CNUIUserActionListConsumer-Protocol.h>
 
-@class CNActionsView, CNContact, CNContactActionsController, CNUIUserActionListDataSource, NSArray, NSDictionary, NSString, UIView;
+@class CNActionsView, CNContact, CNContactActionsController, CNUIContactsEnvironment, CNUIUserActionListDataSource, NSArray, NSDictionary, NSString, UIView;
 @protocol CNContactInlineActionsViewControllerDelegate, CNCustomPresentation, CNSchedulerProvider, CNUIObjectViewControllerDelegate;
 
 @interface CNContactInlineActionsViewController : UIViewController <CNActionsViewProtocol, CNUIUserActionListConsumer, CNContactActionsControllerDelegate, CNUIObjectViewController>
@@ -31,6 +31,7 @@
     id<CNCustomPresentation> _actionsControllerPresentation;
     id<CNSchedulerProvider> _schedulerProvider;
     CNContactActionsController *_actionsController;
+    CNUIContactsEnvironment *_environment;
     CNUIUserActionListDataSource *_actionListDataSource;
 }
 
@@ -47,6 +48,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL displaysTitles; // @synthesize displaysTitles=_displaysTitles;
 @property (nonatomic) BOOL displaysUnavailableActionTypes; // @synthesize displaysUnavailableActionTypes=_displaysUnavailableActionTypes;
+@property (strong, nonatomic) CNUIContactsEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<CNUIObjectViewControllerDelegate> objectViewControllerDelegate; // @synthesize objectViewControllerDelegate;
 @property (strong, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
@@ -60,6 +62,7 @@
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
 - (id)allModelsObservable;
+- (void)checkinLaunchTasksForUndiscoverableActionsForContact:(id)arg1;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;
 - (void)dealloc;
 - (void)didSelectAction:(id)arg1 withSourceView:(id)arg2 longPress:(BOOL)arg3;
@@ -68,7 +71,7 @@
 - (void)displayAdditionalActionItems:(id)arg1;
 - (void)displayAllSupportedTypesDisabled;
 - (id)existingActionItemForType:(id)arg1;
-- (id)initWithActionListDataSource:(id)arg1;
+- (id)initWithActionListDataSource:(id)arg1 environment:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (id)makeActionItemForType:(id)arg1;

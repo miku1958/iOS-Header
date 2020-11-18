@@ -13,6 +13,7 @@
     void *_impl;
 }
 
+@property (readonly) BOOL allowHapticsAndSystemSoundsDuringRecording;
 @property (readonly) NSArray *availableCategories;
 @property (readonly) NSArray *availableInputs;
 @property (readonly) NSArray *availableModes;
@@ -49,6 +50,7 @@
 - (void)dealloc;
 - (BOOL)decoupledIO;
 - (id)delegate;
+- (BOOL)enableNotifications:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)fixHardwareFormatToMultiChannel:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)forceSoundCheck;
 - (float)hapticThermalGain;
@@ -84,6 +86,7 @@
 - (double)outputSampleRate;
 - (float)outputVolume;
 - (BOOL)overrideOutputAudioPort:(unsigned long long)arg1 error:(id *)arg2;
+- (id)pickedRoute;
 - (BOOL)preferDecoupledIO:(BOOL)arg1 error:(id *)arg2;
 - (double)preferredHardwareSampleRate;
 - (double)preferredIOBufferDuration;
@@ -96,6 +99,7 @@
 - (id)privateGetDataSources:(BOOL)arg1;
 - (struct AVAudioSessionImpl *)privateGetImplementation;
 - (id)privateGetSelectedDataSource:(BOOL)arg1;
+- (void)privateHandleOtherPrimaryAudioPlayStateChange;
 - (void)privateHandlePickableRoutesChange;
 - (void)privateHandleRoutingContextChange;
 - (void)privateHandleSecondaryAudioHintChange:(id)arg1;
@@ -109,7 +113,6 @@
 - (BOOL)privateSetOptions:(unsigned long long)arg1 forCategory:(id)arg2 error:(id *)arg3;
 - (BOOL)privateSetPropertyValue:(unsigned int)arg1 withBool:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)privateSetRouteSharingPolicy:(unsigned long long)arg1 error:(id *)arg2;
-- (BOOL)privateSetRoutingContextUID:(id)arg1 error:(id *)arg2;
 - (void)privateUpdateAudioFormat:(id)arg1;
 - (void)privateUpdateAudioFormats:(id)arg1;
 - (void)privateUpdateDataSources:(id)arg1 forInput:(BOOL)arg2;
@@ -135,6 +138,7 @@
 - (BOOL)setActive:(BOOL)arg1 withOptions:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)setAggregatedIOPreference:(unsigned long long)arg1 error:(id *)arg2;
 - (void)setAllowAllBuiltInDataSources:(BOOL)arg1;
+- (BOOL)setAllowHapticsAndSystemSoundsDuringRecording:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setAudioClockDevice:(id)arg1 error:(id *)arg2;
 - (BOOL)setAudioHardwareControlFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)setBypassRingerSwitchPolicy:(BOOL)arg1 error:(id *)arg2;
@@ -150,6 +154,7 @@
 - (BOOL)setIAmTheAssistant:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)setInputDataSource:(id)arg1 error:(id *)arg2;
 - (BOOL)setInputGain:(float)arg1 error:(id *)arg2;
+- (BOOL)setInterruptionFadeDuration:(id)arg1 error:(id *)arg2;
 - (BOOL)setInterruptionPriority:(long long)arg1 error:(id *)arg2;
 - (BOOL)setMode:(id)arg1 error:(id *)arg2;
 - (BOOL)setOutputDataSource:(id)arg1 error:(id *)arg2;

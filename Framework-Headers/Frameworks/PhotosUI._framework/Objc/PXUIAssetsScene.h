@@ -19,11 +19,13 @@
     } _needsUpdateFlags;
     BOOL __supressingColorSettings;
     PXDebugAssetBadgeManager *__debugBadgeManager;
+    double _contentTileCornerRadius;
     struct CGSize _maximumImageSize;
 }
 
 @property (strong, nonatomic, setter=_setDebugBadgeManager:) PXDebugAssetBadgeManager *_debugBadgeManager; // @synthesize _debugBadgeManager=__debugBadgeManager;
 @property (nonatomic, setter=_setSupressingColorSettings:) BOOL _supressingColorSettings; // @synthesize _supressingColorSettings=__supressingColorSettings;
+@property (nonatomic) double contentTileCornerRadius; // @synthesize contentTileCornerRadius=_contentTileCornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

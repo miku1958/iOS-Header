@@ -26,9 +26,9 @@
 }
 
 @property (strong, nonatomic) NSString *builderSessionID; // @synthesize builderSessionID=_builderSessionID;
-@property (strong, nonatomic) NSArray *components; // @synthesize components=_components;
+@property (copy, nonatomic) NSArray *components; // @synthesize components=_components;
 @property (strong, nonatomic) HMMutableArray *componentsArray; // @synthesize componentsArray=_componentsArray;
-@property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
+@property (copy, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,7 +36,7 @@
 @property (readonly, weak, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) HMMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
 @property (readonly, nonatomic) NSUUID *mediaSystemUUID; // @synthesize mediaSystemUUID=_mediaSystemUUID;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 

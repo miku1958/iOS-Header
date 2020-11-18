@@ -6,13 +6,14 @@
 
 #import <HomeUI/HUQuickControlInteractionCoordinator.h>
 
+#import <HomeUI/CAAnimationDelegate-Protocol.h>
 #import <HomeUI/HUQuickControlSliderGestureTransformerDelegate-Protocol.h>
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class HUDisplayLinkApplier, HUElasticApplier, HUQuickControlSliderGestureTransformer, HUQuickControlViewProfile, NSString, UILongPressGestureRecognizer, UITapGestureRecognizer;
+@class HUDisplayLinkApplier, HUElasticApplier, HUQuickControlSliderGestureTransformer, HUQuickControlViewProfile, NSDate, NSString, UILongPressGestureRecognizer, UITapGestureRecognizer;
 @protocol HUQuickControlIncrementalConvertibleProfile;
 
-@interface HUQuickControlElasticSliderInteractionCoordinator : HUQuickControlInteractionCoordinator <HUQuickControlSliderGestureTransformerDelegate, UIGestureRecognizerDelegate>
+@interface HUQuickControlElasticSliderInteractionCoordinator : HUQuickControlInteractionCoordinator <HUQuickControlSliderGestureTransformerDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate>
 {
     BOOL _userInteractionActive;
     BOOL _hasSecondaryValue;
@@ -26,6 +27,7 @@
     HUElasticApplier *_controlHorizontalCompressionApplier;
     double _activeGestureValue;
     unsigned long long _activeGestureValueType;
+    NSDate *_interactableStartTime;
     CDStruct_ef18196a _modelValue;
 }
 
@@ -39,6 +41,7 @@
 @property (strong, nonatomic) HUQuickControlSliderGestureTransformer *gestureTransformer; // @synthesize gestureTransformer=_gestureTransformer;
 @property (nonatomic) BOOL hasSecondaryValue; // @synthesize hasSecondaryValue=_hasSecondaryValue;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSDate *interactableStartTime; // @synthesize interactableStartTime=_interactableStartTime;
 @property (nonatomic) CDStruct_c3b9c2ee modelValue; // @synthesize modelValue=_modelValue;
 @property (strong, nonatomic) UILongPressGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (strong, nonatomic) HUElasticApplier *primaryValueSmoothingApplier; // @synthesize primaryValueSmoothingApplier=_primaryValueSmoothingApplier;
@@ -50,11 +53,14 @@
 
 - (void).cxx_destruct;
 - (id)_allAppliers;
-- (void)_beginReceivingTouchesWithGestureRecognizer:(id)arg1 firstTouchDown:(BOOL)arg2;
+- (void)_animateToEnlargeView;
+- (void)_animateToShrinkView;
+- (void)_beginReceivingTouchesWithGestureRecognizer:(id)arg1 isTouchContinuation:(BOOL)arg2;
 - (unsigned long long)_findClosestValueFromTouchLocation:(struct CGPoint)arg1;
 - (void)_handleControlPanGesture:(id)arg1;
 - (void)_handleControlTapGesture:(id)arg1;
 - (CDStruct_c3b9c2ee)_rawViewValueRange;
+- (id)_resizingAnimationWithFromValue:(double)arg1 toValue:(double)arg2;
 - (double)_rubberBandedStretchProgress;
 - (id)_rubberBandingValueNormalizer;
 - (void)_setupAllValueAppliersIfNecessary;
@@ -65,12 +71,14 @@
 - (void)_updateModelValue:(CDStruct_c3b9c2ee)arg1 roundValue:(BOOL)arg2 notifyDelegate:(BOOL)arg3;
 - (void)_updatePropertiesForControlValueSmoothingApplier:(id)arg1 ofType:(unsigned long long)arg2;
 - (id)_valueNormalizerWithOptions:(id)arg1;
+- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (void)dealloc;
 - (void)gestureDidEndForGestureTransformer:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (void)gestureTransformer:(id)arg1 sliderValueDidChange:(double)arg2;
 - (id)initWithControlView:(id)arg1 delegate:(id)arg2;
+- (void)recordInteractionStart;
 - (void)setUserInteractionEnabled:(BOOL)arg1;
 - (void)setValue:(id)arg1;
 - (void)setViewVisible:(BOOL)arg1;

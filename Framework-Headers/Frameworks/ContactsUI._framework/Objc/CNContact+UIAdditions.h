@@ -10,6 +10,7 @@
 
 @interface CNContact (UIAdditions)
 
+@property (readonly, nonatomic) NSArray *allLinkedIdentifiers;
 @property (readonly, nonatomic) NSArray *birthdays;
 @property (readonly, nonatomic) BOOL hasNonPersistedData;
 @property (readonly, nonatomic) NSString *personName;
@@ -20,12 +21,17 @@
 + (BOOL)contactRemindersEnabled;
 + (id)contactWithStateRestorationCoder:(id)arg1 store:(id)arg2 keys:(id)arg3;
 + (id)descriptorForAllUIKeys;
++ (BOOL)downtimeWhitelistUIEnabled;
 + (BOOL)geminiEnabled;
 + (id)multiValuePropertiesSupportingPredicateValidation;
 + (BOOL)quickActionsEnabled;
++ (unsigned long long)rawImageTypeForIdentifier:(id)arg1;
 + (BOOL)settableMeCardEnabled;
++ (id)stringIdentifierForImageType:(unsigned long long)arg1;
 + (BOOL)suggestionsEnabled;
 + (BOOL)suggestionsShownInEditMode;
+- (BOOL)hasImageOfType:(unsigned long long)arg1;
+- (unsigned long long)rawImageType;
 - (id)validPropertiesByEvaluatingPredicate:(id)arg1 onMultiValueProperties:(id)arg2;
 @end
 

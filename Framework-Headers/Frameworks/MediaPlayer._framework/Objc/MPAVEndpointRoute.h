@@ -48,10 +48,14 @@
 - (BOOL)isDeviceRoute;
 - (BOOL)isDeviceSpeakerRoute;
 - (BOOL)isHomePodRoute;
+- (BOOL)isLowLatencyRoute;
 - (BOOL)isProxyGroupPlayer;
 - (BOOL)isRoutingToWirelessDevice;
+- (BOOL)isSplitRoute;
+- (BOOL)isSplitterCapable;
 - (BOOL)isStereoPair;
 - (BOOL)isTVRoute;
+- (long long)numberOfOutputDevices;
 - (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (id)routeName;
 - (id)routeNames;

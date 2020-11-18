@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameController/_GCGamepad.h>
+#import <GameController/GCGamepad.h>
 
 #import <GameController/_GCACHomeButtonDelegate-Protocol.h>
 
-@class GCMotion, NSString, _GCACHomeButton;
+@class NSString, _GCACHomeButton;
 
-@interface _GCMFiGamepadControllerProfile : _GCGamepad <_GCACHomeButtonDelegate>
+@interface _GCMFiGamepadControllerProfile : GCGamepad <_GCACHomeButtonDelegate>
 {
     _GCACHomeButton *_acHome;
-    GCMotion *_motion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,12 +23,9 @@
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithController:(id)arg1;
-- (id)inputForElement:(struct __IOHIDElement *)arg1;
 - (id)menuButton;
-- (id)motion;
 - (id)name;
 - (void)setPlayerIndex:(long long)arg1;
-- (void)set_motion:(id)arg1;
 - (void)toggleSuspendResume;
 
 @end

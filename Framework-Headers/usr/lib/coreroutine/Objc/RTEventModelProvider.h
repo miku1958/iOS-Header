@@ -93,8 +93,8 @@
 - (unsigned long long)lengthOfEvent:(id)arg1;
 - (void)onLearnedLocationManagerNotification:(id)arg1;
 - (void)onManagedObjectContextCreated:(id)arg1;
+- (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)persistEventModel;
-- (void)purgeManager:(id)arg1 performPurgeOfType:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)refreshAllLOIHistogramsWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)relativeHighProbabilityHistogramItem:(id)arg1 toItem:(id)arg2;
 - (void)restoreEventModelIfAppropriate;

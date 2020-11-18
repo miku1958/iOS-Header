@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)typeString;
 - (Class)handlerClass;
 - (BOOL)userControllable;
 

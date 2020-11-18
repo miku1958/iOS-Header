@@ -11,6 +11,7 @@
 
 @protocol MPMediaLibraryDataProviderPrivate <MPMediaLibraryDataProvider>
 
+@property (readonly, copy, nonatomic) NSString *accountDSID;
 @property (readonly, nonatomic) id<MPArtworkDataSource> completeMyCollectionArtworkDataSource;
 @property (readonly, nonatomic) NSString *databasePath;
 @property (readonly, nonatomic) BOOL isGeniusEnabled;
@@ -21,6 +22,8 @@
 
 
 @optional
++ (NSArray *)onDiskProviders;
++ (void)setOnDiskProviders:(NSArray *)arg1;
 - (void)addGlobalPlaylistWithID:(NSString *)arg1 andAddToCloudLibrary:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 - (void)addItemWithIdentifier:(long long)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(BOOL))arg3;
 - (void)addItemsWithIdentifiers:(NSArray *)arg1 toPlaylistWithIdentifier:(long long)arg2 completionBlock:(void (^)(BOOL))arg3;

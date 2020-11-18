@@ -24,7 +24,7 @@
 @property (readonly) NSString *rejectionCause; // @synthesize rejectionCause=_rejectionCause;
 
 - (void).cxx_destruct;
-- (id)initWithMemory:(id)arg1;
+- (id)initWithMemory:(id)arg1 memoryInfo:(id)arg2;
 - (id)initWithOptions:(id)arg1;
 
 @end

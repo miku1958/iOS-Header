@@ -20,6 +20,7 @@
     long long _streamToken;
     NSDictionary *_capabilities;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    BOOL _shouldUseXPC;
 }
 
 @property (strong, nonatomic) NSDictionary *capabilities; // @synthesize capabilities=_capabilities;
@@ -46,8 +47,10 @@
 - (void)deregisterBlocksForDelegateNotifications;
 - (id)getStats;
 - (id)initWithIDSDestination:(id)arg1 callID:(id)arg2 error:(id *)arg3;
-- (id)initWithLocalAddress:(id)arg1 networkSockets:(id)arg2 IDSDestination:(id)arg3 callID:(id)arg4 error:(id *)arg5;
+- (id)initWithLocalAddress:(id)arg1 networkSockets:(id)arg2 IDSDestination:(id)arg3 connectionClientID:(id)arg4 callID:(id)arg5 options:(id)arg6 error:(id *)arg7;
+- (id)initWithNWConnectionClientID:(unsigned char [16])arg1 options:(id)arg2 error:(id *)arg3;
 - (id)initWithNetworkSockets:(id)arg1 callID:(id)arg2 error:(id *)arg3;
+- (id)initWithNetworkSockets:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)pause;
 - (void)refreshLoggingParameters;
 - (void)registerBlocksForDelegateNotifications;

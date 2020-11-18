@@ -106,6 +106,7 @@
 - (void)sendResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)serverProxy:(id)arg1 connectionStateDidChange:(BOOL)arg2;
 - (void)updateBulletin:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)updateGlobalSettings:(id)arg1;
 - (void)updateSectionInfo:(id)arg1;
 - (void)updateSectionParameters:(id)arg1 forSectionID:(id)arg2;
 

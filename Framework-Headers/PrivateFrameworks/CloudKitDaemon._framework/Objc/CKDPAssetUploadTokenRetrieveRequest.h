@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 @interface CKDPAssetUploadTokenRetrieveRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_assets;
-    NSData *_authCopyRequest;
     NSData *_authPutRequest;
     int _authPutType;
     NSMutableArray *_contentRequestHeaders;
@@ -27,12 +26,10 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSMutableArray *assets; // @synthesize assets=_assets;
-@property (strong, nonatomic) NSData *authCopyRequest; // @synthesize authCopyRequest=_authCopyRequest;
 @property (strong, nonatomic) NSData *authPutRequest; // @synthesize authPutRequest=_authPutRequest;
 @property (nonatomic) int authPutType; // @synthesize authPutType=_authPutType;
 @property (strong, nonatomic) NSMutableArray *contentRequestHeaders; // @synthesize contentRequestHeaders=_contentRequestHeaders;
 @property (strong, nonatomic) CKDPRecordFieldIdentifier *field; // @synthesize field=_field;
-@property (readonly, nonatomic) BOOL hasAuthCopyRequest;
 @property (readonly, nonatomic) BOOL hasAuthPutRequest;
 @property (nonatomic) BOOL hasAuthPutType;
 @property (readonly, nonatomic) BOOL hasField;

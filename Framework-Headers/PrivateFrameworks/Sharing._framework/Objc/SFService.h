@@ -9,7 +9,7 @@
 #import <Sharing/NSSecureCoding-Protocol.h>
 #import <Sharing/SFXPCInterface-Protocol.h>
 
-@class CUAppleIDClient, NSData, NSDate, NSDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint;
+@class CUAppleIDClient, NSData, NSDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
 @interface SFService : NSObject <NSSecureCoding, SFXPCInterface>
@@ -21,15 +21,6 @@
     BOOL _invalidateDone;
     struct NSMutableDictionary *_requestQueue;
     struct NSMutableDictionary *_sessions;
-    int _tlsActivateState;
-    struct NSMutableDictionary *_tlsBuffers;
-    struct __SecIdentity *_tlsIdentity;
-    NSData *_tlsRecordData;
-    NSUUID *_tlsPeer;
-    NSObject<OS_dispatch_queue> *_tlsQueue;
-    NSDate *_tlsStart;
-    struct NSMutableDictionary *_tlsSessions;
-    struct NSMutableSet *_tlsVerifiedPeers;
     struct LogCategory *_ucatCore;
     struct LogCategory *_ucatCrypto;
     NSXPCConnection *_xpcCnx;
@@ -40,7 +31,6 @@
     BOOL _needsSetup;
     BOOL _overrideScreenOff;
     BOOL _pairSetupDisabled;
-    BOOL _tlsEnabled;
     BOOL _hasProblem;
     BOOL _supportsAirPlayReceiver;
     BOOL _wakeDevice;
@@ -140,7 +130,6 @@
 @property (copy, nonatomic) CDUnknownBlockType showPINHandlerEx; // @synthesize showPINHandlerEx=_showPINHandlerEx;
 @property (nonatomic) BOOL supportsAirPlayReceiver; // @synthesize supportsAirPlayReceiver=_supportsAirPlayReceiver;
 @property (strong, nonatomic) NSXPCListenerEndpoint *testListenerEndpoint; // @synthesize testListenerEndpoint=_testListenerEndpoint;
-@property (nonatomic) BOOL tlsEnabled; // @synthesize tlsEnabled=_tlsEnabled;
 @property (nonatomic) BOOL touchRemoteEnabled; // @synthesize touchRemoteEnabled=_touchRemoteEnabled;
 @property (nonatomic) BOOL wakeDevice; // @synthesize wakeDevice=_wakeDevice;
 @property (nonatomic) BOOL watchLocked; // @synthesize watchLocked=_watchLocked;
@@ -154,19 +143,9 @@
 - (void)_ensureXPCStarted;
 - (void)_interrupted;
 - (void)_invalidated;
-- (void)_pairTLSComplete:(int)arg1 peer:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_pairTLSSendValidationRecord;
-- (void)_pairTLSWithPeer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performActivateSafeChange:(CDUnknownBlockType)arg1;
-- (void)_sendTLSEncryptedObject:(id)arg1 toPeer:(id)arg2;
 - (void)_sendToPeer:(id)arg1 type:(unsigned char)arg2 data:(id)arg3;
 - (void)_sendToPeer:(id)arg1 type:(unsigned char)arg2 unencryptedObject:(id)arg3;
-- (void)_tlsActivated;
-- (int)_tlsEnsureConfiguredWithPeer:(id)arg1;
-- (void)_tlsReceivedData:(id)arg1 type:(unsigned char)arg2 peer:(id)arg3;
-- (void)_tlsReceivedObjectFromPeer:(id)arg1 length:(unsigned long long)arg2;
-- (int)_tlsSetCertificatesForSession:(struct SSLContext *)arg1;
-- (void)activateTLSWithIdentity:(struct __SecIdentity *)arg1 recordData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearEncryptionInfoForPeer:(id)arg1;
 - (void)dealloc;
@@ -175,11 +154,9 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
-- (void)pairTLSWithPeer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendEvent:(id)arg1;
 - (void)sendRequest:(id)arg1;
 - (void)sendResponse:(id)arg1;
-- (void)sendTLSEncryptedObject:(id)arg1 toPeer:(id)arg2;
 - (void)sendToPeer:(id)arg1 flags:(unsigned int)arg2 object:(id)arg3;
 - (void)sendToPeer:(id)arg1 type:(unsigned char)arg2 data:(id)arg3;
 - (void)serviceError:(id)arg1;
@@ -190,10 +167,6 @@
 - (void)serviceReceivedResponse:(id)arg1;
 - (void)serviceSessionFailed:(id)arg1 error:(id)arg2;
 - (int)setEncryptionReadKey:(const char *)arg1 readKeyLen:(unsigned long long)arg2 writeKey:(const char *)arg3 writeKeyLen:(unsigned long long)arg4 peer:(id)arg5;
-- (id)tlsDataForPeer:(id)arg1;
-- (void)tlsReceivedData:(id)arg1 type:(unsigned char)arg2 peer:(id)arg3;
-- (void)tlsSetData:(id)arg1 forPeer:(id)arg2;
-- (int)tlsState;
 - (void)updateWithService:(id)arg1;
 
 @end

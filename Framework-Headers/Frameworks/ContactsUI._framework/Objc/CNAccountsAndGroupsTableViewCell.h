@@ -17,10 +17,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CNAccountsAndGroupsItem *item; // @synthesize item=_item;
 
 - (void).cxx_destruct;
-- (void)_cnui_applyContactStyle;
 - (void)dealloc;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)tintColorDidChange;
 - (void)updateFromItem;
 
 @end

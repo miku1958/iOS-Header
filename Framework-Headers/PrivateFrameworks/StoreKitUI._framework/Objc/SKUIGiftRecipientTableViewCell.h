@@ -12,6 +12,7 @@
 
 @class CNContactPickerViewController, CNContactStore, MFComposeRecipientView, NSArray, NSAttributedString, NSString, SKUIGiftContactSearchController, UILabel, UIView;
 
+__attribute__((visibility("hidden")))
 @interface SKUIGiftRecipientTableViewCell : UITableViewCell <CNContactPickerDelegate, MFComposeRecipientViewDelegate, SKUIGiftContactSearchDelegate>
 {
     CNContactStore *_contactStore;
@@ -21,6 +22,7 @@
     SKUIGiftContactSearchController *_searchController;
     UIView *_topBorderView;
     BOOL _didLayoutSubviews;
+    BOOL _leftToRight;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
@@ -29,6 +31,7 @@
 @property (nonatomic) BOOL didLayoutSubviews; // @synthesize didLayoutSubviews=_didLayoutSubviews;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *label;
+@property (nonatomic) BOOL leftToRight; // @synthesize leftToRight=_leftToRight;
 @property (copy, nonatomic) NSArray *recipientAddresses;
 @property (readonly) Class superclass;
 

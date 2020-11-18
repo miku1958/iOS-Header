@@ -8,7 +8,7 @@
 
 #import <AvatarUI/AVTSplashScreenLayoutDelegate-Protocol.h>
 
-@class AVPlayerLooper, AVPlayerViewController, AVQueuePlayer, AVTSplashScreenConfiguration, AVTSplashScreenLayout, AVTUIStyle, UIButton, UILabel;
+@class AVPlayerLooper, AVPlayerViewController, AVQueuePlayer, AVTSplashScreenConfiguration, AVTSplashScreenLayout, AVTUIStyle, UIButton, UILabel, UIScrollView;
 @protocol AVTSplashScreenViewControllerDelegate;
 
 @interface AVTSplashScreenViewController : UIViewController <AVTSplashScreenLayoutDelegate>
@@ -17,6 +17,7 @@
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UIButton *_continueButton;
+    UIScrollView *_scrollView;
     AVTSplashScreenConfiguration *_configuration;
     AVTUIStyle *_styleProvider;
     AVPlayerLooper *_playerLooper;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) AVPlayerLooper *playerLooper; // @synthesize playerLooper=_playerLooper;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 @property (strong, nonatomic) AVQueuePlayer *queuePlayer; // @synthesize queuePlayer=_queuePlayer;
+@property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) AVPlayerLooper *secondaryPlayerLooper; // @synthesize secondaryPlayerLooper=_secondaryPlayerLooper;
 @property (strong, nonatomic) AVPlayerViewController *secondaryPlayerViewController; // @synthesize secondaryPlayerViewController=_secondaryPlayerViewController;
 @property (strong, nonatomic) AVQueuePlayer *secondaryQueuePlayer; // @synthesize secondaryQueuePlayer=_secondaryQueuePlayer;

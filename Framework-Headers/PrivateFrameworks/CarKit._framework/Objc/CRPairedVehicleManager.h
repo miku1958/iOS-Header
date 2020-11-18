@@ -16,11 +16,17 @@
 @property (strong, nonatomic) CRCarKitServiceClient *serviceClient; // @synthesize serviceClient=_serviceClient;
 
 - (void).cxx_destruct;
+- (id)_firstVehicleMatchingTest:(CDUnknownBlockType)arg1;
 - (id)allVehicles;
+- (void)fetchAllVehiclesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchPairedVehiclesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)pairedVehicles;
 - (BOOL)removeVehicle:(id)arg1;
+- (void)removeVehicle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)saveVehicle:(id)arg1;
+- (void)saveVehicle:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)syncFetchAllVehiclesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)vehicleForBluetoothAddress:(id)arg1;
 - (id)vehicleForCertificateSerial:(id)arg1;
 - (id)vehicleNameForWiFiUUID:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
-@class CKDProtocolTranslator, NSArray, NSData, NSString;
+@class CKDProtocolTranslator, NSArray, NSData, NSString, NSURL, PCCKey;
 
 __attribute__((visibility("hidden")))
 @interface CKDCodeFunctionInvokeOperation : CKDDatabaseOperation
@@ -21,22 +21,36 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _recordFetchCommandBlock;
     NSString *_serviceName;
     NSString *_functionName;
+    PCCKey *_pccKey;
+    NSArray *_pccWrappedKeys;
+    NSData *_attestationEntropy;
     NSArray *_requestLocalSerializations;
+    NSArray *_requestLocalEnvelopes;
+    NSData *_permittedRemoteMeasurement;
+    NSURL *_explicitBaseURL;
     NSArray *_requestRecords;
+    NSArray *_requestEnvelopes;
     NSData *_serializedArguments;
     NSData *_serializedResponse;
     NSArray *_responseRecords;
     CKDProtocolTranslator *_translator;
 }
 
+@property (strong, nonatomic) NSData *attestationEntropy; // @synthesize attestationEntropy=_attestationEntropy;
+@property (copy, nonatomic) NSURL *explicitBaseURL; // @synthesize explicitBaseURL=_explicitBaseURL;
 @property (readonly, copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
 @property (copy, nonatomic) CDUnknownBlockType initialResponseReceivedCallback; // @synthesize initialResponseReceivedCallback=_initialResponseReceivedCallback;
 @property (nonatomic) BOOL local; // @synthesize local=_local;
+@property (strong, nonatomic) PCCKey *pccKey; // @synthesize pccKey=_pccKey;
+@property (strong, nonatomic) NSArray *pccWrappedKeys; // @synthesize pccWrappedKeys=_pccWrappedKeys;
+@property (copy, nonatomic) NSData *permittedRemoteMeasurement; // @synthesize permittedRemoteMeasurement=_permittedRemoteMeasurement;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchCommandBlock; // @synthesize recordFetchCommandBlock=_recordFetchCommandBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchCompletionBlock; // @synthesize recordFetchCompletionBlock=_recordFetchCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchProgressBlock; // @synthesize recordFetchProgressBlock=_recordFetchProgressBlock;
 @property (copy, nonatomic) CDUnknownBlockType replaceLocalSerializationsBlobs; // @synthesize replaceLocalSerializationsBlobs=_replaceLocalSerializationsBlobs;
 @property (copy, nonatomic) CDUnknownBlockType replaceWireSerializations; // @synthesize replaceWireSerializations=_replaceWireSerializations;
+@property (copy, nonatomic) NSArray *requestEnvelopes; // @synthesize requestEnvelopes=_requestEnvelopes;
+@property (copy, nonatomic) NSArray *requestLocalEnvelopes; // @synthesize requestLocalEnvelopes=_requestLocalEnvelopes;
 @property (copy, nonatomic) NSArray *requestLocalSerializations; // @synthesize requestLocalSerializations=_requestLocalSerializations;
 @property (copy, nonatomic) NSArray *requestRecords; // @synthesize requestRecords=_requestRecords;
 @property (copy, nonatomic) NSArray *responseRecords; // @synthesize responseRecords=_responseRecords;

@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)lightKeycapsFontName;
 - (id)messagesWriteboardKeyImageName;
 - (double)returnKeyFontSize;
-- (int)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
+- (unsigned long long)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
 - (void)setupLayoutSegments;
 - (BOOL)shouldShowBottomRowEdge;
 - (BOOL)shouldShowTopRowEdge;

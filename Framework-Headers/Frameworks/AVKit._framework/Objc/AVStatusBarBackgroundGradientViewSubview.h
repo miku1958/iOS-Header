@@ -8,6 +8,7 @@
 
 @class CAGradientLayer;
 
+__attribute__((visibility("hidden")))
 @interface AVStatusBarBackgroundGradientViewSubview : UIView
 {
     double _gradientOpacity;

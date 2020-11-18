@@ -6,27 +6,26 @@
 
 #import <MusicCarDisplayUI/NSObject-Protocol.h>
 
-@class MCDNowPlayingViewController, NSNumber, NSString;
+@class NSNumber, NSString, _MCDNowPlayingViewController;
 
 @protocol MCDNowPlayingViewControllerDelegate <NSObject>
 
 @optional
-- (BOOL)nowPlayingViewController:(MCDNowPlayingViewController *)arg1 buttonShouldBeActive:(long long)arg2;
-- (void)nowPlayingViewController:(MCDNowPlayingViewController *)arg1 didSendAction:(long long)arg2 state:(long long)arg3;
-- (BOOL)nowPlayingViewController:(MCDNowPlayingViewController *)arg1 shouldDisplayButton:(long long)arg2 withImage:(out id *)arg3 existingIdentifier:(NSString *)arg4 tinted:(out BOOL *)arg5;
-- (void)nowPlayingViewControllerAddToLibrary:(MCDNowPlayingViewController *)arg1;
-- (BOOL)nowPlayingViewControllerCanRepeat:(MCDNowPlayingViewController *)arg1;
-- (BOOL)nowPlayingViewControllerCanShowAddToLibrary:(MCDNowPlayingViewController *)arg1;
-- (BOOL)nowPlayingViewControllerCanShowAlbumLink:(MCDNowPlayingViewController *)arg1;
-- (BOOL)nowPlayingViewControllerCanShowChangePlaybackRate:(MCDNowPlayingViewController *)arg1;
-- (BOOL)nowPlayingViewControllerCanShowMore:(MCDNowPlayingViewController *)arg1;
-- (BOOL)nowPlayingViewControllerCanShuffle:(MCDNowPlayingViewController *)arg1;
-- (void)nowPlayingViewControllerChangePlaybackRate:(MCDNowPlayingViewController *)arg1;
-- (void)nowPlayingViewControllerDidRequestAlbum:(MCDNowPlayingViewController *)arg1;
-- (NSNumber *)nowPlayingViewControllerGetPlaybackRate:(MCDNowPlayingViewController *)arg1;
-- (BOOL)nowPlayingViewControllerIsFuseSubscriber:(MCDNowPlayingViewController *)arg1;
-- (void)nowPlayingViewControllerMore:(MCDNowPlayingViewController *)arg1;
-- (void)nowPlayingViewControllerToggleRepeat:(MCDNowPlayingViewController *)arg1;
-- (void)nowPlayingViewControllerToggleShuffle:(MCDNowPlayingViewController *)arg1;
+- (BOOL)nowPlayingViewController:(_MCDNowPlayingViewController *)arg1 buttonShouldBeActive:(long long)arg2;
+- (void)nowPlayingViewController:(_MCDNowPlayingViewController *)arg1 didSendAction:(long long)arg2 state:(long long)arg3;
+- (BOOL)nowPlayingViewController:(_MCDNowPlayingViewController *)arg1 shouldDisplayButton:(long long)arg2 withImage:(out id *)arg3 existingIdentifier:(NSString *)arg4 tinted:(out BOOL *)arg5;
+- (void)nowPlayingViewControllerAddToLibrary:(_MCDNowPlayingViewController *)arg1;
+- (BOOL)nowPlayingViewControllerCanRepeat:(_MCDNowPlayingViewController *)arg1;
+- (BOOL)nowPlayingViewControllerCanShowAddToLibrary:(_MCDNowPlayingViewController *)arg1;
+- (BOOL)nowPlayingViewControllerCanShowAlbumLink:(_MCDNowPlayingViewController *)arg1;
+- (BOOL)nowPlayingViewControllerCanShowChangePlaybackRate:(_MCDNowPlayingViewController *)arg1;
+- (BOOL)nowPlayingViewControllerCanShowMore:(_MCDNowPlayingViewController *)arg1;
+- (BOOL)nowPlayingViewControllerCanShuffle:(_MCDNowPlayingViewController *)arg1;
+- (void)nowPlayingViewControllerChangePlaybackRate:(_MCDNowPlayingViewController *)arg1;
+- (NSNumber *)nowPlayingViewControllerGetPlaybackRate:(_MCDNowPlayingViewController *)arg1;
+- (BOOL)nowPlayingViewControllerIsFuseSubscriber:(_MCDNowPlayingViewController *)arg1;
+- (void)nowPlayingViewControllerMore:(_MCDNowPlayingViewController *)arg1;
+- (void)nowPlayingViewControllerToggleRepeat:(_MCDNowPlayingViewController *)arg1;
+- (void)nowPlayingViewControllerToggleShuffle:(_MCDNowPlayingViewController *)arg1;
 @end
 

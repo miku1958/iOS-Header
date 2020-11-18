@@ -8,6 +8,7 @@
 
 @interface NSUserDefaults (AppleGlobalDomain)
 + (id)appleGlobalDomain;
++ (id)appleGlobalDomainARKItDefaults;
 + (id)appleGlobalDomainARKitKeys;
 @end
 

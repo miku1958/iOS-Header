@@ -13,31 +13,47 @@
 @property (copy, nonatomic) NSString *content;
 @property (nonatomic) int dateSearchType;
 @property (strong, nonatomic) _INPBDateTimeRange *dateTime;
+@property (strong, nonatomic) _INPBDataString *groupName;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (nonatomic) BOOL hasDateSearchType;
 @property (readonly, nonatomic) BOOL hasDateTime;
+@property (readonly, nonatomic) BOOL hasGroupName;
+@property (nonatomic) BOOL hasIncludeAllNoteContents;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasItemType;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasLocationSearchType;
 @property (readonly, nonatomic) BOOL hasNotebookItemIdentifier;
 @property (nonatomic) BOOL hasStatus;
+@property (nonatomic) BOOL hasTaskPriority;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (nonatomic) BOOL includeAllNoteContents;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
 @property (nonatomic) int itemType;
 @property (strong, nonatomic) _INPBLocation *location;
 @property (nonatomic) int locationSearchType;
 @property (copy, nonatomic) NSString *notebookItemIdentifier;
 @property (nonatomic) int status;
+@property (nonatomic) int taskPriority;
+@property (readonly, nonatomic) int *temporalEventTriggerTypes;
+@property (readonly, nonatomic) unsigned long long temporalEventTriggerTypesCount;
 @property (strong, nonatomic) _INPBDataString *title;
 
 - (int)StringAsDateSearchType:(NSString *)arg1;
 - (int)StringAsItemType:(NSString *)arg1;
 - (int)StringAsLocationSearchType:(NSString *)arg1;
 - (int)StringAsStatus:(NSString *)arg1;
+- (int)StringAsTaskPriority:(NSString *)arg1;
+- (int)StringAsTemporalEventTriggerTypes:(NSString *)arg1;
+- (void)addTemporalEventTriggerType:(int)arg1;
+- (void)clearTemporalEventTriggerTypes;
 - (NSString *)dateSearchTypeAsString:(int)arg1;
 - (NSString *)itemTypeAsString:(int)arg1;
 - (NSString *)locationSearchTypeAsString:(int)arg1;
+- (void)setTemporalEventTriggerTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (NSString *)statusAsString:(int)arg1;
+- (NSString *)taskPriorityAsString:(int)arg1;
+- (int)temporalEventTriggerTypeAtIndex:(unsigned long long)arg1;
+- (NSString *)temporalEventTriggerTypesAsString:(int)arg1;
 @end
 

@@ -6,9 +6,14 @@
 
 #import <NeutrinoCore/JSExport-Protocol.h>
 
+@class NSString;
+
 @protocol NUJSVideoPropertiesExport <JSExport>
 
 @property (readonly) struct CGRect cleanAperture;
+@property (readonly) struct CGRect originalCleanAperture;
+@property (readonly) struct CGSize originalSize;
 
+- (BOOL)containsMetadata:(NSString *)arg1;
 @end
 

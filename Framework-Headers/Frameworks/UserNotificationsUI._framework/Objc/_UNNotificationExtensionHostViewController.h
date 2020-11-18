@@ -15,7 +15,6 @@
 {
     BOOL _wantsToBecomeFirstResponder;
     BOOL _wantsToReceiveActionResponses;
-    BOOL _dismissEnabled;
     id<_UNNotificationExtensionHostDelegate> _delegate;
     unsigned long long _playPauseMediaButtonType;
     UIColor *_playPauseMediaButtonColor;
@@ -23,7 +22,6 @@
 }
 
 @property (weak, nonatomic) id<_UNNotificationExtensionHostDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic, getter=isDismissEnabled) BOOL dismissEnabled; // @synthesize dismissEnabled=_dismissEnabled;
 @property (strong, nonatomic) UIColor *playPauseMediaButtonColor; // @synthesize playPauseMediaButtonColor=_playPauseMediaButtonColor;
 @property (nonatomic) struct CGRect playPauseMediaButtonFrame; // @synthesize playPauseMediaButtonFrame=_playPauseMediaButtonFrame;
 @property (nonatomic) unsigned long long playPauseMediaButtonType; // @synthesize playPauseMediaButtonType=_playPauseMediaButtonType;
@@ -34,14 +32,13 @@
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
-- (void)_extensionAudioAccessoryViewContextId:(unsigned int)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_extensionDidCompleteNotificationResponse:(id)arg1 withOption:(unsigned long long)arg2;
 - (void)_extensionDidUpdateControls;
 - (void)_extensionMediaPlayingPaused;
 - (void)_extensionMediaPlayingStarted;
 - (void)_extensionRequestsDefaultAction;
 - (void)_extensionRequestsDismiss;
-- (void)_extensionRequestsToSetDismissEnabled:(BOOL)arg1;
 - (void)_extensionSetPlayPauseMediaButtonColor:(id)arg1;
 - (void)_extensionSetPlayPauseMediaButtonFrame:(struct CGRect)arg1;
 - (void)_extensionSetPlayPauseMediaButtonType:(unsigned long long)arg1;

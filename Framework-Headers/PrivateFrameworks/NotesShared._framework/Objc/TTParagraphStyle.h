@@ -35,6 +35,7 @@
 @property (nonatomic) unsigned long long indent; // @synthesize indent=_indent;
 @property (readonly, nonatomic) BOOL isHeader;
 @property (readonly, nonatomic) BOOL isList;
+@property (readonly, nonatomic) BOOL isRTL;
 @property (nonatomic) BOOL needsListCleanup; // @synthesize needsListCleanup=_needsListCleanup;
 @property (nonatomic) BOOL needsParagraphCleanup; // @synthesize needsParagraphCleanup=_needsParagraphCleanup;
 @property (readonly, nonatomic) BOOL preferSingleLine;

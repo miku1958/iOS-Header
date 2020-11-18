@@ -20,7 +20,7 @@
 - (void)_startMonitoringExtensions;
 - (void)_stopMonitoringExtensions;
 - (void)dealloc;
-- (id)extensionForNotificationSourceDescription:(id)arg1 error:(id *)arg2;
+- (id)extensionForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (id)init;
 
 @end

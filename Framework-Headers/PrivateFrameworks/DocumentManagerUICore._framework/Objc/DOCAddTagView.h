@@ -8,28 +8,26 @@
 
 #import <DocumentManagerUICore/UITextFieldDelegate-Protocol.h>
 
-@class CAShapeLayer, DOCTagIconView, NSString, UILabel, UITextField, UIVisualEffectView;
+@class CAShapeLayer, DOCTagDotView, NSString, UILabel, UITextField;
 @protocol DOCAddTagTextFieldDelegate;
 
 @interface DOCAddTagView : UIView <UITextFieldDelegate>
 {
     id<DOCAddTagTextFieldDelegate> _delegate;
-    DOCTagIconView *_tagDotView;
+    DOCTagDotView *_tagDotView;
     UILabel *_addNewTagLabel;
-    UIVisualEffectView *_addNewTagLabelWrapper;
     UITextField *_tagNameTextField;
     CAShapeLayer *_borderLayer;
 }
 
 @property (readonly, nonatomic) UILabel *addNewTagLabel; // @synthesize addNewTagLabel=_addNewTagLabel;
-@property (readonly, nonatomic) UIVisualEffectView *addNewTagLabelWrapper; // @synthesize addNewTagLabelWrapper=_addNewTagLabelWrapper;
 @property (readonly, nonatomic) CAShapeLayer *borderLayer; // @synthesize borderLayer=_borderLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<DOCAddTagTextFieldDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) DOCTagIconView *tagDotView; // @synthesize tagDotView=_tagDotView;
+@property (readonly, nonatomic) DOCTagDotView *tagDotView; // @synthesize tagDotView=_tagDotView;
 @property (readonly, nonatomic) UITextField *tagNameTextField; // @synthesize tagNameTextField=_tagNameTextField;
 @property (readonly, nonatomic) NSString *text;
 

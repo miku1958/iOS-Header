@@ -6,14 +6,11 @@
 
 #import <MapsSuggestions/NSObject-Protocol.h>
 
-@class CLLocation;
 @protocol MapsSuggestionsSource;
 
 @protocol MapsSuggestionsSourceDelegate <NSObject>
-- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2 deleteMissing:(BOOL)arg3;
+- (unsigned long long)addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
 - (BOOL)attachSource:(id<MapsSuggestionsSource>)arg1;
-- (CLLocation *)currentBestLocation;
-- (unsigned long long)deleteEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
 - (BOOL)detachSource:(id<MapsSuggestionsSource>)arg1;
 @end
 

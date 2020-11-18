@@ -14,16 +14,18 @@
 {
     NSString *_deviceIdentifier;
     unsigned long long _deviceClass;
+    unsigned long long _syncProtocolVersion;
 }
 
 @property (readonly, nonatomic) unsigned long long deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (readonly, copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (readonly, nonatomic) unsigned long long syncProtocolVersion; // @synthesize syncProtocolVersion=_syncProtocolVersion;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithDeviceIdentifier:(id)arg1 deviceClass:(unsigned long long)arg2;
+- (id)initWithDeviceIdentifier:(id)arg1 deviceClass:(unsigned long long)arg2 syncProtocolVersion:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

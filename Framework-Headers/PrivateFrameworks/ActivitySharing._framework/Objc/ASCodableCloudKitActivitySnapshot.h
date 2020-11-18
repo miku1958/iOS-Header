@@ -14,10 +14,13 @@
 {
     double _activeHours;
     double _activeHoursGoal;
+    long long _amm;
     double _briskMinutes;
     double _briskMinutesGoal;
     double _energyBurned;
     double _energyBurnedGoal;
+    double _mmg;
+    double _mmv;
     double _pushCount;
     long long _snapshotIndex;
     double _stepCount;
@@ -29,10 +32,13 @@
     struct {
         unsigned int activeHours:1;
         unsigned int activeHoursGoal:1;
+        unsigned int amm:1;
         unsigned int briskMinutes:1;
         unsigned int briskMinutesGoal:1;
         unsigned int energyBurned:1;
         unsigned int energyBurnedGoal:1;
+        unsigned int mmg:1;
+        unsigned int mmv:1;
         unsigned int pushCount:1;
         unsigned int snapshotIndex:1;
         unsigned int stepCount:1;
@@ -44,16 +50,20 @@
 
 @property (nonatomic) double activeHours; // @synthesize activeHours=_activeHours;
 @property (nonatomic) double activeHoursGoal; // @synthesize activeHoursGoal=_activeHoursGoal;
+@property (nonatomic) long long amm; // @synthesize amm=_amm;
 @property (nonatomic) double briskMinutes; // @synthesize briskMinutes=_briskMinutes;
 @property (nonatomic) double briskMinutesGoal; // @synthesize briskMinutesGoal=_briskMinutesGoal;
 @property (nonatomic) double energyBurned; // @synthesize energyBurned=_energyBurned;
 @property (nonatomic) double energyBurnedGoal; // @synthesize energyBurnedGoal=_energyBurnedGoal;
 @property (nonatomic) BOOL hasActiveHours;
 @property (nonatomic) BOOL hasActiveHoursGoal;
+@property (nonatomic) BOOL hasAmm;
 @property (nonatomic) BOOL hasBriskMinutes;
 @property (nonatomic) BOOL hasBriskMinutesGoal;
 @property (nonatomic) BOOL hasEnergyBurned;
 @property (nonatomic) BOOL hasEnergyBurnedGoal;
+@property (nonatomic) BOOL hasMmg;
+@property (nonatomic) BOOL hasMmv;
 @property (nonatomic) BOOL hasPushCount;
 @property (readonly, nonatomic) BOOL hasSample;
 @property (nonatomic) BOOL hasSnapshotIndex;
@@ -62,6 +72,8 @@
 @property (nonatomic) BOOL hasTimeZoneOffsetFromUTCForNoon;
 @property (nonatomic) BOOL hasWalkingAndRunningDistance;
 @property (nonatomic) BOOL hasWheelchairUse;
+@property (nonatomic) double mmg; // @synthesize mmg=_mmg;
+@property (nonatomic) double mmv; // @synthesize mmv=_mmv;
 @property (nonatomic) double pushCount; // @synthesize pushCount=_pushCount;
 @property (strong, nonatomic) ASCodableCloudKitSample *sample; // @synthesize sample=_sample;
 @property (nonatomic) long long snapshotIndex; // @synthesize snapshotIndex=_snapshotIndex;

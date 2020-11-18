@@ -17,17 +17,23 @@
     char *_strings;
     unsigned long long _stringsSize;
     unsigned long long _stringsCapacity;
+    struct CGRect _frame;
 }
 
+@property (readonly, nonatomic) struct CGRect frame; // @synthesize frame=_frame;
 @property (nonatomic) BOOL usesTwoHands; // @synthesize usesTwoHands=_usesTwoHands;
 
 + (BOOL)supportsSecureCoding;
+- (struct CGRect)_decodeCGRectForKey:(id)arg1 withDecoder:(id)arg2;
+- (void)_encodeCGRect:(struct CGRect)arg1 forKey:(id)arg2 withCoder:(id)arg3;
 - (void)addKeyWithString:(id)arg1 frame:(struct CGRect)arg2;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)ensureFrameCapacity:(unsigned long long)arg1;
 - (void)ensureStringCapacity:(unsigned long long)arg1;
 - (void)enumerateKeysUsingBlock:(CDUnknownBlockType)arg1;
+- (const char *)firstKeyString;
 - (unsigned long long)hash;
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;

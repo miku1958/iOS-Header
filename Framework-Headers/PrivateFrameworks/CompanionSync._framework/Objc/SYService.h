@@ -53,6 +53,7 @@
     NSString *_peerID;
     double _defaultMessageTimeout;
     double _sessionStalenessInterval;
+    long long _sendingBufferCap;
     long long _engineType;
     NSString *_generationID;
 }
@@ -74,12 +75,14 @@
 @property (readonly, nonatomic) SYPersistentStore *persistentStore; // @synthesize persistentStore=_persistentStore;
 @property (nonatomic) long long priority; // @synthesize priority=_defaultPriority;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (nonatomic) long long sendingBufferCap; // @synthesize sendingBufferCap=_sendingBufferCap;
 @property (readonly, nonatomic) NSObject<OS_os_activity> *serviceActivity; // @synthesize serviceActivity=_serviceActivity;
 @property (readonly, nonatomic) _SYMultiSuspendableQueue *sessionQueue; // @synthesize sessionQueue=_sessionQueue;
 @property (nonatomic) double sessionStalenessInterval; // @synthesize sessionStalenessInterval=_sessionStalenessInterval;
 @property (readonly, nonatomic) PBCodable *stateForLogging;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SYSyncEngine *syncEngine; // @synthesize syncEngine=_syncEngine;
+@property (readonly, nonatomic) BOOL targetIsConnected;
 @property (readonly, nonatomic) BOOL targetIsInProximity;
 
 - (void).cxx_destruct;
@@ -142,6 +145,7 @@
 - (void)_vectorClockUpdated;
 - (void)_whenSessionEnds:(CDUnknownBlockType)arg1;
 - (void)_wrapUpCurrentSession:(id)arg1;
+- (void)currentDeviceConnectionChanged:(BOOL)arg1;
 - (void)currentDeviceProximityChanged:(BOOL)arg1;
 - (void)dataStreamWithMetadata:(id)arg1 options:(struct NSDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)dataStreamWithMetadata:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;
@@ -155,6 +159,7 @@
 - (void)handleSyncResponse:(id)arg1 ofType:(unsigned short)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithService:(id)arg1 priority:(long long)arg2 asMasterStore:(BOOL)arg3 options:(struct NSDictionary *)arg4;
+- (id)initWithService:(id)arg1 priority:(long long)arg2 qos:(unsigned int)arg3 asMasterStore:(BOOL)arg4 options:(struct NSDictionary *)arg5;
 - (BOOL)resume:(id *)arg1;
 - (void)sendData:(id)arg1 options:(struct NSDictionary *)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)sendData:(id)arg1 options:(struct NSDictionary *)arg2 identifier:(id *)arg3 error:(id *)arg4;

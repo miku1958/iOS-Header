@@ -6,29 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <VectorKit/VKMapViewDelegate-Protocol.h>
-
-@class NSString, VKMapView;
+@class VKMapView;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
-@interface MIController : NSObject <VKMapViewDelegate>
+@interface MIController : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_xpc_object> *_connection;
     VKMapView *_mapView;
-    struct DebugTree _debugTree;
     BOOL _isActive;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
-@property (readonly) Class superclass;
 
 + (id)sharedController;
-- (id).cxx_construct;
-- (void).cxx_destruct;
 - (void)activateController:(id)arg1;
 - (void)deactivateController;
 - (void)decodeDebugTreeData:(id)arg1;

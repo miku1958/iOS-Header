@@ -8,33 +8,61 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOClientMetrics, GEOETAResult, GEOETAServiceResponseSummary, GEOPDDatasetABStatus, GEOPlaceSearchResponse, NSMutableArray, NSString;
+@class GEOClientMetrics, GEOETAResult, GEOETAServiceResponseSummary, GEOPDDatasetABStatus, GEOPlaceSearchResponse, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEOETAResponse : PBCodable <NSCopying>
 {
-    unsigned long long _debugServerLatencyMs;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
+    PBUnknownFields *_unknownFields;
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
     unsigned long long _problemDetailsSpace;
     GEOClientMetrics *_clientMetrics;
     GEOPDDatasetABStatus *_datasetAbStatus;
     NSString *_debugData;
+    unsigned long long _debugServerLatencyMs;
     NSMutableArray *_etaResultReferencePointDestinations;
     GEOETAResult *_etaResultReferencePointOrigin;
     NSMutableArray *_etaResults;
     GEOETAServiceResponseSummary *_etaServiceSummary;
     GEOPlaceSearchResponse *_originPlaceSearchResponse;
     int _status;
-    CDStruct_00a28cb6 _has;
+    struct {
+        unsigned int has_debugServerLatencyMs:1;
+        unsigned int has_status:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_problemDetails:1;
+        unsigned int read_clientMetrics:1;
+        unsigned int read_datasetAbStatus:1;
+        unsigned int read_debugData:1;
+        unsigned int read_etaResultReferencePointDestinations:1;
+        unsigned int read_etaResultReferencePointOrigin:1;
+        unsigned int read_etaResults:1;
+        unsigned int read_etaServiceSummary:1;
+        unsigned int read_originPlaceSearchResponse:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_problemDetails:1;
+        unsigned int wrote_clientMetrics:1;
+        unsigned int wrote_datasetAbStatus:1;
+        unsigned int wrote_debugData:1;
+        unsigned int wrote_debugServerLatencyMs:1;
+        unsigned int wrote_etaResultReferencePointDestinations:1;
+        unsigned int wrote_etaResultReferencePointOrigin:1;
+        unsigned int wrote_etaResults:1;
+        unsigned int wrote_etaServiceSummary:1;
+        unsigned int wrote_originPlaceSearchResponse:1;
+        unsigned int wrote_status:1;
+    } _flags;
 }
 
 @property (strong, nonatomic) GEOClientMetrics *clientMetrics;
-@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus; // @synthesize datasetAbStatus=_datasetAbStatus;
-@property (strong, nonatomic) NSString *debugData; // @synthesize debugData=_debugData;
+@property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
+@property (strong, nonatomic) NSString *debugData;
 @property (nonatomic) unsigned long long debugServerLatencyMs;
-@property (strong, nonatomic) NSMutableArray *etaResultReferencePointDestinations; // @synthesize etaResultReferencePointDestinations=_etaResultReferencePointDestinations;
-@property (strong, nonatomic) GEOETAResult *etaResultReferencePointOrigin; // @synthesize etaResultReferencePointOrigin=_etaResultReferencePointOrigin;
-@property (strong, nonatomic) NSMutableArray *etaResults; // @synthesize etaResults=_etaResults;
+@property (strong, nonatomic) NSMutableArray *etaResultReferencePointDestinations;
+@property (strong, nonatomic) GEOETAResult *etaResultReferencePointOrigin;
+@property (strong, nonatomic) NSMutableArray *etaResults;
 @property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
 @property (readonly, nonatomic) BOOL hasClientMetrics;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
@@ -44,21 +72,37 @@
 @property (readonly, nonatomic) BOOL hasEtaServiceSummary;
 @property (readonly, nonatomic) BOOL hasOriginPlaceSearchResponse;
 @property (nonatomic) BOOL hasStatus;
-@property (strong, nonatomic) GEOPlaceSearchResponse *originPlaceSearchResponse; // @synthesize originPlaceSearchResponse=_originPlaceSearchResponse;
+@property (strong, nonatomic) GEOPlaceSearchResponse *originPlaceSearchResponse;
 @property (readonly, nonatomic) struct GEOProblemDetail *problemDetails;
 @property (readonly, nonatomic) unsigned long long problemDetailsCount;
-@property (nonatomic) int status; // @synthesize status=_status;
+@property (nonatomic) int status;
+@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)etaResultReferencePointDestinationType;
 + (Class)etaResultType;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
+- (void)_addNoFlagsEtaResult:(id)arg1;
+- (void)_addNoFlagsEtaResultReferencePointDestination:(id)arg1;
+- (void)_addNoFlagsProblemDetail:(struct GEOProblemDetail)arg1;
+- (void)_readClientMetrics;
+- (void)_readDatasetAbStatus;
+- (void)_readDebugData;
+- (void)_readEtaResultReferencePointDestinations;
+- (void)_readEtaResultReferencePointOrigin;
+- (void)_readEtaResults;
+- (void)_readEtaServiceSummary;
+- (void)_readOriginPlaceSearchResponse;
+- (void)_readProblemDetails;
 - (void)addEtaResult:(id)arg1;
 - (void)addEtaResultReferencePointDestination:(id)arg1;
 - (void)addProblemDetail:(struct GEOProblemDetail)arg1;
 - (void)clearEtaResultReferencePointDestinations;
 - (void)clearEtaResults;
 - (void)clearProblemDetails;
+- (void)clearSensitiveFields;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -72,6 +116,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (struct GEOProblemDetail)problemDetailAtIndex:(unsigned long long)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setProblemDetails:(struct GEOProblemDetail *)arg1 count:(unsigned long long)arg2;
 - (id)statusAsString:(int)arg1;

@@ -24,8 +24,10 @@
     BOOL _disableCornerRadiusForAvatar;
     BOOL _autoUpdateContact;
     BOOL _asynchronousRendering;
+    BOOL _allowStaleRendering;
     BOOL _allowsAnimation;
     BOOL _prohibitsPersonaFetch;
+    UIView *_forcePressView;
     unsigned long long _style;
     CNContactStore *_contactStore;
     PRPersonaStore *_personaStore;
@@ -33,7 +35,6 @@
     NSString *_name;
     NSString *_message;
     id<CNAvatarViewDelegate> _delegate;
-    UIView *_forcePressView;
     id<CNUILikenessRendering> _imageRenderer;
     id<CNCancelable> _rendererToken;
     UIImageView *_imageView;
@@ -41,11 +42,13 @@
     UINavigationController *_contactViewNavigationController;
     CNAvatarCardController *_cardController;
     id<CNSchedulerProvider> _schedulerProvider;
+    unsigned long long _stateCaptureHandle;
     UIImage *_overrideImage;
     long long _monogrammerStyle;
 }
 
 @property (copy, nonatomic) NSArray *actionCategories;
+@property (nonatomic) BOOL allowStaleRendering; // @synthesize allowStaleRendering=_allowStaleRendering;
 @property (nonatomic) BOOL allowsAnimation; // @synthesize allowsAnimation=_allowsAnimation;
 @property (nonatomic) BOOL asynchronousRendering; // @synthesize asynchronousRendering=_asynchronousRendering;
 @property (nonatomic) BOOL autoUpdateContact; // @synthesize autoUpdateContact=_autoUpdateContact;
@@ -79,6 +82,7 @@
 @property (nonatomic) BOOL showsActionsOnForcePress;
 @property (nonatomic) BOOL showsActionsOnTap;
 @property (nonatomic) BOOL showsContactOnTap; // @synthesize showsContactOnTap=_showsContactOnTap;
+@property (nonatomic) unsigned long long stateCaptureHandle; // @synthesize stateCaptureHandle=_stateCaptureHandle;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isThreeDTouchEnabled) BOOL threeDTouchEnabled; // @synthesize threeDTouchEnabled=_threeDTouchEnabled;
@@ -121,8 +125,8 @@
 - (id)initWithContact:(id)arg1;
 - (id)initWithContactStore:(id)arg1 personaStore:(id)arg2 threeDTouchEnabled:(BOOL)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(BOOL)arg2;
-- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(BOOL)arg2 style:(unsigned long long)arg3 schedulerProvider:(id)arg4;
+- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(BOOL)arg2 contactStore:(id)arg3;
+- (id)initWithImageRenderer:(id)arg1 threeDTouchEnabled:(BOOL)arg2 contactStore:(id)arg3 style:(unsigned long long)arg4 schedulerProvider:(id)arg5;
 - (id)initWithSettings:(id)arg1;
 - (void)layoutSubviews;
 - (id)presentingViewControllerForAvatarCardController:(id)arg1;

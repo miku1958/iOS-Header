@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)_evaluateImage:(out id *)arg1;
 - (id)_evaluateImageGeometry:(out id *)arg1;
+- (id)debugQuickLookObject;
 - (id)descriptionSubClassHook;
 - (unsigned long long)hash;
 - (id)initWithFilter:(id)arg1 settings:(id)arg2 inputs:(struct NSDictionary *)arg3;

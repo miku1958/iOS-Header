@@ -21,7 +21,7 @@
 
 @property (strong) NUImageGeometry *_geometry; // @synthesize _geometry=__geometry;
 @property (strong) id<NUTextureImage> _image; // @synthesize _image=__image;
-@property struct CGColor *debugColor; // @synthesize debugColor=_debugColor;
+@property (strong) struct CGColor *debugColor; // @synthesize debugColor=_debugColor;
 @property (strong) NUImageGeometry *geometry;
 @property (strong) id<NUTextureImage> image;
 

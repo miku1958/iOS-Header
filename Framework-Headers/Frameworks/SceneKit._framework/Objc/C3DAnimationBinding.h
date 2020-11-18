@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     void *_owner;
     struct __C3DModelTarget *_source;
     struct __C3DModelTarget *_destination;
+    CDUnknownBlockType _valueTransformer;
 }
 
 - (void)dealloc;

@@ -18,8 +18,11 @@
 - (id)_createImageForKey:(id)arg1 error:(id *)arg2;
 - (void)_handleImageCreated:(id)arg1 imageKey:(id)arg2;
 - (id)_resizeImageAtURL:(id)arg1 imageUTI:(id)arg2 targetSize:(struct CGSize)arg3 bakeInOrientation:(BOOL)arg4 error:(id *)arg5;
+- (void)cancelImageRequest:(long long)arg1;
 - (id)init;
 - (long long)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (long long)requestPlayerItemForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (id)thumbnailDataForAsset:(id)arg1 targetSize:(struct CGSize)arg2 outDataSpec:(struct PXMediaProviderThumbnailDataSpec *)arg3;
 
 @end
 

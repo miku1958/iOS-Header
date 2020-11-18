@@ -13,7 +13,7 @@
 #import <ContactsUI/CNContactViewControllerAddContactPresenter-Protocol.h>
 #import <ContactsUI/CNContactViewControllerDelegate-Protocol.h>
 
-@class CNAccountsAndGroupsDataSource, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSString, UIAlertController, UIKeyCommand;
+@class CNAccountsAndGroupsDataSource, CNAccountsAndGroupsViewController, CNContactListStyleApplier, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSArray, NSString, UIAlertController, UIKeyCommand;
 @protocol CNContactDataSource, CNContactNavigationControllerDelegate, CNScheduler;
 
 @interface CNContactNavigationController : UINavigationController <CNContactListViewControllerDelegate, CNContactListViewControllerDelegateInternal, CNContactViewControllerDelegate, CNContactContentViewControllerDelegate, CNAccountsAndGroupsViewControllerDelegate, CNContactViewControllerAddContactPresenter>
@@ -26,9 +26,11 @@
     BOOL _allowsContactBlocking;
     BOOL _hasPendingShowCard;
     BOOL _ignoresMapsData;
+    BOOL _hideGroupsButton;
     CNContactStyle *_contactStyle;
     CNContactStore *_contactStore;
     CNContactViewController *_reusableContactViewController;
+    CNAccountsAndGroupsViewController *_accountsAndGroupsViewController;
     CNAccountsAndGroupsDataSource *_accountsAndGroupsDataSource;
     long long _leftButtonBehavior;
     long long _rightButtonBehavior;
@@ -37,10 +39,14 @@
     UIKeyCommand *_addKeyCommand;
     UIAlertController *_facebookContactsAlertController;
     id<CNScheduler> _backgroundScheduler;
+    id<CNScheduler> _mainThreadScheduler;
     CNUIUserActivityManager *_activityManager;
+    CNContactListStyleApplier *_contactListStyleApplier;
+    NSArray *_prohibitedPropertyKeys;
 }
 
 @property (strong, nonatomic) CNAccountsAndGroupsDataSource *accountsAndGroupsDataSource; // @synthesize accountsAndGroupsDataSource=_accountsAndGroupsDataSource;
+@property (weak, nonatomic) CNAccountsAndGroupsViewController *accountsAndGroupsViewController; // @synthesize accountsAndGroupsViewController=_accountsAndGroupsViewController;
 @property (strong, nonatomic) CNUIUserActivityManager *activityManager; // @synthesize activityManager=_activityManager;
 @property (strong, nonatomic) UIKeyCommand *addKeyCommand; // @synthesize addKeyCommand=_addKeyCommand;
 @property (nonatomic) BOOL allowsCanceling; // @synthesize allowsCanceling=_allowsCanceling;
@@ -48,7 +54,8 @@
 @property (nonatomic) BOOL allowsCardEditing; // @synthesize allowsCardEditing=_allowsCardEditing;
 @property (nonatomic) BOOL allowsContactBlocking; // @synthesize allowsContactBlocking=_allowsContactBlocking;
 @property (nonatomic) BOOL allowsDone; // @synthesize allowsDone=_allowsDone;
-@property (strong, nonatomic) id<CNScheduler> backgroundScheduler; // @synthesize backgroundScheduler=_backgroundScheduler;
+@property (readonly, nonatomic) id<CNScheduler> backgroundScheduler; // @synthesize backgroundScheduler=_backgroundScheduler;
+@property (strong, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (strong, nonatomic) CNContactStyle *contactStyle; // @synthesize contactStyle=_contactStyle;
 @property (readonly, nonatomic) id<CNContactDataSource> dataSource;
@@ -58,11 +65,14 @@
 @property (weak, nonatomic) UIAlertController *facebookContactsAlertController; // @synthesize facebookContactsAlertController=_facebookContactsAlertController;
 @property (nonatomic) BOOL hasPendingShowCard; // @synthesize hasPendingShowCard=_hasPendingShowCard;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideGroupsButton; // @synthesize hideGroupsButton=_hideGroupsButton;
 @property (nonatomic) BOOL hidesSearchableSources;
 @property (nonatomic) BOOL ignoresMapsData; // @synthesize ignoresMapsData=_ignoresMapsData;
 @property (nonatomic) long long leftButtonBehavior; // @synthesize leftButtonBehavior=_leftButtonBehavior;
+@property (readonly, nonatomic) id<CNScheduler> mainThreadScheduler; // @synthesize mainThreadScheduler=_mainThreadScheduler;
 @property (strong, nonatomic) CNContactStoreDataSource *nonServerDataSource; // @synthesize nonServerDataSource=_nonServerDataSource;
 @property (weak, nonatomic) CNContactViewController *presentedContactViewController; // @synthesize presentedContactViewController=_presentedContactViewController;
+@property (strong, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property (strong, nonatomic) CNContactViewController *reusableContactViewController; // @synthesize reusableContactViewController=_reusableContactViewController;
 @property (nonatomic) long long rightButtonBehavior; // @synthesize rightButtonBehavior=_rightButtonBehavior;
 @property (readonly) Class superclass;
@@ -76,10 +86,12 @@
 - (id)addContactPresenter;
 - (void)applicationDidResume;
 - (void)beginSearch:(id)arg1;
+- (BOOL)canAddContacts;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)cancel:(id)arg1;
 - (void)cancelSearch:(id)arg1;
 - (void)checkForFacebookContactsWithDelay:(double)arg1 allowAlert:(BOOL)arg2;
+- (void)checkForInfoContentWithContext:(id)arg1;
 - (id)contactListViewController;
 - (BOOL)contactListViewController:(id)arg1 canSelectContact:(id)arg2;
 - (void)contactListViewController:(id)arg1 didSelectContact:(id)arg2;
@@ -90,6 +102,7 @@
 - (BOOL)contactViewController:(id)arg1 shouldPerformDefaultActionForContactProperty:(id)arg2;
 - (void)dealloc;
 - (void)done:(id)arg1;
+- (void)executeAddContact;
 - (id)initWithDataSource:(id)arg1;
 - (id)initWithDataSource:(id)arg1 allowsLargeTitles:(BOOL)arg2;
 - (id)initWithDataSource:(id)arg1 contactFormatter:(id)arg2 applyGroupFilterFromPreferences:(BOOL)arg3 environment:(id)arg4 allowsLargeTitles:(BOOL)arg5;
@@ -108,16 +121,23 @@
 - (void)selectPreviousContact:(id)arg1;
 - (void)setShouldDisplayMeContactBanner:(BOOL)arg1;
 - (BOOL)shouldDisplayMeContactBanner;
+- (BOOL)shouldShowGroupsButton;
+- (BOOL)shouldShowLeftCancelAndRightAddButton;
+- (BOOL)shouldShowLeftCancelAndRightDoneButton;
+- (BOOL)shouldShowRightAddAndCancelButton;
+- (BOOL)shouldShowRightAddButton;
+- (BOOL)shouldShowRightCancelButton;
 - (void)showCardForContact:(id)arg1 animated:(BOOL)arg2;
 - (void)showCardForContact:(id)arg1 resetFilter:(BOOL)arg2 resetSearch:(BOOL)arg3 fallbackToFirstContact:(BOOL)arg4 scrollToContact:(BOOL)arg5 animated:(BOOL)arg6;
 - (void)showCardForContactAfterIndexPath:(id)arg1;
 - (void)showCardForContactBeforeIndexPath:(id)arg1;
 - (void)showCardForContactIfPossible:(id)arg1;
-- (void)showUnifiedCardForPerson:(void *)arg1;
+- (void)updateContactStyle:(id)arg1;
 - (void)updateLeftNavigationButtonAnimated:(BOOL)arg1;
 - (void)updateNavigationButtonsAnimated:(BOOL)arg1;
 - (void)updateNavigationButtonsInSearchMode:(BOOL)arg1;
 - (void)updateNavigationButtonsInSearchMode:(BOOL)arg1 animated:(BOOL)arg2;
+- (id)userActivityRepresentingCurrentlyDisplayedContact;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

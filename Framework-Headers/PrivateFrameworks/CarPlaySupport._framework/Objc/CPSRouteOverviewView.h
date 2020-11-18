@@ -33,8 +33,10 @@
 + (id)_nameForMapItem:(id)arg1;
 + (id)_shortenedAddressForAddress:(id)arg1;
 - (void).cxx_destruct;
+- (void)_updateTripEstimateStyle;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setRepresentedTrip:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) double detectorExecutionTimeInterval; // @synthesize detectorExecutionTimeInterval=_detectorExecutionTimeInterval;
-@property (copy, nonatomic) VNSupportedImageSize *detectorPreferredImageSize; // @synthesize detectorPreferredImageSize=_detectorPreferredImageSize;
+@property (strong, nonatomic) VNSupportedImageSize *detectorPreferredImageSize; // @synthesize detectorPreferredImageSize=_detectorPreferredImageSize;
 @property (nonatomic) BOOL detectorWantsAnisotropicScaling; // @synthesize detectorWantsAnisotropicScaling=_detectorWantsAnisotropicScaling;
 
 - (void).cxx_destruct;

@@ -9,13 +9,13 @@
 #import <FitnessUI/FUScrollWheelDataSource-Protocol.h>
 #import <FitnessUI/FUScrollWheelDelegate-Protocol.h>
 
-@class FUScrollWheel, NSArray, NSDate, NSDateFormatter, NSMutableArray, NSString, UILabel;
+@class FUScrollWheel, NSArray, NSDate, NSDateFormatter, NSMutableArray, NSString, UIColor, UILabel;
 @protocol FUDatePickerDelegate;
 
 @interface FUDatePicker : UIView <FUScrollWheelDataSource, FUScrollWheelDelegate>
 {
     unsigned long long _monthOffset;
-    unsigned long long _dateOffset;
+    unsigned long long _dayOffset;
     long long _yearOrder;
     long long _monthOrder;
     long long _dayOrder;
@@ -31,15 +31,19 @@
     NSDateFormatter *_dateFormatter;
     BOOL _firstResponderShouldChange;
     BOOL _displayEra;
+    UIColor *_tintColor;
+    NSDate *_minimumDate;
+    NSDate *_maximumDate;
+    long long _initialWheelType;
     id<FUDatePickerDelegate> _delegate;
     NSDate *_date;
     FUScrollWheel *_monthWheel;
-    FUScrollWheel *_dateWheel;
+    FUScrollWheel *_dayWheel;
     FUScrollWheel *_yearWheel;
 }
 
-@property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (strong, nonatomic) FUScrollWheel *dateWheel; // @synthesize dateWheel=_dateWheel;
+@property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (strong, nonatomic) FUScrollWheel *dayWheel; // @synthesize dayWheel=_dayWheel;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FUDatePickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -51,14 +55,18 @@
 - (void).cxx_destruct;
 - (id)_enumerateDayValues;
 - (id)_enumerateDayValuesFromFormatter:(id)arg1;
-- (void)_updateDateRange:(BOOL)arg1;
-- (void)_updateSpinners;
+- (void)_updateDayRangeReloadingWheel:(BOOL)arg1;
+- (void)_updateSpinnersAnimated:(BOOL)arg1;
+- (id)_wheelOfType:(long long)arg1;
+- (id)dateWheel;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 tintColor:(id)arg2 initialWheelType:(long long)arg3 shouldEnableCrown:(BOOL)arg4 minimumDate:(id)arg5 maximumDate:(id)arg6;
 - (void)layoutSubviews;
 - (unsigned long long)numberOfRowsInScrollWheel:(id)arg1;
 - (void)scrollWheel:(id)arg1 didChangeCurrentIndexTo:(unsigned long long)arg2;
 - (id)scrollWheel:(id)arg1 titleForItemAtIndex:(unsigned long long)arg2;
 - (BOOL)scrollWheelShouldBecomeFirstResponder:(id)arg1;
+- (void)setDate:(id)arg1 animated:(BOOL)arg2;
 - (void)tappedScrollWheel:(id)arg1;
 
 @end

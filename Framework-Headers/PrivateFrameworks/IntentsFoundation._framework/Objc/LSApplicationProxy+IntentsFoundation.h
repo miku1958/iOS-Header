@@ -10,7 +10,7 @@
 
 @interface LSApplicationProxy (IntentsFoundation)
 
-@property (readonly) NSArray *_inf_userActivityTypes;
+@property (readonly) NSArray *if_userActivityTypes;
 
 @end
 

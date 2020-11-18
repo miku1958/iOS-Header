@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKUUIDProvider-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
 @class HKDevice, HKSource, HKSourceRevision, NSDate, NSDictionary, NSString, NSUUID;
 
-@interface HKObject : NSObject <NSCopying, NSSecureCoding>
+@interface HKObject : NSObject <HKUUIDProvider, NSCopying, NSSecureCoding>
 {
     NSUUID *_UUID;
     HKSourceRevision *_sourceRevision;
@@ -23,13 +24,18 @@
 }
 
 @property (readonly) NSUUID *UUID;
-@property (nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate;
+@property (copy, nonatomic, getter=_creationDate, setter=_setCreationDate:) NSDate *creationDate;
 @property (nonatomic, getter=_creationTimestamp, setter=_setCreationTimestamp:) double creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly) HKDevice *device; // @synthesize device=_device;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy) NSDictionary *metadata;
 @property (readonly) HKSource *source;
 @property (copy, nonatomic, getter=_sourceBundleIdentifier, setter=_setSourceBundleIdentifier:) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
 @property (readonly) HKSourceRevision *sourceRevision; // @synthesize sourceRevision=_sourceRevision;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic, getter=_timeZoneName) NSString *timeZoneName;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)_newDataObjectWithMetadata:(id)arg1 device:(id)arg2 config:(CDUnknownBlockType)arg3;
@@ -46,14 +52,14 @@
 - (BOOL)_shouldNotifyOnInsert;
 - (id)_source;
 - (id)_validateConfiguration;
-- (id)_validateConfigurationAllowingPrivateMetadata:(BOOL)arg1;
+- (id)_validateConfigurationAllowingPrivateMetadata:(BOOL)arg1 applicationSDKVersion:(unsigned int)arg2;
+- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (void)_validateForCreation;
-- (BOOL)_validateForSavingWithClientEntitlements:(id)arg1 error:(id *)arg2;
+- (BOOL)_validateForSavingWithClientEntitlements:(id)arg1 applicationSDKVersion:(unsigned int)arg2 error:(id *)arg3;
 - (id)_valueDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
+- (id)hk_UUID;
 - (long long)hk_integerValue;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

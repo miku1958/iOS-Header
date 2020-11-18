@@ -6,17 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <IntentsUI/INUIVoiceShortcutRemoteViewControllerEditDelegate-Protocol.h>
+#import <IntentsUI/INUIVoiceShortcutRemoteViewControllerDelegate-Protocol.h>
+#import <IntentsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class INUIVoiceShortcutHostViewController, NSString;
+@class INUIVoiceShortcutHostViewController, NSString, _UIRemoteViewController;
 @protocol INUIEditVoiceShortcutViewControllerDelegate;
 
-@interface INUIEditVoiceShortcutViewController : UIViewController <INUIVoiceShortcutRemoteViewControllerEditDelegate>
+@interface INUIEditVoiceShortcutViewController : UIViewController <INUIVoiceShortcutRemoteViewControllerDelegate, _UIRemoteViewControllerContaining>
 {
     id<INUIEditVoiceShortcutViewControllerDelegate> _delegate;
     INUIVoiceShortcutHostViewController *_remoteHostViewController;
 }
 
+@property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<INUIEditVoiceShortcutViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -28,9 +30,9 @@
 - (void).cxx_destruct;
 - (id)initWithVoiceShortcut:(id)arg1;
 - (void)loadView;
+- (void)remoteViewControllerDidCancel;
 - (void)remoteViewControllerDidDeleteVoiceShortcutWithIdentifier:(id)arg1;
-- (void)remoteViewControllerDidEditVoiceShortcut:(id)arg1 error:(id)arg2;
-- (void)remoteViewControllerEditDidCancel;
+- (void)remoteViewControllerDidUpdateVoiceShortcut:(id)arg1 error:(id)arg2;
 
 @end
 

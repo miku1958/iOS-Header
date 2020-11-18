@@ -6,32 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <SearchUI/UIViewControllerPreviewingDelegate-Protocol.h>
+#import <SearchUI/UIContextMenuInteractionDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, SearchUITableViewController;
+@class NSString, SearchUITableViewController;
 
-@interface SearchUIPeekDelegate : NSObject <UIViewControllerPreviewingDelegate>
+@interface SearchUIPeekDelegate : NSObject <UIContextMenuInteractionDelegate>
 {
     SearchUITableViewController *_viewController;
-    NSIndexPath *_peekedIndexPath;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSIndexPath *peekedIndexPath; // @synthesize peekedIndexPath=_peekedIndexPath;
 @property (readonly) Class superclass;
-@property (weak) SearchUITableViewController *viewController; // @synthesize viewController=_viewController;
+@property (weak, nonatomic) SearchUITableViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
-- (void)_previewingContext:(id)arg1 willDismissViewController:(id)arg2;
-- (void)_previewingContext:(id)arg1 willPresentViewController:(id)arg2;
-- (id)customViewForInteractiveHighlightForIndexPath:(id)arg1;
+- (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
+- (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
+- (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
+- (void)contextMenuInteraction:(id)arg1 willCommitWithAnimator:(id)arg2;
+- (void)contextMenuInteractionDidEnd:(id)arg1;
+- (void)contextMenuInteractionWillPresent:(id)arg1;
 - (id)initWithViewController:(id)arg1;
-- (BOOL)needToHandleTransparencyForViewController:(id)arg1;
-- (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
-- (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
-- (void)unhidePeekedCell;
 
 @end
 

@@ -6,13 +6,15 @@
 
 #import <PhotosUICore/PXSettings.h>
 
-@class PXAssetVariationsSettings, PXAssetsSceneSettings, PXCompleteMyMomentSettings, PXDiagnosticsSettings, PXDragAndDropSettings, PXForYouSettings, PXGridSettings, PXImageModulationSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXPeopleDetailSettings, PXPeopleUISettings, PXPhotoPickerSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXPhotosLibrarySettings, PXRelatedSettings, PXSharingSettings, PXSnapBackSettings, PXTilingSettings, PXViewControllerTransitionSettings;
+@class PXAlbumsDebugUISettings, PXApplicationSettings, PXAssetVariationsSettings, PXAssetsSceneSettings, PXCompleteMyMomentSettings, PXCuratedLibrarySettings, PXDiagnosticsSettings, PXDragAndDropSettings, PXFooterSettings, PXForYouSettings, PXGPPTSettings, PXGridKitSettings, PXGridSettings, PXImageModulationSettings, PXImportSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXPeopleDetailSettings, PXPeopleUISettings, PXPhotoPickerSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXRelatedSettings, PXSearchSettings, PXSharingSettings, PXSnapBackSettings, PXTilingSettings, PXViewControllerTransitionSettings;
 
 @interface PXRootSettings : PXSettings
 {
+    BOOL _showTapToRadar;
+    BOOL _showWIPAlertRadar;
     PXDiagnosticsSettings *_diagnostics;
     PXImageModulationSettings *_imageModulationSettings;
-    PXPhotosLibrarySettings *_photosLibrarySettings;
+    PXCuratedLibrarySettings *_curatedLibrarySettings;
     PXPhotoPickerSettings *_photoPickerSettings;
     PXPhotosDetailsSettings *_photosDetails;
     PXPhotosDetailsHeaderTileSettings *_photosDetailsHeaderTile;
@@ -24,6 +26,8 @@
     PXTilingSettings *_tiling;
     PXModelSettings *_model;
     PXKitSettings *_kit;
+    PXGridKitSettings *_gridKitSettings;
+    PXGPPTSettings *_gridKitPPTSettings;
     PXViewControllerTransitionSettings *_viewControllerTransition;
     PXSnapBackSettings *_snapBack;
     PXPeopleDetailSettings *_peopleDetail;
@@ -34,15 +38,28 @@
     PXCompleteMyMomentSettings *_completeMyMoment;
     PXForYouSettings *_forYou;
     PXGridSettings *_grid;
+    PXImportSettings *_importSettings;
+    PXSearchSettings *_searchSettings;
+    PXAlbumsDebugUISettings *_albumsDebugUISettings;
+    PXApplicationSettings *_applicationSettings;
+    PXFooterSettings *_footerSettings;
 }
 
+@property (strong, nonatomic) PXAlbumsDebugUISettings *albumsDebugUISettings; // @synthesize albumsDebugUISettings=_albumsDebugUISettings;
+@property (strong, nonatomic) PXApplicationSettings *applicationSettings; // @synthesize applicationSettings=_applicationSettings;
 @property (strong, nonatomic) PXAssetsSceneSettings *assetsScene; // @synthesize assetsScene=_assetsScene;
 @property (strong, nonatomic) PXCompleteMyMomentSettings *completeMyMoment; // @synthesize completeMyMoment=_completeMyMoment;
+@property (strong, nonatomic) PXCuratedLibrarySettings *curatedLibrarySettings; // @synthesize curatedLibrarySettings=_curatedLibrarySettings;
 @property (strong, nonatomic) PXDiagnosticsSettings *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property (strong, nonatomic) PXDragAndDropSettings *dragAndDrop; // @synthesize dragAndDrop=_dragAndDrop;
+@property (strong, nonatomic) PXFooterSettings *footerSettings; // @synthesize footerSettings=_footerSettings;
 @property (strong, nonatomic) PXForYouSettings *forYou; // @synthesize forYou=_forYou;
 @property (strong, nonatomic) PXGridSettings *grid; // @synthesize grid=_grid;
+@property (strong, nonatomic) PXGPPTSettings *gridKitPPTSettings; // @synthesize gridKitPPTSettings=_gridKitPPTSettings;
+@property (strong, nonatomic) PXGridKitSettings *gridKitSettings; // @synthesize gridKitSettings=_gridKitSettings;
+@property (nonatomic) BOOL hideWIPAlerts;
 @property (strong, nonatomic) PXImageModulationSettings *imageModulationSettings; // @synthesize imageModulationSettings=_imageModulationSettings;
+@property (strong, nonatomic) PXImportSettings *importSettings; // @synthesize importSettings=_importSettings;
 @property (strong, nonatomic) PXKitSettings *kit; // @synthesize kit=_kit;
 @property (strong, nonatomic) PXMemoriesRelatedSettings *memoriesRelated; // @synthesize memoriesRelated=_memoriesRelated;
 @property (strong, nonatomic) PXMemoriesFeedSettings *memoryFeed; // @synthesize memoryFeed=_memoryFeed;
@@ -53,9 +70,11 @@
 @property (strong, nonatomic) PXPhotosDataSourceSettings *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (strong, nonatomic) PXPhotosDetailsSettings *photosDetails; // @synthesize photosDetails=_photosDetails;
 @property (strong, nonatomic) PXPhotosDetailsHeaderTileSettings *photosDetailsHeaderTile; // @synthesize photosDetailsHeaderTile=_photosDetailsHeaderTile;
-@property (strong, nonatomic) PXPhotosLibrarySettings *photosLibrarySettings; // @synthesize photosLibrarySettings=_photosLibrarySettings;
 @property (strong, nonatomic) PXRelatedSettings *related; // @synthesize related=_related;
+@property (strong, nonatomic) PXSearchSettings *searchSettings; // @synthesize searchSettings=_searchSettings;
 @property (strong, nonatomic) PXSharingSettings *sharingSettings; // @synthesize sharingSettings=_sharingSettings;
+@property (nonatomic) BOOL showTapToRadar; // @synthesize showTapToRadar=_showTapToRadar;
+@property (nonatomic) BOOL showWIPAlertRadar; // @synthesize showWIPAlertRadar=_showWIPAlertRadar;
 @property (strong, nonatomic) PXSnapBackSettings *snapBack; // @synthesize snapBack=_snapBack;
 @property (strong, nonatomic) PXTilingSettings *tiling; // @synthesize tiling=_tiling;
 @property (strong, nonatomic) PXAssetVariationsSettings *variationsSettings; // @synthesize variationsSettings=_variationsSettings;
@@ -65,6 +84,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)parentSettings;
+- (void)setDefaultValues;
 
 @end
 

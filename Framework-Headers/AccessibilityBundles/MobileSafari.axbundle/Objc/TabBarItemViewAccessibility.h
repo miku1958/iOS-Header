@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)_accessibilityIsSpeakThisElement;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdateAXInfo;
 - (id)accessibilityIdentifier;

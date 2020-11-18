@@ -45,6 +45,7 @@
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
+- (id)_createManagedConfigAccountAccessHandlerWithValidator:(id)arg1;
 - (BOOL)_hasTCCAccessToEntityWithObjectIDUsingDeepInspection:(id)arg1;
 - (void)_initAccountAccessHandler;
 - (void)_loadAccessPermissionsIfNeeded;
@@ -64,6 +65,7 @@
 - (BOOL)isCalendarItemRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
 - (BOOL)isCalendarManaged:(void *)arg1;
 - (BOOL)isCalendarRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
+- (BOOL)isNotificationRestricted:(void *)arg1 forAction:(unsigned long long)arg2;
 - (BOOL)isObjectWithObjectIDAJunkEvent:(id)arg1;
 - (BOOL)isStoreManaged:(void *)arg1;
 - (BOOL)isStoreRestricted:(void *)arg1 forAction:(unsigned long long)arg2;

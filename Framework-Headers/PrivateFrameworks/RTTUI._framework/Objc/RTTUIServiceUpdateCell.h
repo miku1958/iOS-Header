@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic) id<RTTUIServiceCellDelegate> delegate; // @synthesize delegate=_delegate;
 
-+ (double)heightForWidth:(double)arg1;
++ (double)heightForWidth:(double)arg1 withDelegate:(id)arg2;
 - (void).cxx_destruct;
 - (id)accessibilityLabel;
 - (void)adjustTextViewSize;

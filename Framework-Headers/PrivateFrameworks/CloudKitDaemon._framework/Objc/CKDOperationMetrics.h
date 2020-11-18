@@ -34,6 +34,9 @@ __attribute__((visibility("hidden")))
     unsigned long long _retries;
     NSMutableSet *_requestUUIDs;
     NSMutableDictionary *_requestOperationCountsByType;
+    NSMutableDictionary *_totalBytesByChunkProfile;
+    NSMutableDictionary *_chunkCountByChunkProfile;
+    NSMutableDictionary *_fileCountByChunkProfile;
     NSMutableArray *_ranges;
 }
 
@@ -43,12 +46,14 @@ __attribute__((visibility("hidden")))
 @property unsigned long long assetsUploadedFileSize; // @synthesize assetsUploadedFileSize=_assetsUploadedFileSize;
 @property unsigned long long bytesDownloaded; // @synthesize bytesDownloaded=_bytesDownloaded;
 @property unsigned long long bytesUploaded; // @synthesize bytesUploaded=_bytesUploaded;
+@property (strong, nonatomic) NSMutableDictionary *chunkCountByChunkProfile; // @synthesize chunkCountByChunkProfile=_chunkCountByChunkProfile;
 @property unsigned long long connections; // @synthesize connections=_connections;
 @property unsigned long long connectionsCreated; // @synthesize connectionsCreated=_connectionsCreated;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property double duration; // @synthesize duration=_duration;
 @property double executing; // @synthesize executing=_executing;
+@property (strong, nonatomic) NSMutableDictionary *fileCountByChunkProfile; // @synthesize fileCountByChunkProfile=_fileCountByChunkProfile;
 @property (readonly) unsigned long long hash;
 @property double queueing; // @synthesize queueing=_queueing;
 @property (strong, nonatomic) NSMutableArray *ranges; // @synthesize ranges=_ranges;
@@ -62,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property unsigned long long retries; // @synthesize retries=_retries;
 @property (strong) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSMutableDictionary *totalBytesByChunkProfile; // @synthesize totalBytesByChunkProfile=_totalBytesByChunkProfile;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

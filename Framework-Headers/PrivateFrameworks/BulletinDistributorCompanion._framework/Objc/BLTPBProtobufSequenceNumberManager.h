@@ -15,6 +15,7 @@
     NSLock *_sequenceNumberAccess;
     BLTCircularBitBuffer *_duplicateEntries;
     NSURL *_sequenceNumbersURL;
+    BOOL _updateSequenceNumbersOnOutOfOrder;
     unsigned long long _sessionState;
     NSString *_serviceName;
     NSUUID *_currentSessionIdentifier;
@@ -30,10 +31,10 @@
 - (BOOL)_isSequenceNumberInOrder:(unsigned long long)arg1;
 - (void)_readSequenceNumbersFromStoreWithInitialDuplicateCapacity:(unsigned long long)arg1;
 - (id)_sequenceNumbersURL;
-- (void)_writeSequenceNumbersToStore;
-- (id)initWithServiceName:(id)arg1;
-- (id)initWithServiceName:(id)arg1 duplicateCapacity:(unsigned long long)arg2;
-- (unsigned long long)nextSendSequenceNumber;
+- (BOOL)_writeSequenceNumbersToStore;
+- (id)initWithServiceName:(id)arg1 updateSequenceNumbersOnOutOfOrder:(BOOL)arg2;
+- (id)initWithServiceName:(id)arg1 updateSequenceNumbersOnOutOfOrder:(BOOL)arg2 duplicateCapacity:(unsigned long long)arg3;
+- (id)nextSendSequenceNumber;
 - (long long)setRecvSequenceNumber:(unsigned long long)arg1 recvSessionIdentifier:(id)arg2 force:(BOOL)arg3;
 
 @end

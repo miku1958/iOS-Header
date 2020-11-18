@@ -22,6 +22,8 @@
 
 + (id)defaultConfiguration;
 + (id)lightConfiguration;
++ (id)rigidConfiguration;
++ (id)softConfiguration;
 + (id)strongConfiguration;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

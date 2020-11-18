@@ -12,17 +12,22 @@
 
 @interface VNCreateFaceTorsoprintRequest : VNImageBasedRequest <VNFaceObservationAccepting>
 {
+    BOOL _forceFaceprintCreation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL forceFaceprintCreation; // @synthesize forceFaceprintCreation=_forceFaceprintCreation;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *inputFaceObservations;
 @property (readonly) Class superclass;
 
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (long long)dependencyProcessingOrdinality;
+- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 

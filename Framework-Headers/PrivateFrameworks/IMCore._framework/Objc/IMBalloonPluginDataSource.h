@@ -69,6 +69,7 @@
 @property (readonly, nonatomic) BOOL wantsReplyFromContentView;
 @property (readonly, nonatomic) BOOL wantsStatusItem;
 
++ (id)individualPreviewSummaryForPluginPayload:(id)arg1;
 + (id)previewSummary;
 + (id)previewSummaryForPluginBundle:(id)arg1;
 + (id)previewSummaryForPluginPayload:(id)arg1 withBundleID:(id)arg2 previewAttachmentURL:(id *)arg3 previewAttachmentUTI:(id *)arg4;

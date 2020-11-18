@@ -6,16 +6,16 @@
 
 #import <AVFoundation/AVAssetInspector.h>
 
-@class AVDisplayCriteria, NSArray, NSURL;
+@class AVDispatchOnce, AVDisplayCriteria, NSArray, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface AVFigAssetInspector : AVAssetInspector
 {
     struct OpaqueFigAsset *_figAsset;
     struct OpaqueFigFormatReader *_formatReader;
-    long long _formatReaderOnce;
-    long long _checkIsStreamingOnce;
-    long long _makeDisplayCriteriaOnce;
+    AVDispatchOnce *_formatReaderOnce;
+    AVDispatchOnce *_checkIsStreamingOnce;
+    AVDispatchOnce *_makeDisplayCriteriaOnce;
     AVDisplayCriteria *_displayCriteria;
     BOOL _isStreaming;
     BOOL didCheckForSaveRestriction;
@@ -49,12 +49,14 @@ __attribute__((visibility("hidden")))
 - (id)creationDate;
 - (void)dealloc;
 - (CDStruct_1b6d18a9)duration;
-- (void)finalize;
+- (long long)firstFragmentSequenceNumber;
+- (long long)fragmentCount;
 - (unsigned long long)hash;
 - (id)identifyingTag;
 - (id)identifyingTagClass;
 - (id)initWithFigAsset:(struct OpaqueFigAsset *)arg1;
 - (BOOL)isCompatibleWithAirPlayVideo;
+- (BOOL)isCompatibleWithPhotosTranscodingServiceWithOptions:(id)arg1;
 - (BOOL)isCompatibleWithSavedPhotosAlbum;
 - (BOOL)isComposable;
 - (BOOL)isEqual:(id)arg1;
@@ -62,8 +64,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPlayable;
 - (BOOL)isReadable;
 - (id)lyrics;
+- (id)makePropertyListForProxyWithOptions:(id)arg1;
 - (struct CGSize)maximumVideoResolution;
 - (id)metadataForFormat:(id)arg1;
+- (CDStruct_1b6d18a9)minimumTimeOffsetFromLive;
 - (struct CGSize)naturalSize;
 - (int)naturalTimeScale;
 - (CDStruct_1b6d18a9)overallDurationHint;

@@ -8,14 +8,14 @@
 
 #import <GeoServices/_GEOTileDBWriteOperation-Protocol.h>
 
-@class NSData, NSString;
+@class GEOTileData, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOTileDBAddTileOperation : NSObject <_GEOTileDBWriteOperation>
 {
     struct _GEOTileKey _key;
     unsigned int _tileSet;
-    NSData *_data;
+    GEOTileData *_data;
     NSString *_ETag;
     unsigned char _reason;
 }
@@ -23,9 +23,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) struct _GEOTileKey *key;
-@property (readonly) unsigned char reason; // @synthesize reason=_reason;
-@property (readonly) unsigned long long sizeInBytes;
+@property (readonly, nonatomic) struct _GEOTileKey *key;
+@property (readonly, nonatomic) unsigned char reason; // @synthesize reason=_reason;
+@property (readonly, nonatomic) unsigned long long sizeInBytes;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

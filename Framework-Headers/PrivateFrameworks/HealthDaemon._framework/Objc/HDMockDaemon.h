@@ -36,6 +36,7 @@
 - (id)daemonExtensionWithIdentifier:(id)arg1;
 - (id)daemonExtensionsConformingToProtocol:(id)arg1;
 - (id)init;
+- (void)registerDaemonReadyObserver:(id)arg1 queue:(id)arg2;
 - (void)registerForDaemonReady:(id)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;
 - (void)unregisterForLaunchNotification:(const char *)arg1;

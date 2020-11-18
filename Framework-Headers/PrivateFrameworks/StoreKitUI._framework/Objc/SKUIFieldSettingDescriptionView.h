@@ -6,6 +6,7 @@
 
 #import <StoreKitUI/SKUISettingDescriptionView.h>
 
+__attribute__((visibility("hidden")))
 @interface SKUIFieldSettingDescriptionView : SKUISettingDescriptionView
 {
     BOOL _enabled;

@@ -26,7 +26,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_systemContainerURLWithError:(id *)arg1;
-- (BOOL)createDirectories;
+- (void)createDirectories;
 - (id)dataDirectoryAbortingOnError;
 - (id)dataDirectoryWithError:(id *)arg1;
 - (id)init;

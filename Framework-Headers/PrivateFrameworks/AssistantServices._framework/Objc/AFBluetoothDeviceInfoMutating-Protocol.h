@@ -14,6 +14,9 @@
 - (void)setIsAdvancedAppleAudioDevice:(BOOL)arg1;
 - (void)setProductID:(unsigned int)arg1;
 - (void)setSupportsInEarDetection:(BOOL)arg1;
+- (void)setSupportsListeningModeANC:(BOOL)arg1;
+- (void)setSupportsListeningModeTransparency:(BOOL)arg1;
+- (void)setSupportsSpokenNotification:(BOOL)arg1;
 - (void)setSupportsVoiceTrigger:(BOOL)arg1;
 - (void)setVendorID:(unsigned int)arg1;
 @end

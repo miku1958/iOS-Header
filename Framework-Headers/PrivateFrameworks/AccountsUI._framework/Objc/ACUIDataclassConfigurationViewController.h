@@ -6,7 +6,7 @@
 
 #import <AccountsUI/ACUIViewController.h>
 
-@class ACAccount, NSArray, NSMutableDictionary, NSString, PSSpecifier;
+@class ACAccount, MCUIUserEnrollmentAccountSpecifierProvider, NSArray, NSMutableDictionary, NSString, PSSpecifier;
 
 @interface ACUIDataclassConfigurationViewController : ACUIViewController
 {
@@ -19,6 +19,7 @@
     NSArray *_dataclassSpecifiers;
     NSArray *_otherSpecifiers;
     BOOL _didShowDataclassActionPickerDuringRemoval;
+    MCUIUserEnrollmentAccountSpecifierProvider *_userEnrollmentAccountSpecifierProvider;
     BOOL _firstTimeSetup;
     BOOL _shouldShowDeleteAccountButton;
     BOOL _shouldEnableDeleteAccountButton;
@@ -49,6 +50,7 @@
 - (BOOL)_confirmSyncDelete;
 - (void)_enableAllProvisionedDataclassesWithoutRequringUserInteraction;
 - (BOOL)_isShowingDeleteAccountButton;
+- (BOOL)_isUserOverridableForDataclass:(id)arg1;
 - (id)_navigationTitle;
 - (void)_notifyOfAccountSetupCompletion;
 - (id)_orderDataclassList:(id)arg1;
@@ -71,6 +73,7 @@
 - (void)forceMailSetup;
 - (id)init;
 - (BOOL)isAppleMailAccount:(id)arg1;
+- (BOOL)isUserEnrollment;
 - (id)messageForAccountDeletionProgressUI;
 - (id)operationsHelper:(id)arg1 desiredDataclassActionFromPicker:(id)arg2;
 - (void)operationsHelper:(id)arg1 didRemoveAccount:(id)arg2 withSuccess:(BOOL)arg3 error:(id)arg4;
@@ -90,6 +93,7 @@
 - (id)specifierForDataclass:(id)arg1;
 - (id)specifiers;
 - (id)titleForDeleteButton;
+- (id)userEnrollmentAccountSpecifierProvider;
 - (id)valueForAccountSummaryCell;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

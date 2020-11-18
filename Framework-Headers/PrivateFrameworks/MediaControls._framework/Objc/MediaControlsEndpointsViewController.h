@@ -12,7 +12,7 @@
 #import <MediaControls/MediaControlsCollectionViewDelegate-Protocol.h>
 #import <MediaControls/MediaControlsEndpointsManagerDelegate-Protocol.h>
 
-@class AVExternalPlaybackMonitor, MPAVEndpointRoute, MPAVOutputDeviceRoutingDataSource, MPAVRoutingViewController, MPMediaControlsConfiguration, MediaControlsEndpointsManager, NSString;
+@class AVExternalPlaybackMonitor, MPAVEndpointRoute, MPAVOutputDeviceRoutingDataSource, MPAVRoutingViewController, MPMediaControlsConfiguration, MediaControlsEndpointsManager, NSString, UIViewPropertyAnimator;
 
 @interface MediaControlsEndpointsViewController : MediaControlsCollectionViewController <MRPlatterViewControllerDelegate, MediaControlsCollectionViewDataSource, MediaControlsCollectionViewDelegate, MediaControlsEndpointsManagerDelegate, CCUIContentModuleContentViewController>
 {
@@ -22,6 +22,7 @@
     BOOL _shouldReselectActiveSystemRoute;
     BOOL _prewarming;
     BOOL _shouldTransitionToVisibleWhenReady;
+    BOOL _didTransitionToVisible;
     BOOL _shouldPresentUsingViewService;
     BOOL _dismissing;
     BOOL _onScreen;
@@ -36,6 +37,7 @@
 }
 
 @property (strong, nonatomic) MPMediaControlsConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) UIViewPropertyAnimator *customAnimator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDismissing) BOOL dismissing; // @synthesize dismissing=_dismissing;
@@ -46,6 +48,7 @@
 @property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
 @property (readonly, nonatomic) double preferredExpandedContentHeight;
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
+@property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
 @property (readonly, nonatomic) BOOL providesOwnPlatter;
 @property (copy, nonatomic) NSString *routingContextUID; // @synthesize routingContextUID=_routingContextUID;
 @property (copy, nonatomic) CDUnknownBlockType routingCornerViewTappedBlock; // @synthesize routingCornerViewTappedBlock=_routingCornerViewTappedBlock;
@@ -57,11 +60,12 @@
 + (BOOL)_shouldTransitionEarlyOnSystemRoute;
 - (void).cxx_destruct;
 - (void)_assignRouteViewControllerToSelectedPanelViewController;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)_isReadyForAppearanceTransition;
 - (BOOL)_isSelectedRouteInRoutes;
 - (void)_routeDidChangeNotification:(id)arg1;
 - (void)_selectActiveSystemRouteIfNeeded;
-- (void)_setSelectedRoute:(id)arg1 isUserSelected:(BOOL)arg2;
+- (void)_setSelectedRoute:(id)arg1 isUserSelected:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)_setupEndpointsManager;
 - (void)_setupRoutingViewController;
 - (void)_supportedModesForSelectedRoute:(unsigned long long *)arg1 selectedMode:(long long *)arg2;
@@ -77,6 +81,7 @@
 - (void)didSelectEndpoint:(id)arg1;
 - (void)dismissPlatterViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissPresentedContentAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)endUpdates;
 - (void)endpointsManager:(id)arg1 activeSystemRouteDidChange:(id)arg2;
 - (void)endpointsManager:(id)arg1 defersRoutesReplacement:(CDUnknownBlockType)arg2;
 - (void)homeObserverDidUpdateKnownUIDs:(id)arg1;

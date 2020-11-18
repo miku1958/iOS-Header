@@ -32,8 +32,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_startTimerToNextMinute;
 - (void)dealloc;
-- (void)setLocation:(id)arg1;
-- (void)setRoutes:(id)arg1;
+- (void)setLocation:(id)arg1 shouldNotifyDelegate:(BOOL)arg2;
+- (void)setRoutes:(id)arg1 shouldNotifyDelegate:(BOOL)arg2;
 - (void)startUpdating;
 - (void)stopUpdating;
 - (void)updateDisplayETAForRoute:(id)arg1 shouldNotifyDelegate:(BOOL)arg2;

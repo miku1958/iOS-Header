@@ -14,5 +14,6 @@
 
 - (NSArray *)assetContentItemsWithContentType:(NSString *)arg1 inputMode:(TIInputMode *)arg2;
 - (NSArray *)enabledInputModes;
+- (void)requestAssetDownloadForLanguage:(NSString *)arg1 completion:(void (^)(long long))arg2;
 @end
 

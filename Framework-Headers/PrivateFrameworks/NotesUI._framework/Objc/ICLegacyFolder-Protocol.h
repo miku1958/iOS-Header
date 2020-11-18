@@ -13,6 +13,7 @@
 - (id<ICLegacyAccount>)account;
 - (void)addNotesObject:(id<ICLegacyNote>)arg1;
 - (NSSet *)changes;
+- (BOOL)isDeletedOrInTrash;
 - (NSManagedObjectContext *)managedObjectContext;
 - (NSString *)name;
 - (id<ICLegacyNote>)newNoteInContext:(struct NoteContext *)arg1;

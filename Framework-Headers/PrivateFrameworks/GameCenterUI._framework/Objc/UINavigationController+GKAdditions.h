@@ -21,8 +21,10 @@
 - (void)_gkForceNextContentUpdate;
 - (void)_gkHandleURLPathComponents:(id)arg1 query:(id)arg2;
 - (void)_gkRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
+- (void)_gkReplaceTopViewControllerWithViewController:(id)arg1 transition:(id)arg2;
 - (void)_gkResetContents;
 - (void)_gkSetContentsNeedUpdateWithHandler:(CDUnknownBlockType)arg1;
+- (void)_gkSetViewControllers:(id)arg1 transition:(id)arg2;
 - (BOOL)_gkShouldRefreshContentsForDataType:(unsigned int)arg1 userInfo:(id)arg2;
 - (void)_gkUpdateContentsWithCompletionHandlerAndError:(CDUnknownBlockType)arg1;
 @end

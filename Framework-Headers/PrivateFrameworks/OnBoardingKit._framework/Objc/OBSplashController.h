@@ -72,6 +72,7 @@
 - (id)contentScrollView;
 - (id)init;
 - (void)loadView;
+- (long long)preferredUserInterfaceStyle;
 - (void)removeAllButtons;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setButtonsEnabled:(BOOL)arg1;

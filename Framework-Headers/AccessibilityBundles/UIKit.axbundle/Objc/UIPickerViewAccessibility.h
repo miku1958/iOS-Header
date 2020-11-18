@@ -10,11 +10,14 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityAutomationType;
 - (long long)_accessibilityPickerType;
 - (void)_accessibilityResetContainerElements;
 - (id)accessibilityElements;
+- (BOOL)canBecomeFocused;
 - (void)dealloc;
 - (BOOL)isAccessibilityElement;
 - (void)reloadAllComponents;

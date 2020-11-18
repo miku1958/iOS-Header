@@ -8,14 +8,14 @@
 
 #import <HomeUI/HUQuickControlAuxiliaryView-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString;
+@class NSArray, NSMutableArray, NSString, UIScrollView;
 
 @interface HUQuickControlButtonRowView : UIView <HUQuickControlAuxiliaryView>
 {
-    BOOL _isUsingStackedLayout;
     long long _preferredContentAlignment;
     NSMutableArray *_mutableButtonViews;
     NSArray *_buttonConstraints;
+    UIScrollView *_scrollView;
 }
 
 @property (strong, nonatomic) NSArray *buttonConstraints; // @synthesize buttonConstraints=_buttonConstraints;
@@ -24,16 +24,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCenteredContent;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isUsingStackedLayout; // @synthesize isUsingStackedLayout=_isUsingStackedLayout;
 @property (strong, nonatomic) NSMutableArray *mutableButtonViews; // @synthesize mutableButtonViews=_mutableButtonViews;
 @property (nonatomic) long long preferredContentAlignment; // @synthesize preferredContentAlignment=_preferredContentAlignment;
+@property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_clearButtonConstraints;
 - (void)_contentSizeCategoryDidChange;
-- (BOOL)_shouldUseStackedLayout;
 - (void)_updateLayoutIfNecessary;
 - (void)addButtonView:(id)arg1;
 - (void)contentDidChange;

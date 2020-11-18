@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <Silex/SXDragManagerDataSource-Protocol.h>
+#import <Silex/SXFullscreenCanvasViewControllerDelegate-Protocol.h>
 #import <Silex/SXFullscreenCaptionViewDelegate-Protocol.h>
 #import <Silex/SXFullscreenImageViewDelegate-Protocol.h>
 #import <Silex/SXFullscreenNavigationBarViewDelegate-Protocol.h>
@@ -18,7 +19,7 @@
 @class NSString, SXDragManager, SXFullscreenCanvasViewController, SXFullscreenCaptionView, SXFullscreenNavigationBarView, SXItemizedScrollView, UIColor, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UIView;
 @protocol SXFullscreenCanvasShowable, SXFullscreenCaptionViewFactory;
 
-@interface SXFullscreenCanvasController : NSObject <UIGestureRecognizerDelegate, UIScrollViewDelegate, SXFullscreenImageViewDelegate, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, SXFullscreenCaptionViewDelegate, SXFullscreenNavigationBarViewDelegate, SXDragManagerDataSource>
+@interface SXFullscreenCanvasController : NSObject <UIGestureRecognizerDelegate, UIScrollViewDelegate, SXFullscreenImageViewDelegate, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, SXFullscreenCaptionViewDelegate, SXFullscreenNavigationBarViewDelegate, SXDragManagerDataSource, SXFullscreenCanvasViewControllerDelegate>
 {
     BOOL _isFullscreen;
     BOOL _isTransitioning;
@@ -110,8 +111,10 @@
 - (void)dismiss;
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint)arg2;
 - (struct CGSize)fitSizeForRect:(struct CGRect)arg1;
+- (void)fullScreenCanvasViewControllerWantsToDismiss:(id)arg1;
 - (void)fullScreenImageViewDidStartZooming:(id)arg1;
 - (void)fullScreenImageViewDidStopZooming:(id)arg1;
+- (void)fullscreenCanvasViewController:(id)arg1 willTransitionToSize:(struct CGSize)arg2 withTransitionCoordinator:(id)arg3;
 - (void)fullscreenNavigationBarViewDoneButtonPressed:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -141,6 +144,7 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setup;
 - (void)setupGestureRecognizersInView:(id)arg1;
+- (void)setupKeyCommandsForCanvasViewController:(id)arg1;
 - (void)setupScrollViewIfNeededWithActiveIndex:(unsigned long long)arg1;
 - (void)startSupressingColorSettings;
 - (void)startTransitionToFullScreen:(BOOL)arg1 controllable:(BOOL)arg2;
@@ -155,7 +159,6 @@
 - (void)updateTransform;
 - (id)viewForDragManager:(id)arg1;
 - (long long)viewIndexForPoint:(struct CGPoint)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (void)willStartTransformingWithGestureRecognizer:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end

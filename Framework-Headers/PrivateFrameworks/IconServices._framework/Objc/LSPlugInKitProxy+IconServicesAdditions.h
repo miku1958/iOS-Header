@@ -8,9 +8,10 @@
 
 @interface LSPlugInKitProxy (IconServicesAdditions)
 
-@property (readonly) BOOL __IS_hasIcon;
+@property (readonly) BOOL __IS_canProvideIcon;
 @property (readonly) BOOL __IS_isMessagesApp;
 @property (readonly) BOOL __IS_isWatchApp;
 
+- (id)__IS_iconDataForVariant:(int)arg1 withOptions:(int)arg2;
 @end
 

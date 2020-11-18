@@ -8,7 +8,7 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTaskDelegate-Protocol.h>
 
-@class CPLEngineLibrary, CPLEngineSyncTask, CPLMinglePulledChangesTask, CPLPullFromTransportTask, CPLPushToTransportTask, CPLScopeFilter, NSObject, NSString;
+@class CPLEngineLibrary, CPLEngineSyncTask, CPLMinglePulledChangesTask, CPLPullFromTransportTask, CPLPushToTransportTask, CPLScopeFilter, CPLSyncSession, NSObject, NSString;
 @protocol CPLEngineForceSyncTaskDelegate, OS_dispatch_queue;
 
 @interface CPLEngineForceSyncTask : CPLForceSyncTask <CPLEngineSyncTaskDelegate>
@@ -19,12 +19,15 @@
     CPLPushToTransportTask *_pushTask;
     CPLPullFromTransportTask *_pullTask;
     CPLMinglePulledChangesTask *_mingleTask;
+    CPLSyncSession *_fakeSession;
+    BOOL _bypassForceSyncLimitations;
     CPLScopeFilter *_filter;
     CPLEngineLibrary *_engineLibrary;
     id<CPLEngineForceSyncTaskDelegate> _delegate;
     CDUnknownBlockType _taskDidFinishWithErrorBlock;
 }
 
+@property (nonatomic) BOOL bypassForceSyncLimitations; // @synthesize bypassForceSyncLimitations=_bypassForceSyncLimitations;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CPLEngineForceSyncTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -39,6 +42,7 @@
 - (void)_dispatchPullTask;
 - (void)_dispatchPushTask;
 - (void)_dispatchSyncTask:(id)arg1;
+- (void)_finishWithError:(id)arg1;
 - (void)cancelTask;
 - (id)initWithScopeIdentifiers:(id)arg1 engineLibrary:(id)arg2 filter:(id)arg3 delegate:(id)arg4;
 - (void)launch;

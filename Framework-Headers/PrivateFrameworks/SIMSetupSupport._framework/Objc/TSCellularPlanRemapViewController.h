@@ -4,22 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SetupAssistantUI/BFFSplashController.h>
+#import <OnBoardingKit/OBTableWelcomeController.h>
 
 #import <SIMSetupSupport/TSSetupFlowItem-Protocol.h>
 #import <SIMSetupSupport/UINavigationControllerDelegate-Protocol.h>
 #import <SIMSetupSupport/UITableViewDataSource-Protocol.h>
 #import <SIMSetupSupport/UITableViewDelegate-Protocol.h>
 
-@class CTCellularPlanItem, CTDanglingPlanItem, NSArray, NSIndexPath, NSString, UITableView, UITableViewCell;
+@class CTCellularPlanItem, CTDanglingPlanItem, NSArray, NSIndexPath, NSLayoutConstraint, NSString, OBBoldTrayButton, UITableViewCell;
 @protocol TSSIMSetupFlowDelegate;
 
-@interface TSCellularPlanRemapViewController : BFFSplashController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
+@interface TSCellularPlanRemapViewController : OBTableWelcomeController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, TSSetupFlowItem>
 {
+    OBBoldTrayButton *_doneButton;
     BOOL _hasBackButton;
     BOOL _hasContinueButton;
     id<TSSIMSetupFlowDelegate> _delegate;
-    UITableView *_tableView;
+    NSLayoutConstraint *_heightAnchor;
     NSArray *_selectedPlanItems;
     CTDanglingPlanItem *_danglingPlanItem;
     CTCellularPlanItem *_defaultVoiceItem;
@@ -36,12 +37,14 @@
 @property BOOL hasBackButton; // @synthesize hasBackButton=_hasBackButton;
 @property BOOL hasContinueButton; // @synthesize hasContinueButton=_hasContinueButton;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSLayoutConstraint *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property (strong) UITableViewCell *sectionFooter; // @synthesize sectionFooter=_sectionFooter;
 @property (strong) NSArray *selectedPlanItems; // @synthesize selectedPlanItems=_selectedPlanItems;
 @property (readonly) Class superclass;
-@property (strong) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (void)_doneButtonTapped;
+- (BOOL)canBeShownFromSuspendedState;
 - (id)initWithBackButton:(BOOL)arg1 continueButton:(BOOL)arg2 danglingPlanItem:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)prepare:(CDUnknownBlockType)arg1;
@@ -50,6 +53,7 @@
 - (void)tableView:(id)arg1 didDeselectRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;

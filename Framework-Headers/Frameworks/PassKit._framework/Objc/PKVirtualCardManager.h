@@ -17,7 +17,9 @@
 - (void).cxx_destruct;
 - (void)activeVirtualCardsWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)credentialsForVirtualCard:(id)arg1 authorization:(id)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)dismissDetailsForVirtualCard:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)promptDetailsForVirtualCard:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)queryKeychainForVirtualCard:(CDUnknownBlockType)arg1;
 - (id)urlToPassDetailsForVirtualCard:(id)arg1;
 

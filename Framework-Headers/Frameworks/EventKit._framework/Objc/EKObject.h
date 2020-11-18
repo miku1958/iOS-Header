@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *_cachedValues; // @synthesize _cachedValues=__cachedValues;
 @property (strong, nonatomic) EKObjectValidationContext *_validationContext; // @synthesize _validationContext=__validationContext;
 @property (strong, nonatomic) NSDictionary *additionalFrozenProperties; // @synthesize additionalFrozenProperties=_additionalFrozenProperties;
+@property (strong, nonatomic) EKPersistentObject *backingObject;
 @property (readonly, nonatomic) BOOL canBeConvertedToFullObject;
 @property (strong, nonatomic) EKChangeSet *changeSet; // @synthesize changeSet=_changeSet;
 @property (readonly, copy) NSString *debugDescription;
@@ -61,7 +62,9 @@ __attribute__((visibility("hidden")))
 - (void)_applyDefinedAfterFirstSaveFrom:(id)arg1;
 - (void)_applyKnownImmutableValuesFrom:(id)arg1;
 - (BOOL)_areOnlyChangedKeys:(id)arg1;
+- (void)_cachedMeltedChildIdentifierToParentMap:(id)arg1;
 - (unsigned long long)_cachedMeltedObjectsCount;
+- (id)_convertBackingObjectsWithPath:(id)arg1 updateBackingObjects:(BOOL)arg2 allChangedBackingObjects:(id)arg3 updatedBackingObjectProvider:(id)arg4;
 - (void)_emptyMeltedCacheForKey:(id)arg1;
 - (BOOL)_hasChangeHelperInKeys:(id)arg1 ignoreKeys:(id)arg2 checkUnsaved:(BOOL)arg3;
 - (BOOL)_hasChanges;
@@ -105,7 +108,8 @@ __attribute__((visibility("hidden")))
 - (void)addMultiChangedObjectValue:(id)arg1 forKey:(id)arg2;
 - (void)addMultiChangedObjectValues:(id)arg1 forKey:(id)arg2;
 - (void)applyChanges:(id)arg1;
-- (id)backingObject;
+- (EKPersistentObject_556b3b22 *)backingObjectOfChildObject:(id)arg1 withRelationshipKey:(id)arg2;
+- (id)cachedMeltedChildIdentifierToParentMap;
 - (id)cachedMeltedObjectForSingleValueKey:(id)arg1;
 - (id)cachedMeltedObjectsForMultiValueKey:(id)arg1;
 - (id)cachedValueForKey:(id)arg1;
@@ -122,6 +126,7 @@ __attribute__((visibility("hidden")))
 - (void)emptyMeltedCacheForKeys:(id)arg1;
 - (id)existingMeltedObject;
 - (BOOL)existsInStore;
+- (Class)frozenClass;
 - (EKPersistentObject_556b3b22 *)frozenObject;
 - (id)frozenOrMeltedCachedSingleRelationObjectForKey:(id)arg1;
 - (BOOL)hasUnsavedChanges;
@@ -151,6 +156,7 @@ __attribute__((visibility("hidden")))
 - (id)multiChangedObjectValuesForKey:(id)arg1;
 - (id)objectID;
 - (id)persistentObject;
+- (id)prepareReminderKitObjectForSaveWithUpdatedBackingObjectProvider:(id)arg1;
 - (id)privacyDescription;
 - (void)rebase;
 - (void)rebaseSkippingRelationProperties:(id)arg1;
@@ -164,7 +170,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)revert;
 - (void)rollback;
 - (int)rowID;
-- (void)setBackingObject:(id)arg1;
 - (void)setCachedMeltedObject:(id)arg1 forSingleValueKey:(id)arg2;
 - (void)setCachedMeltedObjects:(id)arg1 forMultiValueKey:(id)arg2;
 - (void)setCachedValue:(id)arg1 forKey:(id)arg2;
@@ -173,6 +178,7 @@ __attribute__((visibility("hidden")))
 - (id)singleChangedValueForKey:(id)arg1;
 - (void)updateMeltedAndCachedMultiRelationObjects:(id)arg1 forKey:(id)arg2;
 - (void)updateMeltedAndCachedSingleRelationObject:(id)arg1 forKey:(id)arg2 frozenClass:(Class)arg3;
+- (void)updateMultiValueCacheForChangeSet:(id)arg1 preservingExistingAdds:(BOOL)arg2;
 - (void)updatePersistentObject;
 - (void)updatePersistentObjectSkippingProperties:(id)arg1;
 - (void)updatePersistentValueForKeyIfNeeded:(id)arg1;

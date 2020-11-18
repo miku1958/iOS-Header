@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (long long)permittedActionLayoutDirection;
 - (BOOL)placementAvoidsKeyboard;
 - (id)preferredActionForActions:(id)arg1 suggestedPreferredAction:(id)arg2;
-- (id)textFieldContainingViewWithTextField:(id)arg1;
+- (id)textFieldContainingViewWithTextField:(id)arg1 position:(long long)arg2;
 - (struct UIEdgeInsets)textFieldContentInset;
 - (double)textFieldHorizontalMargin;
 - (id)titleLabelColor;

@@ -14,7 +14,9 @@
 @interface HDCodableActivityCache : PBCodable <HDDecoding, NSCopying>
 {
     double _activeHours;
+    double _activeHoursGoal;
     double _briskMinutes;
+    double _briskMinutesGoal;
     long long _cacheIndex;
     double _deepBreathingDuration;
     double _energyBurned;
@@ -31,7 +33,9 @@
     HDCodableSample *_sample;
     struct {
         unsigned int activeHours:1;
+        unsigned int activeHoursGoal:1;
         unsigned int briskMinutes:1;
+        unsigned int briskMinutesGoal:1;
         unsigned int cacheIndex:1;
         unsigned int deepBreathingDuration:1;
         unsigned int energyBurned:1;
@@ -47,7 +51,9 @@
 }
 
 @property (nonatomic) double activeHours; // @synthesize activeHours=_activeHours;
+@property (nonatomic) double activeHoursGoal; // @synthesize activeHoursGoal=_activeHoursGoal;
 @property (nonatomic) double briskMinutes; // @synthesize briskMinutes=_briskMinutes;
+@property (nonatomic) double briskMinutesGoal; // @synthesize briskMinutesGoal=_briskMinutesGoal;
 @property (nonatomic) long long cacheIndex; // @synthesize cacheIndex=_cacheIndex;
 @property (strong, nonatomic) NSMutableArray *dailyBriskMinutesStatistics; // @synthesize dailyBriskMinutesStatistics=_dailyBriskMinutesStatistics;
 @property (strong, nonatomic) NSMutableArray *dailyEnergyBurnedStatistics; // @synthesize dailyEnergyBurnedStatistics=_dailyEnergyBurnedStatistics;
@@ -59,7 +65,9 @@
 @property (nonatomic) double energyBurnedGoalDate; // @synthesize energyBurnedGoalDate=_energyBurnedGoalDate;
 @property (nonatomic) long long flightsClimbed; // @synthesize flightsClimbed=_flightsClimbed;
 @property (nonatomic) BOOL hasActiveHours;
+@property (nonatomic) BOOL hasActiveHoursGoal;
 @property (nonatomic) BOOL hasBriskMinutes;
+@property (nonatomic) BOOL hasBriskMinutesGoal;
 @property (nonatomic) BOOL hasCacheIndex;
 @property (nonatomic) BOOL hasDeepBreathingDuration;
 @property (nonatomic) BOOL hasEnergyBurned;
@@ -84,6 +92,7 @@
 + (Class)dailyBriskMinutesStatisticsType;
 + (Class)dailyEnergyBurnedStatisticsType;
 - (void).cxx_destruct;
+- (id)_decodeCodableActivityStatisticsQuantityInfos:(id)arg1;
 - (void)addDailyBriskMinutesStatistics:(id)arg1;
 - (void)addDailyEnergyBurnedStatistics:(id)arg1;
 - (BOOL)applyToObject:(id)arg1;

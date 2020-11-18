@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) id<CNScheduler> workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)createProxyForObserver:(id)arg1 keysToFetch:(id)arg2;
++ (id)os_log;
 + (id)preparedContact:(id)arg1 withStore:(id)arg2 keysToFetch:(id)arg3;
 + (id)sharedNotifier;
 + (id)workQueue_createFetchersFromRegisteredObservers:(id)arg1;

@@ -7,16 +7,20 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INMediaItem, NSArray, NSDate, NSNumber, NSString;
+@class INMediaItem, INMediaSearch, NSArray, NSDate, NSNumber, NSString;
 
 @protocol INPlayMediaIntentExport <NSObject, JSExport>
 
 @property (copy, nonatomic) NSArray *buckets;
 @property (copy, nonatomic) NSDate *expirationDate;
+@property (copy, nonatomic) NSArray *hashedRouteUIDs;
 @property (copy, nonatomic) INMediaItem *mediaContainer;
 @property (copy, nonatomic) NSArray *mediaItems;
+@property (copy, nonatomic) INMediaSearch *mediaSearch;
 @property (copy, nonatomic) NSNumber *playShuffled;
+@property (nonatomic) long long playbackQueueLocation;
 @property (nonatomic) long long playbackRepeatMode;
+@property (copy, nonatomic) NSNumber *playbackSpeed;
 @property (copy, nonatomic) NSString *proxiedBundleIdentifier;
 @property (copy, nonatomic) NSString *recoID;
 @property (copy, nonatomic) NSNumber *resumePlayback;

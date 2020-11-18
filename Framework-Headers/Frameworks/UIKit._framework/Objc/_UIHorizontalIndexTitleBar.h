@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_cancelDelayedFocusAction;
 - (id)_currentlyFocusedCell;
+- (void)_flipIfRightToLeft;
 - (BOOL)_isViewEntryCell:(id)arg1;
 - (void)_selectEntryForTitleIndex:(long long)arg1;
 - (void)_selectFocusedCell;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (id)selectedEntry;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

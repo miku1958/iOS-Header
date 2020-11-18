@@ -4,10 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class TSDMutableInfoGeometry;
-
 @protocol TSDRealignablePathSource
-- (void)adjustGeometryForAlignToOrigin:(TSDMutableInfoGeometry *)arg1;
 - (void)alignToOrigin;
 - (struct CGPath *)pathWithoutFlips;
 @end

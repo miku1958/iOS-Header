@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong, nonatomic) NSString *name; // @dynamic name;
+@property (copy, nonatomic) NSString *name; // @dynamic name;
 
 + (id)properties;
 + (id)schemaHashRoot;

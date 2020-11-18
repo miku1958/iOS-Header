@@ -9,31 +9,36 @@
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDHome, HMFMessageDispatcher, NSArray, NSDate, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
+@class HMDApplicationData, HMDHome, HMFMessageDispatcher, HMFTimer, NSArray, NSDate, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDActionSet : HMFObject <HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol>
+@interface HMDActionSet : HMFObject <HMFLogging, HMFTimerDelegate, HMDHomeMessageReceiver, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol>
 {
     BOOL _executionInProgress;
     NSString *_name;
     NSString *_type;
     NSUUID *_uuid;
+    HMDHome *_home;
     NSDate *_lastExecutionDate;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
-    HMDHome *_home;
     NSMutableArray *_currentActions;
+    HMFTimer *_executionTimeout;
     HMDApplicationData *_appData;
 }
 
 @property (readonly, nonatomic) NSArray *actions;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
+@property (readonly, nonatomic) BOOL containsMediaPlaybackActions;
 @property (strong, nonatomic) NSMutableArray *currentActions; // @synthesize currentActions=_currentActions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL executionInProgress; // @synthesize executionInProgress=_executionInProgress;
+@property (strong, nonatomic) HMFTimer *executionTimeout; // @synthesize executionTimeout=_executionTimeout;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSDate *lastExecutionDate; // @synthesize lastExecutionDate=_lastExecutionDate;
@@ -49,23 +54,31 @@
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)allowedActionClasses;
 + (BOOL)hasMessageReceiverChildren;
 + (BOOL)isBuiltinActionSetType:(id)arg1;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_addCharacteristicWriteActionModelWithUUID:(id)arg1 message:(id)arg2;
+- (id)_addMediaPlaybackActionModelWithUUID:(id)arg1 message:(id)arg2;
 - (void)_execute:(id)arg1 captureCurrentState:(BOOL)arg2 writeRequestTuples:(id)arg3;
-- (void)_executeWriteAction:(id)arg1 captureCurrentState:(BOOL)arg2 writeRequestTuples:(id)arg3;
+- (void)_executeMediaPlaybackActions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_fixupActions;
 - (id)_generateOverallError:(id)arg1 forSource:(unsigned long long)arg2;
+- (id)_getActionsForActionSetObject;
 - (void)_handleAddActionRequest:(id)arg1;
-- (void)_handleAddActionTransaction:(id)arg1 message:(id)arg2;
+- (void)_handleAddCharactersiticWriteActionTransaction:(id)arg1 message:(id)arg2;
+- (void)_handleAddMediaPlaybackActionTransaction:(id)arg1 message:(id)arg2;
+- (void)_handleAddNewAction:(id)arg1 message:(id)arg2;
+- (void)_handleAddShortcutActionTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveAction:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveActionRequest:(id)arg1;
 - (void)_handleRemoveActionTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleRemoveAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_handleRenameActionSetTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleRenameRequest:(id)arg1;
-- (void)_handleReplaceActionValueRequest:(id)arg1;
+- (void)_handleUpdateActionRequest:(id)arg1;
 - (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
 - (void)_issueReadRequests:(id)arg1;
 - (void)_issueWriteRequests:(id)arg1 readResponse:(id)arg2 message:(id)arg3;
@@ -76,6 +89,8 @@
 - (void)_registerForMessages;
 - (void)_removeAction:(id)arg1 message:(id)arg2;
 - (void)_removeDonatedIntent;
+- (void)_updatePlaybackAction:(id)arg1 forMessage:(id)arg2;
+- (void)_updateWriteAction:(id)arg1 forMessage:(id)arg2;
 - (id)actionWithUUID:(id)arg1;
 - (id)allCharacteristicsInActionsForServices:(id)arg1;
 - (id)assistantObject;
@@ -93,11 +108,14 @@
 - (id)initWithName:(id)arg1 uuid:(id)arg2 type:(id)arg3 home:(id)arg4 queue:(id)arg5;
 - (void)invalidate;
 - (id)isAccessValidForExecutionWithMessage:(id)arg1;
+- (id)logIdentifier;
 - (id)messageDestination;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)removeAccessory:(id)arg1;
 - (void)removeActionForCharacteristic:(id)arg1;
 - (void)removeService:(id)arg1;
+- (void)sendNotificationWithAction:(id)arg1 message:(id)arg2 requiresSPIEntitlement:(BOOL)arg3;
+- (void)timerDidFire:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)url;

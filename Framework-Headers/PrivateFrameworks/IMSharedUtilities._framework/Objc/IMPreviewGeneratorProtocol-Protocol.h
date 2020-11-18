@@ -7,12 +7,13 @@
 @class NSString, NSURL;
 
 @protocol IMPreviewGeneratorProtocol
-+ (NSURL *)generateAndPersistPreviewFromSourceURL:(NSURL *)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
++ (NSURL *)generateAndPersistPreviewFromSourceURL:(NSURL *)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 outSize:(struct CGSize *)arg3 error:(id *)arg4;
 + (double)maxUpScale;
 + (struct CGImage *)newPreviewFromSourceURL:(NSURL *)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (NSString *)previewExtension;
 + (BOOL)shouldScaleUpPreview;
 + (BOOL)shouldShadePreview;
++ (struct CGSize)sizePreviewAtSourceURL:(NSURL *)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (BOOL)writesToDisk;
 @end
 

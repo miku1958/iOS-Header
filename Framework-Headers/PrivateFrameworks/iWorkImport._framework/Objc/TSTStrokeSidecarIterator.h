@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithStrokeSidecar:(id)arg1 region:(id)arg2;
 - (void)terminate;
 - (void)updateCellData:(id)arg1;
+- (void)updateFormulaForCellData:(id)arg1;
 
 @end
 

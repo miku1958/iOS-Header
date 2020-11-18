@@ -7,7 +7,10 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (StoreCacheAdditions)
++ (id)wf_cacheDirectory:(id)arg1;
 + (id)wf_inMemoryAddress;
+- (BOOL)wf_URLHasParameter:(id)arg1;
+- (id)wf_URLWithTracking:(id)arg1;
 - (BOOL)wf_isInMemoryAddress;
 @end
 

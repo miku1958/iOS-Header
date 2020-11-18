@@ -4,34 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ProtocolBuffer/PBRequest.h>
+#import <ProtocolBuffer/PBCodable.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
 
 @class GEOMapItemStorage;
 
-@interface GEORouteHypothesisRequest : PBRequest <NSCopying>
+@interface GEORouteHypothesisRequest : PBCodable <NSCopying>
 {
     double _arrivalDate;
-    double _expirationDate;
     GEOMapItemStorage *_destinationLocation;
+    double _expirationDate;
     int _transportType;
     struct {
-        unsigned int arrivalDate:1;
-        unsigned int expirationDate:1;
-        unsigned int transportType:1;
-    } _has;
+        unsigned int has_arrivalDate:1;
+        unsigned int has_expirationDate:1;
+        unsigned int has_transportType:1;
+    } _flags;
 }
 
-@property (nonatomic) double arrivalDate; // @synthesize arrivalDate=_arrivalDate;
-@property (strong, nonatomic) GEOMapItemStorage *destinationLocation; // @synthesize destinationLocation=_destinationLocation;
-@property (nonatomic) double expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (nonatomic) double arrivalDate;
+@property (strong, nonatomic) GEOMapItemStorage *destinationLocation;
+@property (nonatomic) double expirationDate;
 @property (nonatomic) BOOL hasArrivalDate;
 @property (readonly, nonatomic) BOOL hasDestinationLocation;
 @property (nonatomic) BOOL hasExpirationDate;
 @property (nonatomic) BOOL hasTransportType;
-@property (nonatomic) int transportType; // @synthesize transportType=_transportType;
+@property (nonatomic) int transportType;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -41,6 +42,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transportTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

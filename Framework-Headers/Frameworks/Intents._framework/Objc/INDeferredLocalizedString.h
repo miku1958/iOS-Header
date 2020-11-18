@@ -25,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSString *_formatKey; // @synthesize _formatKey;
 @property (readonly, copy, nonatomic) NSString *_table; // @synthesize _table;
 
++ (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_intents_encodeForProto;
@@ -37,6 +38,7 @@
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeferredFormat:(id)arg1 fromTable:(id)arg2 bundle:(id)arg3 arguments:(struct __va_list_tag [1])arg4;
+- (id)initWithDeferredFormat:(id)arg1 fromTable:(id)arg2 bundleIdentifier:(id)arg3 bundleURL:(id)arg4 arguments:(id)arg5;
 - (unsigned long long)length;
 - (id)localizeForLanguage:(id)arg1;
 

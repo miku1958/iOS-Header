@@ -24,6 +24,7 @@
     id<_DKKeyValueStore> _keyValueStore;
     NSString *_hadAdditionsKey;
     BOOL _hadAdditions;
+    NSDate *_startDate;
     NSDate *_highWaterMark;
     unsigned long long _batchNumber;
     NSArray *_overlappingWindows;
@@ -38,14 +39,14 @@
 - (void)coalesceRedundantOverlappingWindows;
 - (void)endOperation;
 - (void)endPerfMetrics;
-- (void)handleFetchedEvents:(id)arg1 windowStartDate:(id)arg2 windowEndDate:(id)arg3 window:(id)arg4;
+- (void)handleFetchedEvents:(id)arg1 completedWindows:(id)arg2 missingWindows:(id)arg3;
 - (id)initWithParent:(id)arg1 localStorage:(id)arg2 transport:(id)arg3 peer:(id)arg4 policy:(id)arg5 type:(id)arg6;
 - (BOOL)isAsynchronous;
 - (void)main;
 - (void)performSyncDownPeerAdditions;
+- (void)performSyncDownPeerAdditionsWithCompletedWindows:(id)arg1;
 - (void)performSyncDownPeerAdditionsWithDidPrewarm:(BOOL)arg1 orError:(id)arg2;
 - (void)performSyncDownPeerAdditionsWithHighWaterMark:(id)arg1 orError:(id)arg2;
-- (void)performSyncDownPeerAdditionsWithPreviousWindow:(id)arg1;
 - (void)startPerfMetrics;
 - (void)updateEvents:(id)arg1 withSourceDeviceID:(id)arg2;
 

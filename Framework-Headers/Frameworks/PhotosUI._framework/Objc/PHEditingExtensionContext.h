@@ -25,7 +25,7 @@
 - (id)_contentEditingController;
 - (void)_releaseSandboxExtensions;
 - (void)beginContentEditingWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)cancelContentEditing;
+- (void)cancelContentEditingWithResponseHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)finishContentEditing;
 - (void)queryHandlingCapabilityForAdjustmentData:(id)arg1 withResponseHandler:(CDUnknownBlockType)arg2;

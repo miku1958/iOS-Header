@@ -44,6 +44,7 @@
 - (void).cxx_destruct;
 - (id)_attributedStringForLabelWithText:(id)arg1 spec:(id)arg2;
 - (id)_linesToRenderWithContext:(struct CGContext *)arg1;
+- (id)_stringByReplacingNonbreakableWhitespaceToAllowLineWrapping:(id)arg1 maxWidth:(double)arg2;
 - (id)createCustomLayer;
 - (void)drawLayerContentInContext:(struct CGContext *)arg1;
 - (id)init;

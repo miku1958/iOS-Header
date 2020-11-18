@@ -8,7 +8,7 @@
 
 #import <MaterialKit/CAAnimationDelegate-Protocol.h>
 
-@class MTLumaDodgePillSettings, NSMutableArray, NSString;
+@class MTLumaDodgePillSettings, NSMutableArray, NSString, _MTLumaDodgePillLowQualityEffectView;
 @protocol MTLumaDodgePillBackgroundLuminanceObserver;
 
 @interface MTLumaDodgePillView : MTPillView <CAAnimationDelegate>
@@ -18,8 +18,10 @@
     id<MTLumaDodgePillBackgroundLuminanceObserver> _backgroundLumninanceObserver;
     long long _backgroundLuminance;
     long long _backgroundLuminanceBias;
+    long long _graphicsQuality;
     double _luma;
     BOOL _lumaIsValid;
+    _MTLumaDodgePillLowQualityEffectView *_lowQualityEffectView;
     unsigned int _bounceAnimationsInFlight;
     NSMutableArray *_bounceAnimationKeys;
 }
@@ -31,24 +33,25 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long style; // @synthesize style=_style;
+@property (readonly, nonatomic) double suggestedEdgeSpacing;
 @property (readonly) Class superclass;
 
 + (void)initialize;
 + (Class)layerClass;
-+ (double)suggestedEdgeSpacing;
-+ (struct CGSize)suggestedSizeForContentWidth:(double)arg1;
 + (BOOL)supportsBackgroundLuminanceObserving;
 - (void).cxx_destruct;
 - (BOOL)_shouldAnimatePropertyAdditivelyWithKey:(id)arg1;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
-- (id)_styleSettings;
 - (void)_updateStyle;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)bounce;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 settings:(id)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 settings:(id)arg2 graphicsQuality:(long long)arg3;
+- (void)layoutSubviews;
 - (void)resetBackgroundLuminanceHysteresis;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (struct CGSize)suggestedSizeForContentWidth:(double)arg1;
 
 @end
 

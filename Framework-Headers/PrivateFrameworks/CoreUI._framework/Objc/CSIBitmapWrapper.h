@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface CSIBitmapWrapper : NSObject
 {
@@ -22,6 +22,7 @@
     BOOL _allowsPaletteImageCompression;
     BOOL _allowsHevcCompression;
     BOOL _allowsDeepmapImageCompression;
+    BOOL _allowsDeepmap2ImageCompression;
     BOOL _flipped;
     struct CGImage *_sourceImage;
     long long _texturePixelFormat;
@@ -31,9 +32,12 @@
     unsigned long long _colorSpaceID;
     long long _textureInterpretation;
     int _exifOrientation;
+    long long _targetPlatform;
+    NSString *_name;
 }
 
 @property BOOL allowsCompactCompression;
+@property BOOL allowsDeepmap2ImageCompression; // @synthesize allowsDeepmap2ImageCompression=_allowsDeepmap2ImageCompression;
 @property BOOL allowsDeepmapImageCompression; // @synthesize allowsDeepmapImageCompression=_allowsDeepmapImageCompression;
 @property BOOL allowsHevcCompression; // @synthesize allowsHevcCompression=_allowsHevcCompression;
 @property BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
@@ -44,7 +48,9 @@
 @property long long compressionType; // @synthesize compressionType=_compressionType;
 @property (nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
 @property (nonatomic) BOOL flipped; // @synthesize flipped=_flipped;
+@property (nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
+@property long long targetPlatform; // @synthesize targetPlatform=_targetPlatform;
 @property (nonatomic) long long textureInterpretation; // @synthesize textureInterpretation=_textureInterpretation;
 
 - (struct CGContext *)bitmapContext;

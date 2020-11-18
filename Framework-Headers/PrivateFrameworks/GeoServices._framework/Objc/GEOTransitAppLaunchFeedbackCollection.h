@@ -8,28 +8,34 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSString;
+@class GEOLatLng, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOTransitAppLaunchFeedbackCollection : PBCodable <NSCopying>
 {
-    double _timestamp;
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSString *_bundleIdentifier;
     GEOLatLng *_destination;
     GEOLatLng *_source;
-    CDStruct_b5306035 _has;
+    double _timestamp;
+    CDStruct_ea2c3af7 _flags;
 }
 
-@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (strong, nonatomic) GEOLatLng *destination; // @synthesize destination=_destination;
+@property (strong, nonatomic) NSString *bundleIdentifier;
+@property (strong, nonatomic) GEOLatLng *destination;
 @property (readonly, nonatomic) BOOL hasBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasDestination;
 @property (readonly, nonatomic) BOOL hasSource;
 @property (nonatomic) BOOL hasTimestamp;
-@property (strong, nonatomic) GEOLatLng *source; // @synthesize source=_source;
-@property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (strong, nonatomic) GEOLatLng *source;
+@property (nonatomic) double timestamp;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readBundleIdentifier;
+- (void)_readDestination;
+- (void)_readSource;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -37,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

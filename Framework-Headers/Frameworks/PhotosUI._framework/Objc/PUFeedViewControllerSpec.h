@@ -11,17 +11,17 @@
 __attribute__((visibility("hidden")))
 @interface PUFeedViewControllerSpec : NSObject
 {
-    int _squareThumbnailFastImageFormat;
-    int _squareThumbnailQualityImageFormat;
-    int _smallTileFastImageFormat;
-    int _smallTileQualityImageFormat;
-    int _smallTilePanoQualityImageFormat;
-    int _mediumTileFastImageFormat;
-    int _mediumTileQualityImageFormat;
-    int _largeTileFastImageFormat;
-    int _largeTileQualityImageFormat;
-    int _veryLargeTileFastImageFormat;
-    int _veryLargeTileQualityImageFormat;
+    unsigned short _squareThumbnailFastImageFormat;
+    unsigned short _squareThumbnailQualityImageFormat;
+    unsigned short _smallTileFastImageFormat;
+    unsigned short _smallTileQualityImageFormat;
+    unsigned short _smallTilePanoQualityImageFormat;
+    unsigned short _mediumTileFastImageFormat;
+    unsigned short _mediumTileQualityImageFormat;
+    unsigned short _largeTileFastImageFormat;
+    unsigned short _largeTileQualityImageFormat;
+    unsigned short _veryLargeTileFastImageFormat;
+    unsigned short _veryLargeTileQualityImageFormat;
     struct CGSize _squareThumbnailMaximumSize;
     struct CGSize _smallTileMaximumFittingSize;
     double _smallTilePanoAspectRatio;
@@ -77,7 +77,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultSubTitleTextAttributesForCollectionViewType:(long long)arg1;
 - (id)defaultTextAttributesForCollectionViewType:(long long)arg1;
 - (id)emphasizedTextAttributesForCollectionViewType:(long long)arg1;
-- (void)getFastImageFormat:(out int *)arg1 qualityImageFormat:(out int *)arg2 forSourceSize:(struct CGSize)arg3 destinationSize:(struct CGSize)arg4 allowCrop:(BOOL)arg5;
+- (void)getFastImageFormat:(out unsigned short *)arg1 qualityImageFormat:(out unsigned short *)arg2 forSourceSize:(struct CGSize)arg3 destinationSize:(struct CGSize)arg4 allowCrop:(BOOL)arg5;
 - (void)getReferenceMaximumLength:(double *)arg1 minimumNumberOfTilesToOmit:(long long *)arg2 forSectionType:(long long)arg3 collectionViewType:(long long)arg4;
 - (id)init;
 - (void)setLayoutReferenceWidth:(double)arg1;

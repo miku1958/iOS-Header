@@ -66,9 +66,9 @@
 @property (readonly, nonatomic) BOOL hasConnectingSessions;
 @property (nonatomic) BOOL hasReinitiateCapability; // @synthesize hasReinitiateCapability=_hasReinitiateCapability;
 @property (readonly, nonatomic) BOOL hasUnfinishedSessions;
-@property (readonly, strong, nonatomic) IMHandle *imHandle; // @synthesize imHandle=_imHandle;
+@property (readonly, nonatomic) IMHandle *imHandle; // @synthesize imHandle=_imHandle;
 @property (strong, nonatomic) NSData *inFrequencyLevel; // @synthesize inFrequencyLevel=_inFrequencyLevel;
-@property (readonly, strong, nonatomic) IMHandle *invitedBy; // @synthesize invitedBy=_inviter;
+@property (readonly, nonatomic) IMHandle *invitedBy; // @synthesize invitedBy=_inviter;
 @property (nonatomic, setter=setAudioMuted:) BOOL isAudioMuted; // @dynamic isAudioMuted;
 @property (nonatomic, setter=setAudioMuted:) BOOL isAudioMuted; // @synthesize isAudioMuted=_audioMuted;
 @property (readonly, nonatomic) BOOL isInitiator; // @synthesize isInitiator=_isInitiator;
@@ -83,7 +83,7 @@
 @property (setter=setVideoDegraded:) BOOL isVideoDegraded; // @synthesize isVideoDegraded=_videoDegraded;
 @property (nonatomic, setter=setVideoPaused:) BOOL isVideoPaused; // @dynamic isVideoPaused;
 @property (nonatomic, setter=setVideoPaused:) BOOL isVideoPaused; // @synthesize isVideoPaused=_videoPaused;
-@property (readonly, strong, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *name;
 @property (strong, nonatomic) NSData *outFrequencyLevel; // @synthesize outFrequencyLevel=_outFrequencyLevel;
 @property (strong, nonatomic) NSDictionary *properties; // @synthesize properties=_properties;
 @property (readonly, nonatomic) unsigned int reasonChatEnded; // @synthesize reasonChatEnded=_chatEndedReason;
@@ -92,6 +92,7 @@
 @property (nonatomic) void *videoBackLayer;
 @property (nonatomic) void *videoLayer;
 
+- (void).cxx_destruct;
 - (id)_callInfoForCallID:(long long)arg1;
 - (id)_callInfoForReinitiate;
 - (id)_callInfoWithState:(long long)arg1;

@@ -11,7 +11,7 @@
 #import <Silex/WKNavigationDelegatePrivate-Protocol.h>
 #import <Silex/WKUIDelegate-Protocol.h>
 
-@class NSString, SXWebCrashRetryThrottler, WKWebView;
+@class NSString, SXWebCrashRetryThrottler, WKWebView, WKWebsiteDataStore;
 @protocol SXComponentActionHandler;
 
 @interface SXEmbedVideoComponentView : SXMediaComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate, SXViewportChangeListener>
@@ -21,9 +21,11 @@
     id<SXComponentActionHandler> _actionHandler;
     WKWebView *_webView;
     SXWebCrashRetryThrottler *_webCrashRetryThrottler;
+    WKWebsiteDataStore *_dataStore;
 }
 
 @property (readonly, nonatomic) id<SXComponentActionHandler> actionHandler; // @synthesize actionHandler=_actionHandler;
+@property (readonly, nonatomic) WKWebsiteDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -41,15 +43,16 @@
 - (BOOL)allowHierarchyRemoval;
 - (unsigned long long)analyticsMediaType;
 - (unsigned long long)analyticsVideoType;
+- (void)discardContents;
 - (void)handleError:(id)arg1;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7 websiteDataStore:(id)arg8;
 - (void)initializeWebViewWithURL:(id)arg1;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)renderContents;
 - (BOOL)shouldAllowRequestToURL:(id)arg1;
 - (struct CGRect)transitionContentFrame;
 - (void)updateWebViewToWidth:(double)arg1;
 - (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
-- (void)visibilityStateDidChangeFromState:(long long)arg1;
 - (struct CGRect)visibleFrame;
 - (id)webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;

@@ -11,11 +11,13 @@
 @interface MPModelForYouRecommendationsRequest : MPStoreModelRequest
 {
     long long _filteringPolicy;
+    long long _requestEndpoint;
     NSURL *_customForYouURL;
 }
 
 @property (copy, nonatomic) NSURL *customForYouURL; // @synthesize customForYouURL=_customForYouURL;
 @property (nonatomic) long long filteringPolicy; // @synthesize filteringPolicy=_filteringPolicy;
+@property (nonatomic) long long requestEndpoint; // @synthesize requestEndpoint=_requestEndpoint;
 
 + (id)allSupportedItemProperties;
 + (id)allSupportedSectionProperties;

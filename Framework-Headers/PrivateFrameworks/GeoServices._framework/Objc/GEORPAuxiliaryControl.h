@@ -8,20 +8,31 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPCarPlayAuxiliaryControl, GEORPWatchAuxiliaryControl;
+@class GEORPCarPlayAuxiliaryControl, GEORPWatchAuxiliaryControl, PBDataReader;
 
 @interface GEORPAuxiliaryControl : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     GEORPCarPlayAuxiliaryControl *_car;
     GEORPWatchAuxiliaryControl *_watch;
+    struct {
+        unsigned int read_car:1;
+        unsigned int read_watch:1;
+        unsigned int wrote_car:1;
+        unsigned int wrote_watch:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) GEORPCarPlayAuxiliaryControl *car; // @synthesize car=_car;
+@property (strong, nonatomic) GEORPCarPlayAuxiliaryControl *car;
 @property (readonly, nonatomic) BOOL hasCar;
 @property (readonly, nonatomic) BOOL hasWatch;
-@property (strong, nonatomic) GEORPWatchAuxiliaryControl *watch; // @synthesize watch=_watch;
+@property (strong, nonatomic) GEORPWatchAuxiliaryControl *watch;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readCar;
+- (void)_readWatch;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -29,6 +40,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

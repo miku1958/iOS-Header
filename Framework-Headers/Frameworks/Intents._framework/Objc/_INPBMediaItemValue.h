@@ -10,21 +10,28 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBMediaItemValue-Protocol.h>
 
-@class NSString, _INPBImageValue, _INPBValueMetadata;
+@class NSArray, NSString, _INPBImageValue, _INPBValueMetadata;
 
 @interface _INPBMediaItemValue : PBCodable <_INPBMediaItemValue, NSSecureCoding, NSCopying>
 {
     CDStruct_f953fb60 _has;
+    BOOL __encodeLegacyGloryData;
     int _type;
+    NSString *_artist;
     _INPBImageValue *_artwork;
     NSString *_identifier;
+    NSArray *_namedEntities;
     NSString *_title;
+    NSArray *_topics;
     _INPBValueMetadata *_valueMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
+@property (copy, nonatomic) NSString *artist; // @synthesize artist=_artist;
 @property (strong, nonatomic) _INPBImageValue *artwork; // @synthesize artwork=_artwork;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasArtist;
 @property (readonly, nonatomic) BOOL hasArtwork;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasTitle;
@@ -32,17 +39,32 @@
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSArray *namedEntities; // @synthesize namedEntities=_namedEntities;
+@property (readonly, nonatomic) unsigned long long namedEntitiesCount;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSArray *topics; // @synthesize topics=_topics;
+@property (readonly, nonatomic) unsigned long long topicsCount;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
++ (Class)namedEntitiesType;
++ (BOOL)supportsSecureCoding;
++ (Class)topicsType;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
+- (void)addNamedEntities:(id)arg1;
+- (void)addTopics:(id)arg1;
+- (void)clearNamedEntities;
+- (void)clearTopics;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)namedEntitiesAtIndex:(unsigned long long)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)topicsAtIndex:(unsigned long long)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

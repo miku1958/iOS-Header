@@ -6,11 +6,60 @@
 
 #import <objc/NSObject.h>
 
-@interface NSObject (Subclass)
+#import <TouchML/NSObjectInitJSExports-Protocol.h>
 
+@class NSArray, NSString;
+
+@interface NSObject (Subclass) <NSObjectInitJSExports>
+
+@property (readonly, nonatomic) NSArray *tmlChildren;
+@property (copy, nonatomic) NSString *tmlIdentifier;
+@property (weak, nonatomic) id tmlParent;
+@property (copy, nonatomic) NSString *tmlState;
 @property (readonly, nonatomic) Class tmlSuperClass; // @dynamic tmlSuperClass;
 
 + (BOOL)subclassInstance:(id)arg1;
++ (BOOL)tmlIsJSObjectClass;
++ (void)tmlLoadCategory;
++ (id)tmlLoadObjectFromPath:(id)arg1;
++ (void)tmlMakeJSObjectClass;
+- (void)addMetaObject:(id)arg1;
+- (void)addTmlChild:(id)arg1;
+- (BOOL)didEmitSignalOrMethod:(id)arg1 withArguments:(id)arg2 returnValue:(id)arg3 newReturnValue:(id *)arg4;
+- (BOOL)emitTMLSignal:(id)arg1 withArguments:(id)arg2;
+- (BOOL)emitTMLSignal:(id)arg1 withArguments:(id)arg2 returnValue:(id *)arg3;
+- (id)getAspectsForSignalName:(id)arg1 advice:(int)arg2 createStorageIfMissing:(BOOL)arg3;
+- (BOOL)hasTMLOwnerContext:(id)arg1;
+- (id)metaObjects;
+- (void)registerAspect:(id)arg1;
+- (void)removeTMLSignal:(id)arg1;
+- (void)setTMLHandler:(id)arg1 forSignal:(id)arg2;
+- (void)setTMLHandlerBlock:(CDUnknownBlockType)arg1 forSignal:(id)arg2;
+- (BOOL)setTMLOwnerContext:(id)arg1;
+- (void)setTMLSignalHandler:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)setTMLValue:(id)arg1 forKey:(id)arg2;
+- (void)setTMLValue:(id)arg1 forKeyPath:(id)arg2;
+- (id)strongObjectsArray:(id)arg1;
+- (void)tmlAddMethod:(id)arg1;
+- (id)tmlCallMethod:(id)arg1 withArguments:(id)arg2;
+- (id)tmlClass;
+- (id)tmlDefaultState;
+- (void)tmlDispose;
+- (id)tmlEmitSignalOrCallMethod:(id)arg1 withArguments:(id)arg2;
+- (id)tmlGetMethod:(id)arg1;
+- (id)tmlGetMethod:(id)arg1 throwIfMissing:(BOOL)arg2;
+- (id)tmlGetValue:(id)arg1;
+- (id)tmlGetValueProxy:(id)arg1;
+- (BOOL)tmlHasSignal:(id)arg1;
+- (id)tmlInvoke:(id)arg1:(id)arg2;
+- (id)tmlInvokeMethodCall:(id)arg1 withArguments:(id)arg2;
 - (BOOL)tmlIsKindOfClass:(Class)arg1;
+- (void)tmlMakeJSObjectClass;
+- (id)tmlSignalHandlerForSignal:(id)arg1;
+- (id)tmlStateForName:(id)arg1;
+- (id)tmlValueForKey:(id)arg1;
+- (id)tmlValueForKeyPath:(id)arg1;
+- (void)unregisterAspect:(id)arg1;
+- (void)willEmitSignalOrMethod:(id)arg1 withArguments:(id)arg2 newArguments:(id *)arg3;
 @end
 

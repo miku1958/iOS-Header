@@ -41,11 +41,11 @@ __attribute__((visibility("hidden")))
 - (struct StrokeBufferSizing)bufferSizingForStrokesOnSection:(const struct PolygonSection *)arg1 styles:(const vector_0496561e *)arg2 edges:(const vector_304c695f *)arg3;
 - (void)didFinishAddingData;
 - (const vector_304c695f *)generateEdgeListForPolygonSection:(const struct PolygonSection *)arg1 key:(const pair_1503616b *)arg2;
-- (id)initWithStyleQuery:(shared_ptr_c5d816ee *)arg1 tileZoom:(float)arg2 layer:(int)arg3 buildingId:(unsigned long long)arg4 contentScale:(float)arg5 sharedResources:(id)arg6;
+- (id)initWithStyleQuery:(shared_ptr_c5d816ee *)arg1 tileZoom:(float)arg2 layer:(int)arg3 buildingId:(unsigned long long)arg4 contentScale:(float)arg5;
 - (void)prepareToGenerateWallStrokesForSection:(const struct PolygonSection *)arg1 styles:(const vector_0496561e *)arg2 edges:(const vector_304c695f *)arg3;
 - (void)prepareToGenerateWallsForSection:(const struct PolygonSection *)arg1 styles:(vector_0496561e *)arg2 edges:(const vector_304c695f *)arg3;
 - (void)prepareToStrokeSection:(const struct PolygonSection *)arg1 key:(const pair_1503616b *)arg2 styles:(vector_0496561e *)arg3 paddedCount:(unsigned int)arg4;
-- (void)updateTextures:(unsigned char)arg1;
+- (void)updateTextures:(unsigned char)arg1 textureManager:(shared_ptr_f2399894 *)arg2;
 - (unsigned long long)verticalStrokeCountForSection:(const struct PolygonSection *)arg1 styles:(const vector_0496561e *)arg2 edges:(const vector_304c695f *)arg3;
 - (void)willAddDataWithAccessor:(struct ResourceAccessor *)arg1;
 

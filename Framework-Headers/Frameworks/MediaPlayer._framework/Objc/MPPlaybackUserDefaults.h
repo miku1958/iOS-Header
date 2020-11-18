@@ -19,29 +19,36 @@
     long long _musicShuffleType;
     BOOL _soundCheckEnabled;
     BOOL _speakerRouteEnabled;
+    BOOL _includeContentItemDebugFields;
     NSMutableDictionary *_lastSiriPlaybackContextIDs;
     struct vector<int, std::__1::allocator<int>> _notifyTokens;
     NSObject<OS_dispatch_queue> *_userDefaultsMutationQueue;
+    NSNumber *_currentPrivateListeningEnabledValue;
+    NSObject<OS_dispatch_queue> *_loadValuesQueue;
+    NSNumber *_devicePrivateListeningEnabled;
 }
 
 @property (readonly, nonatomic) BOOL allowsHighQualityMusicStreamingOnCellular;
+@property (copy, nonatomic, getter=isDevicePrivateListeningEnabled) NSNumber *devicePrivateListeningEnabled; // @synthesize devicePrivateListeningEnabled=_devicePrivateListeningEnabled;
+@property (readonly, nonatomic) BOOL includeContentItemDebugFields;
 @property (readonly, nonatomic) int musicEQPreset; // @synthesize musicEQPreset=_musicEQPreset;
 @property (nonatomic) long long musicRepeatType;
 @property (nonatomic) long long musicShuffleType;
 @property (readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnCellular;
 @property (readonly, nonatomic) unsigned long long preferredVideosAssetQualityOnWifi;
 @property (copy, nonatomic, getter=isPrivateListeningEnabled) NSNumber *privateListeningEnabled;
-@property (readonly, nonatomic) BOOL shouldUseNewQueueManagement;
 @property (readonly, nonatomic) BOOL soundCheckEnabled;
 @property (readonly, nonatomic) BOOL speakerRouteEnabled;
 
 + (id)standardUserDefaults;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_accountStoreChangedNotification:(id)arg1;
 - (void)_addNotificationObserver:(CDUnknownBlockType)arg1 forUserDefaultKey:(struct __CFString *)arg2;
 - (int)_calculateCurrentMusicEQPreset;
 - (long long)_calculateCurrentMusicRepeatType;
 - (long long)_calculateCurrentMusicShuffleType;
+- (void)_loadAccountProperties;
 - (void)_mobileiPodPrefsDidChange;
 - (void)_postRepeatShuffleTypeGlobalNotification;
 - (void)dealloc;

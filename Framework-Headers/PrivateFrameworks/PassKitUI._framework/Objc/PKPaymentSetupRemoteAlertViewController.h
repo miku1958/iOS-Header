@@ -21,10 +21,10 @@
 
 + (BOOL)_isSecureForRemoteViewService;
 - (void)_dismiss;
-- (void)_willAppearInRemoteViewController;
-- (void)handleHomeButtonPressed;
+- (void)configureWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleButtonActions:(id)arg1;
 - (void)paymentSetupDidFinish:(id)arg1;
-- (void)setUserInfo:(id)arg1;
+- (long long)preferredStatusBarStyle;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;

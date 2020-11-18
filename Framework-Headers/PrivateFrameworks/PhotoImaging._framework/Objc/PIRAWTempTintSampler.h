@@ -6,9 +6,15 @@
 
 #import <NeutrinoCore/NUTagColorSampler.h>
 
-@interface PIRAWTempTintSampler : NUTagColorSampler
+#import <PhotoImaging/PITagColorSampler-Protocol.h>
+
+@class NSString;
+
+@interface PIRAWTempTintSampler : NUTagColorSampler <PITagColorSampler>
 {
 }
+
+@property (readonly, nonatomic) NSString *tag;
 
 - (id)_pipelineFilters;
 - (id)initWithComposition:(id)arg1 responseQueue:(id)arg2;

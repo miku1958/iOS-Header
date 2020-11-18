@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreML/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSOrderedSet;
 
-@interface MLMultiArrayShapeConstraint : NSObject
+@interface MLMultiArrayShapeConstraint : NSObject <NSSecureCoding>
 {
     long long _type;
     NSArray *_sizeRangeForDimension;
@@ -20,9 +22,12 @@
 @property (readonly, nonatomic) NSArray *sizeRangeForDimension; // @synthesize sizeRangeForDimension=_sizeRangeForDimension;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
 - (id)findAvailableShape:(id)arg1;
 - (id)initUnspecified;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithEnumeratedShapes:(id)arg1;
 - (id)initWithSizeRangeForDimension:(id)arg1;
 - (BOOL)isAllowedShape:(id)arg1 error:(id *)arg2;

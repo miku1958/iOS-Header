@@ -11,8 +11,12 @@ __attribute__((visibility("hidden")))
 {
     BOOL _shouldIncludeActivitySummaryPrivateProperties;
     BOOL _shouldIncludeActivitySummaryStatistics;
+    BOOL _orderByDateAscending;
+    unsigned long long _limit;
 }
 
+@property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
+@property (nonatomic) BOOL orderByDateAscending; // @synthesize orderByDateAscending=_orderByDateAscending;
 @property (nonatomic) BOOL shouldIncludeActivitySummaryPrivateProperties; // @synthesize shouldIncludeActivitySummaryPrivateProperties=_shouldIncludeActivitySummaryPrivateProperties;
 @property (nonatomic) BOOL shouldIncludeActivitySummaryStatistics; // @synthesize shouldIncludeActivitySummaryStatistics=_shouldIncludeActivitySummaryStatistics;
 

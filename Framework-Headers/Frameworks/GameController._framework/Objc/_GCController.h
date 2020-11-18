@@ -8,56 +8,11 @@
 
 #import <GameController/NSSecureCoding-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString;
-@protocol GCNamedProfile, OS_dispatch_queue;
-
 @interface _GCController : GCController <NSSecureCoding>
 {
-    CDUnknownBlockType _controllerPausedHandler;
-    NSString *_vendorName;
-    long long _playerIndex;
-    id<GCNamedProfile> _profile;
-    NSMutableArray *_hidServices;
-    unsigned int _service;
-    unsigned long long _deviceHash;
-    NSObject<OS_dispatch_queue> *_handlerQueue;
-    BOOL physicalDeviceUsesCompass;
-    NSString *physicalDeviceUniqueID;
 }
 
 + (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (void)addServiceRefs:(id)arg1;
-- (void)clearServiceRef;
-- (CDUnknownBlockType)controllerPausedHandler;
-- (void)dealloc;
-- (id)description;
-- (unsigned long long)deviceHash;
-- (void)encodeWithCoder:(id)arg1;
-- (id)extendedGamepad;
-- (id)gamepad;
-- (id)handlerQueue;
-- (BOOL)hasServiceRef:(struct __IOHIDServiceClient *)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithProfile:(id)arg1;
-- (id)initWithServiceRef:(struct __IOHIDServiceClient *)arg1;
-- (BOOL)isAttachedToDevice;
-- (BOOL)isEqualToController:(id)arg1;
-- (id)microGamepad;
-- (id)motion;
-- (id)physicalDeviceUniqueID;
-- (BOOL)physicalDeviceUsesCompass;
-- (long long)playerIndex;
-- (id)profile;
-- (void)removeServiceRef:(struct __IOHIDServiceClient *)arg1;
-- (unsigned int)service;
-- (void)setControllerPausedHandler:(CDUnknownBlockType)arg1;
-- (void)setHandlerQueue:(id)arg1;
-- (void)setPhysicalDeviceUniqueID:(id)arg1;
-- (void)setPhysicalDeviceUsesCompass:(BOOL)arg1;
-- (void)setPlayerIndex:(long long)arg1;
-- (void)setProfile:(id)arg1;
-- (id)vendorName;
 
 @end
 

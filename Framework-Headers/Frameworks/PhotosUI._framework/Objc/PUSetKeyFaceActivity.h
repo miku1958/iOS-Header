@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PUActivity.h>
+#import <PhotosUICore/PXActivity.h>
 
 __attribute__((visibility("hidden")))
-@interface PUSetKeyFaceActivity : PUActivity
+@interface PUSetKeyFaceActivity : PXActivity
 {
 }
 
 + (long long)activityCategory;
-- (id)activityImage;
+- (id)_systemImageName;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

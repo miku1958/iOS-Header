@@ -19,6 +19,10 @@
 @property (nonatomic) double maximumKeepAliveInterval;
 @property (nonatomic) BOOL minimumIntervalFallbackEnabled;
 @property (nonatomic) double minimumKeepAliveInterval;
+@property (nonatomic) double serverStatsExpectedKeepAliveInterval;
+@property (nonatomic) double serverStatsMaxKeepAliveInterval;
+@property (nonatomic) double serverStatsMinKeepAliveInterval;
+@property (nonatomic) BOOL usingServerStatsAggressively;
 
 - (id)initWithCacheInfo:(NSDictionary *)arg1 loggingIdentifier:(NSString *)arg2 algorithmName:(NSString *)arg3;
 - (void)processNextAction:(int)arg1;

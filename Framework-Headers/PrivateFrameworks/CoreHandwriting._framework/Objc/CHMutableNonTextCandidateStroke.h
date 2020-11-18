@@ -12,14 +12,15 @@
 {
 }
 
-@property (nonatomic) BOOL active; // @dynamic active;
-@property (nonatomic) double support; // @dynamic support;
 @property (strong, nonatomic) NSDictionary *supportByStrokeIdentifier; // @dynamic supportByStrokeIdentifier;
 
-- (BOOL)_adjustSupportForContainerClassificationWithStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
-- (BOOL)_adjustSupportForLineClassificationWithStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
-- (BOOL)adjustSupportWithStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
-- (BOOL)updateByRemovingStrokeIdentifier:(id)arg1;
+- (BOOL)_adjustSupportForContainerClassificationByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (BOOL)_adjustSupportForLineClassificationByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (BOOL)_removeSupportForStrokeIdentifier:(id)arg1;
+- (void)_setSupportForStrokeIdentifier:(id)arg1 support:(double)arg2;
+- (BOOL)adjustSupportByAddingStroke:(id)arg1 consistingOfSubstrokes:(id)arg2;
+- (BOOL)adjustSupportByRemovingStrokeIdentifier:(id)arg1;
+- (id)description;
 
 @end
 

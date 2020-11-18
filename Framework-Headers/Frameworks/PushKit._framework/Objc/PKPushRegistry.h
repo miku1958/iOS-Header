@@ -8,16 +8,18 @@
 
 #import <PushKit/PKComplicationXPCClient-Protocol.h>
 #import <PushKit/PKFileProviderXPCClient-Protocol.h>
+#import <PushKit/PKUserNotificationsConnectionClient-Protocol.h>
 #import <PushKit/PKVoIPXPCClient-Protocol.h>
 
-@class NSMutableDictionary, NSSet;
+@class NSMutableDictionary, NSSet, NSString;
 @protocol OS_dispatch_queue, PKPushRegistryDelegate;
 
-@interface PKPushRegistry : NSObject <PKVoIPXPCClient, PKComplicationXPCClient, PKFileProviderXPCClient>
+@interface PKPushRegistry : NSObject <PKVoIPXPCClient, PKComplicationXPCClient, PKFileProviderXPCClient, PKUserNotificationsConnectionClient>
 {
     int _voipToken;
     int _complicationToken;
     int _fileProviderToken;
+    int _outstandingVoIPPushes;
     NSSet *_desiredPushTypes;
     id<PKPushRegistryDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -27,20 +29,29 @@
 }
 
 @property (nonatomic) int complicationToken; // @synthesize complicationToken=_complicationToken;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak) id<PKPushRegistryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property (readonly, copy) NSString *description;
 @property (copy) NSSet *desiredPushTypes; // @synthesize desiredPushTypes=_desiredPushTypes;
 @property (nonatomic) int fileProviderToken; // @synthesize fileProviderToken=_fileProviderToken;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *ivarQueue; // @synthesize ivarQueue=_ivarQueue;
+@property (nonatomic) int outstandingVoIPPushes; // @synthesize outstandingVoIPPushes=_outstandingVoIPPushes;
 @property (strong, nonatomic) NSMutableDictionary *pushTypeToConnection; // @synthesize pushTypeToConnection=_pushTypeToConnection;
 @property (strong, nonatomic) NSMutableDictionary *pushTypeToToken; // @synthesize pushTypeToToken=_pushTypeToToken;
+@property (readonly) Class superclass;
 @property (nonatomic) int voipToken; // @synthesize voipToken=_voipToken;
 
++ (void)_checkIfNecessaryVoIPFrameworksAreLinked;
 + (id)_pushTypeToMachServiceName;
 - (void).cxx_destruct;
 - (id)_createConnectionForPushType:(id)arg1;
+- (void)_noteIncomingCallReported;
 - (void)_registerForPushType:(id)arg1;
 - (void)_renewConnectionForPushTypeIfRegistered:(id)arg1;
+- (BOOL)_selfTaskHasEntitlement:(struct __CFString *)arg1;
+- (void)_terminateAppIfThereAreUnhandledVoIPPushes;
 - (void)_unregisterForPushType:(id)arg1;
 - (void)complicationPayloadReceived:(id)arg1;
 - (void)complicationRegistrationFailed;
@@ -51,6 +62,9 @@
 - (void)fileProviderRegistrationSucceededWithDeviceToken:(id)arg1;
 - (id)initWithQueue:(id)arg1;
 - (id)pushTokenForType:(id)arg1;
+- (void)remoteUserNotificationPayloadReceived:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)remoteUserNotificationRegistrationSucceededWithDeviceToken:(id)arg1;
+- (void)voipPayloadReceived:(id)arg1 mustPostCall:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)voipPayloadReceived:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)voipRegistrationFailed;
 - (void)voipRegistrationSucceededWithDeviceToken:(id)arg1;

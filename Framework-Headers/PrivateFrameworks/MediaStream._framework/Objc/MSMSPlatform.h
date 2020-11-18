@@ -48,14 +48,15 @@
 - (void)logFile:(const char *)arg1 func:(const char *)arg2 line:(int)arg3 facility:(int)arg4 level:(int)arg5 format:(id)arg6 args:(struct __va_list_tag [1])arg7;
 - (id)pathMediaStreamDir;
 - (BOOL)personIDUsesProductionPushEnvironment:(id)arg1;
+- (Class)pluginClass;
 - (BOOL)policyMayDownload;
 - (BOOL)policyMayUpload;
 - (Class)publisherPluginClass;
 - (id)pushTokenForPersonID:(id)arg1;
-- (Class)sharingPluginClass;
 - (BOOL)shouldEnableNewFeatures;
 - (BOOL)shouldLogAtLevel:(int)arg1;
 - (id)socketOptions;
+- (id)stringForSysctlKey:(id)arg1;
 - (Class)subscriberPluginClass;
 - (id)theDaemon;
 

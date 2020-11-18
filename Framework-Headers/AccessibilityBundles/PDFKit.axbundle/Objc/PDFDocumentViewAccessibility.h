@@ -18,6 +18,7 @@
 - (BOOL)_axIsUsingPDFExtensionView;
 - (id)_axPageViews;
 - (void)_axSetPageViews:(id)arg1;
+- (BOOL)isAccessibilityElement;
 
 @end
 

@@ -14,17 +14,13 @@
     id<MTLCommandQueue> _commandQueue;
     id<MTLComputePipelineState> _cubemapToLatLongPipelineState;
     id<MTLComputePipelineState> _latLongToCubemapPipelineState;
-    id<MTLComputePipelineState> _cubemapHistogramPipelineState;
     BOOL _gpuFamilyAtleast4;
 }
 
-@property (readonly, nonatomic, getter=isGPUFamilyAtleast4) BOOL gpuFamilyAtleast4; // @synthesize gpuFamilyAtleast4=_gpuFamilyAtleast4;
-
 - (void).cxx_destruct;
-- (struct ARLabHistogram)colorHistogramForCubemap:(id)arg1;
-- (id)cubemapTextureWithRotation:(CDStruct_8e0628e6)arg1 size:(unsigned long long)arg2 forLatLong:(id)arg3;
+- (id)cubemapTextureFromEquirectangularTexture:(id)arg1 rotation:(CDStruct_8e0628e6)arg2 size:(unsigned long long)arg3;
+- (id)equirectangularTextureFromCubemapTexture:(id)arg1 rotation:(CDStruct_8e0628e6)arg2 size:(unsigned long long)arg3;
 - (id)init;
-- (id)latlongTextureWithRotation:(CDStruct_8e0628e6)arg1 size:(unsigned long long)arg2 forCubemap:(id)arg3;
 
 @end
 

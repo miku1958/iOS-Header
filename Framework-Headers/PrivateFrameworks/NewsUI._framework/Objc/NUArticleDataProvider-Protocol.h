@@ -13,6 +13,8 @@
 @property (readonly, nonatomic) FCArticle *article;
 @property (readonly, copy, nonatomic) NSString *articleID;
 
+- (void)cancelAssetPrefetch;
 - (void)loadContextWithCompletionBlock:(void (^)(SXContext *, id<NUFontRegistrator>, NSError *))arg1;
+- (void)prefetchAssets;
 @end
 

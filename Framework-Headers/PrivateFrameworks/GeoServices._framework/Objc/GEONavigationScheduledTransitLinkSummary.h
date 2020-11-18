@@ -8,20 +8,29 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEONavigationTransitStopSummary;
+@class GEONavigationTransitStopSummary, PBDataReader;
 
 @interface GEONavigationScheduledTransitLinkSummary : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     unsigned long long _lineID;
     double _scheduledArrival;
     double _scheduledDeparture;
     GEONavigationTransitStopSummary *_stopFrom;
     GEONavigationTransitStopSummary *_stopTo;
     struct {
-        unsigned int lineID:1;
-        unsigned int scheduledArrival:1;
-        unsigned int scheduledDeparture:1;
-    } _has;
+        unsigned int has_lineID:1;
+        unsigned int has_scheduledArrival:1;
+        unsigned int has_scheduledDeparture:1;
+        unsigned int read_stopFrom:1;
+        unsigned int read_stopTo:1;
+        unsigned int wrote_lineID:1;
+        unsigned int wrote_scheduledArrival:1;
+        unsigned int wrote_scheduledDeparture:1;
+        unsigned int wrote_stopFrom:1;
+        unsigned int wrote_stopTo:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasLineID;
@@ -29,13 +38,16 @@
 @property (nonatomic) BOOL hasScheduledDeparture;
 @property (readonly, nonatomic) BOOL hasStopFrom;
 @property (readonly, nonatomic) BOOL hasStopTo;
-@property (nonatomic) unsigned long long lineID; // @synthesize lineID=_lineID;
-@property (nonatomic) double scheduledArrival; // @synthesize scheduledArrival=_scheduledArrival;
-@property (nonatomic) double scheduledDeparture; // @synthesize scheduledDeparture=_scheduledDeparture;
-@property (strong, nonatomic) GEONavigationTransitStopSummary *stopFrom; // @synthesize stopFrom=_stopFrom;
-@property (strong, nonatomic) GEONavigationTransitStopSummary *stopTo; // @synthesize stopTo=_stopTo;
+@property (nonatomic) unsigned long long lineID;
+@property (nonatomic) double scheduledArrival;
+@property (nonatomic) double scheduledDeparture;
+@property (strong, nonatomic) GEONavigationTransitStopSummary *stopFrom;
+@property (strong, nonatomic) GEONavigationTransitStopSummary *stopTo;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readStopFrom;
+- (void)_readStopTo;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +56,7 @@
 - (id)initWithTransitTripRouteStep:(id)arg1 originSummary:(id)arg2 destinationSummary:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

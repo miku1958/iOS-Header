@@ -6,14 +6,15 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDCameraNotificationCharacteristicsAvailabilityListenerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAccessory, HMDBulletinBoard, HMDCameraSnapshotManager, HMDNotificationRegistration, HMFMessageDispatcher, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
+@class HMDBulletinBoard, HMDCameraNotificationCharacteristicsAvailabilityListener, HMDCameraProfileSettingsModel, HMDCameraSnapshotManager, HMDHAPAccessory, HMDNotificationRegistration, HMFMessageDispatcher, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDCameraSnapshotMonitorEvents : HMFObject <HMDHomeMessageReceiver, HMFLogging, HMFTimerDelegate>
+@interface HMDCameraSnapshotMonitorEvents : HMFObject <HMDHomeMessageReceiver, HMFLogging, HMFTimerDelegate, HMDCameraNotificationCharacteristicsAvailabilityListenerDelegate>
 {
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
@@ -21,54 +22,65 @@
     NSUUID *_uniqueIdentifier;
     HMDCameraSnapshotManager *_snapshotManager;
     NSMutableSet *_snapShotNotificationResponseTimers;
-    HMDAccessory *_accessory;
+    HMDHAPAccessory *_accessory;
     NSString *_bulletinImagesDirectory;
     NSString *_logID;
-    NSMutableSet *_characteristicsList;
-    NSMutableSet *_monitoredCharacteristicsList;
     HMDBulletinBoard *_bulletinBoard;
     HMDNotificationRegistration *_notificationRegistration;
+    NSSet *_bulletinSnapshotCharacteristics;
+    NSSet *_proactiveSnapshotCharacterisitics;
+    HMDCameraNotificationCharacteristicsAvailabilityListener *_characteristicsAvailabilityListener;
 }
 
-@property (readonly, weak, nonatomic) HMDAccessory *accessory; // @synthesize accessory=_accessory;
-@property (readonly, nonatomic) HMDBulletinBoard *bulletinBoard; // @synthesize bulletinBoard=_bulletinBoard;
-@property (readonly, nonatomic) NSString *bulletinImagesDirectory; // @synthesize bulletinImagesDirectory=_bulletinImagesDirectory;
-@property (readonly, nonatomic) NSMutableSet *characteristicsList; // @synthesize characteristicsList=_characteristicsList;
+@property (readonly, weak) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
+@property (readonly) HMDBulletinBoard *bulletinBoard; // @synthesize bulletinBoard=_bulletinBoard;
+@property (readonly) NSString *bulletinImagesDirectory; // @synthesize bulletinImagesDirectory=_bulletinImagesDirectory;
+@property (strong) NSSet *bulletinSnapshotCharacteristics; // @synthesize bulletinSnapshotCharacteristics=_bulletinSnapshotCharacteristics;
+@property (strong) HMDCameraNotificationCharacteristicsAvailabilityListener *characteristicsAvailabilityListener; // @synthesize characteristicsAvailabilityListener=_characteristicsAvailabilityListener;
+@property (readonly) HMDCameraProfileSettingsModel *currentCameraSettings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
+@property (readonly) NSString *logID; // @synthesize logID=_logID;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (readonly, nonatomic) NSMutableSet *monitoredCharacteristicsList; // @synthesize monitoredCharacteristicsList=_monitoredCharacteristicsList;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (readonly, nonatomic) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (strong, nonatomic) NSMutableSet *snapShotNotificationResponseTimers; // @synthesize snapShotNotificationResponseTimers=_snapShotNotificationResponseTimers;
-@property (readonly, weak, nonatomic) HMDCameraSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
+@property (readonly) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
+@property (readonly) HMDNotificationRegistration *notificationRegistration; // @synthesize notificationRegistration=_notificationRegistration;
+@property (strong) NSSet *proactiveSnapshotCharacterisitics; // @synthesize proactiveSnapshotCharacterisitics=_proactiveSnapshotCharacterisitics;
+@property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (strong) NSMutableSet *snapShotNotificationResponseTimers; // @synthesize snapShotNotificationResponseTimers=_snapShotNotificationResponseTimers;
+@property (readonly, weak) HMDCameraSnapshotManager *snapshotManager; // @synthesize snapshotManager=_snapshotManager;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (BOOL)hasMessageReceiverChildren;
++ (BOOL)isDoorbellServiceInputCharacteristic:(id)arg1;
++ (BOOL)isMotionServiceDetectedCharacteristic:(id)arg1;
 + (id)logCategory;
 - (void).cxx_destruct;
+- (BOOL)_canEnableNotificationForCharacteristic:(id)arg1 cameraSettings:(id)arg2;
 - (void)_characteristicsUpdated:(id)arg1 modifiedCharacteristics:(id)arg2;
-- (void)_enableNotificationForCharacteristics:(id)arg1 newMonitoredCharacteristicsList:(id)arg2;
+- (void)_enableNotificationsForCharacteristics:(id)arg1 cameraSettings:(id)arg2;
 - (void)_handleAccessoryCharacteristicsChangedNotification:(id)arg1;
+- (void)_handleBulletinNotificationEnableStateDidChange:(id)arg1;
+- (void)_handleHomedRelaunchRegistration:(id)arg1 updatedCharacteristics:(id)arg2;
 - (void)_handleRemoteNotification:(id)arg1;
 - (void)_handleSnapshotResponse:(id)arg1 cameraSessionID:(id)arg2 changedCharacteristics:(id)arg3 response:(id)arg4 responseTimer:(id)arg5;
-- (void)_monitorForEventsForServices:(id)arg1;
+- (void)_handleUpdatedBulletinSnapshotCharacteristics:(id)arg1;
+- (void)_handleUpdatedProactiveSnapshotCharacteristics:(id)arg1;
 - (void)_removeBulletins:(id)arg1 sessionID:(id)arg2;
 - (void)_sendReleaseSnapshot:(id)arg1;
 - (void)_subscribeToNotifications;
 - (void)dealloc;
 - (void)handleAccessoryReachable:(id)arg1;
+- (void)handleBulletinNotificationEnableStateDidChange:(id)arg1;
+- (void)handleCameraSettingsDidUpdateNotification:(id)arg1;
 - (void)handleRemoteNotificationGenerated:(id)arg1;
 - (id)initWithSnapshotManager:(id)arg1 accessory:(id)arg2 workQueue:(id)arg3 msgDispatcher:(id)arg4;
+- (void)listener:(id)arg1 didUpdateAvailableCharacteristics:(id)arg2 previousCharacteristics:(id)arg3;
 - (id)logIdentifier;
-- (void)monitorForEventsForServices:(id)arg1;
 - (void)processPostedBulletin:(id)arg1 responseTimer:(id)arg2;
 - (void)registerForMessages;
 - (void)timerDidFire:(id)arg1;

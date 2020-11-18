@@ -6,18 +6,18 @@
 
 #import <UIKitCore/UIView.h>
 
+#import <UIKitCore/UITableConstantsHeaderFooterProviding-Protocol.h>
 #import <UIKitCore/UITableViewSubviewReusing-Protocol.h>
 
 @class NSString, UIImage, UILabel, UITableView, _UITableViewHeaderFooterViewLabel;
 @protocol UITable, UITableConstants;
 
-@interface UITableViewHeaderFooterView : UIView <UITableViewSubviewReusing>
+@interface UITableViewHeaderFooterView : UIView <UITableConstantsHeaderFooterProviding, UITableViewSubviewReusing>
 {
     long long _tableViewStyle;
     UIImage *_backgroundImage;
     struct CGRect _frame;
     long long _textAlignment;
-    id<UITable> _tableView;
     double _maxTitleWidth;
     NSString *_reuseIdentifier;
     UIView *_backgroundView;
@@ -37,6 +37,7 @@
         unsigned int didSetSectionHeader:1;
         unsigned int didSetupDefaults:1;
         unsigned int insetsContentViewsToSafeArea:1;
+        unsigned int tableViewHasBeenExplicitlySet:1;
     } _headerFooterFlags;
     id<UITable> _table;
 }
@@ -78,34 +79,38 @@
 - (struct CGRect)_backgroundRectForWidth:(double)arg1;
 - (struct CGRect)_contentRect;
 - (struct CGRect)_contentRectForWidth:(double)arg1;
+- (id)_defaultTextColor;
 - (struct CGRect)_detailLabelFrame;
 - (struct CGSize)_detailTextSizeForWidth:(double)arg1;
 - (BOOL)_forwardsSystemLayoutFittingSizeToContentView:(id)arg1;
+- (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
 - (struct UIEdgeInsets)_insetsToBounds;
 - (struct UIEdgeInsets)_insetsToContentRect;
 - (void)_invalidateDetailLabelBackgroundColor;
 - (void)_invalidateLabelBackgroundColor;
+- (BOOL)_isFloating;
 - (BOOL)_isTransparentFocusRegion;
 - (id)_label:(BOOL)arg1;
 - (struct CGRect)_labelFrame;
 - (void)_safeAreaInsetsDidChangeFromOldInsets:(struct UIEdgeInsets)arg1;
-- (void)_setBackgroundViewColor:(id)arg1;
+- (void)_setTableViewStyle:(long long)arg1 updateFrame:(BOOL)arg2;
 - (void)_setupBackgroundView;
 - (void)_setupDefaultsIfNecessary;
 - (void)_setupLabelAppearance;
+- (void)_setupLabelForSourceList:(id)arg1;
 - (struct CGSize)_sizeThatFits:(struct CGSize)arg1 stripPaddingForAbuttingView:(BOOL)arg2 isTopHeader:(BOOL)arg3;
+- (id)_table;
 - (void)_tableViewDidUpdateMarginWidth;
 - (struct CGSize)_textSizeForWidth:(double)arg1;
 - (void)_updateBackgroundImage;
+- (void)_updateBackgroundView;
 - (void)_updateContentAndBackgroundView;
 - (void)_updateDetailLabelBackgroundColor;
 - (void)_updateDetailLabelBackgroundColorIfNeeded;
-- (void)_updateLabelBackgroundColor;
-- (void)_updateLabelBackgroundColorIfNeeeded;
-- (void)_updateLayerContents;
+- (struct CGRect)_updatedContentViewFrameForTargetWidth:(double)arg1;
 - (BOOL)_useDetailText;
+- (void)didMoveToSuperview;
 - (void)encodeWithCoder:(id)arg1;
-- (struct CGRect)frame;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithReuseIdentifier:(id)arg1;
@@ -116,7 +121,6 @@
 - (void)setContentView:(id)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setNeedsUpdateConstraints;
-- (void)setOpaque:(BOOL)arg1;
 - (void)setTintColor:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;

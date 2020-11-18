@@ -15,6 +15,7 @@
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *intent;
 @property (copy, nonatomic) NSString *intentSlotKeyPath;
 @property (copy, nonatomic) NSNumber *intentSlotValueIndex;
+@property (copy, nonatomic) NSString *jsonEncodedIntent;
 
 + (id)resolveIntentSlot;
 + (id)resolveIntentSlotWithDictionary:(id)arg1 context:(id)arg2;

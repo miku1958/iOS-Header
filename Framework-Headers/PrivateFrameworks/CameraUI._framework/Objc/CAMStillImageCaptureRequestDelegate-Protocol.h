@@ -19,7 +19,6 @@
 - (void)stillImageRequestDidCompleteVideoLocalPersistence:(CAMStillImageCaptureRequest *)arg1 withResponse:(CAMVideoPersistenceResponse *)arg2 error:(NSError *)arg3;
 - (void)stillImageRequestDidCompleteVideoRemotePersistence:(CAMStillImageCaptureRequest *)arg1 withResponse:(CAMVideoPersistenceResponse *)arg2 error:(NSError *)arg3;
 - (void)stillImageRequestDidStartCapturing:(CAMStillImageCaptureRequest *)arg1 resolvedSettings:(CAMStillImageCaptureResolvedSettings *)arg2;
-- (void)stillImageRequestDidStopCapturing:(CAMStillImageCaptureRequest *)arg1;
-- (void)stillImageRequestWillStartCapturingVideo:(CAMStillImageCaptureRequest *)arg1;
+- (void)stillImageRequestDidStopCapturingStillImage:(CAMStillImageCaptureRequest *)arg1;
 @end
 

@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)artShader;
 + (id)circularMaskShader;
 + (void)colorizeLabels:(id)arg1 color:(id)arg2;
 + (struct CGSize)dialSizeForDevice:(id)arg1;

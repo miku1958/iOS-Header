@@ -8,24 +8,22 @@
 
 #import <VoiceMemos/CLLocationManagerDelegate-Protocol.h>
 
-@class CLGeocoder, CLLocation, CLLocationManager, NSArray, NSString;
-@protocol OS_dispatch_queue, RCLocationsOfInterestDelegate;
+@class CLLocation, CLLocationManager, NSArray, NSString;
+@protocol RCLocationsOfInterestDelegate;
 
 @interface RCLocationsOfInterestManager : NSObject <CLLocationManagerDelegate>
 {
     int _authorizationStatus;
     CLLocationManager *_locationManager;
     CLLocation *_currentLocation;
-    CLGeocoder *_geographyCoder;
     NSArray *_locationsOfInterest;
-    NSArray *_placesOfInterest;
-    BOOL _ignoringLocationUpdates;
+    BOOL _isFetchingPlacesOfInterest;
+    BOOL _active;
+    unsigned long long _placeInferencePolicy;
     id<RCLocationsOfInterestDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_queue;
-    double _searchRadius;
 }
 
-@property (readonly, nonatomic) BOOL active;
+@property (readonly, nonatomic) BOOL active; // @synthesize active=_active;
 @property (readonly, nonatomic) BOOL authorized;
 @property (readonly) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
 @property (readonly, copy) NSString *debugDescription;
@@ -33,12 +31,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSArray *locationsOfInterest;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) double searchRadius; // @synthesize searchRadius=_searchRadius;
 @property (readonly) Class superclass;
 
 + (id)defaultManager;
 - (void).cxx_destruct;
+- (void)_didFetchPlaceInferences:(id)arg1 location:(id)arg2 error:(id)arg3;
+- (void)_requestPlaceInferences;
+- (void)_startMonitoringLocation;
 - (id)init;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;

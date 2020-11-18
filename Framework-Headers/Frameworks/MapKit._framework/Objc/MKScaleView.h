@@ -15,18 +15,14 @@
     BOOL _useYardsForShortDistances;
     NSNumberFormatter *_floatNumberFormatter;
     double _magicNumbers[3];
-    UIColor *_lightSegmentColorRegular;
-    UIColor *_darkSegmentColorRegular;
     UIColor *_borderColorRegular;
-    UIColor *_lightSegmentColorSatellite;
-    UIColor *_darkSegmentColorSatellite;
     UIColor *_borderColorSatellite;
     NSMutableArray *_segments;
+    NSMutableArray *_blurredSegments;
     _MKScaleUnitsView *_unitsView;
     long long _oldNumberOfSegments;
-    UIView *_outlineViewA;
-    UIView *_outlineViewB;
     UIView *_displayedOutline;
+    UIView *_displayedWhiteOutline;
     double _segmentLengthInPixels;
     double _resultSegmentLength;
     double _resultSegmentLengthInMeters;
@@ -40,16 +36,20 @@
     int _layoutCounter;
     BOOL _useLightText;
     BOOL _isVisible;
+    BOOL _usedInternallyByMapView;
     MKMapView *_mapView;
     long long _scaleVisibility;
     long long _legendAlignment;
+    unsigned long long _mapType;
 }
 
 @property (nonatomic) double distanceInMeters; // @dynamic distanceInMeters;
 @property (nonatomic) long long legendAlignment; // @synthesize legendAlignment=_legendAlignment;
+@property (nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
 @property (weak, nonatomic) MKMapView *mapView; // @synthesize mapView=_mapView;
 @property (nonatomic) long long scaleVisibility; // @synthesize scaleVisibility=_scaleVisibility;
 @property (nonatomic) BOOL useLightText; // @dynamic useLightText;
+@property (nonatomic) BOOL usedInternallyByMapView; // @synthesize usedInternallyByMapView=_usedInternallyByMapView;
 
 + (id)scaleViewWithMapView:(id)arg1;
 - (void).cxx_destruct;
@@ -58,13 +58,13 @@
 - (void)_localizedDistanceStringsWithMeters:(unsigned int)arg1 imperial:(double)arg2 useFeet:(BOOL)arg3 inMetric:(BOOL)arg4 displaysYardsForShortDistances:(BOOL)arg5 strings:(id)arg6;
 - (id)_scaleViewFormattedStringForFloat:(double)arg1;
 - (id)_scaleViewFormattedStringForInteger:(long long)arg1;
+- (id)_setupOutlineView;
+- (id)_setupSegmentView:(BOOL)arg1;
 - (struct CGSize)_systemLayoutSizeFittingSize:(struct CGSize)arg1 withHorizontalFittingPriority:(float)arg2 verticalFittingPriority:(float)arg3;
-- (void)_updateSegmentStrokes;
 - (void)_updateStrings;
 - (void)_updateVisibility;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (void)dealloc;
-- (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithMapView:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
@@ -73,6 +73,7 @@
 - (void)setFrame:(struct CGRect)arg1;
 - (void)shouldUpdateScaleNotification:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLocale:(id)arg1;
 
 @end

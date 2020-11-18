@@ -32,11 +32,11 @@
 
 + (BOOL)hasDataSourcesSectionForFace:(id)arg1 inGallery:(BOOL)arg2;
 - (void).cxx_destruct;
-- (void)_buildRowsWithDataSourceIdentifiers:(id)arg1 donatedAppIdentifiers:(id)arg2;
+- (void)_buildRowsWithDataSourceEntries:(id)arg1;
 - (id)_getDisabledDataSources;
 - (void)_updatedDisabledDataSources:(id)arg1;
 - (void)faceDidChange;
-- (void)manager:(id)arg1 didUpdateDataSourceIdentifiers:(id)arg2 donatedIdentifiers:(id)arg3;
+- (void)manager:(id)arg1 didUpdateDataSourceEntries:(id)arg2;
 - (id)titleForHeader;
 - (void)toggleCell:(id)arg1 didToggle:(BOOL)arg2;
 

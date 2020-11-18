@@ -6,14 +6,17 @@
 
 #import <GameController/NSObject-Protocol.h>
 
-@class GCController, GCControllerElement, GCMotion, NSString;
+@class GCController, GCControllerButtonInput, GCControllerDirectionPad, GCMotion, NSString;
 
 @protocol GCNamedProfile <NSObject>
 
+@property (strong) GCMotion *_motion;
 @property (readonly) NSString *name;
 
+- (void)handleEvent:(struct __IOHIDEvent *)arg1;
 - (id)initWithController:(GCController *)arg1;
-- (GCControllerElement *)inputForElement:(struct __IOHIDElement *)arg1;
+- (BOOL)isBluetoothAndUSBMirrored;
+- (NSString *)productCategory;
 - (void)setController:(GCController *)arg1;
 - (void)setPlayerIndex:(long long)arg1;
 - (void (^)(id, GCControllerElement *))valueChangedHandler;
@@ -22,6 +25,8 @@
 - (void)appDidBecomeActive;
 - (void)appWillResignActive;
 - (unsigned int)sampleRate;
-- (void)set_motion:(GCMotion *)arg1;
+- (void)setButton:(GCControllerButtonInput *)arg1 pressed:(BOOL)arg2;
+- (void)setButton:(GCControllerButtonInput *)arg1 value:(double)arg2;
+- (void)setDpad:(GCControllerDirectionPad *)arg1 x:(double)arg2 y:(double)arg3;
 @end
 

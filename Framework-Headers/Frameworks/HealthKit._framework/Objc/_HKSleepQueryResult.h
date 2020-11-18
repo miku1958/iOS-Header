@@ -23,6 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDateInterval *resultInterval; // @synthesize resultInterval=_resultInterval;
+@property (readonly, copy, nonatomic) NSDictionary *samplesBySource; // @synthesize samplesBySource=_samplesBySource;
 @property (readonly) Class superclass;
 
 + (id)_preferredSourceFromSources:(id)arg1 sourceOrder:(id)arg2;

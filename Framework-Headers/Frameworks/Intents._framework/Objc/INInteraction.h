@@ -12,14 +12,15 @@
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class CSSearchableItem, INImage, INIntent, INIntentResponse, NSDate, NSDateInterval, NSString, SAUISnippet;
+@class CSSearchableItem, INImage, INIntent, INIntentResponse, NSDate, NSDateInterval, NSString, NSUUID, SAUISnippet;
 
 @interface INInteraction : NSObject <INInteractionExport, INImageProxyInjecting, INKeyImageProducing, NSSecureCoding, NSCopying>
 {
-    BOOL _donatedBySiri;
-    SAUISnippet *_snippet;
     INIntent *_intent;
     INIntentResponse *_intentResponse;
+    BOOL _donatedBySiri;
+    SAUISnippet *_snippet;
+    NSUUID *_contextExtensionUUID;
     long long _intentHandlingStatus;
     long long _direction;
     NSDateInterval *_dateInterval;
@@ -27,7 +28,8 @@
     NSString *_groupIdentifier;
 }
 
-@property (readonly, nonatomic) BOOL _donatedBySiri; // @synthesize _donatedBySiri;
+@property (copy, nonatomic, setter=_setContextExtensionUUID:) NSUUID *_contextExtensionUUID; // @synthesize _contextExtensionUUID;
+@property (nonatomic, setter=_setDonatedBySiri:) BOOL _donatedBySiri; // @synthesize _donatedBySiri;
 @property (readonly) unsigned long long _indexingHash;
 @property (readonly) INImage *_keyImage;
 @property (readonly, copy) CSSearchableItem *_searchableItem;
@@ -47,18 +49,20 @@
 @property (copy, nonatomic, setter=_setIntentResponse:) INIntentResponse *intentResponse; // @synthesize intentResponse=_intentResponse;
 @property (readonly) Class superclass;
 
++ (unsigned long long)_searchableItemVersion;
 + (void)deleteAllInteractionsWithCompletion:(CDUnknownBlockType)arg1;
 + (void)deleteInteractionsWithGroupIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)deleteInteractionsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_commonInit;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
 - (void)_donateInteractionWithBundleId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_init;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_searchableItemIncludingData:(BOOL)arg1;
-- (void)_setDonatedBySiri:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)donateInteractionWithCompletion:(CDUnknownBlockType)arg1;

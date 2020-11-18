@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSString *emailAddress; // @dynamic emailAddress;
 
 + (id)defaultPropertiesToLoad;
++ (Class)meltedClass;
 + (id)organizerWithName:(id)arg1 emailAddress:(id)arg2 address:(id)arg3 isCurrentUser:(BOOL)arg4;
 + (id)relations;
 - (id)copyWithZone:(struct _NSZone *)arg1;

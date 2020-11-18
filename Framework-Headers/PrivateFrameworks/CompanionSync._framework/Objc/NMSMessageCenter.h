@@ -17,6 +17,7 @@
     NSString *_launchNotification;
     struct __CFString *_loggingFacility;
     IDSService *_service;
+    BOOL _resumed;
     NSMutableDictionary *_requestHandlers;
     NSMutableDictionary *_errorHandlers;
     NSMutableDictionary *_responseHandlers;
@@ -97,6 +98,7 @@
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 hasBeenDeliveredWithContext:(id)arg4;
 - (void)service:(id)arg1 account:(id)arg2 incomingData:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)service:(id)arg1 account:(id)arg2 incomingResourceAtURL:(id)arg3 metadata:(id)arg4 fromID:(id)arg5 context:(id)arg6;
+- (void)service:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)service:(id)arg1 didSwitchActivePairedDevice:(id)arg2 acknowledgementBlock:(CDUnknownBlockType)arg3;
 - (void)service:(id)arg1 nearbyDevicesChanged:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;

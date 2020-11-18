@@ -17,10 +17,12 @@
     struct {
         unsigned int visualCodeType:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _visualCodeType;
     _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
@@ -30,10 +32,13 @@
 @property (readonly) Class superclass;
 @property (nonatomic) int visualCodeType; // @synthesize visualCodeType=_visualCodeType;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsVisualCodeType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)visualCodeTypeAsString:(int)arg1;

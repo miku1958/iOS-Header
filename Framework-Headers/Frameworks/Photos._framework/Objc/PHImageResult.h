@@ -4,32 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Photos/PHCompositeMediaResult.h>
 
-@class NSData, NSString, NSURL;
+@class NSNumber;
 
-@interface PHImageResult : NSObject
+@interface PHImageResult : PHCompositeMediaResult
 {
-    BOOL _isDegraded;
-    short _exifOrientation;
     struct CGImage *_imageRef;
-    NSData *_imageData;
-    NSString *_uti;
-    NSURL *_imageURL;
-    NSURL *_videoURL;
+    NSNumber *_exifOrientation;
 }
 
-@property (nonatomic) short exifOrientation; // @synthesize exifOrientation=_exifOrientation;
-@property (strong, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
-@property (nonatomic) struct CGImage *imageRef; // @synthesize imageRef=_imageRef;
-@property (strong, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
-@property (nonatomic) BOOL isDegraded; // @synthesize isDegraded=_isDegraded;
-@property (copy, nonatomic) NSString *uti; // @synthesize uti=_uti;
-@property (copy, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
+@property (copy, nonatomic) NSNumber *exifOrientation; // @synthesize exifOrientation=_exifOrientation;
 
 - (void).cxx_destruct;
+- (BOOL)containsValidData;
 - (void)dealloc;
-- (id)description;
+- (id)imageData;
+- (struct CGImage *)imageRef;
+- (id)imageURL;
+- (id)imageUTI;
+- (void)setImageData:(id)arg1;
+- (void)setImageRef:(struct CGImage *)arg1;
+- (void)setImageURL:(id)arg1;
+- (void)setImageUTI:(id)arg1;
+- (long long)uiOrientation;
 
 @end
 

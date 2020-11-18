@@ -8,26 +8,43 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSData;
+@class NSData, PBDataReader;
 
 @interface GEOURLRouteHandle : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     NSData *_directionsResponseID;
     NSData *_routeID;
     NSData *_transitData;
     NSData *_zilchPoints;
+    struct {
+        unsigned int read_directionsResponseID:1;
+        unsigned int read_routeID:1;
+        unsigned int read_transitData:1;
+        unsigned int read_zilchPoints:1;
+        unsigned int wrote_directionsResponseID:1;
+        unsigned int wrote_routeID:1;
+        unsigned int wrote_transitData:1;
+        unsigned int wrote_zilchPoints:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSData *directionsResponseID; // @synthesize directionsResponseID=_directionsResponseID;
+@property (strong, nonatomic) NSData *directionsResponseID;
 @property (readonly, nonatomic) BOOL hasDirectionsResponseID;
 @property (readonly, nonatomic) BOOL hasRouteID;
 @property (readonly, nonatomic) BOOL hasTransitData;
 @property (readonly, nonatomic) BOOL hasZilchPoints;
-@property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
-@property (strong, nonatomic) NSData *transitData; // @synthesize transitData=_transitData;
-@property (strong, nonatomic) NSData *zilchPoints; // @synthesize zilchPoints=_zilchPoints;
+@property (strong, nonatomic) NSData *routeID;
+@property (strong, nonatomic) NSData *transitData;
+@property (strong, nonatomic) NSData *zilchPoints;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readDirectionsResponseID;
+- (void)_readRouteID;
+- (void)_readTransitData;
+- (void)_readZilchPoints;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -35,6 +52,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

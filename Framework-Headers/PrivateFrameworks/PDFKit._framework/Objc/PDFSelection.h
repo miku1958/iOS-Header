@@ -20,8 +20,9 @@
 @property (readonly, nonatomic) NSArray *pages;
 @property (readonly, nonatomic) NSString *string;
 
++ (id)defaultActiveColor;
++ (id)defaultInactiveColor;
 - (void).cxx_destruct;
-- (id)activeColor;
 - (void)addCGSelection:(struct CGPDFSelection *)arg1 forPage:(id)arg2;
 - (void)addSelection:(id)arg1;
 - (void)addSelectionCore:(id)arg1 normalize:(BOOL)arg2;
@@ -30,16 +31,14 @@
 - (void)addSelections:(id)arg1;
 - (id)asDestination;
 - (id)attributedStringScaled:(double)arg1;
-- (BOOL)beginsAndEndsOnWordBoundaries;
 - (id)boundsArrayForPage:(id)arg1;
 - (struct CGRect)boundsForPage:(id)arg1;
 - (struct CGPDFSelection *)cgSelectionForPage:(id)arg1;
 - (id)cgSelectionPages;
-- (struct __CFArray *)cgSelections;
-- (id)colorWithCGColor:(struct CGColor *)arg1 space:(struct CGColorSpace *)arg2;
+- (const struct __CFArray *)cgSelections;
 - (long long)compare:(id)arg1;
+- (BOOL)containsPoint:(struct CGPoint)arg1 onPage:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (double)cornerRadius;
 - (id)createAttributedStringForCGSelection:(struct CGPDFSelection *)arg1 scaled:(double)arg2;
 - (void)dealloc;
 - (id)description;
@@ -55,7 +54,6 @@
 - (struct CGRect)firstSpanBoundsForPage:(id)arg1;
 - (BOOL)forceBreaks;
 - (id)html;
-- (id)inactiveColor;
 - (unsigned long long)indexOfFirstCharacterOnPage:(id)arg1;
 - (unsigned long long)indexOfLastCharacterOnPage:(id)arg1;
 - (id)initWithDocument:(id)arg1;
@@ -74,13 +72,8 @@
 - (struct CGPoint)rightMostCharCenter;
 - (id)rtfdData;
 - (id)selectionsByLine;
-- (void)setActiveColor:(id)arg1;
-- (void)setCornerRadius:(double)arg1;
 - (void)setForceBreaks:(BOOL)arg1;
-- (void)setInactiveColor:(id)arg1;
 - (struct CGRect)spanBoundsForPage:(id)arg1 atPoint:(struct CGPoint)arg2;
-- (void)subtractSelection:(id)arg1;
-- (void)subtractSelectionCore:(id)arg1 normalize:(BOOL)arg2;
 - (id)webArchive;
 
 @end

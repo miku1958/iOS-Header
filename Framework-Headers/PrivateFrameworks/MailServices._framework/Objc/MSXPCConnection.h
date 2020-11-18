@@ -6,7 +6,7 @@
 
 #import <Foundation/NSXPCConnection.h>
 
-@class MFPromise, NSLock, NSObject, NSXPCInterface, Protocol;
+@class EFPromise, NSLock, NSObject, NSXPCInterface, Protocol;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 {
     NSLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
-    MFPromise *_connectionPromise;
+    EFPromise *_connectionPromise;
     NSXPCInterface *_remoteObjectInterface;
     NSXPCInterface *_exportedInterface;
     id _exportedObject;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) Protocol *protocol; // @synthesize protocol=_protocol;
 @property (nonatomic) BOOL shouldLaunchMobileMail; // @synthesize shouldLaunchMobileMail=_shouldLaunchMobileMail;
 
+- (void).cxx_destruct;
 - (id)_connection;
 - (id)_connectionForPromise:(id)arg1;
 - (void)_finishPromise:(id)arg1 withConnection:(id)arg2 error:(id)arg3;

@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <ScreenReaderOutput/BRLTBrailleStateManagerDelegate-Protocol.h>
 #import <ScreenReaderOutput/SCROBrailleDisplayCommandDispatcherDelegate-Protocol.h>
 #import <ScreenReaderOutput/SCROBrailleDriverDelegate-Protocol.h>
 
 @class NSAttributedString, NSLock, NSMutableArray, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
 @protocol SCROBrailleDisplayCommandDispatcherProtocol, SCROBrailleDisplayDelegate, SCROBrailleDriverProtocol, SCROIOElementProtocol;
 
-@interface SCROBrailleDisplay : NSObject <SCROBrailleDisplayCommandDispatcherDelegate, SCROBrailleDriverDelegate>
+@interface SCROBrailleDisplay : NSObject <SCROBrailleDisplayCommandDispatcherDelegate, SCROBrailleDriverDelegate, BRLTBrailleStateManagerDelegate>
 {
     NSLock *_contentLock;
     id<SCROBrailleDisplayDelegate> _delegate;
@@ -50,9 +51,11 @@
     BOOL _delegateWantsDisplayCallback;
     unsigned int _persistentKeyModifiers;
     CDUnknownBlockType _eventHandled;
+    double _brailleKeyDebounceTimeout;
 }
 
 @property (nonatomic) BOOL automaticBrailleTranslationEnabled; // @synthesize automaticBrailleTranslationEnabled=_automaticBrailleTranslationEnabled;
+@property (nonatomic) double brailleKeyDebounceTimeout; // @synthesize brailleKeyDebounceTimeout=_brailleKeyDebounceTimeout;
 @property (readonly, nonatomic) unsigned long long brailleLineGenerationID;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL delegateWantsDisplayCallback;
@@ -93,7 +96,6 @@
 - (void)_inputEventHandler;
 - (BOOL)_inputPaused;
 - (BOOL)_isMemorizingKeys;
-- (void)_keyboardHelpHandler:(id)arg1;
 - (id)_newBrailleKeyForCurrentBrailleChord;
 - (id)_newBrailleKeyForCurrentKeyChord;
 - (id)_newBrailleKeyboardKeyForText:(id)arg1 modifiers:(unsigned int)arg2;
@@ -105,16 +107,18 @@
 - (void)_setBatchUpdates:(id)arg1;
 - (void)_setBrailleFormatter:(id)arg1;
 - (void)_setBrailleFormatterHandler:(id)arg1;
+- (void)_setBrailleKeyDebounceTimeoutHandler:(double)arg1;
 - (void)_setDelegateWantsDisplayCallbackHandler:(id)arg1;
 - (void)_simulateKeypressHandler:(id)arg1;
+- (void)_singleLetterInputHandler:(id)arg1;
 - (void)_sleepNotification:(id)arg1;
 - (void)_startEditingText;
 - (void)_statusDisplayHandler:(id)arg1;
 - (id)_statusStringWithDictionary:(id)arg1;
 - (void)_stopMemorization;
+- (void)_textSearchModeHandler:(id)arg1;
 - (void)_translateBrailleStringAndPostEvent;
-- (void)_translateBrailleStringAndPostEventAppendingKeys:(id)arg1;
-- (id)_translatedBrailleStringAndKeyEvents:(out id *)arg1 replacementRange:(out struct _NSRange *)arg2 cursor:(out unsigned long long *)arg3;
+- (void)_translateBrailleToClipboard;
 - (void)_unloadHandler;
 - (void)_unloadNotification:(id)arg1;
 - (void)_unpauseInput;
@@ -122,15 +126,19 @@
 - (void)_updateDisplay;
 - (id)aggregatedStatus;
 - (void)beginUpdates;
+- (void)brailleDisplayDeletedCharacter:(id)arg1;
+- (void)brailleDisplayInsertedCharacter:(id)arg1;
+- (void)brailleDisplayStringDidChange:(id)arg1 brailleSelection:(struct _NSRange)arg2;
 - (void)brailleDriverDidReceiveInput;
 - (id)brailleInputManager;
 - (id)configuration;
 - (void)dealloc;
+- (void)didInsertScriptString:(id)arg1;
 - (id)driverIdentifier;
 - (id)driverModelIdentifier;
 - (void)endUpdates;
 - (void)handleCommandDeleteKeyEvent:(id)arg1 forDispatcher:(id)arg2;
-- (void)handleCommandEscapeForDispatcher:(id)arg1;
+- (void)handleCommandEscapeKeyEvent:(id)arg1 forDispatcher:(id)arg2;
 - (void)handleCommandForwardDeleteKeyEvent:(id)arg1 forDispatcher:(id)arg2;
 - (void)handleCommandMoveLeftForDispatcher:(id)arg1;
 - (void)handleCommandMoveRightForDispatcher:(id)arg1;
@@ -155,19 +163,23 @@
 - (void)panLeft;
 - (void)panRight;
 - (id)realStatus;
+- (void)replaceScriptStringRange:(struct _NSRange)arg1 withScriptString:(id)arg2 cursorLocation:(unsigned long long)arg3;
 - (void)requestFlushLine;
+- (void)scriptSelectionDidChange:(struct _NSRange)arg1;
 - (void)setAggregatedStatus:(id)arg1;
 - (void)setBrailleFormatter:(id)arg1;
-- (void)setKeyboardHelpIsOn:(BOOL)arg1;
 - (void)setMasterStatusCellIndex:(long long)arg1;
 - (void)setPrepareToMemorizeNextKey:(BOOL)arg1 immediate:(BOOL)arg2;
+- (void)setSingleLetterInputIsOn:(BOOL)arg1;
 - (void)setStatusAttributesWithMasterCellIndex:(long long)arg1 virtualAlignment:(int)arg2;
+- (void)setTextSearchModeOn:(BOOL)arg1;
 - (void)setVirtualStatusAlignment:(int)arg1;
 - (void)simulateKeypress:(id)arg1;
 - (void)sleep;
 - (long long)statusSize;
 - (int)token;
 - (long long)tokenForRouterIndex:(long long)arg1 location:(long long *)arg2 appToken:(id *)arg3;
+- (void)translateBrailleToClipboard;
 - (void)unpauseInputOnBrailleFormatterChange;
 - (void)unsleep;
 - (id)virtualStatus;

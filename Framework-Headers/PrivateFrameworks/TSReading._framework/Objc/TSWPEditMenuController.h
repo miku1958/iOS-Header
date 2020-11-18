@@ -8,13 +8,15 @@
 
 #import <TSReading/TSKKeyboardObserver-Protocol.h>
 
-@class NSString;
+@class NSString, UIView;
 
 @interface TSWPEditMenuController : NSObject <TSKKeyboardObserver>
 {
     int _menuState;
     BOOL _showMenuOnKeyboard;
     BOOL _isBeginningEditing;
+    UIView *_targetView;
+    struct CGRect _targetRect;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,18 +25,16 @@
 @property (nonatomic) BOOL isBeginningEditing; // @synthesize isBeginningEditing=_isBeginningEditing;
 @property (nonatomic) BOOL showMenuOnKeyboard; // @synthesize showMenuOnKeyboard=_showMenuOnKeyboard;
 @property (readonly) Class superclass;
+@property (nonatomic) struct CGRect targetRect; // @synthesize targetRect=_targetRect;
+@property (weak, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
 
-+ (id)_singletonAlloc;
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)hideEditMenu;
 + (BOOL)isAnimating;
 + (int)menuState;
 + (id)p_sharedEditMenuController;
-+ (void)p_showEditMenuForInteractiveCanvasController:(id)arg1;
 + (id)sharedEditMenuController;
 + (void)showEditMenuAtTargetRect:(struct CGRect)arg1 canCenterHUD:(BOOL)arg2 interactiveCanvasController:(id)arg3;
-- (id)autorelease;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (void)keyboardDidHideOrUndock:(id)arg1;
@@ -46,9 +46,6 @@
 - (void)p_setMenuVisible:(id)arg1;
 - (void)p_willHideMenu:(id)arg1;
 - (void)p_willShowMenu:(id)arg1;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
 
 @end
 

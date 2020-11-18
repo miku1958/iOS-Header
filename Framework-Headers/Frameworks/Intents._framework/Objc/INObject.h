@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INJSONSerializable-Protocol.h>
+#import <Intents/INRuntimeObject-Protocol.h>
 #import <Intents/INSpeakable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 
-@interface INObject : NSObject <INSpeakable, NSCopying, NSSecureCoding>
+@interface INObject : NSObject <INRuntimeObject, INJSONSerializable, INSpeakable, NSCopying, NSSecureCoding>
 {
+    NSMutableDictionary *_valueForKeyDictionary;
     NSString *_identifier;
     NSString *_displayString;
     NSString *_pronunciationHint;
+    NSArray *_alternativeSpeakableMatches;
 }
 
-@property (readonly, nonatomic) NSArray *alternativeSpeakableMatches;
+@property (readonly, nonatomic) NSMutableDictionary *_valueForKeyDictionary; // @synthesize _valueForKeyDictionary;
+@property (strong, nonatomic) NSArray *alternativeSpeakableMatches; // @synthesize alternativeSpeakableMatches=_alternativeSpeakableMatches;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
@@ -30,11 +35,14 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *vocabularyIdentifier;
 
++ (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
++ (BOOL)resolveInstanceMethod:(SEL)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (id)_intents_localizedCopyForLanguage:(id)arg1;
-- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -42,6 +50,10 @@
 - (id)initWithIdentifier:(id)arg1 displayString:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 displayString:(id)arg2 pronunciationHint:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)setValue:(id)arg1 forProperty:(id)arg2;
+- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (id)valueForProperty:(id)arg1;
+- (id)valueForUndefinedKey:(id)arg1;
 
 @end
 

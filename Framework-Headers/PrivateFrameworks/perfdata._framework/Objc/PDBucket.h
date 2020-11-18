@@ -17,10 +17,15 @@
     NSString *_label;
 }
 
+@property (nonatomic) unsigned long long count;
 @property (nonatomic) unsigned long long count; // @synthesize count=_count;
+@property (nonatomic) BOOL hasInclusiveUpperBound;
 @property (nonatomic) BOOL hasInclusiveUpperBound; // @synthesize hasInclusiveUpperBound=_hasInclusiveUpperBound;
+@property (strong, nonatomic) NSString *label;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic) double lowerInclusiveBound;
 @property (nonatomic) double lowerInclusiveBound; // @synthesize lowerInclusiveBound=_lowerInclusiveBound;
+@property (nonatomic) double upperBound;
 @property (nonatomic) double upperBound; // @synthesize upperBound=_upperBound;
 
 - (void).cxx_destruct;

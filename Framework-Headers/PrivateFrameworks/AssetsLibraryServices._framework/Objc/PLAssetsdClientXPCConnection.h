@@ -8,14 +8,17 @@
 
 #import <AssetsLibraryServices/PLXPCProxyCreating-Protocol.h>
 
-@class NSString, NSXPCConnection, PLConnectionDebugger;
+@class NSString, NSXPCConnection, PLAssetsdClientService, PLXPCMessageLogger;
 @protocol OS_dispatch_queue;
 
 @interface PLAssetsdClientXPCConnection : NSObject <PLXPCProxyCreating>
 {
-    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
+    NSObject<OS_dispatch_queue> *_externalNotificationQueue;
     NSXPCConnection *_connection;
-    PLConnectionDebugger *_connectionDebugger;
+    PLXPCMessageLogger *_connectionLogger;
+    PLAssetsdClientService *_assetsdClientService;
+    BOOL _isShuttingDown;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,10 +27,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_postInterruptedNotification;
+- (id)_primitiveSynchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)_unboostingRemoteObjectProxy;
+- (void)addBarrierBlock:(CDUnknownBlockType)arg1;
+- (void)addPhotoLibraryUnavailabilityHandler:(CDUnknownBlockType)arg1;
 - (id)connectionWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)handleInterruption;
 - (void)handleInvalidation;
 - (id)init;
+- (void)prepareToShutdown;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 

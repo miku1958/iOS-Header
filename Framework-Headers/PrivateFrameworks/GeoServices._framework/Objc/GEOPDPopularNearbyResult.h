@@ -8,27 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDPopularNearbyResult : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     struct GEOPDLitePlaceResult *_litePlaceResults;
     unsigned long long _litePlaceResultsCount;
     unsigned long long _litePlaceResultsSpace;
     NSString *_sectionHeader;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_litePlaceResults:1;
+        unsigned int read_sectionHeader:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_litePlaceResults:1;
+        unsigned int wrote_sectionHeader:1;
+    } _flags;
 }
 
 @property (readonly, nonatomic) BOOL hasSectionHeader;
 @property (readonly, nonatomic) struct GEOPDLitePlaceResult *litePlaceResults;
 @property (readonly, nonatomic) unsigned long long litePlaceResultsCount;
-@property (strong, nonatomic) NSString *sectionHeader; // @synthesize sectionHeader=_sectionHeader;
+@property (strong, nonatomic) NSString *sectionHeader;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addNoFlagsLitePlaceResult:(struct GEOPDLitePlaceResult)arg1;
+- (void)_readLitePlaceResults;
+- (void)_readSectionHeader;
 - (void)addLitePlaceResult:(struct GEOPDLitePlaceResult)arg1;
 - (void)clearLitePlaceResults;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -38,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (struct GEOPDLitePlaceResult)litePlaceResultAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setLitePlaceResults:(struct GEOPDLitePlaceResult *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

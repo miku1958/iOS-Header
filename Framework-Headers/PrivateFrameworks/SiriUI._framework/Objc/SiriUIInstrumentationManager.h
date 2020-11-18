@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class AFAnalyticsTurnBasedInstrumentationContext;
+@class AFAnalyticsTurnBasedInstrumentationContext, NSString;
 
 @interface SiriUIInstrumentationManager : NSObject
 {
     int _currentSiriUIState;
     AFAnalyticsTurnBasedInstrumentationContext *_currentInstrumentationTurnContext;
+    NSString *_clientGeneratedDialogIdentifier;
 }
 
+@property (copy, nonatomic) NSString *clientGeneratedDialogIdentifier; // @synthesize clientGeneratedDialogIdentifier=_clientGeneratedDialogIdentifier;
 @property (strong) AFAnalyticsTurnBasedInstrumentationContext *currentInstrumentationTurnContext; // @synthesize currentInstrumentationTurnContext=_currentInstrumentationTurnContext;
 @property int currentSiriUIState; // @synthesize currentSiriUIState=_currentSiriUIState;
 
@@ -29,6 +31,7 @@
 - (void)emitUIStateTransitionForSiriDismissal:(int)arg1;
 - (void)emitUUFRPresentedEventWith:(id)arg1 snippetClass:(id)arg2 dialogIdentifier:(id)arg3 dialogPhase:(id)arg4;
 - (id)init;
+- (void)storeClientGeneratedDUC:(id)arg1;
 - (void)storeCurrentInstrumentationTurnContext:(id)arg1;
 
 @end

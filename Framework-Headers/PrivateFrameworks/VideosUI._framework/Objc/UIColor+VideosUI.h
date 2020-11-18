@@ -15,8 +15,19 @@
 + (id)vui_keyBlueColor;
 + (id)vui_keyBlueHighlightedColor;
 + (id)vui_opacityColorWithType:(long long)arg1 userInterfaceStyle:(long long)arg2;
++ (id)vui_opaqueSeparatorColor;
++ (id)vui_primaryDynamicBackgroundColor;
++ (id)vui_primaryFillColor;
++ (id)vui_primaryTextColor;
 + (id)vui_progressBarFillColor;
 + (id)vui_progressBarGradientColors;
++ (id)vui_secondaryDynamicBackgroundColor;
++ (id)vui_secondaryFillColor;
++ (id)vui_secondaryTextColor;
++ (id)vui_separatorColor;
++ (id)vui_tertiaryDynamicBackgroundColor;
++ (id)vui_tertiaryFillColor;
++ (id)vui_tertiaryTextColor;
 - (id)vui_blendWithColor:(id)arg1 percentage:(double)arg2;
 @end
 

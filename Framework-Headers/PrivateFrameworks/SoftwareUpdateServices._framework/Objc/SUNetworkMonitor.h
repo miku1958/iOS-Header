@@ -6,15 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
+#import <SoftwareUpdateServices/CoreTelephonyClientCarrierBundleDelegate-Protocol.h>
+#import <SoftwareUpdateServices/CoreTelephonyClientRegistrationDelegate-Protocol.h>
 
-@interface SUNetworkMonitor : NSObject
+@class CoreTelephonyClient, NSArray, NSHashTable, NSString;
+@protocol OS_dispatch_queue;
+
+@interface SUNetworkMonitor : NSObject <CoreTelephonyClientRegistrationDelegate, CoreTelephonyClientCarrierBundleDelegate>
 {
     struct __SCNetworkReachability *_reachability;
     NSHashTable *_observers;
     int _currentNetworkType;
     BOOL _roaming;
+    CoreTelephonyClient *_ctClient;
+    NSObject<OS_dispatch_queue> *_ctQueue;
+    NSArray *_subscriptions;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)holdsWiFiAssertion;
 + (void)setHoldsWiFiAssertion:(BOOL)arg1;
@@ -23,18 +35,25 @@
 - (void)_initNetworkObservation;
 - (BOOL)_isCurrentlyRoaming;
 - (int)_networkTypeFromCurrentCellularData;
+- (int)_networkTypeFromCurrentCellularDataWithError:(id *)arg1;
 - (int)_networkTypeFromFlags:(unsigned int)arg1;
 - (void)_operatorBundleChanged;
+- (int)_queue_currentNetworkType;
+- (void)_resetCtClient;
 - (void)addObserver:(id)arg1;
+- (void)carrierBundleChange:(id)arg1;
 - (int)currentNetworkType;
 - (void)dealloc;
+- (void)displayStatusChanged:(id)arg1 status:(id)arg2;
 - (id)init;
 - (BOOL)isCellularDataRoamingEnabled;
 - (BOOL)isCellularRoaming;
 - (BOOL)isNetworkTypeCellular:(int)arg1;
+- (void)operatorBundleChange:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setCellularRoaming:(BOOL)arg1;
 - (void)setCurrentNetworkType:(int)arg1;
+- (void)setSubscriptions;
 
 @end
 

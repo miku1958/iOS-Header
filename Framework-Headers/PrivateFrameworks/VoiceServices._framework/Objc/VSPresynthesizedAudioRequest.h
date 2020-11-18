@@ -17,6 +17,7 @@
     unsigned int _audioSessionID;
     NSData *_audioData;
     NSString *_text;
+    NSString *_identifier;
     unsigned long long _requestCreatedTimestamp;
     NSString *_clientBundleIdentifier;
     unsigned long long _pcmDataSize;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property (readonly, nonatomic) struct AudioStreamBasicDescription decoderStreamDescription; // @synthesize decoderStreamDescription=_decoderStreamDescription;
 @property (nonatomic) BOOL enqueue; // @synthesize enqueue=_enqueue;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long pcmDataSize; // @synthesize pcmDataSize=_pcmDataSize;
 @property (readonly, nonatomic) struct AudioStreamBasicDescription playerStreamDescription; // @synthesize playerStreamDescription=_playerStreamDescription;
 @property (nonatomic) unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
@@ -45,6 +47,7 @@
 - (id)initWithAudioData:(id)arg1 decoderStreamDescription:(struct AudioStreamBasicDescription)arg2 playerStreamDescription:(struct AudioStreamBasicDescription)arg3;
 - (id)initWithAudioData:(id)arg1 playerStreamDescription:(struct AudioStreamBasicDescription)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1;
 - (BOOL)isValid;
 
 @end

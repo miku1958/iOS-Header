@@ -41,6 +41,7 @@
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_sourceApplicationSecondaryIdentifier;
     NSString *_CTDataConnectionServiceType;
+    NSString *_boundInterfaceIdentifier;
     PKApplePayTrustSignatureRequest *_applePayTrustSignatureRequest;
     NSArray *_bankAccounts;
     long long _paymentFrequency;
@@ -68,6 +69,8 @@
 
 @property (nonatomic) unsigned long long APIType; // @synthesize APIType=_APIType;
 @property (strong, nonatomic) NSString *CTDataConnectionServiceType; // @synthesize CTDataConnectionServiceType=_CTDataConnectionServiceType;
+@property (readonly) BOOL _isAMPPayment;
+@property (readonly) BOOL _isPSD2StyleRequest;
 @property (nonatomic) struct __SecAccessControl *accesssControlRef; // @synthesize accesssControlRef=_accesssControlRef;
 @property (nonatomic) BOOL accountPaymentSupportsPeerPayment; // @synthesize accountPaymentSupportsPeerPayment=_accountPaymentSupportsPeerPayment;
 @property (nonatomic) BOOL accountPaymentUsePeerPaymentBalance; // @synthesize accountPaymentUsePeerPaymentBalance=_accountPaymentUsePeerPaymentBalance;
@@ -77,6 +80,7 @@
 @property (strong, nonatomic) NSArray *bankAccounts; // @synthesize bankAccounts=_bankAccounts;
 @property (nonatomic) const void *billingAddress; // @synthesize billingAddress=_billingAddress;
 @property (strong, nonatomic) PKContact *billingContact; // @synthesize billingContact=_billingContact;
+@property (copy, nonatomic) NSString *boundInterfaceIdentifier; // @synthesize boundInterfaceIdentifier=_boundInterfaceIdentifier;
 @property (nonatomic) double clientCallbackTimeout; // @synthesize clientCallbackTimeout=_clientCallbackTimeout;
 @property (nonatomic) unsigned long long confirmationStyle; // @synthesize confirmationStyle=_confirmationStyle;
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
@@ -134,6 +138,7 @@
 - (id)_addressFieldsToContactFields:(unsigned long long)arg1;
 - (unsigned long long)_contactFieldsToAddressFields:(id)arg1;
 - (id)_transactionAmount;
+- (void)dealloc;
 - (id)disbursementPaymentRequest;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

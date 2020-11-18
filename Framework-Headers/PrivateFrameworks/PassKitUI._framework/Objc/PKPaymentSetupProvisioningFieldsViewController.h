@@ -11,7 +11,7 @@
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 #import <PassKitUI/UITextFieldDelegate-Protocol.h>
 
-@class CLInUseAssertion, NSString, NSTimer, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
+@class CLInUseAssertion, NSString, NSTimer, PKPasscodeUpgradeFlowController, PKPaymentProvisioningController, PKPaymentSetupFooterView, PKPaymentVerificationController, RemoteUIController, UINotificationFeedbackGenerator;
 
 @interface PKPaymentSetupProvisioningFieldsViewController : PKPaymentSetupFieldsViewController <UITextFieldDelegate, RemoteUIControllerDelegate, PKPaymentVerificationControllerDelegate, PKPaymentSetupHideSetupLaterButtonProtocol>
 {
@@ -25,6 +25,7 @@
     CDUnknownBlockType _waitForActivationCompletionHandler;
     NSTimer *_waitForActivationTimer;
     NSString *_activatingPaymentPassUniqueID;
+    PKPasscodeUpgradeFlowController *_passcodeUpgradeFlowController;
     BOOL _hideSetupLaterButton;
     PKPaymentProvisioningController *_paymentProvisioningController;
     CDUnknownBlockType _continueActionHandler;
@@ -64,6 +65,7 @@
 - (void)acceptTerms;
 - (void)addDifferentCard:(id)arg1;
 - (void)dealloc;
+- (void)declineTerms;
 - (id)defaultFields;
 - (id)defaultHeaderViewSubTitle;
 - (id)defaultHeaderViewTitle;
@@ -81,6 +83,7 @@
 - (id)newPaymentProvisioningRequest;
 - (id)newPaymentRequirementsRequest;
 - (void)performNextActionForProvisioningState:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)performPasscodeUpgradeIfNeeded:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentVerificationViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)requestEligibility:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -88,6 +91,7 @@
 - (void)requestRequirements:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)resetAllFieldsAndProvisioningState;
 - (void)resetProvisioningState;
+- (void)resetRightBarButtonState;
 - (void)setNotificationTextInFooterView:(id)arg1;
 - (void)setupLater:(id)arg1;
 - (void)showEligibilityIssueWithReason:(long long)arg1 learnMoreURL:(id)arg2 completion:(CDUnknownBlockType)arg3;

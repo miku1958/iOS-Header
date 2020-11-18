@@ -11,20 +11,26 @@
 __attribute__((visibility("hidden")))
 @interface VUISeparatorView : UIView
 {
+    UIColor *_color;
+    UIColor *_darkColor;
     double _lineHeight;
     UIView *_line;
 }
 
+@property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (strong, nonatomic) UIColor *darkColor; // @synthesize darkColor=_darkColor;
 @property (strong, nonatomic) UIView *line; // @synthesize line=_line;
-@property (strong, nonatomic) UIColor *lineColor;
 @property (nonatomic) double lineHeight; // @synthesize lineHeight=_lineHeight;
 
 - (void).cxx_destruct;
+- (void)_updateLineColor;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)initializeVUISeparatorView;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (id)lineColor;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

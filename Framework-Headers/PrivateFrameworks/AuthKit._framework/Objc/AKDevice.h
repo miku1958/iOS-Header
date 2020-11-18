@@ -38,7 +38,8 @@
 @property (copy) NSNumber *housingColor; // @synthesize housingColor=_housingColor;
 @property (readonly) NSString *integratedCircuitCardIdentifier;
 @property (readonly) NSString *internationalMobileEquipmentIdentity;
-@property (readonly) BOOL isAppleIDLoginEnabled;
+@property (readonly) BOOL isBiometricAuthCapable;
+@property (readonly) BOOL isFaceIDCapable;
 @property (readonly) BOOL isInCircle;
 @property (readonly) BOOL isInternalBuild;
 @property (readonly) BOOL isMultiUserMode;
@@ -73,12 +74,15 @@
 + (id)_osVersion;
 + (id)activeIDSPeerDevice;
 + (id)currentDevice;
++ (long long)currentDeviceAuthenticationMode;
 + (id)deviceSpecificLocalizedStringWithKey:(id)arg1;
 + (id)deviceWithSerializedData:(id)arg1;
++ (id)personaIDIfCurrentPersonaIsEnterprise;
 + (BOOL)supportsSecureCoding;
 + (id)systemContainerCacheURL;
 + (id)systemContainerURL;
 - (void).cxx_destruct;
+- (id)_volumeGroupUUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

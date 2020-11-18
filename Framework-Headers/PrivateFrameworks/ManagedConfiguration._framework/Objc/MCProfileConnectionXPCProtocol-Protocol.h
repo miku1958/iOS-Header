@@ -13,6 +13,7 @@
 - (void)doMCICDidFinishInstallationWithIdentifier:(NSString *)arg1 error:(NSError *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)doMCICDidFinishPreflightWithError:(NSError *)arg1 completion:(void (^)(NSArray *, BOOL, unsigned long long, NSError *))arg2;
 - (void)doMCICDidRequestCurrentPasscodeWithCompletion:(void (^)(BOOL, NSString *, NSError *))arg1;
+- (void)doMCICDidRequestMAIDSignIn:(NSString *)arg1 personaID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *, BOOL))arg3;
 - (void)doMCICDidRequestShowUserWarnings:(NSArray *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)doMCICDidRequestUserInput:(NSArray *)arg1 completion:(void (^)(NSArray *, BOOL, unsigned long long, NSError *))arg2;
 - (void)doMCICDidUpdateStatus:(NSString *)arg1 completion:(void (^)(NSError *))arg2;

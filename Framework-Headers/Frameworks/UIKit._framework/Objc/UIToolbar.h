@@ -11,7 +11,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 #import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
 
-@class NSArray, NSString, UIAccessibilityHUDGestureManager, UIColor, _UIToolbarVisualProvider;
+@class NSArray, NSString, UIAccessibilityHUDGestureManager, UIBarButtonItem, UIColor, UIToolbarAppearance, _UIToolbarVisualProvider;
 @protocol UIToolbarDelegate;
 
 @interface UIToolbar : UIView <UIAccessibilityHUDGestureDelegate, _UIBarPositioningInternal, UIGestureRecognizerDelegatePrivate, UIBarPositioning>
@@ -30,42 +30,53 @@
     _UIToolbarVisualProvider *_visualProvider;
     UIAccessibilityHUDGestureManager *_axHUDGestureManager;
     unsigned long long _disableAutolayoutWarnings;
+    BOOL _autoHidesToolbarInFullscreen;
     BOOL __wantsLetterpressContent;
     BOOL _centerTextButtons;
     UIView *_shadowView;
     long long _barPosition;
+    UIToolbarAppearance *_standardAppearance;
+    UIToolbarAppearance *_compactAppearance;
+    UIBarButtonItem *_centerItem;
     NSArray *_backgroundEffects;
 }
 
-@property (strong, nonatomic, getter=_backdropViewLayerGroupName, setter=_setBackdropViewLayerGroupName:) NSString *_backdropViewLayerGroupName;
+@property (copy, nonatomic, getter=_backdropViewLayerGroupName, setter=_setBackdropViewLayerGroupName:) NSString *_backdropViewLayerGroupName;
 @property (strong, nonatomic, setter=_setBackgroundView:) UIView *_backgroundView;
 @property (readonly, nonatomic) long long _barTranslucence;
 @property (nonatomic, setter=_setDisableBlurTinting:) BOOL _disableBlurTinting;
 @property (nonatomic, setter=_setHidesShadow:) BOOL _hidesShadow;
+@property (nonatomic, setter=_setItemDistribution:) long long _itemDistribution;
 @property (nonatomic, getter=_isLocked, setter=_setLocked:) BOOL _locked;
 @property (strong, nonatomic, setter=_setShadowView:) UIView *_shadowView; // @synthesize _shadowView;
 @property (readonly, nonatomic) BOOL _shouldStretchDuringCrossfadeTransition;
 @property (nonatomic, setter=_setWantsLetterpressContent:) BOOL _wantsLetterpressContent; // @synthesize _wantsLetterpressContent=__wantsLetterpressContent;
+@property (nonatomic) BOOL autoHidesToolbarInFullscreen; // @synthesize autoHidesToolbarInFullscreen=_autoHidesToolbarInFullscreen;
 @property (copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
 @property (readonly, nonatomic) long long barPosition; // @synthesize barPosition=_barPosition;
 @property (nonatomic) long long barStyle;
 @property (strong, nonatomic) UIColor *barTintColor; // @synthesize barTintColor=_barTintColor;
+@property (strong, nonatomic) UIBarButtonItem *centerItem; // @synthesize centerItem=_centerItem;
 @property (nonatomic) BOOL centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
+@property (copy, nonatomic) UIToolbarAppearance *compactAppearance; // @synthesize compactAppearance=_compactAppearance;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIToolbarDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (readonly, nonatomic, getter=isMinibar) BOOL minibar;
+@property (copy, nonatomic) UIToolbarAppearance *standardAppearance; // @synthesize standardAppearance=_standardAppearance;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (nonatomic, getter=isTranslucent) BOOL translucent;
 
 + (BOOL)_forceLegacyVisualProvider;
++ (id)_visualProviderForToolbar:(id)arg1;
 + (id)defaultButtonFont;
 + (double)defaultHeight;
 + (double)defaultHeightForBarSize:(int)arg1;
 - (void).cxx_destruct;
+- (void)_46877859;
 - (id)__appearanceStorage;
 - (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;
 - (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
@@ -81,9 +92,9 @@
 - (void)_effectiveBarTintColorDidChangeWithPreviousColor:(id)arg1;
 - (struct CGRect)_frameOfBarButtonItem:(id)arg1;
 - (void)_frameOrBoundsChangedWithVisibleSizeChange:(BOOL)arg1 wasMinibar:(BOOL)arg2;
-- (void)_frameOrCenterChanged;
 - (BOOL)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
 - (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
+- (void)_installDefaultAppearance;
 - (id)_itemAtPoint:(struct CGPoint)arg1;
 - (BOOL)_linkedBeforeWhitetailAndInitializedFromCoder;
 - (void)_populateArchivedSubviews:(id)arg1;
@@ -97,9 +108,9 @@
 - (void)_setVisualAltitudeBias:(struct CGSize)arg1;
 - (void)_setupAXHUDGestureIfNecessary;
 - (BOOL)_subclassImplementsDrawRect;
+- (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_updateBackgroundView;
 - (void)_updateBarForStyle;
-- (void)addConstraint:(id)arg1;
 - (void)backdropView:(id)arg1 didChangeToGraphicsQuality:(long long)arg2;
 - (id)backgroundImageForToolbarPosition:(long long)arg1 barMetrics:(long long)arg2;
 - (void)dealloc;
@@ -114,10 +125,8 @@
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)removeConstraint:(id)arg1;
 - (void)setBackgroundImage:(id)arg1 forToolbarPosition:(long long)arg2 barMetrics:(long long)arg3;
 - (void)setBounds:(struct CGRect)arg1;
-- (void)setCenter:(struct CGPoint)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setItems:(id)arg1 animated:(BOOL)arg2;
 - (void)setShadowImage:(id)arg1 forToolbarPosition:(long long)arg2;

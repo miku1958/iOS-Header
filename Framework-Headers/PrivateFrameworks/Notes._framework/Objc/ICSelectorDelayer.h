@@ -6,35 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSTimer;
+@protocol OS_dispatch_queue;
 
 @interface ICSelectorDelayer : NSObject
 {
     BOOL _waitToFireUntilRequestsStop;
-    BOOL _forceMainThread;
+    BOOL _callOnMainThread;
     id _target;
     SEL _selector;
     double _delay;
-    NSTimer *_timer;
+    NSObject<OS_dispatch_queue> *_requestQueue;
+    CDUnknownBlockType _fireBlock;
 }
 
+@property (nonatomic) BOOL callOnMainThread; // @synthesize callOnMainThread=_callOnMainThread;
 @property double delay; // @synthesize delay=_delay;
-@property (nonatomic) BOOL forceMainThread; // @synthesize forceMainThread=_forceMainThread;
+@property (copy, nonatomic) CDUnknownBlockType fireBlock; // @synthesize fireBlock=_fireBlock;
+@property (readonly, nonatomic) BOOL isScheduledToFire;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
 @property (nonatomic) SEL selector; // @synthesize selector=_selector;
 @property (weak, nonatomic) id target; // @synthesize target=_target;
-@property (strong) NSTimer *timer; // @synthesize timer=_timer;
 @property (nonatomic) BOOL waitToFireUntilRequestsStop; // @synthesize waitToFireUntilRequestsStop=_waitToFireUntilRequestsStop;
 
 - (void).cxx_destruct;
+- (void)_cancelFireRequests;
+- (void)callTargetSelector;
 - (void)cancelPreviousFireRequests;
+- (void)dealloc;
 - (void)fireImmediately;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 delay:(double)arg3 waitToFireUntilRequestsStop:(BOOL)arg4;
-- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 delay:(double)arg3 waitToFireUntilRequestsStop:(BOOL)arg4 forceMainThread:(BOOL)arg5;
-- (void)internalCancelFireRequests;
-- (void)internalFireImmediately;
-- (BOOL)internalIsScheduledToFire;
-- (void)internalRequestFire;
-- (BOOL)isScheduledToFire;
+- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 delay:(double)arg3 waitToFireUntilRequestsStop:(BOOL)arg4 callOnMainThread:(BOOL)arg5;
 - (void)requestFire;
 
 @end

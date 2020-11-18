@@ -12,7 +12,7 @@
 {
 }
 
-@property (strong) TLKSimpleRowView *contentView; // @dynamic contentView;
+@property (strong, nonatomic) TLKSimpleRowView *contentView; // @dynamic contentView;
 
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;

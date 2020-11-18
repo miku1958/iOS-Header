@@ -6,42 +6,42 @@
 
 #import <objc/NSObject.h>
 
-#import <AudioStatistics/NSXPCListenerDelegate-Protocol.h>
-
-@class NSMutableDictionary, NSString, NSXPCConnection;
-@protocol CAReportingServerInterface;
+@class NSMutableDictionary, NSXPCConnection;
+@protocol CAReportingServiceProtocol;
 
 __attribute__((visibility("hidden")))
-@interface CAReportingClient : NSObject <NSXPCListenerDelegate>
+@interface CAReportingClient : NSObject
 {
     NSXPCConnection *_connection;
     NSMutableDictionary *_clientReporters;
-    id<CAReportingServerInterface> _serverDelegateAsync;
-    id<CAReportingServerInterface> _serverDelegateSync;
+    id<CAReportingServiceProtocol> _serverDelegateAsync;
+    id<CAReportingServiceProtocol> _serverDelegateSync;
 }
 
 @property (strong) NSMutableDictionary *clientReporters; // @synthesize clientReporters=_clientReporters;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong) id<CAReportingServerInterface> serverDelegateAsync; // @synthesize serverDelegateAsync=_serverDelegateAsync;
-@property (strong) id<CAReportingServerInterface> serverDelegateSync; // @synthesize serverDelegateSync=_serverDelegateSync;
-@property (readonly) Class superclass;
+@property (strong) id<CAReportingServiceProtocol> serverDelegateAsync; // @synthesize serverDelegateAsync=_serverDelegateAsync;
+@property (strong) id<CAReportingServiceProtocol> serverDelegateSync; // @synthesize serverDelegateSync=_serverDelegateSync;
 
 + (id)getClient;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)addReporter:(id)arg1;
-- (long long)createReporterID;
+- (long long)createReporterID:(unsigned int)arg1;
+- (void)destoryService;
 - (void)destroyClient;
 - (void)destroyReporterWithID:(long long)arg1;
+- (void)disconnectReporters;
+- (id)getConfigurationForReporterID:(long long)arg1;
 - (unsigned short)getServiceTypeForReporterID:(long long)arg1;
 - (id)init;
 - (id)listClientReporterIDs;
 - (id)listServerReporterIDs;
+- (void)reconnectReporter:(id)arg1;
+- (void)reconnectReporters;
 - (id)reporterWithID:(long long)arg1;
-- (void)sendMessage:(id)arg1 category:(unsigned short)arg2 type:(unsigned short)arg3 reporters:(id)arg4;
+- (void)sendMessage:(id)arg1 category:(unsigned int)arg2 type:(unsigned short)arg3 reporters:(id)arg4;
+- (void)setConfiguration:(id)arg1 reporterID:(long long)arg2;
 - (void)setServiceType:(unsigned short)arg1 reporterID:(long long)arg2;
 - (void)startReporters:(id)arg1;
 - (void)stopReporters:(id)arg1;

@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) double controlSignalDuration;
 @property (nonatomic, getter=isDisplayingControlSignal) BOOL displayControlSignal;
 @property (nonatomic, getter=isEdgeMaskEnabled) BOOL edgeMaskEnabled; // @synthesize edgeMaskEnabled=_edgeMaskEnabled;
-@property (readonly, nonatomic) NSArray *gridOptions;
+@property (readonly, copy, nonatomic) NSArray *gridOptions;
 @property (readonly, nonatomic) struct CGSize gridSize;
 @property (strong, nonatomic) HKElectrocardiogramGridView *gridView; // @synthesize gridView=_gridView;
 @property (nonatomic) struct CGSize lastSize; // @synthesize lastSize=_lastSize;

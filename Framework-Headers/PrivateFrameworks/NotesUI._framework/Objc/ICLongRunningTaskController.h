@@ -15,8 +15,10 @@
     BOOL _isCancelled;
     BOOL _shouldShowCancelButton;
     BOOL _shouldShowCircularProgress;
+    BOOL _allowSingleUnitProgress;
     BOOL _progressViewControllerDidFinishPresenting;
     BOOL _shouldDismissProgressViewController;
+    NSString *_customCancelButtonTitle;
     NSString *_progressFormatString;
     struct UIViewController *_viewControllerToPresentFrom;
     struct UIWindow *_window;
@@ -30,7 +32,9 @@
     ICProgressViewController *_progressViewController;
 }
 
+@property (nonatomic) BOOL allowSingleUnitProgress; // @synthesize allowSingleUnitProgress=_allowSingleUnitProgress;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property (strong, nonatomic) NSString *customCancelButtonTitle; // @synthesize customCancelButtonTitle=_customCancelButtonTitle;
 @property (nonatomic) double intervalBeforeOpeningProgressDialog; // @synthesize intervalBeforeOpeningProgressDialog=_intervalBeforeOpeningProgressDialog;
 @property (nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (strong, nonatomic) id keepAlive; // @synthesize keepAlive=_keepAlive;

@@ -20,6 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SAUIDecoratedText *recipient;
+@property (copy, nonatomic) NSString *serviceType;
 @property (readonly) Class superclass;
 
 + (id)messageItem;

@@ -27,7 +27,7 @@
 + (unsigned long long)relationOfMessage:(id)arg1 toMessage:(id)arg2;
 + (unsigned long long)relationOfMessage:(id)arg1 toMessage:(id)arg2 previousSenders:(id)arg3 myEmailAddresses:(id)arg4;
 + (id)sendersOfMessage:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMessages:(id)arg1 relationships:(id)arg2;
 - (unsigned long long)relationOfMessage:(id)arg1;
 

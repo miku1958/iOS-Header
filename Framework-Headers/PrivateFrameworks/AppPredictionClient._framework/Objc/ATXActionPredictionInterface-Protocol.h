@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class ATXActionResponse, NSArray;
+@class ATXActionResponse, ATXContext, NSArray;
 
 @protocol ATXActionPredictionInterface
 - (void)getActionPredictionsForCandidateBundleIdentifiers:(NSArray *)arg1 candidateActionTypes:(NSArray *)arg2 consumerType:(unsigned long long)arg3 consumerSubType:(unsigned char)arg4 limit:(int)arg5 reply:(void (^)(ATXActionResponse *, NSError *))arg6;
+- (void)getActionPredictionsForContext:(ATXContext *)arg1 includeBundleIds:(NSArray *)arg2 excludeBundleIds:(NSArray *)arg3 includeActionTypes:(NSArray *)arg4 excludeActionTypes:(NSArray *)arg5 limit:(unsigned long long)arg6 reply:(void (^)(ATXActionResponse *, NSError *))arg7;
 - (void)sendFeedbackWithResponse:(ATXActionResponse *)arg1;
+- (void)shouldDisplayDailyRoutineForContext:(ATXContext *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 @end
 

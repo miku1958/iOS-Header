@@ -35,6 +35,7 @@
 - (void)setDestination:(id)arg1 ready:(BOOL)arg2;
 - (void)setDestinationWithIdentifier:(id)arg1 enabled:(BOOL)arg2;
 - (void)unregisterDestination:(id)arg1;
+- (void)unregisterDestinationForIdentifier:(id)arg1;
 
 @end
 

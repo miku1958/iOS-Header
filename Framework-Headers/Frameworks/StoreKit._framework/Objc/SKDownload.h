@@ -20,13 +20,12 @@
 @property (readonly, nonatomic) NSString *contentVersion;
 @property (readonly, nonatomic) long long downloadState;
 @property (readonly, nonatomic) NSError *error;
+@property (readonly, nonatomic) long long expectedContentLength;
 @property (readonly, nonatomic) float progress;
 @property (readonly, nonatomic) long long state;
 @property (readonly, nonatomic) double timeRemaining;
 @property (readonly, nonatomic) SKPaymentTransaction *transaction;
 
-+ (id)contentURLForProductID:(id)arg1;
-+ (void)deleteContentForProductID:(id)arg1;
 - (void).cxx_destruct;
 - (void)_applyChangeset:(id)arg1;
 - (void)_setContentIdentifier:(id)arg1;

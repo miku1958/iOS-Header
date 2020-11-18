@@ -20,12 +20,14 @@
         unsigned int month:1;
         unsigned int year:1;
     } _has;
+    BOOL __encodeLegacyGloryData;
     int _dayOfWeek;
     long long _dayOfMonth;
     long long _month;
     long long _year;
 }
 
+@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) long long dayOfMonth; // @synthesize dayOfMonth=_dayOfMonth;
 @property (nonatomic) int dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,10 +41,13 @@
 @property (readonly) Class superclass;
 @property (nonatomic) long long year; // @synthesize year=_year;
 
++ (BOOL)supportsSecureCoding;
 - (int)StringAsDayOfWeek:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dayOfWeekAsString:(int)arg1;
 - (id)dictionaryRepresentation;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

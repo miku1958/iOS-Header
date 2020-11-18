@@ -22,6 +22,7 @@
             unsigned int uploading:1;
             unsigned int waitingForUpdate:1;
             unsigned int updating:1;
+            unsigned int confirmed:1;
         } status;
         unsigned int packedStatus;
     } _status;
@@ -29,6 +30,7 @@
     unsigned long long _generation;
 }
 
+@property (nonatomic, getter=isConfirmed) BOOL confirmed;
 @property (readonly, nonatomic) unsigned long long generation; // @synthesize generation=_generation;
 @property (nonatomic, getter=isQuarantined) BOOL quarantined;
 @property (readonly, nonatomic) CPLRecordChange *record; // @synthesize record=_record;

@@ -16,7 +16,7 @@
 
 + (id)subcommandWithName:(id)arg1;
 - (void).cxx_destruct;
-- (void)addOption:(id)arg1 argument:(id)arg2 target:(id)arg3 action:(SEL)arg4 argumentDescription:(id)arg5 required:(BOOL)arg6;
+- (void)addOption:(BOOL)arg1 argument:(id)arg2 target:(id)arg3 action:(SEL)arg4 argumentDescription:(id)arg5 required:(BOOL)arg6;
 - (void)addOptions;
 - (long long)compare:(id)arg1;
 - (id)description;

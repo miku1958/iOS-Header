@@ -27,6 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (readonly, nonatomic) NSSet *services;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HFCharacteristicValueSource> valueSource;
 
@@ -42,8 +43,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithHome:(id)arg1 containingItem:(id)arg2;
+- (id)namingComponentForHomeKitObject;
 - (id)serviceActionItemForChildServiceItem:(id)arg1;
-- (id)services;
 
 @end
 

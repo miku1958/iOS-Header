@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)_axStringForParticipants:(id)arg1;
 - (id)accessibilityLabel;
+- (id)accessibilityValue;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 
-@class NSDate, NSDictionary, NSString, PKMerchant, PKPaymentPass;
+@class NSArray, NSDate, NSDictionary, NSString, PKMerchant, PKPaymentPass;
 @protocol OS_dispatch_queue, PKDashboardTransactionFetcherDelegate, PKPaymentDataProvider;
 
 @interface PKDashboardTransactionFetcher : NSObject <PKPaymentDataProviderDelegate>
@@ -31,6 +31,8 @@
     PKPaymentPass *_cashbackPass;
     BOOL _needsCashbackUniqueID;
     NSDictionary *_cashbackGroups;
+    BOOL _needsInstantWithdrawalFees;
+    NSArray *_instantWithdrawalFeeGroups;
     unsigned long long _type;
     NSDate *_startDate;
     NSDate *_endDate;
@@ -46,7 +48,11 @@
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (void)_addCashbackTransactions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_addInstantWidthdrawalTransactionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_commonSetup;
+- (id)_feeTotalForTransaction:(id)arg1;
+- (void)_processPaymentPassTransactionsWithTransactions:(id)arg1 sendTransactionsBlock:(CDUnknownBlockType)arg2;
 - (void)_sendUpdatedTransactions;
 - (id)_sortedTransactions:(id)arg1 ascending:(BOOL)arg2;
 - (id)cashbackGroupForDateComponents:(id)arg1;
@@ -57,6 +63,7 @@
 - (id)initWithMerchantCategory:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
 - (id)initWithPaymentPass:(id)arg1 paymentDataProvider:(id)arg2;
 - (id)initWithTransactionType:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)instantWithdrawalFeesTransactionGroups;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;

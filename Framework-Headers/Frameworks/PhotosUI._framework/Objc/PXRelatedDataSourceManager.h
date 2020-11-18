@@ -20,6 +20,7 @@
     unsigned long long _loadBatchSize;
     NSDate *_loadStartDate;
     BOOL _didLoadInitialDataSource;
+    BOOL _useItemIndexPaths;
     BOOL __canceled;
     unsigned long long __initialBatchSize;
     unsigned long long __loadBatchSize;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) PXRelatedDataSource *dataSource; // @dynamic dataSource;
 @property (nonatomic) unsigned long long initialBatchSize; // @synthesize initialBatchSize=__initialBatchSize;
 @property (nonatomic) unsigned long long loadBatchSize; // @synthesize loadBatchSize=__loadBatchSize;
+@property (readonly, nonatomic) BOOL useItemIndexPaths; // @synthesize useItemIndexPaths=_useItemIndexPaths;
 
 - (void).cxx_destruct;
 - (id)_collectionListRelatedToObject:(id)arg1;
@@ -53,6 +55,7 @@
 - (id)createPhotosDataSourceForRelatedEntry:(id)arg1;
 - (id)init;
 - (id)initWithPhotosDetailsContext:(id)arg1;
+- (id)initWithPhotosDetailsContext:(id)arg1 useItemIndexPaths:(BOOL)arg2;
 - (void)registerChangeObserver:(id)arg1 context:(void *)arg2;
 - (void)startLoading;
 - (void)unregisterChangeObserver:(id)arg1 context:(void *)arg2;

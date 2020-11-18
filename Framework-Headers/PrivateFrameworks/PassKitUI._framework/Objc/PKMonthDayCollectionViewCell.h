@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setDayNumber:(long long)arg1 withTitle:(id)arg2;
 - (void)setSelected:(BOOL)arg1;
 
 @end

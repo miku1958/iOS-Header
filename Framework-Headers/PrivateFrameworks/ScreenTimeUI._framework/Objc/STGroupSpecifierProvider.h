@@ -8,25 +8,27 @@
 
 #import <ScreenTimeUI/UITableViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, PSSpecifier;
+@class NSArray, NSMutableArray, NSString, PSSpecifier, UIViewController;
 @protocol STGroupSpecifierProviderDelegate;
 
+__attribute__((visibility("hidden")))
 @interface STGroupSpecifierProvider : NSObject <UITableViewDelegate>
 {
     BOOL _isHidden;
     BOOL _invalid;
-    id<STGroupSpecifierProviderDelegate> _delegate;
+    UIViewController<STGroupSpecifierProviderDelegate> *_delegate;
     PSSpecifier *_groupSpecifier;
     NSMutableArray *_privateSpecifiers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<STGroupSpecifierProviderDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) UIViewController<STGroupSpecifierProviderDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property (readonly) unsigned long long hash;
 @property BOOL invalid; // @synthesize invalid=_invalid;
 @property (nonatomic) BOOL isHidden; // @synthesize isHidden=_isHidden;
+@property (readonly) NSMutableArray *mutableSpecifiers;
 @property (strong) NSMutableArray *privateSpecifiers; // @synthesize privateSpecifiers=_privateSpecifiers;
 @property (readonly, copy, nonatomic) NSArray *specifiers;
 @property (readonly) Class superclass;
@@ -42,17 +44,17 @@
 - (void)insertSpecifiers:(id)arg1 atIndexes:(id)arg2;
 - (void)invalidate;
 - (void)lazyLoadBundle:(id)arg1;
-- (id)mutableSpecifiers;
 - (void)popToViewControllerAnimated:(BOOL)arg1;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)reloadSectionHeaderFootersWithAnimation:(long long)arg1;
 - (void)reloadSpecifier:(id)arg1 animated:(BOOL)arg2;
 - (void)removeSpecifiersAtIndexes:(id)arg1;
 - (void)replaceObjectInSpecifiersAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)replaceSpecifiersAtIndexes:(id)arg1 withSpecifiers:(id)arg2;
 - (void)showConfirmationViewForSpecifier:(id)arg1;
 - (void)showController:(id)arg1 animated:(BOOL)arg2;
-- (void)showPINSheet:(id)arg1;
+- (void)showPINSheet:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)showStoreDemoAlert;
 - (id)specifiersAtIndexes:(id)arg1;
 

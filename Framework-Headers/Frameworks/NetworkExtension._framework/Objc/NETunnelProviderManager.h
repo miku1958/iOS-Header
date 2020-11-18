@@ -12,12 +12,13 @@
 
 @property (readonly) long long routingMethod;
 
++ (id)copyDesignatedRequirementForProvider:(id *)arg1 extensionPoint:(id)arg2;
 + (void)loadAllFromPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)additionalSetup;
 - (id)copyAppRules;
 - (id)descriptionWithIndent:(int)arg1 options:(unsigned long long)arg2;
 - (id)init;
-- (id)initWithSessionType:(int)arg1;
+- (id)initWithSessionType:(int)arg1 tunnelType:(long long)arg2;
 - (BOOL)isProtocolTypeValid:(long long)arg1;
 - (void)loadFromPreferencesWithCompletionHandler:(CDUnknownBlockType)arg1;
 

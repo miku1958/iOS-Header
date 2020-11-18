@@ -8,13 +8,15 @@
 
 #import <Home/HFStateDumpBuildable-Protocol.h>
 
-@class NSString;
+@class HMAccessory, NSString;
 
 @interface HMResidentDevice (HFDebugging) <HFStateDumpBuildable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *hf_displayName;
+@property (readonly, nonatomic) HMAccessory *hf_linkedAccessory;
 @property (readonly) Class superclass;
 
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;

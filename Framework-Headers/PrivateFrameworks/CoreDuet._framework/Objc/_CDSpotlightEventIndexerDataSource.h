@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) id<_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property (readonly, nonatomic) _DKEventStream *stream; // @synthesize stream=_stream;
 
++ (unsigned long long)currentVersion;
 - (void).cxx_destruct;
 - (id)bundleIDToSearchableItemsDictionaryFromEvents:(id)arg1;
 - (id)bundleIDToSearchableItemsDictionaryWithCreationDateInInterval:(id)arg1 limit:(long long)arg2 nextBatch:(BOOL *)arg3 latestCreationDate:(id *)arg4 error:(id *)arg5;

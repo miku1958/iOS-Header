@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) NSArray *touches;
 
 + (BOOL)_supportsTouchContinuation;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (double)_allowableSeparation;
 - (double)_allowableTouchTimeSeparation;

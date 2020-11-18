@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (void)_keyboardWillShow:(id)arg1;
 - (void)_saveAndDismiss;
 - (BOOL)_validateRecipientsToAdd:(id)arg1;
-- (id)backingNavigationControllerForComposeRecipientViewController:(id)arg1;
 - (id)contentScrollView;
 - (void)dealloc;
 - (id)initWithSharedStream:(id)arg1;

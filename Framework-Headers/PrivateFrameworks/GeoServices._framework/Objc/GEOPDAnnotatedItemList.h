@@ -8,35 +8,51 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDPictureItemContainer, GEOPDTextItemContainer, NSString, PBUnknownFields;
+@class GEOPDPictureItemContainer, GEOPDTextItemContainer, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAnnotatedItemList : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
-    int _annotatedItemStyle;
     GEOPDPictureItemContainer *_picItemContainer;
     GEOPDTextItemContainer *_textItemContainer;
     NSString *_title;
+    int _annotatedItemStyle;
     struct {
-        unsigned int annotatedItemStyle:1;
-    } _has;
+        unsigned int has_annotatedItemStyle:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_picItemContainer:1;
+        unsigned int read_textItemContainer:1;
+        unsigned int read_title:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_picItemContainer:1;
+        unsigned int wrote_textItemContainer:1;
+        unsigned int wrote_title:1;
+        unsigned int wrote_annotatedItemStyle:1;
+    } _flags;
 }
 
-@property (nonatomic) int annotatedItemStyle; // @synthesize annotatedItemStyle=_annotatedItemStyle;
+@property (nonatomic) int annotatedItemStyle;
 @property (nonatomic) BOOL hasAnnotatedItemStyle;
 @property (readonly, nonatomic) BOOL hasPicItemContainer;
 @property (readonly, nonatomic) BOOL hasTextItemContainer;
 @property (readonly, nonatomic) BOOL hasTitle;
-@property (strong, nonatomic) GEOPDPictureItemContainer *picItemContainer; // @synthesize picItemContainer=_picItemContainer;
-@property (strong, nonatomic) GEOPDTextItemContainer *textItemContainer; // @synthesize textItemContainer=_textItemContainer;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) GEOPDPictureItemContainer *picItemContainer;
+@property (strong, nonatomic) GEOPDTextItemContainer *textItemContainer;
+@property (strong, nonatomic) NSString *title;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (id)annotatedItemListForPlaceData:(id)arg1;
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsAnnotatedItemStyle:(id)arg1;
+- (void)_readPicItemContainer;
+- (void)_readTextItemContainer;
+- (void)_readTitle;
 - (id)annotatedItemStyleAsString:(int)arg1;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -44,6 +60,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

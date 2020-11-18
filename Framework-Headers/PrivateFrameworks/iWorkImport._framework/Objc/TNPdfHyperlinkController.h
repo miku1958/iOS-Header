@@ -13,7 +13,9 @@ __attribute__((visibility("hidden")))
 }
 
 - (struct CGRect)canvasRect;
+- (id)destinationFromUrl:(id)arg1;
 - (id)initWithDocumentRoot:(id)arg1;
+- (BOOL)isDestination:(id)arg1;
 - (void)setCanvasRect:(struct CGRect)arg1;
 
 @end

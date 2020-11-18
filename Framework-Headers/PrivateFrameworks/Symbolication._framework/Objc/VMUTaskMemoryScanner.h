@@ -42,13 +42,16 @@
     unsigned int _classInfosCount;
     VMUClassInfoMap *_classInfoIndexer;
     struct _VMUScanLocationCache **_scanCaches;
+    unsigned int _autoreleasePoolBoundaryNode;
     unsigned int _recordAutoreleasePoolBoundaries;
+    NSMutableArray *_sortedMethodCacheBucketPtrAddresses;
+    unsigned long long _sortedMethodCacheBucketPtrAddressesIndex;
+    unsigned long long _nextMethodCacheBucketPtrAddress;
     BOOL _exactScanningEnabled;
     unsigned long long _maxInteriorOffset;
     unsigned int _scanningMask;
     VMUDebugTimer *_debugTimer;
     BOOL _showRawClassNames;
-    BOOL _javaScriptCoreUsingPoisoning;
     NSString *_processName;
     NSString *_processDescriptionString;
     NSString *_executablePath;
@@ -107,6 +110,7 @@
 - (void)_findMarkedAbandonedBlocks;
 - (void)_fixupBlockIsas;
 - (void)_identifyNonObjectsPointedToByTypedIvars;
+- (void)_identifyObjCClassStructureBlocks;
 - (unsigned int)_indexForClassInfo:(id)arg1;
 - (id)_initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
 - (void)_orderedScanWithScanner:(CDUnknownBlockType)arg1 recorder:(CDUnknownBlockType)arg2 keepMapped:(BOOL)arg3 actions:(CDUnknownBlockType)arg4;
@@ -123,6 +127,7 @@
 - (void)addMallocNodesFromTask;
 - (void)addRootNodesFromTask;
 - (BOOL)addressIsInDataSegment:(unsigned long long)arg1;
+- (unsigned long long)checkSourceAddress:(unsigned long long)arg1 toMaskDestinationAddress:(unsigned long long)arg2;
 - (id)classInfoForObjectAtAddress:(unsigned long long)arg1;
 - (void *)contentForNode:(unsigned int)arg1;
 - (void *)copyUserMarked;

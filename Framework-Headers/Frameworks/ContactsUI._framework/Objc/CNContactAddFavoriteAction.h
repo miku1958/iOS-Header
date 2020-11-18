@@ -8,16 +8,18 @@
 
 #import <ContactsUI/CNUIFavoritesEntryPickerDelegate-Protocol.h>
 
-@class CNUIFavoritesEntryPicker, NSString;
+@class CNFavorites, CNUIFavoritesEntryPicker, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNContactAddFavoriteAction : CNPropertyAction <CNUIFavoritesEntryPickerDelegate>
 {
     CNUIFavoritesEntryPicker *_favoritesEntryPicker;
+    CNFavorites *_favorites;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CNFavorites *favorites; // @synthesize favorites=_favorites;
 @property (strong, nonatomic) CNUIFavoritesEntryPicker *favoritesEntryPicker; // @synthesize favoritesEntryPicker=_favoritesEntryPicker;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -26,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_saveFavorite:(id)arg1;
 - (BOOL)canPerformAction;
 - (void)favoritesEntryPicker:(id)arg1 didPickEntry:(id)arg2;
+- (id)initWithContact:(id)arg1 propertyItems:(id)arg2 favorites:(id)arg3;
 - (void)performActionWithSender:(id)arg1;
 
 @end

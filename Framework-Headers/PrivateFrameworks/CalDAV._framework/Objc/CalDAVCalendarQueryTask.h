@@ -14,16 +14,12 @@
     BOOL _syncTodos;
     NSDateComponents *_eventFilterStartDate;
     NSDateComponents *_eventFilterEndDate;
-    NSDateComponents *_todoFilterStartDate;
-    NSDateComponents *_todoFilterEndDate;
 }
 
 @property (strong, nonatomic) NSDateComponents *eventFilterEndDate; // @synthesize eventFilterEndDate=_eventFilterEndDate;
 @property (strong, nonatomic) NSDateComponents *eventFilterStartDate; // @synthesize eventFilterStartDate=_eventFilterStartDate;
 @property (nonatomic) BOOL syncEvents; // @synthesize syncEvents=_syncEvents;
 @property (nonatomic) BOOL syncTodos; // @synthesize syncTodos=_syncTodos;
-@property (strong, nonatomic) NSDateComponents *todoFilterEndDate; // @synthesize todoFilterEndDate=_todoFilterEndDate;
-@property (strong, nonatomic) NSDateComponents *todoFilterStartDate; // @synthesize todoFilterStartDate=_todoFilterStartDate;
 
 - (void).cxx_destruct;
 - (void)_appendComponentFiltersToXMLData:(id)arg1;

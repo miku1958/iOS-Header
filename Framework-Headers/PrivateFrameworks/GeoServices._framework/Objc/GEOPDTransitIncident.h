@@ -17,15 +17,17 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_transitIncidents;
 }
 
-@property (strong, nonatomic) NSMutableArray *transitIncidents; // @synthesize transitIncidents=_transitIncidents;
+@property (strong, nonatomic) NSMutableArray *transitIncidents;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (BOOL)isValid:(id)arg1;
 + (Class)transitIncidentType;
 + (id)transitIncidentsForPlaceData:(id)arg1 hasTransitIncidentComponent:(BOOL *)arg2;
 + (id)transitIncidentsTTLExpirationDateForPlaceData:(id)arg1;
 - (void).cxx_destruct;
 - (void)addTransitIncident:(id)arg1;
 - (void)clearTransitIncidents;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -33,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)transitIncidentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)transitIncidentsCount;

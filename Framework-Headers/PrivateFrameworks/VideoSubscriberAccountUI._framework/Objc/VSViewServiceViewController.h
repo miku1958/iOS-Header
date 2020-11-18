@@ -53,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)_completeRequest:(id)arg1 withResponse:(id)arg2;
 - (void)_completeRequestWithResponse:(id)arg1;
 - (void)_completeRequestWithResponse:(id)arg1 fromIdentityProvider:(id)arg2;
+- (void)_determinePreAuthAppIsAuthorized:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_didCancelRequest;
 - (void)_didDetermineIdentityProvider:(id)arg1 withPickerViewController:(id)arg2;
 - (void)_dismissInHostIfNecessary;

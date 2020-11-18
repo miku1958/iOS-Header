@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <QuartzCore/CALayer.h>
+#import <Silex/SXLayer.h>
 
-@interface SXClippingLayer : CALayer
+@class CALayer;
+
+@interface SXClippingLayer : SXLayer
 {
     CALayer *_contentLayer;
     unsigned long long _clippingMode;

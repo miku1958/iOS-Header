@@ -8,27 +8,42 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDViewportInfo, NSData, PBUnknownFields;
+@class GEOPDViewportInfo, NSData, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDAddressObjectGeocodingParameters : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
+    CDStruct_158f0f88 _readerMark;
     PBUnknownFields *_unknownFields;
     NSData *_addressObject;
-    unsigned int _maxResults;
     GEOPDViewportInfo *_viewportInfo;
-    CDStruct_4f8569d5 _has;
+    unsigned int _maxResults;
+    struct {
+        unsigned int has_maxResults:1;
+        unsigned int read_unknownFields:1;
+        unsigned int read_addressObject:1;
+        unsigned int read_viewportInfo:1;
+        unsigned int wrote_unknownFields:1;
+        unsigned int wrote_addressObject:1;
+        unsigned int wrote_viewportInfo:1;
+        unsigned int wrote_maxResults:1;
+    } _flags;
 }
 
-@property (strong, nonatomic) NSData *addressObject; // @synthesize addressObject=_addressObject;
+@property (strong, nonatomic) NSData *addressObject;
 @property (readonly, nonatomic) BOOL hasAddressObject;
 @property (nonatomic) BOOL hasMaxResults;
 @property (readonly, nonatomic) BOOL hasViewportInfo;
-@property (nonatomic) unsigned int maxResults; // @synthesize maxResults=_maxResults;
+@property (nonatomic) unsigned int maxResults;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo; // @synthesize viewportInfo=_viewportInfo;
+@property (strong, nonatomic) GEOPDViewportInfo *viewportInfo;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (void)_readAddressObject;
+- (void)_readViewportInfo;
+- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -36,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class NSString, NSURL, PLForegroundMonitor;
+@class NSString, PLForegroundMonitor, PLPhotoAnalysisServiceClient;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface PLConstraintsDirector : NSObject <PLForegroundMonitorDelegate>
@@ -18,8 +18,8 @@
     BOOL _cameraAppInForeground;
     NSObject<OS_dispatch_queue> *_isolationQueue;
     NSObject<OS_dispatch_source> *_bonusTimer;
-    NSURL *_photoLibraryURL;
     PLForegroundMonitor *_foregroundMonitor;
+    PLPhotoAnalysisServiceClient *_photoAnalysisServiceClient;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,15 +29,14 @@
 
 + (BOOL)_photoanalysisdIsRunning;
 + (BOOL)constraintsAllowSchedulingUserInitiatedAnalysisForAssets;
-+ (id)sharedConstraintsDirector;
+- (void).cxx_destruct;
 - (void)_addBonusTime;
 - (void)_disableAutoFGAndUserFGConstraints;
-- (void)dealloc;
 - (void)foregroundMonitor:(id)arg1 changedStateToForeground:(BOOL)arg2 forBundleIdentifier:(id)arg3;
 - (void)informCameraAppCameraViewControllerVisibilityChanged:(BOOL)arg1;
 - (void)informCameraAppForegroundState:(BOOL)arg1;
 - (void)informOpportunisticTasksAllowed:(BOOL)arg1;
-- (id)initWithPhotoLibraryURL:(id)arg1;
+- (id)initWithPhotoAnalysisClient:(id)arg1;
 - (BOOL)shouldScheduleUserInitiatedAnalysisForAssets;
 
 @end

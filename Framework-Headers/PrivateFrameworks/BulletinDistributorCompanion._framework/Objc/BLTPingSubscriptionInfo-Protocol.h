@@ -11,6 +11,7 @@
 @protocol BLTPingSubscriptionInfo <NSObject>
 
 @property (readonly, nonatomic) BOOL canAck;
+@property (readonly, nonatomic) BOOL canAckOnLocalConnection;
 @property (readonly, nonatomic) BOOL forBulletin;
 @property (readonly, copy, nonatomic) NSString *sectionID;
 

@@ -23,7 +23,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSMutableSet, NSString, OKPresentationViewController, PHAssetCollection, PHFetchResult, PXBasicUIViewTileAnimator, PXImageRequester, PXMovieProvider, PXOneUpPresentation, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDetailsContext, PXPhotosDetailsHeaderSpec, PXPhotosDetailsHeaderSpecManager, PXPhotosDetailsLoadCoordinationToken, PXReusableObjectPool, PXSectionedSelectionManager, PXSlideshowSession, PXTilingController, PXTitleSubtitleUILabelTile, PXUIPlayButtonTile, PXUISlideshowViewTile, PXUITapGestureRecognizer, PXWidgetSpec;
-@protocol OS_dispatch_queue, PXAnonymousView, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol OS_dispatch_queue, PXAnonymousView, PXDisplayAsset, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPhotosDetailsHeaderTileWidget : NSObject <PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, UIGestureRecognizerDelegate, PXChangeObserver, PXPhotosDataSourceChangeObserver, PXPhotosDetailsHeaderTileLayoutDelegate, PXSlideshowSessionDelegate, PXTilingControllerZoomAnimationCoordinatorDelegate, PXUISlideshowViewTileDelegate, PXZoomAnimationObserverCoordinatorDelegate, PXMovieProviderDelegate, PXScrollViewControllerObserver, PXUIWidget, PXDiagnosticsEnvironment>
 {
@@ -110,6 +110,7 @@
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
+@property (readonly, nonatomic) id<PXDisplayAsset> presentedKeyAsset;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
 @property (readonly, nonatomic) PXSectionedSelectionManager *selectionManager;
 @property (strong, nonatomic) PXWidgetSpec *spec; // @synthesize spec=_spec;
@@ -134,7 +135,6 @@
 - (void)_invalidateKeyAssets;
 - (BOOL)_isPointWithinCurrentLayoutBounds:(struct CGPoint)arg1;
 - (BOOL)_isSlideShowReadyToStart;
-- (id)_keyAsset;
 - (void)_loadBasicContent;
 - (BOOL)_needsUpdate;
 - (void)_prepareSlideshowSessionWithAssetCollection:(id)arg1 keyAsset:(id)arg2;
@@ -166,8 +166,8 @@
 - (id)extendedTraitCollection;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)init;
+- (id)keyAsset;
 - (void)loadContentData;
-- (BOOL)movieProvider:(id)arg1 navigateToMemory:(id)arg2;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (struct CGRect)photosDetailsHeaderTileLayout:(id)arg1 contentsRectForAspectRatio:(double)arg2;
@@ -176,6 +176,7 @@
 - (void)ppt_navigateToMovieWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (double)preferredContentHeightForWidth:(double)arg1;
 - (void)preloadWithSourceRegionOfInterest:(id)arg1 forContext:(id)arg2;
+- (id)presentingViewControllerForMovieProvider:(id)arg1;
 - (id)px_diagnosticsItemProvidersForPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (id)regionOfInterestForContext:(id)arg1;
 - (void)scrollViewControllerDidEndScrolling:(id)arg1;

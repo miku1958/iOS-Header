@@ -29,12 +29,10 @@
 
 - (void).cxx_destruct;
 - (id)_initWithPluginBundle:(id)arg1 extension:(id)arg2 pluginKitProxyClass:(Class)arg3;
-- (id)extensionConnection;
 - (id)initWithPluginBundle:(id)arg1 appBundle:(id)arg2;
 - (id)initWithPluginBundle:(id)arg1 extension:(id)arg2;
 - (id)initWithPluginBundle:(id)arg1 pluginKitProxy:(id)arg2 extension:(id)arg3;
 - (BOOL)isBetaPlugin;
-- (id)proxyWithErrorHandle:(CDUnknownBlockType)arg1;
 - (id)version;
 
 @end

@@ -23,6 +23,7 @@
 + (id)_URLComponentsForDestination:(unsigned long long)arg1;
 + (id)aboutResidentDeviceURL;
 + (id)fixSymptomURLForAccessory:(id)arg1 symptom:(id)arg2;
++ (id)fixSymptomURLForAccessoryWithUUID:(id)arg1 symptom:(id)arg2;
 + (id)homeKitObjectURLForDestination:(unsigned long long)arg1 secondaryDestination:(unsigned long long)arg2 UUID:(id)arg3;
 + (BOOL)isHomeAppURL:(id)arg1;
 + (id)locationPrivacyURL;

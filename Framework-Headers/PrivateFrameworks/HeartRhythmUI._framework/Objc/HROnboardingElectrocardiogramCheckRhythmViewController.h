@@ -60,11 +60,11 @@
 - (id)_ageEntryTitleFont;
 - (double)_ageEntryTopSeparatorToFirstBaseline;
 - (double)_agePromptLastBaselineToAgeEntryTop;
-- (double)_assetImageBottomToTitleFirstBaseline;
 - (double)_birthdayFooterLastBaselineToContinueButton;
+- (id)_birthdayPromptFont;
+- (double)_bodyBottomToAgePromptTop;
 - (id)_bodyFont;
 - (id)_bodyFontTextStyle;
-- (double)_bodyLastBaselineToAgePromptFirstBaseline;
 - (double)_bottomSeparatorToBirthdayFooterFirstBaseline;
 - (id)_dateOfBirthDatePicker;
 - (void)_dateOfBirthTapped:(id)arg1;
@@ -74,9 +74,9 @@
 - (void)_keyboardFrameChanged:(id)arg1;
 - (BOOL)_meetsAgeRequirement;
 - (void)_setupBirthdayEntryView;
+- (double)_titleBottomToBodyTop;
 - (id)_titleFont;
 - (id)_titleFontTextStyle;
-- (double)_titleLastBaselineToBodyFirstBaseline;
 - (void)_trackElectrocardiogramOnboardingStepIfNeeded:(long long)arg1 countryCode:(id)arg2;
 - (void)_updateDateOfBirthDisplay;
 - (id)ageIneligiblePromptAckButtonString;

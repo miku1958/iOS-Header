@@ -8,11 +8,12 @@
 
 #import <Search/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSMutableArray, NSNumber, NSString, PRSRankingItem, SFPunchout;
+@class MISSING_TYPE, NSData, NSDate, NSMutableArray, NSNumber, NSString, PRSRankingItem, SFPunchout;
 
 @interface SFSearchResult_SpotlightExtras : SFSearchResult <NSSecureCoding>
 {
     SFPunchout *_cachedPunchout;
+    BOOL _hasCommunicationContent;
     float _l2score;
     unsigned int _feedbackBlockId;
     NSString *_protectionClass;
@@ -27,7 +28,8 @@
     NSString *_contentURL;
     PRSRankingItem *_rankingItem;
     NSData *_suggestionsFeedbackData;
-    struct ranking_index_score_t _score;
+    unsigned long long _predictionsFeedbackActionType;
+    MISSING_TYPE *_score;
 }
 
 @property (strong, nonatomic) NSString *contentURL; // @synthesize contentURL=_contentURL;
@@ -36,20 +38,21 @@
 @property (nonatomic) unsigned int feedbackBlockId; // @synthesize feedbackBlockId=_feedbackBlockId;
 @property (strong, nonatomic) NSNumber *fileIdentifier; // @synthesize fileIdentifier=_fileIdentifier;
 @property (strong, nonatomic) NSString *filename; // @synthesize filename=_filename;
+@property (nonatomic) BOOL hasCommunicationContent; // @synthesize hasCommunicationContent=_hasCommunicationContent;
 @property (nonatomic) float l2score; // @synthesize l2score=_l2score;
 @property (strong, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;
 @property (strong, nonatomic) NSString *launchString; // @synthesize launchString=_launchString;
 @property (strong, nonatomic) NSNumber *parentFileIdentifier; // @synthesize parentFileIdentifier=_parentFileIdentifier;
+@property (nonatomic) unsigned long long predictionsFeedbackActionType; // @synthesize predictionsFeedbackActionType=_predictionsFeedbackActionType;
 @property (strong, nonatomic) NSString *protectionClass; // @synthesize protectionClass=_protectionClass;
 @property (strong) PRSRankingItem *rankingItem; // @synthesize rankingItem=_rankingItem;
-@property (nonatomic) struct ranking_index_score_t score; // @synthesize score=_score;
+@property (nonatomic) MISSING_TYPE *score; // @synthesize score=_score;
 @property (strong, nonatomic) NSData *suggestionsFeedbackData; // @synthesize suggestionsFeedbackData=_suggestionsFeedbackData;
 @property (strong, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
 
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (long long)compare:(id)arg1;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

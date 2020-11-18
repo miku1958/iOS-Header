@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC15ConversationKit45InCallControlsParticipantsTableViewController : UITableViewController
 {
     MISSING_TYPE *capabilitiesChecker;
@@ -21,12 +20,15 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
+- (void)handleContentSizeCategoryDidChange:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithStyle:(long long)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)viewDidLoad;
 

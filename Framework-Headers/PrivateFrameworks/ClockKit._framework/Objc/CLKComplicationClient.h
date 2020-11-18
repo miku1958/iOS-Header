@@ -44,6 +44,7 @@
 - (void)addInvalidationObserver:(id)arg1;
 - (void)checkinWithClientIdentifier:(id)arg1 bundlePath:(id)arg2;
 - (void)extendTimelineForComplication:(id)arg1;
+- (void)getAlwaysOnTemplateForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getCurrentTimelineEntryForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getLocalizableSampleTemplateForComplication:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getNextRequestedUpdateDateWithHandler:(CDUnknownBlockType)arg1;

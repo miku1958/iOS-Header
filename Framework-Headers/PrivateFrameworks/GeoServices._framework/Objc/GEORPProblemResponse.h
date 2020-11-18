@@ -16,18 +16,19 @@
     int _statusCode;
     BOOL _isNotificationSupported;
     struct {
-        unsigned int statusCode:1;
-        unsigned int isNotificationSupported:1;
-    } _has;
+        unsigned int has_statusCode:1;
+        unsigned int has_isNotificationSupported:1;
+    } _flags;
 }
 
 @property (nonatomic) BOOL hasIsNotificationSupported;
 @property (readonly, nonatomic) BOOL hasProblemId;
 @property (nonatomic) BOOL hasStatusCode;
-@property (nonatomic) BOOL isNotificationSupported; // @synthesize isNotificationSupported=_isNotificationSupported;
-@property (strong, nonatomic) NSString *problemId; // @synthesize problemId=_problemId;
-@property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
+@property (nonatomic) BOOL isNotificationSupported;
+@property (strong, nonatomic) NSString *problemId;
+@property (nonatomic) int statusCode;
 
++ (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
 - (void)copyTo:(id)arg1;
@@ -37,6 +38,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

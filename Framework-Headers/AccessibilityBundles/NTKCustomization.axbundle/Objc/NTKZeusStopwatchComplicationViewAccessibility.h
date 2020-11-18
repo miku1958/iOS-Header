@@ -21,7 +21,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)init;
-- (void)setTime:(double)arg1;
+- (void)setStopwatchState:(long long)arg1 elapsedTime:(double)arg2 shouldPauseTextCountdown:(BOOL)arg3 timeTravelDate:(id)arg4;
 
 @end
 

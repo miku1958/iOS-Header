@@ -10,12 +10,13 @@
 #import <HealthDaemon/HDNanoSyncPersistentUserInfoCopying-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSMutableArray, NSString;
 
 @interface HDCodableNanoSyncActivationRestore : PBCodable <HDNanoSyncDescription, HDNanoSyncPersistentUserInfoCopying, NSCopying>
 {
     long long _sequenceNumber;
     NSString *_defaultSourceBundleIdentifier;
+    NSMutableArray *_obliteratedHealthPairingUUIDs;
     NSData *_restoreIdentifier;
     int _statusCode;
     struct {
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL hasStatusCode;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableArray *obliteratedHealthPairingUUIDs; // @synthesize obliteratedHealthPairingUUIDs=_obliteratedHealthPairingUUIDs;
 @property (strong, nonatomic) NSData *restoreIdentifier; // @synthesize restoreIdentifier=_restoreIdentifier;
 @property (nonatomic) long long sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
@@ -42,20 +44,27 @@
 @property (readonly) Class superclass;
 
 + (id)activationRestoreWithRestoreUUID:(id)arg1 sequenceNumber:(long long)arg2 statusCode:(int)arg3;
++ (Class)obliteratedHealthPairingUUIDsType;
 + (id)persistentUserInfoKey;
 + (id)retreiveFromPersistentUserInfo:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsStatusCode:(id)arg1;
+- (void)addObliteratedHealthPairingUUIDs:(id)arg1;
 - (void)addToPersistentUserInfo:(id)arg1;
+- (void)clearObliteratedHealthPairingUUIDs;
 - (id)copyForPersistentUserInfo;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)decodedObliteratedHealthPairingUUIDs;
 - (id)decodedRestoreUUID;
 - (id)dictionaryRepresentation;
+- (void)encodeObliteratedHealthPairingUUIDs:(id)arg1;
 - (BOOL)hasRequiredFields;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)nanoSyncDescription;
+- (id)obliteratedHealthPairingUUIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)obliteratedHealthPairingUUIDsCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusCodeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

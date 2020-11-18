@@ -15,6 +15,7 @@
 + (void)animateLayer:(id)arg1 forButtonHighlighted:(BOOL)arg2 layoutStyle:(long long)arg3;
 + (void)animateLayer:(id)arg1 toFrame:(struct CGRect)arg2 fromCurrentState:(BOOL)arg3;
 + (void)configurePowerSensitiveAnimation:(id)arg1;
++ (void)setLayer:(id)arg1 highlighted:(BOOL)arg2 animated:(BOOL)arg3 layoutStyle:(long long)arg4;
 
 @end
 

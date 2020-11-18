@@ -6,41 +6,32 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaUIStateTransition-Protocol.h>
 
-@interface SISchemaUIStateTransition : PBCodable <NSCopying>
+@class NSData, NSString;
+
+@interface SISchemaUIStateTransition : PBCodable <SISchemaUIStateTransition, NSSecureCoding>
 {
     int _currentState;
     int _previousState;
     int _siriPresentationType;
-    struct {
-        unsigned int currentState:1;
-        unsigned int previousState:1;
-        unsigned int siriPresentationType:1;
-    } _has;
 }
 
 @property (nonatomic) int currentState; // @synthesize currentState=_currentState;
-@property (nonatomic) BOOL hasCurrentState;
-@property (nonatomic) BOOL hasPreviousState;
-@property (nonatomic) BOOL hasSiriPresentationType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int previousState; // @synthesize previousState=_previousState;
 @property (nonatomic) int siriPresentationType; // @synthesize siriPresentationType=_siriPresentationType;
+@property (readonly) Class superclass;
 
-- (int)StringAsCurrentState:(id)arg1;
-- (int)StringAsPreviousState:(id)arg1;
-- (int)StringAsSiriPresentationType:(id)arg1;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)currentStateAsString:(int)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
-- (id)previousStateAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (id)siriPresentationTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

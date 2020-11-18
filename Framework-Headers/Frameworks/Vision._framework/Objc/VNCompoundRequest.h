@@ -18,7 +18,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSArray *originalRequests; // @synthesize originalRequests=_originalRequests;
 @property (readonly, nonatomic) struct CGRect regionOfInterest;
 
-+ (id)compoundRequestsForOriginalRequests:(id)arg1;
++ (id)compoundRequestProcessingDeviceFromOriginalRequestsProcessingDevice:(id)arg1;
++ (id)compoundRequestsForOriginalRequests:(id)arg1 withPerformingContext:(id)arg2 error:(id *)arg3;
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (BOOL)allowsCachingOfResults;
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithOriginalRequests:(id)arg1;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (void)recordWarningsInOriginalRequests;
+- (CDUnknownBlockType)resultsSortingComparator;
 - (id)sequencedRequestPreviousObservationsKey;
 - (BOOL)usesCPUOnly;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;

@@ -54,6 +54,7 @@
 - (struct __C3DAnimationPlayer *)animationPlayerRef;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (void)commonInit;
+- (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

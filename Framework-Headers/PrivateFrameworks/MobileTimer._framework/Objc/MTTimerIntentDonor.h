@@ -9,22 +9,25 @@
 #import <MobileTimer/MTTimerObserver-Protocol.h>
 
 @class MTTimerStorage, NSMutableSet, NSString;
+@protocol NAScheduler;
 
 @interface MTTimerIntentDonor : NSObject <MTTimerObserver>
 {
     MTTimerStorage *_storage;
     NSMutableSet *_donatedTimerIDs;
+    id<NAScheduler> _serializer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableSet *donatedTimerIDs; // @synthesize donatedTimerIDs=_donatedTimerIDs;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property (readonly, nonatomic) MTTimerStorage *storage; // @synthesize storage=_storage;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_donateCreateTimerIntent:(id)arg1;
+- (void)_queue_donateCreateTimerIntent:(id)arg1;
 - (id)initWithStorage:(id)arg1;
 - (void)nextTimerDidChange:(id)arg1;
 - (void)source:(id)arg1 didAddTimers:(id)arg2;

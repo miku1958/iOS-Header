@@ -7,33 +7,49 @@
 #import <objc/NSObject.h>
 
 #import <HealthDaemon/NSCopying-Protocol.h>
+#import <HealthDaemon/NSMutableCopying-Protocol.h>
 
 @class NSMutableSet, NSSet;
 
-@interface HDDatabaseTransactionContext : NSObject <NSCopying>
+@interface HDDatabaseTransactionContext : NSObject <NSCopying, NSMutableCopying>
 {
-    unsigned long long _options;
-    NSMutableSet *_accessibilityAssertions;
     long long _journalType;
     long long _cacheScope;
+    unsigned long long _options;
+    NSMutableSet *_accessibilityAssertions;
 }
 
 @property (readonly, copy, nonatomic) NSSet *accessibilityAssertions;
-@property (nonatomic) long long cacheScope; // @synthesize cacheScope=_cacheScope;
-@property (nonatomic) BOOL highPriority;
-@property (nonatomic) long long journalType; // @synthesize journalType=_journalType;
-@property (nonatomic) BOOL requiresNewDatabaseConnection;
-@property (nonatomic) BOOL requiresSecureDelete;
-@property (nonatomic) BOOL skipJournalMerge;
+@property (readonly, nonatomic) long long cacheScope; // @synthesize cacheScope=_cacheScope;
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
+@property (readonly, nonatomic) BOOL highPriority;
+@property (readonly, nonatomic) long long journalType; // @synthesize journalType=_journalType;
+@property (readonly, nonatomic) BOOL requiresNewDatabaseConnection;
+@property (readonly, nonatomic) BOOL requiresProtectedData;
+@property (readonly, nonatomic) BOOL requiresWrite;
+@property (readonly, nonatomic) BOOL skipJournalMerge;
 
++ (id)_cachedContextForOptions:(unsigned long long)arg1;
++ (id)contextForReading;
++ (id)contextForReadingProtectedData;
++ (id)contextForWriting;
++ (id)contextForWritingProtectedData;
++ (id)highPriorityContext;
 - (void).cxx_destruct;
 - (void)_applyOptions:(unsigned long long)arg1 enable:(BOOL)arg2;
-- (void)addAccessibilityAssertion:(id)arg1;
+- (id)_initWithOptions:(unsigned long long)arg1;
+- (id)_initWithOptions:(unsigned long long)arg1 journalType:(long long)arg2 cacheScope:(long long)arg3 assertions:(id)arg4;
+- (BOOL)containsContext:(id)arg1 error:(id *)arg2;
+- (id)copyForReadingProtectedData;
+- (id)copyForWriting;
+- (id)copyForWritingProtectedData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (BOOL)isCompatibleWithContext:(id)arg1 error:(id *)arg2;
+- (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (id)mergedContextWithContext:(id)arg1 error:(id *)arg2;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

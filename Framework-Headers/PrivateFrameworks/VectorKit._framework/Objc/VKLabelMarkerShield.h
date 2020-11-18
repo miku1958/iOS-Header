@@ -13,7 +13,7 @@
     VKImageSourceKey *_imageKey;
 }
 
-@property (readonly, nonatomic) CDStruct_b3fd5d76 color;
+@property (readonly, nonatomic) CDStruct_83984b6f color;
 @property (readonly, nonatomic) NSString *locale;
 @property (readonly, nonatomic) NSString *text;
 @property (readonly, nonatomic) long long type;

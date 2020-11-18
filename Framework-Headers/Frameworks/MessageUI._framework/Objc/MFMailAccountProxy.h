@@ -27,11 +27,11 @@
 @property (readonly, nonatomic) NSString *uniqueID;
 @property (readonly, nonatomic) NSString *username;
 
+- (void).cxx_destruct;
 - (id)_emailAddressesAndAliases;
 - (id)_initWithProperties:(id)arg1;
 - (BOOL)_isActive;
 - (BOOL)_isRestricted;
-- (void)dealloc;
 
 @end
 

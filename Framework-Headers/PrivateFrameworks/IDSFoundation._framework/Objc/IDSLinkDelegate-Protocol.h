@@ -11,7 +11,7 @@
 @protocol IDSLinkDelegate <NSObject>
 - (void)link:(id)arg1 didConnectForDeviceUniqueID:(NSString *)arg2 cbuuid:(NSString *)arg3;
 - (void)link:(id)arg1 didDisconnectForDeviceUniqueID:(NSString *)arg2 cbuuid:(NSString *)arg3;
-- (BOOL)link:(id)arg1 didReceivePacket:(CDStruct_c4cff10b *)arg2 fromDeviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
+- (BOOL)link:(id)arg1 didReceivePacket:(CDStruct_12676517 *)arg2 fromDeviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
 
 @optional
 - (void)link:(id)arg1 didAddQREvent:(NSDictionary *)arg2;

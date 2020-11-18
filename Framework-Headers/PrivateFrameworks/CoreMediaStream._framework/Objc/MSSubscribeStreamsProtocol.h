@@ -29,12 +29,11 @@
         CDUnknownFunctionPointerType _field4;
         CDUnknownFunctionPointerType _field5;
         CDUnknownFunctionPointerType _field6;
-        CDUnknownFunctionPointerType _field7;
-        struct __CFString *_field8;
-        struct __CFURL *_field9;
+        struct __CFString *_field7;
+        struct __CFURL *_field8;
+        struct __CFString *_field9;
         struct __CFString *_field10;
-        struct __CFString *_field11;
-        int _field12;
+        int _field11;
     } *_parseContext;
 }
 
@@ -42,7 +41,6 @@
 - (id)_assetFromCoreDictionary:(id)arg1 personID:(id)arg2 outError:(id *)arg3;
 - (void)_chunkDidBeginStreamForPersonID:(id)arg1 wasReset:(BOOL)arg2 metadata:(id)arg3;
 - (void)_chunkDidEndStreamForPersonID:(id)arg1 ctag:(id)arg2;
-- (void)_chunkDidFindShareState:(id)arg1;
 - (void)_chunkDidFindSubscriptionGoneForPersonID:(id)arg1;
 - (void)_chunkDidFindSubscriptionTemporarilyUnavailableForPersonID:(id)arg1;
 - (void)_chunkDidParseAssetCollections:(id)arg1 forPersonID:(id)arg2;

@@ -16,6 +16,9 @@
 - (id)attributesForSharingHTMLWithTagName:(id *)arg1 textContent:(id *)arg2;
 - (BOOL)canConvertToHTMLForSharing;
 - (BOOL)hasPreviews;
+- (BOOL)preferLocalPreviewImages;
+- (BOOL)previewsSupportMultipleAppearances;
+- (BOOL)shouldSyncPreviewImageToCloud:(id)arg1;
 
 @end
 

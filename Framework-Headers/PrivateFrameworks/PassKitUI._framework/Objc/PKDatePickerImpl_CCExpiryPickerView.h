@@ -10,7 +10,7 @@
 #import <PassKitUI/UIPickerViewDataSource-Protocol.h>
 #import <PassKitUI/UIPickerViewDelegate-Protocol.h>
 
-@class NSCalendar, NSDate, NSDateFormatter, NSNumber, NSString, UIFont;
+@class NSCalendar, NSDate, NSDateFormatter, NSLocale, NSNumber, NSString, UIFont;
 
 @interface PKDatePickerImpl_CCExpiryPickerView : UIPickerView <PKDatePickerInternalImplementationProtocol, UIPickerViewDataSource, UIPickerViewDelegate>
 {
@@ -20,6 +20,7 @@
     NSDateFormatter *_dateFormatter[2];
     NSNumber *_useDoubleMonthStyle;
     NSCalendar *_calendar;
+    NSLocale *_locale;
     UIFont *_font;
     id _changeTarget;
     SEL _changeAction;
@@ -41,7 +42,7 @@
 - (id)_stringForComponent:(long long)arg1 index:(unsigned long long)arg2;
 - (BOOL)_useDoubleMonthStyle;
 - (double)_widthForComponent:(long long)arg1;
-- (id)initShowingDay:(BOOL)arg1 month:(BOOL)arg2 year:(BOOL)arg3 useDarkAppearance:(BOOL)arg4;
+- (id)initShowingDay:(BOOL)arg1 month:(BOOL)arg2 year:(BOOL)arg3 useDarkAppearance:(BOOL)arg4 locale:(id)arg5 calendar:(id)arg6;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;

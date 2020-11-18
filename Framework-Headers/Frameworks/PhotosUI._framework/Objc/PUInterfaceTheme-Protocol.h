@@ -50,9 +50,6 @@
 @property (readonly, nonatomic) NSDictionary *contentCommentsHiddenButtonTextAttributes;
 @property (readonly, nonatomic) UIColor *contentCommentsShownButtonImageColor;
 @property (readonly, nonatomic) NSDictionary *contentCommentsShownButtonTextAttributes;
-@property (readonly, nonatomic) long long defaultKeyboardAppearance;
-@property (readonly, nonatomic) unsigned long long emptyPlaceholderStyle;
-@property (readonly, nonatomic) UIColor *emptyPlaceholderViewBackgroundColor;
 @property (readonly, nonatomic) UIColor *folderCellBackgroundColor;
 @property (readonly, nonatomic) UIColor *gridViewCellBannerBackgroundColor;
 @property (readonly, nonatomic) UIImage *gridViewCellBannerBackgroundImage;
@@ -82,6 +79,7 @@
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarMainColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarOriginalPositionMarkerColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarPlayheadColor;
+@property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarSuggestedMarkerColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsModeLabelColor;
 @property (readonly, nonatomic) UIFont *photoEditingAdjustmentsModeLabelFont;
 @property (readonly, nonatomic) UIFont *photoEditingAdjustmentsModePickerFont;
@@ -114,9 +112,16 @@
 @property (readonly, nonatomic) UIColor *photoEditingPopoverBackgroundColor;
 @property (readonly, nonatomic) UIFont *photoEditingToolbarButtonCompactFont;
 @property (readonly, nonatomic) UIFont *photoEditingToolbarButtonNormalFont;
+@property (readonly, nonatomic) UIColor *photoEditingToolbarDarkGradientEndColor;
+@property (readonly, nonatomic) UIColor *photoEditingToolbarDarkGradientStartColor;
 @property (readonly, nonatomic) UIColor *photoEditingToolbarDestructiveButtonColor;
+@property (readonly, nonatomic) UIColor *photoEditingToolbarLightGradientEndColor;
+@property (readonly, nonatomic) UIColor *photoEditingToolbarLightGradientStartColor;
 @property (readonly, nonatomic) UIColor *photoEditingToolbarMainButtonColor;
 @property (readonly, nonatomic) UIColor *photoEditingToolbarSecondaryButtonColor;
+@property (readonly, nonatomic) UIColor *photoEditingToolbarUltralightGradientEndColor;
+@property (readonly, nonatomic) UIColor *photoEditingToolbarUltralightGradientStartColor;
+@property (readonly, nonatomic) UIColor *photoEditingToolbarUnderlineColor;
 @property (readonly, nonatomic) UIColor *photoEditingTooltipColor;
 @property (readonly, nonatomic) UIFont *photoEditingTooltipFont;
 @property (readonly, nonatomic) UIColor *placeholderCellBackgroundColor;
@@ -124,6 +129,7 @@
 @property (readonly, nonatomic) UIFont *playbackTimeLabelFont;
 @property (readonly, nonatomic) UIColor *playheadBackgroundColor;
 @property (readonly, nonatomic) UIColor *playheadColor;
+@property (readonly, nonatomic) UIColor *playheadOutlineColor;
 @property (readonly, nonatomic) UIImage *regularLoadErrorIcon;
 @property (readonly, nonatomic) UIColor *scrubberPlaceholderColor;
 @property (readonly, nonatomic) UIFont *searchItalicTitleLabelFont;
@@ -136,7 +142,6 @@
 @property (readonly, nonatomic) double searchSubtitleBottomBaselineDistance;
 @property (readonly, nonatomic) UIFont *searchSubtitleLabelFont;
 @property (readonly, nonatomic) UIColor *searchSubtitleTextColor;
-@property (readonly, nonatomic) UIColor *searchTableViewBackgroundColor;
 @property (readonly, nonatomic) UIFont *searchTitleLabelFont;
 @property (readonly, nonatomic) double searchTitleSubtitleBaselineDistance;
 @property (readonly, nonatomic) double searchTitleTopBaselineDistance;
@@ -145,11 +150,6 @@
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardButtonFont;
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardTextFont;
 @property (readonly, nonatomic) UIFont *sharedAlbumCommentCardTitleFont;
-@property (readonly, nonatomic) UIColor *slideshowChromeBarTintColor;
-@property (readonly, nonatomic) UIColor *slideshowMusicHeaderBackgroundColor;
-@property (readonly, nonatomic) UIColor *slideshowMusicHeaderTextColor;
-@property (readonly, nonatomic) UIColor *slideshowSeparatorColor;
-@property (readonly, nonatomic) struct UIEdgeInsets slideshowSeparatorInset;
 @property (readonly, nonatomic) NSDictionary *textBlockBelowArtSubTitleTextAttributes;
 @property (readonly, nonatomic) NSDictionary *textBlockBelowArtTitleEmphasizedTextAttributes;
 @property (readonly, nonatomic) NSDictionary *textBlockBelowArtTitleTextAttributes;
@@ -160,6 +160,8 @@
 @property (readonly, nonatomic) NSDictionary *toolbarCommentsShownButtonTextAttributes;
 @property (readonly, nonatomic) UIColor *topLevelNavigationBarButtonTintColor;
 @property (readonly, nonatomic) long long topLevelStatusBarStyle;
+@property (readonly, nonatomic) UIColor *topToolbarToolLabelButtonColor;
+@property (readonly, nonatomic) UIFont *topToolbarToolLabelFont;
 @property (readonly, nonatomic) UIColor *videoEditingBackgroundColor;
 @property (readonly, nonatomic) UIFont *videoEditingToolbarButtonNormalFont;
 @property (readonly, nonatomic) UIColor *videoEditingToolbarDestructiveButtonColor;
@@ -171,7 +173,6 @@
 @property (readonly, nonatomic) UIColor *videoScrubberTileBackgroundColor;
 
 - (NSAttributedString *)attributedStringForCloudFeedGroupHeaderWithText:(NSString *)arg1;
-- (UIFont *)cloudWelcomeViewTitleLabelFontForSize:(double)arg1;
 - (NSString *)commentsButtonStringForCount:(long long)arg1;
 - (void)configureAlbumListDeleteButton:(UIButton *)arg1;
 - (void)configureAlbumListSectionTitleLabel:(UILabel *)arg1;
@@ -206,7 +207,6 @@
 - (void)configureSearchResultCountLabel:(UILabel *)arg1;
 - (void)configureSearchSubtitleLabel:(UILabel *)arg1;
 - (void)configureSearchTitleLabel:(UILabel *)arg1;
-- (void)configureSlideshowMusicHeaderTitleLabel:(UILabel *)arg1;
 - (UIButton *)createCloudFeedCommentButton;
 - (UIColor *)photoCollectionCloudQuotaBannerBackgroundColorHighlighted:(BOOL)arg1;
 - (UIFont *)photoCollectionCloudQuotaBannerFont;

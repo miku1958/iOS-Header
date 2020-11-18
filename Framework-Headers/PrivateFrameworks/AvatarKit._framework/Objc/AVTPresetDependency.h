@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *variantName; // @synthesize variantName;
 
 - (void).cxx_destruct;
+- (id)debugDescription;
 
 @end
 

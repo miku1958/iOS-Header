@@ -20,22 +20,23 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned int hidEventType; // @synthesize hidEventType=_hidEventType;
+@property (readonly, nonatomic) unsigned int hidEventType; // @synthesize hidEventType=_hidEventType;
 @property (readonly) Class superclass;
 
++ (id)descriptorForHIDEvent:(struct __IOHIDEvent *)arg1;
 + (id)descriptorWithEventType:(unsigned int)arg1;
-+ (id)reusableDescriptorWithEventType:(unsigned int)arg1;
-+ (id)reusableKeyboardDescriptorWithPage:(unsigned int)arg1 usage:(unsigned int)arg2;
-+ (id)reusableVendorDefinedDescriptorWithPage:(unsigned int)arg1 usage:(unsigned int)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)describes:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)descriptorByAddingSenderIDToMatchCriteria:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEventType:(unsigned int)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)matchesHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

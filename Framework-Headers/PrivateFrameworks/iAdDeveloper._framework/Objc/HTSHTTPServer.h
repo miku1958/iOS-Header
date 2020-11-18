@@ -14,6 +14,7 @@
     int _listenSocket4;
     NSMutableArray *_activeConnections;
     NSObject<OS_dispatch_queue> *_serverQueue;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_source> *_listenSource4;
     NSString *_nodename;
     unsigned long long _bytesWritten;
@@ -24,7 +25,6 @@
     unsigned short _port;
     int _cacheMaxAge;
     id<HTSHTTPServerDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
     double _latency;
     double _latencyStddev;
     double _kbps;
@@ -38,7 +38,7 @@
 @property (nonatomic) int cacheMaxAge; // @synthesize cacheMaxAge=_cacheMaxAge;
 @property (nonatomic) struct __CFHTTPMessage *currentRequest; // @synthesize currentRequest=_currentRequest;
 @property (nonatomic) id<HTSHTTPServerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property (nonatomic) NSObject<OS_dispatch_queue> *delegateQueue;
 @property (nonatomic) BOOL digestAuthenticationEnabled; // @synthesize digestAuthenticationEnabled=_digestAuthenticationEnabled;
 @property (copy, nonatomic) NSString *documentRoot; // @synthesize documentRoot=_documentRoot;
 @property (nonatomic) double kbps; // @synthesize kbps=_kbps;

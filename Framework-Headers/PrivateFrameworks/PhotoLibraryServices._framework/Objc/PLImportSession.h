@@ -6,9 +6,11 @@
 
 #import <PhotoLibraryServices/PLGenericAlbum.h>
 
-@class NSOrderedSet;
+#import <PhotoLibraryServices/PLFileSystemAlbumMetadataPersistence-Protocol.h>
 
-@interface PLImportSession : PLGenericAlbum
+@class NSOrderedSet, NSString;
+
+@interface PLImportSession : PLGenericAlbum <PLFileSystemAlbumMetadataPersistence>
 {
     BOOL _needsPersistenceUpdate;
     BOOL _albumShouldBeAutomaticallyDeleted;
@@ -16,13 +18,16 @@
 
 @property (nonatomic) BOOL albumShouldBeAutomaticallyDeleted; // @synthesize albumShouldBeAutomaticallyDeleted=_albumShouldBeAutomaticallyDeleted;
 @property (strong, nonatomic) NSOrderedSet *assets; // @dynamic assets;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
+@property (readonly) Class superclass;
 
 + (id)albumWithImportSessionID:(id)arg1 inManagedObjectContext:(id)arg2;
-+ (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
-+ (id)insertInManagedObjectContext:(id)arg1;
 + (id)insertNewImportSessionAlbumWithImportSessionID:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)validKindsForPersistence;
 - (BOOL)_isAssetIncludedInImportDates:(id)arg1;
 - (BOOL)_isDateAfterEndDate:(id)arg1;
 - (BOOL)_isDateBeforeStartDate:(id)arg1;
@@ -33,12 +38,15 @@
 - (unsigned long long)count;
 - (void)didSave;
 - (BOOL)isEmpty;
+- (BOOL)isValidForPersistence;
 - (id)mutableAssets;
-- (void)persistMetadataToFileSystem;
+- (id)payloadForChangedKeys:(id)arg1;
+- (void)persistMetadataToFileSystemWithPathManager:(id)arg1;
 - (void)prepareForDeletion;
-- (void)removePersistedFileSystemData;
+- (void)removePersistedFileSystemDataWithPathManager:(id)arg1;
 - (void)revalidateImportDates;
 - (void)updateImportDatesFromAddedAsset:(id)arg1;
+- (BOOL)validForPersistenceChangedForChangedKeys:(id)arg1;
 - (BOOL)validateImportSessionID:(id *)arg1 error:(id *)arg2;
 - (void)willSave;
 

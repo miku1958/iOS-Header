@@ -10,7 +10,6 @@
 
 @interface NTKChronoPalette : NSObject
 {
-    unsigned long long _paletteColor;
     BOOL _showsShadows;
     CLKDevice *_device;
     UIColor *_backgroundColor;
@@ -25,6 +24,7 @@
     UIColor *_glyphBackgroundColor;
     double _smallTickValue;
     double _largeTickValue;
+    unsigned long long _paletteColor;
 }
 
 @property (readonly, nonatomic) UIColor *alternativeTickColor; // @synthesize alternativeTickColor=_alternativeTickColor;
@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) UIColor *inlayColor; // @synthesize inlayColor=_inlayColor;
 @property (readonly, nonatomic) UIColor *labelColor; // @synthesize labelColor=_labelColor;
 @property (readonly, nonatomic) double largeTickValue; // @synthesize largeTickValue=_largeTickValue;
+@property (readonly, nonatomic) unsigned long long paletteColor; // @synthesize paletteColor=_paletteColor;
 @property (readonly, nonatomic) BOOL showsShadows; // @synthesize showsShadows=_showsShadows;
 @property (readonly, nonatomic) double smallTickValue; // @synthesize smallTickValue=_smallTickValue;
 @property (readonly, nonatomic) UIColor *tickColor; // @synthesize tickColor=_tickColor;

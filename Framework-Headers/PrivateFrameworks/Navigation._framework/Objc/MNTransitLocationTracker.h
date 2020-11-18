@@ -6,15 +6,12 @@
 
 #import <Navigation/MNSteppingLocationTracker.h>
 
-#import <Navigation/MNTransitScheduleTrackerDelegate-Protocol.h>
-
-@class GEORoadMatcher, GEOTransitRouteMatcher, MNLocation, MNTransitScheduleTracker, NSDate, NSString;
+@class GEORoadMatcher, GEOTransitRouteMatcher, MNLocation, NSDate;
 
 __attribute__((visibility("hidden")))
-@interface MNTransitLocationTracker : MNSteppingLocationTracker <MNTransitScheduleTrackerDelegate>
+@interface MNTransitLocationTracker : MNSteppingLocationTracker
 {
     GEOTransitRouteMatcher *_transitRouteMatcher;
-    MNTransitScheduleTracker *_scheduleTracker;
     GEORoadMatcher *_roadMatcher;
     NSDate *_lastLocationTimestamp;
     NSDate *_lastAccurateLocationDate;
@@ -24,11 +21,7 @@ __attribute__((visibility("hidden")))
     BOOL _debugSnapToTransitLines;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL debugSnapToTransitLines; // @synthesize debugSnapToTransitLines=_debugSnapToTransitLines;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_correctedLocationForLocation:(id)arg1;
@@ -40,8 +33,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithNavigationSession:(id)arg1;
 - (void)startTracking;
 - (void)stopTracking;
-- (void)transitScheduleTracker:(id)arg1 didSignalAlightForStepAtIndex:(unsigned long long)arg2;
-- (void)transitScheduleTracker:(id)arg1 didUpdateFeedback:(id)arg2 forAlightingStepAtIndex:(unsigned long long)arg3;
 - (int)transportType;
 
 @end

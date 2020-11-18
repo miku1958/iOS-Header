@@ -23,7 +23,8 @@
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *intentSlotResolutionResult;
 @property (copy, nonatomic) NSNumber *intentSlotValueIndex;
 @property (copy, nonatomic) NSString *intentTypeName;
-@property (strong, nonatomic) SAIntentGroupProtobufMessage *location; // @dynamic location;
+@property (copy, nonatomic) NSString *jsonEncodedIntentSlotResolutionResult;
+@property (strong, nonatomic) SAIntentGroupProtobufMessage *location;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
 

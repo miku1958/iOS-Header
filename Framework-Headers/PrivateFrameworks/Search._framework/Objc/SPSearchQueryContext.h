@@ -16,11 +16,14 @@
     BOOL _promoteLocalResults;
     BOOL _promoteParsecResults;
     BOOL _noTokenize;
+    BOOL _internalDebug;
+    BOOL _internalValidation;
     NSString *_searchString;
     SFSearchSuggestion *_engagedSuggestion;
     NSArray *_markedTextArray;
     NSString *_keyboardLanguage;
     NSString *_keyboardPrimaryLanguage;
+    double _scaleFactor;
     NSArray *_searchDomains;
     NSArray *_disabledDomains;
     NSArray *_disabledBundles;
@@ -41,6 +44,8 @@
 @property (strong, nonatomic) SFSearchSuggestion *engagedSuggestion; // @synthesize engagedSuggestion=_engagedSuggestion;
 @property (nonatomic) BOOL forceQueryEvenIfSame; // @synthesize forceQueryEvenIfSame=_forceQueryEvenIfSame;
 @property (readonly, nonatomic) BOOL hasMarkedText;
+@property (nonatomic) BOOL internalDebug; // @synthesize internalDebug=_internalDebug;
+@property (nonatomic) BOOL internalValidation; // @synthesize internalValidation=_internalValidation;
 @property (nonatomic) BOOL isPasscodeLocked; // @synthesize isPasscodeLocked=_isPasscodeLocked;
 @property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (strong, nonatomic) NSString *keyboardPrimaryLanguage; // @synthesize keyboardPrimaryLanguage=_keyboardPrimaryLanguage;
@@ -49,6 +54,7 @@
 @property (nonatomic) BOOL promoteLocalResults; // @synthesize promoteLocalResults=_promoteLocalResults;
 @property (nonatomic) BOOL promoteParsecResults; // @synthesize promoteParsecResults=_promoteParsecResults;
 @property (nonatomic) unsigned long long queryIdent; // @synthesize queryIdent=_queryIdent;
+@property (nonatomic) double scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (strong, nonatomic) NSArray *searchDomains; // @synthesize searchDomains=_searchDomains;
 @property (strong, nonatomic) NSArray *searchEntities; // @synthesize searchEntities=_searchEntities;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;

@@ -21,10 +21,11 @@
 - (void)encodeGLforSize:(struct CLKUIQuadSize)arg1;
 - (id)init;
 - (void)performOffscreenPassesWithCommandBuffer:(id)arg1;
-- (void)prepareForQuadView:(id)arg1;
 - (BOOL)prepareForTime:(double)arg1;
 - (void)purge;
 - (void)renderForDisplayWithEncoder:(id)arg1;
+- (void)setupForQuadView:(id)arg1;
+- (void)unlinkQuadView;
 
 @end
 

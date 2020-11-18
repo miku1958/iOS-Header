@@ -6,36 +6,32 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSCopying-Protocol.h>
+#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
+#import <SiriInstrumentation/SISchemaClientTransportEventMetadata-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
-@interface SISchemaClientTransportEventMetadata : PBCodable <NSCopying>
+@interface SISchemaClientTransportEventMetadata : PBCodable <SISchemaClientTransportEventMetadata, NSSecureCoding>
 {
-    long long _eventTransmittedRelativeToBootTimeTimestampNs;
-    long long _serverArrivedTimestampMs;
     NSString *_eventTransmittedTimestampRefId;
-    struct {
-        unsigned int eventTransmittedRelativeToBootTimeTimestampNs:1;
-        unsigned int serverArrivedTimestampMs:1;
-    } _has;
+    long long _eventTransmittedRelativeToBootTimeTimestampNs;
+    long long _serverArrivedTimestampNs;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long eventTransmittedRelativeToBootTimeTimestampNs; // @synthesize eventTransmittedRelativeToBootTimeTimestampNs=_eventTransmittedRelativeToBootTimeTimestampNs;
-@property (strong, nonatomic) NSString *eventTransmittedTimestampRefId; // @synthesize eventTransmittedTimestampRefId=_eventTransmittedTimestampRefId;
-@property (nonatomic) BOOL hasEventTransmittedRelativeToBootTimeTimestampNs;
-@property (readonly, nonatomic) BOOL hasEventTransmittedTimestampRefId;
-@property (nonatomic) BOOL hasServerArrivedTimestampMs;
-@property (nonatomic) long long serverArrivedTimestampMs; // @synthesize serverArrivedTimestampMs=_serverArrivedTimestampMs;
+@property (copy, nonatomic) NSString *eventTransmittedTimestampRefId; // @synthesize eventTransmittedTimestampRefId=_eventTransmittedTimestampRefId;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) long long serverArrivedTimestampNs; // @synthesize serverArrivedTimestampNs=_serverArrivedTimestampNs;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)copyTo:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

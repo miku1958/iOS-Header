@@ -6,28 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSOperationQueue;
-@protocol OS_dispatch_queue;
+#import <Photos/PHAssetResourceRequestDelegate-Protocol.h>
 
-@interface PHAssetResourceManager : NSObject
+@class NSMutableDictionary, NSString;
+
+@interface PHAssetResourceManager : NSObject <PHAssetResourceRequestDelegate>
 {
-    NSMutableDictionary *_requestsById;
-    NSOperationQueue *_resourceRequestQueue;
-    NSObject<OS_dispatch_queue> *_serialQueue;
-    int _currentRequestID;
+    _Atomic int _nextRequestID;
+    NSMutableDictionary *_requestsByID;
+    struct os_unfair_lock_s _lock;
+    unsigned long long _managerID;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (unsigned long long)_nextManagerID;
 + (id)defaultManager;
 - (void).cxx_destruct;
-- (void)_streamWriteDataForAssetResource:(id)arg1 toFile:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_synchronized:(CDUnknownBlockType)arg1;
-- (id)assetUUIDsWithNonLocalResourcesForAssetUUIDs:(id)arg1 cplResourceTypes:(id)arg2;
+- (void)_autoResolveReferencedResources:(id)arg1 folderURL:(id)arg2 resourceClient:(id)arg3;
+- (int)_nextRequestID;
+- (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
+- (void)assetResourceRequestDidFinish:(id)arg1;
 - (void)cancelDataRequest:(int)arg1;
-- (void)dealloc;
+- (id)consolidateAssets:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)infoForRequest:(int)arg1;
 - (id)init;
-- (id)photoLibrary;
+- (id)reconnectAssets:(id)arg1 urlResolvingHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (int)requestDataForAssetResource:(id)arg1 options:(id)arg2 dataReceivedHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (int)requestFileURLForAssetResource:(id)arg1 options:(id)arg2 urlReceivedHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (int)requestWriteDataForAssetResource:(id)arg1 toFile:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)writeDataForAssetResource:(id)arg1 toFile:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

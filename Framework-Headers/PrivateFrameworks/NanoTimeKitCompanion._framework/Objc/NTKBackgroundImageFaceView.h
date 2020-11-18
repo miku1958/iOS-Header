@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, NTKDigitalTimeLabel, NTKEditOption, UIImageView, UIView;
+@class NSString, NTKEditOption, UIImageView, UIView;
 
 @interface NTKBackgroundImageFaceView : NTKDigitalFaceView <UIGestureRecognizerDelegate>
 {
@@ -16,13 +16,13 @@
     UIView *_transitionViewFrom;
     NTKEditOption *_editOptionTo;
     UIView *_transitionViewTo;
+    UIView *_zoomingContainerView;
     UIView *_transitionDimmingView;
     BOOL _shouldAdjustLayoutForTimeTravel;
     UIView *_timeTravelDimmingOverlayView;
     UIView *_selectedContentView;
     double _breathScaleModifier;
     double _rubberBandScaleModifier;
-    NTKDigitalTimeLabel *_timeLabel;
     UIView *_backgroundContainerView;
     UIView *_zoomMaskView;
     UIImageView *_zoomVignette;
@@ -41,7 +41,6 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGRect maskZoomStartingBounds; // @synthesize maskZoomStartingBounds=_maskZoomStartingBounds;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NTKDigitalTimeLabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 @property (nonatomic) struct CGPoint timeViewZoomEndingCenter; // @synthesize timeViewZoomEndingCenter=_timeViewZoomEndingCenter;
 @property (nonatomic) struct CGRect vignetteZoomStartingBounds; // @synthesize vignetteZoomStartingBounds=_vignetteZoomStartingBounds;
 @property (strong, nonatomic) UIView *zoomMaskView; // @synthesize zoomMaskView=_zoomMaskView;
@@ -57,13 +56,12 @@
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (double)_backgroundImageAlphaForEditMode:(long long)arg1;
 - (void)_beginTransitionToOption;
-- (void)_bringForegroundViewsToFront;
 - (void)_cleanupAfterTransitionToOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_cleanupAfterZoom;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_didTransitionToOptionView:(id)arg1;
-- (id)_digitalTimeLabelStyle;
+- (id)_digitalTimeLabelStyleFromViewMode:(long long)arg1 faceBounds:(struct CGRect)arg2;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_endScrubbingAnimationFromUIViewAnimateWithDuration;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
@@ -71,7 +69,6 @@
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
-- (void)_layoutForegroundContainerView;
 - (void)_layoutTimeTravelCaptionView:(id)arg1;
 - (void)_layoutTimeTravelStatusModule:(id)arg1;
 - (void)_loadSnapshotContentViews;

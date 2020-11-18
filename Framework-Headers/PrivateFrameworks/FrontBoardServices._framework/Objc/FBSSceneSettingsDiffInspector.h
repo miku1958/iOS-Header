@@ -15,6 +15,7 @@
 - (void)observeFrameWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeInterfaceOrientationWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeIsBackgroundedWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeIsForegroundWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeLevelWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeOcclusionsWithBlock:(CDUnknownBlockType)arg1;
 

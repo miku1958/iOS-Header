@@ -9,7 +9,7 @@
 #import <HealthDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, NSXPCListener, NSXPCListenerEndpoint;
-@protocol HDXPCListenerDelegate;
+@protocol HDXPCListenerDelegate, OS_dispatch_queue;
 
 @interface HDXPCListener : NSObject <NSXPCListenerDelegate>
 {
@@ -17,9 +17,11 @@
     struct os_unfair_lock_s _lock;
     NSMutableDictionary *_exportedObjectsByClient;
     id<HDXPCListenerDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_connectionQueue;
 }
 
 @property (readonly, copy) NSArray *allClients;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *connectionQueue; // @synthesize connectionQueue=_connectionQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HDXPCListenerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

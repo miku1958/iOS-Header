@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)callFunctionOnMainThread:(Function_89d21b48 *)arg1;
+- (void)callFunctionOnMainThread:(Function_15535652 *)arg1;
 - (BOOL)connection:(id)arg1 canAuthenticateAgainstProtectionSpace:(id)arg2;
 - (void)connection:(id)arg1 didFailWithError:(id)arg2;
 - (void)connection:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2;

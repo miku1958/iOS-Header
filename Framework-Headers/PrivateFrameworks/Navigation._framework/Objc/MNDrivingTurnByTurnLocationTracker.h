@@ -6,15 +6,13 @@
 
 #import <Navigation/MNTurnByTurnLocationTracker.h>
 
-#import <Navigation/MNETAManagerDelegate-Protocol.h>
 #import <Navigation/MNTrafficIncidentAlertUpdaterDelegate-Protocol.h>
 #import <Navigation/MNTunnelLocationProjectorDelegate-Protocol.h>
 
-@class MNAlternateRoutesUpdater, MNETAManager, MNTrafficIncidentAlertUpdater, MNTunnelLocationProjector, NSString;
+@class MNAlternateRoutesUpdater, MNTrafficIncidentAlertUpdater, MNTunnelLocationProjector, NSString;
 
-@interface MNDrivingTurnByTurnLocationTracker : MNTurnByTurnLocationTracker <MNETAManagerDelegate, MNTrafficIncidentAlertUpdaterDelegate, MNTunnelLocationProjectorDelegate>
+@interface MNDrivingTurnByTurnLocationTracker : MNTurnByTurnLocationTracker <MNTrafficIncidentAlertUpdaterDelegate, MNTunnelLocationProjectorDelegate>
 {
-    MNETAManager *_etaManager;
     MNTunnelLocationProjector *_tunnelLocationProjector;
     MNAlternateRoutesUpdater *_alternateRoutesUpdater;
     MNTrafficIncidentAlertUpdater *_trafficIncidentAlertUpdater;
@@ -34,34 +32,22 @@
 - (void).cxx_destruct;
 - (BOOL)_allowSwitchToTransportType:(int)arg1 forLocation:(id)arg2;
 - (id)_alternateRouteForOffRouteLocation:(id)arg1;
-- (BOOL)_checkArrivalForLocation:(id)arg1;
-- (id)_contingentRouteForRouteSet:(id)arg1 forLocation:(id)arg2;
+- (id)_contingencyRouteForLocation:(id)arg1;
 - (int)_detectedMotionForLocation:(id)arg1;
-- (id)_lazyContingentRouteForRouteSet:(id)arg1 forLocation:(id)arg2;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (id)_newMapMatcherForRoute:(id)arg1;
 - (id)_overrideLocationForLocation:(id)arg1;
-- (void)_sendRouteHintForLocation:(id)arg1;
-- (void)_setAuditToken:(id)arg1;
 - (void)_updateForArrival;
 - (void)_updateForLocation:(id)arg1;
 - (void)_updateForReroute:(id)arg1 rerouteReason:(unsigned long long)arg2 request:(id)arg3 response:(id)arg4;
-- (void)etaManager:(id)arg1 didUpdateAlternateRoutes:(id)arg2;
-- (void)etaManager:(id)arg1 failedToReceiveETAResponse:(id)arg2;
-- (void)etaManager:(id)arg1 receivedETAResponse:(id)arg2;
-- (void)etaManager:(id)arg1 receivedTrafficIncidentAlert:(id)arg2;
-- (void)etaManager:(id)arg1 updatedIncidentsForRoute:(id)arg2 etaRoute:(id)arg3 incidentsOffset:(unsigned int)arg4;
-- (void)etaManager:(id)arg1 updatedTrafficForETARoute:(id)arg2 from:(unsigned int)arg3 to:(unsigned int)arg4;
-- (void)etaManager:(id)arg1 willSendETARequest:(id)arg2;
-- (void)etaManagerUpdatedETATime:(id)arg1;
+- (void)didUpdateAlternateRoutes:(id)arg1 traffic:(id)arg2;
 - (id)initWithNavigationSession:(id)arg1;
 - (BOOL)shouldProjectAlongRoute;
 - (void)startTracking;
 - (void)stopTracking;
 - (void)tracePaused;
 - (void)trafficIncidentAlertUpdater:(id)arg1 didDismissAlert:(id)arg2 withReroute:(BOOL)arg3;
-- (void)trafficIncidentAlertUpdater:(id)arg1 didReturnToOriginalRoute:(id)arg2 etaRoute:(id)arg3 forAlert:(id)arg4;
-- (void)trafficIncidentAlertUpdater:(id)arg1 didSwitchToNewRoute:(id)arg2 forAlert:(id)arg3;
+- (void)trafficIncidentAlertUpdater:(id)arg1 didSwitchToNewRoute:(id)arg2 traffic:(id)arg3 forAlert:(id)arg4;
 - (void)trafficIncidentAlertUpdater:(id)arg1 invalidatedAlert:(id)arg2;
 - (void)trafficIncidentAlertUpdater:(id)arg1 receivedAlert:(id)arg2 responseCallback:(CDUnknownBlockType)arg3;
 - (void)trafficIncidentAlertUpdater:(id)arg1 updatedAlert:(id)arg2;
@@ -71,6 +57,10 @@
 - (double)trafficIncidentAlertUpdaterTimeUntilNextAnnouncement:(id)arg1;
 - (int)transportType;
 - (void)tunnelLocationProjector:(id)arg1 didUpdateLocation:(id)arg2;
+- (void)updateManager:(id)arg1 didReceiveETAResponse:(id)arg2 toRequest:(id)arg3;
+- (void)updateManager:(id)arg1 willSendETARequest:(id)arg2;
+- (id)userLocationForUpdateManager:(id)arg1;
+- (BOOL)wantsETAUpdates;
 
 @end
 

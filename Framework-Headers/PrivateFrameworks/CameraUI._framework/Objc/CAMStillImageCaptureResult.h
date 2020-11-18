@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class AVCapturePhoto, CAMStillImageCaptureCoordinationInfo, NSArray, NSDate, NSDictionary, NSError, NSString;
+@class AVCapturePhoto, CAMCaptureCoordinationInfo, NSArray, NSDate, NSDictionary, NSError, NSString;
 
 @interface CAMStillImageCaptureResult : NSObject
 {
-    BOOL _shouldPersistEffectFilterName;
+    BOOL _shouldPersistAdjustmentSidecar;
     BOOL _expectingPairedVideo;
     AVCapturePhoto *_capturePhoto;
     NSDate *_captureDate;
@@ -18,23 +18,24 @@
     NSError *_error;
     NSArray *_adjustmentFilters;
     NSString *_persistenceUUID;
-    CAMStillImageCaptureCoordinationInfo *_coordinationInfo;
+    CAMCaptureCoordinationInfo *_coordinationInfo;
 }
 
 @property (readonly, nonatomic) NSArray *adjustmentFilters; // @synthesize adjustmentFilters=_adjustmentFilters;
 @property (readonly, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property (readonly, nonatomic) AVCapturePhoto *capturePhoto; // @synthesize capturePhoto=_capturePhoto;
 @property (readonly, nonatomic) NSDictionary *compactMetadata;
-@property (readonly, nonatomic) CAMStillImageCaptureCoordinationInfo *coordinationInfo; // @synthesize coordinationInfo=_coordinationInfo;
+@property (readonly, nonatomic) CAMCaptureCoordinationInfo *coordinationInfo; // @synthesize coordinationInfo=_coordinationInfo;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic, getter=isExpectingPairedVideo) BOOL expectingPairedVideo; // @synthesize expectingPairedVideo=_expectingPairedVideo;
 @property (readonly, copy, nonatomic) NSString *imageGroupIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
-@property (readonly, nonatomic) BOOL shouldPersistEffectFilterName; // @synthesize shouldPersistEffectFilterName=_shouldPersistEffectFilterName;
+@property (readonly, nonatomic) BOOL shouldPersistAdjustmentSidecar; // @synthesize shouldPersistAdjustmentSidecar=_shouldPersistAdjustmentSidecar;
 
 - (void).cxx_destruct;
 - (id)_captureDateFromMetadata:(id)arg1;
+- (id)compactMetadataWithSecondaryMakerNote:(id)arg1;
 - (void)dealloc;
 - (id)description;
 

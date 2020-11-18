@@ -53,6 +53,7 @@
     NSString *_cardDAVUID;
     NSString *_uid;
     NSString *_phonemeData;
+    NSString *_downtimeWhitelist;
     NSArray *_unknownProperties;
     NSString *_preferredLikenessSource;
     NSString *_preferredApplePersonaIdentifier;
@@ -67,6 +68,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong) NSString *department; // @synthesize department=_department;
 @property (readonly, copy) NSString *description;
+@property (strong) NSString *downtimeWhitelist; // @synthesize downtimeWhitelist=_downtimeWhitelist;
 @property (strong) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
 @property (strong) NSString *firstName; // @synthesize firstName=_firstName;
 @property (readonly) unsigned long long hash;

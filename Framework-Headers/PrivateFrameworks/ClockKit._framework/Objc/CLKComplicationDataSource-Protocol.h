@@ -13,6 +13,7 @@
 - (void)getSupportedTimeTravelDirectionsForComplication:(CLKComplication *)arg1 withHandler:(void (^)(unsigned long long))arg2;
 
 @optional
+- (void)getAlwaysOnTemplateForComplication:(CLKComplication *)arg1 withHandler:(void (^)(CLKComplicationTemplate *))arg2;
 - (void)getLocalizableSampleTemplateForComplication:(CLKComplication *)arg1 withHandler:(void (^)(CLKComplicationTemplate *))arg2;
 - (void)getNextRequestedUpdateDateWithHandler:(void (^)(NSDate *))arg1;
 - (void)getPlaceholderTemplateForComplication:(CLKComplication *)arg1 withHandler:(void (^)(CLKComplicationTemplate *))arg2;

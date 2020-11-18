@@ -11,8 +11,8 @@
 @interface _MPMediaLibraryEntityRelationshipTranslator : NSObject
 {
     BOOL _transient;
-    struct ModelPropertyBase *_foreignPropertyBase;
     Class _relationshipModelClass;
+    struct ModelPropertyBase *_foreignPropertyBase;
     CDUnknownBlockType _validRelationshipHandler;
     shared_ptr_217a6612 _relationshipValidationProperties;
 }

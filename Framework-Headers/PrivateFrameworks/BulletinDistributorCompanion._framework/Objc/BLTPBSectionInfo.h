@@ -26,15 +26,17 @@
     int _sectionCategory;
     NSString *_sectionID;
     int _sectionType;
+    int _spokenNotificationSetting;
     NSString *_subsectionID;
     int _subsectionPriority;
     NSMutableArray *_subsections;
     unsigned int _suppressedSettings;
     NSString *_universalSectionID;
     unsigned int _version;
+    NSString *_watchSectionID;
     BOOL _allowsNotifications;
     BOOL _criticalAlertSetting;
-    BOOL _displaysCriticalBulletins;
+    BOOL _displaysCriticalBulletinsLegacy;
     BOOL _excludeFromBulletinBoard;
     BOOL _iconsStripped;
     BOOL _phoneAllowsNotifications;
@@ -54,12 +56,13 @@
         unsigned int pushSettings:1;
         unsigned int sectionCategory:1;
         unsigned int sectionType:1;
+        unsigned int spokenNotificationSetting:1;
         unsigned int subsectionPriority:1;
         unsigned int suppressedSettings:1;
         unsigned int version:1;
         unsigned int allowsNotifications:1;
         unsigned int criticalAlertSetting:1;
-        unsigned int displaysCriticalBulletins:1;
+        unsigned int displaysCriticalBulletinsLegacy:1;
         unsigned int excludeFromBulletinBoard:1;
         unsigned int iconsStripped:1;
         unsigned int phoneAllowsNotifications:1;
@@ -76,7 +79,7 @@
 @property (nonatomic) int authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (nonatomic) BOOL criticalAlertSetting; // @synthesize criticalAlertSetting=_criticalAlertSetting;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (nonatomic) BOOL displaysCriticalBulletins; // @synthesize displaysCriticalBulletins=_displaysCriticalBulletins;
+@property (nonatomic) BOOL displaysCriticalBulletinsLegacy; // @synthesize displaysCriticalBulletinsLegacy=_displaysCriticalBulletinsLegacy;
 @property (nonatomic) BOOL excludeFromBulletinBoard; // @synthesize excludeFromBulletinBoard=_excludeFromBulletinBoard;
 @property (strong, nonatomic) NSString *factorySectionID; // @synthesize factorySectionID=_factorySectionID;
 @property (nonatomic) int groupingSetting; // @synthesize groupingSetting=_groupingSetting;
@@ -85,7 +88,7 @@
 @property (nonatomic) BOOL hasAuthorizationStatus;
 @property (nonatomic) BOOL hasCriticalAlertSetting;
 @property (readonly, nonatomic) BOOL hasDisplayName;
-@property (nonatomic) BOOL hasDisplaysCriticalBulletins;
+@property (nonatomic) BOOL hasDisplaysCriticalBulletinsLegacy;
 @property (nonatomic) BOOL hasExcludeFromBulletinBoard;
 @property (readonly, nonatomic) BOOL hasFactorySectionID;
 @property (nonatomic) BOOL hasGroupingSetting;
@@ -104,12 +107,14 @@
 @property (nonatomic) BOOL hasShowsInNotificationCenter;
 @property (nonatomic) BOOL hasShowsMessagePreview;
 @property (nonatomic) BOOL hasShowsOnExternalDevices;
+@property (nonatomic) BOOL hasSpokenNotificationSetting;
 @property (readonly, nonatomic) BOOL hasSubsectionID;
 @property (nonatomic) BOOL hasSubsectionPriority;
 @property (nonatomic) BOOL hasSuppressFromSettings;
 @property (nonatomic) BOOL hasSuppressedSettings;
 @property (readonly, nonatomic) BOOL hasUniversalSectionID;
 @property (nonatomic) BOOL hasVersion;
+@property (readonly, nonatomic) BOOL hasWatchSectionID;
 @property (strong, nonatomic) BLTPBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL iconsStripped; // @synthesize iconsStripped=_iconsStripped;
 @property (nonatomic) int lockScreenSetting; // @synthesize lockScreenSetting=_lockScreenSetting;
@@ -125,6 +130,7 @@
 @property (nonatomic) BOOL showsInNotificationCenter; // @synthesize showsInNotificationCenter=_showsInNotificationCenter;
 @property (nonatomic) BOOL showsMessagePreview; // @synthesize showsMessagePreview=_showsMessagePreview;
 @property (nonatomic) BOOL showsOnExternalDevices; // @synthesize showsOnExternalDevices=_showsOnExternalDevices;
+@property (nonatomic) int spokenNotificationSetting; // @synthesize spokenNotificationSetting=_spokenNotificationSetting;
 @property (strong, nonatomic) NSString *subsectionID; // @synthesize subsectionID=_subsectionID;
 @property (nonatomic) int subsectionPriority; // @synthesize subsectionPriority=_subsectionPriority;
 @property (strong, nonatomic) NSMutableArray *subsections; // @synthesize subsections=_subsections;
@@ -132,12 +138,14 @@
 @property (nonatomic) unsigned int suppressedSettings; // @synthesize suppressedSettings=_suppressedSettings;
 @property (strong, nonatomic) NSString *universalSectionID; // @synthesize universalSectionID=_universalSectionID;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
+@property (strong, nonatomic) NSString *watchSectionID; // @synthesize watchSectionID=_watchSectionID;
 
 + (Class)subsectionsType;
 - (void).cxx_destruct;
 - (int)StringAsGroupingSetting:(id)arg1;
 - (int)StringAsLockScreenSetting:(id)arg1;
 - (int)StringAsNotificationCenterSetting:(id)arg1;
+- (int)StringAsSpokenNotificationSetting:(id)arg1;
 - (void)addSubsections:(id)arg1;
 - (void)clearSubsections;
 - (void)copyTo:(id)arg1;
@@ -152,6 +160,7 @@
 - (void)mergeFrom:(id)arg1;
 - (id)notificationCenterSettingAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)spokenNotificationSettingAsString:(int)arg1;
 - (id)subsectionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)subsectionsCount;
 - (void)writeTo:(id)arg1;

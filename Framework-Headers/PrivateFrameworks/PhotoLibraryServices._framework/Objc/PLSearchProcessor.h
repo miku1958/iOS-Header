@@ -15,10 +15,13 @@
 
 @property (readonly, nonatomic) PSIDatabase *searchIndex; // @synthesize searchIndex=_searchIndex;
 
++ (id)_scoreByCategoryMask;
 + (id)searchProcessorLog;
 - (void).cxx_destruct;
 - (id)_alphabeticalSortDescriptors;
 - (BOOL)_categoryMaskIsCombinable:(unsigned long long)arg1;
+- (id)_combinedFilenameSearchResultsFromSearchResults:(id)arg1 inQuery:(id)arg2;
+- (id)_completionFilenameResultsForFilenameResults:(id)arg1;
 - (id)_dateSortDescriptors;
 - (void)_extractSearchResultsFromGroupResults:(id)arg1 withQuery:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3;
 - (id)_numberOfAssetsSortDescriptors;
@@ -28,7 +31,7 @@
 - (id)completionSuggestionsForQuery:(id)arg1 withSearchSections:(id)arg2 numberOfSuggestions:(unsigned long long)arg3;
 - (id)initWithDatabase:(id)arg1;
 - (void)performQuery:(id)arg1 withResultsHandler:(CDUnknownBlockType)arg2;
-- (id)searchResultSectionsWithAssetResults:(id)arg1 collectionResults:(id)arg2 tripResults:(id)arg3 combineAssetSections:(BOOL)arg4;
+- (id)searchResultSectionsForQuery:(id)arg1 withAssetResults:(id)arg2 collectionResults:(id)arg3 combineAssetSections:(BOOL)arg4;
 - (id)updatedSearchSections:(id)arg1 withTopCollectionResults:(id)arg2;
 
 @end

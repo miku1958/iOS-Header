@@ -15,6 +15,7 @@
     HFCharacteristicValueManager *_valueManager;
 }
 
+@property (readonly, nonatomic) unsigned long long audioStreamSetting;
 @property (strong, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property (strong, nonatomic) HMCameraStream *cameraStream; // @synthesize cameraStream=_cameraStream;
 @property (readonly, nonatomic, getter=isIncomingAudioEnabled) BOOL incomingAudioEnabled;
@@ -24,14 +25,13 @@
 - (void).cxx_destruct;
 - (id)_enableAudioIfNecessaryForAudioControl:(id)arg1 minVolume:(float)arg2;
 - (id)_readValuesForCharacteristics:(id)arg1;
-- (id)_updateAudioStreamSetting:(unsigned long long)arg1;
 - (id)_writeValuesForCharacteristics:(id)arg1;
-- (unsigned long long)audioStreamSetting;
 - (id)enableRemoteMicrophoneIfNecessary;
 - (id)enableRemoteSpeakerIfNecessary;
 - (id)initWithCameraProfile:(id)arg1 cameraStream:(id)arg2 valueManager:(id)arg3;
 - (id)setIncomingAudioEnabled:(BOOL)arg1;
 - (id)setOutgoingAudioEnabled:(BOOL)arg1;
+- (id)updateAudioStreamSetting:(unsigned long long)arg1;
 
 @end
 

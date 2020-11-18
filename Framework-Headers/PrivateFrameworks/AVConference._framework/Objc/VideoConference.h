@@ -15,7 +15,7 @@
 #import <AVConference/VCMomentTransportDelegate-Protocol.h>
 #import <AVConference/VCVideoCaptureClient-Protocol.h>
 
-@class FFTMeter, GKNATObserver, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCAudioIO, VCAudioPowerLevelMonitor, VCAudioPowerSpectrumSource, VCCallSession, VCMoments, VCVideoRule, VideoConferenceManager;
+@class GKNATObserver, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCAudioIO, VCAudioPowerLevelMonitor, VCAudioPowerSpectrumSource, VCCallSession, VCMoments, VCVideoRule, VideoConferenceManager;
 @protocol OS_dispatch_queue, VideoConferenceChannelQualityDelegate, VideoConferenceDelegate, VideoConferenceSpeakingDelegate;
 
 @interface VideoConference : NSObject <VCCallSessionDelegate, VCVideoCaptureClient, GKNATObserverDelegate, VCAudioIOSource, VCAudioIOSink, VCAudioIODelegate, VCAudioPowerLevelMonitorDelegate, VCMomentTransportDelegate>
@@ -36,8 +36,8 @@
     BOOL inputMeteringEnabled;
     BOOL inputFrequencyMeteringEnabled;
     BOOL outputFrequencyMeteringEnabled;
-    FFTMeter *_inputFFTMeter;
-    FFTMeter *_outputFFTMeter;
+    struct opaqueVCFFTMeter *_inputFFTMeter;
+    struct opaqueVCFFTMeter *_outputFFTMeter;
     float outputMeterLevel;
     float inputMeterLevel;
     long long _inputAudioPowerSpectrumToken;
@@ -181,6 +181,7 @@
 - (void)didReceiveCaptions:(id)arg1 remoteClient:(unsigned int)arg2;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
+- (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
 - (void)forceNoICE:(BOOL)arg1;
 - (BOOL)getIsAudioPaused:(BOOL *)arg1 callID:(unsigned int)arg2 error:(id *)arg3;
 - (BOOL)getIsVideoPaused:(BOOL *)arg1 callID:(unsigned int)arg2 error:(id *)arg3;
@@ -199,7 +200,7 @@
 - (BOOL)matchesCallID:(unsigned int)arg1;
 - (BOOL)matchesOpenSessionForParticipantID:(id)arg1;
 - (BOOL)matchesParticipantID:(id)arg1;
-- (void)moments:(id)arg1 shouldProcessRequest:(id)arg2;
+- (void)moments:(id)arg1 shouldProcessRequest:(id)arg2 recipientID:(id)arg3;
 - (unsigned int)momentsCapabilitiesWithNegotiationBlobMomentsSettings_Capabilities:(int)arg1;
 - (int)natType;
 - (int)natTypeForCallSessions:(const char *)arg1;
@@ -258,7 +259,7 @@
 - (void)session:(id)arg1 remoteCallingModeChanged:(unsigned int)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(id)arg1 remoteMediaStalled:(BOOL)arg2;
 - (void)session:(id)arg1 sendRelayResponse:(id)arg2;
-- (void)session:(id)arg1 setMomentsCapabilities:(int)arg2;
+- (void)session:(id)arg1 setMomentsCapabilities:(int)arg2 imageType:(int)arg3 videoCodec:(int)arg4;
 - (void)session:(id)arg1 setRemoteBasebandCodecType:(unsigned int)arg2 sampleRate:(double)arg3;
 - (void)session:(id)arg1 startAudioWithFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo *)arg2 internalFormat:(struct AudioStreamBasicDescription)arg3 internalSamplesPerFrame:(unsigned int)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)session:(id)arg1 startVideoReceive:(id *)arg2;

@@ -13,6 +13,8 @@
 @optional
 - (void)contactViewController:(CNContactViewController *)arg1 didChangeToEditMode:(BOOL)arg2;
 - (void)contactViewController:(CNContactViewController *)arg1 didDeleteContact:(CNContact *)arg2;
+- (void)contactViewControllerDidExecuteClearRecentsDataAction:(CNContactViewController *)arg1;
+- (void)contactViewControllerDidExecuteDeleteFromDowntimeWhitelistAction:(CNContactViewController *)arg1;
 - (void)contactViewControllerForUnknownContactDidBeginAddingToContacts:(CNContactViewController *)arg1;
 - (void)contactViewControllerForUnknownContactDidEndAddingToContacts:(CNContactViewController *)arg1;
 @end

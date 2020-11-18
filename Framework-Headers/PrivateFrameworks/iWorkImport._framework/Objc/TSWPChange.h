@@ -49,8 +49,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEquivalentToObject:(id)arg1;
 - (BOOL)isFromChangeSession:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)migrateWithDocumentRoot:(id)arg1;
 - (void)p_invalidateAnnotationResultsForDocumentRoot:(id)arg1 key:(id)arg2;
-- (void)p_validateSession;
 - (void)resetTextAttributeUUIDString;
 - (void)saveToArchiver:(id)arg1;
 - (void)trackedTextDidChange;

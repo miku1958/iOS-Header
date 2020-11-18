@@ -25,6 +25,7 @@
     BOOL _hasMigrated;
     BOOL _corrupt;
     BOOL _traced;
+    NSDateFormatter *_oldDateFormatter;
 }
 
 @property (nonatomic) BOOL corrupt; // @synthesize corrupt=_corrupt;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) BOOL hasMigrated; // @synthesize hasMigrated=_hasMigrated;
 @property (readonly, nonatomic) BOOL isOpen;
 @property (strong, nonatomic) NSString *objectClassPrefix; // @synthesize objectClassPrefix=_objectClassPrefix;
+@property (strong, nonatomic) NSDateFormatter *oldDateFormatter; // @synthesize oldDateFormatter=_oldDateFormatter;
 @property (nonatomic) unsigned long long openCount; // @synthesize openCount=_openCount;
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
 @property (readonly, nonatomic) NSString *schema; // @synthesize schema=_schema;
